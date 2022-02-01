@@ -9,89 +9,75 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class n
 {
-  private static AtomicInteger lsJ;
-  String dJL;
-  private long jLu;
-  private c lqP;
-  String lqQ;
-  Future<?> lsH;
-  boolean lsK;
-  private int lsL;
-  private int lsM;
-  o lsN;
-  private final Object lsO;
-  int lsP;
-  int lsQ;
-  long lsR;
-  long lsS;
-  public boolean lsT;
-  String lsU;
-  public String lsV;
-  String lsW;
-  private int lsX;
-  private int lsY;
+  private static AtomicInteger mzm;
+  String eby;
+  boolean ifP;
+  private long kNt;
+  private c mxv;
+  String mxw;
+  private int mzA;
+  Future<?> mzk;
+  private int mzn;
+  private int mzo;
+  o mzp;
+  private final Object mzq;
+  int mzr;
+  int mzs;
+  long mzt;
+  long mzu;
+  public boolean mzv;
+  String mzw;
+  public String mzx;
+  String mzy;
+  private int mzz;
   int priority;
   long startTime;
   String uuid;
   
   static
   {
-    AppMethodBeat.i(211155);
-    lsJ = new AtomicInteger(10000);
-    AppMethodBeat.o(211155);
+    AppMethodBeat.i(234824);
+    mzm = new AtomicInteger(10000);
+    AppMethodBeat.o(234824);
   }
   
   public n()
   {
-    AppMethodBeat.i(211147);
-    this.lsL = 0;
-    this.lsM = 0;
-    this.lsO = new Object();
-    this.lsQ = 0;
+    AppMethodBeat.i(234816);
+    this.mzn = 0;
+    this.mzo = 0;
+    this.mzq = new Object();
+    this.mzs = 0;
     this.priority = -1;
-    this.jLu = -1L;
-    this.lqQ = "";
-    this.lqP = c.lrO;
-    this.lsP = lsJ.incrementAndGet();
+    this.kNt = -1L;
+    this.mxw = "";
+    this.mxv = c.myu;
+    this.mzr = mzm.incrementAndGet();
     this.startTime = System.currentTimeMillis();
-    AppMethodBeat.o(211147);
+    AppMethodBeat.o(234816);
   }
   
   public final void a(long paramLong, c paramc)
   {
     try
     {
-      AppMethodBeat.i(211149);
-      this.jLu = paramLong;
-      this.lqP = paramc;
-      if (this.lqP.equals(c.lrQ)) {
-        this.lsQ |= 0x8;
+      AppMethodBeat.i(234818);
+      this.kNt = paramLong;
+      this.mxv = paramc;
+      if (this.mxv.equals(c.myw)) {
+        this.mzs |= 0x8;
       }
-      AppMethodBeat.o(211149);
+      AppMethodBeat.o(234818);
       return;
     }
     finally {}
   }
   
-  public final long bbj()
+  public final c bJP()
   {
     try
     {
-      long l = this.jLu;
-      return l;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final c bom()
-  {
-    try
-    {
-      c localc = this.lqP;
+      c localc = this.mxv;
       return localc;
     }
     finally
@@ -101,70 +87,70 @@ public final class n
     }
   }
   
-  public final long bos()
+  public final long bJV()
   {
-    AppMethodBeat.i(211151);
+    AppMethodBeat.i(234820);
     long l = System.currentTimeMillis();
-    l = ((float)(this.lsX * 1000L) / (float)((l - this.startTime) * 1024L));
-    AppMethodBeat.o(211151);
+    l = ((float)(this.mzz * 1000L) / (float)((l - this.startTime) * 1024L));
+    AppMethodBeat.o(234820);
     return l;
   }
   
-  public final void bot()
+  public final void bJW()
   {
-    AppMethodBeat.i(211152);
-    if (dU(2, 3))
+    AppMethodBeat.i(234821);
+    if (eg(2, 3))
     {
-      if (this.lsN != null) {
-        this.lsN.bov();
+      if (this.mzp != null) {
+        this.mzp.bJY();
       }
-      if (a.boh().cFS) {
-        h.log(3, getLogTag(), "cancel success, seq=" + this.lsP);
+      if (a.bJK().cWq) {
+        h.log(3, getLogTag(), "cancel success, seq=" + this.mzr);
       }
     }
-    AppMethodBeat.o(211152);
+    AppMethodBeat.o(234821);
   }
   
-  public final void bou()
+  public final void bJX()
   {
-    AppMethodBeat.i(211153);
-    if ((dU(1, 2)) && (a.boh().cFS)) {
-      h.log(3, getLogTag(), "cancel proceeding, seq=" + this.lsP);
+    AppMethodBeat.i(234822);
+    if ((eg(1, 2)) && (a.bJK().cWq)) {
+      h.log(3, getLogTag(), "cancel proceeding, seq=" + this.mzr);
     }
-    AppMethodBeat.o(211153);
+    AppMethodBeat.o(234822);
   }
   
-  final boolean dU(int paramInt1, int paramInt2)
+  final boolean eg(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(211154);
-    synchronized (this.lsO)
+    AppMethodBeat.i(234823);
+    synchronized (this.mzq)
     {
-      if (this.lsM == paramInt1)
+      if (this.mzo == paramInt1)
       {
-        this.lsM = paramInt2;
-        AppMethodBeat.o(211154);
+        this.mzo = paramInt2;
+        AppMethodBeat.o(234823);
         return true;
       }
-      h.log(5, getLogTag(), String.format(Locale.US, "transState error, current %d, condition %d, newState %d", new Object[] { Integer.valueOf(this.lsM), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      AppMethodBeat.o(211154);
+      h.log(5, getLogTag(), String.format(Locale.US, "transState error, current %d, condition %d, newState %d", new Object[] { Integer.valueOf(this.mzo), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+      AppMethodBeat.o(234823);
       return false;
     }
   }
   
   public final String getLogTag()
   {
-    AppMethodBeat.i(211148);
-    String str = this.lqQ + "VideoRequest";
-    AppMethodBeat.o(211148);
+    AppMethodBeat.i(234817);
+    String str = this.mxw + "VideoRequest";
+    AppMethodBeat.o(234817);
     return str;
   }
   
-  public final void tA(int paramInt)
+  public final long getTotalLength()
   {
     try
     {
-      this.lsY = paramInt;
-      return;
+      long l = this.kNt;
+      return l;
     }
     finally
     {
@@ -173,34 +159,33 @@ public final class n
     }
   }
   
-  public final void tB(int paramInt)
+  public final String toString()
   {
-    try
+    AppMethodBeat.i(234819);
+    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append("{seq=").append(this.mzr).append(",priority=").append(this.priority).append(",range=[").append(this.mzt).append(",").append(this.mzu).append("],uuid=").append(this.uuid).append(",contentType=").append(this.mzx).append(",cancelState=").append(this.mzo).append(",sourceUrl=").append(this.eby).append(",videoKey=").append(this.mzw).append(",task=");
+    if (this.mzk == null) {}
+    for (String str = "null";; str = this.mzk.toString())
     {
-      this.lsX += paramInt;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
+      str = str + "}";
+      AppMethodBeat.o(234819);
+      return str;
     }
   }
   
-  public final void tC(int paramInt)
+  public final void xA(int paramInt)
   {
-    if ((this.lsL & paramInt) == 0) {
-      this.lsL += paramInt;
+    if ((this.mzn & paramInt) == 0) {
+      this.mzn += paramInt;
     }
   }
   
-  public final boolean tD(int paramInt)
+  public final boolean xB(int paramInt)
   {
     for (;;)
     {
-      synchronized (this.lsO)
+      synchronized (this.mzq)
       {
-        if (this.lsM == paramInt)
+        if (this.mzo == paramInt)
         {
           bool = true;
           return bool;
@@ -210,22 +195,37 @@ public final class n
     }
   }
   
-  public final String toString()
+  public final void xy(int paramInt)
   {
-    AppMethodBeat.i(211150);
-    StringBuilder localStringBuilder = new StringBuilder().append(super.toString()).append("{seq=").append(this.lsP).append(",priority=").append(this.priority).append(",range=[").append(this.lsR).append(",").append(this.lsS).append("],uuid=").append(this.uuid).append(",contentType=").append(this.lsV).append(",cancelState=").append(this.lsM).append(",sourceUrl=").append(this.dJL).append(",videoKey=").append(this.lsU).append(",task=");
-    if (this.lsH == null) {}
-    for (String str = "null";; str = this.lsH.toString())
+    try
     {
-      str = str + "}";
-      AppMethodBeat.o(211150);
-      return str;
+      this.mzA = paramInt;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void xz(int paramInt)
+  {
+    try
+    {
+      this.mzz += paramInt;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.c.n
  * JD-Core Version:    0.7.0.1
  */

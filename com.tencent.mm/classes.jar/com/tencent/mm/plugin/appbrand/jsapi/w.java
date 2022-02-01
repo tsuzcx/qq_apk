@@ -1,15 +1,14 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import d.l;
-
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnVideoOrientationChangedFactory;", "", "createAppBrandOnVideoOrientationChanged", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandOnVideoOrientationChanged;", "luggage-wxa-app_release"})
-public abstract interface w
+public final class w
+  extends s
 {
-  public abstract u Gn();
+  private static final int CTRL_INDEX = 248;
+  private static final String NAME = "onUserCaptureScreen";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.w
  * JD-Core Version:    0.7.0.1
  */

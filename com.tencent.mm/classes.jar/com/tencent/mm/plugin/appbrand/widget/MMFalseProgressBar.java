@@ -6,21 +6,21 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 
 public class MMFalseProgressBar
   extends ProgressBar
 {
-  private aq mHandler;
+  private MMHandler mHandler;
   private boolean mIsStart;
   private float mProgress;
-  private float mYo;
-  private float mYp;
-  private float mYq;
-  private float mYr;
-  private boolean mYs;
+  private float olt;
+  private float olu;
+  private float olv;
+  private float olw;
+  private boolean olx;
   
   public MMFalseProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -33,8 +33,8 @@ public class MMFalseProgressBar
     AppMethodBeat.i(135398);
     this.mIsStart = false;
     this.mProgress = 0.0F;
-    this.mYs = true;
-    this.mHandler = new aq(Looper.getMainLooper())
+    this.olx = true;
+    this.mHandler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -60,25 +60,25 @@ public class MMFalseProgressBar
       }
     };
     setMax(1000);
-    if (az.jd(ak.getContext()))
+    if (NetStatusUtil.isWifiOr4G(MMApplicationContext.getContext()))
     {
-      this.mYo = 4.0F;
-      this.mYp = 1.0F;
-      this.mYq = 0.3F;
-      this.mYr = 50.0F;
+      this.olt = 4.0F;
+      this.olu = 1.0F;
+      this.olv = 0.3F;
+      this.olw = 50.0F;
       AppMethodBeat.o(135398);
       return;
     }
-    this.mYo = 2.0F;
-    this.mYp = 0.5F;
-    this.mYq = 0.15F;
-    this.mYr = 50.0F;
+    this.olt = 2.0F;
+    this.olu = 0.5F;
+    this.olv = 0.15F;
+    this.olw = 50.0F;
     AppMethodBeat.o(135398);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.MMFalseProgressBar
  * JD-Core Version:    0.7.0.1
  */

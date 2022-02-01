@@ -3,16 +3,17 @@ package com.tencent.mm.plugin.game.luggage;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.type.IPCString;
-import com.tencent.mm.plugin.game.luggage.c.a.c;
-import com.tencent.mm.plugin.game.luggage.c.a.e;
-import com.tencent.mm.plugin.game.luggage.c.a.f;
-import com.tencent.mm.plugin.game.luggage.c.a.g;
-import com.tencent.mm.plugin.game.luggage.c.a.i;
-import com.tencent.mm.plugin.game.luggage.c.a.j;
-import com.tencent.mm.plugin.game.luggage.c.a.k;
-import com.tencent.mm.plugin.game.luggage.c.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.game.luggage.d.a.c;
+import com.tencent.mm.plugin.game.luggage.d.a.e;
+import com.tencent.mm.plugin.game.luggage.d.a.f;
+import com.tencent.mm.plugin.game.luggage.d.a.g;
+import com.tencent.mm.plugin.game.luggage.d.a.i;
+import com.tencent.mm.plugin.game.luggage.d.a.j;
+import com.tencent.mm.plugin.game.luggage.d.a.k;
+import com.tencent.mm.plugin.game.luggage.d.a.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -20,57 +21,57 @@ import org.json.JSONArray;
 public final class d
   implements com.tencent.mm.plugin.game.luggage.a.a
 {
-  private static void amp(String paramString)
+  private static void azB(String paramString)
   {
     AppMethodBeat.i(82990);
-    ae.i("MicroMsg.LuggageGameService", "clearGameCache key:%s", new Object[] { paramString });
+    Log.i("MicroMsg.LuggageGameService", "clearGameCache key:%s", new Object[] { paramString });
     JSONArray localJSONArray = new JSONArray();
     localJSONArray.put(paramString);
-    com.tencent.mm.plugin.webview.b.b.eRE().b("wx62d9035fd4fd2059", localJSONArray);
+    com.tencent.mm.plugin.webview.b.b.gam().b("wx62d9035fd4fd2059", localJSONArray);
     AppMethodBeat.o(82990);
   }
   
-  public final String amn(String paramString)
-  {
-    AppMethodBeat.i(82988);
-    com.tencent.mm.plugin.webview.b.b.eRE();
-    paramString = com.tencent.mm.plugin.webview.b.b.aHS(paramString);
-    AppMethodBeat.o(82988);
-    return paramString;
-  }
-  
-  public final boolean amo(String paramString)
+  public final boolean azA(String paramString)
   {
     AppMethodBeat.i(82989);
-    if (ak.coh()) {
-      amp(paramString);
+    if (MMApplicationContext.isMainProcess()) {
+      azB(paramString);
     }
     for (;;)
     {
       AppMethodBeat.o(82989);
       return false;
-      com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", new IPCString(paramString), a.class, null);
+      com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, new IPCString(paramString), a.class, null);
     }
   }
   
-  public final Map<String, Class> cZI()
+  public final String azz(String paramString)
   {
-    AppMethodBeat.i(192972);
+    AppMethodBeat.i(82988);
+    com.tencent.mm.plugin.webview.b.b.gam();
+    paramString = com.tencent.mm.plugin.webview.b.b.aXS(paramString);
+    AppMethodBeat.o(82988);
+    return paramString;
+  }
+  
+  public final Map<String, Class> dTm()
+  {
+    AppMethodBeat.i(186826);
     HashMap localHashMap = new HashMap();
-    localHashMap.put("addDownloadTaskStraight", com.tencent.mm.plugin.game.luggage.c.a.a.class);
-    localHashMap.put("bookDownloadGame", com.tencent.mm.plugin.game.luggage.c.a.b.class);
+    localHashMap.put("addDownloadTaskStraight", com.tencent.mm.plugin.game.luggage.d.a.a.class);
+    localHashMap.put("bookDownloadGame", com.tencent.mm.plugin.game.luggage.d.a.b.class);
     localHashMap.put("cancelDownloadTask", c.class);
-    localHashMap.put("getDownloadWidgetTaskInfos", com.tencent.mm.plugin.game.luggage.c.a.d.class);
+    localHashMap.put("getDownloadWidgetTaskInfos", com.tencent.mm.plugin.game.luggage.d.a.d.class);
     localHashMap.put("getInstallState", e.class);
     localHashMap.put("installDownloadTask", f.class);
     localHashMap.put("jumpDownloaderWidget", g.class);
-    localHashMap.put("launchMiniProgram", com.tencent.mm.plugin.game.luggage.c.a.h.class);
+    localHashMap.put("launchApplication", com.tencent.mm.plugin.game.luggage.d.a.h.class);
     localHashMap.put("pauseDownloadTask", i.class);
     localHashMap.put("queryDownloadTask", j.class);
     localHashMap.put("resumeDownloadTask", k.class);
     localHashMap.put("startGameWebview", l.class);
     localHashMap.put("startGameWebView", l.class);
-    AppMethodBeat.o(192972);
+    AppMethodBeat.o(186826);
     return localHashMap;
   }
   

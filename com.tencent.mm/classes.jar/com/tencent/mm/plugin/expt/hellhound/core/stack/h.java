@@ -2,24 +2,24 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dol;
+import com.tencent.mm.protocal.protobuf.eih;
 
 public final class h
 {
-  public static boolean a(dol paramdol1, dol paramdol2)
+  public static boolean a(eih parameih1, eih parameih2)
   {
     AppMethodBeat.i(121912);
-    if ((paramdol1 == null) || (paramdol2 == null))
+    if ((parameih1 == null) || (parameih2 == null))
     {
       AppMethodBeat.o(121912);
       return false;
     }
-    if ((TextUtils.isEmpty(paramdol1.activityName)) || (TextUtils.isEmpty(paramdol2.activityName)))
+    if ((TextUtils.isEmpty(parameih1.activityName)) || (TextUtils.isEmpty(parameih2.activityName)))
     {
       AppMethodBeat.o(121912);
       return false;
     }
-    boolean bool = paramdol1.activityName.equals(paramdol2.activityName);
+    boolean bool = parameih1.activityName.equals(parameih2.activityName);
     AppMethodBeat.o(121912);
     return bool;
   }

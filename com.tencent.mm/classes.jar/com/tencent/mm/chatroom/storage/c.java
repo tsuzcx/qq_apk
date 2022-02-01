@@ -2,9 +2,9 @@ package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.df;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.c.dl;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -12,100 +12,100 @@ import java.util.List;
 import java.util.Map;
 
 public final class c
-  extends df
+  extends dl
 {
-  protected static c.a info;
-  public List<Long> fOh;
+  protected static IAutoDBItem.MAutoDBInfo info;
+  public List<Long> gts;
   
   static
   {
     AppMethodBeat.i(182138);
-    c.a locala = new c.a();
-    locala.IBL = new Field[16];
-    locala.columns = new String[17];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[16];
+    localMAutoDBInfo.columns = new String[17];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "todoid";
-    locala.IBN.put("todoid", "TEXT");
+    localMAutoDBInfo.columns[0] = "todoid";
+    localMAutoDBInfo.colsMap.put("todoid", "TEXT");
     localStringBuilder.append(" todoid TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "roomname";
-    locala.IBN.put("roomname", "TEXT");
+    localMAutoDBInfo.columns[1] = "roomname";
+    localMAutoDBInfo.colsMap.put("roomname", "TEXT");
     localStringBuilder.append(" roomname TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "username";
-    locala.IBN.put("username", "TEXT");
+    localMAutoDBInfo.columns[2] = "username";
+    localMAutoDBInfo.colsMap.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "path";
-    locala.IBN.put("path", "TEXT");
+    localMAutoDBInfo.columns[3] = "path";
+    localMAutoDBInfo.colsMap.put("path", "TEXT");
     localStringBuilder.append(" path TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "createtime";
-    locala.IBN.put("createtime", "LONG");
+    localMAutoDBInfo.columns[4] = "createtime";
+    localMAutoDBInfo.colsMap.put("createtime", "LONG");
     localStringBuilder.append(" createtime LONG");
     localStringBuilder.append(", ");
-    locala.columns[5] = "updatetime";
-    locala.IBN.put("updatetime", "LONG");
+    localMAutoDBInfo.columns[5] = "updatetime";
+    localMAutoDBInfo.colsMap.put("updatetime", "LONG");
     localStringBuilder.append(" updatetime LONG");
     localStringBuilder.append(", ");
-    locala.columns[6] = "custominfo";
-    locala.IBN.put("custominfo", "TEXT default '' ");
+    localMAutoDBInfo.columns[6] = "custominfo";
+    localMAutoDBInfo.colsMap.put("custominfo", "TEXT default '' ");
     localStringBuilder.append(" custominfo TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[7] = "title";
-    locala.IBN.put("title", "TEXT default '' ");
+    localMAutoDBInfo.columns[7] = "title";
+    localMAutoDBInfo.colsMap.put("title", "TEXT default '' ");
     localStringBuilder.append(" title TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[8] = "creator";
-    locala.IBN.put("creator", "TEXT");
+    localMAutoDBInfo.columns[8] = "creator";
+    localMAutoDBInfo.colsMap.put("creator", "TEXT");
     localStringBuilder.append(" creator TEXT");
     localStringBuilder.append(", ");
-    locala.columns[9] = "related_msgids";
-    locala.IBN.put("related_msgids", "TEXT");
+    localMAutoDBInfo.columns[9] = "related_msgids";
+    localMAutoDBInfo.colsMap.put("related_msgids", "TEXT");
     localStringBuilder.append(" related_msgids TEXT");
     localStringBuilder.append(", ");
-    locala.columns[10] = "manager";
-    locala.IBN.put("manager", "TEXT");
+    localMAutoDBInfo.columns[10] = "manager";
+    localMAutoDBInfo.colsMap.put("manager", "TEXT");
     localStringBuilder.append(" manager TEXT");
     localStringBuilder.append(", ");
-    locala.columns[11] = "nreply";
-    locala.IBN.put("nreply", "INTEGER");
+    localMAutoDBInfo.columns[11] = "nreply";
+    localMAutoDBInfo.colsMap.put("nreply", "INTEGER");
     localStringBuilder.append(" nreply INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[12] = "state";
-    locala.IBN.put("state", "INTEGER");
+    localMAutoDBInfo.columns[12] = "state";
+    localMAutoDBInfo.colsMap.put("state", "INTEGER");
     localStringBuilder.append(" state INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[13] = "netSceneState";
-    locala.IBN.put("netSceneState", "INTEGER");
+    localMAutoDBInfo.columns[13] = "netSceneState";
+    localMAutoDBInfo.colsMap.put("netSceneState", "INTEGER");
     localStringBuilder.append(" netSceneState INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[14] = "shareKey";
-    locala.IBN.put("shareKey", "TEXT");
+    localMAutoDBInfo.columns[14] = "shareKey";
+    localMAutoDBInfo.colsMap.put("shareKey", "TEXT");
     localStringBuilder.append(" shareKey TEXT");
     localStringBuilder.append(", ");
-    locala.columns[15] = "shareName";
-    locala.IBN.put("shareName", "TEXT");
+    localMAutoDBInfo.columns[15] = "shareName";
+    localMAutoDBInfo.colsMap.put("shareName", "TEXT");
     localStringBuilder.append(" shareName TEXT");
-    locala.columns[16] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[16] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(182138);
   }
   
   public c()
   {
     AppMethodBeat.i(182132);
-    this.fOh = new ArrayList();
+    this.gts = new ArrayList();
     AppMethodBeat.o(182132);
   }
   
-  public final long Yx()
+  public final long amk()
   {
     AppMethodBeat.i(182135);
-    if (this.fOh.size() > 0)
+    if (this.gts.size() > 0)
     {
-      long l = ((Long)this.fOh.get(0)).longValue();
+      long l = ((Long)this.gts.get(0)).longValue();
       AppMethodBeat.o(182135);
       return l;
     }
@@ -113,10 +113,10 @@ public final class c
     return 0L;
   }
   
-  public final boolean Yy()
+  public final boolean aml()
   {
     AppMethodBeat.i(182136);
-    boolean bool = bu.lX("roomannouncement@app.origin", this.field_username);
+    boolean bool = Util.isEqual("roomannouncement@app.origin", this.field_username);
     AppMethodBeat.o(182136);
     return bool;
   }
@@ -125,8 +125,8 @@ public final class c
   {
     AppMethodBeat.i(182133);
     super.convertFrom(paramCursor);
-    this.fOh.clear();
-    if (!bu.isNullOrNil(this.field_related_msgids))
+    this.gts.clear();
+    if (!Util.isNullOrNil(this.field_related_msgids))
     {
       paramCursor = this.field_related_msgids.split(",");
       int j = paramCursor.length;
@@ -134,7 +134,7 @@ public final class c
       while (i < j)
       {
         String str = paramCursor[i];
-        this.fOh.add(Long.valueOf(Long.parseLong(str)));
+        this.gts.add(Long.valueOf(Long.parseLong(str)));
         i += 1;
       }
     }
@@ -145,7 +145,7 @@ public final class c
   {
     AppMethodBeat.i(182134);
     paramObject = (c)paramObject;
-    if ((bu.lX(paramObject.field_todoid, this.field_todoid)) && (bu.lX(paramObject.field_roomname, this.field_roomname)))
+    if ((Util.isEqual(paramObject.field_todoid, this.field_todoid)) && (Util.isEqual(paramObject.field_roomname, this.field_roomname)))
     {
       AppMethodBeat.o(182134);
       return true;
@@ -154,19 +154,19 @@ public final class c
     return false;
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
   
-  public final void qZ(long paramLong)
+  public final void yR(long paramLong)
   {
-    AppMethodBeat.i(217140);
-    if (!this.fOh.contains(Long.valueOf(paramLong)))
+    AppMethodBeat.i(194054);
+    if (!this.gts.contains(Long.valueOf(paramLong)))
     {
-      this.fOh.add(Long.valueOf(paramLong));
+      this.gts.add(Long.valueOf(paramLong));
       StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.fOh.iterator();
+      Iterator localIterator = this.gts.iterator();
       while (localIterator.hasNext()) {
         localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",");
       }
@@ -175,17 +175,17 @@ public final class c
       }
       this.field_related_msgids = localStringBuilder.toString();
     }
-    AppMethodBeat.o(217140);
+    AppMethodBeat.o(194054);
   }
   
-  public final boolean ra(long paramLong)
+  public final boolean yS(long paramLong)
   {
     AppMethodBeat.i(182137);
-    if (this.fOh.contains(Long.valueOf(paramLong)))
+    if (this.gts.contains(Long.valueOf(paramLong)))
     {
-      this.fOh.remove(Long.valueOf(paramLong));
+      this.gts.remove(Long.valueOf(paramLong));
       StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.fOh.iterator();
+      Iterator localIterator = this.gts.iterator();
       while (localIterator.hasNext()) {
         localStringBuilder.append(((Long)localIterator.next()).longValue()).append(",");
       }
@@ -194,7 +194,7 @@ public final class c
       }
       this.field_related_msgids = localStringBuilder.toString();
     }
-    if (this.fOh.size() == 0)
+    if (this.gts.size() == 0)
     {
       AppMethodBeat.o(182137);
       return true;
@@ -205,7 +205,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.c
  * JD-Core Version:    0.7.0.1
  */

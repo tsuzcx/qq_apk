@@ -2,58 +2,60 @@ package com.tencent.mm.plugin.appbrand.k;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.q;
 import com.tencent.mm.plugin.handoff.model.HandOffMG;
 import com.tencent.mm.plugin.handoff.model.HandOffMP;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/handoff/HandOffUtils;", "", "()V", "obtainHandOffModel", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "handOffType", "", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/handoff/HandOffUtils;", "", "()V", "obtainHandOffModel", "Lcom/tencent/mm/plugin/handoff/model/HandOffMP;", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntimeWC;", "handOffType", "", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a krS;
+  public static final a lvB;
   
   static
   {
     AppMethodBeat.i(175133);
-    krS = new a();
+    lvB = new a();
     AppMethodBeat.o(175133);
   }
   
-  public static final HandOffMP u(com.tencent.mm.plugin.appbrand.p paramp)
+  public static final HandOffMP y(q paramq)
   {
     AppMethodBeat.i(175132);
-    d.g.b.p.h(paramp, "$this$obtainHandOffModel");
-    paramp = paramp.aXx();
-    String str1 = bu.nullAsNil(paramp.iconUrl);
-    String str2 = bu.nullAsNil(paramp.dpI);
-    String str3 = bu.nullAsNil(paramp.appId);
-    String str4 = bu.nullAsNil(paramp.username);
-    String str5 = bu.nullAsNil(paramp.jFL);
-    d.g.b.p.g(paramp, "config");
-    if (paramp.Ee())
+    p.h(paramq, "$this$obtainHandOffModel");
+    paramq = paramq.bsC();
+    String str1 = Util.nullAsNil(paramq.iconUrl);
+    String str2 = Util.nullAsNil(paramq.brandName);
+    String str3 = Util.nullAsNil(paramq.appId);
+    String str4 = Util.nullAsNil(paramq.username);
+    String str5 = Util.nullAsNil(paramq.kHw);
+    p.g(paramq, "config");
+    if (paramq.NA())
     {
-      d.g.b.p.g(str1, "icon");
-      d.g.b.p.g(str2, "title");
-      d.g.b.p.g(str3, "appId");
-      d.g.b.p.g(str5, "entryPage");
-      d.g.b.p.g(str4, "appUserName");
-      paramp = (HandOffMP)new HandOffMG(str1, str2, str3, str5, str4);
+      p.g(str1, "icon");
+      p.g(str2, "title");
+      p.g(str3, "appId");
+      p.g(str5, "entryPage");
+      p.g(str4, "appUserName");
+      paramq = (HandOffMP)new HandOffMG(str1, str2, str3, str5, str4, 1, null, null, null, 448, null);
       AppMethodBeat.o(175132);
-      return paramp;
+      return paramq;
     }
-    d.g.b.p.g(str1, "icon");
-    d.g.b.p.g(str2, "title");
-    d.g.b.p.g(str3, "appId");
-    d.g.b.p.g(str5, "entryPage");
-    d.g.b.p.g(str4, "appUserName");
-    paramp = new HandOffMP(str1, str2, str3, str5, str4, 1);
+    p.g(str1, "icon");
+    p.g(str2, "title");
+    p.g(str3, "appId");
+    p.g(str5, "entryPage");
+    p.g(str4, "appUserName");
+    paramq = new HandOffMP(str1, str2, str3, str5, str4, 1, null, null, null, 448, null);
     AppMethodBeat.o(175132);
-    return paramp;
+    return paramq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.k.a
  * JD-Core Version:    0.7.0.1
  */

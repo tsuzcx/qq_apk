@@ -9,45 +9,45 @@ public final class aq
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(217979);
+    AppMethodBeat.i(198635);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).aZ(1, this.uin);
-      AppMethodBeat.o(217979);
+      ((g.a.a.c.a)paramVarArgs[0]).bb(1, this.uin);
+      AppMethodBeat.o(198635);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.p(1, this.uin);
-      AppMethodBeat.o(217979);
+      paramInt = g.a.a.b.b.a.r(1, this.uin);
+      AppMethodBeat.o(198635);
       return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
-      AppMethodBeat.o(217979);
+      AppMethodBeat.o(198635);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       aq localaq = (aq)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(217979);
+        AppMethodBeat.o(198635);
         return -1;
       }
-      localaq.uin = locala.OmT.zd();
-      AppMethodBeat.o(217979);
+      localaq.uin = locala.UbS.zl();
+      AppMethodBeat.o(198635);
       return 0;
     }
-    AppMethodBeat.o(217979);
+    AppMethodBeat.o(198635);
     return -1;
   }
 }

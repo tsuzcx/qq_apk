@@ -1,17 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="right" style="@style/gi"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/gb7" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" />
-        <ImageView android:id="@id/gb8" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:layout_marginLeft="@dimen/jn" />
-        <ImageView android:id="@id/gb9" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:layout_marginLeft="@dimen/jn" />
-        <ImageView android:id="@id/gb_" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:layout_marginLeft="@dimen/jn" />
-        <ImageView android:id="@id/gba" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:layout_marginLeft="@dimen/jn" />
+    <LinearLayout android:gravity="end|center" android:layout_gravity="end|center" android:orientation="horizontal" android:id="@id/auf" android:background="@drawable/oq" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gu">
+        <com.tencent.mm.ui.widget.MMTextView android:textColor="@color/jg" android:id="@id/eqr" android:layout_marginLeft="5.0dip" android:maxWidth="180.0dip" style="@style/h4" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/eqs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:src="@raw/icons_outlined_location" />
     </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/gbb" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:layout_marginTop="@dimen/hk" />
-        <ImageView android:id="@id/gbc" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="@dimen/hk" />
-        <ImageView android:id="@id/gbd" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="@dimen/hk" />
-        <ImageView android:id="@id/gbe" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="@dimen/hk" />
-    </LinearLayout>
+    <include layout="@layout/qr" />
 </LinearLayout>

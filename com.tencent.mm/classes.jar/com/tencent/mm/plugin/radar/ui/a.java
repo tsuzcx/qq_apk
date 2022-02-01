@@ -8,42 +8,42 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TableRow;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/ui/GridDataAdapter;", "", "mGridView", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "mContext", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;Landroid/content/Context;)V", "count", "", "getCount", "()I", "mColumn", "getMContext", "()Landroid/content/Context;", "getMGridView", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "fillDataToTable", "", "getChanged", "", "position", "getItem", "getView", "Landroid/view/View;", "convertView", "makeRow", "Landroid/widget/TableRow;", "notifyDataChanged", "Companion", "plugin-radar_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/ui/GridDataAdapter;", "", "mGridView", "Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "mContext", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;Landroid/content/Context;)V", "count", "", "getCount", "()I", "mColumn", "getMContext", "()Landroid/content/Context;", "getMGridView", "()Lcom/tencent/mm/plugin/radar/ui/RadarSpecialGridView;", "fillDataToTable", "", "getChanged", "", "position", "getItem", "getView", "Landroid/view/View;", "convertView", "makeRow", "Landroid/widget/TableRow;", "notifyDataChanged", "Companion", "plugin-radar_release"})
 public abstract class a
 {
+  public static final a Bzr = new a((byte)0);
   private static final String TAG = "MicroMsg.RadarGridView.GridDataAdapter";
-  public static final a.a xzq = new a.a((byte)0);
+  private int Bzp;
+  final RadarSpecialGridView Bzq;
   private final Context mContext;
-  private int xzo;
-  final RadarSpecialGridView xzp;
   
   public a(RadarSpecialGridView paramRadarSpecialGridView, Context paramContext)
   {
-    this.xzp = paramRadarSpecialGridView;
+    this.Bzq = paramRadarSpecialGridView;
     this.mContext = paramContext;
-    this.xzo = 3;
+    this.Bzp = 3;
   }
   
-  public abstract View am(View paramView, int paramInt);
+  public abstract View ao(View paramView, int paramInt);
   
-  public final void bDZ()
+  public final void cax()
   {
-    if (this.xzo == 0)
+    if (this.Bzp == 0)
     {
-      ae.e(TAG, "column is 0, pls check!");
+      Log.e(TAG, "column is 0, pls check!");
       return;
     }
     int k = getCount();
     final int i = 0;
     if (i < k)
     {
-      int j = i / this.xzo;
-      int m = this.xzp.getMTable().getChildCount();
+      int j = i / this.Bzp;
+      int m = this.Bzq.getMTable().getChildCount();
       Object localObject;
       label93:
       label117:
@@ -51,12 +51,12 @@ public abstract class a
       View localView2;
       if (m > j)
       {
-        localObject = this.xzp.getMTable().getChildAt(m - 1 - j);
+        localObject = this.Bzq.getMTable().getChildAt(m - 1 - j);
         if (localObject == null) {
-          throw new v("null cannot be cast to non-null type android.widget.TableRow");
+          throw new t("null cannot be cast to non-null type android.widget.TableRow");
         }
         localObject = (TableRow)localObject;
-        m = i % this.xzo;
+        m = i % this.Bzp;
         int n = ((TableRow)localObject).getChildCount();
         if (n > m) {
           break label237;
@@ -67,7 +67,7 @@ public abstract class a
         if (j == 0) {
           localView1 = ((TableRow)localObject).getChildAt(m);
         }
-        localView2 = am(localView1, i);
+        localView2 = ao(localView1, i);
         if (j == 0) {
           break label242;
         }
@@ -80,7 +80,7 @@ public abstract class a
         break;
         localObject = new TableRow(this.mContext);
         ((TableRow)localObject).setLayoutParams((ViewGroup.LayoutParams)new LinearLayout.LayoutParams(-1, -2));
-        this.xzp.getMTable().addView((View)localObject, 0);
+        this.Bzq.getMTable().addView((View)localObject, 0);
         break label93;
         label237:
         j = 0;
@@ -93,12 +93,15 @@ public abstract class a
         }
       }
     }
-    ae.v(TAG, "mTable rows count : " + this.xzp.getMTable().getChildCount());
+    Log.v(TAG, "mTable rows count : " + this.Bzq.getMTable().getChildCount());
   }
   
   public abstract int getCount();
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/ui/GridDataAdapter$Companion;", "", "()V", "TAG", "", "plugin-radar_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -108,9 +111,9 @@ public abstract class a
     {
       AppMethodBeat.i(138585);
       Object localObject = new b();
-      ((b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/radar/ui/GridDataAdapter$fillDataToTable$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-      localObject = this.xzr.xzp.getOnItemClickListener();
+      ((b)localObject).bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/radar/ui/GridDataAdapter$fillDataToTable$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+      localObject = this.Bzs.Bzq.getOnItemClickListener();
       if (localObject != null)
       {
         int i = i;

@@ -1,13 +1,28 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.ad;
+import android.content.Intent;
+import android.view.ContextMenu;
+import android.view.MenuItem;
+import com.tencent.mm.plugin.mmsight.SightCaptureResult;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.chatting.d.af;
 
 public abstract interface an
-  extends ad
+  extends af
 {
-  public abstract boolean aXJ(String paramString);
+  public abstract void Q(String paramString1, int paramInt, String paramString2);
   
-  public abstract void aoa(String paramString);
+  public abstract void T(int paramInt1, int paramInt2, String paramString);
+  
+  public abstract void a(ContextMenu paramContextMenu, int paramInt, ca paramca);
+  
+  public abstract void a(SightCaptureResult paramSightCaptureResult);
+  
+  public abstract boolean a(MenuItem paramMenuItem, ca paramca);
+  
+  public abstract boolean bU(ca paramca);
+  
+  public abstract boolean i(int paramInt1, int paramInt2, Intent paramIntent);
 }
 
 

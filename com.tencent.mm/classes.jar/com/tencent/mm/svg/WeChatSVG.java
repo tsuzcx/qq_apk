@@ -9,7 +9,7 @@ public class WeChatSVG
   static
   {
     AppMethodBeat.i(148690);
-    if (b.fyj())
+    if (b.gFX())
     {
       System.loadLibrary("wechatsvg");
       nativeInit();

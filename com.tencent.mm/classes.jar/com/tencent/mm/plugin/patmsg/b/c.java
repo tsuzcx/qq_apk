@@ -5,23 +5,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
+  public Pair<Long, Long> ARo;
+  public String ARq;
+  public boolean ARr;
   public long createTime;
   public int scene;
   public String talker;
-  public Pair<Long, Long> wVv;
-  public String wVx;
-  public boolean wVy;
   
   public c()
   {
-    AppMethodBeat.i(220351);
+    AppMethodBeat.i(206973);
     this.createTime = System.currentTimeMillis();
-    AppMethodBeat.o(220351);
+    AppMethodBeat.o(206973);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.patmsg.b.c
  * JD-Core Version:    0.7.0.1
  */

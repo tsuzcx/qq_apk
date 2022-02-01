@@ -1,41 +1,51 @@
 package com.tencent.mm.ui.chatting.d;
 
+import android.app.Activity;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.chatting.d.b.ai;
-import com.tencent.mm.ui.chatting.gallery.a.l.a;
-import java.util.HashMap;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.plugin.luckymoney.a.d;
+import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
 
-@com.tencent.mm.ui.chatting.d.a.a(fJv=ai.class)
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/component/ScanComponent;", "Lcom/tencent/mm/ui/chatting/component/AbstractChattingComponent;", "Lcom/tencent/mm/ui/chatting/component/api/IScanComponent;", "()V", "onChattingExitAnimEnd", "", "Companion", "app_release"})
-public final class as
+public class as
   extends a
-  implements ai
+  implements af
 {
-  public static final as.a Khs;
-  
-  static
+  public final void gIm()
   {
-    AppMethodBeat.i(188272);
-    Khs = new as.a((byte)0);
-    AppMethodBeat.o(188272);
+    AppMethodBeat.i(163320);
+    if (ab.IN(this.dom.getTalkerUserName()))
+    {
+      String str = this.dom.Pwc.getContext().getIntent().getStringExtra("key_red_packet_preview_url");
+      ((com.tencent.mm.plugin.wxpay.a.a)g.ah(com.tencent.mm.plugin.wxpay.a.a.class)).doRedPacketPreviewLoading(this.dom.Pwc.getContext(), str);
+      d.bFT();
+    }
+    AppMethodBeat.o(163320);
   }
   
-  public final void fAy()
+  public final void gIo()
   {
-    AppMethodBeat.i(188271);
-    super.fAy();
-    l.a locala = com.tencent.mm.ui.chatting.gallery.a.l.KqG;
-    ae.i("MicroMsg.ImageSearchPreviewManager", "alvinluo clearCache previewResult size: %d, msgIdToPHashCache size: %d", new Object[] { Integer.valueOf(com.tencent.mm.ui.chatting.gallery.a.l.fLi().size()), Integer.valueOf(com.tencent.mm.ui.chatting.gallery.a.l.fLj().size()) });
-    com.tencent.mm.ui.chatting.gallery.a.l.fLi().clear();
-    com.tencent.mm.ui.chatting.gallery.a.l.fLj().clear();
-    AppMethodBeat.o(188271);
+    AppMethodBeat.i(163322);
+    super.gIo();
+    d.xV(3);
+    d.resetSession();
+    AppMethodBeat.o(163322);
+  }
+  
+  public final void gOK()
+  {
+    AppMethodBeat.i(163321);
+    super.gOK();
+    ((com.tencent.mm.plugin.wxpay.a.a)g.ah(com.tencent.mm.plugin.wxpay.a.a.class)).onExitRedPacketPreviewChatting();
+    d.xV(3);
+    d.resetSession();
+    AppMethodBeat.o(163321);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.as
  * JD-Core Version:    0.7.0.1
  */

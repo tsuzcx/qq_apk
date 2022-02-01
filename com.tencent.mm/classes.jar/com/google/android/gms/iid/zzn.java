@@ -456,7 +456,7 @@ final class zzn
   private static File zzj(Context paramContext)
   {
     AppMethodBeat.i(2538);
-    File localFile = b.T(paramContext);
+    File localFile = b.U(paramContext);
     if ((localFile != null) && (localFile.isDirectory()))
     {
       AppMethodBeat.o(2538);
@@ -532,7 +532,7 @@ final class zzn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.gms.iid.zzn
  * JD-Core Version:    0.7.0.1
  */

@@ -14,30 +14,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.a.c;
 import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.ui.aa;
 
 public class DirectionSwitchFooter
   extends LinearLayout
   implements a
 {
-  private c DWD;
-  private TextView DXl;
-  private a.a DXo;
-  private View DXq;
-  private View DXr;
-  private View DXs;
-  private View DXt;
+  private c IIu;
+  private TextView IJc;
+  private a.a IJf;
+  private View IJh;
+  private View IJi;
+  private View IJj;
+  private View IJk;
   private Context context;
-  private ImageView mRP;
+  private ImageView oeS;
   
   public DirectionSwitchFooter(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(116744);
     c.a locala = new c.a();
-    locala.igk = true;
-    locala.igj = true;
-    this.DWD = locala.aJu();
+    locala.jbf = true;
+    locala.jbe = true;
+    this.IIu = locala.bdv();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116744);
@@ -48,9 +48,9 @@ public class DirectionSwitchFooter
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(116745);
     paramAttributeSet = new c.a();
-    paramAttributeSet.igk = true;
-    paramAttributeSet.igj = true;
-    this.DWD = paramAttributeSet.aJu();
+    paramAttributeSet.jbf = true;
+    paramAttributeSet.jbe = true;
+    this.IIu = paramAttributeSet.bdv();
     this.context = paramContext;
     init();
     AppMethodBeat.o(116745);
@@ -59,38 +59,38 @@ public class DirectionSwitchFooter
   private void init()
   {
     AppMethodBeat.i(116746);
-    ViewGroup localViewGroup = (ViewGroup)z.jV(this.context).inflate(2131496110, this);
-    this.DXl = ((TextView)localViewGroup.findViewById(2131300214));
-    this.mRP = ((ImageView)localViewGroup.findViewById(2131300201));
-    this.DXq = localViewGroup.findViewById(2131301380);
-    this.DXr = localViewGroup.findViewById(2131304172);
-    this.DXs = localViewGroup.findViewById(2131301381);
-    this.DXt = localViewGroup.findViewById(2131304173);
-    this.DXs.setOnClickListener(new View.OnClickListener()
+    ViewGroup localViewGroup = (ViewGroup)aa.jQ(this.context).inflate(2131497101, this);
+    this.IJc = ((TextView)localViewGroup.findViewById(2131301683));
+    this.oeS = ((ImageView)localViewGroup.findViewById(2131301668));
+    this.IJh = localViewGroup.findViewById(2131303134);
+    this.IJi = localViewGroup.findViewById(2131307076);
+    this.IJj = localViewGroup.findViewById(2131303135);
+    this.IJk = localViewGroup.findViewById(2131307079);
+    this.IJj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(116742);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/footer/DirectionSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/footer/DirectionSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (DirectionSwitchFooter.a(DirectionSwitchFooter.this) != null) {
-          DirectionSwitchFooter.a(DirectionSwitchFooter.this).eQN();
+          DirectionSwitchFooter.a(DirectionSwitchFooter.this).fZm();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/widget/view/footer/DirectionSwitchFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(116742);
       }
     });
-    this.DXt.setOnClickListener(new View.OnClickListener()
+    this.IJk.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(116743);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/footer/DirectionSwitchFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/websearch/widget/view/footer/DirectionSwitchFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (DirectionSwitchFooter.a(DirectionSwitchFooter.this) != null) {
-          DirectionSwitchFooter.a(DirectionSwitchFooter.this).eQM();
+          DirectionSwitchFooter.a(DirectionSwitchFooter.this).fZl();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/websearch/widget/view/footer/DirectionSwitchFooter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(116743);
@@ -102,32 +102,32 @@ public class DirectionSwitchFooter
   public void setCallback(a.a parama)
   {
     AppMethodBeat.i(116749);
-    this.DXo = parama;
+    this.IJf = parama;
     if (parama != null)
     {
       if (parama.getItemCount() == 1)
       {
-        this.DXs.setVisibility(8);
-        this.DXt.setVisibility(8);
+        this.IJj.setVisibility(8);
+        this.IJk.setVisibility(8);
       }
-      if (this.DXo != null)
+      if (this.IJf != null)
       {
-        if (!this.DXo.hasNext())
+        if (!this.IJf.hasNext())
         {
-          this.DXt.setEnabled(false);
-          this.DXr.setEnabled(false);
+          this.IJk.setEnabled(false);
+          this.IJi.setEnabled(false);
         }
-        while (!this.DXo.hasPrevious())
+        while (!this.IJf.hasPrevious())
         {
-          this.DXq.setEnabled(false);
-          this.DXs.setEnabled(false);
+          this.IJh.setEnabled(false);
+          this.IJj.setEnabled(false);
           AppMethodBeat.o(116749);
           return;
-          this.DXr.setEnabled(true);
-          this.DXt.setEnabled(true);
+          this.IJi.setEnabled(true);
+          this.IJk.setEnabled(true);
         }
-        this.DXs.setEnabled(true);
-        this.DXq.setEnabled(true);
+        this.IJj.setEnabled(true);
+        this.IJh.setEnabled(true);
       }
     }
     AppMethodBeat.o(116749);
@@ -138,25 +138,25 @@ public class DirectionSwitchFooter
     AppMethodBeat.i(116748);
     if (TextUtils.isEmpty(paramString))
     {
-      this.mRP.setVisibility(8);
+      this.oeS.setVisibility(8);
       AppMethodBeat.o(116748);
       return;
     }
-    this.mRP.setVisibility(0);
-    com.tencent.mm.av.a.a.aJh().a(paramString, this.mRP, this.DWD);
+    this.oeS.setVisibility(0);
+    com.tencent.mm.av.a.a.bdb().a(paramString, this.oeS, this.IIu);
     AppMethodBeat.o(116748);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(116747);
-    this.DXl.setText(paramString);
+    this.IJc.setText(paramString);
     AppMethodBeat.o(116747);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.view.footer.DirectionSwitchFooter
  * JD-Core Version:    0.7.0.1
  */

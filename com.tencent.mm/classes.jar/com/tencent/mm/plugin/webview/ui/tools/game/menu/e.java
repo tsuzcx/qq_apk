@@ -9,12 +9,15 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 public final class e
   extends android.support.v7.app.e
@@ -28,24 +31,11 @@ public final class e
   
   private e(Context paramContext, byte paramByte)
   {
-    super(paramContext, 2131820966);
+    super(paramContext, 2131820981);
     AppMethodBeat.i(80990);
-    gK();
+    gR();
     this.mContext = paramContext;
     AppMethodBeat.o(80990);
-  }
-  
-  private boolean aoA()
-  {
-    AppMethodBeat.i(80997);
-    DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
-    if (localDisplayMetrics.widthPixels > localDisplayMetrics.heightPixels)
-    {
-      AppMethodBeat.o(80997);
-      return true;
-    }
-    AppMethodBeat.o(80997);
-    return false;
   }
   
   private View b(int paramInt, View paramView, ViewGroup.LayoutParams paramLayoutParams)
@@ -54,17 +44,17 @@ public final class e
     Object localObject1 = getWindow();
     Object localObject2;
     View localView;
-    if (aoA())
+    if (isLandscape())
     {
       ((Window)localObject1).setGravity(5);
-      ((Window)localObject1).setWindowAnimations(2131821249);
+      ((Window)localObject1).setWindowAnimations(2131821287);
       ((Window)localObject1).getDecorView().setPadding(0, 0, 0, 0);
       localObject2 = ((Window)localObject1).getAttributes();
       ((WindowManager.LayoutParams)localObject2).width = -1;
       ((WindowManager.LayoutParams)localObject2).height = -1;
       ((Window)localObject1).setAttributes((WindowManager.LayoutParams)localObject2);
-      localObject2 = (ViewGroup)LayoutInflater.from(this.mContext).inflate(2131494348, null);
-      localView = ((ViewGroup)localObject2).findViewById(2131306045);
+      localObject2 = (ViewGroup)LayoutInflater.from(this.mContext).inflate(2131494913, null);
+      localView = ((ViewGroup)localObject2).findViewById(2131309368);
       localObject1 = paramView;
       if (paramInt != 0)
       {
@@ -73,10 +63,10 @@ public final class e
           localObject1 = getLayoutInflater().inflate(paramInt, (ViewGroup)localObject2, false);
         }
       }
-      if (!aoA()) {
+      if (!isLandscape()) {
         break label201;
       }
-      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131302250);
+      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131304632);
       label141:
       paramView.setVisibility(0);
       if (paramLayoutParams != null) {
@@ -86,23 +76,37 @@ public final class e
     }
     for (;;)
     {
-      if (eYg()) {
-        localView.setOnClickListener(new e.1(this));
+      if (ghl()) {
+        localView.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(80989);
+            b localb = new b();
+            localb.bm(paramAnonymousView);
+            a.b("com/tencent/mm/plugin/webview/ui/tools/game/menu/GameSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            if (e.this.isShowing()) {
+              e.this.cancel();
+            }
+            a.a(this, "com/tencent/mm/plugin/webview/ui/tools/game/menu/GameSheetDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(80989);
+          }
+        });
       }
       AppMethodBeat.o(80995);
       return localObject2;
       ((Window)localObject1).setGravity(80);
-      ((Window)localObject1).setWindowAnimations(2131820789);
+      ((Window)localObject1).setWindowAnimations(2131820792);
       break;
       label201:
-      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131302249);
+      paramView = (FrameLayout)((ViewGroup)localObject2).findViewById(2131304630);
       break label141;
       label215:
       paramView.addView((View)localObject1, paramLayoutParams);
     }
   }
   
-  private boolean eYg()
+  private boolean ghl()
   {
     AppMethodBeat.i(80996);
     if (Build.VERSION.SDK_INT < 11)
@@ -122,6 +126,19 @@ public final class e
       return false;
     }
     AppMethodBeat.o(80996);
+    return false;
+  }
+  
+  private boolean isLandscape()
+  {
+    AppMethodBeat.i(80997);
+    DisplayMetrics localDisplayMetrics = this.mContext.getResources().getDisplayMetrics();
+    if (localDisplayMetrics.widthPixels > localDisplayMetrics.heightPixels)
+    {
+      AppMethodBeat.o(80997);
+      return true;
+    }
+    AppMethodBeat.o(80997);
     return false;
   }
   
@@ -156,7 +173,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.game.menu.e
  * JD-Core Version:    0.7.0.1
  */

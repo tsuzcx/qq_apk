@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi.bio.face;
 
 import android.content.Intent;
-import com.tencent.luggage.h.e.c;
+import com.tencent.luggage.h.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
 import com.tencent.mm.plugin.appbrand.jsapi.nfc.c;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.facedetect.model.l;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
-  extends a<h>
+  extends com.tencent.mm.plugin.appbrand.jsapi.d<k>
 {
   public static final int CTRL_INDEX = 495;
   public static final String NAME = "faceVerifyForPay";

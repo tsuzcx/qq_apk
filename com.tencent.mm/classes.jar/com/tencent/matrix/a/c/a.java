@@ -1,139 +1,125 @@
 package com.tencent.matrix.a.c;
 
-import android.app.Application;
-import com.tencent.matrix.a.c.a.b.a;
-import com.tencent.matrix.a.c.a.c.b;
-import com.tencent.matrix.e.c;
-import java.util.Comparator;
-import java.util.Iterator;
-import java.util.LinkedList;
+import android.app.AlarmManager.OnAlarmListener;
+import android.app.PendingIntent;
+import com.tencent.matrix.g.c;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 public class a
-  extends com.tencent.matrix.e.b
 {
-  private boolean cBB = com.tencent.matrix.a.cBz.cBB;
-  public volatile boolean cDE = false;
-  public b cDF;
-  
-  public a(b paramb)
+  private static boolean cTW;
+  private static g.b cTX = new g.b()
   {
-    this.cDF = paramb;
-    paramb = paramb.cDN.iterator();
-    while (paramb.hasNext()) {
-      ((com.tencent.matrix.a.c.a.a)paramb.next()).a(this);
-    }
-  }
-  
-  public final <T extends com.tencent.matrix.a.c.a.a> T W(Class<T> paramClass)
-  {
-    Iterator localIterator = this.cDF.cDN.iterator();
-    while (localIterator.hasNext())
+    public final void b(Method paramAnonymousMethod, Object[] paramAnonymousArrayOfObject)
     {
-      com.tencent.matrix.a.c.a.a locala = (com.tencent.matrix.a.c.a.a)localIterator.next();
-      if (paramClass.isAssignableFrom(locala.getClass())) {
-        return locala;
-      }
+      c.v("Matrix.battery.AlarmHooker", "onServiceMethodInvoke: method name %s", new Object[] { paramAnonymousMethod.getName() });
+      a.a(paramAnonymousMethod, paramAnonymousArrayOfObject);
     }
-    return null;
+  };
+  private static g cTY = new g("alarm", "android.app.IAlarmManager", cTX);
+  private static List<b> cTZ = new ArrayList();
+  
+  /* Error */
+  public static void a(b paramb)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: getstatic 47	com/tencent/matrix/a/c/a:cTZ	Ljava/util/List;
+    //   6: aload_0
+    //   7: invokeinterface 56 2 0
+    //   12: istore_1
+    //   13: iload_1
+    //   14: ifeq +7 -> 21
+    //   17: ldc 2
+    //   19: monitorexit
+    //   20: return
+    //   21: getstatic 47	com/tencent/matrix/a/c/a:cTZ	Ljava/util/List;
+    //   24: aload_0
+    //   25: invokeinterface 59 2 0
+    //   30: pop
+    //   31: getstatic 61	com/tencent/matrix/a/c/a:cTW	Z
+    //   34: ifne -17 -> 17
+    //   37: getstatic 47	com/tencent/matrix/a/c/a:cTZ	Ljava/util/List;
+    //   40: invokeinterface 65 1 0
+    //   45: ifne -28 -> 17
+    //   48: ldc 67
+    //   50: ldc 69
+    //   52: iconst_1
+    //   53: anewarray 4	java/lang/Object
+    //   56: dup
+    //   57: iconst_0
+    //   58: getstatic 42	com/tencent/matrix/a/c/a:cTY	Lcom/tencent/matrix/a/c/g;
+    //   61: invokevirtual 72	com/tencent/matrix/a/c/g:doHook	()Z
+    //   64: invokestatic 78	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   67: aastore
+    //   68: invokestatic 84	com/tencent/matrix/g/c:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   71: iconst_1
+    //   72: putstatic 61	com/tencent/matrix/a/c/a:cTW	Z
+    //   75: goto -58 -> 17
+    //   78: astore_0
+    //   79: ldc 2
+    //   81: monitorexit
+    //   82: aload_0
+    //   83: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	84	0	paramb	b
+    //   12	2	1	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   3	13	78	finally
+    //   21	75	78	finally
   }
   
-  public String getTag()
+  public static void b(b paramb)
   {
-    return "BatteryMonitor";
-  }
-  
-  public void init(Application paramApplication, c paramc)
-  {
-    super.init(paramApplication, paramc);
-    if (this.cDF.cDM) {
-      com.tencent.matrix.a.cBz.b(this);
-    }
-  }
-  
-  public boolean isForeground()
-  {
-    return this.cBB;
-  }
-  
-  public void onForeground(boolean paramBoolean)
-  {
-    this.cBB = paramBoolean;
-    Iterator localIterator = this.cDF.cDN.iterator();
-    while (localIterator.hasNext()) {
-      ((com.tencent.matrix.a.c.a.a)localIterator.next()).bV(paramBoolean);
-    }
-  }
-  
-  public void start()
-  {
-    super.start();
-    if (!this.cDE)
+    try
     {
-      Iterator localIterator = this.cDF.cDN.iterator();
-      while (localIterator.hasNext()) {
-        ((com.tencent.matrix.a.c.a.a)localIterator.next()).Iq();
-      }
-      this.cDE = true;
-    }
-  }
-  
-  public void stop()
-  {
-    super.stop();
-    if (this.cDE)
-    {
-      this.cDE = false;
-      Iterator localIterator = this.cDF.cDN.iterator();
-      while (localIterator.hasNext()) {
-        ((com.tencent.matrix.a.c.a.a)localIterator.next()).Ir();
-      }
-    }
-  }
-  
-  public static final class a
-  {
-    public a.b cDF = new a.b();
-    
-    public final a X(Class<? extends com.tencent.matrix.a.c.a.a> paramClass)
-    {
-      try
+      cTZ.remove(paramb);
+      if ((cTW) && (cTZ.isEmpty()))
       {
-        this.cDF.cDN.add(paramClass.newInstance());
-        return this;
+        c.i("Matrix.battery.AlarmHooker", "checkUnHook unHookRet:%b", new Object[] { Boolean.valueOf(cTY.doUnHook()) });
+        cTW = false;
       }
-      catch (Exception paramClass) {}
-      return this;
+      return;
+    }
+    finally
+    {
+      paramb = finally;
+      throw paramb;
     }
   }
   
-  public static final class b
+  static final class a
   {
-    public a.c cDH = new b();
-    public long cDI;
-    public long cDJ;
-    public long cDK;
-    public boolean cDL = false;
-    public boolean cDM = false;
-    public LinkedList<com.tencent.matrix.a.c.a.a> cDN = new LinkedList();
+    PendingIntent cQB;
+    AlarmManager.OnAlarmListener cQt;
   }
   
-  public static abstract interface c
+  public static abstract interface b
   {
-    public abstract void In();
+    public abstract void a(int paramInt1, long paramLong1, long paramLong2, long paramLong3, int paramInt2, PendingIntent paramPendingIntent, AlarmManager.OnAlarmListener paramOnAlarmListener);
     
-    public abstract void Io();
-    
-    public abstract void a(b.a parama);
-    
-    public abstract void a(Thread paramThread, List<c.b> paramList);
-    
-    public abstract void e(String paramString1, String paramString2, int paramInt);
+    public abstract void a(PendingIntent paramPendingIntent, AlarmManager.OnAlarmListener paramOnAlarmListener);
+  }
+  
+  static final class c
+  {
+    PendingIntent cQB;
+    long cQq;
+    long cQr;
+    AlarmManager.OnAlarmListener cQt;
+    long cSw;
+    int flags;
+    int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.a.c.a
  * JD-Core Version:    0.7.0.1
  */

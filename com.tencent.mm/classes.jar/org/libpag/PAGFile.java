@@ -9,11 +9,10 @@ public class PAGFile
 {
   static
   {
-    AppMethodBeat.i(216893);
-    b.loadLibrary("libpag");
+    AppMethodBeat.i(236862);
+    b.loadLibrary("pag");
     nativeInit();
-    PAGFont.loadSystemFonts();
-    AppMethodBeat.o(216893);
+    AppMethodBeat.o(236862);
   }
   
   private PAGFile(long paramLong)
@@ -23,25 +22,25 @@ public class PAGFile
   
   public static PAGFile Load(AssetManager paramAssetManager, String paramString)
   {
-    AppMethodBeat.i(216891);
+    AppMethodBeat.i(236860);
     paramAssetManager = LoadFromAssets(paramAssetManager, paramString);
-    AppMethodBeat.o(216891);
+    AppMethodBeat.o(236860);
     return paramAssetManager;
   }
   
   public static PAGFile Load(String paramString)
   {
-    AppMethodBeat.i(216889);
+    AppMethodBeat.i(236858);
     paramString = LoadFromPath(paramString);
-    AppMethodBeat.o(216889);
+    AppMethodBeat.o(236858);
     return paramString;
   }
   
   public static PAGFile Load(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(216890);
+    AppMethodBeat.i(236859);
     paramArrayOfByte = LoadFromBytes(paramArrayOfByte, paramArrayOfByte.length);
-    AppMethodBeat.o(216890);
+    AppMethodBeat.o(236859);
     return paramArrayOfByte;
   }
   
@@ -73,15 +72,15 @@ public class PAGFile
   
   public void replaceImage(int paramInt, PAGImage paramPAGImage)
   {
-    AppMethodBeat.i(216892);
+    AppMethodBeat.i(236861);
     if (paramPAGImage == null)
     {
       nativeReplaceImage(paramInt, 0L);
-      AppMethodBeat.o(216892);
+      AppMethodBeat.o(236861);
       return;
     }
     nativeReplaceImage(paramInt, paramPAGImage.nativeContext);
-    AppMethodBeat.o(216892);
+    AppMethodBeat.o(236861);
   }
   
   public native void replaceText(int paramInt, PAGText paramPAGText);
@@ -96,7 +95,7 @@ public class PAGFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.libpag.PAGFile
  * JD-Core Version:    0.7.0.1
  */

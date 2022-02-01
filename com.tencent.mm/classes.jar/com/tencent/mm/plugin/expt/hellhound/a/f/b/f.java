@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.b;
 
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
 public final class f
 {
-  public static boolean aj(Activity paramActivity)
+  public static boolean af(Activity paramActivity)
   {
     AppMethodBeat.i(177389);
     if (paramActivity == null)
@@ -21,11 +21,11 @@ public final class f
       Object localObject = Class.forName("com.tencent.mm.plugin.appbrand.ui.AppBrandUI").getDeclaredField("mRuntimeContainer");
       ((Field)localObject).setAccessible(true);
       paramActivity = ((Field)localObject).get(paramActivity);
-      ae.d("HABBYGE-MALI.LazySessionId", "mRuntimeContainer: %s", new Object[] { paramActivity.getClass().getCanonicalName() });
+      Log.d("HABBYGE-MALI.LazySessionId", "mRuntimeContainer: %s", new Object[] { paramActivity.getClass().getCanonicalName() });
       localObject = Class.forName("com.tencent.mm.plugin.appbrand.AppBrandRuntimeContainer").getDeclaredMethod("getActiveRuntime", new Class[0]);
       ((Method)localObject).setAccessible(true);
       paramActivity = ((Method)localObject).invoke(paramActivity, new Object[0]);
-      ae.d("HABBYGE-MALI.LazySessionId", "appBrandRuntime: %s", new Object[] { paramActivity.getClass().getCanonicalName() });
+      Log.d("HABBYGE-MALI.LazySessionId", "appBrandRuntime: %s", new Object[] { paramActivity.getClass().getCanonicalName() });
       localObject = Class.forName("com.tencent.mm.plugin.appbrand.AppBrandRuntimeWCAccessible").getDeclaredMethod("isGame", new Class[] { Class.forName("com.tencent.mm.plugin.appbrand.AppBrandRuntime") });
       ((Method)localObject).setAccessible(true);
       boolean bool = ((Boolean)((Method)localObject).invoke(null, new Object[] { paramActivity })).booleanValue();
@@ -34,7 +34,7 @@ public final class f
     }
     catch (Exception paramActivity)
     {
-      ae.printErrStackTrace("HABBYGE-MALI.LazySessionId", paramActivity, "isAppBrandGame, crash: %s", new Object[] { paramActivity.getMessage() });
+      Log.printErrStackTrace("HABBYGE-MALI.LazySessionId", paramActivity, "isAppBrandGame, crash: %s", new Object[] { paramActivity.getMessage() });
       AppMethodBeat.o(177389);
     }
     return false;

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/ccp" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
-</LinearLayout>
+<com.tencent.mm.ui.widget.TouchMediaPreviewLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <android.support.v7.widget.RecyclerView android:id="@id/gka" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </android.support.design.widget.CoordinatorLayout>
+    <include android:id="@id/epl" layout="@layout/bm7" />
+    <FrameLayout android:id="@id/c3e" android:background="@color/BW_93" android:paddingTop="170.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/e5r" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="15.0dip" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d7s" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/Link" android:id="@id/c2o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d7t" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/c2n" android:layout_width="10.0dip" android:layout_height="@dimen/cc" android:layout_marginLeft="@dimen/bt" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/Link" />
+        </LinearLayout>
+    </FrameLayout>
+</com.tencent.mm.ui.widget.TouchMediaPreviewLayout>

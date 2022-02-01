@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/acj" android:background="@color/a25" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/a7o" />
-    <LinearLayout android:orientation="vertical" android:id="@id/aev" android:background="@drawable/jy" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:id="@id/ach" android:layout_height="@dimen/ho" style="@style/fs">
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/acl" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="5.0dip" />
-            <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/acn" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/km" android:id="@id/acm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" />
-            <CheckBox android:id="@id/ack" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" style="@style/lj" />
-        </LinearLayout>
-    </LinearLayout>
+    <FrameLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/t7" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="12.0dip" android:textColor="@color/uj" android:gravity="center" android:id="@id/a87" android:paddingLeft="@dimen/hs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ahy" android:maxLines="1" android:singleLine="true" android:includeFontPadding="false" />
+        <TextView android:textSize="12.0dip" android:textColor="@color/uj" android:gravity="center" android:id="@id/a88" android:paddingLeft="@dimen/hs" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ahz" android:includeFontPadding="false" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/a7w" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotListView android:orientation="horizontal" android:id="@id/a7u" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </FrameLayout>
 </LinearLayout>

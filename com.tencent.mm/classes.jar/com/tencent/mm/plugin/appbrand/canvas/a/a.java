@@ -5,27 +5,27 @@ import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.y.k;
+import com.tencent.mm.plugin.appbrand.ac.k;
 import java.io.Serializable;
 
 public final class a
   extends Paint
   implements Serializable
 {
-  public a jXm;
-  private float jXn;
-  private String jXo;
-  private int jXp;
-  private float jXq;
-  private int jXr;
+  public a laj;
+  private float lak;
+  private String lal;
+  private int lam;
+  private float lan;
+  private int lao;
   private int mColor;
   
   public a()
   {
     AppMethodBeat.i(145336);
-    this.jXm = a.jXs;
-    this.jXq = 3.4028235E+38F;
-    this.jXr = 2147483647;
+    this.laj = a.lap;
+    this.lan = 3.4028235E+38F;
+    this.lao = 2147483647;
     init();
     AppMethodBeat.o(145336);
   }
@@ -33,39 +33,39 @@ public final class a
   private void init()
   {
     AppMethodBeat.i(145337);
-    this.jXn = 0.0F;
+    this.lak = 0.0F;
     this.mColor = 0;
-    this.jXo = null;
-    this.jXp = 0;
-    if (this.jXq == 3.4028235E+38F)
+    this.lal = null;
+    this.lam = 0;
+    if (this.lan == 3.4028235E+38F)
     {
-      this.jXn = (getAlpha() / 255.0F);
-      this.jXq = this.jXn;
+      this.lak = (getAlpha() / 255.0F);
+      this.lan = this.lak;
     }
-    while (this.jXr == 2147483647)
+    while (this.lao == 2147483647)
     {
       this.mColor = getColor();
-      this.jXr = this.mColor;
+      this.lao = this.mColor;
       AppMethodBeat.o(145337);
       return;
-      this.jXn = this.jXq;
+      this.lak = this.lan;
     }
-    this.mColor = this.jXr;
+    this.mColor = this.lao;
     AppMethodBeat.o(145337);
   }
   
-  public final void Nx(String paramString)
+  public final void WF(String paramString)
   {
     AppMethodBeat.i(145345);
-    this.jXo = paramString;
-    setTypeface(Typeface.create(paramString, this.jXp));
+    this.lal = paramString;
+    setTypeface(Typeface.create(paramString, this.lam));
     AppMethodBeat.o(145345);
   }
   
-  public final void aw(float paramFloat)
+  public final void aG(float paramFloat)
   {
     AppMethodBeat.i(145341);
-    this.jXn = paramFloat;
+    this.lak = paramFloat;
     setColor(this.mColor);
     AppMethodBeat.o(145341);
   }
@@ -97,13 +97,13 @@ public final class a
       parama.setTextSize(getTextSize());
       parama.setTextAlign(getTextAlign());
       parama.setTypeface(getTypeface());
-      parama.jXm = this.jXm;
+      parama.laj = this.laj;
       AppMethodBeat.o(145340);
       return parama;
     }
   }
   
-  public final a bed()
+  public final a bzu()
   {
     AppMethodBeat.i(145339);
     a locala = new a();
@@ -131,7 +131,7 @@ public final class a
       locala.setTextSize(getTextSize());
       locala.setTextAlign(getTextAlign());
       locala.setTypeface(getTypeface());
-      locala.jXm = this.jXm;
+      locala.laj = this.laj;
       AppMethodBeat.o(145339);
       return locala;
     }
@@ -157,7 +157,7 @@ public final class a
   {
     AppMethodBeat.i(145343);
     super.reset();
-    this.jXm = a.jXs;
+    this.laj = a.lap;
     AppMethodBeat.o(145343);
   }
   
@@ -165,15 +165,15 @@ public final class a
   {
     AppMethodBeat.i(145342);
     this.mColor = paramInt;
-    super.setColor(((int)(Color.alpha(paramInt) * this.jXn) & 0xFF) << 24 | 0xFFFFFF & paramInt);
+    super.setColor(((int)(Color.alpha(paramInt) * this.lak) & 0xFF) << 24 | 0xFFFFFF & paramInt);
     AppMethodBeat.o(145342);
   }
   
-  public final void si(int paramInt)
+  public final void we(int paramInt)
   {
     AppMethodBeat.i(145346);
-    this.jXp = paramInt;
-    setTypeface(Typeface.create(this.jXo, paramInt));
+    this.lam = paramInt;
+    setTypeface(Typeface.create(this.lal, paramInt));
     AppMethodBeat.o(145346);
   }
   
@@ -182,11 +182,11 @@ public final class a
     static
     {
       AppMethodBeat.i(145335);
-      jXs = new a("NORMAL", 0);
-      jXt = new a("TOP", 1);
-      jXu = new a("BOTTOM", 2);
-      jXv = new a("MIDDLE", 3);
-      jXw = new a[] { jXs, jXt, jXu, jXv };
+      lap = new a("NORMAL", 0);
+      laq = new a("TOP", 1);
+      lar = new a("BOTTOM", 2);
+      las = new a("MIDDLE", 3);
+      lau = new a[] { lap, laq, lar, las };
       AppMethodBeat.o(145335);
     }
     
@@ -195,7 +195,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.a.a
  * JD-Core Version:    0.7.0.1
  */

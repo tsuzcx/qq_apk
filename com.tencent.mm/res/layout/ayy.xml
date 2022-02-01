@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/ha7" android:layout_width="fill_parent" android:layout_height="48.0dip" android:src="@drawable/cmc" android:layout_centerHorizontal="true" />
+    <LinearLayout android:id="@id/ft3" android:background="@drawable/aro" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="@dimen/hv" android:layout_marginBottom="@dimen/hw" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:padding="@dimen/ir" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@raw/my_qr_code" app:iconColor="@color/BW_100_Alpha_0_9" />
+    </LinearLayout>
+    <ImageView android:id="@id/d9t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/fnc" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/h_" android:textColor="#b3ffffff" android:id="@id/fnd" android:visibility="invisible" android:text="@string/gcx" android:singleLine="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/tw" />
+    <ImageView android:id="@id/hap" android:padding="@dimen/ir" android:visibility="gone" android:layout_width="@dimen/aia" android:layout_height="@dimen/aia" android:src="@raw/scan_success_mark_dot" />
+</merge>

@@ -6,10 +6,10 @@ import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.l.d;
 import com.tencent.mm.pluginsdk.l.d.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.be;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.PlaySound;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class KindaShakeCheckingManager
   implements IShakeCheckingManager
@@ -52,18 +52,18 @@ public class KindaShakeCheckingManager
     AppMethodBeat.i(18515);
     if (paramBoolean)
     {
-      be.aI(KindaContext.get(), 2131763587);
+      PlaySound.play(KindaContext.get(), 2131765775);
       AppMethodBeat.o(18515);
       return;
     }
-    be.aI(KindaContext.get(), 2131763595);
+    PlaySound.play(KindaContext.get(), 2131765783);
     AppMethodBeat.o(18515);
   }
   
   public void playShakeSound()
   {
     AppMethodBeat.i(18514);
-    be.aI(KindaContext.get(), 2131763618);
+    PlaySound.play(KindaContext.get(), 2131765806);
     AppMethodBeat.o(18514);
   }
   
@@ -90,8 +90,8 @@ public class KindaShakeCheckingManager
       public void onShake(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(18510);
-        ae.i("KindaShakeCheckingManager", "onShake");
-        long l = bu.aO(KindaShakeCheckingManager.this.lastShakeTime);
+        Log.i("KindaShakeCheckingManager", "onShake");
+        long l = Util.ticksToNow(KindaShakeCheckingManager.this.lastShakeTime);
         if (!KindaShakeCheckingManager.this.isStartShake)
         {
           if (l < 1200L) {
@@ -103,7 +103,7 @@ public class KindaShakeCheckingManager
           AppMethodBeat.o(18510);
           return;
         }
-        KindaShakeCheckingManager.access$202(KindaShakeCheckingManager.this, bu.HQ());
+        KindaShakeCheckingManager.access$202(KindaShakeCheckingManager.this, Util.currentTicks());
         KindaShakeCheckingManager.access$302(KindaShakeCheckingManager.this, true);
         if (!KindaShakeCheckingManager.this.isInvokeCallback)
         {
@@ -115,9 +115,9 @@ public class KindaShakeCheckingManager
         AppMethodBeat.o(18510);
       }
     });
-    this.lastShakeTime = bu.HQ();
-    ar.ay(this.delayNofiyRunnable);
-    ar.o(this.delayNofiyRunnable, this.delayNotifyMs);
+    this.lastShakeTime = Util.currentTicks();
+    MMHandlerThread.removeRunnable(this.delayNofiyRunnable);
+    MMHandlerThread.postToMainThreadDelayed(this.delayNofiyRunnable, this.delayNotifyMs);
     AppMethodBeat.o(18512);
   }
   
@@ -126,18 +126,18 @@ public class KindaShakeCheckingManager
     AppMethodBeat.i(18513);
     if (this.shakeSensor != null)
     {
-      this.shakeSensor.cdt();
+      this.shakeSensor.cBo();
       this.shakeSensor = null;
     }
     this.isInvokeCallback = false;
     this.isStartShake = false;
-    ar.ay(this.delayNofiyRunnable);
+    MMHandlerThread.removeRunnable(this.delayNofiyRunnable);
     AppMethodBeat.o(18513);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaShakeCheckingManager
  * JD-Core Version:    0.7.0.1
  */

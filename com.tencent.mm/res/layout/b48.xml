@@ -1,6 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:padding="10.0dip" style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:gravity="top" android:id="@id/b3b" android:background="@null" android:layout_width="fill_parent" android:layout_height="130.0dip" android:hint="@string/ef0" android:singleLine="false" style="@style/lp" />
-    <TextView android:id="@id/b9y" android:layout_marginTop="20.0dip" android:text="@string/f32" style="@style/o9" />
-</LinearLayout>
+<RelativeLayout android:layout_width="286.0dip" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/eo9" android:background="@drawable/afn" android:paddingLeft="12.0dip" android:paddingTop="12.0dip" android:paddingRight="12.0dip" android:layout_width="280.0dip" android:layout_height="496.0dip" android:layout_margin="3.0dip" android:minHeight="496.0dip">
+        <RelativeLayout android:id="@id/eoi" android:background="@drawable/af4" android:layout_width="256.0dip" android:layout_height="424.0dip">
+            <ImageView android:id="@id/eod" android:layout_width="256.0dip" android:layout_height="424.0dip" android:scaleType="fitXY" android:adjustViewBounds="true" />
+            <ImageView android:id="@id/eoj" android:layout_width="256.0dip" android:layout_height="355.0dip" android:src="@drawable/cci" />
+            <Button android:enabled="false" android:textSize="26.0dip" android:textColor="@color/ac" android:id="@id/eoh" android:background="@drawable/ccg" android:focusable="false" android:focusableInTouchMode="false" android:visibility="visible" android:layout_width="88.0dip" android:layout_height="88.0dip" android:layout_marginTop="-63.0dip" android:text="" android:layout_below="@id/eoj" android:layout_centerInParent="true" />
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/eok" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+                <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="68.0dip">
+                    <ImageView android:id="@id/eo8" android:layout_width="19.0dip" android:layout_height="19.0dip" android:transitionName="shared_avatar" />
+                    <TextView android:textSize="15.0dip" android:textColor="@color/yn" android:ellipsize="end" android:id="@id/eon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="" android:singleLine="true" android:includeFontPadding="false" />
+                </LinearLayout>
+                <TextView android:textSize="19.0dip" android:textColor="@color/yn" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/eor" android:paddingLeft="18.0dip" android:paddingRight="18.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:text="@string/eof" android:maxLines="2" android:singleLine="false" />
+                <ProgressBar android:id="@id/eol" android:visibility="gone" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginTop="40.0dip" style="@style/a5t" />
+            </LinearLayout>
+            <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/eop" android:background="@drawable/afy" android:paddingLeft="@dimen/ct" android:paddingTop="6.0dip" android:paddingRight="@dimen/ct" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ep2" android:maxLines="2" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/eof" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="17.0dip" android:textColor="@color/fq" android:layout_gravity="center_horizontal" android:id="@id/eog" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:textSize="@dimen/eo" android:textColor="@color/u_" android:layout_gravity="center_horizontal" android:id="@id/eoe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="" android:layout_below="@id/eo9" android:layout_centerHorizontal="true" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/eoq" android:background="@drawable/afo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="496.0dip" android:layout_alignLeft="@id/eo9" android:layout_alignTop="@id/eo9" android:layout_alignRight="@id/eo9" android:layout_alignBottom="@id/eo9" android:alpha="0.5">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="166.0dip">
+            <ImageView android:layout_gravity="center" android:id="@id/eom" android:layout_width="27.0dip" android:layout_height="27.0dip" android:src="@raw/pick_envelope_refresh" />
+            <ProgressBar android:layout_gravity="center" android:id="@id/eo7" android:layout_width="27.0dip" android:layout_height="27.0dip" style="@style/a61" />
+        </FrameLayout>
+        <TextView android:textSize="@dimen/a_" android:textColor="@color/u_" android:id="@id/eoo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:text="@string/er9" />
+    </LinearLayout>
+</RelativeLayout>

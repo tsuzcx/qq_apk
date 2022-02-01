@@ -9,7 +9,7 @@ import com.tencent.xweb.internal.e;
 
 public class ac
 {
-  public e MMT;
+  public e SzO;
   
   public WebResourceResponse a(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
@@ -29,9 +29,9 @@ public class ac
   
   public void a(WebView paramWebView, j paramj, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(217399);
+    AppMethodBeat.i(219053);
     paramj.cancel();
-    AppMethodBeat.o(217399);
+    AppMethodBeat.o(219053);
   }
   
   public void a(WebView paramWebView, r paramr, SslError paramSslError)
@@ -53,12 +53,12 @@ public class ac
   public void b(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(156919);
-    if (this.MMT == null)
+    if (this.SzO == null)
     {
       AppMethodBeat.o(156919);
       return;
     }
-    this.MMT.y(paramString, paramBitmap);
+    this.SzO.y(paramString, paramBitmap);
     AppMethodBeat.o(156919);
   }
   
@@ -74,7 +74,9 @@ public class ac
     return null;
   }
   
-  public boolean d(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
+  public void e(WebView paramWebView, String paramString) {}
+  
+  public boolean e(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
     AppMethodBeat.i(156920);
     if ((paramWebResourceRequest == null) || (paramWebResourceRequest.getUrl() == null))
@@ -86,8 +88,6 @@ public class ac
     AppMethodBeat.o(156920);
     return bool;
   }
-  
-  public void e(WebView paramWebView, String paramString) {}
   
   public void h(WebView paramWebView, String paramString) {}
 }

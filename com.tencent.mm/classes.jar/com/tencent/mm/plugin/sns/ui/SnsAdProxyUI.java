@@ -4,11 +4,21 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.co;
-import com.tencent.mm.g.a.vq;
+import com.tencent.mm.api.n;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.a.cr;
+import com.tencent.mm.g.a.wq;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.protobuf.drr;
+import com.tencent.mm.protocal.protobuf.drt;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.h;
+import java.util.LinkedList;
 
 public class SnsAdProxyUI
   extends HellActivity
@@ -17,48 +27,87 @@ public class SnsAdProxyUI
   {
     AppMethodBeat.i(98450);
     super.onCreate(paramBundle);
-    Object localObject = getIntent();
-    if (localObject == null)
+    paramBundle = getIntent();
+    if (paramBundle == null)
     {
-      ae.e("MicroMsg.SnsAdBlankUI", "intent null!");
+      Log.e("MicroMsg.SnsAdBlankUI", "intent null!");
       finish();
       AppMethodBeat.o(98450);
       return;
     }
-    int i = ((Intent)localObject).getIntExtra("action_type", -1);
-    ae.i("MicroMsg.SnsAdBlankUI", "action=".concat(String.valueOf(i)));
+    int i = paramBundle.getIntExtra("action_type", -1);
+    Log.i("MicroMsg.SnsAdBlankUI", "action=".concat(String.valueOf(i)));
     if (i < 0)
     {
       finish();
       AppMethodBeat.o(98450);
       return;
     }
+    Object localObject;
     if (i == 1)
     {
-      paramBundle = new co();
-      paramBundle.dou.activity = this;
-      paramBundle.dou.dmI = ((Intent)localObject).getStringExtra("qrcodeStr");
-      paramBundle.dou.dov = ((Intent)localObject).getIntExtra("qrcodeType", 0);
-      paramBundle.dou.dow = ((Intent)localObject).getIntExtra("qrcodeVer", 0);
-      a.IvT.l(paramBundle);
+      localObject = new cr();
+      ((cr)localObject).dFK.activity = this;
+      ((cr)localObject).dFK.dDX = paramBundle.getStringExtra("qrcodeStr");
+      ((cr)localObject).dFK.dFL = paramBundle.getIntExtra("qrcodeType", 0);
+      ((cr)localObject).dFK.dFM = paramBundle.getIntExtra("qrcodeVer", 0);
+      EventCenter.instance.publish((IEvent)localObject);
     }
     for (;;)
     {
       finish();
       AppMethodBeat.o(98450);
       return;
+      String str;
       if (i == 2)
       {
-        paramBundle = ((Intent)localObject).getStringExtra("username");
-        String str = ((Intent)localObject).getStringExtra("url");
-        localObject = ((Intent)localObject).getStringExtra("sceneNote");
-        vq localvq = new vq();
-        localvq.dKT.userName = paramBundle;
-        localvq.dKT.dKV = str;
-        localvq.dKT.scene = 1084;
-        localvq.dKT.dlj = ((String)localObject);
-        localvq.dKT.context = this;
-        a.IvT.l(localvq);
+        localObject = paramBundle.getStringExtra("username");
+        str = paramBundle.getStringExtra("url");
+        paramBundle = paramBundle.getStringExtra("sceneNote");
+        wq localwq = new wq();
+        localwq.ecI.userName = ((String)localObject);
+        localwq.ecI.ecK = str;
+        localwq.ecI.scene = 1084;
+        localwq.ecI.dCw = paramBundle;
+        localwq.ecI.context = this;
+        EventCenter.instance.publish(localwq);
+      }
+      else if (i == 3)
+      {
+        localObject = paramBundle.getByteArrayExtra("searchContactResponseByte");
+        str = Util.nullAsNil(paramBundle.getStringExtra("searchWord"));
+        try
+        {
+          paramBundle = new drt();
+          paramBundle.parseFrom((byte[])localObject);
+          Log.i("MicroMsg.SnsAdBlankUI", "doOpenProfile, query=" + str + ", count=" + paramBundle.LUB);
+          if (paramBundle.LUB <= 0) {
+            break label424;
+          }
+          if (!paramBundle.LUC.isEmpty()) {
+            break label377;
+          }
+          h.a(this, 2131765057, 0, true, null);
+        }
+        catch (Throwable paramBundle)
+        {
+          Log.e("MicroMsg.SnsAdBlankUI", "parse GetWXUserNameResp exp=" + paramBundle.toString());
+        }
+        continue;
+        label377:
+        localObject = new Intent();
+        ((n)g.af(n.class)).a((Intent)localObject, (drr)paramBundle.LUC.getFirst(), 182);
+        c.b(this, "profile", ".ui.ContactInfoUI", (Intent)localObject);
+        continue;
+        label424:
+        if (Util.nullAsNil(z.a(paramBundle.Lqk)).length() > 0)
+        {
+          localObject = new Intent();
+          ((n)g.af(n.class)).a((Intent)localObject, paramBundle, 182);
+          ((Intent)localObject).putExtra("Contact_Scene", 182);
+          ((Intent)localObject).putExtra("add_more_friend_search_scene", 2);
+          c.b(this, "profile", ".ui.ContactInfoUI", (Intent)localObject);
+        }
       }
     }
   }
@@ -71,7 +120,7 @@ public class SnsAdProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsAdProxyUI
  * JD-Core Version:    0.7.0.1
  */

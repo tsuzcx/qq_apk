@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:id="@id/cxo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/cxr" android:background="@color/ad" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/d3n" android:layout_width="0.0dip" android:layout_height="fill_parent" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toLeftOf="@id/d3o" />
+    <com.tencent.mm.plugin.finder.live.widget.FinderLiveShoppingPanel android:orientation="vertical" android:id="@id/d3o" android:background="@color/am" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintRight_toRightOf="g8m">
+        <RelativeLayout android:layout_gravity="center_vertical" android:id="@id/cxq" android:layout_width="fill_parent" android:layout_height="@dimen/cr" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cxg" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_close" android:layout_centerVertical="true" android:layout_alignParentStart="true" app:iconColor="@color/ae" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/BW_0" android:id="@id/cxp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cz7" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="15.0dip" android:textColor="@color/BW_0" android:id="@id/cxm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cz9" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <android.support.v4.widget.NestedScrollView android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:layout_below="@id/cxq">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ProgressBar android:id="@id/cxl" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c4" android:layout_centerHorizontal="true" style="@style/a62" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/ad" android:id="@id/cxn" android:paddingTop="@dimen/bt" android:paddingBottom="@dimen/bt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c4" android:text="@string/eh1" android:layout_centerHorizontal="true" />
+                <FrameLayout android:id="@id/cxj" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <TextView android:textSize="15.0dip" android:textColor="@color/ad" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/cxk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bz" android:text="@string/cz8" />
+                    <TextView android:textSize="@dimen/is" android:textColor="@color/am" android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/cxi" android:background="@drawable/a01" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/ct" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ct" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:layout_marginBottom="@dimen/bx" android:text="@string/cz5" />
+                </FrameLayout>
+                <android.support.v7.widget.RecyclerView android:id="@id/cxh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
+                <include android:id="@id/cxf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/cxh" layout="@layout/b21" />
+            </RelativeLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </com.tencent.mm.plugin.finder.live.widget.FinderLiveShoppingPanel>
+</android.support.constraint.ConstraintLayout>

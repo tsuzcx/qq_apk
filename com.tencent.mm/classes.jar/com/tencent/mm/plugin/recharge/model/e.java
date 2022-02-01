@@ -1,57 +1,59 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bgi;
-import com.tencent.mm.protocal.protobuf.bgj;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bse;
+import com.tencent.mm.protocal.protobuf.bsf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class e
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public String jFZ;
-  private com.tencent.mm.ak.b rr;
-  public ArrayList<MallRechargeProduct> xDl;
-  public String xDm;
-  public String xDn;
-  public String xDo;
-  public String xDp;
+  public ArrayList<MallRechargeProduct> BDk;
+  public String BDl;
+  public String BDm;
+  public String BDn;
+  public String BDo;
+  private i callback;
+  public String kHR;
+  private d rr;
   
   public e(String paramString)
   {
     AppMethodBeat.i(67107);
-    this.xDl = null;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bgi();
-    ((b.a)localObject).hQG = new bgj();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getpayfunctionproductlist";
-    ((b.a)localObject).funcId = 496;
-    ((b.a)localObject).hQH = 228;
-    ((b.a)localObject).respCmdId = 1000000228;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bgi)this.rr.hQD.hQJ;
-    this.jFZ = paramString;
-    ((bgi)localObject).GKy = paramString;
+    this.BDk = null;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bse();
+    ((d.a)localObject).iLO = new bsf();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getpayfunctionproductlist";
+    ((d.a)localObject).funcId = 496;
+    ((d.a)localObject).iLP = 228;
+    ((d.a)localObject).respCmdId = 1000000228;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (bse)this.rr.iLK.iLR;
+    this.kHR = paramString;
+    ((bse)localObject).LOs = paramString;
     AppMethodBeat.o(67107);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(67109);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(67109);
     return i;
   }
@@ -61,43 +63,43 @@ public final class e
     return 496;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(67108);
-    ae.d("MicroMsg.NetSceneGetPayFunctionProductList", "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
+    Log.d("MicroMsg.NetSceneGetPayFunctionProductList", "errType " + paramInt2 + ", errCode " + paramInt3 + ", errMsg " + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bgj)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
-      paramArrayOfByte = paramq.GSS;
-      ae.d("MicroMsg.NetSceneGetPayFunctionProductList", "resp.ProductList ".concat(String.valueOf(paramArrayOfByte)));
-      if (bu.isNullOrNil(paramArrayOfByte)) {}
+      params = (bsf)((d)params).iLL.iLR;
+      paramArrayOfByte = params.LXe;
+      Log.d("MicroMsg.NetSceneGetPayFunctionProductList", "resp.ProductList ".concat(String.valueOf(paramArrayOfByte)));
+      if (Util.isNullOrNil(paramArrayOfByte)) {}
     }
     try
     {
       paramArrayOfByte = new JSONObject(paramArrayOfByte);
-      this.xDl = b.a(this.jFZ, paramArrayOfByte.getJSONArray("pay_product_list"));
-      if (bu.isNullOrNil(paramq.GUU)) {}
+      this.BDk = b.a(this.kHR, paramArrayOfByte.getJSONArray("pay_product_list"));
+      if (Util.isNullOrNil(params.LZm)) {}
     }
     catch (JSONException paramArrayOfByte)
     {
       try
       {
-        paramq = new JSONObject(paramq.GUU);
-        this.xDm = paramq.optString("balance_link");
-        this.xDo = paramq.optString("recharge_link");
-        this.xDn = paramq.optString("balance_wording");
-        this.xDp = paramq.optString("recharge_wording");
+        params = new JSONObject(params.LZm);
+        this.BDl = params.optString("balance_link");
+        this.BDn = params.optString("recharge_link");
+        this.BDm = params.optString("balance_wording");
+        this.BDo = params.optString("recharge_wording");
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
         AppMethodBeat.o(67108);
         return;
         paramArrayOfByte = paramArrayOfByte;
-        ae.printErrStackTrace("MicroMsg.NetSceneGetPayFunctionProductList", paramArrayOfByte, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.NetSceneGetPayFunctionProductList", paramArrayOfByte, "", new Object[0]);
       }
-      catch (JSONException paramq)
+      catch (JSONException params)
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.NetSceneGetPayFunctionProductList", paramq, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.NetSceneGetPayFunctionProductList", params, "", new Object[0]);
         }
       }
     }

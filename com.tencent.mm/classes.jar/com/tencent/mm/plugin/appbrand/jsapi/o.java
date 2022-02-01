@@ -1,53 +1,102 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.plugin.appbrand.r;
-import java.util.Map;
-import org.json.JSONObject;
+import android.webkit.JavascriptInterface;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONArray;
 
-public abstract class o
+public final class o
 {
-  protected r jFj;
-  private int kmu;
-  private m kmv;
-  protected z kub;
-  protected JSONObject kuc;
+  volatile g lxN;
   
-  public o(m paramm, r paramr, z paramz, JSONObject paramJSONObject, int paramInt)
+  public o(g paramg)
   {
-    if ((paramm == null) || (paramr == null) || (paramJSONObject == null)) {
-      throw new IllegalArgumentException("JsApiAsyncRequest");
+    this.lxN = paramg;
+  }
+  
+  private static int[] XV(String paramString)
+  {
+    int i = 0;
+    AppMethodBeat.i(140639);
+    localObject2 = new int[0];
+    Object localObject1 = localObject2;
+    try
+    {
+      JSONArray localJSONArray = new JSONArray(paramString);
+      localObject1 = localObject2;
+      paramString = new int[localJSONArray.length()];
+      for (;;)
+      {
+        localObject1 = paramString;
+        localObject2 = paramString;
+        if (i >= localJSONArray.length()) {
+          break;
+        }
+        localObject1 = paramString;
+        paramString[i] = localJSONArray.getInt(i);
+        i += 1;
+      }
+      return localObject2;
     }
-    this.kmv = paramm;
-    this.jFj = paramr;
-    this.kub = paramz;
-    this.kmu = paramInt;
-    this.kuc = paramJSONObject;
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.AppBrandJSInterface", paramString.getMessage());
+      localObject2 = localObject1;
+      AppMethodBeat.o(140639);
+    }
   }
   
-  public final r Ey()
+  @JavascriptInterface
+  public final String invokeHandler(String paramString1, String paramString2, int paramInt)
   {
-    return this.jFj;
+    AppMethodBeat.i(140637);
+    try
+    {
+      g localg = this.lxN;
+      if (localg == null)
+      {
+        AppMethodBeat.o(140637);
+        return "";
+      }
+      paramString1 = localg.y(paramString1, paramString2, paramInt);
+      AppMethodBeat.o(140637);
+      return paramString1;
+    }
+    catch (Exception paramString1)
+    {
+      Log.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "invokeHandler", new Object[0]);
+      AppMethodBeat.o(140637);
+      throw paramString1;
+    }
   }
   
-  protected final void G(Map<String, ? extends Object> paramMap)
+  @JavascriptInterface
+  public final void publishHandler(String paramString1, String paramString2, String paramString3)
   {
-    this.jFj.h(this.kmu, this.kmv.n("ok", paramMap));
-  }
-  
-  public final JSONObject biT()
-  {
-    return this.kuc;
-  }
-  
-  protected final void o(String paramString, Map<String, ? extends Object> paramMap)
-  {
-    this.jFj.h(this.kmu, this.kmv.n(paramString, paramMap));
+    AppMethodBeat.i(140636);
+    try
+    {
+      g localg = this.lxN;
+      if (localg == null)
+      {
+        AppMethodBeat.o(140636);
+        return;
+      }
+      localg.b(paramString1, paramString2, XV(paramString3));
+      AppMethodBeat.o(140636);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      Log.printErrStackTrace("MicroMsg.AppBrandJSInterface", paramString1, "publishHandler", new Object[0]);
+      AppMethodBeat.o(140636);
+      throw paramString1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.o
  * JD-Core Version:    0.7.0.1
  */

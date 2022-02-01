@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.widget.base;
 
 public abstract interface c
 {
-  public abstract boolean bDj();
+  public abstract boolean caj();
 }
 
 

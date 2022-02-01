@@ -1,63 +1,137 @@
 package com.google.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
-import java.util.Locale;
+import java.util.AbstractList;
+import java.util.Collection;
+import java.util.List;
+import java.util.RandomAccess;
 
-public enum d
-  implements e
+abstract class d<E>
+  extends AbstractList<E>
+  implements ae.e<E>
 {
-  private d() {}
+  boolean bNd = true;
   
-  static String bW(String paramString)
+  public void add(int paramInt, E paramE)
   {
-    int i = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    char c = paramString.charAt(0);
-    int j = paramString.length();
-    while ((i < j - 1) && (!Character.isLetter(c)))
+    yL();
+    super.add(paramInt, paramE);
+  }
+  
+  public boolean add(E paramE)
+  {
+    yL();
+    return super.add(paramE);
+  }
+  
+  public boolean addAll(int paramInt, Collection<? extends E> paramCollection)
+  {
+    yL();
+    return super.addAll(paramInt, paramCollection);
+  }
+  
+  public boolean addAll(Collection<? extends E> paramCollection)
+  {
+    yL();
+    return super.addAll(paramCollection);
+  }
+  
+  public void clear()
+  {
+    yL();
+    super.clear();
+  }
+  
+  public boolean equals(Object paramObject)
+  {
+    if (paramObject == this) {}
+    for (;;)
     {
-      localStringBuilder.append(c);
-      i += 1;
-      c = paramString.charAt(i);
-    }
-    String str = paramString;
-    if (!Character.isUpperCase(c))
-    {
-      c = Character.toUpperCase(c);
-      i += 1;
-      if (i >= paramString.length()) {
-        break label120;
+      return true;
+      if (!(paramObject instanceof List)) {
+        return false;
       }
-    }
-    label120:
-    for (paramString = c + paramString.substring(i);; paramString = String.valueOf(c))
-    {
-      str = paramString;
-      return str;
+      if (!(paramObject instanceof RandomAccess)) {
+        return super.equals(paramObject);
+      }
+      paramObject = (List)paramObject;
+      int j = size();
+      if (j != paramObject.size()) {
+        return false;
+      }
+      int i = 0;
+      while (i < j)
+      {
+        if (!get(i).equals(paramObject.get(i))) {
+          return false;
+        }
+        i += 1;
+      }
     }
   }
   
-  static String s(String paramString1, String paramString2)
+  public int hashCode()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
+    int k = size();
+    int j = 1;
     int i = 0;
-    int j = paramString1.length();
-    while (i < j)
+    while (i < k)
     {
-      char c = paramString1.charAt(i);
-      if ((Character.isUpperCase(c)) && (localStringBuilder.length() != 0)) {
-        localStringBuilder.append(paramString2);
-      }
-      localStringBuilder.append(c);
+      j = j * 31 + get(i).hashCode();
       i += 1;
     }
-    return localStringBuilder.toString();
+    return j;
+  }
+  
+  public E remove(int paramInt)
+  {
+    yL();
+    return super.remove(paramInt);
+  }
+  
+  public boolean remove(Object paramObject)
+  {
+    yL();
+    return super.remove(paramObject);
+  }
+  
+  public boolean removeAll(Collection<?> paramCollection)
+  {
+    yL();
+    return super.removeAll(paramCollection);
+  }
+  
+  public boolean retainAll(Collection<?> paramCollection)
+  {
+    yL();
+    return super.retainAll(paramCollection);
+  }
+  
+  public E set(int paramInt, E paramE)
+  {
+    yL();
+    return super.set(paramInt, paramE);
+  }
+  
+  public boolean yJ()
+  {
+    return this.bNd;
+  }
+  
+  public final void yK()
+  {
+    this.bNd = false;
+  }
+  
+  protected final void yL()
+  {
+    if (!this.bNd) {
+      throw new UnsupportedOperationException();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.a.d
  * JD-Core Version:    0.7.0.1
  */

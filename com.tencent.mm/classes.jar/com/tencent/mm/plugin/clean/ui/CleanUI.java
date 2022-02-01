@@ -6,14 +6,17 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.b.g;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.clean.ui.fileindexui.CleanNewUI;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -22,47 +25,55 @@ import org.json.JSONObject;
 public class CleanUI
   extends MMActivity
 {
-  private long paQ;
-  private String paR = "com.tencent.qqpimsecure";
-  private String paS = "00B1208638DE0FCD3E920886D658DAF6";
-  private String paT = "11206657";
-  private JSONObject paU;
+  private static final String qpO;
+  private long qpP;
+  private String qpQ = "com.tencent.qqpimsecure";
+  private String qpR = "00B1208638DE0FCD3E920886D658DAF6";
+  private String qpS = "11206657";
+  private JSONObject qpT;
   
-  private boolean cbb()
+  static
+  {
+    AppMethodBeat.i(231659);
+    qpO = "https://" + WeChatHosts.domainString(2131761749) + "/cgi-bin/readtemplate?t=w_safe&qqpimenter=shoushen";
+    AppMethodBeat.o(231659);
+  }
+  
+  private boolean cyQ()
   {
     AppMethodBeat.i(22841);
-    cbc();
-    if (!q.s(getContext(), this.paR))
+    cyR();
+    if (!q.s(getContext(), this.qpQ))
     {
       AppMethodBeat.o(22841);
       return false;
     }
-    Object localObject = q.bP(this, this.paR);
+    Object localObject = q.cj(this, this.qpQ);
     if ((localObject != null) && (localObject[0] != null))
     {
-      localObject = com.tencent.mm.b.g.getMessageDigest(localObject[0].toByteArray());
-      if ((localObject != null) && (((String)localObject).equalsIgnoreCase(this.paS))) {
+      localObject = g.getMessageDigest(localObject[0].toByteArray());
+      if ((localObject != null) && (((String)localObject).equalsIgnoreCase(this.qpR))) {
         try
         {
-          localObject = getPackageManager().getLaunchIntentForPackage(this.paR);
+          localObject = getPackageManager().getLaunchIntentForPackage(this.qpQ);
           if (localObject != null)
           {
             Bundle localBundle = new Bundle();
-            q.j(localBundle, this.paT);
+            q.k(localBundle, this.qpS);
             ((Intent)localObject).putExtras(localBundle);
             ((Intent)localObject).addFlags(268435456);
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/clean/ui/CleanUI", "jumpToQQMgrApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/clean/ui/CleanUI", "jumpToQQMgrApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/clean/ui/CleanUI", "jumpToQQMgrApp", "()Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(282L, 6L, 1L, false);
+            h.CyF.idkeyStat(282L, 6L, 1L, false);
             AppMethodBeat.o(22841);
             return true;
           }
         }
         catch (Exception localException)
         {
-          ae.printErrStackTrace("MicroMsg.CleanUI", localException, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.CleanUI", localException, "", new Object[0]);
           AppMethodBeat.o(22841);
           return true;
         }
@@ -72,31 +83,31 @@ public class CleanUI
     return false;
   }
   
-  private boolean cbc()
+  private boolean cyR()
   {
     AppMethodBeat.i(22842);
-    bc.aCg();
-    String str = (String)c.ajA().get(am.a.IOw, "");
-    if (bu.isNullOrNil(str))
+    bg.aVF();
+    String str = (String)c.azQ().get(ar.a.NWy, "");
+    if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(22842);
       return false;
     }
     try
     {
-      this.paU = new JSONObject(str);
-      this.paR = this.paU.getString("packageName");
-      this.paU.get("md5");
-      this.paT = this.paU.getString("launcherID");
-      this.paS = this.paU.getString("signature");
-      this.paU.get("url");
-      this.paQ = this.paU.getLong("size");
+      this.qpT = new JSONObject(str);
+      this.qpQ = this.qpT.getString("packageName");
+      this.qpT.get("md5");
+      this.qpS = this.qpT.getString("launcherID");
+      this.qpR = this.qpT.getString("signature");
+      this.qpT.get("url");
+      this.qpP = this.qpT.getLong("size");
       AppMethodBeat.o(22842);
       return true;
     }
     catch (JSONException localJSONException)
     {
-      ae.printErrStackTrace("MicroMsg.CleanUI", localJSONException, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.CleanUI", localJSONException, "", new Object[0]);
       AppMethodBeat.o(22842);
     }
     return false;
@@ -104,23 +115,23 @@ public class CleanUI
   
   public int getLayoutId()
   {
-    return 2131493546;
+    return 2131493658;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(22840);
     super.onCreate(paramBundle);
-    if ((getIntent().getBooleanExtra("had_detected_no_sdcard_space", false)) && (cbb()))
+    if ((getIntent().getBooleanExtra("had_detected_no_sdcard_space", false)) && (cyQ()))
     {
       finish();
       AppMethodBeat.o(22840);
       return;
     }
     paramBundle = new Intent(this, CleanNewUI.class);
-    paramBundle = new com.tencent.mm.hellhoundlib.b.a().bc(paramBundle);
-    com.tencent.mm.hellhoundlib.a.a.a(this, paramBundle.ahE(), "com/tencent/mm/plugin/clean/ui/CleanUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)paramBundle.mt(0));
+    paramBundle = new com.tencent.mm.hellhoundlib.b.a().bl(paramBundle);
+    com.tencent.mm.hellhoundlib.a.a.a(this, paramBundle.axQ(), "com/tencent/mm/plugin/clean/ui/CleanUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)paramBundle.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/clean/ui/CleanUI", "onCreate", "(Landroid/os/Bundle;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     finish();
     AppMethodBeat.o(22840);

@@ -5,22 +5,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static final String hNI;
+  public static final String iIN;
   
   static
   {
     AppMethodBeat.i(45275);
-    hNI = b.bie();
+    iIN = b.bDt();
     AppMethodBeat.o(45275);
   }
   
-  public static a bid()
+  public static a bDs()
   {
-    return b.kqf;
+    return b.ltN;
   }
   
   /* Error */
-  public static void cU(String paramString1, String paramString2)
+  public static void dj(String paramString1, String paramString2)
   {
     // Byte code:
     //   0: ldc 49
@@ -42,7 +42,7 @@ public final class a
     //   35: iconst_0
     //   36: aload 6
     //   38: aastore
-    //   39: invokestatic 70	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   39: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   42: new 72	java/io/BufferedInputStream
     //   45: dup
     //   46: new 74	java/net/URL
@@ -56,7 +56,7 @@ public final class a
     //   64: ifnull +345 -> 409
     //   67: aload 6
     //   69: iconst_0
-    //   70: invokestatic 90	com/tencent/mm/vfs/o:db	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   70: invokestatic 90	com/tencent/mm/vfs/s:dw	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   73: astore_1
     //   74: aload_1
     //   75: astore_3
@@ -88,7 +88,7 @@ public final class a
     //   119: ldc 104
     //   121: iconst_0
     //   122: anewarray 4	java/lang/Object
-    //   125: invokestatic 108	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   125: invokestatic 108	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   128: aload_1
     //   129: ifnull +7 -> 136
     //   132: aload_1
@@ -97,15 +97,15 @@ public final class a
     //   138: ifnull +8 -> 146
     //   141: aload 4
     //   143: invokevirtual 112	java/io/InputStream:close	()V
-    //   146: new 114	com/tencent/mm/vfs/k
+    //   146: new 114	com/tencent/mm/vfs/o
     //   149: dup
     //   150: aload 6
-    //   152: invokespecial 115	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
-    //   155: new 114	com/tencent/mm/vfs/k
+    //   152: invokespecial 115	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   155: new 114	com/tencent/mm/vfs/o
     //   158: dup
     //   159: aload_0
-    //   160: invokespecial 115	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
-    //   163: invokevirtual 119	com/tencent/mm/vfs/k:ag	(Lcom/tencent/mm/vfs/k;)Z
+    //   160: invokespecial 115	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   163: invokevirtual 119	com/tencent/mm/vfs/o:am	(Lcom/tencent/mm/vfs/o;)Z
     //   166: pop
     //   167: ldc 49
     //   169: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -124,7 +124,7 @@ public final class a
     //   188: aload_3
     //   189: invokevirtual 122	java/lang/Exception:toString	()Ljava/lang/String;
     //   192: aastore
-    //   193: invokestatic 125	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   193: invokestatic 125	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   196: aconst_null
     //   197: astore 4
     //   199: goto -137 -> 62
@@ -140,15 +140,15 @@ public final class a
     //   218: ifnull +8 -> 226
     //   221: aload 4
     //   223: invokevirtual 112	java/io/InputStream:close	()V
-    //   226: new 114	com/tencent/mm/vfs/k
+    //   226: new 114	com/tencent/mm/vfs/o
     //   229: dup
     //   230: aload 6
-    //   232: invokespecial 115	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
-    //   235: new 114	com/tencent/mm/vfs/k
+    //   232: invokespecial 115	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   235: new 114	com/tencent/mm/vfs/o
     //   238: dup
     //   239: aload_0
-    //   240: invokespecial 115	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
-    //   243: invokevirtual 119	com/tencent/mm/vfs/k:ag	(Lcom/tencent/mm/vfs/k;)Z
+    //   240: invokespecial 115	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   243: invokevirtual 119	com/tencent/mm/vfs/o:am	(Lcom/tencent/mm/vfs/o;)Z
     //   246: pop
     //   247: ldc 49
     //   249: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -159,7 +159,7 @@ public final class a
     //   257: ldc 104
     //   259: iconst_0
     //   260: anewarray 4	java/lang/Object
-    //   263: invokestatic 108	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   263: invokestatic 108	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   266: goto -50 -> 216
     //   269: astore_1
     //   270: ldc 63
@@ -167,7 +167,7 @@ public final class a
     //   273: ldc 104
     //   275: iconst_0
     //   276: anewarray 4	java/lang/Object
-    //   279: invokestatic 108	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   279: invokestatic 108	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   282: goto -56 -> 226
     //   285: astore_1
     //   286: ldc 63
@@ -175,7 +175,7 @@ public final class a
     //   289: ldc 104
     //   291: iconst_0
     //   292: anewarray 4	java/lang/Object
-    //   295: invokestatic 108	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   295: invokestatic 108	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   298: goto -162 -> 136
     //   301: astore_1
     //   302: ldc 63
@@ -183,7 +183,7 @@ public final class a
     //   305: ldc 104
     //   307: iconst_0
     //   308: anewarray 4	java/lang/Object
-    //   311: invokestatic 108	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   311: invokestatic 108	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   314: goto -168 -> 146
     //   317: astore_1
     //   318: aconst_null
@@ -196,15 +196,15 @@ public final class a
     //   330: ifnull +8 -> 338
     //   333: aload 4
     //   335: invokevirtual 112	java/io/InputStream:close	()V
-    //   338: new 114	com/tencent/mm/vfs/k
+    //   338: new 114	com/tencent/mm/vfs/o
     //   341: dup
     //   342: aload 6
-    //   344: invokespecial 115	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
-    //   347: new 114	com/tencent/mm/vfs/k
+    //   344: invokespecial 115	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   347: new 114	com/tencent/mm/vfs/o
     //   350: dup
     //   351: aload_0
-    //   352: invokespecial 115	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
-    //   355: invokevirtual 119	com/tencent/mm/vfs/k:ag	(Lcom/tencent/mm/vfs/k;)Z
+    //   352: invokespecial 115	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   355: invokevirtual 119	com/tencent/mm/vfs/o:am	(Lcom/tencent/mm/vfs/o;)Z
     //   358: pop
     //   359: ldc 49
     //   361: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -216,7 +216,7 @@ public final class a
     //   370: ldc 104
     //   372: iconst_0
     //   373: anewarray 4	java/lang/Object
-    //   376: invokestatic 108	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   376: invokestatic 108	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   379: goto -51 -> 328
     //   382: astore_3
     //   383: ldc 63
@@ -224,7 +224,7 @@ public final class a
     //   386: ldc 104
     //   388: iconst_0
     //   389: anewarray 4	java/lang/Object
-    //   392: invokestatic 108	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   392: invokestatic 108	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   395: goto -57 -> 338
     //   398: astore_1
     //   399: goto -79 -> 320
@@ -279,19 +279,19 @@ public final class a
   
   static final class b
   {
-    static final a kqf;
+    static final a ltN;
     
     static
     {
       AppMethodBeat.i(45273);
-      kqf = new a();
+      ltN = new a();
       AppMethodBeat.o(45273);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.preload.a
  * JD-Core Version:    0.7.0.1
  */

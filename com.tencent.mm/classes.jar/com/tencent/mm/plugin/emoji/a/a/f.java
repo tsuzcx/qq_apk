@@ -4,38 +4,38 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.EmotionBannerSet;
 import com.tencent.mm.protocal.protobuf.EmotionSummary;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bc;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bh;
 
 public final class f
 {
-  public int Hx;
+  public int HH;
   public int mStatus;
-  public EmotionBannerSet pIA;
-  public int pIB;
-  public String pIC;
-  public boolean pID;
-  public boolean pIE = true;
-  public boolean pIF = false;
-  public f.a pIy;
-  public EmotionSummary pIz;
+  public a qYk;
+  public EmotionSummary qYl;
+  public EmotionBannerSet qYm;
+  public int qYn;
+  public String qYo;
+  public boolean qYp;
+  public boolean qYq = true;
+  public boolean qYr = false;
   
   public f(EmotionBannerSet paramEmotionBannerSet)
   {
-    this.pIA = paramEmotionBannerSet;
-    this.pIy = f.a.pIH;
+    this.qYm = paramEmotionBannerSet;
+    this.qYk = a.qYt;
   }
   
   public f(EmotionSummary paramEmotionSummary)
   {
-    this.pIz = paramEmotionSummary;
-    this.pIy = f.a.pIG;
+    this.qYl = paramEmotionSummary;
+    this.qYk = a.qYs;
   }
   
-  public final void a(boolean paramBoolean1, bc parambc, boolean paramBoolean2)
+  public final void a(boolean paramBoolean1, bh parambh, boolean paramBoolean2)
   {
     AppMethodBeat.i(108382);
-    EmotionSummary localEmotionSummary = this.pIz;
+    EmotionSummary localEmotionSummary = this.qYl;
     if (localEmotionSummary == null)
     {
       AppMethodBeat.o(108382);
@@ -56,11 +56,11 @@ public final class f
     }
     for (;;)
     {
-      if ((paramBoolean1) && (parambc != null) && (!bu.isNullOrNil(parambc.JfI)))
+      if ((paramBoolean1) && (parambh != null) && (!Util.isNullOrNil(parambh.OpB)))
       {
-        this.pIz.PackPrice = parambc.JfI;
-        this.pIz.PriceNum = parambc.JfH;
-        this.pIz.PriceType = parambc.JfG;
+        this.qYl.PackPrice = parambh.OpB;
+        this.qYl.PriceNum = parambh.OpA;
+        this.qYl.PriceType = parambh.Opz;
       }
       AppMethodBeat.o(108382);
       return;
@@ -68,24 +68,24 @@ public final class f
       {
         setStatus(3);
         if ((bool1) || ((!paramBoolean1) && (bool3))) {
-          this.pIB = 0;
+          this.qYn = 0;
         } else {
-          this.pIB = 1;
+          this.qYn = 1;
         }
       }
       else if ((bool1) || ((!paramBoolean1) && (bool3)))
       {
         setStatus(3);
-        this.pIB = 0;
+        this.qYn = 0;
       }
       else
       {
-        this.pIB = 1;
-        if ((paramBoolean1) && (parambc != null)) {}
-        switch (parambc.JfE)
+        this.qYn = 1;
+        if ((paramBoolean1) && (parambh != null)) {}
+        switch (parambh.Opx)
         {
         default: 
-          if ((parambc.JfC != 7) && (parambc.JfC != 6) && (parambc.JfC != 3)) {
+          if ((parambh.Opv != 7) && (parambh.Opv != 6) && (parambh.Opv != 3)) {
             setStatus(10);
           }
           break;
@@ -108,15 +108,29 @@ public final class f
   
   public final void setStatus(int paramInt)
   {
-    if ((paramInt == 7) && (this.mStatus == 6) && (this.pIE)) {
-      this.pID = true;
+    if ((paramInt == 7) && (this.mStatus == 6) && (this.qYq)) {
+      this.qYp = true;
     }
     this.mStatus = paramInt;
+  }
+  
+  public static enum a
+  {
+    static
+    {
+      AppMethodBeat.i(108381);
+      qYs = new a("summary", 0);
+      qYt = new a("cellset", 1);
+      qYu = new a[] { qYs, qYt };
+      AppMethodBeat.o(108381);
+    }
+    
+    private a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.a.a.f
  * JD-Core Version:    0.7.0.1
  */

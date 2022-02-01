@@ -2,17 +2,20 @@ package com.tencent.mm.av;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.d;
+import com.tencent.mm.ak.h.d;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.app.o.a;
+import com.tencent.mm.b.f;
 import com.tencent.mm.cache.g.a;
-import com.tencent.mm.g.a.sx;
+import com.tencent.mm.g.a.tv;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.y;
 import com.tencent.mm.modelsfs.SFSContext;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.h.b;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,28 +24,28 @@ import java.util.List;
 import java.util.Stack;
 
 public class q
-  implements az
+  implements bd
 {
   private static HashMap<Integer, h.b> baseDBFactories;
   private o.a appForegroundListener;
-  private i ifm;
-  private k ifn;
-  private d ifo;
-  private l ifp;
-  private e ifq;
-  private j ifr;
-  private b ifs;
-  private r ift;
-  private c ifu;
-  private com.tencent.mm.av.a.a ifv;
-  private SFSContext ifw;
-  private SFSContext ifx;
+  private i jah;
+  private k jai;
+  private d jaj;
+  private l jak;
+  private e jal;
+  private j jam;
+  private b jan;
+  private r jao;
+  private IListener jap;
+  private com.tencent.mm.av.a.a jaq;
+  private SFSContext jar;
+  private SFSContext jas;
   
   static
   {
     AppMethodBeat.i(150759);
     baseDBFactories = new HashMap();
-    Iterator localIterator = i.d.idw.iterator();
+    Iterator localIterator = i.d.iYu.iterator();
     while (localIterator.hasNext())
     {
       i.c localc = (i.c)localIterator.next();
@@ -50,7 +53,7 @@ public class q
       {
         public final String[] getSQLs()
         {
-          return this.ifA.idt;
+          return this.jav.iYr;
         }
       });
     }
@@ -60,22 +63,22 @@ public class q
   public q()
   {
     AppMethodBeat.i(150748);
-    this.ifp = new l();
-    this.ifq = null;
-    this.ifr = new j();
-    this.ifs = null;
-    this.ift = null;
-    this.ifu = new c() {};
+    this.jak = new l();
+    this.jal = null;
+    this.jam = new j();
+    this.jan = null;
+    this.jao = null;
+    this.jap = new IListener() {};
     this.appForegroundListener = new o.a()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
         AppMethodBeat.i(150747);
-        if ((g.ajM()) && (g.ajP().gDk))
+        if ((g.aAc()) && (g.aAf().hpY))
         {
-          g.ajP();
-          if (!com.tencent.mm.kernel.a.aiT()) {
-            q.aIZ().eG(false);
+          g.aAf();
+          if (!com.tencent.mm.kernel.a.azj()) {
+            q.bcT().setForeground(false);
           }
         }
         AppMethodBeat.o(150747);
@@ -84,38 +87,38 @@ public class q
       public final void onAppForeground(String paramAnonymousString)
       {
         AppMethodBeat.i(150746);
-        if ((g.ajM()) && (g.ajP().gDk))
+        if ((g.aAc()) && (g.aAf().hpY))
         {
-          g.ajP();
-          if (!com.tencent.mm.kernel.a.aiT())
+          g.aAf();
+          if (!com.tencent.mm.kernel.a.azj())
           {
-            com.tencent.mm.blink.b.Wq().u(new Runnable()
+            com.tencent.mm.blink.b.ake().arrange(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(150745);
-                q.aIV().run();
+                q.bcP().run();
                 AppMethodBeat.o(150745);
               }
             });
-            q.aIZ().eG(true);
+            q.bcT().setForeground(true);
           }
         }
         AppMethodBeat.o(150746);
       }
     };
-    this.ifv = null;
-    this.ifw = null;
-    this.ifx = null;
+    this.jaq = null;
+    this.jar = null;
+    this.jas = null;
     AppMethodBeat.o(150748);
   }
   
-  private static q aIU()
+  private static q bcO()
   {
     try
     {
       AppMethodBeat.i(150749);
-      q localq = (q)u.ap(q.class);
+      q localq = (q)y.at(q.class);
       AppMethodBeat.o(150749);
       return localq;
     }
@@ -126,90 +129,90 @@ public class q
     }
   }
   
-  public static k aIV()
+  public static k bcP()
   {
     AppMethodBeat.i(150750);
-    if (aIU().ifn == null) {
-      aIU().ifn = new k();
+    if (bcO().jai == null) {
+      bcO().jai = new k();
     }
-    k localk = aIU().ifn;
+    k localk = bcO().jai;
     AppMethodBeat.o(150750);
     return localk;
   }
   
-  public static d aIW()
+  public static d bcQ()
   {
     AppMethodBeat.i(150751);
-    g.ajP().aiU();
-    if (aIU().ifo == null) {
-      aIU().ifo = new d();
+    g.aAf().azk();
+    if (bcO().jaj == null) {
+      bcO().jaj = new d();
     }
-    d locald = aIU().ifo;
+    d locald = bcO().jaj;
     AppMethodBeat.o(150751);
     return locald;
   }
   
-  public static i aIX()
+  public static i bcR()
   {
     AppMethodBeat.i(150752);
-    g.ajP().aiU();
-    if (aIU().ifm == null) {
-      aIU().ifm = new i(g.ajR().gDX);
+    g.aAf().azk();
+    if (bcO().jah == null) {
+      bcO().jah = new i(g.aAh().hqK);
     }
-    i locali = aIU().ifm;
+    i locali = bcO().jah;
     AppMethodBeat.o(150752);
     return locali;
   }
   
-  public static e aIY()
+  public static e bcS()
   {
     AppMethodBeat.i(150753);
-    g.ajP().aiU();
-    if (aIU().ifq == null) {
-      aIU().ifq = new e();
+    g.aAf().azk();
+    if (bcO().jal == null) {
+      bcO().jal = new e();
     }
-    e locale = aIU().ifq;
+    e locale = bcO().jal;
     AppMethodBeat.o(150753);
     return locale;
   }
   
-  public static b aIZ()
+  public static b bcT()
   {
     AppMethodBeat.i(150754);
-    g.ajP().aiU();
-    if (aIU().ifs == null) {
-      aIU().ifs = new b(Looper.getMainLooper());
+    g.aAf().azk();
+    if (bcO().jan == null) {
+      bcO().jan = new b(Looper.getMainLooper());
     }
-    b localb = aIU().ifs;
+    b localb = bcO().jan;
     AppMethodBeat.o(150754);
     return localb;
   }
   
-  public static r aJa()
+  public static r bcU()
   {
     AppMethodBeat.i(150755);
-    g.ajP().aiU();
-    if (aIU().ift == null) {
-      aIU().ift = new r();
+    g.aAf().azk();
+    if (bcO().jao == null) {
+      bcO().jao = new r();
     }
-    r localr = aIU().ift;
+    r localr = bcO().jao;
     AppMethodBeat.o(150755);
     return localr;
   }
   
-  public static com.tencent.mm.av.a.a aJb()
+  public static com.tencent.mm.av.a.a bcV()
   {
     AppMethodBeat.i(150756);
-    g.ajP().aiU();
-    if (aIU().ifv == null) {
-      aIU().ifv = com.tencent.mm.av.a.a.aJh();
+    g.aAf().azk();
+    if (bcO().jaq == null) {
+      bcO().jaq = com.tencent.mm.av.a.a.bdb();
     }
-    com.tencent.mm.av.a.a locala = aIU().ifv;
+    com.tencent.mm.av.a.a locala = bcO().jaq;
     AppMethodBeat.o(150756);
     return locala;
   }
   
-  public static SFSContext aJc()
+  public static SFSContext bcW()
   {
     return null;
   }
@@ -224,10 +227,10 @@ public class q
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(150758);
-    e.d.a(Integer.valueOf(3), this.ifr);
-    e.d.a(Integer.valueOf(23), this.ifr);
-    g.a.a("local_cdn_img_cache", this.ifp);
-    com.tencent.mm.sdk.b.a.IvT.c(this.ifu);
+    h.d.a(Integer.valueOf(3), this.jam);
+    h.d.a(Integer.valueOf(23), this.jam);
+    g.a.a("local_cdn_img_cache", this.jak);
+    EventCenter.instance.addListener(this.jap);
     this.appForegroundListener.alive();
     AppMethodBeat.o(150758);
   }
@@ -235,75 +238,75 @@ public class q
   public void onAccountRelease()
   {
     AppMethodBeat.i(150757);
-    q localq = aIU();
+    q localq = bcO();
     this.appForegroundListener.dead();
-    if (localq.ifn != null)
+    if (localq.jai != null)
     {
-      ??? = localq.ifn;
-      ((k)???).dju = 0;
-      g.ajQ().gDv.b(110, (com.tencent.mm.ak.f)???);
+      ??? = localq.jai;
+      ((k)???).dAF = 0;
+      g.aAg().hqi.b(110, (com.tencent.mm.ak.i)???);
     }
     b localb;
-    if (localq.ifs != null) {
-      localb = localq.ifs;
+    if (localq.jan != null) {
+      localb = localq.jan;
     }
-    synchronized (localb.ibK)
+    synchronized (localb.iWI)
     {
-      localb.ibK.clear();
-      localb.ibL = 0L;
-      aIY().a(localb);
-      com.tencent.mm.sdk.b.a.IvT.d(localb.ibU);
-      com.tencent.mm.sdk.b.a.IvT.d(localb.ibV);
-      if (localq.ifq == null) {
+      localb.iWI.clear();
+      localb.iWJ = 0L;
+      bcS().a(localb);
+      EventCenter.instance.removeListener(localb.iWS);
+      EventCenter.instance.removeListener(localb.iWT);
+      if (localq.jal == null) {
         break label212;
       }
-      ??? = localq.ifq;
-      ae.i("ModelImage.DownloadImgService", "on detach");
-      ae.i("ModelImage.DownloadImgService", "cancel all net scene");
-      ((e)???).ich = true;
-      ((e)???).b(((e)???).icf);
-      if (((e)???).icd.size() > 0) {
-        ((e)???).b((e.b)((e)???).icd.get(0));
+      ??? = localq.jal;
+      Log.i("ModelImage.DownloadImgService", "on detach");
+      Log.i("ModelImage.DownloadImgService", "cancel all net scene");
+      ((e)???).iXf = true;
+      ((e)???).b(((e)???).iXd);
+      if (((e)???).iXb.size() > 0) {
+        ((e)???).b((e.b)((e)???).iXb.get(0));
       }
     }
-    ((e)???).aIu();
-    g.ajQ().gDv.b(109, (com.tencent.mm.ak.f)???);
+    ((e)???).bco();
+    g.aAg().hqi.b(109, (com.tencent.mm.ak.i)???);
     label212:
-    if (localObject1.ift != null)
+    if (localObject1.jao != null)
     {
-      ??? = localObject1.ift;
-      ae.i("MicroMsg.UrlImageCacheService", "detach");
-      ((r)???).ifB.clear();
-      ((r)???).ifD = true;
+      ??? = localObject1.jao;
+      Log.i("MicroMsg.UrlImageCacheService", "detach");
+      ((r)???).jaw.clear();
+      ((r)???).jay = true;
     }
-    ??? = aIU().ifm;
+    ??? = bcO().jah;
     if (??? != null)
     {
-      ae.i("MicroMsg.ImgInfoStorage", "clearCacheMap stack:%s", new Object[] { bu.fpN() });
-      ((i)???).icY.clear();
+      Log.i("MicroMsg.ImgInfoStorage", "clearCacheMap stack:%s", new Object[] { Util.getStack() });
+      ((i)???).iXW.clear();
     }
-    ??? = aIU().ifv;
+    ??? = bcO().jaq;
     if (??? != null) {
       ((com.tencent.mm.av.a.a)???).detach();
     }
-    e.d.b(Integer.valueOf(3), this.ifr);
-    e.d.b(Integer.valueOf(23), this.ifr);
+    h.d.b(Integer.valueOf(3), this.jam);
+    h.d.b(Integer.valueOf(23), this.jam);
     g.a.a("local_cdn_img_cache", null);
-    com.tencent.mm.sdk.b.a.IvT.d(this.ifu);
-    if (localObject1.ifv != null)
+    EventCenter.instance.removeListener(this.jap);
+    if (localObject1.jaq != null)
     {
-      localObject1.ifv.detach();
-      localObject1.ifv = null;
+      localObject1.jaq.detach();
+      localObject1.jaq = null;
     }
-    if (localObject1.ifw != null)
+    if (localObject1.jar != null)
     {
-      localObject1.ifw.release();
-      localObject1.ifw = null;
+      localObject1.jar.release();
+      localObject1.jar = null;
     }
-    if (localObject1.ifx != null)
+    if (localObject1.jas != null)
     {
-      localObject1.ifx.release();
-      localObject1.ifx = null;
+      localObject1.jas.release();
+      localObject1.jas = null;
     }
     AppMethodBeat.o(150757);
   }
@@ -312,7 +315,7 @@ public class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.q
  * JD-Core Version:    0.7.0.1
  */

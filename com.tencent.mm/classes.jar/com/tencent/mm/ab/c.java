@@ -4,7 +4,17 @@ import java.util.Iterator;
 
 public abstract interface c
 {
-  public abstract c R(String paramString, int paramInt);
+  public abstract a FA(String paramString);
+  
+  public abstract a FB(String paramString);
+  
+  public abstract c FC(String paramString);
+  
+  public abstract c FD(String paramString);
+  
+  public abstract String Fz(String paramString);
+  
+  public abstract c T(String paramString, int paramInt);
   
   public abstract c b(String paramString, double paramDouble);
   
@@ -48,23 +58,13 @@ public abstract interface c
   
   public abstract Object remove(String paramString);
   
-  public abstract c t(String paramString, long paramLong);
+  public abstract c u(String paramString, long paramLong);
   
-  public abstract c u(String paramString, boolean paramBoolean);
-  
-  public abstract String xn(String paramString);
-  
-  public abstract a xo(String paramString);
-  
-  public abstract a xp(String paramString);
-  
-  public abstract c xq(String paramString);
-  
-  public abstract c xr(String paramString);
+  public abstract c v(String paramString, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ab.c
  * JD-Core Version:    0.7.0.1
  */

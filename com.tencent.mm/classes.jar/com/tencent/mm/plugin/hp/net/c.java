@@ -1,15 +1,17 @@
 package com.tencent.mm.plugin.hp.net;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.boots.a.f;
 import com.tencent.mm.plugin.boots.a.g;
-import com.tencent.mm.protocal.protobuf.chp;
-import com.tencent.mm.protocal.protobuf.chq;
-import com.tencent.mm.protocal.protobuf.chs;
-import com.tencent.mm.protocal.protobuf.cwf;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.cxw;
+import com.tencent.mm.protocal.protobuf.cxx;
+import com.tencent.mm.protocal.protobuf.cxz;
+import com.tencent.mm.protocal.protobuf.doy;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -17,70 +19,71 @@ public final class c
   extends a
 {
   private String mAppId;
-  private com.tencent.mm.plugin.boots.a.f uUx;
+  private f ymY;
   
-  public c(String paramString1, String paramString2, String paramString3, com.tencent.mm.plugin.boots.a.f paramf)
+  public c(String paramString1, String paramString2, String paramString3, f paramf)
   {
-    AppMethodBeat.i(196771);
+    AppMethodBeat.i(196779);
     this.mAppId = paramString1;
-    this.uUx = paramf;
+    this.ymY = paramf;
     this.type = "liteappconfig_".concat(String.valueOf(paramString1));
-    this.uUo = paramString2;
-    this.uUp = paramString3;
+    this.ymP = paramString2;
+    this.ymQ = paramString3;
     this.mScene = 0;
-    AppMethodBeat.o(196771);
+    this.ymR.addAll(e.dZe());
+    AppMethodBeat.o(196779);
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(196772);
-    ae.i("MicroMsg.Tinker.NetSceneCheckLiteAppUpdate", "errType:%d errCode:%d errMsg:%s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(196780);
+    Log.i("MicroMsg.Tinker.NetSceneCheckLiteAppUpdate", "errType:%d errCode:%d errMsg:%s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramArrayOfByte = (chp)((b)paramq).hQE.hQJ;
-      Object localObject = paramArrayOfByte.HtO;
-      ae.d("MicroMsg.Tinker.NetSceneCheckLiteAppUpdate", "node is no empty. try to process");
-      paramq = new g();
+      paramArrayOfByte = (cxw)((d)params).iLL.iLR;
+      Object localObject = paramArrayOfByte.MCM;
+      Log.d("MicroMsg.Tinker.NetSceneCheckLiteAppUpdate", "node is no empty. try to process");
+      params = new g();
       if (localObject != null)
       {
-        if (((chs)localObject).HtV != null)
+        if (((cxz)localObject).MCT != null)
         {
-          paramq.nZM = ((chs)localObject).HtV.MD5;
-          paramq.gKg = ((chs)localObject).HtV.Url;
-          paramq.fileSize = ((chs)localObject).HtV.FileSize;
+          params.pkL = ((cxz)localObject).MCT.MD5;
+          params.pkK = ((cxz)localObject).MCT.Url;
+          params.fileSize = ((cxz)localObject).MCT.FileSize;
         }
-        paramq.nZJ = Integer.valueOf(((chs)localObject).state);
-        paramq.nZL = Integer.valueOf(((chs)localObject).HtU);
-        paramq.nZK = Integer.valueOf(((chs)localObject).HtT);
-        paramq.nZN = ((chs)localObject).wTE;
-        paramq.appId = this.mAppId;
-        if (((chs)localObject).HtX != null)
+        params.pkH = Integer.valueOf(((cxz)localObject).state);
+        params.pkJ = Integer.valueOf(((cxz)localObject).MCS);
+        params.pkI = Integer.valueOf(((cxz)localObject).MCR);
+        params.cri = ((cxz)localObject).APx;
+        params.appId = this.mAppId;
+        if (((cxz)localObject).MCV != null)
         {
-          localObject = ((chs)localObject).HtX.iterator();
+          localObject = ((cxz)localObject).MCV.iterator();
           while (((Iterator)localObject).hasNext())
           {
-            chq localchq = (chq)((Iterator)localObject).next();
-            if ("signature_key".equals(localchq.key)) {
-              paramq.nZO = localchq.value;
+            cxx localcxx = (cxx)((Iterator)localObject).next();
+            if ("signature_key".equals(localcxx.key)) {
+              params.crh = localcxx.value;
             }
           }
         }
       }
     }
-    for (paramq.errorCode = paramArrayOfByte.HtQ;; paramq.errorCode = -1)
+    for (params.errorCode = paramArrayOfByte.MCO;; params.errorCode = -1)
     {
-      this.uUx.a(paramq);
+      this.ymY.a(params);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      AppMethodBeat.o(196772);
+      AppMethodBeat.o(196780);
       return;
-      ae.d("MicroMsg.Tinker.NetSceneCheckLiteAppUpdate", "check tinker update failed.");
-      paramq = new g();
+      Log.d("MicroMsg.Tinker.NetSceneCheckLiteAppUpdate", "check tinker update failed.");
+      params = new g();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.net.c
  * JD-Core Version:    0.7.0.1
  */

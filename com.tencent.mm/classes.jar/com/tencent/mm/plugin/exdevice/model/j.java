@@ -7,28 +7,28 @@ import java.util.List;
 
 public final class j
 {
-  private static j qju;
-  private SparseArray<List<j.a>> qjv;
+  private static j rAp;
+  private SparseArray<List<a>> rAq;
   
   private j()
   {
     AppMethodBeat.i(23375);
-    this.qjv = new SparseArray();
+    this.rAq = new SparseArray();
     AppMethodBeat.o(23375);
   }
   
-  public static j cmA()
+  public static j cKC()
   {
     AppMethodBeat.i(23376);
-    if (qju == null) {
-      qju = new j();
+    if (rAp == null) {
+      rAp = new j();
     }
-    j localj = qju;
+    j localj = rAp;
     AppMethodBeat.o(23376);
     return localj;
   }
   
-  public final boolean a(int paramInt, j.a parama)
+  public final boolean a(int paramInt, a parama)
   {
     AppMethodBeat.i(23377);
     if (parama == null)
@@ -36,12 +36,12 @@ public final class j
       AppMethodBeat.o(23377);
       return false;
     }
-    List localList = (List)this.qjv.get(paramInt);
+    List localList = (List)this.rAq.get(paramInt);
     Object localObject;
     if (localList == null)
     {
       localObject = new LinkedList();
-      this.qjv.put(paramInt, localObject);
+      this.rAq.put(paramInt, localObject);
     }
     do
     {
@@ -54,25 +54,25 @@ public final class j
     return false;
   }
   
-  public final boolean b(int paramInt, j.a parama)
+  public final boolean b(int paramInt, a parama)
   {
     AppMethodBeat.i(23378);
-    List localList = (List)this.qjv.get(paramInt);
+    List localList = (List)this.rAq.get(paramInt);
     if (localList != null)
     {
       localList.remove(parama);
       if (localList.size() == 0) {
-        this.qjv.remove(paramInt);
+        this.rAq.remove(paramInt);
       }
     }
     AppMethodBeat.o(23378);
     return false;
   }
   
-  public final void h(int paramInt, Object... paramVarArgs)
+  public final void i(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(23379);
-    List localList = (List)this.qjv.get(paramInt);
+    List localList = (List)this.rAq.get(paramInt);
     if ((localList == null) || (localList.size() == 0))
     {
       AppMethodBeat.o(23379);
@@ -81,15 +81,20 @@ public final class j
     int i = 0;
     while (i < localList.size())
     {
-      ((j.a)localList.get(i)).g(paramInt, paramVarArgs);
+      ((a)localList.get(i)).h(paramInt, paramVarArgs);
       i += 1;
     }
     AppMethodBeat.o(23379);
   }
+  
+  public static abstract interface a
+  {
+    public abstract void h(int paramInt, Object... paramVarArgs);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.j
  * JD-Core Version:    0.7.0.1
  */

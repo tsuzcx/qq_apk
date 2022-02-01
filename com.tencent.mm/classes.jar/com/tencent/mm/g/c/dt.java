@@ -2,57 +2,19 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class dt
-  extends c
+  extends IAutoDBItem
 {
-  public static final String COL_EXPIRE_AT = "expire_at";
-  public static final String COL_KEY = "key";
-  public static final String COL_VALUE = "value";
   public static final String[] INDEX_CREATE = new String[0];
-  public static final String TABLE_NAME = "KindaCacheTable";
-  private static final String TAG = "MicroMsg.SDK.BaseKindaCacheTable";
-  private static final int expire_at_HASHCODE = "expire_at".hashCode();
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int fjc = "payMsgId".hashCode();
+  private static final int fjf = "msgId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int value_HASHCODE = "value".hashCode();
-  private boolean __hadSetexpire_at = true;
-  private boolean __hadSetkey = true;
-  private boolean __hadSetvalue = true;
-  public long field_expire_at;
-  public String field_key;
-  public byte[] field_value;
-  
-  private final void buildBuff() {}
-  
-  public static c.a initAutoDBInfo(Class<?> paramClass)
-  {
-    paramClass = new c.a();
-    paramClass.IBL = new Field[3];
-    paramClass.columns = new String[4];
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramClass.columns[0] = "key";
-    paramClass.IBN.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    paramClass.IBM = "key";
-    paramClass.columns[1] = "value";
-    paramClass.IBN.put("value", "BLOB");
-    localStringBuilder.append(" value BLOB");
-    localStringBuilder.append(", ");
-    paramClass.columns[2] = "expire_at";
-    paramClass.IBN.put("expire_at", "LONG");
-    localStringBuilder.append(" expire_at LONG");
-    paramClass.columns[3] = "rowid";
-    paramClass.sql = localStringBuilder.toString();
-    return paramClass;
-  }
-  
-  private final void parseBuff() {}
+  private boolean fiY = true;
+  public long field_msgId;
+  public String field_payMsgId;
+  private boolean fjb = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -67,11 +29,11 @@ public abstract class dt
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
+      if (fjc != k) {
         break label65;
       }
-      this.field_key = paramCursor.getString(i);
-      this.__hadSetkey = true;
+      this.field_payMsgId = paramCursor.getString(i);
+      this.fiY = true;
     }
     for (;;)
     {
@@ -79,10 +41,8 @@ public abstract class dt
       break label20;
       break;
       label65:
-      if (value_HASHCODE == k) {
-        this.field_value = paramCursor.getBlob(i);
-      } else if (expire_at_HASHCODE == k) {
-        this.field_expire_at = paramCursor.getLong(i);
+      if (fjf == k) {
+        this.field_msgId = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -91,28 +51,22 @@ public abstract class dt
   
   public ContentValues convertTo()
   {
-    buildBuff();
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.fiY) {
+      localContentValues.put("payMsgId", this.field_payMsgId);
     }
-    if (this.__hadSetvalue) {
-      localContentValues.put("value", this.field_value);
-    }
-    if (this.__hadSetexpire_at) {
-      localContentValues.put("expire_at", Long.valueOf(this.field_expire_at));
+    if (this.fjb) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
     }
     return localContentValues;
   }
-  
-  public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.dt
  * JD-Core Version:    0.7.0.1
  */

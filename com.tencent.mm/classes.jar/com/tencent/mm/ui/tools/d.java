@@ -6,11 +6,15 @@ import java.util.ArrayList;
 
 public abstract interface d
 {
-  public abstract void fOv();
+  public abstract void CG(boolean paramBoolean);
   
-  public abstract boolean fOw();
+  public abstract void CH(boolean paramBoolean);
   
-  public abstract boolean fOx();
+  public abstract void gXo();
+  
+  public abstract boolean gXp();
+  
+  public abstract boolean gXq();
   
   public abstract String getSearchContent();
   
@@ -39,10 +43,6 @@ public abstract interface d
   public abstract void setSelectedTag(String paramString);
   
   public abstract void setStatusBtnEnabled(boolean paramBoolean);
-  
-  public abstract void yM(boolean paramBoolean);
-  
-  public abstract void yN(boolean paramBoolean);
 }
 
 

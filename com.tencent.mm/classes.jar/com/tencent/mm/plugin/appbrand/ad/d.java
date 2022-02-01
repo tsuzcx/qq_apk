@@ -7,12 +7,12 @@ import com.tencent.mm.plugin.appbrand.appstorage.q;
 public final class d
   implements k
 {
-  public static final d jEX;
+  public static final d kGH;
   
   static
   {
     AppMethodBeat.i(44024);
-    jEX = new d();
+    kGH = new d();
     AppMethodBeat.o(44024);
   }
   
@@ -24,25 +24,25 @@ public final class d
     return bool;
   }
   
-  public final boolean Lo(String paramString)
+  public final boolean Ux(String paramString)
   {
     AppMethodBeat.i(44021);
-    boolean bool = e.Lo(paramString);
+    boolean bool = e.Ux(paramString);
     AppMethodBeat.o(44021);
     return bool;
   }
   
-  public final q aYv()
+  public final q btJ()
   {
     AppMethodBeat.i(174692);
-    q localq = e.aYv();
+    q localq = e.btJ();
     AppMethodBeat.o(174692);
     return localq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.d
  * JD-Core Version:    0.7.0.1
  */

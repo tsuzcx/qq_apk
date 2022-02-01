@@ -1,140 +1,225 @@
 package com.tencent.mm.ui;
 
-import android.util.Log;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.app.Application;
+import android.app.Application.ActivityLifecycleCallbacks;
+import android.arch.a.c.a;
+import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnApplyWindowInsetsListener;
+import android.view.Window;
+import android.view.WindowInsets;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Set;
+import java.util.WeakHashMap;
 
+@TargetApi(21)
 public final class ap
 {
-  private static a JBy;
-  private static a JBz;
+  private static final boolean OLK;
+  private static final WeakHashMap<Activity, ap> OLL;
+  private WindowInsets OLM;
+  private final Set<View.OnApplyWindowInsetsListener> qFF;
   
   static
   {
-    AppMethodBeat.i(159124);
-    a local1 = new a()
+    AppMethodBeat.i(153549);
+    if (Build.VERSION.SDK_INT < 23) {}
+    for (boolean bool = true;; bool = false)
     {
-      public final void d(String paramAnonymousString1, String paramAnonymousString2) {}
+      OLK = bool;
+      OLL = new WeakHashMap();
+      AppMethodBeat.o(153549);
+      return;
+    }
+  }
+  
+  private ap(final Activity paramActivity)
+  {
+    AppMethodBeat.i(153547);
+    this.qFF = new HashSet();
+    paramActivity.runOnUiThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(153542);
+        paramActivity.getWindow().getDecorView().setOnApplyWindowInsetsListener(new View.OnApplyWindowInsetsListener()
+        {
+          public final WindowInsets onApplyWindowInsets(View paramAnonymous2View, WindowInsets paramAnonymous2WindowInsets)
+          {
+            AppMethodBeat.i(153541);
+            synchronized (ap.this)
+            {
+              ap.a(ap.this, new WindowInsets(paramAnonymous2WindowInsets));
+            }
+            synchronized (ap.a(ap.this))
+            {
+              LinkedList localLinkedList = new LinkedList(ap.a(ap.this));
+              ??? = localLinkedList.iterator();
+              while (((Iterator)???).hasNext())
+              {
+                ((View.OnApplyWindowInsetsListener)((Iterator)???).next()).onApplyWindowInsets(paramAnonymous2View, paramAnonymous2WindowInsets);
+                continue;
+                paramAnonymous2View = finally;
+                AppMethodBeat.o(153541);
+                throw paramAnonymous2View;
+              }
+            }
+            paramAnonymous2View = paramAnonymous2View.onApplyWindowInsets(paramAnonymous2WindowInsets);
+            AppMethodBeat.o(153541);
+            return paramAnonymous2View;
+          }
+        });
+        AppMethodBeat.o(153542);
+      }
+    });
+    AppMethodBeat.o(153547);
+  }
+  
+  @TargetApi(21)
+  public static ap bn(Activity paramActivity)
+  {
+    AppMethodBeat.i(153544);
+    paramActivity = f(paramActivity, true);
+    AppMethodBeat.o(153544);
+    return paramActivity;
+  }
+  
+  public static WindowInsets bo(Activity paramActivity)
+  {
+    AppMethodBeat.i(153545);
+    if (OLK)
+    {
+      paramActivity = f(paramActivity, false);
+      if (paramActivity == null)
+      {
+        AppMethodBeat.o(153545);
+        return null;
+      }
+      paramActivity = paramActivity.gJZ();
+      AppMethodBeat.o(153545);
+      return paramActivity;
+    }
+    if (Build.VERSION.SDK_INT >= 23)
+    {
+      paramActivity = paramActivity.getWindow().getDecorView().getRootWindowInsets();
+      AppMethodBeat.o(153545);
+      return paramActivity;
+    }
+    AppMethodBeat.o(153545);
+    return null;
+  }
+  
+  private static ap f(Activity paramActivity, boolean paramBoolean)
+  {
+    AppMethodBeat.i(153546);
+    synchronized (OLL)
+    {
+      ap localap2 = (ap)OLL.get(paramActivity);
+      ap localap1 = localap2;
+      if (localap2 == null)
+      {
+        localap1 = localap2;
+        if (paramBoolean)
+        {
+          localap1 = new ap(paramActivity);
+          OLL.put(paramActivity, localap1);
+        }
+      }
+      AppMethodBeat.o(153546);
+      return localap1;
+    }
+  }
+  
+  private WindowInsets gJZ()
+  {
+    try
+    {
+      WindowInsets localWindowInsets = this.OLM;
+      return localWindowInsets;
+    }
+    finally {}
+  }
+  
+  public static void i(Application paramApplication)
+  {
+    AppMethodBeat.i(153543);
+    paramApplication.registerActivityLifecycleCallbacks(new Application.ActivityLifecycleCallbacks() {}
+    {
+      public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
+      {
+        AppMethodBeat.i(153538);
+        this.OLN.apply(paramAnonymousActivity);
+        AppMethodBeat.o(153538);
+      }
       
-      public final void e(String paramAnonymousString1, String paramAnonymousString2) {}
+      public final void onActivityDestroyed(Activity paramAnonymousActivity)
+      {
+        AppMethodBeat.i(153540);
+        synchronized (ap.gKa())
+        {
+          paramAnonymousActivity = (ap)ap.gKa().remove(paramAnonymousActivity);
+          if (paramAnonymousActivity == null) {
+            break label72;
+          }
+        }
+        synchronized (ap.a(paramAnonymousActivity))
+        {
+          ap.a(paramAnonymousActivity).clear();
+          AppMethodBeat.o(153540);
+          return;
+          paramAnonymousActivity = finally;
+          AppMethodBeat.o(153540);
+          throw paramAnonymousActivity;
+        }
+        label72:
+        AppMethodBeat.o(153540);
+      }
       
-      public final void i(String paramAnonymousString1, String paramAnonymousString2) {}
+      public final void onActivityPaused(Activity paramAnonymousActivity) {}
       
-      public final void v(String paramAnonymousString1, String paramAnonymousString2) {}
+      public final void onActivityResumed(Activity paramAnonymousActivity) {}
       
-      public final void w(String paramAnonymousString1, String paramAnonymousString2) {}
-    };
-    JBy = local1;
-    JBz = local1;
-    AppMethodBeat.o(159124);
-  }
-  
-  public static void a(a parama)
-  {
-    JBz = parama;
-  }
-  
-  public static void d(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159119);
-    if (JBz != null)
-    {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
+      public final void onActivitySaveInstanceState(Activity paramAnonymousActivity, Bundle paramAnonymousBundle) {}
+      
+      public final void onActivityStarted(Activity paramAnonymousActivity)
+      {
+        AppMethodBeat.i(153539);
+        this.OLN.apply(paramAnonymousActivity);
+        AppMethodBeat.o(153539);
       }
-      JBz.d(paramString1, paramString2);
-    }
-    AppMethodBeat.o(159119);
+      
+      public final void onActivityStopped(Activity paramAnonymousActivity) {}
+    });
+    AppMethodBeat.o(153543);
   }
   
-  public static void e(String paramString1, String paramString2, Object... paramVarArgs)
+  public final void a(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
   {
-    AppMethodBeat.i(159122);
-    if (JBz != null)
+    AppMethodBeat.i(153548);
+    synchronized (this.qFF)
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      JBz.e(paramString1, paramString2);
+      this.qFF.add(paramOnApplyWindowInsetsListener);
+      AppMethodBeat.o(153548);
+      return;
     }
-    AppMethodBeat.o(159122);
   }
   
-  public static void i(String paramString1, String paramString2, Object... paramVarArgs)
+  public final void b(View.OnApplyWindowInsetsListener paramOnApplyWindowInsetsListener)
   {
-    AppMethodBeat.i(159120);
-    if (JBz != null)
+    AppMethodBeat.i(175981);
+    synchronized (this.qFF)
     {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      JBz.i(paramString1, paramString2);
+      this.qFF.remove(paramOnApplyWindowInsetsListener);
+      AppMethodBeat.o(175981);
+      return;
     }
-    AppMethodBeat.o(159120);
-  }
-  
-  public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159123);
-    if (JBz != null)
-    {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      paramThrowable = paramString2 + "  " + Log.getStackTraceString(paramThrowable);
-      JBz.e(paramString1, paramThrowable);
-    }
-    AppMethodBeat.o(159123);
-  }
-  
-  public static void v(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159118);
-    if (JBz != null)
-    {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      JBz.v(paramString1, paramString2);
-    }
-    AppMethodBeat.o(159118);
-  }
-  
-  public static void w(String paramString1, String paramString2, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(159121);
-    if (JBz != null)
-    {
-      paramVarArgs = String.format(paramString2, paramVarArgs);
-      paramString2 = paramVarArgs;
-      if (paramVarArgs == null) {
-        paramString2 = "";
-      }
-      JBz.w(paramString1, paramString2);
-    }
-    AppMethodBeat.o(159121);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void d(String paramString1, String paramString2);
-    
-    public abstract void e(String paramString1, String paramString2);
-    
-    public abstract void i(String paramString1, String paramString2);
-    
-    public abstract void v(String paramString1, String paramString2);
-    
-    public abstract void w(String paramString1, String paramString2);
   }
 }
 

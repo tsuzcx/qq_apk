@@ -1,72 +1,73 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cbn;
-import com.tencent.mm.protocal.protobuf.cbo;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cqp;
+import com.tencent.mm.protocal.protobuf.cqq;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
   extends b
 {
+  public String CiJ;
+  public cqq CiR;
   private final String TAG;
-  private f callback;
-  public String iWF;
-  private com.tencent.mm.ak.b rr;
-  public String yhI;
-  public cbo yhQ;
+  private i callback;
+  public String remark;
+  private d rr;
   
   public j(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67376);
     this.TAG = "MicroMsg.NetSceneBankRemitModifyExplain";
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cbn();
-    ((b.a)localObject).hQG = new cbo();
-    ((b.a)localObject).funcId = 1590;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/modifyexplain_tsbc";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (cbn)this.rr.hQD.hQJ;
-    ((cbn)localObject).yis = paramString1;
-    ((cbn)localObject).yiv = paramString2;
-    this.yhI = paramString1;
-    this.iWF = paramString2;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new cqp();
+    ((d.a)localObject).iLO = new cqq();
+    ((d.a)localObject).funcId = 1590;
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/modifyexplain_tsbc";
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (cqp)this.rr.iLK.iLR;
+    ((cqp)localObject).Cjt = paramString1;
+    ((cqp)localObject).Cjw = paramString2;
+    this.CiJ = paramString1;
+    this.remark = paramString2;
     AppMethodBeat.o(67376);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
     AppMethodBeat.i(67378);
-    ae.i("MicroMsg.NetSceneBankRemitModifyExplain", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.yhQ = ((cbo)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
-    ae.i("MicroMsg.NetSceneBankRemitModifyExplain", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.yhQ.dmy), this.yhQ.phe });
+    Log.i("MicroMsg.NetSceneBankRemitModifyExplain", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.CiR = ((cqq)((d)params).iLL.iLR);
+    Log.i("MicroMsg.NetSceneBankRemitModifyExplain", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.CiR.dDN), this.CiR.qwn });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(67378);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(67377);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(67377);
     return i;
   }
   
-  public final void e(q paramq)
+  public final void e(s params)
   {
-    paramq = (cbo)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
-    this.LVj = paramq.dmy;
-    this.LVk = paramq.phe;
+    params = (cqq)((d)params).iLL.iLR;
+    this.RtZ = params.dDN;
+    this.Rua = params.qwn;
   }
   
   public final int getType()

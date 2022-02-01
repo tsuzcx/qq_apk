@@ -1,73 +1,74 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.yj;
-import com.tencent.mm.g.a.yj.b;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.a.zo;
+import com.tencent.mm.g.a.zo.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class d
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+  extends com.tencent.mm.plugin.appbrand.jsapi.d
 {
   public static final int CTRL_INDEX = 681;
   public static final String NAME = "handleWCPayOverseaWalletBuffer";
   
-  public final void a(final c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(46716);
-    ae.i("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "invoke JsApiHandleWCPayOverseaWalletBuffer!");
-    if (paramc == null)
+    Log.i("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "invoke JsApiHandleWCPayOverseaWalletBuffer!");
+    if (paramf == null)
     {
-      ae.e("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "fail:component is null");
+      Log.e("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "fail:component is null");
       AppMethodBeat.o(46716);
       return;
     }
-    if (paramc.getContext() == null)
+    if (paramf.getContext() == null)
     {
-      ae.e("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "fail:context is null");
-      paramc.h(paramInt, e("fail", null));
+      Log.e("MicroMsg.JsApiHandleWCPayOverseaWalletBuffer", "fail:context is null");
+      paramf.i(paramInt, h("fail", null));
       AppMethodBeat.o(46716);
       return;
     }
-    final yj localyj = new yj();
-    localyj.dNJ.action = paramJSONObject.optString("action");
-    localyj.dNJ.buffer = paramJSONObject.optString("buffer");
-    localyj.dNJ.appId = paramJSONObject.optString("appId");
-    localyj.dNJ.dNN = bu.getInt(paramJSONObject.optString("walletRegion"), 0);
-    localyj.dNJ.cVJ = paramJSONObject.optString("timeStamp");
-    localyj.dNJ.nonceStr = paramJSONObject.optString("nonceStr");
-    localyj.dNJ.dNM = paramJSONObject.optString("paySign");
-    localyj.dNJ.signType = paramJSONObject.optString("signType");
-    localyj.dNJ.dNL = paramJSONObject.optString("package");
-    localyj.dNJ.url = paramJSONObject.optString("url");
-    localyj.dNK.dNO = new Runnable()
+    final zo localzo = new zo();
+    localzo.efF.action = paramJSONObject.optString("action");
+    localzo.efF.buffer = paramJSONObject.optString("buffer");
+    localzo.efF.appId = paramJSONObject.optString("appId");
+    localzo.efF.efI = Util.getInt(paramJSONObject.optString("walletRegion"), 0);
+    localzo.efF.dmc = paramJSONObject.optString("timeStamp");
+    localzo.efF.nonceStr = paramJSONObject.optString("nonceStr");
+    localzo.efF.dQk = paramJSONObject.optString("paySign");
+    localzo.efF.signType = paramJSONObject.optString("signType");
+    localzo.efF.efH = paramJSONObject.optString("package");
+    localzo.efF.url = paramJSONObject.optString("url");
+    localzo.efG.efJ = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(46715);
-        if (localyj.dNK.retCode == 0)
+        if (localzo.efG.retCode == 0)
         {
-          new HashMap().put("buffer", localyj.dNK.buffer);
-          paramc.h(paramInt, d.this.e("ok", null));
+          new HashMap().put("buffer", localzo.efG.buffer);
+          paramf.i(paramInt, d.this.h("ok", null));
           AppMethodBeat.o(46715);
           return;
         }
-        if (localyj.dNK.retCode == -2)
+        if (localzo.efG.retCode == -2)
         {
-          paramc.h(paramInt, d.this.e("null", null));
+          paramf.i(paramInt, d.this.h("null", null));
           AppMethodBeat.o(46715);
           return;
         }
-        paramc.h(paramInt, d.this.e("fail", null));
+        paramf.i(paramInt, d.this.h("fail", null));
         AppMethodBeat.o(46715);
       }
     };
-    com.tencent.mm.sdk.b.a.IvT.l(localyj);
+    EventCenter.instance.publish(localzo);
     AppMethodBeat.o(46716);
   }
 }

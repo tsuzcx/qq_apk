@@ -14,116 +14,225 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.plugin.mmsight.model.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ar.a;
 import java.nio.ByteBuffer;
 
 @TargetApi(16)
 public class s
   implements f
 {
-  private ByteBuffer[] bfT;
+  private ByteBuffer[] bfQ;
   private int bitrate;
-  private ByteBuffer[] btA;
+  private ByteBuffer[] btv;
   private MediaCodec.BufferInfo bufferInfo;
-  boolean dhz;
+  int colorFormat;
+  boolean dyL;
   int frameCount;
   private int frameRate;
-  private long gyu;
-  int hkE;
-  private int hkF;
-  protected z hlX;
-  private final Object hmj;
-  boolean hyP;
+  private long hlh;
+  private int idB;
+  protected z ieT;
+  private final Object iff;
+  boolean isQ;
   private boolean isStart;
-  private int ixU;
-  private int ixV;
-  private boolean ixW;
-  private int jxn;
-  private int jxo;
+  private int jtj;
+  private int jtk;
+  private boolean jtl;
+  private int kxW;
+  private int kxX;
   protected MediaFormat mediaFormat;
   private long startTime;
   int targetHeight;
   int targetWidth;
-  private p wbL;
-  private boolean wbN;
-  private boolean wbP;
-  int wcA;
-  int wcB;
-  int wcC;
-  int wcD;
-  a wcE;
-  f.a wcF;
-  private a.a wcG;
-  private long wca;
+  private p zvN;
+  private boolean zvP;
+  private boolean zvR;
+  int zwB;
+  int zwC;
+  int zwD;
+  int zwE;
+  a zwF;
+  f.a zwG;
+  private a.a zwH;
+  private long zwc;
   
   public s(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, boolean paramBoolean)
   {
     AppMethodBeat.i(89588);
     this.startTime = 0L;
-    this.gyu = 0L;
-    this.ixU = -1;
-    this.ixV = -1;
+    this.hlh = 0L;
+    this.jtj = -1;
+    this.jtk = -1;
     this.bitrate = 0;
     this.isStart = false;
-    this.dhz = false;
-    this.ixW = false;
-    this.wcA = -1;
-    this.wcB = -1;
-    this.wcC = -1;
-    this.wcD = -1;
-    this.hyP = false;
-    this.hmj = new Object();
-    this.wbN = false;
-    this.wbP = true;
-    this.wca = 0L;
-    this.wcG = new a.a()
+    this.dyL = false;
+    this.jtl = false;
+    this.zwB = -1;
+    this.zwC = -1;
+    this.zwD = -1;
+    this.zwE = -1;
+    this.isQ = false;
+    this.iff = new Object();
+    this.zvP = false;
+    this.zvR = true;
+    this.zwc = 0L;
+    this.zwH = new a.a()
     {
       public final void output(byte[] paramAnonymousArrayOfByte)
       {
         AppMethodBeat.i(89586);
-        long l = bu.HQ();
-        boolean bool2 = s.this.wcE.dqf();
+        long l = Util.currentTicks();
+        boolean bool2 = s.this.zwF.ejV();
         s locals = s.this;
-        if ((bool2) && (s.this.dhz)) {}
+        if ((bool2) && (s.this.dyL)) {}
         for (boolean bool1 = true;; bool1 = false)
         {
           locals.d(paramAnonymousArrayOfByte, bool1);
-          com.tencent.mm.bk.b.ixQ.k(paramAnonymousArrayOfByte);
-          ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "markStop: %s isEnd %s costTime %d", new Object[] { Boolean.valueOf(s.this.dhz), Boolean.valueOf(bool2), Long.valueOf(bu.aO(l)) });
-          if ((bool2) && (s.this.dhz)) {
-            s.this.dqu();
+          com.tencent.mm.bk.b.jtf.k(paramAnonymousArrayOfByte);
+          Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "markStop: %s isEnd %s costTime %d", new Object[] { Boolean.valueOf(s.this.dyL), Boolean.valueOf(bool2), Long.valueOf(Util.ticksToNow(l)) });
+          if ((bool2) && (s.this.dyL)) {
+            s.this.ekk();
           }
           AppMethodBeat.o(89586);
           return;
         }
       }
     };
-    this.wcE = new a(this.wcG);
-    this.jxn = paramInt1;
-    this.jxo = paramInt2;
-    ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "create MMSightYUVMediaCodecRecorder, init targetWidth: %d, targetHeight: %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "create MMSightYUVMediaCodecRecorder, after align 16, targetWidth: %d, targetHeight: %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    this.zwF = new a(this.zwH);
+    this.kxW = paramInt1;
+    this.kxX = paramInt2;
+    Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "create MMSightYUVMediaCodecRecorder, init targetWidth: %d, targetHeight: %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "create MMSightYUVMediaCodecRecorder, after align 16, targetWidth: %d, targetHeight: %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     this.targetWidth = paramInt3;
     this.targetHeight = paramInt4;
     this.frameRate = paramInt7;
-    this.hkF = paramInt6;
-    this.wbL = null;
+    this.idB = paramInt6;
+    this.zvN = null;
     this.bufferInfo = new MediaCodec.BufferInfo();
     this.bitrate = paramInt5;
-    this.hyP = paramBoolean;
-    this.wbP = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qFy, true);
-    ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "create BigSightMediaCodecYUVRecorder, frameWidth: %s, frameHeight: %s, targetWidth: %s, targetHeight: %s, bitrate: %s, needRotateEachFrame: %s, muxer: %s", new Object[] { Integer.valueOf(this.jxn), Integer.valueOf(this.jxo), Integer.valueOf(this.targetWidth), Integer.valueOf(this.targetHeight), Integer.valueOf(paramInt5), Boolean.valueOf(paramBoolean), null });
+    this.isQ = paramBoolean;
+    this.zvR = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rYK, true);
+    Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "create BigSightMediaCodecYUVRecorder, frameWidth: %s, frameHeight: %s, targetWidth: %s, targetHeight: %s, bitrate: %s, needRotateEachFrame: %s, muxer: %s", new Object[] { Integer.valueOf(this.kxW), Integer.valueOf(this.kxX), Integer.valueOf(this.targetWidth), Integer.valueOf(this.targetHeight), Integer.valueOf(paramInt5), Boolean.valueOf(paramBoolean), null });
     AppMethodBeat.o(89588);
   }
   
-  private int aNH()
+  private void aMi()
+  {
+    AppMethodBeat.i(89599);
+    if (this.zvR)
+    {
+      ekl();
+      AppMethodBeat.o(89599);
+      return;
+    }
+    synchronized (this.iff)
+    {
+      if ((this.zvP) || (0L == this.startTime))
+      {
+        AppMethodBeat.o(89599);
+        return;
+      }
+      this.zvP = true;
+      ekl();
+      AppMethodBeat.o(89599);
+      return;
+    }
+  }
+  
+  private void aMn()
+  {
+    AppMethodBeat.i(89593);
+    this.jtk = this.ieT.dequeueOutputBuffer(this.bufferInfo, 100L);
+    Log.v("MicroMsg.MMSightYUVMediaCodecRecorder", "outputBufferIndex-->" + this.jtk);
+    do
+    {
+      if (this.jtk != -1) {
+        break label149;
+      }
+      Log.d("MicroMsg.MMSightYUVMediaCodecRecorder", "no output from encoder available, break encoderEndStream %s", new Object[] { Boolean.valueOf(this.jtl) });
+      if (!this.jtl) {
+        break;
+      }
+      this.jtk = this.ieT.dequeueOutputBuffer(this.bufferInfo, 100L);
+      if (this.jtk <= 0) {
+        Log.v("MicroMsg.MMSightYUVMediaCodecRecorder", "get outputBufferIndex %d", new Object[] { Integer.valueOf(this.jtk) });
+      }
+    } while ((this.jtk >= 0) || (this.jtl));
+    label149:
+    do
+    {
+      AppMethodBeat.o(89593);
+      return;
+      if (this.jtk == -3)
+      {
+        this.bfQ = this.ieT.getOutputBuffers();
+        Log.d("MicroMsg.MMSightYUVMediaCodecRecorder", "encoder output buffers changed");
+        break;
+      }
+      if (this.jtk == -2)
+      {
+        localObject = this.ieT.getOutputFormat();
+        Log.d("MicroMsg.MMSightYUVMediaCodecRecorder", "encoder output format changed: ".concat(String.valueOf(localObject)));
+        if (this.zvN == null) {
+          break;
+        }
+        this.zvN.g((MediaFormat)localObject);
+        break;
+      }
+      if (this.jtk < 0)
+      {
+        Log.w("MicroMsg.MMSightYUVMediaCodecRecorder", "unexpected result from encoder.dequeueOutputBuffer: " + this.jtk);
+        break;
+      }
+      Log.v("MicroMsg.MMSightYUVMediaCodecRecorder", "perform encoding");
+      Object localObject = this.bfQ[this.jtk];
+      if (localObject == null)
+      {
+        localObject = new RuntimeException("encoderOutputBuffer " + this.jtk + " was null");
+        AppMethodBeat.o(89593);
+        throw ((Throwable)localObject);
+      }
+      this.frameCount += 1;
+      if ((this.bufferInfo.flags & 0x2) != 0) {
+        Log.v("MicroMsg.MMSightYUVMediaCodecRecorder", "ignoring BUFFER_FLAG_CODEC_CONFIG, size: %s, %s", new Object[] { Integer.valueOf(this.bufferInfo.size), Boolean.FALSE });
+      }
+      if (this.bufferInfo.size != 0)
+      {
+        if ((this.zvN != null) && (!this.zvN.ekj()))
+        {
+          MediaFormat localMediaFormat = this.ieT.getOutputFormat();
+          this.zvN.g(localMediaFormat);
+        }
+        ((ByteBuffer)localObject).position(this.bufferInfo.offset);
+        ((ByteBuffer)localObject).limit(this.bufferInfo.offset + this.bufferInfo.size);
+        i((ByteBuffer)localObject, this.bufferInfo);
+      }
+      this.ieT.releaseOutputBuffer(this.jtk, false);
+      if ((this.bufferInfo.flags & 0x4) == 0) {
+        break;
+      }
+      if (!this.dyL)
+      {
+        Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "reached end of stream unexpectedly");
+        AppMethodBeat.o(89593);
+        return;
+      }
+      Log.w("MicroMsg.MMSightYUVMediaCodecRecorder", "do stop encoder");
+      aMi();
+    } while (this.zwG == null);
+    this.zwG.ejZ();
+    this.zwG = null;
+    AppMethodBeat.o(89593);
+  }
+  
+  private int bhL()
   {
     AppMethodBeat.i(89591);
-    long l1 = bu.HQ();
+    long l1 = Util.currentTicks();
     int k = MediaCodecList.getCodecCount();
     int i = 0;
     Object localObject2;
@@ -134,7 +243,7 @@ public class s
       {
         localObject2 = ((MediaCodecInfo)???).getSupportedTypes();
         j = 0;
-        label44:
+        label45:
         if (j < localObject2.length) {
           if (!localObject2[j].equalsIgnoreCase("video/avc")) {}
         }
@@ -143,54 +252,54 @@ public class s
     for (;;)
     {
       if (??? != null) {
-        break label105;
+        break label109;
       }
-      ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "Unable to find an appropriate codec for video/avc");
-      l.auW();
+      Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "Unable to find an appropriate codec for video/avc");
+      l.aNJ();
       AppMethodBeat.o(89591);
       return -1;
       j += 1;
-      break label44;
+      break label45;
       i += 1;
       break;
       ??? = null;
     }
-    label105:
-    ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "found codec: %s, used %sms", new Object[] { ((MediaCodecInfo)???).getName(), Long.valueOf(bu.aO(l1)) });
-    l1 = bu.HQ();
+    label109:
+    Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "found codec: %s, used %sms", new Object[] { ((MediaCodecInfo)???).getName(), Long.valueOf(Util.ticksToNow(l1)) });
+    l1 = Util.currentTicks();
     i = -1;
     if (CaptureMMProxy.getInstance() != null) {
-      i = CaptureMMProxy.getInstance().getInt(am.a.IRo, -1);
+      i = CaptureMMProxy.getInstance().getInt(ar.a.NZq, -1);
     }
-    ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "saveColorFormat: %s", new Object[] { Integer.valueOf(i) });
+    Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "saveColorFormat: %s", new Object[] { Integer.valueOf(i) });
     if (i > 0)
     {
-      this.hkE = i;
-      l1 = bu.aO(l1);
-      if ((this.hkE > 0) && (l1 > 200L) && (CaptureMMProxy.getInstance() != null)) {
-        CaptureMMProxy.getInstance().set(am.a.IRo, Integer.valueOf(this.hkE));
+      this.colorFormat = i;
+      l1 = Util.ticksToNow(l1);
+      if ((this.colorFormat > 0) && (l1 > 200L) && (CaptureMMProxy.getInstance() != null)) {
+        CaptureMMProxy.getInstance().set(ar.a.NZq, Integer.valueOf(this.colorFormat));
       }
-      ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "found colorFormat: %s, used %sms", new Object[] { Integer.valueOf(this.hkE), Long.valueOf(l1) });
-      l1 = bu.HQ();
-      ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "initRotate: %s", new Object[] { Integer.valueOf(this.wcA) });
-      if (!this.hyP) {
-        break label805;
+      Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "found colorFormat: %s, used %sms", new Object[] { Integer.valueOf(this.colorFormat), Long.valueOf(l1) });
+      l1 = Util.currentTicks();
+      Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "initRotate: %s", new Object[] { Integer.valueOf(this.zwB) });
+      if (!this.isQ) {
+        break label813;
       }
-      if ((this.wcA != 180) && (this.wcA != 0)) {
-        break label789;
-      }
-      i = this.targetWidth;
-      label319:
-      if ((this.wcA != 180) && (this.wcA != 0)) {
+      if ((this.zwB != 180) && (this.zwB != 0)) {
         break label797;
       }
+      i = this.targetWidth;
+      label324:
+      if ((this.zwB != 180) && (this.zwB != 0)) {
+        break label805;
+      }
       j = this.targetHeight;
-      label341:
+      label346:
       this.mediaFormat = MediaFormat.createVideoFormat("video/avc", i, j);
-      label352:
-      ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "createVideoFormat used %sms", new Object[] { Long.valueOf(bu.aO(l1)) });
-      if ((??? != null) && (!d.lA(23))) {
-        break label965;
+      label358:
+      Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "createVideoFormat used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l1)) });
+      if ((??? != null) && (!d.oD(23))) {
+        break label974;
       }
     }
     for (;;)
@@ -216,7 +325,7 @@ public class s
         Object localObject4 = localObject2[i];
         m = localObject4.profile;
         n = localObject4.level;
-        ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "profile: %s, level: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(n) });
+        Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "profile: %s, level: %s", new Object[] { Integer.valueOf(m), Integer.valueOf(n) });
         switch (m)
         {
         }
@@ -229,36 +338,36 @@ public class s
           int m;
           int n;
           long l2;
-          label789:
           label797:
           label805:
-          if (d.lA(21)) {
+          label813:
+          if (d.oD(21)) {
             this.mediaFormat.setInteger("bitrate-mode", 1);
           }
           this.mediaFormat.setInteger("bitrate", this.bitrate);
           this.mediaFormat.setInteger("frame-rate", this.frameRate);
-          this.mediaFormat.setInteger("color-format", this.hkE);
-          this.mediaFormat.setInteger("i-frame-interval", this.hkF);
-          ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "mediaFormat: %s", new Object[] { this.mediaFormat });
-          this.hlX = z.vK(((MediaCodecInfo)???).getName());
-          this.hlX.a(this.mediaFormat, null, 1);
-          this.hlX.start();
-          if (this.wbP)
+          this.mediaFormat.setInteger("color-format", this.colorFormat);
+          this.mediaFormat.setInteger("i-frame-interval", this.idB);
+          Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "mediaFormat: %s", new Object[] { this.mediaFormat });
+          this.ieT = z.Eb(((MediaCodecInfo)???).getName());
+          this.ieT.a(this.mediaFormat, null, 1);
+          this.ieT.start();
+          if (this.zvR)
           {
             AppMethodBeat.o(89591);
             return 0;
             localException1 = localException1;
-            ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "trySetProfile error: %s", new Object[] { localException1.getMessage() });
+            Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "trySetProfile error: %s", new Object[] { localException1.getMessage() });
             continue;
           }
         }
         catch (Exception localException2)
         {
-          ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "trySetBitRateMode error: %s", new Object[] { localException2.getMessage() });
+          Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "trySetBitRateMode error: %s", new Object[] { localException2.getMessage() });
           continue;
-          synchronized (this.hmj)
+          synchronized (this.iff)
           {
-            this.wbN = false;
+            this.zvP = false;
             AppMethodBeat.o(89591);
             return 0;
           }
@@ -274,15 +383,15 @@ public class s
       i += 1;
       continue;
       i = 0;
-      l2 = bu.HQ();
+      l2 = Util.currentTicks();
       localObject2 = ((MediaCodecInfo)???).getCapabilitiesForType("video/avc");
-      ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(bu.aO(l2)) });
-      ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "color format length: %s", new Object[] { Integer.valueOf(((MediaCodecInfo.CodecCapabilities)localObject2).colorFormats.length) });
+      Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l2)) });
+      Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "color format length: %s", new Object[] { Integer.valueOf(((MediaCodecInfo.CodecCapabilities)localObject2).colorFormats.length) });
       j = 0;
       if (j < ((MediaCodecInfo.CodecCapabilities)localObject2).colorFormats.length)
       {
         n = localObject2.colorFormats[j];
-        ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "capabilities colorFormat: %s", new Object[] { Integer.valueOf(n) });
+        Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "capabilities colorFormat: %s", new Object[] { Integer.valueOf(n) });
         switch (n)
         {
         default: 
@@ -311,21 +420,21 @@ public class s
       }
       else
       {
-        ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "codec: %s, colorFormat: %s", new Object[] { ((MediaCodecInfo)???).getName(), Integer.valueOf(i) });
+        Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "codec: %s, colorFormat: %s", new Object[] { ((MediaCodecInfo)???).getName(), Integer.valueOf(i) });
         break;
         i = this.targetHeight;
-        break label319;
+        break label324;
         j = this.targetWidth;
-        break label341;
-        if ((this.wcA == 180) || (this.wcA == 0))
+        break label346;
+        if ((this.zwB == 180) || (this.zwB == 0))
         {
           i = this.targetHeight;
-          if ((this.wcA != 180) && (this.wcA != 0)) {
+          if ((this.zwB != 180) && (this.zwB != 0)) {
             continue;
           }
           j = this.targetWidth;
           this.mediaFormat = MediaFormat.createVideoFormat("video/avc", i, j);
-          break label352;
+          break label358;
         }
         i = this.targetWidth;
         continue;
@@ -334,7 +443,7 @@ public class s
         j = 1;
       }
     }
-    ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "best profile: %s, level: %s", new Object[] { Integer.valueOf(localCodecProfileLevel.profile), Integer.valueOf(localCodecProfileLevel.level) });
+    Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "best profile: %s, level: %s", new Object[] { Integer.valueOf(localCodecProfileLevel.profile), Integer.valueOf(localCodecProfileLevel.level) });
     if ((localCodecProfileLevel.profile > 0) && (localCodecProfileLevel.level >= 256))
     {
       this.mediaFormat.setInteger("profile", localCodecProfileLevel.profile);
@@ -342,137 +451,28 @@ public class s
     }
   }
   
-  private void atH()
-  {
-    AppMethodBeat.i(89599);
-    if (this.wbP)
-    {
-      dqv();
-      AppMethodBeat.o(89599);
-      return;
-    }
-    synchronized (this.hmj)
-    {
-      if ((this.wbN) || (0L == this.startTime))
-      {
-        AppMethodBeat.o(89599);
-        return;
-      }
-      this.wbN = true;
-      dqv();
-      AppMethodBeat.o(89599);
-      return;
-    }
-  }
-  
-  private void atM()
-  {
-    AppMethodBeat.i(89593);
-    this.ixV = this.hlX.dequeueOutputBuffer(this.bufferInfo, 100L);
-    ae.v("MicroMsg.MMSightYUVMediaCodecRecorder", "outputBufferIndex-->" + this.ixV);
-    do
-    {
-      if (this.ixV != -1) {
-        break label154;
-      }
-      ae.d("MicroMsg.MMSightYUVMediaCodecRecorder", "no output from encoder available, break encoderEndStream %s", new Object[] { Boolean.valueOf(this.ixW) });
-      if (!this.ixW) {
-        break;
-      }
-      this.ixV = this.hlX.dequeueOutputBuffer(this.bufferInfo, 100L);
-      if (this.ixV <= 0) {
-        ae.v("MicroMsg.MMSightYUVMediaCodecRecorder", "get outputBufferIndex %d", new Object[] { Integer.valueOf(this.ixV) });
-      }
-    } while ((this.ixV >= 0) || (this.ixW));
-    label154:
-    do
-    {
-      AppMethodBeat.o(89593);
-      return;
-      if (this.ixV == -3)
-      {
-        this.bfT = this.hlX.getOutputBuffers();
-        ae.d("MicroMsg.MMSightYUVMediaCodecRecorder", "encoder output buffers changed");
-        break;
-      }
-      if (this.ixV == -2)
-      {
-        localObject = this.hlX.getOutputFormat();
-        ae.d("MicroMsg.MMSightYUVMediaCodecRecorder", "encoder output format changed: ".concat(String.valueOf(localObject)));
-        if (this.wbL == null) {
-          break;
-        }
-        this.wbL.g((MediaFormat)localObject);
-        break;
-      }
-      if (this.ixV < 0)
-      {
-        ae.w("MicroMsg.MMSightYUVMediaCodecRecorder", "unexpected result from encoder.dequeueOutputBuffer: " + this.ixV);
-        break;
-      }
-      ae.v("MicroMsg.MMSightYUVMediaCodecRecorder", "perform encoding");
-      Object localObject = this.bfT[this.ixV];
-      if (localObject == null)
-      {
-        localObject = new RuntimeException("encoderOutputBuffer " + this.ixV + " was null");
-        AppMethodBeat.o(89593);
-        throw ((Throwable)localObject);
-      }
-      this.frameCount += 1;
-      if ((this.bufferInfo.flags & 0x2) != 0) {
-        ae.v("MicroMsg.MMSightYUVMediaCodecRecorder", "ignoring BUFFER_FLAG_CODEC_CONFIG, size: %s, %s", new Object[] { Integer.valueOf(this.bufferInfo.size), Boolean.FALSE });
-      }
-      if (this.bufferInfo.size != 0)
-      {
-        if ((this.wbL != null) && (!this.wbL.dqt()))
-        {
-          MediaFormat localMediaFormat = this.hlX.getOutputFormat();
-          this.wbL.g(localMediaFormat);
-        }
-        ((ByteBuffer)localObject).position(this.bufferInfo.offset);
-        ((ByteBuffer)localObject).limit(this.bufferInfo.offset + this.bufferInfo.size);
-        i((ByteBuffer)localObject, this.bufferInfo);
-      }
-      this.hlX.releaseOutputBuffer(this.ixV, false);
-      if ((this.bufferInfo.flags & 0x4) == 0) {
-        break;
-      }
-      if (!this.dhz)
-      {
-        ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "reached end of stream unexpectedly");
-        AppMethodBeat.o(89593);
-        return;
-      }
-      ae.w("MicroMsg.MMSightYUVMediaCodecRecorder", "do stop encoder");
-      atH();
-    } while (this.wcF == null);
-    this.wcF.dqj();
-    this.wcF = null;
-    AppMethodBeat.o(89593);
-  }
-  
-  private void dqv()
+  private void ekl()
   {
     AppMethodBeat.i(89600);
     try
     {
-      if (this.wcE != null) {
-        this.wcE.stop();
+      if (this.zwF != null) {
+        this.zwF.stop();
       }
-      if (this.hlX != null)
+      if (this.ieT != null)
       {
-        ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "stop encoder");
-        this.hlX.stop();
-        this.hlX.release();
+        Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "stop encoder");
+        this.ieT.stop();
+        this.ieT.release();
         this.isStart = false;
-        this.hlX = null;
+        this.ieT = null;
       }
       AppMethodBeat.o(89600);
       return;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "clear error: %s", new Object[] { localException.getMessage() });
+      Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "clear error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(89600);
     }
   }
@@ -480,22 +480,22 @@ public class s
   public final void a(f.a parama)
   {
     AppMethodBeat.i(89595);
-    this.wcF = parama;
-    this.dhz = true;
-    boolean bool = this.wcE.dqf();
-    ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "!!!stop, isStart!!: %s %s isEnd %s", new Object[] { Boolean.valueOf(this.isStart), this.wcF, Boolean.valueOf(bool) });
+    this.zwG = parama;
+    this.dyL = true;
+    boolean bool = this.zwF.ejV();
+    Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "!!!stop, isStart!!: %s %s isEnd %s", new Object[] { Boolean.valueOf(this.isStart), this.zwG, Boolean.valueOf(bool) });
     if (bool) {
-      dqu();
+      ekk();
     }
     AppMethodBeat.o(89595);
   }
   
-  public final long atL()
+  public final long aMm()
   {
     AppMethodBeat.i(89597);
     if (this.startTime <= 0L)
     {
-      ae.w("MicroMsg.MMSightYUVMediaCodecRecorder", "do not start record");
+      Log.w("MicroMsg.MMSightYUVMediaCodecRecorder", "do not start record");
       AppMethodBeat.o(89597);
       return 0L;
     }
@@ -507,18 +507,18 @@ public class s
   public void clear()
   {
     AppMethodBeat.i(89598);
-    ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "clear");
-    atH();
+    Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "clear");
+    aMi();
     AppMethodBeat.o(89598);
   }
   
   public final void d(byte[] paramArrayOfByte, boolean paramBoolean)
   {
     AppMethodBeat.i(89592);
-    if (!this.wbP) {
-      synchronized (this.hmj)
+    if (!this.zvR) {
+      synchronized (this.iff)
       {
-        if (this.wbN)
+        if (this.zvP)
         {
           AppMethodBeat.o(89592);
           return;
@@ -531,63 +531,63 @@ public class s
       {
         if (!this.isStart)
         {
-          ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "writeData, not start!");
+          Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "writeData, not start!");
           AppMethodBeat.o(89592);
           return;
           paramArrayOfByte = finally;
           AppMethodBeat.o(89592);
           throw paramArrayOfByte;
         }
-        if (this.hlX == null)
+        if (this.ieT == null)
         {
-          ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "encoder is null");
+          Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "encoder is null");
           AppMethodBeat.o(89592);
           return;
         }
-        if ((this.wbL != null) && (this.wbL.dqr() <= 0L)) {
-          this.wbL.dqs();
+        if ((this.zvN != null) && (this.zvN.ekh() <= 0L)) {
+          this.zvN.eki();
         }
-        long l2 = bu.HQ();
-        this.btA = this.hlX.getInputBuffers();
-        this.bfT = this.hlX.getOutputBuffers();
-        int i = this.hlX.dequeueInputBuffer(100L);
-        this.ixU = i;
+        long l2 = Util.currentTicks();
+        this.btv = this.ieT.getInputBuffers();
+        this.bfQ = this.ieT.getOutputBuffers();
+        int i = this.ieT.dequeueInputBuffer(100L);
+        this.jtj = i;
         if (i < 0)
         {
-          ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "video no input available, drain first");
-          atM();
+          Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "video no input available, drain first");
+          aMn();
         }
-        if (this.hlX == null)
+        if (this.ieT == null)
         {
-          ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "encoder is null");
+          Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "encoder is null");
           AppMethodBeat.o(89592);
           return;
         }
-        ae.v("MicroMsg.MMSightYUVMediaCodecRecorder", "inputBufferIndex: %s", new Object[] { Integer.valueOf(this.ixU) });
-        long l3 = bu.HQ();
-        if (this.ixU >= 0)
+        Log.v("MicroMsg.MMSightYUVMediaCodecRecorder", "inputBufferIndex: %s", new Object[] { Integer.valueOf(this.jtj) });
+        long l3 = Util.currentTicks();
+        if (this.jtj >= 0)
         {
           long l4 = System.nanoTime();
           long l5 = paramArrayOfByte.length * 1000000000L / 1600000L;
           long l1;
-          if (this.wbL != null)
+          if (this.zvN != null)
           {
-            l1 = this.wbL.dqr();
+            l1 = this.zvN.ekh();
             l1 = (l4 - l5 - l1) / 1000L;
-            if ((l1 < 0L) && (this.wca <= 0L)) {
-              this.wca = (-l1);
+            if ((l1 < 0L) && (this.zwc <= 0L)) {
+              this.zwc = (-l1);
             }
-            l1 += this.wca;
-            ae.v("MicroMsg.MMSightYUVMediaCodecRecorder", "presentationTime: ".concat(String.valueOf(l1)));
-            ??? = this.btA[this.ixU];
+            l1 += this.zwc;
+            Log.v("MicroMsg.MMSightYUVMediaCodecRecorder", "presentationTime: ".concat(String.valueOf(l1)));
+            ??? = this.btv[this.jtj];
             ((ByteBuffer)???).clear();
             ((ByteBuffer)???).put(paramArrayOfByte);
             ((ByteBuffer)???).position(0);
             if ((this.isStart) && (!paramBoolean))
             {
-              this.hlX.a(this.ixU, paramArrayOfByte.length, l1, 0);
-              atM();
-              ae.v("MicroMsg.MMSightYUVMediaCodecRecorder", "encoder used %sms %sms", new Object[] { Long.valueOf(bu.aO(l2)), Long.valueOf(bu.aO(l3)) });
+              this.ieT.a(this.jtj, paramArrayOfByte.length, l1, 0);
+              aMn();
+              Log.v("MicroMsg.MMSightYUVMediaCodecRecorder", "encoder used %sms %sms", new Object[] { Long.valueOf(Util.ticksToNow(l2)), Long.valueOf(Util.ticksToNow(l3)) });
               AppMethodBeat.o(89592);
             }
           }
@@ -596,41 +596,41 @@ public class s
             l1 = this.startTime;
             continue;
           }
-          ae.v("MicroMsg.MMSightYUVMediaCodecRecorder", "end of stream");
-          this.ixW = true;
-          this.hlX.a(this.ixU, paramArrayOfByte.length, l1, 4);
+          Log.v("MicroMsg.MMSightYUVMediaCodecRecorder", "end of stream");
+          this.jtl = true;
+          this.ieT.a(this.jtj, paramArrayOfByte.length, l1, 4);
           continue;
         }
-        ae.v("MicroMsg.MMSightYUVMediaCodecRecorder", "input buffer not available");
+        Log.v("MicroMsg.MMSightYUVMediaCodecRecorder", "input buffer not available");
       }
       catch (Exception paramArrayOfByte)
       {
-        l.auX();
-        ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "writeData error: %s", new Object[] { paramArrayOfByte.getMessage() });
-        ae.printErrStackTrace("MicroMsg.MMSightYUVMediaCodecRecorder", paramArrayOfByte, "", new Object[0]);
+        l.aNK();
+        Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "writeData error: %s", new Object[] { paramArrayOfByte.getMessage() });
+        Log.printErrStackTrace("MicroMsg.MMSightYUVMediaCodecRecorder", paramArrayOfByte, "", new Object[0]);
         AppMethodBeat.o(89592);
         return;
       }
     }
   }
   
-  final void dqu()
+  final void ekk()
   {
     AppMethodBeat.i(89596);
-    ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "stopImp %s  isStart:%b", new Object[] { bu.fpN().toString(), Boolean.valueOf(this.isStart) });
+    Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "stopImp %s  isStart:%b", new Object[] { Util.getStack().toString(), Boolean.valueOf(this.isStart) });
     try
     {
       if (this.isStart) {
-        ar.o(new Runnable()
+        MMHandlerThread.postToMainThreadDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(89587);
             s.a(s.this);
-            if (s.this.wcF != null)
+            if (s.this.zwG != null)
             {
-              s.this.wcF.dqj();
-              s.this.wcF = null;
+              s.this.zwG.ejZ();
+              s.this.zwG = null;
             }
             AppMethodBeat.o(89587);
           }
@@ -641,37 +641,37 @@ public class s
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "stop error: %s", new Object[] { localException.getMessage() });
+      Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "stop error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(89596);
     }
   }
   
-  public int gz(int paramInt1, int paramInt2)
+  public int ha(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(89590);
     try
     {
-      this.wcA = paramInt2;
-      paramInt1 = aNH();
+      this.zwB = paramInt2;
+      paramInt1 = bhL();
       AppMethodBeat.o(89590);
       return paramInt1;
     }
     catch (Exception localException1)
     {
-      ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "init error: %s, try to re-init again", new Object[] { localException1.getMessage() });
+      Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "init error: %s, try to re-init again", new Object[] { localException1.getMessage() });
       try
       {
         if (CaptureMMProxy.getInstance() != null) {
-          CaptureMMProxy.getInstance().set(am.a.IRo, Integer.valueOf(-1));
+          CaptureMMProxy.getInstance().set(ar.a.NZq, Integer.valueOf(-1));
         }
-        paramInt1 = aNH();
+        paramInt1 = bhL();
         AppMethodBeat.o(89590);
         return paramInt1;
       }
       catch (Exception localException2)
       {
-        ae.e("MicroMsg.MMSightYUVMediaCodecRecorder", "re-init again error: %s", new Object[] { localException2.getMessage() });
-        l.auW();
+        Log.e("MicroMsg.MMSightYUVMediaCodecRecorder", "re-init again error: %s", new Object[] { localException2.getMessage() });
+        l.aNJ();
         AppMethodBeat.o(89590);
       }
     }
@@ -681,8 +681,8 @@ public class s
   protected void i(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
     AppMethodBeat.i(89594);
-    if ((this.wbL != null) && ((paramBufferInfo.flags & 0x4) == 0)) {
-      this.wbL.k(paramByteBuffer, paramBufferInfo);
+    if ((this.zvN != null) && ((paramBufferInfo.flags & 0x4) == 0)) {
+      this.zvN.k(paramByteBuffer, paramBufferInfo);
     }
     AppMethodBeat.o(89594);
   }
@@ -690,16 +690,16 @@ public class s
   public final void start()
   {
     AppMethodBeat.i(89589);
-    ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "Start");
+    Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "Start");
     this.isStart = true;
-    ae.i("MicroMsg.MMSightYUVMediaCodecRecorder", "Start：isStart：" + this.isStart);
+    Log.i("MicroMsg.MMSightYUVMediaCodecRecorder", "Start：isStart：" + this.isStart);
     this.startTime = System.nanoTime();
     AppMethodBeat.o(89589);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.s
  * JD-Core Version:    0.7.0.1
  */

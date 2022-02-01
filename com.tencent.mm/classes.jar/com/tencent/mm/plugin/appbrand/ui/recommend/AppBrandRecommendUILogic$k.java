@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.l;
+import kotlin.g.a.a;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
 final class AppBrandRecommendUILogic$k
   implements Runnable
 {
@@ -13,7 +13,7 @@ final class AppBrandRecommendUILogic$k
   public final void run()
   {
     AppMethodBeat.i(51369);
-    this.jUr.invoke();
+    this.kXn.invoke();
     AppMethodBeat.o(51369);
   }
 }

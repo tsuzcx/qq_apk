@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="95.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip"
+<RelativeLayout android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="#fff8f8f8" android:layout_width="74.0dip" android:layout_height="60.0dip" android:layout_marginLeft="15.0dip" android:layout_marginBottom="14.0dip" android:layout_alignBottom="@id/cpi">
-        <ImageView android:id="@id/cox" android:layout_width="74.0dip" android:layout_height="60.0dip" android:scaleType="centerCrop" />
-        <ProgressBar android:id="@id/cp9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a4p" />
-        <ImageView android:id="@id/bnf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/error_image_sub" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/cpi" android:background="@drawable/l0" android:layout_width="95.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip">
-        <TextView android:textSize="11.0sp" android:textColor="@color/km" android:orientation="vertical" android:id="@id/cpg" android:layout_width="82.0dip" android:layout_height="wrap_content" android:text="@string/q1" />
-        <TextView android:textSize="11.0sp" android:textColor="@color/km" android:gravity="center_vertical" android:orientation="vertical" android:id="@id/cph" android:layout_width="82.0dip" android:layout_height="wrap_content" android:text="@string/q2" android:drawableLeft="@raw/app_brand_service_bubble_logo" />
-    </LinearLayout>
+    <ImageView android:gravity="center" android:id="@id/dvz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/default_avatar" android:scaleType="center" android:layout_centerInParent="true" />
+    <View android:background="#c0000000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a5t" />
 </RelativeLayout>

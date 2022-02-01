@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="bottom|center" android:id="@id/ekq" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/js" android:layout_marginTop="@dimen/ju" android:src="@color/a_j" />
-    <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/c8u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</merge>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/f8j" android:background="@color/zl" android:paddingTop="@dimen/ir" android:paddingBottom="@dimen/ir" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

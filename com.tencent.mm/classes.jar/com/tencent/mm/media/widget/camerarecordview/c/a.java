@@ -9,24 +9,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.widget.a.b;
 import com.tencent.mm.media.widget.camerarecordview.c;
 import com.tencent.mm.media.widget.camerarecordview.preview.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit;", "", "ctx", "Landroid/content/Context;", "process", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "(Landroid/content/Context;Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;)V", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "getCameraConfig", "()Lcom/tencent/mm/media/widget/camera/CameraConfig;", "setCameraConfig", "(Lcom/tencent/mm/media/widget/camera/CameraConfig;)V", "context", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "currentDisplayRotation", "", "orientationChangeListener", "com/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1", "Lcom/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1;", "checkContext", "", "enableFit", "", "enable", "release", "Companion", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit;", "", "ctx", "Landroid/content/Context;", "process", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "(Landroid/content/Context;Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;)V", "cameraConfig", "Lcom/tencent/mm/media/widget/camera/CameraConfig;", "getCameraConfig", "()Lcom/tencent/mm/media/widget/camera/CameraConfig;", "setCameraConfig", "(Lcom/tencent/mm/media/widget/camera/CameraConfig;)V", "context", "getContext", "()Landroid/content/Context;", "setContext", "(Landroid/content/Context;)V", "currentDisplayRotation", "", "orientationChangeListener", "com/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1", "Lcom/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1;", "checkContext", "", "enableFit", "", "enable", "release", "Companion", "plugin-mediaeditor_release"})
 public final class a
 {
-  public static final a.a hwR;
+  public static final a.a iqt;
   public Context context;
-  b hrW;
-  private int hwP;
-  public b hwQ;
+  b hAu;
+  private int iqr;
+  public b iqs;
   
   static
   {
     AppMethodBeat.i(94289);
-    hwR = new a.a((byte)0);
+    iqt = new a.a((byte)0);
     AppMethodBeat.o(94289);
   }
   
@@ -34,11 +34,11 @@ public final class a
   {
     AppMethodBeat.i(94288);
     this.context = paramContext;
-    this.hwQ = new b(this, parama, this.context);
+    this.iqs = new b(this, parama, this.context);
     AppMethodBeat.o(94288);
   }
   
-  private final boolean axU()
+  private final boolean aQs()
   {
     return this.context != null;
   }
@@ -46,41 +46,41 @@ public final class a
   public final void a(boolean paramBoolean, b paramb)
   {
     AppMethodBeat.i(94287);
-    ae.i("MicroMsg.PreviewOrientationFit", "enable :" + paramBoolean + " ,cameraConfig " + paramb);
-    if (!axU())
+    Log.i("MicroMsg.PreviewOrientationFit", "enable :" + paramBoolean + " ,cameraConfig " + paramb);
+    if (!aQs())
     {
       AppMethodBeat.o(94287);
       return;
     }
     if (paramBoolean)
     {
-      this.hrW = paramb;
+      this.hAu = paramb;
       paramb = this.context;
       if (paramb == null)
       {
-        paramb = new v("null cannot be cast to non-null type android.app.Activity");
+        paramb = new t("null cannot be cast to non-null type android.app.Activity");
         AppMethodBeat.o(94287);
         throw paramb;
       }
       ((Activity)paramb).setRequestedOrientation(7);
-      this.hwQ.enable();
+      this.iqs.enable();
       AppMethodBeat.o(94287);
       return;
     }
     paramb = this.context;
     if (paramb == null)
     {
-      paramb = new v("null cannot be cast to non-null type android.app.Activity");
+      paramb = new t("null cannot be cast to non-null type android.app.Activity");
       AppMethodBeat.o(94287);
       throw paramb;
     }
     ((Activity)paramb).setRequestedOrientation(1);
-    this.hwQ.disable();
-    this.hwP = 0;
+    this.iqs.disable();
+    this.iqr = 0;
     AppMethodBeat.o(94287);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1", "Landroid/view/OrientationEventListener;", "onOrientationChanged", "", "orientation", "", "plugin-mediaeditor_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/media/widget/camerarecordview/orientationfit/PreviewOrientationFit$orientationChangeListener$1", "Landroid/view/OrientationEventListener;", "onOrientationChanged", "", "orientation", "", "plugin-mediaeditor_release"})
   public static final class b
     extends OrientationEventListener
   {
@@ -92,15 +92,15 @@ public final class a
     public final void onOrientationChanged(int paramInt)
     {
       AppMethodBeat.i(94286);
-      if (!a.a(this.hwS))
+      if (!a.a(this.iqu))
       {
         AppMethodBeat.o(94286);
         return;
       }
-      Object localObject = this.hwS.context;
+      Object localObject = this.iqu.context;
       if (localObject == null)
       {
-        localObject = new v("null cannot be cast to non-null type android.app.Activity");
+        localObject = new t("null cannot be cast to non-null type android.app.Activity");
         AppMethodBeat.o(94286);
         throw ((Throwable)localObject);
       }
@@ -109,13 +109,13 @@ public final class a
       localObject = ((WindowManager)localObject).getDefaultDisplay();
       p.g(localObject, "(context as Activity).windowManager.defaultDisplay");
       paramInt = ((Display)localObject).getRotation();
-      if (paramInt == a.b(this.hwS))
+      if (paramInt == a.b(this.iqu))
       {
         AppMethodBeat.o(94286);
         return;
       }
-      ae.i("MicroMsg.PreviewOrientationFit", "last rotation :" + a.b(this.hwS) + " ,current rotation:" + paramInt);
-      a.a(this.hwS, paramInt);
+      Log.i("MicroMsg.PreviewOrientationFit", "last rotation :" + a.b(this.iqu) + " ,current rotation:" + paramInt);
+      a.a(this.iqu, paramInt);
       switch (paramInt)
       {
       default: 
@@ -123,16 +123,16 @@ public final class a
       }
       while (paramInt == 0)
       {
-        localObject = this.hwS.hrW;
+        localObject = this.iqu.hAu;
         if (localObject != null)
         {
-          b.nV(270);
+          b.rt(270);
           parama.getCameraPreviewView().a((b)localObject);
-          localObject = c.hws;
+          localObject = c.ipU;
           localObject = c.getRenderer();
           if (localObject != null)
           {
-            ((com.tencent.mm.media.j.a)localObject).ng(b.aws());
+            ((com.tencent.mm.media.j.a)localObject).qx(b.aPk());
             AppMethodBeat.o(94286);
             return;
             paramInt = 0;
@@ -156,16 +156,16 @@ public final class a
       }
       if (paramInt == 180)
       {
-        localObject = this.hwS.hrW;
+        localObject = this.iqu.hAu;
         if (localObject != null)
         {
-          b.nV(90);
+          b.rt(90);
           parama.getCameraPreviewView().a((b)localObject);
-          localObject = c.hws;
+          localObject = c.ipU;
           localObject = c.getRenderer();
           if (localObject != null)
           {
-            ((com.tencent.mm.media.j.a)localObject).ng(b.aws());
+            ((com.tencent.mm.media.j.a)localObject).qx(b.aPk());
             AppMethodBeat.o(94286);
             return;
           }
@@ -179,7 +179,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.media.widget.camerarecordview.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.facedetect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class l
 {
-  public static int DZ(int paramInt)
+  public static int HL(int paramInt)
   {
     AppMethodBeat.i(103771);
     if ((paramInt < 90000) && (paramInt != 0))
     {
-      ae.i("MicroMsg.FaceJSAPITranslateCenter", "hy: server error. not translate");
+      Log.i("MicroMsg.FaceJSAPITranslateCenter", "hy: server error. not translate");
       AppMethodBeat.o(103771);
       return paramInt;
     }
     if (paramInt > 90099)
     {
-      ae.i("MicroMsg.FaceJSAPITranslateCenter", "hy: already translated");
+      Log.i("MicroMsg.FaceJSAPITranslateCenter", "hy: already translated");
       AppMethodBeat.o(103771);
       return paramInt;
     }

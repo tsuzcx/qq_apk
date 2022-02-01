@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/a_r" android:padding="@dimen/ha" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <Button android:id="@id/ccq" android:layout_width="128.0dip" android:text="@string/crt" style="@style/of" />
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:id="@id/fbb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" app:cornerRadius="@dimen/ct">
+        <ImageView android:id="@id/imb" android:background="@color/v4" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        <FrameLayout android:layout_gravity="bottom" android:background="@drawable/yv" android:layout_width="fill_parent" android:layout_height="164.0dip">
+            <TextView android:textSize="@dimen/k6" android:textColor="@color/v9" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="bottom" android:id="@id/cl2" android:paddingBottom="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct" />
+        </FrameLayout>
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+</android.support.constraint.ConstraintLayout>

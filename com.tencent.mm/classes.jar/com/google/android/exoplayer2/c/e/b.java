@@ -12,13 +12,13 @@ import java.util.Collections;
 final class b
   extends h
 {
-  g bpg;
-  private a bph;
+  g bpb;
+  private a bpc;
   
   public static boolean r(m paramm)
   {
     AppMethodBeat.i(92145);
-    if ((paramm.wV() >= 5) && (paramm.readUnsignedByte() == 127) && (paramm.dB() == 1179402563L))
+    if ((paramm.xd() >= 5) && (paramm.readUnsignedByte() == 127) && (paramm.dE() == 1179402563L))
     {
       AppMethodBeat.o(92145);
       return true;
@@ -41,15 +41,15 @@ final class b
     int i = 0;
     AppMethodBeat.i(92148);
     Object localObject = paramm.data;
-    if (this.bpg == null)
+    if (this.bpb == null)
     {
-      this.bpg = new g((byte[])localObject);
+      this.bpb = new g((byte[])localObject);
       paramm = Arrays.copyOfRange((byte[])localObject, 9, paramm.limit);
       paramm[4] = -128;
       paramm = Collections.singletonList(paramm);
-      localObject = this.bpg;
-      i = ((g)localObject).bsZ;
-      parama.bdI = Format.a(null, "audio/flac", -1, ((g)localObject).sampleRate * i, this.bpg.channels, this.bpg.sampleRate, paramm, null, null);
+      localObject = this.bpb;
+      i = ((g)localObject).bsU;
+      parama.bdF = Format.a(null, "audio/flac", -1, ((g)localObject).sampleRate * i, this.bpb.channels, this.bpb.sampleRate, paramm, null, null);
     }
     do
     {
@@ -60,25 +60,25 @@ final class b
         if ((localObject[0] & 0x7F) != 3) {
           break;
         }
-        this.bph = new a();
-        parama = this.bph;
-        paramm.fa(1);
-        int j = paramm.wX() / 18;
-        parama.bpi = new long[j];
-        parama.bpj = new long[j];
+        this.bpc = new a();
+        parama = this.bpc;
+        paramm.eZ(1);
+        int j = paramm.xf() / 18;
+        parama.bpd = new long[j];
+        parama.bpe = new long[j];
         while (i < j)
         {
-          parama.bpi[i] = paramm.readLong();
-          parama.bpj[i] = paramm.readLong();
-          paramm.fa(2);
+          parama.bpd[i] = paramm.readLong();
+          parama.bpe[i] = paramm.readLong();
+          paramm.eZ(2);
           i += 1;
         }
       }
     } while (!t((byte[])localObject));
-    if (this.bph != null)
+    if (this.bpc != null)
     {
-      this.bph.firstFrameOffset = paramLong;
-      parama.bpF = this.bph;
+      this.bpc.firstFrameOffset = paramLong;
+      parama.bpA = this.bpc;
     }
     AppMethodBeat.o(92148);
     return false;
@@ -90,8 +90,8 @@ final class b
     super.reset(paramBoolean);
     if (paramBoolean)
     {
-      this.bpg = null;
-      this.bph = null;
+      this.bpb = null;
+      this.bpc = null;
     }
     AppMethodBeat.o(92146);
   }
@@ -128,7 +128,7 @@ final class b
       }
     case 6: 
     case 7: 
-      paramm.fa(4);
+      paramm.eZ(4);
       l1 = paramm.data[paramm.position];
       i = 7;
       label169:
@@ -190,9 +190,9 @@ final class b
   final class a
     implements f, l
   {
-    long[] bpi;
-    long[] bpj;
-    private long bpk = -1L;
+    long[] bpd;
+    long[] bpe;
+    private long bpf = -1L;
     long firstFrameOffset = -1L;
     
     public a() {}
@@ -201,9 +201,9 @@ final class b
     {
       AppMethodBeat.i(92144);
       paramLong = b.this.T(paramLong);
-      int i = x.a(this.bpi, paramLong, true);
+      int i = x.a(this.bpd, paramLong, true);
       paramLong = this.firstFrameOffset;
-      long l = this.bpj[i];
+      long l = this.bpe[i];
       AppMethodBeat.o(92144);
       return l + paramLong;
     }
@@ -212,35 +212,35 @@ final class b
     {
       AppMethodBeat.i(92143);
       paramLong = b.this.T(paramLong);
-      int i = x.a(this.bpi, paramLong, true);
-      this.bpk = this.bpi[i];
+      int i = x.a(this.bpd, paramLong, true);
+      this.bpf = this.bpd[i];
       AppMethodBeat.o(92143);
       return paramLong;
     }
     
     public final long getDurationUs()
     {
-      g localg = b.this.bpg;
-      return localg.bGN * 1000000L / localg.sampleRate;
+      g localg = b.this.bpb;
+      return localg.bHe * 1000000L / localg.sampleRate;
     }
     
     public final long i(com.google.android.exoplayer2.c.f paramf)
     {
-      if (this.bpk >= 0L)
+      if (this.bpf >= 0L)
       {
-        long l = -(this.bpk + 2L);
-        this.bpk = -1L;
+        long l = -(this.bpf + 2L);
+        this.bpf = -1L;
         return l;
       }
       return -1L;
     }
     
-    public final l uC()
+    public final l uH()
     {
       return this;
     }
     
-    public final boolean up()
+    public final boolean uu()
     {
       return true;
     }
@@ -248,7 +248,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.e.b
  * JD-Core Version:    0.7.0.1
  */

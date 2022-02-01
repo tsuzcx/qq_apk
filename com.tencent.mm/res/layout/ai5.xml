@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/dmv" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-</merge>
+<RelativeLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="@dimen/cr"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h6s" android:layout_width="@dimen/c5" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/BW_70" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cb" android:layout_toStartOf="@id/h6s">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/eq" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/finder_filled_activity" android:layout_marginEnd="@dimen/cb" app:iconColor="@color/FG_0" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/FG_0_5" android:ellipsize="end" android:id="@id/gf0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/chl" android:singleLine="true" android:layout_toEndOf="@id/eq" />
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/gez" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/cgp" android:singleLine="true" android:layout_below="@id/eq" android:layout_toEndOf="@id/eq" />
+    </RelativeLayout>
+</RelativeLayout>

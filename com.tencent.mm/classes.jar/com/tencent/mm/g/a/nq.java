@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class nq
-  extends b
+  extends IEvent
 {
+  public a dTN;
+  
   public nq()
   {
     this((byte)0);
@@ -12,8 +15,16 @@ public final class nq
   
   private nq(byte paramByte)
   {
-    this.IvZ = false;
+    AppMethodBeat.i(125622);
+    this.dTN = new a();
+    this.order = false;
     this.callback = null;
+    AppMethodBeat.o(125622);
+  }
+  
+  public static final class a
+  {
+    public int position;
   }
 }
 

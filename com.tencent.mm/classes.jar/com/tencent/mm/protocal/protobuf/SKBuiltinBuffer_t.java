@@ -27,10 +27,10 @@ public class SKBuiltinBuffer_t
   public int computeSize()
   {
     AppMethodBeat.i(2372);
-    int j = f.a.a.b.b.a.bz(1, this.iLen) + 0;
+    int j = g.a.a.b.b.a.bu(1, this.iLen) + 0;
     int i = j;
     if (this.hasBuffer) {
-      i = j + f.a.a.b.b.a.b(2, this.Buffer);
+      i = j + g.a.a.b.b.a.b(2, this.Buffer);
     }
     j = computeNestedMessageSize();
     AppMethodBeat.o(2372);
@@ -44,7 +44,7 @@ public class SKBuiltinBuffer_t
   
   public byte[] getBufferToBytes()
   {
-    return this.Buffer.zr;
+    return this.Buffer.zy;
   }
   
   public int getILen()
@@ -60,10 +60,10 @@ public class SKBuiltinBuffer_t
   public SKBuiltinBuffer_t parseFrom(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(2376);
-    paramArrayOfByte = new f.a.a.a.a(paramArrayOfByte, unknownTagHandler);
+    paramArrayOfByte = new g.a.a.a.a(paramArrayOfByte, unknownTagHandler);
     for (int i = getNextFieldNumber(paramArrayOfByte); i > 0; i = getNextFieldNumber(paramArrayOfByte)) {
       if (!populateBuilderWithField(paramArrayOfByte, this, i)) {
-        paramArrayOfByte.gCg();
+        paramArrayOfByte.hPl();
       }
     }
     paramArrayOfByte = validate();
@@ -71,7 +71,7 @@ public class SKBuiltinBuffer_t
     return paramArrayOfByte;
   }
   
-  public final boolean populateBuilderWithField(f.a.a.a.a parama, com.tencent.mm.bw.a parama1, int paramInt)
+  public final boolean populateBuilderWithField(g.a.a.a.a parama, com.tencent.mm.bw.a parama1, int paramInt)
   {
     AppMethodBeat.i(2375);
     parama1 = (SKBuiltinBuffer_t)parama1;
@@ -85,9 +85,9 @@ public class SKBuiltinBuffer_t
     {
       AppMethodBeat.o(2375);
       return bool;
-      parama1.setILen(parama.OmT.zc());
+      parama1.setILen(parama.UbS.zi());
       continue;
-      parama1.setBuffer(parama.OmT.gCk());
+      parama1.setBuffer(parama.UbS.hPo());
     }
   }
   
@@ -99,7 +99,7 @@ public class SKBuiltinBuffer_t
     }
     this.Buffer = paramb;
     this.hasBuffer = true;
-    setILen(this.Buffer.zr.length);
+    setILen(this.Buffer.zy.length);
     AppMethodBeat.o(2369);
     return this;
   }
@@ -107,9 +107,9 @@ public class SKBuiltinBuffer_t
   public SKBuiltinBuffer_t setBuffer(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(2367);
-    paramArrayOfByte = com.tencent.mm.bw.b.cm(paramArrayOfByte);
+    paramArrayOfByte = com.tencent.mm.bw.b.cD(paramArrayOfByte);
     setBuffer(paramArrayOfByte);
-    setILen(paramArrayOfByte.zr.length);
+    setILen(paramArrayOfByte.zy.length);
     AppMethodBeat.o(2367);
     return this;
   }
@@ -117,9 +117,9 @@ public class SKBuiltinBuffer_t
   public SKBuiltinBuffer_t setBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(2368);
-    paramArrayOfByte = com.tencent.mm.bw.b.G(paramArrayOfByte, paramInt1, paramInt2);
+    paramArrayOfByte = com.tencent.mm.bw.b.Q(paramArrayOfByte, paramInt1, paramInt2);
     setBuffer(paramArrayOfByte);
-    setILen(paramArrayOfByte.zr.length);
+    setILen(paramArrayOfByte.zy.length);
     AppMethodBeat.o(2368);
     return this;
   }
@@ -152,7 +152,7 @@ public class SKBuiltinBuffer_t
     AppMethodBeat.i(2371);
     if (!this.hasILen)
     {
-      f.a.a.b localb = new f.a.a.b("Not all required fields were included (false = not included in message),  iLen:" + this.hasILen);
+      g.a.a.b localb = new g.a.a.b("Not all required fields were included (false = not included in message),  iLen:" + this.hasILen);
       AppMethodBeat.o(2371);
       throw localb;
     }
@@ -160,10 +160,10 @@ public class SKBuiltinBuffer_t
     return this;
   }
   
-  public void writeFields(f.a.a.c.a parama)
+  public void writeFields(g.a.a.c.a parama)
   {
     AppMethodBeat.i(2374);
-    parama.aS(1, this.iLen);
+    parama.aM(1, this.iLen);
     if (this.hasBuffer) {
       parama.c(2, this.Buffer);
     }

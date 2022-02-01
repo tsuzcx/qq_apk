@@ -15,20 +15,20 @@ final class MultiTabView$1
     super(paramContext);
   }
   
-  public final void Mh(int paramInt) {}
+  public final void Te(int paramInt) {}
   
   public final View a(View paramView, ViewGroup paramViewGroup, int paramInt)
   {
     AppMethodBeat.i(164223);
-    paramView = (View)MultiTabView.a(this.Lpa).get(paramInt);
+    paramView = (View)MultiTabView.a(this.QEh).get(paramInt);
     AppMethodBeat.o(164223);
     return paramView;
   }
   
-  public final int dwY()
+  public final int evg()
   {
     AppMethodBeat.i(164224);
-    int i = MultiTabView.a(this.Lpa).size();
+    int i = MultiTabView.a(this.QEh).size();
     AppMethodBeat.o(164224);
     return i;
   }
@@ -36,14 +36,14 @@ final class MultiTabView$1
   public final int getCount()
   {
     AppMethodBeat.i(164225);
-    int i = MultiTabView.a(this.Lpa).size();
+    int i = MultiTabView.a(this.QEh).size();
     AppMethodBeat.o(164225);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.widget.MultiTabView.1
  * JD-Core Version:    0.7.0.1
  */

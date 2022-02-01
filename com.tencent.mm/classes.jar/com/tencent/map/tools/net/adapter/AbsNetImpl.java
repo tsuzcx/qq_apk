@@ -11,6 +11,7 @@ public abstract class AbsNetImpl
   implements NetAdapter
 {
   private static final String TAG = "NetImpl";
+  private boolean mForceHttps = true;
   protected Bundle mParams;
   
   protected static String parseCharset(String paramString)
@@ -102,6 +103,11 @@ public abstract class AbsNetImpl
     }
   }
   
+  public boolean isForceHttps()
+  {
+    return this.mForceHttps;
+  }
+  
   protected abstract void onCreateNet(Context paramContext, Bundle paramBundle);
   
   protected abstract NetResponse onGetRequest(String paramString1, String paramString2, int paramInt1, int paramInt2, HashMap<String, String> paramHashMap, HttpCanceler paramHttpCanceler);
@@ -116,10 +122,15 @@ public abstract class AbsNetImpl
   {
     this.mParams = paramBundle;
   }
+  
+  public void setForceHttps(boolean paramBoolean)
+  {
+    this.mForceHttps = paramBoolean;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.map.tools.net.adapter.AbsNetImpl
  * JD-Core Version:    0.7.0.1
  */

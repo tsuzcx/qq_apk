@@ -1,133 +1,177 @@
 package com.tencent.mm.plugin.appbrand.floatball;
 
-import android.app.Activity;
-import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandTaskProxyUI;
-import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.plugin.ball.service.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntimeWCAccessible;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.h.d;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.ball.c.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 public final class b
   extends com.tencent.mm.plugin.ball.service.f
 {
-  private AppBrandTaskProxyUI kmJ = null;
-  private String kmK = "";
-  private String mFilePath = "";
+  private static e lqt;
+  q kGW;
   
-  public b(com.tencent.mm.plugin.ball.a.f paramf)
+  static
+  {
+    AppMethodBeat.i(44975);
+    lqt = new b.2();
+    AppMethodBeat.o(44975);
+  }
+  
+  public b(com.tencent.mm.plugin.ball.a.f paramf, q paramq)
   {
     super(paramf);
+    AppMethodBeat.i(44964);
+    this.kGW = paramq;
+    Log.i("MicroMsg.AppBrandFloatBallHelper", "create, runtime:%s", new Object[] { Integer.valueOf(paramq.hashCode()) });
+    AppMethodBeat.o(44964);
   }
   
-  public final void a(BallInfo paramBallInfo)
+  public static int b(h.d paramd)
   {
-    AppMethodBeat.i(174722);
-    ae.i("MicroMsg.AppBrandFilesFloatBallHelper", "onCreate with exist ballInfo");
-    this.nLK = paramBallInfo;
-    bLz();
-    AppMethodBeat.o(174722);
-  }
-  
-  public final void a(String paramString1, String paramString2, String paramString3, String paramString4, boolean paramBoolean, AppBrandTaskProxyUI paramAppBrandTaskProxyUI)
-  {
-    AppMethodBeat.i(174721);
-    ae.i("MicroMsg.AppBrandFilesFloatBallHelper", "onCreate, filePath:%s fileExt:%s ", new Object[] { paramString1, paramString2 });
-    this.mFilePath = paramString1;
-    this.kmK = paramString2;
-    this.kmJ = paramAppBrandTaskProxyUI;
-    super.ac(4, com.tencent.mm.plugin.ball.f.b.Xc(paramString1));
-    bLD().nLC = 4;
-    bLD().nLB = 10;
-    bLz();
-    if (this.nLK.ioY != null)
-    {
-      this.nLK.ioY.putBoolean("ifAppAttachDownloadUI", false);
-      this.nLK.ioY.putString("filePath", paramString1);
-      this.nLK.ioY.putString("fileExt", paramString2);
-      this.nLK.ioY.putString("appId", paramString3);
-      this.nLK.ioY.putString("processName", paramString4);
-      this.nLK.ioY.putBoolean("showMenu", paramBoolean);
-      this.nLK.ioY.putInt("sence", 0);
-      bLz();
+    if (paramd == h.d.kzQ) {
+      return 2;
     }
-    AppMethodBeat.o(174721);
-  }
-  
-  public final boolean bhh()
-  {
-    return true;
-  }
-  
-  public final boolean bhi()
-  {
-    return true;
-  }
-  
-  public final void bhl()
-  {
-    AppMethodBeat.i(44959);
-    ae.i("MicroMsg.AppBrandFilesFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, filePath:%s", new Object[] { this.mFilePath });
-    super.bhl();
-    if ((this.nME != null) && (this.nME.getActivity() != null)) {
-      this.nME.getActivity().finish();
+    if (paramd == h.d.kzP) {
+      return 1;
     }
-    AppMethodBeat.o(44959);
+    return 0;
   }
   
-  public final void bhm()
+  public static void bCE()
   {
-    AppMethodBeat.i(44960);
-    ae.i("MicroMsg.AppBrandFilesFloatBallHelper", "onReceivedBallInfoRemovedEvent, filePath:%s", new Object[] { this.mFilePath });
-    super.bhm();
-    AppMethodBeat.o(44960);
+    AppMethodBeat.i(44972);
+    if (g.af(com.tencent.mm.plugin.ball.c.b.class) != null) {
+      ((com.tencent.mm.plugin.ball.c.b)g.af(com.tencent.mm.plugin.ball.c.b.class)).a(1, lqt);
+    }
+    AppMethodBeat.o(44972);
   }
   
-  public final boolean bhq()
+  public static void bCF()
   {
-    return true;
+    AppMethodBeat.i(44973);
+    if (g.af(com.tencent.mm.plugin.ball.c.b.class) != null) {
+      ((com.tencent.mm.plugin.ball.c.b)g.af(com.tencent.mm.plugin.ball.c.b.class)).b(1, lqt);
+    }
+    AppMethodBeat.o(44973);
   }
   
-  public final void o(boolean paramBoolean, int paramInt)
+  public final void G(int paramInt, String paramString)
   {
-    AppMethodBeat.i(222267);
-    if (paramBoolean)
+    AppMethodBeat.i(44966);
+    Log.i("MicroMsg.AppBrandFloatBallHelper", "onCreate, type:%s, key:%s", new Object[] { Integer.valueOf(paramInt), paramString });
+    super.G(paramInt, paramString);
+    AppMethodBeat.o(44966);
+  }
+  
+  public final void a(final com.tencent.mm.plugin.ball.service.f.a parama)
+  {
+    AppMethodBeat.i(226533);
+    f localf = (f)this.kGW.aw(f.class);
+    if ((localf != null) && (localf.bCL()))
     {
-      ae.i("MicroMsg.AppBrandFilesFloatBallHelper", "onMenuFloatBallSelected, enter float ball");
-      iV(false);
-      bLy();
-      this.kmJ.b(null);
-      AppMethodBeat.o(222267);
+      localf.a(AndroidContextUtil.castActivityOrNull(this.kGW.mContext), new f.a()
+      {
+        public final void bCH()
+        {
+          AppMethodBeat.i(226531);
+          Log.i("MicroMsg.AppBrandFloatBallHelper", "beforeOnMenuFloatBallSelected, afterShowVOIPTip");
+          if (parama != null) {
+            parama.proceed();
+          }
+          AppMethodBeat.o(226531);
+        }
+      });
+      AppMethodBeat.o(226533);
       return;
     }
-    ae.i("MicroMsg.AppBrandFilesFloatBallHelper", "onMenuFloatBallSelected, exit float ball");
-    bLx();
-    if (this.nME.getActivity() != null)
+    Log.i("MicroMsg.AppBrandFloatBallHelper", "beforeOnMenuFloatBallSelected, not show vpip tip");
+    parama.proceed();
+    AppMethodBeat.o(226533);
+  }
+  
+  public final boolean aGg()
+  {
+    return false;
+  }
+  
+  public final boolean aGh()
+  {
+    AppMethodBeat.i(44965);
+    if (!this.kGW.bsC().ldN)
     {
-      Runnable local1 = new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(174720);
-          com.tencent.mm.ui.widget.snackbar.b.n(b.this.nME.getActivity(), b.this.nME.getActivity().getString(2131755252));
-          AppMethodBeat.o(174720);
-        }
-      };
-      if (ar.isMainThread())
-      {
-        local1.run();
-        AppMethodBeat.o(222267);
-        return;
-      }
-      ar.f(local1);
+      AppMethodBeat.o(44965);
+      return true;
     }
-    AppMethodBeat.o(222267);
+    AppMethodBeat.o(44965);
+    return false;
+  }
+  
+  public final void aGi()
+  {
+    AppMethodBeat.i(44971);
+    Log.i("MicroMsg.AppBrandFloatBallHelper", "onReceivedFinishWhenSwitchBallEvent, runtime:%s", new Object[] { Integer.valueOf(this.kGW.hashCode()) });
+    this.oXA.hb(true);
+    AppMethodBeat.o(44971);
+  }
+  
+  public final void aGj()
+  {
+    AppMethodBeat.i(44970);
+    Log.i("MicroMsg.AppBrandFloatBallHelper", "onExitPage, runtime:%s", new Object[] { Integer.valueOf(this.kGW.hashCode()) });
+    super.aGj();
+    AppMethodBeat.o(44970);
+  }
+  
+  public final void bCA()
+  {
+    AppMethodBeat.i(44969);
+    Log.i("MicroMsg.AppBrandFloatBallHelper", "onEnterPage, runtime:%s", new Object[] { Integer.valueOf(this.kGW.hashCode()) });
+    if (AppBrandRuntimeWCAccessible.isGame(this.kGW))
+    {
+      super.aGf();
+      AppMethodBeat.o(44969);
+      return;
+    }
+    super.bCA();
+    AppMethodBeat.o(44969);
+  }
+  
+  public final boolean bCG()
+  {
+    AppMethodBeat.i(226534);
+    Log.i("MicroMsg.AppBrandFloatBallHelper", "alvinluo enableMessageFloatBall %b, %s", new Object[] { Boolean.valueOf(aGh()), this });
+    boolean bool = aGh();
+    AppMethodBeat.o(226534);
+    return bool;
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(44968);
+    Log.i("MicroMsg.AppBrandFloatBallHelper", "onDestroy, runtime:%s", new Object[] { Integer.valueOf(this.kGW.hashCode()) });
+    super.onDestroy();
+    AppMethodBeat.o(44968);
+  }
+  
+  public final boolean wu(int paramInt)
+  {
+    AppMethodBeat.i(44967);
+    Log.i("MicroMsg.AppBrandFloatBallHelper", "onClose, runtime:%s", new Object[] { Integer.valueOf(this.kGW.hashCode()) });
+    boolean bool = super.wu(paramInt);
+    AppMethodBeat.o(44967);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.floatball.b
  * JD-Core Version:    0.7.0.1
  */

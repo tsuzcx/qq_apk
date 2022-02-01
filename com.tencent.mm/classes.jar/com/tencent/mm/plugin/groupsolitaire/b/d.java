@@ -2,25 +2,26 @@ package com.tencent.mm.plugin.groupsolitaire.b;
 
 import android.util.Base64;
 import android.util.Pair;
-import com.tencent.e.h;
+import com.tencent.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.fi;
-import com.tencent.mm.g.b.a.fj;
-import com.tencent.mm.g.b.a.fk;
-import com.tencent.mm.g.b.a.fl;
-import com.tencent.mm.g.b.a.fm;
-import com.tencent.mm.g.b.a.fo;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.g.a.ns;
+import com.tencent.mm.g.b.a.iv;
+import com.tencent.mm.g.b.a.iw;
+import com.tencent.mm.g.b.a.ix;
+import com.tencent.mm.g.b.a.iy;
+import com.tencent.mm.g.b.a.iz;
+import com.tencent.mm.g.b.a.jb;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire;
 import com.tencent.mm.plugin.groupsolitaire.c.a;
 import com.tencent.mm.plugin.groupsolitaire.c.b;
-import com.tencent.mm.plugin.groupsolitaire.c.c;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -30,18 +31,18 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  ConcurrentHashMap<Long, Pair<String, String>> uMS;
-  ConcurrentHashMap<Long, Boolean> uMT;
-  public ConcurrentHashMap<Long, a> uMU;
-  ConcurrentHashMap<Long, d.b> uMV;
+  ConcurrentHashMap<Long, Pair<String, String>> yfq;
+  ConcurrentHashMap<Long, Boolean> yfr;
+  public ConcurrentHashMap<Long, a> yfs;
+  ConcurrentHashMap<Long, b> yft;
   
   public d()
   {
     AppMethodBeat.i(110384);
-    this.uMS = new ConcurrentHashMap();
-    this.uMT = new ConcurrentHashMap();
-    this.uMU = new ConcurrentHashMap();
-    this.uMV = new ConcurrentHashMap();
+    this.yfq = new ConcurrentHashMap();
+    this.yfr = new ConcurrentHashMap();
+    this.yfs = new ConcurrentHashMap();
+    this.yft = new ConcurrentHashMap();
     AppMethodBeat.o(110384);
   }
   
@@ -53,42 +54,42 @@ public final class d
       AppMethodBeat.o(110389);
       return;
     }
-    fl localfl = new fl();
-    localfl.oQ(parama.field_key);
-    localfl.oO(parama.field_username);
-    localfl.oP(parama.field_creator);
-    localfl.emx = parama.field_msgSvrId;
-    localfl.emK = paramInt;
-    localfl.aLH();
+    iy localiy = new iy();
+    localiy.wz(parama.field_key);
+    localiy.wx(parama.field_username);
+    localiy.wy(parama.field_creator);
+    localiy.eQf = parama.field_msgSvrId;
+    localiy.ekE = paramInt;
+    localiy.bfK();
     AppMethodBeat.o(110389);
   }
   
   public static void a(a parama, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(110392);
-    fk localfk = new fk();
-    localfk.emB = localfk.t("Identifier", parama.field_key, true);
-    localfk.dSR = localfk.t("ChatName", parama.field_username, true);
-    localfk.emx = parama.field_msgSvrId;
-    localfk.dXf = paramInt1;
-    localfk.emJ = paramInt2;
-    localfk.aLH();
+    ix localix = new ix();
+    localix.eQj = localix.x("Identifier", parama.field_key, true);
+    localix.emL = localix.x("ChatName", parama.field_username, true);
+    localix.eQf = parama.field_msgSvrId;
+    localix.esI = paramInt1;
+    localix.eIW = paramInt2;
+    localix.bfK();
     AppMethodBeat.o(110392);
   }
   
   public static void a(a parama, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(110390);
-    fm localfm = new fm();
-    localfm.oS(parama.field_key);
-    localfm.oR(parama.field_username);
-    localfm.emx = parama.field_msgSvrId;
-    localfm.dXI = paramInt1;
-    localfm.eee = paramInt2;
+    iz localiz = new iz();
+    localiz.wB(parama.field_key);
+    localiz.wA(parama.field_username);
+    localiz.eQf = parama.field_msgSvrId;
+    localiz.etp = paramInt1;
+    localiz.ewL = paramInt2;
     if (paramBoolean) {}
-    for (localfm.emL = 2L;; localfm.emL = 1L)
+    for (localiz.eQr = 2L;; localiz.eQr = 1L)
     {
-      localfm.aLH();
+      localiz.bfK();
       AppMethodBeat.o(110390);
       return;
     }
@@ -99,35 +100,35 @@ public final class d
     AppMethodBeat.i(110386);
     if (paramLong == 0L)
     {
-      ae.e("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() MsgSvrId==0 key:%s", new Object[] { parama.field_key });
+      Log.e("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() MsgSvrId==0 key:%s", new Object[] { parama.field_key });
       AppMethodBeat.o(110386);
       return;
     }
-    ae.i("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() MsgSvrId==%s key:%s", new Object[] { Long.valueOf(paramLong), parama.field_key });
-    fj localfj = new fj();
-    localfj.oN(parama.field_key);
-    localfj.oK(parama.field_username);
-    localfj.oL(parama.field_creator);
+    Log.i("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() MsgSvrId==%s key:%s", new Object[] { Long.valueOf(paramLong), parama.field_key });
+    iw localiw = new iw();
+    localiw.ww(parama.field_key);
+    localiw.wt(parama.field_username);
+    localiw.wu(parama.field_creator);
     if (paramBoolean)
     {
-      localfj.oM(paramString);
-      localfj.emE = paramLong;
-      if (parama.uNe == 1) {
-        localfj.emF = parama.header.length();
+      localiw.wv(paramString);
+      localiw.eQm = paramLong;
+      if (parama.yfC == 1) {
+        localiw.eQn = parama.header.length();
       }
-      localfj.emG = parama.ufC.length();
-      localfj.emH = parama.uNd.length();
+      localiw.eQo = parama.xxN.length();
+      localiw.eQp = parama.yfB.length();
       if (!paramBoolean) {
         break label198;
       }
     }
     label198:
-    for (localfj.emI = 1L;; localfj.emI = 2L)
+    for (localiw.eQq = 1L;; localiw.eQq = 2L)
     {
-      localfj.aLH();
+      localiw.bfK();
       AppMethodBeat.o(110386);
       return;
-      localfj.oM(parama.field_creator);
+      localiw.wv(parama.field_creator);
       break;
     }
   }
@@ -137,31 +138,31 @@ public final class d
     AppMethodBeat.i(161735);
     if (parama == null)
     {
-      ae.e("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() groupSolitatire == null");
+      Log.e("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "reportSolitaireActive() groupSolitatire == null");
       AppMethodBeat.o(161735);
       return;
     }
-    bv localbv = ((l)g.ab(l.class)).doJ().ys(parama.field_firstMsgId);
+    ca localca = ((l)g.af(l.class)).eiy().Hb(parama.field_firstMsgId);
     if (parama.field_msgSvrId == 0L)
     {
-      parama.field_msgSvrId = localbv.field_msgSvrId;
-      ((PluginGroupSolitaire)g.ad(PluginGroupSolitaire.class)).getGroupSolitatireStorage().a(parama, true);
+      parama.field_msgSvrId = localca.field_msgSvrId;
+      ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireStorage().a(parama, true);
     }
     a(parama, true, paramString, parama.field_msgSvrId);
     AppMethodBeat.o(161735);
   }
   
-  public static void dY(String paramString, int paramInt)
+  public static void en(String paramString, int paramInt)
   {
     AppMethodBeat.i(110391);
-    fo localfo = new fo();
-    localfo.dSR = localfo.t("ChatName", paramString, true);
-    localfo.emL = paramInt;
-    localfo.aLH();
+    jb localjb = new jb();
+    localjb.emL = localjb.x("ChatName", paramString, true);
+    localjb.eQr = paramInt;
+    localjb.bfK();
     AppMethodBeat.o(110391);
   }
   
-  public static void t(List<a> paramList, int paramInt)
+  public static void x(List<a> paramList, int paramInt)
   {
     AppMethodBeat.i(110388);
     if ((paramList == null) && (paramList.size() == 0))
@@ -176,17 +177,17 @@ public final class d
     AppMethodBeat.o(110388);
   }
   
-  public final void U(long paramLong1, long paramLong2)
+  public final void Y(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(221113);
-    Pair localPair = (Pair)this.uMS.remove(Long.valueOf(paramLong1));
-    Boolean localBoolean = (Boolean)this.uMT.remove(Long.valueOf(paramLong1));
+    AppMethodBeat.i(194434);
+    Pair localPair = (Pair)this.yfq.remove(Long.valueOf(paramLong1));
+    Boolean localBoolean = (Boolean)this.yfr.remove(Long.valueOf(paramLong1));
     if (localPair != null)
     {
-      this.uMS.put(Long.valueOf(paramLong2), localPair);
-      this.uMT.put(Long.valueOf(paramLong2), localBoolean);
+      this.yfq.put(Long.valueOf(paramLong2), localPair);
+      this.yfr.put(Long.valueOf(paramLong2), localBoolean);
     }
-    AppMethodBeat.o(221113);
+    AppMethodBeat.o(194434);
   }
   
   public final void a(long paramLong, a parama1, a parama2, boolean paramBoolean, int paramInt)
@@ -197,9 +198,9 @@ public final class d
       AppMethodBeat.o(110385);
       return;
     }
-    this.uMS.put(Long.valueOf(paramLong), new Pair(parama1.field_username, parama1.field_key));
-    this.uMT.put(Long.valueOf(paramLong), Boolean.valueOf(paramBoolean));
-    this.uMV.put(Long.valueOf(paramLong), new d.b(this, parama1, parama2, paramInt));
+    this.yfq.put(Long.valueOf(paramLong), new Pair(parama1.field_username, parama1.field_key));
+    this.yfr.put(Long.valueOf(paramLong), Boolean.valueOf(paramBoolean));
+    this.yft.put(Long.valueOf(paramLong), new b(parama1, parama2, paramInt));
     AppMethodBeat.o(110385);
   }
   
@@ -211,7 +212,7 @@ public final class d
       AppMethodBeat.o(110387);
       return;
     }
-    h.MqF.aO(new Runnable()
+    h.RTc.aX(new Runnable()
     {
       public final void run()
       {
@@ -219,34 +220,34 @@ public final class d
         Object localObject1 = "";
         if (parama2 == null)
         {
-          i = parama1.uNg.size();
+          i = parama1.yfE.size();
           localObject1 = parama1.separator;
           j = 0;
           localObject2 = localObject1;
-          if (bu.isNullOrNil((String)localObject1)) {
+          if (Util.isNullOrNil((String)localObject1)) {
             localObject2 = parama1.separator;
           }
-          localObject1 = new fi();
-          ((fi)localObject1).emB = ((fi)localObject1).t("Identifier", parama1.field_key, true);
-          ((fi)localObject1).dSR = ((fi)localObject1).t("ChatName", parama1.field_username, true);
-          ((fi)localObject1).emw = ((fi)localObject1).t("LaunchUserName", parama1.field_creator, true);
-          ((fi)localObject1).emx = parama1.field_msgSvrId;
-          ((fi)localObject1).emy = j;
-          ((fi)localObject1).emz = i;
-          ((fi)localObject1).emA = paramInt;
-          ((fi)localObject1).emC = ((fi)localObject1).t("Punctuation", Base64.encodeToString(((String)localObject2).getBytes(), 0), true);
-          ae.d("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "separator:%s base64:%s", new Object[] { localObject2, Base64.encodeToString(((String)localObject2).getBytes(), 0) });
-          ((fi)localObject1).aLH();
+          localObject1 = new iv();
+          ((iv)localObject1).eQj = ((iv)localObject1).x("Identifier", parama1.field_key, true);
+          ((iv)localObject1).emL = ((iv)localObject1).x("ChatName", parama1.field_username, true);
+          ((iv)localObject1).eQe = ((iv)localObject1).x("LaunchUserName", parama1.field_creator, true);
+          ((iv)localObject1).eQf = parama1.field_msgSvrId;
+          ((iv)localObject1).eQg = j;
+          ((iv)localObject1).eQh = i;
+          ((iv)localObject1).eQi = paramInt;
+          ((iv)localObject1).eQk = ((iv)localObject1).x("Punctuation", Base64.encodeToString(((String)localObject2).getBytes(), 0), true);
+          Log.d("MicroMsg.groupsolitaire.GroupSolitatireReportManager", "separator:%s base64:%s", new Object[] { localObject2, Base64.encodeToString(((String)localObject2).getBytes(), 0) });
+          ((iv)localObject1).bfK();
           AppMethodBeat.o(110382);
           return;
         }
         Object localObject2 = new HashSet();
         Object localObject3 = new HashMap();
         int i = 1;
-        while (i <= parama2.uNg.size())
+        while (i <= parama2.yfE.size())
         {
-          b localb = (b)parama2.uNg.get(Integer.valueOf(i));
-          if ((localb != null) && (bu.lX(localb.username, v.aAC())))
+          b localb = (b)parama2.yfE.get(Integer.valueOf(i));
+          if ((localb != null) && (Util.isEqual(localb.username, z.aTY())))
           {
             ((Set)localObject2).add(localb);
             ((HashMap)localObject3).put(localb.content, localb);
@@ -258,11 +259,11 @@ public final class d
         i = 0;
         label335:
         int k;
-        if (m <= parama1.uNg.size())
+        if (m <= parama1.yfE.size())
         {
-          localObject3 = (b)parama1.uNg.get(Integer.valueOf(m));
+          localObject3 = (b)parama1.yfE.get(Integer.valueOf(m));
           k = i;
-          if (!bu.lX(((b)localObject3).username, v.aAC())) {
+          if (!Util.isEqual(((b)localObject3).username, z.aTY())) {
             break label463;
           }
           if (((Set)localObject2).contains(localObject3))
@@ -280,7 +281,7 @@ public final class d
           break label335;
           int n = i + 1;
           k = n;
-          if (bu.isNullOrNil((String)localObject1))
+          if (Util.isNullOrNil((String)localObject1))
           {
             localObject1 = ((b)localObject3).separator;
             i = j;
@@ -299,17 +300,31 @@ public final class d
   
   public final class a
   {
-    public String fLJ = "";
+    public String gqV = "";
     public String key = "";
-    public long uMZ = 0L;
-    public long uNa = 0L;
+    public long yfx = 0L;
+    public long yfy = 0L;
     
     public a() {}
+  }
+  
+  final class b
+  {
+    int scene;
+    a yfA;
+    a yfz;
+    
+    public b(a parama1, a parama2, int paramInt)
+    {
+      this.yfz = parama1;
+      this.yfA = parama2;
+      this.scene = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.b.d
  * JD-Core Version:    0.7.0.1
  */

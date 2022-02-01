@@ -1,209 +1,207 @@
 package com.tencent.mm.live.b.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.b.g;
-import com.tencent.mm.protocal.protobuf.bvk;
-import com.tencent.mm.sdk.platformtools.ar;
-import d.g.a.b;
-import d.g.a.r;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.protocal.protobuf.civ;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.ArrayList;
 import java.util.Iterator;
+import kotlin.g.a.b;
+import kotlin.g.a.r;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager;", "", "()V", "anchorAcceptSelfMicObserver", "Lkotlin/Function0;", "", "anchorCloseLiveObserver", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "liveId", "anchorMicUerSuccessObserver", "Lkotlin/Function4;", "", "uid", "headImg", "nickName", "anchorSetMicEnableObserver", "", "enable", "callingUser", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "micCloseObserver", "self", "sbLinkMicSuccessObserver", "sdkMicUserId", "selfWaitingMicID", "getSelfWaitingMicID", "()Ljava/lang/String;", "setSelfWaitingMicID", "(Ljava/lang/String;)V", "userApplyMicObserver", "show", "userList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getCallingUser", "getUserList", "imCallingMic", "reset", "resetMicCallingUser", "resetMicStatus", "setAnchorCloseLiveObserver", "observer", "setLiveMicEnableObserver", "setLiveMicSuccessObserver", "setMicChangeObserver", "setMicCloseObserver", "setSbLinkMicSuccessObserver", "setUserChangeObserver", "updateAnchorAcceptSelfMic", "user", "updateCloseObserver", "updateLiveMicEnable", "updateLiveMicSuccess", "micId", "audience", "sdkUid", "updateMicCloseObserver", "updateSdkMicUid", "updateUser", "liveMicUser", "LiveMicUser", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager;", "", "()V", "anchorAcceptSelfMicObserver", "Lkotlin/Function0;", "", "anchorCloseLiveObserver", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "liveId", "anchorMicUerSuccessObserver", "Lkotlin/Function4;", "", "uid", "headImg", "nickName", "anchorSetMicEnableObserver", "", "enable", "callingUser", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "micCloseObserver", "self", "sbLinkMicSuccessObserver", "sdkMicUserId", "selfWaitingMicID", "getSelfWaitingMicID", "()Ljava/lang/String;", "setSelfWaitingMicID", "(Ljava/lang/String;)V", "userApplyMicObserver", "show", "userList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getCallingUser", "getUserList", "imCallingMic", "reset", "resetMicCallingUser", "resetMicStatus", "setAnchorCloseLiveObserver", "observer", "setLiveMicEnableObserver", "setLiveMicSuccessObserver", "setMicChangeObserver", "setMicCloseObserver", "setSbLinkMicSuccessObserver", "setUserChangeObserver", "updateAnchorAcceptSelfMic", "user", "updateCloseObserver", "updateLiveMicEnable", "updateLiveMicSuccess", "micId", "audience", "sdkUid", "updateMicCloseObserver", "updateSdkMicUid", "updateUser", "liveMicUser", "LiveMicUser", "plugin-logic_release"})
 public final class a
 {
-  public b<? super Boolean, z> gTp;
-  public d.g.a.a<z> gTq;
-  public b<? super Long, z> gTr;
-  public b<? super Boolean, z> gTs;
-  public r<? super Long, ? super String, ? super String, ? super String, z> gTt;
-  public d.g.a.a<z> gTu;
-  public b<? super Boolean, z> gTv;
-  public final ArrayList<a> gTw;
-  public a gTx;
-  public String gTy;
-  public String gTz;
+  public b<? super Boolean, kotlin.x> hKM;
+  public kotlin.g.a.a<kotlin.x> hKN;
+  public b<? super Long, kotlin.x> hKO;
+  public b<? super Boolean, kotlin.x> hKP;
+  public r<? super Long, ? super String, ? super String, ? super String, kotlin.x> hKQ;
+  public kotlin.g.a.a<kotlin.x> hKR;
+  public b<? super Boolean, kotlin.x> hKS;
+  public final ArrayList<a> hKT;
+  public a hKU;
+  public String hKV;
+  public String hKW;
   
   public a()
   {
-    AppMethodBeat.i(215889);
-    this.gTw = new ArrayList();
-    this.gTy = "";
-    this.gTz = "";
-    AppMethodBeat.o(215889);
+    AppMethodBeat.i(207842);
+    this.hKT = new ArrayList();
+    this.hKV = "";
+    this.hKW = "";
+    AppMethodBeat.o(207842);
   }
   
   public final void a(long paramLong, String paramString1, String paramString2)
   {
     Object localObject1 = null;
-    AppMethodBeat.i(215886);
+    AppMethodBeat.i(207839);
     p.h(paramString1, "audience");
     p.h(paramString2, "micId");
-    Object localObject2 = com.tencent.mm.live.core.debug.a.gMY;
+    Object localObject2 = com.tencent.mm.live.core.debug.a.hCA;
     localObject2 = new StringBuilder("[sysmsg]broadcast close mic.liveId:").append(paramLong).append(" audience:").append(paramString1).append(" micId:").append(paramString2).append(" isSelf:");
-    paramString1 = this.gTx;
+    paramString1 = this.hKU;
     if (paramString1 != null) {}
-    for (paramString1 = paramString1.gTA;; paramString1 = null)
+    for (paramString1 = paramString1.hFz;; paramString1 = null)
     {
-      com.tencent.mm.live.core.debug.a.as("MicroMsg.LiveCoreMic", p.i(paramString1, paramString2));
-      paramString1 = g.gQZ;
-      if (paramLong == g.anH().FKy) {
+      com.tencent.mm.live.core.debug.a.au("MicroMsg.LiveCoreMic", p.j(paramString1, paramString2));
+      paramString1 = com.tencent.mm.live.b.x.hJf;
+      if (paramLong == com.tencent.mm.live.b.x.aGr().hyH) {
         break;
       }
-      AppMethodBeat.o(215886);
+      AppMethodBeat.o(207839);
       return;
     }
-    paramString1 = this.gTw.iterator();
+    paramString1 = this.hKT.iterator();
     p.g(paramString1, "userList.iterator()");
     while (paramString1.hasNext())
     {
       localObject2 = paramString1.next();
       p.g(localObject2, "mIterator.next()");
-      if (p.i(((a)localObject2).gTA, paramString2)) {
+      if (p.j(((a)localObject2).hFz, paramString2)) {
         paramString1.remove();
       }
     }
-    ar.f((Runnable)new e(this));
-    localObject2 = this.gTx;
+    MMHandlerThread.postToMainThread((Runnable)new e(this));
+    localObject2 = this.hKU;
     paramString1 = localObject1;
     if (localObject2 != null) {
-      paramString1 = ((a)localObject2).gTA;
+      paramString1 = ((a)localObject2).hFz;
     }
-    if (p.i(paramString2, paramString1)) {
-      ar.f((Runnable)new f(this));
+    if (p.j(paramString2, paramString1)) {
+      MMHandlerThread.postToMainThread((Runnable)new f(this));
     }
-    AppMethodBeat.o(215886);
+    AppMethodBeat.o(207839);
   }
   
   public final void a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    AppMethodBeat.i(215887);
+    AppMethodBeat.i(207840);
     p.h(paramString1, "micId");
     p.h(paramString2, "audience");
     p.h(paramString3, "headImg");
     p.h(paramString4, "nickName");
     p.h(paramString5, "sdkUid");
-    Object localObject = com.tencent.mm.live.core.debug.a.gMY;
-    com.tencent.mm.live.core.debug.a.as("MicroMsg.LiveCoreMic", "[sysmsg]broadcast mic success.micId:" + paramString1 + " audience:" + paramString2 + " nick:" + paramString4 + " liveId:" + paramLong + " sdkUid:" + paramString5);
-    localObject = g.gQZ;
-    if (paramLong == g.anH().FKy)
+    Object localObject = com.tencent.mm.live.core.debug.a.hCA;
+    com.tencent.mm.live.core.debug.a.au("MicroMsg.LiveCoreMic", "[sysmsg]broadcast mic success.micId:" + paramString1 + " audience:" + paramString2 + " nick:" + paramString4 + " liveId:" + paramLong + " sdkUid:" + paramString5);
+    localObject = com.tencent.mm.live.b.x.hJf;
+    if (paramLong == com.tencent.mm.live.b.x.aGr().hyH)
     {
-      this.gTx = new a(paramLong, paramString1, paramString2, "", paramString5);
-      paramString1 = this.gTt;
+      this.hKU = new a(paramLong, paramString1, paramString2, "", paramString5);
+      paramString1 = this.hKQ;
       if (paramString1 != null) {
-        paramString1.a(Long.valueOf(paramLong), paramString2, paramString3, paramString4);
+        paramString1.invoke(Long.valueOf(paramLong), paramString2, paramString3, paramString4);
       }
-      if (!aoK())
+      if (!aHl())
       {
-        paramString1 = this.gTu;
+        paramString1 = this.hKR;
         if (paramString1 != null)
         {
           paramString1.invoke();
-          AppMethodBeat.o(215887);
+          AppMethodBeat.o(207840);
           return;
         }
       }
     }
-    AppMethodBeat.o(215887);
+    AppMethodBeat.o(207840);
   }
   
   public final void a(final a parama)
   {
-    AppMethodBeat.i(215884);
+    AppMethodBeat.i(207837);
     p.h(parama, "user");
-    ar.f((Runnable)new b(this, parama));
-    AppMethodBeat.o(215884);
+    MMHandlerThread.postToMainThread((Runnable)new b(this, parama));
+    AppMethodBeat.o(207837);
   }
   
-  public final void aoJ()
+  public final void aHk()
   {
-    this.gTx = null;
-    this.gTy = "";
+    this.hKU = null;
+    this.hKV = "";
   }
   
-  public final boolean aoK()
+  public final boolean aHl()
   {
-    AppMethodBeat.i(215888);
-    Object localObject = this.gTx;
+    AppMethodBeat.i(207841);
+    Object localObject = this.hKU;
     if (localObject != null) {}
-    for (localObject = ((a)localObject).gTC;; localObject = null)
+    for (localObject = ((a)localObject).hFG;; localObject = null)
     {
-      g localg = g.gQZ;
-      boolean bool = p.i(localObject, g.anH().Hii);
-      AppMethodBeat.o(215888);
+      com.tencent.mm.live.b.x localx = com.tencent.mm.live.b.x.hJf;
+      boolean bool = p.j(localObject, com.tencent.mm.live.b.x.aGr().MnL);
+      AppMethodBeat.o(207841);
       return bool;
     }
   }
   
-  public final void h(b<? super Boolean, z> paramb)
+  public final void h(b<? super Boolean, kotlin.x> paramb)
   {
-    AppMethodBeat.i(215885);
+    AppMethodBeat.i(207838);
     p.h(paramb, "micCloseObserver");
-    this.gTv = paramb;
-    AppMethodBeat.o(215885);
+    this.hKS = paramb;
+    AppMethodBeat.o(207838);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "", "liveId", "", "micId", "", "audience", "roomId", "sdkUid", "(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAudience", "()Ljava/lang/String;", "setAudience", "(Ljava/lang/String;)V", "getLiveId", "()J", "setLiveId", "(J)V", "getMicId", "setMicId", "getRoomId", "setRoomId", "getSdkUid", "setSdkUid", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "", "toString", "Companion", "plugin-logic_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "", "liveId", "", "micId", "", "audience", "roomId", "sdkUid", "(JLjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAudience", "()Ljava/lang/String;", "setAudience", "(Ljava/lang/String;)V", "getLiveId", "()J", "setLiveId", "(J)V", "getMicId", "setMicId", "getRoomId", "setRoomId", "getSdkUid", "setSdkUid", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "", "other", "hashCode", "", "toString", "Companion", "plugin-logic_release"})
   public static final class a
   {
-    public static final a gTD;
-    public long gJh;
-    public String gTA;
-    public String gTB;
-    public String gTC;
+    public static final a hKX;
+    public String hFG;
+    public String hFJ;
+    public String hFz;
+    public long liveId;
     public String roomId;
     
     static
     {
-      AppMethodBeat.i(215875);
-      gTD = new a((byte)0);
-      AppMethodBeat.o(215875);
+      AppMethodBeat.i(207828);
+      hKX = new a((byte)0);
+      AppMethodBeat.o(207828);
     }
     
     public a(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4)
     {
-      AppMethodBeat.i(215874);
-      this.gJh = paramLong;
-      this.gTA = paramString1;
-      this.gTB = paramString2;
+      AppMethodBeat.i(207827);
+      this.liveId = paramLong;
+      this.hFz = paramString1;
+      this.hFJ = paramString2;
       this.roomId = paramString3;
-      this.gTC = paramString4;
-      AppMethodBeat.o(215874);
+      this.hFG = paramString4;
+      AppMethodBeat.o(207827);
     }
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(215873);
+      AppMethodBeat.i(207826);
       if (!(paramObject instanceof a))
       {
-        AppMethodBeat.o(215873);
+        AppMethodBeat.o(207826);
         return false;
       }
-      if (p.i(((a)paramObject).gTB, this.gTB))
+      if (p.j(((a)paramObject).hFJ, this.hFJ))
       {
-        AppMethodBeat.o(215873);
+        AppMethodBeat.o(207826);
         return true;
       }
-      AppMethodBeat.o(215873);
+      AppMethodBeat.o(207826);
       return false;
     }
     
     public final int hashCode()
     {
       int m = 0;
-      AppMethodBeat.i(215877);
-      long l = this.gJh;
+      AppMethodBeat.i(207830);
+      long l = this.liveId;
       int n = (int)(l ^ l >>> 32);
-      String str = this.gTA;
+      String str = this.hFz;
       int i;
       int j;
       if (str != null)
       {
         i = str.hashCode();
-        str = this.gTB;
+        str = this.hFJ;
         if (str == null) {
           break label128;
         }
@@ -218,11 +216,11 @@ public final class a
       label133:
       for (int k = str.hashCode();; k = 0)
       {
-        str = this.gTC;
+        str = this.hFG;
         if (str != null) {
           m = str.hashCode();
         }
-        AppMethodBeat.o(215877);
+        AppMethodBeat.o(207830);
         return (k + (j + (i + n * 31) * 31) * 31) * 31 + m;
         i = 0;
         break;
@@ -233,17 +231,17 @@ public final class a
     
     public final String toString()
     {
-      AppMethodBeat.i(215876);
-      String str = "LiveMicUser(liveId=" + this.gJh + ", micId=" + this.gTA + ", audience=" + this.gTB + ", roomId=" + this.roomId + ", sdkUid=" + this.gTC + ")";
-      AppMethodBeat.o(215876);
+      AppMethodBeat.i(207829);
+      String str = "LiveMicUser(liveId=" + this.liveId + ", micId=" + this.hFz + ", audience=" + this.hFJ + ", roomId=" + this.roomId + ", sdkUid=" + this.hFG + ")";
+      AppMethodBeat.o(207829);
       return str;
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser$Companion;", "", "()V", "getTitleModel", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "plugin-logic_release"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser$Companion;", "", "()V", "getTitleModel", "Lcom/tencent/mm/live/model/linkmic/LiveSysMsgManager$LiveMicUser;", "plugin-logic_release"})
     public static final class a {}
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -251,22 +249,22 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(215878);
-      this.gTE.gTx = parama;
-      Object localObject = com.tencent.mm.live.core.debug.a.gMY;
-      com.tencent.mm.live.core.debug.a.as("MicroMsg.LiveCoreMic", "[sysmsg]anchor accept mic " + parama);
-      localObject = this.gTE.gTq;
+      AppMethodBeat.i(207831);
+      this.hKY.hKU = parama;
+      Object localObject = com.tencent.mm.live.core.debug.a.hCA;
+      com.tencent.mm.live.core.debug.a.au("MicroMsg.LiveCoreMic", "[sysmsg]anchor accept mic " + parama);
+      localObject = this.hKY.hKN;
       if (localObject != null)
       {
-        ((d.g.a.a)localObject).invoke();
-        AppMethodBeat.o(215878);
+        ((kotlin.g.a.a)localObject).invoke();
+        AppMethodBeat.o(207831);
         return;
       }
-      AppMethodBeat.o(215878);
+      AppMethodBeat.o(207831);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   public static final class c
     implements Runnable
   {
@@ -274,19 +272,19 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(215879);
-      b localb = this.gTE.gTr;
+      AppMethodBeat.i(207832);
+      b localb = this.hKY.hKO;
       if (localb != null)
       {
-        localb.invoke(Long.valueOf(this.gIR));
-        AppMethodBeat.o(215879);
+        localb.invoke(Long.valueOf(this.hvK));
+        AppMethodBeat.o(207832);
         return;
       }
-      AppMethodBeat.o(215879);
+      AppMethodBeat.o(207832);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   public static final class d
     implements Runnable
   {
@@ -294,19 +292,19 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(215880);
-      b localb = this.gTE.gTs;
+      AppMethodBeat.i(207833);
+      b localb = this.hKY.hKP;
       if (localb != null)
       {
-        localb.invoke(Boolean.valueOf(this.gTG));
-        AppMethodBeat.o(215880);
+        localb.invoke(Boolean.valueOf(this.hLa));
+        AppMethodBeat.o(207833);
         return;
       }
-      AppMethodBeat.o(215880);
+      AppMethodBeat.o(207833);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -314,19 +312,19 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(215881);
-      b localb = this.gTE.gTp;
+      AppMethodBeat.i(207834);
+      b localb = this.hKY.hKM;
       if (localb != null)
       {
         localb.invoke(Boolean.FALSE);
-        AppMethodBeat.o(215881);
+        AppMethodBeat.o(207834);
         return;
       }
-      AppMethodBeat.o(215881);
+      AppMethodBeat.o(207834);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class f
     implements Runnable
   {
@@ -334,19 +332,19 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(215882);
-      b localb = this.gTE.gTv;
+      AppMethodBeat.i(207835);
+      b localb = this.hKY.hKS;
       if (localb != null)
       {
-        localb.invoke(Boolean.valueOf(this.gTE.aoK()));
-        AppMethodBeat.o(215882);
+        localb.invoke(Boolean.valueOf(this.hKY.aHl()));
+        AppMethodBeat.o(207835);
         return;
       }
-      AppMethodBeat.o(215882);
+      AppMethodBeat.o(207835);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   public static final class g
     implements Runnable
   {
@@ -354,15 +352,15 @@ public final class a
     
     public final void run()
     {
-      AppMethodBeat.i(215883);
-      b localb = this.gTE.gTp;
+      AppMethodBeat.i(207836);
+      b localb = this.hKY.hKM;
       if (localb != null)
       {
         localb.invoke(Boolean.TRUE);
-        AppMethodBeat.o(215883);
+        AppMethodBeat.o(207836);
         return;
       }
-      AppMethodBeat.o(215883);
+      AppMethodBeat.o(207836);
     }
   }
 }

@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 
 public final class t
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private b gRX;
+  private i callback;
+  private d hJu;
   
   public t()
   {
-    AppMethodBeat.i(217955);
-    b.a locala = new b.a();
+    AppMethodBeat.i(198609);
+    d.a locala = new d.a();
     locala.funcId = getType();
-    locala.hQF = new af();
-    locala.hQG = new ag();
+    locala.iLN = new af();
+    locala.iLO = new ag();
     locala.uri = "/cgi-bin/micromsg-bin/unbindxmail";
-    this.gRX = locala.aDS();
-    AppMethodBeat.o(217955);
+    this.hJu = locala.aXF();
+    AppMethodBeat.o(198609);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(217956);
-    this.callback = paramf;
-    int i = dispatch(parame, this.gRX, this);
-    AppMethodBeat.o(217956);
+    AppMethodBeat.i(198610);
+    this.callback = parami;
+    int i = dispatch(paramg, this.hJu, this);
+    AppMethodBeat.o(198610);
     return i;
   }
   
@@ -42,11 +42,11 @@ public final class t
     return 3889;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(217957);
+    AppMethodBeat.i(198611);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(217957);
+    AppMethodBeat.o(198611);
   }
 }
 

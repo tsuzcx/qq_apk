@@ -3,9 +3,9 @@ package com.tencent.luggage.sdk;
 import com.tencent.luggage.bridge.a.a.a;
 import com.tencent.luggage.bridge.a.a.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ab.a.e;
-import com.tencent.mm.plugin.appbrand.ui.ab;
-import com.tencent.mm.plugin.appbrand.y.p.a;
+import com.tencent.mm.plugin.appbrand.ac.p.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ad.a.e;
+import com.tencent.mm.plugin.appbrand.ui.ah;
 
 public class c
   extends com.tencent.luggage.bridge.impl.a
@@ -21,17 +21,17 @@ public class c
   {
     AppMethodBeat.i(139817);
     super.a(paramc);
-    paramc.a(ab.class, new com.tencent.luggage.sdk.customize.impl.a());
+    paramc.a(ah.class, new com.tencent.luggage.sdk.customize.impl.a());
     paramc.a(p.a.class, new com.tencent.luggage.sdk.customize.impl.b());
     paramc.a(com.tencent.luggage.c.a.a.class, new com.tencent.luggage.c.a.a.a());
-    paramc.a(com.tencent.mm.plugin.appbrand.jsapi.ab.a.c.class, new e());
-    paramc.a(com.tencent.mm.plugin.appbrand.jsapi.ab.b.class, new com.tencent.mm.plugin.appbrand.jsapi.ab.a());
+    paramc.a(com.tencent.mm.plugin.appbrand.jsapi.ad.a.c.class, new e());
+    paramc.a(com.tencent.mm.plugin.appbrand.jsapi.ad.b.class, new com.tencent.mm.plugin.appbrand.jsapi.ad.a());
     AppMethodBeat.o(139817);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.c
  * JD-Core Version:    0.7.0.1
  */

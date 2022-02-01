@@ -13,21 +13,7 @@ class FacebookLiteLoginMethodHandler
   static
   {
     AppMethodBeat.i(7790);
-    CREATOR = new Parcelable.Creator()
-    {
-      public final FacebookLiteLoginMethodHandler createFromParcel(Parcel paramAnonymousParcel)
-      {
-        AppMethodBeat.i(7785);
-        paramAnonymousParcel = new FacebookLiteLoginMethodHandler(paramAnonymousParcel);
-        AppMethodBeat.o(7785);
-        return paramAnonymousParcel;
-      }
-      
-      public final FacebookLiteLoginMethodHandler[] newArray(int paramAnonymousInt)
-      {
-        return new FacebookLiteLoginMethodHandler[paramAnonymousInt];
-      }
-    };
+    CREATOR = new FacebookLiteLoginMethodHandler.1();
     AppMethodBeat.o(7790);
   }
   
@@ -71,7 +57,7 @@ class FacebookLiteLoginMethodHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.login.FacebookLiteLoginMethodHandler
  * JD-Core Version:    0.7.0.1
  */

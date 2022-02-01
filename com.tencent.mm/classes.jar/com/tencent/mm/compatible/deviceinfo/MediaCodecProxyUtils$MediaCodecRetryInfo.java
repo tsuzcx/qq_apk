@@ -9,7 +9,7 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<MediaCodecRetryInfo> CREATOR;
-  int gex;
+  int gJY;
   
   static
   {
@@ -21,7 +21,7 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfo
   protected MediaCodecProxyUtils$MediaCodecRetryInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(155803);
-    this.gex = paramParcel.readInt();
+    this.gJY = paramParcel.readInt();
     AppMethodBeat.o(155803);
   }
   
@@ -33,13 +33,13 @@ public class MediaCodecProxyUtils$MediaCodecRetryInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(155804);
-    paramParcel.writeInt(this.gex);
+    paramParcel.writeInt(this.gJY);
     AppMethodBeat.o(155804);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.MediaCodecProxyUtils.MediaCodecRetryInfo
  * JD-Core Version:    0.7.0.1
  */

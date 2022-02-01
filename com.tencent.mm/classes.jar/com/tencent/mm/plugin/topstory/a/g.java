@@ -6,9 +6,13 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface g
   extends a
 {
-  public abstract void bm(Context paramContext, String paramString);
+  public abstract void aW(String paramString1, String paramString2, String paramString3);
   
-  public abstract boolean esp();
+  public abstract void bF(Context paramContext, String paramString);
+  
+  public abstract boolean fxP();
+  
+  public abstract void hv(Context paramContext);
 }
 
 

@@ -7,98 +7,98 @@ import android.graphics.Point;
 import android.graphics.PorterDuff.Mode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.c;
-import com.tencent.mm.protocal.protobuf.rv;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.ui.ar;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.sy;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.au;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/CaptionEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "captionItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;)V", "bitmapPaint", "Landroid/graphics/Paint;", "canvas", "Landroid/graphics/Canvas;", "captionItemView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView;", "hasContent", "", "scale", "", "screenWidth", "", "seekTime", "", "showBitmap", "Landroid/graphics/Bitmap;", "transMatrix", "Landroid/graphics/Matrix;", "destroy", "", "draw", "paint", "getScale", "matrix", "init", "prepareNext", "seekTo", "timeMs", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/CaptionEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "captionItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;)V", "bitmapPaint", "Landroid/graphics/Paint;", "canvas", "Landroid/graphics/Canvas;", "captionItemView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView;", "hasContent", "", "scale", "", "screenWidth", "", "seekTime", "", "showBitmap", "Landroid/graphics/Bitmap;", "transMatrix", "Landroid/graphics/Matrix;", "destroy", "", "draw", "paint", "getScale", "matrix", "init", "prepareNext", "seekTo", "timeMs", "plugin-recordvideo_release"})
 public final class d
   extends a
 {
-  private Canvas aTq;
-  private Paint aYE;
-  private int lxZ;
+  private final c Can;
+  private com.tencent.mm.plugin.recordvideo.ui.editor.a Cgo;
+  private Matrix Cgp;
+  private boolean Cgq;
+  private Canvas aTi;
+  private Paint aYz;
+  private int mEX;
   private final float scale;
-  private final c xZo;
-  private com.tencent.mm.plugin.recordvideo.ui.editor.a yfo;
-  private Matrix yfp;
-  private boolean yfq;
   
   public d(c paramc)
   {
-    super(paramc.gR);
-    AppMethodBeat.i(207016);
-    this.xZo = paramc;
-    this.aYE = new Paint();
-    paramc = ak.getContext();
+    super(paramc.gT);
+    AppMethodBeat.i(237857);
+    this.Can = paramc;
+    this.aYz = new Paint();
+    paramc = MMApplicationContext.getContext();
     p.g(paramc, "MMApplicationContext.getContext()");
-    this.yfo = new com.tencent.mm.plugin.recordvideo.ui.editor.a(paramc);
-    this.lxZ = ar.ck(ak.getContext()).x;
-    this.yfp = new Matrix();
-    paramc = this.gR;
+    this.Cgo = new com.tencent.mm.plugin.recordvideo.ui.editor.a(paramc);
+    this.mEX = au.az(MMApplicationContext.getContext()).x;
+    this.Cgp = new Matrix();
+    paramc = this.gT;
     float[] arrayOfFloat = new float[9];
     paramc.getValues(arrayOfFloat);
     double d1 = arrayOfFloat[0];
     double d2 = arrayOfFloat[3];
     this.scale = ((float)Math.sqrt(d2 * d2 + d1 * d1));
-    AppMethodBeat.o(207016);
-  }
-  
-  public final long dLx()
-  {
-    return 9223372036854775807L;
+    AppMethodBeat.o(237857);
   }
   
   public final void destroy() {}
   
   public final void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    AppMethodBeat.i(207014);
+    AppMethodBeat.i(237855);
     p.h(paramCanvas, "canvas");
     p.h(paramPaint, "paint");
-    if (this.yfq)
+    if (this.Cgq)
     {
       paramCanvas.save();
-      this.yfp.reset();
-      this.yfp.postTranslate((this.lxZ - this.yfo.getMeasuredWidth() * this.scale) / 2.0F, 0.0F);
-      paramCanvas.concat(this.yfp);
-      paramCanvas.concat(this.gR);
-      this.yfo.draw(paramCanvas);
+      this.Cgp.reset();
+      this.Cgp.postTranslate((this.mEX - this.Cgo.getMeasuredWidth() * this.scale) / 2.0F, 0.0F);
+      paramCanvas.concat(this.Cgp);
+      paramCanvas.concat(this.gT);
+      this.Cgo.draw(paramCanvas);
       paramCanvas.restore();
     }
-    AppMethodBeat.o(207014);
+    AppMethodBeat.o(237855);
+  }
+  
+  public final long eMv()
+  {
+    return 9223372036854775807L;
   }
   
   public final void init()
   {
-    AppMethodBeat.i(207013);
-    this.aYE.setAntiAlias(true);
-    this.yfo.setCaptionItem(this.xZo);
-    this.yfo.setTag(this.xZo);
-    AppMethodBeat.o(207013);
+    AppMethodBeat.i(237854);
+    this.aYz.setAntiAlias(true);
+    this.Cgo.setCaptionItem(this.Can);
+    this.Cgo.setTag(this.Can);
+    AppMethodBeat.o(237854);
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(207015);
+    AppMethodBeat.i(237856);
     super.seekTo(paramLong);
-    Object localObject = this.aTq;
+    Object localObject = this.aTi;
     if (localObject != null) {
       ((Canvas)localObject).drawColor(0, PorterDuff.Mode.MULTIPLY);
     }
-    if (this.yfo.zi(paramLong))
+    if (this.Cgo.Ig(paramLong))
     {
-      localObject = this.yfo.xZo;
+      localObject = this.Cgo.Can;
       boolean bool;
       int i;
       if (localObject != null)
       {
-        localObject = ((c)localObject).zk(paramLong);
+        localObject = ((c)localObject).Ii(paramLong);
         if (localObject != null)
         {
-          bool = ((rv)localObject).Ggs;
+          bool = ((sy)localObject).LaV;
           if (bool) {
             break label135;
           }
@@ -110,10 +110,10 @@ public final class d
         if (i == 0) {
           break label145;
         }
-        this.yfq = true;
-        this.yfo.measure(0, 0);
-        this.yfo.layout(0, 0, this.yfo.getMeasuredWidth(), this.yfo.getMeasuredHeight());
-        AppMethodBeat.o(207015);
+        this.Cgq = true;
+        this.Cgo.measure(0, 0);
+        this.Cgo.layout(0, 0, this.Cgo.getMeasuredWidth(), this.Cgo.getMeasuredHeight());
+        AppMethodBeat.o(237856);
         return;
         bool = true;
         break;
@@ -124,13 +124,13 @@ public final class d
       }
     }
     label145:
-    this.yfq = false;
-    AppMethodBeat.o(207015);
+    this.Cgq = false;
+    AppMethodBeat.o(237856);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.a.d
  * JD-Core Version:    0.7.0.1
  */

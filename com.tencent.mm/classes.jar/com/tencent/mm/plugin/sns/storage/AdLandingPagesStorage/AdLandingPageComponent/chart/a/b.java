@@ -2,16 +2,16 @@ package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageCom
 
 public final class b
 {
-  public int zSk = -16777216;
-  public float zSl = 2.0F;
-  public int zSm = -1;
-  public int zSn = 70;
-  public int zSo = -16777216;
-  public int zSp = 1;
+  public int Eau = -16777216;
+  public float Eav = 2.0F;
+  public int Eaw = -1;
+  public int Eax = 70;
+  public int Eay = -16777216;
+  public int Eaz = 1;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.b
  * JD-Core Version:    0.7.0.1
  */

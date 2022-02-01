@@ -6,39 +6,49 @@ import java.util.List;
 
 public abstract interface q
 {
-  public abstract WxaPkg LK(String paramString);
+  public abstract WxaPkg UT(String paramString);
   
-  public abstract InputStream LL(String paramString);
+  public abstract InputStream UU(String paramString);
   
-  public abstract a LM(String paramString);
+  public abstract a UV(String paramString);
   
-  public abstract boolean LN(String paramString);
+  public abstract boolean UW(String paramString);
   
-  public abstract List<WxaPkg.Info> bah();
+  public abstract List<String> bvA();
   
-  public abstract void bai();
+  public abstract void bvy();
   
-  public abstract List<ModulePkgInfo> baj();
-  
-  public abstract List<String> bak();
+  public abstract List<ModulePkgInfo> bvz();
   
   public abstract void close();
   
   public static class a
   {
-    public int aDD;
+    public int appVersion;
     public String fileName;
-    public String jIJ;
-    public String jIK;
-    public WxaPkg jIL;
-    public String jIM;
-    public int jIN;
-    public int jIO;
+    public String kKF;
+    public String kKG;
+    public WxaPkg kKH;
+    public String kKI;
+    public int kKJ;
+    public int kKK;
     
-    public final WxaPkg.Info bal()
+    public final void a(a parama)
+    {
+      this.kKF = parama.kKF;
+      this.appVersion = parama.appVersion;
+      this.kKG = parama.kKG;
+      this.kKH = parama.kKH;
+      this.kKI = parama.kKI;
+      this.fileName = parama.fileName;
+      this.kKJ = parama.kKJ;
+      this.kKK = parama.kKK;
+    }
+    
+    public final WxaPkg.Info bvB()
     {
       AppMethodBeat.i(178519);
-      WxaPkg.Info localInfo = new WxaPkg.Info(this.jIM, this.fileName, this.jIN, this.jIO);
+      WxaPkg.Info localInfo = new WxaPkg.Info(this.kKI, this.fileName, this.kKJ, this.kKK);
       AppMethodBeat.o(178519);
       return localInfo;
     }
@@ -46,7 +56,7 @@ public abstract interface q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.q
  * JD-Core Version:    0.7.0.1
  */

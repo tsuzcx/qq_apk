@@ -31,20 +31,20 @@ class DatabaseSourceInfoStorage
   
   private ContentValues convert(SourceInfo paramSourceInfo)
   {
-    AppMethodBeat.i(195191);
+    AppMethodBeat.i(223218);
     ContentValues localContentValues = new ContentValues();
     localContentValues.put("url", paramSourceInfo.url);
     localContentValues.put("length", Long.valueOf(paramSourceInfo.length));
     localContentValues.put("mime", paramSourceInfo.mime);
-    AppMethodBeat.o(195191);
+    AppMethodBeat.o(223218);
     return localContentValues;
   }
   
   private SourceInfo convert(Cursor paramCursor)
   {
-    AppMethodBeat.i(195190);
+    AppMethodBeat.i(223217);
     paramCursor = new SourceInfo(paramCursor.getString(paramCursor.getColumnIndexOrThrow("url")), paramCursor.getLong(paramCursor.getColumnIndexOrThrow("length")), paramCursor.getString(paramCursor.getColumnIndexOrThrow("mime")));
-    AppMethodBeat.o(195190);
+    AppMethodBeat.o(223217);
     return paramCursor;
   }
   
@@ -161,14 +161,14 @@ class DatabaseSourceInfoStorage
   
   public void release()
   {
-    AppMethodBeat.i(195189);
+    AppMethodBeat.i(223216);
     close();
-    AppMethodBeat.o(195189);
+    AppMethodBeat.o(223216);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.danikula.videocache.sourcestorage.DatabaseSourceInfoStorage
  * JD-Core Version:    0.7.0.1
  */

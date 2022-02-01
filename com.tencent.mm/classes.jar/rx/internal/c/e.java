@@ -9,23 +9,23 @@ import rx.internal.util.g;
 
  enum e
 {
-  static final g Owu;
+  static final g Umi;
   
   static
   {
     AppMethodBeat.i(90377);
-    Owv = new e[0];
-    Owu = new g("RxScheduledExecutorPool-");
+    Umj = new e[0];
+    Umi = new g("RxScheduledExecutorPool-");
     AppMethodBeat.o(90377);
   }
   
-  public static ScheduledExecutorService gDE()
+  public static ScheduledExecutorService hQM()
   {
     AppMethodBeat.i(90376);
-    Object localObject = c.gDM();
+    Object localObject = c.hQU();
     if (localObject == null)
     {
-      localObject = Executors.newScheduledThreadPool(1, Owu);
+      localObject = Executors.newScheduledThreadPool(1, Umi);
       AppMethodBeat.o(90376);
       return localObject;
     }

@@ -10,12 +10,12 @@ import org.json.JSONObject;
 public final class b
   implements a
 {
-  private JSONArray gCI;
+  private JSONArray hpw;
   
   public b()
   {
     AppMethodBeat.i(158424);
-    this.gCI = new JSONArray();
+    this.hpw = new JSONArray();
     AppMethodBeat.o(158424);
   }
   
@@ -24,7 +24,7 @@ public final class b
     AppMethodBeat.i(158425);
     try
     {
-      this.gCI = new JSONArray(paramString);
+      this.hpw = new JSONArray(paramString);
       AppMethodBeat.o(158425);
       return;
     }
@@ -40,14 +40,31 @@ public final class b
   {
     AppMethodBeat.i(158426);
     Assert.assertNotNull(paramJSONArray);
-    this.gCI = paramJSONArray;
+    this.hpw = paramJSONArray;
     AppMethodBeat.o(158426);
   }
   
-  public final a bl(Object paramObject)
+  public final a C(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(158433);
+    try
+    {
+      this.hpw.put(paramInt, paramBoolean);
+      AppMethodBeat.o(158433);
+      return this;
+    }
+    catch (JSONException localJSONException)
+    {
+      g localg = new g(localJSONException);
+      AppMethodBeat.o(158433);
+      throw localg;
+    }
+  }
+  
+  public final a bu(Object paramObject)
   {
     AppMethodBeat.i(158432);
-    this.gCI.put(paramObject);
+    this.hpw.put(paramObject);
     AppMethodBeat.o(158432);
     return this;
   }
@@ -57,7 +74,7 @@ public final class b
     AppMethodBeat.i(158434);
     try
     {
-      this.gCI.put(paramInt, paramDouble);
+      this.hpw.put(paramInt, paramDouble);
       AppMethodBeat.o(158434);
       return this;
     }
@@ -69,12 +86,12 @@ public final class b
     }
   }
   
-  public final a cM(int paramInt1, int paramInt2)
+  public final a cS(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(158435);
     try
     {
-      this.gCI.put(paramInt1, paramInt2);
+      this.hpw.put(paramInt1, paramInt2);
       AppMethodBeat.o(158435);
       return this;
     }
@@ -86,20 +103,20 @@ public final class b
     }
   }
   
-  public final a dz(boolean paramBoolean)
+  public final a ep(boolean paramBoolean)
   {
     AppMethodBeat.i(158428);
-    this.gCI.put(paramBoolean);
+    this.hpw.put(paramBoolean);
     AppMethodBeat.o(158428);
     return this;
   }
   
-  public final a f(int paramInt, Object paramObject)
+  public final a g(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(158437);
     try
     {
-      this.gCI.put(paramInt, paramObject);
+      this.hpw.put(paramInt, paramObject);
       AppMethodBeat.o(158437);
       return this;
     }
@@ -116,7 +133,7 @@ public final class b
     AppMethodBeat.i(158439);
     try
     {
-      Object localObject = this.gCI.get(paramInt);
+      Object localObject = this.hpw.get(paramInt);
       if ((localObject instanceof JSONObject))
       {
         localObject = new d((JSONObject)localObject);
@@ -145,7 +162,7 @@ public final class b
     AppMethodBeat.i(158442);
     try
     {
-      boolean bool = this.gCI.getBoolean(paramInt);
+      boolean bool = this.hpw.getBoolean(paramInt);
       AppMethodBeat.o(158442);
       return bool;
     }
@@ -162,7 +179,7 @@ public final class b
     AppMethodBeat.i(158445);
     try
     {
-      double d = this.gCI.getDouble(paramInt);
+      double d = this.hpw.getDouble(paramInt);
       AppMethodBeat.o(158445);
       return d;
     }
@@ -179,7 +196,7 @@ public final class b
     AppMethodBeat.i(158448);
     try
     {
-      paramInt = this.gCI.getInt(paramInt);
+      paramInt = this.hpw.getInt(paramInt);
       AppMethodBeat.o(158448);
       return paramInt;
     }
@@ -196,7 +213,7 @@ public final class b
     AppMethodBeat.i(158451);
     try
     {
-      long l = this.gCI.getLong(paramInt);
+      long l = this.hpw.getLong(paramInt);
       AppMethodBeat.o(158451);
       return l;
     }
@@ -213,7 +230,7 @@ public final class b
     AppMethodBeat.i(158454);
     try
     {
-      String str = this.gCI.getString(paramInt);
+      String str = this.hpw.getString(paramInt);
       AppMethodBeat.o(158454);
       return str;
     }
@@ -228,17 +245,17 @@ public final class b
   public final boolean isNull(int paramInt)
   {
     AppMethodBeat.i(158438);
-    boolean bool = this.gCI.isNull(paramInt);
+    boolean bool = this.hpw.isNull(paramInt);
     AppMethodBeat.o(158438);
     return bool;
   }
   
-  public final a j(double paramDouble)
+  public final a k(double paramDouble)
   {
     AppMethodBeat.i(158429);
     try
     {
-      this.gCI.put(paramDouble);
+      this.hpw.put(paramDouble);
       AppMethodBeat.o(158429);
       return this;
     }
@@ -253,97 +270,15 @@ public final class b
   public final int length()
   {
     AppMethodBeat.i(158427);
-    int i = this.gCI.length();
+    int i = this.hpw.length();
     AppMethodBeat.o(158427);
     return i;
-  }
-  
-  public final a mD(int paramInt)
-  {
-    AppMethodBeat.i(158430);
-    this.gCI.put(paramInt);
-    AppMethodBeat.o(158430);
-    return this;
-  }
-  
-  public final a mE(int paramInt)
-  {
-    AppMethodBeat.i(158457);
-    try
-    {
-      Object localObject = this.gCI.getJSONArray(paramInt);
-      if (localObject == null)
-      {
-        AppMethodBeat.o(158457);
-        return null;
-      }
-      localObject = new b((JSONArray)localObject);
-      AppMethodBeat.o(158457);
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(158457);
-      throw localg;
-    }
-  }
-  
-  public final a mF(int paramInt)
-  {
-    AppMethodBeat.i(158458);
-    Object localObject = this.gCI.optJSONArray(paramInt);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(158458);
-      return null;
-    }
-    localObject = new b((JSONArray)localObject);
-    AppMethodBeat.o(158458);
-    return localObject;
-  }
-  
-  public final c mG(int paramInt)
-  {
-    AppMethodBeat.i(158459);
-    try
-    {
-      Object localObject = this.gCI.getJSONObject(paramInt);
-      if (localObject == null)
-      {
-        AppMethodBeat.o(158459);
-        return null;
-      }
-      localObject = new d((JSONObject)localObject);
-      AppMethodBeat.o(158459);
-      return localObject;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(158459);
-      throw localg;
-    }
-  }
-  
-  public final c mH(int paramInt)
-  {
-    AppMethodBeat.i(158460);
-    Object localObject = this.gCI.optJSONObject(paramInt);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(158460);
-      return null;
-    }
-    localObject = new d((JSONObject)localObject);
-    AppMethodBeat.o(158460);
-    return localObject;
   }
   
   public final Object opt(int paramInt)
   {
     AppMethodBeat.i(158440);
-    Object localObject = this.gCI.opt(paramInt);
+    Object localObject = this.hpw.opt(paramInt);
     if ((localObject instanceof JSONObject))
     {
       localObject = new d((JSONObject)localObject);
@@ -363,7 +298,7 @@ public final class b
   public final boolean optBoolean(int paramInt)
   {
     AppMethodBeat.i(158443);
-    boolean bool = this.gCI.optBoolean(paramInt);
+    boolean bool = this.hpw.optBoolean(paramInt);
     AppMethodBeat.o(158443);
     return bool;
   }
@@ -371,7 +306,7 @@ public final class b
   public final boolean optBoolean(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(158444);
-    paramBoolean = this.gCI.optBoolean(paramInt, paramBoolean);
+    paramBoolean = this.hpw.optBoolean(paramInt, paramBoolean);
     AppMethodBeat.o(158444);
     return paramBoolean;
   }
@@ -379,7 +314,7 @@ public final class b
   public final double optDouble(int paramInt)
   {
     AppMethodBeat.i(158446);
-    double d = this.gCI.optDouble(paramInt);
+    double d = this.hpw.optDouble(paramInt);
     AppMethodBeat.o(158446);
     return d;
   }
@@ -387,7 +322,7 @@ public final class b
   public final double optDouble(int paramInt, double paramDouble)
   {
     AppMethodBeat.i(158447);
-    paramDouble = this.gCI.optDouble(paramInt, paramDouble);
+    paramDouble = this.hpw.optDouble(paramInt, paramDouble);
     AppMethodBeat.o(158447);
     return paramDouble;
   }
@@ -395,7 +330,7 @@ public final class b
   public final int optInt(int paramInt)
   {
     AppMethodBeat.i(158449);
-    paramInt = this.gCI.optInt(paramInt);
+    paramInt = this.hpw.optInt(paramInt);
     AppMethodBeat.o(158449);
     return paramInt;
   }
@@ -403,7 +338,7 @@ public final class b
   public final int optInt(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(158450);
-    paramInt1 = this.gCI.optInt(paramInt1, paramInt2);
+    paramInt1 = this.hpw.optInt(paramInt1, paramInt2);
     AppMethodBeat.o(158450);
     return paramInt1;
   }
@@ -411,7 +346,7 @@ public final class b
   public final long optLong(int paramInt)
   {
     AppMethodBeat.i(158452);
-    long l = this.gCI.optLong(paramInt);
+    long l = this.hpw.optLong(paramInt);
     AppMethodBeat.o(158452);
     return l;
   }
@@ -419,7 +354,7 @@ public final class b
   public final long optLong(int paramInt, long paramLong)
   {
     AppMethodBeat.i(158453);
-    paramLong = this.gCI.optLong(paramInt, paramLong);
+    paramLong = this.hpw.optLong(paramInt, paramLong);
     AppMethodBeat.o(158453);
     return paramLong;
   }
@@ -427,7 +362,7 @@ public final class b
   public final String optString(int paramInt)
   {
     AppMethodBeat.i(158455);
-    String str = this.gCI.optString(paramInt);
+    String str = this.hpw.optString(paramInt);
     AppMethodBeat.o(158455);
     return str;
   }
@@ -435,16 +370,98 @@ public final class b
   public final String optString(int paramInt, String paramString)
   {
     AppMethodBeat.i(158456);
-    paramString = this.gCI.optString(paramInt, paramString);
+    paramString = this.hpw.optString(paramInt, paramString);
     AppMethodBeat.o(158456);
     return paramString;
+  }
+  
+  public final a pQ(int paramInt)
+  {
+    AppMethodBeat.i(158430);
+    this.hpw.put(paramInt);
+    AppMethodBeat.o(158430);
+    return this;
+  }
+  
+  public final a pR(int paramInt)
+  {
+    AppMethodBeat.i(158457);
+    try
+    {
+      Object localObject = this.hpw.getJSONArray(paramInt);
+      if (localObject == null)
+      {
+        AppMethodBeat.o(158457);
+        return null;
+      }
+      localObject = new b((JSONArray)localObject);
+      AppMethodBeat.o(158457);
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      g localg = new g(localJSONException);
+      AppMethodBeat.o(158457);
+      throw localg;
+    }
+  }
+  
+  public final a pS(int paramInt)
+  {
+    AppMethodBeat.i(158458);
+    Object localObject = this.hpw.optJSONArray(paramInt);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(158458);
+      return null;
+    }
+    localObject = new b((JSONArray)localObject);
+    AppMethodBeat.o(158458);
+    return localObject;
+  }
+  
+  public final c pT(int paramInt)
+  {
+    AppMethodBeat.i(158459);
+    try
+    {
+      Object localObject = this.hpw.getJSONObject(paramInt);
+      if (localObject == null)
+      {
+        AppMethodBeat.o(158459);
+        return null;
+      }
+      localObject = new d((JSONObject)localObject);
+      AppMethodBeat.o(158459);
+      return localObject;
+    }
+    catch (JSONException localJSONException)
+    {
+      g localg = new g(localJSONException);
+      AppMethodBeat.o(158459);
+      throw localg;
+    }
+  }
+  
+  public final c pU(int paramInt)
+  {
+    AppMethodBeat.i(158460);
+    Object localObject = this.hpw.optJSONObject(paramInt);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(158460);
+      return null;
+    }
+    localObject = new d((JSONObject)localObject);
+    AppMethodBeat.o(158460);
+    return localObject;
   }
   
   @TargetApi(19)
   public final Object remove(int paramInt)
   {
     AppMethodBeat.i(158441);
-    Object localObject = this.gCI.remove(paramInt);
+    Object localObject = this.hpw.remove(paramInt);
     if ((localObject instanceof JSONObject))
     {
       localObject = new d((JSONObject)localObject);
@@ -461,35 +478,10 @@ public final class b
     return localObject;
   }
   
-  public final a rm(long paramLong)
-  {
-    AppMethodBeat.i(158431);
-    this.gCI.put(paramLong);
-    AppMethodBeat.o(158431);
-    return this;
-  }
-  
-  public final a t(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(158436);
-    try
-    {
-      this.gCI.put(paramInt, paramLong);
-      AppMethodBeat.o(158436);
-      return this;
-    }
-    catch (JSONException localJSONException)
-    {
-      g localg = new g(localJSONException);
-      AppMethodBeat.o(158436);
-      throw localg;
-    }
-  }
-  
   public final String toString()
   {
     AppMethodBeat.i(158461);
-    String str = this.gCI.toString();
+    String str = this.hpw.toString();
     AppMethodBeat.o(158461);
     return str;
   }
@@ -499,7 +491,7 @@ public final class b
     AppMethodBeat.i(158462);
     try
     {
-      String str = this.gCI.toString(paramInt);
+      String str = this.hpw.toString(paramInt);
       AppMethodBeat.o(158462);
       return str;
     }
@@ -511,26 +503,34 @@ public final class b
     }
   }
   
-  public final a y(int paramInt, boolean paramBoolean)
+  public final a v(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(158433);
+    AppMethodBeat.i(158436);
     try
     {
-      this.gCI.put(paramInt, paramBoolean);
-      AppMethodBeat.o(158433);
+      this.hpw.put(paramInt, paramLong);
+      AppMethodBeat.o(158436);
       return this;
     }
     catch (JSONException localJSONException)
     {
       g localg = new g(localJSONException);
-      AppMethodBeat.o(158433);
+      AppMethodBeat.o(158436);
       throw localg;
     }
+  }
+  
+  public final a zp(long paramLong)
+  {
+    AppMethodBeat.i(158431);
+    this.hpw.put(paramLong);
+    AppMethodBeat.o(158431);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ab.b
  * JD-Core Version:    0.7.0.1
  */

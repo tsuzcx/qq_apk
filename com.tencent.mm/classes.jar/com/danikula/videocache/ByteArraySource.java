@@ -23,23 +23,23 @@ public class ByteArraySource
   
   public void open(long paramLong)
   {
-    AppMethodBeat.i(195101);
+    AppMethodBeat.i(223128);
     this.arrayInputStream = new ByteArrayInputStream(this.data);
     this.arrayInputStream.skip(paramLong);
-    AppMethodBeat.o(195101);
+    AppMethodBeat.o(223128);
   }
   
   public int read(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(195100);
+    AppMethodBeat.i(223127);
     int i = this.arrayInputStream.read(paramArrayOfByte, 0, paramArrayOfByte.length);
-    AppMethodBeat.o(195100);
+    AppMethodBeat.o(223127);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.danikula.videocache.ByteArraySource
  * JD-Core Version:    0.7.0.1
  */

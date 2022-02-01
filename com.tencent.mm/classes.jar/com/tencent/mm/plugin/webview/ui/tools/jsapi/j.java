@@ -3,26 +3,69 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.plugin.webview.c.l;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.d.n;
 import com.tencent.mm.plugin.webview.stub.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 
 public final class j
 {
-  private static String UW(String paramString)
+  public static void a(f paramf, String paramString, n paramn)
+  {
+    AppMethodBeat.i(212020);
+    if (paramf == null)
+    {
+      AppMethodBeat.o(212020);
+      return;
+    }
+    try
+    {
+      paramf = paramf.j(145, null);
+      if (paramf == null)
+      {
+        AppMethodBeat.o(212020);
+        return;
+      }
+    }
+    catch (Exception paramf)
+    {
+      Log.e("kv_14993", String.valueOf(paramf));
+      AppMethodBeat.o(212020);
+      return;
+    }
+    String[] arrayOfString = paramf.getStringArray("key_webview_apbrand_jsapi_report_args");
+    if ((arrayOfString == null) || (arrayOfString.length != 19))
+    {
+      AppMethodBeat.o(212020);
+      return;
+    }
+    arrayOfString[10] = paramString;
+    arrayOfString[11] = b(paramString, paramn);
+    if ("true".equals(b(paramn, "isSuccess"))) {}
+    for (paramf = "1";; paramf = "2")
+    {
+      arrayOfString[12] = paramf;
+      arrayOfString[13] = b(paramn, "permissionValue");
+      arrayOfString[14] = b(paramn, "jsapiErrorCode");
+      h.CyF.a(14993, k(arrayOfString));
+      AppMethodBeat.o(212020);
+      return;
+    }
+  }
+  
+  private static String aeL(String paramString)
   {
     AppMethodBeat.i(82064);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(82064);
       return "";
     }
     try
     {
-      paramString = bu.nullAsNil(q.encode(paramString));
+      paramString = Util.nullAsNil(q.encode(paramString));
       AppMethodBeat.o(82064);
       return paramString;
     }
@@ -33,65 +76,22 @@ public final class j
     return "";
   }
   
-  private static String a(l paraml, String paramString)
+  private static String b(n paramn, String paramString)
   {
-    AppMethodBeat.i(199108);
-    if ((paraml.EfA == null) || (!paraml.EfA.containsKey(paramString)))
+    AppMethodBeat.i(212022);
+    if ((paramn.ISg == null) || (!paramn.ISg.containsKey(paramString)))
     {
-      AppMethodBeat.o(199108);
+      AppMethodBeat.o(212022);
       return "";
     }
-    paraml = String.valueOf(paraml.EfA.get(paramString));
-    AppMethodBeat.o(199108);
-    return paraml;
+    paramn = String.valueOf(paramn.ISg.get(paramString));
+    AppMethodBeat.o(212022);
+    return paramn;
   }
   
-  public static void a(f paramf, String paramString, l paraml)
+  private static String b(String paramString, n paramn)
   {
-    AppMethodBeat.i(199106);
-    if (paramf == null)
-    {
-      AppMethodBeat.o(199106);
-      return;
-    }
-    try
-    {
-      paramf = paramf.k(145, null);
-      if (paramf == null)
-      {
-        AppMethodBeat.o(199106);
-        return;
-      }
-    }
-    catch (Exception paramf)
-    {
-      ae.e("kv_14993", String.valueOf(paramf));
-      AppMethodBeat.o(199106);
-      return;
-    }
-    String[] arrayOfString = paramf.getStringArray("key_webview_apbrand_jsapi_report_args");
-    if ((arrayOfString == null) || (arrayOfString.length != 19))
-    {
-      AppMethodBeat.o(199106);
-      return;
-    }
-    arrayOfString[10] = paramString;
-    arrayOfString[11] = b(paramString, paraml);
-    if ("true".equals(a(paraml, "isSuccess"))) {}
-    for (paramf = "1";; paramf = "2")
-    {
-      arrayOfString[12] = paramf;
-      arrayOfString[13] = a(paraml, "permissionValue");
-      arrayOfString[14] = a(paraml, "jsapiErrorCode");
-      g.yxI.f(14993, k(arrayOfString));
-      AppMethodBeat.o(199106);
-      return;
-    }
-  }
-  
-  private static String b(String paramString, l paraml)
-  {
-    AppMethodBeat.i(199107);
+    AppMethodBeat.i(212021);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -101,7 +101,7 @@ public final class j
       switch (i)
       {
       default: 
-        AppMethodBeat.o(199107);
+        AppMethodBeat.o(212021);
         return "";
         if (paramString.equals("getBrandWCPayRequest")) {
           i = 0;
@@ -109,8 +109,8 @@ public final class j
         break;
       }
     }
-    paramString = paraml.xqN.get("package").toString();
-    AppMethodBeat.o(199107);
+    paramString = paramn.params.get("package").toString();
+    AppMethodBeat.o(212021);
     return paramString;
   }
   
@@ -148,7 +148,7 @@ public final class j
           }
           else
           {
-            localObject1 = UW((String)localObject2);
+            localObject1 = aeL((String)localObject2);
           }
         }
       }

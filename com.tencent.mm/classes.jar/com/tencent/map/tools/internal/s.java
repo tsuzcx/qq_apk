@@ -11,30 +11,30 @@ import java.lang.reflect.Field;
 
 public class s
 {
-  private static Context b;
-  private static s c;
-  private String a;
-  private String d;
-  private int e;
+  private static Context c;
+  private static s d;
+  public int a;
+  private String b;
+  private String e;
   
   private s(Context paramContext)
   {
-    AppMethodBeat.i(209798);
-    this.a = "JudeCpuAbiHandler";
-    this.d = "armeabi";
-    this.e = 4;
-    b = paramContext;
-    this.d = b(paramContext);
-    this.e = a(this.d);
-    AppMethodBeat.o(209798);
+    AppMethodBeat.i(193537);
+    this.b = "JudeCpuAbiHandler";
+    this.e = "armeabi";
+    this.a = 4;
+    c = paramContext;
+    this.e = b(paramContext);
+    this.a = a(this.e);
+    AppMethodBeat.o(193537);
   }
   
   private static int a(String paramString)
   {
-    AppMethodBeat.i(209801);
+    AppMethodBeat.i(193540);
     if (paramString == null)
     {
-      AppMethodBeat.o(209801);
+      AppMethodBeat.o(193540);
       return 4;
     }
     int i = 0;
@@ -42,38 +42,37 @@ public class s
     {
       if (paramString.equals(t.F[i]))
       {
-        AppMethodBeat.o(209801);
+        AppMethodBeat.o(193540);
         return i;
       }
       i += 1;
     }
-    AppMethodBeat.o(209801);
+    AppMethodBeat.o(193540);
     return -1;
   }
   
   public static s a(Context paramContext)
   {
-    AppMethodBeat.i(209799);
-    if (c == null) {}
+    AppMethodBeat.i(193538);
     try
     {
-      if (c == null) {
-        c = new s(paramContext);
+      if (d == null) {
+        d = new s(paramContext);
       }
-      paramContext = c;
-      AppMethodBeat.o(209799);
+      paramContext = d;
+      AppMethodBeat.o(193538);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(209799);
+      AppMethodBeat.o(193538);
     }
   }
   
   private static String b(Context paramContext)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(209800);
+    AppMethodBeat.i(193539);
     for (;;)
     {
       try
@@ -85,7 +84,7 @@ public class s
             break label179;
           }
           paramContext = Build.SUPPORTED_64_BIT_ABIS[0];
-          AppMethodBeat.o(209800);
+          AppMethodBeat.o(193539);
           return paramContext;
         }
         if (Build.VERSION.SDK_INT < 21) {
@@ -113,13 +112,13 @@ public class s
         if (paramContext.equals("getError"))
         {
           paramContext = new Exception("getError");
-          AppMethodBeat.o(209800);
+          AppMethodBeat.o(193539);
           throw paramContext;
         }
       }
       catch (Throwable paramContext)
       {
-        AppMethodBeat.o(209800);
+        AppMethodBeat.o(193539);
         return "armeabi";
       }
       boolean bool1 = bool2;
@@ -138,31 +137,26 @@ public class s
   
   private static String c(Context paramContext)
   {
-    AppMethodBeat.i(209802);
+    AppMethodBeat.i(193541);
     try
     {
       paramContext = paramContext.getApplicationContext().getPackageManager().getApplicationInfo(paramContext.getApplicationContext().getPackageName(), 0);
       Field localField = ApplicationInfo.class.getDeclaredField("primaryCpuAbi");
       localField.setAccessible(true);
       paramContext = (String)localField.get(paramContext);
-      AppMethodBeat.o(209802);
+      AppMethodBeat.o(193541);
       return paramContext;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(209802);
+      AppMethodBeat.o(193541);
     }
     return "getError";
-  }
-  
-  public final int a()
-  {
-    return this.e;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.internal.s
  * JD-Core Version:    0.7.0.1
  */

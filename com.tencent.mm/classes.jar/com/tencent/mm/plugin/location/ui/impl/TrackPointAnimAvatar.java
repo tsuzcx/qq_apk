@@ -11,17 +11,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class TrackPointAnimAvatar
   extends RelativeLayout
 {
-  private ImageView jgy;
+  private ImageView keC;
   private Context mContext;
   private String username;
-  private LinearLayout vur;
-  private Animation vus;
-  private Animation vut;
+  private LinearLayout yOg;
+  private Animation yOh;
+  private Animation yOi;
   
   public TrackPointAnimAvatar(Context paramContext)
   {
@@ -41,16 +41,16 @@ public class TrackPointAnimAvatar
     AppMethodBeat.o(56194);
   }
   
-  private void dku()
+  private void eeg()
   {
     AppMethodBeat.i(56198);
-    this.vus = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -0.5F);
-    this.vus.setDuration(500L);
-    this.vus.setFillAfter(true);
-    this.vut = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.5F, 1, 0.0F);
-    this.vut.setDuration(500L);
-    this.vut.setFillAfter(true);
-    this.vus.setAnimationListener(new Animation.AnimationListener()
+    this.yOh = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -0.5F);
+    this.yOh.setDuration(500L);
+    this.yOh.setFillAfter(true);
+    this.yOi = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -0.5F, 1, 0.0F);
+    this.yOi.setDuration(500L);
+    this.yOi.setFillAfter(true);
+    this.yOh.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -64,7 +64,7 @@ public class TrackPointAnimAvatar
       
       public final void onAnimationStart(Animation paramAnonymousAnimation) {}
     });
-    this.vut.setAnimationListener(new Animation.AnimationListener()
+    this.yOi.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -84,21 +84,21 @@ public class TrackPointAnimAvatar
   private void init()
   {
     AppMethodBeat.i(56196);
-    View localView = View.inflate(this.mContext, 2131495802, this);
-    this.vur = ((LinearLayout)localView.findViewById(2131296671));
-    this.jgy = ((ImageView)localView.findViewById(2131296670));
-    dku();
+    View localView = View.inflate(this.mContext, 2131496760, this);
+    this.yOg = ((LinearLayout)localView.findViewById(2131296757));
+    this.keC = ((ImageView)localView.findViewById(2131296756));
+    eeg();
     AppMethodBeat.o(56196);
   }
   
   public void setUser(String paramString)
   {
     AppMethodBeat.i(56197);
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
       this.username = paramString;
-      if (this.jgy != null) {
-        a.b.d(this.jgy, this.username);
+      if (this.keC != null) {
+        a.b.d(this.keC, this.username);
       }
     }
     AppMethodBeat.o(56197);
@@ -106,7 +106,7 @@ public class TrackPointAnimAvatar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.TrackPointAnimAvatar
  * JD-Core Version:    0.7.0.1
  */

@@ -7,20 +7,20 @@ import java.lang.ref.WeakReference;
 public final class a
   implements e.a
 {
-  private WeakReference<e.a> cyH;
+  private WeakReference<e.a> cMO;
   
   public a(e.a parama)
   {
     AppMethodBeat.i(27599);
-    this.cyH = new WeakReference(parama);
+    this.cMO = new WeakReference(parama);
     AppMethodBeat.o(27599);
   }
   
-  public final void DG(String paramString)
+  public final void Mr(String paramString)
   {
     AppMethodBeat.i(27600);
-    if (this.cyH.get() != null) {
-      ((e.a)this.cyH.get()).DG(paramString);
+    if (this.cMO.get() != null) {
+      ((e.a)this.cMO.get()).Mr(paramString);
     }
     AppMethodBeat.o(27600);
   }

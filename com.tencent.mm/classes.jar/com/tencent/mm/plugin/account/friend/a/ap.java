@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class ap
-  extends j<r>
+  extends MAutoStorage<r>
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(184428);
-    SQL_CREATE = new String[] { j.getCreateSQLs(r.info, "OldAccountFriend") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(r.info, "OldAccountFriend") };
     AppMethodBeat.o(184428);
   }
   
-  public ap(e parame)
+  public ap(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, r.info, "OldAccountFriend", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, r.info, "OldAccountFriend", null);
+    this.db = paramISQLiteDatabase;
   }
 }
 

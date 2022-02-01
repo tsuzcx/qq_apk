@@ -2,144 +2,117 @@ package com.tencent.mm.media.e;
 
 import android.media.MediaCodec.BufferInfo;
 import android.os.HandlerThread;
-import android.view.Surface;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.z;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import d.g.a.a;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/encoder/MediaCodecTransEncoder;", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "videoCodecConfig", "Lcom/tencent/mm/media/config/VideoCodecConfig;", "highPriority", "", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(Lcom/tencent/mm/media/config/VideoCodecConfig;ZLkotlin/jvm/functions/Function1;)V", "TAG", "", "TIMEOUT", "", "TIMEOUT$1", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "encodeHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "encodeThread", "Landroid/os/HandlerThread;", "encoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "receivedEOS", "startTime", "drainEncoder", "encodeFrame", "pts", "finalize", "finishEncode", "getRecordTimes", "releaseEncoder", "Companion", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/encoder/MediaCodecTransEncoder;", "Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "videoCodecConfig", "Lcom/tencent/mm/media/config/VideoCodecConfig;", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(Lcom/tencent/mm/media/config/VideoCodecConfig;Lkotlin/jvm/functions/Function1;)V", "TAG", "", "TIMEOUT", "", "TIMEOUT$1", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "encodeHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "encodeThread", "Landroid/os/HandlerThread;", "encoder", "Lcom/tencent/mm/compatible/deviceinfo/MediaCodecProxy;", "receivedEOS", "", "startTime", "drainEncoder", "encodeFrame", "pts", "finalize", "finishEncode", "getRecordTimes", "releaseEncoder", "Companion", "plugin-mediaeditor_release"})
 public final class e
   extends b
 {
-  public static final e.a hmw;
+  public static final e.a ifs;
   private final String TAG;
   private final MediaCodec.BufferInfo bufferInfo;
-  private HandlerThread hki;
-  private aq hkj;
-  private com.tencent.mm.compatible.deviceinfo.z hlX;
-  private final long hmu;
-  private boolean hmv;
+  private HandlerThread ide;
+  private MMHandler idf;
+  private z ieT;
+  private final long ifq;
+  private boolean ifr;
   private long startTime;
   
   static
   {
     AppMethodBeat.i(93646);
-    hmw = new e.a((byte)0);
+    ifs = new e.a((byte)0);
     AppMethodBeat.o(93646);
   }
   
-  public e(com.tencent.mm.media.b.d paramd, boolean paramBoolean, d.g.a.b<? super b, d.z> paramb)
+  public e(com.tencent.mm.media.b.d paramd, kotlin.g.a.b<? super b, x> paramb)
   {
     super(paramd, paramb);
-    AppMethodBeat.i(93645);
+    AppMethodBeat.i(218732);
     this.TAG = "MicroMsg.MediaCodecTransEncoder";
-    this.hmu = 50000L;
+    this.ifq = 50000L;
     this.bufferInfo = new MediaCodec.BufferInfo();
-    if (paramBoolean) {}
-    for (int i = -2;; i = 0)
+    Object localObject = com.tencent.f.c.d.hB("MediaCodecTransEncoder_encodeThread", 0);
+    p.g(localObject, "SpecialThreadFactory.cre….THREAD_PRIORITY_DEFAULT)");
+    this.ide = ((HandlerThread)localObject);
+    localObject = com.tencent.mm.media.k.e.ilC;
+    com.tencent.mm.media.k.e.aOm();
+    Log.i(this.TAG, "create mp4encoder " + hashCode());
+    localObject = z.Eb(paramd.name);
+    p.g(localObject, "MediaCodecProxy.createBy…me(videoCodecConfig.name)");
+    this.ieT = ((z)localObject);
+    this.ieT.a(paramd.aLU(), null, 1);
+    if (MMApplicationContext.isMainProcess())
     {
-      Object localObject = com.tencent.e.c.d.hh("MediaCodecTransEncoder_encodeThread", i);
-      p.g(localObject, "SpecialThreadFactory.cre….THREAD_PRIORITY_DEFAULT)");
-      this.hki = ((HandlerThread)localObject);
-      localObject = com.tencent.mm.media.k.d.hrI;
-      com.tencent.mm.media.k.d.avz();
-      ae.i(this.TAG, "create mp4encoder " + hashCode());
-      localObject = com.tencent.mm.compatible.deviceinfo.z.vK(paramd.name);
-      p.g(localObject, "MediaCodecProxy.createBy…me(videoCodecConfig.name)");
-      this.hlX = ((com.tencent.mm.compatible.deviceinfo.z)localObject);
-      this.hlX.a(paramd.atu(), null, 1);
-      if (!ak.coh()) {
-        break;
-      }
-      paramd = g.ajR();
+      paramd = g.aAh();
       p.g(paramd, "MMKernel.storage()");
-      if (!p.i(paramd.ajA().get(am.a.IRk, Integer.valueOf(-1)), Integer.valueOf(1))) {
-        break;
+      if (p.j(paramd.azQ().get(ar.a.NZm, Integer.valueOf(-1)), Integer.valueOf(1)))
+      {
+        Toast.makeText(MMApplicationContext.getContext(), (CharSequence)"remuxer 抛出异常", 0).show();
+        paramd = (Throwable)new IllegalStateException("leex test error");
+        AppMethodBeat.o(218732);
+        throw paramd;
       }
-      Toast.makeText(ak.getContext(), (CharSequence)"remuxer 抛出异常", 0).show();
-      paramd = (Throwable)new IllegalStateException("leex test error");
-      AppMethodBeat.o(93645);
-      throw paramd;
     }
-    paramd = this.hlX.createInputSurface();
+    paramd = this.ieT.createInputSurface();
     p.g(paramd, "encoder.createInputSurface()");
     g(paramd);
-    this.hlX.start();
-    this.hki.start();
-    this.hkj = new aq(this.hki.getLooper());
-    ae.i(this.TAG, "create mp4encoder finish " + hashCode());
-    if (paramb != null)
-    {
-      paramb.invoke(this);
-      AppMethodBeat.o(93645);
-      return;
-    }
-    AppMethodBeat.o(93645);
+    this.ieT.start();
+    this.ide.start();
+    this.idf = new MMHandler(this.ide.getLooper());
+    Log.i(this.TAG, "create mp4encoder finish " + hashCode());
+    paramb.invoke(this);
+    AppMethodBeat.o(218732);
   }
   
-  public final void atH()
+  public final void aMi()
   {
     AppMethodBeat.i(93641);
-    if (this.hmv)
+    if (this.ifr)
     {
-      ae.e(this.TAG, "has received eos");
+      Log.e(this.TAG, "has received eos");
       AppMethodBeat.o(93641);
       return;
     }
-    try
-    {
-      this.hkj.removeCallbacksAndMessages(null);
-      this.hkj.post((Runnable)new c(this));
-      AppMethodBeat.o(93641);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ae.printErrStackTrace(this.TAG, (Throwable)localException, "finishEncode " + hashCode() + " \n signalEndOfInputStream error:" + localException.getMessage(), new Object[0]);
-      AppMethodBeat.o(93641);
-    }
+    this.idf.removeCallbacksAndMessages(null);
+    this.idf.post((Runnable)new c(this));
+    AppMethodBeat.o(93641);
   }
   
-  public final void atI()
+  public final void aMj()
   {
     AppMethodBeat.i(93642);
-    ae.i(this.TAG, "try to release " + hashCode());
-    try
-    {
-      this.hkj.post((Runnable)new d(this));
-      AppMethodBeat.o(93642);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ae.e(this.TAG, "release encoder error " + hashCode() + " \n " + localException.getMessage());
-      AppMethodBeat.o(93642);
-    }
+    Log.i(this.TAG, "try to release " + hashCode());
+    this.idf.post((Runnable)new d(this));
+    AppMethodBeat.o(93642);
   }
   
-  public final void atK()
+  public final void aMl()
   {
     AppMethodBeat.i(93640);
     if (0L == this.startTime) {
-      this.startTime = bu.HQ();
+      this.startTime = Util.currentTicks();
     }
-    this.hkj.post((Runnable)new b(this));
+    this.idf.post((Runnable)new b(this));
     AppMethodBeat.o(93640);
   }
   
-  public final long atL()
+  public final long aMm()
   {
     AppMethodBeat.i(93644);
-    long l1 = bu.HQ();
+    long l1 = Util.currentTicks();
     long l2 = this.startTime;
     AppMethodBeat.o(93644);
     return l1 - l2;
@@ -148,14 +121,14 @@ public final class e
   protected final void finalize()
   {
     AppMethodBeat.i(93643);
-    ae.i(this.TAG, "finalize");
-    if (!this.hmi) {
-      this.hlX.release();
+    Log.i(this.TAG, "finalize");
+    if (!this.ife) {
+      this.ieT.release();
     }
     AppMethodBeat.o(93643);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -164,25 +137,25 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(93637);
-      long l = bu.HQ();
-      synchronized (this.hmx.hmj)
+      long l = Util.currentTicks();
+      synchronized (this.ift.iff)
       {
-        if ((this.hmx.hmi) || (this.hmx.hmh))
+        if ((this.ift.ife) || (this.ift.ifd))
         {
-          ae.i(e.a(this.hmx), "encodeFrame() stop encodeFrame " + this.hmx.hashCode() + ", isRelease:" + this.hmx.hmi + ", isFinishEncode:" + this.hmx.hmh);
+          Log.i(e.a(this.ift), "encodeFrame() stop encodeFrame " + this.ift.hashCode() + ", isRelease:" + this.ift.ife + ", isFinishEncode:" + this.ift.ifd);
           AppMethodBeat.o(93637);
           return;
         }
-        d.z localz = d.z.Nhr;
-        e.b(this.hmx);
-        ae.d(e.a(this.hmx), " drainEncoder cost " + bu.aO(l) + "  " + this.hmx.hashCode());
+        x localx = x.SXb;
+        e.b(this.ift);
+        Log.d(e.a(this.ift), " drainEncoder cost " + Util.ticksToNow(l) + "  " + this.ift.hashCode());
         AppMethodBeat.o(93637);
         return;
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -191,26 +164,20 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(93638);
-      synchronized (this.hmx.hmj)
+      synchronized (this.ift.iff)
       {
-        if ((this.hmx.hmh) || (this.hmx.hmi) || (0L == e.c(this.hmx)))
+        if ((this.ift.ifd) || (this.ift.ife) || (0L == e.c(this.ift)))
         {
-          ae.i(e.a(this.hmx), "finishEncode() already finish " + this.hmx.hashCode() + ", isFinishEncode:" + this.hmx.hmh + ", isRelease:" + this.hmx.hmi + ", startTime:" + e.c(this.hmx));
+          Log.i(e.a(this.ift), "finishEncode() already finish " + this.ift.hashCode() + ", isFinishEncode:" + this.ift.ifd + ", isRelease:" + this.ift.ife + ", startTime:" + e.c(this.ift));
           AppMethodBeat.o(93638);
           return;
         }
-        d.z localz = d.z.Nhr;
-        ae.i(e.a(this.hmx), "finishEncode() hash:" + this.hmx.hashCode() + "  isFinishEncode:" + this.hmx.hmh + "  startTime:" + e.c(this.hmx));
-        e.d(this.hmx).signalEndOfInputStream();
-        this.hmx.hmh = true;
-        e.b(this.hmx);
-        AppMethodBeat.o(93638);
-        return;
+        x localx = x.SXb;
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -219,39 +186,23 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(93639);
-      synchronized (this.hmx.hmj)
+      long l;
+      synchronized (this.ift.iff)
       {
-        if (this.hmx.hmi)
+        if (this.ift.ife)
         {
-          ae.i(e.a(this.hmx), "releaseEncoder(), already finished " + this.hmx.hashCode());
+          Log.i(e.a(this.ift), "releaseEncoder(), already finished " + this.ift.hashCode());
           AppMethodBeat.o(93639);
           return;
         }
-        d.z localz = d.z.Nhr;
-        long l = bu.HQ();
-        ae.i(e.a(this.hmx), "releaseEncoder() start " + this.hmx.hashCode());
-        ??? = this.hmx.hmg;
-        if (??? != null) {
-          ((a)???).invoke();
-        }
-        e.e(this.hmx).removeCallbacksAndMessages(null);
-        e.f(this.hmx).quitSafely();
-        e.d(this.hmx).stop();
-        e.d(this.hmx).release();
-        this.hmx.atJ().release();
-        this.hmx.hmi = true;
-        ??? = com.tencent.mm.media.k.d.hrI;
-        com.tencent.mm.media.k.d.avA();
-        ae.i(e.a(this.hmx), "releaseEncoder() finish: time:" + bu.aO(l) + ", " + this.hmx.hashCode());
-        AppMethodBeat.o(93639);
-        return;
+        x localx = x.SXb;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.media.e.e
  * JD-Core Version:    0.7.0.1
  */

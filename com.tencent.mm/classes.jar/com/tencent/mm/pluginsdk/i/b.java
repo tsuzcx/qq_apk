@@ -1,42 +1,70 @@
 package com.tencent.mm.pluginsdk.i;
 
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.content.ClipboardManager;
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class b
+public final class b
 {
-  @TargetApi(11)
-  public static void b(CharSequence paramCharSequence1, CharSequence paramCharSequence2)
+  public static b JYm;
+  private ConcurrentHashMap<String, Integer> JYj;
+  private ConcurrentHashMap<String, Long> JYk;
+  private String JYl;
+  private boolean ded;
+  
+  static
   {
-    AppMethodBeat.i(151889);
-    ((ClipboardManager)ak.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(paramCharSequence1, paramCharSequence2));
-    AppMethodBeat.o(151889);
+    AppMethodBeat.i(151895);
+    JYm = new b("default");
+    AppMethodBeat.o(151895);
   }
   
-  @TargetApi(11)
-  public static CharSequence fee()
+  public b(String paramString)
   {
-    AppMethodBeat.i(151890);
-    Object localObject = ((ClipboardManager)ak.getContext().getSystemService("clipboard")).getPrimaryClip();
-    if ((localObject == null) || (((ClipData)localObject).getItemCount() <= 0))
-    {
-      AppMethodBeat.o(151890);
-      return null;
+    AppMethodBeat.i(151893);
+    this.JYj = new ConcurrentHashMap();
+    this.JYk = new ConcurrentHashMap();
+    this.JYl = "";
+    this.ded = false;
+    if (CrashReportFactory.hasDebuger()) {
+      this.ded = true;
     }
-    localObject = ((ClipData)localObject).getItemAt(0);
-    if (localObject == null)
+    this.JYl = paramString;
+    AppMethodBeat.o(151893);
+  }
+  
+  public final void bdU(String paramString)
+  {
+    AppMethodBeat.i(151894);
+    if (!this.ded)
     {
-      AppMethodBeat.o(151890);
-      return null;
+      AppMethodBeat.o(151894);
+      return;
     }
-    localObject = ((ClipData.Item)localObject).getText();
-    AppMethodBeat.o(151890);
-    return localObject;
+    int i;
+    if (this.JYj.containsKey(paramString))
+    {
+      i = ((Integer)this.JYj.get(paramString)).intValue();
+      i += 1;
+      this.JYj.put(paramString, Integer.valueOf(i));
+      if (!this.JYk.containsKey(paramString)) {
+        break label171;
+      }
+    }
+    label171:
+    for (long l = ((Long)this.JYk.get(paramString)).longValue();; l = 0L)
+    {
+      if (System.currentTimeMillis() - l > 1000L)
+      {
+        new StringBuilder().append(this.JYl).append("user get fps ").append(i).append(" fpswraper: ").append(paramString);
+        this.JYj.put(paramString, Integer.valueOf(0));
+        this.JYk.put(paramString, Long.valueOf(System.currentTimeMillis()));
+      }
+      AppMethodBeat.o(151894);
+      return;
+      i = 0;
+      break;
+    }
   }
 }
 

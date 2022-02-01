@@ -1,54 +1,54 @@
 package com.tencent.mm.plugin.remittance.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fk;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.fs;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
-  extends fk
+  extends fs
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(67619);
-    c.a locala = new c.a();
-    locala.IBL = new Field[6];
-    locala.columns = new String[7];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[6];
+    localMAutoDBInfo.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "transferId";
-    locala.IBN.put("transferId", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "transferId";
+    localMAutoDBInfo.colsMap.put("transferId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" transferId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "transferId";
-    locala.columns[1] = "locaMsgId";
-    locala.IBN.put("locaMsgId", "LONG");
+    localMAutoDBInfo.primaryKey = "transferId";
+    localMAutoDBInfo.columns[1] = "locaMsgId";
+    localMAutoDBInfo.colsMap.put("locaMsgId", "LONG");
     localStringBuilder.append(" locaMsgId LONG");
     localStringBuilder.append(", ");
-    locala.columns[2] = "receiveStatus";
-    locala.IBN.put("receiveStatus", "INTEGER default '-1' ");
+    localMAutoDBInfo.columns[2] = "receiveStatus";
+    localMAutoDBInfo.colsMap.put("receiveStatus", "INTEGER default '-1' ");
     localStringBuilder.append(" receiveStatus INTEGER default '-1' ");
     localStringBuilder.append(", ");
-    locala.columns[3] = "isSend";
-    locala.IBN.put("isSend", "INTEGER");
+    localMAutoDBInfo.columns[3] = "isSend";
+    localMAutoDBInfo.colsMap.put("isSend", "INTEGER");
     localStringBuilder.append(" isSend INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[4] = "talker";
-    locala.IBN.put("talker", "TEXT");
+    localMAutoDBInfo.columns[4] = "talker";
+    localMAutoDBInfo.colsMap.put("talker", "TEXT");
     localStringBuilder.append(" talker TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "invalidtime";
-    locala.IBN.put("invalidtime", "LONG");
+    localMAutoDBInfo.columns[5] = "invalidtime";
+    localMAutoDBInfo.colsMap.put("invalidtime", "LONG");
     localStringBuilder.append(" invalidtime LONG");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[6] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(67619);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

@@ -5,9 +5,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
-import android.os.Parcelable.Creator;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.g;
@@ -48,7 +45,7 @@ public class DeviceShareDialogFragment
   private static ScheduledThreadPoolExecutor backgroundExecutor;
   private volatile ScheduledFuture codeExpiredFuture;
   private TextView confirmationCode;
-  private volatile RequestState currentRequestState;
+  private volatile DeviceShareDialogFragment.RequestState currentRequestState;
   private Dialog dialog;
   private ProgressBar progressBar;
   private ShareContent shareContent;
@@ -131,7 +128,7 @@ public class DeviceShareDialogFragment
     return null;
   }
   
-  private void setCurrentRequestState(RequestState paramRequestState)
+  private void setCurrentRequestState(DeviceShareDialogFragment.RequestState paramRequestState)
   {
     AppMethodBeat.i(7996);
     this.currentRequestState = paramRequestState;
@@ -194,11 +191,11 @@ public class DeviceShareDialogFragment
   public Dialog onCreateDialog(Bundle paramBundle)
   {
     AppMethodBeat.i(7987);
-    this.dialog = new Dialog(getActivity(), 2131821695);
-    paramBundle = getActivity().getLayoutInflater().inflate(2131493568, null);
-    this.progressBar = ((ProgressBar)paramBundle.findViewById(2131303518));
-    this.confirmationCode = ((TextView)paramBundle.findViewById(2131298574));
-    ((Button)paramBundle.findViewById(2131297691)).setOnClickListener(new View.OnClickListener()
+    this.dialog = new Dialog(getActivity(), 2131821743);
+    paramBundle = getActivity().getLayoutInflater().inflate(2131493684, null);
+    this.progressBar = ((ProgressBar)paramBundle.findViewById(2131306284));
+    this.confirmationCode = ((TextView)paramBundle.findViewById(2131299011));
+    ((Button)paramBundle.findViewById(2131297964)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -207,7 +204,7 @@ public class DeviceShareDialogFragment
         AppMethodBeat.o(7977);
       }
     });
-    ((TextView)paramBundle.findViewById(2131298498)).setText(Html.fromHtml(getString(2131757502)));
+    ((TextView)paramBundle.findViewById(2131298917)).setText(Html.fromHtml(getString(2131757722)));
     this.dialog.setContentView(paramBundle);
     startShare();
     paramBundle = this.dialog;
@@ -221,7 +218,7 @@ public class DeviceShareDialogFragment
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     if (paramBundle != null)
     {
-      paramViewGroup = (RequestState)paramBundle.getParcelable("request_state");
+      paramViewGroup = (DeviceShareDialogFragment.RequestState)paramBundle.getParcelable("request_state");
       if (paramViewGroup != null) {
         setCurrentRequestState(paramViewGroup);
       }
@@ -255,82 +252,10 @@ public class DeviceShareDialogFragment
   {
     this.shareContent = paramShareContent;
   }
-  
-  static class RequestState
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<RequestState> CREATOR;
-    private long expiresIn;
-    private String userCode;
-    
-    static
-    {
-      AppMethodBeat.i(7985);
-      CREATOR = new Parcelable.Creator()
-      {
-        public final DeviceShareDialogFragment.RequestState createFromParcel(Parcel paramAnonymousParcel)
-        {
-          AppMethodBeat.i(7980);
-          paramAnonymousParcel = new DeviceShareDialogFragment.RequestState(paramAnonymousParcel);
-          AppMethodBeat.o(7980);
-          return paramAnonymousParcel;
-        }
-        
-        public final DeviceShareDialogFragment.RequestState[] newArray(int paramAnonymousInt)
-        {
-          return new DeviceShareDialogFragment.RequestState[paramAnonymousInt];
-        }
-      };
-      AppMethodBeat.o(7985);
-    }
-    
-    RequestState() {}
-    
-    protected RequestState(Parcel paramParcel)
-    {
-      AppMethodBeat.i(7983);
-      this.userCode = paramParcel.readString();
-      this.expiresIn = paramParcel.readLong();
-      AppMethodBeat.o(7983);
-    }
-    
-    public int describeContents()
-    {
-      return 0;
-    }
-    
-    public long getExpiresIn()
-    {
-      return this.expiresIn;
-    }
-    
-    public String getUserCode()
-    {
-      return this.userCode;
-    }
-    
-    public void setExpiresIn(long paramLong)
-    {
-      this.expiresIn = paramLong;
-    }
-    
-    public void setUserCode(String paramString)
-    {
-      this.userCode = paramString;
-    }
-    
-    public void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      AppMethodBeat.i(7984);
-      paramParcel.writeString(this.userCode);
-      paramParcel.writeLong(this.expiresIn);
-      AppMethodBeat.o(7984);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.share.internal.DeviceShareDialogFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -15,34 +15,34 @@ public final class i
   extends AtomicReference<Thread>
   implements Runnable, j
 {
-  final rx.internal.util.i OwH;
-  final a OwI;
+  final rx.internal.util.i Umv;
+  final a Umw;
   
   public i(a parama)
   {
     AppMethodBeat.i(90341);
-    this.OwI = parama;
-    this.OwH = new rx.internal.util.i();
+    this.Umw = parama;
+    this.Umv = new rx.internal.util.i();
     AppMethodBeat.o(90341);
   }
   
   public i(a parama, b paramb)
   {
     AppMethodBeat.i(90342);
-    this.OwI = parama;
-    this.OwH = new rx.internal.util.i(new b(this, paramb));
+    this.Umw = parama;
+    this.Umv = new rx.internal.util.i(new b(this, paramb));
     AppMethodBeat.o(90342);
   }
   
   public i(a parama, rx.internal.util.i parami)
   {
     AppMethodBeat.i(90343);
-    this.OwI = parama;
-    this.OwH = new rx.internal.util.i(new c(this, parami));
+    this.Umw = parama;
+    this.Umv = new rx.internal.util.i(new c(this, parami));
     AppMethodBeat.o(90343);
   }
   
-  private static void P(Throwable paramThrowable)
+  private static void R(Throwable paramThrowable)
   {
     AppMethodBeat.i(90345);
     c.onError(paramThrowable);
@@ -54,22 +54,22 @@ public final class i
   public final void b(Future<?> paramFuture)
   {
     AppMethodBeat.i(90347);
-    this.OwH.b(new a(paramFuture));
+    this.Umv.b(new i.a(this, paramFuture));
     AppMethodBeat.o(90347);
   }
   
-  public final void gDs()
+  public final void hQA()
   {
     AppMethodBeat.i(90346);
-    if (!this.OwH.OxN) {
-      this.OwH.gDs();
+    if (!this.Umv.UnB) {
+      this.Umv.hQA();
     }
     AppMethodBeat.o(90346);
   }
   
-  public final boolean gDt()
+  public final boolean hQB()
   {
-    return this.OwH.OxN;
+    return this.Umv.UnB;
   }
   
   public final void run()
@@ -78,56 +78,23 @@ public final class i
     try
     {
       lazySet(Thread.currentThread());
-      this.OwI.call();
+      this.Umw.call();
       return;
     }
     catch (f localf)
     {
-      P(new IllegalStateException("Exception thrown on Scheduler.Worker thread. Add `onError` handling.", localf));
+      R(new IllegalStateException("Exception thrown on Scheduler.Worker thread. Add `onError` handling.", localf));
       return;
     }
     catch (Throwable localThrowable)
     {
-      P(new IllegalStateException("Fatal Exception thrown on Scheduler.Worker thread.", localThrowable));
+      R(new IllegalStateException("Fatal Exception thrown on Scheduler.Worker thread.", localThrowable));
       return;
     }
     finally
     {
-      gDs();
+      hQA();
       AppMethodBeat.o(90344);
-    }
-  }
-  
-  final class a
-    implements j
-  {
-    private final Future<?> OwJ;
-    
-    a()
-    {
-      Object localObject;
-      this.OwJ = localObject;
-    }
-    
-    public final void gDs()
-    {
-      AppMethodBeat.i(90337);
-      if (i.this.get() != Thread.currentThread())
-      {
-        this.OwJ.cancel(true);
-        AppMethodBeat.o(90337);
-        return;
-      }
-      this.OwJ.cancel(false);
-      AppMethodBeat.o(90337);
-    }
-    
-    public final boolean gDt()
-    {
-      AppMethodBeat.i(90338);
-      boolean bool = this.OwJ.isCancelled();
-      AppMethodBeat.o(90338);
-      return bool;
     }
   }
   
@@ -135,27 +102,27 @@ public final class i
     extends AtomicBoolean
     implements j
   {
-    final i OwL;
-    final b OwM;
+    final b UmA;
+    final i Umz;
     
     public b(i parami, b paramb)
     {
-      this.OwL = parami;
-      this.OwM = paramb;
+      this.Umz = parami;
+      this.UmA = paramb;
     }
     
-    public final void gDs()
+    public final void hQA()
     {
       AppMethodBeat.i(90339);
       if (compareAndSet(false, true)) {
-        this.OwM.e(this.OwL);
+        this.UmA.e(this.Umz);
       }
       AppMethodBeat.o(90339);
     }
     
-    public final boolean gDt()
+    public final boolean hQB()
     {
-      return this.OwL.OwH.OxN;
+      return this.Umz.Umv.UnB;
     }
   }
   
@@ -163,35 +130,35 @@ public final class i
     extends AtomicBoolean
     implements j
   {
-    final i OwL;
-    final rx.internal.util.i OwN;
+    final rx.internal.util.i UmB;
+    final i Umz;
     
     public c(i parami, rx.internal.util.i parami1)
     {
-      this.OwL = parami;
-      this.OwN = parami1;
+      this.Umz = parami;
+      this.UmB = parami1;
     }
     
-    public final void gDs()
+    public final void hQA()
     {
       AppMethodBeat.i(90340);
       rx.internal.util.i locali;
       i locali1;
       if (compareAndSet(false, true))
       {
-        locali = this.OwN;
-        locali1 = this.OwL;
-        if (locali.OxN) {}
+        locali = this.UmB;
+        locali1 = this.Umz;
+        if (locali.UnB) {}
       }
       try
       {
-        List localList = locali.OxM;
-        if ((locali.OxN) || (localList == null)) {
+        List localList = locali.UnA;
+        if ((locali.UnB) || (localList == null)) {
           return;
         }
         boolean bool = localList.remove(locali1);
         if (bool) {
-          locali1.gDs();
+          locali1.hQA();
         }
         AppMethodBeat.o(90340);
         return;
@@ -202,9 +169,9 @@ public final class i
       }
     }
     
-    public final boolean gDt()
+    public final boolean hQB()
     {
-      return this.OwL.OwH.OxN;
+      return this.Umz.Umv.UnB;
     }
   }
 }

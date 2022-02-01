@@ -3,27 +3,27 @@ package com.tencent.mm.plugin.multitalk.data;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/data/MultitalkAvatarViewData;", "", "member", "Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;", "listener", "Landroid/view/View$OnClickListener;", "index", "", "isRenderVideo", "", "nickName", "", "(Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;Landroid/view/View$OnClickListener;IZLjava/lang/String;)V", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "plugin-multitalk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/data/MultitalkAvatarViewData;", "", "member", "Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;", "listener", "Landroid/view/View$OnClickListener;", "index", "", "isRenderVideo", "", "nickName", "", "(Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;Landroid/view/View$OnClickListener;IZLjava/lang/String;)V", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "plugin-multitalk_release"})
 public final class a
 {
-  public String bVF;
   public int index;
-  public MultiTalkGroupMember wmd;
-  public View.OnClickListener wme;
-  public boolean wmf;
+  public String nickName;
+  public MultiTalkGroupMember zHg;
+  public View.OnClickListener zHh;
+  public boolean zHi;
   
   public a(MultiTalkGroupMember paramMultiTalkGroupMember, View.OnClickListener paramOnClickListener, int paramInt, boolean paramBoolean, String paramString)
   {
-    AppMethodBeat.i(190887);
-    this.wmd = paramMultiTalkGroupMember;
-    this.wme = paramOnClickListener;
+    AppMethodBeat.i(239554);
+    this.zHg = paramMultiTalkGroupMember;
+    this.zHh = paramOnClickListener;
     this.index = paramInt;
-    this.wmf = paramBoolean;
-    this.bVF = paramString;
-    AppMethodBeat.o(190887);
+    this.zHi = paramBoolean;
+    this.nickName = paramString;
+    AppMethodBeat.o(239554);
   }
   
   public final boolean equals(Object paramObject)
@@ -34,7 +34,7 @@ public final class a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.i(this.wmd, paramObject.wmd)) || (!p.i(this.wme, paramObject.wme)) || (this.index != paramObject.index) || (this.wmf != paramObject.wmf) || (!p.i(this.bVF, paramObject.bVF))) {}
+        if ((!p.j(this.zHg, paramObject.zHg)) || (!p.j(this.zHh, paramObject.zHh)) || (this.index != paramObject.index) || (this.zHi != paramObject.zHi) || (!p.j(this.nickName, paramObject.nickName))) {}
       }
     }
     else
@@ -54,7 +54,7 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(178951);
-    String str = "MultitalkAvatarViewData(member=" + this.wmd + ", listener=" + this.wme + ", index=" + this.index + ", isRenderVideo=" + this.wmf + ", nickName=" + this.bVF + ")";
+    String str = "MultitalkAvatarViewData(member=" + this.zHg + ", listener=" + this.zHh + ", index=" + this.index + ", isRenderVideo=" + this.zHi + ", nickName=" + this.nickName + ")";
     AppMethodBeat.o(178951);
     return str;
   }

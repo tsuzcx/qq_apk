@@ -7,99 +7,106 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import junit.framework.Assert;
 
 public final class d
   extends e
 {
   public static final String DEVICE_NAME;
-  public static final String FFB;
-  public static final String FFC;
-  public static String FFD;
-  public static final String FFE;
-  public static String FFF;
-  public static long FFG;
-  public static int FFH;
-  public static boolean FFI;
-  public static boolean FFJ;
-  public static boolean FFK;
-  public static boolean FFL;
-  public static int FFM;
-  public static final byte[] FFN;
-  public static final byte[] FFO;
-  public static final byte[] FFP;
-  public static String hjv;
+  public static int KyH;
+  public static final String KyI;
+  public static final String KyJ;
+  public static String KyK;
+  public static final String KyL;
+  public static String KyM;
+  public static long KyN;
+  public static int KyO;
+  public static boolean KyP;
+  public static boolean KyQ;
+  public static boolean KyR;
+  public static boolean KyS;
+  public static int KyT;
+  public static final byte[] KyU;
+  public static final byte[] KyV;
+  public static final byte[] KyW;
+  public static final String KyX;
+  public static final String KyY;
+  public static String ics;
   
   static
   {
     AppMethodBeat.i(133039);
-    hjv = "android-" + Build.VERSION.SDK_INT;
-    FFB = Build.BRAND;
-    FFC = Build.MODEL + Build.CPU_ABI;
-    FFD = "android-" + Build.VERSION.SDK_INT;
-    FFE = "android-" + Build.MANUFACTURER;
-    FFF = Build.VERSION.SDK_INT;
+    ics = "android-" + Build.VERSION.SDK_INT;
+    KyH = 2;
+    KyI = Build.BRAND;
+    KyJ = Build.MODEL + Build.CPU_ABI;
+    KyK = "android-" + Build.VERSION.SDK_INT;
+    KyL = "android-" + Build.MANUFACTURER;
+    KyM = Build.VERSION.SDK_INT;
     DEVICE_NAME = Build.MANUFACTURER + "-" + Build.MODEL;
-    FFG = 0L;
-    FFH = Integer.decode(j.hju).intValue();
-    Assert.assertNotNull(j.hju);
+    KyN = 0L;
+    KyO = Integer.decode(BuildInfo.CLIENT_VERSION).intValue();
+    Assert.assertNotNull(BuildInfo.CLIENT_VERSION);
     try
     {
-      int i = ak.getContext().getPackageManager().getApplicationInfo(ak.getPackageName(), 128).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
-      if ((i > FFH) && (i - FFH < 255) && ((i & 0xFF) >= 48)) {
-        FFH = i;
+      int i = MMApplicationContext.getContext().getPackageManager().getApplicationInfo(MMApplicationContext.getPackageName(), 128).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
+      if ((i > KyO) && (i - KyO < 255) && ((i & 0xFF) >= 48)) {
+        KyO = i;
       }
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.l("MicroMsg.ConstantsProtocal", "", new Object[] { localException });
+        Log.printDebugStack("MicroMsg.ConstantsProtocal", "", new Object[] { localException });
       }
     }
-    FFI = fjX();
-    FFJ = fjW();
-    FFK = fjU();
-    FFL = fjV();
-    FFM = 5;
-    FFN = null;
-    FFO = null;
-    FFP = null;
+    KyP = gty();
+    KyQ = gtx();
+    KyR = gtv();
+    KyS = gtw();
+    KyT = 5;
+    KyU = null;
+    KyV = null;
+    KyW = null;
+    KyX = "http://" + WeChatHosts.domainString(2131761726) + "/mp/lifedetail?bid=%s&action=list#wechat_redirect";
+    KyY = "http://" + WeChatHosts.domainString(2131761726) + "/mp/lifedetail?bid=%s&tid=%s&action=list#wechat_redirect";
     AppMethodBeat.o(133039);
   }
   
-  public static void aag(int paramInt)
+  public static void aiV(int paramInt)
   {
     AppMethodBeat.i(133038);
-    FFH = paramInt;
-    FFK = fjU();
-    FFI = fjX();
-    FFJ = fjW();
-    FFL = fjV();
+    KyO = paramInt;
+    KyR = gtv();
+    KyP = gty();
+    KyQ = gtx();
+    KyS = gtw();
     AppMethodBeat.o(133038);
   }
   
-  private static boolean fjU()
+  private static boolean gtv()
   {
-    return ((FFH & 0xFF) >= 0) && ((FFH & 0xFF) <= 47);
+    return ((KyO & 0xFF) >= 16) && ((KyO & 0xFF) <= 47);
   }
   
-  private static boolean fjV()
+  private static boolean gtw()
   {
-    return ((FFH & 0xFF) >= 0) && ((FFH & 0xFF) <= 15);
+    return ((KyO & 0xFF) >= 0) && ((KyO & 0xFF) <= 15);
   }
   
-  private static boolean fjW()
+  private static boolean gtx()
   {
-    return ((FFH & 0xFF) >= 96) && ((FFH & 0xFF) <= 255);
+    return ((KyO & 0xFF) >= 96) && ((KyO & 0xFF) <= 255);
   }
   
-  private static boolean fjX()
+  private static boolean gty()
   {
-    return ((FFH & 0xFF) >= 48) && ((FFH & 0xFF) <= 95);
+    return ((KyO & 0xFF) >= 48) && ((KyO & 0xFF) <= 95);
   }
 }
 

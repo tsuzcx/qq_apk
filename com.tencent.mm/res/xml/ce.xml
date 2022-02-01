@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceSmallCategory />
-    <PreferenceSmallCategory />
-    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_specail_scene_sound" android:persistent="false" android:title="@string/fao" />
-    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_specail_scene_shake" android:layout="@layout/aqx" android:persistent="false" android:title="@string/f_w" />
-    <PreferenceSmallCategory />
-    <PreferenceSmallCategory />
-    <Preference android:key="room_openim_about" android:layout="@layout/aqa" android:title="@string/fap" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.setting.ui.setting.SettingsAboutMMHeaderPreference android:key="settings_about_mm_header" android:layout="@layout/bql" />
+    <IconPreference android:key="funtion_about_wechat" android:title="@string/gxe" />
+    <IconPreference android:key="settings_update" android:title="@string/gw4" />
+    <Preference android:key="settings_report" android:layout="@layout/b8j" android:title="@string/gtb" />
+    <IconSummaryPreference android:key="funtion_update" android:title="@string/dl_" />
+    <IconPreference android:key="funtion_check_update" android:title="@string/dl7" />
+    <IconPreference android:key="funtion_crowdtest_update" android:title="@string/dl8" />
+    <IconPreference android:key="funtion_about_flavor_blue" android:title="@string/dl6" />
+    <IconPreference android:key="funtion_invite_flavor_blue" android:title="@string/dl9" />
+    <PreferenceCategory />
 </PreferenceScreen>

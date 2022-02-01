@@ -7,58 +7,59 @@ import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.appbrand.jsapi.ad.c.b.c;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.appbrand.jsapi.ag.c.b.c;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class g
   implements c
 {
-  public static void K(p paramp)
+  public static void S(q paramq)
   {
-    AppMethodBeat.i(223175);
-    paramp.a(a.mTH);
-    AppMethodBeat.o(223175);
+    AppMethodBeat.i(227739);
+    paramq.a(a.ogI);
+    AppMethodBeat.o(227739);
   }
   
-  public final String bqv()
+  public final String bMg()
   {
-    AppMethodBeat.i(223176);
-    Object localObject = (IPCString)XIPCInvoker.a("com.tencent.mm", IPCVoid.gAP, b.class);
+    AppMethodBeat.i(227740);
+    Object localObject = (IPCString)XIPCInvoker.a(MainProcessIPCService.dkO, IPCVoid.hnE, b.class);
     if (localObject != null)
     {
       localObject = ((IPCString)localObject).value;
-      AppMethodBeat.o(223176);
+      AppMethodBeat.o(227740);
       return localObject;
     }
-    AppMethodBeat.o(223176);
+    AppMethodBeat.o(227740);
     return null;
   }
   
   static final class a
   {
-    static g mTH;
+    static g ogI;
     
     static
     {
-      AppMethodBeat.i(223172);
-      mTH = new g((byte)0);
-      AppMethodBeat.o(223172);
+      AppMethodBeat.i(227736);
+      ogI = new g((byte)0);
+      AppMethodBeat.o(227736);
     }
   }
   
   static final class b
     implements k<IPCVoid, IPCString>
   {
-    private static boolean bCl()
+    private static boolean bZp()
     {
-      AppMethodBeat.i(223173);
+      AppMethodBeat.i(227737);
       for (;;)
       {
         try
         {
-          TelephonyManager localTelephonyManager = (TelephonyManager)ak.getContext().getSystemService("phone");
+          TelephonyManager localTelephonyManager = (TelephonyManager)MMApplicationContext.getContext().getSystemService("phone");
           if (localTelephonyManager == null) {
             continue;
           }
@@ -73,15 +74,15 @@ public final class g
         {
           int i;
           boolean bool = false;
-          ae.printErrStackTrace("MicroMsg.AppBrandVOIPStrategy", localException1, "isPhoneInUse, exception:%s", new Object[] { localException1 });
+          Log.printErrStackTrace("MicroMsg.AppBrandVOIPStrategy", localException1, "isPhoneInUse, exception:%s", new Object[] { localException1 });
           continue;
           bool = false;
           continue;
         }
         try
         {
-          ae.i("MicroMsg.AppBrandVOIPStrategy", "isPhoneInUse, isPhoneInUse:%s, callState:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
-          AppMethodBeat.o(223173);
+          Log.i("MicroMsg.AppBrandVOIPStrategy", "isPhoneInUse, isPhoneInUse:%s, callState:%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+          AppMethodBeat.o(227737);
           return bool;
         }
         catch (Exception localException2)
@@ -97,7 +98,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.g
  * JD-Core Version:    0.7.0.1
  */

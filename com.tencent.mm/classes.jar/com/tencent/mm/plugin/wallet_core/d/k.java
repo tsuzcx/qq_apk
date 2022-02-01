@@ -3,43 +3,35 @@ package com.tencent.mm.plugin.wallet_core.d;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.am;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class k
-  extends j<am>
+  extends MAutoStorage<am>
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   private List<Object> listeners;
   
   static
   {
     AppMethodBeat.i(70634);
-    SQL_CREATE = new String[] { j.getCreateSQLs(am.info, "WalletUserInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(am.info, "WalletUserInfo") };
     AppMethodBeat.o(70634);
   }
   
-  public k(e parame)
+  public k(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, am.info, "WalletUserInfo", null);
+    super(paramISQLiteDatabase, am.info, "WalletUserInfo", null);
     AppMethodBeat.i(70627);
     this.listeners = new LinkedList();
-    ae.i("MicroMsg.WalletUserInfoStorage", "already call constructor.");
-    this.db = parame;
+    Log.i("MicroMsg.WalletUserInfoStorage", "already call constructor.");
+    this.db = paramISQLiteDatabase;
     AppMethodBeat.o(70627);
-  }
-  
-  public final boolean aTi()
-  {
-    AppMethodBeat.i(70630);
-    boolean bool = this.db.execSQL("WalletUserInfo", "delete from WalletUserInfo");
-    AppMethodBeat.o(70630);
-    return bool;
   }
   
   public final boolean b(am paramam)
@@ -58,11 +50,19 @@ public final class k
     return false;
   }
   
-  public final am eKO()
+  public final boolean bnU()
+  {
+    AppMethodBeat.i(70630);
+    boolean bool = this.db.execSQL("WalletUserInfo", "delete from WalletUserInfo");
+    AppMethodBeat.o(70630);
+    return bool;
+  }
+  
+  public final am fRN()
   {
     AppMethodBeat.i(70628);
     am localam = new am();
-    Cursor localCursor = this.db.a("select * from WalletUserInfo", null, 2);
+    Cursor localCursor = this.db.rawQuery("select * from WalletUserInfo", null, 2);
     localam.field_is_reg = -1;
     if (localCursor == null)
     {
@@ -79,7 +79,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.k
  * JD-Core Version:    0.7.0.1
  */

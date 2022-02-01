@@ -8,57 +8,57 @@ final class a$1
 {
   a$1(a parama) {}
   
-  public final void at(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(196026);
-    super.at(paramInt1, paramInt2);
-    a.a(this.rcm);
-    AppMethodBeat.o(196026);
-  }
-  
-  public final void au(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(196028);
-    super.au(paramInt1, paramInt2);
-    a.a(this.rcm);
-    AppMethodBeat.o(196028);
-  }
-  
-  public final void av(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(196029);
-    super.av(paramInt1, paramInt2);
-    a.a(this.rcm);
-    AppMethodBeat.o(196029);
-  }
-  
-  public final void f(int paramInt1, int paramInt2, Object paramObject)
-  {
-    AppMethodBeat.i(196027);
-    super.f(paramInt1, paramInt2, paramObject);
-    a.a(this.rcm);
-    AppMethodBeat.o(196027);
-  }
-  
-  public final void l(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(196030);
-    super.l(paramInt1, paramInt2, paramInt3);
-    a.a(this.rcm);
-    AppMethodBeat.o(196030);
-  }
-  
   public final void onChanged()
   {
-    AppMethodBeat.i(196025);
+    AppMethodBeat.i(220455);
     super.onChanged();
-    a.a(this.rcm);
-    AppMethodBeat.o(196025);
+    a.a(this.sCT);
+    AppMethodBeat.o(220455);
+  }
+  
+  public final void onItemRangeChanged(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(220456);
+    super.onItemRangeChanged(paramInt1, paramInt2);
+    a.a(this.sCT);
+    AppMethodBeat.o(220456);
+  }
+  
+  public final void onItemRangeChanged(int paramInt1, int paramInt2, Object paramObject)
+  {
+    AppMethodBeat.i(220457);
+    super.onItemRangeChanged(paramInt1, paramInt2, paramObject);
+    a.a(this.sCT);
+    AppMethodBeat.o(220457);
+  }
+  
+  public final void onItemRangeInserted(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(220458);
+    super.onItemRangeInserted(paramInt1, paramInt2);
+    a.a(this.sCT);
+    AppMethodBeat.o(220458);
+  }
+  
+  public final void onItemRangeMoved(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(220460);
+    super.onItemRangeMoved(paramInt1, paramInt2, paramInt3);
+    a.a(this.sCT);
+    AppMethodBeat.o(220460);
+  }
+  
+  public final void onItemRangeRemoved(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(220459);
+    super.onItemRangeRemoved(paramInt1, paramInt2);
+    a.a(this.sCT);
+    AppMethodBeat.o(220459);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.a.a.1
  * JD-Core Version:    0.7.0.1
  */

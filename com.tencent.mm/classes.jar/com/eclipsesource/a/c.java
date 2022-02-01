@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class c
   extends h
 {
-  private final boolean aZL;
-  private final boolean aZM;
-  private final boolean aZN;
+  private final boolean aZH;
+  private final boolean aZI;
+  private final boolean aZJ;
   private final String value;
   
   c(String paramString)
   {
     AppMethodBeat.i(74705);
     this.value = paramString;
-    this.aZL = "null".equals(paramString);
-    this.aZM = "true".equals(paramString);
-    this.aZN = "false".equals(paramString);
+    this.aZH = "null".equals(paramString);
+    this.aZI = "true".equals(paramString);
+    this.aZJ = "false".equals(paramString);
     AppMethodBeat.o(74705);
   }
   
@@ -61,19 +61,19 @@ final class c
   
   public final boolean isBoolean()
   {
-    return (this.aZM) || (this.aZN);
+    return (this.aZI) || (this.aZJ);
   }
   
-  public final boolean sb()
+  public final boolean se()
   {
     AppMethodBeat.i(74708);
-    if (this.aZL)
+    if (this.aZH)
     {
-      bool = super.sb();
+      bool = super.se();
       AppMethodBeat.o(74708);
       return bool;
     }
-    boolean bool = this.aZM;
+    boolean bool = this.aZI;
     AppMethodBeat.o(74708);
     return bool;
   }
@@ -85,7 +85,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.eclipsesource.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ import com.tencent.mm.plugin.appbrand.appcache.bd;
 import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.appcache.bj;
 import com.tencent.mm.plugin.appbrand.appcache.bj.a;
-import com.tencent.mm.sdk.e.f;
+import com.tencent.mm.sdk.storage.ISQLiteDatabaseEx;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -26,14 +26,14 @@ public final class d
   public final void a(String paramString1, int paramInt, String paramString2, String paramString3)
   {
     AppMethodBeat.i(121239);
-    ((e)g.ab(e.class)).aYP().d(paramString1, 10102, paramInt, paramString2, paramString3);
+    ((e)g.af(e.class)).bub().d(paramString1, 10102, paramInt, paramString2, paramString3);
     AppMethodBeat.o(121239);
   }
   
   public final boolean a(String paramString1, int paramInt, String paramString2, final j paramj)
   {
     AppMethodBeat.i(121240);
-    boolean bool = bj.b(paramString1, 10102, paramInt, paramString2, new bj.a()
+    boolean bool = bj.c(paramString1, 10102, paramInt, paramString2, new bj.a()
     {
       private long totalLen;
     });
@@ -41,11 +41,11 @@ public final class d
     return bool;
   }
   
-  public final List<x> aDW()
+  public final List<x> aXJ()
   {
     Object localObject1 = null;
     AppMethodBeat.i(121242);
-    Object localObject2 = ((e)g.ab(e.class)).aYP();
+    Object localObject2 = ((e)g.af(e.class)).bub();
     if (localObject2 == null)
     {
       localObject1 = Collections.EMPTY_LIST;
@@ -55,7 +55,7 @@ public final class d
     Object localObject3 = new StringBuilder("debugType");
     ((StringBuilder)localObject3).append(" = 10102");
     localObject3 = ((StringBuilder)localObject3).toString();
-    localObject2 = ((bh)localObject2).jLK.a("AppBrandWxaPkgManifestRecord", null, (String)localObject3, null, null, null, null, 2);
+    localObject2 = ((bh)localObject2).kNJ.query("AppBrandWxaPkgManifestRecord", null, (String)localObject3, null, null, null, null, 2);
     if (localObject2 == null) {}
     while ((localObject1 == null) || (((List)localObject1).isEmpty()))
     {
@@ -84,7 +84,7 @@ public final class d
     {
       localObject3 = (bd)((Iterator)localObject1).next();
       x localx = new x();
-      localx.dwb = ((bd)localObject3).field_appId;
+      localx.dNI = ((bd)localObject3).field_appId;
       localx.version = ((bd)localObject3).field_version;
       localx.md5 = ((bd)localObject3).field_versionMd5;
       ((List)localObject2).add(localx);
@@ -93,11 +93,11 @@ public final class d
     return localObject2;
   }
   
-  public final boolean aj(String paramString, int paramInt)
+  public final boolean an(String paramString, int paramInt)
   {
     AppMethodBeat.i(121241);
     paramString = WxaPkgIntegrityChecker.D(paramString, 10102, paramInt);
-    if ((paramString != null) && (paramString.first == WxaPkgIntegrityChecker.a.jLm))
+    if ((paramString != null) && (paramString.first == WxaPkgIntegrityChecker.a.kNl))
     {
       AppMethodBeat.o(121241);
       return true;
@@ -108,7 +108,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.a.d
  * JD-Core Version:    0.7.0.1
  */

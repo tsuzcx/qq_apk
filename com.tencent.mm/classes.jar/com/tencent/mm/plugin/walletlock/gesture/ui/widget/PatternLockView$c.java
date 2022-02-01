@@ -7,9 +7,9 @@ public enum PatternLockView$c
   static
   {
     AppMethodBeat.i(129864);
-    DNv = new c("Square", 0);
-    DNw = new c("Rectangle", 1);
-    DNx = new c[] { DNv, DNw };
+    IwK = new c("Square", 0);
+    IwL = new c("Rectangle", 1);
+    IwM = new c[] { IwK, IwL };
     AppMethodBeat.o(129864);
   }
   

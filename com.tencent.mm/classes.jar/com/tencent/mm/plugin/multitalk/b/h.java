@@ -15,9 +15,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.z;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.voip.model.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.io.BufferedOutputStream;
 import java.io.File;
 
@@ -35,7 +35,7 @@ public final class h
   private int TIMEOUT_USEC;
   public byte[] configbyte;
   public int encLen;
-  public long hni;
+  public long igB;
   public boolean isRuning;
   public long mGeneratedIdx;
   int mPrevResolution;
@@ -48,23 +48,23 @@ public final class h
   int m_width;
   protected MediaFormat mediaFormat;
   private BufferedOutputStream outputStream;
-  public int pdb;
-  z pdc;
-  private byte[] pdd;
-  private MediaMuxer pde;
-  private int pdf;
-  private boolean pdg;
-  private BufferedOutputStream pdh;
-  g pdi;
-  public int pdj;
-  public int pdk;
-  public int pdl;
-  public int pdm;
-  a wms;
+  public int qsb;
+  z qsc;
+  private byte[] qsd;
+  private MediaMuxer qse;
+  private int qsf;
+  private boolean qsg;
+  private BufferedOutputStream qsh;
+  g qsi;
+  public int qsj;
+  public int qsk;
+  public int qsl;
+  public int qsm;
+  a zHw;
   
   static
   {
-    AppMethodBeat.i(190460);
+    AppMethodBeat.i(239033);
     streamqueuesize = 100;
     frameID = 0;
     path = Environment.getExternalStorageDirectory().getAbsolutePath();
@@ -72,26 +72,26 @@ public final class h
     VFMT_HEVC_HW = 19;
     SizeFormat2WH = new short[] { 128, 96, 240, 160, 320, 240, 480, 360, 640, 480 };
     supportedH264HwCodecPrefixes = new String[] { "OMX.qcom.", "OMX.Exynos.", "OMX.hisi", "OMX.MTK" };
-    AppMethodBeat.o(190460);
+    AppMethodBeat.o(239033);
   }
   
   public h(int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(190455);
-    this.pdb = 0;
+    AppMethodBeat.i(239028);
+    this.qsb = 0;
     this.ENCODING = "hevc";
     this.TIMEOUT_USEC = 12000;
     this.mProfileCfg = 1;
-    this.pdd = null;
+    this.qsd = null;
     this.configbyte = null;
     this.mGeneratedIdx = 0L;
-    this.hni = 0L;
-    this.pdi = null;
-    this.pdj = 0;
-    this.pdk = 8;
-    this.pdl = 0;
-    this.pdm = 0;
-    this.wms = null;
+    this.igB = 0L;
+    this.qsi = null;
+    this.qsj = 0;
+    this.qsk = 8;
+    this.qsl = 0;
+    this.qsm = 0;
+    this.zHw = null;
     this.isRuning = false;
     this.encLen = 0;
     this.mPrevResolution = 8;
@@ -105,61 +105,75 @@ public final class h
     this.mProfileCfg = -1;
     paramString = path + "/AVLog/mediacodec.h264";
     new StringBuilder().append(path).append("/AVLog/enc.yuv");
-    paramString = new k(paramString);
+    paramString = new o(paramString);
     if (paramString.exists()) {
       paramString.delete();
     }
     try
     {
-      this.outputStream = new BufferedOutputStream(o.aj(paramString));
+      this.outputStream = new BufferedOutputStream(s.ap(paramString));
       frameID = 0;
       this.mGeneratedIdx = 0L;
-      this.wms = new a();
-      this.pdc = null;
-      this.pdk = 8;
-      this.pdj = 0;
-      this.pdl = 0;
-      this.pdb = 0;
-      this.pdd = null;
-      this.pdm = 0;
-      this.hni = 0L;
-      AppMethodBeat.o(190455);
+      this.zHw = new a();
+      this.qsc = null;
+      this.qsk = 8;
+      this.qsj = 0;
+      this.qsl = 0;
+      this.qsb = 0;
+      this.qsd = null;
+      this.qsm = 0;
+      this.igB = 0L;
+      AppMethodBeat.o(239028);
       return;
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ae.e("ILink[HWEnc]", " error:" + paramString.toString());
+        Log.e("ILink[HWEnc]", " error:" + paramString.toString());
       }
     }
+  }
+  
+  private void E(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(239032);
+    int i = VFMT_i264;
+    if (this.ENCODING.equalsIgnoreCase("video/hevc")) {
+      i = VFMT_HEVC_HW;
+    }
+    i = m.c(paramArrayOfByte, this.m_width, paramInt1, i);
+    if (i > 0) {
+      Log.d("ILink[HWEnc]", "steve: send successfully! frameLen = " + paramInt2 + ", type = " + paramInt1 + ", pkt cnt = " + i);
+    }
+    AppMethodBeat.o(239032);
   }
   
   @SuppressLint({"NewApi"})
   private void StopEncoder()
   {
-    AppMethodBeat.i(190456);
+    AppMethodBeat.i(239029);
     try
     {
-      if (this.pdc != null)
+      if (this.qsc != null)
       {
-        this.pdc.stop();
-        this.pdc.release();
+        this.qsc.stop();
+        this.qsc.release();
       }
-      AppMethodBeat.o(190456);
+      AppMethodBeat.o(239029);
       return;
     }
     catch (Exception localException)
     {
-      ae.e("ILink[HWEnc]", " error:" + localException.toString());
-      AppMethodBeat.o(190456);
+      Log.e("ILink[HWEnc]", " error:" + localException.toString());
+      AppMethodBeat.o(239029);
     }
   }
   
   private static boolean a(MediaCodecInfo paramMediaCodecInfo)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(190453);
+    AppMethodBeat.i(239026);
     paramMediaCodecInfo = paramMediaCodecInfo.getName();
     String[] arrayOfString = supportedH264HwCodecPrefixes;
     int j = arrayOfString.length;
@@ -172,24 +186,85 @@ public final class h
         if (paramMediaCodecInfo.startsWith(arrayOfString[i]))
         {
           bool1 = true;
-          ae.d("ILink[HWEnc]", "steve : known H.264 HW encoder :".concat(String.valueOf(paramMediaCodecInfo)));
+          Log.d("ILink[HWEnc]", "steve : known H.264 HW encoder :".concat(String.valueOf(paramMediaCodecInfo)));
         }
       }
       else
       {
-        AppMethodBeat.o(190453);
+        AppMethodBeat.o(239026);
         return bool1;
       }
       i += 1;
     }
   }
   
+  @SuppressLint({"NewApi"})
+  private boolean a(MediaCodecInfo paramMediaCodecInfo, String paramString)
+  {
+    AppMethodBeat.i(239024);
+    boolean bool3 = false;
+    boolean bool1 = false;
+    boolean bool2 = bool3;
+    if (Build.VERSION.SDK_INT >= 18)
+    {
+      bool2 = bool3;
+      if (8 <= this.qsk)
+      {
+        String str = paramMediaCodecInfo.getName();
+        String[] arrayOfString = supportedH264HwCodecPrefixes;
+        int k = arrayOfString.length;
+        int i = 0;
+        for (;;)
+        {
+          bool2 = bool1;
+          if (i >= k) {
+            break;
+          }
+          bool2 = bool1;
+          if (str.startsWith(arrayOfString[i]))
+          {
+            bool2 = bool1;
+            try
+            {
+              MediaCodecInfo.CodecProfileLevel[] arrayOfCodecProfileLevel = paramMediaCodecInfo.getCapabilitiesForType(paramString).profileLevels;
+              bool2 = bool1;
+              int m = arrayOfCodecProfileLevel.length;
+              int j = 0;
+              for (;;)
+              {
+                bool2 = bool1;
+                if (j >= m) {
+                  break;
+                }
+                MediaCodecInfo.CodecProfileLevel localCodecProfileLevel = arrayOfCodecProfileLevel[j];
+                bool3 = bool1;
+                bool2 = bool1;
+                if (localCodecProfileLevel.profile == 8) {
+                  bool3 = true;
+                }
+                bool2 = bool3;
+                Log.d("ILink[HWEnc]", "steve : [" + str + "] supported profiles:" + localCodecProfileLevel.profile + ", maxAllowedProfile: " + this.qsk + ", MIME:" + paramString);
+                j += 1;
+                bool1 = bool3;
+              }
+              i += 1;
+            }
+            catch (Exception localException) {}
+          }
+          bool1 = bool2;
+        }
+      }
+    }
+    AppMethodBeat.o(239024);
+    return bool2;
+  }
+  
   private boolean a(MediaCodecInfo paramMediaCodecInfo, String paramString, int paramInt)
   {
-    AppMethodBeat.i(190452);
+    AppMethodBeat.i(239025);
     bool2 = false;
     bool1 = bool2;
-    if (d.lA(23))
+    if (d.oD(23))
     {
       for (;;)
       {
@@ -227,7 +302,7 @@ public final class h
           int m;
           int n;
           boolean bool3;
-          ae.e("ILink[HWEnc]", "trySetProfile error: " + paramMediaCodecInfo.getMessage());
+          Log.e("ILink[HWEnc]", "trySetProfile error: " + paramMediaCodecInfo.getMessage());
           bool1 = bool2;
           continue;
           int j = 0;
@@ -254,10 +329,10 @@ public final class h
             }
           }
         }
-        ae.i("ILink[HWEnc]", "steve : profile: " + m + ", level: " + n + ", maxProfile: " + paramInt + ", isRecognized:" + bool1);
+        Log.i("ILink[HWEnc]", "steve : profile: " + m + ", level: " + n + ", maxProfile: " + paramInt + ", isRecognized:" + bool1);
         i += 1;
       }
-      ae.i("ILink[HWEnc]", "best profile: " + paramString.profile + ", best level: " + paramString.level);
+      Log.i("ILink[HWEnc]", "best profile: " + paramString.profile + ", best level: " + paramString.level);
       bool1 = bool2;
       if (paramString.profile > 0)
       {
@@ -270,77 +345,16 @@ public final class h
         }
       }
     }
-    AppMethodBeat.o(190452);
+    AppMethodBeat.o(239025);
     return bool1;
   }
   
   @SuppressLint({"NewApi"})
-  private boolean b(MediaCodecInfo paramMediaCodecInfo, String paramString)
-  {
-    AppMethodBeat.i(190451);
-    boolean bool3 = false;
-    boolean bool1 = false;
-    boolean bool2 = bool3;
-    if (Build.VERSION.SDK_INT >= 18)
-    {
-      bool2 = bool3;
-      if (8 <= this.pdk)
-      {
-        String str = paramMediaCodecInfo.getName();
-        String[] arrayOfString = supportedH264HwCodecPrefixes;
-        int k = arrayOfString.length;
-        int i = 0;
-        for (;;)
-        {
-          bool2 = bool1;
-          if (i >= k) {
-            break;
-          }
-          bool2 = bool1;
-          if (str.startsWith(arrayOfString[i]))
-          {
-            bool2 = bool1;
-            try
-            {
-              MediaCodecInfo.CodecProfileLevel[] arrayOfCodecProfileLevel = paramMediaCodecInfo.getCapabilitiesForType(paramString).profileLevels;
-              bool2 = bool1;
-              int m = arrayOfCodecProfileLevel.length;
-              int j = 0;
-              for (;;)
-              {
-                bool2 = bool1;
-                if (j >= m) {
-                  break;
-                }
-                MediaCodecInfo.CodecProfileLevel localCodecProfileLevel = arrayOfCodecProfileLevel[j];
-                bool3 = bool1;
-                bool2 = bool1;
-                if (localCodecProfileLevel.profile == 8) {
-                  bool3 = true;
-                }
-                bool2 = bool3;
-                ae.d("ILink[HWEnc]", "steve : [" + str + "] supported profiles:" + localCodecProfileLevel.profile + ", maxAllowedProfile: " + this.pdk + ", MIME:" + paramString);
-                j += 1;
-                bool1 = bool3;
-              }
-              i += 1;
-            }
-            catch (Exception localException) {}
-          }
-          bool1 = bool2;
-        }
-      }
-    }
-    AppMethodBeat.o(190451);
-    return bool2;
-  }
-  
-  @SuppressLint({"NewApi"})
-  private int cbj()
+  private int cyY()
   {
     boolean bool1 = false;
-    AppMethodBeat.i(190454);
-    if (this.pdc != null) {
+    AppMethodBeat.i(239027);
+    if (this.qsc != null) {
       StopEncoder();
     }
     String str = this.ENCODING;
@@ -358,7 +372,7 @@ public final class h
         label60:
         if (j < arrayOfString.length) {
           if (arrayOfString[j].equalsIgnoreCase(str)) {
-            ae.d("ILink[HWEnc]", "steve : H.264 HW encoder found:".concat(String.valueOf(localMediaCodecInfo.getName())));
+            Log.d("ILink[HWEnc]", "steve : H.264 HW encoder found:".concat(String.valueOf(localMediaCodecInfo.getName())));
           }
         }
       }
@@ -368,10 +382,10 @@ public final class h
       if (localMediaCodecInfo != null) {
         break label169;
       }
-      ae.e("ILink[HWEnc]", "steve: Unable to find an appropriate codec for " + this.ENCODING);
-      this.pdb = 2001;
-      i = -this.pdb;
-      AppMethodBeat.o(190454);
+      Log.e("ILink[HWEnc]", "steve: Unable to find an appropriate codec for " + this.ENCODING);
+      this.qsb = 2001;
+      i = -this.qsb;
+      AppMethodBeat.o(239027);
       return i;
       j += 1;
       break label60;
@@ -380,15 +394,15 @@ public final class h
       localMediaCodecInfo = null;
     }
     label169:
-    ae.i("ILink[HWEnc]", "steve: found HW codec: " + localMediaCodecInfo.getName());
+    Log.i("ILink[HWEnc]", "steve: found HW codec: " + localMediaCodecInfo.getName());
     this.mediaFormat = MediaFormat.createVideoFormat(this.ENCODING, this.m_width, this.m_height);
     this.mediaFormat.setInteger("color-format", 21);
     this.mediaFormat.setInteger("bitrate", this.m_br_kbps * 1000);
     this.mediaFormat.setInteger("frame-rate", this.m_framerate);
     this.mediaFormat.setInteger("i-frame-interval", 1);
     str = this.mediaFormat.getString("mime");
-    this.pdj = 1;
-    if ((this.ENCODING.equalsIgnoreCase("video/avc")) && (a(localMediaCodecInfo)) && (d.lA(23)))
+    this.qsj = 1;
+    if ((this.ENCODING.equalsIgnoreCase("video/avc")) && (a(localMediaCodecInfo)) && (d.oD(23)))
     {
       if ((this.mProfileCfg <= 0) || ((this.mProfileCfg & 0x1) == 0)) {
         break label517;
@@ -399,7 +413,7 @@ public final class h
       }
       j = 1;
       label351:
-      boolean bool2 = b(localMediaCodecInfo, str);
+      boolean bool2 = a(localMediaCodecInfo, str);
       if ((j == 0) || (!bool2)) {
         break label527;
       }
@@ -415,25 +429,25 @@ public final class h
     label522:
     label527:
     label583:
-    for (this.pdj = this.mediaFormat.getInteger("profile");; this.pdj = 1)
+    for (this.qsj = this.mediaFormat.getInteger("profile");; this.qsj = 1)
     {
       this.mediaFormat.setInteger("bitrate-mode", 2);
       try
       {
-        this.pdc = z.q(str, false);
-        ae.i("ILink[HWEnc]", "steve: mediaFormat: " + this.mediaFormat + ", actProfile: " + this.pdj);
-        this.pdc.a(this.mediaFormat, null, 1);
-        this.pdc.start();
-        this.pdi = new g();
-        AppMethodBeat.o(190454);
+        this.qsc = z.q(str, false);
+        Log.i("ILink[HWEnc]", "steve: mediaFormat: " + this.mediaFormat + ", actProfile: " + this.qsj);
+        this.qsc.a(this.mediaFormat, null, 1);
+        this.qsc.start();
+        this.qsi = new g();
+        AppMethodBeat.o(239027);
         return 2000;
       }
       catch (Exception localException)
       {
-        ae.e("ILink[HWEnc]", " error:" + localException.toString());
-        this.pdb = 2002;
-        i = -this.pdb;
-        AppMethodBeat.o(190454);
+        Log.e("ILink[HWEnc]", " error:" + localException.toString());
+        this.qsb = 2002;
+        i = -this.qsb;
+        AppMethodBeat.o(239027);
       }
       i = 0;
       break;
@@ -449,47 +463,33 @@ public final class h
       if (localMediaCodecInfo == null) {
         break label398;
       }
-      bool1 = a(localMediaCodecInfo, str, this.pdk);
+      bool1 = a(localMediaCodecInfo, str, this.qsk);
       break label398;
     }
     return i;
   }
   
-  private void u(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(190459);
-    int i = VFMT_i264;
-    if (this.ENCODING.equalsIgnoreCase("video/hevc")) {
-      i = VFMT_HEVC_HW;
-    }
-    i = m.c(paramArrayOfByte, this.m_width, paramInt1, i);
-    if (i > 0) {
-      ae.d("ILink[HWEnc]", "steve: send successfully! frameLen = " + paramInt2 + ", type = " + paramInt1 + ", pkt cnt = " + i);
-    }
-    AppMethodBeat.o(190459);
-  }
-  
   @SuppressLint({"NewApi"})
   public final boolean SetBitRate(int paramInt)
   {
-    AppMethodBeat.i(190458);
+    AppMethodBeat.i(239031);
     try
     {
-      if (this.pdc != null)
+      if (this.qsc != null)
       {
         Bundle localBundle = new Bundle();
         paramInt *= 1000;
-        ae.v("ILink[HWEnc]", "steve: setRates: ".concat(String.valueOf(paramInt)));
+        Log.v("ILink[HWEnc]", "steve: setRates: ".concat(String.valueOf(paramInt)));
         localBundle.putInt("video-bitrate", paramInt);
-        this.pdc.setParameters(localBundle);
-        AppMethodBeat.o(190458);
+        this.qsc.setParameters(localBundle);
+        AppMethodBeat.o(239031);
         return true;
       }
     }
     catch (Exception localException)
     {
-      ae.e("ILink[HWEnc]", "steve: setRates failed:".concat(String.valueOf(localException)));
-      AppMethodBeat.o(190458);
+      Log.e("ILink[HWEnc]", "steve: setRates failed:".concat(String.valueOf(localException)));
+      AppMethodBeat.o(239031);
     }
     return false;
   }
@@ -517,7 +517,7 @@ public final class h
     //   31: iload_3
     //   32: putfield 165	com/tencent/mm/plugin/multitalk/b/h:m_CapH	I
     //   35: aload_0
-    //   36: getfield 133	com/tencent/mm/plugin/multitalk/b/h:pdd	[B
+    //   36: getfield 133	com/tencent/mm/plugin/multitalk/b/h:qsd	[B
     //   39: ifnonnull +22 -> 61
     //   42: aload_0
     //   43: aload_0
@@ -530,7 +530,7 @@ public final class h
     //   54: iconst_2
     //   55: idiv
     //   56: newarray byte
-    //   58: putfield 133	com/tencent/mm/plugin/multitalk/b/h:pdd	[B
+    //   58: putfield 133	com/tencent/mm/plugin/multitalk/b/h:qsd	[B
     //   61: ldc 215
     //   63: new 171	java/lang/StringBuilder
     //   66: dup
@@ -538,16 +538,16 @@ public final class h
     //   70: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   73: aload_0
     //   74: getfield 167	com/tencent/mm/plugin/multitalk/b/h:m_framerate	I
-    //   77: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   77: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   80: ldc_w 468
     //   83: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   86: aload_0
     //   87: getfield 169	com/tencent/mm/plugin/multitalk/b/h:m_br_kbps	I
-    //   90: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   90: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   93: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokestatic 263	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   96: invokestatic 252	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   99: aload_0
-    //   100: getfield 151	com/tencent/mm/plugin/multitalk/b/h:wms	Lcom/tencent/mm/plugin/multitalk/b/a;
+    //   100: getfield 151	com/tencent/mm/plugin/multitalk/b/h:zHw	Lcom/tencent/mm/plugin/multitalk/b/a;
     //   103: getfield 472	com/tencent/mm/plugin/multitalk/b/a:cSkipFlag	B
     //   106: ifne +1179 -> 1285
     //   109: aload_1
@@ -559,7 +559,7 @@ public final class h
     //   117: getfield 165	com/tencent/mm/plugin/multitalk/b/h:m_CapH	I
     //   120: iload 4
     //   122: aload_0
-    //   123: getfield 133	com/tencent/mm/plugin/multitalk/b/h:pdd	[B
+    //   123: getfield 133	com/tencent/mm/plugin/multitalk/b/h:qsd	[B
     //   126: aload_0
     //   127: getfield 163	com/tencent/mm/plugin/multitalk/b/h:m_CapW	I
     //   130: aload_0
@@ -567,12 +567,12 @@ public final class h
     //   134: invokestatic 476	com/tencent/mm/plugin/multitalk/b/m:videoHWProcess	([BIIII[BII)I
     //   137: pop
     //   138: aload_0
-    //   139: getfield 133	com/tencent/mm/plugin/multitalk/b/h:pdd	[B
+    //   139: getfield 133	com/tencent/mm/plugin/multitalk/b/h:qsd	[B
     //   142: astore_1
-    //   143: invokestatic 480	com/tencent/mm/plugin/multitalk/b/m:cbn	()Lcom/tencent/wxmm/v2conference;
+    //   143: invokestatic 480	com/tencent/mm/plugin/multitalk/b/m:czd	()Lcom/tencent/wxmm/v2conference;
     //   146: getfield 485	com/tencent/wxmm/v2conference:field_HWEncW	I
     //   149: istore_2
-    //   150: invokestatic 480	com/tencent/mm/plugin/multitalk/b/m:cbn	()Lcom/tencent/wxmm/v2conference;
+    //   150: invokestatic 480	com/tencent/mm/plugin/multitalk/b/m:czd	()Lcom/tencent/wxmm/v2conference;
     //   153: getfield 488	com/tencent/wxmm/v2conference:field_HWEncH	I
     //   156: istore_3
     //   157: aload_0
@@ -584,7 +584,7 @@ public final class h
     //   169: iload_3
     //   170: if_icmpne +10 -> 180
     //   173: aload_0
-    //   174: getfield 213	com/tencent/mm/plugin/multitalk/b/h:pdc	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   174: getfield 213	com/tencent/mm/plugin/multitalk/b/h:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   177: ifnonnull +266 -> 443
     //   180: ldc 215
     //   182: new 171	java/lang/StringBuilder
@@ -592,23 +592,23 @@ public final class h
     //   186: ldc_w 490
     //   189: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   192: iload_2
-    //   193: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   193: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   196: ldc_w 492
     //   199: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   202: iload_3
-    //   203: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   203: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   206: ldc_w 494
     //   209: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   212: aload_0
     //   213: getfield 159	com/tencent/mm/plugin/multitalk/b/h:m_width	I
-    //   216: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   216: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   219: ldc_w 492
     //   222: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   225: aload_0
     //   226: getfield 161	com/tencent/mm/plugin/multitalk/b/h:m_height	I
-    //   229: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   229: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   232: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   235: invokestatic 306	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   235: invokestatic 341	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   238: aload_0
     //   239: iload_2
     //   240: putfield 159	com/tencent/mm/plugin/multitalk/b/h:m_width	I
@@ -627,7 +627,7 @@ public final class h
     //   261: ishr
     //   262: putfield 155	com/tencent/mm/plugin/multitalk/b/h:encLen	I
     //   265: aload_0
-    //   266: invokespecial 496	com/tencent/mm/plugin/multitalk/b/h:cbj	()I
+    //   266: invokespecial 496	com/tencent/mm/plugin/multitalk/b/h:cyY	()I
     //   269: istore_2
     //   270: iload_2
     //   271: istore_3
@@ -636,14 +636,14 @@ public final class h
     //   276: ldc 215
     //   278: ldc_w 498
     //   281: iload_2
-    //   282: invokestatic 449	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   285: invokevirtual 260	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   288: invokestatic 225	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   282: invokestatic 448	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   285: invokevirtual 286	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   288: invokestatic 225	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   291: aload_0
     //   292: iconst_0
     //   293: putfield 153	com/tencent/mm/plugin/multitalk/b/h:isRuning	Z
     //   296: aload_0
-    //   297: invokespecial 346	com/tencent/mm/plugin/multitalk/b/h:StopEncoder	()V
+    //   297: invokespecial 365	com/tencent/mm/plugin/multitalk/b/h:StopEncoder	()V
     //   300: aload_0
     //   301: getfield 208	com/tencent/mm/plugin/multitalk/b/h:outputStream	Ljava/io/BufferedOutputStream;
     //   304: ifnull +17 -> 321
@@ -654,22 +654,22 @@ public final class h
     //   315: getfield 208	com/tencent/mm/plugin/multitalk/b/h:outputStream	Ljava/io/BufferedOutputStream;
     //   318: invokevirtual 504	java/io/BufferedOutputStream:close	()V
     //   321: aload_0
-    //   322: getfield 506	com/tencent/mm/plugin/multitalk/b/h:pdh	Ljava/io/BufferedOutputStream;
+    //   322: getfield 506	com/tencent/mm/plugin/multitalk/b/h:qsh	Ljava/io/BufferedOutputStream;
     //   325: ifnull +17 -> 342
     //   328: aload_0
-    //   329: getfield 506	com/tencent/mm/plugin/multitalk/b/h:pdh	Ljava/io/BufferedOutputStream;
+    //   329: getfield 506	com/tencent/mm/plugin/multitalk/b/h:qsh	Ljava/io/BufferedOutputStream;
     //   332: invokevirtual 501	java/io/BufferedOutputStream:flush	()V
     //   335: aload_0
-    //   336: getfield 506	com/tencent/mm/plugin/multitalk/b/h:pdh	Ljava/io/BufferedOutputStream;
+    //   336: getfield 506	com/tencent/mm/plugin/multitalk/b/h:qsh	Ljava/io/BufferedOutputStream;
     //   339: invokevirtual 504	java/io/BufferedOutputStream:close	()V
     //   342: aload_0
-    //   343: getfield 508	com/tencent/mm/plugin/multitalk/b/h:pde	Landroid/media/MediaMuxer;
+    //   343: getfield 508	com/tencent/mm/plugin/multitalk/b/h:qse	Landroid/media/MediaMuxer;
     //   346: ifnull +17 -> 363
     //   349: aload_0
-    //   350: getfield 508	com/tencent/mm/plugin/multitalk/b/h:pde	Landroid/media/MediaMuxer;
+    //   350: getfield 508	com/tencent/mm/plugin/multitalk/b/h:qse	Landroid/media/MediaMuxer;
     //   353: invokevirtual 511	android/media/MediaMuxer:stop	()V
     //   356: aload_0
-    //   357: getfield 508	com/tencent/mm/plugin/multitalk/b/h:pde	Landroid/media/MediaMuxer;
+    //   357: getfield 508	com/tencent/mm/plugin/multitalk/b/h:qse	Landroid/media/MediaMuxer;
     //   360: invokevirtual 512	android/media/MediaMuxer:release	()V
     //   363: ldc_w 464
     //   366: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -682,15 +682,15 @@ public final class h
     //   379: ldc_w 514
     //   382: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   385: aload 8
-    //   387: invokevirtual 325	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   387: invokevirtual 360	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   390: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   393: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   396: invokestatic 225	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   396: invokestatic 225	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   399: aload_0
     //   400: sipush 2003
-    //   403: putfield 123	com/tencent/mm/plugin/multitalk/b/h:pdb	I
+    //   403: putfield 123	com/tencent/mm/plugin/multitalk/b/h:qsb	I
     //   406: aload_0
-    //   407: getfield 123	com/tencent/mm/plugin/multitalk/b/h:pdb	I
+    //   407: getfield 123	com/tencent/mm/plugin/multitalk/b/h:qsb	I
     //   410: ineg
     //   411: istore_2
     //   412: goto -142 -> 270
@@ -704,7 +704,7 @@ public final class h
     //   428: invokevirtual 219	java/lang/Exception:toString	()Ljava/lang/String;
     //   431: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   434: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   437: invokestatic 225	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   437: invokestatic 225	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   440: goto -77 -> 363
     //   443: iconst_0
     //   444: istore_3
@@ -712,12 +712,12 @@ public final class h
     //   448: bipush 100
     //   450: if_icmpgt +465 -> 915
     //   453: aload_0
-    //   454: getfield 506	com/tencent/mm/plugin/multitalk/b/h:pdh	Ljava/io/BufferedOutputStream;
+    //   454: getfield 506	com/tencent/mm/plugin/multitalk/b/h:qsh	Ljava/io/BufferedOutputStream;
     //   457: ifnull +458 -> 915
     //   460: aload_0
-    //   461: getfield 506	com/tencent/mm/plugin/multitalk/b/h:pdh	Ljava/io/BufferedOutputStream;
+    //   461: getfield 506	com/tencent/mm/plugin/multitalk/b/h:qsh	Ljava/io/BufferedOutputStream;
     //   464: aload_0
-    //   465: getfield 133	com/tencent/mm/plugin/multitalk/b/h:pdd	[B
+    //   465: getfield 133	com/tencent/mm/plugin/multitalk/b/h:qsd	[B
     //   468: iconst_0
     //   469: aload_0
     //   470: getfield 155	com/tencent/mm/plugin/multitalk/b/h:encLen	I
@@ -727,11 +727,11 @@ public final class h
     //   478: aload_1
     //   479: ifnull +773 -> 1252
     //   482: aload_0
-    //   483: getfield 213	com/tencent/mm/plugin/multitalk/b/h:pdc	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   483: getfield 213	com/tencent/mm/plugin/multitalk/b/h:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   486: ifnull +766 -> 1252
     //   489: aload_0
     //   490: iconst_0
-    //   491: putfield 149	com/tencent/mm/plugin/multitalk/b/h:pdm	I
+    //   491: putfield 149	com/tencent/mm/plugin/multitalk/b/h:qsm	I
     //   494: invokestatic 523	java/lang/System:currentTimeMillis	()J
     //   497: lstore 6
     //   499: ldc 215
@@ -741,27 +741,27 @@ public final class h
     //   508: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   511: aload_0
     //   512: getfield 155	com/tencent/mm/plugin/multitalk/b/h:encLen	I
-    //   515: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   515: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   518: ldc_w 527
     //   521: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   524: getstatic 70	com/tencent/mm/plugin/multitalk/b/h:frameID	I
-    //   527: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   527: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   530: ldc_w 529
     //   533: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   536: lload 6
     //   538: invokevirtual 532	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   541: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   544: invokestatic 263	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   544: invokestatic 252	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   547: aload_0
-    //   548: getfield 213	com/tencent/mm/plugin/multitalk/b/h:pdc	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   548: getfield 213	com/tencent/mm/plugin/multitalk/b/h:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   551: invokevirtual 536	com/tencent/mm/compatible/deviceinfo/z:getInputBuffers	()[Ljava/nio/ByteBuffer;
     //   554: astore 9
     //   556: aload_0
-    //   557: getfield 213	com/tencent/mm/plugin/multitalk/b/h:pdc	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   557: getfield 213	com/tencent/mm/plugin/multitalk/b/h:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   560: invokevirtual 539	com/tencent/mm/compatible/deviceinfo/z:getOutputBuffers	()[Ljava/nio/ByteBuffer;
     //   563: astore 8
     //   565: aload_0
-    //   566: getfield 213	com/tencent/mm/plugin/multitalk/b/h:pdc	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   566: getfield 213	com/tencent/mm/plugin/multitalk/b/h:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   569: ldc2_w 540
     //   572: invokevirtual 545	com/tencent/mm/compatible/deviceinfo/z:dequeueInputBuffer	(J)I
     //   575: istore_3
@@ -782,15 +782,15 @@ public final class h
     //   605: lcmp
     //   606: ifeq +12 -> 618
     //   609: aload_0
-    //   610: getfield 139	com/tencent/mm/plugin/multitalk/b/h:hni	J
+    //   610: getfield 139	com/tencent/mm/plugin/multitalk/b/h:igB	J
     //   613: lconst_0
     //   614: lcmp
     //   615: ifne +305 -> 920
     //   618: aload_0
     //   619: ldc2_w 555
-    //   622: putfield 139	com/tencent/mm/plugin/multitalk/b/h:hni	J
+    //   622: putfield 139	com/tencent/mm/plugin/multitalk/b/h:igB	J
     //   625: aload_0
-    //   626: getfield 139	com/tencent/mm/plugin/multitalk/b/h:hni	J
+    //   626: getfield 139	com/tencent/mm/plugin/multitalk/b/h:igB	J
     //   629: lstore 6
     //   631: aload 9
     //   633: iload_3
@@ -807,7 +807,7 @@ public final class h
     //   651: invokevirtual 566	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
     //   654: pop
     //   655: aload_0
-    //   656: getfield 213	com/tencent/mm/plugin/multitalk/b/h:pdc	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   656: getfield 213	com/tencent/mm/plugin/multitalk/b/h:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   659: iload_3
     //   660: aload_0
     //   661: getfield 155	com/tencent/mm/plugin/multitalk/b/h:encLen	I
@@ -825,7 +825,7 @@ public final class h
     //   684: invokespecial 572	android/media/MediaCodec$BufferInfo:<init>	()V
     //   687: astore_1
     //   688: aload_0
-    //   689: getfield 213	com/tencent/mm/plugin/multitalk/b/h:pdc	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   689: getfield 213	com/tencent/mm/plugin/multitalk/b/h:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   692: aload_1
     //   693: aload_0
     //   694: getfield 129	com/tencent/mm/plugin/multitalk/b/h:TIMEOUT_USEC	I
@@ -842,11 +842,11 @@ public final class h
     //   716: ldc 215
     //   718: ldc_w 578
     //   721: aload_0
-    //   722: getfield 213	com/tencent/mm/plugin/multitalk/b/h:pdc	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   722: getfield 213	com/tencent/mm/plugin/multitalk/b/h:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   725: invokevirtual 582	com/tencent/mm/compatible/deviceinfo/z:getOutputFormat	()Landroid/media/MediaFormat;
-    //   728: invokestatic 256	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   731: invokevirtual 260	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   734: invokestatic 306	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   728: invokestatic 282	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   731: invokevirtual 286	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   734: invokestatic 341	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   737: iload 5
     //   739: istore 4
     //   741: iload_2
@@ -882,39 +882,39 @@ public final class h
     //   797: iconst_2
     //   798: if_icmpne +309 -> 1107
     //   801: aload_0
-    //   802: getfield 143	com/tencent/mm/plugin/multitalk/b/h:pdj	I
+    //   802: getfield 143	com/tencent/mm/plugin/multitalk/b/h:qsj	I
     //   805: iconst_1
     //   806: if_icmpeq +221 -> 1027
     //   809: aload_0
-    //   810: getfield 141	com/tencent/mm/plugin/multitalk/b/h:pdi	Lcom/tencent/mm/plugin/voip/model/g;
+    //   810: getfield 141	com/tencent/mm/plugin/multitalk/b/h:qsi	Lcom/tencent/mm/plugin/voip/model/g;
     //   813: aload 10
-    //   815: invokevirtual 596	com/tencent/mm/plugin/voip/model/g:bQ	([B)Z
+    //   815: invokevirtual 596	com/tencent/mm/plugin/voip/model/g:cg	([B)Z
     //   818: ifeq +209 -> 1027
     //   821: aload_0
     //   822: aload_0
-    //   823: getfield 141	com/tencent/mm/plugin/multitalk/b/h:pdi	Lcom/tencent/mm/plugin/voip/model/g;
-    //   826: getfield 599	com/tencent/mm/plugin/voip/model/g:CpW	I
-    //   829: putfield 147	com/tencent/mm/plugin/multitalk/b/h:pdl	I
+    //   823: getfield 141	com/tencent/mm/plugin/multitalk/b/h:qsi	Lcom/tencent/mm/plugin/voip/model/g;
+    //   826: getfield 599	com/tencent/mm/plugin/voip/model/g:GTT	I
+    //   829: putfield 147	com/tencent/mm/plugin/multitalk/b/h:qsl	I
     //   832: aload_0
     //   833: iconst_1
-    //   834: putfield 145	com/tencent/mm/plugin/multitalk/b/h:pdk	I
+    //   834: putfield 145	com/tencent/mm/plugin/multitalk/b/h:qsk	I
     //   837: ldc 215
     //   839: new 171	java/lang/StringBuilder
     //   842: dup
     //   843: ldc_w 601
     //   846: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   849: aload_0
-    //   850: getfield 145	com/tencent/mm/plugin/multitalk/b/h:pdk	I
-    //   853: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   850: getfield 145	com/tencent/mm/plugin/multitalk/b/h:qsk	I
+    //   853: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   856: ldc_w 603
     //   859: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   862: aload_0
-    //   863: getfield 147	com/tencent/mm/plugin/multitalk/b/h:pdl	I
-    //   866: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   863: getfield 147	com/tencent/mm/plugin/multitalk/b/h:qsl	I
+    //   866: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   869: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   872: invokestatic 306	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   872: invokestatic 341	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   875: aload_0
-    //   876: invokespecial 496	com/tencent/mm/plugin/multitalk/b/h:cbj	()I
+    //   876: invokespecial 496	com/tencent/mm/plugin/multitalk/b/h:cyY	()I
     //   879: istore_2
     //   880: ldc_w 464
     //   883: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -930,19 +930,19 @@ public final class h
     //   903: invokevirtual 219	java/lang/Exception:toString	()Ljava/lang/String;
     //   906: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   909: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   912: invokestatic 225	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   912: invokestatic 225	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   915: iload_3
     //   916: istore_2
     //   917: goto -439 -> 478
     //   920: aload_0
     //   921: aload_0
-    //   922: getfield 139	com/tencent/mm/plugin/multitalk/b/h:hni	J
+    //   922: getfield 139	com/tencent/mm/plugin/multitalk/b/h:igB	J
     //   925: ldc_w 604
     //   928: iload 4
     //   930: idiv
     //   931: i2l
     //   932: ladd
-    //   933: putfield 139	com/tencent/mm/plugin/multitalk/b/h:hni	J
+    //   933: putfield 139	com/tencent/mm/plugin/multitalk/b/h:igB	J
     //   936: goto -311 -> 625
     //   939: astore_1
     //   940: ldc 215
@@ -954,12 +954,12 @@ public final class h
     //   952: invokevirtual 219	java/lang/Exception:toString	()Ljava/lang/String;
     //   955: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   958: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   961: invokestatic 225	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   961: invokestatic 225	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   964: aload_0
     //   965: sipush 2004
-    //   968: putfield 123	com/tencent/mm/plugin/multitalk/b/h:pdb	I
+    //   968: putfield 123	com/tencent/mm/plugin/multitalk/b/h:qsb	I
     //   971: aload_0
-    //   972: getfield 123	com/tencent/mm/plugin/multitalk/b/h:pdb	I
+    //   972: getfield 123	com/tencent/mm/plugin/multitalk/b/h:qsb	I
     //   975: ineg
     //   976: istore_2
     //   977: ldc_w 464
@@ -973,15 +973,15 @@ public final class h
     //   992: ldc_w 606
     //   995: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   998: aload_1
-    //   999: invokevirtual 325	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   999: invokevirtual 360	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1002: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1005: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1008: invokestatic 225	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1008: invokestatic 225	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1011: aload_0
     //   1012: sipush 2005
-    //   1015: putfield 123	com/tencent/mm/plugin/multitalk/b/h:pdb	I
+    //   1015: putfield 123	com/tencent/mm/plugin/multitalk/b/h:qsb	I
     //   1018: aload_0
-    //   1019: getfield 123	com/tencent/mm/plugin/multitalk/b/h:pdb	I
+    //   1019: getfield 123	com/tencent/mm/plugin/multitalk/b/h:qsb	I
     //   1022: ineg
     //   1023: istore_2
     //   1024: goto -144 -> 880
@@ -991,16 +991,16 @@ public final class h
     //   1031: getfield 592	android/media/MediaCodec$BufferInfo:flags	I
     //   1034: aload 10
     //   1036: arraylength
-    //   1037: invokespecial 608	com/tencent/mm/plugin/multitalk/b/h:u	([BII)V
+    //   1037: invokespecial 608	com/tencent/mm/plugin/multitalk/b/h:E	([BII)V
     //   1040: aload_0
-    //   1041: getfield 610	com/tencent/mm/plugin/multitalk/b/h:pdg	Z
+    //   1041: getfield 610	com/tencent/mm/plugin/multitalk/b/h:qsg	Z
     //   1044: ifeq +22 -> 1066
     //   1047: aload 9
     //   1049: ifnull +17 -> 1066
     //   1052: aload_0
-    //   1053: getfield 508	com/tencent/mm/plugin/multitalk/b/h:pde	Landroid/media/MediaMuxer;
+    //   1053: getfield 508	com/tencent/mm/plugin/multitalk/b/h:qse	Landroid/media/MediaMuxer;
     //   1056: aload_0
-    //   1057: getfield 612	com/tencent/mm/plugin/multitalk/b/h:pdf	I
+    //   1057: getfield 612	com/tencent/mm/plugin/multitalk/b/h:qsf	I
     //   1060: aload 9
     //   1062: aload_1
     //   1063: invokevirtual 616	android/media/MediaMuxer:writeSampleData	(ILjava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
@@ -1012,12 +1012,12 @@ public final class h
     //   1075: iadd
     //   1076: putstatic 70	com/tencent/mm/plugin/multitalk/b/h:frameID	I
     //   1079: aload_0
-    //   1080: getfield 213	com/tencent/mm/plugin/multitalk/b/h:pdc	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   1080: getfield 213	com/tencent/mm/plugin/multitalk/b/h:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   1083: iload 4
     //   1085: iconst_0
     //   1086: invokevirtual 620	com/tencent/mm/compatible/deviceinfo/z:releaseOutputBuffer	(IZ)V
     //   1089: aload_0
-    //   1090: getfield 213	com/tencent/mm/plugin/multitalk/b/h:pdc	Lcom/tencent/mm/compatible/deviceinfo/z;
+    //   1090: getfield 213	com/tencent/mm/plugin/multitalk/b/h:qsc	Lcom/tencent/mm/compatible/deviceinfo/z;
     //   1093: aload_1
     //   1094: aload_0
     //   1095: getfield 129	com/tencent/mm/plugin/multitalk/b/h:TIMEOUT_USEC	I
@@ -1026,39 +1026,39 @@ public final class h
     //   1102: istore 4
     //   1104: goto -361 -> 743
     //   1107: aload_0
-    //   1108: getfield 143	com/tencent/mm/plugin/multitalk/b/h:pdj	I
+    //   1108: getfield 143	com/tencent/mm/plugin/multitalk/b/h:qsj	I
     //   1111: iconst_1
     //   1112: if_icmpeq +124 -> 1236
     //   1115: aload_0
-    //   1116: getfield 141	com/tencent/mm/plugin/multitalk/b/h:pdi	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1116: getfield 141	com/tencent/mm/plugin/multitalk/b/h:qsi	Lcom/tencent/mm/plugin/voip/model/g;
     //   1119: aload 10
-    //   1121: invokevirtual 623	com/tencent/mm/plugin/voip/model/g:bR	([B)Z
+    //   1121: invokevirtual 623	com/tencent/mm/plugin/voip/model/g:ch	([B)Z
     //   1124: ifeq +112 -> 1236
     //   1127: aload_0
     //   1128: aload_0
-    //   1129: getfield 141	com/tencent/mm/plugin/multitalk/b/h:pdi	Lcom/tencent/mm/plugin/voip/model/g;
-    //   1132: getfield 599	com/tencent/mm/plugin/voip/model/g:CpW	I
-    //   1135: putfield 147	com/tencent/mm/plugin/multitalk/b/h:pdl	I
+    //   1129: getfield 141	com/tencent/mm/plugin/multitalk/b/h:qsi	Lcom/tencent/mm/plugin/voip/model/g;
+    //   1132: getfield 599	com/tencent/mm/plugin/voip/model/g:GTT	I
+    //   1135: putfield 147	com/tencent/mm/plugin/multitalk/b/h:qsl	I
     //   1138: aload_0
     //   1139: iconst_1
-    //   1140: putfield 145	com/tencent/mm/plugin/multitalk/b/h:pdk	I
+    //   1140: putfield 145	com/tencent/mm/plugin/multitalk/b/h:qsk	I
     //   1143: ldc 215
     //   1145: new 171	java/lang/StringBuilder
     //   1148: dup
     //   1149: ldc_w 601
     //   1152: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1155: aload_0
-    //   1156: getfield 145	com/tencent/mm/plugin/multitalk/b/h:pdk	I
-    //   1159: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1156: getfield 145	com/tencent/mm/plugin/multitalk/b/h:qsk	I
+    //   1159: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1162: ldc_w 603
     //   1165: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1168: aload_0
-    //   1169: getfield 147	com/tencent/mm/plugin/multitalk/b/h:pdl	I
-    //   1172: invokevirtual 295	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1169: getfield 147	com/tencent/mm/plugin/multitalk/b/h:qsl	I
+    //   1172: invokevirtual 245	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   1175: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1178: invokestatic 306	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1178: invokestatic 341	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   1181: aload_0
-    //   1182: invokespecial 496	com/tencent/mm/plugin/multitalk/b/h:cbj	()I
+    //   1182: invokespecial 496	com/tencent/mm/plugin/multitalk/b/h:cyY	()I
     //   1185: istore_2
     //   1186: ldc_w 464
     //   1189: invokestatic 113	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -1071,15 +1071,15 @@ public final class h
     //   1201: ldc_w 606
     //   1204: invokespecial 218	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   1207: aload_1
-    //   1208: invokevirtual 325	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   1208: invokevirtual 360	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1211: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1214: invokevirtual 181	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1217: invokestatic 225	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1217: invokestatic 225	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1220: aload_0
     //   1221: sipush 2005
-    //   1224: putfield 123	com/tencent/mm/plugin/multitalk/b/h:pdb	I
+    //   1224: putfield 123	com/tencent/mm/plugin/multitalk/b/h:qsb	I
     //   1227: aload_0
-    //   1228: getfield 123	com/tencent/mm/plugin/multitalk/b/h:pdb	I
+    //   1228: getfield 123	com/tencent/mm/plugin/multitalk/b/h:qsb	I
     //   1231: ineg
     //   1232: istore_2
     //   1233: goto -47 -> 1186
@@ -1089,24 +1089,24 @@ public final class h
     //   1240: getfield 592	android/media/MediaCodec$BufferInfo:flags	I
     //   1243: aload 10
     //   1245: arraylength
-    //   1246: invokespecial 608	com/tencent/mm/plugin/multitalk/b/h:u	([BII)V
+    //   1246: invokespecial 608	com/tencent/mm/plugin/multitalk/b/h:E	([BII)V
     //   1249: goto -209 -> 1040
     //   1252: aload_0
-    //   1253: getfield 149	com/tencent/mm/plugin/multitalk/b/h:pdm	I
+    //   1253: getfield 149	com/tencent/mm/plugin/multitalk/b/h:qsm	I
     //   1256: istore_3
     //   1257: aload_0
     //   1258: iload_3
     //   1259: iconst_1
     //   1260: iadd
-    //   1261: putfield 149	com/tencent/mm/plugin/multitalk/b/h:pdm	I
+    //   1261: putfield 149	com/tencent/mm/plugin/multitalk/b/h:qsm	I
     //   1264: iload_3
     //   1265: iconst_5
     //   1266: if_icmple -289 -> 977
     //   1269: aload_0
     //   1270: sipush 2006
-    //   1273: putfield 123	com/tencent/mm/plugin/multitalk/b/h:pdb	I
+    //   1273: putfield 123	com/tencent/mm/plugin/multitalk/b/h:qsb	I
     //   1276: aload_0
-    //   1277: getfield 123	com/tencent/mm/plugin/multitalk/b/h:pdb	I
+    //   1277: getfield 123	com/tencent/mm/plugin/multitalk/b/h:qsb	I
     //   1280: ineg
     //   1281: istore_2
     //   1282: goto -305 -> 977
@@ -1162,7 +1162,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.b.h
  * JD-Core Version:    0.7.0.1
  */

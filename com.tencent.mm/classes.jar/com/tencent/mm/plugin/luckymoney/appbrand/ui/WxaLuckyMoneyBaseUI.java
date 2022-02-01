@@ -19,31 +19,29 @@ import com.tencent.mm.plugin.luckymoney.appbrand.ui.detail.WxaLuckyMoneyDetailUI
 import com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare.WxaLuckyMoneyCompleteUI;
 import com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare.WxaLuckyMoneyPrepareUI;
 import com.tencent.mm.plugin.luckymoney.appbrand.ui.receive.WxaLuckyMoneyReceiveUI;
-import com.tencent.mm.plugin.luckymoney.ui.j;
-import com.tencent.mm.plugin.luckymoney.ui.j.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.luckymoney.ui.k;
+import com.tencent.mm.plugin.luckymoney.ui.k.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class WxaLuckyMoneyBaseUI
   extends MMActivity
 {
-  private c vvA = null;
-  private int vvB = 4095;
-  private final SparseArray<d.a> vvC = new SparseArray();
-  private final Class[][] vvD;
+  private c yPO = null;
+  private int yPP = 4095;
+  private final SparseArray<d.a> yPQ = new SparseArray();
+  private final Class[][] yPR;
   
   public WxaLuckyMoneyBaseUI()
   {
-    Class[] arrayOfClass1 = { com.tencent.mm.plugin.luckymoney.appbrand.ui.receive.b.class, WxaLuckyMoneyReceiveUI.class };
-    Class[] arrayOfClass2 = { com.tencent.mm.plugin.luckymoney.appbrand.ui.detail.b.class, WxaLuckyMoneyDetailUI.class };
-    Class[] arrayOfClass3 = { com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare.b.class, WxaLuckyMoneyCompleteUI.class };
-    this.vvD = new Class[][] { arrayOfClass1, { com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare.c.class, WxaLuckyMoneyPrepareUI.class }, arrayOfClass2, arrayOfClass3 };
+    Class[] arrayOfClass = { com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare.b.class, WxaLuckyMoneyCompleteUI.class };
+    this.yPR = new Class[][] { { com.tencent.mm.plugin.luckymoney.appbrand.ui.receive.b.class, WxaLuckyMoneyReceiveUI.class }, { com.tencent.mm.plugin.luckymoney.appbrand.ui.prepare.c.class, WxaLuckyMoneyPrepareUI.class }, { com.tencent.mm.plugin.luckymoney.appbrand.ui.detail.b.class, WxaLuckyMoneyDetailUI.class }, arrayOfClass };
   }
   
-  private Class<? extends MMActivity> aP(Class paramClass)
+  private Class<? extends MMActivity> aR(Class paramClass)
   {
     Class<? extends MMActivity> localClass = null;
-    Class[][] arrayOfClass = this.vvD;
+    Class[][] arrayOfClass = this.yPR;
     int j = arrayOfClass.length;
     int i = 0;
     while (i < j)
@@ -59,7 +57,7 @@ public abstract class WxaLuckyMoneyBaseUI
   
   public final void A(Drawable paramDrawable)
   {
-    this.vvA.A(paramDrawable);
+    this.yPO.A(paramDrawable);
   }
   
   public final void a(final Class paramClass, final Intent paramIntent, final d.a parama)
@@ -81,23 +79,23 @@ public abstract class WxaLuckyMoneyBaseUI
     if (paramIntent == null) {
       localIntent = new Intent();
     }
-    paramIntent = aP(paramClass);
+    paramIntent = aR(paramClass);
     if (paramIntent == null) {
       throw new IllegalStateException("proceed to ui = [" + paramClass.getName() + "], but Target is null");
     }
     localIntent.setClass(getContext(), paramIntent);
     if (parama == null)
     {
-      paramClass = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramClass.ahE(), "com/tencent/mm/plugin/luckymoney/appbrand/ui/WxaLuckyMoneyBaseUI", "proceed", "(Ljava/lang/Class;Landroid/content/Intent;Lcom/tencent/mm/plugin/luckymoney/appbrand/ui/WxaLuckyMoneyUIRouter$OnBackListener;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramClass.mt(0));
+      paramClass = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramClass.axQ(), "com/tencent/mm/plugin/luckymoney/appbrand/ui/WxaLuckyMoneyBaseUI", "proceed", "(Ljava/lang/Class;Landroid/content/Intent;Lcom/tencent/mm/plugin/luckymoney/appbrand/ui/WxaLuckyMoneyUIRouter$OnBackListener;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramClass.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/appbrand/ui/WxaLuckyMoneyBaseUI", "proceed", "(Ljava/lang/Class;Landroid/content/Intent;Lcom/tencent/mm/plugin/luckymoney/appbrand/ui/WxaLuckyMoneyUIRouter$OnBackListener;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       return;
     }
-    int i = this.vvB;
-    this.vvB = (i + 1);
+    int i = this.yPP;
+    this.yPP = (i + 1);
     startActivityForResult(localIntent, i);
-    this.vvC.put(i, parama);
+    this.yPQ.put(i, parama);
   }
   
   public final void f(int paramInt, Intent paramIntent)
@@ -108,10 +106,10 @@ public abstract class WxaLuckyMoneyBaseUI
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    d.a locala = (d.a)this.vvC.get(paramInt1);
+    d.a locala = (d.a)this.yPQ.get(paramInt1);
     if (locala != null)
     {
-      ae.i("MicroMsg.HjLuckyMoneyBaseUI", "damon warns you, requestCode == [%d], I used it, and skip. check your code if needed!!!!", new Object[] { Integer.valueOf(paramInt1) });
+      Log.i("MicroMsg.HjLuckyMoneyBaseUI", "damon warns you, requestCode == [%d], I used it, and skip. check your code if needed!!!!", new Object[] { Integer.valueOf(paramInt1) });
       locala.g(paramInt2, paramIntent);
       return;
     }
@@ -121,71 +119,71 @@ public abstract class WxaLuckyMoneyBaseUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.vvA = new c(this);
-    this.vvA.vNn = 1;
-    paramBundle = this.vvA;
-    Object localObject1 = paramBundle.oPS;
-    int i = paramBundle.vNn;
-    j.a locala = new j.a();
+    this.yPO = new c(this);
+    this.yPO.ziK = 1;
+    paramBundle = this.yPO;
+    Object localObject1 = paramBundle.qdG;
+    int i = paramBundle.ziK;
+    k.a locala = new k.a();
     localObject1 = ((Context)localObject1).getResources();
     switch (i)
     {
     default: 
-      locala.vNp = ((Resources)localObject1).getDrawable(2131232950);
-      locala.nqD = -1;
-      locala.vNq = ((Resources)localObject1).getColor(2131100601);
+      locala.ziM = ((Resources)localObject1).getDrawable(2131233600);
+      locala.oAk = -1;
+      locala.ziO = ((Resources)localObject1).getColor(2131100769);
     }
-    for (locala.mYv = ((Resources)localObject1).getColor(2131100561);; locala.mYv = ((Resources)localObject1).getColor(2131100583))
+    for (locala.olA = ((Resources)localObject1).getColor(2131100729);; locala.olA = ((Resources)localObject1).getColor(2131100751))
     {
-      if (paramBundle.oPS.getSupportActionBar() != null)
+      if (paramBundle.qdG.getSupportActionBar() != null)
       {
-        if (locala.vNp != null) {
-          paramBundle.oPS.getSupportActionBar().setBackgroundDrawable(locala.vNp);
+        if (locala.ziM != null) {
+          paramBundle.qdG.getSupportActionBar().setBackgroundDrawable(locala.ziM);
         }
-        localObject1 = paramBundle.oPS.getSupportActionBar().getCustomView();
+        localObject1 = paramBundle.qdG.getSupportActionBar().getCustomView();
         if (localObject1 != null)
         {
-          Object localObject2 = ((View)localObject1).findViewById(2131299154);
-          if ((localObject2 != null) && (locala.nqD != 0)) {
-            ((View)localObject2).setBackgroundColor(locala.nqD);
+          Object localObject2 = ((View)localObject1).findViewById(2131299682);
+          if ((localObject2 != null) && (locala.oAk != 0)) {
+            ((View)localObject2).setBackgroundColor(locala.oAk);
           }
           localObject2 = (TextView)((View)localObject1).findViewById(16908308);
-          if ((localObject2 != null) && (locala.vlk != 0)) {
-            ((TextView)localObject2).setTextColor(locala.vlk);
+          if ((localObject2 != null) && (locala.ziN != 0)) {
+            ((TextView)localObject2).setTextColor(locala.ziN);
           }
           localObject2 = (TextView)((View)localObject1).findViewById(16908309);
-          if ((localObject2 != null) && (locala.vNq != 0)) {
-            ((TextView)localObject2).setTextColor(locala.vNq);
+          if ((localObject2 != null) && (locala.ziO != 0)) {
+            ((TextView)localObject2).setTextColor(locala.ziO);
           }
-          localObject1 = (ImageView)((View)localObject1).findViewById(2131296417);
-          if ((localObject1 != null) && (locala.vNr != 0)) {
-            ((ImageView)localObject1).setImageResource(locala.vNr);
+          localObject1 = (ImageView)((View)localObject1).findViewById(2131296449);
+          if ((localObject1 != null) && (locala.ziP != 0)) {
+            ((ImageView)localObject1).setImageResource(locala.ziP);
           }
         }
-        if (locala.mYv != 0)
+        if (locala.olA != 0)
         {
-          i = locala.mYv;
-          if (j.dmG())
+          i = locala.olA;
+          if (k.egG())
           {
-            paramBundle = paramBundle.oPS.getWindow();
+            paramBundle = paramBundle.qdG.getWindow();
             paramBundle.addFlags(-2147483648);
             paramBundle.setStatusBarColor(i);
           }
         }
       }
       return;
-      locala.vNp = new ColorDrawable(((Resources)localObject1).getColor(2131100568));
-      locala.nqD = ((Resources)localObject1).getColor(2131100569);
-      locala.vlk = ((Resources)localObject1).getColor(2131100576);
-      locala.vNq = ((Resources)localObject1).getColor(2131100576);
-      locala.vNr = 2131232961;
+      locala.ziM = new ColorDrawable(((Resources)localObject1).getColor(2131100736));
+      locala.oAk = ((Resources)localObject1).getColor(2131100737);
+      locala.ziN = ((Resources)localObject1).getColor(2131100744);
+      locala.ziO = ((Resources)localObject1).getColor(2131100744);
+      locala.ziP = 2131233611;
     }
   }
   
   public void onDestroy()
   {
-    this.vvA = null;
-    this.vvC.clear();
+    this.yPO = null;
+    this.yPQ.clear();
     super.onDestroy();
   }
   
@@ -197,7 +195,7 @@ public abstract class WxaLuckyMoneyBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.appbrand.ui.WxaLuckyMoneyBaseUI
  * JD-Core Version:    0.7.0.1
  */

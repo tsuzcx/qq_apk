@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.SwipeBackLayout android:id="@id/g2s" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/ak_" android:layout_width="@dimen/c3" android:layout_height="@dimen/c3"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/fov" android:background="@drawable/b74" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/ci" />
+    <TextView android:textSize="@dimen/cb" android:textColor="@color/a23" android:gravity="center" android:id="@id/fow" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/cc" android:layout_marginRight="@dimen/c5" android:text="@string/f6u" />
+</LinearLayout>

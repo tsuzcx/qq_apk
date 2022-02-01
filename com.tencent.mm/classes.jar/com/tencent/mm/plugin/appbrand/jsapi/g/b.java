@@ -1,71 +1,53 @@
 package com.tencent.mm.plugin.appbrand.jsapi.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.at;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.utils.b.a.a;
-import com.tencent.mm.plugin.appbrand.utils.b.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-final class b
-  extends at
-  implements a.b
+public final class b
+  extends d
 {
-  private static final int CTRL_INDEX = 341;
-  private static final String NAME = "onLocationChange";
-  private final c kRS;
+  private static final int CTRL_INDEX = 223;
+  private static final String NAME = "getBeacons";
   
-  b(c paramc)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    this.kRS = paramc;
-  }
-  
-  public final void a(int paramInt, String paramString, a.a parama)
-  {
-    AppMethodBeat.i(143626);
-    if (paramInt == -1)
+    AppMethodBeat.i(144674);
+    Log.d("MicroMsg.JsApiGetBeacons", "getBeacons!");
+    paramJSONObject = new JSONArray();
+    Object localObject = a.ZM(paramf.getAppId());
+    if (localObject != null)
     {
-      ae.e("MicroMsg.AppBrand.EventOnLocationChange", "errCode:%d, errStr:%s", new Object[] { Integer.valueOf(paramInt), paramString });
-      AppMethodBeat.o(143626);
-      return;
+      localObject = ((a.a)localObject).lWk;
+      Log.d("MicroMsg.JsApiGetBeacons", "getBeaconInfo, beaconInfos: ".concat(String.valueOf(localObject)));
+      if ((localObject != null) && (((Map)localObject).size() > 0))
+      {
+        localObject = ((Map)localObject).values().iterator();
+        while (((Iterator)localObject).hasNext()) {
+          paramJSONObject.put((JSONObject)((Iterator)localObject).next());
+        }
+      }
     }
-    paramString = new HashMap(7);
-    paramString.put("longitude", Double.valueOf(parama.longitude));
-    paramString.put("latitude", Double.valueOf(parama.latitude));
-    paramString.put("speed", Double.valueOf(parama.dgG));
-    paramString.put("accuracy", Double.valueOf(parama.mUZ));
-    paramString.put("altitude", Double.valueOf(parama.altitude));
-    paramString.put("verticalAccuracy", Float.valueOf(0.0F));
-    paramString.put("horizontalAccuracy", Double.valueOf(parama.mUZ));
-    if (!bu.isNullOrNil(parama.buildingId))
+    else
     {
-      paramString.put("buildingId", parama.buildingId);
-      paramString.put("floorName", parama.floorName);
+      Log.e("MicroMsg.JsApiGetBeacons", "not found device");
     }
-    paramString.put("provider", parama.provider);
-    paramString.put("indoorLocationType", Integer.valueOf(parama.mVa));
-    paramString.put("direction", Float.valueOf(parama.mVb));
-    paramString.put("steps", Double.valueOf(parama.mVc));
-    paramString = new JSONObject(paramString).toString();
-    ae.v("MicroMsg.AppBrand.EventOnLocationChange", "onLocationChanged %s, %s, %s", new Object[] { this.kRS.getAppId(), parama.provider, paramString });
-    try
-    {
-      h(this.kRS).PQ(paramString).bja();
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(143626);
-    }
+    localObject = new HashMap();
+    ((Map)localObject).put("beacons", paramJSONObject);
+    paramf.i(paramInt, n("ok", (Map)localObject));
+    AppMethodBeat.o(144674);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.g.b
  * JD-Core Version:    0.7.0.1
  */

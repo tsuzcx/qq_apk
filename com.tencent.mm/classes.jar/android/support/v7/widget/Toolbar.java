@@ -10,7 +10,6 @@ import android.os.Parcelable.ClassLoaderCreator;
 import android.os.Parcelable.Creator;
 import android.support.v4.view.AbsSavedState;
 import android.support.v4.view.d;
-import android.support.v4.view.t;
 import android.support.v7.a.a.a;
 import android.support.v7.app.ActionBar.LayoutParams;
 import android.support.v7.c.a.a;
@@ -43,56 +42,56 @@ import java.util.List;
 public class Toolbar
   extends ViewGroup
 {
-  private int Kk = 8388627;
-  private int abu;
-  private Context ahe;
-  ActionMenuView ahf;
-  private boolean ahj;
-  private boolean ahk;
-  private int aiF;
-  o.a aiH;
-  h.a aiI;
-  TextView ayB;
-  TextView ayC;
-  private ImageButton ayD;
-  private ImageView ayE;
-  private Drawable ayF;
-  private CharSequence ayG;
-  ImageButton ayH;
-  View ayI;
+  private int Ku = 8388627;
+  private int abH;
+  private Context ahr;
+  ActionMenuView ahs;
+  private boolean ahw;
+  private boolean ahx;
+  private int aiS;
+  o.a aiU;
+  h.a aiV;
+  TextView ayA;
+  private ImageButton ayB;
+  private ImageView ayC;
+  private Drawable ayD;
+  private CharSequence ayE;
+  ImageButton ayF;
+  View ayG;
+  int ayH;
+  int ayI;
   int ayJ;
-  int ayK;
-  int ayL;
+  private int ayK;
+  private int ayL;
   private int ayM;
   private int ayN;
   private int ayO;
-  private int ayP;
+  ap ayP;
   private int ayQ;
-  ap ayR;
-  private int ayS;
-  private int ayT;
-  private CharSequence ayU;
-  private CharSequence ayV;
-  private int ayW;
-  private final ArrayList<View> ayX = new ArrayList();
-  final ArrayList<View> ayY = new ArrayList();
-  private final int[] ayZ = new int[2];
-  b aza;
-  private final ActionMenuView.d azb = new ActionMenuView.d()
+  private int ayR;
+  private CharSequence ayS;
+  private CharSequence ayT;
+  private int ayU;
+  private final ArrayList<View> ayV = new ArrayList();
+  final ArrayList<View> ayW = new ArrayList();
+  private final int[] ayX = new int[2];
+  b ayY;
+  private final ActionMenuView.d ayZ = new ActionMenuView.d()
   {
     public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
     {
-      if (Toolbar.this.aza != null) {
-        return Toolbar.this.aza.onMenuItemClick(paramAnonymousMenuItem);
+      if (Toolbar.this.ayY != null) {
+        return Toolbar.this.ayY.onMenuItemClick(paramAnonymousMenuItem);
       }
       return false;
     }
   };
-  private ba azc;
-  private ActionMenuPresenter azd;
-  a aze;
-  private boolean azf;
-  private final Runnable azg = new Runnable()
+  TextView ayz;
+  private ba aza;
+  private ActionMenuPresenter azb;
+  a azc;
+  private boolean azd;
+  private final Runnable aze = new Runnable()
   {
     public final void run()
     {
@@ -107,56 +106,56 @@ public class Toolbar
   
   public Toolbar(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130969607);
+    this(paramContext, paramAttributeSet, 2130969693);
   }
   
   public Toolbar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = az.a(getContext(), paramAttributeSet, a.a.Toolbar, paramInt, 0);
-    this.ayJ = paramContext.getResourceId(27, 0);
-    this.ayK = paramContext.getResourceId(18, 0);
-    this.Kk = paramContext.getInteger(0, this.Kk);
-    this.ayL = paramContext.getInteger(2, 48);
+    this.ayH = paramContext.getResourceId(27, 0);
+    this.ayI = paramContext.getResourceId(18, 0);
+    this.Ku = paramContext.getInteger(0, this.Ku);
+    this.ayJ = paramContext.getInteger(2, 48);
     int i = paramContext.getDimensionPixelOffset(21, 0);
     paramInt = i;
     if (paramContext.hasValue(26)) {
       paramInt = paramContext.getDimensionPixelOffset(26, i);
     }
-    this.ayQ = paramInt;
-    this.ayP = paramInt;
     this.ayO = paramInt;
     this.ayN = paramInt;
+    this.ayM = paramInt;
+    this.ayL = paramInt;
     paramInt = paramContext.getDimensionPixelOffset(24, -1);
     if (paramInt >= 0) {
-      this.ayN = paramInt;
+      this.ayL = paramInt;
     }
     paramInt = paramContext.getDimensionPixelOffset(23, -1);
     if (paramInt >= 0) {
-      this.ayO = paramInt;
+      this.ayM = paramInt;
     }
     paramInt = paramContext.getDimensionPixelOffset(25, -1);
     if (paramInt >= 0) {
-      this.ayP = paramInt;
+      this.ayN = paramInt;
     }
     paramInt = paramContext.getDimensionPixelOffset(22, -1);
     if (paramInt >= 0) {
-      this.ayQ = paramInt;
+      this.ayO = paramInt;
     }
-    this.ayM = paramContext.getDimensionPixelSize(13, -1);
+    this.ayK = paramContext.getDimensionPixelSize(13, -1);
     paramInt = paramContext.getDimensionPixelOffset(9, -2147483648);
     i = paramContext.getDimensionPixelOffset(5, -2147483648);
     int j = paramContext.getDimensionPixelSize(7, 0);
     int k = paramContext.getDimensionPixelSize(8, 0);
-    nb();
-    this.ayR.aH(j, k);
+    nd();
+    this.ayP.aB(j, k);
     if ((paramInt != -2147483648) || (i != -2147483648)) {
-      this.ayR.aG(paramInt, i);
+      this.ayP.aA(paramInt, i);
     }
-    this.ayS = paramContext.getDimensionPixelOffset(10, -2147483648);
-    this.ayT = paramContext.getDimensionPixelOffset(6, -2147483648);
-    this.ayF = paramContext.getDrawable(4);
-    this.ayG = paramContext.getText(3);
+    this.ayQ = paramContext.getDimensionPixelOffset(10, -2147483648);
+    this.ayR = paramContext.getDimensionPixelOffset(6, -2147483648);
+    this.ayD = paramContext.getDrawable(4);
+    this.ayE = paramContext.getText(3);
     paramAttributeSet = paramContext.getText(20);
     if (!TextUtils.isEmpty(paramAttributeSet)) {
       setTitle(paramAttributeSet);
@@ -165,7 +164,7 @@ public class Toolbar
     if (!TextUtils.isEmpty(paramAttributeSet)) {
       setSubtitle(paramAttributeSet);
     }
-    this.ahe = getContext();
+    this.ahr = getContext();
     setPopupTheme(paramContext.getResourceId(16, 0));
     paramAttributeSet = paramContext.getDrawable(15);
     if (paramAttributeSet != null) {
@@ -189,10 +188,10 @@ public class Toolbar
     if (paramContext.hasValue(19)) {
       setSubtitleTextColor(paramContext.getColor(19, -1));
     }
-    paramContext.ayA.recycle();
+    paramContext.ayy.recycle();
   }
   
-  private int I(View paramView, int paramInt)
+  private int G(View paramView, int paramInt)
   {
     LayoutParams localLayoutParams = (LayoutParams)paramView.getLayoutParams();
     int j = paramView.getMeasuredHeight();
@@ -202,7 +201,7 @@ public class Toolbar
     if (paramInt > 0)
     {
       paramInt = (j - paramInt) / 2;
-      switch (dc(localLayoutParams.gravity))
+      switch (cW(localLayoutParams.gravity))
       {
       default: 
         i = getPaddingTop();
@@ -247,7 +246,7 @@ public class Toolbar
     int i = localLayoutParams.leftMargin - paramArrayOfInt[0];
     paramInt1 = Math.max(0, i) + paramInt1;
     paramArrayOfInt[0] = Math.max(0, -i);
-    paramInt2 = I(paramView, paramInt2);
+    paramInt2 = G(paramView, paramInt2);
     i = paramView.getMeasuredWidth();
     paramView.layout(paramInt1, paramInt2, paramInt1 + i, paramView.getMeasuredHeight() + paramInt2);
     return localLayoutParams.rightMargin + i + paramInt1;
@@ -257,7 +256,7 @@ public class Toolbar
   {
     int i = 1;
     int j = 0;
-    if (t.Y(this) == 1) {}
+    if (android.support.v4.view.u.Z(this) == 1) {}
     int m;
     int k;
     View localView;
@@ -265,7 +264,7 @@ public class Toolbar
     for (;;)
     {
       m = getChildCount();
-      k = d.getAbsoluteGravity(paramInt, t.Y(this));
+      k = d.getAbsoluteGravity(paramInt, android.support.v4.view.u.Z(this));
       paramList.clear();
       paramInt = j;
       if (i == 0) {
@@ -276,7 +275,7 @@ public class Toolbar
       {
         localView = getChildAt(paramInt);
         localLayoutParams = (LayoutParams)localView.getLayoutParams();
-        if ((localLayoutParams.azj == 0) && (ca(localView)) && (dd(localLayoutParams.gravity) == k)) {
+        if ((localLayoutParams.azh == 0) && (bM(localView)) && (cX(localLayoutParams.gravity) == k)) {
           paramList.add(localView);
         }
         paramInt -= 1;
@@ -287,7 +286,7 @@ public class Toolbar
     {
       localView = getChildAt(paramInt);
       localLayoutParams = (LayoutParams)localView.getLayoutParams();
-      if ((localLayoutParams.azj == 0) && (ca(localView)) && (dd(localLayoutParams.gravity) == k)) {
+      if ((localLayoutParams.azh == 0) && (bM(localView)) && (cX(localLayoutParams.gravity) == k)) {
         paramList.add(localView);
       }
       paramInt += 1;
@@ -300,51 +299,51 @@ public class Toolbar
     int i = localLayoutParams.rightMargin - paramArrayOfInt[1];
     paramInt1 -= Math.max(0, i);
     paramArrayOfInt[1] = Math.max(0, -i);
-    paramInt2 = I(paramView, paramInt2);
+    paramInt2 = G(paramView, paramInt2);
     i = paramView.getMeasuredWidth();
     paramView.layout(paramInt1 - i, paramInt2, paramInt1, paramView.getMeasuredHeight() + paramInt2);
     return paramInt1 - (localLayoutParams.leftMargin + i);
   }
   
-  private boolean ca(View paramView)
+  private boolean bM(View paramView)
   {
     return (paramView != null) && (paramView.getParent() == this) && (paramView.getVisibility() != 8);
   }
   
-  private static int cb(View paramView)
+  private static int bN(View paramView)
   {
     paramView = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
     int i = android.support.v4.view.g.a(paramView);
     return android.support.v4.view.g.b(paramView) + i;
   }
   
-  private static int cc(View paramView)
+  private static int bO(View paramView)
   {
     paramView = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
     int i = paramView.topMargin;
     return paramView.bottomMargin + i;
   }
   
-  private boolean cd(View paramView)
+  private boolean bP(View paramView)
   {
-    return (paramView.getParent() == this) || (this.ayY.contains(paramView));
+    return (paramView.getParent() == this) || (this.ayW.contains(paramView));
   }
   
-  private int dc(int paramInt)
+  private int cW(int paramInt)
   {
     int i = paramInt & 0x70;
     paramInt = i;
     switch (i)
     {
     default: 
-      paramInt = this.Kk & 0x70;
+      paramInt = this.Ku & 0x70;
     }
     return paramInt;
   }
   
-  private int dd(int paramInt)
+  private int cX(int paramInt)
   {
-    int j = t.Y(this);
+    int j = android.support.v4.view.u.Z(this);
     int i = d.getAbsoluteGravity(paramInt, j) & 0x7;
     paramInt = i;
     switch (i)
@@ -364,7 +363,7 @@ public class Toolbar
     return 3;
   }
   
-  private static LayoutParams e(ViewGroup.LayoutParams paramLayoutParams)
+  private static LayoutParams d(ViewGroup.LayoutParams paramLayoutParams)
   {
     if ((paramLayoutParams instanceof LayoutParams)) {
       return new LayoutParams((LayoutParams)paramLayoutParams);
@@ -387,19 +386,19 @@ public class Toolbar
   {
     Object localObject = paramView.getLayoutParams();
     if (localObject == null) {
-      localObject = mZ();
+      localObject = nb();
     }
     for (;;)
     {
-      ((LayoutParams)localObject).azj = 1;
-      if ((!paramBoolean) || (this.ayI == null)) {
+      ((LayoutParams)localObject).azh = 1;
+      if ((!paramBoolean) || (this.ayG == null)) {
         break;
       }
       paramView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.ayY.add(paramView);
+      this.ayW.add(paramView);
       return;
       if (!checkLayoutParams((ViewGroup.LayoutParams)localObject)) {
-        localObject = e((ViewGroup.LayoutParams)localObject);
+        localObject = d((ViewGroup.LayoutParams)localObject);
       } else {
         localObject = (LayoutParams)localObject;
       }
@@ -407,7 +406,7 @@ public class Toolbar
     addView(paramView, (ViewGroup.LayoutParams)localObject);
   }
   
-  private void l(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  private void j(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)paramView.getLayoutParams();
     int i = getChildMeasureSpec(paramInt1, getPaddingLeft() + getPaddingRight() + localMarginLayoutParams.leftMargin + localMarginLayoutParams.rightMargin + paramInt2, localMarginLayoutParams.width);
@@ -429,92 +428,92 @@ public class Toolbar
     paramView.measure(i, paramInt1);
   }
   
-  private void mT()
-  {
-    if (this.ayE == null) {
-      this.ayE = new AppCompatImageView(getContext());
-    }
-  }
-  
-  private void mU()
-  {
-    mV();
-    if (this.ahf.aaD == null)
-    {
-      h localh = (h)this.ahf.getMenu();
-      if (this.aze == null) {
-        this.aze = new a();
-      }
-      this.ahf.setExpandedActionViewsExclusive(true);
-      localh.a(this.aze, this.ahe);
-    }
-  }
-  
   private void mV()
   {
-    if (this.ahf == null)
+    if (this.ayC == null) {
+      this.ayC = new AppCompatImageView(getContext());
+    }
+  }
+  
+  private void mW()
+  {
+    mX();
+    if (this.ahs.aaQ == null)
     {
-      this.ahf = new ActionMenuView(getContext());
-      this.ahf.setPopupTheme(this.aiF);
-      this.ahf.setOnMenuItemClickListener(this.azb);
-      this.ahf.a(this.aiH, this.aiI);
-      LayoutParams localLayoutParams = mZ();
-      localLayoutParams.gravity = (0x800005 | this.ayL & 0x70);
-      this.ahf.setLayoutParams(localLayoutParams);
-      i(this.ahf, false);
+      h localh = (h)this.ahs.getMenu();
+      if (this.azc == null) {
+        this.azc = new a();
+      }
+      this.ahs.setExpandedActionViewsExclusive(true);
+      localh.a(this.azc, this.ahr);
     }
   }
   
   private void mX()
   {
-    if (this.ayD == null)
+    if (this.ahs == null)
     {
-      this.ayD = new AppCompatImageButton(getContext(), null, 2130969606);
-      LayoutParams localLayoutParams = mZ();
-      localLayoutParams.gravity = (0x800003 | this.ayL & 0x70);
-      this.ayD.setLayoutParams(localLayoutParams);
+      this.ahs = new ActionMenuView(getContext());
+      this.ahs.setPopupTheme(this.aiS);
+      this.ahs.setOnMenuItemClickListener(this.ayZ);
+      this.ahs.a(this.aiU, this.aiV);
+      LayoutParams localLayoutParams = nb();
+      localLayoutParams.gravity = (0x800005 | this.ayJ & 0x70);
+      this.ahs.setLayoutParams(localLayoutParams);
+      i(this.ahs, false);
     }
   }
   
-  protected static LayoutParams mZ()
+  private void mZ()
+  {
+    if (this.ayB == null)
+    {
+      this.ayB = new AppCompatImageButton(getContext(), null, 2130969692);
+      LayoutParams localLayoutParams = nb();
+      localLayoutParams.gravity = (0x800003 | this.ayJ & 0x70);
+      this.ayB.setLayoutParams(localLayoutParams);
+    }
+  }
+  
+  protected static LayoutParams nb()
   {
     return new LayoutParams(-2);
   }
   
   public final void a(h paramh, ActionMenuPresenter paramActionMenuPresenter)
   {
-    if ((paramh == null) && (this.ahf == null)) {}
+    if ((paramh == null) && (this.ahs == null)) {}
     h localh;
     do
     {
       return;
-      mV();
-      localh = this.ahf.aaD;
+      mX();
+      localh = this.ahs.aaQ;
     } while (localh == paramh);
     if (localh != null)
     {
-      localh.b(this.azd);
-      localh.b(this.aze);
+      localh.b(this.azb);
+      localh.b(this.azc);
     }
-    if (this.aze == null) {
-      this.aze = new a();
+    if (this.azc == null) {
+      this.azc = new a();
     }
-    paramActionMenuPresenter.aip = true;
+    paramActionMenuPresenter.aiC = true;
     if (paramh != null)
     {
-      paramh.a(paramActionMenuPresenter, this.ahe);
-      paramh.a(this.aze, this.ahe);
+      paramh.a(paramActionMenuPresenter, this.ahr);
+      paramh.a(this.azc, this.ahr);
     }
     for (;;)
     {
-      this.ahf.setPopupTheme(this.aiF);
-      this.ahf.setPresenter(paramActionMenuPresenter);
-      this.azd = paramActionMenuPresenter;
+      this.ahs.setPopupTheme(this.aiS);
+      this.ahs.setPresenter(paramActionMenuPresenter);
+      this.azb = paramActionMenuPresenter;
       return;
-      paramActionMenuPresenter.a(this.ahe, null);
-      this.aze.a(this.ahe, null);
+      paramActionMenuPresenter.a(this.ahr, null);
+      this.azc.a(this.ahr, null);
       paramActionMenuPresenter.p(true);
-      this.aze.p(true);
+      this.azc.p(true);
     }
   }
   
@@ -525,8 +524,8 @@ public class Toolbar
   
   public final void collapseActionView()
   {
-    if (this.aze == null) {}
-    for (j localj = null;; localj = this.aze.azi)
+    if (this.azc == null) {}
+    for (j localj = null;; localj = this.azc.azg)
     {
       if (localj != null) {
         localj.collapseActionView();
@@ -537,58 +536,58 @@ public class Toolbar
   
   public int getContentInsetEnd()
   {
-    if (this.ayR != null)
+    if (this.ayP != null)
     {
-      ap localap = this.ayR;
+      ap localap = this.ayP;
       if (localap.mIsRtl) {
-        return localap.Af;
+        return localap.Al;
       }
-      return localap.Ah;
+      return localap.An;
     }
     return 0;
   }
   
   public int getContentInsetEndWithActions()
   {
-    if (this.ayT != -2147483648) {
-      return this.ayT;
+    if (this.ayR != -2147483648) {
+      return this.ayR;
     }
     return getContentInsetEnd();
   }
   
   public int getContentInsetLeft()
   {
-    if (this.ayR != null) {
-      return this.ayR.Af;
+    if (this.ayP != null) {
+      return this.ayP.Al;
     }
     return 0;
   }
   
   public int getContentInsetRight()
   {
-    if (this.ayR != null) {
-      return this.ayR.Ah;
+    if (this.ayP != null) {
+      return this.ayP.An;
     }
     return 0;
   }
   
   public int getContentInsetStart()
   {
-    if (this.ayR != null)
+    if (this.ayP != null)
     {
-      ap localap = this.ayR;
+      ap localap = this.ayP;
       if (localap.mIsRtl) {
-        return localap.Ah;
+        return localap.An;
       }
-      return localap.Af;
+      return localap.Al;
     }
     return 0;
   }
   
   public int getContentInsetStartWithNavigation()
   {
-    if (this.ayS != -2147483648) {
-      return this.ayS;
+    if (this.ayQ != -2147483648) {
+      return this.ayQ;
     }
     return getContentInsetStart();
   }
@@ -596,9 +595,9 @@ public class Toolbar
   public int getCurrentContentInsetEnd()
   {
     int i;
-    if (this.ahf != null)
+    if (this.ahs != null)
     {
-      h localh = this.ahf.aaD;
+      h localh = this.ahs.aaQ;
       if ((localh != null) && (localh.hasVisibleItems())) {
         i = 1;
       }
@@ -607,7 +606,7 @@ public class Toolbar
     {
       if (i != 0)
       {
-        return Math.max(getContentInsetEnd(), Math.max(this.ayT, 0));
+        return Math.max(getContentInsetEnd(), Math.max(this.ayR, 0));
         i = 0;
       }
       else
@@ -620,7 +619,7 @@ public class Toolbar
   
   public int getCurrentContentInsetLeft()
   {
-    if (t.Y(this) == 1) {
+    if (android.support.v4.view.u.Z(this) == 1) {
       return getCurrentContentInsetEnd();
     }
     return getCurrentContentInsetStart();
@@ -628,7 +627,7 @@ public class Toolbar
   
   public int getCurrentContentInsetRight()
   {
-    if (t.Y(this) == 1) {
+    if (android.support.v4.view.u.Z(this) == 1) {
       return getCurrentContentInsetStart();
     }
     return getCurrentContentInsetEnd();
@@ -637,114 +636,114 @@ public class Toolbar
   public int getCurrentContentInsetStart()
   {
     if (getNavigationIcon() != null) {
-      return Math.max(getContentInsetStart(), Math.max(this.ayS, 0));
+      return Math.max(getContentInsetStart(), Math.max(this.ayQ, 0));
     }
     return getContentInsetStart();
   }
   
   public Drawable getLogo()
   {
-    if (this.ayE != null) {
-      return this.ayE.getDrawable();
+    if (this.ayC != null) {
+      return this.ayC.getDrawable();
     }
     return null;
   }
   
   public CharSequence getLogoDescription()
   {
-    if (this.ayE != null) {
-      return this.ayE.getContentDescription();
+    if (this.ayC != null) {
+      return this.ayC.getContentDescription();
     }
     return null;
   }
   
   public Menu getMenu()
   {
-    mU();
-    return this.ahf.getMenu();
+    mW();
+    return this.ahs.getMenu();
   }
   
   public CharSequence getNavigationContentDescription()
   {
-    if (this.ayD != null) {
-      return this.ayD.getContentDescription();
+    if (this.ayB != null) {
+      return this.ayB.getContentDescription();
     }
     return null;
   }
   
   public Drawable getNavigationIcon()
   {
-    if (this.ayD != null) {
-      return this.ayD.getDrawable();
+    if (this.ayB != null) {
+      return this.ayB.getDrawable();
     }
     return null;
   }
   
   ActionMenuPresenter getOuterActionMenuPresenter()
   {
-    return this.azd;
+    return this.azb;
   }
   
   public Drawable getOverflowIcon()
   {
-    mU();
-    return this.ahf.getOverflowIcon();
+    mW();
+    return this.ahs.getOverflowIcon();
   }
   
   Context getPopupContext()
   {
-    return this.ahe;
+    return this.ahr;
   }
   
   public int getPopupTheme()
   {
-    return this.aiF;
+    return this.aiS;
   }
   
   public CharSequence getSubtitle()
   {
-    return this.ayV;
+    return this.ayT;
   }
   
   public CharSequence getTitle()
   {
-    return this.ayU;
+    return this.ayS;
   }
   
   public int getTitleMarginBottom()
   {
-    return this.ayQ;
+    return this.ayO;
   }
   
   public int getTitleMarginEnd()
   {
-    return this.ayO;
+    return this.ayM;
   }
   
   public int getTitleMarginStart()
   {
-    return this.ayN;
+    return this.ayL;
   }
   
   public int getTitleMarginTop()
   {
-    return this.ayP;
+    return this.ayN;
   }
   
   public u getWrapper()
   {
-    if (this.azc == null) {
-      this.azc = new ba(this, true);
+    if (this.aza == null) {
+      this.aza = new ba(this, true);
     }
-    return this.azc;
+    return this.aza;
   }
   
   public final boolean isOverflowMenuShowing()
   {
-    if (this.ahf != null)
+    if (this.ahs != null)
     {
-      ActionMenuView localActionMenuView = this.ahf;
-      if ((localActionMenuView.aiG != null) && (localActionMenuView.aiG.isOverflowMenuShowing())) {}
+      ActionMenuView localActionMenuView = this.ahs;
+      if ((localActionMenuView.aiT != null) && (localActionMenuView.aiT.isOverflowMenuShowing())) {}
       for (int i = 1; i != 0; i = 0) {
         return true;
       }
@@ -752,24 +751,24 @@ public class Toolbar
     return false;
   }
   
-  public final void mW()
+  public final void mY()
   {
-    nb();
-    this.ayR.aH(0, 0);
+    nd();
+    this.ayP.aB(0, 0);
   }
   
-  final void mY()
+  final void na()
   {
-    if (this.ayH == null)
+    if (this.ayF == null)
     {
-      this.ayH = new AppCompatImageButton(getContext(), null, 2130969606);
-      this.ayH.setImageDrawable(this.ayF);
-      this.ayH.setContentDescription(this.ayG);
-      LayoutParams localLayoutParams = mZ();
-      localLayoutParams.gravity = (0x800003 | this.ayL & 0x70);
-      localLayoutParams.azj = 2;
-      this.ayH.setLayoutParams(localLayoutParams);
-      this.ayH.setOnClickListener(new View.OnClickListener()
+      this.ayF = new AppCompatImageButton(getContext(), null, 2130969692);
+      this.ayF.setImageDrawable(this.ayD);
+      this.ayF.setContentDescription(this.ayE);
+      LayoutParams localLayoutParams = nb();
+      localLayoutParams.gravity = (0x800003 | this.ayJ & 0x70);
+      localLayoutParams.azh = 2;
+      this.ayF.setLayoutParams(localLayoutParams);
+      this.ayF.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
@@ -779,45 +778,45 @@ public class Toolbar
     }
   }
   
-  final void na()
+  final void nc()
   {
-    int i = this.ayY.size() - 1;
+    int i = this.ayW.size() - 1;
     while (i >= 0)
     {
-      addView((View)this.ayY.get(i));
+      addView((View)this.ayW.get(i));
       i -= 1;
     }
-    this.ayY.clear();
+    this.ayW.clear();
   }
   
-  final void nb()
+  final void nd()
   {
-    if (this.ayR == null) {
-      this.ayR = new ap();
+    if (this.ayP == null) {
+      this.ayP = new ap();
     }
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    removeCallbacks(this.azg);
+    removeCallbacks(this.aze);
   }
   
   public boolean onHoverEvent(MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 9) {
-      this.ahk = false;
+      this.ahx = false;
     }
-    if (!this.ahk)
+    if (!this.ahx)
     {
       boolean bool = super.onHoverEvent(paramMotionEvent);
       if ((i == 9) && (!bool)) {
-        this.ahk = true;
+        this.ahx = true;
       }
     }
     if ((i == 10) || (i == 3)) {
-      this.ahk = false;
+      this.ahx = false;
     }
     return true;
   }
@@ -833,7 +832,7 @@ public class Toolbar
     int i5;
     int[] arrayOfInt;
     int i;
-    if (t.Y(this) == 1)
+    if (android.support.v4.view.u.Z(this) == 1)
     {
       k = 1;
       i1 = getWidth();
@@ -843,22 +842,22 @@ public class Toolbar
       i3 = getPaddingTop();
       i5 = getPaddingBottom();
       paramInt1 = i1 - i2;
-      arrayOfInt = this.ayZ;
+      arrayOfInt = this.ayX;
       arrayOfInt[1] = 0;
       arrayOfInt[0] = 0;
-      paramInt3 = t.af(this);
+      paramInt3 = android.support.v4.view.u.ag(this);
       if (paramInt3 < 0) {
         break label898;
       }
       i = Math.min(paramInt3, paramInt4 - paramInt2);
       label91:
-      if (!ca(this.ayD)) {
+      if (!bM(this.ayB)) {
         break label1739;
       }
       if (k == 0) {
         break label904;
       }
-      paramInt1 = b(this.ayD, paramInt1, arrayOfInt, i);
+      paramInt1 = b(this.ayB, paramInt1, arrayOfInt, i);
       paramInt2 = j;
     }
     for (;;)
@@ -866,11 +865,11 @@ public class Toolbar
       label124:
       paramInt3 = paramInt1;
       paramInt4 = paramInt2;
-      if (ca(this.ayH))
+      if (bM(this.ayF))
       {
         if (k != 0)
         {
-          paramInt3 = b(this.ayH, paramInt1, arrayOfInt, i);
+          paramInt3 = b(this.ayF, paramInt1, arrayOfInt, i);
           paramInt4 = paramInt2;
         }
       }
@@ -879,12 +878,12 @@ public class Toolbar
         label164:
         paramInt1 = paramInt3;
         paramInt2 = paramInt4;
-        if (ca(this.ahf))
+        if (bM(this.ahs))
         {
           if (k == 0) {
             break label943;
           }
-          paramInt2 = a(this.ahf, paramInt4, arrayOfInt, i);
+          paramInt2 = a(this.ahs, paramInt4, arrayOfInt, i);
           paramInt1 = paramInt3;
         }
         label204:
@@ -896,44 +895,44 @@ public class Toolbar
         paramInt4 = Math.min(paramInt1, i1 - i2 - paramInt4);
         paramInt2 = paramInt4;
         paramInt1 = paramInt3;
-        if (ca(this.ayI))
+        if (bM(this.ayG))
         {
           if (k == 0) {
             break label964;
           }
-          paramInt2 = b(this.ayI, paramInt4, arrayOfInt, i);
+          paramInt2 = b(this.ayG, paramInt4, arrayOfInt, i);
           paramInt1 = paramInt3;
         }
         label308:
-        if (!ca(this.ayE)) {
+        if (!bM(this.ayC)) {
           break label1731;
         }
         if (k == 0) {
           break label985;
         }
-        paramInt3 = b(this.ayE, paramInt2, arrayOfInt, i);
+        paramInt3 = b(this.ayC, paramInt2, arrayOfInt, i);
         paramInt2 = paramInt1;
       }
       for (;;)
       {
         label341:
-        paramBoolean = ca(this.ayB);
-        boolean bool = ca(this.ayC);
+        paramBoolean = bM(this.ayz);
+        boolean bool = bM(this.ayA);
         paramInt1 = 0;
         Object localObject1;
         if (paramBoolean)
         {
-          localObject1 = (LayoutParams)this.ayB.getLayoutParams();
+          localObject1 = (LayoutParams)this.ayz.getLayoutParams();
           paramInt1 = ((LayoutParams)localObject1).topMargin;
-          paramInt4 = this.ayB.getMeasuredHeight();
+          paramInt4 = this.ayz.getMeasuredHeight();
           paramInt1 = ((LayoutParams)localObject1).bottomMargin + (paramInt1 + paramInt4) + 0;
         }
         int m;
         if (bool)
         {
-          localObject1 = (LayoutParams)this.ayC.getLayoutParams();
+          localObject1 = (LayoutParams)this.ayA.getLayoutParams();
           paramInt4 = ((LayoutParams)localObject1).topMargin;
-          m = this.ayC.getMeasuredHeight();
+          m = this.ayA.getMeasuredHeight();
         }
         label542:
         label1697:
@@ -952,24 +951,24 @@ public class Toolbar
             if (!paramBoolean) {
               break label1007;
             }
-            localObject1 = this.ayB;
+            localObject1 = this.ayz;
             if (!bool) {
               break label1016;
             }
-            localObject2 = this.ayC;
+            localObject2 = this.ayA;
             label490:
             localObject1 = (LayoutParams)((View)localObject1).getLayoutParams();
             localObject2 = (LayoutParams)((View)localObject2).getLayoutParams();
-            if (((!paramBoolean) || (this.ayB.getMeasuredWidth() <= 0)) && ((!bool) || (this.ayC.getMeasuredWidth() <= 0))) {
+            if (((!paramBoolean) || (this.ayz.getMeasuredWidth() <= 0)) && ((!bool) || (this.ayA.getMeasuredWidth() <= 0))) {
               break label1025;
             }
             m = 1;
-            switch (this.Kk & 0x70)
+            switch (this.Ku & 0x70)
             {
             default: 
               paramInt1 = (i4 - i3 - i5 - n) / 2;
-              if (paramInt1 < ((LayoutParams)localObject1).topMargin + this.ayP) {
-                paramInt1 = ((LayoutParams)localObject1).topMargin + this.ayP;
+              if (paramInt1 < ((LayoutParams)localObject1).topMargin + this.ayN) {
+                paramInt1 = ((LayoutParams)localObject1).topMargin + this.ayN;
               }
               break;
             }
@@ -985,7 +984,7 @@ public class Toolbar
             if (k != 0) {
               if (m != 0)
               {
-                paramInt4 = this.ayN;
+                paramInt4 = this.ayL;
                 label636:
                 paramInt4 -= arrayOfInt[1];
                 paramInt3 -= Math.max(0, paramInt4);
@@ -993,11 +992,11 @@ public class Toolbar
                 if (!paramBoolean) {
                   break label1715;
                 }
-                localObject1 = (LayoutParams)this.ayB.getLayoutParams();
-                paramInt4 = paramInt3 - this.ayB.getMeasuredWidth();
-                k = this.ayB.getMeasuredHeight() + paramInt1;
-                this.ayB.layout(paramInt4, paramInt1, paramInt3, k);
-                n = this.ayO;
+                localObject1 = (LayoutParams)this.ayz.getLayoutParams();
+                paramInt4 = paramInt3 - this.ayz.getMeasuredWidth();
+                k = this.ayz.getMeasuredHeight() + paramInt1;
+                this.ayz.layout(paramInt4, paramInt1, paramInt3, k);
+                n = this.ayM;
                 paramInt1 = k + ((LayoutParams)localObject1).bottomMargin;
                 paramInt4 -= n;
               }
@@ -1006,12 +1005,12 @@ public class Toolbar
             {
               if (bool)
               {
-                localObject1 = (LayoutParams)this.ayC.getLayoutParams();
+                localObject1 = (LayoutParams)this.ayA.getLayoutParams();
                 paramInt1 = ((LayoutParams)localObject1).topMargin + paramInt1;
-                k = this.ayC.getMeasuredWidth();
-                n = this.ayC.getMeasuredHeight();
-                this.ayC.layout(paramInt3 - k, paramInt1, paramInt3, n + paramInt1);
-                paramInt1 = this.ayO;
+                k = this.ayA.getMeasuredWidth();
+                n = this.ayA.getMeasuredHeight();
+                this.ayA.layout(paramInt3 - k, paramInt1, paramInt3, n + paramInt1);
+                paramInt1 = this.ayM;
                 k = ((LayoutParams)localObject1).bottomMargin;
               }
               for (paramInt1 = paramInt3 - paramInt1;; paramInt1 = paramInt3)
@@ -1021,61 +1020,61 @@ public class Toolbar
                 {
                   paramInt4 = paramInt1;
                   paramInt1 = paramInt2;
-                  a(this.ayX, 3);
-                  paramInt3 = this.ayX.size();
+                  a(this.ayV, 3);
+                  paramInt3 = this.ayV.size();
                   paramInt2 = 0;
                   for (;;)
                   {
                     if (paramInt2 < paramInt3)
                     {
-                      paramInt1 = a((View)this.ayX.get(paramInt2), paramInt1, arrayOfInt, i);
+                      paramInt1 = a((View)this.ayV.get(paramInt2), paramInt1, arrayOfInt, i);
                       paramInt2 += 1;
                       continue;
                       k = 0;
                       break;
                       i = 0;
                       break label91;
-                      paramInt2 = a(this.ayD, j, arrayOfInt, i);
+                      paramInt2 = a(this.ayB, j, arrayOfInt, i);
                       break label124;
-                      paramInt4 = a(this.ayH, paramInt2, arrayOfInt, i);
+                      paramInt4 = a(this.ayF, paramInt2, arrayOfInt, i);
                       paramInt3 = paramInt1;
                       break label164;
-                      paramInt1 = b(this.ahf, paramInt3, arrayOfInt, i);
+                      paramInt1 = b(this.ahs, paramInt3, arrayOfInt, i);
                       paramInt2 = paramInt4;
                       break label204;
                       label964:
-                      paramInt1 = a(this.ayI, paramInt3, arrayOfInt, i);
+                      paramInt1 = a(this.ayG, paramInt3, arrayOfInt, i);
                       paramInt2 = paramInt4;
                       break label308;
                       label985:
-                      paramInt1 = a(this.ayE, paramInt1, arrayOfInt, i);
+                      paramInt1 = a(this.ayC, paramInt1, arrayOfInt, i);
                       paramInt3 = paramInt2;
                       paramInt2 = paramInt1;
                       break label341;
                       label1007:
-                      localObject1 = this.ayC;
+                      localObject1 = this.ayA;
                       break label479;
                       label1016:
-                      localObject2 = this.ayB;
+                      localObject2 = this.ayz;
                       break label490;
                       m = 0;
                       break label542;
                       paramInt1 = getPaddingTop();
-                      paramInt1 = ((LayoutParams)localObject1).topMargin + paramInt1 + this.ayP;
+                      paramInt1 = ((LayoutParams)localObject1).topMargin + paramInt1 + this.ayN;
                       break label620;
                       paramInt4 = i4 - i5 - n - paramInt1 - i3;
-                      if (paramInt4 >= ((LayoutParams)localObject1).bottomMargin + this.ayQ) {
+                      if (paramInt4 >= ((LayoutParams)localObject1).bottomMargin + this.ayO) {
                         break label1722;
                       }
-                      paramInt1 = Math.max(0, paramInt1 - (((LayoutParams)localObject2).bottomMargin + this.ayQ - paramInt4));
+                      paramInt1 = Math.max(0, paramInt1 - (((LayoutParams)localObject2).bottomMargin + this.ayO - paramInt4));
                       break label615;
-                      paramInt1 = i4 - i5 - ((LayoutParams)localObject2).bottomMargin - this.ayQ - n;
+                      paramInt1 = i4 - i5 - ((LayoutParams)localObject2).bottomMargin - this.ayO - n;
                       break label620;
                       paramInt4 = 0;
                       break label636;
                       if (m != 0)
                       {
-                        paramInt4 = this.ayN;
+                        paramInt4 = this.ayL;
                         label1145:
                         paramInt4 -= arrayOfInt[0];
                         paramInt2 += Math.max(0, paramInt4);
@@ -1083,11 +1082,11 @@ public class Toolbar
                         if (!paramBoolean) {
                           break label1697;
                         }
-                        localObject1 = (LayoutParams)this.ayB.getLayoutParams();
-                        k = this.ayB.getMeasuredWidth() + paramInt2;
-                        paramInt4 = this.ayB.getMeasuredHeight() + paramInt1;
-                        this.ayB.layout(paramInt2, paramInt1, k, paramInt4);
-                        n = this.ayO;
+                        localObject1 = (LayoutParams)this.ayz.getLayoutParams();
+                        k = this.ayz.getMeasuredWidth() + paramInt2;
+                        paramInt4 = this.ayz.getMeasuredHeight() + paramInt1;
+                        this.ayz.layout(paramInt2, paramInt1, k, paramInt4);
+                        n = this.ayM;
                         paramInt1 = ((LayoutParams)localObject1).bottomMargin;
                         k += n;
                         paramInt1 += paramInt4;
@@ -1098,12 +1097,12 @@ public class Toolbar
                   {
                     if (bool)
                     {
-                      localObject1 = (LayoutParams)this.ayC.getLayoutParams();
+                      localObject1 = (LayoutParams)this.ayA.getLayoutParams();
                       paramInt4 = ((LayoutParams)localObject1).topMargin + paramInt1;
-                      paramInt1 = this.ayC.getMeasuredWidth() + paramInt2;
-                      n = this.ayC.getMeasuredHeight();
-                      this.ayC.layout(paramInt2, paramInt4, paramInt1, n + paramInt4);
-                      paramInt4 = this.ayO;
+                      paramInt1 = this.ayA.getMeasuredWidth() + paramInt2;
+                      n = this.ayA.getMeasuredHeight();
+                      this.ayA.layout(paramInt2, paramInt4, paramInt1, n + paramInt4);
+                      paramInt4 = this.ayM;
                       n = ((LayoutParams)localObject1).bottomMargin;
                     }
                     for (n = paramInt4 + paramInt1;; n = paramInt2)
@@ -1118,17 +1117,17 @@ public class Toolbar
                       break;
                       paramInt4 = 0;
                       break label1145;
-                      a(this.ayX, 5);
-                      k = this.ayX.size();
+                      a(this.ayV, 5);
+                      k = this.ayV.size();
                       paramInt3 = 0;
                       paramInt2 = paramInt4;
                       while (paramInt3 < k)
                       {
-                        paramInt2 = b((View)this.ayX.get(paramInt3), paramInt2, arrayOfInt, i);
+                        paramInt2 = b((View)this.ayV.get(paramInt3), paramInt2, arrayOfInt, i);
                         paramInt3 += 1;
                       }
-                      a(this.ayX, 1);
-                      localObject1 = this.ayX;
+                      a(this.ayV, 1);
+                      localObject1 = this.ayV;
                       m = arrayOfInt[0];
                       k = arrayOfInt[1];
                       n = ((List)localObject1).size();
@@ -1153,13 +1152,13 @@ public class Toolbar
                       if (paramInt4 < paramInt1) {}
                       for (;;)
                       {
-                        paramInt4 = this.ayX.size();
+                        paramInt4 = this.ayV.size();
                         paramInt3 = 0;
                         paramInt2 = paramInt1;
                         paramInt1 = paramInt3;
                         while (paramInt1 < paramInt4)
                         {
-                          paramInt2 = a((View)this.ayX.get(paramInt1), paramInt2, arrayOfInt, i);
+                          paramInt2 = a((View)this.ayV.get(paramInt1), paramInt2, arrayOfInt, i);
                           paramInt1 += 1;
                         }
                         paramInt1 = paramInt4;
@@ -1167,7 +1166,7 @@ public class Toolbar
                           paramInt1 = paramInt4 - (paramInt3 - paramInt2);
                         }
                       }
-                      this.ayX.clear();
+                      this.ayV.clear();
                       return;
                     }
                     k = paramInt2;
@@ -1192,7 +1191,7 @@ public class Toolbar
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    Object localObject = this.ayZ;
+    Object localObject = this.ayX;
     int n;
     int i1;
     int i;
@@ -1203,25 +1202,25 @@ public class Toolbar
       n = 0;
       i1 = 1;
       i = 0;
-      if (!ca(this.ayD)) {
+      if (!bM(this.ayB)) {
         break label1008;
       }
-      l(this.ayD, paramInt1, 0, paramInt2, this.ayM);
-      i = this.ayD.getMeasuredWidth() + cb(this.ayD);
-      m = Math.max(0, this.ayD.getMeasuredHeight() + cc(this.ayD));
-      k = View.combineMeasuredStates(0, this.ayD.getMeasuredState());
+      j(this.ayB, paramInt1, 0, paramInt2, this.ayK);
+      i = this.ayB.getMeasuredWidth() + bN(this.ayB);
+      m = Math.max(0, this.ayB.getMeasuredHeight() + bO(this.ayB));
+      k = View.combineMeasuredStates(0, this.ayB.getMeasuredState());
     }
     for (;;)
     {
       int i2 = i;
       i = k;
       int j = m;
-      if (ca(this.ayH))
+      if (bM(this.ayF))
       {
-        l(this.ayH, paramInt1, 0, paramInt2, this.ayM);
-        i2 = this.ayH.getMeasuredWidth() + cb(this.ayH);
-        j = Math.max(m, this.ayH.getMeasuredHeight() + cc(this.ayH));
-        i = View.combineMeasuredStates(k, this.ayH.getMeasuredState());
+        j(this.ayF, paramInt1, 0, paramInt2, this.ayK);
+        i2 = this.ayF.getMeasuredWidth() + bN(this.ayF);
+        j = Math.max(m, this.ayF.getMeasuredHeight() + bO(this.ayF));
+        i = View.combineMeasuredStates(k, this.ayF.getMeasuredState());
       }
       k = getCurrentContentInsetStart();
       int i3 = Math.max(k, i2) + 0;
@@ -1229,12 +1228,12 @@ public class Toolbar
       i1 = 0;
       k = i;
       m = j;
-      if (ca(this.ahf))
+      if (bM(this.ahs))
       {
-        l(this.ahf, paramInt1, i3, paramInt2, this.ayM);
-        i1 = this.ahf.getMeasuredWidth() + cb(this.ahf);
-        m = Math.max(j, this.ahf.getMeasuredHeight() + cc(this.ahf));
-        k = View.combineMeasuredStates(i, this.ahf.getMeasuredState());
+        j(this.ahs, paramInt1, i3, paramInt2, this.ayK);
+        i1 = this.ahs.getMeasuredWidth() + bN(this.ahs);
+        m = Math.max(j, this.ahs.getMeasuredHeight() + bO(this.ahs));
+        k = View.combineMeasuredStates(i, this.ahs.getMeasuredState());
       }
       i = getCurrentContentInsetEnd();
       i2 = i3 + Math.max(i, i1);
@@ -1242,20 +1241,20 @@ public class Toolbar
       n = i2;
       i = k;
       j = m;
-      if (ca(this.ayI))
+      if (bM(this.ayG))
       {
-        n = i2 + a(this.ayI, paramInt1, i2, paramInt2, 0, (int[])localObject);
-        j = Math.max(m, this.ayI.getMeasuredHeight() + cc(this.ayI));
-        i = View.combineMeasuredStates(k, this.ayI.getMeasuredState());
+        n = i2 + a(this.ayG, paramInt1, i2, paramInt2, 0, (int[])localObject);
+        j = Math.max(m, this.ayG.getMeasuredHeight() + bO(this.ayG));
+        i = View.combineMeasuredStates(k, this.ayG.getMeasuredState());
       }
       k = n;
       i1 = i;
       m = j;
-      if (ca(this.ayE))
+      if (bM(this.ayC))
       {
-        k = n + a(this.ayE, paramInt1, n, paramInt2, 0, (int[])localObject);
-        m = Math.max(j, this.ayE.getMeasuredHeight() + cc(this.ayE));
-        i1 = View.combineMeasuredStates(i, this.ayE.getMeasuredState());
+        k = n + a(this.ayC, paramInt1, n, paramInt2, 0, (int[])localObject);
+        m = Math.max(j, this.ayC.getMeasuredHeight() + bO(this.ayC));
+        i1 = View.combineMeasuredStates(i, this.ayC.getMeasuredState());
       }
       i2 = getChildCount();
       n = 0;
@@ -1267,11 +1266,11 @@ public class Toolbar
       if (m < i2)
       {
         View localView = getChildAt(m);
-        if ((((LayoutParams)localView.getLayoutParams()).azj != 0) || (!ca(localView))) {
+        if ((((LayoutParams)localView.getLayoutParams()).azh != 0) || (!bM(localView))) {
           break label995;
         }
         i1 += a(localView, paramInt1, i1, paramInt2, 0, (int[])localObject);
-        k = Math.max(j, localView.getMeasuredHeight() + cc(localView));
+        k = Math.max(j, localView.getMeasuredHeight() + bO(localView));
         j = View.combineMeasuredStates(i, localView.getMeasuredState());
       }
       for (i = k;; i = k)
@@ -1286,25 +1285,25 @@ public class Toolbar
         break;
         n = 0;
         m = 0;
-        int i4 = this.ayP + this.ayQ;
-        int i5 = this.ayN + this.ayO;
+        int i4 = this.ayN + this.ayO;
+        int i5 = this.ayL + this.ayM;
         k = i;
-        if (ca(this.ayB))
+        if (bM(this.ayz))
         {
-          a(this.ayB, paramInt1, i1 + i5, paramInt2, i4, (int[])localObject);
-          k = this.ayB.getMeasuredWidth();
-          n = cb(this.ayB) + k;
-          m = this.ayB.getMeasuredHeight() + cc(this.ayB);
-          k = View.combineMeasuredStates(i, this.ayB.getMeasuredState());
+          a(this.ayz, paramInt1, i1 + i5, paramInt2, i4, (int[])localObject);
+          k = this.ayz.getMeasuredWidth();
+          n = bN(this.ayz) + k;
+          m = this.ayz.getMeasuredHeight() + bO(this.ayz);
+          k = View.combineMeasuredStates(i, this.ayz.getMeasuredState());
         }
         i3 = m;
         i2 = n;
         i = k;
-        if (ca(this.ayC))
+        if (bM(this.ayA))
         {
-          i2 = Math.max(n, a(this.ayC, paramInt1, i1 + i5, paramInt2, i4 + m, (int[])localObject));
-          i3 = m + (this.ayC.getMeasuredHeight() + cc(this.ayC));
-          i = View.combineMeasuredStates(k, this.ayC.getMeasuredState());
+          i2 = Math.max(n, a(this.ayA, paramInt1, i1 + i5, paramInt2, i4 + m, (int[])localObject));
+          i3 = m + (this.ayA.getMeasuredHeight() + bO(this.ayA));
+          i = View.combineMeasuredStates(k, this.ayA.getMeasuredState());
         }
         k = Math.max(j, i3);
         j = getPaddingLeft();
@@ -1313,7 +1312,7 @@ public class Toolbar
         n = getPaddingBottom();
         j = View.resolveSizeAndState(Math.max(i2 + i1 + (j + i3), getSuggestedMinimumWidth()), paramInt1, 0xFF000000 & i);
         paramInt2 = View.resolveSizeAndState(Math.max(k + (m + n), getSuggestedMinimumHeight()), paramInt2, i << 16);
-        if (!this.azf) {
+        if (!this.azd) {
           paramInt1 = 0;
         }
         for (;;)
@@ -1331,7 +1330,7 @@ public class Toolbar
               break label990;
             }
             localObject = getChildAt(paramInt1);
-            if ((ca((View)localObject)) && (((View)localObject).getMeasuredWidth() > 0) && (((View)localObject).getMeasuredHeight() > 0))
+            if ((bM((View)localObject)) && (((View)localObject).getMeasuredWidth() > 0) && (((View)localObject).getMeasuredHeight() > 0))
             {
               paramInt1 = 0;
               break;
@@ -1359,22 +1358,22 @@ public class Toolbar
       return;
     }
     SavedState localSavedState = (SavedState)paramParcelable;
-    super.onRestoreInstanceState(localSavedState.Pa);
-    if (this.ahf != null) {}
-    for (paramParcelable = this.ahf.aaD;; paramParcelable = null)
+    super.onRestoreInstanceState(localSavedState.Pm);
+    if (this.ahs != null) {}
+    for (paramParcelable = this.ahs.aaQ;; paramParcelable = null)
     {
-      if ((localSavedState.azk != 0) && (this.aze != null) && (paramParcelable != null))
+      if ((localSavedState.azi != 0) && (this.azc != null) && (paramParcelable != null))
       {
-        paramParcelable = paramParcelable.findItem(localSavedState.azk);
+        paramParcelable = paramParcelable.findItem(localSavedState.azi);
         if (paramParcelable != null) {
           paramParcelable.expandActionView();
         }
       }
-      if (!localSavedState.azl) {
+      if (!localSavedState.azj) {
         break;
       }
-      removeCallbacks(this.azg);
-      post(this.azg);
+      removeCallbacks(this.aze);
+      post(this.aze);
       return;
     }
   }
@@ -1385,69 +1384,69 @@ public class Toolbar
     if (Build.VERSION.SDK_INT >= 17) {
       super.onRtlPropertiesChanged(paramInt);
     }
-    nb();
-    ap localap = this.ayR;
+    nd();
+    ap localap = this.ayP;
     if (paramInt == 1) {
       if (bool != localap.mIsRtl)
       {
         localap.mIsRtl = bool;
-        if (!localap.avm) {
+        if (!localap.avk) {
           break label168;
         }
         if (!bool) {
           break label113;
         }
-        if (localap.OQ == -2147483648) {
+        if (localap.Pc == -2147483648) {
           break label97;
         }
-        paramInt = localap.OQ;
+        paramInt = localap.Pc;
         label67:
-        localap.Af = paramInt;
-        if (localap.avj == -2147483648) {
+        localap.Al = paramInt;
+        if (localap.avh == -2147483648) {
           break label105;
         }
       }
     }
     label97:
     label105:
-    for (paramInt = localap.avj;; paramInt = localap.avl)
+    for (paramInt = localap.avh;; paramInt = localap.avj)
     {
-      localap.Ah = paramInt;
+      localap.An = paramInt;
       return;
       bool = false;
       break;
-      paramInt = localap.avk;
+      paramInt = localap.avi;
       break label67;
     }
     label113:
-    if (localap.avj != -2147483648)
+    if (localap.avh != -2147483648)
     {
-      paramInt = localap.avj;
-      localap.Af = paramInt;
-      if (localap.OQ == -2147483648) {
+      paramInt = localap.avh;
+      localap.Al = paramInt;
+      if (localap.Pc == -2147483648) {
         break label160;
       }
     }
     label160:
-    for (paramInt = localap.OQ;; paramInt = localap.avl)
+    for (paramInt = localap.Pc;; paramInt = localap.avj)
     {
-      localap.Ah = paramInt;
+      localap.An = paramInt;
       return;
-      paramInt = localap.avk;
+      paramInt = localap.avi;
       break;
     }
     label168:
-    localap.Af = localap.avk;
-    localap.Ah = localap.avl;
+    localap.Al = localap.avi;
+    localap.An = localap.avj;
   }
   
   protected Parcelable onSaveInstanceState()
   {
     SavedState localSavedState = new SavedState(super.onSaveInstanceState());
-    if ((this.aze != null) && (this.aze.azi != null)) {
-      localSavedState.azk = this.aze.azi.getItemId();
+    if ((this.azc != null) && (this.azc.azg != null)) {
+      localSavedState.azi = this.azc.azg.getItemId();
     }
-    localSavedState.azl = isOverflowMenuShowing();
+    localSavedState.azj = isOverflowMenuShowing();
     return localSavedState;
   }
   
@@ -1455,24 +1454,24 @@ public class Toolbar
   {
     int i = paramMotionEvent.getActionMasked();
     if (i == 0) {
-      this.ahj = false;
+      this.ahw = false;
     }
-    if (!this.ahj)
+    if (!this.ahw)
     {
       boolean bool = super.onTouchEvent(paramMotionEvent);
       if ((i == 0) && (!bool)) {
-        this.ahj = true;
+        this.ahw = true;
       }
     }
     if ((i == 1) || (i == 3)) {
-      this.ahj = false;
+      this.ahw = false;
     }
     return true;
   }
   
   public void setCollapsible(boolean paramBoolean)
   {
-    this.azf = paramBoolean;
+    this.azd = paramBoolean;
     requestLayout();
   }
   
@@ -1482,9 +1481,9 @@ public class Toolbar
     if (paramInt < 0) {
       i = -2147483648;
     }
-    if (i != this.ayT)
+    if (i != this.ayR)
     {
-      this.ayT = i;
+      this.ayR = i;
       if (getNavigationIcon() != null) {
         requestLayout();
       }
@@ -1497,9 +1496,9 @@ public class Toolbar
     if (paramInt < 0) {
       i = -2147483648;
     }
-    if (i != this.ayS)
+    if (i != this.ayQ)
     {
-      this.ayS = i;
+      this.ayQ = i;
       if (getNavigationIcon() != null) {
         requestLayout();
       }
@@ -1515,21 +1514,21 @@ public class Toolbar
   {
     if (paramDrawable != null)
     {
-      mT();
-      if (!cd(this.ayE)) {
-        i(this.ayE, true);
+      mV();
+      if (!bP(this.ayC)) {
+        i(this.ayC, true);
       }
     }
     for (;;)
     {
-      if (this.ayE != null) {
-        this.ayE.setImageDrawable(paramDrawable);
+      if (this.ayC != null) {
+        this.ayC.setImageDrawable(paramDrawable);
       }
       return;
-      if ((this.ayE != null) && (cd(this.ayE)))
+      if ((this.ayC != null) && (bP(this.ayC)))
       {
-        removeView(this.ayE);
-        this.ayY.remove(this.ayE);
+        removeView(this.ayC);
+        this.ayW.remove(this.ayC);
       }
     }
   }
@@ -1542,10 +1541,10 @@ public class Toolbar
   public void setLogoDescription(CharSequence paramCharSequence)
   {
     if (!TextUtils.isEmpty(paramCharSequence)) {
-      mT();
+      mV();
     }
-    if (this.ayE != null) {
-      this.ayE.setContentDescription(paramCharSequence);
+    if (this.ayC != null) {
+      this.ayC.setContentDescription(paramCharSequence);
     }
   }
   
@@ -1562,10 +1561,10 @@ public class Toolbar
   public void setNavigationContentDescription(CharSequence paramCharSequence)
   {
     if (!TextUtils.isEmpty(paramCharSequence)) {
-      mX();
+      mZ();
     }
-    if (this.ayD != null) {
-      this.ayD.setContentDescription(paramCharSequence);
+    if (this.ayB != null) {
+      this.ayB.setContentDescription(paramCharSequence);
     }
   }
   
@@ -1578,56 +1577,56 @@ public class Toolbar
   {
     if (paramDrawable != null)
     {
-      mX();
-      if (!cd(this.ayD)) {
-        i(this.ayD, true);
+      mZ();
+      if (!bP(this.ayB)) {
+        i(this.ayB, true);
       }
     }
     for (;;)
     {
-      if (this.ayD != null) {
-        this.ayD.setImageDrawable(paramDrawable);
+      if (this.ayB != null) {
+        this.ayB.setImageDrawable(paramDrawable);
       }
       return;
-      if ((this.ayD != null) && (cd(this.ayD)))
+      if ((this.ayB != null) && (bP(this.ayB)))
       {
-        removeView(this.ayD);
-        this.ayY.remove(this.ayD);
+        removeView(this.ayB);
+        this.ayW.remove(this.ayB);
       }
     }
   }
   
   public void setNavigationOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    mX();
-    this.ayD.setOnClickListener(paramOnClickListener);
+    mZ();
+    this.ayB.setOnClickListener(paramOnClickListener);
   }
   
   public void setOnMenuItemClickListener(b paramb)
   {
-    this.aza = paramb;
+    this.ayY = paramb;
   }
   
   public void setOverflowIcon(Drawable paramDrawable)
   {
-    mU();
-    this.ahf.setOverflowIcon(paramDrawable);
+    mW();
+    this.ahs.setOverflowIcon(paramDrawable);
   }
   
   public void setPopupTheme(int paramInt)
   {
-    if (this.aiF != paramInt)
+    if (this.aiS != paramInt)
     {
-      this.aiF = paramInt;
+      this.aiS = paramInt;
       if (paramInt == 0) {
-        this.ahe = getContext();
+        this.ahr = getContext();
       }
     }
     else
     {
       return;
     }
-    this.ahe = new ContextThemeWrapper(getContext(), paramInt);
+    this.ahr = new ContextThemeWrapper(getContext(), paramInt);
   }
   
   public void setSubtitle(int paramInt)
@@ -1639,43 +1638,43 @@ public class Toolbar
   {
     if (!TextUtils.isEmpty(paramCharSequence))
     {
-      if (this.ayC == null)
+      if (this.ayA == null)
       {
         Context localContext = getContext();
-        this.ayC = new AppCompatTextView(localContext);
-        this.ayC.setSingleLine();
-        this.ayC.setEllipsize(TextUtils.TruncateAt.END);
-        if (this.ayK != 0) {
-          this.ayC.setTextAppearance(localContext, this.ayK);
+        this.ayA = new AppCompatTextView(localContext);
+        this.ayA.setSingleLine();
+        this.ayA.setEllipsize(TextUtils.TruncateAt.END);
+        if (this.ayI != 0) {
+          this.ayA.setTextAppearance(localContext, this.ayI);
         }
-        if (this.ayW != 0) {
-          this.ayC.setTextColor(this.ayW);
+        if (this.ayU != 0) {
+          this.ayA.setTextColor(this.ayU);
         }
       }
-      if (!cd(this.ayC)) {
-        i(this.ayC, true);
+      if (!bP(this.ayA)) {
+        i(this.ayA, true);
       }
     }
     for (;;)
     {
-      if (this.ayC != null) {
-        this.ayC.setText(paramCharSequence);
+      if (this.ayA != null) {
+        this.ayA.setText(paramCharSequence);
       }
-      this.ayV = paramCharSequence;
+      this.ayT = paramCharSequence;
       return;
-      if ((this.ayC != null) && (cd(this.ayC)))
+      if ((this.ayA != null) && (bP(this.ayA)))
       {
-        removeView(this.ayC);
-        this.ayY.remove(this.ayC);
+        removeView(this.ayA);
+        this.ayW.remove(this.ayA);
       }
     }
   }
   
   public void setSubtitleTextColor(int paramInt)
   {
-    this.ayW = paramInt;
-    if (this.ayC != null) {
-      this.ayC.setTextColor(paramInt);
+    this.ayU = paramInt;
+    if (this.ayA != null) {
+      this.ayA.setTextColor(paramInt);
     }
   }
   
@@ -1688,76 +1687,76 @@ public class Toolbar
   {
     if (!TextUtils.isEmpty(paramCharSequence))
     {
-      if (this.ayB == null)
+      if (this.ayz == null)
       {
         Context localContext = getContext();
-        this.ayB = new AppCompatTextView(localContext);
-        this.ayB.setSingleLine();
-        this.ayB.setEllipsize(TextUtils.TruncateAt.END);
-        if (this.ayJ != 0) {
-          this.ayB.setTextAppearance(localContext, this.ayJ);
+        this.ayz = new AppCompatTextView(localContext);
+        this.ayz.setSingleLine();
+        this.ayz.setEllipsize(TextUtils.TruncateAt.END);
+        if (this.ayH != 0) {
+          this.ayz.setTextAppearance(localContext, this.ayH);
         }
-        if (this.abu != 0) {
-          this.ayB.setTextColor(this.abu);
+        if (this.abH != 0) {
+          this.ayz.setTextColor(this.abH);
         }
       }
-      if (!cd(this.ayB)) {
-        i(this.ayB, true);
+      if (!bP(this.ayz)) {
+        i(this.ayz, true);
       }
     }
     for (;;)
     {
-      if (this.ayB != null) {
-        this.ayB.setText(paramCharSequence);
+      if (this.ayz != null) {
+        this.ayz.setText(paramCharSequence);
       }
-      this.ayU = paramCharSequence;
+      this.ayS = paramCharSequence;
       return;
-      if ((this.ayB != null) && (cd(this.ayB)))
+      if ((this.ayz != null) && (bP(this.ayz)))
       {
-        removeView(this.ayB);
-        this.ayY.remove(this.ayB);
+        removeView(this.ayz);
+        this.ayW.remove(this.ayz);
       }
     }
   }
   
   public void setTitleMarginBottom(int paramInt)
   {
-    this.ayQ = paramInt;
+    this.ayO = paramInt;
     requestLayout();
   }
   
   public void setTitleMarginEnd(int paramInt)
   {
-    this.ayO = paramInt;
+    this.ayM = paramInt;
     requestLayout();
   }
   
   public void setTitleMarginStart(int paramInt)
   {
-    this.ayN = paramInt;
+    this.ayL = paramInt;
     requestLayout();
   }
   
   public void setTitleMarginTop(int paramInt)
   {
-    this.ayP = paramInt;
+    this.ayN = paramInt;
     requestLayout();
   }
   
   public void setTitleTextColor(int paramInt)
   {
-    this.abu = paramInt;
-    if (this.ayB != null) {
-      this.ayB.setTextColor(paramInt);
+    this.abH = paramInt;
+    if (this.ayz != null) {
+      this.ayz.setTextColor(paramInt);
     }
   }
   
   public final boolean showOverflowMenu()
   {
-    if (this.ahf != null)
+    if (this.ahs != null)
     {
-      ActionMenuView localActionMenuView = this.ahf;
-      if ((localActionMenuView.aiG != null) && (localActionMenuView.aiG.showOverflowMenu())) {}
+      ActionMenuView localActionMenuView = this.ahs;
+      if ((localActionMenuView.aiT != null) && (localActionMenuView.aiT.showOverflowMenu())) {}
       for (int i = 1; i != 0; i = 0) {
         return true;
       }
@@ -1768,11 +1767,11 @@ public class Toolbar
   public static class LayoutParams
     extends ActionBar.LayoutParams
   {
-    int azj = 0;
+    int azh = 0;
     
     public LayoutParams(int paramInt)
     {
-      super();
+      super(-2);
       this.gravity = 8388627;
     }
     
@@ -1789,7 +1788,7 @@ public class Toolbar
     public LayoutParams(LayoutParams paramLayoutParams)
     {
       super();
-      this.azj = paramLayoutParams.azj;
+      this.azh = paramLayoutParams.azh;
     }
     
     public LayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -1811,17 +1810,17 @@ public class Toolbar
     extends AbsSavedState
   {
     public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
-    int azk;
-    boolean azl;
+    int azi;
+    boolean azj;
     
     public SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
     {
       super(paramClassLoader);
-      this.azk = paramParcel.readInt();
+      this.azi = paramParcel.readInt();
       if (paramParcel.readInt() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.azl = bool;
+        this.azj = bool;
         return;
       }
     }
@@ -1834,8 +1833,8 @@ public class Toolbar
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       super.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeInt(this.azk);
-      if (this.azl) {}
+      paramParcel.writeInt(this.azi);
+      if (this.azj) {}
       for (paramInt = 1;; paramInt = 0)
       {
         paramParcel.writeInt(paramInt);
@@ -1847,17 +1846,17 @@ public class Toolbar
   final class a
     implements o
   {
-    h aaD;
-    j azi;
+    h aaQ;
+    j azg;
     
     a() {}
     
     public final void a(Context paramContext, h paramh)
     {
-      if ((this.aaD != null) && (this.azi != null)) {
-        this.aaD.h(this.azi);
+      if ((this.aaQ != null) && (this.azg != null)) {
+        this.aaQ.h(this.azg);
       }
-      this.aaD = paramh;
+      this.aaQ = paramh;
     }
     
     public final void a(h paramh, boolean paramBoolean) {}
@@ -1871,66 +1870,66 @@ public class Toolbar
     
     public final boolean b(j paramj)
     {
-      Toolbar.this.mY();
-      Object localObject = Toolbar.this.ayH.getParent();
+      Toolbar.this.na();
+      Object localObject = Toolbar.this.ayF.getParent();
       if (localObject != Toolbar.this)
       {
         if ((localObject instanceof ViewGroup)) {
-          ((ViewGroup)localObject).removeView(Toolbar.this.ayH);
+          ((ViewGroup)localObject).removeView(Toolbar.this.ayF);
         }
-        Toolbar.this.addView(Toolbar.this.ayH);
+        Toolbar.this.addView(Toolbar.this.ayF);
       }
-      Toolbar.this.ayI = paramj.getActionView();
-      this.azi = paramj;
-      localObject = Toolbar.this.ayI.getParent();
+      Toolbar.this.ayG = paramj.getActionView();
+      this.azg = paramj;
+      localObject = Toolbar.this.ayG.getParent();
       if (localObject != Toolbar.this)
       {
         if ((localObject instanceof ViewGroup)) {
-          ((ViewGroup)localObject).removeView(Toolbar.this.ayI);
+          ((ViewGroup)localObject).removeView(Toolbar.this.ayG);
         }
-        localObject = Toolbar.mZ();
-        ((Toolbar.LayoutParams)localObject).gravity = (0x800003 | Toolbar.this.ayL & 0x70);
-        ((Toolbar.LayoutParams)localObject).azj = 2;
-        Toolbar.this.ayI.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        Toolbar.this.addView(Toolbar.this.ayI);
+        localObject = Toolbar.nb();
+        ((Toolbar.LayoutParams)localObject).gravity = (0x800003 | Toolbar.this.ayJ & 0x70);
+        ((Toolbar.LayoutParams)localObject).azh = 2;
+        Toolbar.this.ayG.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        Toolbar.this.addView(Toolbar.this.ayG);
       }
       localObject = Toolbar.this;
       int i = ((Toolbar)localObject).getChildCount() - 1;
       while (i >= 0)
       {
         View localView = ((Toolbar)localObject).getChildAt(i);
-        if ((((Toolbar.LayoutParams)localView.getLayoutParams()).azj != 2) && (localView != ((Toolbar)localObject).ahf))
+        if ((((Toolbar.LayoutParams)localView.getLayoutParams()).azh != 2) && (localView != ((Toolbar)localObject).ahs))
         {
           ((Toolbar)localObject).removeViewAt(i);
-          ((Toolbar)localObject).ayY.add(localView);
+          ((Toolbar)localObject).ayW.add(localView);
         }
         i -= 1;
       }
       Toolbar.this.requestLayout();
-      paramj.ag(true);
-      if ((Toolbar.this.ayI instanceof c)) {
-        ((c)Toolbar.this.ayI).onActionViewExpanded();
+      paramj.af(true);
+      if ((Toolbar.this.ayG instanceof c)) {
+        ((c)Toolbar.this.ayG).onActionViewExpanded();
       }
       return true;
     }
     
-    public final boolean bD()
+    public final boolean bF()
     {
       return false;
     }
     
     public final boolean c(j paramj)
     {
-      if ((Toolbar.this.ayI instanceof c)) {
-        ((c)Toolbar.this.ayI).onActionViewCollapsed();
+      if ((Toolbar.this.ayG instanceof c)) {
+        ((c)Toolbar.this.ayG).onActionViewCollapsed();
       }
-      Toolbar.this.removeView(Toolbar.this.ayI);
-      Toolbar.this.removeView(Toolbar.this.ayH);
-      Toolbar.this.ayI = null;
-      Toolbar.this.na();
-      this.azi = null;
+      Toolbar.this.removeView(Toolbar.this.ayG);
+      Toolbar.this.removeView(Toolbar.this.ayF);
+      Toolbar.this.ayG = null;
+      Toolbar.this.nc();
+      this.azg = null;
       Toolbar.this.requestLayout();
-      paramj.ag(false);
+      paramj.af(false);
       return true;
     }
     
@@ -1952,12 +1951,12 @@ public class Toolbar
       int j;
       int m;
       int i;
-      if (this.azi != null)
+      if (this.azg != null)
       {
         j = k;
-        if (this.aaD != null)
+        if (this.aaQ != null)
         {
-          m = this.aaD.size();
+          m = this.aaQ.size();
           i = 0;
         }
       }
@@ -1966,14 +1965,14 @@ public class Toolbar
         j = k;
         if (i < m)
         {
-          if (this.aaD.getItem(i) == this.azi) {
+          if (this.aaQ.getItem(i) == this.azg) {
             j = 1;
           }
         }
         else
         {
           if (j == 0) {
-            c(this.azi);
+            c(this.azg);
           }
           return;
         }

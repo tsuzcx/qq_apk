@@ -9,7 +9,7 @@ import java.util.Arrays;
 public final class c
   implements Serializable
 {
-  public byte[] wII;
+  public byte[] ADT;
   
   public c(byte[] paramArrayOfByte)
   {
@@ -21,12 +21,12 @@ public final class c
       throw paramArrayOfByte;
     }
     paramArrayOfByte = (byte[])paramArrayOfByte.clone();
-    bE(paramArrayOfByte);
-    this.wII = paramArrayOfByte;
+    bV(paramArrayOfByte);
+    this.ADT = paramArrayOfByte;
     AppMethodBeat.o(26648);
   }
   
-  private static void bE(byte[] paramArrayOfByte)
+  private static void bV(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(26649);
     if (paramArrayOfByte.length < 2)
@@ -41,50 +41,28 @@ public final class c
   private void readObject(ObjectInputStream paramObjectInputStream)
   {
     AppMethodBeat.i(26655);
-    this.wII = ((byte[])(byte[])paramObjectInputStream.readUnshared());
-    bE(this.wII);
+    this.ADT = ((byte[])(byte[])paramObjectInputStream.readUnshared());
+    bV(this.ADT);
     AppMethodBeat.o(26655);
   }
   
   public final void a(c paramc)
   {
     AppMethodBeat.i(26652);
-    int j = this.wII.length;
-    this.wII = Arrays.copyOf(this.wII, this.wII.length + paramc.wII.length - 2);
+    int j = this.ADT.length;
+    this.ADT = Arrays.copyOf(this.ADT, this.ADT.length + paramc.ADT.length - 2);
     j -= 2;
-    paramc = (byte[])paramc.wII.clone();
+    paramc = (byte[])paramc.ADT.clone();
     int m = paramc.length;
     int k = 0;
     while (k < m)
     {
       int i = paramc[k];
-      this.wII[j] = i;
+      this.ADT[j] = i;
       k += 1;
       j += 1;
     }
     AppMethodBeat.o(26652);
-  }
-  
-  public final short dxL()
-  {
-    return (short)(this.wII[(this.wII.length - 2)] & 0xFF);
-  }
-  
-  public final short dxM()
-  {
-    return (short)(this.wII[(this.wII.length - 1)] & 0xFF);
-  }
-  
-  public final boolean dxN()
-  {
-    AppMethodBeat.i(26650);
-    if ((short)(dxL() << 8 | dxM()) == -28672)
-    {
-      AppMethodBeat.o(26650);
-      return true;
-    }
-    AppMethodBeat.o(26650);
-    return false;
   }
   
   public final boolean equals(Object paramObject)
@@ -101,15 +79,37 @@ public final class c
       return false;
     }
     paramObject = (c)paramObject;
-    boolean bool = Arrays.equals(this.wII, paramObject.wII);
+    boolean bool = Arrays.equals(this.ADT, paramObject.ADT);
     AppMethodBeat.o(26653);
     return bool;
+  }
+  
+  public final short ext()
+  {
+    return (short)(this.ADT[(this.ADT.length - 2)] & 0xFF);
+  }
+  
+  public final short exu()
+  {
+    return (short)(this.ADT[(this.ADT.length - 1)] & 0xFF);
+  }
+  
+  public final boolean exv()
+  {
+    AppMethodBeat.i(26650);
+    if ((short)(ext() << 8 | exu()) == -28672)
+    {
+      AppMethodBeat.o(26650);
+      return true;
+    }
+    AppMethodBeat.o(26650);
+    return false;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(26654);
-    int i = Arrays.hashCode(this.wII);
+    int i = Arrays.hashCode(this.ADT);
     AppMethodBeat.o(26654);
     return i;
   }
@@ -117,7 +117,7 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(26651);
-    String str = a.byteArrayToHexString(this.wII);
+    String str = a.byteArrayToHexString(this.ADT);
     AppMethodBeat.o(26651);
     return str;
   }

@@ -6,32 +6,32 @@ import java.lang.reflect.Array;
 
 public final class e<E>
 {
-  private final Class<? extends E> Mbq;
-  public int Mbr;
-  public E[] Mbs;
-  public int[] Mbt;
-  public int[] Mbu;
-  public int[] Mbv;
+  private final Class<? extends E> RBJ;
+  public int RBK;
+  public E[] RBL;
+  public int[] RBM;
+  public int[] RBN;
+  public int[] RBO;
   
   e(Class<? extends E> paramClass)
   {
-    this.Mbq = paramClass;
-    this.Mbr = 0;
+    this.RBJ = paramClass;
+    this.RBK = 0;
   }
   
   public final void a(Spanned paramSpanned, int paramInt)
   {
     AppMethodBeat.i(39760);
-    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.Mbq);
+    Object[] arrayOfObject = paramSpanned.getSpans(0, paramInt, this.RBJ);
     int i = arrayOfObject.length;
-    if ((i > 0) && ((this.Mbs == null) || (this.Mbs.length < i)))
+    if ((i > 0) && ((this.RBL == null) || (this.RBL.length < i)))
     {
-      this.Mbs = ((Object[])Array.newInstance(this.Mbq, i));
-      this.Mbt = new int[i];
-      this.Mbu = new int[i];
-      this.Mbv = new int[i];
+      this.RBL = ((Object[])Array.newInstance(this.RBJ, i));
+      this.RBM = new int[i];
+      this.RBN = new int[i];
+      this.RBO = new int[i];
     }
-    this.Mbr = 0;
+    this.RBK = 0;
     paramInt = 0;
     while (paramInt < i)
     {
@@ -41,24 +41,24 @@ public final class e<E>
       if (j != k)
       {
         int m = paramSpanned.getSpanFlags(localObject);
-        this.Mbs[this.Mbr] = localObject;
-        this.Mbt[this.Mbr] = j;
-        this.Mbu[this.Mbr] = k;
-        this.Mbv[this.Mbr] = m;
-        this.Mbr += 1;
+        this.RBL[this.RBK] = localObject;
+        this.RBM[this.RBK] = j;
+        this.RBN[this.RBK] = k;
+        this.RBO[this.RBK] = m;
+        this.RBK += 1;
       }
       paramInt += 1;
     }
     AppMethodBeat.o(39760);
   }
   
-  public final E kQ(int paramInt1, int paramInt2)
+  public final E mp(int paramInt1, int paramInt2)
   {
     int i = 0;
-    while (i < this.Mbr)
+    while (i < this.RBK)
     {
-      if ((this.Mbt[i] < paramInt2) && (this.Mbu[i] > paramInt1)) {
-        return this.Mbs[i];
+      if ((this.RBM[i] < paramInt2) && (this.RBN[i] > paramInt1)) {
+        return this.RBL[i];
       }
       i += 1;
     }

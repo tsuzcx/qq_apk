@@ -6,117 +6,97 @@ import com.tencent.mm.plugin.report.a;
 public final class aw
   extends a
 {
-  private long dQX;
-  private String dWq = "";
-  private String dWr = "";
-  private String dYQ = "";
-  private long dYR;
-  private long dYS;
-  private String dYp = "";
+  public String ekB = "";
+  public String eqA = "";
+  private long eqB = 0L;
+  public long eqC = 0L;
+  public long eqD = 0L;
+  public long eqE = 0L;
+  public long eqF = 0L;
+  public long eqG = 0L;
+  public long eqH = 0L;
+  public long eqI = 0L;
+  public long eqJ = 0L;
+  public long eqK = 0L;
+  public long eqz = 0L;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(189147);
+    AppMethodBeat.i(186345);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dYQ);
+    ((StringBuffer)localObject).append(this.eqz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYR);
+    ((StringBuffer)localObject).append(this.eqA);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYS);
+    ((StringBuffer)localObject).append(this.eqB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQX);
+    ((StringBuffer)localObject).append(this.eqC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWq);
+    ((StringBuffer)localObject).append(this.ekB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWr);
+    ((StringBuffer)localObject).append(this.eqD);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYp);
+    ((StringBuffer)localObject).append(this.eqE);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqF);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqG);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqH);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqI);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqJ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eqK);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(189147);
+    aMq((String)localObject);
+    AppMethodBeat.o(186345);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(189148);
+    AppMethodBeat.i(186346);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("feedid:").append(this.dYQ);
+    ((StringBuffer)localObject).append("calledSessionId:").append(this.eqz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("mediaType:").append(this.dYR);
+    ((StringBuffer)localObject).append("functionName:").append(this.eqA);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("commentscene:").append(this.dYS);
+    ((StringBuffer)localObject).append("interfaceType:").append(this.eqB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("action:").append(this.dQX);
+    ((StringBuffer)localObject).append("businessType:").append(this.eqC);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Sessionid:").append(this.dWq);
+    ((StringBuffer)localObject).append("appId:").append(this.ekB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Contextid:").append(this.dWr);
+    ((StringBuffer)localObject).append("isFaceDetectVerifySuccess:").append(this.eqD);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickTabContextid:").append(this.dYp);
+    ((StringBuffer)localObject).append("totalTime:").append(this.eqE);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("faceDetectCount:").append(this.eqF);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("BeginFaceTime:").append(this.eqG);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("BeginLivenessTime:").append(this.eqH);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("BeginVerifyTime:").append(this.eqI);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ExitFaceTime:").append(this.eqJ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("CheckAliveType:").append(this.eqK);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(189148);
+    AppMethodBeat.o(186346);
     return localObject;
-  }
-  
-  public final aw dX(long paramLong)
-  {
-    this.dYR = paramLong;
-    return this;
-  }
-  
-  public final aw dY(long paramLong)
-  {
-    this.dYS = paramLong;
-    return this;
-  }
-  
-  public final aw dZ(long paramLong)
-  {
-    this.dQX = paramLong;
-    return this;
   }
   
   public final int getId()
   {
-    return 20353;
-  }
-  
-  public final aw iE(String paramString)
-  {
-    AppMethodBeat.i(189143);
-    this.dYQ = t("feedid", paramString, true);
-    AppMethodBeat.o(189143);
-    return this;
-  }
-  
-  public final aw iF(String paramString)
-  {
-    AppMethodBeat.i(189144);
-    this.dWq = t("Sessionid", paramString, true);
-    AppMethodBeat.o(189144);
-    return this;
-  }
-  
-  public final aw iG(String paramString)
-  {
-    AppMethodBeat.i(189145);
-    this.dWr = t("Contextid", paramString, true);
-    AppMethodBeat.o(189145);
-    return this;
-  }
-  
-  public final aw iH(String paramString)
-  {
-    AppMethodBeat.i(189146);
-    this.dYp = t("ClickTabContextid", paramString, true);
-    AppMethodBeat.o(189146);
-    return this;
+    return 14560;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.aw
  * JD-Core Version:    0.7.0.1
  */

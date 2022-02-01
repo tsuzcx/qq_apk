@@ -1,130 +1,130 @@
 package com.tencent.luggage.h;
 
-import android.app.Activity;
-import android.app.AlertDialog.Builder;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Build.VERSION;
-import android.support.v4.app.a;
-import android.support.v4.content.b;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.wifi.WifiInfo;
+import android.net.wifi.WifiManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.compatible.deviceinfo.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.NetworkInterface;
+import java.util.Enumeration;
 
 public final class h
 {
-  public static boolean a(Activity paramActivity, final String paramString1, final int paramInt, String paramString2, String paramString3)
+  public static String Ph()
   {
-    AppMethodBeat.i(140519);
-    if ((Build.VERSION.SDK_INT < 23) && (!"MNC".equals(Build.VERSION.CODENAME)))
-    {
-      AppMethodBeat.o(140519);
-      return true;
-    }
+    i = 0;
+    AppMethodBeat.i(221208);
     try
     {
-      int i = b.checkSelfPermission(paramActivity, paramString1);
-      if (i == 0)
+      int j = ab.ape();
+      i = j;
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
       {
-        AppMethodBeat.o(140519);
-        return true;
+        Log.e("Luggage.LuggageNetUtil", "getSelfIp, call NetworkDetailInfo.getNetType(), exp = %s", new Object[] { localException1 });
       }
-    }
-    catch (Exception paramActivity)
-    {
-      ae.e("Luggage.PermissionUtil", "check mpermission exception:%s.", new Object[] { paramActivity });
-      AppMethodBeat.o(140519);
-      return true;
-    }
-    if (!bu.isNullOrNil(paramString3))
-    {
-      paramString1 = new DialogInterface.OnClickListener()
+      if (i != 1) {
+        break label63;
+      }
+      Object localObject1 = aN(MMApplicationContext.getContext());
+      AppMethodBeat.o(221208);
+      return localObject1;
+      InetAddress localInetAddress;
+      try
       {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        do
         {
-          AppMethodBeat.i(140518);
-          paramAnonymousDialogInterface.dismiss();
-          paramAnonymousDialogInterface = this.val$activity;
-          String str = paramString1;
-          paramAnonymousInt = paramInt;
-          a.a(paramAnonymousDialogInterface, new String[] { str }, paramAnonymousInt);
-          AppMethodBeat.o(140518);
+          localObject1 = NetworkInterface.getNetworkInterfaces();
+          Object localObject2;
+          while (!((Enumeration)localObject2).hasMoreElements())
+          {
+            do
+            {
+              if (!((Enumeration)localObject1).hasMoreElements()) {
+                break;
+              }
+              localObject2 = (NetworkInterface)((Enumeration)localObject1).nextElement();
+            } while (localObject2 == null);
+            localObject2 = ((NetworkInterface)localObject2).getInetAddresses();
+          }
+          localInetAddress = (InetAddress)((Enumeration)localObject2).nextElement();
+        } while ((localInetAddress == null) || (localInetAddress.isLoopbackAddress()) || (!(localInetAddress instanceof Inet4Address)));
+        if (Util.isNullOrNil(localInetAddress.getHostAddress()))
+        {
+          AppMethodBeat.o(221208);
+          return "127.0.0.1";
         }
-      };
-      String str1 = paramActivity.getString(2131761864);
-      String str2 = paramActivity.getString(2131761863);
-      paramActivity = new AlertDialog.Builder(paramActivity);
-      paramActivity.setMessage(paramString3).setTitle(paramString2).setCancelable(false).setPositiveButton(str1, paramString1).setNegativeButton(str2, null);
-      paramActivity.show();
+      }
+      catch (Exception localException2)
+      {
+        AppMethodBeat.o(221208);
+        return "127.0.0.1";
+      }
+      String str = localInetAddress.getHostAddress();
+      AppMethodBeat.o(221208);
+      return str;
     }
-    for (;;)
+    if (i == 0)
     {
-      AppMethodBeat.o(140519);
-      return false;
-      a.a(paramActivity, new String[] { paramString1 }, paramInt);
+      AppMethodBeat.o(221208);
+      return "127.0.0.1";
     }
   }
   
-  public static boolean n(Context paramContext, String paramString)
+  public static String aN(Context paramContext)
   {
-    AppMethodBeat.i(140520);
-    int i;
+    AppMethodBeat.i(221207);
+    paramContext = (WifiManager)paramContext.getSystemService("wifi");
     try
     {
-      i = b.checkSelfPermission(paramContext, paramString);
-      if (i != 0)
+      paramContext = paramContext.getConnectionInfo();
+      if (paramContext == null)
       {
-        AppMethodBeat.o(140520);
-        return false;
+        AppMethodBeat.o(221207);
+        return "127.0.0.1";
       }
     }
     catch (Exception paramContext)
     {
-      ae.e("Luggage.PermissionUtil", "check mpermission exception:%s.", new Object[] { paramContext });
-      AppMethodBeat.o(140520);
-      return false;
-    }
-    String str = null;
-    if (paramString.equals("android.permission.READ_CONTACTS"))
-    {
-      str = "android.permission.WRITE_CONTACTS";
-      if (bu.isNullOrNil(str)) {
-        break label128;
-      }
-    }
-    label128:
-    for (;;)
-    {
-      try
+      for (;;)
       {
-        i = b.checkSelfPermission(paramContext, str);
-        if (i != 0) {
-          break label121;
-        }
-        AppMethodBeat.o(140520);
-        return true;
+        paramContext = null;
       }
-      catch (Exception paramContext)
-      {
-        ae.e("Luggage.PermissionUtil", "check mpermission otherPermisson exception:%s.", new Object[] { paramContext });
-        AppMethodBeat.o(140520);
-        return false;
-      }
-      if (!paramString.equals("android.permission.WRITE_CONTACTS")) {
-        break;
-      }
-      str = "android.permission.READ_CONTACTS";
-      break;
-      label121:
-      AppMethodBeat.o(140520);
-      return false;
+      int i = paramContext.getIpAddress();
+      paramContext = String.format("%d.%d.%d.%d", new Object[] { Integer.valueOf(i & 0xFF), Integer.valueOf(i >> 8 & 0xFF), Integer.valueOf(i >> 16 & 0xFF), Integer.valueOf(i >> 24 & 0xFF) });
+      AppMethodBeat.o(221207);
+    }
+    return paramContext;
+  }
+  
+  public static boolean aO(Context paramContext)
+  {
+    AppMethodBeat.i(221209);
+    paramContext = (ConnectivityManager)paramContext.getSystemService("connectivity");
+    if (paramContext != null)
+    {
+      paramContext = paramContext.getNetworkInfo(1);
+      if (paramContext == null) {}
+    }
+    for (boolean bool = paramContext.isConnected();; bool = false)
+    {
+      AppMethodBeat.o(221209);
+      return bool;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.luggage.h.h
  * JD-Core Version:    0.7.0.1
  */

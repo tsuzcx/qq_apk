@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessResult;", "()V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "okFlag", "", "getOkFlag$plugin_appbrand_integration_release", "()I", "setOkFlag$plugin_appbrand_integration_release", "(I)V", "resultCode", "getResultCode$plugin_appbrand_integration_release", "setResultCode$plugin_appbrand_integration_release", "username", "", "getUsername$plugin_appbrand_integration_release", "()Ljava/lang/String;", "setUsername$plugin_appbrand_integration_release", "(Ljava/lang/String;)V", "describeContents", "readParcel", "", "writeToParcel", "dest", "flags", "CREATOR", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessResult;", "()V", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "okFlag", "", "getOkFlag$plugin_appbrand_integration_release", "()I", "setOkFlag$plugin_appbrand_integration_release", "(I)V", "resultCode", "getResultCode$plugin_appbrand_integration_release", "setResultCode$plugin_appbrand_integration_release", "username", "", "getUsername$plugin_appbrand_integration_release", "()Ljava/lang/String;", "setUsername$plugin_appbrand_integration_release", "(Ljava/lang/String;)V", "describeContents", "readParcel", "", "writeToParcel", "dest", "flags", "CREATOR", "plugin-appbrand-integration_release"})
 public final class ProfileResult
   extends AppBrandProxyUIProcessTask.ProcessResult
 {
   public static final a CREATOR;
-  int bZU;
-  int lii;
+  int mnH;
+  int resultCode;
   String username;
   
   static
@@ -28,7 +28,7 @@ public final class ProfileResult
   public ProfileResult(Parcel paramParcel)
   {
     AppMethodBeat.i(50652);
-    j(paramParcel);
+    k(paramParcel);
     AppMethodBeat.o(50652);
   }
   
@@ -37,12 +37,12 @@ public final class ProfileResult
     return 0;
   }
   
-  public final void j(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(50650);
     p.h(paramParcel, "parcel");
-    this.bZU = paramParcel.readInt();
-    this.lii = paramParcel.readInt();
+    this.resultCode = paramParcel.readInt();
+    this.mnH = paramParcel.readInt();
     this.username = paramParcel.readString();
     AppMethodBeat.o(50650);
   }
@@ -51,20 +51,20 @@ public final class ProfileResult
   {
     AppMethodBeat.i(50651);
     p.h(paramParcel, "dest");
-    paramParcel.writeInt(this.bZU);
-    paramParcel.writeInt(this.lii);
+    paramParcel.writeInt(this.resultCode);
+    paramParcel.writeInt(this.mnH);
     paramParcel.writeString(this.username);
     AppMethodBeat.o(50651);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult;", "()V", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult;", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult$CREATOR;", "Landroid/os/Parcelable$Creator;", "Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult;", "()V", "createFromParcel", "source", "Landroid/os/Parcel;", "newArray", "", "size", "", "(I)[Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult;", "plugin-appbrand-integration_release"})
   public static final class a
     implements Parcelable.Creator<ProfileResult>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.profile.ProfileResult
  * JD-Core Version:    0.7.0.1
  */

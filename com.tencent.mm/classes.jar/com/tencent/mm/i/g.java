@@ -9,30 +9,9 @@ public class g
   public int certificateVerifyPolicy = 2;
   public int connectionCount = 1;
   public String customHeader = "";
-  public boolean dPh;
-  public int eRn = -1;
+  public boolean ehd;
   public String emojiExtinfo = "";
   public int expectImageFormat = 1;
-  public boolean fLA = false;
-  public boolean fLB = false;
-  public int fLC;
-  public int fLD = 1;
-  public b fLE;
-  public String fLl = "task_default";
-  public a fLm;
-  public int fLn = -1;
-  public int fLo = -1;
-  public String fLp = "";
-  public int fLq = 0;
-  public int fLr = 0;
-  public String[] fLs = null;
-  public boolean fLt = true;
-  public boolean fLu = false;
-  public boolean fLv = false;
-  public String fLw = "";
-  public Map<String, String> fLx = null;
-  public boolean fLy = false;
-  public boolean fLz = false;
   public int field_advideoflag = 0;
   public String field_aesKey = "";
   public int field_appType = 0;
@@ -49,7 +28,6 @@ public class g
   public String field_filemd5 = "";
   public boolean field_force_aeskeycdn = false;
   public String field_fullpath = "";
-  public boolean field_isColdSnsData = false;
   public boolean field_isSilentTask = false;
   public boolean field_isStreamMedia = false;
   public int field_largesvideo = 0;
@@ -79,45 +57,70 @@ public class g
   public int field_videosource = 0;
   public String field_wxmsgparam = "";
   public byte[] fileBuffer;
+  public int fuQ = -1;
+  public int gqA = -1;
+  public String gqB = "";
+  public int gqC = 0;
+  public int gqD = 0;
+  public String[] gqE = null;
+  public boolean gqF = true;
+  public boolean gqG = false;
+  public boolean gqH = false;
+  public String gqI = "";
+  public Map<String, String> gqJ = null;
+  public boolean gqK = false;
+  public boolean gqL = false;
+  public boolean gqM = false;
+  public boolean gqN = false;
+  public int gqO;
+  public int gqP = 1;
+  public g.b gqQ;
+  public a gqy;
+  public int gqz = -1;
+  public String hlsVideoFlag = "";
+  public boolean isColdSnsData = false;
+  public boolean isHLSVideo = false;
+  public boolean isHotSnsVideo = false;
   public boolean is_resume_task = false;
   public int lastError = 0;
   public long preloadMinSize = 0L;
   public int snsVersion = 0;
+  public String taskName = "task_default";
   public byte[] thumbnailBuffer;
   
-  public final boolean Yb()
+  public final boolean alO()
   {
-    return this.fLD == 2;
+    return this.gqP == 2;
   }
   
-  public final boolean Yc()
+  public final boolean alP()
   {
-    return this.fLD == 3;
+    return this.gqP == 3;
   }
   
-  public final boolean Yd()
+  public final boolean alQ()
   {
-    return this.fLD == 1;
+    return this.gqP == 1;
   }
   
-  public final boolean Ye()
+  public final boolean alR()
   {
-    return this.fLD == 4;
+    return this.gqP == 4;
   }
   
-  public final boolean Yf()
+  public final boolean alS()
   {
-    return this.fLD == 6;
+    return this.gqP == 6;
   }
   
-  public final boolean Yg()
+  public final boolean alT()
   {
-    return this.fLD == 8;
+    return this.gqP == 8;
   }
   
-  public final boolean Yh()
+  public final boolean alU()
   {
-    return this.fLD == 7;
+    return this.gqP == 7;
   }
   
   public static abstract interface a
@@ -128,15 +131,10 @@ public class g
     
     public abstract byte[] f(String paramString, byte[] paramArrayOfByte);
   }
-  
-  public static abstract interface b
-  {
-    public abstract void b(String paramString, d paramd);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.i.g
  * JD-Core Version:    0.7.0.1
  */

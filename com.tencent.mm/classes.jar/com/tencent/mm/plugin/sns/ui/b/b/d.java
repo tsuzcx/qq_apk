@@ -8,28 +8,28 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView;
-import com.tencent.mm.plugin.sns.ad.f.j;
-import com.tencent.mm.plugin.sns.ad.timeline.a.f;
+import com.tencent.mm.plugin.sns.ad.i.m;
+import com.tencent.mm.plugin.sns.ad.timeline.b.g;
 import com.tencent.mm.plugin.sns.ui.OnlineVideoView;
-import com.tencent.mm.plugin.sns.ui.aq;
+import com.tencent.mm.plugin.sns.ui.at;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
 import com.tencent.mm.plugin.sns.ui.item.a.a;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abo;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 public final class d
   extends b
 {
-  a.a AKx;
-  AnimatorSet yLH;
+  AnimatorSet CPA;
+  a.a EUx;
   
   public d(MMActivity paramMMActivity, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
     AppMethodBeat.i(99961);
     this.activity = paramMMActivity;
-    this.AKx = ((a.a)paramBaseViewHolder);
+    this.EUx = ((a.a)paramBaseViewHolder);
     paramMMActivity = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
     paramMMActivity.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
@@ -39,9 +39,9 @@ public final class d
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
         if (f != 1.0F)
         {
-          d.this.AKx.ANL.setScaleX(f);
-          d.this.AKx.ANL.setScaleY(f);
-          d.this.AKx.ANL.setAlpha(f);
+          d.this.EUx.qVR.setScaleX(f);
+          d.this.EUx.qVR.setScaleY(f);
+          d.this.EUx.qVR.setAlpha(f);
         }
         AppMethodBeat.o(99956);
       }
@@ -52,14 +52,14 @@ public final class d
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99957);
-        if (d.this.AKx.guz)
+        if (d.this.EUx.hho)
         {
-          ae.i("MicroMsg.CardAdClickAnimation", "holder is busy");
-          d.this.yLH.end();
+          Log.i("MicroMsg.CardAdClickAnimation", "holder is busy");
+          d.this.CPA.end();
           AppMethodBeat.o(99957);
           return;
         }
-        d.this.AKx.guz = true;
+        d.this.EUx.hho = true;
         AppMethodBeat.o(99957);
       }
     });
@@ -70,45 +70,45 @@ public final class d
       {
         AppMethodBeat.i(99958);
         float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-        d.this.AKx.ANM.setAlpha(f);
+        d.this.EUx.EXY.setAlpha(f);
         AppMethodBeat.o(99958);
       }
     });
     paramBaseViewHolder.setDuration(100L);
-    this.yLH = new AnimatorSet();
-    this.yLH.playTogether(new Animator[] { paramMMActivity, paramBaseViewHolder });
-    this.yLH.addListener(new AnimatorListenerAdapter()
+    this.CPA = new AnimatorSet();
+    this.CPA.playTogether(new Animator[] { paramMMActivity, paramBaseViewHolder });
+    this.CPA.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99960);
-        ae.i("MicroMsg.CardAdClickAnimation", "onAnimation end");
-        d.this.AKx.ANL.setScaleX(1.0F);
-        d.this.AKx.ANL.setScaleY(1.0F);
-        d.this.AKx.ANL.setAlpha(1.0F);
-        d.this.AKx.ANM.setAlpha(1.0F);
-        if (d.this.AKx.ANY) {
-          if (j.x(d.this.AKx.ANX))
+        Log.i("MicroMsg.CardAdClickAnimation", "onAnimation end");
+        d.this.EUx.qVR.setScaleX(1.0F);
+        d.this.EUx.qVR.setScaleY(1.0F);
+        d.this.EUx.qVR.setAlpha(1.0F);
+        d.this.EUx.EXY.setAlpha(1.0F);
+        if (d.this.EUx.EYk) {
+          if (m.G(d.this.EUx.EYj))
           {
-            paramAnonymousAnimator = d.this.AKx.ANX.getChildAt(0);
+            paramAnonymousAnimator = d.this.EUx.EYj.getChildAt(0);
             if ((paramAnonymousAnimator instanceof OnlineVideoView)) {
-              ((OnlineVideoView)paramAnonymousAnimator).aE(0, false);
+              ((OnlineVideoView)paramAnonymousAnimator).aT(0, false);
             }
           }
         }
         label248:
         for (;;)
         {
-          if (d.this.AJZ != null) {
-            d.this.AJZ.onAnimationEnd();
+          if (d.this.ETY != null) {
+            d.this.ETY.onAnimationEnd();
           }
-          d.this.AKx.guz = false;
+          d.this.EUx.hho = false;
           AppMethodBeat.o(99960);
           return;
-          paramAnonymousAnimator = f.b(d.this.AKx);
+          paramAnonymousAnimator = g.b(d.this.EUx);
           int i;
-          if ((paramAnonymousAnimator != null) && (paramAnonymousAnimator.HUG != null)) {
-            if ((paramAnonymousAnimator.HUG.Gtw == 15) || (paramAnonymousAnimator.HUG.Gtw == 5)) {
+          if ((paramAnonymousAnimator != null) && (paramAnonymousAnimator.ContentObj != null)) {
+            if ((paramAnonymousAnimator.ContentObj.LoU == 15) || (paramAnonymousAnimator.ContentObj.LoU == 5)) {
               i = 1;
             }
           }
@@ -117,7 +117,7 @@ public final class d
             if (i == 0) {
               break label248;
             }
-            d.this.AKx.AKJ.AnH.ziA.clear();
+            d.this.EUx.EUK.Ews.Dnr.clear();
             break;
             i = 0;
             continue;
@@ -129,27 +129,27 @@ public final class d
       public final void onAnimationStart(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(99959);
-        ae.i("MicroMsg.CardAdClickAnimation", "onAnimation start");
+        Log.i("MicroMsg.CardAdClickAnimation", "onAnimation start");
         AppMethodBeat.o(99959);
       }
     });
     AppMethodBeat.o(99961);
   }
   
-  public final void AR(long paramLong)
+  public final void JW(long paramLong)
   {
     AppMethodBeat.i(99962);
-    if (!this.yLH.isStarted())
+    if (!this.CPA.isStarted())
     {
-      this.yLH.setStartDelay(paramLong);
-      this.yLH.start();
+      this.CPA.setStartDelay(paramLong);
+      this.CPA.start();
     }
     AppMethodBeat.o(99962);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.b.d
  * JD-Core Version:    0.7.0.1
  */

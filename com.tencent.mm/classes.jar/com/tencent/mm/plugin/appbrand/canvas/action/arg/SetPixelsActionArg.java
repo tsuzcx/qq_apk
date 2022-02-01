@@ -4,8 +4,8 @@ import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -68,24 +68,24 @@ public class SetPixelsActionArg
     return false;
   }
   
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145220);
-    super.h(paramParcel);
-    this.x = paramParcel.readInt();
-    this.y = paramParcel.readInt();
-    this.width = paramParcel.readInt();
-    this.height = paramParcel.readInt();
-    this.bitmap = ((Bitmap)paramParcel.readParcelable(SetPixelsActionArg.class.getClassLoader()));
-    AppMethodBeat.o(145220);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145219);
     int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Integer.valueOf(this.x), Integer.valueOf(this.y), Integer.valueOf(this.width), Integer.valueOf(this.height), this.bitmap });
     AppMethodBeat.o(145219);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145220);
+    super.i(paramParcel);
+    this.x = paramParcel.readInt();
+    this.y = paramParcel.readInt();
+    this.width = paramParcel.readInt();
+    this.height = paramParcel.readInt();
+    this.bitmap = ((Bitmap)paramParcel.readParcelable(SetPixelsActionArg.class.getClassLoader()));
+    AppMethodBeat.o(145220);
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -105,7 +105,7 @@ public class SetPixelsActionArg
     }
     catch (JSONException paramJSONObject)
     {
-      ae.printErrStackTrace("SetPixelsActionArg", paramJSONObject, "", new Object[0]);
+      Log.printErrStackTrace("SetPixelsActionArg", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(145222);
     }
   }
@@ -124,7 +124,7 @@ public class SetPixelsActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetPixelsActionArg
  * JD-Core Version:    0.7.0.1
  */

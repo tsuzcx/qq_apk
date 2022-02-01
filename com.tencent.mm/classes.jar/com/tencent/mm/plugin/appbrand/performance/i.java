@@ -1,21 +1,20 @@
 package com.tencent.mm.plugin.appbrand.performance;
 
 import android.webkit.JavascriptInterface;
-import com.tencent.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.ag;
 import com.tencent.mm.plugin.appbrand.report.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
   implements g
 {
   final String mAppId;
   
-  public i(ad paramad)
+  public i(ag paramag)
   {
     AppMethodBeat.i(175049);
-    this.mAppId = paramad.getAppId();
+    this.mAppId = paramag.getAppId();
     AppMethodBeat.o(175049);
   }
   
@@ -23,7 +22,7 @@ public final class i
   public final void notifyLongTask(final long paramLong)
   {
     AppMethodBeat.i(175050);
-    h.MqF.f(new Runnable()
+    com.tencent.f.h.RTc.b(new Runnable()
     {
       public final void run()
       {
@@ -36,12 +35,11 @@ public final class i
         }
         for (;;)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.dD(1246, i);
-          com.tencent.mm.plugin.report.service.g.yxI.dD(1246, 0);
+          com.tencent.mm.plugin.report.service.h.CyF.dN(1246, i);
+          com.tencent.mm.plugin.report.service.h.CyF.dN(1246, 0);
           str = String.format("%d,%s", new Object[] { Long.valueOf(l), str });
-          a locala = a.mvm;
-          a.f(18794, new Object[] { str });
-          ae.v("MicroMsg.PageLongTaskReporterWC", "doReport %s", new Object[] { str });
+          a.nFX.a(18794, new Object[] { str });
+          Log.v("MicroMsg.PageLongTaskReporterWC", "doReport %s", new Object[] { str });
           AppMethodBeat.o(175048);
           return;
           if ((l > 60L) && (l <= 80L)) {
@@ -65,7 +63,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.i
  * JD-Core Version:    0.7.0.1
  */

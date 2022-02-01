@@ -3,7 +3,7 @@ package com.tencent.toybrick.c;
 import android.os.Handler;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.as;
 import com.tencent.toybrick.f.a;
 import com.tencent.toybrick.g.b.a;
 import com.tencent.toybrick.ui.BaseToyUI;
@@ -11,10 +11,10 @@ import com.tencent.toybrick.ui.BaseToyUI.a;
 
 public abstract class f<S extends f, T extends a>
 {
-  BaseToyUI MFQ;
-  public Runnable MFR;
-  public String MFS;
-  public b.a<S> MFT;
+  BaseToyUI SnR;
+  public Runnable SnS;
+  public String SnT;
+  public b.a<S> SnU;
   public boolean isVisible;
   public Handler mMainHandler;
   
@@ -22,7 +22,7 @@ public abstract class f<S extends f, T extends a>
   
   public abstract int getLayoutResource();
   
-  public abstract T hu(View paramView);
+  public abstract T hM(View paramView);
 }
 
 

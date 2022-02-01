@@ -3,19 +3,20 @@ package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.api.g;
 import com.tencent.mm.plugin.appbrand.config.WxaExposedParams;
 import com.tencent.mm.plugin.appbrand.config.WxaExposedParams.a;
 import com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.WechatNativeExtraDataInvokeFunctionalPage;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApiOpenFeedback;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApi;", "()V", "NAME", "", "getNAME", "()Ljava/lang/String;", "invoke", "", "invokeArgs", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "appOpenBundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApiOpenFeedback;", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalDirectApi;", "()V", "NAME", "", "getNAME", "()Ljava/lang/String;", "invoke", "", "invokeArgs", "Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/WechatNativeExtraDataInvokeFunctionalPage;", "appOpenBundle", "Lcom/tencent/mm/plugin/appbrand/api/WeAppOpenBundle;", "plugin-appbrand-integration_release"})
 public final class f
   implements b
 {
@@ -23,52 +24,52 @@ public final class f
   
   public final void a(WechatNativeExtraDataInvokeFunctionalPage paramWechatNativeExtraDataInvokeFunctionalPage, Context paramContext)
   {
-    AppMethodBeat.i(223684);
+    AppMethodBeat.i(228903);
     p.h(paramWechatNativeExtraDataInvokeFunctionalPage, "invokeArgs");
-    b.a.b(paramWechatNativeExtraDataInvokeFunctionalPage, paramContext);
-    AppMethodBeat.o(223684);
+    b.a.a(paramWechatNativeExtraDataInvokeFunctionalPage, paramContext, null);
+    AppMethodBeat.o(228903);
   }
   
-  public final void a(final WechatNativeExtraDataInvokeFunctionalPage paramWechatNativeExtraDataInvokeFunctionalPage, com.tencent.mm.plugin.appbrand.api.f paramf)
+  public final void a(final WechatNativeExtraDataInvokeFunctionalPage paramWechatNativeExtraDataInvokeFunctionalPage, g paramg)
   {
-    AppMethodBeat.i(223683);
+    AppMethodBeat.i(228902);
     p.h(paramWechatNativeExtraDataInvokeFunctionalPage, "invokeArgs");
-    p.h(paramf, "appOpenBundle");
+    p.h(paramg, "appOpenBundle");
     String str1;
     try
     {
-      paramf = new JSONObject(paramWechatNativeExtraDataInvokeFunctionalPage.lTz);
-      com.tencent.mm.cp.d.baz("com.tencent.mm.intent.ACTION_START_MPTOOLS_PROCESS");
-      str1 = paramf.optString("appId", null);
+      paramg = new JSONObject(paramWechatNativeExtraDataInvokeFunctionalPage.nbc);
+      com.tencent.mm.cr.d.bpI("com.tencent.mm.intent.ACTION_START_MPTOOLS_PROCESS");
+      str1 = paramg.optString("appId", null);
       if (str1 == null)
       {
         b.a.a(this, paramWechatNativeExtraDataInvokeFunctionalPage, null, 6);
-        AppMethodBeat.o(223683);
+        AppMethodBeat.o(228902);
         return;
       }
     }
-    catch (JSONException paramf)
+    catch (JSONException paramg)
     {
       b.a.a(this, paramWechatNativeExtraDataInvokeFunctionalPage, null, 6);
-      AppMethodBeat.o(223683);
+      AppMethodBeat.o(228902);
       return;
     }
-    String str2 = paramf.optString("pageId");
-    int i = paramf.optInt("appVersion", 0);
-    int j = paramf.optInt("versionType", 0);
-    d.b(null, (d.g.a.b)new a(this, paramWechatNativeExtraDataInvokeFunctionalPage, new WxaExposedParams.a().OC(str1).OG(str2).sj(i).sk(j).bfb()));
-    AppMethodBeat.o(223683);
+    String str2 = paramg.optString("pageId");
+    int i = paramg.optInt("appVersion", 0);
+    int j = paramg.optInt("versionType", 0);
+    d.b(null, (kotlin.g.a.b)new a(this, paramWechatNativeExtraDataInvokeFunctionalPage, new WxaExposedParams.a().XN(str1).XR(str2).wf(i).wg(j).bAv()));
+    AppMethodBeat.o(228902);
   }
   
-  public final String btd()
+  public final String bOK()
   {
     return this.NAME;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/MMActivity;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/ui/MMActivity;", "invoke"})
   static final class a
     extends q
-    implements d.g.a.b<MMActivity, z>
+    implements kotlin.g.a.b<MMActivity, x>
   {
     a(f paramf, WechatNativeExtraDataInvokeFunctionalPage paramWechatNativeExtraDataInvokeFunctionalPage, WxaExposedParams paramWxaExposedParams)
     {
@@ -78,7 +79,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi.f
  * JD-Core Version:    0.7.0.1
  */

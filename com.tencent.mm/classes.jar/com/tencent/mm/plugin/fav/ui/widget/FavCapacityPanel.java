@@ -14,28 +14,28 @@ import com.tencent.mm.hellhoundlib.a.a;
 public class FavCapacityPanel
   extends LinearLayout
 {
-  private View.OnClickListener cNE;
-  private LinearLayout rMv;
-  public long rMw;
-  public TextView rMx;
-  public int rMy;
-  public long rMz;
+  private View.OnClickListener dec;
+  private LinearLayout tmh;
+  public long tmi;
+  public TextView tmj;
+  public int tmk;
+  public long tml;
   
   public FavCapacityPanel(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(107504);
-    this.rMy = 0;
-    this.cNE = new View.OnClickListener()
+    this.tmk = 0;
+    this.dec = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(107503);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/fav/ui/widget/FavCapacityPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/fav/ui/widget/FavCapacityPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         paramAnonymousView = new Intent();
-        if (FavCapacityPanel.this.rMy == 0) {
+        if (FavCapacityPanel.this.tmk == 0) {
           paramAnonymousView.putExtra("key_enter_fav_cleanui_from", 1);
         }
         for (;;)
@@ -48,27 +48,27 @@ public class FavCapacityPanel
         }
       }
     };
-    this.rMv = this;
-    paramContext = View.inflate(getContext(), 2131493979, null);
+    this.tmh = this;
+    paramContext = View.inflate(getContext(), 2131494149, null);
     paramContext.measure(-2, -2);
-    paramAttributeSet = paramContext.findViewById(2131299765);
-    View localView = paramContext.findViewById(2131299766);
-    this.rMx = ((TextView)paramContext.findViewById(2131299763));
+    paramAttributeSet = paramContext.findViewById(2131300436);
+    View localView = paramContext.findViewById(2131300437);
+    this.tmj = ((TextView)paramContext.findViewById(2131300434));
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramAttributeSet.getLayoutParams();
     localLayoutParams.width = paramContext.getMeasuredWidth();
     paramAttributeSet.setLayoutParams(localLayoutParams);
-    localView.setOnClickListener(this.cNE);
+    localView.setOnClickListener(this.dec);
     paramAttributeSet = new LinearLayout.LayoutParams(0, -2);
     paramAttributeSet.weight = 1.0F;
-    this.rMv.addView(paramContext, paramAttributeSet);
-    this.rMw = (com.tencent.mm.plugin.fav.a.b.cwe() / 1048576L);
-    this.rMz = (com.tencent.mm.plugin.fav.a.b.cwf() / 1048576L);
-    paramContext = this.rMx;
-    paramAttributeSet = this.rMx.getContext();
-    if (this.rMz - this.rMw > 0L) {}
-    for (long l = this.rMz - this.rMw;; l = 0L)
+    this.tmh.addView(paramContext, paramAttributeSet);
+    this.tmi = (com.tencent.mm.plugin.fav.a.b.cUh() / 1048576L);
+    this.tml = (com.tencent.mm.plugin.fav.a.b.cUi() / 1048576L);
+    paramContext = this.tmj;
+    paramAttributeSet = this.tmj.getContext();
+    if (this.tml - this.tmi > 0L) {}
+    for (long l = this.tml - this.tmi;; l = 0L)
     {
-      paramContext.setText(paramAttributeSet.getString(2131758820, new Object[] { Long.valueOf(l), Long.valueOf(this.rMw) }));
+      paramContext.setText(paramAttributeSet.getString(2131759143, new Object[] { Long.valueOf(l), Long.valueOf(this.tmi) }));
       AppMethodBeat.o(107504);
       return;
     }
@@ -76,7 +76,7 @@ public class FavCapacityPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavCapacityPanel
  * JD-Core Version:    0.7.0.1
  */

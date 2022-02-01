@@ -6,23 +6,23 @@ import com.tencent.mm.ui.MMActivity;
 
 public abstract interface a
 {
-  public abstract void ZG();
-  
-  public abstract void ZH();
-  
-  public abstract void ZI();
-  
-  public abstract boolean ZJ();
-  
   public abstract void a(a.b paramb);
   
   public abstract void a(a.c paramc);
   
   public abstract void a(String paramString1, String paramString2, a.b paramb);
   
+  public abstract void ant();
+  
+  public abstract void anu();
+  
+  public abstract void anv();
+  
+  public abstract boolean anw();
+  
   public abstract void b(a.b paramb);
   
-  public abstract void d(Boolean paramBoolean);
+  public abstract void c(Boolean paramBoolean);
   
   public abstract boolean dispatchKeyEvent(KeyEvent paramKeyEvent);
   
@@ -36,14 +36,19 @@ public abstract interface a
   
   public abstract void onResume();
   
-  public static abstract interface a$a
+  public static final class a
   {
-    public abstract a a(MMActivity paramMMActivity);
+    public static a gCq;
+    
+    public static abstract interface a
+    {
+      public abstract a a(MMActivity paramMMActivity);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.j.a
  * JD-Core Version:    0.7.0.1
  */

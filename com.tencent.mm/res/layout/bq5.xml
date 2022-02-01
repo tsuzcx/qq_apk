@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/hqw" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/c5" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center" android:id="@id/hea" android:background="@drawable/c5a" android:paddingLeft="@dimen/c0" android:paddingTop="2.0dip" android:paddingRight="@dimen/c0" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/bq" android:layout_marginRight="@dimen/ci" android:layout_marginBottom="@dimen/bq" android:text="aaaa" android:lines="1" android:includeFontPadding="false" />
-</FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/hi1" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="13.0dip" android:layout_marginRight="13.0dip" android:minHeight="@dimen/k4">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/k_" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" style="@style/mp" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/his" android:background="@drawable/bt7" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/k5" android:layout_marginRight="@dimen/hv" />
+    </LinearLayout>
+</RelativeLayout>

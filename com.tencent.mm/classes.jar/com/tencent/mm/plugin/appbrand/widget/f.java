@@ -1,60 +1,31 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bf;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class f
-  extends bf
+  extends MAutoStorage<e>
 {
-  public static c.a hGW;
+  public static final String[] iBh;
+  public static final String[] iBi;
   
   static
   {
-    AppMethodBeat.i(76398);
-    c.a locala = new c.a();
-    locala.IBL = new Field[6];
-    locala.columns = new String[7];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "id";
-    locala.IBN.put("id", "TEXT");
-    localStringBuilder.append(" id TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "cacheKey";
-    locala.IBN.put("cacheKey", "TEXT");
-    localStringBuilder.append(" cacheKey TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "appId";
-    locala.IBN.put("appId", "TEXT");
-    localStringBuilder.append(" appId TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "data";
-    locala.IBN.put("data", "TEXT");
-    localStringBuilder.append(" data TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "interval";
-    locala.IBN.put("interval", "INTEGER");
-    localStringBuilder.append(" interval INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "updateTime";
-    locala.IBN.put("updateTime", "LONG");
-    localStringBuilder.append(" updateTime LONG");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    hGW = locala;
-    AppMethodBeat.o(76398);
+    AppMethodBeat.i(76399);
+    iBh = new String[] { MAutoStorage.getCreateSQLs(e.iBg, "DynamicMsgCacheData") };
+    iBi = new String[0];
+    AppMethodBeat.o(76399);
   }
   
-  public final c.a getDBInfo()
+  public f(ISQLiteDatabase paramISQLiteDatabase)
   {
-    return hGW;
+    super(paramISQLiteDatabase, e.iBg, "DynamicMsgCacheData", iBi);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.f
  * JD-Core Version:    0.7.0.1
  */

@@ -7,19 +7,19 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dsh;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.emf;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c$a
   extends l.d
   implements l.b
 {
-  public dsh AWx;
+  public emf Fhq;
   
   public c$a()
   {
     AppMethodBeat.i(130805);
-    this.AWx = new dsh();
+    this.Fhq = new emf();
     AppMethodBeat.o(130805);
   }
   
@@ -36,18 +36,18 @@ public final class c$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(130806);
-    setRsaInfo(ac.fkn());
-    this.AWx.FWl = new SKBuiltinBuffer_t().setBuffer(bu.fpG());
-    this.AWx.setBaseRequest(l.a(this));
-    setPassKey(this.AWx.FWl.getBuffer().toByteArray());
-    byte[] arrayOfByte = this.AWx.toByteArray();
+    setRsaInfo(ac.gtR());
+    this.Fhq.KPW = new SKBuiltinBuffer_t().setBuffer(Util.getUuidRandom());
+    this.Fhq.setBaseRequest(l.a(this));
+    setPassKey(this.Fhq.KPW.getBuffer().toByteArray());
+    byte[] arrayOfByte = this.Fhq.toByteArray();
     AppMethodBeat.o(130806);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.soter.b.c.a
  * JD-Core Version:    0.7.0.1
  */

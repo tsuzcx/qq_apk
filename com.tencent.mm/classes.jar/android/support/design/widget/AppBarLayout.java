@@ -13,9 +13,9 @@ import android.os.Parcelable.Creator;
 import android.support.design.a.a;
 import android.support.design.internal.f;
 import android.support.v4.view.AbsSavedState;
-import android.support.v4.view.ab;
+import android.support.v4.view.ac;
 import android.support.v4.view.p;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -34,17 +34,17 @@ public class AppBarLayout
   extends LinearLayout
 {
   List<a> listeners;
-  private int mQ = -1;
-  private int mR = -1;
   private int mS = -1;
-  boolean mT;
-  int mU = 0;
-  ab mV;
-  private boolean mW;
-  private boolean mZ;
+  private int mT = -1;
+  private int mU = -1;
+  boolean mV;
+  int mW = 0;
+  ac mZ;
   private boolean na;
-  boolean nb;
-  private int[] nc;
+  private boolean nb;
+  private boolean nc;
+  boolean nd;
+  private int[] ne;
   
   public AppBarLayout(Context paramContext)
   {
@@ -57,11 +57,11 @@ public class AppBarLayout
     setOrientation(1);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      q.A(this);
+      q.B(this);
       q.a(this, paramAttributeSet);
     }
-    paramContext = f.a(paramContext, paramAttributeSet, a.a.AppBarLayout, 0, 2131821633, new int[0]);
-    t.a(this, paramContext.getDrawable(0));
+    paramContext = f.a(paramContext, paramAttributeSet, a.a.AppBarLayout, 0, 2131821681, new int[0]);
+    u.a(this, paramContext.getDrawable(0));
     if (paramContext.hasValue(4)) {
       b(paramContext.getBoolean(4, false), false, false);
     }
@@ -77,23 +77,23 @@ public class AppBarLayout
         setTouchscreenBlocksFocus(paramContext.getBoolean(1, false));
       }
     }
-    this.nb = paramContext.getBoolean(5, false);
+    this.nd = paramContext.getBoolean(5, false);
     paramContext.recycle();
-    t.a(this, new p()
+    u.a(this, new p()
     {
-      public final ab a(View paramAnonymousView, ab paramAnonymousab)
+      public final ac a(View paramAnonymousView, ac paramAnonymousac)
       {
         AppBarLayout localAppBarLayout = AppBarLayout.this;
         paramAnonymousView = null;
-        if (t.aq(localAppBarLayout)) {
-          paramAnonymousView = paramAnonymousab;
+        if (u.aq(localAppBarLayout)) {
+          paramAnonymousView = paramAnonymousac;
         }
-        if (!android.support.v4.e.j.equals(localAppBarLayout.mV, paramAnonymousView))
+        if (!android.support.v4.e.j.equals(localAppBarLayout.mZ, paramAnonymousView))
         {
-          localAppBarLayout.mV = paramAnonymousView;
-          localAppBarLayout.bL();
+          localAppBarLayout.mZ = paramAnonymousView;
+          localAppBarLayout.bN();
         }
-        return paramAnonymousab;
+        return paramAnonymousac;
       }
     });
   }
@@ -114,7 +114,7 @@ public class AppBarLayout
     return new LayoutParams(getContext(), paramAttributeSet);
   }
   
-  private static LayoutParams bN()
+  private static LayoutParams bP()
   {
     return new LayoutParams(-2);
   }
@@ -163,7 +163,7 @@ public class AppBarLayout
       if (paramBoolean3) {
         k = 8;
       }
-      this.mU = (k | j | i);
+      this.mW = (k | j | i);
       requestLayout();
       return;
       i = 2;
@@ -171,14 +171,14 @@ public class AppBarLayout
     }
   }
   
-  final void bL()
+  final void bN()
   {
-    this.mQ = -1;
-    this.mR = -1;
     this.mS = -1;
+    this.mT = -1;
+    this.mU = -1;
   }
   
-  public final void bM()
+  public final void bO()
   {
     b(true, true, true);
   }
@@ -190,8 +190,8 @@ public class AppBarLayout
   
   int getDownNestedPreScrollRange()
   {
-    if (this.mR != -1) {
-      return this.mR;
+    if (this.mT != -1) {
+      return this.mT;
     }
     int j = getChildCount() - 1;
     int i = 0;
@@ -200,13 +200,13 @@ public class AppBarLayout
       View localView = getChildAt(j);
       LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
       int k = localView.getMeasuredHeight();
-      int m = localLayoutParams.ns;
+      int m = localLayoutParams.nu;
       if ((m & 0x5) == 5)
       {
         n = localLayoutParams.topMargin;
         i = localLayoutParams.bottomMargin + n + i;
         if ((m & 0x8) != 0) {
-          i += t.af(localView);
+          i += u.ag(localView);
         }
       }
       while (i <= 0) {
@@ -216,7 +216,7 @@ public class AppBarLayout
           j -= 1;
           break;
           if ((m & 0x2) != 0) {
-            i += k - t.af(localView);
+            i += k - u.ag(localView);
           } else {
             i += k - getTopInset();
           }
@@ -224,11 +224,79 @@ public class AppBarLayout
       }
     }
     i = Math.max(0, i);
-    this.mR = i;
+    this.mT = i;
     return i;
   }
   
   int getDownNestedScrollRange()
+  {
+    if (this.mU != -1) {
+      return this.mU;
+    }
+    int k = getChildCount();
+    int j = 0;
+    int i = 0;
+    if (j < k)
+    {
+      View localView = getChildAt(j);
+      LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
+      int n = localView.getMeasuredHeight();
+      int i1 = localLayoutParams.topMargin;
+      int i2 = localLayoutParams.bottomMargin;
+      int m = localLayoutParams.nu;
+      if ((m & 0x1) != 0)
+      {
+        i += n + (i1 + i2);
+        if ((m & 0x2) != 0) {
+          i -= u.ag(localView) + getTopInset();
+        }
+      }
+    }
+    for (;;)
+    {
+      i = Math.max(0, i);
+      this.mU = i;
+      return i;
+      j += 1;
+      break;
+    }
+  }
+  
+  public final int getMinimumHeightForVisibleOverlappingContent()
+  {
+    int j = getTopInset();
+    int i = u.ag(this);
+    if (i != 0) {
+      return i * 2 + j;
+    }
+    i = getChildCount();
+    if (i > 0) {}
+    for (i = u.ag(getChildAt(i - 1)); i != 0; i = 0) {
+      return i * 2 + j;
+    }
+    return getHeight() / 3;
+  }
+  
+  int getPendingAction()
+  {
+    return this.mW;
+  }
+  
+  @Deprecated
+  public float getTargetElevation()
+  {
+    return 0.0F;
+  }
+  
+  final int getTopInset()
+  {
+    if (this.mZ != null) {
+      return this.mZ.getSystemWindowInsetTop();
+    }
+    return 0;
+  }
+  
+  public final int getTotalScrollRange()
   {
     if (this.mS != -1) {
       return this.mS;
@@ -241,88 +309,20 @@ public class AppBarLayout
       View localView = getChildAt(j);
       LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
       int n = localView.getMeasuredHeight();
-      int i1 = localLayoutParams.topMargin;
-      int i2 = localLayoutParams.bottomMargin;
-      int m = localLayoutParams.ns;
-      if ((m & 0x1) != 0)
-      {
-        i += n + (i1 + i2);
-        if ((m & 0x2) != 0) {
-          i -= t.af(localView) + getTopInset();
-        }
-      }
-    }
-    for (;;)
-    {
-      i = Math.max(0, i);
-      this.mS = i;
-      return i;
-      j += 1;
-      break;
-    }
-  }
-  
-  public final int getMinimumHeightForVisibleOverlappingContent()
-  {
-    int j = getTopInset();
-    int i = t.af(this);
-    if (i != 0) {
-      return i * 2 + j;
-    }
-    i = getChildCount();
-    if (i > 0) {}
-    for (i = t.af(getChildAt(i - 1)); i != 0; i = 0) {
-      return i * 2 + j;
-    }
-    return getHeight() / 3;
-  }
-  
-  int getPendingAction()
-  {
-    return this.mU;
-  }
-  
-  @Deprecated
-  public float getTargetElevation()
-  {
-    return 0.0F;
-  }
-  
-  final int getTopInset()
-  {
-    if (this.mV != null) {
-      return this.mV.getSystemWindowInsetTop();
-    }
-    return 0;
-  }
-  
-  public final int getTotalScrollRange()
-  {
-    if (this.mQ != -1) {
-      return this.mQ;
-    }
-    int k = getChildCount();
-    int j = 0;
-    int i = 0;
-    if (j < k)
-    {
-      View localView = getChildAt(j);
-      LayoutParams localLayoutParams = (LayoutParams)localView.getLayoutParams();
-      int n = localView.getMeasuredHeight();
-      int m = localLayoutParams.ns;
+      int m = localLayoutParams.nu;
       if ((m & 0x1) != 0)
       {
         int i1 = localLayoutParams.topMargin;
         i += localLayoutParams.bottomMargin + (n + i1);
         if ((m & 0x2) != 0) {
-          i -= t.af(localView);
+          i -= u.ag(localView);
         }
       }
     }
     for (;;)
     {
       i = Math.max(0, i - getTopInset());
-      this.mQ = i;
+      this.mS = i;
       return i;
       j += 1;
       break;
@@ -336,43 +336,43 @@ public class AppBarLayout
   
   protected int[] onCreateDrawableState(int paramInt)
   {
-    if (this.nc == null) {
-      this.nc = new int[4];
+    if (this.ne == null) {
+      this.ne = new int[4];
     }
-    int[] arrayOfInt1 = this.nc;
+    int[] arrayOfInt1 = this.ne;
     int[] arrayOfInt2 = super.onCreateDrawableState(arrayOfInt1.length + paramInt);
-    if (this.mZ)
+    if (this.nb)
     {
-      paramInt = 2130969481;
+      paramInt = 2130969566;
       arrayOfInt1[0] = paramInt;
-      if ((!this.mZ) || (!this.na)) {
+      if ((!this.nb) || (!this.nc)) {
         break label115;
       }
-      paramInt = 2130969482;
+      paramInt = 2130969567;
       label61:
       arrayOfInt1[1] = paramInt;
-      if (!this.mZ) {
+      if (!this.nb) {
         break label122;
       }
-      paramInt = 2130969480;
+      paramInt = 2130969565;
       label76:
       arrayOfInt1[2] = paramInt;
-      if ((!this.mZ) || (!this.na)) {
+      if ((!this.nb) || (!this.nc)) {
         break label129;
       }
     }
     label129:
-    for (paramInt = 2130969479;; paramInt = -2130969479)
+    for (paramInt = 2130969564;; paramInt = -2130969564)
     {
       arrayOfInt1[3] = paramInt;
       return mergeDrawableStates(arrayOfInt2, arrayOfInt1);
-      paramInt = -2130969481;
+      paramInt = -2130969566;
       break;
       label115:
-      paramInt = -2130969482;
+      paramInt = -2130969567;
       break label61;
       label122:
-      paramInt = -2130969480;
+      paramInt = -2130969565;
       break label76;
     }
   }
@@ -380,18 +380,18 @@ public class AppBarLayout
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    bL();
-    this.mT = false;
+    bN();
+    this.mV = false;
     paramInt2 = getChildCount();
     paramInt1 = 0;
     if (paramInt1 < paramInt2)
     {
-      if (((LayoutParams)getChildAt(paramInt1).getLayoutParams()).nt != null) {
-        this.mT = true;
+      if (((LayoutParams)getChildAt(paramInt1).getLayoutParams()).nv != null) {
+        this.mV = true;
       }
     }
-    else if (!this.mW) {
-      if (!this.nb)
+    else if (!this.na) {
+      if (!this.nd)
       {
         paramInt3 = getChildCount();
         paramInt1 = 0;
@@ -400,7 +400,7 @@ public class AppBarLayout
           break label168;
         }
         LayoutParams localLayoutParams = (LayoutParams)getChildAt(paramInt1).getLayoutParams();
-        if (((localLayoutParams.ns & 0x1) != 1) || ((localLayoutParams.ns & 0xA) == 0)) {
+        if (((localLayoutParams.nu & 0x1) != 1) || ((localLayoutParams.nu & 0xA) == 0)) {
           break label156;
         }
         paramInt2 = 1;
@@ -421,9 +421,9 @@ public class AppBarLayout
     label173:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      if (this.mZ != paramBoolean)
+      if (this.nb != paramBoolean)
       {
-        this.mZ = paramBoolean;
+        this.nb = paramBoolean;
         refreshDrawableState();
       }
       return;
@@ -441,17 +441,17 @@ public class AppBarLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    bL();
+    bN();
   }
   
   public void setExpanded(boolean paramBoolean)
   {
-    b(paramBoolean, t.ay(this), true);
+    b(paramBoolean, u.az(this), true);
   }
   
   public void setLiftOnScroll(boolean paramBoolean)
   {
-    this.nb = paramBoolean;
+    this.nd = paramBoolean;
   }
   
   public void setOrientation(int paramInt)
@@ -472,9 +472,9 @@ public class AppBarLayout
   
   final boolean t(boolean paramBoolean)
   {
-    if (this.na != paramBoolean)
+    if (this.nc != paramBoolean)
     {
-      this.na = paramBoolean;
+      this.nc = paramBoolean;
       refreshDrawableState();
       return true;
     }
@@ -484,14 +484,14 @@ public class AppBarLayout
   public static class BaseBehavior<T extends AppBarLayout>
     extends HeaderBehavior<T>
   {
-    private int ne;
-    private int nf;
-    private ValueAnimator ng;
-    private int nh = -1;
-    private boolean ni;
-    private float nj;
-    private WeakReference<View> nk;
-    private a nl;
+    private int ng;
+    private int nh;
+    private ValueAnimator ni;
+    private int nj = -1;
+    private boolean nk;
+    private float nl;
+    private WeakReference<View> nm;
+    private a nn;
     
     public BaseBehavior() {}
     
@@ -512,7 +512,7 @@ public class AppBarLayout
         k = ((View)localObject).getTop();
         j = ((View)localObject).getBottom();
         localObject = (AppBarLayout.LayoutParams)((View)localObject).getLayoutParams();
-        if (!o(((AppBarLayout.LayoutParams)localObject).ns, 32)) {
+        if (!o(((AppBarLayout.LayoutParams)localObject).nu, 32)) {
           break label99;
         }
         k -= ((AppBarLayout.LayoutParams)localObject).topMargin;
@@ -549,16 +549,16 @@ public class AppBarLayout
     {
       if (paramInt2 == 1)
       {
-        paramInt2 = bO();
+        paramInt2 = bQ();
         if (((paramInt1 < 0) && (paramInt2 == 0)) || ((paramInt1 > 0) && (paramInt2 == -paramT.getDownNestedScrollRange()))) {
-          t.ax(paramView);
+          u.ay(paramView);
         }
       }
     }
     
     private void a(CoordinatorLayout paramCoordinatorLayout, T paramT)
     {
-      int n = bO();
+      int n = bQ();
       int k = a(paramT, n);
       View localView;
       int i1;
@@ -569,7 +569,7 @@ public class AppBarLayout
       {
         localView = paramT.getChildAt(k);
         AppBarLayout.LayoutParams localLayoutParams = (AppBarLayout.LayoutParams)localView.getLayoutParams();
-        i1 = localLayoutParams.ns;
+        i1 = localLayoutParams.nu;
         if ((i1 & 0x11) == 17)
         {
           m = -localView.getTop();
@@ -581,7 +581,7 @@ public class AppBarLayout
           if (!o(i1, 2)) {
             break label179;
           }
-          i = j + t.af(localView);
+          i = j + u.ag(localView);
           k = m;
           m = i;
           j = k;
@@ -605,7 +605,7 @@ public class AppBarLayout
         if (!o(i1, 5)) {
           break;
         }
-        i = t.af(localView) + j;
+        i = u.ag(localView) + j;
         if (n < i)
         {
           k = i;
@@ -621,26 +621,26 @@ public class AppBarLayout
     
     private void a(final CoordinatorLayout paramCoordinatorLayout, final T paramT, int paramInt)
     {
-      int i = Math.abs(bO() - paramInt);
+      int i = Math.abs(bQ() - paramInt);
       float f = Math.abs(0.0F);
       if (f > 0.0F) {}
       int j;
       for (i = Math.round(i / f * 1000.0F) * 3;; i = (int)((i / paramT.getHeight() + 1.0F) * 150.0F))
       {
-        j = bO();
+        j = bQ();
         if (j != paramInt) {
           break;
         }
-        if ((this.ng != null) && (this.ng.isRunning())) {
-          this.ng.cancel();
+        if ((this.ni != null) && (this.ni.isRunning())) {
+          this.ni.cancel();
         }
         return;
       }
-      if (this.ng == null)
+      if (this.ni == null)
       {
-        this.ng = new ValueAnimator();
-        this.ng.setInterpolator(android.support.design.a.a.gM);
-        this.ng.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+        this.ni = new ValueAnimator();
+        this.ni.setInterpolator(android.support.design.a.a.gO);
+        this.ni.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
           public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
           {
@@ -650,11 +650,11 @@ public class AppBarLayout
       }
       for (;;)
       {
-        this.ng.setDuration(Math.min(i, 600));
-        this.ng.setIntValues(new int[] { j, paramInt });
-        this.ng.start();
+        this.ni.setDuration(Math.min(i, 600));
+        this.ni.setIntValues(new int[] { j, paramInt });
+        this.ni.start();
         return;
-        this.ng.cancel();
+        this.ni.cancel();
       }
     }
     
@@ -667,11 +667,11 @@ public class AppBarLayout
       boolean bool1;
       if (localView != null)
       {
-        i = ((AppBarLayout.LayoutParams)localView.getLayoutParams()).ns;
+        i = ((AppBarLayout.LayoutParams)localView.getLayoutParams()).nu;
         if ((i & 0x1) == 0) {
           break label205;
         }
-        j = t.af(localView);
+        j = u.ag(localView);
         if ((paramInt2 <= 0) || ((i & 0xC) == 0)) {
           break label162;
         }
@@ -683,7 +683,7 @@ public class AppBarLayout
       for (;;)
       {
         boolean bool2 = bool1;
-        if (paramT.nb)
+        if (paramT.nd)
         {
           localView = a(paramCoordinatorLayout);
           bool2 = bool1;
@@ -740,14 +740,14 @@ public class AppBarLayout
     
     private static boolean b(CoordinatorLayout paramCoordinatorLayout, T paramT)
     {
-      paramCoordinatorLayout = paramCoordinatorLayout.t(paramT);
+      paramCoordinatorLayout = paramCoordinatorLayout.u(paramT);
       int j = paramCoordinatorLayout.size();
       int i = 0;
       while (i < j)
       {
-        paramT = ((CoordinatorLayout.d)((View)paramCoordinatorLayout.get(i)).getLayoutParams()).qA;
+        paramT = ((CoordinatorLayout.d)((View)paramCoordinatorLayout.get(i)).getLayoutParams()).qC;
         if ((paramT instanceof AppBarLayout.ScrollingViewBehavior)) {
-          return ((AppBarLayout.ScrollingViewBehavior)paramT).se != 0;
+          return ((AppBarLayout.ScrollingViewBehavior)paramT).sh != 0;
         }
         i += 1;
       }
@@ -761,7 +761,7 @@ public class AppBarLayout
     
     public void a(a parama)
     {
-      this.nl = parama;
+      this.nn = parama;
     }
     
     public void a(CoordinatorLayout paramCoordinatorLayout, T paramT, Parcelable paramParcelable)
@@ -769,22 +769,22 @@ public class AppBarLayout
       if ((paramParcelable instanceof SavedState))
       {
         paramParcelable = (SavedState)paramParcelable;
-        super.a(paramCoordinatorLayout, paramT, paramParcelable.Pa);
-        this.nh = paramParcelable.np;
-        this.nj = paramParcelable.nq;
-        this.ni = paramParcelable.nr;
+        super.a(paramCoordinatorLayout, paramT, paramParcelable.Pm);
+        this.nj = paramParcelable.nr;
+        this.nl = paramParcelable.ns;
+        this.nk = paramParcelable.nt;
         return;
       }
       super.a(paramCoordinatorLayout, paramT, paramParcelable);
-      this.nh = -1;
+      this.nj = -1;
     }
     
     public void a(CoordinatorLayout paramCoordinatorLayout, T paramT, View paramView, int paramInt)
     {
-      if ((this.nf == 0) || (paramInt == 1)) {
+      if ((this.nh == 0) || (paramInt == 1)) {
         a(paramCoordinatorLayout, paramT);
       }
-      this.nk = new WeakReference(paramView);
+      this.nm = new WeakReference(paramView);
     }
     
     public void a(CoordinatorLayout paramCoordinatorLayout, T paramT, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -795,7 +795,7 @@ public class AppBarLayout
         b(paramCoordinatorLayout, paramT, paramInt4, -paramT.getDownNestedScrollRange(), 0);
         a(paramInt4, paramT, paramView, paramInt5);
       }
-      if (paramT.nb)
+      if (paramT.nd)
       {
         if (paramView.getScrollY() > 0) {
           bool = true;
@@ -842,7 +842,7 @@ public class AppBarLayout
       if ((paramInt1 & 0x2) != 0)
       {
         bool1 = bool2;
-        if (!paramT.nb)
+        if (!paramT.nd)
         {
           if (paramT.getTotalScrollRange() == 0) {
             break label97;
@@ -863,11 +863,11 @@ public class AppBarLayout
       label109:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        if ((bool1) && (this.ng != null)) {
-          this.ng.cancel();
+        if ((bool1) && (this.ni != null)) {
+          this.ni.cancel();
         }
-        this.nk = null;
-        this.nf = paramInt2;
+        this.nm = null;
+        this.nh = paramInt2;
         return bool1;
         paramInt1 = 0;
         break;
@@ -881,25 +881,25 @@ public class AppBarLayout
       boolean bool = super.a(paramCoordinatorLayout, paramT, paramInt);
       int i = paramT.getPendingAction();
       View localView;
-      if ((this.nh >= 0) && ((i & 0x8) == 0))
+      if ((this.nj >= 0) && ((i & 0x8) == 0))
       {
-        localView = paramT.getChildAt(this.nh);
+        localView = paramT.getChildAt(this.nj);
         paramInt = -localView.getBottom();
-        if (this.ni)
+        if (this.nk)
         {
-          paramInt = t.af(localView) + paramT.getTopInset() + paramInt;
+          paramInt = u.ag(localView) + paramT.getTopInset() + paramInt;
           b(paramCoordinatorLayout, paramT, paramInt);
         }
       }
       for (;;)
       {
-        paramT.mU = 0;
-        this.nh = -1;
-        G(android.support.v4.b.a.clamp(bR(), -paramT.getTotalScrollRange(), 0));
-        a(paramCoordinatorLayout, paramT, bR(), 0, true);
-        paramT.F(bR());
+        paramT.mW = 0;
+        this.nj = -1;
+        G(android.support.v4.b.a.clamp(bT(), -paramT.getTotalScrollRange(), 0));
+        a(paramCoordinatorLayout, paramT, bT(), 0, true);
+        paramT.F(bT());
         return bool;
-        paramInt = Math.round(localView.getHeight() * this.nj) + paramInt;
+        paramInt = Math.round(localView.getHeight() * this.nl) + paramInt;
         break;
         if (i != 0)
         {
@@ -933,16 +933,16 @@ public class AppBarLayout
       }
     }
     
-    final int bO()
+    final int bQ()
     {
-      return bR() + this.ne;
+      return bT() + this.ng;
     }
     
     public Parcelable c(CoordinatorLayout paramCoordinatorLayout, T paramT)
     {
       boolean bool = false;
       Object localObject = super.b(paramCoordinatorLayout, paramT);
-      int j = bR();
+      int j = bT();
       int k = paramT.getChildCount();
       int i = 0;
       while (i < k)
@@ -952,12 +952,12 @@ public class AppBarLayout
         if ((paramCoordinatorLayout.getTop() + j <= 0) && (m >= 0))
         {
           localObject = new SavedState((Parcelable)localObject);
-          ((SavedState)localObject).np = i;
-          if (m == t.af(paramCoordinatorLayout) + paramT.getTopInset()) {
+          ((SavedState)localObject).nr = i;
+          if (m == u.ag(paramCoordinatorLayout) + paramT.getTopInset()) {
             bool = true;
           }
-          ((SavedState)localObject).nr = bool;
-          ((SavedState)localObject).nq = (m / paramCoordinatorLayout.getHeight());
+          ((SavedState)localObject).nt = bool;
+          ((SavedState)localObject).ns = (m / paramCoordinatorLayout.getHeight());
           return localObject;
         }
         i += 1;
@@ -969,19 +969,19 @@ public class AppBarLayout
       extends AbsSavedState
     {
       public static final Parcelable.Creator<SavedState> CREATOR = new Parcelable.ClassLoaderCreator() {};
-      int np;
-      float nq;
-      boolean nr;
+      int nr;
+      float ns;
+      boolean nt;
       
       public SavedState(Parcel paramParcel, ClassLoader paramClassLoader)
       {
         super(paramClassLoader);
-        this.np = paramParcel.readInt();
-        this.nq = paramParcel.readFloat();
+        this.nr = paramParcel.readInt();
+        this.ns = paramParcel.readFloat();
         if (paramParcel.readByte() != 0) {}
         for (boolean bool = true;; bool = false)
         {
-          this.nr = bool;
+          this.nt = bool;
           return;
         }
       }
@@ -994,9 +994,9 @@ public class AppBarLayout
       public void writeToParcel(Parcel paramParcel, int paramInt)
       {
         super.writeToParcel(paramParcel, paramInt);
-        paramParcel.writeInt(this.np);
-        paramParcel.writeFloat(this.nq);
-        if (this.nr) {}
+        paramParcel.writeInt(this.nr);
+        paramParcel.writeFloat(this.ns);
+        if (this.nt) {}
         for (paramInt = 1;; paramInt = 0)
         {
           paramParcel.writeByte((byte)paramInt);
@@ -1007,7 +1007,7 @@ public class AppBarLayout
     
     public static abstract class a<T extends AppBarLayout>
     {
-      public abstract boolean bQ();
+      public abstract boolean bS();
     }
   }
   
@@ -1025,8 +1025,8 @@ public class AppBarLayout
   public static class LayoutParams
     extends LinearLayout.LayoutParams
   {
-    public int ns = 1;
-    Interpolator nt;
+    public int nu = 1;
+    Interpolator nv;
     
     public LayoutParams(int paramInt)
     {
@@ -1037,9 +1037,9 @@ public class AppBarLayout
     {
       super(paramAttributeSet);
       paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.AppBarLayout_Layout);
-      this.ns = paramAttributeSet.getInt(0, 0);
+      this.nu = paramAttributeSet.getInt(0, 0);
       if (paramAttributeSet.hasValue(1)) {
-        this.nt = AnimationUtils.loadInterpolator(paramContext, paramAttributeSet.getResourceId(1, 0));
+        this.nv = AnimationUtils.loadInterpolator(paramContext, paramAttributeSet.getResourceId(1, 0));
       }
       paramAttributeSet.recycle();
     }
@@ -1069,7 +1069,7 @@ public class AppBarLayout
     {
       super(paramAttributeSet);
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ScrollingViewBehavior_Layout);
-      this.se = paramContext.getDimensionPixelSize(0, 0);
+      this.sh = paramContext.getDimensionPixelSize(0, 0);
       paramContext.recycle();
     }
     
@@ -1090,11 +1090,11 @@ public class AppBarLayout
     
     public final boolean a(CoordinatorLayout paramCoordinatorLayout, View paramView, Rect paramRect, boolean paramBoolean)
     {
-      AppBarLayout localAppBarLayout = d(paramCoordinatorLayout.s(paramView));
+      AppBarLayout localAppBarLayout = d(paramCoordinatorLayout.t(paramView));
       if (localAppBarLayout != null)
       {
         paramRect.offset(paramView.getLeft(), paramView.getTop());
-        paramView = this.sa;
+        paramView = this.se;
         paramView.set(0, 0, paramCoordinatorLayout.getWidth(), paramCoordinatorLayout.getHeight());
         if (!paramView.contains(paramRect))
         {
@@ -1111,18 +1111,18 @@ public class AppBarLayout
     
     public final boolean a(CoordinatorLayout paramCoordinatorLayout, View paramView1, View paramView2)
     {
-      paramCoordinatorLayout = ((CoordinatorLayout.d)paramView2.getLayoutParams()).qA;
+      paramCoordinatorLayout = ((CoordinatorLayout.d)paramView2.getLayoutParams()).qC;
       if ((paramCoordinatorLayout instanceof AppBarLayout.BaseBehavior))
       {
         paramCoordinatorLayout = (AppBarLayout.BaseBehavior)paramCoordinatorLayout;
         int i = paramView2.getBottom();
         int j = paramView1.getTop();
-        t.s(paramView1, AppBarLayout.BaseBehavior.a(paramCoordinatorLayout) + (i - j) + this.sd - v(paramView2));
+        u.s(paramView1, AppBarLayout.BaseBehavior.a(paramCoordinatorLayout) + (i - j) + this.sg - w(paramView2));
       }
       if ((paramView2 instanceof AppBarLayout))
       {
         paramCoordinatorLayout = (AppBarLayout)paramView2;
-        if (paramCoordinatorLayout.nb) {
+        if (paramCoordinatorLayout.nd) {
           if (paramView1.getScrollY() <= 0) {
             break label98;
           }
@@ -1148,9 +1148,9 @@ public class AppBarLayout
         paramView = (AppBarLayout)paramView;
         int j = paramView.getTotalScrollRange();
         int k = paramView.getDownNestedPreScrollRange();
-        paramView = ((CoordinatorLayout.d)paramView.getLayoutParams()).qA;
+        paramView = ((CoordinatorLayout.d)paramView.getLayoutParams()).qC;
         if ((paramView instanceof AppBarLayout.BaseBehavior)) {}
-        for (int i = ((AppBarLayout.BaseBehavior)paramView).bO(); (k != 0) && (j + i <= k); i = 0) {
+        for (int i = ((AppBarLayout.BaseBehavior)paramView).bQ(); (k != 0) && (j + i <= k); i = 0) {
           return 0.0F;
         }
         j -= k;

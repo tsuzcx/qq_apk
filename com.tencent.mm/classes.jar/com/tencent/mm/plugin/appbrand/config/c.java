@@ -1,40 +1,86 @@
 package com.tencent.mm.plugin.appbrand.config;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.l;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.l;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfigTrimHelper;", "", "()V", "TAG", "", "trimOffInjectConfigFields", "", "appId", "injectConfig", "Lorg/json/JSONObject;", "pruneWxConfigByPage", "", "luggage-wxa-app_release"})
 public final class c
-  extends l
 {
-  public static final c.a hGW;
+  public static final c lcF;
   
   static
   {
-    AppMethodBeat.i(146955);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "key";
-    locala.IBN.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IBM = "key";
-    locala.columns[1] = "value";
-    locala.IBN.put("value", "TEXT");
-    localStringBuilder.append(" value TEXT");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    hGW = locala;
-    AppMethodBeat.o(146955);
+    AppMethodBeat.i(135557);
+    lcF = new c();
+    AppMethodBeat.o(135557);
   }
   
-  public final c.a getDBInfo()
+  public static final void a(String paramString, JSONObject paramJSONObject, boolean paramBoolean)
   {
-    return hGW;
+    int j = 0;
+    AppMethodBeat.i(135556);
+    p.h(paramString, "appId");
+    p.h(paramJSONObject, "injectConfig");
+    long l1 = Util.nowMilliSecond();
+    Object localObject = paramJSONObject.optJSONObject("tabBar");
+    int k;
+    int i;
+    if (localObject != null)
+    {
+      localObject = ((JSONObject)localObject).optJSONArray("list");
+      if (localObject != null)
+      {
+        k = ((JSONArray)localObject).length();
+        i = 0;
+        while (i < k)
+        {
+          ((JSONArray)localObject).getJSONObject(i).remove("iconData");
+          ((JSONArray)localObject).getJSONObject(i).remove("selectedIconData");
+          i += 1;
+        }
+      }
+    }
+    localObject = paramJSONObject.optJSONArray("subPackages");
+    if (localObject != null)
+    {
+      k = ((JSONArray)localObject).length();
+      i = 0;
+      while (i < k)
+      {
+        ((JSONArray)localObject).getJSONObject(i).remove("pages");
+        i += 1;
+      }
+    }
+    localObject = paramJSONObject.optJSONArray("subpackages");
+    if (localObject != null)
+    {
+      k = ((JSONArray)localObject).length();
+      i = j;
+      while (i < k)
+      {
+        ((JSONArray)localObject).getJSONObject(i).remove("pages");
+        i += 1;
+      }
+    }
+    if (paramBoolean)
+    {
+      paramJSONObject.remove("page");
+      paramJSONObject.remove("preloadRule");
+    }
+    paramJSONObject.remove("preloadResources");
+    paramJSONObject.remove("preloadSubpackages");
+    paramJSONObject.remove("manualSplashScreen");
+    paramJSONObject.remove("useCommandBuffer");
+    paramJSONObject.remove("permission");
+    paramJSONObject.remove("navigateToMiniProgramAppIdList");
+    long l2 = Util.nowMilliSecond();
+    Log.d("Luggage.WXA.AppBrandAppConfigTrimHelper", "trimOffInjectConfigFields appId[" + paramString + "] cost[" + (l2 - l1) + "ms]");
+    AppMethodBeat.o(135556);
   }
 }
 

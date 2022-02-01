@@ -3,28 +3,28 @@ package com.tencent.mm.media.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.am;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.ar;
+import com.tencent.mm.vfs.s;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/remuxer/RemuxConfig;", "", "()V", "Companion", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/remuxer/RemuxConfig;", "", "()V", "Companion", "plugin-mediaeditor_release"})
 public final class j
 {
-  public static final a hpS;
+  public static final a ijn;
   
   static
   {
     AppMethodBeat.i(93836);
-    hpS = new a((byte)0);
+    ijn = new a((byte)0);
     AppMethodBeat.o(93836);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/remuxer/RemuxConfig$Companion;", "", "()V", "getAudioCpFile", "", "filePath", "getCpVideoFile", "file", "plugin-mediaeditor_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/remuxer/RemuxConfig$Companion;", "", "()V", "getAudioCpFile", "", "filePath", "getCpVideoFile", "file", "plugin-mediaeditor_release"})
   public static final class a
   {
-    public static String yP(String paramString)
+    public static String Ho(String paramString)
     {
       AppMethodBeat.i(93834);
       p.h(paramString, "filePath");
@@ -33,26 +33,26 @@ public final class j
       return paramString;
     }
     
-    public static String yQ(String paramString)
+    public static String Hp(String paramString)
     {
       AppMethodBeat.i(93835);
       p.h(paramString, "file");
-      if (ak.coh())
+      if (MMApplicationContext.isMainProcess())
       {
         localObject = new StringBuilder();
-        e locale = g.ajR();
+        e locale = g.aAh();
         p.g(locale, "MMKernel.storage()");
-        localObject = locale.ajw() + "videoMix/";
-        o.aZI((String)localObject);
-        paramString = (String)localObject + o.aRh(paramString) + "_cp_video.temp";
+        localObject = locale.azM() + "videoMix/";
+        s.boN((String)localObject);
+        paramString = (String)localObject + s.bhK(paramString) + "_cp_video.temp";
         AppMethodBeat.o(93835);
         return paramString;
       }
-      Object localObject = am.IKh + "tmp";
-      if (!o.fB((String)localObject)) {
-        o.aZI((String)localObject);
+      Object localObject = ar.NSe + "tmp";
+      if (!s.YS((String)localObject)) {
+        s.boN((String)localObject);
       }
-      paramString = (String)localObject + "/" + o.aRh(paramString) + "_cp_video.temp";
+      paramString = (String)localObject + "/" + s.bhK(paramString) + "_cp_video.temp";
       AppMethodBeat.o(93835);
       return paramString;
     }

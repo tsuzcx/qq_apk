@@ -2,95 +2,64 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class ak
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEL;
-  private static final int eGD;
-  private static final int eGY = "username".hashCode();
-  private static final int eGZ;
-  private static final int eKW = "bitFlag".hashCode();
-  private static final int eMe;
-  private static final int eMf;
-  private static final int eMg;
-  private static final int eMh;
-  private static final int eMi;
-  private static final int eMj;
-  private static final int eMk;
-  private static final int eMl;
-  private static final int eMm;
-  private static final int eMn;
-  private static final int eMo;
-  private static final int eMp;
-  private static final int eMq;
-  private static final int eMr;
+  private static final int fpg = "qyUin".hashCode();
+  private static final int fph = "userUin".hashCode();
+  private static final int fpi = "userFlag".hashCode();
+  private static final int fpj = "wwExposeTimes".hashCode();
+  private static final int fpk = "wwMaxExposeTimes".hashCode();
+  private static final int fpl = "wwCorpId".hashCode();
+  private static final int fpm = "wwUserVid".hashCode();
+  private static final int fpn = "userType".hashCode();
+  private static final int fpo = "chatOpen".hashCode();
+  private static final int fpp = "wwUnreadCnt".hashCode();
+  private static final int fpq = "show_confirm".hashCode();
+  private static final int fpr = "use_preset_banner_tips".hashCode();
+  private static final int fpt = "hide_create_chat".hashCode();
+  private static final int fpu = "hide_mod_chat_member".hashCode();
+  private static final int fpv = "hide_colleage_invite".hashCode();
+  private static final int fpw = "raw_attrs".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private boolean __hadSettype = true;
-  private boolean eEI = true;
-  private boolean eGV = true;
-  private boolean eGW = true;
-  private boolean eGm = true;
-  private boolean eKJ = true;
-  private boolean eLQ = true;
-  private boolean eLR = true;
-  private boolean eLS = true;
-  private boolean eLT = true;
-  private boolean eLU = true;
-  private boolean eLV = true;
-  private boolean eLW = true;
-  private boolean eLX = true;
-  private boolean eLY = true;
-  private boolean eLZ = true;
-  private boolean eMa = true;
-  private boolean eMb = true;
-  private boolean eMc = true;
-  private boolean eMd = true;
-  public int field_acceptType;
-  public String field_appId;
-  public String field_attrSyncVersion;
-  public int field_bitFlag;
-  public int field_brandFlag;
-  public String field_brandIconURL;
-  public String field_brandInfo;
-  public String field_brandList;
-  public String field_brandListContent;
-  public String field_brandListVersion;
-  public String field_enterpriseFather;
-  public String field_extInfo;
-  public int field_hadAlert;
-  public long field_incrementUpdateTime;
-  public String field_kfWorkerId;
-  public int field_specialType;
-  public int field_status;
-  public int field_type;
-  public long field_updateTime;
-  public String field_username;
-  
-  static
-  {
-    eGD = "appId".hashCode();
-    eMe = "brandList".hashCode();
-    eMf = "brandListVersion".hashCode();
-    eMg = "brandListContent".hashCode();
-    eMh = "brandFlag".hashCode();
-    eMi = "extInfo".hashCode();
-    eMj = "brandInfo".hashCode();
-    eMk = "brandIconURL".hashCode();
-    eGZ = "updateTime".hashCode();
-    eMl = "hadAlert".hashCode();
-    eMm = "acceptType".hashCode();
-    type_HASHCODE = "type".hashCode();
-    eEL = "status".hashCode();
-    eMn = "enterpriseFather".hashCode();
-    eMo = "kfWorkerId".hashCode();
-    eMp = "specialType".hashCode();
-    eMq = "attrSyncVersion".hashCode();
-    eMr = "incrementUpdateTime".hashCode();
-  }
+  private static final int userName_HASHCODE = "userName".hashCode();
+  private boolean __hadSetuserName = true;
+  public boolean field_chatOpen;
+  public boolean field_hide_colleage_invite;
+  public boolean field_hide_create_chat;
+  public boolean field_hide_mod_chat_member;
+  public int field_qyUin;
+  public byte[] field_raw_attrs;
+  public boolean field_show_confirm;
+  public boolean field_use_preset_banner_tips;
+  public int field_userFlag;
+  public String field_userName;
+  public int field_userType;
+  public int field_userUin;
+  public long field_wwCorpId;
+  public int field_wwExposeTimes;
+  public int field_wwMaxExposeTimes;
+  public int field_wwUnreadCnt;
+  public long field_wwUserVid;
+  private boolean foQ = true;
+  private boolean foR = true;
+  private boolean foS = true;
+  private boolean foT = true;
+  private boolean foU = true;
+  private boolean foV = true;
+  private boolean foW = true;
+  private boolean foX = true;
+  private boolean foY = true;
+  private boolean foZ = true;
+  private boolean fpa = true;
+  private boolean fpb = true;
+  private boolean fpc = true;
+  private boolean fpd = true;
+  private boolean fpe = true;
+  private boolean fpf = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -98,18 +67,18 @@ public abstract class ak
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGY != k) {
+      if (userName_HASHCODE != k) {
         break label65;
       }
-      this.field_username = paramCursor.getString(i);
-      this.eGV = true;
+      this.field_userName = paramCursor.getString(i);
+      this.__hadSetuserName = true;
     }
     for (;;)
     {
@@ -117,46 +86,107 @@ public abstract class ak
       break label20;
       break;
       label65:
-      if (eGD == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (eMe == k) {
-        this.field_brandList = paramCursor.getString(i);
-      } else if (eMf == k) {
-        this.field_brandListVersion = paramCursor.getString(i);
-      } else if (eMg == k) {
-        this.field_brandListContent = paramCursor.getString(i);
-      } else if (eMh == k) {
-        this.field_brandFlag = paramCursor.getInt(i);
-      } else if (eMi == k) {
-        this.field_extInfo = paramCursor.getString(i);
-      } else if (eMj == k) {
-        this.field_brandInfo = paramCursor.getString(i);
-      } else if (eMk == k) {
-        this.field_brandIconURL = paramCursor.getString(i);
-      } else if (eGZ == k) {
-        this.field_updateTime = paramCursor.getLong(i);
-      } else if (eMl == k) {
-        this.field_hadAlert = paramCursor.getInt(i);
-      } else if (eMm == k) {
-        this.field_acceptType = paramCursor.getInt(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (eEL == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (eMn == k) {
-        this.field_enterpriseFather = paramCursor.getString(i);
-      } else if (eMo == k) {
-        this.field_kfWorkerId = paramCursor.getString(i);
-      } else if (eMp == k) {
-        this.field_specialType = paramCursor.getInt(i);
-      } else if (eMq == k) {
-        this.field_attrSyncVersion = paramCursor.getString(i);
-      } else if (eMr == k) {
-        this.field_incrementUpdateTime = paramCursor.getLong(i);
-      } else if (eKW == k) {
-        this.field_bitFlag = paramCursor.getInt(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      if (fpg == k)
+      {
+        this.field_qyUin = paramCursor.getInt(i);
+      }
+      else if (fph == k)
+      {
+        this.field_userUin = paramCursor.getInt(i);
+      }
+      else if (fpi == k)
+      {
+        this.field_userFlag = paramCursor.getInt(i);
+      }
+      else if (fpj == k)
+      {
+        this.field_wwExposeTimes = paramCursor.getInt(i);
+      }
+      else if (fpk == k)
+      {
+        this.field_wwMaxExposeTimes = paramCursor.getInt(i);
+      }
+      else if (fpl == k)
+      {
+        this.field_wwCorpId = paramCursor.getLong(i);
+      }
+      else if (fpm == k)
+      {
+        this.field_wwUserVid = paramCursor.getLong(i);
+      }
+      else if (fpn == k)
+      {
+        this.field_userType = paramCursor.getInt(i);
+      }
+      else
+      {
+        boolean bool;
+        if (fpo == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (bool = true;; bool = false)
+          {
+            this.field_chatOpen = bool;
+            break;
+          }
+        }
+        if (fpp == k)
+        {
+          this.field_wwUnreadCnt = paramCursor.getInt(i);
+        }
+        else
+        {
+          if (fpq == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_show_confirm = bool;
+              break;
+            }
+          }
+          if (fpr == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_use_preset_banner_tips = bool;
+              break;
+            }
+          }
+          if (fpt == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_hide_create_chat = bool;
+              break;
+            }
+          }
+          if (fpu == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_hide_mod_chat_member = bool;
+              break;
+            }
+          }
+          if (fpv == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_hide_colleage_invite = bool;
+              break;
+            }
+          }
+          if (fpw == k) {
+            this.field_raw_attrs = paramCursor.getBlob(i);
+          } else if (rowid_HASHCODE == k) {
+            this.systemRowid = paramCursor.getLong(i);
+          }
+        }
       }
     }
   }
@@ -164,68 +194,56 @@ public abstract class ak
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
+    if (this.__hadSetuserName) {
+      localContentValues.put("userName", this.field_userName);
     }
-    if (this.eGm) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.foQ) {
+      localContentValues.put("qyUin", Integer.valueOf(this.field_qyUin));
     }
-    if (this.field_brandList == null) {
-      this.field_brandList = "";
+    if (this.foR) {
+      localContentValues.put("userUin", Integer.valueOf(this.field_userUin));
     }
-    if (this.eLQ) {
-      localContentValues.put("brandList", this.field_brandList);
+    if (this.foS) {
+      localContentValues.put("userFlag", Integer.valueOf(this.field_userFlag));
     }
-    if (this.eLR) {
-      localContentValues.put("brandListVersion", this.field_brandListVersion);
+    if (this.foT) {
+      localContentValues.put("wwExposeTimes", Integer.valueOf(this.field_wwExposeTimes));
     }
-    if (this.eLS) {
-      localContentValues.put("brandListContent", this.field_brandListContent);
+    if (this.foU) {
+      localContentValues.put("wwMaxExposeTimes", Integer.valueOf(this.field_wwMaxExposeTimes));
     }
-    if (this.eLT) {
-      localContentValues.put("brandFlag", Integer.valueOf(this.field_brandFlag));
+    if (this.foV) {
+      localContentValues.put("wwCorpId", Long.valueOf(this.field_wwCorpId));
     }
-    if (this.eLU) {
-      localContentValues.put("extInfo", this.field_extInfo);
+    if (this.foW) {
+      localContentValues.put("wwUserVid", Long.valueOf(this.field_wwUserVid));
     }
-    if (this.eLV) {
-      localContentValues.put("brandInfo", this.field_brandInfo);
+    if (this.foX) {
+      localContentValues.put("userType", Integer.valueOf(this.field_userType));
     }
-    if (this.eLW) {
-      localContentValues.put("brandIconURL", this.field_brandIconURL);
+    if (this.foY) {
+      localContentValues.put("chatOpen", Boolean.valueOf(this.field_chatOpen));
     }
-    if (this.eGW) {
-      localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
+    if (this.foZ) {
+      localContentValues.put("wwUnreadCnt", Integer.valueOf(this.field_wwUnreadCnt));
     }
-    if (this.eLX) {
-      localContentValues.put("hadAlert", Integer.valueOf(this.field_hadAlert));
+    if (this.fpa) {
+      localContentValues.put("show_confirm", Boolean.valueOf(this.field_show_confirm));
     }
-    if (this.eLY) {
-      localContentValues.put("acceptType", Integer.valueOf(this.field_acceptType));
+    if (this.fpb) {
+      localContentValues.put("use_preset_banner_tips", Boolean.valueOf(this.field_use_preset_banner_tips));
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
+    if (this.fpc) {
+      localContentValues.put("hide_create_chat", Boolean.valueOf(this.field_hide_create_chat));
     }
-    if (this.eEI) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.fpd) {
+      localContentValues.put("hide_mod_chat_member", Boolean.valueOf(this.field_hide_mod_chat_member));
     }
-    if (this.eLZ) {
-      localContentValues.put("enterpriseFather", this.field_enterpriseFather);
+    if (this.fpe) {
+      localContentValues.put("hide_colleage_invite", Boolean.valueOf(this.field_hide_colleage_invite));
     }
-    if (this.eMa) {
-      localContentValues.put("kfWorkerId", this.field_kfWorkerId);
-    }
-    if (this.eMb) {
-      localContentValues.put("specialType", Integer.valueOf(this.field_specialType));
-    }
-    if (this.eMc) {
-      localContentValues.put("attrSyncVersion", this.field_attrSyncVersion);
-    }
-    if (this.eMd) {
-      localContentValues.put("incrementUpdateTime", Long.valueOf(this.field_incrementUpdateTime));
-    }
-    if (this.eKJ) {
-      localContentValues.put("bitFlag", Integer.valueOf(this.field_bitFlag));
+    if (this.fpf) {
+      localContentValues.put("raw_attrs", this.field_raw_attrs);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

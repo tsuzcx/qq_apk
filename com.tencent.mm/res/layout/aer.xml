@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="@dimen/u2"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tenpay.android.wechat.TenpaySecureEditText android:gravity="center_vertical" android:id="@id/gwo" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="48.0dip" android:singleLine="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@color/ac_" android:layout_width="wrap_content" android:layout_height="@dimen/u2"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_5" android:ellipsize="end" android:id="@id/b9k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginRight="@dimen/ce" android:maxLines="2" />
+    </LinearLayout>
+    <View android:layout_gravity="bottom" android:id="@id/brt" android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="@dimen/tv" />
+</LinearLayout>

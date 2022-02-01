@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.wallet_core.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.au.b.a;
+import com.tencent.mm.model.ay.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 
 final class WalletOrderInfoOldUI$6
-  implements au.b.a
+  implements ay.b.a
 {
   WalletOrderInfoOldUI$6(WalletOrderInfoOldUI paramWalletOrderInfoOldUI) {}
   
   public final void p(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(71048);
-    an localan = ((l)g.ab(l.class)).azF().BH(paramString);
-    ae.d("MicroMsg.WalletOrderInfoOldUI", "call back from contactServer " + paramString + " succ: " + paramBoolean);
-    this.Dzg.ag(localan);
+    as localas = ((l)g.af(l.class)).aSN().Kn(paramString);
+    Log.d("MicroMsg.WalletOrderInfoOldUI", "call back from contactServer " + paramString + " succ: " + paramBoolean);
+    this.Iir.ai(localas);
     AppMethodBeat.o(71048);
   }
 }

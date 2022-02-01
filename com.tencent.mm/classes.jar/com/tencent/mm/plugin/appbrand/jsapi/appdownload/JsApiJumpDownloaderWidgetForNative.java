@@ -9,14 +9,14 @@ import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.s;
 import com.tencent.mm.plugin.downloader_app.api.a.c;
 import com.tencent.mm.plugin.downloader_app.api.c;
 
 public final class JsApiJumpDownloaderWidgetForNative
-  extends a<r>
+  extends d<s>
 {
   public static final int CTRL_INDEX = 671;
   public static final String NAME = "jumpDownloaderWidgetForNative";
@@ -39,16 +39,16 @@ public final class JsApiJumpDownloaderWidgetForNative
     JumpDownloadWidgetRequest(Parcel paramParcel)
     {
       AppMethodBeat.i(45828);
-      j(paramParcel);
+      k(paramParcel);
       AppMethodBeat.o(45828);
     }
     
-    public final Class<? extends AppBrandProxyUIProcessTask> bhv()
+    public final Class<? extends AppBrandProxyUIProcessTask> bCJ()
     {
       return JsApiJumpDownloaderWidgetForNative.a.class;
     }
     
-    public final boolean biA()
+    public final boolean bDN()
     {
       return true;
     }
@@ -58,7 +58,7 @@ public final class JsApiJumpDownloaderWidgetForNative
       return 0;
     }
     
-    public final void j(Parcel paramParcel)
+    public final void k(Parcel paramParcel)
     {
       AppMethodBeat.i(45826);
       this.appId = paramParcel.readString();
@@ -85,9 +85,9 @@ public final class JsApiJumpDownloaderWidgetForNative
         Intent localIntent = new Intent();
         localIntent.putExtra("appId", paramProcessRequest);
         localIntent.putExtra("view_task", true);
-        ((c)g.ab(c.class)).a(bis(), localIntent, new a.c()
+        ((c)g.af(c.class)).a(bDF(), localIntent, new a.c()
         {
-          public final void bjj()
+          public final void bEx()
           {
             AppMethodBeat.i(45830);
             JsApiJumpDownloaderWidgetForNative.a.a(JsApiJumpDownloaderWidgetForNative.a.this);
@@ -102,7 +102,7 @@ public final class JsApiJumpDownloaderWidgetForNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.appdownload.JsApiJumpDownloaderWidgetForNative
  * JD-Core Version:    0.7.0.1
  */

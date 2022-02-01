@@ -1,67 +1,67 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dmw;
-import com.tencent.mm.protocal.protobuf.dmx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.egn;
+import com.tencent.mm.protocal.protobuf.ego;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
   extends f
 {
-  public int BFF;
+  public int FQw;
   public int actionType;
-  private com.tencent.mm.ak.f callback;
-  private final b rr;
+  private i callback;
+  private final com.tencent.mm.ak.d rr;
   private int sceneType;
-  private final String vpL;
+  private final String yJB;
   
   public d(int paramInt1, long paramLong, int paramInt2, String paramString, int paramInt3)
   {
     AppMethodBeat.i(29561);
     this.sceneType = 0;
     this.sceneType = paramInt3;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new dmw();
-    ((b.a)localObject).hQG = new dmx();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/talkmicaction";
-    ((b.a)localObject).funcId = 334;
-    ((b.a)localObject).hQH = 146;
-    ((b.a)localObject).respCmdId = 1000000146;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (dmw)this.rr.hQD.hQJ;
-    ((dmw)localObject).Gxq = paramInt1;
-    ((dmw)localObject).Gxr = paramLong;
-    ((dmw)localObject).GbY = paramInt2;
-    ((dmw)localObject).FNw = ((int)bu.aRi());
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new egn();
+    ((d.a)localObject).iLO = new ego();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/talkmicaction";
+    ((d.a)localObject).funcId = 334;
+    ((d.a)localObject).iLP = 146;
+    ((d.a)localObject).respCmdId = 1000000146;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (egn)this.rr.iLK.iLR;
+    ((egn)localObject).LsZ = paramInt1;
+    ((egn)localObject).Lta = paramLong;
+    ((egn)localObject).KWb = paramInt2;
+    ((egn)localObject).KHb = ((int)Util.nowSecond());
     this.actionType = paramInt2;
-    this.vpL = paramString;
-    ((dmw)localObject).Scene = paramInt3;
+    this.yJB = paramString;
+    ((egn)localObject).Scene = paramInt3;
     AppMethodBeat.o(29561);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(29562);
-    ae.d("MicroMsg.NetSceneTalkMicAction", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    Log.d("MicroMsg.NetSceneTalkMicAction", "doScene");
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(29562);
     return i;
   }
   
-  public final String erF()
+  public final String fui()
   {
-    return this.vpL;
+    return this.yJB;
   }
   
-  public final int erG()
+  public final int fuj()
   {
     return this.sceneType;
   }
@@ -71,17 +71,17 @@ public final class d
     return 334;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29563);
-    ae.d("MicroMsg.NetSceneTalkMicAction", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    Log.d("MicroMsg.NetSceneTalkMicAction", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(29563);
       return;
     }
-    this.BFF = ((dmx)this.rr.hQE.hQJ).Gxs;
+    this.FQw = ((ego)this.rr.iLL.iLR).Ltb;
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(29563);
   }

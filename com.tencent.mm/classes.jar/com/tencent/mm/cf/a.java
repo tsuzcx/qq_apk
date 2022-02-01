@@ -10,18 +10,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends ReplacementSpan
 {
-  private int IEx;
+  private int NLq;
   
   public a(int paramInt)
   {
-    this.IEx = paramInt;
+    this.NLq = paramInt;
   }
   
   private TextPaint a(Paint paramPaint)
   {
     AppMethodBeat.i(152792);
     paramPaint = new TextPaint(paramPaint);
-    paramPaint.setTextSize(this.IEx);
+    paramPaint.setTextSize(this.NLq);
     AppMethodBeat.o(152792);
     return paramPaint;
   }
@@ -49,7 +49,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.cf.a
  * JD-Core Version:    0.7.0.1
  */

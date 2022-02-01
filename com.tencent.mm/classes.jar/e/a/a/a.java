@@ -6,11 +6,11 @@ import java.util.LinkedList;
 public final class a
   extends com.tencent.mm.bw.a
 {
-  public String GTG;
-  public String Omd;
-  public String Ome;
-  public int Omf;
-  public g Omg;
+  public String LXU;
+  public String UaZ;
+  public String Uba;
+  public int Ubb;
+  public g Ubc;
   public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -18,61 +18,61 @@ public final class a
     AppMethodBeat.i(91738);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Omd != null) {
-        paramVarArgs.d(1, this.Omd);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.UaZ != null) {
+        paramVarArgs.e(1, this.UaZ);
       }
-      if (this.Ome != null) {
-        paramVarArgs.d(2, this.Ome);
+      if (this.Uba != null) {
+        paramVarArgs.e(2, this.Uba);
       }
-      paramVarArgs.aS(3, this.Omf);
+      paramVarArgs.aM(3, this.Ubb);
       if (this.url != null) {
-        paramVarArgs.d(4, this.url);
+        paramVarArgs.e(4, this.url);
       }
-      if (this.Omg != null)
+      if (this.Ubc != null)
       {
-        paramVarArgs.lJ(5, this.Omg.computeSize());
-        this.Omg.writeFields(paramVarArgs);
+        paramVarArgs.ni(5, this.Ubc.computeSize());
+        this.Ubc.writeFields(paramVarArgs);
       }
-      if (this.GTG != null) {
-        paramVarArgs.d(6, this.GTG);
+      if (this.LXU != null) {
+        paramVarArgs.e(6, this.LXU);
       }
       AppMethodBeat.o(91738);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Omd == null) {
+      if (this.UaZ == null) {
         break label598;
       }
     }
     label598:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Omd) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.UaZ) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.Ome != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Ome);
+      if (this.Uba != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.Uba);
       }
-      i += f.a.a.b.b.a.bz(3, this.Omf);
+      i += g.a.a.b.b.a.bu(3, this.Ubb);
       paramInt = i;
       if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.url);
+        paramInt = i + g.a.a.b.b.a.f(4, this.url);
       }
       i = paramInt;
-      if (this.Omg != null) {
-        i = paramInt + f.a.a.a.lI(5, this.Omg.computeSize());
+      if (this.Ubc != null) {
+        i = paramInt + g.a.a.a.nh(5, this.Ubc.computeSize());
       }
       paramInt = i;
-      if (this.GTG != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.GTG);
+      if (this.LXU != null) {
+        paramInt = i + g.a.a.b.b.a.f(6, this.LXU);
       }
       AppMethodBeat.o(91738);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(91738);
@@ -80,7 +80,7 @@ public final class a
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         a locala = (a)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -89,38 +89,38 @@ public final class a
           AppMethodBeat.o(91738);
           return -1;
         case 1: 
-          locala.Omd = ((f.a.a.a.a)localObject1).OmT.readString();
+          locala.UaZ = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(91738);
           return 0;
         case 2: 
-          locala.Ome = ((f.a.a.a.a)localObject1).OmT.readString();
+          locala.Uba = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(91738);
           return 0;
         case 3: 
-          locala.Omf = ((f.a.a.a.a)localObject1).OmT.zc();
+          locala.Ubb = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(91738);
           return 0;
         case 4: 
-          locala.url = ((f.a.a.a.a)localObject1).OmT.readString();
+          locala.url = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(91738);
           return 0;
         case 5: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new g();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((g)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            locala.Omg = ((g)localObject1);
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((g)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            locala.Ubc = ((g)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(91738);
           return 0;
         }
-        locala.GTG = ((f.a.a.a.a)localObject1).OmT.readString();
+        locala.LXU = ((g.a.a.a.a)localObject1).UbS.readString();
         AppMethodBeat.o(91738);
         return 0;
       }
@@ -131,7 +131,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     e.a.a.a
  * JD-Core Version:    0.7.0.1
  */

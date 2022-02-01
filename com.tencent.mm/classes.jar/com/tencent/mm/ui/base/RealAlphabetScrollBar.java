@@ -11,21 +11,21 @@ public class RealAlphabetScrollBar
     super(paramContext, paramAttributeSet);
   }
   
-  protected final void ZA()
+  protected final void ann()
   {
-    this.vcx = new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
-    this.vcv = 1.3F;
-    this.vcw = 79;
+    this.yuX = new String[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", "#" };
+    this.yuV = 1.3F;
+    this.yuW = 79;
   }
   
   protected int getToastLayoutId()
   {
-    return 2131495439;
+    return 2131496311;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.RealAlphabetScrollBar
  * JD-Core Version:    0.7.0.1
  */

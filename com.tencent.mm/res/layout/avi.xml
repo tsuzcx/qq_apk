@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/b9w" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/dvu" android:background="@color/cb" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/foh" android:layout_width="150.0dip" android:layout_height="36.0dip">
-        <TextView android:textSize="14.0dip" android:textColor="#ff576b95" android:id="@id/foi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fo2" android:layout_centerInParent="true" />
-    </RelativeLayout>
-</LinearLayout>
+    <GridView android:scrollbarStyle="outsideOverlay" android:gravity="center" android:layout_gravity="center" android:id="@id/dvs" android:paddingTop="1.0dip" android:fadingEdgeLength="0.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/aij" android:cacheColorHint="#00000000" android:horizontalSpacing="2.0dip" android:verticalSpacing="2.0dip" android:divider="@null" android:dividerHeight="0.0px" android:overScrollMode="never" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/bl" android:gravity="center|left" android:id="@id/lb" android:background="@color/u_" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/kb" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/kb" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/a2t" android:id="@id/kk" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="130.0dip" android:text="@string/gh" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/fju" android:background="#cc000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/k4" android:layout_alignParentBottom="true">
+        <ImageButton android:id="@id/iuu" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/k4" android:src="@drawable/anl" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/cb4" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/k4" android:src="@drawable/ani" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/blh" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/k4" android:src="@drawable/anj" android:scaleType="center" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/h__" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/k4" android:src="@drawable/ank" android:scaleType="center" android:layout_weight="1.0" />
+    </LinearLayout>
+</RelativeLayout>

@@ -2,7 +2,7 @@ package com.tencent.tinker.d.a;
 
 public abstract class c
 {
-  public abstract void gdd();
+  public abstract void hpl();
   
   public abstract int readInt();
   
@@ -12,7 +12,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.d.a.c
  * JD-Core Version:    0.7.0.1
  */

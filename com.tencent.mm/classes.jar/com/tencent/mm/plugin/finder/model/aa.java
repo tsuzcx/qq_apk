@@ -1,41 +1,23 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.plugin.finder.storage.ac;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/FinderMsgComment;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderMsg;", "mention", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderMention;)V", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemType", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderFeedMix;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "plugin-finder_release"})
 public final class aa
-  extends a
+  extends BaseFinderFeed
 {
-  public aa(ac paramac)
+  public aa(FinderItem paramFinderItem)
   {
-    super(paramac);
-    AppMethodBeat.i(166403);
-    AppMethodBeat.o(166403);
-  }
-  
-  public final int a(i parami)
-  {
-    AppMethodBeat.i(166402);
-    p.h(parami, "obj");
-    AppMethodBeat.o(166402);
-    return 0;
-  }
-  
-  public final int bZz()
-  {
-    AppMethodBeat.i(166401);
-    int i = aa.class.getName().hashCode();
-    AppMethodBeat.o(166401);
-    return i;
+    super(paramFinderItem);
+    AppMethodBeat.i(166385);
+    AppMethodBeat.o(166385);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.aa
  * JD-Core Version:    0.7.0.1
  */

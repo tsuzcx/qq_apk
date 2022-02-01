@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.gallery.model;
 import android.annotation.TargetApi;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
-import com.tencent.e.i.h;
+import com.tencent.f.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.h.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.compatible.i.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 @TargetApi(16)
 public final class t
@@ -16,16 +16,16 @@ public final class t
   public MediaFormat audioFormat;
   public String path;
   public int position;
-  public GalleryItem.VideoMediaItem tSM;
-  public t.a tSN;
   public MediaFormat videoFormat;
+  public GalleryItem.VideoMediaItem xjZ;
+  public t.a xka;
   
   public t(String paramString, int paramInt, GalleryItem.VideoMediaItem paramVideoMediaItem, t.a parama)
   {
     this.path = paramString;
     this.position = paramInt;
-    this.tSM = paramVideoMediaItem;
-    this.tSN = parama;
+    this.xjZ = paramVideoMediaItem;
+    this.xka = parama;
   }
   
   public final boolean equals(Object paramObject)
@@ -54,19 +54,19 @@ public final class t
       int i;
       try
       {
-        localc.vT(this.path);
-        int j = localc.gga.getTrackCount();
+        localc.setDataSource(this.path);
+        int j = localc.gLF.getTrackCount();
         i = 0;
         if (i < j)
         {
           localObject1 = localc.getTrackFormat(i);
           if (!((MediaFormat)localObject1).containsKey("mime"))
           {
-            ae.d("VideoAnalysisTask", "find video mime : not found.");
+            Log.d("VideoAnalysisTask", "find video mime : not found.");
             break label602;
           }
           localObject3 = ((MediaFormat)localObject1).getString("mime");
-          ae.d("VideoAnalysisTask", "find video mime : %s", new Object[] { localObject3 });
+          Log.d("VideoAnalysisTask", "find video mime : %s", new Object[] { localObject3 });
           if (localObject3 == null) {
             break label602;
           }
@@ -80,13 +80,13 @@ public final class t
             break label602;
           }
         }
-        if (this.tSM == null) {
+        if (this.xjZ == null) {
           continue;
         }
         if (this.videoFormat == null) {
           continue;
         }
-        localObject1 = this.tSM;
+        localObject1 = this.xjZ;
         if (this.videoFormat.containsKey("durationUs")) {
           continue;
         }
@@ -96,8 +96,8 @@ public final class t
       {
         Object localObject1;
         Object localObject3;
-        ae.d("VideoAnalysisTask", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { this.path, localException.getMessage() });
-        localc.gga.release();
+        Log.d("VideoAnalysisTask", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { this.path, localException.getMessage() });
+        localc.gLF.release();
         continue;
         i = (int)(this.videoFormat.getLong("durationUs") / 1000L);
         continue;
@@ -118,40 +118,40 @@ public final class t
       }
       finally
       {
-        localc.gga.release();
+        localc.gLF.release();
         AppMethodBeat.o(111378);
       }
-      ((GalleryItem.VideoMediaItem)localObject1).ipL = i;
-      localObject1 = this.tSM;
+      ((GalleryItem.VideoMediaItem)localObject1).jkS = i;
+      localObject1 = this.xjZ;
       if (!this.videoFormat.containsKey("height"))
       {
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoHeight = i;
-        localObject1 = this.tSM;
+        localObject1 = this.xjZ;
         if (this.videoFormat.containsKey("width")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoWidth = i;
-        localObject3 = this.tSM;
+        localObject3 = this.xjZ;
         if (this.videoFormat.containsKey("mime")) {
           continue;
         }
         localObject1 = "";
-        ((GalleryItem.VideoMediaItem)localObject3).ipJ = ((String)localObject1);
-        localObject1 = this.tSM;
+        ((GalleryItem.VideoMediaItem)localObject3).jkQ = ((String)localObject1);
+        localObject1 = this.xjZ;
         if (this.videoFormat.containsKey("bitrate")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoBitRate = i;
-        localObject1 = this.tSM;
+        localObject1 = this.xjZ;
         if (this.videoFormat.containsKey("i-frame-interval")) {
           continue;
         }
         i = 0;
         ((GalleryItem.VideoMediaItem)localObject1).videoIFrameInterval = i;
-        localObject1 = this.tSM;
+        localObject1 = this.xjZ;
         if (this.videoFormat.containsKey("frame-rate")) {
           continue;
         }
@@ -159,18 +159,18 @@ public final class t
         ((GalleryItem.VideoMediaItem)localObject1).videoFrameRate = i;
         if (this.audioFormat != null)
         {
-          localObject3 = this.tSM;
+          localObject3 = this.xjZ;
           if (this.audioFormat.containsKey("mime")) {
             continue;
           }
           localObject1 = "";
-          ((GalleryItem.VideoMediaItem)localObject3).ipK = ((String)localObject1);
+          ((GalleryItem.VideoMediaItem)localObject3).jkR = ((String)localObject1);
         }
-        localc.gga.release();
-        if (this.tSN != null) {
+        localc.gLF.release();
+        if (this.xka != null) {
           break label585;
         }
-        ae.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.tSM });
+        Log.d("VideoAnalysisTask", "video analysis end. observer == null, position = [%d], mediaItem = [%s]", new Object[] { Integer.valueOf(this.position), this.xjZ });
         AppMethodBeat.o(111378);
         return;
         if ((!((String)localObject3).startsWith("audio/")) || (this.audioFormat != null)) {
@@ -179,7 +179,7 @@ public final class t
         this.audioFormat = ((MediaFormat)localObject1);
       }
       label585:
-      ar.f(new t.1(this));
+      MMHandlerThread.postToMainThread(new t.1(this));
       AppMethodBeat.o(111378);
       return;
       label602:
@@ -189,7 +189,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.model.t
  * JD-Core Version:    0.7.0.1
  */

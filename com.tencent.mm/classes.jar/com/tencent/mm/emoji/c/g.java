@@ -1,44 +1,47 @@
 package com.tencent.mm.emoji.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.k;
-import com.tencent.mm.emoji.a.k.b;
-import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.plugin.report.service.h;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/report/EmojiTabClickReport;", "", "()V", "clickIndex", "", "getClickIndex", "()I", "setClickIndex", "(I)V", "scene", "getScene", "setScene", "timePanelShow", "", "panelShow", "", "openTime", "reportClick", "tabIndex", "productId", "", "plugin-emojisdk_release"})
 public final class g
-  extends d
 {
-  public g(EmojiInfo paramEmojiInfo, boolean paramBoolean, d.a parama)
+  private static long hcf;
+  private static int hcg;
+  public static final g hcn;
+  private static int scene;
+  
+  static
   {
-    super(paramEmojiInfo, paramBoolean, parama);
-    AppMethodBeat.i(104496);
-    new k(paramEmojiInfo, paramBoolean, paramEmojiInfo.field_attachedText, paramEmojiInfo.fSP(), paramEmojiInfo.field_imitateMd5).gmI = new k.b()
-    {
-      public final void b(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(104495);
-        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
-        {
-          g.this.A(0, paramAnonymousString);
-          AppMethodBeat.o(104495);
-          return;
-        }
-        if (paramAnonymousBoolean)
-        {
-          g.this.mj(2);
-          AppMethodBeat.o(104495);
-          return;
-        }
-        g.this.mj(paramAnonymousInt2);
-        AppMethodBeat.o(104495);
-      }
-    };
-    AppMethodBeat.o(104496);
+    AppMethodBeat.i(105727);
+    hcn = new g();
+    AppMethodBeat.o(105727);
+  }
+  
+  public static void B(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(105726);
+    long l = System.currentTimeMillis();
+    h.CyF.a(18231, new Object[] { Long.valueOf(hcf), Integer.valueOf(scene), Integer.valueOf(hcg), Long.valueOf(l), Integer.valueOf(paramInt), paramString });
+    hcg += 1;
+    AppMethodBeat.o(105726);
+  }
+  
+  public static void setScene(int paramInt)
+  {
+    scene = paramInt;
+  }
+  
+  public static void zj(long paramLong)
+  {
+    hcf = paramLong;
+    hcg = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.c.g
  * JD-Core Version:    0.7.0.1
  */

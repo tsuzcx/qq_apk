@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.recordvideo.background;
 
 import android.content.Context;
 import android.util.SparseArray;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
 import com.tencent.mm.plugin.recordvideo.ui.FakeVideoViewLayer;
 import com.tencent.mm.plugin.recordvideo.ui.editor.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/background/BgMixManager;", "", "()V", "TAG", "", "callbacks", "Landroid/util/SparseArray;", "", "Lcom/tencent/mm/plugin/recordvideo/background/IBgMixCallback;", "getCallbacks", "()Landroid/util/SparseArray;", "addCallback", "", "scene", "", "callback", "getFakeImageToVideoLayer", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/ImageFakeVideoView;", "context", "Landroid/content/Context;", "getFakeVideoLayer", "Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "notifyFinish", "taskId", "success", "", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "notifyInit", "notifyRun", "runNum", "notifyWait", "removeCallback", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/background/BgMixManager;", "", "()V", "TAG", "", "callbacks", "Landroid/util/SparseArray;", "", "Lcom/tencent/mm/plugin/recordvideo/background/IBgMixCallback;", "getCallbacks", "()Landroid/util/SparseArray;", "addCallback", "", "scene", "", "callback", "getFakeImageToVideoLayer", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/ImageFakeVideoView;", "context", "Landroid/content/Context;", "getFakeVideoLayer", "Lcom/tencent/mm/plugin/recordvideo/ui/FakeVideoViewLayer;", "notifyFinish", "taskId", "success", "", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "notifyInit", "notifyRun", "runNum", "notifyWait", "removeCallback", "plugin-recordvideo_release"})
 public final class a
 {
-  private static final SparseArray<Set<b>> wcJ;
-  public static final a xJX;
+  public static final a BKb;
+  private static final SparseArray<Set<b>> zwK;
   
   static
   {
     AppMethodBeat.i(75166);
-    xJX = new a();
-    wcJ = new SparseArray();
+    BKb = new a();
+    zwK = new SparseArray();
     AppMethodBeat.o(75166);
   }
   
@@ -34,12 +34,12 @@ public final class a
   {
     AppMethodBeat.i(75158);
     p.h(paramb, "callback");
-    Set localSet2 = (Set)wcJ.get(paramInt);
+    Set localSet2 = (Set)zwK.get(paramInt);
     Set localSet1 = localSet2;
     if (localSet2 == null)
     {
       localSet1 = (Set)new LinkedHashSet();
-      wcJ.put(paramInt, localSet1);
+      zwK.put(paramInt, localSet1);
     }
     localSet1.add(paramb);
     AppMethodBeat.o(75158);
@@ -49,8 +49,8 @@ public final class a
   {
     AppMethodBeat.i(75163);
     p.h(paramString, "taskId");
-    ae.i("MicroMsg.mix_background.BgMixManager", "notifyFinish, taskId:" + paramString + ", success:" + paramBoolean + ", model:" + paramCaptureVideoNormalModel);
-    h.MqF.f((Runnable)new a(paramInt, paramString, paramBoolean, paramCaptureVideoNormalModel), "BgMixManager_notifyFinish");
+    Log.i("MicroMsg.mix_background.BgMixManager", "notifyFinish, taskId:" + paramString + ", success:" + paramBoolean + ", model:" + paramCaptureVideoNormalModel);
+    h.RTc.b((Runnable)new a(paramInt, paramString, paramBoolean, paramCaptureVideoNormalModel), "BgMixManager_notifyFinish");
     AppMethodBeat.o(75163);
   }
   
@@ -58,14 +58,14 @@ public final class a
   {
     AppMethodBeat.i(75159);
     p.h(paramb, "callback");
-    Set localSet = (Set)wcJ.get(paramInt);
+    Set localSet = (Set)zwK.get(paramInt);
     if (localSet != null) {
       localSet.remove(paramb);
     }
     if (localSet != null)
     {
       if (localSet.isEmpty() == true) {
-        wcJ.remove(paramInt);
+        zwK.remove(paramInt);
       }
       AppMethodBeat.o(75159);
       return;
@@ -73,30 +73,30 @@ public final class a
     AppMethodBeat.o(75159);
   }
   
-  public static void bF(int paramInt, final String paramString)
+  public static void bT(int paramInt, final String paramString)
   {
     AppMethodBeat.i(75160);
     p.h(paramString, "taskId");
-    ae.i("MicroMsg.mix_background.BgMixManager", "notifyInit, taskId:".concat(String.valueOf(paramString)));
-    h.MqF.f((Runnable)new b(paramInt, paramString), "BgMixManager_notifyInit");
+    Log.i("MicroMsg.mix_background.BgMixManager", "notifyInit, taskId:".concat(String.valueOf(paramString)));
+    h.RTc.b((Runnable)new b(paramInt, paramString), "BgMixManager_notifyInit");
     AppMethodBeat.o(75160);
   }
   
-  public static void bG(int paramInt, final String paramString)
+  public static void bU(int paramInt, final String paramString)
   {
     AppMethodBeat.i(75162);
     p.h(paramString, "taskId");
-    ae.i("MicroMsg.mix_background.BgMixManager", "notifyWait, taskId:".concat(String.valueOf(paramString)));
-    h.MqF.f((Runnable)new d(paramInt, paramString), "BgMixManager_notifyWait");
+    Log.i("MicroMsg.mix_background.BgMixManager", "notifyWait, taskId:".concat(String.valueOf(paramString)));
+    h.RTc.b((Runnable)new d(paramInt, paramString), "BgMixManager_notifyWait");
     AppMethodBeat.o(75162);
   }
   
-  public static SparseArray<Set<b>> dHT()
+  public static SparseArray<Set<b>> eIG()
   {
-    return wcJ;
+    return zwK;
   }
   
-  public static FakeVideoViewLayer ge(Context paramContext)
+  public static FakeVideoViewLayer gN(Context paramContext)
   {
     AppMethodBeat.i(75164);
     if (paramContext != null)
@@ -105,14 +105,14 @@ public final class a
       AppMethodBeat.o(75164);
       return paramContext;
     }
-    paramContext = ak.getContext();
+    paramContext = MMApplicationContext.getContext();
     p.g(paramContext, "MMApplicationContext.getContext()");
     paramContext = new FakeVideoViewLayer(paramContext);
     AppMethodBeat.o(75164);
     return paramContext;
   }
   
-  public static f gf(Context paramContext)
+  public static f gO(Context paramContext)
   {
     AppMethodBeat.i(75165);
     if (paramContext != null)
@@ -121,23 +121,23 @@ public final class a
       AppMethodBeat.o(75165);
       return paramContext;
     }
-    paramContext = ak.getContext();
+    paramContext = MMApplicationContext.getContext();
     p.g(paramContext, "MMApplicationContext.getContext()");
     paramContext = new f(paramContext);
     AppMethodBeat.o(75165);
     return paramContext;
   }
   
-  public static void n(int paramInt1, final String paramString, final int paramInt2)
+  public static void p(int paramInt1, final String paramString, final int paramInt2)
   {
     AppMethodBeat.i(75161);
     p.h(paramString, "taskId");
-    ae.i("MicroMsg.mix_background.BgMixManager", "notifyRun, taskId:" + paramString + ", runNum:" + paramInt2);
-    h.MqF.f((Runnable)new c(paramInt1, paramString, paramInt2), "BgMixManager_notifyRun");
+    Log.i("MicroMsg.mix_background.BgMixManager", "notifyRun, taskId:" + paramString + ", runNum:" + paramInt2);
+    h.RTc.b((Runnable)new c(paramInt1, paramString, paramInt2), "BgMixManager_notifyRun");
     AppMethodBeat.o(75161);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -146,8 +146,8 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(75154);
-      Object localObject = a.xJX;
-      localObject = (Set)a.dHT().get(this.hVL);
+      Object localObject = a.BKb;
+      localObject = (Set)a.eIG().get(this.$scene);
       if (localObject != null)
       {
         localObject = ((Iterable)localObject).iterator();
@@ -161,7 +161,7 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -170,13 +170,13 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(75155);
-      Object localObject = a.xJX;
-      localObject = (Set)a.dHT().get(this.hVL);
+      Object localObject = a.BKb;
+      localObject = (Set)a.eIG().get(this.$scene);
       if (localObject != null)
       {
         localObject = ((Iterable)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((b)((Iterator)localObject).next()).amO(paramString);
+          ((b)((Iterator)localObject).next()).aAd(paramString);
         }
         AppMethodBeat.o(75155);
         return;
@@ -185,7 +185,7 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -194,13 +194,13 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(75156);
-      Object localObject = a.xJX;
-      localObject = (Set)a.dHT().get(this.hVL);
+      Object localObject = a.BKb;
+      localObject = (Set)a.eIG().get(this.$scene);
       if (localObject != null)
       {
         localObject = ((Iterable)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((b)((Iterator)localObject).next()).dS(paramString, paramInt2);
+          ((b)((Iterator)localObject).next()).eh(paramString, paramInt2);
         }
         AppMethodBeat.o(75156);
         return;
@@ -209,7 +209,7 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -218,13 +218,13 @@ public final class a
     public final void run()
     {
       AppMethodBeat.i(75157);
-      Object localObject = a.xJX;
-      localObject = (Set)a.dHT().get(this.hVL);
+      Object localObject = a.BKb;
+      localObject = (Set)a.eIG().get(this.$scene);
       if (localObject != null)
       {
         localObject = ((Iterable)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((b)((Iterator)localObject).next()).amP(paramString);
+          ((b)((Iterator)localObject).next()).aAe(paramString);
         }
         AppMethodBeat.o(75157);
         return;
@@ -235,7 +235,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.a
  * JD-Core Version:    0.7.0.1
  */

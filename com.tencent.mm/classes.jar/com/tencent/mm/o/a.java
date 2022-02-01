@@ -1,139 +1,143 @@
 package com.tencent.mm.o;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ba;
+import com.tencent.mm.g.c.bb;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class a
-  extends ba
+  extends bb
 {
-  public static final String ghD;
-  public static c.a info;
+  public static final String gNj;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(42762);
-    c.a locala = new c.a();
-    locala.IBL = new Field[27];
-    locala.columns = new String[28];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[28];
+    localMAutoDBInfo.columns = new String[29];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "msgCount";
-    locala.IBN.put("msgCount", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[0] = "msgCount";
+    localMAutoDBInfo.colsMap.put("msgCount", "INTEGER default '0' ");
     localStringBuilder.append(" msgCount INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[1] = "username";
-    locala.IBN.put("username", "TEXT default ''  PRIMARY KEY ");
+    localMAutoDBInfo.columns[1] = "username";
+    localMAutoDBInfo.colsMap.put("username", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "username";
-    locala.columns[2] = "unReadCount";
-    locala.IBN.put("unReadCount", "INTEGER default '0' ");
+    localMAutoDBInfo.primaryKey = "username";
+    localMAutoDBInfo.columns[2] = "unReadCount";
+    localMAutoDBInfo.colsMap.put("unReadCount", "INTEGER default '0' ");
     localStringBuilder.append(" unReadCount INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[3] = "chatmode";
-    locala.IBN.put("chatmode", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[3] = "chatmode";
+    localMAutoDBInfo.colsMap.put("chatmode", "INTEGER default '0' ");
     localStringBuilder.append(" chatmode INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[4] = "status";
-    locala.IBN.put("status", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[4] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER default '0' ");
     localStringBuilder.append(" status INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[5] = "isSend";
-    locala.IBN.put("isSend", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[5] = "isSend";
+    localMAutoDBInfo.colsMap.put("isSend", "INTEGER default '0' ");
     localStringBuilder.append(" isSend INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[6] = "conversationTime";
-    locala.IBN.put("conversationTime", "LONG default '0' ");
+    localMAutoDBInfo.columns[6] = "conversationTime";
+    localMAutoDBInfo.colsMap.put("conversationTime", "LONG default '0' ");
     localStringBuilder.append(" conversationTime LONG default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[7] = "content";
-    locala.IBN.put("content", "TEXT default '' ");
+    localMAutoDBInfo.columns[7] = "content";
+    localMAutoDBInfo.colsMap.put("content", "TEXT default '' ");
     localStringBuilder.append(" content TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[8] = "msgType";
-    locala.IBN.put("msgType", "TEXT default '' ");
+    localMAutoDBInfo.columns[8] = "msgType";
+    localMAutoDBInfo.colsMap.put("msgType", "TEXT default '' ");
     localStringBuilder.append(" msgType TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[9] = "customNotify";
-    locala.IBN.put("customNotify", "TEXT default '' ");
+    localMAutoDBInfo.columns[9] = "customNotify";
+    localMAutoDBInfo.colsMap.put("customNotify", "TEXT default '' ");
     localStringBuilder.append(" customNotify TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[10] = "showTips";
-    locala.IBN.put("showTips", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[10] = "showTips";
+    localMAutoDBInfo.colsMap.put("showTips", "INTEGER default '0' ");
     localStringBuilder.append(" showTips INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[11] = "flag";
-    locala.IBN.put("flag", "LONG default '0' ");
+    localMAutoDBInfo.columns[11] = "flag";
+    localMAutoDBInfo.colsMap.put("flag", "LONG default '0' ");
     localStringBuilder.append(" flag LONG default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[12] = "digest";
-    locala.IBN.put("digest", "TEXT default '' ");
+    localMAutoDBInfo.columns[12] = "digest";
+    localMAutoDBInfo.colsMap.put("digest", "TEXT default '' ");
     localStringBuilder.append(" digest TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[13] = "digestUser";
-    locala.IBN.put("digestUser", "TEXT default '' ");
+    localMAutoDBInfo.columns[13] = "digestUser";
+    localMAutoDBInfo.colsMap.put("digestUser", "TEXT default '' ");
     localStringBuilder.append(" digestUser TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[14] = "hasTrunc";
-    locala.IBN.put("hasTrunc", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[14] = "hasTrunc";
+    localMAutoDBInfo.colsMap.put("hasTrunc", "INTEGER default '0' ");
     localStringBuilder.append(" hasTrunc INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[15] = "parentRef";
-    locala.IBN.put("parentRef", "TEXT");
+    localMAutoDBInfo.columns[15] = "parentRef";
+    localMAutoDBInfo.colsMap.put("parentRef", "TEXT");
     localStringBuilder.append(" parentRef TEXT");
     localStringBuilder.append(", ");
-    locala.columns[16] = "attrflag";
-    locala.IBN.put("attrflag", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[16] = "attrflag";
+    localMAutoDBInfo.colsMap.put("attrflag", "INTEGER default '0' ");
     localStringBuilder.append(" attrflag INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[17] = "editingMsg";
-    locala.IBN.put("editingMsg", "TEXT default '' ");
+    localMAutoDBInfo.columns[17] = "editingMsg";
+    localMAutoDBInfo.colsMap.put("editingMsg", "TEXT default '' ");
     localStringBuilder.append(" editingMsg TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[18] = "atCount";
-    locala.IBN.put("atCount", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[18] = "atCount";
+    localMAutoDBInfo.colsMap.put("atCount", "INTEGER default '0' ");
     localStringBuilder.append(" atCount INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[19] = "sightTime";
-    locala.IBN.put("sightTime", "LONG default '0' ");
+    localMAutoDBInfo.columns[19] = "sightTime";
+    localMAutoDBInfo.colsMap.put("sightTime", "LONG default '0' ");
     localStringBuilder.append(" sightTime LONG default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[20] = "unReadMuteCount";
-    locala.IBN.put("unReadMuteCount", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[20] = "unReadMuteCount";
+    localMAutoDBInfo.colsMap.put("unReadMuteCount", "INTEGER default '0' ");
     localStringBuilder.append(" unReadMuteCount INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[21] = "lastSeq";
-    locala.IBN.put("lastSeq", "LONG");
+    localMAutoDBInfo.columns[21] = "lastSeq";
+    localMAutoDBInfo.colsMap.put("lastSeq", "LONG");
     localStringBuilder.append(" lastSeq LONG");
     localStringBuilder.append(", ");
-    locala.columns[22] = "UnDeliverCount";
-    locala.IBN.put("UnDeliverCount", "INTEGER");
+    localMAutoDBInfo.columns[22] = "UnDeliverCount";
+    localMAutoDBInfo.colsMap.put("UnDeliverCount", "INTEGER");
     localStringBuilder.append(" UnDeliverCount INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[23] = "UnReadInvite";
-    locala.IBN.put("UnReadInvite", "INTEGER");
+    localMAutoDBInfo.columns[23] = "UnReadInvite";
+    localMAutoDBInfo.colsMap.put("UnReadInvite", "INTEGER");
     localStringBuilder.append(" UnReadInvite INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[24] = "firstUnDeliverSeq";
-    locala.IBN.put("firstUnDeliverSeq", "LONG");
+    localMAutoDBInfo.columns[24] = "firstUnDeliverSeq";
+    localMAutoDBInfo.colsMap.put("firstUnDeliverSeq", "LONG");
     localStringBuilder.append(" firstUnDeliverSeq LONG");
     localStringBuilder.append(", ");
-    locala.columns[25] = "editingQuoteMsgId";
-    locala.IBN.put("editingQuoteMsgId", "LONG default '0' ");
+    localMAutoDBInfo.columns[25] = "editingQuoteMsgId";
+    localMAutoDBInfo.colsMap.put("editingQuoteMsgId", "LONG default '0' ");
     localStringBuilder.append(" editingQuoteMsgId LONG default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[26] = "hasTodo";
-    locala.IBN.put("hasTodo", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[26] = "hasTodo";
+    localMAutoDBInfo.colsMap.put("hasTodo", "INTEGER default '0' ");
     localStringBuilder.append(" hasTodo INTEGER default '0' ");
-    locala.columns[27] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    ghD = null;
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[27] = "hbMarkRed";
+    localMAutoDBInfo.colsMap.put("hbMarkRed", "INTEGER default '0' ");
+    localStringBuilder.append(" hbMarkRed INTEGER default '0' ");
+    localMAutoDBInfo.columns[28] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    gNj = null;
     AppMethodBeat.o(42762);
   }
   
@@ -146,32 +150,32 @@ public class a
     AppMethodBeat.o(42759);
   }
   
-  public c.a getDBInfo()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
   
-  public final void lQ(int paramInt)
+  public final void oT(int paramInt)
   {
     AppMethodBeat.i(42760);
     int i = this.field_attrflag | paramInt;
     if ((this.field_attrflag >= 0) && (this.field_attrflag < 536870912) && ((i >= 536870912) || (i < 0)) && (this.field_username.contains("@")))
     {
-      ae.i("Conversition", "wrong add attr flag: %s, %s, %s, %s", new Object[] { this.field_username, Integer.valueOf(this.field_attrflag), Integer.valueOf(paramInt), bu.fpN() });
-      e.ywz.f(20435, new Object[] { Integer.valueOf(2), Integer.valueOf(this.field_attrflag), Integer.valueOf(paramInt), this.field_username });
+      Log.i("Conversition", "wrong add attr flag: %s, %s, %s, %s", new Object[] { this.field_username, Integer.valueOf(this.field_attrflag), Integer.valueOf(paramInt), Util.getStack() });
+      e.Cxv.a(20435, new Object[] { Integer.valueOf(2), Integer.valueOf(this.field_attrflag), Integer.valueOf(paramInt), this.field_username });
     }
-    kv(this.field_attrflag | paramInt);
+    nx(this.field_attrflag | paramInt);
     AppMethodBeat.o(42760);
   }
   
-  public final void lR(int paramInt)
+  public final void oU(int paramInt)
   {
     AppMethodBeat.i(42761);
-    kv(this.field_attrflag & (paramInt ^ 0xFFFFFFFF));
+    nx(this.field_attrflag & (paramInt ^ 0xFFFFFFFF));
     AppMethodBeat.o(42761);
   }
   
-  public final boolean lS(int paramInt)
+  public final boolean oV(int paramInt)
   {
     return (this.field_attrflag & paramInt) != 0;
   }

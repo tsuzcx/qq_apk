@@ -11,8 +11,8 @@ import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.a;
 import com.tencent.mm.plugin.game.b.b.l;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.at;
 import java.util.LinkedList;
 
 public class GameVideoTagContainer
@@ -38,7 +38,7 @@ public class GameVideoTagContainer
   public void setData(LinkedList<l> paramLinkedList)
   {
     AppMethodBeat.i(41168);
-    if (bu.ht(paramLinkedList))
+    if (Util.isNullOrNil(paramLinkedList))
     {
       setVisibility(8);
       AppMethodBeat.o(41168);
@@ -52,8 +52,8 @@ public class GameVideoTagContainer
       localObject1 = new ImageView(getContext());
       ((ImageView)localObject1).setScaleType(ImageView.ScaleType.FIT_XY);
       localObject2 = new LinearLayout.LayoutParams(-2, -2);
-      ((LinearLayout.LayoutParams)localObject2).height = aq.fromDPToPix(getContext(), 14);
-      ((LinearLayout.LayoutParams)localObject2).rightMargin = aq.fromDPToPix(getContext(), 4);
+      ((LinearLayout.LayoutParams)localObject2).height = at.fromDPToPix(getContext(), 14);
+      ((LinearLayout.LayoutParams)localObject2).rightMargin = at.fromDPToPix(getContext(), 4);
       ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       addView((View)localObject1);
     }
@@ -68,8 +68,8 @@ public class GameVideoTagContainer
     {
       localObject1 = (l)paramLinkedList.get(i);
       localObject2 = (ImageView)getChildAt(i);
-      ((LinearLayout.LayoutParams)((ImageView)localObject2).getLayoutParams()).width = aq.fromDPToPix(getContext(), ((l)localObject1).width);
-      a.aJh().loadImage(((l)localObject1).uds, (ImageView)localObject2);
+      ((LinearLayout.LayoutParams)((ImageView)localObject2).getLayoutParams()).width = at.fromDPToPix(getContext(), ((l)localObject1).width);
+      a.bdb().loadImage(((l)localObject1).xve, (ImageView)localObject2);
       ((ImageView)localObject2).setVisibility(0);
       i += 1;
     }
@@ -78,7 +78,7 @@ public class GameVideoTagContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.GameVideoTagContainer
  * JD-Core Version:    0.7.0.1
  */

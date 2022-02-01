@@ -6,11 +6,13 @@ public abstract interface c
   
   public abstract a getAttachedRenderer();
   
-  public abstract void giW();
+  public abstract void hwu();
+  
+  public abstract void pause();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.embedding.engine.b.c
  * JD-Core Version:    0.7.0.1
  */

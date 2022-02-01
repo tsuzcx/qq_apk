@@ -6,24 +6,24 @@ import com.tencent.xweb.internal.CookieInternal.ICookieSyncManagerInternal;
 
 public final class d
 {
-  private static d MLZ;
-  static CookieInternal.ICookieSyncManagerInternal MMa;
+  private static d SyO;
+  static CookieInternal.ICookieSyncManagerInternal SyP;
   
   private d(Context paramContext)
   {
     AppMethodBeat.i(156725);
-    if (MMa != null) {
-      MMa.init(paramContext);
+    if (SyP != null) {
+      SyP.init(paramContext);
     }
     AppMethodBeat.o(156725);
   }
   
-  public static d gfa()
+  public static d hsr()
   {
     try
     {
       AppMethodBeat.i(156724);
-      if (MLZ == null)
+      if (SyO == null)
       {
         IllegalStateException localIllegalStateException = new IllegalStateException("CookieSyncManager::createInstance() needs to be called before CookieSyncManager::getInstance()");
         AppMethodBeat.o(156724);
@@ -31,20 +31,20 @@ public final class d
       }
     }
     finally {}
-    d locald = MLZ;
+    d locald = SyO;
     AppMethodBeat.o(156724);
     return locald;
   }
   
-  public static d lB(Context paramContext)
+  public static d lA(Context paramContext)
   {
     try
     {
       AppMethodBeat.i(156723);
-      if (MLZ == null) {
-        MLZ = new d(paramContext.getApplicationContext());
+      if (SyO == null) {
+        SyO = new d(paramContext.getApplicationContext());
       }
-      paramContext = MLZ;
+      paramContext = SyO;
       AppMethodBeat.o(156723);
       return paramContext;
     }
@@ -54,8 +54,8 @@ public final class d
   public static void sync()
   {
     AppMethodBeat.i(156726);
-    if (MMa != null) {
-      MMa.sync();
+    if (SyP != null) {
+      SyP.sync();
     }
     AppMethodBeat.o(156726);
   }

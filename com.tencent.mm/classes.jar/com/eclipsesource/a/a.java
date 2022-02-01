@@ -5,25 +5,25 @@ import java.io.IOException;
 
 public final class a
 {
-  public static final h aZG;
-  public static final h aZH;
-  public static final h aZI;
+  public static final h aZC;
+  public static final h aZD;
+  public static final h aZE;
   
   static
   {
     AppMethodBeat.i(74683);
-    aZG = new c("null");
-    aZH = new c("true");
-    aZI = new c("false");
+    aZC = new c("null");
+    aZD = new c("true");
+    aZE = new c("false");
     AppMethodBeat.o(74683);
   }
   
-  public static h aM(boolean paramBoolean)
+  public static h aL(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return aZH;
+      return aZD;
     }
-    return aZI;
+    return aZE;
   }
   
   public static h aQ(String paramString)
@@ -31,7 +31,7 @@ public final class a
     AppMethodBeat.i(74680);
     if (paramString == null)
     {
-      paramString = aZG;
+      paramString = aZC;
       AppMethodBeat.o(74680);
       return paramString;
     }
@@ -53,11 +53,11 @@ public final class a
     try
     {
       paramString = new f(paramString);
-      paramString.sv();
-      paramString.su();
-      localh = paramString.sg();
-      paramString.su();
-      if (!paramString.sC())
+      paramString.sy();
+      paramString.sx();
+      localh = paramString.sj();
+      paramString.sx();
+      if (!paramString.sF())
       {
         paramString = paramString.aW("Unexpected character");
         AppMethodBeat.o(74681);
@@ -115,7 +115,7 @@ public final class a
     return localObject;
   }
   
-  public static h dF(int paramInt)
+  public static h dA(int paramInt)
   {
     AppMethodBeat.i(74676);
     d locald = new d(Integer.toString(paramInt, 10));
@@ -133,7 +133,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.eclipsesource.a.a
  * JD-Core Version:    0.7.0.1
  */

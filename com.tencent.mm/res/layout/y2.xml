@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="bottom|center" android:id="@id/abb" android:layout_width="65.0dip" android:layout_height="65.0dip" android:src="@raw/emoji_add_capture" android:contentDescription="@string/bjr" app:layout_constraintBottom_toTopOf="@id/bk1" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" app:layout_constraintVertical_chainStyle="ea0" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:id="@id/bk1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/bjr" app:layout_constraintBottom_toTopOf="@id/bk0" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toBottomOf="@id/abb" />
-    <TextView android:textSize="12.0dip" android:textColor="@color/km" android:id="@id/bk0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bk8" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toBottomOf="@id/bk1" />
-</android.support.constraint.ConstraintLayout>
+<RelativeLayout style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
+    <ListView android:id="@id/bca" android:background="@color/a2h" android:focusable="true" android:transcriptMode="disabled" android:overScrollMode="never" style="@style/np" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:gravity="center" android:id="@id/c2g" android:paddingTop="0.0dip" android:paddingBottom="60.0dip" android:visibility="gone" android:text="@string/ebm" android:layout_centerInParent="true" style="@style/mh" />
+</RelativeLayout>

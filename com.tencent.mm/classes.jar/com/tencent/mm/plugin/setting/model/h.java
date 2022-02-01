@@ -1,75 +1,57 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bkk;
-import com.tencent.mm.protocal.protobuf.bkl;
-import com.tencent.mm.protocal.protobuf.dup;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bwh;
+import com.tencent.mm.protocal.protobuf.bwi;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public bkl ySU;
-  public byte[] ySV;
+  private i callback;
   
-  public h(byte[] paramArrayOfByte)
+  public final int doScene(g paramg, i parami)
   {
-    this.ySV = paramArrayOfByte;
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(73771);
-    this.callback = paramf;
-    paramf = new b.a();
-    bkk localbkk = new bkk();
-    if (this.ySV != null) {
-      localbkk.GXK = z.al(this.ySV).getBuffer();
-    }
-    paramf.hQF = localbkk;
-    this.ySU = new bkl();
-    paramf.hQG = this.ySU;
-    paramf.uri = "/cgi-bin/mmbiz-bin/getuserauthlist";
-    paramf.funcId = getType();
-    paramf.hQH = 0;
-    paramf.respCmdId = 0;
-    int i = dispatch(parame, paramf.aDS(), this);
-    AppMethodBeat.o(73771);
+    AppMethodBeat.i(73770);
+    this.callback = parami;
+    parami = new d.a();
+    parami.iLN = new bwh();
+    parami.iLO = new bwi();
+    parami.uri = "/cgi-bin/micromsg-bin/gettrustedfriends";
+    parami.funcId = 869;
+    parami.iLP = 0;
+    parami.respCmdId = 0;
+    int i = dispatch(paramg, parami.aXF(), this);
+    AppMethodBeat.o(73770);
     return i;
   }
   
   public final int getType()
   {
-    return 1146;
+    return 869;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(73772);
-    this.ySU = ((bkl)((b)paramq).hQE.hQJ);
-    if (this.ySU.GuN != null)
-    {
-      paramInt3 = this.ySU.GuN.drN;
-      paramString = this.ySU.GuN.drO;
+    AppMethodBeat.i(73769);
+    updateDispatchIdNew(paramInt1);
+    if ((paramInt2 != 0) || (paramInt3 != 0)) {
+      Log.e("MicroMsg.NetSceneGetTrustedFriends", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(73772);
+    AppMethodBeat.o(73769);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.h
  * JD-Core Version:    0.7.0.1
  */

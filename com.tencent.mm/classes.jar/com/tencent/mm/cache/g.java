@@ -1,14 +1,14 @@
 package com.tencent.mm.cache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
 
 public abstract interface g
 {
-  public abstract void e(Object paramObject1, Object paramObject2);
+  public abstract void f(Object paramObject1, Object paramObject2);
   
   public abstract Object get(Object paramObject);
   
@@ -16,27 +16,35 @@ public abstract interface g
   
   public static final class a
   {
-    private static Map<String, g> fKr;
+    private static Map<String, g> gpF;
     
     static
     {
       AppMethodBeat.i(131947);
-      fKr = new HashMap();
+      gpF = new HashMap();
       AppMethodBeat.o(131947);
     }
     
-    public static <T> T U(String paramString1, String paramString2)
+    private static g Dr(String paramString)
+    {
+      AppMethodBeat.i(131941);
+      paramString = (g)gpF.get(paramString);
+      AppMethodBeat.o(131941);
+      return paramString;
+    }
+    
+    public static <T> T X(String paramString1, String paramString2)
     {
       AppMethodBeat.i(131942);
-      paramString1 = a(vb(paramString1), paramString2);
+      paramString1 = a(Dr(paramString1), paramString2);
       AppMethodBeat.o(131942);
       return paramString1;
     }
     
-    public static <T> void V(String paramString1, String paramString2)
+    public static <T> void Y(String paramString1, String paramString2)
     {
       AppMethodBeat.i(131944);
-      b(vb(paramString1), paramString2);
+      b(Dr(paramString1), paramString2);
       AppMethodBeat.o(131944);
     }
     
@@ -45,7 +53,7 @@ public abstract interface g
       AppMethodBeat.i(131945);
       if (paramg == null)
       {
-        ae.e("MicroMsg.ICacheService.Factory", "null service");
+        Log.e("MicroMsg.ICacheService.Factory", "null service");
         AppMethodBeat.o(131945);
         return null;
       }
@@ -57,8 +65,8 @@ public abstract interface g
       }
       catch (Exception paramg)
       {
-        ae.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
-        ae.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { bu.o(paramg) });
+        Log.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
+        Log.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { Util.stackTraceToString(paramg) });
         AppMethodBeat.o(131945);
       }
       return null;
@@ -67,21 +75,21 @@ public abstract interface g
     public static void a(String paramString, g paramg)
     {
       AppMethodBeat.i(131940);
-      fKr.put(paramString, paramg);
+      gpF.put(paramString, paramg);
       AppMethodBeat.o(131940);
     }
     
     public static <T> void a(String paramString1, String paramString2, T paramT)
     {
       AppMethodBeat.i(131943);
-      paramString1 = vb(paramString1);
+      paramString1 = Dr(paramString1);
       if (paramString1 == null)
       {
-        ae.e("MicroMsg.ICacheService.Factory", "null service");
+        Log.e("MicroMsg.ICacheService.Factory", "null service");
         AppMethodBeat.o(131943);
         return;
       }
-      paramString1.e(paramString2, paramT);
+      paramString1.f(paramString2, paramT);
       AppMethodBeat.o(131943);
     }
     
@@ -90,7 +98,7 @@ public abstract interface g
       AppMethodBeat.i(131946);
       if (paramg == null)
       {
-        ae.e("MicroMsg.ICacheService.Factory", "null service");
+        Log.e("MicroMsg.ICacheService.Factory", "null service");
         AppMethodBeat.o(131946);
         return null;
       }
@@ -102,25 +110,17 @@ public abstract interface g
       }
       catch (Exception paramg)
       {
-        ae.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
-        ae.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { bu.o(paramg) });
+        Log.e("MicroMsg.ICacheService.Factory", "cast failed, different type ?");
+        Log.e("MicroMsg.ICacheService.Factory", "exception:%s", new Object[] { Util.stackTraceToString(paramg) });
         AppMethodBeat.o(131946);
       }
       return null;
-    }
-    
-    private static g vb(String paramString)
-    {
-      AppMethodBeat.i(131941);
-      paramString = (g)fKr.get(paramString);
-      AppMethodBeat.o(131941);
-      return paramString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.cache.g
  * JD-Core Version:    0.7.0.1
  */

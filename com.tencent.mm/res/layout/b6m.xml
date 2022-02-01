@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_gravity="center_horizontal" android:id="@id/rx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c5"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:background="@drawable/aad" android:layout_width="108.0dip" android:layout_height="108.0dip" app:layout_constraintBottom_toTopOf="@id/rw" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    <com.tencent.mm.emoji.view.CoverEmojiStatusView android:id="@id/rv" android:background="?ji" android:padding="4.0dip" android:layout_width="@dimen/br" android:layout_height="@dimen/br" android:scaleType="fitCenter" app:layout_constraintBottom_toTopOf="@id/rw" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/bct" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:indeterminateDrawable="@drawable/a7h" app:layout_constraintBottom_toTopOf="@id/rw" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    <TextView android:textSize="@dimen/v" android:textColor="@color/a_r" android:id="@id/eat" android:background="@color/yh" android:paddingLeft="2.0dip" android:paddingRight="2.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fih" app:layout_constraintBottom_toBottomOf="@id/rv" app:layout_constraintEnd_toEndOf="@id/rv" />
-    <TextView android:textSize="12.0sp" android:textColor="?jj" android:id="@id/rw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toBottomOf="@id/rv" />
-</android.support.constraint.ConstraintLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/fas" style="@style/a60" />
+    <LinearLayout android:orientation="vertical" android:id="@id/fai" android:background="@drawable/o9" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/k" android:paddingRight="@dimen/k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:layout_marginBottom="@dimen/k5">
+        <TextView android:id="@id/faj" style="@style/a5y" />
+        <TextView android:id="@id/fam" android:layout_marginTop="@dimen/g" android:layout_marginBottom="@dimen/k5" style="@style/a5y" />
+        <View style="@style/a5z" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k" android:layout_marginBottom="@dimen/k">
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:id="@id/fao" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <TextView android:textSize="13.0dip" android:textColor="@color/ag2" android:gravity="bottom|center|right" android:id="@id/fap" android:background="@drawable/bba" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <ImageView android:id="@id/fal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/btb" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+        <View style="@style/a5z" />
+        <TextView android:layout_gravity="center_horizontal" android:id="@id/fah" style="@style/a5x" />
+    </LinearLayout>
+</LinearLayout>

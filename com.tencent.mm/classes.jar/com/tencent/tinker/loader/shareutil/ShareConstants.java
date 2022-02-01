@@ -124,7 +124,7 @@ public class ShareConstants
   public static final String TINKER_SAFE_MODE_COUNT_PREFIX = "safe_mode_count_";
   public static final int TINKER_SAFE_MODE_MAX_COUNT = 3;
   public static final String TINKER_SHARE_PREFERENCE_CONFIG = "tinker_share_config";
-  public static final String TINKER_VERSION = "1.9.14.8";
+  public static final String TINKER_VERSION = "1.9.14.10";
   public static final int TYPE_ARKHOT_SO = 8;
   public static final int TYPE_CLASS_N_DEX = 7;
   public static final int TYPE_DEX = 3;

@@ -5,15 +5,15 @@ import android.content.Context;
 import android.content.SharedPreferences.Editor;
 import android.os.CancellationSignal;
 import android.widget.Toast;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.cmd.a;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.vfs.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.vfs.g;
 
 @SuppressLint({"NewApi"})
 public final class c
@@ -21,9 +21,9 @@ public final class c
 {
   static
   {
-    AppMethodBeat.i(211872);
+    AppMethodBeat.i(204634);
     b.a(new c(), new String[] { "//extmig" });
-    AppMethodBeat.o(211872);
+    AppMethodBeat.o(204634);
   }
   
   public static void init() {}
@@ -31,10 +31,10 @@ public final class c
   public final boolean a(final Context paramContext, String[] paramArrayOfString, String paramString)
   {
     boolean bool2 = false;
-    AppMethodBeat.i(211871);
+    AppMethodBeat.i(204633);
     if ((paramArrayOfString == null) || (paramArrayOfString.length < 2))
     {
-      AppMethodBeat.o(211871);
+      AppMethodBeat.o(204633);
       return false;
     }
     paramString = paramArrayOfString[1];
@@ -47,7 +47,7 @@ public final class c
       switch (i)
       {
       default: 
-        AppMethodBeat.o(211871);
+        AppMethodBeat.o(204633);
         return false;
         if (paramString.equals("start"))
         {
@@ -82,64 +82,64 @@ public final class c
         }
       }
     }
-    paramArrayOfString = new ExtStorageMigrateConfig.a(ExtStorageMigrateConfig.Itm);
-    paramArrayOfString.Itp = bool1;
-    ExtStorageMigrateRoutine.startMigration(paramContext, paramArrayOfString.fmW(), new ExtStorageMigrateTestCommand.1(this, paramContext));
-    AppMethodBeat.o(211871);
+    paramArrayOfString = new ExtStorageMigrateConfig.a(ExtStorageMigrateConfig.NGK);
+    paramArrayOfString.NGN = bool1;
+    ExtStorageMigrateRoutine.startMigration(paramContext, paramArrayOfString.gwJ(), new ExtStorageMigrateTestCommand.1(this, paramContext));
+    AppMethodBeat.o(204633);
     return true;
     new CancellationSignal();
-    h.MqF.aR(new Runnable()
+    h.RTc.ba(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(211870);
+        AppMethodBeat.i(204632);
         try
         {
-          e.fSU().aB(0L, 0L);
-          ar.f(new Runnable()
+          g.hRR().aP(0L, 0L);
+          MMHandlerThread.postToMainThread(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(211868);
+              AppMethodBeat.i(204630);
               Toast.makeText(c.1.this.val$context, "Done.", 1).show();
-              AppMethodBeat.o(211868);
+              AppMethodBeat.o(204630);
             }
           });
-          AppMethodBeat.o(211870);
+          AppMethodBeat.o(204632);
           return;
         }
         catch (Throwable localThrowable)
         {
-          ae.printErrStackTrace("MicroMsg.ExtStorageMigrateTestCommand", localThrowable, "[-] Error happened.", new Object[0]);
-          ar.f(new Runnable()
+          Log.printErrStackTrace("MicroMsg.ExtStorageMigrateTestCommand", localThrowable, "[-] Error happened.", new Object[0]);
+          MMHandlerThread.postToMainThread(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(211869);
+              AppMethodBeat.i(204631);
               Toast.makeText(c.1.this.val$context, "Error happened.", 1).show();
-              AppMethodBeat.o(211869);
+              AppMethodBeat.o(204631);
             }
           });
-          AppMethodBeat.o(211870);
+          AppMethodBeat.o(204632);
         }
       }
     });
-    AppMethodBeat.o(211871);
+    AppMethodBeat.o(204633);
     return true;
-    ay.aRW("extmig_switch_storage").encode("is_routine_enabled", true);
+    MultiProcessMMKV.getMMKV("extmig_switch_storage").encode("is_routine_enabled", true);
     Toast.makeText(paramContext, "Switch on done.", 1).show();
-    AppMethodBeat.o(211871);
+    AppMethodBeat.o(204633);
     return true;
-    ay.aRW("extmig_status_memo_storage").clear().commit();
-    ay.aRW("extmig_switch_storage").clear().commit();
+    MultiProcessMMKV.getMMKV("extmig_status_memo_storage").clear().commit();
+    MultiProcessMMKV.getMMKV("extmig_switch_storage").clear().commit();
     Toast.makeText(paramContext, "Reset done.", 1).show();
-    AppMethodBeat.o(211871);
+    AppMethodBeat.o(204633);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdcard_migrate.c
  * JD-Core Version:    0.7.0.1
  */

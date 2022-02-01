@@ -1,430 +1,824 @@
 package com.tencent.mm.plugin.finder.extension.reddot;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cj;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.protocal.protobuf.arj;
-import com.tencent.mm.protocal.protobuf.ark;
-import com.tencent.mm.protocal.protobuf.ass;
-import com.tencent.mm.protocal.protobuf.ast;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.a.j;
-import d.g.a.a;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.report.j;
+import com.tencent.mm.plugin.finder.storage.c;
+import com.tencent.mm.plugin.finder.storage.config.b;
+import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.plugin.i.a.aj;
+import com.tencent.mm.plugin.i.a.z;
+import com.tencent.mm.protocal.protobuf.FinderTipsShowEntranceExtInfo;
+import com.tencent.mm.protocal.protobuf.bbi;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.bdo;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo;", "Lcom/tencent/mm/autogen/table/BaseFinderRedDotInfo;", "()V", "showInfoMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "Lkotlin/collections/HashMap;", "getShowInfoMap", "()Ljava/util/HashMap;", "showRelationMap", "Ljava/util/LinkedList;", "build", "proto", "Lcom/tencent/mm/protocal/protobuf/FinderRedDotCtrlInfo;", "containsPath", "", "path", "delete", "storage", "Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotCtrInfoStorage;", "isAsync", "findShowInfoByPath", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getExtInfo", "Lcom/tencent/mm/protobuf/ByteString;", "getTipsShowEntranceExtInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowEntranceExtInfo;", "getType", "", "isShowInfoEmpty", "isValid", "removeDependentRelation", "", "parent", "childPath", "removeShowInfoWithPath", "store", "toString", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotReportLogic;", "", "()V", "Companion", "plugin-finder_release"})
 public final class i
-  extends cj
 {
-  private static final c.a info;
-  public static final a sbG;
-  final HashMap<String, ast> sbE;
-  private final HashMap<String, LinkedList<String>> sbF;
+  private static String tLa;
+  private static String tLb;
+  private static String tLc;
+  private static String tLd;
+  private static String tLe;
+  private static String tLf;
+  private static String tLg;
+  private static String tLh;
+  public static final a tLi;
   
   static
   {
-    AppMethodBeat.i(178205);
-    sbG = new a((byte)0);
-    info = cj.VD();
-    AppMethodBeat.o(178205);
+    AppMethodBeat.i(243624);
+    tLi = new a((byte)0);
+    tLa = "";
+    tLb = "";
+    tLc = "";
+    tLd = "";
+    tLe = "";
+    tLf = "";
+    tLg = "";
+    tLh = "";
+    AppMethodBeat.o(243624);
   }
   
-  public i()
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/extension/reddot/FinderRedDotReportLogic$Companion;", "", "()V", "TAG", "", "clickHomeFollowTabRedDotId", "getClickHomeFollowTabRedDotId", "()Ljava/lang/String;", "setClickHomeFollowTabRedDotId", "(Ljava/lang/String;)V", "clickHomeFriendTabRedDotId", "getClickHomeFriendTabRedDotId", "setClickHomeFriendTabRedDotId", "clickHomeMachineTabRedDotId", "getClickHomeMachineTabRedDotId", "setClickHomeMachineTabRedDotId", "clickNearbyLiveTabRedDotId", "clickNearbyPersonTabRedDotId", "clickNearbyVideoTabRedDotId", "lastFindPageExposeTipsId", "getLastFindPageExposeTipsId", "setLastFindPageExposeTipsId", "lastNearbyExposeTipsId", "getLastNearbyExposeTipsId", "setLastNearbyExposeTipsId", "getFinderNotifyCount", "", "getNotifyCount", "hasMentionCount", "", "reportFindPageNearbyRedDotClick", "", "contextId", "autoClick", "", "reportFindPageRedDotClick", "reportFindPageRedDotExpose", "ignoreDuplicatedId", "reportHomeFollowTabRed", "action", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "currentTabType", "reportHomeFriendTabRed", "reportHomeLbsTabRed", "reportHomeMachineTabRed", "reportHomePersonCenterRed", "lastExposeTipsId", "reportHomeTabRefreshRedDotClick", "tabType", "context", "Lcom/tencent/mm/ui/MMActivity;", "reportNearbyLiveRedBreakage", "overwriteTipsId", "reportNearbyLiveTabRed", "reportNearbyPersonTabRed", "reportNearbyVideoTabRed", "plugin-finder_release"})
+  public static final class a
   {
-    AppMethodBeat.i(178204);
-    this.sbE = new HashMap();
-    this.sbF = new HashMap();
-    AppMethodBeat.o(178204);
-  }
-  
-  private boolean a(final c paramc, boolean paramBoolean)
-  {
-    AppMethodBeat.i(202107);
-    p.h(paramc, "storage");
-    CharSequence localCharSequence = (CharSequence)this.field_ctrInfo.GIg;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0))
+    public static String a(int paramInt, bbn parambbn, String paramString)
     {
-      i = 1;
-      if (i != 0) {
-        break label89;
+      AppMethodBeat.i(243617);
+      p.h(paramString, "lastExposeTipsId");
+      Object localObject1 = g.ah(PluginFinder.class);
+      p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+      Object localObject3 = ((PluginFinder)localObject1).getRedDotManager();
+      bdo localbdo = ((f)localObject3).asW("TLPersonalCenter");
+      k localk = ((f)localObject3).asX("TLPersonalCenter");
+      localObject1 = y.vXH;
+      if (localk != null) {
+        localObject1 = localk.field_ctrInfo;
       }
-    }
-    label89:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        break label94;
-      }
-      ae.e("Finder.RedDotCtrInfo", this.field_tipsId + " is inValid");
-      AppMethodBeat.o(202107);
-      return false;
-      i = 0;
-      break;
-    }
-    label94:
-    paramc = (a)new f(this, paramc);
-    if (paramBoolean) {
-      com.tencent.mm.ac.c.c("Finder.RedDotCtrInfo", (a)new e(paramc));
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(202107);
-      return true;
-      paramc.invoke();
-    }
-  }
-  
-  private final void gq(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(178203);
-    ast localast = (ast)this.sbE.get(paramString1);
-    if ((localast == null) || (localast.GJM != 2))
-    {
-      AppMethodBeat.o(178203);
-      return;
-    }
-    paramString1 = (LinkedList)this.sbF.get(paramString1);
-    if (paramString1 != null)
-    {
-      p.g(paramString1, "list");
-      j.c((List)paramString1, (d.g.a.b)new b(paramString2));
-      AppMethodBeat.o(178203);
-      return;
-    }
-    AppMethodBeat.o(178203);
-  }
-  
-  public final ast aim(String paramString)
-  {
-    AppMethodBeat.i(178201);
-    p.h(paramString, "path");
-    paramString = (ast)this.sbE.get(paramString);
-    AppMethodBeat.o(178201);
-    return paramString;
-  }
-  
-  public final LinkedList<String> ain(final String paramString)
-  {
-    int k = 0;
-    int i = 0;
-    AppMethodBeat.i(178202);
-    p.h(paramString, "path");
-    final LinkedList localLinkedList = new LinkedList();
-    Object localObject1 = (ast)this.sbE.get(paramString);
-    ast localast;
-    Object localObject2;
-    String str;
-    if ((localObject1 != null) && (((ast)localObject1).GJM == 1))
-    {
-      localast = (ast)this.sbE.remove(paramString);
-      if (localast != null)
-      {
-        localLinkedList.add(paramString);
-        localObject1 = (CharSequence)localast.xvd;
-        if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {
-          i = 1;
-        }
-        if (i == 0)
-        {
-          localObject2 = localast.xvd;
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = "";
-          }
-          str = localast.path;
-          localObject2 = str;
-          if (str == null) {
-            localObject2 = "";
-          }
-          gq((String)localObject1, (String)localObject2);
-          localObject2 = localast.xvd;
-          localObject1 = localObject2;
-          if (localObject2 == null) {
-            localObject1 = "";
-          }
-          localLinkedList.addAll((Collection)ain((String)localObject1));
-        }
-        localObject1 = this.field_ctrInfo.GIf;
-        p.g(localObject1, "field_ctrInfo.show_infos");
-        j.c((List)localObject1, (d.g.a.b)new c(this, localLinkedList, paramString));
-      }
-      AppMethodBeat.o(178202);
-      return localLinkedList;
-    }
-    int j;
-    if ((localObject1 != null) && (((ast)localObject1).GJM == 2))
-    {
-      localObject1 = (LinkedList)this.sbF.get(paramString);
-      if (localObject1 != null)
-      {
-        localObject1 = ((Iterable)localObject1).iterator();
-        i = 0;
-        j = i;
-        if (!((Iterator)localObject1).hasNext()) {
-          break label327;
-        }
-        localObject2 = (String)((Iterator)localObject1).next();
-        if (!this.sbE.containsKey(localObject2)) {
-          break label520;
-        }
-        i = 1;
-      }
-    }
-    label520:
-    for (;;)
-    {
-      break;
-      j = 0;
-      label327:
-      if (j == 0)
-      {
-        localast = (ast)this.sbE.remove(paramString);
-        if (localast != null)
-        {
-          localLinkedList.add(paramString);
-          localObject1 = (CharSequence)localast.xvd;
-          if (localObject1 != null)
-          {
-            i = k;
-            if (((CharSequence)localObject1).length() != 0) {}
-          }
-          else
-          {
-            i = 1;
-          }
-          if (i == 0)
-          {
-            localObject2 = localast.xvd;
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              localObject1 = "";
-            }
-            str = localast.path;
-            localObject2 = str;
-            if (str == null) {
-              localObject2 = "";
-            }
-            gq((String)localObject1, (String)localObject2);
-            localObject2 = localast.xvd;
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              localObject1 = "";
-            }
-            localLinkedList.addAll((Collection)ain((String)localObject1));
-          }
-          localObject1 = this.field_ctrInfo.GIf;
-          p.g(localObject1, "field_ctrInfo.show_infos");
-          j.c((List)localObject1, (d.g.a.b)new d(this, localLinkedList, paramString));
-        }
-      }
-      AppMethodBeat.o(178202);
-      return localLinkedList;
-    }
-  }
-  
-  public final i b(arj paramarj)
-  {
-    AppMethodBeat.i(178197);
-    p.h(paramarj, "proto");
-    this.field_ctrInfo = paramarj;
-    this.field_tipsId = paramarj.GIg;
-    this.field_time = ch.aDc();
-    paramarj = paramarj.GIe;
-    if (paramarj != null) {}
-    try
-    {
-      localObject1 = new ark();
-      ((ark)localObject1).parseFrom(paramarj.toByteArray());
-      this.field_revokeId = ((ark)localObject1).GIi;
-      localObject2 = new LinkedList();
-      paramarj = this.field_ctrInfo.GIf;
-      p.g(paramarj, "field_ctrInfo.show_infos");
-      localObject3 = ((Iterable)paramarj).iterator();
-      while (((Iterator)localObject3).hasNext())
-      {
-        localObject4 = (ast)((Iterator)localObject3).next();
-        localObject5 = (Map)this.sbE;
-        localObject1 = ((ast)localObject4).path;
-        paramarj = (arj)localObject1;
-        if (localObject1 == null) {
-          paramarj = "";
-        }
-        p.g(localObject4, "it");
-        ((Map)localObject5).put(paramarj, localObject4);
-        if (((ast)localObject4).GJM == 2)
-        {
-          localObject5 = (Map)this.sbF;
-          localObject1 = ((ast)localObject4).path;
-          paramarj = (arj)localObject1;
-          if (localObject1 == null) {
-            paramarj = "";
-          }
-          ((Map)localObject5).put(paramarj, new LinkedList());
-          ((LinkedList)localObject2).add(localObject4);
-        }
-      }
-    }
-    catch (Exception paramarj)
-    {
-      Object localObject1;
-      Object localObject3;
-      Object localObject4;
-      Object localObject5;
+      Object localObject2;
+      int k;
+      int i;
       for (;;)
       {
-        ae.l("Finder.RedDotCtrInfo", "", new Object[] { paramarj });
-      }
-      Object localObject2 = ((Iterable)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (ast)((Iterator)localObject2).next();
-        paramarj = this.field_ctrInfo.GIf;
-        p.g(paramarj, "field_ctrInfo.show_infos");
-        localObject4 = ((Iterable)paramarj).iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          paramarj = (ast)((Iterator)localObject4).next();
-          if (p.i(paramarj.xvd, ((ast)localObject3).path))
+        if ((localbdo != null) && (localObject1 != null)) {
+          if (paramInt == 1)
           {
-            localObject5 = (LinkedList)((Map)this.sbF).get(((ast)localObject3).path);
-            if (localObject5 != null)
+            localObject2 = ((bbi)localObject1).LKM;
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = "";
+            }
+            if (p.j(paramString, localObject1))
             {
-              localObject1 = paramarj.path;
-              paramarj = (arj)localObject1;
-              if (localObject1 == null) {
-                paramarj = "";
+              AppMethodBeat.o(243617);
+              return localObject1;
+              localObject1 = null;
+              continue;
+            }
+            paramString = (String)localObject1;
+            localObject1 = j.vft;
+            if (localk == null) {
+              p.hyc();
+            }
+            j.a("2", localk, localbdo, paramInt, parambbn, 0, 0, 96);
+            localObject1 = g.aAh();
+            p.g(localObject1, "MMKernel.storage()");
+            int j = ((e)localObject1).azQ().getInt(ar.a.Omr, 0);
+            localObject1 = g.aAh();
+            p.g(localObject1, "MMKernel.storage()");
+            k = ((e)localObject1).azQ().getInt(ar.a.Oms, 0);
+            localObject1 = c.vCb;
+            if (((Number)c.dsx().value()).intValue() == 1)
+            {
+              i = 0;
+              label234:
+              if (j <= 0) {
+                break label280;
               }
-              ((LinkedList)localObject5).add(paramarj);
+              localObject1 = com.tencent.mm.plugin.finder.report.k.vfA;
+              com.tencent.mm.plugin.finder.report.k.a("2", 1, paramInt, 1, i, j, null, null, 0L, parambbn, 0, 0, 3520);
+              localObject1 = paramString;
             }
           }
         }
       }
-      AppMethodBeat.o(178197);
+      for (;;)
+      {
+        AppMethodBeat.o(243617);
+        return localObject1;
+        i = 2;
+        break label234;
+        label280:
+        if (k > 0)
+        {
+          localObject1 = com.tencent.mm.plugin.finder.report.k.vfA;
+          com.tencent.mm.plugin.finder.report.k.a("2", 4, paramInt, 1, i, k, null, null, 0L, parambbn, 0, 0, 3520);
+          localObject1 = paramString;
+        }
+        else
+        {
+          localObject2 = ((f)localObject3).asW("Personal_Center_FavList_Entrance");
+          localObject3 = ((f)localObject3).asX("Personal_Center_FavList_Entrance");
+          localObject1 = y.vXH;
+          if (localObject3 != null) {}
+          for (localObject1 = ((k)localObject3).field_ctrInfo;; localObject1 = null)
+          {
+            if ((localObject2 != null) && (localObject1 != null))
+            {
+              localObject1 = com.tencent.mm.plugin.finder.report.k.vfA;
+              com.tencent.mm.plugin.finder.report.k.a("2", 6, paramInt, 1, 0, 0, null, null, 0L, parambbn, 0, 0, 3520);
+              localObject1 = j.vft;
+              if (localObject3 == null) {
+                p.hyc();
+              }
+              j.a("2", (k)localObject3, (bdo)localObject2, paramInt, parambbn, 0, 0, 96);
+            }
+            localObject1 = g.ah(PluginFinder.class);
+            p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+            localObject2 = ((PluginFinder)localObject1).getRedDotManager().asW("TLCamera");
+            localObject1 = g.ah(PluginFinder.class);
+            p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+            localObject3 = ((PluginFinder)localObject1).getRedDotManager().asX("TLCamera");
+            localObject1 = y.vXH;
+            localObject1 = paramString;
+            if (localObject2 == null) {
+              break;
+            }
+            localObject1 = paramString;
+            if (localObject3 == null) {
+              break;
+            }
+            localObject1 = com.tencent.mm.plugin.finder.report.k.vfA;
+            com.tencent.mm.plugin.finder.report.k.a("2", 2, paramInt, 1, 1, 0, null, null, 0L, parambbn, 0, 0, 3520);
+            localObject1 = j.vft;
+            j.a("2", (k)localObject3, (bdo)localObject2, paramInt, parambbn, 0, 0, 96);
+            localObject1 = paramString;
+            break;
+          }
+          paramString = "";
+          break;
+          localObject1 = "";
+        }
+      }
     }
-    return this;
-  }
-  
-  public final boolean b(c paramc, boolean paramBoolean)
-  {
-    AppMethodBeat.i(202110);
-    p.h(paramc, "storage");
-    this.field_ctrInfo.GIf.clear();
-    this.sbE.clear();
-    this.sbF.clear();
-    paramBoolean = a(paramc, paramBoolean);
-    AppMethodBeat.o(202110);
-    return paramBoolean;
-  }
-  
-  public final ass cBR()
-  {
-    AppMethodBeat.i(202106);
-    ass localass2 = this.field_tipsShowEntranceExtInfo;
-    ass localass1 = localass2;
-    if (localass2 == null) {
-      localass1 = new ass();
-    }
-    AppMethodBeat.o(202106);
-    return localass1;
-  }
-  
-  public final boolean cBS()
-  {
-    AppMethodBeat.i(178200);
-    Collection localCollection = (Collection)this.field_ctrInfo.GIf;
-    if ((localCollection == null) || (localCollection.isEmpty()))
+    
+    public static void a(int paramInt, bbn parambbn)
     {
-      AppMethodBeat.o(178200);
-      return true;
+      AppMethodBeat.i(243616);
+      p.h(parambbn, "contextObj");
+      Object localObject1 = g.ah(PluginFinder.class);
+      p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+      localObject1 = ((PluginFinder)localObject1).getRedDotManager();
+      bdo localbdo = ((f)localObject1).asW("finder_tl_nearby_tab");
+      k localk = ((f)localObject1).asX("finder_tl_nearby_tab");
+      localObject1 = y.vXH;
+      if (localk != null) {}
+      for (localObject1 = localk.field_ctrInfo;; localObject1 = null)
+      {
+        if ((localbdo != null) && (localObject1 != null))
+        {
+          Object localObject2 = com.tencent.mm.plugin.finder.report.k.vfA;
+          localObject2 = ((bbi)localObject1).LKM;
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = "";
+          }
+          com.tencent.mm.plugin.finder.report.k.a("2", 3, paramInt, 1, 1, 0, (String)localObject1, null, 0L, parambbn, 0, 0, 3456);
+          localObject1 = j.vft;
+          if (localk == null) {
+            p.hyc();
+          }
+          j.a("2", localk, localbdo, paramInt, parambbn, 0, 2, 32);
+        }
+        AppMethodBeat.o(243616);
+        return;
+      }
     }
-    AppMethodBeat.o(178200);
-    return false;
-  }
-  
-  public final c.a getDBInfo()
-  {
-    return info;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(202109);
-    String str = this.field_tipsId + ' ' + this.field_ctrInfo.type + ' ' + this.field_time + ' ' + this.field_ctrInfo.priority + ' ' + this.field_revokeId + ' ' + this.field_ctrInfo.GIf.size();
-    AppMethodBeat.o(202109);
-    return str;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo$Companion;", "", "()V", "TAG", "", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder_release"})
-  public static final class a {}
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo$removeDependentRelation$1$1"})
-  static final class b
-    extends q
-    implements d.g.a.b<String, Boolean>
-  {
-    b(String paramString)
+    
+    public static void a(int paramInt1, bbn parambbn, int paramInt2)
     {
-      super();
+      AppMethodBeat.i(243622);
+      Object localObject = g.ah(PluginFinder.class);
+      p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+      localObject = ((PluginFinder)localObject).getRedDotManager();
+      bdo localbdo = ((f)localObject).asW("NearbyLiveTab");
+      k localk = ((f)localObject).asX("NearbyLiveTab");
+      localObject = y.vXH;
+      if (localk != null)
+      {
+        localObject = localk.field_ctrInfo;
+        if ((localbdo == null) || (localObject == null)) {
+          break label146;
+        }
+        localObject = ((bbi)localObject).LKM;
+        if (localObject != null) {
+          break label152;
+        }
+        localObject = "";
+      }
+      label146:
+      label152:
+      for (;;)
+      {
+        p.g(localObject, "ctrInfo.tips_id ?: \"\"");
+        if ((paramInt1 == 2) && (p.j(i.dbm(), localObject)))
+        {
+          AppMethodBeat.o(243622);
+          return;
+          localObject = null;
+          break;
+        }
+        j localj = j.vft;
+        if (localk == null) {
+          p.hyc();
+        }
+        j.a("9", localk, localbdo, paramInt1, parambbn, paramInt2, 0, 64);
+        if (paramInt1 == 2) {
+          i.ati((String)localObject);
+        }
+        AppMethodBeat.o(243622);
+        return;
+      }
     }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo$removeShowInfoWithPath$1$1"})
-  static final class c
-    extends q
-    implements d.g.a.b<ast, Boolean>
-  {
-    c(i parami, LinkedList paramLinkedList, String paramString)
+    
+    public static void a(int paramInt1, bbn parambbn, int paramInt2, boolean paramBoolean)
     {
-      super();
+      AppMethodBeat.i(243613);
+      p.h(parambbn, "contextObj");
+      Object localObject1 = g.ah(PluginFinder.class);
+      p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+      localObject1 = ((PluginFinder)localObject1).getRedDotManager();
+      bdo localbdo = ((f)localObject1).asW("TLRecommendTab");
+      k localk = ((f)localObject1).asX("TLRecommendTab");
+      localObject1 = y.vXH;
+      Object localObject2;
+      if (localk != null) {
+        localObject2 = localk.field_ctrInfo;
+      }
+      while ((localbdo != null) && (localObject2 != null))
+      {
+        Object localObject3 = ((bbi)localObject2).LKM;
+        localObject1 = localObject3;
+        if (localObject3 == null) {
+          localObject1 = "";
+        }
+        p.g(localObject1, "ctrInfo.tips_id ?: \"\"");
+        if (paramInt1 == 2)
+        {
+          localObject3 = i.tLi;
+          if (p.j(i.dbg(), localObject1))
+          {
+            AppMethodBeat.o(243613);
+            return;
+            localObject2 = null;
+            continue;
+          }
+        }
+        localObject3 = com.tencent.mm.plugin.finder.report.k.vfA;
+        long l = ((bbi)localObject2).feedId;
+        if (!paramBoolean) {
+          break label244;
+        }
+        i = 1;
+        com.tencent.mm.plugin.finder.report.k.a("2", 8, paramInt1, 1, 0, 0, (String)localObject1, null, l, parambbn, paramInt2, i, 128);
+        localObject2 = j.vft;
+        if (localk == null) {
+          p.hyc();
+        }
+        if (!paramBoolean) {
+          break label250;
+        }
+      }
+      label244:
+      label250:
+      for (int i = 1;; i = 0)
+      {
+        j.a("2", localk, localbdo, paramInt1, parambbn, i, paramInt2);
+        if (paramInt1 == 2)
+        {
+          parambbn = i.tLi;
+          p.h(localObject1, "<set-?>");
+          i.atc((String)localObject1);
+        }
+        AppMethodBeat.o(243613);
+        return;
+        i = 0;
+        break;
+      }
     }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/FinderTipsShowInfo;", "kotlin.jvm.PlatformType", "invoke", "com/tencent/mm/plugin/finder/extension/reddot/LocalFinderRedDotCtrInfo$removeShowInfoWithPath$3$1"})
-  static final class d
-    extends q
-    implements d.g.a.b<ast, Boolean>
-  {
-    d(i parami, LinkedList paramLinkedList, String paramString)
+    
+    public static void atk(String paramString)
     {
-      super();
+      AppMethodBeat.i(243620);
+      p.h(paramString, "contextId");
+      Object localObject = g.ah(aj.class);
+      p.g(localObject, "MMKernel.plugin(IPluginFinder::class.java)");
+      localObject = ((aj)localObject).getRedDotManager();
+      p.g(localObject, "MMKernel.plugin(IPluginF…class.java).redDotManager");
+      if (!((z)localObject).daH())
+      {
+        AppMethodBeat.o(243620);
+        return;
+      }
+      localObject = g.ah(PluginFinder.class);
+      p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+      bdo localbdo = ((PluginFinder)localObject).getRedDotManager().asW("NearbyEntrance");
+      localObject = g.ah(PluginFinder.class);
+      p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+      k localk = ((PluginFinder)localObject).getRedDotManager().asX("NearbyEntrance");
+      localObject = y.vXH;
+      if (localk != null) {
+        localObject = localk.field_ctrInfo;
+      }
+      while ((localbdo != null) && (localObject != null)) {
+        if (localbdo.xGz == 6)
+        {
+          AppMethodBeat.o(243620);
+          return;
+          localObject = null;
+        }
+        else
+        {
+          if (((bbi)localObject).type != 16) {
+            break label199;
+          }
+        }
+      }
+      label199:
+      for (int i = 2;; i = 3)
+      {
+        localObject = j.vft;
+        if (localk == null) {
+          p.hyc();
+        }
+        j.a("1", localk, localbdo, i, paramString, 0);
+        AppMethodBeat.o(243620);
+        return;
+      }
     }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class e
-    extends q
-    implements a<z>
-  {
-    e(a parama)
+    
+    public static void b(int paramInt, bbn parambbn)
     {
-      super();
+      AppMethodBeat.i(243621);
+      Object localObject = g.ah(PluginFinder.class);
+      p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+      localObject = ((PluginFinder)localObject).getRedDotManager();
+      bdo localbdo = ((f)localObject).asW("NearbyFeedTab");
+      k localk = ((f)localObject).asX("NearbyFeedTab");
+      localObject = y.vXH;
+      if (localk != null)
+      {
+        localObject = localk.field_ctrInfo;
+        if ((localbdo == null) || (localObject == null)) {
+          break label147;
+        }
+        localObject = ((bbi)localObject).LKM;
+        if (localObject != null) {
+          break label154;
+        }
+        localObject = "";
+      }
+      label147:
+      label154:
+      for (;;)
+      {
+        p.g(localObject, "ctrInfo.tips_id ?: \"\"");
+        if ((paramInt == 2) && (p.j(i.dbl(), localObject)))
+        {
+          AppMethodBeat.o(243621);
+          return;
+          localObject = null;
+          break;
+        }
+        j localj = j.vft;
+        if (localk == null) {
+          p.hyc();
+        }
+        j.a("9", localk, localbdo, paramInt, parambbn, 0, 0, 96);
+        if (paramInt == 2) {
+          i.ath((String)localObject);
+        }
+        AppMethodBeat.o(243621);
+        return;
+      }
     }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class f
-    extends q
-    implements a<z>
-  {
-    f(i parami, c paramc)
+    
+    public static void b(int paramInt1, bbn parambbn, int paramInt2, boolean paramBoolean)
     {
-      super();
+      AppMethodBeat.i(243614);
+      p.h(parambbn, "contextObj");
+      Object localObject1 = g.ah(PluginFinder.class);
+      p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+      localObject1 = ((PluginFinder)localObject1).getRedDotManager();
+      bdo localbdo = ((f)localObject1).asW("TLFollow");
+      k localk = ((f)localObject1).asX("TLFollow");
+      localObject1 = y.vXH;
+      Object localObject2;
+      if (localk != null) {
+        localObject2 = localk.field_ctrInfo;
+      }
+      while ((localbdo != null) && (localObject2 != null))
+      {
+        Object localObject3 = ((bbi)localObject2).LKM;
+        localObject1 = localObject3;
+        if (localObject3 == null) {
+          localObject1 = "";
+        }
+        p.g(localObject1, "ctrInfo.tips_id ?: \"\"");
+        if (paramInt1 == 2)
+        {
+          localObject3 = i.tLi;
+          if (p.j(i.dbh(), localObject1))
+          {
+            AppMethodBeat.o(243614);
+            return;
+            localObject2 = null;
+            continue;
+          }
+        }
+        localObject3 = com.tencent.mm.plugin.finder.report.k.vfA;
+        long l = ((bbi)localObject2).feedId;
+        if (!paramBoolean) {
+          break label249;
+        }
+        i = 1;
+        com.tencent.mm.plugin.finder.report.k.a("2", 7, paramInt1, 1, 0, 0, (String)localObject1, null, l, parambbn, paramInt2, i, 128);
+        localObject2 = j.vft;
+        if (localk == null) {
+          p.hyc();
+        }
+        if (!paramBoolean) {
+          break label255;
+        }
+      }
+      label249:
+      label255:
+      for (int i = 1;; i = 0)
+      {
+        j.a("2", localk, localbdo, paramInt1, parambbn, i, paramInt2);
+        if (paramInt1 == 2)
+        {
+          parambbn = i.tLi;
+          p.h(localObject1, "<set-?>");
+          i.atd((String)localObject1);
+        }
+        AppMethodBeat.o(243614);
+        return;
+        i = 0;
+        break;
+      }
+    }
+    
+    public static void c(int paramInt, bbn parambbn)
+    {
+      AppMethodBeat.i(243623);
+      Object localObject = g.ah(PluginFinder.class);
+      p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+      localObject = ((PluginFinder)localObject).getRedDotManager();
+      bdo localbdo = ((f)localObject).asW("NearbyPeopleTab");
+      k localk = ((f)localObject).asX("NearbyPeopleTab");
+      localObject = y.vXH;
+      if (localk != null)
+      {
+        localObject = localk.field_ctrInfo;
+        if ((localbdo == null) || (localObject == null)) {
+          break label147;
+        }
+        localObject = ((bbi)localObject).LKM;
+        if (localObject != null) {
+          break label154;
+        }
+        localObject = "";
+      }
+      label147:
+      label154:
+      for (;;)
+      {
+        p.g(localObject, "ctrInfo.tips_id ?: \"\"");
+        if ((paramInt == 3) && (p.j(i.dbn(), localObject)))
+        {
+          AppMethodBeat.o(243623);
+          return;
+          localObject = null;
+          break;
+        }
+        j localj = j.vft;
+        if (localk == null) {
+          p.hyc();
+        }
+        j.a("9", localk, localbdo, paramInt, parambbn, 0, 0, 96);
+        if (paramInt == 3) {
+          i.atj((String)localObject);
+        }
+        AppMethodBeat.o(243623);
+        return;
+      }
+    }
+    
+    public static void c(int paramInt1, bbn parambbn, int paramInt2, boolean paramBoolean)
+    {
+      AppMethodBeat.i(243615);
+      p.h(parambbn, "contextObj");
+      Object localObject1 = g.ah(PluginFinder.class);
+      p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+      localObject1 = ((PluginFinder)localObject1).getRedDotManager();
+      bdo localbdo = ((f)localObject1).asW("finder_tl_hot_tab");
+      k localk = ((f)localObject1).asX("finder_tl_hot_tab");
+      localObject1 = y.vXH;
+      Object localObject2;
+      if (localk != null)
+      {
+        localObject2 = localk.field_ctrInfo;
+        if ((localbdo == null) || (localObject2 == null)) {
+          break label249;
+        }
+        localObject1 = ((bbi)localObject2).LKM;
+        if (localObject1 != null) {
+          break label268;
+        }
+        localObject1 = "";
+      }
+      label262:
+      label268:
+      for (;;)
+      {
+        p.g(localObject1, "ctrInfo.tips_id ?: \"\"");
+        if (paramInt1 == 2)
+        {
+          localObject3 = i.tLi;
+          if (p.j(i.dbi(), localObject1))
+          {
+            AppMethodBeat.o(243615);
+            return;
+            localObject2 = null;
+            break;
+          }
+        }
+        Object localObject3 = com.tencent.mm.plugin.finder.report.k.vfA;
+        localObject3 = ((bbi)localObject2).LKM;
+        localObject2 = localObject3;
+        if (localObject3 == null) {
+          localObject2 = "";
+        }
+        if (paramBoolean)
+        {
+          i = 1;
+          com.tencent.mm.plugin.finder.report.k.a("2", 3, paramInt1, 1, 2, 0, (String)localObject2, null, 0L, parambbn, paramInt2, i, 384);
+          localObject2 = j.vft;
+          if (localk == null) {
+            p.hyc();
+          }
+          if (!paramBoolean) {
+            break label262;
+          }
+        }
+        for (int i = 1;; i = 0)
+        {
+          j.a("2", localk, localbdo, paramInt1, parambbn, i, paramInt2);
+          if (paramInt1 == 2)
+          {
+            parambbn = i.tLi;
+            p.h(localObject1, "<set-?>");
+            i.ate((String)localObject1);
+          }
+          label249:
+          AppMethodBeat.o(243615);
+          return;
+          i = 0;
+          break;
+        }
+      }
+    }
+    
+    public static int[] dbo()
+    {
+      AppMethodBeat.i(243611);
+      Object localObject = g.ah(PluginFinder.class);
+      p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+      localObject = ((PluginFinder)localObject).getRedDotManager();
+      bdo localbdo = ((f)localObject).asW("NotificationCenterLike");
+      int i;
+      int j;
+      label72:
+      int k;
+      if (localbdo != null)
+      {
+        i = localbdo.count;
+        localbdo = ((f)localObject).asW("NotificationCenterComment");
+        if (localbdo == null) {
+          break label145;
+        }
+        j = localbdo.count;
+        localbdo = ((f)localObject).asW("NotificationCenterFollow");
+        if (localbdo == null) {
+          break label150;
+        }
+        k = localbdo.count;
+        label93:
+        localObject = ((f)localObject).asW("AuthorProfileNotify");
+        if (localObject == null) {
+          break label155;
+        }
+      }
+      label145:
+      label150:
+      label155:
+      for (int m = ((bdo)localObject).count;; m = 0)
+      {
+        AppMethodBeat.o(243611);
+        return new int[] { i, j, k, m };
+        i = 0;
+        break;
+        j = 0;
+        break label72;
+        k = 0;
+        break label93;
+      }
+    }
+    
+    public static boolean dbp()
+    {
+      AppMethodBeat.i(243612);
+      if (dbo()[3] > 0)
+      {
+        AppMethodBeat.o(243612);
+        return true;
+      }
+      AppMethodBeat.o(243612);
+      return false;
+    }
+    
+    public static String dw(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(243619);
+      p.h(paramString, "contextId");
+      Object localObject1 = g.ah(aj.class);
+      p.g(localObject1, "MMKernel.plugin(IPluginFinder::class.java)");
+      localObject1 = ((aj)localObject1).getRedDotManager();
+      p.g(localObject1, "MMKernel.plugin(IPluginF…class.java).redDotManager");
+      if (!((z)localObject1).daH())
+      {
+        AppMethodBeat.o(243619);
+        return null;
+      }
+      localObject1 = g.ah(PluginFinder.class);
+      p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+      bdo localbdo = ((PluginFinder)localObject1).getRedDotManager().asW("FinderEntrance");
+      localObject1 = g.ah(PluginFinder.class);
+      p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+      k localk = ((PluginFinder)localObject1).getRedDotManager().asX("FinderEntrance");
+      localObject1 = y.vXH;
+      if (localk != null) {}
+      for (localObject1 = localk.field_ctrInfo; (localbdo != null) && (localObject1 != null); localObject1 = null)
+      {
+        Object localObject2 = g.ah(PluginFinder.class);
+        p.g(localObject2, "MMKernel.plugin(PluginFinder::class.java)");
+        Object localObject3 = ((PluginFinder)localObject2).getRedDotManager().asZ("FinderEntrance").report_ext_info;
+        localObject2 = localObject3;
+        if (localObject3 == null) {
+          localObject2 = "";
+        }
+        p.g(localObject2, "MMKernel.plugin(PluginFi…ANCE).report_ext_info?:\"\"");
+        com.tencent.mm.plugin.finder.report.k localk1 = com.tencent.mm.plugin.finder.report.k.vfA;
+        int i = ((bbi)localObject1).type;
+        String str = ((bbi)localObject1).LKM;
+        localObject3 = str;
+        if (str == null) {
+          localObject3 = "";
+        }
+        str = Util.nullAs(localbdo.title, "");
+        p.g(str, "Util.nullAs(showInfo.title, \"\")");
+        localk1.a("1", i, 2, (String)localObject3, str, ((bbi)localObject1).feedId, paramString, localbdo.xGz, (String)localObject2, paramInt);
+        localObject2 = j.vft;
+        if (localk == null) {
+          p.hyc();
+        }
+        j.a("1", localk, localbdo, 2, paramString, paramInt);
+        paramString = ((bbi)localObject1).LKM;
+        AppMethodBeat.o(243619);
+        return paramString;
+      }
+      AppMethodBeat.o(243619);
+      return null;
+    }
+    
+    public static void mT(boolean paramBoolean)
+    {
+      AppMethodBeat.i(243618);
+      Object localObject1 = g.ah(aj.class);
+      p.g(localObject1, "MMKernel.plugin(IPluginFinder::class.java)");
+      localObject1 = ((aj)localObject1).getRedDotManager();
+      p.g(localObject1, "MMKernel.plugin(IPluginF…class.java).redDotManager");
+      if (!((z)localObject1).daH())
+      {
+        AppMethodBeat.o(243618);
+        return;
+      }
+      localObject1 = g.ah(PluginFinder.class);
+      p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+      bdo localbdo = ((PluginFinder)localObject1).getRedDotManager().asW("FinderEntrance");
+      localObject1 = g.ah(PluginFinder.class);
+      p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+      k localk = ((PluginFinder)localObject1).getRedDotManager().asX("FinderEntrance");
+      localObject1 = y.vXH;
+      Object localObject2;
+      Object localObject3;
+      com.tencent.mm.plugin.finder.report.k localk1;
+      int i;
+      if (localk != null)
+      {
+        localObject2 = localk.field_ctrInfo;
+        if ((localbdo != null) && (localObject2 != null))
+        {
+          localObject1 = ((bbi)localObject2).LKM;
+          localObject3 = g.ah(PluginFinder.class);
+          p.g(localObject3, "MMKernel.plugin(PluginFinder::class.java)");
+          localObject4 = ((PluginFinder)localObject3).getRedDotManager().asZ("FinderEntrance").report_ext_info;
+          localObject3 = localObject4;
+          if (localObject4 == null) {
+            localObject3 = "";
+          }
+          p.g(localObject3, "MMKernel.plugin(PluginFi…ANCE).report_ext_info?:\"\"");
+          localObject4 = i.tLi;
+          if (((p.j(i.dbj(), localObject1) ^ true)) || (paramBoolean))
+          {
+            localk1 = com.tencent.mm.plugin.finder.report.k.vfA;
+            i = ((bbi)localObject2).type;
+            if (localObject1 != null) {
+              break label491;
+            }
+          }
+        }
+      }
+      label491:
+      for (Object localObject4 = "";; localObject4 = localObject1)
+      {
+        String str = Util.nullAs(localbdo.title, "");
+        p.g(str, "Util.nullAs(showInfo.title, \"\")");
+        com.tencent.mm.plugin.finder.report.k.a(localk1, "1", i, (String)localObject4, str, ((bbi)localObject2).feedId, "", localbdo.xGz, (String)localObject3);
+        localObject2 = j.vft;
+        if (localk == null) {
+          p.hyc();
+        }
+        j.a((j)localObject2, "1", localk, localbdo, 1);
+        localObject2 = i.tLi;
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = "";
+        }
+        p.h(localObject2, "<set-?>");
+        i.atf((String)localObject2);
+        localObject1 = g.ah(PluginFinder.class);
+        p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+        localObject3 = ((PluginFinder)localObject1).getRedDotManager().asW("NearbyEntrance");
+        localObject1 = g.ah(PluginFinder.class);
+        p.g(localObject1, "MMKernel.plugin(PluginFinder::class.java)");
+        localObject4 = ((PluginFinder)localObject1).getRedDotManager().asX("NearbyEntrance");
+        localObject1 = y.vXH;
+        if (localObject4 != null) {}
+        for (localObject1 = ((k)localObject4).field_ctrInfo;; localObject1 = null)
+        {
+          if ((localObject3 != null) && (localObject1 != null))
+          {
+            localObject2 = ((bbi)localObject1).LKM;
+            localObject1 = i.tLi;
+            if (((p.j(i.dbk(), localObject2) ^ true)) || (paramBoolean))
+            {
+              localObject1 = j.vft;
+              if (localObject4 == null) {
+                p.hyc();
+              }
+              j.a((j)localObject1, "1", (k)localObject4, (bdo)localObject3, 1);
+              localObject1 = i.tLi;
+              localObject1 = localObject2;
+              if (localObject2 == null) {
+                localObject1 = "";
+              }
+              p.h(localObject1, "<set-?>");
+              i.atg((String)localObject1);
+            }
+          }
+          AppMethodBeat.o(243618);
+          return;
+          localObject2 = null;
+          break;
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.extension.reddot.i
  * JD-Core Version:    0.7.0.1
  */

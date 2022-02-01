@@ -74,7 +74,7 @@ final class zzaax
     AppMethodBeat.i(40153);
     try
     {
-      Class localClass = Class.forName("com.google.protobuf.GeneratedMessage");
+      Class localClass = Class.forName("com.google.a.z");
       AppMethodBeat.o(40153);
       return localClass;
     }
@@ -90,7 +90,7 @@ final class zzaax
     AppMethodBeat.i(40154);
     try
     {
-      Class localClass = Class.forName("com.google.protobuf.UnknownFieldSetSchema");
+      Class localClass = Class.forName("com.google.a.cf");
       AppMethodBeat.o(40154);
       return localClass;
     }
@@ -103,7 +103,7 @@ final class zzaax
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzaax
  * JD-Core Version:    0.7.0.1
  */

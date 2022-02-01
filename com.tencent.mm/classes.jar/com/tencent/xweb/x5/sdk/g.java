@@ -38,7 +38,7 @@ public final class g
     return bool;
   }
   
-  public final boolean lF(Context paramContext)
+  public final boolean lE(Context paramContext)
   {
     AppMethodBeat.i(154140);
     boolean bool = TbsDownloader.needSendRequest(paramContext, false);
@@ -63,18 +63,18 @@ public final class g
   static final class a
     implements TbsDownloader.TbsDownloaderCallback
   {
-    f.a MSE;
+    f.a SFK;
     
     public a(f.a parama)
     {
-      this.MSE = parama;
+      this.SFK = parama;
     }
     
     public final void onNeedDownloadFinish(boolean paramBoolean, int paramInt)
     {
       AppMethodBeat.i(154139);
-      if (this.MSE != null) {
-        this.MSE.onNeedDownloadFinish(paramBoolean, paramInt);
+      if (this.SFK != null) {
+        this.SFK.onNeedDownloadFinish(paramBoolean, paramInt);
       }
       AppMethodBeat.o(154139);
     }
@@ -82,7 +82,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.x5.sdk.g
  * JD-Core Version:    0.7.0.1
  */

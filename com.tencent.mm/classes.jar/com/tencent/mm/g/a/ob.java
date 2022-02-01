@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ob
-  extends b
+  extends IEvent
 {
-  public a dCY;
-  
   public ob()
   {
     this((byte)0);
@@ -15,16 +12,8 @@ public final class ob
   
   private ob(byte paramByte)
   {
-    AppMethodBeat.i(19823);
-    this.dCY = new a();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19823);
-  }
-  
-  public static final class a
-  {
-    public String talker;
   }
 }
 

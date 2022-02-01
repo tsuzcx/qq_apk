@@ -1,51 +1,53 @@
 package com.tencent.mm.plugin.wear.model.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bog;
-import com.tencent.mm.protocal.protobuf.boh;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cay;
+import com.tencent.mm.protocal.protobuf.caz;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public String cVh;
-  private f callback;
-  public String dpB;
-  private com.tencent.mm.ak.b hZD;
+  private i callback;
+  public String dGL;
+  public String dGP;
+  private d iUB;
   
   public a(String paramString1, String paramString2)
   {
     AppMethodBeat.i(30054);
-    this.cVh = paramString1;
-    this.dpB = paramString2;
-    Object localObject = new b.a();
-    ((b.a)localObject).funcId = 1091;
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/device/register";
-    ((b.a)localObject).hQF = new bog();
-    ((b.a)localObject).hQG = new boh();
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.hZD = ((b.a)localObject).aDS();
-    localObject = (bog)this.hZD.hQD.hQJ;
-    ((bog)localObject).FUz = new com.tencent.mm.bw.b(paramString1.getBytes());
-    ((bog)localObject).FUB = new com.tencent.mm.bw.b(paramString2.getBytes());
-    ((bog)localObject).Hbq = new com.tencent.mm.bw.b("5".getBytes());
+    this.dGL = paramString1;
+    this.dGP = paramString2;
+    Object localObject = new d.a();
+    ((d.a)localObject).funcId = 1091;
+    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/device/register";
+    ((d.a)localObject).iLN = new cay();
+    ((d.a)localObject).iLO = new caz();
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.iUB = ((d.a)localObject).aXF();
+    localObject = (cay)this.iUB.iLK.iLR;
+    ((cay)localObject).KOi = new b(paramString1.getBytes());
+    ((cay)localObject).KOk = new b(paramString2.getBytes());
+    ((cay)localObject).Mgr = new b("5".getBytes());
     AppMethodBeat.o(30054);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(30055);
-    this.callback = paramf;
-    int i = dispatch(parame, this.hZD, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
     AppMethodBeat.o(30055);
     return i;
   }
@@ -55,10 +57,10 @@ public final class a
     return 1091;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30056);
-    ae.i("MicroMsg.Wear.NetSceneBizDeviceAuth", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    Log.i("MicroMsg.Wear.NetSceneBizDeviceAuth", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(30056);
   }

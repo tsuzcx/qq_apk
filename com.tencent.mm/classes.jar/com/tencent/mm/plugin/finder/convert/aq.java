@@ -1,76 +1,78 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.content.Context;
-import android.text.TextPaint;
-import android.view.View;
-import android.widget.TextView;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.a;
-import com.tencent.mm.plugin.finder.model.ae;
-import com.tencent.mm.plugin.finder.storage.ac;
-import com.tencent.mm.plugin.finder.utils.h;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.aps;
-import com.tencent.mm.view.recyclerview.e;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.loader.e.b.g;
+import com.tencent.mm.plugin.finder.loader.k;
+import com.tencent.mm.plugin.finder.loader.m;
+import com.tencent.mm.plugin.finder.loader.m.a;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.c;
+import com.tencent.mm.plugin.finder.storage.x;
+import com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout.b;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.view.recyclerview.h;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderMsgFriendObjectLikeLikeConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderMsgConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderMsgFriendObjectLikeLike;", "scene", "", "(I)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "getScene", "()I", "convertMsg", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderImageFoldedConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFoldedConvert;", "controller", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "(Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;)V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
 public final class aq
-  extends al<ae>
+  extends am
 {
-  private final String TAG;
-  private final int scene;
-  
-  public aq(int paramInt)
+  public aq(FinderFoldedScrollLayout.b paramb)
   {
-    super(2131496232, paramInt);
-    this.scene = paramInt;
-    this.TAG = "Finder.FinderMsgFriendObjectLikeLikeConvert";
+    super(paramb, 2131494313);
+    AppMethodBeat.i(243145);
+    AppMethodBeat.o(243145);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
-  static final class a
-    implements Runnable
+  public final void a(h paramh, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
   {
-    a(e parame, TextView paramTextView1, String paramString, TextView paramTextView2, ae paramae) {}
-    
-    public final void run()
+    AppMethodBeat.i(243143);
+    p.h(paramh, "holder");
+    p.h(paramBaseFinderFeed, "item");
+    super.a(paramh, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
+    paramList = (ImageView)paramh.Mn(2131304574);
+    if (paramBaseFinderFeed.feedObject.getMediaList().size() > 1)
     {
-      AppMethodBeat.i(201899);
-      Object localObject = this.oTF.GD(2131302660);
-      p.g(localObject, "holder.getView<View>(R.id.name_container)");
-      int i = ((View)localObject).getWidth();
-      localObject = this.rXH;
-      p.g(localObject, "nickTv");
-      float f = ((TextView)localObject).getPaint().measureText(this.rXI);
-      if (i > f)
-      {
-        localObject = this.rXJ;
-        p.g(localObject, "suffixTv");
-        ((TextView)localObject).setVisibility(8);
-        localObject = this.rXH;
-        p.g(localObject, "nickTv");
-        ((TextView)localObject).setText((CharSequence)k.c(this.oTF.getContext(), (CharSequence)this.rXI));
-        AppMethodBeat.o(201899);
-        return;
+      p.g(paramList, "mediaIcon");
+      paramList.setImageDrawable(ar.m(paramList.getContext(), 2131690479, a.n(paramList.getContext(), 2131099844)));
+      paramList.setVisibility(0);
+      paramList = (cjl)j.ks((List)paramBaseFinderFeed.feedObject.getMediaList());
+      paramBaseFinderFeed = (ImageView)paramh.Mn(2131309073);
+      paramh = m.uJa;
+      paramh = m.djY();
+      paramList = new k(paramList, x.vEo, null, null, 12);
+      m localm = m.uJa;
+      paramList = paramh.a(paramList, m.a(m.a.uJb));
+      paramh = c.vCb;
+      if (((Number)c.dtK().value()).intValue() <= 0) {
+        break label249;
       }
-      localObject = this.rXJ;
-      p.g(localObject, "suffixTv");
-      ((TextView)localObject).setVisibility(0);
-      localObject = this.rXJ;
-      p.g(localObject, "suffixTv");
-      ((TextView)localObject).setText((CharSequence)this.oTF.getContext().getString(2131766446, new Object[] { h.Gf(this.rXP.ssK.field_aggregatedContacts.GGR) }));
-      localObject = this.rXH;
-      p.g(localObject, "nickTv");
-      ((TextView)localObject).setText((CharSequence)k.c(this.oTF.getContext(), (CharSequence)this.rXI));
-      AppMethodBeat.o(201899);
+    }
+    label249:
+    for (paramh = new com.tencent.mm.loader.e.d(null, new g(paramBaseFinderFeed), 1);; paramh = null)
+    {
+      paramh = paramList.a((com.tencent.mm.loader.f.d)paramh);
+      p.g(paramBaseFinderFeed, "thumbIv");
+      paramh.c(paramBaseFinderFeed);
+      AppMethodBeat.o(243143);
+      return;
+      p.g(paramList, "mediaIcon");
+      paramList.setVisibility(8);
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.aq
  * JD-Core Version:    0.7.0.1
  */

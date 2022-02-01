@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.cl;
 
 public final class g
-  extends p
+  extends q
 {
-  public String dwW;
-  public String zQb;
-  public long zQc;
+  public String DXZ;
+  public long DYa;
+  public String dOD;
   
   public final boolean isExpired()
   {
     AppMethodBeat.i(96315);
     try
     {
-      long l = ch.aDd() * 1000;
-      if ((this.zQc > 0L) && (this.zQc < l))
+      long l = cl.aWB() * 1000;
+      if ((this.DYa > 0L) && (this.DYa < l))
       {
         AppMethodBeat.o(96315);
         return true;
@@ -35,7 +35,7 @@ public final class g
   {
     AppMethodBeat.i(96314);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("[disableWording:").append(this.zQb).append(", hbCoverId:").append(this.dwW).append(", disableTime:").append(this.zQc).append("]");
+    ((StringBuffer)localObject).append("[disableWording:").append(this.DXZ).append(", hbCoverId:").append(this.dOD).append(", disableTime:").append(this.DYa).append("]");
     localObject = ((StringBuffer)localObject).toString();
     AppMethodBeat.o(96314);
     return localObject;
@@ -43,7 +43,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.g
  * JD-Core Version:    0.7.0.1
  */

@@ -8,9 +8,9 @@ import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.extension.f;
-import com.tencent.mm.model.z.b;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.modelappbrand.t;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import org.json.JSONObject;
 
 public final class g
@@ -24,25 +24,25 @@ public final class g
   public final void a(com.tencent.mm.aa.c.a parama, JSONObject paramJSONObject, final b.a<JSONObject> parama1)
   {
     AppMethodBeat.i(121318);
-    parama = parama.aiA();
+    parama = parama.ayQ();
     a locala = new a((byte)0);
     locala.id = parama.getString("__page_view_id", "");
-    locala.dJq = paramJSONObject.optString("phoneNumber", "");
-    XIPCInvoker.a(parama.getString("__process_name", ak.getProcessName()), locala, b.class, new d() {});
+    locala.ebd = paramJSONObject.optString("phoneNumber", "");
+    XIPCInvoker.a(parama.getString("__process_name", MMApplicationContext.getProcessName()), locala, b.class, new d() {});
     AppMethodBeat.o(121318);
   }
   
   static final class a
     implements f
   {
-    String dJq;
+    String ebd;
     String id;
     
-    public final void d(Parcel paramParcel)
+    public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(121314);
       paramParcel.writeString(this.id);
-      paramParcel.writeString(this.dJq);
+      paramParcel.writeString(this.ebd);
       AppMethodBeat.o(121314);
     }
     
@@ -50,7 +50,7 @@ public final class g
     {
       AppMethodBeat.i(121315);
       this.id = paramParcel.readString();
-      this.dJq = paramParcel.readString();
+      this.ebd = paramParcel.readString();
       AppMethodBeat.o(121315);
     }
   }
@@ -61,7 +61,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.g
  * JD-Core Version:    0.7.0.1
  */

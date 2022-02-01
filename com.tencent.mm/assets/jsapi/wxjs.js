@@ -2876,7 +2876,21 @@
       }
       authState = ses.state;
       readyEvent.state = authState;
+      readyEvent.fullUrl = ses.fullUrl
       document.dispatchEvent(readyEvent);
+    });
+
+    // the first event
+    _on('sys:spa:historyChanged', function (ses) {
+      // bridge ready
+      var historyEvent;
+      try {
+        historyEvent = new Event('WeixinJSBridgeSpaHistoryChanged');
+      } catch (e) {
+        historyEvent = document.createEvent('Event');
+        historyEvent.initEvent('WeixinJSBridgeSpaHistoryChanged');
+      }
+      document.dispatchEvent(historyEvent);
     });
 
     _on('sys:bridged', function (ses) {

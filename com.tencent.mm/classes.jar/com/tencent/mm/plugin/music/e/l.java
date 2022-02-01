@@ -9,7 +9,7 @@ import com.tencent.mm.compatible.b.k;
 public final class l
   extends j
 {
-  public final AudioTrack am(int paramInt1, int paramInt2, int paramInt3)
+  public final AudioTrack as(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(62963);
     e locale = new e(3, paramInt1, paramInt2, paramInt3);
@@ -17,7 +17,7 @@ public final class l
     return locale;
   }
   
-  public final MediaPlayer dwb()
+  public final MediaPlayer etV()
   {
     AppMethodBeat.i(62962);
     k localk = new k();
@@ -27,7 +27,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.e.l
  * JD-Core Version:    0.7.0.1
  */

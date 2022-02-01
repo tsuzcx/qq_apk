@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/cuc" android:background="@color/a_r" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/a13"
+<LinearLayout android:orientation="vertical" android:background="@drawable/b1g" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/cum" android:padding="@dimen/i_" android:layout_width="@dimen/a15" android:layout_height="@dimen/a15" android:scaleType="fitXY" />
-    <ImageView android:id="@id/cuk" android:background="@drawable/emoji_grid_item_fg" android:layout_width="@dimen/a15" android:layout_height="@dimen/a15" />
-    <TextView android:textSize="@dimen/jt" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/cvt" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:layout_width="wrap_content" android:layout_height="@dimen/a11" android:maxWidth="@dimen/a15" android:layout_below="@id/cum" android:layout_centerHorizontal="true" style="@style/m3" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/bkn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/bkl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/cb" android:layout_marginRight="@dimen/ce" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:layout_marginBottom="@dimen/ci">
+        <Button android:textColor="@color/hg" android:id="@id/aib" android:layout_width="@dimen/c1" android:layout_height="@dimen/cl" android:text="@string/amc" style="@style/p5" />
+        <Button android:id="@id/g3k" android:layout_width="@dimen/c1" android:layout_height="@dimen/cl" android:layout_marginLeft="@dimen/cb" android:text="@string/ame" style="@style/ow" />
+        <Button android:id="@id/af_" android:visibility="gone" android:layout_width="@dimen/c8" android:layout_height="@dimen/cl" android:text="@string/ame" style="@style/ov" />
+    </LinearLayout>
+</LinearLayout>

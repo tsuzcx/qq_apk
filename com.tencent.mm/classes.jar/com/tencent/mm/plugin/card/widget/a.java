@@ -10,53 +10,53 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.n;
-import com.tencent.mm.protocal.protobuf.tu;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract class a
   implements g
 {
   private final String TAG = "MicroMsg.CardWidgetCouponBase";
-  protected View.OnClickListener jwB;
+  protected View.OnClickListener kuO;
   protected Context mContext;
   protected LayoutInflater mInflater;
-  protected TextView mRG;
-  protected b oDm;
-  protected View oWx;
-  protected ImageView oWy;
+  protected TextView oeJ;
+  protected b pQV;
+  protected View qlr;
+  protected ImageView qls;
   
   public a(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private void bZZ()
+  private void cxO()
   {
     int i;
-    if (!bu.isNullOrNil(this.oDm.bVc().hCp))
+    if (!Util.isNullOrNil(this.pQV.csQ().iwv))
     {
-      i = this.mContext.getResources().getDimensionPixelSize(2131165964);
-      if ((!this.oDm.bUH()) || (!this.oDm.bUK())) {
+      i = this.mContext.getResources().getDimensionPixelSize(2131165996);
+      if ((!this.pQV.csv()) || (!this.pQV.csy())) {
         break label133;
       }
-      i = this.mContext.getResources().getDimensionPixelSize(2131165962);
+      i = this.mContext.getResources().getDimensionPixelSize(2131165994);
     }
     for (;;)
     {
       if (i > 0) {
-        n.a(this.oWy, this.oDm.bVc().hCp, i, 2131233400, true);
+        n.a(this.qls, this.pQV.csQ().iwv, i, 2131234198, true);
       }
-      if (!bu.isNullOrNil(this.oDm.bVc().oFG)) {
-        this.mRG.setText(this.oDm.bVc().oFG);
+      if (!Util.isNullOrNil(this.pQV.csQ().gTG)) {
+        this.oeJ.setText(this.pQV.csQ().gTG);
       }
       return;
       label133:
-      if ((this.oDm.bUH()) && (this.oDm.bUJ())) {
-        i = this.mContext.getResources().getDimensionPixelSize(2131165988);
-      } else if ((this.oDm.bUH()) && (this.oDm.bUL())) {
-        i = this.mContext.getResources().getDimensionPixelSize(2131166000);
-      } else if (this.oDm.bUN()) {
+      if ((this.pQV.csv()) && (this.pQV.csx())) {
+        i = this.mContext.getResources().getDimensionPixelSize(2131166020);
+      } else if ((this.pQV.csv()) && (this.pQV.csz())) {
+        i = this.mContext.getResources().getDimensionPixelSize(2131166032);
+      } else if (this.pQV.csB()) {
         i = 0;
       }
     }
@@ -64,94 +64,94 @@ public abstract class a
   
   private void refreshView()
   {
-    if ((this.oDm == null) || (this.oDm.bVc() == null))
+    if ((this.pQV == null) || (this.pQV.csQ() == null))
     {
-      ae.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
+      Log.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
       return;
     }
-    bZZ();
-    bZY();
+    cxO();
+    cxN();
   }
   
-  public void Bc(int paramInt) {}
+  public void EK(int paramInt) {}
   
-  public void I(boolean paramBoolean1, boolean paramBoolean2) {}
+  public void H(boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void a(ShapeDrawable paramShapeDrawable) {}
   
-  protected final View bZW()
+  protected final View cxL()
   {
-    return this.oWx;
+    return this.qlr;
   }
   
-  protected abstract void bZX();
+  protected abstract void cxM();
   
-  protected abstract void bZY();
+  protected abstract void cxN();
   
   public final void d(b paramb)
   {
-    this.oDm = paramb;
+    this.pQV = paramb;
     refreshView();
   }
   
   public final void i(b paramb)
   {
-    this.oDm = paramb;
+    this.pQV = paramb;
   }
   
-  public void jA(boolean paramBoolean) {}
-  
-  public void jB(boolean paramBoolean) {}
-  
-  public final View jq()
+  public final View jz()
   {
-    if ((this.oDm == null) || (this.oDm.bVc() == null))
+    if ((this.pQV == null) || (this.pQV.csQ() == null))
     {
-      ae.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
+      Log.e("MicroMsg.CardWidgetCouponBase", "mCardInfo == null or mCardInfo.getCardTpInfo() == null");
       return null;
     }
     this.mInflater = ((LayoutInflater)this.mContext.getSystemService("layout_inflater"));
     LayoutInflater localLayoutInflater = this.mInflater;
     int i;
-    if (!this.oDm.bUK()) {
-      if (this.oDm.bUL()) {
-        i = 2131493359;
+    if (!this.pQV.csy()) {
+      if (this.pQV.csz()) {
+        i = 2131493450;
       }
     }
     for (;;)
     {
-      this.oWx = localLayoutInflater.inflate(i, null);
-      this.oWy = ((ImageView)this.oWx.findViewById(2131296859));
-      this.mRG = ((TextView)this.oWx.findViewById(2131296865));
-      bZX();
+      this.qlr = localLayoutInflater.inflate(i, null);
+      this.qls = ((ImageView)this.qlr.findViewById(2131296952));
+      this.oeJ = ((TextView)this.qlr.findViewById(2131296958));
+      cxM();
       refreshView();
-      return this.oWx;
-      if (this.oDm.bUJ()) {
-        i = 2131493321;
-      } else if (this.oDm.bUM()) {
-        i = 2131493273;
-      } else if (this.oDm.bUN()) {
-        i = 2131493311;
+      return this.qlr;
+      if (this.pQV.csx()) {
+        i = 2131493412;
+      } else if (this.pQV.csA()) {
+        i = 2131493362;
+      } else if (this.pQV.csB()) {
+        i = 2131493401;
       } else {
-        i = 2131493266;
+        i = 2131493353;
       }
     }
   }
   
+  public void kD(boolean paramBoolean) {}
+  
+  public void kE(boolean paramBoolean) {}
+  
   public final void release()
   {
-    this.jwB = null;
+    this.kuO = null;
     this.mContext = null;
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.jwB = paramOnClickListener;
+    this.kuO = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.a
  * JD-Core Version:    0.7.0.1
  */

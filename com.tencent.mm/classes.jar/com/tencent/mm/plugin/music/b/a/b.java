@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.music.b.a;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class b
 {
-  static void G(ArrayList<IDKey> paramArrayList)
+  static void M(ArrayList<IDKey> paramArrayList)
   {
     AppMethodBeat.i(62941);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -19,14 +19,14 @@ public final class b
       IDKey localIDKey = (IDKey)paramArrayList.next();
       localStringBuilder.append(", key:" + localIDKey.GetKey() + " value:" + localIDKey.GetValue());
     }
-    com.tencent.mm.audio.mix.h.b.d("MicroMsg.Audio.AudioPlayIdKeyReport", localStringBuilder.toString());
+    com.tencent.mm.audio.mix.i.b.d("MicroMsg.Audio.AudioPlayIdKeyReport", localStringBuilder.toString());
     AppMethodBeat.o(62941);
   }
   
-  public static int Lx(int paramInt)
+  public static int Sv(int paramInt)
   {
     AppMethodBeat.i(62940);
-    ae.i("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
+    Log.i("MicroMsg.Audio.AudioPlayIdKeyReport", "getQQAudioPlayerErrIdKey, errCode:".concat(String.valueOf(paramInt)));
     switch (paramInt)
     {
     default: 

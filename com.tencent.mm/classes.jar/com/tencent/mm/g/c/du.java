@@ -2,70 +2,25 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class du
-  extends c
+  extends IAutoDBItem
 {
-  public static final String COL_EXPIRE_AT = "expire_at";
-  public static final String COL_KEY = "key";
-  public static final String COL_TYPE = "type";
-  public static final String COL_VALUE = "value";
   public static final String[] INDEX_CREATE = new String[0];
-  public static final String TABLE_NAME = "KindaConfigCache";
-  private static final String TAG = "MicroMsg.SDK.BaseKindaConfigCache";
-  private static final int expire_at_HASHCODE = "expire_at".hashCode();
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int fMH = "wechatUsername".hashCode();
+  private static final int fMI = "systemAddressBookUsername".hashCode();
+  private static final int fMJ = "contactId".hashCode();
+  private static final int fMK = "sortKey".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private static final int value_HASHCODE = "value".hashCode();
-  private boolean __hadSetexpire_at = true;
-  private boolean __hadSetkey = true;
-  private boolean __hadSettype = true;
-  private boolean __hadSetvalue = true;
-  public long field_expire_at;
-  public String field_key;
-  public int field_type;
-  public String field_value;
-  
-  static
-  {
-    type_HASHCODE = "type".hashCode();
-  }
-  
-  private final void buildBuff() {}
-  
-  public static c.a initAutoDBInfo(Class<?> paramClass)
-  {
-    paramClass = new c.a();
-    paramClass.IBL = new Field[4];
-    paramClass.columns = new String[5];
-    StringBuilder localStringBuilder = new StringBuilder();
-    paramClass.columns[0] = "key";
-    paramClass.IBN.put("key", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" key TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    paramClass.IBM = "key";
-    paramClass.columns[1] = "value";
-    paramClass.IBN.put("value", "TEXT");
-    localStringBuilder.append(" value TEXT");
-    localStringBuilder.append(", ");
-    paramClass.columns[2] = "type";
-    paramClass.IBN.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    paramClass.columns[3] = "expire_at";
-    paramClass.IBN.put("expire_at", "LONG");
-    localStringBuilder.append(" expire_at LONG");
-    paramClass.columns[4] = "rowid";
-    paramClass.sql = localStringBuilder.toString();
-    return paramClass;
-  }
-  
-  private final void parseBuff() {}
+  private boolean fMD = true;
+  private boolean fME = true;
+  private boolean fMF = true;
+  private boolean fMG = true;
+  public String field_contactId;
+  public String field_sortKey;
+  public String field_systemAddressBookUsername;
+  public String field_wechatUsername;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -80,24 +35,23 @@ public abstract class du
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (key_HASHCODE != k) {
-        break label65;
+      if (fMH != k) {
+        break label60;
       }
-      this.field_key = paramCursor.getString(i);
-      this.__hadSetkey = true;
+      this.field_wechatUsername = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (value_HASHCODE == k) {
-        this.field_value = paramCursor.getString(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (expire_at_HASHCODE == k) {
-        this.field_expire_at = paramCursor.getLong(i);
+      label60:
+      if (fMI == k) {
+        this.field_systemAddressBookUsername = paramCursor.getString(i);
+      } else if (fMJ == k) {
+        this.field_contactId = paramCursor.getString(i);
+      } else if (fMK == k) {
+        this.field_sortKey = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -106,31 +60,28 @@ public abstract class du
   
   public ContentValues convertTo()
   {
-    buildBuff();
     ContentValues localContentValues = new ContentValues();
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.fMD) {
+      localContentValues.put("wechatUsername", this.field_wechatUsername);
     }
-    if (this.__hadSetvalue) {
-      localContentValues.put("value", this.field_value);
+    if (this.fME) {
+      localContentValues.put("systemAddressBookUsername", this.field_systemAddressBookUsername);
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
+    if (this.fMF) {
+      localContentValues.put("contactId", this.field_contactId);
     }
-    if (this.__hadSetexpire_at) {
-      localContentValues.put("expire_at", Long.valueOf(this.field_expire_at));
+    if (this.fMG) {
+      localContentValues.put("sortKey", this.field_sortKey);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
     }
     return localContentValues;
   }
-  
-  public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.du
  * JD-Core Version:    0.7.0.1
  */

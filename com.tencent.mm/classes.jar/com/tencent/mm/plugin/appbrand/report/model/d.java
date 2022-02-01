@@ -5,105 +5,185 @@ import android.content.Intent;
 import android.os.PersistableBundle;
 import android.text.TextUtils;
 import android.util.Pair;
+import com.tencent.luggage.h.e;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.q;
+import com.tencent.mm.plugin.appbrand.ac.i;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
+import com.tencent.mm.plugin.appbrand.appstorage.m;
+import com.tencent.mm.plugin.appbrand.bb;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
+import com.tencent.mm.plugin.appbrand.config.HalfScreenConfig;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProcessProxyUI;
-import com.tencent.mm.plugin.appbrand.o;
+import com.tencent.mm.plugin.appbrand.jsapi.file.at;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.a;
 import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.page.u;
+import com.tencent.mm.plugin.appbrand.page.ag;
+import com.tencent.mm.plugin.appbrand.page.x;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.plugin.appbrand.report.h;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.o;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
 {
-  public static void a(p paramp, JSONObject paramJSONObject)
+  private static String F(com.tencent.mm.plugin.appbrand.q paramq)
+  {
+    AppMethodBeat.i(227381);
+    if (paramq.bsC().kHL.isEnable())
+    {
+      AppMethodBeat.o(227381);
+      return "halfPage";
+    }
+    if (bb.r(paramq))
+    {
+      AppMethodBeat.o(227381);
+      return "singlePage";
+    }
+    AppMethodBeat.o(227381);
+    return "default";
+  }
+  
+  private static String a(com.tencent.mm.plugin.appbrand.q paramq, String paramString)
+  {
+    AppMethodBeat.i(227382);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(227382);
+      return paramString;
+    }
+    Object localObject1 = a.adn(paramString);
+    if (localObject1 == null)
+    {
+      AppMethodBeat.o(227382);
+      return paramString;
+    }
+    Object localObject2 = ((a)localObject1).nlI.trim();
+    Log.d("MicroMsg.AppBrandPageVisitStatisticsHelper", "preProcessNativeExtraData4OpenMaterial, originMaterialPath: ".concat(String.valueOf(localObject2)));
+    if ((((String)localObject2).startsWith("http://")) || (((String)localObject2).startsWith("https://")))
+    {
+      AppMethodBeat.o(227382);
+      return paramString;
+    }
+    String str1 = ((a)localObject1).mimeType;
+    if ((!str1.startsWith("image")) && (!str1.startsWith("video"))) {}
+    for (localObject1 = org.apache.commons.a.d.getName((String)localObject2);; localObject1 = "")
+    {
+      String str2 = org.apache.commons.a.d.getExtension((String)localObject2);
+      o localo = new o((String)localObject2);
+      int i = (int)localo.length();
+      Log.d("MicroMsg.AppBrandPageVisitStatisticsHelper", "preProcessNativeExtraData4OpenMaterial, fileName: %s, fileExt: %s，fileSize: %d", new Object[] { localObject1, str2, Integer.valueOf(i) });
+      localObject2 = new i();
+      paramq = paramq.OK().a(localo, str2, false, (i)localObject2);
+      Log.d("MicroMsg.AppBrandPageVisitStatisticsHelper", "preProcessNativeExtraData4OpenMaterial, result: ".concat(String.valueOf(paramq)));
+      if (m.kSu != paramq)
+      {
+        AppMethodBeat.o(227382);
+        return paramString;
+      }
+      paramq = (String)((i)localObject2).value;
+      Log.d("MicroMsg.AppBrandPageVisitStatisticsHelper", "preProcessNativeExtraData4OpenMaterial, newMaterialPath: ".concat(String.valueOf(paramq)));
+      paramq = new a(str1, paramq, (String)localObject1, i).bua();
+      AppMethodBeat.o(227382);
+      return paramq;
+    }
+  }
+  
+  public static void a(com.tencent.mm.plugin.appbrand.q paramq, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(48109);
     try
     {
-      if ((j.a.oQ(paramp.aXx().dQv)) && (!TextUtils.isEmpty(paramp.aXx().kaO))) {
-        paramJSONObject.put("debugLaunchInfo", new JSONObject(paramp.aXx().kaO));
+      if ((j.a.sE(paramq.bsC().eix)) && (!TextUtils.isEmpty(paramq.bsC().ldS))) {
+        paramJSONObject.put("debugLaunchInfo", new JSONObject(paramq.bsC().ldS));
       }
       AppMethodBeat.o(48109);
       return;
     }
-    catch (JSONException paramp)
+    catch (JSONException paramq)
     {
-      ae.e("MicroMsg.AppBrandPageVisitStatisticsHelper", "fillDebugLaunchInfo ex = %s", new Object[] { paramp });
+      Log.e("MicroMsg.AppBrandPageVisitStatisticsHelper", "fillDebugLaunchInfo ex = %s", new Object[] { paramq });
       AppMethodBeat.o(48109);
     }
   }
   
-  public static void b(p paramp, JSONObject paramJSONObject)
+  public static void b(com.tencent.mm.plugin.appbrand.q paramq, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(48110);
     try
     {
-      c(paramp, paramJSONObject);
-      paramJSONObject.put("referpagepath", d(paramp.aXx().cmx));
-      paramJSONObject.put("clickTimestamp", paramp.aXx().startTime);
+      c(paramq, paramJSONObject);
+      paramJSONObject.put("referpagepath", d(paramq.bsC().cys));
+      paramJSONObject.put("clickTimestamp", paramq.bsC().startTime);
       AppMethodBeat.o(48110);
       return;
     }
-    catch (Exception paramp)
+    catch (Exception paramq)
     {
-      ae.e("MicroMsg.AppBrandPageVisitStatisticsHelper", "fillWxConfigLaunchInfo ex = %s", new Object[] { paramp });
+      Log.e("MicroMsg.AppBrandPageVisitStatisticsHelper", "fillWxConfigLaunchInfo ex = %s", new Object[] { paramq });
       AppMethodBeat.o(48110);
     }
   }
   
-  public static void c(p paramp, JSONObject paramJSONObject)
+  public static void c(com.tencent.mm.plugin.appbrand.q paramq, JSONObject paramJSONObject)
   {
     int i = 0;
     AppMethodBeat.i(48111);
-    paramJSONObject.put("scene", paramp.Fg().cmE.scene);
-    paramJSONObject.put("scene_note", paramp.Fg().cmE.dlj);
-    paramJSONObject.put("sessionId", paramp.aXx().Ef());
-    paramJSONObject.put("usedState", paramp.Fg().cmE.mwv);
-    paramJSONObject.put("prescene", paramp.Fg().cmE.dLf);
-    paramJSONObject.put("prescene_note", paramp.Fg().cmE.dLg);
-    Object localObject = paramp.aXx().jFV;
+    paramJSONObject.put("scene", paramq.ON().cyA.scene);
+    paramJSONObject.put("scene_note", paramq.ON().cyA.dCw);
+    paramJSONObject.put("sessionId", paramq.bsC().cym);
+    paramJSONObject.put("usedState", paramq.ON().cyA.nHt);
+    paramJSONObject.put("prescene", paramq.ON().cyA.ecU);
+    paramJSONObject.put("prescene_note", paramq.ON().cyA.ecV);
+    Object localObject = paramq.bsC().kHG;
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       paramJSONObject.put("chatroomUsername", localObject);
     }
-    if (!TextUtils.isEmpty(paramp.aXx().kaN)) {}
+    localObject = paramq.bsC().kHQ;
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      paramJSONObject.put("shortLink", localObject);
+    }
+    if (!TextUtils.isEmpty(paramq.bsC().ldR))
+    {
+      String str = paramq.bsC().ldR;
+      localObject = str;
+      if (1173 == paramq.ON().cyA.scene) {
+        localObject = a(paramq, str);
+      }
+    }
     try
     {
-      paramJSONObject.put("nativeExtraData", new JSONObject(paramp.aXx().kaN));
-      localObject = paramp.aXx().kaM;
+      paramJSONObject.put("nativeExtraData", new JSONObject((String)localObject));
+      localObject = paramq.bsC().ldQ;
       if ((localObject == null) || (((PersistableBundle)localObject).size() <= 0)) {}
     }
     catch (JSONException localJSONException1)
     {
       try
       {
-        paramJSONObject.put("transitExtraData", com.tencent.luggage.h.d.a(paramp.aXx().kaM));
-        if (j.a.oQ(paramp.aXx().dQv))
+        paramJSONObject.put("transitExtraData", e.a(paramq.bsC().ldQ));
+        if (j.a.sE(paramq.bsC().eix))
         {
           paramJSONObject.put("appversion", i);
+          paramJSONObject.put("mode", F(paramq));
           AppMethodBeat.o(48111);
           return;
           localJSONException1 = localJSONException1;
-          ae.printErrStackTrace("MicroMsg.AppBrandPageVisitStatisticsHelper", localJSONException1, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.AppBrandPageVisitStatisticsHelper", localJSONException1, "", new Object[0]);
         }
       }
       catch (JSONException localJSONException2)
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.AppBrandPageVisitStatisticsHelper", localJSONException2, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.AppBrandPageVisitStatisticsHelper", localJSONException2, "", new Object[0]);
           continue;
-          i = paramp.aXx().aDD;
+          i = paramq.bsC().appVersion;
         }
       }
     }
@@ -119,79 +199,79 @@ public final class d
     {
       return str;
       str = "";
-      if ((1 == paramAppBrandLaunchReferrer.kbg) || (3 == paramAppBrandLaunchReferrer.kbg)) {
+      if ((1 == paramAppBrandLaunchReferrer.leo) || (3 == paramAppBrandLaunchReferrer.leo)) {
         return paramAppBrandLaunchReferrer.appId;
       }
-    } while (2 != paramAppBrandLaunchReferrer.kbg);
+    } while (2 != paramAppBrandLaunchReferrer.leo);
     return paramAppBrandLaunchReferrer.url;
   }
   
-  public static Pair<Integer, String> t(ad paramad)
+  public static Pair<Integer, String> t(ag paramag)
   {
     int i = 7;
     AppMethodBeat.i(48112);
     Intent localIntent;
-    switch (d.1.jOW[com.tencent.mm.plugin.appbrand.h.KU(paramad.getAppId()).ordinal()])
+    switch (1.kRE[com.tencent.mm.plugin.appbrand.h.Uc(paramag.getAppId()).ordinal()])
     {
     default: 
-      localIntent = u(paramad).bsW();
+      localIntent = u(paramag).bOA();
       if (localIntent != null) {
         if (localIntent.getComponent() == null)
         {
-          paramad = "";
-          ae.e("MicroMsg.AppBrandPageVisitStatisticsHelper", "onBackground, intent %s, get null cmp name", new Object[] { localIntent });
-          if ((!paramad.contains("WebViewUI")) && (!paramad.contains("WebviewMpUI"))) {
-            break label249;
+          paramag = "";
+          Log.e("MicroMsg.AppBrandPageVisitStatisticsHelper", "onBackground, intent %s, get null cmp name", new Object[] { localIntent });
+          if ((!paramag.contains("WebViewUI")) && (!paramag.contains("WebviewMpUI"))) {
+            break label253;
           }
           i = 10;
-          paramad = z.getStringExtra(localIntent, AppBrandProcessProxyUI.ksu);
+          paramag = IntentUtil.getStringExtra(localIntent, AppBrandProcessProxyUI.lwe);
         }
       }
       break;
     }
     for (;;)
     {
-      paramad = Pair.create(Integer.valueOf(i), paramad);
+      paramag = Pair.create(Integer.valueOf(i), paramag);
       AppMethodBeat.o(48112);
-      return paramad;
-      if (paramad.mgP.isLoading()) {}
+      return paramag;
+      if (paramag.nrs.isLoading()) {}
       for (i = 4;; i = 3)
       {
-        paramad = null;
+        paramag = null;
         break;
       }
-      if (paramad.mgP.isLoading()) {
+      if (paramag.nrs.isLoading()) {
         i = 5;
       }
-      paramad = null;
+      paramag = null;
       continue;
       i = 6;
-      paramad = null;
+      paramag = null;
       continue;
       i = 9;
-      paramad = o.Ld(paramad.getAppId()).jBX + ":" + q.encode(bu.nullAsNil(o.Ld(paramad.getAppId()).jBY));
+      paramag = p.Um(paramag.getAppId()).kCT + ":" + com.tencent.mm.compatible.util.q.encode(Util.nullAsNil(p.Um(paramag.getAppId()).kCU));
       continue;
-      paramad = localIntent.getComponent().getClassName();
+      paramag = localIntent.getComponent().getClassName();
       break;
-      label249:
-      paramad = bu.bI(z.getStringExtra(localIntent, AppBrandProcessProxyUI.ksv), paramad);
+      label253:
+      paramag = Util.nullAs(IntentUtil.getStringExtra(localIntent, AppBrandProcessProxyUI.lwf), paramag);
       i = 8;
       continue;
-      paramad = null;
+      paramag = null;
     }
   }
   
-  private static f u(ad paramad)
+  private static f u(ag paramag)
   {
     AppMethodBeat.i(48113);
-    paramad = paramad.getRuntime().aXy().getReporter();
+    paramag = paramag.getRuntime().bsD().getReporter();
     AppMethodBeat.o(48113);
-    return paramad;
+    return paramag;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.d
  * JD-Core Version:    0.7.0.1
  */

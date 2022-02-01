@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private final String bKi;
-  public final String bKj;
+  private final String bKy;
+  public final String bKz;
   public final String zzs;
   private final String zzt;
   private final String zzu;
@@ -27,10 +27,10 @@ public final class b
     {
       Preconditions.checkState(bool, "ApplicationId must be set.");
       this.zzs = paramString1;
-      this.bKi = paramString2;
+      this.bKy = paramString2;
       this.zzt = paramString3;
       this.zzu = paramString4;
-      this.bKj = paramString5;
+      this.bKz = paramString5;
       this.zzw = paramString6;
       this.zzx = paramString7;
       AppMethodBeat.o(4063);
@@ -38,7 +38,7 @@ public final class b
     }
   }
   
-  public static b am(Context paramContext)
+  public static b an(Context paramContext)
   {
     AppMethodBeat.i(4064);
     paramContext = new StringResourceValueReader(paramContext);
@@ -62,7 +62,7 @@ public final class b
       return false;
     }
     paramObject = (b)paramObject;
-    if ((Objects.equal(this.zzs, paramObject.zzs)) && (Objects.equal(this.bKi, paramObject.bKi)) && (Objects.equal(this.zzt, paramObject.zzt)) && (Objects.equal(this.zzu, paramObject.zzu)) && (Objects.equal(this.bKj, paramObject.bKj)) && (Objects.equal(this.zzw, paramObject.zzw)) && (Objects.equal(this.zzx, paramObject.zzx)))
+    if ((Objects.equal(this.zzs, paramObject.zzs)) && (Objects.equal(this.bKy, paramObject.bKy)) && (Objects.equal(this.zzt, paramObject.zzt)) && (Objects.equal(this.zzu, paramObject.zzu)) && (Objects.equal(this.bKz, paramObject.bKz)) && (Objects.equal(this.zzw, paramObject.zzw)) && (Objects.equal(this.zzx, paramObject.zzx)))
     {
       AppMethodBeat.o(4065);
       return true;
@@ -74,7 +74,7 @@ public final class b
   public final int hashCode()
   {
     AppMethodBeat.i(4066);
-    int i = Objects.hashCode(new Object[] { this.zzs, this.bKi, this.zzt, this.zzu, this.bKj, this.zzw, this.zzx });
+    int i = Objects.hashCode(new Object[] { this.zzs, this.bKy, this.zzt, this.zzu, this.bKz, this.zzw, this.zzx });
     AppMethodBeat.o(4066);
     return i;
   }
@@ -82,14 +82,14 @@ public final class b
   public final String toString()
   {
     AppMethodBeat.i(4067);
-    String str = Objects.toStringHelper(this).add("applicationId", this.zzs).add("apiKey", this.bKi).add("databaseUrl", this.zzt).add("gcmSenderId", this.bKj).add("storageBucket", this.zzw).add("projectId", this.zzx).toString();
+    String str = Objects.toStringHelper(this).add("applicationId", this.zzs).add("apiKey", this.bKy).add("databaseUrl", this.zzt).add("gcmSenderId", this.bKz).add("storageBucket", this.zzw).add("projectId", this.zzx).toString();
     AppMethodBeat.o(4067);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.expt.hellhound.a.d;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16})
+@l(hxD={1, 1, 16})
 public final class b {}
 
 

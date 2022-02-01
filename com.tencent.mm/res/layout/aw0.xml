@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/hb" android:textStyle="bold" android:textColor="@color/a2x" android:gravity="center" android:id="@id/ixq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="80.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/bd" android:textStyle="bold" android:textColor="@color/x3" android:id="@id/ixf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="24.0dip" android:text="@string/dus" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <FrameLayout android:id="@id/g97" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="180.0dip" android:layout_marginRight="30.0dip" android:layout_centerHorizontal="true">
+        <com.tencent.mm.plugin.walletlock.gesture.ui.widget.PatternLockView android:id="@id/g96" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</RelativeLayout>

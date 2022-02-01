@@ -11,7 +11,7 @@ public class SetLineJoinActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineJoinActionArg> CREATOR;
-  public String jWR;
+  public String kZN;
   
   static
   {
@@ -51,32 +51,32 @@ public class SetLineJoinActionArg
       return false;
     }
     paramObject = (SetLineJoinActionArg)paramObject;
-    boolean bool = Objects.equals(this.jWR, paramObject.jWR);
+    boolean bool = Objects.equals(this.kZN, paramObject.kZN);
     AppMethodBeat.o(145207);
     return bool;
-  }
-  
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145204);
-    super.h(paramParcel);
-    this.jWR = paramParcel.readString();
-    AppMethodBeat.o(145204);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145208);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jWR });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.kZN });
     AppMethodBeat.o(145208);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145204);
+    super.i(paramParcel);
+    this.kZN = paramParcel.readString();
+    AppMethodBeat.o(145204);
   }
   
   public final void parse(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145205);
     super.parse(paramJSONObject);
-    this.jWR = paramJSONObject.optJSONArray("data").optString(0);
+    this.kZN = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145205);
   }
   
@@ -84,13 +84,13 @@ public class SetLineJoinActionArg
   {
     AppMethodBeat.i(145206);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jWR);
+    paramParcel.writeString(this.kZN);
     AppMethodBeat.o(145206);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetLineJoinActionArg
  * JD-Core Version:    0.7.0.1
  */

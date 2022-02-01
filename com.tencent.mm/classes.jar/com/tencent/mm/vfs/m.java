@@ -1,8 +1,29 @@
 package com.tencent.mm.vfs;
 
-public abstract interface m
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
+final class m
 {
-  public abstract boolean accept(k paramk);
+  final SchemeResolver Rds;
+  SchemeResolver.a Rdt;
+  
+  m(SchemeResolver paramSchemeResolver)
+  {
+    this.Rds = paramSchemeResolver;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(187739);
+    if (this.Rds == null)
+    {
+      AppMethodBeat.o(187739);
+      return "[NULL]";
+    }
+    String str = this.Rds.toString();
+    AppMethodBeat.o(187739);
+    return str;
+  }
 }
 
 

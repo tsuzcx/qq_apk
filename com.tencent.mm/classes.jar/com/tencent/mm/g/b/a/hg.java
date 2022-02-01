@@ -6,49 +6,44 @@ import com.tencent.mm.plugin.report.a;
 public final class hg
   extends a
 {
-  public long dQB = 0L;
-  public long dWt = 0L;
-  private String etz = "";
+  public long eLv = 0L;
+  private String eLw = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(149938);
+    AppMethodBeat.i(149928);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dWt);
+    ((StringBuffer)localObject).append(this.eLv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQB);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etz);
+    ((StringBuffer)localObject).append(this.eLw);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(149938);
+    aMq((String)localObject);
+    AppMethodBeat.o(149928);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(149939);
+    AppMethodBeat.i(149929);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.dWt);
+    ((StringBuffer)localObject).append("SendScene:").append(this.eLv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Action:").append(this.dQB);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OrderId:").append(this.etz);
+    ((StringBuffer)localObject).append("emoticonMd5:").append(this.eLw);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149939);
+    AppMethodBeat.o(149929);
     return localObject;
   }
   
   public final int getId()
   {
-    return 17072;
+    return 16868;
   }
   
-  public final hg qv(String paramString)
+  public final hg uV(String paramString)
   {
-    AppMethodBeat.i(149937);
-    this.etz = t("OrderId", paramString, true);
-    AppMethodBeat.o(149937);
+    AppMethodBeat.i(162225);
+    this.eLw = x("emoticonMd5", paramString, true);
+    AppMethodBeat.o(162225);
     return this;
   }
 }

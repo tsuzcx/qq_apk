@@ -3,40 +3,40 @@ package com.tencent.mm.storagebase;
 import android.content.ContentValues;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 public final class i
 {
-  h JjE;
-  private aw cYd;
+  h Otw;
   private BlockingQueue<a> queue;
   private String table;
+  private MTimerHandler timer;
   
   public i(h paramh, String paramString)
   {
     AppMethodBeat.i(133430);
     this.table = null;
-    this.cYd = new aw(Looper.getMainLooper(), new aw.a()
+    this.timer = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(133428);
-        if (!i.this.JjE.isOpen())
+        if (!i.this.Otw.isOpen())
         {
           AppMethodBeat.o(133428);
           return false;
         }
-        i.this.fxV();
+        i.this.gFI();
         AppMethodBeat.o(133428);
         return false;
       }
     }, false);
     this.queue = new LinkedBlockingQueue();
-    this.JjE = paramh;
+    this.Otw = paramh;
     this.table = paramString;
     AppMethodBeat.o(133430);
   }
@@ -46,41 +46,41 @@ public final class i
     AppMethodBeat.i(133431);
     if (parama == null)
     {
-      ae.w("MicroMsg.MemoryStorage.Holder", "appendToDisk Holder == null. table:%s", new Object[] { this.table });
+      Log.w("MicroMsg.MemoryStorage.Holder", "appendToDisk Holder == null. table:%s", new Object[] { this.table });
       AppMethodBeat.o(133431);
       return -2;
     }
-    if ((this.JjE == null) || (!this.JjE.isOpen()))
+    if ((this.Otw == null) || (!this.Otw.isOpen()))
     {
-      ae.e("MicroMsg.MemoryStorage.Holder", "appendToDisk diskDB already close. table:%s", new Object[] { this.table });
+      Log.e("MicroMsg.MemoryStorage.Holder", "appendToDisk diskDB already close. table:%s", new Object[] { this.table });
       AppMethodBeat.o(133431);
       return -3;
     }
-    if (parama.IzP == 2) {
-      this.JjE.a(this.table, parama.IBM, parama.values);
+    if (parama.funcType == 2) {
+      this.Otw.insert(this.table, parama.primaryKey, parama.values);
     }
     for (;;)
     {
       AppMethodBeat.o(133431);
       return 0;
-      if (parama.IzP == 5)
+      if (parama.funcType == 5)
       {
-        this.JjE.delete(this.table, parama.JjQ, parama.JjR);
+        this.Otw.delete(this.table, parama.OtI, parama.OtJ);
       }
-      else if (parama.IzP == 1)
+      else if (parama.funcType == 1)
       {
-        this.JjE.execSQL(this.table, parama.sql);
+        this.Otw.execSQL(this.table, parama.sql);
       }
-      else if (parama.IzP == 4)
+      else if (parama.funcType == 4)
       {
-        this.JjE.replace(this.table, parama.IBM, parama.values);
+        this.Otw.replace(this.table, parama.primaryKey, parama.values);
       }
       else
       {
-        if (parama.IzP != 3) {
+        if (parama.funcType != 3) {
           break;
         }
-        this.JjE.update(this.table, parama.values, parama.JjQ, parama.JjR);
+        this.Otw.update(this.table, parama.values, parama.OtI, parama.OtJ);
       }
     }
     AppMethodBeat.o(133431);
@@ -92,27 +92,27 @@ public final class i
     AppMethodBeat.i(133433);
     this.queue.add(parama);
     if (this.queue.size() >= 40) {
-      fxV();
+      gFI();
     }
-    if (this.cYd.foU()) {
-      this.cYd.ay(60000L, 60000L);
+    if (this.timer.stopped()) {
+      this.timer.startTimer(60000L);
     }
     AppMethodBeat.o(133433);
     return 0;
   }
   
-  public final int fxV()
+  public final int gFI()
   {
     AppMethodBeat.i(133432);
-    ae.d("MicroMsg.MemoryStorage.Holder", "appendAllToDisk table:%s trans:%b queue:%d", new Object[] { this.table, Boolean.valueOf(this.JjE.inTransaction()), Integer.valueOf(this.queue.size()) });
+    Log.d("MicroMsg.MemoryStorage.Holder", "appendAllToDisk table:%s trans:%b queue:%d", new Object[] { this.table, Boolean.valueOf(this.Otw.inTransaction()), Integer.valueOf(this.queue.size()) });
     if (this.queue.isEmpty())
     {
       AppMethodBeat.o(133432);
       return 0;
     }
     long l;
-    if (!this.JjE.inTransaction()) {
-      l = this.JjE.yi(Thread.currentThread().getId());
+    if (!this.Otw.inTransaction()) {
+      l = this.Otw.beginTransaction(Thread.currentThread().getId());
     }
     for (;;)
     {
@@ -123,7 +123,7 @@ public final class i
       else
       {
         if (l > 0L) {
-          this.JjE.sW(l);
+          this.Otw.endTransaction(l);
         }
         AppMethodBeat.o(133432);
         return 0;
@@ -134,14 +134,14 @@ public final class i
   
   public static final class a
   {
-    public String IBM;
-    public int IzP;
-    public String JjQ;
-    public String[] JjR;
+    public String OtI;
+    public String[] OtJ;
+    public int funcType;
+    public String primaryKey;
     public String sql;
     public ContentValues values;
     
-    public final void Y(String[] paramArrayOfString)
+    public final void Z(String[] paramArrayOfString)
     {
       AppMethodBeat.i(133429);
       if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
@@ -149,11 +149,11 @@ public final class i
         AppMethodBeat.o(133429);
         return;
       }
-      this.JjR = new String[paramArrayOfString.length];
+      this.OtJ = new String[paramArrayOfString.length];
       int i = 0;
       while (i < paramArrayOfString.length)
       {
-        this.JjR[i] = new String(paramArrayOfString[i]);
+        this.OtJ[i] = new String(paramArrayOfString[i]);
         i += 1;
       }
       AppMethodBeat.o(133429);

@@ -5,7 +5,7 @@ import com.google.android.search.verification.client.SearchActionVerificationCli
 import com.google.android.search.verification.client.SearchActionVerificationClientService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.account.model.VoiceActionService;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class VoiceActionActivity
   extends SearchActionVerificationClientActivity
@@ -16,10 +16,10 @@ public class VoiceActionActivity
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final Class<? extends SearchActionVerificationClientService> xH()
+  public final Class<? extends SearchActionVerificationClientService> xP()
   {
     AppMethodBeat.i(128793);
-    ae.d("MicroMsg.VoiceActionActivity", "getServiceClass");
+    Log.d("MicroMsg.VoiceActionActivity", "getServiceClass");
     AppMethodBeat.o(128793);
     return VoiceActionService.class;
   }

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RadioGroup android:orientation="vertical" android:id="@id/h6k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cc">
+        <RadioButton android:textSize="@dimen/is" android:gravity="center_vertical" android:id="@id/grh" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="@string/ho2" style="@style/oi" />
+        <RadioButton android:textSize="@dimen/is" android:id="@id/grj" android:paddingLeft="8.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="@string/ho5" style="@style/oi" />
+        <RadioButton android:textSize="@dimen/is" android:id="@id/gri" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip" android:text="@string/ho3" style="@style/oi" />
+    </RadioGroup>
+</LinearLayout>

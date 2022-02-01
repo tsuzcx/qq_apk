@@ -3,7 +3,7 @@ package com.tencent.mm.ap;
 public final class b
 {
   /* Error */
-  public static Object z(java.io.InputStream paramInputStream)
+  public static Object y(java.io.InputStream paramInputStream)
   {
     // Byte code:
     //   0: aconst_null
@@ -40,7 +40,7 @@ public final class b
     //   53: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   56: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   59: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokestatic 58	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   62: invokestatic 58	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   65: goto -32 -> 33
     //   68: astore_2
     //   69: aconst_null
@@ -56,7 +56,7 @@ public final class b
     //   85: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   88: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   91: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   94: invokestatic 58	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   94: invokestatic 58	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   97: aload_3
     //   98: astore_2
     //   99: aload_1
@@ -76,7 +76,7 @@ public final class b
     //   125: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   128: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   131: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokestatic 58	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   134: invokestatic 58	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   137: aload_3
     //   138: astore_2
     //   139: goto -106 -> 33
@@ -101,7 +101,7 @@ public final class b
     //   173: invokevirtual 45	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   176: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   179: invokevirtual 52	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   182: invokestatic 58	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   182: invokestatic 58	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   185: goto -32 -> 153
     //   188: astore_1
     //   189: goto -44 -> 145

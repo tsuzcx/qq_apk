@@ -2,13 +2,15 @@ package com.tencent.mm.plugin.music.model.a.a;
 
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.f;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.music.model.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 
 public final class a$k
   implements k<IPCAudioParamRequest, IPCVoid>
@@ -21,28 +23,28 @@ public final class a$k
     {
       try
       {
-        Object localObject = paramIPCAudioParamRequest.dAQ;
-        if (paramIPCAudioParamRequest.ikB == null) {
+        Object localObject = paramIPCAudioParamRequest.dSF;
+        if (paramIPCAudioParamRequest.jfA == null) {
           continue;
         }
-        ae.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileIndexBitCache Task, musicId:%s, bitset is valid:%b", new Object[] { localObject, Boolean.valueOf(bool) });
-        localObject = paramIPCAudioParamRequest.dAQ;
-        paramIPCAudioParamRequest = paramIPCAudioParamRequest.ikB;
-        d locald = com.tencent.mm.plugin.music.model.f.dww();
+        Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc updateMusicFileIndexBitCache Task, musicId:%s, bitset is valid:%b", new Object[] { localObject, Boolean.valueOf(bool) });
+        localObject = paramIPCAudioParamRequest.dSF;
+        paramIPCAudioParamRequest = paramIPCAudioParamRequest.jfA;
+        d locald = o.euE();
         ContentValues localContentValues = new ContentValues();
         localContentValues.put("indexBitData", paramIPCAudioParamRequest);
         int i = locald.db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { localObject });
         if (i <= 0) {
-          ae.i("MicroMsg.Music.PieceMusicInfoStorage", "updateMusicFileIndexBitCache raw=%d musicId=%s", new Object[] { Integer.valueOf(i), localObject });
+          Log.i("MicroMsg.Music.PieceMusicInfoStorage", "updateMusicFileIndexBitCache raw=%d musicId=%s", new Object[] { Integer.valueOf(i), localObject });
         }
-        localObject = (c)locald.wBy.get(localObject);
+        localObject = (c)locald.AlG.get(localObject);
         if (localObject != null) {
           ((c)localObject).field_indexBitData = paramIPCAudioParamRequest;
         }
       }
       catch (Exception paramIPCAudioParamRequest)
       {
-        ae.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc updateMusicFileIndexBitCache task", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc updateMusicFileIndexBitCache task", new Object[0]);
         continue;
       }
       paramIPCAudioParamRequest = new IPCVoid();
@@ -54,7 +56,7 @@ public final class a$k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.k
  * JD-Core Version:    0.7.0.1
  */

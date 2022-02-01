@@ -1,134 +1,73 @@
 package com.tencent.mm.ak;
 
+import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.bv;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import kotlin.g.b.p;
+import kotlin.l;
 
-public abstract interface e
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/modelbase/HandlerData;", "", "thread", "Landroid/os/HandlerThread;", "handler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "(Landroid/os/HandlerThread;Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "getHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getThread", "()Landroid/os/HandlerThread;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-audiologic_release"})
+public final class e
 {
-  public abstract b b(a parama);
+  public final MMHandler handler;
+  public final HandlerThread thread;
   
-  public abstract void b(c paramc);
-  
-  public static final class a
+  public e(HandlerThread paramHandlerThread, MMHandler paramMMHandler)
   {
-    public cv gte;
-    public boolean hQN = false;
-    public boolean hQO = false;
-    public boolean hQP = false;
-    public long hQQ = 0L;
-    public boolean hQR = false;
-    public Object hQS;
-    public int what;
-    
-    public a(cv paramcv, Object paramObject)
+    AppMethodBeat.i(187351);
+    this.thread = paramHandlerThread;
+    this.handler = paramMMHandler;
+    AppMethodBeat.o(187351);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(187354);
+    if (this != paramObject)
     {
-      this.gte = paramcv;
-      this.hQR = true;
-      this.hQS = paramObject;
+      if ((paramObject instanceof e))
+      {
+        paramObject = (e)paramObject;
+        if ((!p.j(this.thread, paramObject.thread)) || (!p.j(this.handler, paramObject.handler))) {}
+      }
     }
-    
-    public a(cv paramcv, boolean paramBoolean, long paramLong)
+    else
     {
-      this.gte = paramcv;
-      this.hQN = true;
-      this.hQO = false;
-      this.hQP = paramBoolean;
-      this.hQQ = paramLong;
+      AppMethodBeat.o(187354);
+      return true;
     }
-    
-    public a(cv paramcv, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+    AppMethodBeat.o(187354);
+    return false;
+  }
+  
+  public final int hashCode()
+  {
+    int j = 0;
+    AppMethodBeat.i(187353);
+    Object localObject = this.thread;
+    if (localObject != null) {}
+    for (int i = localObject.hashCode();; i = 0)
     {
-      this.gte = paramcv;
-      this.hQN = paramBoolean1;
-      this.hQO = paramBoolean2;
-      this.hQP = paramBoolean3;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(43002);
-      String str = String.format("AddMsgInfo(%d), get[%b], fault[%b], up[%b] fixTime[%s]", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.hQN), Boolean.valueOf(this.hQO), Boolean.valueOf(this.hQP), Long.valueOf(this.hQQ) });
-      AppMethodBeat.o(43002);
-      return str;
+      localObject = this.handler;
+      if (localObject != null) {
+        j = localObject.hashCode();
+      }
+      AppMethodBeat.o(187353);
+      return i * 31 + j;
     }
   }
   
-  public static final class b
+  public final String toString()
   {
-    public bv dlw;
-    public boolean hQT;
-    
-    public b(bv parambv, boolean paramBoolean)
-    {
-      this.dlw = parambv;
-      this.hQT = paramBoolean;
-    }
-  }
-  
-  public static final class c
-  {
-    public bv dCi;
-    public cv gte;
-    public Object hQU;
-    public Object hQV;
-    public String hQW;
-    public String hQX;
-    
-    public c(cv paramcv, Object paramObject1, Object paramObject2)
-    {
-      this.gte = paramcv;
-      this.hQU = paramObject1;
-      this.hQV = paramObject2;
-    }
-    
-    public c(bv parambv)
-    {
-      this.dCi = parambv;
-    }
-  }
-  
-  public static final class d
-  {
-    private static ConcurrentHashMap<Object, e> hQK;
-    
-    static
-    {
-      AppMethodBeat.i(43006);
-      hQK = new ConcurrentHashMap();
-      AppMethodBeat.o(43006);
-    }
-    
-    public static void a(Object paramObject, e parame)
-    {
-      AppMethodBeat.i(43003);
-      ae.i("MicroMsg.IMessageExtension.Factory", "registerExtensionFor %s, %s", new Object[] { paramObject, parame });
-      hQK.put(paramObject, parame);
-      AppMethodBeat.o(43003);
-    }
-    
-    public static void b(Object paramObject, e parame)
-    {
-      AppMethodBeat.i(43004);
-      ae.i("MicroMsg.IMessageExtension.Factory", "unregisterExtensionFor %s, %s", new Object[] { paramObject, parame });
-      hQK.remove(paramObject);
-      AppMethodBeat.o(43004);
-    }
-    
-    public static e ca(Object paramObject)
-    {
-      AppMethodBeat.i(43005);
-      paramObject = (e)hQK.get(paramObject);
-      AppMethodBeat.o(43005);
-      return paramObject;
-    }
+    AppMethodBeat.i(187352);
+    String str = "HandlerData(thread=" + this.thread + ", handler=" + this.handler + ")";
+    AppMethodBeat.o(187352);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ak.e
  * JD-Core Version:    0.7.0.1
  */

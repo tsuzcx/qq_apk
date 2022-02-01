@@ -21,7 +21,13 @@ public class h
       AppMethodBeat.o(158742);
       return null;
     }
-    if (g.xd(paramString))
+    if (paramClass == null)
+    {
+      com.tencent.mm.ipcinvoker.h.b.e("IPC.IPCInvoker", "invokeSync failed, taskClass is null(process : %s).", new Object[] { paramString });
+      AppMethodBeat.o(158742);
+      return null;
+    }
+    if (g.Fp(paramString))
     {
       paramString = ((k)o.i(paramClass, k.class)).invoke(paramInputType);
       if (paramString == null)
@@ -33,7 +39,7 @@ public class h
       AppMethodBeat.o(158742);
       return paramString;
     }
-    a locala = c.ahJ().wZ(paramString);
+    a locala = c.axW().Fn(paramString);
     if (locala == null)
     {
       com.tencent.mm.ipcinvoker.h.b.e("IPC.IPCInvoker", "invokeSync failed, get bridge is null by process(%s).", new Object[] { paramString });
@@ -61,25 +67,22 @@ public class h
     return null;
   }
   
-  public static void a(String paramString, m paramm)
-  {
-    AppMethodBeat.i(197961);
-    c.ahJ().a(paramString, paramm);
-    AppMethodBeat.o(197961);
-  }
-  
   public static void a(String paramString, n paramn)
   {
     AppMethodBeat.i(158741);
-    c localc = c.ahJ();
-    Set localSet = (Set)localc.gzY.get(paramString);
-    Object localObject = localSet;
-    if (localSet == null) {
-      localObject = new HashSet();
+    c localc = c.axW();
+    synchronized (localc.hmL)
+    {
+      Set localSet = (Set)localc.hmL.get(paramString);
+      Object localObject = localSet;
+      if (localSet == null) {
+        localObject = new HashSet();
+      }
+      ((Set)localObject).add(paramn);
+      localc.hmL.put(paramString, localObject);
+      AppMethodBeat.o(158741);
+      return;
     }
-    ((Set)localObject).add(paramn);
-    localc.gzY.put(paramString, localObject);
-    AppMethodBeat.o(158741);
   }
   
   public static <T extends b<InputType, ResultType>, InputType extends Parcelable, ResultType extends Parcelable> boolean a(String paramString, final InputType paramInputType, final Class<T> paramClass, final d<ResultType> paramd)
@@ -97,12 +100,12 @@ public class h
       AppMethodBeat.o(158740);
       return false;
     }
-    boolean bool = p.y(new Runnable()
+    boolean bool = p.A(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(158735);
-        if (g.xd(this.gAb))
+        if (g.Fp(this.hmO))
         {
           localObject = (b)o.i(paramClass, b.class);
           if (localObject == null)
@@ -115,12 +118,12 @@ public class h
           AppMethodBeat.o(158735);
           return;
         }
-        a locala = c.ahJ().wZ(this.gAb);
+        a locala = c.axW().Fn(this.hmO);
         if (locala == null)
         {
-          com.tencent.mm.ipcinvoker.h.b.e("IPC.IPCInvoker", "invokeAsync failed, get bridge is null by process(%s).", new Object[] { this.gAb });
+          com.tencent.mm.ipcinvoker.h.b.e("IPC.IPCInvoker", "invokeAsync failed, get bridge is null by process(%s).", new Object[] { this.hmO });
           if ((paramd instanceof e)) {
-            ((e)paramd).ahL();
+            ((e)paramd).axY();
           }
           AppMethodBeat.o(158735);
           return;
@@ -129,21 +132,18 @@ public class h
         try
         {
           if (paramd != null) {
-            localObject = new h.a(this.gAb, paramd);
+            localObject = new h.a(this.hmO, paramd);
           }
           locala.a(h.d(paramInputType), paramClass.getName(), (com.tencent.mm.ipcinvoker.b.b)localObject);
           AppMethodBeat.o(158735);
           return;
         }
-        catch (RemoteException localRemoteException)
+        catch (Exception localException)
         {
-          com.tencent.mm.ipcinvoker.h.b.d("IPC.IPCInvoker", "invokeAsync failed, ipc invoke error : %s", new Object[] { localRemoteException });
-          AppMethodBeat.o(158735);
-          return;
-        }
-        catch (IllegalArgumentException localIllegalArgumentException)
-        {
-          com.tencent.mm.ipcinvoker.h.b.d("IPC.IPCInvoker", "invokeAsync failed, ipc invoke error : %s", new Object[] { localIllegalArgumentException });
+          com.tencent.mm.ipcinvoker.h.b.d("IPC.IPCInvoker", "invokeAsync failed, ipc invoke error : %s", new Object[] { localException });
+          if ((paramd instanceof e)) {
+            ((e)paramd).i(localException);
+          }
           AppMethodBeat.o(158735);
         }
       }
@@ -152,12 +152,30 @@ public class h
     return bool;
   }
   
-  public static boolean b(String paramString, m paramm)
+  public static boolean a(String paramString, m paramm)
   {
-    AppMethodBeat.i(197962);
-    boolean bool = c.ahJ().b(paramString, paramm);
-    AppMethodBeat.o(197962);
+    AppMethodBeat.i(240219);
+    boolean bool = c.axW().a(paramString, paramm);
+    AppMethodBeat.o(240219);
     return bool;
+  }
+  
+  public static void b(String paramString, m paramm)
+  {
+    AppMethodBeat.i(240218);
+    c localc = c.axW();
+    synchronized (localc.hmM)
+    {
+      Set localSet = (Set)localc.hmM.get(paramString);
+      Object localObject = localSet;
+      if (localSet == null) {
+        localObject = new HashSet();
+      }
+      ((Set)localObject).add(paramm);
+      localc.hmM.put(paramString, localObject);
+      AppMethodBeat.o(240218);
+      return;
+    }
   }
   
   private static Bundle c(Parcelable paramParcelable)
@@ -173,14 +191,14 @@ public class h
     extends b.a
     implements com.tencent.mm.ipcinvoker.f.c
   {
-    String gAi;
-    d gAo;
+    String hmX;
+    d hnd;
     
     a(String paramString, d paramd)
     {
       AppMethodBeat.i(158736);
-      this.gAo = paramd;
-      this.gAi = paramString;
+      this.hnd = paramd;
+      this.hmX = paramString;
       com.tencent.mm.ipcinvoker.f.b.a(paramString, this);
       com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCInvokeCallbackWrapper", "keep ref of callback(%s)", new Object[] { Integer.valueOf(paramd.hashCode()) });
       AppMethodBeat.o(158736);
@@ -195,10 +213,18 @@ public class h
       AppMethodBeat.o(158739);
     }
     
-    public final void r(Bundle paramBundle)
+    public final void recycle()
+    {
+      AppMethodBeat.i(158738);
+      this.hnd = null;
+      com.tencent.mm.ipcinvoker.f.b.b(this.hmX, this);
+      AppMethodBeat.o(158738);
+    }
+    
+    public final void v(Bundle paramBundle)
     {
       AppMethodBeat.i(158737);
-      d locald = this.gAo;
+      d locald = this.hnd;
       if (locald == null)
       {
         com.tencent.mm.ipcinvoker.h.b.w("IPC.IPCInvokeCallbackWrapper", "callback failed, ref has been release", new Object[0]);
@@ -207,7 +233,7 @@ public class h
       }
       if (paramBundle == null)
       {
-        locald.be(null);
+        locald.bn(null);
         AppMethodBeat.o(158737);
         return;
       }
@@ -219,22 +245,14 @@ public class h
         AppMethodBeat.o(158737);
         return;
       }
-      locald.be(paramBundle.getParcelable("__remote_task_result_data"));
+      locald.bn(paramBundle.getParcelable("__remote_task_result_data"));
       AppMethodBeat.o(158737);
-    }
-    
-    public final void recycle()
-    {
-      AppMethodBeat.i(158738);
-      this.gAo = null;
-      com.tencent.mm.ipcinvoker.f.b.b(this.gAi, this);
-      AppMethodBeat.o(158738);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.h
  * JD-Core Version:    0.7.0.1
  */

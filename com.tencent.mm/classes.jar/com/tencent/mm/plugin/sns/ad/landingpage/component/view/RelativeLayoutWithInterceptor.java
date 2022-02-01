@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class RelativeLayoutWithInterceptor
   extends RelativeLayout
 {
-  private a znK;
+  private a DtW;
   
   public RelativeLayoutWithInterceptor(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -23,30 +23,30 @@ public class RelativeLayoutWithInterceptor
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(219031);
-    if (this.znK != null)
+    AppMethodBeat.i(202000);
+    if (this.DtW != null)
     {
-      boolean bool = this.znK.dUO();
-      AppMethodBeat.o(219031);
+      boolean bool = this.DtW.eXh();
+      AppMethodBeat.o(202000);
       return bool;
     }
-    AppMethodBeat.o(219031);
+    AppMethodBeat.o(202000);
     return true;
   }
   
   public void setEventInterceptor(a parama)
   {
-    this.znK = parama;
+    this.DtW = parama;
   }
   
   public static abstract interface a
   {
-    public abstract boolean dUO();
+    public abstract boolean eXh();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.component.view.RelativeLayoutWithInterceptor
  * JD-Core Version:    0.7.0.1
  */

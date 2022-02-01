@@ -4,34 +4,34 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class x
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama)
+  public final void a(Context paramContext, String paramString, br.a parama)
   {
     AppMethodBeat.i(78559);
-    ae.i("MicroMsg.JsApiGetOpenDeviceId", "invokeInMM");
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.PM(paramString);
+    Log.i("MicroMsg.JsApiGetOpenDeviceId", "invokeInMM");
+    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
     if (paramContext == null)
     {
-      ae.e("MicroMsg.JsApiGetOpenDeviceId", "data is null");
-      parama.f("fail", null);
+      Log.e("MicroMsg.JsApiGetOpenDeviceId", "data is null");
+      parama.i("fail", null);
       AppMethodBeat.o(78559);
       return;
     }
     paramString = paramContext.optString("preVerifyAppId");
-    paramContext = q.cH(true);
-    String str = q.aaH();
-    if ((!bu.isNullOrNil(paramContext)) && (!bu.isNullOrNil(str)) && (!bu.isNullOrNil(paramString)))
+    paramContext = q.dr(true);
+    String str = q.aoG();
+    if ((!Util.isNullOrNil(paramContext)) && (!Util.isNullOrNil(str)) && (!Util.isNullOrNil(paramString)))
     {
-      paramContext = aj.ej(aj.ej(paramString + paramContext));
-      str = aj.ej(aj.ej(paramString + str));
+      paramContext = MD5Util.getMD5String(MD5Util.getMD5String(paramString + paramContext));
+      str = MD5Util.getMD5String(MD5Util.getMD5String(paramString + str));
       paramString = new JSONObject();
     }
     try
@@ -39,10 +39,10 @@ public class x
       paramString.put("deviceid", paramContext);
       paramString.put("newDeviceId", str);
       label157:
-      parama.f(null, paramString);
+      parama.i(null, paramString);
       AppMethodBeat.o(78559);
       return;
-      parama.f("fail", null);
+      parama.i("fail", null);
       AppMethodBeat.o(78559);
       return;
     }
@@ -54,7 +54,7 @@ public class x
   
   public final void b(com.tencent.luggage.d.b<g>.a paramb) {}
   
-  public final int ced()
+  public final int dTs()
   {
     return 1;
   }

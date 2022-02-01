@@ -2,25 +2,19 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class dg
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ePs = "chatroomname".hashCode();
-  private static final int fgR = "stickToollist".hashCode();
-  private static final int fgS = "recentUseToolList".hashCode();
-  private static final int fgT = "queryState".hashCode();
+  private static final int fJV = "reqType".hashCode();
+  private static final int fJW = "cache".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eOS = true;
-  private boolean fgO = true;
-  private boolean fgP = true;
-  private boolean fgQ = true;
-  public String field_chatroomname;
-  public int field_queryState;
-  public String field_recentUseToolList;
-  public String field_stickToollist;
+  private boolean fJT = true;
+  private boolean fJU = true;
+  public byte[] field_cache;
+  public String field_reqType;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,11 +29,11 @@ public abstract class dg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ePs != k) {
+      if (fJV != k) {
         break label65;
       }
-      this.field_chatroomname = paramCursor.getString(i);
-      this.eOS = true;
+      this.field_reqType = paramCursor.getString(i);
+      this.fJT = true;
     }
     for (;;)
     {
@@ -47,12 +41,8 @@ public abstract class dg
       break label20;
       break;
       label65:
-      if (fgR == k) {
-        this.field_stickToollist = paramCursor.getString(i);
-      } else if (fgS == k) {
-        this.field_recentUseToolList = paramCursor.getString(i);
-      } else if (fgT == k) {
-        this.field_queryState = paramCursor.getInt(i);
+      if (fJW == k) {
+        this.field_cache = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -62,17 +52,11 @@ public abstract class dg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eOS) {
-      localContentValues.put("chatroomname", this.field_chatroomname);
+    if (this.fJT) {
+      localContentValues.put("reqType", this.field_reqType);
     }
-    if (this.fgO) {
-      localContentValues.put("stickToollist", this.field_stickToollist);
-    }
-    if (this.fgP) {
-      localContentValues.put("recentUseToolList", this.field_recentUseToolList);
-    }
-    if (this.fgQ) {
-      localContentValues.put("queryState", Integer.valueOf(this.field_queryState));
+    if (this.fJU) {
+      localContentValues.put("cache", this.field_cache);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

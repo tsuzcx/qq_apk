@@ -15,16 +15,16 @@ final class c$16
   {
     AppMethodBeat.i(100224);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    this.AQE.eZ(paramView);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    this.Fbj.fo(paramView);
     a.a(this, "com/tencent/mm/plugin/sns/ui/listener/TimelineClickListener$23", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(100224);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.d.c.16
  * JD-Core Version:    0.7.0.1
  */

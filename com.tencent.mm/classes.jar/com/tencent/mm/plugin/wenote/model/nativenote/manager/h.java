@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.wenote.model.nativenote.manager;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.wenote.model.a.q;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public class h
 {
-  private static volatile h ESA = null;
-  private q ESB = null;
+  private static volatile h JIn = null;
+  private q JIo = null;
   
   /* Error */
-  private static q cj(byte[] paramArrayOfByte)
+  private static q cA(byte[] paramArrayOfByte)
   {
     // Byte code:
     //   0: sipush 30476
@@ -66,7 +66,7 @@ public class h
     //   83: iconst_0
     //   84: aload_0
     //   85: aastore
-    //   86: invokestatic 61	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   86: invokestatic 61	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   89: aload 4
     //   91: astore_0
     //   92: goto -27 -> 65
@@ -87,7 +87,7 @@ public class h
     //   114: iconst_0
     //   115: aload 4
     //   117: aastore
-    //   118: invokestatic 61	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   118: invokestatic 61	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   121: aload_0
     //   122: ifnull +7 -> 129
     //   125: aload_0
@@ -108,7 +108,7 @@ public class h
     //   152: iconst_0
     //   153: aload_0
     //   154: aastore
-    //   155: invokestatic 61	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   155: invokestatic 61	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   158: aconst_null
     //   159: astore_0
     //   160: goto -95 -> 65
@@ -138,7 +138,7 @@ public class h
     //   202: iconst_0
     //   203: aload_1
     //   204: aastore
-    //   205: invokestatic 61	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   205: invokestatic 61	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   208: goto -24 -> 184
     //   211: astore_0
     //   212: aconst_null
@@ -242,7 +242,7 @@ public class h
     //   97: iconst_0
     //   98: aload_1
     //   99: aastore
-    //   100: invokestatic 61	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   100: invokestatic 61	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   103: goto -24 -> 79
     //   106: astore 4
     //   108: aconst_null
@@ -261,7 +261,7 @@ public class h
     //   125: iconst_0
     //   126: aload 4
     //   128: aastore
-    //   129: invokestatic 61	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   129: invokestatic 61	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   132: aload_0
     //   133: ifnull +7 -> 140
     //   136: aload_0
@@ -284,7 +284,7 @@ public class h
     //   167: iconst_0
     //   168: aload_0
     //   169: aastore
-    //   170: invokestatic 61	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   170: invokestatic 61	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   173: aload 6
     //   175: astore_0
     //   176: goto -97 -> 79
@@ -314,7 +314,7 @@ public class h
     //   218: iconst_0
     //   219: aload_1
     //   220: aastore
-    //   221: invokestatic 61	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   221: invokestatic 61	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   224: goto -24 -> 200
     //   227: astore_0
     //   228: aconst_null
@@ -367,16 +367,16 @@ public class h
     //   65	70	246	java/lang/Exception
   }
   
-  public static h faJ()
+  public static h gjO()
   {
     AppMethodBeat.i(30473);
-    if (ESA == null) {}
+    if (JIn == null) {}
     try
     {
-      if (ESA == null) {
-        ESA = new h();
+      if (JIn == null) {
+        JIn = new h();
       }
-      h localh = ESA;
+      h localh = JIn;
       AppMethodBeat.o(30473);
       return localh;
     }
@@ -389,58 +389,58 @@ public class h
   public final void c(q paramq)
   {
     AppMethodBeat.i(30475);
-    this.ESB = paramq;
-    byte[] arrayOfByte = d(this.ESB);
+    this.JIo = paramq;
+    byte[] arrayOfByte = d(this.JIo);
     String str = "";
     paramq = str;
     if (arrayOfByte != null)
     {
       paramq = str;
       if (arrayOfByte.length > 0) {
-        paramq = bu.cH(arrayOfByte);
+        paramq = Util.encodeHexString(arrayOfByte);
       }
     }
-    if (this.ESB != null) {}
-    for (str = this.ESB.faB();; str = "null")
+    if (this.JIo != null) {}
+    for (str = this.JIo.gjG();; str = "null")
     {
-      ae.i("WNNoteKeepTopManager", "setCurrentTopItem item: %s", new Object[] { str });
-      ae.i("WNNoteKeepTopManager", "setCurrentTopItem itemStr: %s", new Object[] { paramq });
-      bc.aCg();
-      c.ajA().set(am.a.ITU, bu.nullAsNil(paramq));
+      Log.i("WNNoteKeepTopManager", "setCurrentTopItem item: %s", new Object[] { str });
+      Log.i("WNNoteKeepTopManager", "setCurrentTopItem itemStr: %s", new Object[] { paramq });
+      bg.aVF();
+      c.azQ().set(ar.a.Oci, Util.nullAsNil(paramq));
       AppMethodBeat.o(30475);
       return;
     }
   }
   
-  public final q faK()
+  public final q gjP()
   {
     AppMethodBeat.i(30474);
-    if (this.ESB != null)
+    if (this.JIo != null)
     {
-      localObject = this.ESB;
+      localObject = this.JIo;
       AppMethodBeat.o(30474);
       return localObject;
     }
-    bc.aCg();
-    Object localObject = (String)c.ajA().get(am.a.ITU, "");
-    ae.d("WNNoteKeepTopManager", "getCurrentTopItem itemStr: %s", new Object[] { localObject });
-    if (bu.isNullOrNil((String)localObject))
+    bg.aVF();
+    Object localObject = (String)c.azQ().get(ar.a.Oci, "");
+    Log.d("WNNoteKeepTopManager", "getCurrentTopItem itemStr: %s", new Object[] { localObject });
+    if (Util.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(30474);
       return null;
     }
-    localObject = bu.aSx((String)localObject);
-    if (localObject.length <= 0)
+    localObject = Util.decodeHexString((String)localObject);
+    if ((localObject == null) || (localObject.length <= 0))
     {
       AppMethodBeat.o(30474);
       return null;
     }
-    this.ESB = cj((byte[])localObject);
-    if (this.ESB != null) {}
-    for (localObject = this.ESB.faB();; localObject = "null")
+    this.JIo = cA((byte[])localObject);
+    if (this.JIo != null) {}
+    for (localObject = this.JIo.gjG();; localObject = "null")
     {
-      ae.d("WNNoteKeepTopManager", "getCurrentTopItem item: %s", new Object[] { localObject });
-      localObject = this.ESB;
+      Log.d("WNNoteKeepTopManager", "getCurrentTopItem item: %s", new Object[] { localObject });
+      localObject = this.JIo;
       AppMethodBeat.o(30474);
       return localObject;
     }

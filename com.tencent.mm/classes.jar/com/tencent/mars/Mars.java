@@ -3,13 +3,17 @@ package com.tencent.mars;
 import android.content.Context;
 import com.tencent.mars.comm.PlatformComm;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Mars
 {
+  private static final int CertVersion_Mainland = 1;
+  private static final int CertVersion_WeChatUS = 2;
   private static final o.a appForegroundListener = new o.a()
   {
     public final void onAppBackground(String paramAnonymousString)
@@ -43,7 +47,7 @@ public class Mars
       try
       {
         String[] arrayOfString = new String[0];
-        ae.i(paramString, "loaded modules: " + Arrays.toString(paramArrayList.toArray(arrayOfString)));
+        Log.i(paramString, "loaded modules: " + Arrays.toString(paramArrayList.toArray(arrayOfString)));
         Arrays.sort(arrayOfString);
         libModules.add(arrayOfString);
         j = 0;
@@ -110,6 +114,19 @@ public class Mars
     }
   }
   
+  public static int currentCertVer()
+  {
+    switch (WeChatBrands.AppInfo.current().getDefaultXAgreementId())
+    {
+    case 0: 
+    case 1: 
+    case 2: 
+    default: 
+      return 1;
+    }
+    return 2;
+  }
+  
   private static boolean hasInterSection(String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
     boolean bool2 = false;
@@ -139,10 +156,15 @@ public class Mars
     }
   }
   
-  public static void init(Context paramContext, aq paramaq)
+  public static void init(Context paramContext, MMHandler paramMMHandler)
   {
-    PlatformComm.init(paramContext, paramaq);
+    PlatformComm.init(paramContext, paramMMHandler);
     hasInitialized = true;
+  }
+  
+  private static void initCert()
+  {
+    onInit(currentCertVer());
   }
   
   public static void loadDefaultMarsLibrary()
@@ -155,7 +177,11 @@ public class Mars
     catch (Throwable localThrowable) {}
   }
   
-  public static void onCreate() {}
+  public static void onCreate()
+  {
+    initCert();
+    BaseEvent.onCreate();
+  }
   
   public static void onCreate(boolean paramBoolean)
   {
@@ -187,6 +213,12 @@ public class Mars
   public static void onForeground(boolean paramBoolean)
   {
     BaseEvent.onForeground(paramBoolean);
+  }
+  
+  private static void onInit(int paramInt)
+  {
+    Log.i("MicroMsg.Mars", "packerEncoderVersion %s", new Object[] { Integer.valueOf(paramInt) });
+    BaseEvent.onInitConfigBeforeOnCreate(paramInt);
   }
   
   public static void onNetworkChange() {}

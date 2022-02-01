@@ -5,19 +5,19 @@ import java.util.Set;
 
 public abstract interface MMSlideDelView$d
 {
-  public static final Set<MMSlideDelView> vdX = new HashSet();
+  public static final Set<MMSlideDelView> ywx = new HashSet();
   
   public abstract void a(MMSlideDelView paramMMSlideDelView, boolean paramBoolean);
   
-  public abstract boolean dht();
+  public abstract boolean ebn();
   
-  public abstract void dhu();
+  public abstract void ebo();
   
-  public abstract void dhv();
+  public abstract void ebp();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMSlideDelView.d
  * JD-Core Version:    0.7.0.1
  */

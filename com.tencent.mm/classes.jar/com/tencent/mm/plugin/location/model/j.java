@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.location.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.blz;
-import com.tencent.mm.protocal.protobuf.bma;
-import com.tencent.mm.protocal.protobuf.rd;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.byk;
+import com.tencent.mm.protocal.protobuf.byl;
+import com.tencent.mm.protocal.protobuf.se;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class j
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b rr;
-  public List<rd> vlT;
+  private i callback;
+  private final d rr;
+  public List<se> yFL;
   
   public j()
   {
     AppMethodBeat.i(55697);
-    b.a locala = new b.a();
-    locala.hQF = new blz();
-    locala.hQG = new bma();
+    d.a locala = new d.a();
+    locala.iLN = new byk();
+    locala.iLO = new byl();
     locala.uri = "/cgi-bin/mmbiz-bin/wxabusiness/getweapplistbylocation";
     locala.funcId = 1913;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    this.vlT = new ArrayList(8);
+    this.rr = locala.aXF();
+    this.yFL = new ArrayList(8);
     AppMethodBeat.o(55697);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(55698);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(55698);
     return i;
   }
@@ -54,19 +54,19 @@ public final class j
     return 1913;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(55699);
-    ae.i("MicroMsg.NetSceneGetWeappListByLocation", "onGYNetEnd errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (bma)this.rr.hQE.hQJ;
-    if (paramq.GZc != null)
+    Log.i("MicroMsg.NetSceneGetWeappListByLocation", "onGYNetEnd errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    params = (byl)this.rr.iLL.iLR;
+    if (params.MdU != null)
     {
-      paramInt1 = paramq.GZc.size();
-      ae.i("MicroMsg.NetSceneGetWeappListByLocation", "weapp list size: %s.", new Object[] { Integer.valueOf(paramInt1) });
+      paramInt1 = params.MdU.size();
+      Log.i("MicroMsg.NetSceneGetWeappListByLocation", "weapp list size: %s.", new Object[] { Integer.valueOf(paramInt1) });
       if (paramInt1 > 8) {
         break label126;
       }
-      this.vlT.addAll(paramq.GZc);
+      this.yFL.addAll(params.MdU);
     }
     for (;;)
     {
@@ -74,7 +74,7 @@ public final class j
       AppMethodBeat.o(55699);
       return;
       label126:
-      this.vlT.addAll(paramq.GZc.subList(0, 8));
+      this.yFL.addAll(params.MdU.subList(0, 8));
     }
   }
 }

@@ -1,47 +1,50 @@
 package com.tencent.mm.compatible.h;
 
-import android.app.Activity;
-import android.content.ActivityNotFoundException;
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.a.a;
-import com.tencent.mm.compatible.a.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b
 {
-  public static boolean w(Activity paramActivity)
+  private static int gLf = 0;
+  
+  public static boolean apl()
   {
-    AppMethodBeat.i(155922);
-    Intent localIntent = new Intent("android.media.action.VIDEO_CAPTURE");
-    localIntent.putExtra("android.intent.extra.videoQuality", 0);
-    a.a(8, new a.a()
+    AppMethodBeat.i(155860);
+    if (gLf == 0)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(155921);
-        this.gfZ.putExtra("android.intent.extra.durationLimit", 30);
-        this.gfZ.putExtra("android.intent.extra.sizeLimit", 10485760);
-        AppMethodBeat.o(155921);
+      SharedPreferences localSharedPreferences = MMApplicationContext.getDefaultPreference();
+      if ((localSharedPreferences == null) || (!localSharedPreferences.getBoolean("settings_support_swipe", true))) {
+        break label49;
       }
-    });
-    try
+    }
+    label49:
+    for (gLf = 1; gLf == 1; gLf = 2)
     {
-      paramActivity.startActivityForResult(localIntent, 4372);
-      AppMethodBeat.o(155922);
+      AppMethodBeat.o(155860);
       return true;
     }
-    catch (ActivityNotFoundException paramActivity)
-    {
-      ae.printErrStackTrace("MicroMsg.TakeVideoUtil", paramActivity, "", new Object[0]);
-      AppMethodBeat.o(155922);
-    }
+    AppMethodBeat.o(155860);
     return false;
+  }
+  
+  public static void du(boolean paramBoolean)
+  {
+    AppMethodBeat.i(155861);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getDefaultPreference();
+    boolean bool = localSharedPreferences.getBoolean("settings_support_swipe", true);
+    if (bool != paramBoolean) {
+      localSharedPreferences.edit().putBoolean("settings_support_swipe", paramBoolean).commit();
+    }
+    Log.i("MicroMsg.StyleUtil", "switchSwipebackMode, from %B to %B", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(155861);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.compatible.h.b
  * JD-Core Version:    0.7.0.1
  */

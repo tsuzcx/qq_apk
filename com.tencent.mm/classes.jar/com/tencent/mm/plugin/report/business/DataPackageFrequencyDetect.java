@@ -6,18 +6,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.e;
-import com.tencent.mm.network.ad;
-import com.tencent.mm.network.ad.a;
+import com.tencent.mm.g.b.a.k;
+import com.tencent.mm.network.af;
+import com.tencent.mm.network.af.a;
 import com.tencent.mm.plugin.expt.h.d;
-import com.tencent.mm.sdk.h.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.a.j;
-import d.g.b.p;
-import d.l;
-import d.n.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.vendor.Huawei;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,34 +24,47 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect;", "Lcom/tencent/mm/network/MMPushCore$IDataPackageReporter;", "()V", "TAG", "", "dataPackageInfoList", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$DataPackageInfo;", "isScreenOff", "", "receiver", "Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$Receiver;", "addNetReq", "", "type", "", "length", "addNetResp", "cgi", "canDataPackageFrequencyStatistics", "canStatisticsOtherStratagy", "dataPackageStatisticsOnlyHuawei", "formatTimeMillis", "timeMillis", "ifMatchHuaweiBatteryStratagy", "Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$CheckResult;", "sortedTimeList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "maxInterval", "eachInterval", "init", "application", "Landroid/app/Application;", "reportDataFrequency", "action", "reqNum", "respNum", "dataStartTime", "dataEndTime", "reqContent", "respContent", "checkResult", "reportDataPackageFrequency", "CheckResult", "DataPackageInfo", "Receiver", "plugin-report_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect;", "Lcom/tencent/mm/network/MMPushCore$IDataPackageReporter;", "()V", "TAG", "", "dataPackageInfoList", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$DataPackageInfo;", "isScreenOff", "", "receiver", "Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$Receiver;", "addNetReq", "", "type", "", "length", "addNetResp", "cgi", "canDataPackageFrequencyStatistics", "canStatisticsOtherStratagy", "dataPackageStatisticsOnlyHuawei", "formatTimeMillis", "timeMillis", "ifMatchHuaweiBatteryStratagy", "Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$CheckResult;", "sortedTimeList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "maxInterval", "eachInterval", "init", "application", "Landroid/app/Application;", "reportDataFrequency", "action", "reqNum", "respNum", "dataStartTime", "dataEndTime", "reqContent", "respContent", "checkResult", "reportDataPackageFrequency", "CheckResult", "DataPackageInfo", "Receiver", "plugin-report_release"})
 public final class DataPackageFrequencyDetect
-  implements ad.a
+  implements af.a
 {
+  public static final DataPackageFrequencyDetect CxA;
+  private static final Receiver Cxy;
+  private static final ConcurrentHashMap<Long, b> Cxz;
   private static final String TAG = "MicroMsg.DataPackageFrequencyDetect";
-  private static boolean cTG;
-  private static final Receiver ywC;
-  private static final ConcurrentHashMap<Long, b> ywD;
-  public static final DataPackageFrequencyDetect ywE;
+  private static boolean djZ;
   
   static
   {
-    AppMethodBeat.i(221094);
-    ywE = new DataPackageFrequencyDetect();
+    AppMethodBeat.i(224175);
+    CxA = new DataPackageFrequencyDetect();
     TAG = "MicroMsg.DataPackageFrequencyDetect";
-    ywC = new Receiver();
-    ywD = new ConcurrentHashMap();
-    AppMethodBeat.o(221094);
+    Cxy = new Receiver();
+    Cxz = new ConcurrentHashMap();
+    AppMethodBeat.o(224175);
+  }
+  
+  public static String Av(long paramLong)
+  {
+    AppMethodBeat.i(224172);
+    Object localObject = new Date(paramLong);
+    localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format((Date)localObject);
+    AppMethodBeat.o(224172);
+    return localObject;
   }
   
   private static a a(ArrayList<Long> paramArrayList, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(221089);
+    AppMethodBeat.i(224170);
     if (paramArrayList.size() < 2)
     {
       paramArrayList = new a(false, 0L, 0L);
-      AppMethodBeat.o(221089);
+      AppMethodBeat.o(224170);
       return paramArrayList;
     }
     long l1 = ((Number)paramArrayList.get(paramArrayList.size() - 1)).longValue();
@@ -64,7 +73,7 @@ public final class DataPackageFrequencyDetect
     if (l1 - ((Number)localObject1).longValue() < paramLong1)
     {
       paramArrayList = new a(false, 0L, 0L);
-      AppMethodBeat.o(221089);
+      AppMethodBeat.o(224170);
       return paramArrayList;
     }
     localObject1 = new ArrayList();
@@ -76,7 +85,7 @@ public final class DataPackageFrequencyDetect
     {
       Object localObject3 = ((Iterator)localObject2).next();
       if (i < 0) {
-        j.gkd();
+        j.hxH();
       }
       l2 = ((Number)localObject3).longValue();
       if ((l1 != -1L) && (l2 - l1 > paramLong2)) {
@@ -92,7 +101,7 @@ public final class DataPackageFrequencyDetect
       paramArrayList = paramArrayList.get(paramArrayList.size() - 1);
       p.g(paramArrayList, "sortedTimeList[sortedTimeList.size - 1]");
       paramArrayList = new a(true, paramLong1, ((Number)paramArrayList).longValue());
-      AppMethodBeat.o(221089);
+      AppMethodBeat.o(224170);
       return paramArrayList;
     }
     localObject2 = paramArrayList.get(0);
@@ -107,7 +116,7 @@ public final class DataPackageFrequencyDetect
         paramArrayList = paramArrayList.get(((Integer)localObject2).intValue() - 1);
         p.g(paramArrayList, "sortedTimeList[i - 1]");
         paramArrayList = new a(true, paramLong2, ((Number)paramArrayList).longValue());
-        AppMethodBeat.o(221089);
+        AppMethodBeat.o(224170);
         return paramArrayList;
       }
       p.g(localObject2, "i");
@@ -116,13 +125,13 @@ public final class DataPackageFrequencyDetect
       paramLong2 = ((Number)localObject2).longValue();
     }
     paramArrayList = new a(false, 0L, 0L);
-    AppMethodBeat.o(221089);
+    AppMethodBeat.o(224170);
     return paramArrayList;
   }
   
   private static void a(int paramInt, ArrayList<Long> paramArrayList, ConcurrentHashMap<Long, b> paramConcurrentHashMap, a parama)
   {
-    AppMethodBeat.i(221090);
+    AppMethodBeat.i(224171);
     int i = paramArrayList.indexOf(Long.valueOf(parama.startTime));
     int k = paramArrayList.indexOf(Long.valueOf(parama.endTime));
     Object localObject2 = new HashMap();
@@ -143,7 +152,7 @@ public final class DataPackageFrequencyDetect
       Object localObject4;
       if (localObject3 != null)
       {
-        if (!((b)localObject3).ywF) {
+        if (!((b)localObject3).CxB) {
           break label229;
         }
         l2 = l3 + 1L;
@@ -152,7 +161,7 @@ public final class DataPackageFrequencyDetect
         {
           localObject4 = ((HashMap)localObject2).get(Integer.valueOf(((b)localObject3).type));
           if (localObject4 == null) {
-            p.gkB();
+            p.hyc();
           }
           j = ((Number)localObject4).intValue();
         }
@@ -177,7 +186,7 @@ public final class DataPackageFrequencyDetect
         {
           localObject4 = ((HashMap)localObject1).get(((b)localObject3).cgi);
           if (localObject4 == null) {
-            p.gkB();
+            p.hyc();
           }
           j = ((Number)localObject4).intValue();
         }
@@ -204,7 +213,7 @@ public final class DataPackageFrequencyDetect
       localObject2 = (Map.Entry)((Iterator)localObject1).next();
       localObject3 = ((Map.Entry)localObject2).getKey();
       p.g(localObject3, "it.key");
-      localObject3 = n.nL((String)localObject3, "/");
+      localObject3 = n.oD((String)localObject3, "/");
       paramConcurrentHashMap.append((String)localObject3 + '_' + (Integer)((Map.Entry)localObject2).getValue() + ';');
     }
     l1 = parama.startTime;
@@ -213,36 +222,36 @@ public final class DataPackageFrequencyDetect
     p.g(paramArrayList, "reqContent.toString()");
     paramConcurrentHashMap = paramConcurrentHashMap.toString();
     p.g(paramConcurrentHashMap, "respContent.toString()");
-    parama = new e();
-    parama.ih(paramInt);
-    parama.bp(l4);
-    parama.bq(l3);
-    parama.br(l1);
-    parama.bs(l2);
-    parama.gK(paramArrayList);
-    parama.gL(paramConcurrentHashMap);
-    parama.bt(l4 + l3);
-    parama.aLH();
-    ae.i(TAG, parama.RD());
-    AppMethodBeat.o(221090);
+    parama = new k();
+    parama.jB(paramInt);
+    parama.bM(l4);
+    parama.bN(l3);
+    parama.bO(l1);
+    parama.bP(l2);
+    parama.hN(paramArrayList);
+    parama.hO(paramConcurrentHashMap);
+    parama.bQ(l4 + l3);
+    parama.bfK();
+    Log.i(TAG, parama.abW());
+    AppMethodBeat.o(224171);
   }
   
-  public static void dNs()
+  public static void eOs()
   {
-    AppMethodBeat.i(221088);
-    if (ywD.size() <= 0)
+    AppMethodBeat.i(224169);
+    if (Cxz.size() <= 0)
     {
-      AppMethodBeat.o(221088);
+      AppMethodBeat.o(224169);
       return;
     }
-    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap((Map)ywD);
-    ywD.clear();
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap((Map)Cxz);
+    Cxz.clear();
     ArrayList localArrayList = new ArrayList();
     Object localObject = ((Map)localConcurrentHashMap).entrySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      ae.d(TAG, String.valueOf(localEntry.getValue()));
+      Log.d(TAG, String.valueOf(localEntry.getValue()));
       localArrayList.add(localEntry.getKey());
     }
     j.sort((List)localArrayList);
@@ -250,19 +259,19 @@ public final class DataPackageFrequencyDetect
     if (((a)localObject).result)
     {
       a(1, localArrayList, localConcurrentHashMap, (a)localObject);
-      AppMethodBeat.o(221088);
+      AppMethodBeat.o(224169);
       return;
     }
     localObject = a(localArrayList, 3600000L, 60000L);
     if (((a)localObject).result)
     {
       a(2, localArrayList, localConcurrentHashMap, (a)localObject);
-      AppMethodBeat.o(221088);
+      AppMethodBeat.o(224169);
       return;
     }
-    localObject = d.ctr().b("clicfg_android_data_package_frequency_statistic_other_report_switch", "1", false, true);
-    ae.d(TAG, "canStatisticsOtherStratagy() sw:%s", new Object[] { localObject });
-    if (bu.lX((String)localObject, "1"))
+    localObject = d.cRY().b("clicfg_android_data_package_frequency_statistic_other_report_switch", "1", false, true);
+    Log.d(TAG, "canStatisticsOtherStratagy() sw:%s", new Object[] { localObject });
+    if (Util.isEqual((String)localObject, "1"))
     {
       localObject = localArrayList.get(0);
       p.g(localObject, "timeList[0]");
@@ -271,58 +280,49 @@ public final class DataPackageFrequencyDetect
       p.g(localObject, "timeList[timeList.size - 1]");
       a(3, localArrayList, localConcurrentHashMap, new a(false, l, ((Number)localObject).longValue()));
     }
-    AppMethodBeat.o(221088);
+    AppMethodBeat.o(224169);
   }
   
-  public static boolean dNt()
+  public static boolean eOt()
   {
-    AppMethodBeat.i(221092);
-    String str = d.ctr().b("clicfg_android_data_package_frequency_statistic_switch", "1", false, true);
-    ae.d(TAG, "canDataPackageFrequencyStatistics() sw:%s", new Object[] { str });
-    boolean bool = bu.lX(str, "1");
-    AppMethodBeat.o(221092);
+    AppMethodBeat.i(224173);
+    String str = d.cRY().b("clicfg_android_data_package_frequency_statistic_switch", "1", false, true);
+    Log.d(TAG, "canDataPackageFrequencyStatistics() sw:%s", new Object[] { str });
+    boolean bool = Util.isEqual(str, "1");
+    AppMethodBeat.o(224173);
     return bool;
   }
   
-  public static boolean dNu()
+  public static boolean eOu()
   {
-    AppMethodBeat.i(221093);
-    String str = d.ctr().b("clicfg_android_data_package_frequency_statistic_only_huawei_switch", "0", false, true);
-    ae.d(TAG, "dataPackageStatisticsOnlyHuawei() sw:%s", new Object[] { str });
-    boolean bool = bu.lX(str, "1");
-    AppMethodBeat.o(221093);
+    AppMethodBeat.i(224174);
+    String str = d.cRY().b("clicfg_android_data_package_frequency_statistic_only_huawei_switch", "0", false, true);
+    Log.d(TAG, "dataPackageStatisticsOnlyHuawei() sw:%s", new Object[] { str });
+    boolean bool = Util.isEqual(str, "1");
+    AppMethodBeat.o(224174);
     return bool;
   }
   
-  public static String sp(long paramLong)
+  public final void F(int paramInt, long paramLong)
   {
-    AppMethodBeat.i(221091);
-    Object localObject = new Date(paramLong);
-    localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format((Date)localObject);
-    AppMethodBeat.o(221091);
-    return localObject;
-  }
-  
-  public final void C(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(221086);
-    if (cTG)
+    AppMethodBeat.i(224167);
+    if (djZ)
     {
       long l = System.currentTimeMillis();
-      ywD.put(Long.valueOf(l), new b(l, true, paramInt, "", paramLong));
+      Cxz.put(Long.valueOf(l), new b(l, true, paramInt, "", paramLong));
     }
-    AppMethodBeat.o(221086);
+    AppMethodBeat.o(224167);
   }
   
   public final void K(String paramString, long paramLong)
   {
-    AppMethodBeat.i(221087);
+    AppMethodBeat.i(224168);
     long l;
     ConcurrentHashMap localConcurrentHashMap;
-    if (cTG)
+    if (djZ)
     {
       l = System.currentTimeMillis();
-      localConcurrentHashMap = ywD;
+      localConcurrentHashMap = Cxz;
       if (paramString != null) {
         break label61;
       }
@@ -332,77 +332,77 @@ public final class DataPackageFrequencyDetect
     for (;;)
     {
       localConcurrentHashMap.put(Long.valueOf(l), new b(l, false, -1, paramString, paramLong));
-      AppMethodBeat.o(221087);
+      AppMethodBeat.o(224168);
       return;
     }
   }
   
   public final void d(Application paramApplication)
   {
-    AppMethodBeat.i(221085);
+    AppMethodBeat.i(224166);
     p.h(paramApplication, "application");
-    if (ak.foA())
+    if (MMApplicationContext.isPushProcess())
     {
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("android.intent.action.SCREEN_ON");
       localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      paramApplication.registerReceiver((BroadcastReceiver)ywC, localIntentFilter);
-      ad.a((ad.a)this);
+      paramApplication.registerReceiver((BroadcastReceiver)Cxy, localIntentFilter);
+      af.a((af.a)this);
     }
-    AppMethodBeat.o(221085);
+    AppMethodBeat.o(224166);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$Receiver;", "Landroid/content/BroadcastReceiver;", "()V", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-report_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$Receiver;", "Landroid/content/BroadcastReceiver;", "()V", "onReceive", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "plugin-report_release"})
   public static final class Receiver
     extends BroadcastReceiver
   {
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
-      AppMethodBeat.i(221084);
+      AppMethodBeat.i(224165);
       if (paramIntent != null)
       {
         paramContext = paramIntent.getAction();
-        paramIntent = DataPackageFrequencyDetect.ywE;
-        paramIntent = DataPackageFrequencyDetect.dNv();
-        StringBuilder localStringBuilder = new StringBuilder("ACTION_SCREEN:").append(bu.bI(paramContext, "")).append(" isScreenOff:");
-        DataPackageFrequencyDetect localDataPackageFrequencyDetect = DataPackageFrequencyDetect.ywE;
-        localStringBuilder = localStringBuilder.append(DataPackageFrequencyDetect.dNw()).append(" dataPackageInfoList:");
-        localDataPackageFrequencyDetect = DataPackageFrequencyDetect.ywE;
-        ae.i(paramIntent, DataPackageFrequencyDetect.dNx().size());
-        paramIntent = DataPackageFrequencyDetect.ywE;
-        DataPackageFrequencyDetect.qu(p.i("android.intent.action.SCREEN_OFF", paramContext));
-        paramContext = DataPackageFrequencyDetect.ywE;
-        if (!DataPackageFrequencyDetect.dNw()) {
+        paramIntent = DataPackageFrequencyDetect.CxA;
+        paramIntent = DataPackageFrequencyDetect.eOv();
+        StringBuilder localStringBuilder = new StringBuilder("ACTION_SCREEN:").append(Util.nullAs(paramContext, "")).append(" isScreenOff:");
+        DataPackageFrequencyDetect localDataPackageFrequencyDetect = DataPackageFrequencyDetect.CxA;
+        localStringBuilder = localStringBuilder.append(DataPackageFrequencyDetect.eOw()).append(" dataPackageInfoList:");
+        localDataPackageFrequencyDetect = DataPackageFrequencyDetect.CxA;
+        Log.i(paramIntent, DataPackageFrequencyDetect.eOx().size());
+        paramIntent = DataPackageFrequencyDetect.CxA;
+        DataPackageFrequencyDetect.tL(p.j("android.intent.action.SCREEN_OFF", paramContext));
+        paramContext = DataPackageFrequencyDetect.CxA;
+        if (!DataPackageFrequencyDetect.eOw()) {
           try
           {
-            paramContext = DataPackageFrequencyDetect.ywE;
-            if (DataPackageFrequencyDetect.dNt())
+            paramContext = DataPackageFrequencyDetect.CxA;
+            if (DataPackageFrequencyDetect.eOt())
             {
-              paramContext = DataPackageFrequencyDetect.ywE;
-              boolean bool = DataPackageFrequencyDetect.dNu();
-              if ((!bool) || ((bool) && (a.fqj())))
+              paramContext = DataPackageFrequencyDetect.CxA;
+              boolean bool = DataPackageFrequencyDetect.eOu();
+              if ((!bool) || ((bool) && (Huawei.ifHUAWEI())))
               {
-                paramContext = DataPackageFrequencyDetect.ywE;
-                DataPackageFrequencyDetect.dNs();
-                AppMethodBeat.o(221084);
+                paramContext = DataPackageFrequencyDetect.CxA;
+                DataPackageFrequencyDetect.eOs();
+                AppMethodBeat.o(224165);
                 return;
               }
             }
           }
           catch (Exception paramContext)
           {
-            paramIntent = DataPackageFrequencyDetect.ywE;
-            ae.e(DataPackageFrequencyDetect.dNv(), paramContext.getClass().getSimpleName() + ", " + paramContext.getMessage());
+            paramIntent = DataPackageFrequencyDetect.CxA;
+            Log.e(DataPackageFrequencyDetect.eOv(), paramContext.getClass().getSimpleName() + ", " + paramContext.getMessage());
           }
         }
-        AppMethodBeat.o(221084);
+        AppMethodBeat.o(224165);
         return;
       }
-      AppMethodBeat.o(221084);
+      AppMethodBeat.o(224165);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$CheckResult;", "", "result", "", "startTime", "", "endTime", "(ZJJ)V", "getEndTime", "()J", "getResult", "()Z", "getStartTime", "plugin-report_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$CheckResult;", "", "result", "", "startTime", "", "endTime", "(ZJJ)V", "getEndTime", "()J", "getResult", "()Z", "getStartTime", "plugin-report_release"})
   public static final class a
   {
     final long endTime;
@@ -417,38 +417,38 @@ public final class DataPackageFrequencyDetect
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$DataPackageInfo;", "", "time", "", "req", "", "type", "", "cgi", "", "length", "(JZILjava/lang/String;J)V", "getCgi", "()Ljava/lang/String;", "getLength", "()J", "getReq", "()Z", "getTime", "getType", "()I", "toString", "plugin-report_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/report/business/DataPackageFrequencyDetect$DataPackageInfo;", "", "time", "", "req", "", "type", "", "cgi", "", "length", "(JZILjava/lang/String;J)V", "getCgi", "()Ljava/lang/String;", "getLength", "()J", "getReq", "()Z", "getTime", "getType", "()I", "toString", "plugin-report_release"})
   public static final class b
   {
+    final boolean CxB;
     final String cgi;
     private final long length;
     private final long time;
     final int type;
-    final boolean ywF;
     
     public b(long paramLong1, boolean paramBoolean, int paramInt, String paramString, long paramLong2)
     {
-      AppMethodBeat.i(221083);
+      AppMethodBeat.i(224164);
       this.time = paramLong1;
-      this.ywF = paramBoolean;
+      this.CxB = paramBoolean;
       this.type = paramInt;
       this.cgi = paramString;
       this.length = paramLong2;
-      AppMethodBeat.o(221083);
+      AppMethodBeat.o(224164);
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(221082);
+      AppMethodBeat.i(224163);
       StringBuilder localStringBuilder = new StringBuilder("DataPackageInfo(time=");
-      Object localObject = DataPackageFrequencyDetect.ywE;
-      String str = DataPackageFrequencyDetect.sp(this.time);
+      Object localObject = DataPackageFrequencyDetect.CxA;
+      String str = DataPackageFrequencyDetect.Av(this.time);
       localObject = str;
       if (str == null) {
         localObject = Long.valueOf(this.time);
       }
-      localObject = localObject + ", req=" + this.ywF + ", type=" + this.type + ", cgi='" + this.cgi + "', length=" + this.length + ')';
-      AppMethodBeat.o(221082);
+      localObject = localObject + ", req=" + this.CxB + ", type=" + this.type + ", cgi='" + this.cgi + "', length=" + this.length + ')';
+      AppMethodBeat.o(224163);
       return localObject;
     }
   }

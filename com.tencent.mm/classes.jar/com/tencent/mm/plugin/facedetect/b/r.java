@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ajo;
-import com.tencent.mm.protocal.protobuf.ajp;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.amc;
+import com.tencent.mm.protocal.protobuf.amd;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class r
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
+  private i callback;
   public String mFileName;
-  private b rr;
+  private d rr;
   
   public r(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(103623);
     this.mFileName = "";
-    b.a locala = new b.a();
-    locala.hQF = new ajo();
-    locala.hQG = new ajp();
+    d.a locala = new d.a();
+    locala.iLN = new amc();
+    locala.iLO = new amd();
     locala.uri = "/cgi-bin/mmbiz-bin/usrmsg/facevideobindbioid";
     locala.funcId = getType();
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
+    this.rr = locala.aXF();
     this.mFileName = paramString1;
-    paramString1 = (ajo)this.rr.hQD.hQJ;
-    paramString1.dwb = paramString2;
-    paramString1.GyV = paramLong;
-    paramString1.GyW = paramString4;
-    paramString1.Gzd = paramString3;
+    paramString1 = (amc)this.rr.iLK.iLR;
+    paramString1.dNI = paramString2;
+    paramString1.LuJ = paramLong;
+    paramString1.LuK = paramString4;
+    paramString1.LuR = paramString3;
     AppMethodBeat.o(103623);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(103624);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(103624);
     return i;
   }
@@ -56,10 +56,10 @@ public final class r
     return 1197;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103625);
-    ae.d("MicroMsg.NetSceneFaceThirdBindVideo", "hy:  errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.d("MicroMsg.NetSceneFaceThirdBindVideo", "hy:  errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

@@ -1,45 +1,45 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bo;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.bp;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class n
-  extends bo
+  extends bp
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(105118);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "productID";
-    locala.IBN.put("productID", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "productID";
+    localMAutoDBInfo.colsMap.put("productID", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" productID TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "productID";
-    locala.columns[1] = "content";
-    locala.IBN.put("content", "BLOB default '' ");
+    localMAutoDBInfo.primaryKey = "productID";
+    localMAutoDBInfo.columns[1] = "content";
+    localMAutoDBInfo.colsMap.put("content", "BLOB default '' ");
     localStringBuilder.append(" content BLOB default '' ");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(105118);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.n
  * JD-Core Version:    0.7.0.1
  */

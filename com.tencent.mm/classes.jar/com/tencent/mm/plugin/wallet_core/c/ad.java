@@ -11,9 +11,9 @@ import com.tencent.mm.plugin.wallet_core.model.h;
 import com.tencent.mm.plugin.wallet_core.model.q;
 import com.tencent.mm.plugin.wallet_core.model.r;
 import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.wallet_core.c.aa;
 import com.tencent.mm.wallet_core.c.y;
 import com.tencent.mm.wallet_core.tenpay.model.m;
@@ -27,28 +27,28 @@ import org.json.JSONObject;
 public class ad
   extends m
 {
-  public Map<String, String> CZR;
-  public h DgV;
-  public q DgW;
-  public r DgX;
-  public boolean DgY;
-  public String dOi;
-  public String dOj;
-  public String dOk;
-  public String dOl;
-  public String dOm;
-  public String dOn;
-  public int dOo;
-  public String dOp;
-  public String dOq;
-  public String dOr;
-  public String dOs;
-  public LinkedList<String> dOt;
-  public ECardInfo dOu;
+  public Map<String, String> AJV;
+  public Map<String, String> HFF;
+  public h HQo;
+  public q HQp;
+  public r HQq;
+  public boolean HQr;
+  public String egd;
+  public String ege;
+  public String egf;
+  public String egg;
+  public String egh;
+  public String egi;
+  public int egj;
+  public String egk;
+  public String egm;
+  public String egn;
+  public String ego;
+  public LinkedList<String> egp;
+  public ECardInfo egq;
   public int scene;
   public String subtitle;
   public String title;
-  public Map<String, String> wOp;
   
   public ad()
   {
@@ -58,48 +58,48 @@ public class ad
   public ad(String paramString, int paramInt)
   {
     AppMethodBeat.i(69952);
-    this.dOn = "";
-    this.dOo = 0;
-    this.dOp = "";
-    this.dOq = "";
-    this.dOr = "";
-    this.dOs = "";
+    this.egi = "";
+    this.egj = 0;
+    this.egk = "";
+    this.egm = "";
+    this.egn = "";
+    this.ego = "";
     this.subtitle = "";
     this.title = "";
-    this.dOt = new LinkedList();
+    this.egp = new LinkedList();
     this.scene = 0;
-    this.DgY = false;
-    ae.i("MicroMsg.NetSceneTenpayQueryBindBankcard", "NetSceneTenpayQueryBoundBankcard scene:%s", new Object[] { Integer.valueOf(paramInt) });
-    this.wOp = new HashMap();
+    this.HQr = false;
+    Log.i("MicroMsg.NetSceneTenpayQueryBindBankcard", "NetSceneTenpayQueryBoundBankcard scene:%s", new Object[] { Integer.valueOf(paramInt) });
+    this.AJV = new HashMap();
     this.scene = paramInt;
-    this.wOp.put("req_key", paramString);
-    this.wOp.put("bind_query_scene", String.valueOf(paramInt));
-    paramString = (com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
-    this.wOp.put("is_root", "0");
+    this.AJV.put("req_key", paramString);
+    this.AJV.put("bind_query_scene", String.valueOf(paramInt));
+    paramString = (com.tencent.mm.plugin.fingerprint.d.a)g.af(com.tencent.mm.plugin.fingerprint.d.a.class);
+    this.AJV.put("is_root", "0");
     if (paramString != null)
     {
-      this.wOp.put("is_device_open_touch", "1");
-      paramString = paramString.cSd();
+      this.AJV.put("is_device_open_touch", "1");
+      paramString = paramString.dJY();
       if (paramString != null) {
-        this.wOp.putAll(paramString);
+        this.AJV.putAll(paramString);
       }
-      ae.i("MicroMsg.NetSceneTenpayQueryBindBankcard", "is_device_open_touch is true");
+      Log.i("MicroMsg.NetSceneTenpayQueryBindBankcard", "is_device_open_touch is true");
     }
     for (;;)
     {
-      setRequestData(this.wOp);
-      this.CZR = new HashMap();
-      g.ajS();
-      paramString = (String)g.ajR().ajA().get(196612, null);
-      g.ajS();
-      String str = (String)g.ajR().ajA().get(196613, null);
-      this.CZR.put("bind_serial", paramString);
-      this.CZR.put("last_bind_serial", str);
-      setWXRequestData(this.CZR);
+      setRequestData(this.AJV);
+      this.HFF = new HashMap();
+      g.aAi();
+      paramString = (String)g.aAh().azQ().get(196612, null);
+      g.aAi();
+      String str = (String)g.aAh().azQ().get(196613, null);
+      this.HFF.put("bind_serial", paramString);
+      this.HFF.put("last_bind_serial", str);
+      setWXRequestData(this.HFF);
       AppMethodBeat.o(69952);
       return;
-      this.wOp.put("is_device_open_touch", "0");
-      ae.i("MicroMsg.NetSceneTenpayQueryBindBankcard", "is_device_open_touch is false");
+      this.AJV.put("is_device_open_touch", "0");
+      Log.i("MicroMsg.NetSceneTenpayQueryBindBankcard", "is_device_open_touch is false");
     }
   }
   
@@ -131,57 +131,57 @@ public class ad
     if (paramJSONObject.has("real_name_info"))
     {
       localObject = paramJSONObject.optJSONObject("real_name_info");
-      ECardInfo.bf((JSONObject)localObject);
-      ae.i("MicroMsg.NetSceneTenpayQueryBindBankcard", "get real_name_info %s", new Object[] { ((JSONObject)localObject).toString() });
-      this.dOi = ((JSONObject)localObject).optString("guide_flag");
-      this.dOj = ((JSONObject)localObject).optString("guide_wording");
-      this.dOk = ((JSONObject)localObject).optString("left_button_wording");
-      this.dOl = ((JSONObject)localObject).optString("right_button_wording");
-      this.dOm = ((JSONObject)localObject).optString("upload_credit_url");
-      this.dOn = ((JSONObject)localObject).optString("done_button_wording");
-      this.dOo = ((JSONObject)localObject).optInt("is_show_protocol", 0);
-      this.dOp = ((JSONObject)localObject).optString("left_protocol_wording");
-      this.dOq = ((JSONObject)localObject).optString("new_upload_credit_url");
-      this.dOr = ((JSONObject)localObject).optString("protocol_url");
-      this.dOs = ((JSONObject)localObject).optString("right_protocol_wording");
+      ECardInfo.bF((JSONObject)localObject);
+      Log.i("MicroMsg.NetSceneTenpayQueryBindBankcard", "get real_name_info %s", new Object[] { ((JSONObject)localObject).toString() });
+      this.egd = ((JSONObject)localObject).optString("guide_flag");
+      this.ege = ((JSONObject)localObject).optString("guide_wording");
+      this.egf = ((JSONObject)localObject).optString("left_button_wording");
+      this.egg = ((JSONObject)localObject).optString("right_button_wording");
+      this.egh = ((JSONObject)localObject).optString("upload_credit_url");
+      this.egi = ((JSONObject)localObject).optString("done_button_wording");
+      this.egj = ((JSONObject)localObject).optInt("is_show_protocol", 0);
+      this.egk = ((JSONObject)localObject).optString("left_protocol_wording");
+      this.egm = ((JSONObject)localObject).optString("new_upload_credit_url");
+      this.egn = ((JSONObject)localObject).optString("protocol_url");
+      this.ego = ((JSONObject)localObject).optString("right_protocol_wording");
       this.subtitle = ((JSONObject)localObject).optString("subtitle");
       this.title = ((JSONObject)localObject).optString("title");
       JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("upload_reasons");
-      this.dOt.clear();
+      this.egp.clear();
       if (localJSONArray != null)
       {
         paramInt = 0;
         while (paramInt < localJSONArray.length())
         {
-          this.dOt.add(localJSONArray.optString(paramInt));
+          this.egp.add(localJSONArray.optString(paramInt));
           paramInt += 1;
         }
       }
       if (((JSONObject)localObject).has("ecard_info"))
       {
         localObject = ((JSONObject)localObject).optJSONObject("ecard_info");
-        this.dOu = new ECardInfo();
-        this.dOu.title = this.title;
-        this.dOu.DnE = new ArrayList(this.dOt);
-        this.dOu.DnG = this.dOr;
-        this.dOu.DnH = this.dOp;
-        this.dOu.DnI = this.dOs;
-        this.dOu.DnF = this.dOn;
-        this.dOu.obQ = ((JSONObject)localObject).optInt("ecard_open_scene", 0);
-        this.dOu.dpa = ((JSONObject)localObject).optString("ecard_type", "");
-        this.dOu.Dny = ((JSONObject)localObject).optInt("show_check_box", 0);
-        this.dOu.Dnz = ((JSONObject)localObject).optInt("check_box_selected", 0);
-        this.dOu.DnA = ((JSONObject)localObject).optString("check_box_left_wording", "");
-        this.dOu.DnB = ((JSONObject)localObject).optString("check_box_right_wording", "");
-        this.dOu.DnC = ((JSONObject)localObject).optString("check_box_url", "");
-        this.dOu.DnD = ((JSONObject)localObject).optInt("is_upload_credid", 0);
-        this.dOu.dOm = ((JSONObject)localObject).optString("upload_credit_url", "");
+        this.egq = new ECardInfo();
+        this.egq.title = this.title;
+        this.egq.HWW = new ArrayList(this.egp);
+        this.egq.HWY = this.egn;
+        this.egq.HWZ = this.egk;
+        this.egq.HXa = this.ego;
+        this.egq.HWX = this.egi;
+        this.egq.pmM = ((JSONObject)localObject).optInt("ecard_open_scene", 0);
+        this.egq.dGp = ((JSONObject)localObject).optString("ecard_type", "");
+        this.egq.HWQ = ((JSONObject)localObject).optInt("show_check_box", 0);
+        this.egq.HWR = ((JSONObject)localObject).optInt("check_box_selected", 0);
+        this.egq.HWS = ((JSONObject)localObject).optString("check_box_left_wording", "");
+        this.egq.HWT = ((JSONObject)localObject).optString("check_box_right_wording", "");
+        this.egq.HWU = ((JSONObject)localObject).optString("check_box_url", "");
+        this.egq.HWV = ((JSONObject)localObject).optInt("is_upload_credid", 0);
+        this.egq.egh = ((JSONObject)localObject).optString("upload_credit_url", "");
       }
       if ((paramJSONObject.has("paymenu_array")) && (this.scene == 1))
       {
         localObject = paramJSONObject.optJSONArray("paymenu_array");
         if (localObject != null) {
-          ac.UH(((JSONArray)localObject).toString());
+          ac.aev(((JSONArray)localObject).toString());
         }
       }
       long l = paramJSONObject.optLong("time_stamp");
@@ -190,33 +190,33 @@ public class ad
       }
       y.setTimeStamp(String.valueOf(l));
       label576:
-      ai.a(paramJSONObject, this.scene, true, this.DgY);
-      if ((ai.Wh(this.scene)) || (this.scene == 1))
+      ai.a(paramJSONObject, this.scene, true, this.HQr);
+      if ((ai.aeL(this.scene)) || (this.scene == 1))
       {
         localObject = paramJSONObject.optJSONObject("bind_card_menu");
         if (localObject == null) {
           break label786;
         }
-        ae.d("MicroMsg.NetSceneTenpayQueryBindBankcard", "bind card menu: %s", new Object[] { ((JSONObject)localObject).toString() });
-        g.ajS();
-        g.ajR().ajA().set(am.a.IVw, ((JSONObject)localObject).toString());
+        Log.d("MicroMsg.NetSceneTenpayQueryBindBankcard", "bind card menu: %s", new Object[] { ((JSONObject)localObject).toString() });
+        g.aAi();
+        g.aAh().azQ().set(ar.a.OdO, ((JSONObject)localObject).toString());
       }
       label662:
-      localObject = (com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
+      localObject = (com.tencent.mm.plugin.fingerprint.d.a)g.af(com.tencent.mm.plugin.fingerprint.d.a.class);
       if (localObject == null) {
         break label919;
       }
-      ae.i("MicroMsg.NetSceneTenpayQueryBindBankcard", "IFingerPrintMgr is not null");
-      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).cSa();
-      paramInt = t.eJf().eJN();
+      Log.i("MicroMsg.NetSceneTenpayQueryBindBankcard", "IFingerPrintMgr is not null");
+      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).dJV();
+      paramInt = t.fQI().fRq();
       if (paramInt != 0) {
         break label841;
       }
-      if (!((com.tencent.mm.plugin.fingerprint.d.a)localObject).cRY()) {
+      if (!((com.tencent.mm.plugin.fingerprint.d.a)localObject).dJT()) {
         break label807;
       }
-      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).mC(t.eJf().eJL());
-      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).mD(false);
+      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).pj(t.fQI().fRo());
+      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).pk(false);
       label734:
       if (this.scene != 10) {
         break label1040;
@@ -229,52 +229,52 @@ public class ad
     }
     for (;;)
     {
-      this.DgV = paramString;
+      this.HQo = paramString;
       AppMethodBeat.o(69953);
       return;
-      ECardInfo.bf(null);
+      ECardInfo.bF(null);
       break;
       label775:
-      ae.w("MicroMsg.NetSceneTenpayQueryBindBankcard", "no time_stamp in bindquerynew.");
+      Log.w("MicroMsg.NetSceneTenpayQueryBindBankcard", "no time_stamp in bindquerynew.");
       break label576;
       label786:
-      g.ajS();
-      g.ajR().ajA().set(am.a.IVw, "");
+      g.aAi();
+      g.aAh().azQ().set(ar.a.OdO, "");
       break label662;
       label807:
-      if (!((com.tencent.mm.plugin.fingerprint.d.a)localObject).cSg()) {
+      if (!((com.tencent.mm.plugin.fingerprint.d.a)localObject).dKb()) {
         break label734;
       }
-      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).mD(t.eJf().eJL());
-      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).mC(false);
+      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).pk(t.fQI().fRo());
+      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).pj(false);
       break label734;
       label841:
-      if ((paramInt == 1) && (((com.tencent.mm.plugin.fingerprint.d.a)localObject).cRY()))
+      if ((paramInt == 1) && (((com.tencent.mm.plugin.fingerprint.d.a)localObject).dJT()))
       {
-        ((com.tencent.mm.plugin.fingerprint.d.a)localObject).mC(t.eJf().eJL());
-        ((com.tencent.mm.plugin.fingerprint.d.a)localObject).mD(false);
+        ((com.tencent.mm.plugin.fingerprint.d.a)localObject).pj(t.fQI().fRo());
+        ((com.tencent.mm.plugin.fingerprint.d.a)localObject).pk(false);
         break label734;
       }
-      if ((paramInt != 2) || (!((com.tencent.mm.plugin.fingerprint.d.a)localObject).cSg())) {
+      if ((paramInt != 2) || (!((com.tencent.mm.plugin.fingerprint.d.a)localObject).dKb())) {
         break label734;
       }
-      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).mD(t.eJf().eJL());
-      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).mC(false);
+      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).pk(t.fQI().fRo());
+      ((com.tencent.mm.plugin.fingerprint.d.a)localObject).pj(false);
       break label734;
       label919:
-      ae.e("MicroMsg.NetSceneTenpayQueryBindBankcard", "IFingerPrintMgr is null");
+      Log.e("MicroMsg.NetSceneTenpayQueryBindBankcard", "IFingerPrintMgr is null");
       break label734;
       label930:
       paramString = new h();
       paramString.id = paramJSONObject.optString("id");
-      paramString.dyI = paramJSONObject.optString("wording");
-      paramString.hDr = paramJSONObject.optString("color");
+      paramString.dQx = paramJSONObject.optString("wording");
+      paramString.ixw = paramJSONObject.optString("color");
       paramString.type = paramJSONObject.optInt("type");
-      paramString.Dnu = paramJSONObject.optString("native_url");
-      paramString.prB = paramJSONObject.optString("web_url");
-      paramString.Dnv = paramJSONObject.optString("tiny_app_username");
-      paramString.Dnw = paramJSONObject.optString("tiny_app_path");
-      paramString.CPO = paramJSONObject.optInt("entrance_type");
+      paramString.HWM = paramJSONObject.optString("native_url");
+      paramString.qHg = paramJSONObject.optString("web_url");
+      paramString.HWN = paramJSONObject.optString("tiny_app_username");
+      paramString.HWO = paramJSONObject.optString("tiny_app_path");
+      paramString.HuF = paramJSONObject.optInt("entrance_type");
     }
     label1040:
     if (this.scene == 8)
@@ -288,33 +288,33 @@ public class ad
       }
       for (;;)
       {
-        this.DgW = paramString;
+        this.HQp = paramString;
         paramString = paramJSONObject.optJSONObject("disable_block_layer");
         if (paramString == null) {
           break;
         }
-        this.DgX = r.bj(paramString);
-        ((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().set(am.a.IXp, paramString.toString());
+        this.HQq = r.bJ(paramString);
+        ((com.tencent.mm.plugin.wxpay.a.a)g.ah(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().set(ar.a.OfI, paramString.toString());
         AppMethodBeat.o(69953);
         return;
         label1128:
         paramString = new q();
-        paramString.Dpc = ((JSONObject)localObject).optInt("view_id");
-        paramString.Dpd = ((JSONObject)localObject).optInt("is_show_block_layer");
-        paramString.Dpe = ((JSONObject)localObject).optInt("waiting_time");
-        paramString.Dpf = ((JSONObject)localObject).optString("main_wording");
-        paramString.Dpg = ((JSONObject)localObject).optString("reminder_content");
-        paramString.Dpi = ((JSONObject)localObject).optString("repayment_tiny_app_path");
-        paramString.Dph = ((JSONObject)localObject).optString("repayment_tiny_app_username");
+        paramString.HYq = ((JSONObject)localObject).optInt("view_id");
+        paramString.HYr = ((JSONObject)localObject).optInt("is_show_block_layer");
+        paramString.HYs = ((JSONObject)localObject).optInt("waiting_time");
+        paramString.HYt = ((JSONObject)localObject).optString("main_wording");
+        paramString.HYu = ((JSONObject)localObject).optString("reminder_content");
+        paramString.HYw = ((JSONObject)localObject).optString("repayment_tiny_app_path");
+        paramString.HYv = ((JSONObject)localObject).optString("repayment_tiny_app_username");
       }
-      ((com.tencent.mm.plugin.wxpay.a.a)g.ad(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().set(am.a.IXp, "");
+      ((com.tencent.mm.plugin.wxpay.a.a)g.ah(com.tencent.mm.plugin.wxpay.a.a.class)).getWalletCacheStg().set(ar.a.OfI, "");
     }
     AppMethodBeat.o(69953);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.ad
  * JD-Core Version:    0.7.0.1
  */

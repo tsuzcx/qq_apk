@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<view android:layout_gravity="center" android:id="@id/dr" android:layout_width="wrap_content" android:layout_height="fill_parent" class="android.support.v7.widget.ActivityChooserView$InnerLayout" style="?as"
+<RelativeLayout android:orientation="vertical" android:id="@id/h8y" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_gravity="center" android:id="@id/bpm" android:background="?w" android:paddingLeft="12.0dip" android:paddingTop="2.0dip" android:paddingRight="12.0dip" android:paddingBottom="2.0dip" android:focusable="true" android:addStatesFromChildren="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:id="@id/co4" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitCenter" android:adjustViewBounds="true" />
-    </FrameLayout>
-    <FrameLayout android:layout_gravity="center" android:id="@id/b90" android:background="?w" android:paddingLeft="12.0dip" android:paddingTop="2.0dip" android:paddingRight="12.0dip" android:paddingBottom="2.0dip" android:focusable="true" android:addStatesFromChildren="true" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:layout_gravity="center" android:id="@id/co4" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitCenter" android:adjustViewBounds="true" />
-    </FrameLayout>
-</view>
+    <ImageView android:id="@id/dcj" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.view.AnimationLayout android:id="@id/n0" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/dci" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
+    </com.tencent.mm.view.AnimationLayout>
+</RelativeLayout>

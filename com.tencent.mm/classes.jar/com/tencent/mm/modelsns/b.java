@@ -1,39 +1,35 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.i.a.e;
-import com.tencent.mm.protocal.protobuf.ary;
-import java.util.Map;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.i.a.ac;
+import com.tencent.mm.plugin.i.a.aj;
+import com.tencent.mm.plugin.i.a.l;
+import com.tencent.mm.protocal.protobuf.bcl;
 
 public final class b
+  implements j
 {
-  public ary ipW;
+  public bcl jld;
   
   public b()
   {
-    AppMethodBeat.i(164139);
-    this.ipW = new ary();
-    AppMethodBeat.o(164139);
+    AppMethodBeat.i(192722);
+    this.jld = new bcl();
+    AppMethodBeat.o(192722);
   }
   
-  public final String aLC()
+  public final String bfF()
   {
-    AppMethodBeat.i(164140);
-    String str = e.b(this.ipW);
-    AppMethodBeat.o(164140);
+    AppMethodBeat.i(192723);
+    String str = l.bf(((aj)g.ah(aj.class)).getFinderSwitchApi().dCw(), l.b(this.jld));
+    AppMethodBeat.o(192723);
     return str;
-  }
-  
-  public final void j(String paramString, Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(164141);
-    this.ipW = e.w(paramString, paramMap);
-    AppMethodBeat.o(164141);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsns.b
  * JD-Core Version:    0.7.0.1
  */

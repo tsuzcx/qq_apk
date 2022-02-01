@@ -2,35 +2,35 @@ package com.tencent.mm.modelrecovery;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 
 public final class b
 {
-  public static void aKu()
+  public static void bex()
   {
     AppMethodBeat.i(20588);
-    k localk = new k(ak.getContext().getFilesDir(), "/recovery/recovery.log");
+    o localo = new o(MMApplicationContext.getContext().getFilesDir(), "/recovery/recovery.log");
     String str = null;
     Object localObject2 = null;
     Object localObject1 = localObject2;
-    if (localk.exists())
+    if (localo.exists())
     {
       localObject1 = localObject2;
-      if (localk.length() > 0L) {
+      if (localo.length() > 0L) {
         localObject1 = str;
       }
     }
     try
     {
-      localObject2 = o.aZT(w.B(localk.fTh()));
+      localObject2 = s.boY(aa.z(localo.her()));
       localObject1 = localObject2;
-      localk.delete();
+      localo.delete();
       localObject1 = localObject2;
     }
     catch (IOException localIOException)
@@ -40,21 +40,21 @@ public final class b
         int k;
         int i;
         int j;
-        ae.printErrStackTrace("MicroMsg.Recovery.RecoveryLogUtil", localIOException, "recoveryLog", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Recovery.RecoveryLogUtil", localIOException, "recoveryLog", new Object[0]);
         continue;
         if (str.equals("E"))
         {
           j = 0;
           continue;
-          ae.e(localIOException[1], localIOException[2]);
+          Log.e(localIOException[1], localIOException[2]);
           continue;
-          ae.i("MicroMsg.Recovery.RecoveryLogUtil", str);
+          Log.i("MicroMsg.Recovery.RecoveryLogUtil", str);
         }
       }
       AppMethodBeat.o(20588);
       return;
     }
-    if (!bu.isNullOrNil((String)localObject1))
+    if (!Util.isNullOrNil((String)localObject1))
     {
       localObject1 = ((String)localObject1).split("​​");
       k = localObject1.length;
@@ -77,7 +77,7 @@ public final class b
           switch (j)
           {
           default: 
-            ae.i(localObject2[1], localObject2[2]);
+            Log.i(localObject2[1], localObject2[2]);
             i += 1;
           }
           break;
@@ -85,13 +85,13 @@ public final class b
       }
     }
     label259:
-    ae.i("MicroMsg.Recovery.RecoveryLogUtil", "not found recovery log");
+    Log.i("MicroMsg.Recovery.RecoveryLogUtil", "not found recovery log");
     AppMethodBeat.o(20588);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelrecovery.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/ajp" android:layout_width="0.0dip" android:layout_height="@dimen/c_" android:layout_marginLeft="@dimen/c0" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/ci" android:layout_weight="1.0">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/f8y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/bq" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
-        <com.tencent.mm.ui.search.FTSEditTextView android:id="@id/c8x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="1024.0dip" android:textCursorDrawable="@drawable/x5" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/fx" android:id="@id/aay" android:paddingLeft="@dimen/c0" android:paddingRight="@dimen/c0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/r5" />
-    <ImageView android:id="@id/c8y" android:background="@null" android:focusable="true" android:visibility="gone" android:clickable="true" android:layout_width="@dimen/a5p" android:layout_height="@dimen/a5p" android:src="@drawable/bd0" android:layout_centerVertical="true" android:contentDescription="@string/wb" android:paddingStart="@dimen/jn" android:paddingEnd="@dimen/jn" android:layout_alignParentEnd="true" />
-</LinearLayout>
+<FrameLayout android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/cg6" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
+    <View android:id="@id/hem" android:background="@color/ac" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/uj" android:layout_gravity="center_horizontal" android:id="@id/cg0" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="100.0dip" android:text="@string/cdu" />
+    <com.tencent.mm.pluginsdk.ui.tools.DropdownListView android:id="@id/bv5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/cge" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a61" />
+</FrameLayout>

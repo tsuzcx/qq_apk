@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/t9" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@color/BW_100" android:paddingLeft="@dimen/cb" android:paddingTop="@dimen/cb" android:paddingRight="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bu"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/gu" android:textColor="@color/h1" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c0" android:text="@string/cxe" />
-    <View android:id="@id/ch3" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="@dimen/c0" />
-    <com.tencent.mm.ui.widget.picker.CustomDatePicker android:gravity="center" android:layout_gravity="center" android:id="@id/b8i" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="250.0dip" android:layout_height="200.0dip" android:layout_marginTop="0.5dip" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci">
-        <Button android:textSize="@dimen/jo" android:id="@id/aay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="120.0dip" android:minHeight="@dimen/cb" android:text="@string/cxc" style="@style/od" />
-        <Button android:textSize="@dimen/jo" android:id="@id/e7h" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:minWidth="120.0dip" android:minHeight="@dimen/cb" android:text="@string/cxd" style="@style/o7" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="@dimen/cl">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/ets" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/et_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" />
     </LinearLayout>
-</LinearLayout>
+    <TextView android:textSize="@dimen/eo" android:textColor="@color/BW_0_Alpha_0_3" android:layout_gravity="end" android:id="@id/in3" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <View android:layout_gravity="bottom" android:background="@color/FG_3" android:layout_width="wrap_content" android:layout_height="0.5dip" android:layout_marginTop="@dimen/cb" />
+</FrameLayout>

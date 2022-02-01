@@ -1,143 +1,27 @@
 package com.tencent.mm.plugin.scanner.box;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.os.Bundle;
-import android.view.Window;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ps;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxManager;", "", "()V", "KEY_ENTER_SESSION", "", "KEY_FIXED_WEBVIEW_HEIGHT", "KEY_REQ_KEY", "KEY_SCAN_SESSION", "KEY_TAB_SESSION", "TAG", "showBoxDialog", "Lcom/tencent/mm/plugin/scanner/box/ScanBoxDialog;", "context", "Landroid/content/Context;", "data", "Landroid/os/Bundle;", "scanBoxDialogEventListener", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogEventListener;", "plugin-scan_release"})
-public final class f
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogMoveListener;", "", "onDialogDismissAnimationEnd", "", "onDialogDismissAnimationStart", "onDialogShowAnimationEnd", "onDialogShowAnimationStart", "dialogHeight", "", "startTransY", "", "endTransY", "onDialogVerticalMoved", "dialogState", "offsetY", "factor", "onTouchMoveBegin", "onTouchMoveEnd", "plugin-scan_release"})
+public abstract interface f
 {
-  public static final f yBb;
+  public abstract void c(int paramInt, float paramFloat1, float paramFloat2);
   
-  static
-  {
-    AppMethodBeat.i(52133);
-    yBb = new f();
-    AppMethodBeat.o(52133);
-  }
+  public abstract void d(int paramInt, float paramFloat1, float paramFloat2);
   
-  public static final e a(Context paramContext, Bundle paramBundle, b paramb)
-  {
-    AppMethodBeat.i(52132);
-    p.h(paramContext, "context");
-    p.h(paramBundle, "data");
-    ps localps = new ps();
-    HashMap localHashMap = new HashMap();
-    String str1 = paramBundle.getString("req_key");
-    String str2 = paramBundle.getString("enter_session");
-    String str3 = paramBundle.getString("tab_session");
-    String str4 = paramBundle.getString("scan_session");
-    int i = paramBundle.getInt("fixed_webview_height", 0);
-    Map localMap = (Map)localHashMap;
-    if (str1 == null) {}
-    for (paramBundle = "";; paramBundle = str1)
-    {
-      localMap.put("req_key", paramBundle);
-      localMap = (Map)localHashMap;
-      if (str2 == null) {}
-      for (paramBundle = "";; paramBundle = str2)
-      {
-        localMap.put("enter_session", paramBundle);
-        localMap = (Map)localHashMap;
-        if (str3 == null) {}
-        for (paramBundle = "";; paramBundle = str3)
-        {
-          localMap.put("tab_session", paramBundle);
-          localMap = (Map)localHashMap;
-          if (str4 == null) {}
-          for (paramBundle = "";; paramBundle = str4)
-          {
-            localMap.put("scan_session", paramBundle);
-            ae.i("MicroMsg.ScanBoxManager", "alvinluo showBoxDialog reqKey: %s, enterSession: %s, tabSession: %s, scanSession: %s, fixWebViewHeight: %d", new Object[] { str1, str2, str3, str4, Integer.valueOf(i) });
-            paramBundle = g.yBd;
-            localps.Url = com.tencent.mm.plugin.box.c.b.a(localHashMap, g.dNX());
-            localps.Gdk = UUID.randomUUID().toString();
-            paramContext = new e(paramContext, localps);
-            if (i > 0)
-            {
-              paramContext.yAu = true;
-              paramBundle = paramContext.yAX;
-              if (paramBundle != null) {
-                paramBundle.setIsFixWebViewHeight(true);
-              }
-              paramContext.yAv = i;
-              paramBundle = paramContext.yAX;
-              if (paramBundle != null) {
-                paramBundle.setFixWebViewHeight(i);
-              }
-            }
-            paramContext.yAW = ((b)new a(paramb));
-            paramContext.show();
-            paramBundle = paramContext.getWindow();
-            if (paramBundle != null) {
-              paramBundle.setLayout(-1, -1);
-            }
-            AppMethodBeat.o(52132);
-            return paramContext;
-          }
-        }
-      }
-    }
-  }
+  public abstract void ePg();
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/scanner/box/ScanBoxManager$showBoxDialog$1", "Lcom/tencent/mm/plugin/scanner/box/BoxDialogEventListener;", "onCancel", "", "dialog", "Landroid/content/DialogInterface;", "onDismiss", "exitType", "", "onShow", "plugin-scan_release"})
-  public static final class a
-    implements b
-  {
-    a(b paramb) {}
-    
-    public final void a(DialogInterface paramDialogInterface, int paramInt)
-    {
-      AppMethodBeat.i(189529);
-      b localb = this.yBc;
-      if (localb != null)
-      {
-        localb.a(paramDialogInterface, paramInt);
-        AppMethodBeat.o(189529);
-        return;
-      }
-      AppMethodBeat.o(189529);
-    }
-    
-    public final void onCancel(DialogInterface paramDialogInterface)
-    {
-      AppMethodBeat.i(189530);
-      b localb = this.yBc;
-      if (localb != null)
-      {
-        localb.onCancel(paramDialogInterface);
-        AppMethodBeat.o(189530);
-        return;
-      }
-      AppMethodBeat.o(189530);
-    }
-    
-    public final void onShow(DialogInterface paramDialogInterface)
-    {
-      AppMethodBeat.i(189528);
-      b localb = this.yBc;
-      if (localb != null)
-      {
-        localb.onShow(paramDialogInterface);
-        AppMethodBeat.o(189528);
-        return;
-      }
-      AppMethodBeat.o(189528);
-    }
-  }
+  public abstract void ePh();
+  
+  public abstract void ePi();
+  
+  public abstract void ePj();
+  
+  public abstract void ePk();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.box.f
  * JD-Core Version:    0.7.0.1
  */

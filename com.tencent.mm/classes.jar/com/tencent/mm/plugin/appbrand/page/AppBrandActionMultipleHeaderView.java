@@ -13,12 +13,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AppBrandActionMultipleHeaderView
   extends LinearLayout
 {
-  private ImageView dtJ;
-  private String mdj;
+  private ImageView dKU;
+  private String nnB;
   private String path;
   private int type;
   private String username;
-  private TextView vk;
+  private TextView vr;
   
   public AppBrandActionMultipleHeaderView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,20 +40,20 @@ public class AppBrandActionMultipleHeaderView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(134934);
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131493091, this);
-    this.dtJ = ((ImageView)findViewById(2131296883));
-    this.vk = ((TextView)findViewById(2131296884));
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131493133, this);
+    this.dKU = ((ImageView)findViewById(2131296977));
+    this.vr = ((TextView)findViewById(2131296978));
     AppMethodBeat.o(134934);
   }
   
   public String getH5Url()
   {
-    return this.mdj;
+    return this.nnB;
   }
   
   public ImageView getImageView()
   {
-    return this.dtJ;
+    return this.dKU;
   }
   
   public String getPath()
@@ -74,28 +74,28 @@ public class AppBrandActionMultipleHeaderView
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(134936);
-    this.dtJ.setImageDrawable(paramDrawable);
+    this.dKU.setImageDrawable(paramDrawable);
     AppMethodBeat.o(134936);
   }
   
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(134935);
-    this.dtJ.setImageResource(paramInt);
+    this.dKU.setImageResource(paramInt);
     AppMethodBeat.o(134935);
   }
   
   public void setTextViewText(String paramString)
   {
     AppMethodBeat.i(134937);
-    this.vk.setText(paramString);
+    this.vr.setText(paramString);
     AppMethodBeat.o(134937);
   }
   
   public void setTextViewTextColor(int paramInt)
   {
     AppMethodBeat.i(134938);
-    this.vk.setTextColor(paramInt);
+    this.vr.setTextColor(paramInt);
     AppMethodBeat.o(134938);
   }
 }

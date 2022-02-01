@@ -8,16 +8,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.CardInfo;
 import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.n.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.s;
 
 public class c
-  extends r<CardInfo>
+  extends s<CardInfo>
 {
   private final String TAG;
   private int count;
-  private com.tencent.mm.plugin.card.base.c oJA;
-  private n.a oLd;
+  private com.tencent.mm.plugin.card.base.c pXo;
+  private n.a pYR;
   
   public c(Context paramContext, n.a parama)
   {
@@ -25,33 +25,33 @@ public class c
     AppMethodBeat.i(113174);
     this.TAG = "MicroMsg.CardAdapter";
     this.count = 0;
-    this.oLd = parama;
-    xs(true);
-    this.oJA = new l(paramContext, this);
+    this.pYR = parama;
+    Bh(true);
+    this.pXo = new l(paramContext, this);
     AppMethodBeat.o(113174);
   }
   
-  public void ZD()
+  public void anp()
   {
     AppMethodBeat.i(113175);
-    ae.v("MicroMsg.CardAdapter", "resetCursor");
-    dhl();
-    Cursor localCursor = am.bWc().a(this.oLd);
+    Log.v("MicroMsg.CardAdapter", "resetCursor");
+    ebf();
+    Cursor localCursor = am.ctQ().a(this.pYR);
     if (localCursor != null)
     {
       this.count = localCursor.getCount();
-      ae.v("MicroMsg.CardAdapter", "card count:" + this.count);
+      Log.v("MicroMsg.CardAdapter", "card count:" + this.count);
     }
     setCursor(localCursor);
     notifyDataSetChanged();
     AppMethodBeat.o(113175);
   }
   
-  public void ZE()
+  public void anq()
   {
     AppMethodBeat.i(113176);
-    dhl();
-    ZD();
+    ebf();
+    anp();
     AppMethodBeat.o(113176);
   }
   
@@ -59,7 +59,7 @@ public class c
   {
     AppMethodBeat.i(113177);
     paramViewGroup = (CardInfo)getItem(paramInt);
-    paramView = this.oJA.a(paramInt, paramView, paramViewGroup);
+    paramView = this.pXo.a(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(113177);
     return paramView;
   }
@@ -67,15 +67,15 @@ public class c
   public void release()
   {
     AppMethodBeat.i(113178);
-    dhl();
-    this.oJA.release();
-    this.oJA = null;
+    ebf();
+    this.pXo.release();
+    this.pXo = null;
     AppMethodBeat.o(113178);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.c
  * JD-Core Version:    0.7.0.1
  */

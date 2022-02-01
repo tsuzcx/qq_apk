@@ -12,8 +12,8 @@ import com.tencent.mm.ae.a.a;
 public final class ImagePreference
   extends Preference
 {
-  private e JNr;
-  private ImageView xig;
+  private ImageView Bga;
+  private e OYt;
   
   public ImagePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,18 +24,18 @@ public final class ImagePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142569);
-    this.xig = null;
-    this.JNr = new e();
-    setLayoutResource(2131494861);
-    setWidgetLayoutResource(2131494884);
+    this.Bga = null;
+    this.OYt = new e();
+    setLayoutResource(2131495597);
+    setWidgetLayoutResource(2131495622);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ImagePreference);
     paramInt = paramContext.getResourceId(0, 0);
     if (paramInt > 0)
     {
-      paramAttributeSet = this.JNr;
+      paramAttributeSet = this.OYt;
       paramAttributeSet.resId = paramInt;
       paramAttributeSet.bitmap = null;
-      this.JNr.n(this.xig);
+      this.OYt.p(this.Bga);
     }
     paramContext.recycle();
     AppMethodBeat.o(142569);
@@ -45,8 +45,8 @@ public final class ImagePreference
   {
     AppMethodBeat.i(142571);
     super.onBindView(paramView);
-    this.xig = ((ImageView)paramView.findViewById(2131300943));
-    this.JNr.n(this.xig);
+    this.Bga = ((ImageView)paramView.findViewById(2131302573));
+    this.OYt.p(this.Bga);
     AppMethodBeat.o(142571);
   }
   
@@ -54,16 +54,16 @@ public final class ImagePreference
   {
     AppMethodBeat.i(142570);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298764);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299208);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131494861, localViewGroup);
+    View.inflate(this.mContext, 2131495597, localViewGroup);
     AppMethodBeat.o(142570);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.ImagePreference
  * JD-Core Version:    0.7.0.1
  */

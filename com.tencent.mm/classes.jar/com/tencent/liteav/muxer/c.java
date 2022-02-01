@@ -49,8 +49,8 @@ public class c
   public static boolean a(Context paramContext)
   {
     AppMethodBeat.i(14902);
-    com.tencent.liteav.basic.e.b.a().a(paramContext);
-    if (com.tencent.liteav.basic.e.b.a().e() == 1)
+    com.tencent.liteav.basic.d.c.a().a(paramContext);
+    if (com.tencent.liteav.basic.d.c.a().f() == 1)
     {
       AppMethodBeat.o(14902);
       return true;
@@ -120,7 +120,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.muxer.c
  * JD-Core Version:    0.7.0.1
  */

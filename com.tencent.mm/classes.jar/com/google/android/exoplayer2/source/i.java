@@ -3,101 +3,230 @@ package com.google.android.exoplayer2.source;
 import com.google.android.exoplayer2.f;
 import com.google.android.exoplayer2.h.b;
 import com.google.android.exoplayer2.w;
+import com.google.android.exoplayer2.w.a;
+import com.google.android.exoplayer2.w.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface i
+public final class i
+  implements k
 {
-  public abstract h a(b paramb, b paramb1);
+  private final k bwq;
+  int bwr;
+  final int loopCount;
   
-  public abstract void a(f paramf, a parama);
-  
-  public abstract void b(h paramh);
-  
-  public abstract void vn();
-  
-  public abstract void vo();
-  
-  public static abstract interface a
+  public i(k paramk)
   {
-    public abstract void a(w paramw, Object paramObject);
+    AppMethodBeat.i(196054);
+    com.google.android.exoplayer2.i.a.checkArgument(true);
+    this.bwq = paramk;
+    this.loopCount = 50;
+    AppMethodBeat.o(196054);
   }
   
-  public static final class b
+  public final j a(k.b paramb, b paramb1)
   {
-    public static final b bwv;
-    public final int bww;
-    public final int bwx;
-    public final int bwy;
-    
-    static
+    AppMethodBeat.i(196057);
+    if (this.loopCount != 2147483647)
     {
-      AppMethodBeat.i(92680);
-      bwv = new b(-1, -1, -1);
-      AppMethodBeat.o(92680);
+      paramb = this.bwq.a(new k.b(paramb.bwx % this.bwr), paramb1);
+      AppMethodBeat.o(196057);
+      return paramb;
     }
-    
-    public b(int paramInt)
+    paramb = this.bwq.a(paramb, paramb1);
+    AppMethodBeat.o(196057);
+    return paramb;
+  }
+  
+  public final void a(f paramf, final k.a parama)
+  {
+    AppMethodBeat.i(196055);
+    this.bwq.a(paramf, new k.a()
     {
-      this(paramInt, -1, -1);
-    }
-    
-    public b(int paramInt1, int paramInt2, int paramInt3)
-    {
-      this.bww = paramInt1;
-      this.bwx = paramInt2;
-      this.bwy = paramInt3;
-    }
-    
-    public final b eB(int paramInt)
-    {
-      AppMethodBeat.i(92678);
-      if (this.bww == paramInt)
+      public final void a(w paramAnonymousw, Object paramAnonymousObject)
       {
-        AppMethodBeat.o(92678);
-        return this;
+        AppMethodBeat.i(196044);
+        i.this.bwr = paramAnonymousw.tE();
+        if (i.this.loopCount != 2147483647) {}
+        for (paramAnonymousw = new i.b(paramAnonymousw, i.this.loopCount);; paramAnonymousw = new i.a(paramAnonymousw))
+        {
+          parama.a(paramAnonymousw, paramAnonymousObject);
+          AppMethodBeat.o(196044);
+          return;
+        }
       }
-      b localb = new b(paramInt, this.bwx, this.bwy);
-      AppMethodBeat.o(92678);
-      return localb;
+    });
+    AppMethodBeat.o(196055);
+  }
+  
+  public final void b(j paramj)
+  {
+    AppMethodBeat.i(196058);
+    this.bwq.b(paramj);
+    AppMethodBeat.o(196058);
+  }
+  
+  public final void vt()
+  {
+    AppMethodBeat.i(196056);
+    this.bwq.vt();
+    AppMethodBeat.o(196056);
+  }
+  
+  public final void vu()
+  {
+    AppMethodBeat.i(196059);
+    this.bwq.vu();
+    AppMethodBeat.o(196059);
+  }
+  
+  static final class a
+    extends w
+  {
+    private final w bwu;
+    
+    public a(w paramw)
+    {
+      this.bwu = paramw;
     }
     
-    public final boolean equals(Object paramObject)
+    public final w.a a(int paramInt, w.a parama, boolean paramBoolean)
     {
-      AppMethodBeat.i(92679);
-      if (this == paramObject)
-      {
-        AppMethodBeat.o(92679);
-        return true;
-      }
-      if ((paramObject == null) || (getClass() != paramObject.getClass()))
-      {
-        AppMethodBeat.o(92679);
-        return false;
-      }
-      paramObject = (b)paramObject;
-      if ((this.bww == paramObject.bww) && (this.bwx == paramObject.bwx) && (this.bwy == paramObject.bwy))
-      {
-        AppMethodBeat.o(92679);
-        return true;
-      }
-      AppMethodBeat.o(92679);
-      return false;
+      AppMethodBeat.i(196049);
+      parama = this.bwu.a(paramInt, parama, paramBoolean);
+      AppMethodBeat.o(196049);
+      return parama;
     }
     
-    public final int hashCode()
+    public final w.b a(int paramInt, w.b paramb, boolean paramBoolean, long paramLong)
     {
-      return ((this.bww + 527) * 31 + this.bwx) * 31 + this.bwy;
+      AppMethodBeat.i(196047);
+      paramb = this.bwu.a(paramInt, paramb, paramBoolean, paramLong);
+      AppMethodBeat.o(196047);
+      return paramb;
     }
     
-    public final boolean vx()
+    public final int aZ(int paramInt1, int paramInt2)
     {
-      return this.bwx != -1;
+      AppMethodBeat.i(196046);
+      paramInt1 = this.bwu.aZ(paramInt1, paramInt2);
+      if (paramInt1 == -1)
+      {
+        AppMethodBeat.o(196046);
+        return 0;
+      }
+      AppMethodBeat.o(196046);
+      return paramInt1;
+    }
+    
+    public final int ae(Object paramObject)
+    {
+      AppMethodBeat.i(196050);
+      int i = this.bwu.ae(paramObject);
+      AppMethodBeat.o(196050);
+      return i;
+    }
+    
+    public final int tD()
+    {
+      AppMethodBeat.i(196045);
+      int i = this.bwu.tD();
+      AppMethodBeat.o(196045);
+      return i;
+    }
+    
+    public final int tE()
+    {
+      AppMethodBeat.i(196048);
+      int i = this.bwu.tE();
+      AppMethodBeat.o(196048);
+      return i;
+    }
+  }
+  
+  static final class b
+    extends a
+  {
+    private final int bwr;
+    private final w bwu;
+    private final int bwv;
+    private final int loopCount;
+    
+    public b(w paramw, int paramInt)
+    {
+      super();
+      AppMethodBeat.i(196051);
+      this.bwu = paramw;
+      this.bwr = paramw.tE();
+      this.bwv = paramw.tD();
+      this.loopCount = paramInt;
+      if (paramInt <= 2147483647 / this.bwr) {}
+      for (boolean bool = true;; bool = false)
+      {
+        com.google.android.exoplayer2.i.a.checkState(bool, "LoopingMediaSource contains too many periods");
+        AppMethodBeat.o(196051);
+        return;
+      }
+    }
+    
+    protected final int ag(Object paramObject)
+    {
+      AppMethodBeat.i(196052);
+      if (!(paramObject instanceof Integer))
+      {
+        AppMethodBeat.o(196052);
+        return -1;
+      }
+      int i = ((Integer)paramObject).intValue();
+      AppMethodBeat.o(196052);
+      return i;
+    }
+    
+    protected final int ev(int paramInt)
+    {
+      return paramInt / this.bwr;
+    }
+    
+    protected final int ew(int paramInt)
+    {
+      return paramInt / this.bwv;
+    }
+    
+    protected final int ex(int paramInt)
+    {
+      return this.bwr * paramInt;
+    }
+    
+    protected final int ey(int paramInt)
+    {
+      return this.bwv * paramInt;
+    }
+    
+    protected final Object ez(int paramInt)
+    {
+      AppMethodBeat.i(196053);
+      AppMethodBeat.o(196053);
+      return Integer.valueOf(paramInt);
+    }
+    
+    public final int tD()
+    {
+      return this.bwv * this.loopCount;
+    }
+    
+    public final int tE()
+    {
+      return this.bwr * this.loopCount;
+    }
+    
+    protected final w vk()
+    {
+      return this.bwu;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.source.i
  * JD-Core Version:    0.7.0.1
  */

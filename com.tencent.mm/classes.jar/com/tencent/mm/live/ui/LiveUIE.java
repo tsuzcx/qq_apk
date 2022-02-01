@@ -3,15 +3,15 @@ package com.tencent.mm.live.ui;
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/ui/LiveUIE;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/LiveUIE;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "getLayoutId", "", "plugin-logic_release"})
 public final class LiveUIE
   extends MMActivity
 {
   public final int getLayoutId()
   {
-    return 2131493128;
+    return 2131493171;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

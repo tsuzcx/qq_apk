@@ -11,7 +11,7 @@ public class SeMiterLimitActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SeMiterLimitActionArg> CREATOR;
-  public float jWM;
+  public float kZI;
   
   static
   {
@@ -50,7 +50,7 @@ public class SeMiterLimitActionArg
       AppMethodBeat.o(145128);
       return false;
     }
-    if (Float.compare(((SeMiterLimitActionArg)paramObject).jWM, this.jWM) == 0)
+    if (Float.compare(((SeMiterLimitActionArg)paramObject).kZI, this.kZI) == 0)
     {
       AppMethodBeat.o(145128);
       return true;
@@ -59,27 +59,27 @@ public class SeMiterLimitActionArg
     return false;
   }
   
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145125);
-    super.h(paramParcel);
-    this.jWM = paramParcel.readFloat();
-    AppMethodBeat.o(145125);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145129);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jWM) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.kZI) });
     AppMethodBeat.o(145129);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145125);
+    super.i(paramParcel);
+    this.kZI = paramParcel.readFloat();
+    AppMethodBeat.o(145125);
   }
   
   public final void parse(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145126);
     super.parse(paramJSONObject);
-    this.jWM = ((float)paramJSONObject.optJSONArray("data").optDouble(0));
+    this.kZI = ((float)paramJSONObject.optJSONArray("data").optDouble(0));
     AppMethodBeat.o(145126);
   }
   
@@ -87,13 +87,13 @@ public class SeMiterLimitActionArg
   {
     AppMethodBeat.i(145127);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.jWM);
+    paramParcel.writeFloat(this.kZI);
     AppMethodBeat.o(145127);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SeMiterLimitActionArg
  * JD-Core Version:    0.7.0.1
  */

@@ -6,21 +6,21 @@ import org.json.JSONObject;
 public final class c
 {
   public int frequency;
-  public String lAJ = "";
-  public String lAK = "";
-  public int lAL;
-  public boolean lAM = false;
-  public boolean lAN = false;
-  public boolean lAO = false;
+  public String mHX = "";
+  public String mHY = "";
+  public int mHZ;
+  public boolean mIa = false;
+  public boolean mIb = false;
+  public boolean mIc = false;
   
   public final JSONObject toJSONObject()
   {
     AppMethodBeat.i(144695);
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("SSID", this.lAJ);
-    localJSONObject.put("BSSID", this.lAK);
-    localJSONObject.put("secure", this.lAM);
-    localJSONObject.put("signalStrength", this.lAL);
+    localJSONObject.put("SSID", this.mHX);
+    localJSONObject.put("BSSID", this.mHY);
+    localJSONObject.put("secure", this.mIa);
+    localJSONObject.put("signalStrength", this.mHZ);
     localJSONObject.put("frequency", this.frequency);
     AppMethodBeat.o(144695);
     return localJSONObject;
@@ -29,14 +29,14 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(144694);
-    String str = "WiFiItem{mSsid='" + this.lAJ + '\'' + ", mBssid='" + this.lAK + '\'' + ", mSignalStrength=" + this.lAL + ", mSecurity=" + this.lAM + ", frequency=" + this.frequency + '}';
+    String str = "WiFiItem{mSsid='" + this.mHX + '\'' + ", mBssid='" + this.mHY + '\'' + ", mSignalStrength=" + this.mHZ + ", mSecurity=" + this.mIa + ", frequency=" + this.frequency + '}';
     AppMethodBeat.o(144694);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.c
  * JD-Core Version:    0.7.0.1
  */

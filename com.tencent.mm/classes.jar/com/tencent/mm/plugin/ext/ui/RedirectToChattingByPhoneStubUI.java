@@ -6,21 +6,19 @@ import android.os.IBinder;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
 
 public class RedirectToChattingByPhoneStubUI
   extends HellActivity
-  implements f
+  implements i
 {
-  private p rmF = null;
+  private com.tencent.mm.ui.base.q sOk = null;
   
   public final boolean hideVKB()
   {
@@ -46,7 +44,7 @@ public class RedirectToChattingByPhoneStubUI
     try
     {
       bool = localInputMethodManager.hideSoftInputFromWindow((IBinder)localObject, 0);
-      ae.v("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB result %B", new Object[] { Boolean.valueOf(bool) });
+      Log.v("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB result %B", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(24515);
       return bool;
     }
@@ -54,7 +52,7 @@ public class RedirectToChattingByPhoneStubUI
     {
       for (;;)
       {
-        ae.e("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB exception %s", new Object[] { localIllegalArgumentException });
+        Log.e("MicroMsg.RedirectToChattingByPhoneStubUI", "hide VKB exception %s", new Object[] { localIllegalArgumentException });
         boolean bool = false;
       }
     }
@@ -64,9 +62,9 @@ public class RedirectToChattingByPhoneStubUI
   {
     AppMethodBeat.i(24512);
     super.onCreate(paramBundle);
-    getString(2131755936);
-    this.rmF = h.b(this, "", false, null);
-    ar.o(new Runnable()
+    getString(2131756029);
+    this.sOk = h.a(this, "", false, null);
+    MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
       public final void run()
       {
@@ -75,7 +73,7 @@ public class RedirectToChattingByPhoneStubUI
         AppMethodBeat.o(24511);
       }
     }, 500L);
-    bc.ajj().a(106, this);
+    bg.azz().a(106, this);
     AppMethodBeat.o(24512);
   }
   
@@ -83,16 +81,16 @@ public class RedirectToChattingByPhoneStubUI
   {
     AppMethodBeat.i(24513);
     super.onDestroy();
-    bc.ajj().b(106, this);
-    if (this.rmF != null)
+    bg.azz().b(106, this);
+    if (this.sOk != null)
     {
-      this.rmF.dismiss();
-      this.rmF = null;
+      this.sOk.dismiss();
+      this.sOk = null;
     }
     AppMethodBeat.o(24513);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(24514);
     finish();

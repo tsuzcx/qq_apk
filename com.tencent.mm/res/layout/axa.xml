@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/a9x"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/oc" android:paddingLeft="@dimen/a9y" android:paddingRight="@dimen/a9y" android:layout_width="fill_parent" android:layout_height="@dimen/ho">
-        <TextView android:gravity="center|left" android:id="@id/gbv" android:paddingRight="5.0dip" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="80.0dip" android:singleLine="true" style="@style/qc" />
-        <TextView android:textSize="14.0dip" android:textColor="#ff999999" android:gravity="center|right" android:id="@id/g2i" android:layout_width="0.0dip" android:layout_height="fill_parent" android:minHeight="@dimen/a9x" android:layout_weight="1.0" />
-        <ImageView android:id="@id/cqd" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="5.0dip" android:src="@drawable/a36" android:scaleType="center" />
-    </LinearLayout>
-    <com.tencent.mm.plugin.product.ui.HtmlTextView android:id="@id/bam" android:visibility="gone" android:scrollbars="none" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="15.0sp" android:textColor="@color/am" android:id="@id/e31" android:layout_width="fill_parent" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/c5" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+</android.support.constraint.ConstraintLayout>

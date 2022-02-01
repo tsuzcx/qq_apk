@@ -7,7 +7,7 @@ import org.json.JSONObject;
 
 public abstract class b<CONTEXT extends c>
 {
-  CONTEXT chf;
+  CONTEXT csZ;
   
   public abstract void a(b<CONTEXT>.a paramb);
   
@@ -15,33 +15,33 @@ public abstract class b<CONTEXT extends c>
   
   public final class a
   {
-    public CONTEXT chg;
-    public k chh;
+    public CONTEXT cta;
+    public k ctb;
     
     public a() {}
     
-    public final void a(String paramString, JSONObject paramJSONObject)
+    public final void c(String paramString, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(140370);
-      this.chh.a(paramString, paramJSONObject);
+      this.ctb.c(paramString, paramJSONObject);
       AppMethodBeat.o(140370);
     }
     
     public final void e(String paramString, Map<String, Object> paramMap)
     {
       AppMethodBeat.i(140369);
-      k localk = this.chh;
+      k localk = this.ctb;
       String str = paramString;
       if (paramString == null) {
         str = "";
       }
-      localk.cgG = str;
+      localk.csB = str;
       if (paramMap != null) {}
       for (paramString = new JSONObject(paramMap);; paramString = null)
       {
-        localk.cgH = paramString;
-        if (localk.cgA != 0) {
-          localk.BK();
+        localk.csC = paramString;
+        if (localk.csv != 0) {
+          localk.callback();
         }
         AppMethodBeat.o(140369);
         return;

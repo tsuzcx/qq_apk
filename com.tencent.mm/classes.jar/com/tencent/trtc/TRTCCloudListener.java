@@ -92,16 +92,13 @@ public abstract class TRTCCloudListener
   
   public static abstract interface TRTCAudioFrameListener
   {
-    public abstract void onCapturedAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
+    public abstract void onCapturedRawAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
+    
+    public abstract void onLocalProcessedAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
     
     public abstract void onMixedPlayAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame);
     
-    public abstract void onPlayAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame, String paramString);
-  }
-  
-  public static abstract class TRTCLogListener
-  {
-    public abstract void onLog(String paramString1, int paramInt, String paramString2);
+    public abstract void onRemoteUserAudioFrame(TRTCCloudDef.TRTCAudioFrame paramTRTCAudioFrame, String paramString);
   }
   
   public static abstract interface TRTCSnapshotListener
@@ -116,7 +113,7 @@ public abstract class TRTCCloudListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.trtc.TRTCCloudListener
  * JD-Core Version:    0.7.0.1
  */

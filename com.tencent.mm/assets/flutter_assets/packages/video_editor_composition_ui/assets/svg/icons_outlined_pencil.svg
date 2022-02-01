@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>icons_outlined_pencil</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons_outlined_pencil" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(9.000000, 6.000000)" fill="#000000" fill-rule="nonzero">
+            <path d="M33,3 L33,6.6 L3.6,6.6 L3.6,53.4 L50.4,53.4 L50.4,24 L54,24 L54,54 C54,55.6568542 52.6568542,57 51,57 L3,57 C1.34314575,57 0,55.6568542 0,54 L0,6 C0,4.34314575 1.34314575,3 3,3 L33,3 Z M50.5826449,2.23824012 C51.1669654,1.65391958 52.1143362,1.65391958 52.6986567,2.23824012 L54.8146686,4.35425199 C55.3989892,4.93857253 55.3989892,5.88594331 54.8146686,6.47026385 L26.2857173,34.9992152 L19.335936,38.8856342 C18.9031962,39.1276388 18.3562078,38.9730175 18.1142032,38.5402777 C17.9605124,38.2654561 17.9620374,37.9302033 18.118222,37.6567912 L22.0540679,30.7668171 L50.5826449,2.23824012 Z" id="Rectangle-41"></path>
+        </g>
+    </g>
+</svg>

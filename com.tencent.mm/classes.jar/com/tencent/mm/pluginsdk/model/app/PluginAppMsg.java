@@ -3,7 +3,7 @@ package com.tencent.mm.pluginsdk.model.app;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.vfs.y;
 
 public class PluginAppMsg
   extends f
@@ -12,10 +12,10 @@ public class PluginAppMsg
   public void configure(g paramg)
   {
     AppMethodBeat.i(169778);
-    if (paramg.akL())
+    if (paramg.aBb())
     {
-      u.ap("attachment", "attachment", 19);
-      u.ap("Download", "Download", 23);
+      y.at("attachment", "attachment", 19);
+      y.at("Download", "Download", 23);
     }
     AppMethodBeat.o(169778);
   }

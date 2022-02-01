@@ -9,19 +9,23 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.g.a.qc;
-import com.tencent.mm.g.a.qc.b;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.v;
+import com.tencent.mm.g.a.qw;
+import com.tencent.mm.g.a.qw.b;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.sns.b.o;
-import com.tencent.mm.protocal.protobuf.bzh;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.QDisFadeImageView;
@@ -32,27 +36,27 @@ public final class SnsPreference
   extends Preference
   implements com.tencent.mm.ui.base.preference.g
 {
-  private QDisFadeImageView Fzh;
-  private QDisFadeImageView Fzi;
-  private QDisFadeImageView Fzj;
-  private QDisFadeImageView Fzk;
-  private ImageView Fzl;
-  private ImageView Fzm;
-  private ImageView Fzn;
-  private ImageView Fzo;
-  private a Fzp;
-  private MMActivity fNT;
-  private List<bzh> list;
+  private bp DEv;
+  private QDisFadeImageView Kqg;
+  private QDisFadeImageView Kqh;
+  private QDisFadeImageView Kqi;
+  private QDisFadeImageView Kqj;
+  private ImageView Kqk;
+  private ImageView Kql;
+  private ImageView Kqm;
+  private ImageView Kqn;
+  private a Kqo;
+  private MMActivity gte;
+  private List<cnb> list;
   private String mTitle;
-  private int rty;
-  private View vQX;
-  private bk zul;
+  private int sUb;
+  private View zlc;
   
   public SnsPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
     AppMethodBeat.i(31906);
-    this.fNT = ((MMActivity)paramContext);
+    this.gte = ((MMActivity)paramContext);
     AppMethodBeat.o(31906);
   }
   
@@ -61,127 +65,24 @@ public final class SnsPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31907);
     this.mTitle = "";
-    this.Fzh = null;
-    this.Fzi = null;
-    this.Fzj = null;
-    this.Fzk = null;
-    this.Fzl = null;
-    this.Fzm = null;
-    this.Fzn = null;
-    this.Fzo = null;
-    this.rty = 255;
+    this.Kqg = null;
+    this.Kqh = null;
+    this.Kqi = null;
+    this.Kqj = null;
+    this.Kqk = null;
+    this.Kql = null;
+    this.Kqm = null;
+    this.Kqn = null;
+    this.sUb = 255;
     this.list = new LinkedList();
-    this.Fzp = new a();
-    this.fNT = ((MMActivity)paramContext);
-    this.mTitle = paramContext.getString(2131757823);
-    setLayoutResource(2131494804);
+    this.Kqo = new a();
+    this.gte = ((MMActivity)paramContext);
+    this.mTitle = paramContext.getString(2131758063);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(31907);
   }
   
-  private void fiF()
-  {
-    int j = 0;
-    AppMethodBeat.i(31908);
-    if (this.Fzh != null)
-    {
-      this.Fzh.setImageResource(2131101179);
-      this.Fzh.setVisibility(4);
-    }
-    if (this.Fzi != null)
-    {
-      this.Fzi.setImageResource(2131101179);
-      this.Fzi.setVisibility(4);
-    }
-    if (this.Fzj != null)
-    {
-      this.Fzj.setImageResource(2131101179);
-      this.Fzj.setVisibility(4);
-    }
-    if (this.Fzk != null)
-    {
-      this.Fzk.setImageResource(2131101179);
-      this.Fzk.setVisibility(4);
-    }
-    ImageView localImageView;
-    if ((this.Fzh != null) && (this.list.size() > 0))
-    {
-      this.Fzh.setVisibility(0);
-      if (e.abo()) {
-        break label295;
-      }
-      this.Fzh.setImageResource(2131233475);
-      localImageView = this.Fzl;
-    }
-    label295:
-    label440:
-    label587:
-    label600:
-    for (;;)
-    {
-      for (int i = 8;; i = 0)
-      {
-        localImageView.setVisibility(i);
-        if ((this.Fzi != null) && (this.list.size() >= 2))
-        {
-          this.Fzi.setVisibility(0);
-          if (e.abo()) {
-            break;
-          }
-          this.Fzi.setImageResource(2131233475);
-        }
-        if ((this.Fzj != null) && (this.list.size() >= 3))
-        {
-          this.Fzj.setVisibility(0);
-          if (e.abo()) {
-            break label440;
-          }
-          this.Fzj.setImageResource(2131233475);
-        }
-        if ((this.Fzk == null) || (this.list.size() < 4)) {
-          break label587;
-        }
-        this.Fzk.setVisibility(0);
-        if (e.abo()) {
-          break label518;
-        }
-        this.Fzk.setImageResource(2131233475);
-        AppMethodBeat.o(31908);
-        return;
-        o.zsv.b((bzh)this.list.get(0), this.Fzh, this.fNT.hashCode(), this.zul);
-        localImageView = this.Fzl;
-        if (((bzh)this.list.get(0)).nJA != 6) {
-          break label600;
-        }
-      }
-      o.zsv.b((bzh)this.list.get(1), this.Fzi, this.fNT.hashCode(), this.zul);
-      localImageView = this.Fzm;
-      if (((bzh)this.list.get(1)).nJA == 6) {}
-      for (i = 0;; i = 8)
-      {
-        localImageView.setVisibility(i);
-        break;
-      }
-      o.zsv.b((bzh)this.list.get(2), this.Fzj, this.fNT.hashCode(), this.zul);
-      localImageView = this.Fzn;
-      if (((bzh)this.list.get(2)).nJA == 6) {}
-      for (i = 0;; i = 8)
-      {
-        localImageView.setVisibility(i);
-        break;
-      }
-      o.zsv.b((bzh)this.list.get(3), this.Fzk, this.fNT.hashCode(), this.zul);
-      localImageView = this.Fzo;
-      if (((bzh)this.list.get(3)).nJA == 6) {}
-      for (i = j;; i = 8)
-      {
-        localImageView.setVisibility(i);
-        AppMethodBeat.o(31908);
-        return;
-      }
-    }
-  }
-  
-  public final void aOC(String paramString)
+  public final void bfe(final String paramString)
   {
     AppMethodBeat.i(31911);
     if (paramString == null)
@@ -189,41 +90,59 @@ public final class SnsPreference
       AppMethodBeat.o(31911);
       return;
     }
-    this.list.clear();
-    bc.aCg();
-    Object localObject = com.tencent.mm.model.c.azF().BH(paramString);
-    if ((localObject != null) && ((int)((com.tencent.mm.contact.c)localObject).ght > 0) && (com.tencent.mm.contact.c.lO(((aw)localObject).field_type))) {
-      this.zul = bk.Jgy;
+    bg.aVF();
+    as localas = com.tencent.mm.model.c.aSN().Kn(paramString);
+    if ((localas != null) && ((int)localas.gMZ > 0) && (com.tencent.mm.contact.c.oR(localas.field_type))) {
+      this.DEv = bp.Oqp;
     }
     for (;;)
     {
-      localObject = new qc();
-      ((qc)localObject).dFB.username = paramString;
-      com.tencent.mm.sdk.b.a.IvT.l((b)localObject);
-      if (((qc)localObject).dFC.dFD != null) {
-        this.list.add(((qc)localObject).dFC.dFD);
-      }
-      if (((qc)localObject).dFC.dFE != null) {
-        this.list.add(((qc)localObject).dFC.dFE);
-      }
-      if (((qc)localObject).dFC.dFF != null) {
-        this.list.add(((qc)localObject).dFC.dFF);
-      }
-      if (((qc)localObject).dFC.dFG != null) {
-        this.list.add(((qc)localObject).dFC.dFG);
-      }
-      fiF();
+      h.RTc.aX(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(232348);
+          qw localqw = new qw();
+          localqw.dXo.username = paramString;
+          EventCenter.instance.publish(localqw);
+          final LinkedList localLinkedList = new LinkedList();
+          if (localqw.dXp.dXq != null) {
+            localLinkedList.add(localqw.dXp.dXq);
+          }
+          if (localqw.dXp.dXr != null) {
+            localLinkedList.add(localqw.dXp.dXr);
+          }
+          if (localqw.dXp.dXs != null) {
+            localLinkedList.add(localqw.dXp.dXs);
+          }
+          if (localqw.dXp.dXt != null) {
+            localLinkedList.add(localqw.dXp.dXt);
+          }
+          SnsPreference.b(SnsPreference.this).runOnUiThread(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(232347);
+              SnsPreference.a(SnsPreference.this).clear();
+              SnsPreference.a(SnsPreference.this).addAll(localLinkedList);
+              SnsPreference.this.iv(SnsPreference.a(SnsPreference.this));
+              AppMethodBeat.o(232347);
+            }
+          });
+          AppMethodBeat.o(232348);
+        }
+      });
       AppMethodBeat.o(31911);
       return;
-      if (paramString.equals(v.aAC())) {
-        this.zul = bk.Jgy;
+      if (paramString.equals(z.aTY())) {
+        this.DEv = bp.Oqp;
       } else {
-        this.zul = bk.Jgz;
+        this.DEv = bp.Oqq;
       }
     }
   }
   
-  public final int fiG()
+  public final int grS()
   {
     AppMethodBeat.i(31912);
     int i = 0;
@@ -234,61 +153,165 @@ public final class SnsPreference
     return i;
   }
   
+  public final void iv(List<cnb> paramList)
+  {
+    int j = 0;
+    AppMethodBeat.i(232349);
+    if (this.Kqg != null)
+    {
+      this.Kqg.setImageResource(2131101424);
+      this.Kqg.setVisibility(4);
+    }
+    if (this.Kqh != null)
+    {
+      this.Kqh.setImageResource(2131101424);
+      this.Kqh.setVisibility(4);
+    }
+    if (this.Kqi != null)
+    {
+      this.Kqi.setImageResource(2131101424);
+      this.Kqi.setVisibility(4);
+    }
+    if (this.Kqj != null)
+    {
+      this.Kqj.setImageResource(2131101424);
+      this.Kqj.setVisibility(4);
+    }
+    ImageView localImageView;
+    if ((this.Kqg != null) && (paramList.size() > 0))
+    {
+      this.Kqg.setVisibility(0);
+      if (e.apn()) {
+        break label283;
+      }
+      this.Kqg.setImageResource(2131234278);
+      localImageView = this.Kqk;
+    }
+    label283:
+    label419:
+    label558:
+    label570:
+    for (;;)
+    {
+      for (int i = 8;; i = 0)
+      {
+        localImageView.setVisibility(i);
+        if ((this.Kqh != null) && (paramList.size() >= 2))
+        {
+          this.Kqh.setVisibility(0);
+          if (e.apn()) {
+            break;
+          }
+          this.Kqh.setImageResource(2131234278);
+        }
+        if ((this.Kqi != null) && (paramList.size() >= 3))
+        {
+          this.Kqi.setVisibility(0);
+          if (e.apn()) {
+            break label419;
+          }
+          this.Kqi.setImageResource(2131234278);
+        }
+        if ((this.Kqj == null) || (paramList.size() < 4)) {
+          break label558;
+        }
+        this.Kqj.setVisibility(0);
+        if (e.apn()) {
+          break label493;
+        }
+        this.Kqj.setImageResource(2131234278);
+        AppMethodBeat.o(232349);
+        return;
+        o.DCM.b((cnb)paramList.get(0), this.Kqg, this.gte.hashCode(), this.DEv);
+        localImageView = this.Kqk;
+        if (((cnb)paramList.get(0)).oUv != 6) {
+          break label570;
+        }
+      }
+      o.DCM.b((cnb)paramList.get(1), this.Kqh, this.gte.hashCode(), this.DEv);
+      localImageView = this.Kql;
+      if (((cnb)paramList.get(1)).oUv == 6) {}
+      for (i = 0;; i = 8)
+      {
+        localImageView.setVisibility(i);
+        break;
+      }
+      o.DCM.b((cnb)paramList.get(2), this.Kqi, this.gte.hashCode(), this.DEv);
+      localImageView = this.Kqm;
+      if (((cnb)paramList.get(2)).oUv == 6) {}
+      for (i = 0;; i = 8)
+      {
+        localImageView.setVisibility(i);
+        break;
+      }
+      label493:
+      o.DCM.b((cnb)paramList.get(3), this.Kqj, this.gte.hashCode(), this.DEv);
+      localImageView = this.Kqn;
+      if (((cnb)paramList.get(3)).oUv == 6) {}
+      for (i = j;; i = 8)
+      {
+        localImageView.setVisibility(i);
+        AppMethodBeat.o(232349);
+        return;
+      }
+    }
+  }
+  
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(31910);
     super.onBindView(paramView);
-    this.Fzh = ((QDisFadeImageView)paramView.findViewById(2131300944));
-    this.Fzh.setAlpha(this.rty);
-    this.Fzh.setImageDrawable(this.Fzp);
-    this.Fzi = ((QDisFadeImageView)paramView.findViewById(2131300945));
-    this.Fzi.setAlpha(this.rty);
-    this.Fzi.setImageDrawable(this.Fzp);
-    this.Fzj = ((QDisFadeImageView)paramView.findViewById(2131300946));
-    this.Fzj.setAlpha(this.rty);
-    this.Fzj.setImageDrawable(this.Fzp);
-    this.Fzk = ((QDisFadeImageView)paramView.findViewById(2131300947));
-    this.Fzk.setAlpha(this.rty);
-    this.Fzk.setImageDrawable(this.Fzp);
-    TextView localTextView = (TextView)paramView.findViewById(2131296626);
-    if (!bu.isNullOrNil(this.mTitle))
+    this.Kqg = ((QDisFadeImageView)paramView.findViewById(2131302574));
+    this.Kqg.setAlpha(this.sUb);
+    this.Kqg.setImageDrawable(this.Kqo);
+    this.Kqh = ((QDisFadeImageView)paramView.findViewById(2131302575));
+    this.Kqh.setAlpha(this.sUb);
+    this.Kqh.setImageDrawable(this.Kqo);
+    this.Kqi = ((QDisFadeImageView)paramView.findViewById(2131302576));
+    this.Kqi.setAlpha(this.sUb);
+    this.Kqi.setImageDrawable(this.Kqo);
+    this.Kqj = ((QDisFadeImageView)paramView.findViewById(2131302577));
+    this.Kqj.setAlpha(this.sUb);
+    this.Kqj.setImageDrawable(this.Kqo);
+    TextView localTextView = (TextView)paramView.findViewById(2131296703);
+    if (!Util.isNullOrNil(this.mTitle))
     {
       localTextView.setText(this.mTitle);
       ViewGroup.LayoutParams localLayoutParams = localTextView.getLayoutParams();
-      localLayoutParams.width = com.tencent.mm.cb.a.ax(this.mContext, 2131165370);
+      localLayoutParams.width = a.aG(this.mContext, 2131165381);
       localTextView.setLayoutParams(localLayoutParams);
     }
-    this.Fzl = ((ImageView)paramView.findViewById(2131305050));
-    this.Fzm = ((ImageView)paramView.findViewById(2131305051));
-    this.Fzn = ((ImageView)paramView.findViewById(2131305052));
-    this.Fzo = ((ImageView)paramView.findViewById(2131305053));
-    this.Fzl.setVisibility(8);
-    this.Fzm.setVisibility(8);
-    this.Fzn.setVisibility(8);
-    this.Fzo.setVisibility(8);
-    fiF();
+    this.Kqk = ((ImageView)paramView.findViewById(2131308205));
+    this.Kql = ((ImageView)paramView.findViewById(2131308206));
+    this.Kqm = ((ImageView)paramView.findViewById(2131308207));
+    this.Kqn = ((ImageView)paramView.findViewById(2131308208));
+    this.Kqk.setVisibility(8);
+    this.Kql.setVisibility(8);
+    this.Kqm.setVisibility(8);
+    this.Kqn.setVisibility(8);
+    iv(this.list);
     if ((paramView == null) || (this.list == null))
     {
       AppMethodBeat.o(31910);
       return;
     }
-    paramView.setContentDescription(this.mContext.getString(2131762049, new Object[] { Integer.valueOf(this.list.size()) }));
+    paramView.setContentDescription(this.mContext.getString(2131764066, new Object[] { Integer.valueOf(this.list.size()) }));
     AppMethodBeat.o(31910);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(31909);
-    if (this.vQX == null)
+    if (this.zlc == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
       LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
       localViewGroup.removeAllViews();
-      localLayoutInflater.inflate(2131494821, localViewGroup);
-      this.vQX = paramViewGroup;
+      localLayoutInflater.inflate(2131495555, localViewGroup);
+      this.zlc = paramViewGroup;
     }
-    paramViewGroup = this.vQX;
+    paramViewGroup = this.zlc;
     AppMethodBeat.o(31909);
     return paramViewGroup;
   }
@@ -304,7 +327,7 @@ public final class SnsPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.SnsPreference
  * JD-Core Version:    0.7.0.1
  */

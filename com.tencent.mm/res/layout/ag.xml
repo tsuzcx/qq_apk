@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.view.menu.ListMenuItemView android:layout_width="fill_parent" android:layout_height="?ra"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_vertical" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="?rb" android:layout_marginRight="?rc" android:layout_weight="1.0">
-        <TextView android:textAppearance="?zk" android:ellipsize="marquee" android:id="@id/gam" android:fadingEdge="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <TextView android:textAppearance="?android:textAppearanceSmall" android:id="@id/fhd" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/gam" android:layout_alignParentLeft="true" />
-    </RelativeLayout>
-</android.support.v7.view.menu.ListMenuItemView>
+    <LinearLayout android:id="@id/au" android:background="@color/ac_" android:paddingTop="@dimen/la" android:paddingBottom="@dimen/le" android:layout_width="fill_parent" android:layout_height="0.0dip">
+        <TextView android:textSize="@dimen/ky" android:textColor="@color/uj" android:id="@id/av" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ech" />
+    </LinearLayout>
+</FrameLayout>

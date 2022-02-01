@@ -7,12 +7,13 @@ import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,22 +23,25 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.finder.api.c.a;
-import com.tencent.mm.plugin.finder.cgi.ba;
-import com.tencent.mm.plugin.finder.report.i;
-import com.tencent.mm.plugin.finder.view.manager.FinderLayoutManager;
+import com.tencent.mm.plugin.finder.cgi.cf;
+import com.tencent.mm.plugin.finder.report.k;
+import com.tencent.mm.plugin.finder.utils.d;
+import com.tencent.mm.plugin.finder.view.manager.FinderLinearLayoutManager;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.ang;
-import com.tencent.mm.protocal.protobuf.ars;
-import com.tencent.mm.protocal.protobuf.aru;
-import com.tencent.mm.protocal.protobuf.bvx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.aqw;
+import com.tencent.mm.protocal.protobuf.bbz;
+import com.tencent.mm.protocal.protobuf.bcb;
+import com.tencent.mm.protocal.protobuf.bdu;
+import com.tencent.mm.protocal.protobuf.cjj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.aa;
 import com.tencent.mm.ui.search.FTSEditTextView;
 import com.tencent.mm.ui.search.FTSEditTextView.a;
 import com.tencent.mm.ui.search.FTSEditTextView.b;
@@ -46,9 +50,6 @@ import com.tencent.mm.ui.search.a.c;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import com.tencent.mm.view.RefreshLoadMoreLayout.a;
 import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import d.g.b.p;
-import d.l;
-import d.v;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -56,105 +57,126 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.n.n;
+import kotlin.x;
 
 @com.tencent.mm.ui.base.a(7)
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;", "Lkotlin/collections/ArrayList;", "continueFlag", "", "exposeMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/search/FinderExposeItem;", "fromAtContact", "", "historyLogic", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "initPosition", "lastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "loadingView", "Landroid/view/View;", "mainContainer", "Landroid/support/design/widget/CoordinatorLayout;", "needHistory", "netSceneFinderSearch", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderSearch;", "noResultView", "Landroid/widget/TextView;", "offset", "query", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "requestId", "requestType", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "rootView", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "addExposeItem", "", "id", "position", "type", "enableActivityAnimation", "finish", "getContactSize", "getLayoutId", "handleSearch", "initContentView", "initData", "initSearchView", "onClickBackBtn", "view", "onClickCancelBtn", "onClickClearTextBtn", "onContactItemClick", "finderSearchInfo", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditTextChange", "totalText", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSearchKeyDown", "onTagClick", "index", "tag", "reportSearchExpose", "needClear", "startSearch", "Companion", "ContactSearchProfileAdapter", "HeaderViewHolder", "plugin-finder_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/ui/search/FTSSearchView$FTSSearchViewListener;", "Lcom/tencent/mm/ui/search/FTSEditTextView$FTSEditTextListener;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "contactList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;", "Lkotlin/collections/ArrayList;", "continueFlag", "", "exposeMap", "Ljava/util/HashMap;", "", "Lcom/tencent/mm/plugin/finder/search/FinderExposeItem;", "fromAtContact", "", "historyLogic", "Lcom/tencent/mm/plugin/finder/search/FinderSearchHistoryLogic;", "initPosition", "lastBuff", "Lcom/tencent/mm/protobuf/ByteString;", "loadingView", "Landroid/view/View;", "mainContainer", "Landroid/support/design/widget/CoordinatorLayout;", "needHistory", "netSceneFinderSearch", "Lcom/tencent/mm/plugin/finder/cgi/NetSceneFinderSearch;", "noResultView", "Landroid/widget/TextView;", "offset", "query", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "requestId", "requestType", "rlLayout", "Lcom/tencent/mm/view/RefreshLoadMoreLayout;", "rootView", "searchView", "Lcom/tencent/mm/ui/search/FTSSearchView;", "topicList", "Lcom/tencent/mm/protocal/protobuf/FinderTopicSearchInfo;", "addExposeItem", "", "id", "position", "type", "enableActivityAnimation", "finish", "getContactSize", "getLayoutId", "handleSearch", "initContentView", "initData", "initSearchView", "isTopicSearch", "onClickBackBtn", "view", "onClickCancelBtn", "onClickClearTextBtn", "onContactItemClick", "finderSearchInfo", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onEditTextChange", "totalText", "inEditText", "tagList", "", "Lcom/tencent/mm/ui/search/FTSSearchView$IFTSTagModel;", "textChangeStatus", "Lcom/tencent/mm/ui/search/FTSEditTextView$TextChangeStatus;", "onEditTextFocusChange", "hasFocus", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "onSearchKeyDown", "onTagClick", "index", "tag", "reportSearchExpose", "needClear", "startSearch", "Companion", "ContactSearchProfileAdapter", "HeaderViewHolder", "plugin-finder_release"})
 public final class FinderContactSearchIncludeFollowUI
   extends MMActivity
-  implements f, FTSEditTextView.a, a.b
+  implements com.tencent.mm.ak.i, FTSEditTextView.a, a.b
 {
   static final String TAG = "Finder.FinderContactSearchIncludeFollowUI";
-  public static final FinderContactSearchIncludeFollowUI.a sCX;
+  public static final a vtM;
+  private HashMap _$_findViewCache;
   private int continueFlag;
-  String dyb;
-  private View gZB;
-  private RecyclerView gpr;
-  private int iNK;
-  private View kFh;
+  String dPI;
+  private View hSw;
+  private RecyclerView hak;
+  private int jKy;
+  private View lJI;
   private int offset;
   String query;
   private int requestType;
-  private com.tencent.mm.ui.search.a sCP;
-  private boolean sCQ;
-  boolean sCR;
-  HashMap<String, a> sCS;
-  private CoordinatorLayout sCT;
-  private TextView sCU;
-  private g sCV;
-  private ba sCW;
-  private RefreshLoadMoreLayout scj;
-  private com.tencent.mm.bw.b skw;
-  private ArrayList<ars> smS;
+  private RefreshLoadMoreLayout tLS;
+  private com.tencent.mm.bw.b tVM;
+  private ArrayList<bbz> uae;
+  private com.tencent.mm.ui.search.a ubO;
+  private ArrayList<bdu> vtE;
+  private boolean vtF;
+  boolean vtG;
+  HashMap<String, a> vtH;
+  private CoordinatorLayout vtI;
+  private TextView vtJ;
+  private h vtK;
+  private cf vtL;
   
   static
   {
-    AppMethodBeat.i(203991);
-    sCX = new FinderContactSearchIncludeFollowUI.a((byte)0);
+    AppMethodBeat.i(251241);
+    vtM = new a((byte)0);
     TAG = "Finder.FinderContactSearchIncludeFollowUI";
-    AppMethodBeat.o(203991);
+    AppMethodBeat.o(251241);
   }
   
   public FinderContactSearchIncludeFollowUI()
   {
-    AppMethodBeat.i(203990);
+    AppMethodBeat.i(251240);
     this.query = "";
-    this.smS = new ArrayList();
-    this.dyb = "";
-    this.sCQ = true;
-    this.sCS = new HashMap();
-    AppMethodBeat.o(203990);
+    this.uae = new ArrayList();
+    this.vtE = new ArrayList();
+    this.dPI = "";
+    this.vtF = true;
+    this.vtH = new HashMap();
+    AppMethodBeat.o(251240);
   }
   
-  private final void aiR(String paramString)
+  private final void auV(String paramString)
   {
-    AppMethodBeat.i(203986);
-    mc(true);
+    AppMethodBeat.i(251236);
+    ov(true);
     this.query = paramString;
     this.offset = 0;
     this.continueFlag = 0;
-    this.skw = null;
-    this.smS.clear();
-    Object localObject = UUID.randomUUID().toString();
-    p.g(localObject, "UUID.randomUUID().toString()");
-    this.dyb = ((String)localObject);
-    if (this.sCW != null) {
-      com.tencent.mm.kernel.g.ajj().a((com.tencent.mm.ak.n)this.sCW);
+    this.tVM = null;
+    if (this.requestType == 4) {
+      this.vtE.clear();
     }
-    this.sCW = new ba(paramString, this.offset, this.dyb, this.skw, this.requestType, null, 32);
-    com.tencent.mm.kernel.g.ajj().b((com.tencent.mm.ak.n)this.sCW);
-    com.tencent.mm.kernel.g.ajj().a(3820, (f)this);
-    paramString = this.gZB;
-    if (paramString == null) {
-      p.bdF("loadingView");
+    for (;;)
+    {
+      Object localObject = UUID.randomUUID().toString();
+      p.g(localObject, "UUID.randomUUID().toString()");
+      this.dPI = ((String)localObject);
+      if (this.vtL != null) {
+        g.azz().a((com.tencent.mm.ak.q)this.vtL);
+      }
+      this.vtL = new cf(paramString, this.offset, this.dPI, this.tVM, this.requestType, null, 96);
+      g.azz().b((com.tencent.mm.ak.q)this.vtL);
+      g.azz().a(3820, (com.tencent.mm.ak.i)this);
+      paramString = this.hSw;
+      if (paramString == null) {
+        p.btv("loadingView");
+      }
+      paramString.setVisibility(0);
+      paramString = this.vtJ;
+      if (paramString == null) {
+        p.btv("noResultView");
+      }
+      paramString.setVisibility(8);
+      paramString = this.tLS;
+      if (paramString == null) {
+        p.btv("rlLayout");
+      }
+      paramString.setVisibility(8);
+      paramString = this.hak;
+      if (paramString == null) {
+        p.btv("recyclerView");
+      }
+      localObject = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI", "startSearch", "(Ljava/lang/String;)V", "Undefined", "scrollToPosition", "(I)V");
+      paramString.scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI", "startSearch", "(Ljava/lang/String;)V", "Undefined", "scrollToPosition", "(I)V");
+      paramString = this.lJI;
+      if (paramString == null) {
+        p.btv("rootView");
+      }
+      localObject = getContext();
+      p.g(localObject, "context");
+      paramString.setBackground(((AppCompatActivity)localObject).getResources().getDrawable(2131099648));
+      AppMethodBeat.o(251236);
+      return;
+      this.uae.clear();
     }
-    paramString.setVisibility(0);
-    paramString = this.sCU;
-    if (paramString == null) {
-      p.bdF("noResultView");
-    }
-    paramString.setVisibility(8);
-    paramString = this.scj;
-    if (paramString == null) {
-      p.bdF("rlLayout");
-    }
-    paramString.setVisibility(8);
-    paramString = this.gpr;
-    if (paramString == null) {
-      p.bdF("recyclerView");
-    }
-    localObject = com.tencent.mm.hellhoundlib.b.c.a(0, new com.tencent.mm.hellhoundlib.b.a());
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI", "startSearch", "(Ljava/lang/String;)V", "Undefined", "scrollToPosition", "(I)V");
-    paramString.ca(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0)).intValue());
-    com.tencent.mm.hellhoundlib.a.a.a(paramString, "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI", "startSearch", "(Ljava/lang/String;)V", "Undefined", "scrollToPosition", "(I)V");
-    AppMethodBeat.o(203986);
   }
   
-  private final boolean cGA()
+  private final boolean dpx()
   {
-    AppMethodBeat.i(203983);
-    Object localObject1 = this.sCP;
+    AppMethodBeat.i(251233);
+    Object localObject1 = this.ubO;
     if (localObject1 == null) {
-      p.bdF("searchView");
+      p.btv("searchView");
     }
     localObject1 = ((com.tencent.mm.ui.search.a)localObject1).getFtsEditText();
     p.g(localObject1, "searchView.ftsEditText");
@@ -163,11 +185,11 @@ public final class FinderContactSearchIncludeFollowUI
     {
       if (localObject1 == null)
       {
-        localObject1 = new v("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(203983);
+        localObject1 = new kotlin.t("null cannot be cast to non-null type kotlin.CharSequence");
+        AppMethodBeat.o(251233);
         throw ((Throwable)localObject1);
       }
-      localObject2 = d.n.n.trim((CharSequence)localObject1).toString();
+      localObject2 = n.trim((CharSequence)localObject1).toString();
       localObject1 = localObject2;
       if (localObject2 != null) {}
     }
@@ -175,26 +197,26 @@ public final class FinderContactSearchIncludeFollowUI
     {
       localObject1 = "";
     }
-    if (bu.isNullOrNil((String)localObject1))
+    if (Util.isNullOrNil((String)localObject1))
     {
-      AppMethodBeat.o(203983);
+      AppMethodBeat.o(251233);
       return true;
     }
-    aiR((String)localObject1);
-    Object localObject2 = this.sCV;
+    auV((String)localObject1);
+    Object localObject2 = this.vtK;
     if (localObject2 != null) {
-      ((g)localObject2).aiU((String)localObject1);
+      ((h)localObject2).auX((String)localObject1);
     }
-    AppMethodBeat.o(203983);
+    AppMethodBeat.o(251233);
     return false;
   }
   
-  private final int cGB()
+  private final int dpy()
   {
-    AppMethodBeat.i(203988);
-    Object localObject = this.gpr;
+    AppMethodBeat.i(251238);
+    Object localObject = this.hak;
     if (localObject == null) {
-      p.bdF("recyclerView");
+      p.btv("recyclerView");
     }
     if (localObject != null)
     {
@@ -202,27 +224,53 @@ public final class FinderContactSearchIncludeFollowUI
       if (localObject != null)
       {
         i = ((RecyclerView.a)localObject).getItemCount();
-        AppMethodBeat.o(203988);
+        AppMethodBeat.o(251238);
         return i;
       }
     }
-    int i = this.smS.size();
-    AppMethodBeat.o(203988);
+    int i = this.uae.size();
+    AppMethodBeat.o(251238);
     return i;
+  }
+  
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(251246);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(251246);
+  }
+  
+  public final View _$_findCachedViewById(int paramInt)
+  {
+    AppMethodBeat.i(251245);
+    if (this._$_findViewCache == null) {
+      this._$_findViewCache = new HashMap();
+    }
+    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = findViewById(paramInt);
+      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+    }
+    AppMethodBeat.o(251245);
+    return localView1;
   }
   
   public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.b paramb)
   {
-    AppMethodBeat.i(203979);
+    AppMethodBeat.i(251229);
     if (paramString1 != null)
     {
       if (paramString1 == null)
       {
-        paramString1 = new v("null cannot be cast to non-null type kotlin.CharSequence");
-        AppMethodBeat.o(203979);
+        paramString1 = new kotlin.t("null cannot be cast to non-null type kotlin.CharSequence");
+        AppMethodBeat.o(251229);
         throw paramString1;
       }
-      paramString2 = d.n.n.trim((CharSequence)paramString1).toString();
+      paramString2 = n.trim((CharSequence)paramString1).toString();
       paramString1 = paramString2;
       if (paramString2 != null) {}
     }
@@ -230,53 +278,64 @@ public final class FinderContactSearchIncludeFollowUI
     {
       paramString1 = "";
     }
-    if (bu.isNullOrNil(paramString1))
+    if (Util.isNullOrNil(paramString1))
     {
-      paramString2 = this.gZB;
+      paramString2 = this.hSw;
       if (paramString2 == null) {
-        p.bdF("loadingView");
+        p.btv("loadingView");
       }
       paramString2.setVisibility(8);
-      paramString2 = this.sCU;
+      paramString2 = this.vtJ;
       if (paramString2 == null) {
-        p.bdF("noResultView");
+        p.btv("noResultView");
       }
       paramString2.setVisibility(8);
-      paramString2 = this.scj;
+      paramString2 = this.tLS;
       if (paramString2 == null) {
-        p.bdF("rlLayout");
+        p.btv("rlLayout");
       }
       paramString2.setVisibility(8);
     }
     for (;;)
     {
-      paramString2 = this.sCV;
+      paramString2 = this.vtK;
       if (paramString2 == null) {
         break;
       }
-      paramString2.aiT(paramString1);
-      AppMethodBeat.o(203979);
+      paramString2.auW(paramString1);
+      AppMethodBeat.o(251229);
       return;
-      cGA();
+      dpx();
     }
-    AppMethodBeat.o(203979);
+    AppMethodBeat.o(251229);
   }
   
-  public final boolean bAu()
+  public final boolean awE()
   {
-    AppMethodBeat.i(203982);
+    AppMethodBeat.i(251232);
     hideVKB();
-    if (cGA())
+    if (dpx())
     {
-      AppMethodBeat.o(203982);
+      AppMethodBeat.o(251232);
       return true;
     }
-    e.ywz.idkeyStat(1265L, 9L, 1L, false);
-    AppMethodBeat.o(203982);
+    e.Cxv.idkeyStat(1265L, 9L, 1L, false);
+    AppMethodBeat.o(251232);
     return false;
   }
   
-  public final void cGz() {}
+  public final void dpw() {}
+  
+  public final void eh(boolean paramBoolean)
+  {
+    AppMethodBeat.i(251230);
+    if (paramBoolean)
+    {
+      com.tencent.mm.plugin.finder.report.l locall = com.tencent.mm.plugin.finder.report.l.vfB;
+      com.tencent.mm.plugin.finder.report.l.doe();
+    }
+    AppMethodBeat.o(251230);
+  }
   
   public final boolean enableActivityAnimation()
   {
@@ -285,83 +344,48 @@ public final class FinderContactSearchIncludeFollowUI
   
   public final void finish()
   {
-    AppMethodBeat.i(203985);
+    AppMethodBeat.i(251235);
     super.finish();
     overridePendingTransition(2130771986, 2130771986);
-    AppMethodBeat.o(203985);
+    AppMethodBeat.o(251235);
   }
   
   public final int getLayoutId()
   {
-    return 2131496176;
-  }
-  
-  public final void mb(boolean paramBoolean)
-  {
-    AppMethodBeat.i(203980);
-    if (paramBoolean)
-    {
-      com.tencent.mm.plugin.finder.report.j localj = com.tencent.mm.plugin.finder.report.j.syU;
-      com.tencent.mm.plugin.finder.report.j.cFv();
-    }
-    AppMethodBeat.o(203980);
-  }
-  
-  final void mc(boolean paramBoolean)
-  {
-    AppMethodBeat.i(203989);
-    if (!bu.isNullOrNil(this.dyb)) {
-      if (((Map)this.sCS).isEmpty()) {
-        break label75;
-      }
-    }
-    label75:
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0)
-      {
-        com.tencent.mm.plugin.finder.report.j localj = com.tencent.mm.plugin.finder.report.j.syU;
-        com.tencent.mm.plugin.finder.report.j.a(this.dyb, this.query, this.sCS, 2);
-        if (paramBoolean) {
-          this.sCS.clear();
-        }
-      }
-      AppMethodBeat.o(203989);
-      return;
-    }
+    return 2131494223;
   }
   
   public final void onClickBackBtn(View paramView)
   {
-    AppMethodBeat.i(203977);
+    AppMethodBeat.i(251227);
     hideVKB();
     finish();
-    AppMethodBeat.o(203977);
+    AppMethodBeat.o(251227);
   }
   
   public final void onClickCancelBtn(View paramView)
   {
-    AppMethodBeat.i(203978);
+    AppMethodBeat.i(251228);
     hideVKB();
     finish();
-    AppMethodBeat.o(203978);
+    AppMethodBeat.o(251228);
   }
   
   public final void onClickClearTextBtn(View paramView)
   {
-    AppMethodBeat.i(203981);
-    paramView = this.sCP;
+    AppMethodBeat.i(251231);
+    paramView = this.ubO;
     if (paramView == null) {
-      p.bdF("searchView");
+      p.btv("searchView");
     }
-    paramView.getFtsEditText().fOj();
+    paramView.getFtsEditText().awD();
     showVKB();
-    AppMethodBeat.o(203981);
+    AppMethodBeat.o(251231);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(203976);
+    AppMethodBeat.i(251226);
     fixStatusbar(true);
     super.onCreate(paramBundle);
     if (Build.VERSION.SDK_INT >= 21)
@@ -369,202 +393,202 @@ public final class FinderContactSearchIncludeFollowUI
       paramBundle = getWindow();
       paramBundle.addFlags(-2147483648);
       p.g(paramBundle, "window");
-      paramBundle.setStatusBarColor(getResources().getColor(2131101053));
+      paramBundle.setStatusBarColor(getResources().getColor(2131101287));
     }
-    this.sCP = new com.tencent.mm.ui.search.a((Context)this);
-    paramBundle = this.sCP;
+    this.ubO = new com.tencent.mm.ui.search.a((Context)this);
+    paramBundle = this.ubO;
     if (paramBundle == null) {
-      p.bdF("searchView");
+      p.btv("searchView");
     }
     paramBundle.setSearchViewListener((a.b)this);
-    paramBundle = this.sCP;
+    paramBundle = this.ubO;
     if (paramBundle == null) {
-      p.bdF("searchView");
+      p.btv("searchView");
     }
-    paramBundle.getFtsEditText().setHint(getString(2131755882));
-    paramBundle = this.sCP;
+    paramBundle.getFtsEditText().setHint(getString(2131755972));
+    paramBundle = this.ubO;
     if (paramBundle == null) {
-      p.bdF("searchView");
+      p.btv("searchView");
     }
     paramBundle.getFtsEditText().setFtsEditTextListener((FTSEditTextView.a)this);
-    paramBundle = this.sCP;
+    paramBundle = this.ubO;
     if (paramBundle == null) {
-      p.bdF("searchView");
+      p.btv("searchView");
     }
     paramBundle.getFtsEditText().setCanDeleteTag(false);
-    paramBundle = this.sCP;
+    paramBundle = this.ubO;
     if (paramBundle == null) {
-      p.bdF("searchView");
+      p.btv("searchView");
     }
-    paramBundle.getFtsEditText().fOg();
+    paramBundle.getFtsEditText().gWY();
     paramBundle = getSupportActionBar();
     if (paramBundle == null) {
-      p.gkB();
+      p.hyc();
     }
     p.g(paramBundle, "supportActionBar!!");
-    Object localObject1 = this.sCP;
+    Object localObject1 = this.ubO;
     if (localObject1 == null) {
-      p.bdF("searchView");
+      p.btv("searchView");
     }
     paramBundle.setCustomView((View)localObject1);
     this.requestType = getIntent().getIntExtra("request_type", 3);
-    this.sCR = getIntent().getBooleanExtra("from_at_contact", false);
-    this.sCQ = getIntent().getBooleanExtra("need_history", false);
-    paramBundle = h.sEe;
-    if (h.cGL() != null)
+    this.vtG = getIntent().getBooleanExtra("from_at_contact", false);
+    this.vtF = getIntent().getBooleanExtra("need_history", false);
+    paramBundle = i.vvu;
+    if (i.dqa() != null)
     {
-      paramBundle = h.sEe;
-      Object localObject2 = h.cGL();
+      paramBundle = i.vvu;
+      Object localObject2 = i.dqa();
       if (localObject2 == null) {
-        p.gkB();
+        p.hyc();
       }
-      paramBundle = h.sEe;
-      h.a(null);
-      localObject1 = ((ang)localObject2).dyb;
+      paramBundle = i.vvu;
+      i.a(null);
+      localObject1 = ((aqw)localObject2).dPI;
       paramBundle = (Bundle)localObject1;
       if (localObject1 == null) {
         paramBundle = "";
       }
-      this.dyb = paramBundle;
-      localObject1 = ((ang)localObject2).query;
+      this.dPI = paramBundle;
+      localObject1 = ((aqw)localObject2).query;
       paramBundle = (Bundle)localObject1;
       if (localObject1 == null) {
         paramBundle = "";
       }
       this.query = paramBundle;
-      this.offset = ((ang)localObject2).offset;
-      this.continueFlag = ((ang)localObject2).continueFlag;
-      this.skw = ((ang)localObject2).skw;
-      this.iNK = ((ang)localObject2).GFk;
-      paramBundle = ((ang)localObject2).GFl;
+      this.offset = ((aqw)localObject2).offset;
+      this.continueFlag = ((aqw)localObject2).continueFlag;
+      this.tVM = ((aqw)localObject2).tVM;
+      this.jKy = ((aqw)localObject2).LCH;
+      paramBundle = ((aqw)localObject2).LCI;
       p.g(paramBundle, "finderFeedObj.contactList");
       localObject1 = (Iterable)paramBundle;
-      paramBundle = (Collection)new ArrayList(d.a.j.a((Iterable)localObject1, 10));
+      paramBundle = (Collection)new ArrayList(j.a((Iterable)localObject1, 10));
       localObject1 = ((Iterable)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (ars)((Iterator)localObject1).next();
-        paramBundle.add(Boolean.valueOf(this.smS.add(localObject2)));
+        localObject2 = (bbz)((Iterator)localObject1).next();
+        paramBundle.add(Boolean.valueOf(this.uae.add(localObject2)));
       }
     }
     paramBundle = UUID.randomUUID().toString();
     p.g(paramBundle, "UUID.randomUUID().toString()");
-    this.dyb = paramBundle;
+    this.dPI = paramBundle;
     this.query = "";
-    paramBundle = this.sCP;
+    paramBundle = this.ubO;
     if (paramBundle == null) {
-      p.bdF("searchView");
+      p.btv("searchView");
     }
-    paramBundle.getFtsEditText().fOj();
-    paramBundle = this.sCP;
+    paramBundle.getFtsEditText().awD();
+    paramBundle = this.ubO;
     if (paramBundle == null) {
-      p.bdF("searchView");
+      p.btv("searchView");
     }
-    paramBundle.getFtsEditText().fOi();
-    if (this.sCQ)
+    paramBundle.getFtsEditText().awC();
+    if (this.vtF)
     {
-      paramBundle = getContext().findViewById(2131300754);
+      paramBundle = getContext().findViewById(2131302342);
       p.g(paramBundle, "context.findViewById<View>(R.id.history_lv)");
       paramBundle.setVisibility(0);
-      this.sCV = new g((MMActivity)this, (d.g.a.b)new f(this));
+      this.vtK = new h((MMActivity)this, (kotlin.g.a.b)new f(this));
     }
     for (;;)
     {
-      if (this.sCR) {
+      if (this.vtG) {
         setResult(0, getIntent());
       }
-      ae.i(TAG, "fromAtContact:%s", new Object[] { Boolean.valueOf(this.sCR) });
-      paramBundle = getContext().findViewById(2131304239);
+      Log.i(TAG, "fromAtContact:%s", new Object[] { Boolean.valueOf(this.vtG) });
+      paramBundle = getContext().findViewById(2131307157);
       p.g(paramBundle, "context.findViewById(R.id.root)");
-      this.kFh = paramBundle;
-      paramBundle = getContext().findViewById(2131301992);
+      this.lJI = paramBundle;
+      paramBundle = getContext().findViewById(2131304329);
       p.g(paramBundle, "context.findViewById(R.id.main_rv)");
-      this.sCT = ((CoordinatorLayout)paramBundle);
-      paramBundle = getContext().findViewById(2131304203);
+      this.vtI = ((CoordinatorLayout)paramBundle);
+      paramBundle = getContext().findViewById(2131307118);
       p.g(paramBundle, "context.findViewById(R.id.rl_layout)");
-      this.scj = ((RefreshLoadMoreLayout)paramBundle);
-      paramBundle = this.scj;
+      this.tLS = ((RefreshLoadMoreLayout)paramBundle);
+      paramBundle = this.tLS;
       if (paramBundle == null) {
-        p.bdF("rlLayout");
+        p.btv("rlLayout");
       }
-      this.gpr = paramBundle.getRecyclerView();
-      paramBundle = getContext().findViewById(2131302884);
+      this.hak = paramBundle.getRecyclerView();
+      paramBundle = getContext().findViewById(2131305461);
       p.g(paramBundle, "context.findViewById(R.id.no_result_tv)");
-      this.sCU = ((TextView)paramBundle);
-      paramBundle = getContext().findViewById(2131301503);
+      this.vtJ = ((TextView)paramBundle);
+      paramBundle = getContext().findViewById(2131303706);
       p.g(paramBundle, "context.findViewById(R.id.loading_layout)");
-      this.gZB = paramBundle;
-      paramBundle = new FinderLayoutManager((byte)0);
-      localObject1 = this.gpr;
+      this.hSw = paramBundle;
+      paramBundle = new FinderLinearLayoutManager((Context)this);
+      localObject1 = this.hak;
       if (localObject1 == null) {
-        p.bdF("recyclerView");
+        p.btv("recyclerView");
       }
-      ((RecyclerView)localObject1).setLayoutManager((RecyclerView.i)paramBundle);
-      paramBundle = this.gpr;
+      ((RecyclerView)localObject1).setLayoutManager((RecyclerView.LayoutManager)paramBundle);
+      paramBundle = this.hak;
       if (paramBundle == null) {
-        p.bdF("recyclerView");
+        p.btv("recyclerView");
       }
       paramBundle.setAdapter((RecyclerView.a)new b((byte)0));
-      paramBundle = this.gpr;
+      paramBundle = this.hak;
       if (paramBundle == null) {
-        p.bdF("recyclerView");
+        p.btv("recyclerView");
       }
       paramBundle.setHasFixedSize(true);
-      paramBundle = this.gpr;
+      paramBundle = this.hak;
       if (paramBundle == null) {
-        p.bdF("recyclerView");
+        p.btv("recyclerView");
       }
       paramBundle.setItemViewCacheSize(5);
-      paramBundle = this.gpr;
+      paramBundle = this.hak;
       if (paramBundle == null) {
-        p.bdF("recyclerView");
+        p.btv("recyclerView");
       }
       paramBundle.setOnTouchListener((View.OnTouchListener)new d(this));
-      paramBundle = this.scj;
+      paramBundle = this.tLS;
       if (paramBundle == null) {
-        p.bdF("rlLayout");
+        p.btv("rlLayout");
       }
       paramBundle.setEnablePullDownHeader(false);
-      paramBundle = this.scj;
+      paramBundle = this.tLS;
       if (paramBundle == null) {
-        p.bdF("rlLayout");
+        p.btv("rlLayout");
       }
-      localObject1 = com.tencent.mm.ui.z.jV((Context)getContext()).inflate(2131494590, null);
+      localObject1 = aa.jQ((Context)getContext()).inflate(2131495297, null);
       p.g(localObject1, "MMLayoutInflater.getInfl…t.load_more_footer, null)");
       paramBundle.setLoadMoreFooter((View)localObject1);
-      paramBundle = this.scj;
+      paramBundle = this.tLS;
       if (paramBundle == null) {
-        p.bdF("rlLayout");
+        p.btv("rlLayout");
       }
       paramBundle.setActionCallback((RefreshLoadMoreLayout.a)new e(this));
       paramBundle = this.query;
       if (paramBundle != null)
       {
-        localObject1 = this.sCP;
+        localObject1 = this.ubO;
         if (localObject1 == null) {
-          p.bdF("searchView");
+          p.btv("searchView");
         }
-        ((com.tencent.mm.ui.search.a)localObject1).getFtsEditText().I(paramBundle, null);
+        ((com.tencent.mm.ui.search.a)localObject1).getFtsEditText().O(paramBundle, null);
       }
-      paramBundle = this.gpr;
+      paramBundle = this.hak;
       if (paramBundle == null) {
-        p.bdF("recyclerView");
+        p.btv("recyclerView");
       }
       paramBundle = paramBundle.getAdapter();
       if (paramBundle != null) {
         paramBundle.notifyDataSetChanged();
       }
-      paramBundle = this.gpr;
+      paramBundle = this.hak;
       if (paramBundle == null) {
-        p.bdF("recyclerView");
+        p.btv("recyclerView");
       }
-      localObject1 = com.tencent.mm.hellhoundlib.b.c.a(this.iNK, new com.tencent.mm.hellhoundlib.b.a());
-      com.tencent.mm.hellhoundlib.a.a.a(paramBundle, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI", "initContentView", "()V", "Undefined", "scrollToPosition", "(I)V");
-      paramBundle.ca(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0)).intValue());
+      localObject1 = com.tencent.mm.hellhoundlib.b.c.a(this.jKy, new com.tencent.mm.hellhoundlib.b.a());
+      com.tencent.mm.hellhoundlib.a.a.a(paramBundle, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI", "initContentView", "()V", "Undefined", "scrollToPosition", "(I)V");
+      paramBundle.scrollToPosition(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(paramBundle, "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI", "initContentView", "()V", "Undefined", "scrollToPosition", "(I)V");
-      AppMethodBeat.o(203976);
+      AppMethodBeat.o(251226);
       return;
-      paramBundle = getContext().findViewById(2131300754);
+      paramBundle = getContext().findViewById(2131302342);
       p.g(paramBundle, "context.findViewById<View>(R.id.history_lv)");
       paramBundle.setVisibility(8);
     }
@@ -572,70 +596,70 @@ public final class FinderContactSearchIncludeFollowUI
   
   public final void onDestroy()
   {
-    AppMethodBeat.i(203984);
-    g localg = this.sCV;
-    if (localg != null) {
-      localg.onDestroy();
+    AppMethodBeat.i(251234);
+    h localh = this.vtK;
+    if (localh != null) {
+      localh.onDestroy();
     }
-    mc(true);
-    com.tencent.mm.kernel.g.ajj().b(3820, (f)this);
+    ov(true);
+    g.azz().b(3820, (com.tencent.mm.ak.i)this);
     super.onDestroy();
-    AppMethodBeat.o(203984);
+    AppMethodBeat.o(251234);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
-    AppMethodBeat.i(203987);
-    com.tencent.mm.kernel.g.ajj().b(3820, (f)this);
-    int j = cGB();
-    int i = cGB();
+    AppMethodBeat.i(251237);
+    g.azz().b(3820, (com.tencent.mm.ak.i)this);
+    int j = dpy();
+    int i = dpy();
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      e.ywz.idkeyStat(1265L, 10L, 1L, false);
-      paramString = this.sCW;
+      e.Cxv.idkeyStat(1265L, 10L, 1L, false);
+      paramString = this.vtL;
       if (paramString != null) {}
-      for (paramString = paramString.rSg; paramString == null; paramString = null)
+      for (paramString = paramString.twl; paramString == null; paramString = null)
       {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSearchResponse");
-        AppMethodBeat.o(203987);
+        paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSearchResponse");
+        AppMethodBeat.o(251237);
         throw paramString;
       }
-      paramn = paramString.vTm;
-      p.g(paramn, "response.infoList");
-      Object localObject = (Iterable)paramn;
-      paramn = (Collection)new ArrayList(d.a.j.a((Iterable)localObject, 10));
+      paramq = paramString.zns;
+      p.g(paramq, "response.infoList");
+      Object localObject = (Iterable)paramq;
+      paramq = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        ars localars = (ars)((Iterator)localObject).next();
-        paramn.add(Boolean.valueOf(this.smS.add(localars)));
+        bbz localbbz = (bbz)((Iterator)localObject).next();
+        paramq.add(Boolean.valueOf(this.uae.add(localbbz)));
       }
       this.offset = paramString.offset;
       this.continueFlag = paramString.continueFlag;
-      this.skw = paramString.skw;
-      paramInt1 = cGB();
-      ae.i(TAG, "onSceneEnd " + paramString.offset + ' ' + paramString.continueFlag + ' ' + this.smS.size());
-      paramString = this.scj;
+      this.tVM = paramString.tVM;
+      paramInt1 = dpy();
+      Log.i(TAG, "onSceneEnd " + paramString.offset + ' ' + paramString.continueFlag + ' ' + this.uae.size());
+      paramString = this.tLS;
       if (paramString == null) {
-        p.bdF("rlLayout");
+        p.btv("rlLayout");
       }
-      paramString.agI(0);
+      paramString.apT(0);
       if (paramInt1 != 0) {
         break label417;
       }
-      paramString = this.gZB;
+      paramString = this.hSw;
       if (paramString == null) {
-        p.bdF("loadingView");
+        p.btv("loadingView");
       }
       paramString.setVisibility(8);
-      paramString = this.sCU;
+      paramString = this.vtJ;
       if (paramString == null) {
-        p.bdF("noResultView");
+        p.btv("noResultView");
       }
       paramString.setVisibility(0);
-      paramString = this.scj;
+      paramString = this.tLS;
       if (paramString == null) {
-        p.bdF("rlLayout");
+        p.btv("rlLayout");
       }
       paramString.setVisibility(8);
     }
@@ -643,71 +667,64 @@ public final class FinderContactSearchIncludeFollowUI
     {
       if (j == 0)
       {
-        paramString = this.gpr;
+        paramString = this.hak;
         if (paramString == null) {
-          p.bdF("recyclerView");
+          p.btv("recyclerView");
         }
         paramString = paramString.getAdapter();
         if (paramString != null)
         {
           paramString.notifyDataSetChanged();
-          AppMethodBeat.o(203987);
+          AppMethodBeat.o(251237);
           return;
-          e.ywz.idkeyStat(1265L, 11L, 1L, false);
+          e.Cxv.idkeyStat(1265L, 11L, 1L, false);
           paramInt1 = i;
           break;
           label417:
-          paramString = this.gZB;
+          paramString = this.hSw;
           if (paramString == null) {
-            p.bdF("loadingView");
+            p.btv("loadingView");
           }
           paramString.setVisibility(8);
-          paramString = this.sCU;
+          paramString = this.vtJ;
           if (paramString == null) {
-            p.bdF("noResultView");
+            p.btv("noResultView");
           }
           paramString.setVisibility(8);
-          paramString = this.scj;
+          paramString = this.tLS;
           if (paramString == null) {
-            p.bdF("rlLayout");
+            p.btv("rlLayout");
           }
           paramString.setVisibility(0);
-          paramString = this.sCT;
+          paramString = this.vtI;
           if (paramString == null) {
-            p.bdF("mainContainer");
+            p.btv("mainContainer");
           }
           paramString.setVisibility(0);
-          paramString = this.kFh;
-          if (paramString == null) {
-            p.bdF("rootView");
-          }
-          paramn = getContext();
-          p.g(paramn, "context");
-          paramString.setBackground(paramn.getResources().getDrawable(2131099648));
           continue;
         }
-        AppMethodBeat.o(203987);
+        AppMethodBeat.o(251237);
         return;
       }
     }
     if (j < paramInt1)
     {
-      paramString = this.gpr;
+      paramString = this.hak;
       if (paramString == null) {
-        p.bdF("recyclerView");
+        p.btv("recyclerView");
       }
       if (paramString != null)
       {
         paramString = paramString.getAdapter();
         if (paramString != null)
         {
-          paramString.ar(j, paramInt1 - j);
-          AppMethodBeat.o(203987);
+          paramString.as(j, paramInt1 - j);
+          AppMethodBeat.o(251237);
           return;
         }
       }
     }
-    AppMethodBeat.o(203987);
+    AppMethodBeat.o(251237);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -716,93 +733,129 @@ public final class FinderContactSearchIncludeFollowUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$ContactSearchProfileAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "requestType", "", "(Lcom/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI;I)V", "existFollowContact", "", "getExistFollowContact", "()Z", "setExistFollowContact", "(Z)V", "getRequestType", "()I", "unFollowContactIndex", "getUnFollowContactIndex", "setUnFollowContactIndex", "(I)V", "bindData", "", "holder", "position", "bindImage", "getItemCount", "getItemViewType", "onBindViewHolder", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-finder_release"})
+  final void ov(boolean paramBoolean)
+  {
+    AppMethodBeat.i(251239);
+    if (!Util.isNullOrNil(this.dPI)) {
+      if (((Map)this.vtH).isEmpty()) {
+        break label75;
+      }
+    }
+    label75:
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0)
+      {
+        com.tencent.mm.plugin.finder.report.l locall = com.tencent.mm.plugin.finder.report.l.vfB;
+        com.tencent.mm.plugin.finder.report.l.a(this.dPI, this.query, this.vtH, 2);
+        if (paramBoolean) {
+          this.vtH.clear();
+        }
+      }
+      AppMethodBeat.o(251239);
+      return;
+    }
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "VIEW_TYPE_DEFAULT", "", "VIEW_TYPE_FOLLOW_HEADER", "VIEW_TYPE_UN_FOLLOW_HEADER", "plugin-finder_release"})
+  public static final class a {}
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$ContactSearchProfileAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "requestType", "", "(Lcom/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI;I)V", "existFollowContact", "", "getExistFollowContact", "()Z", "setExistFollowContact", "(Z)V", "getRequestType", "()I", "unFollowContactIndex", "getUnFollowContactIndex", "setUnFollowContactIndex", "(I)V", "bindData", "", "holder", "position", "bindImage", "getItemCount", "getItemViewType", "onBindViewHolder", "payloads", "", "", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "plugin-finder_release"})
   public final class b
-    extends RecyclerView.a<RecyclerView.w>
+    extends RecyclerView.a<RecyclerView.v>
   {
     private final int requestType = 3;
-    private boolean sCY;
-    private int sCZ;
+    private boolean vtN;
+    private int vtO;
     
     private b() {}
     
-    private final void i(RecyclerView.w paramw, final int paramInt)
+    private final void i(RecyclerView.v paramv, final int paramInt)
     {
-      AppMethodBeat.i(203967);
-      if ((paramw instanceof FinderContactSearchIncludeFollowUI.c))
+      boolean bool = true;
+      AppMethodBeat.i(251217);
+      if ((paramv instanceof FinderContactSearchIncludeFollowUI.c))
       {
         if (getItemViewType(paramInt) == 1)
         {
-          ((FinderContactSearchIncludeFollowUI.c)paramw).titleTv.setText((CharSequence)FinderContactSearchIncludeFollowUI.this.getString(2131765454));
-          AppMethodBeat.o(203967);
+          ((FinderContactSearchIncludeFollowUI.c)paramv).titleTv.setText((CharSequence)FinderContactSearchIncludeFollowUI.this.getString(2131759610));
+          AppMethodBeat.o(251217);
           return;
         }
-        ((FinderContactSearchIncludeFollowUI.c)paramw).titleTv.setText((CharSequence)FinderContactSearchIncludeFollowUI.this.getString(2131765455));
-        AppMethodBeat.o(203967);
+        ((FinderContactSearchIncludeFollowUI.c)paramv).titleTv.setText((CharSequence)FinderContactSearchIncludeFollowUI.this.getString(2131759612));
+        AppMethodBeat.o(251217);
         return;
       }
-      ars localars;
-      FinderContactSearchIncludeFollowUI localFinderContactSearchIncludeFollowUI;
-      Object localObject;
-      if ((this.requestType == 3) && (this.sCY) && (this.sCZ != FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).size())) {
-        if (paramInt < this.sCZ + 1)
+      bbz localbbz;
+      Object localObject2;
+      Object localObject1;
+      if ((this.requestType == 3) && (this.vtN) && (this.vtO != FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).size())) {
+        if (paramInt < this.vtO + 1)
         {
-          localars = (ars)FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).get(paramInt - 1);
-          p.g(localars, "if (requestType == Const…sition]\n                }");
-          localFinderContactSearchIncludeFollowUI = FinderContactSearchIncludeFollowUI.this;
-          localObject = localars.contact;
-          if (localObject != null)
+          localbbz = (bbz)FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).get(paramInt - 1);
+          p.g(localbbz, "if (requestType == Const…sition]\n                }");
+          localObject2 = FinderContactSearchIncludeFollowUI.this;
+          localObject1 = localbbz.contact;
+          if (localObject1 != null)
           {
-            localObject = ((FinderContact)localObject).username;
-            if (localObject != null) {
-              break label419;
+            localObject1 = ((FinderContact)localObject1).username;
+            if (localObject1 != null) {
+              break label448;
             }
           }
-          localObject = "";
+          localObject1 = "";
         }
       }
-      label419:
+      label448:
       for (;;)
       {
-        p.h(localObject, "id");
-        if (!localFinderContactSearchIncludeFollowUI.sCS.containsKey(localObject))
+        p.h(localObject1, "id");
+        if (!((FinderContactSearchIncludeFollowUI)localObject2).vtH.containsKey(localObject1))
         {
-          ae.d(FinderContactSearchIncludeFollowUI.TAG, "addExposeItem " + (String)localObject + ' ' + paramInt + ' ' + 1);
+          Log.d(FinderContactSearchIncludeFollowUI.TAG, "addExposeItem " + (String)localObject1 + ' ' + paramInt + ' ' + 1);
           a locala = new a();
-          locala.setId((String)localObject);
+          locala.setId((String)localObject1);
           locala.position = paramInt;
           locala.type = 1;
           locala.timeStamp = System.currentTimeMillis();
-          ((Map)localFinderContactSearchIncludeFollowUI.sCS).put(localObject, locala);
-          if (localFinderContactSearchIncludeFollowUI.sCS.size() % 30 == 0) {
-            localFinderContactSearchIncludeFollowUI.mc(false);
+          ((Map)((FinderContactSearchIncludeFollowUI)localObject2).vtH).put(localObject1, locala);
+          if (((FinderContactSearchIncludeFollowUI)localObject2).vtH.size() % 30 == 0) {
+            ((FinderContactSearchIncludeFollowUI)localObject2).ov(false);
           }
         }
-        if (paramw == null)
+        if (paramv == null)
         {
-          paramw = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.search.FinderMixSearchContactItemHolder");
-          AppMethodBeat.o(203967);
-          throw paramw;
-          localars = (ars)FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).get(paramInt - 2);
+          paramv = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.search.FinderMixSearchContactItemHolder");
+          AppMethodBeat.o(251217);
+          throw paramv;
+          localbbz = (bbz)FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).get(paramInt - 2);
           break;
-          localars = (ars)FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).get(paramInt);
+          localbbz = (bbz)FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).get(paramInt);
           break;
         }
-        paramw = (c)paramw;
-        localObject = (View.OnClickListener)new a(this, paramInt);
+        localObject1 = (c)paramv;
+        localObject2 = (View.OnClickListener)new a(this, paramInt);
         if (paramInt != 0) {}
-        for (boolean bool = true;; bool = false)
+        for (;;)
         {
-          paramw.a(localars, (View.OnClickListener)localObject, bool);
-          AppMethodBeat.o(203967);
+          c.a((c)localObject1, localbbz, (View.OnClickListener)localObject2, bool, 4);
+          paramv = paramv.aus.findViewById(2131301657);
+          if (paramv == null) {
+            break;
+          }
+          paramv.setVisibility(8);
+          AppMethodBeat.o(251217);
           return;
+          bool = false;
         }
+        AppMethodBeat.o(251217);
+        return;
       }
     }
     
-    public final RecyclerView.w a(ViewGroup paramViewGroup, int paramInt)
+    public final RecyclerView.v a(ViewGroup paramViewGroup, int paramInt)
     {
-      AppMethodBeat.i(203965);
+      AppMethodBeat.i(251215);
       p.h(paramViewGroup, "parent");
       switch (paramInt)
       {
@@ -810,111 +863,126 @@ public final class FinderContactSearchIncludeFollowUI
         localObject = FinderContactSearchIncludeFollowUI.this;
         AppCompatActivity localAppCompatActivity = FinderContactSearchIncludeFollowUI.this.getContext();
         if (localAppCompatActivity == null) {
-          p.gkB();
+          p.hyc();
         }
-        paramViewGroup = localAppCompatActivity.getLayoutInflater().inflate(2131496243, paramViewGroup, false);
+        paramViewGroup = localAppCompatActivity.getLayoutInflater().inflate(2131494564, paramViewGroup, false);
         p.g(paramViewGroup, "context!!.layoutInflater…ader_item, parent, false)");
-        paramViewGroup = (RecyclerView.w)new FinderContactSearchIncludeFollowUI.c((FinderContactSearchIncludeFollowUI)localObject, paramViewGroup);
-        AppMethodBeat.o(203965);
+        paramViewGroup = (RecyclerView.v)new FinderContactSearchIncludeFollowUI.c((FinderContactSearchIncludeFollowUI)localObject, paramViewGroup);
+        AppMethodBeat.o(251215);
         return paramViewGroup;
       }
       Object localObject = FinderContactSearchIncludeFollowUI.this.getContext();
       if (localObject == null) {
-        p.gkB();
+        p.hyc();
       }
-      paramViewGroup = ((AppCompatActivity)localObject).getLayoutInflater().inflate(2131494018, paramViewGroup, false);
+      paramViewGroup = ((AppCompatActivity)localObject).getLayoutInflater().inflate(2131494224, paramViewGroup, false);
       p.g(paramViewGroup, "contactLayout");
-      paramViewGroup = (RecyclerView.w)new c(paramViewGroup);
-      AppMethodBeat.o(203965);
+      paramViewGroup = (RecyclerView.v)new c(paramViewGroup);
+      AppMethodBeat.o(251215);
       return paramViewGroup;
     }
     
-    public final void a(RecyclerView.w paramw, int paramInt)
+    public final void a(RecyclerView.v paramv, int paramInt)
     {
-      AppMethodBeat.i(203968);
-      p.h(paramw, "holder");
-      i(paramw, paramInt);
-      AppMethodBeat.o(203968);
+      AppMethodBeat.i(251218);
+      p.h(paramv, "holder");
+      i(paramv, paramInt);
+      AppMethodBeat.o(251218);
     }
     
-    public final void a(RecyclerView.w paramw, int paramInt, List<Object> paramList)
+    public final void a(RecyclerView.v paramv, int paramInt, List<Object> paramList)
     {
-      AppMethodBeat.i(203966);
-      p.h(paramw, "holder");
+      AppMethodBeat.i(251216);
+      p.h(paramv, "holder");
       p.h(paramList, "payloads");
-      i(paramw, paramInt);
-      AppMethodBeat.o(203966);
+      i(paramv, paramInt);
+      AppMethodBeat.o(251216);
     }
     
     public final int getItemCount()
     {
-      AppMethodBeat.i(203963);
+      AppMethodBeat.i(251213);
       if ((this.requestType == 3) && (FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).size() != 0))
       {
-        this.sCZ = 0;
-        this.sCY = false;
+        this.vtO = 0;
+        this.vtN = false;
         Iterator localIterator = FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).iterator();
         if (localIterator.hasNext())
         {
-          Object localObject = (ars)localIterator.next();
-          c.a locala = com.tencent.mm.plugin.finder.api.c.rPy;
-          localObject = ((ars)localObject).contact;
-          if (localObject != null) {}
+          bbz localbbz = (bbz)localIterator.next();
+          Object localObject = FinderContactSearchIncludeFollowUI.vtM;
+          String str = FinderContactSearchIncludeFollowUI.access$getTAG$cp();
+          StringBuilder localStringBuilder = new StringBuilder("getItemCount isFollow:");
+          localObject = localbbz.contact;
+          if (localObject != null)
+          {
+            localObject = ((FinderContact)localObject).username;
+            label104:
+            Log.i(str, (String)localObject);
+            localObject = com.tencent.mm.plugin.finder.api.c.tsp;
+            localObject = localbbz.contact;
+            if (localObject == null) {
+              break label167;
+            }
+          }
+          label167:
           for (localObject = ((FinderContact)localObject).username;; localObject = null)
           {
-            if (!c.a.ahW((String)localObject)) {
-              break label116;
+            if (!c.a.asJ((String)localObject)) {
+              break label172;
             }
-            this.sCY = true;
-            this.sCZ += 1;
+            this.vtN = true;
+            this.vtO += 1;
             break;
+            localObject = null;
+            break label104;
           }
         }
-        label116:
-        if (this.sCY)
+        label172:
+        if (this.vtN)
         {
-          if (this.sCZ == FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).size())
+          if (this.vtO == FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).size())
           {
             i = FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).size();
-            AppMethodBeat.o(203963);
+            AppMethodBeat.o(251213);
             return i;
           }
           i = FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).size();
-          AppMethodBeat.o(203963);
+          AppMethodBeat.o(251213);
           return i + 2;
         }
       }
       int i = FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).size();
-      AppMethodBeat.o(203963);
+      AppMethodBeat.o(251213);
       return i;
     }
     
     public final int getItemViewType(int paramInt)
     {
-      AppMethodBeat.i(203964);
-      if ((this.requestType == 3) && (this.sCY))
+      AppMethodBeat.i(251214);
+      if ((this.requestType == 3) && (this.vtN))
       {
-        if (this.sCZ == FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).size())
+        if (this.vtO == FinderContactSearchIncludeFollowUI.a(FinderContactSearchIncludeFollowUI.this).size())
         {
-          AppMethodBeat.o(203964);
+          AppMethodBeat.o(251214);
           return 3;
         }
         if (paramInt == 0)
         {
-          AppMethodBeat.o(203964);
+          AppMethodBeat.o(251214);
           return 1;
         }
-        if (paramInt == this.sCZ + 1)
+        if (paramInt == this.vtO + 1)
         {
-          AppMethodBeat.o(203964);
+          AppMethodBeat.o(251214);
           return 2;
         }
       }
-      AppMethodBeat.o(203964);
+      AppMethodBeat.o(251214);
       return 3;
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+    @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
     static final class a
       implements View.OnClickListener
     {
@@ -922,40 +990,40 @@ public final class FinderContactSearchIncludeFollowUI
       
       public final void onClick(View paramView)
       {
-        AppMethodBeat.i(203962);
+        AppMethodBeat.i(251212);
         Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$ContactSearchProfileAdapter$bindData$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$ContactSearchProfileAdapter$bindData$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
         p.g(paramView, "it");
         paramView = paramView.getTag();
         if (paramView == null)
         {
-          paramView = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSearchInfo");
-          AppMethodBeat.o(203962);
+          paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSearchInfo");
+          AppMethodBeat.o(251212);
           throw paramView;
         }
-        ars localars = (ars)paramView;
-        FinderContactSearchIncludeFollowUI localFinderContactSearchIncludeFollowUI = this.sDb.sDa;
+        bbz localbbz = (bbz)paramView;
+        FinderContactSearchIncludeFollowUI localFinderContactSearchIncludeFollowUI = this.vtQ.vtP;
         int i = paramInt;
-        p.h(localars, "finderSearchInfo");
-        if (localFinderContactSearchIncludeFollowUI.sCR)
+        p.h(localbbz, "finderSearchInfo");
+        if (localFinderContactSearchIncludeFollowUI.vtG)
         {
-          ae.i(FinderContactSearchIncludeFollowUI.TAG, "onContactItemClick select atContact");
-          paramView = com.tencent.mm.plugin.finder.utils.b.sWa;
-          localObject1 = localars.contact;
+          Log.i(FinderContactSearchIncludeFollowUI.TAG, "onContactItemClick select atContact");
+          paramView = d.vVg;
+          localObject1 = localbbz.contact;
           paramView = (View)localObject1;
           if (localObject1 == null) {
             paramView = new FinderContact();
           }
-          paramView = com.tencent.mm.plugin.finder.utils.b.e(paramView);
+          paramView = d.e(paramView);
           localFinderContactSearchIncludeFollowUI.getIntent().putExtra("at_select_contact", paramView.toByteArray());
           localObject1 = localFinderContactSearchIncludeFollowUI.getIntent();
-          paramView = com.tencent.mm.plugin.finder.api.c.rPy;
-          paramView = localars.contact;
+          paramView = com.tencent.mm.plugin.finder.api.c.tsp;
+          paramView = localbbz.contact;
           if (paramView != null)
           {
             paramView = paramView.username;
-            ((Intent)localObject1).putExtra("is_follow", c.a.ahW(paramView));
+            ((Intent)localObject1).putExtra("is_follow", c.a.asJ(paramView));
             localFinderContactSearchIncludeFollowUI.setResult(-1, localFinderContactSearchIncludeFollowUI.getIntent());
             localFinderContactSearchIncludeFollowUI.finish();
           }
@@ -964,12 +1032,12 @@ public final class FinderContactSearchIncludeFollowUI
         do
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$ContactSearchProfileAdapter$bindData$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(203962);
+          AppMethodBeat.o(251212);
           return;
           paramView = null;
           break;
           Object localObject2 = new Intent();
-          paramView = localars.contact;
+          paramView = localbbz.contact;
           if (paramView != null)
           {
             localObject1 = paramView.username;
@@ -981,37 +1049,37 @@ public final class FinderContactSearchIncludeFollowUI
             paramView = "";
           }
           ((Intent)localObject2).putExtra("finder_username", paramView);
-          paramView = FinderReporterUIC.tnG;
+          paramView = FinderReporterUIC.wzC;
           paramView = localFinderContactSearchIncludeFollowUI.getContext();
           p.g(paramView, "context");
           FinderReporterUIC.a.a((Context)paramView, (Intent)localObject2, 0L, 7, false, 64);
-          paramView = com.tencent.mm.plugin.finder.utils.a.sVQ;
+          paramView = com.tencent.mm.plugin.finder.utils.a.vUU;
           paramView = localFinderContactSearchIncludeFollowUI.getContext();
           p.g(paramView, "context");
           com.tencent.mm.plugin.finder.utils.a.enterFinderProfileUI((Context)paramView, (Intent)localObject2);
-          paramView = com.tencent.mm.plugin.finder.report.j.syU;
-          localObject1 = localFinderContactSearchIncludeFollowUI.dyb;
+          paramView = com.tencent.mm.plugin.finder.report.l.vfB;
+          localObject1 = localFinderContactSearchIncludeFollowUI.dPI;
           localObject2 = localFinderContactSearchIncludeFollowUI.query;
-          paramView = localars.contact;
+          paramView = localbbz.contact;
           if (paramView == null) {
-            break label432;
+            break label430;
           }
           paramView = paramView.username;
-          com.tencent.mm.plugin.finder.report.j.b((String)localObject1, (String)localObject2, 1, paramView, i, 2);
-          paramView = FinderReporterUIC.tnG;
+          com.tencent.mm.plugin.finder.report.l.e((String)localObject1, (String)localObject2, paramView, i);
+          paramView = FinderReporterUIC.wzC;
           paramView = localFinderContactSearchIncludeFollowUI.getContext();
           p.g(paramView, "context");
-          paramView = FinderReporterUIC.a.fc((Context)paramView);
+          paramView = FinderReporterUIC.a.fH((Context)paramView);
         } while (paramView == null);
-        localObject1 = i.syT;
-        i = paramView.sch;
-        paramView = localars.contact;
+        localObject1 = k.vfA;
+        i = paramView.tCE;
+        paramView = localbbz.contact;
         if (paramView != null) {}
         for (paramView = paramView.username;; paramView = null)
         {
-          i.a(6, 0L, i, 1, paramView);
+          k.a(6, 0L, i, 1, paramView);
           break;
-          label432:
+          label430:
           paramView = null;
           break label358;
         }
@@ -1019,24 +1087,24 @@ public final class FinderContactSearchIncludeFollowUI
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$HeaderViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI;Landroid/view/View;)V", "titleTv", "Landroid/widget/TextView;", "getTitleTv", "()Landroid/widget/TextView;", "setTitleTv", "(Landroid/widget/TextView;)V", "plugin-finder_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$HeaderViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Lcom/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI;Landroid/view/View;)V", "titleTv", "Landroid/widget/TextView;", "getTitleTv", "()Landroid/widget/TextView;", "setTitleTv", "(Landroid/widget/TextView;)V", "plugin-finder_release"})
   public final class c
-    extends RecyclerView.w
+    extends RecyclerView.v
   {
     TextView titleTv;
     
     public c()
     {
       super();
-      AppMethodBeat.i(203969);
-      this$1 = localObject.findViewById(2131305948);
+      AppMethodBeat.i(251219);
+      this$1 = localObject.findViewById(2131309249);
       p.g(FinderContactSearchIncludeFollowUI.this, "itemView.findViewById(R.id.title_tv)");
       this.titleTv = ((TextView)FinderContactSearchIncludeFollowUI.this);
-      AppMethodBeat.o(203969);
+      AppMethodBeat.o(251219);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/view/MotionEvent;", "onTouch"})
   static final class d
     implements View.OnTouchListener
   {
@@ -1044,91 +1112,75 @@ public final class FinderContactSearchIncludeFollowUI
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
-      AppMethodBeat.i(203970);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      localb.bd(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
-      FinderContactSearchIncludeFollowUI.b(this.sDa).getFtsEditText().fMg();
-      this.sDa.hideVKB();
-      com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(203970);
+      AppMethodBeat.i(251220);
+      FinderContactSearchIncludeFollowUI.b(this.vtP).getFtsEditText().gUA();
+      this.vtP.hideVKB();
+      AppMethodBeat.o(251220);
       return false;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "plugin-finder_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "plugin-finder_release"})
   public static final class e
     extends RefreshLoadMoreLayout.a
   {
-    public final void AY(int paramInt)
+    public final void ED(int paramInt)
     {
-      AppMethodBeat.i(203972);
+      AppMethodBeat.i(251222);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.mu(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.ahF());
-      super.AY(paramInt);
+      localb.pH(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.axR());
+      super.ED(paramInt);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(203972);
+      AppMethodBeat.o(251222);
     }
     
     public final void a(RefreshLoadMoreLayout.c paramc)
     {
-      AppMethodBeat.i(203974);
+      AppMethodBeat.i(251224);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ahF());
+      localb.bm(paramc);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.axR());
       super.a(paramc);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(203974);
+      AppMethodBeat.o(251224);
     }
     
-    public final void b(RefreshLoadMoreLayout.c paramc)
+    public final void cxo()
     {
-      AppMethodBeat.i(203973);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ahF());
-      super.b(paramc);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(203973);
-    }
-    
-    public final void bZA()
-    {
-      AppMethodBeat.i(203971);
+      AppMethodBeat.i(251221);
       com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
-      Object localObject = FinderContactSearchIncludeFollowUI.sCX;
-      ae.i(FinderContactSearchIncludeFollowUI.access$getTAG$cp(), "onLoadMoreBegin");
-      localObject = FinderContactSearchIncludeFollowUI.c(this.sDa);
+      Object localObject = FinderContactSearchIncludeFollowUI.vtM;
+      Log.i(FinderContactSearchIncludeFollowUI.access$getTAG$cp(), "onLoadMoreBegin");
+      localObject = FinderContactSearchIncludeFollowUI.c(this.vtP);
       if (localObject != null)
       {
-        if (FinderContactSearchIncludeFollowUI.d(this.sDa) != 1) {
+        if (FinderContactSearchIncludeFollowUI.d(this.vtP) != 1) {
           break label250;
         }
-        FinderContactSearchIncludeFollowUI.a(this.sDa, new ba((String)localObject, FinderContactSearchIncludeFollowUI.f(this.sDa), FinderContactSearchIncludeFollowUI.g(this.sDa), FinderContactSearchIncludeFollowUI.h(this.sDa), FinderContactSearchIncludeFollowUI.i(this.sDa), null, 32));
-        com.tencent.mm.kernel.g.ajj().b((com.tencent.mm.ak.n)FinderContactSearchIncludeFollowUI.e(this.sDa));
-        com.tencent.mm.kernel.g.ajj().a(3820, (f)this.sDa);
-        localObject = FinderContactSearchIncludeFollowUI.j(this.sDa).getLoadMoreFooter();
+        FinderContactSearchIncludeFollowUI.a(this.vtP, new cf((String)localObject, FinderContactSearchIncludeFollowUI.f(this.vtP), FinderContactSearchIncludeFollowUI.g(this.vtP), FinderContactSearchIncludeFollowUI.h(this.vtP), FinderContactSearchIncludeFollowUI.i(this.vtP), null, 96));
+        g.azz().b((com.tencent.mm.ak.q)FinderContactSearchIncludeFollowUI.e(this.vtP));
+        g.azz().a(3820, (com.tencent.mm.ak.i)this.vtP);
+        localObject = FinderContactSearchIncludeFollowUI.j(this.vtP).getLoadMoreFooter();
         if (localObject != null)
         {
-          localObject = (TextView)((View)localObject).findViewById(2131301486);
+          localObject = (TextView)((View)localObject).findViewById(2131303685);
           if (localObject != null) {
-            ((TextView)localObject).setText(2131759244);
+            ((TextView)localObject).setText(2131760234);
           }
         }
-        localObject = FinderContactSearchIncludeFollowUI.j(this.sDa).getLoadMoreFooter();
+        localObject = FinderContactSearchIncludeFollowUI.j(this.vtP).getLoadMoreFooter();
         if (localObject != null)
         {
-          localObject = (TextView)((View)localObject).findViewById(2131301486);
+          localObject = (TextView)((View)localObject).findViewById(2131303685);
           if (localObject != null) {
             ((TextView)localObject).setVisibility(0);
           }
         }
-        localObject = FinderContactSearchIncludeFollowUI.j(this.sDa).getLoadMoreFooter();
+        localObject = FinderContactSearchIncludeFollowUI.j(this.vtP).getLoadMoreFooter();
         if (localObject != null)
         {
-          localObject = ((View)localObject).findViewById(2131308147);
+          localObject = ((View)localObject).findViewById(2131303684);
           if (localObject != null) {
             ((View)localObject).setVisibility(8);
           }
@@ -1137,41 +1189,52 @@ public final class FinderContactSearchIncludeFollowUI
       for (;;)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
-        AppMethodBeat.o(203971);
+        AppMethodBeat.o(251221);
         return;
         label250:
-        localObject = FinderContactSearchIncludeFollowUI.j(this.sDa).getLoadMoreFooter();
+        localObject = FinderContactSearchIncludeFollowUI.j(this.vtP).getLoadMoreFooter();
         if (localObject != null)
         {
-          localObject = (TextView)((View)localObject).findViewById(2131301486);
+          localObject = (TextView)((View)localObject).findViewById(2131303685);
           if (localObject != null) {
-            ((TextView)localObject).setText(2131759245);
+            ((TextView)localObject).setText(2131760235);
           }
         }
-        localObject = FinderContactSearchIncludeFollowUI.j(this.sDa).getLoadMoreFooter();
+        localObject = FinderContactSearchIncludeFollowUI.j(this.vtP).getLoadMoreFooter();
         if (localObject != null)
         {
-          localObject = (TextView)((View)localObject).findViewById(2131301486);
+          localObject = (TextView)((View)localObject).findViewById(2131303685);
           if (localObject != null) {
             ((TextView)localObject).setVisibility(8);
           }
         }
-        localObject = FinderContactSearchIncludeFollowUI.j(this.sDa).getLoadMoreFooter();
+        localObject = FinderContactSearchIncludeFollowUI.j(this.vtP).getLoadMoreFooter();
         if (localObject != null)
         {
-          localObject = ((View)localObject).findViewById(2131308147);
+          localObject = ((View)localObject).findViewById(2131303684);
           if (localObject != null) {
             ((View)localObject).setVisibility(0);
           }
         }
       }
     }
+    
+    public final void onRefreshEnd(RefreshLoadMoreLayout.c paramc)
+    {
+      AppMethodBeat.i(251223);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bm(paramc);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.axR());
+      super.onRefreshEnd(paramc);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/search/FinderContactSearchIncludeFollowUI$initContentView$2", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
+      AppMethodBeat.o(251223);
+    }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
   static final class f
-    extends d.g.b.q
-    implements d.g.a.b<String, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<String, x>
   {
     f(FinderContactSearchIncludeFollowUI paramFinderContactSearchIncludeFollowUI)
     {
@@ -1181,7 +1244,7 @@ public final class FinderContactSearchIncludeFollowUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.search.FinderContactSearchIncludeFollowUI
  * JD-Core Version:    0.7.0.1
  */

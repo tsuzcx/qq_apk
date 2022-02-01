@@ -15,10 +15,10 @@ final class v$1
   {
     AppMethodBeat.i(136476);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    v.a(this.nkn);
-    this.nkn.setVisibility(8);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    v.a(this.otR);
+    this.otR.setVisibility(8);
     a.a(this, "com/tencent/mm/plugin/appbrand/widget/input/AppBrandNumberKeyboardPanel$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(136476);
   }

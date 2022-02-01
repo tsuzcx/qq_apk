@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.finder.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "", "scene", "", "safeMode", "", "(IZ)V", "getSafeMode", "()Z", "getScene", "()I", "component1", "component2", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerCreateData;", "", "scene", "", "safeMode", "", "(IZ)V", "getSafeMode", "()Z", "getScene", "()I", "component1", "component2", "copy", "equals", "other", "hashCode", "toString", "", "plugin-finder_release"})
 public final class e$a$a
 {
-  public final boolean rUX;
   public final int scene;
+  public final boolean tAj;
   
   public e$a$a(int paramInt, boolean paramBoolean)
   {
     this.scene = paramInt;
-    this.rUX = paramBoolean;
+    this.tAj = paramBoolean;
   }
   
   public final boolean equals(Object paramObject)
@@ -22,7 +22,7 @@ public final class e$a$a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((this.scene != paramObject.scene) || (this.rUX != paramObject.rUX)) {}
+        if ((this.scene != paramObject.scene) || (this.tAj != paramObject.tAj)) {}
       }
     }
     else {
@@ -38,9 +38,9 @@ public final class e$a$a
   
   public final String toString()
   {
-    AppMethodBeat.i(205695);
-    String str = "DrawerCreateData(scene=" + this.scene + ", safeMode=" + this.rUX + ")";
-    AppMethodBeat.o(205695);
+    AppMethodBeat.i(254710);
+    String str = "DrawerCreateData(scene=" + this.scene + ", safeMode=" + this.tAj + ")";
+    AppMethodBeat.o(254710);
     return str;
   }
 }

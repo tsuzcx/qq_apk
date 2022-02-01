@@ -11,20 +11,20 @@ public final class a
   public byte cRsvd1;
   public byte cSkipFlag;
   public short iKbps;
-  public byte pcF;
-  public byte pcG;
+  public byte qrE;
+  public byte qrF;
   public byte[] s2p;
   
   public a()
   {
-    AppMethodBeat.i(190425);
+    AppMethodBeat.i(238995);
     this.s2p = new byte[10];
-    AppMethodBeat.o(190425);
+    AppMethodBeat.o(238995);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.b.a
  * JD-Core Version:    0.7.0.1
  */

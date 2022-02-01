@@ -3,8 +3,7 @@ package com.tencent.mm.audio.mix.b.a;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.mix.a.d;
-import com.tencent.mm.audio.mix.b.e;
-import com.tencent.mm.audio.mix.h.b;
+import com.tencent.mm.audio.mix.i.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -20,7 +19,7 @@ public final class a
     this.filePath = paramString2;
   }
   
-  public final void Ov()
+  public final void YC()
   {
     AppMethodBeat.i(136749);
     b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "runTask, appId:%s", new Object[] { this.appId });
@@ -30,7 +29,7 @@ public final class a
     if (TextUtils.isEmpty(this.filePath))
     {
       b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "cache to file task");
-      localObject2 = e.Os().Ou();
+      localObject2 = com.tencent.mm.audio.mix.b.f.YL().YN();
       if (((ArrayList)localObject2).size() > 0)
       {
         localObject1 = "";
@@ -39,10 +38,10 @@ public final class a
         while (localIterator.hasNext())
         {
           localObject2 = (String)localIterator.next();
-          d locald = e.Os().fP((String)localObject2);
-          if ((locald == null) || (!locald.aBS) || (!locald.dde))
+          d locald = com.tencent.mm.audio.mix.b.f.YL().gE((String)localObject2);
+          if ((locald == null) || (!locald.aBQ) || (!locald.dtV))
           {
-            int j = e.Os().fQ((String)localObject2);
+            int j = com.tencent.mm.audio.mix.b.f.YL().gF((String)localObject2);
             if (j < i) {
               break label291;
             }
@@ -56,18 +55,18 @@ public final class a
     for (;;)
     {
       break;
-      localObject2 = e.Os().fP((String)localObject1);
-      if ((localObject2 != null) && (((d)localObject2).aBS) && (!((d)localObject2).dde)) {
-        ((d)localObject2).fO(this.appId);
+      localObject2 = com.tencent.mm.audio.mix.b.f.YL().gE((String)localObject1);
+      if ((localObject2 != null) && (((d)localObject2).aBQ) && (!((d)localObject2).dtV)) {
+        ((d)localObject2).gA(this.appId);
       }
       b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "cache to file path :%s, size:%d", new Object[] { localObject1, Integer.valueOf(i) });
       AppMethodBeat.o(136749);
       return;
-      i = e.Os().fQ(this.filePath);
+      i = com.tencent.mm.audio.mix.b.f.YL().gF(this.filePath);
       b.i("MicroMsg.Mix.AudioPcmDataTrackCacheToFileTask", "cache to file path :%s, size:%d", new Object[] { this.filePath, Integer.valueOf(i) });
-      localObject1 = e.Os().fP(this.filePath);
-      if ((localObject1 != null) && (((d)localObject1).aBS) && (!((d)localObject1).dde)) {
-        ((d)localObject1).fO(this.appId);
+      localObject1 = com.tencent.mm.audio.mix.b.f.YL().gE(this.filePath);
+      if ((localObject1 != null) && (((d)localObject1).aBQ) && (!((d)localObject1).dtV)) {
+        ((d)localObject1).gA(this.appId);
       }
       AppMethodBeat.o(136749);
       return;
@@ -78,7 +77,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.b.a.a
  * JD-Core Version:    0.7.0.1
  */

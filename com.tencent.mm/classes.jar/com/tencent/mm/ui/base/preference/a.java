@@ -11,13 +11,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends h
 {
-  private SparseArray<View> JMr;
+  private SparseArray<View> OXo;
   
   public a(Context paramContext, ListView paramListView, SharedPreferences paramSharedPreferences)
   {
     super(paramContext, paramListView, paramSharedPreferences);
     AppMethodBeat.i(142508);
-    this.JMr = new SparseArray();
+    this.OXo = new SparseArray();
     AppMethodBeat.o(142508);
   }
   
@@ -29,7 +29,7 @@ public final class a
       AppMethodBeat.o(142510);
       return null;
     }
-    paramListView = (View)this.JMr.get(paramInt);
+    paramListView = (View)this.OXo.get(paramInt);
     AppMethodBeat.o(142510);
     return paramListView;
   }
@@ -38,14 +38,14 @@ public final class a
   {
     AppMethodBeat.i(142509);
     paramView = super.getView(paramInt, paramView, paramViewGroup);
-    this.JMr.put(paramInt, paramView);
+    this.OXo.put(paramInt, paramView);
     AppMethodBeat.o(142509);
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.a
  * JD-Core Version:    0.7.0.1
  */

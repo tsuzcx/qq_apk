@@ -5,24 +5,24 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class q
 {
-  public static void KG(String paramString)
+  public static void TF(String paramString)
   {
     AppMethodBeat.i(113870);
     if (Build.VERSION.SDK_INT >= 11)
     {
       new o();
-      o.KG(paramString);
+      o.TF(paramString);
       AppMethodBeat.o(113870);
       return;
     }
     new p();
-    p.KG(paramString);
+    p.TF(paramString);
     AppMethodBeat.o(113870);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.q
  * JD-Core Version:    0.7.0.1
  */

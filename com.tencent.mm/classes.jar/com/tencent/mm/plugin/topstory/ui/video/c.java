@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.topstory.ui.video;
 
 public abstract interface c
 {
-  public abstract void TH(int paramInt);
+  public abstract void abX(int paramInt);
   
-  public abstract int bH(float paramFloat);
+  public abstract void bJj();
   
-  public abstract void bnF();
+  public abstract void bJk();
   
-  public abstract void bnG();
+  public abstract void bJl();
   
-  public abstract void bnH();
+  public abstract int ce(float paramFloat);
   
-  public abstract boolean etx();
+  public abstract boolean fyT();
   
   public abstract int getCurrentPosition();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.c
  * JD-Core Version:    0.7.0.1
  */

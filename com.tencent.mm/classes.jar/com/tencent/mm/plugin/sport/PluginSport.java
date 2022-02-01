@@ -4,35 +4,34 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import com.tencent.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.a.b.a.a;
-import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.c.e;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.messenger.foundation.a.s;
 import com.tencent.mm.plugin.sport.model.SportForegroundService;
-import com.tencent.mm.plugin.sport.model.h;
-import com.tencent.mm.plugin.sport.model.h.a;
+import com.tencent.mm.plugin.sport.model.g.a;
 import com.tencent.mm.plugin.sport.model.j;
 import com.tencent.mm.plugin.sport.model.k;
-import com.tencent.mm.plugin.sport.model.l;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class PluginSport
-  extends f
+  extends com.tencent.mm.kernel.b.f
   implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.a, com.tencent.mm.kernel.api.bucket.c, a
 {
   public static HashMap<Integer, h.b> baseDBFactories;
-  private j AXR;
-  private com.tencent.mm.plugin.sport.a.b AXS;
-  private com.tencent.mm.plugin.sport.model.a AXT;
-  private com.tencent.mm.plugin.sport.model.b AXU;
-  private h.a AXV;
-  private com.tencent.mm.plugin.sport.model.g AXW;
-  private BroadcastReceiver AXX;
+  private com.tencent.mm.plugin.sport.model.i FiK;
+  private com.tencent.mm.plugin.sport.a.b FiL;
+  private com.tencent.mm.plugin.sport.model.a FiM;
+  private com.tencent.mm.plugin.sport.model.b FiN;
+  private g.a FiO;
+  private com.tencent.mm.plugin.sport.model.f FiP;
+  private BroadcastReceiver FiQ;
   
   static
   {
@@ -44,25 +43,35 @@ public class PluginSport
   public PluginSport()
   {
     AppMethodBeat.i(149251);
-    this.AXV = new h.a()
+    this.FiO = new g.a()
     {
-      public final void agz()
+      public final void awp()
       {
         AppMethodBeat.i(149249);
         com.tencent.mm.plugin.sport.model.a locala = PluginSport.this.getDeviceStepManager();
-        if (locala.AYd != null) {
-          locala.AYd.ejP();
+        if (locala.FiX != null) {
+          locala.FiX.fmp();
         }
         AppMethodBeat.o(149249);
       }
     };
-    this.AXX = new BroadcastReceiver()
+    this.FiQ = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(161588);
-        if (("com.tencent.mm.plugin.sport.uploadstep".equals(paramAnonymousIntent.getAction())) && (l.gv(ak.getContext())) && (l.ejG())) {
-          PluginSport.this.getDeviceStepManager().ejJ();
+        if ("com.tencent.mm.plugin.sport.uploadstep".equals(paramAnonymousIntent.getAction())) {
+          h.RTc.b(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(199373);
+              if ((k.hg(MMApplicationContext.getContext())) && (k.fmg())) {
+                PluginSport.this.getDeviceStepManager().fmj();
+              }
+              AppMethodBeat.o(199373);
+            }
+          }, "UploadSportStepEventHandle");
         }
         AppMethodBeat.o(161588);
       }
@@ -80,94 +89,94 @@ public class PluginSport
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(149252);
-    if (this.AXR == null) {
-      this.AXR = k.ekc();
+    if (this.FiK == null) {
+      this.FiK = j.fmC();
     }
-    if (paramg.akL())
+    if (paramg.aBb())
     {
-      this.AXS = new b();
-      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.sport.a.b.class, new e(this.AXS));
+      this.FiL = new b();
+      com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.sport.a.b.class, new e(this.FiL));
       AppMethodBeat.o(149252);
       return;
     }
-    if (paramg.xO(":push"))
+    if (paramg.FY(":push"))
     {
       getPushSportStepDetector();
-      SportForegroundService.ekf();
+      SportForegroundService.fmF();
     }
     AppMethodBeat.o(149252);
   }
   
   public com.tencent.mm.plugin.sport.model.a getDeviceStepManager()
   {
-    return this.AXT;
+    return this.FiM;
   }
   
   public com.tencent.mm.plugin.sport.model.b getExtApiStepManager()
   {
-    return this.AXU;
+    return this.FiN;
   }
   
-  public com.tencent.mm.plugin.sport.model.g getPushSportStepDetector()
+  public com.tencent.mm.plugin.sport.model.f getPushSportStepDetector()
   {
     AppMethodBeat.i(149257);
-    if ((ak.foA()) && (this.AXW == null)) {
-      this.AXW = new com.tencent.mm.plugin.sport.model.g();
+    if ((MMApplicationContext.isPushProcess()) && (this.FiP == null)) {
+      this.FiP = new com.tencent.mm.plugin.sport.model.f();
     }
-    com.tencent.mm.plugin.sport.model.g localg = this.AXW;
+    com.tencent.mm.plugin.sport.model.f localf = this.FiP;
     AppMethodBeat.o(149257);
-    return localg;
+    return localf;
   }
   
-  public j getSportFileStorage()
+  public com.tencent.mm.plugin.sport.model.i getSportFileStorage()
   {
     AppMethodBeat.i(149254);
-    if (this.AXR == null) {
-      this.AXR = k.ekc();
+    if (this.FiK == null) {
+      this.FiK = j.fmC();
     }
-    j localj = this.AXR;
+    com.tencent.mm.plugin.sport.model.i locali = this.FiK;
     AppMethodBeat.o(149254);
-    return localj;
+    return locali;
   }
   
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(149253);
-    this.AXT = new com.tencent.mm.plugin.sport.model.a();
-    this.AXU = new com.tencent.mm.plugin.sport.model.b();
-    h.a(this.AXV);
-    this.AXV.agz();
+    this.FiM = new com.tencent.mm.plugin.sport.model.a();
+    this.FiN = new com.tencent.mm.plugin.sport.model.b();
+    com.tencent.mm.plugin.sport.model.g.a(this.FiO);
+    this.FiO.awp();
     paramc = new IntentFilter();
     paramc.addAction("com.tencent.mm.plugin.sport.uploadstep");
-    ak.getContext().registerReceiver(this.AXX, paramc);
+    MMApplicationContext.getContext().registerReceiver(this.FiQ, paramc);
     AppMethodBeat.o(149253);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(149255);
-    ak.getContext().unregisterReceiver(this.AXX);
-    h.a(null);
+    MMApplicationContext.getContext().unregisterReceiver(this.FiQ);
+    com.tencent.mm.plugin.sport.model.g.a(null);
     Object localObject;
-    if (this.AXT != null)
+    if (this.FiM != null)
     {
-      localObject = this.AXT;
-      ((com.tencent.mm.plugin.sport.model.a)localObject).AYd.ejQ();
-      ((com.tencent.mm.plugin.sport.model.a)localObject).AYe.dead();
-      if (((com.tencent.mm.plugin.sport.model.a)localObject).AYf != null) {
-        com.tencent.mm.kernel.g.ajj().a(((com.tencent.mm.plugin.sport.model.a)localObject).AYf);
+      localObject = this.FiM;
+      ((com.tencent.mm.plugin.sport.model.a)localObject).FiX.fmq();
+      ((com.tencent.mm.plugin.sport.model.a)localObject).FiY.dead();
+      if (((com.tencent.mm.plugin.sport.model.a)localObject).FiZ != null) {
+        com.tencent.mm.kernel.g.azz().a(((com.tencent.mm.plugin.sport.model.a)localObject).FiZ);
       }
-      this.AXT = null;
+      this.FiM = null;
     }
-    if (this.AXU != null)
+    if (this.FiN != null)
     {
-      localObject = this.AXU;
-      ((com.tencent.mm.plugin.sport.model.b)localObject).AYk.dead();
-      ((com.tencent.mm.plugin.sport.model.b)localObject).AYe.dead();
-      if (((com.tencent.mm.plugin.sport.model.b)localObject).AYf != null) {
-        com.tencent.mm.kernel.g.ajj().a(((com.tencent.mm.plugin.sport.model.b)localObject).AYf);
+      localObject = this.FiN;
+      ((com.tencent.mm.plugin.sport.model.b)localObject).Fjg.dead();
+      ((com.tencent.mm.plugin.sport.model.b)localObject).FiY.dead();
+      if (((com.tencent.mm.plugin.sport.model.b)localObject).FiZ != null) {
+        com.tencent.mm.kernel.g.azz().a(((com.tencent.mm.plugin.sport.model.b)localObject).FiZ);
       }
-      this.AXU = null;
+      this.FiN = null;
     }
     AppMethodBeat.o(149255);
   }
@@ -175,13 +184,13 @@ public class PluginSport
   public void parallelsDependency()
   {
     AppMethodBeat.i(149256);
-    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bA(com.tencent.mm.kernel.g.ad(s.class));
+    com.tencent.mm.kernel.a.b.a.a(this, com.tencent.mm.kernel.api.c.class).bI(com.tencent.mm.kernel.g.ah(s.class));
     AppMethodBeat.o(149256);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.PluginSport
  * JD-Core Version:    0.7.0.1
  */

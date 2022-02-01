@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/f6d" android:layout_width="334.0dip" android:layout_height="190.0dip" android:layout_centerInParent="true" />
-    <TextView android:textSize="@dimen/jv" android:textColor="@color/BW_90" android:id="@id/a64" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:text="@string/eus" android:layout_below="@id/f6d" android:layout_centerHorizontal="true" />
-    <com.tencent.mm.plugin.scanner.ui.ScannerFlashSwitcher android:id="@id/f6v" android:visibility="gone" android:layout_width="@dimen/cg" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cg" android:layout_below="@id/a64" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:gravity="center_horizontal" android:id="@id/ep1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/f0k" />
+    <android.support.constraint.ConstraintLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/ep0" android:paddingBottom="@dimen/bu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:id="@id/aq8" android:background="@drawable/ahs" android:layout_width="@dimen/bt" android:layout_height="@dimen/bt" android:layout_marginTop="@dimen/cj" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+        <View android:id="@id/ea_" android:background="@color/BW_0_Alpha_0_1" android:layout_width="@dimen/ce" android:layout_height="1.0dip" android:layout_marginRight="@dimen/ct" app:layout_constraintBottom_toBottomOf="@id/aq8" app:layout_constraintRight_toLeftOf="@id/aq8" app:layout_constraintTop_toTopOf="@id/aq8" />
+        <View android:id="@id/h76" android:background="@color/BW_0_Alpha_0_1" android:layout_width="@dimen/ce" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ct" app:layout_constraintBottom_toBottomOf="@id/aq8" app:layout_constraintLeft_toRightOf="@id/aq8" app:layout_constraintTop_toTopOf="@id/aq8" />
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>

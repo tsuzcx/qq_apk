@@ -10,11 +10,17 @@ import com.tencent.wework.api.util.SessionProvider;
 
 public abstract class BaseMessage
 {
-  protected static SessionProvider MLn = null;
+  protected static SessionProvider Sxr = null;
+  public String Sxp;
+  public String Sxq;
+  protected String Sxs;
+  public String appName;
   protected Context mContext = null;
-  protected String vuG = "";
+  public int sdkVer;
+  public String transaction;
+  protected String yOQ = "";
   
-  public static BaseMessage C(Uri paramUri)
+  public static BaseMessage A(Uri paramUri)
   {
     try
     {
@@ -29,7 +35,7 @@ public abstract class BaseMessage
     return null;
   }
   
-  public static Bundle b(BaseMessage paramBaseMessage)
+  public static Bundle a(BaseMessage paramBaseMessage)
   {
     if (paramBaseMessage == null) {
       return null;
@@ -40,7 +46,7 @@ public abstract class BaseMessage
     return localBundle;
   }
   
-  public static BaseMessage bo(Bundle paramBundle)
+  public static BaseMessage bB(Bundle paramBundle)
   {
     try
     {
@@ -56,23 +62,28 @@ public abstract class BaseMessage
     return null;
   }
   
-  public final void bbT(String paramString)
+  public void brA(String paramString)
   {
-    this.vuG = paramString;
+    this.Sxs = paramString;
+  }
+  
+  public final void brz(String paramString)
+  {
+    this.yOQ = paramString;
   }
   
   public abstract boolean checkArgs();
   
   public abstract void fromBundle(Bundle paramBundle);
   
-  public final void setContext(Context paramContext)
+  public void setContext(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
   public abstract void toBundle(Bundle paramBundle);
   
-  public void x(Intent paramIntent, String paramString) {}
+  public void v(Intent paramIntent, String paramString) {}
 }
 
 

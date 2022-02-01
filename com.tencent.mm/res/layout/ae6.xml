@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:padding="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/dg4" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dlg" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/jn" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <CheckBox android:id="@id/cfs" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jn" android:checked="true" style="@style/lj" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/rq" />
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:id="@id/csg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/bt" android:layout_marginEnd="@dimen/ct">
+        <TextView android:textSize="14.0dip" android:textColor="@color/ag2" android:id="@id/cu2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cu1" />
+        <View android:id="@id/cu1" android:background="@drawable/b1a" android:visibility="gone" android:layout_width="@dimen/bt" android:layout_height="@dimen/bt" android:layout_marginStart="@dimen/bs" android:layout_toEndOf="@id/cu2" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/csh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/bt" android:layout_toEndOf="@id/csg">
+        <TextView android:textSize="14.0dip" android:textColor="@color/ag2" android:id="@id/cu4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cuc" />
+        <View android:id="@id/cu3" android:background="@drawable/b1a" android:visibility="gone" android:layout_width="@dimen/bt" android:layout_height="@dimen/bt" android:layout_marginStart="@dimen/bs" android:layout_toEndOf="@id/cu4" />
+    </RelativeLayout>
+    <View android:id="@id/csf" android:background="@drawable/a1t" android:layout_width="0.0dip" android:layout_height="@dimen/bs" android:layout_marginTop="@dimen/cb" android:layout_below="@id/csg" />
+</RelativeLayout>

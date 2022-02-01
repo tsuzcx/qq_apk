@@ -8,36 +8,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.widget.b.a.a.a;
 import com.tencent.mm.media.widget.b.a.a.c;
 import com.tencent.mm.media.widget.b.a.a.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/WCCameraEffectHelper;", "", "()V", "CAMERA_ID_BACK", "", "getCAMERA_ID_BACK", "()I", "CAMERA_ID_FRONT", "getCAMERA_ID_FRONT", "CAMERA_STREAM_IMAGE", "getCAMERA_STREAM_IMAGE", "CAMERA_STREAM_PREVIEW", "getCAMERA_STREAM_PREVIEW", "CAMERA_STREAM_RECORD", "getCAMERA_STREAM_RECORD", "TAG", "", "isUseCaptureKeyCreator", "", "autoConfig", "", "builder", "Landroid/hardware/camera2/CaptureRequest$Builder;", "effectTag", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "enable", "getVendorTagCaptureKey", "Landroid/hardware/camera2/CaptureRequest$Key;", "list", "", "getVendorTagCaptureKeyByCreator", "getVendorTagCaptureKeyByFinder", "manualConfig", "value", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera2/effect/WCCameraEffectHelper;", "", "()V", "CAMERA_ID_BACK", "", "getCAMERA_ID_BACK", "()I", "CAMERA_ID_FRONT", "getCAMERA_ID_FRONT", "CAMERA_STREAM_IMAGE", "getCAMERA_STREAM_IMAGE", "CAMERA_STREAM_PREVIEW", "getCAMERA_STREAM_PREVIEW", "CAMERA_STREAM_RECORD", "getCAMERA_STREAM_RECORD", "TAG", "", "isUseCaptureKeyCreator", "", "autoConfig", "", "builder", "Landroid/hardware/camera2/CaptureRequest$Builder;", "effectTag", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "enable", "getVendorTagCaptureKey", "Landroid/hardware/camera2/CaptureRequest$Key;", "list", "", "getVendorTagCaptureKeyByCreator", "getVendorTagCaptureKeyByFinder", "manualConfig", "value", "plugin-mediaeditor_release"})
 public final class b
 {
   private static final String TAG = "MicroMsg.WCCameraEffectHelper";
-  private static boolean huI = false;
-  private static final int huJ = 1;
-  private static final int huK = 2;
-  private static final int huL = 4;
-  private static final int huM = 1;
-  private static final int huN = 2;
-  public static final b huO;
+  private static boolean ioj = false;
+  private static final int iok = 1;
+  private static final int iol = 2;
+  private static final int iom = 4;
+  private static final int ion = 1;
+  private static final int ioo = 2;
+  public static final b iop;
   
   static
   {
     AppMethodBeat.i(94185);
-    huO = new b();
-    huI = true;
+    iop = new b();
+    ioj = true;
     TAG = "MicroMsg.WCCameraEffectHelper";
-    huJ = 1;
-    huK = 2;
-    huL = 4;
-    huM = 1;
-    huN = 2;
+    iok = 1;
+    iol = 2;
+    iom = 4;
+    ion = 1;
+    ioo = 2;
     AppMethodBeat.o(94185);
   }
   
@@ -47,12 +47,12 @@ public final class b
     p.h(parama, "effectTag");
     if (paramList == null)
     {
-      paramList = parama.aFh;
+      paramList = parama.aEX;
       if ((paramList instanceof Integer))
       {
-        parama = parama.hvm;
+        parama = parama.ioN;
         if (parama == null) {
-          p.gkB();
+          p.hyc();
         }
         parama = c.d(parama, Integer.TYPE);
         AppMethodBeat.o(94182);
@@ -60,9 +60,9 @@ public final class b
       }
       if ((paramList instanceof Boolean))
       {
-        parama = parama.hvm;
+        parama = parama.ioN;
         if (parama == null) {
-          p.gkB();
+          p.hyc();
         }
         parama = c.d(parama, Boolean.TYPE);
         AppMethodBeat.o(94182);
@@ -70,19 +70,19 @@ public final class b
       }
       if ((paramList instanceof String))
       {
-        parama = parama.hvm;
+        parama = parama.ioN;
         if (parama == null) {
-          p.gkB();
+          p.hyc();
         }
         parama = c.d(parama, String.class);
         AppMethodBeat.o(94182);
         return parama;
       }
-      ae.e(TAG, "getVendorTagCaptureKeyByCreator: with unknow type value = " + parama.aFh + " key = " + parama.hvm);
+      Log.e(TAG, "getVendorTagCaptureKeyByCreator: with unknow type value = " + parama.aEX + " key = " + parama.ioN);
       AppMethodBeat.o(94182);
       return null;
     }
-    Object localObject = parama.aFh;
+    Object localObject = parama.aEX;
     if ((localObject instanceof Integer))
     {
       parama = d.a(parama, paramList, Integer.TYPE);
@@ -110,11 +110,11 @@ public final class b
     AppMethodBeat.i(94183);
     p.h(paramBuilder, "builder");
     if (parama == null) {
-      p.gkB();
+      p.hyc();
     }
-    Object localObject = parama.aFh;
+    Object localObject = parama.aEX;
     if (localObject == null) {
-      p.gkB();
+      p.hyc();
     }
     a(paramBuilder, parama, paramBoolean, localObject);
     AppMethodBeat.o(94183);
@@ -130,18 +130,18 @@ public final class b
       AppMethodBeat.o(94184);
       return;
     }
-    if (huI) {}
+    if (ioj) {}
     for (CaptureRequest.Key localKey = a(parama, null);; localKey = a(parama, ((CaptureRequest)localObject1).getKeys()))
     {
-      localObject1 = parama.hvl;
+      localObject1 = parama.ioM;
       if (!(localObject1 instanceof Range)) {
         break label180;
       }
-      localObject1 = parama.hvl;
+      localObject1 = parama.ioM;
       if (localObject1 != null) {
         break;
       }
-      paramBuilder = new v("null cannot be cast to non-null type android.util.Range<kotlin.Int>");
+      paramBuilder = new t("null cannot be cast to non-null type android.util.Range<kotlin.Int>");
       AppMethodBeat.o(94184);
       throw paramBuilder;
       localObject1 = paramBuilder.build();
@@ -150,23 +150,23 @@ public final class b
     Object localObject1 = ((Range)localObject1).getLower();
     for (;;)
     {
-      ae.i(TAG, parama.hvk + " has been set value is " + paramBoolean);
+      Log.i(TAG, parama.ioL + " has been set value is " + paramBoolean);
       if (!(paramObject instanceof Integer)) {
         break label433;
       }
       if (localKey != null) {
         break;
       }
-      paramBuilder = new v("null cannot be cast to non-null type android.hardware.camera2.CaptureRequest.Key<kotlin.Int>");
+      paramBuilder = new t("null cannot be cast to non-null type android.hardware.camera2.CaptureRequest.Key<kotlin.Int>");
       AppMethodBeat.o(94184);
       throw paramBuilder;
       label180:
       if ((localObject1 instanceof ArrayList))
       {
-        localObject1 = parama.hvl;
+        localObject1 = parama.ioM;
         if (localObject1 == null)
         {
-          paramBuilder = new v("null cannot be cast to non-null type kotlin.collections.ArrayList<*> /* = java.util.ArrayList<*> */");
+          paramBuilder = new t("null cannot be cast to non-null type kotlin.collections.ArrayList<*> /* = java.util.ArrayList<*> */");
           AppMethodBeat.o(94184);
           throw paramBuilder;
         }
@@ -177,7 +177,7 @@ public final class b
           localObject1 = ((ArrayList)localObject1).get(0);
           if (localObject1 == null)
           {
-            paramBuilder = new v("null cannot be cast to non-null type kotlin.Int");
+            paramBuilder = new t("null cannot be cast to non-null type kotlin.Int");
             AppMethodBeat.o(94184);
             throw paramBuilder;
           }
@@ -188,7 +188,7 @@ public final class b
           localObject1 = ((ArrayList)localObject1).get(0);
           if (localObject1 == null)
           {
-            paramBuilder = new v("null cannot be cast to non-null type kotlin.Boolean");
+            paramBuilder = new t("null cannot be cast to non-null type kotlin.Boolean");
             AppMethodBeat.o(94184);
             throw paramBuilder;
           }
@@ -199,7 +199,7 @@ public final class b
           localObject1 = ((ArrayList)localObject1).get(0);
           if (localObject1 == null)
           {
-            paramBuilder = new v("null cannot be cast to non-null type kotlin.String");
+            paramBuilder = new t("null cannot be cast to non-null type kotlin.String");
             AppMethodBeat.o(94184);
             throw paramBuilder;
           }
@@ -220,7 +220,7 @@ public final class b
     }
     if (localObject1 == null)
     {
-      paramBuilder = new v("null cannot be cast to non-null type kotlin.Int");
+      paramBuilder = new t("null cannot be cast to non-null type kotlin.Int");
       AppMethodBeat.o(94184);
       throw paramBuilder;
     }
@@ -232,7 +232,7 @@ public final class b
     {
       if (localKey == null)
       {
-        paramBuilder = new v("null cannot be cast to non-null type android.hardware.camera2.CaptureRequest.Key<kotlin.Boolean>");
+        paramBuilder = new t("null cannot be cast to non-null type android.hardware.camera2.CaptureRequest.Key<kotlin.Boolean>");
         AppMethodBeat.o(94184);
         throw paramBuilder;
       }
@@ -244,7 +244,7 @@ public final class b
     {
       if (localKey == null)
       {
-        paramBuilder = new v("null cannot be cast to non-null type android.hardware.camera2.CaptureRequest.Key<kotlin.String>");
+        paramBuilder = new t("null cannot be cast to non-null type android.hardware.camera2.CaptureRequest.Key<kotlin.String>");
         AppMethodBeat.o(94184);
         throw paramBuilder;
       }
@@ -253,7 +253,7 @@ public final class b
       }
       if (localObject1 == null)
       {
-        paramBuilder = new v("null cannot be cast to non-null type kotlin.String");
+        paramBuilder = new t("null cannot be cast to non-null type kotlin.String");
         AppMethodBeat.o(94184);
         throw paramBuilder;
       }
@@ -261,38 +261,38 @@ public final class b
       AppMethodBeat.o(94184);
       return;
     }
-    ae.i(TAG, "error set config");
+    Log.i(TAG, "error set config");
     AppMethodBeat.o(94184);
   }
   
-  public static int axs()
+  public static int aPQ()
   {
-    return huJ;
+    return iok;
   }
   
-  public static int axt()
+  public static int aPR()
   {
-    return huK;
+    return iol;
   }
   
-  public static int axu()
+  public static int aPS()
   {
-    return huL;
+    return iom;
   }
   
-  public static int axv()
+  public static int aPT()
   {
-    return huM;
+    return ion;
   }
   
-  public static int axw()
+  public static int aPU()
   {
-    return huN;
+    return ioo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.a.b
  * JD-Core Version:    0.7.0.1
  */

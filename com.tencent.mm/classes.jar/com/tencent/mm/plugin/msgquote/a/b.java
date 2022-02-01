@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.msgquote.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ej;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.g.c.ep;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class b
-  extends ej
+  extends ep
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(88813);
-    c.a locala = new c.a();
-    locala.IBL = new Field[5];
-    locala.columns = new String[6];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[5];
+    localMAutoDBInfo.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "msgId";
-    locala.IBN.put("msgId", "LONG");
+    localMAutoDBInfo.columns[0] = "msgId";
+    localMAutoDBInfo.colsMap.put("msgId", "LONG");
     localStringBuilder.append(" msgId LONG");
     localStringBuilder.append(", ");
-    locala.columns[1] = "msgSvrId";
-    locala.IBN.put("msgSvrId", "LONG");
+    localMAutoDBInfo.columns[1] = "msgSvrId";
+    localMAutoDBInfo.colsMap.put("msgSvrId", "LONG");
     localStringBuilder.append(" msgSvrId LONG");
     localStringBuilder.append(", ");
-    locala.columns[2] = "quotedMsgId";
-    locala.IBN.put("quotedMsgId", "LONG");
+    localMAutoDBInfo.columns[2] = "quotedMsgId";
+    localMAutoDBInfo.colsMap.put("quotedMsgId", "LONG");
     localStringBuilder.append(" quotedMsgId LONG");
     localStringBuilder.append(", ");
-    locala.columns[3] = "quotedMsgSvrId";
-    locala.IBN.put("quotedMsgSvrId", "LONG");
+    localMAutoDBInfo.columns[3] = "quotedMsgSvrId";
+    localMAutoDBInfo.colsMap.put("quotedMsgSvrId", "LONG");
     localStringBuilder.append(" quotedMsgSvrId LONG");
     localStringBuilder.append(", ");
-    locala.columns[4] = "status";
-    locala.IBN.put("status", "INTEGER");
+    localMAutoDBInfo.columns[4] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
-    locala.columns[5] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[5] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(88813);
   }
   
-  private b dry()
+  private b els()
   {
     AppMethodBeat.i(88811);
     b localb = new b();
@@ -63,12 +63,12 @@ public final class b
     {
       for (;;)
       {
-        ae.i("MicroMsg.msgquote.MsgQute", "clone() Exception:%s %s", new Object[] { localException.getClass(), localException.getMessage() });
+        Log.i("MicroMsg.msgquote.MsgQute", "clone() Exception:%s %s", new Object[] { localException.getClass(), localException.getMessage() });
       }
     }
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
@@ -83,7 +83,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.msgquote.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ final class FreeWifiEntryUI$1
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(25010);
-    d.cD(this.tAo);
+    d.cZ(this.wRp);
     AppMethodBeat.o(25010);
   }
 }

@@ -8,37 +8,42 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDiskIOException;
 import android.net.Uri;
+import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Message;
 import android.os.Parcelable;
 import android.widget.Toast;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.br.c;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.modelsimple.ac;
+import com.tencent.mm.n.f;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXTextObject;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
+import com.tencent.mm.pluginsdk.l.e;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity;
 import com.tencent.mm.pluginsdk.ui.AutoLoginActivity.a;
-import com.tencent.mm.protocal.protobuf.xy;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.o;
-import com.tencent.mm.sdk.platformtools.u;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.protocal.protobuf.zk;
+import com.tencent.mm.sdk.platformtools.FileProviderHelper;
+import com.tencent.mm.sdk.platformtools.ImgUtil;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.ui.base.b;
 import com.tencent.mm.ui.transmit.SelectConversationUI;
 import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -50,33 +55,37 @@ import java.util.concurrent.CountDownLatch;
 @JgClassChecked(author=20, fComment="checked", lastDate="20140422", reviewer=20, vComment={com.jg.EType.ACTIVITYCHECK})
 public class ShareImgUI
   extends AutoLoginActivity
-  implements f
+  implements i
 {
-  ArrayList<String> Laa;
-  private ProgressDialog fOC;
+  private DialogInterface.OnCancelListener CJj;
+  ArrayList<String> Qpb;
+  private ArrayList<q> Qwz;
   String filePath;
-  private aq handler;
+  private ProgressDialog gtM;
+  private MMHandler handler;
   private Intent intent;
-  Intent mHz;
+  Intent nUx;
   Uri uri;
   
   public ShareImgUI()
   {
     AppMethodBeat.i(39140);
-    this.fOC = null;
+    this.gtM = null;
+    this.CJj = null;
     this.intent = null;
+    this.Qwz = new ArrayList();
     this.filePath = null;
     this.uri = null;
-    this.Laa = null;
-    this.mHz = null;
-    this.handler = new aq()
+    this.Qpb = null;
+    this.nUx = null;
+    this.handler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(39133);
-        if (bu.isNullOrNil(ShareImgUI.this.filePath))
+        if (Util.isNullOrNil(ShareImgUI.this.filePath))
         {
-          ae.e("MicroMsg.ShareImgUI", "launch : fail, filePath is null");
+          Log.e("MicroMsg.ShareImgUI", "launch : fail, filePath is null");
           ShareImgUI.d(ShareImgUI.this);
           ShareImgUI.this.finish();
           AppMethodBeat.o(39133);
@@ -93,15 +102,15 @@ public class ShareImgUI
   private String a(Uri paramUri, android.database.Cursor paramCursor)
   {
     // Byte code:
-    //   0: ldc 95
-    //   2: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 106
+    //   2: invokestatic 69	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
     //   6: ifnull +351 -> 357
-    //   9: ldc 97
+    //   9: ldc 108
     //   11: astore 4
     //   13: aload_2
-    //   14: ldc 99
-    //   16: invokeinterface 105 2 0
+    //   14: ldc 110
+    //   16: invokeinterface 116 2 0
     //   21: istore_3
     //   22: aload 4
     //   24: astore 5
@@ -110,7 +119,7 @@ public class ShareImgUI
     //   28: if_icmpeq +60 -> 88
     //   31: aload_2
     //   32: iload_3
-    //   33: invokeinterface 109 2 0
+    //   33: invokeinterface 120 2 0
     //   38: astore 5
     //   40: aload 5
     //   42: astore 4
@@ -123,76 +132,76 @@ public class ShareImgUI
     //   57: aload 4
     //   59: ifnull +14 -> 73
     //   62: aload 4
-    //   64: ldc 111
-    //   66: ldc 113
-    //   68: invokevirtual 119	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   64: ldc 122
+    //   66: ldc 124
+    //   68: invokevirtual 130	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   71: astore 5
-    //   73: ldc 121
-    //   75: ldc 123
+    //   73: ldc 132
+    //   75: ldc 134
     //   77: aload 5
-    //   79: invokestatic 127	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   82: invokevirtual 131	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   85: invokestatic 136	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   79: invokestatic 138	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   82: invokevirtual 142	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   85: invokestatic 147	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   88: aload_2
-    //   89: invokeinterface 139 1 0
+    //   89: invokeinterface 150 1 0
     //   94: aload_0
-    //   95: invokevirtual 143	com/tencent/mm/ui/tools/ShareImgUI:getContentResolver	()Landroid/content/ContentResolver;
+    //   95: invokevirtual 154	com/tencent/mm/ui/tools/ShareImgUI:getContentResolver	()Landroid/content/ContentResolver;
     //   98: aload_1
-    //   99: ldc 145
-    //   101: invokevirtual 151	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
+    //   99: ldc 156
+    //   101: invokevirtual 162	android/content/ContentResolver:openAssetFileDescriptor	(Landroid/net/Uri;Ljava/lang/String;)Landroid/content/res/AssetFileDescriptor;
     //   104: astore_1
     //   105: aload_1
-    //   106: invokevirtual 157	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
+    //   106: invokevirtual 168	android/content/res/AssetFileDescriptor:createInputStream	()Ljava/io/FileInputStream;
     //   109: astore_2
-    //   110: invokestatic 163	com/tencent/mm/model/bc:aCg	()Lcom/tencent/mm/model/c;
+    //   110: invokestatic 174	com/tencent/mm/model/bg:aVF	()Lcom/tencent/mm/model/c;
     //   113: pop
-    //   114: invokestatic 169	com/tencent/mm/model/c:isSDCardAvailable	()Z
+    //   114: invokestatic 180	com/tencent/mm/model/c:isSDCardAvailable	()Z
     //   117: ifeq +271 -> 388
-    //   120: new 171	java/lang/StringBuilder
+    //   120: new 182	java/lang/StringBuilder
     //   123: dup
-    //   124: invokespecial 172	java/lang/StringBuilder:<init>	()V
-    //   127: invokestatic 178	com/tencent/mm/loader/j/b:asj	()Ljava/lang/String;
-    //   130: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   133: ldc 184
-    //   135: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   138: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   124: invokespecial 183	java/lang/StringBuilder:<init>	()V
+    //   127: invokestatic 189	com/tencent/mm/loader/j/b:aKJ	()Ljava/lang/String;
+    //   130: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   133: ldc 195
+    //   135: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   138: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   141: astore 4
-    //   143: new 171	java/lang/StringBuilder
+    //   143: new 182	java/lang/StringBuilder
     //   146: dup
-    //   147: invokespecial 172	java/lang/StringBuilder:<init>	()V
-    //   150: invokestatic 178	com/tencent/mm/loader/j/b:asj	()Ljava/lang/String;
-    //   153: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: ldc 189
-    //   158: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: invokespecial 183	java/lang/StringBuilder:<init>	()V
+    //   150: invokestatic 189	com/tencent/mm/loader/j/b:aKJ	()Ljava/lang/String;
+    //   153: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: ldc 200
+    //   158: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   161: aload 5
-    //   163: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   166: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   166: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   169: astore 8
-    //   171: new 191	com/tencent/mm/vfs/k
+    //   171: new 202	com/tencent/mm/vfs/o
     //   174: dup
     //   175: aload 4
-    //   177: invokespecial 194	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   177: invokespecial 205	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
     //   180: astore 4
     //   182: aload 4
-    //   184: invokevirtual 197	com/tencent/mm/vfs/k:exists	()Z
+    //   184: invokevirtual 208	com/tencent/mm/vfs/o:exists	()Z
     //   187: ifne +9 -> 196
     //   190: aload 4
-    //   192: invokevirtual 200	com/tencent/mm/vfs/k:mkdirs	()Z
+    //   192: invokevirtual 211	com/tencent/mm/vfs/o:mkdirs	()Z
     //   195: pop
-    //   196: new 191	com/tencent/mm/vfs/k
+    //   196: new 202	com/tencent/mm/vfs/o
     //   199: dup
     //   200: aload 8
-    //   202: invokespecial 194	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   202: invokespecial 205	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
     //   205: astore 4
     //   207: aload 4
-    //   209: invokevirtual 197	com/tencent/mm/vfs/k:exists	()Z
+    //   209: invokevirtual 208	com/tencent/mm/vfs/o:exists	()Z
     //   212: ifne +9 -> 221
     //   215: aload 4
-    //   217: invokevirtual 203	com/tencent/mm/vfs/k:createNewFile	()Z
+    //   217: invokevirtual 214	com/tencent/mm/vfs/o:createNewFile	()Z
     //   220: pop
     //   221: aload 8
     //   223: iconst_0
-    //   224: invokestatic 209	com/tencent/mm/vfs/o:db	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   224: invokestatic 220	com/tencent/mm/vfs/s:dw	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   227: astore 4
     //   229: aload 4
     //   231: astore 7
@@ -213,7 +222,7 @@ public class ShareImgUI
     //   257: aload 9
     //   259: iconst_0
     //   260: sipush 5120
-    //   263: invokevirtual 215	java/io/InputStream:read	([BII)I
+    //   263: invokevirtual 226	java/io/InputStream:read	([BII)I
     //   266: istore_3
     //   267: iload_3
     //   268: iconst_m1
@@ -228,7 +237,7 @@ public class ShareImgUI
     //   284: aload 9
     //   286: iconst_0
     //   287: iload_3
-    //   288: invokevirtual 221	java/io/OutputStream:write	([BII)V
+    //   288: invokevirtual 232	java/io/OutputStream:write	([BII)V
     //   291: goto -45 -> 246
     //   294: astore 8
     //   296: aload 4
@@ -237,65 +246,65 @@ public class ShareImgUI
     //   301: astore 6
     //   303: aload_2
     //   304: astore 5
-    //   306: ldc 121
-    //   308: new 171	java/lang/StringBuilder
+    //   306: ldc 132
+    //   308: new 182	java/lang/StringBuilder
     //   311: dup
-    //   312: ldc 223
-    //   314: invokespecial 224	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   312: ldc 234
+    //   314: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   317: aload 8
-    //   319: invokevirtual 227	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   322: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   325: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   328: invokestatic 230	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   319: invokevirtual 238	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   322: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   325: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   328: invokestatic 241	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   331: aload_2
     //   332: ifnull +7 -> 339
     //   335: aload_2
-    //   336: invokevirtual 231	java/io/InputStream:close	()V
+    //   336: invokevirtual 242	java/io/InputStream:close	()V
     //   339: aload_1
     //   340: ifnull +7 -> 347
     //   343: aload_1
-    //   344: invokevirtual 232	android/content/res/AssetFileDescriptor:close	()V
+    //   344: invokevirtual 243	android/content/res/AssetFileDescriptor:close	()V
     //   347: aload 4
     //   349: ifnull +8 -> 357
     //   352: aload 4
-    //   354: invokevirtual 233	java/io/OutputStream:close	()V
-    //   357: ldc 95
-    //   359: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   354: invokevirtual 244	java/io/OutputStream:close	()V
+    //   357: ldc 106
+    //   359: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   362: aconst_null
     //   363: areturn
     //   364: astore 5
-    //   366: ldc 121
-    //   368: ldc 235
+    //   366: ldc 132
+    //   368: ldc 246
     //   370: iconst_1
-    //   371: anewarray 237	java/lang/Object
+    //   371: anewarray 248	java/lang/Object
     //   374: dup
     //   375: iconst_0
     //   376: aload 5
-    //   378: invokevirtual 238	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   378: invokevirtual 249	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   381: aastore
-    //   382: invokestatic 242	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   382: invokestatic 253	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   385: goto -341 -> 44
     //   388: aload_0
     //   389: aload 5
-    //   391: invokevirtual 246	com/tencent/mm/ui/tools/ShareImgUI:deleteFile	(Ljava/lang/String;)Z
+    //   391: invokevirtual 257	com/tencent/mm/ui/tools/ShareImgUI:deleteFile	(Ljava/lang/String;)Z
     //   394: pop
-    //   395: new 171	java/lang/StringBuilder
+    //   395: new 182	java/lang/StringBuilder
     //   398: dup
-    //   399: invokespecial 172	java/lang/StringBuilder:<init>	()V
+    //   399: invokespecial 183	java/lang/StringBuilder:<init>	()V
     //   402: aload_0
-    //   403: invokevirtual 250	com/tencent/mm/ui/tools/ShareImgUI:getFilesDir	()Ljava/io/File;
-    //   406: invokevirtual 255	java/io/File:getPath	()Ljava/lang/String;
-    //   409: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   412: ldc_w 257
-    //   415: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   403: invokevirtual 261	com/tencent/mm/ui/tools/ShareImgUI:getFilesDir	()Ljava/io/File;
+    //   406: invokevirtual 266	java/io/File:getPath	()Ljava/lang/String;
+    //   409: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   412: ldc_w 268
+    //   415: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   418: aload 5
-    //   420: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   423: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   420: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   423: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   426: astore 8
     //   428: aload_0
     //   429: aload 5
     //   431: iconst_0
-    //   432: invokevirtual 261	com/tencent/mm/ui/tools/ShareImgUI:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   432: invokevirtual 272	com/tencent/mm/ui/tools/ShareImgUI:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
     //   435: astore 4
     //   437: goto -208 -> 229
     //   440: aload 4
@@ -305,7 +314,7 @@ public class ShareImgUI
     //   447: aload_2
     //   448: astore 5
     //   450: aload 4
-    //   452: invokevirtual 264	java/io/OutputStream:flush	()V
+    //   452: invokevirtual 275	java/io/OutputStream:flush	()V
     //   455: aload 4
     //   457: astore 7
     //   459: aload_1
@@ -313,21 +322,21 @@ public class ShareImgUI
     //   462: aload_2
     //   463: astore 5
     //   465: aload 4
-    //   467: invokevirtual 233	java/io/OutputStream:close	()V
+    //   467: invokevirtual 244	java/io/OutputStream:close	()V
     //   470: aload_2
     //   471: ifnull +7 -> 478
     //   474: aload_2
-    //   475: invokevirtual 231	java/io/InputStream:close	()V
+    //   475: invokevirtual 242	java/io/InputStream:close	()V
     //   478: aload_1
     //   479: ifnull +7 -> 486
     //   482: aload_1
-    //   483: invokevirtual 232	android/content/res/AssetFileDescriptor:close	()V
+    //   483: invokevirtual 243	android/content/res/AssetFileDescriptor:close	()V
     //   486: aload 4
     //   488: ifnull +8 -> 496
     //   491: aload 4
-    //   493: invokevirtual 233	java/io/OutputStream:close	()V
-    //   496: ldc 95
-    //   498: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   493: invokevirtual 244	java/io/OutputStream:close	()V
+    //   496: ldc 106
+    //   498: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   501: aload 8
     //   503: areturn
     //   504: astore 8
@@ -343,28 +352,28 @@ public class ShareImgUI
     //   518: astore 6
     //   520: aload_2
     //   521: astore 5
-    //   523: ldc 121
-    //   525: new 171	java/lang/StringBuilder
+    //   523: ldc 132
+    //   525: new 182	java/lang/StringBuilder
     //   528: dup
-    //   529: ldc_w 266
-    //   532: invokespecial 224	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   529: ldc_w 277
+    //   532: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   535: aload 8
-    //   537: invokevirtual 267	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   540: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   543: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   546: invokestatic 230	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   537: invokevirtual 278	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   540: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   543: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   546: invokestatic 241	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   549: aload_2
     //   550: ifnull +7 -> 557
     //   553: aload_2
-    //   554: invokevirtual 231	java/io/InputStream:close	()V
+    //   554: invokevirtual 242	java/io/InputStream:close	()V
     //   557: aload_1
     //   558: ifnull +7 -> 565
     //   561: aload_1
-    //   562: invokevirtual 232	android/content/res/AssetFileDescriptor:close	()V
+    //   562: invokevirtual 243	android/content/res/AssetFileDescriptor:close	()V
     //   565: aload 4
     //   567: ifnull -210 -> 357
     //   570: aload 4
-    //   572: invokevirtual 233	java/io/OutputStream:close	()V
+    //   572: invokevirtual 244	java/io/OutputStream:close	()V
     //   575: goto -218 -> 357
     //   578: astore_1
     //   579: goto -222 -> 357
@@ -381,38 +390,38 @@ public class ShareImgUI
     //   596: astore 6
     //   598: aload_2
     //   599: astore 5
-    //   601: ldc 121
-    //   603: new 171	java/lang/StringBuilder
+    //   601: ldc 132
+    //   603: new 182	java/lang/StringBuilder
     //   606: dup
-    //   607: ldc_w 269
-    //   610: invokespecial 224	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   607: ldc_w 280
+    //   610: invokespecial 235	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   613: aload 8
-    //   615: invokevirtual 238	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   618: invokevirtual 182	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   621: invokevirtual 187	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   624: invokestatic 230	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   615: invokevirtual 249	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   618: invokevirtual 193	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   621: invokevirtual 198	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   624: invokestatic 241	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   627: aload 4
     //   629: astore 7
     //   631: aload_1
     //   632: astore 6
     //   634: aload_2
     //   635: astore 5
-    //   637: ldc 121
+    //   637: ldc 132
     //   639: aload 8
-    //   641: invokevirtual 270	java/lang/Exception:toString	()Ljava/lang/String;
-    //   644: invokestatic 230	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   641: invokevirtual 281	java/lang/Exception:toString	()Ljava/lang/String;
+    //   644: invokestatic 241	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   647: aload_2
     //   648: ifnull +7 -> 655
     //   651: aload_2
-    //   652: invokevirtual 231	java/io/InputStream:close	()V
+    //   652: invokevirtual 242	java/io/InputStream:close	()V
     //   655: aload_1
     //   656: ifnull +7 -> 663
     //   659: aload_1
-    //   660: invokevirtual 232	android/content/res/AssetFileDescriptor:close	()V
+    //   660: invokevirtual 243	android/content/res/AssetFileDescriptor:close	()V
     //   663: aload 4
     //   665: ifnull -308 -> 357
     //   668: aload 4
-    //   670: invokevirtual 233	java/io/OutputStream:close	()V
+    //   670: invokevirtual 244	java/io/OutputStream:close	()V
     //   673: goto -316 -> 357
     //   676: astore_1
     //   677: goto -320 -> 357
@@ -426,17 +435,17 @@ public class ShareImgUI
     //   689: aload_2
     //   690: ifnull +7 -> 697
     //   693: aload_2
-    //   694: invokevirtual 231	java/io/InputStream:close	()V
+    //   694: invokevirtual 242	java/io/InputStream:close	()V
     //   697: aload_1
     //   698: ifnull +7 -> 705
     //   701: aload_1
-    //   702: invokevirtual 232	android/content/res/AssetFileDescriptor:close	()V
+    //   702: invokevirtual 243	android/content/res/AssetFileDescriptor:close	()V
     //   705: aload 7
     //   707: ifnull +8 -> 715
     //   710: aload 7
-    //   712: invokevirtual 233	java/io/OutputStream:close	()V
-    //   715: ldc 95
-    //   717: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   712: invokevirtual 244	java/io/OutputStream:close	()V
+    //   715: ldc 106
+    //   717: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   720: aload 4
     //   722: athrow
     //   723: astore_1
@@ -606,7 +615,7 @@ public class ShareImgUI
   private void a(final Bundle paramBundle, final b paramb)
   {
     AppMethodBeat.i(39146);
-    com.tencent.mm.sdk.g.b.c(new Runnable()
+    ThreadPool.post(new Runnable()
     {
       public final void run()
       {
@@ -636,15 +645,15 @@ public class ShareImgUI
         label288:
         for (localObject1 = localParcelable.toString();; localObject2 = "null")
         {
-          com.tencent.mm.sdk.g.b.c(new Runnable()
+          ThreadPool.post(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(39134);
-              if (!ShareImgUI.a(ShareImgUI.this, this.LhE, localParcelable)) {
-                this.LhG[0] = true;
+              if (!ShareImgUI.a(ShareImgUI.this, this.QwD, localParcelable)) {
+                this.QwF[0] = true;
               }
-              this.LhH.countDown();
+              this.QwG.countDown();
               AppMethodBeat.o(39134);
             }
           }, "getMultiSendFilePathListItem".concat(String.valueOf(localObject1)));
@@ -655,7 +664,7 @@ public class ShareImgUI
             localObject6 = new ArrayList((Collection)localObject4);
             if (localObject3[0] != 0)
             {
-              ae.d("MicroMsg.ShareImgUI", "hy: has non path img");
+              Log.d("MicroMsg.ShareImgUI", "hy: has non path img");
               localObject3 = ShareImgUI.this;
               localObject1 = paramb;
               localObject4 = null;
@@ -668,10 +677,10 @@ public class ShareImgUI
           {
             for (;;)
             {
-              ae.printErrStackTrace("MicroMsg.ShareImgUI", localInterruptedException, "hy: timeout when getmulti", new Object[0]);
+              Log.printErrStackTrace("MicroMsg.ShareImgUI", localInterruptedException, "hy: timeout when getmulti", new Object[0]);
               ShareImgUI.a(ShareImgUI.this, paramb, null);
               continue;
-              ae.i("MicroMsg.ShareImgUI", "hy: getMultiSendFilePathList done. using: %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.LhD) });
+              Log.i("MicroMsg.ShareImgUI", "hy: getMultiSendFilePathList done. using: %d ms", new Object[] { Long.valueOf(System.currentTimeMillis() - this.QwC) });
               localObject4 = ShareImgUI.this;
               localObject5 = paramb;
               localObject2 = localObject5;
@@ -684,7 +693,7 @@ public class ShareImgUI
               }
             }
           }
-          ae.e("MicroMsg.ShareImgUI", "getParcelableArrayList failed");
+          Log.e("MicroMsg.ShareImgUI", "getParcelableArrayList failed");
           ShareImgUI.a(ShareImgUI.this, paramb, null);
           AppMethodBeat.o(39135);
           return;
@@ -694,126 +703,77 @@ public class ShareImgUI
     AppMethodBeat.o(39146);
   }
   
-  private void aWi()
+  private void aon(int paramInt)
   {
-    AppMethodBeat.i(39144);
-    if (this.intent == null)
+    AppMethodBeat.i(39150);
+    switch (paramInt)
     {
-      ae.e("MicroMsg.ShareImgUI", "launch : fail, intent is null");
-      afA(0);
-      finish();
-      AppMethodBeat.o(39144);
+    default: 
+      Toast.makeText(this, 2131765848, 1).show();
+      AppMethodBeat.o(39150);
       return;
     }
-    String str = this.intent.getAction();
-    Bundle localBundle = this.intent.getExtras();
-    if (bu.isNullOrNil(str))
-    {
-      ae.e("MicroMsg.ShareImgUI", "launch : fail, action is null");
-      afA(0);
-      finish();
-      AppMethodBeat.o(39144);
-      return;
-    }
-    if (localBundle != null)
-    {
-      Parcelable localParcelable = localBundle.getParcelable("android.intent.extra.STREAM");
-      if ((localParcelable != null) && ((localParcelable instanceof Uri)))
-      {
-        this.uri = ((Uri)localParcelable);
-        if (!bu.z(this.uri))
-        {
-          ae.e("MicroMsg.ShareImgUI", "launch : fail, not accepted: %s", new Object[] { this.uri });
-          afA(0);
-          finish();
-          AppMethodBeat.o(39144);
-          return;
-        }
-      }
-    }
-    showDialog();
-    if (str.equals("android.intent.action.SEND"))
-    {
-      ae.i("MicroMsg.ShareImgUI", "send signal: ".concat(String.valueOf(str)));
-      if (this.uri == null)
-      {
-        boolean bool = bw(getIntent());
-        ae.i("MicroMsg.ShareImgUI", "dealWithText: %b", new Object[] { Boolean.valueOf(bool) });
-        if (!bool)
-        {
-          afA(0);
-          finish();
-        }
-        AppMethodBeat.o(39144);
-        return;
-      }
-      com.tencent.mm.sdk.g.b.c(new a(this.uri, new c()
-      {
-        public final void fOE()
-        {
-          AppMethodBeat.i(39131);
-          ShareImgUI.a(ShareImgUI.this).sendEmptyMessage(0);
-          AppMethodBeat.o(39131);
-        }
-      }), "ShareImgUI_getFilePath");
-      AppMethodBeat.o(39144);
-      return;
-    }
-    if ((str.equals("android.intent.action.SEND_MULTIPLE")) && (localBundle != null) && (localBundle.containsKey("android.intent.extra.STREAM")))
-    {
-      ae.i("MicroMsg.ShareImgUI", "send multi: ".concat(String.valueOf(str)));
-      a(localBundle, new b()
-      {
-        public final void aZ(ArrayList<String> paramAnonymousArrayList)
-        {
-          AppMethodBeat.i(39132);
-          ShareImgUI.this.Laa = paramAnonymousArrayList;
-          if ((ShareImgUI.this.Laa == null) || (ShareImgUI.this.Laa.size() == 0))
-          {
-            ae.e("MicroMsg.ShareImgUI", "launch : fail, filePathList is null");
-            ShareImgUI.b(ShareImgUI.this);
-            ShareImgUI.this.finish();
-            AppMethodBeat.o(39132);
-            return;
-          }
-          paramAnonymousArrayList = ShareImgUI.this.Laa.iterator();
-          while (paramAnonymousArrayList.hasNext())
-          {
-            String str = (String)paramAnonymousArrayList.next();
-            if (u.aRG(str))
-            {
-              ae.i("MicroMsg.ShareImgUI", "%s is not image", new Object[] { str });
-              ShareImgUI.b(ShareImgUI.this);
-              ShareImgUI.this.finish();
-              AppMethodBeat.o(39132);
-              return;
-            }
-          }
-          paramAnonymousArrayList = ShareImgUI.this.getIntent().resolveType(ShareImgUI.this);
-          if ((paramAnonymousArrayList == null) || (!paramAnonymousArrayList.contains("image")))
-          {
-            ae.i("MicroMsg.ShareImgUI", "mime type is not image, try to set it");
-            ShareImgUI.this.getIntent().setDataAndType(ShareImgUI.this.getIntent().getData(), "image/*");
-          }
-          ShareImgUI.c(ShareImgUI.this);
-          AppMethodBeat.o(39132);
-        }
-      });
-      AppMethodBeat.o(39144);
-      return;
-    }
-    ae.e("MicroMsg.ShareImgUI", "launch : fail, uri is null");
-    afA(0);
-    finish();
-    AppMethodBeat.o(39144);
+    Toast.makeText(this, 2131765844, 1).show();
+    AppMethodBeat.o(39150);
   }
   
-  private static int aYH(String paramString)
+  private boolean bG(Intent paramIntent)
+  {
+    AppMethodBeat.i(39147);
+    if (paramIntent == null)
+    {
+      Log.e("MicroMsg.ShareImgUI", "intent is null");
+      AppMethodBeat.o(39147);
+      return false;
+    }
+    String str = IntentUtil.getStringExtra(paramIntent, "android.intent.extra.TEXT");
+    paramIntent = IntentUtil.getStringExtra(paramIntent, "android.intent.extra.SUBJECT");
+    if ((str == null) || (str.length() == 0))
+    {
+      Log.i("MicroMsg.ShareImgUI", "text is null");
+      AppMethodBeat.o(39147);
+      return false;
+    }
+    Object localObject2 = new WXMediaMessage(new WXTextObject(str));
+    ((WXMediaMessage)localObject2).description = str;
+    Object localObject1 = new SendMessageToWX.Req();
+    ((SendMessageToWX.Req)localObject1).transaction = null;
+    ((SendMessageToWX.Req)localObject1).message = ((WXMediaMessage)localObject2);
+    localObject2 = new Bundle();
+    ((SendMessageToWX.Req)localObject1).toBundle((Bundle)localObject2);
+    ((Bundle)localObject2).putInt("_mmessage_sdkVersion", 637928960);
+    ((Bundle)localObject2).putString("_mmessage_appPackage", "com.tencent.mm.openapi");
+    ((Bundle)localObject2).putString("SendAppMessageWrapper_AppId", "wx4310bbd51be7d979");
+    localObject1 = new Intent();
+    ((Intent)localObject1).setClass(this, SelectConversationUI.class);
+    ((Intent)localObject1).putExtra("Select_Conv_NextStep", new Intent(this, SendAppMessageWrapperUI.class).putExtras((Bundle)localObject2).putExtra("animation_pop_in", true));
+    if ((bg.aVG()) && (!bg.azj()))
+    {
+      bg.azz().b(837, this);
+      bg.azz().a(837, this);
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(paramIntent + "|" + str);
+      paramIntent = new com.tencent.mm.modelsimple.g(5, (List)localObject2, getCallerPackage());
+      com.tencent.mm.kernel.g.azz().a(paramIntent, 0);
+      this.Qwz.add(paramIntent);
+      showDialog();
+      this.nUx = ((Intent)localObject1);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(39147);
+      return true;
+      Log.w("MicroMsg.ShareImgUI", "not logged in, jump to simple login");
+      MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent().addFlags(67108864));
+    }
+  }
+  
+  private static int bnM(String paramString)
   {
     AppMethodBeat.i(39149);
     if ((paramString == null) || (paramString.length() == 0))
     {
-      ae.e("MicroMsg.ShareImgUI", "map : mimeType is null");
+      Log.e("MicroMsg.ShareImgUI", "map : mimeType is null");
       AppMethodBeat.o(39149);
       return -1;
     }
@@ -833,91 +793,142 @@ public class ShareImgUI
       AppMethodBeat.o(39149);
       return 1;
     }
-    ae.d("MicroMsg.ShareImgUI", "map : unknown mimetype, send as file");
+    Log.d("MicroMsg.ShareImgUI", "map : unknown mimetype, send as file");
     AppMethodBeat.o(39149);
     return 3;
   }
   
-  private void afA(int paramInt)
+  private void brd()
   {
-    AppMethodBeat.i(39150);
-    switch (paramInt)
+    AppMethodBeat.i(39144);
+    if (this.intent == null)
     {
-    default: 
-      Toast.makeText(this, 2131763659, 1).show();
-      AppMethodBeat.o(39150);
+      Log.e("MicroMsg.ShareImgUI", "launch : fail, intent is null");
+      aon(0);
+      finish();
+      AppMethodBeat.o(39144);
       return;
     }
-    Toast.makeText(this, 2131763656, 1).show();
-    AppMethodBeat.o(39150);
-  }
-  
-  private boolean bw(Intent paramIntent)
-  {
-    AppMethodBeat.i(39147);
-    if (paramIntent == null)
+    String str = this.intent.getAction();
+    Bundle localBundle = this.intent.getExtras();
+    if (Util.isNullOrNil(str))
     {
-      ae.e("MicroMsg.ShareImgUI", "intent is null");
-      AppMethodBeat.o(39147);
-      return false;
+      Log.e("MicroMsg.ShareImgUI", "launch : fail, action is null");
+      aon(0);
+      finish();
+      AppMethodBeat.o(39144);
+      return;
     }
-    String str = z.getStringExtra(paramIntent, "android.intent.extra.TEXT");
-    paramIntent = z.getStringExtra(paramIntent, "android.intent.extra.SUBJECT");
-    if ((str == null) || (str.length() == 0))
+    if (localBundle != null)
     {
-      ae.i("MicroMsg.ShareImgUI", "text is null");
-      AppMethodBeat.o(39147);
-      return false;
+      Parcelable localParcelable = localBundle.getParcelable("android.intent.extra.STREAM");
+      if ((localParcelable != null) && ((localParcelable instanceof Uri)))
+      {
+        this.uri = ((Uri)localParcelable);
+        if (!Util.isUriSafeToBeCopySrc(this.uri))
+        {
+          Log.e("MicroMsg.ShareImgUI", "launch : fail, not accepted: %s", new Object[] { this.uri });
+          aon(0);
+          finish();
+          AppMethodBeat.o(39144);
+          return;
+        }
+      }
     }
-    Object localObject2 = new WXMediaMessage(new WXTextObject(str));
-    ((WXMediaMessage)localObject2).description = str;
-    Object localObject1 = new SendMessageToWX.Req();
-    ((SendMessageToWX.Req)localObject1).transaction = null;
-    ((SendMessageToWX.Req)localObject1).message = ((WXMediaMessage)localObject2);
-    localObject2 = new Bundle();
-    ((SendMessageToWX.Req)localObject1).toBundle((Bundle)localObject2);
-    ((Bundle)localObject2).putInt("_mmessage_sdkVersion", 637928960);
-    ((Bundle)localObject2).putString("_mmessage_appPackage", "com.tencent.mm.openapi");
-    ((Bundle)localObject2).putString("SendAppMessageWrapper_AppId", "wx4310bbd51be7d979");
-    localObject1 = new Intent();
-    ((Intent)localObject1).setClass(this, SelectConversationUI.class);
-    ((Intent)localObject1).putExtra("Select_Conv_NextStep", new Intent(this, SendAppMessageWrapperUI.class).putExtras((Bundle)localObject2).putExtra("animation_pop_in", true));
-    if ((bc.aCh()) && (!bc.aiT()))
+    showDialog();
+    if (str.equals("android.intent.action.SEND"))
     {
-      bc.ajj().a(837, this);
-      localObject2 = new ArrayList();
-      ((ArrayList)localObject2).add(paramIntent + "|" + str);
-      paramIntent = new com.tencent.mm.modelsimple.g(5, (List)localObject2, getCallerPackage());
-      com.tencent.mm.kernel.g.ajj().a(paramIntent, 0);
-      showDialog();
-      this.mHz = ((Intent)localObject1);
+      Log.i("MicroMsg.ShareImgUI", "send signal: ".concat(String.valueOf(str)));
+      if (this.uri == null)
+      {
+        boolean bool = bG(getIntent());
+        Log.i("MicroMsg.ShareImgUI", "dealWithText: %b", new Object[] { Boolean.valueOf(bool) });
+        if (!bool)
+        {
+          aon(0);
+          finish();
+        }
+        AppMethodBeat.o(39144);
+        return;
+      }
+      ThreadPool.post(new a(this.uri, new c()
+      {
+        public final void gXx()
+        {
+          AppMethodBeat.i(39131);
+          ShareImgUI.a(ShareImgUI.this).sendEmptyMessage(0);
+          AppMethodBeat.o(39131);
+        }
+      }), "ShareImgUI_getFilePath");
+      AppMethodBeat.o(39144);
+      return;
     }
-    for (;;)
+    if ((str.equals("android.intent.action.SEND_MULTIPLE")) && (localBundle != null) && (localBundle.containsKey("android.intent.extra.STREAM")))
     {
-      AppMethodBeat.o(39147);
-      return true;
-      ae.w("MicroMsg.ShareImgUI", "not logged in, jump to simple login");
-      MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent().addFlags(67108864));
+      Log.i("MicroMsg.ShareImgUI", "send multi: ".concat(String.valueOf(str)));
+      a(localBundle, new b()
+      {
+        public final void br(ArrayList<String> paramAnonymousArrayList)
+        {
+          AppMethodBeat.i(39132);
+          ShareImgUI.this.Qpb = paramAnonymousArrayList;
+          if ((ShareImgUI.this.Qpb == null) || (ShareImgUI.this.Qpb.size() == 0))
+          {
+            Log.e("MicroMsg.ShareImgUI", "launch : fail, filePathList is null");
+            ShareImgUI.b(ShareImgUI.this);
+            ShareImgUI.this.finish();
+            AppMethodBeat.o(39132);
+            return;
+          }
+          paramAnonymousArrayList = ShareImgUI.this.Qpb.iterator();
+          while (paramAnonymousArrayList.hasNext())
+          {
+            String str = (String)paramAnonymousArrayList.next();
+            if (ImgUtil.isGif(str))
+            {
+              Log.i("MicroMsg.ShareImgUI", "%s is not image", new Object[] { str });
+              ShareImgUI.b(ShareImgUI.this);
+              ShareImgUI.this.finish();
+              AppMethodBeat.o(39132);
+              return;
+            }
+          }
+          paramAnonymousArrayList = ShareImgUI.this.getIntent().resolveType(ShareImgUI.this);
+          if ((paramAnonymousArrayList == null) || (!paramAnonymousArrayList.contains("image")))
+          {
+            Log.i("MicroMsg.ShareImgUI", "mime type is not image, try to set it");
+            ShareImgUI.this.getIntent().setDataAndType(ShareImgUI.this.getIntent().getData(), "image/*");
+          }
+          ShareImgUI.c(ShareImgUI.this);
+          AppMethodBeat.o(39132);
+        }
+      });
+      AppMethodBeat.o(39144);
+      return;
     }
+    Log.e("MicroMsg.ShareImgUI", "launch : fail, uri is null");
+    aon(0);
+    finish();
+    AppMethodBeat.o(39144);
   }
   
   private void dismissDialog()
   {
     AppMethodBeat.i(39153);
-    if ((this.fOC != null) && (this.fOC.isShowing())) {
-      this.fOC.dismiss();
+    if ((this.gtM != null) && (this.gtM.isShowing())) {
+      this.gtM.dismiss();
     }
     AppMethodBeat.o(39153);
   }
   
-  private boolean fOX()
+  private boolean gXR()
   {
     AppMethodBeat.i(39145);
     Intent localIntent = new Intent(this, ShareImgUI.class);
     if ("android.intent.action.SEND".equals(getIntent().getAction())) {
-      if (!bu.isNullOrNil(this.filePath))
+      if (!Util.isNullOrNil(this.filePath))
       {
-        localIntent.putExtra("android.intent.extra.STREAM", o.a(this, new k(this.filePath)));
+        localIntent.putExtra("android.intent.extra.STREAM", FileProviderHelper.getUriForFile(this, new o(this.filePath)));
         localIntent.setAction("android.intent.action.SEND");
         localIntent.setType(getIntent().getType());
       }
@@ -933,13 +944,13 @@ public class ShareImgUI
       if (!"android.intent.action.SEND_MULTIPLE".equals(getIntent().getAction())) {
         break label264;
       }
-      if (bu.ht(this.Laa)) {
+      if (Util.isNullOrNil(this.Qpb)) {
         break;
       }
-      ArrayList localArrayList = new ArrayList(this.Laa.size());
-      Iterator localIterator = this.Laa.iterator();
+      ArrayList localArrayList = new ArrayList(this.Qpb.size());
+      Iterator localIterator = this.Qpb.iterator();
       while (localIterator.hasNext()) {
-        localArrayList.add(o.a(this, new k((String)localIterator.next())));
+        localArrayList.add(FileProviderHelper.getUriForFile(this, new o((String)localIterator.next())));
       }
       localIntent.putParcelableArrayListExtra("android.intent.extra.STREAM", localArrayList);
       localIntent.setAction("android.intent.action.SEND_MULTIPLE");
@@ -952,10 +963,10 @@ public class ShareImgUI
     return false;
   }
   
-  private void fOY()
+  private void gXS()
   {
     AppMethodBeat.i(39151);
-    Toast.makeText(this, 2131758246, 1).show();
+    Toast.makeText(this, 2131758534, 1).show();
     finish();
     AppMethodBeat.o(39151);
   }
@@ -963,53 +974,64 @@ public class ShareImgUI
   private void showDialog()
   {
     AppMethodBeat.i(39152);
-    getString(2131755906);
-    this.fOC = h.b(this, getString(2131755936), true, new DialogInterface.OnCancelListener()
+    if ((this.gtM != null) && (this.gtM.isShowing()))
     {
-      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      AppMethodBeat.o(39152);
+      return;
+    }
+    if (this.CJj == null) {
+      this.CJj = new DialogInterface.OnCancelListener()
       {
-        AppMethodBeat.i(39137);
-        ShareImgUI.this.finish();
-        AppMethodBeat.o(39137);
-      }
-    });
+        public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+        {
+          AppMethodBeat.i(39137);
+          ShareImgUI.e(ShareImgUI.this);
+          ShareImgUI.this.finish();
+          AppMethodBeat.o(39137);
+        }
+      };
+    }
+    getString(2131755998);
+    this.gtM = com.tencent.mm.ui.base.h.a(this, getString(2131756029), true, this.CJj);
     AppMethodBeat.o(39152);
   }
   
   public final void a(AutoLoginActivity.a parama, Intent paramIntent)
   {
     AppMethodBeat.i(39142);
-    switch (ShareImgUI.7.nSR[parama.ordinal()])
+    switch (ShareImgUI.7.pdF[parama.ordinal()])
     {
     default: 
       finish();
-      com.tencent.mm.ui.base.b.kl(this);
+      b.kd(this);
       AppMethodBeat.o(39142);
       return;
     }
     this.intent = paramIntent;
-    int i = bu.getInt(com.tencent.mm.n.g.acL().getValue("SystemShareControlBitset"), 0);
-    ae.i("MicroMsg.ShareImgUI", "now permission = %d", new Object[] { Integer.valueOf(i) });
+    int i = Util.getInt(com.tencent.mm.n.h.aqJ().getValue("SystemShareControlBitset"), 0);
+    Log.i("MicroMsg.ShareImgUI", "now permission = %d", new Object[] { Integer.valueOf(i) });
     if ((i & 0x1) > 0)
     {
-      ae.e("MicroMsg.ShareImgUI", "now allowed to share to friend");
+      Log.e("MicroMsg.ShareImgUI", "now allowed to share to friend");
       finish();
       AppMethodBeat.o(39142);
       return;
     }
-    parama = z.getStringExtra(paramIntent, "android.intent.extra.TEXT");
-    ae.i("MicroMsg.ShareImgUI", "postLogin, text = %s", new Object[] { parama });
-    if (!bu.isNullOrNil(parama))
+    parama = IntentUtil.getStringExtra(paramIntent, "android.intent.extra.TEXT");
+    Log.i("MicroMsg.ShareImgUI", "postLogin, text = %s", new Object[] { parama });
+    if (!Util.isNullOrNil(parama))
     {
       parama = String.format("weixin://dl/business/systemshare/?txt=%s", new Object[] { URLEncoder.encode(parama) });
       showDialog();
-      bc.ajj().a(1200, this);
+      bg.azz().b(1200, this);
+      bg.azz().a(1200, this);
       parama = new ac(parama, 15, null);
-      bc.ajj().a(parama, 0);
+      bg.azz().a(parama, 0);
+      this.Qwz.add(parama);
       AppMethodBeat.o(39142);
       return;
     }
-    aWi();
+    brd();
     AppMethodBeat.o(39142);
   }
   
@@ -1018,14 +1040,14 @@ public class ShareImgUI
     return true;
   }
   
-  public final boolean dxS()
+  public final boolean exA()
   {
     AppMethodBeat.i(39141);
-    if ((!bc.aCh()) || (bc.aiT()))
+    if ((!bg.aVG()) || (bg.azj()))
     {
-      ae.w("MicroMsg.ShareImgUI", "not login");
+      Log.w("MicroMsg.ShareImgUI", "not login");
       this.intent = getIntent();
-      aWi();
+      brd();
       AppMethodBeat.o(39141);
       return true;
     }
@@ -1033,64 +1055,101 @@ public class ShareImgUI
     return false;
   }
   
+  public void onCreate(Bundle paramBundle)
+  {
+    AppMethodBeat.i(234466);
+    super.onCreate(paramBundle);
+    Log.i("MicroMsg.ShareImgUI", "ShareImgUI onCreate %d", new Object[] { Integer.valueOf(hashCode()) });
+    AppMethodBeat.o(234466);
+  }
+  
   public void onDestroy()
   {
     AppMethodBeat.i(39143);
-    bc.ajj().b(1200, this);
-    bc.ajj().b(837, this);
+    bg.azz().b(1200, this);
+    bg.azz().b(837, this);
     dismissDialog();
     super.onDestroy();
     AppMethodBeat.o(39143);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onPause()
+  {
+    AppMethodBeat.i(234468);
+    super.onPause();
+    Log.i("MicroMsg.ShareImgUI", "ShareImgUI onPause %d", new Object[] { Integer.valueOf(hashCode()) });
+    AppMethodBeat.o(234468);
+  }
+  
+  public void onResume()
+  {
+    AppMethodBeat.i(234467);
+    super.onResume();
+    Log.i("MicroMsg.ShareImgUI", "ShareImgUI onResume %d", new Object[] { Integer.valueOf(hashCode()) });
+    AppMethodBeat.o(234467);
+  }
+  
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(39154);
-    ae.i("MicroMsg.ShareImgUI", "onSceneEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    dismissDialog();
-    if ((paramn instanceof ac))
+    int i;
+    if (paramq != null)
     {
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        aWi();
+      i = paramq.getType();
+      Log.i("MicroMsg.ShareImgUI", "onSceneEnd, errType = %d, errCode = %d, errMsg = %s, type: %d, hashCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i), Integer.valueOf(hashCode()) });
+      if (paramq != null) {
+        this.Qwz.remove(paramq);
       }
-    }
-    else if ((paramn instanceof com.tencent.mm.modelsimple.g))
-    {
-      if ((paramInt1 != 0) || (paramInt2 != 0)) {
-        break label171;
+      dismissDialog();
+      if ((paramq instanceof ac))
+      {
+        if ((paramInt1 != 0) || (paramInt2 != 0)) {
+          break label215;
+        }
+        brd();
       }
-      paramString = this.mHz;
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramString.ahE(), "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramString.mt(0));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      label105:
+      if ((paramq instanceof com.tencent.mm.modelsimple.g))
+      {
+        if ((paramInt1 != 0) || (paramInt2 != 0)) {
+          break label222;
+        }
+        paramString = this.nUx;
+        paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramString.axQ(), "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramString.pG(0));
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      }
     }
     for (;;)
     {
       finish();
       AppMethodBeat.o(39154);
       return;
-      finish();
+      i = -1;
       break;
-      label171:
-      if (paramn.getReqResp() != null)
+      label215:
+      finish();
+      break label105;
+      label222:
+      if (paramq.getReqResp() != null)
       {
-        paramString = (xy)((com.tencent.mm.ak.b)paramn.getReqResp()).hQE.hQJ;
-        if ((paramString != null) && (!bu.isNullOrNil(paramString.GpX)))
+        paramString = (zk)((d)paramq.getReqResp()).iLL.iLR;
+        if ((paramString != null) && (!Util.isNullOrNil(paramString.LkJ)))
         {
-          paramn = new Intent();
-          paramn.putExtra("rawUrl", paramString.GpX);
-          paramn.putExtra("showShare", false);
-          paramn.putExtra("show_bottom", false);
-          paramn.putExtra("needRedirect", false);
-          d.b(this, "webview", ".ui.tools.WebViewUI", paramn);
+          paramq = new Intent();
+          paramq.putExtra("rawUrl", paramString.LkJ);
+          paramq.putExtra("showShare", false);
+          paramq.putExtra("show_bottom", false);
+          paramq.putExtra("needRedirect", false);
+          c.b(this, "webview", ".ui.tools.WebViewUI", paramq);
         }
         else
         {
-          paramString = this.mHz;
-          paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-          com.tencent.mm.hellhoundlib.a.a.a(this, paramString.ahE(), "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          startActivity((Intent)paramString.mt(0));
+          paramString = this.nUx;
+          paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+          com.tencent.mm.hellhoundlib.a.a.a(this, paramString.axQ(), "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          startActivity((Intent)paramString.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/tools/ShareImgUI", "onSceneEnd", "(IILjava/lang/String;Lcom/tencent/mm/modelbase/NetSceneBase;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
       }
@@ -1106,13 +1165,13 @@ public class ShareImgUI
   final class a
     implements Runnable
   {
-    private ShareImgUI.c LhK;
+    private ShareImgUI.c QwJ;
     private Uri mUri;
     
     public a(Uri paramUri, ShareImgUI.c paramc)
     {
       this.mUri = paramUri;
-      this.LhK = paramc;
+      this.QwJ = paramc;
     }
     
     public final void run()
@@ -1121,37 +1180,40 @@ public class ShareImgUI
       try
       {
         ShareImgUI.this.filePath = ShareImgUI.a(ShareImgUI.this, this.mUri);
-        if ((bu.isNullOrNil(ShareImgUI.this.filePath)) || (!new k(ShareImgUI.this.filePath).exists())) {
-          if (ShareImgUI.aYO(ShareImgUI.this.getContentResolver().getType(this.mUri)) != 3) {
-            break label120;
+        if ((Util.isNullOrNil(ShareImgUI.this.filePath)) || (!new o(ShareImgUI.this.filePath).exists()) || ((Build.VERSION.SDK_INT >= 30) && (!new o(ShareImgUI.this.filePath).canRead()))) {
+          if (ShareImgUI.bnT(ShareImgUI.this.getContentResolver().getType(this.mUri)) != 3) {
+            break label148;
           }
         }
-        label120:
-        for (ShareImgUI.this.filePath = com.tencent.mm.pluginsdk.l.e.b(ShareImgUI.this.getContentResolver(), this.mUri);; ShareImgUI.this.filePath = com.tencent.mm.pluginsdk.l.e.a(ShareImgUI.this.getContentResolver(), this.mUri, 1))
-        {
-          if (this.LhK != null) {
-            this.LhK.fOE();
-          }
-          AppMethodBeat.o(39139);
+        label148:
+        for (ShareImgUI.this.filePath = e.b(ShareImgUI.this.getContentResolver(), this.mUri);; ShareImgUI.this.filePath = e.a(ShareImgUI.this.getContentResolver(), this.mUri, 1)) {
           return;
         }
-        return;
+        AppMethodBeat.o(39139);
       }
       catch (NullPointerException localNullPointerException)
       {
-        ae.printErrStackTrace("MicroMsg.ShareImgUI", localNullPointerException, "", new Object[0]);
-        AppMethodBeat.o(39139);
+        Log.printErrStackTrace("MicroMsg.ShareImgUI", localNullPointerException, "", new Object[0]);
+        ShareImgUI.this.filePath = null;
         return;
       }
       catch (SQLiteDiskIOException localSQLiteDiskIOException)
       {
-        ae.printErrStackTrace("MicroMsg.ShareImgUI", localSQLiteDiskIOException, "", new Object[0]);
-        AppMethodBeat.o(39139);
+        Log.printErrStackTrace("MicroMsg.ShareImgUI", localSQLiteDiskIOException, "", new Object[0]);
+        ShareImgUI.this.filePath = null;
         return;
       }
       catch (IllegalAccessException localIllegalAccessException)
       {
-        ae.printErrStackTrace("MicroMsg.ShareImgUI", localIllegalAccessException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ShareImgUI", localIllegalAccessException, "", new Object[0]);
+        ShareImgUI.this.filePath = null;
+        return;
+      }
+      finally
+      {
+        if (this.QwJ != null) {
+          this.QwJ.gXx();
+        }
         AppMethodBeat.o(39139);
       }
     }
@@ -1159,17 +1221,17 @@ public class ShareImgUI
   
   static abstract interface b
   {
-    public abstract void aZ(ArrayList<String> paramArrayList);
+    public abstract void br(ArrayList<String> paramArrayList);
   }
   
   public static abstract interface c
   {
-    public abstract void fOE();
+    public abstract void gXx();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.tools.ShareImgUI
  * JD-Core Version:    0.7.0.1
  */

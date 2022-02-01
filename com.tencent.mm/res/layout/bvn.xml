@@ -1,16 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/gw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/a2h" android:padding="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <RelativeLayout android:orientation="horizontal" android:id="@id/a0v" android:paddingLeft="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/jn">
-        <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:ellipsize="end" android:gravity="bottom" android:id="@id/e3q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:singleLine="true" />
-        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:id="@id/atf" android:paddingLeft="30.0dip" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/c5" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ate" android:layout_width="20.0dip" android:layout_height="15.0dip" android:src="@raw/biz_rec_card_close_icon" app:iconColor="@color/FG_2" />
+    <ScrollView android:background="@drawable/ca2" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/ih" android:focusable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.cedit.api.MMFlexEditText android:gravity="top" android:id="@id/be9" android:background="@null" android:paddingRight="@dimen/k5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="false" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a70" app:customEdt="com.tencent.mm.plugin.sns.ui.SnsCustomEditText" app:sysEdt="com.tencent.mm.plugin.sns.ui.SnsEditText" style="@style/mb" />
         </LinearLayout>
-    </RelativeLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/ge4" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="15.0dip" android:textColor="@drawable/gu" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/i3k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginBottom="@dimen/o" android:singleLine="true" />
-    </LinearLayout>
-    <ViewStub android:id="@id/i0g" android:layout="@layout/bud" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <ViewStub android:id="@id/gpk" android:layout="@layout/bue" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:orientation="vertical" android:id="@id/h8f" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </ScrollView>
 </LinearLayout>

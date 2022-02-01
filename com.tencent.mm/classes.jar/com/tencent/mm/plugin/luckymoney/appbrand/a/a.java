@@ -1,34 +1,35 @@
 package com.tencent.mm.plugin.luckymoney.appbrand.a;
 
-import com.tencent.mm.ak.a.a;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.protocal.protobuf.cvw;
-import com.tencent.mm.protocal.protobuf.cwj;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.co.f;
+import com.tencent.mm.protocal.protobuf.dop;
+import com.tencent.mm.protocal.protobuf.dpc;
 
-public abstract class a<Req extends cvw, Resp extends cwj>
+public abstract class a<Req extends dop, Resp extends dpc>
 {
-  private com.tencent.mm.ak.a vvc;
-  Req vvd;
-  private Resp vve;
+  private c yPq;
+  Req yPr;
+  private Resp yPs;
   
-  public final <T> f<T> b(com.tencent.mm.vending.c.a<T, a.a<Resp>> parama)
+  public final <T> f<T> b(com.tencent.mm.vending.c.a<T, c.a<Resp>> parama)
   {
     boolean bool2 = true;
-    dkL();
-    this.vve = dkK();
-    this.vvc = new com.tencent.mm.ak.a();
-    com.tencent.mm.ak.a locala = this.vvc;
-    cvw localcvw = this.vvd;
-    cwj localcwj = this.vve;
-    if ((localcvw == null) || (localcwj == null))
+    eeD();
+    this.yPs = eeC();
+    this.yPq = new c();
+    c localc = this.yPq;
+    dop localdop = this.yPr;
+    dpc localdpc = this.yPs;
+    if ((localdop == null) || (localdpc == null))
     {
       parama = new StringBuilder("CgiBase called withoud req or resp req?[");
-      if (localcvw == null)
+      if (localdop == null)
       {
         bool1 = true;
         parama = parama.append(bool1).append("] resp?[");
-        if (localcwj != null) {
+        if (localdpc != null) {
           break label114;
         }
       }
@@ -40,20 +41,20 @@ public abstract class a<Req extends cvw, Resp extends cwj>
         break;
       }
     }
-    b.a locala1 = new b.a();
-    locala1.funcId = getFuncId();
-    locala1.uri = getUri();
-    locala1.hQF = localcvw;
-    locala1.hQG = localcwj;
-    locala.c(locala1.aDS());
-    this.vvc.aET().g(new com.tencent.mm.vending.c.a() {}).b(parama);
+    d.a locala = new d.a();
+    locala.funcId = getFuncId();
+    locala.uri = getUri();
+    locala.iLN = localdop;
+    locala.iLO = localdpc;
+    localc.c(locala.aXF());
+    this.yPq.aYI().g(new com.tencent.mm.vending.c.a() {}).b(parama);
   }
   
-  protected abstract Resp dkK();
+  protected abstract Resp eeC();
   
-  protected void dkL() {}
+  protected void eeD() {}
   
-  protected void dkM() {}
+  protected void eeE() {}
   
   protected abstract int getFuncId();
   

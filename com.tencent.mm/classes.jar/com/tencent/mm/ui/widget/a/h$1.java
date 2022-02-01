@@ -1,29 +1,21 @@
 package com.tencent.mm.ui.widget.a;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Handler;
+import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.p;
 
 public final class h$1
-  implements View.OnClickListener
+  extends Handler
 {
-  public h$1(o paramo, View.OnClickListener paramOnClickListener) {}
+  public h$1(p paramp) {}
   
-  public final void onClick(View paramView)
+  public final void handleMessage(Message paramMessage)
   {
-    AppMethodBeat.i(200395);
-    b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/ui/widget/dialog/MMTipsBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    this.JJa.dismiss();
-    if (this.Lub != null) {
-      this.Lub.onClick(paramView);
-    }
-    a.a(this, "com/tencent/mm/ui/widget/dialog/MMTipsBar$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(200395);
+    AppMethodBeat.i(198281);
+    this.OTQ.dismiss();
+    super.handleMessage(paramMessage);
+    AppMethodBeat.o(198281);
   }
 }
 

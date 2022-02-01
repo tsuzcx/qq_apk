@@ -6,62 +6,62 @@ public final class av
   extends com.tencent.mm.bw.a
 {
   public int color;
-  public String dyI;
+  public String dQx;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(217984);
+    AppMethodBeat.i(198640);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dyI != null) {
-        paramVarArgs.d(1, this.dyI);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.dQx != null) {
+        paramVarArgs.e(1, this.dQx);
       }
-      paramVarArgs.aS(2, this.color);
-      AppMethodBeat.o(217984);
+      paramVarArgs.aM(2, this.color);
+      AppMethodBeat.o(198640);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.dyI == null) {
+      if (this.dQx == null) {
         break label258;
       }
     }
     label258:
-    for (paramInt = f.a.a.b.b.a.e(1, this.dyI) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.dQx) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.color);
-      AppMethodBeat.o(217984);
+      int i = g.a.a.b.b.a.bu(2, this.color);
+      AppMethodBeat.o(198640);
       return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(217984);
+        AppMethodBeat.o(198640);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         av localav = (av)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(217984);
+          AppMethodBeat.o(198640);
           return -1;
         case 1: 
-          localav.dyI = locala.OmT.readString();
-          AppMethodBeat.o(217984);
+          localav.dQx = locala.UbS.readString();
+          AppMethodBeat.o(198640);
           return 0;
         }
-        localav.color = locala.OmT.zc();
-        AppMethodBeat.o(217984);
+        localav.color = locala.UbS.zi();
+        AppMethodBeat.o(198640);
         return 0;
       }
-      AppMethodBeat.o(217984);
+      AppMethodBeat.o(198640);
       return -1;
     }
   }

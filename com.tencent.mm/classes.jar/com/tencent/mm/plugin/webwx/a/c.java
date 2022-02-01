@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.webwx.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aif;
-import com.tencent.mm.protocal.protobuf.aig;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.akr;
+import com.tencent.mm.protocal.protobuf.aks;
 
 public final class c
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b hZD;
+  private i callback;
+  private final d iUB;
   
   public c(String paramString)
   {
     AppMethodBeat.i(30172);
-    b.a locala = new b.a();
-    aif localaif = new aif();
-    aig localaig = new aig();
-    locala.hQF = localaif;
-    locala.hQG = localaig;
+    d.a locala = new d.a();
+    akr localakr = new akr();
+    aks localaks = new aks();
+    locala.iLN = localakr;
+    locala.iLO = localaks;
     locala.uri = "/cgi-bin/micromsg-bin/extdeviceloginconfirmcancel";
     locala.funcId = 973;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    localaif.GxR = paramString;
-    this.hZD = locala.aDS();
+    localakr.LtA = paramString;
+    this.iUB = locala.aXF();
     AppMethodBeat.o(30172);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(30173);
-    this.callback = paramf;
-    int i = dispatch(parame, this.hZD, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
     AppMethodBeat.o(30173);
     return i;
   }
@@ -49,7 +49,7 @@ public final class c
     return 973;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30174);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

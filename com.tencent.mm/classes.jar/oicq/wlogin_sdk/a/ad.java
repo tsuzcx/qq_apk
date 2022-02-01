@@ -6,45 +6,24 @@ import oicq.wlogin_sdk.tools.util;
 public final class ad
   extends a
 {
-  public int OoK = 0;
+  public int UdJ = 0;
   
   public ad()
   {
-    this.Ony = 312;
+    this.Ucx = 312;
   }
   
-  public final int gCA()
-  {
-    AppMethodBeat.i(88117);
-    int i = 0;
-    for (;;)
-    {
-      if (i >= this.OoK)
-      {
-        AppMethodBeat.o(88117);
-        return 0;
-      }
-      if (util.am(this.Ons, this.Ooh + 4 + i * 10) == 266)
-      {
-        i = util.an(this.Ons, i * 10 + (this.Ooh + 4) + 2);
-        AppMethodBeat.o(88117);
-        return i;
-      }
-      i += 1;
-    }
-  }
-  
-  public final Boolean gCy()
+  public final Boolean hPC()
   {
     AppMethodBeat.i(88116);
-    if (this.Ooi < 4)
+    if (this.Udh < 4)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88116);
       return localBoolean;
     }
-    this.OoK = util.an(this.Ons, this.Ooh);
-    if (this.Ooi < this.OoK * 10 + 4)
+    this.UdJ = util.ao(this.Ucr, this.Udg);
+    if (this.Udh < this.UdJ * 10 + 4)
     {
       localBoolean = Boolean.FALSE;
       AppMethodBeat.o(88116);
@@ -53,6 +32,27 @@ public final class ad
     Boolean localBoolean = Boolean.TRUE;
     AppMethodBeat.o(88116);
     return localBoolean;
+  }
+  
+  public final int hPE()
+  {
+    AppMethodBeat.i(88117);
+    int i = 0;
+    for (;;)
+    {
+      if (i >= this.UdJ)
+      {
+        AppMethodBeat.o(88117);
+        return 0;
+      }
+      if (util.an(this.Ucr, this.Udg + 4 + i * 10) == 266)
+      {
+        i = util.ao(this.Ucr, i * 10 + (this.Udg + 4) + 2);
+        AppMethodBeat.o(88117);
+        return i;
+      }
+      i += 1;
+    }
   }
 }
 

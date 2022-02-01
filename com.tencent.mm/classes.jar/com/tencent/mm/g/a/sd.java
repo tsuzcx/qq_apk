@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
 import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class sd
-  extends b
+  extends IEvent
 {
-  public a dHK;
+  public a dYH;
   
   public sd()
   {
@@ -16,23 +17,22 @@ public final class sd
   
   private sd(byte paramByte)
   {
-    AppMethodBeat.i(19830);
-    this.dHK = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(91217);
+    this.dYH = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19830);
+    AppMethodBeat.o(91217);
   }
   
   public static final class a
   {
     public Context context;
-    public String[] dkL;
-    public String[] selectionArgs;
+    public Intent intent;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.sd
  * JD-Core Version:    0.7.0.1
  */

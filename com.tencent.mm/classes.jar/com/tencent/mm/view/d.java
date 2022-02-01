@@ -1,22 +1,23 @@
 package com.tencent.mm.view;
 
-import d.l;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/view/IViewActionCallback;", "Lcom/tencent/mm/view/IPreViewDataCallback;", "onChanged", "", "onItemRangeChanged", "positionStart", "", "itemCount", "payload", "", "onItemRangeInserted", "onItemRangeMoved", "fromPosition", "toPosition", "onItemRangeRemoved", "libmmui_release"})
-public abstract interface d
-  extends c
+public final class d
 {
-  public abstract void au(int paramInt1, int paramInt2);
-  
-  public abstract void av(int paramInt1, int paramInt2);
-  
-  public abstract void f(int paramInt1, int paramInt2, Object paramObject);
-  
-  public abstract void onChanged();
+  public static int e(Context paramContext, float paramFloat)
+  {
+    AppMethodBeat.i(206170);
+    int i = (int)TypedValue.applyDimension(1, paramFloat, paramContext.getResources().getDisplayMetrics());
+    AppMethodBeat.o(206170);
+    return i;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.view.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/rs" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/geh" android:layout_width="fill_parent" android:layout_height="fill_parent" android:soundEffectsEnabled="false" />
-    <FrameLayout android:layout_gravity="bottom" android:id="@id/dn8" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <FrameLayout android:layout_gravity="right" android:id="@id/dn9" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-</android.support.design.widget.CoordinatorLayout>
+    <View android:id="@id/g8b" android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="14.0dip" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/l4" android:gravity="center" android:id="@id/dy9" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip" android:text="{info_tv}" android:layout_below="@id/g8b" android:layout_centerInParent="true" />
+</RelativeLayout>

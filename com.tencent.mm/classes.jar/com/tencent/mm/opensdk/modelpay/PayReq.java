@@ -137,9 +137,9 @@ public class PayReq
     
     public Options()
     {
-      AppMethodBeat.i(194087);
+      AppMethodBeat.i(190399);
       this.callbackFlags = -1;
-      AppMethodBeat.o(194087);
+      AppMethodBeat.o(190399);
     }
     
     public void fromBundle(Bundle paramBundle)
@@ -177,7 +177,7 @@ public class PayReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelpay.PayReq
  * JD-Core Version:    0.7.0.1
  */

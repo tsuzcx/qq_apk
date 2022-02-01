@@ -1,46 +1,45 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ckg;
-import com.tencent.mm.protocal.protobuf.ckh;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dao;
+import com.tencent.mm.protocal.protobuf.dap;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public ckh Dgn;
-  private f callback;
-  private final b rr;
+  public dap HPG;
+  private com.tencent.mm.ak.i callback;
+  private final d rr;
   
   public i()
   {
     AppMethodBeat.i(69905);
-    b.a locala = new b.a();
-    ckg localckg = new ckg();
-    localckg.timestamp = ch.aDb();
-    locala.hQF = localckg;
-    locala.hQG = new ckh();
+    d.a locala = new d.a();
+    dao localdao = new dao();
+    localdao.timestamp = cl.aWz();
+    locala.iLN = localdao;
+    locala.iLO = new dap();
     locala.funcId = 1820;
     locala.uri = "/cgi-bin/mmpay-bin/getpayplugin";
-    this.rr = locala.aDS();
+    this.rr = locala.aXF();
     AppMethodBeat.o(69905);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
   {
     AppMethodBeat.i(69906);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(69906);
     return i;
   }
@@ -50,12 +49,12 @@ public final class i
     return 1820;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69907);
-    ae.w("MicroMsg.NetSceneGetPayPlugin", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.w("MicroMsg.NetSceneGetPayPlugin", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.Dgn = ((ckh)((b)paramq).hQE.hQJ);
+      this.HPG = ((dap)((d)params).iLL.iLR);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(69907);

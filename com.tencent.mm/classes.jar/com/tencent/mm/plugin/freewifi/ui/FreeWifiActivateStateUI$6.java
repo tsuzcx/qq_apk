@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 
@@ -17,14 +17,14 @@ final class FreeWifiActivateStateUI$6
   {
     AppMethodBeat.i(24974);
     Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiActivateStateUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-    paramView = this.tzT.getString(2131759630);
+    ((b)localObject).bm(paramView);
+    a.b("com/tencent/mm/plugin/freewifi/ui/FreeWifiActivateStateUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    paramView = this.wQV.getString(2131760951);
     localObject = new Intent();
     ((Intent)localObject).putExtra("rawUrl", paramView);
     ((Intent)localObject).putExtra("showShare", false);
     ((Intent)localObject).putExtra("show_bottom", false);
-    d.b(this.tzT.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+    c.b(this.wQV.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
     a.a(this, "com/tencent/mm/plugin/freewifi/ui/FreeWifiActivateStateUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(24974);
   }

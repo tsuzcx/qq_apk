@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="18.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/chj" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_begin="24.0dip" />
-    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/chi" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="28.0dip" />
-    <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/fx" android:gravity="center" android:id="@id/a16" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/b4l" app:layout_constraintBottom_toBottomOf="@id/chi" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="@id/chj" />
-    <View android:id="@id/b00" android:background="@color/tn" android:layout_width="0.0dip" android:layout_height="0.5dip" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" />
-</android.support.constraint.ConstraintLayout>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0dip" android:textColor="@color/a2x" android:id="@id/idt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.46" />
+    <View android:background="@drawable/ar8" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginTop="15.0dip" android:layerType="software" />
+    <LinearLayout android:orientation="vertical" android:id="@id/e22" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" />
+</LinearLayout>

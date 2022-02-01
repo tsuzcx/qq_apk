@@ -2,48 +2,53 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class eq
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGY = "username".hashCode();
-  private static final int eGl;
-  private static final int eMy;
-  private static final int eQH;
-  private static final int eQN = "encryptUsername".hashCode();
-  private static final int fpp = "oldUsername".hashCode();
-  private static final int fpq;
-  private static final int fpr;
-  private static final int fpt = "seq".hashCode();
+  private static final int createTime_HASHCODE;
+  private static final int fRr = "wxGroupId".hashCode();
+  private static final int fRs;
+  private static final int fRt;
+  private static final int fRu;
+  private static final int fRv;
+  private static final int fRw = "ilinkRoomId".hashCode();
+  private static final int ftr;
+  private static final int fyj;
+  private static final int fyq = "groupId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGV = true;
-  private boolean eGj = true;
-  private boolean eMu = true;
-  private boolean eQp = true;
-  private boolean eQv = true;
-  public int field_addState;
-  public String field_encryptUsername;
-  public String field_nickname;
-  public String field_oldUsername;
-  public String field_pinyinName;
-  public int field_seq;
-  public int field_showHead;
-  public String field_ticket;
-  public String field_username;
-  private boolean fpl = true;
-  private boolean fpm = true;
-  private boolean fpn = true;
-  private boolean fpo = true;
+  private boolean __hadSetcreateTime = true;
+  private boolean fRl = true;
+  private boolean fRm = true;
+  private boolean fRn = true;
+  private boolean fRo = true;
+  private boolean fRp = true;
+  private boolean fRq = true;
+  public long field_createTime;
+  public String field_groupId;
+  public long field_ilinkRoomId;
+  public String field_inviteUserName;
+  public int field_memberCount;
+  public int field_roomId;
+  public long field_roomKey;
+  public int field_routeId;
+  public int field_state;
+  public String field_wxGroupId;
+  private boolean fsR = true;
+  private boolean fxE = true;
+  private boolean fxx = true;
   
   static
   {
-    eGl = "ticket".hashCode();
-    eMy = "nickname".hashCode();
-    fpq = "addState".hashCode();
-    eQH = "showHead".hashCode();
-    fpr = "pinyinName".hashCode();
+    fRs = "roomId".hashCode();
+    fRt = "roomKey".hashCode();
+    fRu = "routeId".hashCode();
+    fRv = "inviteUserName".hashCode();
+    ftr = "memberCount".hashCode();
+    createTime_HASHCODE = "createTime".hashCode();
+    fyj = "state".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -59,33 +64,36 @@ public abstract class eq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eQN != k) {
-        break label60;
+      if (fRr != k) {
+        break label65;
       }
-      this.field_encryptUsername = paramCursor.getString(i);
+      this.field_wxGroupId = paramCursor.getString(i);
+      this.fRl = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (fpp == k) {
-        this.field_oldUsername = paramCursor.getString(i);
-      } else if (eGl == k) {
-        this.field_ticket = paramCursor.getString(i);
-      } else if (eMy == k) {
-        this.field_nickname = paramCursor.getString(i);
-      } else if (fpq == k) {
-        this.field_addState = paramCursor.getInt(i);
-      } else if (eQH == k) {
-        this.field_showHead = paramCursor.getInt(i);
-      } else if (fpr == k) {
-        this.field_pinyinName = paramCursor.getString(i);
-      } else if (eGY == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (fpt == k) {
-        this.field_seq = paramCursor.getInt(i);
+      label65:
+      if (fyq == k) {
+        this.field_groupId = paramCursor.getString(i);
+      } else if (fRs == k) {
+        this.field_roomId = paramCursor.getInt(i);
+      } else if (fRt == k) {
+        this.field_roomKey = paramCursor.getLong(i);
+      } else if (fRu == k) {
+        this.field_routeId = paramCursor.getInt(i);
+      } else if (fRv == k) {
+        this.field_inviteUserName = paramCursor.getString(i);
+      } else if (ftr == k) {
+        this.field_memberCount = paramCursor.getInt(i);
+      } else if (createTime_HASHCODE == k) {
+        this.field_createTime = paramCursor.getLong(i);
+      } else if (fyj == k) {
+        this.field_state = paramCursor.getInt(i);
+      } else if (fRw == k) {
+        this.field_ilinkRoomId = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -95,32 +103,35 @@ public abstract class eq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eQv) {
-      localContentValues.put("encryptUsername", this.field_encryptUsername);
+    if (this.fRl) {
+      localContentValues.put("wxGroupId", this.field_wxGroupId);
     }
-    if (this.fpl) {
-      localContentValues.put("oldUsername", this.field_oldUsername);
+    if (this.fxE) {
+      localContentValues.put("groupId", this.field_groupId);
     }
-    if (this.eGj) {
-      localContentValues.put("ticket", this.field_ticket);
+    if (this.fRm) {
+      localContentValues.put("roomId", Integer.valueOf(this.field_roomId));
     }
-    if (this.eMu) {
-      localContentValues.put("nickname", this.field_nickname);
+    if (this.fRn) {
+      localContentValues.put("roomKey", Long.valueOf(this.field_roomKey));
     }
-    if (this.fpm) {
-      localContentValues.put("addState", Integer.valueOf(this.field_addState));
+    if (this.fRo) {
+      localContentValues.put("routeId", Integer.valueOf(this.field_routeId));
     }
-    if (this.eQp) {
-      localContentValues.put("showHead", Integer.valueOf(this.field_showHead));
+    if (this.fRp) {
+      localContentValues.put("inviteUserName", this.field_inviteUserName);
     }
-    if (this.fpn) {
-      localContentValues.put("pinyinName", this.field_pinyinName);
+    if (this.fsR) {
+      localContentValues.put("memberCount", Integer.valueOf(this.field_memberCount));
     }
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
+    if (this.__hadSetcreateTime) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.fpo) {
-      localContentValues.put("seq", Integer.valueOf(this.field_seq));
+    if (this.fxx) {
+      localContentValues.put("state", Integer.valueOf(this.field_state));
+    }
+    if (this.fRq) {
+      localContentValues.put("ilinkRoomId", Long.valueOf(this.field_ilinkRoomId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -130,7 +141,7 @@ public abstract class eq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.c.eq
  * JD-Core Version:    0.7.0.1
  */

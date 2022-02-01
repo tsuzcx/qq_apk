@@ -8,28 +8,28 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wenote.model.a.c;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
 import com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
   extends a
 {
-  private TextView ETH;
+  private TextView JJA;
   
   public d(View paramView, k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30854);
-    this.ETH = null;
-    this.ETH = ((TextView)paramView.findViewById(2131302920));
-    this.ETH.setOnClickListener(new View.OnClickListener()
+    this.JJA = null;
+    this.JJA = ((TextView)paramView.findViewById(2131305507));
+    this.JJA.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30853);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteComplaintItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        NoteEditorUI.fbc();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteComplaintItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        NoteEditorUI.gkh();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/itemholder/NoteComplaintItemHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30853);
       }
@@ -40,18 +40,18 @@ public final class d
   public final void a(c paramc, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30855);
-    ae.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + lM());
+    Log.i("MicroMsg.Note.NoteTextItemHolder", "TextItemHolder position is " + lQ());
     AppMethodBeat.o(30855);
   }
   
-  public final int cfi()
+  public final int cCY()
   {
     return 30;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.d
  * JD-Core Version:    0.7.0.1
  */

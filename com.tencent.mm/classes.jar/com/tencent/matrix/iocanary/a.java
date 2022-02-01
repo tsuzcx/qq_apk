@@ -8,7 +8,7 @@ import com.tencent.matrix.iocanary.core.IOCanaryCore;
 public final class a
   extends b
 {
-  private IOCanaryCore cEE;
+  private IOCanaryCore cUy;
   public final com.tencent.matrix.iocanary.a.a mIOConfig;
   
   public a(com.tencent.matrix.iocanary.a.a parama)
@@ -30,24 +30,24 @@ public final class a
   {
     super.init(paramApplication, paramc);
     com.tencent.matrix.iocanary.c.a.setPackageName(paramApplication);
-    this.cEE = new IOCanaryCore(this);
+    this.cUy = new IOCanaryCore(this);
   }
   
   public final void start()
   {
     super.start();
-    this.cEE.start();
+    this.cUy.start();
   }
   
   public final void stop()
   {
     super.stop();
-    this.cEE.stop();
+    this.cUy.stop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.iocanary.a
  * JD-Core Version:    0.7.0.1
  */

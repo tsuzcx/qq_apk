@@ -10,14 +10,14 @@ import android.os.Process;
 import android.text.TextUtils;
 import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.loader.BuildConfig;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.e;
-import com.tencent.mm.sdk.platformtools.v;
-import com.tencent.stubs.logger.Log;
+import com.tencent.mm.sdk.platformtools.ApplicationGlobal;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.ImmutableBundle;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 import com.tencent.tinker.entry.ApplicationLike;
 import com.tencent.tinker.entry.DefaultApplicationLike;
@@ -50,12 +50,12 @@ public class MMApplicationLike
   public Resources getResources(Resources paramResources)
   {
     AppMethodBeat.i(123472);
-    if (ak.getResources() == null)
+    if (MMApplicationContext.getResources() == null)
     {
       AppMethodBeat.o(123472);
       return paramResources;
     }
-    paramResources = ak.getResources();
+    paramResources = MMApplicationContext.getResources();
     AppMethodBeat.o(123472);
     return paramResources;
   }
@@ -73,43 +73,46 @@ public class MMApplicationLike
       AppMethodBeat.o(123468);
       return;
     }
-    e.o(getApplication());
-    Object localObject1 = ac.bv(paramContext);
+    ApplicationGlobal.attach(getApplication());
+    MMApplicationContext.setApplicationId(paramContext.getPackageName());
+    Object localObject1 = ac.bO(paramContext);
     if (localObject1 == null) {
-      ae.e("MicroMsg.SetupBaseBuildInfo", "meta bundle is null!!!!");
+      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.SetupBaseBuildInfo", "meta bundle is null!!!!");
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.j.DEBUG = false;
-      com.tencent.mm.sdk.platformtools.j.BUILD_TAG = "Android_Wechat_RELEASE #4989";
-      com.tencent.mm.sdk.platformtools.j.OWNER = "amm_code_helper";
-      com.tencent.mm.sdk.platformtools.j.HOSTNAME = "VM_53_123_centos";
-      com.tencent.mm.sdk.platformtools.j.TIME = "2020-09-16 21:37:51";
-      com.tencent.mm.sdk.platformtools.j.COMMAND = "null";
-      com.tencent.mm.sdk.platformtools.j.REV = "7f05ae1efc6e7d749831f1d7649292886e9a9393";
-      com.tencent.mm.sdk.platformtools.j.SVNPATH = "RB-2020-SEP@git";
+      BuildInfo.DEBUG = false;
+      BuildInfo.BUILD_TAG = "Android_Wechat_RELEASE #6690";
+      BuildInfo.OWNER = "amm_code_helper";
+      BuildInfo.HOSTNAME = "VM_53_123_centos";
+      BuildInfo.TIME = "2021-01-25 16:04:57";
+      BuildInfo.COMMAND = "null";
+      BuildInfo.REV = "9871b1464e5d9adcf899ba99a4f9d24ddd0efc29";
+      BuildInfo.SVNPATH = "RB-2021-JAN@git";
       int i;
-      label191:
+      label207:
       Object localObject3;
-      if (com.tencent.mm.loader.j.a.hjx)
+      if (com.tencent.mm.loader.j.a.IS_ARM64)
       {
-        localObject1 = "0x27001335";
-        com.tencent.mm.sdk.platformtools.j.hju = (String)localObject1;
-        com.tencent.mm.sdk.platformtools.j.IwD = Integer.decode((String)localObject1).intValue();
-        com.tencent.mm.sdk.platformtools.j.ENABLE_FPS_ANALYSE = false;
-        com.tencent.mm.sdk.platformtools.j.ENABLE_MATRIX = true;
-        com.tencent.mm.sdk.platformtools.j.ENABLE_MATRIX_TRACE = false;
-        com.tencent.mm.sdk.platformtools.j.EX_DEVICE_LOGIN = false;
-        com.tencent.mm.sdk.platformtools.j.PRE_RELEASE = false;
-        com.tencent.mm.sdk.platformtools.j.REDESIGN_ENTRANCE = false;
-        com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_RED = false;
-        com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_PURPLE = false;
-        com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_BLUE = false;
-        com.tencent.mm.sdk.platformtools.j.MATRIX_VERSION = "0.7.8.24";
-        com.tencent.mm.sdk.platformtools.j.hjx = com.tencent.mm.loader.j.a.hjx;
-        com.tencent.mm.sdk.platformtools.j.KINDA_DEFAULT = "default";
-        com.tencent.mm.sdk.platformtools.j.TINKER_VERSION = "1.9.14.8";
-        com.tencent.mm.sdk.platformtools.j.IS_UAT = false;
+        localObject1 = "0x28000037";
+        BuildInfo.CLIENT_VERSION = (String)localObject1;
+        BuildInfo.CLIENT_VERSION_INT = Integer.decode((String)localObject1).intValue();
+        BuildInfo.ENABLE_FPS_ANALYSE = false;
+        BuildInfo.ENABLE_MATRIX = true;
+        BuildInfo.ENABLE_MATRIX_TRACE = false;
+        BuildInfo.EX_DEVICE_LOGIN = false;
+        BuildInfo.PRE_RELEASE = false;
+        BuildInfo.REDESIGN_ENTRANCE = false;
+        BuildInfo.IS_FLAVOR_RED = false;
+        BuildInfo.IS_FLAVOR_PURPLE = false;
+        BuildInfo.IS_FLAVOR_BLUE = false;
+        BuildInfo.MATRIX_VERSION = "0.7.8.28-109";
+        BuildInfo.IS_ARM64 = com.tencent.mm.loader.j.a.IS_ARM64;
+        BuildInfo.KINDA_DEFAULT = "default";
+        BuildInfo.TINKER_VERSION = "1.9.14.10";
+        BuildInfo.IS_UAT = false;
+        BuildInfo.ENABLE_PAYTEST = false;
+        BuildInfo.OVERRIDE_VERSION_NAME = "";
         localObject1 = new ArrayMap();
         localObject2 = BuildConfig.class.getFields();
         int j = localObject2.length;
@@ -122,49 +125,46 @@ public class MMApplicationLike
       {
         try
         {
-          ae.i("MicroMsg.SetupBaseBuildInfo", "Copy BuildConfig field %s %s", new Object[] { localObject3.getName(), localObject3.get(null) });
+          com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.SetupBaseBuildInfo", "Copy BuildConfig field %s %s", new Object[] { localObject3.getName(), localObject3.get(null) });
           ((ArrayMap)localObject1).put(localObject3.getName(), localObject3.get(null));
           i += 1;
-          break label191;
-          com.tencent.mm.loader.j.a.s((Bundle)localObject1);
+          break label207;
+          com.tencent.mm.loader.j.a.y((Bundle)localObject1);
           continue;
-          localObject1 = "0x27001334";
+          localObject1 = "0x28000036";
         }
         catch (IllegalAccessException localIllegalAccessException)
         {
           for (;;)
           {
-            ae.printErrStackTrace("MicroMsg.SetupBaseBuildInfo", localIllegalAccessException, "", new Object[0]);
+            com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.SetupBaseBuildInfo", localIllegalAccessException, "", new Object[0]);
           }
         }
       }
     }
-    Object localObject2 = com.tencent.mm.sdk.platformtools.j.IwE;
-    if (!((v)localObject2).IwY) {
-      ((v)localObject2).IwX.putAll((ArrayMap)localObject1);
-    }
-    com.tencent.mm.sdk.platformtools.j.IwE.IwY = true;
-    Log.setLogger(m.Md());
+    BuildInfo.ext.putAll((ArrayMap)localObject1);
+    BuildInfo.ext.markImmutable();
+    com.tencent.stubs.logger.Log.setLogger(m.Wp());
     super.onBaseContextAttached(paramContext);
-    localObject2 = bu.getProcessNameByPid(paramContext, Process.myPid());
-    d.cEw = (String)localObject2;
-    if (aa.bu(paramContext))
+    Object localObject2 = Util.getProcessNameByPid(paramContext, Process.myPid());
+    d.cQi = (String)localObject2;
+    if (aa.bN(paramContext))
     {
       AppMethodBeat.o(123468);
       return;
     }
     Object localObject4 = this.mMMApplicationLikeImpl;
-    if (!com.tencent.mm.sdk.platformtools.j.DEBUG)
+    if (!BuildInfo.DEBUG)
     {
-      ae.e("MicroMsg.MMApplicationLikeImpl", "befrore initCrash()");
-      l.f(s.cTZ.getApplication());
+      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.MMApplicationLikeImpl", "befrore initCrash()");
+      l.f(s.dks.getApplication());
     }
-    if (!ak.foB())
+    if (!MMApplicationContext.isToolsIsolatedProcess())
     {
-      ag.a.cWf.b(s.cTZ);
-      ag.a.cWf.Mx();
+      ag.a.dmC.b(s.dks);
+      ag.a.dmC.WL();
     }
-    localObject1 = s.cTZ;
+    localObject1 = s.dks;
     if ((localObject1 == null) || (((ApplicationLike)localObject1).getApplication() == null))
     {
       paramContext = new TinkerRuntimeException("tinkerApplication is null");
@@ -172,58 +172,58 @@ public class MMApplicationLike
       throw paramContext;
     }
     Object localObject5;
-    if ((ShareTinkerInternals.isTinkerEnabledForNativeLib(((ApplicationLike)localObject1).getTinkerFlags())) && (com.tencent.tinker.lib.e.b.c(s.cTZ)))
+    if ((ShareTinkerInternals.isTinkerEnabledForNativeLib(((ApplicationLike)localObject1).getTinkerFlags())) && (com.tencent.tinker.lib.e.b.c(s.dks)))
     {
-      if (com.tencent.mm.loader.j.a.hjx)
+      if (com.tencent.mm.loader.j.a.IS_ARM64)
       {
-        localObject1 = s.fp("arm64-v8a");
+        localObject1 = s.gd("arm64-v8a");
         if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          com.tencent.mm.compatible.util.j.vL((String)localObject1);
+          j.Ec((String)localObject1);
         }
-        com.tencent.tinker.lib.a.a.a(s.cTZ, "arm64-v8a");
+        com.tencent.tinker.lib.a.a.a(s.dks, "arm64-v8a");
       }
     }
     else
     {
-      d.cUa = s.cTZ.getApplicationStartMillisTime();
-      s.a(s.cTZ);
-      s.cUR = s.cUR + "/" + localObject4.hashCode();
-      ak.wO(false);
-      ak.setContext(s.cTZ.getApplication());
-      ae.abd(0);
+      d.dkt = s.dks.getApplicationStartMillisTime();
+      s.a(s.dks);
+      s.dlj = s.dlj + "/" + localObject4.hashCode();
+      MMApplicationContext.setAppHasInitFlag(false);
+      MMApplicationContext.setContext(s.dks.getApplication());
+      com.tencent.mm.sdk.platformtools.Log.setLevel(0, false);
       long l1 = System.currentTimeMillis();
-      localObject5 = new r(com.tencent.mm.loader.j.b.asb() + "NowRev.ini");
-      if ((((r)localObject5).cUQ == null) || (!((r)localObject5).cUQ.containsKey("NowRev"))) {
-        break label1462;
+      localObject5 = new r(com.tencent.mm.loader.j.b.aKB() + "NowRev.ini");
+      if ((((r)localObject5).propertie == null) || (!((r)localObject5).propertie.containsKey("NowRev"))) {
+        break label1470;
       }
-      localObject1 = ((r)localObject5).cUQ.getProperty("NowRev");
-      label636:
-      ((s)localObject4).cUS = ((String)localObject1);
-      ((s)localObject4).cUT = com.tencent.mm.sdk.platformtools.j.hju;
+      localObject1 = ((r)localObject5).propertie.getProperty("NowRev");
+      label638:
+      ((s)localObject4).dlk = ((String)localObject1);
+      ((s)localObject4).dll = BuildInfo.CLIENT_VERSION;
       long l2 = System.currentTimeMillis();
-      ((s)localObject4).cUU = (l2 - l1);
-      ((s)localObject4).cUV = 0L;
-      if (!((s)localObject4).cUT.equals(((s)localObject4).cUS))
+      ((s)localObject4).dlm = (l2 - l1);
+      ((s)localObject4).dln = 0L;
+      if (!((s)localObject4).dll.equals(((s)localObject4).dlk))
       {
-        ak.IxN = true;
-        s.D(s.cTZ.getApplication().getDir("lib", 0));
-        s.D(s.cTZ.getApplication().getDir("dex", 0));
-        s.D(s.cTZ.getApplication().getDir("cache", 0));
-        s.D(s.cTZ.getApplication().getDir("recover_lib", 0));
-        if (com.tencent.mm.loader.j.a.hju.equals(com.tencent.mm.sdk.platformtools.j.hju))
+        MMApplicationContext.sIsRevChange = true;
+        s.D(s.dks.getApplication().getDir("lib", 0));
+        s.D(s.dks.getApplication().getDir("dex", 0));
+        s.D(s.dks.getApplication().getDir("cache", 0));
+        s.D(s.dks.getApplication().getDir("recover_lib", 0));
+        if (com.tencent.mm.loader.j.a.CLIENT_VERSION.equals(BuildInfo.CLIENT_VERSION))
         {
-          ae.i("MicroMsg.MMApplicationLikeImpl", "[tomys] clean patch since base apk is upgraded, prev_clientversion: %s, curr_clientversion: %s, curr_base_clientversion: %s", new Object[] { ((s)localObject4).cUS, ((s)localObject4).cUT, com.tencent.mm.loader.j.a.hju });
-          com.tencent.tinker.lib.e.b.e(s.cTZ);
+          com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.MMApplicationLikeImpl", "[tomys] clean patch since base apk is upgraded, prev_clientversion: %s, curr_clientversion: %s, curr_base_clientversion: %s", new Object[] { ((s)localObject4).dlk, ((s)localObject4).dll, com.tencent.mm.loader.j.a.CLIENT_VERSION });
+          com.tencent.tinker.lib.e.b.e(s.dks);
         }
-        ((r)localObject5).N("NowRev", ((s)localObject4).cUT);
-        ((s)localObject4).cUV = (System.currentTimeMillis() - l2);
-        ae.w("MicroMsg.MMApplicationLikeImpl", "application hash:%s, %s", new Object[] { s.cUR, bu.fpN().toString() });
+        ((r)localObject5).saveValue("NowRev", ((s)localObject4).dll);
+        ((s)localObject4).dln = (System.currentTimeMillis() - l2);
+        com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.MMApplicationLikeImpl", "application hash:%s, %s", new Object[] { s.dlj, Util.getStack().toString() });
       }
-      ae.i("MicroMsg.MMApplicationLikeImpl", "clearOldDirIfNewVersion oldversion:%s, newversion:%s, gettime:%d, settime:%d", new Object[] { ((s)localObject4).cUS, ((s)localObject4).cUT, Long.valueOf(((s)localObject4).cUU), Long.valueOf(((s)localObject4).cUV) });
-      if ((com.tencent.mm.sdk.platformtools.j.DEBUG) || (com.tencent.mm.sdk.platformtools.j.PRE_RELEASE))
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.MMApplicationLikeImpl", "clearOldDirIfNewVersion oldversion:%s, newversion:%s, gettime:%d, settime:%d", new Object[] { ((s)localObject4).dlk, ((s)localObject4).dll, Long.valueOf(((s)localObject4).dlm), Long.valueOf(((s)localObject4).dln) });
+      if ((BuildInfo.DEBUG) || (BuildInfo.PRE_RELEASE))
       {
-        ae.e("MicroMsg.MMApplicationLikeImpl", "after initCrash()");
-        l.f(s.cTZ.getApplication());
+        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.MMApplicationLikeImpl", "after initCrash()");
+        l.f(s.dks.getApplication());
       }
       if (((String)localObject2).equals(paramContext.getPackageName())) {
         x.a("MicroMsg.MMApplication", "** Hit main process condition.", new Object[0]);
@@ -244,7 +244,7 @@ public class MMApplicationLike
           continue;
         }
         x.a("MicroMsg.MMApplication", "** Before fixing: oldver: %s, newver: %s, oatdir: %s, fingerpint: %s", new Object[] { ((SharePatchInfo)localObject5).oldVersion, ((SharePatchInfo)localObject5).newVersion, ((SharePatchInfo)localObject5).oatDir, ((SharePatchInfo)localObject5).fingerPrint });
-        x.f(new Object[] { Integer.valueOf(2), localObject2, String.format("BEFORE_FIXED##%s##%s##%s##%s", new Object[] { ((SharePatchInfo)localObject5).oldVersion, ((SharePatchInfo)localObject5).newVersion, ((SharePatchInfo)localObject5).oatDir, ((SharePatchInfo)localObject5).fingerPrint }) });
+        x.a(19725, new Object[] { Integer.valueOf(2), localObject2, String.format("BEFORE_FIXED##%s##%s##%s##%s", new Object[] { ((SharePatchInfo)localObject5).oldVersion, ((SharePatchInfo)localObject5).newVersion, ((SharePatchInfo)localObject5).oatDir, ((SharePatchInfo)localObject5).fingerPrint }) });
         localFile2 = new File(localFile1, SharePatchFileUtil.getPatchVersionDirectory(((SharePatchInfo)localObject5).newVersion));
         localFile1 = new File(localFile2, "odex");
         localFile2 = new File(localFile2, "interpet");
@@ -254,7 +254,7 @@ public class MMApplicationLike
           continue;
         }
         ((SharePatchInfo)localObject5).oatDir = "odex";
-        x.f(new Object[] { Integer.valueOf(2), localObject2, String.format("FIXED##%s##%s##%s##%s", new Object[] { ((SharePatchInfo)localObject5).oldVersion, ((SharePatchInfo)localObject5).newVersion, ((SharePatchInfo)localObject5).oatDir, ((SharePatchInfo)localObject5).fingerPrint }) });
+        x.a(19725, new Object[] { Integer.valueOf(2), localObject2, String.format("FIXED##%s##%s##%s##%s", new Object[] { ((SharePatchInfo)localObject5).oldVersion, ((SharePatchInfo)localObject5).newVersion, ((SharePatchInfo)localObject5).oatDir, ((SharePatchInfo)localObject5).fingerPrint }) });
         x.a("MicroMsg.MMApplication", "** After fixing: oldver: %s, newver: %s, oatdir: %s, fingerpint: %s", new Object[] { ((SharePatchInfo)localObject5).oldVersion, ((SharePatchInfo)localObject5).newVersion, ((SharePatchInfo)localObject5).oatDir, ((SharePatchInfo)localObject5).fingerPrint });
         SharePatchInfo.rewritePatchInfoFileWithLock((File)localObject1, (SharePatchInfo)localObject5, (File)localObject4);
         x.a("MicroMsg.MMApplication", "** Killing other processes.", new Object[0]);
@@ -264,8 +264,8 @@ public class MMApplicationLike
       catch (Throwable localThrowable)
       {
         File localFile2;
-        label1462:
-        x.a("MicroMsg.MMApplication", localThrowable, "** Exception occurred.");
+        label1470:
+        x.a("MicroMsg.MMApplication", localThrowable, "** Exception occurred.", new Object[0]);
         continue;
         x.a("MicroMsg.MMApplication", "** Status is ok, do not needs to do fix.", new Object[0]);
         continue;
@@ -273,23 +273,23 @@ public class MMApplicationLike
         continue;
       }
       if (!k.e(getApplication())) {
-        break label1540;
+        break label1552;
       }
       AppMethodBeat.o(123468);
       return;
-      localObject1 = s.fp("armeabi-v7a");
+      localObject1 = s.gd("armeabi-v7a");
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        com.tencent.mm.compatible.util.j.vL((String)localObject1);
+        j.Ec((String)localObject1);
       }
-      localObject1 = s.fp("armeabi");
+      localObject1 = s.gd("armeabi");
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        com.tencent.mm.compatible.util.j.vL((String)localObject1);
+        j.Ec((String)localObject1);
       }
-      com.tencent.tinker.lib.a.a.a(s.cTZ, "armeabi-v7a");
-      com.tencent.tinker.lib.a.a.a(s.cTZ, "armeabi");
+      com.tencent.tinker.lib.a.a.a(s.dks, "armeabi-v7a");
+      com.tencent.tinker.lib.a.a.a(s.dks, "armeabi");
       break;
       localObject1 = null;
-      break label636;
+      break label638;
       if ((localFile2.exists()) && (localFile2.canRead())) {
         ((SharePatchInfo)localObject5).oatDir = "interpet";
       }
@@ -298,41 +298,41 @@ public class MMApplicationLike
     {
       try
       {
-        label1540:
-        if (ak.foB())
+        label1552:
+        if (MMApplicationContext.isToolsIsolatedProcess())
         {
-          this.wrapper = ((ApplicationLifeCycle)Class.forName(ak.getPackageName() + ".app.MMIsolatedApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
+          this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMIsolatedApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
           this.wrapper.onBaseContextAttached(paramContext);
           AppMethodBeat.o(123468);
           return;
         }
-        if (ak.foI())
+        if (MMApplicationContext.isNoSpaceProcess())
         {
-          this.wrapper = ((ApplicationLifeCycle)Class.forName(ak.fov() + ".app.MMCleanApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
+          this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMCleanApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
           continue;
         }
-        if (!ak.foG()) {
-          break label1814;
+        if (!MMApplicationContext.isHotpotDotDotProcess()) {
+          break label1826;
         }
       }
       catch (Exception paramContext)
       {
-        ae.printErrStackTrace("MicroMsg.MMApplication", paramContext, "failed to create application wrapper class", new Object[0]);
+        com.tencent.mm.sdk.platformtools.Log.printErrStackTrace("MicroMsg.MMApplication", paramContext, "failed to create application wrapper class", new Object[0]);
         paramContext = new RuntimeException("failed to create application wrapper class", paramContext);
         AppMethodBeat.o(123468);
         throw paramContext;
       }
-      this.wrapper = ((ApplicationLifeCycle)Class.forName(ak.fov() + ".app.MMHotpotDotDotWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
+      this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMHotpotDotDotWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
       continue;
-      label1814:
-      this.wrapper = ((ApplicationLifeCycle)Class.forName(ak.getPackageName() + ".app.MMApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
+      label1826:
+      this.wrapper = ((ApplicationLifeCycle)Class.forName(MMApplicationContext.getSourcePackageName() + ".app.MMApplicationWrapper").getConstructor(new Class[] { ApplicationLike.class, String.class }).newInstance(new Object[] { this, localObject2 }));
     }
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(123471);
-    ae.d("MicroMsg.MMApplication", "configuration changed");
+    com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.MMApplication", "configuration changed");
     super.onConfigurationChanged(paramConfiguration);
     if (this.wrapper != null) {
       this.wrapper.onConfigurationChanged(paramConfiguration);

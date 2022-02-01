@@ -2,6 +2,7 @@ package com.tencent.mm.plugin.gallery.picker.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
@@ -20,43 +21,44 @@ import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout.i;
 import com.tencent.mm.plugin.recordvideo.ui.WxCropOperationLayout.j;
 import com.tencent.mm.pluginsdk.ui.CommonVideoView;
 import com.tencent.mm.pluginsdk.ui.i.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.widget.cropview.BaseCropLayout.b;
 import com.tencent.mm.ui.widget.cropview.CropLayout;
 import com.tencent.mm.ui.widget.cropview.CropLayout.c;
 import com.tencent.mm.ui.widget.cropview.CropLayout.e;
 import com.tencent.mm.ui.widget.cropview.VideoTimeView;
-import d.f;
-import d.g;
-import d.g.a.m;
-import d.g.b.p;
-import d.l;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "cropLayoutScaleType", "getCropLayoutScaleType", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "setCropLayoutScaleType", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;)V", "currentPreviewMediaId", "", "currentType", "getCurrentType", "()I", "setCurrentType", "(I)V", "defaultImageContentCreator", "Lkotlin/Function3;", "", "Lkotlin/ParameterName;", "name", "mediaPath", "Landroid/widget/ImageView;", "imgView", "Lkotlin/Function2;", "width", "height", "", "loadedCallback", "imageView", "getImageView", "()Landroid/widget/ImageView;", "imageView$delegate", "Lkotlin/Lazy;", "", "isShowBorder", "()Z", "setShowBorder", "(Z)V", "layout", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "getLayout", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "layout$delegate", "lockCropMediaId", "getLockCropMediaId", "()J", "setLockCropMediaId", "(J)V", "lockCropRect", "Landroid/graphics/RectF;", "matrixMap", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$CropInfo;", "mediaWH", "", "getMediaWH", "()[I", "musicController", "Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditMusicController;", "getMusicController", "()Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditMusicController;", "setMusicController", "(Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditMusicController;)V", "operationLayout", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "getOperationLayout", "()Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "operationLayout$delegate", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;", "style", "setStyle", "(Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;)V", "videoView", "Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "getVideoView", "()Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "setVideoView", "(Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;)V", "getCropInfo", "mediaId", "path", "getCurrentCropInfo", "init", "", "initCropRect", "minCropHeight", "", "maxCropHeight", "isLockMedia", "onPreview", "type", "onCalculateVisibilityRect", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$OnCalculateVisibilityRect;", "onPreviewImage", "isHard", "contentCreator", "onPreviewVideo", "onCalculateVisibilityRectCallback", "forceSet", "onRevertRotate", "onRotate", "onUIPause", "onUIRelease", "onUIResume", "removeCropOverlay", "setCropView", "view", "Landroid/view/View;", "viewW", "viewH", "defaultVisibilityRect", "setEnableScale", "enable", "Companion", "CropInfo", "OnCalculateVisibilityRect", "plugin-gallery_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "value", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "cropLayoutScaleType", "getCropLayoutScaleType", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;", "setCropLayoutScaleType", "(Lcom/tencent/mm/ui/widget/cropview/CropLayout$ScaleType;)V", "currentPreviewMediaId", "", "currentType", "getCurrentType", "()I", "setCurrentType", "(I)V", "defaultImageContentCreator", "Lkotlin/Function3;", "", "Lkotlin/ParameterName;", "name", "mediaPath", "Landroid/widget/ImageView;", "imgView", "Lkotlin/Function2;", "width", "height", "", "loadedCallback", "imageView", "getImageView", "()Landroid/widget/ImageView;", "imageView$delegate", "Lkotlin/Lazy;", "", "isShowBorder", "()Z", "setShowBorder", "(Z)V", "layout", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "getLayout", "()Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "layout$delegate", "lockCropMediaId", "getLockCropMediaId", "()J", "setLockCropMediaId", "(J)V", "lockCropRect", "Landroid/graphics/RectF;", "matrixMap", "Landroid/util/LongSparseArray;", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$CropInfo;", "mediaWH", "", "getMediaWH", "()[I", "musicController", "Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditMusicController;", "getMusicController", "()Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditMusicController;", "setMusicController", "(Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditMusicController;)V", "operationLayout", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "getOperationLayout", "()Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "operationLayout$delegate", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;", "style", "setStyle", "(Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$Style;)V", "videoView", "Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "getVideoView", "()Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;", "setVideoView", "(Lcom/tencent/mm/pluginsdk/ui/CommonVideoView;)V", "getCropInfo", "mediaId", "path", "getCurrentCropInfo", "init", "", "initCropRect", "minCropHeight", "", "maxCropHeight", "isLockMedia", "onPreview", "type", "onCalculateVisibilityRect", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$OnCalculateVisibilityRect;", "onPreviewImage", "isHard", "contentCreator", "onPreviewVideo", "onCalculateVisibilityRectCallback", "forceSet", "onRevertRotate", "onRotate", "onUIPause", "onUIRelease", "onUIResume", "removeCropOverlay", "setCropView", "view", "Landroid/view/View;", "viewW", "viewH", "defaultVisibilityRect", "setEnableScale", "enable", "Companion", "CropInfo", "OnCalculateVisibilityRect", "plugin-gallery_release"})
 public final class WxMediaCropLayout
   extends FrameLayout
 {
-  public static final WxMediaCropLayout.a tVR;
-  public CommonVideoView mST;
-  public int oKa;
-  private final d.g.a.q<String, ImageView, m<? super Integer, ? super Integer, ? extends Object>, Object> tUK;
-  public com.tencent.mm.plugin.recordvideo.plugin.a.b tVJ;
-  private final RectF tVK;
-  private final f tVL;
-  private WxCropOperationLayout.j tVM;
-  private boolean tVN;
-  private CropLayout.e tVO;
-  private final int[] tVP;
-  private long tVQ;
-  private final f tVn;
-  private final f tVp;
-  private long tVr;
-  private final LongSparseArray<b> tVt;
+  public static final a xnb;
+  public CommonVideoView ofW;
+  public int pXO;
+  public com.tencent.mm.plugin.recordvideo.plugin.a.b wgF;
+  private final kotlin.g.a.q<String, ImageView, m<? super Integer, ? super Integer, ? extends Object>, Object> xlW;
+  private final f xmB;
+  private long xmD;
+  private final LongSparseArray<b> xmF;
+  private final RectF xmU;
+  private final f xmV;
+  private WxCropOperationLayout.j xmW;
+  private boolean xmX;
+  private CropLayout.e xmY;
+  private final int[] xmZ;
+  private final f xmz;
+  private long xna;
   
   static
   {
     AppMethodBeat.i(165029);
-    tVR = new WxMediaCropLayout.a((byte)0);
+    xnb = new a((byte)0);
     AppMethodBeat.o(165029);
   }
   
@@ -64,18 +66,18 @@ public final class WxMediaCropLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(165045);
-    this.tVt = new LongSparseArray();
-    this.tVn = g.O((d.g.a.a)new e(this));
-    this.tVK = new RectF();
-    this.tVr = -1L;
-    this.tVp = g.O((d.g.a.a)new g(this));
-    this.tVL = g.O((d.g.a.a)new i(this));
+    this.xmF = new LongSparseArray();
+    this.xmz = g.ah((kotlin.g.a.a)new e(this));
+    this.xmU = new RectF();
+    this.xmD = -1L;
+    this.xmB = g.ah((kotlin.g.a.a)new g(this));
+    this.xmV = g.ah((kotlin.g.a.a)new i(this));
     addView((View)getLayout(), (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
     addView((View)getOperationLayout(), (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    this.tVM = WxCropOperationLayout.j.xYQ;
-    this.tVO = CropLayout.e.LrL;
-    this.tUK = ((d.g.a.q)WxMediaCropLayout.d.tVW);
-    this.tVP = new int[2];
+    this.xmW = WxCropOperationLayout.j.BZI;
+    this.xmY = CropLayout.e.QMD;
+    this.xlW = ((kotlin.g.a.q)d.xng);
+    this.xmZ = new int[2];
     AppMethodBeat.o(165045);
   }
   
@@ -83,101 +85,101 @@ public final class WxMediaCropLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(165046);
-    this.tVt = new LongSparseArray();
-    this.tVn = g.O((d.g.a.a)new e(this));
-    this.tVK = new RectF();
-    this.tVr = -1L;
-    this.tVp = g.O((d.g.a.a)new g(this));
-    this.tVL = g.O((d.g.a.a)new i(this));
+    this.xmF = new LongSparseArray();
+    this.xmz = g.ah((kotlin.g.a.a)new e(this));
+    this.xmU = new RectF();
+    this.xmD = -1L;
+    this.xmB = g.ah((kotlin.g.a.a)new g(this));
+    this.xmV = g.ah((kotlin.g.a.a)new i(this));
     addView((View)getLayout(), (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
     addView((View)getOperationLayout(), (ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-1, -1));
-    this.tVM = WxCropOperationLayout.j.xYQ;
-    this.tVO = CropLayout.e.LrL;
-    this.tUK = ((d.g.a.q)WxMediaCropLayout.d.tVW);
-    this.tVP = new int[2];
+    this.xmW = WxCropOperationLayout.j.BZI;
+    this.xmY = CropLayout.e.QMD;
+    this.xlW = ((kotlin.g.a.q)d.xng);
+    this.xmZ = new int[2];
     AppMethodBeat.o(165046);
+  }
+  
+  private final boolean GF(long paramLong)
+  {
+    return (this.xna == paramLong) || (this.xna == 0L);
   }
   
   private final b a(View paramView, int paramInt1, int paramInt2, final RectF paramRectF, final long paramLong, final String paramString, int paramInt3)
   {
     AppMethodBeat.i(165043);
-    ae.i("WxMediaCropLayout", "[setCropView] mediaId=" + paramLong + " viewW=" + paramInt1 + " viewH=" + paramInt2 + " defaultVisibilityRect=" + paramRectF + " lockCropRect=" + this.tVK + " path=" + paramString + " mediaType=" + paramInt3);
-    this.tVr = paramLong;
-    if (0L == this.tVQ) {
-      this.tVQ = paramLong;
+    Log.i("WxMediaCropLayout", "[setCropView] mediaId=" + paramLong + " viewW=" + paramInt1 + " viewH=" + paramInt2 + " defaultVisibilityRect=" + paramRectF + " lockCropRect=" + this.xmU + " path=" + paramString + " mediaType=" + paramInt3);
+    this.xmD = paramLong;
+    if (0L == this.xna) {
+      this.xna = paramLong;
     }
-    paramString = r(paramLong, paramString);
-    if (xV(paramLong))
+    paramString = v(paramLong, paramString);
+    if (GF(paramLong))
     {
-      getOperationLayout().setStyle(this.tVM);
-      if (!paramString.gR.isIdentity()) {
-        paramRectF.set(this.tVK);
+      getOperationLayout().setStyle(this.xmW);
+      if (!paramString.gT.isIdentity()) {
+        paramRectF.set(this.xmU);
       }
-      this.tVK.round(paramString.hpa);
+      this.xmU.round(paramString.iiw);
     }
     for (;;)
     {
       getLayout().getVisibilityRect().set(paramRectF);
       getOperationLayout().getVisibilityRect().set(paramRectF);
       getOperationLayout().setOnOperationCallback((WxCropOperationLayout.i)new j(this, paramLong, paramString));
-      paramRectF = new Matrix(paramString.gR);
-      getLayout().a(paramView, paramInt1, paramInt2, paramString.gR, this.tVO, (d.g.a.b)new k(this, paramRectF, paramString));
+      paramRectF = new Matrix(paramString.gT);
+      getLayout().a(paramView, paramInt1, paramInt2, paramString.gT, this.xmY, (kotlin.g.a.b)new k(this, paramRectF, paramString));
       getLayout().setOnChangeListener((CropLayout.c)new l(this, paramString));
-      paramView = this.tVt.get(paramLong);
+      paramView = this.xmF.get(paramLong);
       p.g(paramView, "matrixMap[mediaId]");
       paramView = (b)paramView;
       AppMethodBeat.o(165043);
       return paramView;
-      getOperationLayout().setStyle(WxCropOperationLayout.j.xYR);
-      paramRectF.set(this.tVK);
-      this.tVK.round(paramString.hpa);
+      getOperationLayout().setStyle(WxCropOperationLayout.j.BZJ);
+      paramRectF.set(this.xmU);
+      this.xmU.round(paramString.iiw);
     }
   }
   
   private final ImageView getImageView()
   {
     AppMethodBeat.i(165030);
-    ImageView localImageView = (ImageView)this.tVn.getValue();
+    ImageView localImageView = (ImageView)this.xmz.getValue();
     AppMethodBeat.o(165030);
     return localImageView;
   }
   
   private final WxCropOperationLayout getOperationLayout()
   {
-    AppMethodBeat.i(186295);
-    WxCropOperationLayout localWxCropOperationLayout = (WxCropOperationLayout)this.tVL.getValue();
-    AppMethodBeat.o(186295);
+    AppMethodBeat.i(257861);
+    WxCropOperationLayout localWxCropOperationLayout = (WxCropOperationLayout)this.xmV.getValue();
+    AppMethodBeat.o(257861);
     return localWxCropOperationLayout;
-  }
-  
-  private final b r(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(165042);
-    if (this.tVt.get(paramLong) == null)
-    {
-      paramString = new b(paramLong, paramString);
-      this.tVt.put(paramLong, paramString);
-      this.tVK.round(paramString.hpa);
-      AppMethodBeat.o(165042);
-      return paramString;
-    }
-    paramString = (b)this.tVt.get(paramLong);
-    p.g(paramString, "cropInfo");
-    AppMethodBeat.o(165042);
-    return paramString;
   }
   
   private final void setStyle(WxCropOperationLayout.j paramj)
   {
-    AppMethodBeat.i(186296);
-    this.tVM = paramj;
+    AppMethodBeat.i(257862);
+    this.xmW = paramj;
     getOperationLayout().setStyle(paramj);
-    AppMethodBeat.o(186296);
+    AppMethodBeat.o(257862);
   }
   
-  private final boolean xV(long paramLong)
+  private final b v(long paramLong, String paramString)
   {
-    return (this.tVQ == paramLong) || (this.tVQ == 0L);
+    AppMethodBeat.i(165042);
+    if (this.xmF.get(paramLong) == null)
+    {
+      paramString = new b(paramLong, paramString);
+      this.xmF.put(paramLong, paramString);
+      this.xmU.round(paramString.iiw);
+      AppMethodBeat.o(165042);
+      return paramString;
+    }
+    paramString = (b)this.xmF.get(paramLong);
+    p.g(paramString, "cropInfo");
+    AppMethodBeat.o(165042);
+    return paramString;
   }
   
   @SuppressLint({"ResourceType"})
@@ -185,34 +187,34 @@ public final class WxMediaCropLayout
   {
     AppMethodBeat.i(165040);
     p.h(paramString, "mediaPath");
-    if ((paramLong == this.tVr) && (!paramBoolean1))
+    if ((paramLong == this.xmD) && (!paramBoolean1))
     {
-      paramString = this.tVt.get(paramLong);
+      paramString = this.xmF.get(paramLong);
       p.g(paramString, "matrixMap[mediaId]");
       paramString = (b)paramString;
       AppMethodBeat.o(165040);
       return paramString;
     }
-    ae.i("WxMediaCropLayout", "onPreviewVideo");
-    getLayout().za(true);
+    Log.i("WxMediaCropLayout", "onPreviewVideo");
+    getLayout().De(true);
     getLayout().setEnableScale(true);
-    Object localObject1 = c.ubl;
-    localObject1 = c.ajS(paramString);
-    if (this.mST == null) {
-      this.mST = new CommonVideoView(getContext());
+    Object localObject1 = c.xsz;
+    localObject1 = c.awl(paramString);
+    if (this.ofW == null) {
+      this.ofW = new CommonVideoView(getContext());
     }
-    Object localObject2 = this.mST;
+    Object localObject2 = this.ofW;
     if (localObject2 != null)
     {
-      if ((!(p.i(((CommonVideoView)localObject2).getTag(), paramString) ^ true)) && (!paramBoolean2)) {
+      if ((!(p.j(((CommonVideoView)localObject2).getTag(), paramString) ^ true)) && (!paramBoolean2)) {
         break label418;
       }
       ((CommonVideoView)localObject2).stop();
-      ((CommonVideoView)localObject2).cOS();
+      ((CommonVideoView)localObject2).dFl();
       ((CommonVideoView)localObject2).setLoop(true);
       ((CommonVideoView)localObject2).setMute(false);
       ((CommonVideoView)localObject2).setIsShowBasicControls(false);
-      ((CommonVideoView)localObject2).setScaleType(i.e.Flj);
+      ((CommonVideoView)localObject2).setScaleType(i.e.Kcb);
       ((CommonVideoView)localObject2).c(false, paramString, 0);
       ((CommonVideoView)localObject2).onUIResume();
       ((CommonVideoView)localObject2).start();
@@ -220,25 +222,25 @@ public final class WxMediaCropLayout
     }
     for (;;)
     {
-      this.tVP[0] = ((com.tencent.mm.plugin.sight.base.a)localObject1).width;
-      this.tVP[1] = ((com.tencent.mm.plugin.sight.base.a)localObject1).height;
-      localObject2 = new RectF(this.tVK);
+      this.xmZ[0] = ((com.tencent.mm.plugin.sight.base.a)localObject1).width;
+      this.xmZ[1] = ((com.tencent.mm.plugin.sight.base.a)localObject1).height;
+      localObject2 = new RectF(this.xmU);
       if (paramc != null) {
-        paramc.a(this.tVP, (RectF)localObject2);
+        paramc.a(this.xmZ, (RectF)localObject2);
       }
-      getOperationLayout().a(WxCropOperationLayout.h.xYH);
-      getOperationLayout().a(WxCropOperationLayout.h.xYI);
+      getOperationLayout().a(WxCropOperationLayout.h.BZz);
+      getOperationLayout().a(WxCropOperationLayout.h.BZA);
       paramc = new VideoTimeView(getContext());
       paramc.setDuration(((com.tencent.mm.plugin.sight.base.a)localObject1).videoDuration / 1000);
       paramc.setLayoutParams((ViewGroup.LayoutParams)new FrameLayout.LayoutParams(-2, -2));
       paramc.start();
-      getOperationLayout().a((View)paramc, WxCropOperationLayout.h.xYH);
+      getOperationLayout().a((View)paramc, WxCropOperationLayout.h.BZz);
       getOperationLayout().setBorderVisibilityCallback((com.tencent.mm.ui.widget.cropview.b)paramc);
-      getOperationLayout().dKE();
-      ae.i("WxMediaCropLayout", "onPreviewVideo ready to setCropView");
-      paramc = this.mST;
+      getOperationLayout().eLD();
+      Log.i("WxMediaCropLayout", "onPreviewVideo ready to setCropView");
+      paramc = this.ofW;
       if (paramc == null) {
-        p.gkB();
+        p.hyc();
       }
       paramString = a((View)paramc, ((com.tencent.mm.plugin.sight.base.a)localObject1).width, ((com.tencent.mm.plugin.sight.base.a)localObject1).height, (RectF)localObject2, paramLong, paramString, 1);
       AppMethodBeat.o(165040);
@@ -252,36 +254,36 @@ public final class WxMediaCropLayout
   
   public final void a(RectF paramRectF, WxCropOperationLayout.j paramj)
   {
-    AppMethodBeat.i(186294);
+    AppMethodBeat.i(257860);
     p.h(paramRectF, "initCropRect");
     p.h(paramj, "style");
     setStyle(paramj);
-    this.tVK.set(paramRectF);
-    AppMethodBeat.o(186294);
+    this.xmU.set(paramRectF);
+    AppMethodBeat.o(257860);
   }
   
-  public final void cYq()
+  public final void dRJ()
   {
-    AppMethodBeat.i(186301);
+    AppMethodBeat.i(257867);
     removeView((View)getOperationLayout());
-    AppMethodBeat.o(186301);
+    AppMethodBeat.o(257867);
   }
   
   public final CropLayout.e getCropLayoutScaleType()
   {
-    return this.tVO;
+    return this.xmY;
   }
   
   public final b getCurrentCropInfo()
   {
     AppMethodBeat.i(165044);
-    b localb = (b)this.tVt.get(this.tVr);
+    b localb = (b)this.xmF.get(this.xmD);
     Object localObject = localb;
     if (localb == null)
     {
       localObject = (WxMediaCropLayout)this;
-      ae.w("WxMediaCropLayout", "[getCurrentCropInfo] currentPreviewMediaId=" + ((WxMediaCropLayout)localObject).tVr);
-      localObject = new b(((WxMediaCropLayout)localObject).tVr, "");
+      Log.w("WxMediaCropLayout", "[getCurrentCropInfo] currentPreviewMediaId=" + ((WxMediaCropLayout)localObject).xmD);
+      localObject = new b(((WxMediaCropLayout)localObject).xmD, "");
     }
     AppMethodBeat.o(165044);
     return localObject;
@@ -289,101 +291,101 @@ public final class WxMediaCropLayout
   
   public final int getCurrentType()
   {
-    return this.oKa;
+    return this.pXO;
   }
   
   public final CropLayout getLayout()
   {
     AppMethodBeat.i(165034);
-    CropLayout localCropLayout = (CropLayout)this.tVp.getValue();
+    CropLayout localCropLayout = (CropLayout)this.xmB.getValue();
     AppMethodBeat.o(165034);
     return localCropLayout;
   }
   
   public final long getLockCropMediaId()
   {
-    return this.tVQ;
+    return this.xna;
   }
   
   public final int[] getMediaWH()
   {
-    return this.tVP;
+    return this.xmZ;
   }
   
   public final com.tencent.mm.plugin.recordvideo.plugin.a.b getMusicController()
   {
-    return this.tVJ;
+    return this.wgF;
   }
   
   public final CommonVideoView getVideoView()
   {
     AppMethodBeat.i(165031);
-    CommonVideoView localCommonVideoView = this.mST;
+    CommonVideoView localCommonVideoView = this.ofW;
     AppMethodBeat.o(165031);
     return localCommonVideoView;
   }
   
   public final void onUIPause()
   {
-    AppMethodBeat.i(186299);
-    ae.i("WxMediaCropLayout", "onUIPause");
+    AppMethodBeat.i(257865);
+    Log.i("WxMediaCropLayout", "onUIPause");
     Object localObject;
-    if (this.mST != null)
+    if (this.ofW != null)
     {
-      localObject = this.mST;
+      localObject = this.ofW;
       if (localObject != null) {
         ((CommonVideoView)localObject).onUIPause();
       }
     }
-    if (this.tVJ != null)
+    if (this.wgF != null)
     {
-      localObject = this.tVJ;
+      localObject = this.wgF;
       if (localObject != null)
       {
         ((com.tencent.mm.plugin.recordvideo.plugin.a.b)localObject).pauseAudio();
-        AppMethodBeat.o(186299);
+        AppMethodBeat.o(257865);
         return;
       }
     }
-    AppMethodBeat.o(186299);
+    AppMethodBeat.o(257865);
   }
   
   public final void setCropLayoutScaleType(CropLayout.e parame)
   {
-    AppMethodBeat.i(186297);
+    AppMethodBeat.i(257863);
     p.h(parame, "value");
-    this.tVO = parame;
+    this.xmY = parame;
     getLayout().setScaleType(parame);
-    AppMethodBeat.o(186297);
+    AppMethodBeat.o(257863);
   }
   
   public final void setCurrentType(int paramInt)
   {
-    this.oKa = paramInt;
+    this.pXO = paramInt;
   }
   
   public final void setEnableScale(boolean paramBoolean)
   {
-    AppMethodBeat.i(186300);
+    AppMethodBeat.i(257866);
     getLayout().setEnableScale(paramBoolean);
-    AppMethodBeat.o(186300);
+    AppMethodBeat.o(257866);
   }
   
   public final void setLockCropMediaId(long paramLong)
   {
-    this.tVQ = paramLong;
+    this.xna = paramLong;
   }
   
   public final void setMusicController(com.tencent.mm.plugin.recordvideo.plugin.a.b paramb)
   {
-    this.tVJ = paramb;
+    this.wgF = paramb;
   }
   
   public final void setShowBorder(boolean paramBoolean)
   {
     AppMethodBeat.i(165037);
     getLayout().setHasBorder(paramBoolean);
-    this.tVN = paramBoolean;
+    this.xmX = paramBoolean;
     if (paramBoolean) {
       getLayout().setOnBorderVisibilityCallback((BaseCropLayout.b)new f(this));
     }
@@ -392,50 +394,53 @@ public final class WxMediaCropLayout
   
   public final void setVideoView(CommonVideoView paramCommonVideoView)
   {
-    this.mST = paramCommonVideoView;
+    this.ofW = paramCommonVideoView;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$CropInfo;", "", "mediaId", "", "mediaPath", "", "(JLjava/lang/String;)V", "centerMatrix", "Landroid/graphics/Matrix;", "getCenterMatrix", "()Landroid/graphics/Matrix;", "setCenterMatrix", "(Landroid/graphics/Matrix;)V", "contentCenterRect", "Landroid/graphics/Rect;", "getContentCenterRect", "()Landroid/graphics/Rect;", "setContentCenterRect", "(Landroid/graphics/Rect;)V", "contentRect", "getContentRect", "cropMatrix", "getCropMatrix", "setCropMatrix", "cropRect", "getCropRect", "setCropRect", "initScale", "", "getInitScale", "()F", "setInitScale", "(F)V", "matrix", "getMatrix", "setMatrix", "maxScale", "getMaxScale", "setMaxScale", "minScale", "getMinScale", "setMinScale", "rotation", "getRotation", "setRotation", "scale", "getScale", "setScale", "viewRect", "getViewRect", "setViewRect", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-gallery_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$Companion;", "", "()V", "MAXTARGETSIZE", "", "TAG", "", "TYPE_IMAGE", "TYPE_VIDEO", "plugin-gallery_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$CropInfo;", "", "mediaId", "", "mediaPath", "", "(JLjava/lang/String;)V", "centerMatrix", "Landroid/graphics/Matrix;", "getCenterMatrix", "()Landroid/graphics/Matrix;", "setCenterMatrix", "(Landroid/graphics/Matrix;)V", "contentCenterRect", "Landroid/graphics/Rect;", "getContentCenterRect", "()Landroid/graphics/Rect;", "setContentCenterRect", "(Landroid/graphics/Rect;)V", "contentRect", "getContentRect", "cropMatrix", "getCropMatrix", "setCropMatrix", "cropRect", "getCropRect", "setCropRect", "initScale", "", "getInitScale", "()F", "setInitScale", "(F)V", "matrix", "getMatrix", "setMatrix", "maxScale", "getMaxScale", "setMaxScale", "minScale", "getMinScale", "setMinScale", "rotation", "getRotation", "setRotation", "scale", "getScale", "setScale", "viewRect", "getViewRect", "setViewRect", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-gallery_release"})
   public static final class b
   {
-    float aXE;
-    float aXF;
-    public Matrix gR;
-    public Rect hpa;
+    float aXt;
+    float aXu;
+    public Matrix gT;
+    public Rect iiw;
     private final String mediaPath;
-    public final Rect qfO;
-    private final long tSr;
-    private Matrix tVS;
-    Matrix tVT;
-    public Rect tVU;
-    float tVV;
+    public final Rect rwL;
     public Rect viewRect;
+    private final long xjE;
+    private Matrix xnc;
+    Matrix xnd;
+    public Rect xne;
+    float xnf;
     
     public b(long paramLong, String paramString)
     {
       AppMethodBeat.i(165014);
-      this.tSr = paramLong;
+      this.xjE = paramLong;
       this.mediaPath = paramString;
-      this.gR = new Matrix();
-      this.tVS = new Matrix();
-      this.tVT = new Matrix();
-      this.hpa = new Rect();
-      this.tVU = new Rect();
+      this.gT = new Matrix();
+      this.xnc = new Matrix();
+      this.xnd = new Matrix();
+      this.iiw = new Rect();
+      this.xne = new Rect();
       this.viewRect = new Rect();
-      this.qfO = new Rect();
-      this.tVV = 1.0F;
-      this.aXE = 1.0F;
-      this.aXF = 1.0F;
+      this.rwL = new Rect();
+      this.xnf = 1.0F;
+      this.aXt = 1.0F;
+      this.aXu = 1.0F;
       AppMethodBeat.o(165014);
     }
     
-    public final Matrix cYr()
+    public final Matrix dRK()
     {
       AppMethodBeat.i(165013);
-      this.tVS.set(this.gR);
-      this.tVS.postTranslate(0.0F, -this.hpa.top);
-      ae.d("WxMediaCropLayout", "matrix=" + this.gR + " cropMatrix=" + this.tVS + ' ' + this.hpa);
-      Matrix localMatrix = this.tVS;
+      this.xnc.set(this.gT);
+      this.xnc.postTranslate(0.0F, -this.iiw.top);
+      Log.d("WxMediaCropLayout", "matrix=" + this.gT + " cropMatrix=" + this.xnc + ' ' + this.iiw);
+      Matrix localMatrix = this.xnc;
       AppMethodBeat.o(165013);
       return localMatrix;
     }
@@ -448,7 +453,7 @@ public final class WxMediaCropLayout
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if ((this.tSr != paramObject.tSr) || (!p.i(this.mediaPath, paramObject.mediaPath))) {}
+          if ((this.xjE != paramObject.xjE) || (!p.j(this.mediaPath, paramObject.mediaPath))) {}
         }
       }
       else
@@ -463,7 +468,7 @@ public final class WxMediaCropLayout
     public final int hashCode()
     {
       AppMethodBeat.i(165016);
-      long l = this.tSr;
+      long l = this.xjE;
       int j = (int)(l ^ l >>> 32);
       String str = this.mediaPath;
       if (str != null) {}
@@ -477,22 +482,42 @@ public final class WxMediaCropLayout
     public final String toString()
     {
       AppMethodBeat.i(165015);
-      String str = "CropInfo(mediaId=" + this.tSr + ", mediaPath=" + this.mediaPath + ")";
+      String str = "CropInfo(mediaId=" + this.xjE + ", mediaPath=" + this.mediaPath + ")";
       AppMethodBeat.o(165015);
       return str;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$OnCalculateVisibilityRect;", "", "calculate", "", "mediaWH", "", "maxCropRect", "Landroid/graphics/RectF;", "isAdaptSrc", "", "plugin-gallery_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$OnCalculateVisibilityRect;", "", "calculate", "", "mediaWH", "", "maxCropRect", "Landroid/graphics/RectF;", "isAdaptSrc", "", "plugin-gallery_release"})
   public static abstract interface c
   {
     public abstract void a(int[] paramArrayOfInt, RectF paramRectF);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/ImageView;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "mediaPath", "", "imageView", "Landroid/widget/ImageView;", "loadedCallback", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "width", "height", "", "invoke"})
+  static final class d
+    extends kotlin.g.b.q
+    implements kotlin.g.a.q<String, ImageView, m<? super Integer, ? super Integer, ? extends Object>, x>
+  {
+    public static final d xng;
+    
+    static
+    {
+      AppMethodBeat.i(257857);
+      xng = new d();
+      AppMethodBeat.o(257857);
+    }
+    
+    d()
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/ImageView;", "invoke"})
   static final class e
-    extends d.g.b.q
-    implements d.g.a.a<ImageView>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<ImageView>
   {
     e(WxMediaCropLayout paramWxMediaCropLayout)
     {
@@ -500,29 +525,29 @@ public final class WxMediaCropLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$isShowBorder$1", "Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout$OnBorderVisibilityCallback;", "onDismiss", "", "onShow", "plugin-gallery_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$isShowBorder$1", "Lcom/tencent/mm/ui/widget/cropview/BaseCropLayout$OnBorderVisibilityCallback;", "onDismiss", "", "onShow", "plugin-gallery_release"})
   public static final class f
     implements BaseCropLayout.b
   {
     public final void onDismiss()
     {
       AppMethodBeat.i(165020);
-      WxCropOperationLayout.a(WxMediaCropLayout.a(this.tVY));
+      WxCropOperationLayout.a(WxMediaCropLayout.a(this.xni));
       AppMethodBeat.o(165020);
     }
     
     public final void onShow()
     {
       AppMethodBeat.i(165019);
-      WxMediaCropLayout.a(this.tVY).ar(255, 0L);
+      WxMediaCropLayout.a(this.xni).ay(255, 0L);
       AppMethodBeat.o(165019);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "invoke"})
   static final class g
-    extends d.g.b.q
-    implements d.g.a.a<CropLayout>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<CropLayout>
   {
     g(WxMediaCropLayout paramWxMediaCropLayout)
     {
@@ -530,9 +555,9 @@ public final class WxMediaCropLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$CropInfo;", "outWidth", "", "outHeight", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$CropInfo;", "outWidth", "", "outHeight", "invoke"})
   static final class h
-    extends d.g.b.q
+    extends kotlin.g.b.q
     implements m<Integer, Integer, WxMediaCropLayout.b>
   {
     h(WxMediaCropLayout paramWxMediaCropLayout, WxMediaCropLayout.c paramc, long paramLong, String paramString)
@@ -541,10 +566,10 @@ public final class WxMediaCropLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout;", "invoke"})
   static final class i
-    extends d.g.b.q
-    implements d.g.a.a<WxCropOperationLayout>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<WxCropOperationLayout>
   {
     i(WxMediaCropLayout paramWxMediaCropLayout)
     {
@@ -552,7 +577,7 @@ public final class WxMediaCropLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$setCropView$1", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "onBlockDownClick", "", "isTopBlock", "", "onChange", "rectF", "Landroid/graphics/RectF;", "plugin-gallery_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$setCropView$1", "Lcom/tencent/mm/plugin/recordvideo/ui/WxCropOperationLayout$OnOperationCallback;", "onBlockDownClick", "", "isTopBlock", "", "onChange", "rectF", "Landroid/graphics/RectF;", "plugin-gallery_release"})
   public static final class j
     implements WxCropOperationLayout.i
   {
@@ -562,23 +587,23 @@ public final class WxMediaCropLayout
     {
       AppMethodBeat.i(165025);
       p.h(paramRectF, "rectF");
-      if (WxMediaCropLayout.a(this.tVY, paramLong)) {
-        WxMediaCropLayout.b(this.tVY).set(paramRectF);
+      if (WxMediaCropLayout.a(this.xni, paramLong)) {
+        WxMediaCropLayout.b(this.xni).set(paramRectF);
       }
-      paramRectF.round(this.tWb.hpa);
-      WxMediaCropLayout.d(this.tVY).i(paramRectF);
+      paramRectF.round(this.xnl.iiw);
+      WxMediaCropLayout.d(this.xni).b(paramRectF, false);
       AppMethodBeat.o(165025);
     }
     
-    public final void mS(boolean paramBoolean) {}
+    public final void pA(boolean paramBoolean) {}
     
-    public final void mT(boolean paramBoolean) {}
+    public final void pz(boolean paramBoolean) {}
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/graphics/Matrix;", "invoke"})
   static final class k
-    extends d.g.b.q
-    implements d.g.a.b<Matrix, Boolean>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<Matrix, Boolean>
   {
     k(WxMediaCropLayout paramWxMediaCropLayout, Matrix paramMatrix, WxMediaCropLayout.b paramb)
     {
@@ -586,7 +611,7 @@ public final class WxMediaCropLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$setCropView$3", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "onChange", "", "plugin-gallery_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/gallery/picker/view/WxMediaCropLayout$setCropView$3", "Lcom/tencent/mm/ui/widget/cropview/CropLayout$OnChangeListener;", "onChange", "", "plugin-gallery_release"})
   public static final class l
     implements CropLayout.c
   {
@@ -595,14 +620,14 @@ public final class WxMediaCropLayout
     public final void onChange()
     {
       AppMethodBeat.i(165027);
-      paramString.qfO.set(WxMediaCropLayout.d(this.tVY).getContentRect());
+      paramString.rwL.set(WxMediaCropLayout.d(this.xni).getContentRect());
       AppMethodBeat.o(165027);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.view.WxMediaCropLayout
  * JD-Core Version:    0.7.0.1
  */

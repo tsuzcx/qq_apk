@@ -29,6 +29,11 @@ public abstract interface d
       attachInterface(this, "com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
     }
     
+    public static d gdV()
+    {
+      return a.Jdb;
+    }
+    
     public IBinder asBinder()
     {
       return this;
@@ -84,6 +89,7 @@ public abstract interface d
     static final class a
       implements d
     {
+      public static d Jdb;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -100,63 +106,77 @@ public abstract interface d
       public final Bundle getData()
       {
         // Byte code:
-        //   0: ldc 24
-        //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   0: ldc 26
+        //   2: invokestatic 32	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   5: invokestatic 38	android/os/Parcel:obtain	()Landroid/os/Parcel;
         //   8: astore_2
-        //   9: invokestatic 36	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   9: invokestatic 38	android/os/Parcel:obtain	()Landroid/os/Parcel;
         //   12: astore_3
         //   13: aload_2
-        //   14: ldc 38
-        //   16: invokevirtual 42	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   14: ldc 40
+        //   16: invokevirtual 44	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
         //   19: aload_0
-        //   20: getfield 18	com/tencent/mm/plugin/webview/stub/d$a$a:mRemote	Landroid/os/IBinder;
+        //   20: getfield 20	com/tencent/mm/plugin/webview/stub/d$a$a:mRemote	Landroid/os/IBinder;
         //   23: iconst_5
         //   24: aload_2
         //   25: aload_3
         //   26: iconst_0
-        //   27: invokeinterface 48 5 0
-        //   32: pop
-        //   33: aload_3
-        //   34: invokevirtual 51	android/os/Parcel:readException	()V
-        //   37: aload_3
-        //   38: invokevirtual 55	android/os/Parcel:readInt	()I
-        //   41: ifeq +31 -> 72
-        //   44: getstatic 61	android/os/Bundle:CREATOR	Landroid/os/Parcelable$Creator;
-        //   47: aload_3
-        //   48: invokeinterface 67 2 0
-        //   53: checkcast 57	android/os/Bundle
-        //   56: astore_1
-        //   57: aload_3
-        //   58: invokevirtual 70	android/os/Parcel:recycle	()V
-        //   61: aload_2
-        //   62: invokevirtual 70	android/os/Parcel:recycle	()V
-        //   65: ldc 24
-        //   67: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   70: aload_1
-        //   71: areturn
-        //   72: aconst_null
-        //   73: astore_1
-        //   74: goto -17 -> 57
-        //   77: astore_1
-        //   78: aload_3
-        //   79: invokevirtual 70	android/os/Parcel:recycle	()V
-        //   82: aload_2
-        //   83: invokevirtual 70	android/os/Parcel:recycle	()V
-        //   86: ldc 24
-        //   88: invokestatic 73	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   91: aload_1
-        //   92: athrow
+        //   27: invokeinterface 50 5 0
+        //   32: ifne +33 -> 65
+        //   35: invokestatic 54	com/tencent/mm/plugin/webview/stub/d$a:gdV	()Lcom/tencent/mm/plugin/webview/stub/d;
+        //   38: ifnull +27 -> 65
+        //   41: invokestatic 54	com/tencent/mm/plugin/webview/stub/d$a:gdV	()Lcom/tencent/mm/plugin/webview/stub/d;
+        //   44: invokeinterface 56 1 0
+        //   49: astore_1
+        //   50: aload_3
+        //   51: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   54: aload_2
+        //   55: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   58: ldc 26
+        //   60: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   63: aload_1
+        //   64: areturn
+        //   65: aload_3
+        //   66: invokevirtual 65	android/os/Parcel:readException	()V
+        //   69: aload_3
+        //   70: invokevirtual 69	android/os/Parcel:readInt	()I
+        //   73: ifeq +31 -> 104
+        //   76: getstatic 75	android/os/Bundle:CREATOR	Landroid/os/Parcelable$Creator;
+        //   79: aload_3
+        //   80: invokeinterface 81 2 0
+        //   85: checkcast 71	android/os/Bundle
+        //   88: astore_1
+        //   89: aload_3
+        //   90: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   93: aload_2
+        //   94: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   97: ldc 26
+        //   99: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   102: aload_1
+        //   103: areturn
+        //   104: aconst_null
+        //   105: astore_1
+        //   106: goto -17 -> 89
+        //   109: astore_1
+        //   110: aload_3
+        //   111: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   114: aload_2
+        //   115: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   118: ldc 26
+        //   120: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   123: aload_1
+        //   124: athrow
         // Local variable table:
         //   start	length	slot	name	signature
-        //   0	93	0	this	a
-        //   56	18	1	localBundle	Bundle
-        //   77	15	1	localObject	Object
-        //   8	75	2	localParcel1	Parcel
-        //   12	67	3	localParcel2	Parcel
+        //   0	125	0	this	a
+        //   49	57	1	localBundle	Bundle
+        //   109	15	1	localObject	Object
+        //   8	107	2	localParcel1	Parcel
+        //   12	99	3	localParcel2	Parcel
         // Exception table:
         //   from	to	target	type
-        //   13	57	77	finally
+        //   13	50	109	finally
+        //   65	89	109	finally
       }
       
       public final int getErrCode()
@@ -167,7 +187,11 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          this.mRemote.transact(3, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (d.a.gdV() != null))
+          {
+            i = d.a.gdV().getErrCode();
+            return i;
+          }
           localParcel2.readException();
           int i = localParcel2.readInt();
           return i;
@@ -188,7 +212,11 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          this.mRemote.transact(4, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (d.a.gdV() != null))
+          {
+            str = d.a.gdV().getErrMsg();
+            return str;
+          }
           localParcel2.readException();
           String str = localParcel2.readString();
           return str;
@@ -209,7 +237,11 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          this.mRemote.transact(2, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (d.a.gdV() != null))
+          {
+            i = d.a.gdV().getErrType();
+            return i;
+          }
           localParcel2.readException();
           int i = localParcel2.readInt();
           return i;
@@ -230,7 +262,11 @@ public abstract interface d
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.webview.stub.OnSceneEnd_AIDL");
-          this.mRemote.transact(1, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (d.a.gdV() != null))
+          {
+            i = d.a.gdV().getType();
+            return i;
+          }
           localParcel2.readException();
           int i = localParcel2.readInt();
           return i;

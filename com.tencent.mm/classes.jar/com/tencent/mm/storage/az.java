@@ -1,145 +1,207 @@
 package com.tencent.mm.storage;
 
+import android.content.ContentValues;
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.c.bb;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ac;
+import com.tencent.mm.protocal.protobuf.czg;
+import com.tencent.mm.protocal.protobuf.czh;
+import java.util.LinkedList;
 
 public final class az
+  extends com.tencent.mm.o.a
+  implements com.tencent.mm.storagebase.a.a<String>
 {
-  public boolean Jfm;
-  public String Jfn;
-  private String iwS;
-  public boolean iwT;
-  public String md5;
-  public long time;
+  public ca OoM;
+  
+  public az() {}
   
   public az(String paramString)
   {
-    AppMethodBeat.i(104954);
-    this.md5 = "-1";
-    this.Jfn = "";
-    if (bu.isNullOrNil(paramString))
+    super(paramString);
+  }
+  
+  public final void aT(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(43193);
+    switch (paramInt)
     {
-      ae.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. content is null.");
-      AppMethodBeat.o(104954);
-      return;
     }
     for (;;)
     {
-      try
+      AppMethodBeat.o(43193);
+      return;
+      nt((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      setStatus((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      nv((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      yA(paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      super.yB(paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      nx((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      ny((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      nz((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      nB((int)paramLong);
+      AppMethodBeat.o(43193);
+      return;
+      nD((int)paramLong);
+    }
+  }
+  
+  public final void aX(ca paramca)
+  {
+    AppMethodBeat.i(43191);
+    setStatus(paramca.field_status);
+    nv(paramca.field_isSend);
+    if (paramca.cWL()) {}
+    label256:
+    for (;;)
+    {
+      long l = paramca.field_createTime;
+      Object localObject = this;
+      label36:
+      ((az)localObject).yA(l);
+      if (paramca.gDk()) {
+        setContent(paramca.gDW());
+      }
+      for (;;)
       {
-        Object localObject;
-        if (paramString.endsWith("\n"))
+        if ((paramca != null) && ("hidden_conv_parent".equalsIgnoreCase(this.field_parentRef)))
         {
-          localObject = paramString.substring(0, paramString.length() - 1);
-          localObject = ((String)localObject).split(":", 6);
-          if ((localObject.length == 4) && (an.Ac(localObject[0])))
+          if ((as.HF(this.field_username)) && (!ab.Jf(this.field_username)))
           {
-            i = 1;
-            if (localObject.length > i) {
-              this.iwS = localObject[i];
+            Co("appbrandcustomerservicemsg");
+            AppMethodBeat.o(43191);
+            return;
+            if (paramca.gDw())
+            {
+              localObject = com.tencent.mm.util.e.boC(this.field_content);
+              if (!((czg)localObject).yVw.isEmpty())
+              {
+                l = ((czh)((czg)localObject).yVw.getLast()).createTime;
+                localObject = this;
+                break label36;
+              }
+              break;
             }
-            if (localObject.length > i + 1) {
-              this.time = bu.getLong(localObject[(i + 1)], 0L);
+            if (paramca.field_status != 1) {
+              break label256;
             }
-            if (localObject.length > i + 2) {
-              this.iwT = localObject[(i + 2)].equals("1");
-            }
-            if (localObject.length > i + 3) {
-              this.md5 = localObject[(i + 3)];
-            }
-            if (localObject.length > i + 4) {
-              this.Jfn = localObject[(i + 4)].replace("*#*", ":");
-            }
-            if (localObject.length > i + 5) {
-              this.Jfm = localObject[(i + 5)].equals("1");
-            }
-            AppMethodBeat.o(104954);
+            l = 9223372036854775807L;
+            localObject = this;
+            break label36;
+            setContent(paramca.field_content);
+            continue;
+          }
+          Co(null);
+          localObject = com.tencent.mm.plugin.report.e.Cxv;
+          if (paramca.field_isSend != 1) {
+            break label250;
           }
         }
-        else
-        {
-          this.Jfn = paramString.replace(":", "*#*");
-          localObject = paramString;
-          continue;
-        }
-        int i = 0;
       }
-      catch (Exception localException)
+      label250:
+      for (int i = 3;; i = 6)
       {
-        this.time = 0L;
-        ae.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. Content:%s Excpetion:%s", new Object[] { paramString, bu.o(localException) });
-        AppMethodBeat.o(104954);
+        ((com.tencent.mm.plugin.report.e)localObject).a(21170, new Object[] { Integer.valueOf(i), this.field_username, Integer.valueOf(ac.JT(this.field_username)) });
+        AppMethodBeat.o(43191);
         return;
       }
     }
   }
   
-  public static String a(String paramString1, long paramLong, boolean paramBoolean1, String paramString2, boolean paramBoolean2, String paramString3)
+  public final void convertFrom(Cursor paramCursor)
   {
-    int j = 1;
-    AppMethodBeat.i(104952);
-    paramString3 = paramString3.replace(":", "*#*");
-    paramString1 = new StringBuilder().append(paramString1).append(":").append(paramLong).append(":");
-    if (paramBoolean1)
+    AppMethodBeat.i(160773);
+    super.convertFrom(paramCursor);
+    AppMethodBeat.o(160773);
+  }
+  
+  public final ContentValues convertTo()
+  {
+    AppMethodBeat.i(160772);
+    ContentValues localContentValues = super.convertTo();
+    AppMethodBeat.o(160772);
+    return localContentValues;
+  }
+  
+  public final void dh(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(43194);
+    switch (paramInt)
     {
-      i = 1;
-      paramString1 = paramString1.append(i).append(":").append(paramString2).append(":").append(paramString3).append(":");
-      if (!paramBoolean2) {
-        break label121;
-      }
     }
-    label121:
-    for (int i = j;; i = 0)
+    for (;;)
     {
-      paramString1 = i + "\n";
-      AppMethodBeat.o(104952);
-      return paramString1;
-      i = 0;
-      break;
+      AppMethodBeat.o(43194);
+      return;
+      setUsername(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      setContent(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      Cl(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      Cm(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      Cn(paramString);
+      AppMethodBeat.o(43194);
+      return;
+      Cp(paramString);
     }
   }
   
-  public static az aVt(String paramString)
+  public final void gCr()
   {
-    AppMethodBeat.i(104955);
-    paramString = new az(paramString);
-    AppMethodBeat.o(104955);
-    return paramString;
+    AppMethodBeat.i(43192);
+    setStatus(0);
+    nv(0);
+    setContent("");
+    Cl("0");
+    nt(0);
+    nB(0);
+    yC(0L);
+    nA(0);
+    nA(0);
+    super.Cm("");
+    super.Cn("");
+    AppMethodBeat.o(43192);
   }
   
-  public final String aNq()
-  {
-    return this.iwS;
-  }
+  public final void gzB() {}
   
-  public final String dVq()
+  public final void t(int paramInt, byte[] paramArrayOfByte) {}
+  
+  public final void yB(long paramLong)
   {
-    int j = 1;
-    AppMethodBeat.i(104953);
-    Object localObject = new StringBuilder().append(this.iwS).append(":").append(this.time).append(":");
-    if (this.iwT)
-    {
-      i = 1;
-      localObject = ((StringBuilder)localObject).append(i).append(":").append(this.md5).append(":").append(this.Jfn).append(":");
-      if (!this.Jfm) {
-        break label118;
-      }
-    }
-    label118:
-    for (int i = j;; i = 0)
-    {
-      localObject = i + "\n";
-      AppMethodBeat.o(104953);
-      return localObject;
-      i = 0;
-      break;
-    }
+    AppMethodBeat.i(160771);
+    super.yB(paramLong);
+    AppMethodBeat.o(160771);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.az
  * JD-Core Version:    0.7.0.1
  */

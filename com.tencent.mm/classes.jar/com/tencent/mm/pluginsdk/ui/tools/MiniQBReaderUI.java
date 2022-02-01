@@ -4,73 +4,95 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
+import android.util.Pair;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.webkit.ValueCallback;
 import android.widget.Toast;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lx;
-import com.tencent.mm.g.a.lx.a;
+import com.tencent.mm.g.a.mn;
+import com.tencent.mm.g.a.mn.a;
 import com.tencent.mm.miniutil.MiniReaderLogic;
 import com.tencent.mm.miniutil.MiniReaderLogic.a;
 import com.tencent.mm.platformtools.p;
 import com.tencent.mm.platformtools.p.a;
-import com.tencent.mm.plugin.ball.a.e;
+import com.tencent.mm.plugin.appbrand.openmaterial.g.a;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialCollection;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.MaterialModel;
+import com.tencent.mm.plugin.ball.f.d;
+import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.handoff.model.HandOff;
 import com.tencent.mm.plugin.handoff.model.HandOffFile;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.f.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.report.MMSecDataActivity;
+import com.tencent.xweb.f;
+import com.tencent.xweb.f.a;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 @com.tencent.mm.ui.base.a(3)
 public class MiniQBReaderUI
-  extends MMActivity
+  extends MMSecDataActivity
 {
-  private com.tencent.mm.ui.chatting.g.a FCU;
-  private boolean FCV;
-  private String fXl;
+  private HandOffFile BIm;
+  private AppBrandOpenMaterialCollection Jgy;
+  private com.tencent.mm.plugin.appbrand.openmaterial.h Jgz;
+  private boolean KvU;
+  private boolean KvV;
+  private String KvW;
+  private com.tencent.mm.plugin.appbrand.openmaterial.g KvX;
+  private boolean KvY;
+  private com.tencent.mm.ui.chatting.g.a UtV;
+  private com.tencent.mm.ui.chatting.multitask.b UtW;
+  private com.tencent.mm.ui.chatting.multitask.a UtX;
   private String fileName;
   private String filePath;
-  private MiniReaderLogic.a<Integer> kQA;
-  private boolean ksV;
-  private boolean ksW;
-  private ValueCallback<String> ksY;
-  private ValueCallback<Integer> ksZ;
-  private int oZZ;
-  private c<lx> pab;
+  private String gCr;
+  private MiniReaderLogic.a<Integer> lVE;
+  private boolean lwG;
+  private boolean lwH;
+  private ValueCallback<String> lwJ;
+  private ValueCallback<Integer> lwK;
+  private int qoX;
+  private IListener<mn> qoZ;
   private String token;
-  private HandOffFile xIl;
   
   public MiniQBReaderUI()
   {
     AppMethodBeat.i(31970);
     this.filePath = "";
-    this.fXl = "";
+    this.gCr = "";
     this.fileName = "";
     this.token = Integer.toString(hashCode());
-    this.ksV = true;
-    this.ksW = false;
-    this.pab = new c()
+    this.lwG = true;
+    this.lwH = false;
+    this.KvV = false;
+    this.qoZ = new IListener()
     {
-      private boolean a(lx paramAnonymouslx)
+      private boolean a(mn paramAnonymousmn)
       {
         AppMethodBeat.i(31961);
-        if ((paramAnonymouslx != null) && (paramAnonymouslx.dAo != null) && (MiniQBReaderUI.a(MiniQBReaderUI.this) != null)) {
-          if (!bu.lX(paramAnonymouslx.dAo.filePath, MiniQBReaderUI.b(MiniQBReaderUI.this)))
+        if ((paramAnonymousmn != null) && (paramAnonymousmn.dSa != null) && (MiniQBReaderUI.a(MiniQBReaderUI.this) != null)) {
+          if (!Util.isEqual(paramAnonymousmn.dSa.filePath, MiniQBReaderUI.b(MiniQBReaderUI.this)))
           {
-            ae.e("MicroMsg.MiniQBReaderUI", "MiniQbFloatBallMenuActionEvent event.data.action:%s event.data.filePath:%s filePath:%s", new Object[] { Integer.valueOf(paramAnonymouslx.dAo.action), paramAnonymouslx.dAo.filePath, MiniQBReaderUI.b(MiniQBReaderUI.this) });
-            if (paramAnonymouslx.dAo.action == 3)
+            Log.e("MicroMsg.MiniQBReaderUI", "MiniQbFloatBallMenuActionEvent event.data.action:%s event.data.filePath:%s filePath:%s", new Object[] { Integer.valueOf(paramAnonymousmn.dSa.action), paramAnonymousmn.dSa.filePath, MiniQBReaderUI.b(MiniQBReaderUI.this) });
+            if (paramAnonymousmn.dSa.action == 3)
             {
-              com.tencent.mm.cp.a.V(MiniQBReaderUI.this, MiniQBReaderUI.c(MiniQBReaderUI.this), MiniQBReaderUI.b(MiniQBReaderUI.this));
+              com.tencent.mm.cr.a.Z(MiniQBReaderUI.this, MiniQBReaderUI.c(MiniQBReaderUI.this), MiniQBReaderUI.b(MiniQBReaderUI.this));
               if (MiniQBReaderUI.a(MiniQBReaderUI.this) != null) {
-                MiniQBReaderUI.a(MiniQBReaderUI.this).bhk();
+                MiniQBReaderUI.a(MiniQBReaderUI.this).aGj();
+              }
+              if (MiniQBReaderUI.d(MiniQBReaderUI.this) != null) {
+                MiniQBReaderUI.d(MiniQBReaderUI.this).aGj();
               }
             }
           }
@@ -79,117 +101,289 @@ public class MiniQBReaderUI
         {
           AppMethodBeat.o(31961);
           return false;
-          ae.i("MicroMsg.MiniQBReaderUI", "MiniQbFloatBallMenuActionEvent event.data.action:%s", new Object[] { Integer.valueOf(paramAnonymouslx.dAo.action) });
-          switch (paramAnonymouslx.dAo.action)
+          Log.i("MicroMsg.MiniQBReaderUI", "MiniQbFloatBallMenuActionEvent event.data.action:%s", new Object[] { Integer.valueOf(paramAnonymousmn.dSa.action) });
+          switch (paramAnonymousmn.dSa.action)
           {
           case 3: 
           default: 
             break;
           case 1: 
-            MiniQBReaderUI.a(MiniQBReaderUI.this).o(true, 2);
+          case 8: 
+            MiniQBReaderUI.a(MiniQBReaderUI.this).ic(true);
             break;
           case 2: 
-            MiniQBReaderUI.a(MiniQBReaderUI.this).o(false, 2);
-            if (MiniQBReaderUI.d(MiniQBReaderUI.this))
+            MiniQBReaderUI.a(MiniQBReaderUI.this).ic(false);
+            if (MiniQBReaderUI.e(MiniQBReaderUI.this))
             {
-              MiniReaderLogic.a(MiniQBReaderUI.this, MiniQBReaderUI.b(MiniQBReaderUI.this), MiniQBReaderUI.e(MiniQBReaderUI.this), MiniQBReaderUI.f(MiniQBReaderUI.this), MiniQBReaderUI.c(MiniQBReaderUI.this), MiniQBReaderUI.g(MiniQBReaderUI.this), MiniQBReaderUI.h(MiniQBReaderUI.this), false, "");
+              boolean bool = MiniQBReaderUI.f(MiniQBReaderUI.this);
+              MiniReaderLogic.a(MiniQBReaderUI.g(MiniQBReaderUI.this), MiniQBReaderUI.this, MiniQBReaderUI.b(MiniQBReaderUI.this), MiniQBReaderUI.h(MiniQBReaderUI.this), MiniQBReaderUI.i(MiniQBReaderUI.this), MiniQBReaderUI.c(MiniQBReaderUI.this), MiniQBReaderUI.j(MiniQBReaderUI.this), MiniQBReaderUI.k(MiniQBReaderUI.this), false, "", bool);
             }
             else
             {
               MiniQBReaderUI.a(MiniQBReaderUI.this, false);
-              com.tencent.mm.cp.a.V(MiniQBReaderUI.this, MiniQBReaderUI.c(MiniQBReaderUI.this), MiniQBReaderUI.b(MiniQBReaderUI.this));
-              MiniReaderLogic.a(false, false, MiniQBReaderUI.this, MiniQBReaderUI.b(MiniQBReaderUI.this), MiniQBReaderUI.e(MiniQBReaderUI.this), MiniQBReaderUI.f(MiniQBReaderUI.this), MiniQBReaderUI.c(MiniQBReaderUI.this), MiniQBReaderUI.g(MiniQBReaderUI.this), MiniQBReaderUI.b(MiniQBReaderUI.this, false), MiniQBReaderUI.i(MiniQBReaderUI.this));
+              com.tencent.mm.cr.a.Z(MiniQBReaderUI.this, MiniQBReaderUI.c(MiniQBReaderUI.this), MiniQBReaderUI.b(MiniQBReaderUI.this));
+              MiniReaderLogic.a(false, false, MiniQBReaderUI.g(MiniQBReaderUI.this), MiniQBReaderUI.this, MiniQBReaderUI.b(MiniQBReaderUI.this), MiniQBReaderUI.h(MiniQBReaderUI.this), MiniQBReaderUI.i(MiniQBReaderUI.this), MiniQBReaderUI.c(MiniQBReaderUI.this), MiniQBReaderUI.j(MiniQBReaderUI.this), MiniQBReaderUI.b(MiniQBReaderUI.this, false), MiniQBReaderUI.l(MiniQBReaderUI.this), MiniQBReaderUI.f(MiniQBReaderUI.this));
             }
             break;
           case 4: 
             p.c(MiniQBReaderUI.this, MiniQBReaderUI.b(MiniQBReaderUI.this), new p.a()
             {
-              public final void bF(String paramAnonymous2String1, String paramAnonymous2String2)
+              public final void bP(String paramAnonymous2String1, String paramAnonymous2String2)
               {
-                AppMethodBeat.i(186822);
-                Toast.makeText(MiniQBReaderUI.this, MiniQBReaderUI.this.getString(2131764447, new Object[] { b.aSY(paramAnonymous2String2) }), 1).show();
-                AppMethodBeat.o(186822);
+                AppMethodBeat.i(232350);
+                Toast.makeText(MiniQBReaderUI.this, MiniQBReaderUI.this.getString(2131766791, new Object[] { AndroidMediaUtil.getFriendlySdcardPath(paramAnonymous2String2) }), 1).show();
+                AppMethodBeat.o(232350);
               }
               
-              public final void bG(String paramAnonymous2String1, String paramAnonymous2String2)
+              public final void bQ(String paramAnonymous2String1, String paramAnonymous2String2)
               {
-                AppMethodBeat.i(186823);
-                Toast.makeText(MiniQBReaderUI.this, MiniQBReaderUI.this.getString(2131764446), 1).show();
-                AppMethodBeat.o(186823);
+                AppMethodBeat.i(232351);
+                Toast.makeText(MiniQBReaderUI.this, MiniQBReaderUI.this.getString(2131766790), 1).show();
+                AppMethodBeat.o(232351);
               }
             });
-            continue;
-            ae.e("MicroMsg.MiniQBReaderUI", "MiniQbFloatBallMenuActionEvent fail");
+            break;
+          case 5: 
+            if (MiniQBReaderUI.m(MiniQBReaderUI.this) != null) {
+              ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).f(MiniQBReaderUI.m(MiniQBReaderUI.this));
+            }
+            break;
+          case 7: 
+            MiniQBReaderUI.n(MiniQBReaderUI.this);
+            break;
+          case 6: 
+            Log.i("MicroMsg.MiniQBReaderUI", "MiniQbFloatBallMenuActionEvent.UPDATE_READ_PROGRESS readState:%d", new Object[] { Integer.valueOf(paramAnonymousmn.dSa.dSc) });
+            if (MiniQBReaderUI.a(MiniQBReaderUI.this) == null) {
+              Log.e("MicroMsg.MiniQBReaderUI", "MiniQbFloatBallMenuActionEvent.UPDATE_READ_PROGRESS mFloatBallHelper==null");
+            }
+            if (paramAnonymousmn.dSa.dSc == 0)
+            {
+              MiniQBReaderUI.a(MiniQBReaderUI.this).gTE();
+            }
+            else if (paramAnonymousmn.dSa.dSc == 1)
+            {
+              MiniQBReaderUI.a(MiniQBReaderUI.this).gTD();
+              continue;
+              Log.e("MicroMsg.MiniQBReaderUI", "MiniQbFloatBallMenuActionEvent fail");
+            }
+            break;
           }
         }
       }
     };
-    this.ksZ = new ValueCallback() {};
-    this.kQA = null;
-    this.ksY = new ValueCallback() {};
-    this.FCV = false;
+    this.lwK = new ValueCallback() {};
+    this.lVE = null;
+    this.lwJ = new ValueCallback() {};
+    this.KvW = null;
+    this.Jgy = null;
+    this.KvX = null;
+    this.Jgz = null;
+    this.KvY = false;
     AppMethodBeat.o(31970);
+  }
+  
+  private void a(b paramb)
+  {
+    AppMethodBeat.i(232361);
+    Log.d("MicroMsg.MiniQBReaderUI", "doSomeOpenMaterialTask");
+    Object localObject = gsA();
+    if (localObject == null)
+    {
+      Log.w("MicroMsg.MiniQBReaderUI", "doSomeOpenMaterialTask, serviceAndMaterialModel is null");
+      AppMethodBeat.o(232361);
+      return;
+    }
+    com.tencent.mm.plugin.appbrand.service.i locali = (com.tencent.mm.plugin.appbrand.service.i)((Pair)localObject).first;
+    localObject = (MaterialModel)((Pair)localObject).second;
+    if ((this.filePath != null) && (this.filePath.equals(this.KvW)) && (this.Jgy != null))
+    {
+      Log.i("MicroMsg.MiniQBReaderUI", "doSomeOpenMaterialTask, already fetchOpenMaterials");
+      paramb.a(this, locali, this.Jgy);
+      AppMethodBeat.o(232361);
+      return;
+    }
+    locali.a((MaterialModel)localObject, new a(this, (MaterialModel)localObject, locali, paramb));
+    AppMethodBeat.o(232361);
+  }
+  
+  private Pair<com.tencent.mm.plugin.appbrand.service.i, MaterialModel> gsA()
+  {
+    AppMethodBeat.i(232359);
+    Log.d("MicroMsg.MiniQBReaderUI", "prepareServiceAndMaterialModel");
+    Object localObject = (com.tencent.mm.plugin.appbrand.service.i)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.appbrand.service.i.class);
+    if (localObject == null)
+    {
+      Log.w("MicroMsg.MiniQBReaderUI", "prepareServiceAndMaterialModel, openMaterialService is null");
+      AppMethodBeat.o(232359);
+      return null;
+    }
+    if (!((com.tencent.mm.plugin.appbrand.service.i)localObject).c(com.tencent.mm.plugin.appbrand.openmaterial.model.b.nlP))
+    {
+      Log.i("MicroMsg.MiniQBReaderUI", "prepareServiceAndMaterialModel, openMaterialService is not enabled");
+      AppMethodBeat.o(232359);
+      return null;
+    }
+    if (Util.isNullOrNil(this.filePath))
+    {
+      Log.i("MicroMsg.MiniQBReaderUI", "prepareServiceAndMaterialModel, filePath is empty");
+      AppMethodBeat.o(232359);
+      return null;
+    }
+    MaterialModel localMaterialModel = MaterialModel.eC(this.filePath, this.gCr);
+    if (localMaterialModel == null)
+    {
+      Log.w("MicroMsg.MiniQBReaderUI", "prepareServiceAndMaterialModel, materialModel is null");
+      AppMethodBeat.o(232359);
+      return null;
+    }
+    if (!((com.tencent.mm.plugin.appbrand.service.i)localObject).adl(localMaterialModel.mimeType))
+    {
+      Log.i("MicroMsg.MiniQBReaderUI", "prepareServiceAndMaterialModel, openMaterialService is not support " + localMaterialModel.mimeType);
+      AppMethodBeat.o(232359);
+      return null;
+    }
+    localObject = new Pair(localObject, localMaterialModel);
+    AppMethodBeat.o(232359);
+    return localObject;
+  }
+  
+  private void gsB()
+  {
+    AppMethodBeat.i(232360);
+    Log.d("MicroMsg.MiniQBReaderUI", "updateIsFileCanOpenByAppBrand");
+    a(new b()
+    {
+      public final void a(MiniQBReaderUI paramAnonymousMiniQBReaderUI, com.tencent.mm.plugin.appbrand.service.i paramAnonymousi, AppBrandOpenMaterialCollection paramAnonymousAppBrandOpenMaterialCollection)
+      {
+        AppMethodBeat.i(232354);
+        if (!paramAnonymousAppBrandOpenMaterialCollection.nlF.isEmpty()) {}
+        for (boolean bool = true;; bool = false)
+        {
+          MiniQBReaderUI.c(paramAnonymousMiniQBReaderUI, bool);
+          AppMethodBeat.o(232354);
+          return;
+        }
+      }
+    });
+    AppMethodBeat.o(232360);
   }
   
   private void init()
   {
     AppMethodBeat.i(31972);
     this.filePath = getIntent().getStringExtra("file_path");
-    this.fXl = getIntent().getStringExtra("file_ext");
+    this.gCr = getIntent().getStringExtra("file_ext");
     this.fileName = getIntent().getStringExtra("file_name");
-    this.oZZ = getIntent().getIntExtra("sence", 0);
-    ae.i("MicroMsg.MiniQBReaderUI", "init() filePath:%s fileExt:%s fileName:%s sence:%s", new Object[] { this.filePath, this.fXl, this.fileName, Integer.valueOf(this.oZZ) });
-    if (bu.isNullOrNil(this.fileName)) {}
-    try
+    this.qoX = getIntent().getIntExtra("sence", 0);
+    Log.i("MicroMsg.MiniQBReaderUI", "init() filePath:%s fileExt:%s fileName:%s sence:%s", new Object[] { this.filePath, this.gCr, this.fileName, Integer.valueOf(this.qoX) });
+    if (Util.isNullOrNil(this.fileName)) {}
+    for (;;)
     {
-      int j = this.filePath.lastIndexOf('/') + 1;
-      if (j < 0) {
-        break label409;
-      }
-      i = j;
-      if (j != this.filePath.length()) {}
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
       {
-        HandOff localHandOff;
-        ae.e("MicroMsg.MiniQBReaderUI", "get file name error " + localException.getMessage());
+        int j = this.filePath.lastIndexOf('/') + 1;
+        if (j < 0) {
+          break label773;
+        }
+        i = j;
+        if (j == this.filePath.length()) {
+          break label773;
+        }
+        this.fileName = this.filePath.substring(i, this.filePath.length());
+      }
+      catch (Exception localException)
+      {
+        com.tencent.mm.ui.chatting.g.a locala;
+        Object localObject1;
+        String str;
+        Object localObject2;
+        Log.e("MicroMsg.MiniQBReaderUI", "get file name error " + localException.getMessage());
         this.fileName = " ";
         continue;
-        int i = 0;
+        boolean bool = false;
+        continue;
+        if ((localException != f.a.SyU) || (this.UtX == null)) {
+          continue;
+        }
+        this.UtX.e(false, true, this.UtW.Abp.field_id);
+        AppMethodBeat.o(31972);
+        return;
       }
-    }
-    this.fileName = this.filePath.substring(i, this.filePath.length());
-    this.FCU = new com.tencent.mm.ui.chatting.g.a(new e(getContext()));
-    this.FCU.h(this.filePath, this.fXl, this.oZZ, false);
-    this.FCU.mu(this.fXl, this.fileName);
-    if (this.pab != null) {
-      this.pab.alive();
-    }
-    if (this.FCV) {
-      this.FCU.bhj();
-    }
-    localHandOff = ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).deC();
-    if ((localHandOff instanceof HandOffFile))
-    {
-      this.xIl = ((HandOffFile)localHandOff);
-      this.xIl.uPo = 1;
-      this.xIl.setKey(HandOff.II(this.xIl.uPo));
-      this.xIl.N(this.FCU.nLK);
-      ae.i("MicroMsg.MiniQBReaderUI", "[handoff] Call onFileCreate, key = " + localHandOff.key);
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).c(localHandOff);
-    }
-    ar.f(new Runnable()
-    {
-      public final void run()
+      this.UtV = new com.tencent.mm.ui.chatting.g.a(new com.tencent.mm.plugin.ball.a.e(getContext()));
+      this.UtV.ay(this.filePath, this.gCr, this.qoX);
+      locala = this.UtV;
+      localObject1 = this.gCr;
+      str = this.fileName;
+      localObject2 = d.agX((String)localObject1);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = d.agX("unknown");
+      }
+      locala.oWE.noe = ((Integer)localObject1).intValue();
+      if (Util.isNullOrNil(locala.oWE.name)) {
+        locala.oWE.name = str;
+      }
+      locala.cit();
+      this.UtX = new com.tencent.mm.ui.chatting.multitask.a(getContext());
+      this.UtW = new com.tencent.mm.ui.chatting.multitask.b(this.UtX);
+      this.UtW.g(this.filePath, this.gCr, this.qoX, false);
+      this.UtW.ni(this.gCr, this.fileName);
+      if (this.qoZ != null) {
+        this.qoZ.alive();
+      }
+      if (this.KvY)
       {
-        AppMethodBeat.i(31964);
-        MiniReaderLogic.a(MiniQBReaderUI.a(MiniQBReaderUI.this).bLw(), MiniQBReaderUI.this, MiniQBReaderUI.b(MiniQBReaderUI.this), MiniQBReaderUI.e(MiniQBReaderUI.this), MiniQBReaderUI.f(MiniQBReaderUI.this), MiniQBReaderUI.c(MiniQBReaderUI.this), MiniQBReaderUI.g(MiniQBReaderUI.this), MiniQBReaderUI.b(MiniQBReaderUI.this, true), false, "");
-        AppMethodBeat.o(31964);
+        this.UtW.bCA();
+        this.UtV.bCA();
       }
-    });
-    AppMethodBeat.o(31972);
+      localObject2 = this.UtW.Abp;
+      localObject1 = null;
+      if (localObject2 != null) {
+        localObject1 = ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).aBx(((MultiTaskInfo)localObject2).field_id);
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).dYm();
+      }
+      if ((localObject2 instanceof HandOffFile))
+      {
+        this.BIm = ((HandOffFile)localObject2);
+        this.BIm.setHandOffType(1);
+        this.BIm.setKey(HandOff.generateKey(this.BIm.getDataType(), this.BIm.getHandOffType()));
+        this.BIm.saveToMultiTaskInfo(this.UtW.Abp);
+        Log.i("MicroMsg.MiniQBReaderUI", "[handoff] Call onFileCreate, key = " + ((HandOff)localObject2).getKey());
+        ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).c((HandOff)localObject2);
+      }
+      if ((((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).dYl()) && (this.BIm != null) && (HandOffFile.isSupportOpenFile(this.gCr)))
+      {
+        bool = true;
+        this.KvU = bool;
+        MMHandlerThread.postToMainThread(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(31964);
+            boolean bool = MiniQBReaderUI.f(MiniQBReaderUI.this);
+            MiniReaderLogic.a(MiniQBReaderUI.a(MiniQBReaderUI.this).eqW(), MiniQBReaderUI.a(MiniQBReaderUI.this).eqZ(), MiniQBReaderUI.this, MiniQBReaderUI.b(MiniQBReaderUI.this), MiniQBReaderUI.h(MiniQBReaderUI.this), MiniQBReaderUI.i(MiniQBReaderUI.this), MiniQBReaderUI.c(MiniQBReaderUI.this), MiniQBReaderUI.j(MiniQBReaderUI.this), MiniQBReaderUI.b(MiniQBReaderUI.this, true), false, "", true, bool);
+            AppMethodBeat.o(31964);
+          }
+        });
+        localObject1 = f.a(this.gCr, f.a.SyT, false, new Intent());
+        if (localObject1 != f.a.SyV) {
+          continue;
+        }
+        if (this.UtW != null) {
+          this.UtW.PDX = true;
+        }
+        if (this.UtX == null) {
+          continue;
+        }
+        this.UtX.e(true, false, this.UtW.Abp.field_id);
+        AppMethodBeat.o(31972);
+      }
+      label773:
+      int i = 0;
+    }
   }
   
   public int getLayoutId()
@@ -202,17 +396,18 @@ public class MiniQBReaderUI
     AppMethodBeat.i(31971);
     super.onCreate(paramBundle);
     this.filePath = getIntent().getStringExtra("file_path");
-    ae.i("MicroMsg.MiniQBReaderUI", "onCreate filePath:%s %s", new Object[] { this.filePath, toString() });
-    paramBundle = new lx();
-    paramBundle.dAo.action = 3;
-    paramBundle.dAo.filePath = getIntent().getStringExtra("file_path");
-    com.tencent.mm.sdk.b.a.IvT.a(paramBundle, Looper.getMainLooper());
-    h.MqF.r(new Runnable()
+    gsB();
+    Log.i("MicroMsg.MiniQBReaderUI", "onCreate filePath:%s %s", new Object[] { this.filePath, toString() });
+    paramBundle = new mn();
+    paramBundle.dSa.action = 3;
+    paramBundle.dSa.filePath = getIntent().getStringExtra("file_path");
+    EventCenter.instance.asyncPublish(paramBundle, Looper.getMainLooper());
+    com.tencent.f.h.RTc.o(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(31963);
-        MiniQBReaderUI.j(MiniQBReaderUI.this);
+        MiniQBReaderUI.o(MiniQBReaderUI.this);
         AppMethodBeat.o(31963);
       }
     }, 300L);
@@ -222,39 +417,56 @@ public class MiniQBReaderUI
   public void onDestroy()
   {
     AppMethodBeat.i(31976);
-    ae.i("MicroMsg.MiniQBReaderUI", "onDestroy %s", new Object[] { toString() });
-    com.tencent.mm.cp.a.V(this, this.token, this.filePath);
+    Log.i("MicroMsg.MiniQBReaderUI", "onDestroy %s", new Object[] { toString() });
+    com.tencent.mm.cr.a.Z(this, this.token, this.filePath);
     super.onDestroy();
-    if (this.pab != null) {
-      this.pab.dead();
+    if (this.qoZ != null) {
+      this.qoZ.dead();
     }
-    if (this.FCU != null) {
-      this.FCU.onDestroy();
+    if (this.UtV != null) {
+      this.UtV.onDestroy();
     }
-    if (this.xIl != null) {
-      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.handoff.a.a.class)).d(this.xIl);
+    if (this.BIm != null) {
+      ((com.tencent.mm.plugin.handoff.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.handoff.a.a.class)).d(this.BIm);
     }
     AppMethodBeat.o(31976);
+  }
+  
+  public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  {
+    AppMethodBeat.i(232362);
+    if ((paramInt == 4) && (this.UtW != null) && (this.UtW.wu(2)))
+    {
+      AppMethodBeat.o(232362);
+      return true;
+    }
+    boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
+    AppMethodBeat.o(232362);
+    return bool;
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(31973);
     super.onNewIntent(paramIntent);
-    ae.i("MicroMsg.MiniQBReaderUI", "onNewIntent %s", new Object[] { toString() });
+    Log.i("MicroMsg.MiniQBReaderUI", "onNewIntent %s", new Object[] { toString() });
     setIntent(paramIntent);
     paramIntent = getIntent().getStringExtra("file_path");
-    ae.i("MicroMsg.MiniQBReaderUI", "onNewIntent() newFilePath:%s filePath:%s", new Object[] { paramIntent, this.filePath });
-    if (!bu.lX(paramIntent, this.filePath))
+    Log.i("MicroMsg.MiniQBReaderUI", "onNewIntent() newFilePath:%s filePath:%s", new Object[] { paramIntent, this.filePath });
+    if (!Util.isEqual(paramIntent, this.filePath))
     {
-      this.ksV = false;
-      com.tencent.mm.cp.a.V(this, this.token, this.filePath);
-      if (this.FCU != null)
+      this.lwG = false;
+      com.tencent.mm.cr.a.Z(this, this.token, this.filePath);
+      if (this.UtW != null) {
+        this.UtW.aGj();
+      }
+      if (this.UtV != null)
       {
-        this.FCU.bhk();
-        this.FCU.onDestroy();
+        this.UtV.aGj();
+        this.UtV.onDestroy();
       }
       init();
+      gsB();
     }
     AppMethodBeat.o(31973);
   }
@@ -262,12 +474,15 @@ public class MiniQBReaderUI
   public void onPause()
   {
     AppMethodBeat.i(31975);
-    ae.i("MicroMsg.MiniQBReaderUI", "onPause %s", new Object[] { toString() });
+    Log.i("MicroMsg.MiniQBReaderUI", "onPause %s", new Object[] { toString() });
     super.onPause();
-    if (this.FCU != null)
+    if (this.UtW != null)
     {
-      this.FCV = false;
-      this.FCU.bhk();
+      this.KvY = false;
+      this.UtW.aGj();
+    }
+    if (this.UtV != null) {
+      this.UtV.aGj();
     }
     AppMethodBeat.o(31975);
   }
@@ -275,15 +490,18 @@ public class MiniQBReaderUI
   public void onResume()
   {
     AppMethodBeat.i(31974);
-    ae.i("MicroMsg.MiniQBReaderUI", "onResume %s", new Object[] { toString() });
+    Log.i("MicroMsg.MiniQBReaderUI", "onResume %s", new Object[] { toString() });
     super.onResume();
-    if (this.FCU != null)
+    if (this.UtV != null) {
+      this.UtV.bCA();
+    }
+    if (this.UtW != null)
     {
-      this.FCU.bhj();
+      this.UtW.bCA();
       AppMethodBeat.o(31974);
       return;
     }
-    this.FCV = true;
+    this.KvY = true;
     AppMethodBeat.o(31974);
   }
   
@@ -292,10 +510,56 @@ public class MiniQBReaderUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  static final class a
+    implements com.tencent.mm.plugin.appbrand.openmaterial.i
+  {
+    private final WeakReference<MiniQBReaderUI> Kwe;
+    private final com.tencent.mm.plugin.appbrand.service.i Kwf;
+    private final MiniQBReaderUI.b Kwg;
+    private final MaterialModel nlD;
+    
+    public a(MiniQBReaderUI paramMiniQBReaderUI, MaterialModel paramMaterialModel, com.tencent.mm.plugin.appbrand.service.i parami, MiniQBReaderUI.b paramb)
+    {
+      AppMethodBeat.i(232357);
+      this.Kwe = new WeakReference(paramMiniQBReaderUI);
+      this.nlD = paramMaterialModel;
+      this.Kwf = parami;
+      this.Kwg = paramb;
+      AppMethodBeat.o(232357);
+    }
+    
+    public final void a(boolean paramBoolean, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection)
+    {
+      AppMethodBeat.i(232358);
+      MiniQBReaderUI localMiniQBReaderUI = (MiniQBReaderUI)this.Kwe.get();
+      if (localMiniQBReaderUI == null)
+      {
+        Log.i("MicroMsg.MiniQBReaderUI", "doSomeOpenMaterialTask#onMyOpenMaterialsGo, ui is null");
+        AppMethodBeat.o(232358);
+        return;
+      }
+      if (!paramBoolean)
+      {
+        Log.i("MicroMsg.MiniQBReaderUI", "doSomeOpenMaterialTask#onMyOpenMaterialsGot, fail");
+        AppMethodBeat.o(232358);
+        return;
+      }
+      MiniQBReaderUI.a(localMiniQBReaderUI, this.nlD.nlI);
+      MiniQBReaderUI.a(localMiniQBReaderUI, paramAppBrandOpenMaterialCollection);
+      this.Kwg.a(localMiniQBReaderUI, this.Kwf, paramAppBrandOpenMaterialCollection);
+      AppMethodBeat.o(232358);
+    }
+  }
+  
+  static abstract interface b
+  {
+    public abstract void a(MiniQBReaderUI paramMiniQBReaderUI, com.tencent.mm.plugin.appbrand.service.i parami, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.MiniQBReaderUI
  * JD-Core Version:    0.7.0.1
  */

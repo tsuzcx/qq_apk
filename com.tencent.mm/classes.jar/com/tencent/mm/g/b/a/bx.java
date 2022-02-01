@@ -6,122 +6,159 @@ import com.tencent.mm.plugin.report.a;
 public final class bx
   extends a
 {
-  private String dTr = "";
-  private String dXm = "";
-  private String dXn = "";
-  private long dXo;
-  private long dXp;
-  private long dZo;
-  private long dZp;
-  private String dZr = "";
+  private String eiC = "";
+  private String erU = "";
+  private long ery;
+  private long erz;
+  private String esZ = "";
+  private long euk;
+  private long eul;
+  private long eum;
+  private long eun;
+  private long euo;
+  private long eup;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(168925);
+    AppMethodBeat.i(208935);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTr);
+    ((StringBuffer)localObject).append(this.erU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZo);
+    ((StringBuffer)localObject).append(this.eiC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZp);
+    ((StringBuffer)localObject).append(this.ery);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXm);
+    ((StringBuffer)localObject).append(this.euk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXn);
+    ((StringBuffer)localObject).append(this.eul);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXo);
+    ((StringBuffer)localObject).append(this.eum);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXp);
+    ((StringBuffer)localObject).append(this.eun);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZr);
+    ((StringBuffer)localObject).append(this.esZ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erz);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.euo);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eup);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(168925);
+    aMq((String)localObject);
+    AppMethodBeat.o(208935);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(168926);
+    AppMethodBeat.i(208936);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
+    ((StringBuffer)localObject).append("Sessionid:").append(this.erU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ForwardType:").append(this.dZo);
+    ((StringBuffer)localObject).append("ClickTabContextid:").append(this.eiC);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ForwardResult:").append(this.dZp);
+    ((StringBuffer)localObject).append("CommentScene:").append(this.ery);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Tag:").append(this.dXm);
+    ((StringBuffer)localObject).append("CgiType:").append(this.euk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TagId:").append(this.dXn);
+    ((StringBuffer)localObject).append("LoadingTime:").append(this.eul);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsPoi:").append(this.dXo);
+    ((StringBuffer)localObject).append("StartCgiTimestamp:").append(this.eum);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TagFeedCnt:").append(this.dXp);
+    ((StringBuffer)localObject).append("status:").append(this.eun);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ForwardToUsr:").append(this.dZr);
+    ((StringBuffer)localObject).append("ExtraInfo:").append(this.esZ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("InnerVersion:").append(this.erz);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("pullType:").append(this.euo);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("EndCgiTimestamp:").append(this.eup);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(168926);
+    AppMethodBeat.o(208936);
     return localObject;
   }
   
-  public final bx gY(long paramLong)
+  public final bx eT(long paramLong)
   {
-    this.dZo = paramLong;
+    this.ery = paramLong;
     return this;
   }
   
-  public final bx gZ(long paramLong)
+  public final bx eU(long paramLong)
   {
-    this.dZp = paramLong;
+    this.euk = paramLong;
+    return this;
+  }
+  
+  public final bx eV(long paramLong)
+  {
+    this.eul = paramLong;
+    return this;
+  }
+  
+  public final bx eW(long paramLong)
+  {
+    this.eum = paramLong;
+    return this;
+  }
+  
+  public final bx eX(long paramLong)
+  {
+    this.eun = paramLong;
+    return this;
+  }
+  
+  public final bx eY(long paramLong)
+  {
+    this.erz = paramLong;
+    return this;
+  }
+  
+  public final bx eZ(long paramLong)
+  {
+    this.euo = paramLong;
+    return this;
+  }
+  
+  public final bx fa(long paramLong)
+  {
+    this.eup = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 19187;
+    return 20713;
   }
   
-  public final bx ha(long paramLong)
+  public final bx kA(String paramString)
   {
-    this.dXp = paramLong;
+    AppMethodBeat.i(208933);
+    this.eiC = x("ClickTabContextid", paramString, true);
+    AppMethodBeat.o(208933);
     return this;
   }
   
-  public final bx lh(String paramString)
+  public final bx kB(String paramString)
   {
-    AppMethodBeat.i(168921);
-    this.dTr = t("SessionId", paramString, true);
-    AppMethodBeat.o(168921);
+    AppMethodBeat.i(208934);
+    this.esZ = x("ExtraInfo", paramString, true);
+    AppMethodBeat.o(208934);
     return this;
   }
   
-  public final bx li(String paramString)
+  public final bx kz(String paramString)
   {
-    AppMethodBeat.i(168922);
-    this.dXm = t("Tag", paramString, true);
-    AppMethodBeat.o(168922);
-    return this;
-  }
-  
-  public final bx lj(String paramString)
-  {
-    AppMethodBeat.i(168923);
-    this.dXn = t("TagId", paramString, true);
-    AppMethodBeat.o(168923);
-    return this;
-  }
-  
-  public final bx lk(String paramString)
-  {
-    AppMethodBeat.i(168924);
-    this.dZr = t("ForwardToUsr", paramString, true);
-    AppMethodBeat.o(168924);
+    AppMethodBeat.i(208932);
+    this.erU = x("Sessionid", paramString, true);
+    AppMethodBeat.o(208932);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.bx
  * JD-Core Version:    0.7.0.1
  */

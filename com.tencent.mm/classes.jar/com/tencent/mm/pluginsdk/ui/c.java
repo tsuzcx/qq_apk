@@ -10,36 +10,36 @@ import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aj.e.a;
 import com.tencent.mm.bx.a.a.a;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.io.IOException;
 
 public final class c
   extends a
   implements e.a
 {
-  private float Fkn;
-  private Paint Fko;
-  int[] Fkp;
-  Bitmap ofD;
+  private float Kbf;
+  private Paint Kbg;
+  int[] Kbh;
+  Bitmap pqA;
   
   private c(String paramString)
   {
-    super(a.b.ffl(), paramString);
+    super(a.b.gov(), paramString);
     AppMethodBeat.i(152111);
-    this.Fkn = 0.5F;
-    this.ofD = null;
-    this.Fko = new Paint();
-    this.Fkp = new int[2];
+    this.Kbf = 0.5F;
+    this.pqA = null;
+    this.Kbg = new Paint();
+    this.Kbh = new int[2];
     AppMethodBeat.o(152111);
   }
   
   public c(String paramString, float paramFloat)
   {
     this(paramString);
-    this.Fkn = paramFloat;
+    this.Kbf = paramFloat;
   }
   
   private void a(Canvas paramCanvas, Bitmap paramBitmap)
@@ -47,27 +47,27 @@ public final class c
     AppMethodBeat.i(152114);
     Rect localRect2 = getBounds();
     Rect localRect1 = null;
-    if ((this.Flq > 1.0F) || (this.wdl))
+    if ((this.Kcj > 1.0F) || (this.zxm))
     {
       int i = paramBitmap.getHeight() / 15 / 2;
       int j = paramBitmap.getWidth() / 15 / 2;
       localRect1 = new Rect(j, i, paramBitmap.getWidth() - j, paramBitmap.getHeight() - i);
     }
-    paramCanvas.drawBitmap(paramBitmap, localRect1, localRect2, this.hAz);
+    paramCanvas.drawBitmap(paramBitmap, localRect1, localRect2, this.iuG);
     AppMethodBeat.o(152114);
   }
   
-  public final void DG(String paramString)
+  public final void Mr(String paramString)
   {
     AppMethodBeat.i(152112);
-    super.DG(paramString);
+    super.Mr(paramString);
     AppMethodBeat.o(152112);
   }
   
-  public final void Zp(int paramInt)
+  public final void aib(int paramInt)
   {
     AppMethodBeat.i(152115);
-    this.hAz.setAlpha(paramInt);
+    this.iuG.setAlpha(paramInt);
     AppMethodBeat.o(152115);
   }
   
@@ -75,42 +75,42 @@ public final class c
   {
     Object localObject1 = null;
     AppMethodBeat.i(152113);
-    String str = this.tag + "-" + this.Fkn;
-    com.tencent.mm.bx.a.a locala = a.a.InF;
+    String str = this.tag + "-" + this.Kbf;
+    com.tencent.mm.bx.a.a locala = a.a.NAL;
     if (locala != null) {
-      localObject1 = a.a.InF.apE(str);
+      localObject1 = a.a.NAL.aCX(str);
     }
     if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
     {
       a(paramCanvas, (Bitmap)localObject1);
       if (this.pressed)
       {
-        this.Fko.setColor(-16777216);
-        this.Fko.setAlpha(76);
-        this.Fko.setAntiAlias(true);
+        this.Kbg.setColor(-16777216);
+        this.Kbg.setAlpha(76);
+        this.Kbg.setAntiAlias(true);
         localObject1 = new RectF(getBounds());
-        paramCanvas.drawRoundRect((RectF)localObject1, this.Fkn * ((RectF)localObject1).width(), this.Fkn * ((RectF)localObject1).height(), this.Fko);
+        paramCanvas.drawRoundRect((RectF)localObject1, this.Kbf * ((RectF)localObject1).width(), this.Kbf * ((RectF)localObject1).height(), this.Kbg);
       }
       AppMethodBeat.o(152113);
       return;
     }
-    if (this.Flm)
+    if (this.Kcf)
     {
-      localObject1 = this.xnS.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
+      localObject1 = this.Boe.a(this.tag, paramCanvas.getWidth(), paramCanvas.getHeight(), 1);
       label184:
-      if (!(this.xnS instanceof j.b)) {
+      if (!(this.Boe instanceof j.b)) {
         break label401;
       }
     }
     label401:
-    for (boolean bool = ((j.b)this.xnS).ais(this.tag);; bool = true) {
+    for (boolean bool = ((j.b)this.Boe).aub(this.tag);; bool = true) {
       for (;;)
       {
         if (localObject1 != null)
         {
           Object localObject2 = localObject1;
           if (bool) {
-            localObject2 = h.a((Bitmap)localObject1, false, this.Fkn * ((Bitmap)localObject1).getWidth());
+            localObject2 = BitmapUtil.getRoundedCornerBitmap((Bitmap)localObject1, false, this.Kbf * ((Bitmap)localObject1).getWidth());
           }
           if (locala != null) {
             locala.p(str, (Bitmap)localObject2);
@@ -120,18 +120,18 @@ public final class c
           }
           a(paramCanvas, (Bitmap)localObject2);
           break;
-          localObject1 = this.xnS.fl(this.tag);
+          localObject1 = this.Boe.fZ(this.tag);
           break label184;
         }
         if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled())) {
           break;
         }
-        if (this.ofD == null) {}
+        if (this.pqA == null) {}
         try
         {
-          this.ofD = BackwardSupportUtil.b.b(ak.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null));
-          this.ofD = h.a(this.ofD, false, this.Fkn * this.ofD.getWidth());
-          localObject1 = this.ofD;
+          this.pqA = BackwardSupportUtil.BitmapFactory.decodeStream(MMApplicationContext.getContext().getAssets().open("avatar/default_nor_avatar.png"), com.tencent.mm.cb.a.getDensity(null));
+          this.pqA = BitmapUtil.getRoundedCornerBitmap(this.pqA, false, this.Kbf * this.pqA.getWidth());
+          localObject1 = this.pqA;
           if ((localObject1 == null) || (((Bitmap)localObject1).isRecycled())) {
             break;
           }
@@ -141,7 +141,7 @@ public final class c
         {
           for (;;)
           {
-            ae.printErrStackTrace("MicroMsg.AvatarRoundDrawable", localIOException, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.AvatarRoundDrawable", localIOException, "", new Object[0]);
           }
         }
       }
@@ -150,7 +150,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.c
  * JD-Core Version:    0.7.0.1
  */

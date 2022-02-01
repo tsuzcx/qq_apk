@@ -16,18 +16,18 @@ public final class b
   extends a
   implements h.a, o.a
 {
-  a JBI;
-  boolean JBJ;
-  private final Runnable JBK;
-  public ViewGroup WA;
-  private boolean Yz;
-  private h aaD;
+  a OMb;
+  boolean OMc;
+  private final Runnable OMd;
+  public ViewGroup WN;
+  private boolean YM;
+  private h aaQ;
   
   public b(Activity paramActivity, a parama)
   {
     super(paramActivity);
     AppMethodBeat.i(141510);
-    this.JBK = new Runnable()
+    this.OMd = new Runnable()
     {
       public final void run()
       {
@@ -40,32 +40,32 @@ public final class b
         }
         localObject = new h((Context)localObject);
         ((h)localObject).a(localb);
-        if (b.this.JBI != null)
+        if (b.this.OMb != null)
         {
-          b.this.JBI.e((Menu)localObject);
-          b.this.JBI.d((Menu)localObject);
+          b.this.OMb.e((Menu)localObject);
+          b.this.OMb.d((Menu)localObject);
           b.a(b.this, (h)localObject);
         }
         for (;;)
         {
           ((h)localObject).r(true);
-          b.this.JBJ = false;
+          b.this.OMc = false;
           AppMethodBeat.o(141509);
           return;
           b.a(b.this, null);
         }
       }
     };
-    this.JBI = parama;
+    this.OMb = parama;
     AppMethodBeat.o(141510);
   }
   
-  private void gy()
+  private void gF()
   {
     AppMethodBeat.i(141512);
-    if (!this.Yz)
+    if (!this.YM)
     {
-      this.Yz = true;
+      this.YM = true;
       supportInvalidateOptionsMenu();
     }
     AppMethodBeat.o(141512);
@@ -76,9 +76,9 @@ public final class b
   public final boolean a(h paramh, MenuItem paramMenuItem)
   {
     AppMethodBeat.i(141513);
-    if (this.JBI != null)
+    if (this.OMb != null)
     {
-      boolean bool = this.JBI.f(paramMenuItem);
+      boolean bool = this.OMb.f(paramMenuItem);
       AppMethodBeat.o(141513);
       return bool;
     }
@@ -91,8 +91,8 @@ public final class b
     AppMethodBeat.i(141514);
     if (this.mActionBar != null)
     {
-      u localu = ((d)this.mActionBar).ZH;
-      if ((localu != null) && (localu.is()))
+      u localu = ((d)this.mActionBar).ZU;
+      if ((localu != null) && (localu.iB()))
       {
         if (!localu.isOverflowMenuShowing())
         {
@@ -118,12 +118,12 @@ public final class b
     return false;
   }
   
-  public final ActionBar fCi()
+  public final ActionBar gKf()
   {
     AppMethodBeat.i(141511);
-    gy();
+    gF();
     if (this.mActionBar == null) {
-      this.mActionBar = new d(this.mActivity, this.WA);
+      this.mActionBar = new d(this.mActivity, this.WN);
     }
     ActionBar localActionBar = this.mActionBar;
     AppMethodBeat.o(141511);
@@ -133,10 +133,10 @@ public final class b
   public final void supportInvalidateOptionsMenu()
   {
     AppMethodBeat.i(141515);
-    if (!this.JBJ)
+    if (!this.OMc)
     {
-      this.JBJ = true;
-      this.JBK.run();
+      this.OMc = true;
+      this.OMd.run();
     }
     AppMethodBeat.o(141515);
   }
@@ -152,7 +152,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.b.b
  * JD-Core Version:    0.7.0.1
  */

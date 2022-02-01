@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="58.0dip"
+<RelativeLayout android:orientation="vertical" android:id="@id/d4p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minWidth="320.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b4g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="58.0dip">
-            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/dnm" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/aq8" />
-            <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_weight="1.0">
-                <TextView android:textSize="@dimen/q" android:textColor="@color/ff" android:id="@id/dno" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{dddd}" />
-                <TextView android:textSize="@dimen/b_" android:textColor="@color/fe" android:id="@id/dnk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{dddd}" />
-            </LinearLayout>
-            <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/dnn" android:layout_width="@dimen/k2" android:layout_height="@dimen/jz" />
-        </LinearLayout>
-        <View android:id="@id/dnj" android:background="@color/a_r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignLeft="@id/b4g" android:layout_alignTop="@id/b4g" android:layout_alignRight="@id/b4g" android:layout_alignBottom="@id/b4g" android:alpha="0.7" />
-    </RelativeLayout>
-    <View android:id="@id/dnl" android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="40.0dip" />
-</LinearLayout>
+    <TextView android:textAppearance="@android:style/TextAppearance.Material.Subhead" android:textSize="@dimen/is" android:textColor="@color/uj" android:id="@id/d4q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hci" android:layout_alignParentTop="true" android:layout_alignParentStart="true" />
+    <ImageView android:id="@id/d4r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:src="@drawable/c9l" android:layout_below="@id/d4q" android:layout_alignParentStart="true" />
+    <TextView android:textColor="@color/uh" android:gravity="center_vertical" android:id="@id/d4v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hd2" android:layout_alignTop="@id/d4r" android:layout_alignBottom="@id/d4r" android:layout_marginStart="16.0dip" android:layout_toEndOf="@id/d4r" style="@android:style/TextAppearance.Material.Body1" />
+</RelativeLayout>

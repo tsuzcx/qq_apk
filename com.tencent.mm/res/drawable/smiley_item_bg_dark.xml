@@ -4,5 +4,5 @@
     <item android:state_focused="true" android:drawable="@drawable/smiley_item_bg_dark_pressed" />
     <item android:state_pressed="true" android:drawable="@drawable/smiley_item_bg_dark_pressed" />
     <item android:state_selected="true" android:drawable="@drawable/smiley_item_bg_dark_pressed" />
-    <item android:drawable="@drawable/a3a" />
+    <item android:drawable="@drawable/aij" />
 </selector>

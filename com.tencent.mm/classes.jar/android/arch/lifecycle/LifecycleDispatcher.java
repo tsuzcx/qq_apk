@@ -135,7 +135,7 @@ class LifecycleDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.arch.lifecycle.LifecycleDispatcher
  * JD-Core Version:    0.7.0.1
  */

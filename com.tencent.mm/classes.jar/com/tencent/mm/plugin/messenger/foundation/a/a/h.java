@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.messenger.foundation.a.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.protocal.protobuf.che;
+import com.tencent.mm.protocal.protobuf.cxl;
 
 public abstract interface h
   extends a
@@ -14,7 +14,7 @@ public abstract interface h
   
   public static abstract interface a
   {
-    public abstract void a(int paramInt, che paramche, k.b paramb);
+    public abstract void a(int paramInt, cxl paramcxl, k.b paramb);
   }
 }
 

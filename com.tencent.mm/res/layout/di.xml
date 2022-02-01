@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/a_r" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="@dimen/qn"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView style="@style/hp" />
-        <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/ect" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="always" />
-        <TextView android:textColor="@color/Link" android:gravity="center_vertical" android:id="@id/eck" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/zj" />
-        <ImageView android:id="@id/ecs" style="@style/hp" />
-        <TextView android:textColor="@color/km" android:gravity="center" android:id="@id/ecl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/zk" />
-    </LinearLayout>
-    <TextView android:textColor="@color/km" android:gravity="center" android:id="@id/ecr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/ni" android:paddingLeft="20.0dip" android:paddingRight="16.0dip" android:layout_width="56.0dip" android:layout_height="fill_parent" android:src="@raw/app_brand_star_delete" android:scaleType="fitCenter" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <ImageView android:id="@id/nh" android:paddingLeft="16.0dip" android:paddingRight="20.0dip" android:layout_width="52.0dip" android:layout_height="fill_parent" android:src="@raw/app_brand_collection_sort_handle_mark" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <View android:id="@id/c7o" android:layout_alignLeft="@id/nh" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/a1o" />
+    <ViewStub android:id="@id/bfa" android:background="@null" android:layout="@layout/e8" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/nh" android:layout_toRightOf="@id/ni" android:layout_alignParentTop="true" />
 </RelativeLayout>

@@ -6,47 +6,42 @@ import com.tencent.mm.plugin.report.a;
 public final class ka
   extends a
 {
-  public String eEn = "";
-  public String eEo = "";
-  public String eEp = "";
+  public long eTd = 0L;
+  public long ejA = 0L;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(76373);
+    AppMethodBeat.i(155377);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eEn);
+    ((StringBuffer)localObject).append(this.eTd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eEo);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eEp);
+    ((StringBuffer)localObject).append(this.ejA);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(76373);
+    aMq((String)localObject);
+    AppMethodBeat.o(155377);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(76374);
+    AppMethodBeat.i(155378);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("WidgetAppid:").append(this.eEn);
+    ((StringBuffer)localObject).append("ThirdAppType:").append(this.eTd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SrcAppid:").append(this.eEo);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DrawData:").append(this.eEp);
+    ((StringBuffer)localObject).append("Action:").append(this.ejA);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(76374);
+    AppMethodBeat.o(155378);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16358;
+    return 16996;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ka
  * JD-Core Version:    0.7.0.1
  */

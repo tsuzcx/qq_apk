@@ -52,13 +52,13 @@ public class ClusterManager<T extends ClusterItem>
   public ClusterManager(Context paramContext, TencentMap paramTencentMap)
   {
     this(paramContext, paramTencentMap, new MarkerManager(paramTencentMap));
-    AppMethodBeat.i(217617);
-    AppMethodBeat.o(217617);
+    AppMethodBeat.i(199540);
+    AppMethodBeat.o(199540);
   }
   
   private ClusterManager(Context paramContext, TencentMap paramTencentMap, MarkerManager paramMarkerManager)
   {
-    AppMethodBeat.i(217618);
+    AppMethodBeat.i(199541);
     this.e = new ReentrantReadWriteLock();
     this.j = new ReentrantReadWriteLock();
     this.k = true;
@@ -70,12 +70,12 @@ public class ClusterManager<T extends ClusterItem>
     this.d = new PreCachingAlgorithmDecorator(new NonHierarchicalDistanceBasedAlgorithm(paramContext));
     this.i = new a(null);
     this.f.onAdd();
-    AppMethodBeat.o(217618);
+    AppMethodBeat.o(199541);
   }
   
   public void addItem(T paramT)
   {
-    AppMethodBeat.i(217624);
+    AppMethodBeat.i(199547);
     this.e.writeLock().lock();
     try
     {
@@ -85,13 +85,13 @@ public class ClusterManager<T extends ClusterItem>
     finally
     {
       this.e.writeLock().unlock();
-      AppMethodBeat.o(217624);
+      AppMethodBeat.o(199547);
     }
   }
   
   public void addItems(Collection<T> paramCollection)
   {
-    AppMethodBeat.i(217623);
+    AppMethodBeat.i(199546);
     this.e.writeLock().lock();
     try
     {
@@ -101,23 +101,23 @@ public class ClusterManager<T extends ClusterItem>
     finally
     {
       this.e.writeLock().unlock();
-      AppMethodBeat.o(217623);
+      AppMethodBeat.o(199546);
     }
   }
   
   public void cancel()
   {
-    AppMethodBeat.i(217627);
+    AppMethodBeat.i(199550);
     clearItems();
     if (!this.i.cancel(true)) {
       this.f.cancel();
     }
-    AppMethodBeat.o(217627);
+    AppMethodBeat.o(199550);
   }
   
   public void clearItems()
   {
-    AppMethodBeat.i(217621);
+    AppMethodBeat.i(199544);
     this.e.writeLock().lock();
     try
     {
@@ -127,7 +127,7 @@ public class ClusterManager<T extends ClusterItem>
     finally
     {
       this.e.writeLock().unlock();
-      AppMethodBeat.o(217621);
+      AppMethodBeat.o(199544);
     }
   }
   
@@ -224,9 +224,9 @@ public class ClusterManager<T extends ClusterItem>
   
   public View getInfoWindow(Marker paramMarker)
   {
-    AppMethodBeat.i(217631);
+    AppMethodBeat.i(199554);
     paramMarker = getMarkerManager().getInfoWindow(paramMarker);
-    AppMethodBeat.o(217631);
+    AppMethodBeat.o(199554);
     return paramMarker;
   }
   
@@ -254,10 +254,10 @@ public class ClusterManager<T extends ClusterItem>
   
   public void onCameraChangeFinish(CameraPosition paramCameraPosition)
   {
-    AppMethodBeat.i(217628);
+    AppMethodBeat.i(199551);
     if (!this.k)
     {
-      AppMethodBeat.o(217628);
+      AppMethodBeat.o(199551);
       return;
     }
     if ((this.f instanceof TencentMap.OnMapCameraChangeListener)) {
@@ -266,34 +266,34 @@ public class ClusterManager<T extends ClusterItem>
     paramCameraPosition = this.g.getCameraPosition();
     if ((this.h != null) && (this.h.getZoom() == paramCameraPosition.getZoom()))
     {
-      AppMethodBeat.o(217628);
+      AppMethodBeat.o(199551);
       return;
     }
     this.h = this.g.getCameraPosition();
     cluster();
-    AppMethodBeat.o(217628);
+    AppMethodBeat.o(199551);
   }
   
   public void onInfoWindowClick(Marker paramMarker)
   {
-    AppMethodBeat.i(217630);
+    AppMethodBeat.i(199553);
     getMarkerManager().onInfoWindowClick(paramMarker);
-    AppMethodBeat.o(217630);
+    AppMethodBeat.o(199553);
   }
   
   public void onInfoWindowDettached(Marker paramMarker, View paramView) {}
   
   public boolean onMarkerClick(Marker paramMarker)
   {
-    AppMethodBeat.i(217629);
+    AppMethodBeat.i(199552);
     boolean bool = getMarkerManager().onMarkerClick(paramMarker);
-    AppMethodBeat.o(217629);
+    AppMethodBeat.o(199552);
     return bool;
   }
   
   public void removeItem(T paramT)
   {
-    AppMethodBeat.i(217625);
+    AppMethodBeat.i(199548);
     this.e.writeLock().lock();
     try
     {
@@ -303,13 +303,13 @@ public class ClusterManager<T extends ClusterItem>
     finally
     {
       this.e.writeLock().unlock();
-      AppMethodBeat.o(217625);
+      AppMethodBeat.o(199548);
     }
   }
   
   public void setAlgorithm(Algorithm<T> paramAlgorithm)
   {
-    AppMethodBeat.i(217620);
+    AppMethodBeat.i(199543);
     this.e.writeLock().lock();
     try
     {
@@ -319,78 +319,78 @@ public class ClusterManager<T extends ClusterItem>
       this.d = new PreCachingAlgorithmDecorator(paramAlgorithm);
       this.e.writeLock().unlock();
       cluster();
-      AppMethodBeat.o(217620);
+      AppMethodBeat.o(199543);
       return;
     }
     finally
     {
       this.e.writeLock().unlock();
-      AppMethodBeat.o(217620);
+      AppMethodBeat.o(199543);
     }
   }
   
   public void setClusterEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(217622);
+    AppMethodBeat.i(199545);
     if ((this.k ^ paramBoolean))
     {
       this.k = paramBoolean;
       cluster();
     }
-    AppMethodBeat.o(217622);
+    AppMethodBeat.o(199545);
   }
   
   public void setClusterInfoWindowAdapter(ClusterInfoWindowAdapter<T> paramClusterInfoWindowAdapter)
   {
-    AppMethodBeat.i(217634);
+    AppMethodBeat.i(199557);
     this.n = paramClusterInfoWindowAdapter;
     this.f.setInfoWindowAdapter(paramClusterInfoWindowAdapter);
-    AppMethodBeat.o(217634);
+    AppMethodBeat.o(199557);
   }
   
   public void setClusterItemInfoWindowAdapter(ClusterItemInfoWindowAdapter<T> paramClusterItemInfoWindowAdapter)
   {
-    AppMethodBeat.i(217637);
+    AppMethodBeat.i(199560);
     this.q = paramClusterItemInfoWindowAdapter;
     this.f.setItemInfoWindowAdapter(paramClusterItemInfoWindowAdapter);
-    AppMethodBeat.o(217637);
+    AppMethodBeat.o(199560);
   }
   
   public void setOnClusterClickListener(OnClusterClickListener<T> paramOnClusterClickListener)
   {
-    AppMethodBeat.i(217632);
+    AppMethodBeat.i(199555);
     this.p = paramOnClusterClickListener;
     this.f.setOnClusterClickListener(paramOnClusterClickListener);
-    AppMethodBeat.o(217632);
+    AppMethodBeat.o(199555);
   }
   
   public void setOnClusterInfoWindowClickListener(OnClusterInfoWindowClickListener<T> paramOnClusterInfoWindowClickListener)
   {
-    AppMethodBeat.i(217633);
+    AppMethodBeat.i(199556);
     this.m = paramOnClusterInfoWindowClickListener;
     this.f.setOnClusterInfoWindowClickListener(paramOnClusterInfoWindowClickListener);
-    AppMethodBeat.o(217633);
+    AppMethodBeat.o(199556);
   }
   
   public void setOnClusterItemClickListener(OnClusterItemClickListener<T> paramOnClusterItemClickListener)
   {
-    AppMethodBeat.i(217635);
+    AppMethodBeat.i(199558);
     this.l = paramOnClusterItemClickListener;
     this.f.setOnClusterItemClickListener(paramOnClusterItemClickListener);
-    AppMethodBeat.o(217635);
+    AppMethodBeat.o(199558);
   }
   
   public void setOnClusterItemInfoWindowClickListener(OnClusterItemInfoWindowClickListener<T> paramOnClusterItemInfoWindowClickListener)
   {
-    AppMethodBeat.i(217636);
+    AppMethodBeat.i(199559);
     this.o = paramOnClusterItemInfoWindowClickListener;
     this.f.setOnClusterItemInfoWindowClickListener(paramOnClusterItemInfoWindowClickListener);
-    AppMethodBeat.o(217636);
+    AppMethodBeat.o(199559);
   }
   
   public void setRenderer(ClusterRenderer<T> paramClusterRenderer)
   {
-    AppMethodBeat.i(217619);
+    AppMethodBeat.i(199542);
     this.f.setOnClusterClickListener(null);
     this.f.setOnClusterItemClickListener(null);
     this.c.a();
@@ -403,7 +403,7 @@ public class ClusterManager<T extends ClusterItem>
     this.f.setOnClusterItemClickListener(this.l);
     this.f.setOnClusterItemInfoWindowClickListener(this.o);
     cluster();
-    AppMethodBeat.o(217619);
+    AppMethodBeat.o(199542);
   }
   
   public static abstract interface ClusterInfoWindowAdapter<T extends ClusterItem>
@@ -451,7 +451,7 @@ public class ClusterManager<T extends ClusterItem>
     
     protected Set<? extends Cluster<T>> a(Float... paramVarArgs)
     {
-      AppMethodBeat.i(217697);
+      AppMethodBeat.i(199620);
       ClusterManager.a(ClusterManager.this).readLock().lock();
       try
       {
@@ -470,22 +470,22 @@ public class ClusterManager<T extends ClusterItem>
       finally
       {
         ClusterManager.a(ClusterManager.this).readLock().unlock();
-        AppMethodBeat.o(217697);
+        AppMethodBeat.o(199620);
       }
-      AppMethodBeat.o(217697);
+      AppMethodBeat.o(199620);
       return paramVarArgs;
       label152:
       paramVarArgs = ClusterManager.c(ClusterManager.this).getClusters(paramVarArgs[0].floatValue());
       ClusterManager.a(ClusterManager.this).readLock().unlock();
-      AppMethodBeat.o(217697);
+      AppMethodBeat.o(199620);
       return paramVarArgs;
     }
     
     protected void a(Set<? extends Cluster<T>> paramSet)
     {
-      AppMethodBeat.i(217698);
+      AppMethodBeat.i(199621);
       ClusterManager.d(ClusterManager.this).onClustersChanged(paramSet);
-      AppMethodBeat.o(217698);
+      AppMethodBeat.o(199621);
     }
   }
   
@@ -497,11 +497,11 @@ public class ClusterManager<T extends ClusterItem>
     
     public b()
     {
-      AppMethodBeat.i(217638);
+      AppMethodBeat.i(199561);
       Object localObject;
       this.b = localObject;
       this.c = Collections.singleton(this.b);
-      AppMethodBeat.o(217638);
+      AppMethodBeat.o(199561);
     }
     
     public Collection<T> getItems()
@@ -511,9 +511,9 @@ public class ClusterManager<T extends ClusterItem>
     
     public LatLng getPosition()
     {
-      AppMethodBeat.i(217639);
+      AppMethodBeat.i(199562);
       LatLng localLatLng = this.b.getPosition();
-      AppMethodBeat.o(217639);
+      AppMethodBeat.o(199562);
       return localLatLng;
     }
     
@@ -525,7 +525,7 @@ public class ClusterManager<T extends ClusterItem>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.clustering.ClusterManager
  * JD-Core Version:    0.7.0.1
  */

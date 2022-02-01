@@ -19,9 +19,9 @@ final class PhotoView$2
       AppMethodBeat.o(164251);
       return false;
     }
-    PhotoView.c(this.LML, PhotoView.f(this.LML) * f);
-    PhotoView.d(this.LML).postScale(f, f, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-    PhotoView.g(this.LML);
+    PhotoView.c(this.Rla, PhotoView.f(this.Rla) * f);
+    PhotoView.d(this.Rla).postScale(f, f, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+    PhotoView.g(this.Rla);
     AppMethodBeat.o(164251);
     return true;
   }
@@ -35,7 +35,7 @@ final class PhotoView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.view.PhotoView.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,39 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.p;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.df;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.page.ac;
 
 public final class f
-  extends a
+  extends com.tencent.mm.plugin.appbrand.jsapi.d<com.tencent.mm.plugin.appbrand.d>
 {
-  public static final int CTRL_INDEX = 84;
-  public static final String NAME = "showDatePickerView";
+  public static final int CTRL_INDEX = 10;
+  public static final String NAME = "hideNavigationBarLoading";
   
-  public final void b(e parame, JSONObject paramJSONObject, int paramInt)
+  public final boolean bEa()
   {
-    AppMethodBeat.i(137580);
-    String str = paramJSONObject.optString("mode");
-    if ("date".equals(str))
-    {
-      new b().a(this, parame, paramJSONObject, paramInt, this.lhh);
-      AppMethodBeat.o(137580);
-      return;
-    }
-    if ("time".equals(str))
-    {
-      new k().a(this, parame, paramJSONObject, paramInt, this.lhh);
-      AppMethodBeat.o(137580);
-      return;
-    }
-    parame.h(paramInt, e("fail:invalid data", null));
-    AppMethodBeat.o(137580);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.p.f
  * JD-Core Version:    0.7.0.1
  */

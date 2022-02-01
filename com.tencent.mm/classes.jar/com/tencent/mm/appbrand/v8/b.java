@@ -19,7 +19,7 @@ final class b
     return paramConfig;
   }
   
-  final c Nh()
+  final c Xt()
   {
     AppMethodBeat.i(143993);
     Looper.prepare();

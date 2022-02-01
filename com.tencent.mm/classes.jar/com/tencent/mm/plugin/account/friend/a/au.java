@@ -6,21 +6,21 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.a.a.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.e;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.storage.bn;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class au
 {
-  public static int Kj(String paramString)
+  public static int Th(String paramString)
   {
     AppMethodBeat.i(184430);
-    paramString = "SELECT COUNT(oldUsername) FROM OldAccountFriend WHERE oldUsername = " + h.wX(paramString);
-    paramString = ((a)g.ad(a.class)).getOldAccountFriendStorage().rawQuery(paramString, null);
+    paramString = "SELECT COUNT(oldUsername) FROM OldAccountFriend WHERE oldUsername = " + h.Fl(paramString);
+    paramString = ((a)g.ah(a.class)).getOldAccountFriendStorage().rawQuery(paramString, new String[0]);
     if (paramString != null) {}
     try
     {
@@ -38,11 +38,11 @@ public final class au
     }
   }
   
-  public static int Kk(String paramString)
+  public static int Ti(String paramString)
   {
     AppMethodBeat.i(184431);
-    paramString = "SELECT seq FROM OldAccountFriend WHERE oldUsername = " + h.wX(paramString) + "ORDER BY seq DESC";
-    paramString = ((a)g.ad(a.class)).getOldAccountFriendStorage().rawQuery(paramString, null);
+    paramString = "SELECT seq FROM OldAccountFriend WHERE oldUsername = " + h.Fl(paramString) + "ORDER BY seq DESC";
+    paramString = ((a)g.ah(a.class)).getOldAccountFriendStorage().rawQuery(paramString, new String[0]);
     if (paramString != null) {}
     try
     {
@@ -60,16 +60,16 @@ public final class au
     }
   }
   
-  public static List<a> aD(String paramString, int paramInt)
+  public static List<a> aH(String paramString, int paramInt)
   {
     AppMethodBeat.i(184429);
     ArrayList localArrayList;
     Cursor localCursor;
     if (paramInt > 0)
     {
-      paramString = "SELECT *,rowid FROM OldAccountFriend " + " WHERE showHead = " + paramInt + " AND oldUsername = " + h.wX(paramString) + " ORDER BY pinyinName";
+      paramString = "SELECT *,rowid FROM OldAccountFriend " + " WHERE showHead = " + paramInt + " AND oldUsername = " + h.Fl(paramString) + " ORDER BY pinyinName";
       localArrayList = new ArrayList();
-      localCursor = ((a)g.ad(a.class)).getOldAccountFriendStorage().rawQuery(paramString, null);
+      localCursor = ((a)g.ah(a.class)).getOldAccountFriendStorage().rawQuery(paramString, new String[0]);
       if (localCursor == null) {}
     }
     else
@@ -80,17 +80,17 @@ public final class au
         try
         {
           if (!localCursor.moveToNext()) {
-            break label242;
+            break label245;
           }
           localr = new r();
           localr.convertFrom(localCursor);
-          bi localbi = ((l)g.ab(l.class)).doI().aqR(localr.field_encryptUsername);
-          if ((localbi == null) || (!localr.field_encryptUsername.equals(localbi.field_talker))) {
-            break label223;
+          bn localbn = ((l)g.af(l.class)).eix().aEm(localr.field_encryptUsername);
+          if ((localbn == null) || (!localr.field_encryptUsername.equals(localbn.field_talker))) {
+            break label226;
           }
-          localArrayList.add(new a(localr, localbi));
+          localArrayList.add(new a(localr, localbn));
           continue;
-          paramString = "SELECT *,rowid FROM OldAccountFriend " + " WHERE oldUsername = " + h.wX(paramString) + " ORDER BY showHead,pinyinName";
+          paramString = "SELECT *,rowid FROM OldAccountFriend " + " WHERE oldUsername = " + h.Fl(paramString) + " ORDER BY showHead,pinyinName";
         }
         finally
         {
@@ -98,25 +98,25 @@ public final class au
           AppMethodBeat.o(184429);
         }
         break;
-        label223:
+        label226:
         localArrayList.add(new a(localr));
       }
-      label242:
+      label245:
       localCursor.close();
     }
-    ae.i("MicroMsg.RecoverFriendLogic", "get recover friend, sql %s, get %d data", new Object[] { paramString, Integer.valueOf(localArrayList.size()) });
+    Log.i("MicroMsg.RecoverFriendLogic", "get recover friend, sql %s, get %d data", new Object[] { paramString, Integer.valueOf(localArrayList.size()) });
     AppMethodBeat.o(184429);
     return localArrayList;
   }
   
-  public static void aE(String paramString, int paramInt)
+  public static void aI(String paramString, int paramInt)
   {
     AppMethodBeat.i(184433);
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
-      paramString = "SELECT *,rowid FROM OldAccountFriend  WHERE encryptUsername = " + h.wX(paramString);
-      ae.i("MicroMsg.RecoverFriendLogic", "update old acct friend add state, sql %s", new Object[] { paramString });
-      paramString = ((a)g.ad(a.class)).getOldAccountFriendStorage().rawQuery(paramString, null);
+      paramString = "SELECT *,rowid FROM OldAccountFriend  WHERE encryptUsername = " + h.Fl(paramString);
+      Log.i("MicroMsg.RecoverFriendLogic", "update old acct friend add state, sql %s", new Object[] { paramString });
+      paramString = ((a)g.ah(a.class)).getOldAccountFriendStorage().rawQuery(paramString, new String[0]);
       if (paramString != null) {
         try
         {
@@ -125,7 +125,7 @@ public final class au
             r localr = new r();
             localr.convertFrom(paramString);
             localr.field_addState = paramInt;
-            ((ap)((a)g.ad(a.class)).getOldAccountFriendStorage()).replace(localr);
+            ((ap)((a)g.ah(a.class)).getOldAccountFriendStorage()).replace(localr);
           }
           return;
         }
@@ -139,12 +139,12 @@ public final class au
     AppMethodBeat.o(184433);
   }
   
-  public static r bR(String paramString1, String paramString2)
+  public static r ca(String paramString1, String paramString2)
   {
     AppMethodBeat.i(184432);
-    paramString1 = "SELECT *,rowid FROM OldAccountFriend  WHERE encryptUsername = " + h.wX(paramString2) + " AND oldUsername = " + h.wX(paramString1);
-    ae.i("MicroMsg.RecoverFriendLogic", "get old acct friend, sql %s", new Object[] { paramString1 });
-    paramString1 = ((a)g.ad(a.class)).getOldAccountFriendStorage().rawQuery(paramString1, null);
+    paramString1 = "SELECT *,rowid FROM OldAccountFriend  WHERE encryptUsername = " + h.Fl(paramString2) + " AND oldUsername = " + h.Fl(paramString1);
+    Log.i("MicroMsg.RecoverFriendLogic", "get old acct friend, sql %s", new Object[] { paramString1 });
+    paramString1 = ((a)g.ah(a.class)).getOldAccountFriendStorage().rawQuery(paramString1, new String[0]);
     if (paramString1 != null) {}
     try
     {
@@ -165,24 +165,24 @@ public final class au
   
   public static final class a
   {
-    public r jhV;
-    public bi jhW;
+    public r kfY;
+    public bn kfZ;
     
     public a(r paramr)
     {
-      this.jhV = paramr;
+      this.kfY = paramr;
     }
     
-    public a(r paramr, bi parambi)
+    public a(r paramr, bn parambn)
     {
-      this.jhV = paramr;
-      this.jhW = parambi;
+      this.kfY = paramr;
+      this.kfZ = parambn;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.au
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/a" android:textColor="@color/y4" android:id="@id/ahs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:text="android-xiaomi" android:singleLine="true" android:layout_weight="1.0" style="@style/ok" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/km" android:id="@id/ahn" android:layout_marginTop="6.0dip" android:layout_marginBottom="@dimen/jn" android:text="android-21" android:singleLine="true" android:alpha="0.42" style="@style/ok" />
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/dwr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/c_k" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m">
+        <ImageView android:layout_gravity="bottom" android:id="@id/j5c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/video_icon_in_gird" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/j5d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="1" />
     </LinearLayout>
-    <TextView android:textColor="@color/Link" android:id="@id/b99" android:padding="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gvb" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/ok" />
-</RelativeLayout>
+    <View android:layout_gravity="end|center|top" android:id="@id/fc0" android:layout_width="48.0dip" android:layout_height="48.0dip" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <CheckBox android:textColor="@color/afz" android:gravity="center" android:layout_gravity="end|center|top" android:id="@id/fbe" android:background="@drawable/aob" android:focusable="false" android:clickable="false" android:layout_width="@dimen/as" android:layout_height="@dimen/ar" android:layout_marginTop="@dimen/ct" android:layout_marginEnd="@dimen/ct" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <View android:id="@id/fbs" android:background="@color/BW_100_Alpha_0_5" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+</android.support.constraint.ConstraintLayout>

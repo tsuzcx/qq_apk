@@ -13,13 +13,13 @@ final class f$7
   public final void onAnimationEnd(Animator paramAnimator)
   {
     AppMethodBeat.i(49871);
-    this.ngO.ngW.setVisibility(8);
+    this.oqB.Iab.setVisibility(8);
     AppMethodBeat.o(49871);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.f.7
  * JD-Core Version:    0.7.0.1
  */

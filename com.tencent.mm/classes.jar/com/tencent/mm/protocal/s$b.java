@@ -2,22 +2,22 @@ package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.ajf;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.alt;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class s$b
   extends l.d
   implements l.b
 {
-  public ajf FGP;
-  private boolean wJx;
+  private boolean AEJ;
+  public alt KAa;
   
   public s$b(boolean paramBoolean)
   {
     AppMethodBeat.i(149120);
-    this.wJx = true;
-    this.FGP = new ajf();
-    this.wJx = paramBoolean;
+    this.AEJ = true;
+    this.KAa = new alt();
+    this.AEJ = paramBoolean;
     AppMethodBeat.o(149120);
   }
   
@@ -28,7 +28,7 @@ public final class s$b
   
   public final int getFuncId()
   {
-    if (this.wJx) {
+    if (this.AEJ) {
       return 3789;
     }
     return 3644;
@@ -37,24 +37,24 @@ public final class s$b
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(149121);
-    this.FGP.setBaseRequest(l.a(this));
-    if (this.wJx)
+    this.KAa.setBaseRequest(l.a(this));
+    if (this.AEJ)
     {
-      arrayOfByte = bu.fpG();
-      setRsaInfo(ac.fkn());
-      this.FGP.GyH = b.cm(arrayOfByte);
-      if (!f.FFQ) {
+      arrayOfByte = Util.getUuidRandom();
+      setRsaInfo(ac.gtR());
+      this.KAa.Luv = b.cD(arrayOfByte);
+      if (!f.KyZ) {
         setPassKey(arrayOfByte);
       }
     }
-    byte[] arrayOfByte = this.FGP.toByteArray();
+    byte[] arrayOfByte = this.KAa.toByteArray();
     AppMethodBeat.o(149121);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.s.b
  * JD-Core Version:    0.7.0.1
  */

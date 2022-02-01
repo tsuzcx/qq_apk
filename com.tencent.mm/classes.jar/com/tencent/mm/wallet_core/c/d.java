@@ -1,36 +1,36 @@
 package com.tencent.mm.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class d
 {
-  public String LUB;
-  public String LUC;
-  public String LUD;
-  public String dvT;
+  public String Rtr;
+  public String Rts;
+  public String Rtt;
+  public String dNA;
   public String title;
   
   public d()
   {
     this.title = "";
-    this.LUB = "";
-    this.LUC = "";
-    this.LUD = "";
-    this.dvT = "";
+    this.Rtr = "";
+    this.Rts = "";
+    this.Rtt = "";
+    this.dNA = "";
   }
   
   public d(String paramString)
   {
     AppMethodBeat.i(72741);
     this.title = "";
-    this.LUB = "";
-    this.LUC = "";
-    this.LUD = "";
-    this.dvT = "";
-    if (bu.isNullOrNil(paramString))
+    this.Rtr = "";
+    this.Rts = "";
+    this.Rtt = "";
+    this.dNA = "";
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(72741);
       return;
@@ -39,15 +39,15 @@ public final class d
     {
       paramString = new JSONObject(paramString);
       this.title = paramString.optString("title");
-      this.LUB = paramString.optString("body1");
-      this.LUC = paramString.optString("body2");
-      this.LUD = paramString.optString("button");
+      this.Rtr = paramString.optString("body1");
+      this.Rts = paramString.optString("body2");
+      this.Rtt = paramString.optString("button");
       AppMethodBeat.o(72741);
       return;
     }
     catch (Exception paramString)
     {
-      ae.e("MicroMsg.CrtRtnWoding", "crtwoding error %s", new Object[] { paramString.getMessage() });
+      Log.e("MicroMsg.CrtRtnWoding", "crtwoding error %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(72741);
     }
   }

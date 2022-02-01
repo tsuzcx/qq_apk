@@ -22,11 +22,11 @@ public abstract class o
   {
     if (TextUtils.isEmpty(this.mKey))
     {
-      a(paramm, paramm.Ny().getGlobalObject());
+      a(paramm, paramm.XJ().getGlobalObject());
       return this;
     }
-    V8Object localV8Object = paramm.Ny().newV8Object();
-    paramm.Ny().add(this.mKey, localV8Object);
+    V8Object localV8Object = paramm.XJ().newV8Object();
+    paramm.XJ().add(this.mKey, localV8Object);
     a(paramm, localV8Object);
     localV8Object.release();
     return this;

@@ -5,68 +5,89 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class er
   extends com.tencent.mm.bw.a
 {
-  public int enabled;
-  public String url;
+  public String appId;
+  public int cyo;
+  public int iOo;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(103179);
+    AppMethodBeat.i(208700);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.enabled);
-      if (this.url != null) {
-        paramVarArgs.d(2, this.url);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.appId != null) {
+        paramVarArgs.e(1, this.appId);
       }
-      AppMethodBeat.o(103179);
+      if (this.username != null) {
+        paramVarArgs.e(2, this.username);
+      }
+      paramVarArgs.aM(3, this.iOo);
+      paramVarArgs.aM(4, this.cyo);
+      AppMethodBeat.o(208700);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bz(1, this.enabled) + 0;
-      paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.url);
+    if (paramInt == 1) {
+      if (this.appId == null) {
+        break label366;
       }
-      AppMethodBeat.o(103179);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label366:
+    for (paramInt = g.a.a.b.b.a.f(1, this.appId) + 0;; paramInt = 0)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
+      int i = paramInt;
+      if (this.username != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.username);
       }
-      AppMethodBeat.o(103179);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      er localer = (er)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = g.a.a.b.b.a.bu(3, this.iOo);
+      int j = g.a.a.b.b.a.bu(4, this.cyo);
+      AppMethodBeat.o(208700);
+      return i + paramInt + j;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(103179);
-        return -1;
-      case 1: 
-        localer.enabled = locala.OmT.zc();
-        AppMethodBeat.o(103179);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
+        }
+        AppMethodBeat.o(208700);
         return 0;
       }
-      localer.url = locala.OmT.readString();
-      AppMethodBeat.o(103179);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        er localer = (er)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(208700);
+          return -1;
+        case 1: 
+          localer.appId = locala.UbS.readString();
+          AppMethodBeat.o(208700);
+          return 0;
+        case 2: 
+          localer.username = locala.UbS.readString();
+          AppMethodBeat.o(208700);
+          return 0;
+        case 3: 
+          localer.iOo = locala.UbS.zi();
+          AppMethodBeat.o(208700);
+          return 0;
+        }
+        localer.cyo = locala.UbS.zi();
+        AppMethodBeat.o(208700);
+        return 0;
+      }
+      AppMethodBeat.o(208700);
+      return -1;
     }
-    AppMethodBeat.o(103179);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.er
  * JD-Core Version:    0.7.0.1
  */

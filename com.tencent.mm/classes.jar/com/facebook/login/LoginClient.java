@@ -241,8 +241,8 @@ class LoginClient
     if (checkPermission("android.permission.INTERNET") != 0)
     {
       Object localObject = getActivity();
-      String str = ((Activity)localObject).getString(2131757505);
-      localObject = ((Activity)localObject).getString(2131757504);
+      String str = ((Activity)localObject).getString(2131757725);
+      localObject = ((Activity)localObject).getString(2131757724);
       complete(Result.createErrorResult(this.pendingRequest, str, (String)localObject));
       AppMethodBeat.o(7847);
       return false;
@@ -887,7 +887,7 @@ class LoginClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.login.LoginClient
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ import com.tencent.mm.ipcinvoker.extension.f;
 public final class a
   extends com.tencent.mm.ipcinvoker.extension.event.a<a>
 {
-  private static final a kmn;
+  private static final a lpX;
   
   static
   {
     AppMethodBeat.i(121570);
-    kmn = new a();
+    lpX = new a();
     AppMethodBeat.o(121570);
   }
   
@@ -23,7 +23,7 @@ public final class a
     public String id;
     public int width;
     
-    public final void d(Parcel paramParcel)
+    public final void e(Parcel paramParcel)
     {
       AppMethodBeat.i(121568);
       paramParcel.writeString(this.id);
@@ -44,7 +44,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.widget.a
  * JD-Core Version:    0.7.0.1
  */

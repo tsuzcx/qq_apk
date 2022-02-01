@@ -2,7 +2,7 @@ package com.tencent.mm.b;
 
 public final class i
 {
-  public static int cf(int paramInt1, int paramInt2)
+  public static int ch(int paramInt1, int paramInt2)
   {
     int i = 0;
     if ((paramInt2 < 0) || (paramInt2 >= 2147483647)) {
@@ -14,10 +14,10 @@ public final class i
       arrayOfByte[i] = ((byte)(paramInt1 >> i * 8 & 0xFF));
       i += 1;
     }
-    return (int)((s(arrayOfByte, 4) & 0xFFFFFFFF) % paramInt2);
+    return (int)((u(arrayOfByte, 4) & 0xFFFFFFFF) % paramInt2);
   }
   
-  public static int s(byte[] paramArrayOfByte, int paramInt)
+  public static int u(byte[] paramArrayOfByte, int paramInt)
   {
     int i = paramInt ^ 0x0;
     int k = paramInt >> 2;

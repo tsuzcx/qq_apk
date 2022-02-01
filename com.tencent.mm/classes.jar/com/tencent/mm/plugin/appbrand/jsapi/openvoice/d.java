@@ -3,12 +3,10 @@ package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p.17;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.s;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.t;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class d
@@ -20,11 +18,11 @@ public final class d
   public d()
   {
     AppMethodBeat.i(174846);
-    com.tencent.mm.plugin.appbrand.permission.c.Uy("removeVoIPView");
+    com.tencent.mm.plugin.appbrand.permission.c.aem("removeVoIPView");
     AppMethodBeat.o(174846);
   }
   
-  public final int A(JSONObject paramJSONObject)
+  public final int H(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(46684);
     int i = paramJSONObject.optInt("viewId", 0);
@@ -32,45 +30,33 @@ public final class d
     return i;
   }
   
-  public final boolean b(e parame, int paramInt, View paramView, JSONObject arg4)
+  public final boolean b(h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(46685);
-    ae.i("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "onRemoveView," + ???.toString());
-    super.b(parame, paramInt, paramView, ???);
+    Log.i("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "onRemoveView," + paramJSONObject.toString());
+    super.b(paramh, paramInt, paramView, paramJSONObject);
     if (!(paramView instanceof CoverViewContainer))
     {
-      ae.w("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      Log.w("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "the view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(46685);
       return false;
     }
-    parame = (View)((CoverViewContainer)paramView).ax(View.class);
-    if ((parame == null) || (!(parame instanceof com.tencent.mm.plugin.cloudvoip.cloudvoice.d.c)))
+    paramh = (View)((CoverViewContainer)paramView).aB(View.class);
+    if ((paramh == null) || (!(paramh instanceof com.tencent.mm.plugin.cloudvoip.cloudvoice.d.c)))
     {
-      ae.w("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "the view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
+      Log.w("MicroMsg.OpenVoice.JsApiCloudVoiceRemoveView", "the view(%s) is null", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(46685);
       return false;
     }
-    parame = (com.tencent.mm.plugin.cloudvoip.cloudvoice.d.c)parame;
-    paramView = p.pdY.pec;
-    if (parame.cbi())
-    {
-      ??? = p.pdY;
-      ae.i("MicroMsg.OpenVoice.OpenVoiceService", "onCameraStop");
-      ???.ad(new p.17(???));
-    }
-    synchronized (paramView.pgc)
-    {
-      parame.uint();
-      paramView.pgc.remove(parame.getOpenId());
-      ae.i("MicroMsg.OpenVoice.OpenVoiceVideoMgr", "del View, viewId:" + parame.getViewId() + " memberId:" + parame.getMemberId());
-      AppMethodBeat.o(46685);
-      return true;
-    }
+    paramh = (com.tencent.mm.plugin.cloudvoip.cloudvoice.d.c)paramh;
+    q.qta.qtf.a(paramh);
+    AppMethodBeat.o(46685);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.openvoice.d
  * JD-Core Version:    0.7.0.1
  */

@@ -18,60 +18,60 @@ public class CIContext
   
   public CIContext(RenderContext paramRenderContext)
   {
-    AppMethodBeat.i(200605);
+    AppMethodBeat.i(197275);
     this.TAG = ("CIContext@" + Integer.toHexString(hashCode()));
     this.renderContext = paramRenderContext;
-    AppMethodBeat.o(200605);
+    AppMethodBeat.o(197275);
   }
   
   public static TextureInfo newTextureInfo(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(200608);
+    AppMethodBeat.i(197278);
     TextureInfo localTextureInfo = newTextureInfo((int)paramFloat1, (int)paramFloat2);
-    AppMethodBeat.o(200608);
+    AppMethodBeat.o(197278);
     return localTextureInfo;
   }
   
   public static TextureInfo newTextureInfo(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200609);
+    AppMethodBeat.i(197279);
     TextureInfo localTextureInfo = new TextureInfo(RenderContext.createTexture(3553), 3553, paramInt1, paramInt2, null, 0);
     localTextureInfo.setFormat(6408);
-    AppMethodBeat.o(200609);
+    AppMethodBeat.o(197279);
     return localTextureInfo;
   }
   
   public static TextureInfo newTextureInfo(CGSize paramCGSize)
   {
-    AppMethodBeat.i(200607);
+    AppMethodBeat.i(197277);
     paramCGSize = newTextureInfo(paramCGSize.width, paramCGSize.height);
-    AppMethodBeat.o(200607);
+    AppMethodBeat.o(197277);
     return paramCGSize;
   }
   
   private void setDestImage(TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(200612);
+    AppMethodBeat.i(197282);
     if (this.filter == null) {
       this.filter = new CIImageFilter();
     }
     this.filter.setOutputTextureInfo(paramTextureInfo);
-    AppMethodBeat.o(200612);
+    AppMethodBeat.o(197282);
   }
   
   public void clear(int paramInt)
   {
-    AppMethodBeat.i(200611);
+    AppMethodBeat.i(197281);
     this.filter.clearBufferBuffer(paramInt);
-    AppMethodBeat.o(200611);
+    AppMethodBeat.o(197281);
   }
   
   public TextureInfo convertImageToTexture(CIImage paramCIImage, TextureInfo paramTextureInfo)
   {
-    AppMethodBeat.i(200610);
+    AppMethodBeat.i(197280);
     if (paramTextureInfo == null)
     {
-      AppMethodBeat.o(200610);
+      AppMethodBeat.o(197280);
       return null;
     }
     if (this.copyFilter == null) {
@@ -80,7 +80,7 @@ public class CIContext
     this.copyFilter.setOutputTextureInfo(paramTextureInfo);
     this.copyFilter.clearBufferBuffer(-16777216);
     paramCIImage.draw(this.copyFilter);
-    AppMethodBeat.o(200610);
+    AppMethodBeat.o(197280);
     return paramTextureInfo;
   }
   
@@ -91,7 +91,7 @@ public class CIContext
   
   public void release()
   {
-    AppMethodBeat.i(200613);
+    AppMethodBeat.i(197283);
     Logger.d(this.TAG, "release: begin, currentThread = " + Thread.currentThread().getName());
     if (this.filter != null) {
       this.filter.release();
@@ -103,12 +103,12 @@ public class CIContext
       this.copyFilter.release();
     }
     Logger.d(this.TAG, "release: end, currentThread = " + Thread.currentThread().getName());
-    AppMethodBeat.o(200613);
+    AppMethodBeat.o(197283);
   }
   
   public CMSampleBuffer renderToSampleBuffer(CIImage paramCIImage, CMTime paramCMTime, RenderContext paramRenderContext)
   {
-    AppMethodBeat.i(200606);
+    AppMethodBeat.i(197276);
     paramRenderContext.makeCurrent();
     if ((this.textureInfo != null) && ((this.textureInfo.width != paramRenderContext.width()) || (this.textureInfo.height != paramRenderContext.height())))
     {
@@ -122,13 +122,13 @@ public class CIContext
     clear(-16777216);
     paramCIImage.draw(this.filter);
     paramCIImage = new CMSampleBuffer(paramCMTime, this.textureInfo, false);
-    AppMethodBeat.o(200606);
+    AppMethodBeat.o(197276);
     return paramCIImage;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.CIContext
  * JD-Core Version:    0.7.0.1
  */

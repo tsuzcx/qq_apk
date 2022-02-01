@@ -8,85 +8,88 @@ import android.content.Context;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.m;
+import android.support.v7.widget.RecyclerView.l;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.appbrand.app.n;
 import com.tencent.mm.plugin.appbrand.appusage.a.c;
 import com.tencent.mm.plugin.appbrand.appusage.a.d;
 import com.tencent.mm.plugin.appbrand.appusage.u;
-import com.tencent.mm.plugin.appbrand.config.w;
+import com.tencent.mm.plugin.appbrand.config.z;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.LoadMoreRecyclerView.a;
-import com.tencent.mm.protocal.protobuf.csl;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import d.f;
-import d.g.b.p;
-import d.g.b.y.d;
-import d.l;
-import d.v;
-import d.z;
+import com.tencent.mm.protocal.protobuf.dko;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
+import kotlin.f;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.g.b.z.d;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "Landroid/arch/lifecycle/LifecycleObserver;", "activity", "Landroid/support/v4/app/FragmentActivity;", "(Landroid/support/v4/app/FragmentActivity;)V", "getActivity", "()Landroid/support/v4/app/FragmentActivity;", "adapter", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "getAdapter", "()Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "appBrandRomLogic", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "getAppBrandRomLogic", "()Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "appBrandRomLogic$delegate", "Lkotlin/Lazy;", "collectionStorageListener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "contentView", "Landroid/view/View;", "getContentView", "()Landroid/view/View;", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "dataProcessThread", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "exposeTimeMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "getExposeTimeMap", "()Ljava/util/HashMap;", "headerViewText", "getHeaderViewText", "()Ljava/lang/String;", "insertList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getInsertList", "()Ljava/util/ArrayList;", "layoutMgr", "Landroid/support/v7/widget/LinearLayoutManager;", "listFooterController", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "getListFooterController", "()Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "listFooterController$delegate", "loadStateObj", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$LoadStateObj;", "mListHeaderController", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListHeaderControllerForRecommend;", "needHeader", "", "getNeedHeader", "()Z", "pos2exposeTimeMap", "getPos2exposeTimeMap", "recommendCardList", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "getRecommendCardList", "()Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "recommendCardList$delegate", "recommendReport", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendReport;", "removeList", "getRemoveList", "scrollListener", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1;", "showMenuCallback", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$showMenuCallback$1", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$showMenuCallback$1;", "wxaAttrsStorageListener", "calExposeTime", "", "list", "clear", "fetchPageData", "loadFromMemory", "handleHeaderClick", "initData", "initFooter", "initHeader", "initHeaderTagView", "initStateObj", "initView", "onCreate", "onDestroy", "onDestroyView", "onFetchPageFail", "onFetchPageSuccess", "remainCount", "result", "onPause", "onResume", "postOnUiThread", "runnable", "Ljava/lang/Runnable;", "refreshData", "strategy", "removeStorageListeners", "resetExposeTime", "runOnWorkThread", "action", "Lkotlin/Function0;", "setAdapterClickListener", "setupStorageListeners", "syncAttr", "userNameList", "", "updateListData", "Companion", "LoadStateObj", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;", "Landroid/arch/lifecycle/LifecycleObserver;", "activity", "Landroid/support/v4/app/FragmentActivity;", "(Landroid/support/v4/app/FragmentActivity;)V", "getActivity", "()Landroid/support/v4/app/FragmentActivity;", "adapter", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "getAdapter", "()Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendAdapter;", "appBrandRomLogic", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "getAppBrandRomLogic", "()Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "appBrandRomLogic$delegate", "Lkotlin/Lazy;", "collectionStorageListener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "contentView", "Landroid/view/View;", "getContentView", "()Landroid/view/View;", "context", "Landroid/content/Context;", "getContext", "()Landroid/content/Context;", "dataProcessThread", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "exposeTimeMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "getExposeTimeMap", "()Ljava/util/HashMap;", "headerViewText", "getHeaderViewText", "()Ljava/lang/String;", "insertList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getInsertList", "()Ljava/util/ArrayList;", "layoutMgr", "Landroid/support/v7/widget/LinearLayoutManager;", "listFooterController", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "getListFooterController", "()Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "listFooterController$delegate", "loadStateObj", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$LoadStateObj;", "mListHeaderController", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListHeaderControllerForRecommend;", "needHeader", "", "getNeedHeader", "()Z", "pos2exposeTimeMap", "getPos2exposeTimeMap", "recommendCardList", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "getRecommendCardList", "()Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "recommendCardList$delegate", "recommendReport", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendReport;", "removeList", "getRemoveList", "scrollListener", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1;", "showMenuCallback", "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$showMenuCallback$1", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$showMenuCallback$1;", "wxaAttrsStorageListener", "calExposeTime", "", "list", "clear", "fetchPageData", "loadFromMemory", "handleHeaderClick", "initData", "initFooter", "initHeader", "initHeaderTagView", "initStateObj", "initView", "onCreate", "onDestroy", "onDestroyView", "onFetchPageFail", "onFetchPageSuccess", "remainCount", "result", "onPause", "onResume", "postOnUiThread", "runnable", "Ljava/lang/Runnable;", "refreshData", "strategy", "removeStorageListeners", "resetExposeTime", "runOnWorkThread", "action", "Lkotlin/Function0;", "setAdapterClickListener", "setupStorageListeners", "syncAttr", "userNameList", "", "updateListData", "Companion", "LoadStateObj", "plugin-appbrand-integration_release"})
 public abstract class AppBrandRecommendUILogic
   implements LifecycleObserver
 {
   private static final String TAG = "MicroMsg.Recommend.AppBrandRecommendUILogic";
-  public static final AppBrandRecommendUILogic.a mSG = new AppBrandRecommendUILogic.a((byte)0);
+  public static final AppBrandRecommendUILogic.a ofJ = new AppBrandRecommendUILogic.a((byte)0);
   final Context context;
-  final ArrayList<Integer> mSA;
-  final HashMap<String, Long> mSB;
-  final HashMap<Integer, String> mSC;
-  final l mSD;
-  private final p mSE;
-  final FragmentActivity mSF;
-  private final f mSn;
-  private final f mSp;
-  private final aq mSq;
-  final a mSr;
-  final b mSs;
-  final LinearLayoutManager mSt;
-  final com.tencent.mm.plugin.appbrand.ui.recents.i mSu;
-  final h mSv;
-  private final f mSw;
-  private final k.a mSx;
-  private final k.a mSy;
-  final ArrayList<Integer> mSz;
+  private final MStorage.IOnStorageChange ofA;
+  private final MStorage.IOnStorageChange ofB;
+  final ArrayList<Integer> ofC;
+  final ArrayList<Integer> ofD;
+  final HashMap<String, Long> ofE;
+  final HashMap<Integer, String> ofF;
+  final l ofG;
+  private final p ofH;
+  final FragmentActivity ofI;
+  private final f ofr;
+  private final f ofs;
+  private final MMHandler oft;
+  final a ofu;
+  final b ofv;
+  final LinearLayoutManager ofw;
+  final com.tencent.mm.plugin.appbrand.ui.recents.i ofx;
+  final h ofy;
+  private final f ofz;
   
   public AppBrandRecommendUILogic(FragmentActivity paramFragmentActivity)
   {
-    this.mSF = paramFragmentActivity;
-    paramFragmentActivity = this.mSF;
+    this.ofI = paramFragmentActivity;
+    paramFragmentActivity = this.ofI;
     if (paramFragmentActivity == null) {
-      throw new v("null cannot be cast to non-null type android.content.Context");
+      throw new t("null cannot be cast to non-null type android.content.Context");
     }
     this.context = ((Context)paramFragmentActivity);
-    this.mSn = d.g.O((d.g.a.a)new j(this));
-    this.mSp = d.g.O((d.g.a.a)c.mSJ);
-    this.mSq = new aq("AppBrandLauncherUI#AppBrandLauncherRecommendsList");
-    this.mSr = new a((Activity)this.mSF);
-    this.mSs = new b();
-    this.mSt = ((LinearLayoutManager)new SmoothScrollLinerLayoutManager(this.context));
-    this.mSu = new com.tencent.mm.plugin.appbrand.ui.recents.i(this.mSF, (ViewGroup)bBZ());
-    this.mSv = new h();
-    this.mSw = d.g.O((d.g.a.a)new i(this));
-    this.mSx = ((k.a)new d(this));
-    this.mSy = ((k.a)new r(this));
-    this.mSz = new ArrayList();
-    this.mSA = new ArrayList();
-    this.mSB = new HashMap();
-    this.mSC = new HashMap();
-    this.mSD = new l(this);
-    this.mSE = new p(this);
+    this.ofr = kotlin.g.ah((kotlin.g.a.a)new j(this));
+    this.ofs = kotlin.g.ah((kotlin.g.a.a)c.ofM);
+    this.oft = new MMHandler("AppBrandLauncherUI#AppBrandLauncherRecommendsList");
+    this.ofu = new a((Activity)this.ofI);
+    this.ofv = new b();
+    this.ofw = ((LinearLayoutManager)new SmoothScrollLinerLayoutManager(this.context));
+    this.ofx = new com.tencent.mm.plugin.appbrand.ui.recents.i(this.ofI, (ViewGroup)bZc());
+    this.ofy = new h();
+    this.ofz = kotlin.g.ah((kotlin.g.a.a)new i(this));
+    this.ofA = ((MStorage.IOnStorageChange)new d(this));
+    this.ofB = ((MStorage.IOnStorageChange)new r(this));
+    this.ofC = new ArrayList();
+    this.ofD = new ArrayList();
+    this.ofE = new HashMap();
+    this.ofF = new HashMap();
+    this.ofG = new l(this);
+    this.ofH = new p(this);
   }
   
   private final void c(ArrayList<Integer> paramArrayList, boolean paramBoolean)
@@ -99,17 +102,17 @@ public abstract class AppBrandRecommendUILogic
       if (localInteger == null) {}
       for (;;)
       {
-        if (!this.mSC.containsKey(localInteger)) {
+        if (!this.ofF.containsKey(localInteger)) {
           break label145;
         }
-        String str = (String)this.mSC.get(localInteger);
-        Long localLong = (Long)((Map)this.mSB).get(str);
+        String str = (String)this.ofF.get(localInteger);
+        Long localLong = (Long)((Map)this.ofE).get(str);
         if ((str == null) || (localLong == null)) {
           break;
         }
         long l = System.currentTimeMillis() - localLong.longValue();
-        ae.d(TAG, "exposure index: %d, exposureTime:%d", new Object[] { localInteger, Long.valueOf(l) });
-        this.mSv.W(str, l);
+        Log.d(TAG, "exposure index: %d, exposureTime:%d", new Object[] { localInteger, Long.valueOf(l) });
+        this.ofy.W(str, l);
         break;
         if (localInteger.intValue() == 0) {
           break;
@@ -121,65 +124,65 @@ public abstract class AppBrandRecommendUILogic
     }
   }
   
-  private final void t(d.g.a.a<z> parama)
+  private final void v(kotlin.g.a.a<x> parama)
   {
-    this.mSq.post((Runnable)new AppBrandRecommendUILogic.k(parama));
+    this.oft.post((Runnable)new AppBrandRecommendUILogic.k(parama));
   }
   
-  public abstract String bBN();
+  public abstract String bYN();
   
-  public abstract boolean bBO();
+  public abstract boolean bYO();
   
-  public final LoadMoreRecyclerView bBZ()
+  public final LoadMoreRecyclerView bZc()
   {
-    return (LoadMoreRecyclerView)this.mSn.getValue();
+    return (LoadMoreRecyclerView)this.ofr.getValue();
   }
   
-  final d bCa()
+  final d bZd()
   {
-    return (d)this.mSp.getValue();
+    return (d)this.ofs.getValue();
   }
   
-  public final com.tencent.mm.plugin.appbrand.ui.recents.g bCb()
+  public final com.tencent.mm.plugin.appbrand.ui.recents.g bZe()
   {
-    return (com.tencent.mm.plugin.appbrand.ui.recents.g)this.mSw.getValue();
+    return (com.tencent.mm.plugin.appbrand.ui.recents.g)this.ofz.getValue();
   }
   
   public abstract View getContentView();
   
-  final void hQ(final boolean paramBoolean)
+  final void iV(final boolean paramBoolean)
   {
     i.a(this, true);
     i.b(this, true);
-    t((d.g.a.a)new e(this, paramBoolean));
+    v((kotlin.g.a.a)new e(this, paramBoolean));
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
   public final void onCreate()
   {
-    ae.i(TAG, "onCreate");
+    Log.i(TAG, "onCreate");
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
   public final void onDestroy()
   {
-    ae.i(TAG, "onDestroy");
-    ((u)com.tencent.mm.plugin.appbrand.app.j.T(u.class)).remove(this.mSx);
-    com.tencent.mm.plugin.appbrand.app.j.aZl().remove(this.mSy);
-    this.mSz.clear();
-    this.mSA.clear();
-    this.mSB.clear();
-    this.mSC.clear();
-    this.mSv.tl(bCa().sessionId);
-    d locald = bCa();
-    if (!bCa().bds().isEmpty()) {}
+    Log.i(TAG, "onDestroy");
+    ((u)n.W(u.class)).remove(this.ofA);
+    n.buC().remove(this.ofB);
+    this.ofC.clear();
+    this.ofD.clear();
+    this.ofE.clear();
+    this.ofF.clear();
+    this.ofy.Br(bZd().sessionId);
+    d locald = bZd();
+    if (!bZd().byK().isEmpty()) {}
     for (boolean bool = true;; bool = false)
     {
-      locald.jUe = bool;
-      bCa().jUf = 0;
-      locald = bCa();
-      locald.jTZ.a(null);
-      locald.jUj = null;
+      locald.kXa = bool;
+      bZd().kXb = 0;
+      locald = bZd();
+      locald.kWV.a(null);
+      locald.kXf = null;
       return;
     }
   }
@@ -187,26 +190,26 @@ public abstract class AppBrandRecommendUILogic
   @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
   public final void onDestroyView()
   {
-    this.mSq.quit();
-    this.mSu.onDetached();
-    bCb().onDetached();
-    bBZ().b((RecyclerView.m)this.mSD);
+    this.oft.quit();
+    this.ofx.onDetached();
+    bZe().onDetached();
+    bZc().b((RecyclerView.l)this.ofG);
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
   public final void onPause()
   {
-    ae.i(TAG, "onPause");
-    c(this.mSz, false);
-    this.mSv.bBX();
+    Log.i(TAG, "onPause");
+    c(this.ofC, false);
+    this.ofy.bZa();
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
   public final void onResume()
   {
-    ae.i(TAG, "onResume");
-    this.mSv.bBW();
-    Iterator localIterator = this.mSz.iterator();
+    Log.i(TAG, "onResume");
+    this.ofy.bYZ();
+    Iterator localIterator = this.ofC.iterator();
     label121:
     while (localIterator.hasNext())
     {
@@ -214,15 +217,15 @@ public abstract class AppBrandRecommendUILogic
       if (localObject == null) {}
       for (;;)
       {
-        if (!this.mSC.containsKey(localObject)) {
+        if (!this.ofF.containsKey(localObject)) {
           break label121;
         }
-        localObject = (String)this.mSC.get(localObject);
-        Long localLong = (Long)((Map)this.mSB).get(localObject);
+        localObject = (String)this.ofF.get(localObject);
+        Long localLong = (Long)((Map)this.ofE).get(localObject);
         if ((localObject == null) || (localLong == null)) {
           break;
         }
-        this.mSB.put(localObject, Long.valueOf(System.currentTimeMillis()));
+        this.ofE.put(localObject, Long.valueOf(System.currentTimeMillis()));
         break;
         if (((Integer)localObject).intValue() == 0) {
           break;
@@ -231,30 +234,30 @@ public abstract class AppBrandRecommendUILogic
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$LoadStateObj;", "", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;)V", "canLoadMore", "", "getCanLoadMore", "()Z", "setCanLoadMore", "(Z)V", "isLoading", "setLoading", "page", "", "getPage", "()I", "setPage", "(I)V", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$LoadStateObj;", "", "(Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic;)V", "canLoadMore", "", "getCanLoadMore", "()Z", "setCanLoadMore", "(Z)V", "isLoading", "setLoading", "page", "", "getPage", "()I", "setPage", "(I)V", "plugin-appbrand-integration_release"})
   public final class b
   {
-    volatile int iqd;
     volatile boolean isLoading;
-    volatile boolean mSH;
+    volatile int jlo;
+    volatile boolean ofK;
     
-    public final boolean bCc()
+    public final boolean bZf()
     {
-      return (this.mSH) && (!this.isLoading);
+      return (this.ofK) && (!this.isLoading);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/appusage/recommend/AppBrandRecommendLogic;", "invoke"})
   static final class c
-    extends d.g.b.q
-    implements d.g.a.a<d>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<d>
   {
-    public static final c mSJ;
+    public static final c ofM;
     
     static
     {
       AppMethodBeat.i(51360);
-      mSJ = new c();
+      ofM = new c();
       AppMethodBeat.o(51360);
     }
     
@@ -264,24 +267,24 @@ public abstract class AppBrandRecommendUILogic
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
   static final class d
-    implements k.a
+    implements MStorage.IOnStorageChange
   {
     d(AppBrandRecommendUILogic paramAppBrandRecommendUILogic) {}
     
-    public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
+    public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
     {
       AppMethodBeat.i(51361);
-      AppBrandRecommendUILogic.g(this.mSI);
+      AppBrandRecommendUILogic.g(this.ofL);
       AppMethodBeat.o(51361);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class e
-    extends d.g.b.q
-    implements d.g.a.a<z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<x>
   {
     e(AppBrandRecommendUILogic paramAppBrandRecommendUILogic, boolean paramBoolean)
     {
@@ -289,10 +292,10 @@ public abstract class AppBrandRecommendUILogic
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "", "fetchedDataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "remainCount", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "result", "", "fetchedDataList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "remainCount", "invoke"})
   static final class f
-    extends d.g.b.q
-    implements d.g.a.q<Integer, LinkedList<csl>, Integer, z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.q<Integer, LinkedList<dko>, Integer, x>
   {
     f(AppBrandRecommendUILogic paramAppBrandRecommendUILogic)
     {
@@ -300,28 +303,28 @@ public abstract class AppBrandRecommendUILogic
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "onLoadMore"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Lcom/tencent/mm/plugin/appbrand/widget/recyclerview/LoadMoreRecyclerView;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "onLoadMore"})
   static final class h
     implements LoadMoreRecyclerView.a
   {
     h(AppBrandRecommendUILogic paramAppBrandRecommendUILogic) {}
     
-    public final void bBz()
+    public final void bYy()
     {
       AppMethodBeat.i(51366);
-      if (AppBrandRecommendUILogic.a(this.mSI).bCc())
+      if (AppBrandRecommendUILogic.a(this.ofL).bZf())
       {
-        ae.d(AppBrandRecommendUILogic.access$getTAG$cp(), "can load more: let's do fetch");
-        AppBrandRecommendUILogic.b(this.mSI);
+        Log.d(AppBrandRecommendUILogic.access$getTAG$cp(), "can load more: let's do fetch");
+        AppBrandRecommendUILogic.b(this.ofL);
       }
       AppMethodBeat.o(51366);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/ui/recents/AppBrandLauncherRecentsListFooter;", "invoke"})
   static final class i
-    extends d.g.b.q
-    implements d.g.a.a<com.tencent.mm.plugin.appbrand.ui.recents.g>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<com.tencent.mm.plugin.appbrand.ui.recents.g>
   {
     i(AppBrandRecommendUILogic paramAppBrandRecommendUILogic)
     {
@@ -329,10 +332,10 @@ public abstract class AppBrandRecommendUILogic
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/RecommendRecycleView;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/RecommendRecycleView;", "invoke"})
   static final class j
-    extends d.g.b.q
-    implements d.g.a.a<RecommendRecycleView>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<RecommendRecycleView>
   {
     j(AppBrandRecommendUILogic paramAppBrandRecommendUILogic)
     {
@@ -340,43 +343,76 @@ public abstract class AppBrandRecommendUILogic
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "currentVisibleList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getCurrentVisibleList", "()Ljava/util/ArrayList;", "lastVisibleList", "getLastVisibleList", "mListFlinging", "", "getMListFlinging", "()Z", "setMListFlinging", "(Z)V", "calExpose", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "onScrollStateChanged", "newState", "onScrolled", "dx", "dy", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "currentVisibleList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getCurrentVisibleList", "()Ljava/util/ArrayList;", "lastVisibleList", "getLastVisibleList", "mListFlinging", "", "getMListFlinging", "()Z", "setMListFlinging", "(Z)V", "calExpose", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "onScrollStateChanged", "newState", "onScrolled", "dx", "dy", "plugin-appbrand-integration_release"})
   public static final class l
-    extends RecyclerView.m
+    extends RecyclerView.l
   {
-    private boolean mPp;
-    private final ArrayList<Integer> mSR;
-    private final ArrayList<Integer> mSS;
+    private boolean ocr;
+    private final ArrayList<Integer> ofU;
+    private final ArrayList<Integer> ofV;
     
     l()
     {
       AppMethodBeat.i(51372);
-      this.mSR = new ArrayList();
-      this.mSS = new ArrayList();
+      this.ofU = new ArrayList();
+      this.ofV = new ArrayList();
       AppMethodBeat.o(51372);
     }
     
-    public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+    public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+    {
+      AppMethodBeat.i(51371);
+      b localb = new b();
+      localb.bm(paramRecyclerView);
+      localb.pH(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+      p.h(paramRecyclerView, "recyclerView");
+      super.onScrollStateChanged(paramRecyclerView, paramInt);
+      if (paramInt == 2) {}
+      for (boolean bool = true;; bool = false)
+      {
+        this.ocr = bool;
+        if (this.ocr) {
+          AppBrandRecommendUILogic.f(this.ofL).iU(this.ocr);
+        }
+        paramRecyclerView = paramRecyclerView.getLayoutManager();
+        if ((paramRecyclerView instanceof LinearLayoutManager))
+        {
+          ((LinearLayoutManager)paramRecyclerView).ks();
+          int i = ((LinearLayoutManager)paramRecyclerView).ku();
+          paramInt = i;
+          if (i >= 3) {
+            paramInt = i - 1;
+          }
+          AppBrandRecommendUILogic.c(this.ofL).eeE = paramInt;
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
+        AppMethodBeat.o(51371);
+        return;
+      }
+    }
+    
+    public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(51370);
       b localb = new b();
-      localb.bd(paramRecyclerView);
-      localb.mu(paramInt1);
-      localb.mu(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahF());
+      localb.bm(paramRecyclerView);
+      localb.pH(paramInt1);
+      localb.pH(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
       p.h(paramRecyclerView, "recyclerView");
-      super.a(paramRecyclerView, paramInt1, paramInt2);
+      super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
       if (paramRecyclerView != null)
       {
         paramRecyclerView = paramRecyclerView.getLayoutManager();
         if ((paramRecyclerView instanceof LinearLayoutManager))
         {
-          paramInt1 = ((LinearLayoutManager)paramRecyclerView).km();
-          paramInt2 = ((LinearLayoutManager)paramRecyclerView).ko();
+          paramInt1 = ((LinearLayoutManager)paramRecyclerView).ks();
+          paramInt2 = ((LinearLayoutManager)paramRecyclerView).ku();
           if ((paramInt1 != 0) || (paramInt2 != 1)) {
             break label146;
           }
-          j.b(this.mSI.context, AppBrandRecommendUILogic.d(this.mSI).bBp());
+          j.b(this.ofL.context, AppBrandRecommendUILogic.d(this.ofL).bYp());
         }
       }
       for (;;)
@@ -387,11 +423,11 @@ public abstract class AppBrandRecommendUILogic
         paramRecyclerView = null;
         break;
         label146:
-        this.mSS.clear();
+        this.ofV.clear();
         if (paramInt1 <= paramInt2)
         {
           if (paramInt1 == 0) {
-            j.b(this.mSI.context, AppBrandRecommendUILogic.d(this.mSI).bBp());
+            j.b(this.ofL.context, AppBrandRecommendUILogic.d(this.ofL).bYp());
           }
           for (;;)
           {
@@ -400,77 +436,44 @@ public abstract class AppBrandRecommendUILogic
             }
             paramInt1 += 1;
             break;
-            paramRecyclerView = this.mSI.bBZ().ci(paramInt1);
+            paramRecyclerView = this.ofL.bZc().ch(paramInt1);
             if ((paramRecyclerView != null) && ((paramRecyclerView instanceof a.c)))
             {
-              this.mSS.add(Integer.valueOf(paramInt1));
-              if (!this.mSR.contains(Integer.valueOf(paramInt1)))
+              this.ofV.add(Integer.valueOf(paramInt1));
+              if (!this.ofU.contains(Integer.valueOf(paramInt1)))
               {
-                int i = this.mSI.bBZ().S(paramRecyclerView);
-                ae.d(AppBrandRecommendUILogic.access$getTAG$cp(), "reportExposeData index:%d, holderPosition:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i) });
-                if (i < this.mSI.mSr.getItemCount())
+                int i = this.ofL.bZc().U(paramRecyclerView);
+                Log.d(AppBrandRecommendUILogic.access$getTAG$cp(), "reportExposeData index:%d, holderPosition:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(i) });
+                if (i < this.ofL.ofu.getItemCount())
                 {
-                  paramRecyclerView = this.mSI.mSr.bBP().get(i);
+                  paramRecyclerView = this.ofL.ofu.bYP().get(i);
                   p.g(paramRecyclerView, "wxaList[position]");
-                  paramRecyclerView = (csl)paramRecyclerView;
-                  AppBrandRecommendUILogic.f(this.mSI).d(i, paramRecyclerView);
-                  this.mSI.mSB.put(paramRecyclerView.mwf, Long.valueOf(System.currentTimeMillis()));
-                  this.mSI.mSC.put(Integer.valueOf(paramInt1), paramRecyclerView.mwf);
-                  this.mSI.mSz.add(Integer.valueOf(paramInt1));
+                  paramRecyclerView = (dko)paramRecyclerView;
+                  AppBrandRecommendUILogic.f(this.ofL).d(i, paramRecyclerView);
+                  this.ofL.ofE.put(paramRecyclerView.nHd, Long.valueOf(System.currentTimeMillis()));
+                  this.ofL.ofF.put(Integer.valueOf(paramInt1), paramRecyclerView.nHd);
+                  this.ofL.ofC.add(Integer.valueOf(paramInt1));
                 }
               }
             }
           }
         }
         label396:
-        this.mSI.mSA.clear();
-        this.mSR.removeAll((Collection)this.mSS);
-        this.mSI.mSA.addAll((Collection)this.mSR);
-        this.mSR.clear();
-        this.mSR.addAll((Collection)this.mSS);
-        this.mSI.mSz.removeAll((Collection)this.mSI.mSA);
-        AppBrandRecommendUILogic.a(this.mSI, this.mSI.mSA);
-      }
-    }
-    
-    public final void b(RecyclerView paramRecyclerView, int paramInt)
-    {
-      AppMethodBeat.i(51371);
-      b localb = new b();
-      localb.bd(paramRecyclerView);
-      localb.mu(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
-      p.h(paramRecyclerView, "recyclerView");
-      super.b(paramRecyclerView, paramInt);
-      if (paramInt == 2) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.mPp = bool;
-        if (this.mPp) {
-          AppBrandRecommendUILogic.f(this.mSI).hP(this.mPp);
-        }
-        paramRecyclerView = paramRecyclerView.getLayoutManager();
-        if ((paramRecyclerView instanceof LinearLayoutManager))
-        {
-          ((LinearLayoutManager)paramRecyclerView).km();
-          int i = ((LinearLayoutManager)paramRecyclerView).ko();
-          paramInt = i;
-          if (i >= 3) {
-            paramInt = i - 1;
-          }
-          AppBrandRecommendUILogic.c(this.mSI).dMM = paramInt;
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$scrollListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-        AppMethodBeat.o(51371);
-        return;
+        this.ofL.ofD.clear();
+        this.ofU.removeAll((Collection)this.ofV);
+        this.ofL.ofD.addAll((Collection)this.ofU);
+        this.ofU.clear();
+        this.ofU.addAll((Collection)this.ofV);
+        this.ofL.ofC.removeAll((Collection)this.ofL.ofD);
+        AppBrandRecommendUILogic.a(this.ofL, this.ofL.ofD);
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "recommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "i", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "recommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "i", "", "invoke"})
   static final class m
-    extends d.g.b.q
-    implements d.g.a.m<csl, Integer, z>
+    extends kotlin.g.b.q
+    implements m<dko, Integer, x>
   {
     m(AppBrandRecommendUILogic paramAppBrandRecommendUILogic)
     {
@@ -478,10 +481,10 @@ public abstract class AppBrandRecommendUILogic
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "recommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "i", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "recommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "i", "", "invoke"})
   static final class n
-    extends d.g.b.q
-    implements d.g.a.m<csl, Integer, z>
+    extends kotlin.g.b.q
+    implements m<dko, Integer, x>
   {
     n(AppBrandRecommendUILogic paramAppBrandRecommendUILogic)
     {
@@ -489,10 +492,10 @@ public abstract class AppBrandRecommendUILogic
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "recommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "i", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "recommendCard", "Lcom/tencent/mm/protocal/protobuf/RecommendCard;", "i", "", "invoke"})
   static final class o
-    extends d.g.b.q
-    implements d.g.a.m<csl, Integer, z>
+    extends kotlin.g.b.q
+    implements m<dko, Integer, x>
   {
     o(AppBrandRecommendUILogic paramAppBrandRecommendUILogic)
     {
@@ -500,13 +503,13 @@ public abstract class AppBrandRecommendUILogic
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$showMenuCallback$1", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendShowMenu$IShowMenuCallback;", "onMenuCallback", "", "strategy", "", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$showMenuCallback$1", "Lcom/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendShowMenu$IShowMenuCallback;", "onMenuCallback", "", "strategy", "", "plugin-appbrand-integration_release"})
   public static final class p {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class q
-    extends d.g.b.q
-    implements d.g.a.a<z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<x>
   {
     q(AppBrandRecommendUILogic paramAppBrandRecommendUILogic)
     {
@@ -514,23 +517,23 @@ public abstract class AppBrandRecommendUILogic
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
   static final class r
-    implements k.a
+    implements MStorage.IOnStorageChange
   {
     r(AppBrandRecommendUILogic paramAppBrandRecommendUILogic) {}
     
-    public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
+    public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
     {
       AppMethodBeat.i(51377);
-      AppBrandRecommendUILogic.g(this.mSI);
+      AppBrandRecommendUILogic.g(this.ofL);
       AppMethodBeat.o(51377);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.AppBrandRecommendUILogic
  * JD-Core Version:    0.7.0.1
  */

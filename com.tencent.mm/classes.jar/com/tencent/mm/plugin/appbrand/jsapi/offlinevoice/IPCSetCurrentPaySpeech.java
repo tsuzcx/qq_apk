@@ -14,11 +14,12 @@ public class IPCSetCurrentPaySpeech
     implements Parcelable
   {
     public static final Parcelable.Creator<IPCSetCurrentPaySpeechParam> CREATOR;
-    private String lec;
-    private String led;
-    private String lee;
-    private boolean lef;
-    private String leg;
+    private String mjv;
+    private String mjw;
+    private String mjx;
+    private boolean mjy;
+    private String mjz;
+    private String version;
     
     static
     {
@@ -32,26 +33,28 @@ public class IPCSetCurrentPaySpeech
     protected IPCSetCurrentPaySpeechParam(Parcel paramParcel)
     {
       AppMethodBeat.i(46654);
-      this.lec = paramParcel.readString();
-      this.led = paramParcel.readString();
-      this.lee = paramParcel.readString();
+      this.mjv = paramParcel.readString();
+      this.mjw = paramParcel.readString();
+      this.mjx = paramParcel.readString();
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.lef = bool;
-        this.leg = paramParcel.readString();
+        this.mjy = bool;
+        this.mjz = paramParcel.readString();
+        this.version = paramParcel.readString();
         AppMethodBeat.o(46654);
         return;
       }
     }
     
-    public IPCSetCurrentPaySpeechParam(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
+    public IPCSetCurrentPaySpeechParam(String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4, String paramString5)
     {
-      this.lec = paramString1;
-      this.led = paramString2;
-      this.lee = paramString3;
-      this.lef = paramBoolean;
-      this.leg = paramString4;
+      this.mjv = paramString1;
+      this.mjw = paramString2;
+      this.mjx = paramString3;
+      this.mjy = paramBoolean;
+      this.mjz = paramString4;
+      this.version = paramString5;
     }
     
     public final int describeContents()
@@ -62,14 +65,15 @@ public class IPCSetCurrentPaySpeech
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(46653);
-      paramParcel.writeString(this.lec);
-      paramParcel.writeString(this.led);
-      paramParcel.writeString(this.lee);
-      if (this.lef) {}
+      paramParcel.writeString(this.mjv);
+      paramParcel.writeString(this.mjw);
+      paramParcel.writeString(this.mjx);
+      if (this.mjy) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);
-        paramParcel.writeString(this.leg);
+        paramParcel.writeString(this.mjz);
+        paramParcel.writeString(this.version);
         AppMethodBeat.o(46653);
         return;
       }

@@ -14,7 +14,7 @@ public class e
   final char[] b;
   boolean c;
   j[] d;
-  l[] e;
+  e.l[] e;
   byte[] f;
   private final c g;
   private final a h;
@@ -203,7 +203,7 @@ public class e
       {
         k = 24;
         m /= k;
-        this.e = new l[m];
+        this.e = new e.l[m];
         arrayOfChar = new char[1];
         k = 0;
         if (k >= m) {
@@ -533,18 +533,10 @@ public class e
     
     public abstract long b();
   }
-  
-  static abstract class l
-  {
-    int c;
-    char d;
-    char e;
-    short f;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.smtt.utils.e
  * JD-Core Version:    0.7.0.1
  */

@@ -16,33 +16,33 @@ import android.util.DisplayMetrics;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.view.PhotoEditText;
 
 public final class f
   extends c
 {
-  private static TextPaint ayp;
-  private static final float gBQ;
-  private static final int gBR;
-  private static final int gBS;
-  public SpannableString gBT;
+  private static TextPaint ayn;
+  private static final float hoF;
+  private static final int hoG;
+  private static final int hoH;
+  public SpannableString hoI;
   public int mBgColor = -65536;
   public int mColor = -1;
   
   static
   {
     AppMethodBeat.i(9275);
-    gBQ = ak.getResources().getDimension(2131166169);
-    gBR = (int)ak.getResources().getDimension(2131166481);
-    gBS = (int)ak.getResources().getDimension(2131166674);
+    hoF = MMApplicationContext.getResources().getDimension(2131166210);
+    hoG = (int)MMApplicationContext.getResources().getDimension(2131166574);
+    hoH = (int)MMApplicationContext.getResources().getDimension(2131166793);
     TextPaint localTextPaint = new TextPaint(1);
-    ayp = localTextPaint;
+    ayn = localTextPaint;
     localTextPaint.setStrokeCap(Paint.Cap.ROUND);
-    ayp.setStyle(Paint.Style.FILL);
-    ayp.setDither(true);
-    ayp.setTextSize(gBQ);
+    ayn.setStyle(Paint.Style.FILL);
+    ayn.setDither(true);
+    ayn.setTextSize(hoF);
     AppMethodBeat.o(9275);
   }
   
@@ -50,28 +50,28 @@ public final class f
   {
     super(paramContext, paramMatrix, paramString, paramRect);
     this.mColor = paramInt1;
-    this.gBT = paramSpannableString;
+    this.hoI = paramSpannableString;
     this.mBgColor = paramInt2;
   }
   
-  protected final Bitmap aih()
+  protected final Bitmap ayx()
   {
     AppMethodBeat.i(9273);
-    ayp.setColor(this.mColor);
-    if (this.gBT == null)
+    ayn.setColor(this.mColor);
+    if (this.hoI == null)
     {
       AppMethodBeat.o(9273);
       return null;
     }
     PhotoEditText localPhotoEditText = new PhotoEditText(this.mContext);
-    int i = a.ax(this.mContext, 2131166167);
+    int i = a.aG(this.mContext, 2131166208);
     localPhotoEditText.setPadding(i, 0, i, 0);
     localPhotoEditText.setTextBackground(this.mBgColor);
     localPhotoEditText.setTextColor(this.mColor);
-    localPhotoEditText.setTextSize(Math.round(gBQ / this.mContext.getResources().getDisplayMetrics().density));
-    localPhotoEditText.setText(k.b(this.mContext, this.gBT, gBQ / 1.3F));
+    localPhotoEditText.setTextSize(Math.round(hoF / this.mContext.getResources().getDisplayMetrics().density));
+    localPhotoEditText.setText(l.b(this.mContext, this.hoI, hoF / 1.3F));
     localPhotoEditText.setSingleLine(false);
-    localPhotoEditText.setMaxWidth((int)(this.mContext.getResources().getDisplayMetrics().widthPixels - this.mContext.getResources().getDimension(2131166167) * 2.0F));
+    localPhotoEditText.setMaxWidth((int)(this.mContext.getResources().getDisplayMetrics().widthPixels - this.mContext.getResources().getDimension(2131166208) * 2.0F));
     if ((this.mBgColor == 0) && (this.mColor != -16777216)) {
       localPhotoEditText.setShadowLayer(a.fromDPToPix(localPhotoEditText.getContext(), 3), 0.0F, a.fromDPToPix(localPhotoEditText.getContext(), 1), -2147483648);
     }
@@ -96,14 +96,14 @@ public final class f
     AppMethodBeat.i(9274);
     super.setSelected(paramBoolean);
     if (!paramBoolean) {
-      this.gBA = false;
+      this.hop = false;
     }
     AppMethodBeat.o(9274);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.z.f
  * JD-Core Version:    0.7.0.1
  */

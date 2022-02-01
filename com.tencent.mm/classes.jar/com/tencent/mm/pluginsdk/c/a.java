@@ -1,43 +1,44 @@
 package com.tencent.mm.pluginsdk.c;
 
-import com.tencent.mm.g.a.lo;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.me;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.event.IListener;
 import java.util.ArrayList;
 
 public abstract class a
-  extends c<lo>
+  extends IListener<me>
 {
-  protected ArrayList<String> Fcn = new ArrayList(3);
+  protected ArrayList<String> JTm = new ArrayList(3);
   
   public a()
   {
-    this.__eventId = lo.class.getName().hashCode();
+    this.__eventId = me.class.getName().hashCode();
   }
   
   public static void a(String paramString, a parama)
   {
-    if (!parama.Fcn.contains(paramString)) {
-      parama.Fcn.add(paramString);
+    if (!parama.JTm.contains(paramString)) {
+      parama.JTm.add(paramString);
     }
-    com.tencent.mm.sdk.b.a.IvT.c(parama);
-    e.aML(paramString);
+    EventCenter.instance.addListener(parama);
+    e.bdh(paramString);
   }
   
   public static void b(String paramString, a parama)
   {
-    e.aMM(paramString);
-    com.tencent.mm.sdk.b.a.IvT.d(parama);
-    if (parama.Fcn.contains(paramString)) {
-      parama.Fcn.remove(paramString);
+    e.bdi(paramString);
+    EventCenter.instance.removeListener(parama);
+    if (parama.JTm.contains(paramString)) {
+      parama.JTm.remove(paramString);
     }
   }
   
-  public abstract void i(b paramb);
+  public abstract void g(IEvent paramIEvent);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/ha" android:layout_width="255.0dip" android:layout_height="wrap_content" android:minHeight="220.0dip"
+<ScrollView android:id="@id/all" android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/be6" android:layout_width="220.0dip" android:layout_height="106.599976dip" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/aoc" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dnu" android:background="@drawable/c2n" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="@dimen/ka" android:textColor="@color/ad" android:gravity="center" android:id="@id/ac4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" />
+                <TextView android:textSize="@dimen/s" android:textColor="@color/ae" android:gravity="center" android:id="@id/ipm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/r" android:layout_marginBottom="@dimen/hv" />
+                <LinearLayout android:gravity="center" android:id="@id/s5" android:background="@drawable/lq" android:visibility="gone" android:layout_width="62.0dip" android:layout_height="62.0dip">
+                    <ImageView android:id="@id/s4" android:layout_width="@dimen/v2" android:layout_height="@dimen/v2" android:layout_marginTop="@dimen/ib" android:layout_marginBottom="@dimen/ib" android:src="@drawable/ci4" android:scaleType="fitCenter" android:layout_centerHorizontal="true" />
+                </LinearLayout>
+            </LinearLayout>
+            <View android:id="@id/bkd" android:background="@drawable/rc" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/ib" android:layout_marginRight="@dimen/ib" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/dnu" android:layerType="software" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/b56" android:background="@drawable/c2l" android:paddingTop="42.0dip" android:paddingBottom="42.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/ad" android:gravity="center" android:id="@id/aog" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/alf" android:layout="@layout/me" android:inflatedId="@id/ale" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/ala" android:layout="@layout/m_" android:inflatedId="@id/al_" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <ViewStub android:id="@id/ali" android:layout="@layout/mf" android:inflatedId="@id/alh" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/ad" android:gravity="center" android:id="@id/ao8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" />
+            <ViewStub android:id="@id/aoh" android:layout="@layout/oa" android:inflatedId="@id/aoe" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <RelativeLayout android:gravity="top" android:layout_gravity="top" android:id="@id/g2i" android:focusable="false" android:focusableInTouchMode="true" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" android:layout_weight="1.0">
+            <CheckBox android:textSize="@dimen/ka" android:textColor="@color/ag2" android:id="@id/g2h" android:background="@null" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/g" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:button="@drawable/l2" android:drawablePadding="5.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</ScrollView>

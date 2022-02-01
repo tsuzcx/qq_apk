@@ -8,23 +8,23 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/widget/cropview/DragExitCropLayout;", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "beginDragExitScale", "", "bgView", "Landroid/view/View;", "getBgView", "()Landroid/view/View;", "setBgView", "(Landroid/view/View;)V", "isBeginDragExit", "", "isEnableDragExit", "()Z", "setEnableDragExit", "(Z)V", "onScroll", "e1", "Landroid/view/MotionEvent;", "e2", "distanceX", "distanceY", "onTouchCancel", "", "libmmui_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/widget/cropview/DragExitCropLayout;", "Lcom/tencent/mm/ui/widget/cropview/CropLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "beginDragExitScale", "", "bgView", "Landroid/view/View;", "getBgView", "()Landroid/view/View;", "setBgView", "(Landroid/view/View;)V", "isBeginDragExit", "", "isEnableDragExit", "()Z", "setEnableDragExit", "(Z)V", "onScroll", "e1", "Landroid/view/MotionEvent;", "e2", "distanceX", "distanceY", "onTouchCancel", "", "libmmui_release"})
 public class DragExitCropLayout
   extends CropLayout
 {
-  private boolean Lse;
-  private boolean Lsf;
-  private float Lsg;
-  private View cpn;
+  private boolean QMV;
+  private boolean QMW;
+  private float QMX;
+  private View cBH;
   
   public DragExitCropLayout(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(164450);
-    this.Lsg = 1.0F;
+    this.QMX = 1.0F;
     AppMethodBeat.o(164450);
   }
   
@@ -32,7 +32,7 @@ public class DragExitCropLayout
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164451);
-    this.Lsg = 1.0F;
+    this.QMX = 1.0F;
     AppMethodBeat.o(164451);
   }
   
@@ -40,18 +40,18 @@ public class DragExitCropLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164452);
-    this.Lsg = 1.0F;
+    this.QMX = 1.0F;
     AppMethodBeat.o(164452);
   }
   
-  public final void ai(MotionEvent paramMotionEvent)
+  public final void ad(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(164449);
     p.h(paramMotionEvent, "e1");
-    super.ai(paramMotionEvent);
-    if (this.Lsf)
+    super.ad(paramMotionEvent);
+    if (this.QMW)
     {
-      paramMotionEvent = this.cpn;
+      paramMotionEvent = this.cBH;
       if (paramMotionEvent != null)
       {
         paramMotionEvent = paramMotionEvent.animate();
@@ -68,13 +68,13 @@ public class DragExitCropLayout
         }
       }
     }
-    this.Lsf = false;
+    this.QMW = false;
     AppMethodBeat.o(164449);
   }
   
   public final View getBgView()
   {
-    return this.cpn;
+    return this.cBH;
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -82,15 +82,15 @@ public class DragExitCropLayout
     AppMethodBeat.i(164448);
     p.h(paramMotionEvent1, "e1");
     p.h(paramMotionEvent2, "e2");
-    if ((this.Lse) && (!this.Lrt) && (!fQm()) && (paramMotionEvent1.getPointerCount() == 1) && (paramMotionEvent2.getPointerCount() == 1) && ((this.Lsf) || (paramFloat2 < 0.0F)))
+    if ((this.QMV) && (!this.QMl) && (!hbd()) && (paramMotionEvent1.getPointerCount() == 1) && (paramMotionEvent2.getPointerCount() == 1) && ((this.QMW) || (paramFloat2 < 0.0F)))
     {
-      if (!this.Lsf) {
-        this.Lsg = getContentViewScale()[0];
+      if (!this.QMW) {
+        this.QMX = getContentViewScale()[0];
       }
-      this.Lsf = true;
+      this.QMW = true;
       float f = (getContentRect().exactCenterY() - getVisibilityRect().centerY()) / (getVisibilityRect().height() / 2.0F);
-      q((1.0F - 0.6F * f) * this.Lsg / getContentViewScale()[0], getContentRect().exactCenterX(), getContentRect().exactCenterY());
-      View localView = this.cpn;
+      t((1.0F - 0.6F * f) * this.QMX / getContentViewScale()[0], getContentRect().exactCenterX(), getContentRect().exactCenterY());
+      View localView = this.cBH;
       if (localView != null) {
         localView.setAlpha(1.0F - f);
       }
@@ -102,17 +102,17 @@ public class DragExitCropLayout
   
   public final void setBgView(View paramView)
   {
-    this.cpn = paramView;
+    this.cBH = paramView;
   }
   
   public final void setEnableDragExit(boolean paramBoolean)
   {
-    this.Lse = paramBoolean;
+    this.QMV = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.ui.widget.cropview.DragExitCropLayout
  * JD-Core Version:    0.7.0.1
  */

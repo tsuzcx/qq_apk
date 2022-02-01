@@ -13,26 +13,26 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class ExdeviceRankListHeaderView
   extends RelativeLayout
 {
-  private View.OnClickListener gON;
+  private View.OnClickListener hEZ;
   private Context mContext;
   private Runnable mHideRunnable;
-  private TextView qtD;
-  private Animation qtE;
-  private Animation qtF;
-  private boolean qtG;
+  private TextView rKL;
+  private Animation rKM;
+  private Animation rKN;
+  private boolean rKO;
   
   public ExdeviceRankListHeaderView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(24281);
-    this.qtG = true;
-    aN(paramContext);
+    this.rKO = true;
+    bh(paramContext);
     AppMethodBeat.o(24281);
   }
   
@@ -45,26 +45,26 @@ public class ExdeviceRankListHeaderView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(24280);
-    this.qtG = true;
-    aN(paramContext);
+    this.rKO = true;
+    bh(paramContext);
     AppMethodBeat.o(24280);
   }
   
-  private void aN(Context paramContext)
+  private void bh(Context paramContext)
   {
     AppMethodBeat.i(24282);
     this.mContext = paramContext;
-    this.qtD = ((TextView)LayoutInflater.from(this.mContext).inflate(2131493886, this, true).findViewById(2131297946));
-    this.qtD.setVisibility(4);
-    bDk();
+    this.rKL = ((TextView)LayoutInflater.from(this.mContext).inflate(2131494043, this, true).findViewById(2131298276));
+    this.rKL.setVisibility(4);
+    cMc();
     setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(24274);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankListHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/exdevice/ui/ExdeviceRankListHeaderView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (ExdeviceRankListHeaderView.a(ExdeviceRankListHeaderView.this)) {
           ExdeviceRankListHeaderView.b(ExdeviceRankListHeaderView.this);
         }
@@ -78,11 +78,11 @@ public class ExdeviceRankListHeaderView
     AppMethodBeat.o(24282);
   }
   
-  private void bDk()
+  private void cMc()
   {
     AppMethodBeat.i(24283);
-    this.qtE = AnimationUtils.loadAnimation(this.mContext, 2130771968);
-    this.qtF = AnimationUtils.loadAnimation(this.mContext, 2130771969);
+    this.rKM = AnimationUtils.loadAnimation(this.mContext, 2130771968);
+    this.rKN = AnimationUtils.loadAnimation(this.mContext, 2130771969);
     this.mHideRunnable = new Runnable()
     {
       public final void run()
@@ -92,13 +92,13 @@ public class ExdeviceRankListHeaderView
         AppMethodBeat.o(24275);
       }
     };
-    this.qtE.setAnimationListener(new Animation.AnimationListener()
+    this.rKM.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(24277);
         ExdeviceRankListHeaderView.d(ExdeviceRankListHeaderView.this).reset();
-        ar.o(ExdeviceRankListHeaderView.f(ExdeviceRankListHeaderView.this), 4000L);
+        MMHandlerThread.postToMainThreadDelayed(ExdeviceRankListHeaderView.f(ExdeviceRankListHeaderView.this), 4000L);
         AppMethodBeat.o(24277);
       }
       
@@ -111,7 +111,7 @@ public class ExdeviceRankListHeaderView
         AppMethodBeat.o(24276);
       }
     });
-    this.qtF.setAnimationListener(new Animation.AnimationListener()
+    this.rKN.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
@@ -129,41 +129,41 @@ public class ExdeviceRankListHeaderView
         AppMethodBeat.o(24278);
       }
     });
-    this.qtE.setFillAfter(true);
-    this.qtE.setFillEnabled(true);
-    this.qtF.setFillAfter(true);
-    this.qtF.setFillAfter(true);
+    this.rKM.setFillAfter(true);
+    this.rKM.setFillEnabled(true);
+    this.rKN.setFillAfter(true);
+    this.rKN.setFillAfter(true);
     AppMethodBeat.o(24283);
   }
   
   public String getMotto()
   {
     AppMethodBeat.i(24285);
-    String str = bu.bI(this.qtD.getText().toString(), "");
+    String str = Util.nullAs(this.rKL.getText().toString(), "");
     AppMethodBeat.o(24285);
     return str;
   }
   
   public void setIsShowTip(boolean paramBoolean)
   {
-    this.qtG = paramBoolean;
+    this.rKO = paramBoolean;
   }
   
   public void setMotto(String paramString)
   {
     AppMethodBeat.i(24284);
-    this.qtD.setText(paramString);
+    this.rKL.setText(paramString);
     AppMethodBeat.o(24284);
   }
   
   public void setOnViewClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.gON = paramOnClickListener;
+    this.hEZ = paramOnClickListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceRankListHeaderView
  * JD-Core Version:    0.7.0.1
  */

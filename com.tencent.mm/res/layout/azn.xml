@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckedTextView android:textAppearance="@style/nn" android:textColor="@color/y4" android:ellipsize="marquee" android:gravity="center|left" android:background="@null" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/in" android:checkMark="@drawable/a9_" android:maxHeight="48.0dip" android:minHeight="48.0dip" android:text="@string/gov"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:id="@id/epm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
+        <ImageView android:id="@id/eb2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ape" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="[loading]" />
+    </LinearLayout>
+</LinearLayout>

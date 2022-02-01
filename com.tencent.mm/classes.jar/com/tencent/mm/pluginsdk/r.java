@@ -7,74 +7,56 @@ import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class r
 {
-  private long Fcb;
-  protected ConcurrentLinkedDeque<a> Fcc;
-  protected HashMap<String, a> Fcd;
+  private long JTa;
+  protected ConcurrentLinkedDeque<a> JTb;
+  protected HashMap<String, a> JTc;
   
   public r()
   {
     AppMethodBeat.i(141154);
-    this.Fcb = System.currentTimeMillis();
-    this.Fcc = new ConcurrentLinkedDeque();
-    this.Fcd = new HashMap();
+    this.JTa = System.currentTimeMillis();
+    this.JTb = new ConcurrentLinkedDeque();
+    this.JTc = new HashMap();
     AppMethodBeat.o(141154);
-  }
-  
-  private void h(String paramString1, long paramLong, String paramString2)
-  {
-    AppMethodBeat.i(141156);
-    this.Fcc.add(new a(paramString1, paramLong, paramString2));
-    i(paramString1, paramLong, paramString2);
-    AppMethodBeat.o(141156);
   }
   
   private void i(String paramString1, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(193682);
+    AppMethodBeat.i(141156);
+    this.JTb.add(new a(paramString1, paramLong, paramString2));
+    j(paramString1, paramLong, paramString2);
+    AppMethodBeat.o(141156);
+  }
+  
+  private void j(String paramString1, long paramLong, String paramString2)
+  {
+    AppMethodBeat.i(205086);
     if ((paramString1.equals("onPageStarted")) || (paramString1.equals("onPageFinished")) || (paramString1.equals("getA8KeyStart")) || (paramString1.equals("getA8KeyEnd")) || (paramString1.equals("firstScreenTimestamp")) || (paramString1.equals("firstScreenTime")))
     {
-      if (this.Fcd.get(paramString1) == null) {
-        this.Fcd.put(paramString1, new a(paramString1, paramLong, paramString2));
+      if (this.JTc.get(paramString1) == null) {
+        this.JTc.put(paramString1, new a(paramString1, paramLong, paramString2));
       }
-      ((a)this.Fcd.get(paramString1)).time = paramLong;
+      ((a)this.JTc.get(paramString1)).time = paramLong;
     }
-    AppMethodBeat.o(193682);
+    AppMethodBeat.o(205086);
   }
   
-  public final long aMK(String paramString)
-  {
-    AppMethodBeat.i(193683);
-    if ((this.Fcd == null) || (this.Fcd.isEmpty()))
-    {
-      AppMethodBeat.o(193683);
-      return 0L;
-    }
-    if (this.Fcd.get(paramString) != null)
-    {
-      long l = ((a)this.Fcd.get(paramString)).time;
-      AppMethodBeat.o(193683);
-      return l;
-    }
-    AppMethodBeat.o(193683);
-    return 0L;
-  }
-  
-  public final void bM(String paramString, long paramLong)
+  public final void bN(String paramString, long paramLong)
   {
     AppMethodBeat.i(141155);
-    h(paramString, paramLong, "");
+    i(paramString, paramLong, "");
     AppMethodBeat.o(141155);
   }
   
-  public final long bN(String paramString, long paramLong)
+  public final long bO(String paramString, long paramLong)
   {
     AppMethodBeat.i(141157);
-    if ((this.Fcc == null) || (this.Fcc.isEmpty()))
+    if ((this.JTb == null) || (this.JTb.isEmpty()))
     {
       AppMethodBeat.o(141157);
       return paramLong;
     }
-    Iterator localIterator = this.Fcc.iterator();
+    Iterator localIterator = this.JTb.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
@@ -89,9 +71,27 @@ public class r
     return paramLong;
   }
   
+  public final long bdg(String paramString)
+  {
+    AppMethodBeat.i(205087);
+    if ((this.JTc == null) || (this.JTc.isEmpty()))
+    {
+      AppMethodBeat.o(205087);
+      return 0L;
+    }
+    if (this.JTc.get(paramString) != null)
+    {
+      long l = ((a)this.JTc.get(paramString)).time;
+      AppMethodBeat.o(205087);
+      return l;
+    }
+    AppMethodBeat.o(205087);
+    return 0L;
+  }
+  
   public final long getStartTime()
   {
-    return this.Fcb;
+    return this.JTa;
   }
   
   public final class a

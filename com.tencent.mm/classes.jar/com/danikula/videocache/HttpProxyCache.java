@@ -33,7 +33,7 @@ class HttpProxyCache
   
   private boolean isUseCache(GetRequest paramGetRequest)
   {
-    AppMethodBeat.i(195106);
+    AppMethodBeat.i(223133);
     long l1 = this.source.length();
     if (l1 > 0L) {}
     for (int i = 1;; i = 0)
@@ -42,16 +42,16 @@ class HttpProxyCache
       if ((i != 0) && (paramGetRequest.partial) && ((float)paramGetRequest.rangeOffset > (float)l2 + (float)l1 * 0.2F)) {
         break;
       }
-      AppMethodBeat.o(195106);
+      AppMethodBeat.o(223133);
       return true;
     }
-    AppMethodBeat.o(195106);
+    AppMethodBeat.o(223133);
     return false;
   }
   
   private String newResponseHeaders(GetRequest paramGetRequest)
   {
-    AppMethodBeat.i(195107);
+    AppMethodBeat.i(223134);
     String str = this.source.getMime();
     int i;
     long l1;
@@ -115,7 +115,7 @@ class HttpProxyCache
     for (paramGetRequest = format("Content-Type: %s\n", new Object[] { str });; paramGetRequest = "")
     {
       paramGetRequest = paramGetRequest + "\n";
-      AppMethodBeat.o(195107);
+      AppMethodBeat.o(223134);
       return paramGetRequest;
       i = 0;
       break;
@@ -193,18 +193,18 @@ class HttpProxyCache
   
   public void processRequest(GetRequest paramGetRequest, Socket paramSocket)
   {
-    AppMethodBeat.i(195105);
+    AppMethodBeat.i(223132);
     paramSocket = new BufferedOutputStream(paramSocket.getOutputStream());
     paramSocket.write(newResponseHeaders(paramGetRequest).getBytes("UTF-8"));
     long l = paramGetRequest.rangeOffset;
     if (isUseCache(paramGetRequest))
     {
       responseWithCache(paramSocket, l);
-      AppMethodBeat.o(195105);
+      AppMethodBeat.o(223132);
       return;
     }
     responseWithoutCache(paramSocket, l);
-    AppMethodBeat.o(195105);
+    AppMethodBeat.o(223132);
   }
   
   public void registerCacheListener(CacheListener paramCacheListener)
@@ -214,7 +214,7 @@ class HttpProxyCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.danikula.videocache.HttpProxyCache
  * JD-Core Version:    0.7.0.1
  */

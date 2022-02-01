@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/cgb" android:background="@color/xo" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/n3" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center" android:id="@id/cg8" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/ed" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <android.support.constraint.ConstraintLayout android:id="@id/eql" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/eqk" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/eq9" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_outlined_location" app:iconColor="@color/am" />
+                <TextView android:id="@id/eqn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="" android:includeFontPadding="false" style="@style/a1h" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="6.0dip" android:layout_height="@dimen/c5" android:layout_marginLeft="2.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/am" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/eo" android:textColor="@color/BW_100_Alpha_0_5" android:ellipsize="end" android:id="@id/eqo" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cc" android:layout_marginTop="@dimen/bt" android:text="@string/eku" android:maxLines="1" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/eqk" />
+        </android.support.constraint.ConstraintLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/eqh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/eqz" android:background="@drawable/ae0" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" />
+            <TextView android:gravity="center_vertical" android:id="@id/er0" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/bt" android:text="@string/ekl" style="@style/a1h" />
+        </LinearLayout>
     </FrameLayout>
 </LinearLayout>

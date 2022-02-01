@@ -1,150 +1,199 @@
 package com.tencent.mm.plugin.sns.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abo;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import com.tencent.mm.g.c.gh;
+import com.tencent.mm.plugin.sns.b.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class i
+  extends MAutoStorage<h>
+  implements e
 {
-  public static void AA(long paramLong)
+  public static final String[] SQL_CREATE;
+  public com.tencent.mm.storagebase.h iFy;
+  
+  static
   {
-    boolean bool2 = true;
-    int j = 0;
-    AppMethodBeat.i(97448);
-    Object localObject = ((String)g.ajR().ajA().get(am.a.IYv, "")).split("&");
-    boolean bool1;
-    if ((localObject.length > 0) && (bu.getBoolean(localObject[0], false)))
-    {
-      bool1 = true;
-      if ((localObject.length < 2) || (!bu.getBoolean(localObject[1], false))) {
-        break label133;
-      }
-    }
-    ArrayList localArrayList;
-    int i;
-    for (;;)
-    {
-      localArrayList = new ArrayList();
-      i = 2;
-      while (i < localObject.length)
-      {
-        long l = bu.getLong(localObject[i], 0L);
-        if (l != 0L) {
-          localArrayList.add(Long.valueOf(l));
-        }
-        i += 1;
-      }
-      bool1 = false;
-      break;
-      label133:
-      bool2 = false;
-    }
-    localArrayList.remove(Long.valueOf(paramLong));
-    Collections.reverse(localArrayList);
-    if (localArrayList.size() > 0) {}
-    for (localObject = (Long)localArrayList.get(0);; localObject = null)
-    {
-      h((Long)localObject);
-      localObject = new StringBuilder().append(bool1).append("&").append(bool2);
-      i = j;
-      while (i < localArrayList.size())
-      {
-        ((StringBuilder)localObject).append("&").append(localArrayList.get(i));
-        i += 1;
-      }
-    }
-    g.ajR().ajA().set(am.a.IYv, ((StringBuilder)localObject).toString());
-    AppMethodBeat.o(97448);
+    AppMethodBeat.i(97465);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(h.info, "SnsComment") };
+    AppMethodBeat.o(97465);
   }
   
-  public static boolean Az(long paramLong)
+  public i(com.tencent.mm.storagebase.h paramh)
   {
-    int i = 2;
-    int j = 0;
-    AppMethodBeat.i(97447);
-    Object localObject = ah.dXE().AG(paramLong);
-    if (localObject == null)
+    super(paramh, h.info, "SnsComment", gh.INDEX_CREATE);
+    this.iFy = paramh;
+  }
+  
+  public static String feF()
+  {
+    return "select *, rowid from SnsComment";
+  }
+  
+  public final boolean JI(long paramLong)
+  {
+    AppMethodBeat.i(97460);
+    String str = "delete from SnsComment where snsID = ".concat(String.valueOf(paramLong));
+    boolean bool = this.iFy.execSQL("SnsComment", str);
+    AppMethodBeat.o(97460);
+    return bool;
+  }
+  
+  public final boolean L(long paramLong, boolean paramBoolean)
+  {
+    AppMethodBeat.i(97463);
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      AppMethodBeat.o(97447);
-      return false;
+      String str = " update SnsComment set isSilence = " + i + " where isSilence != " + i + " and  snsID = " + paramLong;
+      Log.i("MicroMsg.SnsCommentStorage", "updateIsSilence ".concat(String.valueOf(str)));
+      paramBoolean = this.iFy.execSQL("SnsComment", str);
+      AppMethodBeat.o(97463);
+      return paramBoolean;
     }
-    String[] arrayOfString = ((String)g.ajR().ajA().get(am.a.IYv, "")).split("&");
-    boolean bool1;
-    if ((arrayOfString.length > 0) && (bu.getBoolean(arrayOfString[0], false)))
+  }
+  
+  public final Cursor Zq(int paramInt)
+  {
+    AppMethodBeat.i(97455);
+    Object localObject = "select *, rowid from SnsComment where isSend = 0 order by createTime desc LIMIT " + paramInt;
+    Log.v("MicroMsg.SnsCommentStorage", "getCursor sql:".concat(String.valueOf(localObject)));
+    localObject = this.iFy.rawQuery((String)localObject, null);
+    AppMethodBeat.o(97455);
+    return localObject;
+  }
+  
+  public final boolean a(long paramLong, String paramString1, int paramInt, String paramString2)
+  {
+    AppMethodBeat.i(97457);
+    if (Util.isNullOrNil(paramString2)) {}
+    for (paramString1 = "select count(*) from SnsComment where snsID = " + paramLong + " and createTime = " + paramInt + " and talker = '" + paramString1 + "'";; paramString1 = "select count(*) from SnsComment where snsID = " + paramLong + " and clientId = '" + paramString2 + "'")
     {
-      bool1 = true;
-      if ((arrayOfString.length < 2) || (!bu.getBoolean(arrayOfString[1], false))) {
-        break label154;
+      paramString1 = rawQuery(paramString1, new String[0]);
+      if (paramString1 == null) {
+        break label144;
       }
-    }
-    ArrayList localArrayList;
-    label154:
-    for (boolean bool2 = true;; bool2 = false)
-    {
-      localArrayList = new ArrayList();
-      while (i < arrayOfString.length)
-      {
-        long l = bu.getLong(arrayOfString[i], 0L);
-        if (l != 0L) {
-          localArrayList.add(Long.valueOf(l));
-        }
-        i += 1;
-      }
-      bool1 = false;
-      break;
-    }
-    if (((p)localObject).ebP().HUG.Gtw == 15) {
-      if (!bool1) {
-        bool1 = true;
-      }
-    }
-    for (;;)
-    {
-      if (!localArrayList.contains(Long.valueOf(paramLong))) {
-        localArrayList.add(Long.valueOf(paramLong));
-      }
-      localObject = new StringBuilder().append(bool1).append("&").append(bool2);
-      i = j;
-      while (i < localArrayList.size())
-      {
-        ((StringBuilder)localObject).append("&").append(localArrayList.get(i));
-        i += 1;
-      }
-      AppMethodBeat.o(97447);
-      return false;
-      if (((p)localObject).ebP().HUG.Gtw != 1) {
-        break label313;
-      }
-      if (bool2) {
+      paramString1.moveToFirst();
+      paramInt = paramString1.getInt(0);
+      paramString1.close();
+      if (paramInt <= 0) {
         break;
       }
-      bool2 = true;
+      AppMethodBeat.o(97457);
+      return true;
     }
-    AppMethodBeat.o(97447);
+    AppMethodBeat.o(97457);
     return false;
-    label313:
-    AppMethodBeat.o(97447);
+    label144:
+    AppMethodBeat.o(97457);
     return false;
-    g.ajR().ajA().set(am.a.IYv, ((StringBuilder)localObject).toString());
-    h(Long.valueOf(paramLong));
-    AppMethodBeat.o(97447);
-    return true;
   }
   
-  public static void h(Long paramLong)
+  public final int ctM()
   {
-    AppMethodBeat.i(97449);
-    g.ajR().ajA().set(am.a.IYw, paramLong);
-    AppMethodBeat.o(97449);
+    int i = 0;
+    AppMethodBeat.i(97454);
+    Cursor localCursor = this.iFy.rawQuery(" select count(*) from SnsComment where isRead = ? and isSilence != ? ", new String[] { "0", "1" }, 2);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(97454);
+      return 0;
+    }
+    if (localCursor.moveToFirst()) {
+      i = localCursor.getInt(0);
+    }
+    localCursor.close();
+    AppMethodBeat.o(97454);
+    return i;
+  }
+  
+  public final boolean ctN()
+  {
+    AppMethodBeat.i(97462);
+    boolean bool = this.iFy.execSQL("SnsComment", " update SnsComment set isRead = 1 where isRead = 0");
+    AppMethodBeat.o(97462);
+    return bool;
+  }
+  
+  public final void eIQ()
+  {
+    AppMethodBeat.i(97464);
+    this.iFy.blB("SnsComment");
+    AppMethodBeat.o(97464);
+  }
+  
+  public final Cursor feG()
+  {
+    AppMethodBeat.i(97456);
+    Cursor localCursor = this.iFy.rawQuery("select *, rowid from SnsComment where isRead = ?  and isSilence != ?  order by createTime desc", new String[] { "0", "1" });
+    AppMethodBeat.o(97456);
+    return localCursor;
+  }
+  
+  public final int feH()
+  {
+    AppMethodBeat.i(97458);
+    Cursor localCursor = rawQuery("select count(*) from SnsComment where isSend = 0", new String[0]);
+    if (localCursor != null)
+    {
+      localCursor.moveToFirst();
+      int i = localCursor.getInt(0);
+      localCursor.close();
+      AppMethodBeat.o(97458);
+      return i;
+    }
+    AppMethodBeat.o(97458);
+    return 0;
+  }
+  
+  public final h i(long paramLong1, long paramLong2, int paramInt)
+  {
+    AppMethodBeat.i(97459);
+    Object localObject1 = "";
+    if (paramInt == 9) {
+      localObject1 = "" + "(2)";
+    }
+    Object localObject2 = localObject1;
+    if (paramInt == 10) {
+      localObject2 = (String)localObject1 + "(8,16)";
+    }
+    localObject2 = rawQuery("select *, rowid from SnsComment where snsID = " + paramLong1 + " and commentSvrID = " + paramLong2 + " and type in " + (String)localObject2, new String[0]);
+    if (localObject2 != null) {
+      if (((Cursor)localObject2).moveToFirst())
+      {
+        localObject1 = new h();
+        ((h)localObject1).convertFrom((Cursor)localObject2);
+        ((Cursor)localObject2).close();
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(97459);
+      return localObject1;
+      localObject1 = null;
+      break;
+      localObject1 = null;
+    }
+  }
+  
+  public final boolean j(long paramLong1, long paramLong2, int paramInt)
+  {
+    AppMethodBeat.i(97461);
+    String str1 = "";
+    if (paramInt == 9) {
+      str1 = "" + "(2)";
+    }
+    String str2 = str1;
+    if (paramInt == 10) {
+      str2 = str1 + "(8,16)";
+    }
+    str1 = "delete from SnsComment where snsID = " + paramLong1 + " and commentSvrID = " + paramLong2 + " and type in " + str2;
+    boolean bool = this.iFy.execSQL("SnsComment", str1);
+    AppMethodBeat.o(97461);
+    return bool;
   }
 }
 

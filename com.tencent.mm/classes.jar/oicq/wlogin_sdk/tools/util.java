@@ -25,44 +25,44 @@ import oicq.wlogin_sdk.request.i;
 
 public class util
 {
-  public static int Opa = 65535;
-  public static int Opb = 128;
-  public static int Opc = 0;
-  public static int Opd = 1;
-  public static int Ope = 2;
-  public static int Opf = 3;
-  public static int Opg = 4;
-  public static int Oph = 5;
-  public static int Opi = 6;
-  public static int Opj = 7;
-  public static int Opk = 8;
-  public static int Opl = 9;
-  public static int Opm = 10;
-  public static int Opn = 11;
-  public static int Opo = 12;
-  public static int Opp = 13;
-  public static int Opq = 14;
-  public static int Opr = 1;
-  public static b Ops = null;
-  public static boolean Opt = false;
-  public static int Opu = 5;
+  public static int UdZ = 65535;
+  public static int Uea = 128;
+  public static int Ueb = 0;
+  public static int Uec = 1;
+  public static int Ued = 2;
+  public static int Uee = 3;
+  public static int Uef = 4;
+  public static int Ueg = 5;
+  public static int Ueh = 6;
+  public static int Uei = 7;
+  public static int Uej = 8;
+  public static int Uek = 9;
+  public static int Uel = 10;
+  public static int Uem = 11;
+  public static int Uen = 12;
+  public static int Ueo = 13;
+  public static int Uep = 14;
+  public static b Ueq = null;
+  public static boolean Uer = false;
+  public static int Ues = 5;
+  public static int gQV = 1;
   
   public static void LOGD(String paramString)
   {
     AppMethodBeat.i(88183);
     try
     {
-      if (Opr >= 2)
+      if (gQV >= 2)
       {
-        if (Ops != null)
+        if (Ueq != null)
         {
-          Ops.G(2, paramString);
+          Ueq.J(2, paramString);
           AppMethodBeat.o(88183);
           return;
         }
-        if (Opt)
+        if (Uer)
         {
-          new StringBuilder("wlogin_sdk").append(gCH());
+          new StringBuilder("wlogin_sdk").append(hPL());
           AppMethodBeat.o(88183);
           return;
         }
@@ -203,39 +203,20 @@ public class util
     return null;
   }
   
-  public static void W(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    paramArrayOfByte[(paramInt1 + 0)] = ((byte)(paramInt2 >> 0));
-  }
-  
-  public static void X(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    paramArrayOfByte[(paramInt1 + 1)] = ((byte)(paramInt2 >> 0));
-    paramArrayOfByte[(paramInt1 + 0)] = ((byte)(paramInt2 >> 8));
-  }
-  
-  public static void Y(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    paramArrayOfByte[(paramInt1 + 3)] = ((byte)(paramInt2 >> 0));
-    paramArrayOfByte[(paramInt1 + 2)] = ((byte)(paramInt2 >> 8));
-    paramArrayOfByte[(paramInt1 + 1)] = ((byte)(paramInt2 >> 16));
-    paramArrayOfByte[(paramInt1 + 0)] = ((byte)(paramInt2 >> 24));
-  }
-  
   public static void a(Context paramContext, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88174);
-    byte[] arrayOfByte = ma(paramContext);
+    byte[] arrayOfByte = lY(paramContext);
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
       paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
-      paramContext.putString("ksid", du(paramArrayOfByte));
+      paramContext.putString("ksid", dw(paramArrayOfByte));
       paramContext.commit();
     }
     AppMethodBeat.o(88174);
   }
   
-  public static void aX(Context paramContext, int paramInt)
+  public static void aY(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(88171);
     paramContext = paramContext.getSharedPreferences("WLOGIN_SERVER_INFO", 0).edit();
@@ -244,17 +225,36 @@ public class util
     AppMethodBeat.o(88171);
   }
   
-  public static int al(byte[] paramArrayOfByte, int paramInt)
+  public static void ag(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    return paramArrayOfByte[paramInt] & 0xFF;
+    paramArrayOfByte[(paramInt1 + 0)] = ((byte)(paramInt2 >> 0));
+  }
+  
+  public static void ah(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    paramArrayOfByte[(paramInt1 + 1)] = ((byte)(paramInt2 >> 0));
+    paramArrayOfByte[(paramInt1 + 0)] = ((byte)(paramInt2 >> 8));
+  }
+  
+  public static void ai(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    paramArrayOfByte[(paramInt1 + 3)] = ((byte)(paramInt2 >> 0));
+    paramArrayOfByte[(paramInt1 + 2)] = ((byte)(paramInt2 >> 8));
+    paramArrayOfByte[(paramInt1 + 1)] = ((byte)(paramInt2 >> 16));
+    paramArrayOfByte[(paramInt1 + 0)] = ((byte)(paramInt2 >> 24));
   }
   
   public static int am(byte[] paramArrayOfByte, int paramInt)
   {
-    return (paramArrayOfByte[paramInt] << 8 & 0xFF00) + (paramArrayOfByte[(paramInt + 1)] << 0 & 0xFF);
+    return paramArrayOfByte[paramInt] & 0xFF;
   }
   
   public static int an(byte[] paramArrayOfByte, int paramInt)
+  {
+    return (paramArrayOfByte[paramInt] << 8 & 0xFF00) + (paramArrayOfByte[(paramInt + 1)] << 0 & 0xFF);
+  }
+  
+  public static int ao(byte[] paramArrayOfByte, int paramInt)
   {
     return (paramArrayOfByte[paramInt] << 24 & 0xFF000000) + (paramArrayOfByte[(paramInt + 1)] << 16 & 0xFF0000) + (paramArrayOfByte[(paramInt + 2)] << 8 & 0xFF00) + (paramArrayOfByte[(paramInt + 3)] << 0 & 0xFF);
   }
@@ -265,13 +265,13 @@ public class util
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
       paramContext = paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).edit();
-      paramContext.putString("imei", du(paramArrayOfByte));
+      paramContext.putString("imei", dw(paramArrayOfByte));
       paramContext.commit();
     }
     AppMethodBeat.o(88176);
   }
   
-  private static byte[] bfh(String paramString)
+  private static byte[] buX(String paramString)
   {
     int i = 0;
     AppMethodBeat.i(88164);
@@ -288,27 +288,27 @@ public class util
         AppMethodBeat.o(88164);
         return arrayOfByte;
       }
-      arrayOfByte[i] = ((byte)((f((byte)paramString.charAt(i * 2)) << 4) + f((byte)paramString.charAt(i * 2 + 1))));
+      arrayOfByte[i] = ((byte)((n((byte)paramString.charAt(i * 2)) << 4) + n((byte)paramString.charAt(i * 2 + 1))));
       i += 1;
     }
   }
   
-  public static void bfi(String paramString)
+  public static void buY(String paramString)
   {
     AppMethodBeat.i(88182);
     try
     {
-      if (Opr > 0)
+      if (gQV > 0)
       {
-        if (Ops != null)
+        if (Ueq != null)
         {
-          Ops.G(1, paramString);
+          Ueq.J(1, paramString);
           AppMethodBeat.o(88182);
           return;
         }
-        if (Opt)
+        if (Uer)
         {
-          new StringBuilder("wlogin_sdk").append(gCH());
+          new StringBuilder("wlogin_sdk").append(hPL());
           AppMethodBeat.o(88182);
           return;
         }
@@ -332,7 +332,15 @@ public class util
     paramArrayOfByte[(paramInt + 0)] = ((byte)(int)(paramLong >> 56));
   }
   
-  public static byte[] cL(Context paramContext, String paramString)
+  public static void d(byte[] paramArrayOfByte, int paramInt, long paramLong)
+  {
+    paramArrayOfByte[(paramInt + 3)] = ((byte)(int)(paramLong >> 0));
+    paramArrayOfByte[(paramInt + 2)] = ((byte)(int)(paramLong >> 8));
+    paramArrayOfByte[(paramInt + 1)] = ((byte)(int)(paramLong >> 16));
+    paramArrayOfByte[(paramInt + 0)] = ((byte)(int)(paramLong >> 24));
+  }
+  
+  public static byte[] df(Context paramContext, String paramString)
   {
     AppMethodBeat.i(88179);
     try
@@ -348,7 +356,7 @@ public class util
     return new byte[0];
   }
   
-  public static byte[] cM(Context paramContext, String paramString)
+  public static byte[] dg(Context paramContext, String paramString)
   {
     AppMethodBeat.i(88180);
     try
@@ -364,7 +372,7 @@ public class util
         AppMethodBeat.o(88180);
         return null;
       }
-      paramContext = c.ds(paramContext.signatures[0].toByteArray());
+      paramContext = c.du(paramContext.signatures[0].toByteArray());
       AppMethodBeat.o(88180);
       return paramContext;
     }
@@ -375,27 +383,19 @@ public class util
     return new byte[0];
   }
   
-  public static void d(byte[] paramArrayOfByte, int paramInt, long paramLong)
-  {
-    paramArrayOfByte[(paramInt + 3)] = ((byte)(int)(paramLong >> 0));
-    paramArrayOfByte[(paramInt + 2)] = ((byte)(int)(paramLong >> 8));
-    paramArrayOfByte[(paramInt + 1)] = ((byte)(int)(paramLong >> 16));
-    paramArrayOfByte[(paramInt + 0)] = ((byte)(int)(paramLong >> 24));
-  }
-  
-  public static byte[] dt(byte[] paramArrayOfByte)
+  public static byte[] dv(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88161);
     byte[] arrayOfByte1 = SecureRandom.getSeed(16);
     byte[] arrayOfByte2 = new byte[arrayOfByte1.length + paramArrayOfByte.length];
     System.arraycopy(arrayOfByte1, 0, arrayOfByte2, 0, arrayOfByte1.length);
     System.arraycopy(paramArrayOfByte, 0, arrayOfByte2, arrayOfByte1.length, paramArrayOfByte.length);
-    paramArrayOfByte = c.ds(arrayOfByte2);
+    paramArrayOfByte = c.du(arrayOfByte2);
     AppMethodBeat.o(88161);
     return paramArrayOfByte;
   }
   
-  public static String du(byte[] paramArrayOfByte)
+  public static String dw(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88163);
     if (paramArrayOfByte == null)
@@ -417,7 +417,7 @@ public class util
     }
   }
   
-  public static long dv(byte[] paramArrayOfByte)
+  public static long dx(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null) {
       return 0L;
@@ -425,21 +425,7 @@ public class util
     return paramArrayOfByte.length;
   }
   
-  private static byte f(byte paramByte)
-  {
-    if ((paramByte >= 48) && (paramByte <= 57)) {
-      return (byte)(paramByte - 48);
-    }
-    if ((paramByte >= 97) && (paramByte <= 102)) {
-      return (byte)(paramByte - 97 + 10);
-    }
-    if ((paramByte >= 65) && (paramByte <= 70)) {
-      return (byte)(paramByte - 65 + 10);
-    }
-    return 0;
-  }
-  
-  public static byte[] gCC()
+  public static byte[] hPG()
   {
     AppMethodBeat.i(88157);
     byte[] arrayOfByte = new String("android").getBytes();
@@ -447,7 +433,7 @@ public class util
     return arrayOfByte;
   }
   
-  public static byte[] gCD()
+  public static byte[] hPH()
   {
     AppMethodBeat.i(88158);
     byte[] arrayOfByte = Build.VERSION.RELEASE.getBytes();
@@ -455,7 +441,7 @@ public class util
     return arrayOfByte;
   }
   
-  public static int gCE()
+  public static int hPI()
   {
     AppMethodBeat.i(88159);
     int i = (int)(Math.random() * 2147483647.0D);
@@ -463,7 +449,7 @@ public class util
     return i;
   }
   
-  public static byte[] gCF()
+  public static byte[] hPJ()
   {
     AppMethodBeat.i(88160);
     byte[] arrayOfByte = SecureRandom.getSeed(16);
@@ -471,15 +457,15 @@ public class util
     return arrayOfByte;
   }
   
-  public static long gCG()
+  public static long hPK()
   {
     AppMethodBeat.i(88162);
-    long l = i.gCv();
+    long l = i.hPz();
     AppMethodBeat.o(88162);
     return l;
   }
   
-  private static String gCH()
+  private static String hPL()
   {
     AppMethodBeat.i(88181);
     try
@@ -496,7 +482,7 @@ public class util
     return "";
   }
   
-  public static String gCI()
+  public static String hPM()
   {
     AppMethodBeat.i(88188);
     String str = new String("2014/02/28 14:20");
@@ -520,7 +506,7 @@ public class util
     return false;
   }
   
-  public static byte[] lS(Context paramContext)
+  public static byte[] lQ(Context paramContext)
   {
     AppMethodBeat.i(88165);
     paramContext = (WifiManager)paramContext.getSystemService("wifi");
@@ -542,7 +528,7 @@ public class util
     return new byte[0];
   }
   
-  public static byte[] lT(Context paramContext)
+  public static byte[] lR(Context paramContext)
   {
     AppMethodBeat.i(88166);
     paramContext = (TelephonyManager)paramContext.getSystemService("phone");
@@ -560,7 +546,7 @@ public class util
     return new byte[0];
   }
   
-  public static byte[] lU(Context paramContext)
+  public static byte[] lS(Context paramContext)
   {
     Object localObject3 = null;
     AppMethodBeat.i(88167);
@@ -591,13 +577,13 @@ public class util
         AppMethodBeat.o(88167);
         return new byte[0];
       }
-      paramContext = c.ds(((String)localObject1).getBytes());
+      paramContext = c.du(((String)localObject1).getBytes());
       AppMethodBeat.o(88167);
       return paramContext;
     }
   }
   
-  public static byte[] lV(Context paramContext)
+  public static byte[] lT(Context paramContext)
   {
     AppMethodBeat.i(88168);
     try
@@ -619,7 +605,7 @@ public class util
     return new byte[0];
   }
   
-  public static int lW(Context paramContext)
+  public static int lU(Context paramContext)
   {
     AppMethodBeat.i(88169);
     try
@@ -648,7 +634,7 @@ public class util
     return 0;
   }
   
-  public static int lX(Context paramContext)
+  public static int lV(Context paramContext)
   {
     AppMethodBeat.i(88170);
     int i = paramContext.getSharedPreferences("WLOGIN_SERVER_INFO", 0).getInt("network_type", 0);
@@ -656,7 +642,7 @@ public class util
     return i;
   }
   
-  public static void lY(Context paramContext)
+  public static void lW(Context paramContext)
   {
     AppMethodBeat.i(88172);
     paramContext = paramContext.getSharedPreferences("WLOGIN_NET_RETRY_TYPE", 0).edit();
@@ -665,7 +651,7 @@ public class util
     AppMethodBeat.o(88172);
   }
   
-  public static String lZ(Context paramContext)
+  public static String lX(Context paramContext)
   {
     AppMethodBeat.i(88173);
     try
@@ -693,13 +679,13 @@ public class util
     return "wifi";
   }
   
-  public static byte[] ma(Context paramContext)
+  public static byte[] lY(Context paramContext)
   {
     AppMethodBeat.i(88175);
     byte[] arrayOfByte = new String("").getBytes();
     try
     {
-      paramContext = bfh(paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("ksid", new String("")));
+      paramContext = buX(paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("ksid", new String("")));
       if ((paramContext == null) || (paramContext.length <= 0))
       {
         LOGD("get_ksid:null");
@@ -716,21 +702,21 @@ public class util
         paramContext.printStackTrace(localPrintWriter);
         localPrintWriter.flush();
         localStringWriter.flush();
-        nO("exception", localStringWriter.toString());
+        oG("exception", localStringWriter.toString());
         paramContext = arrayOfByte;
         continue;
-        LOGD("get_ksid:" + du(paramContext));
+        LOGD("get_ksid:" + dw(paramContext));
       }
     }
   }
   
-  public static byte[] mb(Context paramContext)
+  public static byte[] lZ(Context paramContext)
   {
     AppMethodBeat.i(88177);
     byte[] arrayOfByte = new byte[0];
     try
     {
-      paramContext = bfh(paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("imei", new String("")));
+      paramContext = buX(paramContext.getSharedPreferences("WLOGIN_DEVICE_INFO", 0).getString("imei", new String("")));
       if (paramContext.length <= 0)
       {
         paramContext = new byte[0];
@@ -747,15 +733,15 @@ public class util
         paramContext.printStackTrace(localPrintWriter);
         localPrintWriter.flush();
         localStringWriter.flush();
-        nO("exception", localStringWriter.toString());
+        oG("exception", localStringWriter.toString());
         paramContext = arrayOfByte;
         continue;
-        LOGD("get_imei:" + du(paramContext));
+        LOGD("get_imei:" + dw(paramContext));
       }
     }
   }
   
-  public static byte[] mc(Context paramContext)
+  public static byte[] ma(Context paramContext)
   {
     AppMethodBeat.i(88178);
     paramContext = paramContext.getPackageName().getBytes();
@@ -763,22 +749,36 @@ public class util
     return paramContext;
   }
   
-  public static void nN(String paramString1, String paramString2)
+  private static byte n(byte paramByte)
+  {
+    if ((paramByte >= 48) && (paramByte <= 57)) {
+      return (byte)(paramByte - 48);
+    }
+    if ((paramByte >= 97) && (paramByte <= 102)) {
+      return (byte)(paramByte - 97 + 10);
+    }
+    if ((paramByte >= 65) && (paramByte <= 70)) {
+      return (byte)(paramByte - 65 + 10);
+    }
+    return 0;
+  }
+  
+  public static void oF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(88184);
     try
     {
-      if (Opr >= 2)
+      if (gQV >= 2)
       {
-        if (Ops != null)
+        if (Ueq != null)
         {
-          Ops.OnLog(2, paramString1, paramString2);
+          Ueq.OnLog(2, paramString1, paramString2);
           AppMethodBeat.o(88184);
           return;
         }
-        if (Opt)
+        if (Uer)
         {
-          new StringBuilder("wlogin_sdk").append(gCH());
+          new StringBuilder("wlogin_sdk").append(hPL());
           new StringBuilder(String.valueOf(paramString1)).append(":").append(paramString2);
           AppMethodBeat.o(88184);
           return;
@@ -791,22 +791,22 @@ public class util
     }
   }
   
-  public static void nO(String paramString1, String paramString2)
+  public static void oG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(88185);
     try
     {
-      if (Opr >= 0)
+      if (gQV >= 0)
       {
-        if (Ops != null)
+        if (Ueq != null)
         {
-          Ops.OnLog(0, paramString1, paramString2);
+          Ueq.OnLog(0, paramString1, paramString2);
           AppMethodBeat.o(88185);
           return;
         }
-        if (Opt)
+        if (Uer)
         {
-          new StringBuilder("wlogin_sdk").append(gCH());
+          new StringBuilder("wlogin_sdk").append(hPL());
           new StringBuilder(String.valueOf(paramString1)).append(":").append(paramString2);
           AppMethodBeat.o(88185);
           return;
@@ -827,7 +827,7 @@ public class util
     paramException.printStackTrace(localPrintWriter);
     localPrintWriter.flush();
     localStringWriter.flush();
-    nO("exception:", localStringWriter.toString());
+    oG("exception:", localStringWriter.toString());
     AppMethodBeat.o(88186);
   }
 }

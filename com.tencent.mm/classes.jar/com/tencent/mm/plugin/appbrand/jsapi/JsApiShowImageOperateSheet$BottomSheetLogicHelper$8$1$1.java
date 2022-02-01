@@ -13,13 +13,13 @@ final class JsApiShowImageOperateSheet$BottomSheetLogicHelper$8$1$1
   public final void run()
   {
     AppMethodBeat.i(45660);
-    b.n((Activity)this.val$context, this.val$context.getString(2131758936));
+    b.r((Activity)this.val$context, this.val$context.getString(2131759260));
     AppMethodBeat.o(45660);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.JsApiShowImageOperateSheet.BottomSheetLogicHelper.8.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import rx.j;
 
 public final class d
 {
-  private static final a OyZ;
+  private static final a UoM;
   
   static
   {
     AppMethodBeat.i(90455);
-    OyZ = new a();
+    UoM = new a();
     AppMethodBeat.o(90455);
   }
   
@@ -22,25 +22,25 @@ public final class d
     return parama;
   }
   
-  public static j gEe()
+  public static j hRm()
   {
     AppMethodBeat.i(90453);
-    a locala = a.gEc();
+    a locala = a.hRk();
     AppMethodBeat.o(90453);
     return locala;
   }
   
-  public static j gEf()
+  public static j hRn()
   {
-    return OyZ;
+    return UoM;
   }
   
   static final class a
     implements j
   {
-    public final void gDs() {}
+    public final void hQA() {}
     
-    public final boolean gDt()
+    public final boolean hQB()
     {
       return true;
     }

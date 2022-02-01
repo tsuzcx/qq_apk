@@ -1,65 +1,65 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.v;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.coa;
-import com.tencent.mm.protocal.protobuf.cob;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dfu;
+import com.tencent.mm.protocal.protobuf.dfv;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private b rr;
-  public coa uZq;
-  public cob uZr;
+  private i callback;
+  private d rr;
+  public dfu yrQ;
+  public dfv yrR;
   
   public o(int paramInt1, long paramLong1, int paramInt2, long paramLong2, boolean paramBoolean)
   {
     AppMethodBeat.i(25493);
     this.rr = null;
-    this.uZq = null;
-    this.uZr = null;
-    b.a locala = new b.a();
-    locala.hQF = new coa();
-    locala.hQG = new cob();
+    this.yrQ = null;
+    this.yrR = null;
+    d.a locala = new d.a();
+    locala.iLN = new dfu();
+    locala.iLO = new dfv();
     locala.funcId = 819;
     locala.uri = "/cgi-bin/micromsg-bin/pstnsync";
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
+    this.rr = locala.aXF();
     long l = System.currentTimeMillis();
-    this.uZq = ((coa)this.rr.hQD.hQJ);
-    this.uZq.HzT = v.aAC();
-    this.uZq.Gxq = paramInt1;
-    this.uZq.Gxr = paramLong1;
-    this.uZq.Hzw = l;
-    this.uZq.HzU = paramInt2;
-    this.uZq.Hzz = paramLong2;
+    this.yrQ = ((dfu)this.rr.iLK.iLR);
+    this.yrQ.MKC = z.aTY();
+    this.yrQ.LsZ = paramInt1;
+    this.yrQ.Lta = paramLong1;
+    this.yrQ.MKf = l;
+    this.yrQ.MKD = paramInt2;
+    this.yrQ.MKi = paramLong2;
     if (!paramBoolean) {}
-    for (this.uZq.HzV = 0;; this.uZq.HzV = 1)
+    for (this.yrQ.MKE = 0;; this.yrQ.MKE = 1)
     {
-      ae.i("MicroMsg.NetSceneIPCallSync", "roomId: %d, roomKey: %d, syncKey: %d, callSeq: %d,dataFlag: %d, timestamp: %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Long.valueOf(paramLong2), Integer.valueOf(this.uZq.HzV), Long.valueOf(l) });
+      Log.i("MicroMsg.NetSceneIPCallSync", "roomId: %d, roomKey: %d, syncKey: %d, callSeq: %d,dataFlag: %d, timestamp: %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Integer.valueOf(paramInt2), Long.valueOf(paramLong2), Integer.valueOf(this.yrQ.MKE), Long.valueOf(l) });
       AppMethodBeat.o(25493);
       return;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(25494);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(25494);
     return i;
   }
@@ -69,18 +69,18 @@ public final class o
     return 819;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(25495);
-    ae.i("MicroMsg.NetSceneIPCallSync", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.uZr = ((cob)((b)paramq).hQE.hQJ);
+    Log.i("MicroMsg.NetSceneIPCallSync", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.yrR = ((dfv)((d)params).iLL.iLR);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(25495);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.e.o
  * JD-Core Version:    0.7.0.1
  */

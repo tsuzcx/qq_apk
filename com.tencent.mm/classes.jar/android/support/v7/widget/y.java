@@ -6,7 +6,6 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.support.v4.graphics.drawable.a;
-import android.support.v4.view.x;
 import android.support.v4.widget.m;
 import android.support.v7.d.a.c;
 import android.view.MotionEvent;
@@ -21,51 +20,163 @@ import java.lang.reflect.Field;
 class y
   extends ListView
 {
-  private final Rect amF = new Rect();
-  private int amG = 0;
-  private int amH = 0;
-  private int amI = 0;
-  private int amJ = 0;
-  private int amK;
-  private Field amL;
-  private a amM;
-  private boolean amN;
-  private boolean amO;
-  private boolean amP;
-  private x amQ;
-  private m amR;
-  b amS;
+  private final Rect amS = new Rect();
+  private int amT = 0;
+  private int amU = 0;
+  private int amV = 0;
+  private int amW = 0;
+  private int amX;
+  private Field amY;
+  private a amZ;
+  private boolean ana;
+  private boolean anb;
+  private boolean anc;
+  private android.support.v4.view.y and;
+  private m ane;
+  b anf;
   
   y(Context paramContext, boolean paramBoolean)
   {
-    super(paramContext, null, 2130968938);
-    this.amO = paramBoolean;
+    super(paramContext, null, 2130968965);
+    this.anb = paramBoolean;
     setCacheColorHint(0);
     try
     {
-      this.amL = AbsListView.class.getDeclaredField("mIsChildViewEnabled");
-      this.amL.setAccessible(true);
+      this.amY = AbsListView.class.getDeclaredField("mIsChildViewEnabled");
+      this.amY.setAccessible(true);
       return;
     }
     catch (NoSuchFieldException paramContext) {}
   }
   
-  private void jx()
+  private void jG()
   {
     Drawable localDrawable = getSelector();
-    if ((localDrawable != null) && (this.amP) && (isPressed())) {
+    if ((localDrawable != null) && (this.anc) && (isPressed())) {
       localDrawable.setState(getDrawableState());
     }
   }
   
   private void setSelectorEnabled(boolean paramBoolean)
   {
-    if (this.amM != null) {
-      this.amM.mEnabled = paramBoolean;
+    if (this.amZ != null) {
+      this.amZ.mEnabled = paramBoolean;
     }
   }
   
-  public boolean b(MotionEvent paramMotionEvent, int paramInt)
+  protected void dispatchDraw(Canvas paramCanvas)
+  {
+    if (!this.amS.isEmpty())
+    {
+      Drawable localDrawable = getSelector();
+      if (localDrawable != null)
+      {
+        localDrawable.setBounds(this.amS);
+        localDrawable.draw(paramCanvas);
+      }
+    }
+    super.dispatchDraw(paramCanvas);
+  }
+  
+  protected void drawableStateChanged()
+  {
+    if (this.anf != null) {
+      return;
+    }
+    super.drawableStateChanged();
+    setSelectorEnabled(true);
+    jG();
+  }
+  
+  public int e(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
+  {
+    paramInt2 = getListPaddingTop();
+    paramInt3 = getListPaddingBottom();
+    getListPaddingLeft();
+    getListPaddingRight();
+    int i = getDividerHeight();
+    Object localObject = getDivider();
+    ListAdapter localListAdapter = getAdapter();
+    if (localListAdapter == null)
+    {
+      paramInt2 += paramInt3;
+      return paramInt2;
+    }
+    paramInt3 += paramInt2;
+    label63:
+    int m;
+    int j;
+    int k;
+    View localView;
+    if ((i > 0) && (localObject != null))
+    {
+      paramInt2 = 0;
+      localObject = null;
+      m = 0;
+      int i1 = localListAdapter.getCount();
+      j = 0;
+      if (j >= i1) {
+        break label291;
+      }
+      int n = localListAdapter.getItemViewType(j);
+      k = m;
+      if (n != m)
+      {
+        localObject = null;
+        k = n;
+      }
+      localView = localListAdapter.getView(j, (View)localObject, this);
+      ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
+      localObject = localLayoutParams;
+      if (localLayoutParams == null)
+      {
+        localObject = generateDefaultLayoutParams();
+        localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      if (((ViewGroup.LayoutParams)localObject).height <= 0) {
+        break label250;
+      }
+      m = View.MeasureSpec.makeMeasureSpec(((ViewGroup.LayoutParams)localObject).height, 1073741824);
+      label182:
+      localView.measure(paramInt1, m);
+      localView.forceLayout();
+      if (j <= 0) {
+        break label296;
+      }
+      paramInt3 += i;
+    }
+    label291:
+    label296:
+    for (;;)
+    {
+      paramInt3 = localView.getMeasuredHeight() + paramInt3;
+      if (paramInt3 >= paramInt4)
+      {
+        if ((paramInt5 >= 0) && (j > paramInt5) && (paramInt2 > 0) && (paramInt3 != paramInt4)) {
+          break;
+        }
+        return paramInt4;
+        i = 0;
+        break label63;
+        label250:
+        m = View.MeasureSpec.makeMeasureSpec(0, 0);
+        break label182;
+      }
+      if ((paramInt5 >= 0) && (j >= paramInt5)) {
+        paramInt2 = paramInt3;
+      }
+      for (;;)
+      {
+        j += 1;
+        m = k;
+        localObject = localView;
+        break;
+        return paramInt3;
+      }
+    }
+  }
+  
+  public boolean f(MotionEvent paramMotionEvent, int paramInt)
   {
     boolean bool1 = true;
     boolean bool2 = true;
@@ -79,26 +190,26 @@ class y
       bool1 = bool2;
       if ((!bool1) || (paramInt != 0))
       {
-        this.amP = false;
+        this.anc = false;
         setPressed(false);
         drawableStateChanged();
-        localView = getChildAt(this.amK - getFirstVisiblePosition());
+        localView = getChildAt(this.amX - getFirstVisiblePosition());
         if (localView != null) {
           localView.setPressed(false);
         }
-        if (this.amQ != null)
+        if (this.and != null)
         {
-          this.amQ.cancel();
-          this.amQ = null;
+          this.and.cancel();
+          this.and = null;
         }
       }
       if (bool1)
       {
-        if (this.amR == null) {
-          this.amR = new m(this);
+        if (this.ane == null) {
+          this.ane = new m(this);
         }
-        this.amR.M(true);
-        this.amR.onTouch(this, paramMotionEvent);
+        this.ane.L(true);
+        this.ane.onTouch(this, paramMotionEvent);
       }
       break;
     }
@@ -107,7 +218,7 @@ class y
     label576:
     label708:
     label714:
-    while (this.amR == null)
+    while (this.ane == null)
     {
       return bool1;
       bool1 = false;
@@ -132,7 +243,7 @@ class y
       localView = getChildAt(k - getFirstVisiblePosition());
       float f1 = paramInt;
       float f2 = m;
-      this.amP = true;
+      this.anc = true;
       if (Build.VERSION.SDK_INT >= 21) {
         drawableHotspotChanged(f1, f2);
       }
@@ -140,14 +251,14 @@ class y
         setPressed(true);
       }
       layoutChildren();
-      if (this.amK != -1)
+      if (this.amX != -1)
       {
-        localObject1 = getChildAt(this.amK - getFirstVisiblePosition());
+        localObject1 = getChildAt(this.amX - getFirstVisiblePosition());
         if ((localObject1 != null) && (localObject1 != localView) && (((View)localObject1).isPressed())) {
           ((View)localObject1).setPressed(false);
         }
       }
-      this.amK = k;
+      this.amX = k;
       float f3 = localView.getLeft();
       float f4 = localView.getTop();
       if (Build.VERSION.SDK_INT >= 21) {
@@ -164,19 +275,19 @@ class y
         if (paramInt != 0) {
           ((Drawable)localObject1).setVisible(false, false);
         }
-        localObject2 = this.amF;
+        localObject2 = this.amS;
         ((Rect)localObject2).set(localView.getLeft(), localView.getTop(), localView.getRight(), localView.getBottom());
-        ((Rect)localObject2).left -= this.amG;
-        ((Rect)localObject2).top -= this.amH;
-        ((Rect)localObject2).right += this.amI;
-        ((Rect)localObject2).bottom += this.amJ;
+        ((Rect)localObject2).left -= this.amT;
+        ((Rect)localObject2).top -= this.amU;
+        ((Rect)localObject2).right += this.amV;
+        ((Rect)localObject2).bottom += this.amW;
       }
       try
       {
-        bool1 = this.amL.getBoolean(this);
+        bool1 = this.amY.getBoolean(this);
         if (localView.isEnabled() != bool1)
         {
-          localObject2 = this.amL;
+          localObject2 = this.amY;
           if (bool1) {
             break label708;
           }
@@ -193,7 +304,7 @@ class y
       }
       if (paramInt != 0)
       {
-        localObject2 = this.amF;
+        localObject2 = this.amS;
         f3 = ((Rect)localObject2).exactCenterX();
         f4 = ((Rect)localObject2).exactCenterY();
         if (getVisibility() != 0) {
@@ -226,145 +337,33 @@ class y
         break label555;
       }
     }
-    this.amR.M(false);
+    this.ane.L(false);
     return bool1;
-  }
-  
-  protected void dispatchDraw(Canvas paramCanvas)
-  {
-    if (!this.amF.isEmpty())
-    {
-      Drawable localDrawable = getSelector();
-      if (localDrawable != null)
-      {
-        localDrawable.setBounds(this.amF);
-        localDrawable.draw(paramCanvas);
-      }
-    }
-    super.dispatchDraw(paramCanvas);
-  }
-  
-  protected void drawableStateChanged()
-  {
-    if (this.amS != null) {
-      return;
-    }
-    super.drawableStateChanged();
-    setSelectorEnabled(true);
-    jx();
-  }
-  
-  public int e(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    paramInt2 = getListPaddingTop();
-    paramInt3 = getListPaddingBottom();
-    getListPaddingLeft();
-    getListPaddingRight();
-    int i = getDividerHeight();
-    Object localObject = getDivider();
-    ListAdapter localListAdapter = getAdapter();
-    if (localListAdapter == null)
-    {
-      paramInt2 += paramInt3;
-      return paramInt2;
-    }
-    paramInt3 += paramInt2;
-    label63:
-    int m;
-    int j;
-    int k;
-    View localView;
-    if ((i > 0) && (localObject != null))
-    {
-      paramInt2 = 0;
-      localObject = null;
-      m = 0;
-      int i1 = localListAdapter.getCount();
-      j = 0;
-      if (j >= i1) {
-        break label292;
-      }
-      int n = localListAdapter.getItemViewType(j);
-      k = m;
-      if (n != m)
-      {
-        localObject = null;
-        k = n;
-      }
-      localView = localListAdapter.getView(j, (View)localObject, this);
-      ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
-      localObject = localLayoutParams;
-      if (localLayoutParams == null)
-      {
-        localObject = generateDefaultLayoutParams();
-        localView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      }
-      if (((ViewGroup.LayoutParams)localObject).height <= 0) {
-        break label251;
-      }
-      m = View.MeasureSpec.makeMeasureSpec(((ViewGroup.LayoutParams)localObject).height, 1073741824);
-      label183:
-      localView.measure(paramInt1, m);
-      localView.forceLayout();
-      if (j <= 0) {
-        break label297;
-      }
-      paramInt3 += i;
-    }
-    label292:
-    label297:
-    for (;;)
-    {
-      paramInt3 = localView.getMeasuredHeight() + paramInt3;
-      if (paramInt3 >= paramInt4)
-      {
-        if ((paramInt5 >= 0) && (j > paramInt5) && (paramInt2 > 0) && (paramInt3 != paramInt4)) {
-          break;
-        }
-        return paramInt4;
-        i = 0;
-        break label63;
-        label251:
-        m = View.MeasureSpec.makeMeasureSpec(0, 0);
-        break label183;
-      }
-      if ((paramInt5 >= 0) && (j >= paramInt5)) {
-        paramInt2 = paramInt3;
-      }
-      for (;;)
-      {
-        j += 1;
-        m = k;
-        localObject = localView;
-        break;
-        return paramInt3;
-      }
-    }
   }
   
   public boolean hasFocus()
   {
-    return (this.amO) || (super.hasFocus());
+    return (this.anb) || (super.hasFocus());
   }
   
   public boolean hasWindowFocus()
   {
-    return (this.amO) || (super.hasWindowFocus());
+    return (this.anb) || (super.hasWindowFocus());
   }
   
   public boolean isFocused()
   {
-    return (this.amO) || (super.isFocused());
+    return (this.anb) || (super.isFocused());
   }
   
   public boolean isInTouchMode()
   {
-    return ((this.amO) && (this.amN)) || (super.isInTouchMode());
+    return ((this.anb) && (this.ana)) || (super.isInTouchMode());
   }
   
   protected void onDetachedFromWindow()
   {
-    this.amS = null;
+    this.anf = null;
     super.onDetachedFromWindow();
   }
   
@@ -382,11 +381,11 @@ class y
       {
         return bool1;
         i = paramMotionEvent.getActionMasked();
-        if ((i == 10) && (this.amS == null))
+        if ((i == 10) && (this.anf == null))
         {
-          this.amS = new b();
-          b localb = this.amS;
-          localb.amT.post(localb);
+          this.anf = new b();
+          b localb = this.anf;
+          localb.ang.post(localb);
         }
         bool2 = super.onHoverEvent(paramMotionEvent);
         if ((i != 9) && (i != 7)) {
@@ -401,7 +400,7 @@ class y
     if (paramMotionEvent.isEnabled()) {
       setSelectionFromTop(i, paramMotionEvent.getTop() - getTop());
     }
-    jx();
+    jG();
     return bool2;
     setSelection(-1);
     return bool2;
@@ -414,20 +413,20 @@ class y
     }
     for (;;)
     {
-      if (this.amS != null)
+      if (this.anf != null)
       {
-        b localb = this.amS;
-        localb.amT.amS = null;
-        localb.amT.removeCallbacks(localb);
+        b localb = this.anf;
+        localb.ang.anf = null;
+        localb.ang.removeCallbacks(localb);
       }
       return super.onTouchEvent(paramMotionEvent);
-      this.amK = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
+      this.amX = pointToPosition((int)paramMotionEvent.getX(), (int)paramMotionEvent.getY());
     }
   }
   
   void setListSelectionHidden(boolean paramBoolean)
   {
-    this.amN = paramBoolean;
+    this.ana = paramBoolean;
   }
   
   public void setSelector(Drawable paramDrawable)
@@ -435,16 +434,16 @@ class y
     if (paramDrawable != null) {}
     for (Object localObject = new a(paramDrawable);; localObject = null)
     {
-      this.amM = ((a)localObject);
-      super.setSelector(this.amM);
+      this.amZ = ((a)localObject);
+      super.setSelector(this.amZ);
       localObject = new Rect();
       if (paramDrawable != null) {
         paramDrawable.getPadding((Rect)localObject);
       }
-      this.amG = ((Rect)localObject).left;
-      this.amH = ((Rect)localObject).top;
-      this.amI = ((Rect)localObject).right;
-      this.amJ = ((Rect)localObject).bottom;
+      this.amT = ((Rect)localObject).left;
+      this.amU = ((Rect)localObject).top;
+      this.amV = ((Rect)localObject).right;
+      this.amW = ((Rect)localObject).bottom;
       return;
     }
   }
@@ -504,7 +503,7 @@ class y
     
     public final void run()
     {
-      y.this.amS = null;
+      y.this.anf = null;
       y.this.drawableStateChanged();
     }
   }

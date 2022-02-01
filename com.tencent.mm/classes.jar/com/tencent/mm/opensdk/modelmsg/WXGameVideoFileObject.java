@@ -17,20 +17,20 @@ public class WXGameVideoFileObject
   
   public WXGameVideoFileObject()
   {
-    AppMethodBeat.i(194062);
+    AppMethodBeat.i(190374);
     this.filePath = null;
     this.videoUrl = null;
     this.thumbUrl = null;
-    AppMethodBeat.o(194062);
+    AppMethodBeat.o(190374);
   }
   
   public WXGameVideoFileObject(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(194063);
+    AppMethodBeat.i(190375);
     this.filePath = paramString1;
     this.videoUrl = paramString2;
     this.thumbUrl = paramString3;
-    AppMethodBeat.o(194063);
+    AppMethodBeat.o(190375);
   }
   
   private int getFileSize(String paramString)

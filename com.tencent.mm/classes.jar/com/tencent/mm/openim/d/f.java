@@ -1,21 +1,21 @@
 package com.tencent.mm.openim.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cfw;
+import com.tencent.mm.protocal.protobuf.cwd;
 
 public final class f
   extends i
 {
-  cfw iKW;
+  cwd jHC;
   
   public f(String paramString, int paramInt)
   {
     super(11);
     AppMethodBeat.i(151270);
-    this.iKW = new cfw();
-    this.iKW.iKu = paramString;
-    this.iKW.HsA = paramInt;
-    this.vWq = this.iKW;
+    this.jHC = new cwd();
+    this.jHC.jHa = paramString;
+    this.jHC.LBB = paramInt;
+    this.zqv = this.jHC;
     AppMethodBeat.o(151270);
   }
 }

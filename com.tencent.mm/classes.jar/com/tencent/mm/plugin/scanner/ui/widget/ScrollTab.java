@@ -11,23 +11,23 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTab;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTab;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "tabId", "tabTitle", "Landroid/widget/TextView;", "getTabId", "getTabTitle", "", "init", "", "onTabSelected", "onTabUnselected", "setTabEnabled", "enable", "", "setTabId", "setTabTitle", "Companion", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTab;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/scanner/ui/widget/IScrollTab;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "tabId", "tabTitle", "Landroid/widget/TextView;", "getTabId", "getTabTitle", "", "init", "", "onTabSelected", "onTabUnselected", "setTabEnabled", "enable", "", "setTabId", "setTabTitle", "Companion", "plugin-scan_release"})
 public final class ScrollTab
   extends LinearLayout
   implements a
 {
-  public static final ScrollTab.a yOX;
-  private int rMl;
-  private TextView yOW;
+  public static final a CSW;
+  private TextView CSV;
+  private int ehn;
   
   static
   {
     AppMethodBeat.i(52474);
-    yOX = new ScrollTab.a((byte)0);
+    CSW = new a((byte)0);
     AppMethodBeat.o(52474);
   }
   
@@ -49,47 +49,47 @@ public final class ScrollTab
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(52473);
-    this.rMl = -1;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131494572, (ViewGroup)this).findViewById(2131304374);
+    this.ehn = -1;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131495195, (ViewGroup)this).findViewById(2131307337);
     p.g(paramContext, "view.findViewById(R.id.scroll_tab_title)");
-    this.yOW = ((TextView)paramContext);
-    paramContext = this.yOW;
+    this.CSV = ((TextView)paramContext);
+    paramContext = this.CSV;
     if (paramContext == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
     paramContext.setAlpha(0.5F);
     AppMethodBeat.o(52473);
   }
   
-  public final void dPL()
+  public final void eRu()
   {
     AppMethodBeat.i(52469);
-    Object localObject = this.yOW;
+    Object localObject = this.CSV;
     if (localObject == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
-    ae.d("MicroMsg.ScrollTab", "alvinluo onTabSelected %s", new Object[] { ((TextView)localObject).getText() });
-    localObject = this.yOW;
+    Log.d("MicroMsg.ScrollTab", "alvinluo onTabSelected %s", new Object[] { ((TextView)localObject).getText() });
+    localObject = this.CSV;
     if (localObject == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
-    ((TextView)localObject).setTextColor(getResources().getColor(2131100833));
-    localObject = this.yOW;
+    ((TextView)localObject).setTextColor(getResources().getColor(2131101031));
+    localObject = this.CSV;
     if (localObject == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
     ((TextView)localObject).setAlpha(1.0F);
-    localObject = this.yOW;
+    localObject = this.CSV;
     if (localObject == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
     localObject = ((TextView)localObject).getPaint();
     if (localObject != null) {
       ((TextPaint)localObject).setStyle(Paint.Style.FILL_AND_STROKE);
     }
-    localObject = this.yOW;
+    localObject = this.CSV;
     if (localObject == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
     localObject = ((TextView)localObject).getPaint();
     if (localObject != null)
@@ -101,27 +101,27 @@ public final class ScrollTab
     AppMethodBeat.o(52469);
   }
   
-  public final void dPM()
+  public final void eRv()
   {
     AppMethodBeat.i(52470);
-    Object localObject = this.yOW;
+    Object localObject = this.CSV;
     if (localObject == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
-    ae.d("MicroMsg.ScrollTab", "alvinluo onTabUnselected %s", new Object[] { ((TextView)localObject).getText() });
-    localObject = this.yOW;
+    Log.d("MicroMsg.ScrollTab", "alvinluo onTabUnselected %s", new Object[] { ((TextView)localObject).getText() });
+    localObject = this.CSV;
     if (localObject == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
-    ((TextView)localObject).setTextColor(getResources().getColor(2131100833));
-    localObject = this.yOW;
+    ((TextView)localObject).setTextColor(getResources().getColor(2131101031));
+    localObject = this.CSV;
     if (localObject == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
     ((TextView)localObject).setAlpha(0.5F);
-    localObject = this.yOW;
+    localObject = this.CSV;
     if (localObject == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
     localObject = ((TextView)localObject).getPaint();
     if (localObject != null)
@@ -135,15 +135,15 @@ public final class ScrollTab
   
   public final int getTabId()
   {
-    return this.rMl;
+    return this.ehn;
   }
   
   public final String getTabTitle()
   {
     AppMethodBeat.i(52467);
-    Object localObject = this.yOW;
+    Object localObject = this.CSV;
     if (localObject == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
     localObject = ((TextView)localObject).getText().toString();
     AppMethodBeat.o(52467);
@@ -153,7 +153,7 @@ public final class ScrollTab
   public final void setTabEnabled(boolean paramBoolean)
   {
     AppMethodBeat.i(170093);
-    ae.v("MicroMsg.ScrollTab", "alvinluo setTabEnabled %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    Log.v("MicroMsg.ScrollTab", "alvinluo setTabEnabled %b", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
       setAlpha(1.0F);
@@ -166,24 +166,27 @@ public final class ScrollTab
   
   public final void setTabId(int paramInt)
   {
-    this.rMl = paramInt;
+    this.ehn = paramInt;
   }
   
   public final void setTabTitle(String paramString)
   {
     AppMethodBeat.i(52468);
     p.h(paramString, "tabTitle");
-    TextView localTextView = this.yOW;
+    TextView localTextView = this.CSV;
     if (localTextView == null) {
-      p.bdF("tabTitle");
+      p.btv("tabTitle");
     }
     localTextView.setText((CharSequence)paramString);
     AppMethodBeat.o(52468);
   }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTab$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.ScrollTab
  * JD-Core Version:    0.7.0.1
  */

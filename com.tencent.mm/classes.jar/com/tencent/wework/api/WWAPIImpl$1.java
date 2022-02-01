@@ -11,13 +11,13 @@ final class WWAPIImpl$1
     AppMethodBeat.i(106527);
     add("com.tencent.weworklocal");
     add("com.tencent.wework");
-    add("com.tencent.wework.special");
+    add("com.tencent.wwgovernment");
     AppMethodBeat.o(106527);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.wework.api.WWAPIImpl.1
  * JD-Core Version:    0.7.0.1
  */

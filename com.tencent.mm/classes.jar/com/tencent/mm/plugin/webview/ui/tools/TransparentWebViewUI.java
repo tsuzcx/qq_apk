@@ -13,20 +13,20 @@ import com.tencent.mm.ui.widget.MMWebView;
 public class TransparentWebViewUI
   extends GameWebViewUI
 {
-  public final boolean bRP()
+  public final boolean cpz()
   {
     return false;
   }
   
-  protected final void eVH()
+  protected final void geA()
   {
     AppMethodBeat.i(79798);
     setBackGroundColorResource(0);
     getContentView().setBackgroundResource(0);
-    this.osM.setBackgroundResource(17170445);
-    this.osM.setBackgroundColor(0);
-    findViewById(2131306921).setBackgroundResource(17170445);
-    findViewById(2131304241).setBackgroundResource(17170445);
+    this.pGj.setBackgroundResource(17170445);
+    this.pGj.setBackgroundColor(0);
+    findViewById(2131310394).setBackgroundResource(17170445);
+    findViewById(2131307160).setBackgroundResource(17170445);
     AppMethodBeat.o(79798);
   }
   
@@ -35,15 +35,17 @@ public class TransparentWebViewUI
     int i = 1;
     AppMethodBeat.i(79797);
     super.initView();
-    this.Ewp.EtH = true;
-    this.Ewp.jZw = false;
-    this.Ewp.vm(true);
-    this.Ewp.Yc(0);
+    k localk = this.JjI;
+    k.geY();
+    localk.Jha = true;
+    this.JjI.lcy = false;
+    this.JjI.zh(true);
+    this.JjI.agK(0);
     if ((getIntent() != null) && (getIntent().hasExtra("show_full_screen")) && (getIntent().getBooleanExtra("show_full_screen", false))) {}
     for (;;)
     {
-      if ((i != 0) && (this.EuM != null)) {
-        this.EuM.setCanMove(false);
+      if ((i != 0) && (this.Jif != null)) {
+        this.Jif.setCanMove(false);
       }
       AppMethodBeat.o(79797);
       return;
@@ -58,17 +60,17 @@ public class TransparentWebViewUI
     if (this.screenOrientation == 1001)
     {
       this.screenOrientation = 0;
-      if (this.EuP != null)
+      if (this.Jii != null)
       {
-        this.EuP.enable();
+        this.Jii.enable();
         AppMethodBeat.o(79796);
       }
     }
     else if (this.screenOrientation == 1002)
     {
       this.screenOrientation = 1;
-      if (this.EuP != null) {
-        this.EuP.enable();
+      if (this.Jii != null) {
+        this.Jii.enable();
       }
     }
     AppMethodBeat.o(79796);

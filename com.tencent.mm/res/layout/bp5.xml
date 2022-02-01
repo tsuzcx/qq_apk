@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center_horizontal" android:id="@id/hgo" android:background="@drawable/zj" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginTop="64.0dip" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:layout_gravity="center_horizontal" android:id="@id/hr8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:text="@string/hjf" />
-    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/hsr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:src="@raw/icons_filled_refresh" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c0" android:text="@string/cee" />
-    </LinearLayout>
-</FrameLayout>
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="center" android:layout_gravity="center" android:id="@id/c2h" android:padding="@dimen/hs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/tx" style="MMFontPreferenceLarge" />
+    <ListView android:textColor="@color/a0i" android:id="@id/h5k" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:scrollingCache="false" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+</LinearLayout>

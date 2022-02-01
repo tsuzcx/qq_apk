@@ -14,59 +14,54 @@ import com.tencent.mm.plugin.recordvideo.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.ao;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.ar;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordSwitchCameraPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "enable", "", "lastRotation", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/ImageView;", "setView", "(Landroid/widget/ImageView;)V", "onClick", "", "v", "Landroid/view/View;", "onPause", "onResume", "release", "updateCameraInfo", "front", "updateOrientation", "degree", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/RecordSwitchCameraPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseIconPlugin;", "view", "Landroid/widget/ImageView;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/widget/ImageView;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "enable", "", "lastRotation", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/widget/ImageView;", "setView", "(Landroid/widget/ImageView;)V", "onClick", "", "v", "Landroid/view/View;", "onPause", "onResume", "release", "resetIconColor", "iconColor", "", "updateCameraInfo", "front", "updateOrientation", "degree", "Companion", "plugin-recordvideo_release"})
 public final class aa
   implements View.OnClickListener, t
 {
-  public static final aa.a xRK;
+  public static final aa.a BRO;
+  private float BRN;
   private boolean enable;
-  private ImageView rKW;
-  private d tbP;
-  private float xRJ;
+  public ImageView tkI;
+  private d wgr;
   
   static
   {
     AppMethodBeat.i(75646);
-    xRK = new aa.a((byte)0);
+    BRO = new aa.a((byte)0);
     AppMethodBeat.o(75646);
   }
   
   public aa(ImageView paramImageView, d paramd)
   {
     AppMethodBeat.i(75645);
-    this.rKW = paramImageView;
-    this.tbP = paramd;
+    this.tkI = paramImageView;
+    this.wgr = paramd;
     this.enable = true;
-    this.rKW.setOnClickListener((View.OnClickListener)this);
-    this.rKW.setImageDrawable(ao.k(this.rKW.getContext(), 2131690362, -1));
+    this.tkI.setOnClickListener((View.OnClickListener)this);
+    this.tkI.setImageDrawable(ar.m(this.tkI.getContext(), 2131690502, -1));
     AppMethodBeat.o(75645);
   }
   
-  public final boolean aoQ()
-  {
-    return false;
-  }
+  public final void aSs() {}
   
-  public final void azm() {}
-  
-  public final void bu(float paramFloat)
+  public final void bN(float paramFloat)
   {
-    AppMethodBeat.i(206621);
-    if ((!this.enable) || (this.xRJ == paramFloat) || (!AppForegroundDelegate.cTA.LP()))
+    AppMethodBeat.i(237350);
+    if ((!this.enable) || (this.BRN == paramFloat) || (!AppForegroundDelegate.djR.Wc()))
     {
-      AppMethodBeat.o(206621);
+      AppMethodBeat.o(237350);
       return;
     }
-    ae.i("MicroMsg.RecordSwitchCameraPlugin", "updateOrientation " + paramFloat + "  " + this.rKW.getRotation());
-    this.xRJ = paramFloat;
-    this.rKW.animate().cancel();
-    this.rKW.animate().rotation(paramFloat).setDuration(100L).start();
-    AppMethodBeat.o(206621);
+    Log.i("MicroMsg.RecordSwitchCameraPlugin", "updateOrientation " + paramFloat + "  " + this.tkI.getRotation());
+    this.BRN = paramFloat;
+    this.tkI.animate().cancel();
+    this.tkI.animate().rotation(paramFloat).setDuration(100L).start();
+    AppMethodBeat.o(237350);
   }
   
   public final String name()
@@ -76,18 +71,23 @@ public final class aa
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
+  public final boolean onBackPress()
+  {
+    return false;
+  }
+  
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(75641);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/recordvideo/plugin/RecordSwitchCameraPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    ae.i("MicroMsg.RecordSwitchCameraPlugin", "RecordSwitchCameraPlugin switch");
-    d.b.a(this.tbP, d.c.xTU);
-    paramView = c.xWV;
-    c.Ot(1);
-    paramView = c.xWV;
-    c.Os(1);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/recordvideo/plugin/RecordSwitchCameraPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    Log.i("MicroMsg.RecordSwitchCameraPlugin", "RecordSwitchCameraPlugin switch");
+    d.b.a(this.wgr, d.c.BUt);
+    paramView = c.BXI;
+    c.VI(1);
+    paramView = c.BXI;
+    c.VH(1);
     a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/RecordSwitchCameraPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(75641);
   }
@@ -97,45 +97,32 @@ public final class aa
   public final void onPause()
   {
     AppMethodBeat.i(75643);
-    ae.i("MicroMsg.RecordSwitchCameraPlugin", "onPause");
+    Log.i("MicroMsg.RecordSwitchCameraPlugin", "onPause");
     this.enable = false;
     AppMethodBeat.o(75643);
   }
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(206622);
+    AppMethodBeat.i(237351);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(206622);
+    AppMethodBeat.o(237351);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(75642);
-    ae.i("MicroMsg.RecordSwitchCameraPlugin", "onResume");
+    Log.i("MicroMsg.RecordSwitchCameraPlugin", "onResume");
     this.enable = true;
     AppMethodBeat.o(75642);
-  }
-  
-  public final void pU(boolean paramBoolean)
-  {
-    AppMethodBeat.i(206620);
-    if (paramBoolean)
-    {
-      this.rKW.setContentDescription((CharSequence)this.rKW.getContext().getString(2131762251));
-      AppMethodBeat.o(206620);
-      return;
-    }
-    this.rKW.setContentDescription((CharSequence)this.rKW.getContext().getString(2131762252));
-    AppMethodBeat.o(206620);
   }
   
   public final void release()
   {
     AppMethodBeat.i(75644);
-    ae.i("MicroMsg.RecordSwitchCameraPlugin", "release");
+    Log.i("MicroMsg.RecordSwitchCameraPlugin", "release");
     this.enable = false;
     AppMethodBeat.o(75644);
   }
@@ -143,10 +130,23 @@ public final class aa
   public final void reset() {}
   
   public final void setVisibility(int paramInt) {}
+  
+  public final void tf(boolean paramBoolean)
+  {
+    AppMethodBeat.i(237349);
+    if (paramBoolean)
+    {
+      this.tkI.setContentDescription((CharSequence)this.tkI.getContext().getString(2131764311));
+      AppMethodBeat.o(237349);
+      return;
+    }
+    this.tkI.setContentDescription((CharSequence)this.tkI.getContext().getString(2131764312));
+    AppMethodBeat.o(237349);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.aa
  * JD-Core Version:    0.7.0.1
  */

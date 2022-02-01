@@ -1,23 +1,39 @@
 package com.tencent.mm.plugin.q;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class d
 {
-  private static c wkl;
-  public static boolean wkm = false;
+  String action;
+  String gna;
+  byte[] zGg;
+  long zGh;
+  long zGi;
+  long zGj;
+  String zGk;
+  int zGl;
+  String zGm;
+  String zGn;
+  int zGo;
   
-  public static void a(c paramc)
+  public d(String paramString)
   {
-    wkl = paramc;
+    AppMethodBeat.i(26522);
+    this.zGl = 1;
+    this.action = new String(paramString);
+    AppMethodBeat.o(26522);
   }
   
-  public static c drw()
+  public final void aFv(String paramString)
   {
-    return wkl;
+    AppMethodBeat.i(26523);
+    this.zGk = new String(paramString);
+    AppMethodBeat.o(26523);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.q.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,89 +1,89 @@
 package com.tencent.mm.plugin.sport.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.gb;
-import com.tencent.mm.g.a.gb.a;
-import com.tencent.mm.g.a.gb.b;
-import com.tencent.mm.g.a.vp;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.cd;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.a.ge;
+import com.tencent.mm.g.a.ge.a;
+import com.tencent.mm.g.a.ge.b;
+import com.tencent.mm.g.a.wp;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ck;
 import java.util.Calendar;
 import org.json.JSONObject;
 
 public final class b
 {
-  public c<vp> AYe;
-  public f AYf;
-  public c AYk;
-  private long AYl;
-  private long AYm;
+  public IListener<wp> FiY;
+  public e FiZ;
+  public IListener Fjg;
+  private long Fjh;
+  private long Fji;
   
   public b()
   {
     AppMethodBeat.i(149286);
-    this.AYk = new c() {};
-    this.AYe = new c() {};
-    this.AYk.alive();
-    this.AYe.alive();
+    this.Fjg = new IListener() {};
+    this.FiY = new IListener() {};
+    this.Fjg.alive();
+    this.FiY.alive();
     AppMethodBeat.o(149286);
   }
   
-  private void AZ(long paramLong)
+  private void Ke(long paramLong)
   {
     AppMethodBeat.i(149289);
-    this.AYl = paramLong;
-    k.aD(515, paramLong);
+    this.Fjh = paramLong;
+    j.aK(515, paramLong);
     AppMethodBeat.o(149289);
   }
   
-  private void Ba(long paramLong)
+  private void Kf(long paramLong)
   {
     AppMethodBeat.i(149291);
-    this.AYm = paramLong;
-    k.aC(516, this.AYm);
+    this.Fji = paramLong;
+    j.aJ(516, this.Fji);
     AppMethodBeat.o(149291);
   }
   
-  final boolean AY(long paramLong)
+  final boolean Kd(long paramLong)
   {
     AppMethodBeat.i(149288);
-    if (this.AYf != null) {
-      g.ajj().a(this.AYf);
+    if (this.FiZ != null) {
+      com.tencent.mm.kernel.g.azz().a(this.FiZ);
     }
     long l = System.currentTimeMillis();
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.set(11, 0);
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
-    ae.i("MicroMsg.Sport.ExtApiStepManager", "update Api Step time: %s stepCount: %s", new Object[] { l.sz(l), Long.valueOf(paramLong) });
-    this.AYf = new f("", "gh_43f2581f6fd6", (int)(localCalendar.getTimeInMillis() / 1000L), (int)(l / 1000L), (int)paramLong, cd.fwK(), 2);
-    g.ajj().a(this.AYf, 0);
-    AZ(l);
-    Ba(paramLong);
+    Log.i("MicroMsg.Sport.ExtApiStepManager", "update Api Step time: %s stepCount: %s", new Object[] { k.AF(l), Long.valueOf(paramLong) });
+    this.FiZ = new e("", "gh_43f2581f6fd6", (int)(localCalendar.getTimeInMillis() / 1000L), (int)(l / 1000L), (int)paramLong, ck.getFingerprint(), 2);
+    com.tencent.mm.kernel.g.azz().a(this.FiZ, 0);
+    Ke(l);
+    Kf(paramLong);
     AppMethodBeat.o(149288);
     return true;
   }
   
-  public final long ejO()
+  public final long fmo()
   {
     AppMethodBeat.i(149290);
-    if (this.AYm == 0L) {
-      this.AYm = k.aC(516, 0L);
+    if (this.Fji == 0L) {
+      this.Fji = j.aJ(516, 0L);
     }
-    long l = this.AYm;
+    long l = this.Fji;
     AppMethodBeat.o(149290);
     return l;
   }
   
-  final boolean h(com.tencent.mm.sdk.b.b paramb)
+  final boolean i(IEvent paramIEvent)
   {
     AppMethodBeat.i(149287);
-    paramb = (gb)paramb;
-    switch (paramb.dsE.action)
+    paramIEvent = (ge)paramIEvent;
+    switch (paramIEvent.dJP.action)
     {
     default: 
       AppMethodBeat.o(149287);
@@ -93,70 +93,70 @@ public final class b
       {
         try
         {
-          JSONObject localJSONObject1 = h.ejY().optJSONObject("extStepApiConfig");
+          JSONObject localJSONObject1 = g.fmy().optJSONObject("extStepApiConfig");
           if (localJSONObject1 != null) {
-            paramb.dsF.dsI = localJSONObject1.toString();
+            paramIEvent.dJQ.config = localJSONObject1.toString();
           }
-          if (!bu.isNullOrNil(paramb.dsF.dsI)) {
+          if (!Util.isNullOrNil(paramIEvent.dJQ.config)) {
             continue;
           }
-          paramb.dsF.dsK = 3905;
+          paramIEvent.dJQ.dJU = 3905;
         }
         catch (Exception localException)
         {
-          paramb.dsF.dsK = 3905;
+          paramIEvent.dJQ.dJU = 3905;
           continue;
         }
-        paramb.dsF.dsJ = true;
+        paramIEvent.dJQ.dJT = true;
         break;
-        paramb.dsF.dsK = 1;
+        paramIEvent.dJQ.dJU = 1;
       }
     }
-    long l4 = paramb.dsE.dsH;
+    long l4 = paramIEvent.dJP.dJS;
     long l5 = System.currentTimeMillis();
-    long l6 = paramb.dsE.bqh;
-    gb.b localb = paramb.dsF;
+    long l6 = paramIEvent.dJP.bqc;
+    ge.b localb = paramIEvent.dJQ;
     int i;
-    if (!l.ejG()) {
+    if (!k.fmg()) {
       i = 3906;
     }
     for (;;)
     {
-      localb.dsK = i;
-      if (paramb.dsF.dsK == 1)
+      localb.dJU = i;
+      if (paramIEvent.dJQ.dJU == 1)
       {
-        if (this.AYl == 0L) {
-          this.AYl = k.aC(515, 0L);
+        if (this.Fjh == 0L) {
+          this.Fjh = j.aJ(515, 0L);
         }
-        boolean bool1 = l.al(this.AYl, System.currentTimeMillis());
-        boolean bool2 = l.am(ejO(), l4);
+        boolean bool1 = k.ar(this.Fjh, System.currentTimeMillis());
+        boolean bool2 = k.as(fmo(), l4);
         if ((bool1) && (bool2)) {
-          AY(l4);
+          Kd(l4);
         }
       }
-      paramb.dsF.dsJ = true;
+      paramIEvent.dJQ.dJT = true;
       break;
-      if (!l.ekk())
+      if (!k.fmK())
       {
         i = 3902;
       }
       else
       {
-        long l3 = k.aC(513, 0L);
-        long l2 = k.aC(512, 0L);
-        ae.v("MicroMsg.Sport.ExtApiStepManager", "lastUpdateTime:%d lastUpdateStep:%d newUpdateTime:%d newUpdateStep:%d", new Object[] { Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l5), Long.valueOf(l4) });
+        long l3 = j.aJ(513, 0L);
+        long l2 = j.aJ(512, 0L);
+        Log.v("MicroMsg.Sport.ExtApiStepManager", "lastUpdateTime:%d lastUpdateStep:%d newUpdateTime:%d newUpdateStep:%d", new Object[] { Long.valueOf(l3), Long.valueOf(l2), Long.valueOf(l5), Long.valueOf(l4) });
         if (l5 - l3 < 300000L)
         {
-          ae.w("MicroMsg.Sport.ExtApiStepManager", "update interval must larger than 5 minute");
+          Log.w("MicroMsg.Sport.ExtApiStepManager", "update interval must larger than 5 minute");
           i = 3903;
         }
         else
         {
-          JSONObject localJSONObject2 = h.ejY();
+          JSONObject localJSONObject2 = g.fmy();
           long l1 = l3;
-          if (!bu.S(l5, l3))
+          if (!Util.isSameDay(l5, l3))
           {
-            l1 = bu.fpJ();
+            l1 = Util.getBeginTimeOfToday();
             l2 = 0L;
           }
           l3 = l5 - l1;
@@ -166,20 +166,20 @@ public final class b
           {
             long l8 = l7 + i;
             l7 = localJSONObject2.optInt("stepCounterMaxStep5m") * l8;
-            ae.v("MicroMsg.Sport.ExtApiStepManager", "interval5m %d intervalTime %d newUpdateTime:%d compareUpdateTime:%d maxIncreaseStep:%d", new Object[] { Long.valueOf(l8), Long.valueOf(l3), Long.valueOf(l5), Long.valueOf(l1), Long.valueOf(l7) });
+            Log.v("MicroMsg.Sport.ExtApiStepManager", "interval5m %d intervalTime %d newUpdateTime:%d compareUpdateTime:%d maxIncreaseStep:%d", new Object[] { Long.valueOf(l8), Long.valueOf(l3), Long.valueOf(l5), Long.valueOf(l1), Long.valueOf(l7) });
             l1 = l4 - l2;
             if ((l1 >= 0L) && (l1 <= l7)) {
-              break label542;
+              break label541;
             }
-            ae.w("MicroMsg.Sport.ExtApiStepManager", "invalid step in 5 minute actual: %d max: %d", new Object[] { Long.valueOf(l1), Long.valueOf(l7) });
+            Log.w("MicroMsg.Sport.ExtApiStepManager", "invalid step in 5 minute actual: %d max: %d", new Object[] { Long.valueOf(l1), Long.valueOf(l7) });
             i = 3904;
             break;
           }
-          label542:
-          ae.i("MicroMsg.Sport.ExtApiStepManager", "can update time: %s, step: %d", new Object[] { l.sz(l5), Long.valueOf(l4) });
-          k.aD(513, l5);
-          k.aD(512, l4);
-          k.aD(514, l6);
+          label541:
+          Log.i("MicroMsg.Sport.ExtApiStepManager", "can update time: %s, step: %d", new Object[] { k.AF(l5), Long.valueOf(l4) });
+          j.aK(513, l5);
+          j.aK(512, l4);
+          j.aK(514, l6);
           i = 1;
         }
       }
@@ -188,7 +188,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.b
  * JD-Core Version:    0.7.0.1
  */

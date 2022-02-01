@@ -7,20 +7,20 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.j;
 
 public final class c
 {
-  private static final int pyW = 2131493749;
-  private static final int pyX = 2131493747;
-  public SparseIntArray pyY;
+  private static final int qOn = 2131493896;
+  private static final int qOo = 2131493889;
+  public SparseIntArray qOp;
   
   public c()
   {
     AppMethodBeat.i(181646);
-    this.pyY = new SparseIntArray();
-    this.pyY.put(1, pyW);
-    this.pyY.put(2, pyX);
-    this.pyY.put(4, pyX);
-    this.pyY.put(6, pyX);
-    this.pyY.put(0, pyX);
-    this.pyY.put(-1, pyX);
+    this.qOp = new SparseIntArray();
+    this.qOp.put(1, qOn);
+    this.qOp.put(2, qOo);
+    this.qOp.put(4, qOo);
+    this.qOp.put(6, qOo);
+    this.qOp.put(0, qOo);
+    this.qOp.put(-1, qOo);
     AppMethodBeat.o(181646);
   }
   
@@ -62,7 +62,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.adapter.a.c
  * JD-Core Version:    0.7.0.1
  */

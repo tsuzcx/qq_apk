@@ -13,22 +13,22 @@ import com.tencent.mm.view.b.a;
 public final class d
   extends b
 {
-  public a cQM;
-  public float cQN = 1.0F;
-  public float cQO;
-  public float cQP;
-  public boolean cQQ = true;
-  public boolean cQR = false;
-  public ValueAnimator cQt;
+  public ValueAnimator dgN;
+  public a dhg;
+  public float dhh = 1.0F;
+  public float dhi;
+  public float dhj;
+  public boolean dhk = true;
+  public boolean dhl = false;
   
   public d(a parama)
   {
-    this.cQM = parama;
+    this.dhg = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.c.d
  * JD-Core Version:    0.7.0.1
  */

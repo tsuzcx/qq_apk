@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/xo" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/j46" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/j54" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/j71" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@drawable/b1o" android:layout_centerInParent="true" android:contentDescription="@string/xu" />
+    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/j4k" android:visibility="gone" android:layout_width="@dimen/ag2" android:layout_height="@dimen/ag2" android:layout_centerInParent="true" />
+    <RelativeLayout android:id="@id/j4u" android:background="@color/u_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/j4t" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:src="@raw/icons_outlined_error" android:layout_centerHorizontal="true" app:iconColor="@color/afz" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/afz" android:id="@id/j4v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:layout_below="@id/j4t" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

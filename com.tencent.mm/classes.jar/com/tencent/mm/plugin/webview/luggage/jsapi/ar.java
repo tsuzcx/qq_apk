@@ -1,93 +1,240 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
-import android.text.TextUtils;
 import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
-import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.model.WebViewJSSDKFileItem;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
+import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
+import com.tencent.mm.plugin.handoff.a.a;
+import com.tencent.mm.plugin.handoff.model.HandOffURL;
+import com.tencent.mm.plugin.webview.luggage.q;
+import com.tencent.mm.plugin.webview.luggage.t;
+import com.tencent.mm.plugin.webview.luggage.w;
+import com.tencent.mm.plugin.webview.ui.tools.jsapi.a.d;
+import com.tencent.mm.protocal.JsapiPermissionWrapper;
+import com.tencent.mm.protocal.c.g;
+import com.tencent.mm.protocal.protobuf.cdz;
+import com.tencent.mm.protocal.protobuf.cef;
+import com.tencent.mm.protocal.protobuf.ceg;
+import com.tencent.mm.protocal.protobuf.epn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.g.b.p;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class ar
-  extends br<g>
+  extends bs<com.tencent.mm.plugin.webview.luggage.g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
-  public final void b(final com.tencent.luggage.d.b<g>.a paramb)
+  public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb)
   {
-    AppMethodBeat.i(78598);
-    ae.i("MicroMsg.GameJsApiPreviewVideo", "invoke");
-    if (bu.isNullOrNil(paramb.chh.cgn.optString("localId")))
+    AppMethodBeat.i(78596);
+    Log.i("MicroMsg.JsApiPreVerify", "invokeInOwn");
+    com.tencent.mm.plugin.webview.ui.tools.game.g.bI(((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).coX(), System.currentTimeMillis());
+    Object localObject1 = paramb.ctb.csi;
+    String str1 = ((JSONObject)localObject1).optString("verifyAppId");
+    String str2 = ((JSONObject)localObject1).optString("verifySignature");
+    String str3 = ((JSONObject)localObject1).optString("verifyNonceStr");
+    String str4 = ((JSONObject)localObject1).optString("verifyTimestamp");
+    String str5 = ((JSONObject)localObject1).optString("verifySignType");
+    Object localObject2 = ((JSONObject)localObject1).optJSONArray("verifyJsApiList");
+    Log.i("MicroMsg.JsApiPreVerify", "appid : %s, %s, %s, %s, %s", new Object[] { str1, str2, str3, str4, str5 });
+    localObject1 = ((com.tencent.mm.plugin.webview.luggage.g)paramb.cta).getUrl();
+    LinkedList localLinkedList = new LinkedList();
+    try
     {
-      ae.i("MicroMsg.GameJsApiPreviewVideo", "data is invalid");
-      paramb.a("invalid_data", null);
-      AppMethodBeat.o(78598);
-      return;
-    }
-    String str = paramb.chh.cgn.optString("localId");
-    ae.i("MicroMsg.GameJsApiPreviewVideo", "localId:%s", new Object[] { str });
-    final MMActivity localMMActivity = (MMActivity)((g)paramb.chg).mContext;
-    localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
-    {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      Log.i("MicroMsg.JsApiPreVerify", "jsItem length %s", new Object[] { Integer.valueOf(((JSONArray)localObject2).length()) });
+      if (((JSONArray)localObject2).length() == 0)
       {
-        AppMethodBeat.i(78597);
-        if (paramAnonymousInt1 == (ar.this.hashCode() & 0xFFFF)) {
-          switch (paramAnonymousInt2)
-          {
-          default: 
-            paramb.a("fail", null);
-          }
-        }
-        for (;;)
-        {
-          localMMActivity.mmSetOnActivityResultCallback(null);
-          AppMethodBeat.o(78597);
-          return;
-          paramb.a("cancel", null);
-          continue;
-          paramb.a("", null);
-        }
+        paramb.c("checkJsApi:param is empty", null);
+        AppMethodBeat.o(78596);
+        return;
       }
-    });
-    Intent localIntent = new Intent();
-    if (bu.nullAsNil(str).trim().startsWith("weixin://bgmixid/"))
+      int i = 0;
+      while (i < ((JSONArray)localObject2).length())
+      {
+        localObject3 = ((JSONArray)localObject2).getString(i);
+        if (!Util.isNullOrNil((String)localObject3)) {
+          localLinkedList.add(localObject3);
+        }
+        i += 1;
+      }
+      if (Util.isNullOrNil(localException)) {
+        break label292;
+      }
+    }
+    catch (Exception localException)
     {
-      localIntent.putExtra("game_bg_mix_fake_local_id", bu.nullAsNil(str).trim());
-      d.b(localMMActivity, "game", ".media.background.GameFakeVideoUI", localIntent, hashCode() & 0xFFFF);
-      AppMethodBeat.o(78598);
+      Log.w("MicroMsg.JsApiPreVerify", "exception occur " + localException.getMessage());
+      paramb.c("", null);
+      AppMethodBeat.o(78596);
       return;
     }
-    WebViewJSSDKFileItem localWebViewJSSDKFileItem = com.tencent.mm.plugin.webview.luggage.c.b.aIB(str);
-    if ((localWebViewJSSDKFileItem == null) || (TextUtils.isEmpty(localWebViewJSSDKFileItem.jXT)) || (!o.fB(localWebViewJSSDKFileItem.jXT)))
+    if ((localLinkedList.size() <= 0) || (Util.isNullOrNil((String)localObject1)))
     {
-      ae.e("MicroMsg.GameJsApiPreviewVideo", "the item is null or the File item not exist for localId: %s", new Object[] { str });
-      paramb.a("fail", null);
-      AppMethodBeat.o(78598);
+      label292:
+      Log.e("MicroMsg.JsApiPreVerify", "handlePreVerify wrong args, %s", new Object[] { localException });
+      paramb.c("pre_verify_jsapi:fail_invalid_args", null);
+      AppMethodBeat.o(78596);
       return;
     }
-    localIntent.putExtra("key_video_path", localWebViewJSSDKFileItem.jXT);
-    d.b(localMMActivity, "card", ".ui.CardGiftVideoUI", localIntent, hashCode() & 0xFFFF);
-    AppMethodBeat.o(78598);
+    localObject2 = new d.a();
+    ((d.a)localObject2).iLN = new cef();
+    ((d.a)localObject2).iLO = new ceg();
+    ((d.a)localObject2).uri = "/cgi-bin/mmbiz-bin/jsapi-preverify";
+    ((d.a)localObject2).funcId = 1093;
+    ((d.a)localObject2).iLP = 0;
+    ((d.a)localObject2).respCmdId = 0;
+    localObject2 = ((d.a)localObject2).aXF();
+    Object localObject3 = (cef)((d)localObject2).iLK.iLR;
+    ((cef)localObject3).url = ((String)localObject1);
+    ((cef)localObject3).dNI = localException;
+    ((cef)localObject3).MjM = localLinkedList;
+    ((cef)localObject3).dmc = str4;
+    ((cef)localObject3).Mju = str3;
+    ((cef)localObject3).signature = str2;
+    ((cef)localObject3).Mjv = str5;
+    IPCRunCgi.a((d)localObject2, new a(paramb, localException));
+    AppMethodBeat.o(78596);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "previewVideo";
+    return "preVerifyJSAPI";
+  }
+  
+  static final class a
+    implements IPCRunCgi.a
+  {
+    private b<com.tencent.mm.plugin.webview.luggage.g>.a IVL;
+    private String appId;
+    
+    a(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb, String paramString)
+    {
+      this.IVL = paramb;
+      this.appId = paramString;
+    }
+    
+    private void ZA(String paramString)
+    {
+      AppMethodBeat.i(78595);
+      if (Util.isNullOrNil(paramString)) {
+        this.IVL.c("", null);
+      }
+      for (;;)
+      {
+        com.tencent.mm.plugin.webview.ui.tools.game.g.bJ(((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).coX(), System.currentTimeMillis());
+        release();
+        AppMethodBeat.o(78595);
+        return;
+        this.IVL.c(paramString, null);
+      }
+    }
+    
+    private void release()
+    {
+      this.IVL = null;
+      this.appId = null;
+    }
+    
+    public final void a(int paramInt1, int paramInt2, String paramString, d paramd)
+    {
+      AppMethodBeat.i(78594);
+      if (this.IVL == null)
+      {
+        AppMethodBeat.o(78594);
+        return;
+      }
+      if ((paramInt1 != 0) || (paramInt2 != 0))
+      {
+        Log.e("MicroMsg.JsApiPreVerify", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        ZA(paramString);
+        AppMethodBeat.o(78594);
+        return;
+      }
+      paramd = (ceg)paramd.iLL.iLR;
+      if ((paramd == null) || (paramd.Mjz == null) || (paramd.Mjz.dIZ != 0))
+      {
+        ZA(paramString);
+        AppMethodBeat.o(78594);
+        return;
+      }
+      paramString = ((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).ITw;
+      Object localObject1 = this.appId;
+      if ((!Util.isNullOrNil((String)localObject1)) && (!Util.isNullOrNil(paramString.ISU.getUrl()))) {
+        paramString.IVj.put(w.aYy(paramString.ISU.getUrl()), localObject1);
+      }
+      paramString = ((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).ITw;
+      localObject1 = this.appId;
+      Object localObject2 = paramd.MjR;
+      if ((!Util.isNullOrNil((String)localObject1)) && (!Util.isNullOrNil((String)localObject2))) {
+        paramString.IVl.put(localObject1, localObject2);
+      }
+      paramString = new a.d(this.appId, paramd);
+      localObject1 = ((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).ITw;
+      if (!Util.isNullOrNil(((w)localObject1).ISU.getUrl())) {
+        ((w)localObject1).IVk.put(w.aYy(((w)localObject1).ISU.getUrl()), paramString);
+      }
+      localObject1 = paramd.MjP;
+      paramString = ((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).gbF().aZE(((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).getUrl());
+      if (paramString == null)
+      {
+        ZA("");
+        AppMethodBeat.o(78594);
+        return;
+      }
+      if (!Util.isNullOrNil((List)localObject1))
+      {
+        localObject1 = ((LinkedList)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          localObject2 = (epn)((Iterator)localObject1).next();
+          c.g localg = com.tencent.mm.protocal.c.bgb(((epn)localObject2).Mjs);
+          if ((localg != null) && (paramString.aiW(localg.gtt()) != ((epn)localObject2).state)) {
+            paramString.a(localg.gtt(), (byte)((epn)localObject2).state);
+          }
+        }
+      }
+      if (((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).gbI() != null)
+      {
+        Log.i("MicroMsg.JsApiPreVerify", "updateFloatBallIcon:%s", new Object[] { paramd.MjR });
+        ((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).gbI().agS(paramd.MjR);
+      }
+      if (((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).gbJ() != null)
+      {
+        Log.i("MicroMsg.JsApiPreVerify", "updateFloatBallIcon:%s", new Object[] { paramd.MjR });
+        paramString = ((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).gbJ();
+        localObject1 = paramd.MjR;
+        p.h(localObject1, "icon");
+        if (paramString.IVc == null) {
+          paramString.agS((String)localObject1);
+        }
+      }
+      if (((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).gbK() != null)
+      {
+        ((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).gbK().setIcon(Util.nullAsNil(paramd.MjR));
+        ((a)com.tencent.mm.kernel.g.af(a.class)).e(((com.tencent.mm.plugin.webview.luggage.g)this.IVL.cta).gbK());
+      }
+      ZA("");
+      AppMethodBeat.o(78594);
+    }
   }
 }
 

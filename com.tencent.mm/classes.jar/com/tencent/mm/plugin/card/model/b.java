@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.card.model;
 
-import com.tencent.mm.protocal.protobuf.uc;
+import com.tencent.mm.protocal.protobuf.vj;
 
 public final class b
-  extends uc
+  extends vj
 {
-  public boolean dLH = false;
-  public String hDr;
-  public boolean oEA = false;
-  public boolean oEB = false;
-  public boolean oEC = false;
-  public String oED;
-  public int oEz;
+  public boolean edw = false;
+  public String ixw;
+  public int pSi;
+  public boolean pSj = false;
+  public boolean pSk = false;
+  public boolean pSl = false;
+  public String pSm;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.b
  * JD-Core Version:    0.7.0.1
  */

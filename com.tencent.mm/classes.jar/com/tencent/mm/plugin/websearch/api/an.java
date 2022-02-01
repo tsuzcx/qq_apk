@@ -1,23 +1,78 @@
 package com.tencent.mm.plugin.websearch.api;
 
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import org.xwalk.core.XWalkEnvironment;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.HashMap;
 
-public final class an
+public class an
 {
-  public static int vP(int paramInt)
+  private static volatile an IEY;
+  private HashMap<Integer, ao> IEX;
+  
+  private an()
   {
-    AppMethodBeat.i(161715);
-    if (XWalkEnvironment.getUsingCustomContext())
+    AppMethodBeat.i(117734);
+    this.IEX = new HashMap();
+    AppMethodBeat.o(117734);
+  }
+  
+  public static an fYj()
+  {
+    AppMethodBeat.i(117735);
+    if (IEY == null) {}
+    try
     {
-      paramInt = Math.round(com.tencent.mm.cb.a.getDensity(ak.getContext()) * paramInt);
-      AppMethodBeat.o(161715);
-      return paramInt;
+      if (IEY == null) {
+        IEY = new an();
+      }
+      an localan = IEY;
+      AppMethodBeat.o(117735);
+      return localan;
     }
-    paramInt = Math.round(com.tencent.mm.cc.a.flD() * paramInt);
-    AppMethodBeat.o(161715);
-    return paramInt;
+    finally
+    {
+      AppMethodBeat.o(117735);
+    }
+  }
+  
+  public final void w(final String paramString, final int paramInt, final boolean paramBoolean)
+  {
+    AppMethodBeat.i(184555);
+    Log.i("MicroMsg.WebSearch.WebSearchPreloadExport", "preloadWebView %s %s %s %s", new Object[] { MMApplicationContext.getProcessName(), paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if (MMApplicationContext.isToolsMpProcess())
+    {
+      Log.i("MicroMsg.WebSearch.WebSearchPreloadExport", "current preload mgr size %s", new Object[] { Integer.valueOf(this.IEX.size()) });
+      if (paramBoolean) {
+        this.IEX.remove(Integer.valueOf(paramInt));
+      }
+      if (!this.IEX.containsKey(Integer.valueOf(paramInt)))
+      {
+        ao localao = new ao(paramInt);
+        localao.aXi(paramString);
+        this.IEX.put(Integer.valueOf(paramInt), localao);
+        AppMethodBeat.o(184555);
+        return;
+      }
+      ((ao)this.IEX.get(Integer.valueOf(paramInt))).aXi(paramString);
+      AppMethodBeat.o(184555);
+      return;
+    }
+    if (MMApplicationContext.isMainProcess()) {
+      h.RTc.aX(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(117733);
+          Log.i("MicroMsg.WebSearch.WebSearchPreloadExport", "sending broadcast");
+          an.e("com.tencent.mm.intent.ACTION_PRELOAD_SEARCH", paramString, paramInt, paramBoolean);
+          AppMethodBeat.o(117733);
+        }
+      });
+    }
+    AppMethodBeat.o(184555);
   }
 }
 

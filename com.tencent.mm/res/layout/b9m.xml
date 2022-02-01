@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fom" android:background="@drawable/bla" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip"
+<RelativeLayout android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/ac7" />
-    <TextView android:textColor="@color/a4d" android:gravity="center" android:layout_gravity="center" android:id="@id/eg7" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fok" />
-</LinearLayout>
+    <TextView android:id="@id/ipm" android:visibility="gone" android:layout_width="@dimen/em" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/mi" />
+    <TextView android:id="@id/h03" android:visibility="gone" android:drawableLeft="@raw/card_photoicon" android:drawablePadding="@dimen/k_" android:layout_toRightOf="@id/ipm" style="@style/ml" />
+    <TextView android:textColor="@color/x0" android:gravity="center|left" android:id="@id/e6y" android:visibility="gone" android:layout_marginTop="@dimen/k5" android:layout_toRightOf="@id/ipm" android:layout_below="@id/h03" style="@style/ml" />
+</RelativeLayout>

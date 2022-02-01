@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderFavTimelineContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderFavFeedUIContract;", "", "()V", "FavFeedPresenter", "FavFeedViewCallback", "plugin-finder_release"})
 public final class g {}
 
 

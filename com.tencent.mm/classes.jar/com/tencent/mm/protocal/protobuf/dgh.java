@@ -4,203 +4,151 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class dgh
-  extends com.tencent.mm.bw.a
+  extends dop
 {
-  public int CreateTime;
-  public int DeleteFlag;
-  public String HNE;
-  public int HNj;
-  public int HNk;
-  public long HNl;
-  public long HNm;
-  public int HNo;
-  public LinkedList<dgn> HNp;
-  public int HNq;
-  public int IsNotRichText;
-  public String Nickname;
-  public String Username;
-  public String hFS;
-  public int nJA;
-  public int ucK;
-  
-  public dgh()
-  {
-    AppMethodBeat.i(125778);
-    this.HNp = new LinkedList();
-    AppMethodBeat.o(125778);
-  }
+  public long Btv;
+  public long KTS;
+  public String MFo;
+  public int MKU;
+  public long MKV;
+  public int MKW;
+  public long MKX;
+  public long appid;
+  public int dDe;
+  public int platform;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125779);
+    AppMethodBeat.i(124539);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Username != null) {
-        paramVarArgs.d(1, this.Username);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.ni(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.Nickname != null) {
-        paramVarArgs.d(2, this.Nickname);
+      paramVarArgs.aM(2, this.MKU);
+      paramVarArgs.bb(3, this.MKV);
+      paramVarArgs.bb(4, this.appid);
+      paramVarArgs.bb(5, this.KTS);
+      paramVarArgs.aM(6, this.MKW);
+      paramVarArgs.aM(7, this.scene);
+      paramVarArgs.aM(8, this.dDe);
+      paramVarArgs.bb(9, this.Btv);
+      paramVarArgs.bb(10, this.MKX);
+      paramVarArgs.aM(11, this.platform);
+      if (this.MFo != null) {
+        paramVarArgs.e(12, this.MFo);
       }
-      paramVarArgs.aS(3, this.ucK);
-      paramVarArgs.aS(4, this.nJA);
-      if (this.hFS != null) {
-        paramVarArgs.d(5, this.hFS);
-      }
-      paramVarArgs.aS(6, this.CreateTime);
-      paramVarArgs.aS(7, this.HNk);
-      paramVarArgs.aS(8, this.HNj);
-      if (this.HNE != null) {
-        paramVarArgs.d(9, this.HNE);
-      }
-      paramVarArgs.aS(10, this.IsNotRichText);
-      paramVarArgs.aZ(11, this.HNl);
-      paramVarArgs.aZ(12, this.HNm);
-      paramVarArgs.aS(13, this.DeleteFlag);
-      paramVarArgs.aS(14, this.HNo);
-      paramVarArgs.e(15, 8, this.HNp);
-      paramVarArgs.aS(16, this.HNq);
-      AppMethodBeat.o(125779);
+      AppMethodBeat.o(124539);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Username == null) {
-        break label1050;
+      if (this.BaseRequest == null) {
+        break label806;
       }
     }
-    label1050:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Username) + 0;; paramInt = 0)
+    label806:
+    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.Nickname != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Nickname);
-      }
-      i = i + f.a.a.b.b.a.bz(3, this.ucK) + f.a.a.b.b.a.bz(4, this.nJA);
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.MKU) + g.a.a.b.b.a.r(3, this.MKV) + g.a.a.b.b.a.r(4, this.appid) + g.a.a.b.b.a.r(5, this.KTS) + g.a.a.b.b.a.bu(6, this.MKW) + g.a.a.b.b.a.bu(7, this.scene) + g.a.a.b.b.a.bu(8, this.dDe) + g.a.a.b.b.a.r(9, this.Btv) + g.a.a.b.b.a.r(10, this.MKX) + g.a.a.b.b.a.bu(11, this.platform);
       paramInt = i;
-      if (this.hFS != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.hFS);
+      if (this.MFo != null) {
+        paramInt = i + g.a.a.b.b.a.f(12, this.MFo);
       }
-      i = paramInt + f.a.a.b.b.a.bz(6, this.CreateTime) + f.a.a.b.b.a.bz(7, this.HNk) + f.a.a.b.b.a.bz(8, this.HNj);
-      paramInt = i;
-      if (this.HNE != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.HNE);
-      }
-      i = f.a.a.b.b.a.bz(10, this.IsNotRichText);
-      int j = f.a.a.b.b.a.p(11, this.HNl);
-      int k = f.a.a.b.b.a.p(12, this.HNm);
-      int m = f.a.a.b.b.a.bz(13, this.DeleteFlag);
-      int n = f.a.a.b.b.a.bz(14, this.HNo);
-      int i1 = f.a.a.a.c(15, 8, this.HNp);
-      int i2 = f.a.a.b.b.a.bz(16, this.HNq);
-      AppMethodBeat.o(125779);
-      return paramInt + i + j + k + m + n + i1 + i2;
+      AppMethodBeat.o(124539);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.HNp.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(125779);
+        AppMethodBeat.o(124539);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         dgh localdgh = (dgh)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(125779);
+          AppMethodBeat.o(124539);
           return -1;
         case 1: 
-          localdgh.Username = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 2: 
-          localdgh.Nickname = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 3: 
-          localdgh.ucK = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 4: 
-          localdgh.nJA = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 5: 
-          localdgh.hFS = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 6: 
-          localdgh.CreateTime = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 7: 
-          localdgh.HNk = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 8: 
-          localdgh.HNj = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 9: 
-          localdgh.HNE = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 10: 
-          localdgh.IsNotRichText = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 11: 
-          localdgh.HNl = ((f.a.a.a.a)localObject1).OmT.zd();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 12: 
-          localdgh.HNm = ((f.a.a.a.a)localObject1).OmT.zd();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 13: 
-          localdgh.DeleteFlag = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 14: 
-          localdgh.HNo = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(125779);
-          return 0;
-        case 15: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new dgn();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((dgn)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localdgh.HNp.add(localObject1);
+            localObject1 = new jr();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localdgh.BaseRequest = ((jr)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(125779);
+          AppMethodBeat.o(124539);
+          return 0;
+        case 2: 
+          localdgh.MKU = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(124539);
+          return 0;
+        case 3: 
+          localdgh.MKV = ((g.a.a.a.a)localObject1).UbS.zl();
+          AppMethodBeat.o(124539);
+          return 0;
+        case 4: 
+          localdgh.appid = ((g.a.a.a.a)localObject1).UbS.zl();
+          AppMethodBeat.o(124539);
+          return 0;
+        case 5: 
+          localdgh.KTS = ((g.a.a.a.a)localObject1).UbS.zl();
+          AppMethodBeat.o(124539);
+          return 0;
+        case 6: 
+          localdgh.MKW = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(124539);
+          return 0;
+        case 7: 
+          localdgh.scene = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(124539);
+          return 0;
+        case 8: 
+          localdgh.dDe = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(124539);
+          return 0;
+        case 9: 
+          localdgh.Btv = ((g.a.a.a.a)localObject1).UbS.zl();
+          AppMethodBeat.o(124539);
+          return 0;
+        case 10: 
+          localdgh.MKX = ((g.a.a.a.a)localObject1).UbS.zl();
+          AppMethodBeat.o(124539);
+          return 0;
+        case 11: 
+          localdgh.platform = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(124539);
           return 0;
         }
-        localdgh.HNq = ((f.a.a.a.a)localObject1).OmT.zc();
-        AppMethodBeat.o(125779);
+        localdgh.MFo = ((g.a.a.a.a)localObject1).UbS.readString();
+        AppMethodBeat.o(124539);
         return 0;
       }
-      AppMethodBeat.o(125779);
+      AppMethodBeat.o(124539);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dgh
  * JD-Core Version:    0.7.0.1
  */

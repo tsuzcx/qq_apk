@@ -1,35 +1,34 @@
 package com.tencent.mm.plugin.eggspring.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.t.a.e;
+import com.tencent.mm.t.a.f;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "", "()V", "appId", "", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "hasLuckyBag", "", "getHasLuckyBag", "()Z", "setHasLuckyBag", "(Z)V", "interval", "", "getInterval", "()I", "setInterval", "(I)V", "keyWord", "getKeyWord", "setKeyWord", "traceId", "getTraceId", "setTraceId", "toString", "Companion", "plugin-eggspring_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/cgi/GetInteractionMaterialCgi;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/eggspring/model/GetInteractionMaterialResp;", "keyword", "", "uxinfo", "source", "", "traceId", "(Ljava/lang/String;Ljava/lang/String;ILjava/lang/String;)V", "plugin-eggspring_release"})
 public final class c
+  extends com.tencent.mm.ak.c<f>
 {
-  public static final a pFN;
-  public String appId;
-  public int gxu = 10;
-  public String ilP;
-  public String jWi;
-  public boolean pFM;
-  
-  static
+  public c(String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(108152);
-    pFN = new a((byte)0);
-    AppMethodBeat.o(108152);
+    AppMethodBeat.i(194566);
+    e locale = new e();
+    locale.dDv = paramString1;
+    locale.gTk = paramString2;
+    locale.source = 0;
+    locale.gTl = paramString3;
+    paramString1 = new d.a();
+    paramString1.c((a)locale);
+    paramString1.d((a)new f());
+    paramString1.sI(0);
+    paramString1.sJ(0);
+    paramString1.MB("/cgi-bin/mmoc-bin/interaction/get_interaction_material");
+    paramString1.sG(4310);
+    c(paramString1.aXF());
+    AppMethodBeat.o(194566);
   }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(108151);
-    String str = "LuckyBagInfo(hasLuckyBag=" + this.pFM + ", traceId=" + this.jWi + ", interval=" + this.gxu + ", keyWord=" + this.ilP + ", appId=" + this.appId + ')';
-    AppMethodBeat.o(108151);
-    return str;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo$Companion;", "", "()V", "HAS_LUCKY_BAG", "", "NO_LUCKY_BAG", "plugin-eggspring_release"})
-  public static final class a {}
 }
 
 

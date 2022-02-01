@@ -3,39 +3,39 @@ package com.tencent.mm.plugin.fts.ui.widget;
 import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.tools.r;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.tools.s;
 
 public final class c
-  extends r
+  extends s
 {
-  public boolean tOL;
+  public boolean xfJ;
   
   public final void a(FragmentActivity paramFragmentActivity, Menu paramMenu)
   {
     AppMethodBeat.i(112329);
     if (paramFragmentActivity == null)
     {
-      ae.w("MicroMsg.FTSVoiceSearchViewHelper", "on add search menu, activity is null");
+      Log.w("MicroMsg.FTSVoiceSearchViewHelper", "on add search menu, activity is null");
       AppMethodBeat.o(112329);
       return;
     }
-    if (this.Lhj == null) {
-      this.Lhj = new FTSActionBarSearchView(paramFragmentActivity);
+    if (this.Qwh == null) {
+      this.Qwh = new FTSActionBarSearchView(paramFragmentActivity);
     }
     super.a(paramFragmentActivity, paramMenu);
     AppMethodBeat.o(112329);
   }
   
-  public final boolean aOD()
+  public final boolean biK()
   {
-    return this.tOL;
+    return this.xfJ;
   }
   
   public final void setCursorVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(112330);
-    ((FTSActionBarSearchView)this.Lhj).setCursorVisible(paramBoolean);
+    ((FTSActionBarSearchView)this.Qwh).setCursorVisible(paramBoolean);
     AppMethodBeat.o(112330);
   }
   
@@ -50,14 +50,14 @@ public final class c
     }
     catch (Exception paramString)
     {
-      ae.e("MicroMsg.FTSVoiceSearchViewHelper", "setSearchContent exception: " + paramString.getMessage());
+      Log.e("MicroMsg.FTSVoiceSearchViewHelper", "setSearchContent exception: " + paramString.getMessage());
       AppMethodBeat.o(112331);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.widget.c
  * JD-Core Version:    0.7.0.1
  */

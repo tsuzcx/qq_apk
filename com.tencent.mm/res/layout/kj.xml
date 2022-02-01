@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/a8e" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/cpd" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/c9g" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
-        <ProgressBar android:layout_gravity="center" android:id="@id/cp4" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a4p" />
+    <RelativeLayout android:id="@id/awj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct">
+        <RelativeLayout android:orientation="vertical" android:id="@id/awk" android:layout_width="fill_parent" android:layout_height="@dimen/x1">
+            <ImageView android:id="@id/bgv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        </RelativeLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/awn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_below="@id/awk">
+            <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/t" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/awo" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:lineSpacingExtra="@dimen/tg" />
+            <LinearLayout android:orientation="vertical" android:id="@id/awl" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/km" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/ggb" android:background="@drawable/hz" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </RelativeLayout>
-</RelativeLayout>
+</LinearLayout>

@@ -17,13 +17,13 @@ public final class d
     super(paramContext, paramView1, paramView2, paramView3, paramView4, paramView5, paramView6, paramView7, paramView8);
   }
   
-  protected final void eXV()
+  protected final void gha()
   {
     AppMethodBeat.i(80764);
     Log.i("MicroMsg.WebSearch.SosAnimatorController", "search to init");
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.EzN[0][0] - this.EzD >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.EzT);
+    if (this.JoU[0][0] - this.JoK >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.Jpa);
     }
     for (;;)
     {
@@ -41,8 +41,8 @@ public final class d
         {
           AppMethodBeat.i(80761);
           d.this.isAnimating = false;
-          if (d.this.EzQ != null) {
-            d.this.EzQ.onAnimationEnd();
+          if (d.this.JoX != null) {
+            d.this.JoX.onAnimationEnd();
           }
           AppMethodBeat.o(80761);
         }
@@ -53,8 +53,8 @@ public final class d
         {
           AppMethodBeat.i(80760);
           d.this.isAnimating = true;
-          if (d.this.EzQ != null) {
-            d.this.EzQ.onAnimationStart();
+          if (d.this.JoX != null) {
+            d.this.JoX.onAnimationStart();
           }
           AppMethodBeat.o(80760);
         }
@@ -62,17 +62,17 @@ public final class d
       localAnimatorSet.start();
       AppMethodBeat.o(80764);
       return;
-      localValueAnimator.addUpdateListener(this.EzU);
+      localValueAnimator.addUpdateListener(this.Jpb);
     }
   }
   
-  protected final void eXW()
+  protected final void ghb()
   {
     AppMethodBeat.i(80765);
     Log.i("MicroMsg.WebSearch.SosAnimatorController", "init to search");
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    if (this.EzN[0][0] - this.EzD >= 0.0F) {
-      localValueAnimator.addUpdateListener(this.EzR);
+    if (this.JoU[0][0] - this.JoK >= 0.0F) {
+      localValueAnimator.addUpdateListener(this.JoY);
     }
     for (;;)
     {
@@ -90,8 +90,8 @@ public final class d
         {
           AppMethodBeat.i(80763);
           d.this.isAnimating = false;
-          if (d.this.EzQ != null) {
-            d.this.EzQ.onAnimationEnd();
+          if (d.this.JoX != null) {
+            d.this.JoX.onAnimationEnd();
           }
           AppMethodBeat.o(80763);
         }
@@ -102,8 +102,8 @@ public final class d
         {
           AppMethodBeat.i(80762);
           d.this.isAnimating = true;
-          if (d.this.EzQ != null) {
-            d.this.EzQ.onAnimationStart();
+          if (d.this.JoX != null) {
+            d.this.JoX.onAnimationStart();
           }
           AppMethodBeat.o(80762);
         }
@@ -111,13 +111,13 @@ public final class d
       localAnimatorSet.start();
       AppMethodBeat.o(80765);
       return;
-      localValueAnimator.addUpdateListener(this.EzS);
+      localValueAnimator.addUpdateListener(this.JoZ);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.fts.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/ai_" android:padding="@dimen/ir" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/i6"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.emoji.BannerEmojiView android:id="@id/bic" android:background="#ffcacaca" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
-    <ImageView android:id="@id/e23" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/aqq" android:scaleType="centerInside" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/is" android:textColor="@color/wx" android:id="@id/ix0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fdh" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/wx" android:id="@id/ix1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

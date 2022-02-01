@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class PatTipWrapView
   extends FrameLayout
 {
-  private View wVN;
+  private View ARQ;
   
   public PatTipWrapView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -19,9 +19,9 @@ public class PatTipWrapView
   public PatTipWrapView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(220389);
-    this.wVN = View.inflate(getContext(), 2131496417, null);
-    AppMethodBeat.o(220389);
+    AppMethodBeat.i(207011);
+    this.ARQ = View.inflate(getContext(), 2131495900, null);
+    AppMethodBeat.o(207011);
   }
 }
 

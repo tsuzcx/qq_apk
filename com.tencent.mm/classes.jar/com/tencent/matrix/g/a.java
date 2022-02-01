@@ -29,18 +29,18 @@ public final class a
       return Pattern.matches("cpu[0-9]", paramAnonymousFile.getName());
     }
   };
-  private static a cOk = null;
-  private static long cOl = 0L;
-  private static long cOm = 0L;
-  private static int cOn = 0;
+  private static a deJ = null;
+  private static long deK = 0L;
+  private static long deL = 0L;
+  private static int deM = 0;
   
-  public static long Jw()
+  public static long TK()
   {
     return Runtime.getRuntime().freeMemory() / 1024L;
   }
   
   /* Error */
-  public static double Jx()
+  public static double TL()
   {
     // Byte code:
     //   0: aconst_null
@@ -414,7 +414,7 @@ public final class a
     //   125	135	592	java/lang/Exception
   }
   
-  private static int Jy()
+  private static int TM()
   {
     int j = 0;
     if (Build.VERSION.SDK_INT <= 10) {
@@ -423,10 +423,10 @@ public final class a
     int i;
     try
     {
-      int k = eh("/sys/devices/system/cpu/possible");
+      int k = eR("/sys/devices/system/cpu/possible");
       i = k;
       if (k == 0) {
-        i = eh("/sys/devices/system/cpu/present");
+        i = eR("/sys/devices/system/cpu/present");
       }
       if (i == 0)
       {
@@ -449,7 +449,7 @@ public final class a
     return j;
   }
   
-  public static long Jz()
+  public static long TN()
   {
     int i = 0;
     Object localObject1 = String.format("/proc/%s/status", new Object[] { Integer.valueOf(Process.myPid()) });
@@ -492,10 +492,10 @@ public final class a
   {
     try
     {
-      paramJSONObject.put("machine", aP(paramApplication));
-      paramJSONObject.put("cpu_app", Jx());
+      paramJSONObject.put("machine", bj(paramApplication));
+      paramJSONObject.put("cpu_app", TL());
       paramJSONObject.put("mem", getTotalMemory(paramApplication));
-      paramJSONObject.put("mem_free", aT(paramApplication));
+      paramJSONObject.put("mem_free", bn(paramApplication));
       return paramJSONObject;
     }
     catch (JSONException paramApplication)
@@ -505,63 +505,63 @@ public final class a
     return paramJSONObject;
   }
   
-  public static a aP(Context paramContext)
+  public static a bj(Context paramContext)
   {
-    if (cOk != null) {
-      return cOk;
+    if (deJ != null) {
+      return deJ;
     }
     long l1 = System.currentTimeMillis();
     long l2 = getTotalMemory(paramContext);
-    int i = Jy();
+    int i = TM();
     c.i("Matrix.DeviceUtil", "[getLevel] totalMemory:%s coresNum:%s", new Object[] { Long.valueOf(l2), Integer.valueOf(i) });
     if (l2 >= 8589934592L) {
-      cOk = a.cOo;
+      deJ = a.deN;
     }
     for (;;)
     {
-      c.i("Matrix.DeviceUtil", "getLevel, cost:" + (System.currentTimeMillis() - l1) + ", level:" + cOk, new Object[0]);
-      return cOk;
+      c.i("Matrix.DeviceUtil", "getLevel, cost:" + (System.currentTimeMillis() - l1) + ", level:" + deJ, new Object[0]);
+      return deJ;
       if (l2 >= 6442450944L) {
-        cOk = a.cOp;
+        deJ = a.deO;
       } else if (l2 >= 4294967296L) {
-        cOk = a.cOq;
+        deJ = a.deP;
       } else if (l2 >= 2147483648L)
       {
         if (i >= 4) {
-          cOk = a.cOq;
+          deJ = a.deP;
         } else if (i >= 2) {
-          cOk = a.cOr;
+          deJ = a.deQ;
         } else if (i > 0) {
-          cOk = a.cOr;
+          deJ = a.deQ;
         }
       }
       else if ((0L <= l2) && (l2 < 1073741824L)) {
-        cOk = a.cOs;
+        deJ = a.deR;
       } else {
-        cOk = a.cOt;
+        deJ = a.deS;
       }
     }
   }
   
-  public static long aQ(Context paramContext)
+  public static long bk(Context paramContext)
   {
-    if (0L != cOm) {
-      return cOm;
+    if (0L != deL) {
+      return deL;
     }
     getTotalMemory(paramContext);
-    return cOm;
+    return deL;
   }
   
-  public static int aR(Context paramContext)
+  public static int bl(Context paramContext)
   {
-    if (cOn != 0) {
-      return cOn * 1024;
+    if (deM != 0) {
+      return deM * 1024;
     }
     getTotalMemory(paramContext);
-    return cOn * 1024;
+    return deM * 1024;
   }
   
-  public static boolean aS(Context paramContext)
+  public static boolean bm(Context paramContext)
   {
     ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
     ((ActivityManager)paramContext.getSystemService("activity")).getMemoryInfo(localMemoryInfo);
@@ -569,7 +569,7 @@ public final class a
   }
   
   /* Error */
-  public static long aT(Context paramContext)
+  public static long bn(Context paramContext)
   {
     // Byte code:
     //   0: getstatic 146	android/os/Build$VERSION:SDK_INT	I
@@ -758,7 +758,7 @@ public final class a
     //   153	160	302	java/lang/Exception
   }
   
-  public static Debug.MemoryInfo aU(Context paramContext)
+  public static Debug.MemoryInfo bo(Context paramContext)
   {
     try
     {
@@ -813,7 +813,7 @@ public final class a
   }
   
   /* Error */
-  private static int eh(String paramString)
+  private static int eR(String paramString)
   {
     // Byte code:
     //   0: new 332	java/io/FileInputStream
@@ -1028,8 +1028,8 @@ public final class a
   public static long getTotalMemory(Context paramContext)
   {
     long l1 = 0L;
-    if (0L != cOl) {
-      l1 = cOl;
+    if (0L != deK) {
+      l1 = deK;
     }
     long l2;
     do
@@ -1040,14 +1040,14 @@ public final class a
     ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
     paramContext.getMemoryInfo(localMemoryInfo);
-    cOl = localMemoryInfo.totalMem;
-    cOm = localMemoryInfo.threshold;
+    deK = localMemoryInfo.totalMem;
+    deL = localMemoryInfo.threshold;
     l1 = Runtime.getRuntime().maxMemory();
     if (l1 == 9223372036854775807L) {}
-    for (cOn = paramContext.getMemoryClass();; cOn = (int)(l1 / 1048576L))
+    for (deM = paramContext.getMemoryClass();; deM = (int)(l1 / 1048576L))
     {
-      c.i("Matrix.DeviceUtil", "getTotalMemory cost:" + (System.currentTimeMillis() - l2) + ", total_mem:" + cOl + ", LowMemoryThresold:" + cOm + ", Memory Class:" + cOn, new Object[0]);
-      return cOl;
+      c.i("Matrix.DeviceUtil", "getTotalMemory cost:" + (System.currentTimeMillis() - l2) + ", total_mem:" + deK + ", LowMemoryThresold:" + deL + ", Memory Class:" + deM, new Object[0]);
+      return deK;
     }
   }
   

@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.appbrand.page.a;
 
 public abstract interface h
 {
-  public abstract void DN();
+  public abstract void Nj();
   
-  public abstract void DO();
+  public abstract void Nk();
   
-  public abstract boolean DQ();
+  public abstract boolean Nm();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.a.h
  * JD-Core Version:    0.7.0.1
  */

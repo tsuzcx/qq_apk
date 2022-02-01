@@ -7,14 +7,19 @@ import com.tencent.mm.ui.widget.a.e;
 public final class d
   extends e
 {
-  public d(Context paramContext, int paramInt, boolean paramBoolean)
+  public d(Context paramContext)
   {
-    super(paramContext, paramInt, paramBoolean);
+    super(paramContext, 1, false);
+  }
+  
+  public d(Context paramContext, byte paramByte)
+  {
+    super(paramContext, false, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.d
  * JD-Core Version:    0.7.0.1
  */

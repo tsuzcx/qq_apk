@@ -15,16 +15,17 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.b.a.db;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.g.b.a.fp;
 import com.tencent.mm.live.api.LiveConfig;
-import com.tencent.mm.live.b.g.b;
-import com.tencent.mm.live.b.g.c;
-import com.tencent.mm.live.b.g.d;
-import com.tencent.mm.live.b.i;
+import com.tencent.mm.live.b.k;
+import com.tencent.mm.live.b.x.b;
+import com.tencent.mm.live.b.x.c;
+import com.tencent.mm.live.b.x.d;
 import com.tencent.mm.live.c.ab;
 import com.tencent.mm.live.c.ab.a;
 import com.tencent.mm.live.c.ac;
+import com.tencent.mm.live.c.ae;
 import com.tencent.mm.live.c.ag;
 import com.tencent.mm.live.c.ai;
 import com.tencent.mm.live.c.ak;
@@ -40,93 +41,100 @@ import com.tencent.mm.live.c.bg;
 import com.tencent.mm.live.c.bi;
 import com.tencent.mm.live.c.bk;
 import com.tencent.mm.live.c.o;
-import com.tencent.mm.live.c.t;
-import com.tencent.mm.live.core.b.j;
-import com.tencent.mm.live.core.core.b.e.d;
-import com.tencent.mm.live.core.core.c.a;
-import com.tencent.mm.live.core.core.c.b;
+import com.tencent.mm.live.core.core.b.g.d;
+import com.tencent.mm.live.core.core.e.a;
+import com.tencent.mm.live.core.core.e.d;
+import com.tencent.mm.live.core.core.e.h;
+import com.tencent.mm.live.core.mini.AbsLiveMiniView;
 import com.tencent.mm.live.core.view.LivePreviewView;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.protocal.protobuf.bvk;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.live.core.view.LiveVideoView;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.protocal.protobuf.civ;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.at;
 import com.tencent.rtmp.TXLivePlayer;
 import com.tencent.rtmp.ui.TXCloudVideoView;
 import com.tencent.trtc.TRTCCloudDef.TRTCParams;
-import d.g.b.p;
-import d.l;
 import java.util.ArrayList;
+import kotlin.g.b.p;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/view/LiveVisitorPluginLayout;", "Lcom/tencent/mm/live/view/BaseLivePluginLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/live/core/core/LiveCallback;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "anchorExceptionInTRTC", "", "audienceMode", "", "audioHelperTool", "Lcom/tencent/mm/model/AudioHelperTool;", "kotlin.jvm.PlatformType", "liveAfterPlugin", "Lcom/tencent/mm/live/plugin/LiveAfterPlugin;", "liveCommentPlugin", "Lcom/tencent/mm/live/plugin/LiveCommentPlugin;", "liveCommonInfoPlugin", "Lcom/tencent/mm/live/plugin/LiveCommonInfoPlugin;", "liveCore", "Lcom/tencent/mm/live/core/core/visitor/LiveVisitorTRTCCore;", "liveDebugPlugin", "Lcom/tencent/mm/live/plugin/LiveDebugPlugin;", "liveExceptionPlugin", "Lcom/tencent/mm/live/plugin/LiveExceptionPlugin;", "liveFaceVerifyPlugin", "Lcom/tencent/mm/live/plugin/LiveFaceVerifyPlugin;", "liveGuestRightPanelPlugin", "Lcom/tencent/mm/live/plugin/LiveGuestRightPanelPlugin;", "liveInputPlugin", "Lcom/tencent/mm/live/plugin/LiveInputPlugin;", "liveKickedPlugin", "Lcom/tencent/mm/live/plugin/LiveKickedPlugin;", "liveLikeConfettiPlugin", "Lcom/tencent/mm/live/plugin/LiveLikeConfettiPlugin;", "liveLoadingPlugin", "Lcom/tencent/mm/live/plugin/LiveLoadingPlugin;", "liveMemberListPlugin", "Lcom/tencent/mm/live/plugin/LiveMembersListPlugin;", "liveMemberProfilePlugin", "Lcom/tencent/mm/live/plugin/LiveMemberProfilePlugin;", "liveMessageCallback", "Lkotlin/Function0;", "", "liveMicUserHeaderPlugin", "Lcom/tencent/mm/live/plugin/LiveMicHeaderPlugin;", "liveMinimizePlugin", "Lcom/tencent/mm/live/plugin/LiveMinimizePlugin;", "livePreviewPlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorPreviewPlugin;", "liveShadowPlugin", "Lcom/tencent/mm/live/plugin/LiveShadowPlugin;", "liveTXLivePlayerPlygin", "Lcom/tencent/mm/live/plugin/LiveTXLivePlayerPlygin;", "liveTitlePlugin", "Lcom/tencent/mm/live/plugin/LiveTitleInfoPlugin;", "liveVideoMicPlugin", "Lcom/tencent/mm/live/plugin/LiveVideoMicPlugin;", "liveVisitorClosePlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorClosePlugin;", "liveVisitorCommentPlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorCommentPlugin;", "navigation", "Lcom/tencent/mm/live/controller/ILiveUINavigation;", "pluginShow", "rotationEnable", "tempHidePlugins", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lkotlin/collections/ArrayList;", "callback", "errorCode", "param", "Landroid/os/Bundle;", "checkAnchorStatus", "checkClickArea", "x", "", "y", "validCallback", "chooseAudienceMode", "byOrientationChange", "enterRoom", "liveName", "", "roomID", "", "wechatRoomId", "getLiveRole", "getRelativeLayoutId", "handleEnterRoom", "handleJoinLiveErr", "errCode", "errMsg", "initLogic", "router", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "isFinished", "keyboardChange", "show", "height", "mount", "name", "onBackPress", "onCallStateChanged", "state", "incomingNumber", "onRotationSwitchChange", "onSceneEnd", "errType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "pause", "requestLinkMic", "resume", "start", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "toggleShowPlugins", "unMount", "updatePlugin", "Companion", "plugin-logic_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/view/LiveVisitorPluginLayout;", "Lcom/tencent/mm/live/view/RoomBaseLivePluginLayout;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/live/core/core/LiveCallback;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "anchorExceptionInTRTC", "", "audienceMode", "", "audioHelperTool", "Lcom/tencent/mm/model/AudioHelperTool;", "kotlin.jvm.PlatformType", "curNetworkQuality", "liveAfterPlugin", "Lcom/tencent/mm/live/plugin/LiveAfterPlugin;", "liveCommentPlugin", "Lcom/tencent/mm/live/plugin/LiveCommentPlugin;", "liveCommonInfoPlugin", "Lcom/tencent/mm/live/plugin/LiveCommonInfoPlugin;", "liveCore", "Lcom/tencent/mm/live/core/core/visitor/LiveVisitorTRTCCore;", "liveDebugPlugin", "Lcom/tencent/mm/live/plugin/LiveDebugPlugin;", "liveExceptionPlugin", "Lcom/tencent/mm/live/plugin/LiveExceptionPlugin;", "liveFaceVerifyPlugin", "Lcom/tencent/mm/live/plugin/LiveFaceVerifyPlugin;", "liveGuestRightPanelPlugin", "Lcom/tencent/mm/live/plugin/LiveGuestRightPanelPlugin;", "liveInputPlugin", "Lcom/tencent/mm/live/plugin/LiveInputPlugin;", "liveKickedPlugin", "Lcom/tencent/mm/live/plugin/LiveKickedPlugin;", "liveLikeConfettiPlugin", "Lcom/tencent/mm/live/plugin/LiveLikeConfettiPlugin;", "liveLoadingPlugin", "Lcom/tencent/mm/live/plugin/LiveLoadingPlugin;", "liveMemberListPlugin", "Lcom/tencent/mm/live/plugin/LiveMembersListPlugin;", "liveMemberProfilePlugin", "Lcom/tencent/mm/live/plugin/LiveMemberProfilePlugin;", "liveMessageCallback", "Lkotlin/Function0;", "", "liveMicUserHeaderPlugin", "Lcom/tencent/mm/live/plugin/LiveMicHeaderPlugin;", "liveMinimizePlugin", "Lcom/tencent/mm/live/plugin/LiveMinimizePlugin;", "livePreviewPlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorPreviewPlugin;", "liveShadowPlugin", "Lcom/tencent/mm/live/plugin/LiveShadowPlugin;", "liveTXLivePlayerPlygin", "Lcom/tencent/mm/live/plugin/LiveTXLivePlayerPlygin;", "liveTitlePlugin", "Lcom/tencent/mm/live/plugin/LiveTitleInfoPlugin;", "liveVideoMicPlugin", "Lcom/tencent/mm/live/plugin/LiveVideoMicPlugin;", "liveVisitorClosePlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorClosePlugin;", "liveVisitorCommentPlugin", "Lcom/tencent/mm/live/plugin/LiveVisitorCommentPlugin;", "pluginShow", "rotationEnable", "tempHidePlugins", "Ljava/util/ArrayList;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lkotlin/collections/ArrayList;", "timerThread", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "callback", "errorCode", "param", "Landroid/os/Bundle;", "checkAnchorStatus", "checkClickArea", "x", "", "y", "validCallback", "chooseAudienceMode", "byOrientationChange", "enterRoom", "liveName", "", "roomID", "", "wechatRoomId", "getLiveRole", "getRelativeLayoutId", "getRenderMode", "handleEnterRoom", "handleJoinLiveErr", "errCode", "errMsg", "initLogic", "config", "Lcom/tencent/mm/live/api/LiveConfig;", "isFinished", "keyboardChange", "show", "height", "mount", "name", "onBackPress", "onCallStateChanged", "state", "incomingNumber", "onRotationSwitchChange", "onSceneEnd", "errType", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "pause", "requestLinkMic", "resume", "start", "startTimer", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "stop", "stopTimer", "toggleShowPlugins", "unMount", "updatePlugin", "Companion", "plugin-logic_release"})
 public final class LiveVisitorPluginLayout
-  extends BaseLivePluginLayout
-  implements com.tencent.mm.ak.f, com.tencent.mm.live.core.core.b
+  extends RoomBaseLivePluginLayout
+  implements i, com.tencent.mm.live.core.core.c
 {
-  public static final LiveVisitorPluginLayout.a heu;
-  private int gKh;
-  private final d.g.a.a<d.z> gXH;
-  private com.tencent.mm.live.core.core.c.b har;
-  private t hcT;
-  private com.tencent.mm.live.c.c hcV;
-  private as hcX;
-  private com.tencent.mm.live.c.m hcY;
-  private ay hda;
-  private ai hdb;
-  private o hdf;
-  private am hdg;
-  private com.tencent.mm.live.c.ae hdi;
-  private ak hdj;
-  private ac hdk;
-  private ag hdl;
-  private com.tencent.mm.live.c.r hdn;
-  private com.tencent.mm.live.a.a hdo;
-  private final ArrayList<com.tencent.mm.live.c.a> hds;
-  private boolean hdt;
-  private boolean hdu;
-  private final com.tencent.mm.model.d hdv;
-  private bk hek;
-  private aw hel;
-  private com.tencent.mm.live.c.v hem;
-  private com.tencent.mm.live.c.z hen;
-  private bg heo;
-  private com.tencent.mm.live.c.q hep;
-  private bc heq;
-  private ab her;
-  private be hes;
-  private boolean het;
+  public static final a hXe;
+  private int curNetworkQuality;
+  private com.tencent.mm.live.c.t hVH;
+  private com.tencent.mm.live.c.c hVJ;
+  private as hVL;
+  private com.tencent.mm.live.c.m hVM;
+  private ay hVO;
+  private ai hVP;
+  private o hVT;
+  private am hVU;
+  private ae hVW;
+  private ak hVX;
+  private ac hVY;
+  private ag hVZ;
+  private bk hWV;
+  private com.tencent.mm.live.c.v hWW;
+  private com.tencent.mm.live.c.z hWX;
+  private bg hWY;
+  private com.tencent.mm.live.c.q hWZ;
+  private com.tencent.mm.live.c.r hWb;
+  private final ArrayList<com.tencent.mm.live.c.a> hWe;
+  private boolean hWf;
+  private boolean hWg;
+  private final com.tencent.mm.model.d hWh;
+  private bc hXa;
+  private ab hXb;
+  private be hXc;
+  private boolean hXd;
+  private int hzl;
+  private com.tencent.mm.live.core.core.d.b liveCore;
+  private final kotlin.g.a.a<kotlin.x> liveMessageCallback;
+  private aw liveTXLivePlayerPlygin;
+  private MTimerHandler timerThread;
   
   static
   {
-    AppMethodBeat.i(216670);
-    heu = new LiveVisitorPluginLayout.a((byte)0);
-    AppMethodBeat.o(216670);
+    AppMethodBeat.i(208637);
+    hXe = new a((byte)0);
+    AppMethodBeat.o(208637);
   }
   
   public LiveVisitorPluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(216669);
-    this.hdt = true;
-    paramContext = c.a.gJD;
-    this.gKh = c.a.alz();
-    this.hds = new ArrayList();
-    this.hdv = com.tencent.mm.model.d.aAm();
-    this.gXH = ((d.g.a.a)new o(this));
-    AppMethodBeat.o(216669);
+    AppMethodBeat.i(208636);
+    this.hWf = true;
+    paramContext = e.a.hxc;
+    this.hzl = e.a.aCe();
+    this.hWe = new ArrayList();
+    this.hWh = com.tencent.mm.model.d.aTu();
+    paramContext = e.h.hya;
+    this.curNetworkQuality = e.h.aCT();
+    this.liveMessageCallback = ((kotlin.g.a.a)new o(this));
+    this.timerThread = new MTimerHandler("LiveCommonInfoPlugin::Timer", (MTimerHandler.CallBack)new q(this), true);
+    AppMethodBeat.o(208636);
   }
   
-  private final void a(float paramFloat1, float paramFloat2, d.g.a.a<d.z> parama)
+  private final void a(float paramFloat1, float paramFloat2, kotlin.g.a.a<kotlin.x> parama)
   {
-    AppMethodBeat.i(216659);
-    Object localObject = this.hcX;
+    AppMethodBeat.i(208625);
+    Object localObject = this.hVL;
     int j;
     label35:
     int k;
     if (localObject != null)
     {
-      localObject = ((as)localObject).aph();
+      localObject = ((as)localObject).aHH();
       if (localObject == null) {
         break label81;
       }
@@ -154,642 +162,1357 @@ public final class LiveVisitorPluginLayout
       if (k == 0) {
         parama.invoke();
       }
-      AppMethodBeat.o(216659);
+      AppMethodBeat.o(208625);
       return;
     }
   }
   
-  private final void aqT()
+  private final void aJr()
   {
-    AppMethodBeat.i(216655);
-    Object localObject = com.tencent.mm.live.core.core.c.b.gMM;
-    localObject = getContext();
-    p.g(localObject, "context");
-    com.tencent.mm.live.core.core.c.b.a.ct((Context)localObject).ams();
-    localObject = com.tencent.mm.live.core.core.c.b.gMM;
-    localObject = getContext();
-    p.g(localObject, "context");
-    localObject = com.tencent.mm.live.core.core.c.b.a.ct((Context)localObject);
-    String str = com.tencent.mm.cb.a.az(getContext(), 2131766707);
-    p.g(str, "ResourceHelper.getString…tring.live_room_mini_mic)");
-    ((com.tencent.mm.live.core.core.c.b)localObject).xU(str);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreVisitor", "requestLinkMic ret:0");
-    AppMethodBeat.o(216655);
+    AppMethodBeat.i(208621);
+    com.tencent.mm.live.core.core.d.b.a locala = com.tencent.mm.live.core.core.d.b.hCo;
+    getContext();
+    com.tencent.mm.live.core.core.d.b.a.aEf().aDY();
+    Log.i("MicroMsg.LiveCoreVisitor", "requestLinkMic ret:0");
+    AppMethodBeat.o(208621);
   }
   
   private final void c(String paramString1, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(216656);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreVisitor", "join, name:" + paramString1 + ", roomID:" + paramLong);
-    com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.gQZ;
-    new com.tencent.mm.live.b.a(com.tencent.mm.live.b.g.anH().FKy, paramString2, paramString1, (byte)0).a((d.g.a.r)new e(this));
-    AppMethodBeat.o(216656);
+    AppMethodBeat.i(208622);
+    Log.i("MicroMsg.LiveCoreVisitor", "join, name:" + paramString1 + ", roomID:" + paramLong);
+    com.tencent.mm.live.b.x localx = com.tencent.mm.live.b.x.hJf;
+    new k(com.tencent.mm.live.b.x.aGr().hyH, paramString2, paramString1, (byte)0).a((kotlin.g.a.r)new e(this));
+    AppMethodBeat.o(208622);
   }
   
-  private final void dZ(final boolean paramBoolean)
+  private final void chooseAudienceMode(final boolean paramBoolean)
   {
     Object localObject2 = null;
-    AppMethodBeat.i(216653);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreVisitor", "audienceMode:" + this.gKh);
-    int i = this.gKh;
-    Object localObject1 = c.a.gJD;
-    if (i == c.a.alz())
+    AppMethodBeat.i(208618);
+    Log.i("MicroMsg.LiveCoreVisitor", "audienceMode:" + this.hzl);
+    int i = this.hzl;
+    Object localObject1 = e.a.hxc;
+    if (i == e.a.aCe())
     {
-      com.tencent.mm.live.d.f.aqA();
-      localObject1 = this.hek;
+      com.tencent.mm.live.d.f.aIY();
+      localObject1 = this.hWV;
       if (localObject1 != null)
       {
-        localObject2 = com.tencent.mm.live.b.g.gQZ;
-        localObject2 = com.tencent.mm.live.b.g.anL();
+        localObject2 = com.tencent.mm.live.b.x.hJf;
+        localObject2 = com.tencent.mm.live.b.x.aGv();
         if (localObject2 == null) {
-          p.gkB();
+          p.hyc();
         }
-        ((bk)localObject1).a((com.tencent.mm.live.core.core.b.d)localObject2, (d.g.a.b)new c(this, paramBoolean));
+        ((bk)localObject1).a((com.tencent.mm.live.core.core.b.f)localObject2, (kotlin.g.a.b)new c(this, paramBoolean));
       }
-      localObject1 = this.hek;
+      localObject1 = this.hWV;
       if (localObject1 != null)
       {
-        ((bk)localObject1).nL(0);
-        AppMethodBeat.o(216653);
+        ((bk)localObject1).rg(0);
+        AppMethodBeat.o(208618);
         return;
       }
-      AppMethodBeat.o(216653);
+      AppMethodBeat.o(208618);
       return;
     }
-    localObject1 = c.a.gJD;
-    if (i == c.a.alA())
+    localObject1 = e.a.hxc;
+    if (i == e.a.aCf())
     {
-      com.tencent.mm.live.d.f.aqz();
-      localObject1 = this.har;
+      com.tencent.mm.live.d.f.aIX();
+      localObject1 = this.liveCore;
       if (localObject1 != null)
       {
-        localObject3 = com.tencent.mm.live.b.g.gQZ;
-        localObject3 = com.tencent.mm.live.b.g.anL();
+        localObject3 = com.tencent.mm.live.b.x.hJf;
+        localObject3 = com.tencent.mm.live.b.x.aGv();
         if (localObject3 == null) {
-          p.gkB();
+          p.hyc();
         }
-        ((com.tencent.mm.live.core.core.c.b)localObject1).a((com.tencent.mm.live.core.core.b.d)localObject3);
+        ((com.tencent.mm.live.core.core.d.b)localObject1).a((com.tencent.mm.live.core.core.b.f)localObject3);
       }
-      Object localObject3 = this.hel;
-      long l;
+      if (this.liveCore != null)
+      {
+        localObject1 = com.tencent.mm.live.b.x.hJf;
+        localObject1 = com.tencent.mm.live.b.x.aGv();
+        if (localObject1 == null) {
+          p.hyc();
+        }
+        com.tencent.mm.live.core.core.d.a(((com.tencent.mm.live.core.core.b.f)localObject1).hwP);
+      }
+      localObject1 = this.liveTXLivePlayerPlygin;
+      if (localObject1 != null) {
+        aw.a((aw)localObject1, 0, null, getRenderMode(), (kotlin.g.a.b)new d(this, paramBoolean), 3);
+      }
+      localObject1 = this.liveTXLivePlayerPlygin;
+      if (localObject1 != null) {
+        ((aw)localObject1).rg(0);
+      }
+      Object localObject3 = this.liveCore;
       if (localObject3 != null)
       {
-        localObject1 = com.tencent.mm.live.b.g.gQZ;
-        localObject1 = com.tencent.mm.live.b.g.anL();
-        if (localObject1 != null)
+        localObject1 = com.tencent.mm.live.b.x.hJf;
+        long l = com.tencent.mm.live.b.x.aGr().hyH;
+        localObject1 = this.liveTXLivePlayerPlygin;
+        if (localObject1 != null) {}
+        for (localObject1 = ((aw)localObject1).hwO;; localObject1 = null)
         {
-          localObject1 = ((com.tencent.mm.live.core.core.b.d)localObject1).gKm;
-          if (localObject1 != null)
+          aw localaw = this.liveTXLivePlayerPlygin;
+          if (localaw != null) {
+            localObject2 = localaw.aHJ();
+          }
+          ((com.tencent.mm.live.core.core.d.b)localObject3).a(l, (TXLivePlayer)localObject1, (TXCloudVideoView)localObject2);
+          AppMethodBeat.o(208618);
+          return;
+        }
+      }
+    }
+    AppMethodBeat.o(208618);
+  }
+  
+  private final int getRenderMode()
+  {
+    AppMethodBeat.i(208620);
+    if (isLandscape())
+    {
+      AppMethodBeat.o(208620);
+      return 1;
+    }
+    AppMethodBeat.o(208620);
+    return 0;
+  }
+  
+  private final void startTimer()
+  {
+    AppMethodBeat.i(208617);
+    this.timerThread.stopTimer();
+    this.timerThread.startTimer(1000L);
+    AppMethodBeat.o(208617);
+  }
+  
+  public final void callback(int paramInt, Bundle paramBundle)
+  {
+    Object localObject2 = null;
+    Object localObject3 = null;
+    Object localObject1 = null;
+    int i = 0;
+    int j = 0;
+    AppMethodBeat.i(208635);
+    Log.i("MicroMsg.LiveCoreVisitor", "callback:".concat(String.valueOf(paramInt)));
+    Object localObject4 = e.d.hxF;
+    if (paramInt == e.d.aCo())
+    {
+      b.b.a(this, b.c.hLY);
+      AppMethodBeat.o(208635);
+      return;
+    }
+    localObject4 = e.d.hxF;
+    if (paramInt == e.d.aCp())
+    {
+      if (paramBundle != null)
+      {
+        localObject2 = paramBundle.getString("live_user_id");
+        paramBundle.getString("live_user_exit_reason");
+        localObject3 = new StringBuilder("EVT_ROOM_USER_EXIT sdkUid:").append((String)localObject2).append(" micUid:");
+        paramBundle = com.tencent.mm.live.b.x.hJf;
+        paramBundle = com.tencent.mm.live.b.x.aHa().hKU;
+        if (paramBundle != null) {}
+        for (paramBundle = paramBundle.hFG;; paramBundle = null)
+        {
+          Log.i("MicroMsg.LiveCoreAnchor", paramBundle);
+          paramBundle = com.tencent.mm.live.b.x.hJf;
+          localObject3 = com.tencent.mm.live.b.x.aHa().hKU;
+          paramBundle = (Bundle)localObject1;
+          if (localObject3 != null) {
+            paramBundle = ((com.tencent.mm.live.b.b.a.a)localObject3).hFG;
+          }
+          if (!p.j(localObject2, paramBundle))
           {
-            localObject1 = ((com.tencent.mm.live.core.core.b.c)localObject1).gKg;
-            aw.a((aw)localObject3, (String)localObject1, (d.g.a.b)new d(this, paramBoolean));
+            paramBundle = com.tencent.mm.live.b.x.hJf;
+            if (!p.j(localObject2, com.tencent.mm.live.b.x.aGr().MnM)) {}
+          }
+          else
+          {
+            paramBundle = com.tencent.mm.live.b.x.hJf;
+            paramBundle = com.tencent.mm.live.b.x.aHa().hKU;
+            if (paramBundle != null)
+            {
+              localObject1 = this.hWV;
+              if (localObject1 != null)
+              {
+                localObject1 = ((bk)localObject1).hAs;
+                if (localObject1 != null) {
+                  ((LivePreviewView)localObject1).clearAnimation();
+                }
+              }
+              localObject1 = com.tencent.mm.live.b.x.hJf;
+              com.tencent.mm.live.b.x.aHa().a(paramBundle.liveId, paramBundle.hFJ, paramBundle.hFz);
+            }
+          }
+          paramBundle = com.tencent.mm.live.b.x.hJf;
+          if (p.j(localObject2, com.tencent.mm.live.b.x.aGr().MnM))
+          {
+            this.hXd = true;
+            b.b.a(this, b.c.hMq);
+          }
+          AppMethodBeat.o(208635);
+          return;
+        }
+      }
+      AppMethodBeat.o(208635);
+      return;
+    }
+    localObject1 = e.d.hxF;
+    if (paramInt == e.d.aCq()) {
+      if (paramBundle != null)
+      {
+        localObject1 = paramBundle.getString("live_user_id");
+        if (paramBundle.getBoolean("live_media_enable"))
+        {
+          paramBundle = com.tencent.mm.live.b.x.hJf;
+          localObject3 = com.tencent.mm.live.b.x.aHa();
+          if (localObject1 != null) {
+            break label1249;
           }
         }
       }
-      else
-      {
-        localObject1 = this.hel;
-        if (localObject1 != null) {
-          ((aw)localObject1).nL(0);
-        }
-        localObject3 = this.har;
-        if (localObject3 == null) {
-          break label355;
-        }
-        localObject1 = com.tencent.mm.live.b.g.gQZ;
-        l = com.tencent.mm.live.b.g.anH().FKy;
-        localObject1 = this.hel;
-        if (localObject1 == null) {
-          break label349;
-        }
-      }
-      label349:
-      for (localObject1 = ((aw)localObject1).gPy;; localObject1 = null)
-      {
-        aw localaw = this.hel;
-        if (localaw != null) {
-          localObject2 = localaw.apk();
-        }
-        ((com.tencent.mm.live.core.core.c.b)localObject3).a(l, (TXLivePlayer)localObject1, (TXCloudVideoView)localObject2);
-        AppMethodBeat.o(216653);
-        return;
-        localObject1 = null;
-        break;
-      }
     }
-    label355:
-    AppMethodBeat.o(216653);
+    label587:
+    label1249:
+    for (paramBundle = "";; paramBundle = (Bundle)localObject1)
+    {
+      ((com.tencent.mm.live.b.b.a)localObject3).hKW = paramBundle;
+      localObject4 = ((com.tencent.mm.live.b.b.a)localObject3).hKU;
+      paramBundle = (Bundle)localObject2;
+      if (localObject4 != null) {
+        paramBundle = ((com.tencent.mm.live.b.b.a.a)localObject4).hFG;
+      }
+      if ((p.j(localObject1, paramBundle)) && (!((com.tencent.mm.live.b.b.a)localObject3).aHl()))
+      {
+        paramBundle = ((com.tencent.mm.live.b.b.a)localObject3).hKR;
+        if (paramBundle != null)
+        {
+          paramBundle.invoke();
+          AppMethodBeat.o(208635);
+          return;
+        }
+      }
+      AppMethodBeat.o(208635);
+      return;
+      b.b.a(this, b.c.hLL);
+      AppMethodBeat.o(208635);
+      return;
+      AppMethodBeat.o(208635);
+      return;
+      localObject1 = e.d.hxF;
+      if (paramInt == e.d.aCr())
+      {
+        i = this.curNetworkQuality;
+        paramBundle = this.liveCore;
+        if (paramBundle != null)
+        {
+          paramBundle = paramBundle.hAz;
+          if (paramBundle == null) {}
+        }
+        for (paramInt = paramBundle.hzL;; paramInt = e.h.aCT())
+        {
+          this.curNetworkQuality = paramInt;
+          paramBundle = e.h.hya;
+          if (i == e.h.aCV()) {
+            break label587;
+          }
+          paramInt = this.curNetworkQuality;
+          paramBundle = e.h.hya;
+          if (paramInt != e.h.aCV()) {
+            break label587;
+          }
+          b.b.a(this, b.c.hMo);
+          paramBundle = this.hWV;
+          if (paramBundle == null) {
+            break;
+          }
+          paramBundle.pause();
+          AppMethodBeat.o(208635);
+          return;
+          paramBundle = e.h.hya;
+        }
+        AppMethodBeat.o(208635);
+        return;
+        paramBundle = e.h.hya;
+        if (i == e.h.aCV())
+        {
+          paramInt = this.curNetworkQuality;
+          paramBundle = e.h.hya;
+          if (paramInt != e.h.aCV())
+          {
+            b.b.a(this, b.c.hMp);
+            paramBundle = this.hWV;
+            if (paramBundle != null) {
+              paramBundle.resume();
+            }
+            paramBundle = com.tencent.mm.live.b.r.hIg;
+            com.tencent.mm.live.b.r.aGb();
+          }
+        }
+        AppMethodBeat.o(208635);
+        return;
+      }
+      localObject1 = e.d.hxF;
+      long l;
+      if (paramInt == e.d.aCs())
+      {
+        paramBundle = this.liveCore;
+        int k;
+        if ((paramBundle != null) && (paramBundle.hAz.aDu() == true))
+        {
+          i = 1;
+          k = this.hzl;
+          paramBundle = e.a.hxc;
+          if (k != e.a.aCe()) {
+            break label814;
+          }
+          j = 2;
+        }
+        for (;;)
+        {
+          paramBundle = com.tencent.mm.live.b.x.hJf;
+          localObject2 = com.tencent.mm.live.b.x.aGm();
+          paramBundle = com.tencent.mm.live.b.x.hJf;
+          l = com.tencent.mm.live.b.x.aGr().hyH;
+          paramBundle = com.tencent.mm.live.b.x.hJf;
+          paramBundle = com.tencent.mm.live.b.x.aHa().hKU;
+          if (paramBundle != null)
+          {
+            localObject1 = paramBundle.hFz;
+            paramBundle = (Bundle)localObject1;
+            if (localObject1 != null) {}
+          }
+          else
+          {
+            paramBundle = "";
+          }
+          localObject1 = com.tencent.mm.live.b.x.hJf;
+          com.tencent.mm.live.d.e.b((String)localObject2, l, paramBundle, com.tencent.mm.live.b.x.aGt(), i, j, paramInt);
+          AppMethodBeat.o(208635);
+          return;
+          paramBundle = this.liveCore;
+          if ((paramBundle != null) && (paramBundle.hAz.aDt() == true))
+          {
+            i = 2;
+            break;
+          }
+          i = 0;
+          break;
+          paramBundle = e.a.hxc;
+          if (k == e.a.aCf()) {
+            j = 1;
+          }
+        }
+      }
+      localObject1 = e.d.hxF;
+      if (paramInt == e.d.aCu())
+      {
+        paramBundle = com.tencent.mm.live.b.x.hJf;
+        l = com.tencent.mm.live.b.x.aGr().hyH;
+        paramBundle = com.tencent.mm.live.b.x.hJf;
+        paramBundle = com.tencent.mm.live.b.x.aGm();
+        localObject1 = com.tencent.mm.live.b.x.hJf;
+        localObject1 = com.tencent.mm.live.b.x.aGr().LpF;
+        p.g(localObject1, "RoomLiveService.liveInfo.live_name");
+        new k(l, paramBundle, (String)localObject1, (byte)0).a((kotlin.g.a.r)new b(this));
+        AppMethodBeat.o(208635);
+        return;
+      }
+      localObject1 = e.d.hxF;
+      if (paramInt == e.d.aCv())
+      {
+        if (paramBundle != null)
+        {
+          localObject2 = paramBundle.getString("live_user_id");
+          localObject1 = localObject2;
+          if (localObject2 != null) {}
+        }
+        else
+        {
+          localObject1 = "";
+        }
+        p.g(localObject1, "param?.getString(LiveErr…slate.LIVE_USER_ID) ?: \"\"");
+        localObject4 = this.liveCore;
+        localObject2 = localObject3;
+        if (localObject4 != null)
+        {
+          localObject4 = ((com.tencent.mm.live.core.core.trtc.a)localObject4).hAz;
+          localObject2 = localObject3;
+          if (localObject4 != null) {
+            localObject2 = ((com.tencent.mm.live.core.core.b.g)localObject4).hzG;
+          }
+        }
+        if (!Util.isEqual((String)localObject1, (String)localObject2))
+        {
+          localObject2 = com.tencent.mm.live.b.x.hJf;
+          com.tencent.mm.live.b.x.aGG().setUserId((String)localObject1);
+          localObject1 = com.tencent.mm.live.b.x.hJf;
+          localObject1 = com.tencent.mm.live.b.x.aGG();
+          if (paramBundle != null)
+          {
+            paramInt = paramBundle.getInt("live_stream_type");
+            ((x.c)localObject1).streamType = paramInt;
+            localObject1 = com.tencent.mm.live.b.x.hJf;
+            localObject1 = com.tencent.mm.live.b.x.aGG();
+            if (paramBundle == null) {
+              break label1132;
+            }
+          }
+          label1132:
+          for (paramInt = paramBundle.getInt("live_first_frame_width");; paramInt = 0)
+          {
+            ((x.c)localObject1).width = paramInt;
+            localObject1 = com.tencent.mm.live.b.x.hJf;
+            localObject1 = com.tencent.mm.live.b.x.aGG();
+            paramInt = i;
+            if (paramBundle != null) {
+              paramInt = paramBundle.getInt("live_first_frame_height");
+            }
+            ((x.c)localObject1).height = paramInt;
+            b.b.a(this, b.c.hMy);
+            AppMethodBeat.o(208635);
+            return;
+            paramInt = 0;
+            break;
+          }
+        }
+        this.hXd = false;
+        AppMethodBeat.o(208635);
+        return;
+      }
+      paramBundle = e.d.hxF;
+      if (paramInt == e.d.aCy())
+      {
+        b.b.a(this, b.c.hLB);
+        AppMethodBeat.o(208635);
+        return;
+      }
+      paramBundle = e.d.hxF;
+      if (paramInt == e.d.aCA())
+      {
+        b.b.a(this, b.c.hMp);
+        AppMethodBeat.o(208635);
+        return;
+      }
+      paramBundle = e.d.hxF;
+      if (paramInt == e.d.aCB())
+      {
+        b.b.a(this, b.c.hMn);
+        AppMethodBeat.o(208635);
+        return;
+      }
+      paramBundle = e.d.hxF;
+      if (paramInt == e.d.aCC()) {
+        b.b.a(this, b.c.hMo);
+      }
+      AppMethodBeat.o(208635);
+      return;
+    }
   }
   
-  public final void a(com.tencent.mm.live.a.a parama, LiveConfig paramLiveConfig, boolean paramBoolean)
+  public final int getLiveRole()
   {
-    AppMethodBeat.i(216651);
-    p.h(parama, "router");
+    return 0;
+  }
+  
+  public final int getRelativeLayoutId()
+  {
+    return 2131495296;
+  }
+  
+  public final void initLogic(LiveConfig paramLiveConfig, boolean paramBoolean)
+  {
+    AppMethodBeat.i(208615);
     p.h(paramLiveConfig, "config");
-    Object localObject = com.tencent.mm.live.core.core.c.b.gMM;
-    localObject = getContext();
-    p.g(localObject, "context");
-    this.har = com.tencent.mm.live.core.core.c.b.a.ct((Context)localObject);
-    localObject = this.har;
-    if (localObject != null) {
-      ((com.tencent.mm.live.core.core.c.b)localObject).c((com.tencent.mm.live.core.core.b)this);
-    }
-    this.hdo = parama;
-    parama = com.tencent.mm.live.b.g.gQZ;
-    parama = paramLiveConfig.alk();
-    p.g(parama, "config.hostRoomId");
-    com.tencent.mm.live.b.g.yn(parama);
-    parama = com.tencent.mm.live.b.g.gQZ;
-    com.tencent.mm.live.b.g.a(new bvk());
-    parama = com.tencent.mm.live.b.g.gQZ;
-    com.tencent.mm.live.b.g.anH().FKy = paramLiveConfig.alm();
-    parama = com.tencent.mm.live.b.g.gQZ;
-    com.tencent.mm.live.b.g.yo(paramLiveConfig.all());
-    parama = com.tencent.mm.live.b.g.gQZ;
-    parama = paramLiveConfig.alo();
-    p.g(parama, "config.anchorUsername");
-    com.tencent.mm.live.b.g.yp(parama);
-    parama = com.tencent.mm.live.b.g.gQZ;
-    com.tencent.mm.live.b.g.anH().FTM = true;
-    parama = findViewById(2131307768);
-    p.g(parama, "findViewById(R.id.live_right_panel_ui_root)");
-    this.hem = new com.tencent.mm.live.c.v((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307809);
-    p.g(parama, "findViewById(R.id.live_title_ui_root)");
-    this.hda = new ay((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307717);
-    p.g(parama, "findViewById(R.id.live_minimize_ui_root)");
-    this.hdg = new am((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307838);
-    p.g(parama, "findViewById(R.id.live_visitor_comment_root)");
-    this.heo = new bg((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307644);
-    p.g(parama, "findViewById(R.id.live_input_ui_root)");
-    this.hen = new com.tencent.mm.live.c.z((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307549);
-    p.g(parama, "findViewById(R.id.live_after_ui_root)");
-    this.hcV = new com.tencent.mm.live.c.c((RelativeLayout)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307635);
-    p.g(parama, "findViewById(R.id.live_input_debug_view_root)");
-    this.hep = new com.tencent.mm.live.c.q((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307652);
-    p.g(parama, "findViewById(R.id.live_loading_view_root)");
-    this.hdi = new com.tencent.mm.live.c.ae((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307606);
-    p.g(parama, "findViewById(R.id.live_comment_ui_root)");
-    this.hcY = new com.tencent.mm.live.c.m((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307678);
-    p.g(parama, "findViewById(R.id.live_members_list_ui_root)");
-    this.hdb = new ai((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307648);
-    p.g(parama, "findViewById(R.id.live_like_confetti_ui_root)");
-    this.hdk = new ac((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307709);
-    p.g(parama, "findViewById(R.id.live_mic_visitor_header_root)");
-    this.hdj = new ak((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307719);
-    p.g(parama, "findViewById(R.id.live_preview_ui_root)");
-    this.hek = new bk((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307811);
-    p.g(parama, "findViewById(R.id.live_tx_live_player_ui_root)");
-    this.hel = new aw((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307771);
-    p.g(parama, "findViewById(R.id.live_shadow_ui_root)");
-    this.hcX = new as((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307833);
-    p.g(parama, "findViewById(R.id.live_video_mic_ui_root)");
-    this.heq = new bc((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307691);
-    p.g(parama, "findViewById(R.id.live_members_profile_ui_root)");
-    this.hdl = new ag((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307647);
-    p.g(parama, "findViewById(R.id.live_kicked_ui_root)");
-    this.her = new ab((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307837);
-    p.g(parama, "findViewById(R.id.live_visitor_close_ui_root)");
-    this.hes = new be((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307617);
-    p.g(parama, "findViewById(R.id.live_common_info_ui_root)");
-    this.hdf = new o((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307628);
-    p.g(parama, "findViewById(R.id.live_exception_ui_root)");
-    this.hdn = new com.tencent.mm.live.c.r((ViewGroup)parama, (com.tencent.mm.live.c.b)this);
-    parama = findViewById(2131307634);
-    p.g(parama, "findViewById(R.id.live_face_verify_ui_root)");
-    this.hcT = new t((RelativeLayout)parama, (com.tencent.mm.live.c.b)this);
-    localObject = this.hek;
-    if (localObject != null)
+    Object localObject1 = com.tencent.mm.live.core.core.d.b.hCo;
+    getContext();
+    this.liveCore = com.tencent.mm.live.core.core.d.b.a.aEf();
+    localObject1 = this.liveCore;
+    if (localObject1 != null)
     {
-      parama = this.heq;
-      if (parama != null)
+      localObject2 = getContext();
+      p.g(localObject2, "context");
+      ((com.tencent.mm.live.core.core.d.b)localObject1).a((AbsLiveMiniView)new RoomLiveMiniView((Context)localObject2));
+    }
+    localObject1 = this.liveCore;
+    if (localObject1 != null) {
+      ((com.tencent.mm.live.core.core.trtc.a)localObject1).hAx = ((com.tencent.mm.live.core.core.c)this);
+    }
+    localObject1 = com.tencent.mm.live.b.x.hJf;
+    localObject1 = paramLiveConfig.aBD();
+    p.g(localObject1, "config.hostRoomId");
+    com.tencent.mm.live.b.x.GQ((String)localObject1);
+    localObject1 = com.tencent.mm.live.b.x.hJf;
+    com.tencent.mm.live.b.x.a(new civ());
+    localObject1 = com.tencent.mm.live.b.x.hJf;
+    com.tencent.mm.live.b.x.aGr().hyH = paramLiveConfig.getLiveId();
+    localObject1 = com.tencent.mm.live.b.x.hJf;
+    com.tencent.mm.live.b.x.GR(paramLiveConfig.aBE());
+    localObject1 = com.tencent.mm.live.b.x.hJf;
+    localObject1 = paramLiveConfig.aBG();
+    p.g(localObject1, "config.anchorUsername");
+    com.tencent.mm.live.b.x.GS((String)localObject1);
+    localObject1 = com.tencent.mm.live.b.x.hJf;
+    com.tencent.mm.live.b.x.aGr().KNv = true;
+    localObject1 = findViewById(2131303554);
+    p.g(localObject1, "findViewById(R.id.live_right_panel_ui_root)");
+    this.hWW = new com.tencent.mm.live.c.v((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303597);
+    p.g(localObject1, "findViewById(R.id.live_title_ui_root)");
+    this.hVO = new ay((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303501);
+    p.g(localObject1, "findViewById(R.id.live_minimize_ui_root)");
+    this.hVU = new am((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303626);
+    p.g(localObject1, "findViewById(R.id.live_visitor_comment_root)");
+    this.hWY = new bg((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303414);
+    p.g(localObject1, "findViewById(R.id.live_input_ui_root)");
+    this.hWX = new com.tencent.mm.live.c.z((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303307);
+    p.g(localObject1, "findViewById(R.id.live_after_ui_root)");
+    this.hVJ = new com.tencent.mm.live.c.c((RelativeLayout)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303403);
+    p.g(localObject1, "findViewById(R.id.live_input_debug_view_root)");
+    this.hWZ = new com.tencent.mm.live.c.q((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303431);
+    p.g(localObject1, "findViewById(R.id.live_loading_view_root)");
+    this.hVW = new ae((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303368);
+    p.g(localObject1, "findViewById(R.id.live_comment_ui_root)");
+    this.hVM = new com.tencent.mm.live.c.m((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303461);
+    p.g(localObject1, "findViewById(R.id.live_members_list_ui_root)");
+    this.hVP = new ai((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303420);
+    p.g(localObject1, "findViewById(R.id.live_like_confetti_ui_root)");
+    this.hVY = new ac((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303493);
+    p.g(localObject1, "findViewById(R.id.live_mic_visitor_header_root)");
+    this.hVX = new ak((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303505);
+    p.g(localObject1, "findViewById(R.id.live_preview_ui_root)");
+    this.hWV = new bk((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303599);
+    p.g(localObject1, "findViewById(R.id.live_tx_live_player_ui_root)");
+    this.liveTXLivePlayerPlygin = new aw((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303557);
+    p.g(localObject1, "findViewById(R.id.live_shadow_ui_root)");
+    this.hVL = new as((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303621);
+    p.g(localObject1, "findViewById(R.id.live_video_mic_ui_root)");
+    this.hXa = new bc((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303475);
+    p.g(localObject1, "findViewById(R.id.live_members_profile_ui_root)");
+    this.hVZ = new ag((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303418);
+    p.g(localObject1, "findViewById(R.id.live_kicked_ui_root)");
+    this.hXb = new ab((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303625);
+    p.g(localObject1, "findViewById(R.id.live_visitor_close_ui_root)");
+    this.hXc = new be((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303379);
+    p.g(localObject1, "findViewById(R.id.live_common_info_ui_root)");
+    this.hVT = new o((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303390);
+    p.g(localObject1, "findViewById(R.id.live_exception_ui_root)");
+    this.hWb = new com.tencent.mm.live.c.r((ViewGroup)localObject1, (com.tencent.mm.live.c.b)this);
+    localObject1 = findViewById(2131303396);
+    p.g(localObject1, "findViewById(R.id.live_face_verify_ui_root)");
+    this.hVH = new com.tencent.mm.live.c.t((RelativeLayout)localObject1, (com.tencent.mm.live.c.b)this);
+    Object localObject2 = this.hWV;
+    if (localObject2 != null)
+    {
+      localObject1 = this.hXa;
+      if (localObject1 != null)
       {
-        parama = parama.apm();
-        ((bk)localObject).haI = parama;
+        localObject1 = ((bc)localObject1).aHL();
+        ((bk)localObject2).hTC = ((com.tencent.mm.live.core.b.l)localObject1);
       }
     }
     else
     {
-      parama = i.gRP;
-      i.a(paramLiveConfig);
-      parama = this.hcV;
-      if (parama != null) {
-        parama.a(paramLiveConfig);
+      localObject1 = com.tencent.mm.live.b.r.hIg;
+      com.tencent.mm.live.b.r.a(paramLiveConfig);
+      localObject1 = this.hVJ;
+      if (localObject1 != null) {
+        ((com.tencent.mm.live.c.c)localObject1).a(paramLiveConfig);
       }
-      parama = this.hcY;
-      if (parama != null) {
-        parama.a(paramLiveConfig);
+      localObject1 = this.hVM;
+      if (localObject1 != null) {
+        ((com.tencent.mm.live.c.m)localObject1).a(paramLiveConfig);
       }
-      parama = this.hdk;
-      if (parama != null) {
-        parama.a(paramLiveConfig);
+      localObject1 = this.hVY;
+      if (localObject1 != null) {
+        ((ac)localObject1).a(paramLiveConfig);
       }
-      localObject = this.hda;
-      if (localObject != null)
+      localObject2 = this.hVO;
+      if (localObject2 != null)
       {
-        parama = com.tencent.mm.live.b.g.gQZ;
-        parama = com.tencent.mm.live.b.g.anH().Gud;
-        if (parama == null) {
-          break label1677;
+        localObject1 = com.tencent.mm.live.b.x.hJf;
+        localObject1 = com.tencent.mm.live.b.x.aGr().LpF;
+        if (localObject1 == null) {
+          break label1809;
         }
-        parama = (CharSequence)parama;
-        label1022:
-        com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.gQZ;
-        ((ay)localObject).a(parama, com.tencent.mm.live.b.g.anJ());
+        localObject1 = (CharSequence)localObject1;
+        label1140:
+        com.tencent.mm.live.b.x localx = com.tencent.mm.live.b.x.hJf;
+        ((ay)localObject2).a((CharSequence)localObject1, com.tencent.mm.live.b.x.aGt());
       }
-      parama = this.hdb;
-      if (parama != null) {
-        parama.a(paramLiveConfig);
+      localObject1 = this.hVP;
+      if (localObject1 != null) {
+        ((ai)localObject1).a(paramLiveConfig);
       }
-      parama = this.hdl;
-      if (parama != null) {
-        parama.a(paramLiveConfig);
+      localObject1 = this.hVZ;
+      if (localObject1 != null) {
+        ((ag)localObject1).a(paramLiveConfig);
       }
-      parama = this.hdf;
-      if (parama != null) {
-        parama.a(paramLiveConfig);
+      localObject1 = this.hVT;
+      if (localObject1 != null) {
+        ((o)localObject1).aHy();
       }
-      parama = this.hel;
-      if (parama != null)
+      localObject1 = this.liveTXLivePlayerPlygin;
+      if (localObject1 != null) {
+        ((aw)localObject1).aHy();
+      }
+      localObject2 = this.hXa;
+      if (localObject2 != null)
       {
         p.h(paramLiveConfig, "config");
-        if (paramLiveConfig.alj() != LiveConfig.gJa) {
-          break label1687;
+        if (paramLiveConfig.aBC() != LiveConfig.hvT) {
+          break label1820;
         }
-        localObject = com.tencent.mm.live.core.core.a.b.gJU;
-        localObject = parama.gJt.getContext();
-        p.g(localObject, "root.context");
-        parama.gZJ = ((com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.a.b.a.cs((Context)localObject));
+        localObject1 = com.tencent.mm.live.core.core.a.b.hyv;
+        ((com.tencent.mm.live.c.a)localObject2).hwr.getContext();
+        localObject1 = (com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.a.b.a.aDo();
+        label1271:
+        ((bc)localObject2).hSS = ((com.tencent.mm.live.core.core.trtc.a)localObject1);
       }
-      label1138:
-      localObject = this.heq;
-      if (localObject != null)
+      localObject1 = this.hVT;
+      if (localObject1 != null) {
+        ((o)localObject1).rg(8);
+      }
+      localObject1 = this.hXc;
+      if (localObject1 != null) {
+        ((be)localObject1).rg(8);
+      }
+      localObject1 = this.hVJ;
+      if (localObject1 != null) {
+        ((com.tencent.mm.live.c.c)localObject1).rg(8);
+      }
+      localObject1 = this.hWY;
+      if (localObject1 != null) {
+        ((bg)localObject1).rg(8);
+      }
+      localObject1 = this.hWX;
+      if (localObject1 != null) {
+        ((com.tencent.mm.live.c.z)localObject1).rg(8);
+      }
+      localObject1 = this.hWW;
+      if (localObject1 != null) {
+        ((com.tencent.mm.live.c.v)localObject1).rg(8);
+      }
+      localObject1 = this.hVP;
+      if (localObject1 != null) {
+        ((ai)localObject1).rg(8);
+      }
+      localObject1 = this.hVW;
+      if (localObject1 != null) {
+        ((ae)localObject1).Hc(paramLiveConfig.aBG());
+      }
+      localObject1 = this.hWV;
+      if (localObject1 != null) {
+        ((bk)localObject1).rg(0);
+      }
+      localObject1 = this.liveTXLivePlayerPlygin;
+      if (localObject1 != null) {
+        ((aw)localObject1).rg(8);
+      }
+      localObject1 = this.hVL;
+      if (localObject1 != null) {
+        ((as)localObject1).rg(8);
+      }
+      localObject1 = this.hXa;
+      if (localObject1 != null) {
+        ((bc)localObject1).rg(8);
+      }
+      localObject1 = this.hVZ;
+      if (localObject1 != null) {
+        ((ag)localObject1).rg(8);
+      }
+      localObject1 = this.hXb;
+      if (localObject1 != null) {
+        ((ab)localObject1).rg(8);
+      }
+      localObject1 = this.hWb;
+      if (localObject1 != null) {
+        ((com.tencent.mm.live.c.r)localObject1).rg(8);
+      }
+      localObject1 = this.hVH;
+      if (localObject1 != null) {
+        ((com.tencent.mm.live.c.t)localObject1).rg(8);
+      }
+      localObject2 = this.hWV;
+      if (localObject2 != null)
       {
-        p.h(paramLiveConfig, "config");
-        if (paramLiveConfig.alj() != LiveConfig.gJa) {
-          break label1724;
-        }
-        parama = com.tencent.mm.live.core.core.a.b.gJU;
-        parama = ((com.tencent.mm.live.c.a)localObject).gJt.getContext();
-        p.g(parama, "root.context");
-        parama = (com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.a.b.a.cs(parama);
-        label1194:
-        ((bc)localObject).gZJ = parama;
-      }
-      parama = this.hdf;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.hes;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.hcV;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.heo;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.hen;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.hem;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.hdb;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.hdi;
-      if (parama != null) {
-        parama.yD(paramLiveConfig.alo());
-      }
-      parama = this.hek;
-      if (parama != null) {
-        parama.nL(0);
-      }
-      parama = this.hel;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.hcX;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.heq;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.hdl;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.her;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.hdn;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      parama = this.hcT;
-      if (parama != null) {
-        parama.nL(8);
-      }
-      localObject = this.hek;
-      if (localObject != null)
-      {
-        parama = (d.g.a.m)new k(this);
-        localObject = ((bk)localObject).gKW;
-        if (localObject != null) {
-          ((LivePreviewView)localObject).setPreviewTouchListener(parama);
+        localObject1 = (kotlin.g.a.m)new k(this);
+        localObject2 = ((bk)localObject2).hAs;
+        if (localObject2 != null) {
+          ((LivePreviewView)localObject2).setPreviewTouchListener((kotlin.g.a.m)localObject1);
         }
       }
-      parama = this.hel;
-      if (parama != null)
+      localObject1 = this.liveTXLivePlayerPlygin;
+      if (localObject1 != null)
       {
-        localObject = (d.g.a.m)new l(this);
-        parama.gZI.setPreviewTouchListener((d.g.a.m)localObject);
+        localObject2 = (kotlin.g.a.m)new l(this);
+        ((aw)localObject1).hSD.setPreviewTouchListener((kotlin.g.a.m)localObject2);
       }
-      if (paramLiveConfig.getScene() == LiveConfig.gIY)
+      if (paramLiveConfig.getScene() == LiveConfig.hvR)
       {
-        parama = this.hcV;
-        if (parama != null)
+        paramLiveConfig = this.hVJ;
+        if (paramLiveConfig != null)
         {
-          parama.gVr.setVisibility(8);
-          parama.gVq.setVisibility(0);
+          paramLiveConfig.hOl.setVisibility(8);
+          paramLiveConfig.hOk.setVisibility(0);
         }
       }
-      parama = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.b.g.aos().gTr = ((d.g.a.b)new m(this));
-      parama = com.tencent.mm.live.b.c.gPx;
-      com.tencent.mm.live.b.c.e(name(), (d.g.a.a)new n(this));
-      if (!LiveConfig.alp()) {
-        break label1755;
+      paramLiveConfig = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.aHa().hKO = ((kotlin.g.a.b)new m(this));
+      paramLiveConfig = com.tencent.mm.live.b.m.hGg;
+      com.tencent.mm.live.b.m.e(name(), (kotlin.g.a.a)new n(this));
+      if (!LiveConfig.aBO()) {
+        break label1845;
       }
-      parama = findViewById(2131307634);
-      p.g(parama, "findViewById(R.id.live_face_verify_ui_root)");
-      this.hcT = new t((RelativeLayout)parama, (com.tencent.mm.live.c.b)this);
-      a(b.c.gUZ, new Bundle());
-      LiveConfig.dE(false);
+      paramLiveConfig = findViewById(2131303396);
+      p.g(paramLiveConfig, "findViewById(R.id.live_face_verify_ui_root)");
+      this.hVH = new com.tencent.mm.live.c.t((RelativeLayout)paramLiveConfig, (com.tencent.mm.live.c.b)this);
+      statusChange(b.c.hMz, new Bundle());
+      LiveConfig.eu(false);
     }
     for (;;)
     {
-      parama = com.tencent.mm.live.b.c.gPx;
-      com.tencent.mm.live.b.c.d(name(), this.gXH);
-      AppMethodBeat.o(216651);
+      paramLiveConfig = com.tencent.mm.live.b.m.hGg;
+      com.tencent.mm.live.b.m.d(name(), this.liveMessageCallback);
+      AppMethodBeat.o(208615);
       return;
-      parama = null;
+      localObject1 = null;
       break;
-      label1677:
-      parama = (CharSequence)"";
-      break label1022;
-      label1687:
-      localObject = com.tencent.mm.live.core.core.c.b.gMM;
-      localObject = parama.gJt.getContext();
-      p.g(localObject, "root.context");
-      parama.gZJ = ((com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.c.b.a.ct((Context)localObject));
-      break label1138;
-      label1724:
-      parama = com.tencent.mm.live.core.core.c.b.gMM;
-      parama = ((com.tencent.mm.live.c.a)localObject).gJt.getContext();
-      p.g(parama, "root.context");
-      parama = (com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.c.b.a.ct(parama);
-      break label1194;
-      label1755:
-      parama = com.tencent.mm.kernel.g.ajR();
-      p.g(parama, "MMKernel.storage()");
-      if (parama.ajA().getInt(am.a.JdH, 0) == 1)
+      label1809:
+      localObject1 = (CharSequence)"";
+      break label1140;
+      label1820:
+      localObject1 = com.tencent.mm.live.core.core.d.b.hCo;
+      ((com.tencent.mm.live.c.a)localObject2).hwr.getContext();
+      localObject1 = (com.tencent.mm.live.core.core.trtc.a)com.tencent.mm.live.core.core.d.b.a.aEf();
+      break label1271;
+      label1845:
+      paramLiveConfig = com.tencent.mm.kernel.g.aAh();
+      p.g(paramLiveConfig, "MMKernel.storage()");
+      if (paramLiveConfig.azQ().getInt(ar.a.Onn, 0) == 1)
       {
-        parama = this.hep;
-        if (parama != null) {
-          parama.nL(0);
+        paramLiveConfig = this.hWZ;
+        if (paramLiveConfig != null) {
+          paramLiveConfig.rg(0);
         }
       }
       else
       {
-        parama = com.tencent.mm.live.b.g.gQZ;
-        if (com.tencent.mm.live.b.g.anQ() != -1)
+        paramLiveConfig = com.tencent.mm.live.b.x.hJf;
+        if (com.tencent.mm.live.b.x.getLastOrientation() != -1)
         {
-          parama = com.tencent.mm.live.b.g.gQZ;
-          i = com.tencent.mm.live.b.g.anQ();
-          parama = getContext().getSystemService("window");
-          if (parama == null)
+          paramLiveConfig = com.tencent.mm.live.b.x.hJf;
+          i = com.tencent.mm.live.b.x.getLastOrientation();
+          paramLiveConfig = getContext().getSystemService("window");
+          if (paramLiveConfig == null)
           {
-            parama = new d.v("null cannot be cast to non-null type android.view.WindowManager");
-            AppMethodBeat.o(216651);
-            throw parama;
+            paramLiveConfig = new kotlin.t("null cannot be cast to non-null type android.view.WindowManager");
+            AppMethodBeat.o(208615);
+            throw paramLiveConfig;
           }
-          parama = ((WindowManager)parama).getDefaultDisplay();
-          p.g(parama, "((context.getSystemServi…owManager).defaultDisplay");
-          if (i != parama.getRotation()) {}
+          paramLiveConfig = ((WindowManager)paramLiveConfig).getDefaultDisplay();
+          p.g(paramLiveConfig, "((context.getSystemServi…owManager).defaultDisplay");
+          if (i != paramLiveConfig.getRotation()) {}
         }
         else
         {
-          parama = com.tencent.mm.live.b.g.gQZ;
-          paramLiveConfig = com.tencent.mm.live.b.g.anH().Gud;
-          parama = paramLiveConfig;
-          if (paramLiveConfig == null) {
-            parama = "";
+          paramLiveConfig = com.tencent.mm.live.b.x.hJf;
+          localObject1 = com.tencent.mm.live.b.x.aGr().LpF;
+          paramLiveConfig = (LiveConfig)localObject1;
+          if (localObject1 == null) {
+            paramLiveConfig = "";
           }
-          paramLiveConfig = com.tencent.mm.live.b.g.gQZ;
-          long l = com.tencent.mm.live.b.g.anH().FKy;
-          paramLiveConfig = com.tencent.mm.live.b.g.gQZ;
-          c(parama, l, com.tencent.mm.live.b.g.anC());
+          localObject1 = com.tencent.mm.live.b.x.hJf;
+          long l = com.tencent.mm.live.b.x.aGr().hyH;
+          localObject1 = com.tencent.mm.live.b.x.hJf;
+          c(paramLiveConfig, l, com.tencent.mm.live.b.x.aGm());
           continue;
         }
-        parama = com.tencent.mm.live.b.g.gQZ;
-        if (com.tencent.mm.live.b.g.anV().gRh)
+        paramLiveConfig = com.tencent.mm.live.b.x.hJf;
+        if (com.tencent.mm.live.b.x.aGD().hJn)
         {
-          b.b.a(this, b.c.gUw);
+          b.b.a(this, b.c.hLV);
         }
         else
         {
-          parama = this.har;
-          if (parama != null)
+          paramLiveConfig = this.liveCore;
+          if (paramLiveConfig != null)
           {
-            parama = parama.gLc;
-            if ((parama != null) && (parama.alT() == true)) {}
+            paramLiveConfig = paramLiveConfig.hAz;
+            if ((paramLiveConfig != null) && (paramLiveConfig.aDt() == true)) {}
           }
           else
           {
-            parama = this.har;
-            if (parama == null) {
-              break label2013;
+            paramLiveConfig = this.liveCore;
+            if (paramLiveConfig == null) {
+              break label2106;
             }
-            parama = parama.gLc;
-            if ((parama == null) || (parama.alU() != true)) {
-              break label2013;
+            paramLiveConfig = paramLiveConfig.hAz;
+            if ((paramLiveConfig == null) || (paramLiveConfig.aDu() != true)) {
+              break label2106;
             }
           }
-          b.b.a(this, b.c.gUc);
+          b.b.a(this, b.c.hLB);
         }
       }
     }
-    label2013:
-    parama = com.tencent.mm.live.b.g.gQZ;
-    parama = com.tencent.mm.live.b.g.anL();
-    if (parama != null)
+    label2106:
+    paramLiveConfig = com.tencent.mm.live.b.x.hJf;
+    paramLiveConfig = com.tencent.mm.live.b.x.aGv();
+    if (paramLiveConfig != null)
     {
-      parama = parama.gKm;
-      if (parama == null) {}
+      paramLiveConfig = paramLiveConfig.hwP;
+      if (paramLiveConfig == null) {}
     }
-    for (int i = parama.gKh;; i = c.a.alA())
+    for (int i = paramLiveConfig.hzl;; i = e.a.aCf())
     {
-      this.gKh = i;
-      dZ(true);
-      parama = com.tencent.mm.live.b.g.gQZ;
-      if (!com.tencent.mm.live.b.g.anW().gRe) {
+      this.hzl = i;
+      chooseAudienceMode(true);
+      paramLiveConfig = com.tencent.mm.live.b.x.hJf;
+      if (!com.tencent.mm.live.b.x.aGE().hJk) {
         break;
       }
-      parama = this.hcT;
-      if (parama != null) {
-        parama.nL(0);
+      paramLiveConfig = this.hVH;
+      if (paramLiveConfig != null) {
+        paramLiveConfig.rg(0);
       }
-      a(b.c.gTX, new Bundle());
-      parama = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.b.g.anW().gRe = false;
+      statusChange(b.c.hLw, new Bundle());
+      paramLiveConfig = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.aGE().hJk = false;
       break;
-      parama = c.a.gJD;
+      paramLiveConfig = e.a.hxc;
     }
   }
   
-  public final void a(b.c paramc, Bundle paramBundle)
+  public final void keyboardChange(boolean paramBoolean, int paramInt)
   {
-    int i = 2;
+    AppMethodBeat.i(208634);
+    super.keyboardChange(paramBoolean, paramInt);
+    AppMethodBeat.o(208634);
+  }
+  
+  public final void mount()
+  {
+    AppMethodBeat.i(208630);
+    super.mount();
+    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.aAg();
+    p.g(localb, "MMKernel.network()");
+    localb.azz().a(3806, (i)this);
+    AppMethodBeat.o(208630);
+  }
+  
+  public final String name()
+  {
+    AppMethodBeat.i(208624);
+    String str = LiveVisitorPluginLayout.class.getSimpleName();
+    p.g(str, "LiveVisitorPluginLayout::class.java.simpleName");
+    AppMethodBeat.o(208624);
+    return str;
+  }
+  
+  public final boolean onBackPress()
+  {
+    AppMethodBeat.i(208632);
+    boolean bool2 = super.onBackPress();
+    boolean bool1 = bool2;
+    if (!bool2)
+    {
+      com.tencent.mm.live.b.x localx = com.tencent.mm.live.b.x.hJf;
+      bool1 = bool2;
+      if (com.tencent.mm.live.b.x.aGD().hJo)
+      {
+        localx = com.tencent.mm.live.b.x.hJf;
+        com.tencent.mm.live.b.x.aGD().hJo = false;
+        b.b.a(this, b.c.hLC);
+        bool1 = true;
+      }
+    }
+    AppMethodBeat.o(208632);
+    return bool1;
+  }
+  
+  public final void onCallStateChanged(int paramInt, String paramString)
+  {
+    AppMethodBeat.i(208616);
+    p.h(paramString, "incomingNumber");
+    StringBuilder localStringBuilder = new StringBuilder("onCallStateChanged state:").append(paramInt).append(", isFloatMode:");
+    paramString = this.liveCore;
+    if (paramString != null)
+    {
+      paramString = paramString.hAz;
+      if (paramString != null)
+      {
+        paramString = Boolean.valueOf(paramString.isFloatMode());
+        Log.i("MicroMsg.LiveCoreVisitor", paramString);
+        switch (paramInt)
+        {
+        }
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(208616);
+      return;
+      paramString = null;
+      break;
+      AppMethodBeat.o(208616);
+      return;
+      paramString = com.tencent.mm.live.b.r.hIg;
+      com.tencent.mm.live.b.r.aFZ();
+      paramString = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.aGy();
+      paramString = this.liveCore;
+      if ((paramString != null) && (paramString.hAz.aDt() == true))
+      {
+        paramString = this.liveCore;
+        if (paramString != null) {
+          paramString.aBS();
+        }
+      }
+      paramString = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.aHi();
+    }
+  }
+  
+  public final void onRotationSwitchChange(boolean paramBoolean)
+  {
+    this.hWg = paramBoolean;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  {
+    AppMethodBeat.i(208633);
+    Log.i("MicroMsg.LiveCoreVisitor", "errType:" + paramInt1 + " errCode:" + paramInt2);
+    if (((paramq instanceof com.tencent.mm.live.b.a.b)) && (paramInt1 == 0) && (paramInt2 == 0))
+    {
+      paramString = this.hWY;
+      if (paramString != null) {
+        paramString.aHM();
+      }
+      paramq = this.hVO;
+      if (paramq != null)
+      {
+        paramString = com.tencent.mm.live.b.x.hJf;
+        paramString = com.tencent.mm.live.b.x.aGr().LpF;
+        if (paramString == null) {
+          break label145;
+        }
+        paramString = (CharSequence)paramString;
+        com.tencent.mm.live.b.x localx = com.tencent.mm.live.b.x.hJf;
+        paramq.a(paramString, com.tencent.mm.live.b.x.aGt());
+      }
+      paramString = com.tencent.mm.live.b.x.hJf;
+      paramString = com.tencent.mm.live.b.x.hJf;
+      if (com.tencent.mm.live.b.x.aGr().KNv) {
+        break label155;
+      }
+    }
+    label145:
+    label155:
+    for (paramInt1 = cl.aWB();; paramInt1 = 0)
+    {
+      com.tencent.mm.live.b.x.qT(paramInt1);
+      AppMethodBeat.o(208633);
+      return;
+      paramString = (CharSequence)"";
+      break;
+    }
+  }
+  
+  public final void pause()
+  {
+    AppMethodBeat.i(208629);
+    super.pause();
+    Object localObject1 = com.tencent.mm.live.b.x.hJf;
+    if (com.tencent.mm.live.b.x.getLastOrientation() != -1)
+    {
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      int i = com.tencent.mm.live.b.x.getLastOrientation();
+      localObject1 = getContext().getSystemService("window");
+      if (localObject1 == null)
+      {
+        localObject1 = new kotlin.t("null cannot be cast to non-null type android.view.WindowManager");
+        AppMethodBeat.o(208629);
+        throw ((Throwable)localObject1);
+      }
+      localObject1 = ((WindowManager)localObject1).getDefaultDisplay();
+      p.g(localObject1, "((context.getSystemServi…owManager).defaultDisplay");
+      if (i == ((Display)localObject1).getRotation()) {}
+    }
+    for (boolean bool = true;; bool = false)
+    {
+      localObject1 = new StringBuilder("orientationChanged:").append(bool).append(", ");
+      localObject2 = getContext().getSystemService("window");
+      if (localObject2 != null) {
+        break;
+      }
+      localObject1 = new kotlin.t("null cannot be cast to non-null type android.view.WindowManager");
+      AppMethodBeat.o(208629);
+      throw ((Throwable)localObject1);
+    }
+    Object localObject2 = ((WindowManager)localObject2).getDefaultDisplay();
+    p.g(localObject2, "((context.getSystemServi…owManager).defaultDisplay");
+    Log.i("MicroMsg.LiveCoreVisitor", ((Display)localObject2).getRotation());
+    if (!bool)
+    {
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      if (!com.tencent.mm.live.b.x.aGD().hJn)
+      {
+        localObject1 = com.tencent.mm.live.b.x.hJf;
+        if (!com.tencent.mm.live.b.x.aGD().hJp)
+        {
+          localObject1 = com.tencent.mm.live.b.x.hJf;
+          if (!com.tencent.mm.live.b.x.aGD().hJq)
+          {
+            localObject1 = com.tencent.mm.live.b.x.hJf;
+            if (com.tencent.mm.live.b.x.aGD().hJo)
+            {
+              localObject1 = com.tencent.mm.live.b.x.hJf;
+              if ((!com.tencent.mm.live.b.x.isManualClosed()) && (com.tencent.mm.compatible.e.b.cx(getContext())))
+              {
+                localObject1 = new Bundle();
+                ((Bundle)localObject1).putInt("PARAM_LIVE_MINI_WINDOW_GENERATE_TYPE", 3);
+                statusChange(b.c.hLQ, (Bundle)localObject1);
+              }
+            }
+          }
+        }
+      }
+    }
+    for (;;)
+    {
+      localObject1 = this.liveCore;
+      if (localObject1 == null) {
+        break;
+      }
+      localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz;
+      if (localObject1 == null) {
+        break;
+      }
+      if (((com.tencent.mm.live.core.core.b.g)localObject1).aDt() != true) {
+        break label386;
+      }
+      localObject1 = this.liveCore;
+      if (localObject1 == null) {
+        break label386;
+      }
+      ((com.tencent.mm.live.core.core.d.b)localObject1).aBS();
+      AppMethodBeat.o(208629);
+      return;
+      localObject1 = this.liveCore;
+      if (localObject1 != null)
+      {
+        localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz;
+        if ((localObject1 != null) && (((com.tencent.mm.live.core.core.b.g)localObject1).isNormalMode() == true))
+        {
+          localObject1 = this.liveCore;
+          if (localObject1 != null) {
+            ((com.tencent.mm.live.core.core.d.b)localObject1).aEa();
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(208629);
+    return;
+    label386:
+    AppMethodBeat.o(208629);
+  }
+  
+  public final void resume()
+  {
+    AppMethodBeat.i(208628);
+    Object localObject1 = com.tencent.mm.live.b.x.hJf;
+    com.tencent.mm.live.b.x.aGD().hJq = false;
+    localObject1 = getContext().getSystemService("window");
+    if (localObject1 == null)
+    {
+      localObject1 = new kotlin.t("null cannot be cast to non-null type android.view.WindowManager");
+      AppMethodBeat.o(208628);
+      throw ((Throwable)localObject1);
+    }
+    localObject1 = ((WindowManager)localObject1).getDefaultDisplay();
+    p.g(localObject1, "((context.getSystemServi…owManager).defaultDisplay");
+    int j = ((Display)localObject1).getRotation();
+    localObject1 = new StringBuilder("curOrientation:").append(j).append(", lastOrientation:");
+    Object localObject2 = com.tencent.mm.live.b.x.hJf;
+    Log.i("MicroMsg.LiveCoreVisitor", com.tencent.mm.live.b.x.getLastOrientation());
+    super.resume();
+    localObject1 = this.liveCore;
+    if (localObject1 != null)
+    {
+      localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz;
+      if ((localObject1 != null) && (((com.tencent.mm.live.core.core.b.g)localObject1).isNormalMode() == true))
+      {
+        localObject1 = this.liveCore;
+        if (localObject1 != null) {
+          ((com.tencent.mm.live.core.core.d.b)localObject1).aEb();
+        }
+      }
+    }
+    localObject1 = com.tencent.mm.live.b.x.hJf;
+    int i;
+    Object localObject3;
+    if (com.tencent.mm.live.b.x.getLastOrientation() != -1)
+    {
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      if (j != com.tencent.mm.live.b.x.getLastOrientation())
+      {
+        localObject1 = this.liveCore;
+        if (localObject1 != null) {
+          ((com.tencent.mm.live.core.core.d.b)localObject1).aBU();
+        }
+        localObject1 = this.liveCore;
+        if (localObject1 != null) {
+          ((com.tencent.mm.live.core.core.d.b)localObject1).aDX();
+        }
+        localObject1 = this.hWV;
+        if (localObject1 != null)
+        {
+          localObject2 = com.tencent.mm.live.b.x.hJf;
+          if (!com.tencent.mm.live.b.x.aGG().isLandscape()) {
+            break label358;
+          }
+          i = 2;
+          localObject2 = com.tencent.mm.live.b.x.hJf;
+          localObject2 = com.tencent.mm.live.b.x.aGG().userId;
+          localObject3 = com.tencent.mm.live.b.x.hJf;
+          ((bk)localObject1).c(i, (String)localObject2, com.tencent.mm.live.b.x.aGG().streamType);
+        }
+      }
+    }
+    for (;;)
+    {
+      localObject1 = this.liveCore;
+      if (localObject1 != null)
+      {
+        localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz;
+        if ((localObject1 != null) && (((com.tencent.mm.live.core.core.b.g)localObject1).aDt() == true))
+        {
+          localObject2 = this.hWV;
+          if (localObject2 != null)
+          {
+            localObject1 = ((bk)localObject2).liveCore;
+            if (localObject1 != null)
+            {
+              localObject2 = ((bk)localObject2).hAs;
+              localObject3 = com.tencent.mm.live.b.x.hJf;
+              localObject3 = com.tencent.mm.live.b.x.aGk();
+              com.tencent.mm.live.b.x localx = com.tencent.mm.live.b.x.hJf;
+              ((com.tencent.mm.live.core.core.d.b)localObject1).a((LivePreviewView)localObject2, (com.tencent.mm.live.core.b.a)localObject3, com.tencent.mm.live.b.x.aGl());
+            }
+          }
+        }
+      }
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.setLastOrientation(j);
+      AppMethodBeat.o(208628);
+      return;
+      label358:
+      i = 1;
+      break;
+      localObject1 = this.liveCore;
+      if (localObject1 != null)
+      {
+        localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz;
+        if ((localObject1 != null) && (!((com.tencent.mm.live.core.core.b.g)localObject1).hzz))
+        {
+          localObject1 = this.liveCore;
+          if (localObject1 == null) {
+            continue;
+          }
+          ((com.tencent.mm.live.core.core.d.b)localObject1).aBU();
+          continue;
+        }
+      }
+      localObject1 = this.liveCore;
+      if (localObject1 != null)
+      {
+        localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz;
+        if (localObject1 != null) {
+          ((com.tencent.mm.live.core.core.b.g)localObject1).hzz = false;
+        }
+      }
+    }
+  }
+  
+  public final void start()
+  {
+    AppMethodBeat.i(208626);
+    super.start();
+    Object localObject = com.tencent.mm.live.b.r.hIg;
+    com.tencent.mm.live.b.r.aGb();
+    localObject = this.liveCore;
+    if (((localObject == null) || (((com.tencent.mm.live.core.core.trtc.a)localObject).hAz.aDt() != true)) && (this.hWg))
+    {
+      localObject = com.tencent.mm.live.b.x.hJf;
+      if (!com.tencent.mm.live.b.x.aGD().hJn)
+      {
+        localObject = com.tencent.mm.live.b.x.hJf;
+        if (!com.tencent.mm.live.b.x.aGD().hJp)
+        {
+          localObject = getContext();
+          if (localObject == null)
+          {
+            localObject = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+            AppMethodBeat.o(208626);
+            throw ((Throwable)localObject);
+          }
+          ((Activity)localObject).setRequestedOrientation(4);
+        }
+      }
+    }
+    startTimer();
+    AppMethodBeat.o(208626);
+  }
+  
+  public final void statusChange(b.c paramc, Bundle paramBundle)
+  {
+    int i = 0;
     int j = 0;
-    AppMethodBeat.i(216657);
+    AppMethodBeat.i(208623);
     p.h(paramc, "status");
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreVisitor", "statusChange:" + paramc.name());
-    switch (c.cqt[paramc.ordinal()])
+    Log.i("MicroMsg.LiveCoreVisitor", "statusChange:" + paramc.name());
+    switch (c.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      super.a(paramc, paramBundle);
-      AppMethodBeat.o(216657);
+      super.statusChange(paramc, paramBundle);
+      AppMethodBeat.o(208623);
       return;
       Object localObject1 = com.tencent.mm.live.b.c.c.getLiveTipsBarStorage();
-      Object localObject2 = com.tencent.mm.live.b.g.gQZ;
-      ((com.tencent.mm.live.b.c.c)localObject1).yz(com.tencent.mm.live.b.g.anC());
-      localObject1 = com.tencent.mm.live.d.e.haW;
-      com.tencent.mm.live.d.e.aqm().jx(System.currentTimeMillis());
-      localObject1 = com.tencent.mm.live.d.e.haW;
-      localObject1 = com.tencent.mm.live.d.e.aqm();
-      localObject2 = com.tencent.mm.live.d.e.haW;
-      long l = com.tencent.mm.live.d.e.aqm().SZ();
-      localObject2 = com.tencent.mm.live.d.e.haW;
-      ((db)localObject1).jv((l - com.tencent.mm.live.d.e.aqm().SY()) / 1000L);
-      localObject1 = com.tencent.mm.live.d.e.haW;
-      localObject1 = com.tencent.mm.live.d.e.aqm();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      ((db)localObject1).jy(com.tencent.mm.model.r.zC(com.tencent.mm.live.b.g.anC()));
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      localObject1 = com.tencent.mm.live.b.g.anC();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      l = com.tencent.mm.live.b.g.anH().FKy;
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      i = com.tencent.mm.live.b.g.aof();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      j = com.tencent.mm.live.b.g.aoh();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      int k = com.tencent.mm.live.b.g.anH().GTv;
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      int m = com.tencent.mm.live.b.g.aoi();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      int n = com.tencent.mm.live.b.g.aoj();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      int i1 = com.tencent.mm.live.b.g.aok();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      int i2 = com.tencent.mm.live.b.g.aol();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.d.e.a((String)localObject1, l, i, j, k, m, n, i1, i2, com.tencent.mm.live.b.g.anH().Hik);
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.b.g.anP();
+      Object localObject2 = com.tencent.mm.live.b.x.hJf;
+      ((com.tencent.mm.live.b.c.c)localObject1).GY(com.tencent.mm.live.b.x.aGm());
+      localObject1 = com.tencent.mm.live.d.e.hTP;
+      com.tencent.mm.live.d.e.aIK().pe(System.currentTimeMillis());
+      localObject1 = com.tencent.mm.live.d.e.hTP;
+      localObject1 = com.tencent.mm.live.d.e.aIK();
+      localObject2 = com.tencent.mm.live.d.e.hTP;
+      long l = com.tencent.mm.live.d.e.aIK().agB();
+      localObject2 = com.tencent.mm.live.d.e.hTP;
+      ((fp)localObject1).pc((l - com.tencent.mm.live.d.e.aIK().agA()) / 1000L);
+      localObject1 = com.tencent.mm.live.d.e.hTP;
+      localObject1 = com.tencent.mm.live.d.e.aIK();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      ((fp)localObject1).pf(com.tencent.mm.model.v.Ie(com.tencent.mm.live.b.x.aGm()));
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      localObject1 = com.tencent.mm.live.b.x.aGm();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      l = com.tencent.mm.live.b.x.aGr().hyH;
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      i = com.tencent.mm.live.b.x.aGN();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      j = com.tencent.mm.live.b.x.aGP();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      int k = com.tencent.mm.live.b.x.aGr().LIa;
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      int m = com.tencent.mm.live.b.x.aGQ();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      int n = com.tencent.mm.live.b.x.aGR();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      int i1 = com.tencent.mm.live.b.x.aGS();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      int i2 = com.tencent.mm.live.b.x.aGT();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.d.e.a((String)localObject1, l, i, j, k, m, n, i1, i2, com.tencent.mm.live.b.x.aGr().MnN);
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.aGy();
       localObject1 = getContext();
       if (localObject1 == null)
       {
-        paramc = new d.v("null cannot be cast to non-null type android.app.Activity");
-        AppMethodBeat.o(216657);
+        paramc = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(208623);
         throw paramc;
       }
       ((Activity)localObject1).finishAndRemoveTask();
       continue;
       localObject1 = com.tencent.mm.live.b.c.c.getLiveTipsBarStorage();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      ((com.tencent.mm.live.b.c.c)localObject1).yz(com.tencent.mm.live.b.g.anC());
-      localObject1 = com.tencent.mm.live.d.e.haW;
-      com.tencent.mm.live.d.e.aqm().jx(System.currentTimeMillis());
-      localObject1 = com.tencent.mm.live.d.e.haW;
-      localObject1 = com.tencent.mm.live.d.e.aqm();
-      localObject2 = com.tencent.mm.live.d.e.haW;
-      l = com.tencent.mm.live.d.e.aqm().SZ();
-      localObject2 = com.tencent.mm.live.d.e.haW;
-      ((db)localObject1).jv((l - com.tencent.mm.live.d.e.aqm().SY()) / 1000L);
-      localObject1 = com.tencent.mm.live.d.e.haW;
-      localObject1 = com.tencent.mm.live.d.e.aqm();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      ((db)localObject1).jy(com.tencent.mm.model.r.zC(com.tencent.mm.live.b.g.anC()));
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      localObject1 = com.tencent.mm.live.b.g.anC();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      l = com.tencent.mm.live.b.g.anH().FKy;
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      i = com.tencent.mm.live.b.g.aof();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      j = com.tencent.mm.live.b.g.aoh();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      k = com.tencent.mm.live.b.g.anH().GTv;
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      m = com.tencent.mm.live.b.g.aoi();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      n = com.tencent.mm.live.b.g.aoj();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      i1 = com.tencent.mm.live.b.g.aok();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      i2 = com.tencent.mm.live.b.g.aol();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.d.e.a((String)localObject1, l, i, j, k, m, n, i1, i2, com.tencent.mm.live.b.g.anH().Hik);
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.b.g.anP();
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.b.g.aoy();
-      localObject1 = i.gRP;
-      i.aoF();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      ((com.tencent.mm.live.b.c.c)localObject1).GY(com.tencent.mm.live.b.x.aGm());
+      localObject1 = com.tencent.mm.live.d.e.hTP;
+      com.tencent.mm.live.d.e.aIK().pe(System.currentTimeMillis());
+      localObject1 = com.tencent.mm.live.d.e.hTP;
+      localObject1 = com.tencent.mm.live.d.e.aIK();
+      localObject2 = com.tencent.mm.live.d.e.hTP;
+      l = com.tencent.mm.live.d.e.aIK().agB();
+      localObject2 = com.tencent.mm.live.d.e.hTP;
+      ((fp)localObject1).pc((l - com.tencent.mm.live.d.e.aIK().agA()) / 1000L);
+      localObject1 = com.tencent.mm.live.d.e.hTP;
+      localObject1 = com.tencent.mm.live.d.e.aIK();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      ((fp)localObject1).pf(com.tencent.mm.model.v.Ie(com.tencent.mm.live.b.x.aGm()));
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      localObject1 = com.tencent.mm.live.b.x.aGm();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      l = com.tencent.mm.live.b.x.aGr().hyH;
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      i = com.tencent.mm.live.b.x.aGN();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      j = com.tencent.mm.live.b.x.aGP();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      k = com.tencent.mm.live.b.x.aGr().LIa;
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      m = com.tencent.mm.live.b.x.aGQ();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      n = com.tencent.mm.live.b.x.aGR();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      i1 = com.tencent.mm.live.b.x.aGS();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      i2 = com.tencent.mm.live.b.x.aGT();
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.d.e.a((String)localObject1, l, i, j, k, m, n, i1, i2, com.tencent.mm.live.b.x.aGr().MnN);
+      localObject1 = this.liveCore;
+      if (localObject1 != null)
+      {
+        ((com.tencent.mm.live.core.core.d.b)localObject1).aBW();
+        localObject1 = kotlin.x.SXb;
+      }
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.aGy();
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.aHh();
+      localObject1 = com.tencent.mm.live.b.r.hIg;
+      com.tencent.mm.live.b.r.aGb();
       continue;
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.b.g.aoy();
+      localObject1 = this.liveCore;
+      if (localObject1 != null)
+      {
+        ((com.tencent.mm.live.core.core.d.b)localObject1).aBW();
+        localObject1 = kotlin.x.SXb;
+      }
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.aHh();
       localObject1 = com.tencent.mm.live.b.c.c.getLiveTipsBarStorage();
-      localObject2 = com.tencent.mm.live.b.g.gQZ;
-      ((com.tencent.mm.live.b.c.c)localObject1).rA(com.tencent.mm.live.b.g.anH().FKy);
+      localObject2 = com.tencent.mm.live.b.x.hJf;
+      ((com.tencent.mm.live.b.c.c)localObject1).zF(com.tencent.mm.live.b.x.aGr().hyH);
       localObject1 = getContext();
       if (localObject1 == null)
       {
-        paramc = new d.v("null cannot be cast to non-null type android.app.Activity");
-        AppMethodBeat.o(216657);
+        paramc = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(208623);
         throw paramc;
       }
       ((Activity)localObject1).setRequestedOrientation(1);
@@ -797,78 +1520,79 @@ public final class LiveVisitorPluginLayout
       if (paramBundle != null) {}
       for (localObject1 = Boolean.valueOf(paramBundle.getBoolean("PARAM_LIVE_START_BY_ORIENTATION_CHANGE", false));; localObject1 = null)
       {
-        if (p.i(localObject1, Boolean.FALSE))
+        if (p.j(localObject1, Boolean.FALSE))
         {
-          this.hdv.aAn();
-          i.gRP.aoH();
-          localObject1 = i.gRP;
-          i.aoC();
-          localObject1 = i.gRP;
-          i.aoG();
+          this.hWh.aTv();
+          com.tencent.mm.live.b.r.hIg.aGd();
+          localObject1 = com.tencent.mm.live.b.r.hIg;
+          com.tencent.mm.live.b.r.aFY();
+          localObject1 = com.tencent.mm.live.b.r.hIg;
+          com.tencent.mm.live.b.r.aGc();
         }
-        localObject1 = com.tencent.mm.live.b.g.gQZ;
-        com.tencent.mm.live.b.g.aow();
-        localObject1 = com.tencent.mm.live.b.g.gQZ;
-        com.tencent.mm.live.b.g.dQ(false);
-        localObject1 = com.tencent.mm.live.d.e.haW;
-        com.tencent.mm.live.d.e.aqm().jw(System.currentTimeMillis());
+        localObject1 = com.tencent.mm.live.b.x.hJf;
+        com.tencent.mm.live.b.x.aHf();
+        localObject1 = com.tencent.mm.live.b.x.hJf;
+        com.tencent.mm.live.b.x.eM(false);
+        startTimer();
+        localObject1 = com.tencent.mm.live.d.e.hTP;
+        com.tencent.mm.live.d.e.aIK().pd(System.currentTimeMillis());
         break;
       }
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      if (!com.tencent.mm.live.b.g.anV().gRh)
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      if (!com.tencent.mm.live.b.x.aGD().hJn)
       {
-        localObject1 = com.tencent.mm.live.b.g.gQZ;
-        if (!com.tencent.mm.live.b.g.anV().gRj)
+        localObject1 = com.tencent.mm.live.b.x.hJf;
+        if (!com.tencent.mm.live.b.x.aGD().hJp)
         {
-          localObject1 = this.hdb;
+          localObject1 = this.hVP;
           if (localObject1 != null)
           {
-            ((ai)localObject1).nL(0);
-            localObject1 = d.z.Nhr;
+            ((ai)localObject1).rg(0);
+            localObject1 = kotlin.x.SXb;
           }
-          localObject1 = this.hdb;
+          localObject1 = this.hVP;
           if (localObject1 != null)
           {
-            ((ai)localObject1).apf();
-            localObject1 = d.z.Nhr;
+            ((ai)localObject1).aHF();
+            localObject1 = kotlin.x.SXb;
             continue;
-            localObject1 = com.tencent.mm.live.b.c.gPx;
-            com.tencent.mm.live.b.c.ang();
-            i.gRP.release();
+            localObject1 = com.tencent.mm.live.b.m.hGg;
+            com.tencent.mm.live.b.m.aFh();
+            com.tencent.mm.live.b.r.hIg.release();
             localObject1 = getContext();
             if (localObject1 == null)
             {
-              paramc = new d.v("null cannot be cast to non-null type android.app.Activity");
-              AppMethodBeat.o(216657);
+              paramc = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+              AppMethodBeat.o(208623);
               throw paramc;
             }
             ((Activity)localObject1).finishAndRemoveTask();
             continue;
-            localObject1 = com.tencent.mm.live.b.g.gQZ;
-            localObject1 = com.tencent.mm.live.b.g.anH().Gud;
-            p.g(localObject1, "LiveDataManager.liveInfo.live_name");
-            localObject2 = com.tencent.mm.live.b.g.gQZ;
-            l = com.tencent.mm.live.b.g.anH().FKy;
-            localObject2 = com.tencent.mm.live.b.g.gQZ;
-            c((String)localObject1, l, com.tencent.mm.live.b.g.anC());
+            localObject1 = com.tencent.mm.live.b.x.hJf;
+            localObject1 = com.tencent.mm.live.b.x.aGr().LpF;
+            p.g(localObject1, "RoomLiveService.liveInfo.live_name");
+            localObject2 = com.tencent.mm.live.b.x.hJf;
+            l = com.tencent.mm.live.b.x.aGr().hyH;
+            localObject2 = com.tencent.mm.live.b.x.hJf;
+            c((String)localObject1, l, com.tencent.mm.live.b.x.aGm());
             continue;
-            localObject2 = this.hek;
+            localObject2 = this.hWV;
             if (localObject2 != null)
             {
-              localObject1 = this.heq;
+              localObject1 = this.hXa;
               if (localObject1 != null) {}
-              for (localObject1 = ((bc)localObject1).apm();; localObject1 = null)
+              for (localObject1 = ((bc)localObject1).aHL();; localObject1 = null)
               {
-                ((bk)localObject2).haI = ((j)localObject1);
+                ((bk)localObject2).hTC = ((com.tencent.mm.live.core.b.l)localObject1);
                 break;
               }
-              if (this.hdu)
+              if (this.hWg)
               {
                 localObject1 = getContext();
                 if (localObject1 == null)
                 {
-                  paramc = new d.v("null cannot be cast to non-null type android.app.Activity");
-                  AppMethodBeat.o(216657);
+                  paramc = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+                  AppMethodBeat.o(208623);
                   throw paramc;
                 }
                 ((Activity)localObject1).setRequestedOrientation(4);
@@ -876,532 +1600,540 @@ public final class LiveVisitorPluginLayout
                 localObject1 = getContext();
                 if (localObject1 == null)
                 {
-                  paramc = new d.v("null cannot be cast to non-null type android.app.Activity");
-                  AppMethodBeat.o(216657);
+                  paramc = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+                  AppMethodBeat.o(208623);
                   throw paramc;
                 }
                 ((Activity)localObject1).setRequestedOrientation(14);
                 continue;
-                localObject1 = com.tencent.mm.live.b.g.gQZ;
-                localObject1 = com.tencent.mm.live.b.g.anL();
+                localObject1 = com.tencent.mm.live.b.x.hJf;
+                localObject1 = com.tencent.mm.live.b.x.aGv();
                 if (localObject1 != null)
                 {
-                  localObject1 = ((com.tencent.mm.live.core.core.b.d)localObject1).gKk;
+                  localObject1 = ((com.tencent.mm.live.core.core.b.f)localObject1).hzt;
                   if (localObject1 != null) {
-                    ((com.tencent.mm.live.core.core.b.b)localObject1).gKd = true;
+                    ((com.tencent.mm.live.core.core.b.d)localObject1).hzh = true;
                   }
                 }
-                if (this.hdu)
+                if (this.hWg)
                 {
                   localObject1 = getContext();
                   if (localObject1 == null)
                   {
-                    paramc = new d.v("null cannot be cast to non-null type android.app.Activity");
-                    AppMethodBeat.o(216657);
+                    paramc = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+                    AppMethodBeat.o(208623);
                     throw paramc;
                   }
                   ((Activity)localObject1).setRequestedOrientation(4);
                 }
-                i = this.gKh;
-                localObject1 = c.a.gJD;
-                if (i == c.a.alA())
+                i = this.hzl;
+                localObject1 = e.a.hxc;
+                if (i == e.a.aCf())
                 {
-                  localObject1 = this.hek;
+                  localObject1 = this.hWV;
                   if (localObject1 != null)
                   {
                     ((bk)localObject1).exitRoom();
-                    localObject1 = d.z.Nhr;
+                    localObject1 = kotlin.x.SXb;
                   }
-                  localObject1 = this.hel;
+                  localObject1 = this.liveTXLivePlayerPlygin;
                   if (localObject1 != null)
                   {
-                    ((aw)localObject1).nL(0);
-                    localObject1 = d.z.Nhr;
+                    ((aw)localObject1).rg(0);
+                    localObject1 = kotlin.x.SXb;
                   }
-                  localObject1 = this.hel;
+                  localObject1 = this.liveTXLivePlayerPlygin;
                   if (localObject1 != null)
                   {
-                    localObject1 = ((aw)localObject1).gPy;
+                    localObject1 = ((aw)localObject1).hwO;
                     if (localObject1 != null) {
                       ((TXLivePlayer)localObject1).resume();
                     }
-                    localObject1 = d.z.Nhr;
+                    localObject1 = kotlin.x.SXb;
                   }
                 }
-                localObject1 = this.hdj;
+                localObject1 = this.hVX;
                 if (localObject1 != null)
                 {
-                  this.hds.remove(localObject1);
+                  this.hWe.remove(localObject1);
                   continue;
-                  localObject1 = this.hdj;
+                  localObject1 = this.hVX;
                   if (localObject1 != null)
                   {
-                    this.hds.remove(localObject1);
+                    this.hWe.remove(localObject1);
                     continue;
-                    i = this.gKh;
-                    localObject1 = c.a.gJD;
-                    if (i == c.a.alz())
+                    i = this.hzl;
+                    localObject1 = e.a.hxc;
+                    if (i == e.a.aCe())
                     {
-                      aqT();
+                      aJr();
                     }
                     else
                     {
-                      localObject1 = c.a.gJD;
-                      if (i == c.a.alA())
+                      localObject1 = e.a.hxc;
+                      if (i == e.a.aCf())
                       {
-                        localObject1 = com.tencent.mm.live.b.g.gQZ;
-                        localObject1 = com.tencent.mm.live.b.g.anL();
+                        localObject1 = com.tencent.mm.live.b.x.hJf;
+                        localObject1 = com.tencent.mm.live.b.x.aGv();
                         if (localObject1 != null)
                         {
-                          localObject2 = this.hek;
+                          localObject2 = this.hWV;
                           if (localObject2 != null)
                           {
-                            ((bk)localObject2).a((com.tencent.mm.live.core.core.b.d)localObject1, (d.g.a.b)new p(this));
-                            localObject1 = d.z.Nhr;
+                            ((bk)localObject2).a((com.tencent.mm.live.core.core.b.f)localObject1, (kotlin.g.a.b)new p(this));
+                            localObject1 = kotlin.x.SXb;
                             continue;
-                            localObject1 = com.tencent.mm.live.b.g.gQZ;
-                            com.tencent.mm.live.b.g.aox();
-                            localObject1 = i.gRP;
-                            i.aoD();
-                            localObject1 = com.tencent.mm.live.b.c.gPx;
-                            com.tencent.mm.live.b.c.ang();
-                            i.gRP.release();
-                            localObject1 = this.hda;
+                            localObject1 = com.tencent.mm.live.b.x.hJf;
+                            com.tencent.mm.live.b.x.aHg();
+                            localObject1 = com.tencent.mm.live.b.r.hIg;
+                            com.tencent.mm.live.b.r.aFZ();
+                            localObject1 = com.tencent.mm.live.b.m.hGg;
+                            com.tencent.mm.live.b.m.aFh();
+                            com.tencent.mm.live.b.r.hIg.release();
+                            localObject1 = this.hVO;
                             if (localObject1 != null)
                             {
-                              ((ay)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((ay)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.hcX;
+                            localObject1 = this.hVL;
                             if (localObject1 != null)
                             {
-                              ((as)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((as)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.hcV;
+                            localObject1 = this.hVJ;
                             if (localObject1 != null)
                             {
-                              ((com.tencent.mm.live.c.c)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((com.tencent.mm.live.c.c)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.heo;
+                            localObject1 = this.hWY;
                             if (localObject1 != null)
                             {
-                              ((bg)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((bg)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.hen;
+                            localObject1 = this.hWX;
                             if (localObject1 != null)
                             {
-                              ((com.tencent.mm.live.c.z)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((com.tencent.mm.live.c.z)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.hem;
+                            localObject1 = this.hWW;
                             if (localObject1 != null)
                             {
-                              ((com.tencent.mm.live.c.v)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((com.tencent.mm.live.c.v)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.hdb;
+                            localObject1 = this.hVP;
                             if (localObject1 != null)
                             {
-                              ((ai)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((ai)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.hdi;
+                            localObject1 = this.hVW;
                             if (localObject1 != null)
                             {
-                              ((com.tencent.mm.live.c.ae)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((ae)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.hek;
+                            localObject1 = this.hWV;
                             if (localObject1 != null)
                             {
-                              ((bk)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((bk)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.hel;
+                            localObject1 = this.liveTXLivePlayerPlygin;
                             if (localObject1 != null)
                             {
-                              ((aw)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((aw)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.heq;
+                            localObject1 = this.hXa;
                             if (localObject1 != null)
                             {
-                              ((bc)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((bc)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.hdl;
+                            localObject1 = this.hVZ;
                             if (localObject1 != null)
                             {
-                              ((ag)localObject1).nL(8);
-                              localObject1 = d.z.Nhr;
+                              ((ag)localObject1).rg(8);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.her;
+                            localObject1 = this.hXb;
                             if (localObject1 != null)
                             {
-                              ((ab)localObject1).nL(0);
-                              localObject1 = d.z.Nhr;
+                              ((ab)localObject1).rg(0);
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.her;
+                            localObject1 = this.hXb;
                             Object localObject3;
                             if (localObject1 != null)
                             {
-                              localObject2 = com.tencent.mm.live.b.g.gQZ;
-                              localObject2 = com.tencent.mm.live.b.g.anJ();
-                              localObject3 = com.tencent.mm.live.b.d.a.gTM;
-                              localObject3 = ((com.tencent.mm.live.c.a)localObject1).gJt.getContext();
+                              localObject2 = com.tencent.mm.live.b.x.hJf;
+                              localObject2 = com.tencent.mm.live.b.x.aGt();
+                              localObject3 = com.tencent.mm.live.b.d.a.hLg;
+                              localObject3 = ((com.tencent.mm.live.c.a)localObject1).hwr.getContext();
                               p.g(localObject3, "root.context");
-                              com.tencent.mm.live.b.d.a.a.a((String)localObject2, ((Context)localObject3).getResources().getColor(2131100482), (d.g.a.b)new ab.a((ab)localObject1));
-                              localObject1 = d.z.Nhr;
+                              com.tencent.mm.live.b.d.a.a.a((String)localObject2, ((Context)localObject3).getResources().getColor(2131100584), (kotlin.g.a.b)new ab.a((ab)localObject1));
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.har;
-                            if ((localObject1 == null) || (((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc.alT() != true))
+                            localObject1 = this.liveCore;
+                            if ((localObject1 == null) || (((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz.aDt() != true))
                             {
-                              localObject1 = this.har;
-                              if ((localObject1 == null) || (((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc.alU() != true))
+                              localObject1 = this.liveCore;
+                              if ((localObject1 == null) || (((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz.aDu() != true))
                               {
-                                i = this.gKh;
-                                localObject1 = c.a.gJD;
-                                if (i != c.a.alz()) {
-                                  break label2055;
+                                i = this.hzl;
+                                localObject1 = e.a.hxc;
+                                if (i != e.a.aCe()) {
+                                  break label2113;
                                 }
                               }
                             }
-                            localObject1 = this.har;
+                            localObject1 = this.liveCore;
                             if (localObject1 != null)
                             {
-                              ((com.tencent.mm.live.core.core.c.b)localObject1).amu();
-                              localObject1 = d.z.Nhr;
+                              ((com.tencent.mm.live.core.core.d.b)localObject1).aEa();
+                              localObject1 = kotlin.x.SXb;
                             }
-                            localObject1 = this.hek;
+                            localObject1 = this.hWV;
                             if (localObject1 != null)
                             {
                               ((bk)localObject1).exitRoom();
-                              localObject1 = d.z.Nhr;
+                              localObject1 = kotlin.x.SXb;
                               continue;
-                              label2055:
-                              localObject1 = this.hel;
+                              label2113:
+                              localObject1 = this.liveTXLivePlayerPlygin;
                               if (localObject1 != null)
                               {
-                                ((aw)localObject1).apj();
-                                localObject1 = d.z.Nhr;
+                                ((aw)localObject1).ev(false);
+                                localObject1 = kotlin.x.SXb;
                                 continue;
-                                localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                com.tencent.mm.live.b.g.nz(2);
-                                localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                if (!com.tencent.mm.live.b.g.anV().gRh)
+                                localObject1 = com.tencent.mm.live.b.x.hJf;
+                                com.tencent.mm.live.b.x.qV(2);
+                                localObject1 = com.tencent.mm.live.b.x.hJf;
+                                if (!com.tencent.mm.live.b.x.aGD().hJn)
                                 {
-                                  localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                  if (!com.tencent.mm.live.b.g.anV().gRj)
+                                  localObject1 = com.tencent.mm.live.b.x.hJf;
+                                  if (!com.tencent.mm.live.b.x.aGD().hJp)
                                   {
-                                    localObject1 = this.hdi;
+                                    localObject1 = this.hVW;
                                     if (localObject1 != null)
                                     {
-                                      localObject2 = com.tencent.mm.live.b.g.gQZ;
-                                      localObject2 = com.tencent.mm.live.b.g.anJ();
+                                      localObject2 = com.tencent.mm.live.b.x.hJf;
+                                      localObject2 = com.tencent.mm.live.b.x.aGt();
                                       localObject3 = getContext();
                                       p.g(localObject3, "context");
-                                      localObject3 = ((Context)localObject3).getResources().getString(2131766622);
+                                      localObject3 = ((Context)localObject3).getResources().getString(2131762312);
                                       p.g(localObject3, "context.resources.getStr…_local_network_error_tip)");
-                                      ((com.tencent.mm.live.c.ae)localObject1).au((String)localObject2, (String)localObject3);
-                                      localObject1 = d.z.Nhr;
+                                      ((ae)localObject1).showTipWithBlurBg((String)localObject2, (String)localObject3);
+                                      localObject1 = kotlin.x.SXb;
                                     }
-                                    localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                    com.tencent.mm.live.b.g.aox();
+                                    localObject1 = com.tencent.mm.live.b.x.hJf;
+                                    com.tencent.mm.live.b.x.aHg();
                                     continue;
-                                    localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                    com.tencent.mm.live.b.g.nz(1);
-                                    localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                    if (!com.tencent.mm.live.b.g.anV().gRh)
+                                    localObject1 = com.tencent.mm.live.b.x.hJf;
+                                    com.tencent.mm.live.b.x.qV(1);
+                                    localObject1 = com.tencent.mm.live.b.x.hJf;
+                                    if (!com.tencent.mm.live.b.x.aGD().hJn)
                                     {
-                                      localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                      if (!com.tencent.mm.live.b.g.anV().gRj)
+                                      localObject1 = com.tencent.mm.live.b.x.hJf;
+                                      if (!com.tencent.mm.live.b.x.aGD().hJp)
                                       {
-                                        localObject1 = this.hdi;
+                                        localObject1 = this.hVW;
                                         if (localObject1 != null)
                                         {
-                                          localObject2 = com.tencent.mm.live.b.g.gQZ;
-                                          localObject2 = com.tencent.mm.live.b.g.anJ();
+                                          localObject2 = com.tencent.mm.live.b.x.hJf;
+                                          localObject2 = com.tencent.mm.live.b.x.aGt();
                                           localObject3 = getContext();
                                           p.g(localObject3, "context");
-                                          localObject3 = ((Context)localObject3).getResources().getString(2131766568);
+                                          localObject3 = ((Context)localObject3).getResources().getString(2131762255);
                                           p.g(localObject3, "context.resources.getStr…ive_anchor_exception_tip)");
-                                          ((com.tencent.mm.live.c.ae)localObject1).au((String)localObject2, (String)localObject3);
-                                          localObject1 = d.z.Nhr;
+                                          ((ae)localObject1).showTipWithBlurBg((String)localObject2, (String)localObject3);
+                                          localObject1 = kotlin.x.SXb;
                                           continue;
-                                          localObject1 = this.hek;
+                                          localObject1 = this.hWV;
                                           if (localObject1 != null)
                                           {
-                                            ((bk)localObject1).nL(0);
-                                            localObject1 = d.z.Nhr;
+                                            ((bk)localObject1).rg(0);
+                                            localObject1 = kotlin.x.SXb;
                                           }
-                                          localObject1 = this.hek;
+                                          localObject1 = this.hWV;
                                           if (localObject1 != null)
                                           {
-                                            ((bk)localObject1).apr();
-                                            localObject1 = d.z.Nhr;
+                                            ((bk)localObject1).aHQ();
+                                            localObject1 = kotlin.x.SXb;
                                           }
-                                          localObject1 = this.hel;
+                                          localObject1 = this.liveTXLivePlayerPlygin;
                                           if (localObject1 != null)
                                           {
-                                            ((aw)localObject1).nL(8);
-                                            localObject1 = d.z.Nhr;
+                                            ((aw)localObject1).rg(8);
+                                            localObject1 = kotlin.x.SXb;
                                           }
-                                          localObject1 = this.hel;
+                                          localObject1 = this.liveTXLivePlayerPlygin;
                                           if (localObject1 != null)
                                           {
-                                            localObject1 = ((aw)localObject1).gPy;
+                                            localObject1 = ((aw)localObject1).hwO;
                                             if (localObject1 != null) {
                                               ((TXLivePlayer)localObject1).pause();
                                             }
-                                            localObject1 = d.z.Nhr;
+                                            localObject1 = kotlin.x.SXb;
                                             continue;
-                                            localObject1 = this.hdi;
+                                            localObject1 = this.hVW;
                                             if (localObject1 != null)
                                             {
-                                              ((com.tencent.mm.live.c.ae)localObject1).nL(8);
-                                              localObject1 = d.z.Nhr;
+                                              ((ae)localObject1).rg(8);
+                                              localObject1 = kotlin.x.SXb;
                                               continue;
-                                              localObject1 = this.har;
+                                              localObject1 = this.liveCore;
                                               if (localObject1 != null)
                                               {
-                                                localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc;
-                                                if ((localObject1 != null) && (!((com.tencent.mm.live.core.core.b.e)localObject1).isFloatMode()))
+                                                localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz;
+                                                if ((localObject1 != null) && (!((com.tencent.mm.live.core.core.b.g)localObject1).isFloatMode()))
                                                 {
-                                                  localObject1 = this.har;
+                                                  localObject1 = this.liveCore;
                                                   if (localObject1 != null)
                                                   {
                                                     localObject2 = getContext();
                                                     p.g(localObject2, "context");
-                                                    ((com.tencent.mm.live.core.core.c.b)localObject1).cr((Context)localObject2);
+                                                    com.tencent.mm.live.core.core.b.a.a((com.tencent.mm.live.core.core.b)localObject1, (Context)localObject2, false, false, 0, 0, 30);
                                                   }
-                                                  localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                                  localObject1 = com.tencent.mm.live.b.g.anC();
-                                                  localObject2 = com.tencent.mm.live.b.g.gQZ;
-                                                  l = com.tencent.mm.live.b.g.anH().FKy;
-                                                  localObject2 = com.tencent.mm.live.b.g.gQZ;
-                                                  localObject2 = com.tencent.mm.live.b.g.anJ();
-                                                  localObject3 = com.tencent.mm.live.b.g.gQZ;
-                                                  com.tencent.mm.live.d.e.a((String)localObject1, l, (String)localObject2, 2, 1, com.tencent.mm.live.b.g.anH().GTv);
-                                                  com.tencent.mm.live.d.f.aqs();
+                                                  localObject1 = com.tencent.mm.live.b.x.hJf;
+                                                  localObject1 = com.tencent.mm.live.b.x.aGm();
+                                                  localObject2 = com.tencent.mm.live.b.x.hJf;
+                                                  l = com.tencent.mm.live.b.x.aGr().hyH;
+                                                  localObject2 = com.tencent.mm.live.b.x.hJf;
+                                                  localObject2 = com.tencent.mm.live.b.x.aGt();
+                                                  localObject3 = com.tencent.mm.live.b.x.hJf;
+                                                  com.tencent.mm.live.d.e.a((String)localObject1, l, (String)localObject2, 2, 1, com.tencent.mm.live.b.x.aGr().LIa);
+                                                  com.tencent.mm.live.d.f.aIQ();
                                                   continue;
-                                                  localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                                  localObject1 = com.tencent.mm.live.b.g.anC();
-                                                  localObject2 = com.tencent.mm.live.b.g.gQZ;
-                                                  l = com.tencent.mm.live.b.g.anH().FKy;
-                                                  localObject2 = com.tencent.mm.live.b.g.gQZ;
-                                                  localObject2 = com.tencent.mm.live.b.g.anJ();
-                                                  localObject3 = com.tencent.mm.live.b.g.gQZ;
-                                                  com.tencent.mm.live.d.e.a((String)localObject1, l, (String)localObject2, 2, 0, com.tencent.mm.live.b.g.anH().GTv);
-                                                  com.tencent.mm.live.d.f.aqt();
+                                                  localObject1 = com.tencent.mm.live.b.x.hJf;
+                                                  localObject1 = com.tencent.mm.live.b.x.aGm();
+                                                  localObject2 = com.tencent.mm.live.b.x.hJf;
+                                                  l = com.tencent.mm.live.b.x.aGr().hyH;
+                                                  localObject2 = com.tencent.mm.live.b.x.hJf;
+                                                  localObject2 = com.tencent.mm.live.b.x.aGt();
+                                                  localObject3 = com.tencent.mm.live.b.x.hJf;
+                                                  com.tencent.mm.live.d.e.a((String)localObject1, l, (String)localObject2, 2, 0, com.tencent.mm.live.b.x.aGr().LIa);
+                                                  com.tencent.mm.live.d.f.aIR();
                                                   continue;
-                                                  localObject1 = this.har;
+                                                  localObject1 = this.liveCore;
                                                   if (localObject1 != null)
                                                   {
-                                                    localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc;
+                                                    localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz;
                                                     if (localObject1 != null)
                                                     {
-                                                      ((com.tencent.mm.live.core.core.b.e)localObject1).gKu = e.d.gKK;
-                                                      localObject1 = d.z.Nhr;
+                                                      ((com.tencent.mm.live.core.core.b.g)localObject1).hzE = g.d.hzW;
+                                                      localObject1 = kotlin.x.SXb;
                                                       continue;
-                                                      localObject1 = this.har;
+                                                      localObject1 = this.liveCore;
                                                       if (localObject1 != null)
                                                       {
-                                                        localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc;
+                                                        localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz;
                                                         if (localObject1 != null)
                                                         {
-                                                          ((com.tencent.mm.live.core.core.b.e)localObject1).gKu = e.d.gKM;
-                                                          localObject1 = d.z.Nhr;
+                                                          ((com.tencent.mm.live.core.core.b.g)localObject1).hzE = g.d.hzY;
+                                                          localObject1 = kotlin.x.SXb;
                                                           continue;
-                                                          localObject1 = this.hek;
+                                                          localObject1 = this.hWV;
                                                           if (localObject1 != null)
                                                           {
-                                                            localObject2 = com.tencent.mm.live.b.g.gQZ;
-                                                            if (com.tencent.mm.live.b.g.anY().aoA()) {}
-                                                            for (;;)
+                                                            localObject2 = com.tencent.mm.live.b.x.hJf;
+                                                            if (com.tencent.mm.live.b.x.aGG().isLandscape()) {}
+                                                            for (i = 2;; i = 1)
                                                             {
-                                                              localObject2 = com.tencent.mm.live.b.g.gQZ;
-                                                              localObject2 = com.tencent.mm.live.b.g.anY().userId;
-                                                              localObject3 = com.tencent.mm.live.b.g.gQZ;
-                                                              ((bk)localObject1).c(i, (String)localObject2, com.tencent.mm.live.b.g.anY().streamType);
-                                                              localObject1 = d.z.Nhr;
+                                                              localObject2 = com.tencent.mm.live.b.x.hJf;
+                                                              localObject2 = com.tencent.mm.live.b.x.aGG().userId;
+                                                              localObject3 = com.tencent.mm.live.b.x.hJf;
+                                                              ((bk)localObject1).c(i, (String)localObject2, com.tencent.mm.live.b.x.aGG().streamType);
+                                                              localObject1 = kotlin.x.SXb;
                                                               break;
-                                                              i = 1;
                                                             }
-                                                            localObject1 = this.har;
-                                                            if ((localObject1 == null) || (((com.tencent.mm.live.core.core.c.b)localObject1).alV() != true))
+                                                            localObject1 = this.liveCore;
+                                                            if ((localObject1 == null) || (((com.tencent.mm.live.core.core.d.b)localObject1).aDx() != true))
                                                             {
                                                               localObject1 = com.tencent.mm.live.b.c.c.getLiveTipsBarStorage();
-                                                              localObject2 = com.tencent.mm.live.b.g.gQZ;
-                                                              ((com.tencent.mm.live.b.c.c)localObject1).yz(com.tencent.mm.live.b.g.anC());
-                                                              localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                                              com.tencent.mm.live.b.g.anP();
-                                                              localObject1 = this.har;
-                                                              if (localObject1 != null)
+                                                              localObject2 = com.tencent.mm.live.b.x.hJf;
+                                                              ((com.tencent.mm.live.b.c.c)localObject1).GY(com.tencent.mm.live.b.x.aGm());
+                                                              localObject1 = com.tencent.mm.live.b.x.hJf;
+                                                              com.tencent.mm.live.b.x.aGy();
+                                                              localObject1 = com.tencent.mm.live.b.x.hJf;
+                                                              com.tencent.mm.live.b.x.aHi();
+                                                              continue;
+                                                              if (!isLandscape())
                                                               {
-                                                                ((com.tencent.mm.live.core.core.c.b)localObject1).alv();
-                                                                localObject1 = d.z.Nhr;
-                                                                continue;
-                                                                if (!aoA())
+                                                                if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
                                                                 {
-                                                                  if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
-                                                                  {
-                                                                    localObject1 = this.hcY;
-                                                                    if (localObject1 != null)
-                                                                    {
-                                                                      localObject1 = ((com.tencent.mm.live.c.a)localObject1).gJt;
-                                                                      if (localObject1 == null) {}
-                                                                    }
-                                                                    for (localObject1 = ((ViewGroup)localObject1).getLayoutParams(); (localObject1 != null) && ((localObject1 instanceof RelativeLayout.LayoutParams)); localObject1 = null)
-                                                                    {
-                                                                      ((RelativeLayout.LayoutParams)localObject1).removeRule(2);
-                                                                      ((RelativeLayout.LayoutParams)localObject1).addRule(12);
-                                                                      ((RelativeLayout.LayoutParams)localObject1).bottomMargin = 0;
-                                                                      localObject1 = this.hcY;
-                                                                      if (localObject1 == null) {
-                                                                        break;
-                                                                      }
-                                                                      localObject1 = ((com.tencent.mm.live.c.a)localObject1).gJt;
-                                                                      if (localObject1 == null) {
-                                                                        break;
-                                                                      }
-                                                                      ((ViewGroup)localObject1).requestLayout();
-                                                                      localObject1 = d.z.Nhr;
-                                                                      break;
-                                                                    }
-                                                                  }
-                                                                  localObject1 = this.hcY;
+                                                                  localObject1 = this.hVM;
                                                                   if (localObject1 != null)
                                                                   {
-                                                                    localObject1 = ((com.tencent.mm.live.c.a)localObject1).gJt;
-                                                                    if (localObject1 != null)
-                                                                    {
-                                                                      localObject1 = ((ViewGroup)localObject1).getLayoutParams();
-                                                                      label3001:
-                                                                      if ((localObject1 == null) || (!(localObject1 instanceof RelativeLayout.LayoutParams))) {
-                                                                        continue;
-                                                                      }
-                                                                      ((RelativeLayout.LayoutParams)localObject1).removeRule(12);
-                                                                      localObject2 = (RelativeLayout.LayoutParams)localObject1;
-                                                                      localObject3 = this.heo;
-                                                                      if (localObject3 == null) {
-                                                                        break label3126;
-                                                                      }
-                                                                      localObject3 = ((com.tencent.mm.live.c.a)localObject3).gJt;
-                                                                      if (localObject3 == null) {
-                                                                        break label3126;
-                                                                      }
-                                                                    }
+                                                                    localObject1 = ((com.tencent.mm.live.c.a)localObject1).hwr;
+                                                                    if (localObject1 == null) {}
                                                                   }
-                                                                  label3126:
-                                                                  for (i = ((ViewGroup)localObject3).getId();; i = 0)
+                                                                  for (localObject1 = ((ViewGroup)localObject1).getLayoutParams(); (localObject1 != null) && ((localObject1 instanceof RelativeLayout.LayoutParams)); localObject1 = null)
                                                                   {
-                                                                    ((RelativeLayout.LayoutParams)localObject2).addRule(2, i);
-                                                                    ((RelativeLayout.LayoutParams)localObject1).bottomMargin = aq.fromDPToPix(getContext(), 12);
-                                                                    localObject1 = this.hcY;
+                                                                    ((RelativeLayout.LayoutParams)localObject1).removeRule(2);
+                                                                    ((RelativeLayout.LayoutParams)localObject1).addRule(12);
+                                                                    ((RelativeLayout.LayoutParams)localObject1).bottomMargin = 0;
+                                                                    localObject1 = this.hVM;
                                                                     if (localObject1 == null) {
                                                                       break;
                                                                     }
-                                                                    localObject1 = ((com.tencent.mm.live.c.a)localObject1).gJt;
+                                                                    localObject1 = ((com.tencent.mm.live.c.a)localObject1).hwr;
                                                                     if (localObject1 == null) {
                                                                       break;
                                                                     }
                                                                     ((ViewGroup)localObject1).requestLayout();
-                                                                    localObject1 = d.z.Nhr;
+                                                                    localObject1 = kotlin.x.SXb;
                                                                     break;
-                                                                    localObject1 = null;
-                                                                    break label3001;
                                                                   }
                                                                 }
-                                                                else if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
+                                                                localObject1 = this.hVM;
+                                                                if (localObject1 != null)
                                                                 {
-                                                                  localObject1 = this.hcY;
-                                                                  if (localObject1 != null)
-                                                                  {
-                                                                    ((com.tencent.mm.live.c.m)localObject1).nL(4);
-                                                                    localObject1 = d.z.Nhr;
-                                                                  }
+                                                                  localObject1 = ((com.tencent.mm.live.c.a)localObject1).hwr;
+                                                                  if (localObject1 == null) {}
                                                                 }
-                                                                else
+                                                                for (localObject1 = ((ViewGroup)localObject1).getLayoutParams(); (localObject1 != null) && ((localObject1 instanceof RelativeLayout.LayoutParams)); localObject1 = null)
                                                                 {
-                                                                  localObject1 = this.hcY;
-                                                                  if (localObject1 != null)
+                                                                  ((RelativeLayout.LayoutParams)localObject1).removeRule(12);
+                                                                  localObject2 = (RelativeLayout.LayoutParams)localObject1;
+                                                                  localObject3 = this.hWY;
+                                                                  i = j;
+                                                                  if (localObject3 != null)
                                                                   {
-                                                                    ((com.tencent.mm.live.c.m)localObject1).nL(0);
-                                                                    localObject1 = d.z.Nhr;
-                                                                    continue;
-                                                                    if (!aoA())
+                                                                    localObject3 = ((com.tencent.mm.live.c.a)localObject3).hwr;
+                                                                    i = j;
+                                                                    if (localObject3 != null) {
+                                                                      i = ((ViewGroup)localObject3).getId();
+                                                                    }
+                                                                  }
+                                                                  ((RelativeLayout.LayoutParams)localObject2).addRule(2, i);
+                                                                  ((RelativeLayout.LayoutParams)localObject1).bottomMargin = at.fromDPToPix(getContext(), 12);
+                                                                  localObject1 = this.hVM;
+                                                                  if (localObject1 == null) {
+                                                                    break;
+                                                                  }
+                                                                  localObject1 = ((com.tencent.mm.live.c.a)localObject1).hwr;
+                                                                  if (localObject1 == null) {
+                                                                    break;
+                                                                  }
+                                                                  ((ViewGroup)localObject1).requestLayout();
+                                                                  localObject1 = kotlin.x.SXb;
+                                                                  break;
+                                                                }
+                                                              }
+                                                              if ((paramBundle != null) && (paramBundle.getBoolean("PARAM_IS_ENTERING_COMMENT") == true))
+                                                              {
+                                                                localObject1 = this.hVM;
+                                                                if (localObject1 != null)
+                                                                {
+                                                                  ((com.tencent.mm.live.c.m)localObject1).rg(4);
+                                                                  localObject1 = kotlin.x.SXb;
+                                                                }
+                                                              }
+                                                              else
+                                                              {
+                                                                localObject1 = this.hVM;
+                                                                if (localObject1 != null)
+                                                                {
+                                                                  ((com.tencent.mm.live.c.m)localObject1).rg(0);
+                                                                  localObject1 = kotlin.x.SXb;
+                                                                  continue;
+                                                                  if (!isLandscape())
+                                                                  {
+                                                                    localObject1 = this.hWX;
+                                                                    if ((localObject1 != null) && (((com.tencent.mm.live.c.a)localObject1).hwr.getVisibility() == 0))
                                                                     {
-                                                                      localObject1 = this.hen;
-                                                                      if ((localObject1 != null) && (((com.tencent.mm.live.c.a)localObject1).gJt.getVisibility() == 0))
+                                                                      if (paramBundle != null) {
+                                                                        i = paramBundle.getInt("PARAM_LIVE_COMMENT_OFFSET_HEIGHT");
+                                                                      }
+                                                                      localObject1 = this.hVM;
+                                                                      if (localObject1 != null)
                                                                       {
-                                                                        i = j;
-                                                                        if (paramBundle != null) {
-                                                                          i = paramBundle.getInt("PARAM_LIVE_COMMENT_OFFSET_HEIGHT");
-                                                                        }
-                                                                        localObject1 = this.hcY;
-                                                                        if (localObject1 != null)
-                                                                        {
-                                                                          localObject1 = ((com.tencent.mm.live.c.a)localObject1).gJt;
-                                                                          if (localObject1 == null) {}
-                                                                        }
-                                                                        for (localObject1 = ((ViewGroup)localObject1).getLayoutParams(); (localObject1 != null) && ((localObject1 instanceof RelativeLayout.LayoutParams)); localObject1 = null)
-                                                                        {
-                                                                          ((RelativeLayout.LayoutParams)localObject1).bottomMargin = i;
-                                                                          localObject1 = this.hcY;
-                                                                          if (localObject1 == null) {
-                                                                            break;
-                                                                          }
-                                                                          localObject1 = ((com.tencent.mm.live.c.a)localObject1).gJt;
-                                                                          if (localObject1 == null) {
-                                                                            break;
-                                                                          }
-                                                                          ((ViewGroup)localObject1).requestLayout();
-                                                                          localObject1 = d.z.Nhr;
+                                                                        localObject1 = ((com.tencent.mm.live.c.a)localObject1).hwr;
+                                                                        if (localObject1 == null) {}
+                                                                      }
+                                                                      for (localObject1 = ((ViewGroup)localObject1).getLayoutParams(); (localObject1 != null) && ((localObject1 instanceof RelativeLayout.LayoutParams)); localObject1 = null)
+                                                                      {
+                                                                        ((RelativeLayout.LayoutParams)localObject1).bottomMargin = i;
+                                                                        localObject1 = this.hVM;
+                                                                        if (localObject1 == null) {
                                                                           break;
                                                                         }
-                                                                        localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                                                        if (!com.tencent.mm.live.b.g.anV().gRh)
+                                                                        localObject1 = ((com.tencent.mm.live.c.a)localObject1).hwr;
+                                                                        if (localObject1 == null) {
+                                                                          break;
+                                                                        }
+                                                                        ((ViewGroup)localObject1).requestLayout();
+                                                                        localObject1 = kotlin.x.SXb;
+                                                                        break;
+                                                                      }
+                                                                      localObject1 = com.tencent.mm.live.b.x.hJf;
+                                                                      if (!com.tencent.mm.live.b.x.aGD().hJn)
+                                                                      {
+                                                                        localObject1 = this.hWV;
+                                                                        if (localObject1 != null)
                                                                         {
-                                                                          localObject1 = this.hek;
-                                                                          if (localObject1 != null)
-                                                                          {
-                                                                            ((bk)localObject1).nL(8);
-                                                                            localObject1 = d.z.Nhr;
-                                                                          }
-                                                                          localObject1 = this.hcT;
-                                                                          if (localObject1 != null)
-                                                                          {
-                                                                            ((t)localObject1).nL(8);
-                                                                            localObject1 = d.z.Nhr;
-                                                                          }
-                                                                          localObject1 = this.hdi;
-                                                                          if (localObject1 != null)
-                                                                          {
-                                                                            ((com.tencent.mm.live.c.ae)localObject1).nL(8);
-                                                                            localObject1 = d.z.Nhr;
-                                                                          }
-                                                                          localObject1 = this.hdn;
-                                                                          if (localObject1 != null)
-                                                                          {
-                                                                            ((com.tencent.mm.live.c.r)localObject1).nL(0);
-                                                                            localObject1 = d.z.Nhr;
-                                                                          }
-                                                                          localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                                                          com.tencent.mm.live.b.g.aox();
-                                                                          localObject1 = getContext();
-                                                                          if (localObject1 == null)
-                                                                          {
-                                                                            paramc = new d.v("null cannot be cast to non-null type android.app.Activity");
-                                                                            AppMethodBeat.o(216657);
-                                                                            throw paramc;
-                                                                          }
-                                                                          ((Activity)localObject1).setRequestedOrientation(1);
+                                                                          ((bk)localObject1).rg(8);
+                                                                          localObject1 = kotlin.x.SXb;
+                                                                        }
+                                                                        localObject1 = this.hVH;
+                                                                        if (localObject1 != null)
+                                                                        {
+                                                                          ((com.tencent.mm.live.c.t)localObject1).rg(8);
+                                                                          localObject1 = kotlin.x.SXb;
+                                                                        }
+                                                                        localObject1 = this.hVW;
+                                                                        if (localObject1 != null)
+                                                                        {
+                                                                          ((ae)localObject1).rg(8);
+                                                                          localObject1 = kotlin.x.SXb;
+                                                                        }
+                                                                        localObject1 = this.hWb;
+                                                                        if (localObject1 != null)
+                                                                        {
+                                                                          ((com.tencent.mm.live.c.r)localObject1).rg(0);
+                                                                          localObject1 = kotlin.x.SXb;
+                                                                        }
+                                                                        localObject1 = com.tencent.mm.live.b.x.hJf;
+                                                                        com.tencent.mm.live.b.x.aHg();
+                                                                        localObject1 = getContext();
+                                                                        if (localObject1 == null)
+                                                                        {
+                                                                          paramc = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+                                                                          AppMethodBeat.o(208623);
+                                                                          throw paramc;
+                                                                        }
+                                                                        ((Activity)localObject1).setRequestedOrientation(1);
+                                                                        continue;
+                                                                        localObject1 = com.tencent.mm.live.b.x.hJf;
+                                                                        com.tencent.mm.live.b.x.aGD().hJq = true;
+                                                                        continue;
+                                                                        localObject1 = com.tencent.mm.live.b.x.hJf;
+                                                                        localObject1 = com.tencent.mm.live.b.x.aGm();
+                                                                        localObject2 = com.tencent.mm.live.b.x.hJf;
+                                                                        l = com.tencent.mm.live.b.x.aGr().hyH;
+                                                                        localObject2 = com.tencent.mm.live.b.x.hJf;
+                                                                        localObject2 = com.tencent.mm.live.b.x.aGt();
+                                                                        localObject3 = com.tencent.mm.model.z.aTY();
+                                                                        p.g(localObject3, "ConfigStorageLogic.getUsernameFromUserInfo()");
+                                                                        com.tencent.mm.live.b.x localx = com.tencent.mm.live.b.x.hJf;
+                                                                        com.tencent.mm.live.d.e.a((String)localObject1, l, (String)localObject2, 8, 1, (String)localObject3, com.tencent.mm.live.b.x.aGr().LIa);
+                                                                        com.tencent.mm.live.d.f.aIO();
+                                                                        continue;
+                                                                        localObject1 = this.hVO;
+                                                                        if (localObject1 != null)
+                                                                        {
+                                                                          ((ay)localObject1).rg(4);
+                                                                          localObject1 = kotlin.x.SXb;
                                                                           continue;
-                                                                          localObject1 = com.tencent.mm.live.b.g.gQZ;
-                                                                          com.tencent.mm.live.b.g.anV().gRk = true;
+                                                                          localObject1 = com.tencent.mm.live.b.x.hJf;
+                                                                          com.tencent.mm.live.b.x.qZ(com.tencent.mm.live.b.x.aGR() + 1);
                                                                         }
                                                                       }
                                                                     }
@@ -1439,32 +2171,30 @@ public final class LiveVisitorPluginLayout
     }
   }
   
-  public final void aoO()
+  public final void stop()
   {
-    AppMethodBeat.i(216663);
-    super.aoO();
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajQ();
-    p.g(localb, "MMKernel.network()");
-    localb.ajj().a(3806, (com.tencent.mm.ak.f)this);
-    AppMethodBeat.o(216663);
+    AppMethodBeat.i(208627);
+    super.stop();
+    this.timerThread.stopTimer();
+    AppMethodBeat.o(208627);
   }
   
-  public final void aoP()
+  public final void unMount()
   {
-    AppMethodBeat.i(216664);
-    super.aoP();
-    Object localObject1 = com.tencent.mm.live.b.g.gQZ;
+    AppMethodBeat.i(208631);
+    super.unMount();
+    Object localObject1 = com.tencent.mm.live.b.x.hJf;
     int i;
     Object localObject2;
-    if (com.tencent.mm.live.b.g.anQ() != -1)
+    if (com.tencent.mm.live.b.x.getLastOrientation() != -1)
     {
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      i = com.tencent.mm.live.b.g.anQ();
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      i = com.tencent.mm.live.b.x.getLastOrientation();
       localObject1 = getContext().getSystemService("window");
       if (localObject1 == null)
       {
-        localObject1 = new d.v("null cannot be cast to non-null type android.view.WindowManager");
-        AppMethodBeat.o(216664);
+        localObject1 = new kotlin.t("null cannot be cast to non-null type android.view.WindowManager");
+        AppMethodBeat.o(208631);
         throw ((Throwable)localObject1);
       }
       localObject1 = ((WindowManager)localObject1).getDefaultDisplay();
@@ -1474,696 +2204,80 @@ public final class LiveVisitorPluginLayout
         i = 1;
         if (i == 0)
         {
-          localObject1 = this.hel;
+          localObject1 = this.liveTXLivePlayerPlygin;
           if (localObject1 != null) {
-            ((aw)localObject1).apj();
+            ((aw)localObject1).ev(false);
           }
-          localObject1 = com.tencent.mm.live.b.c.gPx;
-          com.tencent.mm.live.b.c.ang();
-          localObject1 = i.gRP;
-          i.aoD();
-          i.gRP.release();
-          localObject1 = this.har;
+          localObject1 = com.tencent.mm.live.b.m.hGg;
+          com.tencent.mm.live.b.m.aFh();
+          localObject1 = com.tencent.mm.live.b.r.hIg;
+          com.tencent.mm.live.b.r.aFZ();
+          com.tencent.mm.live.b.r.hIg.release();
+          localObject1 = this.liveCore;
           if (localObject1 != null) {
-            ((com.tencent.mm.live.core.core.c.b)localObject1).alw();
+            ((com.tencent.mm.live.core.core.d.b)localObject1).aBW();
           }
-          localObject1 = this.har;
-          if ((localObject1 == null) || (((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc.alU() != true))
+          localObject1 = this.liveCore;
+          if ((localObject1 == null) || (((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz.aDu() != true))
           {
-            localObject1 = this.har;
-            if ((localObject1 == null) || (((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc.alT() != true)) {
-              break label306;
+            localObject1 = this.liveCore;
+            if ((localObject1 == null) || (((com.tencent.mm.live.core.core.trtc.a)localObject1).hAz.aDt() != true)) {
+              break label301;
             }
           }
-          localObject1 = com.tencent.mm.live.b.g.gQZ;
-          localObject1 = com.tencent.mm.live.b.g.aos().gTx;
+          localObject1 = com.tencent.mm.live.b.x.hJf;
+          localObject1 = com.tencent.mm.live.b.x.aHa().hKU;
           if (localObject1 != null)
           {
-            localObject2 = i.gRP;
-            i.at(((com.tencent.mm.live.b.b.a.a)localObject1).gTA, ((com.tencent.mm.live.b.b.a.a)localObject1).gTC);
+            localObject2 = com.tencent.mm.live.b.r.hIg;
+            com.tencent.mm.live.b.r.aw(((com.tencent.mm.live.b.b.a.a)localObject1).hFz, ((com.tencent.mm.live.b.b.a.a)localObject1).hFG);
           }
           localObject1 = new Bundle();
           ((Bundle)localObject1).putBoolean("PARAM_HANGUP_SELF", true);
-          a(b.c.gUm, (Bundle)localObject1);
+          statusChange(b.c.hLL, (Bundle)localObject1);
         }
       }
     }
     for (;;)
     {
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.b.g.Zq();
-      localObject1 = com.tencent.mm.live.core.core.c.b.gMM;
-      localObject1 = com.tencent.mm.live.core.core.c.b.amx();
-      if (localObject1 != null) {
-        ((com.tencent.mm.live.core.core.c.b)localObject1).release();
-      }
-      com.tencent.mm.live.core.core.c.b.e(null);
-      this.hdv.abn();
-      localObject1 = com.tencent.mm.kernel.g.ajQ();
+      localObject1 = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.and();
+      localObject1 = com.tencent.mm.live.core.core.d.b.hCo;
+      com.tencent.mm.live.core.core.d.b.a.releaseInstance();
+      this.hWh.apm();
+      localObject1 = com.tencent.mm.kernel.g.aAg();
       p.g(localObject1, "MMKernel.network()");
-      ((com.tencent.mm.kernel.b)localObject1).ajj().b(3806, (com.tencent.mm.ak.f)this);
-      AppMethodBeat.o(216664);
+      ((com.tencent.mm.kernel.b)localObject1).azz().b(3806, (i)this);
+      this.timerThread.stopTimer();
+      AppMethodBeat.o(208631);
       return;
       i = 0;
       break;
-      label306:
-      localObject1 = this.hem;
-      if ((localObject1 != null) && (((com.tencent.mm.live.c.v)localObject1).gXn.has == true))
+      label301:
+      localObject1 = this.hWW;
+      if ((localObject1 != null) && (((com.tencent.mm.live.c.v)localObject1).hQi.hTm == true))
       {
-        localObject1 = i.gRP;
-        localObject1 = com.tencent.mm.live.b.g.gQZ;
-        String str = com.tencent.mm.live.b.g.aos().gTy;
-        localObject1 = com.tencent.mm.live.b.g.gQZ;
-        localObject2 = com.tencent.mm.live.b.g.anH().Hii;
+        localObject1 = com.tencent.mm.live.b.r.hIg;
+        localObject1 = com.tencent.mm.live.b.x.hJf;
+        String str = com.tencent.mm.live.b.x.aHa().hKV;
+        localObject1 = com.tencent.mm.live.b.x.hJf;
+        localObject2 = com.tencent.mm.live.b.x.aGr().MnL;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
-        i.at(str, (String)localObject1);
+        com.tencent.mm.live.b.r.aw(str, (String)localObject1);
       }
     }
   }
   
-  public final boolean aoQ()
-  {
-    AppMethodBeat.i(216665);
-    boolean bool2 = super.aoQ();
-    boolean bool1 = bool2;
-    if (!bool2)
-    {
-      com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.gQZ;
-      bool1 = bool2;
-      if (com.tencent.mm.live.b.g.anV().gRi)
-      {
-        localg = com.tencent.mm.live.b.g.gQZ;
-        com.tencent.mm.live.b.g.anV().gRi = false;
-        b.b.a(this, b.c.gUd);
-        bool1 = true;
-      }
-    }
-    AppMethodBeat.o(216665);
-    return bool1;
-  }
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/view/LiveVisitorPluginLayout$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  public static final class a {}
   
-  public final void dY(boolean paramBoolean)
-  {
-    this.hdu = paramBoolean;
-  }
-  
-  public final void f(int paramInt, Bundle paramBundle)
-  {
-    Object localObject2 = null;
-    Object localObject3 = null;
-    Object localObject1 = null;
-    int i = 0;
-    int j = 0;
-    AppMethodBeat.i(216668);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreVisitor", "callback:".concat(String.valueOf(paramInt)));
-    Object localObject4 = c.b.gJM;
-    if (paramInt == c.b.alB())
-    {
-      b.b.a(this, b.c.gUz);
-      AppMethodBeat.o(216668);
-      return;
-    }
-    localObject4 = c.b.gJM;
-    if (paramInt == c.b.alC())
-    {
-      if (paramBundle != null)
-      {
-        localObject2 = paramBundle.getString("live_user_id");
-        paramBundle.getString("live_user_exit_reason");
-        localObject3 = new StringBuilder("EVT_ROOM_USER_EXIT sdkUid:").append((String)localObject2).append(" micUid:");
-        paramBundle = com.tencent.mm.live.b.g.gQZ;
-        paramBundle = com.tencent.mm.live.b.g.aos().gTx;
-        if (paramBundle != null) {}
-        for (paramBundle = paramBundle.gTC;; paramBundle = null)
-        {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreAnchor", paramBundle);
-          paramBundle = com.tencent.mm.live.b.g.gQZ;
-          localObject3 = com.tencent.mm.live.b.g.aos().gTx;
-          paramBundle = (Bundle)localObject1;
-          if (localObject3 != null) {
-            paramBundle = ((com.tencent.mm.live.b.b.a.a)localObject3).gTC;
-          }
-          if (!p.i(localObject2, paramBundle))
-          {
-            paramBundle = com.tencent.mm.live.b.g.gQZ;
-            if (!p.i(localObject2, com.tencent.mm.live.b.g.anH().Hij)) {}
-          }
-          else
-          {
-            paramBundle = com.tencent.mm.live.b.g.gQZ;
-            paramBundle = com.tencent.mm.live.b.g.aos().gTx;
-            if (paramBundle != null)
-            {
-              localObject1 = this.hek;
-              if (localObject1 != null)
-              {
-                localObject1 = ((bk)localObject1).gKW;
-                if (localObject1 != null) {
-                  ((LivePreviewView)localObject1).clearAnimation();
-                }
-              }
-              localObject1 = com.tencent.mm.live.b.g.gQZ;
-              com.tencent.mm.live.b.g.aos().a(paramBundle.gJh, paramBundle.gTB, paramBundle.gTA);
-            }
-          }
-          paramBundle = com.tencent.mm.live.b.g.gQZ;
-          if (p.i(localObject2, com.tencent.mm.live.b.g.anH().Hij))
-          {
-            this.het = true;
-            b.b.a(this, b.c.gUQ);
-          }
-          AppMethodBeat.o(216668);
-          return;
-        }
-      }
-      AppMethodBeat.o(216668);
-      return;
-    }
-    localObject1 = c.b.gJM;
-    if (paramInt == c.b.alD()) {
-      if (paramBundle != null)
-      {
-        localObject1 = paramBundle.getString("live_user_id");
-        if (paramBundle.getBoolean("live_media_enable"))
-        {
-          paramBundle = com.tencent.mm.live.b.g.gQZ;
-          localObject3 = com.tencent.mm.live.b.g.aos();
-          if (localObject1 != null) {
-            break label963;
-          }
-        }
-      }
-    }
-    label946:
-    label963:
-    for (paramBundle = "";; paramBundle = (Bundle)localObject1)
-    {
-      ((com.tencent.mm.live.b.b.a)localObject3).gTz = paramBundle;
-      localObject4 = ((com.tencent.mm.live.b.b.a)localObject3).gTx;
-      paramBundle = (Bundle)localObject2;
-      if (localObject4 != null) {
-        paramBundle = ((com.tencent.mm.live.b.b.a.a)localObject4).gTC;
-      }
-      if ((p.i(localObject1, paramBundle)) && (!((com.tencent.mm.live.b.b.a)localObject3).aoK()))
-      {
-        paramBundle = ((com.tencent.mm.live.b.b.a)localObject3).gTu;
-        if (paramBundle != null)
-        {
-          paramBundle.invoke();
-          AppMethodBeat.o(216668);
-          return;
-        }
-      }
-      AppMethodBeat.o(216668);
-      return;
-      b.b.a(this, b.c.gUm);
-      AppMethodBeat.o(216668);
-      return;
-      AppMethodBeat.o(216668);
-      return;
-      localObject1 = c.b.gJM;
-      long l;
-      if (paramInt == c.b.alF())
-      {
-        paramBundle = this.har;
-        int k;
-        if ((paramBundle != null) && (paramBundle.gLc.alU() == true))
-        {
-          i = 1;
-          k = this.gKh;
-          paramBundle = c.a.gJD;
-          if (k != c.a.alz()) {
-            break label636;
-          }
-          j = 2;
-        }
-        for (;;)
-        {
-          paramBundle = com.tencent.mm.live.b.g.gQZ;
-          localObject2 = com.tencent.mm.live.b.g.anC();
-          paramBundle = com.tencent.mm.live.b.g.gQZ;
-          l = com.tencent.mm.live.b.g.anH().FKy;
-          paramBundle = com.tencent.mm.live.b.g.gQZ;
-          paramBundle = com.tencent.mm.live.b.g.aos().gTx;
-          if (paramBundle != null)
-          {
-            localObject1 = paramBundle.gTA;
-            paramBundle = (Bundle)localObject1;
-            if (localObject1 != null) {}
-          }
-          else
-          {
-            paramBundle = "";
-          }
-          localObject1 = com.tencent.mm.live.b.g.gQZ;
-          com.tencent.mm.live.d.e.b((String)localObject2, l, paramBundle, com.tencent.mm.live.b.g.anJ(), i, j, paramInt);
-          AppMethodBeat.o(216668);
-          return;
-          paramBundle = this.har;
-          if ((paramBundle != null) && (paramBundle.gLc.alT() == true))
-          {
-            i = 2;
-            break;
-          }
-          i = 0;
-          break;
-          label636:
-          paramBundle = c.a.gJD;
-          if (k == c.a.alA()) {
-            j = 1;
-          }
-        }
-      }
-      localObject1 = c.b.gJM;
-      if (paramInt == c.b.alH())
-      {
-        paramBundle = com.tencent.mm.live.b.g.gQZ;
-        l = com.tencent.mm.live.b.g.anH().FKy;
-        paramBundle = com.tencent.mm.live.b.g.gQZ;
-        paramBundle = com.tencent.mm.live.b.g.anC();
-        localObject1 = com.tencent.mm.live.b.g.gQZ;
-        localObject1 = com.tencent.mm.live.b.g.anH().Gud;
-        p.g(localObject1, "LiveDataManager.liveInfo.live_name");
-        new com.tencent.mm.live.b.a(l, paramBundle, (String)localObject1, (byte)0).a((d.g.a.r)new b(this));
-        AppMethodBeat.o(216668);
-        return;
-      }
-      localObject1 = c.b.gJM;
-      if (paramInt == c.b.alI())
-      {
-        if (paramBundle != null)
-        {
-          localObject2 = paramBundle.getString("live_user_id");
-          localObject1 = localObject2;
-          if (localObject2 != null) {}
-        }
-        else
-        {
-          localObject1 = "";
-        }
-        localObject4 = this.har;
-        localObject2 = localObject3;
-        if (localObject4 != null)
-        {
-          localObject4 = ((com.tencent.mm.live.core.core.trtc.a)localObject4).gLc;
-          localObject2 = localObject3;
-          if (localObject4 != null) {
-            localObject2 = ((com.tencent.mm.live.core.core.b.e)localObject4).gKw;
-          }
-        }
-        if (!bu.lX((String)localObject1, (String)localObject2))
-        {
-          localObject2 = com.tencent.mm.live.b.g.gQZ;
-          com.tencent.mm.live.b.g.anY().setUserId((String)localObject1);
-          localObject1 = com.tencent.mm.live.b.g.gQZ;
-          localObject1 = com.tencent.mm.live.b.g.anY();
-          if (paramBundle != null)
-          {
-            paramInt = paramBundle.getInt("live_stream_type");
-            ((g.c)localObject1).streamType = paramInt;
-            localObject1 = com.tencent.mm.live.b.g.gQZ;
-            localObject1 = com.tencent.mm.live.b.g.anY();
-            if (paramBundle == null) {
-              break label946;
-            }
-          }
-          for (paramInt = paramBundle.getInt("live_first_frame_width");; paramInt = 0)
-          {
-            ((g.c)localObject1).width = paramInt;
-            localObject1 = com.tencent.mm.live.b.g.gQZ;
-            localObject1 = com.tencent.mm.live.b.g.anY();
-            paramInt = i;
-            if (paramBundle != null) {
-              paramInt = paramBundle.getInt("live_first_frame_height");
-            }
-            ((g.c)localObject1).height = paramInt;
-            b.b.a(this, b.c.gUY);
-            AppMethodBeat.o(216668);
-            return;
-            paramInt = 0;
-            break;
-          }
-        }
-        this.het = false;
-      }
-      AppMethodBeat.o(216668);
-      return;
-    }
-  }
-  
-  public final int getLiveRole()
-  {
-    return 0;
-  }
-  
-  public final int getRelativeLayoutId()
-  {
-    return 2131496356;
-  }
-  
-  public final void i(boolean paramBoolean, int paramInt)
-  {
-    AppMethodBeat.i(216667);
-    super.i(paramBoolean, paramInt);
-    AppMethodBeat.o(216667);
-  }
-  
-  public final String name()
-  {
-    AppMethodBeat.i(216658);
-    String str = LiveVisitorPluginLayout.class.getSimpleName();
-    p.g(str, "LiveVisitorPluginLayout::class.java.simpleName");
-    AppMethodBeat.o(216658);
-    return str;
-  }
-  
-  public final void onCallStateChanged(int paramInt, String paramString)
-  {
-    AppMethodBeat.i(216652);
-    p.h(paramString, "incomingNumber");
-    StringBuilder localStringBuilder = new StringBuilder("onCallStateChanged state:").append(paramInt).append(", isFloatMode:");
-    paramString = this.har;
-    if (paramString != null)
-    {
-      paramString = paramString.gLc;
-      if (paramString != null)
-      {
-        paramString = Boolean.valueOf(paramString.isFloatMode());
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreVisitor", paramString);
-        switch (paramInt)
-        {
-        }
-      }
-    }
-    do
-    {
-      AppMethodBeat.o(216652);
-      return;
-      paramString = null;
-      break;
-      AppMethodBeat.o(216652);
-      return;
-      paramString = i.gRP;
-      i.aoD();
-      paramString = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.b.g.anP();
-      paramString = this.har;
-      if ((paramString != null) && (paramString.gLc.alT() == true))
-      {
-        paramString = this.har;
-        if (paramString != null) {
-          paramString.alr();
-        }
-      }
-      paramString = this.har;
-    } while (paramString == null);
-    paramString.alv();
-    AppMethodBeat.o(216652);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
-  {
-    AppMethodBeat.i(216666);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreVisitor", "errType:" + paramInt1 + " errCode:" + paramInt2);
-    if (((paramn instanceof com.tencent.mm.live.b.a.b)) && (paramInt1 == 0) && (paramInt2 == 0))
-    {
-      paramString = this.heo;
-      if (paramString != null) {
-        paramString.apn();
-      }
-      paramn = this.hda;
-      if (paramn != null)
-      {
-        paramString = com.tencent.mm.live.b.g.gQZ;
-        paramString = com.tencent.mm.live.b.g.anH().Gud;
-        if (paramString == null) {
-          break label145;
-        }
-        paramString = (CharSequence)paramString;
-        com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.gQZ;
-        paramn.a(paramString, com.tencent.mm.live.b.g.anJ());
-      }
-      paramString = com.tencent.mm.live.b.g.gQZ;
-      paramString = com.tencent.mm.live.b.g.gQZ;
-      if (com.tencent.mm.live.b.g.anH().FTM) {
-        break label155;
-      }
-    }
-    label145:
-    label155:
-    for (paramInt1 = ch.aDd();; paramInt1 = 0)
-    {
-      com.tencent.mm.live.b.g.nw(paramInt1);
-      AppMethodBeat.o(216666);
-      return;
-      paramString = (CharSequence)"";
-      break;
-    }
-  }
-  
-  public final void pause()
-  {
-    AppMethodBeat.i(216662);
-    super.pause();
-    Object localObject1 = com.tencent.mm.live.b.g.gQZ;
-    if (com.tencent.mm.live.b.g.anQ() != -1)
-    {
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      int i = com.tencent.mm.live.b.g.anQ();
-      localObject1 = getContext().getSystemService("window");
-      if (localObject1 == null)
-      {
-        localObject1 = new d.v("null cannot be cast to non-null type android.view.WindowManager");
-        AppMethodBeat.o(216662);
-        throw ((Throwable)localObject1);
-      }
-      localObject1 = ((WindowManager)localObject1).getDefaultDisplay();
-      p.g(localObject1, "((context.getSystemServi…owManager).defaultDisplay");
-      if (i == ((Display)localObject1).getRotation()) {}
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      localObject1 = new StringBuilder("orientationChanged:").append(bool).append(", ");
-      localObject2 = getContext().getSystemService("window");
-      if (localObject2 != null) {
-        break;
-      }
-      localObject1 = new d.v("null cannot be cast to non-null type android.view.WindowManager");
-      AppMethodBeat.o(216662);
-      throw ((Throwable)localObject1);
-    }
-    Object localObject2 = ((WindowManager)localObject2).getDefaultDisplay();
-    p.g(localObject2, "((context.getSystemServi…owManager).defaultDisplay");
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreVisitor", ((Display)localObject2).getRotation());
-    if (!bool)
-    {
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      if (!com.tencent.mm.live.b.g.anV().gRh)
-      {
-        localObject1 = com.tencent.mm.live.b.g.gQZ;
-        if (!com.tencent.mm.live.b.g.anV().gRj)
-        {
-          localObject1 = com.tencent.mm.live.b.g.gQZ;
-          if (!com.tencent.mm.live.b.g.anV().gRk)
-          {
-            localObject1 = com.tencent.mm.live.b.g.gQZ;
-            if (com.tencent.mm.live.b.g.anV().gRi)
-            {
-              localObject1 = com.tencent.mm.live.b.g.gQZ;
-              if ((!com.tencent.mm.live.b.g.anO()) && (com.tencent.mm.compatible.d.b.cc(getContext()))) {
-                b.b.a(this, b.c.gUr);
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject1 = this.har;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc;
-      if (localObject1 == null) {
-        break;
-      }
-      if (((com.tencent.mm.live.core.core.b.e)localObject1).alT() != true) {
-        break label369;
-      }
-      localObject1 = this.har;
-      if (localObject1 == null) {
-        break label369;
-      }
-      ((com.tencent.mm.live.core.core.c.b)localObject1).alr();
-      AppMethodBeat.o(216662);
-      return;
-      localObject1 = this.har;
-      if (localObject1 != null)
-      {
-        localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc;
-        if ((localObject1 != null) && (((com.tencent.mm.live.core.core.b.e)localObject1).alR() == true))
-        {
-          localObject1 = this.har;
-          if (localObject1 != null) {
-            ((com.tencent.mm.live.core.core.c.b)localObject1).amu();
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(216662);
-    return;
-    label369:
-    AppMethodBeat.o(216662);
-  }
-  
-  public final void resume()
-  {
-    AppMethodBeat.i(216661);
-    Object localObject1 = com.tencent.mm.live.b.g.gQZ;
-    com.tencent.mm.live.b.g.anV().gRk = false;
-    localObject1 = getContext().getSystemService("window");
-    if (localObject1 == null)
-    {
-      localObject1 = new d.v("null cannot be cast to non-null type android.view.WindowManager");
-      AppMethodBeat.o(216661);
-      throw ((Throwable)localObject1);
-    }
-    localObject1 = ((WindowManager)localObject1).getDefaultDisplay();
-    p.g(localObject1, "((context.getSystemServi…owManager).defaultDisplay");
-    int j = ((Display)localObject1).getRotation();
-    localObject1 = new StringBuilder("curOrientation:").append(j).append(", lastOrientation:");
-    Object localObject2 = com.tencent.mm.live.b.g.gQZ;
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.LiveCoreVisitor", com.tencent.mm.live.b.g.anQ());
-    super.resume();
-    localObject1 = this.har;
-    if (localObject1 != null)
-    {
-      localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc;
-      if ((localObject1 != null) && (((com.tencent.mm.live.core.core.b.e)localObject1).alR() == true))
-      {
-        localObject1 = this.har;
-        if (localObject1 != null) {
-          ((com.tencent.mm.live.core.core.c.b)localObject1).amv();
-        }
-      }
-    }
-    localObject1 = com.tencent.mm.live.b.g.gQZ;
-    int i;
-    if (com.tencent.mm.live.b.g.anQ() != -1)
-    {
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      if (j != com.tencent.mm.live.b.g.anQ())
-      {
-        localObject1 = this.har;
-        if (localObject1 != null) {
-          ((com.tencent.mm.live.core.core.c.b)localObject1).alt();
-        }
-        localObject1 = this.har;
-        if (localObject1 != null) {
-          ((com.tencent.mm.live.core.core.c.b)localObject1).amr();
-        }
-        localObject1 = this.hek;
-        if (localObject1 != null)
-        {
-          localObject2 = com.tencent.mm.live.b.g.gQZ;
-          if (!com.tencent.mm.live.b.g.anY().aoA()) {
-            break label333;
-          }
-          i = 2;
-          localObject2 = com.tencent.mm.live.b.g.gQZ;
-          localObject2 = com.tencent.mm.live.b.g.anY().userId;
-          com.tencent.mm.live.b.g localg = com.tencent.mm.live.b.g.gQZ;
-          ((bk)localObject1).c(i, (String)localObject2, com.tencent.mm.live.b.g.anY().streamType);
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject1 = this.har;
-      if (localObject1 != null)
-      {
-        localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc;
-        if ((localObject1 != null) && (((com.tencent.mm.live.core.core.b.e)localObject1).alT() == true))
-        {
-          localObject1 = this.hek;
-          if (localObject1 != null)
-          {
-            localObject2 = ((bk)localObject1).har;
-            if (localObject2 != null) {
-              ((com.tencent.mm.live.core.core.c.b)localObject2).a(((bk)localObject1).gKW);
-            }
-          }
-        }
-      }
-      localObject1 = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.b.g.nx(j);
-      AppMethodBeat.o(216661);
-      return;
-      label333:
-      i = 1;
-      break;
-      localObject1 = this.har;
-      if (localObject1 != null)
-      {
-        localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc;
-        if ((localObject1 != null) && (!((com.tencent.mm.live.core.core.b.e)localObject1).gKr))
-        {
-          localObject1 = this.har;
-          if (localObject1 == null) {
-            continue;
-          }
-          ((com.tencent.mm.live.core.core.c.b)localObject1).alt();
-          continue;
-        }
-      }
-      localObject1 = this.har;
-      if (localObject1 != null)
-      {
-        localObject1 = ((com.tencent.mm.live.core.core.trtc.a)localObject1).gLc;
-        if (localObject1 != null) {
-          ((com.tencent.mm.live.core.core.b.e)localObject1).gKr = false;
-        }
-      }
-    }
-  }
-  
-  public final void start()
-  {
-    AppMethodBeat.i(216660);
-    super.start();
-    Object localObject = i.gRP;
-    i.aoF();
-    localObject = this.har;
-    if (((localObject == null) || (((com.tencent.mm.live.core.core.trtc.a)localObject).gLc.alT() != true)) && (this.hdu))
-    {
-      localObject = com.tencent.mm.live.b.g.gQZ;
-      if (!com.tencent.mm.live.b.g.anV().gRh)
-      {
-        localObject = com.tencent.mm.live.b.g.gQZ;
-        if (!com.tencent.mm.live.b.g.anV().gRj)
-        {
-          localObject = getContext();
-          if (localObject == null)
-          {
-            localObject = new d.v("null cannot be cast to non-null type android.app.Activity");
-            AppMethodBeat.o(216660);
-            throw ((Throwable)localObject);
-          }
-          ((Activity)localObject).setRequestedOrientation(4);
-        }
-      }
-    }
-    AppMethodBeat.o(216660);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errCode", "", "errMsg", "", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "errCode", "", "errMsg", "", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "invoke"})
   static final class b
-    extends d.g.b.q
-    implements d.g.a.r<Integer, String, com.tencent.mm.live.core.core.b.c, TRTCCloudDef.TRTCParams, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.r<Integer, String, com.tencent.mm.live.core.core.b.e, TRTCCloudDef.TRTCParams, kotlin.x>
   {
     b(LiveVisitorPluginLayout paramLiveVisitorPluginLayout)
     {
@@ -2171,10 +2285,10 @@ public final class LiveVisitorPluginLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
   static final class c
-    extends d.g.b.q
-    implements d.g.a.b<Boolean, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<Boolean, kotlin.x>
   {
     c(LiveVisitorPluginLayout paramLiveVisitorPluginLayout, boolean paramBoolean)
     {
@@ -2182,10 +2296,10 @@ public final class LiveVisitorPluginLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
   static final class d
-    extends d.g.b.q
-    implements d.g.a.b<Boolean, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<Boolean, kotlin.x>
   {
     d(LiveVisitorPluginLayout paramLiveVisitorPluginLayout, boolean paramBoolean)
     {
@@ -2193,10 +2307,10 @@ public final class LiveVisitorPluginLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "errCode", "", "errMsg", "", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "errCode", "", "errMsg", "", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "invoke"})
   static final class e
-    extends d.g.b.q
-    implements d.g.a.r<Integer, String, com.tencent.mm.live.core.core.b.c, TRTCCloudDef.TRTCParams, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.r<Integer, String, com.tencent.mm.live.core.core.b.e, TRTCCloudDef.TRTCParams, kotlin.x>
   {
     e(LiveVisitorPluginLayout paramLiveVisitorPluginLayout)
     {
@@ -2204,7 +2318,7 @@ public final class LiveVisitorPluginLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
   static final class g
     implements DialogInterface.OnDismissListener
   {
@@ -2212,15 +2326,15 @@ public final class LiveVisitorPluginLayout
     
     public final void onDismiss(DialogInterface paramDialogInterface)
     {
-      AppMethodBeat.i(216637);
-      paramDialogInterface = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.b.g.aox();
-      b.b.a(this.hev, b.c.gUe);
-      AppMethodBeat.o(216637);
+      AppMethodBeat.i(208600);
+      paramDialogInterface = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.aHg();
+      b.b.a(this.hXf, b.c.hLD);
+      AppMethodBeat.o(208600);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
   static final class i
     implements DialogInterface.OnDismissListener
   {
@@ -2228,18 +2342,18 @@ public final class LiveVisitorPluginLayout
     
     public final void onDismiss(DialogInterface paramDialogInterface)
     {
-      AppMethodBeat.i(216639);
-      paramDialogInterface = com.tencent.mm.live.b.g.gQZ;
-      com.tencent.mm.live.b.g.aox();
-      b.b.a(this.hev, b.c.gUe);
-      AppMethodBeat.o(216639);
+      AppMethodBeat.i(208602);
+      paramDialogInterface = com.tencent.mm.live.b.x.hJf;
+      com.tencent.mm.live.b.x.aHg();
+      b.b.a(this.hXf, b.c.hLD);
+      AppMethodBeat.o(208602);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "x", "", "y", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "x", "", "y", "invoke"})
   static final class k
-    extends d.g.b.q
-    implements d.g.a.m<Float, Float, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.m<Float, Float, kotlin.x>
   {
     k(LiveVisitorPluginLayout paramLiveVisitorPluginLayout)
     {
@@ -2247,10 +2361,10 @@ public final class LiveVisitorPluginLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "x", "", "y", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "x", "", "y", "invoke"})
   static final class l
-    extends d.g.b.q
-    implements d.g.a.m<Float, Float, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.m<Float, Float, kotlin.x>
   {
     l(LiveVisitorPluginLayout paramLiveVisitorPluginLayout)
     {
@@ -2258,10 +2372,10 @@ public final class LiveVisitorPluginLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "liveID", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "liveID", "", "invoke"})
   static final class m
-    extends d.g.b.q
-    implements d.g.a.b<Long, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<Long, kotlin.x>
   {
     m(LiveVisitorPluginLayout paramLiveVisitorPluginLayout)
     {
@@ -2269,10 +2383,10 @@ public final class LiveVisitorPluginLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class n
-    extends d.g.b.q
-    implements d.g.a.a<d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<kotlin.x>
   {
     n(LiveVisitorPluginLayout paramLiveVisitorPluginLayout)
     {
@@ -2280,10 +2394,10 @@ public final class LiveVisitorPluginLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class o
-    extends d.g.b.q
-    implements d.g.a.a<d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<kotlin.x>
   {
     o(LiveVisitorPluginLayout paramLiveVisitorPluginLayout)
     {
@@ -2291,10 +2405,10 @@ public final class LiveVisitorPluginLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "success", "", "invoke", "com/tencent/mm/live/view/LiveVisitorPluginLayout$statusChange$3$1"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "success", "", "invoke", "com/tencent/mm/live/view/LiveVisitorPluginLayout$statusChange$3$1"})
   static final class p
-    extends d.g.b.q
-    implements d.g.a.b<Boolean, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<Boolean, kotlin.x>
   {
     p(LiveVisitorPluginLayout paramLiveVisitorPluginLayout)
     {
@@ -2302,12 +2416,38 @@ public final class LiveVisitorPluginLayout
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTimerExpired"})
   static final class q
-    extends d.g.b.q
-    implements d.g.a.a<d.z>
+    implements MTimerHandler.CallBack
   {
-    q(LiveVisitorPluginLayout paramLiveVisitorPluginLayout)
+    q(LiveVisitorPluginLayout paramLiveVisitorPluginLayout) {}
+    
+    public final boolean onTimerExpired()
+    {
+      AppMethodBeat.i(208613);
+      o localo = LiveVisitorPluginLayout.l(this.hXf);
+      if ((localo != null) && (localo.hwr.getVisibility() == 0))
+      {
+        localo = LiveVisitorPluginLayout.l(this.hXf);
+        if (localo != null)
+        {
+          com.tencent.mm.live.b.x localx = com.tencent.mm.live.b.x.hJf;
+          int i = com.tencent.mm.live.b.x.aGr().LIa;
+          localx = com.tencent.mm.live.b.x.hJf;
+          localo.db(i, com.tencent.mm.live.b.x.aGr().LXG);
+        }
+      }
+      AppMethodBeat.o(208613);
+      return true;
+    }
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class r
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<kotlin.x>
+  {
+    r(LiveVisitorPluginLayout paramLiveVisitorPluginLayout)
     {
       super();
     }
@@ -2315,7 +2455,7 @@ public final class LiveVisitorPluginLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.view.LiveVisitorPluginLayout
  * JD-Core Version:    0.7.0.1
  */

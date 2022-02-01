@@ -12,16 +12,16 @@ import com.tencent.xweb.o;
 public final class j
   implements e
 {
-  c MSj;
-  b MSk;
-  WebView MSl;
+  c SFp;
+  b SFq;
+  WebView SFr;
   
   public j(WebView paramWebView)
   {
     AppMethodBeat.i(153868);
-    this.MSl = paramWebView;
-    this.MSj = new c();
-    this.MSk = new b();
+    this.SFr = paramWebView;
+    this.SFp = new c();
+    this.SFq = new b();
     AppMethodBeat.o(153868);
   }
   
@@ -43,7 +43,7 @@ public final class j
   public final void onHideCustomView()
   {
     AppMethodBeat.i(153870);
-    this.MSk.gho();
+    this.SFq.huJ();
     AppMethodBeat.o(153870);
   }
   
@@ -52,13 +52,13 @@ public final class j
   public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(153869);
-    this.MSj.b(this.MSl, paramString, paramBitmap);
+    this.SFp.b(this.SFr, paramString, paramBitmap);
     AppMethodBeat.o(153869);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.x5.j
  * JD-Core Version:    0.7.0.1
  */

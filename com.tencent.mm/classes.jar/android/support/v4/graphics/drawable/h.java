@@ -16,37 +16,37 @@ import java.lang.reflect.Method;
 final class h
   extends g
 {
-  private static Method Kx;
+  private static Method KH;
   
   h(Drawable paramDrawable)
   {
     super(paramDrawable);
-    eE();
+    eI();
   }
   
   h(g.a parama, Resources paramResources)
   {
     super(parama, paramResources);
-    eE();
+    eI();
   }
   
-  private static void eE()
+  private static void eI()
   {
-    if (Kx == null) {}
+    if (KH == null) {}
     try
     {
-      Kx = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
+      KH = Drawable.class.getDeclaredMethod("isProjected", new Class[0]);
       return;
     }
     catch (Exception localException) {}
   }
   
-  final g.a eC()
+  final g.a eG()
   {
-    return new a(this.Kv);
+    return new a(this.KF);
   }
   
-  protected final boolean eD()
+  protected final boolean eH()
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
@@ -76,6 +76,19 @@ final class h
     this.mDrawable.getOutline(paramOutline);
   }
   
+  public final boolean isProjected()
+  {
+    if ((this.mDrawable != null) && (KH != null)) {
+      try
+      {
+        boolean bool = ((Boolean)KH.invoke(this.mDrawable, new Object[0])).booleanValue();
+        return bool;
+      }
+      catch (Exception localException) {}
+    }
+    return false;
+  }
+  
   public final void setHotspot(float paramFloat1, float paramFloat2)
   {
     this.mDrawable.setHotspot(paramFloat1, paramFloat2);
@@ -98,7 +111,7 @@ final class h
   
   public final void setTint(int paramInt)
   {
-    if (eD())
+    if (eH())
     {
       super.setTint(paramInt);
       return;
@@ -108,7 +121,7 @@ final class h
   
   public final void setTintList(ColorStateList paramColorStateList)
   {
-    if (eD())
+    if (eH())
     {
       super.setTintList(paramColorStateList);
       return;
@@ -118,7 +131,7 @@ final class h
   
   public final void setTintMode(PorterDuff.Mode paramMode)
   {
-    if (eD())
+    if (eH())
     {
       super.setTintMode(paramMode);
       return;

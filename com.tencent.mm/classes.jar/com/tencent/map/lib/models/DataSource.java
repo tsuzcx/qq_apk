@@ -19,8 +19,9 @@ public enum DataSource
     INDOOR_BUILDINGS = new DataSource("INDOOR_BUILDINGS", 5, 4);
     LANDMARK = new DataSource("LANDMARK", 6, 5);
     TILE_OVERLAY = new DataSource("TILE_OVERLAY", 7, 6);
-    NUM = new DataSource("NUM", 8, 7);
-    $VALUES = new DataSource[] { NONE, SATELLITE, MAP, STREET_VIEW_ROAD, TRAFFIC_NETWORK, INDOOR_BUILDINGS, LANDMARK, TILE_OVERLAY, NUM };
+    INDOOR_CONFIG = new DataSource("INDOOR_CONFIG", 8, 7);
+    NUM = new DataSource("NUM", 9, 8);
+    $VALUES = new DataSource[] { NONE, SATELLITE, MAP, STREET_VIEW_ROAD, TRAFFIC_NETWORK, INDOOR_BUILDINGS, LANDMARK, TILE_OVERLAY, INDOOR_CONFIG, NUM };
     AppMethodBeat.o(180732);
   }
   

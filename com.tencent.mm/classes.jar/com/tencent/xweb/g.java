@@ -15,12 +15,12 @@ import org.xwalk.core.Log;
 
 public final class g
 {
-  private static Map<String, Integer> kQq;
+  private static Map<String, Integer> lVu;
   
   static
   {
     AppMethodBeat.i(156755);
-    kQq = new HashMap();
+    lVu = new HashMap();
     AppMethodBeat.o(156755);
   }
   
@@ -47,7 +47,7 @@ public final class g
           paramHashMap.put("token", paramString3);
           paramHashMap = paramHashMap.toString();
           int i = d.startMiniQBToLoadUrl(paramContext, paramHashMap, localHashMap, paramValueCallback);
-          kQq.put(paramString3 + paramString1, Integer.valueOf(i));
+          lVu.put(paramString3 + paramString1, Integer.valueOf(i));
           Log.i("XFilesReaderX5", "loadByMiniQB, ret = " + i + ", isSecondTime = " + String.valueOf(paramBoolean));
           a(paramString2, paramValueCallback1, i, paramInt);
           AppMethodBeat.o(156750);
@@ -98,8 +98,8 @@ public final class g
     for (Object localObject1 = paramString2;; localObject1 = "null")
     {
       Log.i("XFilesReaderX5", (String)localObject1);
-      f.ne(paramString2, f.a.MMg.name());
-      f.hq(paramString2, paramInt);
+      f.nY(paramString2, f.a.SyV.name());
+      f.hM(paramString2, paramInt);
       try
       {
         localObject1 = new JSONObject();
@@ -121,18 +121,18 @@ public final class g
     }
   }
   
-  public static void p(Context paramContext, String paramString1, String paramString2)
+  public static void o(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(156749);
     try
     {
-      Integer localInteger = (Integer)kQq.get(paramString1 + paramString2);
+      Integer localInteger = (Integer)lVu.get(paramString1 + paramString2);
       if (localInteger == null)
       {
         AppMethodBeat.o(156749);
         return;
       }
-      kQq.remove(paramString1 + paramString2);
+      lVu.remove(paramString1 + paramString2);
       if (localInteger.intValue() == 0)
       {
         Log.i("XFilesReaderX5", "finishReadFile");
@@ -153,7 +153,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.g
  * JD-Core Version:    0.7.0.1
  */

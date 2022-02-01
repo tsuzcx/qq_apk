@@ -64,7 +64,7 @@ final class d
     return true;
   }
   
-  public final int sc()
+  public final int sf()
   {
     AppMethodBeat.i(74712);
     int i = Integer.parseInt(this.string, 10);
@@ -72,7 +72,7 @@ final class d
     return i;
   }
   
-  public final long sd()
+  public final long sg()
   {
     AppMethodBeat.i(74713);
     long l = Long.parseLong(this.string, 10);
@@ -80,7 +80,7 @@ final class d
     return l;
   }
   
-  public final double se()
+  public final double sh()
   {
     AppMethodBeat.i(74714);
     double d = Double.parseDouble(this.string);
@@ -95,7 +95,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.eclipsesource.a.d
  * JD-Core Version:    0.7.0.1
  */

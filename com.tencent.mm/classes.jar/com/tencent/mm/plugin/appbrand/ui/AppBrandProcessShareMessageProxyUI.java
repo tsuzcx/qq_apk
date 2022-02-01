@@ -14,21 +14,21 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.a;
+import com.tencent.mm.ag.k.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ck;
+import com.tencent.mm.model.co;
 import com.tencent.mm.modelappbrand.k;
 import com.tencent.mm.modelappbrand.k.b;
-import com.tencent.mm.plugin.appbrand.y.n;
+import com.tencent.mm.plugin.appbrand.ac.n;
 import com.tencent.mm.pluginsdk.j;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.q;
 import com.tencent.mm.ui.widget.a.d;
 import java.util.HashMap;
 
@@ -36,8 +36,8 @@ import java.util.HashMap;
 public class AppBrandProcessShareMessageProxyUI
   extends MMActivity
 {
-  private d mHN;
-  private a mHO;
+  private d nUK;
+  private a nUL;
   
   public void finish()
   {
@@ -57,8 +57,8 @@ public class AppBrandProcessShareMessageProxyUI
     AppMethodBeat.i(48700);
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
-    t.b(getWindow());
-    t.c(getWindow(), false);
+    y.e(getWindow());
+    y.d(getWindow(), false);
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
     if (getIntent() == null)
     {
@@ -67,7 +67,7 @@ public class AppBrandProcessShareMessageProxyUI
       return;
     }
     String str1 = getIntent().getStringExtra("key_dialog_touser");
-    if (bu.isNullOrNil(str1))
+    if (Util.isNullOrNil(str1))
     {
       i = 0;
       if (i == 0) {
@@ -77,10 +77,10 @@ public class AppBrandProcessShareMessageProxyUI
       return;
     }
     Object localObject1 = (HashMap)getIntent().getSerializableExtra("key_dialog_params");
-    boolean bool1 = ck.bW(((HashMap)localObject1).get("is_video"));
-    int i = ck.getInt(((HashMap)localObject1).get("type"), 1);
-    String str2 = ck.c(((HashMap)localObject1).get("title"), "");
-    String str3 = ck.c(((HashMap)localObject1).get("img_url"), null);
+    boolean bool1 = co.cg(((HashMap)localObject1).get("is_video"));
+    int i = co.getInt(((HashMap)localObject1).get("type"), 1);
+    String str2 = co.c(((HashMap)localObject1).get("title"), "");
+    String str3 = co.c(((HashMap)localObject1).get("img_url"), null);
     int j;
     String str4;
     String str5;
@@ -92,31 +92,31 @@ public class AppBrandProcessShareMessageProxyUI
     Object localObject2;
     if ((i == 2) || (i == 3))
     {
-      i = ck.getInt(((HashMap)localObject1).get("pkg_type"), 0);
-      j = ck.getInt(((HashMap)localObject1).get("pkg_version"), 0);
-      str4 = ck.c(((HashMap)localObject1).get("app_id"), null);
-      str5 = ck.c(((HashMap)localObject1).get("cache_key"), null);
-      str6 = ck.c(((HashMap)localObject1).get("path"), null);
-      str7 = ck.c(((HashMap)localObject1).get("delay_load_img_path"), null);
-      str8 = ck.c(((HashMap)localObject1).get("nickname"), "");
-      bool2 = ck.bW(((HashMap)localObject1).get("is_dynamic"));
-      k = ck.getInt(((HashMap)localObject1).get("biz"), k.a.hCx.ordinal());
+      i = co.getInt(((HashMap)localObject1).get("pkg_type"), 0);
+      j = co.getInt(((HashMap)localObject1).get("pkg_version"), 0);
+      str4 = co.c(((HashMap)localObject1).get("app_id"), null);
+      str5 = co.c(((HashMap)localObject1).get("cache_key"), null);
+      str6 = co.c(((HashMap)localObject1).get("path"), null);
+      str7 = co.c(((HashMap)localObject1).get("delay_load_img_path"), null);
+      str8 = co.c(((HashMap)localObject1).get("nickname"), "");
+      bool2 = co.cg(((HashMap)localObject1).get("is_dynamic"));
+      k = co.getInt(((HashMap)localObject1).get("biz"), k.a.iwD.ordinal());
       if (!k.a.isValid(k)) {
         break label763;
       }
-      localObject2 = ck.c(((HashMap)localObject1).get("tail_lang"), "");
-      String str9 = ck.c(((HashMap)localObject1).get("icon_url"), "");
+      localObject2 = co.c(((HashMap)localObject1).get("tail_lang"), "");
+      String str9 = co.c(((HashMap)localObject1).get("icon_url"), "");
       paramBundle = new Bundle();
       paramBundle.putInt("key_biz", k);
       paramBundle.putString("key_footer_text_default", str8);
       paramBundle.putString("key_footer_text", k.a.b(k, (String)localObject2, getContext()));
       paramBundle.putString("key_footer_icon", str9);
-      ae.d("MicroMsg.AppBrandProcessShareMessageProxyUI", "defaultFooterTxt: %s, tailLang: %s.", new Object[] { str8, localObject2 });
+      Log.d("MicroMsg.AppBrandProcessShareMessageProxyUI", "defaultFooterTxt: %s, tailLang: %s.", new Object[] { str8, localObject2 });
     }
     for (;;)
     {
-      paramBundle = ((k)g.ab(k.class)).a(this, paramBundle, false, null);
-      str8 = n.cH(this);
+      paramBundle = ((k)g.af(k.class)).a(this, paramBundle, false, null);
+      str8 = n.cO(this);
       localObject2 = new Bundle();
       ((Bundle)localObject2).putString("app_id", str4);
       ((Bundle)localObject2).putString("msg_id", String.format("%d-%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
@@ -130,78 +130,78 @@ public class AppBrandProcessShareMessageProxyUI
       ((Bundle)localObject2).putString("delay_load_img_path", str7);
       if (bool1)
       {
-        str2 = ck.c(((HashMap)localObject1).get("video_path"), "");
-        localObject1 = ck.c(((HashMap)localObject1).get("video_thumb_path"), "");
+        str2 = co.c(((HashMap)localObject1).get("video_path"), "");
+        localObject1 = co.c(((HashMap)localObject1).get("video_thumb_path"), "");
         ((Bundle)localObject2).putBoolean("is_video", true);
         ((Bundle)localObject2).putString("video_path", str2);
         ((Bundle)localObject2).putString("video_thumb_path", (String)localObject1);
       }
       localObject1 = new c(this);
-      ((c)localObject1).mHW = new b()
+      ((c)localObject1).nUT = new b()
       {
         public final void e(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
         {
           AppMethodBeat.i(48687);
-          ae.i("MicroMsg.AppBrandProcessShareMessageProxyUI", "onProcessDone, result:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+          Log.i("MicroMsg.AppBrandProcessShareMessageProxyUI", "onProcessDone, result:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
           if (AppBrandProcessShareMessageProxyUI.a(AppBrandProcessShareMessageProxyUI.this) != null) {
             AppBrandProcessShareMessageProxyUI.a(AppBrandProcessShareMessageProxyUI.this).a(paramAnonymousBoolean, paramAnonymousString, paramAnonymousInt);
           }
-          ((k)g.ab(k.class)).a(str8, paramBundle);
+          ((k)g.af(k.class)).a(str8, paramBundle);
           AppMethodBeat.o(48687);
         }
       };
-      ((k)g.ab(k.class)).a(str8, paramBundle, (Bundle)localObject2, new k.b()
+      ((k)g.af(k.class)).a(str8, paramBundle, (Bundle)localObject2, new k.b()
       {
-        public final void oP(int paramAnonymousInt)
+        public final void sD(int paramAnonymousInt)
         {
           AppMethodBeat.i(48688);
-          ae.i("MicroMsg.AppBrandProcessShareMessageProxyUI", "onLoadImageResult, result:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          AppBrandProcessShareMessageProxyUI.c localc = this.mHR;
-          localc.mHT = true;
-          if (localc.rP())
+          Log.i("MicroMsg.AppBrandProcessShareMessageProxyUI", "onLoadImageResult, result:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          AppBrandProcessShareMessageProxyUI.c localc = this.nUO;
+          localc.nUQ = true;
+          if (localc.rS())
           {
-            ar.ay(localc.kIz);
-            localc.bAp();
+            MMHandlerThread.removeRunnable(localc.lNe);
+            localc.bXo();
           }
           AppMethodBeat.o(48688);
         }
       });
-      this.mHO = new a();
-      this.mHN = ((j)g.ab(j.class)).a(this, str1, paramBundle, getResources().getString(2131756050), new y.a()
+      this.nUL = new a();
+      this.nUK = ((j)g.af(j.class)).a(this, str1, paramBundle, getResources().getString(2131756165), new y.a()
       {
         public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
         {
           AppMethodBeat.i(48689);
           AppBrandProcessShareMessageProxyUI.this.hideVKB();
-          this.mHR.f(paramAnonymousBoolean, paramAnonymousString, paramAnonymousInt);
+          this.nUO.f(paramAnonymousBoolean, paramAnonymousString, paramAnonymousInt);
           AppMethodBeat.o(48689);
         }
       });
-      this.mHN.setOnDismissListener(new DialogInterface.OnDismissListener()
+      this.nUK.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(48690);
-          ((k)g.ab(k.class)).a(str8, paramBundle);
+          ((k)g.af(k.class)).a(str8, paramBundle);
           AppBrandProcessShareMessageProxyUI.this.finish();
           AppMethodBeat.o(48690);
         }
       });
-      this.mHN.setOnKeyListener(new DialogInterface.OnKeyListener()
+      this.nUK.setOnKeyListener(new DialogInterface.OnKeyListener()
       {
         public final boolean onKey(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
         {
           AppMethodBeat.i(48691);
           if ((paramAnonymousInt == 4) && (paramAnonymousKeyEvent.getAction() == 1))
           {
-            this.mHR.f(false, null, 0);
+            this.nUO.f(false, null, 0);
             paramAnonymousDialogInterface.dismiss();
           }
           AppMethodBeat.o(48691);
           return false;
         }
       });
-      this.mHN.show();
+      this.nUK.show();
       i = 1;
       break;
       label763:
@@ -209,14 +209,14 @@ public class AppBrandProcessShareMessageProxyUI
       {
         paramBundle = new Bundle();
         paramBundle.putBoolean("is_video", true);
-        str8 = ck.c(((HashMap)localObject1).get("footer_icon"), "");
-        localObject2 = ck.c(((HashMap)localObject1).get("footer_text"), "");
+        str8 = co.c(((HashMap)localObject1).get("footer_icon"), "");
+        localObject2 = co.c(((HashMap)localObject1).get("footer_text"), "");
         paramBundle.putString("key_footer_icon", str8);
         paramBundle.putString("key_footer_text", (String)localObject2);
       }
       else
       {
-        ae.w("MicroMsg.AppBrandProcessShareMessageProxyUI", "fake native share msg biz invalidate, biz: %d.", new Object[] { Integer.valueOf(k) });
+        Log.w("MicroMsg.AppBrandProcessShareMessageProxyUI", "fake native share msg biz invalidate, biz: %d.", new Object[] { Integer.valueOf(k) });
         paramBundle = null;
       }
     }
@@ -234,11 +234,11 @@ public class AppBrandProcessShareMessageProxyUI
   {
     AppMethodBeat.i(48702);
     super.onDestroy();
-    if ((this.mHN != null) && (this.mHN.isShowing()))
+    if ((this.nUK != null) && (this.nUK.isShowing()))
     {
-      this.mHN.dismiss();
-      this.mHN = null;
-      this.mHO = null;
+      this.nUK.dismiss();
+      this.nUK = null;
+      this.nUL = null;
     }
     AppMethodBeat.o(48702);
   }
@@ -262,24 +262,24 @@ public class AppBrandProcessShareMessageProxyUI
   final class a
     implements y.a
   {
-    private boolean ksH = false;
+    private boolean lwr = false;
     
     a() {}
     
-    private void as(int paramInt, String paramString)
+    private void av(int paramInt, String paramString)
     {
       AppMethodBeat.i(48693);
-      if (this.ksH)
+      if (this.lwr)
       {
         AppMethodBeat.o(48693);
         return;
       }
-      this.ksH = true;
+      this.lwr = true;
       ResultReceiver localResultReceiver = (ResultReceiver)AppBrandProcessShareMessageProxyUI.this.getIntent().getParcelableExtra("key_result_receiver");
       if (localResultReceiver != null)
       {
         Bundle localBundle = null;
-        if (!bu.isNullOrNil(paramString))
+        if (!Util.isNullOrNil(paramString))
         {
           localBundle = new Bundle();
           localBundle.putString("message", paramString);
@@ -294,11 +294,11 @@ public class AppBrandProcessShareMessageProxyUI
       AppMethodBeat.i(48692);
       if (paramBoolean)
       {
-        as(-1, paramString);
+        av(-1, paramString);
         AppMethodBeat.o(48692);
         return;
       }
-      as(-2, null);
+      av(-2, null);
       AppMethodBeat.o(48692);
     }
   }
@@ -311,19 +311,19 @@ public class AppBrandProcessShareMessageProxyUI
   final class c
   {
     private Context context;
-    Runnable kIz;
-    private boolean mHS;
-    boolean mHT;
-    private boolean mHU;
-    private int mHV;
-    AppBrandProcessShareMessageProxyUI.b mHW;
+    Runnable lNe;
+    private boolean nUP;
+    boolean nUQ;
+    private boolean nUR;
+    private int nUS;
+    AppBrandProcessShareMessageProxyUI.b nUT;
     private String text;
-    p tipDialog;
+    q tipDialog;
     
     public c(Context paramContext)
     {
       AppMethodBeat.i(48695);
-      this.kIz = new Runnable()
+      this.lNe = new Runnable()
       {
         public final void run()
         {
@@ -331,7 +331,7 @@ public class AppBrandProcessShareMessageProxyUI
           if (AppBrandProcessShareMessageProxyUI.c.this.tipDialog != null) {
             AppBrandProcessShareMessageProxyUI.c.this.tipDialog.dismiss();
           }
-          AppBrandProcessShareMessageProxyUI.c.this.bAp();
+          AppBrandProcessShareMessageProxyUI.c.this.bXo();
           AppMethodBeat.o(48694);
         }
       };
@@ -339,11 +339,11 @@ public class AppBrandProcessShareMessageProxyUI
       AppMethodBeat.o(48695);
     }
     
-    public final void bAp()
+    public final void bXo()
     {
       AppMethodBeat.i(48697);
-      if (this.mHW != null) {
-        this.mHW.e(this.mHU, this.text, this.mHV);
+      if (this.nUT != null) {
+        this.nUT.e(this.nUR, this.text, this.nUS);
       }
       AppMethodBeat.o(48697);
     }
@@ -351,33 +351,33 @@ public class AppBrandProcessShareMessageProxyUI
     public final void f(boolean paramBoolean, String paramString, int paramInt)
     {
       AppMethodBeat.i(48696);
-      this.mHS = true;
-      this.mHU = paramBoolean;
+      this.nUP = true;
+      this.nUR = paramBoolean;
       this.text = paramString;
-      this.mHV = paramInt;
-      if (rP())
+      this.nUS = paramInt;
+      if (rS())
       {
-        bAp();
+        bXo();
         AppMethodBeat.o(48696);
         return;
       }
       if (paramBoolean)
       {
-        this.tipDialog = h.b(this.context, this.context.getString(2131755886), true, null);
-        ar.o(this.kIz, 5000L);
+        this.tipDialog = h.a(this.context, this.context.getString(2131755978), true, null);
+        MMHandlerThread.postToMainThreadDelayed(this.lNe, 5000L);
       }
       AppMethodBeat.o(48696);
     }
     
-    public final boolean rP()
+    public final boolean rS()
     {
-      return (this.mHS) && (this.mHT);
+      return (this.nUP) && (this.nUQ);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandProcessShareMessageProxyUI
  * JD-Core Version:    0.7.0.1
  */

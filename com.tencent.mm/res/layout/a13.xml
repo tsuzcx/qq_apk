@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout android:background="@drawable/b22" android:layout_width="fill_parent" android:layout_height="400.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.RecyclerView android:id="@id/bwt" android:paddingTop="@dimen/ct" android:paddingBottom="@dimen/ct" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct" />
+</android.support.constraint.ConstraintLayout>

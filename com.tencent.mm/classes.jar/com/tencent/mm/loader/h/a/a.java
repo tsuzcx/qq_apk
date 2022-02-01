@@ -2,25 +2,25 @@ package com.tencent.mm.loader.h.a;
 
 public final class a<T>
 {
-  protected b hji;
+  protected b icf;
   protected T value;
   
   public a(c paramc)
   {
     this.value = paramc;
-    this.hji = b.hjm;
+    this.icf = b.icj;
   }
   
   public a(String paramString)
   {
     this.value = paramString;
-    this.hji = b.hjm;
+    this.icf = b.icj;
   }
   
   private a(String paramString, b paramb)
   {
     this.value = paramString;
-    this.hji = paramb;
+    this.icf = paramb;
   }
   
   public static <T extends String> a<T> a(T paramT, b paramb)
@@ -28,12 +28,17 @@ public final class a<T>
     return new a(paramT, paramb);
   }
   
-  public final b arS()
+  public static a aKt()
   {
-    return this.hji;
+    return new a("");
   }
   
-  public final String arT()
+  public final b aKr()
+  {
+    return this.icf;
+  }
+  
+  public final String aKs()
   {
     return this.value.toString();
   }
@@ -43,7 +48,7 @@ public final class a<T>
     if (this.value != null)
     {
       if (((this.value instanceof c)) && ((paramObject instanceof a)) && ((((a)paramObject).value instanceof c))) {
-        return ((c)this.value).aeM().equals(((c)((a)paramObject).value).aeM());
+        return ((c)this.value).auA().equals(((c)((a)paramObject).value).auA());
       }
       if ((paramObject instanceof a)) {
         return this.value.equals(((a)paramObject).value);
@@ -71,7 +76,7 @@ public final class a<T>
       return "";
     }
     if ((this.value instanceof c)) {
-      return ((c)this.value).aeM();
+      return ((c)this.value).auA();
     }
     return this.value.toString();
   }
@@ -83,7 +88,7 @@ public final class a<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.h.a.a
  * JD-Core Version:    0.7.0.1
  */

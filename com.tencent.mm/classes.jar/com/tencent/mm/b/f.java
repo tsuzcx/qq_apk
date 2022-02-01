@@ -7,11 +7,11 @@ public abstract interface f<K, O>
 {
   public abstract void a(a<K, O> parama);
   
-  public abstract O aL(K paramK);
+  public abstract O aT(K paramK);
   
-  public abstract boolean aM(K paramK);
+  public abstract boolean check(K paramK);
   
-  public abstract boolean aN(K paramK);
+  public abstract boolean checkAndUpTime(K paramK);
   
   public abstract void clear();
   
@@ -33,8 +33,6 @@ public abstract interface f<K, O>
   
   public abstract int putCount();
   
-  public abstract void q(K paramK, O paramO);
-  
   public abstract O remove(K paramK);
   
   public abstract int size();
@@ -45,6 +43,8 @@ public abstract interface f<K, O>
   
   public abstract void trimToSize(int paramInt);
   
+  public abstract void x(K paramK, O paramO);
+  
   public static abstract interface a<K, O> {}
   
   public static abstract interface b<K, O>
@@ -54,7 +54,7 @@ public abstract interface f<K, O>
   
   public static abstract interface c<K, O>
   {
-    public abstract int r(K paramK, O paramO);
+    public abstract int y(K paramK, O paramO);
   }
 }
 

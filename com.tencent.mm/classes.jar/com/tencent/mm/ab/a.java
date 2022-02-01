@@ -2,15 +2,17 @@ package com.tencent.mm.ab;
 
 public abstract interface a
 {
-  public abstract a bl(Object paramObject);
+  public abstract a C(int paramInt, boolean paramBoolean);
+  
+  public abstract a bu(Object paramObject);
   
   public abstract a c(int paramInt, double paramDouble);
   
-  public abstract a cM(int paramInt1, int paramInt2);
+  public abstract a cS(int paramInt1, int paramInt2);
   
-  public abstract a dz(boolean paramBoolean);
+  public abstract a ep(boolean paramBoolean);
   
-  public abstract a f(int paramInt, Object paramObject);
+  public abstract a g(int paramInt, Object paramObject);
   
   public abstract Object get(int paramInt);
   
@@ -26,19 +28,9 @@ public abstract interface a
   
   public abstract boolean isNull(int paramInt);
   
-  public abstract a j(double paramDouble);
+  public abstract a k(double paramDouble);
   
   public abstract int length();
-  
-  public abstract a mD(int paramInt);
-  
-  public abstract a mE(int paramInt);
-  
-  public abstract a mF(int paramInt);
-  
-  public abstract c mG(int paramInt);
-  
-  public abstract c mH(int paramInt);
   
   public abstract Object opt(int paramInt);
   
@@ -62,21 +54,29 @@ public abstract interface a
   
   public abstract String optString(int paramInt, String paramString);
   
+  public abstract a pQ(int paramInt);
+  
+  public abstract a pR(int paramInt);
+  
+  public abstract a pS(int paramInt);
+  
+  public abstract c pT(int paramInt);
+  
+  public abstract c pU(int paramInt);
+  
   public abstract Object remove(int paramInt);
-  
-  public abstract a rm(long paramLong);
-  
-  public abstract a t(int paramInt, long paramLong);
   
   public abstract String toString();
   
   public abstract String toString(int paramInt);
   
-  public abstract a y(int paramInt, boolean paramBoolean);
+  public abstract a v(int paramInt, long paramLong);
+  
+  public abstract a zp(long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ab.a
  * JD-Core Version:    0.7.0.1
  */

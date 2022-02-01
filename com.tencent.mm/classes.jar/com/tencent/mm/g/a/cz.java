@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class cz
-  extends b
+  extends IEvent
 {
+  public cz.a dFZ;
+  public b dGa;
+  
   public cz()
   {
     this((byte)0);
@@ -12,8 +16,17 @@ public final class cz
   
   private cz(byte paramByte)
   {
-    this.IvZ = false;
+    AppMethodBeat.i(127402);
+    this.dFZ = new cz.a();
+    this.dGa = new b();
+    this.order = false;
     this.callback = null;
+    AppMethodBeat.o(127402);
+  }
+  
+  public static final class b
+  {
+    public int ret = 0;
   }
 }
 

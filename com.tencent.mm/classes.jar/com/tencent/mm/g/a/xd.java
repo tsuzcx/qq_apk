@@ -1,9 +1,9 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class xd
-  extends b
+  extends IEvent
 {
   public xd()
   {
@@ -12,13 +12,13 @@ public final class xd
   
   private xd(byte paramByte)
   {
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.xd
  * JD-Core Version:    0.7.0.1
  */

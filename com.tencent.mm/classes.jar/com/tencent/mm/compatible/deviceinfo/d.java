@@ -6,23 +6,33 @@ import android.hardware.Camera.CameraInfo;
 import android.os.Build;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.c.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
 {
+  public static d.a.a B(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(215250);
+    paramContext = a(paramContext, paramInt, null);
+    AppMethodBeat.o(215250);
+    return paramContext;
+  }
+  
   public static d.a.a a(Context paramContext, int paramInt, Looper paramLooper)
   {
     AppMethodBeat.i(155647);
-    if (ae.geM.gaA == 1)
+    if (ae.gKt.gFQ == 1)
     {
-      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CameraUtil", "openCamera(), CameraUtilImpl20, cameraId = ".concat(String.valueOf(paramInt)));
+      Log.d("MicroMsg.CameraUtil", "openCamera(), CameraUtilImpl20, cameraId = ".concat(String.valueOf(paramInt)));
       new e();
       paramContext = e.d(paramLooper);
       AppMethodBeat.o(155647);
       return paramContext;
     }
-    if (ae.geM.gas)
+    if (ae.gKt.gFI)
     {
-      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CameraUtil", "openCamera(), CameraUtilImplConfig, cameraId = ".concat(String.valueOf(paramInt)));
+      Log.d("MicroMsg.CameraUtil", "openCamera(), CameraUtilImplConfig, cameraId = ".concat(String.valueOf(paramInt)));
       new i();
       paramContext = i.a(paramInt, paramLooper);
       AppMethodBeat.o(155647);
@@ -37,7 +47,7 @@ public final class d
     }
     if (getNumberOfCameras() > 1)
     {
-      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CameraUtil", "openCamera(), CameraUtilImpl23, cameraId = ".concat(String.valueOf(paramInt)));
+      Log.d("MicroMsg.CameraUtil", "openCamera(), CameraUtilImpl23, cameraId = ".concat(String.valueOf(paramInt)));
       new g();
       paramContext = g.a(paramContext, paramInt, paramLooper);
       AppMethodBeat.o(155647);
@@ -49,27 +59,28 @@ public final class d
     return paramContext;
   }
   
-  public static int aah()
+  public static int aog()
   {
     AppMethodBeat.i(155645);
-    if (ae.geX.gbx == 1)
+    if (ae.gKE.gGP == 1)
     {
       AppMethodBeat.o(155645);
       return 0;
     }
-    int j = Camera.getNumberOfCameras();
-    Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
+    Object localObject = a.gDs;
+    int j = a.anJ();
+    localObject = new Camera.CameraInfo();
     int i = 0;
     if (i < j)
     {
-      Camera.getCameraInfo(i, localCameraInfo);
-      if (localCameraInfo.facing == 0) {
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CameraUtil", "tigercam get bid %d", new Object[] { Integer.valueOf(i) });
+      Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
+      if (((Camera.CameraInfo)localObject).facing == 0) {
+        Log.d("MicroMsg.CameraUtil", "tigercam get bid %d", new Object[] { Integer.valueOf(i) });
       }
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CameraUtil", "tigercam getBackCameraId %d", new Object[] { Integer.valueOf(i) });
+      Log.d("MicroMsg.CameraUtil", "tigercam getBackCameraId %d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(155645);
       return i;
       i += 1;
@@ -78,22 +89,23 @@ public final class d
     }
   }
   
-  public static int aai()
+  public static int aoh()
   {
     AppMethodBeat.i(155646);
-    int j = Camera.getNumberOfCameras();
-    Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
+    Object localObject = a.gDs;
+    int j = a.anJ();
+    localObject = new Camera.CameraInfo();
     int i = 0;
     if (i < j)
     {
-      Camera.getCameraInfo(i, localCameraInfo);
-      if (localCameraInfo.facing == 1) {
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CameraUtil", "tigercam get fid %d", new Object[] { Integer.valueOf(i) });
+      Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
+      if (((Camera.CameraInfo)localObject).facing == 1) {
+        Log.d("MicroMsg.CameraUtil", "tigercam get fid %d", new Object[] { Integer.valueOf(i) });
       }
     }
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CameraUtil", "tigercam getBackCameraId %d", new Object[] { Integer.valueOf(i) });
+      Log.d("MicroMsg.CameraUtil", "tigercam getBackCameraId %d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(155646);
       return i;
       i += 1;
@@ -105,7 +117,7 @@ public final class d
   public static int getNumberOfCameras()
   {
     AppMethodBeat.i(155644);
-    if ((ae.geM.gas) && (ae.geM.gay))
+    if ((ae.gKt.gFI) && (ae.gKt.gFO))
     {
       new i();
       i = i.getNumberOfCameras();
@@ -113,7 +125,8 @@ public final class d
       return i;
     }
     new g();
-    int i = Camera.getNumberOfCameras();
+    a locala = a.gDs;
+    int i = a.anJ();
     AppMethodBeat.o(155644);
     return i;
   }
@@ -122,14 +135,14 @@ public final class d
   {
     public static final class a
     {
-      public int dHi;
-      public v gaZ;
+      public int dYT;
+      public v gGr;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.d
  * JD-Core Version:    0.7.0.1
  */

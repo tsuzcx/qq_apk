@@ -4,36 +4,36 @@ import android.view.View;
 
 final class ad
 {
-  boolean apL = true;
-  int apM;
-  int apN;
-  int apO;
-  int apP = 0;
-  int apQ = 0;
-  boolean apR;
-  boolean apS;
+  boolean apX = true;
+  int apY;
+  int apZ;
+  int aqa;
+  int aqb = 0;
+  int aqc = 0;
+  boolean aqd;
+  boolean aqe;
   int mLayoutDirection;
   
-  final View a(RecyclerView.o paramo)
+  final View a(RecyclerView.n paramn)
   {
-    paramo = paramo.cv(this.apN);
-    this.apN += this.apO;
-    return paramo;
+    paramn = paramn.cq(this.apZ);
+    this.apZ += this.aqa;
+    return paramn;
   }
   
-  final boolean b(RecyclerView.t paramt)
+  final boolean a(RecyclerView.s params)
   {
-    return (this.apN >= 0) && (this.apN < paramt.getItemCount());
+    return (this.apZ >= 0) && (this.apZ < params.getItemCount());
   }
   
   public final String toString()
   {
-    return "LayoutState{mAvailable=" + this.apM + ", mCurrentPosition=" + this.apN + ", mItemDirection=" + this.apO + ", mLayoutDirection=" + this.mLayoutDirection + ", mStartLine=" + this.apP + ", mEndLine=" + this.apQ + '}';
+    return "LayoutState{mAvailable=" + this.apY + ", mCurrentPosition=" + this.apZ + ", mItemDirection=" + this.aqa + ", mLayoutDirection=" + this.mLayoutDirection + ", mStartLine=" + this.aqb + ", mEndLine=" + this.aqc + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v7.widget.ad
  * JD-Core Version:    0.7.0.1
  */

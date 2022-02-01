@@ -5,6 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import com.tencent.mm.wallet_core.ui.f;
 
 final class WalletForgotPwdVerifyIdUI$2
@@ -16,9 +17,9 @@ final class WalletForgotPwdVerifyIdUI$2
   {
     AppMethodBeat.i(69683);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdVerifyIdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    f.p(this.Dee, "https://kf.qq.com/touch/scene_product.html?scene_id=kf3258", false);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdVerifyIdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    f.p(this.HJX, "https://" + WeChatHosts.domainString(2131761715) + "/touch/scene_product.html?scene_id=kf3258", false);
     a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/WalletForgotPwdVerifyIdUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(69683);
   }

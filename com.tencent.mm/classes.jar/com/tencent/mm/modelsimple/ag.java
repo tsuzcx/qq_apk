@@ -1,40 +1,40 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.bq.a;
-import com.tencent.mm.network.c;
-import com.tencent.mm.network.k;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.q.b;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bu;
+import com.tencent.mm.model.bu.a;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.hr;
-import com.tencent.mm.protocal.protobuf.hs;
+import com.tencent.mm.protocal.protobuf.ie;
+import com.tencent.mm.protocal.protobuf.if;
 import com.tencent.mm.protocal.y;
 import com.tencent.mm.protocal.y.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class ag
-  extends n
-  implements k
+  extends q
+  implements m
 {
   private int businessType;
-  private f callback;
-  private com.tencent.mm.network.q hRG;
-  private byte[] ipA;
-  int ipv;
-  private int ipw;
-  private int ipx;
-  private String ipy;
-  private SKBuiltinBuffer_t ipz;
+  private i callback;
+  private s iMO;
+  int jkC;
+  private int jkD;
+  private int jkE;
+  private String jkF;
+  private SKBuiltinBuffer_t jkG;
+  private byte[] jkH;
   private String uri;
   
   private ag(int paramInt1, int paramInt2, String paramString, int paramInt3, SKBuiltinBuffer_t paramSKBuiltinBuffer_t, byte[] paramArrayOfByte, int paramInt4)
   {
-    AppMethodBeat.i(220273);
+    AppMethodBeat.i(222851);
     int i;
     if (paramSKBuiltinBuffer_t == null)
     {
@@ -45,17 +45,17 @@ public final class ag
     }
     for (;;)
     {
-      ae.i("MicroMsg.NetsceneAxAuth", "summerauthax NetsceneAxAuth funcId[%d] uri[%s], bType[%d] ticket[%d] randomKey[%d]", new Object[] { Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramInt3), Integer.valueOf(i), Integer.valueOf(j) });
-      this.ipv = paramInt1;
-      this.ipx = paramInt2;
-      this.ipy = paramString;
+      Log.i("MicroMsg.NetsceneAxAuth", "summerauthax NetsceneAxAuth funcId[%d] uri[%s], bType[%d] ticket[%d] randomKey[%d]", new Object[] { Integer.valueOf(paramInt2), paramString, Integer.valueOf(paramInt3), Integer.valueOf(i), Integer.valueOf(j) });
+      this.jkC = paramInt1;
+      this.jkE = paramInt2;
+      this.jkF = paramString;
       this.businessType = paramInt3;
-      this.ipz = paramSKBuiltinBuffer_t;
-      this.ipA = paramArrayOfByte;
-      this.hRG = new y(paramInt2, paramString, paramInt3, paramSKBuiltinBuffer_t, paramArrayOfByte);
-      this.ipw = paramInt4;
+      this.jkG = paramSKBuiltinBuffer_t;
+      this.jkH = paramArrayOfByte;
+      this.iMO = new y(paramInt2, paramString, paramInt3, paramSKBuiltinBuffer_t, paramArrayOfByte);
+      this.jkD = paramInt4;
       this.uri = paramString;
-      AppMethodBeat.o(220273);
+      AppMethodBeat.o(222851);
       return;
       i = paramSKBuiltinBuffer_t.getILen();
       break;
@@ -64,59 +64,59 @@ public final class ag
     }
   }
   
-  public ag(hs paramhs)
+  public ag(if paramif)
   {
-    this(paramhs.uuz, paramhs.FSH, paramhs.FSJ, paramhs.uuz, paramhs.FSF, paramhs.FSI.getBufferToBytes(), 0);
+    this(paramif.xMB, paramif.KMq, paramif.KMs, paramif.xMB, paramif.KMo, paramif.KMr.getBufferToBytes(), 0);
     AppMethodBeat.i(134207);
     AppMethodBeat.o(134207);
   }
   
-  private static void pX(int paramInt)
+  private static void tM(int paramInt)
   {
     AppMethodBeat.i(134211);
     switch (paramInt)
     {
     default: 
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 138L, 1L, false);
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 138L, 1L, false);
       AppMethodBeat.o(134211);
       return;
     case 0: 
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 130L, 1L, false);
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 130L, 1L, false);
       AppMethodBeat.o(134211);
       return;
     case -1: 
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 132L, 1L, false);
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 132L, 1L, false);
       AppMethodBeat.o(134211);
       return;
     case -2: 
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 133L, 1L, false);
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 133L, 1L, false);
       AppMethodBeat.o(134211);
       return;
     case -3: 
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 134L, 1L, false);
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 134L, 1L, false);
       AppMethodBeat.o(134211);
       return;
     case -13: 
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 135L, 1L, false);
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 135L, 1L, false);
       AppMethodBeat.o(134211);
       return;
     case -104: 
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 136L, 1L, false);
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 136L, 1L, false);
       AppMethodBeat.o(134211);
       return;
     }
-    com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 137L, 1L, false);
+    com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 137L, 1L, false);
     AppMethodBeat.o(134211);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(134209);
-    this.callback = paramf;
-    this.ipw += 1;
-    ae.i("MicroMsg.NetsceneAxAuth", "summerauthax doScene callback[%s] retry count %d , uri %s ", new Object[] { paramf, Integer.valueOf(this.ipw), this.uri });
-    com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 129L, 1L, false);
-    int i = dispatch(parame, this.hRG, this);
+    this.callback = parami;
+    this.jkD += 1;
+    Log.i("MicroMsg.NetsceneAxAuth", "summerauthax doScene callback[%s] retry count %d , uri %s ", new Object[] { parami, Integer.valueOf(this.jkD), this.uri });
+    com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 129L, 1L, false);
+    int i = dispatch(paramg, this.iMO, this);
     AppMethodBeat.o(134209);
     return i;
   }
@@ -124,69 +124,69 @@ public final class ag
   public final int getType()
   {
     AppMethodBeat.i(134208);
-    int i = this.hRG.getType();
+    int i = this.iMO.getType();
     AppMethodBeat.o(134208);
     return i;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, final com.tencent.mm.network.q paramq, final byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, final s params, final byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(134210);
-    ae.i("MicroMsg.NetsceneAxAuth", "summerauthax type [%d], onGYNetEnd [%d, %d, %s], retry count %d, uri %s ", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.ipw), this.uri });
-    if (((paramInt2 != 0) || (paramInt3 != 0)) && (this.ipw < 3))
+    Log.i("MicroMsg.NetsceneAxAuth", "summerauthax type [%d], onGYNetEnd [%d, %d, %s], retry count %d, uri %s ", new Object[] { Integer.valueOf(getType()), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.jkD), this.uri });
+    if (((paramInt2 != 0) || (paramInt3 != 0)) && (this.jkD < 3))
     {
-      pX(paramInt3);
+      tM(paramInt3);
       if ((paramInt3 == -1) || (paramInt3 == -446))
       {
-        ae.i("MicroMsg.NetsceneAxAuth", "summerauth do NetsceneAxAuth");
-        if (!g.ajj().a(new ag(this.ipv, this.ipx, this.ipy, this.businessType, this.ipz, this.ipA, this.ipw), 0))
+        Log.i("MicroMsg.NetsceneAxAuth", "summerauth do NetsceneAxAuth");
+        if (!com.tencent.mm.kernel.g.azz().a(new ag(this.jkC, this.jkE, this.jkF, this.businessType, this.jkG, this.jkH, this.jkD), 0))
         {
-          ae.i("MicroMsg.NetsceneAxAuth", "send axauth failed %s ", new Object[] { this.uri });
+          Log.i("MicroMsg.NetsceneAxAuth", "send axauth failed %s ", new Object[] { this.uri });
           this.callback.onSceneEnd(3, -1, "", this);
           AppMethodBeat.o(134210);
           return;
         }
       }
     }
-    if (this.ipw >= 3) {
-      ae.e("MicroMsg.NetsceneAxAuth", "axauth retry reach max times %d, uri is %s ", new Object[] { Integer.valueOf(this.ipw), this.uri });
+    if (this.jkD >= 3) {
+      Log.e("MicroMsg.NetsceneAxAuth", "axauth retry reach max times %d, uri is %s ", new Object[] { Integer.valueOf(this.jkD), this.uri });
     }
-    paramq = ((y.b)paramq.getRespObj()).FHd;
-    g.ajj().a(new bq(new bq.a()
+    params = ((y.b)params.getRespObj()).KAo;
+    com.tencent.mm.kernel.g.azz().a(new bu(new bu.a()
     {
-      public final void a(com.tencent.mm.network.e paramAnonymouse)
+      public final void a(com.tencent.mm.network.g paramAnonymousg)
       {
         AppMethodBeat.i(134205);
-        if (paramAnonymouse == null)
+        if (paramAnonymousg == null)
         {
-          ae.w("MicroMsg.NetsceneAxAuth", "dispatcher null");
+          Log.w("MicroMsg.NetsceneAxAuth", "dispatcher null");
           AppMethodBeat.o(134205);
           return;
         }
-        if (paramAnonymouse.aFs() == null)
+        if (paramAnonymousg.aZh() == null)
         {
-          ae.w("MicroMsg.NetsceneAxAuth", "getAccInfo null");
+          Log.w("MicroMsg.NetsceneAxAuth", "getAccInfo null");
           AppMethodBeat.o(134205);
           return;
         }
         try
         {
-          paramAnonymouse.aFs().b(ag.this.ipv, paramq.toByteArray(), paramArrayOfByte);
-          ae.i("MicroMsg.NetsceneAxAuth", "set axauth session btype[%d], session length [%d], cookie length[%d]", new Object[] { Integer.valueOf(ag.this.ipv), Integer.valueOf(paramq.toByteArray().length), Integer.valueOf(paramArrayOfByte.length) });
+          paramAnonymousg.aZh().b(ag.this.jkC, params.toByteArray(), paramArrayOfByte);
+          Log.i("MicroMsg.NetsceneAxAuth", "set axauth session btype[%d], session length [%d], cookie length[%d]", new Object[] { Integer.valueOf(ag.this.jkC), Integer.valueOf(params.toByteArray().length), Integer.valueOf(paramArrayOfByte.length) });
           AppMethodBeat.o(134205);
           return;
         }
-        catch (Exception paramAnonymouse)
+        catch (Exception paramAnonymousg)
         {
-          ae.e("MicroMsg.NetsceneAxAuth", "exception:%s", new Object[] { bu.o(paramAnonymouse) });
+          Log.e("MicroMsg.NetsceneAxAuth", "exception:%s", new Object[] { Util.stackTraceToString(paramAnonymousg) });
           AppMethodBeat.o(134205);
         }
       }
     }), 0);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    pX(paramInt2);
+    tM(paramInt2);
     if (paramInt2 != 0) {
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(148L, 131L, 1L, false);
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(148L, 131L, 1L, false);
     }
     AppMethodBeat.o(134210);
   }
@@ -196,14 +196,14 @@ public final class ag
     return 3;
   }
   
-  public final n.b securityVerificationChecked(com.tencent.mm.network.q paramq)
+  public final q.b securityVerificationChecked(s params)
   {
-    return n.b.hRi;
+    return q.b.iMq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.ag
  * JD-Core Version:    0.7.0.1
  */

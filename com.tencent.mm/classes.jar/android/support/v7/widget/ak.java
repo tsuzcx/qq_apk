@@ -8,24 +8,24 @@ import android.view.View;
 public class ak
   extends at
 {
-  private aj aqL;
-  private aj aqM;
+  private aj aqX;
+  private aj aqY;
   
-  private static int a(RecyclerView.i parami, View paramView, aj paramaj)
+  private static int a(RecyclerView.LayoutManager paramLayoutManager, View paramView, aj paramaj)
   {
-    int j = paramaj.bn(paramView);
-    int k = paramaj.br(paramView) / 2;
-    if (parami.getClipToPadding()) {}
-    for (int i = paramaj.kB() + paramaj.kD() / 2;; i = paramaj.getEnd() / 2) {
+    int j = paramaj.bo(paramView);
+    int k = paramaj.bs(paramView) / 2;
+    if (paramLayoutManager.getClipToPadding()) {}
+    for (int i = paramaj.kH() + paramaj.kJ() / 2;; i = paramaj.getEnd() / 2) {
       return k + j - i;
     }
   }
   
-  private static View a(RecyclerView.i parami, aj paramaj)
+  private static View a(RecyclerView.LayoutManager paramLayoutManager, aj paramaj)
   {
     Object localObject1 = null;
     Object localObject2 = null;
-    int n = parami.getChildCount();
+    int n = paramLayoutManager.getChildCount();
     if (n == 0) {}
     int j;
     int i;
@@ -34,16 +34,16 @@ public class ak
     do
     {
       return localObject2;
-      if (!parami.getClipToPadding()) {
+      if (!paramLayoutManager.getClipToPadding()) {
         break;
       }
-      j = paramaj.kB() + paramaj.kD() / 2;
+      j = paramaj.kH() + paramaj.kJ() / 2;
       i = 2147483647;
       k = 0;
       localObject2 = localObject1;
     } while (k >= n);
-    localObject2 = parami.getChildAt(k);
-    int m = Math.abs(paramaj.bn((View)localObject2) + paramaj.br((View)localObject2) / 2 - j);
+    localObject2 = paramLayoutManager.getChildAt(k);
+    int m = Math.abs(paramaj.bo((View)localObject2) + paramaj.bs((View)localObject2) / 2 - j);
     if (m < i)
     {
       localObject1 = localObject2;
@@ -58,27 +58,27 @@ public class ak
     }
   }
   
-  private aj b(RecyclerView.i parami)
+  private aj b(RecyclerView.LayoutManager paramLayoutManager)
   {
-    if ((this.aqL == null) || (this.aqL.arw != parami)) {
-      this.aqL = aj.e(parami);
+    if ((this.aqX == null) || (this.aqX.arI != paramLayoutManager)) {
+      this.aqX = aj.e(paramLayoutManager);
     }
-    return this.aqL;
+    return this.aqX;
   }
   
-  private aj c(RecyclerView.i parami)
+  private aj c(RecyclerView.LayoutManager paramLayoutManager)
   {
-    if ((this.aqM == null) || (this.aqM.arw != parami)) {
-      this.aqM = aj.d(parami);
+    if ((this.aqY == null) || (this.aqY.arI != paramLayoutManager)) {
+      this.aqY = aj.d(paramLayoutManager);
     }
-    return this.aqM;
+    return this.aqY;
   }
   
-  private static View c(RecyclerView.i parami, aj paramaj)
+  private static View c(RecyclerView.LayoutManager paramLayoutManager, aj paramaj)
   {
     Object localObject1 = null;
     Object localObject2 = null;
-    int m = parami.getChildCount();
+    int m = paramLayoutManager.getChildCount();
     if (m == 0) {}
     int i;
     int j;
@@ -89,8 +89,8 @@ public class ak
       j = 0;
       localObject2 = localObject1;
     } while (j >= m);
-    localObject2 = parami.getChildAt(j);
-    int k = paramaj.bn((View)localObject2);
+    localObject2 = paramLayoutManager.getChildAt(j);
+    int k = paramaj.bo((View)localObject2);
     if (k < i)
     {
       localObject1 = localObject2;
@@ -103,10 +103,10 @@ public class ak
     }
   }
   
-  public int a(RecyclerView.i parami, int paramInt1, int paramInt2)
+  public int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
   {
     int i = 0;
-    int k = parami.getItemCount();
+    int k = paramLayoutManager.getItemCount();
     if (k == 0) {}
     View localView;
     label37:
@@ -115,16 +115,16 @@ public class ak
     {
       return -1;
       localView = null;
-      if (!parami.kd()) {
+      if (!paramLayoutManager.canScrollVertically()) {
         break;
       }
-      localView = c(parami, b(parami));
+      localView = c(paramLayoutManager, b(paramLayoutManager));
       if (localView == null) {
-        break label154;
+        break label155;
       }
-      j = RecyclerView.i.bB(localView);
+      j = paramLayoutManager.getPosition(localView);
     } while (j == -1);
-    if (parami.kc()) {
+    if (paramLayoutManager.canScrollHorizontally()) {
       if (paramInt1 > 0) {
         paramInt1 = 1;
       }
@@ -132,15 +132,15 @@ public class ak
     for (;;)
     {
       paramInt2 = i;
-      if ((parami instanceof RecyclerView.s.b))
+      if ((paramLayoutManager instanceof RecyclerView.r.b))
       {
-        parami = ((RecyclerView.s.b)parami).bZ(k - 1);
+        paramLayoutManager = ((RecyclerView.r.b)paramLayoutManager).bZ(k - 1);
         paramInt2 = i;
-        if (parami != null) {
-          if (parami.x >= 0.0F)
+        if (paramLayoutManager != null) {
+          if (paramLayoutManager.x >= 0.0F)
           {
             paramInt2 = i;
-            if (parami.y >= 0.0F) {}
+            if (paramLayoutManager.y >= 0.0F) {}
           }
           else
           {
@@ -149,18 +149,18 @@ public class ak
         }
       }
       if (paramInt2 == 0) {
-        break label178;
+        break label179;
       }
       if (paramInt1 == 0) {
-        break label175;
+        break label176;
       }
       return j - 1;
-      if (!parami.kc()) {
+      if (!paramLayoutManager.canScrollHorizontally()) {
         break label37;
       }
-      localView = c(parami, c(parami));
+      localView = c(paramLayoutManager, c(paramLayoutManager));
       break label37;
-      label154:
+      label155:
       break;
       paramInt1 = 0;
       continue;
@@ -170,35 +170,35 @@ public class ak
         paramInt1 = 0;
       }
     }
-    label175:
+    label176:
     return j;
-    label178:
+    label179:
     if (paramInt1 != 0) {
       return j + 1;
     }
     return j;
   }
   
-  public View a(RecyclerView.i parami)
+  public View a(RecyclerView.LayoutManager paramLayoutManager)
   {
-    if (parami.kd()) {
-      return a(parami, b(parami));
+    if (paramLayoutManager.canScrollVertically()) {
+      return a(paramLayoutManager, b(paramLayoutManager));
     }
-    if (parami.kc()) {
-      return a(parami, c(parami));
+    if (paramLayoutManager.canScrollHorizontally()) {
+      return a(paramLayoutManager, c(paramLayoutManager));
     }
     return null;
   }
   
-  public int[] a(RecyclerView.i parami, View paramView)
+  public int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView)
   {
     int[] arrayOfInt = new int[2];
-    if (parami.kc()) {
-      arrayOfInt[0] = a(parami, paramView, c(parami));
+    if (paramLayoutManager.canScrollHorizontally()) {
+      arrayOfInt[0] = a(paramLayoutManager, paramView, c(paramLayoutManager));
     }
-    while (parami.kd())
+    while (paramLayoutManager.canScrollVertically())
     {
-      arrayOfInt[1] = a(parami, paramView, b(parami));
+      arrayOfInt[1] = a(paramLayoutManager, paramView, b(paramLayoutManager));
       return arrayOfInt;
       arrayOfInt[0] = 0;
     }
@@ -206,39 +206,39 @@ public class ak
     return arrayOfInt;
   }
   
-  protected final ae f(RecyclerView.i parami)
+  protected final ae f(RecyclerView.LayoutManager paramLayoutManager)
   {
-    if (!(parami instanceof RecyclerView.s.b)) {
+    if (!(paramLayoutManager instanceof RecyclerView.r.b)) {
       return null;
     }
-    new ae(this.anl.getContext())
+    new ae(this.mRecyclerView.getContext())
     {
       protected final float a(DisplayMetrics paramAnonymousDisplayMetrics)
       {
         return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
       }
       
-      protected final void a(View paramAnonymousView, RecyclerView.t paramAnonymoust, RecyclerView.s.a paramAnonymousa)
+      protected final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
       {
-        paramAnonymousView = ak.this.a(ak.this.anl.getLayoutManager(), paramAnonymousView);
+        paramAnonymousView = ak.this.a(ak.this.mRecyclerView.getLayoutManager(), paramAnonymousView);
         int i = paramAnonymousView[0];
         int j = paramAnonymousView[1];
-        int k = cd(Math.max(Math.abs(i), Math.abs(j)));
+        int k = cc(Math.max(Math.abs(i), Math.abs(j)));
         if (k > 0) {
-          paramAnonymousa.a(i, j, k, this.VD);
+          paramAnonymousa.a(i, j, k, this.VQ);
         }
       }
       
-      protected final int ce(int paramAnonymousInt)
+      protected final int cd(int paramAnonymousInt)
       {
-        return Math.min(100, super.ce(paramAnonymousInt));
+        return Math.min(100, super.cd(paramAnonymousInt));
       }
     };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.widget.ak
  * JD-Core Version:    0.7.0.1
  */

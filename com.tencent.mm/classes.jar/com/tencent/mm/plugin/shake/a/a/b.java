@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.shake.a.a;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class b
-  extends c
+  extends IAutoDBItem
 {
+  private static final int Dgy = "lastshaketime".hashCode();
+  private static final int Dgz = "isshowed".hashCode();
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGY = "username".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int zbG = "lastshaketime".hashCode();
-  private static final int zbH = "isshowed".hashCode();
-  private boolean eGV;
+  private static final int username_HASHCODE = "username".hashCode();
+  private boolean Dgw;
+  private boolean Dgx;
+  private boolean __hadSetusername;
   public boolean field_isshowed;
   public int field_lastshaketime;
   public String field_username;
-  private boolean zbE;
-  private boolean zbF;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +32,11 @@ public abstract class b
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGY != k) {
+      if (username_HASHCODE != k) {
         break label65;
       }
       this.field_username = paramCursor.getString(i);
-      this.eGV = true;
+      this.__hadSetusername = true;
     }
     for (;;)
     {
@@ -44,13 +44,13 @@ public abstract class b
       break label20;
       break;
       label65:
-      if (zbG == k)
+      if (Dgy == k)
       {
         this.field_lastshaketime = paramCursor.getInt(i);
       }
       else
       {
-        if (zbH == k)
+        if (Dgz == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -72,13 +72,13 @@ public abstract class b
     if (this.field_username == null) {
       this.field_username = "";
     }
-    if (this.eGV) {
+    if (this.__hadSetusername) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.zbE) {
+    if (this.Dgw) {
       localContentValues.put("lastshaketime", Integer.valueOf(this.field_lastshaketime));
     }
-    if (this.zbF) {
+    if (this.Dgx) {
       localContentValues.put("isshowed", Boolean.valueOf(this.field_isshowed));
     }
     if (this.systemRowid > 0L) {
@@ -89,7 +89,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.a.a.b
  * JD-Core Version:    0.7.0.1
  */

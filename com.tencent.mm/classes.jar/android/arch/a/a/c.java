@@ -4,9 +4,9 @@ public abstract class c
 {
   public abstract void e(Runnable paramRunnable);
   
-  public abstract void f(Runnable paramRunnable);
-  
   public abstract boolean isMainThread();
+  
+  public abstract void postToMainThread(Runnable paramRunnable);
 }
 
 

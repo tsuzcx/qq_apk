@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="50.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/e52" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{Content}" style="@style/ok" />
-</LinearLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="33.0dip" android:textColor="@color/am" android:gravity="left" android:id="@id/jia" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" wallet:walletTypeFace="i48" />
+        <TextView android:id="@id/jhs" style="@style/a0b" />
+        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="33.0dip" android:textColor="@color/am" android:id="@id/jf4" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="0.0dip" android:minWidth="2.0dip" android:text="" android:layout_weight="1.0" android:textCursorDrawable="@drawable/a7s" />
+    </LinearLayout>
+</merge>

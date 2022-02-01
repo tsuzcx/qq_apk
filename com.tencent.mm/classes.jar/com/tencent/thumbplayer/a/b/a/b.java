@@ -2,20 +2,22 @@ package com.tencent.thumbplayer.a.b.a;
 
 public final class b
 {
-  public int MvE = 0;
-  private int doQ;
+  public int RYx = 0;
+  private int dGe;
+  private String definition;
   private int errorCode;
   
-  public b(int paramInt1, int paramInt2, int paramInt3)
+  public b(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     this.errorCode = paramInt3;
-    this.doQ = paramInt2;
-    this.MvE = paramInt1;
+    this.dGe = paramInt2;
+    this.RYx = paramInt1;
+    this.definition = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.a.b.a.b
  * JD-Core Version:    0.7.0.1
  */

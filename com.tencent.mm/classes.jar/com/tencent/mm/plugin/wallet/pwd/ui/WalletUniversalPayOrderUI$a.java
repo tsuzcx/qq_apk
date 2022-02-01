@@ -8,43 +8,43 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.protocal.protobuf.drm;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.eli;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.List;
 
 final class WalletUniversalPayOrderUI$a
   extends BaseAdapter
 {
   private Context mContext;
-  List<drm> oJL;
+  List<eli> pXz;
   
   public WalletUniversalPayOrderUI$a(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private drm Wc(int paramInt)
+  private eli aeE(int paramInt)
   {
     AppMethodBeat.i(69832);
-    if (this.oJL == null)
+    if (this.pXz == null)
     {
       AppMethodBeat.o(69832);
       return null;
     }
-    drm localdrm = (drm)this.oJL.get(paramInt);
+    eli localeli = (eli)this.pXz.get(paramInt);
     AppMethodBeat.o(69832);
-    return localdrm;
+    return localeli;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(69831);
-    if (this.oJL == null)
+    if (this.pXz == null)
     {
       AppMethodBeat.o(69831);
       return 0;
     }
-    int i = this.oJL.size();
+    int i = this.pXz.size();
     AppMethodBeat.o(69831);
     return i;
   }
@@ -60,30 +60,30 @@ final class WalletUniversalPayOrderUI$a
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(this.mContext).inflate(2131495944, paramViewGroup, false);
+      localView = LayoutInflater.from(this.mContext).inflate(2131496924, paramViewGroup, false);
       localView.setTag(new WalletUniversalPayOrderUI.b(localView));
     }
-    paramView = Wc(paramInt);
+    paramView = aeE(paramInt);
     paramViewGroup = (WalletUniversalPayOrderUI.b)localView.getTag();
-    paramViewGroup.DfX.setImageBitmap(null);
-    paramViewGroup.DfX.gk(paramView.hCp, 2131234429);
-    paramViewGroup.DfY.setText(paramView.uVs);
+    paramViewGroup.HLU.setImageBitmap(null);
+    paramViewGroup.HLU.gI(paramView.iwv, 2131235359);
+    paramViewGroup.HLV.setText(paramView.ynT);
     AppMethodBeat.o(69833);
     return localView;
   }
   
-  public final void iM(int paramInt1, int paramInt2)
+  public final void jS(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(69830);
-    ae.i("MicroMsg.WalletUniversalPayOrderUI", "swipe: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    drm localdrm = (drm)this.oJL.remove(paramInt1);
-    this.oJL.add(paramInt2, localdrm);
+    Log.i("MicroMsg.WalletUniversalPayOrderUI", "swipe: %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    eli localeli = (eli)this.pXz.remove(paramInt1);
+    this.pXz.add(paramInt2, localeli);
     AppMethodBeat.o(69830);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletUniversalPayOrderUI.a
  * JD-Core Version:    0.7.0.1
  */

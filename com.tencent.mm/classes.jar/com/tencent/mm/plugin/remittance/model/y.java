@@ -2,47 +2,51 @@ package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wxpaysdk.api.ResendMsgInfo;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.tenpay.model.m;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class y
   extends m
 {
+  public String AOI;
+  public int AOS;
+  public String AOl;
+  private String CpP;
+  public String CpQ;
+  public int CpR;
+  private String CpS;
+  public String CpT;
+  public int CpU;
+  public String CpV;
+  public String CpW;
+  public int CpX;
+  public a CpY;
+  public c CpZ;
+  public e Cqa;
+  public ResendMsgInfo Cqb;
+  private e Cqc;
+  public ArrayList<y.b> Cqd;
+  public String Cqe;
+  public String Cqf;
   public String desc;
-  public double phz;
+  public double qwJ;
   public int status;
-  public boolean uTf;
-  public String wSO;
-  public int wSY;
-  public String wSq;
-  private String yoZ;
-  public String ypa;
-  public int ypb;
-  private String ypc;
-  public String ypd;
-  public int ype;
-  public String ypf;
-  public String ypg;
-  public int yph;
-  public a ypi;
-  public b ypj;
-  public d ypk;
-  public ResendMsgInfo ypl;
-  public d ypm;
-  public String ypn;
-  public String ypo;
+  public boolean ylG;
   
   public y(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
     AppMethodBeat.i(67893);
-    this.yoZ = null;
-    this.ypa = null;
-    this.yoZ = paramString1;
-    this.ypa = paramString2;
-    this.wSY = paramInt1;
+    this.CpP = null;
+    this.CpQ = null;
+    this.CpP = paramString1;
+    this.CpQ = paramString2;
+    this.AOS = paramInt1;
     HashMap localHashMap = new HashMap();
     localHashMap.put("transfer_id", paramString2);
     localHashMap.put("trans_id", paramString1);
@@ -51,34 +55,67 @@ public final class y
     AppMethodBeat.o(67893);
   }
   
-  private static c aO(JSONObject paramJSONObject)
+  private static ArrayList<y.b> F(JSONArray paramJSONArray)
   {
-    AppMethodBeat.i(67895);
-    c localc = new c();
-    JSONObject localJSONObject = paramJSONObject;
-    if (paramJSONObject == null) {
-      localJSONObject = new JSONObject();
+    AppMethodBeat.i(213735);
+    JSONArray localJSONArray = paramJSONArray;
+    if (paramJSONArray == null) {
+      localJSONArray = new JSONArray();
     }
-    localc.type = localJSONObject.optInt("type");
-    localc.url = localJSONObject.optString("url");
-    localc.username = localJSONObject.optString("username");
-    localc.ypt = localJSONObject.optString("pagepath");
-    AppMethodBeat.o(67895);
-    return localc;
+    Log.i("Micromsg.NetSceneTenpayRemittanceQuery", "parseDescItemList res：%s", new Object[] { localJSONArray.toString() });
+    paramJSONArray = new ArrayList();
+    int i = 0;
+    try
+    {
+      while (i < localJSONArray.length())
+      {
+        JSONObject localJSONObject = localJSONArray.getJSONObject(i);
+        if (localJSONObject != null)
+        {
+          y.b localb = new y.b();
+          localb.title = localJSONObject.optString("key");
+          localb.content = localJSONObject.optString("value");
+          paramJSONArray.add(localb);
+        }
+        i += 1;
+      }
+      return paramJSONArray;
+    }
+    catch (JSONException localJSONException)
+    {
+      Log.i("Micromsg.NetSceneTenpayRemittanceQuery", "parseDescItemList error：%s", new Object[] { localJSONException.getMessage() });
+      AppMethodBeat.o(213735);
+    }
   }
   
-  private static d aP(JSONObject paramJSONObject)
+  private static d bk(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(67896);
+    AppMethodBeat.i(67895);
     d locald = new d();
     JSONObject localJSONObject = paramJSONObject;
     if (paramJSONObject == null) {
       localJSONObject = new JSONObject();
     }
-    locald.dyI = localJSONObject.optString("wording");
-    locald.yps = aO(localJSONObject.optJSONObject("jump_info"));
-    AppMethodBeat.o(67896);
+    locald.type = localJSONObject.optInt("type");
+    locald.url = localJSONObject.optString("url");
+    locald.username = localJSONObject.optString("username");
+    locald.Cqk = localJSONObject.optString("pagepath");
+    AppMethodBeat.o(67895);
     return locald;
+  }
+  
+  private static e bl(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(67896);
+    e locale = new e();
+    JSONObject localJSONObject = paramJSONObject;
+    if (paramJSONObject == null) {
+      localJSONObject = new JSONObject();
+    }
+    locale.dQx = localJSONObject.optString("wording");
+    locale.Cqj = bk(localJSONObject.optJSONObject("jump_info"));
+    AppMethodBeat.o(67896);
+    return locale;
   }
   
   public final int getFuncId()
@@ -99,25 +136,25 @@ public final class y
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(67894);
-    ae.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
+    Log.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(67894);
       return;
     }
-    this.ypb = paramJSONObject.optInt("pay_time");
-    this.phz = (paramJSONObject.optDouble("fee") / 100.0D);
-    this.wSq = paramJSONObject.optString("fee_type");
+    this.CpR = paramJSONObject.optInt("pay_time");
+    this.qwJ = (paramJSONObject.optDouble("fee") / 100.0D);
+    this.AOl = paramJSONObject.optString("fee_type");
     this.status = paramJSONObject.optInt("trans_status");
-    this.ypc = paramJSONObject.optString("trans_status_name");
-    this.ype = paramJSONObject.optInt("modify_time");
-    this.uTf = paramJSONObject.optBoolean("is_payer");
-    this.wSO = paramJSONObject.optString("refund_bank_type");
-    this.ypf = paramJSONObject.optString("status_desc");
-    this.ypg = paramJSONObject.optString("status_supplementary");
-    this.yph = paramJSONObject.optInt("delay_confirm_flag");
-    this.ypn = paramJSONObject.optString("banner_content");
-    this.ypo = paramJSONObject.optString("banner_url");
+    this.CpS = paramJSONObject.optString("trans_status_name");
+    this.CpU = paramJSONObject.optInt("modify_time");
+    this.ylG = paramJSONObject.optBoolean("is_payer");
+    this.AOI = paramJSONObject.optString("refund_bank_type");
+    this.CpV = paramJSONObject.optString("status_desc");
+    this.CpW = paramJSONObject.optString("status_supplementary");
+    this.CpX = paramJSONObject.optInt("delay_confirm_flag");
+    this.Cqe = paramJSONObject.optString("banner_content");
+    this.Cqf = paramJSONObject.optString("banner_url");
     this.desc = paramJSONObject.optString("desc");
     JSONObject localJSONObject = paramJSONObject.optJSONObject("addr_info");
     Object localObject = new a();
@@ -125,24 +162,24 @@ public final class y
     if (localJSONObject == null) {
       paramString = new JSONObject();
     }
-    ((a)localObject).ypp = paramString.optString("address_name");
-    ((a)localObject).jki = paramString.optString("phone_num");
-    ((a)localObject).hZQ = paramString.optString("address");
-    this.ypi = ((a)localObject);
+    ((a)localObject).Cqg = paramString.optString("address_name");
+    ((a)localObject).kik = paramString.optString("phone_num");
+    ((a)localObject).iUO = paramString.optString("address");
+    this.CpY = ((a)localObject);
     localJSONObject = paramJSONObject.optJSONObject("exposure_info");
-    localObject = new b();
+    localObject = new c();
     paramString = localJSONObject;
     if (localJSONObject == null) {
       paramString = new JSONObject();
     }
-    ((b)localObject).dEM = paramString.optString("icon");
-    ((b)localObject).name = paramString.optString("name");
-    ((b)localObject).dyI = paramString.optString("wording");
-    ((b)localObject).ypq = paramString.optInt("is_show_btn");
-    ((b)localObject).ypr = paramString.optString("btn_wording");
-    ((b)localObject).yps = aO(paramString.optJSONObject("jump_info"));
-    this.ypj = ((b)localObject);
-    this.ypk = aP(paramJSONObject.optJSONObject("text_info"));
+    ((c)localObject).icon = paramString.optString("icon");
+    ((c)localObject).name = paramString.optString("name");
+    ((c)localObject).dQx = paramString.optString("wording");
+    ((c)localObject).Cqh = paramString.optInt("is_show_btn");
+    ((c)localObject).Cqi = paramString.optString("btn_wording");
+    ((c)localObject).Cqj = bk(paramString.optJSONObject("jump_info"));
+    this.CpZ = ((c)localObject);
+    this.Cqa = bl(paramJSONObject.optJSONObject("text_info"));
     localJSONObject = paramJSONObject.optJSONObject("resend_info");
     localObject = new ResendMsgInfo();
     paramString = localJSONObject;
@@ -150,73 +187,74 @@ public final class y
       paramString = new JSONObject();
     }
     ((ResendMsgInfo)localObject).title = paramString.optString("title");
-    ((ResendMsgInfo)localObject).Fae = paramString.optString("pic");
+    ((ResendMsgInfo)localObject).JQW = paramString.optString("pic");
     ((ResendMsgInfo)localObject).description = paramString.optString("description");
-    ((ResendMsgInfo)localObject).kCZ = paramString.optString("left_button_wording");
-    ((ResendMsgInfo)localObject).kDa = paramString.optString("right_button_wording");
-    this.ypl = ((ResendMsgInfo)localObject);
-    this.ypm = aP(paramJSONObject.optJSONObject("middle_info"));
+    ((ResendMsgInfo)localObject).lHA = paramString.optString("left_button_wording");
+    ((ResendMsgInfo)localObject).lHB = paramString.optString("right_button_wording");
+    this.Cqb = ((ResendMsgInfo)localObject);
+    this.Cqc = bl(paramJSONObject.optJSONObject("middle_info"));
+    this.Cqd = F(paramJSONObject.optJSONArray("desc_item_list"));
     AppMethodBeat.o(67894);
   }
   
   public static final class a
   {
-    public String hZQ;
-    public String jki;
-    public String ypp;
+    public String Cqg;
+    public String iUO;
+    public String kik;
     
     public final String toString()
     {
       AppMethodBeat.i(67889);
-      String str = "AddressInfo{addressName='" + this.ypp + '\'' + ", phoneNum='" + this.jki + '\'' + ", address='" + this.hZQ + '\'' + '}';
+      String str = "AddressInfo{addressName='" + this.Cqg + '\'' + ", phoneNum='" + this.kik + '\'' + ", address='" + this.iUO + '\'' + '}';
       AppMethodBeat.o(67889);
-      return str;
-    }
-  }
-  
-  public static final class b
-  {
-    public String dEM;
-    public String dyI;
-    public String name;
-    public int ypq;
-    public String ypr;
-    public y.c yps;
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(67890);
-      String str = "ExposureInfo{icon='" + this.dEM + '\'' + ", name='" + this.name + '\'' + ", wording='" + this.dyI + '\'' + ", isShowBtn=" + this.ypq + ", btnWording='" + this.ypr + '\'' + ", jumpInfo=" + this.yps + '}';
-      AppMethodBeat.o(67890);
       return str;
     }
   }
   
   public static final class c
   {
-    public int type;
-    public String url;
-    public String username;
-    public String ypt;
+    public int Cqh;
+    public String Cqi;
+    public y.d Cqj;
+    public String dQx;
+    public String icon;
+    public String name;
     
     public final String toString()
     {
-      AppMethodBeat.i(67891);
-      String str = "JumpInfo{type=" + this.type + ", url='" + this.url + '\'' + ", username='" + this.username + '\'' + ", pagepath='" + this.ypt + '\'' + '}';
-      AppMethodBeat.o(67891);
+      AppMethodBeat.i(67890);
+      String str = "ExposureInfo{icon='" + this.icon + '\'' + ", name='" + this.name + '\'' + ", wording='" + this.dQx + '\'' + ", isShowBtn=" + this.Cqh + ", btnWording='" + this.Cqi + '\'' + ", jumpInfo=" + this.Cqj + '}';
+      AppMethodBeat.o(67890);
       return str;
     }
   }
   
   public static final class d
   {
-    public String dyI;
-    public y.c yps;
+    public String Cqk;
+    public int type;
+    public String url;
+    public String username;
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(67891);
+      String str = "JumpInfo{type=" + this.type + ", url='" + this.url + '\'' + ", username='" + this.username + '\'' + ", pagepath='" + this.Cqk + '\'' + '}';
+      AppMethodBeat.o(67891);
+      return str;
+    }
+  }
+  
+  public static final class e
+  {
+    public y.d Cqj;
+    public String dQx;
     
     public final String toString()
     {
       AppMethodBeat.i(67892);
-      String str = "TextInfo{wording='" + this.dyI + '\'' + ", jumpInfo=" + this.yps + '}';
+      String str = "TextInfo{wording='" + this.dQx + '\'' + ", jumpInfo=" + this.Cqj + '}';
       AppMethodBeat.o(67892);
       return str;
     }
@@ -224,7 +262,7 @@ public final class y
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.y
  * JD-Core Version:    0.7.0.1
  */

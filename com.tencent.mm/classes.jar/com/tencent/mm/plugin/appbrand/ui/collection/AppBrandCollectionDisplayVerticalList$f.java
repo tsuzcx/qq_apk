@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.appbrand.ui.collection;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
 final class AppBrandCollectionDisplayVerticalList$f
   extends q
   implements a
 {
-  public static final f mNx;
+  public static final f oaK;
   
   static
   {
     AppMethodBeat.i(51177);
-    mNx = new f();
+    oaK = new f();
     AppMethodBeat.o(51177);
   }
   

@@ -4,51 +4,51 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.booter.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
 {
-  public static void hS(Context paramContext)
+  public static void i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(186179);
+    AppMethodBeat.i(193933);
+    Log.i(paramString1, paramString2);
+    a.a.log(4, paramString1, paramString2);
+    AppMethodBeat.o(193933);
+  }
+  
+  public static void iL(Context paramContext)
+  {
+    AppMethodBeat.i(193936);
     i("MicroMsg.recovery.logger", "flush recovery log to file");
-    Object localObject = h.c.hW(paramContext);
-    ((h.c)localObject).flb();
-    d.bL(paramContext).ux("RECOVERY");
-    localObject = ((h.c)localObject).flc();
+    Object localObject = h.c.iP(paramContext);
+    ((h.c)localObject).guM();
+    d.cg(paramContext).CN("RECOVERY");
+    localObject = ((h.c)localObject).guN();
     paramContext = (Context)localObject;
     if (TextUtils.isEmpty((CharSequence)localObject)) {
       paramContext = "nothing";
     }
-    ae.i("MicroMsg.recovery.logger", ">>>>> dump recovery internal log (:recovery) <<<<<");
-    ae.i("MicroMsg.recovery.logger", "\n".concat(String.valueOf(paramContext)));
-    ae.i("MicroMsg.recovery.logger", ">>>>>>>>>>>>>>>>>>>>>> end <<<<<<<<<<<<<<<<<<<<<<<");
-    ae.foo();
-    AppMethodBeat.o(186179);
-  }
-  
-  public static void i(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(186176);
-    ae.i(paramString1, paramString2);
-    a.a.log(4, paramString1, paramString2);
-    AppMethodBeat.o(186176);
+    Log.i("MicroMsg.recovery.logger", ">>>>> dump recovery internal log (:recovery) <<<<<");
+    Log.i("MicroMsg.recovery.logger", "\n".concat(String.valueOf(paramContext)));
+    Log.i("MicroMsg.recovery.logger", ">>>>>>>>>>>>>>>>>>>>>> end <<<<<<<<<<<<<<<<<<<<<<<");
+    Log.appenderFlush();
+    AppMethodBeat.o(193936);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(186177);
-    ae.w(paramString1, paramString2);
+    AppMethodBeat.i(193934);
+    Log.w(paramString1, paramString2);
     a.a.log(5, paramString1, paramString2);
-    AppMethodBeat.o(186177);
+    AppMethodBeat.o(193934);
   }
   
   public static void w(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    AppMethodBeat.i(186178);
-    ae.printErrStackTrace(paramString1, paramThrowable, paramString2, new Object[0]);
+    AppMethodBeat.i(193935);
+    Log.printErrStackTrace(paramString1, paramThrowable, paramString2, new Object[0]);
     a.w(paramString1, paramString2, paramThrowable);
-    AppMethodBeat.o(186178);
+    AppMethodBeat.o(193935);
   }
 }
 

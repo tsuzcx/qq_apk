@@ -2,22 +2,22 @@ package com.tencent.mm.sticker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ab.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.l;
-import d.n.d;
-import d.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 import java.nio.charset.Charset;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.d;
+import kotlin.t;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/BaseJsonObject;", "", "()V", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "toJson", "Companion", "plugin-sticker_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/BaseJsonObject;", "", "()V", "fromJson", "jsonObj", "Lorg/json/JSONObject;", "toJson", "Companion", "plugin-sticker_release"})
 public abstract class a
 {
-  public static final a IFQ = new a((byte)0);
+  public static final a NMI = new a((byte)0);
   private static final String TAG = "MicroMsg.BaseJsonObject";
   
-  public a bH(JSONObject paramJSONObject)
+  public a au(JSONObject paramJSONObject)
   {
     p.h(paramJSONObject, "jsonObj");
     return this;
@@ -28,7 +28,7 @@ public abstract class a
     return new JSONObject();
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/BaseJsonObject$Companion;", "", "()V", "TAG", "", "parseJson", "", "jsonFile", "obj", "Lcom/tencent/mm/sticker/BaseJsonObject;", "saveJson", "plugin-sticker_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/BaseJsonObject$Companion;", "", "()V", "TAG", "", "parseJson", "", "jsonFile", "obj", "Lcom/tencent/mm/sticker/BaseJsonObject;", "saveJson", "plugin-sticker_release"})
   public static final class a
   {
     public static void a(a parama, String paramString)
@@ -44,20 +44,20 @@ public abstract class a
         localCharset = d.UTF_8;
         if (parama == null)
         {
-          parama = new v("null cannot be cast to non-null type java.lang.String");
+          parama = new t("null cannot be cast to non-null type java.lang.String");
           AppMethodBeat.o(105886);
           throw parama;
         }
       }
       catch (Exception parama)
       {
-        ae.printErrStackTrace(a.access$getTAG$cp(), (Throwable)parama, "", new Object[0]);
+        Log.printErrStackTrace(a.access$getTAG$cp(), (Throwable)parama, "", new Object[0]);
         AppMethodBeat.o(105886);
         return;
       }
       parama = parama.getBytes(localCharset);
       p.g(parama, "(this as java.lang.String).getBytes(charset)");
-      o.C(paramString, parama);
+      s.C(paramString, parama);
       AppMethodBeat.o(105886);
     }
     
@@ -68,15 +68,15 @@ public abstract class a
       p.h(parama, "obj");
       try
       {
-        paramString = h.xs(o.aZT(paramString));
+        paramString = h.FE(s.boY(paramString));
         p.g(paramString, "jsonObj");
-        parama.bH(paramString);
+        parama.au(paramString);
         AppMethodBeat.o(105885);
         return;
       }
       catch (Exception paramString)
       {
-        ae.printErrStackTrace(a.access$getTAG$cp(), (Throwable)paramString, "", new Object[0]);
+        Log.printErrStackTrace(a.access$getTAG$cp(), (Throwable)paramString, "", new Object[0]);
         AppMethodBeat.o(105885);
       }
     }
@@ -84,7 +84,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sticker.a
  * JD-Core Version:    0.7.0.1
  */

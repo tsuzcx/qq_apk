@@ -12,27 +12,27 @@ import com.tencent.mm.plugin.cdndownloader.ipc.CDNTaskState;
 public abstract interface a
   extends IInterface
 {
-  public abstract void Bd(int paramInt);
+  public abstract void EL(int paramInt);
   
   public abstract int a(CDNTaskInfo paramCDNTaskInfo);
   
   public abstract void a(b paramb);
   
-  public abstract boolean aal(String paramString);
+  public abstract boolean akr(String paramString);
   
-  public abstract boolean aam(String paramString);
+  public abstract boolean aks(String paramString);
   
-  public abstract CDNTaskState aan(String paramString);
+  public abstract CDNTaskState akt(String paramString);
   
   public abstract int b(CDNTaskInfo paramCDNTaskInfo);
   
   public abstract void b(b paramb);
   
-  public abstract void caf();
+  public abstract void cxU();
   
-  public abstract void cag();
+  public abstract void cxV();
   
-  public abstract void cah();
+  public abstract void cxW();
   
   public static abstract class a
     extends Binder
@@ -41,6 +41,11 @@ public abstract interface a
     public a()
     {
       attachInterface(this, "com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
+    }
+    
+    public static a cxX()
+    {
+      return a.qmo;
     }
     
     public static a u(IBinder paramIBinder)
@@ -94,7 +99,7 @@ public abstract interface a
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        bool = aal(paramParcel1.readString());
+        bool = akr(paramParcel1.readString());
         paramParcel2.writeNoException();
         if (bool) {}
         for (paramInt1 = 1;; paramInt1 = 0)
@@ -104,7 +109,7 @@ public abstract interface a
         }
       case 4: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        bool = aam(paramParcel1.readString());
+        bool = aks(paramParcel1.readString());
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool) {
@@ -114,7 +119,7 @@ public abstract interface a
         return true;
       case 5: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        paramParcel1 = aan(paramParcel1.readString());
+        paramParcel1 = akt(paramParcel1.readString());
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -136,22 +141,22 @@ public abstract interface a
         return true;
       case 8: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        Bd(paramParcel1.readInt());
+        EL(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       case 9: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        caf();
+        cxU();
         paramParcel2.writeNoException();
         return true;
       case 10: 
         paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-        cag();
+        cxV();
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-      cah();
+      cxW();
       paramParcel2.writeNoException();
       return true;
     }
@@ -159,6 +164,7 @@ public abstract interface a
     static final class a
       implements a
     {
+      public static a qmo;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -166,7 +172,7 @@ public abstract interface a
         this.mRemote = paramIBinder;
       }
       
-      public final void Bd(int paramInt)
+      public final void EL(int paramInt)
       {
         AppMethodBeat.i(120700);
         Parcel localParcel1 = Parcel.obtain();
@@ -175,7 +181,11 @@ public abstract interface a
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
           localParcel1.writeInt(paramInt);
-          this.mRemote.transact(8, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(8, localParcel1, localParcel2, 0)) && (a.a.cxX() != null))
+          {
+            a.a.cxX().EL(paramInt);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -187,141 +197,70 @@ public abstract interface a
         }
       }
       
-      /* Error */
       public final int a(CDNTaskInfo paramCDNTaskInfo)
       {
-        // Byte code:
-        //   0: ldc 59
-        //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   8: astore_3
-        //   9: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   12: astore 4
-        //   14: aload_3
-        //   15: ldc 35
-        //   17: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   20: aload_1
-        //   21: ifnull +56 -> 77
-        //   24: aload_3
-        //   25: iconst_1
-        //   26: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   29: aload_1
-        //   30: aload_3
-        //   31: iconst_0
-        //   32: invokevirtual 65	com/tencent/mm/plugin/cdndownloader/ipc/CDNTaskInfo:writeToParcel	(Landroid/os/Parcel;I)V
-        //   35: aload_0
-        //   36: getfield 18	com/tencent/mm/plugin/cdndownloader/a/a$a$a:mRemote	Landroid/os/IBinder;
-        //   39: iconst_1
-        //   40: aload_3
-        //   41: aload 4
-        //   43: iconst_0
-        //   44: invokeinterface 48 5 0
-        //   49: pop
-        //   50: aload 4
-        //   52: invokevirtual 51	android/os/Parcel:readException	()V
-        //   55: aload 4
-        //   57: invokevirtual 69	android/os/Parcel:readInt	()I
-        //   60: istore_2
-        //   61: aload 4
-        //   63: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   66: aload_3
-        //   67: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   70: ldc 59
-        //   72: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   75: iload_2
-        //   76: ireturn
-        //   77: aload_3
-        //   78: iconst_0
-        //   79: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   82: goto -47 -> 35
-        //   85: astore_1
-        //   86: aload 4
-        //   88: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   91: aload_3
-        //   92: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   95: ldc 59
-        //   97: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   100: aload_1
-        //   101: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	102	0	this	a
-        //   0	102	1	paramCDNTaskInfo	CDNTaskInfo
-        //   60	16	2	i	int
-        //   8	84	3	localParcel1	Parcel
-        //   12	75	4	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   14	20	85	finally
-        //   24	35	85	finally
-        //   35	61	85	finally
-        //   77	82	85	finally
+        AppMethodBeat.i(120693);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
+          if (paramCDNTaskInfo != null)
+          {
+            localParcel1.writeInt(1);
+            paramCDNTaskInfo.writeToParcel(localParcel1, 0);
+          }
+          while ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (a.a.cxX() != null))
+          {
+            i = a.a.cxX().a(paramCDNTaskInfo);
+            return i;
+            localParcel1.writeInt(0);
+          }
+          localParcel2.readException();
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(120693);
+        }
+        int i = localParcel2.readInt();
+        localParcel2.recycle();
+        localParcel1.recycle();
+        AppMethodBeat.o(120693);
+        return i;
       }
       
-      /* Error */
       public final void a(b paramb)
       {
-        // Byte code:
-        //   0: ldc 71
-        //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   8: astore_2
-        //   9: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   12: astore_3
-        //   13: aload_2
-        //   14: ldc 35
-        //   16: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   19: aload_1
-        //   20: ifnull +48 -> 68
-        //   23: aload_1
-        //   24: invokeinterface 77 1 0
-        //   29: astore_1
-        //   30: aload_2
-        //   31: aload_1
-        //   32: invokevirtual 80	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
-        //   35: aload_0
-        //   36: getfield 18	com/tencent/mm/plugin/cdndownloader/a/a$a$a:mRemote	Landroid/os/IBinder;
-        //   39: bipush 6
-        //   41: aload_2
-        //   42: aload_3
-        //   43: iconst_0
-        //   44: invokeinterface 48 5 0
-        //   49: pop
-        //   50: aload_3
-        //   51: invokevirtual 51	android/os/Parcel:readException	()V
-        //   54: aload_3
-        //   55: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   58: aload_2
-        //   59: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   62: ldc 71
-        //   64: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   67: return
-        //   68: aconst_null
-        //   69: astore_1
-        //   70: goto -40 -> 30
-        //   73: astore_1
-        //   74: aload_3
-        //   75: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   78: aload_2
-        //   79: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   82: ldc 71
-        //   84: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   87: aload_1
-        //   88: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	89	0	this	a
-        //   0	89	1	paramb	b
-        //   8	71	2	localParcel1	Parcel
-        //   12	63	3	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   13	19	73	finally
-        //   23	30	73	finally
-        //   30	54	73	finally
+        AppMethodBeat.i(120698);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
+          if (paramb != null) {}
+          for (IBinder localIBinder = paramb.asBinder();; localIBinder = null)
+          {
+            localParcel1.writeStrongBinder(localIBinder);
+            if ((this.mRemote.transact(6, localParcel1, localParcel2, 0)) || (a.a.cxX() == null)) {
+              break;
+            }
+            a.a.cxX().a(paramb);
+            return;
+          }
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(120698);
+        }
       }
       
-      public final boolean aal(String paramString)
+      public final boolean akr(String paramString)
       {
         boolean bool = false;
         AppMethodBeat.i(120695);
@@ -331,7 +270,11 @@ public abstract interface a
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
           localParcel1.writeString(paramString);
-          this.mRemote.transact(3, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (a.a.cxX() != null))
+          {
+            bool = a.a.cxX().akr(paramString);
+            return bool;
+          }
           localParcel2.readException();
           int i = localParcel2.readInt();
           if (i != 0) {
@@ -347,7 +290,7 @@ public abstract interface a
         }
       }
       
-      public final boolean aam(String paramString)
+      public final boolean aks(String paramString)
       {
         boolean bool = false;
         AppMethodBeat.i(120696);
@@ -357,7 +300,11 @@ public abstract interface a
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
           localParcel1.writeString(paramString);
-          this.mRemote.transact(4, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (a.a.cxX() != null))
+          {
+            bool = a.a.cxX().aks(paramString);
+            return bool;
+          }
           localParcel2.readException();
           int i = localParcel2.readInt();
           if (i != 0) {
@@ -374,68 +321,83 @@ public abstract interface a
       }
       
       /* Error */
-      public final CDNTaskState aan(String paramString)
+      public final CDNTaskState akt(String paramString)
       {
         // Byte code:
-        //   0: ldc 91
-        //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   0: ldc 107
+        //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+        //   5: invokestatic 35	android/os/Parcel:obtain	()Landroid/os/Parcel;
         //   8: astore_2
-        //   9: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
+        //   9: invokestatic 35	android/os/Parcel:obtain	()Landroid/os/Parcel;
         //   12: astore_3
         //   13: aload_2
-        //   14: ldc 35
-        //   16: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
+        //   14: ldc 37
+        //   16: invokevirtual 41	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
         //   19: aload_2
         //   20: aload_1
-        //   21: invokevirtual 86	android/os/Parcel:writeString	(Ljava/lang/String;)V
+        //   21: invokevirtual 98	android/os/Parcel:writeString	(Ljava/lang/String;)V
         //   24: aload_0
-        //   25: getfield 18	com/tencent/mm/plugin/cdndownloader/a/a$a$a:mRemote	Landroid/os/IBinder;
+        //   25: getfield 20	com/tencent/mm/plugin/cdndownloader/a/a$a$a:mRemote	Landroid/os/IBinder;
         //   28: iconst_5
         //   29: aload_2
         //   30: aload_3
         //   31: iconst_0
-        //   32: invokeinterface 48 5 0
-        //   37: pop
-        //   38: aload_3
-        //   39: invokevirtual 51	android/os/Parcel:readException	()V
-        //   42: aload_3
-        //   43: invokevirtual 69	android/os/Parcel:readInt	()I
-        //   46: ifeq +31 -> 77
-        //   49: getstatic 97	com/tencent/mm/plugin/cdndownloader/ipc/CDNTaskState:CREATOR	Landroid/os/Parcelable$Creator;
-        //   52: aload_3
-        //   53: invokeinterface 103 2 0
-        //   58: checkcast 93	com/tencent/mm/plugin/cdndownloader/ipc/CDNTaskState
-        //   61: astore_1
-        //   62: aload_3
-        //   63: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   66: aload_2
-        //   67: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   70: ldc 91
-        //   72: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   75: aload_1
-        //   76: areturn
-        //   77: aconst_null
-        //   78: astore_1
-        //   79: goto -17 -> 62
-        //   82: astore_1
-        //   83: aload_3
-        //   84: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   87: aload_2
-        //   88: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   91: ldc 91
-        //   93: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   96: aload_1
-        //   97: athrow
+        //   32: invokeinterface 50 5 0
+        //   37: ifne +34 -> 71
+        //   40: invokestatic 54	com/tencent/mm/plugin/cdndownloader/a/a$a:cxX	()Lcom/tencent/mm/plugin/cdndownloader/a/a;
+        //   43: ifnull +28 -> 71
+        //   46: invokestatic 54	com/tencent/mm/plugin/cdndownloader/a/a$a:cxX	()Lcom/tencent/mm/plugin/cdndownloader/a/a;
+        //   49: aload_1
+        //   50: invokeinterface 109 2 0
+        //   55: astore_1
+        //   56: aload_3
+        //   57: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   60: aload_2
+        //   61: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   64: ldc 107
+        //   66: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   69: aload_1
+        //   70: areturn
+        //   71: aload_3
+        //   72: invokevirtual 65	android/os/Parcel:readException	()V
+        //   75: aload_3
+        //   76: invokevirtual 79	android/os/Parcel:readInt	()I
+        //   79: ifeq +31 -> 110
+        //   82: getstatic 115	com/tencent/mm/plugin/cdndownloader/ipc/CDNTaskState:CREATOR	Landroid/os/Parcelable$Creator;
+        //   85: aload_3
+        //   86: invokeinterface 121 2 0
+        //   91: checkcast 111	com/tencent/mm/plugin/cdndownloader/ipc/CDNTaskState
+        //   94: astore_1
+        //   95: aload_3
+        //   96: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   99: aload_2
+        //   100: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   103: ldc 107
+        //   105: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   108: aload_1
+        //   109: areturn
+        //   110: aconst_null
+        //   111: astore_1
+        //   112: goto -17 -> 95
+        //   115: astore_1
+        //   116: aload_3
+        //   117: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   120: aload_2
+        //   121: invokevirtual 59	android/os/Parcel:recycle	()V
+        //   124: ldc 107
+        //   126: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+        //   129: aload_1
+        //   130: athrow
         // Local variable table:
         //   start	length	slot	name	signature
-        //   0	98	0	this	a
-        //   0	98	1	paramString	String
-        //   8	80	2	localParcel1	Parcel
-        //   12	72	3	localParcel2	Parcel
+        //   0	131	0	this	a
+        //   0	131	1	paramString	String
+        //   8	113	2	localParcel1	Parcel
+        //   12	105	3	localParcel2	Parcel
         // Exception table:
         //   from	to	target	type
-        //   13	62	82	finally
+        //   13	56	115	finally
+        //   71	95	115	finally
       }
       
       public final IBinder asBinder()
@@ -443,141 +405,70 @@ public abstract interface a
         return this.mRemote;
       }
       
-      /* Error */
       public final int b(CDNTaskInfo paramCDNTaskInfo)
       {
-        // Byte code:
-        //   0: ldc 105
-        //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   8: astore_3
-        //   9: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   12: astore 4
-        //   14: aload_3
-        //   15: ldc 35
-        //   17: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   20: aload_1
-        //   21: ifnull +56 -> 77
-        //   24: aload_3
-        //   25: iconst_1
-        //   26: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   29: aload_1
-        //   30: aload_3
-        //   31: iconst_0
-        //   32: invokevirtual 65	com/tencent/mm/plugin/cdndownloader/ipc/CDNTaskInfo:writeToParcel	(Landroid/os/Parcel;I)V
-        //   35: aload_0
-        //   36: getfield 18	com/tencent/mm/plugin/cdndownloader/a/a$a$a:mRemote	Landroid/os/IBinder;
-        //   39: iconst_2
-        //   40: aload_3
-        //   41: aload 4
-        //   43: iconst_0
-        //   44: invokeinterface 48 5 0
-        //   49: pop
-        //   50: aload 4
-        //   52: invokevirtual 51	android/os/Parcel:readException	()V
-        //   55: aload 4
-        //   57: invokevirtual 69	android/os/Parcel:readInt	()I
-        //   60: istore_2
-        //   61: aload 4
-        //   63: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   66: aload_3
-        //   67: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   70: ldc 105
-        //   72: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   75: iload_2
-        //   76: ireturn
-        //   77: aload_3
-        //   78: iconst_0
-        //   79: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   82: goto -47 -> 35
-        //   85: astore_1
-        //   86: aload 4
-        //   88: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   91: aload_3
-        //   92: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   95: ldc 105
-        //   97: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   100: aload_1
-        //   101: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	102	0	this	a
-        //   0	102	1	paramCDNTaskInfo	CDNTaskInfo
-        //   60	16	2	i	int
-        //   8	84	3	localParcel1	Parcel
-        //   12	75	4	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   14	20	85	finally
-        //   24	35	85	finally
-        //   35	61	85	finally
-        //   77	82	85	finally
+        AppMethodBeat.i(120694);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
+          if (paramCDNTaskInfo != null)
+          {
+            localParcel1.writeInt(1);
+            paramCDNTaskInfo.writeToParcel(localParcel1, 0);
+          }
+          while ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (a.a.cxX() != null))
+          {
+            i = a.a.cxX().b(paramCDNTaskInfo);
+            return i;
+            localParcel1.writeInt(0);
+          }
+          localParcel2.readException();
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(120694);
+        }
+        int i = localParcel2.readInt();
+        localParcel2.recycle();
+        localParcel1.recycle();
+        AppMethodBeat.o(120694);
+        return i;
       }
       
-      /* Error */
       public final void b(b paramb)
       {
-        // Byte code:
-        //   0: ldc 106
-        //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   8: astore_2
-        //   9: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   12: astore_3
-        //   13: aload_2
-        //   14: ldc 35
-        //   16: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   19: aload_1
-        //   20: ifnull +48 -> 68
-        //   23: aload_1
-        //   24: invokeinterface 77 1 0
-        //   29: astore_1
-        //   30: aload_2
-        //   31: aload_1
-        //   32: invokevirtual 80	android/os/Parcel:writeStrongBinder	(Landroid/os/IBinder;)V
-        //   35: aload_0
-        //   36: getfield 18	com/tencent/mm/plugin/cdndownloader/a/a$a$a:mRemote	Landroid/os/IBinder;
-        //   39: bipush 7
-        //   41: aload_2
-        //   42: aload_3
-        //   43: iconst_0
-        //   44: invokeinterface 48 5 0
-        //   49: pop
-        //   50: aload_3
-        //   51: invokevirtual 51	android/os/Parcel:readException	()V
-        //   54: aload_3
-        //   55: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   58: aload_2
-        //   59: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   62: ldc 106
-        //   64: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   67: return
-        //   68: aconst_null
-        //   69: astore_1
-        //   70: goto -40 -> 30
-        //   73: astore_1
-        //   74: aload_3
-        //   75: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   78: aload_2
-        //   79: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   82: ldc 106
-        //   84: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   87: aload_1
-        //   88: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	89	0	this	a
-        //   0	89	1	paramb	b
-        //   8	71	2	localParcel1	Parcel
-        //   12	63	3	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   13	19	73	finally
-        //   23	30	73	finally
-        //   30	54	73	finally
+        AppMethodBeat.i(120699);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
+          if (paramb != null) {}
+          for (IBinder localIBinder = paramb.asBinder();; localIBinder = null)
+          {
+            localParcel1.writeStrongBinder(localIBinder);
+            if ((this.mRemote.transact(7, localParcel1, localParcel2, 0)) || (a.a.cxX() == null)) {
+              break;
+            }
+            a.a.cxX().b(paramb);
+            return;
+          }
+          localParcel2.readException();
+          return;
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(120699);
+        }
       }
       
-      public final void caf()
+      public final void cxU()
       {
         AppMethodBeat.i(120701);
         Parcel localParcel1 = Parcel.obtain();
@@ -585,7 +476,11 @@ public abstract interface a
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-          this.mRemote.transact(9, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(9, localParcel1, localParcel2, 0)) && (a.a.cxX() != null))
+          {
+            a.a.cxX().cxU();
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -597,7 +492,7 @@ public abstract interface a
         }
       }
       
-      public final void cag()
+      public final void cxV()
       {
         AppMethodBeat.i(120702);
         Parcel localParcel1 = Parcel.obtain();
@@ -605,7 +500,11 @@ public abstract interface a
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-          this.mRemote.transact(10, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(10, localParcel1, localParcel2, 0)) && (a.a.cxX() != null))
+          {
+            a.a.cxX().cxV();
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -617,7 +516,7 @@ public abstract interface a
         }
       }
       
-      public final void cah()
+      public final void cxW()
       {
         AppMethodBeat.i(120703);
         Parcel localParcel1 = Parcel.obtain();
@@ -625,7 +524,11 @@ public abstract interface a
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadService");
-          this.mRemote.transact(11, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(11, localParcel1, localParcel2, 0)) && (a.a.cxX() != null))
+          {
+            a.a.cxX().cxW();
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -641,7 +544,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.a.a
  * JD-Core Version:    0.7.0.1
  */

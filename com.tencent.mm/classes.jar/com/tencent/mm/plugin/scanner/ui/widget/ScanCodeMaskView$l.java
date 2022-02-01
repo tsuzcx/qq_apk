@@ -5,13 +5,13 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.j;
-import d.g.b.p;
-import d.l;
-import d.v;
 import java.util.Iterator;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$2$2"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "animation", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/scanner/ui/widget/ScanCodeMaskView$showSuccessView$2$2"})
 final class ScanCodeMaskView$l
   implements ValueAnimator.AnimatorUpdateListener
 {
@@ -24,27 +24,27 @@ final class ScanCodeMaskView$l
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
     if (paramValueAnimator == null)
     {
-      paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Float");
+      paramValueAnimator = new t("null cannot be cast to non-null type kotlin.Float");
       AppMethodBeat.o(52387);
       throw paramValueAnimator;
     }
     float f = ((Float)paramValueAnimator).floatValue();
-    ScanCodeMaskView.g(this.yNL).setAlpha(1.0F - f);
-    paramValueAnimator = ScanCodeMaskView.h(this.yNL);
+    ScanCodeMaskView.g(this.CRD).setAlpha(1.0F - f);
+    paramValueAnimator = ScanCodeMaskView.h(this.CRD);
     if (paramValueAnimator != null) {
       paramValueAnimator.setAlpha(1.0F - f);
     }
-    paramValueAnimator = (Iterable)ScanCodeMaskView.e(this.yNL);
+    paramValueAnimator = (Iterable)ScanCodeMaskView.e(this.CRD);
     int i = 0;
     paramValueAnimator = paramValueAnimator.iterator();
     while (paramValueAnimator.hasNext())
     {
       Object localObject = paramValueAnimator.next();
       if (i < 0) {
-        j.gkd();
+        j.hxH();
       }
       localObject = (View)localObject;
-      if (i < ScanCodeMaskView.i(this.yNL))
+      if (i < ScanCodeMaskView.i(this.CRD))
       {
         ((View)localObject).setAlpha(f);
         ((View)localObject).setScaleX(f);
@@ -52,15 +52,15 @@ final class ScanCodeMaskView$l
       }
       i += 1;
     }
-    if (ScanCodeMaskView.j(this.yNL)) {
-      ScanCodeMaskView.k(this.yNL).setAlpha(f);
+    if (ScanCodeMaskView.j(this.CRD)) {
+      ScanCodeMaskView.k(this.CRD).setAlpha(f);
     }
     AppMethodBeat.o(52387);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.ScanCodeMaskView.l
  * JD-Core Version:    0.7.0.1
  */

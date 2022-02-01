@@ -2,25 +2,25 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class e
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFl = "mau".hashCode();
-  private static final int eFm = "dau".hashCode();
-  private static final int eFn = "useTime".hashCode();
+  private static final int fjL = "mau".hashCode();
+  private static final int fjM = "dau".hashCode();
+  private static final int fjN = "useTime".hashCode();
   private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private boolean __hadSetkey = true;
-  private boolean eFi = true;
-  private boolean eFj = true;
-  private boolean eFk = true;
   public int field_dau;
   public int field_key;
   public int field_mau;
   public long field_useTime;
+  private boolean fjI = true;
+  private boolean fjJ = true;
+  private boolean fjK = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -47,11 +47,11 @@ public abstract class e
       break label20;
       break;
       label65:
-      if (eFl == k) {
+      if (fjL == k) {
         this.field_mau = paramCursor.getInt(i);
-      } else if (eFm == k) {
+      } else if (fjM == k) {
         this.field_dau = paramCursor.getInt(i);
-      } else if (eFn == k) {
+      } else if (fjN == k) {
         this.field_useTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -65,13 +65,13 @@ public abstract class e
     if (this.__hadSetkey) {
       localContentValues.put("key", Integer.valueOf(this.field_key));
     }
-    if (this.eFi) {
+    if (this.fjI) {
       localContentValues.put("mau", Integer.valueOf(this.field_mau));
     }
-    if (this.eFj) {
+    if (this.fjJ) {
       localContentValues.put("dau", Integer.valueOf(this.field_dau));
     }
-    if (this.eFk) {
+    if (this.fjK) {
       localContentValues.put("useTime", Long.valueOf(this.field_useTime));
     }
     if (this.systemRowid > 0L) {

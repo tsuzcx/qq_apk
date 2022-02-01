@@ -12,7 +12,7 @@ public class CircularRevealFrameLayout
   extends FrameLayout
   implements c
 {
-  private final b jD = new b(this);
+  private final b jF = new b(this);
   
   public CircularRevealFrameLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,17 +24,17 @@ public class CircularRevealFrameLayout
     super.draw(paramCanvas);
   }
   
-  public final void bs()
+  public final void bu()
   {
-    this.jD.bs();
+    this.jF.bu();
   }
   
-  public final void bt()
+  public final void bv()
   {
-    this.jD.bt();
+    this.jF.bv();
   }
   
-  public final boolean bu()
+  public final boolean bw()
   {
     return super.isOpaque();
   }
@@ -42,9 +42,9 @@ public class CircularRevealFrameLayout
   @SuppressLint({"MissingSuperCall"})
   public void draw(Canvas paramCanvas)
   {
-    if (this.jD != null)
+    if (this.jF != null)
     {
-      this.jD.draw(paramCanvas);
+      this.jF.draw(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
@@ -52,45 +52,45 @@ public class CircularRevealFrameLayout
   
   public Drawable getCircularRevealOverlayDrawable()
   {
-    return this.jD.jK;
+    return this.jF.jM;
   }
   
   public int getCircularRevealScrimColor()
   {
-    return this.jD.jI.getColor();
+    return this.jF.jK.getColor();
   }
   
   public c.d getRevealInfo()
   {
-    return this.jD.getRevealInfo();
+    return this.jF.getRevealInfo();
   }
   
   public boolean isOpaque()
   {
-    if (this.jD != null) {
-      return this.jD.isOpaque();
+    if (this.jF != null) {
+      return this.jF.isOpaque();
     }
     return super.isOpaque();
   }
   
   public void setCircularRevealOverlayDrawable(Drawable paramDrawable)
   {
-    this.jD.setCircularRevealOverlayDrawable(paramDrawable);
+    this.jF.setCircularRevealOverlayDrawable(paramDrawable);
   }
   
   public void setCircularRevealScrimColor(int paramInt)
   {
-    this.jD.setCircularRevealScrimColor(paramInt);
+    this.jF.setCircularRevealScrimColor(paramInt);
   }
   
   public void setRevealInfo(c.d paramd)
   {
-    this.jD.setRevealInfo(paramd);
+    this.jF.setRevealInfo(paramd);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.circularreveal.CircularRevealFrameLayout
  * JD-Core Version:    0.7.0.1
  */

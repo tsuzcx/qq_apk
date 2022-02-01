@@ -1,18 +1,11 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.ad;
-import com.tencent.mm.ui.chatting.d.z.a;
+import com.tencent.mm.ui.chatting.d.af;
 
 public abstract interface w
-  extends ad
+  extends af
 {
-  public abstract void a(z.a parama);
-  
-  public abstract int dew();
-  
-  public abstract void ya(boolean paramBoolean);
-  
-  public abstract void yb(boolean paramBoolean);
+  public abstract void startTimer();
 }
 
 

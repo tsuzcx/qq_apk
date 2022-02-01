@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.recordvideo.ui.editor.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker$PivotType;", "", "(Ljava/lang/String;I)V", "FREE", "CENTER", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/touch/TouchTracker$PivotType;", "", "(Ljava/lang/String;I)V", "FREE", "CENTER", "plugin-recordvideo_release"})
 public enum c$a
 {
   static
   {
-    AppMethodBeat.i(207089);
+    AppMethodBeat.i(237930);
     a locala1 = new a("FREE", 0);
-    ygt = locala1;
+    Chq = locala1;
     a locala2 = new a("CENTER", 1);
-    ygu = locala2;
-    ygv = new a[] { locala1, locala2 };
-    AppMethodBeat.o(207089);
+    Chr = locala2;
+    Chs = new a[] { locala1, locala2 };
+    AppMethodBeat.o(237930);
   }
   
   private c$a() {}

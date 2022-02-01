@@ -1,108 +1,80 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.e;
 
-import android.view.Surface;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-public abstract interface b
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/GeneralErrorType;", "", "(Ljava/lang/String;I)V", "NETWORK", "EXTRACT", "EXTRACT_NOT_SUPPORT", "DECODE", "DECODE_NOT_SUPPORT", "RENDER", "ILLEGAL", "OTHER", "Companion", "luggage-commons-jsapi-video-ext_release"})
+public enum b
 {
-  public abstract void a(a parama);
+  public static final b.a mBp;
   
-  public abstract void a(b paramb);
-  
-  public abstract void a(c paramc);
-  
-  public abstract void a(d paramd);
-  
-  public abstract void a(e parame);
-  
-  public abstract void a(f paramf);
-  
-  public abstract void a(g paramg);
-  
-  public abstract void a(h paramh);
-  
-  public abstract boolean aF(float paramFloat);
-  
-  public abstract void dF(String paramString1, String paramString2);
-  
-  public abstract int getCurrentPosition();
-  
-  public abstract int getDuration();
-  
-  public abstract int getState();
-  
-  public abstract int getVideoHeight();
-  
-  public abstract int getVideoWidth();
-  
-  public abstract boolean isPlaying();
-  
-  public abstract void pause();
-  
-  public abstract void prepareAsync();
-  
-  public abstract void release();
-  
-  public abstract void reset();
-  
-  public abstract void seekTo(long paramLong);
-  
-  public abstract void setDataSource(String paramString);
-  
-  public abstract void setLooping(boolean paramBoolean);
-  
-  public abstract void setMute(boolean paramBoolean);
-  
-  public abstract void setSurface(Surface paramSurface);
-  
-  public abstract void setVolume(float paramFloat1, float paramFloat2);
-  
-  public abstract void start();
-  
-  public abstract void stop();
-  
-  public static abstract interface a
+  static
   {
-    public abstract void gN(int paramInt);
+    AppMethodBeat.i(235219);
+    b localb1 = new b("NETWORK", 0);
+    mBg = localb1;
+    b localb2 = new b("EXTRACT", 1);
+    mBh = localb2;
+    b localb3 = new b("EXTRACT_NOT_SUPPORT", 2);
+    mBi = localb3;
+    b localb4 = new b("DECODE", 3);
+    mBj = localb4;
+    b localb5 = new b("DECODE_NOT_SUPPORT", 4);
+    mBk = localb5;
+    b localb6 = new b("RENDER", 5);
+    mBl = localb6;
+    b localb7 = new b("ILLEGAL", 6);
+    mBm = localb7;
+    b localb8 = new b("OTHER", 7);
+    mBn = localb8;
+    mBo = new b[] { localb1, localb2, localb3, localb4, localb5, localb6, localb7, localb8 };
+    mBp = new b.a((byte)0);
+    AppMethodBeat.o(235219);
   }
   
-  public static abstract interface b
-  {
-    public abstract void GH();
-  }
+  private b() {}
   
-  public static abstract interface c
+  public static final b el(int paramInt1, int paramInt2)
   {
-    public abstract void RP(String paramString);
-  }
-  
-  public static abstract interface d
-  {
-    public abstract boolean cc(int paramInt1, int paramInt2);
-  }
-  
-  public static abstract interface e
-  {
-    public abstract boolean cb(int paramInt1, int paramInt2);
-  }
-  
-  public static abstract interface f
-  {
-    public abstract void a(b paramb);
-  }
-  
-  public static abstract interface g
-  {
-    public abstract void b(b paramb);
-  }
-  
-  public static abstract interface h
-  {
-    public abstract void a(b paramb, int paramInt1, int paramInt2);
+    Object localObject = null;
+    b localb = null;
+    AppMethodBeat.i(235222);
+    if (-4000 >= paramInt1) {
+      switch (paramInt1)
+      {
+      }
+    }
+    for (;;)
+    {
+      localObject = localb;
+      if (localb == null)
+      {
+        Log.e("MicroMsg.AppBrand.GeneralErrorType", "fromExoErrorInfo, errorType is null, errorWhat: " + paramInt1 + ", errorExtra: " + paramInt2);
+        localObject = localb;
+      }
+      Log.i("MicroMsg.AppBrand.GeneralErrorType", "fromErrorInfo, errorWhat: " + paramInt1 + ", errorExtra: " + paramInt2 + ", errorType: " + localObject);
+      AppMethodBeat.o(235222);
+      return localObject;
+      localb = mBg;
+      continue;
+      localb = mBh;
+      continue;
+      localb = mBi;
+      continue;
+      localb = mBj;
+      continue;
+      localb = mBl;
+      continue;
+      localb = mBm;
+      continue;
+      localb = mBn;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.b
  * JD-Core Version:    0.7.0.1
  */

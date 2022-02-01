@@ -11,16 +11,16 @@ import rx.internal.util.b.a;
 public final class k<T>
   implements d.b<T, T>
 {
-  private final Long Ovr = null;
-  private final rx.b.a Ovs = null;
-  private final a.d Ovt = rx.a.OtR;
+  private final Long Ulf = null;
+  private final rx.b.a Ulg = null;
+  private final a.d Ulh = rx.a.UjF;
   
   private rx.i<? super T> b(rx.i<? super T> parami)
   {
     AppMethodBeat.i(90289);
-    a locala = new a(parami, this.Ovr, this.Ovs, this.Ovt);
+    a locala = new a(parami, this.Ulf, this.Ulg, this.Ulh);
     parami.b(locala);
-    parami.a(locala.Ovw);
+    parami.a(locala.Ulk);
     AppMethodBeat.o(90289);
     return locala;
   }
@@ -29,38 +29,38 @@ public final class k<T>
     extends rx.i<T>
     implements b.a
   {
-    private final rx.i<? super T> Ovj;
-    private final c<T> Ovl;
-    private final rx.b.a Ovs;
-    private final a.d Ovt;
-    private final AtomicLong Ovu;
-    private final AtomicBoolean Ovv;
-    final rx.internal.util.b Ovw;
-    private final ConcurrentLinkedQueue<Object> sVc;
+    private final rx.i<? super T> UkX;
+    private final c<T> UkZ;
+    private final rx.b.a Ulg;
+    private final a.d Ulh;
+    private final AtomicLong Uli;
+    private final AtomicBoolean Ulj;
+    final rx.internal.util.b Ulk;
+    private final ConcurrentLinkedQueue<Object> vTW;
     
     public a(rx.i<? super T> parami, Long paramLong, rx.b.a parama, a.d paramd)
     {
       AppMethodBeat.i(90279);
-      this.sVc = new ConcurrentLinkedQueue();
-      this.Ovv = new AtomicBoolean(false);
-      this.Ovl = c.gDy();
-      this.Ovj = parami;
+      this.vTW = new ConcurrentLinkedQueue();
+      this.Ulj = new AtomicBoolean(false);
+      this.UkZ = c.hQG();
+      this.UkX = parami;
       if (paramLong != null) {}
       for (parami = new AtomicLong(paramLong.longValue());; parami = null)
       {
-        this.Ovu = parami;
-        this.Ovs = parama;
-        this.Ovw = new rx.internal.util.b(this);
-        this.Ovt = paramd;
+        this.Uli = parami;
+        this.Ulg = parama;
+        this.Ulk = new rx.internal.util.b(this);
+        this.Ulh = paramd;
         AppMethodBeat.o(90279);
         return;
       }
     }
     
-    private boolean gDA()
+    private boolean hQI()
     {
       AppMethodBeat.i(90288);
-      if (this.Ovu == null)
+      if (this.Uli == null)
       {
         AppMethodBeat.o(90288);
         return true;
@@ -69,13 +69,13 @@ public final class k<T>
       label148:
       do
       {
-        l = this.Ovu.get();
+        l = this.Uli.get();
         if (l <= 0L) {
           for (;;)
           {
             try
             {
-              if (!this.Ovt.gDm()) {
+              if (!this.Ulh.hQu()) {
                 continue;
               }
               Object localObject = poll();
@@ -86,18 +86,18 @@ public final class k<T>
             }
             catch (rx.a.c localc)
             {
-              if (!this.Ovv.compareAndSet(false, true)) {
+              if (!this.Ulj.compareAndSet(false, true)) {
                 continue;
               }
-              this.Ous.gDs();
-              this.Ovj.onError(localc);
+              this.Ukg.hQA();
+              this.UkX.onError(localc);
               int i = 0;
               continue;
             }
-            if (this.Ovs != null) {}
+            if (this.Ulg != null) {}
             try
             {
-              this.Ovs.call();
+              this.Ulg.call();
               if (i != 0) {
                 break label148;
               }
@@ -106,59 +106,59 @@ public final class k<T>
             }
             catch (Throwable localThrowable)
             {
-              rx.a.b.L(localThrowable);
-              this.Ovw.Q(localThrowable);
+              rx.a.b.N(localThrowable);
+              this.Ulk.S(localThrowable);
               AppMethodBeat.o(90288);
               return false;
             }
             i = 0;
           }
         }
-      } while (!this.Ovu.compareAndSet(l, l - 1L));
+      } while (!this.Uli.compareAndSet(l, l - 1L));
       AppMethodBeat.o(90288);
       return true;
     }
     
-    public final void O(Throwable paramThrowable)
+    public final void Q(Throwable paramThrowable)
     {
       AppMethodBeat.i(90285);
       if (paramThrowable != null)
       {
-        this.Ovj.onError(paramThrowable);
+        this.UkX.onError(paramThrowable);
         AppMethodBeat.o(90285);
         return;
       }
-      this.Ovj.gDo();
+      this.UkX.hQw();
       AppMethodBeat.o(90285);
     }
     
     public final boolean accept(Object paramObject)
     {
       AppMethodBeat.i(90284);
-      boolean bool = c.a(this.Ovj, paramObject);
+      boolean bool = c.a(this.UkX, paramObject);
       AppMethodBeat.o(90284);
       return bool;
     }
     
-    public final void gC(T paramT)
+    public final void gL(T paramT)
     {
       AppMethodBeat.i(90283);
-      if (!gDA())
+      if (!hQI())
       {
         AppMethodBeat.o(90283);
         return;
       }
-      this.sVc.offer(c.gE(paramT));
-      this.Ovw.drain();
+      this.vTW.offer(c.gN(paramT));
+      this.Ulk.drain();
       AppMethodBeat.o(90283);
     }
     
-    public final void gDo()
+    public final void hQw()
     {
       AppMethodBeat.i(90281);
-      if (!this.Ovv.get())
+      if (!this.Ulj.get())
       {
-        rx.internal.util.b localb = this.Ovw;
+        rx.internal.util.b localb = this.Ulk;
         localb.terminated = true;
         localb.drain();
       }
@@ -168,8 +168,8 @@ public final class k<T>
     public final void onError(Throwable paramThrowable)
     {
       AppMethodBeat.i(90282);
-      if (!this.Ovv.get()) {
-        this.Ovw.Q(paramThrowable);
+      if (!this.Ulj.get()) {
+        this.Ulk.S(paramThrowable);
       }
       AppMethodBeat.o(90282);
     }
@@ -177,14 +177,14 @@ public final class k<T>
     public final void onStart()
     {
       AppMethodBeat.i(90280);
-      Gq(9223372036854775807L);
+      Pw(9223372036854775807L);
       AppMethodBeat.o(90280);
     }
     
     public final Object peek()
     {
       AppMethodBeat.i(90286);
-      Object localObject = this.sVc.peek();
+      Object localObject = this.vTW.peek();
       AppMethodBeat.o(90286);
       return localObject;
     }
@@ -192,9 +192,9 @@ public final class k<T>
     public final Object poll()
     {
       AppMethodBeat.i(90287);
-      Object localObject = this.sVc.poll();
-      if ((this.Ovu != null) && (localObject != null)) {
-        this.Ovu.incrementAndGet();
+      Object localObject = this.vTW.poll();
+      if ((this.Uli != null) && (localObject != null)) {
+        this.Uli.incrementAndGet();
       }
       AppMethodBeat.o(90287);
       return localObject;
@@ -203,12 +203,12 @@ public final class k<T>
   
   public static final class b
   {
-    public static final k<?> Ovx;
+    public static final k<?> Ull;
     
     static
     {
       AppMethodBeat.i(90278);
-      Ovx = new k();
+      Ull = new k();
       AppMethodBeat.o(90278);
     }
   }

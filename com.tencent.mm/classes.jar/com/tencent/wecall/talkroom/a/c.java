@@ -1,9 +1,9 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.a.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.pb.common.b.a.a.a.aa;
 import com.tencent.pb.common.b.a.a.a.b;
-import com.tencent.pb.common.b.a.a.a.z;
 import com.tencent.pb.common.b.d;
 import com.tencent.pb.common.c.b;
 
@@ -17,10 +17,10 @@ public final class c
     a.b localb = new a.b();
     try
     {
-      localb.McZ = paramString;
-      localb.reason = paramInt1;
+      localb.RDo = paramString;
+      localb.bDZ = paramInt1;
       this.mNetType = 3;
-      this.Mcu = paramInt2;
+      this.RCJ = paramInt2;
       c(183, localb);
       AppMethodBeat.o(62528);
       return;
@@ -34,7 +34,7 @@ public final class c
     }
   }
   
-  public final Object cL(byte[] paramArrayOfByte)
+  public final Object cO(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62529);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -43,7 +43,7 @@ public final class c
     {
       try
       {
-        paramArrayOfByte = (a.z)e.a(new a.z(), paramArrayOfByte, paramArrayOfByte.length);
+        paramArrayOfByte = (a.aa)e.a(new a.aa(), paramArrayOfByte, paramArrayOfByte.length);
         AppMethodBeat.o(62529);
         return paramArrayOfByte;
       }
@@ -57,19 +57,19 @@ public final class c
     }
   }
   
-  public final String fXq()
-  {
-    return "CsCmd.Cmd_V_CSCancelCreateVoiceGroupReq";
-  }
-  
   public final int getType()
   {
     return 208;
   }
+  
+  public final String hiV()
+  {
+    return "CsCmd.Cmd_V_CSCancelCreateVoiceGroupReq";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.c
  * JD-Core Version:    0.7.0.1
  */

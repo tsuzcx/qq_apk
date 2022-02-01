@@ -5,7 +5,7 @@ public final class w
 {
   public w()
   {
-    this.Ony = 288;
+    this.Ucx = 288;
   }
 }
 

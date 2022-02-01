@@ -1,62 +1,62 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bsy;
-import com.tencent.mm.protocal.protobuf.bsz;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cfr;
+import com.tencent.mm.protocal.protobuf.cfs;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class ad
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public String hTJ;
-  public b rr;
+  public String brandUsername;
+  private i callback;
+  public d rr;
   public String tag;
   
   public ad(String paramString, LinkedList<String> paramLinkedList, LinkedList<Integer> paramLinkedList1)
   {
-    AppMethodBeat.i(188893);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bsy();
-    ((b.a)localObject).hQG = new bsz();
-    ((b.a)localObject).uri = "/cgi-bin/mmkf-bin/kfgetinfolist";
-    ((b.a)localObject).funcId = 675;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bsy)this.rr.hQD.hQJ;
-    ((bsy)localObject).Hgv = paramString;
-    ((bsy)localObject).Hgy = paramLinkedList;
-    ((bsy)localObject).Hgz = paramLinkedList1;
-    this.hTJ = paramString;
-    AppMethodBeat.o(188893);
+    AppMethodBeat.i(212186);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new cfr();
+    ((d.a)localObject).iLO = new cfs();
+    ((d.a)localObject).uri = "/cgi-bin/mmkf-bin/kfgetinfolist";
+    ((d.a)localObject).funcId = 675;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (cfr)this.rr.iLK.iLR;
+    ((cfr)localObject).MlA = paramString;
+    ((cfr)localObject).MlD = paramLinkedList;
+    ((cfr)localObject).MlE = paramLinkedList1;
+    this.brandUsername = paramString;
+    AppMethodBeat.o(212186);
   }
   
-  public final bsz aGm()
+  public final cfs bae()
   {
-    if ((this.rr != null) && (this.rr.hQE.hQJ != null)) {
-      return (bsz)this.rr.hQE.hQJ;
+    if ((this.rr != null) && (this.rr.iLL.iLR != null)) {
+      return (cfs)this.rr.iLL.iLR;
     }
     return null;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(124142);
-    this.callback = paramf;
-    ae.i("MicroMsg.NetSceneKFGetInfoList", "do scene");
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    Log.i("MicroMsg.NetSceneKFGetInfoList", "do scene");
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(124142);
     return i;
   }
@@ -66,10 +66,10 @@ public final class ad
     return 675;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(124141);
-    ae.i("MicroMsg.NetSceneKFGetInfoList", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.i("MicroMsg.NetSceneKFGetInfoList", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

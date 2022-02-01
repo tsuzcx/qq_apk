@@ -7,6 +7,7 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -15,37 +16,52 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.g.a.di;
-import com.tencent.mm.plugin.emoji.model.d;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.a.dl;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.emoji.model.e;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMTabView;
 
 public class EmojiStoreV2TabView
   extends RelativeLayout
 {
   private Matrix mMatrix;
-  private int pVJ;
-  private int pVK;
-  private Bitmap pVL;
-  private LinearLayout pVM;
-  private ImageView pVN;
-  private MMTabView pVO;
-  private MMTabView pVP;
-  private EmojiStoreV2TabView.a pVQ;
-  protected View.OnClickListener pVR;
-  c<di> pVS;
+  private int rmI;
+  private int rmJ;
+  private Bitmap rmK;
+  private LinearLayout rmL;
+  private ImageView rmM;
+  private MMTabView rmN;
+  private MMTabView rmO;
+  private a rmP;
+  protected View.OnClickListener rmQ;
+  IListener<dl> rmR;
   
   public EmojiStoreV2TabView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(109375);
-    this.pVK = 0;
+    this.rmJ = 0;
     this.mMatrix = new Matrix();
-    this.pVR = new EmojiStoreV2TabView.1(this);
-    this.pVS = new c() {};
+    this.rmQ = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(109371);
+        b localb = new b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        int i = ((Integer)paramAnonymousView.getTag()).intValue();
+        if (EmojiStoreV2TabView.a(EmojiStoreV2TabView.this) != null) {
+          EmojiStoreV2TabView.a(EmojiStoreV2TabView.this).onTabClick(i);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(109371);
+      }
+    };
+    this.rmR = new IListener() {};
     init();
     AppMethodBeat.o(109375);
   }
@@ -54,149 +70,164 @@ public class EmojiStoreV2TabView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(109374);
-    this.pVK = 0;
+    this.rmJ = 0;
     this.mMatrix = new Matrix();
-    this.pVR = new EmojiStoreV2TabView.1(this);
-    this.pVS = new c() {};
+    this.rmQ = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(109371);
+        b localb = new b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        int i = ((Integer)paramAnonymousView.getTag()).intValue();
+        if (EmojiStoreV2TabView.a(EmojiStoreV2TabView.this) != null) {
+          EmojiStoreV2TabView.a(EmojiStoreV2TabView.this).onTabClick(i);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emoji/ui/v2/EmojiStoreV2TabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(109371);
+      }
+    };
+    this.rmR = new IListener() {};
     init();
     AppMethodBeat.o(109374);
   }
   
-  private MMTabView Cs(int paramInt)
+  private MMTabView Gd(int paramInt)
   {
     AppMethodBeat.i(109382);
     MMTabView localMMTabView = new MMTabView(getContext(), paramInt);
     localMMTabView.setTag(Integer.valueOf(paramInt));
-    localMMTabView.setOnClickListener(this.pVR);
+    localMMTabView.setOnClickListener(this.rmQ);
     AppMethodBeat.o(109382);
     return localMMTabView;
   }
   
-  private void ckk()
+  private void cIm()
   {
     AppMethodBeat.i(109378);
-    this.pVM = new LinearLayout(getContext());
-    this.pVM.setBackgroundResource(2131101179);
-    this.pVM.setId(2131299446);
-    this.pVM.setOrientation(0);
+    this.rmL = new LinearLayout(getContext());
+    this.rmL.setBackgroundResource(2131101424);
+    this.rmL.setId(2131300060);
+    this.rmL.setOrientation(0);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    addView(this.pVM, localLayoutParams);
+    addView(this.rmL, localLayoutParams);
     AppMethodBeat.o(109378);
   }
   
-  private void ckl()
+  private void cIn()
   {
     AppMethodBeat.i(109379);
-    this.pVN = new ImageView(getContext());
-    this.pVN.setImageMatrix(this.mMatrix);
-    this.pVN.setScaleType(ImageView.ScaleType.MATRIX);
-    this.pVN.setId(2131299447);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, a.fromDPToPix(getContext(), 3));
-    localLayoutParams.addRule(8, 2131299446);
-    addView(this.pVN, localLayoutParams);
+    this.rmM = new ImageView(getContext());
+    this.rmM.setImageMatrix(this.mMatrix);
+    this.rmM.setScaleType(ImageView.ScaleType.MATRIX);
+    this.rmM.setId(2131300061);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, com.tencent.mm.cb.a.fromDPToPix(getContext(), 3));
+    localLayoutParams.addRule(8, 2131300060);
+    addView(this.rmM, localLayoutParams);
     AppMethodBeat.o(109379);
   }
   
-  private void ckm()
+  private void cIo()
   {
     AppMethodBeat.i(109380);
-    this.pVO = Cs(0);
-    if (!bu.isNullOrNil(d.chY().pKI)) {
-      this.pVO.setText(d.chY().pKI);
+    this.rmN = Gd(0);
+    if (!Util.isNullOrNil(e.cFX().rbo)) {
+      this.rmN.setText(e.cFX().rbo);
     }
     for (;;)
     {
-      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131166928));
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131167063));
       localLayoutParams.weight = 1.0F;
-      this.pVM.addView(this.pVO, localLayoutParams);
+      this.rmL.addView(this.rmN, localLayoutParams);
       AppMethodBeat.o(109380);
       return;
-      if (d.chY().pKH) {
-        this.pVO.setText(2131758334);
+      if (e.cFX().rbn) {
+        this.rmN.setText(2131758628);
       } else {
-        this.pVO.setText(2131758333);
+        this.rmN.setText(2131758627);
       }
     }
   }
   
-  private void ckn()
+  private void cIp()
   {
     AppMethodBeat.i(109381);
-    this.pVP = Cs(1);
-    this.pVP.setText(2131758341);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131166928));
+    this.rmO = Gd(1);
+    this.rmO.setText(2131758635);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131167063));
     localLayoutParams.weight = 1.0F;
-    this.pVM.addView(this.pVP, localLayoutParams);
+    this.rmL.addView(this.rmO, localLayoutParams);
     AppMethodBeat.o(109381);
   }
   
   private void init()
   {
     AppMethodBeat.i(109377);
-    ckk();
-    ckl();
-    ckm();
-    ckn();
+    cIm();
+    cIn();
+    cIo();
+    cIp();
     AppMethodBeat.o(109377);
   }
   
   public int getCurentIndex()
   {
-    return this.pVK;
+    return this.rmJ;
   }
   
-  public final void kA(boolean paramBoolean)
+  public final void lC(boolean paramBoolean)
   {
     AppMethodBeat.i(109386);
-    if (this.pVP != null) {
-      this.pVP.xv(paramBoolean);
+    if (this.rmO != null) {
+      this.rmO.Bk(paramBoolean);
     }
     AppMethodBeat.o(109386);
-  }
-  
-  public final void o(int paramInt, float paramFloat)
-  {
-    AppMethodBeat.i(109383);
-    this.mMatrix.setTranslate(this.pVJ * (paramInt + paramFloat), 0.0F);
-    this.pVN.setImageMatrix(this.mMatrix);
-    AppMethodBeat.o(109383);
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(109376);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.pVJ = ((paramInt3 - paramInt1) / 2);
-    paramInt2 = this.pVJ;
-    if (((this.pVL == null) || (this.pVL.getWidth() != paramInt2)) && (paramInt2 > 0)) {
-      if (this.pVL != null) {
+    this.rmI = ((paramInt3 - paramInt1) / 2);
+    paramInt2 = this.rmI;
+    if (((this.rmK == null) || (this.rmK.getWidth() != paramInt2)) && (paramInt2 > 0)) {
+      if (this.rmK != null) {
         break label166;
       }
     }
     label166:
-    for (paramInt1 = -1;; paramInt1 = this.pVL.getWidth())
+    for (paramInt1 = -1;; paramInt1 = this.rmK.getWidth())
     {
-      ae.w("MicroMsg.emoji.EmojiStoreV2TabView", "sharp width changed, from %d to %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      this.pVL = Bitmap.createBitmap(paramInt2, a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
-      new Canvas(this.pVL).drawColor(getResources().getColor(2131101171));
-      o(this.pVK, 0.0F);
-      this.pVN.setImageBitmap(this.pVL);
-      setTo(this.pVK);
+      Log.w("MicroMsg.emoji.EmojiStoreV2TabView", "sharp width changed, from %d to %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      this.rmK = Bitmap.createBitmap(paramInt2, com.tencent.mm.cb.a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
+      new Canvas(this.rmK).drawColor(getResources().getColor(2131101414));
+      p(this.rmJ, 0.0F);
+      this.rmM.setImageBitmap(this.rmK);
+      setTo(this.rmJ);
       AppMethodBeat.o(109376);
       return;
     }
   }
   
-  public void setOnTabClickListener(EmojiStoreV2TabView.a parama)
+  public final void p(int paramInt, float paramFloat)
   {
-    this.pVQ = parama;
+    AppMethodBeat.i(109383);
+    this.mMatrix.setTranslate(this.rmI * (paramInt + paramFloat), 0.0F);
+    this.rmM.setImageMatrix(this.mMatrix);
+    AppMethodBeat.o(109383);
+  }
+  
+  public void setOnTabClickListener(a parama)
+  {
+    this.rmP = parama;
   }
   
   public void setPersonTabUnReadCount(String paramString)
   {
     AppMethodBeat.i(109385);
-    if (this.pVP != null) {
-      this.pVP.setUnread(paramString);
+    if (this.rmO != null) {
+      this.rmO.setUnread(paramString);
     }
     AppMethodBeat.o(109385);
   }
@@ -204,26 +235,31 @@ public class EmojiStoreV2TabView
   public void setTo(int paramInt)
   {
     AppMethodBeat.i(109384);
-    this.pVK = paramInt;
-    MMTabView localMMTabView = this.pVO;
-    if (this.pVK == 0)
+    this.rmJ = paramInt;
+    MMTabView localMMTabView = this.rmN;
+    if (this.rmJ == 0)
     {
-      paramInt = getResources().getColor(2131101171);
+      paramInt = getResources().getColor(2131101414);
       localMMTabView.setTextColor(paramInt);
-      localMMTabView = this.pVP;
-      if (this.pVK != 1) {
+      localMMTabView = this.rmO;
+      if (this.rmJ != 1) {
         break label92;
       }
     }
     label92:
-    for (paramInt = getResources().getColor(2131101171);; paramInt = getContext().getResources().getColor(2131099732))
+    for (paramInt = getResources().getColor(2131101414);; paramInt = getContext().getResources().getColor(2131099746))
     {
       localMMTabView.setTextColor(paramInt);
       AppMethodBeat.o(109384);
       return;
-      paramInt = getContext().getResources().getColor(2131099732);
+      paramInt = getContext().getResources().getColor(2131099746);
       break;
     }
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void onTabClick(int paramInt);
   }
 }
 

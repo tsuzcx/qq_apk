@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class NeatLayout
   extends c
 {
-  private int Mbp = 0;
+  private int RBI = 0;
   
   static
   {
@@ -22,71 +22,89 @@ public class NeatLayout
     super(paramCharSequence, paramArrayOfFloat);
   }
   
-  private native int nComputeBreak(String paramString, float[] paramArrayOfFloat1, float paramFloat1, float paramFloat2, int[] paramArrayOfInt, float[] paramArrayOfFloat2, float paramFloat3, boolean[] paramArrayOfBoolean1, char[] paramArrayOfChar1, float[] paramArrayOfFloat3, char[] paramArrayOfChar2, float[] paramArrayOfFloat4, boolean[] paramArrayOfBoolean2);
+  private native int nComputeBreak(String paramString, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float paramFloat1, int[] paramArrayOfInt, float[] paramArrayOfFloat3, float paramFloat2, boolean[] paramArrayOfBoolean1, char[] paramArrayOfChar1, float[] paramArrayOfFloat4, char[] paramArrayOfChar2, float[] paramArrayOfFloat5, boolean[] paramArrayOfBoolean2);
   
-  public final void a(TextPaint paramTextPaint, float paramFloat, int paramInt, boolean paramBoolean)
+  public final void a(TextPaint paramTextPaint, float[] paramArrayOfFloat, float paramFloat, int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(39758);
+    AppMethodBeat.i(192277);
     float f6 = Math.round(paramTextPaint.getTextSize() / 2.0F);
-    float f2;
-    int i;
+    if (paramBoolean) {}
     float[] arrayOfFloat1;
     boolean[] arrayOfBoolean;
-    int i3;
-    float f1;
-    label113:
-    float f3;
-    if (paramBoolean)
+    for (float f3 = paramTextPaint.getTextSize() / 6.0F;; f3 = 0.0F)
     {
-      f2 = paramTextPaint.getTextSize() / 6.0F;
-      i = this.Max.length();
+      i = this.RAP.length();
       paramTextPaint = new int[i];
       arrayOfFloat1 = new float[i];
       arrayOfBoolean = new boolean[i];
-      i3 = nComputeBreak(this.Max, this.Maz, 0.0F, paramFloat + f6, paramTextPaint, arrayOfFloat1, f2, arrayOfBoolean, a.Mas, this.MaC, a.Mar, this.MaB, this.MaX);
-      this.Mbp = i3;
-      f1 = 0.0F;
       i = 0;
-      if ((i >= i3) || (i >= paramInt)) {
-        break label160;
+      while (i < paramArrayOfFloat.length)
+      {
+        paramArrayOfFloat[i] += f6;
+        i += 1;
       }
-      f3 = arrayOfFloat1[i];
-      if (f1 >= f3) {
-        break label454;
-      }
-      f1 = f3;
     }
-    label160:
-    label441:
-    label454:
+    int i3 = nComputeBreak(this.RAP, this.RAR, paramArrayOfFloat, paramFloat + f6, paramTextPaint, arrayOfFloat1, f3, arrayOfBoolean, a.RAK, this.RAU, a.RAJ, this.RAT, this.RBq);
+    this.RBI = i3;
+    float f2 = 0.0F;
+    int i = 0;
+    float f5;
+    float f1;
+    float f4;
+    if ((i < i3) && (i < paramInt))
+    {
+      f5 = arrayOfFloat1[i];
+      if (i < paramArrayOfFloat.length) {}
+      for (f1 = paramArrayOfFloat[i];; f1 = paramFloat)
+      {
+        f4 = f2;
+        if (f2 < f5) {
+          f4 = Math.min(f5, f1);
+        }
+        i += 1;
+        f2 = f4;
+        break;
+      }
+    }
+    i = 0;
+    int k = 0;
+    int i2;
+    int n;
+    if ((k < i3) && (k < paramInt))
+    {
+      i2 = paramTextPaint[k];
+      paramBoolean = arrayOfBoolean[k];
+      n = i2 - i;
+      if (k < paramArrayOfFloat.length)
+      {
+        f1 = paramArrayOfFloat[k] - f6;
+        f4 = 0.0F;
+        f5 = f1 - arrayOfFloat1[k];
+        if (f5 <= 0.0F) {
+          break label551;
+        }
+        f5 -= 2.0F;
+      }
+    }
+    label538:
+    label551:
     for (;;)
     {
-      i += 1;
-      break label113;
-      f2 = 0.0F;
-      break;
-      float f5 = Math.min(f1, paramFloat);
-      i = 0;
-      int k = 0;
-      if ((k < i3) && (k < paramInt))
+      int m;
+      if ((f5 < 0.0F) || (Math.abs(f5) - 1.0F <= f6)) {
+        m = 1;
+      }
+      label328:
+      int j;
+      for (;;)
       {
-        int i2 = paramTextPaint[k];
-        paramBoolean = arrayOfBoolean[k];
-        int n = i2 - i;
-        f1 = 0.0F;
-        f3 = paramFloat - arrayOfFloat1[k];
-        int m;
-        if (Math.abs(f3) - 1.0F <= f6) {
-          m = 1;
-        }
-        int j;
-        while (m != 0)
+        if (m != 0)
         {
           j = n;
           if (i2 - 1 >= 0)
           {
             j = n;
-            if (this.May[(i2 - 1)] == '\n') {
+            if (this.RAQ[(i2 - 1)] == '\n') {
               j = n - 1;
             }
           }
@@ -96,53 +114,56 @@ public class NeatLayout
             if (n < i2)
             {
               int i1 = j;
-              if (this.May[n] != '\n')
+              if (this.RAQ[n] != '\n')
               {
                 i1 = j;
-                if (this.Maz[n] == 0.0F) {
+                if (this.RAR[n] == 0.0F) {
                   i1 = j - 1;
                 }
               }
               n += 1;
               j = i1;
               continue;
-              m = 0;
+              f1 = paramFloat;
               break;
+              m = 0;
+              break label328;
             }
           }
-          f1 = f3 / (Math.max(2, j) - 1);
-        }
-        label365:
-        char[] arrayOfChar;
-        float[] arrayOfFloat2;
-        if (m != 0)
-        {
-          f3 = paramFloat;
-          arrayOfChar = this.May;
-          arrayOfFloat2 = this.Maz;
-          j = this.MaE.size();
-          if (m == 0) {
-            break label441;
-          }
-        }
-        for (float f4 = paramFloat;; f4 = f5)
-        {
-          a(arrayOfChar, i, i2, f3, arrayOfFloat2, j, f1, paramBoolean, f2, f4);
-          k += 1;
-          i = i2;
-          break;
-          f3 = arrayOfFloat1[k];
-          break label365;
+          f4 = f5 / (Math.max(2, j) - 1);
         }
       }
-      AppMethodBeat.o(39758);
+      label465:
+      char[] arrayOfChar;
+      float[] arrayOfFloat2;
+      if (m != 0)
+      {
+        f5 = f1;
+        arrayOfChar = this.RAQ;
+        arrayOfFloat2 = this.RAR;
+        j = this.RAX.size();
+        if (m == 0) {
+          break label538;
+        }
+      }
+      for (;;)
+      {
+        a(arrayOfChar, i, i2, f5, arrayOfFloat2, j, f4, paramBoolean, f3, f1);
+        k += 1;
+        i = i2;
+        break;
+        f5 = arrayOfFloat1[k];
+        break label465;
+        f1 = f2;
+      }
+      AppMethodBeat.o(192277);
       return;
     }
   }
   
-  public final int fXb()
+  public final int hiG()
   {
-    return this.Mbp;
+    return this.RBI;
   }
 }
 

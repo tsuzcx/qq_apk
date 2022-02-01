@@ -4,20 +4,12 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class a
 {
-  public static int fjP()
-  {
-    if (b.foreground) {
-      return 1;
-    }
-    return 2;
-  }
-  
   public static int getNetType(Context paramContext)
   {
     AppMethodBeat.i(133037);
@@ -40,7 +32,7 @@ public class a
       }
       catch (Exception paramContext)
       {
-        ae.e("MicroMsg.BgFgBase", "getNetType: %s", new Object[] { bu.o(paramContext) });
+        Log.e("MicroMsg.BgFgBase", "getNetType: %s", new Object[] { Util.stackTraceToString(paramContext) });
         int i = 1;
         continue;
       }
@@ -56,6 +48,14 @@ public class a
         i = 0;
       }
     }
+  }
+  
+  public static int gtq()
+  {
+    if (CrashReportFactory.foreground) {
+      return 1;
+    }
+    return 2;
   }
 }
 

@@ -11,8 +11,8 @@ import android.os.RemoteException;
 import com.android.vending.billing.IInAppBillingService;
 import com.android.vending.billing.IInAppBillingService.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,19 +22,56 @@ public final class b
 {
   public Context mContext;
   public int mRequestCode;
-  public IInAppBillingService uOP;
-  private ServiceConnection uOQ;
-  boolean uOR = false;
-  public boolean uOS = false;
-  public b uOT;
-  public String uOU;
+  public IInAppBillingService yhl;
+  private ServiceConnection yhm;
+  boolean yhn = false;
+  public boolean yho = false;
+  public b yhp;
+  public String yhq;
   
   public b(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  public static String IH(int paramInt)
+  public static void aBv(String paramString)
+  {
+    AppMethodBeat.i(64599);
+    Log.e("MicroMsg.IabHelper", "In-app billing error: ".concat(String.valueOf(paramString)));
+    AppMethodBeat.o(64599);
+  }
+  
+  public static int ao(Bundle paramBundle)
+  {
+    AppMethodBeat.i(64598);
+    paramBundle = paramBundle.get("RESPONSE_CODE");
+    if (paramBundle == null)
+    {
+      Log.d("MicroMsg.IabHelper", "Bundle with null response code, assuming OK (known issue)");
+      AppMethodBeat.o(64598);
+      return 0;
+    }
+    int i;
+    if ((paramBundle instanceof Integer))
+    {
+      i = ((Integer)paramBundle).intValue();
+      AppMethodBeat.o(64598);
+      return i;
+    }
+    if ((paramBundle instanceof Long))
+    {
+      i = (int)((Long)paramBundle).longValue();
+      AppMethodBeat.o(64598);
+      return i;
+    }
+    aBv("Unexpected type for bundle response code.");
+    aBv(paramBundle.getClass().getName());
+    paramBundle = new RuntimeException("Unexpected type for bundle response code: " + paramBundle.getClass().getName());
+    AppMethodBeat.o(64598);
+    throw paramBundle;
+  }
+  
+  public static String getResponseDesc(int paramInt)
   {
     AppMethodBeat.i(64597);
     Object localObject = "0:OK/1:User Canceled/2:Unknown/3:Billing Unavailable/4:Item unavailable/5:Developer Error/6:Error/7:Item Already Owned/8:Item not owned".split("/");
@@ -63,90 +100,53 @@ public final class b
     return localObject;
   }
   
-  public static int ai(Bundle paramBundle)
-  {
-    AppMethodBeat.i(64598);
-    paramBundle = paramBundle.get("RESPONSE_CODE");
-    if (paramBundle == null)
-    {
-      ae.d("MicroMsg.IabHelper", "Bundle with null response code, assuming OK (known issue)");
-      AppMethodBeat.o(64598);
-      return 0;
-    }
-    int i;
-    if ((paramBundle instanceof Integer))
-    {
-      i = ((Integer)paramBundle).intValue();
-      AppMethodBeat.o(64598);
-      return i;
-    }
-    if ((paramBundle instanceof Long))
-    {
-      i = (int)((Long)paramBundle).longValue();
-      AppMethodBeat.o(64598);
-      return i;
-    }
-    aoc("Unexpected type for bundle response code.");
-    aoc(paramBundle.getClass().getName());
-    paramBundle = new RuntimeException("Unexpected type for bundle response code: " + paramBundle.getClass().getName());
-    AppMethodBeat.o(64598);
-    throw paramBundle;
-  }
-  
-  public static void aoc(String paramString)
-  {
-    AppMethodBeat.i(64599);
-    ae.e("MicroMsg.IabHelper", "In-app billing error: ".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(64599);
-  }
-  
   public final void a(final a parama)
   {
     AppMethodBeat.i(64593);
-    if (this.uOR)
+    if (this.yhn)
     {
       parama = new IllegalStateException("IAB helper is already set up.");
       AppMethodBeat.o(64593);
       throw parama;
     }
-    ae.d("MicroMsg.IabHelper", "Starting in-app billing setup.");
-    this.uOQ = new ServiceConnection()
+    Log.d("MicroMsg.IabHelper", "Starting in-app billing setup.");
+    this.yhm = new ServiceConnection()
     {
       public final void onServiceConnected(ComponentName paramAnonymousComponentName, IBinder paramAnonymousIBinder)
       {
         AppMethodBeat.i(64588);
-        ae.d("MicroMsg.IabHelper", "Billing service connected.");
-        b.this.uOP = IInAppBillingService.a.f(paramAnonymousIBinder);
+        b.aBw("Billing service connected.");
+        b.this.yhl = IInAppBillingService.a.f(paramAnonymousIBinder);
         paramAnonymousComponentName = b.this.mContext.getPackageName();
         try
         {
-          ae.d("MicroMsg.IabHelper", "Checking for in-app billing 3 support.");
-          int i = b.this.uOP.b(3, paramAnonymousComponentName, "inapp");
+          b.aBw("Checking for in-app billing 3 support.");
+          int i = b.this.yhl.b(3, paramAnonymousComponentName, "inapp");
           if (i != 0)
           {
             if (parama != null) {
               parama.a(new c(i, "Error checking for billing v3 support."));
             }
-            b.this.uOS = false;
+            b.this.yho = false;
             AppMethodBeat.o(64588);
             return;
           }
-          ae.d("MicroMsg.IabHelper", "In-app billing version 3 supported for ".concat(String.valueOf(paramAnonymousComponentName)));
-          i = b.this.uOP.b(3, paramAnonymousComponentName, "subs");
+          b.aBw("In-app billing version 3 supported for ".concat(String.valueOf(paramAnonymousComponentName)));
+          i = b.this.yhl.b(3, paramAnonymousComponentName, "subs");
           if (i == 0)
           {
-            ae.d("MicroMsg.IabHelper", "Subscriptions AVAILABLE.");
-            b.this.uOS = true;
+            b.aBw("Subscriptions AVAILABLE.");
+            b.this.yho = true;
           }
           for (;;)
           {
-            b.this.uOR = true;
+            b.this.yhn = true;
             if (parama != null) {
               parama.a(new c(0, "Setup successful."));
             }
             AppMethodBeat.o(64588);
             return;
-            ae.d("MicroMsg.IabHelper", "Subscriptions NOT AVAILABLE. Response: ".concat(String.valueOf(i)));
+            b.aBw("Subscriptions NOT AVAILABLE. Response: ".concat(String.valueOf(i)));
           }
           return;
         }
@@ -155,7 +155,7 @@ public final class b
           if (parama != null) {
             parama.a(new c(-1001, "RemoteException while setting up in-app billing."));
           }
-          ae.printErrStackTrace("MicroMsg.IabHelper", paramAnonymousComponentName, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.IabHelper", paramAnonymousComponentName, "", new Object[0]);
           AppMethodBeat.o(64588);
         }
       }
@@ -163,8 +163,8 @@ public final class b
       public final void onServiceDisconnected(ComponentName paramAnonymousComponentName)
       {
         AppMethodBeat.i(64587);
-        ae.d("MicroMsg.IabHelper", "Billing service disconnected.");
-        b.this.uOP = null;
+        b.aBw("Billing service disconnected.");
+        b.this.yhl = null;
         AppMethodBeat.o(64587);
       }
     };
@@ -172,7 +172,7 @@ public final class b
     localIntent.setPackage("com.android.vending");
     if ((this.mContext != null) && (this.mContext.getPackageManager() != null) && (this.mContext.getPackageManager().queryIntentServices(localIntent, 0) != null) && (!this.mContext.getPackageManager().queryIntentServices(localIntent, 0).isEmpty()))
     {
-      this.mContext.bindService(localIntent, this.uOQ, 1);
+      this.mContext.bindService(localIntent, this.yhm, 1);
       AppMethodBeat.o(64593);
       return;
     }
@@ -183,11 +183,11 @@ public final class b
   public final boolean a(ArrayList<String> paramArrayList, c paramc)
   {
     AppMethodBeat.i(64596);
-    aob("query details");
+    aBu("query details");
     Intent localIntent = new Intent();
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
-      ae.e("MicroMsg.IabHelper", "query list is empty!");
+      Log.e("MicroMsg.IabHelper", "query list is empty!");
       paramArrayList = new c(5, "no query list or is empty");
       localIntent.putExtra("RESPONSE_CODE", 5);
       localIntent.putExtra("QUERY_DETAIL_INFO", new ArrayList());
@@ -197,15 +197,15 @@ public final class b
     }
     try
     {
-      ae.d("MicroMsg.IabHelper", "query detail list with the size is " + paramArrayList.size());
+      Log.d("MicroMsg.IabHelper", "query detail list with the size is " + paramArrayList.size());
       Object localObject = new Bundle();
       ((Bundle)localObject).putStringArrayList("ITEM_ID_LIST", paramArrayList);
-      paramArrayList = this.uOP.getSkuDetails(3, this.mContext.getPackageName(), "inapp", (Bundle)localObject);
-      int i = ai(paramArrayList);
-      ae.d("MicroMsg.IabHelper", "detail response: " + String.valueOf(i));
+      paramArrayList = this.yhl.getSkuDetails(3, this.mContext.getPackageName(), "inapp", (Bundle)localObject);
+      int i = ao(paramArrayList);
+      Log.d("MicroMsg.IabHelper", "detail response: " + String.valueOf(i));
       if (i != 0)
       {
-        ae.d("MicroMsg.IabHelper", "cannot query details");
+        Log.d("MicroMsg.IabHelper", "cannot query details");
         paramArrayList = new c(i, "cannot query details");
         localIntent.putExtra("RESPONSE_CODE", i);
         paramc.a(paramArrayList, localIntent);
@@ -213,20 +213,20 @@ public final class b
         return true;
       }
       localObject = new c(i, "query list ok!");
-      ae.d("MicroMsg.IabHelper", "result code : ".concat(String.valueOf(i)));
+      Log.d("MicroMsg.IabHelper", "result code : ".concat(String.valueOf(i)));
       localIntent.putExtra("RESPONSE_CODE", i);
       localIntent.putExtra("RESPONSE_QUERY_DETAIL_INFO", paramArrayList.getStringArrayList("DETAILS_LIST"));
       paramc.a((c)localObject, localIntent);
       paramArrayList = paramArrayList.getStringArrayList("DETAILS_LIST").iterator();
       while (paramArrayList.hasNext()) {
-        ae.d("MicroMsg.IabHelper", (String)paramArrayList.next());
+        Log.d("MicroMsg.IabHelper", (String)paramArrayList.next());
       }
       AppMethodBeat.o(64596);
     }
     catch (RemoteException paramArrayList)
     {
-      aoc("RemoteException while launching query details ");
-      ae.printErrStackTrace("MicroMsg.IabHelper", paramArrayList, "", new Object[0]);
+      aBv("RemoteException while launching query details ");
+      Log.printErrStackTrace("MicroMsg.IabHelper", paramArrayList, "", new Object[0]);
       paramArrayList = new c(-1001, "Remote exception while starting purchase flow");
       localIntent.putExtra("RESPONSE_CODE", 6);
       localIntent.putExtra("QUERY_DETAIL_INFO", new ArrayList());
@@ -237,12 +237,12 @@ public final class b
     return true;
   }
   
-  public final void aob(String paramString)
+  public final void aBu(String paramString)
   {
     AppMethodBeat.i(64595);
-    if (!this.uOR)
+    if (!this.yhn)
     {
-      ae.e("MicroMsg.IabHelper", "Illegal state for operation (" + paramString + "): IAB helper is not set up.");
+      Log.e("MicroMsg.IabHelper", "Illegal state for operation (" + paramString + "): IAB helper is not set up.");
       paramString = new IllegalStateException("IAB helper is not set up. Can't perform operation: ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(64595);
       throw paramString;
@@ -253,18 +253,18 @@ public final class b
   public final void dispose()
   {
     AppMethodBeat.i(64594);
-    ae.d("MicroMsg.IabHelper", "Disposing.");
-    this.uOR = false;
-    if (this.uOQ != null) {
-      ae.d("MicroMsg.IabHelper", "Unbinding from service.");
+    Log.d("MicroMsg.IabHelper", "Disposing.");
+    this.yhn = false;
+    if (this.yhm != null) {
+      Log.d("MicroMsg.IabHelper", "Unbinding from service.");
     }
     try
     {
       if (this.mContext != null) {
-        this.mContext.unbindService(this.uOQ);
+        this.mContext.unbindService(this.yhm);
       }
-      this.uOQ = null;
-      this.uOP = null;
+      this.yhm = null;
+      this.yhl = null;
       AppMethodBeat.o(64594);
       return;
     }
@@ -272,7 +272,7 @@ public final class b
     {
       for (;;)
       {
-        ae.e("MicroMsg.IabHelper", localIllegalArgumentException.toString());
+        Log.e("MicroMsg.IabHelper", localIllegalArgumentException.toString());
       }
     }
   }
@@ -294,7 +294,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.gwallet.a.b
  * JD-Core Version:    0.7.0.1
  */

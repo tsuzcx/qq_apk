@@ -1,79 +1,58 @@
 package com.tencent.mm.plugin.i.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ag.f;
+import com.tencent.mm.ag.k.b;
 import com.tencent.mm.i.d;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.axf;
 import java.util.Map;
+import kotlin.g.b.p;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/findersdk/api/AppMsgContentFinderNameCard;", "Lcom/tencent/mm/message/AppContentPiece;", "()V", "authIcon", "", "getAuthIcon", "()I", "setAuthIcon", "(I)V", "authIconUrl", "", "getAuthIconUrl", "()Ljava/lang/String;", "setAuthIconUrl", "(Ljava/lang/String;)V", "authJob", "getAuthJob", "setAuthJob", "avatar", "getAvatar", "setAvatar", "nickname", "getNickname", "setNickname", "username", "getUsername", "setUsername", "cloneContent", "makeContent", "", "sb", "Ljava/lang/StringBuilder;", "content", "Lcom/tencent/mm/message/AppMessage$Content;", "cdnAttachId", "cdnResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "thumbWidth", "thumbHeight", "parseContent", "values", "", "finder-sdk_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/findersdk/api/AppMSgContentFinderLiveInviteObject;", "Lcom/tencent/mm/message/AppContentPiece;", "()V", "shareObject", "Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "getShareObject", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;", "setShareObject", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveShareObject;)V", "cloneContent", "makeContent", "", "sb", "Ljava/lang/StringBuilder;", "Lkotlin/text/StringBuilder;", "content", "Lcom/tencent/mm/message/AppMessage$Content;", "cdnAttachId", "", "cdnResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "thumbWidth", "", "thumbHeight", "parseContent", "values", "", "finder-sdk_release"})
 public final class a
   extends f
 {
-  public String authIconUrl = "";
-  public String nickname = "";
-  public String ssR = "";
-  public String tqC = "";
-  public int tqD;
-  public String username = "";
+  public axf wDV;
   
-  public final String VK()
+  public a()
   {
-    return this.nickname;
+    AppMethodBeat.i(208757);
+    this.wDV = new axf();
+    AppMethodBeat.o(208757);
   }
   
   public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(168865);
+    AppMethodBeat.i(208755);
     p.h(paramStringBuilder, "sb");
-    paramStringBuilder.append("<findernamecard><username>").append(bu.aSz(this.username)).append("</username><avatar>").append(k.b.zc(this.ssR)).append("</avatar><nickname>").append(bu.aSz(this.nickname)).append("</nickname><auth_job>").append(bu.aSz(this.tqC)).append("</auth_job><auth_icon>").append(this.tqD).append("</auth_icon><auth_icon_url>").append(bu.aSz(this.authIconUrl)).append("</auth_icon_url></findernamecard>");
-    AppMethodBeat.o(168865);
+    paramStringBuilder.append(l.d(this.wDV));
+    AppMethodBeat.o(208755);
   }
   
   public final void a(Map<String, String> paramMap, k.b paramb)
   {
-    AppMethodBeat.i(168866);
+    AppMethodBeat.i(208756);
     p.h(paramMap, "values");
-    paramb = bu.nullAsNil((String)paramMap.get(".msg.appmsg.findernamecard.username"));
-    p.g(paramb, "Util.nullAsNil(values.ge…indernamecard.username\"))");
-    this.username = paramb;
-    paramb = bu.nullAsNil((String)paramMap.get(".msg.appmsg.findernamecard.avatar"));
-    p.g(paramb, "Util.nullAsNil(values.ge….findernamecard.avatar\"))");
-    this.ssR = paramb;
-    paramb = bu.nullAsNil((String)paramMap.get(".msg.appmsg.findernamecard.nickname"));
-    p.g(paramb, "Util.nullAsNil(values.ge…indernamecard.nickname\"))");
-    this.nickname = paramb;
-    paramb = bu.nullAsNil((String)paramMap.get(".msg.appmsg.findernamecard.auth_job"));
-    p.g(paramb, "Util.nullAsNil(values.ge…indernamecard.auth_job\"))");
-    this.tqC = paramb;
-    this.tqD = bu.aSB((String)paramMap.get(".msg.appmsg.findernamecard.auth_icon"));
-    paramMap = bu.nullAsNil((String)paramMap.get(".msg.appmsg.findernamecard.auth_icon_url"));
-    p.g(paramMap, "Util.nullAsNil(values.ge…namecard.auth_icon_url\"))");
-    this.authIconUrl = paramMap;
-    AppMethodBeat.o(168866);
+    p.h(paramb, "content");
+    paramMap = l.w(".msg.appmsg", paramMap);
+    p.g(paramMap, "FinderShareParser.parseF…ve(\".msg.appmsg\", values)");
+    this.wDV = paramMap;
+    AppMethodBeat.o(208756);
   }
   
-  public final f aoI()
+  public final f aHj()
   {
-    AppMethodBeat.i(168864);
+    AppMethodBeat.i(208754);
     Object localObject = new a();
-    ((a)localObject).username = this.username;
-    ((a)localObject).ssR = this.ssR;
-    ((a)localObject).nickname = this.nickname;
-    ((a)localObject).tqC = this.tqC;
-    ((a)localObject).tqD = this.tqD;
-    ((a)localObject).authIconUrl = this.authIconUrl;
+    ((a)localObject).wDV = this.wDV;
     localObject = (f)localObject;
-    AppMethodBeat.o(168864);
+    AppMethodBeat.o(208754);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.i.a.a
  * JD-Core Version:    0.7.0.1
  */

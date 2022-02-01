@@ -9,16 +9,16 @@ public enum e$a
   static
   {
     AppMethodBeat.i(121046);
-    qWV = new a("MM_DEFAULT", 0, 0);
-    qWW = new a("MMAppMgr_Activated", 1, 1);
-    qWX = new a("MMAppMgr_Deactivated", 2, 2);
-    qWY = new a("MMLifeCall_OnResume", 3, 3);
-    qWZ = new a("MMLifeCall_OnPause", 4, 4);
-    qXa = new a("MMActivity_OnResume", 5, 5);
-    qXb = new a("MMActivity_OnPause", 6, 6);
-    qXc = new a("MMActivity_Back2Front", 7, 7);
-    qXd = new a("MMActivity_Front2Back", 8, 8);
-    qXe = new a[] { qWV, qWW, qWX, qWY, qWZ, qXa, qXb, qXc, qXd };
+    swZ = new a("MM_DEFAULT", 0, 0);
+    sxa = new a("MMAppMgr_Activated", 1, 1);
+    sxb = new a("MMAppMgr_Deactivated", 2, 2);
+    sxc = new a("MMLifeCall_OnResume", 3, 3);
+    sxd = new a("MMLifeCall_OnPause", 4, 4);
+    sxe = new a("MMActivity_OnResume", 5, 5);
+    sxf = new a("MMActivity_OnPause", 6, 6);
+    sxg = new a("MMActivity_Back2Front", 7, 7);
+    sxh = new a("MMActivity_Front2Back", 8, 8);
+    sxi = new a[] { swZ, sxa, sxb, sxc, sxd, sxe, sxf, sxg, sxh };
     AppMethodBeat.o(121046);
   }
   
@@ -27,28 +27,28 @@ public enum e$a
     this.value = paramInt;
   }
   
-  public static a Da(int paramInt)
+  public static a GL(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return qWV;
+      return swZ;
     case 1: 
-      return qWW;
+      return sxa;
     case 2: 
-      return qWX;
+      return sxb;
     case 3: 
-      return qWY;
+      return sxc;
     case 4: 
-      return qWZ;
+      return sxd;
     case 5: 
-      return qXa;
+      return sxe;
     case 6: 
-      return qXb;
+      return sxf;
     case 7: 
-      return qXc;
+      return sxg;
     }
-    return qXd;
+    return sxh;
   }
 }
 

@@ -6,26 +6,26 @@ import java.util.Iterator;
 public final class c<T>
   implements Iterable<T>
 {
-  private final Iterable<T> LIN;
-  private final a<T> LIT;
+  private final Iterable<? extends T> ReP;
+  private final a<T> ReV;
   
-  public c(Iterable<T> paramIterable, a<T> parama)
+  public c(Iterable<? extends T> paramIterable, a<T> parama)
   {
-    this.LIN = paramIterable;
-    this.LIT = parama;
+    this.ReP = paramIterable;
+    this.ReV = parama;
   }
   
   public final Iterator<T> iterator()
   {
-    AppMethodBeat.i(193459);
-    d locald = new d(this.LIN.iterator(), this.LIT);
-    AppMethodBeat.o(193459);
+    AppMethodBeat.i(187773);
+    d locald = new d(this.ReP.iterator(), this.ReV);
+    AppMethodBeat.o(187773);
     return locald;
   }
   
   public static abstract interface a<T>
   {
-    public abstract boolean en(T paramT);
+    public abstract boolean dm(T paramT);
   }
 }
 

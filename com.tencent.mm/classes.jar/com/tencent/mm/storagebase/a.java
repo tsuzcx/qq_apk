@@ -5,9 +5,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.l;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ConfigFile;
+import com.tencent.mm.vfs.s;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import com.tencent.wcdb.database.SQLiteDatabaseCorruptException;
 import com.tencent.wcdb.database.SQLiteDirectCursor;
@@ -27,27 +28,27 @@ import junit.framework.Assert;
 
 public final class a
 {
-  public static final Pattern JiZ;
-  String Jja = "";
-  public boolean Jjb = false;
-  String Jjc = "";
-  public boolean Jjd = false;
+  public static final Pattern OsR;
+  String OsS = "";
+  public boolean OsT = false;
+  String OsU = "";
+  public boolean OsV = false;
   private String errMsg = "";
-  f iQT;
   private boolean isNew = false;
+  f jNN;
   String key;
   
   static
   {
     AppMethodBeat.i(133323);
-    JiZ = Pattern.compile("^[\\s]*CREATE[\\s]+TABLE[\\s]*", 2);
+    OsR = Pattern.compile("^[\\s]*CREATE[\\s]+TABLE[\\s]*", 2);
     AppMethodBeat.o(133323);
   }
   
   private boolean a(HashMap<Integer, h.b> paramHashMap, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(133322);
-    if (this.iQT == null)
+    if (this.jNN == null)
     {
       AppMethodBeat.o(133322);
       return false;
@@ -56,12 +57,12 @@ public final class a
     Object localObject3;
     for (int i = -1;; i = paramHashMap.size())
     {
-      ae.d("MicroMsg.DBInit", "createtables checkCreateIni:%b  tables:%d", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(i) });
+      Log.d("MicroMsg.DBInit", "createtables checkCreateIni:%b  tables:%d", new Object[] { Boolean.valueOf(paramBoolean1), Integer.valueOf(i) });
       localObject1 = "";
       if (!paramBoolean1) {
         break label336;
       }
-      this.Jja = (this.iQT.getPath() + ".ini");
+      this.OsS = (this.jNN.getPath() + ".ini");
       localObject1 = new StringBuilder();
       if (paramHashMap == null) {
         break;
@@ -72,7 +73,7 @@ public final class a
         localObject3 = (h.b)((Iterator)localObject2).next();
         if (((h.b)localObject3).getSQLs() == null)
         {
-          ae.e("MicroMsg.DBInit", "factory.getSQLs() is null: %s", new Object[] { localObject3.getClass().toString() });
+          Log.e("MicroMsg.DBInit", "factory.getSQLs() is null: %s", new Object[] { localObject3.getClass().toString() });
           Assert.assertTrue("factory.getSQLs() is null:" + localObject3.getClass().toString(), false);
         }
         localObject3 = ((h.b)localObject3).getSQLs();
@@ -89,23 +90,23 @@ public final class a
     Object localObject1 = localObject2;
     if (!paramBoolean2)
     {
-      localObject3 = com.tencent.mm.sdk.e.a.getValue(this.Jja, "createmd5");
+      localObject3 = ConfigFile.getValue(this.OsS, "createmd5");
       localObject1 = localObject2;
-      if (!bu.isNullOrNil((String)localObject3))
+      if (!Util.isNullOrNil((String)localObject3))
       {
         localObject1 = localObject2;
         if (((String)localObject2).equals(localObject3))
         {
-          ae.i("MicroMsg.DBInit", "Create table factories not changed , no need create !  %s", new Object[] { this.iQT.getPath() });
+          Log.i("MicroMsg.DBInit", "Create table factories not changed , no need create !  %s", new Object[] { this.jNN.getPath() });
           AppMethodBeat.o(133322);
           return true;
         }
       }
     }
     label336:
-    this.iQT.execSQL("pragma auto_vacuum = 0 ");
+    this.jNN.execSQL("pragma auto_vacuum = 0 ");
     localObject2 = new f.a();
-    this.iQT.beginTransaction();
+    this.jNN.beginTransaction();
     if (paramHashMap != null)
     {
       paramHashMap = paramHashMap.values().iterator();
@@ -129,18 +130,18 @@ public final class a
           str = localObject3[j];
           try
           {
-            this.iQT.execSQL(str);
+            this.jNN.execSQL(str);
             i += 1;
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              Matcher localMatcher = JiZ.matcher(str);
+              Matcher localMatcher = OsR.matcher(str);
               if ((localMatcher != null) && (localMatcher.matches())) {
                 Assert.assertTrue("CreateTable failed:[" + str + "][" + localException.getMessage() + "]", false);
               } else {
-                ae.w("MicroMsg.DBInit", "CreateTable failed:[" + str + "][" + localException.getMessage() + "]");
+                Log.w("MicroMsg.DBInit", "CreateTable failed:[" + str + "][" + localException.getMessage() + "]");
               }
             }
           }
@@ -149,11 +150,11 @@ public final class a
       }
     }
     int j = 0;
-    long l = ((f.a)localObject2).abs();
-    this.iQT.endTransaction();
-    ae.i("MicroMsg.DBInit", "createtables end sql:%d trans:%d sqlCount:%d", new Object[] { Long.valueOf(l), Long.valueOf(((f.a)localObject2).abs()), Integer.valueOf(j) });
+    long l = ((f.a)localObject2).apr();
+    this.jNN.endTransaction();
+    Log.i("MicroMsg.DBInit", "createtables end sql:%d trans:%d sqlCount:%d", new Object[] { Long.valueOf(l), Long.valueOf(((f.a)localObject2).apr()), Integer.valueOf(j) });
     if (paramBoolean1) {
-      com.tencent.mm.sdk.e.a.bf(this.Jja, "createmd5", (String)localObject1);
+      ConfigFile.saveValue(this.OsS, "createmd5", (String)localObject1);
     }
     AppMethodBeat.o(133322);
     return true;
@@ -162,14 +163,14 @@ public final class a
   private boolean b(String paramString1, long paramLong, boolean paramBoolean, String paramString2)
   {
     AppMethodBeat.i(133321);
-    if (this.iQT != null)
+    if (this.jNN != null)
     {
       paramString1 = new AssertionError();
       AppMethodBeat.o(133321);
       throw paramString1;
     }
     boolean bool;
-    if (!o.fB(paramString1)) {
+    if (!s.YS(paramString1)) {
       bool = true;
     }
     int i;
@@ -177,7 +178,7 @@ public final class a
     {
       this.isNew = bool;
       i = 0;
-      Iterator localIterator = IMEISave.fxL().iterator();
+      Iterator localIterator = IMEISave.gFy().iterator();
       label58:
       if (localIterator.hasNext())
       {
@@ -185,13 +186,13 @@ public final class a
         this.key = com.tencent.mm.b.g.getMessageDigest((str + paramLong).getBytes()).substring(0, 7);
         try
         {
-          this.iQT = f.E(paramString1, this.key, paramBoolean);
-          c(this.iQT);
-          if (!q.cH(true).equals(str))
+          this.jNN = f.E(paramString1, this.key, paramBoolean);
+          c(this.jNN);
+          if (!q.dr(true).equals(str))
           {
-            ae.i("MicroMsg.DBInit", "IMEI changed detected: ".concat(String.valueOf(str)));
-            l.aam().set(258, str);
-            com.tencent.mm.plugin.report.e.ywz.idkeyStat(181L, 5L, 1L, false);
+            Log.i("MicroMsg.DBInit", "IMEI changed detected: ".concat(String.valueOf(str)));
+            l.aol().set(258, str);
+            com.tencent.mm.plugin.report.e.Cxv.idkeyStat(181L, 5L, 1L, false);
           }
           AppMethodBeat.o(133321);
           return true;
@@ -215,26 +216,26 @@ public final class a
       }
       for (;;)
       {
-        com.tencent.mm.plugin.report.e.ywz.idkeyStat(181L, i, 1L, true);
-        f.aWz(paramString1);
+        com.tencent.mm.plugin.report.e.Cxv.idkeyStat(181L, i, 1L, true);
+        f.bly(paramString1);
         if (paramString1.endsWith("EnMicroMsg.db")) {
-          f.aWz(com.tencent.mm.kernel.g.ajR().gDT + "dbback/EnMicroMsg.db");
+          f.bly(com.tencent.mm.kernel.g.aAh().hqG + "dbback/EnMicroMsg.db");
         }
         try
         {
-          this.key = com.tencent.mm.b.g.getMessageDigest((q.cH(true) + paramLong).getBytes()).substring(0, 7);
-          this.iQT = f.E(paramString1, this.key, paramBoolean);
-          c(this.iQT);
+          this.key = com.tencent.mm.b.g.getMessageDigest((q.dr(true) + paramLong).getBytes()).substring(0, 7);
+          this.jNN = f.E(paramString1, this.key, paramBoolean);
+          c(this.jNN);
           this.isNew = true;
-          com.tencent.mm.plugin.report.e.ywz.idkeyStat(181L, 6L, 1L, false);
+          com.tencent.mm.plugin.report.e.Cxv.idkeyStat(181L, 6L, 1L, false);
           AppMethodBeat.o(133321);
           return true;
         }
         catch (SQLiteException paramString1)
         {
-          com.tencent.mm.plugin.report.e.ywz.idkeyStat(181L, 7L, 1L, false);
+          com.tencent.mm.plugin.report.e.Cxv.idkeyStat(181L, 7L, 1L, false);
         }
-        if (f.fxP()) {
+        if (f.gFC()) {
           i = 43;
         } else {
           i = 41;
@@ -243,31 +244,31 @@ public final class a
     }
     for (;;)
     {
-      if (this.iQT != null)
+      if (this.jNN != null)
       {
-        this.iQT.close();
-        this.iQT = null;
+        this.jNN.close();
+        this.jNN = null;
       }
       this.key = null;
       AppMethodBeat.o(133321);
       return false;
       if ((paramString2 != null) && (paramString2.length() > 0))
       {
-        if (!o.fB(paramString2)) {}
+        if (!s.YS(paramString2)) {}
         for (bool = true;; bool = false)
         {
           this.isNew = bool;
           try
           {
-            this.iQT = f.E(paramString2, this.key, paramBoolean);
-            c(this.iQT);
-            com.tencent.mm.plugin.report.e.ywz.idkeyStat(181L, 6L, 1L, false);
+            this.jNN = f.E(paramString2, this.key, paramBoolean);
+            c(this.jNN);
+            com.tencent.mm.plugin.report.e.Cxv.idkeyStat(181L, 6L, 1L, false);
             AppMethodBeat.o(133321);
             return true;
           }
           catch (SQLiteException paramString1)
           {
-            com.tencent.mm.plugin.report.e.ywz.idkeyStat(181L, 7L, 1L, false);
+            com.tencent.mm.plugin.report.e.Cxv.idkeyStat(181L, 7L, 1L, false);
           }
         }
       }
@@ -277,8 +278,8 @@ public final class a
   private static void c(f paramf)
   {
     AppMethodBeat.i(133319);
-    if (paramf.Jjj != null) {}
-    for (paramf = paramf.Jjj;; paramf = paramf.Jjk)
+    if (paramf.Otb != null) {}
+    for (paramf = paramf.Otb;; paramf = paramf.Otc)
     {
       paramf = paramf.rawQueryWithFactory(SQLiteDirectCursor.FACTORY, "SELECT count(*) FROM sqlite_master;", null, null);
       if (paramf.moveToFirst()) {
@@ -292,11 +293,11 @@ public final class a
     AppMethodBeat.o(133319);
   }
   
-  private void mk(String paramString1, String paramString2)
+  private void mY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(133312);
     HashSet localHashSet = new HashSet();
-    Object localObject = this.iQT.a("select * from " + paramString1 + " limit 1 ", null, 0);
+    Object localObject = this.jNN.rawQuery("select * from " + paramString1 + " limit 1 ", null, 0);
     if (((Cursor)localObject).getCount() == 0)
     {
       ((Cursor)localObject).close();
@@ -311,7 +312,7 @@ public final class a
       i += 1;
     }
     ((Cursor)localObject).close();
-    Cursor localCursor = this.iQT.a("PRAGMA table_info( " + paramString2 + " )", null, 0);
+    Cursor localCursor = this.jNN.rawQuery("PRAGMA table_info( " + paramString2 + " )", null, 0);
     localObject = "";
     while (localCursor.moveToNext())
     {
@@ -325,20 +326,20 @@ public final class a
     localCursor.close();
     localObject = ((String)localObject).substring(0, ((String)localObject).length() - 1);
     paramString1 = "insert into " + paramString2 + "(" + (String)localObject + ") select " + (String)localObject + " from " + paramString1 + ";";
-    this.iQT.execSQL(paramString1);
+    this.jNN.execSQL(paramString1);
     AppMethodBeat.o(133312);
   }
   
-  private List<String> ml(String paramString1, String paramString2)
+  private List<String> mZ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(133314);
     ArrayList localArrayList = new ArrayList();
-    if (this.iQT == null)
+    if (this.jNN == null)
     {
       AppMethodBeat.o(133314);
       return localArrayList;
     }
-    Object localObject1 = this.iQT.a("PRAGMA table_info( " + paramString1 + " )", null, 0);
+    Object localObject1 = this.jNN.rawQuery("PRAGMA table_info( " + paramString1 + " )", null, 0);
     if (localObject1 == null)
     {
       AppMethodBeat.o(133314);
@@ -351,7 +352,7 @@ public final class a
       paramString1.put(((Cursor)localObject1).getString(i), ((Cursor)localObject1).getString(j));
     }
     ((Cursor)localObject1).close();
-    Object localObject2 = this.iQT.a("PRAGMA table_info( " + paramString2 + " )", null, 0);
+    Object localObject2 = this.jNN.rawQuery("PRAGMA table_info( " + paramString2 + " )", null, 0);
     if (localObject2 == null)
     {
       AppMethodBeat.o(133314);
@@ -380,7 +381,7 @@ public final class a
         }
         else if (!((String)localObject3).toLowerCase().startsWith(str2.toLowerCase()))
         {
-          ae.e("MicroMsg.DBInit", "conflicting alter table on column: " + str1 + ", " + str2 + "<o-n>" + (String)localObject3);
+          Log.e("MicroMsg.DBInit", "conflicting alter table on column: " + str1 + ", " + str2 + "<o-n>" + (String)localObject3);
           paramString1.remove(str1);
         }
       }
@@ -389,10 +390,10 @@ public final class a
     return localArrayList;
   }
   
-  private boolean mm(String paramString1, String paramString2)
+  private boolean na(String paramString1, String paramString2)
   {
     AppMethodBeat.i(133315);
-    Cursor localCursor = this.iQT.a("select DISTINCT  tbl_name from sqlite_master;", null, 0);
+    Cursor localCursor = this.jNN.rawQuery("select DISTINCT  tbl_name from sqlite_master;", null, 0);
     if (localCursor == null)
     {
       AppMethodBeat.o(133315);
@@ -400,21 +401,21 @@ public final class a
     }
     try
     {
-      if (bu.isNullOrNil(paramString2)) {
-        this.iQT.execSQL("ATTACH DATABASE '" + paramString1 + "' AS old KEY ''");
+      if (Util.isNullOrNil(paramString2)) {
+        this.jNN.execSQL("ATTACH DATABASE '" + paramString1 + "' AS old KEY ''");
       }
       while (!q(localCursor))
       {
         AppMethodBeat.o(133315);
         return false;
-        this.iQT.execSQL("ATTACH DATABASE '" + paramString1 + "' AS old KEY '" + paramString2 + "'");
+        this.jNN.execSQL("ATTACH DATABASE '" + paramString1 + "' AS old KEY '" + paramString2 + "'");
       }
-      this.iQT.beginTransaction();
+      this.jNN.beginTransaction();
     }
     catch (SQLiteDatabaseCorruptException paramString2)
     {
-      ae.e("MicroMsg.DBInit", "Attached database is corrupted: ".concat(String.valueOf(paramString1)));
-      o.deleteFile(paramString1);
+      Log.e("MicroMsg.DBInit", "Attached database is corrupted: ".concat(String.valueOf(paramString1)));
+      s.deleteFile(paramString1);
       AppMethodBeat.o(133315);
       throw paramString2;
     }
@@ -423,7 +424,7 @@ public final class a
     if (i < localCursor.getCount())
     {
       localCursor.moveToPosition(i);
-      paramString1 = this.iQT.a("select * from old.sqlite_master where tbl_name = '" + localCursor.getString(0) + "'", null, 0);
+      paramString1 = this.jNN.rawQuery("select * from old.sqlite_master where tbl_name = '" + localCursor.getString(0) + "'", null, 0);
       if (paramString1 == null) {
         break label463;
       }
@@ -433,7 +434,7 @@ public final class a
     for (;;)
     {
       if (j == 0) {
-        ae.w("MicroMsg.DBInit", "In old db not found :" + localCursor.getString(0));
+        Log.w("MicroMsg.DBInit", "In old db not found :" + localCursor.getString(0));
       }
       for (;;)
       {
@@ -441,22 +442,22 @@ public final class a
         break;
         try
         {
-          paramString1 = ml("old." + localCursor.getString(0), localCursor.getString(0)).iterator();
+          paramString1 = mZ("old." + localCursor.getString(0), localCursor.getString(0)).iterator();
           while (paramString1.hasNext())
           {
             paramString2 = (String)paramString1.next();
-            this.iQT.execSQL(paramString2);
+            this.jNN.execSQL(paramString2);
           }
         }
         catch (Exception paramString1)
         {
-          ae.w("MicroMsg.DBInit", "Insertselect FAILED :" + localCursor.getString(0));
+          Log.w("MicroMsg.DBInit", "Insertselect FAILED :" + localCursor.getString(0));
         }
-        mk("old." + localCursor.getString(0), localCursor.getString(0));
+        mY("old." + localCursor.getString(0), localCursor.getString(0));
       }
-      this.iQT.endTransaction();
+      this.jNN.endTransaction();
       localCursor.close();
-      this.iQT.execSQL("DETACH DATABASE old;");
+      this.jNN.execSQL("DETACH DATABASE old;");
       AppMethodBeat.o(133315);
       return true;
       label463:
@@ -464,17 +465,17 @@ public final class a
     }
   }
   
-  private boolean mn(String paramString1, String paramString2)
+  private boolean nb(String paramString1, String paramString2)
   {
     AppMethodBeat.i(133318);
-    if (mm(paramString1, paramString2))
+    if (na(paramString1, paramString2))
     {
-      ae.i("MicroMsg.DBInit", "system transfer success ,delete it path %s", new Object[] { paramString1 });
-      ae.i("MicroMsg.DBInit", "delete result :%b", new Object[] { Boolean.valueOf(o.deleteFile(paramString1)) });
+      Log.i("MicroMsg.DBInit", "system transfer success ,delete it path %s", new Object[] { paramString1 });
+      Log.i("MicroMsg.DBInit", "delete result :%b", new Object[] { Boolean.valueOf(s.deleteFile(paramString1)) });
       AppMethodBeat.o(133318);
       return true;
     }
-    ae.i("MicroMsg.DBInit", "system transfer fail path %s", new Object[] { paramString1 });
+    Log.i("MicroMsg.DBInit", "system transfer fail path %s", new Object[] { paramString1 });
     AppMethodBeat.o(133318);
     return false;
   }
@@ -491,7 +492,7 @@ public final class a
       localHashSet.add(paramCursor.getString(0));
       i += 1;
     }
-    paramCursor = this.iQT.a("select DISTINCT tbl_name from old.sqlite_master;", null, 0);
+    paramCursor = this.jNN.rawQuery("select DISTINCT tbl_name from old.sqlite_master;", null, 0);
     if (paramCursor == null)
     {
       AppMethodBeat.o(133313);
@@ -505,23 +506,23 @@ public final class a
       i += 1;
     }
     paramCursor.close();
-    this.iQT.beginTransaction();
+    this.jNN.beginTransaction();
     paramCursor = ((HashSet)localObject).iterator();
     while (paramCursor.hasNext())
     {
       localObject = (String)paramCursor.next();
       if (!localHashSet.contains(localObject))
       {
-        localObject = this.iQT.a("SELECT sql FROM old.sqlite_master WHERE type='table' AND tbl_name='" + (String)localObject + "'", null, 0);
+        localObject = this.jNN.rawQuery("SELECT sql FROM old.sqlite_master WHERE type='table' AND tbl_name='" + (String)localObject + "'", null, 0);
         if (localObject != null)
         {
           String str = ((Cursor)localObject).getString(0);
-          this.iQT.execSQL(str);
+          this.jNN.execSQL(str);
           ((Cursor)localObject).close();
         }
       }
     }
-    this.iQT.endTransaction();
+    this.jNN.endTransaction();
     AppMethodBeat.o(133313);
     return true;
   }
@@ -535,37 +536,37 @@ public final class a
     int i;
     label98:
     int j;
-    if (!bu.isNullOrNil(paramString2))
+    if (!Util.isNullOrNil(paramString2))
     {
       bool1 = true;
       Assert.assertTrue("create SqliteDB enDbCachePath == null ", bool1);
-      this.Jjc = (paramString2 + ".errreport");
-      if (this.iQT != null)
+      this.OsU = (paramString2 + ".errreport");
+      if (this.jNN != null)
       {
-        this.iQT.close();
-        this.iQT = null;
+        this.jNN.close();
+        this.jNN = null;
       }
-      boolean bool2 = o.fB(paramString2);
-      bool3 = o.fB(paramString1);
-      bool4 = o.fB(paramString3);
+      boolean bool2 = s.YS(paramString2);
+      bool3 = s.YS(paramString1);
+      bool4 = s.YS(paramString3);
       if ((bool2) || (!bool3)) {
         break label264;
       }
       i = 1;
-      this.Jjb = b(paramString2, paramLong, f.fxO(), paramString3);
+      this.OsT = b(paramString2, paramLong, f.gFB(), paramString3);
       Boolean localBoolean = Boolean.TRUE;
-      boolean bool5 = this.Jjb;
-      if (this.iQT == null) {
+      boolean bool5 = this.OsT;
+      if (this.jNN == null) {
         break label270;
       }
       bool1 = true;
       label134:
-      ae.i("MicroMsg.DBInit", "initDb(en) path:%s enExist:%b oldExist:%b copyold:%b dbopenSUCC:%b db:%b thr:%s", new Object[] { paramString2, Boolean.valueOf(bool2), Boolean.valueOf(bool3), localBoolean, Boolean.valueOf(bool5), Boolean.valueOf(bool1), Thread.currentThread().getName() });
-      if ((this.iQT == null) || (this.iQT.getPath().equals(paramString3)) || (!bool4)) {
+      Log.i("MicroMsg.DBInit", "initDb(en) path:%s enExist:%b oldExist:%b copyold:%b dbopenSUCC:%b db:%b thr:%s", new Object[] { paramString2, Boolean.valueOf(bool2), Boolean.valueOf(bool3), localBoolean, Boolean.valueOf(bool5), Boolean.valueOf(bool1), Thread.currentThread().getName() });
+      if ((this.jNN == null) || (this.jNN.getPath().equals(paramString3)) || (!bool4)) {
         break label422;
       }
       j = 1;
-      ae.i("MicroMsg.DBInit", "backup db exsits, copy data to en db");
+      Log.i("MicroMsg.DBInit", "backup db exsits, copy data to en db");
     }
     for (;;)
     {
@@ -588,22 +589,22 @@ public final class a
         return true;
       }
       if ((j != 0) || (i != 0)) {
-        this.Jjd = true;
+        this.OsV = true;
       }
       if (j != 0)
       {
-        this.key = com.tencent.mm.b.g.getMessageDigest((q.cH(true) + paramLong).getBytes()).substring(0, 7);
-        mn(paramString3, this.key);
-        com.tencent.mm.blink.a.r(201L, 1L);
+        this.key = com.tencent.mm.b.g.getMessageDigest((q.dr(true) + paramLong).getBytes()).substring(0, 7);
+        nb(paramString3, this.key);
+        com.tencent.mm.blink.a.s(201L, 1L);
       }
       if (i != 0)
       {
-        paramBoolean = mn(paramString1, "");
-        com.tencent.mm.blink.a.r(200L, 1L);
+        paramBoolean = nb(paramString1, "");
+        com.tencent.mm.blink.a.s(200L, 1L);
         AppMethodBeat.o(133317);
         return paramBoolean;
       }
-      if (this.iQT != null)
+      if (this.jNN != null)
       {
         AppMethodBeat.o(133317);
         return true;
@@ -615,61 +616,58 @@ public final class a
     }
   }
   
-  public final boolean a(String paramString, HashMap<Integer, h.b> paramHashMap, boolean paramBoolean)
+  public final boolean a(String paramString, HashMap<Integer, h.b> paramHashMap, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(133316);
-    if (this.iQT != null)
+    AppMethodBeat.i(197181);
+    if (this.jNN != null)
     {
-      this.iQT.close();
-      this.iQT = null;
+      this.jNN.close();
+      this.jNN = null;
     }
-    boolean bool = o.fB(paramString);
-    for (;;)
-    {
+    for (paramBoolean1 = s.YS(paramString);; paramBoolean1 = false) {
       try
       {
-        ae.i("MicroMsg.DBInit", "initSysDB checkini:%b exist:%b db:%s ", new Object[] { Boolean.TRUE, Boolean.valueOf(bool), paramString });
-        this.iQT = f.cP(paramString, paramBoolean);
-        if (!bool)
+        Log.i("MicroMsg.DBInit", "initSysDB checkini:%b exist:%b db:%s ", new Object[] { Boolean.TRUE, Boolean.valueOf(paramBoolean1), paramString });
+        this.jNN = f.dk(paramString, paramBoolean2);
+        if (!paramBoolean1)
         {
-          paramBoolean = true;
-          if (a(paramHashMap, true, paramBoolean)) {
+          paramBoolean1 = true;
+          if (a(paramHashMap, true, paramBoolean1)) {
             break;
           }
-          if (this.iQT != null)
+          if (this.jNN != null)
           {
-            this.iQT.close();
-            this.iQT = null;
+            this.jNN.close();
+            this.jNN = null;
           }
-          AppMethodBeat.o(133316);
+          AppMethodBeat.o(197181);
           return false;
         }
       }
       catch (SQLiteException paramString)
       {
-        AppMethodBeat.o(133316);
+        AppMethodBeat.o(197181);
         return false;
       }
-      paramBoolean = false;
     }
-    AppMethodBeat.o(133316);
+    AppMethodBeat.o(197181);
     return true;
   }
   
   public final String getError()
   {
     AppMethodBeat.i(133311);
-    if ((bu.isNullOrNil(this.errMsg)) || (bu.isNullOrNil(this.Jjc)))
+    if ((Util.isNullOrNil(this.errMsg)) || (Util.isNullOrNil(this.OsU)))
     {
       AppMethodBeat.o(133311);
       return "";
     }
-    if (!bu.isNullOrNil(com.tencent.mm.sdk.e.a.getValue(this.Jjc, "Reported")))
+    if (!Util.isNullOrNil(ConfigFile.getValue(this.OsU, "Reported")))
     {
       AppMethodBeat.o(133311);
       return "";
     }
-    com.tencent.mm.sdk.e.a.bf(this.Jjc, "Reported", "true");
+    ConfigFile.saveValue(this.OsU, "Reported", "true");
     String str = this.errMsg;
     AppMethodBeat.o(133311);
     return str;

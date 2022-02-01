@@ -7,56 +7,41 @@ import java.util.Map;
 public abstract class l
   implements f.b
 {
-  final int FhH;
-  public final String Fhz;
-  private final String FiQ;
-  protected final Map<String, String> Fjf = new HashMap();
-  protected volatile int Fjg = 20000;
-  protected volatile int Fjh = 15000;
+  final int JYA;
+  public final String JYs;
+  private final String JZK;
+  protected final Map<String, String> JZZ = new HashMap();
+  protected volatile int Kaa = 15000;
+  protected volatile int connectTimeout = 15000;
   private final String filePath;
   private final String groupId;
-  protected volatile int mVO = 15000;
   private final String method;
   final int networkType;
   final int priority;
+  protected volatile int readTimeout = 20000;
   public final String url;
   
   public l(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.Fhz = paramString1;
+    this.JYs = paramString1;
     this.filePath = paramString2;
-    this.FiQ = paramString3;
+    this.JZK = paramString3;
     this.groupId = paramString4;
     this.url = paramString5;
     this.method = paramString6;
-    this.FhH = paramInt1;
+    this.JYA = paramInt1;
     this.networkType = paramInt2;
     this.priority = Math.max(paramInt3, 0);
   }
   
-  public String afK()
+  public String avy()
   {
     return this.groupId;
   }
   
-  public final int feM()
-  {
-    return this.Fjh;
-  }
-  
-  public final String feq()
-  {
-    return this.Fhz;
-  }
-  
-  public boolean fey()
-  {
-    return false;
-  }
-  
   public final int getConnectTimeout()
   {
-    return this.mVO;
+    return this.connectTimeout;
   }
   
   public String getFilePath()
@@ -66,15 +51,15 @@ public abstract class l
   
   public final int getReadTimeout()
   {
-    return this.Fjg;
+    return this.readTimeout;
   }
   
   public final Map<String, String> getRequestHeaders()
   {
-    if (this.Fjf.size() == 0) {
+    if (this.JZZ.size() == 0) {
       return null;
     }
-    return Collections.unmodifiableMap(this.Fjf);
+    return Collections.unmodifiableMap(this.JZZ);
   }
   
   public final String getURL()
@@ -82,19 +67,34 @@ public abstract class l
     return this.url;
   }
   
+  public final String gnA()
+  {
+    return this.JYs;
+  }
+  
+  public boolean gnI()
+  {
+    return false;
+  }
+  
+  public final int gnW()
+  {
+    return this.Kaa;
+  }
+  
   public final void setConnectTimeout(int paramInt)
   {
-    this.mVO = paramInt;
+    this.connectTimeout = paramInt;
   }
   
   public final void setReadTimeout(int paramInt)
   {
-    this.Fjg = paramInt;
+    this.readTimeout = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.c.l
  * JD-Core Version:    0.7.0.1
  */

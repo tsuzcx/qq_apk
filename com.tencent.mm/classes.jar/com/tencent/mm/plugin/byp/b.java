@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.byp;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.an;
-import com.tencent.mm.sdk.e.c.a;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.g.c.ao;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/byp/BypMsgInfo;", "Lcom/tencent/mm/autogen/table/BaseBypMsgInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-byp_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/byp/BypMsgInfo;", "Lcom/tencent/mm/autogen/table/BaseBypMsgInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-byp_release"})
 public final class b
-  extends an
+  extends ao
 {
-  private static final c.a info;
-  public static final a oBl;
+  private static final IAutoDBItem.MAutoDBInfo info;
+  public static final a pOW;
   
   static
   {
-    AppMethodBeat.i(218311);
-    oBl = new a((byte)0);
-    info = an.VD();
-    AppMethodBeat.o(218311);
+    AppMethodBeat.i(199086);
+    pOW = new a((byte)0);
+    info = ao.ajs();
+    AppMethodBeat.o(199086);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(218310);
-    c.a locala = info;
-    p.g(locala, "info");
-    AppMethodBeat.o(218310);
-    return locala;
+    AppMethodBeat.i(199085);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = info;
+    p.g(localMAutoDBInfo, "info");
+    AppMethodBeat.o(199085);
+    return localMAutoDBInfo;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/byp/BypMsgInfo$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-byp_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/byp/BypMsgInfo$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-byp_release"})
   public static final class a {}
 }
 

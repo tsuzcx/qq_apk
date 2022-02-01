@@ -21,9 +21,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.tools.b.c;
+import com.tencent.mm.ui.tools.f.a;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -32,38 +34,38 @@ import java.util.List;
 public class FTSEditTextView
   extends LinearLayout
 {
-  private TextView BOi;
-  private TextView BOj;
-  private TextView BPq;
-  private View KYQ;
-  private boolean KYR;
-  private View.OnClickListener KYS;
-  private a KYT;
-  private FTSEditTextView.b KYU;
-  private String KcN;
+  private TextView GoP;
+  private TextView GoQ;
+  private TextView GpX;
+  private boolean QnL;
+  private View.OnClickListener QnM;
+  private a QnN;
+  private FTSEditTextView.b QnO;
+  private String heA;
+  protected View.OnFocusChangeListener heD;
+  private WeImageView hex;
+  private ImageButton hey;
+  private View hez;
   private String hint;
-  protected View.OnFocusChangeListener mqZ;
-  private WeImageView ofI;
-  private List<a.c> pwz;
-  private ImageButton rMW;
-  public EditText vr;
+  private List<a.c> qLQ;
+  public EditText vy;
   
   public FTSEditTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(164183);
-    this.KYR = true;
-    this.KcN = "";
-    this.KYS = new View.OnClickListener()
+    this.QnL = true;
+    this.heA = "";
+    this.QnM = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(164178);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSEditTextView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSEditTextView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         int i = -1;
-        if (paramAnonymousView.getId() == 2131305610) {
+        if (paramAnonymousView.getId() == 2131308851) {
           i = 0;
         }
         for (;;)
@@ -72,27 +74,27 @@ public class FTSEditTextView
           {
             paramAnonymousView = FTSEditTextView.h(FTSEditTextView.this);
             FTSEditTextView.b(FTSEditTextView.this).get(i);
-            paramAnonymousView.cGz();
+            paramAnonymousView.dpw();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/search/FTSEditTextView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(164178);
           return;
-          if (paramAnonymousView.getId() == 2131305614) {
+          if (paramAnonymousView.getId() == 2131308855) {
             i = 1;
-          } else if (paramAnonymousView.getId() == 2131305618) {
+          } else if (paramAnonymousView.getId() == 2131308859) {
             i = 2;
           }
         }
       }
     };
-    this.KYU = FTSEditTextView.b.KYW;
-    this.mqZ = new View.OnFocusChangeListener()
+    this.QnO = FTSEditTextView.b.QnQ;
+    this.heD = new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(164179);
         if (FTSEditTextView.h(FTSEditTextView.this) != null) {
-          FTSEditTextView.h(FTSEditTextView.this).mb(paramAnonymousBoolean);
+          FTSEditTextView.h(FTSEditTextView.this).eh(paramAnonymousBoolean);
         }
         AppMethodBeat.o(164179);
       }
@@ -105,18 +107,18 @@ public class FTSEditTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(164184);
-    this.KYR = true;
-    this.KcN = "";
-    this.KYS = new View.OnClickListener()
+    this.QnL = true;
+    this.heA = "";
+    this.QnM = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(164178);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSEditTextView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSEditTextView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         int i = -1;
-        if (paramAnonymousView.getId() == 2131305610) {
+        if (paramAnonymousView.getId() == 2131308851) {
           i = 0;
         }
         for (;;)
@@ -125,27 +127,27 @@ public class FTSEditTextView
           {
             paramAnonymousView = FTSEditTextView.h(FTSEditTextView.this);
             FTSEditTextView.b(FTSEditTextView.this).get(i);
-            paramAnonymousView.cGz();
+            paramAnonymousView.dpw();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/search/FTSEditTextView$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(164178);
           return;
-          if (paramAnonymousView.getId() == 2131305614) {
+          if (paramAnonymousView.getId() == 2131308855) {
             i = 1;
-          } else if (paramAnonymousView.getId() == 2131305618) {
+          } else if (paramAnonymousView.getId() == 2131308859) {
             i = 2;
           }
         }
       }
     };
-    this.KYU = FTSEditTextView.b.KYW;
-    this.mqZ = new View.OnFocusChangeListener()
+    this.QnO = FTSEditTextView.b.QnQ;
+    this.heD = new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(164179);
         if (FTSEditTextView.h(FTSEditTextView.this) != null) {
-          FTSEditTextView.h(FTSEditTextView.this).mb(paramAnonymousBoolean);
+          FTSEditTextView.h(FTSEditTextView.this).eh(paramAnonymousBoolean);
         }
         AppMethodBeat.o(164179);
       }
@@ -157,90 +159,66 @@ public class FTSEditTextView
   private void a(String paramString, List<a.c> paramList, FTSEditTextView.b paramb)
   {
     AppMethodBeat.i(164191);
-    this.pwz.clear();
-    if (paramList != null) {
-      this.pwz.addAll(paramList);
+    String str = Util.nullAs(paramString, "").trim();
+    paramString = str;
+    if (str.length() > getLimitInputLength()) {
+      paramString = str.substring(0, getLimitInputLength()).replace("\n", " ");
     }
-    ae.i("MicroMsg.FTS.FTSEditTextView", "setText: %s %d", new Object[] { paramString, Integer.valueOf(this.pwz.size()) });
-    this.KYU = FTSEditTextView.b.KYY;
-    this.vr.setText(paramString);
-    Selection.setSelection(this.vr.getText(), this.vr.getText().length());
-    fOk();
-    this.KYU = paramb;
+    this.qLQ.clear();
+    if (paramList != null) {
+      this.qLQ.addAll(paramList);
+    }
+    Log.i("MicroMsg.FTS.FTSEditTextView", "setText: %s %d", new Object[] { paramString, Integer.valueOf(this.qLQ.size()) });
+    this.QnO = FTSEditTextView.b.QnS;
+    this.vy.setText(paramString);
+    Selection.setSelection(this.vy.getText(), this.vy.getText().length());
+    gXd();
+    this.QnO = paramb;
     AppMethodBeat.o(164191);
   }
   
-  private void fOk()
+  private void gXd()
   {
     AppMethodBeat.i(164195);
-    ae.i("MicroMsg.FTS.FTSEditTextView", "updateTagView %s", new Object[] { Integer.valueOf(this.pwz.size()) });
-    float f = com.tencent.mm.cb.a.ax(getContext(), 2131165517);
-    if (this.pwz.size() > 0)
+    Log.i("MicroMsg.FTS.FTSEditTextView", "updateTagView %s", new Object[] { Integer.valueOf(this.qLQ.size()) });
+    float f = com.tencent.mm.cb.a.aG(getContext(), 2131165535);
+    if (this.qLQ.size() > 0)
     {
-      this.BOi.setVisibility(0);
-      this.BOi.setText(com.tencent.mm.ui.f.c.b.c(getContext(), ((a.c)this.pwz.get(0)).getTagName(), f));
-      if (this.pwz.size() < 2) {
+      this.GoP.setVisibility(0);
+      this.GoP.setText(com.tencent.mm.ui.g.c.b.c(getContext(), ((a.c)this.qLQ.get(0)).getTagName(), f));
+      if (this.qLQ.size() < 2) {
         break label221;
       }
-      this.BOj.setVisibility(0);
-      this.BOj.setText(com.tencent.mm.ui.f.c.b.c(getContext(), ((a.c)this.pwz.get(1)).getTagName(), f));
+      this.GoQ.setVisibility(0);
+      this.GoQ.setText(com.tencent.mm.ui.g.c.b.c(getContext(), ((a.c)this.qLQ.get(1)).getTagName(), f));
     }
     for (;;)
     {
-      if (this.pwz.size() < 3) {
+      if (this.qLQ.size() < 3) {
         break label233;
       }
-      this.BPq.setVisibility(0);
-      this.BPq.setText(com.tencent.mm.ui.f.c.b.c(getContext(), ((a.c)this.pwz.get(2)).getTagName(), f));
+      this.GpX.setVisibility(0);
+      this.GpX.setText(com.tencent.mm.ui.g.c.b.c(getContext(), ((a.c)this.qLQ.get(2)).getTagName(), f));
       AppMethodBeat.o(164195);
       return;
-      this.BOi.setVisibility(8);
+      this.GoP.setVisibility(8);
       break;
       label221:
-      this.BOj.setVisibility(8);
+      this.GoQ.setVisibility(8);
     }
     label233:
-    this.BPq.setVisibility(8);
+    this.GpX.setVisibility(8);
     AppMethodBeat.o(164195);
   }
   
-  public final void I(String paramString, List<a.c> paramList)
+  public final void O(String paramString, List<a.c> paramList)
   {
     AppMethodBeat.i(164190);
-    a(paramString, paramList, FTSEditTextView.b.KYW);
+    a(paramString, paramList, FTSEditTextView.b.QnQ);
     AppMethodBeat.o(164190);
   }
   
-  public final void clearText()
-  {
-    AppMethodBeat.i(164186);
-    this.KYU = FTSEditTextView.b.KYX;
-    if (this.KYR) {
-      this.pwz.clear();
-    }
-    this.vr.setText("");
-    this.vr.setHint(this.hint);
-    this.rMW.setVisibility(8);
-    fOk();
-    this.KYU = FTSEditTextView.b.KYW;
-    AppMethodBeat.o(164186);
-  }
-  
-  public final void fMg()
-  {
-    AppMethodBeat.i(224385);
-    this.vr.clearFocus();
-    AppMethodBeat.o(224385);
-  }
-  
-  public final void fOg()
-  {
-    AppMethodBeat.i(164198);
-    this.ofI.setVisibility(8);
-    AppMethodBeat.o(164198);
-  }
-  
-  public final void fOi()
+  public final void awC()
   {
     AppMethodBeat.i(164188);
     postDelayed(new Runnable()
@@ -255,123 +233,164 @@ public class FTSEditTextView
     AppMethodBeat.o(164188);
   }
   
-  public final void fOj()
+  public final void awD()
   {
     AppMethodBeat.i(164192);
-    this.vr.requestFocus();
+    this.vy.requestFocus();
     AppMethodBeat.o(164192);
   }
   
-  public final void fOl()
+  public final void clearText()
+  {
+    AppMethodBeat.i(164186);
+    this.QnO = FTSEditTextView.b.QnR;
+    if (this.QnL) {
+      this.qLQ.clear();
+    }
+    this.vy.setText("");
+    this.vy.setHint(this.hint);
+    this.hey.setVisibility(8);
+    gXd();
+    this.QnO = FTSEditTextView.b.QnQ;
+    AppMethodBeat.o(164186);
+  }
+  
+  public final void gUA()
+  {
+    AppMethodBeat.i(258466);
+    this.vy.clearFocus();
+    AppMethodBeat.o(258466);
+  }
+  
+  public final void gWY()
+  {
+    AppMethodBeat.i(164198);
+    this.hex.setVisibility(8);
+    AppMethodBeat.o(164198);
+  }
+  
+  public final void gXe()
   {
     AppMethodBeat.i(164199);
-    this.ofI.setVisibility(0);
+    this.hex.setVisibility(0);
     AppMethodBeat.o(164199);
   }
   
-  public final void fOm()
+  public final void gXf()
   {
     AppMethodBeat.i(164200);
-    this.rMW.setVisibility(8);
+    this.hey.setVisibility(8);
     AppMethodBeat.o(164200);
   }
   
-  public final void fOn()
+  public final void gXg()
   {
     AppMethodBeat.i(164201);
-    this.rMW.setVisibility(0);
+    this.hey.setVisibility(0);
     AppMethodBeat.o(164201);
   }
   
   public ImageButton getClearBtn()
   {
-    return this.rMW;
+    return this.hey;
   }
   
   public EditText getEditText()
   {
-    return this.vr;
+    return this.vy;
   }
   
   public int getHighlightColor()
   {
     AppMethodBeat.i(164189);
-    int i = this.vr.getHighlightColor();
+    int i = this.vy.getHighlightColor();
     AppMethodBeat.o(164189);
     return i;
   }
   
   public WeImageView getIconView()
   {
-    return this.ofI;
+    return this.hex;
   }
   
   public String getInEditTextQuery()
   {
     AppMethodBeat.i(164196);
-    String str = this.vr.getText().toString().trim();
+    String str = this.vy.getText().toString().trim();
     AppMethodBeat.o(164196);
     return str;
   }
   
   protected int getLayoutById()
   {
-    return 2131494198;
+    return 2131494751;
+  }
+  
+  protected int getLimitInputLength()
+  {
+    return 100;
   }
   
   public List<a.c> getTagList()
   {
-    return this.pwz;
+    return this.qLQ;
   }
   
   public View getTagPanel()
   {
-    return this.KYQ;
+    return this.hez;
   }
   
   public FTSEditTextView.b getTextChangeStatus()
   {
-    return this.KYU;
+    return this.QnO;
   }
   
   public String getTotalQuery()
   {
     AppMethodBeat.i(164197);
     Object localObject = new StringBuffer();
-    Iterator localIterator = this.pwz.iterator();
+    Iterator localIterator = this.qLQ.iterator();
     while (localIterator.hasNext())
     {
       ((StringBuffer)localObject).append(((a.c)localIterator.next()).getTagName());
       ((StringBuffer)localObject).append(" ");
     }
-    ((StringBuffer)localObject).append(this.vr.getText().toString());
+    ((StringBuffer)localObject).append(this.vy.getText().toString());
     localObject = ((StringBuffer)localObject).toString().trim();
     AppMethodBeat.o(164197);
     return localObject;
+  }
+  
+  public final void hideVKB()
+  {
+    AppMethodBeat.i(205352);
+    ((InputMethodManager)getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.vy.getWindowToken(), 0);
+    AppMethodBeat.o(205352);
   }
   
   protected void init()
   {
     AppMethodBeat.i(164185);
     ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(getLayoutById(), this, true);
-    this.KYQ = findViewById(2131305631);
-    this.ofI = ((WeImageView)findViewById(2131300874));
-    this.vr = ((EditText)findViewById(2131299306));
-    this.rMW = ((ImageButton)findViewById(2131298348));
-    this.BOi = ((TextView)findViewById(2131305610));
-    this.BOj = ((TextView)findViewById(2131305614));
-    this.BPq = ((TextView)findViewById(2131305618));
-    this.pwz = new ArrayList();
-    this.vr.setOnKeyListener(new View.OnKeyListener()
+    this.hez = findViewById(2131308873);
+    this.hex = ((WeImageView)findViewById(2131302468));
+    this.vy = ((EditText)findViewById(2131299910));
+    this.hey = ((ImageButton)findViewById(2131298744));
+    this.GoP = ((TextView)findViewById(2131308851));
+    this.GoQ = ((TextView)findViewById(2131308855));
+    this.GpX = ((TextView)findViewById(2131308859));
+    this.qLQ = new ArrayList();
+    this.vy.setOnKeyListener(new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(164173);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        localb.mu(paramAnonymousInt);
-        localb.bd(paramAnonymousKeyEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSEditTextView$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        localb.pH(paramAnonymousInt);
+        localb.bm(paramAnonymousKeyEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSEditTextView$1", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
         if ((paramAnonymousKeyEvent.getAction() == 0) && (67 == paramAnonymousInt))
         {
           paramAnonymousInt = FTSEditTextView.a(FTSEditTextView.this).getSelectionStart();
@@ -388,7 +407,7 @@ public class FTSEditTextView
         return false;
       }
     });
-    this.vr.addTextChangedListener(new TextWatcher()
+    this.vy.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
       
@@ -416,15 +435,15 @@ public class FTSEditTextView
         }
       }
     });
-    this.vr.setOnFocusChangeListener(this.mqZ);
-    this.vr.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    this.vy.setOnFocusChangeListener(this.heD);
+    this.vy.setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(164175);
         if ((3 == paramAnonymousInt) && (FTSEditTextView.h(FTSEditTextView.this) != null))
         {
-          boolean bool = FTSEditTextView.h(FTSEditTextView.this).bAu();
+          boolean bool = FTSEditTextView.h(FTSEditTextView.this).awE();
           AppMethodBeat.o(164175);
           return bool;
         }
@@ -432,17 +451,17 @@ public class FTSEditTextView
         return false;
       }
     });
-    this.BOi.setOnClickListener(this.KYS);
-    this.BOj.setOnClickListener(this.KYS);
-    this.BPq.setOnClickListener(this.KYS);
-    this.rMW.setOnClickListener(new View.OnClickListener()
+    this.GoP.setOnClickListener(this.QnM);
+    this.GoQ.setOnClickListener(this.QnM);
+    this.GpX.setOnClickListener(this.QnM);
+    this.hey.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(164176);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSEditTextView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/search/FTSEditTextView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         FTSEditTextView.this.clearText();
         if (FTSEditTextView.h(FTSEditTextView.this) != null) {
           FTSEditTextView.h(FTSEditTextView.this).onClickClearTextBtn(paramAnonymousView);
@@ -451,16 +470,16 @@ public class FTSEditTextView
         AppMethodBeat.o(164176);
       }
     });
-    c.d(this.vr).afD(100).a(null);
-    if (al.isDarkMode()) {
-      this.rMW.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
+    c.f(this.vy).aoq(getLimitInputLength()).a(f.a.Quh).a(null);
+    if (ao.isDarkMode()) {
+      this.hey.getDrawable().setColorFilter(-1, PorterDuff.Mode.SRC_ATOP);
     }
     AppMethodBeat.o(164185);
   }
   
   public void setCanDeleteTag(boolean paramBoolean)
   {
-    this.KYR = paramBoolean;
+    this.QnL = paramBoolean;
   }
   
   public void setEditTextDrawableLeft(int paramInt)
@@ -468,45 +487,66 @@ public class FTSEditTextView
     AppMethodBeat.i(164187);
     if (paramInt == -1)
     {
-      this.vr.setCompoundDrawablesRelative(null, null, null, null);
+      this.vy.setCompoundDrawablesRelative(null, null, null, null);
       AppMethodBeat.o(164187);
       return;
     }
     Drawable localDrawable = getContext().getResources().getDrawable(paramInt);
     localDrawable.setBounds(0, 0, com.tencent.mm.cb.a.fromDPToPix(getContext(), 15), com.tencent.mm.cb.a.fromDPToPix(getContext(), 15));
-    this.vr.setCompoundDrawablesRelative(localDrawable, null, null, null);
+    this.vy.setCompoundDrawablesRelative(localDrawable, null, null, null);
     AppMethodBeat.o(164187);
   }
   
   public void setFtsEditTextListener(a parama)
   {
-    this.KYT = parama;
+    this.QnN = parama;
   }
   
   public void setHint(String paramString)
   {
     AppMethodBeat.i(164194);
-    this.vr.setHint(paramString);
+    this.vy.setHint(paramString);
     this.hint = paramString;
     AppMethodBeat.o(164194);
+  }
+  
+  public void setHintColor(int paramInt)
+  {
+    AppMethodBeat.i(205353);
+    this.vy.setHintTextColor(paramInt);
+    AppMethodBeat.o(205353);
+  }
+  
+  public void setTextColor(int paramInt)
+  {
+    AppMethodBeat.i(205354);
+    this.vy.setTextColor(paramInt);
+    AppMethodBeat.o(205354);
+  }
+  
+  public final void showVKB()
+  {
+    AppMethodBeat.i(205351);
+    ((InputMethodManager)getContext().getSystemService("input_method")).showSoftInput(this.vy, 0);
+    AppMethodBeat.o(205351);
   }
   
   public static abstract interface a
   {
     public abstract void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.b paramb);
     
-    public abstract boolean bAu();
+    public abstract boolean awE();
     
-    public abstract void cGz();
+    public abstract void dpw();
     
-    public abstract void mb(boolean paramBoolean);
+    public abstract void eh(boolean paramBoolean);
     
     public abstract void onClickClearTextBtn(View paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.search.FTSEditTextView
  * JD-Core Version:    0.7.0.1
  */

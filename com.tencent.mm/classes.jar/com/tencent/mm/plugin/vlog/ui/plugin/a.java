@@ -14,156 +14,197 @@ import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
 import com.tencent.mm.plugin.recordvideo.plugin.t;
 import com.tencent.mm.plugin.recordvideo.plugin.t.a;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder;
-import com.tencent.mm.plugin.vlog.model.v;
-import com.tencent.mm.plugin.vlog.ui.thumb.TrackCropView;
-import com.tencent.mm.plugin.vlog.ui.thumb.TrackCropView.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.videocomposition.h;
-import com.tencent.tav.coremedia.CMTimeRange;
-import d.f;
-import d.g;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
+import com.tencent.mm.plugin.vlog.model.ac;
+import com.tencent.mm.plugin.vlog.ui.thumb.MultiTrackCropView;
+import com.tencent.mm.plugin.vlog.ui.thumb.MultiTrackCropView.b;
+import com.tencent.mm.plugin.vlog.ui.thumb.MultiTrackRecyclerView;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.widget.imageview.WeImageView;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "layout", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "audioSeekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "cancelView", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getCancelView", "()Landroid/widget/ImageView;", "cancelView$delegate", "Lkotlin/Lazy;", "confirmed", "", "cropEnd", "", "cropStart", "hintText", "Landroid/widget/TextView;", "getHintText", "()Landroid/widget/TextView;", "hintText$delegate", "holder", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "inited", "getLayout", "()Landroid/view/ViewGroup;", "okView", "getOkView", "okView$delegate", "onCropCallback", "com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$onCropCallback$1;", "originEnd", "originStart", "panelRoot", "getPanelRoot", "panelRoot$delegate", "sourceDuration", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "trackCropView", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "getTrackCropView", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "trackCropView$delegate", "videoSeekable", "checkInit", "", "onBackPress", "onFinish", "onProgress", "timeMs", "onStart", "seekable", "setEnableLengthEdit", "enable", "setMediaPlayer", "videoSeeker", "audioSeeker", "setTrack", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "init", "setVisibility", "visibility", "", "updateHint", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MultiVideoPlayStatusPlugin$PlayStatusListener;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewSeekCallback;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$PreviewUpdateCallback;", "layout", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "cancelView", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "getCancelView", "()Landroid/widget/ImageView;", "cancelView$delegate", "Lkotlin/Lazy;", "confirmed", "", "cutDuration", "", "getCutDuration", "()J", "externalStatusIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getExternalStatusIcon", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "externalStatusIcon$delegate", "hintText", "Landroid/widget/TextView;", "getHintText", "()Landroid/widget/TextView;", "hintText$delegate", "holder", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorPanelHolder;", "inited", "getLayout", "()Landroid/view/ViewGroup;", "maxTrackEnd", "okView", "getOkView", "okView$delegate", "onCropCallback", "com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$onCropCallback$1;", "panelRoot", "getPanelRoot", "panelRoot$delegate", "playStatusIcon", "getPlayStatusIcon", "playStatusIcon$delegate", "progressIndicator", "Landroid/view/View;", "getProgressIndicator", "()Landroid/view/View;", "progressIndicator$delegate", "restorer", "Lcom/tencent/mm/plugin/vlog/ui/plugin/CompositionStateRestorer;", "seekable", "Lcom/tencent/mm/plugin/vlog/ui/plugin/EditMultiPreviewPlugin$Seekable;", "sourceDuration", "getSourceDuration", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "trackCropView", "Lcom/tencent/mm/plugin/vlog/ui/thumb/MultiTrackCropView;", "getTrackCropView", "()Lcom/tencent/mm/plugin/vlog/ui/thumb/MultiTrackCropView;", "trackCropView$delegate", "cache", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "composition", "checkInit", "", "onBackPress", "onFinish", "onProgress", "timeMs", "onStart", "onUpdate", "seekTo", "seekToOriginPosition", "onVideoPause", "onVideoPlay", "restore", "restoreTrackTime", "setEnableLengthEdit", "enable", "setMediaPlayer", "videoSeeker", "audioSeeker", "setTrack", "setVisibility", "visibility", "", "updateHint", "Companion", "plugin-vlog_release"})
 public final class a
-  implements t, c.c
+  implements t, e.c, e.d, v.a
 {
-  private final f CdT;
-  private final f CdU;
-  private final f CdV;
-  private final f CdW;
-  private final f CdX;
-  long CdY;
-  long CdZ;
-  long Cea;
-  long Ceb;
-  private long Cec;
-  boolean Ced;
-  public c.e Cee;
-  public c.e Cef;
-  private final g Ceg;
-  private final ViewGroup Ceh;
-  final String TAG;
-  private boolean gff;
-  final d tbP;
-  final EditorPanelHolder tcK;
+  public static final a.a GGv;
+  private e.e GDw;
+  private final f GGj;
+  private final f GGk;
+  private final f GGl;
+  private final f GGm;
+  private final f GGn;
+  private final f GGo;
+  private final f GGp;
+  private final f GGq;
+  private long GGr;
+  private boolean GGs;
+  private final b GGt;
+  private final j GGu;
+  private boolean gKM;
+  final ViewGroup wgq;
+  final d wgr;
+  private final EditorPanelHolder wji;
+  
+  static
+  {
+    AppMethodBeat.i(191165);
+    GGv = new a.a((byte)0);
+    AppMethodBeat.o(191165);
+  }
   
   public a(ViewGroup paramViewGroup, d paramd)
   {
-    AppMethodBeat.i(191576);
-    this.Ceh = paramViewGroup;
-    this.tbP = paramd;
-    this.TAG = "MicroMsg.CompositionEditPlugin";
-    paramViewGroup = this.Ceh.getContext();
+    AppMethodBeat.i(191164);
+    this.wgq = paramViewGroup;
+    this.wgr = paramd;
+    paramViewGroup = this.wgq.getContext();
     p.g(paramViewGroup, "layout.context");
     paramViewGroup = new EditorPanelHolder(paramViewGroup);
-    this.Ceh.addView((View)paramViewGroup);
+    this.wgq.addView((View)paramViewGroup);
     paramViewGroup.setVisibility(8);
-    this.tcK = paramViewGroup;
-    this.CdT = g.O((d.g.a.a)new h(this));
-    this.CdU = g.O((d.g.a.a)new i(this));
-    this.CdV = g.O((d.g.a.a)new e(this));
-    this.CdW = g.O((d.g.a.a)new a(this));
-    this.CdX = g.O((d.g.a.a)new f(this));
-    this.Ceg = new g(this);
-    AppMethodBeat.o(191576);
+    this.wji = paramViewGroup;
+    this.GGj = g.ah((kotlin.g.a.a)new k(this));
+    this.GGk = g.ah((kotlin.g.a.a)new n(this));
+    this.GGl = g.ah((kotlin.g.a.a)new h(this));
+    this.GGm = g.ah((kotlin.g.a.a)new b(this));
+    this.GGn = g.ah((kotlin.g.a.a)new i(this));
+    this.GGo = g.ah((kotlin.g.a.a)new m(this));
+    this.GGp = g.ah((kotlin.g.a.a)new g(this));
+    this.GGq = g.ah((kotlin.g.a.a)new l(this));
+    this.GGt = new b();
+    this.GGu = new j(this);
+    AppMethodBeat.o(191164);
   }
   
-  private final TextView ewK()
+  private final void aTL()
   {
-    AppMethodBeat.i(191569);
-    TextView localTextView = (TextView)this.CdV.getValue();
-    AppMethodBeat.o(191569);
+    AppMethodBeat.i(191153);
+    if (this.gKM)
+    {
+      AppMethodBeat.o(191153);
+      return;
+    }
+    this.gKM = true;
+    this.wji.setCloseTouchOutside(false);
+    fCP().setCallback((MultiTrackCropView.b)this.GGu);
+    ((ImageView)this.GGm.getValue()).setOnClickListener((View.OnClickListener)new c(this));
+    ((ImageView)this.GGn.getValue()).setOnClickListener((View.OnClickListener)new d(this));
+    fCQ().setOnClickListener((View.OnClickListener)new e(this));
+    this.wji.setOnVisibleChangeCallback((kotlin.g.a.b)new f(this));
+    AppMethodBeat.o(191153);
+  }
+  
+  private final TextView dpN()
+  {
+    AppMethodBeat.i(191151);
+    TextView localTextView = (TextView)this.GGl.getValue();
+    AppMethodBeat.o(191151);
     return localTextView;
   }
   
-  private final void ewL()
+  private final void eTf()
   {
-    AppMethodBeat.i(191570);
-    if (this.gff)
-    {
-      AppMethodBeat.o(191570);
-      return;
-    }
-    this.gff = true;
-    this.tcK.setCloseTouchOutside(false);
-    ewJ().setCallback((TrackCropView.a)this.Ceg);
-    ((ImageView)this.CdW.getValue()).setOnClickListener((View.OnClickListener)new b(this));
-    ((ImageView)this.CdX.getValue()).setOnClickListener((View.OnClickListener)new c(this));
-    this.tcK.setOnVisibleChangeCallback((d.g.a.b)new d(this));
-    AppMethodBeat.o(191570);
-  }
-  
-  public final void BO(long paramLong)
-  {
-    AppMethodBeat.i(191575);
-    if (this.tcK.bnS()) {
-      ewJ().setProgress(paramLong);
-    }
-    AppMethodBeat.o(191575);
-  }
-  
-  public final void a(v paramv, boolean paramBoolean)
-  {
-    AppMethodBeat.i(191573);
-    p.h(paramv, "composition");
-    if ((paramBoolean) && (this.Ceb != 0L))
-    {
-      this.Ceg.at(this.Cea, this.Ceb);
-      AppMethodBeat.o(191573);
-      return;
-    }
-    this.Ced = false;
-    ewL();
-    this.CdY = (paramv.BXI.evI().getStartUs() / 1000L);
-    this.CdZ = (paramv.BXI.evI().getEndUs() / 1000L);
-    this.Cea = this.CdY;
-    this.Ceb = this.CdZ;
-    this.tcK.setShow(true);
-    this.Cec = paramv.BXI.fUa();
-    TrackCropView.a(ewJ(), paramv);
-    dRe();
-    AppMethodBeat.o(191573);
-  }
-  
-  public final void a(c.e parame) {}
-  
-  public final boolean aoQ()
-  {
-    AppMethodBeat.i(191572);
-    if (this.tcK.bnS())
-    {
-      this.Ced = false;
-      this.tcK.setShow(false);
-      AppMethodBeat.o(191572);
-      return true;
-    }
-    AppMethodBeat.o(191572);
-    return false;
-  }
-  
-  public final void azm() {}
-  
-  final void dRe()
-  {
-    AppMethodBeat.i(191574);
-    int i = Math.round((float)this.Cec / 1000.0F);
-    int j = Math.round((float)(this.Ceb - this.Cea) / 1000.0F);
-    TextView localTextView = ewK();
+    AppMethodBeat.i(191159);
+    long l1 = kotlin.h.a.L((float)fCP().getCutDuration() / 1000.0F);
+    long l2 = kotlin.h.a.L((float)Math.min(this.GGr, fCP().getCutDuration()) / 1000.0F);
+    TextView localTextView = dpN();
     p.g(localTextView, "hintText");
-    localTextView.setText((CharSequence)this.tcK.getContext().getString(2131767223, new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
-    AppMethodBeat.o(191574);
+    localTextView.setText((CharSequence)this.wji.getContext().getString(2131767122, new Object[] { Long.valueOf(l1), Long.valueOf(l2) }));
+    localTextView = dpN();
+    p.g(localTextView, "hintText");
+    if (fCP().getSourceDuration() > this.GGr) {}
+    for (int i = 0;; i = 4)
+    {
+      localTextView.setVisibility(i);
+      AppMethodBeat.o(191159);
+      return;
+    }
   }
   
-  final TrackCropView ewJ()
+  private final MultiTrackCropView fCP()
   {
-    AppMethodBeat.i(191568);
-    TrackCropView localTrackCropView = (TrackCropView)this.CdU.getValue();
-    AppMethodBeat.o(191568);
-    return localTrackCropView;
+    AppMethodBeat.i(191150);
+    MultiTrackCropView localMultiTrackCropView = (MultiTrackCropView)this.GGk.getValue();
+    AppMethodBeat.o(191150);
+    return localMultiTrackCropView;
+  }
+  
+  private final WeImageView fCQ()
+  {
+    AppMethodBeat.i(191152);
+    WeImageView localWeImageView = (WeImageView)this.GGq.getValue();
+    AppMethodBeat.o(191152);
+    return localWeImageView;
+  }
+  
+  public final void a(ac paramac, long paramLong, boolean paramBoolean)
+  {
+    AppMethodBeat.i(191160);
+    if ((paramac != null) && (paramLong >= 0L))
+    {
+      MultiTrackCropView localMultiTrackCropView = fCP();
+      p.h(paramac, "composition");
+      if (localMultiTrackCropView.GPB)
+      {
+        localMultiTrackCropView.GPB = false;
+        Log.d("MicroMsg.MultiTrackCropView", "onUpdateComposition, seekTo: ".concat(String.valueOf(paramLong)));
+        localMultiTrackCropView.GPC = true;
+        localMultiTrackCropView.GPD = paramLong;
+        localMultiTrackCropView.GJb = true;
+        int i = localMultiTrackCropView.GPz;
+        int j = (int)((float)((paramLong - localMultiTrackCropView.wbl) * localMultiTrackCropView.GJa) * 1.0F / (float)(localMultiTrackCropView.GhH - localMultiTrackCropView.wbl));
+        paramac = localMultiTrackCropView.GPx;
+        if (paramac == null) {
+          p.btv("recyclerView");
+        }
+        paramac.smoothScrollBy(i + j - localMultiTrackCropView.FVU, 0);
+      }
+    }
+    AppMethodBeat.o(191160);
+  }
+  
+  public final void a(e.e parame)
+  {
+    this.GDw = parame;
+  }
+  
+  public final void aSs() {}
+  
+  public final void b(ac paramac, long paramLong)
+  {
+    AppMethodBeat.i(191158);
+    p.h(paramac, "composition");
+    this.GGs = false;
+    aTL();
+    this.GGr = paramLong;
+    this.wji.setShow(true);
+    fCP().setTrack(paramac);
+    eTf();
+    AppMethodBeat.o(191158);
+  }
+  
+  public final ac c(ac paramac)
+  {
+    AppMethodBeat.i(191156);
+    p.h(paramac, "composition");
+    paramac = this.GGt.c(paramac);
+    AppMethodBeat.o(191156);
+    return paramac;
+  }
+  
+  public final ac c(ac paramac, boolean paramBoolean)
+  {
+    AppMethodBeat.i(191157);
+    p.h(paramac, "composition");
+    paramac = this.GGt.c(paramac, paramBoolean);
+    AppMethodBeat.o(191157);
+    return paramac;
   }
   
   public final String name()
@@ -173,20 +214,57 @@ public final class a
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
+  public final boolean onBackPress()
+  {
+    AppMethodBeat.i(191155);
+    if (this.wji.bJw())
+    {
+      this.GGs = false;
+      this.wji.setShow(false);
+      AppMethodBeat.o(191155);
+      return true;
+    }
+    AppMethodBeat.o(191155);
+    return false;
+  }
+  
   public final void onDetach() {}
   
   public final void onPause() {}
   
+  public final void onProgress(long paramLong)
+  {
+    AppMethodBeat.i(191161);
+    if (this.wji.bJw()) {
+      fCP().setProgress(paramLong);
+    }
+    AppMethodBeat.o(191161);
+  }
+  
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(191577);
+    AppMethodBeat.i(191166);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(191577);
+    AppMethodBeat.o(191166);
   }
   
   public final void onResume() {}
+  
+  public final void onVideoPause()
+  {
+    AppMethodBeat.i(191163);
+    fCQ().setImageDrawable(ar.m(this.wgq.getContext(), 2131690647, -1));
+    AppMethodBeat.o(191163);
+  }
+  
+  public final void onVideoPlay()
+  {
+    AppMethodBeat.i(191162);
+    fCQ().setImageDrawable(ar.m(this.wgq.getContext(), 2131690631, -1));
+    AppMethodBeat.o(191162);
+  }
   
   public final void release() {}
   
@@ -194,46 +272,27 @@ public final class a
   
   public final void setVisibility(int paramInt)
   {
-    AppMethodBeat.i(191571);
+    AppMethodBeat.i(191154);
     if (paramInt == 8)
     {
-      this.Ced = false;
-      this.tcK.setShow(false);
+      this.GGs = false;
+      this.wji.setShow(false);
     }
-    AppMethodBeat.o(191571);
+    AppMethodBeat.o(191154);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class a
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class b
     extends q
-    implements d.g.a.a<ImageView>
+    implements kotlin.g.a.a<ImageView>
   {
-    a(a parama)
+    b(a parama)
     {
       super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class b
-    implements View.OnClickListener
-  {
-    b(a parama) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(191557);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$checkInit$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      this.Cei.Ced = false;
-      this.Cei.tcK.setShow(false);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$checkInit$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(191557);
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -241,43 +300,58 @@ public final class a
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(191558);
+      AppMethodBeat.i(191134);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$checkInit$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      this.Cei.Ced = true;
-      this.Cei.tcK.setShow(false);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$checkInit$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(191558);
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$checkInit$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      a.a(this.GGw, false);
+      a.b(this.GGw).setShow(false);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$checkInit$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(191134);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
-    extends q
-    implements d.g.a.b<Boolean, z>
+    implements View.OnClickListener
   {
-    d(a parama)
+    d(a parama) {}
+    
+    public final void onClick(View paramView)
     {
-      super();
+      AppMethodBeat.i(191135);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$checkInit$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      a.a(this.GGw, true);
+      a.b(this.GGw).setShow(false);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$checkInit$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(191135);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class e
-    extends q
-    implements d.g.a.a<TextView>
+    implements View.OnClickListener
   {
-    e(a parama)
+    e(a parama) {}
+    
+    public final void onClick(View paramView)
     {
-      super();
+      AppMethodBeat.i(191136);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$checkInit$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      a.c(this.GGw).performClick();
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$checkInit$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(191136);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
   static final class f
     extends q
-    implements d.g.a.a<ImageView>
+    implements kotlin.g.a.b<Boolean, x>
   {
     f(a parama)
     {
@@ -285,76 +359,21 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView$OnCropCallback;", "onCrop", "", "start", "", "end", "onUpdate", "pause", "seekTo", "time", "plugin-vlog_release"})
-  public static final class g
-    implements TrackCropView.a
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class g
+    extends q
+    implements kotlin.g.a.a<WeImageView>
   {
-    public final void as(long paramLong1, long paramLong2)
+    g(a parama)
     {
-      AppMethodBeat.i(191562);
-      this.Cei.Cea = paramLong1;
-      this.Cei.Ceb = paramLong2;
-      this.Cei.dRe();
-      AppMethodBeat.o(191562);
-    }
-    
-    public final void at(long paramLong1, long paramLong2)
-    {
-      AppMethodBeat.i(191563);
-      ae.i(this.Cei.TAG, "onScrollStateChanged: " + paramLong1 + ", " + paramLong2);
-      Object localObject = new Bundle();
-      this.Cei.Cea = paramLong1;
-      this.Cei.Ceb = paramLong2;
-      this.Cei.dRe();
-      ((Bundle)localObject).putLong("EDIT_VLOG_TRACK_CROP_START", paramLong1);
-      ((Bundle)localObject).putLong("EDIT_VLOG_TRAKC_CROP_END", paramLong2);
-      ((Bundle)localObject).putBoolean("EDIT_VLOG_TRACK_CROP_CHANGE", true);
-      this.Cei.tbP.a(d.c.xVv, (Bundle)localObject);
-      localObject = this.Cei.Cee;
-      if (localObject != null)
-      {
-        ((c.e)localObject).resume();
-        AppMethodBeat.o(191563);
-        return;
-      }
-      AppMethodBeat.o(191563);
-    }
-    
-    public final void pause()
-    {
-      AppMethodBeat.i(191564);
-      c.e locale = this.Cei.Cee;
-      if (locale != null) {
-        locale.pause();
-      }
-      locale = this.Cei.Cef;
-      if (locale != null)
-      {
-        locale.pause();
-        AppMethodBeat.o(191564);
-        return;
-      }
-      AppMethodBeat.o(191564);
-    }
-    
-    public final void seekTo(long paramLong)
-    {
-      AppMethodBeat.i(191565);
-      c.e locale = this.Cei.Cee;
-      if (locale != null)
-      {
-        locale.BP(paramLong);
-        AppMethodBeat.o(191565);
-        return;
-      }
-      AppMethodBeat.o(191565);
+      super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/view/ViewGroup;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class h
     extends q
-    implements d.g.a.a<ViewGroup>
+    implements kotlin.g.a.a<TextView>
   {
     h(a parama)
     {
@@ -362,12 +381,133 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/vlog/ui/thumb/TrackCropView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class i
     extends q
-    implements d.g.a.a<TrackCropView>
+    implements kotlin.g.a.a<ImageView>
   {
     i(a parama)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/vlog/ui/plugin/CompositionEditPlugin$onCropCallback$1", "Lcom/tencent/mm/plugin/vlog/ui/thumb/MultiTrackCropView$OnCropCallback;", "onTapDown", "", "position", "", "left", "", "startTimeMs", "", "endTimeMs", "onTapMove", "onTapUp", "pause", "resume", "seekTo", "time", "plugin-vlog_release"})
+  public static final class j
+    implements MultiTrackCropView.b
+  {
+    public final void a(int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(191141);
+      Object localObject = a.e(this.GGw);
+      p.g(localObject, "progressIndicator");
+      ((View)localObject).setVisibility(4);
+      localObject = a.f(this.GGw);
+      if (localObject != null) {
+        ((e.e)localObject).pause();
+      }
+      localObject = this.GGw.wgr;
+      d.c localc = d.c.BWe;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("EDIT_COMPOSITION_TRACK_INDEX", paramInt);
+      localBundle.putBoolean("EDIT_COMPOSITION_LEFT", paramBoolean);
+      localBundle.putLong("EDIT_VLOG_TRACK_CROP_START", paramLong1);
+      localBundle.putLong("EDIT_VLOG_TRAKC_CROP_END", paramLong2);
+      ((d)localObject).a(localc, localBundle);
+      AppMethodBeat.o(191141);
+    }
+    
+    public final void b(int paramInt, boolean paramBoolean, long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(191142);
+      Object localObject = a.e(this.GGw);
+      p.g(localObject, "progressIndicator");
+      ((View)localObject).setVisibility(0);
+      localObject = this.GGw.wgr;
+      d.c localc = d.c.BWe;
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("EDIT_COMPOSITION_TRACK_INDEX", paramInt);
+      localBundle.putBoolean("EDIT_COMPOSITION_LEFT", paramBoolean);
+      localBundle.putLong("EDIT_VLOG_TRACK_CROP_START", paramLong1);
+      localBundle.putLong("EDIT_VLOG_TRAKC_CROP_END", paramLong2);
+      ((d)localObject).a(localc, localBundle);
+      a.g(this.GGw);
+      AppMethodBeat.o(191142);
+    }
+    
+    public final void fCR()
+    {
+      AppMethodBeat.i(191143);
+      a.g(this.GGw);
+      AppMethodBeat.o(191143);
+    }
+    
+    public final void pause()
+    {
+      AppMethodBeat.i(191144);
+      e.e locale = a.f(this.GGw);
+      if (locale != null)
+      {
+        locale.pause();
+        AppMethodBeat.o(191144);
+        return;
+      }
+      AppMethodBeat.o(191144);
+    }
+    
+    public final void seekTo(long paramLong)
+    {
+      AppMethodBeat.i(191145);
+      e.e locale = a.f(this.GGw);
+      if (locale != null)
+      {
+        locale.Lb(paramLong);
+        AppMethodBeat.o(191145);
+        return;
+      }
+      AppMethodBeat.o(191145);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/ViewGroup;", "invoke"})
+  static final class k
+    extends q
+    implements kotlin.g.a.a<ViewGroup>
+  {
+    k(a parama)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class l
+    extends q
+    implements kotlin.g.a.a<WeImageView>
+  {
+    l(a parama)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/view/View;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class m
+    extends q
+    implements kotlin.g.a.a<View>
+  {
+    m(a parama)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/vlog/ui/thumb/MultiTrackCropView;", "kotlin.jvm.PlatformType", "invoke"})
+  static final class n
+    extends q
+    implements kotlin.g.a.a<MultiTrackCropView>
+  {
+    n(a parama)
     {
       super();
     }
@@ -375,7 +515,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.a
  * JD-Core Version:    0.7.0.1
  */

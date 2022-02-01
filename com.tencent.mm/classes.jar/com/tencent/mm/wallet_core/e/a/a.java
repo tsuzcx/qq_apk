@@ -1,16 +1,18 @@
 package com.tencent.mm.wallet_core.e.a;
 
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.model.v;
-import com.tencent.mm.network.e;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cku;
-import com.tencent.mm.protocal.protobuf.ckv;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.protocal.protobuf.dbc;
+import com.tencent.mm.protocal.protobuf.dbd;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.wallet_core.c.ae;
 import com.tencent.mm.wallet_core.c.s;
 import com.tencent.mm.wallet_core.c.x;
 import com.tenpay.android.wechat.TenpayUtil;
@@ -25,54 +27,54 @@ public abstract class a
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = new b.a();
-      ((b.a)localObject1).hQF = new cku();
-      ((b.a)localObject1).hQG = new ckv();
-      ((b.a)localObject1).uri = "/cgi-bin/mmpay-bin/payu";
-      ((b.a)localObject1).funcId = 1518;
-      ((b.a)localObject1).hQH = 0;
-      ((b.a)localObject1).respCmdId = 0;
-      localObject1 = ((b.a)localObject1).aDS();
-      ((b)localObject1).setIsUserCmd(true);
+      localObject1 = new d.a();
+      ((d.a)localObject1).iLN = new dbc();
+      ((d.a)localObject1).iLO = new dbd();
+      ((d.a)localObject1).uri = "/cgi-bin/mmpay-bin/payu";
+      ((d.a)localObject1).funcId = 1518;
+      ((d.a)localObject1).iLP = 0;
+      ((d.a)localObject1).respCmdId = 0;
+      localObject1 = ((d.a)localObject1).aXF();
+      ((d)localObject1).setIsUserCmd(true);
     }
-    localObject2 = (cku)((b)localObject1).hQD.hQJ;
+    localObject2 = (dbc)((d)localObject1).iLK.iLR;
     if (paramBoolean1) {
-      ((cku)localObject2).HcN = eIr();
+      ((dbc)localObject2).MhQ = fPU();
     }
     if (paramBoolean2) {
-      ((cku)localObject2).HcO = 1;
+      ((dbc)localObject2).MhR = 1;
     }
-    setCommReqResp((b)localObject1);
+    setCommReqResp((d)localObject1);
   }
   
-  public int doScene(e parame, f paramf)
+  public int doScene(g paramg, i parami)
   {
-    this.callback = paramf;
-    if (!v.aAR())
+    this.callback = parami;
+    if (!z.aUo())
     {
-      com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.NetScenePayUBase", "hy: serious error: not payupay");
-      paramf.onSceneEnd(1000, -100868, "Pay Method Err", this);
+      Log.e("MicroMsg.NetScenePayUBase", "hy: serious error: not payupay");
+      parami.onSceneEnd(1000, -100868, "Pay Method Err", this);
       return 1;
     }
-    return dispatch(parame, this.rr, this);
+    return dispatch(paramg, this.rr, this);
   }
   
-  public int doSceneSimulately(b paramb, e parame, f paramf)
+  public int doSceneSimulately(d paramd, g paramg, i parami)
   {
-    paramb = (cku)paramb.hQD.hQJ;
-    if (paramb.HcP != null) {
-      new String(paramb.HcP.getBufferToBytes());
+    paramd = (dbc)paramd.iLK.iLR;
+    if (paramd.MhS != null) {
+      new String(paramd.MhS.getBufferToBytes());
     }
-    if (paramb.Hxc != null) {
-      new String(paramb.Hxc.getBufferToBytes());
+    if (paramd.MGc != null) {
+      new String(paramd.MGc.getBufferToBytes());
     }
-    ak.getContext();
+    MMApplicationContext.getContext();
     getPayCgicmd();
-    com.tencent.mm.wallet_core.c.ae.fWa();
+    ae.hhx();
     return -1;
   }
   
-  public abstract int eIr();
+  public abstract int fPU();
   
   public String getEncryptUrl(String paramString)
   {
@@ -81,19 +83,19 @@ public abstract class a
   
   public int getPayCgicmd()
   {
-    return eIr();
+    return fPU();
   }
   
-  public x getRetModel(b paramb)
+  public x getRetModel(d paramd)
   {
-    paramb = (ckv)paramb.hQE.hQJ;
+    paramd = (dbd)paramd.iLL.iLR;
     x localx = new x();
-    localx.HcT = paramb.HcT;
-    localx.HcS = paramb.HcS;
-    localx.HcR = paramb.HcR;
-    localx.HcQ = paramb.HcQ;
-    localx.qkR = paramb.Hxe;
-    localx.LVm = paramb.Hxd;
+    localx.MhW = paramd.MhW;
+    localx.MhV = paramd.MhV;
+    localx.MhU = paramd.MhU;
+    localx.MhT = paramd.MhT;
+    localx.rBM = paramd.MGe;
+    localx.Ruc = paramd.MGd;
     return localx;
   }
   
@@ -102,9 +104,9 @@ public abstract class a
     return 1518;
   }
   
-  public void putToReqText(b paramb, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
+  public void putToReqText(d paramd, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
   {
-    ((cku)paramb.hQD.hQJ).HcP = paramSKBuiltinBuffer_t;
+    ((dbc)paramd.iLK.iLR).MhS = paramSKBuiltinBuffer_t;
   }
   
   public void putToRequest(StringBuilder paramStringBuilder, String paramString)
@@ -112,14 +114,14 @@ public abstract class a
     paramStringBuilder.append(URLEncoder.encode(paramString));
   }
   
-  public void putToWXReqText(b paramb, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
+  public void putToWXReqText(d paramd, SKBuiltinBuffer_t paramSKBuiltinBuffer_t)
   {
-    ((cku)paramb.hQD.hQJ).Hxc = paramSKBuiltinBuffer_t;
+    ((dbc)paramd.iLK.iLR).MGc = paramSKBuiltinBuffer_t;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.e.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -5,36 +5,54 @@ import android.os.Environment;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.r;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.o;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class b
 {
-  public static final String Jmc;
+  public static final String OvV;
   
   static
   {
     AppMethodBeat.i(145591);
-    Jmc = Environment.getExternalStorageDirectory() + "/tencent/MicroMsg/memory/";
+    OvV = Environment.getExternalStorageDirectory() + "/tencent/MicroMsg/memory/";
     AppMethodBeat.o(145591);
   }
   
-  private static boolean aQ(boolean paramBoolean1, boolean paramBoolean2)
+  private static boolean ai(o paramo)
+  {
+    AppMethodBeat.i(170137);
+    if (paramo.exists())
+    {
+      AppMethodBeat.o(170137);
+      return true;
+    }
+    if (!paramo.mkdirs())
+    {
+      boolean bool = paramo.exists();
+      AppMethodBeat.o(170137);
+      return bool;
+    }
+    AppMethodBeat.o(170137);
+    return true;
+  }
+  
+  private static boolean ba(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(145584);
-    if (!fyv())
+    if (!gGj())
     {
       AppMethodBeat.o(145584);
       return false;
     }
-    Object localObject = new k(Jmc);
-    k[] arrayOfk = ((k)localObject).fTj();
-    if (arrayOfk.length == 0)
+    Object localObject = new o(OvV);
+    o[] arrayOfo = ((o)localObject).het();
+    if (arrayOfo.length == 0)
     {
       AppMethodBeat.o(145584);
       return true;
@@ -42,14 +60,14 @@ public final class b
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss");
     long l1 = new Date().getTime();
     boolean bool1 = true;
-    int j = arrayOfk.length;
+    int j = arrayOfo.length;
     int i = 0;
-    k localk;
+    o localo;
     String str;
     if (i < j)
     {
-      localk = arrayOfk[i];
-      str = localk.getName();
+      localo = arrayOfo[i];
+      str = localo.getName();
       int k = str.indexOf(".hprof");
       if (k > 0) {
         str = str.substring(0, k);
@@ -62,27 +80,27 @@ public final class b
           if (localDate != null) {
             continue;
           }
-          localk.delete();
+          localo.delete();
           bool2 = bool1;
         }
         catch (ParseException localParseException)
         {
-          ae.e("MicroMsg.MemoryDumpManager", "hprofFileCheck parse date fail %s", new Object[] { str });
-          localk.delete();
+          Log.e("MicroMsg.MemoryDumpManager", "hprofFileCheck parse date fail %s", new Object[] { str });
+          localo.delete();
           boolean bool2 = bool1;
           continue;
           long l2 = localParseException.getTime();
           if (l2 < l1) {
             continue;
           }
-          localk.delete();
+          localo.delete();
           bool2 = bool1;
           continue;
           l2 = (l1 - l2) / 86400000L;
           if (l2 < 3L) {
             continue;
           }
-          localk.delete();
+          localo.delete();
           bool2 = bool1;
           continue;
           bool2 = bool1;
@@ -99,17 +117,17 @@ public final class b
         i += 1;
         bool1 = bool2;
         break;
-        localk.delete();
+        localo.delete();
         bool2 = bool1;
       }
     }
-    localObject = ((k)localObject).fTj();
+    localObject = ((o)localObject).het();
     if (localObject.length > 5)
     {
       if (paramBoolean2) {
-        Toast.makeText(ak.getContext(), "dump fail, hprof file size exceed", 0).show();
+        Toast.makeText(MMApplicationContext.getContext(), "dump fail, hprof file size exceed", 0).show();
       }
-      ae.w("MicroMsg.MemoryDumpManager", "hprofFileCheck hprofFileDir.length() too large " + localObject.length);
+      Log.w("MicroMsg.MemoryDumpManager", "hprofFileCheck hprofFileDir.length() too large " + localObject.length);
       AppMethodBeat.o(145584);
       return false;
     }
@@ -117,10 +135,10 @@ public final class b
     return bool1;
   }
   
-  public static String aR(boolean paramBoolean1, boolean paramBoolean2)
+  public static String bb(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(145585);
-    if (!aQ(paramBoolean1, paramBoolean2))
+    if (!ba(paramBoolean1, paramBoolean2))
     {
       AppMethodBeat.o(145585);
       return null;
@@ -128,75 +146,75 @@ public final class b
     long l = System.currentTimeMillis();
     String str = new SimpleDateFormat("yyyy_MM_dd_HH_mm_ss").format(new Date());
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(Jmc).append(str).append(".hprof");
+    ((StringBuffer)localObject).append(OvV).append(str).append(".hprof");
     localObject = ((StringBuffer)localObject).toString();
-    if (!ac(new k((String)localObject).fTg()))
+    if (!ai(new o((String)localObject).heq()))
     {
-      ae.i("MicroMsg.MemoryDumpManager", "failed to create dir for hprof file: %s", new Object[] { localObject });
+      Log.i("MicroMsg.MemoryDumpManager", "failed to create dir for hprof file: %s", new Object[] { localObject });
       AppMethodBeat.o(145585);
       return null;
     }
     try
     {
-      fyw();
+      gGk();
       Debug.dumpHprofData((String)localObject);
       if (paramBoolean2) {
-        Toast.makeText(ak.getContext(), (String)localObject + " hprof file has saved ", 0).show();
+        Toast.makeText(MMApplicationContext.getContext(), (String)localObject + " hprof file has saved ", 0).show();
       }
-      ae.i("MicroMsg.MemoryDumpManager", "dump file %s, use time %d", new Object[] { str, Long.valueOf(bu.DD(l)) });
+      Log.i("MicroMsg.MemoryDumpManager", "dump file %s, use time %d", new Object[] { str, Long.valueOf(Util.milliSecondsToNow(l)) });
       AppMethodBeat.o(145585);
       return localObject;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.MemoryDumpManager", " dumpHprofFile Exception");
+      Log.e("MicroMsg.MemoryDumpManager", " dumpHprofFile Exception");
       AppMethodBeat.o(145585);
     }
     return null;
   }
   
-  public static String aWF(String paramString)
+  public static String blE(String paramString)
   {
     AppMethodBeat.i(145586);
-    if (!fyv())
+    if (!gGj())
     {
       AppMethodBeat.o(145586);
       return null;
     }
     long l = System.currentTimeMillis();
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(Jmc).append(paramString).append(".hprof");
+    ((StringBuffer)localObject).append(OvV).append(paramString).append(".hprof");
     localObject = ((StringBuffer)localObject).toString();
-    if (!ac(new k((String)localObject).fTg()))
+    if (!ai(new o((String)localObject).heq()))
     {
-      ae.i("MicroMsg.MemoryDumpManager", "failed to create dir for hprof file: %s", new Object[] { localObject });
+      Log.i("MicroMsg.MemoryDumpManager", "failed to create dir for hprof file: %s", new Object[] { localObject });
       AppMethodBeat.o(145586);
       return null;
     }
     try
     {
-      fyw();
+      gGk();
       Debug.dumpHprofData((String)localObject);
-      Toast.makeText(ak.getContext(), (String)localObject + " hprof file has saved ", 0).show();
-      ae.i("MicroMsg.MemoryDumpManager", "dump file %s, use time %d", new Object[] { paramString, Long.valueOf(bu.DD(l)) });
-      paramString = new k((String)localObject);
+      Toast.makeText(MMApplicationContext.getContext(), (String)localObject + " hprof file has saved ", 0).show();
+      Log.i("MicroMsg.MemoryDumpManager", "dump file %s, use time %d", new Object[] { paramString, Long.valueOf(Util.milliSecondsToNow(l)) });
+      paramString = new o((String)localObject);
       if (!paramString.exists())
       {
-        ae.e("MicroMsg.MemoryDumpManager", "Hprof dump file is not exist");
+        Log.e("MicroMsg.MemoryDumpManager", "Hprof dump file is not exist");
         AppMethodBeat.o(145586);
         return null;
       }
     }
     catch (Exception paramString)
     {
-      ae.e("MicroMsg.MemoryDumpManager", " dumpHprofFile Exception");
+      Log.e("MicroMsg.MemoryDumpManager", " dumpHprofFile Exception");
       AppMethodBeat.o(145586);
       return null;
     }
     paramString = r.a(paramString, true, null);
     if (paramString == null)
     {
-      ae.e("MicroMsg.MemoryDumpManager", "zip hprof file fail");
+      Log.e("MicroMsg.MemoryDumpManager", "zip hprof file fail");
       AppMethodBeat.o(145586);
       return null;
     }
@@ -204,42 +222,24 @@ public final class b
     return paramString;
   }
   
-  private static boolean ac(k paramk)
-  {
-    AppMethodBeat.i(170137);
-    if (paramk.exists())
-    {
-      AppMethodBeat.o(170137);
-      return true;
-    }
-    if (!paramk.mkdirs())
-    {
-      boolean bool = paramk.exists();
-      AppMethodBeat.o(170137);
-      return bool;
-    }
-    AppMethodBeat.o(170137);
-    return true;
-  }
-  
-  private static boolean fyv()
+  private static boolean gGj()
   {
     AppMethodBeat.i(145583);
-    if (!c.abo())
+    if (!c.apn())
     {
-      ae.i("MicroMsg.MemoryDumpManager", "Hprof sdcard is invalid");
+      Log.i("MicroMsg.MemoryDumpManager", "Hprof sdcard is invalid");
       AppMethodBeat.o(145583);
       return false;
     }
-    k localk = new k(Jmc);
-    if (!localk.exists()) {
-      localk.mkdirs();
+    o localo = new o(OvV);
+    if (!localo.exists()) {
+      localo.mkdirs();
     }
     AppMethodBeat.o(145583);
     return true;
   }
   
-  public static void fyw()
+  public static void gGk()
   {
     AppMethodBeat.i(145588);
     Runtime.getRuntime().gc();
@@ -248,7 +248,7 @@ public final class b
   }
   
   /* Error */
-  public static void fyx()
+  public static void gGl()
   {
     // Byte code:
     //   0: ldc 250
@@ -256,7 +256,7 @@ public final class b
     //   5: getstatic 256	android/os/Build$VERSION:SDK_INT	I
     //   8: bipush 14
     //   10: if_icmplt +17 -> 27
-    //   13: getstatic 262	com/tencent/mm/performance/a/a:iMQ	Lcom/tencent/mm/performance/a/a$a;
+    //   13: getstatic 262	com/tencent/mm/performance/a/a:jJE	Lcom/tencent/mm/performance/a/a$a;
     //   16: invokeinterface 267 1 0
     //   21: ldc 250
     //   23: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -264,9 +264,9 @@ public final class b
     //   27: new 17	java/lang/StringBuilder
     //   30: dup
     //   31: ldc_w 269
-    //   34: invokespecial 131	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   34: invokespecial 140	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   37: invokestatic 275	android/os/Process:myPid	()I
-    //   40: invokevirtual 134	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   40: invokevirtual 143	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   43: invokevirtual 39	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   46: astore_0
     //   47: invokestatic 238	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
@@ -297,18 +297,18 @@ public final class b
     //   94: astore_2
     //   95: aload_0
     //   96: astore_1
-    //   97: ldc 99
+    //   97: ldc 108
     //   99: aload 5
-    //   101: invokestatic 231	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   101: invokestatic 231	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   104: goto -26 -> 78
     //   107: astore_1
     //   108: aload_3
     //   109: astore_2
     //   110: aload_0
     //   111: astore_1
-    //   112: ldc 99
+    //   112: ldc 108
     //   114: ldc_w 300
-    //   117: invokestatic 201	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   117: invokestatic 208	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   120: aload_3
     //   121: ifnull +7 -> 128
     //   124: aload_3
@@ -357,9 +357,9 @@ public final class b
     //   195: astore_2
     //   196: aload_0
     //   197: astore_1
-    //   198: ldc 99
+    //   198: ldc 108
     //   200: ldc_w 312
-    //   203: invokestatic 201	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   203: invokestatic 208	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   206: aload_3
     //   207: ifnull +7 -> 214
     //   210: aload_3
@@ -481,7 +481,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ci.b
  * JD-Core Version:    0.7.0.1
  */

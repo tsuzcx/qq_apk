@@ -11,6 +11,7 @@ import android.graphics.Matrix;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.text.Editable;
+import android.text.TextUtils;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.Animation;
@@ -20,12 +21,16 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.p;
-import com.tencent.mm.api.s;
-import com.tencent.mm.api.w;
-import com.tencent.mm.api.y.a;
+import com.tencent.mm.api.ab.a;
+import com.tencent.mm.api.ab.c;
+import com.tencent.mm.api.j;
+import com.tencent.mm.api.r;
+import com.tencent.mm.api.u;
+import com.tencent.mm.api.z;
 import com.tencent.mm.cache.ArtistCacheManager;
+import com.tencent.mm.cache.ArtistCacheManager.a;
 import com.tencent.mm.e.c;
 import com.tencent.mm.e.c.10;
 import com.tencent.mm.e.c.2;
@@ -33,11 +38,13 @@ import com.tencent.mm.e.c.7;
 import com.tencent.mm.e.c.9;
 import com.tencent.mm.e.d;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.vfs.s;
 import com.tencent.mm.view.footer.SelectColorBar;
 import com.tencent.mm.z.e.a;
 import java.util.Collections;
@@ -49,39 +56,42 @@ import java.util.LinkedList;
 public final class a
   implements b
 {
-  com.tencent.mm.view.a FFa;
-  HashMap<com.tencent.mm.api.g, com.tencent.mm.e.b> FFb;
-  LinkedList<com.tencent.mm.e.b> FFc;
-  private com.tencent.mm.api.i FFd;
-  Bitmap FFe;
-  private boolean FFf = true;
-  private boolean FFg = true;
-  public c FFh;
-  com.tencent.mm.api.g FFi = com.tencent.mm.api.g.cSm;
-  com.tencent.mm.api.g FFj = com.tencent.mm.api.g.cSm;
-  private boolean FFk = false;
-  com.tencent.mm.e.b FFl = null;
-  y.a cSv;
+  com.tencent.mm.view.a Kyf;
+  HashMap<com.tencent.mm.api.h, com.tencent.mm.e.b> Kyg;
+  LinkedList<com.tencent.mm.e.b> Kyh;
+  private j Kyi;
+  Bitmap Kyj;
+  private boolean Kyk = true;
+  private boolean Kyl = true;
+  private float Kym = -1.0F;
+  public c Kyn;
+  com.tencent.mm.api.h Kyo = com.tencent.mm.api.h.diG;
+  com.tencent.mm.api.h Kyp = com.tencent.mm.api.h.diG;
+  private boolean Kyq = false;
+  com.tencent.mm.e.b Kyr = null;
+  ab.a diP;
+  int outputHeight = -1;
+  int outputWidth = -1;
   
-  private void fjM()
+  private void gto()
   {
     AppMethodBeat.i(9319);
-    this.FFc.clear();
-    this.FFb.clear();
-    this.FFb.put(com.tencent.mm.api.g.cSm, com.tencent.mm.e.b.dbq);
-    com.tencent.mm.api.g[] arrayOfg = this.FFa.getFeatures();
-    int k = arrayOfg.length;
+    this.Kyh.clear();
+    this.Kyg.clear();
+    this.Kyg.put(com.tencent.mm.api.h.diG, com.tencent.mm.e.b.drW);
+    com.tencent.mm.api.h[] arrayOfh = this.Kyf.getFeatures();
+    int k = arrayOfh.length;
     int i = 0;
     Object localObject2;
     Object localObject1;
     int j;
     if (i < k)
     {
-      com.tencent.mm.api.g localg = arrayOfg[i];
+      com.tencent.mm.api.h localh = arrayOfh[i];
       localObject2 = null;
       Iterator localIterator = null;
       localObject1 = localIterator;
-      switch (a.7.FFo[localg.ordinal()])
+      switch (7.Kyu[localh.ordinal()])
       {
       default: 
       case 7: 
@@ -90,13 +100,13 @@ public final class a
         {
           if (localObject1 != null)
           {
-            if (!this.FFb.containsKey(localg)) {
-              this.FFb.put(localg, localObject1);
+            if (!this.Kyg.containsKey(localh)) {
+              this.Kyg.put(localh, localObject1);
             }
-            if (!this.FFc.contains(localObject1))
+            if (!this.Kyh.contains(localObject1))
             {
-              this.FFc.add(localObject1);
-              ((com.tencent.mm.e.b)localObject1).a(this, this.FFa.getBaseBoardView().getMainMatrix(), this.FFa.getBaseBoardView().getAliveRect());
+              this.Kyh.add(localObject1);
+              ((com.tencent.mm.e.b)localObject1).a(this, this.Kyf.getBaseBoardView().getMainMatrix(), this.Kyf.getBaseBoardView().getAliveRect());
             }
           }
           i += 1;
@@ -104,11 +114,11 @@ public final class a
         }
       case 1: 
       case 2: 
-        localIterator = this.FFc.iterator();
+        localIterator = this.Kyh.iterator();
         while (localIterator.hasNext())
         {
           localObject1 = (com.tencent.mm.e.b)localIterator.next();
-          if (((com.tencent.mm.e.b)localObject1).NG() == com.tencent.mm.e.a.dbh) {
+          if (((com.tencent.mm.e.b)localObject1).XS() == com.tencent.mm.e.a.drN) {
             j = 1;
           }
         }
@@ -117,16 +127,16 @@ public final class a
     while (j == 0)
     {
       localObject1 = new com.tencent.mm.e.e();
-      ((com.tencent.mm.e.e)localObject1).dcA = new a();
+      ((com.tencent.mm.e.e)localObject1).dti = new a();
       break;
-      localObject1 = new com.tencent.mm.e.g();
+      localObject1 = new com.tencent.mm.e.h();
       break;
       localObject1 = new c();
       break;
       localObject1 = new com.tencent.mm.e.f();
       break;
-      Collections.sort(this.FFc, new Comparator() {});
-      ae.i("MicroMsg.DrawingPresenter", "[addArtists] count:%s", new Object[] { Integer.valueOf(this.FFb.size() - 1) });
+      Collections.sort(this.Kyh, new Comparator() {});
+      Log.i("MicroMsg.DrawingPresenter", "[addArtists] count:%s", new Object[] { Integer.valueOf(this.Kyg.size() - 1) });
       AppMethodBeat.o(9319);
       return;
       j = 0;
@@ -134,37 +144,77 @@ public final class a
     }
   }
   
-  public final boolean Kc()
+  final void Ar(boolean paramBoolean)
   {
-    AppMethodBeat.i(9301);
-    if (this.FFa.getTextEditView().getVisibility() == 0)
+    AppMethodBeat.i(9320);
+    if (paramBoolean)
     {
-      wr(false);
-      this.FFa.setFooterVisible(true);
-      AppMethodBeat.o(9301);
-      return true;
+      localAnimation = AnimationUtils.loadAnimation(this.Kyf.getContext(), 2130772132);
+      localAnimation.setAnimationListener(new Animation.AnimationListener()
+      {
+        public final void onAnimationEnd(Animation paramAnonymousAnimation)
+        {
+          AppMethodBeat.i(9283);
+          a.this.Kyf.getTextEditView().setVisibility(0);
+          paramAnonymousAnimation = (EditText)a.this.Kyf.getTextEditView().findViewById(2131308994);
+          paramAnonymousAnimation.requestFocus();
+          paramAnonymousAnimation.setSelection(paramAnonymousAnimation.length());
+          a.this.Kyf.getSelectedFeatureListener().cH(true);
+          ((SelectColorBar)a.this.Kyf.findViewById(2131307511)).setSelectColor(paramAnonymousAnimation.getCurrentTextColor());
+          a.this.Kyf.getActionBar().post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(9282);
+              a.this.Kyf.getActionBar().setVisibility(0);
+              AppMethodBeat.o(9282);
+            }
+          });
+          AppMethodBeat.o(9283);
+        }
+        
+        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+        
+        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
+      });
+      this.Kyf.getTextEditView().startAnimation(localAnimation);
+      AppMethodBeat.o(9320);
+      return;
     }
-    if ((this.FFa.getChatFooterPanel() != null) && (this.FFa.getChatFooterPanel().getVisibility() == 0))
+    Animation localAnimation = AnimationUtils.loadAnimation(this.Kyf.getContext(), 2130772130);
+    localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
-      this.FFa.zr(true);
-      this.FFa.setFooterVisible(true);
-      AppMethodBeat.o(9301);
-      return true;
-    }
-    AppMethodBeat.o(9301);
-    return false;
+      public final void onAnimationEnd(Animation paramAnonymousAnimation)
+      {
+        AppMethodBeat.i(9285);
+        ((EditText)a.this.Kyf.getTextEditView().findViewById(2131308994)).setText("");
+        a.this.Kyf.getTextEditView().setVisibility(8);
+        AppMethodBeat.o(9285);
+      }
+      
+      public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
+      
+      public final void onAnimationStart(Animation paramAnonymousAnimation)
+      {
+        AppMethodBeat.i(9284);
+        a.this.Kyf.getSelectedFeatureListener().cH(false);
+        AppMethodBeat.o(9284);
+      }
+    });
+    this.Kyf.getTextEditView().startAnimation(localAnimation);
+    AppMethodBeat.o(9320);
   }
   
-  public final boolean N(MotionEvent paramMotionEvent)
+  public final boolean R(MotionEvent paramMotionEvent)
   {
     boolean bool3 = false;
     boolean bool2 = false;
     AppMethodBeat.i(9316);
     boolean bool1 = bool2;
     Object localObject;
-    if (fjI().NG() != com.tencent.mm.e.a.dbi)
+    if (gti().XS() != com.tencent.mm.e.a.drO)
     {
-      if (fjI().NG() == com.tencent.mm.e.a.dbj) {
+      if (gti().XS() == com.tencent.mm.e.a.drP) {
         bool1 = bool2;
       }
     }
@@ -173,12 +223,12 @@ public final class a
       if (bool1) {
         break label224;
       }
-      this.FFl = ((com.tencent.mm.e.b)this.FFb.get(this.FFa.getBaseFooterView().getCurFeatureType()));
-      localObject = this.FFc.iterator();
+      this.Kyr = ((com.tencent.mm.e.b)this.Kyg.get(this.Kyf.getBaseFooterView().getCurFeatureType()));
+      localObject = this.Kyh.iterator();
       while (((Iterator)localObject).hasNext())
       {
         com.tencent.mm.e.b localb = (com.tencent.mm.e.b)((Iterator)localObject).next();
-        if ((localb.NG() != com.tencent.mm.e.a.dbh) && (localb.n(paramMotionEvent))) {
+        if ((localb.XS() != com.tencent.mm.e.a.drN) && (localb.q(paramMotionEvent))) {
           bool1 = true;
         }
       }
@@ -189,53 +239,93 @@ public final class a
       AppMethodBeat.o(9316);
       return bool1;
       localObject = null;
-      if (this.FFb.containsKey(com.tencent.mm.api.g.cSo)) {
-        localObject = (com.tencent.mm.e.b)this.FFb.get(com.tencent.mm.api.g.cSo);
+      if (this.Kyg.containsKey(com.tencent.mm.api.h.diI)) {
+        localObject = (com.tencent.mm.e.b)this.Kyg.get(com.tencent.mm.api.h.diI);
       }
       for (;;)
       {
         bool2 = bool3;
         if (localObject != null) {
-          bool2 = ((com.tencent.mm.e.b)localObject).n(paramMotionEvent);
+          bool2 = ((com.tencent.mm.e.b)localObject).q(paramMotionEvent);
         }
         bool1 = bool2;
         if (!bool2) {
           break;
         }
-        this.FFl = ((com.tencent.mm.e.b)localObject);
+        this.Kyr = ((com.tencent.mm.e.b)localObject);
         bool1 = bool2;
         break;
-        if (this.FFb.containsKey(com.tencent.mm.api.g.cSp)) {
-          localObject = (com.tencent.mm.e.b)this.FFb.get(com.tencent.mm.api.g.cSp);
+        if (this.Kyg.containsKey(com.tencent.mm.api.h.diJ)) {
+          localObject = (com.tencent.mm.e.b)this.Kyg.get(com.tencent.mm.api.h.diJ);
         }
       }
     }
   }
   
+  public final boolean Ul()
+  {
+    AppMethodBeat.i(9301);
+    if (this.Kyf.getTextEditView().getVisibility() == 0)
+    {
+      Ar(false);
+      this.Kyf.setFooterVisible(true);
+      AppMethodBeat.o(9301);
+      return true;
+    }
+    if ((this.Kyf.getChatFooterPanel() != null) && (this.Kyf.getChatFooterPanel().getVisibility() == 0))
+    {
+      this.Kyf.DC(true);
+      this.Kyf.setFooterVisible(true);
+      AppMethodBeat.o(9301);
+      return true;
+    }
+    AppMethodBeat.o(9301);
+    return false;
+  }
+  
   public final com.tencent.mm.cache.f a(com.tencent.mm.e.a parama)
   {
     AppMethodBeat.i(9318);
-    ArtistCacheManager.XN();
-    parama = ArtistCacheManager.a(this.cSv.path, parama);
+    ArtistCacheManager localArtistCacheManager = ArtistCacheManager.alA();
+    String str = this.diP.path;
+    if (TextUtils.isEmpty(str))
+    {
+      if (ArtistCacheManager.gpr.containsKey(localArtistCacheManager.gpt))
+      {
+        parama = ((ArtistCacheManager.a)ArtistCacheManager.gpr.get(localArtistCacheManager.gpt)).c(parama);
+        AppMethodBeat.o(9318);
+        return parama;
+      }
+      Log.e("MicroMsg.ArtistCacheManager", "[getArtistCache] id is not contains! %s", new Object[] { localArtistCacheManager.gpt });
+      AppMethodBeat.o(9318);
+      return null;
+    }
+    if (ArtistCacheManager.gpr.containsKey(str))
+    {
+      parama = ((ArtistCacheManager.a)ArtistCacheManager.gpr.get(str)).c(parama);
+      AppMethodBeat.o(9318);
+      return parama;
+    }
+    Log.e("MicroMsg.ArtistCacheManager", "[getArtistCache] id is not contains! %s", new Object[] { str });
     AppMethodBeat.o(9318);
-    return parama;
+    return null;
   }
   
   public final void a(Editable paramEditable, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(9303);
-    wr(false);
-    this.FFa.setFooterVisible(true);
-    Object localObject = fjI();
+    Ar(false);
+    this.Kyf.setFooterVisible(true);
+    Object localObject = gti();
     EditText localEditText;
-    if (((com.tencent.mm.e.b)localObject).NG() == com.tencent.mm.e.a.dbh)
+    if (((com.tencent.mm.e.b)localObject).XS() == com.tencent.mm.e.a.drN)
     {
       localObject = (com.tencent.mm.e.e)localObject;
-      localEditText = (EditText)this.FFa.getTextEditView().findViewById(2131305727);
+      localEditText = (EditText)this.Kyf.getTextEditView().findViewById(2131308994);
       if ((localEditText.getTag() == null) || (!(localEditText.getTag() instanceof com.tencent.mm.z.f))) {
         break label119;
       }
-      ((com.tencent.mm.e.e)localObject).a((com.tencent.mm.z.f)localEditText.getTag(), k.c(this.FFa.getContext(), paramEditable), paramInt1, paramInt2);
+      ((com.tencent.mm.e.e)localObject).a((com.tencent.mm.z.f)localEditText.getTag(), l.c(this.Kyf.getContext(), paramEditable), paramInt1, paramInt2);
     }
     for (;;)
     {
@@ -243,358 +333,321 @@ public final class a
       AppMethodBeat.o(9303);
       return;
       label119:
-      ((com.tencent.mm.e.e)localObject).a(k.c(this.FFa.getContext(), paramEditable), paramInt1, paramInt2);
+      ((com.tencent.mm.e.e)localObject).a(l.c(this.Kyf.getContext(), paramEditable), paramInt1, paramInt2);
     }
   }
   
-  public final void a(s params, boolean paramBoolean)
+  public final void a(ab.a parama)
   {
-    AppMethodBeat.i(9309);
-    com.tencent.mm.sdk.g.b.c(new b(params, paramBoolean), "onFinalGenerate_" + params.hashCode());
-    AppMethodBeat.o(9309);
-  }
-  
-  public final void a(y.a parama)
-  {
-    int i = 0;
     AppMethodBeat.i(9297);
-    this.cSv = parama;
-    this.FFb = new HashMap();
-    this.FFc = new LinkedList();
+    this.diP = parama;
+    this.Kyg = new HashMap();
+    this.Kyh = new LinkedList();
     Object localObject = parama.path;
-    if ((bu.isNullOrNil((String)localObject)) || (!o.fB((String)localObject))) {
-      ae.w("MicroMsg.DrawingPresenter", "[checkImage] path:%s", new Object[] { localObject });
+    int i;
+    if ((Util.isNullOrNil((String)localObject)) || (!s.YS((String)localObject)))
+    {
+      Log.w("MicroMsg.DrawingPresenter", "[checkImage] path:%s", new Object[] { localObject });
+      i = 0;
     }
     for (;;)
     {
-      if (i != 0)
-      {
-        if (!parama.cSA) {
-          break;
-        }
-        this.FFe = com.tencent.mm.sdk.platformtools.h.decodeFile(parama.path, null);
-        if (this.FFe != null) {
-          this.FFe = this.FFe.copy(Bitmap.Config.ARGB_8888, true);
-        }
-      }
-      fjM();
-      AppMethodBeat.o(9297);
-      return;
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
-      com.tencent.mm.sdk.platformtools.h.decodeFile((String)localObject, localOptions);
-      if ((localOptions.outWidth <= 0) || (localOptions.outHeight <= 0)) {
-        ae.e("MicroMsg.DrawingPresenter", "[checkImage] image err! w:%s h:%s path:%s", new Object[] { Integer.valueOf(localOptions.outWidth), Integer.valueOf(localOptions.outHeight), localObject });
-      } else {
-        i = 1;
-      }
-    }
-    localObject = com.tencent.mm.sdk.platformtools.h.aRz(bu.bI(parama.path, ""));
-    if (localObject != null)
-    {
-      int m = ((BitmapFactory.Options)localObject).outWidth;
-      int k = ((BitmapFactory.Options)localObject).outHeight;
-      double d = Math.sqrt(1638400.0D / (m * k));
-      i = k;
-      j = m;
-      if (d <= 1.0D)
-      {
-        m = (int)(m * d);
-        k = (int)(d * k);
-        i = k;
-        j = m;
-        if (m < 1280)
+      if (i != 0) {
+        if (parama.diU)
         {
+          this.Kyj = BitmapUtil.decodeFile(parama.path, null);
+          if (this.Kyj != null) {
+            this.Kyj = this.Kyj.copy(Bitmap.Config.ARGB_8888, true);
+          }
+          gto();
+          AppMethodBeat.o(9297);
+          return;
+          BitmapFactory.Options localOptions = new BitmapFactory.Options();
+          localOptions.inJustDecodeBounds = true;
+          BitmapUtil.decodeFile((String)localObject, localOptions);
+          if ((localOptions.outWidth <= 0) || (localOptions.outHeight <= 0))
+          {
+            Log.e("MicroMsg.DrawingPresenter", "[checkImage] image err! w:%s h:%s path:%s", new Object[] { Integer.valueOf(localOptions.outWidth), Integer.valueOf(localOptions.outHeight), localObject });
+            i = 0;
+          }
+          else
+          {
+            i = 1;
+          }
+        }
+        else
+        {
+          localObject = BitmapUtil.getImageOptions(Util.nullAs(parama.path, ""));
+          if (localObject == null) {
+            break label432;
+          }
+          int m = ((BitmapFactory.Options)localObject).outWidth;
+          int k = ((BitmapFactory.Options)localObject).outHeight;
+          double d = Math.sqrt(1638400.0D / (m * k));
           i = k;
           j = m;
-          if (k < 1280) {
-            i = 1280;
+          if (d <= 1.0D)
+          {
+            m = (int)(m * d);
+            k = (int)(d * k);
+            i = k;
+            j = m;
+            if (m < 1280)
+            {
+              i = k;
+              j = m;
+              if (k < 1280) {
+                i = 1280;
+              }
+            }
           }
         }
       }
     }
     for (int j = 1280;; j = 1280)
     {
-      this.FFe = com.tencent.mm.sdk.platformtools.h.aM(bu.bI(parama.path, ""), i, j);
+      this.Kyj = BitmapUtil.createThumbBitmap(Util.nullAs(parama.path, ""), i, j, true, false);
       break;
+      if (parama.diR == ab.c.dja)
+      {
+        this.Kyj = BitmapUtil.createColorBitmap(parama.backgroundColor, parama.diV.width(), parama.diV.height());
+        break;
+      }
+      if (this.Kyj != null) {
+        break;
+      }
+      this.Kyj = BitmapUtil.createColorBitmap(0, 1280, 1280);
+      break;
+      label432:
       i = 1280;
     }
   }
   
+  public final void a(u paramu, boolean paramBoolean)
+  {
+    AppMethodBeat.i(9309);
+    ThreadPool.post(new b(paramu, paramBoolean), "onFinalGenerate_" + paramu.hashCode());
+    AppMethodBeat.o(9309);
+  }
+  
   public final void a(com.tencent.mm.view.a parama)
   {
-    this.FFa = parama;
+    this.Kyf = parama;
   }
   
-  public final <T extends com.tencent.mm.e.b> T c(com.tencent.mm.api.g paramg)
-  {
-    AppMethodBeat.i(9314);
-    paramg = (com.tencent.mm.e.b)this.FFb.get(paramg);
-    AppMethodBeat.o(9314);
-    return paramg;
-  }
-  
-  public final void c(p paramp)
-  {
-    AppMethodBeat.i(9315);
-    com.tencent.mm.e.e locale = (com.tencent.mm.e.e)c(com.tencent.mm.api.g.cSp);
-    if (locale != null) {
-      locale.b(paramp);
-    }
-    AppMethodBeat.o(9315);
-  }
-  
-  public final boolean fjE()
-  {
-    return this.FFg;
-  }
-  
-  public final void fjF()
-  {
-    this.FFg = false;
-  }
-  
-  public final void fjG()
-  {
-    AppMethodBeat.i(9304);
-    this.FFa.setFooterVisible(true);
-    wr(false);
-    AppMethodBeat.o(9304);
-  }
-  
-  public final com.tencent.mm.view.a fjH()
-  {
-    return this.FFa;
-  }
-  
-  public final <T extends com.tencent.mm.e.b> T fjI()
-  {
-    AppMethodBeat.i(9306);
-    if (this.FFl != null)
-    {
-      localb = this.FFl;
-      AppMethodBeat.o(9306);
-      return localb;
-    }
-    ae.e("MicroMsg.DrawingPresenter", "[getCurArtist] is null!");
-    com.tencent.mm.e.b localb = com.tencent.mm.e.b.dbq;
-    AppMethodBeat.o(9306);
-    return localb;
-  }
-  
-  public final void fjJ()
+  public final void ate()
   {
     AppMethodBeat.i(9311);
-    ae.i("MicroMsg.DrawingPresenter", "[onLayout]");
-    if (!this.FFk)
+    Log.i("MicroMsg.DrawingPresenter", "[onLayout],%s", new Object[] { Boolean.valueOf(this.Kyq) });
+    if (!this.Kyq)
     {
-      this.FFk = true;
-      Iterator localIterator = this.FFc.iterator();
+      this.Kyq = true;
+      Iterator localIterator = this.Kyh.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.e.b localb = (com.tencent.mm.e.b)localIterator.next();
-        if (ArtistCacheManager.XN().b(localb.NG()))
+        if (ArtistCacheManager.alA().b(localb.XS()))
         {
           localb.onAlive();
-          localb.cl(true);
-          ae.i("MicroMsg.DrawingPresenter", "[onAttachedToWindow] %s is revert onAlive!", new Object[] { localb.NG() });
+          localb.cT(true);
+          Log.i("MicroMsg.DrawingPresenter", "[onAttachedToWindow] %s is revert onAlive!", new Object[] { localb.XS() });
         }
       }
-      if (this.FFa.getBaseBoardView().fUG())
+      if (this.Kyf.getBaseBoardView().hgb())
       {
-        this.FFa.getBaseBoardView().fUH();
-        this.FFa.getBaseBoardView().invalidate();
+        this.Kyf.getBaseBoardView().hgc();
+        this.Kyf.getBaseBoardView().invalidate();
       }
     }
     AppMethodBeat.o(9311);
   }
   
-  public final Bitmap fjK()
+  public final <T extends com.tencent.mm.e.b> T c(com.tencent.mm.api.h paramh)
   {
-    return this.FFe;
+    AppMethodBeat.i(9314);
+    paramh = (com.tencent.mm.e.b)this.Kyg.get(paramh);
+    AppMethodBeat.o(9314);
+    return paramh;
   }
   
-  public final boolean fjL()
+  public final void c(r paramr)
   {
-    AppMethodBeat.i(9313);
-    if ((fjI().NG() != com.tencent.mm.e.a.dbi) && (this.FFf))
-    {
-      AppMethodBeat.o(9313);
-      return true;
+    AppMethodBeat.i(9315);
+    com.tencent.mm.e.e locale = (com.tencent.mm.e.e)c(com.tencent.mm.api.h.diJ);
+    if (locale != null) {
+      locale.b(paramr);
     }
-    AppMethodBeat.o(9313);
-    return false;
+    AppMethodBeat.o(9315);
   }
   
-  public final y.a getConfig()
+  public final ab.a getConfig()
   {
-    return this.cSv;
+    return this.diP;
   }
   
   public final float getCurScale()
   {
     AppMethodBeat.i(9308);
-    float f = this.FFa.getBaseBoardView().getCurScale();
+    float f = this.Kyf.getBaseBoardView().getCurScale();
     AppMethodBeat.o(9308);
     return f;
   }
   
-  public final com.tencent.mm.api.g[] getFeatures()
+  public final com.tencent.mm.api.h[] getFeatures()
   {
     AppMethodBeat.i(9298);
-    com.tencent.mm.api.g[] arrayOfg = this.FFa.getFeatures();
+    com.tencent.mm.api.h[] arrayOfh = this.Kyf.getFeatures();
     AppMethodBeat.o(9298);
-    return arrayOfg;
+    return arrayOfh;
   }
   
   public final float getInitScale()
   {
     AppMethodBeat.i(9307);
-    float f = this.FFa.getBaseBoardView().getInitScale();
+    float f = this.Kyf.getBaseBoardView().getInitScale();
     AppMethodBeat.o(9307);
     return f;
   }
   
-  public final w getSelectedFeatureListener()
+  public final z getSelectedFeatureListener()
   {
     AppMethodBeat.i(9299);
-    w local1 = new w()
+    z local1 = new z()
     {
-      public final void a(com.tencent.mm.api.g paramAnonymousg)
+      public final void a(com.tencent.mm.api.h paramAnonymoush)
       {
         AppMethodBeat.i(9279);
-        ae.i("MicroMsg.DrawingPresenter", "[onSelectedFeature] features:%s", new Object[] { paramAnonymousg });
-        if (paramAnonymousg == com.tencent.mm.api.g.cSm) {
-          a.this.FFa.getBaseFooterView().setCurFeatureType(paramAnonymousg);
+        Log.i("MicroMsg.DrawingPresenter", "[onSelectedFeature] features:%s", new Object[] { paramAnonymoush });
+        if (paramAnonymoush == com.tencent.mm.api.h.diG) {
+          a.this.Kyf.getBaseFooterView().setCurFeatureType(paramAnonymoush);
         }
-        a.this.FFa.getBaseFooterView().fUP();
-        if (a.this.FFa.getSelectedFeatureListener() != null) {
-          a.this.FFa.getSelectedFeatureListener().a(paramAnonymousg);
+        a.this.Kyf.getBaseFooterView().hgl();
+        if (a.this.Kyf.getSelectedFeatureListener() != null) {
+          a.this.Kyf.getSelectedFeatureListener().a(paramAnonymoush);
         }
-        if (paramAnonymousg == com.tencent.mm.api.g.cSs) {
-          a.this.FFa.getFooterBg().setVisibility(8);
+        if (paramAnonymoush == com.tencent.mm.api.h.diM) {
+          a.this.Kyf.getFooterBg().setVisibility(8);
         }
-        com.tencent.mm.e.b localb = (com.tencent.mm.e.b)a.this.FFb.get(paramAnonymousg);
+        com.tencent.mm.e.b localb = (com.tencent.mm.e.b)a.this.Kyg.get(paramAnonymoush);
         if (localb == null)
         {
           AppMethodBeat.o(9279);
           return;
         }
-        if ((localb.cLi) && (!localb.isAlive())) {
+        if ((localb.dbG) && (!localb.isAlive())) {
           localb.onAlive();
         }
-        if (localb.NG() != com.tencent.mm.e.a.dbe) {
+        if (localb.XS() != com.tencent.mm.e.a.drK) {
           localb.setOneFingerMoveEnable(false);
         }
-        localb.NJ();
-        a.this.FFl = localb;
-        switch (a.7.FFo[paramAnonymousg.ordinal()])
+        localb.XV();
+        a.this.Kyr = localb;
+        switch (a.7.Kyu[paramAnonymoush.ordinal()])
         {
         default: 
-          a.this.FFj = paramAnonymousg;
+          a.this.Kyp = paramAnonymoush;
         }
         for (;;)
         {
-          a.this.FFa.getBaseFooterView().setCurFeatureType(paramAnonymousg);
+          a.this.Kyf.getBaseFooterView().setCurFeatureType(paramAnonymoush);
           AppMethodBeat.o(9279);
           return;
-          if (!a.this.FFa.getBaseFooterView().fUK())
+          if (!a.this.Kyf.getBaseFooterView().hgg())
           {
-            ((EditText)a.this.FFa.getTextEditView().findViewById(2131305727)).setTextColor(com.tencent.mm.view.footer.a.LQk[0]);
-            a.this.wr(true);
-            a.this.FFa.setFooterVisible(false);
+            ((EditText)a.this.Kyf.getTextEditView().findViewById(2131308994)).setTextColor(com.tencent.mm.view.footer.a.RoQ[0]);
+            a.this.Ar(true);
+            a.this.Kyf.setFooterVisible(false);
           }
-          a.this.FFj = paramAnonymousg;
+          a.this.Kyp = paramAnonymoush;
           continue;
-          a.this.FFa.setActionBarVisible(false);
-          a.this.FFa.setFooterVisible(false);
-          a.this.FFa.zr(false);
+          a.this.Kyf.setActionBarVisible(false);
+          a.this.Kyf.setFooterVisible(false);
+          a.this.Kyf.DC(false);
           break;
-          a.this.FFi = a.this.FFj;
+          a.this.Kyo = a.this.Kyp;
         }
       }
       
-      public final void a(com.tencent.mm.api.g paramAnonymousg, int paramAnonymousInt, Object paramAnonymousObject)
+      public final void a(com.tencent.mm.api.h paramAnonymoush, int paramAnonymousInt, Object paramAnonymousObject)
       {
         AppMethodBeat.i(163137);
-        ae.i("MicroMsg.DrawingPresenter", "[onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg, Integer.valueOf(paramAnonymousInt) });
-        if (a.this.FFa.getSelectedFeatureListener() != null) {
-          a.this.FFa.getSelectedFeatureListener().a(paramAnonymousg, paramAnonymousInt, paramAnonymousObject);
+        Log.i("MicroMsg.DrawingPresenter", "[onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymoush, Integer.valueOf(paramAnonymousInt) });
+        if (a.this.Kyf.getSelectedFeatureListener() != null) {
+          a.this.Kyf.getSelectedFeatureListener().a(paramAnonymoush, paramAnonymousInt, paramAnonymousObject);
         }
-        a.this.FFl = ((com.tencent.mm.e.b)a.this.FFb.get(paramAnonymousg));
-        if (a.this.fjI().NG() == com.tencent.mm.e.a.dbe)
+        a.this.Kyr = ((com.tencent.mm.e.b)a.this.Kyg.get(paramAnonymoush));
+        if (a.this.gti().XS() == com.tencent.mm.e.a.drK)
         {
           AppMethodBeat.o(163137);
           return;
         }
-        if (a.this.FFa.getFooterBg().getVisibility() == 8) {
-          a.this.FFa.getFooterBg().setVisibility(0);
+        if (a.this.Kyf.getFooterBg().getVisibility() == 8) {
+          a.this.Kyf.getFooterBg().setVisibility(0);
         }
         float f2;
-        switch (a.7.FFo[paramAnonymousg.ordinal()])
+        switch (a.7.Kyu[paramAnonymoush.ordinal()])
         {
         default: 
           AppMethodBeat.o(163137);
           return;
         case 4: 
-          paramAnonymousg = (d)a.this.fjI();
+          paramAnonymoush = (d)a.this.gti();
           if (paramAnonymousInt != -1)
           {
-            a.this.FFa.getBaseFooterView();
-            paramAnonymousg.mColor = com.tencent.mm.view.footer.a.getColor(paramAnonymousInt);
+            paramAnonymoush.mColor = a.this.Kyf.getBaseFooterView().getColor(paramAnonymousInt);
             AppMethodBeat.o(163137);
             return;
           }
-          paramAnonymousg.NO();
+          paramAnonymoush.Ya();
           AppMethodBeat.o(163137);
           return;
         case 5: 
-          paramAnonymousg = (com.tencent.mm.e.g)a.this.fjI();
+          paramAnonymoush = (com.tencent.mm.e.h)a.this.gti();
           if (paramAnonymousInt == 0)
           {
-            paramAnonymousg.dcH = e.a.gBN;
+            paramAnonymoush.dty = e.a.hoC;
             AppMethodBeat.o(163137);
             return;
           }
           if (1 == paramAnonymousInt)
           {
-            paramAnonymousg.dcH = e.a.gBO;
+            paramAnonymoush.dty = e.a.hoD;
             AppMethodBeat.o(163137);
             return;
           }
-          paramAnonymousg.NO();
+          paramAnonymoush.Ya();
           AppMethodBeat.o(163137);
           return;
         case 3: 
-          paramAnonymousg = (c)a.this.fjI();
+          paramAnonymoush = (c)a.this.gti();
           if (paramAnonymousInt == 0)
           {
-            paramAnonymousg.dbY += 1;
-            paramAnonymousg.dbJ.cancel();
-            if (paramAnonymousg.dbW != null) {
-              paramAnonymousg.dbW.cancel();
+            paramAnonymoush.dsG += 1;
+            paramAnonymoush.dsp.cancel();
+            if (paramAnonymoush.dsE != null) {
+              paramAnonymoush.dsE.cancel();
             }
             paramAnonymousObject = new Matrix();
-            paramAnonymousObject.postRotate(-90.0F, paramAnonymousg.cQy.centerX(), paramAnonymousg.cQy.centerY());
-            if (paramAnonymousg.dbX.isEmpty()) {
-              paramAnonymousg.dbX.set(paramAnonymousg.cQy);
+            paramAnonymousObject.postRotate(-90.0F, paramAnonymoush.dgS.centerX(), paramAnonymoush.dgS.centerY());
+            if (paramAnonymoush.dsF.isEmpty()) {
+              paramAnonymoush.dsF.set(paramAnonymoush.dgS);
             }
-            RectF localRectF = new RectF(paramAnonymousg.dbX);
+            RectF localRectF = new RectF(paramAnonymoush.dsF);
             paramAnonymousObject.mapRect(localRectF);
-            f1 = 1.0F * paramAnonymousg.dbF.width() / localRectF.width();
-            f2 = 1.0F * paramAnonymousg.dbF.height() / localRectF.height();
+            f1 = 1.0F * paramAnonymoush.dsl.width() / localRectF.width();
+            f2 = 1.0F * paramAnonymoush.dsl.height() / localRectF.height();
             if (f1 < f2) {}
             for (;;)
             {
-              paramAnonymousObject.postScale(f1, f1, paramAnonymousg.cQy.centerX(), paramAnonymousg.cQy.centerY());
-              localRectF.set(paramAnonymousg.dbX);
+              paramAnonymousObject.postScale(f1, f1, paramAnonymoush.dgS.centerX(), paramAnonymoush.dgS.centerY());
+              localRectF.set(paramAnonymoush.dsF);
               paramAnonymousObject.mapRect(localRectF);
-              paramAnonymousg.dbX.set((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom);
-              f2 = paramAnonymousg.cQy.centerX();
-              float f3 = paramAnonymousg.cQy.centerY();
-              paramAnonymousObject = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt("rotation", new int[] { 0, -90 }), PropertyValuesHolder.ofInt("deltaX", new int[] { 0, paramAnonymousg.dbF.centerX() - (int)f2 }), PropertyValuesHolder.ofInt("deltaY", new int[] { 0, paramAnonymousg.dbF.centerY() - (int)f3 }) });
-              paramAnonymousObject.addUpdateListener(new c.10(paramAnonymousg, f2, f3, f1));
-              paramAnonymousObject.addListener(new c.2(paramAnonymousg));
+              paramAnonymoush.dsF.set((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom);
+              f2 = paramAnonymoush.dgS.centerX();
+              float f3 = paramAnonymoush.dgS.centerY();
+              paramAnonymousObject = ValueAnimator.ofPropertyValuesHolder(new PropertyValuesHolder[] { PropertyValuesHolder.ofInt("rotation", new int[] { 0, -90 }), PropertyValuesHolder.ofInt("deltaX", new int[] { 0, paramAnonymoush.dsl.centerX() - (int)f2 }), PropertyValuesHolder.ofInt("deltaY", new int[] { 0, paramAnonymoush.dsl.centerY() - (int)f3 }) });
+              paramAnonymousObject.addUpdateListener(new c.10(paramAnonymoush, f2, f3, f1));
+              paramAnonymousObject.addListener(new c.2(paramAnonymoush));
               paramAnonymousObject.setDuration(200L);
               paramAnonymousObject.start();
               AppMethodBeat.o(163137);
@@ -604,121 +657,199 @@ public final class a
           }
           if (1 == paramAnonymousInt)
           {
-            ae.i("MicroMsg.CropArtist", "[cancel]");
-            paramAnonymousg.dbJ.cancel();
-            if (paramAnonymousg.dbW != null) {
-              paramAnonymousg.dbW.cancel();
+            Log.i("MicroMsg.CropArtist", "[cancel]");
+            paramAnonymoush.dsp.cancel();
+            if (paramAnonymoush.dsE != null) {
+              paramAnonymoush.dsE.cancel();
             }
-            paramAnonymousg.dbm.fjH().getBaseBoardView().LPa = paramAnonymousg.dbm.fjH().getBaseBoardView().getRawBoardRect();
-            if (paramAnonymousg.NI() == null) {
-              break label1243;
+            paramAnonymoush.drS.gth().getBaseBoardView().u(paramAnonymoush.drS.gth().getBaseBoardView().getRawBoardRect());
+            if (paramAnonymoush.XU() == null) {
+              break label1242;
             }
-            paramAnonymousObject = ((com.tencent.mm.cache.a)paramAnonymousg.NI()).XQ();
+            paramAnonymousObject = ((com.tencent.mm.cache.a)paramAnonymoush.XU()).alD();
             if (paramAnonymousObject == null) {
-              break label1243;
+              break label1242;
             }
-            f2 = paramAnonymousg.getRotation() - paramAnonymousg.b(paramAnonymousObject.mMatrix);
+            f2 = paramAnonymoush.getRotation() - paramAnonymoush.b(paramAnonymousObject.mMatrix);
             f1 = f2;
-            if (!paramAnonymousObject.gBq.isEmpty()) {
-              paramAnonymousg.dbm.fjH().getBaseBoardView().q(paramAnonymousObject.gBq);
+            if (!paramAnonymousObject.hof.isEmpty()) {
+              paramAnonymoush.drS.gth().getBaseBoardView().v(paramAnonymousObject.hof);
             }
           }
           break;
         }
-        label1243:
+        label1242:
         for (float f1 = f2;; f1 = 0.0F)
         {
-          paramAnonymousg.dbm.fjH().getBaseBoardView().a(null, f1, true);
-          paramAnonymousg.dbm.fjH().getActionBar().setVisibility(0);
-          a.this.FFl = ((com.tencent.mm.e.b)a.this.FFb.get(a.this.FFi));
-          a.this.FFa.getBaseFooterView().setCurFeatureType(a.this.FFi);
+          paramAnonymoush.drS.gth().getBaseBoardView().a(null, f1, true);
+          paramAnonymoush.drS.gth().getActionBar().setVisibility(0);
+          a.this.Kyr = ((com.tencent.mm.e.b)a.this.Kyg.get(a.this.Kyo));
+          a.this.Kyf.getBaseFooterView().setCurFeatureType(a.this.Kyo);
           AppMethodBeat.o(163137);
           return;
           if (2 == paramAnonymousInt)
           {
-            ae.i("MicroMsg.CropArtist", "[doCrop]");
-            if (paramAnonymousg.dbW != null) {
-              paramAnonymousg.dbW.cancel();
+            Log.i("MicroMsg.CropArtist", "[doCrop]");
+            if (paramAnonymoush.dsE != null) {
+              paramAnonymoush.dsE.cancel();
             }
-            if (!paramAnonymousg.dbJ.cQF)
+            if (!paramAnonymoush.dsp.dgZ)
             {
-              if (!paramAnonymousg.dbJ.aLU)
+              if (!paramAnonymoush.dsp.isStarted)
               {
-                paramAnonymousg.dbJ.cancel();
-                paramAnonymousg.dbJ.play();
+                paramAnonymoush.dsp.cancel();
+                paramAnonymoush.dsp.play();
               }
-              paramAnonymousg.dbJ.wR = new c.7(paramAnonymousg);
+              paramAnonymoush.dsp.wY = new c.7(paramAnonymoush);
             }
             for (;;)
             {
-              a.this.FFl = ((com.tencent.mm.e.b)a.this.FFb.get(a.this.FFi));
-              a.this.FFa.getBaseFooterView().setCurFeatureType(a.this.FFi);
+              a.this.Kyr = ((com.tencent.mm.e.b)a.this.Kyg.get(a.this.Kyo));
+              a.this.Kyf.getBaseFooterView().setCurFeatureType(a.this.Kyo);
               AppMethodBeat.o(163137);
               return;
-              paramAnonymousg.dbJ.wR = null;
-              paramAnonymousg.NU();
+              paramAnonymoush.dsp.wY = null;
+              paramAnonymoush.Yg();
             }
           }
           if (3 != paramAnonymousInt) {
             break;
           }
-          ae.i("MicroMsg.CropArtist", "[reset]");
-          paramAnonymousg.dbZ = true;
-          paramAnonymousg.dbJ.cancel();
-          if (paramAnonymousg.dbW != null) {
-            paramAnonymousg.dbW.cancel();
+          Log.i("MicroMsg.CropArtist", "[reset]");
+          paramAnonymoush.dsH = true;
+          paramAnonymoush.dsp.cancel();
+          if (paramAnonymoush.dsE != null) {
+            paramAnonymoush.dsE.cancel();
           }
-          paramAnonymousg.dbX.setEmpty();
-          paramAnonymousg.NT();
-          paramAnonymousg.dbP = false;
-          paramAnonymousg.dbm.fjH().getBaseBoardView().LPa = paramAnonymousg.cQy;
-          paramAnonymousg.dbm.fjH().getBaseBoardView().a(new c.9(paramAnonymousg), paramAnonymousg.getRotation(), true);
+          paramAnonymoush.dsF.setEmpty();
+          paramAnonymoush.Yf();
+          paramAnonymoush.dsx = false;
+          paramAnonymoush.drS.gth().getBaseBoardView().u(paramAnonymoush.dgS);
+          paramAnonymoush.drS.gth().getBaseBoardView().a(new c.9(paramAnonymoush), paramAnonymoush.getRotation(), true);
           AppMethodBeat.o(163137);
           return;
-          paramAnonymousg = (com.tencent.mm.e.f)a.this.fjI();
+          paramAnonymoush = (com.tencent.mm.e.f)a.this.gti();
           f1 = ((Float)paramAnonymousObject).floatValue();
-          paramAnonymousObject = (com.tencent.mm.cache.e)paramAnonymousg.NI();
+          paramAnonymousObject = (com.tencent.mm.cache.e)paramAnonymoush.XU();
           if (paramAnonymousObject != null) {
-            paramAnonymousObject.fKo = paramAnonymousInt;
+            paramAnonymousObject.gpC = paramAnonymousInt;
           }
-          paramAnonymousg = (com.tencent.mm.cache.e)paramAnonymousg.NI();
-          if (paramAnonymousg != null) {
-            paramAnonymousg.fKp = f1;
+          paramAnonymoush = (com.tencent.mm.cache.e)paramAnonymoush.XU();
+          if (paramAnonymoush != null) {
+            paramAnonymoush.gpD = f1;
           }
-          a.this.FFa.getBaseBoardView().postInvalidate();
-          ae.i("MicroMsg.DrawingPresenter", "lxl postInvalidate");
+          a.this.Kyf.getBaseBoardView().postInvalidate();
+          Log.i("MicroMsg.DrawingPresenter", "lxl postInvalidate");
           break;
         }
       }
       
-      public final void bY(boolean paramAnonymousBoolean) {}
+      public final void cH(boolean paramAnonymousBoolean) {}
     };
     AppMethodBeat.o(9299);
     return local1;
   }
   
+  public final boolean gte()
+  {
+    return this.Kyl;
+  }
+  
+  public final void gtf()
+  {
+    this.Kyl = false;
+  }
+  
+  public final void gtg()
+  {
+    AppMethodBeat.i(9304);
+    this.Kyf.setFooterVisible(true);
+    Ar(false);
+    AppMethodBeat.o(9304);
+  }
+  
+  public final com.tencent.mm.view.a gth()
+  {
+    return this.Kyf;
+  }
+  
+  public final <T extends com.tencent.mm.e.b> T gti()
+  {
+    AppMethodBeat.i(9306);
+    if (this.Kyr != null)
+    {
+      localb = this.Kyr;
+      AppMethodBeat.o(9306);
+      return localb;
+    }
+    Log.e("MicroMsg.DrawingPresenter", "[getCurArtist] is null!");
+    com.tencent.mm.e.b localb = com.tencent.mm.e.b.drW;
+    AppMethodBeat.o(9306);
+    return localb;
+  }
+  
+  public final void gtj()
+  {
+    this.Kym = 0.8571429F;
+  }
+  
+  public final float gtk()
+  {
+    return this.Kym;
+  }
+  
+  public final void gtl()
+  {
+    AppMethodBeat.i(204757);
+    Iterator localIterator = this.Kyh.iterator();
+    while (localIterator.hasNext())
+    {
+      com.tencent.mm.e.b localb = (com.tencent.mm.e.b)localIterator.next();
+      localb.drV = null;
+      localb.XU().clear();
+    }
+    AppMethodBeat.o(204757);
+  }
+  
+  public final Bitmap gtm()
+  {
+    return this.Kyj;
+  }
+  
+  public final boolean gtn()
+  {
+    AppMethodBeat.i(9313);
+    if ((gti().XS() != com.tencent.mm.e.a.drO) && (this.Kyk))
+    {
+      AppMethodBeat.o(9313);
+      return true;
+    }
+    AppMethodBeat.o(9313);
+    return false;
+  }
+  
   public final void onAttachedToWindow()
   {
     AppMethodBeat.i(9312);
-    ae.i("MicroMsg.DrawingPresenter", "[onAttachedToWindow]");
-    if (!this.FFk)
+    Log.i("MicroMsg.DrawingPresenter", "[onAttachedToWindow]");
+    if (!this.Kyq)
     {
-      this.FFk = true;
-      Iterator localIterator = this.FFc.iterator();
+      this.Kyq = true;
+      Iterator localIterator = this.Kyh.iterator();
       while (localIterator.hasNext())
       {
         com.tencent.mm.e.b localb = (com.tencent.mm.e.b)localIterator.next();
-        if (ArtistCacheManager.XN().b(localb.NG()))
+        if (ArtistCacheManager.alA().b(localb.XS()))
         {
           localb.onAlive();
-          localb.cl(true);
-          ae.i("MicroMsg.DrawingPresenter", "[onAttachedToWindow] %s is revert onAlive!", new Object[] { localb.NG() });
+          localb.cT(true);
+          Log.i("MicroMsg.DrawingPresenter", "[onAttachedToWindow] %s is revert onAlive!", new Object[] { localb.XS() });
         }
       }
-      if (this.FFa.getBaseBoardView().fUG())
+      if (this.Kyf.getBaseBoardView().hgb())
       {
-        this.FFa.getBaseBoardView().fUH();
-        this.FFa.getBaseBoardView().invalidate();
+        this.Kyf.getBaseBoardView().hgc();
+        this.Kyf.getBaseBoardView().invalidate();
       }
     }
     AppMethodBeat.o(9312);
@@ -727,31 +858,31 @@ public final class a
   public final void onDestroy()
   {
     AppMethodBeat.i(9310);
-    Iterator localIterator = this.FFc.iterator();
+    Iterator localIterator = this.Kyh.iterator();
     while (localIterator.hasNext()) {
       ((com.tencent.mm.e.b)localIterator.next()).onDestroy();
     }
-    this.FFc.clear();
-    this.FFb.clear();
+    this.Kyh.clear();
+    this.Kyg.clear();
     AppMethodBeat.o(9310);
   }
   
   public final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(9317);
-    Iterator localIterator = this.FFc.iterator();
+    Iterator localIterator = this.Kyh.iterator();
     while (localIterator.hasNext())
     {
       com.tencent.mm.e.b localb = (com.tencent.mm.e.b)localIterator.next();
       if (localb.isAlive()) {
-        if (fjI().NG() == localb.NG())
+        if (gti().XS() == localb.XS())
         {
           localb.onDraw(paramCanvas);
         }
         else
         {
           paramCanvas.save();
-          paramCanvas.clipRect(this.FFa.getBaseBoardView().getAliveRect());
+          paramCanvas.clipRect(this.Kyf.getBaseBoardView().getAliveRect());
           localb.d(paramCanvas);
           paramCanvas.restore();
         }
@@ -763,8 +894,8 @@ public final class a
   public final void onExit()
   {
     AppMethodBeat.i(9300);
-    if (this.FFd != null) {
-      this.FFd.onExit();
+    if (this.Kyi != null) {
+      this.Kyi.onExit();
     }
     AppMethodBeat.o(9300);
   }
@@ -772,120 +903,68 @@ public final class a
   public final void onFinish()
   {
     AppMethodBeat.i(9302);
-    if (this.FFd != null) {
-      this.FFd.onFinish();
+    if (this.Kyi != null) {
+      this.Kyi.onFinish();
     }
     AppMethodBeat.o(9302);
   }
   
-  public final void setActionBarCallback(com.tencent.mm.api.i parami)
+  public final void setActionBarCallback(j paramj)
   {
-    this.FFd = parami;
+    this.Kyi = paramj;
   }
   
   public final void setAutoShowFooterAndBar(boolean paramBoolean)
   {
-    this.FFf = paramBoolean;
+    this.Kyk = paramBoolean;
   }
   
   public final void setInitScale(float paramFloat)
   {
-    AppMethodBeat.i(195428);
-    this.FFa.getBaseBoardView().setInitScale(paramFloat);
-    AppMethodBeat.o(195428);
+    AppMethodBeat.i(204756);
+    this.Kyf.getBaseBoardView().setInitScale(paramFloat);
+    AppMethodBeat.o(204756);
   }
   
-  final void wr(boolean paramBoolean)
+  public final void setOutputSize(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(9320);
-    if (paramBoolean)
-    {
-      localAnimation = AnimationUtils.loadAnimation(this.FFa.getContext(), 2130772108);
-      localAnimation.setAnimationListener(new Animation.AnimationListener()
-      {
-        public final void onAnimationEnd(Animation paramAnonymousAnimation)
-        {
-          AppMethodBeat.i(9283);
-          a.this.FFa.getTextEditView().setVisibility(0);
-          paramAnonymousAnimation = (EditText)a.this.FFa.getTextEditView().findViewById(2131305727);
-          paramAnonymousAnimation.requestFocus();
-          paramAnonymousAnimation.setSelection(paramAnonymousAnimation.length());
-          a.this.FFa.getSelectedFeatureListener().bY(true);
-          ((SelectColorBar)a.this.FFa.findViewById(2131304505)).setSelectColor(paramAnonymousAnimation.getCurrentTextColor());
-          a.this.FFa.getActionBar().post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(9282);
-              a.this.FFa.getActionBar().setVisibility(0);
-              AppMethodBeat.o(9282);
-            }
-          });
-          AppMethodBeat.o(9283);
-        }
-        
-        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
-        
-        public final void onAnimationStart(Animation paramAnonymousAnimation) {}
-      });
-      this.FFa.getTextEditView().startAnimation(localAnimation);
-      AppMethodBeat.o(9320);
-      return;
-    }
-    Animation localAnimation = AnimationUtils.loadAnimation(this.FFa.getContext(), 2130772106);
-    localAnimation.setAnimationListener(new Animation.AnimationListener()
-    {
-      public final void onAnimationEnd(Animation paramAnonymousAnimation)
-      {
-        AppMethodBeat.i(9285);
-        ((EditText)a.this.FFa.getTextEditView().findViewById(2131305727)).setText("");
-        a.this.FFa.getTextEditView().setVisibility(8);
-        AppMethodBeat.o(9285);
-      }
-      
-      public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
-      
-      public final void onAnimationStart(Animation paramAnonymousAnimation)
-      {
-        AppMethodBeat.i(9284);
-        a.this.FFa.getSelectedFeatureListener().bY(false);
-        AppMethodBeat.o(9284);
-      }
-    });
-    this.FFa.getTextEditView().startAnimation(localAnimation);
-    AppMethodBeat.o(9320);
+    AppMethodBeat.i(204755);
+    Log.i("MicroMsg.DrawingPresenter", "setOutputSize width:%d height:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.outputWidth = paramInt1;
+    this.outputHeight = paramInt2;
+    AppMethodBeat.o(204755);
   }
   
   public final class a
     implements com.tencent.mm.af.a
   {
-    View FFp;
-    TextView FFq;
-    ImageView FFr;
+    View Kyv;
+    TextView Kyw;
+    ImageView Kyx;
     
     public a()
     {
       AppMethodBeat.i(9289);
-      this.FFp = a.this.FFa.getRubbishView();
-      this.FFq = ((TextView)this.FFp.findViewById(2131304270));
-      this.FFr = ((ImageView)this.FFp.findViewById(2131304268));
+      this.Kyv = a.this.Kyf.getRubbishView();
+      this.Kyw = ((TextView)this.Kyv.findViewById(2131307193));
+      this.Kyx = ((ImageView)this.Kyv.findViewById(2131307191));
       AppMethodBeat.o(9289);
     }
     
     public final void a(com.tencent.mm.z.f paramf)
     {
       AppMethodBeat.i(9294);
-      EditText localEditText = (EditText)a.this.FFa.getTextEditView().findViewById(2131305727);
+      EditText localEditText = (EditText)a.this.Kyf.getTextEditView().findViewById(2131308994);
       localEditText.setTag(paramf);
-      if (a.this.FFh != null)
+      if (a.this.Kyn != null)
       {
-        a.this.FFh.b(paramf);
+        a.this.Kyn.b(paramf);
         AppMethodBeat.o(9294);
         return;
       }
-      localEditText.setText(paramf.gBT);
-      Switch localSwitch = (Switch)a.this.FFa.findViewById(2131297210);
-      SelectColorBar localSelectColorBar = (SelectColorBar)a.this.FFa.findViewById(2131304505);
+      localEditText.setText(paramf.hoI);
+      Switch localSwitch = (Switch)a.this.Kyf.findViewById(2131297362);
+      SelectColorBar localSelectColorBar = (SelectColorBar)a.this.Kyf.findViewById(2131307511);
       boolean bool;
       if (paramf.mBgColor != 0)
       {
@@ -900,7 +979,7 @@ public final class a
       {
         localEditText.setTextColor(paramf.mColor);
         localEditText.setTag(paramf);
-        a.this.wr(true);
+        a.this.Ar(true);
         AppMethodBeat.o(9294);
         return;
         bool = false;
@@ -910,24 +989,24 @@ public final class a
       }
     }
     
-    public final void ak(float paramFloat)
-    {
-      AppMethodBeat.i(9290);
-      ae.i("MicroMsg.DrawingPresenter", "[onReach] distance:%s", new Object[] { Float.valueOf(paramFloat) });
-      this.FFp.setActivated(true);
-      this.FFq.setText(a.this.FFa.getContext().getString(2131762742));
-      this.FFr.setImageDrawable(ao.k(a.this.FFa.getContext(), 2131690385, -1));
-      AppMethodBeat.o(9290);
-    }
-    
-    public final void ali()
+    public final void aBB()
     {
       AppMethodBeat.i(9291);
-      ae.i("MicroMsg.DrawingPresenter", "[onUnReach]");
-      this.FFp.setActivated(false);
-      this.FFr.setImageDrawable(ao.k(a.this.FFa.getContext(), 2131690384, -1));
-      this.FFq.setText(a.this.FFa.getContext().getString(2131762743));
+      Log.i("MicroMsg.DrawingPresenter", "[onUnReach]");
+      this.Kyv.setActivated(false);
+      this.Kyx.setImageDrawable(ar.m(a.this.Kyf.getContext(), 2131690529, -1));
+      this.Kyw.setText(a.this.Kyf.getContext().getString(2131764828));
       AppMethodBeat.o(9291);
+    }
+    
+    public final void at(float paramFloat)
+    {
+      AppMethodBeat.i(9290);
+      Log.i("MicroMsg.DrawingPresenter", "[onReach] distance:%s", new Object[] { Float.valueOf(paramFloat) });
+      this.Kyv.setActivated(true);
+      this.Kyw.setText(a.this.Kyf.getContext().getString(2131764827));
+      this.Kyx.setImageDrawable(ar.m(a.this.Kyf.getContext(), 2131690530, -1));
+      AppMethodBeat.o(9290);
     }
     
     public final void onHide()
@@ -941,8 +1020,8 @@ public final class a
     {
       AppMethodBeat.i(9292);
       a.a(a.this, true);
-      if (a.this.FFh != null) {
-        a.this.FFh.k(Boolean.TRUE);
+      if (a.this.Kyn != null) {
+        a.this.Kyn.l(Boolean.TRUE);
       }
       AppMethodBeat.o(9292);
     }
@@ -951,13 +1030,13 @@ public final class a
   final class b
     implements Runnable
   {
-    s FFs;
-    boolean FFt;
+    u Kyy;
+    boolean Kyz;
     
-    b(s params, boolean paramBoolean)
+    b(u paramu, boolean paramBoolean)
     {
-      this.FFs = params;
-      this.FFt = paramBoolean;
+      this.Kyy = paramu;
+      this.Kyz = paramBoolean;
     }
     
     private static Bitmap a(Bitmap paramBitmap, Rect paramRect, float paramFloat, BitmapFactory.Options paramOptions, Matrix paramMatrix)
@@ -976,7 +1055,7 @@ public final class a
         catch (OutOfMemoryError localOutOfMemoryError)
         {
           Bitmap localBitmap;
-          ae.printErrStackTrace("MicroMsg.DrawingPresenter", localOutOfMemoryError, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.DrawingPresenter", localOutOfMemoryError, "", new Object[0]);
           float f1 = 1920.0F / paramOptions.outHeight;
           float f2 = 1920.0F / paramOptions.outWidth;
           if (f1 <= f2) {
@@ -1008,9 +1087,9 @@ public final class a
       Object localObject4;
       try
       {
-        Iterator localIterator1 = a.this.FFc.iterator();
+        Iterator localIterator1 = a.this.Kyh.iterator();
         while (localIterator1.hasNext()) {
-          ((com.tencent.mm.e.b)localIterator1.next()).NK();
+          ((com.tencent.mm.e.b)localIterator1.next()).XW();
         }
         Iterator localIterator2;
         Object localObject3;
@@ -1022,18 +1101,18 @@ public final class a
       }
       catch (Exception localException1)
       {
-        com.tencent.e.h.MqF.aM(new Runnable()
+        com.tencent.f.h.RTc.aV(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(195427);
-            a.b.this.FFs.onError(localException1);
-            AppMethodBeat.o(195427);
+            AppMethodBeat.i(204754);
+            a.b.this.Kyy.onError(localException1);
+            AppMethodBeat.o(204754);
           }
         });
         try
         {
-          localIterator2 = a.this.FFc.iterator();
+          localIterator2 = a.this.Kyh.iterator();
           while (localIterator2.hasNext()) {
             ((com.tencent.mm.e.b)localIterator2.next()).onFinish();
           }
@@ -1044,31 +1123,31 @@ public final class a
           AppMethodBeat.o(9295);
           return;
         }
-        if (!a.this.FFa.getBaseBoardView().fUG())
+        if (!a.this.Kyf.getBaseBoardView().hgb())
         {
-          i = a.this.FFa.getBaseBoardView().getAliveRect().width();
-          j = a.this.FFa.getBaseBoardView().getAliveRect().height();
+          i = a.this.Kyf.getBaseBoardView().getAliveRect().width();
+          j = a.this.Kyf.getBaseBoardView().getAliveRect().height();
           localObject1 = localObject3;
           if (i <= 0) {
-            break label811;
+            break label875;
           }
           localObject1 = localObject3;
           if (j <= 0) {
-            break label811;
+            break label875;
           }
           localObject1 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
-          break label811;
+          break label875;
         }
         while (localObject1 == null)
         {
-          this.FFs.onError(new NullPointerException("bitmap is null!"));
+          this.Kyy.onError(new NullPointerException("bitmap is null!"));
           try
           {
-            localObject1 = a.this.FFc.iterator();
+            localObject1 = a.this.Kyh.iterator();
             while (((Iterator)localObject1).hasNext()) {
               ((com.tencent.mm.e.b)((Iterator)localObject1).next()).onFinish();
             }
-            localBitmap1 = a.this.FFe;
+            localBitmap1 = a.this.Kyj;
           }
           catch (Exception localException3)
           {
@@ -1081,16 +1160,16 @@ public final class a
           return;
         }
         localObject3 = new Canvas(localBitmap1);
-        localObject4 = a.this.FFc.iterator();
+        localObject4 = a.this.Kyh.iterator();
         while (((Iterator)localObject4).hasNext()) {
-          ((com.tencent.mm.e.b)((Iterator)localObject4).next()).NI().e((Canvas)localObject3);
+          ((com.tencent.mm.e.b)((Iterator)localObject4).next()).XU().e((Canvas)localObject3);
         }
       }
       finally
       {
         try
         {
-          localObject3 = a.this.FFc.iterator();
+          localObject3 = a.this.Kyh.iterator();
           while (((Iterator)localObject3).hasNext()) {
             ((com.tencent.mm.e.b)((Iterator)localObject3).next()).onFinish();
           }
@@ -1098,23 +1177,32 @@ public final class a
         }
         catch (Exception localException5) {}
       }
-      label391:
+      label394:
       BitmapFactory.Options localOptions = new BitmapFactory.Options();
       localOptions.inJustDecodeBounds = true;
-      com.tencent.mm.sdk.platformtools.h.decodeFile(a.this.cSv.path, localOptions);
-      float f1 = localOptions.outHeight * 1.0F / localBitmap2.getHeight();
-      float f2 = localOptions.outWidth * 1.0F / localBitmap2.getWidth();
-      if (f1 > f2) {
-        break label814;
+      BitmapUtil.decodeFile(a.this.diP.path, localOptions);
+      float f3 = localOptions.outHeight * 1.0F / localBitmap2.getHeight();
+      float f4 = localOptions.outWidth * 1.0F / localBitmap2.getWidth();
+      float f1 = f3;
+      float f2 = f4;
+      if (a.this.outputHeight > 0)
+      {
+        f1 = f3;
+        f2 = f4;
+        if (a.this.outputWidth > 0)
+        {
+          f1 = a.this.outputHeight * 1.0F / localBitmap2.getHeight();
+          f2 = a.this.outputWidth * 1.0F / localBitmap2.getWidth();
+        }
       }
       for (;;)
       {
-        f1 = a.this.FFa.getBaseBoardView().b(a.this.FFa.getBaseBoardView().getMainMatrix());
+        f1 = a.this.Kyf.getBaseBoardView().b(a.this.Kyf.getBaseBoardView().getMainMatrix());
         localObject4 = new Matrix();
         ((Matrix)localObject4).postScale(f2, f2, 0.0F, 0.0F);
         ((Matrix)localObject4).postRotate(-f1);
-        Rect localRect = new Rect(a.this.FFa.getBaseBoardView().getAliveRect());
-        ae.i("MicroMsg.DrawingPresenter", "[saveEditPhoto] clipRectF:%s w:%s h:%s", new Object[] { localRect, Integer.valueOf(localBitmap2.getWidth()), Integer.valueOf(localBitmap2.getHeight()) });
+        Rect localRect = new Rect(a.this.Kyf.getBaseBoardView().getAliveRect());
+        Log.i("MicroMsg.DrawingPresenter", "[saveEditPhoto] clipRectF:%s w:%s h:%s", new Object[] { localRect, Integer.valueOf(localBitmap2.getWidth()), Integer.valueOf(localBitmap2.getHeight()) });
         if (localRect.left < 0) {
           localRect.left = 0;
         }
@@ -1134,40 +1222,45 @@ public final class a
           localRect.right = localBitmap2.getWidth();
         }
         Object localObject2 = a(localBitmap2, localRect, f1, localOptions, (Matrix)localObject4);
-        com.tencent.e.h.MqF.aM(new Runnable()
+        com.tencent.f.h.RTc.aV(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(195426);
-            a.b.this.FFs.a(this.wHC, a.b.this.FFt);
-            AppMethodBeat.o(195426);
+            AppMethodBeat.i(204753);
+            a.b.this.Kyy.a(this.ACM, a.b.this.Kyz);
+            AppMethodBeat.o(204753);
           }
         });
         try
         {
-          localObject2 = a.this.FFc.iterator();
-          while (((Iterator)localObject2).hasNext()) {
+          localObject2 = a.this.Kyh.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
             ((com.tencent.mm.e.b)((Iterator)localObject2).next()).onFinish();
+            continue;
+            f1 = f2;
           }
-          f1 = f2;
         }
         catch (Exception localException4)
         {
           AppMethodBeat.o(9295);
           return;
         }
-        break label814;
-        a.this.onDestroy();
-        AppMethodBeat.o(9295);
-        return;
-        a.this.onDestroy();
-        AppMethodBeat.o(9295);
-        return;
-        a.this.onDestroy();
-        break label391;
-        label811:
-        break;
-        label814:
+        label875:
+        do
+        {
+          break label884;
+          a.this.onDestroy();
+          AppMethodBeat.o(9295);
+          return;
+          a.this.onDestroy();
+          AppMethodBeat.o(9295);
+          return;
+          a.this.onDestroy();
+          break label394;
+          break;
+        } while (f1 <= f2);
+        label884:
         f2 = f1;
         if (f1 == 0.0F) {
           f2 = 1.0F;
@@ -1180,12 +1273,12 @@ public final class a
   {
     public abstract boolean b(com.tencent.mm.z.f paramf);
     
-    public abstract void k(Boolean paramBoolean);
+    public abstract void l(Boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.bt.a
  * JD-Core Version:    0.7.0.1
  */

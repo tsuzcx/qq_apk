@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/ic" android:background="@drawable/bl6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/i_"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskTextView android:textSize="@dimen/gx" android:textColor="@color/y4" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hv" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/hk" android:paddingRight="@dimen/jn" android:paddingBottom="@dimen/hk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:drawableRight="@drawable/bnc" />
-    <View android:gravity="center" android:id="@id/ht" android:background="#ffd6d6d6" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <com.tencent.mm.plugin.sns.ui.MaskTextView android:textSize="@dimen/gx" android:textColor="@color/a3l" android:gravity="left" android:id="@id/hw" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/d" android:paddingRight="3.0dip" android:paddingBottom="@dimen/hk" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>

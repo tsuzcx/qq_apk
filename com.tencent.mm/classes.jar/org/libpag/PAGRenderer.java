@@ -12,21 +12,20 @@ public class PAGRenderer
   
   static
   {
-    AppMethodBeat.i(216950);
-    b.loadLibrary("libpag");
+    AppMethodBeat.i(236921);
+    b.loadLibrary("pag");
     nativeInit();
-    PAGFont.loadSystemFonts();
-    AppMethodBeat.o(216950);
+    AppMethodBeat.o(236921);
   }
   
   public PAGRenderer()
   {
-    AppMethodBeat.i(216941);
+    AppMethodBeat.i(236912);
     this.pagSurface = null;
     this.pagFile = null;
     this.nativeContext = 0L;
     nativeSetup();
-    AppMethodBeat.o(216941);
+    AppMethodBeat.o(236912);
   }
   
   private native void nativeFinalize();
@@ -55,16 +54,16 @@ public class PAGRenderer
   
   protected void finalize()
   {
-    AppMethodBeat.i(216949);
+    AppMethodBeat.i(236920);
     nativeFinalize();
-    AppMethodBeat.o(216949);
+    AppMethodBeat.o(236920);
   }
   
   public boolean flush()
   {
-    AppMethodBeat.i(216947);
+    AppMethodBeat.i(236918);
     boolean bool = flush(false);
-    AppMethodBeat.o(216947);
+    AppMethodBeat.o(236918);
     return bool;
   }
   
@@ -88,12 +87,12 @@ public class PAGRenderer
   
   public Matrix matrix()
   {
-    AppMethodBeat.i(216944);
+    AppMethodBeat.i(236915);
     float[] arrayOfFloat = new float[9];
     nativeGetMatrix(arrayOfFloat);
     Matrix localMatrix = new Matrix();
     localMatrix.setValues(arrayOfFloat);
-    AppMethodBeat.o(216944);
+    AppMethodBeat.o(236915);
     return localMatrix;
   }
   
@@ -101,22 +100,22 @@ public class PAGRenderer
   
   public void release()
   {
-    AppMethodBeat.i(216948);
+    AppMethodBeat.i(236919);
     nativeRelease();
-    AppMethodBeat.o(216948);
+    AppMethodBeat.o(236919);
   }
   
   public void replaceImage(int paramInt, PAGImage paramPAGImage)
   {
-    AppMethodBeat.i(216946);
+    AppMethodBeat.i(236917);
     if (paramPAGImage == null)
     {
       nativeReplaceImage(paramInt, 0L);
-      AppMethodBeat.o(216946);
+      AppMethodBeat.o(236917);
       return;
     }
     nativeReplaceImage(paramInt, paramPAGImage.nativeContext);
-    AppMethodBeat.o(216946);
+    AppMethodBeat.o(236917);
   }
   
   public native void reset();
@@ -129,25 +128,25 @@ public class PAGRenderer
   
   public void setFile(PAGFile paramPAGFile)
   {
-    AppMethodBeat.i(216942);
+    AppMethodBeat.i(236913);
     this.pagFile = paramPAGFile;
     if (paramPAGFile != null)
     {
       nativeSetFile(paramPAGFile.nativeContext);
-      AppMethodBeat.o(216942);
+      AppMethodBeat.o(236913);
       return;
     }
     nativeSetFile(0L);
-    AppMethodBeat.o(216942);
+    AppMethodBeat.o(236913);
   }
   
   public void setMatrix(Matrix paramMatrix)
   {
-    AppMethodBeat.i(216945);
+    AppMethodBeat.i(236916);
     float[] arrayOfFloat = new float[9];
     paramMatrix.getValues(arrayOfFloat);
     nativeSetMatrix(arrayOfFloat[0], arrayOfFloat[3], arrayOfFloat[1], arrayOfFloat[4], arrayOfFloat[2], arrayOfFloat[5]);
-    AppMethodBeat.o(216945);
+    AppMethodBeat.o(236916);
   }
   
   public native void setMaxFrameRate(float paramFloat);
@@ -158,23 +157,23 @@ public class PAGRenderer
   
   public void setSurface(PAGSurface paramPAGSurface)
   {
-    AppMethodBeat.i(216943);
+    AppMethodBeat.i(236914);
     this.pagSurface = paramPAGSurface;
     if (paramPAGSurface == null)
     {
       nativeSetSurface(0L);
-      AppMethodBeat.o(216943);
+      AppMethodBeat.o(236914);
       return;
     }
     nativeSetSurface(paramPAGSurface.nativeSurface);
-    AppMethodBeat.o(216943);
+    AppMethodBeat.o(236914);
   }
   
   public native void setTextData(int paramInt, PAGText paramPAGText);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.libpag.PAGRenderer
  * JD-Core Version:    0.7.0.1
  */

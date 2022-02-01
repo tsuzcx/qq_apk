@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.audio.broadcast.headset;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.audio.c.a.a;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/broadcast/headset/HeadsetPlugMgr;", "", "()V", "onHeadsetPlugStateUpdate", "", "isConnected", "", "plugin-audio_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/audio/broadcast/headset/HeadsetPlugMgr;", "", "()V", "onHeadsetPlugStateUpdate", "", "isConnected", "", "plugin-audio_release"})
 public final class a
 {
-  public static final a nwR;
+  public static final a oHK;
   
   static
   {
-    AppMethodBeat.i(201052);
-    nwR = new a();
-    AppMethodBeat.o(201052);
+    AppMethodBeat.i(223949);
+    oHK = new a();
+    AppMethodBeat.o(223949);
   }
   
-  public static final void in(boolean paramBoolean)
+  public static final void jo(boolean paramBoolean)
   {
-    AppMethodBeat.i(201051);
+    AppMethodBeat.i(223948);
     if (paramBoolean)
     {
-      locala = com.tencent.mm.plugin.audio.c.a.nxo;
-      a.a.bHy().hE(8);
-      AppMethodBeat.o(201051);
+      locala = com.tencent.mm.plugin.audio.c.a.oIh;
+      a.a.cea().iY(8);
+      AppMethodBeat.o(223948);
       return;
     }
-    a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
-    a.a.bHy().hE(9);
-    AppMethodBeat.o(201051);
+    a.a locala = com.tencent.mm.plugin.audio.c.a.oIh;
+    a.a.cea().iY(9);
+    AppMethodBeat.o(223948);
   }
 }
 

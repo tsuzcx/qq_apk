@@ -7,13 +7,13 @@ import com.tencent.mm.plugin.downloader.g.b;
 public abstract interface d
   extends a
 {
-  public abstract b azM();
+  public abstract b aSU();
   
-  public abstract void jO(boolean paramBoolean);
+  public abstract void kR(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.a.d
  * JD-Core Version:    0.7.0.1
  */

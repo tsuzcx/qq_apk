@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.record.a;
 
-import com.tencent.mm.sdk.e.d;
-import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.IAutoStorage;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.List;
 
 public abstract interface h
-  extends d<k>, g
+  extends IAutoStorage<k>, IStorage
 {
-  public static final String[] SQL_CREATE = { j.getCreateSQLs(k.info, "RecordMessageInfo") };
+  public static final String[] SQL_CREATE = { MAutoStorage.getCreateSQLs(k.info, "RecordMessageInfo") };
   
-  public abstract void Of(int paramInt);
+  public abstract void Vu(int paramInt);
   
-  public abstract k Og(int paramInt);
+  public abstract k Vv(int paramInt);
   
-  public abstract List<k> dHy();
+  public abstract List<k> eIl();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.h
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aqn;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class hl
-  extends b
+  extends IEvent
 {
-  public a duV;
+  public a dLU;
   
   public hl()
   {
@@ -16,27 +15,21 @@ public final class hl
   
   private hl(byte paramByte)
   {
-    AppMethodBeat.i(168882);
-    this.duV = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(241573);
+    this.dLU = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(168882);
+    AppMethodBeat.o(241573);
   }
   
   public static final class a
   {
-    public aqn duW;
-    public int duX = -1;
-    public long duY = 0L;
-    public long duZ = 0L;
-    public long duw;
-    public int dva = -1;
-    public int friendLikeCount = -1;
+    public long feedId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.hl
  * JD-Core Version:    0.7.0.1
  */

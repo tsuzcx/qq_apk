@@ -4,108 +4,108 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class o
 {
-  private static List<String> hQe;
-  private static int hQf;
-  private static a hQg;
+  private static List<String> iLk;
+  private static int iLl;
+  private static a iLm;
   
   static
   {
     AppMethodBeat.i(150317);
-    hQe = null;
-    hQf = 0;
-    hQg = new a(new b());
+    iLk = null;
+    iLl = 0;
+    iLm = new a(new b());
     AppMethodBeat.o(150317);
   }
   
-  public static void D(Runnable paramRunnable)
+  public static void H(Runnable paramRunnable)
   {
     AppMethodBeat.i(150315);
-    if (!g.ajP().aiZ())
+    if (!g.aAf().azp())
     {
       AppMethodBeat.o(150315);
       return;
     }
-    Object localObject = p.aEN();
+    Object localObject = p.aYB();
     ArrayList localArrayList = new ArrayList();
-    localObject = ((j)localObject).hKK.a("select username from img_flag where username not in (select username from rcontact ) and username not like \"%@qqim\" and username not like \"%@bottle\";", null, 2);
+    localObject = ((j)localObject).iFy.rawQuery("select username from img_flag where username not in (select username from rcontact ) and username not like \"%@qqim\" and username not like \"%@bottle\";", null, 2);
     while (((Cursor)localObject).moveToNext()) {
       localArrayList.add(((Cursor)localObject).getString(0));
     }
     ((Cursor)localObject).close();
-    hQe = localArrayList;
+    iLk = localArrayList;
     if (localArrayList.size() <= 0)
     {
       AppMethodBeat.o(150315);
       return;
     }
-    hQg.hQh.hQi = paramRunnable;
-    hQg.ay(10L, 10L);
+    iLm.iLn.iLo = paramRunnable;
+    iLm.startTimer(10L);
     AppMethodBeat.o(150315);
   }
   
-  public static void aEK()
+  public static void aYx()
   {
     AppMethodBeat.i(150316);
-    hQf = 0;
-    hQg.stopTimer();
+    iLl = 0;
+    iLm.stopTimer();
     AppMethodBeat.o(150316);
   }
   
   static final class a
-    extends aw
+    extends MTimerHandler
   {
-    final o.b hQh;
+    final o.b iLn;
     
     public a(o.b paramb)
     {
       super(true);
-      this.hQh = paramb;
+      this.iLn = paramb;
     }
   }
   
   static final class b
-    implements aw.a
+    implements MTimerHandler.CallBack
   {
-    Runnable hQi;
+    Runnable iLo;
     
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(150314);
-      int j = o.hQe.size();
-      ae.e("MicroMsg.RemoveAvatarTask", "RemoveOldAvatar left count:".concat(String.valueOf(j)));
-      if ((j <= 2000) || (o.hQf >= 300))
+      int j = o.iLk.size();
+      Log.e("MicroMsg.RemoveAvatarTask", "RemoveOldAvatar left count:".concat(String.valueOf(j)));
+      if ((j <= 2000) || (o.iLl >= 300))
       {
-        if (this.hQi != null) {
-          this.hQi.run();
+        if (this.iLo != null) {
+          this.iLo.run();
         }
-        o.aEL();
+        o.aYy();
         AppMethodBeat.o(150314);
         return false;
       }
-      long l = g.ajR().gDX.yi(Thread.currentThread().getId());
+      long l = g.aAh().hqK.beginTransaction(Thread.currentThread().getId());
       int i = j - 1;
       while (i >= j - 30)
       {
-        o.Qe();
-        String str = (String)o.hQe.get(i);
-        o.hQe.remove(i);
-        p.aEA();
-        e.L(str, false);
-        p.aEA();
-        e.L(str, true);
-        p.aEN().DM(str);
+        o.aYz();
+        String str = (String)o.iLk.get(i);
+        o.iLk.remove(i);
+        p.aYn();
+        e.N(str, false);
+        p.aYn();
+        e.N(str, true);
+        p.aYB().My(str);
         i -= 1;
       }
-      g.ajR().gDX.sW(l);
+      g.aAh().hqK.endTransaction(l);
       AppMethodBeat.o(150314);
       return true;
     }
@@ -113,7 +113,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.aj.o
  * JD-Core Version:    0.7.0.1
  */

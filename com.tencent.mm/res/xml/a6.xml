@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference android:key="contact_info_header_normal" android:layout="@layout/u2" />
-    <PreferenceSmallCategory android:key="contact_info_category_1" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_district" android:layout="@layout/aop" android:title="@string/b5k" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_signature" android:layout="@layout/aop" android:title="@string/b_a" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_source" android:layout="@layout/aop" android:title="@string/bap" />
-    <com.tencent.mm.pluginsdk.ui.preference.SnsPreference android:key="contact_info_sns" android:layout="@layout/aop" android:title="@string/b_b" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_invite_source" android:layout="@layout/aop" android:title="@string/b6t" />
-    <com.tencent.mm.plugin.profile.ui.ContactMoreInfoPreference android:key="contact_info_more" android:layout="@layout/aop" android:title="@string/b7y" />
-    <com.tencent.mm.plugin.profile.ui.ContactSocialInfoPreference android:key="contact_info_social" android:layout="@layout/aop" android:title="@string/b_i" />
-    <com.tencent.mm.plugin.profile.ui.FriendPreference android:key="contact_info_facebook" android:layout="@layout/aop" android:title="@string/cyp" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_verifyuser" android:layout="@layout/aop" android:title="@string/bb_" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_mini_shop_helper_header_helper" android:layout="@layout/bi_" />
     <PreferenceSmallCategory />
-    <com.tencent.mm.plugin.profile.ui.NormalUserFooterPreference android:key="contact_info_footer_normal" android:layout="@layout/tv" />
+    <Preference android:key="contact_info_mini_shop_helper_go_to" android:layout="@layout/b8j" android:title="@string/bcu" />
     <PreferenceSmallCategory />
-    <com.tencent.mm.ui.base.preference.TextPreference android:key="contact_info_hint" />
+    <Preference android:key="contact_info_mini_shop_helper_my" android:layout="@layout/b8j" android:title="@string/bcw" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="contact_info_mini_shop_helper_top" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bcz" />
+    <CheckBoxPreference android:key="contact_info_mini_shop_helper_not_disturb" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bcx" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_mini_shop_helper_help" android:layout="@layout/b8j" android:title="@string/bcv" />
+    <Preference android:key="contact_info_mini_shop_helper_clear_data" android:layout="@layout/b8j" android:title="@string/ba3" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsq" android:key="contact_info_mini_shop_helper_install" android:title_color="@color/ts" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsv" android:key="contact_info_mini_shop_helper_uninstall" android:layout="@layout/b2o" android:title_color="@color/a5e" />
+    <PreferenceCategory />
 </PreferenceScreen>

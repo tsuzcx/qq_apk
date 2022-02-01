@@ -1,29 +1,28 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.y;
+import com.tencent.mm.plugin.appbrand.jsapi.ab;
 import org.json.JSONObject;
 
 abstract class f<T extends g>
-  extends y
+  extends ab
 {
-  private final T kPK;
+  private final T lUI;
   
   public f(T paramT)
   {
-    this.kPK = paramT;
-    this.kPK.kPO = this;
+    this.lUI = paramT;
+    this.lUI.lUM = this;
   }
   
-  public final String a(c paramc, JSONObject paramJSONObject)
+  public final String a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject)
   {
-    paramJSONObject = this.kPK.e(paramc, paramJSONObject);
-    return a(paramc, paramJSONObject.errMsg, paramJSONObject.values);
+    paramJSONObject = this.lUI.e(paramf, paramJSONObject);
+    return a(paramf, paramJSONObject.errMsg, paramJSONObject.values);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.f
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static com.tencent.mm.ipcinvoker.h.a.a gAO;
+  private static com.tencent.mm.ipcinvoker.h.a.a hnD;
   
   static
   {
     AppMethodBeat.i(158839);
-    gAO = new a();
+    hnD = new a();
     AppMethodBeat.o(158839);
   }
   
@@ -18,35 +18,35 @@ public final class b
     if (parama == null) {
       return false;
     }
-    gAO = parama;
+    hnD = parama;
     return true;
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(158838);
-    gAO.printLog(3, paramString1, paramString2, paramVarArgs);
+    hnD.printLog(3, paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(158838);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(158836);
-    gAO.printLog(6, paramString1, paramString2, paramVarArgs);
+    hnD.printLog(6, paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(158836);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(158835);
-    gAO.printLog(4, paramString1, paramString2, paramVarArgs);
+    hnD.printLog(4, paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(158835);
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(158837);
-    gAO.printLog(5, paramString1, paramString2, paramVarArgs);
+    hnD.printLog(5, paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(158837);
   }
 }

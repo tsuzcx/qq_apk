@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/yu"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textColor="@color/s5" android:id="@id/ebw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gyc" />
-    <LinearLayout style="@style/zn">
-        <com.tencent.mm.plugin.wallet_payu.security_question.ui.WalletPayUSecurityQuestionView android:id="@id/ebv" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" app:tipmsg="@string/gyg" />
-        <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/ebu" android:singleLine="false" android:imeOptions="actionNext" app:contentHint="@string/gyd" app:titleText="@string/gye" style="@style/zp" />
-    </LinearLayout>
-    <Button android:id="@id/ebt" android:layout_marginTop="@dimen/ha" android:text="@string/gy_" style="@style/zj" />
+<LinearLayout style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <EditText android:id="@id/ik7" android:layout_height="130.0dip" android:layout_margin="10.0dip" style="@style/nw" />
+    <TextView android:textColor="@color/a2x" android:gravity="right" android:id="@id/i50" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
 </LinearLayout>

@@ -7,23 +7,23 @@ public abstract interface d
 {
   public abstract void a(Object paramObject, Intent[] paramArrayOfIntent);
   
-  public abstract void aW(Object paramObject);
-  
-  public abstract void aX(Object paramObject);
-  
-  public abstract void aY(Object paramObject);
-  
-  public abstract void aZ(Object paramObject);
-  
   public abstract void b(Object paramObject, Intent paramIntent);
   
-  public abstract void ba(Object paramObject);
+  public abstract void bf(Object paramObject);
   
-  public abstract void bb(Object paramObject);
+  public abstract void bg(Object paramObject);
+  
+  public abstract void bh(Object paramObject);
+  
+  public abstract void bi(Object paramObject);
+  
+  public abstract void bj(Object paramObject);
+  
+  public abstract void bk(Object paramObject);
   
   public abstract void c(Object paramObject, Intent paramIntent);
   
-  public abstract void d(Object paramObject, boolean paramBoolean);
+  public abstract void c(Object paramObject, boolean paramBoolean);
   
   public abstract void x(Activity paramActivity);
 }

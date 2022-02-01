@@ -9,33 +9,33 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.h.a;
-import com.tencent.mm.pluginsdk.ui.tools.h.e;
+import com.tencent.mm.pluginsdk.ui.tools.j.a;
+import com.tencent.mm.pluginsdk.ui.tools.j.e;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
 @a(3)
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "videoCallBack", "com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1;", "videoPlayView", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "videoCallBack", "com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1;", "videoPlayView", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-story_release"})
 public final class StoryPreviewUI
   extends MMActivity
 {
-  private final b Bmq;
+  private final b Fxg;
   private final String TAG;
-  private VideoPlayerTextureView wdv;
+  private VideoPlayerTextureView zyd;
   
   public StoryPreviewUI()
   {
     AppMethodBeat.i(119645);
     this.TAG = "MicroMsg.StoryPreviewUI";
-    this.Bmq = new b(this);
+    this.Fxg = new b(this);
     AppMethodBeat.o(119645);
   }
   
   public final int getLayoutId()
   {
-    return 2131495715;
+    return 2131496620;
   }
   
   public final void onCreate(Bundle paramBundle)
@@ -45,31 +45,31 @@ public final class StoryPreviewUI
     super.onCreate(paramBundle);
     setSelfNavigationBarVisible(8);
     getWindow().addFlags(2097280);
-    if (d.lA(19)) {
+    if (d.oD(19)) {
       getWindow().setFlags(201327616, 201327616);
     }
     for (;;)
     {
       paramBundle = getIntent().getStringExtra("video_path");
-      Object localObject = findViewById(2131305486);
+      Object localObject = findViewById(2131308692);
       p.g(localObject, "findViewById(R.id.story_preview_play_view)");
-      this.wdv = ((VideoPlayerTextureView)localObject);
-      localObject = this.wdv;
+      this.zyd = ((VideoPlayerTextureView)localObject);
+      localObject = this.zyd;
       if (localObject == null) {
-        p.bdF("videoPlayView");
+        p.btv("videoPlayView");
       }
       ((VideoPlayerTextureView)localObject).setVideoPath(paramBundle);
-      paramBundle = this.wdv;
+      paramBundle = this.zyd;
       if (paramBundle == null) {
-        p.bdF("videoPlayView");
+        p.btv("videoPlayView");
       }
-      paramBundle.setVideoCallback((h.a)this.Bmq);
-      paramBundle = this.wdv;
+      paramBundle.setVideoCallback((j.a)this.Fxg);
+      paramBundle = this.zyd;
       if (paramBundle == null) {
-        p.bdF("videoPlayView");
+        p.btv("videoPlayView");
       }
       paramBundle.setAlpha(0.0F);
-      findViewById(2131305485).setOnClickListener((View.OnClickListener)new StoryPreviewUI.a(this));
+      findViewById(2131308691).setOnClickListener((View.OnClickListener)new StoryPreviewUI.a(this));
       AppMethodBeat.o(119643);
       return;
       getWindow().setFlags(1024, 1024);
@@ -80,9 +80,9 @@ public final class StoryPreviewUI
   {
     AppMethodBeat.i(119644);
     super.onDestroy();
-    VideoPlayerTextureView localVideoPlayerTextureView = this.wdv;
+    VideoPlayerTextureView localVideoPlayerTextureView = this.zyd;
     if (localVideoPlayerTextureView == null) {
-      p.bdF("videoPlayView");
+      p.btv("videoPlayView");
     }
     localVideoPlayerTextureView.stop();
     AppMethodBeat.o(119644);
@@ -94,45 +94,45 @@ public final class StoryPreviewUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView$IVideoCallback;", "onCompletion", "", "onError", "what", "", "extra", "onGetVideoSize", "width", "height", "onPlayTime", "playTime", "videoTime", "onPrepared", "plugin-story_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/story/ui/StoryPreviewUI$videoCallBack$1", "Lcom/tencent/mm/pluginsdk/ui/tools/IVideoView$IVideoCallback;", "onCompletion", "", "onError", "what", "", "extra", "onGetVideoSize", "width", "height", "onPlayTime", "playTime", "videoTime", "onPrepared", "plugin-story_release"})
   public static final class b
-    implements h.a
+    implements j.a
   {
-    public final int eU(int paramInt1, int paramInt2)
+    public final void eo(int paramInt1, int paramInt2) {}
+    
+    public final int fh(int paramInt1, int paramInt2)
     {
       return 0;
     }
     
-    public final void eb(int paramInt1, int paramInt2) {}
-    
     public final void onCompletion()
     {
       AppMethodBeat.i(119642);
-      StoryPreviewUI.a(this.Bmr).d(0.0D, true);
+      StoryPreviewUI.a(this.Fxh).d(0.0D, true);
       AppMethodBeat.o(119642);
     }
     
     public final void onError(int paramInt1, int paramInt2) {}
     
-    public final void ta()
+    public final void tf()
     {
       AppMethodBeat.i(119641);
-      StoryPreviewUI.a(this.Bmr).setOneTimeVideoTextureUpdateCallback((h.e)new a(this));
-      StoryPreviewUI.a(this.Bmr).start();
+      StoryPreviewUI.a(this.Fxh).setOneTimeVideoTextureUpdateCallback((j.e)new a(this));
+      StoryPreviewUI.a(this.Fxh).start();
       AppMethodBeat.o(119641);
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTextureUpdate"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTextureUpdate"})
     static final class a
-      implements h.e
+      implements j.e
     {
       a(StoryPreviewUI.b paramb) {}
       
-      public final void bpD()
+      public final void bLh()
       {
         AppMethodBeat.i(119640);
-        StoryPreviewUI.a(this.Bms.Bmr).setVisibility(0);
-        StoryPreviewUI.a(this.Bms.Bmr).setAlpha(1.0F);
+        StoryPreviewUI.a(this.Fxi.Fxh).setVisibility(0);
+        StoryPreviewUI.a(this.Fxi.Fxh).setAlpha(1.0F);
         AppMethodBeat.o(119640);
       }
     }
@@ -140,7 +140,7 @@ public final class StoryPreviewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.StoryPreviewUI
  * JD-Core Version:    0.7.0.1
  */

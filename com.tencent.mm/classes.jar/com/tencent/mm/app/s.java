@@ -2,7 +2,7 @@ package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tinker.entry.ApplicationLike;
 import com.tencent.tinker.lib.e.b;
 import com.tencent.tinker.loader.TinkerRuntimeException;
@@ -13,17 +13,17 @@ import java.util.HashMap;
 
 public final class s
 {
-  static ApplicationLike cTZ;
-  static String cUR = "";
-  String cUS;
-  String cUT;
-  long cUU;
-  long cUV;
+  static ApplicationLike dks;
+  static String dlj = "";
+  String dlk;
+  String dll;
+  long dlm;
+  long dln;
   
   public s(ApplicationLike paramApplicationLike)
   {
-    cTZ = paramApplicationLike;
-    d.cTZ = paramApplicationLike;
+    dks = paramApplicationLike;
+    d.dks = paramApplicationLike;
   }
   
   static final boolean D(File paramFile)
@@ -75,22 +75,22 @@ public final class s
     {
       if (paramApplicationLike != null)
       {
-        a.hjw = (String)paramApplicationLike.get("patch.rev");
-        a.hjy = (String)paramApplicationLike.get("NEW_TINKER_ID");
-        ae.w("MicroMsg.MMApplicationLikeImpl", "application set patch rev:%s patch tinkerId:%s ", new Object[] { a.hjw, a.hjy });
+        a.ict = (String)paramApplicationLike.get("patch.rev");
+        a.icu = (String)paramApplicationLike.get("NEW_TINKER_ID");
+        Log.w("MicroMsg.MMApplicationLikeImpl", "application set patch rev:%s patch tinkerId:%s ", new Object[] { a.ict, a.icu });
       }
       AppMethodBeat.o(125024);
       return;
     }
   }
   
-  static String fp(String paramString)
+  static String gd(String paramString)
   {
     AppMethodBeat.i(125025);
     try
     {
-      File localFile = SharePatchFileUtil.getPatchDirectory(cTZ.getApplication());
-      String str = SharePatchFileUtil.getPatchVersionDirectory(b.d(cTZ));
+      File localFile = SharePatchFileUtil.getPatchDirectory(dks.getApplication());
+      String str = SharePatchFileUtil.getPatchVersionDirectory(b.d(dks));
       localFile = new File(localFile.getAbsolutePath(), str);
       paramString = new File(localFile.getAbsolutePath() + "/lib/lib/" + paramString).getAbsolutePath();
       AppMethodBeat.o(125025);
@@ -98,7 +98,7 @@ public final class s
     }
     catch (Throwable paramString)
     {
-      ae.printErrStackTrace("MicroMsg.MMApplicationLikeImpl", paramString, "[-] Fail to get patched native libs path.", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.MMApplicationLikeImpl", paramString, "[-] Fail to get patched native libs path.", new Object[0]);
       AppMethodBeat.o(125025);
     }
     return null;

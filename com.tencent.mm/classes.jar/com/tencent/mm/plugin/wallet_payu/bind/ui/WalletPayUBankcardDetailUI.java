@@ -15,19 +15,19 @@ public class WalletPayUBankcardDetailUI
   {
     AppMethodBeat.i(71993);
     super.onCreate(paramBundle);
-    if (1 == this.CRA.field_bankcardState)
+    if (1 == this.Hww.field_bankcardState)
     {
-      eGN();
-      findViewById(2131306672).setVisibility(8);
-      findViewById(2131306671).setVisibility(8);
+      fNX();
+      findViewById(2131310132).setVisibility(8);
+      findViewById(2131310131).setVisibility(8);
     }
     for (;;)
     {
-      findViewById(2131306674).setVisibility(8);
-      ((TextView)findViewById(2131306676)).setText(2131765048);
+      findViewById(2131310134).setVisibility(8);
+      ((TextView)findViewById(2131310136)).setText(2131767491);
       AppMethodBeat.o(71993);
       return;
-      ug(false);
+      xR(false);
     }
   }
   
@@ -39,7 +39,7 @@ public class WalletPayUBankcardDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUBankcardDetailUI
  * JD-Core Version:    0.7.0.1
  */

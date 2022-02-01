@@ -13,33 +13,33 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class b
   implements a
 {
-  private static volatile a bKl;
-  private final AppMeasurement bKk;
+  private static volatile a bKB;
+  private final AppMeasurement bKA;
   @VisibleForTesting
-  final Map<String, Object> bKm;
+  final Map<String, Object> bKC;
   
   private b(AppMeasurement paramAppMeasurement)
   {
     AppMethodBeat.i(116766);
     Preconditions.checkNotNull(paramAppMeasurement);
-    this.bKk = paramAppMeasurement;
-    this.bKm = new ConcurrentHashMap();
+    this.bKA = paramAppMeasurement;
+    this.bKC = new ConcurrentHashMap();
     AppMethodBeat.o(116766);
   }
   
   @KeepForSdk
-  public static a an(Context paramContext)
+  public static a ao(Context paramContext)
   {
     AppMethodBeat.i(116767);
     Preconditions.checkNotNull(paramContext);
     Preconditions.checkNotNull(paramContext.getApplicationContext());
-    if (bKl == null) {}
+    if (bKB == null) {}
     try
     {
-      if (bKl == null) {
-        bKl = new b(AppMeasurement.getInstance(paramContext));
+      if (bKB == null) {
+        bKB = new b(AppMeasurement.getInstance(paramContext));
       }
-      paramContext = bKl;
+      paramContext = bKB;
       AppMethodBeat.o(116767);
       return paramContext;
     }
@@ -76,7 +76,7 @@ public final class b
       AppMethodBeat.o(116768);
       return;
     }
-    this.bKk.logEventInternal(paramString1, paramString2, paramBundle);
+    this.bKA.logEventInternal(paramString1, paramString2, paramBundle);
     AppMethodBeat.o(116768);
   }
   
@@ -123,13 +123,13 @@ public final class b
       AppMethodBeat.o(116769);
       return;
     }
-    this.bKk.setUserPropertyInternal(paramString1, paramString2, paramObject);
+    this.bKA.setUserPropertyInternal(paramString1, paramString2, paramObject);
     AppMethodBeat.o(116769);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.firebase.analytics.connector.b
  * JD-Core Version:    0.7.0.1
  */

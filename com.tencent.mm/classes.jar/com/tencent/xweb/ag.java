@@ -8,16 +8,16 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class ag
 {
-  private JSONStringer MNI;
-  private int MNJ;
-  private String MNK;
-  private String MNL;
-  private String MNM;
-  private String MNN;
-  private String MNO;
-  private int MNP;
-  private long MNQ;
-  private WebView MNR;
+  private JSONStringer SAE;
+  private int SAF;
+  private String SAG;
+  private String SAH;
+  private String SAI;
+  private String SAJ;
+  private String SAK;
+  private int SAL;
+  private long SAM;
+  private WebView SAN;
   private final String TAG;
   private int bufferSize;
   public String cacheKey;
@@ -26,51 +26,56 @@ public final class ag
   {
     AppMethodBeat.i(156933);
     this.TAG = "XWebScript";
-    this.MNI = new JSONStringer();
-    this.MNJ = 0;
-    this.MNP = 0;
-    this.MNJ = paramInt1;
-    this.MNP = paramInt2;
-    this.MNR = paramWebView;
+    this.SAE = new JSONStringer();
+    this.SAF = 0;
+    this.SAL = 0;
+    this.SAF = paramInt1;
+    this.SAL = paramInt2;
+    this.SAN = paramWebView;
     AppMethodBeat.o(156933);
   }
   
-  public final void bcE(String paramString)
+  public final void bso(String paramString)
   {
-    AppMethodBeat.i(224547);
-    nh(paramString, "path");
-    AppMethodBeat.o(224547);
+    AppMethodBeat.i(258707);
+    oc(paramString, "path");
+    AppMethodBeat.o(258707);
   }
   
-  public final void bcF(String paramString)
+  public final void bsp(String paramString)
   {
     AppMethodBeat.i(156935);
-    nh(paramString, "string");
+    oc(paramString, "string");
     AppMethodBeat.o(156935);
   }
   
-  public final void bcG(String paramString)
+  public final void bsq(String paramString)
   {
-    this.MNO = paramString;
+    this.SAK = paramString;
   }
   
-  public final void bcH(String paramString)
+  public final void bsr(String paramString)
   {
-    this.MNN = paramString;
+    this.SAJ = paramString;
   }
   
-  public final void ng(String paramString1, String paramString2)
+  public final void ob(String paramString1, String paramString2)
   {
     AppMethodBeat.i(156934);
-    nh(paramString1, "path");
-    this.MNM = paramString2;
+    oc(paramString1, "path");
+    this.SAI = paramString2;
     AppMethodBeat.o(156934);
   }
   
-  public final void nh(String paramString1, String paramString2)
+  public final void oc(String paramString1, String paramString2)
   {
-    this.MNL = paramString1;
-    this.MNK = paramString2;
+    this.SAH = paramString1;
+    this.SAG = paramString2;
+  }
+  
+  public final void setCacheKey(String paramString)
+  {
+    this.cacheKey = paramString;
   }
   
   public final String toString()
@@ -78,9 +83,9 @@ public final class ag
     int j = 0;
     AppMethodBeat.i(156936);
     int i = j;
-    if (this.MNR != null)
+    if (this.SAN != null)
     {
-      if (this.MNR.supportFeature(2002)) {
+      if (this.SAN.supportFeature(2002)) {
         break label43;
       }
       i = j;
@@ -90,32 +95,32 @@ public final class ag
       AppMethodBeat.o(156936);
       return "";
       label43:
-      if (TextUtils.isEmpty(this.MNL))
+      if (TextUtils.isEmpty(this.SAH))
       {
-        Log.e("XWebScript", "checkValid failed jsSrcValue invalid = " + this.MNL);
+        Log.e("XWebScript", "checkValid failed jsSrcValue invalid = " + this.SAH);
         i = j;
       }
-      else if (TextUtils.isEmpty(this.MNK))
+      else if (TextUtils.isEmpty(this.SAG))
       {
-        Log.e("XWebScript", "checkValid failed jsSrcKind invalid = " + this.MNK);
+        Log.e("XWebScript", "checkValid failed jsSrcKind invalid = " + this.SAG);
         i = j;
       }
-      else if (this.MNJ < 0)
+      else if (this.SAF < 0)
       {
-        Log.e("XWebScript", "checkValid failed compile mode invalid = " + this.MNJ);
+        Log.e("XWebScript", "checkValid failed compile mode invalid = " + this.SAF);
         i = j;
       }
-      else if ((this.MNQ != 0L) && (this.bufferSize <= 0))
+      else if ((this.SAM != 0L) && (this.bufferSize <= 0))
       {
         Log.e("XWebScript", "checkValid failed bufferSize invalid = " + this.bufferSize);
         i = j;
       }
-      else if ((this.bufferSize != 0) && (this.MNQ == 0L))
+      else if ((this.bufferSize != 0) && (this.SAM == 0L))
       {
-        Log.e("XWebScript", "checkValid failed bufferAddr invalid = " + this.MNQ);
+        Log.e("XWebScript", "checkValid failed bufferAddr invalid = " + this.SAM);
         i = j;
       }
-      else if ((!TextUtils.isEmpty(this.MNO)) && (!this.MNR.supportFeature(2008)))
+      else if ((!TextUtils.isEmpty(this.SAK)) && (!this.SAN.supportFeature(2008)))
       {
         Log.e("XWebScript", "not support jsparam as file path , apk ver = " + XWalkEnvironment.getAvailableVersion());
         i = j;
@@ -131,23 +136,23 @@ public final class ag
     {
       try
       {
-        localObject2 = ((JSONStringer)localObject1).object().key("compile_mode").value(this.MNJ).key("cache_option").value(this.MNP).key("js_src_kind").value(this.MNK).key("js_src").value(this.MNL);
+        localObject2 = ((JSONStringer)localObject1).object().key("compile_mode").value(this.SAF).key("cache_option").value(this.SAL).key("js_src_kind").value(this.SAG).key("js_src").value(this.SAH);
         localObject1 = localObject2;
         if (!TextUtils.isEmpty(this.cacheKey)) {
           localObject1 = ((JSONStringer)localObject2).key("cache_key").value(this.cacheKey);
         }
         localObject2 = localObject1;
-        if (!TextUtils.isEmpty(this.MNM)) {
-          localObject2 = ((JSONStringer)localObject1).key("append_script").value(this.MNM);
+        if (!TextUtils.isEmpty(this.SAI)) {
+          localObject2 = ((JSONStringer)localObject1).key("append_script").value(this.SAI);
         }
-        if (TextUtils.isEmpty(this.MNO)) {
+        if (TextUtils.isEmpty(this.SAK)) {
           continue;
         }
-        localObject1 = ((JSONStringer)localObject2).key("js_param_kind").value("path").key("js_param").value(this.MNO);
+        localObject1 = ((JSONStringer)localObject2).key("js_param_kind").value("path").key("js_param").value(this.SAK);
         ((JSONStringer)localObject1).endObject();
         localStringBuilder.append(((JSONStringer)localObject1).toString());
-        if ((this.MNR != null) && (this.MNR.supportFeature(2004))) {
-          localStringBuilder.append("XWEB_SCRIPT_END\n\r" + this.MNN);
+        if ((this.SAN != null) && (this.SAN.supportFeature(2004))) {
+          localStringBuilder.append("XWEB_SCRIPT_END\n\r" + this.SAJ);
         }
       }
       catch (Exception localException)
@@ -160,11 +165,11 @@ public final class ag
       AppMethodBeat.o(156936);
       return localObject1;
       localObject1 = localObject2;
-      if (this.MNQ != 0L)
+      if (this.SAM != 0L)
       {
         localObject1 = localObject2;
         if (this.bufferSize != 0) {
-          localObject1 = ((JSONStringer)localObject2).key("js_param_kind").value("buffer").key("js_param").value(Long.toHexString(this.MNQ)).key("js_param_length").value(this.bufferSize);
+          localObject1 = ((JSONStringer)localObject2).key("js_param_kind").value("buffer").key("js_param").value(Long.toHexString(this.SAM)).key("js_param_length").value(this.bufferSize);
         }
       }
     }

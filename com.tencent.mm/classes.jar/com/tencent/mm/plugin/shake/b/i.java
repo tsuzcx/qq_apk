@@ -7,8 +7,8 @@ public enum i
   static
   {
     AppMethodBeat.i(28144);
-    zbZ = new i("INSTANCE");
-    zca = new i[] { zbZ };
+    DgR = new i("INSTANCE");
+    DgS = new i[] { DgR };
     AppMethodBeat.o(28144);
   }
   

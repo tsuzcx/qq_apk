@@ -10,32 +10,31 @@ import android.os.Build.VERSION;
 import android.os.Debug;
 import android.os.Environment;
 import android.os.SystemClock;
-import com.tencent.e.i;
-import com.tencent.matrix.a.c.a.a.1;
-import com.tencent.matrix.a.c.a.c;
+import com.tencent.f.i;
 import com.tencent.matrix.mrs.core.MrsLogic;
 import com.tencent.matrix.report.h.a;
 import com.tencent.matrix.report.h.b;
 import com.tencent.matrix.report.h.d;
 import com.tencent.matrix.resource.analyzer.model.d.a;
+import com.tencent.matrix.resource.b.a.b;
 import com.tencent.matrix.resource.e.b.b;
 import com.tencent.mm.app.AppForegroundDelegate;
-import com.tencent.mm.app.o;
-import com.tencent.mm.g.a.fm;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bv;
-import com.tencent.mm.sdk.platformtools.j;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.g.a.fp;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
+import com.tencent.mm.vfs.aa;
 import com.tencent.sqlitelint.SQLiteLint.SqlExecutionCallbackMode;
 import com.tencent.sqlitelint.SQLiteLintPlugin;
 import com.tencent.sqlitelint.config.SQLiteLintConfig;
 import java.io.File;
 import java.io.IOException;
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Objects;
@@ -47,43 +46,43 @@ public enum d
   implements c.a
 {
   private Application application;
-  public com.tencent.matrix.report.h cBL = null;
-  private volatile boolean cBM = false;
-  private final ay cBN = ay.aRW("MatrixDelegate");
-  public com.tencent.matrix.strategy.a cBO;
-  private final int cBP = 9;
-  private boolean cBQ = false;
-  private volatile boolean cBR = false;
+  public com.tencent.matrix.report.h cPJ = null;
+  private volatile boolean cPK = false;
+  private final MultiProcessMMKV cPL = MultiProcessMMKV.getMMKV("MatrixDelegate");
+  public com.tencent.matrix.strategy.a cPM;
+  private final int cPN = 9;
+  private boolean cPO = false;
+  private volatile boolean cPP = false;
   public volatile boolean isInitialized = false;
   
   private d() {}
   
-  private static com.tencent.matrix.resource.analyzer.model.a a(k paramk, String paramString)
+  private static com.tencent.matrix.resource.analyzer.model.a a(com.tencent.mm.vfs.o paramo, String paramString)
   {
-    com.tencent.matrix.resource.analyzer.model.d locald = com.tencent.matrix.resource.analyzer.model.c.l(Build.VERSION.SDK_INT, Build.MANUFACTURER).IK();
+    com.tencent.matrix.resource.analyzer.model.d locald = com.tencent.matrix.resource.analyzer.model.c.m(Build.VERSION.SDK_INT, Build.MANUFACTURER).SY();
     try
     {
-      paramk = new com.tencent.matrix.resource.analyzer.model.g(paramk);
-      paramk = new com.tencent.matrix.resource.analyzer.a(paramString, locald).a(paramk);
-      return paramk;
+      paramo = new com.tencent.matrix.resource.analyzer.model.g(paramo);
+      paramo = new com.tencent.matrix.resource.analyzer.a(paramString, locald).a(paramo);
+      return paramo;
     }
-    catch (IOException paramk) {}
-    return com.tencent.matrix.resource.analyzer.model.a.a(paramk, 0L);
+    catch (IOException paramo) {}
+    return com.tencent.matrix.resource.analyzer.model.a.a(paramo, 0L);
   }
   
-  private void bV(boolean paramBoolean)
+  private void cy(boolean paramBoolean)
   {
     if (!this.isInitialized)
     {
-      ae.w("MatrixDelegate", "[onAppForeground] but matrix is never initialized, delay to notify!");
-      this.cBM = true;
+      Log.w("MatrixDelegate", "[onAppForeground] but matrix is never initialized, delay to notify!");
+      this.cPK = true;
       return;
     }
-    if (ak.coh())
+    if (MMApplicationContext.isMainProcess())
     {
       MrsLogic.onForeground(paramBoolean);
       if (!paramBoolean) {
-        com.tencent.e.h.MqF.f(new Runnable()
+        com.tencent.f.h.RTc.b(new Runnable()
         {
           public final void run()
           {
@@ -92,7 +91,7 @@ public enum d
         }, "MatrixDelegate");
       }
     }
-    Iterator localIterator = b.HT().cBJ.iterator();
+    Iterator localIterator = b.RG().cqP.iterator();
     while (localIterator.hasNext())
     {
       com.tencent.matrix.e.b localb = (com.tencent.matrix.e.b)localIterator.next();
@@ -103,61 +102,61 @@ public enum d
     if (!paramBoolean) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      this.cBR = paramBoolean;
+      this.cPP = paramBoolean;
       return;
     }
   }
   
-  public final com.tencent.matrix.g.c.a HU()
+  public final com.tencent.matrix.g.c.a RH()
   {
     new com.tencent.matrix.g.c.a()
     {
       public final void d(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
-        ae.d(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        Log.d(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
       }
       
       public final void e(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
-        ae.e(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        Log.e(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
       }
       
       public final void i(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
-        ae.i(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        Log.i(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
       }
       
       public final void printErrStackTrace(String paramAnonymousString1, Throwable paramAnonymousThrowable, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
-        ae.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
+        Log.printErrStackTrace(paramAnonymousString1, paramAnonymousThrowable, paramAnonymousString2, paramAnonymousVarArgs);
       }
       
       public final void v(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
-        ae.v(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        Log.v(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
       }
       
       public final void w(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
       {
-        ae.w(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
+        Log.w(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
       }
     };
   }
   
-  public final com.tencent.matrix.report.h HV()
+  public final com.tencent.matrix.report.h RI()
   {
     long l2 = 5L;
-    h.a locala = new h.a(ak.getContext());
-    locala.cFQ = Long.valueOf(com.tencent.mm.protocal.d.FFH);
-    locala.cFZ = Boolean.valueOf(bv.fnD());
-    locala.cFR = j.REV;
+    h.a locala = new h.a(MMApplicationContext.getContext());
+    locala.cWo = Long.valueOf(com.tencent.mm.protocal.d.KyO);
+    locala.cWx = Boolean.valueOf(WeChatEnvironment.isMonkeyEnv());
+    locala.cWp = BuildInfo.REV;
     long l1 = l2;
-    if (!j.IS_FLAVOR_PURPLE)
+    if (!BuildInfo.IS_FLAVOR_PURPLE)
     {
       l1 = l2;
-      if (!j.IS_FLAVOR_RED)
+      if (!BuildInfo.IS_FLAVOR_RED)
       {
-        if (!j.DEBUG) {
+        if (!BuildInfo.DEBUG) {
           break label188;
         }
         l1 = l2;
@@ -165,20 +164,20 @@ public enum d
     }
     for (;;)
     {
-      locala.cFT = Long.valueOf(l1);
+      locala.cWr = Long.valueOf(l1);
       Objects.requireNonNull(locala.context, "matrix report init, context is null");
-      Objects.requireNonNull(locala.cFQ, "matrix report init, clientVersion is null");
-      Objects.requireNonNull(locala.cFR, "matrix report init, revision is null");
-      Objects.requireNonNull(locala.cFT, "matrix report init, publishType is null");
-      this.cBL = new com.tencent.matrix.report.h(locala.context, locala.cFQ, locala.cFR, locala.cFZ, locala.cFT);
-      ae.i("MatrixDelegate", "init matrix reporter. %s", new Object[] { this.cBL });
-      return this.cBL;
+      Objects.requireNonNull(locala.cWo, "matrix report init, clientVersion is null");
+      Objects.requireNonNull(locala.cWp, "matrix report init, revision is null");
+      Objects.requireNonNull(locala.cWr, "matrix report init, publishType is null");
+      this.cPJ = new com.tencent.matrix.report.h(locala.context, locala.cWo, locala.cWp, locala.cWx, locala.cWr);
+      Log.i("MatrixDelegate", "init matrix reporter. %s", new Object[] { this.cPJ });
+      return this.cPJ;
       label188:
       l1 = l2;
-      if (!com.tencent.mm.protocal.d.FFK) {
-        if (com.tencent.mm.protocal.d.FFI) {
+      if (!com.tencent.mm.protocal.d.KyR) {
+        if (com.tencent.mm.protocal.d.KyP) {
           l1 = 3L;
-        } else if (com.tencent.mm.protocal.d.FFJ) {
+        } else if (com.tencent.mm.protocal.d.KyQ) {
           l1 = 4L;
         } else {
           l1 = -1L;
@@ -187,19 +186,19 @@ public enum d
     }
   }
   
-  public final f HW()
+  public final f RJ()
   {
     return new f();
   }
   
-  public final h.b HX()
+  public final h.b RK()
   {
     return new com.tencent.matrix.report.g();
   }
   
-  public final o HY()
+  public final com.tencent.mm.app.o RL()
   {
-    new o()
+    new com.tencent.mm.app.o()
     {
       public final void onAppBackground(String paramAnonymousString)
       {
@@ -216,324 +215,396 @@ public enum d
   public final void a(Application paramApplication)
   {
     this.application = paramApplication;
-    this.cBO = new com.tencent.matrix.strategy.d();
+    this.cPM = new com.tencent.matrix.strategy.d();
   }
   
   public final void a(Application paramApplication, b.a parama, f paramf)
   {
     boolean bool;
-    if ((ak.coh()) || (ak.foC()) || (ak.isAppBrandProcess())) {
-      bool = true;
-    }
-    for (;;)
+    Object localObject2;
+    int i;
+    label96:
+    Object localObject1;
+    if ((MMApplicationContext.isMainProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isAppBrandProcess()))
     {
-      ae.i("MatrixDelegate", "[isEnableTracePlugin] isEnable=%s", new Object[] { Boolean.valueOf(bool) });
-      Object localObject2;
-      int i;
-      label96:
-      Object localObject1;
+      bool = true;
+      Log.i("MatrixDelegate", "[isEnableTracePlugin] isEnable=%s", new Object[] { Boolean.valueOf(bool) });
       if (bool)
       {
-        com.tencent.matrix.trace.a.a.Jg().cKl = true;
+        com.tencent.matrix.trace.a.a.Tu().daJ = true;
         localObject2 = new com.tencent.matrix.trace.a.b.a();
-        ((com.tencent.matrix.trace.a.b.a)localObject2).cKu.cET = paramf;
-        i = this.cBN.getInt(com.tencent.c.a.a.a.LZs.name(), 0);
-        if (i == 1)
+        ((com.tencent.matrix.trace.a.b.a)localObject2).daS.cVx = paramf;
+        i = this.cPL.getInt(com.tencent.c.a.a.a.RzK.name(), 0);
+        if (i != 1) {
+          break label966;
+        }
+        bool = true;
+        Log.i("MatrixDelegate", "[isEnableFPS] isEnable=%s value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+        ((com.tencent.matrix.trace.a.b.a)localObject2).daS.daK = bool;
+        i = this.cPL.getInt(com.tencent.c.a.a.a.RzS.name(), 0);
+        if (i != 1) {
+          break label1002;
+        }
+        bool = true;
+        label159:
+        Log.i("MatrixDelegate", "[isEnableEvilMethod] isEnable=%s value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+        ((com.tencent.matrix.trace.a.b.a)localObject2).daS.daL = bool;
+        i = this.cPL.getInt(com.tencent.c.a.a.a.RzU.name(), 0);
+        if (i != 1) {
+          break label1038;
+        }
+        bool = true;
+        label222:
+        Log.i("MatrixDelegate", "[isEnableStartUp] isEnable=%s value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+        ((com.tencent.matrix.trace.a.b.a)localObject2).daS.daM = bool;
+        i = this.cPL.getInt(com.tencent.c.a.a.a.RzT.name(), 0);
+        if (i != 1) {
+          break label1080;
+        }
+        bool = true;
+        label285:
+        Log.i("MatrixDelegate", "[isEnableAnr] isEnable=%s value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+        ((com.tencent.matrix.trace.a.b.a)localObject2).daS.daN = bool;
+        if (!MMApplicationContext.isMainProcess()) {
+          break label1122;
+        }
+        localObject1 = "com.tencent.mm.app.WeChatSplashActivity;com.tencent.mm.plugin.account.ui.WelcomeActivity;";
+        label334:
+        ((com.tencent.matrix.trace.a.b.a)localObject2).daS.daP = ((String)localObject1);
+        ((com.tencent.matrix.trace.a.b.a)localObject2).daS.cWq = true;
+        ((com.tencent.matrix.trace.a.b.a)localObject2).daS.daO = false;
+        parama.a(new com.tencent.matrix.trace.a(((com.tencent.matrix.trace.a.b.a)localObject2).daS));
+        EventCenter.instance.add(new IListener()
         {
-          bool = true;
-          ae.i("MatrixDelegate", "[isEnableFPS] isEnable=%s value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
-          ((com.tencent.matrix.trace.a.b.a)localObject2).cKu.cKm = bool;
-          i = this.cBN.getInt(com.tencent.c.a.a.a.LZA.name(), 0);
-          if (i != 1) {
-            break label1005;
-          }
-          bool = true;
-          label159:
-          ae.i("MatrixDelegate", "[isEnableEvilMethod] isEnable=%s value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
-          ((com.tencent.matrix.trace.a.b.a)localObject2).cKu.cKn = bool;
-          i = this.cBN.getInt(com.tencent.c.a.a.a.LZC.name(), 0);
-          if (i != 1) {
-            break label1041;
-          }
-          bool = true;
-          label222:
-          ae.i("MatrixDelegate", "[isEnableStartUp] isEnable=%s value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
-          ((com.tencent.matrix.trace.a.b.a)localObject2).cKu.cKo = bool;
-          i = this.cBN.getInt(com.tencent.c.a.a.a.LZB.name(), 0);
-          if (i != 1) {
-            break label1083;
-          }
-          bool = true;
-          label285:
-          ae.i("MatrixDelegate", "[isEnableAnr] isEnable=%s value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
-          ((com.tencent.matrix.trace.a.b.a)localObject2).cKu.cKp = bool;
-          if (!ak.coh()) {
-            break label1125;
-          }
-          localObject1 = "com.tencent.mm.app.WeChatSplashActivity;com.tencent.mm.plugin.account.ui.WelcomeActivity;";
-          label334:
-          ((com.tencent.matrix.trace.a.b.a)localObject2).cKu.cKr = ((String)localObject1);
-          ((com.tencent.matrix.trace.a.b.a)localObject2).cKu.cFS = true;
-          ((com.tencent.matrix.trace.a.b.a)localObject2).cKu.cKq = false;
-          parama.a(new com.tencent.matrix.trace.a(((com.tencent.matrix.trace.a.b.a)localObject2).cKu));
-          com.tencent.mm.sdk.b.a.IvT.b(new com.tencent.mm.sdk.b.c()
+          private static boolean RM()
           {
-            private static boolean HZ()
+            try
             {
-              try
-              {
-                boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qOV, true);
-                ay.fpa().encode("clicfg_anr_report_all", bool);
-                bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qOW, false);
-                ay.fpa().encode("clicfg_normal_report", bool);
-                bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qPr, true);
-                ay.fpa().encode("clicfg_detect_dropframe", bool);
-                bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qPS, false);
-                ay.fpa().encode("clicfg_detect_syncbarrier_leak", bool);
-                return true;
-              }
-              catch (Exception localException)
-              {
-                ae.printErrStackTrace("MatrixDelegate", localException, "Cannot load A/B test", new Object[0]);
-              }
+              boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.smc, true);
+              MultiProcessMMKV.getDefault().encode("clicfg_anr_report_all", bool);
+              bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.smd, false);
+              MultiProcessMMKV.getDefault().encode("clicfg_normal_report", bool);
+              bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.smA, true);
+              MultiProcessMMKV.getDefault().encode("clicfg_detect_dropframe", bool);
+              bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.snd, false);
+              MultiProcessMMKV.getDefault().encode("clicfg_detect_syncbarrier_leak", bool);
               return true;
             }
-          });
-          this.cBL.a(new com.tencent.matrix.b.a());
-        }
-      }
-      else
-      {
-        i = this.cBN.getInt("ENABLE_BATTERY", 0);
-        ae.i("MatrixDelegate", "[isEnableBatteryMonitor] value=%s", new Object[] { Integer.valueOf(i) });
-        if (i != 1) {
-          break label1133;
-        }
-        bool = true;
-        label449:
-        ae.i("MatrixDelegate", "[isEnableFPS] isEnable=%s value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
-        if (bool)
-        {
-          localObject1 = new com.tencent.matrix.a.c.a.a().X(com.tencent.matrix.a.c.a.b.class);
-          ((com.tencent.matrix.a.c.a.a)localObject1).cDF.cDM = true;
-          localObject2 = new com.tencent.matrix.report.a();
-          ((com.tencent.matrix.a.c.a.a)localObject1).cDF.cDH = ((a.c)localObject2);
-          ((com.tencent.matrix.a.c.a.a)localObject1).cDF.cDI = 120000L;
-          ((com.tencent.matrix.a.c.a.a)localObject1).cDF.cDJ = 30000L;
-          ((com.tencent.matrix.a.c.a.a)localObject1).cDF.cDL = true;
-          ((com.tencent.matrix.a.c.a.a)localObject1).cDF.cDK = 1200000L;
-          Collections.sort(((com.tencent.matrix.a.c.a.a)localObject1).cDF.cDN, new a.a.1((com.tencent.matrix.a.c.a.a)localObject1));
-          parama.a(new com.tencent.matrix.a.c.a(((com.tencent.matrix.a.c.a.a)localObject1).cDF));
-        }
-        if ((!ak.coh()) && (!ak.foC()) && (!ak.isAppBrandProcess())) {
-          break label1181;
-        }
-        bool = true;
-        label625:
-        ae.i("MatrixDelegate", "[isEnableActivityLeak] isEnable=%s", new Object[] { Boolean.valueOf(bool) });
-        if (bool)
-        {
-          localObject2 = new Intent();
-          if (!bv.fnD()) {
-            break label1187;
+            catch (Exception localException)
+            {
+              Log.printErrStackTrace("MatrixDelegate", localException, "Cannot load A/B test", new Object[0]);
+            }
+            return true;
           }
-          localObject1 = com.tencent.matrix.resource.b.a.b.cIl;
-          label670:
-          ae.i("MatrixDelegate", "Dump Activity Leak Mode=%s", new Object[] { localObject1 });
-          ((Intent)localObject2).setClassName(ak.getPackageName(), "com.tencent.mm.ui.matrix.ManualDumpActivity");
-          com.tencent.matrix.resource.b.a.a locala = new com.tencent.matrix.resource.b.a.a();
-          locala.cET = paramf;
-          locala.cIj = ((com.tencent.matrix.resource.b.a.b)localObject1);
-          locala.cIi = ((Intent)localObject2);
-          parama.a(new com.tencent.matrix.resource.b(new com.tencent.matrix.resource.b.a(locala.cET, locala.cIj, locala.cIh, locala.cIi, (byte)0)));
-          com.tencent.matrix.resource.b.b(paramApplication);
-        }
-        ae.i("MatrixDelegate", "[isEnableIOCanary] isEnable=%s", new Object[] { Boolean.TRUE });
-        paramApplication = new com.tencent.matrix.iocanary.a.a.a();
-        paramApplication.cCj = paramf;
-        parama.a(new com.tencent.matrix.iocanary.a(new com.tencent.matrix.iocanary.a.a(paramApplication.cCj, (byte)0)));
-        bool = bv.fnD();
-        ae.i("MatrixDelegate", "[isEnableSQLiteLint] isEnable=%s", new Object[] { Boolean.valueOf(bool) });
-        if (!bool) {}
+        });
+        this.cPJ.a(new com.tencent.matrix.b.a());
       }
-      try
-      {
-        paramApplication = new SQLiteLintConfig(SQLiteLint.SqlExecutionCallbackMode.CUSTOM_NOTIFY);
-        parama.a(new SQLiteLintPlugin(paramApplication));
-        if (ak.coh())
-        {
-          paramApplication = new com.tencent.matrix.d.a.a.a();
-          paramApplication.cET = paramf;
-          parama.a(new com.tencent.matrix.d.a(new com.tencent.matrix.d.a.a(paramApplication.cET, (byte)0)));
-        }
-        this.cBL.a(new com.tencent.matrix.b.c());
-        if (ay.fpa().decodeBool("clicfg_detect_syncbarrier_leak", false))
-        {
-          ae.i("MatrixDelegate", "SyncBarrierWatchDogPlus start");
-          com.tencent.matrix.h.a.JE();
-        }
-        return;
-        bool = false;
-        continue;
-        if ((i != -1) && ((ak.coh()) || (ak.foC()) || (ak.isAppBrandProcess())))
-        {
-          bool = true;
-          break label96;
-        }
-        bool = false;
-        break label96;
-        label1005:
-        if ((i != -1) && ((ak.coh()) || (ak.foC()) || (ak.isAppBrandProcess())))
-        {
-          bool = true;
-          break label159;
-        }
-        bool = false;
-        break label159;
-        label1041:
-        if ((i != -1) && ((ak.coh()) || (ak.foC()) || (ak.isAppBrandProcess()) || (ak.foD())))
-        {
-          bool = true;
-          break label222;
-        }
-        bool = false;
-        break label222;
-        label1083:
-        if ((i != -1) && ((ak.coh()) || (ak.foC()) || (ak.foD()) || (ak.isAppBrandProcess())))
-        {
-          bool = true;
-          break label285;
-        }
-        bool = false;
-        break label285;
-        label1125:
-        localObject1 = "";
-        break label334;
-        label1133:
-        if ((i != -1) && ((ak.coh()) || (ak.foC()) || (ak.foD()) || (ak.isAppBrandProcess()) || (ak.foA())))
-        {
-          bool = true;
-          break label449;
-        }
-        bool = false;
-        break label449;
-        label1181:
-        bool = false;
-        break label625;
-        label1187:
-        if ((j.IS_FLAVOR_PURPLE) || (j.IS_FLAVOR_RED))
-        {
-          localObject1 = com.tencent.matrix.resource.b.a.b.cIn;
-          break label670;
-        }
-        if (com.tencent.mm.protocal.d.FFK)
-        {
-          localObject1 = com.tencent.matrix.resource.b.a.b.cIn;
-          break label670;
-        }
-        localObject1 = com.tencent.matrix.resource.b.a.b.cIk;
+      i = this.cPL.getInt("ENABLE_BATTERY", 0);
+      Log.i("MatrixDelegate", "[isEnableBatteryMonitor] value=%s", new Object[] { Integer.valueOf(i) });
+      if (i != 1) {
+        break label1130;
       }
-      catch (Throwable paramApplication)
+      bool = true;
+      label449:
+      Log.i("MatrixDelegate", "[isEnableBatteryMonitor] isEnable=%s value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+      if (!bool) {
+        break label1408;
+      }
+      localObject1 = (com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class);
+      if (localObject1 == null) {
+        break label1401;
+      }
+      i = ((com.tencent.mm.plugin.expt.b.b)localObject1).a(com.tencent.mm.plugin.expt.b.b.a.siY, 127);
+      label512:
+      if (!MMApplicationContext.isMainProcess()) {
+        break label1184;
+      }
+      if ((i & 0x1) != 1) {
+        break label1178;
+      }
+      bool = true;
+      label529:
+      Log.i("MatrixDelegate", "[isEnableBatteryMonitor] isEnable=%s cliCfg=%s", new Object[] { Boolean.valueOf(bool), Integer.toBinaryString(i) });
+    }
+    label1408:
+    for (;;)
+    {
+      for (;;)
       {
-        for (;;)
+        if (bool) {
+          parama.a(com.tencent.matrix.c.a.Sz());
+        }
+        if ((MMApplicationContext.isMainProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isAppBrandProcess()))
+        {
+          bool = true;
+          label591:
+          Log.i("MatrixDelegate", "[isEnableActivityLeak] isEnable=%s", new Object[] { Boolean.valueOf(bool) });
+          if (bool)
+          {
+            localObject2 = new Intent();
+            if (Util.getInt(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_matrix_activity_leak_silence_dump", "0", false, true), 0) == 0) {
+              break label1300;
+            }
+            i = 1;
+            label649:
+            if (i == 0) {
+              break label1306;
+            }
+            Log.i("MatrixDelegate", "enable silence dump cause expt: clicfg_matrix_activity_leak_silence_dump");
+            localObject1 = a.b.cYK;
+            label667:
+            Log.i("MatrixDelegate", "Dump Activity Leak Mode=%s", new Object[] { localObject1 });
+            ((Intent)localObject2).setClassName(MMApplicationContext.getPackageName(), "com.tencent.mm.ui.matrix.ManualDumpActivity");
+            com.tencent.matrix.resource.b.a.a locala = new com.tencent.matrix.resource.b.a.a();
+            locala.cVx = paramf;
+            locala.cYG = ((a.b)localObject1);
+            locala.cYF = ((Intent)localObject2);
+            parama.a(new com.tencent.matrix.resource.b(new com.tencent.matrix.resource.b.a(locala.cVx, locala.cYG, locala.cYE, locala.cYF, (byte)0)));
+            com.tencent.matrix.resource.b.b(paramApplication);
+          }
+          Log.i("MatrixDelegate", "[isEnableIOCanary] isEnable=%s", new Object[] { Boolean.TRUE });
+          paramApplication = new com.tencent.matrix.iocanary.a.a.a();
+          paramApplication.cQF = paramf;
+          parama.a(new com.tencent.matrix.iocanary.a(new com.tencent.matrix.iocanary.a.a(paramApplication.cQF, (byte)0)));
+          bool = WeChatEnvironment.isMonkeyEnv();
+          Log.i("MatrixDelegate", "[isEnableSQLiteLint] isEnable=%s", new Object[] { Boolean.valueOf(bool) });
+          if (!bool) {}
+        }
+        try
         {
           paramApplication = new SQLiteLintConfig(SQLiteLint.SqlExecutionCallbackMode.CUSTOM_NOTIFY);
+          parama.a(new SQLiteLintPlugin(paramApplication));
+          if (MMApplicationContext.isMainProcess())
+          {
+            paramApplication = new com.tencent.matrix.d.a.a.a();
+            paramApplication.cVx = paramf;
+            parama.a(new com.tencent.matrix.d.a(new com.tencent.matrix.d.a.a(paramApplication.cVx, (byte)0)));
+          }
+          this.cPJ.a(new com.tencent.matrix.b.d());
+          if (MultiProcessMMKV.getDefault().decodeBool("clicfg_detect_syncbarrier_leak", false))
+          {
+            Log.i("MatrixDelegate", "SyncBarrierWatchDogPlus start");
+            com.tencent.matrix.h.a.TR();
+          }
+          return;
+          bool = false;
+          break;
+          label966:
+          if ((i != -1) && ((MMApplicationContext.isMainProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isAppBrandProcess())))
+          {
+            bool = true;
+            break label96;
+          }
+          bool = false;
+          break label96;
+          label1002:
+          if ((i != -1) && ((MMApplicationContext.isMainProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isAppBrandProcess())))
+          {
+            bool = true;
+            break label159;
+          }
+          bool = false;
+          break label159;
+          label1038:
+          if ((i != -1) && ((MMApplicationContext.isMainProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isAppBrandProcess()) || (MMApplicationContext.isToolsMpProcess())))
+          {
+            bool = true;
+            break label222;
+          }
+          bool = false;
+          break label222;
+          label1080:
+          if ((i != -1) && ((MMApplicationContext.isMainProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()) || (MMApplicationContext.isAppBrandProcess())))
+          {
+            bool = true;
+            break label285;
+          }
+          bool = false;
+          break label285;
+          label1122:
+          localObject1 = "";
+          break label334;
+          label1130:
+          if ((i != -1) && ((MMApplicationContext.isMainProcess()) || (MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()) || (MMApplicationContext.isAppBrandProcess()) || (MMApplicationContext.isPushProcess())))
+          {
+            bool = true;
+            break label449;
+          }
+          bool = false;
+          break label449;
+          label1178:
+          bool = false;
+          break label529;
+          label1184:
+          if ((MMApplicationContext.isToolsProcess()) || (MMApplicationContext.isToolsMpProcess()))
+          {
+            if ((i & 0x2) == 2)
+            {
+              bool = true;
+              break label529;
+            }
+            bool = false;
+            break label529;
+          }
+          if (MMApplicationContext.isAppBrandProcess())
+          {
+            if ((i & 0x4) == 4)
+            {
+              bool = true;
+              break label529;
+            }
+            bool = false;
+            break label529;
+          }
+          if (MMApplicationContext.isPushProcess())
+          {
+            if ((i & 0x8) == 8)
+            {
+              bool = true;
+              break label529;
+            }
+            bool = false;
+            break label529;
+          }
+          if ((i & 0x80) == 128)
+          {
+            bool = true;
+            break label529;
+          }
+          bool = false;
+          break label529;
+          bool = false;
+          break label591;
+          label1300:
+          i = 0;
+          break label649;
+          label1306:
+          if (WeChatEnvironment.isMonkeyEnv())
+          {
+            Log.i("MatrixDelegate", "enable silence dump cause monkey");
+            localObject1 = a.b.cYK;
+            break label667;
+          }
+          if ((BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED))
+          {
+            Log.i("MatrixDelegate", "enable silence dump cause purple/red");
+            localObject1 = a.b.cYK;
+            break label667;
+          }
+          if (com.tencent.mm.protocal.d.KyR)
+          {
+            Log.i("MatrixDelegate", "enable silence dump cause alpha");
+            localObject1 = a.b.cYK;
+            break label667;
+          }
+          localObject1 = a.b.cYH;
+        }
+        catch (Throwable paramApplication)
+        {
+          for (;;)
+          {
+            paramApplication = new SQLiteLintConfig(SQLiteLint.SqlExecutionCallbackMode.CUSTOM_NOTIFY);
+          }
         }
       }
+      label1401:
+      i = 127;
+      break label512;
     }
   }
   
   public final void b(b paramb)
   {
     int i = 0;
-    ae.i("MatrixDelegate", "onFinalJob");
-    int j = this.cBN.getInt("ENABLE_FPS_FLOAT", 0);
+    Log.i("MatrixDelegate", "onFinalJob");
+    int j = this.cPL.getInt("ENABLE_FPS_FLOAT", 0);
     boolean bool;
     if (j == 1) {
       bool = true;
     }
     for (;;)
     {
-      ae.i("MatrixDelegate", "[isEnableFpsFloat] enable=%s, value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(j) });
+      Log.i("MatrixDelegate", "[isEnableFpsFloat] enable=%s, value=%s", new Object[] { Boolean.valueOf(bool), Integer.valueOf(j) });
       if (j == 1) {
         i = 1;
       }
-      if ((i != 0) && (e.Ia())) {
-        ar.f(new Runnable()
+      if ((i != 0) && (e.RN())) {
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
-            d.dM("ENABLE_FPS");
-            d.dM("ENABLE_FPS_FLOAT");
+            d.eh("ENABLE_FPS");
+            d.eh("ENABLE_FPS_FLOAT");
           }
         });
       }
       Application localApplication = this.application;
-      paramb = (com.tencent.matrix.resource.b)paramb.V(com.tencent.matrix.resource.b.class);
+      paramb = (com.tencent.matrix.resource.b)paramb.Y(com.tencent.matrix.resource.b.class);
       BroadcastReceiver local7;
       if (paramb != null)
       {
-        paramb.cGs.cJp = new b.b()
+        paramb.cWQ.cZM = new b.b()
         {
-          final HashSet<String> cBY = new HashSet();
-          private final Set<String> cBZ = new HashSet();
+          final HashSet<String> cPW = new HashSet();
+          private final Set<String> cPX = new HashSet();
+          private final double cPY = Math.random();
           
           public final boolean G(final String paramAnonymousString1, final String paramAnonymousString2)
           {
             final long l1 = SystemClock.uptimeMillis();
-            ae.i("MatrixDelegate", "[onLeak] activity=%s isEnableDump=%s isSilence=%s", new Object[] { paramAnonymousString1, Boolean.valueOf(d.b(d.this)), Boolean.valueOf(d.c(d.this)) });
-            ae.i("MatrixDelegate", "[onLeak] Activity dump [%s]", new Object[] { com.tencent.mm.ad.a.alg() });
-            if (!this.cBZ.contains(paramAnonymousString2))
+            Log.i("MatrixDelegate", "[onLeak] activity=%s isEnableDump=%s isSilence=%s", new Object[] { paramAnonymousString1, Boolean.valueOf(d.b(d.this)), Boolean.valueOf(d.c(d.this)) });
+            Log.i("MatrixDelegate", "[onLeak] Activity dump [%s]", new Object[] { com.tencent.mm.ad.a.aBz() });
+            if (!this.cPX.contains(paramAnonymousString2))
             {
-              ae.i("MatrixDelegate", "[onLeak] Activity report: %s", new Object[] { paramAnonymousString2 });
-              com.tencent.mm.plugin.report.service.g.yxI.f(18573, new Object[] { paramAnonymousString1, String.format("isEnableDump=%s isSilence=%s", new Object[] { Boolean.valueOf(d.b(d.this)), Boolean.valueOf(d.c(d.this)) }), Integer.valueOf(0), Integer.valueOf(5), Long.valueOf(l1) });
-              this.cBZ.add(paramAnonymousString2);
+              Log.i("MatrixDelegate", "[onLeak] Activity report: %s", new Object[] { paramAnonymousString2 });
+              com.tencent.mm.plugin.report.service.h.CyF.a(18573, new Object[] { paramAnonymousString1, String.format("isEnableDump=%s isSilence=%s", new Object[] { Boolean.valueOf(d.b(d.this)), Boolean.valueOf(d.c(d.this)) }), Integer.valueOf(0), Integer.valueOf(5), Long.valueOf(l1), BuildInfo.BUILD_TAG });
+              this.cPX.add(paramAnonymousString2);
             }
             long l2;
             if ((d.b(d.this)) && (d.c(d.this)))
             {
               d.b(d.this, false);
-              synchronized (this.cBY)
+              synchronized (this.cPW)
               {
-                if (this.cBY.contains(paramAnonymousString1))
+                if (this.cPW.contains(paramAnonymousString1))
                 {
-                  ae.i("MatrixDelegate", "this activity has dumped! %s", new Object[] { paramAnonymousString1 });
+                  Log.i("MatrixDelegate", "this activity has dumped! %s", new Object[] { paramAnonymousString1 });
                   return true;
                 }
-                ??? = (com.tencent.matrix.resource.b)b.HT().V(com.tencent.matrix.resource.b.class);
+                ??? = (com.tencent.matrix.resource.b)b.RG().Y(com.tencent.matrix.resource.b.class);
                 if (??? == null)
                 {
-                  ae.e("MatrixDelegate", "ResourcePlugin not found!");
+                  Log.e("MatrixDelegate", "ResourcePlugin not found!");
                   return false;
                 }
               }
-              if (((com.tencent.matrix.resource.b)???).cGs == null)
+              if (((com.tencent.matrix.resource.b)???).cWQ == null)
               {
-                ae.e("MatrixDelegate", "ActivityRefWatcher not found!");
+                Log.e("MatrixDelegate", "ActivityRefWatcher not found!");
                 return false;
               }
               l2 = System.currentTimeMillis();
-              ??? = k.W(new com.tencent.matrix.resource.e.d(ak.getContext()).IV());
+              ??? = com.tencent.mm.vfs.o.X(new com.tencent.matrix.resource.e.d(MMApplicationContext.getContext()).Tj());
               if (??? == null) {
                 return true;
               }
               try
               {
                 long l3 = Environment.getExternalStorageDirectory().getFreeSpace() / 1024L / 1024L / 1024L;
-                ae.i("MatrixDelegate", "freeSpace = %s GB", new Object[] { Long.valueOf(l3) });
+                Log.i("MatrixDelegate", "freeSpace = %s GB", new Object[] { Long.valueOf(l3) });
                 if (l3 > 1L) {
-                  Debug.dumpHprofData(w.B(((k)???).fTh()));
+                  Debug.dumpHprofData(aa.z(((com.tencent.mm.vfs.o)???).her()));
                 }
               }
               catch (Exception localException)
               {
                 for (;;)
                 {
-                  com.tencent.mm.plugin.report.service.g.yxI.f(18573, new Object[] { paramAnonymousString1, "dump file error!", Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(l1) });
-                  ae.printErrStackTrace("MatrixDelegate", localException, "dump file error!", new Object[0]);
+                  com.tencent.mm.plugin.report.service.h.CyF.a(18573, new Object[] { paramAnonymousString1, "dump file error!", Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(l1), BuildInfo.BUILD_TAG });
+                  Log.printErrStackTrace("MatrixDelegate", localException, "dump file error!", new Object[0]);
                 }
-                ae.i("MatrixDelegate", String.format("dump cost=%sms refString=%s path=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2), paramAnonymousString2, w.B(((k)???).fTh()) }));
-                com.tencent.e.h.MqF.aO(new Runnable()
+                Log.i("MatrixDelegate", String.format("dump cost=%sms refString=%s path=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l2), paramAnonymousString2, aa.z(((com.tencent.mm.vfs.o)???).her()) }));
+                com.tencent.f.h.RTc.aX(new Runnable()
                 {
                   /* Error */
                   public final void run()
@@ -542,10 +613,10 @@ public enum d
                     //   0: invokestatic 45	java/lang/System:currentTimeMillis	()J
                     //   3: lstore_1
                     //   4: aload_0
-                    //   5: getfield 26	com/tencent/matrix/d$6$1:cCa	Lcom/tencent/mm/vfs/k;
+                    //   5: getfield 26	com/tencent/matrix/d$6$1:cPZ	Lcom/tencent/mm/vfs/o;
                     //   8: aload_0
-                    //   9: getfield 28	com/tencent/matrix/d$6$1:cCb	Ljava/lang/String;
-                    //   12: invokestatic 51	com/tencent/matrix/d:b	(Lcom/tencent/mm/vfs/k;Ljava/lang/String;)Lcom/tencent/matrix/resource/analyzer/model/a;
+                    //   9: getfield 28	com/tencent/matrix/d$6$1:cQa	Ljava/lang/String;
+                    //   12: invokestatic 51	com/tencent/matrix/d:b	(Lcom/tencent/mm/vfs/o;Ljava/lang/String;)Lcom/tencent/matrix/resource/analyzer/model/a;
                     //   15: astore_3
                     //   16: ldc 53
                     //   18: ldc 55
@@ -561,159 +632,190 @@ public enum d
                     //   35: dup
                     //   36: iconst_1
                     //   37: aload_0
-                    //   38: getfield 28	com/tencent/matrix/d$6$1:cCb	Ljava/lang/String;
+                    //   38: getfield 28	com/tencent/matrix/d$6$1:cQa	Ljava/lang/String;
                     //   41: aastore
                     //   42: invokestatic 67	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-                    //   45: invokestatic 73	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+                    //   45: invokestatic 73	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
                     //   48: aload_3
                     //   49: invokevirtual 79	com/tencent/matrix/resource/analyzer/model/a:toString	()Ljava/lang/String;
                     //   52: astore 4
                     //   54: aload_3
-                    //   55: getfield 83	com/tencent/matrix/resource/analyzer/model/a:cGv	Z
-                    //   58: ifeq +57 -> 115
-                    //   61: getstatic 89	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
+                    //   55: getfield 83	com/tencent/matrix/resource/analyzer/model/a:cWT	Z
+                    //   58: ifeq +71 -> 129
+                    //   61: getstatic 89	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
                     //   64: sipush 18573
-                    //   67: iconst_5
-                    //   68: anewarray 4	java/lang/Object
-                    //   71: dup
-                    //   72: iconst_0
-                    //   73: aload_0
-                    //   74: getfield 30	com/tencent/matrix/d$6$1:cCc	Ljava/lang/String;
-                    //   77: aastore
-                    //   78: dup
-                    //   79: iconst_1
-                    //   80: aload 4
-                    //   82: aastore
-                    //   83: dup
-                    //   84: iconst_2
-                    //   85: invokestatic 45	java/lang/System:currentTimeMillis	()J
-                    //   88: lload_1
-                    //   89: lsub
-                    //   90: invokestatic 61	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-                    //   93: aastore
-                    //   94: dup
-                    //   95: iconst_3
-                    //   96: bipush 7
-                    //   98: invokestatic 94	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-                    //   101: aastore
-                    //   102: dup
-                    //   103: iconst_4
-                    //   104: aload_0
-                    //   105: getfield 32	com/tencent/matrix/d$6$1:cCd	J
-                    //   108: invokestatic 61	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-                    //   111: aastore
-                    //   112: invokevirtual 98	com/tencent/mm/plugin/report/service/g:f	(I[Ljava/lang/Object;)V
-                    //   115: ldc 53
-                    //   117: aload 4
-                    //   119: invokestatic 73	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-                    //   122: aload_0
-                    //   123: getfield 24	com/tencent/matrix/d$6$1:cCe	Lcom/tencent/matrix/d$6;
-                    //   126: getfield 102	com/tencent/matrix/d$6:cBY	Ljava/util/HashSet;
-                    //   129: astore_3
-                    //   130: aload_3
-                    //   131: monitorenter
-                    //   132: aload_0
-                    //   133: getfield 24	com/tencent/matrix/d$6$1:cCe	Lcom/tencent/matrix/d$6;
-                    //   136: getfield 102	com/tencent/matrix/d$6:cBY	Ljava/util/HashSet;
-                    //   139: aload_0
-                    //   140: getfield 30	com/tencent/matrix/d$6$1:cCc	Ljava/lang/String;
-                    //   143: invokevirtual 108	java/util/HashSet:add	(Ljava/lang/Object;)Z
-                    //   146: pop
-                    //   147: aload_3
-                    //   148: monitorexit
-                    //   149: aload_0
-                    //   150: getfield 26	com/tencent/matrix/d$6$1:cCa	Lcom/tencent/mm/vfs/k;
-                    //   153: invokevirtual 114	com/tencent/mm/vfs/k:delete	()Z
-                    //   156: pop
-                    //   157: return
-                    //   158: astore 4
-                    //   160: aload_3
-                    //   161: monitorexit
-                    //   162: aload 4
-                    //   164: athrow
-                    //   165: astore_3
-                    //   166: getstatic 89	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
-                    //   169: sipush 18573
-                    //   172: iconst_5
-                    //   173: anewarray 4	java/lang/Object
-                    //   176: dup
-                    //   177: iconst_0
-                    //   178: aload_0
-                    //   179: getfield 30	com/tencent/matrix/d$6$1:cCc	Ljava/lang/String;
-                    //   182: aastore
-                    //   183: dup
-                    //   184: iconst_1
-                    //   185: ldc 116
-                    //   187: aastore
-                    //   188: dup
-                    //   189: iconst_2
-                    //   190: invokestatic 45	java/lang/System:currentTimeMillis	()J
-                    //   193: lload_1
-                    //   194: lsub
-                    //   195: invokestatic 61	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-                    //   198: aastore
-                    //   199: dup
-                    //   200: iconst_3
-                    //   201: iconst_3
-                    //   202: invokestatic 94	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-                    //   205: aastore
-                    //   206: dup
-                    //   207: iconst_4
-                    //   208: aload_0
-                    //   209: getfield 32	com/tencent/matrix/d$6$1:cCd	J
-                    //   212: invokestatic 61	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-                    //   215: aastore
-                    //   216: invokevirtual 98	com/tencent/mm/plugin/report/service/g:f	(I[Ljava/lang/Object;)V
-                    //   219: ldc 53
-                    //   221: aload_3
-                    //   222: invokevirtual 120	java/lang/OutOfMemoryError:getCause	()Ljava/lang/Throwable;
-                    //   225: ldc 122
-                    //   227: iconst_0
-                    //   228: anewarray 4	java/lang/Object
-                    //   231: invokestatic 126	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-                    //   234: aload_0
-                    //   235: getfield 26	com/tencent/matrix/d$6$1:cCa	Lcom/tencent/mm/vfs/k;
-                    //   238: invokevirtual 114	com/tencent/mm/vfs/k:delete	()Z
-                    //   241: pop
-                    //   242: return
-                    //   243: astore_3
-                    //   244: aload_0
-                    //   245: getfield 26	com/tencent/matrix/d$6$1:cCa	Lcom/tencent/mm/vfs/k;
-                    //   248: invokevirtual 114	com/tencent/mm/vfs/k:delete	()Z
-                    //   251: pop
-                    //   252: aload_3
-                    //   253: athrow
+                    //   67: bipush 7
+                    //   69: anewarray 4	java/lang/Object
+                    //   72: dup
+                    //   73: iconst_0
+                    //   74: aload_0
+                    //   75: getfield 30	com/tencent/matrix/d$6$1:cQb	Ljava/lang/String;
+                    //   78: aastore
+                    //   79: dup
+                    //   80: iconst_1
+                    //   81: aload 4
+                    //   83: aastore
+                    //   84: dup
+                    //   85: iconst_2
+                    //   86: invokestatic 45	java/lang/System:currentTimeMillis	()J
+                    //   89: lload_1
+                    //   90: lsub
+                    //   91: invokestatic 61	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+                    //   94: aastore
+                    //   95: dup
+                    //   96: iconst_3
+                    //   97: bipush 7
+                    //   99: invokestatic 94	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+                    //   102: aastore
+                    //   103: dup
+                    //   104: iconst_4
+                    //   105: aload_0
+                    //   106: getfield 32	com/tencent/matrix/d$6$1:cQc	J
+                    //   109: invokestatic 61	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+                    //   112: aastore
+                    //   113: dup
+                    //   114: iconst_5
+                    //   115: getstatic 99	com/tencent/mm/sdk/platformtools/BuildInfo:BUILD_TAG	Ljava/lang/String;
+                    //   118: aastore
+                    //   119: dup
+                    //   120: bipush 6
+                    //   122: getstatic 102	com/tencent/mm/sdk/platformtools/BuildInfo:REV	Ljava/lang/String;
+                    //   125: aastore
+                    //   126: invokevirtual 106	com/tencent/mm/plugin/report/service/h:a	(I[Ljava/lang/Object;)V
+                    //   129: ldc 53
+                    //   131: aload 4
+                    //   133: invokestatic 73	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+                    //   136: aload_0
+                    //   137: getfield 24	com/tencent/matrix/d$6$1:cQd	Lcom/tencent/matrix/d$6;
+                    //   140: getfield 110	com/tencent/matrix/d$6:cPW	Ljava/util/HashSet;
+                    //   143: astore_3
+                    //   144: aload_3
+                    //   145: monitorenter
+                    //   146: aload_0
+                    //   147: getfield 24	com/tencent/matrix/d$6$1:cQd	Lcom/tencent/matrix/d$6;
+                    //   150: getfield 110	com/tencent/matrix/d$6:cPW	Ljava/util/HashSet;
+                    //   153: aload_0
+                    //   154: getfield 30	com/tencent/matrix/d$6$1:cQb	Ljava/lang/String;
+                    //   157: invokevirtual 116	java/util/HashSet:add	(Ljava/lang/Object;)Z
+                    //   160: pop
+                    //   161: aload_3
+                    //   162: monitorexit
+                    //   163: aload_0
+                    //   164: getfield 26	com/tencent/matrix/d$6$1:cPZ	Lcom/tencent/mm/vfs/o;
+                    //   167: invokevirtual 122	com/tencent/mm/vfs/o:delete	()Z
+                    //   170: pop
+                    //   171: return
+                    //   172: astore 4
+                    //   174: aload_3
+                    //   175: monitorexit
+                    //   176: aload 4
+                    //   178: athrow
+                    //   179: astore_3
+                    //   180: getstatic 89	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+                    //   183: sipush 18573
+                    //   186: bipush 6
+                    //   188: anewarray 4	java/lang/Object
+                    //   191: dup
+                    //   192: iconst_0
+                    //   193: aload_0
+                    //   194: getfield 30	com/tencent/matrix/d$6$1:cQb	Ljava/lang/String;
+                    //   197: aastore
+                    //   198: dup
+                    //   199: iconst_1
+                    //   200: ldc 124
+                    //   202: aastore
+                    //   203: dup
+                    //   204: iconst_2
+                    //   205: invokestatic 45	java/lang/System:currentTimeMillis	()J
+                    //   208: lload_1
+                    //   209: lsub
+                    //   210: invokestatic 61	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+                    //   213: aastore
+                    //   214: dup
+                    //   215: iconst_3
+                    //   216: iconst_3
+                    //   217: invokestatic 94	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+                    //   220: aastore
+                    //   221: dup
+                    //   222: iconst_4
+                    //   223: aload_0
+                    //   224: getfield 32	com/tencent/matrix/d$6$1:cQc	J
+                    //   227: invokestatic 61	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+                    //   230: aastore
+                    //   231: dup
+                    //   232: iconst_5
+                    //   233: getstatic 99	com/tencent/mm/sdk/platformtools/BuildInfo:BUILD_TAG	Ljava/lang/String;
+                    //   236: aastore
+                    //   237: invokevirtual 106	com/tencent/mm/plugin/report/service/h:a	(I[Ljava/lang/Object;)V
+                    //   240: ldc 53
+                    //   242: aload_3
+                    //   243: invokevirtual 128	java/lang/OutOfMemoryError:getCause	()Ljava/lang/Throwable;
+                    //   246: ldc 130
+                    //   248: iconst_0
+                    //   249: anewarray 4	java/lang/Object
+                    //   252: invokestatic 134	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+                    //   255: aload_0
+                    //   256: getfield 26	com/tencent/matrix/d$6$1:cPZ	Lcom/tencent/mm/vfs/o;
+                    //   259: invokevirtual 122	com/tencent/mm/vfs/o:delete	()Z
+                    //   262: pop
+                    //   263: return
+                    //   264: astore_3
+                    //   265: aload_0
+                    //   266: getfield 26	com/tencent/matrix/d$6$1:cPZ	Lcom/tencent/mm/vfs/o;
+                    //   269: invokevirtual 122	com/tencent/mm/vfs/o:delete	()Z
+                    //   272: pop
+                    //   273: aload_3
+                    //   274: athrow
                     // Local variable table:
                     //   start	length	slot	name	signature
-                    //   0	254	0	this	1
-                    //   3	191	1	l	long
-                    //   165	57	3	localOutOfMemoryError	java.lang.OutOfMemoryError
-                    //   243	10	3	localObject2	Object
-                    //   52	66	4	str	String
-                    //   158	5	4	localObject3	Object
+                    //   0	275	0	this	1
+                    //   3	206	1	l	long
+                    //   179	64	3	localOutOfMemoryError	java.lang.OutOfMemoryError
+                    //   264	10	3	localObject2	Object
+                    //   52	80	4	str	String
+                    //   172	5	4	localObject3	Object
                     // Exception table:
                     //   from	to	target	type
-                    //   132	149	158	finally
-                    //   160	162	158	finally
-                    //   4	115	165	java/lang/OutOfMemoryError
-                    //   115	132	165	java/lang/OutOfMemoryError
-                    //   162	165	165	java/lang/OutOfMemoryError
-                    //   4	115	243	finally
-                    //   115	132	243	finally
-                    //   162	165	243	finally
-                    //   166	234	243	finally
+                    //   146	163	172	finally
+                    //   174	176	172	finally
+                    //   4	129	179	java/lang/OutOfMemoryError
+                    //   129	146	179	java/lang/OutOfMemoryError
+                    //   176	179	179	java/lang/OutOfMemoryError
+                    //   4	129	264	finally
+                    //   129	146	264	finally
+                    //   176	179	264	finally
+                    //   180	255	264	finally
                   }
                 });
                 return true;
               }
-              if (((k)???).length() <= 0L)
+              if (((com.tencent.mm.vfs.o)???).length() <= 0L)
               {
-                com.tencent.mm.plugin.report.service.g.yxI.f(18573, new Object[] { paramAnonymousString1, "file is null!", Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(l1) });
-                ae.e("MatrixDelegate", "file is null!");
+                com.tencent.mm.plugin.report.service.h.CyF.a(18573, new Object[] { paramAnonymousString1, "file is null!", Integer.valueOf(0), Integer.valueOf(1), Long.valueOf(l1), BuildInfo.BUILD_TAG });
+                Log.e("MatrixDelegate", "file is null!");
                 return true;
               }
             }
             return false;
+          }
+          
+          public final boolean H(String paramAnonymousString1, String paramAnonymousString2)
+          {
+            if (((((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rQY, true)) && (this.cPY < 1.0D / ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rQZ, 100000))) || (WeChatEnvironment.hasDebugger())) {}
+            for (int i = 1; i == 0; i = 0)
+            {
+              Log.i("MatrixDelegate", "not report");
+              return false;
+            }
+            Log.i("MatrixDelegate", "[onLeakLite] activity=%s isEnableDump=%s isSilence=%s", new Object[] { paramAnonymousString1, Boolean.valueOf(d.b(d.this)), Boolean.valueOf(d.c(d.this)) });
+            Log.i("MatrixDelegate", "[onLeakLite] Activity dump [%s]", new Object[] { com.tencent.mm.ad.a.aBz() });
+            if (!this.cPX.contains(paramAnonymousString2))
+            {
+              Log.i("MatrixDelegate", "[onLeakLite] Activity report: %s", new Object[] { paramAnonymousString2 });
+              com.tencent.mm.plugin.report.service.h.CyF.a(18573, new Object[] { paramAnonymousString1, "release report", Integer.valueOf(0), Integer.valueOf(8) });
+              this.cPX.add(paramAnonymousString2);
+            }
+            return true;
           }
         };
         paramb = new IntentFilter();
@@ -726,7 +828,7 @@ public enum d
             {
               d.b(d.this, true);
               paramAnonymousContext = d.this;
-              if ((!j.DEBUG) && (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qzu, false))) {
+              if ((!BuildInfo.DEBUG) && (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rRC, false))) {
                 break label85;
               }
             }
@@ -734,7 +836,7 @@ public enum d
             for (boolean bool = true;; bool = false)
             {
               d.c(paramAnonymousContext, bool);
-              ae.i("MatrixDelegate", "[ACTION_SCREEN_OFF] isEnableDump=%s", new Object[] { Boolean.valueOf(d.b(d.this)) });
+              Log.i("MatrixDelegate", "[ACTION_SCREEN_OFF] isEnableDump=%s", new Object[] { Boolean.valueOf(d.b(d.this)) });
               return;
             }
           }
@@ -744,15 +846,15 @@ public enum d
       {
         localApplication.getApplicationContext().registerReceiver(local7, paramb);
         this.isInitialized = true;
-        if (this.cBM) {
-          bV(AppForegroundDelegate.cTA.cBB);
+        if (this.cPK) {
+          cy(AppForegroundDelegate.djR.cPB);
         }
-        if (ay.fpa().decodeBool("clicfg_detect_dropframe", true))
+        if (MultiProcessMMKV.getDefault().decodeBool("clicfg_detect_dropframe", true))
         {
-          ae.i("MatrixDelegate", "start detecting dropFrame");
-          paramb = (com.tencent.matrix.trace.a)b.HT().V(com.tencent.matrix.trace.a.class);
+          Log.i("MatrixDelegate", "start detecting dropFrame");
+          paramb = (com.tencent.matrix.trace.a)b.RG().Y(com.tencent.matrix.trace.a.class);
           if (paramb == null) {
-            ae.i("MatrixDelegate", "tracePlugin is null");
+            Log.i("MatrixDelegate", "tracePlugin is null");
           }
         }
         else
@@ -768,17 +870,17 @@ public enum d
           localApplication.getApplicationContext().unregisterReceiver(local7);
           localApplication.getApplicationContext().registerReceiver(local7, paramb);
         }
-        paramb = paramb.cKh;
+        paramb = paramb.daF;
         if (paramb == null)
         {
-          ae.i("MatrixDelegate", "frameTracer is null");
+          Log.i("MatrixDelegate", "frameTracer is null");
           return;
         }
-        paramb.cLQ = new com.tencent.matrix.trace.f.c.a()
+        paramb.dco = new com.tencent.matrix.trace.f.c.a()
         {
           public final void a(int paramAnonymousInt, final String paramAnonymousString, final long paramAnonymousLong)
           {
-            com.tencent.e.h.MqF.aO(new Runnable()
+            com.tencent.f.h.RTc.aX(new Runnable()
             {
               public final void run()
               {
@@ -792,30 +894,30 @@ public enum d
                     if (l1 <= 0L) {
                       break;
                     }
-                    ae.i("MatrixDelegate", "happens dropFrames : dropFrame = %d, scene = %s, lastResumeTime = %d, timeAfterResume = %d", new Object[] { Integer.valueOf(paramAnonymousString), this.cBW, Long.valueOf(paramAnonymousLong), Long.valueOf(l1) });
-                    if ((l1 <= 2000L) || (!this.cBW.contains("Finder"))) {
+                    Log.i("MatrixDelegate", "happens dropFrames : dropFrame = %d, scene = %s, lastResumeTime = %d, timeAfterResume = %d", new Object[] { Integer.valueOf(paramAnonymousString), this.cPU, Long.valueOf(paramAnonymousLong), Long.valueOf(l1) });
+                    if ((l1 <= 2000L) || (!this.cPU.contains("Finder"))) {
                       break;
                     }
                     if (paramAnonymousString < 15)
                     {
                       i = 1;
-                      int k = com.tencent.matrix.g.a.aP(ak.getContext()).value;
+                      int k = com.tencent.matrix.g.a.bj(MMApplicationContext.getContext()).value;
                       long l2 = Math.min(paramAnonymousString * 16, 2000);
                       Thread.sleep(l2);
-                      if ((d.cBK.cBL == null) || (d.cBK.cBL.cFY == null)) {
+                      if ((d.cPI.cPJ == null) || (d.cPI.cPJ.cWw == null)) {
                         break label370;
                       }
-                      h.d locald = (h.d)d.cBK.cBL.cFY.getFirst();
+                      h.d locald = (h.d)d.cPI.cPJ.cWw.getFirst();
                       if (locald != null)
                       {
-                        long l3 = locald.cFG.getLong("time");
+                        long l3 = locald.cWe.getLong("time");
                         if (System.currentTimeMillis() - l3 < l2 * 2L)
                         {
                           String str = "";
                           if (j != 0) {
-                            str = locald.cFG.toString();
+                            str = locald.cWe.toString();
                           }
-                          com.tencent.mm.plugin.report.e.ywz.f(20502, new Object[] { Integer.valueOf(paramAnonymousString), this.cBW, Integer.valueOf(i), Integer.valueOf(k), Long.valueOf(l1), str });
+                          com.tencent.mm.plugin.report.e.Cxv.a(20502, new Object[] { Integer.valueOf(paramAnonymousString), this.cPU, Integer.valueOf(i), Integer.valueOf(k), Long.valueOf(l1), str });
                         }
                       }
                     }
@@ -847,7 +949,7 @@ public enum d
                   }
                   catch (Throwable localThrowable)
                   {
-                    ae.i("MatrixDelegate", "report dropFrame error = " + localThrowable.getMessage());
+                    Log.i("MatrixDelegate", "report dropFrame error = " + localThrowable.getMessage());
                     return;
                   }
                   continue;
@@ -858,14 +960,14 @@ public enum d
             });
           }
         };
-        paramb.cLR = 9;
+        paramb.dcp = 9;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.d
  * JD-Core Version:    0.7.0.1
  */

@@ -13,18 +13,18 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.appbrand.report.h;
+import com.tencent.mm.plugin.appbrand.report.i;
 
 public final class AppBrandLauncherBlankPage
   extends AppBrandLauncherUI.Fragment
 {
-  public static ViewGroup Y(Context paramContext, String paramString)
+  public static ViewGroup ag(Context paramContext, String paramString)
   {
     AppMethodBeat.i(48622);
     LinearLayout localLinearLayout = new LinearLayout(paramContext);
     localLinearLayout.setOrientation(1);
     Object localObject1 = new ImageView(paramContext);
-    ((ImageView)localObject1).setImageResource(2131689622);
+    ((ImageView)localObject1).setImageResource(2131689626);
     Object localObject2 = new LinearLayout.LayoutParams(a.fromDPToPix(paramContext, 50), a.fromDPToPix(paramContext, 50));
     ((LinearLayout.LayoutParams)localObject2).topMargin = a.fromDPToPix(paramContext, 91);
     ((LinearLayout.LayoutParams)localObject2).gravity = 1;
@@ -46,7 +46,7 @@ public final class AppBrandLauncherBlankPage
     return localLinearLayout;
   }
   
-  public static AppBrandLauncherBlankPage er(String paramString1, String paramString2)
+  public static AppBrandLauncherBlankPage eJ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(48619);
     AppBrandLauncherBlankPage localAppBrandLauncherBlankPage = new AppBrandLauncherBlankPage();
@@ -70,9 +70,9 @@ public final class AppBrandLauncherBlankPage
     if (getArguments() == null) {}
     for (Object localObject = null;; localObject = getArguments().getString("extra_tip"))
     {
-      localObject = Y(localFragmentActivity, (String)localObject);
+      localObject = ag(localFragmentActivity, (String)localObject);
       ((ViewGroup)this.mContentView).addView((View)localObject, new ViewGroup.LayoutParams(-1, -1));
-      h.a(this.mScene, "", "", 0, "", this.mGW);
+      i.a(this.mScene, "", "", 0, "", this.nTU);
       AppMethodBeat.o(48621);
       return;
     }
@@ -101,7 +101,7 @@ public final class AppBrandLauncherBlankPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherBlankPage
  * JD-Core Version:    0.7.0.1
  */

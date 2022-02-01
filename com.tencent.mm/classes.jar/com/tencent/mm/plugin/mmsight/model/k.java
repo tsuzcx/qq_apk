@@ -7,133 +7,137 @@ import android.graphics.Point;
 import android.hardware.Camera.Parameters;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.x;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelcontrol.VideoTransPara;
+import com.tencent.mm.n.f;
 import com.tencent.mm.plugin.zero.b.a;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.storage.cd;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.ck;
+import com.tencent.mm.ui.base.u;
 
 public final class k
 {
-  static int ixR;
-  public static boolean waq = true;
-  public static boolean war = false;
-  public static boolean was = false;
-  public static p wat;
-  static double wau;
+  static int jtg;
+  public static boolean zuv = true;
+  public static boolean zuw = false;
+  public static boolean zux = false;
+  public static p zuy;
+  static double zuz;
   
   public static void a(Camera.Parameters paramParameters, boolean paramBoolean)
   {
     AppMethodBeat.i(89426);
     Object localObject2;
-    if (war)
+    if (zuw)
     {
-      localObject1 = ak.getContext();
-      localObject2 = ak.getResources();
-      if (wat == null) {}
-      for (paramParameters = "";; paramParameters = Integer.valueOf(wat.waF))
+      localObject1 = MMApplicationContext.getContext();
+      localObject2 = MMApplicationContext.getResources();
+      if (zuy == null) {}
+      for (paramParameters = "";; paramParameters = Integer.valueOf(zuy.zuK))
       {
-        t.makeText((Context)localObject1, ((Resources)localObject2).getString(2131760316, new Object[] { paramParameters }), 1).show();
+        u.makeText((Context)localObject1, ((Resources)localObject2).getString(2131761758, new Object[] { paramParameters }), 1).show();
         AppMethodBeat.o(89426);
         return;
       }
     }
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightRecorderConfig", "autoConfig, recorderOption: %s, isUseRecorderOption: %s", new Object[] { Integer.valueOf(com.tencent.mm.compatible.deviceinfo.ae.geT.gdy), Boolean.valueOf(was) });
-    if (was)
+    Log.i("MicroMsg.MMSightRecorderConfig", "autoConfig, recorderOption: %s, isUseRecorderOption: %s", new Object[] { Integer.valueOf(ae.gKA.gIW), Boolean.valueOf(zux) });
+    if (zux)
     {
       AppMethodBeat.o(89426);
       return;
     }
-    Object localObject1 = com.tencent.mm.plugin.mmsight.d.dpC();
+    Object localObject1 = com.tencent.mm.plugin.mmsight.d.ejr();
     int k;
     int i;
     int j;
-    if ((CaptureMMProxy.getInstance() != null) && (!ak.cpe()))
+    if ((CaptureMMProxy.getInstance() != null) && (!MMApplicationContext.isMMProcess()))
     {
-      k = bu.getInt(CaptureMMProxy.getInstance().getDynamicConfig("SightMediaCodecMinApiLevel"), 19);
-      i = bu.getInt(CaptureMMProxy.getInstance().getDynamicConfig("Sight1080pRecordMinApiLevel"), 19);
-      j = bu.getInt(CaptureMMProxy.getInstance().getDynamicConfig("Sight720pRecordMinApiLevel"), 19);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightRecorderConfig", "apiLevel: %s record1080pApiLevel: %s, record720pApiLevel: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j) });
-      if ((com.tencent.mm.compatible.deviceinfo.ae.geT.gdx != -1) && ((com.tencent.mm.compatible.deviceinfo.ae.geT.gdx & 0x1) == 0)) {
+      k = Util.getInt(CaptureMMProxy.getInstance().getDynamicConfig("SightMediaCodecMinApiLevel"), 19);
+      i = Util.getInt(CaptureMMProxy.getInstance().getDynamicConfig("Sight1080pRecordMinApiLevel"), 19);
+      j = Util.getInt(CaptureMMProxy.getInstance().getDynamicConfig("Sight720pRecordMinApiLevel"), 19);
+      Log.i("MicroMsg.MMSightRecorderConfig", "apiLevel: %s record1080pApiLevel: %s, record720pApiLevel: %s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j) });
+      if ((ae.gKA.gIV != -1) && ((ae.gKA.gIV & 0x1) == 0)) {
         break label714;
       }
-      if ((com.tencent.mm.compatible.deviceinfo.ae.geT.gdx == -1) || ((com.tencent.mm.compatible.deviceinfo.ae.geT.gdx & 0x1) == 0)) {
+      if ((ae.gKA.gIV == -1) || ((ae.gKA.gIV & 0x1) == 0)) {
         break label467;
       }
-      wat.dqa().waG = true;
+      zuy.ejQ().zuL = true;
       i = 1;
     }
     for (;;)
     {
       boolean bool;
-      if (com.tencent.mm.compatible.deviceinfo.ae.geT.gds != -1)
+      if (ae.gKA.gIQ != -1)
       {
-        localObject2 = wat;
-        if (com.tencent.mm.compatible.deviceinfo.ae.geT.gds == 1)
+        localObject2 = zuy;
+        if (ae.gKA.gIQ == 1)
         {
           bool = true;
           label292:
-          ((p)localObject2).hyP = bool;
+          ((p)localObject2).isQ = bool;
           label299:
-          if ((com.tencent.mm.compatible.deviceinfo.ae.geT.gdx == -1) || ((com.tencent.mm.compatible.deviceinfo.ae.geT.gdx & 0x2) != 0))
+          if ((ae.gKA.gIV == -1) || ((ae.gKA.gIV & 0x2) != 0))
           {
-            if ((com.tencent.mm.compatible.deviceinfo.ae.geT.gdx == -1) || ((com.tencent.mm.compatible.deviceinfo.ae.geT.gdx & 0x2) == 0)) {
+            if ((ae.gKA.gIV == -1) || ((ae.gKA.gIV & 0x2) == 0)) {
               break label601;
             }
-            paramParameters = wat.dpY();
-            paramParameters.waG = false;
-            paramParameters.dpZ();
+            paramParameters = zuy.ejO();
+            paramParameters.zuL = false;
+            paramParameters.ejP();
           }
         }
       }
       label712:
       for (;;)
       {
-        wat.waF = -1;
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightRecorderConfig", "autoConfig parameter byserver %s", new Object[] { wat.toString() });
+        zuy.zuK = -1;
+        Log.i("MicroMsg.MMSightRecorderConfig", "autoConfig parameter byserver %s", new Object[] { zuy.toString() });
         AppMethodBeat.o(89426);
         return;
-        k = bu.getInt(((a)g.ab(a.class)).acL().getValue("SightMediaCodecMinApiLevel"), 19);
-        i = bu.getInt(((a)g.ab(a.class)).acL().getValue("Sight1080pRecordMinApiLevel"), 19);
-        j = bu.getInt(((a)g.ab(a.class)).acL().getValue("Sight720pRecordMinApiLevel"), 19);
+        k = Util.getInt(((a)g.af(a.class)).aqJ().getValue("SightMediaCodecMinApiLevel"), 19);
+        i = Util.getInt(((a)g.af(a.class)).aqJ().getValue("Sight1080pRecordMinApiLevel"), 19);
+        j = Util.getInt(((a)g.af(a.class)).aqJ().getValue("Sight720pRecordMinApiLevel"), 19);
         break;
         label467:
-        if ((!com.tencent.mm.compatible.util.d.lA(i)) || (ixR < 512) || (wau < 1725.0D) || (Math.min(((Point)localObject1).x, ((Point)localObject1).y) < 1080)) {
+        if ((!com.tencent.mm.compatible.util.d.oD(i)) || (jtg < 512) || (zuz < 1725.0D) || (Math.min(((Point)localObject1).x, ((Point)localObject1).y) < 1080)) {
           break label714;
         }
-        localObject2 = wat;
-        ((p)localObject2).waJ = h.b(paramParameters, com.tencent.mm.plugin.mmsight.d.dpC(), ((p)localObject2).hxV.width * 2, paramBoolean);
-        if ((((p)localObject2).waJ != null) && (((p)localObject2).waJ.wah != null)) {}
+        localObject2 = zuy;
+        ((p)localObject2).zuO = h.b(paramParameters, com.tencent.mm.plugin.mmsight.d.ejr(), ((p)localObject2).irT.width * 2, paramBoolean);
+        if ((((p)localObject2).zuO != null) && (((p)localObject2).zuO.zum != null)) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
             break label714;
           }
-          wat.dqa().waG = true;
+          zuy.ejQ().zuL = true;
           i = 1;
           break;
         }
         bool = false;
         break label292;
-        wat.hyP = false;
+        zuy.isQ = false;
         break label299;
         label601:
-        if ((i == 0) && (com.tencent.mm.compatible.util.d.lA(j)) && (ixR >= 512) && (wau >= 1725.0D) && (Math.min(((Point)localObject1).x, ((Point)localObject1).y) >= 720))
+        if ((i == 0) && (com.tencent.mm.compatible.util.d.oD(j)) && (jtg >= 512) && (zuz >= 1725.0D) && (Math.min(((Point)localObject1).x, ((Point)localObject1).y) >= 720))
         {
-          localObject1 = wat;
-          ((p)localObject1).waJ = h.b(paramParameters, com.tencent.mm.plugin.mmsight.d.dpC(), 720, paramBoolean);
-          if ((((p)localObject1).waJ != null) && (((p)localObject1).waJ.wah != null)) {}
+          localObject1 = zuy;
+          ((p)localObject1).zuO = h.b(paramParameters, com.tencent.mm.plugin.mmsight.d.ejr(), 720, paramBoolean);
+          if ((((p)localObject1).zuO != null) && (((p)localObject1).zuO.zum != null)) {}
           for (i = 1;; i = 0)
           {
             if (i == 0) {
               break label712;
             }
-            wat.dpY().waG = true;
+            zuy.ejO().zuL = true;
             break;
           }
         }
@@ -146,18 +150,18 @@ public final class k
   public static void a(h.c paramc)
   {
     AppMethodBeat.i(89429);
-    if (paramc.wah == null)
+    if (paramc.zum == null)
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightRecorderConfig", "checkMore start %s", new Object[] { paramc.toString() });
-      paramc.wah = paramc.wak;
-      paramc.wai = paramc.wal;
-      paramc.waj = paramc.wam;
-      if (Math.min(paramc.wai.y, paramc.wai.x) >= wat.hxV.width + 16)
+      Log.i("MicroMsg.MMSightRecorderConfig", "checkMore start %s", new Object[] { paramc.toString() });
+      paramc.zum = paramc.zup;
+      paramc.zun = paramc.zuq;
+      paramc.zuo = paramc.zur;
+      if (Math.min(paramc.zun.y, paramc.zun.x) >= zuy.irT.width + 16)
       {
-        wat.dpZ();
-        wat.waG = false;
-        wat.hyP = false;
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightRecorderConfig", "checkMore out %s", new Object[] { paramc.toString() });
+        zuy.ejP();
+        zuy.zuL = false;
+        zuy.isQ = false;
+        Log.i("MicroMsg.MMSightRecorderConfig", "checkMore out %s", new Object[] { paramc.toString() });
       }
     }
     AppMethodBeat.o(89429);
@@ -167,137 +171,137 @@ public final class k
   {
     boolean bool2 = true;
     AppMethodBeat.i(89427);
-    Object localObject1 = a.waw;
-    war = false;
-    was = false;
-    ixR = ((ActivityManager)ak.getContext().getSystemService("activity")).getLargeMemoryClass();
-    wau = com.tencent.mm.plugin.mmsight.d.fT(ak.getContext());
-    Object localObject2 = cd.fwK();
+    Object localObject1 = a.zuB;
+    zuw = false;
+    zux = false;
+    jtg = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
+    zuz = com.tencent.mm.plugin.mmsight.d.gy(MMApplicationContext.getContext());
+    Object localObject2 = ck.getFingerprint();
     int i;
     label121:
     int n;
     int m;
     int k;
     int j;
-    if ((CaptureMMProxy.getInstance() != null) && (!ak.cpe()))
+    if ((CaptureMMProxy.getInstance() != null) && (!MMApplicationContext.isMMProcess()))
     {
-      i = bu.getInt(CaptureMMProxy.getInstance().getDynamicConfig("SightMediaCodecMinApiLevel"), 19);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightRecorderConfig", "MXM_DynaCfg_AV_Item_Key_SightMediaCodecMinApiLevel: %s", new Object[] { Integer.valueOf(i) });
-      if ((CaptureMMProxy.getInstance() == null) || (ak.cpe())) {
+      i = Util.getInt(CaptureMMProxy.getInstance().getDynamicConfig("SightMediaCodecMinApiLevel"), 19);
+      Log.i("MicroMsg.MMSightRecorderConfig", "MXM_DynaCfg_AV_Item_Key_SightMediaCodecMinApiLevel: %s", new Object[] { Integer.valueOf(i) });
+      if ((CaptureMMProxy.getInstance() == null) || (MMApplicationContext.isMMProcess())) {
         break label338;
       }
-      com.tencent.mm.compatible.deviceinfo.ae.vE(CaptureMMProxy.getInstance().getDeviceInfoConfig());
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightRecorderConfig", "init large memory class: %sMB, totalMemory: %sGB  fingerprint: %s mmSightRecorderInfo: %s", new Object[] { Integer.valueOf(ixR), Double.valueOf(wau), localObject2, com.tencent.mm.compatible.deviceinfo.ae.geT });
-      if ((CaptureMMProxy.getInstance() == null) || (ak.cpe())) {
+      ae.DV(CaptureMMProxy.getInstance().getDeviceInfoConfig());
+      Log.i("MicroMsg.MMSightRecorderConfig", "init large memory class: %sMB, totalMemory: %sGB  fingerprint: %s mmSightRecorderInfo: %s", new Object[] { Integer.valueOf(jtg), Double.valueOf(zuz), localObject2, ae.gKA });
+      if ((CaptureMMProxy.getInstance() == null) || (MMApplicationContext.isMMProcess())) {
         break label357;
       }
-      n = CaptureMMProxy.getInstance().getInt(am.a.IRa, -1);
-      m = CaptureMMProxy.getInstance().getInt(am.a.IRd, 1);
-      k = CaptureMMProxy.getInstance().getInt(am.a.JaS, 1);
-      j = CaptureMMProxy.getInstance().getInt(am.a.JaT, 2);
+      n = CaptureMMProxy.getInstance().getInt(ar.a.NZc, -1);
+      m = CaptureMMProxy.getInstance().getInt(ar.a.NZf, 1);
+      k = CaptureMMProxy.getInstance().getInt(ar.a.Ojz, 1);
+      j = CaptureMMProxy.getInstance().getInt(ar.a.OjA, 2);
       label220:
       localObject2 = p.a(n, paramVideoTransPara);
-      wat = (p)localObject2;
+      zuy = (p)localObject2;
       if (localObject2 == null) {
         break label453;
       }
-      paramVideoTransPara = wat;
+      paramVideoTransPara = zuy;
       if (m != 1) {
         break label434;
       }
       bool1 = true;
       label251:
-      paramVideoTransPara.waH = bool1;
-      war = true;
-      localObject1 = ak.getContext();
-      localObject2 = ak.getResources();
-      if (wat != null) {
+      paramVideoTransPara.zuM = bool1;
+      zuw = true;
+      localObject1 = MMApplicationContext.getContext();
+      localObject2 = MMApplicationContext.getResources();
+      if (zuy != null) {
         break label440;
       }
     }
     label434:
     label440:
-    for (paramVideoTransPara = "";; paramVideoTransPara = Integer.valueOf(wat.waF))
+    for (paramVideoTransPara = "";; paramVideoTransPara = Integer.valueOf(zuy.zuK))
     {
-      t.makeText((Context)localObject1, ((Resources)localObject2).getString(2131760316, new Object[] { paramVideoTransPara }), 1).show();
+      u.makeText((Context)localObject1, ((Resources)localObject2).getString(2131761758, new Object[] { paramVideoTransPara }), 1).show();
       AppMethodBeat.o(89427);
       return;
-      i = bu.getInt(((a)g.ab(a.class)).acL().getValue("SightMediaCodecMinApiLevel"), 19);
+      i = Util.getInt(((a)g.af(a.class)).aqJ().getValue("SightMediaCodecMinApiLevel"), 19);
       break;
       label338:
-      g.ajS();
-      com.tencent.mm.compatible.deviceinfo.ae.vE(g.ajR().ajB().fwI());
+      g.aAi();
+      ae.DV(g.aAh().azR().gEu());
       break label121;
       label357:
-      g.ajS();
-      n = g.ajR().ajA().getInt(am.a.IRa, -1);
-      g.ajS();
-      m = g.ajR().ajA().getInt(am.a.IRd, 1);
-      g.ajS();
-      k = g.ajR().ajA().getInt(am.a.JaS, 1);
-      g.ajS();
-      j = g.ajR().ajA().getInt(am.a.JaT, 2);
+      g.aAi();
+      n = g.aAh().azQ().getInt(ar.a.NZc, -1);
+      g.aAi();
+      m = g.aAh().azQ().getInt(ar.a.NZf, 1);
+      g.aAi();
+      k = g.aAh().azQ().getInt(ar.a.Ojz, 1);
+      g.aAi();
+      j = g.aAh().azQ().getInt(ar.a.OjA, 2);
       break label220;
       bool1 = false;
       break label251;
     }
     label453:
-    switch (1.wav[localObject1.ordinal()])
+    switch (1.zuA[localObject1.ordinal()])
     {
     default: 
-      n = com.tencent.mm.compatible.deviceinfo.ae.geT.gdy;
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightRecorderConfig", "recorderOption: %s", new Object[] { Integer.valueOf(n) });
+      n = ae.gKA.gIW;
+      Log.i("MicroMsg.MMSightRecorderConfig", "recorderOption: %s", new Object[] { Integer.valueOf(n) });
       if (n != -1) {
-        wat = p.a(n, paramVideoTransPara);
+        zuy = p.a(n, paramVideoTransPara);
       }
-      if (wat == null) {
+      if (zuy == null) {
         break label575;
       }
       if (m != 1) {
         break;
       }
     }
-    for (wat.waH = true;; wat.waH = false)
+    for (zuy.zuM = true;; zuy.zuM = false)
     {
-      was = true;
+      zux = true;
       AppMethodBeat.o(89427);
       return;
-      localObject1 = com.tencent.mm.compatible.deviceinfo.ae.geU;
+      localObject1 = ae.gKB;
       n = 12;
       break;
     }
     label575:
-    wat = p.a(1, paramVideoTransPara);
+    zuy = p.a(1, paramVideoTransPara);
     if (m == 1)
     {
-      wat.waH = true;
-      wat.waE = k;
-      paramVideoTransPara = wat;
+      zuy.zuM = true;
+      zuy.zuJ = k;
+      paramVideoTransPara = zuy;
       if (j != 2) {
         break label722;
       }
       bool1 = true;
       label615:
-      paramVideoTransPara.pXd = bool1;
-      if (com.tencent.mm.compatible.deviceinfo.ae.geT.gdr == -1) {
+      paramVideoTransPara.roc = bool1;
+      if (ae.gKA.gIP == -1) {
         break label728;
       }
-      wat.gdr = com.tencent.mm.compatible.deviceinfo.ae.geT.gdr;
+      zuy.gIP = ae.gKA.gIP;
       label643:
-      if (com.tencent.mm.compatible.deviceinfo.ae.geT.gdu != -1)
+      if (ae.gKA.gIS != -1)
       {
-        if (com.tencent.mm.compatible.deviceinfo.ae.geT.gdu != 1) {
+        if (ae.gKA.gIS != 1) {
           break label755;
         }
         bool1 = true;
         label666:
-        waq = bool1;
+        zuv = bool1;
       }
-      if (com.tencent.mm.compatible.deviceinfo.ae.geT.gds == -1) {
+      if (ae.gKA.gIQ == -1) {
         break label767;
       }
-      paramVideoTransPara = wat;
-      if (com.tencent.mm.compatible.deviceinfo.ae.geT.gds != 1) {
+      paramVideoTransPara = zuy;
+      if (ae.gKA.gIQ != 1) {
         break label761;
       }
     }
@@ -307,34 +311,34 @@ public final class k
     label761:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramVideoTransPara.hyP = bool1;
+      paramVideoTransPara.isQ = bool1;
       AppMethodBeat.o(89427);
       return;
-      wat.waH = false;
+      zuy.zuM = false;
       break;
       bool1 = false;
       break label615;
-      if (com.tencent.mm.compatible.util.d.lA(i))
+      if (com.tencent.mm.compatible.util.d.oD(i))
       {
-        wat.gdr = 2;
+        zuy.gIP = 2;
         break label643;
       }
-      wat.gdr = 1;
+      zuy.gIP = 1;
       break label643;
       bool1 = false;
       break label666;
     }
     label767:
-    wat.hyP = false;
+    zuy.isQ = false;
     AppMethodBeat.o(89427);
   }
   
-  public static boolean dpS()
+  public static boolean ejH()
   {
     AppMethodBeat.i(89428);
-    if ((CaptureMMProxy.getInstance() != null) && (!ak.cpe()))
+    if ((CaptureMMProxy.getInstance() != null) && (!MMApplicationContext.isMMProcess()))
     {
-      if (CaptureMMProxy.getInstance().getInt(am.a.IRa, -1) != -1)
+      if (CaptureMMProxy.getInstance().getInt(ar.a.NZc, -1) != -1)
       {
         AppMethodBeat.o(89428);
         return true;
@@ -342,8 +346,8 @@ public final class k
       AppMethodBeat.o(89428);
       return false;
     }
-    g.ajS();
-    if (g.ajR().ajA().getInt(am.a.IRa, -1) != -1)
+    g.aAi();
+    if (g.aAh().azQ().getInt(ar.a.NZc, -1) != -1)
     {
       AppMethodBeat.o(89428);
       return true;
@@ -352,51 +356,51 @@ public final class k
     return false;
   }
   
-  public static void dpT()
+  public static void ejI()
   {
     AppMethodBeat.i(89430);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightRecorderConfig", "initSimple");
+    Log.i("MicroMsg.MMSightRecorderConfig", "initSimple");
     p localp = new p();
-    wat = localp;
-    localp.hyP = false;
-    wat.waG = false;
-    if (com.tencent.mm.compatible.util.d.lA(19))
+    zuy = localp;
+    localp.isQ = false;
+    zuy.zuL = false;
+    if (com.tencent.mm.compatible.util.d.oD(19))
     {
-      wat.gdr = 2;
+      zuy.gIP = 2;
       AppMethodBeat.o(89430);
       return;
     }
-    wat.gdr = 1;
+    zuy.gIP = 1;
     AppMethodBeat.o(89430);
   }
   
-  public static boolean h(Point paramPoint)
+  public static boolean i(Point paramPoint)
   {
     AppMethodBeat.i(89425);
-    if (war)
+    if (zuw)
     {
-      Context localContext = ak.getContext();
-      Resources localResources = ak.getResources();
-      if (wat == null) {}
-      for (paramPoint = "";; paramPoint = Integer.valueOf(wat.waF))
+      Context localContext = MMApplicationContext.getContext();
+      Resources localResources = MMApplicationContext.getResources();
+      if (zuy == null) {}
+      for (paramPoint = "";; paramPoint = Integer.valueOf(zuy.zuK))
       {
-        t.makeText(localContext, localResources.getString(2131760316, new Object[] { paramPoint }), 1).show();
+        u.makeText(localContext, localResources.getString(2131761758, new Object[] { paramPoint }), 1).show();
         AppMethodBeat.o(89425);
         return false;
       }
     }
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightRecorderConfig", "checkMediaCodecHappy, deviceInfo recorderType: %s, recorderOption: %s, isUseRecorderOption: %s", new Object[] { Integer.valueOf(com.tencent.mm.compatible.deviceinfo.ae.geT.gdr), Integer.valueOf(com.tencent.mm.compatible.deviceinfo.ae.geT.gdy), Boolean.valueOf(was) });
-    if (was)
+    Log.i("MicroMsg.MMSightRecorderConfig", "checkMediaCodecHappy, deviceInfo recorderType: %s, recorderOption: %s, isUseRecorderOption: %s", new Object[] { Integer.valueOf(ae.gKA.gIP), Integer.valueOf(ae.gKA.gIW), Boolean.valueOf(zux) });
+    if (zux)
     {
       AppMethodBeat.o(89425);
       return false;
     }
-    if (com.tencent.mm.compatible.deviceinfo.ae.geT.gdr != -1)
+    if (ae.gKA.gIP != -1)
     {
       AppMethodBeat.o(89425);
       return true;
     }
-    if ((wat != null) && (1 == wat.gdr))
+    if ((zuy != null) && (1 == zuy.gIP))
     {
       AppMethodBeat.o(89425);
       return true;
@@ -406,15 +410,15 @@ public final class k
       AppMethodBeat.o(89425);
       return false;
     }
-    if ((com.tencent.mm.plugin.mmsight.d.KH(paramPoint.x)) && (com.tencent.mm.plugin.mmsight.d.KH(paramPoint.y)))
+    if ((com.tencent.mm.plugin.mmsight.d.QI(paramPoint.x)) && (com.tencent.mm.plugin.mmsight.d.QI(paramPoint.y)))
     {
       AppMethodBeat.o(89425);
       return true;
     }
-    if (wat != null)
+    if (zuy != null)
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MMSightRecorderConfig", "checkMediaCodecHappy not happy %s", new Object[] { paramPoint.toString() });
-      wat.gdr = 1;
+      Log.i("MicroMsg.MMSightRecorderConfig", "checkMediaCodecHappy not happy %s", new Object[] { paramPoint.toString() });
+      zuy.gIP = 1;
     }
     AppMethodBeat.o(89425);
     return false;
@@ -425,9 +429,9 @@ public final class k
     static
     {
       AppMethodBeat.i(89424);
-      waw = new a("MMSightCameraConfig", 0);
-      wax = new a("MMStoryCameraConfig", 1);
-      way = new a[] { waw, wax };
+      zuB = new a("MMSightCameraConfig", 0);
+      zuC = new a("MMStoryCameraConfig", 1);
+      zuD = new a[] { zuB, zuC };
       AppMethodBeat.o(89424);
     }
     
@@ -436,7 +440,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.k
  * JD-Core Version:    0.7.0.1
  */

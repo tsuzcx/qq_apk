@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:padding="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.music.ui.MusicViewPager android:id="@id/goy" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dx7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginBottom="32.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-        <ImageView android:id="@id/dwu" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="14.0dip" android:src="@raw/music_logo_default" android:scaleType="fitCenter" />
-        <TextView android:textSize="16.0dip" android:ellipsize="end" android:id="@id/c6n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="40.0dip" android:maxLines="1" />
-        <ImageView android:id="@id/c6m" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginTop="1.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/bae" android:scaleType="center" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/f6_" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eva" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/k5" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <CheckBox android:id="@id/dks" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" android:checked="true" style="@style/m6" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/tl" />
     </LinearLayout>
-    <CheckBox android:gravity="center" android:id="@id/dx3" android:background="@drawable/a4q" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="45.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <com.tencent.mm.plugin.appbrand.widget.music.MusicSeekBar android:id="@id/dx4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/dx3" />
-    <ImageButton android:id="@id/u4" android:background="@raw/actionbar_icon_light_back" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:onClick="onClickBack" />
-    <ImageButton android:id="@id/fbq" android:background="@raw/actionbar_icon_light_more" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:layout_alignParentRight="true" android:onClick="onClickSend" />
-</RelativeLayout>
+</LinearLayout>

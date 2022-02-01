@@ -13,15 +13,15 @@ import java.util.List;
 public class TouchCoordinatorLayout
   extends CoordinatorLayout
 {
-  private List<View.OnTouchListener> vGo;
-  public boolean vGp;
+  private List<View.OnTouchListener> zbn;
+  public boolean zbo;
   
   public TouchCoordinatorLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(163684);
-    this.vGo = new ArrayList();
-    this.vGp = false;
+    this.zbn = new ArrayList();
+    this.zbo = false;
     AppMethodBeat.o(163684);
   }
   
@@ -29,26 +29,26 @@ public class TouchCoordinatorLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(163685);
-    this.vGo = new ArrayList();
-    this.vGp = false;
+    this.zbn = new ArrayList();
+    this.zbo = false;
     AppMethodBeat.o(163685);
   }
   
-  public final void a(View.OnTouchListener paramOnTouchListener)
+  public final void b(View.OnTouchListener paramOnTouchListener)
   {
     AppMethodBeat.i(163686);
-    this.vGo.add(paramOnTouchListener);
+    this.zbn.add(paramOnTouchListener);
     AppMethodBeat.o(163686);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(163687);
-    Iterator localIterator = this.vGo.iterator();
+    Iterator localIterator = this.zbn.iterator();
     while (localIterator.hasNext()) {
       ((View.OnTouchListener)localIterator.next()).onTouch(this, paramMotionEvent);
     }
-    if (this.vGp)
+    if (this.zbo)
     {
       AppMethodBeat.o(163687);
       return true;
@@ -60,7 +60,7 @@ public class TouchCoordinatorLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.TouchCoordinatorLayout
  * JD-Core Version:    0.7.0.1
  */

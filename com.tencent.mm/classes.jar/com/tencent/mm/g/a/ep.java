@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ep
-  extends b
+  extends IEvent
 {
-  public a dqN;
+  public a dHX;
   
   public ep()
   {
@@ -16,23 +15,22 @@ public final class ep
   
   private ep(byte paramByte)
   {
-    AppMethodBeat.i(116002);
-    this.dqN = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(115999);
+    this.dHX = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116002);
+    AppMethodBeat.o(115999);
   }
   
   public static final class a
   {
-    public Context context;
-    public int op = 0;
-    public String userName;
+    public String dGL;
+    public boolean dGT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.g.a.ep
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 
 public final class w
   implements View.OnTouchListener
@@ -31,10 +29,6 @@ public final class w
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(42417);
-    b localb = new b();
-    localb.bd(paramView);
-    localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/game/ui/ViewChangeBgListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     int i = paramMotionEvent.getAction();
     if (i == 0) {
       if ((paramView instanceof ImageView))
@@ -50,7 +44,6 @@ public final class w
     }
     for (;;)
     {
-      a.a(false, this, "com/tencent/mm/plugin/game/ui/ViewChangeBgListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(42417);
       return false;
       if (paramView.getBackground() != null)
@@ -79,7 +72,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.w
  * JD-Core Version:    0.7.0.1
  */

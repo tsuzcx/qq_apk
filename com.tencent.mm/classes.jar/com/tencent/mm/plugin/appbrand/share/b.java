@@ -6,7 +6,7 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b.h;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import junit.framework.Assert;
 
 public final class b
@@ -39,15 +39,7 @@ public final class b
     }
   }
   
-  public final String BN()
-  {
-    AppMethodBeat.i(48319);
-    String str = String.format("Transformation_w%s_h%s", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
-    AppMethodBeat.o(48319);
-    return str;
-  }
-  
-  public final Bitmap G(Bitmap paramBitmap)
+  public final Bitmap J(Bitmap paramBitmap)
   {
     AppMethodBeat.i(48318);
     if ((paramBitmap == null) || (paramBitmap.isRecycled()))
@@ -58,7 +50,7 @@ public final class b
     int i = paramBitmap.getWidth();
     int j = paramBitmap.getHeight();
     float f = this.mHeight / this.mWidth;
-    Bitmap localBitmap = h.createBitmap(this.mWidth, this.mHeight, Bitmap.Config.ARGB_8888);
+    Bitmap localBitmap = BitmapUtil.createBitmap(this.mWidth, this.mHeight, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     Rect localRect1 = new Rect();
     localRect1.left = 0;
@@ -78,6 +70,14 @@ public final class b
       return localBitmap;
       localRect1.right = ((int)(j / f));
     }
+  }
+  
+  public final String Lb()
+  {
+    AppMethodBeat.i(48319);
+    String str = String.format("Transformation_w%s_h%s", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) });
+    AppMethodBeat.o(48319);
+    return str;
   }
 }
 

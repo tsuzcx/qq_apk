@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.q;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class m
   extends q
 {
-  public static final String[] jHZ;
-  public static final c.a jJU;
+  public static final String[] kJX;
+  public static final IAutoDBItem.MAutoDBInfo kLR;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(44503);
-    jHZ = new String[] { "username", "versionType" };
-    Object localObject1 = new c.a();
-    ((c.a)localObject1).IBL = new Field[3];
-    ((c.a)localObject1).columns = new String[4];
+    kJX = new String[] { "username", "versionType" };
+    Object localObject1 = new IAutoDBItem.MAutoDBInfo();
+    ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[3];
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[4];
     Object localObject2 = new StringBuilder();
-    ((c.a)localObject1).columns[0] = "username";
-    ((c.a)localObject1).IBN.put("username", "TEXT");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[0] = "username";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("username", "TEXT");
     ((StringBuilder)localObject2).append(" username TEXT");
     ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[1] = "versionType";
-    ((c.a)localObject1).IBN.put("versionType", "INTEGER");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[1] = "versionType";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("versionType", "INTEGER");
     ((StringBuilder)localObject2).append(" versionType INTEGER");
     ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[2] = "updateTime";
-    ((c.a)localObject1).IBN.put("updateTime", "LONG");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[2] = "updateTime";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("updateTime", "LONG");
     ((StringBuilder)localObject2).append(" updateTime LONG");
-    ((c.a)localObject1).columns[3] = "rowid";
-    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    jJU = (c.a)localObject1;
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[3] = "rowid";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
+    kLR = (IAutoDBItem.MAutoDBInfo)localObject1;
     localObject1 = " PRIMARY KEY ( ";
-    localObject2 = jHZ;
+    localObject2 = kJX;
     int j = localObject2.length;
     while (i < j)
     {
@@ -47,19 +47,19 @@ public final class m
     localObject1 = ((String)localObject1).replaceFirst(",", "");
     localObject1 = (String)localObject1 + " )";
     localObject2 = new StringBuilder();
-    Object localObject3 = jJU;
-    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    Object localObject3 = kLR;
+    ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
     AppMethodBeat.o(44503);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.m
  * JD-Core Version:    0.7.0.1
  */

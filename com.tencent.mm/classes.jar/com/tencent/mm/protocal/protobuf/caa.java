@@ -5,70 +5,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class caa
   extends com.tencent.mm.bw.a
 {
-  public int HnI;
-  public String ySW;
-  public int ySX;
+  public String Mfw;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(147773);
+    AppMethodBeat.i(101818);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.ySW != null) {
-        paramVarArgs.d(1, this.ySW);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.Mfw != null) {
+        paramVarArgs.e(1, this.Mfw);
       }
-      paramVarArgs.aS(2, this.ySX);
-      paramVarArgs.aS(3, this.HnI);
-      AppMethodBeat.o(147773);
+      AppMethodBeat.o(101818);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.ySW == null) {
-        break label306;
+      if (this.Mfw == null) {
+        break label213;
       }
     }
-    label306:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ySW) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = g.a.a.b.b.a.f(1, this.Mfw) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.ySX);
-      int j = f.a.a.b.b.a.bz(3, this.HnI);
-      AppMethodBeat.o(147773);
-      return paramInt + i + j;
+      AppMethodBeat.o(101818);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(147773);
+        AppMethodBeat.o(101818);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         caa localcaa = (caa)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(147773);
+          AppMethodBeat.o(101818);
           return -1;
-        case 1: 
-          localcaa.ySW = locala.OmT.readString();
-          AppMethodBeat.o(147773);
-          return 0;
-        case 2: 
-          localcaa.ySX = locala.OmT.zc();
-          AppMethodBeat.o(147773);
-          return 0;
         }
-        localcaa.HnI = locala.OmT.zc();
-        AppMethodBeat.o(147773);
+        localcaa.Mfw = locala.UbS.readString();
+        AppMethodBeat.o(101818);
         return 0;
       }
-      AppMethodBeat.o(147773);
+      AppMethodBeat.o(101818);
       return -1;
     }
   }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/b_" android:textColor="@color/FG_1" android:id="@id/fhq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g1t" />
-    <FrameLayout android:background="@drawable/of" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:layout_marginLeft="@dimen/bq">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/fhn" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:src="@raw/icons_outlined_arrow" android:rotation="90.0" app:iconColor="@color/BW_50" />
-        <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center" android:id="@id/fhp" android:background="@drawable/ua" android:layout_width="14.0dip" android:layout_height="14.0dip" />
-    </FrameLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/be3" android:background="@drawable/qa" android:padding="@dimen/i1" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/dtb" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij" android:src="@color/a74" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="left" android:id="@id/ft9" android:paddingRight="@dimen/k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_toRightOf="@id/dtb" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/c3z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/mm_submenu_normal" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:contentDescription="@string/ty" />
+    </RelativeLayout>
 </LinearLayout>

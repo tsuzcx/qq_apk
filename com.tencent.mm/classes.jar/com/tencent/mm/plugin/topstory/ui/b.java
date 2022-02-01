@@ -11,7 +11,7 @@ public abstract interface b
   
   public static abstract interface a
   {
-    public abstract void aEh(String paramString);
+    public abstract void aTx(String paramString);
   }
 }
 

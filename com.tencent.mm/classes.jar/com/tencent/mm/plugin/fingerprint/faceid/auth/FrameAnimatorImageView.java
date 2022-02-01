@@ -11,21 +11,21 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public class FrameAnimatorImageView
   extends ImageView
 {
-  private Runnable tqM;
-  private DrawFilter tqN;
+  private Runnable wEt;
+  private DrawFilter wEu;
   
   public FrameAnimatorImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(64218);
-    this.tqM = null;
-    this.tqN = new PaintFlagsDrawFilter(0, 3);
+    this.wEt = null;
+    this.wEu = new PaintFlagsDrawFilter(0, 3);
     AppMethodBeat.o(64218);
   }
   
@@ -33,15 +33,15 @@ public class FrameAnimatorImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(64219);
-    this.tqM = null;
-    this.tqN = new PaintFlagsDrawFilter(0, 3);
+    this.wEt = null;
+    this.wEu = new PaintFlagsDrawFilter(0, 3);
     AppMethodBeat.o(64219);
   }
   
   public final void a(int paramInt, final a parama)
   {
     AppMethodBeat.i(64220);
-    Object localObject = ak.getContext().getResources().getDrawable(paramInt);
+    Object localObject = MMApplicationContext.getContext().getResources().getDrawable(paramInt);
     setImageDrawable((Drawable)localObject);
     if ((localObject instanceof AnimationDrawable))
     {
@@ -58,7 +58,7 @@ public class FrameAnimatorImageView
         }
         if (parama != null)
         {
-          this.tqM = new Runnable()
+          this.wEt = new Runnable()
           {
             public final void run()
             {
@@ -67,7 +67,7 @@ public class FrameAnimatorImageView
               AppMethodBeat.o(64217);
             }
           };
-          ar.o(this.tqM, paramInt);
+          MMHandlerThread.postToMainThreadDelayed(this.wEt, paramInt);
         }
       }
     }
@@ -77,7 +77,7 @@ public class FrameAnimatorImageView
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(64224);
-    paramCanvas.setDrawFilter(this.tqN);
+    paramCanvas.setDrawFilter(this.wEu);
     super.onDraw(paramCanvas);
     AppMethodBeat.o(64224);
   }
@@ -85,7 +85,7 @@ public class FrameAnimatorImageView
   public void setImageBitmap(Bitmap paramBitmap)
   {
     AppMethodBeat.i(64223);
-    ar.ay(this.tqM);
+    MMHandlerThread.removeRunnable(this.wEt);
     super.setImageBitmap(paramBitmap);
     AppMethodBeat.o(64223);
   }
@@ -93,7 +93,7 @@ public class FrameAnimatorImageView
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(64221);
-    ar.ay(this.tqM);
+    MMHandlerThread.removeRunnable(this.wEt);
     super.setImageDrawable(paramDrawable);
     AppMethodBeat.o(64221);
   }
@@ -101,7 +101,7 @@ public class FrameAnimatorImageView
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(64222);
-    ar.ay(this.tqM);
+    MMHandlerThread.removeRunnable(this.wEt);
     super.setImageResource(paramInt);
     AppMethodBeat.o(64222);
   }
@@ -113,7 +113,7 @@ public class FrameAnimatorImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.faceid.auth.FrameAnimatorImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.appbrand.permission;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.config.a;
-import com.tencent.mm.plugin.appbrand.config.a.e;
-import com.tencent.mm.plugin.appbrand.config.k;
+import com.tencent.mm.plugin.appbrand.config.b;
+import com.tencent.mm.plugin.appbrand.config.b.e;
+import com.tencent.mm.plugin.appbrand.config.l;
 import java.util.Arrays;
 import java.util.List;
 
 public final class q
 {
-  private static final List<String> mnk;
+  private static final List<String> nxL;
   
   static
   {
     AppMethodBeat.i(147668);
-    mnk = Arrays.asList(new String[] { "scope.userLocation", "scope.camera" });
+    nxL = Arrays.asList(new String[] { "scope.userLocation", "scope.camera" });
     AppMethodBeat.o(147668);
   }
   
@@ -32,7 +32,7 @@ public final class q
       switch (i)
       {
       default: 
-        paramString = paramAppBrandRuntime.getAppConfig().NO(paramString);
+        paramString = paramAppBrandRuntime.getAppConfig().WW(paramString);
         if (paramString != null) {
           break label99;
         }
@@ -44,7 +44,7 @@ public final class q
         break;
       }
     }
-    paramString = paramAppBrandRuntime.mContext.getString(2131755948);
+    paramString = paramAppBrandRuntime.mContext.getString(2131756046);
     AppMethodBeat.o(147667);
     return paramString;
     label99:
@@ -53,10 +53,10 @@ public final class q
     return paramString;
   }
   
-  public static boolean a(String paramString, k paramk)
+  public static boolean a(String paramString, l paraml)
   {
     AppMethodBeat.i(147666);
-    if (!mnk.contains(paramString))
+    if (!nxL.contains(paramString))
     {
       AppMethodBeat.o(147666);
       return false;
@@ -83,7 +83,7 @@ public final class q
         break;
       }
     }
-    boolean bool = paramk.kbs;
+    boolean bool = paraml.leA;
     AppMethodBeat.o(147666);
     return bool;
     AppMethodBeat.o(147666);
@@ -92,7 +92,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.q
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.Orders.Commodity;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.e;
 import com.tencent.mm.wallet_core.c.j;
 import java.util.HashMap;
@@ -18,45 +18,45 @@ public abstract class n
   extends p
   implements j
 {
-  private static int LVZ = 0;
-  public String DcG;
-  public int DpY = 0;
-  protected Map<String, String> LVX = new HashMap();
-  public int LVY = 0;
-  private boolean LWa = false;
-  public int LWb = 0;
-  public int LWc = 0;
-  public String LWd = null;
-  public JSONObject LWe = null;
-  private boolean LWf = false;
-  public int LWg = -1;
-  protected int dNV;
-  public RealnameGuideHelper wNL;
-  private String wNM;
-  private String wNN;
-  private String wNO;
-  private String wNP;
-  private String wNQ;
+  private static int RuP = 0;
+  public RealnameGuideHelper AJr;
+  private String AJs;
+  private String AJt;
+  private String AJu;
+  private String AJv;
+  private String AJw;
+  public String HIu;
+  public int HZm = 0;
+  protected Map<String, String> RuN = new HashMap();
+  public int RuO = 0;
+  private boolean RuQ = false;
+  public int RuR = 0;
+  public int RuS = 0;
+  public String RuT = null;
+  public JSONObject RuU = null;
+  private boolean RuV = false;
+  public int RuW = -1;
+  protected int efQ;
   
   protected final void a(Orders paramOrders, Authen paramAuthen)
   {
-    List localList = paramOrders.DpP;
+    List localList = paramOrders.HZd;
     String str = null;
     if (localList.size() > 0) {
-      str = ((Orders.Commodity)localList.get(0)).dmx;
+      str = ((Orders.Commodity)localList.get(0)).dDM;
     }
-    b(paramOrders.dmw, str, paramAuthen.xDC.dDH, paramAuthen.xDC.channel, paramAuthen.dlT, paramAuthen.wRt);
+    b(paramOrders.dDL, str, paramAuthen.BDB.dVv, paramAuthen.BDB.channel, paramAuthen.dDj, paramAuthen.ANo);
   }
   
   protected final void b(String paramString1, String paramString2, int paramInt1, int paramInt2, String paramString3, String paramString4)
   {
-    LVZ += 1;
-    this.LVX.put("req_key", paramString1);
-    this.LVX.put("transaction_id", paramString2);
-    this.LVX.put("pay_scene", String.valueOf(paramInt1));
-    this.LVX.put("bank_type", paramString3);
-    this.LVX.put("channel", String.valueOf(paramInt2));
-    this.LVX.put("bind_serial", paramString4);
+    RuP += 1;
+    this.RuN.put("req_key", paramString1);
+    this.RuN.put("transaction_id", paramString2);
+    this.RuN.put("pay_scene", String.valueOf(paramInt1));
+    this.RuN.put("bank_type", paramString3);
+    this.RuN.put("channel", String.valueOf(paramInt2));
+    this.RuN.put("bind_serial", paramString4);
   }
   
   public boolean canRetry()
@@ -64,42 +64,42 @@ public abstract class n
     return false;
   }
   
-  public boolean eHd()
+  public boolean fOn()
   {
     return false;
   }
   
-  public final Map<String, String> fWo()
+  public final Map<String, String> hhM()
   {
-    return this.LVX;
+    return this.RuN;
   }
   
-  public final boolean fWp()
+  public final boolean hhN()
   {
-    return this.LVY == 1;
+    return this.RuO == 1;
   }
   
   public void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    if (!this.LWa)
+    if (!this.RuQ)
     {
-      this.LWc = paramInt;
-      this.LWd = paramString;
-      this.LWe = paramJSONObject;
-      this.LWa = true;
+      this.RuS = paramInt;
+      this.RuT = paramString;
+      this.RuU = paramJSONObject;
+      this.RuQ = true;
       if (paramJSONObject != null) {
-        this.LVY = paramJSONObject.optInt("query_order_flag", 0);
+        this.RuO = paramJSONObject.optInt("query_order_flag", 0);
       }
     }
     Object localObject;
     if ((paramJSONObject != null) && (paramJSONObject.has("real_name_info")))
     {
       localObject = paramJSONObject.optJSONObject("real_name_info");
-      this.wNM = ((JSONObject)localObject).optString("guide_flag");
-      this.wNN = ((JSONObject)localObject).optString("guide_wording");
-      this.wNO = ((JSONObject)localObject).optString("left_button_wording");
-      this.wNP = ((JSONObject)localObject).optString("right_button_wording");
-      this.wNQ = ((JSONObject)localObject).optString("upload_credit_url");
+      this.AJs = ((JSONObject)localObject).optString("guide_flag");
+      this.AJt = ((JSONObject)localObject).optString("guide_wording");
+      this.AJu = ((JSONObject)localObject).optString("left_button_wording");
+      this.AJv = ((JSONObject)localObject).optString("right_button_wording");
+      this.AJw = ((JSONObject)localObject).optString("upload_credit_url");
     }
     for (int i = 1;; i = 0)
     {
@@ -114,22 +114,22 @@ public abstract class n
         {
           localJSONObject = paramJSONObject.optJSONObject("set_pwd_info");
           localObject = new SetPwdInfo();
-          ((SetPwdInfo)localObject).vCG = localJSONObject.optString("guide_wording");
-          ((SetPwdInfo)localObject).kCZ = localJSONObject.optString("left_button_wording");
-          ((SetPwdInfo)localObject).kDa = localJSONObject.optString("right_button_wording");
-          ((SetPwdInfo)localObject).Dlt = localJSONObject.optInt("send_pwd_msg");
+          ((SetPwdInfo)localObject).yXJ = localJSONObject.optString("guide_wording");
+          ((SetPwdInfo)localObject).lHA = localJSONObject.optString("left_button_wording");
+          ((SetPwdInfo)localObject).lHB = localJSONObject.optString("right_button_wording");
+          ((SetPwdInfo)localObject).HUM = localJSONObject.optInt("send_pwd_msg");
           j = 1;
         }
       }
-      if ((j != 0) && (("1".equals(this.wNM)) || ("2".equals(this.wNM)) || (localObject != null)))
+      if ((j != 0) && (("1".equals(this.AJs)) || ("2".equals(this.AJs)) || (localObject != null)))
       {
-        this.wNL = new RealnameGuideHelper();
-        this.wNL.a(this.wNM, (SetPwdInfo)localObject, this.wNN, this.wNO, this.wNP, this.wNQ, this.dNV);
+        this.AJr = new RealnameGuideHelper();
+        this.AJr.a(this.AJs, (SetPwdInfo)localObject, this.AJt, this.AJu, this.AJv, this.AJw, this.efQ);
       }
-      this.DcG = paramJSONObject.optString("forget_pwd_url", "");
-      this.LWg = paramJSONObject.optInt("is_clear_failure", -1);
-      ae.i("MicroMsg.NetSceneTenpayDelayQueryBase", "forget_pwd_url %s", new Object[] { this.DcG });
-      this.LWf = true;
+      this.HIu = paramJSONObject.optString("forget_pwd_url", "");
+      this.RuW = paramJSONObject.optInt("is_clear_failure", -1);
+      Log.i("MicroMsg.NetSceneTenpayDelayQueryBase", "forget_pwd_url %s", new Object[] { this.HIu });
+      this.RuV = true;
       super.onGYNetEnd(paramInt, paramString, paramJSONObject);
       return;
     }
@@ -137,25 +137,25 @@ public abstract class n
   
   public void onGYNetEnd2(e parame, JSONObject paramJSONObject)
   {
-    ae.i("MicroMsg.NetSceneTenpayDelayQueryBase", "always callback: %s,%s", new Object[] { Integer.valueOf(parame.errCode), parame.errMsg });
+    Log.i("MicroMsg.NetSceneTenpayDelayQueryBase", "always callback: %s,%s", new Object[] { Integer.valueOf(parame.errCode), parame.errMsg });
     super.onGYNetEnd2(parame, paramJSONObject);
-    if ((!this.LWf) && (!this.LWa))
+    if ((!this.RuV) && (!this.RuQ))
     {
-      this.LWb = parame.errType;
-      this.LWc = parame.errCode;
-      this.LWd = parame.errMsg;
+      this.RuR = parame.errType;
+      this.RuS = parame.errCode;
+      this.RuT = parame.errMsg;
       if (paramJSONObject != null)
       {
-        this.LVY = paramJSONObject.optInt("query_order_flag", 0);
-        this.LWe = paramJSONObject;
+        this.RuO = paramJSONObject.optInt("query_order_flag", 0);
+        this.RuU = paramJSONObject;
       }
-      this.LWa = true;
+      this.RuQ = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.tenpay.model.n
  * JD-Core Version:    0.7.0.1
  */

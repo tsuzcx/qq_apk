@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.honey_pay;
 
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.bd;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
 import com.tencent.mm.pluginsdk.n;
@@ -13,7 +13,7 @@ public final class Plugin
     return null;
   }
   
-  public final az createSubCore()
+  public final bd createSubCore()
   {
     return null;
   }
@@ -25,7 +25,7 @@ public final class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.Plugin
  * JD-Core Version:    0.7.0.1
  */

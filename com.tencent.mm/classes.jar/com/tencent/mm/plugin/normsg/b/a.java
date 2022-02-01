@@ -1,69 +1,69 @@
 package com.tencent.mm.plugin.normsg.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.q.b;
 import com.tencent.mm.bw.b;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.r.a;
 import com.tencent.mm.protocal.r.b;
 
 public final class a
-  extends n
-  implements k
+  extends q
+  implements m
 {
+  private boolean AEJ;
+  private int AEK;
   private final String TAG;
-  private f callback;
-  private final q hRG;
-  private boolean wJx;
-  private int wJy;
+  private i callback;
+  private final s iMO;
   
   public a(boolean paramBoolean, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(149008);
-    this.wJx = true;
-    this.wJy = 0;
+    this.AEJ = true;
+    this.AEK = 0;
     this.TAG = "NetSceneFPFresh";
-    this.wJx = paramBoolean;
-    this.hRG = new r.a(this.wJx);
-    ((r.b)this.hRG.getReqObj()).FGL.GyI = b.cm(paramArrayOfByte);
+    this.AEJ = paramBoolean;
+    this.iMO = new r.a(this.AEJ);
+    ((r.b)this.iMO.getReqObj()).KzW.Luw = b.cD(paramArrayOfByte);
     AppMethodBeat.o(149008);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(149009);
-    this.callback = paramf;
-    this.wJy += 1;
-    int i = dispatch(parame, this.hRG, this);
+    this.callback = parami;
+    this.AEK += 1;
+    int i = dispatch(paramg, this.iMO, this);
     AppMethodBeat.o(149009);
     return i;
   }
   
   public final int getType()
   {
-    if (this.wJx) {
+    if (this.AEJ) {
       return 3944;
     }
     return 836;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(149010);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq.getRespObj();
+      params.getRespObj();
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
       AppMethodBeat.o(149010);
       return;
     }
-    if (this.wJy < 2)
+    if (this.AEK < 2)
     {
       if (doScene(dispatcher(), this.callback) < 0)
       {
@@ -85,14 +85,14 @@ public final class a
     return 3;
   }
   
-  public final n.b securityVerificationChecked(q paramq)
+  public final q.b securityVerificationChecked(s params)
   {
-    return n.b.hRi;
+    return q.b.iMq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.normsg.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -3,68 +3,68 @@ package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 public final class d
 {
   /* Error */
-  public static com.tencent.mm.protocal.protobuf.dya ci(int paramInt, java.lang.String paramString)
+  public static com.tencent.mm.protocal.protobuf.esg cz(int paramInt, java.lang.String paramString)
   {
     // Byte code:
     //   0: sipush 29280
     //   3: invokestatic 14	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: new 16	com/tencent/mm/protocal/protobuf/dya
+    //   6: new 16	com/tencent/mm/protocal/protobuf/esg
     //   9: dup
-    //   10: invokespecial 20	com/tencent/mm/protocal/protobuf/dya:<init>	()V
+    //   10: invokespecial 20	com/tencent/mm/protocal/protobuf/esg:<init>	()V
     //   13: astore 4
     //   15: iload_0
     //   16: tableswitch	default:+36 -> 52, 0:+69->85, 1:+99->115, 2:+36->52, 3:+36->52, 4:+129->145
     //   53: iconst_1
     //   54: iconst_0
-    //   55: putfield 24	com/tencent/mm/protocal/protobuf/dya:FQV	I
+    //   55: putfield 24	com/tencent/mm/protocal/protobuf/esg:KKC	I
     //   58: aload 4
     //   60: iconst_0
-    //   61: putfield 27	com/tencent/mm/protocal/protobuf/dya:FQW	I
+    //   61: putfield 27	com/tencent/mm/protocal/protobuf/esg:KKD	I
     //   64: aload 4
     //   66: iconst_0
-    //   67: putfield 30	com/tencent/mm/protocal/protobuf/dya:FQT	I
+    //   67: putfield 30	com/tencent/mm/protocal/protobuf/esg:KKA	I
     //   70: aload 4
     //   72: iconst_0
-    //   73: putfield 33	com/tencent/mm/protocal/protobuf/dya:FQU	I
+    //   73: putfield 33	com/tencent/mm/protocal/protobuf/esg:KKB	I
     //   76: sipush 29280
     //   79: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   82: aload 4
     //   84: areturn
     //   85: aload 4
     //   87: sipush 8000
-    //   90: putfield 24	com/tencent/mm/protocal/protobuf/dya:FQV	I
+    //   90: putfield 24	com/tencent/mm/protocal/protobuf/esg:KKC	I
     //   93: aload 4
     //   95: bipush 16
-    //   97: putfield 27	com/tencent/mm/protocal/protobuf/dya:FQW	I
+    //   97: putfield 27	com/tencent/mm/protocal/protobuf/esg:KKD	I
     //   100: aload 4
     //   102: iconst_5
-    //   103: putfield 30	com/tencent/mm/protocal/protobuf/dya:FQT	I
+    //   103: putfield 30	com/tencent/mm/protocal/protobuf/esg:KKA	I
     //   106: aload 4
     //   108: iconst_5
-    //   109: putfield 33	com/tencent/mm/protocal/protobuf/dya:FQU	I
+    //   109: putfield 33	com/tencent/mm/protocal/protobuf/esg:KKB	I
     //   112: goto -36 -> 76
     //   115: aload 4
     //   117: sipush 16000
-    //   120: putfield 24	com/tencent/mm/protocal/protobuf/dya:FQV	I
+    //   120: putfield 24	com/tencent/mm/protocal/protobuf/esg:KKC	I
     //   123: aload 4
     //   125: bipush 16
-    //   127: putfield 27	com/tencent/mm/protocal/protobuf/dya:FQW	I
+    //   127: putfield 27	com/tencent/mm/protocal/protobuf/esg:KKD	I
     //   130: aload 4
     //   132: iconst_4
-    //   133: putfield 30	com/tencent/mm/protocal/protobuf/dya:FQT	I
+    //   133: putfield 30	com/tencent/mm/protocal/protobuf/esg:KKA	I
     //   136: aload 4
     //   138: iconst_4
-    //   139: putfield 33	com/tencent/mm/protocal/protobuf/dya:FQU	I
+    //   139: putfield 33	com/tencent/mm/protocal/protobuf/esg:KKB	I
     //   142: goto -66 -> 76
     //   145: aload 4
     //   147: sipush 16000
-    //   150: putfield 24	com/tencent/mm/protocal/protobuf/dya:FQV	I
+    //   150: putfield 24	com/tencent/mm/protocal/protobuf/esg:KKC	I
     //   153: aconst_null
     //   154: astore_3
     //   155: aconst_null
     //   156: astore_2
     //   157: aload_1
-    //   158: invokestatic 42	com/tencent/mm/modelvoice/s:It	(Ljava/lang/String;)Lcom/tencent/mm/modelvoice/b;
+    //   158: invokestatic 42	com/tencent/mm/modelvoice/s:Rf	(Ljava/lang/String;)Lcom/tencent/mm/modelvoice/b;
     //   161: astore_1
     //   162: aload_1
     //   163: ifnull +54 -> 217
@@ -83,9 +83,9 @@ public final class d
     //   182: checkcast 44	com/tencent/mm/modelvoice/j
     //   185: iconst_0
     //   186: iconst_1
-    //   187: invokevirtual 48	com/tencent/mm/modelvoice/j:dr	(II)Lcom/tencent/mm/modelvoice/g;
+    //   187: invokevirtual 48	com/tencent/mm/modelvoice/j:dB	(II)Lcom/tencent/mm/modelvoice/g;
     //   190: getfield 54	com/tencent/mm/modelvoice/g:buf	[B
-    //   193: getstatic 60	com/tencent/mm/modelvoice/MediaRecorder:iyR	J
+    //   193: getstatic 60	com/tencent/mm/modelvoice/MediaRecorder:juf	J
     //   196: invokestatic 64	com/tencent/mm/modelvoice/MediaRecorder:SilkGetEncSampleRate	([BJ)I
     //   199: istore_0
     //   200: iload_0
@@ -97,20 +97,20 @@ public final class d
     //   210: astore_3
     //   211: aload 4
     //   213: iload_0
-    //   214: putfield 24	com/tencent/mm/protocal/protobuf/dya:FQV	I
+    //   214: putfield 24	com/tencent/mm/protocal/protobuf/esg:KKC	I
     //   217: aload_1
     //   218: ifnull +9 -> 227
     //   221: aload_1
     //   222: invokeinterface 69 1 0
     //   227: aload 4
     //   229: bipush 16
-    //   231: putfield 27	com/tencent/mm/protocal/protobuf/dya:FQW	I
+    //   231: putfield 27	com/tencent/mm/protocal/protobuf/esg:KKD	I
     //   234: aload 4
     //   236: bipush 6
-    //   238: putfield 30	com/tencent/mm/protocal/protobuf/dya:FQT	I
+    //   238: putfield 30	com/tencent/mm/protocal/protobuf/esg:KKA	I
     //   241: aload 4
     //   243: bipush 6
-    //   245: putfield 33	com/tencent/mm/protocal/protobuf/dya:FQU	I
+    //   245: putfield 33	com/tencent/mm/protocal/protobuf/esg:KKB	I
     //   248: goto -172 -> 76
     //   251: astore_1
     //   252: aload_2
@@ -140,7 +140,7 @@ public final class d
     //   156	101	2	str1	java.lang.String
     //   292	1	2	localThrowable	java.lang.Throwable
     //   154	121	3	str2	java.lang.String
-    //   13	229	4	localdya	com.tencent.mm.protocal.protobuf.dya
+    //   13	229	4	localesg	com.tencent.mm.protocal.protobuf.esg
     // Exception table:
     //   from	to	target	type
     //   157	162	251	java/lang/Throwable
@@ -158,7 +158,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.d
  * JD-Core Version:    0.7.0.1
  */

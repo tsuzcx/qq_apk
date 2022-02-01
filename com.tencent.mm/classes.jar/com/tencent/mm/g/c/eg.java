@@ -2,39 +2,40 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class eg
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eTN = "count".hashCode();
-  private static final int flY = "date".hashCode();
+  private static final int fPA;
+  private static final int fPB;
+  private static final int fPC = "anchorUsername".hashCode();
+  private static final int fPD = "isSender".hashCode();
+  private static final int fPE = "timeStamp".hashCode();
+  private static final int fPz = "liveId".hashCode();
+  private static final int fyv;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eTn = true;
-  public int field_count;
-  public String field_date;
-  private boolean flX = true;
+  private boolean fPt = true;
+  private boolean fPu = true;
+  private boolean fPv = true;
+  private boolean fPw = true;
+  private boolean fPx = true;
+  private boolean fPy = true;
+  public String field_anchorUsername;
+  public String field_hostRoomId;
+  public boolean field_isSender;
+  public long field_liveId;
+  public String field_liveName;
+  public String field_thumbUrl;
+  public long field_timeStamp;
+  private boolean fxJ = true;
   
-  public static c.a VD()
+  static
   {
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "date";
-    locala.IBN.put("date", "TEXT");
-    localStringBuilder.append(" date TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[1] = "count";
-    locala.IBN.put("count", "INTEGER");
-    localStringBuilder.append(" count INTEGER");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    fPA = "hostRoomId".hashCode();
+    fPB = "liveName".hashCode();
+    fyv = "thumbUrl".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -43,28 +44,57 @@ public abstract class eg
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (flY != k) {
-        break label60;
+      if (fPz != k) {
+        break label65;
       }
-      this.field_date = paramCursor.getString(i);
+      this.field_liveId = paramCursor.getLong(i);
+      this.fPt = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eTN == k) {
-        this.field_count = paramCursor.getInt(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      label65:
+      if (fPA == k)
+      {
+        this.field_hostRoomId = paramCursor.getString(i);
+      }
+      else if (fPB == k)
+      {
+        this.field_liveName = paramCursor.getString(i);
+      }
+      else if (fyv == k)
+      {
+        this.field_thumbUrl = paramCursor.getString(i);
+      }
+      else if (fPC == k)
+      {
+        this.field_anchorUsername = paramCursor.getString(i);
+      }
+      else
+      {
+        if (fPD == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (boolean bool = true;; bool = false)
+          {
+            this.field_isSender = bool;
+            break;
+          }
+        }
+        if (fPE == k) {
+          this.field_timeStamp = paramCursor.getLong(i);
+        } else if (rowid_HASHCODE == k) {
+          this.systemRowid = paramCursor.getLong(i);
+        }
       }
     }
   }
@@ -72,11 +102,38 @@ public abstract class eg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.flX) {
-      localContentValues.put("date", this.field_date);
+    if (this.fPt) {
+      localContentValues.put("liveId", Long.valueOf(this.field_liveId));
     }
-    if (this.eTn) {
-      localContentValues.put("count", Integer.valueOf(this.field_count));
+    if (this.field_hostRoomId == null) {
+      this.field_hostRoomId = "";
+    }
+    if (this.fPu) {
+      localContentValues.put("hostRoomId", this.field_hostRoomId);
+    }
+    if (this.field_liveName == null) {
+      this.field_liveName = "";
+    }
+    if (this.fPv) {
+      localContentValues.put("liveName", this.field_liveName);
+    }
+    if (this.field_thumbUrl == null) {
+      this.field_thumbUrl = "";
+    }
+    if (this.fxJ) {
+      localContentValues.put("thumbUrl", this.field_thumbUrl);
+    }
+    if (this.field_anchorUsername == null) {
+      this.field_anchorUsername = "";
+    }
+    if (this.fPw) {
+      localContentValues.put("anchorUsername", this.field_anchorUsername);
+    }
+    if (this.fPx) {
+      localContentValues.put("isSender", Boolean.valueOf(this.field_isSender));
+    }
+    if (this.fPy) {
+      localContentValues.put("timeStamp", Long.valueOf(this.field_timeStamp));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -86,7 +143,7 @@ public abstract class eg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.c.eg
  * JD-Core Version:    0.7.0.1
  */

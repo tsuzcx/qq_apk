@@ -1,48 +1,49 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cc;
-import com.tencent.mm.protocal.protobuf.cd;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cl;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
-  extends n
-  implements com.tencent.mm.network.k
+  extends q
+  implements m
 {
-  private f gCo;
-  public String rJY;
-  public final b rr;
+  private i heq;
+  public final d rr;
+  public String tjJ;
   
   public k(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(78870);
-    this.rJY = paramString3;
-    paramString3 = new b.a();
-    paramString3.hQF = new cc();
-    paramString3.hQG = new cd();
+    this.tjJ = paramString3;
+    paramString3 = new d.a();
+    paramString3.iLN = new cl();
+    paramString3.iLO = new cm();
     paramString3.uri = "/cgi-bin/mmbiz-bin/oauth_addavatarheadimg";
     paramString3.funcId = 2667;
-    paramString3.hQH = 2667;
+    paramString3.iLP = 2667;
     paramString3.respCmdId = 0;
-    this.rr = paramString3.aDS();
-    paramString3 = (cc)this.rr.hQD.hQJ;
-    paramString3.FNb = paramString1;
-    paramString3.dwb = paramString2;
+    this.rr = paramString3.aXF();
+    paramString3 = (cl)this.rr.iLK.iLR;
+    paramString3.KGG = paramString1;
+    paramString3.dNI = paramString2;
     AppMethodBeat.o(78870);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(78871);
-    this.gCo = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.heq = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(78871);
     return i;
   }
@@ -52,12 +53,12 @@ public final class k
     return 2667;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(78872);
-    ae.i("MicroMsg.NetSceneCreateAvatar", "NetSceneCreateAvatar:  netId = %d, errType = %d,errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.gCo != null) {
-      this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    Log.i("MicroMsg.NetSceneCreateAvatar", "NetSceneCreateAvatar:  netId = %d, errType = %d,errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.heq != null) {
+      this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(78872);
   }

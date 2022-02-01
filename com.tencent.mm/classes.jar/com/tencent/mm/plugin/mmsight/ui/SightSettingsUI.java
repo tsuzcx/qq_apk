@@ -15,12 +15,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
 import com.tencent.mm.remoteservice.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.h.d;
+import com.tencent.mm.ui.base.h.e;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -28,36 +28,36 @@ import java.util.List;
 public class SightSettingsUI
   extends MMActivity
 {
-  private d gkS;
-  private LinkedList<b> hbM;
-  private ListView hbO;
-  private CaptureMMProxy vYY;
-  private a wjq;
+  private d gVN;
+  private LinkedList<b> hUG;
+  private ListView hUI;
+  private a zDP;
+  private CaptureMMProxy zta;
   
   public SightSettingsUI()
   {
     AppMethodBeat.i(94737);
-    this.gkS = new d(this);
-    this.hbM = new LinkedList();
+    this.gVN = new d(this);
+    this.hUG = new LinkedList();
     AppMethodBeat.o(94737);
   }
   
   public int getLayoutId()
   {
-    return 2131495461;
+    return 2131496334;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(94738);
     super.onCreate(paramBundle);
-    this.vYY = new CaptureMMProxy(this.gkS);
-    this.gkS.connect(new Runnable()
+    this.zta = new CaptureMMProxy(this.gVN);
+    this.gVN.connect(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(94730);
-        ae.i("MicroMsg.SightSettingsUI", "has connect");
+        Log.i("MicroMsg.SightSettingsUI", "has connect");
         SightSettingsUI.a(SightSettingsUI.this);
         AppMethodBeat.o(94730);
       }
@@ -79,7 +79,7 @@ public class SightSettingsUI
   {
     AppMethodBeat.i(94739);
     super.onDestroy();
-    this.gkS.release();
+    this.gVN.release();
     AppMethodBeat.o(94739);
   }
   
@@ -134,10 +134,10 @@ public class SightSettingsUI
       AppMethodBeat.i(94735);
       paramView = new TextView(SightSettingsUI.this);
       paramViewGroup = (SightSettingsUI.b)getItem(paramInt);
-      paramView.setText(paramViewGroup.hbT + "->:" + paramViewGroup.KW(((Integer)SightSettingsUI.b(paramViewGroup.wjr).get(paramViewGroup.hbU, Integer.valueOf(0))).intValue()));
+      paramView.setText(paramViewGroup.hUN + "->:" + paramViewGroup.QW(((Integer)SightSettingsUI.b(paramViewGroup.zDQ).get(paramViewGroup.hUO, Integer.valueOf(0))).intValue()));
       paramView.setGravity(17);
       paramView.setTextSize(1, 20.0F);
-      paramView.setHeight(com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 50));
+      paramView.setHeight(com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 50));
       if (paramInt % 2 == 1) {
         paramView.setBackgroundColor(Color.parseColor("#e2efda"));
       }
@@ -147,19 +147,19 @@ public class SightSettingsUI
         {
           AppMethodBeat.i(94732);
           Object localObject = new b();
-          ((b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mmsight/ui/SightSettingsUI$ChoiceAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+          ((b)localObject).bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mmsight/ui/SightSettingsUI$ChoiceAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
           paramAnonymousView = paramViewGroup;
           localObject = new LinkedList();
           LinkedList localLinkedList = new LinkedList();
           int i = 0;
-          while (i < paramAnonymousView.hbV.length)
+          while (i < paramAnonymousView.hUP.length)
           {
-            ((List)localObject).add(paramAnonymousView.hbV[i]);
+            ((List)localObject).add(paramAnonymousView.hUP[i]);
             localLinkedList.add(Integer.valueOf(i));
             i += 1;
           }
-          h.a(paramAnonymousView.wjr, "", (List)localObject, localLinkedList, "", new SightSettingsUI.b.1(paramAnonymousView));
+          h.a(paramAnonymousView.zDQ, "", (List)localObject, localLinkedList, "", new SightSettingsUI.b.1(paramAnonymousView));
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/mmsight/ui/SightSettingsUI$ChoiceAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(94732);
         }
@@ -171,36 +171,36 @@ public class SightSettingsUI
   
   final class b
   {
-    public String hbT;
-    am.a hbU;
-    String[] hbV;
-    int[] wju;
+    public String hUN;
+    ar.a hUO;
+    String[] hUP;
+    int[] zDT;
     
-    public b(String paramString, am.a parama, String[] paramArrayOfString, int[] paramArrayOfInt)
+    public b(String paramString, ar.a parama, String[] paramArrayOfString, int[] paramArrayOfInt)
     {
-      this.hbT = paramString;
-      this.hbV = paramArrayOfString;
-      this.hbU = parama;
-      this.wju = paramArrayOfInt;
+      this.hUN = paramString;
+      this.hUP = paramArrayOfString;
+      this.hUO = parama;
+      this.zDT = paramArrayOfInt;
     }
     
-    final String KW(int paramInt)
+    final String QW(int paramInt)
     {
       int i = 0;
-      while (i < this.wju.length)
+      while (i < this.zDT.length)
       {
-        if ((paramInt == this.wju[i]) && (i < this.hbV.length)) {
-          return this.hbV[i];
+        if ((paramInt == this.zDT[i]) && (i < this.hUP.length)) {
+          return this.hUP[i];
         }
         i += 1;
       }
-      return this.hbV[0];
+      return this.hUP[0];
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.SightSettingsUI
  * JD-Core Version:    0.7.0.1
  */

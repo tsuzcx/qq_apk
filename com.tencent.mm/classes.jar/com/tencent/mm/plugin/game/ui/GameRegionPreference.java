@@ -14,7 +14,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class GameRegionPreference
   extends Preference
 {
-  a uDF;
+  a xVD;
   
   public GameRegionPreference(Context paramContext)
   {
@@ -30,7 +30,7 @@ public class GameRegionPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(42353);
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(42353);
   }
   
@@ -38,12 +38,12 @@ public class GameRegionPreference
   {
     AppMethodBeat.i(42355);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(2131303961);
-    paramView = (CheckBox)paramView.findViewById(2131305186);
-    if ((localTextView != null) && (paramView != null) && (this.uDF != null))
+    TextView localTextView = (TextView)paramView.findViewById(2131306815);
+    paramView = (CheckBox)paramView.findViewById(2131308377);
+    if ((localTextView != null) && (paramView != null) && (this.xVD != null))
     {
-      localTextView.setText(e.a(this.uDF));
-      paramView.setChecked(this.uDF.isSelected);
+      localTextView.setText(e.a(this.xVD));
+      paramView.setChecked(this.xVD.isSelected);
     }
     AppMethodBeat.o(42355);
   }
@@ -53,26 +53,26 @@ public class GameRegionPreference
     AppMethodBeat.i(42354);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131494375, localViewGroup);
+    localLayoutInflater.inflate(2131494941, localViewGroup);
     AppMethodBeat.o(42354);
     return paramViewGroup;
   }
   
   public static final class a
   {
-    public String eRl;
+    public String fuO;
     public boolean isDefault;
     public boolean isSelected;
-    public String uDG;
-    public String uDH;
-    public String uDI;
+    public String xVE;
+    public String xVF;
+    public String xVG;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameRegionPreference
  * JD-Core Version:    0.7.0.1
  */

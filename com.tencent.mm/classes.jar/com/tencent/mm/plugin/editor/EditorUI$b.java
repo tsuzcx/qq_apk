@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(181553);
-    pyM = new b("TYPE_THUMB", 0);
-    pyN = new b("TYPE_FILE", 1);
-    pyO = new b[] { pyM, pyN };
+    qOd = new b("TYPE_THUMB", 0);
+    qOe = new b("TYPE_FILE", 1);
+    qOf = new b[] { qOd, qOe };
     AppMethodBeat.o(181553);
   }
   

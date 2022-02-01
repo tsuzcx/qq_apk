@@ -2,52 +2,52 @@ package com.tencent.mm.plugin.aa.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.b;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
   extends b
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(63423);
-    c.a locala = new c.a();
-    locala.IBL = new Field[4];
-    locala.columns = new String[5];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[4];
+    localMAutoDBInfo.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "billNo";
-    locala.IBN.put("billNo", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "billNo";
+    localMAutoDBInfo.colsMap.put("billNo", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" billNo TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "billNo";
-    locala.columns[1] = "insertmsg";
-    locala.IBN.put("insertmsg", "INTEGER");
+    localMAutoDBInfo.primaryKey = "billNo";
+    localMAutoDBInfo.columns[1] = "insertmsg";
+    localMAutoDBInfo.colsMap.put("insertmsg", "INTEGER");
     localStringBuilder.append(" insertmsg INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "localMsgId";
-    locala.IBN.put("localMsgId", "LONG");
+    localMAutoDBInfo.columns[2] = "localMsgId";
+    localMAutoDBInfo.colsMap.put("localMsgId", "LONG");
     localStringBuilder.append(" localMsgId LONG");
     localStringBuilder.append(", ");
-    locala.columns[3] = "status";
-    locala.IBN.put("status", "INTEGER default '-1' ");
+    localMAutoDBInfo.columns[3] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER default '-1' ");
     localStringBuilder.append(" status INTEGER default '-1' ");
-    locala.columns[4] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[4] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(63423);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.a.c
  * JD-Core Version:    0.7.0.1
  */

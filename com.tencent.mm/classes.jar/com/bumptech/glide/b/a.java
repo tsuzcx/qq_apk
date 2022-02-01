@@ -16,34 +16,34 @@ public abstract interface a
   
   public abstract int getFrameCount();
   
-  public abstract int nZ();
+  public abstract int of();
   
-  public abstract int oa();
+  public abstract int og();
   
-  public abstract void ob();
+  public abstract void oh();
   
-  public abstract int oc();
+  public abstract int oi();
   
-  public abstract Bitmap od();
+  public abstract Bitmap oj();
   
   public static abstract interface a
   {
     public abstract Bitmap a(int paramInt1, int paramInt2, Bitmap.Config paramConfig);
     
-    public abstract byte[] dk(int paramInt);
+    public abstract byte[] de(int paramInt);
     
-    public abstract int[] dl(int paramInt);
+    public abstract int[] df(int paramInt);
     
     public abstract void f(Bitmap paramBitmap);
     
     public abstract void k(byte[] paramArrayOfByte);
     
-    public abstract void o(int[] paramArrayOfInt);
+    public abstract void p(int[] paramArrayOfInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.b.a
  * JD-Core Version:    0.7.0.1
  */

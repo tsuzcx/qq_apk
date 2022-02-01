@@ -2,52 +2,52 @@ package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dd;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.dj;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends dd
+  extends dj
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(217137);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    AppMethodBeat.i(194051);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "chatRoomName";
-    locala.IBN.put("chatRoomName", "TEXT default '群username'  PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "chatRoomName";
+    localMAutoDBInfo.colsMap.put("chatRoomName", "TEXT default '群username'  PRIMARY KEY ");
     localStringBuilder.append(" chatRoomName TEXT default '群username'  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "chatRoomName";
-    locala.columns[1] = "BindAppData";
-    locala.IBN.put("BindAppData", "BLOB");
+    localMAutoDBInfo.primaryKey = "chatRoomName";
+    localMAutoDBInfo.columns[1] = "BindAppData";
+    localMAutoDBInfo.colsMap.put("BindAppData", "BLOB");
     localStringBuilder.append(" BindAppData BLOB");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(217137);
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(194051);
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(217136);
+    AppMethodBeat.i(194050);
     super.convertFrom(paramCursor);
-    AppMethodBeat.o(217136);
+    AppMethodBeat.o(194050);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.a
  * JD-Core Version:    0.7.0.1
  */

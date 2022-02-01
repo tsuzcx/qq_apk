@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.profile.ui.newbizinfo.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.brandservice.a.b;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService;", "kotlin.jvm.PlatformType", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/brandservice/api/IBrandService;", "kotlin.jvm.PlatformType", "invoke"})
 final class c$i
   extends q
   implements a<b>
 {
-  public static final i xnG;
+  public static final i BlH;
   
   static
   {
     AppMethodBeat.i(39719);
-    xnG = new i();
+    BlH = new i();
     AppMethodBeat.o(39719);
   }
   

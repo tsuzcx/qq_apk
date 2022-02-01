@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import com.tencent.mm.aa.a.d;
 import com.tencent.mm.aa.a.d.a;
-import com.tencent.mm.plugin.webview.c.l;
+import com.tencent.mm.plugin.webview.d.n;
 
 final class f$21
   implements d.a<d>
 {
-  f$21(f paramf, l paraml, f.a parama, int paramInt) {}
+  f$21(f paramf, n paramn, f.a parama, int paramInt) {}
 }
 
 

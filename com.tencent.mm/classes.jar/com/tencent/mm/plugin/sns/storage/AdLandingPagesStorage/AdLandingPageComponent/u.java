@@ -1,27 +1,20 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent;
 
 public final class u
-  extends y
+  extends z
 {
-  public String zQP;
-  public String zQQ;
-  public String zQR;
-  public String zQS;
-  public int zQT;
-  public int zQU;
-  public int zQV;
-  public ag zQW;
-  public boolean zQX;
-  public boolean zQY;
-  public long zQZ;
-  public String zQf;
-  public String zQg;
-  public int zQh;
-  public ah zRa;
+  public int DWK;
+  public String DWL;
+  public String DWM;
+  public String DWN;
+  public int DWw;
+  public boolean DYJ;
+  public String DYO;
+  public String DYP;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.u
  * JD-Core Version:    0.7.0.1
  */

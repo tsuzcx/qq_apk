@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/dh9" android:background="@color/vg" android:paddingLeft="@dimen/a_j" android:paddingRight="@dimen/a_j" android:layout_width="fill_parent" android:layout_height="64.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dh_" android:background="@null" android:layout_width="36.0dip" android:layout_height="36.0dip" android:scaleType="fitCenter" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/vh" android:gravity="left" android:id="@id/dha" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:includeFontPadding="false" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/l4" android:id="@id/gr" android:padding="@dimen/cb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" android:text="@string/ddp" android:singleLine="true" style="@style/mi" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/gp" android:background="@drawable/a__" android:paddingLeft="@dimen/c5" android:paddingTop="@dimen/c5" android:paddingRight="@dimen/ct" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/d79" android:background="@raw/find_more_friend_mobile_icon" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip" android:layout_marginRight="@dimen/ir" android:layout_centerVertical="true" />
+        <TextView android:id="@id/d7_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" android:text="@string/cet" android:singleLine="true" android:layout_toRightOf="@id/d79" android:layout_centerVertical="true" style="@style/mi" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:background="@raw/arrow_right" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/en" />
+    </RelativeLayout>
 </LinearLayout>

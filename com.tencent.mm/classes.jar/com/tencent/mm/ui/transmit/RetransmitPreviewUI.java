@@ -13,12 +13,12 @@ import com.tencent.mm.ui.MMActivity;
 public class RetransmitPreviewUI
   extends MMActivity
 {
-  private TextView Wf = null;
+  private TextView Ws = null;
   private String text = null;
   
   public int getLayoutId()
   {
-    return 2131493465;
+    return 2131493567;
   }
   
   public void onBackPressed()
@@ -34,11 +34,8 @@ public class RetransmitPreviewUI
     super.onCreate(paramBundle);
     setMMTitle("");
     this.text = getIntent().getStringExtra("Retr_Msg_content");
-    this.Wf = ((TextView)findViewById(2131300329));
-    paramBundle = this.Wf;
-    g localg = g.fqZ();
-    getContext();
-    paramBundle.setText(localg.b(this.text, this.Wf.getTextSize()));
+    this.Ws = ((TextView)findViewById(2131301837));
+    this.Ws.setText(g.gxZ().a(getContext(), this.text, this.Ws.getTextSize()));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)

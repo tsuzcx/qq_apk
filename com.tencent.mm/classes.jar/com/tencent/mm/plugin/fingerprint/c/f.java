@@ -2,19 +2,17 @@ package com.tencent.mm.plugin.fingerprint.c;
 
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.fingerprint.b.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.wallet_core.tenpay.model.m;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class f
-  extends m
-  implements k
+  extends com.tencent.mm.wallet_core.tenpay.model.m
+  implements com.tencent.mm.network.m
 {
   public f(String paramString1, String paramString2, String paramString3, int paramInt)
   {
@@ -46,18 +44,18 @@ public final class f
     return "/cgi-bin/mmpay-bin/tenpay/androidopentouch";
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(64475);
-    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
+    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      ae.i("MicroMsg.NetSceneTenpayOpenTouch", "open fingerprintpay success");
-      d.mE(true);
+      Log.i("MicroMsg.NetSceneTenpayOpenTouch", "open fingerprintpay success");
+      d.pl(true);
       AppMethodBeat.o(64475);
       return;
     }
-    ae.e("MicroMsg.NetSceneTenpayOpenTouch", "open fingerprintpay failed");
+    Log.e("MicroMsg.NetSceneTenpayOpenTouch", "open fingerprintpay failed");
     AppMethodBeat.o(64475);
   }
   
@@ -65,7 +63,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.c.f
  * JD-Core Version:    0.7.0.1
  */

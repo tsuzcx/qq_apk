@@ -1,42 +1,42 @@
 package com.tencent.mm.plugin.ipcall.model.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dq;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.dw;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class i
-  extends dq
+  extends dw
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(25551);
-    c.a locala = new c.a();
-    locala.IBL = new Field[3];
-    locala.columns = new String[4];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[3];
+    localMAutoDBInfo.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "countryCode";
-    locala.IBN.put("countryCode", "INTEGER PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "countryCode";
+    localMAutoDBInfo.colsMap.put("countryCode", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" countryCode INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "countryCode";
-    locala.columns[1] = "callTimeCount";
-    locala.IBN.put("callTimeCount", "LONG");
+    localMAutoDBInfo.primaryKey = "countryCode";
+    localMAutoDBInfo.columns[1] = "callTimeCount";
+    localMAutoDBInfo.colsMap.put("callTimeCount", "LONG");
     localStringBuilder.append(" callTimeCount LONG");
     localStringBuilder.append(", ");
-    locala.columns[2] = "lastCallTime";
-    locala.IBN.put("lastCallTime", "LONG");
+    localMAutoDBInfo.columns[2] = "lastCallTime";
+    localMAutoDBInfo.colsMap.put("lastCallTime", "LONG");
     localStringBuilder.append(" lastCallTime LONG");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[3] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(25551);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

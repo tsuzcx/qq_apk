@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.monitor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.monitor.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class PluginMonitor
   extends f
@@ -16,10 +16,10 @@ public class PluginMonitor
   public void execute(g paramg)
   {
     AppMethodBeat.i(51498);
-    if (paramg.akL())
+    if (paramg.aBb())
     {
-      ae.i("MicroMsg.PluginMonitor", "PluginMonitor execute PluginMonitor new SubCoreBaseMonitor");
-      pin(new u(b.class));
+      Log.i("MicroMsg.PluginMonitor", "PluginMonitor execute PluginMonitor new SubCoreBaseMonitor");
+      pin(new y(b.class));
     }
     AppMethodBeat.o(51498);
   }

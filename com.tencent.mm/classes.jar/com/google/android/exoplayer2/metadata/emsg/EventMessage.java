@@ -11,10 +11,10 @@ public final class EventMessage
   implements Metadata.Entry
 {
   public static final Parcelable.Creator<EventMessage> CREATOR;
-  private int aHQ;
-  public final String buo;
-  public final long bup;
-  public final byte[] buq;
+  private int aHK;
+  public final String buj;
+  public final byte[] buk;
+  public final long durationMs;
   public final long id;
   public final String value;
   
@@ -28,21 +28,21 @@ public final class EventMessage
   EventMessage(Parcel paramParcel)
   {
     AppMethodBeat.i(92390);
-    this.buo = paramParcel.readString();
+    this.buj = paramParcel.readString();
     this.value = paramParcel.readString();
-    this.bup = paramParcel.readLong();
+    this.durationMs = paramParcel.readLong();
     this.id = paramParcel.readLong();
-    this.buq = paramParcel.createByteArray();
+    this.buk = paramParcel.createByteArray();
     AppMethodBeat.o(92390);
   }
   
   public EventMessage(String paramString1, String paramString2, long paramLong1, long paramLong2, byte[] paramArrayOfByte)
   {
-    this.buo = paramString1;
+    this.buj = paramString1;
     this.value = paramString2;
-    this.bup = paramLong1;
+    this.durationMs = paramLong1;
     this.id = paramLong2;
-    this.buq = paramArrayOfByte;
+    this.buk = paramArrayOfByte;
   }
   
   public final int describeContents()
@@ -64,7 +64,7 @@ public final class EventMessage
       return false;
     }
     paramObject = (EventMessage)paramObject;
-    if ((this.bup == paramObject.bup) && (this.id == paramObject.id) && (x.i(this.buo, paramObject.buo)) && (x.i(this.value, paramObject.value)) && (Arrays.equals(this.buq, paramObject.buq)))
+    if ((this.durationMs == paramObject.durationMs) && (this.id == paramObject.id) && (x.j(this.buj, paramObject.buj)) && (x.j(this.value, paramObject.value)) && (Arrays.equals(this.buk, paramObject.buk)))
     {
       AppMethodBeat.o(92392);
       return true;
@@ -77,19 +77,19 @@ public final class EventMessage
   {
     int j = 0;
     AppMethodBeat.i(92391);
-    if (this.aHQ == 0) {
-      if (this.buo == null) {
+    if (this.aHK == 0) {
+      if (this.buj == null) {
         break label115;
       }
     }
     label115:
-    for (int i = this.buo.hashCode();; i = 0)
+    for (int i = this.buj.hashCode();; i = 0)
     {
       if (this.value != null) {
         j = this.value.hashCode();
       }
-      this.aHQ = (((((i + 527) * 31 + j) * 31 + (int)(this.bup ^ this.bup >>> 32)) * 31 + (int)(this.id ^ this.id >>> 32)) * 31 + Arrays.hashCode(this.buq));
-      i = this.aHQ;
+      this.aHK = (((((i + 527) * 31 + j) * 31 + (int)(this.durationMs ^ this.durationMs >>> 32)) * 31 + (int)(this.id ^ this.id >>> 32)) * 31 + Arrays.hashCode(this.buk));
+      i = this.aHK;
       AppMethodBeat.o(92391);
       return i;
     }
@@ -98,17 +98,17 @@ public final class EventMessage
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92393);
-    paramParcel.writeString(this.buo);
+    paramParcel.writeString(this.buj);
     paramParcel.writeString(this.value);
-    paramParcel.writeLong(this.bup);
+    paramParcel.writeLong(this.durationMs);
     paramParcel.writeLong(this.id);
-    paramParcel.writeByteArray(this.buq);
+    paramParcel.writeByteArray(this.buk);
     AppMethodBeat.o(92393);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.emsg.EventMessage
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 package com.tencent.mm.plugin.fts.ui;
 
 import android.os.Looper;
+import android.os.Message;
 import android.view.View;
 import android.widget.AbsListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -10,8 +11,8 @@ import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.ui.a.h;
 import com.tencent.mm.plugin.sns.b.o;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -21,24 +22,45 @@ public final class j
   extends d
   implements e.b
 {
-  private boolean jjp;
-  private int lox;
-  private boolean nat;
-  private int pSr;
-  private aq tJe;
-  private boolean tKp;
-  private com.tencent.mm.plugin.fts.a.d.e tKv;
-  private com.tencent.mm.plugin.fts.ui.c.a tKw;
-  private aq tKx;
-  private boolean tKy;
+  private boolean khr;
+  private int mve;
+  private int rjr;
+  private MMHandler xad;
+  private boolean xbo;
+  private com.tencent.mm.plugin.fts.a.d.e xbu;
+  private com.tencent.mm.plugin.fts.ui.c.a xbv;
+  private boolean xbw;
+  private MMHandler xbx;
+  private boolean xby;
   
   public j(e parame, int paramInt1, int paramInt2)
   {
     super(parame);
     AppMethodBeat.i(111931);
-    this.tJe = new aq(Looper.getMainLooper());
-    this.tKx = new j.1(this, Looper.getMainLooper());
-    this.pSr = paramInt1;
+    this.xad = new MMHandler(Looper.getMainLooper());
+    this.xbx = new MMHandler(Looper.getMainLooper())
+    {
+      public final void handleMessage(Message paramAnonymousMessage)
+      {
+        AppMethodBeat.i(111930);
+        switch (paramAnonymousMessage.what)
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(111930);
+          return;
+          Log.d("MicroMsg.FTS.FTSDetailAdapter", "ImageEngine attach is true");
+          if ((!j.a(j.this)) && (j.this.getCount() > 0))
+          {
+            ((n)com.tencent.mm.kernel.g.ah(n.class)).getFTSImageLoader().dOn();
+            o.DCM.start();
+            j.this.notifyDataSetChanged();
+          }
+        }
+      }
+    };
+    this.rjr = paramInt1;
     parame = getContext();
     int j = -1;
     int i = j;
@@ -49,12 +71,12 @@ public final class j
     }
     for (;;)
     {
-      ae.i("MicroMsg.FTS.FTSDetailAdapter", "searchType=%d | uiLogicType=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(i) });
+      Log.i("MicroMsg.FTS.FTSDetailAdapter", "searchType=%d | uiLogicType=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(i) });
       HashSet localHashSet = new HashSet();
       localHashSet.add(Integer.valueOf(i));
-      this.tKv = ((com.tencent.mm.plugin.fts.a.d.e)((n)com.tencent.mm.kernel.g.ad(n.class)).createFTSUIUnitList(localHashSet, parame, this, paramInt2).get(0));
-      this.tKw = new com.tencent.mm.plugin.fts.ui.c.a();
-      this.lox = paramInt2;
+      this.xbu = ((com.tencent.mm.plugin.fts.a.d.e)((n)com.tencent.mm.kernel.g.ah(n.class)).createFTSUIUnitList(localHashSet, parame, this, paramInt2).get(0));
+      this.xbv = new com.tencent.mm.plugin.fts.ui.c.a();
+      this.mve = paramInt2;
       AppMethodBeat.o(111931);
       return;
       i = 4112;
@@ -77,13 +99,13 @@ public final class j
     }
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a Ho(int paramInt)
+  protected final com.tencent.mm.plugin.fts.a.d.a.a No(int paramInt)
   {
     AppMethodBeat.i(111932);
-    com.tencent.mm.plugin.fts.a.d.a.a locala = this.tKv.Ho(paramInt);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.xbu.No(paramInt);
     if (locala != null)
     {
-      locala.tGM = paramInt;
+      locala.wXL = paramInt;
       locala.pageType = 2;
     }
     AppMethodBeat.o(111932);
@@ -94,19 +116,19 @@ public final class j
   {
     AppMethodBeat.i(111937);
     if (paramString.equals(this.query)) {
-      this.jjp = false;
+      this.khr = false;
     }
-    setCount(parame.Hn(0));
+    setCount(parame.Nn(0));
     notifyDataSetChanged();
-    ao(getCount(), true);
-    this.tKw.tNh = System.currentTimeMillis();
-    paramString = this.tKw;
-    parame = ((a)parame).tIP.iterator();
+    ax(getCount(), true);
+    this.xbv.xeh = System.currentTimeMillis();
+    paramString = this.xbv;
+    parame = ((a)parame).wZO.iterator();
     while (parame.hasNext())
     {
       e.a locala = (e.a)parame.next();
-      int i = paramString.tNi;
-      paramString.tNi = (locala.lPc.size() + i);
+      int i = paramString.xei;
+      paramString.xei = (locala.mWl.size() + i);
     }
     AppMethodBeat.o(111937);
   }
@@ -114,16 +136,16 @@ public final class j
   protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(111935);
-    this.tKv.a(paramView, parama, paramBoolean);
-    if (parama.tGU)
+    this.xbu.a(paramView, parama, paramBoolean);
+    if (parama.wXT)
     {
-      ae.d("MicroMsg.FTS.FTSDetailAdapter", "searchType=%d | searchScene=%d | kvPosition=%d | kvSubPosition=%d | kvSearchId=%s | kvDocId=%d", new Object[] { Integer.valueOf(parama.pSr), Integer.valueOf(parama.lox), Integer.valueOf(parama.tGM), Integer.valueOf(parama.tGN), parama.tGO, Long.valueOf(parama.tGP) });
-      if (!this.tKp)
+      Log.d("MicroMsg.FTS.FTSDetailAdapter", "searchType=%d | searchScene=%d | kvPosition=%d | kvSubPosition=%d | kvSearchId=%s | kvDocId=%d", new Object[] { Integer.valueOf(parama.rjr), Integer.valueOf(parama.mve), Integer.valueOf(parama.wXL), Integer.valueOf(parama.wXM), parama.wXN, Long.valueOf(parama.wXO) });
+      if (!this.xbo)
       {
-        l.c(this.query, true, cVz(), parama.pSr);
-        this.tKp = true;
+        l.c(this.query, true, dOI(), parama.rjr);
+        this.xbo = true;
       }
-      l.a(parama, this.tKw);
+      l.a(parama, this.xbv);
     }
     for (;;)
     {
@@ -131,52 +153,52 @@ public final class j
       return false;
       if ((parama instanceof h))
       {
-        this.tKy = true;
-        l.a(parama, this.tKw);
+        this.xby = true;
+        l.a(parama, this.xbv);
       }
     }
-  }
-  
-  protected final void cVS()
-  {
-    AppMethodBeat.i(111933);
-    this.jjp = true;
-    this.tKp = false;
-    this.tKw.tNj = com.tencent.mm.plugin.fts.a.d.Hj(this.lox);
-    this.tKv.a(this.query, this.tJe, new HashSet(), 0L);
-    AppMethodBeat.o(111933);
-  }
-  
-  protected final int cVz()
-  {
-    AppMethodBeat.i(111939);
-    int i = this.tKv.cVz();
-    AppMethodBeat.o(111939);
-    return i;
   }
   
   protected final void clearCache()
   {
     AppMethodBeat.i(111934);
     super.clearCache();
-    this.tKw.reset();
-    this.tKv.clearData();
-    this.tKv.cVx();
-    this.tKx.removeMessages(1);
+    this.xbv.reset();
+    this.xbu.clearData();
+    this.xbu.dOG();
+    this.xbx.removeMessages(1);
     AppMethodBeat.o(111934);
+  }
+  
+  protected final int dOI()
+  {
+    AppMethodBeat.i(111939);
+    int i = this.xbu.dOI();
+    AppMethodBeat.o(111939);
+    return i;
+  }
+  
+  protected final void dPb()
+  {
+    AppMethodBeat.i(111933);
+    this.khr = true;
+    this.xbo = false;
+    this.xbv.xej = com.tencent.mm.plugin.fts.a.d.Ni(this.mve);
+    this.xbu.a(this.query, this.xad, new HashSet(), 0L);
+    AppMethodBeat.o(111933);
   }
   
   public final void finish()
   {
     AppMethodBeat.i(111936);
-    if (!this.tKp)
+    if (!this.xbo)
     {
-      this.tKp = true;
-      if (!this.tKy) {
-        l.c(this.query, false, cVz(), this.pSr);
+      this.xbo = true;
+      if (!this.xby) {
+        l.c(this.query, false, dOI(), this.rjr);
       }
     }
-    this.tKw.reset();
+    this.xbv.reset();
     super.finish();
     AppMethodBeat.o(111936);
   }
@@ -187,25 +209,25 @@ public final class j
     super.onScrollStateChanged(paramAbsListView, paramInt);
     if (paramInt == 2)
     {
-      this.nat = true;
-      ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSImageLoader().cVc();
-      o.zsv.pause();
-      ae.d("MicroMsg.FTS.FTSDetailAdapter", "ImageEngine attach is false");
+      this.xbw = true;
+      ((n)com.tencent.mm.kernel.g.ah(n.class)).getFTSImageLoader().dOl();
+      o.DCM.pause();
+      Log.d("MicroMsg.FTS.FTSDetailAdapter", "ImageEngine attach is false");
       AppMethodBeat.o(111938);
       return;
     }
-    this.nat = false;
-    if (!((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSImageLoader().cVd())
+    this.xbw = false;
+    if (!((n)com.tencent.mm.kernel.g.ah(n.class)).getFTSImageLoader().dOm())
     {
-      this.tKx.removeMessages(1);
-      this.tKx.sendEmptyMessageDelayed(1, 200L);
+      this.xbx.removeMessages(1);
+      this.xbx.sendEmptyMessageDelayed(1, 200L);
     }
     AppMethodBeat.o(111938);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.j
  * JD-Core Version:    0.7.0.1
  */

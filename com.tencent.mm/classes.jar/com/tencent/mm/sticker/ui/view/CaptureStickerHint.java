@@ -14,270 +14,274 @@ import com.tencent.mm.sticker.d;
 import com.tencent.mm.sticker.e;
 import com.tencent.mm.sticker.e.a;
 import com.tencent.mm.sticker.f;
-import com.tencent.mm.ui.e.a;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.ui.f.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "actionIndex", "actions", "Ljava/util/LinkedList;", "hintIcon", "Landroid/widget/ImageView;", "hintText", "Landroid/widget/TextView;", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "switchStickerHintRunnable", "Ljava/lang/Runnable;", "hideStickerHint", "", "onFinishInflate", "setStickerPack", "showStickerHint", "switchHint", "Companion", "plugin-sticker_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/ui/view/CaptureStickerHint;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "actionIndex", "actions", "Ljava/util/LinkedList;", "hintIcon", "Landroid/widget/ImageView;", "hintText", "Landroid/widget/TextView;", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "switchStickerHintRunnable", "Ljava/lang/Runnable;", "hideStickerHint", "", "onFinishInflate", "setStickerPack", "showStickerHint", "switchHint", "Companion", "plugin-sticker_release"})
 public final class CaptureStickerHint
   extends LinearLayout
 {
-  private static final SparseArray<int[]> IHN;
-  private static final SparseArray<int[]> IHO;
-  public static final CaptureStickerHint.a IHP;
-  private final ImageView IHJ;
-  private final TextView IHK;
-  private int IHL;
-  private final Runnable IHM;
+  private static final SparseArray<int[]> NOG;
+  private static final SparseArray<int[]> NOH;
+  public static final CaptureStickerHint.a NOI;
+  private final ImageView NOD;
+  private int NOE;
+  private final Runnable NOF;
   private final String TAG;
-  private LinkedList<Integer> lJQ;
-  private f pYP;
+  private LinkedList<Integer> mRG;
+  private f rpM;
+  private final TextView vuT;
   
   static
   {
-    AppMethodBeat.i(208273);
-    IHP = new CaptureStickerHint.a((byte)0);
-    IHN = new SparseArray();
-    IHO = new SparseArray();
-    SparseArray localSparseArray = IHN;
-    e.a locala = e.IGA;
-    localSparseArray.put(e.frC(), new int[] { 2131234192, 2131234193 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frD(), new int[] { 2131234190, 2131234191 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frE(), new int[] { 2131234188, 2131234189 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frF(), new int[] { 2131234194, 2131234195 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frG(), new int[] { 2131234180, 2131234181 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frH(), new int[] { 2131234182, 2131234183 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frI(), new int[] { 2131234186, 2131234187 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frJ(), new int[] { 2131234184, 2131234185 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frK(), new int[] { 2131234202, 2131234203 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frL(), new int[] { 2131234212, 2131234213 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frM(), new int[] { 2131234216, 2131234217 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frN(), new int[] { 2131234198, 2131234199 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frO(), new int[] { 2131234210, 2131234211 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frP(), new int[] { 2131234206, 2131234207 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frQ(), new int[] { 2131234204, 2131234205 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frR(), new int[] { 2131234208, 2131234209 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frS(), new int[] { 2131234214, 2131234215 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frT(), new int[] { 2131234218, 2131234219 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frU(), new int[] { 2131234196, 2131234197 });
-    localSparseArray = IHN;
-    locala = e.IGA;
-    localSparseArray.put(e.frV(), new int[] { 2131234200, 2131234201 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frC(), new int[] { 2131764162, 2131764163 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frD(), new int[] { 2131764160, 2131764161 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frE(), new int[] { 2131764158, 2131764159 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frF(), new int[] { 2131764164, 2131764165 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frG(), new int[] { 2131764150, 2131764151 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frH(), new int[] { 2131764152, 2131764153 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frI(), new int[] { 2131764156, 2131764157 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frJ(), new int[] { 2131764154, 2131764155 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frK(), new int[] { 2131764172, 2131764173 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frL(), new int[] { 2131764182, 2131764183 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frM(), new int[] { 2131764186, 2131764187 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frN(), new int[] { 2131764168, 2131764169 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frO(), new int[] { 2131764180, 2131764181 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frP(), new int[] { 2131764176, 2131764177 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frQ(), new int[] { 2131764174, 2131764175 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frR(), new int[] { 2131764178, 2131764179 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frS(), new int[] { 2131764184, 2131764185 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frT(), new int[] { 2131764188, 2131764189 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frU(), new int[] { 2131764166, 2131764167 });
-    localSparseArray = IHO;
-    locala = e.IGA;
-    localSparseArray.put(e.frV(), new int[] { 2131764170, 2131764171 });
-    AppMethodBeat.o(208273);
+    AppMethodBeat.i(194241);
+    NOI = new CaptureStickerHint.a((byte)0);
+    NOG = new SparseArray();
+    NOH = new SparseArray();
+    SparseArray localSparseArray = NOG;
+    e.a locala = e.NNq;
+    localSparseArray.put(e.gyC(), new int[] { 2131235068, 2131235069 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyD(), new int[] { 2131235066, 2131235067 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyE(), new int[] { 2131235064, 2131235065 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyF(), new int[] { 2131235070, 2131235071 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyG(), new int[] { 2131235056, 2131235057 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyH(), new int[] { 2131235058, 2131235059 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyI(), new int[] { 2131235062, 2131235063 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyJ(), new int[] { 2131235060, 2131235061 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyK(), new int[] { 2131235078, 2131235079 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyL(), new int[] { 2131235088, 2131235089 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyM(), new int[] { 2131235092, 2131235093 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyN(), new int[] { 2131235074, 2131235075 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyO(), new int[] { 2131235086, 2131235087 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyP(), new int[] { 2131235082, 2131235083 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyQ(), new int[] { 2131235080, 2131235081 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyR(), new int[] { 2131235084, 2131235085 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyS(), new int[] { 2131235090, 2131235091 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyT(), new int[] { 2131235094, 2131235095 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyU(), new int[] { 2131235072, 2131235073 });
+    localSparseArray = NOG;
+    locala = e.NNq;
+    localSparseArray.put(e.gyV(), new int[] { 2131235076, 2131235077 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyC(), new int[] { 2131766418, 2131766419 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyD(), new int[] { 2131766416, 2131766417 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyE(), new int[] { 2131766414, 2131766415 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyF(), new int[] { 2131766420, 2131766421 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyG(), new int[] { 2131766406, 2131766407 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyH(), new int[] { 2131766408, 2131766409 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyI(), new int[] { 2131766412, 2131766413 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyJ(), new int[] { 2131766410, 2131766411 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyK(), new int[] { 2131766428, 2131766429 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyL(), new int[] { 2131766438, 2131766439 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyM(), new int[] { 2131766442, 2131766443 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyN(), new int[] { 2131766424, 2131766425 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyO(), new int[] { 2131766436, 2131766437 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyP(), new int[] { 2131766432, 2131766433 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyQ(), new int[] { 2131766430, 2131766431 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyR(), new int[] { 2131766434, 2131766435 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyS(), new int[] { 2131766440, 2131766441 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyT(), new int[] { 2131766444, 2131766445 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyU(), new int[] { 2131766422, 2131766423 });
+    localSparseArray = NOH;
+    locala = e.NNq;
+    localSparseArray.put(e.gyV(), new int[] { 2131766426, 2131766427 });
+    AppMethodBeat.o(194241);
   }
   
   public CaptureStickerHint(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(208272);
-    AppMethodBeat.o(208272);
+    AppMethodBeat.i(194240);
+    AppMethodBeat.o(194240);
   }
   
   public CaptureStickerHint(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(208271);
+    AppMethodBeat.i(194239);
     this.TAG = "MicroMsg.CaptureStickerHint";
-    this.lJQ = new LinkedList();
-    this.IHM = ((Runnable)new b(this));
-    View.inflate(paramContext, 2131495642, (ViewGroup)this);
-    paramContext = findViewById(2131305231);
+    this.mRG = new LinkedList();
+    this.NOF = ((Runnable)new b(this));
+    View.inflate(paramContext, 2131496547, (ViewGroup)this);
+    paramContext = findViewById(2131308435);
     p.g(paramContext, "findViewById(R.id.sticker_preview_hint_icon)");
-    this.IHJ = ((ImageView)paramContext);
-    paramContext = findViewById(2131305232);
+    this.NOD = ((ImageView)paramContext);
+    paramContext = findViewById(2131308436);
     p.g(paramContext, "findViewById(R.id.sticker_preview_hint_text)");
-    this.IHK = ((TextView)paramContext);
-    AppMethodBeat.o(208271);
+    this.vuT = ((TextView)paramContext);
+    AppMethodBeat.o(194239);
   }
   
-  private void fsv()
+  private void gzw()
   {
-    AppMethodBeat.i(208270);
-    this.IHJ.setImageDrawable(null);
+    AppMethodBeat.i(194238);
+    this.NOD.setImageDrawable(null);
     setVisibility(8);
-    AppMethodBeat.o(208270);
+    AppMethodBeat.o(194238);
   }
   
-  public final void fsu()
+  public final void gzv()
   {
     int i = 0;
-    AppMethodBeat.i(208269);
-    if (this.IHL >= this.lJQ.size())
+    AppMethodBeat.i(194237);
+    if (this.NOE >= this.mRG.size())
     {
-      fsv();
-      AppMethodBeat.o(208269);
+      gzw();
+      AppMethodBeat.o(194237);
       return;
     }
     setVisibility(0);
-    Object localObject1 = IHO;
-    Object localObject2 = this.lJQ.get(this.IHL);
+    Object localObject1 = NOH;
+    Object localObject2 = this.mRG.get(this.NOE);
     p.g(localObject2, "actions[actionIndex]");
     localObject1 = (int[])((SparseArray)localObject1).get(((Number)localObject2).intValue());
     if (localObject1 != null) {
-      if (this.IHL == 0) {
-        this.IHK.setText(localObject1[0]);
+      if (this.NOE == 0) {
+        this.vuT.setText(localObject1[0]);
       }
     }
     for (;;)
     {
-      localObject1 = IHN;
-      localObject2 = this.lJQ.get(this.IHL);
+      localObject1 = NOG;
+      localObject2 = this.mRG.get(this.NOE);
       p.g(localObject2, "actions[actionIndex]");
       localObject1 = (int[])((SparseArray)localObject1).get(((Number)localObject2).intValue());
       if (localObject1 == null) {
-        break label271;
+        break label283;
       }
       localObject2 = new a();
       int j = localObject1.length;
       while (i < j)
       {
         int k = localObject1[i];
-        ((a)localObject2).addFrame(getContext().getDrawable(k), 300);
+        Drawable localDrawable = getContext().getDrawable(k);
+        if (localDrawable == null) {
+          p.hyc();
+        }
+        ((a)localObject2).addFrame(localDrawable, 300);
         i += 1;
       }
-      this.IHK.setText(localObject1[1]);
+      this.vuT.setText(localObject1[1]);
       continue;
-      this.IHK.setText(null);
+      this.vuT.setText(null);
     }
-    this.IHJ.setImageDrawable((Drawable)localObject2);
+    this.NOD.setImageDrawable((Drawable)localObject2);
     ((a)localObject2).start();
     for (;;)
     {
-      this.IHL += 1;
-      postDelayed(this.IHM, 2000L);
-      AppMethodBeat.o(208269);
+      this.NOE += 1;
+      postDelayed(this.NOF, 2000L);
+      AppMethodBeat.o(194237);
       return;
-      label271:
-      this.IHJ.setImageDrawable(null);
+      label283:
+      this.NOD.setImageDrawable(null);
     }
   }
   
   protected final void onFinishInflate()
   {
-    AppMethodBeat.i(208267);
+    AppMethodBeat.i(194235);
     super.onFinishInflate();
     setOrientation(1);
     setGravity(17);
-    AppMethodBeat.o(208267);
+    AppMethodBeat.o(194235);
   }
   
   public final void setStickerPack(f paramf)
   {
-    AppMethodBeat.i(208268);
-    if ((p.i(this.pYP, paramf) ^ true))
+    AppMethodBeat.i(194236);
+    if ((p.j(this.rpM, paramf) ^ true))
     {
-      removeCallbacks(this.IHM);
-      this.pYP = paramf;
-      this.lJQ.clear();
+      removeCallbacks(this.NOF);
+      this.rpM = paramf;
+      this.mRG.clear();
       if (paramf != null)
       {
-        LinkedList localLinkedList = this.lJQ;
+        LinkedList localLinkedList = this.mRG;
         Object localObject1 = new LinkedList();
-        Object localObject2 = paramf.IGC;
+        Object localObject2 = paramf.NNs;
         if (localObject2 != null)
         {
-          localObject2 = ((e)localObject2).IGd;
+          localObject2 = ((e)localObject2).NMT;
           if (localObject2 != null)
           {
             localObject2 = ((HashMap)localObject2).values();
@@ -286,10 +290,10 @@ public final class CaptureStickerHint
             }
           }
         }
-        localObject2 = paramf.IGD;
+        localObject2 = paramf.NNt;
         if (localObject2 != null)
         {
-          localObject2 = ((e)localObject2).IGd;
+          localObject2 = ((e)localObject2).NMT;
           if (localObject2 != null)
           {
             localObject2 = ((HashMap)localObject2).values();
@@ -298,10 +302,10 @@ public final class CaptureStickerHint
             }
           }
         }
-        paramf = paramf.IGE;
+        paramf = paramf.NNu;
         if (paramf != null)
         {
-          paramf = paramf.IGd;
+          paramf = paramf.NMT;
           if (paramf != null)
           {
             paramf = paramf.values();
@@ -317,8 +321,8 @@ public final class CaptureStickerHint
         while (((Iterator)localObject2).hasNext())
         {
           paramf = (d)((Iterator)localObject2).next();
-          if (paramf.IFW > 0) {}
-          for (paramf = Integer.valueOf(paramf.IFW);; paramf = null)
+          if (paramf.NMN > 0) {}
+          for (paramf = Integer.valueOf(paramf.NMN);; paramf = null)
           {
             if (paramf == null) {
               break label255;
@@ -329,19 +333,19 @@ public final class CaptureStickerHint
         }
         localLinkedList.addAll((Collection)localObject1);
       }
-      if (this.lJQ.size() > 0)
+      if (this.mRG.size() > 0)
       {
-        this.IHL = 0;
-        fsu();
-        AppMethodBeat.o(208268);
+        this.NOE = 0;
+        gzv();
+        AppMethodBeat.o(194236);
         return;
       }
-      fsv();
+      gzw();
     }
-    AppMethodBeat.o(208268);
+    AppMethodBeat.o(194236);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class b
     implements Runnable
   {
@@ -349,15 +353,15 @@ public final class CaptureStickerHint
     
     public final void run()
     {
-      AppMethodBeat.i(208266);
-      this.IHQ.fsu();
-      AppMethodBeat.o(208266);
+      AppMethodBeat.i(194234);
+      this.NOJ.gzv();
+      AppMethodBeat.o(194234);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sticker.ui.view.CaptureStickerHint
  * JD-Core Version:    0.7.0.1
  */

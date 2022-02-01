@@ -6,23 +6,23 @@ import android.os.Looper;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.model.v;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.u;
 import com.tencent.mm.platformtools.af;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.dld;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.protocal.protobuf.eeq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.chatting.a.a;
 import com.tencent.mm.ui.chatting.a.b;
 
@@ -35,60 +35,60 @@ final class k$2
   {
     AppMethodBeat.i(36322);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/gallery/ImageGalleryViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/gallery/ImageGalleryViewHolder$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
     s locals;
-    dld localdld;
+    eeq localeeq;
     Intent localIntent;
     int i;
-    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof bv)))
+    if ((paramView.getTag() != null) && ((paramView.getTag() instanceof ca)))
     {
-      bv localbv = (bv)paramView.getTag();
-      com.tencent.mm.ui.chatting.a.a(a.a.JRG, localbv);
-      locals = u.Ia(localbv.field_imgPath);
-      localdld = locals.ixh;
-      if ((localdld == null) || (af.isNullOrNil(localdld.hET))) {
+      ca localca = (ca)paramView.getTag();
+      com.tencent.mm.ui.chatting.a.a(a.a.PcK, localca);
+      locals = u.QN(localca.field_imgPath);
+      localeeq = locals.jsw;
+      if ((localeeq == null) || (af.isNullOrNil(localeeq.iyZ))) {
         break label507;
       }
-      o.aNh();
-      paramView = t.HK(localbv.field_imgPath);
+      o.bhj();
+      paramView = t.Qx(localca.field_imgPath);
       localIntent = new Intent();
       localIntent.putExtra("KFromTimeLine", false);
-      localIntent.putExtra("KStremVideoUrl", localdld.hET);
-      localIntent.putExtra("KThumUrl", localdld.hEY);
+      localIntent.putExtra("KStremVideoUrl", localeeq.iyZ);
+      localIntent.putExtra("KThumUrl", localeeq.ize);
       localIntent.putExtra("KThumbPath", paramView);
-      localIntent.putExtra("KMediaId", "fakeid_" + localbv.field_msgId);
-      localIntent.putExtra("KMediaVideoTime", localdld.GBN);
-      localIntent.putExtra("KMediaTitle", localdld.hEV);
-      localIntent.putExtra("StreamWording", localdld.hEW);
-      localIntent.putExtra("StremWebUrl", localdld.hEX);
-      localObject = localbv.field_talker;
-      boolean bool = x.wb((String)localObject);
+      localIntent.putExtra("KMediaId", "fakeid_" + localca.field_msgId);
+      localIntent.putExtra("KMediaVideoTime", localeeq.LxJ);
+      localIntent.putExtra("KMediaTitle", localeeq.izb);
+      localIntent.putExtra("StreamWording", localeeq.izc);
+      localIntent.putExtra("StremWebUrl", localeeq.izd);
+      localObject = localca.field_talker;
+      boolean bool = ab.Eq((String)localObject);
       if (!bool) {
         break label464;
       }
-      paramView = bl.BM(localbv.field_content);
-      localIntent.putExtra("KSta_StremVideoAduxInfo", localdld.hEZ);
-      localIntent.putExtra("KSta_StremVideoPublishId", localdld.hFa);
+      paramView = bp.Ks(localca.field_content);
+      localIntent.putExtra("KSta_StremVideoAduxInfo", localeeq.izf);
+      localIntent.putExtra("KSta_StremVideoPublishId", localeeq.izg);
       localIntent.putExtra("KSta_SourceType", 1);
       if (!bool) {
         break label470;
       }
-      i = a.b.JRP.value;
+      i = a.b.PcT.value;
       label322:
       localIntent.putExtra("KSta_Scene", i);
       localIntent.putExtra("KSta_FromUserName", paramView);
       localIntent.putExtra("KSta_ChatName", (String)localObject);
-      localIntent.putExtra("KSta_MsgId", localbv.field_msgSvrId);
-      localIntent.putExtra("KSta_SnsStatExtStr", locals.dIA);
+      localIntent.putExtra("KSta_MsgId", localca.field_msgSvrId);
+      localIntent.putExtra("KSta_SnsStatExtStr", locals.ean);
       if (bool) {
-        localIntent.putExtra("KSta_ChatroomMembercount", r.zC((String)localObject));
+        localIntent.putExtra("KSta_ChatroomMembercount", v.Ie((String)localObject));
       }
-      if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxf, 0) <= 0) {
+      if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rOS, 0) <= 0) {
         break label480;
       }
-      d.b(this.Kpe.KkX.Kkw.getContext(), "sns", ".ui.SnsAdStreamVideoPlayUI", localIntent);
-      ae.i("MicroMsg.ImageGalleryViewHolder", "use new stream video play UI");
+      c.b(this.PBh.PwU.Pwv.getContext(), "sns", ".ui.SnsAdStreamVideoPlayUI", localIntent);
+      Log.i("MicroMsg.ImageGalleryViewHolder", "use new stream video play UI");
     }
     for (;;)
     {
@@ -99,27 +99,27 @@ final class k$2
       paramView = (View)localObject;
       break;
       label470:
-      i = a.b.JRO.value;
+      i = a.b.PcS.value;
       break label322;
       label480:
-      d.b(this.Kpe.KkX.Kkw.getContext(), "sns", ".ui.VideoAdPlayerUI", localIntent);
+      c.b(this.PBh.PwU.Pwv.getContext(), "sns", ".ui.VideoAdPlayerUI", localIntent);
       continue;
       label507:
-      if ((localdld != null) && (!bu.isNullOrNil(localdld.hEW)) && (!bu.isNullOrNil(localdld.hEX)))
+      if ((localeeq != null) && (!Util.isNullOrNil(localeeq.izc)) && (!Util.isNullOrNil(localeeq.izd)))
       {
-        ae.i("MicroMsg.ImageGalleryViewHolder", "moreBtn click,opening " + localdld.hEX);
+        Log.i("MicroMsg.ImageGalleryViewHolder", "moreBtn click,opening " + localeeq.izd);
         paramView = new Intent();
         localObject = new Bundle();
-        ((Bundle)localObject).putString("key_snsad_statextstr", locals.dIA);
+        ((Bundle)localObject).putString("key_snsad_statextstr", locals.ean);
         paramView.putExtra("jsapiargs", (Bundle)localObject);
-        paramView.putExtra("rawUrl", localdld.hEX);
+        paramView.putExtra("rawUrl", localeeq.izd);
         paramView.putExtra("useJs", true);
-        new aq(Looper.getMainLooper()).post(new Runnable()
+        new MMHandler(Looper.getMainLooper()).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(36321);
-            d.b(k.2.this.Kpe.KkX.Kkw.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+            c.b(k.2.this.PBh.PwU.Pwv.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
             AppMethodBeat.o(36321);
           }
         });

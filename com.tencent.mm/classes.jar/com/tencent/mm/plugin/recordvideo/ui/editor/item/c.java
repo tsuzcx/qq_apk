@@ -3,79 +3,79 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.dww;
-import com.tencent.mm.protocal.protobuf.rv;
-import com.tencent.mm.protocal.protobuf.sq;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.erc;
+import com.tencent.mm.protocal.protobuf.sy;
+import com.tencent.mm.protocal.protobuf.tv;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "type", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;)V", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "matrix", "Landroid/graphics/Matrix;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;Ljava/util/ArrayList;Landroid/graphics/Matrix;)V", "byteArray", "", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;[B)V", "bgColor", "", "getBgColor", "()I", "setBgColor", "(I)V", "captionList", "getCaptionList", "()Ljava/util/ArrayList;", "setCaptionList", "(Ljava/util/ArrayList;)V", "font", "", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "textColor", "getTextColor", "setTextColor", "getCurrentTransResult", "timeMs", "", "getShowCaptionAtTime", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protocal/protobuf/CaptionItemData;", "toString", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/CaptionItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "type", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;)V", "list", "Ljava/util/ArrayList;", "Lcom/tencent/mm/protocal/protobuf/CCTransResult;", "Lkotlin/collections/ArrayList;", "matrix", "Landroid/graphics/Matrix;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;Ljava/util/ArrayList;Landroid/graphics/Matrix;)V", "byteArray", "", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorDataType;[B)V", "bgColor", "", "getBgColor", "()I", "setBgColor", "(I)V", "captionList", "getCaptionList", "()Ljava/util/ArrayList;", "setCaptionList", "(Ljava/util/ArrayList;)V", "font", "", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "textColor", "getTextColor", "setTextColor", "getCurrentTransResult", "timeMs", "", "getShowCaptionAtTime", "isValid", "", "toProtoBuf", "Lcom/tencent/mm/protocal/protobuf/CaptionItemData;", "toString", "Companion", "plugin-recordvideo_release"})
 public final class c
   extends a
 {
-  public static final c.a ydH;
+  public static final c.a CeJ;
+  public ArrayList<sy> CeH;
+  public String CeI;
   public int bgColor;
   public int textColor;
-  public ArrayList<rv> ydF;
-  public String ydG;
   
   static
   {
-    AppMethodBeat.i(206913);
-    ydH = new c.a((byte)0);
-    AppMethodBeat.o(206913);
+    AppMethodBeat.i(237754);
+    CeJ = new c.a((byte)0);
+    AppMethodBeat.o(237754);
   }
   
   public c(d paramd)
   {
     super(paramd);
-    AppMethodBeat.i(206910);
-    this.ydF = new ArrayList();
-    AppMethodBeat.o(206910);
+    AppMethodBeat.i(237751);
+    this.CeH = new ArrayList();
+    AppMethodBeat.o(237751);
   }
   
-  public c(d paramd, ArrayList<rv> paramArrayList, Matrix paramMatrix)
+  public c(d paramd, ArrayList<sy> paramArrayList, Matrix paramMatrix)
   {
     super(paramd);
-    AppMethodBeat.i(206911);
-    this.ydF = new ArrayList();
-    this.ydF.clear();
-    this.ydF.addAll((Collection)paramArrayList);
-    this.gR.set(paramMatrix);
-    AppMethodBeat.o(206911);
+    AppMethodBeat.i(237752);
+    this.CeH = new ArrayList();
+    this.CeH.clear();
+    this.CeH.addAll((Collection)paramArrayList);
+    this.gT.set(paramMatrix);
+    AppMethodBeat.o(237752);
   }
   
   public c(d paramd, byte[] paramArrayOfByte)
   {
     super(paramd);
-    AppMethodBeat.i(206912);
-    this.ydF = new ArrayList();
+    AppMethodBeat.i(237753);
+    this.CeH = new ArrayList();
     try
     {
-      paramd = (com.tencent.mm.bw.a)new sq();
+      paramd = (com.tencent.mm.bw.a)new tv();
       try
       {
         paramd.parseFrom(paramArrayOfByte);
-        paramd = (sq)paramd;
+        paramd = (tv)paramd;
         if (paramd != null)
         {
-          this.ydF.clear();
-          this.ydF.addAll((Collection)paramd.Ggy);
-          paramArrayOfByte = this.gR;
-          dww localdww = paramd.GhB;
-          p.g(localdww, "captionData.matrix");
-          paramArrayOfByte.setValues(a(localdww));
-          this.bgColor = paramd.GhD;
-          this.textColor = paramd.GhC;
-          this.ydG = paramd.ydG;
-          ae.i("MicroMsg.CaptionItem", toString());
-          AppMethodBeat.o(206912);
+          this.CeH.clear();
+          this.CeH.addAll((Collection)paramd.Lbb);
+          paramArrayOfByte = this.gT;
+          erc localerc = paramd.Lce;
+          p.g(localerc, "captionData.matrix");
+          paramArrayOfByte.setValues(a(localerc));
+          this.bgColor = paramd.Lcg;
+          this.textColor = paramd.Lcf;
+          this.CeI = paramd.CeI;
+          Log.i("MicroMsg.CaptionItem", toString());
+          AppMethodBeat.o(237753);
           return;
         }
       }
@@ -83,67 +83,67 @@ public final class c
       {
         for (;;)
         {
-          ae.l("safeParser", "", new Object[] { paramd });
+          Log.printDebugStack("safeParser", "", new Object[] { paramd });
           paramd = null;
         }
-        AppMethodBeat.o(206912);
+        AppMethodBeat.o(237753);
         return;
       }
       return;
     }
     catch (IOException paramd)
     {
-      ae.printErrStackTrace("MicroMsg.CaptionItem", (Throwable)paramd, "LocationItem parse error", new Object[0]);
-      AppMethodBeat.o(206912);
+      Log.printErrStackTrace("MicroMsg.CaptionItem", (Throwable)paramd, "LocationItem parse error", new Object[0]);
+      AppMethodBeat.o(237753);
     }
   }
   
-  public final sq dLj()
+  public final sy Ii(long paramLong)
   {
-    AppMethodBeat.i(206907);
-    sq localsq = new sq();
-    localsq.Ggy.addAll((Collection)this.ydF);
-    localsq.GhB = f(this.gR);
-    localsq.GhD = this.bgColor;
-    localsq.GhC = this.textColor;
-    localsq.ydG = this.ydG;
-    AppMethodBeat.o(206907);
-    return localsq;
+    AppMethodBeat.i(237747);
+    Iterator localIterator = ((Iterable)this.CeH).iterator();
+    while (localIterator.hasNext())
+    {
+      sy localsy = (sy)localIterator.next();
+      if ((localsy.LaT <= paramLong) && (localsy.LaU >= paramLong))
+      {
+        AppMethodBeat.o(237747);
+        return localsy;
+      }
+    }
+    AppMethodBeat.o(237747);
+    return null;
+  }
+  
+  public final tv eMj()
+  {
+    AppMethodBeat.i(237748);
+    tv localtv = new tv();
+    localtv.Lbb.addAll((Collection)this.CeH);
+    localtv.Lce = f(this.gT);
+    localtv.Lcg = this.bgColor;
+    localtv.Lcf = this.textColor;
+    localtv.CeI = this.CeI;
+    AppMethodBeat.o(237748);
+    return localtv;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(206909);
-    Iterator localIterator = this.ydF.iterator();
+    AppMethodBeat.i(237750);
+    Iterator localIterator = this.CeH.iterator();
     while (localIterator.hasNext())
     {
-      rv localrv = (rv)localIterator.next();
-      new StringBuilder().append("").append("start:").append(localrv.Ggq).append(" end:").append(localrv.Ggr).append(" text:").append(localrv.Ggp.toString("UTF-8")).append('\n');
+      sy localsy = (sy)localIterator.next();
+      new StringBuilder().append("").append("start:").append(localsy.LaT).append(" end:").append(localsy.LaU).append(" text:").append(localsy.LaS.toString("UTF-8")).append('\n');
     }
-    AppMethodBeat.o(206909);
+    AppMethodBeat.o(237750);
     return "";
-  }
-  
-  public final rv zk(long paramLong)
-  {
-    AppMethodBeat.i(206906);
-    Iterator localIterator = ((Iterable)this.ydF).iterator();
-    while (localIterator.hasNext())
-    {
-      rv localrv = (rv)localIterator.next();
-      if ((localrv.Ggq <= paramLong) && (localrv.Ggr >= paramLong))
-      {
-        AppMethodBeat.o(206906);
-        return localrv;
-      }
-    }
-    AppMethodBeat.o(206906);
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.c
  * JD-Core Version:    0.7.0.1
  */

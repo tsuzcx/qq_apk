@@ -8,7 +8,7 @@ public final class a<T>
   implements b<T>
 {
   private Bitmap.Config aEF;
-  private Class<? extends T> aWK;
+  private Class<? extends T> aWC;
   
   public a(Class<? extends T> paramClass)
   {
@@ -17,27 +17,27 @@ public final class a<T>
   
   private a(Class<? extends T> paramClass, byte paramByte)
   {
-    this.aWK = paramClass;
+    this.aWC = paramClass;
     this.aEF = null;
   }
   
-  public final T rD()
+  public final T rG()
   {
     AppMethodBeat.i(157341);
     if (this.aEF == null)
     {
-      localObject = this.aWK.newInstance();
+      localObject = this.aWC.newInstance();
       AppMethodBeat.o(157341);
       return localObject;
     }
-    Object localObject = this.aWK.getConstructor(new Class[] { Bitmap.Config.class }).newInstance(new Object[] { this.aEF });
+    Object localObject = this.aWC.getConstructor(new Class[] { Bitmap.Config.class }).newInstance(new Object[] { this.aEF });
     AppMethodBeat.o(157341);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.davemorrissey.labs.subscaleview.a.a
  * JD-Core Version:    0.7.0.1
  */

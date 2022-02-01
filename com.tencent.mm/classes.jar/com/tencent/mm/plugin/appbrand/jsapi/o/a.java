@@ -1,74 +1,82 @@
 package com.tencent.mm.plugin.appbrand.jsapi.o;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.s.p.c;
+import java.util.HashMap;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric;", "", "()V", "endTime", "", "getEndTime", "()J", "setEndTime", "(J)V", "extraInfo", "Lorg/json/JSONObject;", "name", "", "getName", "()Ljava/lang/String;", "setName", "(Ljava/lang/String;)V", "startTime", "getStartTime", "setStartTime", "dispatch", "", "receiver", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "putExtraInfo", "value", "Companion", "plugin-appbrand-integration_release"})
 public final class a
+  extends bc
 {
-  @Deprecated
-  public static final a lhf;
-  public long endTime;
-  private final JSONObject lhe;
-  private String name;
-  public long startTime;
+  private static final int CTRL_INDEX = 530;
+  private static final String NAME = "onLocalServiceEvent";
+  private static a mga;
   
   static
   {
-    AppMethodBeat.i(162176);
-    lhf = new a((byte)0);
-    AppMethodBeat.o(162176);
+    AppMethodBeat.i(144183);
+    mga = new a();
+    AppMethodBeat.o(144183);
   }
   
-  public a()
+  public static void a(f paramf, p.c paramc)
   {
-    AppMethodBeat.i(162175);
-    this.name = "";
-    this.lhe = new JSONObject();
-    AppMethodBeat.o(162175);
+    AppMethodBeat.i(144178);
+    a(paramf, paramc, "found");
+    AppMethodBeat.o(144178);
   }
   
-  public final void c(r paramr)
+  private static void a(f paramf, p.c paramc, String paramString)
   {
-    AppMethodBeat.i(162174);
-    p.h(paramr, "receiver");
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("name", this.name);
-    localJSONObject.put("startTime", this.startTime);
-    localJSONObject.put("endTime", this.endTime);
-    localJSONObject.put("extraInfo", this.lhe);
-    ae.i("MicroMsg.AppBrand.EventOnNewPerformanceMetric", "dispatch ".concat(String.valueOf(localJSONObject)));
-    paramr.cb("onNewPerformanceMetric", localJSONObject.toString());
-    AppMethodBeat.o(162174);
+    try
+    {
+      AppMethodBeat.i(144182);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("event", paramString);
+      if ((TextUtils.equals(paramString, "found")) || (TextUtils.equals(paramString, "lost")) || (TextUtils.equals(paramString, "resolveFail")))
+      {
+        localHashMap.put("serviceType", paramc.iBb);
+        localHashMap.put("serviceName", paramc.serviceName);
+        if (!TextUtils.equals(paramString, "resolveFail"))
+        {
+          localHashMap.put("ip", paramc.ip);
+          localHashMap.put("port", Integer.valueOf(paramc.port));
+          localHashMap.put("attributes", paramc.njl);
+        }
+      }
+      mga.L(localHashMap).h(paramf).bEo();
+      AppMethodBeat.o(144182);
+      return;
+    }
+    finally {}
   }
   
-  public final void r(String paramString, Object paramObject)
+  public static void b(f paramf, p.c paramc)
   {
-    AppMethodBeat.i(162173);
-    p.h(paramString, "name");
-    p.h(paramObject, "value");
-    this.lhe.put(paramString, paramObject);
-    AppMethodBeat.o(162173);
+    AppMethodBeat.i(144179);
+    a(paramf, paramc, "lost");
+    AppMethodBeat.o(144179);
   }
   
-  public final void setName(String paramString)
+  public static void c(f paramf, p.c paramc)
   {
-    AppMethodBeat.i(162172);
-    p.h(paramString, "<set-?>");
-    this.name = paramString;
-    AppMethodBeat.o(162172);
+    AppMethodBeat.i(144180);
+    a(paramf, paramc, "resolveFail");
+    AppMethodBeat.o(144180);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/perf/EventOnNewPerformanceMetric$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
-  static final class a {}
+  public static void t(f paramf)
+  {
+    AppMethodBeat.i(144181);
+    a(paramf, null, "stopScan");
+    AppMethodBeat.o(144181);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.o.a
  * JD-Core Version:    0.7.0.1
  */

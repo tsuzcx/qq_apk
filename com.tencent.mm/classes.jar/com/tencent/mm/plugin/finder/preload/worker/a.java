@@ -1,48 +1,47 @@
 package com.tencent.mm.plugin.finder.preload.worker;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.c;
 import com.tencent.mm.loader.a.b;
-import com.tencent.mm.loader.d;
-import com.tencent.mm.plugin.finder.loader.g;
-import com.tencent.mm.plugin.finder.loader.i;
+import com.tencent.mm.plugin.finder.loader.k;
+import com.tencent.mm.plugin.finder.loader.m;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.am;
+import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.storage.FeedData;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.r;
+import com.tencent.mm.plugin.finder.storage.x;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.o;
-import d.v;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.o;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/worker/ImagePreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/worker/IPreloadWorker;", "()V", "onClearAll", "", "onMediaFocus", "mediaId", "", "isFocused", "", "onPreloadStart", "onPreloadStop", "onRelease", "preload", "centerFeed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "dataList", "", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "source", "", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/preload/worker/ImagePreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/worker/IPreloadWorker;", "()V", "onClearAll", "", "onMediaFocus", "mediaId", "", "isFocused", "", "onPreloadStart", "onPreloadStop", "onRelease", "preload", "centerFeed", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "dataList", "", "Lkotlin/Pair;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "source", "", "Companion", "plugin-finder_release"})
 public final class a
 {
-  public static final a svr;
+  public static final a uVG;
   
   static
   {
-    AppMethodBeat.i(203599);
-    svr = new a((byte)0);
-    AppMethodBeat.o(203599);
+    AppMethodBeat.i(249613);
+    uVG = new a((byte)0);
+    AppMethodBeat.o(249613);
   }
   
-  public static void a(BaseFinderFeed paramBaseFinderFeed, List<o<am, List<bvz>>> paramList)
+  public static void a(FeedData paramFeedData, List<o<bo, List<cjl>>> paramList)
   {
-    AppMethodBeat.i(203597);
-    p.h(paramBaseFinderFeed, "centerFeed");
+    AppMethodBeat.i(249611);
+    p.h(paramFeedData, "centerFeed");
     p.h(paramList, "dataList");
     if (paramList.isEmpty())
     {
-      AppMethodBeat.o(203597);
+      AppMethodBeat.o(249611);
       return;
     }
     Object localObject1 = paramList.iterator();
@@ -56,16 +55,16 @@ public final class a
         localObject2 = ((o)localObject2).first;
         if (localObject2 == null)
         {
-          paramBaseFinderFeed = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-          AppMethodBeat.o(203597);
-          throw paramBaseFinderFeed;
+          paramFeedData = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
+          AppMethodBeat.o(249611);
+          throw paramFeedData;
         }
-        if (((BaseFinderFeed)localObject2).feedObject.getExpectId() == paramBaseFinderFeed.feedObject.getExpectId())
+        if (((BaseFinderFeed)localObject2).feedObject.getExpectId() == paramFeedData.getExpectId())
         {
           j = 1;
-          label128:
+          label125:
           if (j == 0) {
-            break label147;
+            break label144;
           }
         }
       }
@@ -73,27 +72,27 @@ public final class a
     for (;;)
     {
       if (i >= 0) {
-        break label159;
+        break label156;
       }
-      AppMethodBeat.o(203597);
+      AppMethodBeat.o(249611);
       return;
       j = 0;
-      break label128;
-      label147:
+      break label125;
+      label144:
       i += 1;
       break;
       i = -1;
     }
-    label159:
+    label156:
     i = Math.max(0, i - 1);
     localObject1 = new StringBuilder();
     Object localObject2 = new LinkedList();
     paramList = (Iterable)paramList.subList(i, paramList.size());
-    paramBaseFinderFeed = (Collection)new ArrayList();
+    paramFeedData = (Collection)new ArrayList();
     paramList = paramList.iterator();
     Object localObject3;
     Object localObject4;
-    label320:
+    label317:
     while (paramList.hasNext())
     {
       localObject3 = paramList.next();
@@ -103,91 +102,91 @@ public final class a
         localObject4 = ((o)localObject4).first;
         if (localObject4 == null)
         {
-          paramBaseFinderFeed = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-          AppMethodBeat.o(203597);
-          throw paramBaseFinderFeed;
+          paramFeedData = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
+          AppMethodBeat.o(249611);
+          throw paramFeedData;
         }
         if (((BaseFinderFeed)localObject4).feedObject.getMediaType() != 2) {}
       }
       for (i = 1;; i = 0)
       {
         if (i == 0) {
-          break label320;
+          break label317;
         }
-        paramBaseFinderFeed.add(localObject3);
+        paramFeedData.add(localObject3);
         break;
       }
     }
-    paramList = ((Iterable)paramBaseFinderFeed).iterator();
+    paramList = ((Iterable)paramFeedData).iterator();
     i = 0;
     while (paramList.hasNext())
     {
-      paramBaseFinderFeed = paramList.next();
+      paramFeedData = paramList.next();
       if (i < 0) {
-        d.a.j.gkd();
+        kotlin.a.j.hxH();
       }
-      paramBaseFinderFeed = (o)paramBaseFinderFeed;
+      paramFeedData = (o)paramFeedData;
       if (i < 4)
       {
         localObject3 = new StringBuilder("feed=");
-        localObject4 = paramBaseFinderFeed.first;
+        localObject4 = paramFeedData.first;
         if (localObject4 == null)
         {
-          paramBaseFinderFeed = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
-          AppMethodBeat.o(203597);
-          throw paramBaseFinderFeed;
+          paramFeedData = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.model.BaseFinderFeed");
+          AppMethodBeat.o(249611);
+          throw paramFeedData;
         }
-        ((StringBuilder)localObject1).append(c.rp(((BaseFinderFeed)localObject4).feedObject.getFeedObject().id) + " mediaSize=" + ((List)paramBaseFinderFeed.second).size() + " | ");
-        localObject3 = ((Iterable)((List)paramBaseFinderFeed.second).subList(0, Math.min(2, ((List)paramBaseFinderFeed.second).size()))).iterator();
+        ((StringBuilder)localObject1).append(com.tencent.mm.ac.d.zs(((BaseFinderFeed)localObject4).feedObject.getFeedObject().id) + " mediaSize=" + ((List)paramFeedData.second).size() + " | ");
+        localObject3 = ((Iterable)((List)paramFeedData.second).subList(0, Math.min(2, ((List)paramFeedData.second).size()))).iterator();
         if (((Iterator)localObject3).hasNext())
         {
-          localObject4 = (bvz)((Iterator)localObject3).next();
-          ((LinkedList)localObject2).add(new g((bvz)localObject4, r.sJu));
-          paramBaseFinderFeed = ((bvz)localObject4).mediaId;
-          if (paramBaseFinderFeed != null)
+          localObject4 = (cjl)((Iterator)localObject3).next();
+          ((LinkedList)localObject2).add(new k((cjl)localObject4, x.vEn, null, null, 12));
+          paramFeedData = ((cjl)localObject4).mediaId;
+          if (paramFeedData != null)
           {
-            localObject4 = ((bvz)localObject4).mediaId;
+            localObject4 = ((cjl)localObject4).mediaId;
             if (localObject4 != null) {
               j = ((String)localObject4).length();
             }
           }
-          label572:
-          for (paramBaseFinderFeed = paramBaseFinderFeed.subSequence(0, d.k.j.lx(5, j));; paramBaseFinderFeed = null)
+          label573:
+          for (paramFeedData = paramFeedData.subSequence(0, kotlin.k.j.na(5, j));; paramFeedData = null)
           {
-            ((StringBuilder)localObject1).append(paramBaseFinderFeed).append(",");
+            ((StringBuilder)localObject1).append(paramFeedData).append(",");
             break;
             j = 0;
-            break label572;
+            break label573;
           }
         }
         ((StringBuilder)localObject1).append("\n");
       }
       i += 1;
     }
-    paramBaseFinderFeed = ((Iterable)localObject2).iterator();
-    while (paramBaseFinderFeed.hasNext())
+    paramFeedData = ((Iterable)localObject2).iterator();
+    while (paramFeedData.hasNext())
     {
-      paramList = (g)paramBaseFinderFeed.next();
-      localObject3 = i.srW;
-      i.cEn().bI(paramList).aqX();
+      paramList = (k)paramFeedData.next();
+      localObject3 = m.uJa;
+      m.djY().bQ(paramList).aJw();
     }
-    ae.i("ImagePreloadWorker", "[preload] size=" + ((LinkedList)localObject2).size() + ' ' + localObject1);
-    AppMethodBeat.o(203597);
+    Log.i("ImagePreloadWorker", "[preload] size=" + ((LinkedList)localObject2).size() + ' ' + localObject1);
+    AppMethodBeat.o(249611);
   }
   
-  public static void aiF(String paramString)
+  public static void auu(String paramString)
   {
-    AppMethodBeat.i(203598);
+    AppMethodBeat.i(249612);
     p.h(paramString, "mediaId");
-    AppMethodBeat.o(203598);
+    AppMethodBeat.o(249612);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/worker/ImagePreloadWorker$Companion;", "", "()V", "EVER_FEED_COUNT", "", "PRELOAD_FEED_COUNT", "PRELOAD_FEED_PRE_COUNT", "TAG", "", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/preload/worker/ImagePreloadWorker$Companion;", "", "()V", "EVER_FEED_COUNT", "", "PRELOAD_FEED_COUNT", "PRELOAD_FEED_PRE_COUNT", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.preload.worker.a
  * JD-Core Version:    0.7.0.1
  */

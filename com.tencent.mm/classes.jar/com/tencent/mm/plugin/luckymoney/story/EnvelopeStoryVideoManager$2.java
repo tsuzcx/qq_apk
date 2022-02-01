@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.i.c;
 import com.tencent.mm.i.d;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 import java.io.ByteArrayOutputStream;
 
 final class EnvelopeStoryVideoManager$2
@@ -16,9 +16,9 @@ final class EnvelopeStoryVideoManager$2
   public final int a(String paramString, int paramInt, c paramc, d paramd, boolean paramBoolean)
   {
     AppMethodBeat.i(182456);
-    ae.i("MicroMsg.EnvelopeStoryVideoManager", "task callback: %s", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.EnvelopeStoryVideoManager", "task callback: %s", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt != 0) {
-      o.deleteFile(this.val$path);
+      s.deleteFile(this.val$path);
     }
     AppMethodBeat.o(182456);
     return 0;
@@ -33,7 +33,7 @@ final class EnvelopeStoryVideoManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.EnvelopeStoryVideoManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
 {
-  private static final SparseArray<f> EFL;
-  private static volatile f EFM;
+  private static final SparseArray<f> Jvo;
+  private static volatile f Jvp;
   
   static
   {
     AppMethodBeat.i(82017);
-    EFL = new SparseArray();
-    EFM = null;
+    Jvo = new SparseArray();
+    Jvp = null;
     AppMethodBeat.o(82017);
   }
   
-  public static f Yt(int paramInt)
+  public static f ahd(int paramInt)
   {
     AppMethodBeat.i(82015);
     try
     {
-      if (EFL.get(paramInt) == null)
+      if (Jvo.get(paramInt) == null)
       {
         localf = new f(paramInt);
-        EFL.put(paramInt, localf);
+        Jvo.put(paramInt, localf);
       }
-      f localf = (f)EFL.get(paramInt);
-      EFM = localf;
+      f localf = (f)Jvo.get(paramInt);
+      Jvp = localf;
       return localf;
     }
     finally
@@ -40,19 +40,19 @@ public final class g
   public static void detach()
   {
     AppMethodBeat.i(82016);
-    ae.i("MicroMsg.MsgHandlerHolder", "detach");
+    Log.i("MicroMsg.MsgHandlerHolder", "detach");
     int i = 0;
     try
     {
-      while (i < EFL.size())
+      while (i < Jvo.size())
       {
-        EFL.valueAt(i);
-        EFL.keyAt(i);
+        Jvo.valueAt(i);
+        Jvo.keyAt(i);
         i += 1;
       }
-      EFL.clear();
-      if (EFM != null) {
-        EFM = null;
+      Jvo.clear();
+      if (Jvp != null) {
+        Jvp = null;
       }
       AppMethodBeat.o(82016);
       return;
@@ -64,13 +64,13 @@ public final class g
   }
   
   @Deprecated
-  public static f eYA()
+  public static f ghF()
   {
     AppMethodBeat.i(82014);
-    if (EFM == null) {
-      EFM = new f(0);
+    if (Jvp == null) {
+      Jvp = new f(0);
     }
-    f localf = EFM;
+    f localf = Jvp;
     AppMethodBeat.o(82014);
     return localf;
   }

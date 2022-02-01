@@ -3,28 +3,28 @@ package com.tencent.mm.ui.tools.b;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 
 public final class b
   extends a
 {
-  private String LiG;
-  public int LiH = 0;
-  public int LiI = 0;
-  public int LiJ = 0;
-  private a LiK;
+  private String QxF;
+  public int QxG = 0;
+  public int QxH = 0;
+  public int QxI = 0;
+  private a QxJ;
   private int mHeight = 2048;
   public int mSize = 104857600;
   private int mWidth = 2048;
   
   private b(String paramString)
   {
-    this.LiG = paramString;
+    this.QxF = paramString;
   }
   
-  public static b aYR(String paramString)
+  public static b bnW(String paramString)
   {
     AppMethodBeat.i(143300);
     paramString = new b(paramString);
@@ -35,34 +35,34 @@ public final class b
   public final void a(a parama)
   {
     AppMethodBeat.i(143301);
-    this.LiK = parama;
-    cYX();
+    this.QxJ = parama;
+    dSw();
     AppMethodBeat.o(143301);
   }
   
-  public final b afC(int paramInt)
+  public final b aop(int paramInt)
   {
     this.mWidth = paramInt;
     this.mHeight = paramInt;
     return this;
   }
   
-  protected final int bgQ()
+  protected final int bCj()
   {
     AppMethodBeat.i(143302);
-    if (bu.isNullOrNil(this.LiG)) {
-      ae.w("MicroMsg.ImageBoundaryCheck", "dz[check image but path is null or nil]");
+    if (Util.isNullOrNil(this.QxF)) {
+      Log.w("MicroMsg.ImageBoundaryCheck", "dz[check image but path is null or nil]");
     }
-    this.LiH = ((int)o.aZR(this.LiG));
-    String str = this.LiG;
+    this.QxG = ((int)s.boW(this.QxF));
+    String str = this.QxF;
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inJustDecodeBounds = true;
     MMBitmapFactory.decodeFile(str, localOptions);
-    this.LiI = localOptions.outWidth;
-    this.LiJ = localOptions.outHeight;
-    if (this.LiH <= this.mSize)
+    this.QxH = localOptions.outWidth;
+    this.QxI = localOptions.outHeight;
+    if (this.QxG <= this.mSize)
     {
-      if (this.LiH < 0)
+      if (this.QxG < 0)
       {
         i = 1;
         if (i == 0) {
@@ -71,19 +71,19 @@ public final class b
       }
     }
     else {
-      ae.d("MicroMsg.ImageBoundaryCheck", "dz[over size] size = %d", new Object[] { Integer.valueOf(this.LiH) });
+      Log.d("MicroMsg.ImageBoundaryCheck", "dz[over size] size = %d", new Object[] { Integer.valueOf(this.QxG) });
     }
     label206:
     for (int i = 0;; i = 1)
     {
-      if ((this.LiI > this.mWidth) || (this.LiJ > this.mHeight))
+      if ((this.QxH > this.mWidth) || (this.QxI > this.mHeight))
       {
-        ae.d("MicroMsg.ImageBoundaryCheck", "dz[over width or height] width = %d, height = %d", new Object[] { Integer.valueOf(this.LiI), Integer.valueOf(this.LiJ) });
+        Log.d("MicroMsg.ImageBoundaryCheck", "dz[over width or height] width = %d, height = %d", new Object[] { Integer.valueOf(this.QxH), Integer.valueOf(this.QxI) });
         i = 0;
       }
       if (i != 0)
       {
-        ae.i("MicroMsg.ImageBoundaryCheck", "dz[status ok]");
+        Log.i("MicroMsg.ImageBoundaryCheck", "dz[status ok]");
         AppMethodBeat.o(143302);
         return 0;
         i = 0;
@@ -94,26 +94,26 @@ public final class b
     }
   }
   
-  protected final void cYX()
+  protected final void dSw()
   {
     AppMethodBeat.i(143303);
-    if (this.LiK == null)
+    if (this.QxJ == null)
     {
-      ae.w("MicroMsg.ImageBoundaryCheck", "dz[callback is null]");
+      Log.w("MicroMsg.ImageBoundaryCheck", "dz[callback is null]");
       AppMethodBeat.o(143303);
       return;
     }
-    switch (bgQ())
+    switch (bCj())
     {
     }
     for (;;)
     {
       AppMethodBeat.o(143303);
       return;
-      this.LiK.a(this);
+      this.QxJ.a(this);
       AppMethodBeat.o(143303);
       return;
-      this.LiK.cjh();
+      this.QxJ.cHf();
     }
   }
   
@@ -121,12 +121,12 @@ public final class b
   {
     public abstract void a(b paramb);
     
-    public abstract void cjh();
+    public abstract void cHf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.tools.b.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,15 @@
 package com.tencent.mm.plugin.game.luggage.e;
 
-import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
+import com.tencent.mm.plugin.webview.luggage.b.n;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.o;
 
 public final class b
-  extends WXWebpageObject
+  extends o
 {
-  public String bVF;
-  public String desc;
-  public String iconUrl;
-  public String jumpUrl;
-  public String ufC;
-  
-  public final int type()
+  public b(g paramg, n paramn)
   {
-    return 69;
+    super(paramg, paramn);
   }
 }
 

@@ -13,41 +13,41 @@ public class AppCompatCheckBox
   extends CheckBox
   implements r
 {
-  private final f ajW = new f(this);
+  private final f akj = new f(this);
   
   public AppCompatCheckBox(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130968744);
+    this(paramContext, paramAttributeSet, 2130968759);
   }
   
   public AppCompatCheckBox(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.ad(paramContext), paramAttributeSet, paramInt);
-    this.ajW.a(paramAttributeSet, paramInt);
+    super(aw.ae(paramContext), paramAttributeSet, paramInt);
+    this.akj.a(paramAttributeSet, paramInt);
   }
   
   public int getCompoundPaddingLeft()
   {
     int j = super.getCompoundPaddingLeft();
     int i = j;
-    if (this.ajW != null) {
-      i = this.ajW.bH(j);
+    if (this.akj != null) {
+      i = this.akj.bI(j);
     }
     return i;
   }
   
   public ColorStateList getSupportButtonTintList()
   {
-    if (this.ajW != null) {
-      return this.ajW.ajY;
+    if (this.akj != null) {
+      return this.akj.akl;
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportButtonTintMode()
   {
-    if (this.ajW != null) {
-      return this.ajW.ajZ;
+    if (this.akj != null) {
+      return this.akj.akm;
     }
     return null;
   }
@@ -60,22 +60,22 @@ public class AppCompatCheckBox
   public void setButtonDrawable(Drawable paramDrawable)
   {
     super.setButtonDrawable(paramDrawable);
-    if (this.ajW != null) {
-      this.ajW.iZ();
+    if (this.akj != null) {
+      this.akj.ji();
     }
   }
   
   public void setSupportButtonTintList(ColorStateList paramColorStateList)
   {
-    if (this.ajW != null) {
-      this.ajW.setSupportButtonTintList(paramColorStateList);
+    if (this.akj != null) {
+      this.akj.setSupportButtonTintList(paramColorStateList);
     }
   }
   
   public void setSupportButtonTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.ajW != null) {
-      this.ajW.setSupportButtonTintMode(paramMode);
+    if (this.akj != null) {
+      this.akj.setSupportButtonTintMode(paramMode);
     }
   }
 }

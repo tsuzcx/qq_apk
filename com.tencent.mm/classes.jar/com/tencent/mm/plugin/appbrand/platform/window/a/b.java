@@ -8,146 +8,155 @@ import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.plugin.appbrand.platform.window.a;
 import com.tencent.mm.plugin.appbrand.platform.window.d.b;
 import com.tencent.mm.plugin.appbrand.platform.window.d.c;
 import com.tencent.mm.plugin.appbrand.platform.window.e.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 final class b
-  extends com.tencent.mm.plugin.appbrand.platform.window.a
+  extends a
 {
-  private final d.c mtQ;
-  private int mtR;
-  private WindowManager.LayoutParams mtS;
+  private int nEA;
+  private WindowManager.LayoutParams nEB;
+  private final d.c nEy;
+  private int nEz;
   
   b(final o paramo, d.b paramb)
   {
     super(paramo, paramb);
-    AppMethodBeat.i(207971);
-    this.mtQ = new d.c()
+    AppMethodBeat.i(219575);
+    this.nEA = -1;
+    this.nEy = new d.c()
     {
       public final void a(e.b paramAnonymousb)
       {
-        AppMethodBeat.i(207970);
-        paramo.bxN().a(paramAnonymousb, null);
-        AppMethodBeat.o(207970);
+        AppMethodBeat.i(219574);
+        paramo.bTY().a(paramAnonymousb, null);
+        AppMethodBeat.o(219574);
       }
     };
-    AppMethodBeat.o(207971);
+    AppMethodBeat.o(219575);
   }
   
   private Activity getActivity()
   {
-    AppMethodBeat.i(207972);
-    Activity localActivity = com.tencent.mm.sdk.f.a.jw(((o)this.jDa).mContext);
-    AppMethodBeat.o(207972);
+    AppMethodBeat.i(219576);
+    Activity localActivity = AndroidContextUtil.castActivityOrNull(((o)this.kEb).mContext);
+    AppMethodBeat.o(219576);
     return localActivity;
   }
   
-  public final void O(View paramView, int paramInt)
+  public final void N(View paramView, int paramInt)
   {
-    AppMethodBeat.i(207974);
-    super.O(paramView, paramInt);
+    AppMethodBeat.i(219578);
+    super.N(paramView, paramInt);
     paramView = getActivity();
     ViewGroup localViewGroup;
     if (paramView != null)
     {
       localViewGroup = (ViewGroup)paramView.getWindow().getDecorView();
-      if (this.mtz == null) {
-        this.mtR = localViewGroup.getSystemUiVisibility();
+      if (this.nEh == null) {
+        this.nEz = localViewGroup.getSystemUiVisibility();
       }
-      if (d.lB(19))
+      if (d.oE(19))
       {
         localViewGroup.setSystemUiVisibility(2);
-        if (this.mtz == null)
+        if (this.nEh == null)
         {
-          this.mtS = new WindowManager.LayoutParams();
-          this.mtS.copyFrom(paramView.getWindow().getAttributes());
+          this.nEB = new WindowManager.LayoutParams();
+          this.nEB.copyFrom(paramView.getWindow().getAttributes());
         }
         paramView.getWindow().addFlags(1024);
         if (Build.VERSION.SDK_INT >= 28) {
           paramView.getWindow().getAttributes().layoutInDisplayCutoutMode = 2;
         }
-        rM(paramInt);
+        if (this.nEh == null) {
+          this.nEA = paramView.getRequestedOrientation();
+        }
+        vH(paramInt);
       }
     }
     for (;;)
     {
-      bxA();
-      this.mtz = null;
-      AppMethodBeat.o(207974);
+      bTL();
+      this.nEh = null;
+      AppMethodBeat.o(219578);
       return;
       localViewGroup.setSystemUiVisibility(4102);
       break;
-      ae.e("Luggage.ActivityWindowFullscreenImpl", "enterFullscreen, get NULL activity");
-      if (this.mtz == null)
+      Log.e("Luggage.ActivityWindowFullscreenImpl", "enterFullscreen, get NULL activity");
+      if (this.nEh == null)
       {
-        this.mtS = null;
-        this.mtR = 0;
+        this.nEA = -1;
+        this.nEB = null;
+        this.nEz = 0;
       }
     }
   }
   
-  public final boolean aYo()
+  public final boolean btC()
   {
-    AppMethodBeat.i(207975);
-    boolean bool = this.mtA;
-    if (super.aYo())
+    AppMethodBeat.i(219579);
+    boolean bool = this.nEi;
+    if (super.btC())
     {
       Activity localActivity = getActivity();
       if ((localActivity == null) || (localActivity.isFinishing()) || (localActivity.isDestroyed())) {
-        ae.e("Luggage.ActivityWindowFullscreenImpl", "exitFullscreen activity(%s) destroyed", new Object[] { localActivity });
+        Log.e("Luggage.ActivityWindowFullscreenImpl", "exitFullscreen activity(%s) destroyed", new Object[] { localActivity });
       }
       for (;;)
       {
-        bxB();
-        AppMethodBeat.o(207975);
+        bTM();
+        AppMethodBeat.o(219579);
         return true;
-        ((ViewGroup)localActivity.getWindow().getDecorView()).setSystemUiVisibility(this.mtR);
+        ((ViewGroup)localActivity.getWindow().getDecorView()).setSystemUiVisibility(this.nEz);
         localActivity.getWindow().clearFlags(1024);
-        if (this.mtS != null) {
-          localActivity.getWindow().setAttributes(this.mtS);
+        if (this.nEB != null) {
+          localActivity.getWindow().setAttributes(this.nEB);
         }
-        this.mtQ.a(e.b.vh(-1));
+        this.nEy.a(e.b.yZ(this.nEA));
+        this.nEA = -1;
       }
     }
     if (bool)
     {
-      this.mtA = false;
-      bxB();
-      AppMethodBeat.o(207975);
+      this.nEi = false;
+      bTM();
+      AppMethodBeat.o(219579);
       return true;
     }
-    AppMethodBeat.o(207975);
+    AppMethodBeat.o(219579);
     return false;
   }
   
-  public final void rM(int paramInt)
+  public final void vH(int paramInt)
   {
-    AppMethodBeat.i(207973);
-    this.mtA = true;
+    AppMethodBeat.i(219577);
+    this.nEi = true;
     switch (paramInt)
     {
     default: 
-      this.mtQ.a(e.b.vh(9));
-      AppMethodBeat.o(207973);
+      this.nEy.a(e.b.yZ(9));
+      AppMethodBeat.o(219577);
       return;
     case 90: 
-      this.mtQ.a(e.b.vh(0));
-      AppMethodBeat.o(207973);
+      this.nEy.a(e.b.yZ(0));
+      AppMethodBeat.o(219577);
       return;
     case -90: 
-      this.mtQ.a(e.b.vh(8));
-      AppMethodBeat.o(207973);
+      this.nEy.a(e.b.yZ(8));
+      AppMethodBeat.o(219577);
       return;
     }
-    this.mtQ.a(e.b.vh(1));
-    AppMethodBeat.o(207973);
+    this.nEy.a(e.b.yZ(1));
+    AppMethodBeat.o(219577);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.a.b
  * JD-Core Version:    0.7.0.1
  */

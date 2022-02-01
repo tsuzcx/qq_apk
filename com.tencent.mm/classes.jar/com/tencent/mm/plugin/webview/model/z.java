@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cot;
-import com.tencent.mm.protocal.protobuf.cou;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dgs;
+import com.tencent.mm.protocal.protobuf.dgt;
 
 public final class z
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f gCo;
-  public final b rr;
+  private i heq;
+  public final d rr;
   
   public z(String paramString)
   {
     AppMethodBeat.i(78921);
-    b.a locala = new b.a();
-    locala.hQF = new cot();
-    locala.hQG = new cou();
+    d.a locala = new d.a();
+    locala.iLN = new dgs();
+    locala.iLO = new dgt();
     locala.uri = "/cgi-bin/mmbiz-bin/qrconnect_authorize";
     locala.funcId = 2543;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ((cot)this.rr.hQD.hQJ).HqI = paramString;
+    this.rr = locala.aXF();
+    ((dgs)this.rr.iLK.iLR).Mzp = paramString;
     AppMethodBeat.o(78921);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(78923);
-    this.gCo = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.heq = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(78923);
     return i;
   }
@@ -48,10 +48,10 @@ public final class z
     return 2543;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(78922);
-    this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(78922);
   }
 }

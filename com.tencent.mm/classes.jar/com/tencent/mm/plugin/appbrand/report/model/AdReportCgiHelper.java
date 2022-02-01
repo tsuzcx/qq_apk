@@ -8,19 +8,20 @@ import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.sns.b.a;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class AdReportCgiHelper
 {
   public static void a(int paramInt, String paramString, a parama)
   {
     AppMethodBeat.i(48080);
-    if (ak.cpe())
+    if (MMApplicationContext.isMMProcess())
     {
-      ar(paramInt, paramString);
+      au(paramInt, paramString);
       if (parama != null)
       {
         parama.onDone();
@@ -32,16 +33,16 @@ public final class AdReportCgiHelper
       AdReportCgiParams localAdReportCgiParams = new AdReportCgiParams();
       AdReportCgiParams.a(localAdReportCgiParams, paramInt);
       AdReportCgiParams.a(localAdReportCgiParams, paramString);
-      XIPCInvoker.a("com.tencent.mm", localAdReportCgiParams, b.class, new d() {});
+      XIPCInvoker.a(MainProcessIPCService.dkO, localAdReportCgiParams, b.class, new d() {});
     }
     AppMethodBeat.o(48080);
   }
   
-  static void ar(int paramInt, String paramString)
+  static void au(int paramInt, String paramString)
   {
     AppMethodBeat.i(48081);
-    if (g.ab(a.class) != null) {
-      ((a)g.ab(a.class)).p(paramInt, paramString, (int)bu.aRi());
+    if (g.af(a.class) != null) {
+      ((a)g.af(a.class)).r(paramInt, paramString, (int)Util.nowSecond());
     }
     AppMethodBeat.o(48081);
   }
@@ -50,8 +51,8 @@ public final class AdReportCgiHelper
     implements Parcelable
   {
     public static final Parcelable.Creator<AdReportCgiParams> CREATOR;
-    private int guD;
-    private String mxd;
+    private int hhs;
+    private String nIh;
     
     static
     {
@@ -65,8 +66,8 @@ public final class AdReportCgiHelper
     protected AdReportCgiParams(Parcel paramParcel)
     {
       AppMethodBeat.i(48076);
-      this.guD = paramParcel.readInt();
-      this.mxd = paramParcel.readString();
+      this.hhs = paramParcel.readInt();
+      this.nIh = paramParcel.readString();
       AppMethodBeat.o(48076);
     }
     
@@ -78,8 +79,8 @@ public final class AdReportCgiHelper
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(48077);
-      paramParcel.writeInt(this.guD);
-      paramParcel.writeString(this.mxd);
+      paramParcel.writeInt(this.hhs);
+      paramParcel.writeString(this.nIh);
       AppMethodBeat.o(48077);
     }
   }

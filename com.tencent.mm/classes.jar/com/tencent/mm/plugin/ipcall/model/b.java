@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.ipcall.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kj;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.ky;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
 
 public final class b
 {
-  private static c uVU;
+  private static IListener yov;
   
   static
   {
     AppMethodBeat.i(25337);
-    uVU = new c() {};
+    yov = new IListener() {};
     AppMethodBeat.o(25337);
   }
   
   public static void init()
   {
     AppMethodBeat.i(25334);
-    a.IvT.c(uVU);
+    EventCenter.instance.addListener(yov);
     AppMethodBeat.o(25334);
   }
   
   public static void release()
   {
     AppMethodBeat.i(25335);
-    a.IvT.d(uVU);
+    EventCenter.instance.removeListener(yov);
     AppMethodBeat.o(25335);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.b
  * JD-Core Version:    0.7.0.1
  */

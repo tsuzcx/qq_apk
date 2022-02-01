@@ -13,30 +13,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.d.c;
 import com.tencent.mm.plugin.sns.ui.widget.SnsPostDescPreloadTextView;
 import com.tencent.mm.plugin.sns.ui.widget.SnsPostDescPreloadTextView.b;
-import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.pluginsdk.ui.span.a;
+import com.tencent.mm.pluginsdk.ui.span.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.ui.aa;
 import java.util.HashMap;
 
 public class CollapsibleTextView
   extends LinearLayout
 {
-  private int AfR;
-  protected SnsPostDescPreloadTextView AgO;
-  protected SnsTextView AgP;
-  protected TextView AgQ;
-  private String AgR;
-  private String AgS;
-  private HashMap<String, Integer> AgT;
-  protected bi AgU;
-  private Runnable AgV;
+  private int Eoo;
+  protected SnsPostDescPreloadTextView Epk;
+  protected SnsTextView Epl;
+  protected TextView Epm;
+  private String Epn;
+  private String Epo;
+  private HashMap<String, Integer> Epp;
+  protected bl Epq;
+  private Runnable Epr;
   private Context context;
-  private String dAg;
-  private String dsN;
-  private aq handler;
+  private String dJX;
+  private String dRS;
+  private MMHandler handler;
   private boolean hasCheck;
   private boolean isAd;
+  protected a mAdTagClickCallback;
+  protected int position;
   private CharSequence text;
   
   public CollapsibleTextView(Context paramContext, AttributeSet paramAttributeSet)
@@ -45,64 +48,66 @@ public class CollapsibleTextView
     AppMethodBeat.i(97837);
     this.isAd = false;
     this.hasCheck = true;
-    this.handler = new aq(Looper.getMainLooper());
-    this.AfR = 0;
-    this.AgV = new Runnable()
+    this.handler = new MMHandler(Looper.getMainLooper());
+    this.Eoo = 0;
+    this.Epr = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(97836);
-        if ((CollapsibleTextView.this.AgO != null) && ((CollapsibleTextView.this.AgO.getTag() instanceof bd)) && (((bd)CollapsibleTextView.this.AgO.getTag()).dAg.equals(CollapsibleTextView.a(CollapsibleTextView.this))))
+        if ((CollapsibleTextView.this.Epk != null) && ((CollapsibleTextView.this.Epk.getTag() instanceof bg)) && (((bg)CollapsibleTextView.this.Epk.getTag()).dRS.equals(CollapsibleTextView.a(CollapsibleTextView.this))))
         {
-          CollapsibleTextView.this.AgO.setMaxLines(6);
-          CollapsibleTextView.this.AgQ.setVisibility(0);
-          CollapsibleTextView.this.AgQ.setText(CollapsibleTextView.b(CollapsibleTextView.this));
+          CollapsibleTextView.this.Epk.setMaxLines(6);
+          CollapsibleTextView.this.Epm.setVisibility(0);
+          CollapsibleTextView.this.Epm.setText(CollapsibleTextView.b(CollapsibleTextView.this));
         }
         AppMethodBeat.o(97836);
       }
     };
     this.context = paramContext;
-    this.AgR = this.context.getString(2131763800);
-    this.AgS = this.context.getString(2131763799);
-    paramContext = z.jV(this.context).inflate(2131493549, this);
+    this.Epn = this.context.getString(2131766024);
+    this.Epo = this.context.getString(2131766023);
+    paramContext = aa.jQ(this.context).inflate(2131493661, this);
     paramContext.setPadding(0, -3, 0, 0);
-    this.AgO = ((SnsPostDescPreloadTextView)paramContext.findViewById(2131299008));
-    this.AgQ = ((TextView)paramContext.findViewById(2131299006));
-    this.AgP = ((SnsTextView)paramContext.findViewById(2131299009));
+    this.Epk = ((SnsPostDescPreloadTextView)paramContext.findViewById(2131299510));
+    this.Epm = ((TextView)paramContext.findViewById(2131299508));
+    this.Epl = ((SnsTextView)paramContext.findViewById(2131299511));
     AppMethodBeat.o(97837);
   }
   
-  public final void a(int paramInt, CharSequence paramCharSequence, TextView.BufferType paramBufferType, HashMap<String, Integer> paramHashMap, String paramString1, String paramString2, bh parambh, String paramString3, boolean paramBoolean)
+  public final void a(int paramInt, CharSequence paramCharSequence, TextView.BufferType paramBufferType, HashMap<String, Integer> paramHashMap, String paramString1, String paramString2, bk parambk, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(97838);
-    this.context = parambh.fNT;
-    this.AgT = paramHashMap;
+    this.context = parambk.gte;
+    this.Epp = paramHashMap;
     this.text = paramCharSequence;
     this.isAd = paramBoolean;
-    this.dsN = paramString1;
-    this.dAg = paramString2;
-    this.AfR = paramInt;
-    this.AgO.setCollapseibleMap(paramHashMap);
-    this.AgO.setIsAd(paramBoolean);
-    this.AgR = this.context.getString(2131763800);
-    this.AgS = this.context.getString(2131763799);
-    this.AgP.setOriginText(paramString3);
-    paramString2 = new bd(this.dAg, this.dsN, false, false, 1);
-    paramString2.userName = this.AgU.lJm;
+    this.dJX = paramString1;
+    this.dRS = paramString2;
+    this.Eoo = paramInt;
+    this.Epk.setCollapseibleMap(paramHashMap);
+    this.Epk.setIsAd(paramBoolean);
+    this.Epn = this.context.getString(2131766024);
+    this.Epo = this.context.getString(2131766023);
+    this.Epl.setOriginText(paramString3);
+    paramString2 = new bg(this.dRS, this.dJX, false, false, 1);
+    paramString2.userName = this.Epq.mRa;
     if (paramInt == 0)
     {
-      this.AgO.setText(paramCharSequence);
-      this.AgP.setVisibility(8);
-      this.AgQ.setVisibility(0);
-      this.AgO.setVisibility(0);
-      paramCharSequence = new n(this.context);
-      this.AgO.setOnTouchListener(paramCharSequence);
-      this.AgO.setTag(paramString2);
+      this.Epk.setText(paramCharSequence);
+      this.Epl.setVisibility(8);
+      this.Epm.setVisibility(0);
+      this.Epk.setVisibility(0);
+      paramCharSequence = new o(this.context);
+      paramCharSequence.setAdTagClickCallback(this.mAdTagClickCallback, this.position);
+      paramCharSequence.mAdTagClickScene = 30;
+      this.Epk.setOnTouchListener(paramCharSequence);
+      this.Epk.setTag(paramString2);
       if (paramHashMap.get(paramString1) == null)
       {
         this.hasCheck = false;
-        this.AgQ.setVisibility(8);
-        this.AgO.setMaxLines(8);
+        this.Epm.setVisibility(8);
+        this.Epk.setMaxLines(8);
         AppMethodBeat.o(97838);
         return;
       }
@@ -114,34 +119,34 @@ public class CollapsibleTextView
       {
         AppMethodBeat.o(97838);
         return;
-        this.AgQ.setVisibility(8);
+        this.Epm.setVisibility(8);
         AppMethodBeat.o(97838);
         return;
-        this.AgO.setMaxLines(6);
-        this.AgQ.setVisibility(0);
-        this.AgQ.setText(this.AgR);
+        this.Epk.setMaxLines(6);
+        this.Epm.setVisibility(0);
+        this.Epm.setText(this.Epn);
         AppMethodBeat.o(97838);
         return;
-        this.AgO.setMaxLines(2147483647);
-        this.AgQ.setVisibility(0);
-        this.AgQ.setText(this.AgS);
+        this.Epk.setMaxLines(2147483647);
+        this.Epm.setVisibility(0);
+        this.Epm.setText(this.Epo);
       }
     }
-    this.AgP.setText(paramCharSequence, paramBufferType);
-    this.AgP.setTag(paramString2);
-    this.AgP.setVisibility(0);
-    this.AgQ.setVisibility(8);
-    this.AgO.setVisibility(8);
-    this.AgP.setOnClickListener(parambh.zGs.AQj);
+    this.Epl.setText(paramCharSequence, paramBufferType);
+    this.Epl.setTag(paramString2);
+    this.Epl.setVisibility(0);
+    this.Epm.setVisibility(8);
+    this.Epk.setVisibility(8);
+    this.Epl.setOnClickListener(parambk.DQs.FaO);
     AppMethodBeat.o(97838);
   }
   
   public int getSpreadHeight()
   {
     AppMethodBeat.i(97839);
-    ae.i("MicroMsg.CollapsibleTextView", "count:" + this.AgO.getLineCount() + "  height:" + this.AgO.getLineHeight());
-    int i = this.AgO.getLineCount();
-    int j = this.AgO.getLineHeight();
+    Log.i("MicroMsg.CollapsibleTextView", "count:" + this.Epk.getLineCount() + "  height:" + this.Epk.getLineHeight());
+    int i = this.Epk.getLineCount();
+    int j = this.Epk.getLineHeight();
     AppMethodBeat.o(97839);
     return (i - 7) * j;
   }
@@ -150,7 +155,7 @@ public class CollapsibleTextView
   {
     AppMethodBeat.i(97843);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.AfR == 0) && (!this.isAd))
+    if ((this.Eoo == 0) && (!this.isAd))
     {
       if (this.hasCheck)
       {
@@ -158,24 +163,30 @@ public class CollapsibleTextView
         return;
       }
       this.hasCheck = true;
-      if (this.AgO.getLineCount() <= 7)
+      if (this.Epk.getLineCount() <= 7)
       {
-        this.AgT.put(this.dsN, Integer.valueOf(0));
+        this.Epp.put(this.dJX, Integer.valueOf(0));
         AppMethodBeat.o(97843);
         return;
       }
-      this.AgT.put(this.dsN, Integer.valueOf(1));
-      this.handler.post(this.AgV);
+      this.Epp.put(this.dJX, Integer.valueOf(1));
+      this.handler.post(this.Epr);
     }
     AppMethodBeat.o(97843);
+  }
+  
+  public void setAdTagClickCallback(a parama, int paramInt)
+  {
+    this.mAdTagClickCallback = parama;
+    this.position = paramInt;
   }
   
   public void setClickable(boolean paramBoolean)
   {
     AppMethodBeat.i(97842);
-    this.AgQ.setClickable(paramBoolean);
-    this.AgP.setClickable(paramBoolean);
-    this.AgO.setClickable(paramBoolean);
+    this.Epm.setClickable(paramBoolean);
+    this.Epl.setClickable(paramBoolean);
+    this.Epk.setClickable(paramBoolean);
     super.setClickable(paramBoolean);
     AppMethodBeat.o(97842);
   }
@@ -183,9 +194,9 @@ public class CollapsibleTextView
   public void setLongClickable(boolean paramBoolean)
   {
     AppMethodBeat.i(97841);
-    this.AgQ.setLongClickable(paramBoolean);
-    this.AgP.setLongClickable(paramBoolean);
-    this.AgO.setLongClickable(paramBoolean);
+    this.Epm.setLongClickable(paramBoolean);
+    this.Epl.setLongClickable(paramBoolean);
+    this.Epk.setLongClickable(paramBoolean);
     super.setLongClickable(paramBoolean);
     AppMethodBeat.o(97841);
   }
@@ -193,8 +204,8 @@ public class CollapsibleTextView
   public void setOpClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(97840);
-    if (this.AgQ != null) {
-      this.AgQ.setOnClickListener(paramOnClickListener);
+    if (this.Epm != null) {
+      this.Epm.setOnClickListener(paramOnClickListener);
     }
     setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(97840);
@@ -202,16 +213,16 @@ public class CollapsibleTextView
   
   public void setShrinkOrSpreadListener(SnsPostDescPreloadTextView.b paramb)
   {
-    AppMethodBeat.i(219651);
-    if (this.AgO != null) {
-      this.AgO.setShrinkOrSpreadListener(paramb);
+    AppMethodBeat.i(203233);
+    if (this.Epk != null) {
+      this.Epk.setShrinkOrSpreadListener(paramb);
     }
-    AppMethodBeat.o(219651);
+    AppMethodBeat.o(203233);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.CollapsibleTextView
  * JD-Core Version:    0.7.0.1
  */

@@ -4,28 +4,28 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "type", "", "(I)V", "aesKey", "", "getAesKey", "()Ljava/lang/String;", "setAesKey", "(Ljava/lang/String;)V", "errType", "getErrType", "()I", "setErrType", "fileId", "getFileId", "setFileId", "fileLength", "getFileLength", "setFileLength", "lensId", "getLensId", "setLensId", "getType", "url", "getUrl", "setUrl", "describeContents", "key", "writeToParcel", "", "dest", "flags", "Companion", "plugin-sticker_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/loader/StickerLoadInfo;", "Landroid/os/Parcelable;", "parcel", "Landroid/os/Parcel;", "(Landroid/os/Parcel;)V", "type", "", "(I)V", "aesKey", "", "getAesKey", "()Ljava/lang/String;", "setAesKey", "(Ljava/lang/String;)V", "errType", "getErrType", "()I", "setErrType", "fileId", "getFileId", "setFileId", "fileLength", "getFileLength", "setFileLength", "lensId", "getLensId", "setLensId", "getType", "url", "getUrl", "setUrl", "describeContents", "key", "writeToParcel", "", "dest", "flags", "Companion", "plugin-sticker_release"})
 public final class StickerLoadInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<StickerLoadInfo> CREATOR;
-  public static final StickerLoadInfo.a IGW;
+  public static final StickerLoadInfo.a NNP;
+  String aesKey;
   public int errType;
   String fileId;
-  String gmb;
-  int jIO;
-  public String pWT;
+  int kKK;
+  public String rnS;
   final int type;
   public String url;
   
   static
   {
     AppMethodBeat.i(105945);
-    IGW = new StickerLoadInfo.a((byte)0);
+    NNP = new StickerLoadInfo.a((byte)0);
     CREATOR = (Parcelable.Creator)new StickerLoadInfo.b();
     AppMethodBeat.o(105945);
   }
@@ -33,9 +33,9 @@ public final class StickerLoadInfo
   public StickerLoadInfo(int paramInt)
   {
     this.type = paramInt;
-    this.pWT = "";
+    this.rnS = "";
     this.fileId = "";
-    this.gmb = "";
+    this.aesKey = "";
     this.url = "";
   }
   
@@ -48,7 +48,7 @@ public final class StickerLoadInfo
     if (str2 == null) {
       str1 = "";
     }
-    this.pWT = str1;
+    this.rnS = str1;
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
@@ -60,8 +60,8 @@ public final class StickerLoadInfo
     if (str2 == null) {
       str1 = "";
     }
-    this.gmb = str1;
-    this.jIO = paramParcel.readInt();
+    this.aesKey = str1;
+    this.kKK = paramParcel.readInt();
     str2 = paramParcel.readString();
     str1 = str2;
     if (str2 == null) {
@@ -72,16 +72,16 @@ public final class StickerLoadInfo
     AppMethodBeat.o(105944);
   }
   
-  public final String BN()
+  public final String Lb()
   {
     AppMethodBeat.i(105942);
     if (this.type == 0)
     {
-      str = this.pWT;
+      str = this.rnS;
       AppMethodBeat.o(105942);
       return str;
     }
-    String str = aj.ej(this.url);
+    String str = MD5Util.getMD5String(this.url);
     p.g(str, "MD5Util.getMD5String(url)");
     AppMethodBeat.o(105942);
     return str;
@@ -97,10 +97,10 @@ public final class StickerLoadInfo
     AppMethodBeat.i(105943);
     p.h(paramParcel, "dest");
     paramParcel.writeInt(this.type);
-    paramParcel.writeString(this.pWT);
+    paramParcel.writeString(this.rnS);
     paramParcel.writeString(this.fileId);
-    paramParcel.writeString(this.gmb);
-    paramParcel.writeInt(this.jIO);
+    paramParcel.writeString(this.aesKey);
+    paramParcel.writeInt(this.kKK);
     paramParcel.writeString(this.url);
     paramParcel.writeInt(this.errType);
     AppMethodBeat.o(105943);
@@ -108,7 +108,7 @@ public final class StickerLoadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.sticker.loader.StickerLoadInfo
  * JD-Core Version:    0.7.0.1
  */

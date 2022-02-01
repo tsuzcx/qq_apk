@@ -1,85 +1,159 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.plugin.finder.model.am;
-import d.g.b.p;
-import d.l;
-import java.util.ArrayList;
+import com.tencent.mm.protocal.protobuf.awt;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/LoaderCache;", "", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lkotlin/collections/ArrayList;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "position", "", "customData", "Lcom/tencent/mm/plugin/finder/feed/model/CacheCustom;", "(Ljava/util/ArrayList;Lcom/tencent/mm/protobuf/ByteString;ILcom/tencent/mm/plugin/finder/feed/model/CacheCustom;)V", "getCustomData", "()Lcom/tencent/mm/plugin/finder/feed/model/CacheCustom;", "getDataList", "()Ljava/util/ArrayList;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "getPosition", "()I", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedLiveNoticeCache;", "", "()V", "CACHE_VAILD_DURATTION", "", "TAG", "", "userName2NoticeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedLiveNoticeCache$noticeInfoCacheItem;", "add", "", "userName", "info", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "clear", "getNotice", "noticeInfoCacheItem", "plugin-finder_release"})
 public final class e
 {
-  public final ArrayList<am> jhZ;
-  public final b lastBuffer;
-  public final int position;
-  public final a slj;
+  private static final String TAG = "FinderFeedLiveNoticeCache";
+  private static final int tUW = 60000;
+  private static final ConcurrentHashMap<String, a> tUX;
+  public static final e tUY;
   
-  public e(ArrayList<am> paramArrayList, b paramb, int paramInt, a parama)
+  static
   {
-    AppMethodBeat.i(202982);
-    this.jhZ = paramArrayList;
-    this.lastBuffer = paramb;
-    this.position = paramInt;
-    this.slj = parama;
-    AppMethodBeat.o(202982);
+    AppMethodBeat.i(244586);
+    tUY = new e();
+    TAG = "FinderFeedLiveNoticeCache";
+    tUW = 60000;
+    tUX = new ConcurrentHashMap();
+    AppMethodBeat.o(244586);
   }
   
-  public final boolean equals(Object paramObject)
+  public static void a(String paramString, awt paramawt)
   {
-    AppMethodBeat.i(202985);
-    if (this != paramObject)
+    AppMethodBeat.i(244583);
+    p.h(paramString, "userName");
+    p.h(paramawt, "info");
+    synchronized (tUX)
     {
-      if ((paramObject instanceof e))
+      Log.i(TAG, "[add] userName:".concat(String.valueOf(paramString)));
+      if (tUX.containsKey(paramString))
       {
-        paramObject = (e)paramObject;
-        if ((!p.i(this.jhZ, paramObject.jhZ)) || (!p.i(this.lastBuffer, paramObject.lastBuffer)) || (this.position != paramObject.position) || (!p.i(this.slj, paramObject.slj))) {}
+        a locala = (a)tUX.get(paramString);
+        if ((locala == null) || (locala.ddy())) {}
       }
-    }
-    else
-    {
-      AppMethodBeat.o(202985);
-      return true;
-    }
-    AppMethodBeat.o(202985);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    int k = 0;
-    AppMethodBeat.i(202984);
-    Object localObject = this.jhZ;
-    int i;
-    if (localObject != null)
-    {
-      i = localObject.hashCode();
-      localObject = this.lastBuffer;
-      if (localObject == null) {
-        break label92;
+      else
+      {
+        ((Map)tUX).put(paramString, new a(paramawt));
       }
-    }
-    label92:
-    for (int j = localObject.hashCode();; j = 0)
-    {
-      int m = this.position;
-      localObject = this.slj;
-      if (localObject != null) {
-        k = localObject.hashCode();
-      }
-      AppMethodBeat.o(202984);
-      return ((j + i * 31) * 31 + m) * 31 + k;
-      i = 0;
-      break;
+      paramString = x.SXb;
+      AppMethodBeat.o(244583);
+      return;
     }
   }
   
-  public final String toString()
+  public static awt ato(String paramString)
   {
-    AppMethodBeat.i(202983);
-    String str = "LoaderCache(dataList=" + this.jhZ + ", lastBuffer=" + this.lastBuffer + ", position=" + this.position + ", customData=" + this.slj + ")";
-    AppMethodBeat.o(202983);
-    return str;
+    AppMethodBeat.i(244584);
+    p.h(paramString, "userName");
+    synchronized (tUX)
+    {
+      a locala = (a)tUX.get(paramString);
+      if (locala != null)
+      {
+        if (!locala.ddy()) {
+          tUX.remove(paramString);
+        }
+        for (paramString = null;; paramString = locala.tUZ)
+        {
+          AppMethodBeat.o(244584);
+          return paramString;
+        }
+      }
+      paramString = null;
+    }
+  }
+  
+  public static void clear()
+  {
+    AppMethodBeat.i(244585);
+    synchronized (tUX)
+    {
+      tUX.clear();
+      x localx = x.SXb;
+      AppMethodBeat.o(244585);
+      return;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderFeedLiveNoticeCache$noticeInfoCacheItem;", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "timeStamp", "", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;J)V", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "setInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;)V", "getTimeStamp", "()J", "setTimeStamp", "(J)V", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "isVaild", "toString", "", "plugin-finder_release"})
+  public static final class a
+  {
+    awt tUZ;
+    private long timeStamp;
+    
+    private a(awt paramawt, long paramLong)
+    {
+      AppMethodBeat.i(244578);
+      this.tUZ = paramawt;
+      this.timeStamp = paramLong;
+      AppMethodBeat.o(244578);
+    }
+    
+    public final boolean ddy()
+    {
+      AppMethodBeat.i(244577);
+      long l1 = System.currentTimeMillis();
+      long l2 = this.timeStamp;
+      e locale = e.tUY;
+      if (l1 - l2 < e.ddx())
+      {
+        AppMethodBeat.o(244577);
+        return true;
+      }
+      AppMethodBeat.o(244577);
+      return false;
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(244582);
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof a))
+        {
+          paramObject = (a)paramObject;
+          if ((!p.j(this.tUZ, paramObject.tUZ)) || (this.timeStamp != paramObject.timeStamp)) {}
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(244582);
+        return true;
+      }
+      AppMethodBeat.o(244582);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      AppMethodBeat.i(244581);
+      awt localawt = this.tUZ;
+      if (localawt != null) {}
+      for (int i = localawt.hashCode();; i = 0)
+      {
+        long l = this.timeStamp;
+        int j = (int)(l ^ l >>> 32);
+        AppMethodBeat.o(244581);
+        return i * 31 + j;
+      }
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(244580);
+      String str = "noticeInfoCacheItem(info=" + this.tUZ + ", timeStamp=" + this.timeStamp + ")";
+      AppMethodBeat.o(244580);
+      return str;
+    }
   }
 }
 

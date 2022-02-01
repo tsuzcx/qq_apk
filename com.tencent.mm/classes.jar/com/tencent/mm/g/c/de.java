@@ -2,47 +2,89 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class de
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFV;
-  private static final int eGY = "username".hashCode();
-  private static final int eMO = "msgSvrId".hashCode();
-  private static final int fgn;
-  private static final int fgo;
-  private static final int fgp;
-  private static final int fgq = "active".hashCode();
-  private static final int fgr = "lastActiveTime".hashCode();
-  private static final int key_HASHCODE = "key".hashCode();
+  private static final int createTime_HASHCODE = "createTime".hashCode();
+  private static final int fJq;
+  private static final int fJr;
+  private static final int fJs = "checkCgiTime".hashCode();
+  private static final int fJt = "finishDownloadTime".hashCode();
+  private static final int fJu = "downloadItemList".hashCode();
+  private static final int fkj;
+  private static final int fml = "packageName".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean __hadSetkey = true;
-  private boolean eFy = true;
-  private boolean eGV = true;
-  private boolean eMA = true;
-  private boolean fgi = true;
-  private boolean fgj = true;
-  private boolean fgk = true;
-  private boolean fgl = true;
-  private boolean fgm = true;
-  public int field_active;
-  public String field_content;
-  public String field_creator;
-  public long field_firstMsgId;
-  public String field_key;
-  public long field_lastActiveTime;
-  public long field_msgSvrId;
-  public int field_num;
-  public String field_username;
+  private boolean __hadSetcreateTime = true;
+  private boolean fJl = true;
+  private boolean fJm = true;
+  private boolean fJn = true;
+  private boolean fJo = true;
+  private boolean fJp = true;
+  public String field_appId;
+  public long field_checkCgiTime;
+  public long field_createTime;
+  public byte[] field_downloadItemList;
+  public int field_expiredSeconds;
+  public long field_finishDownloadTime;
+  public int field_intervalSeconds;
+  public String field_packageName;
+  private boolean fjS = true;
+  private boolean flP = true;
   
   static
   {
-    eFV = "content".hashCode();
-    fgn = "creator".hashCode();
-    fgo = "num".hashCode();
-    fgp = "firstMsgId".hashCode();
+    fkj = "appId".hashCode();
+    fJq = "intervalSeconds".hashCode();
+    fJr = "expiredSeconds".hashCode();
+  }
+  
+  public static IAutoDBItem.MAutoDBInfo ajs()
+  {
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[8];
+    localMAutoDBInfo.columns = new String[9];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "packageName";
+    localMAutoDBInfo.colsMap.put("packageName", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" packageName TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "packageName";
+    localMAutoDBInfo.columns[1] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "intervalSeconds";
+    localMAutoDBInfo.colsMap.put("intervalSeconds", "INTEGER");
+    localStringBuilder.append(" intervalSeconds INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "expiredSeconds";
+    localMAutoDBInfo.colsMap.put("expiredSeconds", "INTEGER");
+    localStringBuilder.append(" expiredSeconds INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "createTime";
+    localMAutoDBInfo.colsMap.put("createTime", "LONG");
+    localStringBuilder.append(" createTime LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "checkCgiTime";
+    localMAutoDBInfo.colsMap.put("checkCgiTime", "LONG");
+    localStringBuilder.append(" checkCgiTime LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "finishDownloadTime";
+    localMAutoDBInfo.colsMap.put("finishDownloadTime", "LONG");
+    localStringBuilder.append(" finishDownloadTime LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[7] = "downloadItemList";
+    localMAutoDBInfo.colsMap.put("downloadItemList", "BLOB");
+    localStringBuilder.append(" downloadItemList BLOB");
+    localMAutoDBInfo.columns[8] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -58,33 +100,32 @@ public abstract class de
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGY != k) {
-        break label60;
+      if (fml != k) {
+        break label65;
       }
-      this.field_username = paramCursor.getString(i);
+      this.field_packageName = paramCursor.getString(i);
+      this.flP = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (key_HASHCODE == k) {
-        this.field_key = paramCursor.getString(i);
-      } else if (eFV == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (fgn == k) {
-        this.field_creator = paramCursor.getString(i);
-      } else if (fgo == k) {
-        this.field_num = paramCursor.getInt(i);
-      } else if (fgp == k) {
-        this.field_firstMsgId = paramCursor.getLong(i);
-      } else if (eMO == k) {
-        this.field_msgSvrId = paramCursor.getLong(i);
-      } else if (fgq == k) {
-        this.field_active = paramCursor.getInt(i);
-      } else if (fgr == k) {
-        this.field_lastActiveTime = paramCursor.getLong(i);
+      label65:
+      if (fkj == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (fJq == k) {
+        this.field_intervalSeconds = paramCursor.getInt(i);
+      } else if (fJr == k) {
+        this.field_expiredSeconds = paramCursor.getInt(i);
+      } else if (createTime_HASHCODE == k) {
+        this.field_createTime = paramCursor.getLong(i);
+      } else if (fJs == k) {
+        this.field_checkCgiTime = paramCursor.getLong(i);
+      } else if (fJt == k) {
+        this.field_finishDownloadTime = paramCursor.getLong(i);
+      } else if (fJu == k) {
+        this.field_downloadItemList = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -94,32 +135,29 @@ public abstract class de
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
+    if (this.flP) {
+      localContentValues.put("packageName", this.field_packageName);
     }
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
+    if (this.fjS) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.eFy) {
-      localContentValues.put("content", this.field_content);
+    if (this.fJl) {
+      localContentValues.put("intervalSeconds", Integer.valueOf(this.field_intervalSeconds));
     }
-    if (this.fgi) {
-      localContentValues.put("creator", this.field_creator);
+    if (this.fJm) {
+      localContentValues.put("expiredSeconds", Integer.valueOf(this.field_expiredSeconds));
     }
-    if (this.fgj) {
-      localContentValues.put("num", Integer.valueOf(this.field_num));
+    if (this.__hadSetcreateTime) {
+      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.fgk) {
-      localContentValues.put("firstMsgId", Long.valueOf(this.field_firstMsgId));
+    if (this.fJn) {
+      localContentValues.put("checkCgiTime", Long.valueOf(this.field_checkCgiTime));
     }
-    if (this.eMA) {
-      localContentValues.put("msgSvrId", Long.valueOf(this.field_msgSvrId));
+    if (this.fJo) {
+      localContentValues.put("finishDownloadTime", Long.valueOf(this.field_finishDownloadTime));
     }
-    if (this.fgl) {
-      localContentValues.put("active", Integer.valueOf(this.field_active));
-    }
-    if (this.fgm) {
-      localContentValues.put("lastActiveTime", Long.valueOf(this.field_lastActiveTime));
+    if (this.fJp) {
+      localContentValues.put("downloadItemList", this.field_downloadItemList);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

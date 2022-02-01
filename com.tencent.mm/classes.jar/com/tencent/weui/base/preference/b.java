@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ap;
+import com.tencent.mm.ui.as;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,33 +19,33 @@ public final class b
   extends BaseAdapter
   implements a
 {
-  private final LinkedList<String> JNQ;
-  private final HashMap<String, Preference> JNR;
-  private final HashSet<String> JNS;
-  private final LinkedList<String> JNT;
-  private final HashMap<String, Integer> JNU;
-  private final HashMap<String, String> JNV;
-  private int[] JNX;
-  private boolean JNZ;
-  final c MLd;
-  boolean MLe;
-  Preference.OnPreferenceChangeListener MLf;
+  private final LinkedList<String> OYS;
+  private final HashMap<String, Preference> OYT;
+  private final HashSet<String> OYU;
+  private final LinkedList<String> OYV;
+  private final HashMap<String, Integer> OYW;
+  private final HashMap<String, String> OYX;
+  private int[] OYZ;
+  private boolean OZb;
+  final c SwY;
+  boolean SwZ;
+  Preference.OnPreferenceChangeListener Sxa;
   private final Context context;
   private final SharedPreferences sp;
   
   public b(Context paramContext, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(160001);
-    this.JNQ = new LinkedList();
-    this.JNR = new HashMap();
-    this.JNS = new HashSet();
-    this.JNT = new LinkedList();
-    this.JNU = new HashMap();
-    this.JNV = new HashMap();
-    this.JNX = new int[0];
-    this.MLe = false;
-    this.JNZ = false;
-    this.MLd = new c(paramContext);
+    this.OYS = new LinkedList();
+    this.OYT = new HashMap();
+    this.OYU = new HashSet();
+    this.OYV = new LinkedList();
+    this.OYW = new HashMap();
+    this.OYX = new HashMap();
+    this.OYZ = new int[0];
+    this.SwZ = false;
+    this.OZb = false;
+    this.SwY = new c(paramContext);
     this.context = paramContext;
     this.sp = paramSharedPreferences;
     AppMethodBeat.o(160001);
@@ -55,18 +55,18 @@ public final class b
   {
     AppMethodBeat.i(160006);
     String str = c(paramPreference);
-    this.JNR.put(str, paramPreference);
-    LinkedList localLinkedList = this.JNQ;
+    this.OYT.put(str, paramPreference);
+    LinkedList localLinkedList = this.OYS;
     int i = paramInt;
     if (paramInt == -1) {
-      i = this.JNQ.size();
+      i = this.OYS.size();
     }
     localLinkedList.add(i, str);
-    if ((!this.JNU.containsKey(b(paramPreference))) && (!this.JNZ)) {
-      this.JNU.put(b(paramPreference), Integer.valueOf(this.JNU.size()));
+    if ((!this.OYW.containsKey(b(paramPreference))) && (!this.OZb)) {
+      this.OYW.put(b(paramPreference), Integer.valueOf(this.OYW.size()));
     }
     if (paramPreference.getDependency() != null) {
-      this.JNV.put(paramPreference.getDependency() + "|" + paramPreference.getKey(), paramPreference.getKey());
+      this.OYX.put(paramPreference.getDependency() + "|" + paramPreference.getKey(), paramPreference.getKey());
     }
     AppMethodBeat.o(160006);
   }
@@ -78,15 +78,15 @@ public final class b
     {
       CheckBoxPreference localCheckBoxPreference = (CheckBoxPreference)paramPreference;
       if (localCheckBoxPreference.isPersistent()) {
-        localCheckBoxPreference.oB = paramSharedPreferences.getBoolean(paramPreference.getKey(), ((CheckBoxPreference)paramPreference).isChecked());
+        localCheckBoxPreference.oD = paramSharedPreferences.getBoolean(paramPreference.getKey(), ((CheckBoxPreference)paramPreference).isChecked());
       }
     }
     AppMethodBeat.o(160004);
   }
   
-  private static boolean adb(int paramInt)
+  private static boolean alM(int paramInt)
   {
-    return (paramInt == 2131494804) || (paramInt == 2131494886) || (paramInt == 2131494889);
+    return (paramInt == 2131495538) || (paramInt == 2131495624) || (paramInt == 2131495627);
   }
   
   private static String b(Preference paramPreference)
@@ -115,16 +115,24 @@ public final class b
   {
     AppMethodBeat.i(160005);
     a(paramPreference, -1);
-    if (!this.MLe) {
+    if (!this.SwZ) {
       notifyDataSetChanged();
     }
     AppMethodBeat.o(160005);
   }
   
+  public final Preference brv(String paramString)
+  {
+    AppMethodBeat.i(198549);
+    paramString = (Preference)this.OYT.get(paramString);
+    AppMethodBeat.o(198549);
+    return paramString;
+  }
+  
   public final int getCount()
   {
     AppMethodBeat.i(160008);
-    int i = this.JNT.size();
+    int i = this.OYV.size();
     AppMethodBeat.o(160008);
     return i;
   }
@@ -132,7 +140,7 @@ public final class b
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(160009);
-    Object localObject = this.JNR.get(this.JNT.get(paramInt));
+    Object localObject = this.OYT.get(this.OYV.get(paramInt));
     AppMethodBeat.o(160009);
     return localObject;
   }
@@ -145,13 +153,13 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(160011);
-    if (paramInt > this.JNT.size())
+    if (paramInt > this.OYV.size())
     {
       AppMethodBeat.o(160011);
       return -1;
     }
-    Object localObject = (Preference)this.JNR.get(this.JNT.get(paramInt));
-    localObject = (Integer)this.JNU.get(b((Preference)localObject));
+    Object localObject = (Preference)this.OYT.get(this.OYV.get(paramInt));
+    localObject = (Integer)this.OYW.get(b((Preference)localObject));
     if (localObject == null)
     {
       AppMethodBeat.o(160011);
@@ -165,24 +173,24 @@ public final class b
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(160012);
-    if (paramInt > this.JNT.size())
+    if (paramInt > this.OYV.size())
     {
       AppMethodBeat.o(160012);
       return paramView;
     }
-    Object localObject = (Preference)this.JNR.get(this.JNT.get(paramInt));
+    Object localObject = (Preference)this.OYT.get(this.OYV.get(paramInt));
     if ((localObject instanceof CheckBoxPreference)) {
-      ((Preference)localObject).setOnPreferenceChangeListener(this.MLf);
+      ((Preference)localObject).setOnPreferenceChangeListener(this.Sxa);
     }
-    if (!this.JNU.containsKey(b((Preference)localObject))) {
+    if (!this.OYW.containsKey(b((Preference)localObject))) {
       paramView = null;
     }
     paramView = ((Preference)localObject).getView(paramView, paramViewGroup);
-    int j = this.JNX[paramInt];
-    paramViewGroup = paramView.findViewById(2131298739);
+    int j = this.OYZ[paramInt];
+    paramViewGroup = paramView.findViewById(2131299180);
     if (paramViewGroup == null)
     {
-      ap.d("MicroMsg.WeUIPreferenceAdapter", "find content view error", new Object[0]);
+      as.d("MicroMsg.WeUIPreferenceAdapter", "find content view error", new Object[0]);
       AppMethodBeat.o(160012);
       return paramView;
     }
@@ -208,13 +216,13 @@ public final class b
       i4 = paramView.getPaddingTop();
       i5 = paramView.getPaddingBottom();
       if ((j & 0x8) == 0) {
-        break label332;
+        break label333;
       }
-      if ((paramInt != this.JNT.size() - 1) && ((paramInt != this.JNT.size() - 2) || (!(getItem(this.JNT.size() - 1) instanceof PreferenceCategory)))) {
-        break label311;
+      if ((paramInt != this.OYV.size() - 1) && ((paramInt != this.OYV.size() - 2) || (!(getItem(this.OYV.size() - 1) instanceof PreferenceCategory)))) {
+        break label312;
       }
-      paramInt = 2131233299;
-      j = 2131101179;
+      paramInt = 2131233974;
+      j = 2131101424;
       i = paramInt;
       paramInt = j;
     }
@@ -229,23 +237,23 @@ public final class b
       paramView.setPadding(i2, i4, i3, i5);
       AppMethodBeat.o(160012);
       return paramView;
-      label311:
+      label312:
       if ((j & 0x2) != 0)
       {
-        paramInt = 2131233299;
+        paramInt = 2131233974;
         break;
       }
-      paramInt = 2131232867;
+      paramInt = 2131233327;
       break;
-      label332:
+      label333:
       if (((j & 0x10) != 0) || ((j & 0x2) == 0))
       {
-        i = 2131232867;
-        paramInt = 2131233957;
+        i = 2131233327;
+        paramInt = 2131234793;
       }
       else
       {
-        paramInt = 2131233957;
+        paramInt = 2131234793;
       }
     }
   }
@@ -253,10 +261,10 @@ public final class b
   public final int getViewTypeCount()
   {
     AppMethodBeat.i(160010);
-    if (!this.JNZ) {
-      this.JNZ = true;
+    if (!this.OZb) {
+      this.OZb = true;
     }
-    int i = Math.max(1, this.JNU.size());
+    int i = Math.max(1, this.OYW.size());
     AppMethodBeat.o(160010);
     return i;
   }
@@ -265,71 +273,71 @@ public final class b
   {
     int j = 0;
     AppMethodBeat.i(160007);
-    this.JNT.clear();
-    Object localObject = this.JNQ.iterator();
+    this.OYV.clear();
+    Object localObject = this.OYS.iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      if (!this.JNS.contains(str)) {
-        if (this.JNR.get(str) == null) {
-          ap.e("MicroMsg.WeUIPreferenceAdapter", "not found pref by key ".concat(String.valueOf(str)), new Object[0]);
+      if (!this.OYU.contains(str)) {
+        if (this.OYT.get(str) == null) {
+          as.e("MicroMsg.WeUIPreferenceAdapter", "not found pref by key ".concat(String.valueOf(str)), new Object[0]);
         } else {
-          this.JNT.add(str);
+          this.OYV.add(str);
         }
       }
     }
-    if ((!this.JNT.isEmpty()) && (adb(((Preference)this.JNR.get(this.JNT.get(0))).getLayoutResource()))) {
+    if ((!this.OYV.isEmpty()) && (alM(((Preference)this.OYT.get(this.OYV.get(0))).getLayoutResource()))) {
       a(new PreferenceSmallCategory(this.context), 0);
     }
     localObject = new HashSet();
     int i = 0;
-    while (i < this.JNT.size())
+    while (i < this.OYV.size())
     {
-      this.JNR.get(this.JNT.get(i));
+      this.OYT.get(this.OYV.get(i));
       if (i != 0) {
-        this.JNR.get(this.JNT.get(i - 1));
+        this.OYT.get(this.OYV.get(i - 1));
       }
       i += 1;
     }
-    this.JNT.removeAll((Collection)localObject);
-    this.JNX = new int[this.JNT.size()];
-    if (this.JNX.length <= 0)
+    this.OYV.removeAll((Collection)localObject);
+    this.OYZ = new int[this.OYV.size()];
+    if (this.OYZ.length <= 0)
     {
       AppMethodBeat.o(160007);
       return;
     }
     i = j;
-    if (this.JNX.length == 1)
+    if (this.OYZ.length == 1)
     {
-      i = ((Preference)this.JNR.get(this.JNT.get(0))).getLayoutResource();
-      localObject = (Preference)this.JNR.get(this.JNT.get(0));
-      if (adb(i)) {
+      i = ((Preference)this.OYT.get(this.OYV.get(0))).getLayoutResource();
+      localObject = (Preference)this.OYT.get(this.OYV.get(0));
+      if (alM(i)) {
         if ((localObject instanceof CheckBoxPreference))
         {
-          localObject = this.JNX;
+          localObject = this.OYZ;
           localObject[0] |= 0x8;
         }
       }
       for (;;)
       {
-        a((Preference)this.JNR.get(this.JNT.get(0)), this.sp);
+        a((Preference)this.OYT.get(this.OYV.get(0)), this.sp);
         super.notifyDataSetChanged();
         AppMethodBeat.o(160007);
         return;
-        this.JNX[0] = 3;
+        this.OYZ[0] = 3;
         continue;
-        this.JNX[0] = 4;
+        this.OYZ[0] = 4;
       }
     }
-    if (i < this.JNT.size())
+    if (i < this.OYV.size())
     {
-      a((Preference)this.JNR.get(this.JNT.get(i)), this.sp);
-      localObject = (Preference)this.JNR.get(this.JNT.get(i));
+      a((Preference)this.OYT.get(this.OYV.get(i)), this.sp);
+      localObject = (Preference)this.OYT.get(this.OYV.get(i));
       j = ((Preference)localObject).getLayoutResource();
-      if (adb(j)) {
+      if (alM(j)) {
         if ((localObject instanceof CheckBoxPreference))
         {
-          localObject = this.JNX;
+          localObject = this.OYZ;
           localObject[i] |= 0x8;
         }
       }
@@ -339,37 +347,37 @@ public final class b
         break;
         if (i == 0)
         {
-          localObject = this.JNX;
+          localObject = this.OYZ;
           localObject[i] |= 0x1;
         }
         else
         {
-          if (i == this.JNT.size() - 1)
+          if (i == this.OYV.size() - 1)
           {
-            localObject = this.JNX;
+            localObject = this.OYZ;
             localObject[i] |= 0x2;
           }
-          j = ((Preference)this.JNR.get(this.JNT.get(i - 1))).getLayoutResource();
-          if ((j != 2131494804) || (j == 2131494886) || (j == 2131494889))
+          j = ((Preference)this.OYT.get(this.OYV.get(i - 1))).getLayoutResource();
+          if ((j != 2131495538) || (j == 2131495624) || (j == 2131495627))
           {
-            localObject = this.JNX;
+            localObject = this.OYZ;
             localObject[i] |= 0x1;
             continue;
-            if (j == 2131494863)
+            if (j == 2131495599)
             {
               if (i == 0)
               {
-                localObject = this.JNX;
+                localObject = this.OYZ;
                 localObject[i] |= 0x4;
               }
               else
               {
-                localObject = this.JNX;
+                localObject = this.OYZ;
                 localObject[i] |= 0x10;
-                j = ((Preference)this.JNR.get(this.JNT.get(i - 1))).getLayoutResource();
-                if ((j == 2131494804) || (j == 2131494886) || (j == 2131494889))
+                j = ((Preference)this.OYT.get(this.OYV.get(i - 1))).getLayoutResource();
+                if ((j == 2131495538) || (j == 2131495624) || (j == 2131495627))
                 {
-                  localObject = this.JNX;
+                  localObject = this.OYZ;
                   j = i - 1;
                   localObject[j] |= 0x2;
                 }
@@ -377,14 +385,14 @@ public final class b
             }
             else
             {
-              localObject = this.JNX;
+              localObject = this.OYZ;
               localObject[i] |= 0x4;
               if (i != 0)
               {
-                j = ((Preference)this.JNR.get(this.JNT.get(i - 1))).getLayoutResource();
-                if ((adb(j)) || (j == 2131494863))
+                j = ((Preference)this.OYT.get(this.OYV.get(i - 1))).getLayoutResource();
+                if ((alM(j)) || (j == 2131495599))
                 {
-                  localObject = this.JNX;
+                  localObject = this.OYZ;
                   j = i - 1;
                   localObject[j] |= 0x2;
                 }
@@ -400,7 +408,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.weui.base.preference.b
  * JD-Core Version:    0.7.0.1
  */

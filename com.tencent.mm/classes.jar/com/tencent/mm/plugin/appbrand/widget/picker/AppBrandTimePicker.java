@@ -15,36 +15,36 @@ import com.tencent.mm.ui.widget.picker.g;
 
 public final class AppBrandTimePicker
   extends TimePicker
-  implements com.tencent.mm.plugin.appbrand.jsapi.p.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.r.c<String>
 {
   public int mMaxTimeHour;
   public int mMaxTimeMinute;
   public int mMinTimeHour;
   public int mMinTimeMinute;
-  public NumberPicker nqm;
-  private NumberPicker nqn;
+  public NumberPicker ozT;
+  private NumberPicker ozU;
   
   @Keep
   public AppBrandTimePicker(Context paramContext)
   {
-    super(new ContextThemeWrapper(paramContext, 2131821553));
+    super(new ContextThemeWrapper(paramContext, 2131821601));
     AppMethodBeat.i(138065);
     this.mMinTimeHour = -1;
     this.mMinTimeMinute = -1;
     this.mMaxTimeHour = -1;
     this.mMaxTimeMinute = -1;
     setIs24HourView(Boolean.TRUE);
-    this.nqm = Wh("mHourSpinner");
-    this.nqn = Wh("mMinuteSpinner");
-    f.d(this.nqm);
-    f.d(this.nqn);
-    d.a(this.nqm);
-    d.a(this.nqn);
-    paramContext = getResources().getDrawable(2131231055);
-    f.a(this.nqm, paramContext);
-    f.a(this.nqn, paramContext);
-    if (this.nqm != null) {
-      this.nqm.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+    this.ozT = agd("mHourSpinner");
+    this.ozU = agd("mMinuteSpinner");
+    f.d(this.ozT);
+    f.d(this.ozU);
+    d.a(this.ozT);
+    d.a(this.ozU);
+    paramContext = getResources().getDrawable(2131231090);
+    f.a(this.ozT, paramContext);
+    f.a(this.ozU, paramContext);
+    if (this.ozT != null) {
+      this.ozT.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
       {
         public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2)
         {
@@ -54,32 +54,32 @@ public final class AppBrandTimePicker
         }
       });
     }
-    if ((this.nqn != null) && (Build.VERSION.SDK_INT >= 21)) {
-      this.nqn.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
+    if ((this.ozU != null) && (Build.VERSION.SDK_INT >= 21)) {
+      this.ozU.setOnValueChangedListener(new NumberPicker.OnValueChangeListener()
       {
         public final void onValueChange(NumberPicker paramAnonymousNumberPicker, int paramAnonymousInt1, int paramAnonymousInt2) {}
       });
     }
-    f.f(this.nqm);
-    f.f(this.nqn);
+    f.f(this.ozT);
+    f.f(this.ozU);
     AppMethodBeat.o(138065);
   }
   
-  private NumberPicker Wh(String paramString)
+  private NumberPicker agd(String paramString)
   {
     AppMethodBeat.i(138069);
     if (Build.VERSION.SDK_INT >= 21)
     {
-      paramString = Wj(paramString);
+      paramString = agf(paramString);
       AppMethodBeat.o(138069);
       return paramString;
     }
-    paramString = Wi(paramString);
+    paramString = age(paramString);
     AppMethodBeat.o(138069);
     return paramString;
   }
   
-  private NumberPicker Wi(String paramString)
+  private NumberPicker age(String paramString)
   {
     AppMethodBeat.i(138070);
     try
@@ -95,7 +95,7 @@ public final class AppBrandTimePicker
     return null;
   }
   
-  private NumberPicker Wj(String paramString)
+  private NumberPicker agf(String paramString)
   {
     AppMethodBeat.i(138071);
     try
@@ -115,28 +115,28 @@ public final class AppBrandTimePicker
     return null;
   }
   
-  public final void bLt()
+  public final void dRg()
   {
     AppMethodBeat.i(138066);
-    if ((e.wP(this.mMinTimeHour)) && (g.wO(this.mMinTimeMinute)) && (this.nqm != null) && (this.nqn != null))
+    if ((e.Ax(this.mMinTimeHour)) && (g.Aw(this.mMinTimeMinute)) && (this.ozT != null) && (this.ozU != null))
     {
-      if (this.nqm.getValue() != this.mMinTimeHour) {
+      if (this.ozT.getValue() != this.mMinTimeHour) {
         break label119;
       }
-      this.nqn.setMinValue(this.mMinTimeMinute);
+      this.ozU.setMinValue(this.mMinTimeMinute);
     }
-    while ((e.wP(this.mMaxTimeHour)) && (this.nqm != null) && (this.nqn != null)) {
-      if (this.nqm.getValue() == this.mMaxTimeHour)
+    while ((e.Ax(this.mMaxTimeHour)) && (this.ozT != null) && (this.ozU != null)) {
+      if (this.ozT.getValue() == this.mMaxTimeHour)
       {
-        this.nqn.setMaxValue(this.mMaxTimeMinute);
+        this.ozU.setMaxValue(this.mMaxTimeMinute);
         AppMethodBeat.o(138066);
         return;
         label119:
-        this.nqn.setMinValue(0);
+        this.ozU.setMinValue(0);
       }
       else
       {
-        this.nqn.setMaxValue(59);
+        this.ozU.setMaxValue(59);
       }
     }
     AppMethodBeat.o(138066);
@@ -153,8 +153,8 @@ public final class AppBrandTimePicker
   {
     AppMethodBeat.i(138072);
     super.onAttachedToWindow();
-    f.e(this.nqm);
-    f.e(this.nqn);
+    f.e(this.ozT);
+    f.e(this.ozU);
     AppMethodBeat.o(138072);
   }
   
@@ -171,7 +171,7 @@ public final class AppBrandTimePicker
     for (int i = 0;; i = paramInteger.intValue())
     {
       super.setCurrentHour(Integer.valueOf(i));
-      bLt();
+      dRg();
       AppMethodBeat.o(138068);
       return;
     }
@@ -184,7 +184,7 @@ public final class AppBrandTimePicker
     for (int i = 0;; i = paramInteger.intValue())
     {
       super.setCurrentMinute(Integer.valueOf(i));
-      bLt();
+      dRg();
       AppMethodBeat.o(138067);
       return;
     }
@@ -192,7 +192,7 @@ public final class AppBrandTimePicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandTimePicker
  * JD-Core Version:    0.7.0.1
  */

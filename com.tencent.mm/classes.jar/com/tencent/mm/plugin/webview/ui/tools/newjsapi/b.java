@@ -5,34 +5,36 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.c;
 import com.tencent.mm.plugin.messenger.foundation.a.c.a;
 import com.tencent.mm.plugin.messenger.foundation.a.c.b;
-import com.tencent.mm.plugin.webview.c.c.a;
-import com.tencent.mm.plugin.webview.c.d;
-import com.tencent.mm.plugin.webview.c.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.f;
+import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiAppBindGroup;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiAppBindGroup;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class b
   extends a
 {
-  public static final b EHp;
+  public static final b JwW;
   
   static
   {
-    AppMethodBeat.i(199388);
-    EHp = new b();
-    AppMethodBeat.o(199388);
+    AppMethodBeat.i(210580);
+    JwW = new b();
+    AppMethodBeat.o(210580);
   }
   
-  public final boolean a(final d paramd, final com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(final f paramf, final n paramn)
   {
     c.b localb = null;
-    AppMethodBeat.i(199387);
-    p.h(paramd, "env");
-    p.h(paraml, "msg");
-    Object localObject2 = paraml.xqN.get("url");
+    AppMethodBeat.i(210579);
+    p.h(paramf, "env");
+    p.h(paramn, "msg");
+    Object localObject2 = paramn.params.get("url");
     Object localObject1 = localObject2;
     if (!(localObject2 instanceof String)) {
       localObject1 = null;
@@ -42,34 +44,34 @@ public final class b
     if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ae.i("MicroMsg.JsApiAppBindGroup.", "url is null");
-      paramd.DQe.i(paraml.Efy, "bindGroup:fail", null);
-      AppMethodBeat.o(199387);
+      Log.i("MicroMsg.JsApiAppBindGroup.", "url is null");
+      paramf.IQZ.h(paramn.ISe, "bindGroup:fail", null);
+      AppMethodBeat.o(210579);
       return true;
     }
-    String str1 = paramd.DQe.aHX((String)localObject1);
+    String str1 = paramf.IQZ.aXZ((String)localObject1);
     localObject1 = (CharSequence)str1;
     if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
     for (i = 1; i != 0; i = 0)
     {
-      ae.i("MicroMsg.JsApiAppBindGroup.", "appId is null");
-      paramd.DQe.i(paraml.Efy, "bindGroup:fail", null);
-      AppMethodBeat.o(199387);
+      Log.i("MicroMsg.JsApiAppBindGroup.", "appId is null");
+      paramf.IQZ.h(paramn.ISe, "bindGroup:fail", null);
+      AppMethodBeat.o(210579);
       return true;
     }
-    localObject2 = paraml.xqN.get("signature");
+    localObject2 = paramn.params.get("signature");
     localObject1 = localObject2;
     if (!(localObject2 instanceof String)) {
       localObject1 = null;
     }
     String str2 = (String)localObject1;
-    localObject2 = paraml.xqN.get("groupId");
+    localObject2 = paramn.params.get("groupId");
     localObject1 = localObject2;
     if (!(localObject2 instanceof String)) {
       localObject1 = null;
     }
     localObject2 = (String)localObject1;
-    localObject1 = paraml.xqN.get("nonceStr");
+    localObject1 = paramn.params.get("nonceStr");
     if (!(localObject1 instanceof String)) {
       localObject1 = localb;
     }
@@ -79,58 +81,58 @@ public final class b
       localb = new c.b();
       localb.appId = str1;
       localb.signature = str2;
-      localb.vVS = ((String)localObject2);
-      localb.vVT = ((String)localObject1);
-      ((c)g.ab(c.class)).a(paramd.context, localb, (c.a)new a((String)localObject2, paramd, paraml));
-      AppMethodBeat.o(199387);
+      localb.zpX = ((String)localObject2);
+      localb.zpY = ((String)localObject1);
+      ((c)g.af(c.class)).a(paramf.context, localb, (c.a)new a((String)localObject2, paramf, paramn));
+      AppMethodBeat.o(210579);
       return true;
     }
   }
   
-  public final int eSw()
+  public final int ePA()
   {
     return 376;
   }
   
-  public final String eSx()
+  public final String ePz()
   {
     return "bindGroup";
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "success", "", "errorMsg", "", "groupOpenId", "onDealEnd"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "success", "", "errorMsg", "", "groupOpenId", "onDealEnd"})
   static final class a
     implements c.a
   {
-    a(String paramString, d paramd, com.tencent.mm.plugin.webview.c.l paraml) {}
+    a(String paramString, f paramf, n paramn) {}
     
     public final void a(boolean paramBoolean, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(199386);
+      AppMethodBeat.i(210578);
       if (paramBoolean)
       {
         localObject1 = (CharSequence)paramString2;
         if ((localObject1 == null) || (((CharSequence)localObject1).length() == 0)) {}
         for (int i = 1; i != 0; i = 0)
         {
-          ae.i("MicroMsg.JsApiAppBindGroup.", "success:" + this.EHq);
+          Log.i("MicroMsg.JsApiAppBindGroup.", "success:" + this.JwX);
           paramString1 = new HashMap();
           ((Map)paramString1).put("openId", paramString2);
-          paramString2 = paramd.DQe;
-          localObject1 = paraml.Efy;
+          paramString2 = paramf.IQZ;
+          localObject1 = paramn.ISe;
           localObject2 = new StringBuilder();
-          b localb = b.EHp;
-          paramString2.i((String)localObject1, "bindGroup:success", (Map)paramString1);
-          AppMethodBeat.o(199386);
+          b localb = b.JwW;
+          paramString2.h((String)localObject1, "bindGroup:success", (Map)paramString1);
+          AppMethodBeat.o(210578);
           return;
         }
       }
-      ae.i("MicroMsg.JsApiAppBindGroup.", "fail:".concat(String.valueOf(paramString1)));
-      paramString1 = paramd.DQe;
-      paramString2 = paraml.Efy;
+      Log.i("MicroMsg.JsApiAppBindGroup.", "fail:".concat(String.valueOf(paramString1)));
+      paramString1 = paramf.IQZ;
+      paramString2 = paramn.ISe;
       Object localObject1 = new StringBuilder();
-      Object localObject2 = b.EHp;
-      paramString1.i(paramString2, "bindGroup:fail", null);
-      AppMethodBeat.o(199386);
+      Object localObject2 = b.JwW;
+      paramString1.h(paramString2, "bindGroup:fail", null);
+      AppMethodBeat.o(210578);
     }
   }
 }

@@ -6,9 +6,9 @@ import android.os.AsyncTask;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -19,40 +19,40 @@ import java.util.List;
 public final class r
   implements d.c
 {
-  List<c> ifB;
-  c ifC;
-  boolean ifD;
+  List<c> jaw;
+  c jax;
+  boolean jay;
   
   public r()
   {
     AppMethodBeat.i(150764);
-    this.ifB = new LinkedList();
-    this.ifC = null;
-    this.ifD = false;
+    this.jaw = new LinkedList();
+    this.jax = null;
+    this.jay = false;
     AppMethodBeat.o(150764);
   }
   
-  static String Gc(String paramString)
+  static String ON(String paramString)
   {
     AppMethodBeat.i(150769);
     try
     {
       String str = URLEncoder.encode(paramString, "UTF-8");
-      if (bu.isNullOrNil(str))
+      if (Util.isNullOrNil(str))
       {
-        ae.e("MicroMsg.UrlImageCacheService", "encode result is null: ".concat(String.valueOf(paramString)));
+        Log.e("MicroMsg.UrlImageCacheService", "encode result is null: ".concat(String.valueOf(paramString)));
         AppMethodBeat.o(150769);
         return null;
       }
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      ae.e("MicroMsg.UrlImageCacheService", "try encode unsupport character: ".concat(String.valueOf(paramString)));
+      Log.e("MicroMsg.UrlImageCacheService", "try encode unsupport character: ".concat(String.valueOf(paramString)));
       AppMethodBeat.o(150769);
       return null;
     }
     paramString = new StringBuilder();
-    paramString.append(b.ass());
+    paramString.append(b.aKS());
     int j = localUnsupportedEncodingException.length();
     int i = 0;
     while (i < j)
@@ -79,42 +79,42 @@ public final class r
     AppMethodBeat.i(150770);
     if (paramBitmap == null)
     {
-      ae.e("MicroMsg.UrlImageCacheService", "load from url failed: " + this.ifC.url);
-      this.ifC = null;
-      aJd();
+      Log.e("MicroMsg.UrlImageCacheService", "load from url failed: " + this.jax.url);
+      this.jax = null;
+      bcX();
       AppMethodBeat.o(150770);
       return;
     }
-    ae.i("MicroMsg.UrlImageCacheService", "load from %s successed", new Object[] { this.ifC.url });
+    Log.i("MicroMsg.UrlImageCacheService", "load from %s successed", new Object[] { this.jax.url });
     boolean bool;
-    if ((!bu.isNullOrNil(this.ifC.md5)) && (paramArrayOfByte != null))
+    if ((!Util.isNullOrNil(this.jax.md5)) && (paramArrayOfByte != null))
     {
       paramArrayOfByte = g.getMessageDigest(paramArrayOfByte);
-      if (!bu.lX(paramArrayOfByte, this.ifC.md5))
+      if (!Util.isEqual(paramArrayOfByte, this.jax.md5))
       {
         bool = false;
-        ae.i("MicroMsg.UrlImageCacheService", "orgmd5:%s newmd5:%s checkReuslt:%s", new Object[] { this.ifC.md5, paramArrayOfByte, Boolean.valueOf(bool) });
+        Log.i("MicroMsg.UrlImageCacheService", "orgmd5:%s newmd5:%s checkReuslt:%s", new Object[] { this.jax.md5, paramArrayOfByte, Boolean.valueOf(bool) });
       }
     }
     for (;;)
     {
       if (bool)
       {
-        paramArrayOfByte = Gc(this.ifC.url);
+        paramArrayOfByte = ON(this.jax.url);
         new AsyncTask()new b
         {
           private static Integer a(r.b... paramAnonymousVarArgs)
           {
             AppMethodBeat.i(150762);
-            if ((paramAnonymousVarArgs.length == 0) || (bu.isNullOrNil(paramAnonymousVarArgs[0].path)) || (paramAnonymousVarArgs[0].bitmap == null))
+            if ((paramAnonymousVarArgs.length == 0) || (Util.isNullOrNil(paramAnonymousVarArgs[0].path)) || (paramAnonymousVarArgs[0].bitmap == null))
             {
-              ae.e("MicroMsg.UrlImageCacheService", "nothing to save");
+              Log.e("MicroMsg.UrlImageCacheService", "nothing to save");
               AppMethodBeat.o(150762);
               return null;
             }
             try
             {
-              h.a(paramAnonymousVarArgs[0].bitmap, 100, Bitmap.CompressFormat.PNG, paramAnonymousVarArgs[0].path, false);
+              BitmapUtil.saveBitmapToImage(paramAnonymousVarArgs[0].bitmap, 100, Bitmap.CompressFormat.PNG, paramAnonymousVarArgs[0].path, false);
               AppMethodBeat.o(150762);
               return null;
             }
@@ -122,26 +122,26 @@ public final class r
             {
               for (;;)
               {
-                ae.e("MicroMsg.UrlImageCacheService", "save bitmap to image failed: " + paramAnonymousVarArgs.toString());
+                Log.e("MicroMsg.UrlImageCacheService", "save bitmap to image failed: " + paramAnonymousVarArgs.toString());
               }
             }
           }
         }.execute(new b[] { new b(paramArrayOfByte, paramBitmap) });
-        if (!this.ifD)
+        if (!this.jay)
         {
-          q.aIW();
-          d.g(this.ifC.url, paramBitmap);
-          this.ifC.ifF.a(this.ifC.url, paramBitmap, paramArrayOfByte);
+          q.bcQ();
+          d.g(this.jax.url, paramBitmap);
+          this.jax.jaA.a(this.jax.url, paramBitmap, paramArrayOfByte);
         }
       }
       for (;;)
       {
-        this.ifC = null;
-        aJd();
+        this.jax = null;
+        bcX();
         AppMethodBeat.o(150770);
         return;
-        if (!this.ifD) {
-          this.ifC.ifF.a(this.ifC.url, null, "");
+        if (!this.jay) {
+          this.jax.jaA.a(this.jax.url, null, "");
         }
       }
       bool = true;
@@ -160,92 +160,92 @@ public final class r
   public final void a(String paramString1, String paramString2, a parama)
   {
     AppMethodBeat.i(150766);
-    if ((bu.isNullOrNil(paramString1)) || (parama == null))
+    if ((Util.isNullOrNil(paramString1)) || (parama == null))
     {
-      ae.e("MicroMsg.UrlImageCacheService", "url is null or nil, or callback is null");
+      Log.e("MicroMsg.UrlImageCacheService", "url is null or nil, or callback is null");
       AppMethodBeat.o(150766);
       return;
     }
-    if ((this.ifC != null) && (this.ifC.url.equals(paramString1)) && (this.ifC.ifF == parama))
+    if ((this.jax != null) && (this.jax.url.equals(paramString1)) && (this.jax.jaA == parama))
     {
-      ae.e("MicroMsg.UrlImageCacheService", "url and callback is loading");
+      Log.e("MicroMsg.UrlImageCacheService", "url and callback is loading");
       AppMethodBeat.o(150766);
       return;
     }
-    Iterator localIterator = this.ifB.iterator();
+    Iterator localIterator = this.jaw.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if ((localc.url.equals(paramString1)) && (localc.ifF == parama))
+      if ((localc.url.equals(paramString1)) && (localc.jaA == parama))
       {
-        ae.e("MicroMsg.UrlImageCacheService", "url and callback is loading");
+        Log.e("MicroMsg.UrlImageCacheService", "url and callback is loading");
         AppMethodBeat.o(150766);
         return;
       }
     }
-    this.ifB.add(new c(paramString1, paramString2, parama));
-    aJd();
+    this.jaw.add(new c(paramString1, paramString2, parama));
+    bcX();
     AppMethodBeat.o(150766);
-  }
-  
-  final void aJd()
-  {
-    AppMethodBeat.i(150768);
-    for (;;)
-    {
-      if ((this.ifC != null) || (this.ifB.size() == 0))
-      {
-        ae.d("MicroMsg.UrlImageCacheService", "task is downing or no more task");
-        AppMethodBeat.o(150768);
-        return;
-      }
-      this.ifC = ((c)this.ifB.get(0));
-      this.ifB.remove(0);
-      this.ifD = false;
-      q.aIW();
-      Bitmap localBitmap = d.wA(this.ifC.url);
-      if (localBitmap == null) {
-        break;
-      }
-      ae.d("MicroMsg.UrlImageCacheService", "find bitmap in cache of " + this.ifC.url);
-      if (!this.ifD) {
-        this.ifC.ifF.a(this.ifC.url, localBitmap, Gc(this.ifC.url));
-      }
-      this.ifC = null;
-    }
-    new AsyncTask() {}.execute(new String[] { this.ifC.url });
-    AppMethodBeat.o(150768);
   }
   
   public final void b(String paramString, a parama)
   {
     AppMethodBeat.i(150767);
-    if ((bu.isNullOrNil(paramString)) || (parama == null))
+    if ((Util.isNullOrNil(paramString)) || (parama == null))
     {
-      ae.e("MicroMsg.UrlImageCacheService", "url is null or nil, or callback is null");
+      Log.e("MicroMsg.UrlImageCacheService", "url is null or nil, or callback is null");
       AppMethodBeat.o(150767);
       return;
     }
-    if ((this.ifC != null) && (this.ifC.url.equals(paramString)) && (this.ifC.ifF == parama))
+    if ((this.jax != null) && (this.jax.url.equals(paramString)) && (this.jax.jaA == parama))
     {
-      this.ifD = true;
-      ae.i("MicroMsg.UrlImageCacheService", "cancel task that is loading, url:%s", new Object[] { paramString });
+      this.jay = true;
+      Log.i("MicroMsg.UrlImageCacheService", "cancel task that is loading, url:%s", new Object[] { paramString });
       AppMethodBeat.o(150767);
       return;
     }
-    Iterator localIterator = this.ifB.iterator();
+    Iterator localIterator = this.jaw.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if ((localc.url.equals(paramString)) && (localc.ifF == parama))
+      if ((localc.url.equals(paramString)) && (localc.jaA == parama))
       {
-        ae.i("MicroMsg.UrlImageCacheService", "cancel task, url:%s", new Object[] { paramString });
-        this.ifB.remove(localc);
+        Log.i("MicroMsg.UrlImageCacheService", "cancel task, url:%s", new Object[] { paramString });
+        this.jaw.remove(localc);
         AppMethodBeat.o(150767);
         return;
       }
     }
     AppMethodBeat.o(150767);
+  }
+  
+  final void bcX()
+  {
+    AppMethodBeat.i(150768);
+    for (;;)
+    {
+      if ((this.jax != null) || (this.jaw.size() == 0))
+      {
+        Log.d("MicroMsg.UrlImageCacheService", "task is downing or no more task");
+        AppMethodBeat.o(150768);
+        return;
+      }
+      this.jax = ((c)this.jaw.get(0));
+      this.jaw.remove(0);
+      this.jay = false;
+      q.bcQ();
+      Bitmap localBitmap = d.EP(this.jax.url);
+      if (localBitmap == null) {
+        break;
+      }
+      Log.d("MicroMsg.UrlImageCacheService", "find bitmap in cache of " + this.jax.url);
+      if (!this.jay) {
+        this.jax.jaA.a(this.jax.url, localBitmap, ON(this.jax.url));
+      }
+      this.jax = null;
+    }
+    new AsyncTask() {}.execute(new String[] { this.jax.url });
+    AppMethodBeat.o(150768);
   }
   
   public static abstract interface a
@@ -267,7 +267,7 @@ public final class r
   
   static final class c
   {
-    public r.a ifF;
+    public r.a jaA;
     public String md5;
     public String url;
     
@@ -275,13 +275,13 @@ public final class r
     {
       this.url = paramString1;
       this.md5 = paramString2;
-      this.ifF = parama;
+      this.jaA = parama;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.av.r
  * JD-Core Version:    0.7.0.1
  */

@@ -15,105 +15,102 @@ import org.json.JSONObject;
 public final class a
   extends f
 {
-  private final com.tencent.matrix.trace.a.b cKe;
-  private Handler cLA;
-  private Handler cLB;
-  private volatile a cLC;
-  private volatile b cLD;
-  private boolean cLE;
+  private final com.tencent.matrix.trace.a.b daC;
+  private Handler dbY;
+  private Handler dbZ;
+  private volatile a dca = new a();
+  private volatile b dcb = new b();
+  private boolean dcc;
   
   public a(com.tencent.matrix.trace.a.b paramb)
   {
-    this.cKe = paramb;
-    this.cLE = paramb.cKp;
+    this.daC = paramb;
+    this.dcc = paramb.daN;
   }
   
   public final void a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, boolean paramBoolean)
   {
     super.a(paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramBoolean);
-    if (this.cKe.cKq)
+    if (this.daC.daO)
     {
       paramLong1 = (paramLong3 - paramLong1) / 1000000L;
-      com.tencent.matrix.g.c.v("Matrix.AnrTracer", "[dispatchEnd] token:%s cost:%sms cpu:%sms usage:%s", new Object[] { Long.valueOf(paramLong5), Long.valueOf(paramLong1), Long.valueOf(paramLong4 - paramLong2), com.tencent.matrix.trace.g.b.p(paramLong4 - paramLong2, paramLong1) });
+      com.tencent.matrix.g.c.v("Matrix.AnrTracer", "[dispatchEnd] token:%s cost:%sms cpu:%sms usage:%s", new Object[] { Long.valueOf(paramLong5), Long.valueOf(paramLong1), Long.valueOf(paramLong4 - paramLong2), com.tencent.matrix.trace.g.b.q(paramLong4 - paramLong2, paramLong1) });
     }
-    if (this.cLC != null)
+    if (this.dca != null)
     {
-      this.cLC.cLF.release();
-      this.cLA.removeCallbacks(this.cLC);
+      this.dca.dcd.release();
+      this.dbY.removeCallbacks(this.dca);
     }
-    if (this.cLD != null) {
-      this.cLB.removeCallbacks(this.cLD);
+    if (this.dcb != null) {
+      this.dbZ.removeCallbacks(this.dcb);
     }
   }
   
   public final void d(long paramLong1, long paramLong2, long paramLong3)
   {
     super.d(paramLong1, paramLong2, paramLong3);
-    this.cLC = new a(AppMethodBeat.getInstance().maskIndex("AnrTracer#dispatchBegin"), paramLong3);
-    this.cLD = new b();
-    if (this.cKe.cKq) {
-      com.tencent.matrix.g.c.v("Matrix.AnrTracer", "* [dispatchBegin] token:%s index:%s", new Object[] { Long.valueOf(paramLong3), Integer.valueOf(this.cLC.cLF.index) });
+    this.dca.dcd = AppMethodBeat.getInstance().maskIndex("AnrTracer#dispatchBegin");
+    this.dca.dbl = paramLong3;
+    if (this.daC.daO) {
+      com.tencent.matrix.g.c.v("Matrix.AnrTracer", "* [dispatchBegin] token:%s index:%s", new Object[] { Long.valueOf(paramLong3), Integer.valueOf(this.dca.dcd.index) });
     }
-    this.cLA.postDelayed(this.cLC, 5000L - (System.nanoTime() - paramLong3) / 1000000L);
-    this.cLB.postDelayed(this.cLD, 2000L - (System.nanoTime() - paramLong3) / 1000000L);
+    paramLong1 = (System.nanoTime() - paramLong3) / 1000000L;
+    this.dbY.postDelayed(this.dca, 5000L - paramLong1);
+    this.dbZ.postDelayed(this.dcb, 2000L - paramLong1);
   }
   
   public final void onAlive()
   {
     super.onAlive();
-    if (this.cLE)
+    if (this.dcc)
     {
-      com.tencent.matrix.trace.core.b.Ji().a(this);
-      this.cLA = new Handler(com.tencent.matrix.g.b.JC().getLooper());
-      this.cLB = new Handler(com.tencent.matrix.g.b.JC().getLooper());
+      com.tencent.matrix.trace.core.b.Tw().a(this);
+      this.dbY = new Handler(com.tencent.matrix.g.b.TQ().getLooper());
+      this.dbZ = new Handler(com.tencent.matrix.g.b.TQ().getLooper());
     }
   }
   
   public final void onDead()
   {
     super.onDead();
-    if (this.cLE)
+    if (this.dcc)
     {
-      com.tencent.matrix.trace.core.b.Ji().b(this);
-      if (this.cLC != null) {
-        this.cLC.cLF.release();
+      com.tencent.matrix.trace.core.b.Tw().b(this);
+      if (this.dca != null) {
+        this.dca.dcd.release();
       }
-      this.cLA.removeCallbacksAndMessages(null);
-      this.cLB.removeCallbacksAndMessages(null);
+      this.dbY.removeCallbacksAndMessages(null);
+      this.dbZ.removeCallbacksAndMessages(null);
     }
   }
   
   final class a
     implements Runnable
   {
-    long cKO;
-    AppMethodBeat.a cLF;
+    long dbl;
+    AppMethodBeat.a dcd;
     
-    a(AppMethodBeat.a parama, long paramLong)
-    {
-      this.cLF = parama;
-      this.cKO = paramLong;
-    }
+    public a() {}
     
     public final void run()
     {
       long l1 = SystemClock.uptimeMillis();
-      boolean bool = com.tencent.matrix.a.cBz.cBB;
-      Object localObject2 = com.tencent.matrix.trace.g.b.hd(Process.myPid());
-      Object localObject5 = AppMethodBeat.getInstance().copyData(this.cLF);
-      this.cLF.release();
+      boolean bool = com.tencent.matrix.a.cPA.cPB;
+      Object localObject2 = com.tencent.matrix.trace.g.b.ix(Process.myPid());
+      Object localObject5 = AppMethodBeat.getInstance().copyData(this.dcd);
+      this.dcd.release();
       String str = AppMethodBeat.getVisibleScene();
       Object localObject1 = new long[3];
       localObject1[0] = com.tencent.matrix.g.a.getDalvikHeap();
       localObject1[1] = com.tencent.matrix.g.a.getNativeHeap();
-      localObject1[2] = com.tencent.matrix.g.a.Jz();
+      localObject1[2] = com.tencent.matrix.g.a.TN();
       Object localObject3 = Looper.getMainLooper().getThread().getState();
       StackTraceElement[] arrayOfStackTraceElement = Looper.getMainLooper().getThread().getStackTrace();
       Object localObject4 = com.tencent.matrix.trace.g.b.a(arrayOfStackTraceElement, "|*\t\t", 12);
-      Object localObject6 = com.tencent.matrix.trace.core.b.Ji();
-      long l2 = ((com.tencent.matrix.trace.core.b)localObject6).s(0, this.cKO);
-      long l3 = ((com.tencent.matrix.trace.core.b)localObject6).s(1, this.cKO);
-      long l4 = ((com.tencent.matrix.trace.core.b)localObject6).s(2, this.cKO);
+      Object localObject6 = com.tencent.matrix.trace.core.b.Tw();
+      long l2 = ((com.tencent.matrix.trace.core.b)localObject6).u(0, this.dbl);
+      long l3 = ((com.tencent.matrix.trace.core.b)localObject6).u(1, this.dbl);
+      long l4 = ((com.tencent.matrix.trace.core.b)localObject6).u(2, this.dbl);
       Object localObject7 = new LinkedList();
       if (localObject5.length > 0)
       {
@@ -140,7 +137,7 @@ public final class a
       localObject5 = new StringBuilder();
       StringBuilder localStringBuilder = new StringBuilder();
       long l5 = Math.max(5000L, com.tencent.matrix.trace.g.a.a((LinkedList)localObject7, (StringBuilder)localObject5, localStringBuilder));
-      localObject6 = com.tencent.matrix.trace.g.a.a((List)localObject7, l5);
+      localObject6 = com.tencent.matrix.trace.g.a.b((List)localObject7, l5);
       long l6 = ((LinkedList)localObject7).size();
       localObject7 = new StringBuilder();
       ((StringBuilder)localObject7).append(String.format("-\n>>>>>>>>>>>>>>>>>>>>>>> maybe happens ANR(%s ms)! <<<<<<<<<<<<<<<<<<<<<<<\n", new Object[] { Long.valueOf(l5) }));
@@ -164,7 +161,7 @@ public final class a
         ((StringBuilder)localObject7).append("|*\t\tStackKey: ").append((String)localObject6).append("\n");
         ((StringBuilder)localObject7).append(localStringBuilder.toString());
         ((StringBuilder)localObject7).append("=========================================================================");
-        com.tencent.matrix.g.c.w("Matrix.AnrTracer", "%s \npostTime:%s curTime:%s", new Object[] { ((StringBuilder)localObject7).toString(), Long.valueOf(this.cKO / 1000000L), Long.valueOf(l1) });
+        com.tencent.matrix.g.c.w("Matrix.AnrTracer", "%s \npostTime:%s curTime:%s", new Object[] { ((StringBuilder)localObject7).toString(), Long.valueOf(this.dbl / 1000000L), Long.valueOf(l1) });
         if (l5 < 6000L) {
           break label661;
         }
@@ -178,11 +175,11 @@ public final class a
         try
         {
           label661:
-          localObject3 = (com.tencent.matrix.trace.a)com.tencent.matrix.b.HT().V(com.tencent.matrix.trace.a.class);
+          localObject3 = (com.tencent.matrix.trace.a)com.tencent.matrix.b.RG().Y(com.tencent.matrix.trace.a.class);
           if (localObject3 != null)
           {
-            localObject4 = com.tencent.matrix.g.a.a(new JSONObject(), com.tencent.matrix.b.HT().application);
-            ((JSONObject)localObject4).put("detail", com.tencent.matrix.trace.b.a.a.cKw);
+            localObject4 = com.tencent.matrix.g.a.a(new JSONObject(), com.tencent.matrix.b.RG().application);
+            ((JSONObject)localObject4).put("detail", com.tencent.matrix.trace.b.a.a.daU);
             ((JSONObject)localObject4).put("cost", l5);
             ((JSONObject)localObject4).put("stackKey", localObject6);
             ((JSONObject)localObject4).put("scene", str);
@@ -197,9 +194,9 @@ public final class a
             ((JSONObject)localObject2).put("vm_size", localObject1[2]);
             ((JSONObject)localObject4).put("memory", localObject2);
             localObject1 = new com.tencent.matrix.report.c();
-            ((com.tencent.matrix.report.c)localObject1).key = this.cKO;
+            ((com.tencent.matrix.report.c)localObject1).key = this.dbl;
             ((com.tencent.matrix.report.c)localObject1).tag = "Trace_EvilMethod";
-            ((com.tencent.matrix.report.c)localObject1).cFG = ((JSONObject)localObject4);
+            ((com.tencent.matrix.report.c)localObject1).cWe = ((JSONObject)localObject4);
             ((com.tencent.matrix.trace.a)localObject3).onDetectIssue((com.tencent.matrix.report.c)localObject1);
             return;
           }
@@ -220,22 +217,22 @@ public final class a
     public final void run()
     {
       Object localObject = AppMethodBeat.getVisibleScene();
-      boolean bool = com.tencent.matrix.a.cBz.cBB;
+      boolean bool = com.tencent.matrix.a.cPA.cPB;
       try
       {
-        com.tencent.matrix.trace.a locala = (com.tencent.matrix.trace.a)com.tencent.matrix.b.HT().V(com.tencent.matrix.trace.a.class);
+        com.tencent.matrix.trace.a locala = (com.tencent.matrix.trace.a)com.tencent.matrix.b.RG().Y(com.tencent.matrix.trace.a.class);
         if (locala == null) {
           return;
         }
         StackTraceElement[] arrayOfStackTraceElement = Looper.getMainLooper().getThread().getStackTrace();
-        JSONObject localJSONObject = com.tencent.matrix.g.a.a(new JSONObject(), com.tencent.matrix.b.HT().application);
-        localJSONObject.put("detail", com.tencent.matrix.trace.b.a.a.cKy);
+        JSONObject localJSONObject = com.tencent.matrix.g.a.a(new JSONObject(), com.tencent.matrix.b.RG().application);
+        localJSONObject.put("detail", com.tencent.matrix.trace.b.a.a.daW);
         localJSONObject.put("scene", localObject);
         localJSONObject.put("threadStack", com.tencent.matrix.trace.g.b.a(arrayOfStackTraceElement));
         localJSONObject.put("isProcessForeground", bool);
         localObject = new com.tencent.matrix.report.c();
         ((com.tencent.matrix.report.c)localObject).tag = "Trace_EvilMethod";
-        ((com.tencent.matrix.report.c)localObject).cFG = localJSONObject;
+        ((com.tencent.matrix.report.c)localObject).cWe = localJSONObject;
         locala.onDetectIssue((com.tencent.matrix.report.c)localObject);
         com.tencent.matrix.g.c.e("Matrix.AnrTracer", "happens lag : %s ", new Object[] { localJSONObject.toString() });
         return;
@@ -249,7 +246,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.trace.f.a
  * JD-Core Version:    0.7.0.1
  */

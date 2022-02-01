@@ -12,7 +12,7 @@ public class BSPatchJNIWrapper
   {
     AppMethodBeat.i(44127);
     BSPatchJNIWrapper.class.getClassLoader();
-    j.vN("appbrandcommon");
+    j.Ed("appbrandcommon");
     AppMethodBeat.o(44127);
   }
   
@@ -26,7 +26,7 @@ public class BSPatchJNIWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.BSPatchJNIWrapper
  * JD-Core Version:    0.7.0.1
  */

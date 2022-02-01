@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class le
-  extends b
+  extends IEvent
 {
-  public a dzu;
-  public b dzv;
+  public a dQr;
   
   public le()
   {
@@ -16,29 +16,23 @@ public final class le
   
   private le(byte paramByte)
   {
-    AppMethodBeat.i(89748);
-    this.dzu = new a();
-    this.dzv = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(91208);
+    this.dQr = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(89748);
+    AppMethodBeat.o(91208);
   }
   
   public static final class a
   {
-    public int dsO = 0;
-    public String dzw;
-    public int dzx = 0;
-  }
-  
-  public static final class b
-  {
-    public boolean doq = false;
+    public Intent dQs;
+    public int requestCode;
+    public int resultCode;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.le
  * JD-Core Version:    0.7.0.1
  */

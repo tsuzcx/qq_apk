@@ -1,98 +1,99 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ahb;
-import com.tencent.mm.protocal.protobuf.ahc;
-import com.tencent.mm.protocal.protobuf.dna;
-import com.tencent.mm.protocal.protobuf.dnb;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ajn;
+import com.tencent.mm.protocal.protobuf.ajo;
+import com.tencent.mm.protocal.protobuf.egr;
+import com.tencent.mm.protocal.protobuf.egs;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
   extends f
 {
-  public int BFF;
-  public int BFG;
-  public LinkedList<dna> BFI;
-  public LinkedList<dnb> BGa;
-  private com.tencent.mm.ak.f callback;
+  public LinkedList<egs> FQR;
+  public int FQw;
+  public int FQx;
+  public LinkedList<egr> FQz;
+  private i callback;
   public int roomId;
-  private final b rr;
+  private final d rr;
   private int sceneType;
-  public long uXg;
-  private final String vpL;
+  private final String yJB;
+  public long ypH;
   
   public a(String paramString, int paramInt)
   {
     AppMethodBeat.i(29549);
     this.sceneType = 0;
-    b.a locala = new b.a();
+    d.a locala = new d.a();
     this.sceneType = paramInt;
-    locala.hQF = new ahb();
-    locala.hQG = new ahc();
+    locala.iLN = new ajn();
+    locala.iLO = new ajo();
     locala.uri = "/cgi-bin/micromsg-bin/entertalkroom";
     locala.funcId = 332;
-    locala.hQH = 147;
+    locala.iLP = 147;
     locala.respCmdId = 1000000147;
-    this.rr = locala.aDS();
-    ((ahb)this.rr.hQD.hQJ).Gxp = paramString;
-    ((ahb)this.rr.hQD.hQJ).Scene = paramInt;
-    this.vpL = paramString;
+    this.rr = locala.aXF();
+    ((ajn)this.rr.iLK.iLR).LsY = paramString;
+    ((ajn)this.rr.iLK.iLR).Scene = paramInt;
+    this.yJB = paramString;
     AppMethodBeat.o(29549);
   }
   
-  private static LinkedList<dnb> aW(LinkedList<dnb> paramLinkedList)
+  private static LinkedList<egs> bs(LinkedList<egs> paramLinkedList)
   {
     AppMethodBeat.i(29552);
     LinkedList localLinkedList = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext())
     {
-      dnb localdnb = (dnb)paramLinkedList.next();
-      if (!bu.isNullOrNil(localdnb.nIJ)) {
-        localLinkedList.add(localdnb);
+      egs localegs = (egs)paramLinkedList.next();
+      if (!Util.isNullOrNil(localegs.UserName)) {
+        localLinkedList.add(localegs);
       }
     }
     AppMethodBeat.o(29552);
     return localLinkedList;
   }
   
-  private static LinkedList<dna> aX(LinkedList<dna> paramLinkedList)
+  private static LinkedList<egr> bt(LinkedList<egr> paramLinkedList)
   {
     AppMethodBeat.i(29553);
     LinkedList localLinkedList = new LinkedList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext()) {
-      localLinkedList.add((dna)paramLinkedList.next());
+      localLinkedList.add((egr)paramLinkedList.next());
     }
     AppMethodBeat.o(29553);
     return localLinkedList;
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(29550);
-    ae.d("MicroMsg.NetSceneEnterTalkRoom", "doScene %d", new Object[] { Integer.valueOf(this.sceneType) });
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    Log.d("MicroMsg.NetSceneEnterTalkRoom", "doScene %d", new Object[] { Integer.valueOf(this.sceneType) });
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(29550);
     return i;
   }
   
-  public final String erF()
+  public final String fui()
   {
-    return this.vpL;
+    return this.yJB;
   }
   
-  public final int erG()
+  public final int fuj()
   {
     return this.sceneType;
   }
@@ -102,24 +103,24 @@ public final class a
     return 332;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29551);
-    ae.d("MicroMsg.NetSceneEnterTalkRoom", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    Log.d("MicroMsg.NetSceneEnterTalkRoom", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(29551);
       return;
     }
-    paramq = (ahc)this.rr.hQE.hQJ;
-    ae.i("MicroMsg.NetSceneEnterTalkRoom", "resp %s", new Object[] { paramq.toString() });
-    this.roomId = paramq.Gxq;
-    this.uXg = paramq.Gxr;
-    this.BFF = paramq.Gxs;
-    this.BFG = paramq.Gxu;
-    this.BGa = aW(paramq.FNl);
-    this.BFI = aX(paramq.FSU);
+    params = (ajo)this.rr.iLL.iLR;
+    Log.i("MicroMsg.NetSceneEnterTalkRoom", "resp %s", new Object[] { params.toString() });
+    this.roomId = params.LsZ;
+    this.ypH = params.Lta;
+    this.FQw = params.Ltb;
+    this.FQx = params.Ltd;
+    this.FQR = bs(params.KGQ);
+    this.FQz = bt(params.KMD);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(29551);
   }

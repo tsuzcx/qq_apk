@@ -9,13 +9,13 @@ public final class d
   public final void run()
   {
     AppMethodBeat.i(130442);
-    b.aJA();
+    b.bdB();
     AppMethodBeat.o(130442);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.av.a.f.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.voip.video.render;
 
-import d.g.a.a;
-import d.l;
+import kotlin.g.a.a;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16})
+@l(hxD={1, 1, 16})
 final class h
   implements Runnable
 {
   h(a parama)
   {
-    this.cix = parama;
+    this.cuq = parama;
   }
 }
 

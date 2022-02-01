@@ -1,15 +1,18 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
+import com.tencent.luggage.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.e;
+
 public abstract interface k
-  extends com.tencent.luggage.a.b
+  extends b
 {
-  public abstract boolean a(com.tencent.mm.plugin.appbrand.jsapi.b paramb);
+  public abstract boolean a(e parame);
   
-  public abstract boolean aG(Class<? extends com.tencent.mm.plugin.appbrand.jsapi.b> paramClass);
+  public abstract boolean aG(Class<? extends e> paramClass);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.k
  * JD-Core Version:    0.7.0.1
  */

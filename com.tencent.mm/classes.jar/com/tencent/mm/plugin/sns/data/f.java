@@ -1,21 +1,36 @@
 package com.tencent.mm.plugin.sns.data;
 
-import android.view.View;
+import android.util.SparseArray;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class f
 {
-  public String dqc;
-  public View zty;
+  public n DDH;
+  public SparseArray<n> DDI;
+  public int requestType;
   
-  public f(View paramView, String paramString)
+  public f()
   {
-    this.zty = paramView;
-    this.dqc = paramString;
+    AppMethodBeat.i(95067);
+    this.DDI = new SparseArray();
+    AppMethodBeat.o(95067);
+  }
+  
+  public f(SparseArray<n> paramSparseArray)
+  {
+    this.DDI = paramSparseArray;
+    this.requestType = 9;
+  }
+  
+  public f(n paramn, int paramInt)
+  {
+    this.DDH = paramn;
+    this.requestType = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.f
  * JD-Core Version:    0.7.0.1
  */

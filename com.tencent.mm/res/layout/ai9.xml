@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView android:id="@id/f6h" android:padding="@dimen/i_" android:visibility="gone" android:layout_width="@dimen/aez" android:layout_height="@dimen/aez" android:src="@raw/scan_success_mark_dot"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:background="@drawable/a_7" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBox android:id="@id/d12" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginRight="16.0dip" android:checked="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/jl" />
+    <TextView android:textSize="@dimen/t" android:textColor="@color/FG_0" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d91" android:layout_alignTop="@id/d12" android:layout_toEndOf="@id/d12" />
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_2" android:id="@id/d15" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:text="@string/d92" android:maxLines="2" android:layout_below="@id/ipm" android:layout_alignStart="@id/ipm" />
+</RelativeLayout>

@@ -1,29 +1,29 @@
 package com.tencent.mm.loader.l;
 
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.o;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public final class b
 {
-  public static final String hjW = com.tencent.mm.loader.j.b.asj() + ".tmp";
-  public static final String hjX = com.tencent.mm.loader.j.b.asj() + ".loader";
-  public static long hjY = 0L;
+  public static final String icT = com.tencent.mm.loader.j.b.aKJ() + ".tmp";
+  public static final String icU = com.tencent.mm.loader.j.b.aKJ() + ".loader";
+  public static long icV = 0L;
   
-  public static String atn()
+  public static String aLN()
   {
-    Object localObject = new StringBuilder().append(hjW).append("/");
+    Object localObject = new StringBuilder().append(icT).append("/");
     long l = System.currentTimeMillis();
     localObject = new SimpleDateFormat("yyyyMMdd").format(new Date(l));
-    ae.d("MicroMsg.Loader.ImageTmpFilehUtils", "[cpan] get tmp file path:%s", new Object[] { localObject });
-    k localk = new k(hjW);
-    if (!localk.exists()) {
-      localk.mkdirs();
+    Log.d("MicroMsg.Loader.ImageTmpFilehUtils", "[cpan] get tmp file path:%s", new Object[] { localObject });
+    o localo = new o(icT);
+    if (!localo.exists()) {
+      localo.mkdirs();
     }
-    localk = new k((String)localObject);
-    if (!localk.exists()) {
-      localk.mkdirs();
+    localo = new o((String)localObject);
+    if (!localo.exists()) {
+      localo.mkdirs();
     }
     return localObject;
   }

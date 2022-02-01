@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ayr;
-import com.tencent.mm.protocal.protobuf.ays;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bkb;
+import com.tencent.mm.protocal.protobuf.bkc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
 
 public final class x
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private String oGC;
-  private final b rr;
+  private i callback;
+  private String pUi;
+  private final d rr;
   
   public x()
   {
     AppMethodBeat.i(112828);
-    this.oGC = "";
-    b.a locala = new b.a();
-    locala.hQF = new ayr();
-    locala.hQG = new ays();
+    this.pUi = "";
+    d.a locala = new d.a();
+    locala.iLN = new bkb();
+    locala.iLO = new bkc();
     locala.uri = "/cgi-bin/micromsg-bin/getcardconfiginfo";
     locala.funcId = 1046;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
+    this.rr = locala.aXF();
     AppMethodBeat.o(112828);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(112829);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(112829);
     return i;
   }
@@ -51,14 +51,14 @@ public final class x
     return 1046;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(112830);
-    ae.i("MicroMsg.NetSceneGetCardConfigInfo", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    Log.i("MicroMsg.NetSceneGetCardConfigInfo", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.oGC = ((ays)this.rr.hQE.hQJ).oGs;
-      g.ajR().ajA().set(282885, this.oGC);
+      this.pUi = ((bkc)this.rr.iLL.iLR).pTY;
+      com.tencent.mm.kernel.g.aAh().azQ().set(282885, this.pUi);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(112830);

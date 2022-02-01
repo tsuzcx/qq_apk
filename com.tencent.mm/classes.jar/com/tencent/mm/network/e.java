@@ -1,82 +1,58 @@
 package com.tencent.mm.network;
 
-import com.tencent.mm.network.a.b;
-import com.tencent.mm.protocal.ab;
-import java.util.List;
-
 public abstract interface e
 {
-  public abstract void DT(String paramString);
+  public abstract byte[] MC(String paramString);
   
-  public abstract void DU(String paramString);
+  public abstract byte[] MD(String paramString);
   
-  public abstract void DV(String paramString);
+  public abstract byte[] ME(String paramString);
   
-  public abstract int a(r paramr, l paraml);
+  public abstract byte[] MF(String paramString);
   
-  public abstract int a(String paramString, boolean paramBoolean, List<String> paramList);
+  public abstract boolean MG(String paramString);
   
-  public abstract void a(int paramInt1, String paramString, int paramInt2, boolean paramBoolean);
+  public abstract void a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, int paramInt);
   
-  public abstract void a(b paramb);
+  public abstract byte[] aZa();
   
-  public abstract void a(h paramh);
+  public abstract boolean aZb();
   
-  public abstract void a(o paramo);
+  public abstract byte[] aZc();
   
-  public abstract void a(ab paramab);
+  public abstract String aZd();
   
-  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, String paramString3, String paramString4);
+  public abstract byte[] aZe();
   
-  public abstract boolean aFe();
+  public abstract void aZf();
   
-  public abstract c aFs();
+  public abstract void aZg();
   
-  public abstract i aFt();
+  public abstract int al(byte[] paramArrayOfByte);
   
-  public abstract void aFu();
+  public abstract int am(byte[] paramArrayOfByte);
   
-  public abstract void aFv();
+  public abstract void b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2);
   
-  public abstract void addHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
+  public abstract int getUin();
   
-  public abstract void cancel(int paramInt);
+  public abstract String getUsername();
   
-  public abstract void d(String paramString1, long paramLong, String paramString2);
+  public abstract void h(int paramInt, byte[] paramArrayOfByte);
   
-  public abstract void eH(boolean paramBoolean);
+  public abstract void i(String paramString, byte[] paramArrayOfByte);
   
-  public abstract void eI(boolean paramBoolean);
+  public abstract boolean isForeground();
   
-  public abstract void eJ(boolean paramBoolean);
-  
-  public abstract void eK(boolean paramBoolean);
-  
-  public abstract void forceUseV6(boolean paramBoolean);
-  
-  public abstract int getHostByName(String paramString, List<String> paramList);
-  
-  public abstract String[] getIPsString(boolean paramBoolean);
-  
-  public abstract String getIspId();
-  
-  public abstract String getNetworkServerIp();
-  
-  public abstract void keepSignalling();
-  
-  public abstract void reportFailIp(String paramString);
-  
-  public abstract void reportV6Status(boolean paramBoolean);
+  public abstract byte[] qe(int paramInt);
   
   public abstract void reset();
   
-  public abstract void setHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
+  public abstract void setForeground(boolean paramBoolean);
   
-  public abstract void setSignallingStrategy(long paramLong1, long paramLong2);
+  public abstract void setUin(int paramInt);
   
-  public abstract void stopSignalling();
-  
-  public abstract void switchProcessActiveState(boolean paramBoolean);
+  public abstract void setUsername(String paramString);
 }
 
 

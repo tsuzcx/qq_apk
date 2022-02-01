@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -13,9 +13,9 @@ public class AppbrandDownloadState
 {
   public static final Parcelable.Creator<AppbrandDownloadState> CREATOR;
   public String appId;
-  public long dkO;
-  public float kyA;
-  public long kyz;
+  public long dCa;
+  public long lCS;
+  public float lCT;
   public long progress;
   public String state;
   
@@ -32,26 +32,26 @@ public class AppbrandDownloadState
   {
     AppMethodBeat.i(45723);
     this.state = paramParcel.readString();
-    this.dkO = paramParcel.readLong();
+    this.dCa = paramParcel.readLong();
     this.appId = paramParcel.readString();
     this.progress = paramParcel.readLong();
-    this.kyz = paramParcel.readLong();
-    this.kyA = paramParcel.readFloat();
+    this.lCS = paramParcel.readLong();
+    this.lCT = paramParcel.readFloat();
     AppMethodBeat.o(45723);
   }
   
-  public final JSONObject bji()
+  public final JSONObject bEw()
   {
     AppMethodBeat.i(45724);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("state", this.state);
-      localJSONObject.put("downloadId", this.dkO);
+      localJSONObject.put("downloadId", this.dCa);
       localJSONObject.put("appId", this.appId);
       localJSONObject.put("progress", this.progress);
-      localJSONObject.put("taskSize", this.kyz);
-      localJSONObject.put("progressFloat", this.kyA);
+      localJSONObject.put("taskSize", this.lCS);
+      localJSONObject.put("progressFloat", this.lCT);
       AppMethodBeat.o(45724);
       return localJSONObject;
     }
@@ -59,7 +59,7 @@ public class AppbrandDownloadState
     {
       for (;;)
       {
-        ae.e("MicroMsg.AppbrandDownloadState", "toJsonObject: " + localJSONException.getMessage());
+        Log.e("MicroMsg.AppbrandDownloadState", "toJsonObject: " + localJSONException.getMessage());
       }
     }
   }
@@ -73,11 +73,11 @@ public class AppbrandDownloadState
   {
     AppMethodBeat.i(45722);
     paramParcel.writeString(this.state);
-    paramParcel.writeLong(this.dkO);
+    paramParcel.writeLong(this.dCa);
     paramParcel.writeString(this.appId);
     paramParcel.writeLong(this.progress);
-    paramParcel.writeLong(this.kyz);
-    paramParcel.writeFloat(this.kyA);
+    paramParcel.writeLong(this.lCS);
+    paramParcel.writeFloat(this.lCT);
     AppMethodBeat.o(45722);
   }
 }

@@ -10,20 +10,20 @@ public class a
   {
     public final void execute(Runnable paramAnonymousRunnable)
     {
-      a.P().f(paramAnonymousRunnable);
+      a.S().postToMainThread(paramAnonymousRunnable);
     }
   };
   private static final Executor bN = new Executor()
   {
     public final void execute(Runnable paramAnonymousRunnable)
     {
-      a.P().e(paramAnonymousRunnable);
+      a.S().e(paramAnonymousRunnable);
     }
   };
   public c bK = this.bL;
   private c bL = new b();
   
-  public static a P()
+  public static a S()
   {
     if (bJ != null) {
       return bJ;
@@ -38,12 +38,12 @@ public class a
     finally {}
   }
   
-  public static Executor Q()
+  public static Executor T()
   {
     return bM;
   }
   
-  public static Executor R()
+  public static Executor U()
   {
     return bN;
   }
@@ -53,14 +53,14 @@ public class a
     this.bK.e(paramRunnable);
   }
   
-  public final void f(Runnable paramRunnable)
-  {
-    this.bK.f(paramRunnable);
-  }
-  
   public final boolean isMainThread()
   {
     return this.bK.isMainThread();
+  }
+  
+  public final void postToMainThread(Runnable paramRunnable)
+  {
+    this.bK.postToMainThread(paramRunnable);
   }
 }
 

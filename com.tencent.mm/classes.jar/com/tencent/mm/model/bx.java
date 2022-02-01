@@ -1,110 +1,123 @@
 package com.tencent.mm.model;
 
-import android.database.Cursor;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.br;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
-import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import org.json.JSONObject;
 
 public final class bx
 {
-  private e db;
-  private br hKQ;
+  public static bx iFz;
+  private SharedPreferences iFA;
   
-  public bx(e parame, br parambr)
+  static
   {
-    this.db = parame;
-    this.hKQ = parambr;
+    AppMethodBeat.i(132261);
+    iFz = new bx();
+    AppMethodBeat.o(132261);
   }
   
-  private String BZ(String paramString)
+  private bx()
   {
-    AppMethodBeat.i(20392);
-    Object localObject1 = new ArrayList();
-    String str = "select username from rcontact where (username like '%" + paramString + "%' or nickname like '%" + paramString + "%' or alias like '%" + paramString + "%' or pyInitial like '%" + paramString + "%' or quanPin like '%" + paramString + "%' or conRemark like '%" + paramString + "%' )and username not like '%@%' and type & " + c.adr() + "=0 ";
-    Object localObject2 = this.db.a(str, null, 2);
-    ae.v("Micro.SimpleSearchConversationModel", "contactsql %s", new Object[] { str });
-    while (((Cursor)localObject2).moveToNext())
-    {
-      str = ((Cursor)localObject2).getString(((Cursor)localObject2).getColumnIndex("username"));
-      if (!str.endsWith("@chatroom")) {
-        ((ArrayList)localObject1).add(str);
-      }
-    }
-    ((Cursor)localObject2).close();
-    if (((ArrayList)localObject1).size() != 0)
-    {
-      localObject2 = new StringBuffer();
-      ((StringBuffer)localObject2).append(" ( rconversation.username in ( select chatroomname from chatroom where ");
-      ((StringBuffer)localObject2).append("memberlist like '%" + paramString + "%'");
-      localObject1 = ((ArrayList)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        str = (String)((Iterator)localObject1).next();
-        ((StringBuffer)localObject2).append(" or memberlist like '%" + str + "%'");
-      }
-      ((StringBuffer)localObject2).append("))");
-    }
-    for (localObject1 = "" + ((StringBuffer)localObject2).toString() + " or ";; localObject1 = "")
-    {
-      paramString = " and ( rconversation.username like '%" + paramString + "%' or " + (String)localObject1 + "rconversation.content like '%" + paramString + "%' or rcontact.nickname like '%" + paramString + "%' or rcontact.alias like '%" + paramString + "%' or rcontact.pyInitial like '%" + paramString + "%' or rcontact.quanPin like '%" + paramString + "%' or rcontact.conRemark like '%" + paramString + "%'  ) ";
-      AppMethodBeat.o(20392);
-      return paramString;
-    }
+    AppMethodBeat.i(132258);
+    this.iFA = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_register_history", 0);
+    AppMethodBeat.o(132258);
   }
   
-  public final Cursor a(String paramString1, List<String> paramList, String paramString2)
+  public final String getString(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(20391);
-    String str2 = " ";
-    String str1 = str2;
-    if (paramString2 != null)
+    AppMethodBeat.i(132260);
+    try
     {
-      str1 = str2;
-      if (paramString2.length() > 0) {
-        str1 = " and rconversation.username = rcontact.username ";
-      }
-    }
-    str2 = "select 1,unReadCount, status, isSend, conversationTime, rconversation.username, content, rconversation.msgType, rconversation.flag, rcontact.nickname from rconversation," + "rcontact" + " " + " where rconversation.username = rcontact.username" + str1 + bu.nullAsNil(paramString1);
-    str1 = "";
-    paramString1 = str1;
-    if (paramList != null)
-    {
-      paramString1 = str1;
-      if (paramList.size() > 0)
+      Log.i("MicroMsg.RegisterAccountInfo", "get %s, %s", new Object[] { paramString1, paramString2 });
+      if (this.iFA.contains(paramString1))
       {
-        paramList = paramList.iterator();
-        for (paramString1 = ""; paramList.hasNext(); paramString1 = paramString1 + " and rconversation.username != '" + str1 + "'") {
-          str1 = (String)paramList.next();
+        Object localObject = new String(Base64.decode(this.iFA.getString(paramString1, ""), 0));
+        if (!Util.isNullOrNil((String)localObject))
+        {
+          Log.i("MicroMsg.RegisterAccountInfo", "get json str %s", new Object[] { localObject });
+          localObject = new JSONObject((String)localObject);
+          if (((JSONObject)localObject).has(paramString2))
+          {
+            localObject = ((JSONObject)localObject).getString(paramString2);
+            AppMethodBeat.o(132260);
+            return localObject;
+          }
         }
       }
-    }
-    paramList = str2 + paramString1;
-    paramString1 = paramList;
-    if (paramString2 != null)
-    {
-      paramString1 = paramList;
-      if (paramString2.length() > 0) {
-        paramString1 = paramList + BZ(paramString2);
+      else
+      {
+        Log.w("MicroMsg.RegisterAccountInfo", "register info about %s is not found!", new Object[] { paramString1 });
       }
     }
-    paramString1 = paramString1 + " order by ";
-    paramString1 = paramString1 + "rconversation.username like '%@chatroom' asc, ";
-    paramString1 = paramString1 + "flag desc, conversationTime desc";
-    ae.v("Micro.SimpleSearchConversationModel", "convsql %s", new Object[] { paramString1 });
-    paramString1 = this.db.rawQuery(paramString1, null);
-    AppMethodBeat.o(20391);
-    return paramString1;
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.RegisterAccountInfo", "get register info %s about %s failed, error: %s", new Object[] { paramString2, paramString1, localException.getMessage() });
+      }
+    }
+    AppMethodBeat.o(132260);
+    return "";
+  }
+  
+  public final void h(String paramString, Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(132259);
+    Object localObject;
+    for (;;)
+    {
+      try
+      {
+        if (paramMap.isEmpty())
+        {
+          Log.i("MicroMsg.RegisterAccountInfo", "kv map is null or empty!");
+          AppMethodBeat.o(132259);
+          return;
+        }
+        if (!this.iFA.contains(paramString)) {
+          break label173;
+        }
+        localObject = this.iFA.getString(paramString, "");
+        if (!Util.isNullOrNil((String)localObject))
+        {
+          localObject = new JSONObject(new String(Base64.decode((String)localObject, 0)));
+          Iterator localIterator = paramMap.keySet().iterator();
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          String str = (String)localIterator.next();
+          ((JSONObject)localObject).put(str, paramMap.get(str));
+          continue;
+        }
+        localObject = new JSONObject();
+      }
+      catch (Exception paramMap)
+      {
+        Log.e("MicroMsg.RegisterAccountInfo", "save account info about %s failed, error: %s", new Object[] { paramString, paramMap.getMessage() });
+        AppMethodBeat.o(132259);
+        return;
+      }
+      continue;
+      label173:
+      localObject = new JSONObject();
+    }
+    Log.i("MicroMsg.RegisterAccountInfo", "put json str %s", new Object[] { ((JSONObject)localObject).toString() });
+    this.iFA.edit().putString(paramString, Base64.encodeToString(((JSONObject)localObject).toString().getBytes(), 0)).commit();
+    AppMethodBeat.o(132259);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.bx
  * JD-Core Version:    0.7.0.1
  */

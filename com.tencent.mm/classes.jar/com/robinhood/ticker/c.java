@@ -6,9 +6,9 @@ import java.util.Map;
 
 final class c
 {
-  final int bVQ;
-  final char[] bVR;
-  final Map<Character, Integer> bVS;
+  final Map<Character, Integer> cgA;
+  final int cgy;
+  final char[] cgz;
   
   c(String paramString)
   {
@@ -21,21 +21,21 @@ final class c
     }
     paramString = paramString.toCharArray();
     int k = paramString.length;
-    this.bVQ = k;
-    this.bVS = new HashMap(k);
+    this.cgy = k;
+    this.cgA = new HashMap(k);
     int i = 0;
     while (i < k)
     {
-      this.bVS.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
+      this.cgA.put(Character.valueOf(paramString[i]), Integer.valueOf(i));
       i += 1;
     }
-    this.bVR = new char[k * 2 + 1];
-    this.bVR[0] = '\000';
+    this.cgz = new char[k * 2 + 1];
+    this.cgz[0] = '\000';
     i = j;
     while (i < k)
     {
-      this.bVR[(i + 1)] = paramString[i];
-      this.bVR[(k + 1 + i)] = paramString[i];
+      this.cgz[(i + 1)] = paramString[i];
+      this.cgz[(k + 1 + i)] = paramString[i];
       i += 1;
     }
     AppMethodBeat.o(39843);
@@ -49,19 +49,31 @@ final class c
       AppMethodBeat.o(39844);
       return 0;
     }
-    if (this.bVS.containsKey(Character.valueOf(paramChar)))
+    if (this.cgA.containsKey(Character.valueOf(paramChar)))
     {
-      int i = ((Integer)this.bVS.get(Character.valueOf(paramChar))).intValue();
+      int i = ((Integer)this.cgA.get(Character.valueOf(paramChar))).intValue();
       AppMethodBeat.o(39844);
       return i + 1;
     }
     AppMethodBeat.o(39844);
     return -1;
   }
+  
+  final class a
+  {
+    final int endIndex;
+    final int startIndex;
+    
+    public a(int paramInt1, int paramInt2)
+    {
+      this.startIndex = paramInt1;
+      this.endIndex = paramInt2;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.robinhood.ticker.c
  * JD-Core Version:    0.7.0.1
  */

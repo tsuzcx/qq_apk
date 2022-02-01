@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="148.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <SurfaceView android:layout_gravity="center" android:id="@id/g2n" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <include layout="@layout/b63" />
-</merge>
+    <TextView android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="@dimen/a_6" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/b9w" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/hs" android:paddingRight="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs">
+            <include android:id="@id/g64" layout="@layout/b64" />
+            <include android:id="@id/g65" layout="@layout/b64" />
+            <include android:id="@id/g66" layout="@layout/b64" />
+            <include android:id="@id/g67" android:layout_marginRight="0.0dip" layout="@layout/b64" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

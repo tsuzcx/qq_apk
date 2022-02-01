@@ -10,10 +10,10 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.qbar.f;
 import java.util.Arrays;
 
@@ -23,7 +23,7 @@ public final class a
   {
     AppMethodBeat.i(168779);
     int i = paramBitmap.getWidth();
-    int k = BackwardSupportUtil.b.h(paramContext, 197.0F);
+    int k = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 197.0F);
     int j = k;
     if (k < i) {
       j = i;
@@ -119,16 +119,16 @@ public final class a
     {
       paramContext = a(paramContext, arrayOfByte, arrayOfInt, paramInt1, paramDouble);
       if (paramContext == null) {
-        ae.i("MicroMsg.QRCodeBitmapFactory", "createBitmap bm is error result %d %s", new Object[] { Integer.valueOf(paramInt2), bu.fpN().toString() });
+        Log.i("MicroMsg.QRCodeBitmapFactory", "createBitmap bm is error result %d %s", new Object[] { Integer.valueOf(paramInt2), Util.getStack().toString() });
       }
       for (;;)
       {
         AppMethodBeat.o(91134);
         return paramContext;
-        ae.i("MicroMsg.QRCodeBitmapFactory", "createBitmap %s", new Object[] { paramContext });
+        Log.i("MicroMsg.QRCodeBitmapFactory", "createBitmap %s", new Object[] { paramContext });
       }
     }
-    ae.i("MicroMsg.QRCodeBitmapFactory", "result %d %s", new Object[] { Integer.valueOf(paramInt2), bu.fpN().toString() });
+    Log.i("MicroMsg.QRCodeBitmapFactory", "result %d %s", new Object[] { Integer.valueOf(paramInt2), Util.getStack().toString() });
     AppMethodBeat.o(91134);
     return null;
   }
@@ -209,7 +209,7 @@ public final class a
                 }
                 m += 1;
                 continue;
-                if (fkH())
+                if (gun())
                 {
                   m = 0;
                   while (m < i)
@@ -421,16 +421,16 @@ public final class a
     {
       paramContext = a(paramContext, paramBitmap, arrayOfByte, arrayOfInt, 0.0D);
       if (paramContext == null) {
-        ae.i("MicroMsg.QRCodeBitmapFactory", "createBitmap bm is error result %d %s", new Object[] { Integer.valueOf(i), bu.fpN().toString() });
+        Log.i("MicroMsg.QRCodeBitmapFactory", "createBitmap bm is error result %d %s", new Object[] { Integer.valueOf(i), Util.getStack().toString() });
       }
       for (;;)
       {
         AppMethodBeat.o(168778);
         return paramContext;
-        ae.i("MicroMsg.QRCodeBitmapFactory", "createBitmap %s", new Object[] { paramContext });
+        Log.i("MicroMsg.QRCodeBitmapFactory", "createBitmap %s", new Object[] { paramContext });
       }
     }
-    ae.i("MicroMsg.QRCodeBitmapFactory", "result %d %s", new Object[] { Integer.valueOf(i), bu.fpN().toString() });
+    Log.i("MicroMsg.QRCodeBitmapFactory", "result %d %s", new Object[] { Integer.valueOf(i), Util.getStack().toString() });
     AppMethodBeat.o(168778);
     return null;
   }
@@ -443,7 +443,7 @@ public final class a
     return paramContext;
   }
   
-  public static Bitmap bZ(Context paramContext, String paramString)
+  public static Bitmap ct(Context paramContext, String paramString)
   {
     AppMethodBeat.i(91136);
     byte[] arrayOfByte = new byte[40000];
@@ -453,21 +453,21 @@ public final class a
     {
       paramContext = a(paramContext, arrayOfByte, arrayOfInt);
       if (paramContext == null) {
-        ae.i("MicroMsg.QRCodeBitmapFactory", "createBitmap bm is error result %d %s", new Object[] { Integer.valueOf(i), bu.fpN().toString() });
+        Log.i("MicroMsg.QRCodeBitmapFactory", "createBitmap bm is error result %d %s", new Object[] { Integer.valueOf(i), Util.getStack().toString() });
       }
       for (;;)
       {
         AppMethodBeat.o(91136);
         return paramContext;
-        ae.i("MicroMsg.QRCodeBitmapFactory", "createBitmap %s", new Object[] { paramContext });
+        Log.i("MicroMsg.QRCodeBitmapFactory", "createBitmap %s", new Object[] { paramContext });
       }
     }
-    ae.i("MicroMsg.QRCodeBitmapFactory", "result %d %s", new Object[] { Integer.valueOf(i), bu.fpN().toString() });
+    Log.i("MicroMsg.QRCodeBitmapFactory", "result %d %s", new Object[] { Integer.valueOf(i), Util.getStack().toString() });
     AppMethodBeat.o(91136);
     return null;
   }
   
-  private static boolean fkH()
+  private static boolean gun()
   {
     AppMethodBeat.i(91138);
     boolean[] arrayOfBoolean = new boolean[10];
@@ -479,7 +479,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.by.a.a
  * JD-Core Version:    0.7.0.1
  */

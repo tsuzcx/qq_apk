@@ -15,22 +15,22 @@ import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 
 public class StaticTextView
   extends View
   implements a
 {
-  protected g gHU;
+  protected g huI;
   
   public StaticTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141034);
-    this.gHU = new g(this, akW());
-    this.gHU.init();
+    this.huI = new g(this, aBn());
+    this.huI.init();
     AppMethodBeat.o(141034);
   }
   
@@ -38,12 +38,12 @@ public class StaticTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(141035);
-    this.gHU = new g(this, akW());
-    this.gHU.init();
+    this.huI = new g(this, aBn());
+    this.huI.init();
     AppMethodBeat.o(141035);
   }
   
-  protected com.tencent.mm.kiss.widget.textview.a.a akW()
+  protected com.tencent.mm.kiss.widget.textview.a.a aBn()
   {
     AppMethodBeat.i(141036);
     com.tencent.mm.kiss.widget.textview.a.a locala = new com.tencent.mm.kiss.widget.textview.a.a();
@@ -53,29 +53,29 @@ public class StaticTextView
   
   public com.tencent.mm.kiss.widget.textview.a.a getConfig()
   {
-    if (this.gHU == null) {
+    if (this.huI == null) {
       return null;
     }
-    return this.gHU.gHW;
+    return this.huI.huK;
   }
   
   public int getHorizontalDrawOffset()
   {
-    if (this.gHU == null) {
+    if (this.huI == null) {
       return 0;
     }
-    return this.gHU.gHZ;
+    return this.huI.huN;
   }
   
   public f getLayoutWrapper()
   {
     AppMethodBeat.i(141055);
-    if (this.gHU == null)
+    if (this.huI == null)
     {
       AppMethodBeat.o(141055);
       return null;
     }
-    f localf = this.gHU.getLayoutWrapper();
+    f localf = this.huI.getLayoutWrapper();
     AppMethodBeat.o(141055);
     return localf;
   }
@@ -83,7 +83,7 @@ public class StaticTextView
   public int getLineCount()
   {
     AppMethodBeat.i(141056);
-    int i = this.gHU.getLineCount();
+    int i = this.huI.getLineCount();
     AppMethodBeat.o(141056);
     return i;
   }
@@ -91,7 +91,7 @@ public class StaticTextView
   public int getLineHeight()
   {
     AppMethodBeat.i(141057);
-    int i = this.gHU.getLineHeight();
+    int i = this.huI.getLineHeight();
     AppMethodBeat.o(141057);
     return i;
   }
@@ -99,7 +99,7 @@ public class StaticTextView
   public int getMaxLines()
   {
     AppMethodBeat.i(141043);
-    int i = this.gHU.getMaxLines();
+    int i = this.huI.getMaxLines();
     AppMethodBeat.o(141043);
     return i;
   }
@@ -108,7 +108,7 @@ public class StaticTextView
   {
     AppMethodBeat.i(141069);
     int i = getResources().getConfiguration().orientation;
-    ae.i("MicroMsg.StaticTextView", "test test getOrientation ".concat(String.valueOf(i)));
+    Log.i("MicroMsg.StaticTextView", "test test getOrientation ".concat(String.valueOf(i)));
     AppMethodBeat.o(141069);
     return i;
   }
@@ -116,7 +116,7 @@ public class StaticTextView
   public int getSelectionEnd()
   {
     AppMethodBeat.i(141059);
-    int i = this.gHU.getSelectionEnd();
+    int i = this.huI.getSelectionEnd();
     AppMethodBeat.o(141059);
     return i;
   }
@@ -124,7 +124,7 @@ public class StaticTextView
   public int getSelectionStart()
   {
     AppMethodBeat.i(141058);
-    int i = this.gHU.getSelectionStart();
+    int i = this.huI.getSelectionStart();
     AppMethodBeat.o(141058);
     return i;
   }
@@ -132,7 +132,7 @@ public class StaticTextView
   public CharSequence getText()
   {
     AppMethodBeat.i(141051);
-    CharSequence localCharSequence = this.gHU.getText();
+    CharSequence localCharSequence = this.huI.getText();
     AppMethodBeat.o(141051);
     return localCharSequence;
   }
@@ -140,7 +140,7 @@ public class StaticTextView
   public int getTextColor()
   {
     AppMethodBeat.i(141053);
-    int i = this.gHU.getTextColor();
+    int i = this.huI.getTextColor();
     AppMethodBeat.o(141053);
     return i;
   }
@@ -148,7 +148,7 @@ public class StaticTextView
   public float getTextSize()
   {
     AppMethodBeat.i(141052);
-    float f = this.gHU.getTextSize();
+    float f = this.huI.getTextSize();
     AppMethodBeat.o(141052);
     return f;
   }
@@ -156,17 +156,17 @@ public class StaticTextView
   public Layout getTvLayout()
   {
     AppMethodBeat.i(141054);
-    Layout localLayout = this.gHU.getTvLayout();
+    Layout localLayout = this.huI.getTvLayout();
     AppMethodBeat.o(141054);
     return localLayout;
   }
   
   public int getVerticalDrawOffset()
   {
-    if (this.gHU == null) {
+    if (this.huI == null) {
       return 0;
     }
-    return this.gHU.gIa;
+    return this.huI.huO;
   }
   
   protected void onAttachedToWindow()
@@ -194,8 +194,8 @@ public class StaticTextView
   {
     AppMethodBeat.i(141063);
     super.onDraw(paramCanvas);
-    if (this.gHU != null) {
-      this.gHU.onDraw(paramCanvas);
+    if (this.huI != null) {
+      this.huI.onDraw(paramCanvas);
     }
     AppMethodBeat.o(141063);
   }
@@ -215,7 +215,7 @@ public class StaticTextView
     {
       paramAccessibilityEvent.setFromIndex(Selection.getSelectionStart(getText()));
       paramAccessibilityEvent.setToIndex(Selection.getSelectionEnd(getText()));
-      if (!bu.ah(getText())) {
+      if (!Util.isNullOrNil(getText())) {
         paramAccessibilityEvent.setItemCount(getText().length());
       }
     }
@@ -226,22 +226,22 @@ public class StaticTextView
   {
     AppMethodBeat.i(141072);
     super.onInitializeAccessibilityNodeInfo(paramAccessibilityNodeInfo);
-    if (!bu.ah(getText()))
+    if (!Util.isNullOrNil(getText()))
     {
       paramAccessibilityNodeInfo.addAction(256);
       paramAccessibilityNodeInfo.addAction(512);
       paramAccessibilityNodeInfo.setMovementGranularities(31);
-      if (d.lA(18)) {
+      if (d.oD(18)) {
         paramAccessibilityNodeInfo.addAction(131072);
       }
     }
-    if ((isFocused()) && (d.lA(18)))
+    if ((isFocused()) && (d.oD(18)))
     {
       paramAccessibilityNodeInfo.addAction(16384);
       paramAccessibilityNodeInfo.addAction(32768);
       paramAccessibilityNodeInfo.addAction(65536);
     }
-    if ((d.lA(19)) && (this.gHU.getMaxLines() > 1)) {
+    if ((d.oD(19)) && (this.huI.getMaxLines() > 1)) {
       paramAccessibilityNodeInfo.setMultiLine(true);
     }
     AppMethodBeat.o(141072);
@@ -250,13 +250,13 @@ public class StaticTextView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141064);
-    if (this.gHU == null)
+    if (this.huI == null)
     {
       super.onMeasure(paramInt1, paramInt2);
       AppMethodBeat.o(141064);
       return;
     }
-    Point localPoint = this.gHU.cP(paramInt1, paramInt2);
+    Point localPoint = this.huI.cV(paramInt1, paramInt2);
     if (localPoint != null)
     {
       setMeasuredDimension(localPoint.x, localPoint.y);
@@ -271,7 +271,7 @@ public class StaticTextView
   {
     AppMethodBeat.i(141071);
     super.onPopulateAccessibilityEvent(paramAccessibilityEvent);
-    if (!bu.ah(getText())) {
+    if (!Util.isNullOrNil(getText())) {
       paramAccessibilityEvent.getText().add(getText());
     }
     AppMethodBeat.o(141071);
@@ -292,7 +292,7 @@ public class StaticTextView
       AppMethodBeat.o(141061);
       return false;
     }
-    boolean bool1 = this.gHU.s(paramMotionEvent);
+    boolean bool1 = this.huI.w(paramMotionEvent);
     boolean bool2 = super.onTouchEvent(paramMotionEvent);
     if (bool1)
     {
@@ -306,12 +306,12 @@ public class StaticTextView
   public boolean performClick()
   {
     AppMethodBeat.i(141062);
-    if (this.gHU == null)
+    if (this.huI == null)
     {
       AppMethodBeat.o(141062);
       return false;
     }
-    if (!this.gHU.performClick())
+    if (!this.huI.performClick())
     {
       AppMethodBeat.o(141062);
       return false;
@@ -325,34 +325,34 @@ public class StaticTextView
   {
     AppMethodBeat.i(141060);
     super.setClickable(paramBoolean);
-    if (this.gHU != null) {
-      this.gHU.gIc = paramBoolean;
+    if (this.huI != null) {
+      this.huI.huQ = paramBoolean;
     }
     AppMethodBeat.o(141060);
   }
   
   protected void setConfig(com.tencent.mm.kiss.widget.textview.a.a parama)
   {
-    this.gHU.gHW = parama;
+    this.huI.huK = parama;
   }
   
   public void setGravity(int paramInt)
   {
     AppMethodBeat.i(141041);
-    this.gHU.setGravity(paramInt);
+    this.huI.setGravity(paramInt);
     AppMethodBeat.o(141041);
   }
   
   public void setHandleClickableSpan(boolean paramBoolean)
   {
-    this.gHU.gId = paramBoolean;
+    this.huI.huR = paramBoolean;
   }
   
   public void setLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     AppMethodBeat.i(141049);
-    if (this.gHU != null) {
-      this.gHU.akX();
+    if (this.huI != null) {
+      this.huI.aBo();
     }
     super.setLayoutParams(paramLayoutParams);
     AppMethodBeat.o(141049);
@@ -361,29 +361,29 @@ public class StaticTextView
   public void setLines(int paramInt)
   {
     AppMethodBeat.i(141045);
-    this.gHU.setLines(paramInt);
+    this.huI.setLines(paramInt);
     AppMethodBeat.o(141045);
   }
   
   public void setMaxLines(int paramInt)
   {
     AppMethodBeat.i(141042);
-    this.gHU.setMaxLines(paramInt);
+    this.huI.setMaxLines(paramInt);
     AppMethodBeat.o(141042);
   }
   
   public void setMinLines(int paramInt)
   {
     AppMethodBeat.i(141044);
-    this.gHU.setMinLines(paramInt);
+    this.huI.setMinLines(paramInt);
     AppMethodBeat.o(141044);
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(141050);
-    if (this.gHU != null) {
-      this.gHU.akX();
+    if (this.huI != null) {
+      this.huI.aBo();
     }
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(141050);
@@ -392,7 +392,7 @@ public class StaticTextView
   public void setSingleLine(boolean paramBoolean)
   {
     AppMethodBeat.i(141046);
-    this.gHU.setSingleLine(paramBoolean);
+    this.huI.setSingleLine(paramBoolean);
     AppMethodBeat.o(141046);
   }
   
@@ -406,7 +406,7 @@ public class StaticTextView
   public final void setText(CharSequence paramCharSequence, boolean paramBoolean)
   {
     AppMethodBeat.i(141047);
-    this.gHU.setText(paramCharSequence, paramBoolean);
+    this.huI.setText(paramCharSequence, paramBoolean);
     setContentDescription(paramCharSequence);
     AppMethodBeat.o(141047);
   }
@@ -414,34 +414,34 @@ public class StaticTextView
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(141040);
-    this.gHU.setTextColor(paramInt);
+    this.huI.setTextColor(paramInt);
     AppMethodBeat.o(141040);
   }
   
   public void setTextLayout(f paramf)
   {
     AppMethodBeat.i(141039);
-    this.gHU.setTextLayout(paramf);
+    this.huI.setTextLayout(paramf);
     AppMethodBeat.o(141039);
   }
   
   public void setTextSize(float paramFloat)
   {
     AppMethodBeat.i(141037);
-    this.gHU.setTextSize(0, paramFloat);
+    this.huI.setTextSize(0, paramFloat);
     AppMethodBeat.o(141037);
   }
   
   public final void setTextSize$255e752(float paramFloat)
   {
     AppMethodBeat.i(141038);
-    this.gHU.setTextSize(1, paramFloat);
+    this.huI.setTextSize(1, paramFloat);
     AppMethodBeat.o(141038);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.StaticTextView
  * JD-Core Version:    0.7.0.1
  */

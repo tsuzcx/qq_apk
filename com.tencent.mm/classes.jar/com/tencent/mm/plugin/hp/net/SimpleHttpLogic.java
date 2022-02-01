@@ -13,9 +13,9 @@ public class SimpleHttpLogic
   
   public static boolean packRequest(byte[] paramArrayOfByte, PByteArray paramPByteArray)
   {
-    AppMethodBeat.i(196775);
+    AppMethodBeat.i(196783);
     boolean bool = pack(paramArrayOfByte, paramPByteArray, new byte[10], 0, new byte[10], "defaultid", 0, 3777, 1234567, new byte[10], new byte[10], 0, 6, 0);
-    AppMethodBeat.o(196775);
+    AppMethodBeat.o(196783);
     return bool;
   }
   
@@ -25,11 +25,11 @@ public class SimpleHttpLogic
   
   public static boolean unpackResponse(byte[] paramArrayOfByte, PByteArray paramPByteArray)
   {
-    AppMethodBeat.i(196776);
+    AppMethodBeat.i(196784);
     PInt localPInt = new PInt(-100);
     boolean bool = unpack(paramPByteArray, paramArrayOfByte, new byte[10], new PByteArray(), localPInt, new PInt(0), new PInt(0), new PInt(255));
     b.i("simple", "unpack ret is " + localPInt.value + " unpack result " + bool, new Object[0]);
-    AppMethodBeat.o(196776);
+    AppMethodBeat.o(196784);
     return bool;
   }
   

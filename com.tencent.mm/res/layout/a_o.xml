@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:orientation="horizontal" android:id="@id/b43" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="right" android:id="@id/dvv" android:layout_width="375.0dip" android:layout_height="104.0dip" android:scaleType="fitXY" />
-    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/fy" android:layout_marginRight="140.0dip">
-        <TextView android:textSize="@dimen/gp" android:textStyle="bold" android:textColor="@color/qn" android:id="@id/dvu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
-        <TextView android:textSize="@dimen/gp" android:textStyle="bold" android:textColor="@color/qn" android:ellipsize="end" android:id="@id/dvw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g3" android:singleLine="true" android:layout_toRightOf="@id/dvu" />
-        <com.tencent.mm.plugin.game.widget.EllipsizingTextView android:textSize="@dimen/gp" android:textColor="@color/qk" android:id="@id/dvt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g3" android:layout_below="@id/dvu" />
-    </RelativeLayout>
-</FrameLayout>
+<RelativeLayout android:id="@id/h8v" android:background="@color/m0" android:paddingTop="@dimen/b7" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/f6f" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView android:id="@id/gy2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </android.support.design.widget.CoordinatorLayout>
+    <TextView android:gravity="center_horizontal" android:id="@id/g01" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" android:text="@string/d8e" style="@style/zy" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/epl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
+        <ProgressBar android:background="@color/ac_" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:indeterminateDrawable="@drawable/apb" />
+    </LinearLayout>
+</RelativeLayout>

@@ -8,37 +8,38 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.emoji.d.a;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.br.c;
+import com.tencent.mm.emoji.e.a;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.plugin.emoji.model.EmojiLogic;
 import com.tencent.mm.plugin.emoji.model.k;
 import com.tencent.mm.pluginsdk.a.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.u;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.sdk.platformtools.ImgUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.ui.MMBaseActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.util.Iterator;
 import java.util.List;
 
 public class EmojiSendDialogUI
   extends MMBaseActivity
-  implements com.tencent.mm.ak.f
+  implements i
 {
   private String emojiPath;
-  private EmojiInfo glt;
-  private boolean pQe = false;
+  private EmojiInfo gWm;
+  private boolean rhd = false;
   
-  private void acP(String paramString)
+  private void amW(String paramString)
   {
     AppMethodBeat.i(108968);
     if (!isFinishing()) {
-      h.c(this, paramString, "", true).setOnDismissListener(new DialogInterface.OnDismissListener()
+      com.tencent.mm.ui.base.h.c(this, paramString, "", true).setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -52,24 +53,24 @@ public class EmojiSendDialogUI
     AppMethodBeat.o(108968);
   }
   
-  private void cjt()
+  private void cHu()
   {
     AppMethodBeat.i(108963);
-    ae.i("MicroMsg.EmojiSendDialogUI", "select contact");
+    Log.i("MicroMsg.EmojiSendDialogUI", "select contact");
     Intent localIntent = new Intent();
     localIntent.putExtra("Select_Conv_Type", 3);
     localIntent.putExtra("select_is_ret", true);
     localIntent.putExtra("mutil_select_is_ret", true);
     localIntent.putExtra("Retr_Msg_Type", 5);
-    if (this.pQe) {
-      localIntent.putExtra("Retr_Msg_thumb_path", this.glt.field_md5);
+    if (this.rhd) {
+      localIntent.putExtra("Retr_Msg_thumb_path", this.gWm.field_md5);
     }
     for (;;)
     {
-      localIntent.putExtra("emoji_activity_id", this.glt.field_activityid);
-      localIntent.putExtra("MMActivity.OverrideEnterAnimation", 2130772047);
-      com.tencent.mm.br.d.c(this, ".ui.transmit.SelectConversationUI", localIntent, 1001);
-      overridePendingTransition(2130772108, 2130772100);
+      localIntent.putExtra("emoji_activity_id", this.gWm.field_activityid);
+      localIntent.putExtra("MMActivity.OverrideEnterAnimation", 2130772059);
+      c.c(this, ".ui.transmit.SelectConversationUI", localIntent, 1001);
+      overridePendingTransition(2130772132, 2130772124);
       AppMethodBeat.o(108963);
       return;
       localIntent.putExtra("image_path", this.emojiPath);
@@ -96,34 +97,34 @@ public class EmojiSendDialogUI
       if (paramInt2 != -1) {
         break label261;
       }
-      ae.i("MicroMsg.EmojiSendDialogUI", "select contact result");
+      Log.i("MicroMsg.EmojiSendDialogUI", "select contact result");
       localObject1 = paramIntent.getStringExtra("Select_Conv_User");
       str = paramIntent.getStringExtra("custom_send_text");
-      paramIntent = k.getEmojiStorageMgr().JfU.aWl(this.glt.Lj());
+      paramIntent = k.getEmojiStorageMgr().OpN.blk(this.gWm.getMd5());
       if (paramIntent != null) {
         break label269;
       }
-      localObject2 = a.gsI;
-      localObject2 = EmojiLogic.R(a.agD(), this.glt.field_groupId, this.glt.Lj());
-      if (!o.fB((String)localObject2)) {
+      localObject2 = a.hdT;
+      localObject2 = EmojiLogic.W(a.awt(), this.gWm.field_groupId, this.gWm.getMd5());
+      if (!s.YS((String)localObject2)) {
         break label269;
       }
-      if (u.aRG((String)localObject2))
+      if (ImgUtil.isGif((String)localObject2))
       {
-        paramInt1 = EmojiInfo.OAc;
-        paramIntent = this.glt;
-        paramIntent.field_catalog = EmojiInfo.OzU;
+        paramInt1 = EmojiInfo.Uux;
+        paramIntent = this.gWm;
+        paramIntent.field_catalog = EmojiInfo.Uup;
         paramIntent.field_type = paramInt1;
-        paramIntent.field_size = ((int)o.aZR((String)localObject2));
+        paramIntent.field_size = ((int)s.boW((String)localObject2));
         paramIntent.field_temp = 1;
-        paramIntent = k.getEmojiStorageMgr().JfU.I(paramIntent);
+        paramIntent = k.getEmojiStorageMgr().OpN.J(paramIntent);
       }
     }
     label261:
     label269:
     for (;;)
     {
-      localObject1 = bu.U(bu.bI((String)localObject1, "").split(",")).iterator();
+      localObject1 = Util.stringsToList(Util.nullAs((String)localObject1, "").split(",")).iterator();
       for (;;)
       {
         if (((Iterator)localObject1).hasNext())
@@ -131,12 +132,12 @@ public class EmojiSendDialogUI
           localObject2 = (String)((Iterator)localObject1).next();
           if (paramIntent != null)
           {
-            k.cig().a((String)localObject2, paramIntent, null);
-            if (!bu.isNullOrNil(str))
+            k.cGf().a((String)localObject2, paramIntent, null);
+            if (!Util.isNullOrNil(str))
             {
-              com.tencent.mm.plugin.messenger.a.g.doC().hW(str, (String)localObject2);
+              com.tencent.mm.plugin.messenger.a.g.eir().iF(str, (String)localObject2);
               continue;
-              paramInt1 = EmojiInfo.OAb;
+              paramInt1 = EmojiInfo.Uuw;
               break;
             }
           }
@@ -162,30 +163,30 @@ public class EmojiSendDialogUI
     if (Build.VERSION.SDK_INT >= 21) {
       getWindow().setStatusBarColor(0);
     }
-    com.tencent.mm.kernel.g.ajQ().gDv.a(423, this);
-    this.glt = ((EmojiInfo)getIntent().getParcelableExtra("emoji_info"));
-    paramBundle = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().acj(this.glt.field_md5);
+    com.tencent.mm.kernel.g.aAg().hqi.a(423, this);
+    this.gWm = ((EmojiInfo)getIntent().getParcelableExtra("emoji_info"));
+    paramBundle = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().amm(this.gWm.field_md5);
     if (paramBundle != null)
     {
-      this.glt = paramBundle;
-      this.pQe = true;
+      this.gWm = paramBundle;
+      this.rhd = true;
     }
-    paramBundle = a.gsI;
-    this.emojiPath = EmojiLogic.R(a.agD(), this.glt.field_groupId, this.glt.Lj());
-    paramBundle = k.getEmojiStorageMgr().JfU.aWl(this.glt.field_md5);
-    if (((paramBundle != null) && (paramBundle.field_catalog == EmojiInfo.OAa)) || (bu.isNullOrNil(this.glt.field_groupId)) || (((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().acn(this.glt.field_groupId))) {
-      ae.i("MicroMsg.EmojiSendDialogUI", "no need exchange %s %s", new Object[] { this.glt.field_md5, this.glt.field_groupId });
+    paramBundle = a.hdT;
+    this.emojiPath = EmojiLogic.W(a.awt(), this.gWm.field_groupId, this.gWm.getMd5());
+    paramBundle = k.getEmojiStorageMgr().OpN.blk(this.gWm.field_md5);
+    if (((paramBundle != null) && (paramBundle.field_catalog == EmojiInfo.Uuv)) || (Util.isNullOrNil(this.gWm.field_groupId)) || (((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().amq(this.gWm.field_groupId))) {
+      Log.i("MicroMsg.EmojiSendDialogUI", "no need exchange %s %s", new Object[] { this.gWm.field_md5, this.gWm.field_groupId });
     }
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        cjt();
+        cHu();
       }
       AppMethodBeat.o(108962);
       return;
-      paramBundle = new com.tencent.mm.plugin.emoji.f.g(this.glt.field_groupId, (byte)0);
-      com.tencent.mm.kernel.g.ajQ().gDv.a(paramBundle, 0);
-      ae.i("MicroMsg.EmojiSendDialogUI", "do exchange %s %s", new Object[] { this.glt.field_md5, this.glt.field_groupId });
+      paramBundle = new com.tencent.mm.plugin.emoji.f.h(this.gWm.field_groupId, (byte)0);
+      com.tencent.mm.kernel.g.aAg().hqi.a(paramBundle, 0);
+      Log.i("MicroMsg.EmojiSendDialogUI", "do exchange %s %s", new Object[] { this.gWm.field_md5, this.gWm.field_groupId });
     }
   }
   
@@ -193,42 +194,42 @@ public class EmojiSendDialogUI
   {
     AppMethodBeat.i(108965);
     super.onDestroy();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(423, this);
+    com.tencent.mm.kernel.g.aAg().hqi.b(423, this);
     AppMethodBeat.o(108965);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(108964);
-    if (paramn.getType() == 423)
+    if (paramq.getType() == 423)
     {
-      paramString = (com.tencent.mm.plugin.emoji.f.g)paramn;
-      ae.i("MicroMsg.EmojiSendDialogUI", "exchange end %s", new Object[] { paramString.pMk });
-      if (bu.isNullOrNil(this.glt.field_groupId))
+      paramString = (com.tencent.mm.plugin.emoji.f.h)paramq;
+      Log.i("MicroMsg.EmojiSendDialogUI", "exchange end %s", new Object[] { paramString.rcD });
+      if (Util.isNullOrNil(this.gWm.field_groupId))
       {
-        cjt();
+        cHu();
         AppMethodBeat.o(108964);
         return;
       }
-      if (this.glt.field_groupId.equalsIgnoreCase(paramString.pMk))
+      if (this.gWm.field_groupId.equalsIgnoreCase(paramString.rcD))
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          cjt();
+          cHu();
           AppMethodBeat.o(108964);
           return;
         }
         if (paramInt2 == 4)
         {
-          acP(getString(2131758298));
+          amW(getString(2131758591));
           AppMethodBeat.o(108964);
           return;
         }
-        acP(getString(2131758297));
+        amW(getString(2131758589));
         AppMethodBeat.o(108964);
         return;
       }
-      ae.i("MicroMsg.EmojiSendDialogUI", "no the same product ID");
+      Log.i("MicroMsg.EmojiSendDialogUI", "no the same product ID");
     }
     AppMethodBeat.o(108964);
   }
@@ -241,7 +242,7 @@ public class EmojiSendDialogUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.EmojiSendDialogUI
  * JD-Core Version:    0.7.0.1
  */

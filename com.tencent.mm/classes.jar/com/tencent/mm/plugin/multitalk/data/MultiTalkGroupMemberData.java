@@ -4,14 +4,14 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
 
 public class MultiTalkGroupMemberData
   implements Parcelable
 {
   public static final Parcelable.Creator<MultiTalkGroupMemberData> CREATOR;
-  MultiTalkGroupMember wmd;
+  MultiTalkGroupMember zHg;
   
   static
   {
@@ -22,7 +22,7 @@ public class MultiTalkGroupMemberData
   
   public MultiTalkGroupMemberData(MultiTalkGroupMember paramMultiTalkGroupMember)
   {
-    this.wmd = paramMultiTalkGroupMember;
+    this.zHg = paramMultiTalkGroupMember;
   }
   
   public int describeContents()
@@ -33,11 +33,11 @@ public class MultiTalkGroupMemberData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(114412);
-    paramParcel.writeString(bu.bI(this.wmd.MgJ, ""));
-    paramParcel.writeString(bu.bI(this.wmd.MgK, ""));
-    paramParcel.writeInt(this.wmd.status);
-    paramParcel.writeInt(this.wmd.reason);
-    paramParcel.writeInt(this.wmd.MfN);
+    paramParcel.writeString(Util.nullAs(this.zHg.RHb, ""));
+    paramParcel.writeString(Util.nullAs(this.zHg.RHc, ""));
+    paramParcel.writeInt(this.zHg.status);
+    paramParcel.writeInt(this.zHg.bDZ);
+    paramParcel.writeInt(this.zHg.RGf);
     AppMethodBeat.o(114412);
   }
 }

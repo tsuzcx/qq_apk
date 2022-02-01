@@ -1,51 +1,51 @@
 package com.tencent.mm.plugin.sns.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.br;
-import com.tencent.mm.protocal.protobuf.bs;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.protobuf.bx;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.by;
+import com.tencent.mm.protocal.protobuf.cg;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class l
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public f callback;
-  private b rr;
-  private LinkedList<bx> zns;
+  private LinkedList<cg> DsY;
+  public i callback;
+  private d rr;
   
-  public l(LinkedList<bx> paramLinkedList)
+  public l(LinkedList<cg> paramLinkedList)
   {
     AppMethodBeat.i(95567);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new br();
-    ((b.a)localObject).hQG = new bs();
-    ((b.a)localObject).uri = "/cgi-bin/mmoc-bin/ad/addatareport";
-    ((b.a)localObject).funcId = 1295;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (br)this.rr.hQD.hQJ;
-    ((br)localObject).FMw = paramLinkedList;
-    this.zns = paramLinkedList;
-    ae.i("MicroMsg.NetSceneSnsAdDataReport", "report %d ads", new Object[] { Integer.valueOf(((br)localObject).FMw.size()) });
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bx();
+    ((d.a)localObject).iLO = new by();
+    ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/ad/addatareport";
+    ((d.a)localObject).funcId = 1295;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (bx)this.rr.iLK.iLR;
+    ((bx)localObject).KFY = paramLinkedList;
+    this.DsY = paramLinkedList;
+    Log.i("MicroMsg.NetSceneSnsAdDataReport", "report %d ads", new Object[] { Integer.valueOf(((bx)localObject).KFY.size()) });
     AppMethodBeat.o(95567);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(95568);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(95568);
     return i;
   }
@@ -55,10 +55,10 @@ public final class l
     return 1295;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(95569);
-    ae.d("MicroMsg.NetSceneSnsAdDataReport", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    Log.d("MicroMsg.NetSceneSnsAdDataReport", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(95569);
   }

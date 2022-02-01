@@ -18,27 +18,33 @@ import com.tencent.kinda.gen.VoidStringCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
-import com.tencent.mm.g.a.bl;
+import com.tencent.mm.g.a.bn;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.cr;
 import com.tencent.mm.plugin.expt.h.d;
+import com.tencent.mm.plugin.wallet_core.model.al;
 import com.tencent.mm.plugin.wallet_core.model.an;
 import com.tencent.mm.plugin.wallet_core.model.k;
 import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.ui.f;
+import com.tencent.mm.y.c;
 
 public class KindaPlatformUtil
   implements IPlatformUtil
 {
   private final String TAG;
-  private final com.tencent.mm.sdk.b.c checkLanguageChangeIListener;
+  private final IListener checkLanguageChangeIListener;
   private VoidStringCallback languageChangeCallback;
   private WindowManager.LayoutParams mWindowParams;
   
@@ -47,9 +53,9 @@ public class KindaPlatformUtil
     AppMethodBeat.i(18471);
     this.languageChangeCallback = null;
     this.TAG = "KindaPlatformUtil";
-    this.checkLanguageChangeIListener = new com.tencent.mm.sdk.b.c()
+    this.checkLanguageChangeIListener = new IListener()
     {
-      public boolean callback(bl paramAnonymousbl)
+      public boolean callback(bn paramAnonymousbn)
       {
         AppMethodBeat.i(18469);
         if (KindaPlatformUtil.this.languageChangeCallback != null) {
@@ -75,44 +81,44 @@ public class KindaPlatformUtil
     return 0.0F;
   }
   
-  private am.a[] getRedDotKey(String paramString)
+  private ar.a[] getRedDotKey(String paramString)
   {
     AppMethodBeat.i(18472);
-    am.a locala;
+    ar.a locala;
     if (paramString.equals("receipt"))
     {
-      paramString = am.a.IWi;
-      locala = am.a.IVd;
+      paramString = ar.a.OeA;
+      locala = ar.a.Odv;
       AppMethodBeat.o(18472);
-      return new am.a[] { paramString, locala };
+      return new ar.a[] { paramString, locala };
     }
     if (paramString.equals("reward"))
     {
-      paramString = am.a.IWk;
-      locala = am.a.IVd;
+      paramString = ar.a.OeC;
+      locala = ar.a.Odv;
       AppMethodBeat.o(18472);
-      return new am.a[] { paramString, locala };
+      return new ar.a[] { paramString, locala };
     }
     if (paramString.equals("groupaa"))
     {
-      paramString = am.a.IWh;
-      locala = am.a.IVd;
+      paramString = ar.a.Oez;
+      locala = ar.a.Odv;
       AppMethodBeat.o(18472);
-      return new am.a[] { paramString, locala };
+      return new ar.a[] { paramString, locala };
     }
     if (paramString.equals("faceHongBao"))
     {
-      paramString = am.a.IWj;
-      locala = am.a.IVd;
+      paramString = ar.a.OeB;
+      locala = ar.a.Odv;
       AppMethodBeat.o(18472);
-      return new am.a[] { paramString, locala };
+      return new ar.a[] { paramString, locala };
     }
     if (paramString.equals("transferBank"))
     {
-      paramString = am.a.IWl;
-      locala = am.a.IVd;
+      paramString = ar.a.OeD;
+      locala = ar.a.Odv;
       AppMethodBeat.o(18472);
-      return new am.a[] { paramString, locala };
+      return new ar.a[] { paramString, locala };
     }
     AppMethodBeat.o(18472);
     return null;
@@ -130,7 +136,7 @@ public class KindaPlatformUtil
         AppMethodBeat.o(18498);
         return;
       }
-      ae.e("KindaPlatformUtil", "KindaContext.getTopOrUIPageFragmentActivity return null, so can't initWindowParamsIfNeed!");
+      Log.e("KindaPlatformUtil", "KindaContext.getTopOrUIPageFragmentActivity return null, so can't initWindowParamsIfNeed!");
     }
     AppMethodBeat.o(18498);
   }
@@ -166,7 +172,7 @@ public class KindaPlatformUtil
   public String currentLanguageCode()
   {
     AppMethodBeat.i(18474);
-    String str = ad.iR(ak.getContext());
+    String str = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
     AppMethodBeat.o(18474);
     return str;
   }
@@ -181,14 +187,14 @@ public class KindaPlatformUtil
   protected void finalize()
   {
     AppMethodBeat.i(18473);
-    com.tencent.mm.sdk.b.a.IvT.d(this.checkLanguageChangeIListener);
+    EventCenter.instance.removeListener(this.checkLanguageChangeIListener);
     AppMethodBeat.o(18473);
   }
   
   public String genUUID()
   {
     AppMethodBeat.i(18494);
-    String str = q.aaH();
+    String str = q.aoG();
     AppMethodBeat.o(18494);
     return str;
   }
@@ -201,13 +207,13 @@ public class KindaPlatformUtil
   public boolean getExptBoolValue(String paramString)
   {
     AppMethodBeat.i(18482);
-    paramString = d.ctr().b(paramString, "", false, false);
-    if (bu.isNullOrNil(paramString))
+    paramString = d.cRY().b(paramString, "", false, false);
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(18482);
       return false;
     }
-    if (bu.getInt(paramString, 0) != 0)
+    if (Util.getInt(paramString, 0) != 0)
     {
       AppMethodBeat.o(18482);
       return true;
@@ -262,7 +268,7 @@ public class KindaPlatformUtil
       Context localContext = KindaContext.get();
       if (!(localContext instanceof MMActivity))
       {
-        ae.e("KindaPlatformUtil", "KindaContext.get() is not MMActivity, is %s.", new Object[] { localContext.getClass().getName() });
+        Log.e("KindaPlatformUtil", "KindaContext.get() is not MMActivity, is %s.", new Object[] { localContext.getClass().getName() });
         AppMethodBeat.o(18480);
         return 0.0F;
       }
@@ -314,7 +320,7 @@ public class KindaPlatformUtil
     paramString = getRedDotKey(paramString);
     if (paramString != null)
     {
-      boolean bool = com.tencent.mm.y.c.ahI().b(paramString[0], paramString[1]);
+      boolean bool = c.axV().b(paramString[0], paramString[1]);
       AppMethodBeat.o(18484);
       return bool;
     }
@@ -327,8 +333,8 @@ public class KindaPlatformUtil
     AppMethodBeat.i(18485);
     if (paramString.equals("receipt"))
     {
-      g.ajS();
-      paramString = (String)g.ajR().ajA().get(am.a.IVx, "");
+      g.aAi();
+      paramString = (String)g.aAh().azQ().get(ar.a.OdP, "");
       AppMethodBeat.o(18485);
       return paramString;
     }
@@ -355,7 +361,7 @@ public class KindaPlatformUtil
     AppMethodBeat.i(18479);
     if (KindaContext.get() != null)
     {
-      float f = com.tencent.mm.ui.al.jN(KindaContext.get());
+      float f = com.tencent.mm.ui.ao.getStatusBarHeight(KindaContext.get());
       AppMethodBeat.o(18479);
       return f;
     }
@@ -376,7 +382,7 @@ public class KindaPlatformUtil
   public boolean isNetworkConnected()
   {
     AppMethodBeat.i(18497);
-    boolean bool = az.isNetworkConnected(ak.getContext());
+    boolean bool = NetStatusUtil.isNetworkConnected(MMApplicationContext.getContext());
     AppMethodBeat.o(18497);
     return bool;
   }
@@ -389,14 +395,14 @@ public class KindaPlatformUtil
   public void makesureLonglink()
   {
     AppMethodBeat.i(18493);
-    f.fWw();
+    f.hhU();
     AppMethodBeat.o(18493);
   }
   
   public String md5(String paramString)
   {
     AppMethodBeat.i(18483);
-    paramString = com.tencent.mm.sdk.platformtools.aj.ej(paramString);
+    paramString = MD5Util.getMD5String(paramString);
     AppMethodBeat.o(18483);
     return paramString;
   }
@@ -409,14 +415,14 @@ public class KindaPlatformUtil
       Object localObject = KindaContext.get();
       if (localObject == null)
       {
-        ae.e("KindaPlatformUtil", "KindaContext get null while playVibration!");
+        Log.e("KindaPlatformUtil", "KindaContext get null while playVibration!");
         AppMethodBeat.o(18490);
         return;
       }
       localObject = (Vibrator)((Context)localObject).getSystemService("vibrator");
       if (localObject == null)
       {
-        ae.e("KindaPlatformUtil", "playVibration call getSystemService get null!");
+        Log.e("KindaPlatformUtil", "playVibration call getSystemService get null!");
         AppMethodBeat.o(18490);
         return;
       }
@@ -426,9 +432,25 @@ public class KindaPlatformUtil
     }
     catch (Exception localException)
     {
-      ae.e("KindaPlatformUtil", "playVibration exception %s", new Object[] { localException.getMessage() });
+      Log.e("KindaPlatformUtil", "playVibration exception %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(18490);
     }
+  }
+  
+  public String resolveLanguageStringForGlobal(String paramString)
+  {
+    AppMethodBeat.i(214425);
+    paramString = cr.KN(paramString);
+    AppMethodBeat.o(214425);
+    return paramString;
+  }
+  
+  public String resolveURLStringForGlobal(String paramString)
+  {
+    AppMethodBeat.i(214424);
+    paramString = cr.KO(paramString);
+    AppMethodBeat.o(214424);
+    return paramString;
   }
   
   public void setIdleTimerDisable(boolean paramBoolean) {}
@@ -437,7 +459,7 @@ public class KindaPlatformUtil
   {
     AppMethodBeat.i(18475);
     this.languageChangeCallback = paramVoidStringCallback;
-    com.tencent.mm.sdk.b.a.IvT.c(this.checkLanguageChangeIListener);
+    EventCenter.instance.addListener(this.checkLanguageChangeIListener);
     AppMethodBeat.o(18475);
   }
   
@@ -446,7 +468,7 @@ public class KindaPlatformUtil
     AppMethodBeat.i(18486);
     paramString = getRedDotKey(paramString);
     if ((paramString != null) && (!paramBoolean)) {
-      com.tencent.mm.y.c.ahI().c(paramString[0], paramString[1]);
+      c.axV().c(paramString[0], paramString[1]);
     }
     AppMethodBeat.o(18486);
   }
@@ -454,23 +476,23 @@ public class KindaPlatformUtil
   public void setReportLocationState(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(18502);
-    ae.i("KindaPlatformUtil", "setLocationState, set wifiSsidState as: [%b], set cellInfoState as [%b].", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-    com.tencent.mm.plugin.wallet_core.model.al localal = t.eJf().eJP();
-    ae.i("MicroMsg.WalletSwitchConfig", "setReportLocation, set wifiSsidState as: [%b], set cellInfoState as [%b].", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    Log.i("KindaPlatformUtil", "setLocationState, set wifiSsidState as: [%b], set cellInfoState as [%b].", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    al localal = t.fQI().fRs();
+    Log.i("MicroMsg.WalletSwitchConfig", "setReportLocation, set wifiSsidState as: [%b], set cellInfoState as [%b].", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
     if (paramBoolean1)
     {
-      localal.Dst |= 0x40000;
+      localal.IbF |= 0x40000;
       if (!paramBoolean2) {
         break label143;
       }
     }
     label143:
-    for (localal.Dst |= 0x800000;; localal.Dst &= 0xFF7FFFFF)
+    for (localal.IbF |= 0x800000;; localal.IbF &= 0xFF7FFFFF)
     {
-      ae.i("MicroMsg.WalletSwitchConfig", "setReportLocation, After set, switchBit is [%d]", new Object[] { Integer.valueOf(localal.Dst) });
+      Log.i("MicroMsg.WalletSwitchConfig", "setReportLocation, After set, switchBit is [%d]", new Object[] { Integer.valueOf(localal.IbF) });
       AppMethodBeat.o(18502);
       return;
-      localal.Dst &= 0xFFFBFFFF;
+      localal.IbF &= 0xFFFBFFFF;
       break;
     }
   }
@@ -489,7 +511,7 @@ public class KindaPlatformUtil
         AppMethodBeat.o(18492);
         return;
       }
-      ae.e("KindaPlatformUtil", "KindaContext.getTopOrUIPageFragmentActivity return null, so can't set ScreenBrightness!");
+      Log.e("KindaPlatformUtil", "KindaContext.getTopOrUIPageFragmentActivity return null, so can't set ScreenBrightness!");
     }
     AppMethodBeat.o(18492);
   }
@@ -500,7 +522,7 @@ public class KindaPlatformUtil
     Activity localActivity = KindaContext.getTopOrUIPageFragmentActivity();
     if (!(localActivity instanceof UIPageFragmentActivity))
     {
-      ae.e("KindaPlatformUtil", "While setStatusBarHidden, We can't get the UIPageFragmentActivity on the top of stack, which we get is [" + localActivity + "]");
+      Log.e("KindaPlatformUtil", "While setStatusBarHidden, We can't get the UIPageFragmentActivity on the top of stack, which we get is [" + localActivity + "]");
       AppMethodBeat.o(18487);
       return;
     }
@@ -533,14 +555,14 @@ public class KindaPlatformUtil
   public boolean shouldReportWifiSsid()
   {
     AppMethodBeat.i(18499);
-    boolean bool = k.eIW();
+    boolean bool = k.fQz();
     AppMethodBeat.o(18499);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaPlatformUtil
  * JD-Core Version:    0.7.0.1
  */

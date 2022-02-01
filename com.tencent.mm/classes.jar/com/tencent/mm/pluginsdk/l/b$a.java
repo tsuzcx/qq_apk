@@ -11,8 +11,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class b$a
   extends Handler
 {
-  boolean hsj = false;
-  int kyd = 0;
+  int lCq = 0;
+  boolean ztI = false;
   
   public b$a(Looper paramLooper)
   {
@@ -25,8 +25,8 @@ final class b$a
     AppMethodBeat.i(31166);
     Camera localCamera = (Camera)paramMessage.obj;
     Camera.Parameters localParameters = localCamera.getParameters();
-    int i = localParameters.getZoom() + this.kyd;
-    if (this.hsj) {
+    int i = localParameters.getZoom() + this.lCq;
+    if (this.ztI) {
       if (i >= localParameters.getMaxZoom() / 2) {
         i = localParameters.getMaxZoom() / 2;
       }
@@ -49,7 +49,7 @@ final class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.l.b.a
  * JD-Core Version:    0.7.0.1
  */

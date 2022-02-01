@@ -7,10 +7,10 @@ import java.lang.reflect.Method;
 
 public final class n
 {
-  private static Method UM;
-  private static boolean UN;
-  private static Field UO;
-  private static boolean UQ;
+  private static Method Va;
+  private static boolean Vb;
+  private static Field Vc;
+  private static boolean Vd;
   
   public static void a(PopupWindow paramPopupWindow, int paramInt)
   {
@@ -20,20 +20,20 @@ public final class n
     for (;;)
     {
       return;
-      if (!UN) {}
+      if (!Vb) {}
       try
       {
         Method localMethod = PopupWindow.class.getDeclaredMethod("setWindowLayoutType", new Class[] { Integer.TYPE });
-        UM = localMethod;
+        Va = localMethod;
         localMethod.setAccessible(true);
         label47:
-        UN = true;
-        if (UM == null) {
+        Vb = true;
+        if (Va == null) {
           continue;
         }
         try
         {
-          UM.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
+          Va.invoke(paramPopupWindow, new Object[] { Integer.valueOf(paramInt) });
           return;
         }
         catch (Exception paramPopupWindow) {}
@@ -56,20 +56,20 @@ public final class n
       if (Build.VERSION.SDK_INT < 21) {
         continue;
       }
-      if (!UQ) {}
+      if (!Vd) {}
       try
       {
         Field localField = PopupWindow.class.getDeclaredField("mOverlapAnchor");
-        UO = localField;
+        Vc = localField;
         localField.setAccessible(true);
         label45:
-        UQ = true;
-        if (UO == null) {
+        Vd = true;
+        if (Vc == null) {
           continue;
         }
         try
         {
-          UO.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
+          Vc.set(paramPopupWindow, Boolean.valueOf(paramBoolean));
           return;
         }
         catch (IllegalAccessException paramPopupWindow) {}

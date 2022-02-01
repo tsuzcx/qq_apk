@@ -1,43 +1,41 @@
 package com.tencent.mm.plugin.fav.offline.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.ac;
-import com.tencent.mm.kernel.e;
+import com.tencent.mm.g.b.a.ba;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.fav.offline.PluginFavOffline;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.vfs.c;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
 {
-  private static void K(long paramLong1, long paramLong2)
+  private static void O(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(73542);
-    long l = cxr();
-    g.ajR().ajA().set(am.a.JaP, Long.valueOf(l + (paramLong2 - paramLong1)));
+    long l = cVv();
+    g.aAh().azQ().set(ar.a.Ojw, Long.valueOf(l + (paramLong2 - paramLong1)));
     AppMethodBeat.o(73542);
   }
   
-  public static void Ke()
+  public static void Un()
   {
     AppMethodBeat.i(73543);
-    List localList = ((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().cxt();
+    List localList = ((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().cVx();
     Iterator localIterator = localList.iterator();
     int i = 0;
     if (localIterator.hasNext())
     {
       com.tencent.mm.plugin.fav.offline.b.a locala = (com.tencent.mm.plugin.fav.offline.b.a)localIterator.next();
-      if (!((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().delete(locala.systemRowid)) {
+      if (!((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().delete(locala.systemRowid)) {
         break label154;
       }
       i += 1;
@@ -46,9 +44,9 @@ public final class a
     for (;;)
     {
       break;
-      o.dd(PluginFavOffline.getFavOfflinePath(), true);
-      ae.i("MicroMsg.offline.FavOfflineHelp", "cleanAllCache maxSize:%s allSize:%s allNum:%s deleteResult:%s", new Object[] { Long.valueOf(cxq()), Long.valueOf(cxr()), Integer.valueOf(localList.size()), Integer.valueOf(i) });
-      g.ajR().ajA().set(am.a.JaP, Long.valueOf(0L));
+      s.dy(PluginFavOffline.getFavOfflinePath(), true);
+      Log.i("MicroMsg.offline.FavOfflineHelp", "cleanAllCache maxSize:%s allSize:%s allNum:%s deleteResult:%s", new Object[] { Long.valueOf(cVu()), Long.valueOf(cVv()), Integer.valueOf(localList.size()), Integer.valueOf(i) });
+      g.aAh().azQ().set(ar.a.Ojw, Long.valueOf(0L));
       AppMethodBeat.o(73543);
       return;
     }
@@ -60,7 +58,7 @@ public final class a
     if (a(parama, 0, paramInt))
     {
       parama.field_isReport = 1;
-      ((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().c(parama);
+      ((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().c(parama);
     }
     AppMethodBeat.o(73549);
   }
@@ -70,19 +68,19 @@ public final class a
     AppMethodBeat.i(73545);
     if (parama == null)
     {
-      ae.i("MicroMsg.offline.FavOfflineHelp", "deleteFavOfflineContent favOffline is null!");
+      Log.i("MicroMsg.offline.FavOfflineHelp", "deleteFavOfflineContent favOffline is null!");
       AppMethodBeat.o(73545);
       return false;
     }
-    long l = ahx(parama.field_path);
-    boolean bool = o.deleteFile(parama.field_path);
+    long l = asf(parama.field_path);
+    boolean bool = s.deleteFile(parama.field_path);
     if (bool) {
-      K(l, 0L);
+      O(l, 0L);
     }
-    ae.i("MicroMsg.offline.FavOfflineHelp", "deleteFavOfflineContent deleteHtml:%s", new Object[] { Boolean.valueOf(bool) });
+    Log.i("MicroMsg.offline.FavOfflineHelp", "deleteFavOfflineContent deleteHtml:%s", new Object[] { Boolean.valueOf(bool) });
     parama.field_size = 0L;
     parama.field_status = 0;
-    bool = ((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().c(parama);
+    bool = ((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().c(parama);
     AppMethodBeat.o(73545);
     return bool;
   }
@@ -92,7 +90,7 @@ public final class a
     AppMethodBeat.i(73550);
     if (parama == null)
     {
-      ae.i("MicroMsg.offline.FavOfflineHelp", "report: favOffline is null!");
+      Log.i("MicroMsg.offline.FavOfflineHelp", "report: favOffline is null!");
       AppMethodBeat.o(73550);
       return false;
     }
@@ -101,74 +99,74 @@ public final class a
       AppMethodBeat.o(73550);
       return false;
     }
-    ac localac = new ac();
-    localac.dWc = parama.systemRowid;
+    ba localba = new ba();
+    localba.erm = parama.systemRowid;
     long l1;
     if (paramInt1 == 0)
     {
-      long l2 = new k(parama.field_path).length();
+      long l2 = new o(parama.field_path).length();
       l1 = l2;
-      if (!bu.isNullOrNil(parama.field_imgDirPath)) {
-        l1 = l2 + ahx(parama.field_imgDirPath);
+      if (!Util.isNullOrNil(parama.field_imgDirPath)) {
+        l1 = l2 + asf(parama.field_imgDirPath);
       }
     }
-    for (localac.dWd = l1;; localac.dWd = paramInt1)
+    for (localba.ern = l1;; localba.ern = paramInt1)
     {
-      localac.dWe = ((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().cxt().size();
-      localac.dWf = cxr();
-      localac.dWg = paramInt2;
-      localac.aLH();
+      localba.ero = ((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().cVx().size();
+      localba.erp = cVv();
+      localba.erq = paramInt2;
+      localba.bfK();
       AppMethodBeat.o(73550);
       return true;
     }
   }
   
-  public static boolean aa(String paramString1, String paramString2, String paramString3)
+  public static boolean af(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(73544);
-    long l = ahx(paramString2);
-    boolean bool3 = o.deleteFile(paramString2);
+    long l = asf(paramString2);
+    boolean bool3 = s.deleteFile(paramString2);
     if (bool3) {
-      K(l, 0L);
+      O(l, 0L);
     }
     boolean bool2;
-    if (!bu.isNullOrNil(paramString3))
+    if (!Util.isNullOrNil(paramString3))
     {
-      l = ahx(paramString3);
-      bool2 = o.dd(paramString3, true);
+      l = asf(paramString3);
+      bool2 = s.dy(paramString3, true);
       bool1 = bool2;
       if (bool2) {
-        K(l, 0L);
+        O(l, 0L);
       }
     }
     for (boolean bool1 = bool2; (bool3) && (bool1); bool1 = true)
     {
-      bool1 = ((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().ahB(paramString1);
+      bool1 = ((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().asj(paramString1);
       AppMethodBeat.o(73544);
       return bool1;
     }
-    ae.i("MicroMsg.offline.FavOfflineHelp", "deleteFavOffline deleteHtml:%s deleteImg:%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
+    Log.i("MicroMsg.offline.FavOfflineHelp", "deleteFavOffline deleteHtml:%s deleteImg:%s", new Object[] { Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
     AppMethodBeat.o(73544);
     return false;
   }
   
-  private static long ahx(String paramString)
+  private static long asf(String paramString)
   {
     long l = 0L;
     AppMethodBeat.i(73547);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(73547);
       return 0L;
     }
-    Object localObject = new k(paramString);
-    if (((k)localObject).isFile())
+    Object localObject = new o(paramString);
+    if (((o)localObject).isFile())
     {
-      l = ((k)localObject).length();
+      l = ((o)localObject).length();
       AppMethodBeat.o(73547);
       return l;
     }
-    paramString = o.dh(paramString, true);
+    paramString = s.dC(paramString, true);
     if (paramString == null)
     {
       AppMethodBeat.o(73547);
@@ -177,11 +175,11 @@ public final class a
     paramString = paramString.iterator();
     if (paramString.hasNext())
     {
-      localObject = (c)paramString.next();
+      localObject = (com.tencent.mm.vfs.e)paramString.next();
       if (localObject == null) {
         break label113;
       }
-      l = ((c)localObject).size + l;
+      l = ((com.tencent.mm.vfs.e)localObject).size + l;
     }
     label113:
     for (;;)
@@ -192,24 +190,24 @@ public final class a
     }
   }
   
-  public static int ahy(String paramString)
+  public static int asg(String paramString)
   {
     AppMethodBeat.i(73548);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.i("MicroMsg.offline.FavOfflineHelp", "updateOfflineTaskFailNum: url is null!");
+      Log.i("MicroMsg.offline.FavOfflineHelp", "updateOfflineTaskFailNum: url is null!");
       AppMethodBeat.o(73548);
       return -1;
     }
-    com.tencent.mm.plugin.fav.offline.b.a locala = ((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().ahC(paramString);
+    com.tencent.mm.plugin.fav.offline.b.a locala = ((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().ask(paramString);
     if (locala == null)
     {
-      ae.i("MicroMsg.offline.FavOfflineHelp", "updateOfflineTaskFailNum: favOffline(%s) is null!", new Object[] { paramString });
+      Log.i("MicroMsg.offline.FavOfflineHelp", "updateOfflineTaskFailNum: favOffline(%s) is null!", new Object[] { paramString });
       AppMethodBeat.o(73548);
       return -1;
     }
     locala.field_failNum += 1;
-    ae.i("MicroMsg.offline.FavOfflineHelp", "updateOfflineTaskFailNum result:%s", new Object[] { Boolean.valueOf(((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().c(locala)) });
+    Log.i("MicroMsg.offline.FavOfflineHelp", "updateOfflineTaskFailNum result:%s", new Object[] { Boolean.valueOf(((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().c(locala)) });
     if (locala.field_failNum >= 5) {
       a(locala, 0);
     }
@@ -218,11 +216,11 @@ public final class a
     return i;
   }
   
-  public static boolean cxo()
+  public static boolean cVs()
   {
     AppMethodBeat.i(73538);
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qMa, 0);
-    ae.d("MicroMsg.offline.FavOfflineHelp", "isOpenFavOffline() open:%s", new Object[] { Integer.valueOf(i) });
+    int i = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sit, 0);
+    Log.d("MicroMsg.offline.FavOfflineHelp", "isOpenFavOffline() open:%s", new Object[] { Integer.valueOf(i) });
     if (i == 1)
     {
       AppMethodBeat.o(73538);
@@ -232,27 +230,27 @@ public final class a
     return false;
   }
   
-  private static long cxp()
+  private static long cVt()
   {
     AppMethodBeat.i(73539);
-    long l = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qMb, 20971520L);
-    ae.d("MicroMsg.offline.FavOfflineHelp", "getFavOfflineMaxSize() maxSize:%s", new Object[] { Long.valueOf(l) });
+    long l = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.siu, 20971520L);
+    Log.d("MicroMsg.offline.FavOfflineHelp", "getFavOfflineMaxSize() maxSize:%s", new Object[] { Long.valueOf(l) });
     AppMethodBeat.o(73539);
     return l;
   }
   
-  private static long cxq()
+  private static long cVu()
   {
     AppMethodBeat.i(73540);
-    long l = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qMc, 1073741824);
+    long l = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.siv, 1073741824);
     AppMethodBeat.o(73540);
     return l;
   }
   
-  private static long cxr()
+  private static long cVv()
   {
     AppMethodBeat.i(73541);
-    long l = g.ajR().ajA().a(am.a.JaP, 0L);
+    long l = g.aAh().azQ().a(ar.a.Ojw, 0L);
     AppMethodBeat.o(73541);
     return l;
   }
@@ -260,52 +258,52 @@ public final class a
   public static boolean d(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     AppMethodBeat.i(73546);
-    if (bu.isNullOrNil(paramString1))
+    if (Util.isNullOrNil(paramString1))
     {
-      ae.i("MicroMsg.offline.FavOfflineHelp", "updateFavOffline: url is null!");
+      Log.i("MicroMsg.offline.FavOfflineHelp", "updateFavOffline: url is null!");
       AppMethodBeat.o(73546);
       return false;
     }
-    Object localObject = ((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().ahC(paramString1);
+    Object localObject = ((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().ask(paramString1);
     if (localObject == null)
     {
-      ae.i("MicroMsg.offline.FavOfflineHelp", "updateFavOffline: favOffline(%s) is null!", new Object[] { paramString1 });
+      Log.i("MicroMsg.offline.FavOfflineHelp", "updateFavOffline: favOffline(%s) is null!", new Object[] { paramString1 });
       AppMethodBeat.o(73546);
       return false;
     }
-    long l1 = new k(paramString2).length();
-    if (!bu.isNullOrNil(paramString3)) {
-      l1 += ahx(paramString3);
+    long l1 = new o(paramString2).length();
+    if (!Util.isNullOrNil(paramString3)) {
+      l1 += asf(paramString3);
     }
     for (;;)
     {
-      if (l1 > cxp())
+      if (l1 > cVt())
       {
-        ae.i("MicroMsg.offline.FavOfflineHelp", "url(%s) bytelength(%s) exceed %s", new Object[] { paramString1, Long.valueOf(l1), Long.valueOf(cxp()) });
+        Log.i("MicroMsg.offline.FavOfflineHelp", "url(%s) bytelength(%s) exceed %s", new Object[] { paramString1, Long.valueOf(l1), Long.valueOf(cVt()) });
         if (paramInt == 0) {
           a((com.tencent.mm.plugin.fav.offline.b.a)localObject, (int)l1, 0);
         }
-        bool1 = aa(paramString1, paramString2, paramString3);
+        bool1 = af(paramString1, paramString2, paramString3);
         AppMethodBeat.o(73546);
         return bool1;
       }
       int i = ((com.tencent.mm.plugin.fav.offline.b.a)localObject).field_status;
-      K(((com.tencent.mm.plugin.fav.offline.b.a)localObject).field_size, l1);
+      O(((com.tencent.mm.plugin.fav.offline.b.a)localObject).field_size, l1);
       ((com.tencent.mm.plugin.fav.offline.b.a)localObject).field_path = paramString2;
       ((com.tencent.mm.plugin.fav.offline.b.a)localObject).field_size = l1;
-      ((com.tencent.mm.plugin.fav.offline.b.a)localObject).field_updateTime = ch.aDa();
-      if ((!bu.isNullOrNil(paramString3)) && (bu.isNullOrNil(((com.tencent.mm.plugin.fav.offline.b.a)localObject).field_imgDirPath))) {
+      ((com.tencent.mm.plugin.fav.offline.b.a)localObject).field_updateTime = cl.aWy();
+      if ((!Util.isNullOrNil(paramString3)) && (Util.isNullOrNil(((com.tencent.mm.plugin.fav.offline.b.a)localObject).field_imgDirPath))) {
         ((com.tencent.mm.plugin.fav.offline.b.a)localObject).field_imgDirPath = paramString3;
       }
       ((com.tencent.mm.plugin.fav.offline.b.a)localObject).field_status = paramInt;
-      boolean bool1 = ((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().c((com.tencent.mm.plugin.fav.offline.b.a)localObject);
+      boolean bool1 = ((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().c((com.tencent.mm.plugin.fav.offline.b.a)localObject);
       if ((i != 1) && (paramInt == 2)) {
         a((com.tencent.mm.plugin.fav.offline.b.a)localObject, 1);
       }
-      long l3 = cxr();
-      if (l3 > cxq())
+      long l3 = cVv();
+      if (l3 > cVu())
       {
-        paramString2 = ((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().cxt();
+        paramString2 = ((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().cVx();
         paramString3 = new ArrayList();
         localObject = paramString2.iterator();
         long l2 = 0L;
@@ -313,7 +311,7 @@ public final class a
         while (((Iterator)localObject).hasNext())
         {
           locala = (com.tencent.mm.plugin.fav.offline.b.a)((Iterator)localObject).next();
-          if (l2 >= cxq() / 2L) {
+          if (l2 >= cVu() / 2L) {
             break;
           }
           l2 += locala.field_size;
@@ -324,30 +322,30 @@ public final class a
         while (((Iterator)localObject).hasNext())
         {
           locala = (com.tencent.mm.plugin.fav.offline.b.a)((Iterator)localObject).next();
-          boolean bool2 = o.deleteFile(locala.field_path);
-          long l4 = ahx(locala.field_path);
-          boolean bool3 = o.dd(locala.field_imgDirPath, true);
-          long l5 = ahx(locala.field_imgDirPath);
+          boolean bool2 = s.deleteFile(locala.field_path);
+          long l4 = asf(locala.field_path);
+          boolean bool3 = s.dy(locala.field_imgDirPath, true);
+          long l5 = asf(locala.field_imgDirPath);
           if ((bool2) && (bool3))
           {
-            K(l4 + l5, 0L);
-            if (((PluginFavOffline)g.ad(PluginFavOffline.class)).getFavOfflineStorage().delete(locala.systemRowid)) {
+            O(l4 + l5, 0L);
+            if (((PluginFavOffline)g.ah(PluginFavOffline.class)).getFavOfflineStorage().delete(locala.systemRowid)) {
               i += 1;
             }
           }
           else
           {
             if (bool2) {
-              K(l4, 0L);
+              O(l4, 0L);
             }
             if (bool3) {
-              K(l5, 0L);
+              O(l5, 0L);
             }
           }
         }
-        ae.i("MicroMsg.offline.FavOfflineHelp", "cleanHalfCache maxSize:%s allSize:%s allNum:%s deleteSize:%s deleteNum:%s deleteResult:%s", new Object[] { Long.valueOf(cxq()), Long.valueOf(l3), Integer.valueOf(paramString2.size()), Long.valueOf(l2), Integer.valueOf(paramString3.size()), Integer.valueOf(i) });
+        Log.i("MicroMsg.offline.FavOfflineHelp", "cleanHalfCache maxSize:%s allSize:%s allNum:%s deleteSize:%s deleteNum:%s deleteResult:%s", new Object[] { Long.valueOf(cVu()), Long.valueOf(l3), Integer.valueOf(paramString2.size()), Long.valueOf(l2), Integer.valueOf(paramString3.size()), Integer.valueOf(i) });
       }
-      ae.i("MicroMsg.offline.FavOfflineHelp", "allFavOffline size:%s, url(%s) status(%s) size:%s", new Object[] { Long.valueOf(cxr()), paramString1, Integer.valueOf(paramInt), Long.valueOf(l1) });
+      Log.i("MicroMsg.offline.FavOfflineHelp", "allFavOffline size:%s, url(%s) status(%s) size:%s", new Object[] { Long.valueOf(cVv()), paramString1, Integer.valueOf(paramInt), Long.valueOf(l1) });
       AppMethodBeat.o(73546);
       return bool1;
     }

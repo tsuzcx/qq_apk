@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/hbt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="220.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textSize="22.0dip" android:gravity="center" android:id="@id/hsu" android:background="#90ffffff" android:layout_width="250.0dip" android:layout_height="wrap_content" android:hint="@string/hp0" android:inputType="number" style="@style/ok" />
-    <Button android:id="@id/hk4" android:layout_margin="10.0dip" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="@dimen/hu" android:text="@string/hmn" style="@style/o8" />
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/bub" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" android:layout_marginTop="24.0dip" android:src="@raw/ic_download_pause_alert" android:scaleType="fitXY" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/FG_0" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/bo3" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/FG_0" android:gravity="center" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bo6" />
 </LinearLayout>

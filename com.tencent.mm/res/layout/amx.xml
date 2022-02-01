@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/a32" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent" android:onClick="onClickBg"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/dlh" style="@style/a4o" />
-    <LinearLayout android:orientation="vertical" android:id="@id/dl8" android:background="@drawable/mj" android:paddingLeft="@dimen/h" android:paddingTop="@dimen/h" android:paddingRight="@dimen/h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn">
-        <TextView android:id="@id/dl9" style="@style/a4m" />
-        <TextView android:id="@id/dlb" android:layout_marginTop="@dimen/d" android:layout_marginBottom="@dimen/jn" style="@style/a4m" />
-        <View style="@style/a4n" />
-        <LinearLayout android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/h" android:layout_marginBottom="@dimen/h">
-            <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <ImageView android:id="@id/dld" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-                <TextView android:textSize="13.0dip" android:textColor="@color/a_u" android:gravity="bottom|center|right" android:id="@id/dle" android:background="@drawable/ap8" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-                <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                    <ImageView android:id="@id/dla" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b6u" />
-                </LinearLayout>
-            </FrameLayout>
-        </LinearLayout>
-        <View style="@style/a4n" />
-        <TextView android:layout_gravity="center_horizontal" android:id="@id/dl7" style="@style/a4l" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:gravity="center_horizontal" android:id="@id/g02" android:paddingTop="@dimen/hy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ListView android:id="@id/hf1" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/np" />
+    <RelativeLayout android:id="@id/ja3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/hek" android:paddingTop="20.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
+        <TextView android:textSize="14.0dip" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/ekc" />
     </LinearLayout>
-</LinearLayout>
+    <include layout="@layout/amw" />
+</FrameLayout>

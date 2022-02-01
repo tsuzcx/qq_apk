@@ -5,11 +5,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.ab;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,10 +17,10 @@ import java.util.List;
 
 final class p
 {
-  public static void agJ()
+  public static void awI()
   {
     AppMethodBeat.i(152055);
-    if (!feP())
+    if (!gnZ())
     {
       AppMethodBeat.o(152055);
       return;
@@ -30,32 +30,32 @@ final class p
       AppMethodBeat.o(152055);
       return;
     }
-    long l = bu.aRi();
-    if (bu.a((Long)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.INS, null), 0L) < l)
+    long l = Util.nowSecond();
+    if (Util.nullAs((Long)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NVV, null), 0L) < l)
     {
-      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.INS, Long.valueOf(7200L + l));
-      ae.i("MicroMsg.PostTaskCheckResume", "doCheckResume");
-      q.a.feQ().caq().postToWorker(new Runnable()
+      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NVV, Long.valueOf(7200L + l));
+      Log.i("MicroMsg.PostTaskCheckResume", "doCheckResume");
+      q.a.goa().cyh().postToWorker(new Runnable()
       {
         public final void run()
         {
           Object localObject1 = null;
           s locals = null;
           AppMethodBeat.i(152053);
-          if (!p.feP())
+          if (!p.gnZ())
           {
-            ae.e("MicroMsg.PostTaskCheckResume", "try resumeAllAndEvictExpired but account not ready");
+            Log.e("MicroMsg.PostTaskCheckResume", "try resumeAllAndEvictExpired but account not ready");
             AppMethodBeat.o(152053);
             return;
           }
           try
           {
-            localObject3 = q.a.feQ();
+            localObject3 = q.a.goa();
             i = p.getNetworkType();
-            ae.i("MicroMsg.ResDownloaderCore", "resumeAllAndEvictExpired, networkType = %d", new Object[] { Integer.valueOf(i) });
+            Log.i("MicroMsg.ResDownloaderCore", "resumeAllAndEvictExpired, networkType = %d", new Object[] { Integer.valueOf(i) });
             if (i == 0)
             {
-              ae.i("MicroMsg.ResDownloaderCore", "resumeAllAndEvictExpired, networkType is unavailable");
+              Log.i("MicroMsg.ResDownloaderCore", "resumeAllAndEvictExpired, networkType is unavailable");
               AppMethodBeat.o(152053);
               return;
             }
@@ -64,20 +64,20 @@ final class p
           {
             Object localObject3;
             int i;
-            ae.printErrStackTrace("MicroMsg.PostTaskCheckResume", localSQLiteDatabaseCorruptException, "resumeAllAndEvictExpired", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.PostTaskCheckResume", localSQLiteDatabaseCorruptException, "resumeAllAndEvictExpired", new Object[0]);
             AppMethodBeat.o(152053);
             return;
-            if (!((q)localObject3).kot)
+            if (!((q)localObject3).lsb)
             {
-              ae.e("MicroMsg.ResDownloaderCore", "resumeAllAndEvictExpired, core can not work");
+              Log.e("MicroMsg.ResDownloaderCore", "resumeAllAndEvictExpired, core can not work");
               AppMethodBeat.o(152053);
               return;
             }
             long l;
-            if (((q)localObject3).kot)
+            if (((q)localObject3).lsb)
             {
-              l = bu.fpO();
-              localObject3 = ((q)localObject3).Fjr.getAll();
+              l = Util.nowMilliSecond();
+              localObject3 = ((q)localObject3).Kak.getAll();
               if (localObject3 != null) {
                 break label189;
               }
@@ -85,11 +85,11 @@ final class p
             }
             for (;;)
             {
-              ae.i("MicroMsg.ResDownloaderCore", "queryAll: cost = %d", new Object[] { Long.valueOf(bu.DD(l)) });
-              if (!bu.ht((List)localObject2)) {
+              Log.i("MicroMsg.ResDownloaderCore", "queryAll: cost = %d", new Object[] { Long.valueOf(Util.milliSecondsToNow(l)) });
+              if (!Util.isNullOrNil((List)localObject2)) {
                 break;
               }
-              ae.i("MicroMsg.ResDownloaderCore", "resumeAllAndEvictExpired, no record stored, skip this resumeAll-op");
+              Log.i("MicroMsg.ResDownloaderCore", "resumeAllAndEvictExpired, no record stored, skip this resumeAll-op");
               AppMethodBeat.o(152053);
               return;
               label189:
@@ -115,15 +115,15 @@ final class p
             while (((Iterator)localObject2).hasNext())
             {
               locals = (s)((Iterator)localObject2).next();
-              if (!bu.isNullOrNil(locals.field_groupId1))
+              if (!Util.isNullOrNil(locals.field_groupId1))
               {
                 int j = locals.field_groupId1.hashCode();
-                localObject3 = r.feR().iterator();
+                localObject3 = r.gob().iterator();
                 while (((Iterator)localObject3).hasNext())
                 {
                   g localg = (g)((Iterator)localObject3).next();
-                  if (j == bu.nullAsNil(localg.afK()).hashCode()) {
-                    localg.fev().a(locals, i);
+                  if (j == Util.nullAsNil(localg.avy()).hashCode()) {
+                    localg.gnF().a(locals, i);
                   }
                 }
               }
@@ -142,27 +142,10 @@ final class p
     AppMethodBeat.o(152055);
   }
   
-  static boolean feP()
-  {
-    AppMethodBeat.i(152054);
-    if (com.tencent.mm.kernel.g.ajP().aiZ())
-    {
-      com.tencent.mm.kernel.g.ajP();
-      if (!a.aiT()) {}
-    }
-    else
-    {
-      AppMethodBeat.o(152054);
-      return false;
-    }
-    AppMethodBeat.o(152054);
-    return true;
-  }
-  
   static int getNetworkType()
   {
     AppMethodBeat.i(152056);
-    switch (ab.abf())
+    switch (ab.ape())
     {
     default: 
       AppMethodBeat.o(152056);
@@ -174,10 +157,27 @@ final class p
     AppMethodBeat.o(152056);
     return 1;
   }
+  
+  static boolean gnZ()
+  {
+    AppMethodBeat.i(152054);
+    if (com.tencent.mm.kernel.g.aAf().azp())
+    {
+      com.tencent.mm.kernel.g.aAf();
+      if (!a.azj()) {}
+    }
+    else
+    {
+      AppMethodBeat.o(152054);
+      return false;
+    }
+    AppMethodBeat.o(152054);
+    return true;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.c.p
  * JD-Core Version:    0.7.0.1
  */

@@ -1,67 +1,104 @@
 package com.tencent.mm.live.core.mini;
 
-import android.annotation.TargetApi;
-import android.app.Notification;
-import android.support.v4.app.s.c;
+import android.content.Context;
+import android.content.Intent;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewOutlineProvider;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/mini/LiveMiniNotificationHelper;", "", "()V", "TAG", "", "isBindForegroundService", "", "bindForegroundServiceIfNeed", "", "title", "content", "tickerContent", "activityName", "createNotification", "Landroid/app/Notification;", "intent", "Landroid/content/Intent;", "getAPI15NotificationFromBuilder", "builder", "Landroid/support/v4/app/NotificationCompat$Builder;", "getAPI16NotificationFromBuilder", "getNotificationFromBuilder", "hideNotification", "showNotification", "unBindForegroundServiceIfNeed", "plugin-core_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/mini/LiveMiniManager;", "", "()V", "intent", "Landroid/content/Intent;", "isReported", "", "mWakeLock", "Landroid/os/PowerManager$WakeLock;", "Landroid/os/PowerManager;", "miniLayout", "Lcom/tencent/mm/live/core/mini/AbsLiveMiniView;", "miniLayoutVideoContainer", "Landroid/widget/FrameLayout;", "resumeActivityName", "", "addRenderView", "", "view", "Landroid/view/View;", "addViewToWindow", "size", "Landroid/graphics/Point;", "liveId", "", "isAnchor", "generateType", "", "opType", "release", "removeViewFromWindow", "setup", "activityName", "setupMiniView", "miniView", "updateState", "state", "Lcom/tencent/mm/live/core/mini/LiveMiniState;", "Companion", "plugin-core_release"})
 public final class b
 {
-  public static final b gNf;
+  public static final a hCR;
+  public boolean gqx;
+  public final PowerManager.WakeLock hCN;
+  public AbsLiveMiniView hCO;
+  public FrameLayout hCP;
+  public String hCQ;
+  public Intent intent;
   
   static
   {
-    AppMethodBeat.i(196929);
-    gNf = new b();
-    AppMethodBeat.o(196929);
+    AppMethodBeat.i(196588);
+    hCR = new a((byte)0);
+    AppMethodBeat.o(196588);
   }
   
-  public static void amz()
+  public b()
   {
-    AppMethodBeat.i(196928);
-    com.tencent.mm.kernel.b.a locala = g.ad(com.tencent.mm.plugin.notification.b.a.class);
-    p.g(locala, "MMKernel.plugin(IPluginNotification::class.java)");
-    ((com.tencent.mm.plugin.notification.b.a)locala).getNotification().cancel(46);
-    AppMethodBeat.o(196928);
+    AppMethodBeat.i(196587);
+    this.intent = new Intent();
+    this.hCP = new FrameLayout(MMApplicationContext.getContext());
+    this.hCQ = "";
+    Object localObject = MMApplicationContext.getContext().getSystemService("power");
+    if (localObject == null)
+    {
+      localObject = new t("null cannot be cast to non-null type android.os.PowerManager");
+      AppMethodBeat.o(196587);
+      throw ((Throwable)localObject);
+    }
+    localObject = ((PowerManager)localObject).newWakeLock(536870922, "MicroMsg.LiveCoreMini");
+    p.g(localObject, "pm.newWakeLock(PowerMana…er.ON_AFTER_RELEASE, TAG)");
+    this.hCN = ((PowerManager.WakeLock)localObject);
+    if (!this.hCN.isHeld())
+    {
+      Log.i("MicroMsg.LiveCoreMini", "alvinluo acquire wakeLock");
+      this.hCN.acquire();
+    }
+    AppMethodBeat.o(196587);
   }
   
-  @TargetApi(16)
-  static Notification c(s.c paramc)
+  public final void aEj()
   {
-    AppMethodBeat.i(196926);
-    paramc = paramc.build();
-    p.g(paramc, "builder.build()");
-    AppMethodBeat.o(196926);
-    return paramc;
+    AppMethodBeat.i(196585);
+    Object localObject = c.hCU;
+    c.aEk();
+    localObject = a.hCD;
+    localObject = a.b.hCF;
+    a.b.aEi().b((FrameLayout)this.hCO);
+    AppMethodBeat.o(196585);
   }
   
-  public static void c(String paramString1, String paramString2, String paramString3, String paramString4)
+  public final void co(View paramView)
   {
-    AppMethodBeat.i(196925);
-    p.h(paramString1, "title");
-    p.h(paramString2, "content");
-    p.h(paramString3, "tickerContent");
-    p.h(paramString4, "activityName");
-    AppMethodBeat.o(196925);
+    AppMethodBeat.i(196586);
+    p.h(paramView, "view");
+    paramView.setClipToOutline(true);
+    paramView.setOutlineProvider((ViewOutlineProvider)new e(com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 8)));
+    this.hCP.removeAllViews();
+    this.hCP.addView(paramView, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
+    AppMethodBeat.o(196586);
   }
   
-  static Notification d(s.c paramc)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/mini/LiveMiniManager$Companion;", "", "()V", "ROUTE_TO_MAXIMIZE", "", "TAG", "plugin-core_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  public static final class b
+    extends q
+    implements kotlin.g.a.a<x>
   {
-    AppMethodBeat.i(196927);
-    paramc = paramc.build();
-    p.g(paramc, "builder.build()");
-    AppMethodBeat.o(196927);
-    return paramc;
+    public b(b paramb, d paramd)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.mini.b
  * JD-Core Version:    0.7.0.1
  */

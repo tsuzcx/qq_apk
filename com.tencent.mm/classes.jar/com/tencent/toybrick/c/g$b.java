@@ -7,9 +7,9 @@ public enum g$b
   static
   {
     AppMethodBeat.i(159960);
-    MGd = new b("NORMAL", 0);
-    MGe = new b("HINT", 1);
-    MGf = new b[] { MGd, MGe };
+    Soe = new b("NORMAL", 0);
+    Sof = new b("HINT", 1);
+    Sog = new b[] { Soe, Sof };
     AppMethodBeat.o(159960);
   }
   

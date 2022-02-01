@@ -8,31 +8,31 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
   extends Drawable
 {
-  private RectF hM;
-  private Drawable npp;
-  float npq;
-  private int npr;
+  private RectF hO;
+  private Drawable oyW;
+  float oyX;
+  private int oyY;
   private Paint paint;
   
   public a(Drawable paramDrawable)
   {
     AppMethodBeat.i(133769);
-    this.npr = com.tencent.mm.cb.a.ay(ak.getContext(), 2131165289);
-    this.npp = paramDrawable;
+    this.oyY = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131165296);
+    this.oyW = paramDrawable;
     this.paint = new Paint(1);
-    this.paint.setColor(ak.getResources().getColor(2131100537));
+    this.paint.setColor(MMApplicationContext.getResources().getColor(2131100675));
     AppMethodBeat.o(133769);
   }
   
   public final void draw(Canvas paramCanvas)
   {
     AppMethodBeat.i(133770);
-    Drawable localDrawable = this.npp;
+    Drawable localDrawable = this.oyW;
     Rect localRect = localDrawable.getBounds();
     int i = localRect.right;
     int j = localRect.left;
@@ -41,8 +41,8 @@ public final class a
     float f1 = i - j;
     float f2 = k - m;
     i = paramCanvas.save();
-    paramCanvas.rotate(this.npq, f1 * 0.5F + localRect.left, localRect.top + f2 * 0.5F);
-    paramCanvas.drawOval(this.hM, this.paint);
+    paramCanvas.rotate(this.oyX, f1 * 0.5F + localRect.left, localRect.top + f2 * 0.5F);
+    paramCanvas.drawOval(this.hO, this.paint);
     localDrawable.draw(paramCanvas);
     paramCanvas.restoreToCount(i);
     AppMethodBeat.o(133770);
@@ -50,20 +50,20 @@ public final class a
   
   public final int getIntrinsicHeight()
   {
-    return this.npr;
+    return this.oyY;
   }
   
   public final int getIntrinsicWidth()
   {
-    return this.npr;
+    return this.oyY;
   }
   
   public final int getOpacity()
   {
     AppMethodBeat.i(133774);
-    if (this.npp != null)
+    if (this.oyW != null)
     {
-      int i = this.npp.getOpacity();
+      int i = this.oyW.getOpacity();
       AppMethodBeat.o(133774);
       return i;
     }
@@ -74,8 +74,8 @@ public final class a
   public final void setAlpha(int paramInt)
   {
     AppMethodBeat.i(133772);
-    if (this.npp != null) {
-      this.npp.setAlpha(paramInt);
+    if (this.oyW != null) {
+      this.oyW.setAlpha(paramInt);
     }
     this.paint.setAlpha(paramInt);
     AppMethodBeat.o(133772);
@@ -84,10 +84,10 @@ public final class a
   public final void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(133771);
-    if (this.npp != null) {
-      this.npp.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
+    if (this.oyW != null) {
+      this.oyW.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
     }
-    this.hM = new RectF(paramInt1, paramInt2, paramInt3, paramInt4);
+    this.hO = new RectF(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(133771);
   }
   

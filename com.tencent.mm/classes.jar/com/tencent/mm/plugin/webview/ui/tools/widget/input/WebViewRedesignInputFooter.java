@@ -16,13 +16,12 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.i;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.tools.b.c.a;
@@ -33,50 +32,50 @@ import com.tencent.mm.ui.widget.MMEditText;
 public class WebViewRedesignInputFooter
   extends LinearLayout
 {
-  private WebViewInputFooter.c EKS;
-  private WebViewInputFooter.a EKT;
-  private WebViewInputFooter.b EKU;
-  private WebViewSmileyPanel EKV;
-  public View EKW;
-  private View EKX;
-  private View EKY;
-  public MMEditText EKZ;
-  public LinearLayout ELa;
-  public boolean ELb;
-  private int ELc;
-  private TextView ELf;
-  private int ELg;
-  public MMActivity fNT;
-  private ImageButton nkD;
+  private WebViewInputFooter.b JAJ;
+  private WebViewSmileyPanel JAK;
+  public View JAL;
+  private View JAM;
+  private View JAN;
+  public MMEditText JAO;
+  public LinearLayout JAP;
+  public boolean JAQ;
+  private int JAR;
+  private b JAU;
+  private WebViewRedesignInputFooter.a JAV;
+  private TextView JAW;
+  private int JAX;
+  public MMActivity gte;
+  private ImageButton oui;
   public int state;
-  private boolean vNw;
+  private boolean ziU;
   
   public WebViewRedesignInputFooter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(199188);
+    AppMethodBeat.i(212130);
     this.state = 0;
-    this.ELc = 2147483647;
-    this.ELg = 2147483647;
-    this.vNw = true;
-    this.fNT = ((MMActivity)paramContext);
-    paramContext = (ViewGroup)View.inflate(this.fNT, 2131496533, this);
-    this.ELa = ((LinearLayout)paramContext.findViewById(2131306914));
-    this.EKX = paramContext.findViewById(2131306918);
-    this.EKY = paramContext.findViewById(2131306917);
-    this.EKW = paramContext.findViewById(2131306919);
-    this.EKZ = ((MMEditText)paramContext.findViewById(2131306915));
-    this.ELf = ((TextView)paramContext.findViewById(2131308528));
-    this.nkD = ((ImageButton)paramContext.findViewById(2131306920));
-    this.nkD.setOnClickListener(new View.OnClickListener()
+    this.JAR = 2147483647;
+    this.JAX = 2147483647;
+    this.ziU = true;
+    this.gte = ((MMActivity)paramContext);
+    paramContext = (ViewGroup)View.inflate(this.gte, 2131497075, this);
+    this.JAP = ((LinearLayout)paramContext.findViewById(2131310387));
+    this.JAM = paramContext.findViewById(2131310391);
+    this.JAN = paramContext.findViewById(2131310390);
+    this.JAL = paramContext.findViewById(2131310392);
+    this.JAO = ((MMEditText)paramContext.findViewById(2131310388));
+    this.JAW = ((TextView)paramContext.findViewById(2131310402));
+    this.oui = ((ImageButton)paramContext.findViewById(2131310393));
+    this.oui.setOnClickListener(new View.OnClickListener()
     {
       @SuppressLint({"ResourceType"})
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(199179);
+        AppMethodBeat.i(212122);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewRedesignInputFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewRedesignInputFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (WebViewRedesignInputFooter.a(WebViewRedesignInputFooter.this) == 0)
         {
           WebViewRedesignInputFooter.b(WebViewRedesignInputFooter.this).hideVKB();
@@ -84,14 +83,14 @@ public class WebViewRedesignInputFooter
             WebViewRedesignInputFooter.d(WebViewRedesignInputFooter.this).requestFocus();
           }
           WebViewRedesignInputFooter.e(WebViewRedesignInputFooter.this);
-          WebViewRedesignInputFooter.f(WebViewRedesignInputFooter.this).setImageResource(2131690564);
+          WebViewRedesignInputFooter.f(WebViewRedesignInputFooter.this).setImageResource(2131690793);
           WebViewRedesignInputFooter.a(WebViewRedesignInputFooter.this, 1);
           WebViewRedesignInputFooter.g(WebViewRedesignInputFooter.this);
         }
         for (;;)
         {
           a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewRedesignInputFooter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(199179);
+          AppMethodBeat.o(212122);
           return;
           WebViewRedesignInputFooter.g(WebViewRedesignInputFooter.this);
           WebViewRedesignInputFooter.d(WebViewRedesignInputFooter.this).requestFocus();
@@ -101,122 +100,105 @@ public class WebViewRedesignInputFooter
         }
       }
     });
-    this.EKZ.setOnTouchListener(new View.OnTouchListener()
+    this.JAO.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(199180);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewRedesignInputFooter$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+        AppMethodBeat.i(212123);
         WebViewRedesignInputFooter.g(WebViewRedesignInputFooter.this);
         WebViewRedesignInputFooter.i(WebViewRedesignInputFooter.this).setVisibility(8);
         WebViewRedesignInputFooter.i(WebViewRedesignInputFooter.this);
-        WebViewRedesignInputFooter.f(WebViewRedesignInputFooter.this).setImageResource(2131231701);
+        WebViewRedesignInputFooter.f(WebViewRedesignInputFooter.this).setImageResource(2131231772);
         WebViewRedesignInputFooter.a(WebViewRedesignInputFooter.this, 0);
-        a.a(false, this, "com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewRedesignInputFooter$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(199180);
+        AppMethodBeat.o(212123);
         return false;
       }
     });
-    this.EKV = new WebViewSmileyPanel(getContext());
-    this.EKV.setVisibility(8);
-    this.EKV.setBackgroundResource(2131234802);
-    this.EKV.setOnTextOperationListener(new WebViewSmileyPanel.a()
+    this.JAK = new WebViewSmileyPanel(getContext());
+    this.JAK.setVisibility(8);
+    this.JAK.setBackgroundResource(2131235785);
+    this.JAK.setOnTextOperationListener(new WebViewSmileyPanel.a()
     {
-      public final void apc()
+      public final void aHC()
       {
-        AppMethodBeat.i(199182);
+        AppMethodBeat.i(212125);
         if ((WebViewRedesignInputFooter.c(WebViewRedesignInputFooter.this)) && (WebViewRedesignInputFooter.j(WebViewRedesignInputFooter.this) != null))
         {
-          WebViewRedesignInputFooter.j(WebViewRedesignInputFooter.this).Wd("[DELETE_EMOTION]");
-          AppMethodBeat.o(199182);
+          WebViewRedesignInputFooter.j(WebViewRedesignInputFooter.this).afZ("[DELETE_EMOTION]");
+          AppMethodBeat.o(212125);
           return;
         }
         if (WebViewRedesignInputFooter.d(WebViewRedesignInputFooter.this) != null) {
-          WebViewRedesignInputFooter.d(WebViewRedesignInputFooter.this).fPJ();
+          WebViewRedesignInputFooter.d(WebViewRedesignInputFooter.this).gYD();
         }
-        AppMethodBeat.o(199182);
+        AppMethodBeat.o(212125);
       }
       
       public final void append(String paramAnonymousString)
       {
-        AppMethodBeat.i(199181);
+        AppMethodBeat.i(212124);
         try
         {
           if (WebViewRedesignInputFooter.c(WebViewRedesignInputFooter.this))
           {
-            WebViewRedesignInputFooter.j(WebViewRedesignInputFooter.this).Wd(paramAnonymousString);
-            AppMethodBeat.o(199181);
+            WebViewRedesignInputFooter.j(WebViewRedesignInputFooter.this).afZ(paramAnonymousString);
+            AppMethodBeat.o(212124);
             return;
           }
-          WebViewRedesignInputFooter.this.EKZ.aZf(paramAnonymousString);
-          AppMethodBeat.o(199181);
+          WebViewRedesignInputFooter.this.JAO.bol(paramAnonymousString);
+          AppMethodBeat.o(212124);
           return;
         }
         catch (Exception paramAnonymousString)
         {
-          ae.e("MicroMsg.WebViewInputFooter", "appendText, exp = %s", new Object[] { paramAnonymousString });
-          AppMethodBeat.o(199181);
+          Log.e("MicroMsg.WebViewInputFooter", "appendText, exp = %s", new Object[] { paramAnonymousString });
+          AppMethodBeat.o(212124);
         }
       }
     });
-    ((LinearLayout)findViewById(2131304239)).addView(this.EKV, -1, 0);
-    this.EKY.setOnClickListener(new View.OnClickListener()
+    ((LinearLayout)findViewById(2131307157)).addView(this.JAK, -1, 0);
+    this.JAN.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(199185);
+        AppMethodBeat.i(212127);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewRedesignInputFooter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = c.d(WebViewRedesignInputFooter.d(WebViewRedesignInputFooter.this));
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewRedesignInputFooter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = c.f(WebViewRedesignInputFooter.d(WebViewRedesignInputFooter.this));
         if (WebViewRedesignInputFooter.l(WebViewRedesignInputFooter.this) <= 0) {}
         for (int i = 2147483647;; i = WebViewRedesignInputFooter.l(WebViewRedesignInputFooter.this) * 2)
         {
-          paramAnonymousView = paramAnonymousView.afD(i);
-          paramAnonymousView.njK = f.a.Lfh;
-          paramAnonymousView.LiL = true;
-          paramAnonymousView.a(new c.a()
+          paramAnonymousView.aoq(i).a(f.a.Qui).CN(true).a(new c.a()
           {
-            public final void Ky(String paramAnonymous2String)
+            public final void Tw(String paramAnonymous2String)
             {
-              AppMethodBeat.i(199183);
+              AppMethodBeat.i(212126);
               if (WebViewRedesignInputFooter.k(WebViewRedesignInputFooter.this) != null) {
-                WebViewRedesignInputFooter.k(WebViewRedesignInputFooter.this).aIp(WebViewRedesignInputFooter.d(WebViewRedesignInputFooter.this).getText().toString());
+                WebViewRedesignInputFooter.k(WebViewRedesignInputFooter.this).bau(WebViewRedesignInputFooter.d(WebViewRedesignInputFooter.this).getText().toString());
               }
-              paramAnonymous2String = WebViewRedesignInputFooter.this;
-              paramAnonymous2String.EKZ.clearComposingText();
-              paramAnonymous2String.EKZ.setText("");
-              AppMethodBeat.o(199183);
+              WebViewRedesignInputFooter.this.clearText();
+              AppMethodBeat.o(212126);
             }
             
-            public final void aUT() {}
+            public final void Tx(String paramAnonymous2String) {}
             
-            public final void cW(String paramAnonymous2String)
-            {
-              AppMethodBeat.i(199184);
-              if (WebViewRedesignInputFooter.b(WebViewRedesignInputFooter.this) != null) {
-                Toast.makeText(WebViewRedesignInputFooter.b(WebViewRedesignInputFooter.this), "exceed max-length", 0).show();
-              }
-              AppMethodBeat.o(199184);
-            }
+            public final void dv(String paramAnonymous2String) {}
           });
           a.a(this, "com/tencent/mm/plugin/webview/ui/tools/widget/input/WebViewRedesignInputFooter$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(199185);
+          AppMethodBeat.o(212127);
           return;
         }
       }
     });
-    this.EKZ.addTextChangedListener(new TextWatcher()
+    this.JAO.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(199186);
+        AppMethodBeat.i(212128);
         if (WebViewRedesignInputFooter.d(WebViewRedesignInputFooter.this).getText() == null)
         {
-          AppMethodBeat.o(199186);
+          AppMethodBeat.o(212128);
           return;
         }
         WebViewRedesignInputFooter.d(WebViewRedesignInputFooter.this).requestFocus();
@@ -224,7 +206,7 @@ public class WebViewRedesignInputFooter
         for (boolean bool = true;; bool = false)
         {
           WebViewRedesignInputFooter.a(WebViewRedesignInputFooter.this, bool);
-          AppMethodBeat.o(199186);
+          AppMethodBeat.o(212128);
           return;
         }
       }
@@ -233,123 +215,139 @@ public class WebViewRedesignInputFooter
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    AppMethodBeat.o(199188);
+    AppMethodBeat.o(212130);
   }
   
-  private void eZy()
+  private void giE()
   {
-    AppMethodBeat.i(199194);
-    if (this.EKZ != null)
+    AppMethodBeat.i(212137);
+    if (this.JAO != null)
     {
-      this.EKZ.clearFocus();
-      this.EKZ.setFocusable(false);
-      this.EKZ.setFocusableInTouchMode(false);
+      this.JAO.clearFocus();
+      this.JAO.setFocusable(false);
+      this.JAO.setFocusableInTouchMode(false);
     }
-    AppMethodBeat.o(199194);
+    AppMethodBeat.o(212137);
   }
   
   @SuppressLint({"ResourceType"})
-  public final void bFx()
+  public final void cbM()
   {
-    AppMethodBeat.i(199190);
-    if (this.EKU != null) {
-      this.EKU.eTe();
+    AppMethodBeat.i(212132);
+    if (this.JAJ != null) {
+      this.JAJ.gbQ();
     }
-    this.EKV.setVisibility(8);
-    this.nkD.setImageResource(2131690564);
+    this.JAK.setVisibility(8);
+    this.oui.setImageResource(2131690793);
     this.state = 0;
-    AppMethodBeat.o(199190);
+    AppMethodBeat.o(212132);
   }
   
-  public final int eWB()
+  public final void clearText()
   {
-    AppMethodBeat.i(199189);
-    if (this.EKU != null) {
-      this.EKU.eTd();
+    AppMethodBeat.i(212134);
+    this.JAO.clearComposingText();
+    this.JAO.setText("");
+    AppMethodBeat.o(212134);
+  }
+  
+  public final int gfz()
+  {
+    AppMethodBeat.i(212131);
+    if (this.JAJ != null) {
+      this.JAJ.gbP();
     }
-    if (this.EKZ != null) {
-      this.fNT.hideVKB(this.EKZ);
+    if (this.JAO != null) {
+      this.gte.hideVKB(this.JAO);
     }
-    this.EKV.setVisibility(0);
-    this.EKV.bFU();
-    ViewGroup.LayoutParams localLayoutParams = this.EKV.getLayoutParams();
-    if ((localLayoutParams != null) && (this.vNw))
+    this.JAK.setVisibility(0);
+    this.JAK.cck();
+    ViewGroup.LayoutParams localLayoutParams = this.JAK.getLayoutParams();
+    if ((localLayoutParams != null) && (this.ziU))
     {
-      localLayoutParams.height = i.iN(getContext());
-      this.EKV.setLayoutParams(localLayoutParams);
+      localLayoutParams.height = i.getValidPanelHeight(getContext());
+      this.JAK.setLayoutParams(localLayoutParams);
     }
     if (localLayoutParams != null)
     {
       int i = localLayoutParams.height;
-      AppMethodBeat.o(199189);
+      AppMethodBeat.o(212131);
       return i;
     }
-    AppMethodBeat.o(199189);
+    AppMethodBeat.o(212131);
     return 0;
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(199195);
+    AppMethodBeat.i(212138);
     setVisibility(8);
-    if (this.fNT != null)
+    String str1 = "";
+    String str2 = str1;
+    if (this.gte != null)
     {
-      if (this.EKZ != null) {
-        this.fNT.hideVKB(this.EKZ);
+      if (this.JAO != null)
+      {
+        this.gte.hideVKB(this.JAO);
+        str1 = this.JAO.getText().toString();
       }
-      this.fNT.hideVKB();
+      this.gte.hideVKB();
+      str2 = str1;
     }
     this.state = 0;
-    bFx();
-    eZy();
-    AppMethodBeat.o(199195);
+    cbM();
+    giE();
+    if (this.JAU != null) {
+      this.JAU.bav(str2);
+    }
+    AppMethodBeat.o(212138);
   }
   
   public boolean isShown()
   {
-    AppMethodBeat.i(199196);
+    AppMethodBeat.i(212139);
     if (getVisibility() == 0)
     {
-      AppMethodBeat.o(199196);
+      AppMethodBeat.o(212139);
       return true;
     }
-    AppMethodBeat.o(199196);
+    AppMethodBeat.o(212139);
     return false;
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(199191);
+    AppMethodBeat.i(212133);
     super.onDetachedFromWindow();
-    eZy();
-    if ((this.EKZ != null) && (this.fNT != null)) {
-      this.fNT.hideVKB(this.EKZ);
+    giE();
+    if ((this.JAO != null) && (this.gte != null)) {
+      this.gte.hideVKB(this.JAO);
     }
-    this.EKZ = null;
-    this.EKV.onDestroy();
+    this.JAO = null;
+    this.JAK.onDestroy();
     removeAllViews();
-    this.fNT = null;
-    this.EKS = null;
-    AppMethodBeat.o(199191);
+    this.gte = null;
+    this.JAU = null;
+    AppMethodBeat.o(212133);
   }
   
   public void setMaxCount(int paramInt)
   {
-    AppMethodBeat.i(199193);
-    this.ELc = 0;
+    AppMethodBeat.i(212136);
+    this.JAR = 0;
     if (paramInt <= 0)
     {
-      this.EKZ.setFilters(new InputFilter[0]);
-      AppMethodBeat.o(199193);
+      this.JAO.setFilters(new InputFilter[0]);
+      AppMethodBeat.o(212136);
       return;
     }
-    this.ELc = paramInt;
-    this.EKZ.setFilters(new InputFilter[] { new f(this.ELc * 2, f.a.Lfh)
+    this.JAR = paramInt;
+    this.JAO.setFilters(new InputFilter[] { new f(this.JAR * 2, f.a.Qui)
     {
       public final CharSequence filter(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, Spanned paramAnonymousSpanned, int paramAnonymousInt3, int paramAnonymousInt4)
       {
-        AppMethodBeat.i(199187);
-        paramAnonymousInt4 = a(paramAnonymousSpanned.toString(), f.a.Lfh) + a(paramAnonymousCharSequence.toString(), f.a.Lfh);
+        AppMethodBeat.i(212129);
+        paramAnonymousInt4 = a(paramAnonymousSpanned.toString(), f.a.Qui) + a(paramAnonymousCharSequence.toString(), f.a.Qui);
         paramAnonymousInt2 = WebViewRedesignInputFooter.l(WebViewRedesignInputFooter.this) * 2;
         paramAnonymousInt3 = WebViewRedesignInputFooter.l(WebViewRedesignInputFooter.this) * 2 - WebViewRedesignInputFooter.m(WebViewRedesignInputFooter.this) * 2;
         if (paramAnonymousInt3 <= paramAnonymousInt2)
@@ -363,73 +361,80 @@ public class WebViewRedesignInputFooter
         }
         if (paramAnonymousInt4 >= paramAnonymousInt2)
         {
-          paramAnonymousCharSequence = bu.x(WebViewRedesignInputFooter.b(WebViewRedesignInputFooter.this).getString(2131767327), new Object[] { Integer.valueOf(WebViewRedesignInputFooter.l(WebViewRedesignInputFooter.this)) });
+          paramAnonymousCharSequence = Util.safeFormatString(WebViewRedesignInputFooter.b(WebViewRedesignInputFooter.this).getString(2131768565), new Object[] { Integer.valueOf(WebViewRedesignInputFooter.l(WebViewRedesignInputFooter.this)) });
           WebViewRedesignInputFooter.n(WebViewRedesignInputFooter.this).setVisibility(0);
           WebViewRedesignInputFooter.n(WebViewRedesignInputFooter.this).setText(paramAnonymousCharSequence);
-          AppMethodBeat.o(199187);
+          AppMethodBeat.o(212129);
           return "";
         }
         if (paramAnonymousInt4 > paramAnonymousInt1)
         {
           WebViewRedesignInputFooter.n(WebViewRedesignInputFooter.this).setVisibility(0);
-          paramAnonymousSpanned = bu.x(WebViewRedesignInputFooter.b(WebViewRedesignInputFooter.this).getString(2131767326), new Object[] { Integer.valueOf((paramAnonymousInt2 - paramAnonymousInt4) / 2) });
+          paramAnonymousSpanned = Util.safeFormatString(WebViewRedesignInputFooter.b(WebViewRedesignInputFooter.this).getString(2131768564), new Object[] { Integer.valueOf((paramAnonymousInt2 - paramAnonymousInt4) / 2) });
           WebViewRedesignInputFooter.n(WebViewRedesignInputFooter.this).setText(paramAnonymousSpanned);
-          AppMethodBeat.o(199187);
+          AppMethodBeat.o(212129);
           return paramAnonymousCharSequence;
         }
         WebViewRedesignInputFooter.n(WebViewRedesignInputFooter.this).setVisibility(8);
-        AppMethodBeat.o(199187);
+        AppMethodBeat.o(212129);
         return paramAnonymousCharSequence;
       }
     } });
-    AppMethodBeat.o(199193);
+    AppMethodBeat.o(212136);
   }
   
-  public void setOnSmileyChosenListener(WebViewInputFooter.a parama)
+  public void setOnSmileyChosenListener(WebViewRedesignInputFooter.a parama)
   {
-    this.EKT = parama;
+    this.JAV = parama;
   }
   
   public void setOnSmileyPanelVisibilityChangedListener(WebViewInputFooter.b paramb)
   {
-    this.EKU = paramb;
+    this.JAJ = paramb;
   }
   
-  public void setOnTextSendListener(WebViewInputFooter.c paramc)
+  public void setOnTextSendListener(b paramb)
   {
-    this.EKS = paramc;
+    this.JAU = paramb;
   }
   
   public void setShowRemindWordCount(int paramInt)
   {
-    this.ELg = paramInt;
+    this.JAX = paramInt;
   }
   
   public void setText(String paramString)
   {
-    AppMethodBeat.i(199192);
-    this.EKZ.setHint("");
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(212135);
+    this.JAO.setHint("");
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(199192);
+      AppMethodBeat.o(212135);
       return;
     }
     try
     {
-      this.EKZ.setHint(paramString);
-      AppMethodBeat.o(199192);
+      this.JAO.setHint(paramString);
+      AppMethodBeat.o(212135);
       return;
     }
     catch (Exception paramString)
     {
-      ae.d("MicroMsg.WebViewInputFooter", "appendText, exp = %s", new Object[] { paramString });
-      AppMethodBeat.o(199192);
+      Log.d("MicroMsg.WebViewInputFooter", "appendText, exp = %s", new Object[] { paramString });
+      AppMethodBeat.o(212135);
     }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void bau(String paramString);
+    
+    public abstract void bav(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewRedesignInputFooter
  * JD-Core Version:    0.7.0.1
  */

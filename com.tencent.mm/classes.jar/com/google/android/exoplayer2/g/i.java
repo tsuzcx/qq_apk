@@ -1,23 +1,23 @@
 package com.google.android.exoplayer2.g;
 
 import com.google.android.exoplayer2.i.x;
-import com.google.android.exoplayer2.source.p;
+import com.google.android.exoplayer2.source.r;
 import com.google.android.exoplayer2.t;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public final p bED;
-  public final g bEE;
-  public final t[] bEF;
+  public final r bEF;
+  public final g bEG;
+  public final t[] bEH;
   public final Object info;
   
-  public i(p paramp, g paramg, Object paramObject, t[] paramArrayOft)
+  public i(r paramr, g paramg, Object paramObject, t[] paramArrayOft)
   {
-    this.bED = paramp;
-    this.bEE = paramg;
+    this.bEF = paramr;
+    this.bEG = paramg;
     this.info = paramObject;
-    this.bEF = paramArrayOft;
+    this.bEH = paramArrayOft;
   }
   
   public final boolean a(i parami)
@@ -29,7 +29,7 @@ public final class i
       return false;
     }
     int i = 0;
-    while (i < this.bEE.length)
+    while (i < this.bEG.length)
     {
       if (!a(parami, i))
       {
@@ -50,7 +50,7 @@ public final class i
       AppMethodBeat.o(92954);
       return false;
     }
-    if ((x.i(this.bEE.bEB[paramInt], parami.bEE.bEB[paramInt])) && (x.i(this.bEF[paramInt], parami.bEF[paramInt])))
+    if ((x.j(this.bEG.bED[paramInt], parami.bEG.bED[paramInt])) && (x.j(this.bEH[paramInt], parami.bEH[paramInt])))
     {
       AppMethodBeat.o(92954);
       return true;
@@ -61,7 +61,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.g.i
  * JD-Core Version:    0.7.0.1
  */

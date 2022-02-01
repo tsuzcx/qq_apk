@@ -18,8 +18,8 @@ public class FileCache
   public FileCache(File paramFile)
   {
     this(paramFile, new UnlimitedDiskUsage());
-    AppMethodBeat.i(195176);
-    AppMethodBeat.o(195176);
+    AppMethodBeat.i(223203);
+    AppMethodBeat.o(223203);
   }
   
   public FileCache(File paramFile, DiskUsage paramDiskUsage)
@@ -65,9 +65,9 @@ public class FileCache
   
   private boolean isTempFile(File paramFile)
   {
-    AppMethodBeat.i(195178);
+    AppMethodBeat.i(223205);
     boolean bool = paramFile.getName().endsWith(".download");
-    AppMethodBeat.o(195178);
+    AppMethodBeat.o(223205);
     return bool;
   }
   
@@ -390,7 +390,7 @@ public class FileCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.danikula.videocache.file.FileCache
  * JD-Core Version:    0.7.0.1
  */

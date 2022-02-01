@@ -1,92 +1,95 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningTaskInfo;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
+import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.game.luggage.f.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.plugin.game.luggage.g.i;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.MMActivity.a;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class u
-  extends br<g>
+  extends bs<i>
 {
-  private static boolean aw(Context paramContext, String paramString)
+  public final void a(Context paramContext, String paramString, br.a parama) {}
+  
+  public final void b(final b<i>.a paramb)
   {
-    AppMethodBeat.i(192999);
-    try
+    AppMethodBeat.i(83078);
+    String str1 = paramb.ctb.csi.optString("videoUrl");
+    String str2 = paramb.ctb.csi.optString("thumbUrl");
+    String str3 = paramb.ctb.csi.optString("appId");
+    int i = paramb.ctb.csi.optInt("sourceSceneId");
+    if (Util.isNullOrNil(str1))
     {
-      paramString = new Intent(paramContext, Class.forName(paramString)).resolveActivity(paramContext.getPackageManager());
-      if (paramString != null)
+      paramb.c("invalid_videoUrl", null);
+      AppMethodBeat.o(83078);
+      return;
+    }
+    ((com.tencent.mm.plugin.game.api.g)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.g.class)).a(((i)paramb.cta).mContext, str1, str2, str3, 510, i);
+    ((MMActivity)((i)paramb.cta).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    {
+      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
-        paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningTasks(10).iterator();
-        while (paramContext.hasNext())
+        AppMethodBeat.i(83077);
+        if (paramAnonymousInt1 == 510)
         {
-          boolean bool = ((ActivityManager.RunningTaskInfo)paramContext.next()).baseActivity.equals(paramString);
-          if (bool)
+          if (paramAnonymousInt2 != -1) {
+            break label176;
+          }
+          switch (paramAnonymousIntent.getIntExtra("webview_callback_err", 0))
           {
-            AppMethodBeat.o(192999);
-            return true;
           }
         }
+        for (;;)
+        {
+          ((MMActivity)((i)paramb.cta).mContext).mmSetOnActivityResultCallback(null);
+          AppMethodBeat.o(83077);
+          return;
+          JSONObject localJSONObject = new JSONObject();
+          paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_video_info");
+          try
+          {
+            localJSONObject.put("videoInfo", new JSONArray(paramAnonymousIntent).getJSONObject(0));
+            paramb.c("", localJSONObject);
+          }
+          catch (JSONException paramAnonymousIntent)
+          {
+            for (;;)
+            {
+              Log.e("MicroMsg.JsApiLaunchGameVideoEditor", "json_err:%s", new Object[] { paramAnonymousIntent.getMessage() });
+            }
+          }
+          paramb.c("cancel", null);
+          continue;
+          paramb.c("download_err", null);
+          continue;
+          label176:
+          paramb.c("cancel", null);
+        }
       }
-    }
-    catch (ClassNotFoundException paramContext)
-    {
-      ae.e("MicroMsg.JsApiOpenGameTabHome", "err: %s", new Object[] { paramContext.getMessage() });
-      AppMethodBeat.o(192999);
-    }
-    return false;
+    });
+    AppMethodBeat.o(83078);
   }
   
-  public final void a(Context paramContext, String paramString, bq.a parama)
+  public final int dTs()
   {
-    AppMethodBeat.i(192998);
-    ae.i("MicroMsg.JsApiOpenGameTabHome", "invokeInMM");
-    paramString = com.tencent.mm.plugin.webview.luggage.c.b.PM(paramString);
-    if (paramString == null)
-    {
-      parama.f("invalid_params", null);
-      AppMethodBeat.o(192998);
-      return;
-    }
-    if ((aw(paramContext, "com.tencent.mm.plugin.game.ui.chat_tab.GameChatTabUI")) || (aw(paramContext, "com.tencent.mm.plugin.game.ui.chat_tab.GameWebTabUI")))
-    {
-      parama.f("exist_tab", null);
-      AppMethodBeat.o(192998);
-      return;
-    }
-    paramString = paramString.optString("tabKey");
-    ae.i("MicroMsg.JsApiOpenGameTabHome", "tabKey:[%s]", new Object[] { paramString });
-    Intent localIntent = new Intent();
-    localIntent.putExtra("from_find_more_friend", false);
-    localIntent.putExtra("game_report_from_scene", 5);
-    localIntent.putExtra("start_time", System.currentTimeMillis());
-    localIntent.putExtra("has_game_life_chat_msg", false);
-    localIntent.putExtra("default_game_tab_key", paramString);
-    localIntent.putExtra("disable_game_tab_home_swipe", true);
-    d.b(paramContext, "game", ".ui.GameCenterUI", localIntent);
-    parama.f(null, null);
-    AppMethodBeat.o(192998);
-  }
-  
-  public final void b(com.tencent.luggage.d.b<g>.a paramb) {}
-  
-  public final int ced()
-  {
-    return 2;
+    return 0;
   }
   
   public final String name()
   {
-    return "openGameTabHome";
+    return "launchGameVideoEditor";
   }
 }
 

@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/a0c" wallet:infoIvVisibility="cfk" wallet:layoutRes="@layout/bhh" wallet:titleTvVisibility="cfk" style="@style/h7"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/b0w" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/coj" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:layout_gravity="center_horizontal" layout="@layout/bhe" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ffa" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:textSize="@dimen/is" android:textColor="@color/afp" android:id="@id/ffb" android:background="@drawable/c6" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/im" android:text="@string/sz" android:layout_weight="1.0" />
+                <ImageView android:id="@id/ff7" android:background="@color/a06" android:layout_width="@dimen/bo" android:layout_height="fill_parent" />
+                <Button android:textSize="@dimen/is" android:textColor="@color/afp" android:id="@id/ffp" android:background="@drawable/c6" android:visibility="visible" android:layout_width="0.0dip" android:layout_height="@dimen/im" android:text="@string/ip8" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c21" />
+</LinearLayout>

@@ -2,8 +2,6 @@ package com.tencent.mm.plugin.expt.ui;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -12,83 +10,61 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.picker.c;
-import com.tencent.mm.ui.widget.picker.c.a;
+import com.tencent.mm.ui.widget.picker.c.b;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ExptAppDebugUI
   extends MMActivity
 {
-  private Button gXc;
-  private Button jll;
-  private TextView rjQ;
-  private Button rjR;
-  private Button rjS;
-  private Button rjT;
-  private TextView rjU;
-  private TextView rjV;
-  private TextView rjW;
-  private TextView rjX;
-  private TextView rjY;
-  private EditText rjZ;
-  private Button rka;
-  private Button rkb;
-  private int rkc = 0;
+  private Button hPX;
+  private Button kjo;
+  private TextView sLA;
+  private TextView sLB;
+  private TextView sLC;
+  private TextView sLD;
+  private TextView sLE;
+  private EditText sLF;
+  private Button sLG;
+  private Button sLH;
+  private int sLI = 0;
+  private TextView sLw;
+  private Button sLx;
+  private Button sLy;
+  private Button sLz;
   
   public int getLayoutId()
   {
-    return 2131496375;
+    return 2131492955;
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(196216);
+    AppMethodBeat.i(220657);
     super.onCreate(paramBundle);
     setMMTitle("Expt App debug ui");
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(196209);
-        ExptAppDebugUI.this.finish();
-        AppMethodBeat.o(196209);
-        return true;
-      }
-    });
-    this.rjQ = ((TextView)$(2131301027));
-    this.gXc = ((Button)$(2131298556));
-    this.gXc.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(196210);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = ExptAppDebugUI.a(ExptAppDebugUI.this).getText().toString().trim();
-        ExptAppDebugUI.a(ExptAppDebugUI.this, bu.getInt(paramAnonymousView, 0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(196210);
-      }
-    });
-    this.rjZ = ((EditText)$(2131299615));
-    this.rjZ.setVisibility(8);
-    this.rka = ((Button)$(2131299616));
-    this.rka.setVisibility(8);
-    this.rjR = ((Button)$(2131299612));
-    this.rjR.setOnClickListener(new View.OnClickListener()
+    setBackBtn(new ExptAppDebugUI.1(this));
+    this.sLw = ((TextView)$(2131302675));
+    this.hPX = ((Button)$(2131298990));
+    this.hPX.setOnClickListener(new ExptAppDebugUI.2(this));
+    this.sLF = ((EditText)$(2131300249));
+    this.sLF.setVisibility(8);
+    this.sLG = ((Button)$(2131300250));
+    this.sLG.setVisibility(8);
+    this.sLx = ((Button)$(2131300246));
+    this.sLx.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(final View paramAnonymousView)
       {
-        AppMethodBeat.i(196212);
+        AppMethodBeat.i(220653);
         Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-        com.tencent.mm.plugin.expt.f.a.csB();
-        localObject = com.tencent.mm.plugin.expt.f.a.csG();
+        ((b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+        com.tencent.mm.plugin.expt.f.a.cRk();
+        localObject = com.tencent.mm.plugin.expt.f.a.cRo();
         if (((ArrayList)localObject).size() > 0)
         {
           paramAnonymousView = new String[((ArrayList)localObject).size()];
@@ -99,83 +75,83 @@ public class ExptAppDebugUI
             i += 1;
           }
           localObject = new c(ExptAppDebugUI.this.getContext(), paramAnonymousView);
-          ((c)localObject).agm(0);
-          ((c)localObject).Lxq = new c.a()
+          ((c)localObject).app(0);
+          ((c)localObject).QTc = new c.b()
           {
             public final void onResult(boolean paramAnonymous2Boolean, Object paramAnonymous2Object1, Object paramAnonymous2Object2)
             {
-              AppMethodBeat.i(196211);
-              this.nwh.hide();
-              int i = this.nwh.fRg();
+              AppMethodBeat.i(220652);
+              this.oGj.hide();
+              int i = this.oGj.hci();
               paramAnonymous2Object1 = paramAnonymousView[i];
-              ExptAppDebugUI.a(ExptAppDebugUI.this, bu.getInt(paramAnonymous2Object1, 0));
-              AppMethodBeat.o(196211);
+              ExptAppDebugUI.a(ExptAppDebugUI.this, Util.getInt(paramAnonymous2Object1, 0));
+              AppMethodBeat.o(220652);
             }
           };
           ((c)localObject).show();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(196212);
+        AppMethodBeat.o(220653);
       }
     });
-    this.rjS = ((Button)$(2131308186));
-    this.rjS.setOnClickListener(new View.OnClickListener()
+    this.sLy = ((Button)$(2131306951));
+    this.sLy.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(196213);
+        AppMethodBeat.i(220654);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        com.tencent.mm.plugin.expt.a.a.com();
-        com.tencent.mm.plugin.expt.a.a.con();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        com.tencent.mm.plugin.expt.a.a.cMx();
+        com.tencent.mm.plugin.expt.a.a.cMy();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(196213);
+        AppMethodBeat.o(220654);
       }
     });
-    this.rjT = ((Button)$(2131304094));
-    this.rjT.setOnClickListener(new View.OnClickListener()
+    this.sLz = ((Button)$(2131306960));
+    this.sLz.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(196214);
+        AppMethodBeat.i(220655);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        com.tencent.mm.plugin.expt.f.a.csB().DK(1);
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        com.tencent.mm.plugin.expt.f.a.cRk().Hx(1);
         Toast.makeText(ExptAppDebugUI.this.getContext(), "start req expt", 0).show();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(196214);
+        AppMethodBeat.o(220655);
       }
     });
-    this.jll = ((Button)$(2131299608));
-    this.jll.setOnClickListener(new View.OnClickListener()
+    this.kjo = ((Button)$(2131300242));
+    this.kjo.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(196215);
+        AppMethodBeat.i(220656);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         paramAnonymousView = new ArrayList();
         paramAnonymousView.add(Integer.valueOf(ExptAppDebugUI.b(ExptAppDebugUI.this)));
-        com.tencent.mm.plugin.expt.f.a.csB();
-        com.tencent.mm.plugin.expt.f.a.c(0, paramAnonymousView, null);
-        com.tencent.mm.plugin.expt.f.a.csB();
-        com.tencent.mm.plugin.expt.f.a.li(true);
+        com.tencent.mm.plugin.expt.f.a.cRk();
+        com.tencent.mm.plugin.expt.f.a.b(0, paramAnonymousView, null);
+        com.tencent.mm.plugin.expt.f.a.cRk();
+        com.tencent.mm.plugin.expt.f.a.mq(true);
         ExptAppDebugUI.c(ExptAppDebugUI.this).setText(" del :" + ExptAppDebugUI.b(ExptAppDebugUI.this) + " true");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/expt/ui/ExptAppDebugUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(196215);
+        AppMethodBeat.o(220656);
       }
     });
-    this.rkb = ((Button)$(2131299609));
-    this.rkb.setVisibility(8);
-    this.rjU = ((TextView)$(2131299610));
-    this.rjV = ((TextView)$(2131300635));
-    this.rjW = ((TextView)$(2131299613));
-    this.rjX = ((TextView)$(2131299614));
-    this.rjY = ((TextView)$(2131299607));
-    AppMethodBeat.o(196216);
+    this.sLH = ((Button)$(2131300243));
+    this.sLH.setVisibility(8);
+    this.sLA = ((TextView)$(2131300244));
+    this.sLB = ((TextView)$(2131302192));
+    this.sLC = ((TextView)$(2131300247));
+    this.sLD = ((TextView)$(2131300248));
+    this.sLE = ((TextView)$(2131300241));
+    AppMethodBeat.o(220657);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

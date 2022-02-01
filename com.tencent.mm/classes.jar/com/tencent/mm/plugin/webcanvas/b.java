@@ -1,157 +1,159 @@
 package com.tencent.mm.plugin.webcanvas;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
-import d.n.n;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.g.b.z.d;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasHttpImageStreamFetcher;", "Lcom/github/henryye/nativeiv/stream/IImageStreamFetcher;", "()V", "connectionTimeoutMs", "", "readTimeoutMs", "accept", "", "obj", "", "fetch", "Lcom/github/henryye/nativeiv/stream/IImageStreamFetcher$StreamFetchResult;", "config", "Lcom/github/henryye/nativeiv/ImageDecodeConfig;", "getSourceTypeName", "", "toFileName", "Companion", "webview-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasHttpImageStreamFetcher;", "Lcom/github/henryye/nativeiv/stream/IImageStreamFetcher;", "()V", "connectionTimeoutMs", "", "readTimeoutMs", "accept", "", "obj", "", "fetch", "Lcom/github/henryye/nativeiv/stream/IImageStreamFetcher$StreamFetchResult;", "config", "Lcom/github/henryye/nativeiv/ImageDecodeConfig;", "getSourceTypeName", "", "toFileName", "Companion", "webview-sdk_release"})
 public final class b
   implements com.github.henryye.nativeiv.b.b
 {
-  public static final b.a DPE;
-  private int bbx = 30000;
-  private int bby = 30000;
+  public static final a IzB;
+  private int bbs = 30000;
+  private int bbt = 30000;
   
   static
   {
-    AppMethodBeat.i(213863);
-    DPE = new b.a((byte)0);
-    AppMethodBeat.o(213863);
+    AppMethodBeat.i(224619);
+    IzB = new a((byte)0);
+    AppMethodBeat.o(224619);
   }
   
   /* Error */
   public final com.github.henryye.nativeiv.b.b.a a(Object paramObject, com.github.henryye.nativeiv.ImageDecodeConfig paramImageDecodeConfig)
   {
     // Byte code:
-    //   0: ldc 65
-    //   2: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 67
+    //   2: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: ldc 66
-    //   8: invokestatic 72	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   6: ldc 68
+    //   8: invokestatic 74	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   11: aload_2
-    //   12: ldc 73
-    //   14: invokestatic 72	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   12: ldc 75
+    //   14: invokestatic 74	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   17: aload_1
-    //   18: checkcast 75	java/lang/String
+    //   18: checkcast 77	java/lang/String
     //   21: astore 7
-    //   23: new 77	com/github/henryye/nativeiv/b/b$a
+    //   23: new 79	com/github/henryye/nativeiv/b/b$a
     //   26: dup
-    //   27: invokespecial 78	com/github/henryye/nativeiv/b/b$a:<init>	()V
+    //   27: invokespecial 80	com/github/henryye/nativeiv/b/b$a:<init>	()V
     //   30: astore 16
-    //   32: new 80	java/lang/StringBuilder
+    //   32: new 82	java/lang/StringBuilder
     //   35: dup
-    //   36: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   36: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   39: astore_2
-    //   40: getstatic 87	com/tencent/mm/plugin/webcanvas/h:DQL	Lcom/tencent/mm/plugin/webcanvas/h;
+    //   40: getstatic 89	com/tencent/mm/plugin/webcanvas/m:IAG	Lcom/tencent/mm/plugin/webcanvas/m;
     //   43: astore 6
     //   45: aload_2
-    //   46: invokestatic 91	com/tencent/mm/plugin/webcanvas/h:eOX	()Ljava/lang/String;
-    //   49: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: ldc 97
-    //   54: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: invokestatic 93	com/tencent/mm/plugin/webcanvas/m:fWH	()Ljava/lang/String;
+    //   49: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: ldc 99
+    //   54: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   57: aload 7
-    //   59: invokestatic 103	com/tencent/mm/sdk/platformtools/aj:ej	(Ljava/lang/String;)Ljava/lang/String;
-    //   62: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   65: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokestatic 105	com/tencent/mm/sdk/platformtools/MD5Util:getMD5String	(Ljava/lang/String;)Ljava/lang/String;
+    //   62: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   65: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   68: astore 17
     //   70: aload 17
-    //   72: invokestatic 112	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
+    //   72: invokestatic 114	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
     //   75: istore 5
-    //   77: ldc 114
-    //   79: new 80	java/lang/StringBuilder
+    //   77: ldc 116
+    //   79: new 82	java/lang/StringBuilder
     //   82: dup
-    //   83: ldc 116
-    //   85: invokespecial 119	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   83: ldc 118
+    //   85: invokespecial 121	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   88: aload_1
-    //   89: invokevirtual 122	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   89: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   92: bipush 32
-    //   94: invokevirtual 125	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
+    //   94: invokevirtual 127	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
     //   97: aload 17
-    //   99: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: ldc 127
-    //   104: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   99: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: ldc 129
+    //   104: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   107: iload 5
-    //   109: invokevirtual 130	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   112: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   115: invokestatic 135	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   109: invokevirtual 132	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   112: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   115: invokestatic 137	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   118: iload 5
     //   120: ifeq +108 -> 228
-    //   123: ldc 114
-    //   125: ldc 137
-    //   127: invokestatic 140	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   123: ldc 116
+    //   125: ldc 139
+    //   127: invokestatic 142	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   130: aload 16
-    //   132: new 142	java/io/BufferedInputStream
+    //   132: new 144	java/io/BufferedInputStream
     //   135: dup
     //   136: aload 17
-    //   138: invokestatic 146	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   141: invokespecial 149	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   144: checkcast 151	java/io/InputStream
-    //   147: putfield 155	com/github/henryye/nativeiv/b/b$a:inputStream	Ljava/io/InputStream;
-    //   150: ldc 65
-    //   152: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   138: invokestatic 148	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   141: invokespecial 151	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   144: checkcast 153	java/io/InputStream
+    //   147: putfield 157	com/github/henryye/nativeiv/b/b$a:inputStream	Ljava/io/InputStream;
+    //   150: ldc 67
+    //   152: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   155: aload 16
     //   157: areturn
     //   158: astore_1
-    //   159: ldc 114
+    //   159: ldc 116
     //   161: aload_1
-    //   162: checkcast 157	java/lang/Throwable
-    //   165: ldc 158
+    //   162: checkcast 159	java/lang/Throwable
+    //   165: ldc 160
     //   167: iconst_0
     //   168: anewarray 4	java/lang/Object
-    //   171: invokestatic 162	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   174: getstatic 168	d/g/b/ad:Njc	Ld/g/b/ad;
+    //   171: invokestatic 164	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   174: getstatic 170	kotlin/g/b/ae:SYK	Lkotlin/g/b/ae;
     //   177: astore_2
-    //   178: invokestatic 174	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
-    //   181: ldc 175
-    //   183: invokevirtual 181	android/content/Context:getString	(I)Ljava/lang/String;
+    //   178: invokestatic 176	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   181: ldc 177
+    //   183: invokevirtual 183	android/content/Context:getString	(I)Ljava/lang/String;
     //   186: astore_2
     //   187: aload_2
-    //   188: ldc 183
-    //   190: invokestatic 186	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   188: ldc 185
+    //   190: invokestatic 188	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   193: aload_2
     //   194: iconst_1
     //   195: anewarray 4	java/lang/Object
     //   198: dup
     //   199: iconst_0
     //   200: aload_1
-    //   201: invokevirtual 187	java/lang/Exception:toString	()Ljava/lang/String;
+    //   201: invokevirtual 189	java/lang/Exception:toString	()Ljava/lang/String;
     //   204: aastore
     //   205: iconst_1
-    //   206: invokestatic 193	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
-    //   209: invokestatic 197	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   206: invokestatic 195	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
+    //   209: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   212: astore_1
     //   213: aload_1
-    //   214: ldc 199
-    //   216: invokestatic 186	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   214: ldc 201
+    //   216: invokestatic 188	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   219: aload 16
     //   221: aload_1
-    //   222: putfield 203	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
+    //   222: putfield 205	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
     //   225: goto -75 -> 150
-    //   228: new 205	d/g/b/y$d
+    //   228: new 207	kotlin/g/b/z$d
     //   231: dup
-    //   232: invokespecial 206	d/g/b/y$d:<init>	()V
+    //   232: invokespecial 208	kotlin/g/b/z$d:<init>	()V
     //   235: astore 18
     //   237: aload 18
     //   239: iconst_0
-    //   240: putfield 209	d/g/b/y$d:NiW	I
+    //   240: putfield 211	kotlin/g/b/z$d:SYE	I
     //   243: aconst_null
     //   244: astore 6
     //   246: aconst_null
     //   247: astore_2
     //   248: aconst_null
     //   249: astore_1
-    //   250: ldc 211
-    //   252: invokestatic 217	com/tencent/mm/kernel/g:ab	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
-    //   255: checkcast 211	com/tencent/mm/plugin/expt/b/b
-    //   258: getstatic 223	com/tencent/mm/plugin/expt/b/b$a:qNh	Lcom/tencent/mm/plugin/expt/b/b$a;
+    //   250: ldc 213
+    //   252: invokestatic 219	com/tencent/mm/kernel/g:af	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/c/a;
+    //   255: checkcast 213	com/tencent/mm/plugin/expt/b/b
+    //   258: getstatic 225	com/tencent/mm/plugin/expt/b/b$a:skc	Lcom/tencent/mm/plugin/expt/b/b$a;
     //   261: iconst_0
-    //   262: invokeinterface 226 3 0
+    //   262: invokeinterface 228 3 0
     //   267: istore 5
-    //   269: new 228	com/tencent/mm/plugin/webcanvas/b$b
+    //   269: new 11	com/tencent/mm/plugin/webcanvas/b$b
     //   272: dup
     //   273: aload 18
-    //   275: invokespecial 231	com/tencent/mm/plugin/webcanvas/b$b:<init>	(Ld/g/b/y$d;)V
+    //   275: invokespecial 231	com/tencent/mm/plugin/webcanvas/b$b:<init>	(Lkotlin/g/b/z$d;)V
     //   278: astore 19
     //   280: iconst_0
     //   281: istore_3
@@ -174,12 +176,12 @@ public final class b
     //   311: aload 6
     //   313: astore 10
     //   315: aload 7
-    //   317: invokestatic 237	com/tencent/mm/network/b:IT	(Ljava/lang/String;)Lcom/tencent/mm/network/x;
-    //   320: checkcast 239	com/tencent/mm/network/w
+    //   317: invokestatic 237	com/tencent/mm/network/d:RQ	(Ljava/lang/String;)Lcom/tencent/mm/network/z;
+    //   320: checkcast 239	com/tencent/mm/network/y
     //   323: astore_1
     //   324: aload_1
-    //   325: checkcast 241	com/tencent/mm/network/x
-    //   328: invokevirtual 244	com/tencent/mm/network/x:aPt	()V
+    //   325: checkcast 241	com/tencent/mm/network/z
+    //   328: invokevirtual 244	com/tencent/mm/network/z:bjU	()V
     //   331: aload_1
     //   332: ifnonnull +96 -> 428
     //   335: aload_1
@@ -198,7 +200,7 @@ public final class b
     //   357: astore 10
     //   359: aload 16
     //   361: ldc 246
-    //   363: putfield 203	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
+    //   363: putfield 205	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
     //   366: aload_2
     //   367: ifnull +7 -> 374
     //   370: aload_2
@@ -207,8 +209,8 @@ public final class b
     //   376: ifnull +8 -> 384
     //   379: aload 6
     //   381: invokevirtual 252	java/io/InputStream:close	()V
-    //   384: ldc 65
-    //   386: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   384: ldc 67
+    //   386: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   389: aload 16
     //   391: areturn
     //   392: aload_1
@@ -226,8 +228,8 @@ public final class b
     //   412: aload 6
     //   414: astore 10
     //   416: aload 7
-    //   418: invokestatic 256	com/tencent/mm/network/b:IS	(Ljava/lang/String;)Lcom/tencent/mm/network/v;
-    //   421: checkcast 239	com/tencent/mm/network/w
+    //   418: invokestatic 256	com/tencent/mm/network/d:RP	(Ljava/lang/String;)Lcom/tencent/mm/network/x;
+    //   421: checkcast 239	com/tencent/mm/network/y
     //   424: astore_1
     //   425: goto -94 -> 331
     //   428: aload_1
@@ -244,7 +246,7 @@ public final class b
     //   446: astore 9
     //   448: aload 6
     //   450: astore 10
-    //   452: invokestatic 262	com/tencent/mm/av/t:aJf	()Z
+    //   452: invokestatic 262	com/tencent/mm/av/t:bcZ	()Z
     //   455: ifeq +140 -> 595
     //   458: aload_1
     //   459: astore 12
@@ -261,7 +263,7 @@ public final class b
     //   478: aload 6
     //   480: astore 10
     //   482: aload 7
-    //   484: invokestatic 265	com/tencent/mm/av/t:eA	(Ljava/lang/String;)Z
+    //   484: invokestatic 265	com/tencent/mm/av/t:fm	(Ljava/lang/String;)Z
     //   487: ifeq +108 -> 595
     //   490: aload_1
     //   491: astore 12
@@ -277,8 +279,8 @@ public final class b
     //   508: astore 9
     //   510: aload 6
     //   512: astore 10
-    //   514: getstatic 270	com/tencent/mm/protocal/d:FFH	I
-    //   517: invokestatic 273	com/tencent/mm/av/t:pF	(I)Ljava/lang/String;
+    //   514: getstatic 270	com/tencent/mm/protocal/d:KyO	I
+    //   517: invokestatic 273	com/tencent/mm/av/t:tt	(I)Ljava/lang/String;
     //   520: astore 11
     //   522: aload_1
     //   523: astore 12
@@ -294,7 +296,7 @@ public final class b
     //   540: astore 9
     //   542: aload 6
     //   544: astore 10
-    //   546: ldc 114
+    //   546: ldc 116
     //   548: ldc_w 275
     //   551: iconst_1
     //   552: anewarray 4	java/lang/Object
@@ -302,7 +304,7 @@ public final class b
     //   556: iconst_0
     //   557: aload 11
     //   559: aastore
-    //   560: invokestatic 278	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   560: invokestatic 278	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   563: aload_1
     //   564: astore 12
     //   566: aload_2
@@ -370,7 +372,7 @@ public final class b
     //   681: astore 10
     //   683: aload_1
     //   684: aload_0
-    //   685: getfield 58	com/tencent/mm/plugin/webcanvas/b:bbx	I
+    //   685: getfield 61	com/tencent/mm/plugin/webcanvas/b:bbs	I
     //   688: invokeinterface 293 2 0
     //   693: aload_1
     //   694: astore 12
@@ -388,7 +390,7 @@ public final class b
     //   715: astore 10
     //   717: aload_1
     //   718: aload_0
-    //   719: getfield 60	com/tencent/mm/plugin/webcanvas/b:bby	I
+    //   719: getfield 63	com/tencent/mm/plugin/webcanvas/b:bbt	I
     //   722: invokeinterface 296 2 0
     //   727: aload_1
     //   728: astore 12
@@ -407,7 +409,7 @@ public final class b
     //   751: aload 19
     //   753: aload_1
     //   754: invokeinterface 300 1 0
-    //   759: invokevirtual 304	com/tencent/mm/plugin/webcanvas/b$b:zT	(I)Z
+    //   759: invokevirtual 304	com/tencent/mm/plugin/webcanvas/b$b:Dz	(I)Z
     //   762: ifeq +548 -> 1310
     //   765: aload_1
     //   766: astore 12
@@ -443,7 +445,7 @@ public final class b
     //   822: astore 10
     //   824: aload 11
     //   826: ldc_w 311
-    //   829: invokestatic 186	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   829: invokestatic 188	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   832: aload_1
     //   833: astore 8
     //   835: aload_2
@@ -452,10 +454,10 @@ public final class b
     //   840: astore 10
     //   842: aload 18
     //   844: aload 18
-    //   846: getfield 209	d/g/b/y$d:NiW	I
+    //   846: getfield 211	kotlin/g/b/z$d:SYE	I
     //   849: iconst_1
     //   850: iadd
-    //   851: putfield 209	d/g/b/y$d:NiW	I
+    //   851: putfield 211	kotlin/g/b/z$d:SYE	I
     //   854: aload_1
     //   855: astore 8
     //   857: aload_2
@@ -463,7 +465,7 @@ public final class b
     //   860: aload 6
     //   862: astore 10
     //   864: aload 18
-    //   866: getfield 209	d/g/b/y$d:NiW	I
+    //   866: getfield 211	kotlin/g/b/z$d:SYE	I
     //   869: istore_3
     //   870: iload_3
     //   871: bipush 15
@@ -495,7 +497,7 @@ public final class b
     //   926: astore 10
     //   928: aload 18
     //   930: iconst_0
-    //   931: putfield 209	d/g/b/y$d:NiW	I
+    //   931: putfield 211	kotlin/g/b/z$d:SYE	I
     //   934: aload 11
     //   936: astore 7
     //   938: iconst_1
@@ -533,15 +535,15 @@ public final class b
     //   992: astore 9
     //   994: aload 6
     //   996: astore 10
-    //   998: new 80	java/lang/StringBuilder
+    //   998: new 82	java/lang/StringBuilder
     //   1001: dup
-    //   1002: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   1002: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   1005: aload 17
-    //   1007: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1007: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1010: ldc_w 316
-    //   1013: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1016: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1019: invokestatic 320	com/tencent/mm/vfs/o:Db	(Ljava/lang/String;)Ljava/io/OutputStream;
+    //   1013: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1016: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1019: invokestatic 320	com/tencent/mm/vfs/s:LM	(Ljava/lang/String;)Ljava/io/OutputStream;
     //   1022: astore_2
     //   1023: aload 6
     //   1025: ifnull +40 -> 1065
@@ -603,14 +605,14 @@ public final class b
     //   1124: astore 10
     //   1126: aload 18
     //   1128: iconst_0
-    //   1129: putfield 209	d/g/b/y$d:NiW	I
+    //   1129: putfield 211	kotlin/g/b/z$d:SYE	I
     //   1132: aload_1
     //   1133: astore 8
     //   1135: aload_2
     //   1136: astore 9
     //   1138: aload 6
     //   1140: astore 10
-    //   1142: getstatic 168	d/g/b/ad:Njc	Ld/g/b/ad;
+    //   1142: getstatic 170	kotlin/g/b/ae:SYK	Lkotlin/g/b/ae;
     //   1145: astore 12
     //   1147: aload_1
     //   1148: astore 8
@@ -618,9 +620,9 @@ public final class b
     //   1151: astore 9
     //   1153: aload 6
     //   1155: astore 10
-    //   1157: invokestatic 174	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
-    //   1160: ldc 175
-    //   1162: invokevirtual 181	android/content/Context:getString	(I)Ljava/lang/String;
+    //   1157: invokestatic 176	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   1160: ldc 177
+    //   1162: invokevirtual 183	android/content/Context:getString	(I)Ljava/lang/String;
     //   1165: astore 12
     //   1167: aload_1
     //   1168: astore 8
@@ -629,8 +631,8 @@ public final class b
     //   1173: aload 6
     //   1175: astore 10
     //   1177: aload 12
-    //   1179: ldc 183
-    //   1181: invokestatic 186	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1179: ldc 185
+    //   1181: invokestatic 188	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   1184: aload_1
     //   1185: astore 8
     //   1187: aload_2
@@ -643,11 +645,11 @@ public final class b
     //   1200: dup
     //   1201: iconst_0
     //   1202: aload 11
-    //   1204: invokevirtual 187	java/lang/Exception:toString	()Ljava/lang/String;
+    //   1204: invokevirtual 189	java/lang/Exception:toString	()Ljava/lang/String;
     //   1207: aastore
     //   1208: iconst_1
-    //   1209: invokestatic 193	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
-    //   1212: invokestatic 197	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   1209: invokestatic 195	java/util/Arrays:copyOf	([Ljava/lang/Object;I)[Ljava/lang/Object;
+    //   1212: invokestatic 199	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
     //   1215: astore 12
     //   1217: aload_1
     //   1218: astore 8
@@ -656,8 +658,8 @@ public final class b
     //   1223: aload 6
     //   1225: astore 10
     //   1227: aload 12
-    //   1229: ldc 199
-    //   1231: invokestatic 186	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   1229: ldc 201
+    //   1231: invokestatic 188	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   1234: aload_1
     //   1235: astore 8
     //   1237: aload_2
@@ -666,20 +668,20 @@ public final class b
     //   1242: astore 10
     //   1244: aload 16
     //   1246: aload 12
-    //   1248: putfield 203	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
+    //   1248: putfield 205	com/github/henryye/nativeiv/b/b$a:errorMsg	Ljava/lang/String;
     //   1251: aload_1
     //   1252: astore 8
     //   1254: aload_2
     //   1255: astore 9
     //   1257: aload 6
     //   1259: astore 10
-    //   1261: ldc 114
+    //   1261: ldc 116
     //   1263: aload 11
-    //   1265: checkcast 157	java/lang/Throwable
-    //   1268: ldc 158
+    //   1265: checkcast 159	java/lang/Throwable
+    //   1268: ldc 160
     //   1270: iconst_0
     //   1271: anewarray 4	java/lang/Object
-    //   1274: invokestatic 162	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1274: invokestatic 164	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1277: aload_2
     //   1278: ifnull +7 -> 1285
     //   1281: aload_2
@@ -714,7 +716,7 @@ public final class b
     //   1340: astore 6
     //   1342: aload 18
     //   1344: iconst_0
-    //   1345: putfield 209	d/g/b/y$d:NiW	I
+    //   1345: putfield 211	kotlin/g/b/z$d:SYE	I
     //   1348: goto -410 -> 938
     //   1351: aload_1
     //   1352: astore 12
@@ -730,22 +732,22 @@ public final class b
     //   1369: astore 9
     //   1371: aload 6
     //   1373: astore 10
-    //   1375: new 334	com/tencent/mm/vfs/k
+    //   1375: new 334	com/tencent/mm/vfs/o
     //   1378: dup
-    //   1379: new 80	java/lang/StringBuilder
+    //   1379: new 82	java/lang/StringBuilder
     //   1382: dup
-    //   1383: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   1383: invokespecial 83	java/lang/StringBuilder:<init>	()V
     //   1386: aload 17
-    //   1388: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1388: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1391: ldc_w 316
-    //   1394: invokevirtual 95	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1397: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1400: invokespecial 335	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
-    //   1403: new 334	com/tencent/mm/vfs/k
+    //   1394: invokevirtual 97	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1397: invokevirtual 108	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1400: invokespecial 335	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   1403: new 334	com/tencent/mm/vfs/o
     //   1406: dup
     //   1407: aload 17
-    //   1409: invokespecial 335	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
-    //   1412: invokevirtual 339	com/tencent/mm/vfs/k:ag	(Lcom/tencent/mm/vfs/k;)Z
+    //   1409: invokespecial 335	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   1412: invokevirtual 339	com/tencent/mm/vfs/o:am	(Lcom/tencent/mm/vfs/o;)Z
     //   1415: pop
     //   1416: aload_1
     //   1417: astore 12
@@ -762,13 +764,13 @@ public final class b
     //   1436: aload 6
     //   1438: astore 10
     //   1440: aload 16
-    //   1442: new 142	java/io/BufferedInputStream
+    //   1442: new 144	java/io/BufferedInputStream
     //   1445: dup
     //   1446: aload 17
-    //   1448: invokestatic 146	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   1451: invokespecial 149	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   1454: checkcast 151	java/io/InputStream
-    //   1457: putfield 155	com/github/henryye/nativeiv/b/b$a:inputStream	Ljava/io/InputStream;
+    //   1448: invokestatic 148	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   1451: invokespecial 151	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   1454: checkcast 153	java/io/InputStream
+    //   1457: putfield 157	com/github/henryye/nativeiv/b/b$a:inputStream	Ljava/io/InputStream;
     //   1460: aload_1
     //   1461: astore 12
     //   1463: aload_2
@@ -783,9 +785,9 @@ public final class b
     //   1478: astore 9
     //   1480: aload 6
     //   1482: astore 10
-    //   1484: ldc 114
+    //   1484: ldc 116
     //   1486: ldc_w 341
-    //   1489: invokestatic 140	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1489: invokestatic 142	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   1492: aload_2
     //   1493: ifnull +7 -> 1500
     //   1496: aload_2
@@ -827,12 +829,12 @@ public final class b
     //   1568: ifnull +9 -> 1577
     //   1571: aload_1
     //   1572: invokeinterface 314 1 0
-    //   1577: ldc 65
-    //   1579: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1577: ldc 67
+    //   1579: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1582: aload 7
     //   1584: athrow
-    //   1585: ldc 65
-    //   1587: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1585: ldc 67
+    //   1587: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1590: aload 16
     //   1592: areturn
     //   1593: astore_1
@@ -886,8 +888,8 @@ public final class b
     //   303	1170	15	localObject13	Object
     //   30	1561	16	locala	com.github.henryye.nativeiv.b.b.a
     //   68	1379	17	str	String
-    //   235	1108	18	locald	d.g.b.y.d
-    //   278	474	19	localb	b.b
+    //   235	1108	18	locald	z.d
+    //   278	474	19	localb	b
     // Exception table:
     //   from	to	target	type
     //   123	150	158	java/lang/Exception
@@ -972,25 +974,44 @@ public final class b
   
   public final boolean accept(Object paramObject)
   {
-    AppMethodBeat.i(213861);
+    AppMethodBeat.i(224617);
     p.h(paramObject, "obj");
-    if (((paramObject instanceof String)) && ((n.nF((String)paramObject, "http://")) || (n.nF((String)paramObject, "https://"))))
+    if (((paramObject instanceof String)) && ((n.J((String)paramObject, "http://", false)) || (n.J((String)paramObject, "https://", false))))
     {
-      AppMethodBeat.o(213861);
+      AppMethodBeat.o(224617);
       return true;
     }
-    AppMethodBeat.o(213861);
+    AppMethodBeat.o(224617);
     return false;
   }
   
-  public final String sP()
+  public final String sS()
   {
     return "http";
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webcanvas/WebCanvasHttpImageStreamFetcher$Companion;", "", "()V", "MAX_REDIRECTS_COUNT", "", "TAG", "", "webview-sdk_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"needRedirect", "", "respCode", "", "invoke"})
+  static final class b
+    extends q
+    implements kotlin.g.a.b<Integer, Boolean>
+  {
+    b(z.d paramd)
+    {
+      super();
+    }
+    
+    public final boolean Dz(int paramInt)
+    {
+      return (this.IzC.SYE < 15) && ((paramInt == 301) || (paramInt == 302));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webcanvas.b
  * JD-Core Version:    0.7.0.1
  */

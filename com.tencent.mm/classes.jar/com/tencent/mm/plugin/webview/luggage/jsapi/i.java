@@ -7,10 +7,10 @@ import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import java.io.Serializable;
@@ -19,22 +19,22 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class i
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(final com.tencent.luggage.d.b<g>.a paramb)
   {
     AppMethodBeat.i(78527);
-    ae.i("MicroMsg.JsApiChooseImage", "invoke");
-    Object localObject3 = paramb.chh.cgn;
+    Log.i("MicroMsg.JsApiChooseImage", "invoke");
+    Object localObject3 = paramb.ctb.csi;
     Object localObject1 = ((JSONObject)localObject3).optJSONArray("sourceType");
     int k;
     int i;
     int j;
     if (localObject1 != null)
     {
-      ae.i("MicroMsg.JsApiChooseImage", "sourceType = " + ((JSONArray)localObject1).toString());
+      Log.i("MicroMsg.JsApiChooseImage", "sourceType = " + ((JSONArray)localObject1).toString());
       k = 0;
       i = 0;
       if (k < ((JSONArray)localObject1).length())
@@ -59,14 +59,14 @@ public class i
       if (i == 0) {}
       for (j = 3;; j = i)
       {
-        ae.i("MicroMsg.JsApiChooseImage", "real scene = %d", new Object[] { Integer.valueOf(j) });
+        Log.i("MicroMsg.JsApiChooseImage", "real scene = %d", new Object[] { Integer.valueOf(j) });
         if ((j == 2) || (j == 3))
         {
-          boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)((g)paramb.chg).mContext, "android.permission.CAMERA", 113, "", "");
-          ae.d("MicroMsg.JsApiChooseImage", " checkPermission checkcamera[%b]", new Object[] { Boolean.valueOf(bool) });
+          boolean bool = com.tencent.mm.pluginsdk.permission.b.a((Activity)((g)paramb.cta).mContext, "android.permission.CAMERA", 113, "", "");
+          Log.d("MicroMsg.JsApiChooseImage", " checkPermission checkcamera[%b]", new Object[] { Boolean.valueOf(bool) });
           if (!bool)
           {
-            paramb.a("android_permission_denied", null);
+            paramb.c("android_permission_denied", null);
             AppMethodBeat.o(78527);
             return;
           }
@@ -114,10 +114,10 @@ public class i
           ((Intent)localObject2).putExtra("key_pick_local_pic_query_source_type", i);
           ((Intent)localObject2).putExtra("key_pick_local_pic_send_raw", (Serializable)localObject1);
           ((Intent)localObject2).putExtra("query_media_type", 1);
-          ae.i("MicroMsg.JsApiChooseImage", "doChooseImage: realScene: %d, count: %d, querySourceType: %d, sendRaw: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), localObject1 });
-          ((MMActivity)((g)paramb.chg).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+          Log.i("MicroMsg.JsApiChooseImage", "doChooseImage: realScene: %d, count: %d, querySourceType: %d, sendRaw: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i), localObject1 });
+          ((MMActivity)((g)paramb.cta).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
           {
-            public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+            public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
             {
               AppMethodBeat.i(78526);
               boolean bool;
@@ -128,7 +128,7 @@ public class i
                   break label137;
                 }
                 bool = false;
-                ae.i("MicroMsg.JsApiChooseImage", "request to open file chooser, result code = %d, hasShowMemoryWarning = %b", new Object[] { Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(bool) });
+                Log.i("MicroMsg.JsApiChooseImage", "request to open file chooser, result code = %d, hasShowMemoryWarning = %b", new Object[] { Integer.valueOf(paramAnonymousInt2), Boolean.valueOf(bool) });
                 localHashMap = new HashMap();
                 if (bool) {
                   localHashMap.put("memoryWarning", Boolean.TRUE);
@@ -142,16 +142,16 @@ public class i
               for (;;)
               {
                 label111:
-                ((MMActivity)((g)paramb.chg).mContext).mmSetOnActivityResultCallback(null);
+                ((MMActivity)((g)paramb.cta).mContext).mmSetOnActivityResultCallback(null);
                 AppMethodBeat.o(78526);
                 return;
                 label137:
                 bool = paramAnonymousIntent.getBooleanExtra("key_pick_local_media_show_memory_warning", false);
                 break;
                 if (paramAnonymousIntent != null) {}
-                for (String str = paramAnonymousIntent.getStringExtra("key_pick_local_pic_callback_local_ids"); !bu.isNullOrNil(str); str = null)
+                for (String str = paramAnonymousIntent.getStringExtra("key_pick_local_pic_callback_local_ids"); !Util.isNullOrNil(str); str = null)
                 {
-                  ae.i("MicroMsg.JsApiChooseImage", "localIds = %s", new Object[] { str });
+                  Log.i("MicroMsg.JsApiChooseImage", "localIds = %s", new Object[] { str });
                   localHashMap.put("localIds", str);
                   paramAnonymousIntent = paramAnonymousIntent.getStringExtra("key_pick_local_pic_source_type");
                   if (paramAnonymousIntent != null) {
@@ -164,7 +164,7 @@ public class i
               }
             }
           });
-          d.a(((g)paramb.chg).mContext, "webview", ".ui.tools.OpenFileChooserUI", (Intent)localObject2, hashCode() & 0xFFFF, false);
+          c.a(((g)paramb.cta).mContext, "webview", ".ui.tools.OpenFileChooserUI", (Intent)localObject2, hashCode() & 0xFFFF, false);
           AppMethodBeat.o(78527);
           return;
           if ((!localObject4.booleanValue()) && (((Boolean)localObject3).booleanValue()))
@@ -183,7 +183,7 @@ public class i
     }
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

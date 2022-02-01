@@ -11,47 +11,47 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.emoji.a.i;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.emoji.b.j;
 import com.tencent.mm.emoji.view.EmojiStatusView;
 import com.tencent.mm.emoji.view.EmojiStatusView.b;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.emoji.b.d;
 import com.tencent.mm.plugin.emoji.f.c;
-import com.tencent.mm.pluginsdk.a.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo.a;
+import com.tencent.mm.storage.emotion.f;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
 import java.util.Collections;
 
 public class EmojiPopView
   extends AbstractPopView
-  implements com.tencent.mm.ak.f
+  implements i
 {
-  private EmojiStatusView Axe;
-  private TextView LRA;
-  private TextView LRB;
-  private WindowManager.LayoutParams LRC;
-  private int LRD;
-  private String LRE;
-  private EmojiInfo LRF;
-  private String LRG;
-  private boolean LRH;
-  private c LRI;
-  private Runnable LRJ;
-  private View LRv;
-  private View LRw;
-  private View LRx;
-  private View LRy;
-  private View LRz;
-  private ProgressBar gqv;
-  private p pXj;
+  private EmojiStatusView EGu;
+  private View Rqf;
+  private View Rqg;
+  private View Rqh;
+  private View Rqi;
+  private View Rqj;
+  private TextView Rqk;
+  private TextView Rql;
+  private WindowManager.LayoutParams Rqm;
+  private int Rqn;
+  private String Rqo;
+  private EmojiInfo Rqp;
+  private String Rqq;
+  private boolean Rqr;
+  private c Rqs;
+  private Runnable Rqt;
+  private ProgressBar hbv;
+  private com.tencent.mm.ui.base.q qVq;
   
   public EmojiPopView(Context paramContext)
   {
@@ -67,77 +67,77 @@ public class EmojiPopView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(105300);
-    this.LRD = -1;
-    this.LRH = false;
-    this.LRJ = new Runnable()
+    this.Rqn = -1;
+    this.Rqr = false;
+    this.Rqt = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(183934);
-        EmojiPopView.a(EmojiPopView.this, p.a(EmojiPopView.this.getContext(), EmojiPopView.this.getContext().getString(2131758410), true, 0, null));
+        EmojiPopView.a(EmojiPopView.this, com.tencent.mm.ui.base.q.a(EmojiPopView.this.getContext(), EmojiPopView.this.getContext().getString(2131758704), true, 0, null));
         AppMethodBeat.o(183934);
       }
     };
-    inflate(paramContext, 2131493788, this);
-    this.LRv = findViewById(2131299413);
-    this.Axe = ((EmojiStatusView)findViewById(2131300914));
-    this.gqv = ((ProgressBar)findViewById(2131303515));
-    this.LRw = findViewById(2131299418);
-    this.LRx = findViewById(2131299415);
-    this.LRy = findViewById(2131299417);
-    this.LRz = findViewById(2131299414);
-    this.LRA = ((TextView)findViewById(2131299416));
-    this.LRB = ((TextView)findViewById(2131299419));
+    inflate(paramContext, 2131493941, this);
+    this.Rqf = findViewById(2131300026);
+    this.EGu = ((EmojiStatusView)findViewById(2131302526));
+    this.hbv = ((ProgressBar)findViewById(2131306281));
+    this.Rqg = findViewById(2131300031);
+    this.Rqh = findViewById(2131300028);
+    this.Rqi = findViewById(2131300030);
+    this.Rqj = findViewById(2131300027);
+    this.Rqk = ((TextView)findViewById(2131300029));
+    this.Rql = ((TextView)findViewById(2131300032));
     setBackground(null);
-    this.LRC = new WindowManager.LayoutParams(2, 262400, 1);
-    this.LRC.width = -2;
-    this.LRC.height = -2;
-    this.LRC.gravity = 8388659;
-    this.LRy.setOnClickListener(new View.OnClickListener()
+    this.Rqm = new WindowManager.LayoutParams(2, 262400, 1);
+    this.Rqm.width = -2;
+    this.Rqm.height = -2;
+    this.Rqm.gravity = 8388659;
+    this.Rqi.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(183935);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/popview/EmojiPopView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = com.tencent.mm.emoji.b.d.grb;
-        com.tencent.mm.emoji.b.d.md(2);
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/popview/EmojiPopView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = com.tencent.mm.emoji.c.e.hcl;
+        com.tencent.mm.emoji.c.e.pl(2);
         EmojiPopView.a(EmojiPopView.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/view/popview/EmojiPopView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(183935);
       }
     });
-    this.LRz.setOnClickListener(new View.OnClickListener()
+    this.Rqj.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(183936);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/popview/EmojiPopView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = com.tencent.mm.emoji.b.d.grb;
-        com.tencent.mm.emoji.b.d.md(3);
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/popview/EmojiPopView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = com.tencent.mm.emoji.c.e.hcl;
+        com.tencent.mm.emoji.c.e.pl(3);
         EmojiPopView.b(EmojiPopView.this);
         EmojiPopView.c(EmojiPopView.this).setActivated(true);
         EmojiPopView.c(EmojiPopView.this).setVisibility(0);
-        EmojiPopView.c(EmojiPopView.this).setText(2131758286);
+        EmojiPopView.c(EmojiPopView.this).setText(2131758576);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/view/popview/EmojiPopView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(183936);
       }
     });
-    this.LRA.setOnClickListener(new View.OnClickListener()
+    this.Rqk.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(183937);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/popview/EmojiPopView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/popview/EmojiPopView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (EmojiPopView.d(EmojiPopView.this))
         {
-          paramAnonymousView = com.tencent.mm.emoji.b.d.grb;
-          com.tencent.mm.emoji.b.d.md(4);
+          paramAnonymousView = com.tencent.mm.emoji.c.e.hcl;
+          com.tencent.mm.emoji.c.e.pl(4);
           EmojiPopView.e(EmojiPopView.this);
         }
         for (;;)
@@ -145,31 +145,31 @@ public class EmojiPopView
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/view/popview/EmojiPopView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(183937);
           return;
-          paramAnonymousView = com.tencent.mm.emoji.b.d.grb;
-          com.tencent.mm.emoji.b.d.md(5);
+          paramAnonymousView = com.tencent.mm.emoji.c.e.hcl;
+          com.tencent.mm.emoji.c.e.pl(5);
           EmojiPopView.f(EmojiPopView.this);
         }
       }
     });
-    if (ak.coh()) {
-      g.ajQ().gDv.a(698, this);
+    if (MMApplicationContext.isMainProcess()) {
+      g.aAg().hqi.a(698, this);
     }
     AppMethodBeat.o(105300);
   }
   
-  private void ckf()
+  private void cIh()
   {
     AppMethodBeat.i(183944);
-    h.e(getContext(), getContext().getString(2131758409), "", "", getContext().getString(2131760315), null, null);
+    h.c(getContext(), getContext().getString(2131758703), "", "", getContext().getString(2131755874), null, null);
     AppMethodBeat.o(183944);
   }
   
   private void hideLoading()
   {
     AppMethodBeat.i(183943);
-    removeCallbacks(this.LRJ);
-    if (this.pXj != null) {
-      this.pXj.dismiss();
+    removeCallbacks(this.Rqt);
+    if (this.qVq != null) {
+      this.qVq.dismiss();
     }
     AppMethodBeat.o(183943);
   }
@@ -177,7 +177,7 @@ public class EmojiPopView
   private void showLoading()
   {
     AppMethodBeat.i(183942);
-    postDelayed(this.LRJ, 100L);
+    postDelayed(this.Rqt, 100L);
     AppMethodBeat.o(183942);
   }
   
@@ -191,43 +191,43 @@ public class EmojiPopView
   
   public WindowManager.LayoutParams getWindowLayoutParams()
   {
-    return this.LRC;
+    return this.Rqm;
   }
   
-  public final void hq(View paramView)
+  public final void hI(View paramView)
   {
     AppMethodBeat.i(105302);
-    kS(paramView.getContext());
+    kO(paramView.getContext());
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
-    this.LRC.x = (arrayOfInt[0] - (getMeasuredWidth() - paramView.getMeasuredWidth()) / 2);
-    this.LRC.y = (arrayOfInt[1] - getMeasuredHeight() - this.LRq);
+    this.Rqm.x = (arrayOfInt[0] - (getMeasuredWidth() - paramView.getMeasuredWidth()) / 2);
+    this.Rqm.y = (arrayOfInt[1] - getMeasuredHeight() - this.Rqa);
     int i = getResources().getDisplayMetrics().widthPixels;
     int j = arrayOfInt[0] + paramView.getMeasuredWidth() / 2;
     if (j < getWidth() / 2)
     {
-      this.LRC.x = (j - com.tencent.mm.cb.a.fromDPToPix(getContext(), 32));
-      this.LRv.setBackgroundResource(2131232036);
-      this.LRy.setBackgroundResource(2131232037);
-      this.LRz.setBackgroundResource(2131232039);
-      this.LRA.setBackgroundResource(2131232038);
+      this.Rqm.x = (j - com.tencent.mm.cb.a.fromDPToPix(getContext(), 32));
+      this.Rqf.setBackgroundResource(2131232127);
+      this.Rqi.setBackgroundResource(2131232128);
+      this.Rqj.setBackgroundResource(2131232130);
+      this.Rqk.setBackgroundResource(2131232129);
       AppMethodBeat.o(105302);
       return;
     }
     if (getWidth() / 2 + j > i)
     {
-      this.LRC.x = (j + com.tencent.mm.cb.a.fromDPToPix(getContext(), 32) - getMeasuredWidth());
-      this.LRv.setBackgroundResource(2131232072);
-      this.LRy.setBackgroundResource(2131232073);
-      this.LRz.setBackgroundResource(2131232075);
-      this.LRA.setBackgroundResource(2131232074);
+      this.Rqm.x = (j + com.tencent.mm.cb.a.fromDPToPix(getContext(), 32) - getMeasuredWidth());
+      this.Rqf.setBackgroundResource(2131232163);
+      this.Rqi.setBackgroundResource(2131232164);
+      this.Rqj.setBackgroundResource(2131232166);
+      this.Rqk.setBackgroundResource(2131232165);
       AppMethodBeat.o(105302);
       return;
     }
-    this.LRv.setBackgroundResource(2131232065);
-    this.LRy.setBackgroundResource(2131232066);
-    this.LRz.setBackgroundResource(2131232068);
-    this.LRA.setBackgroundResource(2131232067);
+    this.Rqf.setBackgroundResource(2131232156);
+    this.Rqi.setBackgroundResource(2131232157);
+    this.Rqj.setBackgroundResource(2131232159);
+    this.Rqk.setBackgroundResource(2131232158);
     AppMethodBeat.o(105302);
   }
   
@@ -235,61 +235,61 @@ public class EmojiPopView
   {
     AppMethodBeat.i(183939);
     super.onDetachedFromWindow();
-    if (ak.coh()) {
-      g.ajQ().gDv.b(698, this);
+    if (MMApplicationContext.isMainProcess()) {
+      g.aAg().hqi.b(698, this);
     }
     AppMethodBeat.o(183939);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(183945);
-    paramString = Collections.singletonList(this.LRE);
-    ae.i("MicroMsg.EmojiPopView", "onSceneEnd: %s, %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this.LRE, Integer.valueOf(this.LRD) });
-    if ((this.LRI != null) && (paramn == this.LRI))
+    paramString = Collections.singletonList(this.Rqo);
+    Log.i("MicroMsg.EmojiPopView", "onSceneEnd: %s, %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), this.Rqo, Integer.valueOf(this.Rqn) });
+    if ((this.Rqs != null) && (paramq == this.Rqs))
     {
-      if (this.LRI.jgW == 3)
+      if (this.Rqs.kfa == 3)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          if (this.LRD == 0)
+          if (this.Rqn == 0)
           {
-            i.aeX().dm(true);
-            i.aeX().dl(true);
+            j.auL().dW(true);
+            j.auL().dV(true);
           }
           for (;;)
           {
-            be.fvc().JfU.s(this.LRD, paramString);
+            bj.gCJ().OpN.x(this.Rqn, paramString);
             dismiss();
             AppMethodBeat.o(183945);
             return;
-            i.aeX().jdMethod_do(true);
+            j.auL().dY(true);
           }
         }
-        ckf();
+        cIh();
         hideLoading();
         AppMethodBeat.o(183945);
         return;
       }
-      if (this.LRI.jgW == 2)
+      if (this.Rqs.kfa == 2)
       {
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          if (this.LRD == 0)
+          if (this.Rqn == 0)
           {
-            i.aeX().dm(true);
-            i.aeX().dl(true);
+            j.auL().dW(true);
+            j.auL().dV(true);
           }
           for (;;)
           {
-            be.fvc().JfU.C(paramString, this.LRD);
+            bj.gCJ().OpN.I(paramString, this.Rqn);
             dismiss();
             AppMethodBeat.o(183945);
             return;
-            i.aeX().jdMethod_do(true);
+            j.auL().dY(true);
           }
         }
-        ckf();
+        cIh();
         hideLoading();
       }
     }
@@ -301,22 +301,22 @@ public class EmojiPopView
     AppMethodBeat.i(105301);
     if (paramEmojiInfo == null)
     {
-      this.Axe.setVisibility(4);
-      this.gqv.setVisibility(0);
-      ae.i("MicroMsg.EmojiPopView", "emoji is null. set null");
+      this.EGu.setVisibility(4);
+      this.hbv.setVisibility(0);
+      Log.i("MicroMsg.EmojiPopView", "emoji is null. set null");
       AppMethodBeat.o(105301);
       return;
     }
-    if (!paramEmojiInfo.Lj().equals(this.LRE))
+    if (!paramEmojiInfo.getMd5().equals(this.Rqo))
     {
-      this.LRE = paramEmojiInfo.Lj();
-      this.LRF = paramEmojiInfo;
-      this.Axe.setStatusListener(new EmojiStatusView.b()
+      this.Rqo = paramEmojiInfo.getMd5();
+      this.Rqp = paramEmojiInfo;
+      this.EGu.setStatusListener(new EmojiStatusView.b()
       {
-        public final void mg(int paramAnonymousInt)
+        public final void po(int paramAnonymousInt)
         {
           AppMethodBeat.i(183938);
-          ae.i("MicroMsg.EmojiPopView", "onStatus: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          Log.i("MicroMsg.EmojiPopView", "onStatus: %s", new Object[] { Integer.valueOf(paramAnonymousInt) });
           if (paramAnonymousInt == 1)
           {
             EmojiPopView.g(EmojiPopView.this).setVisibility(8);
@@ -329,7 +329,7 @@ public class EmojiPopView
           AppMethodBeat.o(183938);
         }
       });
-      this.Axe.setEmojiInfo(paramEmojiInfo);
+      this.EGu.setEmojiInfo(paramEmojiInfo);
     }
     AppMethodBeat.o(105301);
   }
@@ -337,53 +337,53 @@ public class EmojiPopView
   public void setPopupType(int paramInt)
   {
     AppMethodBeat.i(183940);
-    if ((!ak.coh()) || (paramInt == -1) || (this.LRF == null) || (this.LRF.Ee()) || (this.LRF.field_catalog == EmojiGroupInfo.OzS) || (this.LRF.fxx() != EmojiInfo.a.Jir)) {}
+    if ((!MMApplicationContext.isMainProcess()) || (paramInt == -1) || (this.Rqp == null) || (this.Rqp.NA()) || (this.Rqp.field_catalog == EmojiGroupInfo.Uun) || (this.Rqp.hRH() != EmojiInfo.a.Osj)) {}
     for (int i = 1;; i = 0)
     {
-      this.LRH = false;
+      this.Rqr = false;
       if (i == 0) {
         break;
       }
-      this.LRx.setVisibility(8);
-      this.LRy.setVisibility(8);
-      this.LRz.setVisibility(8);
-      this.LRw.setVisibility(8);
-      this.LRA.setVisibility(8);
-      this.LRB.setVisibility(8);
-      ((ConstraintLayout.LayoutParams)this.Axe.getLayoutParams()).goneBottomMargin = com.tencent.mm.cb.a.fromDPToPix(getContext(), 28);
+      this.Rqh.setVisibility(8);
+      this.Rqi.setVisibility(8);
+      this.Rqj.setVisibility(8);
+      this.Rqg.setVisibility(8);
+      this.Rqk.setVisibility(8);
+      this.Rql.setVisibility(8);
+      ((ConstraintLayout.LayoutParams)this.EGu.getLayoutParams()).goneBottomMargin = com.tencent.mm.cb.a.fromDPToPix(getContext(), 28);
       AppMethodBeat.o(183940);
       return;
     }
-    ((ConstraintLayout.LayoutParams)this.Axe.getLayoutParams()).goneBottomMargin = com.tencent.mm.cb.a.fromDPToPix(getContext(), 16);
+    ((ConstraintLayout.LayoutParams)this.EGu.getLayoutParams()).goneBottomMargin = com.tencent.mm.cb.a.fromDPToPix(getContext(), 16);
     if ((paramInt == 0) || (paramInt == 1))
     {
-      this.LRx.setVisibility(0);
-      this.LRy.setVisibility(0);
-      this.LRz.setVisibility(0);
-      this.LRw.setVisibility(0);
-      this.LRA.setVisibility(8);
-      this.LRB.setVisibility(8);
+      this.Rqh.setVisibility(0);
+      this.Rqi.setVisibility(0);
+      this.Rqj.setVisibility(0);
+      this.Rqg.setVisibility(0);
+      this.Rqk.setVisibility(8);
+      this.Rql.setVisibility(8);
     }
     for (;;)
     {
-      this.LRD = paramInt;
+      this.Rqn = paramInt;
       AppMethodBeat.o(183940);
       return;
-      if ((paramInt == 2) || (paramInt == 3))
+      if ((paramInt == 2) || (paramInt == 3) || (paramInt == 4))
       {
-        this.LRx.setVisibility(0);
-        this.LRy.setVisibility(8);
-        this.LRz.setVisibility(8);
-        this.LRw.setVisibility(8);
-        this.LRA.setVisibility(0);
-        this.LRB.setVisibility(0);
-        if (bu.isNullOrNil(this.LRF.field_groupId)) {
-          this.LRA.setVisibility(8);
+        this.Rqh.setVisibility(0);
+        this.Rqi.setVisibility(8);
+        this.Rqj.setVisibility(8);
+        this.Rqg.setVisibility(8);
+        this.Rqk.setVisibility(0);
+        this.Rql.setVisibility(0);
+        if (Util.isNullOrNil(this.Rqp.field_groupId)) {
+          this.Rqk.setVisibility(8);
         }
-        this.LRG = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().acm(this.LRE);
-        this.LRB.setText(this.LRG);
-        if (bu.isNullOrNil(this.LRG)) {
-          this.LRB.setVisibility(8);
+        this.Rqq = ((d)g.ah(d.class)).getProvider().amp(this.Rqo);
+        this.Rql.setText(this.Rqq);
+        if (Util.isNullOrNil(this.Rqq)) {
+          this.Rql.setVisibility(8);
         }
       }
     }
@@ -391,7 +391,7 @@ public class EmojiPopView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.view.popview.EmojiPopView
  * JD-Core Version:    0.7.0.1
  */

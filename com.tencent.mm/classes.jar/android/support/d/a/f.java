@@ -5,11 +5,11 @@ import android.animation.TypeEvaluator;
 public final class f
   implements TypeEvaluator
 {
-  private static final f xa = new f();
+  private static final f xh = new f();
   
-  public static f dw()
+  public static f dz()
   {
-    return xa;
+    return xh;
   }
   
   public final Object evaluate(float paramFloat, Object paramObject1, Object paramObject2)

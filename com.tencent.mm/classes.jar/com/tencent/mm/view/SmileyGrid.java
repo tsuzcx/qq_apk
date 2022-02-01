@@ -14,29 +14,29 @@ import com.tencent.mm.pluginsdk.ui.chat.j;
 public class SmileyGrid
   extends GridView
 {
-  public static int LOp = 1;
-  private j Fwz;
-  public ListAdapter GE;
-  private int LOq;
-  public int LOr;
-  private int LOs;
-  private ChatFooterPanel.a LOt;
+  public static int RmN = 1;
+  public ListAdapter GO;
+  private j Knu;
+  private int RmO;
+  public int RmP;
+  private int RmQ;
+  private ChatFooterPanel.a RmR;
   private int mScene;
   
   public SmileyGrid(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(105175);
-    this.LOq = 20;
-    this.LOr = 0;
-    this.LOs = 0;
-    this.mScene = ChatFooterPanel.FkJ;
+    this.RmO = 20;
+    this.RmP = 0;
+    this.RmQ = 0;
+    this.mScene = ChatFooterPanel.KbB;
     AppMethodBeat.o(105175);
   }
   
   public int getSmileyType()
   {
-    return this.LOq;
+    return this.RmO;
   }
   
   @TargetApi(8)
@@ -54,28 +54,22 @@ public class SmileyGrid
     AppMethodBeat.o(105176);
   }
   
-  public void release()
-  {
-    this.LOt = null;
-    this.Fwz = null;
-  }
-  
   public void setAdapter(ListAdapter paramListAdapter)
   {
     AppMethodBeat.i(105180);
     super.setAdapter(paramListAdapter);
-    this.GE = paramListAdapter;
+    this.GO = paramListAdapter;
     AppMethodBeat.o(105180);
   }
   
   public void setCallback(j paramj)
   {
-    this.Fwz = paramj;
+    this.Knu = paramj;
   }
   
   public void setOnTextOperationListener(ChatFooterPanel.a parama)
   {
-    this.LOt = parama;
+    this.RmR = parama;
   }
   
   public void setScene(int paramInt)
@@ -85,7 +79,7 @@ public class SmileyGrid
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.view.SmileyGrid
  * JD-Core Version:    0.7.0.1
  */

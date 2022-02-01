@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class no
-  extends b
+  extends IEvent
 {
-  public a dCF;
+  public a dTI;
   
   public no()
   {
@@ -15,17 +15,17 @@ public final class no
   
   private no(byte paramByte)
   {
-    AppMethodBeat.i(183832);
-    this.dCF = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(19822);
+    this.dTI = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(183832);
+    AppMethodBeat.o(19822);
   }
   
   public static final class a
   {
-    public String dyN;
-    public int scene;
+    public int dTJ = 0;
+    public int dTK = 0;
   }
 }
 

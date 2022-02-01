@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <tech-list>
-        <tech>android.nfc.tech.IsoDep</tech>
-    </tech-list>
-    <tech-list>
-        <tech>android.nfc.tech.NfcA</tech>
-    </tech-list>
-</resources>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:newtip="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference newtip:key="allow_by_identity" newtip:layout="@layout/b8j" newtip:summary="@string/gw" newtip:title="@string/gv" />
+    <PreferenceSmallCategory />
+    <Preference newtip:key="room_transfer_room_ower" newtip:layout="@layout/b8j" newtip:title="@string/g9t" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.chatroom.ui.preference.RoomManagerPreference newtip:key="room_manager" newtip:layout="@layout/bnd" newtip:title="@string/g7u" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.newtips.NewTipPreference newtip:key="use_wework_manager_room" newtip:layout="@layout/b8j" newtip:path="useww" newtip:title="@string/hu9" />
+    <PreferenceSmallCategory />
+    <Preference newtip:key="room_bind_app_info" newtip:layout="@layout/b8j" newtip:title="@string/auw" />
+</PreferenceScreen>

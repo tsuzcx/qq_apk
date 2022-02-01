@@ -7,12 +7,13 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.ao;
 
 public class AAQueryListH5UrlFooterView
   extends LinearLayout
 {
-  private TextView iXS;
+  private TextView jUR;
   
   public AAQueryListH5UrlFooterView(Context paramContext)
   {
@@ -41,13 +42,14 @@ public class AAQueryListH5UrlFooterView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63502);
-    this.iXS = ((TextView)z.jV(paramContext).inflate(2131492887, this, true).findViewById(2131296299));
+    this.jUR = ((TextView)aa.jQ(paramContext).inflate(2131492903, this, true).findViewById(2131296303));
+    ao.a(this.jUR.getPaint(), 0.8F);
     AppMethodBeat.o(63502);
   }
   
   public TextView getBottomLinkTv()
   {
-    return this.iXS;
+    return this.jUR;
   }
 }
 

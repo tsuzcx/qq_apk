@@ -6,8 +6,8 @@ import java.io.File;
 public class g
   implements Comparable<g>
 {
-  public final boolean bFZ;
-  public final long bGa;
+  public final boolean bGq;
+  public final long bGr;
   public final File file;
   public final String key;
   public final long length;
@@ -22,9 +22,9 @@ public class g
     if (paramFile != null) {}
     for (boolean bool = true;; bool = false)
     {
-      this.bFZ = bool;
+      this.bGq = bool;
       this.file = paramFile;
-      this.bGa = paramLong3;
+      this.bGr = paramLong3;
       AppMethodBeat.o(92993);
       return;
     }
@@ -54,14 +54,14 @@ public class g
     return 1;
   }
   
-  public final boolean wK()
+  public final boolean wS()
   {
     return this.length == -1L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.g
  * JD-Core Version:    0.7.0.1
  */

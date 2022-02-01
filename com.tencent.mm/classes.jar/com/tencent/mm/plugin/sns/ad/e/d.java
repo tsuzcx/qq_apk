@@ -1,19 +1,203 @@
 package com.tencent.mm.plugin.sns.ad.e;
 
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.SnsObject;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.c;
+import com.tencent.mm.plugin.appbrand.config.WxaAttributes.c.a;
+import com.tencent.mm.plugin.appbrand.service.q;
+import com.tencent.mm.plugin.appbrand.service.q.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import java.util.HashMap;
+import java.util.Map;
 
-public abstract interface d
+public final class d
 {
-  public abstract void a(int paramInt1, String paramString, long paramLong, int paramInt2);
+  private static Map<String, Integer> DsE;
   
-  public abstract void a(int paramInt1, String paramString, boolean paramBoolean, View paramView, long paramLong, SnsObject paramSnsObject, int paramInt2, int paramInt3);
+  static
+  {
+    AppMethodBeat.i(201905);
+    DsE = new HashMap();
+    AppMethodBeat.o(201905);
+  }
   
-  public abstract void clear();
+  /* Error */
+  private static boolean aNF(String paramString)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 35
+    //   5: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: aload_0
+    //   9: invokestatic 41	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   12: ifeq +15 -> 27
+    //   15: ldc 35
+    //   17: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   20: iconst_0
+    //   21: istore_1
+    //   22: ldc 2
+    //   24: monitorexit
+    //   25: iload_1
+    //   26: ireturn
+    //   27: getstatic 27	com/tencent/mm/plugin/sns/ad/e/d:DsE	Ljava/util/Map;
+    //   30: aload_0
+    //   31: invokeinterface 47 2 0
+    //   36: ifeq +42 -> 78
+    //   39: getstatic 27	com/tencent/mm/plugin/sns/ad/e/d:DsE	Ljava/util/Map;
+    //   42: aload_0
+    //   43: invokeinterface 51 2 0
+    //   48: checkcast 53	java/lang/Integer
+    //   51: invokevirtual 57	java/lang/Integer:intValue	()I
+    //   54: iconst_1
+    //   55: if_icmpne +13 -> 68
+    //   58: ldc 35
+    //   60: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   63: iconst_1
+    //   64: istore_1
+    //   65: goto -43 -> 22
+    //   68: ldc 35
+    //   70: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: iconst_0
+    //   74: istore_1
+    //   75: goto -53 -> 22
+    //   78: ldc 35
+    //   80: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: iconst_0
+    //   84: istore_1
+    //   85: goto -63 -> 22
+    //   88: astore_0
+    //   89: ldc 2
+    //   91: monitorexit
+    //   92: aload_0
+    //   93: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	94	0	paramString	String
+    //   21	64	1	bool	boolean
+    // Exception table:
+    //   from	to	target	type
+    //   3	20	88	finally
+    //   27	63	88	finally
+    //   68	73	88	finally
+    //   78	83	88	finally
+  }
+  
+  public static void f(String paramString, View paramView)
+  {
+    AppMethodBeat.i(201904);
+    paramView.setTag(paramString);
+    if (TextUtils.isEmpty(paramString))
+    {
+      Log.e("AdWeAppHelper", "refreshWeAppAuthIcon, weAppUserName==null");
+      AppMethodBeat.o(201904);
+      return;
+    }
+    if (aNF(paramString)) {
+      paramView.setVisibility(0);
+    }
+    for (;;)
+    {
+      ((q)g.af(q.class)).a(paramString, new q.a()
+      {
+        public final void b(WxaAttributes paramAnonymousWxaAttributes)
+        {
+          final boolean bool = false;
+          AppMethodBeat.i(201902);
+          if (paramAnonymousWxaAttributes == null)
+          {
+            Log.e("AdWeAppHelper", "onGetWeAppInfo, info==null");
+            AppMethodBeat.o(201902);
+            return;
+          }
+          try
+          {
+            i = paramAnonymousWxaAttributes.bAo().lgD.leb;
+            if (TextUtils.isEmpty(paramAnonymousWxaAttributes.field_username)) {}
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              try
+              {
+                d.DsE.put(paramAnonymousWxaAttributes.field_username, Integer.valueOf(i));
+                Object localObject = this.DsF.getTag();
+                if (!(localObject instanceof String)) {
+                  break label259;
+                }
+                localObject = (String)localObject;
+                if (!((String)localObject).equals(paramAnonymousWxaAttributes.field_username)) {
+                  break;
+                }
+                Log.i("AdWeAppHelper", "onGetWeAppInfo, weAppName=" + (String)localObject + ", flag=" + i);
+                if (i == 1) {
+                  bool = true;
+                }
+                MMHandlerThread.postToMainThread(new Runnable()
+                {
+                  public final void run()
+                  {
+                    AppMethodBeat.i(201901);
+                    if (bool)
+                    {
+                      d.1.this.DsF.setVisibility(0);
+                      AppMethodBeat.o(201901);
+                      return;
+                    }
+                    if (d.1.this.DsF.getVisibility() == 0) {
+                      d.1.this.DsF.setVisibility(4);
+                    }
+                    AppMethodBeat.o(201901);
+                  }
+                });
+                AppMethodBeat.o(201902);
+                return;
+              }
+              finally
+              {
+                int i;
+                AppMethodBeat.o(201902);
+              }
+              localException = localException;
+              Log.e("AdWeAppHelper", "onGetWeAppInfo, exp=" + localException.toString());
+              i = 0;
+            }
+          }
+          StringBuilder localStringBuilder = new StringBuilder("onGetWeAppInfo, View reuse, view.name=").append(localException).append(", info.name=");
+          if (paramAnonymousWxaAttributes == null) {}
+          for (paramAnonymousWxaAttributes = "";; paramAnonymousWxaAttributes = paramAnonymousWxaAttributes.field_username)
+          {
+            Log.w("AdWeAppHelper", paramAnonymousWxaAttributes);
+            AppMethodBeat.o(201902);
+            return;
+          }
+          label259:
+          localStringBuilder = new StringBuilder("onGetWeAppInfo, View reuse, view.name=null, info.name=");
+          if (paramAnonymousWxaAttributes == null) {}
+          for (paramAnonymousWxaAttributes = "";; paramAnonymousWxaAttributes = paramAnonymousWxaAttributes.field_username)
+          {
+            Log.w("AdWeAppHelper", paramAnonymousWxaAttributes);
+            AppMethodBeat.o(201902);
+            return;
+          }
+        }
+      });
+      AppMethodBeat.o(201904);
+      return;
+      if (paramView.getVisibility() == 0) {
+        paramView.setVisibility(4);
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.e.d
  * JD-Core Version:    0.7.0.1
  */

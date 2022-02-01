@@ -1,17 +1,17 @@
 package com.tencent.mm.media.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.a.j;
-import d.a.v;
-import d.g.b.p;
-import d.o;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import kotlin.a.j;
+import kotlin.a.v;
+import kotlin.g.b.p;
+import kotlin.o;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/decoder/VfrDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "init", "", "startTime", "", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/decoder/VfrDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "init", "", "startTime", "", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
 public final class l
   implements c
 {
@@ -23,7 +23,7 @@ public final class l
     p.h(paramList, "frames");
     p.h(paramMap, "parents");
     p.h(paramMap1, "outPts");
-    ae.i(this.TAG, "use vfr decode strategy");
+    Log.i(this.TAG, "use vfr decode strategy");
     int i = 0;
     Object localObject1 = ((Iterable)paramList).iterator();
     if (((Iterator)localObject1).hasNext()) {
@@ -31,10 +31,10 @@ public final class l
       {
         int j = paramList.size() - i;
         i = j * paramInt2 / paramInt1;
-        paramList = j.G(paramList, j);
-        localObject1 = v.NhH;
+        paramList = j.N(paramList, j);
+        localObject1 = v.SXr;
         paramLong = System.currentTimeMillis();
-        localObject1 = d.hle;
+        localObject1 = d.ieb;
         p.h(paramList, "frames");
         j = paramList.size();
         localObject1 = new ArrayList(j);
@@ -101,18 +101,18 @@ public final class l
                 }
                 ((List)localObject4).remove(0);
               }
-              k = ((Number)j.jl((List)localObject4)).intValue();
+              k = ((Number)j.ks((List)localObject4)).intValue();
               ((List)((List)localObject2).get(paramInt1)).set(paramInt2, Long.valueOf(((Number)((List)((List)localObject2).get(paramInt1 - 1)).get(k)).longValue() + (((Number)paramList.get(paramInt2)).longValue() - ((Number)paramList.get(k)).longValue()) * (((Number)paramList.get(paramInt2)).longValue() - ((Number)paramList.get(k)).longValue())));
               ((List)((List)localObject3).get(paramInt1)).set(paramInt2, Integer.valueOf(k));
               while (((List)localObject4).size() > 1)
               {
-                d1 = d.a(paramInt2, ((Number)((List)localObject4).get(j.jj((List)localObject4))).intValue(), (List)((List)localObject2).get(paramInt1 - 1), paramList);
-                d2 = d.a(((Number)((List)localObject4).get(j.jj((List)localObject4))).intValue(), ((Number)((List)localObject4).get(j.jj((List)localObject4) - 1)).intValue(), paramList);
-                double d3 = d.a(((Number)((List)localObject4).get(j.jj((List)localObject4))).intValue(), ((Number)((List)localObject4).get(j.jj((List)localObject4) - 1)).intValue(), (List)((List)localObject2).get(paramInt1 - 1), paramList);
-                if (d1 * d2 >= d.a(paramInt2, ((Number)((List)localObject4).get(j.jj((List)localObject4))).intValue(), paramList) * d3) {
+                d1 = d.a(paramInt2, ((Number)((List)localObject4).get(j.kq((List)localObject4))).intValue(), (List)((List)localObject2).get(paramInt1 - 1), paramList);
+                d2 = d.a(((Number)((List)localObject4).get(j.kq((List)localObject4))).intValue(), ((Number)((List)localObject4).get(j.kq((List)localObject4) - 1)).intValue(), paramList);
+                double d3 = d.a(((Number)((List)localObject4).get(j.kq((List)localObject4))).intValue(), ((Number)((List)localObject4).get(j.kq((List)localObject4) - 1)).intValue(), (List)((List)localObject2).get(paramInt1 - 1), paramList);
+                if (d1 * d2 >= d.a(paramInt2, ((Number)((List)localObject4).get(j.kq((List)localObject4))).intValue(), paramList) * d3) {
                   break;
                 }
-                ((List)localObject4).remove(j.jj((List)localObject4));
+                ((List)localObject4).remove(j.kq((List)localObject4));
               }
               ((List)localObject4).add(Integer.valueOf(paramInt2));
               paramInt2 += 1;
@@ -132,7 +132,7 @@ public final class l
           paramInt1 -= 1;
         }
         long l = System.currentTimeMillis();
-        ae.i(this.TAG, "DropFrame, total frames = " + paramList.size() + ", remain frames = " + i + ", cost " + (l - paramLong) + "ms");
+        Log.i(this.TAG, "DropFrame, total frames = " + paramList.size() + ", remain frames = " + i + ", cost " + (l - paramLong) + "ms");
         paramLong = -1L;
         paramList = j.c((Iterable)localObject1, (Iterable)paramList).iterator();
         label1133:

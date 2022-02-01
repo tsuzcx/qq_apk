@@ -14,11 +14,11 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Messenger;
 import android.os.Parcel;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.lang.ref.WeakReference;
 import java.util.Collections;
 import java.util.HashMap;
@@ -26,31 +26,33 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class AppBrandMainProcessService
   extends Service
 {
-  private static d krZ;
-  private static ServiceConnection ksa;
-  private static final LinkedList<Parcel> ksb;
-  private static Map<String, WeakReference<MainProcessTask>> ksc;
-  private static final Handler ksd;
-  private static Messenger kse;
-  private static final Set<Runnable> ksf;
-  private static final Set<a> ksg;
-  private final HashMap<String, IBinder.DeathRecipient> krW;
-  private final Messenger krX;
-  private final d.a krY;
+  private static d lvI;
+  private static ServiceConnection lvJ;
+  private static final LinkedList<Parcel> lvK;
+  private static final Map<String, WeakReference<MainProcessTask>> lvL;
+  private static final Handler lvM;
+  private static Messenger lvN;
+  private static final Set<Runnable> lvO;
+  private static final Set<AppBrandMainProcessService.a> lvP;
+  private static final ConcurrentHashMap<String, b> lvQ;
+  private final HashMap<String, IBinder.DeathRecipient> lvF;
+  private final Messenger lvG;
+  private final d.a lvH;
   private final Handler mHandler;
   
   static
   {
     AppMethodBeat.i(140616);
-    ksb = new LinkedList();
-    ksc = new ConcurrentHashMap();
-    ksd = new Handler(Looper.getMainLooper())
+    lvK = new LinkedList();
+    lvL = new ConcurrentHashMap();
+    lvM = new Handler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -61,28 +63,29 @@ public class AppBrandMainProcessService
           AppMethodBeat.o(140596);
           return;
         }
-        MainProcessTask localMainProcessTask = AppBrandMainProcessService.PG(paramAnonymousMessage.iIu);
+        MainProcessTask localMainProcessTask = AppBrandMainProcessService.YV(paramAnonymousMessage.jEY);
         if (localMainProcessTask == null)
         {
-          ae.e("MicroMsg.AppBrandMainProcessService", "receive client msg, get null task by id %s", new Object[] { paramAnonymousMessage.iIu });
+          Log.e("MicroMsg.AppBrandMainProcessService", "receive client msg, get null task by id %s", new Object[] { paramAnonymousMessage.jEY });
           AppMethodBeat.o(140596);
           return;
         }
         AppBrandMainProcessService.b(paramAnonymousMessage, localMainProcessTask);
-        localMainProcessTask.aOY();
+        localMainProcessTask.bjk();
         AppMethodBeat.o(140596);
       }
     };
-    kse = new Messenger(ksd);
-    ksf = new HashSet();
-    ksg = Collections.newSetFromMap(new ConcurrentHashMap());
+    lvN = new Messenger(lvM);
+    lvO = new HashSet();
+    lvP = Collections.newSetFromMap(new ConcurrentHashMap());
+    lvQ = new ConcurrentHashMap();
     AppMethodBeat.o(140616);
   }
   
   public AppBrandMainProcessService()
   {
     AppMethodBeat.i(140599);
-    this.krW = new HashMap();
+    this.lvF = new HashMap();
     this.mHandler = new Handler(Looper.getMainLooper())
     {
       public final void handleMessage(final Message paramAnonymousMessage)
@@ -90,23 +93,23 @@ public class AppBrandMainProcessService
         AppMethodBeat.i(140591);
         paramAnonymousMessage = AppBrandMainProcessService.b(paramAnonymousMessage.getData(), true);
         if (paramAnonymousMessage != null) {
-          h.MqF.f(new Runnable()
+          h.RTc.b(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(201174);
-              paramAnonymousMessage.aOX();
-              AppMethodBeat.o(201174);
+              AppMethodBeat.i(221213);
+              paramAnonymousMessage.bjj();
+              AppMethodBeat.o(221213);
             }
           }, "MicroMsg.AppBrandMainProcessService");
         }
         AppMethodBeat.o(140591);
       }
     };
-    this.krX = new Messenger(this.mHandler);
-    this.krY = new d.a()
+    this.lvG = new Messenger(this.mHandler);
+    this.lvH = new d.a()
     {
-      public final void H(Bundle paramAnonymousBundle)
+      public final void N(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(140593);
         Message localMessage = Message.obtain();
@@ -115,12 +118,12 @@ public class AppBrandMainProcessService
         AppMethodBeat.o(140593);
       }
       
-      public final void I(Bundle paramAnonymousBundle)
+      public final void O(Bundle paramAnonymousBundle)
       {
         AppMethodBeat.i(140594);
         paramAnonymousBundle = AppBrandMainProcessService.b(paramAnonymousBundle, false);
         if (paramAnonymousBundle != null) {
-          paramAnonymousBundle.aOX();
+          paramAnonymousBundle.bjj();
         }
         AppMethodBeat.o(140594);
       }
@@ -141,8 +144,8 @@ public class AppBrandMainProcessService
             }
             paramAnonymousIBinder.unlinkToDeath(localDeathRecipient, 0);
             AppBrandMainProcessService.b(AppBrandMainProcessService.this).remove(paramAnonymousString);
-            AppBrandMainProcessService.Lx(paramAnonymousString);
-            ae.e("MicroMsg.AppBrandMainProcessService", "Client Process Died: %s", new Object[] { paramAnonymousString });
+            AppBrandMainProcessService.UG(paramAnonymousString);
+            Log.e("MicroMsg.AppBrandMainProcessService", "Client Process Died: %s", new Object[] { paramAnonymousString });
             AppMethodBeat.o(140592);
           }
         };
@@ -150,13 +153,13 @@ public class AppBrandMainProcessService
         {
           paramAnonymousIBinder.linkToDeath(local1, 0);
           AppBrandMainProcessService.b(AppBrandMainProcessService.this).put(paramAnonymousString, local1);
-          AppBrandMainProcessService.fi(paramAnonymousString);
+          AppBrandMainProcessService.fV(paramAnonymousString);
           AppMethodBeat.o(140595);
           return;
         }
         catch (Exception paramAnonymousIBinder)
         {
-          ae.e("MicroMsg.AppBrandMainProcessService", "registerDeathRecipient: %s", new Object[] { paramAnonymousIBinder });
+          Log.e("MicroMsg.AppBrandMainProcessService", "registerDeathRecipient: %s", new Object[] { paramAnonymousIBinder });
           AppMethodBeat.o(140595);
         }
       }
@@ -164,13 +167,13 @@ public class AppBrandMainProcessService
     AppMethodBeat.o(140599);
   }
   
-  private static boolean E(Bundle paramBundle)
+  private static boolean K(Bundle paramBundle)
   {
     AppMethodBeat.i(140602);
     boolean bool = true;
     try
     {
-      krZ.I(paramBundle);
+      lvI.O(paramBundle);
       AppMethodBeat.o(140602);
       return bool;
     }
@@ -179,38 +182,38 @@ public class AppBrandMainProcessService
       for (;;)
       {
         bool = false;
-        ae.e("MicroMsg.AppBrandMainProcessService", paramBundle.getMessage());
+        Log.e("MicroMsg.AppBrandMainProcessService", paramBundle.getMessage());
       }
     }
   }
   
-  private static void F(Bundle paramBundle)
+  private static void L(Bundle paramBundle)
   {
     AppMethodBeat.i(140603);
-    if (krZ == null)
+    if (lvI == null)
     {
-      T(null);
-      synchronized (ksb)
+      Y(null);
+      synchronized (lvK)
       {
-        ksb.add(G(paramBundle));
+        lvK.add(M(paramBundle));
         AppMethodBeat.o(140603);
         return;
       }
     }
     try
     {
-      krZ.H(paramBundle);
+      lvI.N(paramBundle);
       AppMethodBeat.o(140603);
       return;
     }
     catch (Exception paramBundle)
     {
-      ae.e("MicroMsg.AppBrandMainProcessService", paramBundle.getMessage());
+      Log.e("MicroMsg.AppBrandMainProcessService", paramBundle.getMessage());
       AppMethodBeat.o(140603);
     }
   }
   
-  private static Parcel G(Bundle paramBundle)
+  private static Parcel M(Bundle paramBundle)
   {
     AppMethodBeat.i(140608);
     Parcel localParcel = Parcel.obtain();
@@ -219,40 +222,40 @@ public class AppBrandMainProcessService
     return localParcel;
   }
   
-  public static void T(Runnable paramRunnable)
+  public static void Y(Runnable paramRunnable)
   {
-    AppMethodBeat.i(201176);
-    if ((paramRunnable != null) && (krZ != null))
+    AppMethodBeat.i(221217);
+    if ((paramRunnable != null) && (lvI != null))
     {
       paramRunnable.run();
-      AppMethodBeat.o(201176);
+      AppMethodBeat.o(221217);
       return;
     }
     if (paramRunnable != null) {}
-    synchronized (ksf)
+    synchronized (lvO)
     {
-      ksf.add(paramRunnable);
-      if (ksa == null) {
-        ksa = new ServiceConnection()
+      lvO.add(paramRunnable);
+      if (lvJ == null) {
+        lvJ = new ServiceConnection()
         {
           public final void onServiceConnected(ComponentName arg1, IBinder paramAnonymousIBinder)
           {
             AppMethodBeat.i(140597);
             AppBrandMainProcessService.a(d.a.r(paramAnonymousIBinder));
-            AppBrandMainProcessService.biq();
-            AppBrandMainProcessService.fi(ak.getPackageName());
+            AppBrandMainProcessService.WB();
+            AppBrandMainProcessService.fV(MMApplicationContext.getPackageName());
             try
             {
-              AppBrandMainProcessService.bir().a(new Binder(), ak.getProcessName());
-              ae.i("MicroMsg.AppBrandMainProcessService", "onServiceConnected(%s)", new Object[] { ak.getProcessName() });
+              AppBrandMainProcessService.bDE().a(new Binder(), MMApplicationContext.getProcessName());
+              Log.i("MicroMsg.AppBrandMainProcessService", "onServiceConnected(%s)", new Object[] { MMApplicationContext.getProcessName() });
               AppMethodBeat.o(140597);
             }
             catch (Exception ???)
             {
-              synchronized (AppBrandMainProcessService.WX())
+              synchronized (AppBrandMainProcessService.akK())
               {
-                paramAnonymousIBinder = new HashSet(AppBrandMainProcessService.WX());
-                AppBrandMainProcessService.WX().clear();
+                paramAnonymousIBinder = new HashSet(AppBrandMainProcessService.akK());
+                AppBrandMainProcessService.akK().clear();
                 ??? = paramAnonymousIBinder.iterator();
                 while (???.hasNext())
                 {
@@ -262,7 +265,7 @@ public class AppBrandMainProcessService
                     paramAnonymousIBinder.run();
                     continue;
                     ??? = ???;
-                    ae.e("MicroMsg.AppBrandMainProcessService", "onServiceConnected, registerDeathRecipient, %s", new Object[] { ??? });
+                    Log.e("MicroMsg.AppBrandMainProcessService", "onServiceConnected, registerDeathRecipient, %s", new Object[] { ??? });
                   }
                 }
               }
@@ -273,31 +276,60 @@ public class AppBrandMainProcessService
           {
             AppMethodBeat.i(140598);
             AppBrandMainProcessService.a(null);
-            AppBrandMainProcessService.Lx(ak.getPackageName());
-            AppBrandMainProcessService.bio();
-            ae.i("MicroMsg.AppBrandMainProcessService", "onServiceDisconnected(%s)", new Object[] { ak.getProcessName() });
+            AppBrandMainProcessService.UG(MMApplicationContext.getPackageName());
+            AppBrandMainProcessService.bDD();
+            Log.i("MicroMsg.AppBrandMainProcessService", "onServiceDisconnected(%s)", new Object[] { MMApplicationContext.getProcessName() });
             AppMethodBeat.o(140598);
           }
         };
       }
-      ae.i("MicroMsg.AppBrandMainProcessService", "tryBindService");
-      paramRunnable = ak.getContext();
+      Log.i("MicroMsg.AppBrandMainProcessService", "tryBindService");
+      paramRunnable = MMApplicationContext.getContext();
       ??? = new Intent(paramRunnable, AppBrandMainProcessService.class);
     }
     try
     {
-      paramRunnable.bindService((Intent)???, ksa, 1);
-      AppMethodBeat.o(201176);
+      paramRunnable.bindService((Intent)???, lvJ, 1);
+      AppMethodBeat.o(221217);
       return;
     }
     catch (Exception paramRunnable)
     {
-      ae.e("MicroMsg.AppBrandMainProcessService", "bindService() Exception:%s", new Object[] { paramRunnable.getMessage() });
-      AppMethodBeat.o(201176);
+      Log.e("MicroMsg.AppBrandMainProcessService", "bindService() Exception:%s", new Object[] { paramRunnable.getMessage() });
+      AppMethodBeat.o(221217);
     }
     paramRunnable = finally;
-    AppMethodBeat.o(201176);
+    AppMethodBeat.o(221217);
     throw paramRunnable;
+  }
+  
+  private static MainProcessTask YT(String paramString)
+  {
+    AppMethodBeat.i(221215);
+    synchronized (lvL)
+    {
+      Object localObject = (WeakReference)lvL.get(paramString);
+      if (localObject == null)
+      {
+        localObject = null;
+        if (localObject == null) {
+          lvL.remove(paramString);
+        }
+        AppMethodBeat.o(221215);
+        return localObject;
+      }
+      localObject = (MainProcessTask)((WeakReference)localObject).get();
+    }
+  }
+  
+  private static void YU(String paramString)
+  {
+    AppMethodBeat.i(221218);
+    Iterator localIterator = lvP.iterator();
+    while (localIterator.hasNext()) {
+      ((AppBrandMainProcessService.a)localIterator.next()).Uf(paramString);
+    }
+    AppMethodBeat.o(221218);
   }
   
   public static Bundle a(MainProcessTask paramMainProcessTask, boolean paramBoolean)
@@ -306,25 +338,36 @@ public class AppBrandMainProcessService
     Bundle localBundle = new Bundle(3);
     localBundle.putParcelable("task_object", paramMainProcessTask);
     if (paramBoolean) {
-      localBundle.putParcelable("task_client", kse);
+      localBundle.putParcelable("task_client", lvN);
     }
-    localBundle.putString("task_id", paramMainProcessTask.iIu);
+    localBundle.putString("task_id", paramMainProcessTask.jEY);
     AppMethodBeat.o(140609);
     return localBundle;
   }
   
-  public static void a(a parama)
+  public static void a(AppBrandMainProcessService.a parama)
   {
     AppMethodBeat.i(140605);
-    ksg.add(parama);
+    lvP.add(parama);
+    if (lvQ.size() != 0)
+    {
+      parama = lvQ.entrySet().iterator();
+      while (parama.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)parama.next();
+        if (((b)localEntry.getValue()).aMp) {
+          YU((String)localEntry.getKey());
+        }
+      }
+    }
     AppMethodBeat.o(140605);
   }
   
   public static void a(MainProcessTask paramMainProcessTask)
   {
     AppMethodBeat.i(140600);
-    ksc.put(paramMainProcessTask.iIu, new WeakReference(paramMainProcessTask));
-    F(a(paramMainProcessTask, true));
+    c(paramMainProcessTask);
+    L(a(paramMainProcessTask, true));
     AppMethodBeat.o(140600);
   }
   
@@ -334,7 +377,7 @@ public class AppBrandMainProcessService
     Parcel localParcel = Parcel.obtain();
     paramMainProcessTask1.writeToParcel(localParcel, 0);
     localParcel.setDataPosition(0);
-    paramMainProcessTask2.e(localParcel);
+    paramMainProcessTask2.f(localParcel);
     localParcel.recycle();
     AppMethodBeat.o(140607);
   }
@@ -357,22 +400,22 @@ public class AppBrandMainProcessService
       MainProcessTask localMainProcessTask2;
       for (;;)
       {
-        ae.e("MicroMsg.AppBrandMainProcessService", "convertBundleToTask e=%s", new Object[] { localClassCastException });
+        Log.e("MicroMsg.AppBrandMainProcessService", "convertBundleToTask e=%s", new Object[] { localClassCastException });
         localMainProcessTask2 = null;
       }
       if (paramBoolean) {
-        localMainProcessTask2.kto = ((Messenger)paramBundle.getParcelable("task_client"));
+        localMainProcessTask2.lxa = ((Messenger)paramBundle.getParcelable("task_client"));
       }
-      localMainProcessTask2.iIu = paramBundle.getString("task_id");
+      localMainProcessTask2.jEY = paramBundle.getString("task_id");
       AppMethodBeat.o(140610);
       return localMainProcessTask2;
     }
   }
   
-  public static void b(a parama)
+  public static void b(AppBrandMainProcessService.a parama)
   {
     AppMethodBeat.i(140606);
-    ksg.remove(parama);
+    lvP.remove(parama);
     AppMethodBeat.o(140606);
   }
   
@@ -380,11 +423,11 @@ public class AppBrandMainProcessService
   {
     AppMethodBeat.i(140601);
     Bundle localBundle = a(paramMainProcessTask, false);
-    if (E(localBundle)) {
+    if (K(localBundle)) {
       try
       {
         a(b(localBundle, false), paramMainProcessTask);
-        paramMainProcessTask.aOY();
+        paramMainProcessTask.bjk();
         AppMethodBeat.o(140601);
         return true;
       }
@@ -398,33 +441,49 @@ public class AppBrandMainProcessService
     return false;
   }
   
-  public static void bio()
+  public static void bDD()
   {
-    AppMethodBeat.i(224447);
-    T(null);
-    AppMethodBeat.o(224447);
+    AppMethodBeat.i(258650);
+    Y(null);
+    AppMethodBeat.o(258650);
   }
   
-  public static boolean bip()
+  static void c(MainProcessTask paramMainProcessTask)
   {
-    return krZ != null;
+    AppMethodBeat.i(221214);
+    synchronized (lvL)
+    {
+      lvL.put(paramMainProcessTask.jEY, new WeakReference(paramMainProcessTask));
+      AppMethodBeat.o(221214);
+      return;
+    }
+  }
+  
+  public static boolean isLive()
+  {
+    return lvI != null;
   }
   
   public IBinder onBind(Intent paramIntent)
   {
-    return this.krY;
+    return this.lvH;
   }
   
-  public static class a
+  static final class b
   {
-    public void KW(String paramString) {}
+    public boolean aMp;
+    public String processName;
     
-    public void onDisconnected(String paramString) {}
+    public b(String paramString)
+    {
+      this.processName = paramString;
+      this.aMp = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService
  * JD-Core Version:    0.7.0.1
  */

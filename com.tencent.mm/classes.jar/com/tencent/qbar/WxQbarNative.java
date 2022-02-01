@@ -51,6 +51,8 @@ public class WxQbarNative
   
   protected native int SetCenterCoordinate(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
   
+  protected native int SetTouchCoordinate(int paramInt, float paramFloat1, float paramFloat2);
+  
   public static class QBarReportMsg
   {
     public String binaryMethod;
@@ -68,7 +70,7 @@ public class WxQbarNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qbar.WxQbarNative
  * JD-Core Version:    0.7.0.1
  */

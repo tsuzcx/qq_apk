@@ -6,72 +6,137 @@ import com.tencent.mm.plugin.report.a;
 public final class fi
   extends a
 {
-  public String dSR = "";
-  public long emA = 0L;
-  public String emB = "";
-  public String emC = "";
-  public String emw = "";
-  public long emx = 0L;
-  public long emy = 0L;
-  public long emz = 0L;
+  private long eFA;
+  private long eFB;
+  private String eFc = "";
+  private long eFd;
+  private String eFy = "";
+  private long eFz;
+  private long erw;
+  private String evz = "";
+  private long eyI;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(110276);
+    AppMethodBeat.i(207429);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dSR);
+    ((StringBuffer)localObject).append(this.eFc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emw);
+    ((StringBuffer)localObject).append(this.eyI);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emx);
+    ((StringBuffer)localObject).append(this.evz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emy);
+    ((StringBuffer)localObject).append(this.eFy);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emz);
+    ((StringBuffer)localObject).append(this.erw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emA);
+    ((StringBuffer)localObject).append(this.eFz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emB);
+    ((StringBuffer)localObject).append(this.eFd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emC);
+    ((StringBuffer)localObject).append(this.eFA);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eFB);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(110276);
+    aMq((String)localObject);
+    AppMethodBeat.o(207429);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(110277);
+    AppMethodBeat.i(207430);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ChatName:").append(this.dSR);
+    ((StringBuffer)localObject).append("roomid:").append(this.eFc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LaunchUserName:").append(this.emw);
+    ((StringBuffer)localObject).append("liveid:").append(this.eyI);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionID:").append(this.emx);
+    ((StringBuffer)localObject).append("topic:").append(this.evz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("deleteCount:").append(this.emy);
+    ((StringBuffer)localObject).append("liveusername:").append(this.eFy);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("addCount:").append(this.emz);
+    ((StringBuffer)localObject).append("scene:").append(this.erw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EditScene:").append(this.emA);
+    ((StringBuffer)localObject).append("liveRole:").append(this.eFz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Identifier:").append(this.emB);
+    ((StringBuffer)localObject).append("roomRole:").append(this.eFd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Punctuation:").append(this.emC);
+    ((StringBuffer)localObject).append("replayStatusEnd:").append(this.eFA);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("replayStatusBegin:").append(this.eFB);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(110277);
+    AppMethodBeat.o(207430);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18246;
+    return 19897;
+  }
+  
+  public final fi nG(long paramLong)
+  {
+    this.eyI = paramLong;
+    return this;
+  }
+  
+  public final fi nH(long paramLong)
+  {
+    this.erw = paramLong;
+    return this;
+  }
+  
+  public final fi nI(long paramLong)
+  {
+    this.eFz = paramLong;
+    return this;
+  }
+  
+  public final fi nJ(long paramLong)
+  {
+    this.eFd = paramLong;
+    return this;
+  }
+  
+  public final fi nK(long paramLong)
+  {
+    this.eFA = paramLong;
+    return this;
+  }
+  
+  public final fi nL(long paramLong)
+  {
+    this.eFB = paramLong;
+    return this;
+  }
+  
+  public final fi sj(String paramString)
+  {
+    AppMethodBeat.i(207426);
+    this.eFc = x("roomid", paramString, true);
+    AppMethodBeat.o(207426);
+    return this;
+  }
+  
+  public final fi sk(String paramString)
+  {
+    AppMethodBeat.i(207427);
+    this.evz = x("topic", paramString, true);
+    AppMethodBeat.o(207427);
+    return this;
+  }
+  
+  public final fi sl(String paramString)
+  {
+    AppMethodBeat.i(207428);
+    this.eFy = x("liveusername", paramString, true);
+    AppMethodBeat.o(207428);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fi
  * JD-Core Version:    0.7.0.1
  */

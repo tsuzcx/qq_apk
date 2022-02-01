@@ -2,19 +2,21 @@ package com.tencent.mm.plugin.webview.modeltools;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.bw.b;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.model.z;
-import com.tencent.mm.model.z.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ad;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.plugin.fts.a.e;
-import com.tencent.mm.plugin.websearch.api.h;
-import com.tencent.mm.protocal.protobuf.dfm;
-import com.tencent.mm.protocal.protobuf.dfn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.dyt;
+import com.tencent.mm.protocal.protobuf.dyu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
@@ -24,96 +26,11 @@ import java.util.concurrent.TimeUnit;
 
 public final class f
 {
-  private static String EnA = null;
-  private static com.tencent.mm.bw.b EnB = null;
-  private static String kid = null;
+  private static String JaE = null;
+  private static b JaF = null;
+  private static String hes = null;
   
-  public static Bundle a(Bundle paramBundle, final String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(79144);
-    EnA = null;
-    kid = null;
-    EnB = null;
-    try
-    {
-      dfm localdfm = new dfm();
-      localdfm.HMx = paramBundle.getString("PickedWord");
-      localdfm.HMy = paramBundle.getString("PrefixText");
-      localdfm.HMz = paramBundle.getString("SuffixText");
-      localdfm.Scene = paramBundle.getInt("Scene");
-      localdfm.HMA = paramBundle.getInt("MainIndex", -1);
-      localdfm.Url = paramString1;
-      localdfm.Title = paramString2;
-      localdfm.HMB = paramBundle.getString("SubPickedWord");
-      localdfm.HMC = paramBundle.getString("SubPrefixText");
-      localdfm.HMD = paramBundle.getString("SubSuffixText");
-      localdfm.HME = paramBundle.getInt("SubIndex", -1);
-      localdfm.HMF = paramBundle.getInt("TagNewLineBefore", -1);
-      localdfm.HMG = paramBundle.getInt("TagNewLineAfter", -1);
-      localdfm.HMH = paramBundle.getInt("TagNewLineBeforeSub", -1);
-      localdfm.HMI = paramBundle.getInt("TagNewLineAfterSub", -1);
-      ae.i("MicroMsg.SmartPickWordHelper", "req: PrefixText: %s, PickedWord: %s, SuffixText: %s", new Object[] { localdfm.HMy, localdfm.HMx, localdfm.HMz });
-      paramBundle = new b.a();
-      paramBundle.hQF = localdfm;
-      paramBundle.hQG = new dfn();
-      paramBundle.uri = "/cgi-bin/mmsearch-bin/searchsmartpickword";
-      paramBundle.funcId = 2974;
-      paramBundle.hQH = 0;
-      paramBundle.respCmdId = 0;
-      paramString2 = new CountDownLatch(1);
-      paramString1 = new Bundle();
-      IPCRunCgi.a(paramBundle.aDS(), new IPCRunCgi.a()
-      {
-        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb)
-        {
-          AppMethodBeat.i(79143);
-          ae.i("MicroMsg.SmartPickWordHelper", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
-          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
-          {
-            this.val$countDownWait.countDown();
-            AppMethodBeat.o(79143);
-            return;
-          }
-          paramAnonymousString = (dfn)paramAnonymousb.hQE.hQJ;
-          paramString1.putString("PickedWord", paramAnonymousString.HMx);
-          paramString1.putInt("PrefixOffset", paramAnonymousString.HMJ);
-          paramString1.putInt("SuffixOffset", paramAnonymousString.HMK);
-          paramString1.putString("PrefixText", paramAnonymousString.HMy);
-          paramString1.putString("SuffixText", paramAnonymousString.HMz);
-          paramString1.putInt("IsMainOrSub", paramAnonymousString.HML);
-          f.fh(paramAnonymousString.HMx);
-          f.c(paramAnonymousString.HMM);
-          f.access$202(paramAnonymousString.HkY);
-          ae.i("MicroMsg.SmartPickWordHelper", "response: PrefixText: %s, PickedWord: %s, SuffixText: %s, %d, %d, %d", new Object[] { paramAnonymousString.HMy, paramAnonymousString.HMx, paramAnonymousString.HMz, Integer.valueOf(paramAnonymousString.HMJ), Integer.valueOf(paramAnonymousString.HMK), Integer.valueOf(paramAnonymousString.HML) });
-          this.val$countDownWait.countDown();
-          AppMethodBeat.o(79143);
-        }
-      });
-      try
-      {
-        paramString2.await(1000L, TimeUnit.MILLISECONDS);
-        ae.i("MicroMsg.SmartPickWordHelper", "smartPickWord end");
-        AppMethodBeat.o(79144);
-        return paramString1;
-      }
-      catch (InterruptedException paramBundle)
-      {
-        for (;;)
-        {
-          ae.w("MicroMsg.SmartPickWordHelper", paramBundle.getMessage());
-          ae.printErrStackTrace("MicroMsg.SmartPickWordHelper", paramBundle, "", new Object[0]);
-        }
-      }
-      return null;
-    }
-    catch (Exception paramBundle)
-    {
-      ae.e("MicroMsg.SmartPickWordHelper", "smartPickWord url failed");
-      AppMethodBeat.o(79144);
-    }
-  }
-  
-  public static void aD(Bundle paramBundle)
+  public static void aP(Bundle paramBundle)
   {
     AppMethodBeat.i(79145);
     if (paramBundle == null)
@@ -121,27 +38,27 @@ public final class f
       AppMethodBeat.o(79145);
       return;
     }
-    if (kid != null) {
-      paramBundle.putString("searchId", kid);
+    if (hes != null) {
+      paramBundle.putString("searchId", hes);
     }
-    if (EnB != null) {
-      paramBundle.putString("extQueryInfo", EnB.fjO());
+    if (JaF != null) {
+      paramBundle.putString("extQueryInfo", JaF.yO());
     }
     AppMethodBeat.o(79145);
   }
   
-  public static boolean aE(Bundle paramBundle)
+  public static boolean aQ(Bundle paramBundle)
   {
     AppMethodBeat.i(79146);
     String str1 = paramBundle.getString("query");
     String str2 = paramBundle.getString("searchId");
     String str3 = paramBundle.getString("extQueryInfo");
-    if (bu.isNullOrNil(str1))
+    if (Util.isNullOrNil(str1))
     {
       AppMethodBeat.o(79146);
       return false;
     }
-    long l = e.tEn;
+    long l = e.wVm;
     HashMap localHashMap = new HashMap();
     paramBundle = null;
     if (str2 != null)
@@ -150,22 +67,22 @@ public final class f
       localHashMap.put("parentSearchID", paramBundle);
     }
     if (paramBundle != null) {
-      z.aBG().F(paramBundle, true).k("extQueryInfo", str3);
+      ad.aVe().G(paramBundle, true).l("extQueryInfo", str3);
     }
     localHashMap.put("clickType", "18");
-    ((h)com.tencent.mm.kernel.g.ab(h.class)).a(ak.getContext(), 17, str1, String.valueOf(l), localHashMap);
+    ((com.tencent.mm.plugin.websearch.api.h)g.af(com.tencent.mm.plugin.websearch.api.h.class)).a(MMApplicationContext.getContext(), 17, str1, String.valueOf(l), localHashMap);
     AppMethodBeat.o(79146);
     return false;
   }
   
-  public static void aJm(String paramString)
+  public static void aZr(String paramString)
   {
     AppMethodBeat.i(79149);
     String str = "";
     try
     {
-      paramString = URLEncoder.encode(bu.nullAsNil(paramString), "UTF-8");
-      com.tencent.mm.plugin.report.service.g.yxI.f(13742, new Object[] { Integer.valueOf(4), paramString, "", "", Integer.valueOf(0), kid });
+      paramString = URLEncoder.encode(Util.nullAsNil(paramString), "UTF-8");
+      com.tencent.mm.plugin.report.service.h.CyF.a(13742, new Object[] { Integer.valueOf(4), paramString, "", "", Integer.valueOf(0), hes });
       AppMethodBeat.o(79149);
       return;
     }
@@ -173,17 +90,102 @@ public final class f
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.SmartPickWordHelper", paramString, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.SmartPickWordHelper", paramString, "", new Object[0]);
         paramString = str;
       }
     }
   }
   
-  public static void ld(String paramString1, String paramString2)
+  public static Bundle b(Bundle paramBundle, final String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(79144);
+    JaE = null;
+    hes = null;
+    JaF = null;
+    try
+    {
+      dyt localdyt = new dyt();
+      localdyt.MYh = paramBundle.getString("PickedWord");
+      localdyt.MYi = paramBundle.getString("PrefixText");
+      localdyt.MYj = paramBundle.getString("SuffixText");
+      localdyt.Scene = paramBundle.getInt("Scene");
+      localdyt.MYk = paramBundle.getInt("MainIndex", -1);
+      localdyt.Url = paramString1;
+      localdyt.Title = paramString2;
+      localdyt.MYl = paramBundle.getString("SubPickedWord");
+      localdyt.MYm = paramBundle.getString("SubPrefixText");
+      localdyt.MYn = paramBundle.getString("SubSuffixText");
+      localdyt.MYo = paramBundle.getInt("SubIndex", -1);
+      localdyt.MYp = paramBundle.getInt("TagNewLineBefore", -1);
+      localdyt.MYq = paramBundle.getInt("TagNewLineAfter", -1);
+      localdyt.MYr = paramBundle.getInt("TagNewLineBeforeSub", -1);
+      localdyt.MYs = paramBundle.getInt("TagNewLineAfterSub", -1);
+      Log.i("MicroMsg.SmartPickWordHelper", "req: PrefixText: %s, PickedWord: %s, SuffixText: %s", new Object[] { localdyt.MYi, localdyt.MYh, localdyt.MYj });
+      paramBundle = new d.a();
+      paramBundle.iLN = localdyt;
+      paramBundle.iLO = new dyu();
+      paramBundle.uri = "/cgi-bin/mmsearch-bin/searchsmartpickword";
+      paramBundle.funcId = 2974;
+      paramBundle.iLP = 0;
+      paramBundle.respCmdId = 0;
+      paramString2 = new CountDownLatch(1);
+      paramString1 = new Bundle();
+      IPCRunCgi.a(paramBundle.aXF(), new IPCRunCgi.a()
+      {
+        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd)
+        {
+          AppMethodBeat.i(79143);
+          Log.i("MicroMsg.SmartPickWordHelper", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
+          {
+            this.val$countDownWait.countDown();
+            AppMethodBeat.o(79143);
+            return;
+          }
+          paramAnonymousString = (dyu)paramAnonymousd.iLL.iLR;
+          paramString1.putString("PickedWord", paramAnonymousString.MYh);
+          paramString1.putInt("PrefixOffset", paramAnonymousString.MYt);
+          paramString1.putInt("SuffixOffset", paramAnonymousString.MYu);
+          paramString1.putString("PrefixText", paramAnonymousString.MYi);
+          paramString1.putString("SuffixText", paramAnonymousString.MYj);
+          paramString1.putInt("IsMainOrSub", paramAnonymousString.MYv);
+          f.fU(paramAnonymousString.MYh);
+          f.e(paramAnonymousString.MYw);
+          f.access$202(paramAnonymousString.Mbb);
+          Log.i("MicroMsg.SmartPickWordHelper", "response: PrefixText: %s, PickedWord: %s, SuffixText: %s, %d, %d, %d", new Object[] { paramAnonymousString.MYi, paramAnonymousString.MYh, paramAnonymousString.MYj, Integer.valueOf(paramAnonymousString.MYt), Integer.valueOf(paramAnonymousString.MYu), Integer.valueOf(paramAnonymousString.MYv) });
+          this.val$countDownWait.countDown();
+          AppMethodBeat.o(79143);
+        }
+      });
+      try
+      {
+        paramString2.await(1000L, TimeUnit.MILLISECONDS);
+        Log.i("MicroMsg.SmartPickWordHelper", "smartPickWord end");
+        AppMethodBeat.o(79144);
+        return paramString1;
+      }
+      catch (InterruptedException paramBundle)
+      {
+        for (;;)
+        {
+          Log.w("MicroMsg.SmartPickWordHelper", paramBundle.getMessage());
+          Log.printErrStackTrace("MicroMsg.SmartPickWordHelper", paramBundle, "", new Object[0]);
+        }
+      }
+      return null;
+    }
+    catch (Exception paramBundle)
+    {
+      Log.e("MicroMsg.SmartPickWordHelper", "smartPickWord url failed");
+      AppMethodBeat.o(79144);
+    }
+  }
+  
+  public static void mc(String paramString1, String paramString2)
   {
     int j = 1;
     AppMethodBeat.i(79147);
-    if ((!bu.isNullOrNil(EnA)) && (!bu.lX(paramString1, EnA))) {}
+    if ((!Util.isNullOrNil(JaE)) && (!Util.isEqual(paramString1, JaE))) {}
     for (i = 1;; i = 0)
     {
       localObject = "";
@@ -192,13 +194,13 @@ public final class f
       String str1 = str3;
       try
       {
-        paramString2 = URLEncoder.encode(bu.nullAsNil(paramString2), "UTF-8");
+        paramString2 = URLEncoder.encode(Util.nullAsNil(paramString2), "UTF-8");
         str1 = str3;
         localObject = paramString2;
-        paramString1 = URLEncoder.encode(bu.nullAsNil(paramString1), "UTF-8");
+        paramString1 = URLEncoder.encode(Util.nullAsNil(paramString1), "UTF-8");
         str1 = paramString1;
         localObject = paramString2;
-        str3 = URLEncoder.encode(bu.nullAsNil(EnA), "UTF-8");
+        str3 = URLEncoder.encode(Util.nullAsNil(JaE), "UTF-8");
         localObject = str3;
         str1 = paramString1;
         paramString1 = (String)localObject;
@@ -207,25 +209,25 @@ public final class f
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.SmartPickWordHelper", paramString1, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.SmartPickWordHelper", paramString1, "", new Object[0]);
           paramString1 = str2;
           paramString2 = (String)localObject;
           continue;
           i = 0;
         }
       }
-      localObject = com.tencent.mm.plugin.report.service.g.yxI;
+      localObject = com.tencent.mm.plugin.report.service.h.CyF;
       if (i == 0) {
         break;
       }
       i = j;
-      ((com.tencent.mm.plugin.report.service.g)localObject).f(13742, new Object[] { Integer.valueOf(2), paramString2, paramString1, str1, Integer.valueOf(i), kid });
+      ((com.tencent.mm.plugin.report.service.h)localObject).a(13742, new Object[] { Integer.valueOf(2), paramString2, paramString1, str1, Integer.valueOf(i), hes });
       AppMethodBeat.o(79147);
       return;
     }
   }
   
-  public static void r(String paramString, Bundle paramBundle)
+  public static void q(String paramString, Bundle paramBundle)
   {
     int j = 1;
     AppMethodBeat.i(79148);
@@ -235,15 +237,15 @@ public final class f
       paramBundle = "";
       try
       {
-        paramString = URLEncoder.encode(bu.nullAsNil(paramString), "UTF-8");
-        paramBundle = com.tencent.mm.plugin.report.service.g.yxI;
+        paramString = URLEncoder.encode(Util.nullAsNil(paramString), "UTF-8");
+        paramBundle = com.tencent.mm.plugin.report.service.h.CyF;
         if (bool)
         {
           i = 3;
           if (!bool) {
-            break label128;
+            break label127;
           }
-          paramBundle.f(13742, new Object[] { Integer.valueOf(i), paramString, "", "", Integer.valueOf(j), kid });
+          paramBundle.a(13742, new Object[] { Integer.valueOf(i), paramString, "", "", Integer.valueOf(j), hes });
           AppMethodBeat.o(79148);
         }
       }
@@ -251,12 +253,12 @@ public final class f
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.SmartPickWordHelper", paramString, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.SmartPickWordHelper", paramString, "", new Object[0]);
           paramString = paramBundle;
           continue;
           int i = 1;
           continue;
-          label128:
+          label127:
           j = 0;
         }
       }

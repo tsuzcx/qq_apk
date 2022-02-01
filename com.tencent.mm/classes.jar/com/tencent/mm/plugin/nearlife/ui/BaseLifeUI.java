@@ -10,131 +10,104 @@ import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.b.g;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.n.e;
+import com.tencent.mm.modelstat.o;
+import com.tencent.mm.n.f;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bug;
+import com.tencent.mm.protocal.protobuf.chk;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper.LatLongData;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMLoadMoreListView;
-import com.tencent.mm.ui.tools.r;
-import com.tencent.mm.ui.tools.r.b;
+import com.tencent.mm.ui.tools.s.b;
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class BaseLifeUI
   extends MMActivity
-  implements f
+  implements i
 {
-  protected String dyb = "";
-  boolean fHl = false;
-  private r fUI;
-  boolean hmD = false;
-  protected boolean iam = true;
-  boolean jjp = false;
-  protected String kid = "";
-  int sceneType = 0;
-  private int vlS = 1;
-  MMLoadMoreListView vrC;
-  public int vse = -1;
-  private boolean vsk;
-  private boolean wEG = false;
-  private String wFJ = "";
-  private View wFX;
-  private NearLifeErrorContent wFY;
-  private a wFZ;
-  private a wGa;
-  private View wGb;
-  private TextView wGc;
-  private TextView wGd;
-  private com.tencent.mm.modelgeo.d wGe = com.tencent.mm.modelgeo.d.aIh();
-  private com.tencent.mm.plugin.nearlife.b.d wGf;
-  private int wGg;
-  private List<bug> wGh;
-  protected bug wGi = null;
-  protected float wGj = 0.0F;
-  protected float wGk = 0.0F;
-  protected int wGl = 0;
-  protected float wGm = 0.0F;
-  protected long wGn = -1L;
-  protected long wGo = -1L;
-  protected long wGp = -1L;
-  protected int wGq = 0;
-  protected boolean wGr = false;
-  protected int wGs = -1;
-  protected boolean wGt = false;
-  boolean wGu = false;
-  protected boolean wGv = true;
-  private View.OnClickListener wGw = new BaseLifeUI.1(this);
-  private View.OnClickListener wGx = new View.OnClickListener()
+  private String AAU = "";
+  protected int ABA = 0;
+  protected boolean ABB = false;
+  protected int ABC = -1;
+  protected boolean ABD = false;
+  boolean ABE = false;
+  protected boolean ABF = true;
+  private View.OnClickListener ABG = new BaseLifeUI.1(this);
+  private View.OnClickListener ABH = new View.OnClickListener()
   {
     public final void onClick(View paramAnonymousView)
     {
       AppMethodBeat.i(26561);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramAnonymousView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      if (BaseLifeUI.this.wGi == null)
+      localb.bm(paramAnonymousView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      if (BaseLifeUI.this.ABs == null)
       {
-        ae.e("MicroMsg.BaseLifeUI", "Location is null");
+        Log.e("MicroMsg.BaseLifeUI", "Location is null");
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(26561);
         return;
       }
-      com.tencent.mm.plugin.report.service.g.yxI.f(11138, new Object[] { "1", Integer.valueOf(BaseLifeUI.b(BaseLifeUI.this).getCount() + 1), BaseLifeUI.this.kid });
+      com.tencent.mm.plugin.report.service.h.CyF.a(11138, new Object[] { "1", Integer.valueOf(BaseLifeUI.b(BaseLifeUI.this).getCount() + 1), BaseLifeUI.this.hes });
       paramAnonymousView = new Intent();
       paramAnonymousView.setClass(BaseLifeUI.this, NearLifeCreatePoiUI.class);
-      paramAnonymousView.putExtra("get_lat", BaseLifeUI.this.wGi.Gha);
-      paramAnonymousView.putExtra("get_lng", BaseLifeUI.this.wGi.GgZ);
-      paramAnonymousView.putExtra("get_preci", BaseLifeUI.this.wGi.Gzf);
-      paramAnonymousView.putExtra("get_poi_name", BaseLifeUI.b(BaseLifeUI.this).dxs());
-      paramAnonymousView.putExtra("get_cur_lat", BaseLifeUI.this.wGj);
-      paramAnonymousView.putExtra("get_cur_lng", BaseLifeUI.this.wGk);
-      paramAnonymousView.putExtra("get_accuracy", BaseLifeUI.this.wGm);
-      paramAnonymousView.putExtra("get_loctype", BaseLifeUI.this.wGl);
-      paramAnonymousView.putExtra("search_id", BaseLifeUI.this.kid);
-      paramAnonymousView.putExtra("get_is_mars", BaseLifeUI.this.iam);
+      paramAnonymousView.putExtra("get_lat", BaseLifeUI.this.ABs.LbD);
+      paramAnonymousView.putExtra("get_lng", BaseLifeUI.this.ABs.LbC);
+      paramAnonymousView.putExtra("get_preci", BaseLifeUI.this.ABs.LuT);
+      paramAnonymousView.putExtra("get_poi_name", BaseLifeUI.b(BaseLifeUI.this).exa());
+      paramAnonymousView.putExtra("get_cur_lat", BaseLifeUI.this.ABt);
+      paramAnonymousView.putExtra("get_cur_lng", BaseLifeUI.this.ABu);
+      paramAnonymousView.putExtra("get_accuracy", BaseLifeUI.this.ABw);
+      paramAnonymousView.putExtra("get_loctype", BaseLifeUI.this.ABv);
+      paramAnonymousView.putExtra("search_id", BaseLifeUI.this.hes);
+      paramAnonymousView.putExtra("get_is_mars", BaseLifeUI.this.iVk);
       BaseLifeUI.this.startActivityForResult(paramAnonymousView, 1);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/nearlife/ui/BaseLifeUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(26561);
     }
   };
-  private b.a wGy = new b.a()
+  private b.a ABI = new b.a()
   {
     public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
     {
       AppMethodBeat.i(26572);
-      if (BaseLifeUI.this.hmD)
+      if (BaseLifeUI.this.ifz)
       {
         AppMethodBeat.o(26572);
         return false;
       }
-      if (BaseLifeUI.this.fHl)
+      if (BaseLifeUI.this.gmw)
       {
         AppMethodBeat.o(26572);
         return false;
       }
       if (!paramAnonymousBoolean)
       {
-        if ((!BaseLifeUI.j(BaseLifeUI.this)) && (!com.tencent.mm.modelgeo.d.aIi()))
+        if ((!BaseLifeUI.j(BaseLifeUI.this)) && (!com.tencent.mm.modelgeo.d.bcc()))
         {
           BaseLifeUI.k(BaseLifeUI.this);
-          com.tencent.mm.ui.base.h.a(BaseLifeUI.this, BaseLifeUI.this.getString(2131760082), BaseLifeUI.this.getString(2131755906), BaseLifeUI.this.getString(2131760598), BaseLifeUI.this.getString(2131755691), false, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(BaseLifeUI.this, BaseLifeUI.this.getString(2131761461), BaseLifeUI.this.getString(2131755998), BaseLifeUI.this.getString(2131762043), BaseLifeUI.this.getString(2131755761), false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(26571);
-              com.tencent.mm.modelgeo.d.cD(BaseLifeUI.this);
+              com.tencent.mm.modelgeo.d.cZ(BaseLifeUI.this);
               AppMethodBeat.o(26571);
             }
           }, null);
@@ -142,38 +115,38 @@ public abstract class BaseLifeUI
         AppMethodBeat.o(26572);
         return true;
       }
-      com.tencent.mm.modelstat.o.a(2003, paramAnonymousFloat1, paramAnonymousFloat2, (int)paramAnonymousDouble2);
-      BaseLifeUI.this.fHl = true;
-      ae.i("MicroMsg.BaseLifeUI", "on get location %f %f " + System.currentTimeMillis(), new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
-      BaseLifeUI.this.wGi = new bug();
-      BaseLifeUI.this.wGi.Gzh = "";
-      BaseLifeUI.this.wGi.Gzi = 0;
-      BaseLifeUI.this.wGi.Gha = paramAnonymousFloat2;
-      BaseLifeUI.this.wGi.GgZ = paramAnonymousFloat1;
-      BaseLifeUI.this.wGi.Gzg = "";
-      BaseLifeUI.this.wGi.Gzf = ((int)paramAnonymousDouble2);
-      BaseLifeUI.this.wGj = paramAnonymousFloat2;
-      BaseLifeUI.this.wGk = paramAnonymousFloat1;
-      BaseLifeUI.this.wGl = paramAnonymousInt;
-      BaseLifeUI.this.wGm = ((float)paramAnonymousDouble2);
+      o.a(2003, paramAnonymousFloat1, paramAnonymousFloat2, (int)paramAnonymousDouble2);
+      BaseLifeUI.this.gmw = true;
+      Log.i("MicroMsg.BaseLifeUI", "on get location %f %f " + System.currentTimeMillis(), new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
+      BaseLifeUI.this.ABs = new chk();
+      BaseLifeUI.this.ABs.LuV = "";
+      BaseLifeUI.this.ABs.LuW = 0;
+      BaseLifeUI.this.ABs.LbD = paramAnonymousFloat2;
+      BaseLifeUI.this.ABs.LbC = paramAnonymousFloat1;
+      BaseLifeUI.this.ABs.LuU = "";
+      BaseLifeUI.this.ABs.LuT = ((int)paramAnonymousDouble2);
+      BaseLifeUI.this.ABt = paramAnonymousFloat2;
+      BaseLifeUI.this.ABu = paramAnonymousFloat1;
+      BaseLifeUI.this.ABv = paramAnonymousInt;
+      BaseLifeUI.this.ABw = ((float)paramAnonymousDouble2);
       Object localObject = BaseLifeUI.this;
       label418:
       BaseLifeUI localBaseLifeUI;
       if (BaseLifeUI.l(BaseLifeUI.this) == null)
       {
         paramAnonymousBoolean = false;
-        ((BaseLifeUI)localObject).iam = paramAnonymousBoolean;
-        localObject = BaseLifeUI.f(BaseLifeUI.this).wFQ;
+        ((BaseLifeUI)localObject).iVk = paramAnonymousBoolean;
+        localObject = BaseLifeUI.f(BaseLifeUI.this).ABb;
         if ((localObject == null) || (((ArrayList)localObject).size() <= 0)) {
           break label569;
         }
         localObject = (BackwardSupportUtil.ExifHelper.LatLongData)((ArrayList)localObject).get(((ArrayList)localObject).size() - 1);
-        BaseLifeUI.this.p(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).dzE, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).iev);
-        BaseLifeUI.this.wGt = BaseLifeUI.m(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).dzE, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).iev, paramAnonymousFloat2, paramAnonymousFloat1);
-        BaseLifeUI.f(BaseLifeUI.this).wFU = new BackwardSupportUtil.ExifHelper.LatLongData(BaseLifeUI.this.wGi.Gha, BaseLifeUI.this.wGi.GgZ);
-        BaseLifeUI.b(BaseLifeUI.this).wFU = new BackwardSupportUtil.ExifHelper.LatLongData(BaseLifeUI.this.wGi.Gha, BaseLifeUI.this.wGi.GgZ);
+        BaseLifeUI.this.p(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).latitude, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).longtitude);
+        BaseLifeUI.this.ABD = BaseLifeUI.p(((BackwardSupportUtil.ExifHelper.LatLongData)localObject).latitude, ((BackwardSupportUtil.ExifHelper.LatLongData)localObject).longtitude, paramAnonymousFloat2, paramAnonymousFloat1);
+        BaseLifeUI.f(BaseLifeUI.this).ABf = new BackwardSupportUtil.ExifHelper.LatLongData(BaseLifeUI.this.ABs.LbD, BaseLifeUI.this.ABs.LbC);
+        BaseLifeUI.b(BaseLifeUI.this).ABf = new BackwardSupportUtil.ExifHelper.LatLongData(BaseLifeUI.this.ABs.LbD, BaseLifeUI.this.ABs.LbC);
         localBaseLifeUI = BaseLifeUI.this;
-        if (!BaseLifeUI.this.jjp) {
+        if (!BaseLifeUI.this.khr) {
           break label583;
         }
       }
@@ -186,43 +159,75 @@ public abstract class BaseLifeUI
         BaseLifeUI.this.addSearchMenu(true, BaseLifeUI.i(BaseLifeUI.this));
         AppMethodBeat.o(26572);
         return false;
-        paramAnonymousBoolean = BaseLifeUI.l(BaseLifeUI.this).iam;
+        paramAnonymousBoolean = BaseLifeUI.l(BaseLifeUI.this).iVk;
         break;
         BaseLifeUI.this.p(paramAnonymousFloat2, paramAnonymousFloat1);
         break label418;
       }
     }
   };
+  private View ABi;
+  private NearLifeErrorContent ABj;
+  private a ABk;
+  private a ABl;
+  private View ABm;
+  private TextView ABn;
+  private TextView ABo;
+  private com.tencent.mm.plugin.nearlife.b.d ABp;
+  private int ABq;
+  private List<chk> ABr;
+  protected chk ABs = null;
+  protected float ABt = 0.0F;
+  protected float ABu = 0.0F;
+  protected int ABv = 0;
+  protected float ABw = 0.0F;
+  protected long ABx = -1L;
+  protected long ABy = -1L;
+  protected long ABz = -1L;
+  protected String dPI = "";
+  boolean gmw = false;
+  private com.tencent.mm.ui.tools.s gzP;
+  protected String hes = "";
+  protected boolean iVk = true;
+  boolean ifz = false;
+  boolean khr = false;
+  int sceneType = 0;
+  private boolean uSq = false;
+  private boolean uSu;
+  private com.tencent.mm.modelgeo.d uzs = com.tencent.mm.modelgeo.d.bca();
+  private int yFK = 1;
+  public int yLS = -1;
+  MMLoadMoreListView yLr;
   
-  private void Mp(int paramInt)
+  private void Tw(int paramInt)
   {
-    this.vrC.removeFooterView(this.wFX);
-    this.vrC.removeFooterView(this.wGb);
-    this.vrC.fCQ();
-    this.wGb.setVisibility(paramInt);
-    this.wGc.setVisibility(paramInt);
-    this.wGd.setVisibility(paramInt);
+    this.yLr.removeFooterView(this.ABi);
+    this.yLr.removeFooterView(this.ABm);
+    this.yLr.gKP();
+    this.ABm.setVisibility(paramInt);
+    this.ABn.setVisibility(paramInt);
+    this.ABo.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      this.vrC.addFooterView(this.wGb);
+      this.yLr.addFooterView(this.ABm);
       return;
     }
-    this.vrC.fCM();
-    this.vrC.addFooterView(this.wFX);
+    this.yLr.gKL();
+    this.yLr.addFooterView(this.ABi);
   }
   
-  private void dxx()
+  private void exf()
   {
-    if (!this.jjp) {
-      ae.i("MicroMsg.BaseLifeUI", "is not Search mode pass createpoi");
+    if (!this.khr) {
+      Log.i("MicroMsg.BaseLifeUI", "is not Search mode pass createpoi");
     }
     for (;;)
     {
       return;
       try
       {
-        int i = Integer.valueOf(com.tencent.mm.n.g.acL().getValue("POICreateForbiden")).intValue();
-        ae.i("MicroMsg.BaseLifeUI", "getDynamicConfig createpoi %d", new Object[] { Integer.valueOf(i) });
+        int i = Integer.valueOf(com.tencent.mm.n.h.aqJ().getValue("POICreateForbiden")).intValue();
+        Log.i("MicroMsg.BaseLifeUI", "getDynamicConfig createpoi %d", new Object[] { Integer.valueOf(i) });
         if (i == 1) {}
       }
       catch (Exception localException)
@@ -232,81 +237,81 @@ public abstract class BaseLifeUI
         break label56;
       }
     }
-    if (!this.wGa.aun(this.wGa.dxs()))
+    if (!this.ABl.aIw(this.ABl.exa()))
     {
-      str = String.format(getResources().getString(2131761604), new Object[] { this.wGa.dxs() });
-      this.wGc.setText(str);
-      Mp(0);
+      str = String.format(getResources().getString(2131763572), new Object[] { this.ABl.exa() });
+      this.ABn.setText(str);
+      Tw(0);
       return;
     }
-    Mp(8);
+    Tw(8);
   }
   
-  private boolean pn(boolean paramBoolean)
+  private boolean ss(boolean paramBoolean)
   {
-    bug localbug;
+    chk localchk;
     do
     {
-      if (this.wGf != null)
+      if (this.ABp != null)
       {
-        ae.d("MicroMsg.BaseLifeUI", "scene is doing...");
+        Log.d("MicroMsg.BaseLifeUI", "scene is doing...");
         return false;
       }
-      if (this.wGh.size() - 1 <= this.wGg)
+      if (this.ABr.size() - 1 <= this.ABq)
       {
-        this.wGg = -1;
-        ae.i("MicroMsg.BaseLifeUI", "index inc to end, ret");
+        this.ABq = -1;
+        Log.i("MicroMsg.BaseLifeUI", "index inc to end, ret");
         return false;
       }
-      this.wGg += 1;
-      localbug = (bug)this.wGh.get(this.wGg);
-      if (this.wGg == 0) {
-        this.wGq += 1;
+      this.ABq += 1;
+      localchk = (chk)this.ABr.get(this.ABq);
+      if (this.ABq == 0) {
+        this.ABA += 1;
       }
-      if (!this.jjp) {
+      if (!this.khr) {
         break;
       }
-      i = this.wGa.b(new BackwardSupportUtil.ExifHelper.LatLongData(localbug.Gha, localbug.GgZ));
+      i = this.ABl.b(new BackwardSupportUtil.ExifHelper.LatLongData(localchk.LbD, localchk.LbC));
     } while (i <= 0);
     SKBuiltinBuffer_t localSKBuiltinBuffer_t;
-    if (this.jjp)
+    if (this.khr)
     {
-      localSKBuiltinBuffer_t = this.wGa.a(new BackwardSupportUtil.ExifHelper.LatLongData(localbug.Gha, localbug.GgZ));
+      localSKBuiltinBuffer_t = this.ABl.a(new BackwardSupportUtil.ExifHelper.LatLongData(localchk.LbD, localchk.LbC));
       label166:
-      if (!this.jjp) {
+      if (!this.khr) {
         break label249;
       }
     }
     label249:
     for (int i = 1;; i = 0)
     {
-      if (com.tencent.mm.plugin.nearlife.b.d.Mm(i)) {
+      if (com.tencent.mm.plugin.nearlife.b.d.Tt(i)) {
         break label255;
       }
-      this.wGg = -1;
+      this.ABq = -1;
       return false;
-      i = this.wFZ.b(new BackwardSupportUtil.ExifHelper.LatLongData(localbug.Gha, localbug.GgZ));
+      i = this.ABk.b(new BackwardSupportUtil.ExifHelper.LatLongData(localchk.LbD, localchk.LbC));
       break;
-      localSKBuiltinBuffer_t = this.wFZ.a(new BackwardSupportUtil.ExifHelper.LatLongData(localbug.Gha, localbug.GgZ));
+      localSKBuiltinBuffer_t = this.ABk.a(new BackwardSupportUtil.ExifHelper.LatLongData(localchk.LbD, localchk.LbC));
       break label166;
     }
     label255:
-    if (-1L == this.wGn) {
-      this.wGn = System.currentTimeMillis();
+    if (-1L == this.ABx) {
+      this.ABx = System.currentTimeMillis();
     }
     int j = this.sceneType;
-    float f1 = localbug.GgZ;
-    float f2 = localbug.Gha;
-    int k = localbug.Gzf;
-    int m = localbug.Gzi;
-    String str2 = localbug.Gzg;
-    String str3 = localbug.Gzh;
-    if (this.jjp) {}
-    for (String str1 = this.wGa.dxs();; str1 = "")
+    float f1 = localchk.LbC;
+    float f2 = localchk.LbD;
+    int k = localchk.LuT;
+    int m = localchk.LuW;
+    String str2 = localchk.LuU;
+    String str3 = localchk.LuV;
+    if (this.khr) {}
+    for (String str1 = this.ABl.exa();; str1 = "")
     {
-      this.wGf = new com.tencent.mm.plugin.nearlife.b.d(i, j, f1, f2, k, m, str2, str3, localSKBuiltinBuffer_t, str1, this.vse, paramBoolean, false);
-      bc.ajj().a(this.wGf, 0);
-      ae.i("MicroMsg.BaseLifeUI", "start get lbs life list, index:%d, lat:%f, long:%f", new Object[] { Integer.valueOf(this.wGg), Float.valueOf(localbug.Gha), Float.valueOf(localbug.GgZ) });
+      this.ABp = new com.tencent.mm.plugin.nearlife.b.d(i, j, f1, f2, k, m, str2, str3, localSKBuiltinBuffer_t, str1, this.yLS, paramBoolean, false);
+      bg.azz().a(this.ABp, 0);
+      Log.i("MicroMsg.BaseLifeUI", "start get lbs life list, index:%d, lat:%f, long:%f", new Object[] { Integer.valueOf(this.ABq), Float.valueOf(localchk.LbD), Float.valueOf(localchk.LbC) });
       return true;
     }
   }
@@ -332,24 +337,24 @@ public abstract class BaseLifeUI
         if (paramBoolean2)
         {
           i = 43;
-          if (this.wGt)
+          if (this.ABD)
           {
-            paramString = com.tencent.mm.plugin.report.service.g.yxI;
+            paramString = com.tencent.mm.plugin.report.service.h.CyF;
             if (!paramBoolean1) {
               break label402;
             }
             j = 5;
-            paramString.f(11139, new Object[] { Integer.valueOf(j) });
+            paramString.a(11139, new Object[] { Integer.valueOf(j) });
           }
           if (!paramBoolean1) {
             break label408;
           }
-          paramString = this.wGa.Mo(paramInt).vtl;
+          paramString = this.ABl.Tv(paramInt).yMY;
           localObject1 = paramString;
-          if (this.wGa.getCount() <= 0) {
+          if (this.ABl.getCount() <= 0) {
             break label545;
           }
-          str1 = this.wGa.Mo(1).dyb;
+          str1 = this.ABl.Tv(1).dPI;
           localObject1 = paramString;
           paramString = str1;
         }
@@ -361,17 +366,17 @@ public abstract class BaseLifeUI
       j = i;
       str1 = paramString;
       localObject2 = localObject1;
-      if (bu.isNullOrNil(paramString))
+      if (Util.isNullOrNil(paramString))
       {
-        str1 = this.dyb;
+        str1 = this.dPI;
         localObject2 = localObject1;
         j = i;
       }
-      if (this.wGi == null) {}
-      for (paramString = "null/null";; paramString = String.format("%f/%f", new Object[] { Float.valueOf(this.wGi.Gha), Float.valueOf(this.wGi.GgZ) }))
+      if (this.ABs == null) {}
+      for (paramString = "null/null";; paramString = String.format("%f/%f", new Object[] { Float.valueOf(this.ABs.LbD), Float.valueOf(this.ABs.LbC) }))
       {
-        ae.d("MicroMsg.BaseLifeUI", "index: %s, bid: %s, index: %s, searchId: %s, requestId: %s", new Object[] { Integer.valueOf(paramInt + 1), str2, Integer.valueOf(paramInt), localObject2, str1 });
-        com.tencent.mm.plugin.report.service.g.yxI.f(11135, new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt + 1), Long.valueOf(this.wGn), Long.valueOf(this.wGp), Long.valueOf(System.currentTimeMillis()), Long.valueOf(this.wGo), Integer.valueOf(this.wGq), paramString, str2, Integer.valueOf(this.vse), localObject2, com.tencent.mm.compatible.deviceinfo.q.cH(true), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), str1 });
+        Log.d("MicroMsg.BaseLifeUI", "index: %s, bid: %s, index: %s, searchId: %s, requestId: %s", new Object[] { Integer.valueOf(paramInt + 1), str2, Integer.valueOf(paramInt), localObject2, str1 });
+        com.tencent.mm.plugin.report.service.h.CyF.a(11135, new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt + 1), Long.valueOf(this.ABx), Long.valueOf(this.ABz), Long.valueOf(System.currentTimeMillis()), Long.valueOf(this.ABy), Integer.valueOf(this.ABA), paramString, str2, Integer.valueOf(this.yLS), localObject2, com.tencent.mm.compatible.deviceinfo.q.dr(true), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), str1 });
         return;
         i = 3;
         break;
@@ -386,15 +391,15 @@ public abstract class BaseLifeUI
         j = 4;
         break label63;
         label408:
-        str1 = this.wFZ.Mo(paramInt).vtl;
+        str1 = this.ABk.Tv(paramInt).yMY;
         localObject1 = str1;
-        if (this.wFZ.getCount() <= 0) {
+        if (this.ABk.getCount() <= 0) {
           break label545;
         }
-        paramString = this.wFZ.Mo(1).dyb;
+        paramString = this.ABk.Tv(1).dPI;
         localObject1 = str1;
         break label130;
-        if (this.wGr) {
+        if (this.ABB) {
           if (paramBoolean2) {
             i = 44;
           }
@@ -418,69 +423,69 @@ public abstract class BaseLifeUI
     }
   }
   
-  public abstract a dxu();
+  public abstract a exc();
   
-  public abstract a dxv();
+  public abstract a exd();
   
-  public void dxw()
+  public void exe()
   {
-    ae.d("MicroMsg.BaseLifeUI", "init header");
-    this.wGb = View.inflate(this, 2131493673, null);
-    this.wGc = ((TextView)this.wGb.findViewById(2131306116));
-    this.wGd = ((TextView)this.wGb.findViewById(2131306115));
-    this.wGb.setOnClickListener(this.wGx);
-    this.wFX = View.inflate(this, 2131495103, null);
-    this.vrC.addFooterView(this.wFX);
-    this.wFX.setVisibility(8);
+    Log.d("MicroMsg.BaseLifeUI", "init header");
+    this.ABm = View.inflate(this, 2131493804, null);
+    this.ABn = ((TextView)this.ABm.findViewById(2131309469));
+    this.ABo = ((TextView)this.ABm.findViewById(2131309468));
+    this.ABm.setOnClickListener(this.ABH);
+    this.ABi = View.inflate(this, 2131495945, null);
+    this.yLr.addFooterView(this.ABi);
+    this.ABi.setVisibility(8);
   }
   
   public int getLayoutId()
   {
-    return 2131494998;
+    return 2131495811;
   }
   
   public void initView()
   {
-    this.vrC = ((MMLoadMoreListView)findViewById(2131302680));
-    this.vrC.setFooterTips(getString(2131761492));
-    this.wFY = ((NearLifeErrorContent)findViewById(2131302679));
-    dxw();
-    this.wFZ = dxu();
-    this.wGa = dxv();
-    this.vrC.setAdapter(this.wFZ);
-    this.wFY.setListView(this.vrC);
-    this.wFZ.notifyDataSetChanged();
+    this.yLr = ((MMLoadMoreListView)findViewById(2131305234));
+    this.yLr.setFooterTips(getString(2131763434));
+    this.ABj = ((NearLifeErrorContent)findViewById(2131305233));
+    exe();
+    this.ABk = exc();
+    this.ABl = exd();
+    this.yLr.setAdapter(this.ABk);
+    this.ABj.setListView(this.yLr);
+    this.ABk.notifyDataSetChanged();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(26562);
-        BaseLifeUI.this.a(-1, false, "", BaseLifeUI.this.wGu);
+        BaseLifeUI.this.a(-1, false, "", BaseLifeUI.this.ABE);
         BaseLifeUI.this.finish();
         AppMethodBeat.o(26562);
         return true;
       }
     });
     setToTop(new BaseLifeUI.4(this));
-    this.fUI = new r((byte)0);
-    this.fUI.Lhk = new r.b()
+    this.gzP = new com.tencent.mm.ui.tools.s((byte)0);
+    this.gzP.Qwi = new s.b()
     {
-      public final boolean JO(String paramAnonymousString)
+      public final boolean SN(String paramAnonymousString)
       {
         AppMethodBeat.i(26569);
-        ae.d("MicroMsg.BaseLifeUI", "search key click");
+        Log.d("MicroMsg.BaseLifeUI", "search key click");
         BaseLifeUI.b(BaseLifeUI.this, paramAnonymousString);
         AppMethodBeat.o(26569);
         return false;
       }
       
-      public final void JP(String paramAnonymousString)
+      public final void SO(String paramAnonymousString)
       {
         AppMethodBeat.i(26566);
-        ae.d("MicroMsg.BaseLifeUI", "onSearchBarChange  %s", new Object[] { paramAnonymousString });
-        if (bu.isNullOrNil(paramAnonymousString))
+        Log.d("MicroMsg.BaseLifeUI", "onSearchBarChange  %s", new Object[] { paramAnonymousString });
+        if (Util.isNullOrNil(paramAnonymousString))
         {
-          aSN();
+          bnA();
           AppMethodBeat.o(26566);
           return;
         }
@@ -488,67 +493,76 @@ public abstract class BaseLifeUI
         AppMethodBeat.o(26566);
       }
       
-      public final void aSL()
+      public final void bnA()
+      {
+        AppMethodBeat.i(26565);
+        Log.d("MicroMsg.BaseLifeUI", "click clear");
+        if (BaseLifeUI.c(BaseLifeUI.this) != null)
+        {
+          bg.azz().a(BaseLifeUI.c(BaseLifeUI.this));
+          BaseLifeUI.d(BaseLifeUI.this);
+        }
+        BaseLifeUI.b(BaseLifeUI.this).ewZ();
+        BaseLifeUI.e(BaseLifeUI.this);
+        AppMethodBeat.o(26565);
+      }
+      
+      public final void bnB() {}
+      
+      public final void bny()
       {
         AppMethodBeat.i(26567);
-        ae.d("MicroMsg.BaseLifeUI", "search helper onQuitSearch");
-        BaseLifeUI.this.jjp = false;
-        BaseLifeUI.this.vrC.setAdapter(BaseLifeUI.f(BaseLifeUI.this));
+        Log.d("MicroMsg.BaseLifeUI", "search helper onQuitSearch");
+        BaseLifeUI.this.khr = false;
+        BaseLifeUI.this.yLr.setAdapter(BaseLifeUI.f(BaseLifeUI.this));
         BaseLifeUI.f(BaseLifeUI.this).notifyDataSetChanged();
-        BaseLifeUI.g(BaseLifeUI.this).Mq(BaseLifeUI.f(BaseLifeUI.this).wFW);
-        if ((!BaseLifeUI.f(BaseLifeUI.this).dxt()) && (BaseLifeUI.h(BaseLifeUI.this) != null)) {
+        BaseLifeUI.g(BaseLifeUI.this).Tx(BaseLifeUI.f(BaseLifeUI.this).ABh);
+        if ((!BaseLifeUI.f(BaseLifeUI.this).exb()) && (BaseLifeUI.h(BaseLifeUI.this) != null)) {
           BaseLifeUI.h(BaseLifeUI.this).setVisibility(0);
         }
-        BaseLifeUI.this.vrC.setOnTouchListener(null);
+        BaseLifeUI.this.yLr.setOnTouchListener(null);
         BaseLifeUI.e(BaseLifeUI.this);
         BaseLifeUI.a(BaseLifeUI.this, BaseLifeUI.f(BaseLifeUI.this));
         AppMethodBeat.o(26567);
       }
       
-      public final void aSM()
+      public final void bnz()
       {
         AppMethodBeat.i(26568);
-        ae.d("MicroMsg.BaseLifeUI", "search helper onEnterSearch");
-        BaseLifeUI.this.wGr = true;
-        BaseLifeUI.i(BaseLifeUI.this).setHint(BaseLifeUI.this.getString(2131761491));
-        BaseLifeUI.this.jjp = true;
-        BaseLifeUI.b(BaseLifeUI.this).dxr();
-        BaseLifeUI.this.vrC.setAdapter(BaseLifeUI.b(BaseLifeUI.this));
+        Log.d("MicroMsg.BaseLifeUI", "search helper onEnterSearch");
+        BaseLifeUI.this.ABB = true;
+        BaseLifeUI.i(BaseLifeUI.this).setHint(BaseLifeUI.this.getString(2131763433));
+        BaseLifeUI.this.khr = true;
+        BaseLifeUI.b(BaseLifeUI.this).ewZ();
+        BaseLifeUI.this.yLr.setAdapter(BaseLifeUI.b(BaseLifeUI.this));
         BaseLifeUI.b(BaseLifeUI.this).notifyDataSetChanged();
-        BaseLifeUI.this.vrC.fCO();
-        BaseLifeUI.g(BaseLifeUI.this).Mq(BaseLifeUI.b(BaseLifeUI.this).wFW);
+        BaseLifeUI.this.yLr.gKN();
+        BaseLifeUI.g(BaseLifeUI.this).Tx(BaseLifeUI.b(BaseLifeUI.this).ABh);
         if (BaseLifeUI.h(BaseLifeUI.this) != null) {
           BaseLifeUI.h(BaseLifeUI.this).setVisibility(8);
         }
-        BaseLifeUI.this.vrC.setOnTouchListener(new BaseLifeUI.5.1(this));
+        BaseLifeUI.this.yLr.setOnTouchListener(new View.OnTouchListener()
+        {
+          public final boolean onTouch(View paramAnonymous2View, MotionEvent paramAnonymous2MotionEvent)
+          {
+            AppMethodBeat.i(26564);
+            BaseLifeUI.this.hideVKB();
+            AppMethodBeat.o(26564);
+            return false;
+          }
+        });
         BaseLifeUI.a(BaseLifeUI.this, BaseLifeUI.b(BaseLifeUI.this));
         AppMethodBeat.o(26568);
       }
-      
-      public final void aSN()
-      {
-        AppMethodBeat.i(26565);
-        ae.d("MicroMsg.BaseLifeUI", "click clear");
-        if (BaseLifeUI.c(BaseLifeUI.this) != null)
-        {
-          bc.ajj().a(BaseLifeUI.c(BaseLifeUI.this));
-          BaseLifeUI.d(BaseLifeUI.this);
-        }
-        BaseLifeUI.b(BaseLifeUI.this).dxr();
-        BaseLifeUI.e(BaseLifeUI.this);
-        AppMethodBeat.o(26565);
-      }
-      
-      public final void aSO() {}
     };
-    this.vrC.setOnLoadMoreListener(new BaseLifeUI.6(this));
-    this.vrC.fCN();
+    this.yLr.setOnLoadMoreListener(new BaseLifeUI.6(this));
+    this.yLr.gKM();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ae.d("MicroMsg.BaseLifeUI", "onActivityResult requestCode %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.d("MicroMsg.BaseLifeUI", "onActivityResult requestCode %d %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt2 == -1) {}
     switch (paramInt1)
     {
@@ -562,58 +576,58 @@ public abstract class BaseLifeUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.wGv = getIntent().getBooleanExtra("poi_show_none", true);
-    this.vse = ((int)(System.currentTimeMillis() / 1000L));
+    this.ABF = getIntent().getBooleanExtra("poi_show_none", true);
+    this.yLS = ((int)(System.currentTimeMillis() / 1000L));
     com.tencent.mm.plugin.nearlife.b.d.clear();
-    bc.ajj().a(603, this);
+    bg.azz().a(603, this);
     this.sceneType = getIntent().getIntExtra("near_life_scene", 0);
-    this.dyb = getIntent().getStringExtra("request_id");
-    this.wGh = new ArrayList();
+    this.dPI = getIntent().getStringExtra("request_id");
+    this.ABr = new ArrayList();
     initView();
   }
   
   public void onDestroy()
   {
-    bc.ajj().b(603, this);
+    bg.azz().b(603, this);
     super.onDestroy();
-    if (this.wGe != null) {
-      this.wGe.c(this.wGy);
+    if (this.uzs != null) {
+      this.uzs.c(this.ABI);
     }
   }
   
   public void onPause()
   {
     super.onPause();
-    this.wGe.c(this.wGy);
+    this.uzs.c(this.ABI);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.wFZ.notifyDataSetChanged();
-    this.vrC.fCP();
-    if (this.wGe != null) {
-      this.wGe.a(this.wGy, true);
+    this.ABk.notifyDataSetChanged();
+    this.yLr.gKO();
+    if (this.uzs != null) {
+      this.uzs.a(this.ABI, true);
     }
-    this.hmD = false;
+    this.ifz = false;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
-    if (paramn.getType() != 603) {
+    if (paramq.getType() != 603) {
       return;
     }
-    this.vrC.fCO();
-    com.tencent.mm.plugin.nearlife.b.d locald = (com.tencent.mm.plugin.nearlife.b.d)paramn;
+    this.yLr.gKN();
+    com.tencent.mm.plugin.nearlife.b.d locald = (com.tencent.mm.plugin.nearlife.b.d)paramq;
     LogoImageView localLogoImageView;
     Object localObject;
-    if (!bu.isNullOrNil(locald.wFJ))
+    if (!Util.isNullOrNil(locald.AAU))
     {
-      this.wFJ = locald.wFJ;
-      localLogoImageView = (LogoImageView)this.wFX.findViewById(2131303550);
-      localObject = this.wFJ;
-      bc.aCg();
-      localLogoImageView.imagePath = c.azR();
+      this.AAU = locald.AAU;
+      localLogoImageView = (LogoImageView)this.ABi.findViewById(2131306325);
+      localObject = this.AAU;
+      bg.aVF();
+      localLogoImageView.imagePath = c.aSZ();
       localLogoImageView.url = ((String)localObject);
       localLogoImageView.targetWidth = 0;
       localLogoImageView.targetHeight = 0;
@@ -625,19 +639,19 @@ public abstract class BaseLifeUI
     int i;
     for (;;)
     {
-      this.kid = locald.kid;
-      this.vlS = locald.vlS;
-      i = ((com.tencent.mm.plugin.nearlife.b.d)paramn).dsO;
-      com.tencent.mm.plugin.nearlife.b.d.Mn(i);
-      if (this.wGf != null) {
+      this.hes = locald.hes;
+      this.yFK = locald.yFK;
+      i = ((com.tencent.mm.plugin.nearlife.b.d)paramq).dJY;
+      com.tencent.mm.plugin.nearlife.b.d.Tu(i);
+      if (this.ABp != null) {
         break;
       }
-      ae.d("MicroMsg.BaseLifeUI", "scene is null");
+      Log.d("MicroMsg.BaseLifeUI", "scene is null");
       return;
       label168:
       if (((String)localObject).startsWith("http"))
       {
-        Bitmap localBitmap = BitmapFactory.decodeFile(localLogoImageView.imagePath + com.tencent.mm.b.g.getMessageDigest(((String)localObject).getBytes()));
+        Bitmap localBitmap = BitmapFactory.decodeFile(localLogoImageView.imagePath + g.getMessageDigest(((String)localObject).getBytes()));
         if (localBitmap != null)
         {
           localObject = localBitmap;
@@ -645,24 +659,24 @@ public abstract class BaseLifeUI
           {
             localObject = localBitmap;
             if (localLogoImageView.targetHeight > 0) {
-              localObject = com.tencent.mm.sdk.platformtools.h.a(localBitmap, localLogoImageView.targetWidth, localLogoImageView.targetHeight, true, false);
+              localObject = BitmapUtil.extractThumbNail(localBitmap, localLogoImageView.targetWidth, localLogoImageView.targetHeight, true, false);
             }
           }
           localLogoImageView.setImageBitmap((Bitmap)localObject);
         }
         else
         {
-          com.tencent.mm.sdk.g.b.c(new LogoImageView.a((String)localObject, localLogoImageView.handler), "LogoImageView_download");
+          ThreadPool.post(new LogoImageView.a((String)localObject, localLogoImageView.handler), "LogoImageView_download");
         }
       }
-      else if (!com.tencent.mm.vfs.o.fB((String)localObject))
+      else if (!com.tencent.mm.vfs.s.YS((String)localObject))
       {
         localLogoImageView.setVisibility(8);
       }
       else
       {
         if ((localLogoImageView.targetWidth <= 0) || (localLogoImageView.targetHeight <= 0)) {}
-        for (localObject = com.tencent.mm.sdk.platformtools.h.aRC((String)localObject);; localObject = com.tencent.mm.sdk.platformtools.h.d((String)localObject, localLogoImageView.targetWidth, localLogoImageView.targetHeight, true))
+        for (localObject = BitmapUtil.getBitmapNative((String)localObject);; localObject = BitmapUtil.extractThumbNail((String)localObject, localLogoImageView.targetWidth, localLogoImageView.targetHeight, true))
         {
           if (localObject != null) {
             break label371;
@@ -674,100 +688,100 @@ public abstract class BaseLifeUI
         localLogoImageView.setImageBitmap((Bitmap)localObject);
       }
     }
-    ae.i("MicroMsg.BaseLifeUI", "onSceneEnd: index:%d, errType=%d, errCode=%d, errMsg=%s opcde %d ", new Object[] { Integer.valueOf(this.wGg), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i) });
+    Log.i("MicroMsg.BaseLifeUI", "onSceneEnd: index:%d, errType=%d, errCode=%d, errMsg=%s opcde %d ", new Object[] { Integer.valueOf(this.ABq), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(i) });
     if ((paramInt2 == 0) || (paramInt2 == 101))
     {
       i = 1;
       if ((paramInt1 == 0) || (i != 0)) {
         break label538;
       }
-      ae.d("MicroMsg.BaseLifeUI", "error");
-      if (!this.jjp) {
+      Log.d("MicroMsg.BaseLifeUI", "error");
+      if (!this.khr) {
         break label530;
       }
-      paramString = this.wGa;
+      paramString = this.ABl;
       label471:
-      if ((this.wGh.size() - 1 == this.wGg) && (paramString.getCount() == 0))
+      if ((this.ABr.size() - 1 == this.ABq) && (paramString.getCount() == 0))
       {
-        paramString.wFW = 1;
-        this.wFY.Mq(paramString.wFW);
+        paramString.ABh = 1;
+        this.ABj.Tx(paramString.ABh);
       }
     }
     for (;;)
     {
-      this.wGf = null;
-      pn(false);
+      this.ABp = null;
+      ss(false);
       return;
       i = 0;
       break;
       label530:
-      paramString = this.wFZ;
+      paramString = this.ABk;
       break label471;
       label538:
-      if (-1L == this.wGo) {
-        this.wGo = System.currentTimeMillis();
+      if (-1L == this.ABy) {
+        this.ABy = System.currentTimeMillis();
       }
-      this.wGp = System.currentTimeMillis();
-      paramn = locald.wFK;
-      paramString = (bug)this.wGh.get(this.wGg);
-      localObject = new BackwardSupportUtil.ExifHelper.LatLongData(paramString.Gha, paramString.GgZ);
-      if ((this.jjp) && (!this.wGf.wFL)) {
-        this.wGa.dxr();
+      this.ABz = System.currentTimeMillis();
+      paramq = locald.AAV;
+      paramString = (chk)this.ABr.get(this.ABq);
+      localObject = new BackwardSupportUtil.ExifHelper.LatLongData(paramString.LbD, paramString.LbC);
+      if ((this.khr) && (!this.ABp.AAW)) {
+        this.ABl.ewZ();
       }
-      if (this.jjp)
+      if (this.khr)
       {
-        this.wGa.a((BackwardSupportUtil.ExifHelper.LatLongData)localObject, locald.czR(), locald.dxq());
+        this.ABl.a((BackwardSupportUtil.ExifHelper.LatLongData)localObject, locald.cYA(), locald.ewY());
         label654:
-        if ((paramn != null) && (paramn.size() != 0)) {
+        if ((paramq != null) && (paramq.size() != 0)) {
           break label828;
         }
-        if (!this.jjp) {
+        if (!this.khr) {
           break label820;
         }
       }
       label820:
-      for (paramString = this.wGa;; paramString = this.wFZ)
+      for (paramString = this.ABl;; paramString = this.ABk)
       {
-        if (this.wGh.size() - 1 == this.wGg)
+        if (this.ABr.size() - 1 == this.ABq)
         {
           if (paramString.getCount() == 0) {
-            this.wFY.Mq(paramString.wFW);
+            this.ABj.Tx(paramString.ABh);
           }
-          this.vrC.fCO();
-          if ((!paramString.dxt()) && (paramInt2 != 101)) {
-            dxx();
+          this.yLr.gKN();
+          if ((!paramString.exb()) && (paramInt2 != 101)) {
+            exf();
           }
         }
-        if ((!this.wFZ.dxt()) && (this.wFX != null) && (!this.jjp)) {
-          this.wFX.setVisibility(0);
+        if ((!this.ABk.exb()) && (this.ABi != null) && (!this.khr)) {
+          this.ABi.setVisibility(0);
         }
-        if ((this.wFX == null) || (this.jjp)) {
+        if ((this.ABi == null) || (this.khr)) {
           break label926;
         }
-        this.wFX.setVisibility(0);
+        this.ABi.setVisibility(0);
         break;
-        this.wFZ.a((BackwardSupportUtil.ExifHelper.LatLongData)localObject, locald.czR(), locald.dxq());
+        this.ABk.a((BackwardSupportUtil.ExifHelper.LatLongData)localObject, locald.cYA(), locald.ewY());
         break label654;
       }
       label828:
-      if (this.jjp) {}
-      for (paramString = this.wGa;; paramString = this.wFZ)
+      if (this.khr) {}
+      for (paramString = this.ABl;; paramString = this.ABk)
       {
-        this.vrC.setVisibility(0);
-        paramString.wFW = 0;
-        this.wFY.Mq(this.wGa.wFW);
-        paramString.a((BackwardSupportUtil.ExifHelper.LatLongData)localObject, paramn);
+        this.yLr.setVisibility(0);
+        paramString.ABh = 0;
+        this.ABj.Tx(this.ABl.ABh);
+        paramString.a((BackwardSupportUtil.ExifHelper.LatLongData)localObject, paramq);
         paramString.notifyDataSetChanged();
-        if ((this.wGh.size() - 1 != this.wGg) || (paramString.dxt())) {
+        if ((this.ABr.size() - 1 != this.ABq) || (paramString.exb())) {
           break;
         }
-        this.vrC.fCO();
-        dxx();
+        this.yLr.gKN();
+        exf();
         break;
       }
       label926:
-      if (this.wFX != null) {
-        this.wFX.setVisibility(8);
+      if (this.ABi != null) {
+        this.ABi.setVisibility(8);
       }
     }
   }
@@ -782,7 +796,7 @@ public abstract class BaseLifeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.nearlife.ui.BaseLifeUI
  * JD-Core Version:    0.7.0.1
  */

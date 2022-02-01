@@ -2,32 +2,32 @@ package com.tencent.mm.plugin.recordvideo.background.b;
 
 import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.blur.e;
-import d.g.b.p;
-import d.l;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImageVideoRender;", "", "()V", "enableX264Encoder", "", "getEnableX264Encoder", "()Z", "setEnableX264Encoder", "(Z)V", "lastBlendBitmapId", "", "getLastBlendBitmapId", "()I", "setLastBlendBitmapId", "(I)V", "mHeight", "getMHeight", "setMHeight", "mImagePlayer", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;", "getMImagePlayer", "()Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;", "setMImagePlayer", "(Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;)V", "mSimpleImageShader", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/SimpleImageShader;", "getMSimpleImageShader", "()Lcom/tencent/mm/plugin/recordvideo/background/image2video/SimpleImageShader;", "setMSimpleImageShader", "(Lcom/tencent/mm/plugin/recordvideo/background/image2video/SimpleImageShader;)V", "mWidth", "getMWidth", "setMWidth", "startTime", "", "getStartTime", "()J", "setStartTime", "(J)V", "step", "getStep", "setStep", "addImages", "", "imageList", "", "", "clearImage", "initGL", "onDrawBlendBitmap", "bitmap", "Landroid/graphics/Bitmap;", "onDrawFrame", "onGLDestroy", "resetGL", "resetTs", "setStepTime", "setViewport", "width", "height", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImageVideoRender;", "", "()V", "enableX264Encoder", "", "getEnableX264Encoder", "()Z", "setEnableX264Encoder", "(Z)V", "lastBlendBitmapId", "", "getLastBlendBitmapId", "()I", "setLastBlendBitmapId", "(I)V", "mHeight", "getMHeight", "setMHeight", "mImagePlayer", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;", "getMImagePlayer", "()Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;", "setMImagePlayer", "(Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImagePlayer;)V", "mSimpleImageShader", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/SimpleImageShader;", "getMSimpleImageShader", "()Lcom/tencent/mm/plugin/recordvideo/background/image2video/SimpleImageShader;", "setMSimpleImageShader", "(Lcom/tencent/mm/plugin/recordvideo/background/image2video/SimpleImageShader;)V", "mWidth", "getMWidth", "setMWidth", "startTime", "", "getStartTime", "()J", "setStartTime", "(J)V", "step", "getStep", "setStep", "addImages", "", "imageList", "", "", "clearImage", "initGL", "onDrawBlendBitmap", "bitmap", "Landroid/graphics/Bitmap;", "onDrawFrame", "onGLDestroy", "resetGL", "resetTs", "setStepTime", "setViewport", "width", "height", "Companion", "plugin-recordvideo_release"})
 public final class h
 {
+  public static final h.a BMm;
   static final String TAG = "MicroMsg.Story.StoryImageVideoRender";
-  public static final h.a xMg;
+  long BMh;
+  public g BMi;
+  f BMj;
+  boolean BMk;
+  int BMl;
   int mHeight;
   int mWidth;
   public long startTime;
-  long xMb;
-  public g xMc;
-  f xMd;
-  boolean xMe;
-  int xMf;
   
   static
   {
     AppMethodBeat.i(75320);
-    xMg = new h.a((byte)0);
+    BMm = new h.a((byte)0);
     TAG = "MicroMsg.Story.StoryImageVideoRender";
     AppMethodBeat.o(75320);
   }
@@ -35,31 +35,31 @@ public final class h
   public h()
   {
     AppMethodBeat.i(75319);
-    this.xMb = 33L;
-    this.xMc = new g();
-    this.xMd = new f();
+    this.BMh = 33L;
+    this.BMi = new g();
+    this.BMj = new f();
     AppMethodBeat.o(75319);
   }
   
-  final void dIC()
+  final void eJp()
   {
     AppMethodBeat.i(75318);
-    this.xMc.dIA();
-    this.xMc.dIB();
-    this.xMf = 0;
+    this.BMi.eJn();
+    this.BMi.eJo();
+    this.BMl = 0;
     AppMethodBeat.o(75318);
   }
   
-  public final void fi(List<String> paramList)
+  public final void ge(List<String> paramList)
   {
     AppMethodBeat.i(75317);
     p.h(paramList, "imageList");
-    e locale = new e(ak.getContext());
+    e locale = new e(MMApplicationContext.getContext());
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      this.xMc.a(str, locale);
+      this.BMi.a(str, locale);
     }
     locale.destroy();
     AppMethodBeat.o(75317);
@@ -72,15 +72,15 @@ public final class h
     GLES20.glViewport(0, 0, this.mWidth, this.mHeight);
     GLES20.glClearColor(0.5F, 0.5F, 0.5F, 1.0F);
     GLES20.glClear(16384);
-    this.xMc.o(this.startTime, this.mWidth, this.mHeight);
-    this.startTime += this.xMb;
-    ae.i(TAG, "draw cost:" + (System.currentTimeMillis() - l));
+    this.BMi.n(this.startTime, this.mWidth, this.mHeight);
+    this.startTime += this.BMh;
+    Log.i(TAG, "draw cost:" + (System.currentTimeMillis() - l));
     AppMethodBeat.o(75316);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.b.h
  * JD-Core Version:    0.7.0.1
  */

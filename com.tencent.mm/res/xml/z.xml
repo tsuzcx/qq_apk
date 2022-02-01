@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/u0" />
+    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/xf" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_view_message" android:layout="@layout/aop" android:title="@string/bbb" />
-    <CheckBoxPreference android:key="contact_info_recommend_qqfriends_to_me" android:title="@string/b9c" />
-    <CheckBoxPreference android:key="contact_info_recommend_mobilefriends_to_me" android:title="@string/b9b" />
-    <CheckBoxPreference android:key="contact_info_recommend_fbfriends_to_me" android:title="@string/b9a" />
-    <Preference android:key="contact_info_bind_mobile_entry" android:layout="@layout/aop" android:title="@string/f55" />
-    <Preference android:key="contact_info_bind_mobile_entry_tip" android:layout="@layout/aqa" android:title="@string/b3x" />
-    <Preference android:key="contact_info_bind_qq_entry" android:layout="@layout/aop" android:title="@string/ac_" />
-    <Preference android:key="contact_info_bind_qq_entry_tip" android:layout="@layout/aqa" android:title="@string/b3y" />
-    <Preference android:key="contact_info_bind_fb_entry" android:layout="@layout/aop" android:title="@string/cyp" />
-    <Preference android:key="contact_info_bind_fb_entry_tip" android:layout="@layout/aqa" android:title="@string/b3w" />
-    <Preference android:key="contact_info_fmessage_clear_data" android:layout="@layout/aop" android:title="@string/b55" />
+    <Preference android:key="contact_info_plugin_view" android:layout="@layout/b8j" android:title="@string/bba" />
+    <Preference android:key="contact_info_plugin_outsize" android:layout="@layout/b8j" android:title="@string/bb2" />
+    <Preference android:key="contact_info_plugin_black" android:layout="@layout/b8j" android:title="@string/bb1" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_plugin_install" android:layout="@layout/aw2" android:title="@string/gsq" />
+    <Preference android:key="contact_info_plugin_uninstall" android:layout="@layout/b2o" android:title="@string/gsv" />
     <PreferenceCategory />
 </PreferenceScreen>

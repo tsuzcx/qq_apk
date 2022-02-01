@@ -1,842 +1,974 @@
 package com.tencent.mm.storage;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.os.Looper;
+import com.tencent.f.i;
+import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.al.ag;
-import com.tencent.mm.model.au.a;
-import com.tencent.mm.model.au.b;
-import com.tencent.mm.plugin.webcanvas.h;
-import com.tencent.mm.protocal.protobuf.aiq;
-import com.tencent.mm.protocal.protobuf.csm;
-import com.tencent.mm.protocal.protobuf.dml;
-import com.tencent.mm.protocal.protobuf.dmm;
-import com.tencent.mm.protocal.protobuf.dmn;
-import com.tencent.mm.protocal.protobuf.dmq;
-import com.tencent.mm.protocal.protobuf.oc;
-import com.tencent.mm.protocal.protobuf.ol;
-import com.tencent.mm.protocal.protobuf.om;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.a.a;
-import d.n.n;
-import java.util.Collection;
+import com.tencent.mm.memory.a.c;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.MStorageEvent;
+import com.tencent.mm.vending.c.a;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicLong;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"BIZTIMELINFO_CARDTYPE_AD", "", "BIZTIMELINFO_CARDTYPE_BIZ", "BIZTIMELINFO_CARDTYPE_RECCARD_CANVAS", "BIZTIMELINFO_CARDTYPE_RECOMMEND", "BIZTIMELINFO_CARDTYPE_UNFOLLOW", "TAG", "", "fillBizMsgItem", "Ljava/util/LinkedList;", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "item", "Lcom/tencent/mm/protocal/protobuf/BizMsgItem;", "filterDuplicateMsg", "", "addMsg", "Lcom/tencent/mm/protocal/protobuf/AddMsg;", "getExtraFromXML", "", "wrapper", "Lcom/tencent/mm/protocal/protobuf/TLRecCardWrapper;", "values", "", "getFromCanvasXml", "getRecCardAppMsgs", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardAppMsg;", "insertCanvasCardImmediately", "isCanvasCard", "isContact", "userName", "isTLRecCardWrapperLegal", "onBizRecommendExpt", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "postInsertCanvasCard", "testInsertCard", "style", "duplicateCardId", "getCardType", "parseExtraFromXML", "parseFromXML", "Lcom/tencent/mm/protocal/protobuf/BizRecArtCardBizInfo;", "setCardId", "plugin-biz_release"})
 public final class aa
+  extends MAutoStorage<z>
 {
-  private static boolean An(String paramString)
+  public static final String[] INDEX_CREATE;
+  public static final String[] NQs;
+  private static final com.tencent.mm.b.f<Long, Boolean> NQu;
+  public static final String[] SQL_CREATE;
+  private AtomicLong NQA;
+  private final MStorageEvent<c, a> NQt;
+  public boolean NQv;
+  private AtomicLong NQw;
+  private long NQx;
+  private long NQy;
+  private final long NQz;
+  public final com.tencent.mm.storagebase.h iFy;
+  
+  static
   {
-    AppMethodBeat.i(188844);
-    d.g.b.p.h(paramString, "userName");
-    Object localObject = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    d.g.b.p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-    localObject = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azF().BH(paramString);
-    if ((localObject != null) && (((an)localObject).ads()))
+    AppMethodBeat.i(124655);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(z.info, "BizTimeLineInfo") };
+    INDEX_CREATE = new String[] { "CREATE  INDEX IF NOT EXISTS msg_id_index ON BizTimeLineInfo ( msgId ) ", "CREATE  INDEX IF NOT EXISTS  has_show_talker_index ON BizTimeLineInfo ( hasShow,talker ) ", "CREATE  INDEX IF NOT EXISTS  has_show_place_top_index ON BizTimeLineInfo ( hasShow,placeTop ) ", "CREATE  INDEX IF NOT EXISTS  order_flag_place_top_index ON BizTimeLineInfo ( orderFlag,placeTop ) ", "CREATE  INDEX IF NOT EXISTS  talker_id_order_flag_index ON BizTimeLineInfo ( talkerId,orderFlag ) " };
+    NQs = new String[] { "CREATE  INDEX IF NOT EXISTS  biz_status_talker_index ON BizTimeLineInfo ( status,talker ) ", "CREATE  INDEX IF NOT EXISTS  biz_msg_svr_id_index ON BizTimeLineInfo ( msgSvrId ) ", "CREATE  INDEX IF NOT EXISTS  biz_talker_index ON BizTimeLineInfo ( talker ) ", "CREATE  INDEX IF NOT EXISTS  order_flag_status_index ON BizTimeLineInfo ( orderFlag,status ) ", "CREATE  INDEX IF NOT EXISTS  order_flag_has_show_index ON BizTimeLineInfo ( orderFlag,hasShow ) ", "CREATE  INDEX IF NOT EXISTS  biz_client_msg_id_index ON BizTimeLineInfo ( bizClientMsgId ) ", "CREATE  INDEX IF NOT EXISTS  is_read_order_flag_index ON BizTimeLineInfo ( isRead,orderFlag ) ", "CREATE  INDEX IF NOT EXISTS  is_read_msg_id_index ON BizTimeLineInfo ( isRead,msgId ) ", "CREATE  INDEX IF NOT EXISTS  biz_type_order_flag_isread_index ON BizTimeLineInfo ( type,orderFlag,isRead ) ", "CREATE  INDEX IF NOT EXISTS  biz_type_is_read_index ON BizTimeLineInfo ( type,isRead ) ", "CREATE  INDEX IF NOT EXISTS  biz_create_time_index ON BizTimeLineInfo ( createTime ) ", "CREATE  INDEX IF NOT EXISTS  recommend_card_id_index ON BizTimeLineInfo ( recommendCardId ) " };
+    NQu = new c(30);
+    AppMethodBeat.o(124655);
+  }
+  
+  public aa(com.tencent.mm.storagebase.h paramh)
+  {
+    super(paramh, z.info, "BizTimeLineInfo", INDEX_CREATE);
+    AppMethodBeat.i(124624);
+    this.NQt = new MStorageEvent() {};
+    this.NQv = true;
+    this.NQw = new AtomicLong(10L);
+    this.NQx = 10L;
+    this.NQz = -5000000L;
+    this.NQA = new AtomicLong(-5000000L);
+    this.iFy = paramh;
+    gAU();
+    AppMethodBeat.o(124624);
+  }
+  
+  private void MY(long paramLong)
+  {
+    try
     {
-      AppMethodBeat.o(188844);
+      AppMethodBeat.i(124646);
+      this.NQx = Math.max(paramLong, this.NQx);
+      AppMethodBeat.o(124646);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private void gAU()
+  {
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(124649);
+        this.NQx = (gAV() >> 32);
+        if (this.NQx < 10L) {
+          this.NQx = 10L;
+        }
+        z localz = gAM();
+        if (localz == null)
+        {
+          Log.w("MicroMsg.BizTimeLineInfoStorage", "initGroupId is null, id %d", new Object[] { Long.valueOf(this.NQx) });
+          AppMethodBeat.o(124649);
+          return;
+        }
+        if (localz.field_status == 4)
+        {
+          this.NQw.set(this.NQx + 1L);
+          this.NQy = this.NQw.longValue();
+          Log.i("MicroMsg.BizTimeLineInfoStorage", "initGroupId id %d/%d, status %d", new Object[] { Long.valueOf(this.NQw.longValue()), Long.valueOf(this.NQx), Integer.valueOf(localz.field_status) });
+          AppMethodBeat.o(124649);
+        }
+        else
+        {
+          this.NQw.set(this.NQx);
+        }
+      }
+      finally {}
+    }
+  }
+  
+  private long gAV()
+  {
+    try
+    {
+      AppMethodBeat.i(124651);
+      Cursor localCursor = this.iFy.rawQuery("select max(orderFlag) from BizTimeLineInfo", null, 2);
+      long l = 0L;
+      if (localCursor.moveToFirst())
+      {
+        l = localCursor.getLong(0);
+        localCursor.close();
+      }
+      AppMethodBeat.o(124651);
+      return l;
+    }
+    finally {}
+  }
+  
+  public static List<z> o(Cursor paramCursor)
+  {
+    AppMethodBeat.i(124635);
+    LinkedList localLinkedList = new LinkedList();
+    while (paramCursor.moveToNext())
+    {
+      z localz = new z();
+      localz.convertFrom(paramCursor);
+      localLinkedList.add(localz);
+    }
+    paramCursor.close();
+    AppMethodBeat.o(124635);
+    return localLinkedList;
+  }
+  
+  public final boolean B(z paramz)
+  {
+    AppMethodBeat.i(124625);
+    boolean bool = b(paramz, true);
+    AppMethodBeat.o(124625);
+    return bool;
+  }
+  
+  public final boolean C(z paramz)
+  {
+    AppMethodBeat.i(124626);
+    boolean bool = super.updateNotify(paramz, false, new String[] { "msgSvrId" });
+    a locala = new a();
+    locala.talker = paramz.field_talker;
+    locala.psm = paramz;
+    locala.NQE = b.NQI;
+    a(locala);
+    AppMethodBeat.o(124626);
+    return bool;
+  }
+  
+  public final boolean D(z paramz)
+  {
+    AppMethodBeat.i(212340);
+    Object localObject = new ContentValues();
+    ((ContentValues)localObject).put("content", paramz.field_content);
+    ((ContentValues)localObject).put("createTime", Long.valueOf(paramz.field_createTime));
+    int i = this.iFy.update("BizTimeLineInfo", (ContentValues)localObject, " msgId = ?", new String[] { paramz.field_msgId });
+    if (i > 0)
+    {
+      localObject = new a();
+      ((a)localObject).talker = paramz.field_talker;
+      ((a)localObject).list = new LinkedList();
+      ((a)localObject).list.add(paramz);
+      ((a)localObject).NQE = b.NQI;
+      a((a)localObject);
+    }
+    if (i > 0)
+    {
+      AppMethodBeat.o(212340);
       return true;
     }
-    if ((localObject == null) || (((an)localObject).adE() <= 0)) {
-      au.a.aBQ().a(paramString, "", null);
-    }
-    AppMethodBeat.o(188844);
+    AppMethodBeat.o(212340);
     return false;
   }
   
-  public static final LinkedList<String> a(w paramw, oc paramoc)
+  public final z ML(long paramLong)
   {
-    AppMethodBeat.i(188842);
-    d.g.b.p.h(paramw, "info");
-    d.g.b.p.h(paramoc, "item");
-    LinkedList localLinkedList = new LinkedList();
-    if ((!paramw.ftb()) || (paramw.ftk() == null))
+    AppMethodBeat.i(124629);
+    z localz = R(paramLong, "orderFlag");
+    AppMethodBeat.o(124629);
+    return localz;
+  }
+  
+  public final z MM(long paramLong)
+  {
+    AppMethodBeat.i(258699);
+    z localz = R(paramLong, "msgId");
+    AppMethodBeat.o(258699);
+    return localz;
+  }
+  
+  public final List<z> MN(long paramLong)
+  {
+    AppMethodBeat.i(212344);
+    List localList = o(this.iFy.query("BizTimeLineInfo", null, "orderFlag>?", new String[] { String.valueOf(paramLong) }, null, null, "orderFlag DESC limit 5"));
+    AppMethodBeat.o(212344);
+    return localList;
+  }
+  
+  public final List<z> MO(long paramLong)
+  {
+    AppMethodBeat.i(124634);
+    List localList = o(this.iFy.query("BizTimeLineInfo", null, "orderFlag>=?", new String[] { String.valueOf(paramLong) }, null, null, "orderFlag DESC"));
+    AppMethodBeat.o(124634);
+    return localList;
+  }
+  
+  public final z MP(long paramLong)
+  {
+    z localz = null;
+    AppMethodBeat.i(124637);
+    Object localObject = "SELECT * FROM BizTimeLineInfo where talkerId = " + paramLong + "  order by orderFlag DESC limit 1";
+    localObject = this.iFy.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst())
     {
-      AppMethodBeat.o(188842);
-      return localLinkedList;
+      localz = new z();
+      localz.convertFrom((Cursor)localObject);
     }
-    paramw = ((Iterable)s(paramw)).iterator();
-    label140:
-    while (paramw.hasNext())
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(124637);
+    return localz;
+  }
+  
+  public final void MQ(long paramLong)
+  {
+    AppMethodBeat.i(124638);
+    if (MR(paramLong) > 2000)
     {
-      ol localol = (ol)paramw.next();
-      paramoc.ddt.add(localol.FYs);
-      CharSequence localCharSequence = (CharSequence)localol.Gcr;
-      if ((localCharSequence == null) || (n.aD(localCharSequence))) {}
-      for (int i = 1;; i = 0)
+      localObject = ML(paramLong);
+      if (localObject != null)
       {
-        if (i != 0) {
-          break label140;
-        }
-        paramoc.GbH.add(localol.Gcr);
-        break;
+        ((z)localObject).field_status = 4;
+        C((z)localObject);
       }
-    }
-    AppMethodBeat.o(188842);
-    return localLinkedList;
-  }
-  
-  public static final void a(dmq paramdmq, Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(188839);
-    d.g.b.p.h(paramdmq, "wrapper");
-    d.g.b.p.h(paramMap, "values");
-    b(paramdmq, paramMap);
-    AppMethodBeat.o(188839);
-  }
-  
-  public static final void a(w paramw, dmq paramdmq)
-  {
-    aiq localaiq = null;
-    csm localcsm = null;
-    AppMethodBeat.i(188849);
-    d.g.b.p.h(paramw, "$this$setCardId");
-    d.g.b.p.h(paramdmq, "wrapper");
-    paramw.field_recommendCardId = "";
-    switch (paramdmq.style)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(188849);
+      AppMethodBeat.o(124638);
       return;
-      localaiq = paramdmq.HTS;
-      paramdmq = localcsm;
-      if (localaiq != null) {
-        paramdmq = localaiq.Gaq;
-      }
-      paramw.field_recommendCardId = paramdmq;
-      AppMethodBeat.o(188849);
-      return;
-      localcsm = paramdmq.HTU;
-      paramdmq = localaiq;
-      if (localcsm != null) {
-        paramdmq = localcsm.cardId;
-      }
-      paramw.field_recommendCardId = paramdmq;
     }
+    long l1 = System.currentTimeMillis();
+    long l2 = 0x0 & paramLong;
+    Object localObject = "update BizTimeLineInfo set status = 4 where orderFlag >= " + l2 + " and status > 4";
+    this.iFy.execSQL("BizTimeLineInfo", (String)localObject);
+    localObject = "update BizTimeLineInfo set status = 4 where orderFlag >= " + l2 + " and status < 4";
+    this.iFy.execSQL("BizTimeLineInfo", (String)localObject);
+    Log.d("MicroMsg.BizTimeLineInfoStorage", "resetUnread cost %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    NQu.x(Long.valueOf(paramLong), Boolean.TRUE);
+    AppMethodBeat.o(124638);
   }
   
-  public static final void a(LinkedList<om> paramLinkedList, Map<String, String> paramMap)
+  public final int MR(long paramLong)
   {
-    AppMethodBeat.i(188841);
-    d.g.b.p.h(paramLinkedList, "$this$parseFromXML");
-    d.g.b.p.h(paramMap, "values");
-    int i = 0;
-    while (i <= 9)
+    AppMethodBeat.i(124639);
+    Object localObject = (Boolean)NQu.get(Long.valueOf(paramLong));
+    if ((localObject != null) && (((Boolean)localObject).booleanValue()))
     {
-      Object localObject2 = new StringBuilder(".sysmsg.BizAccountRecommend.BizAccount");
-      om localom;
-      label323:
-      Object localObject3;
-      if (i == 0)
-      {
-        localObject1 = "";
-        localObject2 = localObject1;
-        if (bu.isNullOrNil((String)paramMap.get((String)localObject2 + ".UserName"))) {
-          break;
-        }
-        localom = new om();
-        localom.nIJ = ((String)paramMap.get((String)localObject2 + ".UserName"));
-        localom.nJO = ((String)paramMap.get((String)localObject2 + ".NickName"));
-        localom.usP = ((String)paramMap.get((String)localObject2 + ".RecommendReason"));
-        localom.jfY = ((String)paramMap.get((String)localObject2 + ".Signature"));
-        localom.Gcs = ((String)paramMap.get((String)localObject2 + ".BrandIconUrl"));
-        localom.Gct = ((String)paramMap.get((String)localObject2 + ".AppMsgRecReason"));
-        localom.Gcm = new LinkedList();
+      AppMethodBeat.o(124639);
+      return 0;
+    }
+    long l1 = System.currentTimeMillis();
+    long l2 = 0x0 & paramLong;
+    localObject = "SELECT count(*) FROM BizTimeLineInfo where orderFlag >= " + l2 + " and status > 4";
+    localObject = this.iFy.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst()) {}
+    for (int j = ((Cursor)localObject).getInt(0);; j = 0)
+    {
+      ((Cursor)localObject).close();
+      localObject = "SELECT count(*) FROM BizTimeLineInfo where orderFlag >= " + l2 + " and status < 4";
+      localObject = this.iFy.rawQuery((String)localObject, null);
+      int i = j;
+      if (((Cursor)localObject).moveToFirst()) {
+        i = j + ((Cursor)localObject).getInt(0);
+      }
+      ((Cursor)localObject).close();
+      j = i;
+      if (i > 2000) {
         j = 0;
-        if (j > 20) {
-          break label422;
-        }
-        localObject3 = new StringBuilder().append((String)localObject2).append(".NegativeFeedbackReason");
-        if (j != 0) {
-          break label413;
-        }
       }
-      label413:
-      for (Object localObject1 = "";; localObject1 = Integer.valueOf(j))
-      {
-        localObject1 = (String)paramMap.get(localObject1);
-        if (bu.isNullOrNil((String)localObject1)) {
-          break label422;
-        }
-        localom.Gcm.add(localObject1);
-        j += 1;
-        break label323;
-        localObject1 = Integer.valueOf(i);
-        break;
+      if (j == 0) {
+        NQu.x(Long.valueOf(paramLong), Boolean.TRUE);
       }
-      label422:
-      localom.Gcn = bu.getInt((String)paramMap.get((String)localObject2 + ".ShowNegativeFeedbackReason"), 1);
-      localom.Gcu = new LinkedList();
-      paramLinkedList.add(localom);
-      int j = 0;
-      while (j <= 1)
-      {
-        localObject3 = new StringBuilder().append((String)localObject2).append(".AppMsg");
-        ol localol;
-        int k;
-        label1101:
-        StringBuilder localStringBuilder;
-        if (j == 0)
-        {
-          localObject1 = "";
-          localObject3 = localObject1;
-          if (bu.isNullOrNil((String)paramMap.get((String)localObject3 + ".Title"))) {
-            break;
-          }
-          localol = new ol();
-          localol.Title = ((String)paramMap.get((String)localObject3 + ".Title"));
-          localol.FYq = ((String)paramMap.get((String)localObject3 + ".Digest"));
-          localol.FYs = ((String)paramMap.get((String)localObject3 + ".ContentUrl"));
-          localol.FYu = ((String)paramMap.get((String)localObject3 + ".CoverImgUrl"));
-          localol.FYv = ((String)paramMap.get((String)localObject3 + ".CoverImgUrl_1_1"));
-          localol.FYw = ((String)paramMap.get((String)localObject3 + ".CoverImgUrl_235_1"));
-          localol.hFR = bu.getInt((String)paramMap.get((String)localObject3 + ".ItemShowType"), -1);
-          localol.FYD = ((String)paramMap.get((String)localObject3 + ".VideoId"));
-          localol.FYE = bu.getInt((String)paramMap.get((String)localObject3 + ".VideoWidth"), -1);
-          localol.FYF = bu.getInt((String)paramMap.get((String)localObject3 + ".VideoHeight"), -1);
-          localol.FYG = bu.getInt((String)paramMap.get((String)localObject3 + ".VideoDuration"), -1);
-          localol.CreateTime = bu.getInt((String)paramMap.get((String)localObject3 + ".CreateTime"), -1);
-          localol.Gco = ((String)paramMap.get((String)localObject3 + ".VoicePlayUrl"));
-          localol.Gcp = bu.getInt((String)paramMap.get((String)localObject3 + ".VoiceDuration"), -1);
-          localol.Gcm = new LinkedList();
-          k = 0;
-          if (k > 20) {
-            break label1205;
-          }
-          localStringBuilder = new StringBuilder().append((String)localObject3).append(".NegativeFeedbackReason");
-          if (k != 0) {
-            break label1195;
-          }
-        }
-        label1195:
-        for (localObject1 = "";; localObject1 = Integer.valueOf(k))
-        {
-          localObject1 = (String)paramMap.get(localObject1);
-          if (bu.isNullOrNil((String)localObject1)) {
-            break label1205;
-          }
-          localol.Gcm.add(localObject1);
-          k += 1;
-          break label1101;
-          localObject1 = Integer.valueOf(j);
-          break;
-        }
-        label1205:
-        localol.Gcn = bu.getInt((String)paramMap.get((String)localObject3 + ".ShowNegativeFeedbackReason"), 1);
-        localol.Gcq = bu.getInt((String)paramMap.get((String)localObject3 + ".RecRk"), 0);
-        localol.Gcr = ((String)paramMap.get((String)localObject3 + ".RecInfo"));
-        localom.Gcu.add(localol);
-        j += 1;
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(188841);
-  }
-  
-  private static void b(dmq paramdmq, Map<String, String> paramMap)
-  {
-    AppMethodBeat.i(188840);
-    d.g.b.p.h(paramdmq, "$this$parseExtraFromXML");
-    d.g.b.p.h(paramMap, "values");
-    Object localObject = (a)new aa.a(paramdmq, paramMap);
-    switch (paramdmq.style)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(188840);
-      return;
-      ((a)localObject).invoke();
-      AppMethodBeat.o(188840);
-      return;
-      ((a)localObject).invoke();
-      aiq localaiq = paramdmq.HTS;
-      int i = 0;
-      if (i <= 20)
-      {
-        localObject = new StringBuilder(".sysmsg.BizAccountRecommend.NegativeFeedbackReason");
-        if (i == 0) {}
-        for (paramdmq = "";; paramdmq = Integer.valueOf(i))
-        {
-          paramdmq = (String)paramMap.get(paramdmq);
-          if (bu.isNullOrNil(paramdmq)) {
-            break label174;
-          }
-          localaiq.Gcm.add(paramdmq);
-          i += 1;
-          break;
-        }
-      }
-      label174:
-      localaiq.Gcn = bu.getInt((String)paramMap.get(".sysmsg.BizAccountRecommend.ShowNegativeFeedbackReason"), 0);
-      localObject = (String)paramMap.get(".sysmsg.BizAccountRecommend.AggregationUrl");
-      paramdmq = (dmq)localObject;
-      if (localObject == null) {
-        paramdmq = "";
-      }
-      localaiq.Gyv = paramdmq;
-      paramMap = (String)paramMap.get(".sysmsg.BizAccountRecommend.AggregationTitle");
-      paramdmq = paramMap;
-      if (paramMap == null) {
-        paramdmq = "";
-      }
-      localaiq.Gyw = paramdmq;
+      Log.d("MicroMsg.BizTimeLineInfoStorage", "getUnread cost %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+      AppMethodBeat.o(124639);
+      return j;
     }
   }
   
-  public static final boolean b(dmq paramdmq, w paramw)
+  public final int MS(long paramLong)
   {
-    AppMethodBeat.i(188845);
-    d.g.b.p.h(paramdmq, "wrapper");
-    int j = paramdmq.style;
-    if (j == 1001)
+    int i = 0;
+    AppMethodBeat.i(212352);
+    Object localObject = "SELECT count(*) FROM BizTimeLineInfo where orderFlag >= ".concat(String.valueOf(paramLong << 32));
+    localObject = this.iFy.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst()) {
+      i = ((Cursor)localObject).getInt(0);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(212352);
+    return i;
+  }
+  
+  public final int MT(long paramLong)
+  {
+    int i = 0;
+    AppMethodBeat.i(212353);
+    Object localObject = "SELECT count(*) FROM BizTimeLineInfo where type = 620757041 and orderFlag < " + (paramLong << 32) + " and orderFlag >= " + (paramLong - 1L << 32);
+    localObject = this.iFy.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst()) {
+      i = ((Cursor)localObject).getInt(0);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(212353);
+    return i;
+  }
+  
+  public final z MU(long paramLong)
+  {
+    AppMethodBeat.i(212354);
+    Object localObject = "SELECT * FROM BizTimeLineInfo where orderFlag < " + (paramLong << 32) + " ORDER BY orderFlag desc LIMIT 1 ";
+    localObject = this.iFy.rawQuery((String)localObject, null);
+    z localz = new z();
+    if (((Cursor)localObject).moveToFirst())
     {
-      if (paramdmq.HTU == null)
+      localz.convertFrom((Cursor)localObject);
+      ((Cursor)localObject).close();
+      AppMethodBeat.o(212354);
+      return localz;
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(212354);
+    return null;
+  }
+  
+  public final void MV(final long paramLong)
+  {
+    AppMethodBeat.i(124641);
+    com.tencent.mm.co.g.hio().h(new a() {}).b(new a() {});
+    AppMethodBeat.o(124641);
+  }
+  
+  public final int MW(long paramLong)
+  {
+    AppMethodBeat.i(124643);
+    long l = System.currentTimeMillis();
+    Object localObject = "SELECT count(*) FROM BizTimeLineInfo where orderFlag >= " + (0x0 & paramLong) + " and hasShow < 1 ";
+    localObject = this.iFy.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst()) {}
+    for (int i = ((Cursor)localObject).getInt(0);; i = 0)
+    {
+      Log.d("MicroMsg.BizTimeLineInfoStorage", "getUnShowCount count = %d,cost = %d", new Object[] { Integer.valueOf(i), Long.valueOf(System.currentTimeMillis() - l) });
+      ((Cursor)localObject).close();
+      if (i > 2000)
       {
-        ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] isTLRecCardWrapperLegal exptInfo = null");
-        AppMethodBeat.o(188845);
-        return false;
-      }
-      if (bu.isNullOrNil(paramdmq.HTU.data))
-      {
-        ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] isTLRecCardWrapperLegal exptInfo.data = null");
-        AppMethodBeat.o(188845);
-        return false;
-      }
-      if ((bu.isNullOrNil(paramdmq.HTU.appId)) || (bu.isNullOrNil(paramdmq.HTU.HDK)))
-      {
-        ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] isTLRecCardWrapperLegal appid or path error, appId = " + paramdmq.HTU.appId + ", path = " + paramdmq.HTU.HDK);
-        AppMethodBeat.o(188845);
-        return false;
-      }
-      AppMethodBeat.o(188845);
-      return true;
-    }
-    Object localObject = paramdmq.HTQ;
-    if (localObject == null)
-    {
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] isTLRecCardWrapperLegal recCard null");
-      AppMethodBeat.o(188845);
-      return false;
-    }
-    if (((dml)localObject).Gys == null)
-    {
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] isTLRecCardWrapperLegal CardTitle null");
-      AppMethodBeat.o(188845);
-      return false;
-    }
-    if (((dml)localObject).Gct == null)
-    {
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] isTLRecCardWrapperLegal AppMsgRecReason null");
-      AppMethodBeat.o(188845);
-      return false;
-    }
-    dmn localdmn = ((dml)localObject).HTL;
-    if (localdmn == null)
-    {
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] checkBizInfo null");
-      AppMethodBeat.o(188845);
-      return false;
-    }
-    if (localdmn.nIJ == null)
-    {
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] checkBizInfo UserName null");
-      AppMethodBeat.o(188845);
-      return false;
-    }
-    if (localdmn.nJO == null)
-    {
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] checkBizInfo NickName null");
-      AppMethodBeat.o(188845);
-      return false;
-    }
-    if (localdmn.HTN == null)
-    {
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] checkBizInfo RecReason null");
-      AppMethodBeat.o(188845);
-      return false;
-    }
-    if (bu.ht((List)((dml)localObject).Gcu))
-    {
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] AppMsg null");
-      AppMethodBeat.o(188845);
-      return false;
-    }
-    if ((j == 5) && (((dml)localObject).Gcu.size() < 2))
-    {
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] AppMsg video size < 2");
-      AppMethodBeat.o(188845);
-      return false;
-    }
-    int k;
-    if ((j == 101) || (j == 102) || (j == 103))
-    {
-      if ((paramdmq.HTS == null) || (bu.ht((List)paramdmq.HTS.Gal)) || (paramdmq.HTS.Gal.size() >= 3))
-      {
-        ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] style = " + j + " BizInfo size >= 3");
-        AppMethodBeat.o(188845);
-        return false;
-      }
-      if (paramdmq.HTS.FNv == 1)
-      {
-        ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] style = " + j + " extraInfo flag = 1");
-        if (paramw != null) {
-          ag.aGv().DU(paramw.field_msgId);
+        if (this.NQy == this.NQw.longValue()) {
+          gAT();
         }
-        AppMethodBeat.o(188845);
-        return false;
+        AppMethodBeat.o(124643);
+        return 0;
       }
-      localObject = paramdmq.HTS.Gal;
-      d.g.b.p.g(localObject, "wrapper.extraInfo.BizInfo");
-      k = ((Collection)localObject).size();
-      i = 0;
-      if (i >= k) {
-        break label1167;
-      }
-      if (((om)paramdmq.HTS.Gal.get(i)).FNv == 1) {}
+      AppMethodBeat.o(124643);
+      return i;
     }
-    label1154:
-    label1162:
-    label1167:
-    for (int i = 1;; i = 0)
+  }
+  
+  public final void MX(long paramLong)
+  {
+    AppMethodBeat.i(124645);
+    Object localObject = new z();
+    ((z)localObject).field_msgId = paramLong;
+    super.delete((IAutoDBItem)localObject, false, new String[] { "msgId" });
+    localObject = new a();
+    ((a)localObject).NQE = b.NQH;
+    a((a)localObject);
+    AppMethodBeat.o(124645);
+  }
+  
+  public final z MZ(long paramLong)
+  {
+    z localz = null;
+    AppMethodBeat.i(124653);
+    Object localObject = "SELECT * FROM BizTimeLineInfo where type=620757041 and orderFlag > ".concat(String.valueOf(paramLong));
+    localObject = this.iFy.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst())
     {
-      if (i == 0)
+      localz = new z();
+      localz.convertFrom((Cursor)localObject);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(124653);
+    return localz;
+  }
+  
+  public final z R(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(124631);
+    z localz = new z();
+    paramString = this.iFy.query("BizTimeLineInfo", null, paramString + "=?", new String[] { String.valueOf(paramLong) }, null, null, null, 2);
+    if (paramString.moveToFirst())
+    {
+      localz.convertFrom(paramString);
+      paramString.close();
+      AppMethodBeat.o(124631);
+      return localz;
+    }
+    paramString.close();
+    AppMethodBeat.o(124631);
+    return null;
+  }
+  
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(124621);
+    if (this.NQt.event(parama)) {
+      this.NQt.doNotify();
+    }
+    AppMethodBeat.o(124621);
+  }
+  
+  public final void a(c paramc)
+  {
+    AppMethodBeat.i(124623);
+    this.NQt.remove(paramc);
+    AppMethodBeat.o(124623);
+  }
+  
+  public final void a(c paramc, Looper paramLooper)
+  {
+    AppMethodBeat.i(124622);
+    this.NQt.add(paramc, paramLooper);
+    AppMethodBeat.o(124622);
+  }
+  
+  public final boolean aEn(String paramString)
+  {
+    AppMethodBeat.i(124644);
+    z localz = new z();
+    localz.field_talker = paramString;
+    boolean bool = super.delete(localz, false, new String[] { "talker" });
+    paramString = new a();
+    paramString.talker = localz.field_talker;
+    paramString.psm = localz;
+    paramString.NQE = b.NQH;
+    a(paramString);
+    AppMethodBeat.o(124644);
+    return bool;
+  }
+  
+  public final List<z> aU(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(124632);
+    Object localObject = this.iFy;
+    String str = "orderFlag DESC limit ".concat(String.valueOf(paramInt));
+    localObject = o(((com.tencent.mm.storagebase.h)localObject).query("BizTimeLineInfo", null, "orderFlag<?", new String[] { String.valueOf(paramLong) }, null, null, str));
+    AppMethodBeat.o(124632);
+    return localObject;
+  }
+  
+  public final List<z> aV(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(212348);
+    long l1 = gAS();
+    long l2 = System.currentTimeMillis();
+    String str = "SELECT * FROM BizTimeLineInfo where  isRead = 0 and orderFlag >= " + (l1 << 32) + " and createTime >= " + paramLong + " and bitFlag&1073741824 = 0 order by orderFlag ASC limit " + paramInt;
+    Log.d("MicroMsg.BizTimeLineInfoStorage", "getUnReadListNew sql = %s", new Object[] { str });
+    List localList = o(this.iFy.rawQuery(str, null));
+    int j = localList.size();
+    if (j < paramInt)
+    {
+      str = "";
+      if (j > 0)
       {
-        ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] style = " + j + " bizLegal illegal");
-        if (paramw != null) {
-          ag.aGv().DU(paramw.field_msgId);
-        }
-        AppMethodBeat.o(188845);
-        return false;
-        i += 1;
-        break;
-      }
-      if (j != 103)
-      {
-        localObject = paramdmq.HTS.Gal;
-        d.g.b.p.g(localObject, "wrapper.extraInfo.BizInfo");
-        k = ((Collection)localObject).size();
-        i = 0;
-        if (i >= k) {
-          break label1162;
-        }
-        localObject = ((om)paramdmq.HTS.Gal.get(i)).nIJ;
-        d.g.b.p.g(localObject, "wrapper.extraInfo.BizInfo[i].UserName");
-        if (An((String)localObject)) {}
-      }
-      for (i = 0;; i = 1)
-      {
-        if (i != 0)
+        str = "and msgId not in (";
+        int i = 0;
+        if (i < j)
         {
-          ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] style = " + j + " bizLegal contact");
-          if (paramw != null) {
-            ag.aGv().DU(paramw.field_msgId);
-          }
-          AppMethodBeat.o(188845);
-          return false;
-          i += 1;
-          break;
-        }
-        paramw = paramdmq.HTS.Gal;
-        d.g.b.p.g(paramw, "wrapper.extraInfo.BizInfo");
-        k = ((Collection)paramw).size();
-        i = 0;
-        if (i < k)
-        {
-          if (bu.ht((List)((om)paramdmq.HTS.Gal.get(i)).Gcu))
+          StringBuilder localStringBuilder = new StringBuilder().append(str);
+          if (i > 0) {}
+          for (str = ",";; str = "")
           {
-            ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] style = " + j + " AppMsg null");
-            AppMethodBeat.o(188845);
-            return false;
-          }
-          if (((ol)((om)paramdmq.HTS.Gal.get(i)).Gcu.get(0)).FNv != 1) {}
-        }
-        for (i = 0;; i = 1)
-        {
-          if (i == 0)
-          {
-            ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] style = " + j + " AppMsg illegal");
-            AppMethodBeat.o(188845);
-            return false;
+            str = str + ((z)localList.get(i)).field_msgId;
             i += 1;
             break;
           }
-          paramdmq = ((om)paramdmq.HTS.Gal.get(0)).Gcu;
-          d.g.b.p.g(paramdmq, "wrapper.extraInfo.BizInfo[0].AppMsg");
-          paramdmq = ((Iterable)paramdmq).iterator();
-          i = 1;
-          if (paramdmq.hasNext())
-          {
-            paramw = (ol)paramdmq.next();
-            if ((paramw.hFR != 8) && (paramw.hFR != 7) && (paramw.hFR != 6) && (paramw.hFR != 10)) {
-              break label1154;
-            }
-            i = 0;
-          }
-          for (;;)
-          {
-            break;
-            if (i == 0)
-            {
-              ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] style = " + j + " showTypeLegal illegal");
-              AppMethodBeat.o(188845);
-              return false;
-            }
-            AppMethodBeat.o(188845);
-            return true;
-          }
         }
+        str = str + ")";
       }
+      str = "SELECT * FROM BizTimeLineInfo where  isRead = 0 " + str + " order by orderFlag DESC limit " + (paramInt - j);
+      Log.d("MicroMsg.BizTimeLineInfoStorage", "getUnReadListNew sql2 = %s", new Object[] { str });
+      localList.addAll(o(this.iFy.rawQuery(str, null)));
     }
+    Log.d("MicroMsg.BizTimeLineInfoStorage", "getUnReadListNew cost %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l2) });
+    AppMethodBeat.o(212348);
+    return localList;
   }
   
-  public static final dmq bQ(Map<String, String> paramMap)
+  public final List<z> ajT(int paramInt)
   {
-    AppMethodBeat.i(188847);
-    d.g.b.p.h(paramMap, "values");
-    String str1 = (String)paramMap.get(".sysmsg.BizRecommendExpt.Title");
-    int i = bu.getInt((String)paramMap.get(".sysmsg.BizRecommendExpt.Pos"), -1);
-    int j = bu.getInt((String)paramMap.get(".sysmsg.BizRecommendExpt.Weight"), -1);
-    long l = bu.getLong((String)paramMap.get(".sysmsg.BizRecommendExpt.RecID"), 0L);
-    int k = bu.getInt((String)paramMap.get(".sysmsg.BizRecommendExpt.RedDotFlag"), -1);
-    String str2 = (String)paramMap.get(".sysmsg.BizRecommendExpt.BusinessId");
-    String str3 = (String)paramMap.get(".sysmsg.BizRecommendExpt.CardID");
-    String str4 = (String)paramMap.get(".sysmsg.BizRecommendExpt.Data");
-    String str5 = (String)paramMap.get(".sysmsg.BizRecommendExpt.RecSummary");
-    String str6 = (String)paramMap.get(".sysmsg.BizRecommendExpt.AppId");
-    String str7 = (String)paramMap.get(".sysmsg.BizRecommendExpt.TemplatePathType");
-    int m = bu.getInt((String)paramMap.get(".sysmsg.BizRecommendExpt.UseServerTime"), 0);
-    paramMap = (String)paramMap.get(".sysmsg.BizRecommendExpt.ExtraData");
-    if ((i < 0) && (j < 0))
-    {
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] getFromCanvasXml pos = " + i + ", weight = " + j);
-      AppMethodBeat.o(188847);
-      return null;
-    }
-    dmq localdmq = new dmq();
-    localdmq.pos = i;
-    localdmq.weight = j;
-    localdmq.HDI = l;
-    csm localcsm = new csm();
-    localcsm.title = str1;
-    localcsm.pos = i;
-    localcsm.weight = j;
-    localcsm.HDI = l;
-    localcsm.HDJ = k;
-    localcsm.kNn = str2;
-    localcsm.cardId = str3;
-    localcsm.data = str4;
-    localcsm.Gyu = str5;
-    localcsm.appId = str6;
-    localcsm.HDK = str7;
-    localcsm.dAU = paramMap;
-    localdmq.HTU = localcsm;
-    localdmq.style = 1001;
-    localdmq.HTT = m;
-    AppMethodBeat.o(188847);
-    return localdmq;
+    AppMethodBeat.i(124633);
+    List localList = o(this.iFy.query("BizTimeLineInfo", null, null, null, null, null, "orderFlag DESC limit ".concat(String.valueOf(paramInt))));
+    AppMethodBeat.o(124633);
+    return localList;
   }
   
-  public static final void d(dmq paramdmq)
+  public final List<z> ajU(int paramInt)
+  {
+    AppMethodBeat.i(212347);
+    long l = System.currentTimeMillis();
+    Object localObject = this.iFy;
+    String str = "orderFlag DESC limit ".concat(String.valueOf(paramInt));
+    localObject = o(((com.tencent.mm.storagebase.h)localObject).query("BizTimeLineInfo", null, "isRead=?", new String[] { "0" }, null, null, str));
+    Log.d("MicroMsg.BizTimeLineInfoStorage", "getUnReadList cost %d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+    AppMethodBeat.o(212347);
+    return localObject;
+  }
+  
+  public final z ajV(int paramInt)
   {
     Object localObject3 = null;
-    AppMethodBeat.i(188848);
-    d.g.b.p.h(paramdmq, "wrapper");
-    if (!b(paramdmq, null))
+    AppMethodBeat.i(212355);
+    Object localObject1 = "SELECT * FROM BizTimeLineInfo order by orderFlag DESC limit 1 offset ".concat(String.valueOf(paramInt));
+    Object localObject2 = this.iFy.rawQuery((String)localObject1, null);
+    if (((Cursor)localObject2).moveToFirst())
     {
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] insertCanvasCardImmediately illegal");
-      AppMethodBeat.o(188848);
-      return;
-    }
-    if (e(paramdmq))
-    {
-      AppMethodBeat.o(188848);
-      return;
-    }
-    Object localObject1 = ag.aGv();
-    d.g.b.p.g(localObject1, "SubCoreBiz.getBizTimeLineInfoStorage()");
-    localObject1 = ((x)localObject1).ftp();
-    System.currentTimeMillis();
-    long l1;
-    w localw;
-    long l2;
-    label258:
-    int i;
-    int j;
-    int k;
-    if (paramdmq.HTT == 1) {
-      if (Math.abs(paramdmq.HDI * 1000L - System.currentTimeMillis()) <= 86400000L)
-      {
-        l1 = paramdmq.HDI * 1000L;
-        localw = new w();
-        localw.field_msgId = ag.aGv().ftx();
-        localw.field_msgSvrId = 0L;
-        localw.field_type = 620757041;
-        localw.field_talker = "";
-        localw.field_talkerId = 0;
-        localw.field_createTime = l1;
-        localw.ka(1);
-        localw.field_status = 3;
-        a(localw, paramdmq);
-        localw.b(paramdmq);
-        localObject2 = ag.aGv();
-        d.g.b.p.g(localObject2, "SubCoreBiz.getBizTimeLineInfoStorage()");
-        long l3 = ((x)localObject2).fsY();
-        l2 = 0L;
-        l1 = l2;
-        if (localObject1 != null)
-        {
-          if (paramdmq.HTU.weight < 0) {
-            break label607;
-          }
-          l1 = Math.min(paramdmq.HTU.weight, y.DX(((w)localObject1).field_orderFlag));
-        }
-        long l4 = y.aA(l3, localw.field_createTime / 1000L);
-        l2 = l4;
-        if (l4 >= 4294967296L)
-        {
-          ae.w("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] insertCanvasCardImmediately serialNumber is too big %d", new Object[] { Long.valueOf(l4) });
-          l3 = ag.aGv().ftt();
-          l2 = y.aA(l3, localw.field_createTime / 1000L);
-        }
-        localw.field_orderFlag = (l2 | l3 << 32 | 0xFF000000 & l1 << 24);
-        y.r(localw);
-        boolean bool = ag.aGv().p(localw);
-        ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] insertCanvasCardImmediately result = " + bool + ", title = " + paramdmq.HTU.title);
-        if (bool)
-        {
-          localObject1 = p.IIi;
-          if (p.fsJ())
-          {
-            localObject1 = h.DQL;
-            h.eUa();
-          }
-          p.IIi.o(localw);
-          if (y.ftH()) {
-            y.abs(y.IJf);
-          }
-        }
-        localObject1 = com.tencent.mm.plugin.webcanvas.g.DQG;
-        com.tencent.mm.plugin.webcanvas.g.CH(82L);
-        localObject1 = q.IIu;
-        i = paramdmq.pos;
-        j = paramdmq.HTT;
-        k = paramdmq.style;
-        l1 = paramdmq.HDI;
-        localObject1 = paramdmq.HTU;
-        if (localObject1 == null) {
-          break label681;
-        }
-        localObject1 = ((csm)localObject1).cardId;
-        label510:
-        localObject2 = paramdmq.HTS;
-        if (localObject2 == null) {
-          break label687;
-        }
-      }
-    }
-    label681:
-    label687:
-    for (Object localObject2 = ((aiq)localObject2).Gau;; localObject2 = null)
-    {
-      csm localcsm = paramdmq.HTU;
-      paramdmq = localObject3;
-      if (localcsm != null) {
-        paramdmq = localcsm.dAU;
-      }
-      q.a(localw, 1, i, j, 5, k, l1, (String)localObject1, (String)localObject2, paramdmq);
-      AppMethodBeat.o(188848);
-      return;
-      l1 = System.currentTimeMillis();
-      break;
-      if (localObject1 != null)
-      {
-        l1 = ((w)localObject1).field_createTime + 1000L;
-        break;
-      }
-      l1 = System.currentTimeMillis();
-      break;
-      label607:
-      if (paramdmq.HTU.pos == 0)
-      {
-        l1 = y.DX(((w)localObject1).field_orderFlag);
-        break label258;
-      }
-      localObject1 = ag.aGv().abp(paramdmq.HTU.pos - 1);
-      if (localObject1 == null)
-      {
-        ae.w("MicroMsg.BizTimeLineStorageLogicExKt", "insertCanvasCardImmediately lastTimeLineInfo is null");
-        l1 = l2;
-        break label258;
-      }
-      l1 = y.DX(((w)localObject1).field_orderFlag);
-      break label258;
-      localObject1 = null;
-      break label510;
-    }
-  }
-  
-  public static final boolean e(dmq paramdmq)
-  {
-    x localx2 = null;
-    x localx1 = null;
-    AppMethodBeat.i(188850);
-    d.g.b.p.h(paramdmq, "$this$duplicateCardId");
-    switch (paramdmq.style)
-    {
-    }
-    do
-    {
-      do
-      {
-        AppMethodBeat.o(188850);
-        return false;
-        localx2 = ag.aGv();
-        localObject = paramdmq.HTS;
-        paramdmq = localx1;
-        if (localObject != null) {
-          paramdmq = ((aiq)localObject).Gaq;
-        }
-      } while (localx2.aUb(paramdmq) == null);
-      ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] duplicateCardId");
-      AppMethodBeat.o(188850);
-      return true;
-      localx1 = ag.aGv();
-      Object localObject = paramdmq.HTU;
-      paramdmq = localx2;
-      if (localObject != null) {
-        paramdmq = ((csm)localObject).cardId;
-      }
-    } while (localx1.aUb(paramdmq) == null);
-    ae.i("MicroMsg.BizTimeLineStorageLogicExKt", "[TRACE_BIZRECCARD] canvas duplicateCardId");
-    AppMethodBeat.o(188850);
-    return true;
-  }
-  
-  public static final LinkedList<ol> s(w paramw)
-  {
-    AppMethodBeat.i(188843);
-    d.g.b.p.h(paramw, "info");
-    LinkedList localLinkedList = new LinkedList();
-    if ((!paramw.ftb()) || (paramw.ftk() == null))
-    {
-      AppMethodBeat.o(188843);
-      return localLinkedList;
-    }
-    Object localObject = paramw.ftk();
-    if ((((dmq)localObject).style == 3) || (((dmq)localObject).style == 5) || (((dmq)localObject).style == 0))
-    {
-      paramw = paramw.ftj();
-      if (paramw != null)
-      {
-        paramw = paramw.Gcu;
-        if (paramw != null) {
-          paramw = ((Iterable)paramw).iterator();
-        }
-      }
-    }
-    else
-    {
-      while (paramw.hasNext())
-      {
-        localObject = (dmm)paramw.next();
-        ol localol = new ol();
-        localol.FYs = ((dmm)localObject).FYs;
-        localol.Title = ((dmm)localObject).Title;
-        localLinkedList.add(localol);
-        continue;
-        if ((((dmq)localObject).style == 101) || (((dmq)localObject).style == 102) || (((dmq)localObject).style == 103))
-        {
-          paramw = paramw.ftk();
-          if (paramw != null)
-          {
-            paramw = paramw.HTS;
-            if (paramw != null)
-            {
-              paramw = paramw.Gal;
-              if (paramw != null)
-              {
-                paramw = ((Iterable)paramw).iterator();
-                while (paramw.hasNext())
-                {
-                  localObject = (om)paramw.next();
-                  if (localObject != null)
-                  {
-                    localObject = ((om)localObject).Gcu;
-                    if (localObject != null)
-                    {
-                      localObject = ((Iterable)localObject).iterator();
-                      while (((Iterator)localObject).hasNext()) {
-                        localLinkedList.add((ol)((Iterator)localObject).next());
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(188843);
-    return localLinkedList;
-  }
-  
-  public static final int t(w paramw)
-  {
-    int j = 1;
-    AppMethodBeat.i(188846);
-    d.g.b.p.h(paramw, "$this$getCardType");
-    int i;
-    if (paramw.fta()) {
-      i = 0;
+      localObject1 = new z();
+      ((z)localObject1).convertFrom((Cursor)localObject2);
     }
     for (;;)
     {
-      AppMethodBeat.o(188846);
-      return i;
-      if (paramw.ftb())
+      ((Cursor)localObject2).close();
+      if (localObject1 != null)
       {
-        paramw = paramw.ftk();
-        i = j;
-        if (paramw != null)
-        {
-          i = j;
-          switch (paramw.style)
-          {
-          case 0: 
-          case 3: 
-          case 5: 
-          default: 
-            i = j;
-            break;
-          case 101: 
-            i = 3;
-            break;
-          case 1001: 
-            i = 5;
-            break;
-          }
-        }
-      }
-      else if (paramw.ftc())
-      {
-        i = 4;
+        localObject2 = localObject1;
+        if (((z)localObject1).gAo() >= gAS()) {}
       }
       else
       {
-        i = 0;
+        long l = gAS();
+        localObject1 = "SELECT * FROM BizTimeLineInfo where orderFlag > " + (l << 32) + " order by orderFlag asc limit 1";
+        localObject2 = this.iFy.rawQuery((String)localObject1, null);
+        localObject1 = localObject3;
+        if (((Cursor)localObject2).moveToFirst())
+        {
+          localObject1 = new z();
+          ((z)localObject1).convertFrom((Cursor)localObject2);
+        }
+        ((Cursor)localObject2).close();
+        localObject2 = localObject1;
       }
+      AppMethodBeat.o(212355);
+      return localObject2;
+      localObject1 = null;
     }
+  }
+  
+  public final z ajW(int paramInt)
+  {
+    z localz = null;
+    AppMethodBeat.i(212356);
+    Object localObject = "SELECT * FROM BizTimeLineInfo order by orderFlag DESC limit 1 offset ".concat(String.valueOf(paramInt));
+    localObject = this.iFy.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localz = new z();
+      localz.convertFrom((Cursor)localObject);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(212356);
+    return localz;
+  }
+  
+  public final void ajX(int paramInt)
+  {
+    AppMethodBeat.i(212357);
+    Object localObject = String.format("DELETE FROM %s WHERE %s = %d and isRead = %d", new Object[] { "BizTimeLineInfo", "type", Integer.valueOf(637534257), Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.BizTimeLineInfoStorage", "deleteByType type:%d ret:%b", new Object[] { Integer.valueOf(637534257), Boolean.valueOf(this.iFy.execSQL("BizTimeLineInfo", (String)localObject)) });
+    localObject = new a();
+    ((a)localObject).NQE = b.NQH;
+    a((a)localObject);
+    AppMethodBeat.o(212357);
+  }
+  
+  public final boolean b(z paramz, boolean paramBoolean)
+  {
+    AppMethodBeat.i(212338);
+    boolean bool = super.insertNotify(paramz, false);
+    if (paramBoolean) {
+      MY(paramz.gAo());
+    }
+    a locala = new a();
+    locala.talker = paramz.field_talker;
+    locala.psm = paramz;
+    locala.NQE = b.NQG;
+    a(locala);
+    AppMethodBeat.o(212338);
+    return bool;
+  }
+  
+  public final void biW(String paramString)
+  {
+    AppMethodBeat.i(124627);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(124627);
+      return;
+    }
+    if (((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(paramString).arE()) {}
+    for (int i = 1;; i = 0)
+    {
+      Object localObject = "update BizTimeLineInfo set placeTop = " + i + " where status > 4 and talker = '" + paramString + "'";
+      this.iFy.execSQL("BizTimeLineInfo", (String)localObject);
+      localObject = "update BizTimeLineInfo set placeTop = " + i + " where status < 4 and talker = '" + paramString + "'";
+      this.iFy.execSQL("BizTimeLineInfo", (String)localObject);
+      localObject = gAM();
+      if ((localObject != null) && (paramString.equals(((z)localObject).field_talker)))
+      {
+        ((z)localObject).field_placeTop = i;
+        super.updateNotify((IAutoDBItem)localObject, false, new String[] { "msgSvrId" });
+      }
+      paramString = new a();
+      paramString.NQE = b.NQI;
+      a(paramString);
+      AppMethodBeat.o(124627);
+      return;
+    }
+  }
+  
+  public final z biX(String paramString)
+  {
+    AppMethodBeat.i(212342);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(212342);
+      return null;
+    }
+    z localz = new z();
+    paramString = this.iFy.query("BizTimeLineInfo", null, "bizClientMsgId=?", new String[] { String.valueOf(paramString) }, null, null, null, 2);
+    if (paramString.moveToFirst())
+    {
+      localz.convertFrom(paramString);
+      paramString.close();
+      AppMethodBeat.o(212342);
+      return localz;
+    }
+    paramString.close();
+    AppMethodBeat.o(212342);
+    return null;
+  }
+  
+  public final z biY(String paramString)
+  {
+    Object localObject = null;
+    AppMethodBeat.i(212358);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(212358);
+      return null;
+    }
+    paramString = "SELECT * FROM BizTimeLineInfo where type=620757041 and recommendCardId='" + paramString + "'";
+    Cursor localCursor = this.iFy.rawQuery(paramString, null);
+    paramString = localObject;
+    if (localCursor.moveToFirst())
+    {
+      paramString = new z();
+      paramString.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(212358);
+    return paramString;
+  }
+  
+  public final boolean c(z paramz, boolean paramBoolean)
+  {
+    AppMethodBeat.i(212339);
+    boolean bool = super.updateNotify(paramz, false, new String[] { "msgId" });
+    if (paramBoolean)
+    {
+      a locala = new a();
+      locala.talker = paramz.field_talker;
+      locala.psm = paramz;
+      locala.NQE = b.NQI;
+      a(locala);
+    }
+    AppMethodBeat.o(212339);
+    return bool;
+  }
+  
+  public final int cZm()
+  {
+    int i = 0;
+    AppMethodBeat.i(124650);
+    Cursor localCursor = this.iFy.rawQuery("SELECT count(*) FROM BizTimeLineInfo", null);
+    if (localCursor.moveToFirst()) {
+      i = localCursor.getInt(0);
+    }
+    localCursor.close();
+    AppMethodBeat.o(124650);
+    return i;
+  }
+  
+  public final z gAL()
+  {
+    z localz = null;
+    AppMethodBeat.i(212346);
+    Object localObject = String.format("SELECT * FROM %s WHERE %s = %d order by %s  DESC limit 1", new Object[] { "BizTimeLineInfo", "type", Integer.valueOf(637534257), "orderFlag" });
+    localObject = this.iFy.rawQuery((String)localObject, null);
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localz = new z();
+      localz.convertFrom((Cursor)localObject);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(212346);
+    return localz;
+  }
+  
+  public final z gAM()
+  {
+    z localz = null;
+    AppMethodBeat.i(124636);
+    Cursor localCursor = this.iFy.rawQuery("SELECT * FROM BizTimeLineInfo order by orderFlag DESC limit 1", null);
+    if (localCursor.moveToFirst())
+    {
+      localz = new z();
+      localz.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(124636);
+    return localz;
+  }
+  
+  public final z gAN()
+  {
+    z localz = null;
+    AppMethodBeat.i(212349);
+    Cursor localCursor = this.iFy.rawQuery("SELECT * FROM BizTimeLineInfo order by createTime DESC limit 1", null);
+    if (localCursor.moveToFirst())
+    {
+      localz = new z();
+      localz.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(212349);
+    return localz;
+  }
+  
+  public final long gAO()
+  {
+    AppMethodBeat.i(212350);
+    Cursor localCursor = this.iFy.rawQuery("SELECT createTime FROM BizTimeLineInfo order by createTime DESC limit 1", null);
+    long l = 0L;
+    if (localCursor.moveToFirst()) {
+      l = localCursor.getLong(0);
+    }
+    localCursor.close();
+    AppMethodBeat.o(212350);
+    return l;
+  }
+  
+  public final z gAP()
+  {
+    z localz = null;
+    AppMethodBeat.i(212351);
+    Cursor localCursor = this.iFy.rawQuery("SELECT * FROM BizTimeLineInfo order by orderFlag asc limit 1", null);
+    if (localCursor.moveToFirst())
+    {
+      localz = new z();
+      localz.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(212351);
+    return localz;
+  }
+  
+  public final void gAQ()
+  {
+    AppMethodBeat.i(124640);
+    z localz = gAM();
+    if (localz == null)
+    {
+      AppMethodBeat.o(124640);
+      return;
+    }
+    MV(localz.field_orderFlag);
+    AppMethodBeat.o(124640);
+  }
+  
+  public final int gAR()
+  {
+    AppMethodBeat.i(124642);
+    z localz = gAM();
+    if (localz == null)
+    {
+      AppMethodBeat.o(124642);
+      return 0;
+    }
+    int i = MW(localz.field_orderFlag);
+    AppMethodBeat.o(124642);
+    return i;
+  }
+  
+  public final long gAS()
+  {
+    try
+    {
+      long l = this.NQx;
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final long gAT()
+  {
+    try
+    {
+      AppMethodBeat.i(124648);
+      long l = this.NQw.incrementAndGet();
+      AppMethodBeat.o(124648);
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final long gAW()
+  {
+    z localz = null;
+    try
+    {
+      AppMethodBeat.i(124652);
+      if (this.NQA.longValue() == -5000000L)
+      {
+        Cursor localCursor = this.iFy.rawQuery("SELECT * FROM BizTimeLineInfo where type=620757041 or type=637534257 order by msgId DESC limit 1", null);
+        if (localCursor.moveToFirst())
+        {
+          localz = new z();
+          localz.convertFrom(localCursor);
+        }
+        localCursor.close();
+        if (localz != null) {
+          this.NQA.set(localz.field_msgId);
+        }
+      }
+      long l = this.NQA.incrementAndGet();
+      AppMethodBeat.o(124652);
+      return l;
+    }
+    finally {}
+  }
+  
+  public final long gAo()
+  {
+    try
+    {
+      AppMethodBeat.i(124647);
+      long l = this.NQw.longValue();
+      AppMethodBeat.o(124647);
+      return l;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final boolean iD(List<z> paramList)
+  {
+    AppMethodBeat.i(212341);
+    if (Util.isNullOrNil(paramList))
+    {
+      AppMethodBeat.o(212341);
+      return false;
+    }
+    long l = this.iFy.beginTransaction(Thread.currentThread().getId());
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      z localz = (z)paramList.next();
+      ContentValues localContentValues = new ContentValues();
+      localContentValues.put("orderFlag", Long.valueOf(localz.field_orderFlag));
+      localContentValues.put("bitFlag", Integer.valueOf(localz.field_bitFlag));
+      localContentValues.put("status", Integer.valueOf(3));
+      if (localz.NQl)
+      {
+        localContentValues.put("hasShow", Integer.valueOf(0));
+        localContentValues.put("isRead", Integer.valueOf(0));
+      }
+      localContentValues.put("rankSessionId", localz.field_rankSessionId);
+      this.iFy.update("BizTimeLineInfo", localContentValues, "msgId = ?", new String[] { localz.field_msgId });
+    }
+    Log.i("MicroMsg.BizTimeLineInfoStorage", "batResortBizTimeLineInfo ret=%d", new Object[] { Integer.valueOf(this.iFy.endTransaction(l)) });
+    com.tencent.f.h.RTc.aV(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(212336);
+        aa.a locala = new aa.a();
+        locala.NQE = aa.b.NQJ;
+        aa.this.a(locala);
+        AppMethodBeat.o(212336);
+      }
+    });
+    AppMethodBeat.o(212341);
+    return true;
+  }
+  
+  public final List<z> kL(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(212345);
+    Object localObject = this.iFy;
+    String str = "orderFlag DESC limit ".concat(String.valueOf(paramInt2));
+    localObject = o(((com.tencent.mm.storagebase.h)localObject).query("BizTimeLineInfo", null, "type=?", new String[] { String.valueOf(paramInt1) }, null, null, str));
+    AppMethodBeat.o(212345);
+    return localObject;
+  }
+  
+  public static final class a
+  {
+    public aa.b NQE = aa.b.NQG;
+    public boolean NQF = false;
+    public List<z> list;
+    public z psm;
+    public String talker;
+  }
+  
+  public static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(124620);
+      NQG = new b("INSERT", 0);
+      NQH = new b("DELETE", 1);
+      NQI = new b("UPDATE", 2);
+      NQJ = new b("RE_SORT", 3);
+      NQK = new b[] { NQG, NQH, NQI, NQJ };
+      AppMethodBeat.o(124620);
+    }
+    
+    private b() {}
+  }
+  
+  public static abstract interface c
+  {
+    public abstract void a(Object paramObject, aa.a parama);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.aa
  * JD-Core Version:    0.7.0.1
  */

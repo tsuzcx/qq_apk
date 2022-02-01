@@ -7,12 +7,12 @@ import java.util.regex.Pattern;
 
 public final class d
 {
-  public final LinkedList<Pair<e, Pattern>> crl;
+  public final LinkedList<Pair<e, Pattern>> cDB;
   
   public d()
   {
     AppMethodBeat.i(140560);
-    this.crl = new LinkedList();
+    this.cDB = new LinkedList();
     AppMethodBeat.o(140560);
   }
 }

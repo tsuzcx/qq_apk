@@ -306,7 +306,7 @@ public class BitmapFactory
   private static int getBitmapConfigValue(Bitmap.Config paramConfig)
   {
     AppMethodBeat.i(53154);
-    switch (1.$SwitchMap$android$graphics$Bitmap$Config[paramConfig.ordinal()])
+    switch (BitmapFactory.1.$SwitchMap$android$graphics$Bitmap$Config[paramConfig.ordinal()])
     {
     default: 
       AppMethodBeat.o(53154);
@@ -328,7 +328,7 @@ public class BitmapFactory
   private static int getBitmapStride(Bitmap.Config paramConfig, int paramInt)
   {
     AppMethodBeat.i(53155);
-    switch (1.$SwitchMap$android$graphics$Bitmap$Config[paramConfig.ordinal()])
+    switch (BitmapFactory.1.$SwitchMap$android$graphics$Bitmap$Config[paramConfig.ordinal()])
     {
     default: 
       AppMethodBeat.o(53155);
@@ -440,7 +440,7 @@ public class BitmapFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.smtt.export.external.X5Graphics.BitmapFactory
  * JD-Core Version:    0.7.0.1
  */

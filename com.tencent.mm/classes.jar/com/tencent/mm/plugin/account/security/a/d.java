@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.account.security.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fn;
-import com.tencent.mm.protocal.protobuf.bwr;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.fv;
+import com.tencent.mm.protocal.protobuf.ckf;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends fn
+  extends fv
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(125520);
-    c.a locala = new c.a();
-    locala.IBL = new Field[4];
-    locala.columns = new String[5];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[4];
+    localMAutoDBInfo.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "uid";
-    locala.IBN.put("uid", "TEXT default ''  PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "uid";
+    localMAutoDBInfo.colsMap.put("uid", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" uid TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "uid";
-    locala.columns[1] = "name";
-    locala.IBN.put("name", "TEXT default '' ");
+    localMAutoDBInfo.primaryKey = "uid";
+    localMAutoDBInfo.columns[1] = "name";
+    localMAutoDBInfo.colsMap.put("name", "TEXT default '' ");
     localStringBuilder.append(" name TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[2] = "devicetype";
-    locala.IBN.put("devicetype", "TEXT default '' ");
+    localMAutoDBInfo.columns[2] = "devicetype";
+    localMAutoDBInfo.colsMap.put("devicetype", "TEXT default '' ");
     localStringBuilder.append(" devicetype TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[3] = "createtime";
-    locala.IBN.put("createtime", "LONG default '0' ");
+    localMAutoDBInfo.columns[3] = "createtime";
+    localMAutoDBInfo.colsMap.put("createtime", "LONG default '0' ");
     localStringBuilder.append(" createtime LONG default '0' ");
-    locala.columns[4] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[4] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(125520);
   }
   
@@ -49,24 +49,24 @@ public final class d
     this.field_createtime = 0L;
   }
   
-  public d(bwr parambwr)
+  public d(ckf paramckf)
   {
     AppMethodBeat.i(125519);
-    this.field_uid = parambwr.uuid;
-    this.field_devicetype = parambwr.devicetype;
-    this.field_name = parambwr.devicename;
-    this.field_createtime = parambwr.Hjz;
+    this.field_uid = paramckf.uuid;
+    this.field_devicetype = paramckf.devicetype;
+    this.field_name = paramckf.devicename;
+    this.field_createtime = paramckf.MpC;
     AppMethodBeat.o(125519);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.a.d
  * JD-Core Version:    0.7.0.1
  */

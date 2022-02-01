@@ -1,12 +1,11 @@
 package com.tencent.mm.plugin.brandservice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.h.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.biz.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 
 final class PluginBrandService$2
@@ -14,29 +13,29 @@ final class PluginBrandService$2
 {
   PluginBrandService$2(PluginBrandService paramPluginBrandService) {}
   
-  public final void onNewXmlReceived(String paramString, final Map<String, String> paramMap, final e.a parama)
+  public final void onNewXmlReceived(String paramString, final Map<String, String> paramMap, final h.a parama)
   {
-    AppMethodBeat.i(208381);
+    AppMethodBeat.i(194845);
     b.a("BrandServiceWorkerThread", new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(208380);
-        Object localObject = a.nUu;
+        AppMethodBeat.i(194844);
+        Object localObject = com.tencent.mm.plugin.biz.b.b.pfn;
         Map localMap = paramMap;
-        e.a locala = parama;
+        h.a locala = parama;
         if (locala != null) {}
-        for (localObject = locala.gte; (localObject == null) || (locala.gte.FNI == null) || (localMap == null); localObject = null)
+        for (localObject = locala.heO; (localObject == null) || (locala.heO.KHn == null) || (localMap == null); localObject = null)
         {
-          ae.w("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify data invalid");
-          AppMethodBeat.o(208380);
+          Log.w("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify data invalid");
+          AppMethodBeat.o(194844);
           return;
         }
-        a.f(localMap, z.a(locala.gte.FNI));
-        AppMethodBeat.o(208380);
+        com.tencent.mm.plugin.biz.b.b.g(localMap, z.a(locala.heO.KHn));
+        AppMethodBeat.o(194844);
       }
     }, 0L);
-    AppMethodBeat.o(208381);
+    AppMethodBeat.o(194845);
   }
 }
 

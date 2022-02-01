@@ -4,82 +4,116 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class egu
-  extends com.tencent.mm.bw.a
+  extends dop
 {
-  public LinkedList<egr> IkD;
-  public boolean IkE;
+  public int NgF;
+  public LinkedList<egt> NgG;
+  public int Scene;
   
   public egu()
   {
-    AppMethodBeat.i(110861);
-    this.IkD = new LinkedList();
-    AppMethodBeat.o(110861);
+    AppMethodBeat.i(32468);
+    this.NgG = new LinkedList();
+    AppMethodBeat.o(32468);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(110862);
+    AppMethodBeat.i(32469);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.e(1, 8, this.IkD);
-      paramVarArgs.bC(2, this.IkE);
-      AppMethodBeat.o(110862);
-      return 0;
-    }
-    int i;
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.a.c(1, 8, this.IkD);
-      i = f.a.a.b.b.a.amF(2);
-      AppMethodBeat.o(110862);
-      return paramInt + 0 + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.IkD.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
-      }
-      AppMethodBeat.o(110862);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      egu localegu = (egu)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
       {
-      default: 
-        AppMethodBeat.o(110862);
-        return -1;
-      case 1: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new egr();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((egr)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localegu.IkD.add(localObject1);
-          paramInt += 1;
+        paramVarArgs.ni(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
+      }
+      paramVarArgs.aM(2, this.NgF);
+      paramVarArgs.e(3, 8, this.NgG);
+      paramVarArgs.aM(4, this.Scene);
+      AppMethodBeat.o(32469);
+      return 0;
+    }
+    if (paramInt == 1) {
+      if (this.BaseRequest == null) {
+        break label552;
+      }
+    }
+    label552:
+    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = g.a.a.b.b.a.bu(2, this.NgF);
+      int j = g.a.a.a.c(3, 8, this.NgG);
+      int k = g.a.a.b.b.a.bu(4, this.Scene);
+      AppMethodBeat.o(32469);
+      return paramInt + i + j + k;
+      if (paramInt == 2)
+      {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.NgG.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
         }
-        AppMethodBeat.o(110862);
+        AppMethodBeat.o(32469);
         return 0;
       }
-      localegu.IkE = ((f.a.a.a.a)localObject1).OmT.gvY();
-      AppMethodBeat.o(110862);
-      return 0;
+      if (paramInt == 3)
+      {
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        egu localegu = (egu)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(32469);
+          return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jr();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localegu.BaseRequest = ((jr)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32469);
+          return 0;
+        case 2: 
+          localegu.NgF = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(32469);
+          return 0;
+        case 3: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new egt();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((egt)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localegu.NgG.add(localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(32469);
+          return 0;
+        }
+        localegu.Scene = ((g.a.a.a.a)localObject1).UbS.zi();
+        AppMethodBeat.o(32469);
+        return 0;
+      }
+      AppMethodBeat.o(32469);
+      return -1;
     }
-    AppMethodBeat.o(110862);
-    return -1;
   }
 }
 

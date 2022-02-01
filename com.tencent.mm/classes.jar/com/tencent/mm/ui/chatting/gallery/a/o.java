@@ -13,58 +13,58 @@ import android.view.View;
 import android.view.ViewPropertyAnimator;
 import android.view.animation.LinearInterpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.at;
 import com.tencent.mm.ui.base.g;
-import d.g.b.p;
-import d.l;
-import d.v;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/gallery/scan/ScanCodeViewHelper;", "", "()V", "TAG", "", "vibrator", "Landroid/os/Vibrator;", "animateScanCodeSuccessView", "", "successView", "Landroid/view/View;", "transX", "", "transY", "listenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "getTopBitmap", "Landroid/graphics/Bitmap;", "bitmap", "viewWidth", "", "viewHeight", "handleCode", "context", "Landroid/content/Context;", "currentView", "codeResult", "Lcom/tencent/mm/ui/chatting/gallery/scan/ScanCodeResult;", "viewModel", "Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeViewModel;", "codeHandler", "Lcom/tencent/mm/ui/chatting/gallery/scan/IImageScanCodeHandler;", "needShowScanCodeSuccessView", "", "point", "Landroid/graphics/PointF;", "successViewSize", "vibrate", "app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/gallery/scan/ScanCodeViewHelper;", "", "()V", "TAG", "", "vibrator", "Landroid/os/Vibrator;", "animateScanCodeSuccessView", "", "successView", "Landroid/view/View;", "transX", "", "transY", "listenerAdapter", "Landroid/animation/AnimatorListenerAdapter;", "getTopBitmap", "Landroid/graphics/Bitmap;", "bitmap", "viewWidth", "", "viewHeight", "handleCode", "context", "Landroid/content/Context;", "currentView", "codeResult", "Lcom/tencent/mm/ui/chatting/gallery/scan/ScanCodeResult;", "viewModel", "Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanCodeViewModel;", "codeHandler", "Lcom/tencent/mm/ui/chatting/gallery/scan/IImageScanCodeHandler;", "needShowScanCodeSuccessView", "", "point", "Landroid/graphics/PointF;", "successViewSize", "vibrate", "app_release"})
 public final class o
 {
-  public static final o KqZ;
-  private static Vibrator nQa;
+  public static final o PDi;
+  private static Vibrator paT;
   
   static
   {
-    AppMethodBeat.i(188360);
-    KqZ = new o();
-    AppMethodBeat.o(188360);
+    AppMethodBeat.i(231313);
+    PDi = new o();
+    AppMethodBeat.o(231313);
   }
   
   public static void a(Context paramContext, View paramView, final n paramn, k paramk, d paramd)
   {
-    AppMethodBeat.i(188357);
+    AppMethodBeat.i(231310);
     p.h(paramContext, "context");
     p.h(paramn, "codeResult");
     n.a locala;
     int i;
     int k;
-    if ((paramn.KqU) && (paramn.KqT != null))
+    if ((paramn.PDd) && (paramn.PDc != null))
     {
-      locala = paramn.KqT;
+      locala = paramn.PDc;
       if (locala == null) {
-        p.gkB();
+        p.hyc();
       }
       p.h(paramContext, "context");
-      if (nQa == null)
+      if (paT == null)
       {
         localObject = paramContext.getSystemService("vibrator");
         if (localObject == null)
         {
-          paramContext = new v("null cannot be cast to non-null type android.os.Vibrator");
-          AppMethodBeat.o(188357);
+          paramContext = new t("null cannot be cast to non-null type android.os.Vibrator");
+          AppMethodBeat.o(231310);
           throw paramContext;
         }
-        nQa = (Vibrator)localObject;
+        paT = (Vibrator)localObject;
       }
-      Object localObject = nQa;
+      Object localObject = paT;
       if (localObject != null) {
         ((Vibrator)localObject).vibrate(10L);
       }
-      i = aq.ay(paramContext, 2131166772);
+      i = at.aH(paramContext, 2131166895);
       k = 0;
       if (!(paramView instanceof g)) {
         break label442;
@@ -78,11 +78,11 @@ public final class o
       {
         if (paramView == null)
         {
-          paramContext = new v("null cannot be cast to non-null type com.tencent.mm.ui.base.IZoomableImageView");
-          AppMethodBeat.o(188357);
+          paramContext = new t("null cannot be cast to non-null type com.tencent.mm.ui.base.IZoomableImageView");
+          AppMethodBeat.o(231310);
           throw paramContext;
         }
-        paramContext = ((g)paramView).a(locala.KqW, locala.KqX, locala.KqY);
+        paramContext = ((g)paramView).a(locala.PDf, locala.PDg, locala.PDh);
         paramContext.x -= i / 2.0F;
         paramContext.y -= i / 2.0F;
         int m = paramView.getMeasuredWidth();
@@ -92,10 +92,10 @@ public final class o
         }
         while (i != 0)
         {
-          ae.i("MicroMsg.ScanCodeViewHelper", "alvinluo handleCode codePoint: %s, dstPoint: %s, imageWidth: %d, imageHeight: %d", new Object[] { locala.KqW, paramContext, Integer.valueOf(k), Integer.valueOf(j) });
+          Log.i("MicroMsg.ScanCodeViewHelper", "alvinluo handleCode codePoint: %s, dstPoint: %s, imageWidth: %d, imageHeight: %d", new Object[] { locala.PDf, paramContext, Integer.valueOf(k), Integer.valueOf(j) });
           p.g(paramContext, "dstPoint");
           paramk.a(paramContext, (AnimatorListenerAdapter)new a(paramd, paramn));
-          AppMethodBeat.o(188357);
+          AppMethodBeat.o(231310);
           return;
           if ((paramContext.x >= -i / 2.0F) && (paramContext.x <= m + i / 2.0F) && (paramContext.y >= -i / 2.0F))
           {
@@ -111,21 +111,21 @@ public final class o
           i = 1;
         }
         paramd.a(paramn);
-        AppMethodBeat.o(188357);
+        AppMethodBeat.o(231310);
         return;
         paramd.a(paramn);
       }
-      AppMethodBeat.o(188357);
+      AppMethodBeat.o(231310);
       return;
     }
   }
   
   public static final void a(View paramView, float paramFloat1, float paramFloat2, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(188358);
+    AppMethodBeat.i(231311);
     if (paramView == null)
     {
-      AppMethodBeat.o(188358);
+      AppMethodBeat.o(231311);
       return;
     }
     paramView.setVisibility(0);
@@ -135,26 +135,26 @@ public final class o
     paramView.setScaleX(0.0F);
     paramView.setScaleY(0.0F);
     paramView.animate().setInterpolator((TimeInterpolator)new LinearInterpolator()).setListener((Animator.AnimatorListener)paramAnimatorListenerAdapter).setUpdateListener(null).setDuration(300L).alpha(1.0F).scaleX(1.0F).scaleY(1.0F).start();
-    AppMethodBeat.o(188358);
+    AppMethodBeat.o(231311);
   }
   
-  public static final Bitmap i(Bitmap paramBitmap, int paramInt1, int paramInt2)
+  public static final Bitmap j(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(188359);
+    AppMethodBeat.i(231312);
     if ((paramBitmap == null) || (paramBitmap.isRecycled()))
     {
-      AppMethodBeat.o(188359);
+      AppMethodBeat.o(231312);
       return null;
     }
-    ae.v("MicroMsg.ScanCodeViewHelper", "getTopBitmap viewWidth: %d, viewHeight: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.v("MicroMsg.ScanCodeViewHelper", "getTopBitmap viewWidth: %d, viewHeight: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     float f = 1.0F * paramInt1 / paramBitmap.getWidth();
     paramInt1 = Math.min((int)(paramInt2 / f), paramBitmap.getHeight());
-    paramBitmap = h.b(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramInt1));
-    AppMethodBeat.o(188359);
+    paramBitmap = BitmapUtil.getBitmapFromRect(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramInt1), false);
+    AppMethodBeat.o(231312);
     return paramBitmap;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/ui/chatting/gallery/scan/ScanCodeViewHelper$handleCode$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "app_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/ui/chatting/gallery/scan/ScanCodeViewHelper$handleCode$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "app_release"})
   public static final class a
     extends AnimatorListenerAdapter
   {
@@ -162,22 +162,22 @@ public final class o
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(188356);
+      AppMethodBeat.i(231309);
       super.onAnimationEnd(paramAnimator);
-      paramAnimator = this.Kra;
+      paramAnimator = this.PDj;
       if (paramAnimator != null)
       {
         paramAnimator.a(paramn);
-        AppMethodBeat.o(188356);
+        AppMethodBeat.o(231309);
         return;
       }
-      AppMethodBeat.o(188356);
+      AppMethodBeat.o(231309);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.a.o
  * JD-Core Version:    0.7.0.1
  */

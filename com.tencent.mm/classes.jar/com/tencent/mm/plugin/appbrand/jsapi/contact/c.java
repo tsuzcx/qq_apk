@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.contact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import org.json.JSONObject;
 
 public final class c
-  extends a
+  extends com.tencent.mm.plugin.appbrand.jsapi.d
 {
   public static final int CTRL_INDEX = 72;
   public static final String NAME = "chooseContact";
-  private final d kNg;
+  private final d lRY;
   
   public c()
   {
     AppMethodBeat.i(137497);
-    this.kNg = new d();
+    this.lRY = new d();
     AppMethodBeat.o(137497);
   }
   
-  public static String Ku(String paramString)
+  public static String Ts(String paramString)
   {
     AppMethodBeat.i(137499);
     if (paramString == null)
@@ -35,16 +35,16 @@ public final class c
     return paramString;
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(137498);
-    this.kNg.a(paramc, paramJSONObject, paramInt);
+    this.lRY.a(paramf, paramJSONObject, paramInt);
     AppMethodBeat.o(137498);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.contact.c
  * JD-Core Version:    0.7.0.1
  */

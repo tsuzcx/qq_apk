@@ -32,7 +32,7 @@ public final class af
   public static void e(Throwable paramThrowable)
   {
     AppMethodBeat.i(125027);
-    ApplicationLike localApplicationLike = d.cTZ;
+    ApplicationLike localApplicationLike = d.dks;
     if ((localApplicationLike == null) || (localApplicationLike.getApplication() == null))
     {
       ShareTinkerLog.v("TinkerCrashProtect", "applicationlike is null", new Object[0]);

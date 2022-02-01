@@ -1,53 +1,52 @@
 package com.tencent.mm.plugin.label.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cbl;
-import com.tencent.mm.protocal.protobuf.cbm;
-import com.tencent.mm.protocal.protobuf.duw;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cqn;
+import com.tencent.mm.protocal.protobuf.cqo;
+import com.tencent.mm.protocal.protobuf.eov;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class d
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b rr;
-  private LinkedList<duw> vhR;
+  private i callback;
+  private final com.tencent.mm.ak.d rr;
+  private LinkedList<eov> yBV;
   
-  public d(LinkedList<duw> paramLinkedList)
+  public d(LinkedList<eov> paramLinkedList)
   {
     AppMethodBeat.i(26152);
-    this.vhR = new LinkedList();
-    b.a locala = new b.a();
-    locala.hQF = new cbl();
-    locala.hQG = new cbm();
+    this.yBV = new LinkedList();
+    d.a locala = new d.a();
+    locala.iLN = new cqn();
+    locala.iLO = new cqo();
     locala.uri = "/cgi-bin/micromsg-bin/modifycontactlabellist";
     locala.funcId = 638;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    this.vhR = paramLinkedList;
+    this.rr = locala.aXF();
+    this.yBV = paramLinkedList;
     AppMethodBeat.o(26152);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(26154);
-    ae.d("MicroMsg.Label.NetSceneModifyContactLabelList", "cpan[doScene].");
-    this.callback = paramf;
-    paramf = (cbl)this.rr.hQD.hQJ;
-    paramf.HoV = this.vhR;
-    paramf.GQn = this.vhR.size();
-    int i = dispatch(parame, this.rr, this);
+    Log.d("MicroMsg.Label.NetSceneModifyContactLabelList", "cpan[doScene].");
+    this.callback = parami;
+    parami = (cqn)this.rr.iLK.iLR;
+    parami.Mwq = this.yBV;
+    parami.LUu = this.yBV.size();
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(26154);
     return i;
   }
@@ -57,10 +56,10 @@ public final class d
     return 638;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(26153);
-    ae.d("MicroMsg.Label.NetSceneModifyContactLabelList", "cpan[onGYNetEnd] netId:%d errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.d("MicroMsg.Label.NetSceneModifyContactLabelList", "cpan[onGYNetEnd] netId:%d errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(26153);
   }

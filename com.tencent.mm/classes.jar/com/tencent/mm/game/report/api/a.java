@@ -4,13 +4,13 @@ import android.content.Context;
 
 public abstract class a
 {
-  public static a guC;
+  public static a hhr;
   
   public abstract void a(int paramInt, String paramString1, String paramString2, long paramLong);
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, long paramLong, String paramString5, String paramString6, int paramInt4);
+  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, long paramLong, String paramString5, String paramString6);
   
-  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5, String paramString6);
+  public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, long paramLong, String paramString5, String paramString6, int paramInt4);
   
   public abstract void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, int paramInt2);
   
@@ -24,7 +24,7 @@ public abstract class a
   
   public abstract void c(String paramString1, int paramInt1, int paramInt2, String paramString2, String paramString3);
   
-  public abstract void j(Context paramContext, String paramString1, String paramString2);
+  public abstract void k(Context paramContext, String paramString1, String paramString2);
   
   public abstract void k(String paramString1, String paramString2, String paramString3);
   

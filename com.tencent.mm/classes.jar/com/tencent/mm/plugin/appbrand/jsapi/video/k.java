@@ -2,48 +2,48 @@ package com.tencent.mm.plugin.appbrand.jsapi.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.video.b.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
   implements j
 {
   public final int d(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210975);
-    ae.d("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
-    AppMethodBeat.o(210975);
+    AppMethodBeat.i(234643);
+    Log.d("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
+    AppMethodBeat.o(234643);
     return 1;
   }
   
   public final int e(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210978);
-    ae.e("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
-    AppMethodBeat.o(210978);
+    AppMethodBeat.i(234646);
+    Log.e("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
+    AppMethodBeat.o(234646);
     return 1;
   }
   
   public final int i(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210976);
-    ae.i("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
-    AppMethodBeat.o(210976);
+    AppMethodBeat.i(234644);
+    Log.i("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
+    AppMethodBeat.o(234644);
     return 1;
   }
   
   public final int v(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210974);
-    ae.v("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
-    AppMethodBeat.o(210974);
+    AppMethodBeat.i(234642);
+    Log.v("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
+    AppMethodBeat.o(234642);
     return 1;
   }
   
   public final int w(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(210977);
-    ae.w("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
-    AppMethodBeat.o(210977);
+    AppMethodBeat.i(234645);
+    Log.w("WxPlayer/".concat(String.valueOf(paramString1)), paramString2);
+    AppMethodBeat.o(234645);
     return 1;
   }
 }

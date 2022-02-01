@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class gc
-  extends b
+  extends IEvent
 {
-  public a dsL;
-  public b dsM;
+  public a dJH;
+  public b dJI;
   
   public gc()
   {
@@ -16,29 +16,26 @@ public final class gc
   
   private gc(byte paramByte)
   {
-    AppMethodBeat.i(116023);
-    this.dsL = new a();
-    this.dsM = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(116021);
+    this.dJH = new a();
+    this.dJI = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116023);
+    AppMethodBeat.o(116021);
   }
   
   public static final class a
   {
-    public String dsN;
-    public int dsO = 0;
-    public Runnable dsP;
-    public String fileName;
-    public int from = 0;
-    public int scene;
+    public Runnable doJ;
+    public int duration;
+    public String filePath;
+    public int op;
   }
   
   public static final class b
   {
-    public boolean bsb;
-    public String content;
-    public int state = 0;
+    public boolean dFE = false;
+    public int dJJ;
   }
 }
 

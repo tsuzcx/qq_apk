@@ -13,11 +13,11 @@ import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
 public class WcPayCashierBankcardItemLayout
   extends LinearLayout
 {
-  public TextView DBR;
-  public TextView DBS;
-  public RadioButton DBT;
-  public FavourLayout DwP;
-  public CdnImageView oTd;
+  public FavourLayout Iga;
+  public TextView Ild;
+  public TextView Ile;
+  public RadioButton Ilf;
+  public CdnImageView qgQ;
   
   public WcPayCashierBankcardItemLayout(Context paramContext)
   {
@@ -46,18 +46,18 @@ public class WcPayCashierBankcardItemLayout
   private void init()
   {
     AppMethodBeat.i(71323);
-    View.inflate(getContext(), 2131496053, this);
-    this.oTd = ((CdnImageView)findViewById(2131307021));
-    this.DBR = ((TextView)findViewById(2131307023));
-    this.DBS = ((TextView)findViewById(2131307024));
-    this.DBT = ((RadioButton)findViewById(2131307028));
-    this.DwP = ((FavourLayout)findViewById(2131307026));
+    View.inflate(getContext(), 2131497033, this);
+    this.qgQ = ((CdnImageView)findViewById(2131310545));
+    this.Ild = ((TextView)findViewById(2131310547));
+    this.Ile = ((TextView)findViewById(2131310548));
+    this.Ilf = ((RadioButton)findViewById(2131310552));
+    this.Iga = ((FavourLayout)findViewById(2131310550));
     AppMethodBeat.o(71323);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.cashier.WcPayCashierBankcardItemLayout
  * JD-Core Version:    0.7.0.1
  */

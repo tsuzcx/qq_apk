@@ -5,7 +5,7 @@ import com.tencent.mm.bw.a;
 import com.tencent.mm.plugin.backup.f.h.a;
 import com.tencent.mm.plugin.backup.i.af;
 import com.tencent.mm.plugin.backup.i.ag;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -14,54 +14,54 @@ import java.util.Set;
 public final class l
   extends b
 {
-  private af nFt;
-  private ag nFu;
-  private a nFv;
+  private af oQq;
+  private ag oQr;
+  private a oQs;
   
   public l(String paramString, HashMap<Long, h.a> paramHashMap, a parama)
   {
     AppMethodBeat.i(21740);
-    this.nFt = new af();
-    this.nFu = new ag();
-    this.nFv = parama;
-    this.nFt.nIB = paramString;
-    ae.i("MicroMsg.BackupSvrIdScene", "init sessionName:%s", new Object[] { paramString });
-    this.nFt.nJW = new LinkedList();
-    this.nFt.nJX = new LinkedList();
-    this.nFt.nJY = new LinkedList();
+    this.oQq = new af();
+    this.oQr = new ag();
+    this.oQs = parama;
+    this.oQq.oTx = paramString;
+    Log.i("MicroMsg.BackupSvrIdScene", "init sessionName:%s", new Object[] { paramString });
+    this.oQq.oUR = new LinkedList();
+    this.oQq.oUS = new LinkedList();
+    this.oQq.oUT = new LinkedList();
     paramString = paramHashMap.keySet().iterator();
     while (paramString.hasNext())
     {
       parama = (h.a)paramHashMap.get((Long)paramString.next());
-      this.nFt.nJW.add(Long.valueOf(parama.nCM));
-      this.nFt.nJX.add(parama.nCN);
-      this.nFt.nJY.add(parama.md5);
+      this.oQq.oUR.add(Long.valueOf(parama.oNJ));
+      this.oQq.oUS.add(parama.oNK);
+      this.oQq.oUT.add(parama.md5);
     }
     AppMethodBeat.o(21740);
   }
   
-  public final a bJx()
+  public final void Bm(int paramInt)
   {
-    return this.nFu;
+    AppMethodBeat.i(21741);
+    Log.i("MicroMsg.BackupSvrIdScene", "onSceneEnd");
+    q(0, 0, "success");
+    this.oQs.E(this.oQr.oUR);
+    AppMethodBeat.o(21741);
   }
   
-  public final a bJy()
+  public final a cgq()
   {
-    return this.nFt;
+    return this.oQr;
+  }
+  
+  public final a cgr()
+  {
+    return this.oQq;
   }
   
   public final int getType()
   {
     return 13;
-  }
-  
-  public final void xG(int paramInt)
-  {
-    AppMethodBeat.i(21741);
-    ae.i("MicroMsg.BackupSvrIdScene", "onSceneEnd");
-    q(0, 0, "success");
-    this.nFv.E(this.nFu.nJW);
-    AppMethodBeat.o(21741);
   }
   
   public static abstract interface a
@@ -71,7 +71,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.g.l
  * JD-Core Version:    0.7.0.1
  */

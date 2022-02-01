@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/go"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/o5" style="@style/gk" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/al7" android:background="@drawable/l8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="0.0dip" style="@style/gp">
-        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/ap0" android:background="@raw/voip_voicecall" style="@style/h3" />
-        <TextView android:id="@id/ap1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:includeFontPadding="false" style="@style/yo" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/bdr" android:paddingLeft="@dimen/br" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" style="@style/nq" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bdv" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="@dimen/az">
+            <com.tencent.mm.ui.base.MaskLayout android:id="@id/bdo" android:layout_width="@dimen/ax" android:layout_height="@dimen/ax">
+                <ImageView android:id="@id/be9" android:layout_width="@dimen/aw" android:layout_height="@dimen/aw" android:src="@raw/default_avatar" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+            </com.tencent.mm.ui.base.MaskLayout>
+            <com.tencent.mm.ui.base.EllipsizeTextView android:id="@id/bdw" android:background="?sg" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/cb" android:text="{nick}" android:singleLine="true" android:layout_weight="1.0" style="@style/mp" />
+        </LinearLayout>
     </LinearLayout>
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/ao1" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="@dimen/jn" android:src="@drawable/afx" />
 </LinearLayout>

@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadPoolExecutor;
 import org.json.JSONObject;
 
 public final class r
-  extends a
+  extends d
 {
   private static final int CTRL_INDEX = 278;
   private static final String NAME = "getFileInfo";
   
   /* Error */
-  static String y(k paramk)
+  static String x(o paramo)
   {
     // Byte code:
     //   0: ldc 27
@@ -30,7 +30,7 @@ public final class r
     //   7: invokestatic 41	java/security/MessageDigest:getInstance	(Ljava/lang/String;)Ljava/security/MessageDigest;
     //   10: astore_3
     //   11: aload_0
-    //   12: invokestatic 47	com/tencent/mm/vfs/o:ai	(Lcom/tencent/mm/vfs/k;)Ljava/io/InputStream;
+    //   12: invokestatic 47	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
     //   15: astore_2
     //   16: sipush 8192
     //   19: newarray byte
@@ -63,7 +63,7 @@ public final class r
     //   65: iconst_0
     //   66: aload_0
     //   67: aastore
-    //   68: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   68: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   71: ldc 27
     //   73: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   76: ldc 65
@@ -77,7 +77,7 @@ public final class r
     //   89: iconst_0
     //   90: aload_0
     //   91: aastore
-    //   92: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   92: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   95: ldc 27
     //   97: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   100: ldc 65
@@ -145,7 +145,7 @@ public final class r
     //   205: iconst_0
     //   206: aload_2
     //   207: aastore
-    //   208: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   208: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   211: goto -93 -> 118
     //   214: astore_0
     //   215: ldc 67
@@ -156,7 +156,7 @@ public final class r
     //   224: iconst_0
     //   225: aload_0
     //   226: aastore
-    //   227: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   227: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   230: goto -183 -> 47
     //   233: astore_0
     //   234: aload_2
@@ -174,11 +174,11 @@ public final class r
     //   255: iconst_0
     //   256: aload_2
     //   257: aastore
-    //   258: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   258: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   261: goto -23 -> 238
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	264	0	paramk	k
+    //   0	264	0	paramo	o
     //   27	157	1	i	int
     //   15	100	2	localInputStream	java.io.InputStream
     //   195	40	2	localIOException1	java.io.IOException
@@ -208,35 +208,35 @@ public final class r
     //   234	238	245	java/io/IOException
   }
   
-  public final void a(final c paramc, final JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, final JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(128875);
     final String str = paramJSONObject.optString("filePath", "");
     if (!"sha1".equalsIgnoreCase(paramJSONObject.optString("digestAlgorithm", "md5"))) {}
-    for (paramJSONObject = "md5"; bu.isNullOrNil(str); paramJSONObject = "sha1")
+    for (paramJSONObject = "md5"; Util.isNullOrNil(str); paramJSONObject = "sha1")
     {
-      paramc.h(paramInt, e("fail:invalid data", null));
+      paramf.i(paramInt, h("fail:invalid data", null));
       AppMethodBeat.o(128875);
       return;
     }
-    e.kPL.execute(new Runnable()
+    e.lUJ.execute(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(128874);
-        if (!paramc.isRunning())
+        if (!paramf.isRunning())
         {
           AppMethodBeat.o(128874);
           return;
         }
-        Object localObject = paramc.Fl().MP(str);
+        Object localObject = paramf.getFileSystem().VY(str);
         if (localObject == null)
         {
-          paramc.h(paramInt, r.this.e("fail:file doesn't exist", null));
+          paramf.i(paramInt, r.this.h("fail:file doesn't exist", null));
           AppMethodBeat.o(128874);
           return;
         }
-        k localk = new k(w.B(((k)localObject).fTh()));
+        o localo = new o(aa.z(((o)localObject).her()));
         localObject = paramJSONObject;
         int i = -1;
         switch (((String)localObject).hashCode())
@@ -252,9 +252,9 @@ public final class r
         for (;;)
         {
           HashMap localHashMap = new HashMap(2);
-          localHashMap.put("size", Long.valueOf(localk.length()));
+          localHashMap.put("size", Long.valueOf(localo.length()));
           localHashMap.put("digest", localObject);
-          paramc.h(paramInt, r.this.n("ok", localHashMap));
+          paramf.i(paramInt, r.this.n("ok", localHashMap));
           AppMethodBeat.o(128874);
           return;
           if (!((String)localObject).equals("md5")) {
@@ -267,23 +267,23 @@ public final class r
           }
           i = 1;
           break;
-          localObject = g.getMD5(w.B(localk.fTh()));
+          localObject = g.getMD5(aa.z(localo.her()));
           continue;
-          localObject = r.y(new k(w.B(localk.fTh())));
+          localObject = r.x(new o(aa.z(localo.her())));
         }
       }
     });
     AppMethodBeat.o(128875);
   }
   
-  public final boolean biK()
+  public final boolean bEa()
   {
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.r
  * JD-Core Version:    0.7.0.1
  */

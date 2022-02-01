@@ -9,29 +9,29 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.e.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.compatible.f.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
 public class HighlightRectSideView
   extends View
 {
-  private aw cji;
-  private Paint xS;
-  private boolean[] yGL;
-  private Rect yGM;
-  private int yGN;
-  private int yGO;
-  private int yGP;
-  private int yGQ;
+  private Rect CKA;
+  private int CKB;
+  private int CKC;
+  private int CKD;
+  private int CKE;
+  private boolean[] CKz;
+  private MTimerHandler cve;
+  private Paint xY;
   
   public HighlightRectSideView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(51795);
-    this.yGQ = 0;
-    this.cji = new aw(new aw.a()
+    this.CKE = 0;
+    this.cve = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -42,19 +42,19 @@ public class HighlightRectSideView
         return true;
       }
     }, true);
-    paramContext = a.decodeResource(getResources(), 2131233910);
-    this.yGN = paramContext.getWidth();
-    this.yGO = paramContext.getHeight();
-    if (this.yGO != this.yGN) {
-      ae.e("MicroMsg.HighlightRectSideView", "width is not same as height");
+    paramContext = a.decodeResource(getResources(), 2131234738);
+    this.CKB = paramContext.getWidth();
+    this.CKC = paramContext.getHeight();
+    if (this.CKC != this.CKB) {
+      Log.e("MicroMsg.HighlightRectSideView", "width is not same as height");
     }
-    this.yGP = (this.yGN * 6 / 24);
-    this.yGL = new boolean[4];
-    this.xS = new Paint();
-    this.xS.setColor(6676738);
-    this.xS.setAlpha(255);
-    this.xS.setStrokeWidth(this.yGP);
-    this.xS.setStyle(Paint.Style.STROKE);
+    this.CKD = (this.CKB * 6 / 24);
+    this.CKz = new boolean[4];
+    this.xY = new Paint();
+    this.xY.setColor(6676738);
+    this.xY.setAlpha(255);
+    this.xY.setStrokeWidth(this.CKD);
+    this.xY.setStyle(Paint.Style.STROKE);
     AppMethodBeat.o(51795);
   }
   
@@ -62,7 +62,7 @@ public class HighlightRectSideView
   {
     AppMethodBeat.i(51797);
     super.onAttachedToWindow();
-    this.cji.ay(300L, 300L);
+    this.cve.startTimer(300L);
     AppMethodBeat.o(51797);
   }
   
@@ -70,10 +70,10 @@ public class HighlightRectSideView
   {
     AppMethodBeat.i(51798);
     super.onDetachedFromWindow();
-    if (this.cji != null)
+    if (this.cve != null)
     {
-      this.cji.stopTimer();
-      this.cji = null;
+      this.cve.stopTimer();
+      this.cve = null;
     }
     AppMethodBeat.o(51798);
   }
@@ -84,22 +84,22 @@ public class HighlightRectSideView
     super.onDraw(paramCanvas);
     int i = 0;
     if (i < 4) {
-      if (this.yGL[i] != 0) {}
+      if (this.CKz[i] != 0) {}
     }
     for (i = 0;; i = 1)
     {
-      int j = this.yGP / 2;
-      if ((this.yGL[0] != 0) && ((1 == i) || (this.yGQ % 2 == 0))) {
-        paramCanvas.drawLine(this.yGM.left + j, this.yGM.top + this.yGO, this.yGM.left + j, this.yGM.bottom - this.yGO, this.xS);
+      int j = this.CKD / 2;
+      if ((this.CKz[0] != 0) && ((1 == i) || (this.CKE % 2 == 0))) {
+        paramCanvas.drawLine(this.CKA.left + j, this.CKA.top + this.CKC, this.CKA.left + j, this.CKA.bottom - this.CKC, this.xY);
       }
-      if ((this.yGL[1] != 0) && ((1 == i) || (this.yGQ % 2 == 0))) {
-        paramCanvas.drawLine(this.yGM.right - j, this.yGM.top + this.yGO, this.yGM.right - j, this.yGM.bottom - this.yGO, this.xS);
+      if ((this.CKz[1] != 0) && ((1 == i) || (this.CKE % 2 == 0))) {
+        paramCanvas.drawLine(this.CKA.right - j, this.CKA.top + this.CKC, this.CKA.right - j, this.CKA.bottom - this.CKC, this.xY);
       }
-      if ((this.yGL[2] != 0) && ((1 == i) || (this.yGQ % 3 == 0))) {
-        paramCanvas.drawLine(this.yGM.left + this.yGN, this.yGM.top + j, this.yGM.right - this.yGN, this.yGM.top + j, this.xS);
+      if ((this.CKz[2] != 0) && ((1 == i) || (this.CKE % 3 == 0))) {
+        paramCanvas.drawLine(this.CKA.left + this.CKB, this.CKA.top + j, this.CKA.right - this.CKB, this.CKA.top + j, this.xY);
       }
-      if ((this.yGL[3] != 0) && ((1 == i) || (this.yGQ % 3 == 0))) {
-        paramCanvas.drawLine(this.yGM.left + this.yGN, this.yGM.bottom - j, this.yGM.right - this.yGN, this.yGM.bottom - j, this.xS);
+      if ((this.CKz[3] != 0) && ((1 == i) || (this.CKE % 3 == 0))) {
+        paramCanvas.drawLine(this.CKA.left + this.CKB, this.CKA.bottom - j, this.CKA.right - this.CKB, this.CKA.bottom - j, this.xY);
       }
       AppMethodBeat.o(51799);
       return;
@@ -111,8 +111,8 @@ public class HighlightRectSideView
   public void setMaskRect(Rect paramRect)
   {
     AppMethodBeat.i(51796);
-    this.yGM = paramRect;
-    ae.d("MicroMsg.HighlightRectSideView", "rect:%s", new Object[] { paramRect });
+    this.CKA = paramRect;
+    Log.d("MicroMsg.HighlightRectSideView", "rect:%s", new Object[] { paramRect });
     AppMethodBeat.o(51796);
   }
   
@@ -125,10 +125,10 @@ public class HighlightRectSideView
       AppMethodBeat.o(51800);
       return;
     }
-    ae.d("MicroMsg.HighlightRectSideView", "%s, %s, %s, %s", new Object[] { Boolean.valueOf(paramArrayOfBoolean[0]), Boolean.valueOf(paramArrayOfBoolean[1]), Boolean.valueOf(paramArrayOfBoolean[2]), Boolean.valueOf(paramArrayOfBoolean[3]) });
+    Log.d("MicroMsg.HighlightRectSideView", "%s, %s, %s, %s", new Object[] { Boolean.valueOf(paramArrayOfBoolean[0]), Boolean.valueOf(paramArrayOfBoolean[1]), Boolean.valueOf(paramArrayOfBoolean[2]), Boolean.valueOf(paramArrayOfBoolean[3]) });
     while (i < 4)
     {
-      this.yGL[i] = paramArrayOfBoolean[i];
+      this.CKz[i] = paramArrayOfBoolean[i];
       i += 1;
     }
     invalidate();
@@ -137,7 +137,7 @@ public class HighlightRectSideView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.HighlightRectSideView
  * JD-Core Version:    0.7.0.1
  */

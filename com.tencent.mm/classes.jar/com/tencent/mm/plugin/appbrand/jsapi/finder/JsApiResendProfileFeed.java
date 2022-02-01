@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
 import android.os.Parcelable.Creator;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.s;
 
 public final class JsApiResendProfileFeed
-  extends a<r>
+  extends d<s>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "resendProfileFeed";

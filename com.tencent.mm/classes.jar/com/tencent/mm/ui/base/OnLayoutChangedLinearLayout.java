@@ -9,7 +9,7 @@ import com.tencent.mm.ui.widget.DrawnCallBackLinearLayout;
 public class OnLayoutChangedLinearLayout
   extends DrawnCallBackLinearLayout
 {
-  public a JLs;
+  public a OWo;
   
   public OnLayoutChangedLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,25 +26,25 @@ public class OnLayoutChangedLinearLayout
   {
     AppMethodBeat.i(142450);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.JLs != null) {
-      this.JLs.fBC();
+    if (this.OWo != null) {
+      this.OWo.gJw();
     }
     AppMethodBeat.o(142450);
   }
   
   public void setOnChattingLayoutChangedListener(a parama)
   {
-    this.JLs = parama;
+    this.OWo = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void fBC();
+    public abstract void gJw();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.OnLayoutChangedLinearLayout
  * JD-Core Version:    0.7.0.1
  */

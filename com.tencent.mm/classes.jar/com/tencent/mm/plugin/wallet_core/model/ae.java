@@ -2,50 +2,70 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gx;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.hi;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ae
-  extends gx
+  extends hi
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(70432);
-    c.a locala = new c.a();
-    locala.IBL = new Field[6];
-    locala.columns = new String[7];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[11];
+    localMAutoDBInfo.columns = new String[12];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "mNativeUrl";
-    locala.IBN.put("mNativeUrl", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "mNativeUrl";
+    localMAutoDBInfo.colsMap.put("mNativeUrl", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" mNativeUrl TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "mNativeUrl";
-    locala.columns[1] = "hbType";
-    locala.IBN.put("hbType", "INTEGER");
+    localMAutoDBInfo.primaryKey = "mNativeUrl";
+    localMAutoDBInfo.columns[1] = "hbType";
+    localMAutoDBInfo.colsMap.put("hbType", "INTEGER");
     localStringBuilder.append(" hbType INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "receiveAmount";
-    locala.IBN.put("receiveAmount", "LONG");
+    localMAutoDBInfo.columns[2] = "receiveAmount";
+    localMAutoDBInfo.colsMap.put("receiveAmount", "LONG");
     localStringBuilder.append(" receiveAmount LONG");
     localStringBuilder.append(", ");
-    locala.columns[3] = "receiveTime";
-    locala.IBN.put("receiveTime", "LONG");
+    localMAutoDBInfo.columns[3] = "receiveTime";
+    localMAutoDBInfo.colsMap.put("receiveTime", "LONG");
     localStringBuilder.append(" receiveTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[4] = "receiveStatus";
-    locala.IBN.put("receiveStatus", "INTEGER");
+    localMAutoDBInfo.columns[4] = "receiveStatus";
+    localMAutoDBInfo.colsMap.put("receiveStatus", "INTEGER");
     localStringBuilder.append(" receiveStatus INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[5] = "hbStatus";
-    locala.IBN.put("hbStatus", "INTEGER");
+    localMAutoDBInfo.columns[5] = "hbStatus";
+    localMAutoDBInfo.colsMap.put("hbStatus", "INTEGER");
     localStringBuilder.append(" hbStatus INTEGER");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "sender";
+    localMAutoDBInfo.colsMap.put("sender", "TEXT");
+    localStringBuilder.append(" sender TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[7] = "exclusiveUsername";
+    localMAutoDBInfo.colsMap.put("exclusiveUsername", "TEXT");
+    localStringBuilder.append(" exclusiveUsername TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[8] = "sendId";
+    localMAutoDBInfo.colsMap.put("sendId", "TEXT");
+    localStringBuilder.append(" sendId TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[9] = "invalidtime";
+    localMAutoDBInfo.colsMap.put("invalidtime", "INTEGER");
+    localStringBuilder.append(" invalidtime INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[10] = "msgSvrId";
+    localMAutoDBInfo.colsMap.put("msgSvrId", "LONG");
+    localStringBuilder.append(" msgSvrId LONG");
+    localMAutoDBInfo.columns[11] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(70432);
   }
   
@@ -56,7 +76,7 @@ public final class ae
     AppMethodBeat.o(70431);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

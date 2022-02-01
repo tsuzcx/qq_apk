@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.NormalUserHeaderPreference android:key="contact_info_header_normal" android:layout="@layout/u2" />
-    <Preference android:key="contact_info_qcontact_sex" android:layout="@layout/aop" android:title="@string/b8i" />
-    <Preference android:key="contact_info_qcontact_age" android:layout="@layout/aop" android:title="@string/b8g" />
-    <Preference android:key="contact_info_qcontact_birthday" android:layout="@layout/aop" android:title="@string/b8h" />
-    <Preference android:key="contact_info_qcontact_address" android:layout="@layout/aop" android:title="@string/b8f" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoHeaderPreference android:key="contact_info_header_newbizinfo" android:layout="@layout/xg" />
+    <com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoNotFollowPreference android:key="contact_info_biz_add" android:layout="@layout/xs" android:title="@string/b_j" />
+    <com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoFollowPreference android:key="contact_info_biz_go_chatting" android:layout="@layout/x_" />
+    <com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoMenuPreference android:key="contact_info_biz_menu_newbizinfo" android:layout="@layout/wk" />
+    <com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoErrMsgPreference android:key="contact_info_biz_err_msg" android:layout="@layout/wf" />
+    <Preference android:key="contact_info_footer_space" android:layout="@layout/xb" android:title="" />
 </PreferenceScreen>

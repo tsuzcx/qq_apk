@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class og
-  extends b
+  extends IEvent
 {
+  public a dUv;
+  
   public og()
   {
     this((byte)0);
@@ -12,13 +15,22 @@ public final class og
   
   private og(byte paramByte)
   {
-    this.IvZ = false;
+    AppMethodBeat.i(183832);
+    this.dUv = new a();
+    this.order = false;
     this.callback = null;
+    AppMethodBeat.o(183832);
+  }
+  
+  public static final class a
+  {
+    public String dQm;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.og
  * JD-Core Version:    0.7.0.1
  */

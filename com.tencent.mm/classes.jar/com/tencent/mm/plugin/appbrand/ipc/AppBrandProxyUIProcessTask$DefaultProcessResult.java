@@ -11,9 +11,9 @@ public class AppBrandProxyUIProcessTask$DefaultProcessResult
   
   static
   {
-    AppMethodBeat.i(222368);
+    AppMethodBeat.i(226645);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(222368);
+    AppMethodBeat.o(226645);
   }
   
   public int describeContents()
@@ -21,7 +21,7 @@ public class AppBrandProxyUIProcessTask$DefaultProcessResult
     return 0;
   }
   
-  protected final void j(Parcel paramParcel) {}
+  protected final void k(Parcel paramParcel) {}
   
   public void writeToParcel(Parcel paramParcel, int paramInt) {}
 }

@@ -8,17 +8,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.voip.d;
 import com.tencent.mm.plugin.voip.model.h;
 import com.tencent.mm.plugin.voip.model.i.a;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMBaseActivity;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -29,8 +29,8 @@ import java.util.Set;
 public class InviteRemindDialog
   extends MMBaseActivity
 {
-  private TextView CyP;
-  private TextView gqi;
+  private TextView HcE;
+  private TextView hbb;
   private String talker = "";
   private int type = 0;
   
@@ -40,9 +40,9 @@ public class InviteRemindDialog
     Intent localIntent = new Intent(paramContext, InviteRemindDialog.class);
     localIntent.putExtra("InviteRemindDialog_User", paramString);
     localIntent.putExtra("InviteRemindDialog_Type", paramInt);
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/mm/plugin/voip/ui/InviteRemindDialog", "show", "(Landroid/content/Context;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString.mt(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.axQ(), "com/tencent/mm/plugin/voip/ui/InviteRemindDialog", "show", "(Landroid/content/Context;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/voip/ui/InviteRemindDialog", "show", "(Landroid/content/Context;Ljava/lang/String;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(115296);
   }
@@ -58,30 +58,30 @@ public class InviteRemindDialog
   {
     AppMethodBeat.i(115294);
     super.onCreate(paramBundle);
-    setContentView(2131494912);
-    this.gqi = ((TextView)findViewById(2131302313));
-    this.CyP = ((TextView)findViewById(2131302309));
+    setContentView(2131495651);
+    this.hbb = ((TextView)findViewById(2131304708));
+    this.HcE = ((TextView)findViewById(2131304704));
     this.talker = getIntent().getStringExtra("InviteRemindDialog_User");
     this.type = getIntent().getIntExtra("InviteRemindDialog_Type", 0);
     if (this.type == 0)
     {
-      this.gqi.setText(getString(2131764915));
-      this.CyP.setText(getString(2131764873));
+      this.hbb.setText(getString(2131767356));
+      this.HcE.setText(getString(2131767312));
     }
     for (;;)
     {
-      findViewById(2131302314).setOnClickListener(new View.OnClickListener()
+      findViewById(2131304709).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(115292);
           Object localObject = new b();
-          ((b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/InviteRemindDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+          ((b)localObject).bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/InviteRemindDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
           if (InviteRemindDialog.a(InviteRemindDialog.this) != null) {
             try
             {
-              paramAnonymousView = i.a.aEX((String)g.ajR().ajA().get(77829, null));
+              paramAnonymousView = i.a.aUx((String)g.aAh().azQ().get(77829, null));
               if (paramAnonymousView == null) {
                 break label409;
               }
@@ -91,15 +91,15 @@ public class InviteRemindDialog
                   break label373;
                 }
                 localObject = (i.a)paramAnonymousView.get(InviteRemindDialog.a(InviteRemindDialog.this));
-                ((i.a)localObject).ilR += 1;
+                ((i.a)localObject).jgU += 1;
                 paramAnonymousView.put(InviteRemindDialog.a(InviteRemindDialog.this), localObject);
               }
-              g.ajR().ajA().set(77829, i.a.aW(paramAnonymousView));
+              g.aAh().azQ().set(77829, i.a.aV(paramAnonymousView));
               paramAnonymousView = paramAnonymousView.entrySet().iterator();
               while (paramAnonymousView.hasNext())
               {
                 localObject = (i.a)((Map.Entry)paramAnonymousView.next()).getValue();
-                ae.d("MMInviteRemindDialog", "val " + ((i.a)localObject).hitCount + " " + ((i.a)localObject).ilR);
+                Log.d("MMInviteRemindDialog", "val " + ((i.a)localObject).hitCount + " " + ((i.a)localObject).jgU);
               }
               if (InviteRemindDialog.b(InviteRemindDialog.this) != 0) {
                 break label543;
@@ -107,60 +107,60 @@ public class InviteRemindDialog
             }
             catch (Exception paramAnonymousView)
             {
-              ae.printErrStackTrace("MMInviteRemindDialog", paramAnonymousView, "", new Object[0]);
+              Log.printErrStackTrace("MMInviteRemindDialog", paramAnonymousView, "", new Object[0]);
             }
           } else {
             label244:
-            paramAnonymousView = InviteRemindDialog.this.getString(2131764872);
+            paramAnonymousView = InviteRemindDialog.this.getString(2131767311);
           }
           for (;;)
           {
-            paramAnonymousView = new h(InviteRemindDialog.a(InviteRemindDialog.this), paramAnonymousView, x.Bb(InviteRemindDialog.a(InviteRemindDialog.this)));
-            g.ajj().a(paramAnonymousView, 0);
+            paramAnonymousView = new h(InviteRemindDialog.a(InviteRemindDialog.this), paramAnonymousView, ab.JG(InviteRemindDialog.a(InviteRemindDialog.this)));
+            g.azz().a(paramAnonymousView, 0);
             paramAnonymousView = new Intent();
             paramAnonymousView.addFlags(536870912);
             paramAnonymousView.addFlags(67108864);
             paramAnonymousView.putExtra("Chat_User", InviteRemindDialog.a(InviteRemindDialog.this));
-            d.iUz.d(paramAnonymousView, InviteRemindDialog.this);
+            d.jRt.d(paramAnonymousView, InviteRemindDialog.this);
             InviteRemindDialog.this.finish();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/InviteRemindDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(115292);
             return;
             label373:
             localObject = new i.a();
-            ((i.a)localObject).ilR += 1;
+            ((i.a)localObject).jgU += 1;
             paramAnonymousView.put(InviteRemindDialog.a(InviteRemindDialog.this), localObject);
             break;
             label409:
             paramAnonymousView = new HashMap();
             localObject = new i.a();
-            ((i.a)localObject).ilR += 1;
+            ((i.a)localObject).jgU += 1;
             paramAnonymousView.put(InviteRemindDialog.a(InviteRemindDialog.this), localObject);
-            g.ajR().ajA().set(77829, i.a.aW(paramAnonymousView));
+            g.aAh().azQ().set(77829, i.a.aV(paramAnonymousView));
             paramAnonymousView = paramAnonymousView.entrySet().iterator();
             while (paramAnonymousView.hasNext())
             {
               localObject = (i.a)((Map.Entry)paramAnonymousView.next()).getValue();
-              ae.d("MMInviteRemindDialog", "val " + ((i.a)localObject).hitCount + " " + ((i.a)localObject).ilR);
+              Log.d("MMInviteRemindDialog", "val " + ((i.a)localObject).hitCount + " " + ((i.a)localObject).jgU);
             }
             break label244;
             label543:
             if (InviteRemindDialog.b(InviteRemindDialog.this) == 1) {
-              paramAnonymousView = InviteRemindDialog.this.getString(2131764938);
+              paramAnonymousView = InviteRemindDialog.this.getString(2131767379);
             } else {
               paramAnonymousView = null;
             }
           }
         }
       });
-      findViewById(2131302301).setOnClickListener(new View.OnClickListener()
+      findViewById(2131304695).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(115293);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/InviteRemindDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/voip/ui/InviteRemindDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           InviteRemindDialog.this.finish();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/voip/ui/InviteRemindDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(115293);
@@ -170,8 +170,8 @@ public class InviteRemindDialog
       return;
       if (this.type == 1)
       {
-        this.gqi.setText(getString(2131764948));
-        this.CyP.setText(getString(2131764939));
+        this.hbb.setText(getString(2131767389));
+        this.HcE.setText(getString(2131767380));
       }
     }
   }

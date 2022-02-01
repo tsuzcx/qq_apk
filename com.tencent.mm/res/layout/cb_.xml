@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center" android:id="@id/jka" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="@dimen/k4"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:background="@color/BW_97" android:layout_width="fill_parent" android:layout_height="0.6dip" android:layout_alignParentTop="true" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/jk7" android:background="@drawable/b7" android:paddingLeft="12.0dip" android:paddingTop="6.0dip" android:paddingRight="12.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@drawable/b51" android:rotation="180.0" app:iconColor="@color/fm" />
+        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/jk_" android:background="@drawable/b7" android:paddingLeft="12.0dip" android:paddingTop="6.0dip" android:paddingRight="12.0dip" android:paddingBottom="6.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:src="@drawable/b51" app:iconColor="@color/fm" />
+    </LinearLayout>
+</RelativeLayout>

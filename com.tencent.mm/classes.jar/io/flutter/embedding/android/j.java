@@ -1,23 +1,17 @@
 package io.flutter.embedding.android;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.content.Context;
+import android.view.View;
 
-public enum j
+public abstract interface j
 {
-  static
-  {
-    AppMethodBeat.i(197893);
-    MZi = new j("opaque", 0);
-    MZj = new j("transparent", 1);
-    MZk = new j[] { MZi, MZj };
-    AppMethodBeat.o(197893);
-  }
+  public abstract void bc(Runnable paramRunnable);
   
-  private j() {}
+  public abstract View lM(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.embedding.android.j
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.k;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
 
 final class o$1
   implements Runnable
@@ -12,7 +12,7 @@ final class o$1
   public final void run()
   {
     AppMethodBeat.i(19899);
-    g.yxI.kvStat(10675, this.fHw + "," + k.cSM);
+    h.CyF.kvStat(10675, this.gmH + "," + ChannelUtil.channelId);
     AppMethodBeat.o(19899);
   }
 }

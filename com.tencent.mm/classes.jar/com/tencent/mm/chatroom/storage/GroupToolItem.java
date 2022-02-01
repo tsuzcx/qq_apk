@@ -4,13 +4,13 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class GroupToolItem
   implements Parcelable
 {
   public static final Parcelable.Creator<GroupToolItem> CREATOR;
-  public long fOl;
+  public long crj;
   public String path;
   public String username;
   
@@ -25,7 +25,7 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.fOl = 0L;
+    this.crj = 0L;
   }
   
   protected GroupToolItem(Parcel paramParcel)
@@ -33,10 +33,10 @@ public class GroupToolItem
     AppMethodBeat.i(182152);
     this.username = "";
     this.path = "";
-    this.fOl = 0L;
+    this.crj = 0L;
     this.username = paramParcel.readString();
     this.path = paramParcel.readString();
-    this.fOl = paramParcel.readLong();
+    this.crj = paramParcel.readLong();
     AppMethodBeat.o(182152);
   }
   
@@ -44,7 +44,7 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.fOl = 0L;
+    this.crj = 0L;
     this.username = paramString1;
     this.path = paramString2;
   }
@@ -53,25 +53,25 @@ public class GroupToolItem
   {
     this.username = "";
     this.path = "";
-    this.fOl = 0L;
+    this.crj = 0L;
     this.username = paramString1;
     this.path = paramString2;
-    this.fOl = paramLong;
+    this.crj = paramLong;
   }
   
-  public final boolean YA()
+  public final boolean amm()
   {
-    AppMethodBeat.i(217145);
-    boolean bool = bu.lX(this.username, "roomlive@app.origin");
-    AppMethodBeat.o(217145);
+    AppMethodBeat.i(182150);
+    boolean bool = Util.isEqual(this.username, "roomaa@app.origin");
+    AppMethodBeat.o(182150);
     return bool;
   }
   
-  public final boolean Yz()
+  public final boolean amn()
   {
-    AppMethodBeat.i(182150);
-    boolean bool = bu.lX(this.username, "roomaa@app.origin");
-    AppMethodBeat.o(182150);
+    AppMethodBeat.i(194059);
+    boolean bool = Util.isEqual(this.username, "roomlive@app.origin");
+    AppMethodBeat.o(194059);
     return bool;
   }
   
@@ -88,7 +88,7 @@ public class GroupToolItem
       AppMethodBeat.o(182149);
       return false;
     }
-    if (bu.lX(((GroupToolItem)paramObject).username, this.username))
+    if (Util.isEqual(((GroupToolItem)paramObject).username, this.username))
     {
       AppMethodBeat.o(182149);
       return true;
@@ -100,7 +100,7 @@ public class GroupToolItem
   public String toString()
   {
     AppMethodBeat.i(182148);
-    String str = "GroupToolItem{username='" + this.username + '\'' + ", path='" + this.path + '\'' + ", updateTime=" + this.fOl + '}';
+    String str = "GroupToolItem{username='" + this.username + '\'' + ", path='" + this.path + '\'' + ", updateTime=" + this.crj + '}';
     AppMethodBeat.o(182148);
     return str;
   }
@@ -110,13 +110,13 @@ public class GroupToolItem
     AppMethodBeat.i(182151);
     paramParcel.writeString(this.username);
     paramParcel.writeString(this.path);
-    paramParcel.writeLong(this.fOl);
+    paramParcel.writeLong(this.crj);
     AppMethodBeat.o(182151);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.GroupToolItem
  * JD-Core Version:    0.7.0.1
  */

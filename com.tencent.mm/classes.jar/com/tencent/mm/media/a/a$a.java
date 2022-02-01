@@ -1,15 +1,15 @@
 package com.tencent.mm.media.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
 import java.util.Arrays;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/codec/MediaCodecAACCodec$EncoderData;", "", "data", "", "pts", "", "isEnd", "", "([BJZ)V", "getData", "()[B", "()Z", "getPts", "()J", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/codec/MediaCodecAACCodec$EncoderData;", "", "data", "", "pts", "", "isEnd", "", "([BJZ)V", "getData", "()[B", "()Z", "getPts", "()J", "component1", "component2", "component3", "copy", "equals", "other", "hashCode", "", "toString", "", "plugin-mediaeditor_release"})
 public final class a$a
 {
   final byte[] data;
-  final boolean hkx;
+  final boolean idt;
   final long pts;
   
   public a$a(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
@@ -17,7 +17,7 @@ public final class a$a
     AppMethodBeat.i(93468);
     this.data = paramArrayOfByte;
     this.pts = paramLong;
-    this.hkx = paramBoolean;
+    this.idt = paramBoolean;
     AppMethodBeat.o(93468);
   }
   
@@ -29,7 +29,7 @@ public final class a$a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.i(this.data, paramObject.data)) || (this.pts != paramObject.pts) || (this.hkx != paramObject.hkx)) {}
+        if ((!p.j(this.data, paramObject.data)) || (this.pts != paramObject.pts) || (this.idt != paramObject.idt)) {}
       }
     }
     else
@@ -49,14 +49,14 @@ public final class a$a
   public final String toString()
   {
     AppMethodBeat.i(93469);
-    String str = "EncoderData(data=" + Arrays.toString(this.data) + ", pts=" + this.pts + ", isEnd=" + this.hkx + ")";
+    String str = "EncoderData(data=" + Arrays.toString(this.data) + ", pts=" + this.pts + ", isEnd=" + this.idt + ")";
     AppMethodBeat.o(93469);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.a.a.a
  * JD-Core Version:    0.7.0.1
  */

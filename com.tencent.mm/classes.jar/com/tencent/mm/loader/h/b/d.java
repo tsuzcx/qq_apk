@@ -5,11 +5,11 @@ import java.io.InputStream;
 public abstract interface d
   extends b
 {
-  public abstract InputStream arU();
+  public abstract InputStream aKu();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.h.b.d
  * JD-Core Version:    0.7.0.1
  */

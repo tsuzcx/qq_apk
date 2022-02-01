@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class mk
-  extends b
+  extends IEvent
 {
-  public a dAW;
-  public b dAX;
+  public a dRK;
   
   public mk()
   {
@@ -17,23 +15,28 @@ public final class mk
   
   private mk(byte paramByte)
   {
-    AppMethodBeat.i(155373);
-    this.dAW = new a();
-    this.dAX = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(126679);
+    this.dRK = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(155373);
+    AppMethodBeat.o(126679);
   }
   
   public static final class a
   {
-    public Runnable dAY;
-    public Activity dtg;
-  }
-  
-  public static final class b
-  {
-    public boolean doq = false;
+    public String dRL;
+    public String dRM;
+    public int dRN;
+    public String[] dRO;
+    public String dRP;
+    public int dRQ;
+    public int dRR;
+    public String dRS;
+    public long endTime;
+    public String fileId;
+    public int netType;
+    public String path;
+    public long startTime;
   }
 }
 

@@ -5,9 +5,10 @@ import android.os.Handler;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import io.flutter.embedding.engine.a.a;
-import io.flutter.embedding.engine.a.a.1;
-import io.flutter.embedding.engine.a.a.a;
-import java.io.File;
+import io.flutter.embedding.engine.a.a.2;
+import io.flutter.embedding.engine.a.a.b;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class FlutterMain
 {
@@ -28,7 +29,7 @@ public class FlutterMain
       AppMethodBeat.o(9742);
       return;
     }
-    a.gjs().ensureInitializationComplete(paramContext, paramArrayOfString);
+    a.hwT().ensureInitializationComplete(paramContext, paramArrayOfString);
     AppMethodBeat.o(9742);
   }
   
@@ -40,50 +41,50 @@ public class FlutterMain
       AppMethodBeat.o(9743);
       return;
     }
-    a locala = a.gjs();
+    a locala = a.hwT();
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       paramContext = new IllegalStateException("ensureInitializationComplete must be called on the main thread");
       AppMethodBeat.o(9743);
       throw paramContext;
     }
-    if (locala.Nav == null)
+    if (locala.SPf == null)
     {
       paramContext = new IllegalStateException("ensureInitializationComplete must be called after startInitialization");
       AppMethodBeat.o(9743);
       throw paramContext;
     }
-    if (locala.Nat)
+    if (locala.SPe)
     {
       paramHandler.post(paramRunnable);
       AppMethodBeat.o(9743);
       return;
     }
-    new Thread(new a.1(locala, paramContext, paramArrayOfString, paramHandler, paramRunnable)).start();
+    Executors.newSingleThreadExecutor().execute(new a.2(locala, paramContext, paramArrayOfString, paramHandler, paramRunnable));
     AppMethodBeat.o(9743);
   }
   
   public static String findAppBundlePath()
   {
-    AppMethodBeat.i(197824);
-    String str = a.gjs().Nar;
-    AppMethodBeat.o(197824);
+    AppMethodBeat.i(214930);
+    String str = a.hwT().SPc;
+    AppMethodBeat.o(214930);
     return str;
   }
   
   @Deprecated
   public static String findAppBundlePath(Context paramContext)
   {
-    AppMethodBeat.i(197825);
-    paramContext = a.gjs().Nar;
-    AppMethodBeat.o(197825);
+    AppMethodBeat.i(214931);
+    paramContext = a.hwT().SPc;
+    AppMethodBeat.o(214931);
     return paramContext;
   }
   
   public static String getLookupKeyForAsset(String paramString)
   {
     AppMethodBeat.i(9747);
-    paramString = a.gjs().getLookupKeyForAsset(paramString);
+    paramString = a.hwT().btd(paramString);
     AppMethodBeat.o(9747);
     return paramString;
   }
@@ -91,7 +92,7 @@ public class FlutterMain
   public static String getLookupKeyForAsset(String paramString1, String paramString2)
   {
     AppMethodBeat.i(9748);
-    paramString1 = a.gjs().getLookupKeyForAsset("packages" + File.separator + paramString2 + File.separator + paramString1);
+    paramString1 = a.hwT().getLookupKeyForAsset(paramString1, paramString2);
     AppMethodBeat.o(9748);
     return paramString1;
   }
@@ -110,7 +111,7 @@ public class FlutterMain
       AppMethodBeat.o(9740);
       return;
     }
-    a.gjs().startInitialization(paramContext);
+    a.hwT().startInitialization(paramContext);
     AppMethodBeat.o(9740);
   }
   
@@ -122,20 +123,20 @@ public class FlutterMain
       AppMethodBeat.o(9741);
       return;
     }
-    a.a locala = new a.a();
-    locala.ltu = parama.ltu;
-    a.gjs().a(paramContext, locala);
+    a.b localb = new a.b();
+    localb.logTag = parama.logTag;
+    a.hwT().a(paramContext, localb);
     AppMethodBeat.o(9741);
   }
   
   public static final class a
   {
-    String ltu;
+    String logTag;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.view.FlutterMain
  * JD-Core Version:    0.7.0.1
  */

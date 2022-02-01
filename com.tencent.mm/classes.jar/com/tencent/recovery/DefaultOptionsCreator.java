@@ -40,7 +40,7 @@ public class DefaultOptionsCreator
     localBuilder.setRecoveryHandleService(WXRecoveryHandleService.class.getName());
     localBuilder.setRecoveryUploadService(WXRecoveryUploadService.class.getName());
     localBuilder.setClientVersion(getClientVersion(paramContext));
-    localBuilder.setConfigUrl(String.format("http://dldir1.qq.com/weixin/android/recovery-%s.conf", new Object[] { getClientVersion(paramContext) }));
+    localBuilder.setConfigUrl(String.format(WXConstantsRecovery.RecoveryConfigURL, new Object[] { getClientVersion(paramContext) }));
     localBuilder.setUUID(WXUtil.getWXUin(paramContext));
     localBuilder.setDebugMode(true);
     localBuilder.setUploadInterval(600000L);

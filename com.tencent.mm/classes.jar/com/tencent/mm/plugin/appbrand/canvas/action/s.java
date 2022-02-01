@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.canvas.action;
 
 import android.graphics.Canvas;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontSizeActionArg;
-import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class s
@@ -15,8 +15,8 @@ public final class s
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, int paramInt)
   {
     AppMethodBeat.i(144923);
-    paramd.jWq.setTextSize(paramInt);
-    paramd.jWp.setTextSize(paramInt);
+    paramd.kZm.setTextSize(paramInt);
+    paramd.kZl.setTextSize(paramInt);
     AppMethodBeat.o(144923);
     return true;
   }
@@ -48,7 +48,7 @@ public final class s
     return bool;
   }
   
-  public final BaseDrawActionArg bdS()
+  public final BaseDrawActionArg bzj()
   {
     AppMethodBeat.i(144921);
     SetFontSizeActionArg localSetFontSizeActionArg = new SetFontSizeActionArg();
@@ -63,7 +63,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.s
  * JD-Core Version:    0.7.0.1
  */

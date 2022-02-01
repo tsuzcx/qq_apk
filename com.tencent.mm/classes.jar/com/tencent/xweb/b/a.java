@@ -6,17 +6,17 @@ import java.io.File;
 public final class a
   implements d
 {
-  File Iyu;
+  File mFile;
   
   public a(File paramFile)
   {
-    this.Iyu = paramFile;
+    this.mFile = paramFile;
   }
   
   public final boolean delete()
   {
     AppMethodBeat.i(183503);
-    boolean bool = this.Iyu.delete();
+    boolean bool = this.mFile.delete();
     AppMethodBeat.o(183503);
     return bool;
   }
@@ -24,7 +24,7 @@ public final class a
   public final boolean exists()
   {
     AppMethodBeat.i(183502);
-    boolean bool = this.Iyu.exists();
+    boolean bool = this.mFile.exists();
     AppMethodBeat.o(183502);
     return bool;
   }
@@ -32,16 +32,16 @@ public final class a
   public final String getPath()
   {
     AppMethodBeat.i(183499);
-    String str = this.Iyu.getPath();
+    String str = this.mFile.getPath();
     AppMethodBeat.o(183499);
     return str;
   }
   
-  public final d[] gfZ()
+  public final d[] htr()
   {
     int i = 0;
     AppMethodBeat.i(183501);
-    File[] arrayOfFile = this.Iyu.listFiles();
+    File[] arrayOfFile = this.mFile.listFiles();
     if ((arrayOfFile == null) || (arrayOfFile.length == 0))
     {
       AppMethodBeat.o(183501);
@@ -60,7 +60,7 @@ public final class a
   public final boolean isDirectory()
   {
     AppMethodBeat.i(183500);
-    boolean bool = this.Iyu.isDirectory();
+    boolean bool = this.mFile.isDirectory();
     AppMethodBeat.o(183500);
     return bool;
   }
@@ -68,14 +68,14 @@ public final class a
   public final String[] list()
   {
     AppMethodBeat.i(183504);
-    String[] arrayOfString = this.Iyu.list();
+    String[] arrayOfString = this.mFile.list();
     AppMethodBeat.o(183504);
     return arrayOfString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.b.a
  * JD-Core Version:    0.7.0.1
  */

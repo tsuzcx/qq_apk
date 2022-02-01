@@ -5,24 +5,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.al.ag;
 import com.tencent.mm.al.f;
 import com.tencent.mm.api.c.b;
-import com.tencent.mm.model.ao;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storagebase.h;
+import com.tencent.mm.model.as;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class a
-  extends ao
+  extends as
 {
   public final String getTag()
   {
     return "MicroMsg.App.BizInfoDataTransfer";
   }
   
-  public final boolean os(int paramInt)
+  public final boolean rT(int paramInt)
   {
     return (paramInt != 0) && (paramInt < 604372991);
   }
@@ -30,11 +28,11 @@ public final class a
   public final void transfer(int paramInt)
   {
     AppMethodBeat.i(20475);
-    ae.d("MicroMsg.App.BizInfoDataTransfer", "the previous version is %d", new Object[] { Integer.valueOf(paramInt) });
+    Log.d("MicroMsg.App.BizInfoDataTransfer", "the previous version is %d", new Object[] { Integer.valueOf(paramInt) });
     if ((paramInt != 0) && (paramInt < 604372991))
     {
-      g.yxI.dD(336, 12);
-      bc.aCg();
+      com.tencent.mm.plugin.report.service.h.CyF.dN(336, 12);
+      bg.aVF();
       Object localObject2 = com.tencent.mm.model.c.getDataDB();
       Object localObject3 = new StringBuilder();
       ((StringBuilder)localObject3).append("select BizInfo.username, BizInfo.extInfo");
@@ -44,15 +42,15 @@ public final class a
       ((StringBuilder)localObject3).append(" and ( rcontact.verifyFlag & 8 ) != 0 ");
       String str = ((StringBuilder)localObject3).toString();
       Object localObject1 = new ArrayList();
-      ae.d("MicroMsg.App.BizInfoDataTransfer", "sql %s", new Object[] { str });
-      localObject2 = ((h)localObject2).a(((StringBuilder)localObject3).toString(), null, 2);
+      Log.d("MicroMsg.App.BizInfoDataTransfer", "sql %s", new Object[] { str });
+      localObject2 = ((com.tencent.mm.storagebase.h)localObject2).rawQuery(((StringBuilder)localObject3).toString(), null, 2);
       if (localObject2 != null)
       {
         while (((Cursor)localObject2).moveToNext())
         {
           localObject3 = new com.tencent.mm.api.c();
           ((com.tencent.mm.api.c)localObject3).convertFrom((Cursor)localObject2);
-          if (((com.tencent.mm.api.c)localObject3).bX(false).getServiceType() == 1) {
+          if (((com.tencent.mm.api.c)localObject3).cG(false).getServiceType() == 1) {
             ((List)localObject1).add(((com.tencent.mm.api.c)localObject3).field_username);
           }
         }
@@ -69,8 +67,8 @@ public final class a
           ((StringBuilder)localObject2).append(" or username = '").append((String)localObject3).append("'");
         }
         localObject1 = ((StringBuilder)localObject2).toString();
-        ae.d("MicroMsg.App.BizInfoDataTransfer", "update sql %s", new Object[] { localObject1 });
-        ag.aGp().execSQL("BizInfo", (String)localObject1);
+        Log.d("MicroMsg.App.BizInfoDataTransfer", "update sql %s", new Object[] { localObject1 });
+        ag.bah().execSQL("BizInfo", (String)localObject1);
       }
     }
     AppMethodBeat.o(20475);
@@ -78,7 +76,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ao.a
  * JD-Core Version:    0.7.0.1
  */

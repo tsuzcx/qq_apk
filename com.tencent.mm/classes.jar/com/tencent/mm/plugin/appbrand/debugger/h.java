@@ -4,23 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.launching.c.e;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.f;
-import d.g;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/debugger/MockScanCodeUrl;", "Lcom/tencent/mm/plugin/appbrand/debugger/DebuggerShell$DebuggerAction;", "()V", "handler", "Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "getHandler", "()Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "handler$delegate", "Lkotlin/Lazy;", "name", "", "onAction", "", "intent", "Landroid/content/Intent;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/debugger/MockScanCodeUrl;", "Lcom/tencent/mm/plugin/appbrand/debugger/DebuggerShell$DebuggerAction;", "()V", "handler", "Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "getHandler", "()Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "handler$delegate", "Lkotlin/Lazy;", "name", "", "onAction", "", "intent", "Landroid/content/Intent;", "plugin-appbrand-integration_release"})
 public final class h
   implements DebuggerShell.a
 {
-  private final f keb;
+  private final f lhN;
   
   public h()
   {
     AppMethodBeat.i(50350);
-    this.keb = g.O((a)a.kec);
+    this.lhN = g.ah((a)a.lhO);
     AppMethodBeat.o(50350);
   }
   
@@ -32,7 +32,7 @@ public final class h
       paramIntent = paramIntent.getStringExtra("url");
       if (paramIntent != null)
       {
-        ((e)this.keb.getValue()).a(ak.getContext(), paramIntent, 1011, new Bundle(), null);
+        ((e)this.lhN.getValue()).a(MMApplicationContext.getContext(), paramIntent, 1011, new Bundle(), null);
         AppMethodBeat.o(50349);
         return;
       }
@@ -45,17 +45,17 @@ public final class h
     return "MockScanCodeUrl";
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/launching/links/DebugCmdLinkOpener;", "invoke"})
   static final class a
     extends q
     implements a<e>
   {
-    public static final a kec;
+    public static final a lhO;
     
     static
     {
       AppMethodBeat.i(50347);
-      kec = new a();
+      lhO = new a();
       AppMethodBeat.o(50347);
     }
     

@@ -1,214 +1,220 @@
 package com.tencent.mm.plugin.biz.b;
 
-import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.j;
-import d.f;
-import d.g.a.a;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.al.ag;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.ae;
+import com.tencent.mm.storage.x;
+import com.tencent.mm.storage.z;
+import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/biz/util/TestBiz;", "", "()V", "TAG", "", "crashMMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "getCrashMMKV", "()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "crashMMKV$delegate", "Lkotlin/Lazy;", "maxViewItemCrashTimes", "", "mmkv", "getMmkv", "mmkv$delegate", "needReportIdKey", "", "getNeedReportIdKey", "()Z", "setNeedReportIdKey", "(Z)V", "noOftenReadMode", "noOftenReadMode$annotations", "getNoOftenReadMode", "setNoOftenReadMode", "noVideoChannelMode", "noVideoChannelMode$annotations", "getNoVideoChannelMode", "setNoVideoChannelMode", "open", "getOpen", "open$delegate", "canPreloadNow", "crashTimes", "defaultInterval", "", "preloadLastTimeKey", "reportKey", "postProcessShowView", "", "viewId", "preProcessShowView", "view", "Landroid/view/View;", "plugin-biz_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/biz/util/BizPayAlbumLogic;", "", "()V", "TAG", "", "getAlbumInfo", "Lcom/tencent/mm/storage/BizPayAlbum;", "msgContent", "isDataValid", "", "values", "", "onBizPayAlbumNotify", "", "addMsgInfo", "Lcom/tencent/mm/modelbase/IMessageExtension$AddMsgInfo;", "plugin-biz_release"})
 public final class b
 {
-  private static boolean nUA;
-  public static final b nUB;
-  private static final f nUv;
-  private static final f nUw;
-  private static boolean nUx;
-  private static boolean nUy;
-  public static final f nUz;
+  public static final b pfn;
   
   static
   {
-    AppMethodBeat.i(188769);
-    nUB = new b();
-    nUv = d.g.O((a)b.nUD);
-    nUw = d.g.O((a)a.nUC);
-    nUz = d.g.O((a)c.nUE);
-    nUA = true;
-    AppMethodBeat.o(188769);
+    AppMethodBeat.i(212455);
+    pfn = new b();
+    AppMethodBeat.o(212455);
   }
   
-  private static String Xm(String paramString)
+  public static x ahh(String paramString)
   {
-    AppMethodBeat.i(188765);
-    p.h(paramString, "$this$crashTimes");
-    paramString = "ViewItemCrashTimes_".concat(String.valueOf(paramString));
-    AppMethodBeat.o(188765);
-    return paramString;
-  }
-  
-  public static void Xn(String paramString)
-  {
-    AppMethodBeat.i(188767);
-    p.h(paramString, "viewId");
-    bNw().encode(Xm(paramString), 0);
-    AppMethodBeat.o(188767);
-  }
-  
-  public static boolean a(int paramInt, long paramLong1, String paramString, long paramLong2)
-  {
-    AppMethodBeat.i(188768);
-    p.h(paramString, "preloadLastTimeKey");
-    ae.d("MicroMsg.TestBiz", "do canPreloadNow %d", new Object[] { Long.valueOf(paramLong1) });
-    long l = paramLong1;
-    if (paramInt > 0)
+    Object localObject1 = null;
+    AppMethodBeat.i(212454);
+    x localx = new x();
+    Object localObject2 = (CharSequence)paramString;
+    if ((localObject2 == null) || (n.aL((CharSequence)localObject2))) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      if (nUA)
-      {
-        com.tencent.mm.plugin.webcanvas.g localg = com.tencent.mm.plugin.webcanvas.g.DQG;
-        com.tencent.mm.plugin.webcanvas.g.CH(paramLong2);
-        nUA = false;
-      }
-      ae.e("MicroMsg.TestBiz", "canPreloadNow hasCrashFlag last time crashTimes=" + paramInt + ", defaultInterval=" + paramLong1);
-      if (paramInt != 1) {
-        break label180;
-      }
-      paramLong2 = 21600000L;
-      if (!j.DEBUG) {
-        break label217;
-      }
+      AppMethodBeat.o(212454);
+      return localx;
     }
-    label180:
-    label217:
-    for (l = paramLong1;; l = paramLong2)
+    i = n.a((CharSequence)paramString, "<sysmsg", 0, false, 6);
+    if (i != -1)
     {
-      paramLong2 = bNw().getLong(paramString, 0L);
-      paramLong1 = System.currentTimeMillis();
-      paramLong2 = Math.abs(paramLong1 - paramLong2);
-      if (paramLong2 < l)
+      if (paramString == null)
       {
-        ae.d("MicroMsg.TestBiz", "canPreloadNow delta(" + paramLong2 + ") < interval(" + l + ')');
-        AppMethodBeat.o(188768);
-        return false;
-        if (paramInt == 2)
-        {
-          paramLong2 = 86400000L;
-          break;
+        paramString = new t("null cannot be cast to non-null type java.lang.String");
+        AppMethodBeat.o(212454);
+        throw paramString;
+      }
+      localObject1 = paramString.substring(i);
+      p.g(localObject1, "(this as java.lang.String).substring(startIndex)");
+      localObject1 = XmlParser.parseXml((String)localObject1, "sysmsg", null);
+    }
+    if (localObject1 == null)
+    {
+      Log.e("MicroMsg.BizPayAlbumLogic", "XmlParser values is null, msgContent %s", new Object[] { paramString });
+      AppMethodBeat.o(212454);
+      return localx;
+    }
+    localObject2 = (String)((Map)localObject1).get(".sysmsg.BizNotification.BizAccount.UserName");
+    paramString = (String)localObject2;
+    if (localObject2 == null) {
+      paramString = "";
+    }
+    p.h(paramString, "<set-?>");
+    localx.userName = paramString;
+    localObject2 = (String)((Map)localObject1).get(".sysmsg.BizNotification.BizAccount.NickName");
+    paramString = (String)localObject2;
+    if (localObject2 == null) {
+      paramString = "";
+    }
+    p.h(paramString, "<set-?>");
+    localx.nickName = paramString;
+    localObject2 = (String)((Map)localObject1).get(".sysmsg.BizNotification.plain");
+    paramString = (String)localObject2;
+    if (localObject2 == null) {
+      paramString = "";
+    }
+    p.h(paramString, "<set-?>");
+    localx.iAq = paramString;
+    localObject2 = (String)((Map)localObject1).get(".sysmsg.BizNotification.BizAccount.HeadImgUrl");
+    paramString = (String)localObject2;
+    if (localObject2 == null) {
+      paramString = "";
+    }
+    p.h(paramString, "<set-?>");
+    localx.iAR = paramString;
+    localObject2 = (String)((Map)localObject1).get(".sysmsg.BizNotification.AppMsg.Title");
+    paramString = (String)localObject2;
+    if (localObject2 == null) {
+      paramString = "";
+    }
+    p.h(paramString, "<set-?>");
+    localx.title = paramString;
+    localObject1 = (String)((Map)localObject1).get(".sysmsg.BizNotification.AppMsg.WebUrl");
+    paramString = (String)localObject1;
+    if (localObject1 == null) {
+      paramString = "";
+    }
+    p.h(paramString, "<set-?>");
+    localx.lDS = paramString;
+    AppMethodBeat.o(212454);
+    return localx;
+  }
+  
+  public static void g(Map<String, String> paramMap, String paramString)
+  {
+    AppMethodBeat.i(212453);
+    if ((paramString == null) || (paramMap == null))
+    {
+      Log.w("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify data invalid");
+      AppMethodBeat.o(212453);
+      return;
+    }
+    if (!g.aAc())
+    {
+      Log.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify acc not ready");
+      AppMethodBeat.o(212453);
+      return;
+    }
+    Log.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify msgContent=".concat(String.valueOf(paramString)));
+    int i;
+    if (paramMap == null) {
+      i = 0;
+    }
+    while (i == 0)
+    {
+      Log.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify data invalid");
+      AppMethodBeat.o(212453);
+      return;
+      localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.BizAccount.UserName");
+      if ((localObject == null) || (n.aL((CharSequence)localObject))) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label124;
         }
-        paramLong2 = 604800000L;
+        i = 0;
         break;
       }
-      bNw().encode(paramString, paramLong1);
-      AppMethodBeat.o(188768);
-      return true;
-    }
-  }
-  
-  public static ay bNw()
-  {
-    AppMethodBeat.i(188764);
-    ay localay = (ay)nUw.getValue();
-    AppMethodBeat.o(188764);
-    return localay;
-  }
-  
-  public static final boolean bNx()
-  {
-    return nUx;
-  }
-  
-  public static final boolean bNy()
-  {
-    return nUy;
-  }
-  
-  public static boolean d(String paramString, View paramView)
-  {
-    AppMethodBeat.i(188766);
-    p.h(paramString, "viewId");
-    int i = bNw().decodeInt(Xm(paramString));
-    if (i > 2)
-    {
-      ae.e("MicroMsg.TestBiz", "PreProcessShowView " + paramString + " crash too much times(" + i + "), can not show now!!");
-      if (paramView != null) {
-        paramView.setVisibility(8);
+      label124:
+      localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.BizAccount.NickName");
+      if ((localObject == null) || (n.aL((CharSequence)localObject))) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label166;
+        }
+        i = 0;
+        break;
       }
-      AppMethodBeat.o(188766);
-      return false;
+      label166:
+      localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.BizAccount.HeadImgUrl");
+      if ((localObject == null) || (n.aL((CharSequence)localObject))) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label208;
+        }
+        i = 0;
+        break;
+      }
+      label208:
+      localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.plain");
+      if ((localObject == null) || (n.aL((CharSequence)localObject))) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label250;
+        }
+        i = 0;
+        break;
+      }
+      label250:
+      localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.AppMsg.Title");
+      if ((localObject == null) || (n.aL((CharSequence)localObject))) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label292;
+        }
+        i = 0;
+        break;
+      }
+      label292:
+      localObject = (CharSequence)paramMap.get(".sysmsg.BizNotification.AppMsg.WebUrl");
+      if ((localObject == null) || (n.aL((CharSequence)localObject))) {}
+      for (i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label334;
+        }
+        i = 0;
+        break;
+      }
+      label334:
+      i = 1;
     }
-    bNw().encode(Xm(paramString), i + 1);
-    AppMethodBeat.o(188766);
-    return true;
-  }
-  
-  public static final void jd(boolean paramBoolean)
-  {
-    nUx = paramBoolean;
-  }
-  
-  public static final void je(boolean paramBoolean)
-  {
-    nUy = paramBoolean;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class a
-    extends q
-    implements a<ay>
-  {
-    public static final a nUC;
-    
-    static
-    {
-      AppMethodBeat.i(188759);
-      nUC = new a();
-      AppMethodBeat.o(188759);
-    }
-    
-    a()
-    {
-      super();
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
-  static final class b
-    extends q
-    implements a<ay>
-  {
-    public static final b nUD;
-    
-    static
-    {
-      AppMethodBeat.i(188761);
-      nUD = new b();
-      AppMethodBeat.o(188761);
-    }
-    
-    b()
-    {
-      super();
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
-    implements a<Boolean>
-  {
-    public static final c nUE;
-    
-    static
-    {
-      AppMethodBeat.i(188763);
-      nUE = new c();
-      AppMethodBeat.o(188763);
-    }
-    
-    c()
-    {
-      super();
-    }
+    Object localObject = new z();
+    ((z)localObject).field_msgId = ag.bap().gBo();
+    ((z)localObject).field_msgSvrId = 0L;
+    ((z)localObject).field_type = 10100;
+    ((z)localObject).field_talker = ((String)paramMap.get(".sysmsg.BizNotification.BizAccount.UserName"));
+    ((z)localObject).field_talkerId = 0;
+    ((z)localObject).field_createTime = bp.aVP();
+    ((z)localObject).nc(1);
+    ((z)localObject).field_status = 3;
+    ((z)localObject).field_content = paramString;
+    boolean bool = ag.bap().B((z)localObject);
+    Log.i("MicroMsg.BizPayAlbumLogic", "onBizPayAlbumNotify result: %b, username: %s, msgid=" + ((z)localObject).field_msgId, new Object[] { Boolean.valueOf(bool), ((z)localObject).field_talker });
+    AppMethodBeat.o(212453);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.biz.b.b
  * JD-Core Version:    0.7.0.1
  */

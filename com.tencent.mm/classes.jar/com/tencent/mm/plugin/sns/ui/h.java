@@ -8,17 +8,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class h
   extends LinearLayout
 {
-  private int Agg;
-  private LinearLayout Agh;
+  private int EoC;
+  private LinearLayout EoD;
+  private int bva;
   private Context context;
-  private int nZU;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(97792);
-    this.nZU = 0;
-    this.Agg = 6;
+    this.bva = 0;
+    this.EoC = 6;
     this.context = paramContext;
     setOrientation(1);
     AppMethodBeat.o(97792);
@@ -27,32 +27,32 @@ public final class h
   public final void addView(View paramView)
   {
     AppMethodBeat.i(97793);
-    if (this.nZU % this.Agg == 0)
+    if (this.bva % this.EoC == 0)
     {
-      this.Agh = new LinearLayout(this.context);
-      this.Agh.setOrientation(0);
-      this.Agh.addView(paramView);
-      super.addView(this.Agh);
+      this.EoD = new LinearLayout(this.context);
+      this.EoD.setOrientation(0);
+      this.EoD.addView(paramView);
+      super.addView(this.EoD);
     }
     for (;;)
     {
-      this.nZU += 1;
+      this.bva += 1;
       AppMethodBeat.o(97793);
       return;
-      this.Agh.addView(paramView);
+      this.EoD.addView(paramView);
     }
   }
   
   public final void setLineMaxCounte(int paramInt)
   {
     if (paramInt > 0) {
-      this.Agg = paramInt;
+      this.EoC = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.h
  * JD-Core Version:    0.7.0.1
  */

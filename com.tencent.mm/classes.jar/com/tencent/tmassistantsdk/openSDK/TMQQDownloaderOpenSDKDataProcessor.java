@@ -4,7 +4,7 @@ import android.content.Context;
 import android.text.TextUtils;
 import com.qq.taf.jce.JceStruct;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.downloadclient.IAssistantOnActionListener;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadOpenSDKClient;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadSDKManager;
@@ -235,7 +235,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       catch (Throwable paramArrayList)
       {
-        ae.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
+        Log.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
         AppMethodBeat.o(102129);
         return null;
       }
@@ -293,7 +293,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       catch (Throwable paramTMQQDownloaderOpenSDKParam)
       {
-        ae.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
+        Log.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
         AppMethodBeat.o(102130);
         return null;
       }
@@ -345,7 +345,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       catch (Throwable paramArrayList)
       {
-        ae.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
+        Log.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramArrayList, "", new Object[0]);
         AppMethodBeat.o(102128);
         return false;
       }
@@ -382,7 +382,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       catch (Throwable paramTMQQDownloaderOpenSDKParam)
       {
-        ae.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
+        Log.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramTMQQDownloaderOpenSDKParam, "", new Object[0]);
         AppMethodBeat.o(102126);
         return false;
       }
@@ -413,7 +413,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
       }
       catch (Throwable paramString)
       {
-        ae.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramString, "", new Object[0]);
+        Log.printErrStackTrace("QQDownloaderOpenSDKDataProcessor", paramString, "", new Object[0]);
         AppMethodBeat.o(102127);
         return false;
       }
@@ -536,7 +536,7 @@ public class TMQQDownloaderOpenSDKDataProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDKDataProcessor
  * JD-Core Version:    0.7.0.1
  */

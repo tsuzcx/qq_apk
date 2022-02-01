@@ -7,13 +7,13 @@ import android.util.Pair;
 public abstract interface SchemeResolver
   extends Parcelable
 {
-  public abstract a fTc();
+  public abstract a hel();
   
   public static abstract interface a
   {
-    public abstract Pair<FileSystem.b, String> a(g paramg, Uri paramUri);
+    public abstract Pair<FileSystem.b, String> a(k paramk, Uri paramUri);
     
-    public abstract SchemeResolver fTd();
+    public abstract SchemeResolver hem();
   }
 }
 

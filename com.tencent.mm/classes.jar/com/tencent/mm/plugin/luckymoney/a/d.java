@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.luckymoney.a;
 
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.UUID;
 
 public final class d
 {
   public static String sessionId;
   public static long startTime;
-  public static String vuP;
-  public static boolean vuQ = false;
+  public static String yOZ;
+  public static boolean yPa = false;
   
-  public static void apW(String paramString)
+  public static void aDp(String paramString)
   {
-    vuP = paramString;
+    yOZ = paramString;
   }
   
-  public static void bkx()
+  public static void bFT()
   {
     AppMethodBeat.i(168791);
     sessionId = UUID.randomUUID().toString();
@@ -29,35 +29,35 @@ public final class d
   public static void resetSession()
   {
     sessionId = null;
-    vuP = null;
+    yOZ = null;
     startTime = -1L;
   }
   
-  public static void tW(int paramInt)
+  public static void xV(int paramInt)
   {
     AppMethodBeat.i(168792);
-    if (bu.isNullOrNil(sessionId))
+    if (Util.isNullOrNil(sessionId))
     {
       AppMethodBeat.o(168792);
       return;
     }
-    if ((!vuQ) && ((paramInt == 9) || (paramInt == 10) || (paramInt == 11)))
+    if ((!yPa) && ((paramInt == 9) || (paramInt == 10) || (paramInt == 11)))
     {
       AppMethodBeat.o(168792);
       return;
     }
     if ((paramInt == 9) || (paramInt == 10) || (paramInt == 11)) {
-      vuQ = false;
+      yPa = false;
     }
     long l1 = SystemClock.elapsedRealtime() / 1000L;
     long l2 = startTime;
-    g.yxI.f(18889, new Object[] { Integer.valueOf(paramInt), sessionId, Long.valueOf(l1 - l2), vuP });
+    h.CyF.a(18889, new Object[] { Integer.valueOf(paramInt), sessionId, Long.valueOf(l1 - l2), yOZ });
     AppMethodBeat.o(168792);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.a.d
  * JD-Core Version:    0.7.0.1
  */

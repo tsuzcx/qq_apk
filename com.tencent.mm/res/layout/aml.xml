@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/th" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp"
+<LinearLayout style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@android:id/list" android:paddingBottom="15.0dip" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="#00000000" android:divider="#00000000" android:dividerHeight="0.0px" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/lz">
+        <ImageView android:id="@id/d_2" android:src="@drawable/bdo" style="@style/k2" />
+        <TextView android:text="正在获取Wi-Fi信息..." style="@style/ko" />
+    </LinearLayout>
 </LinearLayout>

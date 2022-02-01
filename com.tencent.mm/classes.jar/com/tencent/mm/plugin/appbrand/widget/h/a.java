@@ -1,49 +1,106 @@
 package com.tencent.mm.plugin.appbrand.widget.h;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.view.ViewGroup;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.style.LineHeightSpan;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"traverseFixAccessibility", "", "parent", "Landroid/view/ViewGroup;", "plugin-appbrand-integration_release"})
 public final class a
+  implements LineHeightSpan
 {
-  public static final void m(ViewGroup paramViewGroup)
+  private final int gravity;
+  public int height;
+  
+  public a(float paramFloat, int paramInt)
   {
-    AppMethodBeat.i(51454);
-    if (paramViewGroup == null)
+    AppMethodBeat.i(193743);
+    this.gravity = (paramInt & 0x70);
+    setHeight(paramFloat);
+    AppMethodBeat.o(193743);
+  }
+  
+  public final boolean aX(float paramFloat)
+  {
+    AppMethodBeat.i(138150);
+    if (this.height != Math.round(paramFloat))
     {
-      AppMethodBeat.o(51454);
+      AppMethodBeat.o(138150);
+      return true;
+    }
+    AppMethodBeat.o(138150);
+    return false;
+  }
+  
+  public final void chooseHeight(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    AppMethodBeat.i(138152);
+    if (-paramFontMetricsInt.ascent > this.height)
+    {
+      paramInt1 = -this.height;
+      paramFontMetricsInt.ascent = paramInt1;
+      paramFontMetricsInt.top = paramInt1;
+      paramFontMetricsInt.descent = 0;
+      paramFontMetricsInt.bottom = 0;
+      AppMethodBeat.o(138152);
       return;
     }
-    int j = paramViewGroup.getChildCount();
-    if (j >= 0)
+    if (-paramFontMetricsInt.ascent + paramFontMetricsInt.descent > this.height)
     {
-      int i = 0;
-      View localView = paramViewGroup.getChildAt(i);
-      if ((localView instanceof ViewGroup)) {
-        m((ViewGroup)localView);
-      }
-      for (;;)
-      {
-        if (i == j) {
-          break label73;
-        }
-        i += 1;
-        break;
-        if ((localView instanceof RecyclerView)) {
-          localView.setAccessibilityDelegate(null);
-        }
-      }
+      paramFontMetricsInt.descent = paramFontMetricsInt.bottom;
+      paramInt1 = paramFontMetricsInt.descent - this.height;
+      paramFontMetricsInt.ascent = paramInt1;
+      paramFontMetricsInt.top = paramInt1;
+      AppMethodBeat.o(138152);
+      return;
     }
-    label73:
-    AppMethodBeat.o(51454);
+    if (-paramFontMetricsInt.ascent + paramFontMetricsInt.bottom > this.height)
+    {
+      paramFontMetricsInt.top = paramFontMetricsInt.ascent;
+      paramFontMetricsInt.bottom = (paramFontMetricsInt.ascent + this.height);
+      AppMethodBeat.o(138152);
+      return;
+    }
+    if (-paramFontMetricsInt.top + paramFontMetricsInt.bottom > this.height)
+    {
+      paramFontMetricsInt.top = (paramFontMetricsInt.bottom - this.height);
+      AppMethodBeat.o(138152);
+      return;
+    }
+    paramInt1 = this.height - (-paramFontMetricsInt.ascent + paramFontMetricsInt.descent);
+    if (this.gravity == 48)
+    {
+      paramFontMetricsInt.descent += paramInt1;
+      paramFontMetricsInt.bottom = (paramInt1 + paramFontMetricsInt.bottom);
+      AppMethodBeat.o(138152);
+      return;
+    }
+    if (this.gravity == 80)
+    {
+      paramFontMetricsInt.top -= paramInt1;
+      paramFontMetricsInt.ascent -= paramInt1;
+      AppMethodBeat.o(138152);
+      return;
+    }
+    if (this.gravity == 16)
+    {
+      paramInt1 = Math.round(paramInt1 / 2.0F);
+      paramFontMetricsInt.top -= paramInt1;
+      paramFontMetricsInt.ascent -= paramInt1;
+      paramFontMetricsInt.bottom += paramInt1;
+      paramFontMetricsInt.descent = (paramInt1 + paramFontMetricsInt.descent);
+    }
+    AppMethodBeat.o(138152);
+  }
+  
+  public final void setHeight(float paramFloat)
+  {
+    AppMethodBeat.i(138153);
+    this.height = Math.round(paramFloat);
+    AppMethodBeat.o(138153);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.h.a
  * JD-Core Version:    0.7.0.1
  */

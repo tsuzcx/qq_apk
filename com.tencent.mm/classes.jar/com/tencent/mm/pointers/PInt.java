@@ -2,6 +2,7 @@ package com.tencent.mm.pointers;
 
 public class PInt
 {
+  private byte _hellAccFlag_;
   public int value;
   
   public PInt() {}

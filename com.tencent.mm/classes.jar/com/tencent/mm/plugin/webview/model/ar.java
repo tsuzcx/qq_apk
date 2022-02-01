@@ -8,14 +8,14 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.net.Uri;
 import android.os.Bundle;
-import com.tencent.luggage.h.g;
+import com.tencent.luggage.h.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.ui.tools.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.plugin.webview.luggage.c.b;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.xweb.WebResourceRequest;
 import com.tencent.xweb.WebResourceResponse;
 import java.io.ByteArrayInputStream;
@@ -31,26 +31,26 @@ import java.util.concurrent.TimeUnit;
 
 public class ar
 {
-  private int Emm;
-  private ArrayList<String> Emn;
-  private ArrayList<String> Emo;
-  public List<Integer> Emp;
-  private final Map<String, Boolean> Emq;
-  private final Set<String> Emr;
-  private String Ems;
+  private int IZm;
+  private ArrayList<String> IZn;
+  private ArrayList<String> IZo;
+  public List<Integer> IZp;
+  private final Map<String, Boolean> IZq;
+  private final Set<String> IZr;
+  private String IZs;
   private Context mContext;
   
   public ar(Context paramContext)
   {
     AppMethodBeat.i(79032);
-    this.Emm = -1;
-    this.Ems = null;
+    this.IZm = -1;
+    this.IZs = null;
     this.mContext = paramContext;
-    this.Emp = new ArrayList();
-    this.Emq = new HashMap();
-    this.Emr = new HashSet();
-    this.Emn = new ArrayList();
-    this.Emo = new ArrayList();
+    this.IZp = new ArrayList();
+    this.IZq = new HashMap();
+    this.IZr = new HashSet();
+    this.IZn = new ArrayList();
+    this.IZo = new ArrayList();
     AppMethodBeat.o(79032);
   }
   
@@ -58,30 +58,30 @@ public class ar
   {
     AppMethodBeat.i(79035);
     Iterator localIterator;
-    if (this.Emm == -1) {
+    if (this.IZm == -1) {
       try
       {
-        parame = parame.k(31, null);
+        parame = parame.j(31, null);
         if (parame != null)
         {
-          this.Emm = parame.getInt("webview_ad_intercept_control_flag");
-          this.Emn = parame.getStringArrayList("webview_ad_intercept_whitelist_domins");
-          this.Emo = parame.getStringArrayList("webview_ad_intercept_blacklist_domins");
+          this.IZm = parame.getInt("webview_ad_intercept_control_flag");
+          this.IZn = parame.getStringArrayList("webview_ad_intercept_whitelist_domins");
+          this.IZo = parame.getStringArrayList("webview_ad_intercept_blacklist_domins");
           parame = new StringBuilder();
           parame.append("white domain list :\n");
-          localIterator = this.Emn.iterator();
+          localIterator = this.IZn.iterator();
           while (localIterator.hasNext()) {
             parame.append((String)localIterator.next()).append("\n");
           }
         }
-        if (this.Emm != 0) {
+        if (this.IZm != 0) {
           break label213;
         }
       }
       catch (Exception parame)
       {
-        ae.e("MicroMsg.WebViewResourceInterrupter", "get ad domain failed : %s", new Object[] { parame.getMessage() });
-        this.Emm = 0;
+        Log.e("MicroMsg.WebViewResourceInterrupter", "get ad domain failed : %s", new Object[] { parame.getMessage() });
+        this.IZm = 0;
       }
     }
     for (;;)
@@ -89,77 +89,77 @@ public class ar
       AppMethodBeat.o(79035);
       return false;
       parame.append("black list domain list : \n");
-      localIterator = this.Emo.iterator();
+      localIterator = this.IZo.iterator();
       while (localIterator.hasNext()) {
         parame.append((String)localIterator.next()).append("\n");
       }
-      ae.i("MicroMsg.WebViewResourceInterrupter", parame.toString());
+      Log.i("MicroMsg.WebViewResourceInterrupter", parame.toString());
     }
     label213:
     parame = Uri.parse(paramString).getHost();
-    ae.d("MicroMsg.WebViewResourceInterrupter", "check has verified this domain : %s, is in black list = %b", new Object[] { parame, this.Emq.get(parame) });
-    if (bu.isNullOrNil(parame))
+    Log.d("MicroMsg.WebViewResourceInterrupter", "check has verified this domain : %s, is in black list = %b", new Object[] { parame, this.IZq.get(parame) });
+    if (Util.isNullOrNil(parame))
     {
       AppMethodBeat.o(79035);
       return false;
     }
-    if (this.Emq.containsKey(parame))
+    if (this.IZq.containsKey(parame))
     {
-      boolean bool = ((Boolean)this.Emq.get(parame)).booleanValue();
+      boolean bool = ((Boolean)this.IZq.get(parame)).booleanValue();
       AppMethodBeat.o(79035);
       return bool;
     }
     String str;
-    if ((this.Emn != null) && (this.Emn.size() > 0))
+    if ((this.IZn != null) && (this.IZn.size() > 0))
     {
-      localIterator = this.Emn.iterator();
+      localIterator = this.IZn.iterator();
       while (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        if ((!bu.isNullOrNil(str)) && (parame.contains(str)))
+        if ((!Util.isNullOrNil(str)) && (parame.contains(str)))
         {
-          this.Emq.put(parame, Boolean.FALSE);
-          ae.i("MicroMsg.WebViewResourceInterrupter", "white list, ignore check the url");
+          this.IZq.put(parame, Boolean.FALSE);
+          Log.i("MicroMsg.WebViewResourceInterrupter", "white list, ignore check the url");
           AppMethodBeat.o(79035);
           return false;
         }
       }
     }
-    if ((this.Emo != null) && (this.Emo.size() > 0))
+    if ((this.IZo != null) && (this.IZo.size() > 0))
     {
-      localIterator = this.Emo.iterator();
+      localIterator = this.IZo.iterator();
       while (localIterator.hasNext())
       {
         str = (String)localIterator.next();
-        if ((!bu.isNullOrNil(str)) && (parame.contains(str)))
+        if ((!Util.isNullOrNil(str)) && (parame.contains(str)))
         {
-          if (this.Emm == 1)
+          if (this.IZm == 1)
           {
-            this.Emq.put(parame, Boolean.TRUE);
-            ae.e("MicroMsg.WebViewResourceInterrupter", "black list, should stop the request, domain = %s, url = %s", new Object[] { str, paramString });
+            this.IZq.put(parame, Boolean.TRUE);
+            Log.e("MicroMsg.WebViewResourceInterrupter", "black list, should stop the request, domain = %s, url = %s", new Object[] { str, paramString });
             AppMethodBeat.o(79035);
             return true;
           }
-          if (this.Emm == 2)
+          if (this.IZm == 2)
           {
-            ae.i("MicroMsg.WebViewResourceInterrupter", "black list, just get html content and report, domain = %s, url = %s", new Object[] { str, paramString });
-            this.Emr.add(parame);
-            this.Emq.put(parame, Boolean.FALSE);
+            Log.i("MicroMsg.WebViewResourceInterrupter", "black list, just get html content and report, domain = %s, url = %s", new Object[] { str, paramString });
+            this.IZr.add(parame);
+            this.IZq.put(parame, Boolean.FALSE);
             AppMethodBeat.o(79035);
             return false;
           }
         }
       }
     }
-    this.Emq.put(parame, Boolean.FALSE);
+    this.IZq.put(parame, Boolean.FALSE);
     AppMethodBeat.o(79035);
     return false;
   }
   
-  private boolean aIP(String paramString)
+  private boolean aYQ(String paramString)
   {
     AppMethodBeat.i(79034);
-    if ((bu.isNullOrNil(paramString)) || (!com.tencent.mm.plugin.webview.luggage.c.b.VG(paramString)))
+    if ((Util.isNullOrNil(paramString)) || (!b.afC(paramString)))
     {
       AppMethodBeat.o(79034);
       return false;
@@ -167,28 +167,28 @@ public class ar
     paramString = paramString.toLowerCase();
     if ((!paramString.contains("localhost")) && (!paramString.contains("127.0.0.1")) && (!paramString.contains("::1")))
     {
-      if (this.Ems == null) {
-        this.Ems = g.Fy();
+      if (this.IZs == null) {
+        this.IZs = h.Ph();
       }
-      if (!paramString.contains(this.Ems)) {}
+      if (!paramString.contains(this.IZs)) {}
     }
     else
     {
-      if ((this.Emp != null) && (this.Emp.size() > 0))
+      if ((this.IZp != null) && (this.IZp.size() > 0))
       {
-        Iterator localIterator = this.Emp.iterator();
+        Iterator localIterator = this.IZp.iterator();
         while (localIterator.hasNext())
         {
           int i = ((Integer)localIterator.next()).intValue();
           if ((paramString.contains("localhost:".concat(String.valueOf(i)))) || (paramString.contains("127.0.0.1:".concat(String.valueOf(i)))))
           {
-            ae.i("MicroMsg.WebViewResourceInterrupter", "int white list : %s, port = %d", new Object[] { paramString, Integer.valueOf(i) });
+            Log.i("MicroMsg.WebViewResourceInterrupter", "int white list : %s, port = %d", new Object[] { paramString, Integer.valueOf(i) });
             AppMethodBeat.o(79034);
             return false;
           }
         }
       }
-      ae.e("MicroMsg.WebViewResourceInterrupter", "not allowed to load local url : %s", new Object[] { paramString });
+      Log.e("MicroMsg.WebViewResourceInterrupter", "not allowed to load local url : %s", new Object[] { paramString });
       AppMethodBeat.o(79034);
       return true;
     }
@@ -200,18 +200,18 @@ public class ar
   {
     AppMethodBeat.i(79033);
     if (paramWebResourceRequest != null) {}
-    for (paramString = paramWebResourceRequest.getUrl().toString(); bu.isNullOrNil(paramString); paramString = null)
+    for (paramString = paramWebResourceRequest.getUrl().toString(); Util.isNullOrNil(paramString); paramString = null)
     {
-      ae.e("MicroMsg.WebViewResourceInterrupter", "url is null, return ");
+      Log.e("MicroMsg.WebViewResourceInterrupter", "url is null, return ");
       AppMethodBeat.o(79033);
       return null;
     }
     if (paramString.startsWith("weixin://resourceid/"))
     {
-      ae.i("MicroMsg.WebViewResourceInterrupter", "it is wechat resource is, should intercept");
+      Log.i("MicroMsg.WebViewResourceInterrupter", "it is wechat resource is, should intercept");
       try
       {
-        paramString = h.decodeFile(parame.fX(paramString, 2));
+        paramString = BitmapUtil.decodeFile(parame.gu(paramString, 2));
         paramWebResourceRequest = new ByteArrayOutputStream();
         paramString.compress(Bitmap.CompressFormat.JPEG, 90, paramWebResourceRequest);
         paramString = new WebResourceResponse("image/*", "utf-8", new ByteArrayInputStream(paramWebResourceRequest.toByteArray()));
@@ -220,21 +220,21 @@ public class ar
       }
       catch (Exception paramString)
       {
-        ae.e("MicroMsg.WebViewResourceInterrupter", "get webview jssdk resource failed %s", new Object[] { paramString.getMessage() });
+        Log.e("MicroMsg.WebViewResourceInterrupter", "get webview jssdk resource failed %s", new Object[] { paramString.getMessage() });
         AppMethodBeat.o(79033);
         return null;
       }
     }
-    if ((paramBoolean) && (aIP(paramString)))
+    if ((paramBoolean) && (aYQ(paramString)))
     {
-      ae.f("MicroMsg.WebViewResourceInterrupter", "local url, interrupt request : %s", new Object[] { paramString });
+      Log.f("MicroMsg.WebViewResourceInterrupter", "local url, interrupt request : %s", new Object[] { paramString });
       paramString = new WebResourceResponse("image/*", "utf-8", new ByteArrayInputStream(new byte[0]));
       AppMethodBeat.o(79033);
       return paramString;
     }
     if (a(paramString, parame))
     {
-      ae.e("MicroMsg.WebViewResourceInterrupter", "this is a ad request, interrupt request : %s", new Object[] { paramString });
+      Log.e("MicroMsg.WebViewResourceInterrupter", "this is a ad request, interrupt request : %s", new Object[] { paramString });
       paramString = new WebResourceResponse("image/*", "utf-8", new ByteArrayInputStream(new byte[0]));
       AppMethodBeat.o(79033);
       return paramString;
@@ -246,70 +246,70 @@ public class ar
       {
         long l1;
         long l2;
-        if (d.isEnabled())
+        if (com.tencent.mm.plugin.webview.ui.tools.d.isEnabled())
         {
-          paramWebResourceRequest = d.eVB();
+          paramWebResourceRequest = com.tencent.mm.plugin.webview.ui.tools.d.geu();
           parame = Uri.parse(paramString);
           String str = parame.getHost();
-          if ((paramWebResourceRequest != null) && (str != null) && (paramWebResourceRequest.equals(aj.ej(str + com.tencent.mm.plugin.normsg.a.b.wJt.auA("\003&+21")))))
+          if ((paramWebResourceRequest != null) && (str != null) && (paramWebResourceRequest.equals(MD5Util.getMD5String(str + com.tencent.mm.plugin.normsg.a.d.AEF.aIJ("\003&+21")))))
           {
             paramWebResourceRequest = parame.getQueryParameterNames();
             if ((paramWebResourceRequest != null) && (paramWebResourceRequest.contains(ApplicationInfo.class.getSimpleName().substring(2, 3))))
             {
-              ae.w("MicroMsg.WebViewResourceInterrupter", "[tomys] wv, something wicked this way comes.");
-              if (bu.isNullOrNil(paramString)) {
-                ae.w("MicroMsg.WebViewReporter", "p1 is null, skip rest logit.");
+              Log.w("MicroMsg.WebViewResourceInterrupter", "[tomys] wv, something wicked this way comes.");
+              if (Util.isNullOrNil(paramString)) {
+                Log.w("MicroMsg.WebViewReporter", "p1 is null, skip rest logit.");
               }
             }
             else
             {
-              if (!d.isBlock()) {
+              if (!com.tencent.mm.plugin.webview.ui.tools.d.isBlock()) {
                 continue;
               }
-              ae.w("MicroMsg.WebViewResourceInterrupter", "[tomys] wv, block is enabled.");
-              if (!bu.isNullOrNil(paramString)) {
+              Log.w("MicroMsg.WebViewResourceInterrupter", "[tomys] wv, block is enabled.");
+              if (!Util.isNullOrNil(paramString)) {
                 break label613;
               }
-              ae.w("MicroMsg.WebViewReporter", "p1 is null, skip rest logit.");
+              Log.w("MicroMsg.WebViewReporter", "p1 is null, skip rest logit.");
               paramString = new WebResourceResponse("text/plain", "UTF-8", new ByteArrayInputStream(new byte[0]));
               AppMethodBeat.o(79033);
               return paramString;
             }
             try
             {
-              paramWebResourceRequest = ak.getContext().getSharedPreferences("qar_cycle_rec", 0);
-              parame = "qaj_tick_" + aj.ej(paramString);
+              paramWebResourceRequest = MMApplicationContext.getContext().getSharedPreferences("qar_cycle_rec", 0);
+              parame = "qaj_tick_" + MD5Util.getMD5String(paramString);
               l1 = paramWebResourceRequest.getLong(parame, 0L);
               l2 = System.currentTimeMillis();
               if (l2 - l1 <= TimeUnit.HOURS.toMillis(24L)) {
                 continue;
               }
               paramWebResourceRequest.edit().putLong(parame, l2).commit();
-              com.tencent.mm.plugin.report.e.ywz.a(16195, paramString.replace(",", "%2C"), false, true);
-              com.tencent.mm.plugin.report.e.ywz.idkeyStat(943L, 0L, 1L, false);
+              com.tencent.mm.plugin.report.e.Cxv.a(16195, paramString.replace(",", "%2C"), false, true);
+              com.tencent.mm.plugin.report.e.Cxv.idkeyStat(943L, 0L, 1L, false);
             }
             catch (Throwable paramWebResourceRequest)
             {
-              ae.printErrStackTrace("MicroMsg.WebViewReporter", paramWebResourceRequest, "", new Object[0]);
+              Log.printErrStackTrace("MicroMsg.WebViewReporter", paramWebResourceRequest, "", new Object[0]);
             }
             continue;
           }
         }
         try
         {
-          paramWebResourceRequest = ak.getContext().getSharedPreferences("qar_cycle_rec", 0);
-          paramString = "qab_tick_" + aj.ej(paramString);
+          paramWebResourceRequest = MMApplicationContext.getContext().getSharedPreferences("qar_cycle_rec", 0);
+          paramString = "qab_tick_" + MD5Util.getMD5String(paramString);
           l1 = paramWebResourceRequest.getLong(paramString, 0L);
           l2 = System.currentTimeMillis();
           if (l2 - l1 > TimeUnit.HOURS.toMillis(24L))
           {
             paramWebResourceRequest.edit().putLong(paramString, l2).commit();
-            com.tencent.mm.plugin.report.e.ywz.idkeyStat(943L, 1L, 1L, false);
+            com.tencent.mm.plugin.report.e.Cxv.idkeyStat(943L, 1L, 1L, false);
           }
         }
         catch (Throwable paramString)
         {
-          ae.printErrStackTrace("MicroMsg.WebViewReporter", paramString, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.WebViewReporter", paramString, "", new Object[0]);
         }
       }
       catch (Throwable paramString)
@@ -320,22 +320,22 @@ public class ar
     }
   }
   
-  public final boolean aIQ(String paramString)
+  public final boolean aYR(String paramString)
   {
-    AppMethodBeat.i(198140);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(211002);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(198140);
+      AppMethodBeat.o(211002);
       return false;
     }
     paramString = Uri.parse(paramString).getHost();
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(198140);
+      AppMethodBeat.o(211002);
       return false;
     }
-    boolean bool = this.Emr.remove(paramString);
-    AppMethodBeat.o(198140);
+    boolean bool = this.IZr.remove(paramString);
+    AppMethodBeat.o(211002);
     return bool;
   }
 }

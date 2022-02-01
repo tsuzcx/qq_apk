@@ -118,14 +118,14 @@ public class ToolTipPopup
     if (this.mAnchorViewRef.get() != null)
     {
       this.mPopupContent = new PopupContentView(this.mContext);
-      ((TextView)this.mPopupContent.findViewById(2131298504)).setText(this.mText);
+      ((TextView)this.mPopupContent.findViewById(2131298923)).setText(this.mText);
       if (this.mStyle != ToolTipPopup.Style.BLUE) {
         break label263;
       }
-      this.mPopupContent.bodyFrame.setBackgroundResource(2131231813);
-      this.mPopupContent.bottomArrow.setImageResource(2131231814);
-      this.mPopupContent.topArrow.setImageResource(2131231815);
-      this.mPopupContent.xOut.setImageResource(2131231816);
+      this.mPopupContent.bodyFrame.setBackgroundResource(2131231893);
+      this.mPopupContent.bottomArrow.setImageResource(2131231894);
+      this.mPopupContent.topArrow.setImageResource(2131231895);
+      this.mPopupContent.xOut.setImageResource(2131231896);
     }
     for (;;)
     {
@@ -161,10 +161,10 @@ public class ToolTipPopup
       AppMethodBeat.o(40489);
       return;
       label263:
-      this.mPopupContent.bodyFrame.setBackgroundResource(2131231809);
-      this.mPopupContent.bottomArrow.setImageResource(2131231810);
-      this.mPopupContent.topArrow.setImageResource(2131231811);
-      this.mPopupContent.xOut.setImageResource(2131231812);
+      this.mPopupContent.bodyFrame.setBackgroundResource(2131231889);
+      this.mPopupContent.bottomArrow.setImageResource(2131231890);
+      this.mPopupContent.topArrow.setImageResource(2131231891);
+      this.mPopupContent.xOut.setImageResource(2131231892);
     }
   }
   
@@ -187,11 +187,11 @@ public class ToolTipPopup
     private void init()
     {
       AppMethodBeat.i(40482);
-      LayoutInflater.from(getContext()).inflate(2131493571, this);
-      this.topArrow = ((ImageView)findViewById(2131298505));
-      this.bottomArrow = ((ImageView)findViewById(2131298503));
-      this.bodyFrame = findViewById(2131298496);
-      this.xOut = ((ImageView)findViewById(2131298497));
+      LayoutInflater.from(getContext()).inflate(2131493687, this);
+      this.topArrow = ((ImageView)findViewById(2131298924));
+      this.bottomArrow = ((ImageView)findViewById(2131298922));
+      this.bodyFrame = findViewById(2131298915);
+      this.xOut = ((ImageView)findViewById(2131298916));
       AppMethodBeat.o(40482);
     }
     
@@ -214,7 +214,7 @@ public class ToolTipPopup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.login.widget.ToolTipPopup
  * JD-Core Version:    0.7.0.1
  */

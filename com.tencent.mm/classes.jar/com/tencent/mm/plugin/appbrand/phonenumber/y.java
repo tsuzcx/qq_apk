@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberReportAction;", "", "jsonStr", "", "(Ljava/lang/String;)V", "isBindPhone", "", "bindSuccess", "getPhoneNumberCount", "clickConfirmCount", "clickDenyCount", "clickCancelCount", "confirmBindedPhoneCount", "confirmUnBindPhoneCount", "clickInfoCount", "clickUseOtherPhoneCount", "clickManagePhoneCount", "clickGetVerifyCodeCount", "getVerifyCodeSuccessCount", "getVerifyCodeFailedCount", "clickAddPhoneDoneCount", "addPhoneSuccessCount", "addPhoneFailedCount", "addPhoneAndSaveCount", "addPhoneNotSaveCount", "clickAddPhoneOnManagePageCount", "deletePhoneCount", "deletePhoneSuccessCount", "deletePhoneFailedCount", "verifyCodeCount", "verifyCodeSuccessCount", "verifyCodeFailedCount", "(JJJJJJJJJJJJJJJJJJJJJJJJJJ)V", "getAddPhoneAndSaveCount", "()J", "setAddPhoneAndSaveCount", "(J)V", "getAddPhoneFailedCount", "setAddPhoneFailedCount", "getAddPhoneNotSaveCount", "setAddPhoneNotSaveCount", "getAddPhoneSuccessCount", "setAddPhoneSuccessCount", "getBindSuccess", "setBindSuccess", "getClickAddPhoneDoneCount", "setClickAddPhoneDoneCount", "getClickAddPhoneOnManagePageCount", "setClickAddPhoneOnManagePageCount", "getClickCancelCount", "setClickCancelCount", "getClickConfirmCount", "setClickConfirmCount", "getClickDenyCount", "setClickDenyCount", "getClickGetVerifyCodeCount", "setClickGetVerifyCodeCount", "getClickInfoCount", "setClickInfoCount", "getClickManagePhoneCount", "setClickManagePhoneCount", "getClickUseOtherPhoneCount", "setClickUseOtherPhoneCount", "getConfirmBindedPhoneCount", "setConfirmBindedPhoneCount", "getConfirmUnBindPhoneCount", "setConfirmUnBindPhoneCount", "getDeletePhoneCount", "setDeletePhoneCount", "getDeletePhoneFailedCount", "setDeletePhoneFailedCount", "getDeletePhoneSuccessCount", "setDeletePhoneSuccessCount", "getGetPhoneNumberCount", "setGetPhoneNumberCount", "getGetVerifyCodeFailedCount", "setGetVerifyCodeFailedCount", "getGetVerifyCodeSuccessCount", "setGetVerifyCodeSuccessCount", "setBindPhone", "getVerifyCodeCount", "setVerifyCodeCount", "setVerifyCodeFailedCount", "setVerifyCodeSuccessCount", "report", "", "toString", "luggage-wechat-full-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberReportAction;", "", "jsonStr", "", "(Ljava/lang/String;)V", "isBindPhone", "", "bindSuccess", "getPhoneNumberCount", "clickConfirmCount", "clickDenyCount", "clickCancelCount", "confirmBindedPhoneCount", "confirmUnBindPhoneCount", "clickInfoCount", "clickUseOtherPhoneCount", "clickManagePhoneCount", "clickGetVerifyCodeCount", "getVerifyCodeSuccessCount", "getVerifyCodeFailedCount", "clickAddPhoneDoneCount", "addPhoneSuccessCount", "addPhoneFailedCount", "addPhoneAndSaveCount", "addPhoneNotSaveCount", "clickAddPhoneOnManagePageCount", "deletePhoneCount", "deletePhoneSuccessCount", "deletePhoneFailedCount", "verifyCodeCount", "verifyCodeSuccessCount", "verifyCodeFailedCount", "(JJJJJJJJJJJJJJJJJJJJJJJJJJ)V", "getAddPhoneAndSaveCount", "()J", "setAddPhoneAndSaveCount", "(J)V", "getAddPhoneFailedCount", "setAddPhoneFailedCount", "getAddPhoneNotSaveCount", "setAddPhoneNotSaveCount", "getAddPhoneSuccessCount", "setAddPhoneSuccessCount", "getBindSuccess", "setBindSuccess", "getClickAddPhoneDoneCount", "setClickAddPhoneDoneCount", "getClickAddPhoneOnManagePageCount", "setClickAddPhoneOnManagePageCount", "getClickCancelCount", "setClickCancelCount", "getClickConfirmCount", "setClickConfirmCount", "getClickDenyCount", "setClickDenyCount", "getClickGetVerifyCodeCount", "setClickGetVerifyCodeCount", "getClickInfoCount", "setClickInfoCount", "getClickManagePhoneCount", "setClickManagePhoneCount", "getClickUseOtherPhoneCount", "setClickUseOtherPhoneCount", "getConfirmBindedPhoneCount", "setConfirmBindedPhoneCount", "getConfirmUnBindPhoneCount", "setConfirmUnBindPhoneCount", "getDeletePhoneCount", "setDeletePhoneCount", "getDeletePhoneFailedCount", "setDeletePhoneFailedCount", "getDeletePhoneSuccessCount", "setDeletePhoneSuccessCount", "getGetPhoneNumberCount", "setGetPhoneNumberCount", "getGetVerifyCodeFailedCount", "setGetVerifyCodeFailedCount", "getGetVerifyCodeSuccessCount", "setGetVerifyCodeSuccessCount", "setBindPhone", "getVerifyCodeCount", "setVerifyCodeCount", "setVerifyCodeFailedCount", "setVerifyCodeSuccessCount", "report", "", "toString", "luggage-wechat-full-sdk_release"})
 public final class y
 {
-  public long mpS = 0L;
-  public long mpT = 0L;
-  public long mpU = 0L;
-  public long mpV = 0L;
-  public long mpW = 0L;
-  public long mpX = 0L;
-  public long mpY = 0L;
-  public long mpZ = 0L;
-  public long mqa = 0L;
-  public long mqb = 0L;
-  public long mqc = 0L;
-  public long mqd = 0L;
-  long mqe = 0L;
-  public long mqf = 0L;
-  public long mqg = 0L;
-  public long mqh = 0L;
-  public long mqi = 0L;
-  public long mqj = 0L;
-  public long mqk = 0L;
-  public long mql = 0L;
-  public long mqm = 0L;
-  public long mqn = 0L;
-  public long mqo = 0L;
-  public long mqp = 0L;
-  public long mqq = 0L;
-  public long mqr = 0L;
+  public long nAE = 0L;
+  public long nAF = 0L;
+  public long nAG = 0L;
+  public long nAH = 0L;
+  public long nAI = 0L;
+  public long nAJ = 0L;
+  public long nAK = 0L;
+  public long nAL = 0L;
+  public long nAM = 0L;
+  public long nAN = 0L;
+  public long nAO = 0L;
+  public long nAP = 0L;
+  long nAQ = 0L;
+  public long nAR = 0L;
+  public long nAS = 0L;
+  public long nAT = 0L;
+  public long nAU = 0L;
+  public long nAV = 0L;
+  public long nAW = 0L;
+  public long nAX = 0L;
+  public long nAY = 0L;
+  public long nAZ = 0L;
+  public long nBa = 0L;
+  public long nBb = 0L;
+  public long nBc = 0L;
+  public long nBd = 0L;
   
   private y() {}
   
@@ -44,32 +44,32 @@ public final class y
     try
     {
       paramString = new JSONObject(paramString);
-      this.mpS = paramString.optLong("isBindPhone", 0L);
-      this.mpT = paramString.optLong("bindSuccess", 0L);
-      this.mpU = paramString.optLong("getPhoneNumberCount", 0L);
-      this.mpV = paramString.optLong("clickConfirmCount", 0L);
-      this.mpW = paramString.optLong("clickDenyCount", 0L);
-      this.mpX = paramString.optLong("clickCancelCount", 0L);
-      this.mpY = paramString.optLong("confirmBindedPhoneCount", 0L);
-      this.mpZ = paramString.optLong("confirmUnBindPhoneCount", 0L);
-      this.mqa = paramString.optLong("clickInfoCount", 0L);
-      this.mqb = paramString.optLong("clickUseOtherPhoneCount", 0L);
-      this.mqc = paramString.optLong("clickManagePhoneCount", 0L);
-      this.mqd = paramString.optLong("clickGetVerifyCodeCount", 0L);
-      this.mqe = paramString.optLong("getVerifyCodeSuccessCount", 0L);
-      this.mqf = paramString.optLong("getVerifyCodeFailedCount", 0L);
-      this.mqg = paramString.optLong("clickAddPhoneDoneCount", 0L);
-      this.mqh = paramString.optLong("addPhoneSuccessCount", 0L);
-      this.mqi = paramString.optLong("addPhoneFailedCount", 0L);
-      this.mqj = paramString.optLong("addPhoneAndSaveCount", 0L);
-      this.mqk = paramString.optLong("addPhoneNotSaveCount", 0L);
-      this.mql = paramString.optLong("clickAddPhoneOnManagePageCount", 0L);
-      this.mqm = paramString.optLong("deletePhoneCount", 0L);
-      this.mqn = paramString.optLong("deletePhoneSuccessCount", 0L);
-      this.mqo = paramString.optLong("deletePhoneFailedCount", 0L);
-      this.mqp = paramString.optLong("verifyCodeCount", 0L);
-      this.mqq = paramString.optLong("verifyCodeSuccessCount", 0L);
-      this.mqr = paramString.optLong("verifyCodeFailedCount", 0L);
+      this.nAE = paramString.optLong("isBindPhone", 0L);
+      this.nAF = paramString.optLong("bindSuccess", 0L);
+      this.nAG = paramString.optLong("getPhoneNumberCount", 0L);
+      this.nAH = paramString.optLong("clickConfirmCount", 0L);
+      this.nAI = paramString.optLong("clickDenyCount", 0L);
+      this.nAJ = paramString.optLong("clickCancelCount", 0L);
+      this.nAK = paramString.optLong("confirmBindedPhoneCount", 0L);
+      this.nAL = paramString.optLong("confirmUnBindPhoneCount", 0L);
+      this.nAM = paramString.optLong("clickInfoCount", 0L);
+      this.nAN = paramString.optLong("clickUseOtherPhoneCount", 0L);
+      this.nAO = paramString.optLong("clickManagePhoneCount", 0L);
+      this.nAP = paramString.optLong("clickGetVerifyCodeCount", 0L);
+      this.nAQ = paramString.optLong("getVerifyCodeSuccessCount", 0L);
+      this.nAR = paramString.optLong("getVerifyCodeFailedCount", 0L);
+      this.nAS = paramString.optLong("clickAddPhoneDoneCount", 0L);
+      this.nAT = paramString.optLong("addPhoneSuccessCount", 0L);
+      this.nAU = paramString.optLong("addPhoneFailedCount", 0L);
+      this.nAV = paramString.optLong("addPhoneAndSaveCount", 0L);
+      this.nAW = paramString.optLong("addPhoneNotSaveCount", 0L);
+      this.nAX = paramString.optLong("clickAddPhoneOnManagePageCount", 0L);
+      this.nAY = paramString.optLong("deletePhoneCount", 0L);
+      this.nAZ = paramString.optLong("deletePhoneSuccessCount", 0L);
+      this.nBa = paramString.optLong("deletePhoneFailedCount", 0L);
+      this.nBb = paramString.optLong("verifyCodeCount", 0L);
+      this.nBc = paramString.optLong("verifyCodeSuccessCount", 0L);
+      this.nBd = paramString.optLong("verifyCodeFailedCount", 0L);
       AppMethodBeat.o(169647);
       return;
     }
@@ -82,8 +82,8 @@ public final class y
   public final void report()
   {
     AppMethodBeat.i(169646);
-    u localu = u.mps;
-    u.bxp().a(this);
+    u localu = u.nAe;
+    u.bTz().a(this);
     AppMethodBeat.o(169646);
   }
   
@@ -91,32 +91,32 @@ public final class y
   {
     AppMethodBeat.i(169645);
     Object localObject = new JSONObject();
-    ((JSONObject)localObject).put("isBindPhone", this.mpS);
-    ((JSONObject)localObject).put("bindSuccess", this.mpT);
-    ((JSONObject)localObject).put("getPhoneNumberCount", this.mpU);
-    ((JSONObject)localObject).put("clickConfirmCount", this.mpV);
-    ((JSONObject)localObject).put("clickDenyCount", this.mpW);
-    ((JSONObject)localObject).put("clickCancelCount", this.mpX);
-    ((JSONObject)localObject).put("confirmBindedPhoneCount", this.mpY);
-    ((JSONObject)localObject).put("confirmUnBindPhoneCount", this.mpZ);
-    ((JSONObject)localObject).put("clickInfoCount", this.mqa);
-    ((JSONObject)localObject).put("clickUseOtherPhoneCount", this.mqb);
-    ((JSONObject)localObject).put("clickManagePhoneCount", this.mqc);
-    ((JSONObject)localObject).put("clickGetVerifyCodeCount", this.mqd);
-    ((JSONObject)localObject).put("getVerifyCodeSuccessCount", this.mqe);
-    ((JSONObject)localObject).put("getVerifyCodeFailedCount", this.mqf);
-    ((JSONObject)localObject).put("clickAddPhoneDoneCount", this.mqg);
-    ((JSONObject)localObject).put("addPhoneSuccessCount", this.mqh);
-    ((JSONObject)localObject).put("addPhoneFailedCount", this.mqi);
-    ((JSONObject)localObject).put("addPhoneAndSaveCount", this.mqj);
-    ((JSONObject)localObject).put("addPhoneNotSaveCount", this.mqk);
-    ((JSONObject)localObject).put("clickAddPhoneOnManagePageCount", this.mql);
-    ((JSONObject)localObject).put("deletePhoneCount", this.mqm);
-    ((JSONObject)localObject).put("deletePhoneSuccessCount", this.mqn);
-    ((JSONObject)localObject).put("deletePhoneFailedCount", this.mqo);
-    ((JSONObject)localObject).put("verifyCodeCount", this.mqp);
-    ((JSONObject)localObject).put("verifyCodeSuccessCount", this.mqq);
-    ((JSONObject)localObject).put("verifyCodeFailedCount", this.mqr);
+    ((JSONObject)localObject).put("isBindPhone", this.nAE);
+    ((JSONObject)localObject).put("bindSuccess", this.nAF);
+    ((JSONObject)localObject).put("getPhoneNumberCount", this.nAG);
+    ((JSONObject)localObject).put("clickConfirmCount", this.nAH);
+    ((JSONObject)localObject).put("clickDenyCount", this.nAI);
+    ((JSONObject)localObject).put("clickCancelCount", this.nAJ);
+    ((JSONObject)localObject).put("confirmBindedPhoneCount", this.nAK);
+    ((JSONObject)localObject).put("confirmUnBindPhoneCount", this.nAL);
+    ((JSONObject)localObject).put("clickInfoCount", this.nAM);
+    ((JSONObject)localObject).put("clickUseOtherPhoneCount", this.nAN);
+    ((JSONObject)localObject).put("clickManagePhoneCount", this.nAO);
+    ((JSONObject)localObject).put("clickGetVerifyCodeCount", this.nAP);
+    ((JSONObject)localObject).put("getVerifyCodeSuccessCount", this.nAQ);
+    ((JSONObject)localObject).put("getVerifyCodeFailedCount", this.nAR);
+    ((JSONObject)localObject).put("clickAddPhoneDoneCount", this.nAS);
+    ((JSONObject)localObject).put("addPhoneSuccessCount", this.nAT);
+    ((JSONObject)localObject).put("addPhoneFailedCount", this.nAU);
+    ((JSONObject)localObject).put("addPhoneAndSaveCount", this.nAV);
+    ((JSONObject)localObject).put("addPhoneNotSaveCount", this.nAW);
+    ((JSONObject)localObject).put("clickAddPhoneOnManagePageCount", this.nAX);
+    ((JSONObject)localObject).put("deletePhoneCount", this.nAY);
+    ((JSONObject)localObject).put("deletePhoneSuccessCount", this.nAZ);
+    ((JSONObject)localObject).put("deletePhoneFailedCount", this.nBa);
+    ((JSONObject)localObject).put("verifyCodeCount", this.nBb);
+    ((JSONObject)localObject).put("verifyCodeSuccessCount", this.nBc);
+    ((JSONObject)localObject).put("verifyCodeFailedCount", this.nBd);
     localObject = ((JSONObject)localObject).toString();
     p.g(localObject, "jsonObject.toString()");
     AppMethodBeat.o(169645);

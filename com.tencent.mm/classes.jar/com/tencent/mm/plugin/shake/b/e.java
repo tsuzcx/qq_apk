@@ -2,35 +2,36 @@ package com.tencent.mm.plugin.shake.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class e
-  extends j<d>
+  extends MAutoStorage<d>
 {
   public static final String[] SQL_CREATE;
-  public com.tencent.mm.sdk.e.e db;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(28127);
-    SQL_CREATE = new String[] { j.getCreateSQLs(d.info, "shakeitem1") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(d.info, "shakeitem1") };
     AppMethodBeat.o(28127);
   }
   
-  public e(com.tencent.mm.sdk.e.e parame)
+  public e(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, d.info, "shakeitem1", null);
+    super(paramISQLiteDatabase, d.info, "shakeitem1", null);
     AppMethodBeat.i(28109);
-    this.db = parame;
-    ae.d("MicroMsg.NewShakeItemStorage", "ShakeItemStorage");
-    parame.execSQL("shakeitem1", "DROP INDEX IF EXISTS shakeItemUsernameIndex ");
-    parame.execSQL("shakeitem1", "CREATE INDEX IF NOT EXISTS shakeItemNewUsernameIndex ON shakeitem1 ( username )");
+    this.db = paramISQLiteDatabase;
+    Log.d("MicroMsg.NewShakeItemStorage", "ShakeItemStorage");
+    paramISQLiteDatabase.execSQL("shakeitem1", "DROP INDEX IF EXISTS shakeItemUsernameIndex ");
+    paramISQLiteDatabase.execSQL("shakeitem1", "CREATE INDEX IF NOT EXISTS shakeItemNewUsernameIndex ON shakeitem1 ( username )");
     AppMethodBeat.o(28109);
   }
   
-  public final Cursor PQ(int paramInt)
+  public final Cursor Xt(int paramInt)
   {
     AppMethodBeat.i(28117);
     Cursor localCursor = rawQuery("select shakeitem1.shakeItemID,shakeitem1.username,shakeitem1.nickname,shakeitem1.province,shakeitem1.city,shakeitem1.signature,shakeitem1.distance,shakeitem1.sex,shakeitem1.imgstatus,shakeitem1.hasHDImg,shakeitem1.insertBatch,shakeitem1.reserved1,shakeitem1.reserved2,shakeitem1.reserved3,shakeitem1.reserved4,shakeitem1.type,shakeitem1.lvbuffer,shakeitem1.regionCode,shakeitem1.snsFlag,shakeitem1.sns_bgurl from shakeitem1   where type = ? order by reserved2 desc, shakeItemID desc limit ? ", new String[] { "11", String.valueOf(paramInt) });
@@ -38,17 +39,17 @@ public final class e
     return localCursor;
   }
   
-  public final int PR(int paramInt)
+  public final int Xu(int paramInt)
   {
     AppMethodBeat.i(28121);
     int i = this.db.delete("shakeitem1", "shakeItemID=?", new String[] { String.valueOf(paramInt) });
     doNotify();
-    ae.i("MicroMsg.NewShakeItemStorage", "delById id:" + paramInt + " result:" + i);
+    Log.i("MicroMsg.NewShakeItemStorage", "delById id:" + paramInt + " result:" + i);
     AppMethodBeat.o(28121);
     return i;
   }
   
-  public final boolean PS(int paramInt)
+  public final boolean Xv(int paramInt)
   {
     AppMethodBeat.i(28123);
     if (paramInt == 0) {}
@@ -68,28 +69,28 @@ public final class e
       AppMethodBeat.o(28120);
       return false;
     }
-    if ((!paramBoolean) && (!bu.isNullOrNil(paramd.field_username))) {
-      ayz(paramd.field_username);
+    if ((!paramBoolean) && (!Util.isNullOrNil(paramd.field_username))) {
+      aNj(paramd.field_username);
     }
-    paramd.dEu = -1;
+    paramd.cSx = -1;
     paramBoolean = super.insert(paramd);
     AppMethodBeat.o(28120);
     return paramBoolean;
   }
   
-  public final int ayz(String paramString)
+  public final int aNj(String paramString)
   {
     AppMethodBeat.i(28122);
     int i = this.db.delete("shakeitem1", "(username=?)", new String[] { String.valueOf(paramString) });
     if (i > 0) {
       doNotify();
     }
-    ae.i("MicroMsg.NewShakeItemStorage", "delByusername:" + paramString + " result:" + i);
+    Log.i("MicroMsg.NewShakeItemStorage", "delByusername:" + paramString + " result:" + i);
     AppMethodBeat.o(28122);
     return i;
   }
   
-  public final Cursor dRR()
+  public final Cursor eTS()
   {
     AppMethodBeat.i(28110);
     Cursor localCursor = rawQuery("select shakeitem1.shakeItemID,shakeitem1.username,shakeitem1.nickname,shakeitem1.province,shakeitem1.city,shakeitem1.signature,shakeitem1.distance,shakeitem1.sex,shakeitem1.imgstatus,shakeitem1.hasHDImg,shakeitem1.insertBatch,shakeitem1.reserved1,shakeitem1.reserved2,shakeitem1.reserved3,shakeitem1.reserved4,shakeitem1.type,shakeitem1.lvbuffer,shakeitem1.regionCode,shakeitem1.snsFlag,shakeitem1.sns_bgurl from shakeitem1   order by shakeItemID desc ", new String[0]);
@@ -97,7 +98,7 @@ public final class e
     return localCursor;
   }
   
-  public final Cursor dRS()
+  public final Cursor eTT()
   {
     AppMethodBeat.i(28111);
     Cursor localCursor = rawQuery("select shakeitem1.shakeItemID,shakeitem1.username,shakeitem1.nickname,shakeitem1.province,shakeitem1.city,shakeitem1.signature,shakeitem1.distance,shakeitem1.sex,shakeitem1.imgstatus,shakeitem1.hasHDImg,shakeitem1.insertBatch,shakeitem1.reserved1,shakeitem1.reserved2,shakeitem1.reserved3,shakeitem1.reserved4,shakeitem1.type,shakeitem1.lvbuffer,shakeitem1.regionCode,shakeitem1.snsFlag,shakeitem1.sns_bgurl from shakeitem1   where type = ? and insertBatch = ?  order by reserved2 desc, shakeItemID desc ", new String[] { "0", "2" });
@@ -105,7 +106,7 @@ public final class e
     return localCursor;
   }
   
-  public final Cursor dRT()
+  public final Cursor eTU()
   {
     AppMethodBeat.i(28112);
     Cursor localCursor = rawQuery("select shakeitem1.shakeItemID,shakeitem1.username,shakeitem1.nickname,shakeitem1.province,shakeitem1.city,shakeitem1.signature,shakeitem1.distance,shakeitem1.sex,shakeitem1.imgstatus,shakeitem1.hasHDImg,shakeitem1.insertBatch,shakeitem1.reserved1,shakeitem1.reserved2,shakeitem1.reserved3,shakeitem1.reserved4,shakeitem1.type,shakeitem1.lvbuffer,shakeitem1.regionCode,shakeitem1.snsFlag,shakeitem1.sns_bgurl from shakeitem1   where type = ? order by reserved2 desc, shakeItemID desc ", new String[] { "0" });
@@ -113,7 +114,7 @@ public final class e
     return localCursor;
   }
   
-  public final Cursor dRU()
+  public final Cursor eTV()
   {
     AppMethodBeat.i(28113);
     Cursor localCursor = rawQuery("select shakeitem1.shakeItemID,shakeitem1.username,shakeitem1.nickname,shakeitem1.province,shakeitem1.city,shakeitem1.signature,shakeitem1.distance,shakeitem1.sex,shakeitem1.imgstatus,shakeitem1.hasHDImg,shakeitem1.insertBatch,shakeitem1.reserved1,shakeitem1.reserved2,shakeitem1.reserved3,shakeitem1.reserved4,shakeitem1.type,shakeitem1.lvbuffer,shakeitem1.regionCode,shakeitem1.snsFlag,shakeitem1.sns_bgurl from shakeitem1   where type = ? order by shakeItemID desc ", new String[] { "4" });
@@ -121,7 +122,7 @@ public final class e
     return localCursor;
   }
   
-  public final Cursor dRV()
+  public final Cursor eTW()
   {
     AppMethodBeat.i(28114);
     Cursor localCursor = rawQuery("select shakeitem1.shakeItemID,shakeitem1.username,shakeitem1.nickname,shakeitem1.province,shakeitem1.city,shakeitem1.signature,shakeitem1.distance,shakeitem1.sex,shakeitem1.imgstatus,shakeitem1.hasHDImg,shakeitem1.insertBatch,shakeitem1.reserved1,shakeitem1.reserved2,shakeitem1.reserved3,shakeitem1.reserved4,shakeitem1.type,shakeitem1.lvbuffer,shakeitem1.regionCode,shakeitem1.snsFlag,shakeitem1.sns_bgurl from shakeitem1   where type = ? and insertBatch = ?  order by shakeItemID desc ", new String[] { "4", "2" });
@@ -129,7 +130,7 @@ public final class e
     return localCursor;
   }
   
-  public final Cursor dRW()
+  public final Cursor eTX()
   {
     AppMethodBeat.i(28115);
     Cursor localCursor = rawQuery("select shakeitem1.shakeItemID,shakeitem1.username,shakeitem1.nickname,shakeitem1.province,shakeitem1.city,shakeitem1.signature,shakeitem1.distance,shakeitem1.sex,shakeitem1.imgstatus,shakeitem1.hasHDImg,shakeitem1.insertBatch,shakeitem1.reserved1,shakeitem1.reserved2,shakeitem1.reserved3,shakeitem1.reserved4,shakeitem1.type,shakeitem1.lvbuffer,shakeitem1.regionCode,shakeitem1.snsFlag,shakeitem1.sns_bgurl from shakeitem1   where type in (?, ?, ?, ?, ?) order by shakeItemID desc ", new String[] { "7", "6", "8", "9", "10", "12" });
@@ -137,7 +138,7 @@ public final class e
     return localCursor;
   }
   
-  public final Cursor dRX()
+  public final Cursor eTY()
   {
     AppMethodBeat.i(28116);
     Cursor localCursor = rawQuery("select shakeitem1.shakeItemID,shakeitem1.username,shakeitem1.nickname,shakeitem1.province,shakeitem1.city,shakeitem1.signature,shakeitem1.distance,shakeitem1.sex,shakeitem1.imgstatus,shakeitem1.hasHDImg,shakeitem1.insertBatch,shakeitem1.reserved1,shakeitem1.reserved2,shakeitem1.reserved3,shakeitem1.reserved4,shakeitem1.type,shakeitem1.lvbuffer,shakeitem1.regionCode,shakeitem1.snsFlag,shakeitem1.sns_bgurl from shakeitem1   where type = ? and insertBatch = ?  order by shakeItemID desc ", new String[] { "8", "2" });
@@ -145,7 +146,7 @@ public final class e
     return localCursor;
   }
   
-  public final Cursor dRY()
+  public final Cursor eTZ()
   {
     AppMethodBeat.i(28118);
     Cursor localCursor = rawQuery("select shakeitem1.shakeItemID,shakeitem1.username,shakeitem1.nickname,shakeitem1.province,shakeitem1.city,shakeitem1.signature,shakeitem1.distance,shakeitem1.sex,shakeitem1.imgstatus,shakeitem1.hasHDImg,shakeitem1.insertBatch,shakeitem1.reserved1,shakeitem1.reserved2,shakeitem1.reserved3,shakeitem1.reserved4,shakeitem1.type,shakeitem1.lvbuffer,shakeitem1.regionCode,shakeitem1.snsFlag,shakeitem1.sns_bgurl from shakeitem1   where type = ? order by reserved2 desc, shakeItemID desc ", new String[] { "11" });
@@ -153,7 +154,7 @@ public final class e
     return localCursor;
   }
   
-  public final d dRZ()
+  public final d eUa()
   {
     AppMethodBeat.i(28119);
     d locald = new d();
@@ -168,7 +169,7 @@ public final class e
     return locald;
   }
   
-  public final boolean dSa()
+  public final boolean eUb()
   {
     AppMethodBeat.i(28124);
     boolean bool = this.db.execSQL("shakeitem1", "delete from shakeitem1");
@@ -177,13 +178,13 @@ public final class e
     return bool;
   }
   
-  public final void dSb()
+  public final void eUc()
   {
     AppMethodBeat.i(28125);
-    ae.i("MicroMsg.NewShakeItemStorage", "setAllOld");
+    Log.i("MicroMsg.NewShakeItemStorage", "setAllOld");
     d locald = new d();
     locald.field_insertBatch = 0;
-    locald.dEu = 1024;
+    locald.cSx = 1024;
     if (-1 != this.db.update("shakeitem1", locald.convertTo(), "insertBatch!=?", new String[] { "0" })) {
       doNotify();
     }
@@ -192,7 +193,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.e
  * JD-Core Version:    0.7.0.1
  */

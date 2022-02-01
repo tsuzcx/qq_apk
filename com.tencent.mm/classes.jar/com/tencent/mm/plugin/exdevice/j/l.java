@@ -1,30 +1,30 @@
 package com.tencent.mm.plugin.exdevice.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.exdevice.service.l.a;
 import com.tencent.mm.plugin.exdevice.service.p;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import junit.framework.Assert;
 
 public final class l
   extends l.a
 {
-  private final long hRF;
-  private c qnF;
-  boolean qnG;
-  boolean qnH;
-  Runnable qnI;
+  private final long iMN;
+  private c rEM;
+  boolean rEN;
+  boolean rEO;
+  Runnable rEP;
   
   public l(c paramc)
   {
     AppMethodBeat.i(23817);
-    this.qnF = null;
-    this.hRF = 15000L;
-    this.qnG = false;
-    this.qnH = false;
-    this.qnI = new Runnable()
+    this.rEM = null;
+    this.iMN = 15000L;
+    this.rEN = false;
+    this.rEO = false;
+    this.rEP = new Runnable()
     {
       public final void run()
       {
@@ -48,30 +48,30 @@ public final class l
       }
     };
     Assert.assertNotNull(paramc);
-    this.qnF = paramc;
+    this.rEM = paramc;
     AppMethodBeat.o(23817);
   }
   
   public final void a(final long paramLong, int paramInt1, final int paramInt2, final String paramString, final p paramp)
   {
     AppMethodBeat.i(23818);
-    if (this.qnH)
+    if (this.rEO)
     {
       AppMethodBeat.o(23818);
       return;
     }
-    if (this.qnG)
+    if (this.rEN)
     {
       AppMethodBeat.o(23818);
       return;
     }
-    bc.ajU().cZF().removeCallbacks(this.qnI);
-    bc.ajU().cZF().post(new Runnable()
+    bg.aAk().getWorkerHandler().removeCallbacks(this.rEP);
+    bg.aAk().getWorkerHandler().post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(23815);
-        l.c(l.this).a(paramLong, paramInt2, paramString, paramp, this.qnL);
+        l.c(l.this).a(paramLong, paramInt2, paramString, paramp, this.rES);
         AppMethodBeat.o(23815);
       }
       

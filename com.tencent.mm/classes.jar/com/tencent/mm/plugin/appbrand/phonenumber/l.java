@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import android.view.View;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "", "getView", "Landroid/view/View;", "init", "", "sendSms", "mobile", "", "uninit", "verifyCode", "isCheck", "", "code", "luggage-wechat-full-sdk_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "", "getView", "Landroid/view/View;", "init", "", "sendSms", "mobile", "", "uninit", "verifyCode", "isCheck", "", "code", "luggage-wechat-full-sdk_release"})
 public abstract interface l
 {
-  public abstract void UE(String paramString);
+  public abstract void aes(String paramString);
   
   public abstract void b(boolean paramBoolean, String paramString1, String paramString2);
   

@@ -1,15 +1,10 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class my
-  extends b
+  extends IEvent
 {
-  public a dBW;
-  
   public my()
   {
     this((byte)0);
@@ -17,19 +12,8 @@ public final class my
   
   private my(byte paramByte)
   {
-    AppMethodBeat.i(116036);
-    this.dBW = new a();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116036);
-  }
-  
-  public static final class a
-  {
-    public Activity activity;
-    public int dBU = 0;
-    public Bundle dBX;
-    public String dmI;
   }
 }
 

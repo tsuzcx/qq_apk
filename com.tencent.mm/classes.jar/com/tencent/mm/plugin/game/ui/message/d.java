@@ -5,15 +5,16 @@ import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.memory.a.b;
-import com.tencent.mm.plugin.game.f.e.a.a;
+import com.tencent.mm.plugin.game.e.e;
+import com.tencent.mm.plugin.game.e.e.a.a;
+import com.tencent.mm.plugin.game.e.e.b;
 import com.tencent.mm.plugin.game.model.s;
 import java.util.HashSet;
 import java.util.Set;
@@ -21,112 +22,120 @@ import java.util.Set;
 public final class d
   extends RecyclerView
 {
-  private int fRv;
+  private int gwE;
   private Context mContext;
-  private com.tencent.mm.b.f<String, Bitmap> uCE;
-  private e uGd;
-  private Set<Integer> uGe;
-  b uGp;
+  private com.tencent.mm.b.f<String, Bitmap> xUC;
+  a xYn;
+  private f xYo;
+  private c xYp;
+  private Set<Integer> xYq;
   
   public d(Context paramContext, int paramInt)
   {
     super(paramContext);
-    AppMethodBeat.i(183896);
-    this.uGe = new HashSet();
+    AppMethodBeat.i(183887);
+    this.xYq = new HashSet();
     this.mContext = paramContext;
-    this.fRv = paramInt;
-    this.uCE = new b(30, getClass());
-    this.uGd = new e(this.fRv, new e.b()
+    this.gwE = paramInt;
+    this.xUC = new b(30, getClass());
+    this.xYo = new f(this.gwE, new f.b()
     {
-      public final void dcY()
+      public final void dWI()
       {
-        AppMethodBeat.i(183891);
+        AppMethodBeat.i(183882);
         d.a(d.this);
-        AppMethodBeat.o(183891);
+        AppMethodBeat.o(183882);
       }
     });
-    paramInt = ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cZl().Io(2);
-    this.uGp = new b(paramContext, ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cZl().Im(2), paramInt);
+    paramInt = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSK().Op(1);
+    this.xYn = new a(paramContext, ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSK().On(1), paramInt);
     setLayoutManager(new LinearLayoutManager());
-    setAdapter(this.uGp);
-    AppMethodBeat.o(183896);
+    setAdapter(this.xYn);
+    AppMethodBeat.o(183887);
   }
   
   private void b(ImageView paramImageView, final String paramString, float paramFloat)
   {
-    AppMethodBeat.i(183897);
+    AppMethodBeat.i(183888);
     e.a.a locala = new e.a.a();
-    locala.igi = false;
-    locala.uHk = paramFloat;
-    com.tencent.mm.plugin.game.f.e.ddh().a(paramImageView, paramString, locala.ddi(), new com.tencent.mm.plugin.game.f.e.b()
+    locala.jbd = false;
+    locala.xZw = paramFloat;
+    e.dWR().a(paramImageView, paramString, locala.dWS(), new e.b()
     {
       public final void a(View paramAnonymousView, Bitmap paramAnonymousBitmap)
       {
-        AppMethodBeat.i(183892);
+        AppMethodBeat.i(183883);
         if ((paramAnonymousBitmap != null) && (!paramAnonymousBitmap.isRecycled())) {
           d.f(d.this).put(paramString, paramAnonymousBitmap);
         }
-        AppMethodBeat.o(183892);
+        AppMethodBeat.o(183883);
       }
     });
-    AppMethodBeat.o(183897);
+    AppMethodBeat.o(183888);
+  }
+  
+  public final void setEmptyCallback(c paramc)
+  {
+    this.xYp = paramc;
   }
   
   final class a
-    extends RecyclerView.w
+    extends g<d.b>
   {
-    ImageView fWT;
-    TextView gXb;
-    TextView ovs;
-    TextView timeTv;
-    TextView titleTv;
-    ViewGroup uGg;
-    View uGm;
-    View uGn;
-    View uGo;
-    private ViewGroup uGr;
-    ImageView uGs;
+    int dCm;
     
-    public a(View paramView)
+    public a(Context paramContext, Cursor paramCursor, int paramInt)
     {
-      super();
-      AppMethodBeat.i(183893);
-      this.uGg = ((ViewGroup)paramView.findViewById(2131302521));
-      this.fWT = ((ImageView)paramView.findViewById(2131300891));
-      this.ovs = ((TextView)paramView.findViewById(2131302867));
-      this.uGr = ((ViewGroup)paramView.findViewById(2131302522));
-      this.uGs = ((ImageView)paramView.findViewById(2131297877));
-      this.titleTv = ((TextView)paramView.findViewById(2131297914));
-      this.gXb = ((TextView)paramView.findViewById(2131297777));
-      this.timeTv = ((TextView)paramView.findViewById(2131305822));
-      this.uGm = paramView.findViewById(2131300518);
-      this.uGn = paramView.findViewById(2131302790);
-      this.uGo = paramView.findViewById(2131301490);
-      this.uGg.setOnLongClickListener(d.e(d.this));
-      this.uGg.setOnClickListener(d.e(d.this));
-      this.fWT.setOnLongClickListener(d.e(d.this));
-      this.fWT.setOnClickListener(d.e(d.this));
-      this.ovs.setOnLongClickListener(d.e(d.this));
-      this.ovs.setOnClickListener(d.e(d.this));
-      AppMethodBeat.o(183893);
+      super(paramCursor);
+      this.dCm = paramInt;
     }
   }
   
   final class b
-    extends f<d.a>
+    extends RecyclerView.v
   {
-    int dla;
+    ImageView gBZ;
+    TextView pIN;
+    TextView timeTv;
+    View xYA;
+    ViewGroup xYs;
+    TextView xYt;
+    TextView xYu;
+    ImageView xYv;
+    TextView xYw;
+    TextView xYx;
+    View xYy;
+    View xYz;
     
-    public b(Context paramContext, Cursor paramCursor, int paramInt)
+    public b(View paramView)
     {
-      super(paramCursor);
-      this.dla = paramInt;
+      super();
+      AppMethodBeat.i(183886);
+      this.xYs = ((ViewGroup)paramView.findViewById(2131304950));
+      this.gBZ = ((ImageView)paramView.findViewById(2131302497));
+      this.pIN = ((TextView)paramView.findViewById(2131305440));
+      this.xYt = ((TextView)paramView.findViewById(2131304910));
+      this.xYu = ((TextView)paramView.findViewById(2131307113));
+      this.xYv = ((ImageView)paramView.findViewById(2131307100));
+      this.xYw = ((TextView)paramView.findViewById(2131299223));
+      this.timeTv = ((TextView)paramView.findViewById(2131309101));
+      this.xYx = ((TextView)paramView.findViewById(2131308313));
+      this.xYy = paramView.findViewById(2131302045);
+      this.xYz = paramView.findViewById(2131305359);
+      this.xYA = paramView.findViewById(2131303689);
+      this.xYs.setOnLongClickListener(d.e(d.this));
+      this.xYs.setOnClickListener(d.e(d.this));
+      this.gBZ.setOnLongClickListener(d.e(d.this));
+      this.gBZ.setOnClickListener(d.e(d.this));
+      this.pIN.setOnLongClickListener(d.e(d.this));
+      this.pIN.setOnClickListener(d.e(d.this));
+      AppMethodBeat.o(183886);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.message.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,35 @@
 package kotlinx.coroutines.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.a.b;
-import d.d.d;
-import d.g.a.m;
-import d.l;
-import d.p;
-import d.p.a;
-import d.q;
-import d.z;
-import kotlinx.coroutines.av;
+import kotlin.Result;
+import kotlin.Result.Companion;
+import kotlin.ResultKt;
+import kotlin.d.a.b;
+import kotlin.d.d;
+import kotlin.g.a.m;
+import kotlin.l;
+import kotlin.x;
+import kotlinx.coroutines.aw;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"runSafely", "", "completion", "Lkotlin/coroutines/Continuation;", "block", "Lkotlin/Function0;", "startCoroutineCancellable", "fatalCompletion", "T", "Lkotlin/Function1;", "", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "kotlinx-coroutines-core"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"runSafely", "", "completion", "Lkotlin/coroutines/Continuation;", "block", "Lkotlin/Function0;", "startCoroutineCancellable", "fatalCompletion", "T", "Lkotlin/Function1;", "", "(Lkotlin/jvm/functions/Function1;Lkotlin/coroutines/Continuation;)V", "R", "Lkotlin/Function2;", "receiver", "(Lkotlin/jvm/functions/Function2;Ljava/lang/Object;Lkotlin/coroutines/Continuation;)V", "kotlinx-coroutines-core"})
 public final class a
 {
-  public static final void a(d<? super z> paramd, d<?> paramd1)
+  public static final void a(d<? super x> paramd, d<?> paramd1)
   {
-    AppMethodBeat.i(209253);
+    AppMethodBeat.i(192392);
     try
     {
-      paramd = b.d(paramd);
-      locala = p.Nhh;
-      av.a(paramd, p.eO(z.Nhr));
-      AppMethodBeat.o(209253);
+      paramd = b.e(paramd);
+      localCompanion = Result.Companion;
+      aw.a(paramd, Result.constructor-impl(x.SXb));
+      AppMethodBeat.o(192392);
       return;
     }
     catch (Throwable paramd)
     {
-      p.a locala = p.Nhh;
-      paramd1.eQ(p.eO(q.p(paramd)));
-      AppMethodBeat.o(209253);
+      Result.Companion localCompanion = Result.Companion;
+      paramd1.resumeWith(Result.constructor-impl(ResultKt.createFailure(paramd)));
+      AppMethodBeat.o(192392);
     }
   }
   
@@ -38,23 +38,23 @@ public final class a
     AppMethodBeat.i(118134);
     try
     {
-      paramm = b.d(b.a(paramm, paramR, paramd));
-      paramR = p.Nhh;
-      av.a(paramm, p.eO(z.Nhr));
+      paramm = b.e(b.a(paramm, paramR, paramd));
+      paramR = Result.Companion;
+      aw.a(paramm, Result.constructor-impl(x.SXb));
       AppMethodBeat.o(118134);
       return;
     }
     catch (Throwable paramm)
     {
-      paramR = p.Nhh;
-      paramd.eQ(p.eO(q.p(paramm)));
+      paramR = Result.Companion;
+      paramd.resumeWith(Result.constructor-impl(ResultKt.createFailure(paramm)));
       AppMethodBeat.o(118134);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.a.a
  * JD-Core Version:    0.7.0.1
  */

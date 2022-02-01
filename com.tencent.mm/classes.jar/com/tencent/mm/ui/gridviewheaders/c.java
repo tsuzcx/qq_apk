@@ -17,12 +17,12 @@ import java.util.List;
 public final class c
   extends BaseAdapter
 {
-  private static boolean KWR;
-  final b KWS;
-  private GridHeadersGridView KWT;
-  private final List<View> KWU;
-  private View[] KWV;
-  private DataSetObserver Tf;
+  private static boolean Qkh;
+  final b Qki;
+  private GridHeadersGridView Qkj;
+  private final List<View> Qkk;
+  private View[] Qkl;
+  private DataSetObserver Tr;
   private final Context mContext;
   int mCount;
   int mNumColumns;
@@ -30,7 +30,7 @@ public final class c
   public c(Context paramContext, GridHeadersGridView paramGridHeadersGridView, b paramb)
   {
     AppMethodBeat.i(142775);
-    this.Tf = new DataSetObserver()
+    this.Tr = new DataSetObserver()
     {
       public final void onChanged()
       {
@@ -38,9 +38,9 @@ public final class c
         AppMethodBeat.i(142759);
         c localc = c.this;
         localc.mCount = 0;
-        int j = localc.KWS.fNY();
+        int j = localc.Qki.gWs();
         if (j == 0) {
-          localc.mCount = localc.KWS.getCount();
+          localc.mCount = localc.Qki.getCount();
         }
         for (;;)
         {
@@ -49,7 +49,7 @@ public final class c
           return;
           while (i < j)
           {
-            localc.mCount += localc.KWS.afr(i) + localc.mNumColumns;
+            localc.mCount += localc.Qki.aob(i) + localc.mNumColumns;
             i += 1;
           }
         }
@@ -63,27 +63,27 @@ public final class c
         AppMethodBeat.o(142760);
       }
     };
-    this.KWU = new ArrayList();
+    this.Qkk = new ArrayList();
     this.mNumColumns = 1;
     this.mContext = paramContext;
-    this.KWS = paramb;
-    this.KWT = paramGridHeadersGridView;
-    paramb.registerDataSetObserver(this.Tf);
+    this.Qki = paramb;
+    this.Qkj = paramGridHeadersGridView;
+    paramb.registerDataSetObserver(this.Tr);
     AppMethodBeat.o(142775);
   }
   
-  private void afs(int paramInt)
+  private void aoc(int paramInt)
   {
     AppMethodBeat.i(142788);
-    this.KWV = new View[paramInt];
-    Arrays.fill(this.KWV, null);
+    this.Qkl = new View[paramInt];
+    Arrays.fill(this.Qkl, null);
     AppMethodBeat.o(142788);
   }
   
-  private int aft(int paramInt)
+  private int aod(int paramInt)
   {
     AppMethodBeat.i(142789);
-    paramInt = this.KWS.afr(paramInt) % this.mNumColumns;
+    paramInt = this.Qki.aob(paramInt) % this.mNumColumns;
     if (paramInt == 0)
     {
       AppMethodBeat.o(142789);
@@ -94,10 +94,10 @@ public final class c
     return i - paramInt;
   }
   
-  protected final long Bi(int paramInt)
+  protected final long EQ(int paramInt)
   {
     AppMethodBeat.i(142790);
-    long l = afu(paramInt).KWZ;
+    long l = aoe(paramInt).Qkp;
     AppMethodBeat.o(142790);
     return l;
   }
@@ -105,24 +105,24 @@ public final class c
   protected final View a(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142791);
-    if (this.KWS.fNY() == 0)
+    if (this.Qki.gWs() == 0)
     {
       AppMethodBeat.o(142791);
       return null;
     }
-    paramView = this.KWS.a(afu(paramInt).KWZ, paramView, paramViewGroup);
+    paramView = this.Qki.a(aoe(paramInt).Qkp, paramView, paramViewGroup);
     AppMethodBeat.o(142791);
     return paramView;
   }
   
-  protected final c afu(int paramInt)
+  protected final c aoe(int paramInt)
   {
     int k = 0;
     AppMethodBeat.i(142792);
-    int m = this.KWS.fNY();
+    int m = this.Qki.gWs();
     if (m == 0)
     {
-      if (paramInt >= this.KWS.getCount())
+      if (paramInt >= this.Qki.getCount())
       {
         localc = new c(-1, 0);
         AppMethodBeat.o(142792);
@@ -137,7 +137,7 @@ public final class c
     paramInt = k;
     while (paramInt < m)
     {
-      k = this.KWS.afr(paramInt);
+      k = this.Qki.aob(paramInt);
       if (j == 0)
       {
         localc = new c(-2, paramInt);
@@ -158,7 +158,7 @@ public final class c
         AppMethodBeat.o(142792);
         return localc;
       }
-      int n = aft(paramInt);
+      int n = aod(paramInt);
       j -= k + n;
       paramInt += 1;
       i -= n;
@@ -178,16 +178,16 @@ public final class c
     int i = 0;
     AppMethodBeat.i(142776);
     this.mCount = 0;
-    int j = this.KWS.fNY();
+    int j = this.Qki.gWs();
     if (j == 0)
     {
-      i = this.KWS.getCount();
+      i = this.Qki.getCount();
       AppMethodBeat.o(142776);
       return i;
     }
     while (i < j)
     {
-      this.mCount += this.KWS.afr(i) + aft(i) + this.mNumColumns;
+      this.mCount += this.Qki.aob(i) + aod(i) + this.mNumColumns;
       i += 1;
     }
     i = this.mCount;
@@ -198,13 +198,13 @@ public final class c
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(142777);
-    Object localObject = afu(paramInt);
+    Object localObject = aoe(paramInt);
     if ((((c)localObject).mPosition == -1) || (((c)localObject).mPosition == -2))
     {
       AppMethodBeat.o(142777);
       return null;
     }
-    localObject = this.KWS.getItem(((c)localObject).mPosition);
+    localObject = this.Qki.getItem(((c)localObject).mPosition);
     AppMethodBeat.o(142777);
     return localObject;
   }
@@ -212,7 +212,7 @@ public final class c
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(142778);
-    c localc = afu(paramInt);
+    c localc = aoe(paramInt);
     if (localc.mPosition == -2)
     {
       AppMethodBeat.o(142778);
@@ -223,7 +223,7 @@ public final class c
       AppMethodBeat.o(142778);
       return -2L;
     }
-    long l = this.KWS.getItemId(localc.mPosition);
+    long l = this.Qki.getItemId(localc.mPosition);
     AppMethodBeat.o(142778);
     return l;
   }
@@ -231,7 +231,7 @@ public final class c
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(142779);
-    c localc = afu(paramInt);
+    c localc = aoe(paramInt);
     if (localc.mPosition == -2)
     {
       AppMethodBeat.o(142779);
@@ -242,7 +242,7 @@ public final class c
       AppMethodBeat.o(142779);
       return 0;
     }
-    paramInt = this.KWS.getItemViewType(localc.mPosition);
+    paramInt = this.Qki.getItemViewType(localc.mPosition);
     if (paramInt == -1)
     {
       AppMethodBeat.o(142779);
@@ -263,14 +263,14 @@ public final class c
     }
     for (;;)
     {
-      Object localObject2 = afu(paramInt);
+      Object localObject2 = aoe(paramInt);
       if (((c)localObject2).mPosition == -2)
       {
         localObject1 = new b(this.mContext);
-        ((b)localObject1).setHeaderWidth(this.KWT.getWidth());
-        ((b)localObject1).setHeaderId(((c)localObject2).KWZ);
+        ((b)localObject1).setHeaderWidth(this.Qkj.getWidth());
+        ((b)localObject1).setHeaderId(((c)localObject2).Qkp);
         View localView = (View)((View)localObject1).getTag();
-        ((View)localObject1).setTag(this.KWS.a(((c)localObject2).KWZ, localView, paramViewGroup));
+        ((View)localObject1).setTag(this.Qki.a(((c)localObject2).Qkp, localView, paramViewGroup));
       }
       for (;;)
       {
@@ -282,15 +282,15 @@ public final class c
         ((d)localObject2).addView((View)localObject1);
         ((d)localObject2).setPosition(paramInt);
         ((d)localObject2).setNumColumns(this.mNumColumns);
-        this.KWV[(paramInt % this.mNumColumns)] = localObject2;
+        this.Qkl[(paramInt % this.mNumColumns)] = localObject2;
         if (paramInt % this.mNumColumns != 0) {
           break label293;
         }
-        KWR = true;
+        Qkh = true;
         int i = 1;
-        while (i < this.KWV.length)
+        while (i < this.Qkl.length)
         {
-          this.KWV[i] = getView(paramInt + i, null, paramViewGroup);
+          this.Qkl[i] = getView(paramInt + i, null, paramViewGroup);
           i += 1;
         }
         if (((c)localObject2).mPosition == -1)
@@ -303,14 +303,14 @@ public final class c
         }
         else
         {
-          localObject1 = this.KWS.getView(((c)localObject2).mPosition, (View)localObject1, paramViewGroup);
+          localObject1 = this.Qki.getView(((c)localObject2).mPosition, (View)localObject1, paramViewGroup);
         }
       }
-      KWR = false;
+      Qkh = false;
       label293:
-      ((d)localObject2).setRowSiblings(this.KWV);
-      if ((!KWR) && ((paramInt % this.mNumColumns == this.mNumColumns - 1) || (paramInt == getCount() - 1))) {
-        afs(this.mNumColumns);
+      ((d)localObject2).setRowSiblings(this.Qkl);
+      if ((!Qkh) && ((paramInt % this.mNumColumns == this.mNumColumns - 1) || (paramInt == getCount() - 1))) {
+        aoc(this.mNumColumns);
       }
       AppMethodBeat.o(142780);
       return localObject2;
@@ -323,7 +323,7 @@ public final class c
   public final int getViewTypeCount()
   {
     AppMethodBeat.i(142781);
-    int i = this.KWS.getViewTypeCount();
+    int i = this.Qki.getViewTypeCount();
     AppMethodBeat.o(142781);
     return i + 2;
   }
@@ -331,7 +331,7 @@ public final class c
   public final boolean hasStableIds()
   {
     AppMethodBeat.i(142782);
-    boolean bool = this.KWS.hasStableIds();
+    boolean bool = this.Qki.hasStableIds();
     AppMethodBeat.o(142782);
     return bool;
   }
@@ -339,7 +339,7 @@ public final class c
   public final boolean isEmpty()
   {
     AppMethodBeat.i(142783);
-    boolean bool = this.KWS.isEmpty();
+    boolean bool = this.Qki.isEmpty();
     AppMethodBeat.o(142783);
     return bool;
   }
@@ -347,13 +347,13 @@ public final class c
   public final boolean isEnabled(int paramInt)
   {
     AppMethodBeat.i(142784);
-    c localc = afu(paramInt);
+    c localc = aoe(paramInt);
     if ((localc.mPosition == -1) || (localc.mPosition == -2))
     {
       AppMethodBeat.o(142784);
       return false;
     }
-    boolean bool = this.KWS.isEnabled(localc.mPosition);
+    boolean bool = this.Qki.isEnabled(localc.mPosition);
     AppMethodBeat.o(142784);
     return bool;
   }
@@ -361,7 +361,7 @@ public final class c
   public final void registerDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(142785);
-    this.KWS.registerDataSetObserver(paramDataSetObserver);
+    this.Qki.registerDataSetObserver(paramDataSetObserver);
     AppMethodBeat.o(142785);
   }
   
@@ -369,14 +369,14 @@ public final class c
   {
     AppMethodBeat.i(142786);
     this.mNumColumns = paramInt;
-    afs(paramInt);
+    aoc(paramInt);
     AppMethodBeat.o(142786);
   }
   
   public final void unregisterDataSetObserver(DataSetObserver paramDataSetObserver)
   {
     AppMethodBeat.i(142787);
-    this.KWS.unregisterDataSetObserver(paramDataSetObserver);
+    this.Qki.unregisterDataSetObserver(paramDataSetObserver);
     AppMethodBeat.o(142787);
   }
   
@@ -392,8 +392,8 @@ public final class c
   protected final class b
     extends FrameLayout
   {
-    private int KWX;
-    private int KWY;
+    private int Qkn;
+    private int Qko;
     
     public b(Context paramContext)
     {
@@ -410,7 +410,7 @@ public final class c
     
     public final int getHeaderId()
     {
-      return this.KWX;
+      return this.Qkn;
     }
     
     protected final void onMeasure(int paramInt1, int paramInt2)
@@ -421,7 +421,7 @@ public final class c
         localView.setLayoutParams(generateDefaultLayoutParams());
       }
       if ((localView.getVisibility() != 8) && (localView.getMeasuredHeight() == 0)) {
-        localView.measure(View.MeasureSpec.makeMeasureSpec(this.KWY, 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
+        localView.measure(View.MeasureSpec.makeMeasureSpec(this.Qko, 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
       }
       setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), localView.getMeasuredHeight());
       AppMethodBeat.o(142762);
@@ -429,32 +429,32 @@ public final class c
     
     public final void setHeaderId(int paramInt)
     {
-      this.KWX = paramInt;
+      this.Qkn = paramInt;
     }
     
     public final void setHeaderWidth(int paramInt)
     {
-      this.KWY = paramInt;
+      this.Qko = paramInt;
     }
   }
   
   protected final class c
   {
-    protected int KWZ;
+    protected int Qkp;
     protected int mPosition;
     
     protected c(int paramInt1, int paramInt2)
     {
       this.mPosition = paramInt1;
-      this.KWZ = paramInt2;
+      this.Qkp = paramInt2;
     }
   }
   
   protected final class d
     extends FrameLayout
   {
-    private View[] KWV;
-    private boolean KXa;
+    private View[] Qkl;
+    private boolean Qkq;
     private int mNumColumns;
     private int mPosition;
     
@@ -505,10 +505,10 @@ public final class c
         AppMethodBeat.o(142772);
         return;
       }
-      if ((this.mPosition % this.mNumColumns == 0) && (!this.KXa))
+      if ((this.mPosition % this.mNumColumns == 0) && (!this.Qkq))
       {
-        this.KXa = true;
-        arrayOfView = this.KWV;
+        this.Qkq = true;
+        arrayOfView = this.Qkl;
         k = arrayOfView.length;
         i = 0;
         while (i < k)
@@ -516,10 +516,10 @@ public final class c
           arrayOfView[i].measure(paramInt1, paramInt2);
           i += 1;
         }
-        this.KXa = false;
+        this.Qkq = false;
       }
       int k = getMeasuredHeight();
-      View[] arrayOfView = this.KWV;
+      View[] arrayOfView = this.Qkl;
       int m = arrayOfView.length;
       int i = k;
       paramInt2 = j;
@@ -555,7 +555,7 @@ public final class c
     @SuppressLint({"NewApi"})
     public final void setRowSiblings(View[] paramArrayOfView)
     {
-      this.KWV = paramArrayOfView;
+      this.Qkl = paramArrayOfView;
     }
     
     public final void setTag(int paramInt, Object paramObject)
@@ -575,7 +575,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.gridviewheaders.c
  * JD-Core Version:    0.7.0.1
  */

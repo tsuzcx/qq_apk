@@ -10,21 +10,7 @@ public abstract interface b
 {
   public abstract void a(Canvas paramCanvas, TextPaint paramTextPaint, float paramFloat);
   
-  public abstract int ahf(int paramInt);
-  
-  public abstract float[] fXd();
-  
-  public abstract RectF fXe();
-  
-  public abstract RectF fXf();
-  
-  public abstract float fXg();
-  
-  public abstract boolean fXh();
-  
-  public abstract float fXi();
-  
-  public abstract float fXj();
+  public abstract int aqs(int paramInt);
   
   public abstract int getEnd();
   
@@ -35,6 +21,20 @@ public abstract interface b
   public abstract int getStart();
   
   public abstract float getWidth();
+  
+  public abstract float[] hiI();
+  
+  public abstract RectF hiJ();
+  
+  public abstract RectF hiK();
+  
+  public abstract float hiL();
+  
+  public abstract boolean hiM();
+  
+  public abstract float hiN();
+  
+  public abstract float hiO();
 }
 
 

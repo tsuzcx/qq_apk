@@ -8,12 +8,12 @@ import org.b.g.d;
 
 public final class a
 {
-  public String Ote;
-  public String Otf;
-  public String Otg = "oob";
-  public org.b.a.a.a Oth;
-  public h Oti = h.Otx;
-  public OutputStream Otj = null;
+  public String Uib;
+  public String Uic;
+  public String Uid = "oob";
+  public org.b.a.a.a Uie;
+  public h Uif = h.Uiu;
+  public OutputStream Uig = null;
   public String scope;
   
   public static org.b.a.a.a bH(Class<? extends org.b.a.a.a> paramClass)
@@ -36,7 +36,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.b.a.a
  * JD-Core Version:    0.7.0.1
  */

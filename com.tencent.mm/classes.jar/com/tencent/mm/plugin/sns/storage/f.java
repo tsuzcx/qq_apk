@@ -1,158 +1,67 @@
 package com.tencent.mm.plugin.sns.storage;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.sns.model.aj;
 
 public final class f
-  extends j<e>
 {
-  private static final String AdM;
-  public static final String[] INDEX_CREATE;
-  public static final String[] SQL_CREATE;
-  private com.tencent.mm.sdk.e.e db;
-  
-  static
+  public static boolean a(String paramString, SnsInfo paramSnsInfo)
   {
-    AppMethodBeat.i(97443);
-    SQL_CREATE = new String[] { j.getCreateSQLs(e.info, "adsnsinfo") };
-    INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS serverAdSnsNameIndex ON AdSnsInfo ( snsId )", "CREATE INDEX IF NOT EXISTS serverAdSnsTimeHeadIndex ON AdSnsInfo ( head )", "DROP INDEX IF EXISTS serverAdSnsTimeIndex", "DROP INDEX IF EXISTS serverAdSnsTimeSourceTypeIndex", "CREATE INDEX IF NOT EXISTS adsnsMultiIndex1 ON AdSnsInfo ( createTime,snsId,sourceType,type)", "CREATE INDEX IF NOT EXISTS adsnsMultiIndex2 ON AdSnsInfo ( sourceType,type,userName)" };
-    AdM = String.format("select  %s %s,rowid from AdSnsInfo ", new Object[] { "snsId", "createTime" });
-    AppMethodBeat.o(97443);
-  }
-  
-  public f(com.tencent.mm.sdk.e.e parame)
-  {
-    super(parame, e.info, "adsnsinfo", INDEX_CREATE);
-    this.db = parame;
-  }
-  
-  private int a(e parame)
-  {
-    AppMethodBeat.i(97439);
-    ae.d("MicroMsg.AdSnsInfoStorage", "SnsInfo Insert");
-    if (parame == null)
+    AppMethodBeat.i(97445);
+    if (y.aNz(paramString))
     {
-      AppMethodBeat.o(97439);
-      return -1;
+      bool = aj.faO().b(y.aOa(paramString), paramSnsInfo);
+      AppMethodBeat.o(97445);
+      return bool;
     }
-    parame = parame.convertTo();
-    int i = (int)this.db.insert("AdSnsInfo", "", parame);
-    ae.d("MicroMsg.AdSnsInfoStorage", "SnsInfo Insert result".concat(String.valueOf(i)));
-    AppMethodBeat.o(97439);
-    return i;
-  }
-  
-  public final e Ax(long paramLong)
-  {
-    AppMethodBeat.i(97434);
-    e locale = new e();
-    Object localObject = "select *,rowid from AdSnsInfo  where AdSnsInfo.snsId=".concat(String.valueOf(paramLong));
-    localObject = this.db.a((String)localObject, null, 2);
-    if (((Cursor)localObject).moveToFirst())
-    {
-      locale.convertFrom((Cursor)localObject);
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(97434);
-      return locale;
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(97434);
-    return null;
-  }
-  
-  public final boolean Ay(long paramLong)
-  {
-    AppMethodBeat.i(97438);
-    Object localObject = "select *,rowid from AdSnsInfo  where AdSnsInfo.snsId=".concat(String.valueOf(paramLong));
-    localObject = this.db.a((String)localObject, null, 2);
-    boolean bool = ((Cursor)localObject).moveToFirst();
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(97438);
+    boolean bool = aj.faR().b(y.aOa(paramString), paramSnsInfo.getAdSnsInfo());
+    AppMethodBeat.o(97445);
     return bool;
   }
   
-  public final e Rr(int paramInt)
+  public static SnsInfo aQl(String paramString)
   {
-    AppMethodBeat.i(97435);
-    e locale = new e();
-    Object localObject = "select *,rowid from AdSnsInfo  where AdSnsInfo.rowid=".concat(String.valueOf(paramInt));
-    localObject = this.db.a((String)localObject, null, 2);
-    if (((Cursor)localObject).moveToFirst())
+    AppMethodBeat.i(97444);
+    if (y.aNz(paramString))
     {
-      locale.convertFrom((Cursor)localObject);
-      ((Cursor)localObject).close();
-      AppMethodBeat.o(97435);
-      return locale;
+      paramString = aj.faO().JJ(y.aOa(paramString));
+      AppMethodBeat.o(97444);
+      return paramString;
     }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(97435);
+    paramString = aj.faR().JE(y.aOa(paramString));
+    if (paramString != null)
+    {
+      paramString = paramString.convertToSnsInfo();
+      AppMethodBeat.o(97444);
+      return paramString;
+    }
+    AppMethodBeat.o(97444);
     return null;
   }
   
-  public final boolean a(long paramLong, e parame)
+  public static SnsInfo aQm(String paramString)
   {
-    AppMethodBeat.i(97436);
-    if (Ay(paramLong))
+    AppMethodBeat.i(97446);
+    if (y.aNz(paramString))
     {
-      boolean bool = b(paramLong, parame);
-      AppMethodBeat.o(97436);
-      return bool;
+      paramString = aj.faO().Zr(y.aQI(paramString));
+      AppMethodBeat.o(97446);
+      return paramString;
     }
-    ae.d("MicroMsg.AdSnsInfoStorage", "added PcId ".concat(String.valueOf(paramLong)));
-    if (a(parame) != -1)
+    paramString = aj.faR().Zp(y.aQI(paramString));
+    if (paramString != null)
     {
-      AppMethodBeat.o(97436);
-      return true;
+      paramString = paramString.convertToSnsInfo();
+      AppMethodBeat.o(97446);
+      return paramString;
     }
-    AppMethodBeat.o(97436);
-    return false;
-  }
-  
-  public final boolean b(long paramLong, e parame)
-  {
-    AppMethodBeat.i(97437);
-    parame = parame.convertTo();
-    parame.remove("rowid");
-    if (this.db.update("AdSnsInfo", parame, "snsId=?", new String[] { String.valueOf(paramLong) }) > 0)
-    {
-      AppMethodBeat.o(97437);
-      return true;
-    }
-    AppMethodBeat.o(97437);
-    return false;
-  }
-  
-  public final boolean delete(long paramLong)
-  {
-    AppMethodBeat.i(97440);
-    int i = this.db.delete("AdSnsInfo", "snsId=?", new String[] { String.valueOf(paramLong) });
-    ae.i("MicroMsg.AdSnsInfoStorage", "del msg " + paramLong + " res " + i);
-    if (i > 0)
-    {
-      AppMethodBeat.o(97440);
-      return true;
-    }
-    AppMethodBeat.o(97440);
-    return false;
-  }
-  
-  public final Cursor hM(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(97441);
-    Object localObject = "select *,rowid from AdSnsInfo  where createTime > " + paramInt2 + " and createTime <= " + paramInt1 + " and " + q.Aep;
-    localObject = (String)localObject + " order by  createTime desc";
-    ae.d("MicroMsg.AdSnsInfoStorage", "getAdInTime ".concat(String.valueOf(localObject)));
-    localObject = this.db.a((String)localObject, null, 2);
-    AppMethodBeat.o(97441);
-    return localObject;
+    AppMethodBeat.o(97446);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.f
  * JD-Core Version:    0.7.0.1
  */

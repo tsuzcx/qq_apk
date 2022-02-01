@@ -25,11 +25,9 @@ import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.model.audio.LyricsInfo;
 import com.tencent.mm.plugin.recordvideo.plugin.ab;
 import com.tencent.mm.plugin.recordvideo.plugin.cropvideo.EditVideoSeekBarView;
-import com.tencent.mm.plugin.recordvideo.plugin.g;
 import com.tencent.mm.plugin.recordvideo.plugin.h.a;
 import com.tencent.mm.plugin.recordvideo.plugin.i;
 import com.tencent.mm.plugin.recordvideo.plugin.s.b;
-import com.tencent.mm.plugin.recordvideo.plugin.t;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorAudioView;
 import com.tencent.mm.plugin.recordvideo.ui.editor.EditorInputView;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.EditorItemContainer;
@@ -37,115 +35,114 @@ import com.tencent.mm.plugin.recordvideo.ui.editor.item.EditorItemContainer.b;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.EditorItemContainer.e;
 import com.tencent.mm.plugin.recordvideo.ui.editor.view.c.a;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.protocal.protobuf.bwu;
-import com.tencent.mm.protocal.protobuf.csx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.ckm;
+import com.tencent.mm.protocal.protobuf.dlg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.ui.al;
-import com.tencent.mm.ui.aq;
-import com.tencent.mm.ui.ar;
-import d.l;
-import d.v;
-import d.z;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.au;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BaseEditVideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "addEmojiPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddEmojiPlugin;", "getAddEmojiPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddEmojiPlugin;", "addMusicPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditAddMusicPlugin;", "getAddMusicPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditAddMusicPlugin;", "addPoiPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin;", "getAddPoiPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin;", "addTextPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddTextPlugin;", "getAddTextPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddTextPlugin;", "addTipPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddTipPlugin;", "getAddTipPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddTipPlugin;", "addonTextPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoAddonTextPlugin;", "getAddonTextPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoAddonTextPlugin;", "backToRecordPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditBackToRecordPlugin;", "getBackToRecordPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditBackToRecordPlugin;", "bgPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoBgPlugin;", "getBgPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoBgPlugin;", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "getCaptureInfo", "()Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setCaptureInfo", "(Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;)V", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getConfigProvider", "()Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setConfigProvider", "(Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;)V", "cropVideoPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin;", "getCropVideoPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin;", "dialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "editFinishPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin;", "getEditFinishPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin;", "inputPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditInputPlugin;", "getInputPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditInputPlugin;", "itemContainerPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditItemContainerPlugin;", "getItemContainerPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditItemContainerPlugin;", "moreMenuPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditMenuPlugin;", "getMoreMenuPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditMenuPlugin;", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "getNavigator", "()Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "setNavigator", "(Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;)V", "previewPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin;", "getPreviewPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin;", "setPreviewPlugin", "(Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin;)V", "reMuxPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/RemuxPlugin;", "getReMuxPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/RemuxPlugin;", "videoControlContainerPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin;", "getVideoControlContainerPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin;", "getLayoutId", "", "getPlayerView", "Landroid/view/View;", "hideDialog", "", "initLogic", "initSafeArea", "loadCurrentPage", "info", "loadPlayerView", "showDialog", "tip", "", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BaseEditVideoPluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/BasePluginLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "addEmojiPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddEmojiPlugin;", "getAddEmojiPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddEmojiPlugin;", "addMusicPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditAddMusicPlugin;", "getAddMusicPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/music/EditAddMusicPlugin;", "addPoiPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin;", "getAddPoiPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddPoiPlugin;", "addTextPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddTextPlugin;", "getAddTextPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddTextPlugin;", "addTipPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddTipPlugin;", "getAddTipPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditAddTipPlugin;", "addonTextPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoAddonTextPlugin;", "getAddonTextPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoAddonTextPlugin;", "backToRecordPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditBackToRecordPlugin;", "getBackToRecordPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditBackToRecordPlugin;", "bgPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoBgPlugin;", "getBgPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoBgPlugin;", "captureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "getCaptureInfo", "()Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "setCaptureInfo", "(Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;)V", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "getConfigProvider", "()Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "setConfigProvider", "(Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;)V", "cropVideoPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin;", "getCropVideoPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditCropVideoPlugin;", "dialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "editFinishPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin;", "getEditFinishPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditFinishPlugin;", "inputPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditInputPlugin;", "getInputPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditInputPlugin;", "itemContainerPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditItemContainerPlugin;", "getItemContainerPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditItemContainerPlugin;", "moreMenuPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditMenuPlugin;", "getMoreMenuPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditMenuPlugin;", "navigator", "Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "getNavigator", "()Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;", "setNavigator", "(Lcom/tencent/mm/plugin/recordvideo/activity/IRecordUINavigation;)V", "previewPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin;", "getPreviewPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin;", "setPreviewPlugin", "(Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoPlayPlugin;)V", "reMuxPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/RemuxPlugin;", "getReMuxPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/RemuxPlugin;", "videoControlContainerPlugin", "Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin;", "getVideoControlContainerPlugin", "()Lcom/tencent/mm/plugin/recordvideo/plugin/EditVideoControlContainerPlugin;", "getLayoutId", "", "getPlayerView", "Landroid/view/View;", "hideDialog", "", "initLogic", "initSafeArea", "loadCurrentPage", "info", "loadPlayerView", "showDialog", "tip", "", "statusChange", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus$RecordStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-recordvideo_release"})
 public abstract class BaseEditVideoPluginLayout
   extends BasePluginLayout
   implements d
 {
-  public static final BaseEditVideoPluginLayout.a xTD = new BaseEditVideoPluginLayout.a((byte)0);
-  public com.tencent.mm.ui.base.p mHs;
-  private com.tencent.mm.plugin.recordvideo.activity.a sYS;
-  private RecordConfigProvider sYT;
-  private com.tencent.mm.media.widget.camerarecordview.b.b xQs;
-  private final com.tencent.mm.plugin.recordvideo.plugin.q xTA;
-  private final i xTB;
-  private final g xTC;
-  protected com.tencent.mm.plugin.recordvideo.plugin.s xTn;
-  private final com.tencent.mm.plugin.recordvideo.plugin.a xTo;
-  private final com.tencent.mm.plugin.recordvideo.plugin.h xTp;
-  private final com.tencent.mm.plugin.recordvideo.plugin.r xTq;
-  private final com.tencent.mm.plugin.recordvideo.plugin.c xTr;
-  private final com.tencent.mm.plugin.recordvideo.plugin.d xTs;
-  private final com.tencent.mm.plugin.recordvideo.plugin.b xTt;
-  private final com.tencent.mm.plugin.recordvideo.plugin.a.a xTu;
-  private final com.tencent.mm.plugin.recordvideo.plugin.cropvideo.a xTv;
-  private final com.tencent.mm.plugin.recordvideo.plugin.f xTw;
-  private final com.tencent.mm.plugin.recordvideo.plugin.e xTx;
-  private final ab xTy;
-  private final com.tencent.mm.plugin.recordvideo.plugin.p xTz;
+  public static final BaseEditVideoPluginLayout.a BUc = new BaseEditVideoPluginLayout.a((byte)0);
+  private com.tencent.mm.media.widget.camerarecordview.b.b BQt;
+  protected com.tencent.mm.plugin.recordvideo.plugin.s BTM;
+  private final com.tencent.mm.plugin.recordvideo.plugin.a BTN;
+  private final com.tencent.mm.plugin.recordvideo.plugin.h BTO;
+  private final com.tencent.mm.plugin.recordvideo.plugin.r BTP;
+  private final com.tencent.mm.plugin.recordvideo.plugin.c BTQ;
+  private final com.tencent.mm.plugin.recordvideo.plugin.d BTR;
+  private final com.tencent.mm.plugin.recordvideo.plugin.b BTS;
+  private final com.tencent.mm.plugin.recordvideo.plugin.a.a BTT;
+  private final com.tencent.mm.plugin.recordvideo.plugin.cropvideo.a BTU;
+  private final com.tencent.mm.plugin.recordvideo.plugin.f BTV;
+  private final com.tencent.mm.plugin.recordvideo.plugin.e BTW;
+  private final ab BTX;
+  private final com.tencent.mm.plugin.recordvideo.plugin.p BTY;
+  private final com.tencent.mm.plugin.recordvideo.plugin.q BTZ;
+  private final i BUa;
+  private final com.tencent.mm.plugin.recordvideo.plugin.g BUb;
+  public com.tencent.mm.ui.base.q nUq;
+  private com.tencent.mm.plugin.recordvideo.activity.a wdl;
+  private RecordConfigProvider wdm;
   
   public BaseEditVideoPluginLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.xTy = new ab(paramContext);
-    ae.i("MicroMsg.EditorVideoPluginLayout", "EditorVideoPluginLayoutNew invoke init");
+    this.BTX = new ab(paramContext);
+    Log.i("MicroMsg.EditorVideoPluginLayout", "EditorVideoPluginLayoutNew invoke init");
     LayoutInflater.from(paramContext).inflate(getLayoutId(), (ViewGroup)this, true);
     paramContext = getPlayerView();
-    paramAttributeSet = (ViewStub)findViewById(2131303271);
-    d.g.b.p.g(paramAttributeSet, "placeholder");
+    paramAttributeSet = (ViewStub)findViewById(2131305944);
+    kotlin.g.b.p.g(paramAttributeSet, "placeholder");
     Object localObject = paramAttributeSet.getParent();
     if (localObject == null) {
-      throw new v("null cannot be cast to non-null type android.view.ViewGroup");
+      throw new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
     }
     localObject = (ViewGroup)localObject;
     int i = ((ViewGroup)localObject).indexOfChild((View)paramAttributeSet);
     ((ViewGroup)localObject).removeViewAt(i);
     ((ViewGroup)localObject).addView(paramContext, i, new ViewGroup.LayoutParams(-1, -1));
     paramContext = (ViewGroup)this;
-    paramAttributeSet = findViewById(2131299273);
-    d.g.b.p.g(paramAttributeSet, "findViewById(R.id.editor_add_emoji)");
-    this.xTo = new com.tencent.mm.plugin.recordvideo.plugin.a(paramContext, (ImageView)paramAttributeSet, (d)this);
-    paramContext = findViewById(2131299293);
-    d.g.b.p.g(paramContext, "findViewById(R.id.editor_item_container)");
-    this.xTp = new com.tencent.mm.plugin.recordvideo.plugin.h((EditorItemContainer)paramContext, (d)this);
-    paramContext = findViewById(2131298784);
-    d.g.b.p.g(paramContext, "findViewById(R.id.control_container)");
-    this.xTq = new com.tencent.mm.plugin.recordvideo.plugin.r((ViewGroup)paramContext, (d)this);
-    paramContext = findViewById(2131297952);
-    d.g.b.p.g(paramContext, "findViewById(R.id.change_text_root)");
-    this.xTC = new g((EditorInputView)paramContext);
-    this.xTr = new com.tencent.mm.plugin.recordvideo.plugin.c((ViewGroup)this, (d)this, this.xTC.xPV);
-    this.xTu = new com.tencent.mm.plugin.recordvideo.plugin.a.a((ViewGroup)this, (d)this);
-    this.xTv = new com.tencent.mm.plugin.recordvideo.plugin.cropvideo.a((ViewGroup)this, (d)this);
-    paramContext = findViewById(2131299295);
-    d.g.b.p.g(paramContext, "findViewById(R.id.editor_mix)");
-    this.xTw = new com.tencent.mm.plugin.recordvideo.plugin.f(paramContext, (d)this);
-    paramContext = findViewById(2131299285);
-    d.g.b.p.g(paramContext, "findViewById(R.id.editor_close)");
-    this.xTx = new com.tencent.mm.plugin.recordvideo.plugin.e((ImageView)paramContext, (d)this);
-    paramContext = findViewById(2131299621);
-    d.g.b.p.g(paramContext, "findViewById(R.id.ext_text_area)");
-    this.xTz = new com.tencent.mm.plugin.recordvideo.plugin.p((TextView)paramContext, (d)this);
-    paramContext = findViewById(2131303907);
-    d.g.b.p.g(paramContext, "findViewById(R.id.recorder_black_mask)");
-    this.xTA = new com.tencent.mm.plugin.recordvideo.plugin.q((ImageView)paramContext, (d)this);
-    this.xTs = new com.tencent.mm.plugin.recordvideo.plugin.d((ViewGroup)this, (d)this, this.xTC.xPV);
-    this.xTt = new com.tencent.mm.plugin.recordvideo.plugin.b((ViewGroup)this, (d)this);
-    this.xTB = new i((ViewGroup)this, (d)this);
-    getPluginList().add(this.xTo);
-    getPluginList().add(this.xTp);
-    getPluginList().add(this.xTq);
-    getPluginList().add(this.xTr);
-    getPluginList().add(this.xTu);
-    getPluginList().add(this.xTv);
-    getPluginList().add(this.xTw);
-    getPluginList().add(this.xTy);
-    getPluginList().add(this.xTx);
-    getPluginList().add(this.xTz);
-    getPluginList().add(this.xTA);
-    getPluginList().add(this.xTs);
-    getPluginList().add(this.xTt);
-    getPluginList().add(this.xTB);
-    paramContext = com.tencent.mm.plugin.recordvideo.model.a.xON;
+    paramAttributeSet = findViewById(2131299859);
+    kotlin.g.b.p.g(paramAttributeSet, "findViewById(R.id.editor_add_emoji)");
+    this.BTN = new com.tencent.mm.plugin.recordvideo.plugin.a(paramContext, (ImageView)paramAttributeSet, (d)this);
+    paramContext = findViewById(2131299887);
+    kotlin.g.b.p.g(paramContext, "findViewById(R.id.editor_item_container)");
+    this.BTO = new com.tencent.mm.plugin.recordvideo.plugin.h((EditorItemContainer)paramContext, (d)this);
+    paramContext = findViewById(2131299234);
+    kotlin.g.b.p.g(paramContext, "findViewById(R.id.control_container)");
+    this.BTP = new com.tencent.mm.plugin.recordvideo.plugin.r((ViewGroup)paramContext, (d)this);
+    paramContext = findViewById(2131298286);
+    kotlin.g.b.p.g(paramContext, "findViewById(R.id.change_text_root)");
+    this.BUb = new com.tencent.mm.plugin.recordvideo.plugin.g((EditorInputView)paramContext);
+    this.BTQ = new com.tencent.mm.plugin.recordvideo.plugin.c((ViewGroup)this, (d)this, this.BUb.BPY);
+    this.BTT = new com.tencent.mm.plugin.recordvideo.plugin.a.a((ViewGroup)this, (d)this);
+    this.BTU = new com.tencent.mm.plugin.recordvideo.plugin.cropvideo.a((ViewGroup)this, (d)this);
+    paramContext = findViewById(2131299891);
+    kotlin.g.b.p.g(paramContext, "findViewById(R.id.editor_mix)");
+    this.BTV = new com.tencent.mm.plugin.recordvideo.plugin.f(paramContext, (d)this);
+    paramContext = findViewById(2131299875);
+    kotlin.g.b.p.g(paramContext, "findViewById(R.id.editor_close)");
+    this.BTW = new com.tencent.mm.plugin.recordvideo.plugin.e((ImageView)paramContext, (d)this);
+    paramContext = findViewById(2131300255);
+    kotlin.g.b.p.g(paramContext, "findViewById(R.id.ext_text_area)");
+    this.BTY = new com.tencent.mm.plugin.recordvideo.plugin.p((TextView)paramContext, (d)this);
+    paramContext = findViewById(2131306748);
+    kotlin.g.b.p.g(paramContext, "findViewById(R.id.recorder_black_mask)");
+    this.BTZ = new com.tencent.mm.plugin.recordvideo.plugin.q((ImageView)paramContext, (d)this);
+    this.BTR = new com.tencent.mm.plugin.recordvideo.plugin.d((ViewGroup)this, (d)this, this.BUb.BPY);
+    this.BTS = new com.tencent.mm.plugin.recordvideo.plugin.b((ViewGroup)this, (d)this);
+    this.BUa = new i((ViewGroup)this, (d)this);
+    getPluginList().add(this.BTN);
+    getPluginList().add(this.BTO);
+    getPluginList().add(this.BTP);
+    getPluginList().add(this.BTQ);
+    getPluginList().add(this.BTT);
+    getPluginList().add(this.BTU);
+    getPluginList().add(this.BTV);
+    getPluginList().add(this.BTX);
+    getPluginList().add(this.BTW);
+    getPluginList().add(this.BTY);
+    getPluginList().add(this.BTZ);
+    getPluginList().add(this.BTR);
+    getPluginList().add(this.BTS);
+    getPluginList().add(this.BUa);
+    paramContext = com.tencent.mm.plugin.recordvideo.model.a.BOO;
     i = com.tencent.mm.plugin.recordvideo.model.a.getDisplayHeight();
-    paramContext = com.tencent.mm.plugin.recordvideo.model.a.xON;
-    int j = com.tencent.mm.plugin.recordvideo.model.a.dJb();
+    paramContext = com.tencent.mm.plugin.recordvideo.model.a.BOO;
+    int j = com.tencent.mm.plugin.recordvideo.model.a.eJO();
     float f1 = i / j;
     float f2 = i / 2.18F;
     float f3 = (j - f2) / 2.0F;
@@ -153,46 +150,46 @@ public abstract class BaseEditVideoPluginLayout
     float f5 = (i - f4) / 2.0F;
     if (f1 <= 1.78F)
     {
-      this.xTC.bs(f3);
-      this.xTp.X(f2, f3);
+      this.BUb.bL(f3);
+      this.BTO.ac(f2, f3);
       return;
     }
     if (f1 >= 2.18F)
     {
-      this.xTC.bt(f3);
-      this.xTp.Y(f4, f5);
+      this.BUb.bM(f3);
+      this.BTO.ad(f4, f5);
       return;
     }
-    this.xTC.bs(f3);
-    this.xTC.bt(f3);
-    this.xTp.X(f2, f3);
-    this.xTp.Y(f4, f5);
+    this.BUb.bL(f3);
+    this.BUb.bM(f3);
+    this.BTO.ac(f2, f3);
+    this.BTO.ad(f4, f5);
   }
   
   public void a(com.tencent.mm.media.widget.camerarecordview.b.b paramb)
   {
     super.a(paramb);
-    this.xQs = paramb;
+    this.BQt = paramb;
   }
   
   public void a(com.tencent.mm.plugin.recordvideo.activity.a parama, RecordConfigProvider paramRecordConfigProvider)
   {
     Object localObject4 = null;
-    d.g.b.p.h(parama, "navigator");
-    d.g.b.p.h(paramRecordConfigProvider, "configProvider");
-    this.sYS = parama;
-    this.sYT = paramRecordConfigProvider;
-    parama = com.tencent.mm.plugin.recordvideo.e.b.yhe;
-    com.tencent.mm.plugin.recordvideo.e.b.e(paramRecordConfigProvider);
-    parama = this.xTp;
-    d.g.b.p.h(paramRecordConfigProvider, "configProvider");
-    parama = parama.xQe;
-    d.g.b.p.h(paramRecordConfigProvider, "configProvider");
-    parama.sYT = paramRecordConfigProvider;
-    this.xTu.setVisibility(0);
-    this.xTv.setVisibility(0);
-    com.tencent.mm.plugin.recordvideo.plugin.f localf = this.xTw;
-    parama = paramRecordConfigProvider.xOh;
+    kotlin.g.b.p.h(parama, "navigator");
+    kotlin.g.b.p.h(paramRecordConfigProvider, "configProvider");
+    this.wdl = parama;
+    this.wdm = paramRecordConfigProvider;
+    parama = com.tencent.mm.plugin.recordvideo.e.c.Cic;
+    com.tencent.mm.plugin.recordvideo.e.c.e(paramRecordConfigProvider);
+    parama = this.BTO;
+    kotlin.g.b.p.h(paramRecordConfigProvider, "configProvider");
+    parama = parama.BQh;
+    kotlin.g.b.p.h(paramRecordConfigProvider, "configProvider");
+    parama.wdm = paramRecordConfigProvider;
+    this.BTT.setVisibility(0);
+    this.BTU.setVisibility(0);
+    com.tencent.mm.plugin.recordvideo.plugin.f localf = this.BTV;
+    parama = paramRecordConfigProvider.BOn;
     Object localObject1;
     label124:
     Object localObject2;
@@ -205,69 +202,69 @@ public abstract class BaseEditVideoPluginLayout
     boolean bool;
     if (parama != null)
     {
-      parama = Integer.valueOf(parama.ggi);
-      localObject1 = paramRecordConfigProvider.xOh;
+      parama = Integer.valueOf(parama.gLM);
+      localObject1 = paramRecordConfigProvider.BOn;
       if (localObject1 == null) {
         break label597;
       }
-      localObject1 = Integer.valueOf(((UICustomParam)localObject1).ggj);
-      localObject2 = paramRecordConfigProvider.xOh;
+      localObject1 = Integer.valueOf(((UICustomParam)localObject1).gLN);
+      localObject2 = paramRecordConfigProvider.BOn;
       if (localObject2 == null) {
         break label603;
       }
       localObject2 = ((UICustomParam)localObject2).text;
-      localObject3 = paramRecordConfigProvider.xOh;
+      localObject3 = paramRecordConfigProvider.BOn;
       if (localObject3 == null) {
         break label609;
       }
-      localObject3 = Integer.valueOf(((UICustomParam)localObject3).ggk);
+      localObject3 = Integer.valueOf(((UICustomParam)localObject3).gLO);
       localf.a(parama, (Integer)localObject1, (String)localObject2, (Integer)localObject3);
-      localObject2 = this.xTu;
-      parama = paramRecordConfigProvider.xOh;
+      localObject2 = this.BTT;
+      parama = paramRecordConfigProvider.BOn;
       if (parama == null) {
         break label615;
       }
-      parama = Integer.valueOf(parama.ggi);
-      localObject1 = paramRecordConfigProvider.xOh;
+      parama = Integer.valueOf(parama.gLM);
+      localObject1 = paramRecordConfigProvider.BOn;
       if (localObject1 == null) {
         break label620;
       }
-      localObject1 = Integer.valueOf(((UICustomParam)localObject1).ggj);
+      localObject1 = Integer.valueOf(((UICustomParam)localObject1).gLN);
       com.tencent.mm.plugin.recordvideo.plugin.a.a.a((com.tencent.mm.plugin.recordvideo.plugin.a.a)localObject2, parama, (Integer)localObject1);
-      localObject1 = this.xTz;
-      parama = paramRecordConfigProvider.xOh;
+      localObject1 = this.BTY;
+      parama = paramRecordConfigProvider.BOn;
       if (parama == null) {
         break label626;
       }
-      parama = parama.ggl;
+      parama = parama.gLP;
       ((com.tencent.mm.plugin.recordvideo.plugin.p)localObject1).setText(parama);
-      localObject2 = this.xTr;
-      parama = paramRecordConfigProvider.xOh;
+      localObject2 = this.BTQ;
+      parama = paramRecordConfigProvider.BOn;
       if (parama == null) {
         break label631;
       }
-      parama = Integer.valueOf(parama.ggi);
+      parama = Integer.valueOf(parama.gLM);
       label276:
-      localObject1 = paramRecordConfigProvider.xOh;
+      localObject1 = paramRecordConfigProvider.BOn;
       if (localObject1 == null) {
         break label636;
       }
-      localObject1 = Integer.valueOf(((UICustomParam)localObject1).ggj);
+      localObject1 = Integer.valueOf(((UICustomParam)localObject1).gLN);
       label297:
       ((com.tencent.mm.plugin.recordvideo.plugin.c)localObject2).a(parama, (Integer)localObject1);
-      localObject2 = this.xTv;
-      parama = paramRecordConfigProvider.xOh;
+      localObject2 = this.BTU;
+      parama = paramRecordConfigProvider.BOn;
       if (parama == null) {
         break label642;
       }
-      parama = Integer.valueOf(parama.ggi);
+      parama = Integer.valueOf(parama.gLM);
       label328:
-      localObject3 = paramRecordConfigProvider.xOh;
+      localObject3 = paramRecordConfigProvider.BOn;
       localObject1 = localObject4;
       if (localObject3 != null) {
-        localObject1 = Integer.valueOf(((UICustomParam)localObject3).ggj);
+        localObject1 = Integer.valueOf(((UICustomParam)localObject3).gLN);
       }
-      localObject2 = ((com.tencent.mm.plugin.recordvideo.plugin.cropvideo.a)localObject2).xSn.getFinishButton();
+      localObject2 = ((com.tencent.mm.plugin.recordvideo.plugin.cropvideo.a)localObject2).BSs.getFinishButton();
       if (localObject2 != null)
       {
         if ((parama != null) && (parama.intValue() != 0)) {
@@ -277,31 +274,31 @@ public abstract class BaseEditVideoPluginLayout
           ((Button)localObject2).setTextColor(android.support.v4.content.b.n(((Button)localObject2).getContext(), ((Integer)localObject1).intValue()));
         }
       }
-      this.xTB.setScene(paramRecordConfigProvider.scene);
-      parama = this.xTs;
-      localObject1 = paramRecordConfigProvider.xOh.ggh;
-      d.g.b.p.g(localObject1, "configProvider.uiParam.pluginHiddenMap");
+      this.BUa.setScene(paramRecordConfigProvider.scene);
+      parama = this.BTR;
+      localObject1 = paramRecordConfigProvider.BOn.gLL;
+      kotlin.g.b.p.g(localObject1, "configProvider.uiParam.pluginHiddenMap");
       if (!((Map)localObject1).containsKey("plugin_tip")) {
         break label647;
       }
       i = 8;
       label476:
-      parama.xPZ = i;
+      parama.BQc = i;
       parama = ((Iterable)getPluginList()).iterator();
       label494:
       if (!parama.hasNext()) {
         return;
       }
-      localObject1 = (t)parama.next();
-      localObject2 = paramRecordConfigProvider.xOh;
+      localObject1 = (com.tencent.mm.plugin.recordvideo.plugin.t)parama.next();
+      localObject2 = paramRecordConfigProvider.BOn;
       if (localObject2 == null) {
         break label652;
       }
-      localObject2 = ((UICustomParam)localObject2).ggh;
+      localObject2 = ((UICustomParam)localObject2).gLL;
       if (localObject2 == null) {
         break label652;
       }
-      localObject2 = (Boolean)((Map)localObject2).get(((t)localObject1).name());
+      localObject2 = (Boolean)((Map)localObject2).get(((com.tencent.mm.plugin.recordvideo.plugin.t)localObject1).name());
       if (localObject2 == null) {
         break label652;
       }
@@ -323,7 +320,7 @@ public abstract class BaseEditVideoPluginLayout
     label663:
     for (int i = 0;; i = 8)
     {
-      ((t)localObject1).setVisibility(i);
+      ((com.tencent.mm.plugin.recordvideo.plugin.t)localObject1).setVisibility(i);
       break label494;
       parama = null;
       break;
@@ -364,9 +361,9 @@ public abstract class BaseEditVideoPluginLayout
   
   public void a(d.c paramc, Bundle paramBundle)
   {
-    d.g.b.p.h(paramc, "status");
-    if (paramc != d.c.xUM) {
-      ae.i("MicroMsg.EditorVideoPluginLayout", "statusChange " + paramc + " ,param : " + paramBundle);
+    kotlin.g.b.p.h(paramc, "status");
+    if (paramc != d.c.BVq) {
+      Log.i("MicroMsg.EditorVideoPluginLayout", "statusChange " + paramc + " ,param : " + paramBundle);
     }
     Object localObject1;
     Object localObject2;
@@ -380,10 +377,10 @@ public abstract class BaseEditVideoPluginLayout
     label1054:
     int m;
     int n;
-    switch (a.cqt[paramc.ordinal()])
+    switch (a.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     default: 
-      ae.e("MicroMsg.EditorVideoPluginLayout", "unknown status ".concat(String.valueOf(paramc)));
+      Log.e("MicroMsg.EditorVideoPluginLayout", "unknown status ".concat(String.valueOf(paramc)));
     case 1: 
     case 2: 
     case 3: 
@@ -411,73 +408,73 @@ public abstract class BaseEditVideoPluginLayout
                 for (;;)
                 {
                   return;
-                  this.xTq.setVisibility(4);
+                  this.BTP.setVisibility(4);
                   return;
-                  paramBundle = this.xTA;
-                  paramc = paramBundle.xQX;
-                  paramBundle = paramBundle.xQX.getContext();
-                  d.g.b.p.g(paramBundle, "bgView.context");
-                  paramc.setBackgroundColor(paramBundle.getResources().getColor(2131100017));
+                  paramBundle = this.BTZ;
+                  paramc = paramBundle.BQU;
+                  paramBundle = paramBundle.BQU.getContext();
+                  kotlin.g.b.p.g(paramBundle, "bgView.context");
+                  paramc.setBackgroundColor(paramBundle.getResources().getColor(2131100042));
                   return;
-                  paramc = this.xTu;
-                  localObject1 = this.xQs;
+                  paramc = this.BTT;
+                  localObject1 = this.BQt;
                   if (localObject1 == null) {
-                    d.g.b.p.gkB();
+                    kotlin.g.b.p.hyc();
                   }
-                  com.tencent.mm.plugin.recordvideo.plugin.a.a.a(paramc, (com.tencent.mm.media.widget.camerarecordview.b.b)localObject1, this.sYT);
-                  this.xTp.setVisibility(0);
-                  this.xTq.setVisibility(0);
+                  com.tencent.mm.plugin.recordvideo.plugin.a.a.a(paramc, (com.tencent.mm.media.widget.camerarecordview.b.b)localObject1, this.wdm);
+                  this.BTO.setVisibility(0);
+                  this.BTP.setVisibility(0);
                   if ((paramBundle != null) && (!paramBundle.getBoolean("PARAM_VIDEO_NEED_CROP")))
                   {
-                    this.xTu.dJV();
+                    this.BTT.eKP();
                     return;
-                    this.xTq.setVisibility(0);
-                    paramc = this.xTp;
-                    paramBundle = paramc.xQc;
+                    this.BTP.setVisibility(0);
+                    paramc = this.BTO;
+                    paramBundle = paramc.BQf;
                     if (paramBundle != null) {
                       paramBundle.setVisibility(0);
                     }
-                    paramc = paramc.xQd;
+                    paramc = paramc.BQg;
                     if (paramc != null)
                     {
                       paramc.setVisibility(0);
                       return;
-                      localObject1 = this.xTp;
+                      localObject1 = this.BTO;
                       if (paramBundle != null) {}
                       for (paramc = (EmojiInfo)paramBundle.getParcelable("PARAM_EDIT_EMOJI_INFO"); paramc != null; paramc = null)
                       {
-                        paramBundle = ((com.tencent.mm.plugin.recordvideo.plugin.h)localObject1).xQe;
-                        d.g.b.p.h(paramc, "emojiInfo");
+                        paramBundle = ((com.tencent.mm.plugin.recordvideo.plugin.h)localObject1).BQh;
+                        kotlin.g.b.p.h(paramc, "emojiInfo");
                         localObject1 = paramBundle.getContext();
-                        d.g.b.p.g(localObject1, "context");
+                        kotlin.g.b.p.g(localObject1, "context");
                         localObject1 = new com.tencent.mm.plugin.recordvideo.ui.editor.item.f((Context)localObject1);
-                        localObject2 = paramBundle.sYT;
+                        localObject2 = paramBundle.wdm;
                         if (localObject2 != null)
                         {
-                          localObject2 = ((RecordConfigProvider)localObject2).xOh;
+                          localObject2 = ((RecordConfigProvider)localObject2).BOn;
                           if (localObject2 != null) {
-                            ((com.tencent.mm.plugin.recordvideo.ui.editor.item.f)localObject1).aa(((UICustomParam)localObject2).ggd, ((UICustomParam)localObject2).gge);
+                            ((com.tencent.mm.plugin.recordvideo.ui.editor.item.f)localObject1).af(((UICustomParam)localObject2).gLH, ((UICustomParam)localObject2).gLI);
                           }
                         }
                         localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-                        paramBundle.qdP.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-                        localObject2 = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-                        localObject2 = com.tencent.mm.plugin.recordvideo.background.e.dIe();
-                        localObject3 = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-                        ((com.tencent.mm.plugin.recordvideo.ui.editor.item.f)localObject1).b((Rect)localObject2, com.tencent.mm.plugin.recordvideo.background.e.dIg());
-                        localObject2 = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-                        ((com.tencent.mm.plugin.recordvideo.ui.editor.item.f)localObject1).setValidArea(com.tencent.mm.plugin.recordvideo.background.e.dIf());
-                        c.a.a((com.tencent.mm.plugin.recordvideo.ui.editor.view.c)localObject1, paramBundle.ydR);
-                        ((com.tencent.mm.plugin.recordvideo.ui.editor.item.f)localObject1).setStateResolve((EditorItemContainer.b)paramBundle.yem);
+                        paramBundle.ruN.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+                        localObject2 = com.tencent.mm.plugin.recordvideo.background.e.BKp;
+                        localObject2 = com.tencent.mm.plugin.recordvideo.background.e.eIR();
+                        localObject3 = com.tencent.mm.plugin.recordvideo.background.e.BKp;
+                        ((com.tencent.mm.plugin.recordvideo.ui.editor.item.f)localObject1).b((Rect)localObject2, com.tencent.mm.plugin.recordvideo.background.e.eIT());
+                        localObject2 = com.tencent.mm.plugin.recordvideo.background.e.BKp;
+                        ((com.tencent.mm.plugin.recordvideo.ui.editor.item.f)localObject1).setValidArea(com.tencent.mm.plugin.recordvideo.background.e.eIS());
+                        c.a.a((com.tencent.mm.plugin.recordvideo.ui.editor.view.c)localObject1, paramBundle.CeT);
+                        ((com.tencent.mm.plugin.recordvideo.ui.editor.item.f)localObject1).setStateResolve((EditorItemContainer.b)paramBundle.Cfo);
                         ((com.tencent.mm.plugin.recordvideo.ui.editor.item.f)localObject1).setEmojiInfo(paramc);
                         ((com.tencent.mm.plugin.recordvideo.ui.editor.item.f)localObject1).resume();
-                        if (paramBundle.ydY) {
+                        if (paramBundle.Cfa) {
                           ((com.tencent.mm.plugin.recordvideo.ui.editor.item.f)localObject1).pause();
                         }
-                        paramBundle.s((View)localObject1, true);
-                        paramBundle.removeCallbacks(paramBundle.qdV);
-                        paramBundle.postDelayed(paramBundle.qdV, 1500L);
-                        paramBundle.dLl();
+                        paramBundle.t((View)localObject1, true);
+                        paramBundle.removeCallbacks(paramBundle.ruT);
+                        paramBundle.postDelayed(paramBundle.ruT, 1500L);
+                        paramBundle.eMl();
                         return;
                       }
                     }
@@ -487,52 +484,52 @@ public abstract class BaseEditVideoPluginLayout
               paramc = paramBundle.getCharSequence("PARAM_EDIT_TEXT_CONTENT");
               i = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR");
               j = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR_BG_INT");
-              paramBundle = this.xTp;
+              paramBundle = this.BTO;
               paramc = new com.tencent.mm.plugin.recordvideo.ui.editor.item.q(paramc, i, j, 0, null, 24);
-              d.g.b.p.h(paramc, "item");
-              if (paramBundle.xQc != null)
+              kotlin.g.b.p.h(paramc, "item");
+              if (paramBundle.BQf != null)
               {
-                localObject1 = paramBundle.xQc;
+                localObject1 = paramBundle.BQf;
                 if (localObject1 != null) {
                   ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).setVisibility(0);
                 }
-                localObject1 = paramBundle.xQc;
+                localObject1 = paramBundle.BQf;
                 if (localObject1 != null) {
                   ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).setText(paramc);
                 }
-                paramBundle.xQc = null;
+                paramBundle.BQf = null;
               }
               for (;;)
               {
-                paramc = z.Nhr;
+                paramc = x.SXb;
                 return;
-                paramBundle = paramBundle.xQe;
-                d.g.b.p.h(paramc, "item");
+                paramBundle = paramBundle.BQh;
+                kotlin.g.b.p.h(paramc, "item");
                 localObject1 = new com.tencent.mm.plugin.recordvideo.ui.editor.item.r(paramBundle.getContext());
-                localObject2 = paramBundle.sYT;
+                localObject2 = paramBundle.wdm;
                 if (localObject2 != null)
                 {
-                  localObject2 = ((RecordConfigProvider)localObject2).xOh;
+                  localObject2 = ((RecordConfigProvider)localObject2).BOn;
                   if (localObject2 != null) {
-                    ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).aa(((UICustomParam)localObject2).ggf, ((UICustomParam)localObject2).ggg);
+                    ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).af(((UICustomParam)localObject2).gLJ, ((UICustomParam)localObject2).gLK);
                   }
                 }
                 localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-                paramBundle.qdP.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-                localObject2 = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-                localObject2 = com.tencent.mm.plugin.recordvideo.background.e.dIe();
-                localObject3 = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-                ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).b((Rect)localObject2, com.tencent.mm.plugin.recordvideo.background.e.dIg());
-                localObject2 = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-                ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).setValidArea(com.tencent.mm.plugin.recordvideo.background.e.dIf());
-                ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).a(paramBundle.ydR, paramBundle.heightPercent);
-                ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).setStateResolve((EditorItemContainer.b)paramBundle.yem);
+                paramBundle.ruN.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
+                localObject2 = com.tencent.mm.plugin.recordvideo.background.e.BKp;
+                localObject2 = com.tencent.mm.plugin.recordvideo.background.e.eIR();
+                localObject3 = com.tencent.mm.plugin.recordvideo.background.e.BKp;
+                ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).b((Rect)localObject2, com.tencent.mm.plugin.recordvideo.background.e.eIT());
+                localObject2 = com.tencent.mm.plugin.recordvideo.background.e.BKp;
+                ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).setValidArea(com.tencent.mm.plugin.recordvideo.background.e.eIS());
+                ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).a(paramBundle.CeT, paramBundle.heightPercent);
+                ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).setStateResolve((EditorItemContainer.b)paramBundle.Cfo);
                 ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).setText(paramc);
-                ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).setOnClickListener(paramBundle.yeh);
-                paramBundle.s((View)localObject1, true);
-                paramBundle.removeCallbacks(paramBundle.qdV);
-                paramBundle.postDelayed(paramBundle.qdV, 1500L);
-                paramBundle.dLl();
+                ((com.tencent.mm.plugin.recordvideo.ui.editor.item.r)localObject1).setOnClickListener(paramBundle.Cfj);
+                paramBundle.t((View)localObject1, true);
+                paramBundle.removeCallbacks(paramBundle.ruT);
+                paramBundle.postDelayed(paramBundle.ruT, 1500L);
+                paramBundle.eMl();
               }
             } while (paramBundle == null);
             paramc = paramBundle.getCharSequence("PARAM_EDIT_TEXT_CONTENT");
@@ -544,147 +541,146 @@ public abstract class BaseEditVideoPluginLayout
               if (i == 0) {
                 break label1054;
               }
-              this.xTp.xQe.dLm();
-              j = this.xTp.xQe.getLocationItemHeight();
+              this.BTO.BQh.eMm();
+              j = this.BTO.BQh.getLocationItemHeight();
               if (j != 0) {
                 break label1040;
               }
               i = 0;
-              k = aq.fromDPToPix(getContext(), 44);
-              this.xTs.On(i + j + k);
+              k = at.fromDPToPix(getContext(), 44);
+              this.BTR.VD(i + j + k);
             }
             for (;;)
             {
-              paramc = z.Nhr;
+              paramc = x.SXb;
               return;
               i = 0;
               break;
-              i = aq.fromDPToPix(getContext(), 24);
+              i = at.fromDPToPix(getContext(), 24);
               break label1003;
-              this.xTp.av(paramc.toString(), j, k);
+              this.BTO.ay(paramc.toString(), j, k);
             }
           } while (paramBundle == null);
           paramc = paramBundle.getCharSequence("PARAM_EDIT_TEXT_CONTENT");
           i = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR");
           j = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR_BG_INT");
-          com.tencent.mm.plugin.recordvideo.plugin.c.a(this.xTr, paramc, i, j);
-          paramc = z.Nhr;
+          com.tencent.mm.plugin.recordvideo.plugin.c.a(this.BTQ, paramc, i, j);
+          paramc = x.SXb;
           return;
         } while (paramBundle == null);
         paramc = paramBundle.getCharSequence("PARAM_EDIT_TEXT_CONTENT");
         i = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR");
         j = paramBundle.getInt("PARAM_EDIT_TEXT_COLOR_BG_INT");
-        paramBundle = this.xTs;
-        paramBundle.xPV.mode = 1;
-        paramBundle.xPV.setShow(true);
-        paramBundle.xPV.g(paramc, i, j);
-        paramc = z.Nhr;
+        paramBundle = this.BTR;
+        paramBundle.BPY.mode = 1;
+        paramBundle.BPY.setShow(true);
+        paramBundle.BPY.g(paramc, i, j);
+        paramc = x.SXb;
         return;
       } while (paramBundle == null);
       bool = paramBundle.getBoolean("PARAM_EDIT_ORIGIN_VOICE_MUTE_BOOLEAN");
-      paramc = this.xTn;
+      paramc = this.BTM;
       if (paramc == null) {
-        d.g.b.p.bdF("previewPlugin");
+        kotlin.g.b.p.btv("previewPlugin");
       }
-      paramc.wdv.setMute(bool);
-      paramc = z.Nhr;
+      paramc.zyd.setMute(bool);
+      paramc = x.SXb;
       return;
     case 15: 
-      this.xTv.pV(true);
+      this.BTU.tg(true);
       return;
     case 16: 
-      this.xTq.setVisibility(4);
+      this.BTP.setVisibility(4);
       if (paramBundle != null)
       {
         bool = paramBundle.getBoolean("EDIT_CROP_VIDEO_SHOW_WESEE_SWITCH_BOOLEAN", false);
-        paramc = this.xTn;
+        paramc = this.BTM;
         if (paramc == null) {
-          d.g.b.p.bdF("previewPlugin");
+          kotlin.g.b.p.btv("previewPlugin");
         }
-        paramc.xRf = true;
-        paramBundle = paramc.wdv.getParent();
+        paramc.BRc = true;
+        paramBundle = paramc.zyd.getParent();
         if (paramBundle == null) {
-          throw new v("null cannot be cast to non-null type android.view.ViewGroup");
+          throw new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
         }
         m = ((ViewGroup)paramBundle).getWidth();
-        paramBundle = paramc.wdv.getParent();
+        paramBundle = paramc.zyd.getParent();
         if (paramBundle == null) {
-          throw new v("null cannot be cast to non-null type android.view.ViewGroup");
+          throw new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
         }
         n = ((ViewGroup)paramBundle).getHeight();
         j = com.tencent.mm.cb.a.fromDPToPix(paramc.context, 20) + com.tencent.mm.cb.a.fromDPToPix(paramc.context, 95) + com.tencent.mm.cb.a.fromDPToPix(paramc.context, 12);
-        if (!ar.jY(paramc.context)) {
-          break label2807;
+        if (!au.aA(paramc.context)) {
+          break label2829;
         }
-        j += ar.en(paramc.context);
+        j += au.aD(paramc.context);
       }
       break;
     }
-    label2402:
-    label2807:
+    label2829:
     for (;;)
     {
       i = 0;
       if (bool)
       {
         i = com.tencent.mm.cb.a.fromDPToPix(paramc.context, 56) + 0;
-        if (al.aH(paramc.context))
+        if (ao.aQ(paramc.context))
         {
-          ae.d("MicroMsg.EditVideoPlayPlugin", "hasCutOut is true，videoViewTopMargin: " + i + ", cutout height is " + al.aG(paramc.context));
-          i += al.aG(paramc.context);
+          Log.d("MicroMsg.EditVideoPlayPlugin", "hasCutOut is true，videoViewTopMargin: " + i + ", cutout height is " + ao.aP(paramc.context));
+          i += ao.aP(paramc.context);
         }
       }
       for (;;)
       {
-        paramBundle = paramc.wdv.getParent();
+        paramBundle = paramc.zyd.getParent();
         if (paramBundle != null) {
           break;
         }
-        throw new v("null cannot be cast to non-null type android.view.ViewGroup");
-        ae.d("MicroMsg.EditVideoPlayPlugin", "hasCutOut is false");
+        throw new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
+        Log.d("MicroMsg.EditVideoPlayPlugin", "hasCutOut is false");
       }
-      if (((ViewGroup)paramBundle).getBottom() + j < com.tencent.mm.plugin.mmsight.d.fS(paramc.context).y) {}
+      if (((ViewGroup)paramBundle).getBottom() + j < com.tencent.mm.plugin.mmsight.d.gx(paramc.context).y) {}
       for (k = (int)((m - com.tencent.mm.cb.a.fromDPToPix(paramc.context, 32) * 2) / (m / n));; k = n - j - i)
       {
         int i1 = (int)(m / n * k);
         float f1 = i1 / m;
         float f2 = k / n;
         float f3 = -(Math.abs(j - i) / 2.0F);
-        ae.i("MicroMsg.EditVideoPlayPlugin", "scaleX: " + f1 + ", scaleY: " + f2 + ", translationY: " + f3);
-        ae.i("MicroMsg.EditVideoPlayPlugin", "isShowWeseeBtn: " + bool + ", videoViewWidth: " + m + ", videoViewHeight: " + n + ", videoViewBottomMargin:" + j + ", videoViewTopMargin:" + i + ", videoViewScaleHeight: " + k + ", videoViewScaleWidth: " + i1);
-        paramBundle = paramc.wdv.getParent();
+        Log.i("MicroMsg.EditVideoPlayPlugin", "scaleX: " + f1 + ", scaleY: " + f2 + ", translationY: " + f3);
+        Log.i("MicroMsg.EditVideoPlayPlugin", "isShowWeseeBtn: " + bool + ", videoViewWidth: " + m + ", videoViewHeight: " + n + ", videoViewBottomMargin:" + j + ", videoViewTopMargin:" + i + ", videoViewScaleHeight: " + k + ", videoViewScaleWidth: " + i1);
+        paramBundle = paramc.zyd.getParent();
         if (paramBundle == null) {
-          throw new v("null cannot be cast to non-null type android.view.ViewGroup");
+          throw new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
         }
         ((ViewGroup)paramBundle).animate().scaleX(f1).scaleY(f2).translationY(f3).setDuration(300L).setListener((Animator.AnimatorListener)new s.b(paramc));
-        paramc = z.Nhr;
-        this.xTp.xQe.setEnableTouch(false);
-        paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
-        com.tencent.mm.plugin.recordvideo.d.c.u("KEY_ENTER_CROP_PAGE_TIME_MS_LONG", Long.valueOf(System.currentTimeMillis()));
+        paramc = x.SXb;
+        this.BTO.BQh.setEnableTouch(false);
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.BXI;
+        com.tencent.mm.plugin.recordvideo.d.c.x("KEY_ENTER_CROP_PAGE_TIME_MS_LONG", Long.valueOf(System.currentTimeMillis()));
         return;
         if (paramBundle == null) {
           break;
         }
         i = paramBundle.getInt("EDIT_CROP_VIDEO_LENGTH_START_TIME_INT");
         j = paramBundle.getInt("EDIT_CROP_VIDEO_LENGTH_END_TIME_INT");
-        paramc = this.xTn;
+        paramc = this.BTM;
         if (paramc == null) {
-          d.g.b.p.bdF("previewPlugin");
+          kotlin.g.b.p.btv("previewPlugin");
         }
-        paramc.dez = i;
-        paramc.hwE = j;
-        paramc.wdv.d(paramc.dez, true);
-        paramc = z.Nhr;
+        paramc.dvv = i;
+        paramc.iqg = j;
+        paramc.zyd.d(paramc.dvv, true);
+        paramc = x.SXb;
         return;
-        paramc = this.xTn;
+        paramc = this.BTM;
         if (paramc == null) {
-          d.g.b.p.bdF("previewPlugin");
+          kotlin.g.b.p.btv("previewPlugin");
         }
         paramc.onPause();
         return;
-        paramc = this.xTn;
+        paramc = this.BTM;
         if (paramc == null) {
-          d.g.b.p.bdF("previewPlugin");
+          kotlin.g.b.p.btv("previewPlugin");
         }
         paramc.onResume();
         return;
@@ -692,39 +688,41 @@ public abstract class BaseEditVideoPluginLayout
           break;
         }
         i = paramBundle.getInt("EDIT_CROP_VIDEO_CURRENT_TIME_INT");
-        paramc = this.xTn;
+        paramc = this.BTM;
         if (paramc == null) {
-          d.g.b.p.bdF("previewPlugin");
+          kotlin.g.b.p.btv("previewPlugin");
         }
-        paramc.wdv.d(i, true);
-        paramc = z.Nhr;
+        paramc.zyd.d(i, true);
+        paramc = x.SXb;
         return;
         if (paramBundle == null) {
           break;
         }
         i = paramBundle.getInt("EDIT_CROP_VIDEO_CURRENT_TIME_INT");
-        paramc = this.xTv;
-        if (paramc.xSn.getVisibility() == 0)
+        paramc = this.BTU;
+        if (paramc.BSs.getVisibility() == 0)
         {
-          paramc = paramc.xSn;
-          paramc.wjy.setCurrentCursorPosition(i / paramc.wjy.getDurationMs());
+          paramc = paramc.BSs;
+          paramc.zDX.setCurrentCursorPosition(i / paramc.zDX.getDurationMs());
         }
-        paramc = z.Nhr;
+        paramc = x.SXb;
         return;
-        paramc = this.xQs;
+        paramc = this.BQt;
         if (paramc == null) {
           break;
         }
-        paramBundle = this.sYT;
+        paramBundle = this.wdm;
         if (paramBundle != null) {
-          i = paramBundle.xOp;
+          i = paramBundle.BOv;
         }
-        while (paramc.hwE - paramc.dez > i + 250)
+        while (paramc.iqg - paramc.dvv > i + 250)
         {
+          paramc = com.tencent.mm.plugin.recordvideo.d.g.BXY;
+          com.tencent.mm.plugin.recordvideo.d.g.ax(2, 3L);
           paramc = getContext();
           if (paramc == null)
           {
-            throw new v("null cannot be cast to non-null type android.app.Activity");
+            throw new kotlin.t("null cannot be cast to non-null type android.app.Activity");
             i = 10000;
           }
           else
@@ -732,87 +730,93 @@ public abstract class BaseEditVideoPluginLayout
             ((Activity)paramc).setResult(3000);
             paramc = getContext();
             if (paramc == null) {
-              throw new v("null cannot be cast to non-null type android.app.Activity");
+              throw new kotlin.t("null cannot be cast to non-null type android.app.Activity");
             }
             ((Activity)paramc).finish();
             return;
           }
         }
-        this.xTq.setVisibility(0);
-        paramc = this.xTn;
+        this.BTP.setVisibility(0);
+        paramc = this.BTM;
         if (paramc == null) {
-          d.g.b.p.bdF("previewPlugin");
+          kotlin.g.b.p.btv("previewPlugin");
         }
-        paramc.pR(false);
-        this.xTp.dJE();
-        paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
-        com.tencent.mm.plugin.recordvideo.d.c.u("KEY_EXIT_CROP_PAGE_TIME_MS_LONG", Long.valueOf(System.currentTimeMillis()));
-        paramc = z.Nhr;
+        paramc.tc(false);
+        this.BTO.eKt();
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.BXI;
+        com.tencent.mm.plugin.recordvideo.d.c.x("KEY_EXIT_CROP_PAGE_TIME_MS_LONG", Long.valueOf(System.currentTimeMillis()));
+        paramc = x.SXb;
         return;
-        this.xTq.setVisibility(0);
-        this.xTu.dJV();
-        paramc = this.xTn;
+        this.BTP.setVisibility(0);
+        this.BTT.eKP();
+        paramc = this.BTM;
         if (paramc == null) {
-          d.g.b.p.bdF("previewPlugin");
+          kotlin.g.b.p.btv("previewPlugin");
         }
-        paramc.pR(true);
-        this.xTp.dJE();
-        paramc = com.tencent.mm.plugin.recordvideo.d.c.xWV;
-        com.tencent.mm.plugin.recordvideo.d.c.u("KEY_EXIT_CROP_PAGE_TIME_MS_LONG", Long.valueOf(System.currentTimeMillis()));
+        paramc.tc(true);
+        this.BTO.eKt();
+        paramc = com.tencent.mm.plugin.recordvideo.d.c.BXI;
+        com.tencent.mm.plugin.recordvideo.d.c.x("KEY_EXIT_CROP_PAGE_TIME_MS_LONG", Long.valueOf(System.currentTimeMillis()));
         return;
-        aoQ();
+        paramc = com.tencent.mm.plugin.recordvideo.d.g.BXY;
+        com.tencent.mm.plugin.recordvideo.d.g.ax(2, 3L);
+        onBackPress();
         return;
         if (paramBundle == null) {
           break;
         }
         paramBundle = paramBundle.getByteArray("PARAM_EDIT_POI_INFO");
-        paramc = this.xTp;
-        paramBundle = new csx().parseFrom(paramBundle);
+        paramc = this.BTO;
+        paramBundle = new dlg().parseFrom(paramBundle);
         if (paramBundle == null) {
-          throw new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecordLocationInfo");
+          throw new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RecordLocationInfo");
         }
-        paramBundle = (csx)paramBundle;
-        d.g.b.p.h(paramBundle, "storyLocation");
-        if ((!bu.isNullOrNil(paramBundle.jGd)) || (!bu.isNullOrNil(paramBundle.jfX)))
+        paramBundle = (dlg)paramBundle;
+        kotlin.g.b.p.h(paramBundle, "storyLocation");
+        if ((!Util.isNullOrNil(paramBundle.kHV)) || (!Util.isNullOrNil(paramBundle.kea)))
         {
           i = 1;
           if (i == 0) {
-            break label2480;
+            break label2502;
           }
-          if (!paramc.xQe.dLo()) {
-            break label2469;
+          if (!paramc.BQh.eMo()) {
+            break label2491;
           }
-          paramc = paramc.xQe;
-          d.g.b.p.h(paramBundle, "sl");
-          if (paramc.yed != null)
+          paramc = paramc.BQh;
+          kotlin.g.b.p.h(paramBundle, "sl");
+          if (paramc.Cff != null)
           {
-            paramc.I((d.g.a.a)EditorItemContainer.e.yeq);
+            paramc.ab((kotlin.g.a.a)EditorItemContainer.e.Cfs);
             paramc.a(paramBundle);
           }
-          j = this.xTp.xQe.getLocationItemHeight();
+          label2424:
+          j = this.BTO.BQh.getLocationItemHeight();
           if (j != 0) {
-            break label2506;
+            break label2528;
           }
         }
-        for (i = 0;; i = aq.fromDPToPix(getContext(), 24))
+        label2491:
+        label2502:
+        label2528:
+        for (i = 0;; i = at.fromDPToPix(getContext(), 24))
         {
-          k = aq.fromDPToPix(getContext(), 44);
-          if (!this.xTp.dJB()) {
-            this.xTs.On(i + j + k);
+          k = at.fromDPToPix(getContext(), 44);
+          if (!this.BTO.eKq()) {
+            this.BTR.VD(i + j + k);
           }
-          paramc = z.Nhr;
+          paramc = x.SXb;
           return;
           i = 0;
           break;
-          paramc.xQe.a(paramBundle);
-          break label2402;
-          if (!paramc.xQe.dLo()) {
-            break label2402;
+          paramc.BQh.a(paramBundle);
+          break label2424;
+          if (!paramc.BQh.eMo()) {
+            break label2424;
           }
-          paramc.xQe.I((d.g.a.a)h.a.xQg);
-          break label2402;
+          paramc.BQh.ab((kotlin.g.a.a)h.a.BQj);
+          break label2424;
         }
-        this.xTt.dJA();
+        this.BTS.eKn();
         return;
         if (paramBundle == null) {
           break;
@@ -822,13 +826,13 @@ public abstract class BaseEditVideoPluginLayout
         paramc = new ArrayList();
         if (paramBundle != null)
         {
-          paramBundle = ((Iterable)paramBundle.xPF).iterator();
+          paramBundle = ((Iterable)paramBundle.BPI).iterator();
           for (;;)
           {
             if (paramBundle.hasNext())
             {
               localObject2 = (byte[])paramBundle.next();
-              localObject1 = new bwu();
+              localObject1 = new ckm();
               localObject3 = (com.tencent.mm.bw.a)localObject1;
               try
               {
@@ -839,193 +843,194 @@ public abstract class BaseEditVideoPluginLayout
               {
                 for (;;)
                 {
-                  ae.l("safeParser", "", new Object[] { localException });
+                  Log.printDebugStack("safeParser", "", new Object[] { localException });
                 }
               }
             }
           }
-          paramBundle = z.Nhr;
+          paramBundle = x.SXb;
         }
-        paramBundle = this.xTp;
+        paramBundle = this.BTO;
         paramc = (List)paramc;
-        d.g.b.p.h(paramc, "lyricsInfo");
+        kotlin.g.b.p.h(paramc, "lyricsInfo");
         if (bool) {
-          if (paramBundle.xQe.yee != null)
+          if (paramBundle.BQh.Cfg != null)
           {
             i = 1;
             if (i == 0) {
-              break label2737;
+              break label2759;
             }
-            paramBundle = paramBundle.xQe;
-            d.g.b.p.h(paramc, "lyricsItemInfos");
-            if (paramBundle.yee != null)
+            paramBundle = paramBundle.BQh;
+            kotlin.g.b.p.h(paramc, "lyricsItemInfos");
+            if (paramBundle.Cfg != null)
             {
-              paramBundle.dLn();
-              paramBundle.fq(paramc);
+              paramBundle.eMn();
+              paramBundle.gl(paramc);
             }
           }
         }
         for (;;)
         {
-          paramc = z.Nhr;
+          paramc = x.SXb;
           return;
           i = 0;
           break;
-          paramBundle.xQe.fq(paramc);
+          label2759:
+          paramBundle.BQh.gl(paramc);
           continue;
-          paramBundle.xQe.dLn();
+          paramBundle.BQh.eMn();
         }
         if (paramBundle == null) {
           break;
         }
-        if (paramBundle.getInt("PARAM_DELETE_VIEW_TYPE_INT") == com.tencent.mm.plugin.recordvideo.ui.editor.view.b.ygE.ordinal()) {
-          this.xTu.xTd.qf(false);
+        if (paramBundle.getInt("PARAM_DELETE_VIEW_TYPE_INT") == com.tencent.mm.plugin.recordvideo.ui.editor.view.b.ChB.ordinal()) {
+          this.BTT.wgL.tw(false);
         }
-        paramc = z.Nhr;
+        paramc = x.SXb;
         return;
       }
     }
   }
   
-  protected final void axb(final String paramString)
+  protected final void aLt(final String paramString)
   {
-    d.g.b.p.h(paramString, "tip");
-    ae.i("MicroMsg.EditorVideoPluginLayout", "showDialog");
+    kotlin.g.b.p.h(paramString, "tip");
+    Log.i("MicroMsg.EditorVideoPluginLayout", "showDialog");
     Context localContext = getContext();
     if (localContext == null) {
-      throw new v("null cannot be cast to non-null type android.app.Activity");
+      throw new kotlin.t("null cannot be cast to non-null type android.app.Activity");
     }
     ((Activity)localContext).runOnUiThread((Runnable)new c(this, paramString));
   }
   
   protected final com.tencent.mm.plugin.recordvideo.plugin.a getAddEmojiPlugin()
   {
-    return this.xTo;
+    return this.BTN;
   }
   
   protected final com.tencent.mm.plugin.recordvideo.plugin.a.a getAddMusicPlugin()
   {
-    return this.xTu;
+    return this.BTT;
   }
   
   protected final com.tencent.mm.plugin.recordvideo.plugin.b getAddPoiPlugin()
   {
-    return this.xTt;
+    return this.BTS;
   }
   
   protected final com.tencent.mm.plugin.recordvideo.plugin.c getAddTextPlugin()
   {
-    return this.xTr;
+    return this.BTQ;
   }
   
   protected final com.tencent.mm.plugin.recordvideo.plugin.d getAddTipPlugin()
   {
-    return this.xTs;
+    return this.BTR;
   }
   
   protected final com.tencent.mm.plugin.recordvideo.plugin.p getAddonTextPlugin()
   {
-    return this.xTz;
+    return this.BTY;
   }
   
-  protected final com.tencent.mm.plugin.recordvideo.plugin.e getBackToRecordPlugin()
+  public final com.tencent.mm.plugin.recordvideo.plugin.e getBackToRecordPlugin()
   {
-    return this.xTx;
+    return this.BTW;
   }
   
   protected final com.tencent.mm.plugin.recordvideo.plugin.q getBgPlugin()
   {
-    return this.xTA;
+    return this.BTZ;
   }
   
   protected final com.tencent.mm.media.widget.camerarecordview.b.b getCaptureInfo()
   {
-    return this.xQs;
+    return this.BQt;
   }
   
   protected final RecordConfigProvider getConfigProvider()
   {
-    return this.sYT;
+    return this.wdm;
   }
   
   protected final com.tencent.mm.plugin.recordvideo.plugin.cropvideo.a getCropVideoPlugin()
   {
-    return this.xTv;
+    return this.BTU;
   }
   
-  protected final com.tencent.mm.plugin.recordvideo.plugin.f getEditFinishPlugin()
+  public final com.tencent.mm.plugin.recordvideo.plugin.f getEditFinishPlugin()
   {
-    return this.xTw;
+    return this.BTV;
   }
   
-  protected final g getInputPlugin()
+  protected final com.tencent.mm.plugin.recordvideo.plugin.g getInputPlugin()
   {
-    return this.xTC;
+    return this.BUb;
   }
   
   protected final com.tencent.mm.plugin.recordvideo.plugin.h getItemContainerPlugin()
   {
-    return this.xTp;
+    return this.BTO;
   }
   
   public int getLayoutId()
   {
-    return 2131495831;
+    return 2131496795;
   }
   
   protected final i getMoreMenuPlugin()
   {
-    return this.xTB;
+    return this.BUa;
   }
   
   protected final com.tencent.mm.plugin.recordvideo.activity.a getNavigator()
   {
-    return this.sYS;
+    return this.wdl;
   }
   
   public abstract View getPlayerView();
   
-  protected final com.tencent.mm.plugin.recordvideo.plugin.s getPreviewPlugin()
+  public final com.tencent.mm.plugin.recordvideo.plugin.s getPreviewPlugin()
   {
-    com.tencent.mm.plugin.recordvideo.plugin.s locals = this.xTn;
+    com.tencent.mm.plugin.recordvideo.plugin.s locals = this.BTM;
     if (locals == null) {
-      d.g.b.p.bdF("previewPlugin");
+      kotlin.g.b.p.btv("previewPlugin");
     }
     return locals;
   }
   
   protected final ab getReMuxPlugin()
   {
-    return this.xTy;
+    return this.BTX;
   }
   
   protected final com.tencent.mm.plugin.recordvideo.plugin.r getVideoControlContainerPlugin()
   {
-    return this.xTq;
+    return this.BTP;
   }
   
   protected final void setCaptureInfo(com.tencent.mm.media.widget.camerarecordview.b.b paramb)
   {
-    this.xQs = paramb;
+    this.BQt = paramb;
   }
   
   protected final void setConfigProvider(RecordConfigProvider paramRecordConfigProvider)
   {
-    this.sYT = paramRecordConfigProvider;
+    this.wdm = paramRecordConfigProvider;
   }
   
   protected final void setNavigator(com.tencent.mm.plugin.recordvideo.activity.a parama)
   {
-    this.sYS = parama;
+    this.wdl = parama;
   }
   
   protected final void setPreviewPlugin(com.tencent.mm.plugin.recordvideo.plugin.s params)
   {
-    d.g.b.p.h(params, "<set-?>");
-    this.xTn = params;
+    kotlin.g.b.p.h(params, "<set-?>");
+    this.BTM = params;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   public static final class b
     implements Runnable
   {
@@ -1034,16 +1039,16 @@ public abstract class BaseEditVideoPluginLayout
     public final void run()
     {
       AppMethodBeat.i(75762);
-      com.tencent.mm.ui.base.p localp = BaseEditVideoPluginLayout.a(this.xTE);
-      if (localp != null) {
-        localp.dismiss();
+      com.tencent.mm.ui.base.q localq = BaseEditVideoPluginLayout.a(this.BUd);
+      if (localq != null) {
+        localq.dismiss();
       }
-      BaseEditVideoPluginLayout.a(this.xTE, null);
+      BaseEditVideoPluginLayout.a(this.BUd, null);
       AppMethodBeat.o(75762);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -1052,14 +1057,14 @@ public abstract class BaseEditVideoPluginLayout
     public final void run()
     {
       AppMethodBeat.i(75763);
-      BaseEditVideoPluginLayout.a(this.xTE, com.tencent.mm.ui.base.h.b(this.xTE.getContext(), paramString, false, null));
+      BaseEditVideoPluginLayout.a(this.BUd, com.tencent.mm.ui.base.h.a(this.BUd.getContext(), paramString, false, null));
       AppMethodBeat.o(75763);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.parent.BaseEditVideoPluginLayout
  * JD-Core Version:    0.7.0.1
  */

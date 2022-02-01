@@ -18,20 +18,20 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ba;
+import com.tencent.mm.g.c.bb;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.plugin.sns.model.aj;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.storage.al;
-import com.tencent.mm.storage.au;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aq;
+import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bw;
 import com.tencent.mm.ui.MMBaseActivity;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -40,23 +40,23 @@ import java.util.List;
 public class SnsSelectContactDialog
   extends MMBaseActivity
 {
-  private GridView Ayr;
-  private a Ays;
-  private List<String> hMc;
+  private GridView EHJ;
+  private a EHK;
+  private List<String> iHf;
   
   public SnsSelectContactDialog()
   {
     AppMethodBeat.i(99009);
-    this.Ayr = null;
-    this.Ays = null;
-    this.hMc = new LinkedList();
+    this.EHJ = null;
+    this.EHK = null;
+    this.iHf = new LinkedList();
     AppMethodBeat.o(99009);
   }
   
-  private boolean aCh(String paramString)
+  private boolean aRc(String paramString)
   {
     AppMethodBeat.i(99012);
-    String[] arrayOfString = x.hIe;
+    String[] arrayOfString = ab.iCO;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -68,17 +68,17 @@ public class SnsSelectContactDialog
       }
       i += 1;
     }
-    if (x.wb(paramString))
+    if (ab.Eq(paramString))
     {
       AppMethodBeat.o(99012);
       return false;
     }
-    if (x.Ao(paramString))
+    if (ab.IT(paramString))
     {
       AppMethodBeat.o(99012);
       return false;
     }
-    if ((this.hMc != null) && (this.hMc.contains(paramString)))
+    if ((this.iHf != null) && (this.iHf.contains(paramString)))
     {
       AppMethodBeat.o(99012);
       return false;
@@ -87,13 +87,13 @@ public class SnsSelectContactDialog
     return true;
   }
   
-  private String egc()
+  private String fiC()
   {
     AppMethodBeat.i(99013);
-    Object localObject1 = ((l)g.ab(l.class)).azL();
-    Object localObject2 = x.hHV;
+    Object localObject1 = ((l)g.af(l.class)).aST();
+    Object localObject2 = ab.iCF;
     Object localObject3 = new LinkedList();
-    String[] arrayOfString = x.hIe;
+    String[] arrayOfString = ab.iCO;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
@@ -105,7 +105,7 @@ public class SnsSelectContactDialog
     ((List)localObject3).add("officialaccounts");
     ((List)localObject3).add("helper_entry");
     ((List)localObject3).add("filehelper");
-    localObject1 = ((br)localObject1).c((String)localObject2, (List)localObject3, "*");
+    localObject1 = ((bw)localObject1).c((String)localObject2, (List)localObject3, "*");
     if (((Cursor)localObject1).getCount() == 0)
     {
       ((Cursor)localObject1).close();
@@ -116,18 +116,18 @@ public class SnsSelectContactDialog
     ((Cursor)localObject1).moveToFirst();
     do
     {
-      localObject3 = new au();
-      ((au)localObject3).convertFrom((Cursor)localObject1);
-      if (aCh(((ba)localObject3).field_username))
+      localObject3 = new az();
+      ((az)localObject3).convertFrom((Cursor)localObject1);
+      if (aRc(((bb)localObject3).field_username))
       {
-        ((List)localObject2).add(((ba)localObject3).field_username);
+        ((List)localObject2).add(((bb)localObject3).field_username);
         if (((List)localObject2).size() >= 10) {
           break;
         }
       }
     } while (((Cursor)localObject1).moveToNext());
     ((Cursor)localObject1).close();
-    localObject1 = bu.m((List)localObject2, ";");
+    localObject1 = Util.listToString((List)localObject2, ";");
     AppMethodBeat.o(99013);
     return localObject1;
   }
@@ -153,31 +153,31 @@ public class SnsSelectContactDialog
         AppMethodBeat.o(99014);
         return;
       }
-      paramIntent = bu.U(paramIntent.getStringExtra("Select_Contact").split(","));
+      paramIntent = Util.stringsToList(paramIntent.getStringExtra("Select_Contact").split(","));
       if (paramIntent == null)
       {
         AppMethodBeat.o(99014);
         return;
       }
-      if (this.hMc == null) {
-        this.hMc = new LinkedList();
+      if (this.iHf == null) {
+        this.iHf = new LinkedList();
       }
       paramIntent = paramIntent.iterator();
       while (paramIntent.hasNext())
       {
         String str = (String)paramIntent.next();
-        if (!this.hMc.contains(str)) {
-          this.hMc.add(str);
+        if (!this.iHf.contains(str)) {
+          this.iHf.add(str);
         }
       }
-      ae.d("MicroMsg.SnsSelectContactDialog", "withList count " + this.hMc.size());
-      if (this.Ays != null)
+      Log.d("MicroMsg.SnsSelectContactDialog", "withList count " + this.iHf.size());
+      if (this.EHK != null)
       {
-        ae.d("MicroMsg.SnsSelectContactDialog", "refresh alertAdapter");
-        this.Ays.refresh();
+        Log.d("MicroMsg.SnsSelectContactDialog", "refresh alertAdapter");
+        this.EHK.refresh();
       }
       paramIntent = new Intent();
-      paramIntent.putExtra("Select_Contact", bu.m(this.hMc, ","));
+      paramIntent.putExtra("Select_Contact", Util.listToString(this.iHf, ","));
       setResult(-1, paramIntent);
       finish();
     }
@@ -187,27 +187,27 @@ public class SnsSelectContactDialog
   {
     AppMethodBeat.i(99010);
     super.onCreate(paramBundle);
-    setContentView(2131495534);
+    setContentView(2131496422);
     paramBundle = getIntent().getStringExtra("Select_Contact");
     if ((paramBundle == null) || (paramBundle.equals(""))) {
-      this.hMc.clear();
+      this.iHf.clear();
     }
     for (;;)
     {
-      this.Ayr = ((GridView)findViewById(2131298755));
-      this.Ays = new a(this, this.hMc);
-      this.Ayr.setAdapter(this.Ays);
-      this.Ayr.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.EHJ = ((GridView)findViewById(2131299198));
+      this.EHK = new a(this, this.iHf);
+      this.EHJ.setAdapter(this.EHK);
+      this.EHJ.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(99003);
           b localb = new b();
-          localb.bd(paramAnonymousAdapterView);
-          localb.bd(paramAnonymousView);
-          localb.mu(paramAnonymousInt);
-          localb.rl(paramAnonymousLong);
-          a.b("com/tencent/mm/plugin/sns/ui/SnsSelectContactDialog$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+          localb.bm(paramAnonymousAdapterView);
+          localb.bm(paramAnonymousView);
+          localb.pH(paramAnonymousInt);
+          localb.zo(paramAnonymousLong);
+          a.b("com/tencent/mm/plugin/sns/ui/SnsSelectContactDialog$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
           if (paramAnonymousInt == SnsSelectContactDialog.a(SnsSelectContactDialog.this).getCount() - 1) {
             SnsSelectContactDialog.b(SnsSelectContactDialog.this);
           }
@@ -221,17 +221,17 @@ public class SnsSelectContactDialog
           }
         }
       });
-      this.Ayr.setSelection(this.Ays.getCount() - 1);
-      ((ImageButton)findViewById(2131298364)).setOnClickListener(new View.OnClickListener()
+      this.EHJ.setSelection(this.EHK.getCount() - 1);
+      ((ImageButton)findViewById(2131298770)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(99004);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/sns/ui/SnsSelectContactDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/sns/ui/SnsSelectContactDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           paramAnonymousView = new Intent();
-          paramAnonymousView.putExtra("Select_Contact", bu.m(SnsSelectContactDialog.c(SnsSelectContactDialog.this), ","));
+          paramAnonymousView.putExtra("Select_Contact", Util.listToString(SnsSelectContactDialog.c(SnsSelectContactDialog.this), ","));
           SnsSelectContactDialog.this.setResult(-1, paramAnonymousView);
           SnsSelectContactDialog.this.finish();
           a.a(this, "com/tencent/mm/plugin/sns/ui/SnsSelectContactDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -240,7 +240,7 @@ public class SnsSelectContactDialog
       });
       AppMethodBeat.o(99010);
       return;
-      this.hMc = bu.U(paramBundle.split(","));
+      this.iHf = Util.stringsToList(paramBundle.split(","));
     }
   }
   
@@ -250,7 +250,7 @@ public class SnsSelectContactDialog
     if (paramKeyEvent.getKeyCode() == 4)
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("Select_Contact", bu.m(this.hMc, ","));
+      localIntent.putExtra("Select_Contact", Util.listToString(this.iHf, ","));
       setResult(-1, localIntent);
       finish();
     }
@@ -268,17 +268,17 @@ public class SnsSelectContactDialog
   final class a
     extends BaseAdapter
   {
-    private int Afb;
+    private int Eny;
     private Context context;
-    private List<String> hMc;
+    private List<String> iHf;
     private int type;
     
     public a(int paramInt)
     {
       AppMethodBeat.i(99005);
-      this.Afb = 0;
+      this.Eny = 0;
       Object localObject;
-      this.hMc = localObject;
+      this.iHf = localObject;
       this.context = paramInt;
       this.type = 0;
       refresh();
@@ -287,13 +287,13 @@ public class SnsSelectContactDialog
     
     public final int getCount()
     {
-      return this.Afb;
+      return this.Eny;
     }
     
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(99007);
-      Object localObject = this.hMc.get(paramInt);
+      Object localObject = this.iHf.get(paramInt);
       AppMethodBeat.o(99007);
       return localObject;
     }
@@ -311,19 +311,19 @@ public class SnsSelectContactDialog
         paramViewGroup = new SnsSelectContactDialog.b();
         if (this.type == 0)
         {
-          paramView = View.inflate(this.context, 2131495617, null);
-          paramViewGroup.image = ((ImageView)paramView.findViewById(2131300914));
-          paramViewGroup.Ayu = ((ImageView)paramView.findViewById(2131301148));
+          paramView = View.inflate(this.context, 2131496516, null);
+          paramViewGroup.image = ((ImageView)paramView.findViewById(2131302526));
+          paramViewGroup.EHM = ((ImageView)paramView.findViewById(2131302803));
           paramView.setTag(paramViewGroup);
           label66:
           paramView.setVisibility(0);
-          if (paramInt != this.Afb - 1) {
+          if (paramInt != this.Eny - 1) {
             break label170;
           }
           paramViewGroup.image.setBackgroundDrawable(null);
-          paramViewGroup.image.setImageResource(2131234098);
-          paramViewGroup.Ayu.setVisibility(8);
-          if (this.hMc.size() >= al.IKg) {
+          paramViewGroup.image.setImageResource(2131234957);
+          paramViewGroup.EHM.setVisibility(8);
+          if (this.iHf.size() >= aq.NSd) {
             paramView.setVisibility(8);
           }
         }
@@ -333,22 +333,22 @@ public class SnsSelectContactDialog
         paramViewGroup.image.setScaleType(ImageView.ScaleType.CENTER_CROP);
         AppMethodBeat.o(99008);
         return paramView;
-        paramView = View.inflate(this.context, 2131495526, null);
+        paramView = View.inflate(this.context, 2131496414, null);
         break;
         paramViewGroup = (SnsSelectContactDialog.b)paramView.getTag();
         break label66;
         label170:
         paramViewGroup.image.setBackgroundDrawable(null);
-        paramViewGroup.Ayu.setVisibility(0);
+        paramViewGroup.EHM.setVisibility(0);
         Object localObject;
         if (this.type == 0)
         {
-          localObject = (String)this.hMc.get(paramInt);
+          localObject = (String)this.iHf.get(paramInt);
           a.b.c(paramViewGroup.image, (String)localObject);
         }
         else
         {
-          localObject = h.d((String)this.hMc.get(paramInt), ah.dXP(), ah.dXP(), true);
+          localObject = BitmapUtil.extractThumbNail((String)this.iHf.get(paramInt), aj.fbb(), aj.fbb(), true);
           paramViewGroup.image.setImageBitmap((Bitmap)localObject);
         }
       }
@@ -357,10 +357,10 @@ public class SnsSelectContactDialog
     public final void refresh()
     {
       AppMethodBeat.i(99006);
-      if (this.hMc == null) {}
-      for (this.Afb = 0;; this.Afb = this.hMc.size())
+      if (this.iHf == null) {}
+      for (this.Eny = 0;; this.Eny = this.iHf.size())
       {
-        this.Afb += 1;
+        this.Eny += 1;
         notifyDataSetChanged();
         AppMethodBeat.o(99006);
         return;
@@ -370,7 +370,7 @@ public class SnsSelectContactDialog
   
   static final class b
   {
-    ImageView Ayu;
+    ImageView EHM;
     ImageView image;
   }
 }

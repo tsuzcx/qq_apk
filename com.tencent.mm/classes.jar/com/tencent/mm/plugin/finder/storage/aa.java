@@ -1,39 +1,70 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cc;
-import com.tencent.mm.sdk.e.c.a;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.ays;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.a.a;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/LocalFinderAction;", "Lcom/tencent/mm/autogen/table/BaseFinderAction;", "()V", "obj", "Lcom/tencent/mm/protobuf/BaseProtoBuf;", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "uniqueId", "", "Companion", "plugin-finder_release"})
-public class aa
-  extends cc
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "", "localPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "(Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;)V", "id", "", "getId", "()J", "id$delegate", "Lkotlin/Lazy;", "getLocalPb", "()Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "localType", "", "getLocalType", "()I", "wording", "", "getWording", "()Ljava/lang/String;", "isSame", "", "other", "plugin-finder_release"})
+public final class aa
 {
-  private static final c.a info;
-  private static final String sKe = "table_index_select_1";
-  private static final String sKf = "table_index_select_2";
-  public static final a sKg;
+  private final f tON;
+  public final ays vEN;
   
-  static
+  public aa(ays paramays)
   {
-    AppMethodBeat.i(167032);
-    sKg = new a((byte)0);
-    c.a locala = cc.VD();
-    p.g(locala, "initAutoDBInfo(LocalFinderAction::class.java)");
-    info = locala;
-    sKe = "table_index_select_1";
-    sKf = "table_index_select_2";
-    AppMethodBeat.o(167032);
+    AppMethodBeat.i(251817);
+    this.vEN = paramays;
+    this.tON = g.ah((a)new a(this));
+    AppMethodBeat.o(251817);
   }
   
-  public c.a getDBInfo()
+  public final boolean a(aa paramaa)
   {
-    return info;
+    AppMethodBeat.i(251816);
+    p.h(paramaa, "other");
+    if ((this.vEN.LIS == paramaa.vEN.LIS) && (!Util.isNullOrNil(getWording())) && (p.j(getWording(), paramaa.getWording())))
+    {
+      AppMethodBeat.o(251816);
+      return true;
+    }
+    AppMethodBeat.o(251816);
+    return false;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/LocalFinderAction$Companion;", "", "()V", "TABLEINDEX1", "", "getTABLEINDEX1", "()Ljava/lang/String;", "TABLEINDEX2", "getTABLEINDEX2", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder_release"})
-  public static final class a {}
+  public final long getId()
+  {
+    AppMethodBeat.i(251815);
+    long l = ((Number)this.tON.getValue()).longValue();
+    AppMethodBeat.o(251815);
+    return l;
+  }
+  
+  public final String getWording()
+  {
+    String str2 = this.vEN.dQx;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class a
+    extends q
+    implements a<Long>
+  {
+    a(aa paramaa)
+    {
+      super();
+    }
+  }
 }
 
 

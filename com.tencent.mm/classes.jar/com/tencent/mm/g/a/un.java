@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class un
-  extends b
+  extends IEvent
 {
-  public a dJU;
-  
   public un()
   {
     this((byte)0);
@@ -15,17 +12,8 @@ public final class un
   
   private un(byte paramByte)
   {
-    AppMethodBeat.i(125635);
-    this.dJU = new a();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125635);
-  }
-  
-  public static final class a
-  {
-    public boolean dJV = false;
-    public long dvu = 0L;
   }
 }
 

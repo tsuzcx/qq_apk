@@ -13,14 +13,14 @@ final class ag$b$8
   
   public final void run()
   {
-    AppMethodBeat.i(198129);
-    new r(this.val$context).a(this.kBS, this.jLB, this.kjI, this.val$context.getString(2131766191), this.Els);
-    AppMethodBeat.o(198129);
+    AppMethodBeat.i(210991);
+    new r(this.val$context).a(this.lGl, this.kNB, this.lnr, this.val$context.getString(2131768667), this.IYs);
+    AppMethodBeat.o(210991);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.ag.b.8
  * JD-Core Version:    0.7.0.1
  */

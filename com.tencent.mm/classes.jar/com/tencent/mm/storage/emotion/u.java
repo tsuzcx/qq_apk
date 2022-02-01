@@ -1,37 +1,37 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 
 public final class u
-  extends j<SmileyPanelConfigInfo>
+  extends MAutoStorage<SmileyPanelConfigInfo>
   implements g.a
 {
-  private static final String[] JiX;
+  private static final String[] OsP;
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(105152);
-    SQL_CREATE = new String[] { j.getCreateSQLs(SmileyPanelConfigInfo.info, "SmileyPanelConfigInfo") };
-    JiX = new String[] { "position", "key" };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(SmileyPanelConfigInfo.info, "SmileyPanelConfigInfo") };
+    OsP = new String[] { "position", "key" };
     AppMethodBeat.o(105152);
   }
   
-  public u(e parame)
+  public u(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(parame, SmileyPanelConfigInfo.info, "SmileyPanelConfigInfo");
+    this(paramISQLiteDatabase, SmileyPanelConfigInfo.info, "SmileyPanelConfigInfo");
   }
   
-  private u(e parame, c.a parama, String paramString)
+  private u(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
   {
-    super(parame, parama, paramString, null);
-    this.db = parame;
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
+    this.db = paramISQLiteDatabase;
   }
   
   public final int a(g paramg)
@@ -41,7 +41,7 @@ public final class u
   }
   
   /* Error */
-  public final java.util.ArrayList<SmileyPanelConfigInfo> chM()
+  public final java.util.ArrayList<SmileyPanelConfigInfo> cFK()
   {
     // Byte code:
     //   0: ldc 64
@@ -51,63 +51,63 @@ public final class u
     //   9: invokespecial 68	java/util/ArrayList:<init>	()V
     //   12: astore 5
     //   14: aload_0
-    //   15: getfield 57	com/tencent/mm/storage/emotion/u:db	Lcom/tencent/mm/sdk/e/e;
+    //   15: getfield 57	com/tencent/mm/storage/emotion/u:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   18: ldc 31
-    //   20: getstatic 43	com/tencent/mm/storage/emotion/u:JiX	[Ljava/lang/String;
+    //   20: getstatic 43	com/tencent/mm/storage/emotion/u:OsP	[Ljava/lang/String;
     //   23: aconst_null
     //   24: aconst_null
     //   25: aconst_null
     //   26: aconst_null
     //   27: aconst_null
     //   28: iconst_2
-    //   29: invokeinterface 73 9 0
+    //   29: invokeinterface 74 9 0
     //   34: astore_3
     //   35: aload_3
     //   36: ifnull +56 -> 92
     //   39: aload_3
     //   40: astore_2
     //   41: aload_3
-    //   42: invokeinterface 79 1 0
+    //   42: invokeinterface 80 1 0
     //   47: ifeq +45 -> 92
     //   50: aload_3
     //   51: astore_2
     //   52: new 25	com/tencent/mm/storage/emotion/SmileyPanelConfigInfo
     //   55: dup
-    //   56: invokespecial 80	com/tencent/mm/storage/emotion/SmileyPanelConfigInfo:<init>	()V
+    //   56: invokespecial 81	com/tencent/mm/storage/emotion/SmileyPanelConfigInfo:<init>	()V
     //   59: astore 4
     //   61: aload_3
     //   62: astore_2
     //   63: aload 4
     //   65: aload_3
-    //   66: invokevirtual 84	com/tencent/mm/storage/emotion/SmileyPanelConfigInfo:convertFrom	(Landroid/database/Cursor;)V
+    //   66: invokevirtual 85	com/tencent/mm/storage/emotion/SmileyPanelConfigInfo:convertFrom	(Landroid/database/Cursor;)V
     //   69: aload_3
     //   70: astore_2
     //   71: aload 5
     //   73: aload 4
-    //   75: invokevirtual 88	java/util/ArrayList:add	(Ljava/lang/Object;)Z
+    //   75: invokevirtual 89	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   78: pop
     //   79: aload_3
     //   80: astore_2
     //   81: aload_3
-    //   82: invokeinterface 91 1 0
+    //   82: invokeinterface 92 1 0
     //   87: istore_1
     //   88: iload_1
     //   89: ifne -39 -> 50
     //   92: aload_3
     //   93: ifnull +9 -> 102
     //   96: aload_3
-    //   97: invokeinterface 94 1 0
-    //   102: ldc 96
-    //   104: ldc 98
+    //   97: invokeinterface 95 1 0
+    //   102: ldc 97
+    //   104: ldc 99
     //   106: iconst_1
-    //   107: anewarray 100	java/lang/Object
+    //   107: anewarray 101	java/lang/Object
     //   110: dup
     //   111: iconst_0
     //   112: aload 5
-    //   114: invokevirtual 104	java/util/ArrayList:size	()I
-    //   117: invokestatic 110	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   114: invokevirtual 105	java/util/ArrayList:size	()I
+    //   117: invokestatic 111	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   120: aastore
-    //   121: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   121: invokestatic 116	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   124: ldc 64
     //   126: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   129: aload 5
@@ -117,14 +117,14 @@ public final class u
     //   135: astore_3
     //   136: aload_3
     //   137: astore_2
-    //   138: ldc 96
+    //   138: ldc 97
     //   140: aload 4
-    //   142: invokestatic 120	com/tencent/mm/sdk/platformtools/bu:o	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   145: invokestatic 124	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   142: invokestatic 122	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   145: invokestatic 126	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   148: aload_3
     //   149: ifnull -47 -> 102
     //   152: aload_3
-    //   153: invokeinterface 94 1 0
+    //   153: invokeinterface 95 1 0
     //   158: goto -56 -> 102
     //   161: astore_3
     //   162: aconst_null
@@ -132,7 +132,7 @@ public final class u
     //   164: aload_2
     //   165: ifnull +9 -> 174
     //   168: aload_2
-    //   169: invokeinterface 94 1 0
+    //   169: invokeinterface 95 1 0
     //   174: ldc 64
     //   176: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   179: aload_3
@@ -172,7 +172,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.u
  * JD-Core Version:    0.7.0.1
  */

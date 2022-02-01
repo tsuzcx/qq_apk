@@ -1,189 +1,117 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.GradientDrawable;
-import android.util.DisplayMetrics;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.luggage.sdk.d.d;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.appbrand.widget.b;
-import com.tencent.mm.plugin.appbrand.y.m;
-import com.tencent.mm.ui.statusbar.c;
-import com.tencent.mm.ui.statusbar.c.a;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
+import com.tencent.mm.plugin.appbrand.task.k.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@SuppressLint({"ViewConstructor"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUIAccountReleaseHandler;", "", "()V", "TAG", "", "processForegroundImportance", "", "", "[Ljava/lang/Integer;", "getSerializedUin", "handleAccountRelease", "", "activity", "Landroid/app/Activity;", "finishHandler", "Lcom/tencent/mm/plugin/appbrand/task/AppBrandTaskUIController$FinishAllHandler;", "plugin-appbrand-integration_release"})
 public final class q
-  extends LinearLayout
-  implements c.a
 {
-  public final d cpk;
-  private final a[] mKG;
-  private final SparseArray<b> mKH;
-  private final SparseArray<b> mKI;
-  private int mKJ;
+  private static final Integer[] nXq;
+  public static final q nXr;
   
-  public q(Context paramContext, d paramd)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(147701);
-    this.cpk = paramd;
-    this.mKH = new SparseArray();
-    this.mKI = new SparseArray();
-    this.mKG = new a[4];
-    setClickable(false);
-    int i = getContext().getResources().getDisplayMetrics().widthPixels;
-    int j = a.fromDPToPix(getContext(), 10);
-    int k = a.fromDPToPix(getContext(), 4);
-    paramContext = new FrameLayout.LayoutParams(i * 3 / 5, -2);
-    paramContext.gravity = 53;
-    setLayoutParams(paramContext);
-    bAz();
-    setPadding(j, j, j, j);
-    setOrientation(1);
-    paramContext = new GradientDrawable();
-    paramContext.setCornerRadius(k);
-    paramContext.setColor(-652403418);
-    setBackground(paramContext);
-    paramContext = new LinearLayout.LayoutParams(-1, -2);
-    paramd = new LinearLayout.LayoutParams(-1, 2);
-    TextView localTextView = new TextView(getContext());
-    View localView = new View(getContext());
-    localTextView.setTextColor(-1);
-    localTextView.setLayoutParams(paramContext);
-    localTextView.setTextSize(1, 14.0F);
-    localTextView.setText(getContext().getString(2131755562));
-    addView(localTextView);
-    paramd.setMargins(0, a.fromDPToPix(getContext(), 10), 0, 0);
-    localView.setLayoutParams(paramd);
-    localView.setBackgroundColor(1728053247);
-    addView(localView);
-    bAA();
-    c.bn((Activity)getContext()).a(this);
-    AppMethodBeat.o(147701);
+    AppMethodBeat.i(51149);
+    nXr = new q();
+    nXq = new Integer[] { Integer.valueOf(100), Integer.valueOf(200) };
+    AppMethodBeat.o(51149);
   }
   
-  private void bAA()
+  public static void a(final Activity paramActivity, k.a parama)
   {
-    AppMethodBeat.i(147703);
-    int i = 0;
-    while (i < 4)
+    AppMethodBeat.i(51148);
+    p.h(paramActivity, "activity");
+    p.h(parama, "finishHandler");
+    try
     {
-      a locala = new a(getContext());
-      locala.setText(getContext().getString(com.tencent.mm.plugin.appbrand.performance.d.mmq[i]));
-      this.mKG[i] = locala;
-      addView(locala);
-      i += 1;
-    }
-    AppMethodBeat.o(147703);
-  }
-  
-  private void bAz()
-  {
-    AppMethodBeat.i(147702);
-    if ((getLayoutParams() != null) && ((getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
-    {
-      ((ViewGroup.MarginLayoutParams)getLayoutParams()).topMargin = (b.dX(getContext()) + this.mKJ);
-      requestLayout();
-    }
-    AppMethodBeat.o(147702);
-  }
-  
-  public final void at(final int paramInt, final String paramString)
-  {
-    AppMethodBeat.i(147704);
-    m.runOnUiThread(new Runnable()
-    {
-      public final void run()
+      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = new ActivityManager.RunningAppProcessInfo();
+      ActivityManager.getMyMemoryState(localRunningAppProcessInfo);
+      parama = new a(parama, paramActivity);
+      if ((localRunningAppProcessInfo == null) || (!org.apache.commons.b.a.contains(nXq, Integer.valueOf(localRunningAppProcessInfo.importance))))
       {
-        AppMethodBeat.i(147692);
-        q.a(q.this, paramInt, paramString);
-        AppMethodBeat.o(147692);
+        paramActivity = new StringBuilder("finish directly importance[");
+        if (localRunningAppProcessInfo != null)
+        {
+          i = localRunningAppProcessInfo.importance;
+          Log.i("MicroMsg.AppBrandUIAccountReleaseHandler", i + ']');
+          parama.invoke();
+          AppMethodBeat.o(51148);
+          return;
+        }
       }
-    });
-    AppMethodBeat.o(147704);
-  }
-  
-  public final void et(final String paramString1, final String paramString2)
-  {
-    AppMethodBeat.i(147705);
-    m.runOnUiThread(new Runnable()
+    }
+    catch (RemoteException localRemoteException)
     {
-      public final void run()
+      for (;;)
       {
-        AppMethodBeat.i(147693);
-        q.a(q.this, paramString1, paramString2);
-        AppMethodBeat.o(147693);
+        Object localObject = null;
+        continue;
+        int i = -1;
       }
-    });
-    AppMethodBeat.o(147705);
+      parama = (AppBrandProxyUIProcessTask.b)new b(parama);
+      com.tencent.mm.plugin.appbrand.ipc.a.a((Context)paramActivity, (AppBrandProxyUIProcessTask.ProcessRequest)new AccountReleaseProxyUILaunchRequest(), parama, new Intent().addFlags(67108864));
+      AppMethodBeat.o(51148);
+    }
   }
   
-  public final void ug(int paramInt)
+  public static final int bXC()
   {
-    AppMethodBeat.i(147706);
-    this.mKJ = paramInt;
-    bAz();
-    AppMethodBeat.o(147706);
+    AppMethodBeat.i(175219);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0);
+    if (localSharedPreferences != null)
+    {
+      int i = localSharedPreferences.getInt("default_uin", 0);
+      AppMethodBeat.o(175219);
+      return i;
+    }
+    AppMethodBeat.o(175219);
+    return 0;
   }
   
-  @SuppressLint({"AppCompatCustomView"})
-  final class a
-    extends TextView
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"doFinish", "", "invoke"})
+  static final class a
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<x>
   {
-    public a(Context paramContext)
+    a(k.a parama, Activity paramActivity)
     {
       super();
-      AppMethodBeat.i(147694);
-      this$1 = new LinearLayout.LayoutParams(-1, -2);
-      int i = a.fromDPToPix(getContext(), 5);
-      q.this.setMargins(0, i, 0, i);
-      setLayoutParams(q.this);
-      setTextSize(1, 12.0F);
-      setTextColor(getContext().getResources().getColor(2131100212));
-      AppMethodBeat.o(147694);
+    }
+    
+    public final void invoke()
+    {
+      AppMethodBeat.i(51146);
+      this.nXs.proceed();
+      paramActivity.finish();
+      AppMethodBeat.o(51146);
     }
   }
   
-  @SuppressLint({"AppCompatCustomView"})
-  final class b
-    extends TextView
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/ui/AccountReleaseProxyUILaunchResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
+  static final class b<R extends AppBrandProxyUIProcessTask.ProcessResult>
+    implements AppBrandProxyUIProcessTask.b<AccountReleaseProxyUILaunchResult>
   {
-    private String mTitle;
-    private String mValue;
-    
-    public b(Context paramContext)
-    {
-      super();
-      AppMethodBeat.i(147696);
-      setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-      setTextSize(1, 12.0F);
-      setTextColor(getContext().getResources().getColor(2131099674));
-      AppMethodBeat.o(147696);
-    }
-    
-    private void update()
-    {
-      AppMethodBeat.i(147697);
-      setText(String.format("%s: %s", new Object[] { this.mTitle, this.mValue }));
-      AppMethodBeat.o(147697);
-    }
+    b(q.a parama) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.q
  * JD-Core Version:    0.7.0.1
  */

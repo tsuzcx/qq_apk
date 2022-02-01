@@ -10,37 +10,37 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.protocal.protobuf.chi;
-import com.tencent.mm.protocal.protobuf.ekj;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.protocal.protobuf.cxp;
+import com.tencent.mm.protocal.protobuf.ffc;
 
 public final class f$21
   implements AppBrandGameEvaluateOptionView.a
 {
-  public f$21(f paramf, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, LinearLayout paramLinearLayout, p paramp, Runnable paramRunnable, ekj paramekj) {}
+  public f$21(f paramf, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView, LinearLayout paramLinearLayout, q paramq, Runnable paramRunnable, ffc paramffc) {}
   
-  public final void a(chi paramchi)
+  public final void a(cxp paramcxp)
   {
     AppMethodBeat.i(49885);
-    this.nhe.setVisibility(4);
-    this.nhf.setVisibility(8);
-    this.nhg.setVisibility(4);
-    this.nhj.findViewById(2131303046).setVisibility(8);
-    f localf = this.ngO;
-    p localp = this.jyD;
-    Object localObject1 = this.nhj;
-    Runnable localRunnable = this.ngQ;
-    ekj localekj = this.nhd;
-    if (!localf.nhc)
+    this.JRP.setVisibility(4);
+    this.JRQ.setVisibility(8);
+    this.JRR.setVisibility(4);
+    this.JRS.findViewById(2131305652).setVisibility(8);
+    f localf = this.oqB;
+    q localq = this.kzl;
+    Object localObject1 = this.JRS;
+    Runnable localRunnable = this.oqD;
+    ffc localffc = this.Iae;
+    if (!localf.Iad)
     {
-      Object localObject2 = (ImageView)((LinearLayout)localObject1).findViewById(2131305771);
+      Object localObject2 = (ImageView)((LinearLayout)localObject1).findViewById(2131309046);
       ((ImageView)localObject2).setAlpha(0.0F);
       ((ImageView)localObject2).setScaleX(0.4807692F);
       ((ImageView)localObject2).setScaleY(0.4807692F);
       ((ImageView)localObject2).setRotation(24.0F);
       ((ImageView)localObject2).setVisibility(0);
-      Object localObject3 = (TextView)((LinearLayout)localObject1).findViewById(2131305772);
-      ((TextView)localObject3).setText(localekj.Inu);
+      Object localObject3 = (TextView)((LinearLayout)localObject1).findViewById(2131309047);
+      ((TextView)localObject3).setText(localffc.NAw);
       ((TextView)localObject3).setAlpha(0.0F);
       ((TextView)localObject3).setVisibility(0);
       localObject1 = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
@@ -56,14 +56,14 @@ public final class f$21
       localAnimatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
       localAnimatorSet.addListener(new f.13(localf, localRunnable));
       localAnimatorSet.start();
-      localf.a(localp, false, paramchi, localekj);
+      localf.a(localq, false, paramcxp, localffc);
     }
     AppMethodBeat.o(49885);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.f.21
  * JD-Core Version:    0.7.0.1
  */

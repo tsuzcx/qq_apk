@@ -8,10 +8,11 @@ import java.util.Map;
 public class e
   implements b<d>
 {
-  protected d iXd;
-  public final b iXe;
-  public final c iXf;
-  public final a iXg;
+  protected d jTZ;
+  public final b jUa;
+  public final d jUb;
+  public final c jUc;
+  public final a jUd;
   
   public e()
   {
@@ -23,10 +24,11 @@ public class e
   private e(d paramd)
   {
     AppMethodBeat.i(63452);
-    this.iXe = new b();
-    this.iXf = new c();
-    this.iXg = new a();
-    this.iXd = paramd;
+    this.jUa = new b();
+    this.jUb = new d();
+    this.jUc = new c();
+    this.jUd = new a();
+    this.jTZ = paramd;
     AppMethodBeat.o(63452);
   }
   
@@ -35,7 +37,7 @@ public class e
   {
     public a() {}
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
     }
@@ -46,15 +48,15 @@ public class e
   {
     public b() {}
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
     }
     
-    public final com.tencent.mm.vending.g.c<Boolean> d(int paramInt, Map<String, Object> paramMap)
+    public final com.tencent.mm.vending.g.c<Boolean> e(int paramInt, Map<String, Object> paramMap)
     {
       AppMethodBeat.i(63447);
-      paramMap = g.L(Integer.valueOf(paramInt), paramMap).c(this);
+      paramMap = g.O(Integer.valueOf(paramInt), paramMap).c(this);
       AppMethodBeat.o(63447);
       return paramMap;
     }
@@ -65,15 +67,34 @@ public class e
   {
     public c() {}
     
-    public final com.tencent.mm.vending.g.c<com.tencent.mm.vending.j.d<Boolean, String, Long>> E(Map<String, Object> paramMap)
+    public final com.tencent.mm.vending.g.c<com.tencent.mm.vending.j.d<Boolean, String, Long>> H(Map<String, Object> paramMap)
+    {
+      AppMethodBeat.i(212949);
+      paramMap = g.en(paramMap).c(this);
+      AppMethodBeat.o(212949);
+      return paramMap;
+    }
+    
+    public final String akn()
+    {
+      return "Vending.LOGIC";
+    }
+  }
+  
+  public final class d
+    implements com.tencent.mm.vending.h.e<com.tencent.mm.vending.j.d<Boolean, String, Long>, Map<String, Object>>
+  {
+    public d() {}
+    
+    public final com.tencent.mm.vending.g.c<com.tencent.mm.vending.j.d<Boolean, String, Long>> H(Map<String, Object> paramMap)
     {
       AppMethodBeat.i(63449);
-      paramMap = g.ej(paramMap).c(this);
+      paramMap = g.en(paramMap).c(this);
       AppMethodBeat.o(63449);
       return paramMap;
     }
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
     }
@@ -81,7 +102,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.b.e
  * JD-Core Version:    0.7.0.1
  */

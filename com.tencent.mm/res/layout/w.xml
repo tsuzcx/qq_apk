@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/af" android:paddingLeft="12.0dip" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@drawable/n" android:dividerHeight="1.0px" android:overScrollMode="never" />
+    <include layout="@layout/aab" />
+    <include layout="@layout/aao" />
+    <include layout="@layout/aak" />
+    <include layout="@layout/aag" />
+    <include layout="@layout/aah" />
+    <include android:visibility="gone" layout="@layout/aam" />
+    <com.tencent.mm.plugin.finder.view.FinderFeedLiveNoticeView android:id="@id/cly" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
+    <include android:id="@id/d8w" android:visibility="gone" layout="@layout/aa0" />
 </LinearLayout>

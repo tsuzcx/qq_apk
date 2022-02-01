@@ -9,10 +9,10 @@ public enum r
   static
   {
     AppMethodBeat.i(113873);
-    oWn = new r("EN_DYNAMIC_CODE_SCENE_ENTER_FOREGROUND", 0, 1);
-    oWo = new r("EN_DYNAMIC_CODE_SCENE_ENTER_WXCARD", 1, 2);
-    oWp = new r("EN_DYNAMIC_CODE_SCENE_ENTER_CARD_DETAIL", 2, 3);
-    oWq = new r[] { oWn, oWo, oWp };
+    qlh = new r("EN_DYNAMIC_CODE_SCENE_ENTER_FOREGROUND", 0, 1);
+    qli = new r("EN_DYNAMIC_CODE_SCENE_ENTER_WXCARD", 1, 2);
+    qlj = new r("EN_DYNAMIC_CODE_SCENE_ENTER_CARD_DETAIL", 2, 3);
+    qlk = new r[] { qlh, qli, qlj };
     AppMethodBeat.o(113873);
   }
   
@@ -23,7 +23,7 @@ public enum r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.r
  * JD-Core Version:    0.7.0.1
  */

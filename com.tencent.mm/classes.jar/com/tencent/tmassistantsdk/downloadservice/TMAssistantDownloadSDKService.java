@@ -9,7 +9,7 @@ import android.os.RemoteException;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.aidl.ITMAssistantDownloadSDKServiceCallback;
 import com.tencent.tmassistantsdk.aidl.ITMAssistantDownloadSDKServiceInterface.Stub;
 import com.tencent.tmassistantsdk.downloadclient.TMAssistantDownloadTaskInfo;
@@ -156,8 +156,8 @@ public class TMAssistantDownloadSDKService
     SystemClock.sleep(300L);
     com.tencent.mm.hellhoundlib.b.a locala = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
     Object localObject = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahE(), "com/tencent/tmassistantsdk/downloadservice/TMAssistantDownloadSDKService", "onDestroy", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    Process.killProcess(((Integer)locala.mt(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/tmassistantsdk/downloadservice/TMAssistantDownloadSDKService", "onDestroy", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)locala.pG(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/tmassistantsdk/downloadservice/TMAssistantDownloadSDKService", "onDestroy", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     AppMethodBeat.o(102039);
   }
@@ -229,7 +229,7 @@ public class TMAssistantDownloadSDKService
       {
         for (;;)
         {
-          ae.printErrStackTrace("TMAssistantDownloadSDKService", paramString1, "", new Object[0]);
+          Log.printErrStackTrace("TMAssistantDownloadSDKService", paramString1, "", new Object[0]);
         }
       }
     }
@@ -313,7 +313,7 @@ public class TMAssistantDownloadSDKService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.TMAssistantDownloadSDKService
  * JD-Core Version:    0.7.0.1
  */

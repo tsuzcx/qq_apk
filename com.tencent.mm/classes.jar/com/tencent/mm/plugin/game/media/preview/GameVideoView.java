@@ -12,9 +12,7 @@ import com.tencent.mm.model.d.a;
 import com.tencent.mm.modelvideo.MMVideoView;
 import com.tencent.mm.plugin.game.commlib.util.b;
 import com.tencent.mm.plugin.game.commlib.util.b.a;
-import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.pluginsdk.ui.CommonVideoView;
-import com.tencent.mm.pluginsdk.ui.h;
 import com.tencent.mm.pluginsdk.ui.i;
 import com.tencent.mm.pluginsdk.ui.i.a;
 import com.tencent.mm.pluginsdk.ui.i.b;
@@ -22,11 +20,11 @@ import com.tencent.mm.pluginsdk.ui.i.c;
 import com.tencent.mm.pluginsdk.ui.i.d;
 import com.tencent.mm.pluginsdk.ui.i.e;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.n;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.FilePathGenerator;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -35,30 +33,30 @@ public class GameVideoView
   extends RelativeLayout
   implements i
 {
-  private static Set<String> ulj;
-  private boolean cur;
+  private static Set<String> xDB;
+  private boolean gPs;
   private Context mContext;
+  private boolean mMute;
   private String mUrl;
-  private d ozB;
-  private i ula;
-  private i.e ulb;
-  private float ulc;
-  private int uld;
-  private boolean ule;
-  private boolean ulf;
-  private int ulg;
-  private h ulh;
-  private a uli;
-  a ulk;
-  i.a ull;
-  i.c ulm;
-  d.a uln;
-  i.b ulo;
+  private d pNk;
+  private a xDA;
+  a xDC;
+  i.a xDD;
+  i.c xDE;
+  d.a xDF;
+  i.b xDG;
+  private i xDt;
+  private i.e xDu;
+  private float xDv;
+  private int xDw;
+  private boolean xDx;
+  private int xDy;
+  private com.tencent.mm.pluginsdk.ui.h xDz;
   
   static
   {
     AppMethodBeat.i(41327);
-    ulj = new HashSet();
+    xDB = new HashSet();
     AppMethodBeat.o(41327);
   }
   
@@ -66,111 +64,111 @@ public class GameVideoView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(41291);
-    this.ulb = i.e.Flj;
-    this.cur = false;
-    this.ulc = -1.0F;
-    this.ulg = 0;
-    this.ull = new i.a()
+    this.xDu = i.e.Kcb;
+    this.mMute = false;
+    this.xDv = -1.0F;
+    this.xDy = 0;
+    this.xDD = new i.a()
     {
-      public final void aM(String paramAnonymousString, boolean paramAnonymousBoolean)
+      public final void aO(String paramAnonymousString, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(41282);
-        ae.i("MicroMsg.Haowan.GameVideoView", "onDownloadFinish path [%s] isPlayNow [%b]", new Object[] { paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
+        Log.i("MicroMsg.Haowan.GameVideoView", "onDownloadFinish path [%s] isPlayNow [%b]", new Object[] { paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
         if ((paramAnonymousString != null) && (paramAnonymousString.endsWith(".temp")))
         {
           String str = paramAnonymousString.replace(".temp", "");
-          o.mF(paramAnonymousString, str);
+          s.nw(paramAnonymousString, str);
           GameVideoView.b(GameVideoView.this);
           GameVideoView.a(GameVideoView.this, str);
-          GameVideoView.dbc().add(paramAnonymousString);
-          ae.i("MicroMsg.Haowan.GameVideoView", "onDownloadFinish tempPath [%s] newPath [%s]", new Object[] { paramAnonymousString, str });
+          GameVideoView.dUJ().add(paramAnonymousString);
+          Log.i("MicroMsg.Haowan.GameVideoView", "onDownloadFinish tempPath [%s] newPath [%s]", new Object[] { paramAnonymousString, str });
         }
         AppMethodBeat.o(41282);
       }
     };
-    this.ulm = new i.c()
+    this.xDE = new i.c()
     {
-      public final void rd(long paramAnonymousLong)
-      {
-        AppMethodBeat.i(41283);
-        g.yxI.idkeyStat(600L, paramAnonymousLong, 1L, false);
-        AppMethodBeat.o(41283);
-      }
-      
-      public final void vG(String paramAnonymousString)
+      public final void DX(String paramAnonymousString)
       {
         AppMethodBeat.i(41284);
-        g.yxI.kvStat(14349, paramAnonymousString);
+        com.tencent.mm.plugin.report.service.h.CyF.kvStat(14349, paramAnonymousString);
         AppMethodBeat.o(41284);
       }
+      
+      public final void yU(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(41283);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(600L, paramAnonymousLong, 1L, false);
+        AppMethodBeat.o(41283);
+      }
     };
-    this.uln = new d.a()
+    this.xDF = new d.a()
     {
-      public final void aAo() {}
+      public final void aTw() {}
       
-      public final void aAp() {}
+      public final void aTx() {}
       
-      public final void aAq() {}
+      public final void aTy() {}
       
-      public final void aAr() {}
+      public final void aTz() {}
     };
-    this.ulo = new i.b()
+    this.xDG = new i.b()
     {
       public final void c(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(41285);
-        ae.w("MicroMsg.Haowan.GameVideoView", "%d onError[%s %d, %d]", new Object[] { Integer.valueOf(hashCode()), paramAnonymousString3, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        Log.w("MicroMsg.Haowan.GameVideoView", "%d onError[%s %d, %d]", new Object[] { Integer.valueOf(hashCode()), paramAnonymousString3, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         AppMethodBeat.o(41285);
       }
       
       public final void d(String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(41288);
-        ae.i("MicroMsg.Haowan.GameVideoView", "%d onGetVideoSize[%d %d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        Log.i("MicroMsg.Haowan.GameVideoView", "%d onGetVideoSize[%d %d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         AppMethodBeat.o(41288);
       }
       
-      public final void ds(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dH(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(41286);
-        ae.i("MicroMsg.Haowan.GameVideoView", "%d onPrepared", new Object[] { Integer.valueOf(hashCode()) });
+        Log.i("MicroMsg.Haowan.GameVideoView", "%d onPrepared", new Object[] { Integer.valueOf(hashCode()) });
         if (GameVideoView.c(GameVideoView.this) != null) {
-          GameVideoView.c(GameVideoView.this).ta();
+          GameVideoView.c(GameVideoView.this).tf();
         }
         AppMethodBeat.o(41286);
       }
       
-      public final void dt(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dI(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(41287);
-        ae.i("MicroMsg.Haowan.GameVideoView", "%d onVideoEnded", new Object[] { Integer.valueOf(hashCode()) });
+        Log.i("MicroMsg.Haowan.GameVideoView", "%d onVideoEnded", new Object[] { Integer.valueOf(hashCode()) });
         GameVideoView.this.c(0.0D, true);
         AppMethodBeat.o(41287);
       }
       
-      public final void du(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dJ(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(41289);
-        ae.d("MicroMsg.Haowan.GameVideoView", "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
+        Log.d("MicroMsg.Haowan.GameVideoView", "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
         GameVideoView.this.setKeepScreenOn(false);
-        GameVideoView.d(GameVideoView.this).ez(false);
+        GameVideoView.d(GameVideoView.this).fp(false);
         AppMethodBeat.o(41289);
       }
       
-      public final void dv(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dK(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(41290);
-        ae.d("MicroMsg.Haowan.GameVideoView", "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
+        Log.d("MicroMsg.Haowan.GameVideoView", "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
         GameVideoView.this.setKeepScreenOn(true);
-        GameVideoView.d(GameVideoView.this).a(GameVideoView.this.uln);
+        GameVideoView.d(GameVideoView.this).a(GameVideoView.this.xDF);
         AppMethodBeat.o(41290);
       }
       
-      public final void dw(String paramAnonymousString1, String paramAnonymousString2) {}
+      public final void dL(String paramAnonymousString1, String paramAnonymousString2) {}
       
-      public final void dx(String paramAnonymousString1, String paramAnonymousString2) {}
+      public final void dM(String paramAnonymousString1, String paramAnonymousString2) {}
       
-      public final void eX(String paramAnonymousString1, String paramAnonymousString2) {}
+      public final void fo(String paramAnonymousString1, String paramAnonymousString2) {}
     };
     initView();
     AppMethodBeat.o(41291);
@@ -180,117 +178,117 @@ public class GameVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(41292);
-    this.ulb = i.e.Flj;
-    this.cur = false;
-    this.ulc = -1.0F;
-    this.ulg = 0;
-    this.ull = new i.a()
+    this.xDu = i.e.Kcb;
+    this.mMute = false;
+    this.xDv = -1.0F;
+    this.xDy = 0;
+    this.xDD = new i.a()
     {
-      public final void aM(String paramAnonymousString, boolean paramAnonymousBoolean)
+      public final void aO(String paramAnonymousString, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(41282);
-        ae.i("MicroMsg.Haowan.GameVideoView", "onDownloadFinish path [%s] isPlayNow [%b]", new Object[] { paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
+        Log.i("MicroMsg.Haowan.GameVideoView", "onDownloadFinish path [%s] isPlayNow [%b]", new Object[] { paramAnonymousString, Boolean.valueOf(paramAnonymousBoolean) });
         if ((paramAnonymousString != null) && (paramAnonymousString.endsWith(".temp")))
         {
           String str = paramAnonymousString.replace(".temp", "");
-          o.mF(paramAnonymousString, str);
+          s.nw(paramAnonymousString, str);
           GameVideoView.b(GameVideoView.this);
           GameVideoView.a(GameVideoView.this, str);
-          GameVideoView.dbc().add(paramAnonymousString);
-          ae.i("MicroMsg.Haowan.GameVideoView", "onDownloadFinish tempPath [%s] newPath [%s]", new Object[] { paramAnonymousString, str });
+          GameVideoView.dUJ().add(paramAnonymousString);
+          Log.i("MicroMsg.Haowan.GameVideoView", "onDownloadFinish tempPath [%s] newPath [%s]", new Object[] { paramAnonymousString, str });
         }
         AppMethodBeat.o(41282);
       }
     };
-    this.ulm = new i.c()
+    this.xDE = new i.c()
     {
-      public final void rd(long paramAnonymousLong)
-      {
-        AppMethodBeat.i(41283);
-        g.yxI.idkeyStat(600L, paramAnonymousLong, 1L, false);
-        AppMethodBeat.o(41283);
-      }
-      
-      public final void vG(String paramAnonymousString)
+      public final void DX(String paramAnonymousString)
       {
         AppMethodBeat.i(41284);
-        g.yxI.kvStat(14349, paramAnonymousString);
+        com.tencent.mm.plugin.report.service.h.CyF.kvStat(14349, paramAnonymousString);
         AppMethodBeat.o(41284);
       }
+      
+      public final void yU(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(41283);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(600L, paramAnonymousLong, 1L, false);
+        AppMethodBeat.o(41283);
+      }
     };
-    this.uln = new d.a()
+    this.xDF = new d.a()
     {
-      public final void aAo() {}
+      public final void aTw() {}
       
-      public final void aAp() {}
+      public final void aTx() {}
       
-      public final void aAq() {}
+      public final void aTy() {}
       
-      public final void aAr() {}
+      public final void aTz() {}
     };
-    this.ulo = new i.b()
+    this.xDG = new i.b()
     {
       public final void c(String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(41285);
-        ae.w("MicroMsg.Haowan.GameVideoView", "%d onError[%s %d, %d]", new Object[] { Integer.valueOf(hashCode()), paramAnonymousString3, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        Log.w("MicroMsg.Haowan.GameVideoView", "%d onError[%s %d, %d]", new Object[] { Integer.valueOf(hashCode()), paramAnonymousString3, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         AppMethodBeat.o(41285);
       }
       
       public final void d(String paramAnonymousString1, String paramAnonymousString2, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(41288);
-        ae.i("MicroMsg.Haowan.GameVideoView", "%d onGetVideoSize[%d %d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        Log.i("MicroMsg.Haowan.GameVideoView", "%d onGetVideoSize[%d %d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         AppMethodBeat.o(41288);
       }
       
-      public final void ds(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dH(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(41286);
-        ae.i("MicroMsg.Haowan.GameVideoView", "%d onPrepared", new Object[] { Integer.valueOf(hashCode()) });
+        Log.i("MicroMsg.Haowan.GameVideoView", "%d onPrepared", new Object[] { Integer.valueOf(hashCode()) });
         if (GameVideoView.c(GameVideoView.this) != null) {
-          GameVideoView.c(GameVideoView.this).ta();
+          GameVideoView.c(GameVideoView.this).tf();
         }
         AppMethodBeat.o(41286);
       }
       
-      public final void dt(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dI(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(41287);
-        ae.i("MicroMsg.Haowan.GameVideoView", "%d onVideoEnded", new Object[] { Integer.valueOf(hashCode()) });
+        Log.i("MicroMsg.Haowan.GameVideoView", "%d onVideoEnded", new Object[] { Integer.valueOf(hashCode()) });
         GameVideoView.this.c(0.0D, true);
         AppMethodBeat.o(41287);
       }
       
-      public final void du(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dJ(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(41289);
-        ae.d("MicroMsg.Haowan.GameVideoView", "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
+        Log.d("MicroMsg.Haowan.GameVideoView", "%d onVideoPause", new Object[] { Integer.valueOf(hashCode()) });
         GameVideoView.this.setKeepScreenOn(false);
-        GameVideoView.d(GameVideoView.this).ez(false);
+        GameVideoView.d(GameVideoView.this).fp(false);
         AppMethodBeat.o(41289);
       }
       
-      public final void dv(String paramAnonymousString1, String paramAnonymousString2)
+      public final void dK(String paramAnonymousString1, String paramAnonymousString2)
       {
         AppMethodBeat.i(41290);
-        ae.d("MicroMsg.Haowan.GameVideoView", "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
+        Log.d("MicroMsg.Haowan.GameVideoView", "%d onVideoPlay", new Object[] { Integer.valueOf(hashCode()) });
         GameVideoView.this.setKeepScreenOn(true);
-        GameVideoView.d(GameVideoView.this).a(GameVideoView.this.uln);
+        GameVideoView.d(GameVideoView.this).a(GameVideoView.this.xDF);
         AppMethodBeat.o(41290);
       }
       
-      public final void dw(String paramAnonymousString1, String paramAnonymousString2) {}
+      public final void dL(String paramAnonymousString1, String paramAnonymousString2) {}
       
-      public final void dx(String paramAnonymousString1, String paramAnonymousString2) {}
+      public final void dM(String paramAnonymousString1, String paramAnonymousString2) {}
       
-      public final void eX(String paramAnonymousString1, String paramAnonymousString2) {}
+      public final void fo(String paramAnonymousString1, String paramAnonymousString2) {}
     };
     initView();
     AppMethodBeat.o(41292);
   }
   
-  private static String abR(String paramString)
+  private static String aAf(String paramString)
   {
     AppMethodBeat.i(41300);
     paramString = getRootPath() + "MMVideo_" + paramString.hashCode() + ".mp4.temp";
@@ -298,7 +296,7 @@ public class GameVideoView
     return paramString;
   }
   
-  private static String amQ(String paramString)
+  private static String aAg(String paramString)
   {
     AppMethodBeat.i(41301);
     paramString = getRootPath() + "MMVideo_" + paramString.hashCode() + ".mp4";
@@ -306,56 +304,56 @@ public class GameVideoView
     return paramString;
   }
   
-  private i daY()
+  private i dUF()
   {
     AppMethodBeat.i(41298);
     CommonVideoView localCommonVideoView = new CommonVideoView(this.mContext);
-    localCommonVideoView.ffx();
-    localCommonVideoView.setReporter(this.ulm);
-    localCommonVideoView.setIMMVideoViewCallback(this.ulo);
+    localCommonVideoView.goG();
+    localCommonVideoView.setReporter(this.xDE);
+    localCommonVideoView.setIMMVideoViewCallback(this.xDG);
     AppMethodBeat.o(41298);
     return localCommonVideoView;
   }
   
-  private i daZ()
+  private i dUG()
   {
     AppMethodBeat.i(41299);
     GameMMVideoView localGameMMVideoView = new GameMMVideoView(this.mContext);
-    localGameMMVideoView.setReporter(this.ulm);
-    localGameMMVideoView.setIMMVideoViewCallback(this.ulo);
-    localGameMMVideoView.setIMMDownloadFinish(this.ull);
+    localGameMMVideoView.setReporter(this.xDE);
+    localGameMMVideoView.setIMMVideoViewCallback(this.xDG);
+    localGameMMVideoView.setIMMDownloadFinish(this.xDD);
     String str = getRootPath();
-    n.aMy(str);
+    FilePathGenerator.checkMkdir(str);
     localGameMMVideoView.setRootPath(str);
     localGameMMVideoView.setLoop(true);
-    this.ulk = new a(localGameMMVideoView);
-    localGameMMVideoView.setIOnlineVideoProxy(this.ulk);
+    this.xDC = new a(localGameMMVideoView);
+    localGameMMVideoView.setIOnlineVideoProxy(this.xDC);
     AppMethodBeat.o(41299);
     return localGameMMVideoView;
   }
   
-  public static void dba()
+  public static void dUH()
   {
     AppMethodBeat.i(41303);
-    Iterator localIterator = ulj.iterator();
+    Iterator localIterator = xDB.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      ae.i("MicroMsg.Haowan.GameVideoView", "delete temp cache ret:%b, cachePath:%s", new Object[] { Boolean.valueOf(o.deleteFile(str)), str });
+      Log.i("MicroMsg.Haowan.GameVideoView", "delete temp cache ret:%b, cachePath:%s", new Object[] { Boolean.valueOf(s.deleteFile(str)), str });
     }
-    ulj.clear();
+    xDB.clear();
     AppMethodBeat.o(41303);
   }
   
-  private boolean dbb()
+  private boolean dUI()
   {
-    return (this.ule) || (this.ulf);
+    return (this.gPs) || (this.xDx);
   }
   
   public static String getRootPath()
   {
     AppMethodBeat.i(41302);
-    String str = b.c(b.a.udU) + "haowan/";
+    String str = b.c(b.a.xvG) + "haowan/";
     AppMethodBeat.o(41302);
     return str;
   }
@@ -364,11 +362,11 @@ public class GameVideoView
   {
     AppMethodBeat.i(41293);
     this.mContext = getContext();
-    this.ozB = new d();
+    this.pNk = new d();
     AppMethodBeat.o(41293);
   }
   
-  public final boolean aE(float paramFloat)
+  public final boolean aO(float paramFloat)
   {
     AppMethodBeat.i(41326);
     if (paramFloat <= 0.0F)
@@ -376,10 +374,10 @@ public class GameVideoView
       AppMethodBeat.o(41326);
       return false;
     }
-    this.ulc = paramFloat;
-    if (this.ula != null)
+    this.xDv = paramFloat;
+    if (this.xDt != null)
     {
-      boolean bool = this.ula.aE(paramFloat);
+      boolean bool = this.xDt.aO(paramFloat);
       AppMethodBeat.o(41326);
       return bool;
     }
@@ -387,74 +385,61 @@ public class GameVideoView
     return false;
   }
   
-  public final boolean bip()
-  {
-    AppMethodBeat.i(41314);
-    if (this.ula != null)
-    {
-      boolean bool = this.ula.bip();
-      AppMethodBeat.o(41314);
-      return bool;
-    }
-    AppMethodBeat.o(41314);
-    return false;
-  }
-  
   public final void c(boolean paramBoolean, String paramString, int paramInt)
   {
     int i = 1;
     AppMethodBeat.i(41297);
-    this.uld = paramInt;
-    this.ule = paramBoolean;
+    this.xDw = paramInt;
+    this.gPs = paramBoolean;
     Object localObject = new PString();
     ((PString)localObject).value = paramString;
-    if (!bu.isNullOrNil(((PString)localObject).value)) {
+    if (!Util.isNullOrNil(((PString)localObject).value)) {
       if (((PString)localObject).value.indexOf("file://") == 0)
       {
         ((PString)localObject).value = ((PString)localObject).value.substring(7);
         paramBoolean = true;
-        this.ulf = paramBoolean;
-        if (this.ulf) {
+        this.xDx = paramBoolean;
+        if (this.xDx) {
           break label304;
         }
-        localObject = amQ(paramString);
-        if (!o.fB((String)localObject)) {
+        localObject = aAg(paramString);
+        if (!s.YS((String)localObject)) {
           break label304;
         }
-        o.deleteFile(abR(paramString));
-        this.ulf = true;
+        s.deleteFile(aAf(paramString));
+        this.xDx = true;
         this.mUrl = ((String)localObject);
         label121:
-        if (this.ula != null) {
+        if (this.xDt != null) {
           break label342;
         }
-        if (!dbb()) {
+        if (!dUI()) {
           break label312;
         }
-        ae.i("MicroMsg.Haowan.GameVideoView", "new use common video view! path:%s", new Object[] { paramString });
-        this.ula = daY();
+        Log.i("MicroMsg.Haowan.GameVideoView", "new use common video view! path:%s", new Object[] { paramString });
+        this.xDt = dUF();
         paramInt = i;
       }
     }
     for (;;)
     {
-      setScaleType(this.ulb);
-      aE(this.ulc);
-      setMute(this.cur);
+      setScaleType(this.xDu);
+      aO(this.xDv);
+      setMute(this.mMute);
       if (paramInt != 0)
       {
-        setVideoFooterView(this.ulh);
+        setVideoFooterView(this.xDz);
         paramString = new RelativeLayout.LayoutParams(-1, -2);
         paramString.addRule(13);
-        addView((View)this.ula, paramString);
+        addView((View)this.xDt, paramString);
       }
-      this.ula.c(this.ule, this.mUrl, this.uld);
-      if ((this.ula instanceof GameMMVideoView)) {
-        ((GameMMVideoView)this.ula).setFilepath(abR(this.mUrl));
+      this.xDt.c(this.gPs, this.mUrl, this.xDw);
+      if ((this.xDt instanceof GameMMVideoView)) {
+        ((GameMMVideoView)this.xDt).setFilepath(aAf(this.mUrl));
       }
       AppMethodBeat.o(41297);
       return;
-      if (o.fB(((PString)localObject).value))
+      if (s.YS(((PString)localObject).value))
       {
         paramBoolean = true;
         break;
@@ -465,42 +450,42 @@ public class GameVideoView
       this.mUrl = paramString;
       break label121;
       label312:
-      ae.i("MicroMsg.Haowan.GameVideoView", "new use mm video view! path:%s", new Object[] { paramString });
-      this.ula = daZ();
+      Log.i("MicroMsg.Haowan.GameVideoView", "new use mm video view! path:%s", new Object[] { paramString });
+      this.xDt = dUG();
       paramInt = i;
       continue;
       label342:
-      if (dbb())
+      if (dUI())
       {
-        if ((this.ula instanceof MMVideoView))
+        if ((this.xDt instanceof MMVideoView))
         {
-          this.ula.stop();
-          this.ula.cOS();
-          removeView((View)this.ula);
-          ae.i("MicroMsg.Haowan.GameVideoView", "use common video view! path:%s", new Object[] { paramString });
-          this.ula = daY();
+          this.xDt.stop();
+          this.xDt.dFl();
+          removeView((View)this.xDt);
+          Log.i("MicroMsg.Haowan.GameVideoView", "use common video view! path:%s", new Object[] { paramString });
+          this.xDt = dUF();
           paramInt = i;
         }
         else
         {
-          ae.i("MicroMsg.Haowan.GameVideoView", "use last common video view! path:%s", new Object[] { paramString });
-          this.ula.stop();
+          Log.i("MicroMsg.Haowan.GameVideoView", "use last common video view! path:%s", new Object[] { paramString });
+          this.xDt.stop();
           paramInt = 0;
         }
       }
-      else if ((this.ula instanceof CommonVideoView))
+      else if ((this.xDt instanceof CommonVideoView))
       {
-        this.ula.stop();
-        this.ula.cOS();
-        removeView((View)this.ula);
-        ae.i("MicroMsg.Haowan.GameVideoView", "use mm video view! path:%s", new Object[] { paramString });
-        this.ula = daZ();
+        this.xDt.stop();
+        this.xDt.dFl();
+        removeView((View)this.xDt);
+        Log.i("MicroMsg.Haowan.GameVideoView", "use mm video view! path:%s", new Object[] { paramString });
+        this.xDt = dUG();
         paramInt = i;
       }
       else
       {
-        ae.i("MicroMsg.Haowan.GameVideoView", "use last mm video view! path:%s", new Object[] { paramString });
-        this.ula.stop();
+        Log.i("MicroMsg.Haowan.GameVideoView", "use last mm video view! path:%s", new Object[] { paramString });
+        this.xDt.stop();
         paramInt = 0;
       }
     }
@@ -509,9 +494,9 @@ public class GameVideoView
   public final boolean c(double paramDouble, boolean paramBoolean)
   {
     AppMethodBeat.i(41306);
-    if (this.ula != null)
+    if (this.xDt != null)
     {
-      paramBoolean = this.ula.c(paramDouble, paramBoolean);
+      paramBoolean = this.xDt.c(paramDouble, paramBoolean);
       AppMethodBeat.o(41306);
       return paramBoolean;
     }
@@ -519,11 +504,11 @@ public class GameVideoView
     return false;
   }
   
-  public final void cOS()
+  public final void dFl()
   {
     AppMethodBeat.i(41317);
-    if (this.ula != null) {
-      this.ula.cOS();
+    if (this.xDt != null) {
+      this.xDt.dFl();
     }
     AppMethodBeat.o(41317);
   }
@@ -531,9 +516,9 @@ public class GameVideoView
   public int getCacheTimeSec()
   {
     AppMethodBeat.i(41312);
-    if (this.ula != null)
+    if (this.xDt != null)
     {
-      int i = this.ula.getCacheTimeSec();
+      int i = this.xDt.getCacheTimeSec();
       AppMethodBeat.o(41312);
       return i;
     }
@@ -544,9 +529,9 @@ public class GameVideoView
   public int getCurrPosMs()
   {
     AppMethodBeat.i(41310);
-    if (this.ula != null)
+    if (this.xDt != null)
     {
-      int i = this.ula.getCurrPosMs();
+      int i = this.xDt.getCurrPosMs();
       AppMethodBeat.o(41310);
       return i;
     }
@@ -557,9 +542,9 @@ public class GameVideoView
   public int getCurrPosSec()
   {
     AppMethodBeat.i(41311);
-    if (this.ula != null)
+    if (this.xDt != null)
     {
-      int i = this.ula.getCurrPosSec();
+      int i = this.xDt.getCurrPosSec();
       AppMethodBeat.o(41311);
       return i;
     }
@@ -570,9 +555,9 @@ public class GameVideoView
   public String getFilePath()
   {
     AppMethodBeat.i(41294);
-    if ((this.ula instanceof GameMMVideoView))
+    if ((this.xDt instanceof GameMMVideoView))
     {
-      str = ((GameMMVideoView)this.ula).getFilePath();
+      str = ((GameMMVideoView)this.xDt).getFilePath();
       AppMethodBeat.o(41294);
       return str;
     }
@@ -584,13 +569,13 @@ public class GameVideoView
   public String getLocalPath()
   {
     AppMethodBeat.i(41296);
-    if (this.ulf)
+    if (this.xDx)
     {
       str = this.mUrl;
       AppMethodBeat.o(41296);
       return str;
     }
-    String str = amQ(this.mUrl);
+    String str = aAg(this.mUrl);
     AppMethodBeat.o(41296);
     return str;
   }
@@ -598,9 +583,9 @@ public class GameVideoView
   public String getMediaId()
   {
     AppMethodBeat.i(41295);
-    if ((this.ula instanceof GameMMVideoView))
+    if ((this.xDt instanceof GameMMVideoView))
     {
-      String str = ((GameMMVideoView)this.ula).getMediaId();
+      String str = ((GameMMVideoView)this.xDt).getMediaId();
       AppMethodBeat.o(41295);
       return str;
     }
@@ -611,9 +596,9 @@ public class GameVideoView
   public int getPlayerType()
   {
     AppMethodBeat.i(41304);
-    if (this.ula != null)
+    if (this.xDt != null)
     {
-      int i = this.ula.getPlayerType();
+      int i = this.xDt.getPlayerType();
       AppMethodBeat.o(41304);
       return i;
     }
@@ -624,23 +609,36 @@ public class GameVideoView
   public int getVideoDurationSec()
   {
     AppMethodBeat.i(41309);
-    if (this.ula != null)
+    if (this.xDt != null)
     {
-      i = this.ula.getVideoDurationSec();
+      i = this.xDt.getVideoDurationSec();
       AppMethodBeat.o(41309);
       return i;
     }
-    int i = this.uld;
+    int i = this.xDw;
     AppMethodBeat.o(41309);
     return i;
+  }
+  
+  public final boolean isLive()
+  {
+    AppMethodBeat.i(41314);
+    if (this.xDt != null)
+    {
+      boolean bool = this.xDt.isLive();
+      AppMethodBeat.o(41314);
+      return bool;
+    }
+    AppMethodBeat.o(41314);
+    return false;
   }
   
   public final boolean isPlaying()
   {
     AppMethodBeat.i(41313);
-    if (this.ula != null)
+    if (this.xDt != null)
     {
-      boolean bool = this.ula.isPlaying();
+      boolean bool = this.xDt.isPlaying();
       AppMethodBeat.o(41313);
       return bool;
     }
@@ -648,26 +646,13 @@ public class GameVideoView
     return false;
   }
   
-  public final boolean o(double paramDouble)
-  {
-    AppMethodBeat.i(41305);
-    if (this.ula != null)
-    {
-      boolean bool = this.ula.o(paramDouble);
-      AppMethodBeat.o(41305);
-      return bool;
-    }
-    AppMethodBeat.o(41305);
-    return false;
-  }
-  
   public final void onUIDestroy()
   {
     AppMethodBeat.i(41324);
-    if (this.ula != null) {
-      this.ula.onUIDestroy();
+    if (this.xDt != null) {
+      this.xDt.onUIDestroy();
     }
-    this.ozB.ez(false);
+    this.pNk.fp(false);
     setKeepScreenOn(false);
     AppMethodBeat.o(41324);
   }
@@ -675,12 +660,12 @@ public class GameVideoView
   public final void onUIPause()
   {
     AppMethodBeat.i(41323);
-    if (this.ula != null)
+    if (this.xDt != null)
     {
-      this.ulg = this.ula.getCurrPosSec();
-      this.ula.onUIPause();
+      this.xDy = this.xDt.getCurrPosSec();
+      this.xDt.onUIPause();
     }
-    this.ozB.ez(false);
+    this.pNk.fp(false);
     setKeepScreenOn(false);
     AppMethodBeat.o(41323);
   }
@@ -690,15 +675,15 @@ public class GameVideoView
     AppMethodBeat.i(41322);
     String str;
     int i;
-    if ((this.ula instanceof GameMMVideoView)) {
-      if (o.fB(this.mUrl))
+    if ((this.xDt instanceof GameMMVideoView)) {
+      if (s.YS(this.mUrl))
       {
         str = this.mUrl;
-        this.ula.stop();
-        c(this.ule, str, this.uld);
-        this.ula.c(this.ulg, true);
-        ae.i("MicroMsg.Haowan.GameVideoView", "change to local video. currPosSec:%d", new Object[] { Integer.valueOf(this.ulg) });
-        ar.o(new Runnable()
+        this.xDt.stop();
+        c(this.gPs, str, this.xDw);
+        this.xDt.c(this.xDy, true);
+        Log.i("MicroMsg.Haowan.GameVideoView", "change to local video. currPosSec:%d", new Object[] { Integer.valueOf(this.xDy) });
+        MMHandlerThread.postToMainThreadDelayed(new Runnable()
         {
           public final void run()
           {
@@ -714,14 +699,14 @@ public class GameVideoView
     }
     for (;;)
     {
-      if ((i == 0) && (this.ula != null)) {
-        this.ula.onUIResume();
+      if ((i == 0) && (this.xDt != null)) {
+        this.xDt.onUIResume();
       }
       AppMethodBeat.o(41322);
       return;
-      if (o.fB(amQ(this.mUrl)))
+      if (s.YS(aAg(this.mUrl)))
       {
-        str = amQ(this.mUrl);
+        str = aAg(this.mUrl);
         break;
       }
       i = 0;
@@ -730,14 +715,27 @@ public class GameVideoView
     }
   }
   
+  public final boolean p(double paramDouble)
+  {
+    AppMethodBeat.i(41305);
+    if (this.xDt != null)
+    {
+      boolean bool = this.xDt.p(paramDouble);
+      AppMethodBeat.o(41305);
+      return bool;
+    }
+    AppMethodBeat.o(41305);
+    return false;
+  }
+  
   public final boolean pause()
   {
     AppMethodBeat.i(41320);
-    if (this.ula != null)
+    if (this.xDt != null)
     {
       setKeepScreenOn(false);
-      this.ozB.ez(false);
-      boolean bool = this.ula.pause();
+      this.pNk.fp(false);
+      boolean bool = this.xDt.pause();
       AppMethodBeat.o(41320);
       return bool;
     }
@@ -748,8 +746,8 @@ public class GameVideoView
   public void setCover(Bitmap paramBitmap)
   {
     AppMethodBeat.i(41315);
-    if (this.ula != null) {
-      this.ula.setCover(paramBitmap);
+    if (this.xDt != null) {
+      this.xDt.setCover(paramBitmap);
     }
     AppMethodBeat.o(41315);
   }
@@ -757,8 +755,8 @@ public class GameVideoView
   public void setFullDirection(int paramInt)
   {
     AppMethodBeat.i(41308);
-    if (this.ula != null) {
-      this.ula.setFullDirection(paramInt);
+    if (this.xDt != null) {
+      this.xDt.setFullDirection(paramInt);
     }
     AppMethodBeat.o(41308);
   }
@@ -766,15 +764,15 @@ public class GameVideoView
   public void setIMMVideoViewCallback(i.b paramb)
   {
     if (paramb != null) {
-      this.ulo = paramb;
+      this.xDG = paramb;
     }
   }
   
   public void setIsShowBasicControls(boolean paramBoolean)
   {
     AppMethodBeat.i(41307);
-    if (this.ula != null) {
-      this.ula.setIsShowBasicControls(paramBoolean);
+    if (this.xDt != null) {
+      this.xDt.setIsShowBasicControls(paramBoolean);
     }
     AppMethodBeat.o(41307);
   }
@@ -786,9 +784,9 @@ public class GameVideoView
   public void setMute(boolean paramBoolean)
   {
     AppMethodBeat.i(41321);
-    this.cur = paramBoolean;
-    if (this.ula != null) {
-      this.ula.setMute(paramBoolean);
+    this.mMute = paramBoolean;
+    if (this.xDt != null) {
+      this.xDt.setMute(paramBoolean);
     }
     AppMethodBeat.o(41321);
   }
@@ -796,36 +794,36 @@ public class GameVideoView
   public void setScaleType(i.e parame)
   {
     AppMethodBeat.i(41325);
-    this.ulb = parame;
-    if (this.ula != null) {
-      this.ula.setScaleType(parame);
+    this.xDu = parame;
+    if (this.xDt != null) {
+      this.xDt.setScaleType(parame);
     }
     AppMethodBeat.o(41325);
   }
   
-  public void setVideoFooterView(h paramh)
+  public void setVideoFooterView(com.tencent.mm.pluginsdk.ui.h paramh)
   {
     AppMethodBeat.i(41316);
-    this.ulh = paramh;
-    if (this.ula != null) {
-      this.ula.setVideoFooterView(paramh);
+    this.xDz = paramh;
+    if (this.xDt != null) {
+      this.xDt.setVideoFooterView(paramh);
     }
     AppMethodBeat.o(41316);
   }
   
   public void setVideoPreparedListener(a parama)
   {
-    this.uli = parama;
+    this.xDA = parama;
   }
   
   public final void start()
   {
     AppMethodBeat.i(41318);
-    if (this.ula != null)
+    if (this.xDt != null)
     {
-      this.ula.start();
+      this.xDt.start();
       setKeepScreenOn(true);
-      this.ozB.a(this.uln);
+      this.pNk.a(this.xDF);
     }
     AppMethodBeat.o(41318);
   }
@@ -833,10 +831,10 @@ public class GameVideoView
   public final void stop()
   {
     AppMethodBeat.i(41319);
-    if (this.ula != null)
+    if (this.xDt != null)
     {
-      this.ula.stop();
-      this.ozB.ez(false);
+      this.xDt.stop();
+      this.pNk.fp(false);
       setKeepScreenOn(false);
     }
     AppMethodBeat.o(41319);
@@ -844,12 +842,12 @@ public class GameVideoView
   
   static abstract interface a
   {
-    public abstract void ta();
+    public abstract void tf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.preview.GameVideoView
  * JD-Core Version:    0.7.0.1
  */

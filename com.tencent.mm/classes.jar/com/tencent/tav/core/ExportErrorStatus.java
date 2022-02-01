@@ -45,13 +45,13 @@ public class ExportErrorStatus
   public ExportErrorStatus(CMSampleState paramCMSampleState)
   {
     this((int)paramCMSampleState.getStateCode(), paramCMSampleState.getThrowable(), paramCMSampleState.getMsg());
-    AppMethodBeat.i(214574);
-    AppMethodBeat.o(214574);
+    AppMethodBeat.i(217906);
+    AppMethodBeat.o(217906);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.core.ExportErrorStatus
  * JD-Core Version:    0.7.0.1
  */

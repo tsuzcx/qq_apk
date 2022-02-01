@@ -4,46 +4,46 @@ import android.annotation.TargetApi;
 import android.media.AudioRecord;
 import android.media.audiofx.NoiseSuppressor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
   implements h.a
 {
-  private NoiseSuppressor fYh;
+  private NoiseSuppressor gDn;
   
   @TargetApi(16)
   public j(AudioRecord paramAudioRecord)
   {
     AppMethodBeat.i(155614);
-    this.fYh = null;
+    this.gDn = null;
     boolean bool = NoiseSuppressor.isAvailable();
-    ae.d("MicroMsg.MMNoiseSuppressor", "available  ".concat(String.valueOf(bool)));
+    Log.d("MicroMsg.MMNoiseSuppressor", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.fYh = NoiseSuppressor.create(paramAudioRecord.getAudioSessionId());
+      this.gDn = NoiseSuppressor.create(paramAudioRecord.getAudioSessionId());
     }
     AppMethodBeat.o(155614);
   }
   
   @TargetApi(16)
-  public final boolean ZR()
+  public final boolean anE()
   {
     AppMethodBeat.i(155616);
-    if (this.fYh != null) {}
+    if (this.gDn != null) {}
     try
     {
-      int i = this.fYh.setEnabled(true);
+      int i = this.gDn.setEnabled(true);
       if (i == 0)
       {
         AppMethodBeat.o(155616);
         return true;
       }
-      ae.d("MicroMsg.MMNoiseSuppressor", "setEnabled failed ".concat(String.valueOf(i)));
+      Log.d("MicroMsg.MMNoiseSuppressor", "setEnabled failed ".concat(String.valueOf(i)));
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.MMNoiseSuppressor", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.MMNoiseSuppressor", localException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(155616);
@@ -61,7 +61,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.b.j
  * JD-Core Version:    0.7.0.1
  */

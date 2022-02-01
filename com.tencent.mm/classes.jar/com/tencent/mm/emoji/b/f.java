@@ -1,50 +1,50 @@
 package com.tencent.mm.emoji.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.protocal.protobuf.eng;
+import com.tencent.mm.protocal.protobuf.enh;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.LinkedList;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/CgiUploadEmojiPrepare;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/UploadEmojiPrepareResponse;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isSelfie", "", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;Z)V", "plugin-emojisdk_release"})
 public final class f
+  extends c<enh>
 {
-  private static f grd;
-  public String extraInfo = "";
-  public long gqV;
-  public int gqW;
-  public int gqX;
-  public int gre;
-  public int grf;
-  public int grg;
-  public int scene;
-  
-  public static f agp()
+  public f(EmojiInfo paramEmojiInfo, boolean paramBoolean)
   {
-    AppMethodBeat.i(104484);
-    if (grd == null) {
-      grd = new f();
+    AppMethodBeat.i(105501);
+    eng localeng = new eng();
+    enh localenh = new enh();
+    localeng.MD5 = paramEmojiInfo.field_md5;
+    localeng.Nli = true;
+    localeng.Nld = paramBoolean;
+    ArrayList localArrayList = paramEmojiInfo.hRL();
+    if (localArrayList != null) {
+      localeng.Nle.addAll((Collection)localArrayList);
     }
-    f localf = grd;
-    AppMethodBeat.o(104484);
-    return localf;
-  }
-  
-  public final void b(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
-  {
-    AppMethodBeat.i(104485);
-    long l1 = System.currentTimeMillis();
-    long l2 = this.gqV;
-    g.yxI.f(16029, new Object[] { paramString1, paramString2, paramString3, paramString4, Integer.valueOf(this.scene), Long.valueOf(l1 - l2), Integer.valueOf(this.gqW), Integer.valueOf(this.gre), Integer.valueOf(this.grf), Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(this.grg), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.gqX), this.extraInfo, Long.valueOf(l1), Long.valueOf(this.gqV) });
-    this.gqW += 1;
-    AppMethodBeat.o(104485);
-  }
-  
-  public final void rg(long paramLong)
-  {
-    this.gqV = paramLong;
-    this.gqW = 1;
+    localeng.Lsm = paramEmojiInfo.field_attachedText;
+    localeng.Lsn = paramEmojiInfo.field_attachTextColor;
+    localeng.Nlf = paramEmojiInfo.field_imitateMd5;
+    localeng.Lso = paramEmojiInfo.field_lensId;
+    localeng.Scene = 0;
+    paramEmojiInfo = new d.a();
+    paramEmojiInfo.c((a)localeng);
+    paramEmojiInfo.d((a)localenh);
+    paramEmojiInfo.MB("/cgi-bin/micromsg-bin/mmuploademojiprepare");
+    paramEmojiInfo.sG(3886);
+    c(paramEmojiInfo.aXF());
+    AppMethodBeat.o(105501);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.b.f
  * JD-Core Version:    0.7.0.1
  */

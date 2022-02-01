@@ -15,13 +15,13 @@ final class ExdeviceConnectWifiUI$15
     AppMethodBeat.i(179597);
     if (paramEditable.length() > 31)
     {
-      ExdeviceConnectWifiUI.i(this.qqc).setVisibility(0);
-      ExdeviceConnectWifiUI.j(this.qqc).setEnabled(false);
+      ExdeviceConnectWifiUI.i(this.rHj).setVisibility(0);
+      ExdeviceConnectWifiUI.j(this.rHj).setEnabled(false);
       AppMethodBeat.o(179597);
       return;
     }
-    ExdeviceConnectWifiUI.i(this.qqc).setVisibility(8);
-    ExdeviceConnectWifiUI.j(this.qqc).setEnabled(true);
+    ExdeviceConnectWifiUI.i(this.rHj).setVisibility(8);
+    ExdeviceConnectWifiUI.j(this.rHj).setEnabled(true);
     AppMethodBeat.o(179597);
   }
   
@@ -31,7 +31,7 @@ final class ExdeviceConnectWifiUI$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceConnectWifiUI.15
  * JD-Core Version:    0.7.0.1
  */

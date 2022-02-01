@@ -33,125 +33,136 @@ import android.widget.ListView;
 import android.widget.ListView.FixedViewInfo;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.me;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.widget.header.HeaderContainer;
-import com.tencent.mm.plugin.appbrand.widget.header.c.a;
-import com.tencent.mm.plugin.appbrand.widget.recentview.AppBrandRecentView.e;
-import com.tencent.mm.plugin.appbrand.widget.recentview.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.g.a.mv;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.plugin.appbrand.widget.recent.AppBrandRecentView.e;
+import com.tencent.mm.plugin.appbrand.widget.recent.l;
+import com.tencent.mm.plugin.taskbar.api.HeaderContainer;
+import com.tencent.mm.plugin.taskbar.api.b.a;
+import com.tencent.mm.plugin.taskbar.api.c;
+import com.tencent.mm.pluginsdk.h;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.MMFragmentActivity;
-import com.tencent.mm.ui.al;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.au;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public class ConversationListView
   extends ListView
-  implements View.OnTouchListener, AbsListView.OnScrollListener, c.a, AppBrandRecentView.e
+  implements View.OnTouchListener, AbsListView.OnScrollListener, AppBrandRecentView.e, b.a
 {
-  private View.OnTouchListener CBc;
-  private AdapterView.OnItemLongClickListener JOO;
-  private boolean KPA;
-  private NinePatchDrawable KPB;
-  private Rect KPC;
-  private final float KPD;
-  private final float KPE;
-  private final float KPF;
-  private final float KPG;
-  private final float KPH;
-  private boolean KPI;
-  private final float KPJ;
-  private int KPK;
-  private boolean KPL;
-  Runnable KPM;
-  Runnable KPN;
-  Runnable KPO;
-  View KPP;
-  private int KPQ;
-  private int KPR;
-  private int KPS;
-  com.tencent.mm.sdk.b.c<me> KPT;
-  private View.OnLayoutChangeListener KPU;
-  private View.OnTouchListener KPV;
-  private int KPW;
-  View KPX;
-  private boolean KPY;
-  private boolean KPZ;
-  private LinkedList<ListView.FixedViewInfo> KPt;
-  com.tencent.mm.plugin.appbrand.widget.header.c KPu;
-  private String KPv;
-  private float KPw;
-  private int KPx;
-  private Bitmap KPy;
-  private RectF KPz;
-  private int ahF;
-  private View ahp;
-  private AdapterView.OnItemClickListener awt;
-  boolean dAG;
-  private int gQT;
+  private int DBe;
+  private MMFragmentActivity Dpx;
+  boolean FSV;
+  private com.tencent.mm.plugin.taskbar.api.a FSw;
+  private View FSz;
+  private boolean FTf;
+  private View.OnTouchListener HeV;
+  private AdapterView.OnItemLongClickListener OZU;
+  private int QcA;
+  private Bitmap QcB;
+  private RectF QcC;
+  private boolean QcD;
+  private NinePatchDrawable QcE;
+  private Rect QcF;
+  private final float QcG;
+  private final float QcH;
+  private final float QcI;
+  private final float QcJ;
+  private final float QcK;
+  private boolean QcL;
+  private final float QcM;
+  private int QcN;
+  private boolean QcO;
+  Runnable QcP;
+  Runnable QcQ;
+  Runnable QcR;
+  View QcS;
+  private int QcT;
+  private int QcU;
+  private int QcV;
+  IListener<mv> QcW;
+  private View.OnLayoutChangeListener QcX;
+  private View.OnTouchListener QcY;
+  private int QcZ;
+  private LinkedList<ListView.FixedViewInfo> Qcu;
+  boolean Qcv;
+  private boolean Qcw;
+  com.tencent.mm.plugin.taskbar.api.b Qcx;
+  private String Qcy;
+  private float Qcz;
+  View Qda;
+  private boolean Qdb;
+  private boolean Qdc;
+  final com.tencent.mm.kernel.api.g UuW;
+  private View ahC;
+  private AdapterView.OnItemClickListener awr;
+  boolean dSv;
+  private int hIX;
+  private boolean iCn;
+  private int mActionBarHeight;
   private int mCount;
-  private int mKJ;
   private Paint mPaint;
   private int mScrollState;
-  private int mZE;
-  private com.tencent.mm.plugin.appbrand.widget.header.a mZF;
-  private View mZH;
-  HeaderContainer mZy;
-  boolean nad;
-  private boolean nap;
-  private MMFragmentActivity nbm;
-  private AbsListView.OnScrollListener vwl;
+  private int mStatusBarHeight;
+  private int ocu;
+  HeaderContainer onh;
+  private AbsListView.OnScrollListener yQz;
   
   public ConversationListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(38336);
-    this.KPt = new LinkedList();
+    this.Qcu = new LinkedList();
+    this.Qcv = true;
+    this.Qcw = false;
     this.mPaint = new Paint(1);
-    this.KPy = null;
-    this.KPz = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.KPA = false;
-    this.KPB = null;
-    this.KPC = new Rect();
-    this.KPD = com.tencent.mm.cb.a.fromDPToPix(getContext(), 30);
-    this.KPE = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
-    this.KPF = com.tencent.mm.cb.a.fromDPToPix(getContext(), 24);
-    this.KPG = com.tencent.mm.cb.a.fromDPToPix(getContext(), 64);
-    this.KPH = 0.5F;
-    this.KPI = false;
-    this.KPJ = com.tencent.mm.cb.a.fromDPToPix(getContext(), 200);
-    this.KPK = 0;
-    this.nad = false;
-    this.KPL = false;
-    this.mZF = null;
-    this.KPM = null;
-    this.KPN = null;
-    this.KPO = null;
-    this.mKJ = 0;
-    this.KPQ = 0;
-    this.gQT = 0;
-    this.KPR = com.tencent.mm.cb.a.fromDPToPix(getContext(), 56);
-    this.nap = true;
-    this.KPS = 0;
-    this.dAG = false;
-    this.KPT = new com.tencent.mm.sdk.b.c() {};
-    this.KPU = new View.OnLayoutChangeListener()
+    this.QcB = null;
+    this.QcC = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.QcD = false;
+    this.QcE = null;
+    this.QcF = new Rect();
+    this.QcG = com.tencent.mm.cb.a.fromDPToPix(getContext(), 30);
+    this.QcH = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
+    this.QcI = com.tencent.mm.cb.a.fromDPToPix(getContext(), 24);
+    this.QcJ = com.tencent.mm.cb.a.fromDPToPix(getContext(), 64);
+    this.QcK = 0.5F;
+    this.QcL = false;
+    this.QcM = com.tencent.mm.cb.a.fromDPToPix(getContext(), 200);
+    this.QcN = 0;
+    this.FSV = false;
+    this.QcO = false;
+    this.FSw = null;
+    this.QcP = null;
+    this.QcQ = null;
+    this.QcR = null;
+    this.mStatusBarHeight = 0;
+    this.QcT = 0;
+    this.hIX = 0;
+    this.QcU = com.tencent.mm.cb.a.fromDPToPix(getContext(), 56);
+    this.FTf = true;
+    this.QcV = 0;
+    this.dSv = false;
+    this.QcW = new IListener() {};
+    this.QcX = new View.OnLayoutChangeListener()
     {
       public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
       {
-        AppMethodBeat.i(188049);
-        ae.i("MicroMsg.ConversationListView", "ActionBarView layout changed, call setupActionBarView()");
+        AppMethodBeat.i(234118);
+        Log.i("MicroMsg.ConversationListView", "ActionBarView layout changed, call setupActionBarView()");
         ConversationListView.b(ConversationListView.this);
-        AppMethodBeat.o(188049);
+        AppMethodBeat.o(234118);
       }
     };
-    this.KPV = null;
-    this.KPW = 0;
-    this.KPZ = false;
+    this.UuW = new ConversationListView.12(this);
+    this.QcY = null;
+    this.QcZ = 0;
+    this.Qdc = false;
     init(paramContext);
     AppMethodBeat.o(38336);
   }
@@ -160,70 +171,73 @@ public class ConversationListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(38337);
-    this.KPt = new LinkedList();
+    this.Qcu = new LinkedList();
+    this.Qcv = true;
+    this.Qcw = false;
     this.mPaint = new Paint(1);
-    this.KPy = null;
-    this.KPz = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
-    this.KPA = false;
-    this.KPB = null;
-    this.KPC = new Rect();
-    this.KPD = com.tencent.mm.cb.a.fromDPToPix(getContext(), 30);
-    this.KPE = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
-    this.KPF = com.tencent.mm.cb.a.fromDPToPix(getContext(), 24);
-    this.KPG = com.tencent.mm.cb.a.fromDPToPix(getContext(), 64);
-    this.KPH = 0.5F;
-    this.KPI = false;
-    this.KPJ = com.tencent.mm.cb.a.fromDPToPix(getContext(), 200);
-    this.KPK = 0;
-    this.nad = false;
-    this.KPL = false;
-    this.mZF = null;
-    this.KPM = null;
-    this.KPN = null;
-    this.KPO = null;
-    this.mKJ = 0;
-    this.KPQ = 0;
-    this.gQT = 0;
-    this.KPR = com.tencent.mm.cb.a.fromDPToPix(getContext(), 56);
-    this.nap = true;
-    this.KPS = 0;
-    this.dAG = false;
-    this.KPT = new com.tencent.mm.sdk.b.c() {};
-    this.KPU = new View.OnLayoutChangeListener()
+    this.QcB = null;
+    this.QcC = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+    this.QcD = false;
+    this.QcE = null;
+    this.QcF = new Rect();
+    this.QcG = com.tencent.mm.cb.a.fromDPToPix(getContext(), 30);
+    this.QcH = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
+    this.QcI = com.tencent.mm.cb.a.fromDPToPix(getContext(), 24);
+    this.QcJ = com.tencent.mm.cb.a.fromDPToPix(getContext(), 64);
+    this.QcK = 0.5F;
+    this.QcL = false;
+    this.QcM = com.tencent.mm.cb.a.fromDPToPix(getContext(), 200);
+    this.QcN = 0;
+    this.FSV = false;
+    this.QcO = false;
+    this.FSw = null;
+    this.QcP = null;
+    this.QcQ = null;
+    this.QcR = null;
+    this.mStatusBarHeight = 0;
+    this.QcT = 0;
+    this.hIX = 0;
+    this.QcU = com.tencent.mm.cb.a.fromDPToPix(getContext(), 56);
+    this.FTf = true;
+    this.QcV = 0;
+    this.dSv = false;
+    this.QcW = new IListener() {};
+    this.QcX = new View.OnLayoutChangeListener()
     {
       public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
       {
-        AppMethodBeat.i(188049);
-        ae.i("MicroMsg.ConversationListView", "ActionBarView layout changed, call setupActionBarView()");
+        AppMethodBeat.i(234118);
+        Log.i("MicroMsg.ConversationListView", "ActionBarView layout changed, call setupActionBarView()");
         ConversationListView.b(ConversationListView.this);
-        AppMethodBeat.o(188049);
+        AppMethodBeat.o(234118);
       }
     };
-    this.KPV = null;
-    this.KPW = 0;
-    this.KPZ = false;
+    this.UuW = new ConversationListView.12(this);
+    this.QcY = null;
+    this.QcZ = 0;
+    this.Qdc = false;
     init(paramContext);
     AppMethodBeat.o(38337);
   }
   
-  private float afb(int paramInt)
+  private float anM(int paramInt)
   {
     AppMethodBeat.i(38361);
-    int i = (int)getResources().getDimension(2131165515);
+    int i = (int)getResources().getDimension(2131165533);
     int j = getHeaderViewsCount();
     int k = getFooterViewsCount();
-    float f = getMeasuredHeight() - i * (paramInt - j - k) - ar.dX(getContext());
-    ae.d("MicroMsg.ConversationListView", "alvinluo isFullScreen getMeasuredHeight: %d", new Object[] { Integer.valueOf(getMeasuredHeight()) });
-    ae.i("MicroMsg.ConversationListView", "[isFullScreen] totalItemCount:" + paramInt + " getFirstVisiblePosition:" + getFirstVisiblePosition() + " getLastVisiblePosition:" + getLastVisiblePosition() + " getHeaderViewsCount:" + getHeaderViewsCount() + " getFooterViewsCount:" + getFooterViewsCount() + " extraHeight:" + f);
+    float f = getMeasuredHeight() - i * (paramInt - j - k) - au.eu(getContext()) - au.getStatusBarHeight(getContext());
+    Log.d("MicroMsg.ConversationListView", "alvinluo isFullScreen getMeasuredHeight: %d", new Object[] { Integer.valueOf(getMeasuredHeight()) });
+    Log.i("MicroMsg.ConversationListView", "[isFullScreen] totalItemCount:" + paramInt + " getFirstVisiblePosition:" + getFirstVisiblePosition() + " getLastVisiblePosition:" + getLastVisiblePosition() + " getHeaderViewsCount:" + getHeaderViewsCount() + " getFooterViewsCount:" + getFooterViewsCount() + " extraHeight:" + f);
     AppMethodBeat.o(38361);
     return f;
   }
   
-  private static void bs(int paramInt, boolean paramBoolean)
+  private static void bN(int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(38343);
-    ae.i("MicroMsg.ConversationListView", "alvinluo saveTopMargin topMargin: %d, needRead: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    Object localObject = ak.fox();
+    Log.i("MicroMsg.ConversationListView", "alvinluo saveTopMargin topMargin: %d, needRead: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    Object localObject = MMApplicationContext.getDefaultPreference();
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -232,64 +246,149 @@ public class ConversationListView
         ((SharedPreferences.Editor)localObject).putBoolean("Main_need_read_top_margin", paramBoolean);
         ((SharedPreferences.Editor)localObject).putInt("Main_top_marign", paramInt);
         ((SharedPreferences.Editor)localObject).apply();
-        ae.i("MicroMsg.ConversationListView", "alvinluo saveTopMargin success");
+        Log.i("MicroMsg.ConversationListView", "alvinluo saveTopMargin success");
       }
     }
     AppMethodBeat.o(38343);
   }
   
-  private void fMZ()
+  private void gVA()
+  {
+    AppMethodBeat.i(38382);
+    if (this.FSw != null)
+    {
+      if (ao.isDarkMode())
+      {
+        i = getResources().getColor(2131099904);
+        this.FSw.g(0.0F, i, i);
+        this.FSw.f(0.0F, getResources().getColor(2131100229), 0);
+        AppMethodBeat.o(38382);
+        return;
+      }
+      int i = getResources().getColor(2131099903);
+      this.FSw.g(0.0F, i, i);
+      this.FSw.f(0.0F, getResources().getColor(2131100898), 0);
+    }
+    AppMethodBeat.o(38382);
+  }
+  
+  private void gVr()
+  {
+    int j = 0;
+    AppMethodBeat.i(234124);
+    if (this.onh != null)
+    {
+      ArrayList localArrayList = getHeaderViewList();
+      Log.i("MicroMsg.ConversationListView", "removeHeaderViewList size: %d", new Object[] { Integer.valueOf(localArrayList.size()) });
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        View localView = (View)localArrayList.get(i);
+        if (localView != null) {
+          removeHeaderView(localView);
+        }
+        i += 1;
+      }
+      addHeaderView(this.onh);
+      localArrayList.remove(this.onh);
+      Log.i("MicroMsg.ConversationListView", "addHeaderViewList addViewList: %d", new Object[] { Integer.valueOf(localArrayList.size()) });
+      i = j;
+      while (i < localArrayList.size())
+      {
+        addHeaderView((View)localArrayList.get(i));
+        i += 1;
+      }
+      gVu();
+    }
+    AppMethodBeat.o(234124);
+  }
+  
+  private void gVs()
+  {
+    AppMethodBeat.i(234125);
+    if (this.onh != null)
+    {
+      removeHeaderView(this.onh);
+      gVu();
+    }
+    AppMethodBeat.o(234125);
+  }
+  
+  private void gVt()
   {
     AppMethodBeat.i(38340);
     if ((Build.VERSION.SDK_INT >= 24) && (LauncherUI.getInstance() != null))
     {
-      this.dAG = LauncherUI.getInstance().isInMultiWindowMode();
-      if (this.mZy != null) {
-        this.mZy.ia(this.dAG);
+      this.dSv = LauncherUI.getInstance().isInMultiWindowMode();
+      if (this.onh != null) {
+        this.onh.wn(this.dSv);
       }
     }
     AppMethodBeat.o(38340);
   }
   
-  private void fNc()
+  private void gVv()
+  {
+    AppMethodBeat.i(234129);
+    int i = au.getStatusBarHeight(getContext());
+    Log.i("MicroMsg.ConversationListView", "updateScrollOffset %d %d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.mStatusBarHeight) });
+    if (this.mStatusBarHeight <= 0) {
+      if (this.dSv) {
+        break label111;
+      }
+    }
+    label111:
+    for (this.DBe = (i + au.eu(getContext()));; this.DBe = au.eu(getContext()))
+    {
+      if ((this.Qcv) && (this.Qcx != null)) {
+        this.Qcx.abv(this.DBe);
+      }
+      AppMethodBeat.o(234129);
+      return;
+      i = this.mStatusBarHeight;
+      break;
+    }
+  }
+  
+  private void gVx()
   {
     AppMethodBeat.i(38359);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.KPX.getLayoutParams();
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.Qda.getLayoutParams();
     int i;
     float f2;
     boolean bool;
     label42:
     int k;
     int m;
-    label148:
+    label149:
     int j;
     float f1;
     if (getAdapter() == null)
     {
       i = 0;
-      f2 = afb(i);
+      f2 = anM(i);
       if (f2 >= 0.0F) {
-        break label311;
+        break label312;
       }
       bool = true;
       k = localLayoutParams.height;
-      ae.i("MicroMsg.ConversationListView", "[checkEmptyFooter] isRealFull:" + bool + " old height:" + k);
-      View localView = getRootView().findViewById(2131301338);
+      Log.i("MicroMsg.ConversationListView", "[checkEmptyFooter] isRealFull:" + bool + " old height:" + k);
+      View localView = getRootView().findViewById(2131303053);
       if (localView != null) {
-        ae.i("MicroMsg.ConversationListView", "alvinluo checkEmptyFooter tabView Height: %d", new Object[] { Integer.valueOf(localView.getHeight()) });
+        Log.i("MicroMsg.ConversationListView", "alvinluo checkEmptyFooter tabView Height: %d", new Object[] { Integer.valueOf(localView.getHeight()) });
       }
-      m = (int)getResources().getDimension(2131165515);
+      m = (int)getResources().getDimension(2131165533);
       if (localView == null) {
-        break label317;
+        break label318;
       }
       i = localView.getHeight();
       j = i;
       if (i <= 0) {
-        j = this.KPK;
+        j = this.QcN;
       }
-      ae.d("MicroMsg.ConversationListView", "alvinluo checkEmptyFooter tabHeight: %d", new Object[] { Integer.valueOf(j) });
+      Log.d("MicroMsg.ConversationListView", "alvinluo checkEmptyFooter tabHeight: %d", new Object[] { Integer.valueOf(j) });
       if (!bool) {
-        break label322;
+        break label323;
       }
       localLayoutParams.height = j;
       f1 = f2;
@@ -298,28 +397,28 @@ public class ConversationListView
     {
       if (k != localLayoutParams.height)
       {
-        ae.i("MicroMsg.ConversationListView", "alvinluo checkEmptyFooter isHeaderOpen: %b", new Object[] { Boolean.valueOf(bDr()) });
-        if (((!bool) || (Math.abs(f1) <= j + m)) && (!bDr()))
+        Log.i("MicroMsg.ConversationListView", "alvinluo checkEmptyFooter isHeaderOpen: %b", new Object[] { Boolean.valueOf(esy()) });
+        if (((!bool) || (Math.abs(f1) <= j + m)) && (!esy()))
         {
-          ae.i("MicroMsg.ConversationListView", "[checkEmptyFooter] setSelection");
+          Log.i("MicroMsg.ConversationListView", "[checkEmptyFooter] setSelection");
           setSelection(1);
-          if (this.KPu != null) {
-            this.KPu.hY(true);
+          if (this.Qcx != null) {
+            this.Qcx.wk(true);
           }
         }
-        this.KPX.requestLayout();
+        this.Qda.requestLayout();
       }
       AppMethodBeat.o(38359);
       return;
       i = getAdapter().getCount();
       break;
-      label311:
+      label312:
       bool = false;
       break label42;
-      label317:
+      label318:
       i = 0;
-      break label148;
-      label322:
+      break label149;
+      label323:
       f1 = f2;
       if (f2 < j) {
         f1 = j;
@@ -328,15 +427,15 @@ public class ConversationListView
     }
   }
   
-  private boolean fNd()
+  private boolean gVy()
   {
     AppMethodBeat.i(38370);
-    if (this.mZy == null)
+    if (this.onh == null)
     {
       AppMethodBeat.o(38370);
       return false;
     }
-    if ((this.mZy.getBottom() >= this.ahF + 3) && (getFirstVisiblePosition() == 0))
+    if ((this.onh.getBottom() >= this.mActionBarHeight + 3) && (getFirstVisiblePosition() == 0))
     {
       AppMethodBeat.o(38370);
       return true;
@@ -345,53 +444,50 @@ public class ConversationListView
     return false;
   }
   
-  private void fNf()
-  {
-    AppMethodBeat.i(38382);
-    if (this.mZF != null)
-    {
-      if (al.isDarkMode())
-      {
-        i = getResources().getColor(2131099886);
-        this.mZF.b(0.0F, i, i);
-        this.mZF.a(0.0F, getResources().getColor(2131100196), 0);
-        AppMethodBeat.o(38382);
-        return;
-      }
-      int i = getResources().getColor(2131099885);
-      this.mZF.b(0.0F, i, i);
-      this.mZF.a(0.0F, getResources().getColor(2131100705), 0);
-    }
-    AppMethodBeat.o(38382);
-  }
-  
   private View getEmptyFooter()
   {
     AppMethodBeat.i(38360);
-    Object localObject = getRootView().findViewById(2131301338);
-    int j = (int)getResources().getDimension(2131165515);
+    Object localObject = getRootView().findViewById(2131303053);
+    int j = (int)getResources().getDimension(2131165533);
     int i;
     if (localObject != null)
     {
       i = ((View)localObject).getHeight();
       if (i > 0) {
-        break label124;
+        break label125;
       }
       i = j;
     }
-    label124:
+    label125:
     for (;;)
     {
       localObject = new LinearLayout(getContext());
-      this.KPX = new View(getContext());
-      this.KPX.setLayoutParams(new LinearLayout.LayoutParams(-1, i));
-      ((LinearLayout)localObject).addView(this.KPX);
+      this.Qda = new View(getContext());
+      this.Qda.setLayoutParams(new LinearLayout.LayoutParams(-1, i));
+      ((LinearLayout)localObject).addView(this.Qda);
       ((LinearLayout)localObject).setBackgroundColor(getContext().getResources().getColor(2131099650));
       AppMethodBeat.o(38360);
       return localObject;
       i = 0;
       break;
     }
+  }
+  
+  private ArrayList<View> getHeaderViewList()
+  {
+    AppMethodBeat.i(234133);
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.Qcu.size())
+    {
+      ListView.FixedViewInfo localFixedViewInfo = (ListView.FixedViewInfo)this.Qcu.get(i);
+      if ((localFixedViewInfo != null) && (localFixedViewInfo.view != null)) {
+        localArrayList.add(localFixedViewInfo.view);
+      }
+      i += 1;
+    }
+    AppMethodBeat.o(234133);
+    return localArrayList;
   }
   
   private int getRealCount()
@@ -413,60 +509,145 @@ public class ConversationListView
   {
     AppMethodBeat.i(38339);
     this.mPaint.setAlpha(255);
-    this.mPaint.setTextSize(com.tencent.mm.cb.a.ay(getContext(), 2131165498));
-    this.KPv = getResources().getString(2131757429);
-    this.KPw = this.mPaint.measureText(this.KPv);
+    this.mPaint.setTextSize(com.tencent.mm.cb.a.aH(getContext(), 2131165516));
+    this.Qcy = getResources().getString(2131757647);
+    this.Qcz = this.mPaint.measureText(this.Qcy);
     super.setOnScrollListener(this);
     super.setOnTouchListener(this);
     setOverScrollMode(2);
-    ae.i("MicroMsg.ConversationListView", "alvinluo HeaderContainer new, ConversationListView: %d", new Object[] { Integer.valueOf(hashCode()) });
-    this.mZy = ((d)g.ab(d.class)).dY(paramContext);
-    if (this.mZy != null)
+    Log.i("MicroMsg.ConversationListView", "alvinluo HeaderContainer new, ConversationListView: %d", new Object[] { Integer.valueOf(hashCode()) });
+    cau();
+    Cv(false);
+    if ((bg.aAc()) && (com.tencent.mm.kernel.g.aAf().hpY))
     {
-      this.mZy.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-      addHeaderView(this.mZy);
-      addFooterView(getEmptyFooter());
-      this.KPu = ((d)g.ab(d.class)).a(paramContext, this, this.mZy);
-      this.KPu.a(this);
-      this.mZy.setAnimController(this.KPu);
+      Log.i("MicroMsg.ConversationListView", "account initialized, initHeaderContainer");
+      kq(paramContext);
     }
-    this.KPK = ((int)(com.tencent.mm.cb.a.ay(getContext(), 2131165256) * com.tencent.mm.cb.a.ip(getContext())));
-    this.mZE = ar.dX(getContext());
-    this.KPW = com.tencent.mm.cb.a.fromDPToPix(paramContext, 100);
-    fMZ();
-    AppMethodBeat.o(38339);
+    for (;;)
+    {
+      addFooterView(getEmptyFooter());
+      this.QcN = ((int)(com.tencent.mm.cb.a.aH(getContext(), 2131165260) * com.tencent.mm.cb.a.ji(getContext())));
+      this.DBe = (au.eu(getContext()) + au.getStatusBarHeight(getContext()));
+      this.QcZ = com.tencent.mm.cb.a.fromDPToPix(paramContext, 100);
+      gVt();
+      AppMethodBeat.o(38339);
+      return;
+      Log.i("MicroMsg.ConversationListView", "account not initialized, add callback");
+      com.tencent.mm.kernel.g.aAi().a(this.UuW);
+    }
   }
   
-  private void setListTopMargin(int paramInt)
+  private void lm(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(38342);
-    ae.i("MicroMsg.ConversationListView", "alvinluo initActionBarView statusBarHeight: %d, isInMultiWindowMode: %b, target: %d, actionBarTop: %d", new Object[] { Integer.valueOf(this.mKJ), Boolean.valueOf(this.dAG), Integer.valueOf(paramInt), Integer.valueOf(this.ahp.getTop()) });
-    if (paramInt >= 0)
+    int j = 0;
+    AppMethodBeat.i(234128);
+    Log.i("MicroMsg.ConversationListView", "alvinluo initActionBarView statusBarHeight: %d, isInMultiWindowMode: %b, target: %d, actionBarTop: %d, actionBarHeight: %d", new Object[] { Integer.valueOf(this.mStatusBarHeight), Boolean.valueOf(this.dSv), Integer.valueOf(paramInt1), Integer.valueOf(this.ahC.getTop()), Integer.valueOf(paramInt2) });
+    Object localObject;
+    int i;
+    if (paramInt1 >= 0)
     {
-      if (this.mZH != null) {
-        if (this.dAG) {
-          break label128;
-        }
-      }
-      ViewGroup.LayoutParams localLayoutParams;
-      label128:
-      for (this.mZH.getLayoutParams().height = this.mKJ;; this.mZH.getLayoutParams().height = paramInt)
+      if (this.FSz != null)
       {
-        localLayoutParams = getLayoutParams();
-        if (!(localLayoutParams instanceof RelativeLayout.LayoutParams)) {
-          break label150;
+        if (this.dSv) {
+          break label180;
         }
-        if (this.dAG) {
-          break;
+        localObject = this.FSz.getLayoutParams();
+        int k = this.mStatusBarHeight;
+        if (!this.Qcv) {
+          break label175;
         }
-        ((RelativeLayout.LayoutParams)localLayoutParams).topMargin = this.mKJ;
-        AppMethodBeat.o(38342);
-        return;
+        i = 0;
+        ((ViewGroup.LayoutParams)localObject).height = (i + k);
       }
-      ((RelativeLayout.LayoutParams)localLayoutParams).topMargin = paramInt;
+      label120:
+      localObject = getLayoutParams();
+      if ((localObject instanceof RelativeLayout.LayoutParams))
+      {
+        if (this.dSv) {
+          break label199;
+        }
+        localObject = (RelativeLayout.LayoutParams)localObject;
+        if (!this.Qcv) {
+          break label194;
+        }
+        paramInt1 = j;
+      }
     }
-    label150:
-    AppMethodBeat.o(38342);
+    label158:
+    label175:
+    label180:
+    label194:
+    label199:
+    for (((RelativeLayout.LayoutParams)localObject).topMargin = paramInt1;; ((RelativeLayout.LayoutParams)localObject).topMargin = paramInt1)
+    {
+      gVv();
+      AppMethodBeat.o(234128);
+      return;
+      i = paramInt2;
+      break;
+      this.FSz.getLayoutParams().height = paramInt1;
+      break label120;
+      paramInt1 = paramInt2;
+      break label158;
+    }
+  }
+  
+  final void Cv(boolean paramBoolean)
+  {
+    AppMethodBeat.i(234126);
+    boolean bool = this.Qcv;
+    this.Qcv = true;
+    Log.i("MicroMsg.ConversationListView", "updateHeaderContainer showHeaderContainer: %b, last: %b, updateView: %b, isHeaderContainerAdded: %b", new Object[] { Boolean.valueOf(this.Qcv), Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), Boolean.valueOf(this.Qcw) });
+    if (!paramBoolean)
+    {
+      AppMethodBeat.o(234126);
+      return;
+    }
+    if (bool != this.Qcv) {
+      if (this.Qcv)
+      {
+        if (!this.Qcw)
+        {
+          gVr();
+          this.Qcw = true;
+          i(200L, 0, true);
+          AppMethodBeat.o(234126);
+        }
+      }
+      else if (this.Qcw)
+      {
+        gVs();
+        this.Qcw = false;
+        setSelection(0);
+      }
+    }
+    AppMethodBeat.o(234126);
+  }
+  
+  final void Cw(boolean paramBoolean)
+  {
+    AppMethodBeat.i(38358);
+    if (this.Qda == null)
+    {
+      AppMethodBeat.o(38358);
+      return;
+    }
+    if (paramBoolean)
+    {
+      postDelayed(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(258299);
+          ConversationListView.f(ConversationListView.this);
+          AppMethodBeat.o(258299);
+        }
+      }, 0L);
+      AppMethodBeat.o(38358);
+      return;
+    }
+    gVx();
+    AppMethodBeat.o(38358);
   }
   
   public void addHeaderView(View paramView, Object paramObject, boolean paramBoolean)
@@ -477,7 +658,7 @@ public class ConversationListView
     localFixedViewInfo.view = paramView;
     localFixedViewInfo.data = paramObject;
     localFixedViewInfo.isSelectable = paramBoolean;
-    this.KPt.add(localFixedViewInfo);
+    this.Qcu.add(localFixedViewInfo);
     AppMethodBeat.o(38368);
   }
   
@@ -485,60 +666,51 @@ public class ConversationListView
   {
     AppMethodBeat.i(38346);
     super.attachViewToParent(paramView, paramInt, paramLayoutParams);
-    if ((this.ahF <= 0) && (this.KPu != null))
+    if ((this.mActionBarHeight <= 0) && (this.Qcx != null))
     {
-      this.ahF = (ar.dX(getContext()) + al.aL(getContext(), 0));
-      this.mZE = ar.dX(getContext());
-      fNa();
-      if (this.mZy != null) {
-        this.mZy.setActionBar(this.ahp);
+      this.mActionBarHeight = (au.eu(getContext()) + au.D(getContext(), 0));
+      this.DBe = (au.eu(getContext()) + au.getStatusBarHeight(getContext()));
+      gVu();
+      if (this.onh != null) {
+        this.onh.setActionBar(this.ahC);
       }
-      this.KPu.setActionBar(this.ahp);
-      this.KPu.setTabView(getRootView().findViewById(2131301338));
+      this.Qcx.setActionBar(this.ahC);
+      this.Qcx.setTabView(getRootView().findViewById(2131303053));
     }
     AppMethodBeat.o(38346);
   }
   
-  public final void bDR()
+  public final void caB()
   {
     AppMethodBeat.i(38354);
-    ae.d("MicroMsg.ConversationListView", "[onOpenHeader]");
-    this.nad = true;
-    if (this.KPM != null) {
-      removeCallbacks(this.KPM);
+    Log.d("MicroMsg.ConversationListView", "[onOpenHeader]");
+    this.FSV = true;
+    if (this.QcP != null) {
+      removeCallbacks(this.QcP);
+    }
+    if (this.FSw != null) {
+      this.FSw.Fg(false);
     }
     AppMethodBeat.o(38354);
   }
   
-  public final void bDS()
+  public final void caC()
   {
     AppMethodBeat.i(38357);
-    bDR();
+    caB();
     AppMethodBeat.o(38357);
-  }
-  
-  public final boolean bDr()
-  {
-    AppMethodBeat.i(38369);
-    if ((fNd()) && (this.nad))
-    {
-      AppMethodBeat.o(38369);
-      return true;
-    }
-    AppMethodBeat.o(38369);
-    return false;
   }
   
   public boolean canScrollHorizontally(int paramInt)
   {
     AppMethodBeat.i(38338);
-    if (this.mZy == null)
+    if (this.onh == null)
     {
       boolean bool = super.canScrollHorizontally(paramInt);
       AppMethodBeat.o(38338);
       return bool;
     }
-    if (this.mZy.getBottom() >= this.mZy.getHeight())
+    if (this.onh.getBottom() >= this.onh.getHeight())
     {
       AppMethodBeat.o(38338);
       return true;
@@ -547,10 +719,19 @@ public class ConversationListView
     return false;
   }
   
+  final void cau()
+  {
+    AppMethodBeat.i(234122);
+    this.iCn = ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.teenmode.a.b.class)).Vt();
+    this.ocu = ((com.tencent.mm.plugin.teenmode.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.teenmode.a.b.class)).fvp();
+    Log.d("MicroMsg.ConversationListView", "updateTeenModeStatus isTeenMode: %b, miniProgramOption: %d", new Object[] { Boolean.valueOf(this.iCn), Integer.valueOf(this.ocu) });
+    AppMethodBeat.o(234122);
+  }
+  
   public boolean dispatchNestedPreScroll(int paramInt1, int paramInt2, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
     AppMethodBeat.i(38344);
-    if ((getFirstVisiblePosition() == 0) && (paramInt2 < 0) && (paramArrayOfInt1 != null) && (paramArrayOfInt1.length >= 2) && (!this.nad))
+    if ((getFirstVisiblePosition() == 0) && (paramInt2 < 0) && (paramArrayOfInt1 != null) && (paramArrayOfInt1.length >= 2) && (!this.FSV))
     {
       paramArrayOfInt1[1] = ((int)(paramInt2 * 0.32F));
       super.dispatchNestedPreScroll(paramInt1, paramInt2, paramArrayOfInt1, paramArrayOfInt2);
@@ -565,66 +746,66 @@ public class ConversationListView
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(38371);
-    if (this.KPV != null) {
-      this.KPV.onTouch(this, paramMotionEvent);
+    if (this.QcY != null) {
+      this.QcY.onTouch(this, paramMotionEvent);
     }
     int i;
     boolean bool;
     try
     {
-      ae.d("MicroMsg.ConversationListView", "alvinluo dispatchTouchEvent backUpFooterRect: %s, %f, %f, bottom: %d, height: %d, isCanClose: %b", new Object[] { this.mZy.getBackUpFooterRect().toString(), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()), Integer.valueOf(this.mZy.getBottom()), Integer.valueOf(this.mZy.getHeight()), Boolean.valueOf(this.KPY) });
-      int j = (int)(paramMotionEvent.getRawY() - this.mKJ);
+      Log.d("MicroMsg.ConversationListView", "alvinluo dispatchTouchEvent backUpFooterRect: %s, %f, %f, bottom: %d, height: %d, isCanClose: %b", new Object[] { this.onh.getBackUpFooterRect().toString(), Float.valueOf(paramMotionEvent.getRawX()), Float.valueOf(paramMotionEvent.getRawY()), Integer.valueOf(this.onh.getBottom()), Integer.valueOf(this.onh.getHeight()), Boolean.valueOf(this.Qdb) });
+      int j = (int)paramMotionEvent.getRawY();
       i = j;
-      if (this.dAG) {
-        i = j - this.KPS + this.mKJ;
+      if (this.dSv) {
+        i = j - this.QcV + this.mStatusBarHeight;
       }
-      if ((bDr()) && (this.mZy != null))
+      if ((esy()) && (this.onh != null))
       {
         if (paramMotionEvent.getAction() == 0) {
-          if (!this.mZy.getBackUpFooterRect().contains((int)paramMotionEvent.getRawX(), i)) {
-            break label242;
+          if (!this.onh.getBackUpFooterRect().contains((int)paramMotionEvent.getRawX(), i)) {
+            break label236;
           }
         }
-        label242:
-        for (this.KPZ = true;; this.KPZ = false)
+        label236:
+        for (this.Qdc = true;; this.Qdc = false)
         {
-          ae.d("MicroMsg.ConversationListView", "alvinluo dispatchTouchEvent isDownInCloseRect: %b, touchY: %d", new Object[] { Boolean.valueOf(this.KPZ), Integer.valueOf(i) });
-          if (this.KPZ) {
+          Log.d("MicroMsg.ConversationListView", "alvinluo dispatchTouchEvent isDownInCloseRect: %b, touchY: %d", new Object[] { Boolean.valueOf(this.Qdc), Integer.valueOf(i) });
+          if (this.Qdc) {
             break;
           }
-          bool = this.mZy.dispatchTouchEvent(paramMotionEvent);
+          bool = this.onh.dispatchTouchEvent(paramMotionEvent);
           AppMethodBeat.o(38371);
           return bool;
         }
       }
-      if (this.mZy == null) {
-        break label513;
+      if (this.onh == null) {
+        break label507;
       }
     }
     catch (Exception paramMotionEvent)
     {
-      ae.printErrStackTrace("MicroMsg.ConversationListView", paramMotionEvent, "alvinluo ConversationListView dispatchTouchEvent exception", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.ConversationListView", paramMotionEvent, "alvinluo ConversationListView dispatchTouchEvent exception", new Object[0]);
       AppMethodBeat.o(38371);
       return false;
     }
-    if ((this.mZy.getBottom() >= this.mZy.getHeight()) && (this.mZy.isFullScreen()) && (getFirstVisiblePosition() == 0))
+    if ((this.onh.getBottom() >= this.onh.getHeight()) && (this.onh.isFullScreen()) && (getFirstVisiblePosition() == 0))
     {
-      if ((paramMotionEvent.getAction() == 0) && (this.mZy.getBackUpFooterRect().contains((int)paramMotionEvent.getRawX(), i))) {
-        this.KPY = true;
+      if ((paramMotionEvent.getAction() == 0) && (this.onh.getBackUpFooterRect().contains((int)paramMotionEvent.getRawX(), i))) {
+        this.Qdb = true;
       }
       while ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
       {
-        if (this.KPY)
+        if (this.Qdb)
         {
-          this.KPY = false;
-          if (this.KPu != null)
+          this.Qdb = false;
+          if (this.Qcx != null)
           {
-            ae.i("MicroMsg.ConversationListView", "alvinluo closeHeader by click BackUpFooterRect");
-            this.KPu.wc(12);
+            Log.i("MicroMsg.ConversationListView", "alvinluo closeHeader by click BackUpFooterRect");
+            this.Qcx.abu(12);
           }
           if (paramMotionEvent.getAction() == 1)
           {
-            ae.i("MicroMsg.ConversationListView", "alvinluo ConversationListView cancel touch event");
+            Log.i("MicroMsg.ConversationListView", "alvinluo ConversationListView cancel touch event");
             paramMotionEvent.setAction(3);
             bool = super.dispatchTouchEvent(paramMotionEvent);
             AppMethodBeat.o(38371);
@@ -632,7 +813,7 @@ public class ConversationListView
             if (paramMotionEvent.getAction() != 0) {
               continue;
             }
-            this.KPY = false;
+            this.Qdb = false;
           }
         }
         else
@@ -644,142 +825,172 @@ public class ConversationListView
         AppMethodBeat.o(38371);
         return true;
       }
-      if ((this.KPu != null) && (paramMotionEvent.getAction() == 0)) {
-        this.KPu.I(paramMotionEvent);
+      if ((this.Qcx != null) && (paramMotionEvent.getAction() == 0)) {
+        this.Qcx.ac(paramMotionEvent);
       }
       bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(38371);
       return bool;
     }
-    label513:
-    if ((this.KPY) && (paramMotionEvent.getAction() == 1))
+    label507:
+    if ((this.Qdb) && (paramMotionEvent.getAction() == 1))
     {
-      ae.i("MicroMsg.ConversationListView", "alvinluo ConversationListView cancel touch event..., isHeaderOpen: %b, isHeaderVisible: %b", new Object[] { Boolean.valueOf(bDr()), Boolean.valueOf(fNd()) });
-      if (bDr()) {
-        break label618;
+      Log.i("MicroMsg.ConversationListView", "alvinluo ConversationListView cancel touch event..., isHeaderOpen: %b, isHeaderVisible: %b", new Object[] { Boolean.valueOf(esy()), Boolean.valueOf(gVy()) });
+      if (esy()) {
+        break label612;
       }
-      this.KPY = false;
+      this.Qdb = false;
     }
     for (;;)
     {
-      if ((paramMotionEvent.getAction() == 0) && (this.KPu != null) && (paramMotionEvent.getAction() == 0)) {
-        this.KPu.I(paramMotionEvent);
+      if ((paramMotionEvent.getAction() == 0) && (this.Qcx != null) && (paramMotionEvent.getAction() == 0)) {
+        this.Qcx.ac(paramMotionEvent);
       }
       bool = super.dispatchTouchEvent(paramMotionEvent);
       AppMethodBeat.o(38371);
       return bool;
-      label618:
+      label612:
       paramMotionEvent.setAction(3);
     }
   }
   
-  final void fNa()
+  public final void eG(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(234131);
+    Log.d("MicroMsg.ConversationListView", "[onCloseHeader]");
+    this.Qdb = false;
+    this.FSV = false;
+    this.QcA = 0;
+    if (this.QcP != null) {
+      removeCallbacks(this.QcP);
+    }
+    if (this.FSw != null) {
+      this.FSw.Fg(true);
+    }
+    AppMethodBeat.o(234131);
+  }
+  
+  public final boolean esy()
+  {
+    AppMethodBeat.i(38369);
+    if ((gVy()) && (this.FSV))
+    {
+      AppMethodBeat.o(38369);
+      return true;
+    }
+    AppMethodBeat.o(38369);
+    return false;
+  }
+  
+  final void gVu()
   {
     int i = 1;
-    AppMethodBeat.i(188053);
-    if (this.ahp == null)
+    AppMethodBeat.i(234127);
+    final int j;
+    if (this.ahC == null)
     {
-      this.ahp = getRootView().findViewById(2131296345);
-      if (this.ahp != null) {
-        this.ahp.addOnLayoutChangeListener(this.KPU);
+      this.ahC = getRootView().findViewById(2131296366);
+      if (this.ahC != null) {
+        this.ahC.addOnLayoutChangeListener(this.QcX);
       }
     }
     else
     {
-      if ((this.dAG) && (Build.VERSION.SDK_INT >= 24) && (LauncherUI.getInstance() != null))
+      if ((this.dSv) && (Build.VERSION.SDK_INT >= 24) && (LauncherUI.getInstance() != null))
       {
-        this.dAG = LauncherUI.getInstance().isInMultiWindowMode();
-        ae.i("MicroMsg.ConversationListView", "alvinluo initActionBarView check multiWindowMode %b", new Object[] { Boolean.valueOf(this.dAG) });
+        this.dSv = LauncherUI.getInstance().isInMultiWindowMode();
+        Log.i("MicroMsg.ConversationListView", "alvinluo initActionBarView check multiWindowMode %b", new Object[] { Boolean.valueOf(this.dSv) });
       }
-      if ((this.mKJ != 0) && ((this.dAG) || (this.ahp.getTop() == this.mKJ) || (this.ahp.getTop() == 0))) {
-        break label222;
+      j = h.eu(getContext());
+      if ((this.mStatusBarHeight != 0) && ((this.dSv) || (this.ahC.getTop() == this.mStatusBarHeight) || (this.ahC.getTop() == 0))) {
+        break label232;
       }
-      this.mKJ = this.ahp.getTop();
+      this.mStatusBarHeight = this.ahC.getTop();
     }
     for (;;)
     {
-      if ((i != 0) && (!this.dAG))
+      if ((i != 0) && (!this.dSv))
       {
         post(new Runnable()
         {
-          int hiJ = 0;
+          int ibG = 0;
           
           public final void run()
           {
-            AppMethodBeat.i(38330);
+            AppMethodBeat.i(38331);
             if (ConversationListView.d(ConversationListView.this) == null)
             {
-              AppMethodBeat.o(38330);
+              AppMethodBeat.o(38331);
               return;
             }
             if (ConversationListView.d(ConversationListView.this).getTop() != 0) {
               ConversationListView.a(ConversationListView.this, ConversationListView.d(ConversationListView.this).getTop());
             }
             if (ConversationListView.e(ConversationListView.this) <= 0) {
-              if (this.hiJ <= 2)
+              if (this.ibG <= 2)
               {
-                ae.i("MicroMsg.ConversationListView", "alvinluo initActionBarView try again tryCount: %d", new Object[] { Integer.valueOf(this.hiJ) });
+                Log.i("MicroMsg.ConversationListView", "alvinluo initActionBarView try again tryCount: %d", new Object[] { Integer.valueOf(this.ibG) });
                 ConversationListView.this.post(this);
               }
             }
             for (;;)
             {
-              this.hiJ += 1;
-              AppMethodBeat.o(38330);
+              this.ibG += 1;
+              AppMethodBeat.o(38331);
               return;
-              ConversationListView.f(ConversationListView.this);
+              ConversationListView.b(ConversationListView.this, j);
               continue;
-              ConversationListView.b(ConversationListView.this, ConversationListView.e(ConversationListView.this));
-              ConversationListView.afc(ConversationListView.e(ConversationListView.this));
+              ConversationListView.a(ConversationListView.this, ConversationListView.e(ConversationListView.this), j);
+              ConversationListView.anN(ConversationListView.e(ConversationListView.this));
             }
           }
         });
-        AppMethodBeat.o(188053);
+        AppMethodBeat.o(234127);
         return;
-        AppMethodBeat.o(188053);
+        AppMethodBeat.o(234127);
         return;
       }
-      this.KPQ = this.ahp.getTop();
-      setListTopMargin(this.KPQ);
-      bs(this.KPQ, false);
-      AppMethodBeat.o(188053);
+      this.QcT = this.ahC.getTop();
+      lm(this.QcT, j);
+      bN(this.QcT, false);
+      AppMethodBeat.o(234127);
       return;
-      label222:
+      label232:
       i = 0;
     }
   }
   
-  public final void fNb()
+  public final void gVw()
   {
     AppMethodBeat.i(38353);
-    if (this.KPu != null) {
-      this.KPu.b(0L, 0, true);
+    if ((this.Qcv) && (this.Qcx != null)) {
+      this.Qcx.i(0L, 0, true);
     }
-    fNe();
+    gVz();
     AppMethodBeat.o(38353);
   }
   
-  final void fNe()
+  final void gVz()
   {
     AppMethodBeat.i(38381);
-    if (this.ahp != null)
+    if (this.ahC != null)
     {
-      this.ahp.setTranslationY(0.0F);
-      this.ahp.setVisibility(0);
+      this.ahC.setTranslationY(0.0F);
+      this.ahC.setVisibility(0);
     }
-    fNf();
+    gVA();
     AppMethodBeat.o(38381);
   }
   
   public int getFirstHeaderVisible()
   {
     AppMethodBeat.i(38367);
-    Iterator localIterator = this.KPt.iterator();
+    Iterator localIterator = this.Qcu.iterator();
     int i = 0;
     while (localIterator.hasNext())
     {
       Object localObject = (ListView.FixedViewInfo)localIterator.next();
-      if (((ListView.FixedViewInfo)localObject).view == this.mZy)
+      if (((ListView.FixedViewInfo)localObject).view == this.onh)
       {
         i += 1;
       }
@@ -790,7 +1001,7 @@ public class ConversationListView
           localObject = ((ViewGroup)((ListView.FixedViewInfo)localObject).view).getChildAt(0);
           if ((localObject != null) && (((View)localObject).getVisibility() == 0))
           {
-            ae.i("MicroMsg.ConversationListView", "[getFirstHeaderVisible] index:%s", new Object[] { Integer.valueOf(i) });
+            Log.i("MicroMsg.ConversationListView", "[getFirstHeaderVisible] index:%s", new Object[] { Integer.valueOf(i) });
             AppMethodBeat.o(38367);
             return i;
           }
@@ -798,46 +1009,99 @@ public class ConversationListView
         i += 1;
       }
     }
-    ae.i("MicroMsg.ConversationListView", "[getFirstHeaderVisible] index:%s", new Object[] { Integer.valueOf(i) });
+    Log.i("MicroMsg.ConversationListView", "[getFirstHeaderVisible] index:%s", new Object[] { Integer.valueOf(i) });
     AppMethodBeat.o(38367);
     return i;
   }
   
-  final void kc(int paramInt1, int paramInt2)
+  public boolean getShowHeaderContainer()
   {
-    AppMethodBeat.i(38352);
-    if (this.mZF != null)
-    {
-      this.mZF.a(1.0F, paramInt1, 0);
-      this.mZF.b(1.0F, paramInt2, paramInt2);
-    }
-    AppMethodBeat.o(38352);
+    return this.Qcv;
   }
   
-  public final void m(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public final void i(long paramLong, final int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(38366);
-    ae.i("MicroMsg.ConversationListView", "[showAppBrandHeader] isShow:" + paramBoolean1 + " isAnim:" + paramBoolean2 + " isScrollFirst:" + paramBoolean3);
-    if (paramBoolean1)
+    AppMethodBeat.i(234130);
+    Log.i("MicroMsg.ConversationListView", "[closeHeader] delay:%s, type: %d, forceClose: %b", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if ((getFirstVisiblePosition() != 0) && (!paramBoolean))
     {
-      if (this.KPu != null)
+      AppMethodBeat.o(234130);
+      return;
+    }
+    if (paramLong > 0L)
+    {
+      if (this.QcQ != null) {
+        removeCallbacks(this.QcQ);
+      }
+      this.QcQ = new Runnable()
       {
-        this.KPu.bDl();
-        AppMethodBeat.o(38366);
+        public final void run()
+        {
+          AppMethodBeat.i(234119);
+          ConversationListView localConversationListView = ConversationListView.this;
+          int i = paramInt;
+          if ((localConversationListView.Qcv) && (localConversationListView.Qcx != null)) {
+            localConversationListView.Qcx.abu(i);
+          }
+          AppMethodBeat.o(234119);
+        }
+      };
+      postDelayed(this.QcQ, paramLong);
+      AppMethodBeat.o(234130);
+      return;
+    }
+    setSelection(0);
+    AppMethodBeat.o(234130);
+  }
+  
+  public final void kq(Context paramContext)
+  {
+    AppMethodBeat.i(234123);
+    if (com.tencent.mm.kernel.g.af(l.class) == null)
+    {
+      Log.e("MicroMsg.ConversationListView", "alvinluo initHeaderContainer service is null");
+      AppMethodBeat.o(234123);
+      return;
+    }
+    if (this.onh != null)
+    {
+      AppMethodBeat.o(234123);
+      return;
+    }
+    Log.i("MicroMsg.ConversationListView", "do initHeaderContainer");
+    this.onh = ((c)com.tencent.mm.kernel.g.af(c.class)).hn(paramContext);
+    if (this.onh != null)
+    {
+      this.onh.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
+      this.Qcx = ((c)com.tencent.mm.kernel.g.af(c.class)).a(paramContext, this, this.onh);
+      this.Qcx.a(this);
+      this.onh.setAnimController(this.Qcx);
+      if (this.Qcv)
+      {
+        this.Qcw = true;
+        addHeaderView(this.onh);
       }
     }
-    else if (this.KPu != null) {
-      this.KPu.wc(0);
+    AppMethodBeat.o(234123);
+  }
+  
+  final void ln(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(38352);
+    if (this.FSw != null)
+    {
+      this.FSw.f(1.0F, paramInt1, 0);
+      this.FSw.g(1.0F, paramInt2, paramInt2);
     }
-    AppMethodBeat.o(38366);
+    AppMethodBeat.o(38352);
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(38375);
     super.onAttachedToWindow();
-    if (this.KPT != null) {
-      this.KPT.alive();
+    if (this.QcW != null) {
+      this.QcW.alive();
     }
     AppMethodBeat.o(38375);
   }
@@ -846,47 +1110,53 @@ public class ConversationListView
   {
     AppMethodBeat.i(38374);
     super.onConfigurationChanged(paramConfiguration);
-    ae.i("MicroMsg.ConversationListView", "[onConfigurationChanged] orientation:%s, last: %d", new Object[] { Integer.valueOf(paramConfiguration.orientation), Integer.valueOf(this.gQT) });
-    yF(true);
-    if (this.KPu != null) {
-      this.KPu.iv();
+    Log.i("MicroMsg.ConversationListView", "[onConfigurationChanged] orientation:%s, last: %d", new Object[] { Integer.valueOf(paramConfiguration.orientation), Integer.valueOf(this.hIX) });
+    Cw(true);
+    gVv();
+    if ((this.Qcv) && (this.Qcx != null)) {
+      this.Qcx.iE();
     }
-    if (this.mZy != null) {
-      this.mZy.e(paramConfiguration);
+    if (this.onh != null) {
+      this.onh.f(paramConfiguration);
     }
-    if (al.isDarkMode()) {
-      kc(getResources().getColor(2131100196), getResources().getColor(2131099886));
+    if (this.FSw != null) {
+      this.FSw.Fg(true);
     }
-    for (;;)
+    if (this.QcR != null) {
+      removeCallbacks(this.QcR);
+    }
+    paramConfiguration = new Runnable()
     {
-      if (this.KPO != null) {
-        removeCallbacks(this.KPO);
-      }
-      paramConfiguration = new Runnable()
+      public final void run()
       {
-        public final void run()
+        AppMethodBeat.i(38329);
+        if (ao.isDarkMode()) {
+          ConversationListView.b(ConversationListView.this, ConversationListView.this.getResources().getColor(2131100229), ConversationListView.this.getResources().getColor(2131099904));
+        }
+        for (;;)
         {
-          AppMethodBeat.i(38326);
+          ConversationListView.j(ConversationListView.this).fuz();
+          ConversationListView.c(ConversationListView.this).fuA();
           ConversationListView.this.setSelection(1);
           ConversationListView.k(ConversationListView.this);
-          AppMethodBeat.o(38326);
+          AppMethodBeat.o(38329);
+          return;
+          ConversationListView.b(ConversationListView.this, ConversationListView.this.getResources().getColor(2131100898), ConversationListView.this.getResources().getColor(2131099903));
         }
-      };
-      this.KPO = paramConfiguration;
-      postDelayed(paramConfiguration, 800L);
-      this.nad = false;
-      AppMethodBeat.o(38374);
-      return;
-      kc(getResources().getColor(2131100705), getResources().getColor(2131099885));
-    }
+      }
+    };
+    this.QcR = paramConfiguration;
+    postDelayed(paramConfiguration, 800L);
+    this.FSV = false;
+    AppMethodBeat.o(38374);
   }
   
   protected void onDetachedFromWindow()
   {
     AppMethodBeat.i(38376);
     super.onDetachedFromWindow();
-    if (this.KPT != null) {
-      this.KPT.dead();
+    if (this.QcW != null) {
+      this.QcW.dead();
     }
     AppMethodBeat.o(38376);
   }
@@ -895,17 +1165,17 @@ public class ConversationListView
   {
     AppMethodBeat.i(38347);
     super.onDraw(paramCanvas);
-    if ((this.mZy != null) && (getFirstVisiblePosition() == 0) && (this.mZy.isFullScreen()) && (this.mZy.getBottom() > 6))
+    if ((this.onh != null) && (getFirstVisiblePosition() == 0) && (this.onh.isFullScreen()) && (this.onh.getBottom() > 6))
     {
-      if (this.KPx < 30)
+      if (this.QcA < 30)
       {
         AppMethodBeat.o(38347);
         return;
       }
       this.mPaint.setStyle(Paint.Style.FILL);
-      this.mPaint.setColor(getContext().getResources().getColor(2131099930));
-      this.mPaint.setAlpha(this.KPx);
-      paramCanvas.drawRect(this.mZy.getBackUpFooterRect().left, this.mZy.getBackUpFooterRect().top + this.KPR, this.mZy.getBackUpFooterRect().right, this.mZy.getBackUpFooterRect().bottom, this.mPaint);
+      this.mPaint.setColor(getContext().getResources().getColor(2131099949));
+      this.mPaint.setAlpha(this.QcA);
+      paramCanvas.drawRect(this.onh.getBackUpFooterRect().left, this.onh.getBackUpFooterRect().top + this.QcU, this.onh.getBackUpFooterRect().right, this.onh.getBackUpFooterRect().bottom, this.mPaint);
     }
     AppMethodBeat.o(38347);
   }
@@ -916,9 +1186,9 @@ public class ConversationListView
     try
     {
       super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      boolean bool = bDr();
-      ae.i("MicroMsg.ConversationListView", "[onLayout] changed:%s, isHeaderOpen: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
-      ae.d("MicroMsg.ConversationListView", "[onLayout] top: %d, bottom: %d, height: %d, count: %d, realCount: %d, hashCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt4), Integer.valueOf(paramInt4 - paramInt2), Integer.valueOf(this.mCount), Integer.valueOf(getRealCount()), Integer.valueOf(hashCode()) });
+      boolean bool = esy();
+      Log.i("MicroMsg.ConversationListView", "[onLayout] changed:%s, isHeaderOpen: %b", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool) });
+      Log.d("MicroMsg.ConversationListView", "[onLayout] top: %d, bottom: %d, height: %d, count: %d, realCount: %d, hashCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt4), Integer.valueOf(paramInt4 - paramInt2), Integer.valueOf(this.mCount), Integer.valueOf(getRealCount()), Integer.valueOf(hashCode()) });
       if ((paramBoolean) && (!bool))
       {
         setSelection(1);
@@ -926,17 +1196,14 @@ public class ConversationListView
         {
           public final void run()
           {
-            AppMethodBeat.i(38331);
+            AppMethodBeat.i(38332);
             ConversationListView.this.setSelection(1);
-            AppMethodBeat.o(38331);
+            AppMethodBeat.o(38332);
           }
         });
       }
       if ((paramBoolean) || ((this.mCount < 16) && (getRealCount() != this.mCount))) {
-        yF(false);
-      }
-      if ((this.KPP != null) && (this.KPP.getVisibility() == 0) && (getFirstVisiblePosition() != 0)) {
-        this.KPP.setVisibility(4);
+        Cw(false);
       }
       this.mCount = getRealCount();
       AppMethodBeat.o(38350);
@@ -944,7 +1211,7 @@ public class ConversationListView
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.ConversationListView", localException, "alvinluo onLayout exception", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.ConversationListView", localException, "alvinluo onLayout exception", new Object[0]);
       AppMethodBeat.o(38350);
     }
   }
@@ -956,52 +1223,47 @@ public class ConversationListView
     AppMethodBeat.i(38349);
     Object localObject;
     int i;
-    if ((paramInt1 == 0) && (this.nap))
+    if ((this.Qcv) && (paramInt1 == 0) && (this.FTf))
     {
       localObject = getChildAt(1);
       if (localObject == null) {
-        if (bDr())
+        if (esy())
         {
-          i = this.mZy.getMeasuredHeight() - this.mZE;
-          ae.i("MicroMsg.ConversationListView", "alvinluo computeActionBarTranslation %d", new Object[] { Integer.valueOf(i) });
-          label71:
+          i = this.onh.getMeasuredHeight() - this.DBe;
+          Log.i("MicroMsg.ConversationListView", "alvinluo computeActionBarTranslation %d", new Object[] { Integer.valueOf(i) });
+          label78:
           i = Math.max(0, i);
-          if (this.ahp != null)
+          if (this.ahC != null)
           {
-            if (Math.abs(i) > this.KPW) {
-              break label444;
-            }
-            this.ahp.setVisibility(0);
-            label106:
-            ae.v("MicroMsg.ConversationListView", "alvinluo onScroll setTranslationY before: %f, trans: %d", new Object[] { Float.valueOf(this.ahp.getTranslationY()), Integer.valueOf(i) });
-            this.ahp.setTranslationY(i);
+            Log.v("MicroMsg.ConversationListView", "alvinluo onScroll setTranslationY before: %f, trans: %d", new Object[] { Float.valueOf(this.ahC.getTranslationY()), Integer.valueOf(i) });
+            this.ahC.setTranslationY(i);
           }
-          if (this.mZy != null)
+          if ((this.Qcv) && (this.onh != null))
           {
-            localObject = this.mZy;
-            this.mZy.getHeight();
-            ((HeaderContainer)localObject).es(i, this.mZy.getHeight() - this.mZE);
+            localObject = this.onh;
+            this.onh.getHeight();
+            ((HeaderContainer)localObject).jh(i, this.onh.getHeight() - this.DBe);
           }
         }
       }
     }
     for (;;)
     {
-      if (this.vwl != null) {
-        this.vwl.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      if (this.yQz != null) {
+        this.yQz.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
       }
-      if (this.KPu != null) {
-        this.KPu.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      if ((this.Qcv) && (this.Qcx != null)) {
+        this.Qcx.onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
       }
-      if ((paramInt2 > 1) && (fNd()) && (this.mZy != null))
+      if ((this.Qcv) && (paramInt2 > 1) && (gVy()) && (this.onh != null))
       {
         paramAbsListView = new int[2];
         getLocationOnScreen(paramAbsListView);
-        this.KPS = paramAbsListView[1];
-        paramInt1 = this.mZy.getBottom() - com.tencent.mm.cb.a.fromDPToPix(getContext(), 56);
-        this.mZy.getBackUpFooterRect().set(0, paramInt1, getWidth(), getHeight() + paramInt1);
-        ae.d("MicroMsg.ConversationListView", "alvinluo onScroll BackUpFooterRect: %s, headerContainer top: %d, bottom: %d", new Object[] { this.mZy.getBackUpFooterRect().toString(), Integer.valueOf(this.mZy.getTop()), Integer.valueOf(this.mZy.getBottom()) });
-        this.KPx = ((int)(255.0F * this.mZy.getBottom() / this.mZy.getHeight()));
+        this.QcV = paramAbsListView[1];
+        paramInt1 = this.onh.getBottom() - com.tencent.mm.cb.a.fromDPToPix(getContext(), 56);
+        this.onh.getBackUpFooterRect().set(0, paramInt1, getWidth(), getHeight() + paramInt1);
+        Log.d("MicroMsg.ConversationListView", "alvinluo onScroll BackUpFooterRect: %s, headerContainer top: %d, bottom: %d", new Object[] { this.onh.getBackUpFooterRect().toString(), Integer.valueOf(this.onh.getTop()), Integer.valueOf(this.onh.getBottom()) });
+        this.QcA = ((int)(255.0F * this.onh.getBottom() / this.onh.getHeight()));
       }
       AppMethodBeat.o(38349);
       return;
@@ -1009,13 +1271,10 @@ public class ConversationListView
       break;
       i = ((View)localObject).getTop();
       int j = Math.max(paramInt1 - getHeaderViewsCount(), 0);
-      i = -(-i + (int)(j * getResources().getDimension(2131165515)) + this.mZE);
-      break label71;
-      label444:
-      this.ahp.setVisibility(4);
-      break label106;
+      i = -(-i + (int)(j * getResources().getDimension(2131165533)) + this.DBe);
+      break label78;
       if (paramInt1 > 0) {
-        fNe();
+        gVz();
       }
     }
   }
@@ -1023,11 +1282,11 @@ public class ConversationListView
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
     AppMethodBeat.i(38348);
-    if (this.vwl != null) {
-      this.vwl.onScrollStateChanged(paramAbsListView, paramInt);
+    if (this.yQz != null) {
+      this.yQz.onScrollStateChanged(paramAbsListView, paramInt);
     }
-    if (this.KPu != null) {
-      this.KPu.onScrollStateChanged(paramAbsListView, paramInt);
+    if ((this.Qcx != null) && (this.Qcv)) {
+      this.Qcx.onScrollStateChanged(paramAbsListView, paramInt);
     }
     this.mScrollState = paramInt;
     AppMethodBeat.o(38348);
@@ -1036,56 +1295,104 @@ public class ConversationListView
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(38345);
-    b localb = new b();
-    localb.bd(paramView);
-    localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/conversation/ConversationListView", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
-    boolean bool2 = this.KPu.onTouch(paramView, paramMotionEvent);
-    boolean bool1 = bool2;
-    if (this.CBc != null) {
-      bool1 = bool2 | this.CBc.onTouch(paramView, paramMotionEvent);
+    if ((this.Qcv) && (this.Qcx.onTouch(paramView, paramMotionEvent))) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      boolean bool2 = bool1;
+      if (this.HeV != null) {
+        bool2 = bool1 | this.HeV.onTouch(paramView, paramMotionEvent);
+      }
+      AppMethodBeat.o(38345);
+      return bool2;
     }
-    com.tencent.mm.hellhoundlib.a.a.a(bool1, this, "com/tencent/mm/ui/conversation/ConversationListView", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(38345);
-    return bool1;
   }
   
-  public void setActionBarUpdateCallback(final com.tencent.mm.plugin.appbrand.widget.header.a parama)
+  public final void q(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    AppMethodBeat.i(38377);
-    if (this.KPu != null)
+    AppMethodBeat.i(38366);
+    Log.i("MicroMsg.ConversationListView", "[showAppBrandHeader] isShow:" + paramBoolean1 + " isAnim:" + paramBoolean2 + " isScrollFirst:" + paramBoolean3);
+    if (paramBoolean1)
     {
-      this.mZF = parama;
-      this.KPu.setActionBarUpdateCallback(new com.tencent.mm.plugin.appbrand.widget.header.a()
+      if ((this.Qcv) && (this.Qcx != null))
       {
-        public final void a(float paramAnonymousFloat, int paramAnonymousInt1, int paramAnonymousInt2)
+        this.Qcx.fux();
+        AppMethodBeat.o(38366);
+      }
+    }
+    else if ((this.Qcv) && (this.Qcx != null)) {
+      this.Qcx.abu(0);
+    }
+    AppMethodBeat.o(38366);
+  }
+  
+  public boolean removeHeaderView(View paramView)
+  {
+    AppMethodBeat.i(234132);
+    int i = 0;
+    if (i < this.Qcu.size())
+    {
+      ListView.FixedViewInfo localFixedViewInfo = (ListView.FixedViewInfo)this.Qcu.get(i);
+      if ((localFixedViewInfo == null) || (localFixedViewInfo.view != paramView)) {}
+    }
+    for (;;)
+    {
+      if (i != -1) {
+        this.Qcu.remove(i);
+      }
+      boolean bool = super.removeHeaderView(paramView);
+      AppMethodBeat.o(234132);
+      return bool;
+      i += 1;
+      break;
+      i = -1;
+    }
+  }
+  
+  public void setActionBarUpdateCallback(final com.tencent.mm.plugin.taskbar.api.a parama)
+  {
+    AppMethodBeat.i(234134);
+    if (this.Qcx != null)
+    {
+      this.FSw = parama;
+      this.Qcx.setActionBarUpdateCallback(new com.tencent.mm.plugin.taskbar.api.a()
+      {
+        public final void Fg(boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(188047);
+          AppMethodBeat.i(258297);
           if (parama != null) {
-            parama.a(paramAnonymousFloat, paramAnonymousInt1, paramAnonymousInt2);
+            parama.Fg(paramAnonymousBoolean);
           }
-          AppMethodBeat.o(188047);
+          AppMethodBeat.o(258297);
         }
         
-        public final void b(float paramAnonymousFloat, int paramAnonymousInt1, int paramAnonymousInt2)
+        public final void f(float paramAnonymousFloat, int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          AppMethodBeat.i(188048);
+          AppMethodBeat.i(258295);
           if (parama != null) {
-            parama.b(paramAnonymousFloat, paramAnonymousInt1, paramAnonymousInt2);
+            parama.f(paramAnonymousFloat, paramAnonymousInt1, paramAnonymousInt2);
           }
-          AppMethodBeat.o(188048);
+          AppMethodBeat.o(258295);
+        }
+        
+        public final void g(float paramAnonymousFloat, int paramAnonymousInt1, int paramAnonymousInt2)
+        {
+          AppMethodBeat.i(258296);
+          if (parama != null) {
+            parama.g(paramAnonymousFloat, paramAnonymousInt1, paramAnonymousInt2);
+          }
+          AppMethodBeat.o(258296);
         }
       });
     }
-    AppMethodBeat.o(38377);
+    AppMethodBeat.o(234134);
   }
   
   public void setActivity(MMFragmentActivity paramMMFragmentActivity)
   {
     AppMethodBeat.i(38378);
-    this.nbm = paramMMFragmentActivity;
-    if (this.mZy != null) {
-      this.mZy.setActivity(this.nbm);
+    this.Dpx = paramMMFragmentActivity;
+    if (this.onh != null) {
+      this.onh.setActivity(this.Dpx);
     }
     AppMethodBeat.o(38378);
   }
@@ -1093,10 +1400,10 @@ public class ConversationListView
   public void setIsCurrentMainUI(boolean paramBoolean)
   {
     AppMethodBeat.i(38380);
-    ae.i("MicroMsg.ConversationListView", "alvinluo setIsCurrentMainUI: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    this.nap = paramBoolean;
-    if (this.KPu != null) {
-      this.KPu.setIsCurrentMainUI(paramBoolean);
+    Log.i("MicroMsg.ConversationListView", "alvinluo setIsCurrentMainUI: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    this.FTf = paramBoolean;
+    if (this.Qcx != null) {
+      this.Qcx.setIsCurrentMainUI(paramBoolean);
     }
     AppMethodBeat.o(38380);
   }
@@ -1104,17 +1411,17 @@ public class ConversationListView
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
     AppMethodBeat.i(38373);
-    this.awt = paramOnItemClickListener;
+    this.awr = paramOnItemClickListener;
     super.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(188052);
-        ae.i("MicroMsg.ConversationListView", "alvinluo onItemClick isCanClose: %b", new Object[] { Boolean.valueOf(ConversationListView.h(ConversationListView.this)) });
-        if ((ConversationListView.j(ConversationListView.this) != null) && (!ConversationListView.h(ConversationListView.this))) {
-          ConversationListView.j(ConversationListView.this).onItemClick(paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
+        AppMethodBeat.i(258294);
+        Log.i("MicroMsg.ConversationListView", "alvinluo onItemClick isCanClose: %b", new Object[] { Boolean.valueOf(ConversationListView.g(ConversationListView.this)) });
+        if ((ConversationListView.i(ConversationListView.this) != null) && (!ConversationListView.g(ConversationListView.this))) {
+          ConversationListView.i(ConversationListView.this).onItemClick(paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
         }
-        AppMethodBeat.o(188052);
+        AppMethodBeat.o(258294);
       }
     });
     AppMethodBeat.o(38373);
@@ -1123,20 +1430,20 @@ public class ConversationListView
   public void setOnItemLongClickListener(AdapterView.OnItemLongClickListener paramOnItemLongClickListener)
   {
     AppMethodBeat.i(38372);
-    this.JOO = paramOnItemLongClickListener;
+    this.OZU = paramOnItemLongClickListener;
     super.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
     {
       public final boolean onItemLongClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
-        AppMethodBeat.i(188051);
-        ae.i("MicroMsg.ConversationListView", "alvinluo onItemLongClick isCanClose: %b", new Object[] { Boolean.valueOf(ConversationListView.h(ConversationListView.this)) });
-        if ((ConversationListView.i(ConversationListView.this) != null) && (!ConversationListView.h(ConversationListView.this)))
+        AppMethodBeat.i(258300);
+        Log.i("MicroMsg.ConversationListView", "alvinluo onItemLongClick isCanClose: %b", new Object[] { Boolean.valueOf(ConversationListView.g(ConversationListView.this)) });
+        if ((ConversationListView.h(ConversationListView.this) != null) && (!ConversationListView.g(ConversationListView.this)))
         {
-          boolean bool = ConversationListView.i(ConversationListView.this).onItemLongClick(paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
-          AppMethodBeat.o(188051);
+          boolean bool = ConversationListView.h(ConversationListView.this).onItemLongClick(paramAnonymousAdapterView, paramAnonymousView, paramAnonymousInt, paramAnonymousLong);
+          AppMethodBeat.o(258300);
           return bool;
         }
-        AppMethodBeat.o(188051);
+        AppMethodBeat.o(258300);
         return false;
       }
     });
@@ -1145,136 +1452,97 @@ public class ConversationListView
   
   public void setOnScrollListener(AbsListView.OnScrollListener paramOnScrollListener)
   {
-    this.vwl = paramOnScrollListener;
+    this.yQz = paramOnScrollListener;
   }
   
   public void setOnTouchListener(View.OnTouchListener paramOnTouchListener)
   {
-    this.CBc = paramOnTouchListener;
+    this.HeV = paramOnTouchListener;
   }
   
   public void setSelection(int paramInt)
   {
     AppMethodBeat.i(38362);
-    ae.i("MicroMsg.ConversationListView", "[setSelection] position:%s, scrollOffset: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.mZE) });
+    Log.i("MicroMsg.ConversationListView", "[setSelection] position:%s, scrollOffset: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(this.DBe) });
     if (paramInt == 0)
     {
-      super.setSelectionFromTop(getFirstHeaderVisible(), this.mZE);
+      super.setSelectionFromTop(getFirstHeaderVisible(), this.DBe);
       AppMethodBeat.o(38362);
       return;
     }
-    super.setSelectionFromTop(paramInt, this.mZE);
+    super.setSelectionFromTop(paramInt, this.DBe);
     AppMethodBeat.o(38362);
   }
   
   public void setStatusBarMaskView(View paramView)
   {
     AppMethodBeat.i(38379);
-    this.mZH = paramView;
-    if (this.KPu != null) {
-      this.KPu.setStatusBarMaskView(paramView);
+    this.FSz = paramView;
+    if (this.Qcx != null) {
+      this.Qcx.setStatusBarMaskView(paramView);
     }
     AppMethodBeat.o(38379);
   }
   
   public void setonDispatchTouchEventListener(View.OnTouchListener paramOnTouchListener)
   {
-    this.KPV = paramOnTouchListener;
+    this.QcY = paramOnTouchListener;
   }
   
   public void smoothScrollToPosition(int paramInt)
   {
     AppMethodBeat.i(38363);
-    ae.i("MicroMsg.ConversationListView", "[smoothScrollToPosition] position:%s", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.ConversationListView", "[smoothScrollToPosition] position:%s", new Object[] { Integer.valueOf(paramInt) });
     if (paramInt == 0)
     {
-      super.smoothScrollToPositionFromTop(getFirstHeaderVisible(), this.mZE);
+      super.smoothScrollToPositionFromTop(getFirstHeaderVisible(), this.DBe);
       AppMethodBeat.o(38363);
       return;
     }
-    super.smoothScrollToPositionFromTop(paramInt, this.mZE);
+    super.smoothScrollToPositionFromTop(paramInt, this.DBe);
     AppMethodBeat.o(38363);
   }
   
   public void smoothScrollToPositionFromTop(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(38364);
-    ae.i("MicroMsg.ConversationListView", "[smoothScrollToPositionFromTop] position:%s offset:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.i("MicroMsg.ConversationListView", "[smoothScrollToPositionFromTop] position:%s offset:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt1 == 0)
     {
-      super.smoothScrollToPositionFromTop(getFirstHeaderVisible(), this.mZE + paramInt2);
+      super.smoothScrollToPositionFromTop(getFirstHeaderVisible(), this.DBe + paramInt2);
       AppMethodBeat.o(38364);
       return;
     }
-    super.smoothScrollToPositionFromTop(paramInt1, this.mZE + paramInt2);
+    super.smoothScrollToPositionFromTop(paramInt1, this.DBe + paramInt2);
     AppMethodBeat.o(38364);
   }
   
   public void smoothScrollToPositionFromTop(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(38365);
-    ae.i("MicroMsg.ConversationListView", "[smoothScrollToPositionFromTop] position:%s offset:%s duration:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.i("MicroMsg.ConversationListView", "[smoothScrollToPositionFromTop] position:%s offset:%s duration:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (paramInt1 == 0)
     {
-      super.smoothScrollToPositionFromTop(getFirstHeaderVisible(), this.mZE + paramInt2, paramInt3);
+      super.smoothScrollToPositionFromTop(getFirstHeaderVisible(), this.DBe + paramInt2, paramInt3);
       AppMethodBeat.o(38365);
       return;
     }
-    super.smoothScrollToPositionFromTop(paramInt1, this.mZE + paramInt2, paramInt3);
+    super.smoothScrollToPositionFromTop(paramInt1, this.DBe + paramInt2, paramInt3);
     AppMethodBeat.o(38365);
   }
   
-  public final void uT(int paramInt) {}
+  public final void yL(int paramInt) {}
   
-  public final void wh(int paramInt)
-  {
-    AppMethodBeat.i(38355);
-    ae.d("MicroMsg.ConversationListView", "[onCloseHeader]");
-    this.KPY = false;
-    this.nad = false;
-    this.KPx = 0;
-    if (this.KPM != null) {
-      removeCallbacks(this.KPM);
-    }
-    AppMethodBeat.o(38355);
-  }
-  
-  public final void wi(int paramInt)
+  public final void zT(int paramInt)
   {
     AppMethodBeat.i(38356);
-    wh(paramInt);
+    eG(paramInt, 0);
     AppMethodBeat.o(38356);
-  }
-  
-  final void yF(boolean paramBoolean)
-  {
-    AppMethodBeat.i(38358);
-    if (this.KPX == null)
-    {
-      AppMethodBeat.o(38358);
-      return;
-    }
-    if (paramBoolean)
-    {
-      postDelayed(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(188050);
-          ConversationListView.g(ConversationListView.this);
-          AppMethodBeat.o(188050);
-        }
-      }, 0L);
-      AppMethodBeat.o(38358);
-      return;
-    }
-    fNc();
-    AppMethodBeat.o(38358);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.ConversationListView
  * JD-Core Version:    0.7.0.1
  */

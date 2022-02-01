@@ -1,9 +1,9 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class dc
-  extends b
+  extends IEvent
 {
   public dc()
   {
@@ -12,7 +12,7 @@ public final class dc
   
   private dc(byte paramByte)
   {
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
   }
 }

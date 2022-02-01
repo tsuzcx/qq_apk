@@ -1,95 +1,104 @@
 package com.tencent.mm.plugin.appbrand.jsapi.i;
 
+import android.content.Intent;
+import com.tencent.luggage.h.f.c;
+import com.tencent.luggage.sdk.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.f.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i.a.f;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/lbs/JsApiChoosePOI;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandService;", "()V", "REQUEST_CODE_CHOOSE_POI", "", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "Companion", "plugin-appbrand-integration_release"})
 public final class d
-  extends b
+  extends com.tencent.mm.plugin.appbrand.jsapi.d<s>
 {
-  public static final int CTRL_INDEX = 140;
-  public static final String NAME = "addMapControls";
+  public static final int CTRL_INDEX = 938;
+  public static final String NAME = "choosePoi";
+  public static final a lWY;
+  private final int lWX;
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  static
   {
-    AppMethodBeat.i(143659);
-    super.a(paramc, paramJSONObject, paramInt);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(228422);
+    lWY = new a((byte)0);
+    AppMethodBeat.o(228422);
+  }
+  
+  public d()
+  {
+    AppMethodBeat.i(228421);
+    this.lWX = a.aK(a.cCG);
+    AppMethodBeat.o(228421);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/lbs/JsApiChoosePOI$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "requestCode", "", "resultCode", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
+  static final class b
+    implements f.c
+  {
+    b(d paramd, s params, int paramInt) {}
+    
+    public final boolean c(int paramInt1, int paramInt2, Intent paramIntent)
     {
-      ae.e("MicroMsg.JsApiAddMapControls", "data is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(143659);
-      return;
-    }
-    ae.d("MicroMsg.JsApiAddMapControls", "data:%s", new Object[] { paramJSONObject.toString() });
-    com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
-    if (localb == null)
-    {
-      ae.e("MicroMsg.JsApiAddMapControls", "mapView is null, return");
-      paramc.h(paramInt, e("fail:mapview is null", null));
-      AppMethodBeat.o(143659);
-      return;
-    }
-    for (;;)
-    {
-      int i;
-      try
+      AppMethodBeat.i(228419);
+      if (paramInt1 != d.a(this.lWZ))
       {
-        if (paramJSONObject.has("controls"))
+        AppMethodBeat.o(228419);
+        return false;
+      }
+      switch (paramInt2)
+      {
+      default: 
+        this.lXa.i(this.lyo, this.lWZ.Zf("fail"));
+        Log.e("MicroMsg.JsApiChoosePOI", "choose failed");
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(228419);
+        return true;
+        if (paramIntent == null)
         {
-          localb.blE();
-          JSONArray localJSONArray = new JSONArray(paramJSONObject.optString("controls"));
-          i = 0;
-          if (i < localJSONArray.length())
-          {
-            JSONObject localJSONObject1 = (JSONObject)localJSONArray.get(i);
-            b.c localc = new b.c();
-            localc.kVn = ((com.tencent.mm.plugin.appbrand.f.b)paramc.K(com.tencent.mm.plugin.appbrand.f.b.class)).b(paramc, localJSONObject1.optString("iconPath"));
-            localc.kVo = localJSONObject1.optBoolean("clickable");
-            localc.data = localJSONObject1.optString("data");
-            JSONObject localJSONObject2 = localJSONObject1.getJSONObject("position");
-            int j = g.a(localJSONObject2, "left", 0);
-            int k = g.a(localJSONObject2, "top", 0);
-            localc.left = j;
-            localc.top = k;
-            if (localJSONObject2.has("width")) {
-              localc.width = g.a(localJSONObject2, "width", 0);
-            }
-            if (localJSONObject2.has("height")) {
-              localc.height = g.a(localJSONObject2, "height", 0);
-            }
-            if (localJSONObject1.optBoolean("clickable")) {
-              localb.a(localc, new d.1(this, f.S(paramJSONObject), paramc), (a)paramc.K(a.class));
-            } else {
-              localb.a(localc, null, (a)paramc.K(a.class));
-            }
-          }
+          this.lXa.i(this.lyo, this.lWZ.Zf("fail:internal error"));
+          AppMethodBeat.o(228419);
+          return true;
         }
+        Map localMap = (Map)new HashMap();
+        paramInt1 = paramIntent.getIntExtra("get_poi_data_type", 0);
+        localMap.put("type", Integer.valueOf(paramInt1));
+        switch (paramInt1)
+        {
+        }
+        for (;;)
+        {
+          this.lXa.i(this.lyo, this.lWZ.n("ok", localMap));
+          break;
+          paramIntent = paramIntent.getStringExtra("get_city");
+          p.g(paramIntent, "data.getStringExtra(Cons…tsUI.NearLifeUI.GET_CITY)");
+          localMap.put("city", paramIntent);
+          continue;
+          String str = paramIntent.getStringExtra("get_poi_name");
+          p.g(str, "data.getStringExtra(Cons….NearLifeUI.GET_POI_NAME)");
+          localMap.put("name", str);
+          str = paramIntent.getStringExtra("get_poi_address");
+          p.g(str, "data.getStringExtra(Cons…arLifeUI.GET_POI_ADDRESS)");
+          localMap.put("address", str);
+          localMap.put("latitude", Float.valueOf(paramIntent.getFloatExtra("get_lat", -1.0F)));
+          localMap.put("longitude", Float.valueOf(paramIntent.getFloatExtra("get_lng", -1.0F)));
+        }
+        this.lXa.i(this.lyo, this.lWZ.Zf("fail cancel"));
+        Log.i("MicroMsg.JsApiChoosePOI", "choose canceled");
       }
-      catch (Exception paramJSONObject)
-      {
-        ae.e("MicroMsg.JsApiAddMapControls", "parse controls error, exception : %s", new Object[] { paramJSONObject });
-        a(paramc, paramInt, e("fail:internal error", null), false, localb.blB());
-        AppMethodBeat.o(143659);
-        return;
-      }
-      a(paramc, paramInt, e("ok", null), true, localb.blB());
-      AppMethodBeat.o(143659);
-      return;
-      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.d
  * JD-Core Version:    0.7.0.1
  */

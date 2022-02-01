@@ -8,27 +8,27 @@ import com.tencent.soter.core.c.d;
 
 public class g
 {
-  private static volatile g MoN = null;
-  private Handler MnI;
-  HandlerThread MoO;
-  Handler MoP;
+  private static volatile g RRl = null;
+  private Handler RQg;
+  HandlerThread RRm;
+  Handler RRn;
   
   private g()
   {
     AppMethodBeat.i(40);
-    this.MoP = null;
-    this.MnI = null;
-    if (this.MoO == null)
+    this.RRn = null;
+    this.RQg = null;
+    if (this.RRm == null)
     {
-      this.MoO = new HandlerThread("SoterGenKeyHandlerThreadName");
-      this.MoO.start();
-      if (this.MoO.getLooper() == null) {
+      this.RRm = new HandlerThread("SoterGenKeyHandlerThreadName");
+      this.RRm.start();
+      if (this.RRm.getLooper() == null) {
         break label94;
       }
     }
-    for (this.MoP = new Handler(this.MoO.getLooper());; this.MoP = new Handler(Looper.getMainLooper()))
+    for (this.RRn = new Handler(this.RRm.getLooper());; this.RRn = new Handler(Looper.getMainLooper()))
     {
-      this.MnI = new Handler(Looper.getMainLooper());
+      this.RQg = new Handler(Looper.getMainLooper());
       AppMethodBeat.o(40);
       return;
       label94:
@@ -36,16 +36,16 @@ public class g
     }
   }
   
-  public static g fZG()
+  public static g hlR()
   {
     AppMethodBeat.i(41);
-    if (MoN == null) {
+    if (RRl == null) {
       try
       {
-        if (MoN == null) {
-          MoN = new g();
+        if (RRl == null) {
+          RRl = new g();
         }
-        g localg1 = MoN;
+        g localg1 = RRl;
         return localg1;
       }
       finally
@@ -53,35 +53,35 @@ public class g
         AppMethodBeat.o(41);
       }
     }
-    g localg2 = MoN;
+    g localg2 = RRl;
     AppMethodBeat.o(41);
     return localg2;
   }
   
-  public final void ad(Runnable paramRunnable)
+  public final void aj(Runnable paramRunnable)
   {
     AppMethodBeat.i(42);
-    this.MoP.post(paramRunnable);
+    this.RRn.post(paramRunnable);
     AppMethodBeat.o(42);
   }
   
-  public final void f(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(44);
-    this.MnI.post(paramRunnable);
-    AppMethodBeat.o(44);
-  }
-  
-  public final void p(Runnable paramRunnable, long paramLong)
+  public final void m(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(43);
-    this.MoP.postDelayed(paramRunnable, paramLong);
+    this.RRn.postDelayed(paramRunnable, paramLong);
     AppMethodBeat.o(43);
+  }
+  
+  public final void postToMainThread(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(44);
+    this.RQg.post(paramRunnable);
+    AppMethodBeat.o(44);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.soter.a.g.g
  * JD-Core Version:    0.7.0.1
  */

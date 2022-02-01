@@ -1,60 +1,70 @@
 package com.tencent.mm.emoji.panel.a;
 
+import android.content.Context;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.b.ac;
-import com.tencent.mm.emoji.a.b.h;
-import d.a.ab;
-import d.g.b.p;
-import d.k.j;
-import d.l;
-import d.v;
-import java.util.Iterator;
+import com.tencent.mm.emoji.b.b.ac;
+import com.tencent.mm.emoji.b.b.h;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/adapter/SimilarEmojiFullPageViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "itemView", "Landroid/view/View;", "showId", "", "(Landroid/view/View;I)V", "getShowId", "()I", "setShowId", "(I)V", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/panel/adapter/SearchEmojiHeadViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "itemView", "Landroid/view/View;", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "searchMore", "kotlin.jvm.PlatformType", "getSearchMore", "()Landroid/view/View;", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-emojisdk_release"})
 public final class s
   extends q<h>
 {
-  private int gqr;
+  private final View hbk;
   
-  public s(View paramView, int paramInt)
+  public s(View paramView, n paramn)
   {
-    super(paramView, null);
-    AppMethodBeat.i(105682);
-    this.gqr = paramInt;
-    AppMethodBeat.o(105682);
+    super(paramView, paramn);
+    AppMethodBeat.i(199973);
+    this.hbk = paramView.findViewById(2131307409);
+    AppMethodBeat.o(199973);
   }
   
   public final void a(ac paramac)
   {
-    AppMethodBeat.i(105681);
+    AppMethodBeat.i(199972);
     p.h(paramac, "item");
     super.a(paramac);
-    paramac = this.auu;
-    if (paramac == null)
-    {
-      paramac = new v("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(105681);
-      throw paramac;
-    }
-    paramac = ((Iterable)j.lv(0, ((ViewGroup)paramac).getChildCount())).iterator();
-    while (paramac.hasNext())
-    {
-      int i = ((ab)paramac).nextInt();
-      View localView = ((ViewGroup)this.auu).getChildAt(i);
-      p.g(localView, "itemView.getChildAt(it)");
-      localView.setVisibility(8);
-    }
-    paramac = this.auu.findViewById(this.gqr);
-    p.g(paramac, "itemView.findViewById<View>(showId)");
+    paramac = this.hbk;
+    p.g(paramac, "searchMore");
     paramac.setVisibility(0);
-    AppMethodBeat.o(105681);
+    this.hbk.setOnClickListener((View.OnClickListener)new a(this));
+    AppMethodBeat.o(199972);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class a
+    implements View.OnClickListener
+  {
+    a(s params) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(199971);
+      Object localObject = new b();
+      ((b)localObject).bm(paramView);
+      a.b("com/tencent/mm/emoji/panel/adapter/SearchEmojiHeadViewHolder$onBind$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+      localObject = this.hbl.hbi;
+      if (localObject != null)
+      {
+        p.g(paramView, "it");
+        Context localContext = paramView.getContext();
+        p.g(localContext, "it.context");
+        ((n)localObject).a(paramView, localContext, this.hbl.lR(), this.hbl.hbh);
+      }
+      a.a(this, "com/tencent/mm/emoji/panel/adapter/SearchEmojiHeadViewHolder$onBind$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(199971);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.s
  * JD-Core Version:    0.7.0.1
  */

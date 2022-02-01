@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
+import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
 
 final class a
   extends FrameLayout
@@ -29,7 +29,7 @@ final class a
       if (((View)getParent()).getMeasuredHeight() > 0)
       {
         localContext = getContext();
-        if (!aa.iP(getContext())) {
+        if (!KeyBoardUtil.isPortOrientation(getContext())) {
           break label89;
         }
       }
@@ -47,7 +47,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.a
  * JD-Core Version:    0.7.0.1
  */

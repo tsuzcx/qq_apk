@@ -28,13 +28,15 @@ import android.widget.ListView;
 import android.widget.PopupWindow.OnDismissListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.al.k;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.newtips.a.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.aq;
-import com.tencent.mm.ui.as;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.av;
 import com.tencent.mm.ui.base.MMListPopupWindow;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.p;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -44,19 +46,19 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class g
   implements View.OnKeyListener, AdapterView.OnItemClickListener, PopupWindow.OnDismissListener
 {
-  private Boolean JTL;
-  Map<String, ao> JTM;
-  List<ao> JTN;
-  AdapterView.OnItemClickListener JUa;
-  String JUb;
-  private ViewGroup JUc;
-  private b JUd;
-  private MMListPopupWindow JUe;
-  private int JUf;
-  private int JUg;
-  com.tencent.mm.al.k JUh;
-  private boolean JUi;
-  boolean dJl;
+  private Boolean PeQ;
+  Map<String, ap> PeR;
+  List<ap> PeS;
+  AdapterView.OnItemClickListener Pff;
+  String Pfg;
+  private ViewGroup Pfh;
+  private b Pfi;
+  private MMListPopupWindow Pfj;
+  private int Pfk;
+  private int Pfl;
+  k Pfm;
+  private boolean Pfn;
+  boolean eaY;
   private int height;
   private Context mContext;
   private int mCount;
@@ -65,23 +67,23 @@ public final class g
   public g(Context paramContext, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(34351);
-    this.JUa = null;
-    this.JTL = Boolean.FALSE;
-    this.JUb = "";
-    this.dJl = false;
-    this.JTM = new ConcurrentHashMap();
-    this.JTN = new ArrayList();
+    this.Pff = null;
+    this.PeQ = Boolean.FALSE;
+    this.Pfg = "";
+    this.eaY = false;
+    this.PeR = new ConcurrentHashMap();
+    this.PeS = new ArrayList();
     this.mContext = null;
-    this.JUc = null;
-    this.JUd = null;
-    this.JUf = 2131821491;
-    this.JUh = null;
-    this.JUi = true;
+    this.Pfh = null;
+    this.Pfi = null;
+    this.Pfk = 2131821537;
+    this.Pfm = null;
+    this.Pfn = true;
     this.mContext = paramContext;
-    this.JUc = paramViewGroup;
+    this.Pfh = paramViewGroup;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    fFi();
-    this.JUd = new b((byte)0);
+    gNq();
+    this.Pfi = new b((byte)0);
     AppMethodBeat.o(34351);
   }
   
@@ -107,10 +109,10 @@ public final class g
     label137:
     for (;;)
     {
-      if (this.JUc == null) {
-        this.JUc = new FrameLayout(this.mContext);
+      if (this.Pfh == null) {
+        this.Pfh = new FrameLayout(this.mContext);
       }
-      localView = paramListAdapter.getView(j, localView, this.JUc);
+      localView = paramListAdapter.getView(j, localView, this.Pfh);
       localView.measure(n, i1);
       k = Math.max(k, localView.getMeasuredWidth());
       j += 1;
@@ -121,40 +123,40 @@ public final class g
   }
   
   @SuppressLint({"WrongCall"})
-  public final boolean a(com.tencent.mm.al.k paramk, int paramInt1, int paramInt2)
+  public final boolean a(k paramk, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(34352);
-    if ((!isShowing()) && (paramk != null) && (paramk.hTd != null) && (paramk.hTd.size() > 0))
+    if ((!isShowing()) && (paramk != null) && (paramk.iOs != null) && (paramk.iOs.size() > 0))
     {
-      this.JUi = false;
-      this.JUh = paramk;
-      this.mCount = paramk.hTd.size();
-      this.JUd.notifyDataSetChanged();
+      this.Pfn = false;
+      this.Pfm = paramk;
+      this.mCount = paramk.iOs.size();
+      this.Pfi.notifyDataSetChanged();
       this.height = ((WindowManager)this.mContext.getSystemService("window")).getDefaultDisplay().getHeight();
-      TextView localTextView = (TextView)((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131495102, null);
-      paramk = a.a(this.mContext, localTextView.getPaint(), paramk.hTd, paramInt1);
-      this.JUg = (paramInt2 - this.JUd.getCount() * this.mContext.getResources().getDimensionPixelSize(2131165567) - this.mContext.getResources().getDimensionPixelSize(2131165371));
-      ae.d("MicroMsg.ChatFooterCustomSubmenu", "showPointY=" + paramInt2 + "verticalOffset=" + this.JUg);
-      this.JUe = new MMListPopupWindow(this.mContext, null, 0);
-      this.JUe.setOnDismissListener(this);
-      this.JUe.arf = this.JUa;
-      this.JUe.setAdapter(this.JUd);
-      this.JUe.setModal(true);
-      this.JUe.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131234275));
-      this.JUe.setAnimationStyle(this.JUf);
-      this.JUe.aqS = paramk.nnL;
-      this.JUe.setVerticalOffset(this.JUg);
-      this.JUe.ard = this.JUc;
-      this.JUe.setContentWidth(b(this.JUd));
-      this.JUe.kw();
-      this.JUe.show();
-      this.JUe.JGF.setOnKeyListener(this);
-      this.JUe.JGF.setDivider(new ColorDrawable(this.mContext.getResources().getColor(2131100886)));
-      this.JUe.JGF.setSelector(this.mContext.getResources().getDrawable(2131233634));
-      this.JUe.JGF.setDividerHeight(1);
-      this.JUe.JGF.setVerticalScrollBarEnabled(false);
-      this.JUe.JGF.setHorizontalScrollBarEnabled(false);
-      this.JUe.JGF.setBackgroundColor(this.mContext.getResources().getColor(2131099653));
+      TextView localTextView = (TextView)((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131495944, null);
+      paramk = a.a(this.mContext, localTextView.getPaint(), paramk.iOs, paramInt1);
+      this.Pfl = (paramInt2 - this.Pfi.getCount() * this.mContext.getResources().getDimensionPixelSize(2131165585) - this.mContext.getResources().getDimensionPixelSize(2131165382));
+      Log.d("MicroMsg.ChatFooterCustomSubmenu", "showPointY=" + paramInt2 + "verticalOffset=" + this.Pfl);
+      this.Pfj = new MMListPopupWindow(this.mContext, null, 0);
+      this.Pfj.setOnDismissListener(this);
+      this.Pfj.ars = this.Pff;
+      this.Pfj.setAdapter(this.Pfi);
+      this.Pfj.setModal(true);
+      this.Pfj.setBackgroundDrawable(this.mContext.getResources().getDrawable(2131235152));
+      this.Pfj.setAnimationStyle(this.Pfk);
+      this.Pfj.are = paramk.oxr;
+      this.Pfj.setVerticalOffset(this.Pfl);
+      this.Pfj.arp = this.Pfh;
+      this.Pfj.setContentWidth(b(this.Pfi));
+      this.Pfj.kC();
+      this.Pfj.show();
+      this.Pfj.ORx.setOnKeyListener(this);
+      this.Pfj.ORx.setDivider(new ColorDrawable(this.mContext.getResources().getColor(2131101085)));
+      this.Pfj.ORx.setSelector(this.mContext.getResources().getDrawable(2131234447));
+      this.Pfj.ORx.setDividerHeight(1);
+      this.Pfj.ORx.setVerticalScrollBarEnabled(false);
+      this.Pfj.ORx.setHorizontalScrollBarEnabled(false);
+      this.Pfj.ORx.setBackgroundColor(this.mContext.getResources().getColor(2131099653));
       AppMethodBeat.o(34352);
       return true;
     }
@@ -162,54 +164,54 @@ public final class g
     return false;
   }
   
-  public final void d(com.tencent.mm.al.k paramk)
+  public final void d(k paramk)
   {
-    AppMethodBeat.i(187136);
-    ae.d("MicroMsg.ChatFooterCustomSubmenu", "registerRedDotComponentForSubMenu subMeubConut：%s", new Object[] { Integer.valueOf(paramk.hTd.size()) });
-    this.JTL = Boolean.TRUE;
+    AppMethodBeat.i(232847);
+    Log.d("MicroMsg.ChatFooterCustomSubmenu", "registerRedDotComponentForSubMenu subMeubConut：%s", new Object[] { Integer.valueOf(paramk.iOs.size()) });
+    this.PeQ = Boolean.TRUE;
     int i = 0;
     for (;;)
     {
-      com.tencent.mm.al.k localk;
-      if (i < paramk.hTd.size())
+      k localk;
+      if (i < paramk.iOs.size())
       {
-        localk = (com.tencent.mm.al.k)paramk.hTd.get(i);
-        ae.d("MicroMsg.ChatFooterCustomSubmenu", "registerRedDotComponentForMenu key：%s，name：%s", new Object[] { localk.key, localk.name });
-        if (this.JTM.containsKey(localk.key)) {
-          ae.d("MicroMsg.ChatFooterCustomSubmenu", "this key has register");
+        localk = (k)paramk.iOs.get(i);
+        Log.d("MicroMsg.ChatFooterCustomSubmenu", "registerRedDotComponentForMenu key：%s，name：%s", new Object[] { localk.key, localk.name });
+        if (this.PeR.containsKey(localk.key)) {
+          Log.d("MicroMsg.ChatFooterCustomSubmenu", "this key has register");
         }
       }
       else
       {
-        ae.d("MicroMsg.ChatFooterCustomSubmenu", "mRedDotCompoentList：%s,mRedDotCompoents:%s", new Object[] { Integer.valueOf(this.JTM.size()), Integer.valueOf(this.JTN.size()) });
-        AppMethodBeat.o(187136);
+        Log.d("MicroMsg.ChatFooterCustomSubmenu", "mRedDotCompoentList：%s,mRedDotCompoents:%s", new Object[] { Integer.valueOf(this.PeR.size()), Integer.valueOf(this.PeS.size()) });
+        AppMethodBeat.o(232847);
         return;
       }
-      ao localao = new ao(this.mContext, localk.key, new ao.a()
+      ap localap = new ap(this.mContext, localk.key, new ap.a()
       {
-        public final void N(boolean paramAnonymousBoolean, String paramAnonymousString)
+        public final void O(boolean paramAnonymousBoolean, String paramAnonymousString)
         {
-          AppMethodBeat.i(187133);
-          ae.d("MicroMsg.ChatFooterCustomSubmenu", "OnShowRedDot showTextView：%s，key ：%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString });
+          AppMethodBeat.i(232844);
+          Log.d("MicroMsg.ChatFooterCustomSubmenu", "OnShowRedDot showTextView：%s，key ：%s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString });
           g.b(g.this, paramAnonymousString);
           g.a(g.this, paramAnonymousBoolean);
-          AppMethodBeat.o(187133);
+          AppMethodBeat.o(232844);
         }
       });
-      com.tencent.mm.plugin.newtips.a.dxD().h(localao);
-      this.JTM.put(localk.key, localao);
-      this.JTN.add(localao);
-      ae.d("MicroMsg.ChatFooterCustomSubmenu", " Register key ：%s", new Object[] { localk.key });
+      com.tencent.mm.plugin.newtips.a.exl().h(localap);
+      this.PeR.put(localk.key, localap);
+      this.PeS.add(localap);
+      Log.d("MicroMsg.ChatFooterCustomSubmenu", " Register key ：%s", new Object[] { localk.key });
       i += 1;
     }
   }
   
-  public final boolean fFi()
+  public final boolean gNq()
   {
     AppMethodBeat.i(34354);
     if (isShowing())
     {
-      this.JUe.dismiss();
+      this.Pfj.dismiss();
       AppMethodBeat.o(34354);
       return true;
     }
@@ -220,7 +222,7 @@ public final class g
   public final boolean isShowing()
   {
     AppMethodBeat.i(34353);
-    if ((this.JUe != null) && (this.JUe.jwx.isShowing()))
+    if ((this.Pfj != null) && (this.Pfj.kuK.isShowing()))
     {
       AppMethodBeat.o(34353);
       return true;
@@ -233,42 +235,42 @@ public final class g
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(187135);
+    AppMethodBeat.i(232846);
     b localb = new b();
-    localb.bd(paramAdapterView);
-    localb.bd(paramView);
-    localb.mu(paramInt);
-    localb.rl(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/ChatFooterCustomSubmenu", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+    localb.bm(paramAdapterView);
+    localb.bm(paramView);
+    localb.pH(paramInt);
+    localb.zo(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/ChatFooterCustomSubmenu", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChatFooterCustomSubmenu", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-    AppMethodBeat.o(187135);
+    AppMethodBeat.o(232846);
   }
   
   public final boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    AppMethodBeat.i(187134);
+    AppMethodBeat.i(232845);
     b localb = new b();
-    localb.bd(paramView);
-    localb.mu(paramInt);
-    localb.bd(paramKeyEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/ChatFooterCustomSubmenu", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
+    localb.bm(paramView);
+    localb.pH(paramInt);
+    localb.bm(paramKeyEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/ChatFooterCustomSubmenu", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
     com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/chatting/ChatFooterCustomSubmenu", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
-    AppMethodBeat.o(187134);
+    AppMethodBeat.o(232845);
     return false;
   }
   
   public static final class a
   {
-    private static DisplayMetrics JUk = null;
+    private static DisplayMetrics Pfp = null;
     
-    private static int a(Context paramContext, TextPaint paramTextPaint, List<com.tencent.mm.al.k> paramList)
+    private static int a(Context paramContext, TextPaint paramTextPaint, List<k> paramList)
     {
       AppMethodBeat.i(34345);
       paramList = paramList.iterator();
       float f1 = 0.0F;
       if (paramList.hasNext())
       {
-        float f2 = paramTextPaint.measureText(((com.tencent.mm.al.k)paramList.next()).name);
+        float f2 = paramTextPaint.measureText(((k)paramList.next()).name);
         if (f1 >= f2) {
           break label79;
         }
@@ -285,20 +287,20 @@ public final class g
       }
     }
     
-    public static g.a.a a(Context paramContext, TextPaint paramTextPaint, List<com.tencent.mm.al.k> paramList, int paramInt)
+    public static a a(Context paramContext, TextPaint paramTextPaint, List<k> paramList, int paramInt)
     {
       AppMethodBeat.i(34346);
-      g.a.a locala = new g.a.a();
+      a locala = new a();
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       int k;
       int i;
       if ((paramContext instanceof Activity))
       {
         ((Activity)paramContext).getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-        Point localPoint = as.ck(paramContext);
+        Point localPoint = av.az(paramContext);
         k = localDisplayMetrics.widthPixels;
         if ((k != localDisplayMetrics.widthPixels) || (localPoint.y != localDisplayMetrics.heightPixels)) {
-          ae.e("MicroMsg.ChatFooterCustomSubmenu", "get screen param error!! width:%s, systermWidth:%s, height:%s, systermHeight:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(localDisplayMetrics.widthPixels), Integer.valueOf(localPoint.y), Integer.valueOf(localDisplayMetrics.heightPixels) });
+          Log.e("MicroMsg.ChatFooterCustomSubmenu", "get screen param error!! width:%s, systermWidth:%s, height:%s, systermHeight:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(localDisplayMetrics.widthPixels), Integer.valueOf(localPoint.y), Integer.valueOf(localDisplayMetrics.heightPixels) });
         }
         i = a(paramContext, paramTextPaint, paramList);
         int j = com.tencent.mm.cb.a.fromDPToPix(paramContext, 95);
@@ -312,29 +314,43 @@ public final class g
       {
         if (paramInt - i / 2 < 0)
         {
-          locala.nnK = 0;
-          locala.nnL = (k - (i + 0));
+          locala.oxq = 0;
+          locala.oxr = (k - (i + 0));
         }
         for (;;)
         {
           AppMethodBeat.o(34346);
           return locala;
-          if (JUk == null) {
-            JUk = paramContext.getResources().getDisplayMetrics();
+          if (Pfp == null) {
+            Pfp = paramContext.getResources().getDisplayMetrics();
           }
-          localDisplayMetrics = JUk;
+          localDisplayMetrics = Pfp;
           break;
           if (k - (i / 2 + paramInt) < 0)
           {
-            locala.nnK = (k - (i + 0));
-            locala.nnL = 0;
+            locala.oxq = (k - (i + 0));
+            locala.oxr = 0;
           }
           else
           {
-            locala.nnK = (paramInt - i / 2);
-            locala.nnL = (k - (i / 2 + paramInt));
+            locala.oxq = (paramInt - i / 2);
+            locala.oxr = (k - (i / 2 + paramInt));
           }
         }
+      }
+    }
+    
+    public static final class a
+    {
+      public int oxq;
+      public int oxr;
+      
+      public final String toString()
+      {
+        AppMethodBeat.i(34344);
+        String str = " marginLeft:" + this.oxq + " marginRight:" + this.oxr;
+        AppMethodBeat.o(34344);
+        return str;
       }
     }
   }
@@ -344,10 +360,10 @@ public final class g
   {
     private b() {}
     
-    private com.tencent.mm.al.k adu(int paramInt)
+    private k ame(int paramInt)
     {
       AppMethodBeat.i(34348);
-      com.tencent.mm.al.k localk = (com.tencent.mm.al.k)g.b(g.this).hTd.get(paramInt);
+      k localk = (k)g.b(g.this).iOs.get(paramInt);
       AppMethodBeat.o(34348);
       return localk;
     }
@@ -370,20 +386,20 @@ public final class g
       AppMethodBeat.i(34349);
       if (paramView == null)
       {
-        paramView = (TextView)g.c(g.this).inflate(2131495102, paramViewGroup, false);
-        paramViewGroup = adu(paramInt);
+        paramView = (TextView)g.c(g.this).inflate(2131495944, paramViewGroup, false);
+        paramViewGroup = ame(paramInt);
         paramView.setTag(paramViewGroup);
         if (!g.a(g.this, paramViewGroup.key)) {
           break label222;
         }
-        ae.i("MicroMsg.ChatFooterCustomSubmenu", "showRedDotTextView：%s", new Object[] { paramViewGroup.key });
+        Log.i("MicroMsg.ChatFooterCustomSubmenu", "showRedDotTextView：%s", new Object[] { paramViewGroup.key });
         paramView.setEllipsize(null);
-        Object localObject = g.d(g.this).getResources().getDrawable(2131234447);
-        ((Drawable)localObject).setBounds(0, 0, aq.fromDPToPix(g.d(g.this), 8), aq.fromDPToPix(g.d(g.this), 8));
+        Object localObject = g.d(g.this).getResources().getDrawable(2131235385);
+        ((Drawable)localObject).setBounds(0, 0, at.fromDPToPix(g.d(g.this), 8), at.fromDPToPix(g.d(g.this), 8));
         localObject = new com.tencent.mm.ui.widget.a((Drawable)localObject);
         SpannableString localSpannableString = new SpannableString("@");
         localSpannableString.setSpan(localObject, 0, 1, 33);
-        paramView.setText(TextUtils.concat(new CharSequence[] { com.tencent.mm.pluginsdk.ui.span.k.c(g.d(g.this), paramViewGroup.name) + " ", localSpannableString }));
+        paramView.setText(TextUtils.concat(new CharSequence[] { l.c(g.d(g.this), paramViewGroup.name) + " ", localSpannableString }));
       }
       for (;;)
       {
@@ -392,14 +408,14 @@ public final class g
         paramView = (TextView)paramView;
         break;
         label222:
-        paramView.setText(com.tencent.mm.pluginsdk.ui.span.k.c(g.d(g.this), paramViewGroup.name));
+        paramView.setText(l.c(g.d(g.this), paramViewGroup.name));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.g
  * JD-Core Version:    0.7.0.1
  */

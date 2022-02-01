@@ -49,17 +49,6 @@ public class ViewModelProviders
     }
     return new ViewModelProvider(ViewModelStores.of(paramFragmentActivity), (ViewModelProvider.Factory)localObject);
   }
-  
-  @Deprecated
-  public static class DefaultFactory
-    extends ViewModelProvider.AndroidViewModelFactory
-  {
-    @Deprecated
-    public DefaultFactory(Application paramApplication)
-    {
-      super();
-    }
-  }
 }
 
 

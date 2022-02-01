@@ -7,32 +7,32 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.List;
 
 public final class d
 {
-  private SensorManager FjT;
-  private a FjU;
+  private a KaL;
+  private SensorManager manager;
   
   public d()
   {
     AppMethodBeat.i(152093);
-    this.FjT = ((SensorManager)ak.getContext().getSystemService("sensor"));
+    this.manager = ((SensorManager)MMApplicationContext.getContext().getSystemService("sensor"));
     AppMethodBeat.o(152093);
   }
   
-  private boolean ffd()
+  private boolean gon()
   {
     AppMethodBeat.i(152098);
-    if (this.FjT == null)
+    if (this.manager == null)
     {
-      ae.e("MicroMsg.ShakeSensorService", "cannot init sensor manager");
+      Log.e("MicroMsg.ShakeSensorService", "cannot init sensor manager");
       AppMethodBeat.o(152098);
       return false;
     }
-    List localList = this.FjT.getSensorList(1);
+    List localList = this.manager.getSensorList(1);
     if ((localList != null) && (localList.size() > 0))
     {
       AppMethodBeat.o(152098);
@@ -45,48 +45,48 @@ public final class d
   public final void a(a parama)
   {
     AppMethodBeat.i(152095);
-    cdt();
-    if (ffd())
+    cBo();
+    if (gon())
     {
-      this.FjU = parama;
-      this.FjT.registerListener(this.FjU, this.FjT.getDefaultSensor(1), 1);
+      this.KaL = parama;
+      this.manager.registerListener(this.KaL, this.manager.getDefaultSensor(1), 1);
       AppMethodBeat.o(152095);
       return;
     }
-    ae.e("MicroMsg.ShakeSensorService", "no sensor found for shake detection");
+    Log.e("MicroMsg.ShakeSensorService", "no sensor found for shake detection");
     AppMethodBeat.o(152095);
   }
   
-  public final void cdt()
+  public final void cBo()
   {
     AppMethodBeat.i(152096);
-    if (this.FjU != null)
+    if (this.KaL != null)
     {
-      this.FjU.onRelease();
-      this.FjT.unregisterListener(this.FjU, this.FjT.getDefaultSensor(1));
-      this.FjU = null;
+      this.KaL.onRelease();
+      this.manager.unregisterListener(this.KaL, this.manager.getDefaultSensor(1));
+      this.KaL = null;
     }
     AppMethodBeat.o(152096);
   }
   
-  public final boolean ffa()
+  public final boolean gok()
   {
-    return this.FjU != null;
+    return this.KaL != null;
   }
   
-  public final void ffb()
+  public final void gol()
   {
     AppMethodBeat.i(152094);
-    if (this.FjU != null) {
-      this.FjU.reset();
+    if (this.KaL != null) {
+      this.KaL.reset();
     }
     AppMethodBeat.o(152094);
   }
   
-  public final boolean ffc()
+  public final boolean gom()
   {
     AppMethodBeat.i(152097);
-    if (ffd())
+    if (gon())
     {
       AppMethodBeat.o(152097);
       return true;
@@ -114,7 +114,7 @@ public final class d
     private float selfAdaptation(float paramFloat)
     {
       if (paramFloat >= 4.0F) {
-        ae.v("MicroMsg.ShakeSensorListener", "result:" + paramFloat + " THREAHOLD:" + THREAHOLD);
+        Log.v("MicroMsg.ShakeSensorListener", "result:" + paramFloat + " THREAHOLD:" + THREAHOLD);
       }
       if (THREAHOLD >= 9) {}
       int i;
@@ -153,7 +153,7 @@ public final class d
       }
       if (j != 0)
       {
-        ae.d("MicroMsg.ShakeSensorListener", "sensorChanged " + paramSensorEvent.sensor.getName() + " (" + arrayOfFloat2[0] + ", " + arrayOfFloat2[1] + ", " + arrayOfFloat2[2] + ") diff(" + arrayOfFloat1[0] + " " + arrayOfFloat1[1] + " " + arrayOfFloat1[2] + ")");
+        Log.d("MicroMsg.ShakeSensorListener", "sensorChanged " + paramSensorEvent.sensor.getName() + " (" + arrayOfFloat2[0] + ", " + arrayOfFloat2[1] + ", " + arrayOfFloat2[2] + ") diff(" + arrayOfFloat1[0] + " " + arrayOfFloat1[1] + " " + arrayOfFloat1[2] + ")");
         onShake(true);
         onShake(paramSensorEvent.values);
       }
@@ -165,7 +165,7 @@ public final class d
     
     public void reset()
     {
-      ae.d("MicroMsg.ShakeSensorListener", "reset threadHold");
+      Log.d("MicroMsg.ShakeSensorListener", "reset threadHold");
       THREAHOLD = 5;
       if (Build.MODEL.equals("LG-E510")) {
         THREAHOLD = 4;
@@ -175,7 +175,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.l.d
  * JD-Core Version:    0.7.0.1
  */

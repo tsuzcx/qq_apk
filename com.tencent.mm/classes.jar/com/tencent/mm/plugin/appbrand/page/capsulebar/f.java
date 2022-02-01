@@ -10,7 +10,7 @@ import android.view.animation.AccelerateInterpolator;
 public abstract class f
   implements i
 {
-  public static Animator cM(View paramView)
+  public static Animator cF(View paramView)
   {
     paramView = ObjectAnimator.ofFloat(paramView, "alpha", new float[] { 1.0F, 0.0F, 1.0F });
     paramView.setDuration(2000L);
@@ -20,19 +20,19 @@ public abstract class f
     return paramView;
   }
   
-  protected abstract void A(CharSequence paramCharSequence);
+  protected abstract void E(CharSequence paramCharSequence);
   
-  protected abstract void K(Runnable paramRunnable);
+  protected abstract void P(Runnable paramRunnable);
   
   protected abstract Context getContext();
   
-  protected abstract void va(int paramInt);
-  
   protected abstract void y(Drawable paramDrawable);
+  
+  protected abstract void yS(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.capsulebar.f
  * JD-Core Version:    0.7.0.1
  */

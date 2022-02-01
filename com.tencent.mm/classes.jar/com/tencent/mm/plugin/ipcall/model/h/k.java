@@ -1,60 +1,60 @@
 package com.tencent.mm.plugin.ipcall.model.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dr;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.dx;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class k
-  extends dr
+  extends dx
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(25557);
-    c.a locala = new c.a();
-    locala.IBL = new Field[6];
-    locala.columns = new String[7];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[6];
+    localMAutoDBInfo.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "phonenumber";
-    locala.IBN.put("phonenumber", "TEXT");
+    localMAutoDBInfo.columns[0] = "phonenumber";
+    localMAutoDBInfo.colsMap.put("phonenumber", "TEXT");
     localStringBuilder.append(" phonenumber TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "calltime";
-    locala.IBN.put("calltime", "LONG");
+    localMAutoDBInfo.columns[1] = "calltime";
+    localMAutoDBInfo.colsMap.put("calltime", "LONG");
     localStringBuilder.append(" calltime LONG");
     localStringBuilder.append(", ");
-    locala.columns[2] = "duration";
-    locala.IBN.put("duration", "LONG");
+    localMAutoDBInfo.columns[2] = "duration";
+    localMAutoDBInfo.colsMap.put("duration", "LONG");
     localStringBuilder.append(" duration LONG");
     localStringBuilder.append(", ");
-    locala.columns[3] = "status";
-    locala.IBN.put("status", "INTEGER");
+    localMAutoDBInfo.columns[3] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[4] = "addressId";
-    locala.IBN.put("addressId", "LONG default '-1' ");
+    localMAutoDBInfo.columns[4] = "addressId";
+    localMAutoDBInfo.colsMap.put("addressId", "LONG default '-1' ");
     localStringBuilder.append(" addressId LONG default '-1' ");
     localStringBuilder.append(", ");
-    locala.columns[5] = "phoneType";
-    locala.IBN.put("phoneType", "INTEGER default '-1' ");
+    localMAutoDBInfo.columns[5] = "phoneType";
+    localMAutoDBInfo.colsMap.put("phoneType", "INTEGER default '-1' ");
     localStringBuilder.append(" phoneType INTEGER default '-1' ");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[6] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(25557);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.h.k
  * JD-Core Version:    0.7.0.1
  */

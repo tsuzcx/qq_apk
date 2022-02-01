@@ -8,23 +8,23 @@ import java.lang.reflect.Method;
 
 public class p
 {
-  private static volatile p cPB = null;
-  private boolean cPC;
+  private static volatile p dga = null;
+  private boolean canWrite;
   private Context context;
   
   private p(Context paramContext)
   {
     AppMethodBeat.i(87604);
     this.context = null;
-    this.cPC = false;
+    this.canWrite = false;
     this.context = paramContext.getApplicationContext();
-    this.cPC = s.checkPermission(this.context, "android.permission.WRITE_SETTINGS");
+    this.canWrite = s.checkPermission(this.context, "android.permission.WRITE_SETTINGS");
     if (Build.VERSION.SDK_INT >= 23) {
       try
       {
         paramContext = Settings.System.class.getDeclaredMethod("canWrite", new Class[] { Context.class });
         paramContext.setAccessible(true);
-        this.cPC = ((Boolean)paramContext.invoke(null, new Object[] { this.context })).booleanValue();
+        this.canWrite = ((Boolean)paramContext.invoke(null, new Object[] { this.context })).booleanValue();
         AppMethodBeat.o(87604);
         return;
       }
@@ -33,16 +33,16 @@ public class p
     AppMethodBeat.o(87604);
   }
   
-  public static p aX(Context paramContext)
+  public static p br(Context paramContext)
   {
     AppMethodBeat.i(87605);
-    if (cPB == null) {}
+    if (dga == null) {}
     try
     {
-      if (cPB == null) {
-        cPB = new p(paramContext);
+      if (dga == null) {
+        dga = new p(paramContext);
       }
-      paramContext = cPB;
+      paramContext = dga;
       AppMethodBeat.o(87605);
       return paramContext;
     }
@@ -52,10 +52,10 @@ public class p
     }
   }
   
-  public final boolean K(String paramString1, String paramString2)
+  public final boolean N(String paramString1, String paramString2)
   {
     AppMethodBeat.i(87603);
-    if (this.cPC) {
+    if (this.canWrite) {
       try
       {
         boolean bool = Settings.System.putString(this.context.getContentResolver(), paramString1, paramString2);
@@ -70,7 +70,7 @@ public class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.b.a.a.p
  * JD-Core Version:    0.7.0.1
  */

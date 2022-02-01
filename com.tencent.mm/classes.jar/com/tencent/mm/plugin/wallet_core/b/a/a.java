@@ -6,9 +6,9 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
 import com.tencent.mm.plugin.wallet_core.model.u;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.wallet_core.c.z;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
@@ -18,98 +18,98 @@ import org.json.JSONObject;
 public final class a
   extends m
 {
-  public boolean CZQ;
-  private Map<String, String> CZR;
-  public u Dgg;
+  private Map<String, String> AJV;
+  public boolean HFE;
+  private Map<String, String> HFF;
+  public u HPz;
   public String mReqKey;
   private String token;
-  private Map<String, String> wOp;
   
   public a(Authen paramAuthen, String paramString1, String paramString2)
   {
     AppMethodBeat.i(69882);
     this.mReqKey = null;
     this.token = null;
-    this.wOp = new HashMap();
-    this.CZR = new HashMap();
-    setPayInfo(paramAuthen.xDC, this.wOp, this.CZR);
-    this.wOp.put("flag", paramAuthen.dEu);
-    this.wOp.put("bank_type", paramAuthen.dlT);
-    this.wOp.put("mobile_area", paramAuthen.DlK);
-    this.wOp.put("session_id", paramString2);
-    if (!bu.isNullOrNil(paramAuthen.Dlv)) {
-      this.wOp.put("passwd", paramAuthen.Dlv);
+    this.AJV = new HashMap();
+    this.HFF = new HashMap();
+    setPayInfo(paramAuthen.BDB, this.AJV, this.HFF);
+    this.AJV.put("flag", paramAuthen.cSx);
+    this.AJV.put("bank_type", paramAuthen.dDj);
+    this.AJV.put("mobile_area", paramAuthen.HVd);
+    this.AJV.put("session_id", paramString2);
+    if (!Util.isNullOrNil(paramAuthen.HUO)) {
+      this.AJV.put("passwd", paramAuthen.HUO);
     }
-    if (!bu.isNullOrNil(paramAuthen.token)) {
-      this.wOp.put("token", paramAuthen.token);
+    if (!Util.isNullOrNil(paramAuthen.token)) {
+      this.AJV.put("token", paramAuthen.token);
     }
-    if (!bu.isNullOrNil(paramAuthen.CWS))
+    if (!Util.isNullOrNil(paramAuthen.HCy))
     {
-      g.ajS();
-      paramString2 = new p(bu.a((Integer)g.ajR().ajA().get(9, null), 0));
-      this.wOp.put("import_code", paramAuthen.CWS);
-      this.wOp.put("qqid", paramString2.toString());
-      if (paramAuthen.Dlx > 0) {
-        this.wOp.put("cre_type", paramAuthen.Dlx);
+      g.aAi();
+      paramString2 = new p(Util.nullAs((Integer)g.aAh().azQ().get(9, null), 0));
+      this.AJV.put("import_code", paramAuthen.HCy);
+      this.AJV.put("qqid", paramString2.toString());
+      if (paramAuthen.HUQ > 0) {
+        this.AJV.put("cre_type", paramAuthen.HUQ);
       }
-      this.wOp.put("bind_serailno", paramAuthen.wRt);
+      this.AJV.put("bind_serailno", paramAuthen.ANo);
     }
-    if (!bu.isNullOrNil(paramAuthen.DlC))
+    if (!Util.isNullOrNil(paramAuthen.HUV))
     {
-      this.wOp.put("first_name", paramAuthen.DlC);
-      this.wOp.put("last_name", paramAuthen.DlD);
-      this.wOp.put("country", paramAuthen.country);
-      this.wOp.put("area", paramAuthen.eRf);
-      this.wOp.put("city", paramAuthen.eRg);
-      this.wOp.put("address", paramAuthen.hZQ);
-      this.wOp.put("phone_number", paramAuthen.uVu);
-      this.wOp.put("zip_code", paramAuthen.juG);
-      this.wOp.put("email", paramAuthen.eQY);
-      this.wOp.put("language", ad.fom());
+      this.AJV.put("first_name", paramAuthen.HUV);
+      this.AJV.put("last_name", paramAuthen.HUW);
+      this.AJV.put("country", paramAuthen.country);
+      this.AJV.put("area", paramAuthen.fuJ);
+      this.AJV.put("city", paramAuthen.fuK);
+      this.AJV.put("address", paramAuthen.iUO);
+      this.AJV.put("phone_number", paramAuthen.ynV);
+      this.AJV.put("zip_code", paramAuthen.ksV);
+      this.AJV.put("email", paramAuthen.fuD);
+      this.AJV.put("language", LocaleUtil.getApplicationLanguage());
     }
-    if (!bu.isNullOrNil(paramAuthen.DkG)) {
-      this.wOp.put("true_name", paramAuthen.DkG);
+    if (!Util.isNullOrNil(paramAuthen.HTZ)) {
+      this.AJV.put("true_name", paramAuthen.HTZ);
     }
-    if (!bu.isNullOrNil(paramAuthen.Dlw)) {
-      this.wOp.put("identify_card", paramAuthen.Dlw);
+    if (!Util.isNullOrNil(paramAuthen.HUP)) {
+      this.AJV.put("identify_card", paramAuthen.HUP);
     }
-    if (paramAuthen.Dlx > 0) {
-      this.wOp.put("cre_type", paramAuthen.Dlx);
+    if (paramAuthen.HUQ > 0) {
+      this.AJV.put("cre_type", paramAuthen.HUQ);
     }
-    if (!bu.isNullOrNil(paramAuthen.DgJ)) {
-      this.wOp.put("mobile_no", paramAuthen.DgJ);
+    if (!Util.isNullOrNil(paramAuthen.HQc)) {
+      this.AJV.put("mobile_no", paramAuthen.HQc);
     }
-    this.wOp.put("bank_card_id", paramAuthen.Dly);
-    if (!bu.isNullOrNil(paramAuthen.Dlz)) {
-      this.wOp.put("cvv2", paramAuthen.Dlz);
+    this.AJV.put("bank_card_id", paramAuthen.HUR);
+    if (!Util.isNullOrNil(paramAuthen.HUS)) {
+      this.AJV.put("cvv2", paramAuthen.HUS);
     }
-    if (!bu.isNullOrNil(paramAuthen.DlA)) {
-      this.wOp.put("valid_thru", paramAuthen.DlA);
+    if (!Util.isNullOrNil(paramAuthen.HUT)) {
+      this.AJV.put("valid_thru", paramAuthen.HUT);
     }
-    if ((paramAuthen.dEu == 1) || (paramAuthen.dEu == 2))
+    if ((paramAuthen.cSx == 1) || (paramAuthen.cSx == 2))
     {
-      this.wOp.put("creid_renewal", String.valueOf(paramAuthen.DkQ));
-      this.wOp.put("birth_date", paramAuthen.DkV);
-      this.wOp.put("cre_expire_date", paramAuthen.DkR);
+      this.AJV.put("creid_renewal", String.valueOf(paramAuthen.HUj));
+      this.AJV.put("birth_date", paramAuthen.HUo);
+      this.AJV.put("cre_expire_date", paramAuthen.HUk);
     }
-    if (((paramAuthen.dEu == 2) || (paramAuthen.dEu == 5)) && (paramAuthen.DlL == 1) && (!bu.isNullOrNil(paramAuthen.DgT)))
+    if (((paramAuthen.cSx == 2) || (paramAuthen.cSx == 5)) && (paramAuthen.HVe == 1) && (!Util.isNullOrNil(paramAuthen.HQm)))
     {
-      this.wOp.put("verify_user_token", "1");
-      this.wOp.put("usertoken", paramAuthen.DgT);
+      this.AJV.put("verify_user_token", "1");
+      this.AJV.put("usertoken", paramAuthen.HQm);
     }
-    if ((!bu.isNullOrNil(paramAuthen.DlM)) && (paramAuthen.DlM.isEmpty())) {
-      this.wOp.put("checkpayjsapi_token", paramAuthen.DlM);
+    if ((!Util.isNullOrNil(paramAuthen.HVf)) && (paramAuthen.HVf.isEmpty())) {
+      this.AJV.put("checkpayjsapi_token", paramAuthen.HVf);
     }
-    if (z.fVT())
+    if (z.hhq())
     {
-      this.CZR.put("uuid_for_bindcard", z.getBindCardUuid());
-      this.CZR.put("bindcard_scene", z.fVU());
+      this.HFF.put("uuid_for_bindcard", z.getBindCardUuid());
+      this.HFF.put("bindcard_scene", z.hhr());
     }
-    if (!bu.isNullOrNil(paramString1)) {
-      this.wOp.put("has_underage_alert", paramString1);
+    if (!Util.isNullOrNil(paramString1)) {
+      this.AJV.put("has_underage_alert", paramString1);
     }
-    setRequestData(this.wOp);
-    setWXRequestData(this.CZR);
+    setRequestData(this.AJV);
+    setWXRequestData(this.HFF);
     AppMethodBeat.o(69882);
   }
   
@@ -140,7 +140,7 @@ public final class a
     {
       this.mReqKey = paramJSONObject.optString("req_key");
       this.token = paramJSONObject.optString("token");
-      this.Dgg = u.bm(paramJSONObject);
+      this.HPz = u.bM(paramJSONObject);
     }
     AppMethodBeat.o(69884);
   }
@@ -149,16 +149,16 @@ public final class a
   {
     AppMethodBeat.i(69883);
     super.resend();
-    this.wOp.put("is_repeat_send", "1");
-    setRequestData(this.wOp);
-    this.CZQ = true;
+    this.AJV.put("is_repeat_send", "1");
+    setRequestData(this.AJV);
+    this.HFE = true;
     AppMethodBeat.o(69883);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.b.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,51 +1,24 @@
 package kotlinx.coroutines;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.f;
-import d.d.f.c;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/Unconfined;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "isDispatchNeeded", "", "toString", "", "kotlinx-coroutines-core"})
-public final class cm
-  extends ac
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/SupervisorJobImpl;", "Lkotlinx/coroutines/JobImpl;", "parent", "Lkotlinx/coroutines/Job;", "(Lkotlinx/coroutines/Job;)V", "childCancelled", "", "cause", "", "kotlinx-coroutines-core"})
+final class cm
+  extends bx
 {
-  public static final cm Ogq;
-  
-  static
+  public cm(bu parambu)
   {
-    AppMethodBeat.i(118172);
-    Ogq = new cm();
-    AppMethodBeat.o(118172);
+    super(null);
   }
   
-  public final void a(f paramf, Runnable paramRunnable)
-  {
-    AppMethodBeat.i(118171);
-    paramf = (co)paramf.get((f.c)co.Ogs);
-    if (paramf != null)
-    {
-      paramf.Ogr = true;
-      AppMethodBeat.o(118171);
-      return;
-    }
-    paramf = (Throwable)new UnsupportedOperationException("Dispatchers.Unconfined.dispatch function can only be used by the yield function. If you wrap Unconfined dispatcher in your code, make sure you properly delegate isDispatchNeeded and dispatch calls.");
-    AppMethodBeat.o(118171);
-    throw paramf;
-  }
-  
-  public final boolean gzD()
+  public final boolean B(Throwable paramThrowable)
   {
     return false;
-  }
-  
-  public final String toString()
-  {
-    return "Unconfined";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.cm
  * JD-Core Version:    0.7.0.1
  */

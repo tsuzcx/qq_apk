@@ -1,15 +1,15 @@
 package com.tencent.mm.platformtools;
 
 import android.app.Activity;
-import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.i;
 import java.util.HashSet;
 import java.util.Set;
 
 public abstract class c
-  implements f
+  implements i
 {
   public Activity activity;
-  Set<Integer> iPP = new HashSet();
+  Set<Integer> jMC = new HashSet();
   
   public c(Activity paramActivity)
   {
@@ -32,8 +32,10 @@ public abstract class c
       return c(paramae);
     case 4: 
       return d(paramae);
+    case 5: 
+      return e(paramae);
     }
-    return e(paramae);
+    return f(paramae);
   }
   
   public abstract boolean b(ae paramae);
@@ -43,10 +45,12 @@ public abstract class c
   public abstract boolean d(ae paramae);
   
   public abstract boolean e(ae paramae);
+  
+  public abstract boolean f(ae paramae);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.platformtools.c
  * JD-Core Version:    0.7.0.1
  */

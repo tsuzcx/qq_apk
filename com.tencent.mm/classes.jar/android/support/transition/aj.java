@@ -1,29 +1,34 @@
 package android.support.transition;
 
+import android.graphics.Matrix;
 import android.view.View;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-final class aj
+class aj
   extends ai
 {
-  private static Method DO;
-  private static boolean DP;
+  private static Method DR;
+  private static boolean DS;
+  private static Method DT;
+  private static boolean DU;
+  private static Method DV;
+  private static boolean DW;
   
-  public final void b(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void a(View paramView, Matrix paramMatrix)
   {
-    if (!DP) {}
+    if (!DS) {}
     try
     {
-      Method localMethod = View.class.getDeclaredMethod("setLeftTopRightBottom", new Class[] { Integer.TYPE, Integer.TYPE, Integer.TYPE, Integer.TYPE });
-      DO = localMethod;
+      Method localMethod = View.class.getDeclaredMethod("transformMatrixToGlobal", new Class[] { Matrix.class });
+      DR = localMethod;
       localMethod.setAccessible(true);
-      label54:
-      DP = true;
-      if (DO != null) {}
+      label32:
+      DS = true;
+      if (DR != null) {}
       try
       {
-        DO.invoke(paramView, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+        DR.invoke(paramView, new Object[] { paramMatrix });
         return;
       }
       catch (InvocationTargetException paramView)
@@ -34,13 +39,69 @@ final class aj
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      break label54;
+      break label32;
+    }
+  }
+  
+  public final void b(View paramView, Matrix paramMatrix)
+  {
+    if (!DU) {}
+    try
+    {
+      Method localMethod = View.class.getDeclaredMethod("transformMatrixToLocal", new Class[] { Matrix.class });
+      DT = localMethod;
+      localMethod.setAccessible(true);
+      label32:
+      DU = true;
+      if (DT != null) {}
+      try
+      {
+        DT.invoke(paramView, new Object[] { paramMatrix });
+        return;
+      }
+      catch (InvocationTargetException paramView)
+      {
+        throw new RuntimeException(paramView.getCause());
+      }
+      catch (IllegalAccessException paramView) {}
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label32;
+    }
+  }
+  
+  public final void c(View paramView, Matrix paramMatrix)
+  {
+    if (!DW) {}
+    try
+    {
+      Method localMethod = View.class.getDeclaredMethod("setAnimationMatrix", new Class[] { Matrix.class });
+      DV = localMethod;
+      localMethod.setAccessible(true);
+      label32:
+      DW = true;
+      if (DV != null) {}
+      try
+      {
+        DV.invoke(paramView, new Object[] { paramMatrix });
+        return;
+      }
+      catch (IllegalAccessException paramView)
+      {
+        throw new RuntimeException(paramView.getCause());
+      }
+      catch (InvocationTargetException paramView) {}
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label32;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.transition.aj
  * JD-Core Version:    0.7.0.1
  */

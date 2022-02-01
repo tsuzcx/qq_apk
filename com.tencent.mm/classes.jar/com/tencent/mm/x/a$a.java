@@ -1,10 +1,10 @@
 package com.tencent.mm.x;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/glrender/BitmapFilter$FilterInfo;", "", "type", "", "name", "", "fileName", "(ILjava/lang/String;Ljava/lang/String;)V", "getFileName", "()Ljava/lang/String;", "getName", "getType", "()I", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "plugin-photoedit-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/glrender/BitmapFilter$FilterInfo;", "", "type", "", "name", "", "fileName", "(ILjava/lang/String;Ljava/lang/String;)V", "getFileName", "()Ljava/lang/String;", "getName", "getType", "()I", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "toString", "plugin-photoedit-sdk_release"})
 public final class a$a
 {
   final String fileName;
@@ -28,7 +28,7 @@ public final class a$a
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((this.type != paramObject.type) || (!p.i(this.name, paramObject.name)) || (!p.i(this.fileName, paramObject.fileName))) {}
+        if ((this.type != paramObject.type) || (!p.j(this.name, paramObject.name)) || (!p.j(this.fileName, paramObject.fileName))) {}
       }
     }
     else

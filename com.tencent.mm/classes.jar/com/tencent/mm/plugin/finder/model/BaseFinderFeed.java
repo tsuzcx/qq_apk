@@ -1,44 +1,58 @@
 package com.tencent.mm.plugin.finder.model;
 
-import com.tencent.mm.ac.c;
+import com.tencent.mm.ac.d;
 import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.finder.api.g;
 import com.tencent.mm.plugin.finder.feed.model.internal.i;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
 import com.tencent.mm.plugin.finder.storage.FinderItem.b;
-import com.tencent.mm.plugin.finder.storage.h;
+import com.tencent.mm.plugin.finder.storage.k;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
 import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.bvz;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.protocal.protobuf.FinderObjectDesc;
+import com.tencent.mm.protocal.protobuf.azk;
+import com.tencent.mm.protocal.protobuf.azr;
+import com.tencent.mm.protocal.protobuf.bcw;
+import com.tencent.mm.protocal.protobuf.cjl;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "attachFavInfo", "Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "getAttachFavInfo", "()Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "setAttachFavInfo", "(Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;)V", "commentList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "getCommentList", "()Ljava/util/LinkedList;", "setCommentList", "(Ljava/util/LinkedList;)V", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "setContact", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "doingRelReq", "", "getDoingRelReq", "()Z", "setDoingRelReq", "(Z)V", "getFeedObject", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFeedObject", "footerWording", "", "getFooterWording", "()Ljava/lang/String;", "setFooterWording", "(Ljava/lang/String;)V", "headerWording", "getHeaderWording", "setHeaderWording", "isContentCollapsed", "setContentCollapsed", "isNeedShowUnFollow", "setNeedShowUnFollow", "likeBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLikeBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLikeBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "msgEventFriendLikeCount", "", "getMsgEventFriendLikeCount", "()I", "setMsgEventFriendLikeCount", "(I)V", "msgEventIncCount", "getMsgEventIncCount", "setMsgEventIncCount", "msgEventLikeList", "", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "getMsgEventLikeList", "()Ljava/util/List;", "setMsgEventLikeList", "(Ljava/util/List;)V", "showCommentEdu", "getShowCommentEdu", "setShowCommentEdu", "showLikeTips", "getShowLikeTips", "setShowLikeTips", "showShareSns", "getShowShareSns", "setShowShareSns", "triggerConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "getTriggerConfig", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "setTriggerConfig", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;)V", "compare", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "equals", "other", "", "getItemId", "", "getItemType", "hashCode", "onStore", "", "printSimpleId", "toString", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/plugin/finder/model/IFeedSessionBuffer;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "attachFavInfo", "Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "getAttachFavInfo", "()Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "setAttachFavInfo", "(Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;)V", "commentList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "getCommentList", "()Ljava/util/LinkedList;", "setCommentList", "(Ljava/util/LinkedList;)V", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "setContact", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "doingRelReq", "", "getDoingRelReq", "()Z", "setDoingRelReq", "(Z)V", "getFeedObject", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "setFeedObject", "footerWording", "", "getFooterWording", "()Ljava/lang/String;", "setFooterWording", "(Ljava/lang/String;)V", "headerWording", "getHeaderWording", "setHeaderWording", "isContentCollapsed", "setContentCollapsed", "isDeepEnjoy", "setDeepEnjoy", "isFinishPostSoon", "setFinishPostSoon", "isHasLongVideoTimeBack", "setHasLongVideoTimeBack", "isNeedShowUnFollow", "setNeedShowUnFollow", "isOriginFeed", "setOriginFeed", "isPreview", "setPreview", "isShowFooterMask", "setShowFooterMask", "isShowGuideTips", "", "()I", "setShowGuideTips", "(I)V", "isShowHistoryTips", "setShowHistoryTips", "likeBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLikeBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLikeBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "markRead", "getMarkRead", "setMarkRead", "msgEventFriendLikeCount", "getMsgEventFriendLikeCount", "setMsgEventFriendLikeCount", "msgEventIncCount", "getMsgEventIncCount", "setMsgEventIncCount", "msgEventLikeList", "", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "getMsgEventLikeList", "()Ljava/util/List;", "setMsgEventLikeList", "(Ljava/util/List;)V", "musicInfo", "Lcom/tencent/mm/protocal/protobuf/FinderMusicInfo;", "getMusicInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderMusicInfo;", "showCommentEdu", "getShowCommentEdu", "setShowCommentEdu", "showLikeTips", "getShowLikeTips", "setShowLikeTips", "showShareSns", "getShowShareSns", "setShowShareSns", "streamDivider", "Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "getStreamDivider", "()Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "setStreamDivider", "(Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;)V", "triggerConfig", "Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "getTriggerConfig", "()Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;", "setTriggerConfig", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem$PosTriggerConfig;)V", "compare", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "equals", "other", "", "getItemId", "", "getItemType", "getSessionBuffer", "hashCode", "onStore", "", "printSimpleId", "toString", "plugin-finder_release"})
 public abstract class BaseFinderFeed
-  implements am
+  implements bo
 {
-  public h attachFavInfo;
-  private LinkedList<n> commentList;
+  public k attachFavInfo;
+  private LinkedList<s> commentList;
   public g contact;
   public boolean doingRelReq;
   public FinderItem feedObject;
   public String footerWording;
   public String headerWording;
   public boolean isContentCollapsed;
+  public boolean isDeepEnjoy;
+  public boolean isFinishPostSoon;
+  public boolean isHasLongVideoTimeBack;
   private boolean isNeedShowUnFollow;
+  public boolean isOriginFeed;
+  public boolean isPreview;
+  private boolean isShowFooterMask;
+  public int isShowGuideTips;
+  private int isShowHistoryTips;
   public b likeBuffer;
+  public boolean markRead;
   public int msgEventFriendLikeCount;
   public int msgEventIncCount;
   public List<? extends FinderCommentInfo> msgEventLikeList;
+  public final azk musicInfo;
   public boolean showCommentEdu;
   public boolean showLikeTips;
   public boolean showShareSns;
+  public bcw streamDivider;
   public FinderItem.b triggerConfig;
   
   public BaseFinderFeed(FinderItem paramFinderItem)
@@ -70,9 +84,21 @@ public abstract class BaseFinderFeed
     this.msgEventLikeList = ((List)localCollection);
     this.triggerConfig = paramFinderItem.parseJsonOfPosTriggerConfig();
     this.likeBuffer = paramFinderItem.getFeedObject().likeBuffer;
+    this.isPreview = paramFinderItem.isPreview();
+    paramFinderItem = paramFinderItem.getFeedObject().objectDesc;
+    if (paramFinderItem != null)
+    {
+      paramFinderItem = paramFinderItem.feedBgmInfo;
+      if (paramFinderItem == null) {}
+    }
+    for (paramFinderItem = paramFinderItem.musicInfo;; paramFinderItem = null)
+    {
+      this.musicInfo = paramFinderItem;
+      return;
+    }
   }
   
-  public final int a(i parami)
+  public int a(i parami)
   {
     p.h(parami, "obj");
     if (!(parami instanceof BaseFinderFeed)) {
@@ -98,24 +124,12 @@ public abstract class BaseFinderFeed
     }
   }
   
-  public final int bZz()
+  public int cxn()
   {
     return this.feedObject.getMediaType();
   }
   
-  public final String cEt()
-  {
-    String str = String.valueOf(lP());
-    int i = Math.min(str.length(), 8);
-    if (str == null) {
-      throw new v("null cannot be cast to non-null type java.lang.String");
-    }
-    str = str.substring(0, i);
-    p.g(str, "(this as java.lang.Strin…ing(startIndex, endIndex)");
-    return str;
-  }
-  
-  public final void cEu()
+  public final void dku()
   {
     this.showLikeTips = false;
     this.showShareSns = false;
@@ -124,17 +138,27 @@ public abstract class BaseFinderFeed
   public boolean equals(Object paramObject)
   {
     if ((paramObject instanceof BaseFinderFeed)) {
-      return lP() == ((BaseFinderFeed)paramObject).lP();
+      return lT() == ((BaseFinderFeed)paramObject).lT();
     }
     return super.equals(paramObject);
   }
   
-  public int hashCode()
+  public final String getSessionBuffer()
   {
-    return (int)lP();
+    String str2 = this.feedObject.getFeedObject().sessionBuffer;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    return str1;
   }
   
-  public final long lP()
+  public int hashCode()
+  {
+    return (int)lT();
+  }
+  
+  public long lT()
   {
     if (this.feedObject.field_id == 0L) {
       return this.feedObject.getLocalId();
@@ -154,8 +178,8 @@ public abstract class BaseFinderFeed
     {
       int i = this.feedObject.getCreateTime();
       if (this.feedObject.getMediaList().size() > 0) {}
-      for (String str2 = ((bvz)this.feedObject.getMediaList().get(0)).url;; str2 = "") {
-        return "id=[" + this.feedObject.field_id + ',' + c.rp(this.feedObject.field_id) + "] type=" + this.feedObject.getMediaType() + " localId=" + this.feedObject.getLocalId() + " time:" + Integer.valueOf(i) + " url:" + str2 + ' ' + str1;
+      for (String str2 = ((cjl)this.feedObject.getMediaList().get(0)).url;; str2 = "") {
+        return "id=[" + this.feedObject.field_id + ',' + d.zs(this.feedObject.field_id) + "] type=" + this.feedObject.getMediaType() + " localId=" + this.feedObject.getLocalId() + " time:" + Integer.valueOf(i) + " url:" + str2 + ' ' + str1;
       }
       str1 = "";
     }
@@ -163,7 +187,7 @@ public abstract class BaseFinderFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.BaseFinderFeed
  * JD-Core Version:    0.7.0.1
  */

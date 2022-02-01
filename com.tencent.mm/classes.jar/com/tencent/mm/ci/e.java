@@ -2,7 +2,7 @@ package com.tencent.mm.ci;
 
 public final class e
 {
-  public static byte[] cI(byte[] paramArrayOfByte)
+  public static byte[] cL(byte[] paramArrayOfByte)
   {
     int i = 0;
     while (i < paramArrayOfByte.length)
@@ -15,7 +15,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ci.e
  * JD-Core Version:    0.7.0.1
  */

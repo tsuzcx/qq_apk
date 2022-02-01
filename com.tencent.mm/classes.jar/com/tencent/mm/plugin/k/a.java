@@ -11,7 +11,7 @@ public abstract class a
   
   public abstract boolean dispatchTouchEvent(MotionEvent paramMotionEvent);
   
-  public abstract boolean djW();
+  public abstract boolean edH();
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
@@ -27,7 +27,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.k.a
  * JD-Core Version:    0.7.0.1
  */

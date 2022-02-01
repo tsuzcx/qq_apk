@@ -56,7 +56,7 @@ public abstract class ComputableLiveData<T>
   
   public ComputableLiveData()
   {
-    this(a.R());
+    this(a.U());
   }
   
   public ComputableLiveData(Executor paramExecutor)
@@ -80,19 +80,19 @@ public abstract class ComputableLiveData<T>
   
   public void invalidate()
   {
-    a locala = a.P();
+    a locala = a.S();
     Runnable localRunnable = this.cm;
     if (locala.isMainThread())
     {
       localRunnable.run();
       return;
     }
-    locala.f(localRunnable);
+    locala.postToMainThread(localRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.arch.lifecycle.ComputableLiveData
  * JD-Core Version:    0.7.0.1
  */

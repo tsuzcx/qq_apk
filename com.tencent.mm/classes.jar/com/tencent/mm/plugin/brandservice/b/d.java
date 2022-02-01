@@ -11,59 +11,59 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.a;
 import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.av.q;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.acp;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.protocal.protobuf.aer;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
 import java.util.List;
 
 public final class d
 {
-  private static aq hAA;
+  private static MMHandler iuH;
   
   static
   {
     AppMethodBeat.i(5566);
-    hAA = new aq(Looper.getMainLooper());
+    iuH = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(5566);
   }
   
-  public static com.tencent.mm.api.c a(com.tencent.mm.api.c paramc, acp paramacp)
+  public static com.tencent.mm.api.c a(com.tencent.mm.api.c paramc, aer paramaer)
   {
-    if (paramacp != null)
+    if (paramaer != null)
     {
-      paramc.field_brandFlag = paramacp.jgj;
-      paramc.field_brandIconURL = paramacp.jgm;
-      paramc.field_brandInfo = paramacp.jgl;
-      paramc.field_extInfo = paramacp.jgk;
+      paramc.field_brandFlag = paramaer.kem;
+      paramc.field_brandIconURL = paramaer.kep;
+      paramc.field_brandInfo = paramaer.keo;
+      paramc.field_extInfo = paramaer.ken;
     }
     return paramc;
   }
   
-  public static void a(ImageView paramImageView, an paraman, String paramString, boolean paramBoolean)
+  public static void a(ImageView paramImageView, as paramas, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(5565);
-    if ((!paramBoolean) && (com.tencent.mm.contact.c.lO(paraman.field_type)))
+    if ((!paramBoolean) && (com.tencent.mm.contact.c.oR(paramas.field_type)))
     {
-      a.b.d(paramImageView, paraman.field_username);
+      a.b.d(paramImageView, paramas.field_username);
       AppMethodBeat.o(5565);
       return;
     }
-    paraman = new c.a();
-    paraman.igv = 2131231342;
-    paraman.igj = true;
-    paraman.hhW = true;
-    q.aJb().a(paramString, paramImageView, paraman.aJu());
+    paramas = new c.a();
+    paramas.jbq = 2131231405;
+    paramas.jbe = true;
+    paramas.iaT = true;
+    q.bcV().a(paramString, paramImageView, paramas.bdv());
     AppMethodBeat.o(5565);
   }
   
   public static Spanned c(Context paramContext, String paramString, List<String> paramList)
   {
     AppMethodBeat.i(5563);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(5563);
       return null;
@@ -75,13 +75,13 @@ public final class d
       return paramContext;
     }
     paramContext = com.tencent.mm.plugin.fts.a.f.a(e.a(paramString, paramList));
-    if ((paramContext.tFv instanceof Spannable))
+    if ((paramContext.wWu instanceof Spannable))
     {
-      paramContext = (Spannable)paramContext.tFv;
+      paramContext = (Spannable)paramContext.wWu;
       AppMethodBeat.o(5563);
       return paramContext;
     }
-    paramContext = new SpannableString(paramContext.tFv);
+    paramContext = new SpannableString(paramContext.wWu);
     AppMethodBeat.o(5563);
     return paramContext;
   }
@@ -108,14 +108,14 @@ public final class d
   
   public static class a
   {
-    public ImageView fQl;
+    public ImageView gvv;
     public String iconUrl;
     public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.b.d
  * JD-Core Version:    0.7.0.1
  */

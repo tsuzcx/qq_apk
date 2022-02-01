@@ -11,9 +11,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class SearchBarUI
   extends BaseActivity
-  implements ag.a
+  implements ai.a
 {
-  ag JAd;
+  ai OKE;
   
   public void onClickBackBtn(View paramView)
   {
@@ -23,7 +23,7 @@ public abstract class SearchBarUI
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    paramBundle = BaseActivity.c.Jov;
+    paramBundle = BaseActivity.c.Oyp;
     a("", new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -31,10 +31,10 @@ public abstract class SearchBarUI
         AppMethodBeat.i(159098);
         paramAnonymousMenuItem = SearchBarUI.this;
         paramAnonymousMenuItem.removeAllOptionMenu();
-        paramAnonymousMenuItem.JAd = new ag(paramAnonymousMenuItem);
-        paramAnonymousMenuItem.JAd.setSearchViewListener(paramAnonymousMenuItem);
-        paramAnonymousMenuItem.JAd.setHint(paramAnonymousMenuItem.getResources().getString(2131764545));
-        paramAnonymousMenuItem.getSupportActionBar().setCustomView(paramAnonymousMenuItem.JAd);
+        paramAnonymousMenuItem.OKE = new ai(paramAnonymousMenuItem);
+        paramAnonymousMenuItem.OKE.setSearchViewListener(paramAnonymousMenuItem);
+        paramAnonymousMenuItem.OKE.setHint(paramAnonymousMenuItem.getResources().getString(2131766890));
+        paramAnonymousMenuItem.getSupportActionBar().setCustomView(paramAnonymousMenuItem.OKE);
         SearchBarUI.showVKB(paramAnonymousMenuItem);
         AppMethodBeat.o(159098);
         return false;
@@ -60,7 +60,7 @@ public abstract class SearchBarUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.SearchBarUI
  * JD-Core Version:    0.7.0.1
  */

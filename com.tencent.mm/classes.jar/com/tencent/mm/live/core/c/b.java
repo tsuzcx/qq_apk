@@ -1,145 +1,54 @@
 package com.tencent.mm.live.core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.g.b.a.fq;
+import com.tencent.mm.live.core.core.e.a;
+import com.tencent.mm.live.core.core.e.f;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/report/LiveVisitorPerformanceIDKeyStat;", "", "()V", "ID", "", "TAG", "", "markVisitorGaussAnchorAvatarCost", "", "cost", "markVisitorLinkVideoPreviewHeight", "height", "", "markVisitorLinkVideoPreviewWidth", "width", "markVisitorLinkVideoRendererCostPerFrame", "markVisitorLinkVideoRendererFps", "fpsValue", "markVisitorLinkVideoRendererFpsHigh", "markVisitorLinkVideoRendererFpsLow", "markVisitorLinkVideoRendererFpsMiddle", "markVisitorMaxiViewCost", "markVisitorMiniViewCost", "markVisitorRenderAnchorCostPerFrame", "markVisitorRendererAnchorFps", "markVisitorRendererAnchorFpsHigh", "markVisitorRendererAnchorFpsLow", "markVisitorRendererAnchorFpsMiddle", "plugin-core_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/report/LiveKVReporter;", "", "()V", "liveId64", "", "scene", "", "visitorMode", "reportDecodeErr", "", "moduleName", "", "eventCode", "eventMsg", "setup", "liveId", "plugin-core_release"})
 public final class b
 {
-  public static final b gOE;
+  private static int hEH;
+  private static long hEI;
+  public static final b hEJ;
+  private static int scene;
   
   static
   {
-    AppMethodBeat.i(197040);
-    gOE = new b();
-    AppMethodBeat.o(197040);
+    AppMethodBeat.i(196714);
+    hEJ = new b();
+    Object localObject = e.f.hxS;
+    scene = e.f.aCO();
+    localObject = e.a.hxc;
+    hEH = e.a.aCe();
+    AppMethodBeat.o(196714);
   }
   
-  public static final void amS()
+  public static void d(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(197025);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorRendererAnchorFpsLow");
-    g.yxI.n(1383L, 0L, 1L);
-    AppMethodBeat.o(197025);
+    scene = paramInt1;
+    hEH = paramInt2;
+    hEI = paramLong;
   }
   
-  public static final void amT()
+  public static void h(String paramString1, int paramInt, String paramString2)
   {
-    AppMethodBeat.i(197026);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorRendererAnchorFpsMiddle");
-    g.yxI.n(1383L, 1L, 1L);
-    AppMethodBeat.o(197026);
-  }
-  
-  public static final void amU()
-  {
-    AppMethodBeat.i(197027);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorRendererAnchorFpsHigh");
-    g.yxI.n(1383L, 2L, 1L);
-    AppMethodBeat.o(197027);
-  }
-  
-  public static final void amV()
-  {
-    AppMethodBeat.i(197037);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorLinkVideoRendererFpsLow");
-    g.yxI.n(1383L, 30L, 1L);
-    AppMethodBeat.o(197037);
-  }
-  
-  public static final void amW()
-  {
-    AppMethodBeat.i(197038);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorLinkVideoRendererFpsMiddle");
-    g.yxI.n(1383L, 31L, 1L);
-    AppMethodBeat.o(197038);
-  }
-  
-  public static final void amX()
-  {
-    AppMethodBeat.i(197039);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorLinkVideoRendererFpsHigh");
-    g.yxI.n(1383L, 32L, 1L);
-    AppMethodBeat.o(197039);
-  }
-  
-  public static final void nn(int paramInt)
-  {
-    AppMethodBeat.i(197028);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorRendererAnchorFps value is ".concat(String.valueOf(paramInt)));
-    g.yxI.c(1383, 3, 4, paramInt, false);
-    AppMethodBeat.o(197028);
-  }
-  
-  public static final void no(int paramInt)
-  {
-    AppMethodBeat.i(197031);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorLinkVideoPreviewWidth is ".concat(String.valueOf(paramInt)));
-    g.yxI.c(1383, 12, 13, paramInt, false);
-    AppMethodBeat.o(197031);
-  }
-  
-  public static final void np(int paramInt)
-  {
-    AppMethodBeat.i(197032);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorLinkVideoPreviewHeight is ".concat(String.valueOf(paramInt)));
-    g.yxI.c(1383, 15, 16, paramInt, false);
-    AppMethodBeat.o(197032);
-  }
-  
-  public static final void nq(int paramInt)
-  {
-    AppMethodBeat.i(197033);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorMaxiViewCost is ".concat(String.valueOf(paramInt)));
-    g.yxI.c(1383, 18, 19, paramInt, false);
-    AppMethodBeat.o(197033);
-  }
-  
-  public static final void nr(int paramInt)
-  {
-    AppMethodBeat.i(197034);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorMiniViewCost is ".concat(String.valueOf(paramInt)));
-    g.yxI.c(1383, 21, 22, paramInt, false);
-    AppMethodBeat.o(197034);
-  }
-  
-  public static final void ns(int paramInt)
-  {
-    AppMethodBeat.i(197035);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorLinkVideoRendererCostPerFrame is ".concat(String.valueOf(paramInt)));
-    g.yxI.c(1383, 24, 25, paramInt, false);
-    AppMethodBeat.o(197035);
-  }
-  
-  public static final void nt(int paramInt)
-  {
-    AppMethodBeat.i(197036);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorLinkVideoRendererFps is ".concat(String.valueOf(paramInt)));
-    g.yxI.c(1383, 27, 28, paramInt, false);
-    AppMethodBeat.o(197036);
-  }
-  
-  public static final void rs(long paramLong)
-  {
-    AppMethodBeat.i(197029);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorRenderAnchorCostPerFrame is ".concat(String.valueOf(paramLong)));
-    g.yxI.c(1383, 6, 7, (int)paramLong, false);
-    AppMethodBeat.o(197029);
-  }
-  
-  public static final void rt(long paramLong)
-  {
-    AppMethodBeat.i(197030);
-    ae.i("MicroMsg.LiveVisitorPerformanceIDKeyStat", "markVisitorGaussAnchorAvatarCost is ".concat(String.valueOf(paramLong)));
-    g.yxI.c(1383, 9, 10, (int)paramLong, false);
-    AppMethodBeat.o(197030);
+    AppMethodBeat.i(196713);
+    fq localfq = new fq();
+    localfq.sD(paramString1);
+    localfq.pg(paramInt);
+    localfq.sE(paramString2);
+    localfq.pi(localfq.agC());
+    localfq.pj(hEH);
+    localfq.ph(hEI);
+    localfq.bfK();
+    AppMethodBeat.o(196713);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.c.b
  * JD-Core Version:    0.7.0.1
  */

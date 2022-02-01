@@ -10,30 +10,30 @@ import org.xmlpull.v1.XmlPullParser;
 public class ArcMotion
   extends PathMotion
 {
-  private static final float zC = (float)Math.tan(Math.toRadians(35.0D));
-  private float zD = 0.0F;
-  private float zE = 0.0F;
-  private float zF = 70.0F;
-  private float zG = 0.0F;
-  private float zH = 0.0F;
-  private float zI = zC;
+  private static final float zI = (float)Math.tan(Math.toRadians(35.0D));
+  private float zJ = 0.0F;
+  private float zK = 0.0F;
+  private float zL = 70.0F;
+  private float zM = 0.0F;
+  private float zN = 0.0F;
+  private float zO = zI;
   
   public ArcMotion() {}
   
   public ArcMotion(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.BS);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, p.BZ);
     paramAttributeSet = (XmlPullParser)paramAttributeSet;
     float f = g.a(paramContext, paramAttributeSet, "minimumVerticalAngle", 1, 0.0F);
-    this.zE = f;
-    this.zH = w(f);
+    this.zK = f;
+    this.zN = w(f);
     f = g.a(paramContext, paramAttributeSet, "minimumHorizontalAngle", 0, 0.0F);
-    this.zD = f;
-    this.zG = w(f);
+    this.zJ = f;
+    this.zM = w(f);
     f = g.a(paramContext, paramAttributeSet, "maximumAngle", 2, 70.0F);
-    this.zF = f;
-    this.zI = w(f);
+    this.zL = f;
+    this.zO = w(f);
     paramContext.recycle();
   }
   
@@ -70,11 +70,11 @@ public class ArcMotion
       }
       f2 = paramFloat4 + f1;
       f1 = paramFloat3;
-      f3 = this.zH * f4 * this.zH;
+      f3 = this.zN * f4 * this.zN;
       f7 = f5 - f1;
       float f8 = f6 - f2;
       f7 = f8 * f8 + f7 * f7;
-      f4 = this.zI * f4 * this.zI;
+      f4 = this.zO * f4 * this.zO;
       if (f7 >= f3) {
         break label328;
       }
@@ -105,7 +105,7 @@ public class ArcMotion
         }
         for (f2 = paramFloat2;; f2 = paramFloat4)
         {
-          f3 = this.zG * f4 * this.zG;
+          f3 = this.zM * f4 * this.zM;
           break;
           f1 = paramFloat3 - f1;
         }

@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.l;
 import com.tencent.mm.plugin.fts.a.c.a;
 import com.tencent.mm.plugin.fts.a.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.wcdb.database.SQLiteStatement;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,15 +23,15 @@ import java.util.regex.Pattern;
 public final class e
   extends com.tencent.mm.plugin.fts.a.b
 {
-  private com.tencent.mm.plugin.fts.a.m gtT;
-  com.tencent.mm.plugin.fts.c.e tIo;
-  HashSet<String> tIp;
+  private com.tencent.mm.plugin.fts.a.m hgI;
+  com.tencent.mm.plugin.fts.c.e wZn;
+  HashSet<String> wZo;
   
   public final com.tencent.mm.plugin.fts.a.a.a a(j paramj)
   {
     AppMethodBeat.i(52758);
     paramj = new b(paramj);
-    paramj = this.gtT.a(-65536, paramj);
+    paramj = this.hgI.a(-65536, paramj);
     AppMethodBeat.o(52758);
     return paramj;
   }
@@ -44,27 +44,27 @@ public final class e
     c.a(localc, paramm);
     c.a(localc, paramInt);
     c.a(localc, paramHashMap);
-    this.gtT.a(65626, localc);
+    this.hgI.a(65626, localc);
     AppMethodBeat.o(52761);
   }
   
-  public final boolean agO()
+  public final boolean axa()
   {
     AppMethodBeat.i(52757);
-    if (this.tIp != null) {
-      this.tIp.clear();
+    if (this.wZo != null) {
+      this.wZo.clear();
     }
-    this.tIo = null;
-    this.gtT = null;
+    this.wZn = null;
+    this.hgI = null;
     AppMethodBeat.o(52757);
     return true;
   }
   
-  public final void alB(String paramString)
+  public final void ayF(String paramString)
   {
     AppMethodBeat.i(52759);
-    if (this.tIp.add(paramString)) {
-      this.tIo.alF(paramString);
+    if (this.wZo.add(paramString)) {
+      this.wZn.ayJ(paramString);
     }
     AppMethodBeat.o(52759);
   }
@@ -72,7 +72,7 @@ public final class e
   public final void c(int[] paramArrayOfInt, String paramString)
   {
     AppMethodBeat.i(52760);
-    this.tIo.a(paramArrayOfInt, paramString);
+    this.wZn.a(paramArrayOfInt, paramString);
     AppMethodBeat.o(52760);
   }
   
@@ -84,17 +84,17 @@ public final class e
   public final boolean onCreate()
   {
     AppMethodBeat.i(52756);
-    if (!((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).isFTSContextReady())
+    if (!((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.fts.a.n.class)).isFTSContextReady())
     {
-      ae.i("MicroMsg.FTS.FTS5SearchTopHitsLogic", "Create Fail!");
+      Log.i("MicroMsg.FTS.FTS5SearchTopHitsLogic", "Create Fail!");
       AppMethodBeat.o(52756);
       return false;
     }
-    ae.i("MicroMsg.FTS.FTS5SearchTopHitsLogic", "Create Success!");
-    this.tIp = new HashSet();
-    this.tIo = ((com.tencent.mm.plugin.fts.c.e)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(1));
-    this.gtT = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
-    this.gtT.a(65626, new a((byte)0));
+    Log.i("MicroMsg.FTS.FTS5SearchTopHitsLogic", "Create Success!");
+    this.wZo = new HashSet();
+    this.wZn = ((com.tencent.mm.plugin.fts.c.e)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(1));
+    this.hgI = ((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSTaskDaemon();
+    this.hgI.a(65626, new a((byte)0));
     AppMethodBeat.o(52756);
     return true;
   }
@@ -102,15 +102,15 @@ public final class e
   final class a
     extends com.tencent.mm.plugin.fts.a.a.a
   {
-    int tIq;
-    int tIr;
+    int wZp;
+    int wZq;
     
     private a() {}
     
-    public final String bhC()
+    public final String bCQ()
     {
       AppMethodBeat.i(52752);
-      String str = String.format("{topHitsUpdateCount: %d deleteExpiredCount: %d}", new Object[] { Integer.valueOf(this.tIr), Integer.valueOf(this.tIq) });
+      String str = String.format("{topHitsUpdateCount: %d deleteExpiredCount: %d}", new Object[] { Integer.valueOf(this.wZq), Integer.valueOf(this.wZp) });
       AppMethodBeat.o(52752);
       return str;
     }
@@ -118,18 +118,18 @@ public final class e
     public final boolean execute()
     {
       AppMethodBeat.i(52751);
-      this.tIr = e.this.tIo.cVQ();
+      this.wZq = e.this.wZn.dOZ();
       long l = System.currentTimeMillis();
-      com.tencent.mm.plugin.fts.c.e locale = e.this.tIo;
-      Object localObject = String.format("SELECT docid FROM %s WHERE timestamp < ? OR score = 0;", new Object[] { locale.cVk() });
-      localObject = locale.tDu.rawQuery((String)localObject, new String[] { String.valueOf(l - 5184000000L) });
+      com.tencent.mm.plugin.fts.c.e locale = e.this.wZn;
+      Object localObject = String.format("SELECT docid FROM %s WHERE timestamp < ? OR score = 0;", new Object[] { locale.dOt() });
+      localObject = locale.wUt.rawQuery((String)localObject, new String[] { String.valueOf(l - 5184000000L) });
       LinkedList localLinkedList = new LinkedList();
       while (((Cursor)localObject).moveToNext()) {
         localLinkedList.add(Long.valueOf(((Cursor)localObject).getLong(0)));
       }
       ((Cursor)localObject).close();
-      locale.dV(localLinkedList);
-      this.tIq = localLinkedList.size();
+      locale.eN(localLinkedList);
+      this.wZp = localLinkedList.size();
       AppMethodBeat.o(52751);
       return true;
     }
@@ -151,30 +151,30 @@ public final class e
     public final void a(k paramk)
     {
       AppMethodBeat.i(52753);
-      paramk.tFe = com.tencent.mm.plugin.fts.a.a.h.bq(this.tFP.query, true);
-      ae.i("MicroMsg.FTS.FTS5SearchTopHitsLogic", "MatchQuery %s", new Object[] { paramk.tFe.cVq().replaceAll("​", ",") });
+      paramk.wWd = com.tencent.mm.plugin.fts.a.a.h.bE(this.wWO.query, true);
+      Log.i("MicroMsg.FTS.FTS5SearchTopHitsLogic", "MatchQuery %s", new Object[] { paramk.wWd.dOz().replaceAll("​", ",") });
       Object localObject2 = new HashSet();
-      ((HashSet)localObject2).addAll(this.tFP.tFY);
-      paramk.tGc = new ArrayList();
+      ((HashSet)localObject2).addAll(this.wWO.wWX);
+      paramk.wXb = new ArrayList();
       HashSet localHashSet = new HashSet();
-      Object localObject3 = e.this.tIo;
-      Object localObject5 = paramk.tFe;
-      Object localObject1 = this.tFP.tFV;
-      int i = this.tFP.scene;
-      int j = this.tFP.tFX + this.tFP.tFY.size();
-      Object localObject4 = ((com.tencent.mm.plugin.fts.a.a.h)localObject5).tFC + '%';
-      String str1 = ((com.tencent.mm.plugin.fts.a.a.h)localObject5).cVq();
-      str1 = String.format("AND %s MATCH '%s'", new Object[] { ((com.tencent.mm.plugin.fts.c.e)localObject3).cVl(), str1 });
-      String str2 = "AND type IN " + d.A((int[])localObject1);
+      Object localObject3 = e.this.wZn;
+      Object localObject5 = paramk.wWd;
+      Object localObject1 = this.wWO.wWU;
+      int i = this.wWO.scene;
+      int j = this.wWO.wWW + this.wWO.wWX.size();
+      Object localObject4 = ((com.tencent.mm.plugin.fts.a.a.h)localObject5).wWB + '%';
+      String str1 = ((com.tencent.mm.plugin.fts.a.a.h)localObject5).dOz();
+      str1 = String.format("AND %s MATCH '%s'", new Object[] { ((com.tencent.mm.plugin.fts.c.e)localObject3).dOu(), str1 });
+      String str2 = "AND type IN " + d.C((int[])localObject1);
       if (j > 0) {
         localObject1 = "LIMIT ".concat(String.valueOf(j));
       }
       long l;
       for (;;)
       {
-        l = ((com.tencent.mm.plugin.fts.a.a.h)localObject5).tFG.size();
-        localObject1 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp, content, MMHighlight(%s, %d, type, subtype), query, scene FROM %s, %s WHERE %s %s %s %s %s AND %s.docid = %s.rowid ORDER BY score desc %s;", new Object[] { ((com.tencent.mm.plugin.fts.c.e)localObject3).cVk(), ((com.tencent.mm.plugin.fts.c.e)localObject3).cVl(), Long.valueOf(l), ((com.tencent.mm.plugin.fts.c.e)localObject3).cVl(), ((com.tencent.mm.plugin.fts.c.e)localObject3).cVk(), "query LIKE ?", str1, str2, "AND scene=?", "AND status >= 0 AND score >= 3", ((com.tencent.mm.plugin.fts.c.e)localObject3).cVk(), ((com.tencent.mm.plugin.fts.c.e)localObject3).cVl(), localObject1 });
-        localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject3).tDu.rawQuery((String)localObject1, new String[] { localObject4, String.valueOf(i) });
+        l = ((com.tencent.mm.plugin.fts.a.a.h)localObject5).wWF.size();
+        localObject1 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp, content, MMHighlight(%s, %d, type, subtype), query, scene FROM %s, %s WHERE %s %s %s %s %s AND %s.docid = %s.rowid ORDER BY score desc %s;", new Object[] { ((com.tencent.mm.plugin.fts.c.e)localObject3).dOt(), ((com.tencent.mm.plugin.fts.c.e)localObject3).dOu(), Long.valueOf(l), ((com.tencent.mm.plugin.fts.c.e)localObject3).dOu(), ((com.tencent.mm.plugin.fts.c.e)localObject3).dOt(), "query LIKE ?", str1, str2, "AND scene=?", "AND status >= 0 AND score >= 3", ((com.tencent.mm.plugin.fts.c.e)localObject3).dOt(), ((com.tencent.mm.plugin.fts.c.e)localObject3).dOu(), localObject1 });
+        localObject1 = ((com.tencent.mm.plugin.fts.a.a)localObject3).wUt.rawQuery((String)localObject1, new String[] { localObject4, String.valueOf(i) });
         try
         {
           for (;;)
@@ -183,47 +183,47 @@ public final class e
             if (((Cursor)localObject1).moveToNext())
             {
               localObject3 = new com.tencent.mm.plugin.fts.a.a.n().i((Cursor)localObject1);
-              if (!((HashSet)localObject2).add(((com.tencent.mm.plugin.fts.a.a.n)localObject3).tEY)) {
+              if (!((HashSet)localObject2).add(((com.tencent.mm.plugin.fts.a.a.n)localObject3).wVX)) {
                 continue;
               }
-              ((com.tencent.mm.plugin.fts.a.a.n)localObject3).cVt();
+              ((com.tencent.mm.plugin.fts.a.a.n)localObject3).dOC();
               ((com.tencent.mm.plugin.fts.a.a.n)localObject3).userData = "";
               if (((com.tencent.mm.plugin.fts.a.a.n)localObject3).type != 262144) {
                 break label645;
               }
-              ((com.tencent.mm.plugin.fts.a.a.n)localObject3).userData = ((com.tencent.mm.plugin.fts.c.b)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(17)).Hp((int)((com.tencent.mm.plugin.fts.a.a.n)localObject3).tGf);
+              ((com.tencent.mm.plugin.fts.a.a.n)localObject3).userData = ((com.tencent.mm.plugin.fts.c.b)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(17)).Np((int)((com.tencent.mm.plugin.fts.a.a.n)localObject3).wXe);
               if (((com.tencent.mm.plugin.fts.a.a.n)localObject3).userData == null) {
                 continue;
               }
             }
             label645:
-            while ((((com.tencent.mm.plugin.fts.a.a.n)localObject3).type != 131072) || (!com.tencent.mm.plugin.fts.c.e.alG(((com.tencent.mm.plugin.fts.a.a.n)localObject3).tEY)))
+            while ((((com.tencent.mm.plugin.fts.a.a.n)localObject3).type != 131072) || (!com.tencent.mm.plugin.fts.c.e.ayK(((com.tencent.mm.plugin.fts.a.a.n)localObject3).wVX)))
             {
-              paramk.tGc.add(localObject3);
-              i = paramk.tGc.size();
-              j = this.tFP.tFX;
+              paramk.wXb.add(localObject3);
+              i = paramk.wXb.size();
+              j = this.wWO.wWW;
               if (i < j) {
                 break label382;
               }
               ((Cursor)localObject1).close();
-              ae.d("MicroMsg.FTS.FTS5SearchTopHitsLogic", "History TopHits %s", new Object[] { Integer.valueOf(paramk.tGc.size()) });
-              if (paramk.tFe.tFE.length <= 1) {
-                break label1250;
+              Log.d("MicroMsg.FTS.FTS5SearchTopHitsLogic", "History TopHits %s", new Object[] { Integer.valueOf(paramk.wXb.size()) });
+              if (paramk.wWd.wWD.length <= 1) {
+                break label1260;
               }
-              if (paramk.tGc.size() > 2) {
-                paramk.tGc = paramk.tGc.subList(0, 2);
+              if (paramk.wXb.size() > 2) {
+                paramk.wXb = paramk.wXb.subList(0, 2);
               }
               ((HashSet)localObject2).clear();
               i = 0;
-              while (i < paramk.tGc.size())
+              while (i < paramk.wXb.size())
               {
-                ((HashSet)localObject2).add(((com.tencent.mm.plugin.fts.a.a.m)paramk.tGc.get(i)).tEY);
+                ((HashSet)localObject2).add(((com.tencent.mm.plugin.fts.a.a.m)paramk.wXb.get(i)).wVX);
                 i += 1;
               }
               localObject1 = "";
               break;
             }
-            localHashSet.add(((com.tencent.mm.plugin.fts.a.a.n)localObject3).tEY);
+            localHashSet.add(((com.tencent.mm.plugin.fts.a.a.n)localObject3).wVX);
           }
           localObject1 = new HashSet();
         }
@@ -233,16 +233,16 @@ public final class e
           AppMethodBeat.o(52753);
         }
       }
-      localObject3 = e.this.tIo;
-      localObject5 = paramk.tFe;
-      localObject4 = this.tFP.tFV;
-      i = this.tFP.scene;
-      j = this.tFP.tFX;
-      int k = this.tFP.tFY.size();
-      localObject5 = ((com.tencent.mm.plugin.fts.a.a.h)localObject5).cVq();
-      localObject4 = " AND type IN " + d.A((int[])localObject4);
-      localObject4 = String.format("SELECT aux_index FROM %s, %s WHERE %s.docid = %s.rowid AND query = ? AND scene = " + i + (String)localObject4 + " AND status >= 0 AND score >= 2" + String.format(" AND %s MATCH '%s'", new Object[] { ((com.tencent.mm.plugin.fts.c.e)localObject3).cVl(), localObject5 }) + " ORDER BY score desc limit " + (j + k) + ";", new Object[] { ((com.tencent.mm.plugin.fts.c.e)localObject3).cVk(), ((com.tencent.mm.plugin.fts.c.e)localObject3).cVl(), ((com.tencent.mm.plugin.fts.c.e)localObject3).cVk(), ((com.tencent.mm.plugin.fts.c.e)localObject3).cVl(), ((com.tencent.mm.plugin.fts.c.e)localObject3).cVk(), ((com.tencent.mm.plugin.fts.c.e)localObject3).cVl() });
-      localObject3 = ((com.tencent.mm.plugin.fts.a.a)localObject3).tDu.rawQuery((String)localObject4, new String[] { "​chatroom_tophits" });
+      localObject3 = e.this.wZn;
+      localObject5 = paramk.wWd;
+      localObject4 = this.wWO.wWU;
+      i = this.wWO.scene;
+      j = this.wWO.wWW;
+      int k = this.wWO.wWX.size();
+      localObject5 = ((com.tencent.mm.plugin.fts.a.a.h)localObject5).dOz();
+      localObject4 = " AND type IN " + d.C((int[])localObject4);
+      localObject4 = String.format("SELECT aux_index FROM %s, %s WHERE %s.docid = %s.rowid AND query = ? AND scene = " + i + (String)localObject4 + " AND status >= 0 AND score >= 2" + String.format(" AND %s MATCH '%s'", new Object[] { ((com.tencent.mm.plugin.fts.c.e)localObject3).dOu(), localObject5 }) + " ORDER BY score desc limit " + (j + k) + ";", new Object[] { ((com.tencent.mm.plugin.fts.c.e)localObject3).dOt(), ((com.tencent.mm.plugin.fts.c.e)localObject3).dOu(), ((com.tencent.mm.plugin.fts.c.e)localObject3).dOt(), ((com.tencent.mm.plugin.fts.c.e)localObject3).dOu(), ((com.tencent.mm.plugin.fts.c.e)localObject3).dOt(), ((com.tencent.mm.plugin.fts.c.e)localObject3).dOu() });
+      localObject3 = ((com.tencent.mm.plugin.fts.a.a)localObject3).wUt.rawQuery((String)localObject4, new String[] { "​chatroom_tophits" });
       while (((Cursor)localObject3).moveToNext())
       {
         localObject4 = ((Cursor)localObject3).getString(0);
@@ -251,34 +251,34 @@ public final class e
         }
       }
       ((Cursor)localObject3).close();
-      localObject2 = (com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3);
+      localObject2 = (com.tencent.mm.plugin.fts.c.a)((com.tencent.mm.plugin.fts.a.n)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.fts.a.n.class)).getFTSIndexStorage(3);
       localObject1 = ((HashSet)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject3 = (String)((Iterator)localObject1).next();
-        localObject4 = paramk.tFe;
-        localObject5 = ((com.tencent.mm.plugin.fts.a.a.h)localObject4).cVq();
-        l = ((com.tencent.mm.plugin.fts.a.a.h)localObject4).tFG.size();
-        localObject4 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp, content, MMHighlight(%s, %d, type, subtype) FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND aux_index = ? AND type = 131075 AND subtype= 38;", new Object[] { ((com.tencent.mm.plugin.fts.c.a)localObject2).cVk(), ((com.tencent.mm.plugin.fts.c.a)localObject2).cVl(), Long.valueOf(l), ((com.tencent.mm.plugin.fts.c.a)localObject2).cVk(), ((com.tencent.mm.plugin.fts.c.a)localObject2).cVl(), ((com.tencent.mm.plugin.fts.c.a)localObject2).cVk(), ((com.tencent.mm.plugin.fts.c.a)localObject2).cVl(), ((com.tencent.mm.plugin.fts.c.a)localObject2).cVl(), localObject5 });
-        localObject3 = ((com.tencent.mm.plugin.fts.a.a)localObject2).tDu.rawQuery((String)localObject4, new String[] { localObject3 });
+        localObject4 = paramk.wWd;
+        localObject5 = ((com.tencent.mm.plugin.fts.a.a.h)localObject4).dOz();
+        l = ((com.tencent.mm.plugin.fts.a.a.h)localObject4).wWF.size();
+        localObject4 = String.format("SELECT %s.docid, type, subtype, entity_id, aux_index, timestamp, content, MMHighlight(%s, %d, type, subtype) FROM %s NOT INDEXED JOIN %s ON (%s.docid = %s.rowid) WHERE %s MATCH '%s' AND aux_index = ? AND type = 131075 AND subtype= 38;", new Object[] { ((com.tencent.mm.plugin.fts.c.a)localObject2).dOt(), ((com.tencent.mm.plugin.fts.c.a)localObject2).dOu(), Long.valueOf(l), ((com.tencent.mm.plugin.fts.c.a)localObject2).dOt(), ((com.tencent.mm.plugin.fts.c.a)localObject2).dOu(), ((com.tencent.mm.plugin.fts.c.a)localObject2).dOt(), ((com.tencent.mm.plugin.fts.c.a)localObject2).dOu(), ((com.tencent.mm.plugin.fts.c.a)localObject2).dOu(), localObject5 });
+        localObject3 = ((com.tencent.mm.plugin.fts.a.a)localObject2).wUt.rawQuery((String)localObject4, new String[] { localObject3 });
         if (((Cursor)localObject3).moveToNext())
         {
           localObject4 = new com.tencent.mm.plugin.fts.a.a.n().i((Cursor)localObject3);
           ((com.tencent.mm.plugin.fts.a.a.n)localObject4).userData = "​chatroom_tophits";
-          ((com.tencent.mm.plugin.fts.a.a.n)localObject4).cVt();
-          paramk.tGc.add(localObject4);
-          if (paramk.tGc.size() >= this.tFP.tFX) {
+          ((com.tencent.mm.plugin.fts.a.a.n)localObject4).dOC();
+          paramk.wXb.add(localObject4);
+          if (paramk.wXb.size() >= this.wWO.wWW) {
             break;
           }
         }
         ((Cursor)localObject3).close();
       }
-      label1250:
+      label1260:
       paramk = localHashSet.iterator();
       while (paramk.hasNext())
       {
         localObject1 = (String)paramk.next();
-        e.this.alB((String)localObject1);
+        e.this.ayF((String)localObject1);
       }
       AppMethodBeat.o(52753);
     }
@@ -299,33 +299,33 @@ public final class e
   {
     private String query;
     private int scene;
-    private HashMap<String, String> tEi;
-    private com.tencent.mm.plugin.fts.a.a.m tIt;
+    private HashMap<String, String> wVh;
+    private com.tencent.mm.plugin.fts.a.a.m wZs;
     
     private c() {}
     
     public final boolean execute()
     {
       AppMethodBeat.i(52754);
-      com.tencent.mm.plugin.fts.c.e locale = e.this.tIo;
+      com.tencent.mm.plugin.fts.c.e locale = e.this.wZn;
       Object localObject1 = this.query;
-      com.tencent.mm.plugin.fts.a.a.m localm = this.tIt;
+      com.tencent.mm.plugin.fts.a.a.m localm = this.wZs;
       int k = this.scene;
-      Object localObject3 = this.tEi;
+      Object localObject3 = this.wVh;
       Object localObject2 = ((String)localObject1).trim();
-      ((HashMap)localObject3).remove(localm.tEY);
+      ((HashMap)localObject3).remove(localm.wVX);
       long l = System.currentTimeMillis();
-      if (((localm.type == 131072) || (localm.type == 131075)) && (com.tencent.mm.plugin.fts.c.e.alG(localm.tEY)))
+      if (((localm.type == 131072) || (localm.type == 131075)) && (com.tencent.mm.plugin.fts.c.e.ayK(localm.wVX)))
       {
-        ae.i("MicroMsg.FTS.FTS5TopHitsStorage", "last contact msg time older than 60 days");
+        Log.i("MicroMsg.FTS.FTS5TopHitsStorage", "last contact msg time older than 60 days");
         AppMethodBeat.o(52754);
         return true;
       }
-      locale.tDu.beginTransaction();
-      localObject1 = localm.tEY;
-      int i = localm.tEX;
-      Object localObject4 = String.format("SELECT docid, score FROM %s WHERE query=? AND aux_index=? AND subtype = ? AND scene=?;", new Object[] { locale.cVk() });
-      localObject1 = locale.tDu.rawQuery((String)localObject4, new String[] { localObject2, localObject1, String.valueOf(i), String.valueOf(k) });
+      locale.wUt.beginTransaction();
+      localObject1 = localm.wVX;
+      int i = localm.wVW;
+      Object localObject4 = String.format("SELECT docid, score FROM %s WHERE query=? AND aux_index=? AND subtype = ? AND scene=?;", new Object[] { locale.dOt() });
+      localObject1 = locale.wUt.rawQuery((String)localObject4, new String[] { localObject2, localObject1, String.valueOf(i), String.valueOf(k) });
       int j;
       if (((Cursor)localObject1).moveToNext())
       {
@@ -355,8 +355,8 @@ public final class e
           if (((String)localObject1).length() > 0)
           {
             localObject1 = "AND aux_index IN (" + ((String)localObject1).substring(0, ((String)localObject1).length() - 1) + ")";
-            localObject1 = String.format("UPDATE %s SET score=CASE WHEN score > 6 THEN 6 WHEN score > 2 THEN (score - 1) ELSE score END WHERE scene = %d %s;", new Object[] { locale.cVk(), Integer.valueOf(k), localObject1 });
-            locale.tDu.execSQL((String)localObject1);
+            localObject1 = String.format("UPDATE %s SET score=CASE WHEN score > 6 THEN 6 WHEN score > 2 THEN (score - 1) ELSE score END WHERE scene = %d %s;", new Object[] { locale.dOt(), Integer.valueOf(k), localObject1 });
+            locale.wUt.execSQL((String)localObject1);
           }
           localObject1 = "";
           localObject3 = ((HashMap)localObject3).entrySet().iterator();
@@ -375,34 +375,34 @@ public final class e
             if (((String)localObject1).length() > 0)
             {
               localObject1 = "AND aux_index IN(" + ((String)localObject1).substring(0, ((String)localObject1).length() - 1) + ")";
-              localObject1 = String.format("UPDATE %s SET score=CASE WHEN score = 1 THEN 0 WHEN score < 5 THEN (score - 1) ELSE 4 END WHERE query = ? AND scene = %d %s;", new Object[] { locale.cVk(), Integer.valueOf(k), localObject1 });
-              locale.tDu.execSQL((String)localObject1, new String[] { "​chatroom_tophits" });
+              localObject1 = String.format("UPDATE %s SET score=CASE WHEN score = 1 THEN 0 WHEN score < 5 THEN (score - 1) ELSE 4 END WHERE query = ? AND scene = %d %s;", new Object[] { locale.dOt(), Integer.valueOf(k), localObject1 });
+              locale.wUt.execSQL((String)localObject1, new String[] { "​chatroom_tophits" });
             }
             if ((i >= 0) && (j >= 0)) {
               if (j > 6)
               {
                 j += 1;
                 label621:
-                localObject1 = String.format("UPDATE %s SET score=?, timestamp=? WHERE docid=?", new Object[] { locale.cVk() });
-                locale.tDu.execSQL((String)localObject1, new String[] { String.valueOf(j), String.valueOf(l), String.valueOf(i) });
+                localObject1 = String.format("UPDATE %s SET score=?, timestamp=? WHERE docid=?", new Object[] { locale.dOt() });
+                locale.wUt.execSQL((String)localObject1, new String[] { String.valueOf(j), String.valueOf(l), String.valueOf(i) });
               }
             }
             for (;;)
             {
-              locale.tDu.commit();
-              localObject1 = c.a.tEf.split((CharSequence)localObject2);
-              if ((localObject1.length <= 1) || (localm.type != 131075) || (localm.tEX != 38)) {
+              locale.wUt.commit();
+              localObject1 = c.a.wVe.split((CharSequence)localObject2);
+              if ((localObject1.length <= 1) || (localm.type != 131075) || (localm.wVW != 38)) {
                 break;
               }
               localObject2 = new HashSet();
               localObject3 = new l();
-              localObject4 = String.format("SELECT docid, query, score, scene, aux_index, entity_id, type, subtype, timestamp, meta_content FROM %s WHERE aux_index=? AND query=?;", new Object[] { locale.cVk() });
-              localObject4 = locale.tDu.rawQuery((String)localObject4, new String[] { localm.tEY, "​chatroom_tophits" });
+              localObject4 = String.format("SELECT docid, query, score, scene, aux_index, entity_id, type, subtype, timestamp, meta_content FROM %s WHERE aux_index=? AND query=?;", new Object[] { locale.dOt() });
+              localObject4 = locale.wUt.rawQuery((String)localObject4, new String[] { localm.wVX, "​chatroom_tophits" });
               if (!((Cursor)localObject4).moveToNext()) {
                 break label1012;
               }
               ((l)localObject3).convertFrom((Cursor)localObject4);
-              localObject5 = c.a.tEb.split(((l)localObject3).tGg);
+              localObject5 = c.a.wVa.split(((l)localObject3).wXf);
               j = localObject5.length;
               i = 0;
               while (i < j)
@@ -412,57 +412,57 @@ public final class e
               }
               j += 3;
               break label621;
-              locale.tIM.bindString(1, localm.content);
-              locale.tIM.execute();
-              locale.tIN.bindLong(1, localm.type);
-              locale.tIN.bindLong(2, localm.tEX);
-              locale.tIN.bindLong(3, localm.tGf);
-              locale.tIN.bindString(4, localm.tEY);
-              locale.tIN.bindLong(5, l);
-              locale.tIN.bindString(6, (String)localObject2);
-              locale.tIN.bindLong(7, 3L);
-              locale.tIN.bindLong(8, k);
-              locale.tIN.bindString(9, localm.content);
-              locale.tIN.execute();
+              locale.wZL.bindString(1, localm.content);
+              locale.wZL.execute();
+              locale.wZM.bindLong(1, localm.type);
+              locale.wZM.bindLong(2, localm.wVW);
+              locale.wZM.bindLong(3, localm.wXe);
+              locale.wZM.bindString(4, localm.wVX);
+              locale.wZM.bindLong(5, l);
+              locale.wZM.bindString(6, (String)localObject2);
+              locale.wZM.bindLong(7, 3L);
+              locale.wZM.bindLong(8, k);
+              locale.wZM.bindString(9, localm.content);
+              locale.wZM.execute();
             }
             label1012:
             ((Cursor)localObject4).close();
             i = 0;
-            while ((i < localm.tGm.size()) && (i < localObject1.length))
+            while ((i < localm.wXl.size()) && (i < localObject1.length))
             {
-              localObject4 = (com.tencent.mm.plugin.fts.a.a.g)localm.tGm.get(i);
+              localObject4 = (com.tencent.mm.plugin.fts.a.a.g)localm.wXl.get(i);
               if (((HashSet)localObject2).add(((com.tencent.mm.plugin.fts.a.a.g)localObject4).content)) {
-                ((l)localObject3).tGg = (((l)localObject3).tGg + ((com.tencent.mm.plugin.fts.a.a.g)localObject4).content + "​");
+                ((l)localObject3).wXf = (((l)localObject3).wXf + ((com.tencent.mm.plugin.fts.a.a.g)localObject4).content + "​");
               }
               i += 1;
             }
-            ae.i("MicroMsg.FTS.FTS5TopHitsStorage", "update tophits content=%s", new Object[] { ((l)localObject3).tGg });
-            if (((l)localObject3).tGd > 0L) {
-              locale.xT(((l)localObject3).tGd);
+            Log.i("MicroMsg.FTS.FTS5TopHitsStorage", "update tophits content=%s", new Object[] { ((l)localObject3).wXf });
+            if (((l)localObject3).wXc > 0L) {
+              locale.GC(((l)localObject3).wXc);
             }
-            ((l)localObject3).tGd = 0L;
+            ((l)localObject3).wXc = 0L;
             ((l)localObject3).query = "​chatroom_tophits";
-            ((l)localObject3).tGe += 1L;
-            ((l)localObject3).hmW = k;
-            ((l)localObject3).tEY = localm.tEY;
-            ((l)localObject3).tGf = localm.tGf;
+            ((l)localObject3).wXd += 1L;
+            ((l)localObject3).igp = k;
+            ((l)localObject3).wVX = localm.wVX;
+            ((l)localObject3).wXe = localm.wXe;
             ((l)localObject3).type = localm.type;
-            ((l)localObject3).tEX = localm.tEX;
+            ((l)localObject3).wVW = localm.wVW;
             ((l)localObject3).timestamp = l;
-            locale.tDu.beginTransaction();
-            locale.tIM.bindString(1, ((l)localObject3).tGg);
-            locale.tIM.execute();
-            locale.tIN.bindLong(1, ((l)localObject3).type);
-            locale.tIN.bindLong(2, ((l)localObject3).tEX);
-            locale.tIN.bindLong(3, ((l)localObject3).tGf);
-            locale.tIN.bindString(4, ((l)localObject3).tEY);
-            locale.tIN.bindLong(5, ((l)localObject3).timestamp);
-            locale.tIN.bindString(6, ((l)localObject3).query);
-            locale.tIN.bindLong(7, ((l)localObject3).tGe);
-            locale.tIN.bindLong(8, ((l)localObject3).hmW);
-            locale.tIN.bindString(9, ((l)localObject3).tGg);
-            locale.tIN.execute();
-            locale.tDu.commit();
+            locale.wUt.beginTransaction();
+            locale.wZL.bindString(1, ((l)localObject3).wXf);
+            locale.wZL.execute();
+            locale.wZM.bindLong(1, ((l)localObject3).type);
+            locale.wZM.bindLong(2, ((l)localObject3).wVW);
+            locale.wZM.bindLong(3, ((l)localObject3).wXe);
+            locale.wZM.bindString(4, ((l)localObject3).wVX);
+            locale.wZM.bindLong(5, ((l)localObject3).timestamp);
+            locale.wZM.bindString(6, ((l)localObject3).query);
+            locale.wZM.bindLong(7, ((l)localObject3).wXd);
+            locale.wZM.bindLong(8, ((l)localObject3).igp);
+            locale.wZM.bindString(9, ((l)localObject3).wXf);
+            locale.wZM.execute();
+            locale.wUt.commit();
             break;
           }
         }
@@ -487,7 +487,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.b.e
  * JD-Core Version:    0.7.0.1
  */

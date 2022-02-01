@@ -3,21 +3,21 @@ package com.tencent.mm.plugin.story.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.api.o;
 import com.tencent.mm.plugin.story.i.g;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/StoryAvatarLogic;", "", "()V", "Companion", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryAvatarLogic;", "", "()V", "Companion", "plugin-story_release"})
 public final class f
 {
-  public static final a Bbc;
+  public static final a FlW;
   
   static
   {
     AppMethodBeat.i(118653);
-    Bbc = new a((byte)0);
+    FlW = new a((byte)0);
     AppMethodBeat.o(118653);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/StoryAvatarLogic$Companion;", "", "()V", "AVATAR_FLAG_DEFAULT", "", "AVATAR_FLAG_READ", "AVATAR_FLAG_UNREAD", "isStoryUnread", "", "userName", "", "plugin-story_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryAvatarLogic$Companion;", "", "()V", "AVATAR_FLAG_DEFAULT", "", "AVATAR_FLAG_READ", "AVATAR_FLAG_UNREAD", "isStoryUnread", "", "userName", "", "plugin-story_release"})
   public static final class a
   {
     public static boolean isStoryUnread(String paramString)
@@ -33,9 +33,9 @@ public final class f
         AppMethodBeat.o(118652);
         return false;
       }
-      j.b localb = j.BbE;
-      paramString = j.b.elC().aCW(paramString);
-      if ((paramString.isValid()) && (paramString.epa()))
+      j.b localb = j.Fmy;
+      paramString = j.b.fod().aRS(paramString);
+      if ((paramString.isValid()) && (paramString.frA()))
       {
         AppMethodBeat.o(118652);
         return true;
@@ -47,7 +47,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.f
  * JD-Core Version:    0.7.0.1
  */

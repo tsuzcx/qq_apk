@@ -1,14 +1,37 @@
 package kotlinx.coroutines;
 
-import d.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.g.a.b;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/JobCancellingNode;", "J", "Lkotlinx/coroutines/Job;", "Lkotlinx/coroutines/JobNode;", "job", "(Lkotlinx/coroutines/Job;)V", "kotlinx-coroutines-core"})
-public abstract class bt<J extends br>
-  extends bu<J>
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/InvokeOnCompletion;", "Lkotlinx/coroutines/JobNode;", "Lkotlinx/coroutines/Job;", "job", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlinx/coroutines/Job;Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
+final class bt
+  extends bz<bu>
 {
-  public bt(J paramJ)
+  private final b<Throwable, x> lJK;
+  
+  public bt(bu parambu, b<? super Throwable, x> paramb)
   {
-    super(paramJ);
+    super(parambu);
+    AppMethodBeat.i(118058);
+    this.lJK = paramb;
+    AppMethodBeat.o(118058);
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(118057);
+    String str = "InvokeOnCompletion[" + getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
+    AppMethodBeat.o(118057);
+    return str;
+  }
+  
+  public final void y(Throwable paramThrowable)
+  {
+    AppMethodBeat.i(118055);
+    this.lJK.invoke(paramThrowable);
+    AppMethodBeat.o(118055);
   }
 }
 

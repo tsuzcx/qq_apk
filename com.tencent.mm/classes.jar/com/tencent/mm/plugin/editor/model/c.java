@@ -5,48 +5,50 @@ import android.os.Message;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.m.a;
 import com.tencent.mm.audio.b.j;
+import com.tencent.mm.audio.b.j.a;
 import com.tencent.mm.plugin.editor.model.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 
 public final class c
 {
-  private static c pAb = null;
+  private static c qPs = null;
   public long duration;
-  public com.tencent.mm.compatible.util.b iAr;
-  public String pAa;
-  public TextView pAc;
-  public int pAd;
-  public a pAe;
-  public com.tencent.mm.plugin.editor.model.a.m pAf;
-  private final aq pAg;
-  public final aw pAh;
+  public com.tencent.mm.compatible.util.b jvG;
   public String path;
-  public final aq pzK;
-  public boolean pzT;
-  public long pzU;
-  public boolean pzV;
-  public long pzW;
-  private Toast pzX;
-  public j pzY;
-  public com.tencent.mm.modelvoice.m pzZ;
+  public final MMHandler qPb;
+  public boolean qPk;
+  public long qPl;
+  public boolean qPm;
+  public long qPn;
+  private Toast qPo;
+  public j qPp;
+  public com.tencent.mm.modelvoice.m qPq;
+  public String qPr;
+  public TextView qPt;
+  public int qPu;
+  public a qPv;
+  public com.tencent.mm.plugin.editor.model.a.m qPw;
+  private final MMHandler qPx;
+  public final MTimerHandler qPy;
   
   private c()
   {
     AppMethodBeat.i(181679);
-    this.pzW = -1L;
-    this.pAa = "";
+    this.qPn = -1L;
+    this.qPr = "";
     this.path = "";
-    this.pAd = 0;
-    this.pAf = null;
-    this.pAg = new aq()
+    this.qPu = 0;
+    this.qPw = null;
+    this.qPx = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -56,36 +58,36 @@ public final class c
         AppMethodBeat.o(181676);
       }
     };
-    this.pzK = new aq()
+    this.qPb = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(181677);
-        if (c.c(c.this).pAH.booleanValue())
+        if (c.c(c.this).qPY.booleanValue())
         {
-          c.d(c.this).cfs();
-          c.c(c.this).pAH = Boolean.FALSE;
+          c.d(c.this).cDi();
+          c.c(c.this).qPY = Boolean.FALSE;
         }
-        c.c(c.this).pAz = ((int)com.tencent.mm.plugin.editor.b.sI(c.e(c.this)));
+        c.c(c.this).qPQ = ((int)com.tencent.mm.plugin.editor.b.AO(c.e(c.this)));
         sendEmptyMessageDelayed(4096, 250L);
         AppMethodBeat.o(181677);
       }
     };
-    this.pAh = new aw(new aw.a()
+    this.qPy = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(181678);
         if (c.f(c.this) == -1L) {
-          c.a(c.this, bu.HQ());
+          c.a(c.this, Util.currentTicks());
         }
-        long l = bu.aO(c.f(c.this));
+        long l = Util.ticksToNow(c.f(c.this));
         if ((l >= 3590000L) && (l <= 3600000L))
         {
           if (c.g(c.this) != null) {
             break label179;
           }
-          c.a(c.this, Toast.makeText(ak.getContext(), ak.getContext().getString(2131758842, new Object[] { Integer.valueOf((int)((3600000L - l) / 1000L)) }), 0));
+          c.a(c.this, Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131759165, new Object[] { Integer.valueOf((int)((3600000L - l) / 1000L)) }), 0));
         }
         for (;;)
         {
@@ -93,98 +95,98 @@ public final class c
           if (l < 3600000L) {
             break;
           }
-          ae.v("MicroMsg.EditorVoiceLogic", "record stop on countdown");
+          Log.v("MicroMsg.EditorVoiceLogic", "record stop on countdown");
           c.h(c.this);
           c.i(c.this);
           if (c.d(c.this) != null) {
-            c.d(c.this).cfr();
+            c.d(c.this).cDh();
           }
           AppMethodBeat.o(181678);
           return false;
           label179:
-          c.g(c.this).setText(ak.getContext().getString(2131758842, new Object[] { Integer.valueOf((int)((3600000L - l) / 1000L)) }));
+          c.g(c.this).setText(MMApplicationContext.getContext().getString(2131759165, new Object[] { Integer.valueOf((int)((3600000L - l) / 1000L)) }));
         }
         AppMethodBeat.o(181678);
         return true;
       }
     }, true);
-    this.iAr = new com.tencent.mm.compatible.util.b(ak.getContext());
+    this.jvG = new com.tencent.mm.compatible.util.b(MMApplicationContext.getContext());
     AppMethodBeat.o(181679);
   }
   
-  public static c cfj()
+  public static c cCZ()
   {
     AppMethodBeat.i(181680);
-    if (pAb == null) {
-      pAb = new c();
+    if (qPs == null) {
+      qPs = new c();
     }
-    c localc = pAb;
+    c localc = qPs;
     AppMethodBeat.o(181680);
     return localc;
   }
   
-  private void cfm()
+  private void cDc()
   {
     AppMethodBeat.i(181684);
-    if (!this.pzT)
+    if (!this.qPk)
     {
       AppMethodBeat.o(181684);
       return;
     }
-    this.pzK.removeMessages(4096);
+    this.qPb.removeMessages(4096);
     stopRecord();
     this.duration = getDuration();
     if (this.duration < 800L) {}
     for (int i = 1;; i = 0)
     {
-      this.pAh.stopTimer();
+      this.qPy.stopTimer();
       if (i != 0)
       {
-        cfo();
-        cfn();
+        cDe();
+        cDd();
       }
-      this.pzT = false;
+      this.qPk = false;
       AppMethodBeat.o(181684);
       return;
     }
   }
   
-  private void cfn()
+  private void cDd()
   {
     AppMethodBeat.i(181685);
-    this.pAg.sendEmptyMessageDelayed(0, 500L);
+    this.qPx.sendEmptyMessageDelayed(0, 500L);
     AppMethodBeat.o(181685);
   }
   
-  private void cfo()
+  private void cDe()
   {
     AppMethodBeat.i(181687);
-    k localk = new k(this.path);
-    if (localk.exists()) {
-      localk.delete();
+    o localo = new o(this.path);
+    if (localo.exists()) {
+      localo.delete();
     }
     AppMethodBeat.o(181687);
   }
   
-  public static c cfp()
+  public static c cDf()
   {
-    return pAb;
+    return qPs;
   }
   
   public static void destroy()
   {
-    pAb = null;
+    qPs = null;
   }
   
   private long getDuration()
   {
     AppMethodBeat.i(181686);
-    if (this.pzU == 0L)
+    if (this.qPl == 0L)
     {
       AppMethodBeat.o(181686);
       return 0L;
     }
-    long l = bu.aO(this.pzU);
+    long l = Util.ticksToNow(this.qPl);
     AppMethodBeat.o(181686);
     return l;
   }
@@ -192,38 +194,38 @@ public final class c
   private void stopRecord()
   {
     AppMethodBeat.i(181683);
-    if (this.pAa.equals("speex")) {
-      this.pzZ.PF();
+    if (this.qPr.equals("speex")) {
+      this.qPq.ZZ();
     }
     for (;;)
     {
-      if (this.iAr != null) {
-        this.iAr.abn();
+      if (this.jvG != null) {
+        this.jvG.apm();
       }
       AppMethodBeat.o(181683);
       return;
-      this.pzY.PF();
+      this.qPp.ZZ();
     }
   }
   
-  public final void cfk()
+  public final void cDa()
   {
     AppMethodBeat.i(181681);
-    if (!this.pzT)
+    if (!this.qPk)
     {
       AppMethodBeat.o(181681);
       return;
     }
-    if (!this.pzV) {
-      cfm();
+    if (!this.qPm) {
+      cDc();
     }
     AppMethodBeat.o(181681);
   }
   
-  public final String cfl()
+  public final String cDb()
   {
     AppMethodBeat.i(181682);
-    if (o.fB(this.path))
+    if (s.YS(this.path))
     {
       String str = this.path;
       AppMethodBeat.o(181682);
@@ -235,7 +237,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.c
  * JD-Core Version:    0.7.0.1
  */

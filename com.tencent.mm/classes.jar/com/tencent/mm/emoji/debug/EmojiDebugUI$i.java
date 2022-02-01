@@ -3,9 +3,9 @@ package com.tencent.mm.emoji.debug;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
 final class EmojiDebugUI$i
   implements MenuItem.OnMenuItemClickListener
 {
@@ -14,7 +14,7 @@ final class EmojiDebugUI$i
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(105346);
-    this.gjV.finish();
+    this.gUa.finish();
     AppMethodBeat.o(105346);
     return true;
   }

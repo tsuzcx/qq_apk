@@ -9,15 +9,14 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.Spannable;
 import android.text.Spannable.Factory;
-import android.text.SpannableString;
 import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
-import android.text.style.StyleSpan;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -25,56 +24,60 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.facedetect.model.FaceDetectReporter;
-import com.tencent.mm.plugin.facedetectlight.Utils.a.b;
-import com.tencent.mm.protocal.protobuf.cnh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.facedetect.model.p;
+import com.tencent.mm.plugin.flash.FaceFlashUI;
+import com.tencent.mm.plugin.flash.d.b.b;
+import com.tencent.mm.protocal.protobuf.dfb;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
 
 @com.tencent.mm.ui.base.a(3)
 public class FaceDetectConfirmUI
   extends MMActivity
-  implements f
+  implements i
 {
   private String appId;
   private int businessType;
-  private String mxL;
-  private String rom = null;
-  private String ron = null;
-  private String roo = null;
-  private float rop;
-  private String ror;
-  private TextView rrK;
-  private Button rrL;
-  private CheckBox rrM;
-  private TextView rrN;
-  private TextView rrO;
-  private cnh rrP = null;
-  private String rrQ;
-  private int rrR;
-  private int rrS;
-  private ImageView rrT;
-  private TextView rrU;
-  private String rrV;
-  private String rrW;
-  private p tipDialog;
+  private String nlH;
+  private String sPR = null;
+  private String sPS = null;
+  private String sPT = null;
+  private float sPU;
+  private String sPW;
+  private TextView sTb;
+  private Button sTc;
+  private CheckBox sTd;
+  private TextView sTe;
+  private TextView sTf;
+  private dfb sTg = null;
+  private String sTh;
+  private int sTi;
+  private int sTj;
+  private ImageView sTk;
+  private TextView sTl;
+  private String sTm;
+  private String sTn;
+  private ViewGroup sTo;
+  private long sTp = 0L;
+  private com.tencent.mm.ui.base.q tipDialog;
   
-  private void cvg()
+  private void cTA()
   {
     AppMethodBeat.i(103893);
     Intent localIntent = new Intent();
-    localIntent.putExtra("err_code", com.tencent.mm.plugin.facedetect.model.l.DZ(90024));
+    localIntent.putExtra("err_code", com.tencent.mm.plugin.facedetect.model.l.HL(90024));
     localIntent.putExtra("err_msg", "user cancel in confirm ui");
-    FaceDetectReporter.cuI().a(this.businessType, false, 3, 1, 90024);
-    FaceDetectReporter.cuI().rqe = System.currentTimeMillis();
-    FaceDetectReporter.cuI().dl(this.mxL, this.businessType);
+    FaceDetectReporter.cTe().ad(this.businessType, 1, 90024);
+    com.tencent.mm.plugin.flash.c.b.s("msgVerify", "user cancel in confirm ui");
+    com.tencent.mm.plugin.flash.c.b.MW(90024);
+    FaceDetectReporter.cTe().sRB = System.currentTimeMillis();
+    FaceDetectReporter.cTe().dr(this.nlH, this.businessType);
     setResult(0, localIntent);
     finish();
     AppMethodBeat.o(103893);
@@ -97,17 +100,24 @@ public class FaceDetectConfirmUI
     AppMethodBeat.o(103895);
   }
   
+  public int getForceOrientation()
+  {
+    return 1;
+  }
+  
   public int getLayoutId()
   {
-    return 2131493904;
+    return 2131494064;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(103892);
-    ae.i("MicroMsg.FaceDetectConfirmUI", "onActiviyResult reqeustCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    FaceDetectReporter.cuI().rqe = System.currentTimeMillis();
-    FaceDetectReporter.cuI().dl(this.mxL, this.businessType);
+    Log.i("MicroMsg.FaceDetectConfirmUI", "onActiviyResult reqeustCode: %d, resultCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    FaceDetectReporter.cTe().sRB = System.currentTimeMillis();
+    if (paramIntent.hasExtra("err_code")) {
+      paramIntent.putExtra("err_code", com.tencent.mm.plugin.facedetect.model.l.HL(paramIntent.getIntExtra("err_code", -1)));
+    }
     setResult(paramInt2, paramIntent);
     finish();
     AppMethodBeat.o(103892);
@@ -116,7 +126,7 @@ public class FaceDetectConfirmUI
   public void onBackPressed()
   {
     AppMethodBeat.i(103894);
-    cvg();
+    cTA();
     super.onBackPressed();
     AppMethodBeat.o(103894);
   }
@@ -125,108 +135,138 @@ public class FaceDetectConfirmUI
   {
     AppMethodBeat.i(103890);
     super.onCreate(paramBundle);
-    this.appId = getIntent().getStringExtra("k_app_id");
-    this.rrQ = getIntent().getStringExtra("request_verify_pre_info");
-    this.mxL = getIntent().getStringExtra("key_function_name");
+    com.tencent.mm.plugin.flash.c.b.dLi().erc = System.currentTimeMillis();
+    this.appId = getIntent().getStringExtra("appId");
+    this.sTh = getIntent().getStringExtra("request_verify_pre_info");
+    this.nlH = getIntent().getStringExtra("key_function_name");
     this.businessType = getIntent().getIntExtra("key_business_type", -1);
-    this.rrR = getIntent().getIntExtra("check_alive_type", 0);
-    ae.i("MicroMsg.FaceDetectConfirmUI", "carson check_alive_type : %s", new Object[] { Integer.valueOf(this.rrR) });
-    ae.i("MicroMsg.FaceDetectConfirmUI", "carson businessType : %s", new Object[] { Integer.valueOf(this.businessType) });
-    setMMTitle(getString(2131758696));
+    this.sTi = getIntent().getIntExtra("check_alive_type", 0);
+    this.sTp = System.currentTimeMillis();
+    Log.i("MicroMsg.FaceDetectConfirmUI", "appId:%s jsonData:%s functionName:%s businessType:%s check_alive_type_request:%s", new Object[] { this.appId, this.sTh, this.nlH, Integer.valueOf(this.businessType), Integer.valueOf(this.sTi) });
+    setMMTitle("");
+    setActionbarColor(getResources().getColor(2131101424));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(103882);
-        ae.i("MicroMsg.FaceDetectConfirmUI", "alvinluo cancel with back button");
+        Log.i("MicroMsg.FaceDetectConfirmUI", "alvinluo cancel with back button");
         FaceDetectConfirmUI.a(FaceDetectConfirmUI.this);
         AppMethodBeat.o(103882);
         return false;
       }
     });
-    this.rrK = ((TextView)findViewById(2131299664));
-    this.rrL = ((Button)findViewById(2131305176));
-    this.rrT = ((ImageView)findViewById(2131296908));
-    this.rrU = ((TextView)findViewById(2131296909));
-    this.rrM = ((CheckBox)findViewById(2131299665));
-    this.rrM.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-    {
-      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(103883);
-        if (paramAnonymousBoolean)
-        {
-          FaceDetectConfirmUI.b(FaceDetectConfirmUI.this).setEnabled(true);
-          AppMethodBeat.o(103883);
-          return;
-        }
-        FaceDetectConfirmUI.b(FaceDetectConfirmUI.this).setEnabled(false);
-        AppMethodBeat.o(103883);
-      }
-    });
-    this.rrM.setVisibility(8);
-    this.rrN = ((TextView)findViewById(2131299666));
-    this.rrN.setOnClickListener(new View.OnClickListener()
+    this.sTb = ((TextView)findViewById(2131300315));
+    this.sTc = ((Button)findViewById(2131308365));
+    this.sTk = ((ImageView)findViewById(2131297010));
+    this.sTl = ((TextView)findViewById(2131297011));
+    this.sTo = ((ViewGroup)findViewById(2131300317));
+    this.sTo.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(103884);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = FaceDetectConfirmUI.c(FaceDetectConfirmUI.this);
-        if (!FaceDetectConfirmUI.c(FaceDetectConfirmUI.this).isChecked()) {}
+        AppMethodBeat.i(186379);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = FaceDetectConfirmUI.b(FaceDetectConfirmUI.this);
+        if (!FaceDetectConfirmUI.b(FaceDetectConfirmUI.this).isChecked()) {}
         for (boolean bool = true;; bool = false)
         {
           paramAnonymousView.setChecked(bool);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(103884);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(186379);
           return;
         }
       }
     });
-    this.rrO = ((TextView)findViewById(2131299663));
-    this.rrL.setOnClickListener(new View.OnClickListener()
+    this.sTd = ((CheckBox)findViewById(2131300316));
+    this.sTd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+    {
+      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(186380);
+        if (paramAnonymousBoolean)
+        {
+          FaceDetectConfirmUI.c(FaceDetectConfirmUI.this).setEnabled(true);
+          AppMethodBeat.o(186380);
+          return;
+        }
+        FaceDetectConfirmUI.c(FaceDetectConfirmUI.this).setEnabled(false);
+        AppMethodBeat.o(186380);
+      }
+    });
+    this.sTd.setVisibility(8);
+    this.sTe = ((TextView)findViewById(2131300318));
+    this.sTe.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(103885);
-        Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-        ae.d("MicroMsg.FaceDetectConfirmUI", "check_alive_type is %s", new Object[] { Integer.valueOf(FaceDetectConfirmUI.d(FaceDetectConfirmUI.this)) });
-        paramAnonymousView = new Intent(FaceDetectConfirmUI.this, FaceDetectPrepareUI.class);
-        localObject = FaceDetectConfirmUI.this.getIntent().getExtras();
-        if (localObject != null)
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = FaceDetectConfirmUI.b(FaceDetectConfirmUI.this);
+        if (!FaceDetectConfirmUI.b(FaceDetectConfirmUI.this).isChecked()) {}
+        for (boolean bool = true;; bool = false)
         {
-          ((Bundle)localObject).putInt("check_alive_type_response", FaceDetectConfirmUI.d(FaceDetectConfirmUI.this));
-          ((Bundle)localObject).putString("key_feedback_url", FaceDetectConfirmUI.e(FaceDetectConfirmUI.this));
-          ((Bundle)localObject).putString("business_tips", FaceDetectConfirmUI.f(FaceDetectConfirmUI.this));
-          ((Bundle)localObject).putFloat("mLight_threshold", FaceDetectConfirmUI.g(FaceDetectConfirmUI.this));
-          ae.i("MicroMsg.FaceDetectConfirmUI", "carson check_alive_type_response is " + FaceDetectConfirmUI.d(FaceDetectConfirmUI.this));
-          paramAnonymousView.putExtras((Bundle)localObject);
-          FaceDetectConfirmUI.this.startActivityForResult(paramAnonymousView, 1);
-        }
-        for (;;)
-        {
+          paramAnonymousView.setChecked(bool);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(103885);
           return;
-          ae.e("MicroMsg.FaceDetectConfirmUI", "alvinluo extras is null when start FaceDetectPrepareUI");
         }
       }
     });
-    ae.i("MicroMsg.FaceDetectConfirmUI", "alvinluo start get confirm info");
+    this.sTf = ((TextView)findViewById(2131300314));
+    this.sTc.setOnClickListener(new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(186381);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        Log.d("MicroMsg.FaceDetectConfirmUI", "check_alive_type is %s", new Object[] { Integer.valueOf(FaceDetectConfirmUI.d(FaceDetectConfirmUI.this)) });
+        if (!p.ai(FaceDetectConfirmUI.this))
+        {
+          Log.e("MicroMsg.FaceDetectConfirmUI", "carson: no camera permission. request permission");
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(186381);
+          return;
+        }
+        paramAnonymousView = FaceDetectConfirmUI.this.getIntent().getExtras();
+        if (paramAnonymousView != null)
+        {
+          paramAnonymousView.putInt("check_alive_type", FaceDetectConfirmUI.d(FaceDetectConfirmUI.this));
+          paramAnonymousView.putString("appId", FaceDetectConfirmUI.e(FaceDetectConfirmUI.this));
+          paramAnonymousView.putString("feedbackUrl", FaceDetectConfirmUI.f(FaceDetectConfirmUI.this));
+          paramAnonymousView.putString("business_tips", FaceDetectConfirmUI.g(FaceDetectConfirmUI.this));
+          paramAnonymousView.putFloat("mLight_threshold", FaceDetectConfirmUI.h(FaceDetectConfirmUI.this));
+          paramAnonymousView.putLong("confirm_page_timestamp", FaceDetectConfirmUI.i(FaceDetectConfirmUI.this));
+          Log.i("MicroMsg.FaceDetectConfirmUI", "carson check_alive_type_response is " + FaceDetectConfirmUI.d(FaceDetectConfirmUI.this));
+          FaceFlashUI.a(FaceDetectConfirmUI.this, paramAnonymousView, 1);
+        }
+        for (;;)
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(186381);
+          return;
+          Log.e("MicroMsg.FaceDetectConfirmUI", "alvinluo extras is null when start FaceDetectPrepareUI");
+        }
+      }
+    });
+    Log.i("MicroMsg.FaceDetectConfirmUI", "alvinluo start get confirm info");
     paramBundle = getContext();
-    getString(2131755906);
-    this.tipDialog = h.b(paramBundle, getString(2131755936), false, new DialogInterface.OnCancelListener()
+    getString(2131755998);
+    this.tipDialog = h.a(paramBundle, getString(2131756029), false, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    paramBundle = new com.tencent.mm.plugin.facedetect.b.l(this.appId, this.rrQ, this.rrR);
-    g.ajj().a(1147, this);
-    g.ajj().a(paramBundle, 0);
-    a.b.cvS().cvR();
+    paramBundle = new com.tencent.mm.plugin.facedetect.b.l(this.appId, this.sTh, this.sTi);
+    g.azz().a(1147, this);
+    g.azz().a(paramBundle, 0);
+    b.b.dLm().dLl();
+    com.tencent.mm.plugin.flash.c.b.MY(1);
     AppMethodBeat.o(103890);
   }
   
@@ -234,162 +274,239 @@ public class FaceDetectConfirmUI
   {
     AppMethodBeat.i(103897);
     super.onDestroy();
-    a.b.cvS().stop();
+    b.b.dLm().stop();
     AppMethodBeat.o(103897);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(186385);
+    Log.i("MicroMsg.FaceDetectConfirmUI", "alvinluo onRequestPermissionsResult");
+    if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
+    {
+      AppMethodBeat.o(186385);
+      return;
+    }
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(186385);
+      return;
+      if (paramArrayOfInt[0] == 0)
+      {
+        this.sTc.performClick();
+        AppMethodBeat.o(186385);
+        return;
+      }
+      h.a(this, getString(2131759068), getString(2131763890), getString(2131762043), getString(2131755761), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(186375);
+          paramAnonymousDialogInterface.dismiss();
+          paramAnonymousDialogInterface = FaceDetectConfirmUI.this;
+          Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$10", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$10", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          AppMethodBeat.o(186375);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(186376);
+          paramAnonymousDialogInterface.dismiss();
+          AppMethodBeat.o(186376);
+        }
+      });
+      AppMethodBeat.o(186385);
+      return;
+      if (paramArrayOfInt[0] == 0)
+      {
+        this.sTc.performClick();
+        AppMethodBeat.o(186385);
+        return;
+      }
+      h.a(this, getString(2131759069), getString(2131763890), getString(2131762043), getString(2131755761), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(186377);
+          paramAnonymousDialogInterface.dismiss();
+          paramAnonymousDialogInterface = FaceDetectConfirmUI.this;
+          Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
+          localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$12", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
+          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$12", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          AppMethodBeat.o(186377);
+        }
+      }, new DialogInterface.OnClickListener()
+      {
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(186378);
+          paramAnonymousDialogInterface.dismiss();
+          AppMethodBeat.o(186378);
+        }
+      });
+    }
+  }
+  
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(103891);
-    ae.i("MicroMsg.FaceDetectConfirmUI", "alvinluo scene: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramn.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    final cnh localcnh;
+    Log.i("MicroMsg.FaceDetectConfirmUI", "alvinluo scene: %d, errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramq.getType()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    com.tencent.mm.plugin.flash.c.b.s("confirmCode", Integer.valueOf(paramInt1));
+    com.tencent.mm.plugin.flash.c.b.s("confirmMsg", paramString);
+    final dfb localdfb;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.rrP = ((com.tencent.mm.plugin.facedetect.b.l)paramn).roj;
-      this.rom = ((com.tencent.mm.plugin.facedetect.b.l)paramn).rom;
-      this.ron = ((com.tencent.mm.plugin.facedetect.b.l)paramn).ron;
-      this.roo = ((com.tencent.mm.plugin.facedetect.b.l)paramn).roo;
-      this.rop = ((com.tencent.mm.plugin.facedetect.b.l)paramn).rop;
-      this.rrS = ((com.tencent.mm.plugin.facedetect.b.l)paramn).roq;
-      this.ror = ((com.tencent.mm.plugin.facedetect.b.l)paramn).ror;
-      this.rrV = ((com.tencent.mm.plugin.facedetect.b.l)paramn).rok;
-      this.rrW = ((com.tencent.mm.plugin.facedetect.b.l)paramn).rol;
-      ae.d("MicroMsg.FaceDetectConfirmUI", paramn.toString());
-      if (bu.isNullOrNil(this.rom)) {
-        this.rom = getString(2131758694);
+      this.sTg = ((com.tencent.mm.plugin.facedetect.b.l)paramq).sPO;
+      this.sPR = ((com.tencent.mm.plugin.facedetect.b.l)paramq).sPR;
+      this.sPS = ((com.tencent.mm.plugin.facedetect.b.l)paramq).sPS;
+      this.sPT = ((com.tencent.mm.plugin.facedetect.b.l)paramq).sPT;
+      this.sPU = ((com.tencent.mm.plugin.facedetect.b.l)paramq).sPU;
+      this.sTj = ((com.tencent.mm.plugin.facedetect.b.l)paramq).sPV;
+      this.sPW = ((com.tencent.mm.plugin.facedetect.b.l)paramq).sPW;
+      this.sTm = ((com.tencent.mm.plugin.facedetect.b.l)paramq).sPP;
+      this.sTn = ((com.tencent.mm.plugin.facedetect.b.l)paramq).sPQ;
+      Log.d("MicroMsg.FaceDetectConfirmUI", paramq.toString());
+      if (Util.isNullOrNil(this.sPR)) {
+        this.sPR = getString(2131759009);
       }
       dismissDialog();
-      this.rrL.setEnabled(true);
-      this.rrK.setText(this.rom);
-      paramString = String.format(getString(2131758695), new Object[] { this.rrW });
-      paramn = new SpannableString(paramString);
-      paramInt1 = paramString.lastIndexOf(" ");
-      if (paramInt1 != -1) {
-        paramn.setSpan(new StyleSpan(1), 0, paramInt1, 17);
-      }
-      this.rrU.setText(paramn);
-      com.tencent.mm.av.q.aJb().loadImage(this.rrV, this.rrT);
-      if (this.rrP != null)
+      this.sTc.setEnabled(true);
+      this.sTb.setText(this.sPR);
+      paramString = String.format(getString(2131759010), new Object[] { this.sTn });
+      this.sTl.setText(paramString);
+      com.tencent.mm.av.q.bcV().loadImage(this.sTm, this.sTk);
+      if (this.sTg != null)
       {
-        ae.v("MicroMsg.FaceDetectConfirmUI", "alvinluo provider wording: %s, url_wording: %s, url: %s", new Object[] { this.rrP.dyI, this.rrP.Hzq, this.rrP.url });
-        localcnh = this.rrP;
-        ae.i("MicroMsg.FaceDetectConfirmUI", "alvinluo protocol info: %s", new Object[] { localcnh.dyI });
-        if (!bu.isNullOrNil(localcnh.dyI)) {
-          break label589;
+        Log.v("MicroMsg.FaceDetectConfirmUI", "alvinluo provider wording: %s, url_wording: %s, url: %s", new Object[] { this.sTg.dQx, this.sTg.LGp, this.sTg.url });
+        localdfb = this.sTg;
+        Log.i("MicroMsg.FaceDetectConfirmUI", "alvinluo protocol info: %s", new Object[] { localdfb.dQx });
+        if (!Util.isNullOrNil(localdfb.dQx)) {
+          break label565;
         }
-        paramString = getString(2131758692);
-        if (!bu.isNullOrNil(localcnh.Hzq)) {
-          break label598;
+        paramString = getString(2131759007);
+        if (!Util.isNullOrNil(localdfb.LGp)) {
+          break label574;
         }
-        paramn = getString(2131758691);
-        label416:
-        Spannable localSpannable = Spannable.Factory.getInstance().newSpannable(paramString + paramn);
+        paramq = getString(2131759006);
+        label392:
+        Spannable localSpannable = Spannable.Factory.getInstance().newSpannable(paramString + paramq);
         localSpannable.setSpan(new ClickableSpan()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(103887);
-            if (!bu.isNullOrNil(localcnh.url))
+            AppMethodBeat.i(103889);
+            if (!Util.isNullOrNil(localdfb.url))
             {
-              FaceDetectConfirmUI.a(FaceDetectConfirmUI.this, localcnh.url);
-              AppMethodBeat.o(103887);
+              FaceDetectConfirmUI.a(FaceDetectConfirmUI.this, localdfb.url);
+              AppMethodBeat.o(103889);
               return;
             }
-            ae.e("MicroMsg.FaceDetectConfirmUI", "alvinluo promptInfo url is null");
-            AppMethodBeat.o(103887);
+            Log.e("MicroMsg.FaceDetectConfirmUI", "alvinluo promptInfo url is null");
+            AppMethodBeat.o(103889);
           }
           
           public final void updateDrawState(TextPaint paramAnonymousTextPaint)
           {
-            AppMethodBeat.i(103888);
-            paramAnonymousTextPaint.setColor(FaceDetectConfirmUI.this.getResources().getColor(2131100547));
-            AppMethodBeat.o(103888);
+            AppMethodBeat.i(186383);
+            paramAnonymousTextPaint.setColor(FaceDetectConfirmUI.this.getResources().getColor(2131100685));
+            AppMethodBeat.o(186383);
           }
-        }, paramString.length(), paramString.length() + paramn.length(), 33);
-        this.rrM.setVisibility(0);
-        this.rrN.setVisibility(0);
-        this.rrN.setText(localSpannable);
-        this.rrN.setMovementMethod(LinkMovementMethod.getInstance());
-        if (localcnh.Hzr != 0) {
-          break label608;
+        }, paramString.length(), paramString.length() + paramq.length(), 33);
+        this.sTd.setVisibility(0);
+        this.sTe.setVisibility(0);
+        this.sTe.setText(localSpannable);
+        this.sTe.setMovementMethod(LinkMovementMethod.getInstance());
+        if (localdfb.MKc != 0) {
+          break label584;
         }
-        this.rrM.setChecked(false);
-        this.rrL.setEnabled(false);
-        label535:
-        this.rrO.setText(getString(2131758689));
-        this.rrO.setOnClickListener(new View.OnClickListener()
+        this.sTd.setChecked(false);
+        this.sTc.setEnabled(false);
+        label511:
+        this.sTf.setText(getString(2131759004));
+        this.sTf.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
-            AppMethodBeat.i(103889);
-            b localb = new b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            AppMethodBeat.i(186384);
+            com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
             for (;;)
             {
               try
               {
-                if (FaceDetectConfirmUI.j(FaceDetectConfirmUI.this) == null) {
+                if (FaceDetectConfirmUI.e(FaceDetectConfirmUI.this) == null) {
                   continue;
                 }
-                paramAnonymousView = FaceDetectConfirmUI.j(FaceDetectConfirmUI.this);
+                paramAnonymousView = FaceDetectConfirmUI.e(FaceDetectConfirmUI.this);
                 paramAnonymousView = com.tencent.mm.compatible.util.q.encode(String.format("appid=%s", new Object[] { paramAnonymousView }), "UTF-8");
-                paramAnonymousView = FaceDetectConfirmUI.k(FaceDetectConfirmUI.this) + "?customInfo=" + paramAnonymousView;
-                ae.i("MicroMsg.FaceDetectConfirmUI", "alvinluo jump realUrl: %s", new Object[] { paramAnonymousView });
+                paramAnonymousView = FaceDetectConfirmUI.l(FaceDetectConfirmUI.this) + "?customInfo=" + paramAnonymousView;
+                Log.i("MicroMsg.FaceDetectConfirmUI", "alvinluo jump realUrl: %s", new Object[] { paramAnonymousView });
                 FaceDetectConfirmUI.a(FaceDetectConfirmUI.this, paramAnonymousView);
               }
               catch (Exception paramAnonymousView)
               {
-                ae.printErrStackTrace("MicroMsg.FaceDetectConfirmUI", paramAnonymousView, "alvinluo jumpToWebView exception", new Object[0]);
+                Log.printErrStackTrace("MicroMsg.FaceDetectConfirmUI", paramAnonymousView, "alvinluo jumpToWebView exception", new Object[0]);
                 continue;
               }
-              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(103889);
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/facedetect/ui/FaceDetectConfirmUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(186384);
               return;
               paramAnonymousView = "";
             }
           }
         });
-        this.rrO.setVisibility(0);
+        this.sTf.setVisibility(0);
       }
     }
     for (;;)
     {
-      g.ajj().b(1147, this);
+      g.azz().b(1147, this);
       AppMethodBeat.o(103891);
       return;
-      label589:
-      paramString = localcnh.dyI;
+      label565:
+      paramString = localdfb.dQx;
       break;
-      label598:
-      paramn = localcnh.Hzq;
-      break label416;
-      label608:
-      if (localcnh.Hzr != 1) {
-        break label535;
+      label574:
+      paramq = localdfb.LGp;
+      break label392;
+      label584:
+      if (localdfb.MKc != 1) {
+        break label511;
       }
-      this.rrM.setChecked(true);
-      this.rrL.setEnabled(true);
-      break label535;
-      paramn = paramString;
-      if (bu.isNullOrNil(paramString)) {
-        paramn = getString(2131758738);
+      this.sTd.setChecked(true);
+      this.sTc.setEnabled(true);
+      break label511;
+      paramq = paramString;
+      if (Util.isNullOrNil(paramString)) {
+        paramq = getString(2131759056);
       }
       dismissDialog();
-      h.a(this, paramn, getString(2131755906), false, new DialogInterface.OnClickListener()
+      h.a(this, paramq, getString(2131755998), false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(103886);
+          AppMethodBeat.i(186382);
           paramAnonymousDialogInterface = new Intent();
-          paramAnonymousDialogInterface.putExtra("err_code", com.tencent.mm.plugin.facedetect.model.l.DZ(90022));
+          paramAnonymousDialogInterface.putExtra("err_code", com.tencent.mm.plugin.facedetect.model.l.HL(90022));
           paramAnonymousDialogInterface.putExtra("err_msg", "get confirm info error");
-          FaceDetectReporter.cuI().a(FaceDetectConfirmUI.h(FaceDetectConfirmUI.this), false, 3, 2, 90022);
-          FaceDetectReporter.cuI().rqe = System.currentTimeMillis();
-          FaceDetectReporter.cuI().dl(FaceDetectConfirmUI.i(FaceDetectConfirmUI.this), FaceDetectConfirmUI.h(FaceDetectConfirmUI.this));
+          FaceDetectReporter.cTe().ad(FaceDetectConfirmUI.j(FaceDetectConfirmUI.this), 2, 90022);
+          com.tencent.mm.plugin.flash.c.b.MW(90022);
+          FaceDetectReporter.cTe().sRB = System.currentTimeMillis();
+          FaceDetectReporter.cTe().dr(FaceDetectConfirmUI.k(FaceDetectConfirmUI.this), FaceDetectConfirmUI.j(FaceDetectConfirmUI.this));
           FaceDetectConfirmUI.a(FaceDetectConfirmUI.this, paramAnonymousDialogInterface);
           FaceDetectConfirmUI.this.finish();
-          AppMethodBeat.o(103886);
+          AppMethodBeat.o(186382);
         }
       });
     }

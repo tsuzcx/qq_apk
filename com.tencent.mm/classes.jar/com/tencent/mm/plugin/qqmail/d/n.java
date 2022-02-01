@@ -8,9 +8,9 @@ public final class n
 {
   public n(String paramString)
   {
-    AppMethodBeat.i(217946);
-    super.Jj(paramString);
-    AppMethodBeat.o(217946);
+    AppMethodBeat.i(198600);
+    super.Sg(paramString);
+    AppMethodBeat.o(198600);
   }
 }
 

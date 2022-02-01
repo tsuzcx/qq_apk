@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.appbrand.ui.wxa_container;
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.ad;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.report.MMSecDataActivity;
 
 @Deprecated
 public abstract class BaseAppBrandUILegacy
-  extends MMActivity
+  extends MMSecDataActivity
   implements ad
 {
   public boolean initNavigationSwipeBack()
@@ -23,7 +23,7 @@ public abstract class BaseAppBrandUILegacy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.wxa_container.BaseAppBrandUILegacy
  * JD-Core Version:    0.7.0.1
  */

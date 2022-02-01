@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/a2w" android:background="@color/ey" style="@style/n3" />
-    <TextView android:id="@id/bm1" android:visibility="gone" style="@style/lv" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/ed2" android:background="@color/f0" android:scrollbars="none" android:overScrollMode="never" style="@style/np" />
+        <com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitScrollBar android:layout_gravity="center|right" android:id="@id/hrg" android:layout_width="@dimen/e" android:layout_height="fill_parent" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/l4" android:layout_gravity="center_horizontal" android:id="@id/a1w" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/i8b" />
+    </FrameLayout>
 </LinearLayout>

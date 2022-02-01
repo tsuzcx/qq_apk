@@ -21,36 +21,36 @@ public class PackThumbExt
     AppMethodBeat.i(104824);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.PreviewUrl != null) {
-        paramVarArgs.d(1, this.PreviewUrl);
+        paramVarArgs.e(1, this.PreviewUrl);
       }
       if (this.Desc != null) {
-        paramVarArgs.d(2, this.Desc);
+        paramVarArgs.e(2, this.Desc);
       }
       if (this.Md5 != null) {
-        paramVarArgs.d(3, this.Md5);
+        paramVarArgs.e(3, this.Md5);
       }
       if (this.AesKey != null) {
-        paramVarArgs.d(4, this.AesKey);
+        paramVarArgs.e(4, this.AesKey);
       }
       if (this.CDNUrl != null) {
-        paramVarArgs.d(5, this.CDNUrl);
+        paramVarArgs.e(5, this.CDNUrl);
       }
       if (this.ThumbUrl != null) {
-        paramVarArgs.d(6, this.ThumbUrl);
+        paramVarArgs.e(6, this.ThumbUrl);
       }
       if (this.EncryptUrl != null) {
-        paramVarArgs.d(7, this.EncryptUrl);
+        paramVarArgs.e(7, this.EncryptUrl);
       }
       if (this.ExternUrl != null) {
-        paramVarArgs.d(8, this.ExternUrl);
+        paramVarArgs.e(8, this.ExternUrl);
       }
       if (this.ExternMd5 != null) {
-        paramVarArgs.d(9, this.ExternMd5);
+        paramVarArgs.e(9, this.ExternMd5);
       }
       if (this.ActivityID != null) {
-        paramVarArgs.d(10, this.ActivityID);
+        paramVarArgs.e(10, this.ActivityID);
       }
       AppMethodBeat.o(104824);
       return 0;
@@ -61,52 +61,52 @@ public class PackThumbExt
       }
     }
     label766:
-    for (int i = f.a.a.b.b.a.e(1, this.PreviewUrl) + 0;; i = 0)
+    for (int i = g.a.a.b.b.a.f(1, this.PreviewUrl) + 0;; i = 0)
     {
       paramInt = i;
       if (this.Desc != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Desc);
+        paramInt = i + g.a.a.b.b.a.f(2, this.Desc);
       }
       i = paramInt;
       if (this.Md5 != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.Md5);
+        i = paramInt + g.a.a.b.b.a.f(3, this.Md5);
       }
       paramInt = i;
       if (this.AesKey != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.AesKey);
+        paramInt = i + g.a.a.b.b.a.f(4, this.AesKey);
       }
       i = paramInt;
       if (this.CDNUrl != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.CDNUrl);
+        i = paramInt + g.a.a.b.b.a.f(5, this.CDNUrl);
       }
       paramInt = i;
       if (this.ThumbUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.ThumbUrl);
+        paramInt = i + g.a.a.b.b.a.f(6, this.ThumbUrl);
       }
       i = paramInt;
       if (this.EncryptUrl != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.EncryptUrl);
+        i = paramInt + g.a.a.b.b.a.f(7, this.EncryptUrl);
       }
       paramInt = i;
       if (this.ExternUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.ExternUrl);
+        paramInt = i + g.a.a.b.b.a.f(8, this.ExternUrl);
       }
       i = paramInt;
       if (this.ExternMd5 != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.ExternMd5);
+        i = paramInt + g.a.a.b.b.a.f(9, this.ExternMd5);
       }
       paramInt = i;
       if (this.ActivityID != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.ActivityID);
+        paramInt = i + g.a.a.b.b.a.f(10, this.ActivityID);
       }
       AppMethodBeat.o(104824);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(104824);
@@ -114,7 +114,7 @@ public class PackThumbExt
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         PackThumbExt localPackThumbExt = (PackThumbExt)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -122,43 +122,43 @@ public class PackThumbExt
           AppMethodBeat.o(104824);
           return -1;
         case 1: 
-          localPackThumbExt.PreviewUrl = locala.OmT.readString();
+          localPackThumbExt.PreviewUrl = locala.UbS.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 2: 
-          localPackThumbExt.Desc = locala.OmT.readString();
+          localPackThumbExt.Desc = locala.UbS.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 3: 
-          localPackThumbExt.Md5 = locala.OmT.readString();
+          localPackThumbExt.Md5 = locala.UbS.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 4: 
-          localPackThumbExt.AesKey = locala.OmT.readString();
+          localPackThumbExt.AesKey = locala.UbS.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 5: 
-          localPackThumbExt.CDNUrl = locala.OmT.readString();
+          localPackThumbExt.CDNUrl = locala.UbS.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 6: 
-          localPackThumbExt.ThumbUrl = locala.OmT.readString();
+          localPackThumbExt.ThumbUrl = locala.UbS.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 7: 
-          localPackThumbExt.EncryptUrl = locala.OmT.readString();
+          localPackThumbExt.EncryptUrl = locala.UbS.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 8: 
-          localPackThumbExt.ExternUrl = locala.OmT.readString();
+          localPackThumbExt.ExternUrl = locala.UbS.readString();
           AppMethodBeat.o(104824);
           return 0;
         case 9: 
-          localPackThumbExt.ExternMd5 = locala.OmT.readString();
+          localPackThumbExt.ExternMd5 = locala.UbS.readString();
           AppMethodBeat.o(104824);
           return 0;
         }
-        localPackThumbExt.ActivityID = locala.OmT.readString();
+        localPackThumbExt.ActivityID = locala.UbS.readString();
         AppMethodBeat.o(104824);
         return 0;
       }
@@ -169,7 +169,7 @@ public class PackThumbExt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.PackThumbExt
  * JD-Core Version:    0.7.0.1
  */

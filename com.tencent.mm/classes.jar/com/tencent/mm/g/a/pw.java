@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class pw
-  extends b
+  extends IEvent
 {
-  public a dFr;
+  public a dVW;
   
   public pw()
   {
@@ -15,25 +15,26 @@ public final class pw
   
   private pw(byte paramByte)
   {
-    AppMethodBeat.i(91213);
-    this.dFr = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(168630);
+    this.dVW = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(91213);
+    AppMethodBeat.o(168630);
   }
   
   public static final class a
   {
-    public String content;
-    public String dFs;
-    public String dzZ;
-    public String toUser;
+    public boolean dVX;
+    public String dVY;
+    public String mediaId;
+    public int process;
+    public int size;
     public int type;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.pw
  * JD-Core Version:    0.7.0.1
  */

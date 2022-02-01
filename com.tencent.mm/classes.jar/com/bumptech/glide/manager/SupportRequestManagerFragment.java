@@ -15,11 +15,11 @@ public class SupportRequestManagerFragment
   extends Fragment
 {
   j aDc;
-  final a aMB;
-  final m aMC;
-  private final Set<SupportRequestManagerFragment> aMD;
-  private SupportRequestManagerFragment aMR;
-  Fragment aMS;
+  private SupportRequestManagerFragment aMI;
+  Fragment aMJ;
+  final a aMs;
+  final m aMt;
+  private final Set<SupportRequestManagerFragment> aMu;
   
   public SupportRequestManagerFragment()
   {
@@ -32,19 +32,26 @@ public class SupportRequestManagerFragment
   private SupportRequestManagerFragment(a parama)
   {
     AppMethodBeat.i(77582);
-    this.aMC = new SupportRequestManagerFragment.a(this);
-    this.aMD = new HashSet();
-    this.aMB = parama;
+    this.aMt = new a();
+    this.aMu = new HashSet();
+    this.aMs = parama;
     AppMethodBeat.o(77582);
   }
   
-  private void pO()
+  private void a(SupportRequestManagerFragment paramSupportRequestManagerFragment)
+  {
+    AppMethodBeat.i(204486);
+    this.aMu.remove(paramSupportRequestManagerFragment);
+    AppMethodBeat.o(204486);
+  }
+  
+  private void pT()
   {
     AppMethodBeat.i(77583);
-    if (this.aMR != null)
+    if (this.aMI != null)
     {
-      this.aMR.aMD.remove(this);
-      this.aMR = null;
+      this.aMI.a(this);
+      this.aMI = null;
     }
     AppMethodBeat.o(77583);
   }
@@ -56,10 +63,10 @@ public class SupportRequestManagerFragment
     try
     {
       paramContext = getActivity();
-      pO();
-      this.aMR = c.ae(paramContext).aCq.a(paramContext.getSupportFragmentManager(), l.l(paramContext));
-      if (!equals(this.aMR)) {
-        this.aMR.aMD.add(this);
+      pT();
+      this.aMI = c.af(paramContext).aCp.a(paramContext.getSupportFragmentManager(), l.l(paramContext));
+      if (!equals(this.aMI)) {
+        this.aMI.aMu.add(this);
       }
       AppMethodBeat.o(77584);
       return;
@@ -75,8 +82,8 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77588);
     super.onDestroy();
-    this.aMB.onDestroy();
-    pO();
+    this.aMs.onDestroy();
+    pT();
     AppMethodBeat.o(77588);
   }
   
@@ -84,8 +91,8 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77585);
     super.onDetach();
-    this.aMS = null;
-    pO();
+    this.aMJ = null;
+    pT();
     AppMethodBeat.o(77585);
   }
   
@@ -93,7 +100,7 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77586);
     super.onStart();
-    this.aMB.onStart();
+    this.aMs.onStart();
     AppMethodBeat.o(77586);
   }
   
@@ -101,7 +108,7 @@ public class SupportRequestManagerFragment
   {
     AppMethodBeat.i(77587);
     super.onStop();
-    this.aMB.onStop();
+    this.aMs.onStop();
     AppMethodBeat.o(77587);
   }
   
@@ -116,13 +123,27 @@ public class SupportRequestManagerFragment
       localObject = localObject + "}";
       AppMethodBeat.o(77589);
       return localObject;
-      localObject = this.aMS;
+      localObject = this.aMJ;
+    }
+  }
+  
+  final class a
+    implements m
+  {
+    a() {}
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(77580);
+      String str = super.toString() + "{fragment=" + SupportRequestManagerFragment.this + "}";
+      AppMethodBeat.o(77580);
+      return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.manager.SupportRequestManagerFragment
  * JD-Core Version:    0.7.0.1
  */

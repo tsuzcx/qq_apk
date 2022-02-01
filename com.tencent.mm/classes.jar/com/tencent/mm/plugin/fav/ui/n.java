@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.fav.ui;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class n
 {
-  public static String R(Context paramContext, int paramInt)
+  public static String W(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(106957);
     if (paramInt <= 0)
     {
-      paramContext = paramContext.getString(2131759032, new Object[] { Integer.valueOf(0) });
+      paramContext = paramContext.getString(2131759358, new Object[] { Integer.valueOf(0) });
       AppMethodBeat.o(106957);
       return paramContext;
     }
@@ -21,16 +21,16 @@ public final class n
     paramInt %= 60;
     if (i == 0)
     {
-      paramContext = paramContext.getString(2131759032, new Object[] { Integer.valueOf(paramInt) });
+      paramContext = paramContext.getString(2131759358, new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(106957);
       return paramContext;
     }
-    paramContext = paramContext.getString(2131759031, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+    paramContext = paramContext.getString(2131759357, new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
     AppMethodBeat.o(106957);
     return paramContext;
   }
   
-  public static String S(Context paramContext, int paramInt)
+  public static String X(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(106959);
     paramContext = "[" + paramContext.getResources().getString(paramInt) + "]";
@@ -38,15 +38,15 @@ public final class n
     return paramContext;
   }
   
-  public static boolean ahJ(String paramString)
+  public static boolean asr(String paramString)
   {
     AppMethodBeat.i(106958);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(106958);
       return false;
     }
-    if (!paramString.equals(ak.getContext().getResources().getString(2131760739)))
+    if (!paramString.equals(MMApplicationContext.getContext().getResources().getString(2131762480)))
     {
       AppMethodBeat.o(106958);
       return true;

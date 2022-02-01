@@ -1,43 +1,44 @@
 package com.tencent.mm.emoji.d;
 
-import android.content.Context;
-import android.content.res.Resources.Theme;
-import android.util.TypedValue;
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ao;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.emoji.b.k;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.protocal.protobuf.il;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.emotion.EmojiInfo;
+import com.tencent.mm.vending.c.a;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"getAttrResId", "", "context", "Landroid/content/Context;", "attributeId", "Landroid/view/View;", "setSvgDrawable", "", "Landroid/widget/ImageView;", "resId", "color", "plugin-emojisdk_release"})
 public final class e
+  extends d
 {
-  public static final void a(ImageView paramImageView, int paramInt1, int paramInt2)
+  public e(EmojiInfo paramEmojiInfo, boolean paramBoolean, d.a parama)
   {
-    AppMethodBeat.i(105783);
-    p.h(paramImageView, "$this$setSvgDrawable");
-    paramImageView.setImageDrawable(ao.k(paramImageView.getContext(), paramInt1, paramInt2));
-    AppMethodBeat.o(105783);
-  }
-  
-  public static final int cm(Context paramContext)
-  {
-    AppMethodBeat.i(105784);
-    if (paramContext == null)
+    super(paramEmojiInfo, paramBoolean, parama);
+    AppMethodBeat.i(104489);
+    new f(paramEmojiInfo, paramBoolean, new d.a()
     {
-      AppMethodBeat.o(105784);
-      return 0;
-    }
-    TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(2130968965, localTypedValue, true);
-    int i = localTypedValue.resourceId;
-    AppMethodBeat.o(105784);
-    return i;
+      public final void A(int paramAnonymousInt, String paramAnonymousString)
+      {
+        AppMethodBeat.i(104487);
+        if (paramAnonymousInt == 0)
+        {
+          e.a(e.this, paramAnonymousString);
+          AppMethodBeat.o(104487);
+          return;
+        }
+        e.this.pt(paramAnonymousInt);
+        AppMethodBeat.o(104487);
+      }
+    });
+    AppMethodBeat.o(104489);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.d.e
  * JD-Core Version:    0.7.0.1
  */

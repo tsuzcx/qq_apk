@@ -1,20 +1,20 @@
 package com.tencent.mm.media.j;
 
 import android.graphics.SurfaceTexture.OnFrameAvailableListener;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16})
+@l(hxD={1, 1, 16})
 public final class b
   implements SurfaceTexture.OnFrameAvailableListener
 {
-  public b(d.g.a.b paramb)
+  public b(kotlin.g.a.b paramb)
   {
-    this.heQ = paramb;
+    this.hXF = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.media.j.b
  * JD-Core Version:    0.7.0.1
  */

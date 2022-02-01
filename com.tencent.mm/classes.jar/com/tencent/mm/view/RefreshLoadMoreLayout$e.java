@@ -1,22 +1,22 @@
 package com.tencent.mm.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
 final class RefreshLoadMoreLayout$e
   extends q
-  implements a<z>
+  implements a<x>
 {
-  public static final e LOc;
+  public static final e Rmz;
   
   static
   {
     AppMethodBeat.i(164577);
-    LOc = new e();
+    Rmz = new e();
     AppMethodBeat.o(164577);
   }
   

@@ -1,5 +1,6 @@
 package com.tencent.mm.plugin.sns.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Pair;
@@ -9,210 +10,312 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.loader.c.e.a;
-import com.tencent.mm.modelsns.b;
-import com.tencent.mm.modelsns.h;
-import com.tencent.mm.plugin.sns.c.a;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.plugin.sns.model.bc;
-import com.tencent.mm.plugin.sns.model.bd;
-import com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView;
-import com.tencent.mm.pluginsdk.i.d;
+import com.tencent.mm.modelsns.d;
+import com.tencent.mm.modelsns.n;
+import com.tencent.mm.plugin.sns.k.e;
+import com.tencent.mm.plugin.sns.model.be;
+import com.tencent.mm.plugin.sns.model.bf;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.ap;
 import com.tencent.mm.pointers.PInt;
-import com.tencent.mm.protocal.protobuf.arx;
-import com.tencent.mm.protocal.protobuf.ary;
-import com.tencent.mm.protocal.protobuf.bwk;
-import com.tencent.mm.protocal.protobuf.did;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.protocal.protobuf.axf;
+import com.tencent.mm.protocal.protobuf.cjy;
+import com.tencent.mm.protocal.protobuf.ebm;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.ui.aa;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 import org.b.d.i;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/sns/ui/FinderLiveWidget;", "Lcom/tencent/mm/plugin/sns/ui/IWidget;", "context", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "appId", "", "appName", "finderShareObject", "Lcom/tencent/mm/modelsns/SnsFinderShareLive;", "layout", "Landroid/view/View;", "mSessionId", "needReport", "", "publisherId", "thumb", "Landroid/widget/ImageView;", "title", "beforeCommit", "checkLocation", "commit", "isPrivated", "", "syncFlag", "token", "Lorg/scribe/model/Token;", "desc", "withList", "", "location", "Lcom/tencent/mm/protocal/protobuf/Location;", "groupList", "Ljava/util/LinkedList;", "", "parseterLen", "isBlackGroup", "groupUser", "pContentType", "Lcom/tencent/mm/pointers/PInt;", "canvasInfo", "ContactTagCount", "TempUserCount", "enableNext", "handlerOnCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "handleronDestroy", "hanlerOnSave", "outState", "initView", "needAutoDraft", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "plugin-sns_release"})
 public final class t
-  implements ac
+  implements ad
 {
-  private static com.tencent.mm.loader.c.e Ahx;
-  private ImageView Ahu = null;
-  private ImageIndicatorView Ahv = null;
-  private b Ahw = null;
+  private d EpQ;
   private String appId;
   private String appName;
-  private String dIz;
-  private MMActivity fNT = null;
-  private ImageView lxz = null;
+  private String eam;
+  private MMActivity gte;
+  private ImageView mEx;
   private String mSessionId;
-  private boolean rHX;
-  private View rY = null;
-  private String title = "";
-  
-  static
-  {
-    AppMethodBeat.i(219657);
-    e.a locala = new e.a();
-    locala.hgP = true;
-    locala.hgO = true;
-    Ahx = locala.aru();
-    AppMethodBeat.o(219657);
-  }
+  private View sc;
+  private boolean thE;
+  private String title;
   
   public t(MMActivity paramMMActivity)
   {
-    this.fNT = paramMMActivity;
+    AppMethodBeat.i(201815);
+    this.title = "";
+    this.gte = paramMMActivity;
+    AppMethodBeat.o(201815);
   }
   
-  public final boolean a(int paramInt1, int paramInt2, i parami, String paramString1, List<String> paramList1, bwk parambwk, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
+  public final boolean a(int paramInt1, int paramInt2, i parami, String paramString1, List<String> paramList1, cjy paramcjy, LinkedList<Long> paramLinkedList, int paramInt3, boolean paramBoolean, List<String> paramList2, PInt paramPInt, String paramString2, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(219655);
-    paramLinkedList = new bd(28);
-    if (this.Ahw != null) {
-      paramLinkedList.a(this.Ahw);
+    AppMethodBeat.i(201814);
+    paramLinkedList = this.gte;
+    if (paramLinkedList == null) {
+      p.btv("context");
     }
-    paramPInt.value = paramLinkedList.beN;
-    if (paramInt3 > a.zsC) {
-      paramLinkedList.QI(4);
+    paramLinkedList = new bf(34, (Context)paramLinkedList);
+    if (this.EpQ != null) {
+      paramLinkedList.a(this.EpQ);
     }
-    paramLinkedList.aAF(this.title).aAA(paramString1);
-    paramLinkedList.aAD(bu.bI(this.fNT.getIntent().getStringExtra("ksnsupload_link_desc"), ""));
-    paramLinkedList.QL(paramInt1);
+    if (paramPInt == null) {
+      p.hyc();
+    }
+    paramPInt.value = paramLinkedList.getContentType();
+    if (paramInt3 > com.tencent.mm.plugin.sns.c.a.DCT) {
+      paramLinkedList.YF(4);
+    }
+    paramLinkedList.aPB(this.title).aPw(paramString1);
+    paramString1 = this.gte;
+    if (paramString1 == null) {
+      p.btv("context");
+    }
+    if (paramString1 == null) {
+      p.hyc();
+    }
+    paramLinkedList.aPz(Util.nullAs(paramString1.getIntent().getStringExtra("ksnsupload_link_desc"), ""));
+    paramLinkedList.fbU().YI(paramInt1);
     if (paramBoolean) {
-      paramLinkedList.QO(1);
+      paramLinkedList.YL(1);
     }
     for (;;)
     {
-      paramLinkedList.fU(paramList2);
+      paramLinkedList.gR(paramList2);
       paramString1 = new LinkedList();
       if (paramList1 == null) {
         break;
       }
       new LinkedList();
-      paramList2 = d.feg();
+      paramList2 = com.tencent.mm.pluginsdk.i.a.gnq();
       paramList1 = paramList1.iterator();
       while (paramList1.hasNext())
       {
         paramPInt = (String)paramList1.next();
         if (!paramList2.contains(paramPInt))
         {
-          did localdid = new did();
-          localdid.nIJ = paramPInt;
-          paramString1.add(localdid);
+          ebm localebm = new ebm();
+          localebm.UserName = paramPInt;
+          paramString1.add(localebm);
         }
       }
-      paramLinkedList.QO(0);
+      paramLinkedList.YL(0);
     }
     if (parami != null) {
-      paramLinkedList.jy(parami.token, parami.HmQ);
+      paramLinkedList.kl(parami.token, parami.Mte);
     }
-    paramLinkedList.aV(paramString1);
-    if (!bu.isNullOrNil(this.appId)) {
-      paramLinkedList.aAG(this.appId);
+    paramLinkedList.bq(paramString1);
+    if (!Util.isNullOrNil(this.appId)) {
+      paramLinkedList.aPC(this.appId);
     }
-    if (!bu.isNullOrNil(this.appName)) {
-      paramLinkedList.aAH(bu.bI(this.appName, ""));
+    if (!Util.isNullOrNil(this.appName)) {
+      paramLinkedList.aPD(Util.nullAs(this.appName, ""));
     }
-    paramLinkedList.a(parambwk);
-    paramLinkedList.aAC(paramString2);
-    paramLinkedList.aAL(this.dIz);
+    paramLinkedList.a(paramcjy);
+    paramLinkedList.aPy(paramString2);
+    paramLinkedList.aPH(this.eam);
     paramLinkedList.setSessionId(this.mSessionId);
     paramInt1 = paramLinkedList.commit();
-    if (this.rHX) {
-      com.tencent.mm.plugin.sns.j.e.zKO.zLA = paramInt1;
+    if (this.thE) {
+      e.DUQ.DVC = paramInt1;
     }
-    ah.dXA().dWc();
-    this.fNT.finish();
-    AppMethodBeat.o(219655);
+    com.tencent.mm.plugin.sns.model.aj.faK().eZn();
+    parami = this.gte;
+    if (parami == null) {
+      p.btv("context");
+    }
+    parami.finish();
+    AppMethodBeat.o(201814);
     return false;
   }
   
-  public final void aq(Bundle paramBundle)
+  public final void aC(Bundle paramBundle)
   {
-    AppMethodBeat.i(219653);
-    this.title = bu.bI(this.fNT.getIntent().getStringExtra("Ksnsupload_title"), "");
-    this.dIz = bu.bI(this.fNT.getIntent().getStringExtra("KPublisherId"), "");
-    this.mSessionId = bu.bI(this.fNT.getIntent().getStringExtra("reportSessionId"), "");
-    this.appId = bu.bI(this.fNT.getIntent().getStringExtra("Ksnsupload_appid"), "");
-    this.appName = bu.bI(this.fNT.getIntent().getStringExtra("Ksnsupload_appname"), "");
-    this.rHX = this.fNT.getIntent().getBooleanExtra("ksnsupload_finder_need_report", false);
-    com.tencent.mm.plugin.sns.j.e.zKO.zLB = this.fNT.getIntent().getLongExtra("finder_feed_id", 0L);
-    paramBundle = this.fNT.getIntent().getStringExtra("ksnsupload_finder_object_xml");
-    if (!bu.isNullOrNil(paramBundle))
+    AppMethodBeat.i(201813);
+    paramBundle = this.gte;
+    if (paramBundle == null) {
+      p.btv("context");
+    }
+    if (paramBundle == null) {
+      p.hyc();
+    }
+    paramBundle = Util.nullAs(paramBundle.getIntent().getStringExtra("Ksnsupload_title"), "");
+    p.g(paramBundle, "Util.nullAs(context!!.in…dUI.KSnsUploadTitle), \"\")");
+    this.title = paramBundle;
+    paramBundle = this.gte;
+    if (paramBundle == null) {
+      p.btv("context");
+    }
+    this.eam = Util.nullAs(paramBundle.getIntent().getStringExtra("KPublisherId"), "");
+    paramBundle = this.gte;
+    if (paramBundle == null) {
+      p.btv("context");
+    }
+    this.mSessionId = Util.nullAs(paramBundle.getIntent().getStringExtra("reportSessionId"), "");
+    paramBundle = this.gte;
+    if (paramBundle == null) {
+      p.btv("context");
+    }
+    this.appId = Util.nullAs(paramBundle.getIntent().getStringExtra("Ksnsupload_appid"), "");
+    paramBundle = this.gte;
+    if (paramBundle == null) {
+      p.btv("context");
+    }
+    this.appName = Util.nullAs(paramBundle.getIntent().getStringExtra("Ksnsupload_appname"), "");
+    paramBundle = this.gte;
+    if (paramBundle == null) {
+      p.btv("context");
+    }
+    this.thE = paramBundle.getIntent().getBooleanExtra("ksnsupload_finder_need_report", false);
+    paramBundle = e.DUQ;
+    Object localObject = this.gte;
+    if (localObject == null) {
+      p.btv("context");
+    }
+    paramBundle.Aqq = ((MMActivity)localObject).getIntent().getLongExtra("finder_feed_id", 0L);
+    paramBundle = this.gte;
+    if (paramBundle == null) {
+      p.btv("context");
+    }
+    paramBundle = paramBundle.getIntent().getStringExtra("ksnsupload_finder_live_xml");
+    if (!Util.isNullOrNil(paramBundle))
     {
-      paramBundle = bx.M(paramBundle, "finderFeed");
+      paramBundle = XmlParser.parseXml(paramBundle, "finderLive", null);
       if (paramBundle != null)
       {
-        this.Ahw = new b();
-        this.Ahw.j("", paramBundle);
-      }
-    }
-    AppMethodBeat.o(219653);
-  }
-  
-  public final void ar(Bundle paramBundle) {}
-  
-  public final boolean edl()
-  {
-    return this.Ahw != null;
-  }
-  
-  public final View edm()
-  {
-    AppMethodBeat.i(219654);
-    this.rY = z.jV(this.fNT).inflate(2131496489, null);
-    this.lxz = ((ImageView)this.rY.findViewById(2131308430));
-    this.Ahu = ((ImageView)this.rY.findViewById(2131308429));
-    this.Ahv = ((ImageIndicatorView)this.rY.findViewById(2131308427));
-    Object localObject1;
-    arx localarx;
-    Object localObject2;
-    if ((this.Ahw != null) && (this.Ahw.ipW != null))
-    {
-      localObject1 = this.Ahw.ipW;
-      if (!bu.ht(((ary)localObject1).mediaList))
-      {
-        localarx = (arx)((ary)localObject1).mediaList.get(0);
-        if (((ary)localObject1).GIy != 4) {
-          break label266;
+        this.EpQ = new d();
+        localObject = this.EpQ;
+        if (localObject == null) {
+          p.hyc();
         }
-        localObject2 = h.a((int)localarx.width, (int)localarx.height, this.fNT, false);
-        localObject2 = new ViewGroup.LayoutParams(((Integer)((Pair)localObject2).first).intValue(), ((Integer)((Pair)localObject2).second).intValue());
-        this.rY.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        this.rY.requestLayout();
-        ((com.tencent.mm.plugin.i.a.t)g.ad(com.tencent.mm.plugin.i.a.t.class)).loadImage(localarx.thumbUrl, this.lxz);
+        ((d)localObject).j("", paramBundle);
       }
-      if (((ary)localObject1).GIy != 4) {
-        break label330;
-      }
-      this.Ahu.setVisibility(0);
-      this.Ahv.setVisibility(8);
     }
+    AppMethodBeat.o(201813);
+  }
+  
+  public final void aD(Bundle paramBundle) {}
+  
+  public final boolean ffA()
+  {
+    return this.EpQ != null;
+  }
+  
+  public final View ffB()
+  {
+    AppMethodBeat.i(201812);
+    Object localObject1 = this.gte;
+    if (localObject1 == null) {
+      p.btv("context");
+    }
+    localObject1 = aa.jQ((Context)localObject1).inflate(2131496435, null);
+    p.g(localObject1, "MMLayoutInflater.getInfl…s_finder_live_item, null)");
+    this.sc = ((View)localObject1);
+    localObject1 = this.sc;
+    if (localObject1 == null) {
+      p.btv("layout");
+    }
+    this.mEx = ((ImageView)((View)localObject1).findViewById(2131308127));
+    axf localaxf;
+    int i;
+    Object localObject2;
+    if (this.EpQ != null)
+    {
+      localObject1 = this.EpQ;
+      if (localObject1 == null) {
+        p.hyc();
+      }
+      if (((d)localObject1).jlf != null)
+      {
+        localObject1 = this.EpQ;
+        if (localObject1 == null) {
+          p.hyc();
+        }
+        localaxf = ((d)localObject1).jlf;
+        localObject1 = this.gte;
+        if (localObject1 == null) {
+          p.btv("context");
+        }
+        localObject1 = ap.ha((Context)localObject1);
+        i = localObject1[0];
+        int j = localObject1[1];
+        localObject1 = this.gte;
+        if (localObject1 == null) {
+          p.btv("context");
+        }
+        localObject1 = n.a(i, j, (Context)localObject1, false);
+        localObject2 = (Integer)((Pair)localObject1).first;
+        i = (int)(((Number)((Pair)localObject1).first).floatValue() * 3.5F / 3.0F);
+        p.g(localObject2, "smallSide");
+        localObject1 = new ViewGroup.LayoutParams(((Integer)localObject2).intValue(), i);
+        localObject2 = this.sc;
+        if (localObject2 == null) {
+          p.btv("layout");
+        }
+        ((View)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject1);
+        localObject1 = this.sc;
+        if (localObject1 == null) {
+          p.btv("layout");
+        }
+        ((View)localObject1).requestLayout();
+        localObject1 = "";
+        localObject2 = (CharSequence)localaxf.coverUrl;
+        if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+          break label357;
+        }
+        i = 1;
+        if (i != 0) {
+          break label362;
+        }
+        localObject1 = localaxf.coverUrl;
+        p.g(localObject1, "shareObject.coverUrl");
+      }
+    }
+    label412:
     for (;;)
     {
-      this.rY.setOnClickListener(new t.1(this));
-      localObject1 = this.rY;
-      AppMethodBeat.o(219654);
+      ((com.tencent.mm.plugin.i.a.aj)g.ah(com.tencent.mm.plugin.i.a.aj.class)).loadImage((String)localObject1, this.mEx);
+      localObject1 = this.sc;
+      if (localObject1 == null) {
+        p.btv("layout");
+      }
+      AppMethodBeat.o(201812);
       return localObject1;
-      label266:
-      localObject2 = h.a((int)localarx.width, (int)localarx.height, this.fNT);
-      localObject2 = new ViewGroup.LayoutParams(((Integer)((Pair)localObject2).first).intValue(), ((Integer)((Pair)localObject2).second).intValue());
-      this.rY.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      this.rY.requestLayout();
+      label357:
+      i = 0;
       break;
-      label330:
-      this.Ahu.setVisibility(8);
-      this.Ahv.setVisibility(8);
-      this.Ahv.ASU = ((ary)localObject1).drZ;
+      label362:
+      localObject2 = (CharSequence)localaxf.headUrl;
+      if ((localObject2 == null) || (((CharSequence)localObject2).length() == 0)) {}
+      for (i = 1;; i = 0)
+      {
+        if (i != 0) {
+          break label412;
+        }
+        localObject1 = localaxf.headUrl;
+        p.g(localObject1, "shareObject.headUrl");
+        break;
+      }
     }
   }
   
-  public final boolean edn()
+  public final boolean ffC()
   {
     return true;
   }
   
-  public final boolean edo()
+  public final boolean ffD()
+  {
+    return true;
+  }
+  
+  public final boolean ffE()
   {
     return false;
   }
@@ -224,7 +327,7 @@ public final class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.t
  * JD-Core Version:    0.7.0.1
  */

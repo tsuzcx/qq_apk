@@ -13,7 +13,7 @@ public class AVResampleFactory
   
   public AVResampleFactory()
   {
-    AppMethodBeat.i(215099);
+    AppMethodBeat.i(218450);
     this.tavResampleEnable = false;
     try
     {
@@ -21,13 +21,13 @@ public class AVResampleFactory
         bool = true;
       }
       this.tavResampleEnable = bool;
-      AppMethodBeat.o(215099);
+      AppMethodBeat.o(218450);
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
       Logger.w("AVResampleFactory", "newAVResample: ".concat(String.valueOf(localClassNotFoundException)));
-      AppMethodBeat.o(215099);
+      AppMethodBeat.o(218450);
     }
   }
   
@@ -35,12 +35,12 @@ public class AVResampleFactory
   {
     try
     {
-      AppMethodBeat.i(215098);
+      AppMethodBeat.i(218449);
       if (instance == null) {
         instance = new AVResampleFactory();
       }
       AVResampleFactory localAVResampleFactory = instance;
-      AppMethodBeat.o(215098);
+      AppMethodBeat.o(218449);
       return localAVResampleFactory;
     }
     finally {}
@@ -67,20 +67,20 @@ public class AVResampleFactory
   
   public IAVResample newAVResample(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(215100);
+    AppMethodBeat.i(218451);
     if (this.tavResampleEnable)
     {
       TAVResample localTAVResample = new TAVResample(paramInt1, paramInt2, paramInt3, paramInt4);
-      AppMethodBeat.o(215100);
+      AppMethodBeat.o(218451);
       return localTAVResample;
     }
-    AppMethodBeat.o(215100);
+    AppMethodBeat.o(218451);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.decoder.factory.AVResampleFactory
  * JD-Core Version:    0.7.0.1
  */

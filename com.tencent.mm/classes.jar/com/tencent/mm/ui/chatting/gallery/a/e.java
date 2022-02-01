@@ -6,68 +6,68 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.websearch.api.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.j;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanButtonConfigManager;", "", "()V", "TAG", "", "openImageSearch", "", "showScanCodeButton", "showSearchBubble", "showSearchButton", "init", "", "app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/gallery/scan/ImageScanButtonConfigManager;", "", "()V", "TAG", "", "openImageSearch", "", "showScanCodeButton", "showSearchBubble", "showSearchButton", "init", "", "app_release"})
 public final class e
 {
-  private static boolean KpJ;
-  private static boolean KpK;
-  private static boolean KpL;
-  public static final e KpM;
-  private static boolean OAw;
+  private static boolean PBR;
+  private static boolean PBS;
+  private static boolean PBT;
+  private static boolean PBU;
+  public static final e PBV;
   
   static
   {
-    AppMethodBeat.i(188274);
-    KpM = new e();
-    KpJ = true;
-    AppMethodBeat.o(188274);
+    AppMethodBeat.i(231225);
+    PBV = new e();
+    PBR = true;
+    AppMethodBeat.o(231225);
   }
   
-  public static final boolean fKZ()
+  public static final boolean gTr()
   {
-    return KpJ;
+    return PBR;
   }
   
-  public static final boolean fLa()
+  public static final boolean gTs()
   {
-    return KpK;
+    return PBT;
   }
   
-  public static final boolean fLb()
+  public static final boolean gTt()
   {
-    return KpL;
+    return PBU;
   }
   
   public static final void init()
   {
-    AppMethodBeat.i(188273);
-    int i = ((b)g.ab(b.class)).a(b.a.qJf, 0);
+    AppMethodBeat.i(231224);
+    int i = ((b)g.af(b.class)).a(b.a.seE, 0);
     int j;
     if (i == 0)
     {
       bool = true;
-      KpJ = bool;
-      a locala = g.ad(c.class);
+      PBR = bool;
+      a locala = g.ah(c.class);
       p.g(locala, "MMKernel.plugin(IPluginWebSearch::class.java)");
       bool = ((c)locala).isOpenImageSearch();
-      OAw = bool;
-      KpK = bool;
-      j = ((b)g.ab(b.class)).a(b.a.qJh, 0);
-      if ((!OAw) || ((j != 1) && (!j.DEBUG) && (!j.IS_FLAVOR_RED))) {
+      PBS = bool;
+      PBT = bool;
+      j = ((b)g.af(b.class)).a(b.a.seG, 0);
+      if ((!PBS) || ((j != 1) && (!BuildInfo.DEBUG) && (!BuildInfo.IS_FLAVOR_RED))) {
         break label183;
       }
     }
     label183:
     for (boolean bool = true;; bool = false)
     {
-      KpL = bool;
-      ae.i("MicroMsg.ImageScanCodeConfigManager", "ImageScanCodeConfigManager init config: %d, showScanCodeButton: %b, openImageSearch: %b, showSearchButton: %b, showSearchBubbleConfig: %d, showSearchBubble: %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(KpJ), Boolean.valueOf(OAw), Boolean.valueOf(KpK), Integer.valueOf(j), Boolean.valueOf(KpL) });
-      AppMethodBeat.o(188273);
+      PBU = bool;
+      Log.i("MicroMsg.ImageScanCodeConfigManager", "ImageScanCodeConfigManager init config: %d, showScanCodeButton: %b, openImageSearch: %b, showSearchButton: %b, showSearchBubbleConfig: %d, showSearchBubble: %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(PBR), Boolean.valueOf(PBS), Boolean.valueOf(PBT), Integer.valueOf(j), Boolean.valueOf(PBU) });
+      AppMethodBeat.o(231224);
       return;
       bool = false;
       break;
@@ -76,7 +76,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.a.e
  * JD-Core Version:    0.7.0.1
  */

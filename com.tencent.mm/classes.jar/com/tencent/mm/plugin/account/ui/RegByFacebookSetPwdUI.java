@@ -9,86 +9,86 @@ import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.a.b.a.a;
 import com.tencent.mm.plugin.account.friend.a.an;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.base.h;
 
 public class RegByFacebookSetPwdUI
   extends SetPwdUI
 {
-  protected final ProgressDialog a(Context paramContext, String paramString, DialogInterface.OnCancelListener paramOnCancelListener)
+  protected final ProgressDialog a(Context paramContext, String paramString1, String paramString2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(128500);
-    paramContext = h.b(paramContext, getString(2131762310), true, paramOnCancelListener);
-    AppMethodBeat.o(128500);
+    AppMethodBeat.i(196889);
+    paramContext = h.a(paramContext, getString(2131764376), true, paramOnCancelListener);
+    AppMethodBeat.o(196889);
     return paramContext;
   }
   
   protected final void a(a.a parama)
   {
     AppMethodBeat.i(128504);
-    switch (2.jkE[parama.ordinal()])
+    switch (2.kiH[parama.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(128504);
       return;
-      h.l(this, 2131762306, 2131762308);
+      h.n(this, 2131764372, 2131764374);
       AppMethodBeat.o(128504);
       return;
-      h.l(this, 2131762307, 2131762308);
+      h.n(this, 2131764373, 2131764374);
       AppMethodBeat.o(128504);
       return;
-      h.l(this, 2131764656, 2131755731);
+      h.n(this, 2131767027, 2131755802);
       AppMethodBeat.o(128504);
       return;
-      h.l(this, 2131764660, 2131755731);
+      h.n(this, 2131767031, 2131755802);
     }
   }
   
-  protected final n aUK()
-  {
-    AppMethodBeat.i(128501);
-    an localan = new an(this.jtM);
-    AppMethodBeat.o(128501);
-    return localan;
-  }
-  
-  protected final String aUL()
-  {
-    AppMethodBeat.i(128502);
-    String str = ((EditText)findViewById(2131303948)).getText().toString();
-    AppMethodBeat.o(128502);
-    return str;
-  }
-  
-  protected final String aUM()
-  {
-    AppMethodBeat.i(128503);
-    String str = ((EditText)findViewById(2131303947)).getText().toString();
-    AppMethodBeat.o(128503);
-    return str;
-  }
-  
-  protected final int aUN()
+  protected final int bpA()
   {
     return 382;
   }
   
+  protected final q bpx()
+  {
+    AppMethodBeat.i(128501);
+    an localan = new an(this.ksb);
+    AppMethodBeat.o(128501);
+    return localan;
+  }
+  
+  protected final String bpy()
+  {
+    AppMethodBeat.i(128502);
+    String str = ((EditText)findViewById(2131306802)).getText().toString();
+    AppMethodBeat.o(128502);
+    return str;
+  }
+  
+  protected final String bpz()
+  {
+    AppMethodBeat.i(128503);
+    String str = ((EditText)findViewById(2131306801)).getText().toString();
+    AppMethodBeat.o(128503);
+    return str;
+  }
+  
   public int getLayoutId()
   {
-    return 2131495239;
+    return 2131496085;
   }
   
   public void initView()
   {
     AppMethodBeat.i(128499);
-    setMMTitle(2131762319);
+    setMMTitle(2131764385);
     AppMethodBeat.o(128499);
   }
   
@@ -97,8 +97,8 @@ public class RegByFacebookSetPwdUI
     AppMethodBeat.i(128505);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      g.ajR().ajA().set(57, Integer.valueOf(0));
-      h.d(this, getString(2131762317, new Object[] { (String)g.ajR().ajA().get(5, null) }), getString(2131762308), new DialogInterface.OnClickListener()
+      g.aAh().azQ().set(57, Integer.valueOf(0));
+      h.d(this, getString(2131764383, new Object[] { (String)g.aAh().azQ().get(5, null) }), getString(2131764374), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -138,7 +138,7 @@ public class RegByFacebookSetPwdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.RegByFacebookSetPwdUI
  * JD-Core Version:    0.7.0.1
  */

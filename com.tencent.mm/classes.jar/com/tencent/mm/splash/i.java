@@ -10,7 +10,7 @@ import java.util.ArrayList;
 final class i
   extends HellActivity
 {
-  public String IFj;
+  public String NMc;
   
   protected final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
@@ -26,7 +26,7 @@ final class i
     else
     {
       finish();
-      h.b("WxSplash.SplashHackActivity", "unknown request code.", new Object[0]);
+      h.c("WxSplash.SplashHackActivity", "unknown request code.", new Object[0]);
     }
     AppMethodBeat.o(40677);
   }
@@ -35,9 +35,9 @@ final class i
   {
     AppMethodBeat.i(40672);
     super.onCreate(paramBundle);
-    h.b("WxSplash.SplashHackActivity", "onCreate", new Object[0]);
+    h.c("WxSplash.SplashHackActivity", "onCreate", new Object[0]);
     setVisible(false);
-    paramBundle = new Intent(this, h.frp());
+    paramBundle = new Intent(this, h.gyp());
     paramBundle.putExtra("hashcode", hashCode());
     startActivityForResult(paramBundle, 100);
     overridePendingTransition(0, 0);
@@ -47,10 +47,10 @@ final class i
   public final void onDestroy()
   {
     AppMethodBeat.i(40676);
-    h.b("WxSplash.SplashHackActivity", "onDestroy", new Object[0]);
-    h.IEI.remove(this);
+    h.c("WxSplash.SplashHackActivity", "onDestroy", new Object[0]);
+    h.NLB.remove(this);
     setVisible(true);
-    h.IEI.remove(this);
+    h.NLB.remove(this);
     super.onDestroy();
     AppMethodBeat.o(40676);
   }
@@ -58,8 +58,8 @@ final class i
   public final void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(40673);
-    h.b("WxSplash.SplashHackActivity", "onNewIntent.", new Object[0]);
-    if ((h.IEL != null) && (h.IEL.n(paramIntent))) {
+    h.c("WxSplash.SplashHackActivity", "onNewIntent.", new Object[0]);
+    if ((h.NLE != null) && (h.NLE.n(paramIntent))) {
       finish();
     }
     AppMethodBeat.o(40673);
@@ -68,7 +68,7 @@ final class i
   public final void onPause()
   {
     AppMethodBeat.i(40675);
-    h.b("WxSplash.SplashHackActivity", "onPause", new Object[0]);
+    h.c("WxSplash.SplashHackActivity", "onPause", new Object[0]);
     super.onPause();
     AppMethodBeat.o(40675);
   }
@@ -77,7 +77,7 @@ final class i
   {
     AppMethodBeat.i(40674);
     super.onResume();
-    h.b("WxSplash.SplashHackActivity", "onResume", new Object[0]);
+    h.c("WxSplash.SplashHackActivity", "onResume", new Object[0]);
     AppMethodBeat.o(40674);
   }
   

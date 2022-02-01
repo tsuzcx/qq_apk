@@ -3,138 +3,138 @@ package com.tencent.mm.pluginsdk.model.app;
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.y;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class g
   extends y
 {
-  public static String Ffa;
-  public static String Ffb;
-  public static String Ffc;
-  public static String Ffd;
-  protected static c.a info;
+  public static String JVR;
+  public static String JVS;
+  public static String JVT;
+  public static String JVU;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(151678);
-    Ffa = "wxce6f23b478a3a2a2";
-    Ffb = "wx7302cee7c7d6d7d6";
-    Ffc = "wx6fa7e3bab7e15415";
-    Ffd = "wx3cc22b542de028d4";
-    c.a locala = new c.a();
-    locala.IBL = new Field[26];
-    locala.columns = new String[27];
+    JVR = "wxce6f23b478a3a2a2";
+    JVS = "wx7302cee7c7d6d7d6";
+    JVT = "wx6fa7e3bab7e15415";
+    JVU = "wx3cc22b542de028d4";
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[26];
+    localMAutoDBInfo.columns = new String[27];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appId";
-    locala.IBN.put("appId", "TEXT default ''  PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(" appId TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "appId";
-    locala.columns[1] = "appName";
-    locala.IBN.put("appName", "TEXT");
+    localMAutoDBInfo.primaryKey = "appId";
+    localMAutoDBInfo.columns[1] = "appName";
+    localMAutoDBInfo.colsMap.put("appName", "TEXT");
     localStringBuilder.append(" appName TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "appDiscription";
-    locala.IBN.put("appDiscription", "TEXT");
+    localMAutoDBInfo.columns[2] = "appDiscription";
+    localMAutoDBInfo.colsMap.put("appDiscription", "TEXT");
     localStringBuilder.append(" appDiscription TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "appIconUrl";
-    locala.IBN.put("appIconUrl", "TEXT");
+    localMAutoDBInfo.columns[3] = "appIconUrl";
+    localMAutoDBInfo.colsMap.put("appIconUrl", "TEXT");
     localStringBuilder.append(" appIconUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "appStoreUrl";
-    locala.IBN.put("appStoreUrl", "TEXT");
+    localMAutoDBInfo.columns[4] = "appStoreUrl";
+    localMAutoDBInfo.colsMap.put("appStoreUrl", "TEXT");
     localStringBuilder.append(" appStoreUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "appVersion";
-    locala.IBN.put("appVersion", "INTEGER");
+    localMAutoDBInfo.columns[5] = "appVersion";
+    localMAutoDBInfo.colsMap.put("appVersion", "INTEGER");
     localStringBuilder.append(" appVersion INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[6] = "appWatermarkUrl";
-    locala.IBN.put("appWatermarkUrl", "TEXT");
+    localMAutoDBInfo.columns[6] = "appWatermarkUrl";
+    localMAutoDBInfo.colsMap.put("appWatermarkUrl", "TEXT");
     localStringBuilder.append(" appWatermarkUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[7] = "packageName";
-    locala.IBN.put("packageName", "TEXT");
+    localMAutoDBInfo.columns[7] = "packageName";
+    localMAutoDBInfo.colsMap.put("packageName", "TEXT");
     localStringBuilder.append(" packageName TEXT");
     localStringBuilder.append(", ");
-    locala.columns[8] = "status";
-    locala.IBN.put("status", "INTEGER");
+    localMAutoDBInfo.columns[8] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[9] = "signature";
-    locala.IBN.put("signature", "TEXT");
+    localMAutoDBInfo.columns[9] = "signature";
+    localMAutoDBInfo.colsMap.put("signature", "TEXT");
     localStringBuilder.append(" signature TEXT");
     localStringBuilder.append(", ");
-    locala.columns[10] = "modifyTime";
-    locala.IBN.put("modifyTime", "LONG");
+    localMAutoDBInfo.columns[10] = "modifyTime";
+    localMAutoDBInfo.colsMap.put("modifyTime", "LONG");
     localStringBuilder.append(" modifyTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[11] = "appName_en";
-    locala.IBN.put("appName_en", "TEXT");
+    localMAutoDBInfo.columns[11] = "appName_en";
+    localMAutoDBInfo.colsMap.put("appName_en", "TEXT");
     localStringBuilder.append(" appName_en TEXT");
     localStringBuilder.append(", ");
-    locala.columns[12] = "appName_tw";
-    locala.IBN.put("appName_tw", "TEXT");
+    localMAutoDBInfo.columns[12] = "appName_tw";
+    localMAutoDBInfo.colsMap.put("appName_tw", "TEXT");
     localStringBuilder.append(" appName_tw TEXT");
     localStringBuilder.append(", ");
-    locala.columns[13] = "appName_hk";
-    locala.IBN.put("appName_hk", "TEXT");
+    localMAutoDBInfo.columns[13] = "appName_hk";
+    localMAutoDBInfo.colsMap.put("appName_hk", "TEXT");
     localStringBuilder.append(" appName_hk TEXT");
     localStringBuilder.append(", ");
-    locala.columns[14] = "appDiscription_en";
-    locala.IBN.put("appDiscription_en", "TEXT");
+    localMAutoDBInfo.columns[14] = "appDiscription_en";
+    localMAutoDBInfo.colsMap.put("appDiscription_en", "TEXT");
     localStringBuilder.append(" appDiscription_en TEXT");
     localStringBuilder.append(", ");
-    locala.columns[15] = "appDiscription_tw";
-    locala.IBN.put("appDiscription_tw", "TEXT");
+    localMAutoDBInfo.columns[15] = "appDiscription_tw";
+    localMAutoDBInfo.colsMap.put("appDiscription_tw", "TEXT");
     localStringBuilder.append(" appDiscription_tw TEXT");
     localStringBuilder.append(", ");
-    locala.columns[16] = "appType";
-    locala.IBN.put("appType", "TEXT");
+    localMAutoDBInfo.columns[16] = "appType";
+    localMAutoDBInfo.colsMap.put("appType", "TEXT");
     localStringBuilder.append(" appType TEXT");
     localStringBuilder.append(", ");
-    locala.columns[17] = "openId";
-    locala.IBN.put("openId", "TEXT");
+    localMAutoDBInfo.columns[17] = "openId";
+    localMAutoDBInfo.colsMap.put("openId", "TEXT");
     localStringBuilder.append(" openId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[18] = "authFlag";
-    locala.IBN.put("authFlag", "INTEGER");
+    localMAutoDBInfo.columns[18] = "authFlag";
+    localMAutoDBInfo.colsMap.put("authFlag", "INTEGER");
     localStringBuilder.append(" authFlag INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[19] = "appInfoFlag";
-    locala.IBN.put("appInfoFlag", "INTEGER default '-1' ");
+    localMAutoDBInfo.columns[19] = "appInfoFlag";
+    localMAutoDBInfo.colsMap.put("appInfoFlag", "INTEGER default '-1' ");
     localStringBuilder.append(" appInfoFlag INTEGER default '-1' ");
     localStringBuilder.append(", ");
-    locala.columns[20] = "lvbuff";
-    locala.IBN.put("lvbuff", "BLOB");
+    localMAutoDBInfo.columns[20] = "lvbuff";
+    localMAutoDBInfo.colsMap.put("lvbuff", "BLOB");
     localStringBuilder.append(" lvbuff BLOB");
     localStringBuilder.append(", ");
-    locala.columns[21] = "serviceAppType";
-    locala.IBN.put("serviceAppType", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[21] = "serviceAppType";
+    localMAutoDBInfo.colsMap.put("serviceAppType", "INTEGER default '0' ");
     localStringBuilder.append(" serviceAppType INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[22] = "serviceAppInfoFlag";
-    locala.IBN.put("serviceAppInfoFlag", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[22] = "serviceAppInfoFlag";
+    localMAutoDBInfo.colsMap.put("serviceAppInfoFlag", "INTEGER default '0' ");
     localStringBuilder.append(" serviceAppInfoFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[23] = "serviceShowFlag";
-    locala.IBN.put("serviceShowFlag", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[23] = "serviceShowFlag";
+    localMAutoDBInfo.colsMap.put("serviceShowFlag", "INTEGER default '0' ");
     localStringBuilder.append(" serviceShowFlag INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[24] = "appSupportContentType";
-    locala.IBN.put("appSupportContentType", "LONG default '0' ");
+    localMAutoDBInfo.columns[24] = "appSupportContentType";
+    localMAutoDBInfo.colsMap.put("appSupportContentType", "LONG default '0' ");
     localStringBuilder.append(" appSupportContentType LONG default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[25] = "svrAppSupportContentType";
-    locala.IBN.put("svrAppSupportContentType", "LONG default '0' ");
+    localMAutoDBInfo.columns[25] = "svrAppSupportContentType";
+    localMAutoDBInfo.colsMap.put("svrAppSupportContentType", "LONG default '0' ");
     localStringBuilder.append(" svrAppSupportContentType LONG default '0' ");
-    locala.columns[26] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[26] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(151678);
   }
   
@@ -162,20 +162,20 @@ public class g
     this.field_openId = "";
     this.field_authFlag = 0;
     this.field_appInfoFlag = 0;
-    sT("");
-    this.eJa = "";
-    this.eIy = true;
-    sU("");
-    sY("");
-    sZ("");
-    ta("");
+    Bk("");
+    this.fmC = "";
+    this.fma = true;
+    Bl("");
+    Bp("");
+    Bq("");
+    Br("");
     AppMethodBeat.o(151672);
   }
   
-  public final boolean Ee()
+  public final boolean NA()
   {
     AppMethodBeat.i(151673);
-    if (bu.isNullOrNil(this.field_appType))
+    if (Util.isNullOrNil(this.field_appType))
     {
       AppMethodBeat.o(151673);
       return false;
@@ -204,7 +204,7 @@ public class g
   public ContentValues convertTo()
   {
     AppMethodBeat.i(151675);
-    if ((!bu.isNullOrNil(this.field_appType)) && ((this.field_appType.startsWith("1")) || (this.field_appType.startsWith("6")))) {
+    if ((!Util.isNullOrNil(this.field_appType)) && ((this.field_appType.startsWith("1")) || (this.field_appType.startsWith("6")))) {
       this.field_appType = ("," + this.field_appType);
     }
     ContentValues localContentValues = super.convertTo();
@@ -235,25 +235,25 @@ public class g
     return bool;
   }
   
-  public final boolean fdF()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
+  
+  public final boolean gmR()
   {
     return this.field_serviceAppType != 0;
   }
   
-  public final boolean fdG()
+  public final boolean gmS()
   {
     return (this.field_serviceAppInfoFlag & 0x2) != 0;
   }
   
-  public final boolean fdH()
-  {
-    return (this.field_serviceAppInfoFlag & 0x1) != 0;
-  }
-  
-  public final boolean fdI()
+  public final boolean gmT()
   {
     AppMethodBeat.i(151674);
-    if (Ffb.equals(this.field_appId))
+    if (JVS.equals(this.field_appId))
     {
       AppMethodBeat.o(151674);
       return true;
@@ -262,15 +262,10 @@ public class g
     return false;
   }
   
-  public c.a getDBInfo()
-  {
-    return info;
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(151677);
-    if (!bu.isNullOrNil(this.field_appId))
+    if (!Util.isNullOrNil(this.field_appId))
     {
       i = this.field_appId.hashCode();
       AppMethodBeat.o(151677);
@@ -283,7 +278,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.g
  * JD-Core Version:    0.7.0.1
  */

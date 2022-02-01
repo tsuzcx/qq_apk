@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/bs6" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/jv" android:textColor="@color/nl" android:gravity="center" android:id="@id/b7m" android:background="@drawable/s0" android:layout_width="@dimen/a2k" android:layout_height="@dimen/a2k" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/bsc" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <View android:background="@color/nl" android:layout_width="97.0dip" android:layout_height="1.0dip" />
-        <View android:id="@id/bsd" android:background="@android:color/white" android:visibility="gone" android:layout_width="97.0dip" android:layout_height="1.0dip" />
-    </RelativeLayout>
-</LinearLayout>
+    <FrameLayout android:id="@id/bzn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <FrameLayout android:id="@id/bzm" android:layout_width="@dimen/a1x" android:layout_height="@dimen/a1x" android:layout_marginTop="@dimen/ag4" />
+    </FrameLayout>
+    <com.tencent.mm.plugin.emojicapture.ui.editor.EditorItemContainer android:id="@id/bxc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/bxw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a1u" android:layout_below="@id/bzn" android:layout_centerHorizontal="true">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bxl" android:layout_width="@dimen/a1v" android:layout_height="wrap_content">
+            <ImageView android:id="@id/bxm" android:layout_width="32.0dip" android:layout_height="32.0dip" android:contentDescription="@string/bqh" />
+            <TextView android:textSize="@dimen/a1t" android:textColor="?k8" android:gravity="center_horizontal" android:id="@id/bxn" android:layout_width="@dimen/a1v" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a1s" android:text="@string/bqh" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bxo" android:layout_width="@dimen/a1v" android:layout_height="wrap_content">
+            <ImageView android:id="@id/bxp" android:layout_width="32.0dip" android:layout_height="32.0dip" android:contentDescription="@string/bqi" />
+            <TextView android:textSize="@dimen/a1t" android:textColor="?k8" android:gravity="center_horizontal" android:id="@id/bxq" android:layout_width="@dimen/a1v" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a1s" android:text="@string/bqi" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/bwl" android:layout_width="@dimen/a1v" android:layout_height="wrap_content">
+            <ImageView android:id="@id/bwm" android:layout_width="32.0dip" android:layout_height="32.0dip" android:contentDescription="@string/bqd" />
+            <TextView android:textSize="@dimen/a1t" android:textColor="?k8" android:gravity="center_horizontal" android:id="@id/bwn" android:layout_width="@dimen/a1v" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a1s" android:text="@string/bqd" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a10" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <FrameLayout android:id="@id/bz3" android:layout_width="72.0dip" android:layout_height="72.0dip">
+                <View android:background="@drawable/emoji_capture_editor_btn_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/irb" android:layout_width="32.0dip" android:layout_height="32.0dip" />
+            </FrameLayout>
+            <TextView android:textSize="@dimen/a1t" android:textColor="?a28" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bqc" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/a18">
+            <FrameLayout android:id="@id/bz2" android:layout_width="72.0dip" android:layout_height="72.0dip">
+                <View android:background="@drawable/emoji_capture_editor_btn_bg" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/ff2" android:layout_width="32.0dip" android:layout_height="32.0dip" />
+            </FrameLayout>
+            <TextView android:textSize="@dimen/a1t" android:textColor="?a28" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/h6" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.mm.plugin.emojicapture.ui.editor.EditorChangeTextView android:id="@id/ar2" android:background="@color/in" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

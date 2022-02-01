@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.expt.g;
 
 public final class c
 {
-  static c riG;
+  static c sKi;
 }
 
 

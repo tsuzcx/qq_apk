@@ -19,48 +19,48 @@ import java.util.concurrent.Executor;
 public final class c
   implements Spannable
 {
-  private static Executor NV = null;
+  private static Executor Oh = null;
   private static final Object sLock = new Object();
-  public final Spannable NW;
-  public final a NX;
-  private final PrecomputedText NY;
+  public final Spannable Oi;
+  public final a Oj;
+  private final PrecomputedText Ok;
   
   public final char charAt(int paramInt)
   {
-    return this.NW.charAt(paramInt);
+    return this.Oi.charAt(paramInt);
   }
   
   public final int getSpanEnd(Object paramObject)
   {
-    return this.NW.getSpanEnd(paramObject);
+    return this.Oi.getSpanEnd(paramObject);
   }
   
   public final int getSpanFlags(Object paramObject)
   {
-    return this.NW.getSpanFlags(paramObject);
+    return this.Oi.getSpanFlags(paramObject);
   }
   
   public final int getSpanStart(Object paramObject)
   {
-    return this.NW.getSpanStart(paramObject);
+    return this.Oi.getSpanStart(paramObject);
   }
   
   public final <T> T[] getSpans(int paramInt1, int paramInt2, Class<T> paramClass)
   {
     if (Build.VERSION.SDK_INT >= 28) {
-      return this.NY.getSpans(paramInt1, paramInt2, paramClass);
+      return this.Ok.getSpans(paramInt1, paramInt2, paramClass);
     }
-    return this.NW.getSpans(paramInt1, paramInt2, paramClass);
+    return this.Oi.getSpans(paramInt1, paramInt2, paramClass);
   }
   
   public final int length()
   {
-    return this.NW.length();
+    return this.Oi.length();
   }
   
   public final int nextSpanTransition(int paramInt1, int paramInt2, Class paramClass)
   {
-    return this.NW.nextSpanTransition(paramInt1, paramInt2, paramClass);
+    return this.Oi.nextSpanTransition(paramInt1, paramInt2, paramClass);
   }
   
   public final void removeSpan(Object paramObject)
@@ -70,10 +70,10 @@ public final class c
     }
     if (Build.VERSION.SDK_INT >= 28)
     {
-      this.NY.removeSpan(paramObject);
+      this.Ok.removeSpan(paramObject);
       return;
     }
-    this.NW.removeSpan(paramObject);
+    this.Oi.removeSpan(paramObject);
   }
   
   public final void setSpan(Object paramObject, int paramInt1, int paramInt2, int paramInt3)
@@ -83,48 +83,48 @@ public final class c
     }
     if (Build.VERSION.SDK_INT >= 28)
     {
-      this.NY.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
+      this.Ok.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
       return;
     }
-    this.NW.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
+    this.Oi.setSpan(paramObject, paramInt1, paramInt2, paramInt3);
   }
   
   public final CharSequence subSequence(int paramInt1, int paramInt2)
   {
-    return this.NW.subSequence(paramInt1, paramInt2);
+    return this.Oi.subSequence(paramInt1, paramInt2);
   }
   
   public final String toString()
   {
-    return this.NW.toString();
+    return this.Oi.toString();
   }
   
   public static final class a
   {
-    public final TextPaint NZ;
-    public final TextDirectionHeuristic Oa;
-    public final int Ob;
-    public final int Oc;
-    final PrecomputedText.Params Od;
+    public final TextPaint Ol;
+    public final TextDirectionHeuristic Om;
+    public final int On;
+    public final int Oo;
+    final PrecomputedText.Params Op;
     
     public a(PrecomputedText.Params paramParams)
     {
-      this.NZ = paramParams.getTextPaint();
-      this.Oa = paramParams.getTextDirection();
-      this.Ob = paramParams.getBreakStrategy();
-      this.Oc = paramParams.getHyphenationFrequency();
-      this.Od = paramParams;
+      this.Ol = paramParams.getTextPaint();
+      this.Om = paramParams.getTextDirection();
+      this.On = paramParams.getBreakStrategy();
+      this.Oo = paramParams.getHyphenationFrequency();
+      this.Op = paramParams;
     }
     
     public a(TextPaint paramTextPaint, TextDirectionHeuristic paramTextDirectionHeuristic, int paramInt1, int paramInt2)
     {
       if (Build.VERSION.SDK_INT >= 28) {}
-      for (this.Od = new PrecomputedText.Params.Builder(paramTextPaint).setBreakStrategy(paramInt1).setHyphenationFrequency(paramInt2).setTextDirection(paramTextDirectionHeuristic).build();; this.Od = null)
+      for (this.Op = new PrecomputedText.Params.Builder(paramTextPaint).setBreakStrategy(paramInt1).setHyphenationFrequency(paramInt2).setTextDirection(paramTextDirectionHeuristic).build();; this.Op = null)
       {
-        this.NZ = paramTextPaint;
-        this.Oa = paramTextDirectionHeuristic;
-        this.Ob = paramInt1;
-        this.Oc = paramInt2;
+        this.Ol = paramTextPaint;
+        this.Om = paramTextDirectionHeuristic;
+        this.On = paramInt1;
+        this.Oo = paramInt2;
         return;
       }
     }
@@ -141,131 +141,131 @@ public final class c
             return false;
           }
           paramObject = (a)paramObject;
-          if (this.Od != null) {
-            return this.Od.equals(paramObject.Od);
+          if (this.Op != null) {
+            return this.Op.equals(paramObject.Op);
           }
           if (Build.VERSION.SDK_INT >= 23)
           {
-            if (this.Ob != paramObject.Ob) {
+            if (this.On != paramObject.On) {
               return false;
             }
-            if (this.Oc != paramObject.Oc) {
+            if (this.Oo != paramObject.Oo) {
               return false;
             }
           }
-          if ((Build.VERSION.SDK_INT >= 18) && (this.Oa != paramObject.Oa)) {
+          if ((Build.VERSION.SDK_INT >= 18) && (this.Om != paramObject.Om)) {
             return false;
           }
-          if (this.NZ.getTextSize() != paramObject.NZ.getTextSize()) {
+          if (this.Ol.getTextSize() != paramObject.Ol.getTextSize()) {
             return false;
           }
-          if (this.NZ.getTextScaleX() != paramObject.NZ.getTextScaleX()) {
+          if (this.Ol.getTextScaleX() != paramObject.Ol.getTextScaleX()) {
             return false;
           }
-          if (this.NZ.getTextSkewX() != paramObject.NZ.getTextSkewX()) {
+          if (this.Ol.getTextSkewX() != paramObject.Ol.getTextSkewX()) {
             return false;
           }
           if (Build.VERSION.SDK_INT >= 21)
           {
-            if (this.NZ.getLetterSpacing() != paramObject.NZ.getLetterSpacing()) {
+            if (this.Ol.getLetterSpacing() != paramObject.Ol.getLetterSpacing()) {
               return false;
             }
-            if (!TextUtils.equals(this.NZ.getFontFeatureSettings(), paramObject.NZ.getFontFeatureSettings())) {
+            if (!TextUtils.equals(this.Ol.getFontFeatureSettings(), paramObject.Ol.getFontFeatureSettings())) {
               return false;
             }
           }
-          if (this.NZ.getFlags() != paramObject.NZ.getFlags()) {
+          if (this.Ol.getFlags() != paramObject.Ol.getFlags()) {
             return false;
           }
           if (Build.VERSION.SDK_INT >= 24)
           {
-            if (!this.NZ.getTextLocales().equals(paramObject.NZ.getTextLocales())) {
+            if (!this.Ol.getTextLocales().equals(paramObject.Ol.getTextLocales())) {
               return false;
             }
           }
-          else if ((Build.VERSION.SDK_INT >= 17) && (!this.NZ.getTextLocale().equals(paramObject.NZ.getTextLocale()))) {
+          else if ((Build.VERSION.SDK_INT >= 17) && (!this.Ol.getTextLocale().equals(paramObject.Ol.getTextLocale()))) {
             return false;
           }
-          if (this.NZ.getTypeface() != null) {
+          if (this.Ol.getTypeface() != null) {
             break;
           }
-        } while (paramObject.NZ.getTypeface() == null);
+        } while (paramObject.Ol.getTypeface() == null);
         return false;
-      } while (this.NZ.getTypeface().equals(paramObject.NZ.getTypeface()));
+      } while (this.Ol.getTypeface().equals(paramObject.Ol.getTypeface()));
       return false;
     }
     
     public final int hashCode()
     {
       if (Build.VERSION.SDK_INT >= 24) {
-        return j.hash(new Object[] { Float.valueOf(this.NZ.getTextSize()), Float.valueOf(this.NZ.getTextScaleX()), Float.valueOf(this.NZ.getTextSkewX()), Float.valueOf(this.NZ.getLetterSpacing()), Integer.valueOf(this.NZ.getFlags()), this.NZ.getTextLocales(), this.NZ.getTypeface(), Boolean.valueOf(this.NZ.isElegantTextHeight()), this.Oa, Integer.valueOf(this.Ob), Integer.valueOf(this.Oc) });
+        return j.hash(new Object[] { Float.valueOf(this.Ol.getTextSize()), Float.valueOf(this.Ol.getTextScaleX()), Float.valueOf(this.Ol.getTextSkewX()), Float.valueOf(this.Ol.getLetterSpacing()), Integer.valueOf(this.Ol.getFlags()), this.Ol.getTextLocales(), this.Ol.getTypeface(), Boolean.valueOf(this.Ol.isElegantTextHeight()), this.Om, Integer.valueOf(this.On), Integer.valueOf(this.Oo) });
       }
       if (Build.VERSION.SDK_INT >= 21) {
-        return j.hash(new Object[] { Float.valueOf(this.NZ.getTextSize()), Float.valueOf(this.NZ.getTextScaleX()), Float.valueOf(this.NZ.getTextSkewX()), Float.valueOf(this.NZ.getLetterSpacing()), Integer.valueOf(this.NZ.getFlags()), this.NZ.getTextLocale(), this.NZ.getTypeface(), Boolean.valueOf(this.NZ.isElegantTextHeight()), this.Oa, Integer.valueOf(this.Ob), Integer.valueOf(this.Oc) });
+        return j.hash(new Object[] { Float.valueOf(this.Ol.getTextSize()), Float.valueOf(this.Ol.getTextScaleX()), Float.valueOf(this.Ol.getTextSkewX()), Float.valueOf(this.Ol.getLetterSpacing()), Integer.valueOf(this.Ol.getFlags()), this.Ol.getTextLocale(), this.Ol.getTypeface(), Boolean.valueOf(this.Ol.isElegantTextHeight()), this.Om, Integer.valueOf(this.On), Integer.valueOf(this.Oo) });
       }
       if (Build.VERSION.SDK_INT >= 18) {
-        return j.hash(new Object[] { Float.valueOf(this.NZ.getTextSize()), Float.valueOf(this.NZ.getTextScaleX()), Float.valueOf(this.NZ.getTextSkewX()), Integer.valueOf(this.NZ.getFlags()), this.NZ.getTextLocale(), this.NZ.getTypeface(), this.Oa, Integer.valueOf(this.Ob), Integer.valueOf(this.Oc) });
+        return j.hash(new Object[] { Float.valueOf(this.Ol.getTextSize()), Float.valueOf(this.Ol.getTextScaleX()), Float.valueOf(this.Ol.getTextSkewX()), Integer.valueOf(this.Ol.getFlags()), this.Ol.getTextLocale(), this.Ol.getTypeface(), this.Om, Integer.valueOf(this.On), Integer.valueOf(this.Oo) });
       }
       if (Build.VERSION.SDK_INT >= 17) {
-        return j.hash(new Object[] { Float.valueOf(this.NZ.getTextSize()), Float.valueOf(this.NZ.getTextScaleX()), Float.valueOf(this.NZ.getTextSkewX()), Integer.valueOf(this.NZ.getFlags()), this.NZ.getTextLocale(), this.NZ.getTypeface(), this.Oa, Integer.valueOf(this.Ob), Integer.valueOf(this.Oc) });
+        return j.hash(new Object[] { Float.valueOf(this.Ol.getTextSize()), Float.valueOf(this.Ol.getTextScaleX()), Float.valueOf(this.Ol.getTextSkewX()), Integer.valueOf(this.Ol.getFlags()), this.Ol.getTextLocale(), this.Ol.getTypeface(), this.Om, Integer.valueOf(this.On), Integer.valueOf(this.Oo) });
       }
-      return j.hash(new Object[] { Float.valueOf(this.NZ.getTextSize()), Float.valueOf(this.NZ.getTextScaleX()), Float.valueOf(this.NZ.getTextSkewX()), Integer.valueOf(this.NZ.getFlags()), this.NZ.getTypeface(), this.Oa, Integer.valueOf(this.Ob), Integer.valueOf(this.Oc) });
+      return j.hash(new Object[] { Float.valueOf(this.Ol.getTextSize()), Float.valueOf(this.Ol.getTextScaleX()), Float.valueOf(this.Ol.getTextSkewX()), Integer.valueOf(this.Ol.getFlags()), this.Ol.getTypeface(), this.Om, Integer.valueOf(this.On), Integer.valueOf(this.Oo) });
     }
     
     public final String toString()
     {
       StringBuilder localStringBuilder = new StringBuilder("{");
-      localStringBuilder.append("textSize=" + this.NZ.getTextSize());
-      localStringBuilder.append(", textScaleX=" + this.NZ.getTextScaleX());
-      localStringBuilder.append(", textSkewX=" + this.NZ.getTextSkewX());
+      localStringBuilder.append("textSize=" + this.Ol.getTextSize());
+      localStringBuilder.append(", textScaleX=" + this.Ol.getTextScaleX());
+      localStringBuilder.append(", textSkewX=" + this.Ol.getTextSkewX());
       if (Build.VERSION.SDK_INT >= 21)
       {
-        localStringBuilder.append(", letterSpacing=" + this.NZ.getLetterSpacing());
-        localStringBuilder.append(", elegantTextHeight=" + this.NZ.isElegantTextHeight());
+        localStringBuilder.append(", letterSpacing=" + this.Ol.getLetterSpacing());
+        localStringBuilder.append(", elegantTextHeight=" + this.Ol.isElegantTextHeight());
       }
       if (Build.VERSION.SDK_INT >= 24) {
-        localStringBuilder.append(", textLocale=" + this.NZ.getTextLocales());
+        localStringBuilder.append(", textLocale=" + this.Ol.getTextLocales());
       }
       for (;;)
       {
-        localStringBuilder.append(", typeface=" + this.NZ.getTypeface());
+        localStringBuilder.append(", typeface=" + this.Ol.getTypeface());
         if (Build.VERSION.SDK_INT >= 26) {
-          localStringBuilder.append(", variationSettings=" + this.NZ.getFontVariationSettings());
+          localStringBuilder.append(", variationSettings=" + this.Ol.getFontVariationSettings());
         }
-        localStringBuilder.append(", textDir=" + this.Oa);
-        localStringBuilder.append(", breakStrategy=" + this.Ob);
-        localStringBuilder.append(", hyphenationFrequency=" + this.Oc);
+        localStringBuilder.append(", textDir=" + this.Om);
+        localStringBuilder.append(", breakStrategy=" + this.On);
+        localStringBuilder.append(", hyphenationFrequency=" + this.Oo);
         localStringBuilder.append("}");
         return localStringBuilder.toString();
         if (Build.VERSION.SDK_INT >= 17) {
-          localStringBuilder.append(", textLocale=" + this.NZ.getTextLocale());
+          localStringBuilder.append(", textLocale=" + this.Ol.getTextLocale());
         }
       }
     }
     
     public static final class a
     {
-      public final TextPaint NZ;
-      public TextDirectionHeuristic Oa;
-      public int Ob;
-      public int Oc;
+      public final TextPaint Ol;
+      public TextDirectionHeuristic Om;
+      public int On;
+      public int Oo;
       
       public a(TextPaint paramTextPaint)
       {
-        this.NZ = paramTextPaint;
+        this.Ol = paramTextPaint;
         if (Build.VERSION.SDK_INT >= 23)
         {
-          this.Ob = 1;
-          this.Oc = 1;
+          this.On = 1;
+          this.Oo = 1;
         }
         while (Build.VERSION.SDK_INT >= 18)
         {
-          this.Oa = TextDirectionHeuristics.FIRSTSTRONG_LTR;
+          this.Om = TextDirectionHeuristics.FIRSTSTRONG_LTR;
           return;
-          this.Oc = 0;
-          this.Ob = 0;
+          this.Oo = 0;
+          this.On = 0;
         }
-        this.Oa = null;
+        this.Om = null;
       }
     }
   }

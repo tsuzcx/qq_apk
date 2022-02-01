@@ -1,57 +1,62 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.h;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
+import com.tencent.mm.ak.h.c;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.ao;
+import java.util.Map;
 
 public final class ck
+  implements h
 {
-  public static boolean bW(Object paramObject)
+  public final h.b b(h.a parama)
   {
-    AppMethodBeat.i(150192);
-    if ((paramObject instanceof Boolean)) {
-      try
-      {
-        boolean bool = ((Boolean)paramObject).booleanValue();
-        AppMethodBeat.o(150192);
-        return bool;
-      }
-      catch (Exception paramObject) {}
+    AppMethodBeat.i(20397);
+    parama = parama.heO;
+    if (parama == null)
+    {
+      Log.e("MicroMsg.SysNoticeMsgExtension", "onPreAddMessage cmdAM is null");
+      AppMethodBeat.o(20397);
+      return null;
     }
-    AppMethodBeat.o(150192);
-    return false;
+    try
+    {
+      parama = XmlParser.parseXml("<root>" + parama.KHn + "</root>", "root", null);
+      int i = Integer.valueOf((String)parama.get(".root.newcount")).intValue();
+      int j = Integer.valueOf((String)parama.get(".root.version")).intValue();
+      bg.aVF();
+      parama = c.azQ();
+      if (j == Util.nullAsNil((Integer)parama.get(12305, null)))
+      {
+        Log.i("MicroMsg.SysNoticeMsgExtension", "ignore new sys notice count, same version");
+        AppMethodBeat.o(20397);
+        return null;
+      }
+      parama.set(12304, Integer.valueOf(i));
+      parama.set(12305, Integer.valueOf(j));
+    }
+    catch (Exception parama)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.SysNoticeMsgExtension", "exception:%s", new Object[] { Util.stackTraceToString(parama) });
+      }
+    }
+    AppMethodBeat.o(20397);
+    return null;
   }
   
-  public static String c(Object paramObject, String paramString)
-  {
-    if ((paramObject instanceof String)) {
-      try
-      {
-        paramObject = (String)paramObject;
-        return paramObject;
-      }
-      catch (Exception paramObject) {}
-    }
-    return paramString;
-  }
-  
-  public static int getInt(Object paramObject, int paramInt)
-  {
-    AppMethodBeat.i(150191);
-    if ((paramObject instanceof Integer)) {
-      try
-      {
-        int i = ((Integer)paramObject).intValue();
-        AppMethodBeat.o(150191);
-        return i;
-      }
-      catch (Exception paramObject) {}
-    }
-    AppMethodBeat.o(150191);
-    return paramInt;
-  }
+  public final void b(h.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.ck
  * JD-Core Version:    0.7.0.1
  */

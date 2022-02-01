@@ -1,39 +1,45 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.n;
-import com.tencent.mm.plugin.finder.storage.ab;
-import com.tencent.mm.plugin.finder.storage.data.e;
-import com.tencent.mm.plugin.finder.storage.data.e.b;
+import com.tencent.mm.plugin.finder.model.s;
+import com.tencent.mm.plugin.finder.model.t;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.an;
+import com.tencent.mm.plugin.finder.storage.data.f;
+import com.tencent.mm.plugin.finder.storage.data.f.b;
+import com.tencent.mm.plugin.finder.utils.y;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.alr;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.a.j;
-import d.b.a;
-import d.g.b.p;
-import d.l;
-import d.o;
+import com.tencent.mm.protocal.protobuf.aoh;
+import com.tencent.mm.protocal.protobuf.aqp;
+import com.tencent.mm.protocal.protobuf.axt;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import kotlin.a.j;
+import kotlin.b.a;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.o;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentLoader;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "curFeedId", "", "curRefCommentId", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lkotlin/collections/ArrayList;", "addItem", "", "item", "sort", "", "addItems", "", "itemList", "", "toHead", "toTail", "addLevel2Items", "Lkotlin/Pair;", "rootComment", "down", "clearData", "delItemById", "commentId", "delItemByLocalId", "localCommentId", "filterComment", "", "get", "index", "getData", "getPositionToInsertLevel2Comment", "rootCommentId", "getSize", "hasLevel2Item", "root", "hasLevel2ItemAfter", "level2Comment", "hasLevel2ItemBefore", "onAttach", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$Extra;", "feedId", "refCommentId", "useCache", "onDetach", "pos", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "upContinue", "downContinue", "hasExpand", "sameComment", "comment1", "comment2", "sameParent", "updateItem", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentLoader;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "curFeedId", "", "curRefCommentId", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lkotlin/collections/ArrayList;", "headerData", "Lcom/tencent/mm/plugin/finder/model/FinderFeedCommentHeaderContent;", "getHeaderData", "()Lcom/tencent/mm/plugin/finder/model/FinderFeedCommentHeaderContent;", "setHeaderData", "(Lcom/tencent/mm/plugin/finder/model/FinderFeedCommentHeaderContent;)V", "addHeaderData", "", "header", "addItem", "", "item", "sort", "", "addItems", "itemList", "", "toHead", "toTail", "addLevel2Items", "Lkotlin/Pair;", "rootComment", "down", "clearData", "isDetached", "delItemById", "commentId", "delItemByLocalId", "localCommentId", "filterComment", "", "get", "index", "getData", "getPositionToInsertLevel2Comment", "rootCommentId", "getSize", "hasLevel2Item", "root", "hasLevel2ItemAfter", "level2Comment", "hasLevel2ItemBefore", "onAttach", "Lcom/tencent/mm/plugin/finder/storage/data/FinderCommentCache$Extra;", "feedId", "feedObj", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "refCommentId", "useCache", "commentScene", "onDetach", "pos", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "upContinue", "downContinue", "hasExpand", "sameComment", "comment1", "comment2", "sameParent", "updateItem", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "Companion", "plugin-finder_release"})
 public final class c
 {
-  public static final boolean sjU = false;
-  public static final a sjV;
+  public static final boolean tUM = false;
+  public static final a tUN;
   public final String TAG;
-  public final ArrayList<n> data;
-  public long sjS;
-  public long sjT;
+  public final ArrayList<s> data;
+  public long tUJ;
+  public long tUK;
+  public t tUL;
   
   static
   {
     AppMethodBeat.i(166031);
-    sjV = new a((byte)0);
+    tUN = new a((byte)0);
     AppMethodBeat.o(166031);
   }
   
@@ -45,12 +51,20 @@ public final class c
     AppMethodBeat.o(166030);
   }
   
-  public static boolean a(n paramn1, n paramn2)
+  private final void a(t paramt)
+  {
+    AppMethodBeat.i(244550);
+    this.tUL = paramt;
+    this.data.add(paramt);
+    AppMethodBeat.o(244550);
+  }
+  
+  public static boolean a(s params1, s params2)
   {
     AppMethodBeat.i(178290);
-    p.h(paramn1, "comment1");
-    p.h(paramn2, "comment2");
-    if ((paramn1.ste.field_actionInfo.rQN != 0L) && (paramn1.ste.field_actionInfo.rQN == paramn2.ste.field_actionInfo.rQN))
+    p.h(params1, "comment1");
+    p.h(params2, "comment2");
+    if ((params1.uOf.field_actionInfo.tuf != 0L) && (params1.uOf.field_actionInfo.tuf == params2.uOf.field_actionInfo.tuf))
     {
       AppMethodBeat.o(178290);
       return true;
@@ -59,12 +73,12 @@ public final class c
     return false;
   }
   
-  public static boolean b(n paramn1, n paramn2)
+  public static boolean b(s params1, s params2)
   {
     AppMethodBeat.i(178291);
-    p.h(paramn1, "comment1");
-    p.h(paramn2, "comment2");
-    if (paramn1.ste.cLl().commentId == paramn2.ste.cLl().commentId)
+    p.h(params1, "comment1");
+    p.h(params2, "comment2");
+    if (params1.lT() == params2.lT())
     {
       AppMethodBeat.o(178291);
       return true;
@@ -73,30 +87,171 @@ public final class c
     return false;
   }
   
-  public final n EO(int paramInt)
+  public final void EE(long paramLong)
+  {
+    AppMethodBeat.i(166029);
+    Object localObject2 = (Iterable)this.data;
+    Object localObject1 = (Collection)new ArrayList();
+    localObject2 = ((Iterable)localObject2).iterator();
+    label92:
+    while (((Iterator)localObject2).hasNext())
+    {
+      Object localObject3 = ((Iterator)localObject2).next();
+      if (((s)localObject3).uOf.field_localCommentId == paramLong) {}
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label92;
+        }
+        ((Collection)localObject1).add(localObject3);
+        break;
+      }
+    }
+    localObject1 = (List)localObject1;
+    this.data.removeAll((Collection)localObject1);
+    AppMethodBeat.o(166029);
+  }
+  
+  public final s IL(int paramInt)
   {
     AppMethodBeat.i(166026);
     Object localObject = this.data.get(paramInt);
     p.g(localObject, "data[index]");
-    localObject = (n)localObject;
+    localObject = (s)localObject;
     AppMethodBeat.o(166026);
     return localObject;
   }
   
-  public final void a(List<? extends n> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  public final o<f.b, Boolean> a(long paramLong1, FinderItem paramFinderItem, long paramLong2, boolean paramBoolean, int paramInt)
   {
+    AppMethodBeat.i(244551);
+    p.h(paramFinderItem, "feedObj");
+    this.tUJ = paramLong1;
+    this.tUK = paramLong2;
+    if (this.data.size() > 0) {
+      this.data.clear();
+    }
+    Object localObject1;
+    Object localObject3;
+    Object localObject2;
+    if (y.a(y.vXH, 0, paramInt, 1))
+    {
+      localObject1 = y.vXH;
+      p.h(paramFinderItem, "item");
+      Object localObject4 = y.hg(paramFinderItem.getLocation().fuK, paramFinderItem.getLocation().kHV);
+      localObject3 = paramFinderItem.getDescriptionFullSpan();
+      localObject2 = paramFinderItem.getExtReading().title;
+      localObject1 = paramFinderItem.getTopicList();
+      localObject4 = (CharSequence)localObject4;
+      if ((localObject4 != null) && (((CharSequence)localObject4).length() != 0)) {
+        break label329;
+      }
+      i = 1;
+      if (i == 0) {
+        break label347;
+      }
+      localObject3 = (CharSequence)localObject3;
+      if ((localObject3 != null) && (((CharSequence)localObject3).length() != 0)) {
+        break label335;
+      }
+      i = 1;
+      label158:
+      if (i == 0) {
+        break label347;
+      }
+      localObject2 = (CharSequence)localObject2;
+      if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
+        break label341;
+      }
+      i = 1;
+      label188:
+      if ((i == 0) || (!((List)localObject1).isEmpty())) {
+        break label347;
+      }
+    }
+    boolean bool;
+    label329:
+    label335:
+    label341:
+    label347:
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        a(new t(paramFinderItem));
+      }
+      paramFinderItem = null;
+      bool = false;
+      if (!paramBoolean) {
+        break label545;
+      }
+      paramFinderItem = f.vGd.T(paramLong1, paramLong2);
+      paramBoolean = bool;
+      if (paramFinderItem == null) {
+        break label409;
+      }
+      localObject1 = this.data;
+      localObject3 = (Iterable)paramFinderItem;
+      localObject2 = (Collection)new ArrayList(j.a((Iterable)localObject3, 10));
+      localObject3 = ((Iterable)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext()) {
+        ((Collection)localObject2).add(new s((an)((Iterator)localObject3).next()));
+      }
+      i = 0;
+      break;
+      i = 0;
+      break label158;
+      i = 0;
+      break label188;
+    }
+    ((ArrayList)localObject1).addAll((Collection)localObject2);
+    Log.i(this.TAG, "onAttach hit datacache, commentScene=" + paramInt + ' ' + paramFinderItem.size());
+    paramBoolean = true;
+    label409:
+    paramFinderItem = f.vGd.U(paramLong1, paramLong2);
+    for (;;)
+    {
+      if (paramFinderItem != null) {}
+      for (paramInt = paramFinderItem.pos; paramInt >= 0; paramInt = -1)
+      {
+        if (paramFinderItem == null) {
+          p.hyc();
+        }
+        paramFinderItem = new o(paramFinderItem, Boolean.valueOf(paramBoolean));
+        AppMethodBeat.o(244551);
+        return paramFinderItem;
+      }
+      bool = true;
+      if (paramLong2 == 0L) {
+        bool = false;
+      }
+      Log.i(this.TAG, "miss cache, upContinue:" + bool + ", downContinue:true");
+      paramFinderItem = new o(new f.b(0, null, bool, true, false), Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(244551);
+      return paramFinderItem;
+      label545:
+      paramBoolean = false;
+    }
+  }
+  
+  public final void a(List<? extends s> paramList, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    int i = 1;
     AppMethodBeat.i(166028);
     p.h(paramList, "itemList");
-    List localList = dG(paramList);
+    List localList = dV(paramList);
     if (localList.size() > 1) {
       j.a(localList, (Comparator)new b());
     }
-    int i = paramList.size();
-    int j = localList.size();
-    ae.i(this.TAG, "reduce size: " + (i - j) + ", data size: " + this.data.size());
+    int j = paramList.size();
+    int k = localList.size();
+    Log.i(this.TAG, "reduce size: " + (j - k) + ", data size: " + this.data.size());
     if (paramBoolean1)
     {
-      this.data.addAll(0, (Collection)localList);
+      paramList = this.data;
+      if (this.tUL == null) {
+        i = 0;
+      }
+      paramList.addAll(i, (Collection)localList);
       AppMethodBeat.o(166028);
       return;
     }
@@ -106,25 +261,25 @@ public final class c
     AppMethodBeat.o(166028);
   }
   
-  public final int b(n paramn)
+  public final int b(s params)
   {
     int k = 0;
     AppMethodBeat.i(178286);
-    p.h(paramn, "item");
-    ae.i(this.TAG, "addItem " + paramn.ste.cLl().commentId + ", sort:true");
+    p.h(params, "item");
+    Log.i(this.TAG, "addItem " + params.lT() + ", sort:true");
     Iterator localIterator;
     int j;
-    if (paramn.ste.cLl().commentId == 0L)
+    if (params.uOf.dyb().commentId == 0L)
     {
       localIterator = ((List)this.data).iterator();
       i = 0;
       if (localIterator.hasNext()) {
-        if (((n)localIterator.next()).ste.field_localCommentId == paramn.ste.field_localCommentId)
+        if (((s)localIterator.next()).uOf.field_localCommentId == params.uOf.field_localCommentId)
         {
           j = 1;
-          label121:
+          label118:
           if (j == 0) {
-            break label151;
+            break label149;
           }
         }
       }
@@ -132,14 +287,14 @@ public final class c
     for (;;)
     {
       if (i < 0) {
-        break label248;
+        break label246;
       }
-      this.data.set(i, paramn);
+      this.data.set(i, params);
       AppMethodBeat.o(178286);
       return i;
       j = 0;
-      break label121;
-      label151:
+      break label118;
+      label149:
       i += 1;
       break;
       i = -1;
@@ -149,48 +304,44 @@ public final class c
       for (;;)
       {
         if (!localIterator.hasNext()) {
-          break label243;
+          break label241;
         }
-        if (((n)localIterator.next()).ste.cLl().commentId == paramn.ste.cLl().commentId) {}
+        if (((s)localIterator.next()).uOf.dyb().commentId == params.uOf.dyb().commentId) {}
         for (j = 1;; j = 0)
         {
           if (j == 0) {
-            break label236;
+            break label234;
           }
           break;
         }
-        label236:
+        label234:
         i += 1;
       }
-      label243:
+      label241:
       i = -1;
     }
-    label248:
-    if (paramn.ste.field_actionInfo.rQN == 0L)
+    label246:
+    if (params.uOf.field_actionInfo.tuf == 0L)
     {
       this.data.size();
-      i = k;
-      if (paramn.ste.field_state != -1)
+      if ((params.uOf.field_state == -1) || (params.uOf.dyb().displayid == 0L))
       {
-        if (paramn.ste.cLl().displayid == 0L) {
-          i = k;
+        if (this.tUL == null) {}
+        for (i = k;; i = 1)
+        {
+          this.data.add(i, params);
+          AppMethodBeat.o(178286);
+          return i;
         }
-      }
-      else
-      {
-        this.data.add(i, paramn);
-        AppMethodBeat.o(178286);
-        return i;
       }
       localIterator = ((List)this.data).iterator();
       i = 0;
       if (localIterator.hasNext()) {
-        if (((n)localIterator.next()).ste.cLl().displayid <= paramn.ste.cLl().displayid)
+        if (((s)localIterator.next()).uOf.dyb().displayid <= params.uOf.dyb().displayid)
         {
           j = 1;
-          label380:
           if (j == 0) {
-            break label408;
+            break label416;
           }
         }
       }
@@ -203,76 +354,24 @@ public final class c
         i = this.data.size();
         break;
         j = 0;
-        break label380;
+        break label388;
         i += 1;
-        break label335;
+        break label343;
       }
     }
-    label335:
-    int i = t(paramn.ste.field_actionInfo.rQN, true);
-    label408:
-    this.data.add(i, paramn);
+    label343:
+    int i = t(params.uOf.field_actionInfo.tuf, true);
+    label388:
+    label416:
+    this.data.add(i, params);
     AppMethodBeat.o(178286);
     return i;
   }
   
-  public final o<e.b, Boolean> b(long paramLong1, long paramLong2, boolean paramBoolean)
-  {
-    AppMethodBeat.i(166025);
-    this.sjS = paramLong1;
-    this.sjT = paramLong2;
-    if (this.data.size() > 0) {
-      this.data.clear();
-    }
-    Object localObject1 = null;
-    boolean bool = false;
-    if (paramBoolean)
-    {
-      localObject1 = e.sKJ.O(paramLong1, paramLong2);
-      paramBoolean = bool;
-      if (localObject1 != null)
-      {
-        ArrayList localArrayList = this.data;
-        Object localObject2 = (Iterable)localObject1;
-        Collection localCollection = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
-        localObject2 = ((Iterable)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext()) {
-          localCollection.add(new n((ab)((Iterator)localObject2).next()));
-        }
-        localArrayList.addAll((Collection)localCollection);
-        ae.i(this.TAG, "onAttach hit datacache, " + ((List)localObject1).size());
-        paramBoolean = true;
-      }
-      localObject1 = e.sKJ.P(paramLong1, paramLong2);
-    }
-    for (;;)
-    {
-      if (localObject1 != null) {}
-      for (int i = ((e.b)localObject1).pos; i >= 0; i = -1)
-      {
-        if (localObject1 == null) {
-          p.gkB();
-        }
-        localObject1 = new o(localObject1, Boolean.valueOf(paramBoolean));
-        AppMethodBeat.o(166025);
-        return localObject1;
-      }
-      bool = true;
-      if (paramLong2 == 0L) {
-        bool = false;
-      }
-      ae.i(this.TAG, "miss cache, upContinue:" + bool + ", downContinue:true");
-      localObject1 = new o(new e.b(0, null, bool, true, false), Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(166025);
-      return localObject1;
-      paramBoolean = false;
-    }
-  }
-  
-  public final boolean c(n paramn)
+  public final boolean c(s params)
   {
     AppMethodBeat.i(178289);
-    p.h(paramn, "level2Comment");
+    p.h(params, "level2Comment");
     Iterator localIterator = ((Iterable)this.data).iterator();
     int i = 0;
     int j = -1;
@@ -280,12 +379,12 @@ public final class c
     {
       Object localObject = localIterator.next();
       if (i < 0) {
-        j.gkd();
+        j.hxH();
       }
-      localObject = (n)localObject;
-      if (b((n)localObject, paramn))
+      localObject = (s)localObject;
+      if (b((s)localObject, params))
       {
-        ae.d(this.TAG, "hasLevel2ItemAfter cur:" + i + ", before:" + j);
+        Log.d(this.TAG, "hasLevel2ItemAfter cur:" + i + ", before:" + j);
         if (j < 0) {}
         while (i <= j)
         {
@@ -295,7 +394,7 @@ public final class c
         AppMethodBeat.o(178289);
         return true;
       }
-      if (!a((n)localObject, paramn)) {
+      if (!a((s)localObject, params)) {
         break label158;
       }
       j = i;
@@ -310,14 +409,14 @@ public final class c
     }
   }
   
-  public final List<n> dG(List<? extends n> paramList)
+  public final List<s> dV(List<? extends s> paramList)
   {
     AppMethodBeat.i(178287);
     List localList = (List)new ArrayList();
     paramList = ((Iterable)paramList).iterator();
     while (paramList.hasNext())
     {
-      n localn = (n)paramList.next();
+      s locals = (s)paramList.next();
       Object localObject = (List)this.data;
       int i = 0;
       localObject = ((List)localObject).iterator();
@@ -327,7 +426,7 @@ public final class c
       label120:
       int k;
       if (((Iterator)localObject).hasNext()) {
-        if (((n)((Iterator)localObject).next()).ste.cLl().commentId == localn.ste.cLl().commentId)
+        if (((s)((Iterator)localObject).next()).uOf.dyb().commentId == locals.uOf.dyb().commentId)
         {
           j = 1;
           if (j == 0) {
@@ -340,7 +439,7 @@ public final class c
           if (!((Iterator)localObject).hasNext()) {
             break label282;
           }
-          if (((n)((Iterator)localObject).next()).ste.cLl().commentId != localn.ste.cLl().commentId) {
+          if (((s)((Iterator)localObject).next()).uOf.dyb().commentId != locals.uOf.dyb().commentId) {
             break label269;
           }
           k = 1;
@@ -355,8 +454,8 @@ public final class c
         if (j < 0) {
           break label287;
         }
-        this.data.set(j, localn);
-        ae.i(this.TAG, "filter1:" + localn.ste.cLl().commentId + ", " + localn.ste.cLq());
+        this.data.set(j, locals);
+        Log.i(this.TAG, "filter1:" + locals.uOf.dyb().commentId + ", " + locals.uOf.dyg());
         break;
         j = 0;
         break label114;
@@ -376,13 +475,30 @@ public final class c
       }
       label287:
       if (i >= 0) {
-        ae.i(this.TAG, "filter2:" + localn.ste.cLl().commentId);
+        Log.i(this.TAG, "filter2:" + locals.uOf.dyb().commentId);
       } else {
-        localList.add(localn);
+        localList.add(locals);
       }
     }
     AppMethodBeat.o(178287);
     return localList;
+  }
+  
+  public final void nc(boolean paramBoolean)
+  {
+    AppMethodBeat.i(244552);
+    this.data.clear();
+    if (!paramBoolean)
+    {
+      t localt = this.tUL;
+      if (localt != null)
+      {
+        a(localt);
+        AppMethodBeat.o(244552);
+        return;
+      }
+    }
+    AppMethodBeat.o(244552);
   }
   
   public final int t(long paramLong, boolean paramBoolean)
@@ -393,7 +509,7 @@ public final class c
     int i = 0;
     int j;
     if (((Iterator)localObject).hasNext()) {
-      if (((n)((Iterator)localObject).next()).ste.cLl().commentId == paramLong)
+      if (((s)((Iterator)localObject).next()).uOf.dyb().commentId == paramLong)
       {
         j = 1;
         label63:
@@ -412,7 +528,7 @@ public final class c
     {
       j = k;
       if (((ListIterator)localObject).hasPrevious()) {
-        if (((n)((ListIterator)localObject).previous()).ste.field_actionInfo.rQN != paramLong) {
+        if (((s)((ListIterator)localObject).previous()).uOf.field_actionInfo.tuf != paramLong) {
           break label189;
         }
       }
@@ -440,76 +556,51 @@ public final class c
     return i + 1;
   }
   
-  public final void wy(long paramLong)
-  {
-    AppMethodBeat.i(166029);
-    Object localObject2 = (Iterable)this.data;
-    Object localObject1 = (Collection)new ArrayList();
-    localObject2 = ((Iterable)localObject2).iterator();
-    label93:
-    while (((Iterator)localObject2).hasNext())
-    {
-      Object localObject3 = ((Iterator)localObject2).next();
-      if (((n)localObject3).ste.field_localCommentId == paramLong) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label93;
-        }
-        ((Collection)localObject1).add(localObject3);
-        break;
-      }
-    }
-    localObject1 = (List)localObject1;
-    this.data.removeAll((Collection)localObject1);
-    AppMethodBeat.o(166029);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentLoader$Companion;", "", "()V", "debugDisable", "", "clearCache", "", "feedId", "", "putCache", "commentId", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lkotlin/collections/ArrayList;", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentLoader$Companion;", "", "()V", "debugDisable", "", "clearCache", "", "feedId", "", "putCache", "commentId", "data", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lkotlin/collections/ArrayList;", "plugin-finder_release"})
   public static final class a
   {
-    public static void a(long paramLong1, long paramLong2, ArrayList<n> paramArrayList)
+    public static void a(long paramLong1, long paramLong2, ArrayList<s> paramArrayList)
     {
       AppMethodBeat.i(166023);
       p.h(paramArrayList, "data");
-      if (c.cDE())
+      if (c.ddw())
       {
         AppMethodBeat.o(166023);
         return;
       }
-      e locale = e.sKJ;
+      f localf = f.vGd;
       Object localObject = (Iterable)paramArrayList;
       paramArrayList = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        paramArrayList.add(((n)((Iterator)localObject).next()).ste);
+        paramArrayList.add(((s)((Iterator)localObject).next()).uOf);
       }
-      locale.a(paramLong1, paramLong2, (List)paramArrayList);
+      localf.a(paramLong1, paramLong2, (List)paramArrayList);
       AppMethodBeat.o(166023);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
   public static final class b<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
       AppMethodBeat.i(166024);
-      int i = a.a((Comparable)Long.valueOf(((n)paramT2).ste.cLl().displayid), (Comparable)Long.valueOf(((n)paramT1).ste.cLl().displayid));
+      int i = a.a((Comparable)Long.valueOf(((s)paramT2).uOf.dyb().displayid), (Comparable)Long.valueOf(((s)paramT1).uOf.dyb().displayid));
       AppMethodBeat.o(166024);
       return i;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareByDescending$1"})
   public static final class c<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
       AppMethodBeat.i(178285);
-      int i = a.a((Comparable)Long.valueOf(((n)paramT2).ste.cLl().displayid), (Comparable)Long.valueOf(((n)paramT1).ste.cLl().displayid));
+      int i = a.a((Comparable)Long.valueOf(((s)paramT2).uOf.dyb().displayid), (Comparable)Long.valueOf(((s)paramT1).uOf.dyb().displayid));
       AppMethodBeat.o(178285);
       return i;
     }
@@ -517,7 +608,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.c
  * JD-Core Version:    0.7.0.1
  */

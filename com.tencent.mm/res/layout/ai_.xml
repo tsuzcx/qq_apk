@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/jo" android:textStyle="bold" android:textColor="@color/Red" android:id="@id/f5y" android:paddingBottom="@dimen/aew" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-</merge>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/cs">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/bqo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/actionbar_icon_dark_close" android:layout_marginStart="@dimen/cb" app:iconColor="@color/FG_0" />
+        <TextView android:textSize="@dimen/h_" android:textColor="@color/FG_0" android:layout_gravity="center" android:id="@id/br5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d5t" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/hqn" android:background="@drawable/asf" android:paddingLeft="@dimen/cc" android:paddingRight="@dimen/cc" android:layout_width="fill_parent" android:layout_height="@dimen/cr">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/FG_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d5r" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d5s" />
+    </LinearLayout>
+    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/cc" android:layout_marginRight="@dimen/cc" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/esu" android:background="@drawable/asf" android:paddingLeft="@dimen/cc" android:paddingRight="@dimen/cc" android:layout_width="fill_parent" android:layout_height="@dimen/cr">
+        <TextView android:textSize="@dimen/t" android:textColor="@color/FG_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d5p" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d5q" />
+    </LinearLayout>
+    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/cc" android:layout_marginRight="@dimen/cc" android:layout_marginBottom="98.0dip" />
+</LinearLayout>

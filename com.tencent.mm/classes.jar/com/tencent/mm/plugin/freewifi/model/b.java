@@ -10,19 +10,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.freewifi.k;
 import com.tencent.mm.plugin.freewifi.k.a;
 import com.tencent.mm.plugin.freewifi.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class b
 {
-  a txu;
-  BroadcastReceiver txv;
+  a wOy;
+  BroadcastReceiver wOz;
   
   private b()
   {
     AppMethodBeat.i(24769);
-    this.txu = new a((byte)0);
-    this.txv = new BroadcastReceiver()
+    this.wOy = new a((byte)0);
+    this.wOz = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
@@ -30,99 +30,99 @@ public final class b
         if (paramAnonymousIntent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE")) {
           try
           {
-            ae.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "connChangedBroadcastReceiver");
+            Log.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "connChangedBroadcastReceiver");
             paramAnonymousIntent = (NetworkInfo)paramAnonymousIntent.getParcelableExtra("networkInfo");
             if (paramAnonymousIntent == null)
             {
-              ae.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "networkInfo is null");
+              Log.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "networkInfo is null");
               AppMethodBeat.o(24765);
               return;
             }
-            ae.v("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "networkInfo=" + paramAnonymousIntent.toString() + "; networkInfo.isConnected()=%b, networkInfo.getState()=%s, networkInfo.getDetailedState()=%s, networkInfo.getExtraInfo()=%s, networkInfo.isConnectedOrConnecting()=%b, networkInfo.isAvailable()=%b, ", new Object[] { Boolean.valueOf(paramAnonymousIntent.isConnected()), paramAnonymousIntent.getState(), paramAnonymousIntent.getDetailedState(), paramAnonymousIntent.getExtraInfo(), Boolean.valueOf(paramAnonymousIntent.isConnectedOrConnecting()), Boolean.valueOf(paramAnonymousIntent.isAvailable()) });
+            Log.v("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "networkInfo=" + paramAnonymousIntent.toString() + "; networkInfo.isConnected()=%b, networkInfo.getState()=%s, networkInfo.getDetailedState()=%s, networkInfo.getExtraInfo()=%s, networkInfo.isConnectedOrConnecting()=%b, networkInfo.isAvailable()=%b, ", new Object[] { Boolean.valueOf(paramAnonymousIntent.isConnected()), paramAnonymousIntent.getState(), paramAnonymousIntent.getDetailedState(), paramAnonymousIntent.getExtraInfo(), Boolean.valueOf(paramAnonymousIntent.isConnectedOrConnecting()), Boolean.valueOf(paramAnonymousIntent.isAvailable()) });
             if (!paramAnonymousIntent.isConnected())
             {
-              ae.v("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "network is not connected.");
+              Log.v("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "network is not connected.");
               AppMethodBeat.o(24765);
               return;
             }
             if ((paramAnonymousIntent.getType() != 0) && (paramAnonymousIntent.getType() != 1))
             {
-              ae.v("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "network type is not wifi or mobile.");
+              Log.v("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "network type is not wifi or mobile.");
               AppMethodBeat.o(24765);
               return;
             }
             if (paramAnonymousContext == null)
             {
-              ae.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "context is null.");
+              Log.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "context is null.");
               AppMethodBeat.o(24765);
               return;
             }
             if (paramAnonymousIntent.getType() == 1)
             {
-              paramAnonymousContext = m.akG(m.akI("MicroMsg.FreeWifi.FreeWifiConnChangedManager"));
-              String str = m.akJ("MicroMsg.FreeWifi.FreeWifiConnChangedManager").toLowerCase();
-              paramAnonymousIntent = m.akG(m.akH(paramAnonymousIntent.getExtraInfo()));
-              ae.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "networkInfo.getExtraInfo()=%s, wifiInfo.getSsid()=%s, wifiInfo.getBssid=%s", new Object[] { paramAnonymousIntent, paramAnonymousContext, str });
-              if (!m.akH(paramAnonymousIntent).equals(paramAnonymousContext))
+              paramAnonymousContext = m.removeSsidQuote(m.axM("MicroMsg.FreeWifi.FreeWifiConnChangedManager"));
+              String str = m.axN("MicroMsg.FreeWifi.FreeWifiConnChangedManager").toLowerCase();
+              paramAnonymousIntent = m.removeSsidQuote(m.axL(paramAnonymousIntent.getExtraInfo()));
+              Log.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "networkInfo.getExtraInfo()=%s, wifiInfo.getSsid()=%s, wifiInfo.getBssid=%s", new Object[] { paramAnonymousIntent, paramAnonymousContext, str });
+              if (!m.axL(paramAnonymousIntent).equals(paramAnonymousContext))
               {
-                ae.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "wifiManage ssid is not equal to networkInfo.getExtraInfo(). networkwork might changed. return.");
+                Log.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "wifiManage ssid is not equal to networkInfo.getExtraInfo(). networkwork might changed. return.");
                 AppMethodBeat.o(24765);
                 return;
               }
-              if ((b.this.txu.type == 1) && (m.akH(b.this.txu.ssid).equals(paramAnonymousContext)) && (m.akH(b.this.txu.bssid).equals(str)))
+              if ((b.this.wOy.type == 1) && (m.axL(b.this.wOy.ssid).equals(paramAnonymousContext)) && (m.axL(b.this.wOy.bssid).equals(str)))
               {
-                ae.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "Dulplicated intent.");
+                Log.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "Dulplicated intent.");
                 AppMethodBeat.o(24765);
                 return;
               }
               paramAnonymousIntent = new b.a((byte)0);
-              paramAnonymousIntent.txx = System.currentTimeMillis();
+              paramAnonymousIntent.wOB = System.currentTimeMillis();
               paramAnonymousIntent.type = 1;
               paramAnonymousIntent.ssid = paramAnonymousContext;
               paramAnonymousIntent.bssid = str;
-              paramAnonymousIntent.txy = "";
-              b.b(b.this.txu.cTO(), paramAnonymousIntent);
-              b.this.txu = paramAnonymousIntent;
+              paramAnonymousIntent.wOC = "";
+              b.b(b.this.wOy.dMX(), paramAnonymousIntent);
+              b.this.wOy = paramAnonymousIntent;
               AppMethodBeat.o(24765);
               return;
             }
             if (paramAnonymousIntent.getType() == 0)
             {
-              if ((b.this.txu.type == 0) && (m.akH(b.this.txu.txy).equals(m.akH(paramAnonymousIntent.getExtraInfo()))))
+              if ((b.this.wOy.type == 0) && (m.axL(b.this.wOy.wOC).equals(m.axL(paramAnonymousIntent.getExtraInfo()))))
               {
-                ae.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "Dulplicated intent.");
+                Log.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "Dulplicated intent.");
                 AppMethodBeat.o(24765);
                 return;
               }
               paramAnonymousContext = (ConnectivityManager)paramAnonymousContext.getSystemService("connectivity");
               if (paramAnonymousContext == null)
               {
-                ae.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "connManager is null.");
+                Log.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "connManager is null.");
                 AppMethodBeat.o(24765);
                 return;
               }
               paramAnonymousContext = paramAnonymousContext.getNetworkInfo(1);
               if (paramAnonymousContext == null)
               {
-                ae.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "networkInfoWifi is null.");
+                Log.e("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "networkInfoWifi is null.");
                 AppMethodBeat.o(24765);
                 return;
               }
-              ae.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "networkInfoWifi.getState()=%s, networkInfoWifi.getDetailedState()=%s", new Object[] { paramAnonymousContext.getState(), paramAnonymousContext.getDetailedState() });
+              Log.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "networkInfoWifi.getState()=%s, networkInfoWifi.getDetailedState()=%s", new Object[] { paramAnonymousContext.getState(), paramAnonymousContext.getDetailedState() });
               if (paramAnonymousContext.getDetailedState() != NetworkInfo.DetailedState.DISCONNECTED)
               {
-                ae.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "It receives a type mobile connected event, but wifi network is not disconnected, so in fact user is probably switching wifi among ssids, not trying to connect to mobile network. ");
+                Log.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "It receives a type mobile connected event, but wifi network is not disconnected, so in fact user is probably switching wifi among ssids, not trying to connect to mobile network. ");
                 AppMethodBeat.o(24765);
                 return;
               }
               paramAnonymousContext = new b.a((byte)0);
-              paramAnonymousContext.txx = System.currentTimeMillis();
+              paramAnonymousContext.wOB = System.currentTimeMillis();
               paramAnonymousContext.type = 0;
               paramAnonymousContext.ssid = "";
               paramAnonymousContext.bssid = "";
-              paramAnonymousContext.txy = m.akH(paramAnonymousIntent.getExtraInfo());
-              b.a(b.this.txu.cTO(), paramAnonymousContext);
-              b.this.txu = paramAnonymousContext;
+              paramAnonymousContext.wOC = m.axL(paramAnonymousIntent.getExtraInfo());
+              b.a(b.this.wOy.dMX(), paramAnonymousContext);
+              b.this.wOy = paramAnonymousContext;
               AppMethodBeat.o(24765);
               return;
             }
@@ -131,12 +131,12 @@ public final class b
           }
           catch (Exception paramAnonymousContext)
           {
-            paramAnonymousIntent = k.cTw();
-            paramAnonymousIntent.dnO = "UnExpectedException";
+            paramAnonymousIntent = k.dMF();
+            paramAnonymousIntent.dFd = "UnExpectedException";
             paramAnonymousIntent.result = -1;
-            paramAnonymousIntent.fMT = m.l(paramAnonymousContext);
-            paramAnonymousIntent.cTy().cTx();
-            ae.e("MicroMsg.FreeWifi.UnExcepctedException", m.m(paramAnonymousContext));
+            paramAnonymousIntent.resultMsg = m.l(paramAnonymousContext);
+            paramAnonymousIntent.dMH().dMG();
+            Log.e("MicroMsg.FreeWifi.UnExcepctedException", m.m(paramAnonymousContext));
           }
         }
         AppMethodBeat.o(24765);
@@ -148,35 +148,35 @@ public final class b
   static void a(a parama1, a parama2)
   {
     AppMethodBeat.i(24771);
-    m.akL("on mobile connected.");
-    ae.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "onMobileConnected. lastRecord=%s, newRecord=%s", new Object[] { parama1.toString(), parama2.toString() });
-    com.tencent.mm.plugin.freewifi.f.b.md(0);
+    m.axP("on mobile connected.");
+    Log.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "onMobileConnected. lastRecord=%s, newRecord=%s", new Object[] { parama1.toString(), parama2.toString() });
+    com.tencent.mm.plugin.freewifi.f.b.pl(0);
     AppMethodBeat.o(24771);
   }
   
   static void b(a parama1, a parama2)
   {
     AppMethodBeat.i(24772);
-    m.akL("on wifi connected.");
-    ae.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "onWifiConnected. lastRecord=%s, newRecord=%s", new Object[] { parama1.toString(), parama2.toString() });
+    m.axP("on wifi connected.");
+    Log.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "onWifiConnected. lastRecord=%s, newRecord=%s", new Object[] { parama1.toString(), parama2.toString() });
     if ((parama1.type == 1) && (parama1.ssid.equals(parama2.ssid)) && (!parama1.bssid.equals(parama2.bssid)))
     {
       String str = parama1.ssid;
       parama1 = parama1.bssid;
       parama2 = parama2.bssid;
-      m.akL("on wifi roaming.");
-      ae.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "WifiRoaming. ssid=%s, fromBssid=%s, toBssid=%s", new Object[] { str, parama1, parama2 });
+      m.axP("on wifi roaming.");
+      Log.i("MicroMsg.FreeWifi.FreeWifiConnChangedManager", "WifiRoaming. ssid=%s, fromBssid=%s, toBssid=%s", new Object[] { str, parama1, parama2 });
     }
-    com.tencent.mm.plugin.freewifi.f.b.md(1);
+    com.tencent.mm.plugin.freewifi.f.b.pl(1);
     AppMethodBeat.o(24772);
   }
   
-  public final void cTl()
+  public final void dMu()
   {
     AppMethodBeat.i(24770);
     try
     {
-      ak.getContext().unregisterReceiver(this.txv);
+      MMApplicationContext.getContext().unregisterReceiver(this.wOz);
       AppMethodBeat.o(24770);
       return;
     }
@@ -190,19 +190,19 @@ public final class b
   {
     String bssid = "";
     String ssid = "";
-    long txx;
-    String txy = "";
     int type;
+    long wOB;
+    String wOC = "";
     
-    public final a cTO()
+    public final a dMX()
     {
       AppMethodBeat.i(24766);
       a locala = new a();
-      locala.txx = this.txx;
+      locala.wOB = this.wOB;
       locala.type = this.type;
       locala.ssid = this.ssid;
       locala.bssid = this.bssid;
-      locala.txy = this.txy;
+      locala.wOC = this.wOC;
       AppMethodBeat.o(24766);
       return locala;
     }
@@ -210,7 +210,7 @@ public final class b
     public final String toString()
     {
       AppMethodBeat.i(24767);
-      String str = String.format("NetworkInfoConnectedRecord(timeMillis=%d, type=%d, ssid=%s, bssid=%s, mobileNetworkType=%s)", new Object[] { Long.valueOf(this.txx), Integer.valueOf(this.type), this.ssid, this.bssid, this.txy });
+      String str = String.format("NetworkInfoConnectedRecord(timeMillis=%d, type=%d, ssid=%s, bssid=%s, mobileNetworkType=%s)", new Object[] { Long.valueOf(this.wOB), Integer.valueOf(this.type), this.ssid, this.bssid, this.wOC });
       AppMethodBeat.o(24767);
       return str;
     }
@@ -218,19 +218,19 @@ public final class b
   
   static final class b
   {
-    private static b txz;
+    private static b wOD;
     
     static
     {
       AppMethodBeat.i(24768);
-      txz = new b((byte)0);
+      wOD = new b((byte)0);
       AppMethodBeat.o(24768);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.model.b
  * JD-Core Version:    0.7.0.1
  */

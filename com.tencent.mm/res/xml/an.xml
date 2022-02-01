@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.PluginTextPreference android:key="tip_other" android:plugin_layout="@layout/app" android:plugin_text="@string/eo3" />
-    <com.tencent.mm.ui.base.preference.Preference android:key="common_chatroom" android:layout="@layout/aop" android:title="@string/b59" />
-    <com.tencent.mm.ui.base.preference.Preference android:key="friend_source" android:layout="@layout/aop" android:title="@string/bap" />
-    <com.tencent.mm.ui.base.preference.Preference android:key="district" android:layout="@layout/aop" android:title="@string/b5i" />
-    <com.tencent.mm.ui.base.preference.Preference android:key="signature" android:layout="@layout/aop" android:title="@string/b_a" />
-    <com.tencent.mm.ui.base.preference.PluginTextPreference android:key="tip_about_account" android:plugin_layout="@layout/app" android:plugin_text="@string/b76" />
-    <com.tencent.mm.ui.base.preference.Preference android:key="weishop" android:layout="@layout/aop" android:title="@string/b_j" />
-    <PreferenceSmallCategory android:key="contact_info_category_1" />
-    <com.tencent.mm.ui.base.preference.Preference android:key="send_to_friend" android:layout="@layout/aop" android:title="@string/b9z" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bi_" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:defaultValue="false" android:key="add_to_black" android:persistent="false" android:summary="@string/b80" android:title="@string/b7z" />
-    <com.tencent.mm.ui.base.preference.Preference android:key="expose" android:layout="@layout/aop" android:title="@string/asw" />
+    <Preference android:key="contact_info_wxpay_notify_go_to" android:layout="@layout/b8j" android:title="@string/bhw" />
     <PreferenceSmallCategory />
-    <com.tencent.mm.ui.base.preference.Preference android:key="delete_contact" android:layout="@layout/aop" android:title="@string/b5f" />
+    <CheckBoxPreference android:key="contact_info_wxpay_notify_top" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bi0" />
+    <CheckBoxPreference android:key="contact_info_wxpay_notify_not_disturb" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bhy" />
     <PreferenceSmallCategory />
+    <Preference android:key="contact_info_wxpay_notify_help" android:layout="@layout/b8j" android:title="@string/bhx" />
+    <Preference android:key="contact_info_wxpay_notify_clear_data" android:layout="@layout/b8j" android:title="@string/ba3" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsq" android:key="contact_info_wxpay_notify_install" android:title_color="@color/ts" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsv" android:key="contact_info_wxpay_notify_uninstall" android:layout="@layout/b2o" android:title_color="@color/a5e" />
+    <PreferenceCategory />
 </PreferenceScreen>

@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/hia" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a_u" android:gravity="center" android:id="@id/hi_" android:background="@drawable/c71" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hqe" android:layout_centerVertical="true" android:paddingStart="12.0dip" android:paddingEnd="12.0dip" />
-</RelativeLayout>

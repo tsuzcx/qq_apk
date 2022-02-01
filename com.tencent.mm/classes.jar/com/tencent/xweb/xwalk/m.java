@@ -53,7 +53,7 @@ public class m
     return bool;
   }
   
-  public final void gho()
+  public final void huJ()
   {
     AppMethodBeat.i(154452);
     super.onHideCustomView();
@@ -62,7 +62,7 @@ public class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.xwalk.m
  * JD-Core Version:    0.7.0.1
  */

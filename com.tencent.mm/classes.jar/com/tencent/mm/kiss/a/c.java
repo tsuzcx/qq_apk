@@ -8,20 +8,19 @@ import java.util.Queue;
 
 final class c
 {
-  int UR;
-  int cZd;
-  Queue<View> gHj;
-  Queue<View> gHk;
-  String gHl;
-  int[] gHm;
-  ViewGroup gHn;
-  boolean gHo;
+  int Ve;
+  int dpI;
+  Queue<View> htX;
+  Queue<View> htY;
+  String htZ;
+  int[] hua;
+  ViewGroup hub;
   
   c()
   {
     AppMethodBeat.i(141008);
-    this.gHj = new LinkedList();
-    this.gHk = new LinkedList();
+    this.htX = new LinkedList();
+    this.htY = new LinkedList();
     AppMethodBeat.o(141008);
   }
 }

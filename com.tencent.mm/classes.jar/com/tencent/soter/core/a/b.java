@@ -125,11 +125,11 @@ final class b
   
   public static final class b
   {
-    b.c MmQ;
+    b.c RPo;
     
     public b(b.c paramc)
     {
-      this.MmQ = paramc;
+      this.RPo = paramc;
     }
   }
   
@@ -163,7 +163,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.soter.core.a.b
  * JD-Core Version:    0.7.0.1
  */

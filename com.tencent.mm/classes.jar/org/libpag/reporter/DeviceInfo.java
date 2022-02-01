@@ -45,19 +45,19 @@ public class DeviceInfo
   
   public static String getRomFingerprint(Context paramContext)
   {
-    AppMethodBeat.i(217056);
+    AppMethodBeat.i(237030);
     String str = Build.FINGERPRINT;
     paramContext = str;
     if (TextUtils.isEmpty(str)) {
       paramContext = "Android";
     }
-    AppMethodBeat.o(217056);
+    AppMethodBeat.o(237030);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.libpag.reporter.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

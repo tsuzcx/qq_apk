@@ -5,20 +5,20 @@ import java.util.Locale;
 
 public final class a
 {
-  static final d NH = e.Og;
-  private static final String NI = Character.toString('‎');
-  private static final String NJ = Character.toString('‏');
-  static final a NK = new a(false, 2, NH);
-  static final a NL = new a(true, 2, NH);
-  private final int FL;
-  private final boolean NM;
-  private final d NN;
+  static final d NT = e.Os;
+  private static final String NU = Character.toString('‎');
+  private static final String NV = Character.toString('‏');
+  static final a NW = new a(false, 2, NT);
+  static final a NX = new a(true, 2, NT);
+  private final int FV;
+  private final boolean NY;
+  private final d NZ;
   
   private a(boolean paramBoolean, int paramInt, d paramd)
   {
-    this.NM = paramBoolean;
-    this.FL = paramInt;
-    this.NN = paramd;
+    this.NY = paramBoolean;
+    this.FV = paramInt;
+    this.NZ = paramd;
   }
   
   private CharSequence a(CharSequence paramCharSequence, d paramd)
@@ -31,7 +31,7 @@ public final class a
     int k;
     label56:
     boolean bool2;
-    if ((this.FL & 0x2) != 0)
+    if ((this.FV & 0x2) != 0)
     {
       k = 1;
       if (k != 0)
@@ -39,16 +39,16 @@ public final class a
         if (!bool1) {
           break label207;
         }
-        paramd = e.Of;
+        paramd = e.Or;
         bool2 = paramd.a(paramCharSequence, paramCharSequence.length());
-        if ((this.NM) || ((!bool2) && (n(paramCharSequence) != 1))) {
+        if ((this.NY) || ((!bool2) && (n(paramCharSequence) != 1))) {
           break label214;
         }
-        paramd = NI;
+        paramd = NU;
         label95:
         localSpannableStringBuilder.append(paramd);
       }
-      if (bool1 == this.NM) {
+      if (bool1 == this.NY) {
         break label254;
       }
       if (!bool1) {
@@ -63,13 +63,13 @@ public final class a
       if (!bool1) {
         break label264;
       }
-      paramd = e.Of;
+      paramd = e.Or;
       label152:
       bool1 = paramd.a(paramCharSequence, paramCharSequence.length());
-      if ((this.NM) || ((!bool1) && (m(paramCharSequence) != 1))) {
+      if ((this.NY) || ((!bool1) && (m(paramCharSequence) != 1))) {
         break label271;
       }
-      paramCharSequence = NI;
+      paramCharSequence = NU;
     }
     for (;;)
     {
@@ -78,12 +78,12 @@ public final class a
       k = 0;
       break;
       label207:
-      paramd = e.Oe;
+      paramd = e.Oq;
       break label56;
       label214:
-      if ((this.NM) && ((!bool2) || (n(paramCharSequence) == -1)))
+      if ((this.NY) && ((!bool2) || (n(paramCharSequence) == -1)))
       {
-        paramd = NJ;
+        paramd = NV;
         break label95;
       }
       paramd = "";
@@ -95,11 +95,11 @@ public final class a
       localSpannableStringBuilder.append(paramCharSequence);
       break label143;
       label264:
-      paramd = e.Oe;
+      paramd = e.Oq;
       break label152;
       label271:
-      if ((this.NM) && ((!bool1) || (m(paramCharSequence) == -1))) {
-        paramCharSequence = NJ;
+      if ((this.NY) && ((!bool1) || (m(paramCharSequence) == -1))) {
+        paramCharSequence = NV;
       } else {
         paramCharSequence = "";
       }
@@ -111,47 +111,47 @@ public final class a
     return f.getLayoutDirectionFromLocale(paramLocale) == 1;
   }
   
-  public static a fb()
+  public static a fg()
   {
     a locala = new a();
-    if ((locala.FL == 2) && (locala.NO == NH))
+    if ((locala.FV == 2) && (locala.Oa == NT))
     {
-      if (locala.NM) {
-        return NL;
+      if (locala.NY) {
+        return NX;
       }
-      return NK;
+      return NW;
     }
-    return new a(locala.NM, locala.FL, locala.NO);
+    return new a(locala.NY, locala.FV, locala.Oa);
   }
   
   private static int m(CharSequence paramCharSequence)
   {
-    return new b(paramCharSequence).fd();
+    return new b(paramCharSequence).fi();
   }
   
   private static int n(CharSequence paramCharSequence)
   {
-    return new b(paramCharSequence).fc();
+    return new b(paramCharSequence).fh();
   }
   
   public final CharSequence unicodeWrap(CharSequence paramCharSequence)
   {
-    return a(paramCharSequence, this.NN);
+    return a(paramCharSequence, this.NZ);
   }
   
   public static final class a
   {
-    int FL = 2;
-    boolean NM = a.a(Locale.getDefault());
-    d NO = a.NH;
+    int FV = 2;
+    boolean NY = a.a(Locale.getDefault());
+    d Oa = a.NT;
   }
   
   static final class b
   {
-    private static final byte[] NP = new byte[1792];
-    private final boolean NQ;
-    private int NR;
-    private char NS;
+    private static final byte[] Ob = new byte[1792];
+    private final boolean Oc;
+    private int Od;
+    private char Oe;
     private final int length;
     private final CharSequence text;
     
@@ -160,7 +160,7 @@ public final class a
       int i = 0;
       while (i < 1792)
       {
-        NP[i] = Character.getDirectionality(i);
+        Ob[i] = Character.getDirectionality(i);
         i += 1;
       }
     }
@@ -168,26 +168,26 @@ public final class a
     b(CharSequence paramCharSequence)
     {
       this.text = paramCharSequence;
-      this.NQ = false;
+      this.Oc = false;
       this.length = paramCharSequence.length();
     }
     
     private static byte a(char paramChar)
     {
       if (paramChar < '܀') {
-        return NP[paramChar];
+        return Ob[paramChar];
       }
       return Character.getDirectionality(paramChar);
     }
     
-    private byte fe()
+    private byte fj()
     {
-      this.NS = this.text.charAt(this.NR);
+      this.Oe = this.text.charAt(this.Od);
       byte b1;
-      if (Character.isHighSurrogate(this.NS))
+      if (Character.isHighSurrogate(this.Oe))
       {
-        int i = Character.codePointAt(this.text, this.NR);
-        this.NR += Character.charCount(i);
+        int i = Character.codePointAt(this.text, this.Od);
+        this.Od += Character.charCount(i);
         b1 = Character.getDirectionality(i);
       }
       do
@@ -196,26 +196,26 @@ public final class a
         do
         {
           return b1;
-          this.NR += 1;
-          b2 = a(this.NS);
+          this.Od += 1;
+          b2 = a(this.Oe);
           b1 = b2;
-        } while (!this.NQ);
-        if (this.NS == '<') {
-          return fg();
+        } while (!this.Oc);
+        if (this.Oe == '<') {
+          return fm();
         }
         b1 = b2;
-      } while (this.NS != '&');
-      return fi();
+      } while (this.Oe != '&');
+      return fo();
     }
     
-    private byte ff()
+    private byte fl()
     {
-      this.NS = this.text.charAt(this.NR - 1);
+      this.Oe = this.text.charAt(this.Od - 1);
       byte b1;
-      if (Character.isLowSurrogate(this.NS))
+      if (Character.isLowSurrogate(this.Oe))
       {
-        int i = Character.codePointBefore(this.text, this.NR);
-        this.NR -= Character.charCount(i);
+        int i = Character.codePointBefore(this.text, this.Od);
+        this.Od -= Character.charCount(i);
         b1 = Character.getDirectionality(i);
       }
       do
@@ -224,43 +224,43 @@ public final class a
         do
         {
           return b1;
-          this.NR -= 1;
-          b2 = a(this.NS);
+          this.Od -= 1;
+          b2 = a(this.Oe);
           b1 = b2;
-        } while (!this.NQ);
-        if (this.NS == '>') {
-          return fh();
+        } while (!this.Oc);
+        if (this.Oe == '>') {
+          return fn();
         }
         b1 = b2;
-      } while (this.NS != ';');
-      return fj();
+      } while (this.Oe != ';');
+      return fp();
     }
     
-    private byte fg()
+    private byte fm()
     {
-      int j = this.NR;
+      int j = this.Od;
       for (;;)
       {
-        if (this.NR >= this.length) {
+        if (this.Od >= this.length) {
           break label135;
         }
         CharSequence localCharSequence = this.text;
-        int k = this.NR;
-        this.NR = (k + 1);
-        this.NS = localCharSequence.charAt(k);
-        if (this.NS == '>') {
+        int k = this.Od;
+        this.Od = (k + 1);
+        this.Oe = localCharSequence.charAt(k);
+        if (this.Oe == '>') {
           return 12;
         }
-        if ((this.NS == '"') || (this.NS == '\''))
+        if ((this.Oe == '"') || (this.Oe == '\''))
         {
-          k = this.NS;
-          if (this.NR < this.length)
+          k = this.Oe;
+          if (this.Od < this.length)
           {
             localCharSequence = this.text;
-            int m = this.NR;
-            this.NR = (m + 1);
+            int m = this.Od;
+            this.Od = (m + 1);
             int i = localCharSequence.charAt(m);
-            this.NS = i;
+            this.Oe = i;
             if (i != k) {
               break;
             }
@@ -268,39 +268,39 @@ public final class a
         }
       }
       label135:
-      this.NR = j;
-      this.NS = '<';
+      this.Od = j;
+      this.Oe = '<';
       return 13;
     }
     
-    private byte fh()
+    private byte fn()
     {
-      int j = this.NR;
+      int j = this.Od;
       for (;;)
       {
-        if (this.NR <= 0) {
+        if (this.Od <= 0) {
           break label136;
         }
         CharSequence localCharSequence = this.text;
-        int k = this.NR - 1;
-        this.NR = k;
-        this.NS = localCharSequence.charAt(k);
-        if (this.NS == '<') {
+        int k = this.Od - 1;
+        this.Od = k;
+        this.Oe = localCharSequence.charAt(k);
+        if (this.Oe == '<') {
           return 12;
         }
-        if (this.NS == '>') {
+        if (this.Oe == '>') {
           break label136;
         }
-        if ((this.NS == '"') || (this.NS == '\''))
+        if ((this.Oe == '"') || (this.Oe == '\''))
         {
-          k = this.NS;
-          if (this.NR > 0)
+          k = this.Oe;
+          if (this.Od > 0)
           {
             localCharSequence = this.text;
-            int m = this.NR - 1;
-            this.NR = m;
+            int m = this.Od - 1;
+            this.Od = m;
             int i = localCharSequence.charAt(m);
-            this.NS = i;
+            this.Oe = i;
             if (i != k) {
               break;
             }
@@ -308,57 +308,57 @@ public final class a
         }
       }
       label136:
-      this.NR = j;
-      this.NS = '>';
+      this.Od = j;
+      this.Oe = '>';
       return 13;
     }
     
-    private byte fi()
+    private byte fo()
     {
       char c;
       do
       {
-        if (this.NR >= this.length) {
+        if (this.Od >= this.length) {
           break;
         }
         CharSequence localCharSequence = this.text;
-        int i = this.NR;
-        this.NR = (i + 1);
+        int i = this.Od;
+        this.Od = (i + 1);
         c = localCharSequence.charAt(i);
-        this.NS = c;
+        this.Oe = c;
       } while (c != ';');
       return 12;
     }
     
-    private byte fj()
+    private byte fp()
     {
-      int i = this.NR;
+      int i = this.Od;
       do
       {
-        if (this.NR <= 0) {
+        if (this.Od <= 0) {
           break;
         }
         CharSequence localCharSequence = this.text;
-        int j = this.NR - 1;
-        this.NR = j;
-        this.NS = localCharSequence.charAt(j);
-        if (this.NS == '&') {
+        int j = this.Od - 1;
+        this.Od = j;
+        this.Oe = localCharSequence.charAt(j);
+        if (this.Oe == '&') {
           return 12;
         }
-      } while (this.NS != ';');
-      this.NR = i;
-      this.NS = ';';
+      } while (this.Oe != ';');
+      this.Od = i;
+      this.Oe = ';';
       return 13;
     }
     
-    final int fc()
+    final int fh()
     {
-      this.NR = 0;
+      this.Od = 0;
       int j = 0;
       int k = 0;
       int i = 0;
-      while ((this.NR < this.length) && (j == 0)) {
-        switch (fe())
+      while ((this.Od < this.length) && (j == 0)) {
+        switch (fj())
         {
         case 9: 
         case 3: 
@@ -410,10 +410,10 @@ public final class a
       }
       for (;;)
       {
-        if (this.NR <= 0) {
+        if (this.Od <= 0) {
           break label268;
         }
-        switch (ff())
+        switch (fl())
         {
         default: 
           break;
@@ -439,17 +439,17 @@ public final class a
       return 0;
     }
     
-    final int fd()
+    final int fi()
     {
       int m = 0;
-      this.NR = this.length;
+      this.Od = this.length;
       int j = 0;
       int i = 0;
       for (;;)
       {
         int k = m;
-        if (this.NR > 0) {}
-        switch (ff())
+        if (this.Od > 0) {}
+        switch (fl())
         {
         case 9: 
         case 3: 
@@ -509,7 +509,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.d.a
  * JD-Core Version:    0.7.0.1
  */

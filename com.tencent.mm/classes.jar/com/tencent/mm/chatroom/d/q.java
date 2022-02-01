@@ -1,46 +1,46 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.cwo;
-import com.tencent.mm.protocal.protobuf.cwp;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dpi;
+import com.tencent.mm.protocal.protobuf.dpj;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class q
-  extends n
-  implements k
+  extends com.tencent.mm.ak.q
+  implements m
 {
-  private f callback;
-  private b rr;
+  private i callback;
+  private d rr;
   
   public q(String paramString1, String paramString2)
   {
     AppMethodBeat.i(12489);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cwo();
-    ((b.a)localObject).hQG = new cwp();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/revokechatroomqrcode";
-    ((b.a)localObject).funcId = 700;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (cwo)this.rr.hQD.hQJ;
-    ((cwo)localObject).HHt = paramString1;
-    ((cwo)localObject).HHu = paramString2;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dpi();
+    ((d.a)localObject).iLO = new dpj();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/revokechatroomqrcode";
+    ((d.a)localObject).funcId = 700;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (dpi)this.rr.iLK.iLR;
+    ((dpi)localObject).MSF = paramString1;
+    ((dpi)localObject).MSG = paramString2;
     AppMethodBeat.o(12489);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(12490);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(12490);
     return i;
   }
@@ -50,10 +50,10 @@ public final class q
     return 700;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12491);
-    ae.d("MicroMsg.RevokeChatRoomQRCodeRequest", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    Log.d("MicroMsg.RevokeChatRoomQRCodeRequest", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12491);
   }

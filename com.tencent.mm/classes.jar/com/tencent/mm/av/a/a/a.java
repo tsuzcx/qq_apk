@@ -1,8 +1,8 @@
 package com.tencent.mm.av.a.a;
 
-import com.tencent.e.b;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.b;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.c.j;
 import java.util.concurrent.BlockingQueue;
@@ -12,15 +12,15 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public final class a
 {
-  public static Executor aJi()
+  public static Executor bdc()
   {
     AppMethodBeat.i(182800);
-    b localb = h.MqF.bbd("image_loader_ImageTempFile");
+    b localb = h.RTc.bqp("image_loader_ImageTempFile");
     AppMethodBeat.o(182800);
     return localb;
   }
   
-  public static j pH(int paramInt)
+  public static j tv(int paramInt)
   {
     AppMethodBeat.i(182799);
     a locala = new a("image_loader_default", paramInt, paramInt, new com.tencent.mm.av.a.e.a());
@@ -32,22 +32,22 @@ public final class a
     extends b
     implements j
   {
-    private ReentrantLock hiL;
-    private Condition hiM;
-    private BlockingQueue<Runnable> hiN;
+    private ReentrantLock ibI;
+    private Condition ibJ;
+    private BlockingQueue<Runnable> ibK;
     private boolean isPaused;
     
     public a(String paramString, int paramInt1, int paramInt2, BlockingQueue<Runnable> paramBlockingQueue)
     {
       super(paramInt1, paramInt2, paramBlockingQueue, null);
       AppMethodBeat.i(182797);
-      this.hiL = new ReentrantLock();
-      this.hiM = this.hiL.newCondition();
-      this.hiN = paramBlockingQueue;
+      this.ibI = new ReentrantLock();
+      this.ibJ = this.ibI.newCondition();
+      this.ibK = paramBlockingQueue;
       AppMethodBeat.o(182797);
     }
     
-    public final boolean OG()
+    public final boolean YY()
     {
       return this.isPaused;
     }
@@ -68,15 +68,15 @@ public final class a
       //   5: aload_0
       //   6: aload_1
       //   7: aload_2
-      //   8: invokespecial 67	com/tencent/e/b:beforeExecute	(Ljava/lang/Thread;Ljava/lang/Runnable;)V
+      //   8: invokespecial 67	com/tencent/f/b:beforeExecute	(Ljava/lang/Thread;Ljava/lang/Runnable;)V
       //   11: aload_0
-      //   12: getfield 37	com/tencent/mm/av/a/a/a$a:hiL	Ljava/util/concurrent/locks/ReentrantLock;
+      //   12: getfield 37	com/tencent/mm/av/a/a/a$a:ibI	Ljava/util/concurrent/locks/ReentrantLock;
       //   15: invokevirtual 70	java/util/concurrent/locks/ReentrantLock:lock	()V
       //   18: aload_0
       //   19: getfield 55	com/tencent/mm/av/a/a/a$a:isPaused	Z
       //   22: ifeq +51 -> 73
       //   25: aload_0
-      //   26: getfield 43	com/tencent/mm/av/a/a/a$a:hiM	Ljava/util/concurrent/locks/Condition;
+      //   26: getfield 43	com/tencent/mm/av/a/a/a$a:ibJ	Ljava/util/concurrent/locks/Condition;
       //   29: invokeinterface 75 1 0
       //   34: goto -16 -> 18
       //   37: astore_2
@@ -91,22 +91,22 @@ public final class a
       //   52: aload_2
       //   53: invokevirtual 90	java/lang/Exception:toString	()Ljava/lang/String;
       //   56: aastore
-      //   57: invokestatic 96	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   57: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   60: aload_0
-      //   61: getfield 37	com/tencent/mm/av/a/a/a$a:hiL	Ljava/util/concurrent/locks/ReentrantLock;
+      //   61: getfield 37	com/tencent/mm/av/a/a/a$a:ibI	Ljava/util/concurrent/locks/ReentrantLock;
       //   64: invokevirtual 99	java/util/concurrent/locks/ReentrantLock:unlock	()V
       //   67: ldc 65
       //   69: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   72: return
       //   73: aload_0
-      //   74: getfield 37	com/tencent/mm/av/a/a/a$a:hiL	Ljava/util/concurrent/locks/ReentrantLock;
+      //   74: getfield 37	com/tencent/mm/av/a/a/a$a:ibI	Ljava/util/concurrent/locks/ReentrantLock;
       //   77: invokevirtual 99	java/util/concurrent/locks/ReentrantLock:unlock	()V
       //   80: ldc 65
       //   82: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   85: return
       //   86: astore_1
       //   87: aload_0
-      //   88: getfield 37	com/tencent/mm/av/a/a/a$a:hiL	Ljava/util/concurrent/locks/ReentrantLock;
+      //   88: getfield 37	com/tencent/mm/av/a/a/a$a:ibI	Ljava/util/concurrent/locks/ReentrantLock;
       //   91: invokevirtual 99	java/util/concurrent/locks/ReentrantLock:unlock	()V
       //   94: ldc 65
       //   96: invokestatic 48	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -142,7 +142,7 @@ public final class a
     public final void pause()
     {
       AppMethodBeat.i(130379);
-      this.hiL.lock();
+      this.ibI.lock();
       try
       {
         this.isPaused = true;
@@ -150,7 +150,7 @@ public final class a
       }
       finally
       {
-        this.hiL.unlock();
+        this.ibI.unlock();
         AppMethodBeat.o(130379);
       }
     }
@@ -158,8 +158,8 @@ public final class a
     public final void remove(Object paramObject)
     {
       AppMethodBeat.i(130382);
-      if (this.hiN != null) {
-        this.hiN.remove(paramObject);
+      if (this.ibK != null) {
+        this.ibK.remove(paramObject);
       }
       AppMethodBeat.o(130382);
     }
@@ -167,16 +167,16 @@ public final class a
     public final void resume()
     {
       AppMethodBeat.i(130380);
-      this.hiL.lock();
+      this.ibI.lock();
       try
       {
         this.isPaused = false;
-        this.hiM.signalAll();
+        this.ibJ.signalAll();
         return;
       }
       finally
       {
-        this.hiL.unlock();
+        this.ibI.unlock();
         AppMethodBeat.o(130380);
       }
     }

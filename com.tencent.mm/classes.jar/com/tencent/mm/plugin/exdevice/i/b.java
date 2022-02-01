@@ -1,93 +1,93 @@
 package com.tencent.mm.plugin.exdevice.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.di;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.do;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class b
-  extends di
+  extends do
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(23779);
-    c.a locala = new c.a();
-    locala.IBL = new Field[14];
-    locala.columns = new String[15];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[14];
+    localMAutoDBInfo.columns = new String[15];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "deviceID";
-    locala.IBN.put("deviceID", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "deviceID";
+    localMAutoDBInfo.colsMap.put("deviceID", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" deviceID TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "deviceID";
-    locala.columns[1] = "brandName";
-    locala.IBN.put("brandName", "TEXT");
+    localMAutoDBInfo.primaryKey = "deviceID";
+    localMAutoDBInfo.columns[1] = "brandName";
+    localMAutoDBInfo.colsMap.put("brandName", "TEXT");
     localStringBuilder.append(" brandName TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "mac";
-    locala.IBN.put("mac", "LONG");
+    localMAutoDBInfo.columns[2] = "mac";
+    localMAutoDBInfo.colsMap.put("mac", "LONG");
     localStringBuilder.append(" mac LONG");
     localStringBuilder.append(", ");
-    locala.columns[3] = "deviceType";
-    locala.IBN.put("deviceType", "TEXT");
+    localMAutoDBInfo.columns[3] = "deviceType";
+    localMAutoDBInfo.colsMap.put("deviceType", "TEXT");
     localStringBuilder.append(" deviceType TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "connProto";
-    locala.IBN.put("connProto", "TEXT");
+    localMAutoDBInfo.columns[4] = "connProto";
+    localMAutoDBInfo.colsMap.put("connProto", "TEXT");
     localStringBuilder.append(" connProto TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "connStrategy";
-    locala.IBN.put("connStrategy", "INTEGER");
+    localMAutoDBInfo.columns[5] = "connStrategy";
+    localMAutoDBInfo.colsMap.put("connStrategy", "INTEGER");
     localStringBuilder.append(" connStrategy INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[6] = "closeStrategy";
-    locala.IBN.put("closeStrategy", "INTEGER");
+    localMAutoDBInfo.columns[6] = "closeStrategy";
+    localMAutoDBInfo.colsMap.put("closeStrategy", "INTEGER");
     localStringBuilder.append(" closeStrategy INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[7] = "md5Str";
-    locala.IBN.put("md5Str", "TEXT");
+    localMAutoDBInfo.columns[7] = "md5Str";
+    localMAutoDBInfo.colsMap.put("md5Str", "TEXT");
     localStringBuilder.append(" md5Str TEXT");
     localStringBuilder.append(", ");
-    locala.columns[8] = "authKey";
-    locala.IBN.put("authKey", "TEXT");
+    localMAutoDBInfo.columns[8] = "authKey";
+    localMAutoDBInfo.colsMap.put("authKey", "TEXT");
     localStringBuilder.append(" authKey TEXT");
     localStringBuilder.append(", ");
-    locala.columns[9] = "url";
-    locala.IBN.put("url", "TEXT");
+    localMAutoDBInfo.columns[9] = "url";
+    localMAutoDBInfo.colsMap.put("url", "TEXT");
     localStringBuilder.append(" url TEXT");
     localStringBuilder.append(", ");
-    locala.columns[10] = "sessionKey";
-    locala.IBN.put("sessionKey", "BLOB");
+    localMAutoDBInfo.columns[10] = "sessionKey";
+    localMAutoDBInfo.colsMap.put("sessionKey", "BLOB");
     localStringBuilder.append(" sessionKey BLOB");
     localStringBuilder.append(", ");
-    locala.columns[11] = "sessionBuf";
-    locala.IBN.put("sessionBuf", "BLOB");
+    localMAutoDBInfo.columns[11] = "sessionBuf";
+    localMAutoDBInfo.colsMap.put("sessionBuf", "BLOB");
     localStringBuilder.append(" sessionBuf BLOB");
     localStringBuilder.append(", ");
-    locala.columns[12] = "authBuf";
-    locala.IBN.put("authBuf", "BLOB");
+    localMAutoDBInfo.columns[12] = "authBuf";
+    localMAutoDBInfo.colsMap.put("authBuf", "BLOB");
     localStringBuilder.append(" authBuf BLOB");
     localStringBuilder.append(", ");
-    locala.columns[13] = "lvbuffer";
-    locala.IBN.put("lvbuffer", "BLOB");
+    localMAutoDBInfo.columns[13] = "lvbuffer";
+    localMAutoDBInfo.colsMap.put("lvbuffer", "BLOB");
     localStringBuilder.append(" lvbuffer BLOB");
-    locala.columns[14] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[14] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(23779);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.i.b
  * JD-Core Version:    0.7.0.1
  */

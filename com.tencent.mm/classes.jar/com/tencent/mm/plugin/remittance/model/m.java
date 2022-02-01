@@ -1,49 +1,48 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.uj;
-import com.tencent.mm.protocal.protobuf.uk;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.vq;
+import com.tencent.mm.protocal.protobuf.vr;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
-  extends n
-  implements k
+  extends q
+  implements com.tencent.mm.network.m
 {
-  private f callback;
-  private final b rr;
-  public uk ynS;
-  private uj ynT;
+  public vr CoI;
+  private vq CoJ;
+  private i callback;
+  private final d rr;
   
   public m(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189986);
-    b.a locala = new b.a();
-    locala.hQF = new uj();
-    locala.hQG = new uk();
+    AppMethodBeat.i(213730);
+    d.a locala = new d.a();
+    locala.iLN = new vq();
+    locala.iLO = new vr();
     locala.funcId = 2850;
     locala.uri = "/cgi-bin/mmpay-bin/f2fminiprogramconfirmrcvr";
-    this.rr = locala.aDS();
-    this.ynT = ((uj)this.rr.hQD.hQJ);
-    this.ynT.ypA = paramString1;
-    this.ynT.dwb = paramString2;
-    AppMethodBeat.o(189986);
+    this.rr = locala.aXF();
+    this.CoJ = ((vq)this.rr.iLK.iLR);
+    this.CoJ.Cqr = paramString1;
+    this.CoJ.dNI = paramString2;
+    AppMethodBeat.o(213730);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(189987);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(189987);
+    AppMethodBeat.i(213731);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(213731);
     return i;
   }
   
@@ -52,17 +51,17 @@ public final class m
     return 2850;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(189988);
-    ae.i("MicroMsg.NetSceneF2FMinniProgramConfirm", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(213732);
+    Log.i("MicroMsg.NetSceneF2FMinniProgramConfirm", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.ynS = ((uk)((b)paramq).hQE.hQJ);
+      this.CoI = ((vr)((d)params).iLL.iLR);
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(189988);
+    AppMethodBeat.o(213732);
   }
 }
 

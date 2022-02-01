@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
 final class FinderTimelineFeedLoader$f
   extends q
-  implements a<z>
+  implements a<x>
 {
-  public static final f skW;
+  public static final f tXH;
   
   static
   {
-    AppMethodBeat.i(202945);
-    skW = new f();
-    AppMethodBeat.o(202945);
+    AppMethodBeat.i(244893);
+    tXH = new f();
+    AppMethodBeat.o(244893);
   }
   
   FinderTimelineFeedLoader$f()

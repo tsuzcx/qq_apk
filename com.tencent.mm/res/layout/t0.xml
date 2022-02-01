@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout style="@style/gi"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <ImageView android:id="@id/gb6" android:visibility="gone" android:layout_width="@dimen/aaj" android:layout_height="@dimen/aaj" />
-        <TextView android:textSize="@dimen/bf" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/gbs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:maxLines="1" android:layout_toRightOf="@id/gb6" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <ImageView android:layout_gravity="center|right" android:id="@id/cpf" android:padding="@dimen/jn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrows_down" />
-</LinearLayout>
+    <include android:id="@id/au5" android:layout_alignParentTop="true" android:layout_alignParentRight="true" layout="@layout/qr" style="@style/gp" />
+    <TextView android:id="@id/ayn" android:visibility="gone" android:text="{user}" android:layout_toLeftOf="@id/au5" style="@style/gy" />
+    <LinearLayout android:id="@id/aui" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/au5" style="@style/gu">
+        <View android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.MMNeat7extView android:textColor="@color/jg" android:id="@id/auk" android:background="@drawable/oq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="@dimen/c6" android:minHeight="@dimen/ad" style="@style/h4" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

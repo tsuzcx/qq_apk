@@ -21,7 +21,7 @@ public final class d
     AppMethodBeat.o(3468);
   }
   
-  private int[] dm(int paramInt)
+  private int[] dg(int paramInt)
   {
     AppMethodBeat.i(3472);
     localObject = null;
@@ -56,23 +56,23 @@ public final class d
     }
   }
   
-  private void of()
+  private void ol()
   {
     AppMethodBeat.i(3470);
     do
     {
-      oi();
+      oo();
       if (this.aEo[0] == 1)
       {
         int i = this.aEo[1];
         int j = this.aEo[2];
         this.aEq.loopCount = (i & 0xFF | (j & 0xFF) << 8);
       }
-    } while ((this.blockSize > 0) && (!oj()));
+    } while ((this.blockSize > 0) && (!op()));
     AppMethodBeat.o(3470);
   }
   
-  private void oh()
+  private void on()
   {
     AppMethodBeat.i(3473);
     int i;
@@ -85,7 +85,7 @@ public final class d
     AppMethodBeat.o(3473);
   }
   
-  private void oi()
+  private void oo()
   {
     AppMethodBeat.i(3474);
     this.blockSize = read();
@@ -144,11 +144,11 @@ public final class d
     return i;
   }
   
-  public final void oe()
+  public final void ok()
   {
     AppMethodBeat.i(3469);
     int i = 0;
-    while ((i == 0) && (!oj()) && (this.aEq.frameCount <= 2147483647))
+    while ((i == 0) && (!op()) && (this.aEq.frameCount <= 2147483647))
     {
       int k;
       int j;
@@ -184,12 +184,12 @@ public final class d
             break label333;
           }
         }
-        for (this.aEq.aEi.aEg = dm(m);; this.aEq.aEi.aEg = null)
+        for (this.aEq.aEi.aEg = dg(m);; this.aEq.aEi.aEg = null)
         {
           this.aEq.aEi.aEf = this.aEp.position();
           read();
-          oh();
-          if (oj()) {
+          on();
+          if (op()) {
             break;
           }
           localObject = this.aEq;
@@ -207,7 +207,7 @@ public final class d
         switch (read())
         {
         default: 
-          oh();
+          on();
           break;
         case 249: 
           this.aEq.aEi = new b();
@@ -233,7 +233,7 @@ public final class d
             break;
           }
         case 255: 
-          oi();
+          oo();
           localObject = new StringBuilder();
           j = 0;
           while (j < 11)
@@ -242,16 +242,16 @@ public final class d
             j += 1;
           }
           if (((StringBuilder)localObject).toString().equals("NETSCAPE2.0")) {
-            of();
+            ol();
           } else {
-            oh();
+            on();
           }
           break;
         case 254: 
-          oh();
+          on();
           break;
         case 1: 
-          oh();
+          on();
         }
         break;
       case 59: 
@@ -262,7 +262,7 @@ public final class d
     AppMethodBeat.o(3469);
   }
   
-  public final void og()
+  public final void om()
   {
     boolean bool = true;
     AppMethodBeat.i(3471);
@@ -290,9 +290,9 @@ public final class d
       this.aEq.aEl = ((int)Math.pow(2.0D, (i & 0x7) + 1));
       this.aEq.aEm = read();
       this.aEq.aEn = read();
-      if ((this.aEq.aEk) && (!oj()))
+      if ((this.aEq.aEk) && (!op()))
       {
-        this.aEq.aEh = dm(this.aEq.aEl);
+        this.aEq.aEh = dg(this.aEq.aEl);
         this.aEq.bgColor = this.aEq.aEh[this.aEq.aEm];
       }
       AppMethodBeat.o(3471);
@@ -301,14 +301,14 @@ public final class d
     }
   }
   
-  public final boolean oj()
+  public final boolean op()
   {
     return this.aEq.status != 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.b.d
  * JD-Core Version:    0.7.0.1
  */

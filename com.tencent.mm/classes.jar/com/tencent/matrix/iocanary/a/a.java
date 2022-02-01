@@ -2,46 +2,46 @@ package com.tencent.matrix.iocanary.a;
 
 public final class a
 {
-  public final com.tencent.c.a.a cCj;
+  public final com.tencent.c.a.a cQF;
   
   private a(com.tencent.c.a.a parama)
   {
-    this.cCj = parama;
+    this.cQF = parama;
   }
   
-  public final boolean Iw()
+  public final boolean St()
   {
-    return this.cCj.get(com.tencent.c.a.a.a.LZF.name(), true);
+    return this.cQF.get(com.tencent.c.a.a.a.RzX.name(), true);
   }
   
-  public final boolean Ix()
+  public final boolean Su()
   {
-    return this.cCj.get(com.tencent.c.a.a.a.LZK.name(), true);
+    return this.cQF.get(com.tencent.c.a.a.a.RAc.name(), true);
   }
   
-  public final boolean Iy()
+  public final boolean Sv()
   {
-    return this.cCj.get(com.tencent.c.a.a.a.LZH.name(), true);
+    return this.cQF.get(com.tencent.c.a.a.a.RzZ.name(), true);
   }
   
-  public final boolean Iz()
+  public final boolean Sw()
   {
-    return this.cCj.get(com.tencent.c.a.a.a.LZM.name(), true);
+    return this.cQF.get(com.tencent.c.a.a.a.RAe.name(), true);
   }
   
   public final String toString()
   {
-    return String.format("[IOCanary.IOConfig], main_thread:%b, small_buffer:%b, repeat_read:%b, closeable_leak:%b", new Object[] { Boolean.valueOf(Iw()), Boolean.valueOf(Iy()), Boolean.valueOf(Ix()), Boolean.valueOf(Iz()) });
+    return String.format("[IOCanary.IOConfig], main_thread:%b, small_buffer:%b, repeat_read:%b, closeable_leak:%b", new Object[] { Boolean.valueOf(St()), Boolean.valueOf(Sv()), Boolean.valueOf(Su()), Boolean.valueOf(Sw()) });
   }
   
   public static final class a
   {
-    public com.tencent.c.a.a cCj;
+    public com.tencent.c.a.a cQF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.iocanary.a.a
  * JD-Core Version:    0.7.0.1
  */

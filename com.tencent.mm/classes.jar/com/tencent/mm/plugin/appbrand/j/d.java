@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vq;
+import com.tencent.mm.g.a.wq;
 import com.tencent.mm.plugin.appbrand.appusage.AppBrandRecentTaskInfo;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.fts.a.a.h;
@@ -15,25 +15,27 @@ import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.ui.n;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
 
 public final class d
   extends com.tencent.mm.plugin.fts.a.d.a.a
 {
-  public CharSequence fWZ;
-  public boolean jSG;
-  public boolean jSH;
-  public m kno;
-  public AppBrandRecentTaskInfo knp;
-  private b knq;
-  a knr;
+  public CharSequence gCf;
+  public boolean kVq;
+  public boolean kVr;
+  public m lqW;
+  public AppBrandRecentTaskInfo lqX;
+  private b lqY;
+  a lqZ;
   
   public d(int paramInt)
   {
     super(9, paramInt);
     AppMethodBeat.i(45027);
-    this.knq = new b();
-    this.knr = new a();
+    this.lqY = new b();
+    this.lqZ = new a();
     AppMethodBeat.o(45027);
   }
   
@@ -43,14 +45,14 @@ public final class d
     boolean bool1 = false;
     AppMethodBeat.i(45028);
     super.a(paramContext, parama, paramVarArgs);
-    this.knp = i.Pv(this.kno.tEY);
-    if (this.knp == null)
+    this.lqX = i.YG(this.lqW.wVX);
+    if (this.lqX == null)
     {
       AppMethodBeat.o(45028);
       return;
     }
     boolean bool2;
-    switch (this.kno.tEX)
+    switch (this.lqW.wVW)
     {
     default: 
       bool1 = false;
@@ -58,10 +60,10 @@ public final class d
     }
     for (;;)
     {
-      this.fWZ = com.tencent.mm.plugin.fts.a.f.a(com.tencent.mm.plugin.fts.a.a.e.a(this.knp.appName, this.tFe, bool1, bool2)).tFv;
-      this.info = this.knp.dkZ;
-      this.jSG = this.knp.jSG;
-      this.jSH = this.knp.jSG;
+      this.gCf = com.tencent.mm.plugin.fts.a.f.a(com.tencent.mm.plugin.fts.a.a.e.a(this.lqX.appName, this.wWd, bool1, bool2)).wWu;
+      this.info = this.lqX.dCl;
+      this.kVq = this.lqX.kVq;
+      this.kVr = this.lqX.kVq;
       AppMethodBeat.o(45028);
       return;
       bool1 = true;
@@ -70,37 +72,37 @@ public final class d
     }
   }
   
-  public final a.b agQ()
+  public final a.b axc()
   {
-    return this.knq;
+    return this.lqY;
   }
   
-  public final String bhD()
+  public final String bCR()
   {
-    return this.knp.appName;
+    return this.lqX.appName;
   }
   
-  public final int bhE()
+  public final int bCS()
   {
-    return this.kno.tGo;
+    return this.lqW.wXn;
   }
   
   public final String getAppId()
   {
-    return this.knp.dkZ;
+    return this.lqX.dCl;
   }
   
   public final class a
     extends a.a
   {
     public View contentView;
-    public ImageView fQl;
-    public TextView iYj;
-    public TextView kns;
-    public TextView knt;
-    public View knu;
-    public ImageView knv;
-    public ImageView knw;
+    public ImageView gvv;
+    public TextView jVO;
+    public TextView lra;
+    public TextView lrb;
+    public View lrc;
+    public ImageView lrd;
+    public ImageView lre;
     
     public a()
     {
@@ -119,16 +121,16 @@ public final class d
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(45024);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131492995, paramViewGroup, false);
-      paramViewGroup = (d.a)d.this.knr;
-      paramViewGroup.fQl = ((ImageView)paramContext.findViewById(2131297008));
-      paramViewGroup.iYj = ((TextView)paramContext.findViewById(2131305948));
-      paramViewGroup.contentView = paramContext.findViewById(2131304428);
-      paramViewGroup.kns = ((TextView)paramContext.findViewById(2131304468));
-      paramViewGroup.knt = ((TextView)paramContext.findViewById(2131305633));
-      paramViewGroup.knu = paramContext.findViewById(2131299154);
-      paramViewGroup.knv = ((ImageView)paramContext.findViewById(2131306056));
-      paramViewGroup.knw = ((ImageView)paramContext.findViewById(2131308167));
+      paramContext = LayoutInflater.from(paramContext).inflate(2131493030, paramViewGroup, false);
+      paramViewGroup = (d.a)d.this.lqZ;
+      paramViewGroup.gvv = ((ImageView)paramContext.findViewById(2131297134));
+      paramViewGroup.jVO = ((TextView)paramContext.findViewById(2131309249));
+      paramViewGroup.contentView = paramContext.findViewById(2131307399);
+      paramViewGroup.lra = ((TextView)paramContext.findViewById(2131307446));
+      paramViewGroup.lrb = ((TextView)paramContext.findViewById(2131308875));
+      paramViewGroup.lrc = paramContext.findViewById(2131299682);
+      paramViewGroup.lrd = ((ImageView)paramContext.findViewById(2131309386));
+      paramViewGroup.lre = ((ImageView)paramContext.findViewById(2131305577));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(45024);
       return paramContext;
@@ -139,74 +141,79 @@ public final class d
       AppMethodBeat.i(45025);
       paramContext = (d)parama1;
       parama = (d.a)parama;
-      n.p(parama.knu, d.this.tGL);
-      if (paramContext.knp == null)
+      n.q(parama.lrc, d.this.wXK);
+      if (paramContext.lqX == null)
       {
         parama.contentView.setVisibility(8);
         AppMethodBeat.o(45025);
         return;
       }
       parama.contentView.setVisibility(0);
-      parama.iYj.setText(d.this.fWZ);
-      if (d.this.pSr == -8)
+      parama.jVO.setText(d.this.gCf);
+      if (d.this.rjr == -8)
       {
-        parama.kns.setText(2131762906);
-        parama.kns.setVisibility(0);
-        parama1 = com.tencent.mm.plugin.appbrand.appcache.e.rS(d.this.knp.dQv);
-        if (!bu.isNullOrNil(parama1)) {
+        parama.lra.setText(2131765042);
+        parama.lra.setVisibility(0);
+        parama1 = com.tencent.mm.plugin.appbrand.appcache.e.vO(d.this.lqX.eix);
+        if (!Util.isNullOrNil(parama1)) {
           break label252;
         }
-        parama.knt.setVisibility(8);
+        parama.lrb.setVisibility(8);
         label132:
-        if ((!d.this.jSG) || (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qNn, 0) != 1)) {
+        if ((!d.this.kVq) || (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.ski, 0) != 1)) {
           break label271;
         }
-        parama.knv.setVisibility(0);
+        parama.lrd.setVisibility(0);
         label171:
-        if ((!d.this.jSH) || (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPC, 0) != 1)) {
+        if ((!d.this.kVr) || (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.smL, 0) != 1)) {
           break label283;
         }
-        parama.knw.setVisibility(0);
+        parama.lre.setVisibility(0);
       }
       for (;;)
       {
-        com.tencent.mm.modelappbrand.a.b.aEl().a(parama.fQl, paramContext.knp.jSE, com.tencent.mm.modelappbrand.a.a.aEk(), com.tencent.mm.modelappbrand.a.g.hOv);
+        com.tencent.mm.modelappbrand.a.b.aXY().a(parama.gvv, paramContext.lqX.kVo, com.tencent.mm.modelappbrand.a.a.aXX(), com.tencent.mm.modelappbrand.a.g.iJB);
         AppMethodBeat.o(45025);
         return;
-        parama.kns.setVisibility(8);
+        parama.lra.setVisibility(8);
         break;
         label252:
-        parama.knt.setText(parama1);
-        parama.knt.setVisibility(0);
+        parama.lrb.setText(parama1);
+        parama.lrb.setVisibility(0);
         break label132;
         label271:
-        parama.knv.setVisibility(8);
+        parama.lrd.setVisibility(8);
         break label171;
         label283:
-        parama.knw.setVisibility(8);
+        parama.lre.setVisibility(8);
       }
     }
     
-    public final boolean a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)
+    public final boolean a(Context paramContext, View paramView, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)
     {
-      AppMethodBeat.i(45026);
+      AppMethodBeat.i(226608);
+      if (!WeChatBrands.Business.Entries.GlobalAppbrand.checkAvailable(paramView.getContext()))
+      {
+        AppMethodBeat.o(226608);
+        return true;
+      }
       paramContext = (d)paramVarArgs;
-      paramVarArgs = new vq();
-      paramVarArgs.dKT.userName = paramContext.knp.dkZ;
-      paramVarArgs.dKT.dKW = paramContext.knp.dQv;
-      paramVarArgs.dKT.dLa = true;
-      paramVarArgs.dKT.scene = 1027;
-      paramVarArgs.dKT.dlj = "1";
-      com.tencent.mm.sdk.b.a.IvT.l(paramVarArgs);
-      a(d.this.tFe.tFC, d.this.kno);
-      AppMethodBeat.o(45026);
+      paramView = new wq();
+      paramView.ecI.userName = paramContext.lqX.dCl;
+      paramView.ecI.ecL = paramContext.lqX.eix;
+      paramView.ecI.ecP = true;
+      paramView.ecI.scene = 1027;
+      paramView.ecI.dCw = "1";
+      EventCenter.instance.publish(paramView);
+      a(d.this.wWd.wWB, d.this.lqW);
+      AppMethodBeat.o(226608);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.j.d
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.kernel.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -17,33 +17,33 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public final class g
   implements com.tencent.mm.kernel.a.a.b, c<Object>, d<Object>
 {
-  private Map<Class<?>, f<Object>> gGr;
-  private Class<?>[] gGs;
-  public volatile Class<?>[] gGt;
-  public Map<Class, Object> gGu;
-  private int gGv;
-  private Queue<f.a> gGw;
-  private ConcurrentHashMap<Object, a> gGx;
+  private Map<Class<?>, f<Object>> htf;
+  private Class<?>[] htg;
+  public volatile Class<?>[] hth;
+  public Map<Class, Object> hti;
+  private int htj;
+  private Queue<f.a> htk;
+  private ConcurrentHashMap<Object, a> htl;
   
   public g()
   {
     AppMethodBeat.i(158398);
-    this.gGr = new ConcurrentHashMap();
-    this.gGu = new ConcurrentHashMap();
-    this.gGv = 0;
-    this.gGw = new ConcurrentLinkedQueue();
-    this.gGx = new ConcurrentHashMap();
+    this.htf = new ConcurrentHashMap();
+    this.hti = new ConcurrentHashMap();
+    this.htj = 0;
+    this.htk = new ConcurrentLinkedQueue();
+    this.htl = new ConcurrentHashMap();
     AppMethodBeat.o(158398);
   }
   
-  private boolean ai(Class paramClass)
+  private boolean am(Class paramClass)
   {
     Class[] arrayOfClass;
     int j;
     int i;
-    if (this.gGt != null)
+    if (this.hth != null)
     {
-      arrayOfClass = this.gGt;
+      arrayOfClass = this.hth;
       j = arrayOfClass.length;
       i = 0;
     }
@@ -57,12 +57,12 @@ public final class g
     return false;
   }
   
-  private int ak(Class paramClass)
+  private int ao(Class paramClass)
   {
     int i = 0;
-    while (i < this.gGs.length)
+    while (i < this.htg.length)
     {
-      if (this.gGs[i] == paramClass) {
+      if (this.htg[i] == paramClass) {
         return i;
       }
       i += 1;
@@ -73,19 +73,19 @@ public final class g
   private f.a d(Class paramClass, Object paramObject)
   {
     AppMethodBeat.i(158411);
-    f localf = aj(paramClass);
-    f.a locala = (f.a)localf.bw(paramObject);
-    ae.d("MicroMsg.ParallelsManagement", "makeDependency on IDependency of type %s for %s with %s", new Object[] { paramClass, paramObject, localf });
+    f localf = an(paramClass);
+    f.a locala = (f.a)localf.bE(paramObject);
+    Log.d("MicroMsg.ParallelsManagement", "makeDependency on IDependency of type %s for %s with %s", new Object[] { paramClass, paramObject, localf });
     Object localObject = locala;
     if (locala == null)
     {
-      localObject = this.gGu.get(paramClass);
+      localObject = this.hti.get(paramClass);
       paramClass = (Class)localObject;
       if (localObject == null) {
         paramClass = paramObject;
       }
-      localf.s(paramObject, paramClass);
-      localObject = (f.a)localf.bw(paramObject);
+      localf.z(paramObject, paramClass);
+      localObject = (f.a)localf.bE(paramObject);
     }
     AppMethodBeat.o(158411);
     return localObject;
@@ -94,10 +94,10 @@ public final class g
   public final void a(f.a parama)
   {
     AppMethodBeat.i(158406);
-    ae.i("MicroMsg.ParallelsManagement", "ParallelsManagement resolvedOne %s for type %s then next %s", new Object[] { parama, parama.gGn.gFR, parama.gGn.gGz });
-    aj(parama.gGn.gFR).a(parama);
-    if (parama.gGn.gGz != null) {
-      aj(parama.gGn.gGz).bC(parama);
+    Log.i("MicroMsg.ParallelsManagement", "ParallelsManagement resolvedOne %s for type %s then next %s", new Object[] { parama, parama.htb.hsF, parama.htb.htn });
+    an(parama.htb.hsF).a(parama);
+    if (parama.htb.htn != null) {
+      an(parama.htb.htn).bK(parama);
     }
     AppMethodBeat.o(158406);
   }
@@ -105,11 +105,11 @@ public final class g
   public final void a(Class paramClass, Object paramObject1, Object paramObject2)
   {
     AppMethodBeat.i(158408);
-    if (ai(paramClass))
+    if (am(paramClass))
     {
-      paramClass = aj(paramClass);
+      paramClass = an(paramClass);
       if (paramClass != null) {
-        paramClass.s(paramObject1, paramObject2);
+        paramClass.z(paramObject1, paramObject2);
       }
       AppMethodBeat.o(158408);
       return;
@@ -122,33 +122,36 @@ public final class g
   {
     int i = 0;
     AppMethodBeat.i(158399);
-    this.gGs = new Class[paramVarArgs.length];
-    System.arraycopy(paramVarArgs, 0, this.gGs, 0, paramVarArgs.length);
-    while (i < this.gGs.length)
+    this.htg = new Class[paramVarArgs.length];
+    System.arraycopy(paramVarArgs, 0, this.htg, 0, paramVarArgs.length);
+    while (i < this.htg.length)
     {
-      this.gGr.put(this.gGs[i], new f(this.gGs[i], this, this));
+      this.htf.put(this.htg[i], new f(this.htg[i], this, this));
       i += 1;
     }
     AppMethodBeat.o(158399);
   }
   
-  public final <T> f<T> aj(Class<T> paramClass)
+  public final f.a aAJ()
   {
-    AppMethodBeat.i(158401);
-    paramClass = (f)this.gGr.get(paramClass);
-    AppMethodBeat.o(158401);
-    return paramClass;
+    AppMethodBeat.i(158405);
+    synchronized (this.htk)
+    {
+      f.a locala = (f.a)this.htk.poll();
+      AppMethodBeat.o(158405);
+      return locala;
+    }
   }
   
-  public final Map<f, List<com.tencent.mm.kernel.a.a.a.a>> akG()
+  public final Map<f, List<com.tencent.mm.kernel.a.a.a.a>> aAW()
   {
     AppMethodBeat.i(158400);
     HashMap localHashMap = new HashMap();
-    Iterator localIterator = this.gGr.values().iterator();
+    Iterator localIterator = this.htf.values().iterator();
     while (localIterator.hasNext())
     {
       f localf = (f)localIterator.next();
-      List localList = localf.akA();
+      List localList = localf.aAQ();
       if (localList.size() > 0) {
         localHashMap.put(localf, localList);
       }
@@ -157,12 +160,12 @@ public final class g
     return localHashMap;
   }
   
-  public final void akH()
+  public final void aAX()
   {
     AppMethodBeat.i(158404);
-    synchronized (this.gGs)
+    synchronized (this.htg)
     {
-      if (this.gGs.length <= this.gGv)
+      if (this.htg.length <= this.htj)
       {
         AppMethodBeat.o(158404);
         return;
@@ -171,51 +174,31 @@ public final class g
     }
   }
   
-  public final f.a akt()
+  public final <T> f<T> an(Class<T> paramClass)
   {
-    AppMethodBeat.i(158405);
-    synchronized (this.gGw)
-    {
-      f.a locala = (f.a)this.gGw.poll();
-      AppMethodBeat.o(158405);
-      return locala;
-    }
+    AppMethodBeat.i(158401);
+    paramClass = (f)this.htf.get(paramClass);
+    AppMethodBeat.o(158401);
+    return paramClass;
   }
   
   public final void b(f.a<Object> parama)
   {
     AppMethodBeat.i(158407);
-    synchronized (this.gGw)
+    synchronized (this.htk)
     {
-      this.gGw.offer(parama);
-      ae.d("MicroMsg.ParallelsManagement", "ParallelsManagement provideOne %s %s", new Object[] { parama, parama.gGn.gFR });
+      this.htk.offer(parama);
+      Log.d("MicroMsg.ParallelsManagement", "ParallelsManagement provideOne %s %s", new Object[] { parama, parama.htb.hsF });
       AppMethodBeat.o(158407);
       return;
     }
   }
   
-  public final void b(Class paramClass, boolean paramBoolean)
-  {
-    AppMethodBeat.i(158402);
-    int j = Math.min(ak(paramClass), this.gGs.length - 1);
-    if ((j >= 0) && (this.gGv > j))
-    {
-      int i = j;
-      while (i < this.gGv)
-      {
-        aj(this.gGs[i]).reset(paramBoolean);
-        i += 1;
-      }
-      this.gGv = j;
-    }
-    AppMethodBeat.o(158402);
-  }
-  
-  public final boolean bD(Object paramObject)
+  public final boolean bL(Object paramObject)
   {
     AppMethodBeat.i(158409);
-    paramObject = (a)this.gGx.get(paramObject);
-    if ((paramObject != null) && (paramObject.akI()))
+    paramObject = (a)this.htl.get(paramObject);
+    if ((paramObject != null) && (paramObject.aAY()))
     {
       AppMethodBeat.o(158409);
       return true;
@@ -224,14 +207,14 @@ public final class g
     return false;
   }
   
-  public final void bE(Object arg1)
+  public final void bM(Object arg1)
   {
     int j = 0;
     AppMethodBeat.i(158410);
-    if (!this.gGx.containsKey(???)) {
-      this.gGx.putIfAbsent(???, new a((byte)0));
+    if (!this.htl.containsKey(???)) {
+      this.htl.putIfAbsent(???, new a((byte)0));
     }
-    a locala = (a)this.gGx.get(???);
+    a locala = (a)this.htl.get(???);
     for (;;)
     {
       int i;
@@ -239,7 +222,7 @@ public final class g
       {
         if (locala.lock[0] == 2)
         {
-          if (locala.akI())
+          if (locala.aAY())
           {
             j.i("MicroMsg.ParallelsManagement", "%s Has done. return.", new Object[] { ??? });
             AppMethodBeat.o(158410);
@@ -256,7 +239,7 @@ public final class g
         locala.lock.wait();
         for (;;)
         {
-          label123:
+          label122:
           break;
           ??? = finally;
           AppMethodBeat.o(158410);
@@ -268,29 +251,29 @@ public final class g
         {
           a.start();
           ((b)???).parallelsDependency();
-          ??? = a.aks();
-          if (((a.b)???).dz != null)
+          ??? = a.aAI();
+          if (((a.b)???).mMap != null)
           {
-            ??? = ((a.b)???).dz.values().iterator();
+            ??? = ((a.b)???).mMap.values().iterator();
             while (((Iterator)???).hasNext())
             {
               localObject3 = (a.a)((Iterator)???).next();
-              localObject4 = ((a.a)localObject3).gFS.iterator();
+              localObject4 = ((a.a)localObject3).hsG.iterator();
               while (((Iterator)localObject4).hasNext())
               {
                 localObject5 = ((Iterator)localObject4).next();
-                if (aj(((a.a)localObject3).gFR).bw(localObject5) == null)
+                if (an(((a.a)localObject3).hsF).bE(localObject5) == null)
                 {
                   j.i("MicroMsg.ParallelsManagement", "Traversal make dependency for %s by subject(%s)", new Object[] { localObject5, ??? });
-                  bE(localObject5);
+                  bM(localObject5);
                 }
-                a(((a.a)localObject3).gFR, ???, localObject5);
+                a(((a.a)localObject3).hsF, ???, localObject5);
               }
             }
           }
         }
         ??? = new ArrayList();
-        Object localObject3 = this.gGs;
+        Object localObject3 = this.htg;
         int k = localObject3.length;
         i = 0;
         while (i < k)
@@ -311,35 +294,35 @@ public final class g
           if (i < localObject5.length - 1)
           {
             localObject3 = localObject5[(i + 1)];
-            label446:
+            label444:
             if (??? == null) {
-              break label542;
+              break label540;
             }
-            label451:
+            label449:
             if (localObject3 == null) {
-              break label554;
+              break label552;
             }
           }
-          label542:
-          label554:
+          label540:
+          label552:
           for (localObject3 = d((Class)localObject3, ???);; localObject3 = null)
           {
-            ((f.a)???).gGl = ((f.a)localObject4);
-            ((f.a)???).gGm = ((f.a)localObject3);
+            ((f.a)???).hsZ = ((f.a)localObject4);
+            ((f.a)???).hta = ((f.a)localObject3);
             if (localObject4 != null) {
-              ((f.a)???).gGn.gGy = ((f.a)localObject4).gGn.gFR;
+              ((f.a)???).htb.htm = ((f.a)localObject4).htb.hsF;
             }
             if (localObject3 != null) {
-              ((f.a)???).gGn.gGz = ((f.a)localObject3).gGn.gFR;
+              ((f.a)???).htb.htn = ((f.a)localObject3).htb.hsF;
             }
             i += 1;
             localObject4 = ???;
             ??? = localObject3;
             break;
             localObject3 = null;
-            break label446;
+            break label444;
             ??? = d(localClass, ???);
-            break label451;
+            break label449;
           }
         }
         synchronized (locala.lock)
@@ -355,9 +338,26 @@ public final class g
       }
       catch (InterruptedException localInterruptedException)
       {
-        break label123;
+        break label122;
       }
     }
+  }
+  
+  public final void c(Class paramClass, boolean paramBoolean)
+  {
+    AppMethodBeat.i(158402);
+    int j = Math.min(ao(paramClass), this.htg.length - 1);
+    if ((j >= 0) && (this.htj > j))
+    {
+      int i = j;
+      while (i < this.htj)
+      {
+        an(this.htg[i]).reset(paramBoolean);
+        i += 1;
+      }
+      this.htj = j;
+    }
+    AppMethodBeat.o(158402);
   }
   
   public final void prepare()
@@ -366,14 +366,14 @@ public final class g
     j.i("MicroMsg.ParallelsManagement", "prepare()", new Object[0]);
     for (;;)
     {
-      synchronized (this.gGs)
+      synchronized (this.htg)
       {
-        if (this.gGs.length > this.gGv)
+        if (this.htg.length > this.htj)
         {
-          i = this.gGv;
-          this.gGv += 1;
+          i = this.htj;
+          this.htj += 1;
           if (i != -1) {
-            aj(this.gGs[i]).prepare();
+            an(this.htg[i]).prepare();
           }
           AppMethodBeat.o(158403);
           return;
@@ -394,7 +394,7 @@ public final class g
       AppMethodBeat.o(158397);
     }
     
-    final boolean akI()
+    final boolean aAY()
     {
       boolean bool = false;
       synchronized (this.lock)

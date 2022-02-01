@@ -326,7 +326,7 @@ public class GooglePlayServicesUtilLight
     AppMethodBeat.i(4418);
     try
     {
-      paramContext.getResources().getString(2131757542);
+      paramContext.getResources().getString(2131757764);
       label17:
       if ((!"com.google.android.gms".equals(paramContext.getPackageName())) && (!zzbu.get()))
       {

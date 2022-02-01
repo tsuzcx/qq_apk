@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.game.media;
 
 import android.database.Cursor;
-import com.tencent.e.h;
+import com.tencent.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
 import com.tencent.mm.plugin.game.b.b.j;
 import com.tencent.mm.plugin.game.b.b.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.vfs.s;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -25,27 +26,27 @@ import org.json.JSONArray;
 public final class f
   implements com.tencent.mm.plugin.game.api.d
 {
-  private HashMap<String, n> uhX;
+  private HashMap<String, n> xAr;
   
   public f()
   {
     AppMethodBeat.i(40957);
-    this.uhX = new HashMap();
+    this.xAr = new HashMap();
     AppMethodBeat.o(40957);
   }
   
   private String a(final int paramInt, final e parame, final boolean paramBoolean)
   {
     AppMethodBeat.i(40962);
-    if (bu.isNullOrNil(parame.field_localIdList)) {
-      a(parame.field_taskId, parame.field_publishSource, null, parame.field_BusinessData);
+    if (Util.isNullOrNil(parame.field_localIdList)) {
+      a(parame.field_taskId, parame.field_publishSource, null, parame.field_BusinessData, parame.field_sourceSceneId);
     }
     for (;;)
     {
       parame = parame.field_taskId;
       AppMethodBeat.o(40962);
       return parame;
-      h.MqF.aO(new Runnable()
+      h.RTc.aX(new Runnable()
       {
         public final void run()
         {
@@ -55,32 +56,32 @@ public final class f
             AppMethodBeat.o(40953);
             return;
           }
-          ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo().dQ(parame.field_taskId, 2);
-          final LinkedList localLinkedList = com.tencent.mm.plugin.game.f.c.ant(parame.field_localIdList);
+          ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN().ef(parame.field_taskId, 2);
+          final LinkedList localLinkedList = com.tencent.mm.plugin.game.e.c.aAL(parame.field_localIdList);
           n localn = new n(parame.field_taskId, paramInt, localLinkedList, paramBoolean);
-          localn.ujw = new n.a()
+          localn.xBP = new n.a()
           {
-            public final void ng(boolean paramAnonymous2Boolean)
+            public final void pM(boolean paramAnonymous2Boolean)
             {
               AppMethodBeat.i(40952);
-              n localn = (n)f.a(f.this).remove(f.1.this.uhZ.field_taskId);
+              n localn = (n)f.a(f.this).remove(f.1.this.xAt.field_taskId);
               if (localn != null) {
                 localn.reset();
               }
               if (paramAnonymous2Boolean)
               {
-                ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo().dR(f.1.this.uhZ.field_taskId, 2);
-                f.a(f.this, f.1.this.uhZ.field_taskId, f.1.this.uhZ.field_publishSource, localLinkedList, f.1.this.uhZ.field_BusinessData);
+                ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN().eg(f.1.this.xAt.field_taskId, 2);
+                f.a(f.this, f.1.this.xAt.field_taskId, f.1.this.xAt.field_publishSource, localLinkedList, f.1.this.xAt.field_BusinessData, f.1.this.xAt.field_sourceSceneId);
                 AppMethodBeat.o(40952);
                 return;
               }
-              ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo().dR(f.1.this.uhZ.field_taskId, 1);
-              ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo().amJ(f.1.this.uhZ.field_taskId);
-              f.dP(f.1.this.uhZ.field_taskId, -1);
+              ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN().eg(f.1.this.xAt.field_taskId, 1);
+              ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN().azY(f.1.this.xAt.field_taskId);
+              f.ee(f.1.this.xAt.field_taskId, -1);
               AppMethodBeat.o(40952);
             }
           };
-          localn.daP();
+          localn.dUx();
           f.a(f.this).put(parame.field_taskId, localn);
           AppMethodBeat.o(40953);
         }
@@ -88,26 +89,26 @@ public final class f
     }
   }
   
-  private void a(final String paramString1, final int paramInt, LinkedList<String> paramLinkedList, final String paramString2)
+  private void a(final String paramString1, final int paramInt1, LinkedList<String> paramLinkedList, final String paramString2, final int paramInt2)
   {
-    AppMethodBeat.i(40964);
-    final b.a locala = new b.a();
+    AppMethodBeat.i(204110);
+    final d.a locala = new d.a();
     locala.uri = "/cgi-bin/mmgame-bin/publishugctogamecenter";
     locala.funcId = 2989;
     j localj = new j();
-    localj.ucK = paramInt;
+    localj.xub = paramInt1;
     int j = 0;
     int k = 0;
     Object localObject = null;
     int m = 0;
     int i = 0;
     long l = 0L;
-    if (!bu.ht(paramLinkedList))
+    if (!Util.isNullOrNil(paramLinkedList))
     {
-      Map localMap = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZp().av(paramLinkedList);
+      Map localMap = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSO().aQ(paramLinkedList);
       if (localMap != null)
       {
-        localj.udn = new LinkedList();
+        localj.xuZ = new LinkedList();
         Iterator localIterator = paramLinkedList.iterator();
         j = k;
         paramLinkedList = (LinkedList<String>)localObject;
@@ -120,24 +121,24 @@ public final class f
             com.tencent.mm.plugin.game.b.b.i locali = new com.tencent.mm.plugin.game.b.b.i();
             if (((c)localObject).field_mediaType == 1)
             {
-              locali.udg = 1;
+              locali.xuT = 1;
               j = 1;
             }
             for (;;)
             {
-              locali.udh = ((c)localObject).field_mediaUrl;
-              locali.udi = ((c)localObject).field_thumbPicUrl;
-              locali.udk = ((c)localObject).field_duration;
+              locali.xuU = ((c)localObject).field_mediaUrl;
+              locali.xuV = ((c)localObject).field_thumbPicUrl;
+              locali.xuX = ((c)localObject).field_duration;
               locali.Width = ((c)localObject).field_width;
               locali.Height = ((c)localObject).field_height;
-              locali.udl = ((c)localObject).field_size;
-              locali.udj = ((c)localObject).field_isGif;
-              locali.udm = ((c)localObject).field_editFlag;
-              localj.udn.add(locali);
+              locali.xui = ((c)localObject).field_size;
+              locali.xuW = ((c)localObject).field_isGif;
+              locali.xuY = ((c)localObject).field_editFlag;
+              localj.xuZ.add(locali);
               break;
               if (((c)localObject).field_mediaType == 4)
               {
-                locali.udg = 2;
+                locali.xuT = 2;
                 j = 2;
                 paramLinkedList = ((c)localObject).field_filePath;
                 i = ((c)localObject).field_duration;
@@ -150,10 +151,10 @@ public final class f
     }
     for (;;)
     {
-      localj.udo = paramString2;
-      localj.udp = paramString1;
-      locala.hQF = localj;
-      locala.hQG = new k();
+      localj.xva = paramString2;
+      localj.xvb = paramString1;
+      locala.iLN = localj;
+      locala.iLO = new k();
       paramString2 = new HashMap();
       paramString2.put("pushid", paramString1);
       paramString2.put("type", Integer.valueOf(j));
@@ -169,37 +170,37 @@ public final class f
         {
           AppMethodBeat.i(40956);
           if (paramString2.containsKey("videoid")) {
-            paramString2.put("videoid", o.aRh((String)paramString2.get("videoid")));
+            paramString2.put("videoid", s.bhK((String)paramString2.get("videoid")));
           }
           final long l = System.currentTimeMillis();
-          IPCRunCgi.a(locala.aDS(), new IPCRunCgi.a()
+          IPCRunCgi.a(locala.aXF(), new IPCRunCgi.a()
           {
-            public final void a(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.ak.b paramAnonymous2b)
+            public final void a(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.ak.d paramAnonymous2d)
             {
               AppMethodBeat.i(40955);
-              ae.i("MicroMsg.Haowan.GameHaowanPublishImpl", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String });
-              f.3.this.uie.put("costtime", Long.valueOf(System.currentTimeMillis() - l));
-              f.3.this.uie.put("topicid", Integer.valueOf(((k)paramAnonymous2b.hQE.hQJ).udq));
+              Log.i("MicroMsg.Haowan.GameHaowanPublishImpl", "errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String });
+              f.3.this.xAx.put("costtime", Long.valueOf(System.currentTimeMillis() - l));
+              f.3.this.xAx.put("topicid", Integer.valueOf(((k)paramAnonymous2d.iLL.iLR).xvc));
               if ((paramAnonymous2Int1 == 0) && (paramAnonymous2Int2 == 0))
               {
-                paramAnonymous2String = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo();
-                paramAnonymous2b = f.3.this.ksJ;
+                paramAnonymous2String = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN();
+                paramAnonymous2d = f.3.this.lwt;
                 LinkedList localLinkedList = new LinkedList();
-                localLinkedList.add(paramAnonymous2b);
-                paramAnonymous2String.aw(localLinkedList);
-                f.dP(f.3.this.ksJ, 0);
-                com.tencent.mm.game.report.b.a.a(ak.getContext(), 8765, 0, 48, com.tencent.mm.game.report.b.a.b(f.3.this.uig, f.3.this.uie));
+                localLinkedList.add(paramAnonymous2d);
+                paramAnonymous2String.aR(localLinkedList);
+                f.ee(f.3.this.lwt, 0);
+                com.tencent.mm.game.report.b.a.a(MMApplicationContext.getContext(), 8765, 0, 48, f.3.this.xAz, com.tencent.mm.game.report.b.a.c(f.3.this.xAA, f.3.this.xAx));
                 AppMethodBeat.o(40955);
                 return;
               }
-              ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo().amJ(f.3.this.ksJ);
-              paramAnonymous2String = f.3.this.ksJ;
+              ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN().azY(f.3.this.lwt);
+              paramAnonymous2String = f.3.this.lwt;
               if (paramAnonymous2Int2 > 0) {}
               for (paramAnonymous2Int1 = -paramAnonymous2Int2;; paramAnonymous2Int1 = paramAnonymous2Int2)
               {
-                f.dP(paramAnonymous2String, paramAnonymous2Int1);
-                f.3.this.uie.put("failid", Integer.valueOf(paramAnonymous2Int2));
-                com.tencent.mm.game.report.b.a.a(ak.getContext(), 8765, 0, 56, com.tencent.mm.game.report.b.a.b(f.3.this.uig, f.3.this.uie));
+                f.ee(paramAnonymous2String, paramAnonymous2Int1);
+                f.3.this.xAx.put("failid", Integer.valueOf(paramAnonymous2Int2));
+                com.tencent.mm.game.report.b.a.a(MMApplicationContext.getContext(), 8765, 0, 56, f.3.this.xAz, com.tencent.mm.game.report.b.a.c(f.3.this.xAA, f.3.this.xAx));
                 AppMethodBeat.o(40955);
                 return;
               }
@@ -208,62 +209,63 @@ public final class f
           AppMethodBeat.o(40956);
         }
       });
-      AppMethodBeat.o(40964);
+      AppMethodBeat.o(204110);
       return;
       paramLinkedList = null;
       i = m;
     }
   }
   
-  private void amH(final String paramString)
+  private void azW(final String paramString)
   {
     AppMethodBeat.i(40963);
-    ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo().dQ(paramString, 1);
-    ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo().amJ(paramString);
-    ar.o(new Runnable()
+    ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN().ef(paramString, 1);
+    ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN().azY(paramString);
+    MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(40954);
-        f.dP(paramString, -2);
+        f.ee(paramString, -2);
         AppMethodBeat.o(40954);
       }
     }, 2000L);
     AppMethodBeat.o(40963);
   }
   
-  public final String a(int paramInt1, int paramInt2, JSONArray paramJSONArray, String paramString, boolean paramBoolean)
+  public final String a(int paramInt1, int paramInt2, JSONArray paramJSONArray, String paramString, boolean paramBoolean, int paramInt3)
   {
-    AppMethodBeat.i(40958);
+    AppMethodBeat.i(204109);
     Object localObject = new StringBuilder();
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajP();
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAf();
     String str = com.tencent.mm.b.g.getMessageDigest((com.tencent.mm.kernel.a.getUin() + "_" + System.currentTimeMillis()).getBytes());
-    paramJSONArray = com.tencent.mm.plugin.game.f.c.z(paramJSONArray);
+    paramJSONArray = com.tencent.mm.plugin.game.e.c.A(paramJSONArray);
     localObject = new e();
     ((e)localObject).field_taskId = str;
     ((e)localObject).field_createTime = (System.currentTimeMillis() / 1000L);
     ((e)localObject).field_publishSource = paramInt1;
     ((e)localObject).field_mediaType = paramInt2;
-    if (!bu.ht(paramJSONArray)) {}
+    if (!Util.isNullOrNil(paramJSONArray)) {}
     for (paramJSONArray = paramJSONArray.toString();; paramJSONArray = "")
     {
       ((e)localObject).field_localIdList = paramJSONArray;
       ((e)localObject).field_BusinessData = paramString;
       ((e)localObject).field_compressImg = paramBoolean;
-      ae.i("MicroMsg.Haowan.GameHaowanPublishImpl", "addToDB: ".concat(String.valueOf(((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo().insert((com.tencent.mm.sdk.e.c)localObject))));
+      ((e)localObject).field_sourceSceneId = paramInt3;
+      Log.i("MicroMsg.Haowan.GameHaowanPublishImpl", "addToDB: ".concat(String.valueOf(((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN().insert((IAutoDBItem)localObject))));
       paramJSONArray = a(paramInt2, (e)localObject, paramBoolean);
-      AppMethodBeat.o(40958);
+      AppMethodBeat.o(204109);
       return paramJSONArray;
     }
   }
   
-  public final String ami(String paramString)
+  public final String azm(String paramString)
   {
     AppMethodBeat.i(40959);
-    Object localObject = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo();
+    Object localObject = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN();
     paramString = String.format("select * from %s where %s=\"%s\" and %s<>%d", new Object[] { "GameHaowanPublishEdition", "taskId", paramString, "publishState", Integer.valueOf(2) });
-    ae.i("MicroMsg.Haowan.GameHaowanPublishStorage", "queryWhenPublishNotSuccess, sql : %s", new Object[] { paramString });
+    Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "queryWhenPublishNotSuccess, sql : %s", new Object[] { paramString });
     localObject = ((g)localObject).rawQuery(paramString, new String[0]);
     if (localObject == null)
     {
@@ -301,8 +303,8 @@ public final class f
     e locale;
     if (paramBoolean)
     {
-      paramJSONArray = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo().daC();
-      if (bu.ht(paramJSONArray))
+      paramJSONArray = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN().dUk();
+      if (Util.isNullOrNil(paramJSONArray))
       {
         AppMethodBeat.o(40960);
         return null;
@@ -316,14 +318,14 @@ public final class f
       AppMethodBeat.o(40960);
       return localJSONArray;
     }
-    paramJSONArray = com.tencent.mm.plugin.game.f.c.z(paramJSONArray);
-    if (bu.ht(paramJSONArray))
+    paramJSONArray = com.tencent.mm.plugin.game.e.c.A(paramJSONArray);
+    if (Util.isNullOrNil(paramJSONArray))
     {
       AppMethodBeat.o(40960);
       return null;
     }
-    paramJSONArray = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo().ax(paramJSONArray);
-    if (bu.ht(paramJSONArray))
+    paramJSONArray = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN().aS(paramJSONArray);
+    if (Util.isNullOrNil(paramJSONArray))
     {
       AppMethodBeat.o(40960);
       return null;
@@ -345,26 +347,26 @@ public final class f
     Object localObject3;
     if (paramBoolean)
     {
-      paramJSONArray = this.uhX.keySet().iterator();
+      paramJSONArray = this.xAr.keySet().iterator();
       while (paramJSONArray.hasNext())
       {
         localObject1 = (String)paramJSONArray.next();
-        ((n)this.uhX.get(localObject1)).daR();
+        ((n)this.xAr.get(localObject1)).dUz();
       }
-      localObject1 = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo();
+      localObject1 = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN();
       paramJSONArray = String.format("select * from %s", new Object[] { "GameHaowanPublishEdition" });
-      ae.i("MicroMsg.Haowan.GameHaowanPublishStorage", "queryAll, sql : %s", new Object[] { paramJSONArray });
+      Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "queryAll, sql : %s", new Object[] { paramJSONArray });
       localObject2 = ((g)localObject1).rawQuery(paramJSONArray, new String[0]);
       if (localObject2 == null) {
         paramJSONArray = null;
       }
-      while (bu.ht(paramJSONArray))
+      while (Util.isNullOrNil(paramJSONArray))
       {
         paramJSONArray = paramJSONArray.iterator();
         while (paramJSONArray.hasNext())
         {
-          localObject2 = com.tencent.mm.plugin.game.f.c.ant(((e)paramJSONArray.next()).field_localIdList);
-          ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZp().aw((LinkedList)localObject2);
+          localObject2 = com.tencent.mm.plugin.game.e.c.aAL(((e)paramJSONArray.next()).field_localIdList);
+          ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSO().aR((LinkedList)localObject2);
         }
         paramJSONArray = new LinkedList();
         while (((Cursor)localObject2).moveToNext())
@@ -376,15 +378,15 @@ public final class f
         ((Cursor)localObject2).close();
       }
       paramJSONArray = String.format("delete from %s", new Object[] { "GameHaowanPublishEdition" });
-      ae.i("MicroMsg.Haowan.GameHaowanPublishStorage", "deleteAll, sql : %s", new Object[] { paramJSONArray });
+      Log.i("MicroMsg.Haowan.GameHaowanPublishStorage", "deleteAll, sql : %s", new Object[] { paramJSONArray });
       ((g)localObject1).execSQL("GameHaowanPublishEdition", paramJSONArray);
-      this.uhX.clear();
-      com.tencent.mm.plugin.game.api.a.dL("", 1);
+      this.xAr.clear();
+      com.tencent.mm.plugin.game.api.a.ea("", 1);
       AppMethodBeat.o(40961);
       return;
     }
-    paramJSONArray = com.tencent.mm.plugin.game.f.c.z(paramJSONArray);
-    if (bu.ht(paramJSONArray))
+    paramJSONArray = com.tencent.mm.plugin.game.e.c.A(paramJSONArray);
+    if (Util.isNullOrNil(paramJSONArray))
     {
       AppMethodBeat.o(40961);
       return;
@@ -393,13 +395,13 @@ public final class f
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
-      localObject3 = (n)this.uhX.remove(localObject2);
+      localObject3 = (n)this.xAr.remove(localObject2);
       if (localObject3 != null) {
-        ((n)localObject3).daR();
+        ((n)localObject3).dUz();
       }
-      com.tencent.mm.plugin.game.api.a.dL((String)localObject2, 1);
+      com.tencent.mm.plugin.game.api.a.ea((String)localObject2, 1);
     }
-    ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.game.api.f.class)).cZo().aw(paramJSONArray);
+    ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSN().aR(paramJSONArray);
     AppMethodBeat.o(40961);
   }
 }

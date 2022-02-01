@@ -8,10 +8,12 @@ import com.tencent.mm.platformtools.r;
 import com.tencent.mm.platformtools.r.a;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.s;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
@@ -19,17 +21,17 @@ public class PluginExpt
   extends f
   implements com.tencent.mm.kernel.api.c, a
 {
-  private static HashMap<Integer, h.b> oBW;
-  private r.a oBY;
+  private static HashMap<Integer, h.b> kvw;
+  private r.a kvx;
   
   static
   {
     AppMethodBeat.i(121796);
     HashMap localHashMap = new HashMap();
-    oBW = localHashMap;
+    kvw = localHashMap;
     localHashMap.put(Integer.valueOf("EXPT_TABLE".hashCode()), new PluginExpt.1());
-    oBW.put(Integer.valueOf("EXPT_KEY_MAP_ID_TABLE".hashCode()), new PluginExpt.2());
-    oBW.put(Integer.valueOf("CHATROOM_MUTE_EXPT_TABLE".hashCode()), new h.b()
+    kvw.put(Integer.valueOf("EXPT_KEY_MAP_ID_TABLE".hashCode()), new PluginExpt.2());
+    kvw.put(Integer.valueOf("CHATROOM_MUTE_EXPT_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
@@ -42,23 +44,23 @@ public class PluginExpt
   private void closeDB()
   {
     AppMethodBeat.i(121795);
-    if (this.oBY != null) {
-      this.oBY.ra(hashCode());
+    if (this.kvx != null) {
+      this.kvx.uS(hashCode());
     }
-    this.oBY = null;
-    com.tencent.mm.plugin.expt.f.a locala = com.tencent.mm.plugin.expt.f.a.csB();
-    locala.riu = null;
-    locala.riv = null;
+    this.kvx = null;
+    com.tencent.mm.plugin.expt.f.a locala = com.tencent.mm.plugin.expt.f.a.cRk();
+    locala.sJX = null;
+    locala.sJY = null;
     AppMethodBeat.o(121795);
   }
   
   private int getUIN()
   {
     AppMethodBeat.i(184289);
-    if (com.tencent.mm.kernel.g.ajM()) {
-      com.tencent.mm.kernel.g.ajP();
+    if (com.tencent.mm.kernel.g.aAc()) {
+      com.tencent.mm.kernel.g.aAf();
     }
-    for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.ajc())
+    for (int i = com.tencent.mm.kernel.a.getUin();; i = com.tencent.mm.kernel.a.azs())
     {
       AppMethodBeat.o(184289);
       return i;
@@ -68,22 +70,22 @@ public class PluginExpt
   private void initDB()
   {
     AppMethodBeat.i(121794);
-    if (this.oBY != null) {
+    if (this.kvx != null) {
       closeDB();
     }
-    String str = com.tencent.mm.kernel.g.ajR().cachePath + "WxExpt.db";
-    this.oBY = r.a(hashCode(), str, oBW, true);
+    String str = com.tencent.mm.kernel.g.aAh().cachePath + "WxExpt.db";
+    this.kvx = r.a(hashCode(), str, kvw, true);
     AppMethodBeat.o(121794);
   }
   
   private void resetUIN()
   {
     AppMethodBeat.i(184291);
-    if (ak.coh())
+    if (MMApplicationContext.isMainProcess())
     {
-      long l = bu.HQ();
-      com.tencent.mm.plugin.expt.h.d.ctr();
-      ae.i("MicroMsg.PluginExpt", "reset uin to mmkv uin[%d] save[%b] cost[%d]", new Object[] { Integer.valueOf(0), Boolean.valueOf(com.tencent.mm.plugin.expt.h.d.DO(0)), Long.valueOf(bu.aO(l)) });
+      long l = Util.currentTicks();
+      com.tencent.mm.plugin.expt.h.d.cRY();
+      Log.i("MicroMsg.PluginExpt", "reset uin to mmkv uin[%d] save[%b] cost[%d]", new Object[] { Integer.valueOf(0), Boolean.valueOf(com.tencent.mm.plugin.expt.h.d.HB(0)), Long.valueOf(Util.ticksToNow(l)) });
     }
     AppMethodBeat.o(184291);
   }
@@ -93,19 +95,19 @@ public class PluginExpt
     AppMethodBeat.i(184290);
     long l;
     int i;
-    if (ak.coh())
+    if (MMApplicationContext.isMainProcess())
     {
-      l = bu.HQ();
+      l = Util.currentTicks();
       i = getUIN();
       if (i == 0) {
         break label76;
       }
-      com.tencent.mm.plugin.expt.h.d.ctr();
+      com.tencent.mm.plugin.expt.h.d.cRY();
     }
     label76:
-    for (boolean bool = com.tencent.mm.plugin.expt.h.d.DO(i);; bool = false)
+    for (boolean bool = com.tencent.mm.plugin.expt.h.d.HB(i);; bool = false)
     {
-      ae.i("MicroMsg.PluginExpt", "save uin to mmkv uin[%d] save[%b] cost[%d]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Long.valueOf(bu.aO(l)) });
+      Log.i("MicroMsg.PluginExpt", "save uin to mmkv uin[%d] save[%b] cost[%d]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Long.valueOf(Util.ticksToNow(l)) });
       AppMethodBeat.o(184290);
       return;
     }
@@ -114,7 +116,7 @@ public class PluginExpt
   public void dependency()
   {
     AppMethodBeat.i(121790);
-    if (ak.coh()) {
+    if (MMApplicationContext.isMainProcess()) {
       dependsOn(s.class);
     }
     AppMethodBeat.o(121790);
@@ -125,28 +127,28 @@ public class PluginExpt
     int i = 0;
     AppMethodBeat.i(121791);
     saveUINToMMKV();
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.expt.b.b.class, com.tencent.mm.plugin.expt.f.a.csB());
-    if (paramg.akL()) {
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.expt.roomexpt.d.class, com.tencent.mm.plugin.expt.roomexpt.a.csS());
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.expt.b.b.class, com.tencent.mm.plugin.expt.f.a.cRk());
+    if (paramg.aBb()) {
+      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.expt.roomexpt.d.class, com.tencent.mm.plugin.expt.roomexpt.a.cRz());
     }
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.expt.b.e.class, com.tencent.mm.plugin.expt.g.d.csN());
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.expt.b.c.class, com.tencent.mm.plugin.expt.hellhound.a.f.a.c.crm());
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.expt.b.a.class, com.tencent.mm.plugin.expt.e.a.csw());
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.expt.b.e.class, com.tencent.mm.plugin.expt.g.d.cRu());
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.expt.b.c.class, com.tencent.mm.plugin.expt.hellhound.a.f.a.c.cPU());
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.expt.b.a.class, com.tencent.mm.plugin.expt.e.a.cRf());
     if (paramg.ca != null)
     {
-      com.tencent.mm.plugin.expt.i.c.ctt();
-      if (bu.getInt(com.tencent.mm.plugin.expt.i.c.b(b.a.qBD, ""), 0) > 0) {
+      com.tencent.mm.plugin.expt.i.c.cSa();
+      if (Util.getInt(com.tencent.mm.plugin.expt.i.c.c(b.a.rUn, ""), 0) > 0) {
         i = 1;
       }
       if (i != 0) {
-        paramg.ca.registerActivityLifecycleCallbacks(com.tencent.mm.plugin.expt.g.d.csN());
+        paramg.ca.registerActivityLifecycleCallbacks(com.tencent.mm.plugin.expt.g.d.cRu());
       }
-      paramg.ca.registerActivityLifecycleCallbacks(com.tencent.mm.plugin.expt.e.a.csw());
+      paramg.ca.registerActivityLifecycleCallbacks(com.tencent.mm.plugin.expt.e.a.cRf());
     }
     com.tencent.mm.plugin.expt.hellhound.b.e(paramg);
-    com.tencent.mm.plugin.expt.d.a.cow();
-    if (paramg.akL()) {
-      pin(com.tencent.mm.plugin.expt.d.b.b.coG());
+    com.tencent.mm.plugin.expt.d.a.cMI();
+    if (paramg.aBb()) {
+      pin(com.tencent.mm.plugin.expt.d.b.b.cMS());
     }
     AppMethodBeat.o(121791);
   }
@@ -162,42 +164,44 @@ public class PluginExpt
   {
     boolean bool = false;
     AppMethodBeat.i(121792);
-    ae.i("MicroMsg.PluginExpt", "Plugin expt onAccountInitialized [%d] [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(com.tencent.mm.plugin.expt.f.a.csB().hashCode()) });
+    Log.i("MicroMsg.PluginExpt", "Plugin expt onAccountInitialized [%d] [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(com.tencent.mm.plugin.expt.f.a.cRk().hashCode()) });
     saveUINToMMKV();
     initDB();
-    paramc = com.tencent.mm.plugin.expt.f.a.csB();
-    Object localObject = this.oBY;
+    paramc = com.tencent.mm.plugin.expt.f.a.cRk();
+    Object localObject = this.kvx;
     int i = paramc.hashCode();
     if (localObject != null) {
       bool = true;
     }
-    ae.i("MicroMsg.ExptService", "reset DB [%d] dataDB[%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
+    Log.i("MicroMsg.ExptService", "reset DB [%d] dataDB[%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool) });
     if (localObject != null)
     {
-      paramc.riu = new com.tencent.mm.plugin.expt.i.d((com.tencent.mm.sdk.e.e)localObject);
-      paramc.riv = new com.tencent.mm.plugin.expt.i.b((com.tencent.mm.sdk.e.e)localObject);
+      paramc.sJX = new com.tencent.mm.plugin.expt.i.d((ISQLiteDatabase)localObject);
+      paramc.sJY = new com.tencent.mm.plugin.expt.i.b((ISQLiteDatabase)localObject);
     }
-    com.tencent.mm.plugin.expt.roomexpt.a.csS().rjf = new com.tencent.mm.plugin.expt.roomexpt.b(this.oBY);
-    localObject = com.tencent.mm.plugin.expt.d.a.cow();
-    ((com.tencent.mm.plugin.expt.d.a)localObject).qXp = new com.tencent.mm.plugin.expt.d.b.a.a();
-    ((com.tencent.mm.plugin.expt.d.a)localObject).qXq = new com.tencent.mm.plugin.expt.d.b.b.a();
-    com.tencent.mm.plugin.expt.d.i.b localb = ((com.tencent.mm.plugin.expt.d.a)localObject).qXl;
-    if (localb.qYs != null) {
-      localb.qYs.ra(localb.hashCode());
+    com.tencent.mm.plugin.expt.roomexpt.a.cRz().sKG = new com.tencent.mm.plugin.expt.roomexpt.b(this.kvx);
+    localObject = com.tencent.mm.plugin.expt.d.a.cMI();
+    ((com.tencent.mm.plugin.expt.d.a)localObject).sxz = new com.tencent.mm.plugin.expt.d.b.a.a();
+    ((com.tencent.mm.plugin.expt.d.a)localObject).sxA = new com.tencent.mm.plugin.expt.d.b.b.a();
+    com.tencent.mm.plugin.expt.d.i.b localb = ((com.tencent.mm.plugin.expt.d.a)localObject).sxv;
+    if (localb.syB != null) {
+      localb.syB.uS(localb.hashCode());
     }
-    localb.qYs = null;
-    paramc = com.tencent.mm.kernel.g.ajR().cachePath + "Edge.db";
+    localb.syB = null;
+    paramc = com.tencent.mm.kernel.g.aAh().cachePath + "Edge.db";
     try
     {
       paramc = r.a(localb.hashCode(), paramc, new HashMap(), true);
       if (paramc != null) {
-        localb.qYs = paramc;
+        localb.syB = paramc;
       }
-      if (com.tencent.mm.plugin.expt.d.b.coz())
+      if (com.tencent.mm.plugin.expt.d.b.cML())
       {
-        ((com.tencent.mm.plugin.expt.d.a)localObject).qXr.removeMessages(1003);
-        ((com.tencent.mm.plugin.expt.d.a)localObject).qXr.sendEmptyMessageDelayed(1003, 5000L);
+        ((com.tencent.mm.plugin.expt.d.a)localObject).sxB.removeMessages(1003);
+        ((com.tencent.mm.plugin.expt.d.a)localObject).sxB.sendEmptyMessageDelayed(1003, 5000L);
       }
+      paramc = com.tencent.mm.plugin.expt.j.a.cSe();
+      EventCenter.instance.add(paramc.gmC);
       AppMethodBeat.o(121792);
       return;
     }
@@ -205,7 +209,7 @@ public class PluginExpt
     {
       for (;;)
       {
-        ae.e("EdgeComputingDataStorage", "[EdgeComputingDataStorage] resetDB createDBInstance throw Exception : " + paramc.getMessage());
+        Log.e("EdgeComputingDataStorage", "[EdgeComputingDataStorage] resetDB createDBInstance throw Exception : " + paramc.getMessage());
         paramc = null;
       }
     }
@@ -214,14 +218,16 @@ public class PluginExpt
   public void onAccountRelease()
   {
     AppMethodBeat.i(121793);
-    ae.i("MicroMsg.PluginExpt", "Plugin expt onAccountRelease [%d] [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(com.tencent.mm.plugin.expt.f.a.csB().hashCode()) });
-    com.tencent.mm.plugin.expt.d.i.b localb = com.tencent.mm.plugin.expt.d.a.cow().qXl;
-    if (localb.qYs != null) {
-      localb.qYs.ra(localb.hashCode());
+    Log.i("MicroMsg.PluginExpt", "Plugin expt onAccountRelease [%d] [%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(com.tencent.mm.plugin.expt.f.a.cRk().hashCode()) });
+    Object localObject = com.tencent.mm.plugin.expt.d.a.cMI().sxv;
+    if (((com.tencent.mm.plugin.expt.d.i.b)localObject).syB != null) {
+      ((com.tencent.mm.plugin.expt.d.i.b)localObject).syB.uS(localObject.hashCode());
     }
-    localb.qYs = null;
+    ((com.tencent.mm.plugin.expt.d.i.b)localObject).syB = null;
     resetUIN();
     closeDB();
+    localObject = com.tencent.mm.plugin.expt.j.a.cSe();
+    EventCenter.instance.removeListener(((com.tencent.mm.plugin.expt.j.a)localObject).gmC);
     AppMethodBeat.o(121793);
   }
   

@@ -11,17 +11,17 @@ import com.tencent.mm.sdcard_migrate.util.ExtStorageMigrateException;
 public abstract interface d
   extends IInterface
 {
-  public abstract void aaS(int paramInt);
+  public abstract void ajH(int paramInt);
   
-  public abstract void aaT(int paramInt);
+  public abstract void ajI(int paramInt);
   
   public abstract void b(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException);
   
-  public abstract void fnw();
+  public abstract void gxi();
   
-  public abstract void jx(int paramInt1, int paramInt2);
+  public abstract void kJ(int paramInt1, int paramInt2);
   
-  public abstract void lP(String paramString1, String paramString2);
+  public abstract void mN(String paramString1, String paramString2);
   
   public static abstract class a
     extends Binder
@@ -44,6 +44,11 @@ public abstract interface d
       return new a(paramIBinder);
     }
     
+    public static d gxj()
+    {
+      return a.NHC;
+    }
+    
     public IBinder asBinder()
     {
       return this;
@@ -60,17 +65,17 @@ public abstract interface d
         return true;
       case 1: 
         paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
-        aaS(paramParcel1.readInt());
+        ajH(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       case 2: 
         paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
-        lP(paramParcel1.readString(), paramParcel1.readString());
+        mN(paramParcel1.readString(), paramParcel1.readString());
         paramParcel2.writeNoException();
         return true;
       case 3: 
         paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
-        aaT(paramParcel1.readInt());
+        ajI(paramParcel1.readInt());
         paramParcel2.writeNoException();
         return true;
       case 4: 
@@ -85,12 +90,12 @@ public abstract interface d
         }
       case 5: 
         paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
-        fnw();
+        gxi();
         paramParcel2.writeNoException();
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
-      jx(paramParcel1.readInt(), paramParcel1.readInt());
+      kJ(paramParcel1.readInt(), paramParcel1.readInt());
       paramParcel2.writeNoException();
       return true;
     }
@@ -98,6 +103,7 @@ public abstract interface d
     static final class a
       implements d
     {
+      public static d NHC;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -105,16 +111,20 @@ public abstract interface d
         this.mRemote = paramIBinder;
       }
       
-      public final void aaS(int paramInt)
+      public final void ajH(int paramInt)
       {
-        AppMethodBeat.i(211873);
+        AppMethodBeat.i(204635);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
           localParcel1.writeInt(paramInt);
-          this.mRemote.transact(1, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (d.a.gxj() != null))
+          {
+            d.a.gxj().ajH(paramInt);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -122,20 +132,24 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211873);
+          AppMethodBeat.o(204635);
         }
       }
       
-      public final void aaT(int paramInt)
+      public final void ajI(int paramInt)
       {
-        AppMethodBeat.i(211875);
+        AppMethodBeat.i(204637);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
           localParcel1.writeInt(paramInt);
-          this.mRemote.transact(3, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(3, localParcel1, localParcel2, 0)) && (d.a.gxj() != null))
+          {
+            d.a.gxj().ajI(paramInt);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -143,7 +157,7 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211875);
+          AppMethodBeat.o(204637);
         }
       }
       
@@ -152,85 +166,52 @@ public abstract interface d
         return this.mRemote;
       }
       
-      /* Error */
       public final void b(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException)
       {
-        // Byte code:
-        //   0: ldc 64
-        //   2: invokestatic 27	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   8: astore_3
-        //   9: invokestatic 33	android/os/Parcel:obtain	()Landroid/os/Parcel;
-        //   12: astore 4
-        //   14: aload_3
-        //   15: ldc 35
-        //   17: invokevirtual 39	android/os/Parcel:writeInterfaceToken	(Ljava/lang/String;)V
-        //   20: aload_3
-        //   21: iload_1
-        //   22: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   25: aload_2
-        //   26: ifnull +49 -> 75
-        //   29: aload_3
-        //   30: iconst_1
-        //   31: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   34: aload_2
-        //   35: aload_3
-        //   36: iconst_0
-        //   37: invokevirtual 70	com/tencent/mm/sdcard_migrate/util/ExtStorageMigrateException:writeToParcel	(Landroid/os/Parcel;I)V
-        //   40: aload_0
-        //   41: getfield 18	com/tencent/mm/sdcard_migrate/d$a$a:mRemote	Landroid/os/IBinder;
-        //   44: iconst_4
-        //   45: aload_3
-        //   46: aload 4
-        //   48: iconst_0
-        //   49: invokeinterface 48 5 0
-        //   54: pop
-        //   55: aload 4
-        //   57: invokevirtual 51	android/os/Parcel:readException	()V
-        //   60: aload 4
-        //   62: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   65: aload_3
-        //   66: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   69: ldc 64
-        //   71: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   74: return
-        //   75: aload_3
-        //   76: iconst_0
-        //   77: invokevirtual 42	android/os/Parcel:writeInt	(I)V
-        //   80: goto -40 -> 40
-        //   83: astore_2
-        //   84: aload 4
-        //   86: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   89: aload_3
-        //   90: invokevirtual 54	android/os/Parcel:recycle	()V
-        //   93: ldc 64
-        //   95: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   98: aload_2
-        //   99: athrow
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	100	0	this	a
-        //   0	100	1	paramInt	int
-        //   0	100	2	paramExtStorageMigrateException	ExtStorageMigrateException
-        //   8	82	3	localParcel1	Parcel
-        //   12	73	4	localParcel2	Parcel
-        // Exception table:
-        //   from	to	target	type
-        //   14	25	83	finally
-        //   29	40	83	finally
-        //   40	60	83	finally
-        //   75	80	83	finally
-      }
-      
-      public final void fnw()
-      {
-        AppMethodBeat.i(211877);
+        AppMethodBeat.i(204638);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
-          this.mRemote.transact(5, localParcel1, localParcel2, 0);
+          localParcel1.writeInt(paramInt);
+          if (paramExtStorageMigrateException != null)
+          {
+            localParcel1.writeInt(1);
+            paramExtStorageMigrateException.writeToParcel(localParcel1, 0);
+          }
+          while ((!this.mRemote.transact(4, localParcel1, localParcel2, 0)) && (d.a.gxj() != null))
+          {
+            d.a.gxj().b(paramInt, paramExtStorageMigrateException);
+            return;
+            localParcel1.writeInt(0);
+          }
+          localParcel2.readException();
+        }
+        finally
+        {
+          localParcel2.recycle();
+          localParcel1.recycle();
+          AppMethodBeat.o(204638);
+        }
+        localParcel2.recycle();
+        localParcel1.recycle();
+        AppMethodBeat.o(204638);
+      }
+      
+      public final void gxi()
+      {
+        AppMethodBeat.i(204639);
+        Parcel localParcel1 = Parcel.obtain();
+        Parcel localParcel2 = Parcel.obtain();
+        try
+        {
+          localParcel1.writeInterfaceToken("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
+          if ((!this.mRemote.transact(5, localParcel1, localParcel2, 0)) && (d.a.gxj() != null))
+          {
+            d.a.gxj().gxi();
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -238,13 +219,13 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211877);
+          AppMethodBeat.o(204639);
         }
       }
       
-      public final void jx(int paramInt1, int paramInt2)
+      public final void kJ(int paramInt1, int paramInt2)
       {
-        AppMethodBeat.i(211878);
+        AppMethodBeat.i(204640);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -252,7 +233,11 @@ public abstract interface d
           localParcel1.writeInterfaceToken("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
           localParcel1.writeInt(paramInt1);
           localParcel1.writeInt(paramInt2);
-          this.mRemote.transact(6, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(6, localParcel1, localParcel2, 0)) && (d.a.gxj() != null))
+          {
+            d.a.gxj().kJ(paramInt1, paramInt2);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -260,13 +245,13 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211878);
+          AppMethodBeat.o(204640);
         }
       }
       
-      public final void lP(String paramString1, String paramString2)
+      public final void mN(String paramString1, String paramString2)
       {
-        AppMethodBeat.i(211874);
+        AppMethodBeat.i(204636);
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
         try
@@ -274,7 +259,11 @@ public abstract interface d
           localParcel1.writeInterfaceToken("com.tencent.mm.sdcard_migrate.IMigrateResultCallback");
           localParcel1.writeString(paramString1);
           localParcel1.writeString(paramString2);
-          this.mRemote.transact(2, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (d.a.gxj() != null))
+          {
+            d.a.gxj().mN(paramString1, paramString2);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -282,7 +271,7 @@ public abstract interface d
         {
           localParcel2.recycle();
           localParcel1.recycle();
-          AppMethodBeat.o(211874);
+          AppMethodBeat.o(204636);
         }
       }
     }

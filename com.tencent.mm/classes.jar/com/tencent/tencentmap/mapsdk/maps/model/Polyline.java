@@ -1,10 +1,16 @@
 package com.tencent.tencentmap.mapsdk.maps.model;
 
 import android.graphics.Rect;
+import com.tencent.tencentmap.mapsdk.maps.interfaces.Animationable;
+import com.tencent.tencentmap.mapsdk.maps.interfaces.Clickable;
+import com.tencent.tencentmap.mapsdk.maps.interfaces.Levelable;
+import com.tencent.tencentmap.mapsdk.maps.interfaces.Removable;
+import com.tencent.tencentmap.mapsdk.maps.interfaces.Tagable;
+import com.tencent.tencentmap.mapsdk.maps.interfaces.Visible;
 import java.util.List;
 
 public abstract interface Polyline
-  extends IOverlay
+  extends Animationable, Clickable, Levelable, Removable, Tagable<Object>, Visible, IOverlay
 {
   @Deprecated
   public static final int DARK_BLUE = 6;
@@ -37,17 +43,11 @@ public abstract interface Polyline
   
   public abstract int[][] getColors();
   
-  public abstract String getId();
-  
-  public abstract int getLevel();
-  
   public abstract List<Integer> getPattern();
   
   public abstract List<LatLng> getPoints();
   
   public abstract PolylineOptions getPolylineOptions();
-  
-  public abstract Object getTag();
   
   public abstract PolylineOptions.Text getText();
   
@@ -55,23 +55,13 @@ public abstract interface Polyline
   
   public abstract float getWidth();
   
-  public abstract int getZIndex();
-  
   public abstract boolean isAboveMaskLayer();
   
-  public abstract boolean isClickable();
-  
-  public abstract boolean isVisible();
-  
   public abstract void pattern(List<Integer> paramList);
-  
-  public abstract void remove();
   
   public abstract void setAboveMaskLayer(boolean paramBoolean);
   
   public abstract void setArrow(boolean paramBoolean);
-  
-  public abstract void setClickable(boolean paramBoolean);
   
   public abstract void setColor(int paramInt);
   
@@ -83,27 +73,19 @@ public abstract interface Polyline
   
   public abstract void setEraseable(boolean paramBoolean);
   
-  public abstract void setLevel(int paramInt);
-  
   public abstract void setPoints(List<LatLng> paramList);
   
   public abstract void setPolylineOptions(PolylineOptions paramPolylineOptions);
   
-  public abstract void setTag(Object paramObject);
-  
   public abstract void setText(PolylineOptions.Text paramText);
   
-  public abstract void setVisible(boolean paramBoolean);
-  
   public abstract void setWidth(float paramFloat);
-  
-  public abstract void setZIndex(int paramInt);
   
   public abstract void startAnimation(Animation paramAnimation);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.Polyline
  * JD-Core Version:    0.7.0.1
  */

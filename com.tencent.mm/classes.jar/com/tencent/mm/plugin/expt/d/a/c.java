@@ -7,7 +7,7 @@ public abstract interface c
 {
   public abstract void a(a parama);
   
-  public abstract List<a> aeb(String paramString);
+  public abstract List<a> aol(String paramString);
   
   public abstract void clear(String paramString);
   

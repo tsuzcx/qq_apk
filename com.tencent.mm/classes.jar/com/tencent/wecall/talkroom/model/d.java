@@ -2,49 +2,49 @@ package com.tencent.wecall.talkroom.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.a.a.a;
-import com.tencent.pb.common.b.a.a.a.ay;
-import com.tencent.pb.common.b.a.a.a.az;
+import com.tencent.pb.common.b.a.a.a.bb;
+import com.tencent.pb.common.b.a.a.a.bc;
 import com.tencent.pb.common.c.b;
 import com.tencent.pb.common.c.f;
 
 public final class d
 {
-  private String AEd;
-  a.ay MIu;
-  private a.az MIv;
+  private String ENE;
+  a.bb Sup;
+  private a.bc Suq;
   
-  public d(a.ay paramay)
+  public d(a.bb parambb)
   {
-    AppMethodBeat.i(208327);
-    a(paramay);
-    AppMethodBeat.o(208327);
+    AppMethodBeat.i(199670);
+    a(parambb);
+    AppMethodBeat.o(199670);
   }
   
-  public d(a.ay paramay, a.az paramaz)
+  public d(a.bb parambb, a.bc parambc)
   {
-    AppMethodBeat.i(208328);
-    a(paramay);
-    if (paramaz == null)
+    AppMethodBeat.i(199671);
+    a(parambb);
+    if (parambc == null)
     {
       b.w("tagorewang:TalkRoomMember", new Object[] { "set null profile" });
-      AppMethodBeat.o(208328);
+      AppMethodBeat.o(199671);
       return;
     }
-    this.MIv = paramaz;
-    AppMethodBeat.o(208328);
+    this.Suq = parambc;
+    AppMethodBeat.o(199671);
   }
   
-  public final void a(a.ay paramay)
+  public final void a(a.bb parambb)
   {
-    AppMethodBeat.i(208329);
-    if (paramay == null)
+    AppMethodBeat.i(199672);
+    if (parambb == null)
     {
       b.w("tagorewang:TalkRoomMember", new Object[] { "set null info" });
-      AppMethodBeat.o(208329);
+      AppMethodBeat.o(199672);
       return;
     }
-    this.MIu = paramay;
-    AppMethodBeat.o(208329);
+    this.Sup = parambb;
+    AppMethodBeat.o(199672);
   }
   
   public final boolean equals(Object paramObject)
@@ -55,24 +55,8 @@ public final class d
       AppMethodBeat.o(62597);
       return false;
     }
-    boolean bool = f.equals(gdY(), ((d)paramObject).gdY());
+    boolean bool = f.equals(hra(), ((d)paramObject).hra());
     AppMethodBeat.o(62597);
-    return bool;
-  }
-  
-  public final String gdY()
-  {
-    if (this.MIu != null) {
-      return this.MIu.duC;
-    }
-    return "";
-  }
-  
-  public final boolean gdZ()
-  {
-    AppMethodBeat.i(62599);
-    boolean bool = f.equals(a.fXK(), gdY());
-    AppMethodBeat.o(62599);
     return bool;
   }
   
@@ -85,7 +69,7 @@ public final class d
       int i;
       try
       {
-        Object localObject2 = this.AEd;
+        Object localObject2 = this.ENE;
         if ((localObject2 == null) || (((String)localObject2).trim().length() == 0))
         {
           AppMethodBeat.o(62595);
@@ -133,7 +117,7 @@ public final class d
       catch (Exception localException)
       {
         b.w("tagorewang:TalkRoomMember", new Object[] { "getDisplayName err: ", localException });
-        String str = this.AEd;
+        String str = this.ENE;
         AppMethodBeat.o(62595);
         return str;
       }
@@ -151,24 +135,24 @@ public final class d
   
   public final int getMemberId()
   {
-    if (this.MIu == null) {
+    if (this.Sup == null) {
       return -1;
     }
-    return this.MIu.pcE;
+    return this.Sup.qrD;
   }
   
   public final int getState()
   {
-    if (this.MIu == null) {
+    if (this.Sup == null) {
       return 0;
     }
-    return this.MIu.status;
+    return this.Sup.status;
   }
   
   public final int hashCode()
   {
     AppMethodBeat.i(62598);
-    String str = gdY();
+    String str = hra();
     if (str == null)
     {
       AppMethodBeat.o(62598);
@@ -179,30 +163,46 @@ public final class d
     return i;
   }
   
+  public final String hra()
+  {
+    if (this.Sup != null) {
+      return this.Sup.dLN;
+    }
+    return "";
+  }
+  
+  public final boolean isSelf()
+  {
+    AppMethodBeat.i(62599);
+    boolean bool = f.equals(a.hjq(), hra());
+    AppMethodBeat.o(62599);
+    return bool;
+  }
+  
   public final String toString()
   {
     AppMethodBeat.i(62596);
     int i = 0;
-    if (this.MIu != null) {
-      i = this.MIu.FHN;
+    if (this.Sup != null) {
+      i = this.Sup.KBb;
     }
-    while ((this.MIu == null) || (this.MIv == null))
+    while ((this.Sup == null) || (this.Suq == null))
     {
       localObject = "invlaid TalkRoomMember which uuid is ".concat(String.valueOf(i));
       AppMethodBeat.o(62596);
       return localObject;
-      if (this.MIv != null) {
-        i = this.MIv.FHN;
+      if (this.Suq != null) {
+        i = this.Suq.KBb;
       }
     }
     StringBuilder localStringBuilder1 = new StringBuilder();
-    Object localObject = this.MIu;
+    Object localObject = this.Sup;
     StringBuilder localStringBuilder2;
     if (localObject == null)
     {
       localObject = "null";
       localStringBuilder2 = localStringBuilder1.append((String)localObject).append(" ");
-      localObject = this.MIv;
+      localObject = this.Suq;
       if (localObject != null) {
         break label250;
       }
@@ -217,25 +217,25 @@ public final class d
       return localObject;
       localStringBuilder2 = new StringBuilder();
       localStringBuilder2.append("VoiceGroupMem");
-      localStringBuilder2.append(" uuid:").append(((a.ay)localObject).FHN);
-      localStringBuilder2.append(" openClientId:").append(((a.ay)localObject).MfQ);
-      localStringBuilder2.append(" invite uuid: ").append(((a.ay)localObject).MfM);
-      localStringBuilder2.append(" member id:").append(((a.ay)localObject).pcE);
-      localStringBuilder2.append(" status: ").append(((a.ay)localObject).status);
-      localStringBuilder2.append(" reason: ").append(((a.ay)localObject).reason);
+      localStringBuilder2.append(" uuid:").append(((a.bb)localObject).KBb);
+      localStringBuilder2.append(" openClientId:").append(((a.bb)localObject).RGi);
+      localStringBuilder2.append(" invite uuid: ").append(((a.bb)localObject).RGe);
+      localStringBuilder2.append(" member id:").append(((a.bb)localObject).qrD);
+      localStringBuilder2.append(" status: ").append(((a.bb)localObject).status);
+      localStringBuilder2.append(" reason: ").append(((a.bb)localObject).bDZ);
       localObject = localStringBuilder2.toString();
       break;
       localStringBuilder3 = new StringBuilder();
       localStringBuilder3.append("VoiceGroupUsrProfile");
-      localStringBuilder3.append(" uuid: ").append(((a.az)localObject).FHN);
-      localStringBuilder3.append(" user name: ").append(((a.az)localObject).username);
-      localStringBuilder3.append(" head url: ").append(((a.az)localObject).headUrl);
+      localStringBuilder3.append(" uuid: ").append(((a.bc)localObject).KBb);
+      localStringBuilder3.append(" user name: ").append(((a.bc)localObject).username);
+      localStringBuilder3.append(" head url: ").append(((a.bc)localObject).headUrl);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.d
  * JD-Core Version:    0.7.0.1
  */

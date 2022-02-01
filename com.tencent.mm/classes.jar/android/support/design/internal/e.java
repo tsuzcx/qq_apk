@@ -4,7 +4,7 @@ import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.support.transition.Transition;
-import android.support.transition.u;
+import android.support.transition.v;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import java.util.Map;
@@ -12,37 +12,37 @@ import java.util.Map;
 public final class e
   extends Transition
 {
-  private static void c(u paramu)
+  private static void c(v paramv)
   {
-    if ((paramu.view instanceof TextView))
+    if ((paramv.view instanceof TextView))
     {
-      TextView localTextView = (TextView)paramu.view;
-      paramu.values.put("android:textscale:scale", Float.valueOf(localTextView.getScaleX()));
+      TextView localTextView = (TextView)paramv.view;
+      paramv.values.put("android:textscale:scale", Float.valueOf(localTextView.getScaleX()));
     }
   }
   
-  public final Animator a(final ViewGroup paramViewGroup, u paramu1, u paramu2)
+  public final Animator a(final ViewGroup paramViewGroup, v paramv1, v paramv2)
   {
     float f2 = 1.0F;
-    if ((paramu1 == null) || (paramu2 == null) || (!(paramu1.view instanceof TextView)) || (!(paramu2.view instanceof TextView))) {
+    if ((paramv1 == null) || (paramv2 == null) || (!(paramv1.view instanceof TextView)) || (!(paramv2.view instanceof TextView))) {
       return null;
     }
-    paramViewGroup = (TextView)paramu2.view;
-    paramu1 = paramu1.values;
-    paramu2 = paramu2.values;
-    if (paramu1.get("android:textscale:scale") != null) {}
-    for (float f1 = ((Float)paramu1.get("android:textscale:scale")).floatValue();; f1 = 1.0F)
+    paramViewGroup = (TextView)paramv2.view;
+    paramv1 = paramv1.values;
+    paramv2 = paramv2.values;
+    if (paramv1.get("android:textscale:scale") != null) {}
+    for (float f1 = ((Float)paramv1.get("android:textscale:scale")).floatValue();; f1 = 1.0F)
     {
-      if (paramu2.get("android:textscale:scale") != null) {
-        f2 = ((Float)paramu2.get("android:textscale:scale")).floatValue();
+      if (paramv2.get("android:textscale:scale") != null) {
+        f2 = ((Float)paramv2.get("android:textscale:scale")).floatValue();
       }
       if (f1 != f2) {
         break;
       }
       return null;
     }
-    paramu1 = ValueAnimator.ofFloat(new float[] { f1, f2 });
-    paramu1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    paramv1 = ValueAnimator.ofFloat(new float[] { f1, f2 });
+    paramv1.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -51,17 +51,17 @@ public final class e
         paramViewGroup.setScaleY(f);
       }
     });
-    return paramu1;
+    return paramv1;
   }
   
-  public final void a(u paramu)
+  public final void a(v paramv)
   {
-    c(paramu);
+    c(paramv);
   }
   
-  public final void b(u paramu)
+  public final void b(v paramv)
   {
-    c(paramu);
+    c(paramv);
   }
 }
 

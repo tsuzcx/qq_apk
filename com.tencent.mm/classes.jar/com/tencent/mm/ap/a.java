@@ -3,14 +3,14 @@ package com.tencent.mm.ap;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Process;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.s;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -22,21 +22,88 @@ import java.util.concurrent.Future;
 public final class a
 {
   private static boolean active;
-  private static Future dkp;
-  private static final c hYv;
-  private static boolean hYw;
-  private static long hYx;
-  private static long hYy;
+  private static Future dBz;
+  private static final c iTt;
+  private static boolean iTu;
+  private static long iTv;
+  private static long iTw;
   
   static
   {
     AppMethodBeat.i(132522);
     active = false;
-    hYv = new c();
-    hYw = true;
-    hYx = 0L;
-    hYy = 0L;
+    iTt = new c();
+    iTu = true;
+    iTv = 0L;
+    iTw = 0L;
     AppMethodBeat.o(132522);
+  }
+  
+  public static void A(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(132513);
+    if (!iTu)
+    {
+      AppMethodBeat.o(132513);
+      return;
+    }
+    if (active)
+    {
+      AppMethodBeat.o(132513);
+      return;
+    }
+    c localc = iTt;
+    c.c localc1 = new c.c(cl.aWy(), System.currentTimeMillis(), paramInt, paramLong);
+    localc.iTH.iTP.add(localc1);
+    AppMethodBeat.o(132513);
+  }
+  
+  public static boolean Au(long paramLong)
+  {
+    boolean bool = true;
+    if ((iTv <= 0L) || (iTw <= 0L) || (paramLong <= 0L)) {
+      bool = false;
+    }
+    do
+    {
+      do
+      {
+        return bool;
+        if (iTv < iTw) {
+          break;
+        }
+      } while (paramLong >= iTv);
+      return false;
+    } while (paramLong < iTw);
+    return false;
+  }
+  
+  static String Av(long paramLong)
+  {
+    AppMethodBeat.i(132519);
+    Object localObject = new Date(paramLong);
+    localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format((Date)localObject);
+    AppMethodBeat.o(132519);
+    return localObject;
+  }
+  
+  public static void B(int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(132514);
+    if (!iTu)
+    {
+      AppMethodBeat.o(132514);
+      return;
+    }
+    if (active)
+    {
+      AppMethodBeat.o(132514);
+      return;
+    }
+    c localc = iTt;
+    c.c localc1 = new c.c(cl.aWy(), System.currentTimeMillis(), paramInt, paramLong);
+    localc.iTH.iTQ.add(localc1);
+    AppMethodBeat.o(132514);
   }
   
   private static a a(c.c paramc, int paramInt)
@@ -48,11 +115,11 @@ public final class a
       return null;
     }
     a locala = new a();
-    locala.hYz = paramc.hYz;
+    locala.iTx = paramc.iTx;
     locala.startTime = paramc.time;
     locala.endTime = paramc.time;
     locala.type = paramInt;
-    locala.hYC = paramc.type;
+    locala.iTA = paramc.type;
     AppMethodBeat.o(132521);
     return locala;
   }
@@ -66,16 +133,16 @@ public final class a
       return null;
     }
     a locala = new a();
-    locala.hYz = paramd.hZp;
+    locala.iTx = paramd.iUn;
     locala.startTime = paramd.startTime;
     locala.endTime = paramd.endTime;
     locala.type = paramInt;
     locala.pid = paramd.pid;
-    locala.hYA = paramd.hYA;
+    locala.iTy = paramd.iTy;
     if (paramInt == 1)
     {
       locala.networkStatus = paramd.networkStatus;
-      locala.hYB = paramd.hYB;
+      locala.iTz = paramd.iTz;
     }
     AppMethodBeat.o(132520);
     return locala;
@@ -84,14 +151,14 @@ public final class a
   public static void a(int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString, int paramInt2)
   {
     AppMethodBeat.i(132515);
-    if (!hYw)
+    if (!iTu)
     {
       AppMethodBeat.o(132515);
       return;
     }
-    c localc = hYv;
+    c localc = iTt;
     paramString = new c.b(Process.myPid(), paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString, paramInt2);
-    ae.i("MicroMsg.ActiveDetector.ProcessDetector", "addDelayedMsgInBackground() delayed msg[%s]", new Object[] { paramString.toString() });
+    Log.i("MicroMsg.ActiveDetector.ProcessDetector", "addDelayedMsgInBackground() delayed msg[%s]", new Object[] { paramString.toString() });
     switch (paramInt1)
     {
     }
@@ -101,34 +168,34 @@ public final class a
       return;
       AppMethodBeat.o(132515);
       return;
-      localc.hYJ.hZd.add(paramString);
+      localc.iTH.iUb.add(paramString);
       AppMethodBeat.o(132515);
       return;
-      localc.hYJ.hZe.add(paramString);
+      localc.iTH.iUc.add(paramString);
       AppMethodBeat.o(132515);
       return;
-      localc.hYJ.hZf.add(paramString);
+      localc.iTH.iUd.add(paramString);
       AppMethodBeat.o(132515);
       return;
-      localc.hYJ.hZg.add(paramString);
+      localc.iTH.iUe.add(paramString);
       AppMethodBeat.o(132515);
       return;
-      localc.hYJ.hZh.add(paramString);
+      localc.iTH.iUf.add(paramString);
       AppMethodBeat.o(132515);
       return;
-      localc.hYJ.hZi.add(paramString);
+      localc.iTH.iUg.add(paramString);
       AppMethodBeat.o(132515);
       return;
-      localc.hYJ.hZj.add(paramString);
+      localc.iTH.iUh.add(paramString);
       AppMethodBeat.o(132515);
       return;
-      localc.hYJ.hZk.add(paramString);
+      localc.iTH.iUi.add(paramString);
       AppMethodBeat.o(132515);
       return;
-      localc.hYJ.hZl.add(paramString);
+      localc.iTH.iUj.add(paramString);
       AppMethodBeat.o(132515);
       return;
-      localc.hYJ.hZm.add(paramString);
+      localc.iTH.iUk.add(paramString);
     }
   }
   
@@ -157,37 +224,88 @@ public final class a
         break;
         paramList1 = new a();
         paramList1.pid = localb.pid;
-        paramList1.hYz = localb.hYz;
-        paramList1.startTime = localb.hZn;
-        paramList1.endTime = localb.hZn;
+        paramList1.iTx = localb.iTx;
+        paramList1.startTime = localb.iUl;
+        paramList1.endTime = localb.iUl;
         paramList1.type = 4;
-        paramList1.hYD = localb.hYD;
-        paramList1.hYE = localb.hYE;
-        paramList1.hYF = localb.hYF;
-        paramList1.cCq = paramBoolean;
+        paramList1.iTB = localb.iTB;
+        paramList1.iTC = localb.iTC;
+        paramList1.iTD = localb.iTD;
+        paramList1.cQp = paramBoolean;
       }
     }
     AppMethodBeat.o(132518);
   }
   
-  public static List<a> aHy()
+  public static void b(int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString, int paramInt2)
+  {
+    AppMethodBeat.i(132516);
+    if (!iTu)
+    {
+      AppMethodBeat.o(132516);
+      return;
+    }
+    c localc = iTt;
+    paramString = new c.b(Process.myPid(), paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString, paramInt2);
+    Log.i("MicroMsg.ActiveDetector.ProcessDetector", "addDelayedMsgInForeground() delayed msg[%s]", new Object[] { paramString.toString() });
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(132516);
+      return;
+      AppMethodBeat.o(132516);
+      return;
+      localc.iTH.iTR.add(paramString);
+      AppMethodBeat.o(132516);
+      return;
+      localc.iTH.iTS.add(paramString);
+      AppMethodBeat.o(132516);
+      return;
+      localc.iTH.iTT.add(paramString);
+      AppMethodBeat.o(132516);
+      return;
+      localc.iTH.iTU.add(paramString);
+      AppMethodBeat.o(132516);
+      return;
+      localc.iTH.iTV.add(paramString);
+      AppMethodBeat.o(132516);
+      return;
+      localc.iTH.iTW.add(paramString);
+      AppMethodBeat.o(132516);
+      return;
+      localc.iTH.iTX.add(paramString);
+      AppMethodBeat.o(132516);
+      return;
+      localc.iTH.iTY.add(paramString);
+      AppMethodBeat.o(132516);
+      return;
+      localc.iTH.iTZ.add(paramString);
+      AppMethodBeat.o(132516);
+      return;
+      localc.iTH.iUa.add(paramString);
+    }
+  }
+  
+  public static List<a> bbr()
   {
     localObject2 = null;
     AppMethodBeat.i(132517);
-    if (!ak.cpe())
+    if (!MMApplicationContext.isMMProcess())
     {
       AppMethodBeat.o(132517);
       return null;
     }
-    Object localObject1 = hYv.hYN;
+    Object localObject1 = iTt.iTL;
     Object localObject3 = (String)localObject1 + "/mm";
     localObject4 = (String)localObject1 + "/push";
     try
     {
-      localObject1 = (c.a)b.z(o.openRead((String)localObject3));
+      localObject1 = (c.a)b.y(s.openRead((String)localObject3));
       try
       {
-        localObject3 = (c.a)b.z(o.openRead((String)localObject4));
+        localObject3 = (c.a)b.y(s.openRead((String)localObject4));
         localObject2 = localObject3;
       }
       catch (Exception localException2)
@@ -195,9 +313,9 @@ public final class a
         a locala;
         for (;;)
         {
-          ae.e("MicroMsg.ActiveDetector", "%s,read exception:" + localException2.getMessage(), new Object[] { localObject4 });
+          Log.e("MicroMsg.ActiveDetector", "%s,read exception:" + localException2.getMessage(), new Object[] { localObject4 });
         }
-        localObject4 = localIterator.hYS.iterator();
+        localObject4 = localIterator.iTQ.iterator();
         while (((Iterator)localObject4).hasNext())
         {
           locala = a((c.c)((Iterator)localObject4).next(), 3);
@@ -205,30 +323,30 @@ public final class a
             localException2.add(locala);
           }
         }
-        a(localException2, localIterator.hYT, true);
-        a(localException2, localIterator.hYU, true);
-        a(localException2, localIterator.hYV, true);
-        a(localException2, localIterator.hYW, true);
-        a(localException2, localIterator.hYX, true);
-        a(localException2, localIterator.hYY, true);
-        a(localException2, localIterator.hYZ, true);
-        a(localException2, localIterator.hZa, true);
-        a(localException2, localIterator.hZb, true);
-        a(localException2, localIterator.hZc, true);
-        a(localException2, localIterator.hZd, false);
-        a(localException2, localIterator.hZe, false);
-        a(localException2, localIterator.hZf, false);
-        a(localException2, localIterator.hZg, false);
-        a(localException2, localIterator.hZh, false);
-        a(localException2, localIterator.hZi, false);
-        a(localException2, localIterator.hZj, false);
-        a(localException2, localIterator.hZk, false);
-        a(localException2, localIterator.hZl, false);
-        a(localException2, localIterator.hZm, false);
+        a(localException2, localIterator.iTR, true);
+        a(localException2, localIterator.iTS, true);
+        a(localException2, localIterator.iTT, true);
+        a(localException2, localIterator.iTU, true);
+        a(localException2, localIterator.iTV, true);
+        a(localException2, localIterator.iTW, true);
+        a(localException2, localIterator.iTX, true);
+        a(localException2, localIterator.iTY, true);
+        a(localException2, localIterator.iTZ, true);
+        a(localException2, localIterator.iUa, true);
+        a(localException2, localIterator.iUb, false);
+        a(localException2, localIterator.iUc, false);
+        a(localException2, localIterator.iUd, false);
+        a(localException2, localIterator.iUe, false);
+        a(localException2, localIterator.iUf, false);
+        a(localException2, localIterator.iUg, false);
+        a(localException2, localIterator.iUh, false);
+        a(localException2, localIterator.iUi, false);
+        a(localException2, localIterator.iUj, false);
+        a(localException2, localIterator.iUk, false);
         if (localObject2 == null) {
-          break label559;
+          break label567;
         }
-        Iterator localIterator = ((c.a)localObject2).hYQ.iterator();
+        Iterator localIterator = ((c.a)localObject2).iTO.iterator();
         while (localIterator.hasNext())
         {
           localObject4 = a((c.d)localIterator.next(), 1);
@@ -236,7 +354,7 @@ public final class a
             localException2.add(localObject4);
           }
         }
-        localIterator = ((c.a)localObject2).hYR.iterator();
+        localIterator = ((c.a)localObject2).iTP.iterator();
         while (localIterator.hasNext())
         {
           localObject2 = a((c.c)localIterator.next(), 2);
@@ -251,7 +369,7 @@ public final class a
       localObject3 = new ArrayList();
       if (localObject1 != null)
       {
-        localObject4 = ((c.a)localObject1).hYQ.iterator();
+        localObject4 = ((c.a)localObject1).iTO.iterator();
         while (((Iterator)localObject4).hasNext())
         {
           locala = a((c.d)((Iterator)localObject4).next(), 0);
@@ -265,71 +383,20 @@ public final class a
     {
       for (;;)
       {
-        ae.e("MicroMsg.ActiveDetector", "%s,read exception:" + localException1.getMessage(), new Object[] { localObject3 });
+        Log.e("MicroMsg.ActiveDetector", "%s,read exception:" + localException1.getMessage(), new Object[] { localObject3 });
         localIterator = null;
       }
     }
   }
   
-  public static void b(int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString, int paramInt2)
-  {
-    AppMethodBeat.i(132516);
-    if (!hYw)
-    {
-      AppMethodBeat.o(132516);
-      return;
-    }
-    c localc = hYv;
-    paramString = new c.b(Process.myPid(), paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramString, paramInt2);
-    ae.i("MicroMsg.ActiveDetector.ProcessDetector", "addDelayedMsgInForeground() delayed msg[%s]", new Object[] { paramString.toString() });
-    switch (paramInt1)
-    {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(132516);
-      return;
-      AppMethodBeat.o(132516);
-      return;
-      localc.hYJ.hYT.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hYJ.hYU.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hYJ.hYV.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hYJ.hYW.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hYJ.hYX.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hYJ.hYY.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hYJ.hYZ.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hYJ.hZa.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hYJ.hZb.add(paramString);
-      AppMethodBeat.o(132516);
-      return;
-      localc.hYJ.hZc.add(paramString);
-    }
-  }
-  
-  public static final void eO(boolean paramBoolean)
+  public static final void fE(boolean paramBoolean)
   {
     AppMethodBeat.i(132512);
-    ae.i("MicroMsg.ActiveDetector", "onActive() active:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!ak.getContext().getSharedPreferences("system_config_prefs", g.abv()).getBoolean("msg_delay_close_detect", false)) {}
+    Log.i("MicroMsg.ActiveDetector", "onActive() active:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (!MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", g.aps()).getBoolean("msg_delay_close_detect", false)) {}
     for (boolean bool = true;; bool = false)
     {
-      hYw = bool;
+      iTu = bool;
       if (bool) {
         break;
       }
@@ -339,28 +406,28 @@ public final class a
     active = paramBoolean;
     if (paramBoolean)
     {
-      ae.i("MicroMsg.ActiveDetector", "[oneliang]active, time%s, pid:%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(Process.myPid()) });
-      ae.i("MicroMsg.ActiveDetector", "active, interrupt end, time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-      if (dkp != null) {
-        dkp.cancel(true);
+      Log.i("MicroMsg.ActiveDetector", "[oneliang]active, time%s, pid:%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(Process.myPid()) });
+      Log.i("MicroMsg.ActiveDetector", "active, interrupt end, time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+      if (dBz != null) {
+        dBz.cancel(true);
       }
-      dkp = null;
-      c localc = hYv;
-      localc.hYP = false;
-      localc.hYL = 0L;
-      localc.hYM = 0L;
-      ae.i("MicroMsg.ActiveDetector", "active, processDetector.clear end, time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
-      hYx = ch.aDa();
+      dBz = null;
+      c localc = iTt;
+      localc.iTN = false;
+      localc.iTJ = 0L;
+      localc.iTK = 0L;
+      Log.i("MicroMsg.ActiveDetector", "active, processDetector.clear end, time %s", new Object[] { Long.valueOf(System.currentTimeMillis()) });
+      iTv = cl.aWy();
       AppMethodBeat.o(132512);
       return;
     }
-    ae.i("MicroMsg.ActiveDetector", "[oneliang]unactive, time%s, pid:%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(Process.myPid()) });
-    if (dkp == null)
+    Log.i("MicroMsg.ActiveDetector", "[oneliang]unactive, time%s, pid:%s", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(Process.myPid()) });
+    if (dBz == null)
     {
-      dkp = h.MqF.aR(hYv);
-      hYv.hYP = true;
+      dBz = h.RTc.ba(iTt);
+      iTt.iTN = true;
     }
-    hYy = ch.aDa();
+    iTw = cl.aWy();
     AppMethodBeat.o(132512);
   }
   
@@ -369,90 +436,23 @@ public final class a
     return active;
   }
   
-  public static void pj(int paramInt)
+  public static void sY(int paramInt)
   {
-    hYv.hYG = paramInt;
-  }
-  
-  public static boolean so(long paramLong)
-  {
-    boolean bool = true;
-    if ((hYx <= 0L) || (hYy <= 0L) || (paramLong <= 0L)) {
-      bool = false;
-    }
-    do
-    {
-      do
-      {
-        return bool;
-        if (hYx < hYy) {
-          break;
-        }
-      } while (paramLong >= hYx);
-      return false;
-    } while (paramLong < hYy);
-    return false;
-  }
-  
-  static String sp(long paramLong)
-  {
-    AppMethodBeat.i(132519);
-    Object localObject = new Date(paramLong);
-    localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format((Date)localObject);
-    AppMethodBeat.o(132519);
-    return localObject;
-  }
-  
-  public static void y(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(132513);
-    if (!hYw)
-    {
-      AppMethodBeat.o(132513);
-      return;
-    }
-    if (active)
-    {
-      AppMethodBeat.o(132513);
-      return;
-    }
-    c localc = hYv;
-    c.c localc1 = new c.c(ch.aDa(), System.currentTimeMillis(), paramInt, paramLong);
-    localc.hYJ.hYR.add(localc1);
-    AppMethodBeat.o(132513);
-  }
-  
-  public static void z(int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(132514);
-    if (!hYw)
-    {
-      AppMethodBeat.o(132514);
-      return;
-    }
-    if (active)
-    {
-      AppMethodBeat.o(132514);
-      return;
-    }
-    c localc = hYv;
-    c.c localc1 = new c.c(ch.aDa(), System.currentTimeMillis(), paramInt, paramLong);
-    localc.hYJ.hYS.add(localc1);
-    AppMethodBeat.o(132514);
+    iTt.iTE = paramInt;
   }
   
   public static final class a
     implements Comparable<a>
   {
-    public boolean cCq = false;
+    public boolean cQp = false;
     public long endTime = 0L;
-    public boolean hYA = true;
-    public boolean hYB = false;
-    public int hYC = 0;
-    public long hYD = 0L;
-    public long hYE = 0L;
-    public long hYF = 0L;
-    public long hYz = 0L;
+    public int iTA = 0;
+    public long iTB = 0L;
+    public long iTC = 0L;
+    public long iTD = 0L;
+    public long iTx = 0L;
+    public boolean iTy = true;
+    public boolean iTz = false;
     public int networkStatus = 0;
     public int pid = 0;
     public long startTime = 0L;
@@ -475,23 +475,23 @@ public final class a
           str1 = localStringBuilder.toString();
           AppMethodBeat.o(132511);
           return str1;
-          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,[mm] pid:%s,normal execute:%s", new Object[] { a.sp(this.hYz), a.sp(this.startTime), a.sp(this.endTime), Integer.valueOf(this.pid), Boolean.valueOf(this.hYA) }));
+          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,[mm] pid:%s,normal execute:%s", new Object[] { a.Av(this.iTx), a.Av(this.startTime), a.Av(this.endTime), Integer.valueOf(this.pid), Boolean.valueOf(this.iTy) }));
           continue;
-          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,[push] pid:%s,network:%s,normal execute:%s", new Object[] { a.sp(this.hYz), a.sp(this.startTime), a.sp(this.endTime), Integer.valueOf(this.pid), Integer.valueOf(this.networkStatus), Boolean.valueOf(this.hYA) }));
+          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,[push] pid:%s,network:%s,normal execute:%s", new Object[] { a.Av(this.iTx), a.Av(this.startTime), a.Av(this.endTime), Integer.valueOf(this.pid), Integer.valueOf(this.networkStatus), Boolean.valueOf(this.iTy) }));
           continue;
-          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,send broadcast type(push):%s", new Object[] { a.sp(this.hYz), a.sp(this.startTime), a.sp(this.endTime), Integer.valueOf(this.hYC) }));
+          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,send broadcast type(push):%s", new Object[] { a.Av(this.iTx), a.Av(this.startTime), a.Av(this.endTime), Integer.valueOf(this.iTA) }));
           continue;
-          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,receive broadcast type(mm):%s", new Object[] { a.sp(this.hYz), a.sp(this.startTime), a.sp(this.endTime), Integer.valueOf(this.hYC) }));
+          localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,receive broadcast type(mm):%s", new Object[] { a.Av(this.iTx), a.Av(this.startTime), a.Av(this.endTime), Integer.valueOf(this.iTA) }));
         }
       }
-      String str2 = a.sp(this.hYz);
-      String str3 = a.sp(this.startTime);
-      String str4 = a.sp(this.endTime);
+      String str2 = a.Av(this.iTx);
+      String str3 = a.Av(this.startTime);
+      String str4 = a.Av(this.endTime);
       int i = this.pid;
-      String str5 = a.sp(this.hYD);
-      long l1 = this.hYE;
-      long l2 = this.hYF;
-      if (this.cCq) {}
+      String str5 = a.Av(this.iTB);
+      long l1 = this.iTC;
+      long l2 = this.iTD;
+      if (this.cQp) {}
       for (String str1 = "foreground";; str1 = "background")
       {
         localStringBuilder.append(String.format("server time:%s,local start time:%s,local end time:%s,delayed msg pid:%s, msg server time:%s,interval time:%s, msg server id:%s, %s", new Object[] { str2, str3, str4, Integer.valueOf(i), str5, Long.valueOf(l1), Long.valueOf(l2), str1 }));

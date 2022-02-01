@@ -1,34 +1,34 @@
 package com.tencent.mm.plugin.game.commlib;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.vfs.s;
 
 public class b
-  implements f
+  implements i
 {
-  private static b udB;
-  private boolean gnW = false;
-  private boolean udA = false;
+  private static b xvn;
+  private boolean gYQ = false;
+  private boolean xvm = false;
   
-  public static b cZC()
+  public static b dTd()
   {
     AppMethodBeat.i(89930);
-    if (udB == null) {}
+    if (xvn == null) {}
     try
     {
-      if (udB == null) {
-        udB = new b();
+      if (xvn == null) {
+        xvn = new b();
       }
-      b localb = udB;
+      b localb = xvn;
       AppMethodBeat.o(89930);
       return localb;
     }
@@ -41,49 +41,49 @@ public class b
   private void release()
   {
     AppMethodBeat.i(89932);
-    this.gnW = false;
-    g.ajj().b(1311, this);
+    this.gYQ = false;
+    g.azz().b(1311, this);
     AppMethodBeat.o(89932);
   }
   
-  public final void na(boolean paramBoolean)
+  public final void I(boolean paramBoolean, int paramInt)
   {
     for (;;)
     {
       int i;
       try
       {
-        AppMethodBeat.i(89931);
+        AppMethodBeat.i(201263);
         if (paramBoolean)
         {
           i = 1;
           if (i == 0)
           {
-            if (!o.fB(a.cZr()))
+            if (!s.YS(a.dSR()))
             {
               i = 1;
-              break label182;
+              break label185;
             }
           }
           else
           {
-            if (!this.gnW)
+            if (!this.gYQ)
             {
-              ae.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
+              Log.i("MicroMsg.GameConfigUpdater", "Game config start update. force update(%b)", new Object[] { Boolean.valueOf(paramBoolean) });
               release();
-              this.gnW = true;
-              this.udA = paramBoolean;
-              g.ajR().ajA().set(am.a.IUL, Long.valueOf(0L));
-              g.ajj().a(1311, this);
-              c localc = new c();
-              g.ajj().a(localc, 0);
+              this.gYQ = true;
+              this.xvm = paramBoolean;
+              g.aAh().azQ().set(ar.a.OcZ, Long.valueOf(0L));
+              g.azz().a(1311, this);
+              c localc = new c(paramInt);
+              g.azz().a(localc, 0);
             }
-            AppMethodBeat.o(89931);
+            AppMethodBeat.o(201263);
           }
         }
         else
         {
-          long l = Math.abs(bu.rZ(bu.i((Long)g.ajR().ajA().get(am.a.IKF, Long.valueOf(0L)))));
+          long l = Math.abs(Util.secondsToNow(Util.nullAsNil((Long)g.aAh().azQ().get(ar.a.NSD, Long.valueOf(0L)))));
           if (l > 86400L)
           {
             i = 1;
@@ -95,21 +95,21 @@ public class b
         i = 0;
       }
       finally {}
-      label182:
+      label185:
       if (i == 0) {}
     }
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(89933);
-    if (paramn.getType() == 1311)
+    if (paramq.getType() == 1311)
     {
-      ae.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (g.ajP().aiZ()) {
+      Log.i("MicroMsg.GameConfigUpdater", "getGameCenterGlobalSetting sceneEnd, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (g.aAf().azp()) {
         break label67;
       }
-      ae.w("MicroMsg.GameConfigUpdater", "account not init.");
+      Log.w("MicroMsg.GameConfigUpdater", "account not init.");
     }
     for (;;)
     {
@@ -117,9 +117,9 @@ public class b
       AppMethodBeat.o(89933);
       return;
       label67:
-      ae.i("MicroMsg.GameConfigUpdater", "updateTime, isForceUpdate: %b", new Object[] { Boolean.valueOf(this.udA) });
-      if (!this.udA) {
-        g.ajR().ajA().set(am.a.IKF, Long.valueOf(bu.aRi()));
+      Log.i("MicroMsg.GameConfigUpdater", "updateTime, isForceUpdate: %b", new Object[] { Boolean.valueOf(this.xvm) });
+      if (!this.xvm) {
+        g.aAh().azQ().set(ar.a.NSD, Long.valueOf(Util.nowSecond()));
       }
     }
   }

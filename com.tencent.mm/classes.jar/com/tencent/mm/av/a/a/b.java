@@ -15,27 +15,27 @@ import java.util.concurrent.Executor;
 
 public final class b
 {
-  public static final int ifT;
-  public final Resources aKG;
-  public final int ifU;
-  public final int ifV;
-  public final c ifW;
-  public final o ifX;
-  public final com.tencent.mm.av.a.c.b ifY;
-  public final com.tencent.mm.av.a.c.c ifZ;
-  public final com.tencent.mm.av.a.c.g iga;
-  public final l igb;
-  public final m igc;
-  public final com.tencent.mm.av.a.c.f igd;
-  public final j ige;
-  public final Executor igf;
-  public final p igg;
+  public static final int jaO;
+  public final Resources aKy;
+  public final int jaP;
+  public final int jaQ;
+  public final c jaR;
+  public final o jaS;
+  public final com.tencent.mm.av.a.c.b jaT;
+  public final com.tencent.mm.av.a.c.c jaU;
+  public final com.tencent.mm.av.a.c.g jaV;
+  public final l jaW;
+  public final m jaX;
+  public final com.tencent.mm.av.a.c.f jaY;
+  public final j jaZ;
+  public final Executor jba;
+  public final p jbb;
   public final String packageName;
   
   static
   {
     AppMethodBeat.i(130400);
-    ifT = Runtime.getRuntime().availableProcessors();
+    jaO = Runtime.getRuntime().availableProcessors();
     AppMethodBeat.o(130400);
   }
   
@@ -43,27 +43,27 @@ public final class b
   {
     AppMethodBeat.i(130398);
     this.packageName = parama.context.getPackageName();
-    this.aKG = parama.context.getResources();
-    this.ifU = parama.ifU;
-    this.ifV = parama.ifV;
-    this.ifW = parama.ifW;
-    this.ifX = parama.ifX;
-    this.ifY = parama.ifY;
-    this.ifZ = parama.ifZ;
-    this.iga = parama.iga;
-    this.igb = parama.igb;
-    this.ige = parama.ige;
-    this.igf = parama.igf;
-    this.igc = parama.igh;
-    this.igd = parama.igd;
-    this.igg = parama.igg;
+    this.aKy = parama.context.getResources();
+    this.jaP = parama.jaP;
+    this.jaQ = parama.jaQ;
+    this.jaR = parama.jaR;
+    this.jaS = parama.jaS;
+    this.jaT = parama.jaT;
+    this.jaU = parama.jaU;
+    this.jaV = parama.jaV;
+    this.jaW = parama.jaW;
+    this.jaZ = parama.jaZ;
+    this.jba = parama.jba;
+    this.jaX = parama.jbc;
+    this.jaY = parama.jaY;
+    this.jbb = parama.jbb;
     AppMethodBeat.o(130398);
   }
   
-  public static b cF(Context paramContext)
+  public static b db(Context paramContext)
   {
     AppMethodBeat.i(130399);
-    paramContext = new a(paramContext).aJj();
+    paramContext = new a(paramContext).bdd();
     AppMethodBeat.o(130399);
     return paramContext;
   }
@@ -71,82 +71,82 @@ public final class b
   public static final class a
   {
     Context context;
-    int ifU;
-    int ifV;
-    c ifW;
-    public o ifX;
-    com.tencent.mm.av.a.c.b ifY;
-    public com.tencent.mm.av.a.c.c ifZ;
-    com.tencent.mm.av.a.c.g iga;
-    l igb;
-    com.tencent.mm.av.a.c.f igd;
-    public j ige;
-    Executor igf;
-    p igg;
-    m igh;
+    int jaP;
+    int jaQ;
+    c jaR;
+    public o jaS;
+    com.tencent.mm.av.a.c.b jaT;
+    public com.tencent.mm.av.a.c.c jaU;
+    com.tencent.mm.av.a.c.g jaV;
+    l jaW;
+    com.tencent.mm.av.a.c.f jaY;
+    public j jaZ;
+    Executor jba;
+    p jbb;
+    m jbc;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(130395);
-      this.ifU = b.ifT;
-      this.ifV = 5;
-      this.ifW = null;
-      this.ifX = null;
-      this.ifY = null;
-      this.ifZ = null;
-      this.iga = null;
-      this.igb = null;
-      this.igh = null;
-      this.igd = null;
-      this.igg = null;
-      this.ige = null;
+      this.jaP = b.jaO;
+      this.jaQ = 5;
+      this.jaR = null;
+      this.jaS = null;
+      this.jaT = null;
+      this.jaU = null;
+      this.jaV = null;
+      this.jaW = null;
+      this.jbc = null;
+      this.jaY = null;
+      this.jbb = null;
+      this.jaZ = null;
       this.context = paramContext.getApplicationContext();
       AppMethodBeat.o(130395);
     }
     
-    private void aJk()
+    private void bde()
     {
       AppMethodBeat.i(130397);
-      if (this.ifW == null) {
-        this.ifW = c.aJl();
+      if (this.jaR == null) {
+        this.jaR = c.bdf();
       }
-      if (this.ifX == null) {
-        this.ifX = new com.tencent.mm.av.a.b.f();
+      if (this.jaS == null) {
+        this.jaS = new com.tencent.mm.av.a.b.f();
       }
-      if (this.ifY == null) {
-        this.ifY = new com.tencent.mm.av.a.b.a();
+      if (this.jaT == null) {
+        this.jaT = new com.tencent.mm.av.a.b.a();
       }
-      if (this.ifZ == null) {
-        this.ifZ = new com.tencent.mm.av.a.b.b();
+      if (this.jaU == null) {
+        this.jaU = new com.tencent.mm.av.a.b.b();
       }
-      if (this.iga == null) {
-        this.iga = new d();
+      if (this.jaV == null) {
+        this.jaV = new d();
       }
-      if (this.igb == null) {
-        this.igb = new i();
+      if (this.jaW == null) {
+        this.jaW = new i();
       }
-      if (this.ige == null) {
-        this.ige = a.pH(this.ifU);
+      if (this.jaZ == null) {
+        this.jaZ = a.tv(this.jaP);
       }
-      if (this.igf == null) {
-        this.igf = a.aJi();
+      if (this.jba == null) {
+        this.jba = a.bdc();
       }
-      if (this.igh == null) {
-        this.igh = new e();
+      if (this.jbc == null) {
+        this.jbc = new e();
       }
-      if (this.igd == null) {
-        this.igd = new com.tencent.mm.av.a.b.c();
+      if (this.jaY == null) {
+        this.jaY = new com.tencent.mm.av.a.b.c();
       }
-      if (this.igg == null) {
-        this.igg = new com.tencent.mm.av.a.b.g();
+      if (this.jbb == null) {
+        this.jbb = new com.tencent.mm.av.a.b.g();
       }
       AppMethodBeat.o(130397);
     }
     
-    public final b aJj()
+    public final b bdd()
     {
       AppMethodBeat.i(130396);
-      aJk();
+      bde();
       b localb = new b(this);
       AppMethodBeat.o(130396);
       return localb;

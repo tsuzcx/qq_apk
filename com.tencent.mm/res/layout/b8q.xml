@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="3.0" android:minHeight="@dimen/hr"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/fmu" android:background="@drawable/bho" android:layout_width="160.0dip" android:layout_height="160.0dip">
-        <com.tencent.mm.emoji.view.EmojiStatusView android:id="@id/fmv" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="20.0dip" android:scaleType="centerInside" android:layout_centerInParent="true" />
-    </RelativeLayout>
+    <ToggleButton android:id="@id/h8e" android:textOn="@string/g8n" android:textOff="@string/g8n" android:drawableTop="@drawable/n3" style="@style/gc" />
+    <ToggleButton android:id="@id/h8d" android:textOn="@string/g86" android:textOff="@string/g86" android:drawableTop="@drawable/n3" style="@style/gc" />
+    <ToggleButton android:id="@id/h8l" android:textOn="@string/g9_" android:textOff="@string/g9_" android:drawableTop="@drawable/n3" style="@style/gc" />
 </LinearLayout>

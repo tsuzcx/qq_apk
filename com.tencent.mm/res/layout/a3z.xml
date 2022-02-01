@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bx7" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:layout_marginTop="@dimen/cd" android:layout_marginBottom="@dimen/c_" android:src="@raw/icons_filled_error" app:iconColor="@color/yh" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/b_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c_o" />
+<LinearLayout android:orientation="vertical" android:background="@color/m0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.brandservice.ui.EnterpriseBizContactListView android:id="@id/i2h" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </LinearLayout>

@@ -3,753 +3,398 @@ package com.tencent.mm.app;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
+import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.booter.notification.g.a;
-import com.tencent.mm.booter.notification.queue.b;
-import com.tencent.mm.g.a.sy;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.x;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.plugin.account.bind.ui.BindMContactIntroUI;
-import com.tencent.mm.plugin.account.bind.ui.BindQQUI;
-import com.tencent.mm.plugin.account.ui.LoginIndepPass;
-import com.tencent.mm.plugin.account.ui.LoginPasswordUI;
-import com.tencent.mm.plugin.account.ui.LoginUI;
-import com.tencent.mm.plugin.account.ui.MobileInputUI;
-import com.tencent.mm.plugin.account.ui.RegByMobileVoiceVerifyUI;
-import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.api.c;
+import com.tencent.mm.api.d;
+import com.tencent.mm.api.m;
+import com.tencent.mm.bb.n;
+import com.tencent.mm.bb.r;
+import com.tencent.mm.bb.v;
+import com.tencent.mm.booter.o;
+import com.tencent.mm.g.a.xr;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.modelmulti.f;
+import com.tencent.mm.modelmulti.p;
 import com.tencent.mm.plugin.gallery.picker.view.ImageCropUI;
-import com.tencent.mm.pluginsdk.q;
-import com.tencent.mm.pluginsdk.q.a;
-import com.tencent.mm.pluginsdk.ui.applet.o.a;
-import com.tencent.mm.pluginsdk.ui.applet.y.a;
-import com.tencent.mm.pluginsdk.ui.span.r;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.game.api.b.a;
+import com.tencent.mm.pluginsdk.model.app.h;
+import com.tencent.mm.pluginsdk.ui.tools.s;
+import com.tencent.mm.protocal.protobuf.cpl;
+import com.tencent.mm.protocal.protobuf.drt;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.ca.a;
 import com.tencent.mm.ui.LauncherUI;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
 import com.tencent.mm.ui.MMAppMgr;
-import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.chatting.ChattingUI;
-import com.tencent.mm.ui.contact.ContactRemarkInfoModUI;
-import com.tencent.mm.ui.contact.ModRemarkNameUI;
-import com.tencent.mm.ui.contact.SnsLabelContactListUI;
-import com.tencent.mm.ui.contact.e;
-import com.tencent.mm.ui.tools.CountryCodeUI;
-import com.tencent.mm.ui.tools.ShowImageUI;
-import com.tencent.mm.ui.tools.a.a;
-import com.tencent.mm.ui.transmit.MsgRetransmitUI;
-import com.tencent.mm.ui.transmit.SelectConversationUI;
+import com.tencent.mm.ui.base.u;
+import com.tencent.mm.ui.z.a;
 
-public final class ak
-  implements com.tencent.mm.pluginsdk.m
+final class ak
+  implements com.tencent.mm.ak.l, m, com.tencent.mm.pluginsdk.k, com.tencent.mm.pluginsdk.l
 {
-  public final void MP()
+  public final String R(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(19651);
-    MMAppMgr.MP();
-    AppMethodBeat.o(19651);
+    AppMethodBeat.i(19511);
+    paramString1 = com.tencent.mm.pluginsdk.model.app.q.R(paramString1, paramString2);
+    AppMethodBeat.o(19511);
+    return paramString1;
   }
   
-  public final void a(Activity paramActivity, Intent paramIntent, int paramInt)
+  public final void WZ()
   {
-    AppMethodBeat.i(19623);
-    if (paramActivity != null)
+    AppMethodBeat.i(19502);
+    p.bdS().tE(7);
+    AppMethodBeat.o(19502);
+  }
+  
+  public final com.tencent.mm.ak.k Xa()
+  {
+    AppMethodBeat.i(19504);
+    com.tencent.mm.audio.a.a locala = new com.tencent.mm.audio.a.a(MMApplicationContext.getContext());
+    AppMethodBeat.o(19504);
+    return locala;
+  }
+  
+  public final void Xb()
+  {
+    AppMethodBeat.i(19514);
+    xr localxr = new xr();
+    localxr.edW.edY = true;
+    EventCenter.instance.publish(localxr);
+    AppMethodBeat.o(19514);
+  }
+  
+  public final void Xc()
+  {
+    AppMethodBeat.i(19519);
+    MMAppMgr.Xc();
+    AppMethodBeat.o(19519);
+  }
+  
+  public final Intent Xd()
+  {
+    AppMethodBeat.i(19524);
+    Intent localIntent = new Intent(MMApplicationContext.getContext(), LauncherUI.class);
+    localIntent.putExtra("nofification_type", "talkroom_notification");
+    localIntent.addFlags(67108864);
+    AppMethodBeat.o(19524);
+    return localIntent;
+  }
+  
+  public final void Xe()
+  {
+    AppMethodBeat.i(19531);
+    o.Xe();
+    AppMethodBeat.o(19531);
+  }
+  
+  public final boolean Xf()
+  {
+    AppMethodBeat.i(19537);
+    boolean bool = com.tencent.mm.modelmulti.l.bdN();
+    AppMethodBeat.o(19537);
+    return bool;
+  }
+  
+  public final com.tencent.mm.ak.q a(j paramj)
+  {
+    AppMethodBeat.i(19525);
+    if (com.tencent.mm.modelmulti.l.bdN())
     {
-      int i = paramIntent.getIntExtra("CropImageMode", 0);
-      if ((i != 4) && (i != 2)) {
-        break label52;
-      }
-      paramIntent.setClassName(paramActivity, "com.tencent.mm.ui.tools.CropImageNewUI");
+      paramj = new f(paramj);
+      AppMethodBeat.o(19525);
+      return paramj;
+    }
+    p.bdS().tE(4);
+    AppMethodBeat.o(19525);
+    return null;
+  }
+  
+  public final void a(Context paramContext, as paramas, ca.a parama, Bundle paramBundle, String paramString)
+  {
+    AppMethodBeat.i(19533);
+    com.tencent.mm.ui.contact.e.a(paramContext, paramas, parama, true, true, paramBundle, paramString);
+    AppMethodBeat.o(19533);
+  }
+  
+  public final void a(Context paramContext, ca.a parama, Bundle paramBundle)
+  {
+    AppMethodBeat.i(19532);
+    com.tencent.mm.ui.contact.e.a(paramContext, parama, true, true, paramBundle);
+    AppMethodBeat.o(19532);
+  }
+  
+  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, String paramString4, String paramString5)
+  {
+    AppMethodBeat.i(19512);
+    com.tencent.mm.plugin.game.api.b localb = b.a.dSQ();
+    if (localb != null) {
+      localb.a(paramContext, paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramString4, paramString5, "");
+    }
+    AppMethodBeat.o(19512);
+  }
+  
+  public final void a(Intent paramIntent, drt paramdrt, int paramInt)
+  {
+    AppMethodBeat.i(19530);
+    d.a(paramIntent, paramdrt, paramInt);
+    AppMethodBeat.o(19530);
+  }
+  
+  public final void a(Intent paramIntent, String paramString)
+  {
+    AppMethodBeat.i(19534);
+    com.tencent.mm.ui.contact.e.a(paramIntent, paramString);
+    AppMethodBeat.o(19534);
+  }
+  
+  public final void a(c paramc, Activity paramActivity, as paramas)
+  {
+    AppMethodBeat.i(19528);
+    com.tencent.mm.ui.tools.b.c(paramc, paramActivity, paramas);
+    AppMethodBeat.o(19528);
+  }
+  
+  public final void a(c paramc, Activity paramActivity, as paramas, boolean paramBoolean, Runnable paramRunnable)
+  {
+    AppMethodBeat.i(19527);
+    com.tencent.mm.ui.tools.b.a(paramc, paramActivity, paramas, paramBoolean, paramRunnable, 0);
+    AppMethodBeat.o(19527);
+  }
+  
+  public final void a(cpl paramcpl, String paramString, int paramInt)
+  {
+    AppMethodBeat.i(231411);
+    ((com.tencent.mm.plugin.messenger.foundation.a.e)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.e.class)).processModContact(paramcpl, paramString, null, true, false, paramInt);
+    AppMethodBeat.o(231411);
+  }
+  
+  public final void a(String paramString1, String paramString2, int paramInt, String paramString3, long paramLong)
+  {
+    AppMethodBeat.i(19513);
+    com.tencent.mm.plugin.game.api.b localb = b.a.dSQ();
+    if (localb != null) {
+      localb.a(paramString1, paramString2, paramInt, 4, paramString3, paramLong, "", 0);
+    }
+    AppMethodBeat.o(19513);
+  }
+  
+  public final boolean a(Context paramContext, int paramInt1, int paramInt2, String paramString)
+  {
+    AppMethodBeat.i(19517);
+    boolean bool = z.a.a(paramContext, paramInt1, paramInt2, paramString, 4);
+    AppMethodBeat.o(19517);
+    return bool;
+  }
+  
+  public final boolean a(as paramas)
+  {
+    AppMethodBeat.i(19526);
+    boolean bool = com.tencent.mm.modelmulti.a.a(paramas);
+    AppMethodBeat.o(19526);
+    return bool;
+  }
+  
+  public final Bitmap b(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    AppMethodBeat.i(19523);
+    if (paramInt2 != -1)
+    {
+      AppMethodBeat.o(19523);
+      return null;
+    }
+    switch (paramInt1)
+    {
     }
     for (;;)
     {
-      paramActivity.startActivityForResult(paramIntent, paramInt);
-      AppMethodBeat.o(19623);
-      return;
-      label52:
-      paramIntent.setClass(paramActivity, ImageCropUI.class);
-    }
-  }
-  
-  public final void a(Activity paramActivity, Intent paramIntent1, Intent paramIntent2, String paramString, int paramInt, a.a parama)
-  {
-    AppMethodBeat.i(19624);
-    if (paramActivity != null)
-    {
-      int i = paramIntent2.getIntExtra("CropImageMode", 0);
-      if ((i != 4) && (i != 2)) {
-        break label58;
-      }
-      paramIntent2.setClassName(paramActivity, "com.tencent.mm.ui.tools.CropImageNewUI");
-    }
-    for (;;)
-    {
-      com.tencent.mm.ui.tools.a.b(paramActivity, paramIntent1, paramIntent2, paramString, paramInt, parama);
-      AppMethodBeat.o(19624);
-      return;
-      label58:
-      paramIntent2.setClass(paramActivity, ImageCropUI.class);
-    }
-  }
-  
-  public final void a(Context paramContext, Intent paramIntent1, Intent paramIntent2)
-  {
-    AppMethodBeat.i(19646);
-    int i = paramIntent1.getIntExtra("from_source", 1);
-    if (i == 1)
-    {
-      paramIntent1.setClass(paramContext, LoginUI.class);
-      paramIntent1 = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent1);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent1.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startDispathLoginUI", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent1.mt(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startDispathLoginUI", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(19646);
-      return;
-    }
-    if (i == 2)
-    {
-      paramIntent1.setClass(paramContext, LoginPasswordUI.class);
-      paramIntent1 = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent1);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent1.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startDispathLoginUI", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent1.mt(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startDispathLoginUI", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(19646);
-      return;
-    }
-    if (i == 3)
-    {
-      paramIntent1.setClass(paramContext, SimpleLoginUI.class);
-      if (paramIntent2 != null)
+      AppMethodBeat.o(19523);
+      return null;
+      paramIntent = s.h(paramActivity.getApplicationContext(), paramIntent, com.tencent.mm.loader.j.b.aKR());
+      if (paramIntent == null)
       {
-        MMWizardActivity.b(paramContext, paramIntent1, paramIntent2);
-        AppMethodBeat.o(19646);
-        return;
+        AppMethodBeat.o(19523);
+        return null;
       }
-      MMWizardActivity.al(paramContext, paramIntent1);
-      AppMethodBeat.o(19646);
-      return;
+      Intent localIntent = new Intent(paramActivity, ImageCropUI.class);
+      localIntent.putExtra("CropImageMode", 1);
+      localIntent.putExtra("CropImage_OutputPath", com.tencent.mm.loader.j.b.aKR() + "temp.avatar");
+      localIntent.putExtra("CropImage_ImgPath", paramIntent);
+      localIntent.putExtra("CropImage_from_scene", 3);
+      paramActivity.startActivityForResult(localIntent, 4);
+      AppMethodBeat.o(19523);
+      return null;
+      if (paramIntent == null)
+      {
+        AppMethodBeat.o(19523);
+        return null;
+      }
+      localIntent = new Intent(paramActivity, ImageCropUI.class);
+      localIntent.putExtra("CropImageMode", 1);
+      localIntent.putExtra("CropImage_Filter", true);
+      localIntent.putExtra("CropImage_OutputPath", com.tencent.mm.loader.j.b.aKR() + "temp.avatar");
+      localIntent.putExtra("CropImage_ImgPath", null);
+      localIntent.putExtra("CropImage_from_scene", 3);
+      com.tencent.mm.ui.tools.a.a(paramActivity, paramIntent, localIntent, com.tencent.mm.loader.j.b.aKR(), 4);
+      AppMethodBeat.o(19523);
+      return null;
+      if (paramIntent == null)
+      {
+        AppMethodBeat.o(19523);
+        return null;
+      }
+      paramActivity = paramIntent.getStringExtra("CropImage_OutputPath");
+      if (paramActivity != null) {
+        break;
+      }
+      Log.e("MicroMsg.WorkerModelCallback", "crop picture failed");
     }
-    if (i == 5)
-    {
-      paramIntent1.setClass(paramContext, LoginIndepPass.class);
-      paramIntent1 = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent1);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent1.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startDispathLoginUI", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent1.mt(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startDispathLoginUI", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(19646);
-      return;
-    }
-    if (i == 6)
-    {
-      paramIntent1.setClass(paramContext, MobileInputUI.class);
-      paramIntent1.putExtra("mobile_input_purpose", 1);
-      paramIntent1.putExtra("mobile_auth_type", 7);
-      paramIntent1 = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent1);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent1.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startDispathLoginUI", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent1.mt(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startDispathLoginUI", "(Landroid/content/Context;Landroid/content/Intent;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    }
-    AppMethodBeat.o(19646);
+    Log.e("MicroMsg.WorkerModelCallback", "crop picture path %s ", new Object[] { paramActivity });
+    paramActivity = BitmapUtil.getBitmapNative(paramActivity);
+    AppMethodBeat.o(19523);
+    return paramActivity;
   }
   
-  public final void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean, y.a parama)
+  public final boolean b(Context paramContext, int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(19654);
-    o.a locala = new o.a(paramContext);
-    locala.dQ(paramString1).aOq(paramString2).l(Boolean.FALSE).Zx(2131755884);
+    AppMethodBeat.i(19518);
+    boolean bool = z.a.a(paramContext, paramInt1, paramInt2, paramString, 7);
+    AppMethodBeat.o(19518);
+    return bool;
+  }
+  
+  public final void bU(Context paramContext)
+  {
+    AppMethodBeat.i(19521);
+    MMAppMgr.jO(paramContext);
+    AppMethodBeat.o(19521);
+  }
+  
+  public final com.tencent.mm.ak.q cR(boolean paramBoolean)
+  {
+    AppMethodBeat.i(19515);
     if (paramBoolean) {
-      locala.aOn(paramContext.getResources().getString(2131763810));
+      v.bev().tI(4);
     }
-    for (;;)
-    {
-      locala.a(parama).jfl.show();
-      AppMethodBeat.o(19654);
-      return;
-      locala.aOn(paramContext.getResources().getString(2131763811));
-    }
+    n localn = new n(4);
+    bg.azz().a(localn, 0);
+    AppMethodBeat.o(19515);
+    return localn;
   }
   
-  public final void a(Intent paramIntent, int paramInt, MMActivity.a parama, MMActivity paramMMActivity)
+  public final String e(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(19650);
-    if (paramMMActivity != null)
-    {
-      paramIntent.setClassName(paramMMActivity, "com.tencent.mm.ui.CheckCanSubscribeBizUI");
-      paramMMActivity.mmStartActivityForResult(parama, paramIntent, paramInt);
-    }
-    AppMethodBeat.o(19650);
-  }
-  
-  public final void a(Intent paramIntent1, int paramInt, MMActivity paramMMActivity, Intent paramIntent2)
-  {
-    AppMethodBeat.i(19621);
-    if (paramIntent1.getIntExtra("CropImageMode", 0) == 4) {
-      paramIntent1.setClassName(paramMMActivity, "com.tencent.mm.ui.tools.CropImageNewUI");
-    }
-    for (;;)
-    {
-      bc.aCg();
-      com.tencent.mm.ui.tools.a.a(paramMMActivity, paramIntent2, paramIntent1, c.azQ(), paramInt);
-      AppMethodBeat.o(19621);
-      return;
-      paramIntent1.setClass(paramMMActivity, ImageCropUI.class);
-    }
-  }
-  
-  public final void a(Intent paramIntent, Activity paramActivity)
-  {
-    AppMethodBeat.i(19627);
-    paramIntent.setClass(paramActivity, ModRemarkNameUI.class);
-    paramActivity.startActivityForResult(paramIntent, 2);
-    AppMethodBeat.o(19627);
-  }
-  
-  public final void a(Intent paramIntent, Activity paramActivity, int paramInt)
-  {
-    AppMethodBeat.i(19638);
-    if (paramActivity != null)
-    {
-      paramIntent.setClassName(paramActivity, "com.tencent.mm.ui.contact.SnsAddressUI");
-      paramActivity.startActivityForResult(paramIntent, paramInt);
-    }
-    AppMethodBeat.o(19638);
-  }
-  
-  public final void a(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19605);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(19605);
-      return;
-    }
-    paramIntent.setClassName(paramContext, "com.tencent.mm.ui.contact.SayHiEditUI");
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startSayHiEditUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mt(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startSayHiEditUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(19605);
-  }
-  
-  public final void a(Intent paramIntent, MMActivity.a parama, MMActivity paramMMActivity)
-  {
-    AppMethodBeat.i(19633);
-    if (paramMMActivity != null)
-    {
-      paramIntent.setClass(paramMMActivity, SelectConversationUI.class);
-      paramMMActivity.mmStartActivityForResult(parama, paramIntent, 0);
-    }
-    AppMethodBeat.o(19633);
-  }
-  
-  public final void a(Intent paramIntent, MMActivity paramMMActivity)
-  {
-    AppMethodBeat.i(19620);
-    paramIntent.setClass(paramMMActivity, SelectConversationUI.class);
-    paramMMActivity.startActivityForResult(paramIntent, 1);
-    AppMethodBeat.o(19620);
-  }
-  
-  public final void a(final MMActivity paramMMActivity, final String paramString1, final WXMediaMessage paramWXMediaMessage, final String paramString2, final String paramString3)
-  {
-    AppMethodBeat.i(19619);
-    String str = paramMMActivity.getResources().getString(2131755820);
-    Object localObject = paramWXMediaMessage.title;
-    str = str + (String)localObject;
-    localObject = new o.a(paramMMActivity);
-    ((o.a)localObject).dQ(paramString2).aOo(str).Zx(2131757562);
-    {
-      public final void a(boolean paramAnonymousBoolean, String paramAnonymousString, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(19604);
-        if (!paramAnonymousBoolean)
-        {
-          AppMethodBeat.o(19604);
-          return;
-        }
-        com.tencent.mm.pluginsdk.model.app.m.a(paramWXMediaMessage, paramString1, paramString3, paramString2, 3, null);
-        if (!bu.isNullOrNil(paramAnonymousString))
-        {
-          sy localsy = new sy();
-          localsy.dID.cUB = paramString2;
-          localsy.dID.content = paramAnonymousString;
-          localsy.dID.type = x.Bb(paramString2);
-          localsy.dID.flags = 0;
-          com.tencent.mm.sdk.b.a.IvT.l(localsy);
-        }
-        h.cm(paramMMActivity, paramMMActivity.getResources().getString(2131755894));
-        com.tencent.mm.plugin.report.service.g.yxI.kvStat(10910, "2");
-        AppMethodBeat.o(19604);
-      }
-    }.show();
-    AppMethodBeat.o(19619);
-  }
-  
-  public final void a(MMWizardActivity paramMMWizardActivity, Intent paramIntent)
-  {
-    AppMethodBeat.i(19644);
-    if (paramMMWizardActivity == null)
-    {
-      AppMethodBeat.o(19644);
-      return;
-    }
-    paramIntent.setClass(paramMMWizardActivity, MobileInputUI.class);
-    MMWizardActivity.al(paramMMWizardActivity, paramIntent);
-    AppMethodBeat.o(19644);
-  }
-  
-  public final void a(boolean paramBoolean1, boolean paramBoolean2, Context paramContext, String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(19640);
-    if ((paramBoolean1) || (paramBoolean2))
-    {
-      if (!com.tencent.mm.pluginsdk.k.b.a.a.b(paramString, paramContext, paramBoolean2))
-      {
-        Toast.makeText(paramContext, paramContext.getString(2131764691), 0).show();
-        AppMethodBeat.o(19640);
-      }
-    }
-    else
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("VideoPlayer_File_nam", paramString);
-      localIntent.putExtra("VideoRecorder_VideoLength", paramInt1);
-      localIntent.putExtra("VideoRecorder_VideoSize", paramInt2);
-      com.tencent.mm.br.d.b(paramContext, "subapp", ".ui.video.VideoPlayerUI", localIntent);
-    }
-    AppMethodBeat.o(19640);
-  }
-  
-  public final boolean a(Context paramContext, String paramString, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(19649);
-    boolean bool = q.a.Fca.b(paramContext, paramString, paramVarArgs);
-    AppMethodBeat.o(19649);
-    return bool;
-  }
-  
-  public final void b(Intent paramIntent, Activity paramActivity)
-  {
-    AppMethodBeat.i(19628);
-    if (paramActivity != null)
-    {
-      paramIntent.setClass(paramActivity, CountryCodeUI.class);
-      paramActivity.startActivityForResult(paramIntent, 100);
-    }
-    AppMethodBeat.o(19628);
-  }
-  
-  public final void b(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19606);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(19606);
-      return;
-    }
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    com.tencent.mm.br.d.f(paramContext, ".ui.tools.MultiStageCitySelectUI", localIntent);
-    AppMethodBeat.o(19606);
-  }
-  
-  public final boolean b(Context paramContext, String paramString, Bundle paramBundle)
-  {
-    AppMethodBeat.i(19622);
-    boolean bool = q.a.Fca.a(paramContext, paramString, false, paramBundle);
-    AppMethodBeat.o(19622);
-    return bool;
-  }
-  
-  public final void bC(Context paramContext)
-  {
-    AppMethodBeat.i(19607);
-    com.tencent.mm.br.d.b(paramContext, "setting", ".ui.setting.EditSignatureUI", new Intent());
-    AppMethodBeat.o(19607);
-  }
-  
-  public final com.tencent.mm.ui.widget.a.d bD(Context paramContext)
-  {
-    AppMethodBeat.i(19616);
-    paramContext = MMAppMgr.bD(paramContext);
-    AppMethodBeat.o(19616);
+    AppMethodBeat.i(19510);
+    paramContext = com.tencent.mm.pluginsdk.model.app.q.e(paramContext, paramString1, paramString2);
+    AppMethodBeat.o(19510);
     return paramContext;
   }
   
-  public final Intent bE(Context paramContext)
+  public final String go(String paramString)
   {
-    AppMethodBeat.i(19631);
-    paramContext = new Intent(paramContext, LauncherUI.class).addFlags(67108864);
-    AppMethodBeat.o(19631);
+    AppMethodBeat.i(19506);
+    if (h.o(paramString, false, false) != null)
+    {
+      paramString = h.o(paramString, false, false).field_packageName;
+      AppMethodBeat.o(19506);
+      return paramString;
+    }
+    AppMethodBeat.o(19506);
+    return "";
+  }
+  
+  public final boolean gp(String paramString)
+  {
+    AppMethodBeat.i(19508);
+    boolean bool = h.gp(paramString);
+    AppMethodBeat.o(19508);
+    return bool;
+  }
+  
+  public final boolean gq(String paramString)
+  {
+    AppMethodBeat.i(19516);
+    boolean bool = h.gq(paramString);
+    AppMethodBeat.o(19516);
+    return bool;
+  }
+  
+  public final void gr(String paramString)
+  {
+    AppMethodBeat.i(19535);
+    com.tencent.mm.as.b.bch();
+    com.tencent.mm.as.b.Om(paramString);
+    AppMethodBeat.o(19535);
+  }
+  
+  public final void iO(int paramInt)
+  {
+    AppMethodBeat.i(19503);
+    Log.d("MicroMsg.WorkerModelCallback", "trigger netscene sync, scene[%d]", new Object[] { Integer.valueOf(paramInt) });
+    p.bdS().tE(paramInt);
+    AppMethodBeat.o(19503);
+  }
+  
+  public final String r(Context paramContext, String paramString)
+  {
+    AppMethodBeat.i(19507);
+    paramContext = h.r(paramContext, paramString);
+    AppMethodBeat.o(19507);
     return paramContext;
   }
   
-  public final void bF(Context paramContext)
+  public final boolean s(Activity paramActivity)
   {
-    AppMethodBeat.i(19632);
-    com.tencent.mm.br.d.b(paramContext, "setting", ".ui.setting.SelfQRCodeUI", new Intent());
-    AppMethodBeat.o(19632);
-  }
-  
-  public final void bG(Context paramContext)
-  {
-    AppMethodBeat.i(19641);
-    com.tencent.mm.br.d.b(paramContext, "subapp", ".ui.openapi.AddAppUI", new Intent());
-    AppMethodBeat.o(19641);
-  }
-  
-  public final void c(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19608);
-    if (paramContext == null)
+    AppMethodBeat.i(19520);
+    if (!com.tencent.mm.compatible.util.e.apn())
     {
-      AppMethodBeat.o(19608);
-      return;
+      u.g(paramActivity, null);
+      AppMethodBeat.o(19520);
+      return false;
     }
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    com.tencent.mm.br.d.b(paramContext, "profile", ".ui.ContactInfoUI", localIntent);
-    AppMethodBeat.o(19608);
+    s.o(paramActivity, 2);
+    AppMethodBeat.o(19520);
+    return true;
   }
   
-  public final void cancelNotification(String paramString)
+  public final boolean s(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(19652);
-    g.a.Xv();
-    if (paramString != null)
+    AppMethodBeat.i(19509);
+    boolean bool = h.s(paramContext, paramString);
+    AppMethodBeat.o(19509);
+    return bool;
+  }
+  
+  public final void t(Activity paramActivity)
+  {
+    AppMethodBeat.i(19522);
+    MMAppMgr.a(paramActivity, null);
+    AppMethodBeat.o(19522);
+  }
+  
+  public final String w(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(19505);
+    if (h.gE(paramString, paramInt) != null)
     {
-      int i = b.Xw().getId(paramString);
-      ae.d("MicroMsg.Notification.Handle", "cancel : %s", new Object[] { paramString });
-      b.Xw().cancel(i);
+      paramString = h.gE(paramString, paramInt).field_packageName;
+      AppMethodBeat.o(19505);
+      return paramString;
     }
-    AppMethodBeat.o(19652);
-  }
-  
-  public final void d(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(19642);
-    if (paramContext != null)
-    {
-      paramIntent.setClass(paramContext, ShowImageUI.class);
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startShowImageUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mt(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startShowImageUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    }
-    AppMethodBeat.o(19642);
-  }
-  
-  public final void d(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19609);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(19609);
-      return;
-    }
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    paramIntent = localIntent.getStringExtra("Contact_User");
-    if (paramIntent != null) {
-      e.a(localIntent, paramIntent);
-    }
-    ae.i("MicroMsg.WorkerUICallbackImpl", "startChattingUI %s %s", new Object[] { paramIntent, bu.fpN().toString() });
-    localIntent.setClass(paramContext, ChattingUI.class);
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startChattingUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mt(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startChattingUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(19609);
-  }
-  
-  public final void e(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(19643);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(19643);
-      return;
-    }
-    com.tencent.mm.br.d.b(paramContext, "account", ".security.ui.MySafeDeviceListUI", paramIntent);
-    AppMethodBeat.o(19643);
-  }
-  
-  public final void e(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19610);
-    ae.i("MicroMsg.WorkerUICallbackImpl with result", "startChattingUI %s", new Object[] { bu.fpN().toString() });
-    paramIntent.setClass(paramContext, ChattingUI.class);
-    ((Activity)paramContext).startActivityForResult(paramIntent, 1);
-    AppMethodBeat.o(19610);
-  }
-  
-  public final void f(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(19645);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(19645);
-      return;
-    }
-    paramIntent.setClass(paramContext, RegByMobileVoiceVerifyUI.class);
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startRegByMobileVoiceVerifyUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mt(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startRegByMobileVoiceVerifyUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(19645);
-  }
-  
-  public final void f(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19611);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(19611);
-      return;
-    }
-    paramIntent.setClass(paramContext, BindMContactIntroUI.class);
-    MMWizardActivity.al(paramContext, paramIntent);
-    AppMethodBeat.o(19611);
-  }
-  
-  public final void g(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(19647);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(19647);
-      return;
-    }
-    com.tencent.mm.br.d.a(paramContext, "account", ".security.ui.SecurityAccountIntroUI", paramIntent);
-    AppMethodBeat.o(19647);
-  }
-  
-  public final void g(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19612);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(19612);
-      return;
-    }
-    paramIntent.setClass(paramContext, BindQQUI.class);
-    MMWizardActivity.al(paramContext, paramIntent);
-    AppMethodBeat.o(19612);
-  }
-  
-  public final void h(Context paramContext, Intent paramIntent)
-  {
-    AppMethodBeat.i(19648);
-    paramIntent.setClassName(paramContext, "com.tencent.mm.ui.contact.SelectSpecialContactUI");
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startSelectSpecialContactUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mt(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startSelectSpecialContactUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(19648);
-  }
-  
-  public final void h(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19613);
-    paramIntent.setClass(paramContext, LauncherUI.class).addFlags(67108864);
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startMainUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mt(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startMainUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(19613);
-  }
-  
-  public final void i(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19614);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(19614);
-      return;
-    }
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    com.tencent.mm.br.d.b(paramContext, "webview", ".ui.tools.WebViewUI", localIntent);
-    AppMethodBeat.o(19614);
-  }
-  
-  public final void j(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19615);
-    r.h(paramContext, paramIntent.getBundleExtra("reportArgs"));
-    AppMethodBeat.o(19615);
-  }
-  
-  public final void k(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19617);
-    if (paramContext != null)
-    {
-      if (paramIntent.getIntExtra("Retr_Msg_Type", -1) < 0) {
-        paramIntent.putExtra("Retr_Msg_Type", 4);
-      }
-      paramIntent.setClass(paramContext, MsgRetransmitUI.class);
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startMsgRetransmitUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mt(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startMsgRetransmitUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    }
-    AppMethodBeat.o(19617);
-  }
-  
-  public final void l(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19618);
-    if (paramContext != null)
-    {
-      paramIntent.putExtra("Ksnsupload_type", 2);
-      com.tencent.mm.br.d.b(paramContext, "sns", ".ui.SnsUploadUI", paramIntent);
-    }
-    AppMethodBeat.o(19618);
-  }
-  
-  public final void m(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19625);
-    if (paramContext != null)
-    {
-      paramIntent.setClass(paramContext, ContactRemarkInfoModUI.class);
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startContactRemarkInfoModUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mt(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startContactRemarkInfoModUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    }
-    AppMethodBeat.o(19625);
-  }
-  
-  public final void n(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19626);
-    if (paramContext != null)
-    {
-      paramIntent.setClass(paramContext, ModRemarkNameUI.class);
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startRemarkUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mt(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startRemarkUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    }
-    AppMethodBeat.o(19626);
-  }
-  
-  public final void o(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19629);
-    if (paramContext != null) {
-      com.tencent.mm.br.d.b(paramContext, "setting", ".ui.setting.SettingsLanguageUI", paramIntent);
-    }
-    AppMethodBeat.o(19629);
-  }
-  
-  public final void p(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19630);
-    if ((paramIntent != null) && (paramContext != null))
-    {
-      paramIntent.setClass(paramContext, LauncherUI.class).addFlags(67108864);
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startLauncherUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mt(0));
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startLauncherUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    }
-    AppMethodBeat.o(19630);
-  }
-  
-  public final void q(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19634);
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramIntent.getExtras());
-    if (paramIntent.getFlags() != 0) {
-      localIntent.addFlags(paramIntent.getFlags());
-    }
-    com.tencent.mm.br.d.b(paramContext, "subapp", ".ui.gallery.GestureGalleryUI", localIntent);
-    AppMethodBeat.o(19634);
-  }
-  
-  public final void r(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19635);
-    Intent localIntent = new Intent();
-    localIntent.putExtras(paramIntent.getExtras());
-    if (paramIntent.getFlags() != 0) {
-      localIntent.addFlags(paramIntent.getFlags());
-    }
-    com.tencent.mm.pluginsdk.g.hr(paramContext);
-    AppMethodBeat.o(19635);
-  }
-  
-  public final void s(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19636);
-    if (paramContext != null)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtras(paramIntent.getExtras());
-      if (paramIntent.getFlags() != 0) {
-        localIntent.addFlags(paramIntent.getFlags());
-      }
-      com.tencent.mm.br.d.b(paramContext, "subapp", ".ui.pluginapp.ContactSearchUI", localIntent);
-    }
-    AppMethodBeat.o(19636);
-  }
-  
-  public final void t(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(19653);
-    q.a.Fca.a(paramContext, paramString, true);
-    AppMethodBeat.o(19653);
-  }
-  
-  public final void t(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19637);
-    if (paramContext != null)
-    {
-      Intent localIntent = new Intent();
-      localIntent.putExtras(paramIntent.getExtras());
-      if (paramIntent.getFlags() != 0) {
-        localIntent.addFlags(paramIntent.getFlags());
-      }
-      com.tencent.mm.br.d.b(paramContext, "subapp", ".ui.pluginapp.ContactSearchResultUI", localIntent);
-    }
-    AppMethodBeat.o(19637);
-  }
-  
-  public final void u(Intent paramIntent, Context paramContext)
-  {
-    AppMethodBeat.i(19639);
-    paramIntent.setClass(paramContext, SnsLabelContactListUI.class);
-    paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/app/WorkerUICallbackImpl", "startSnsLabelContactUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramIntent.mt(0));
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/app/WorkerUICallbackImpl", "startSnsLabelContactUI", "(Landroid/content/Intent;Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(19639);
+    AppMethodBeat.o(19505);
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.ak
  * JD-Core Version:    0.7.0.1
  */

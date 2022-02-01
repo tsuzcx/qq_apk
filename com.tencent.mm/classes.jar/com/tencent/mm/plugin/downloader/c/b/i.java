@@ -13,30 +13,30 @@ public final class i
     AppMethodBeat.i(153069);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.id);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.id);
       if (this.name != null) {
-        paramVarArgs.d(2, this.name);
+        paramVarArgs.e(2, this.name);
       }
       AppMethodBeat.o(153069);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.id) + 0;
+      int i = g.a.a.b.b.a.bu(1, this.id) + 0;
       paramInt = i;
       if (this.name != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.name);
+        paramInt = i + g.a.a.b.b.a.f(2, this.name);
       }
       AppMethodBeat.o(153069);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(153069);
@@ -44,7 +44,7 @@ public final class i
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       i locali = (i)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -52,11 +52,11 @@ public final class i
         AppMethodBeat.o(153069);
         return -1;
       case 1: 
-        locali.id = locala.OmT.zc();
+        locali.id = locala.UbS.zi();
         AppMethodBeat.o(153069);
         return 0;
       }
-      locali.name = locala.OmT.readString();
+      locali.name = locala.UbS.readString();
       AppMethodBeat.o(153069);
       return 0;
     }

@@ -1,73 +1,73 @@
 package com.tencent.mm.plugin.appbrand.game.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hu;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.ig;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends hu
+  extends ig
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(45095);
-    c.a locala = new c.a();
-    locala.IBL = new Field[9];
-    locala.columns = new String[10];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[9];
+    localMAutoDBInfo.columns = new String[10];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "RecordId";
-    locala.IBN.put("RecordId", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "RecordId";
+    localMAutoDBInfo.colsMap.put("RecordId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" RecordId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "RecordId";
-    locala.columns[1] = "AppId";
-    locala.IBN.put("AppId", "TEXT");
+    localMAutoDBInfo.primaryKey = "RecordId";
+    localMAutoDBInfo.columns[1] = "AppId";
+    localMAutoDBInfo.colsMap.put("AppId", "TEXT");
     localStringBuilder.append(" AppId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "AppName";
-    locala.IBN.put("AppName", "TEXT");
+    localMAutoDBInfo.columns[2] = "AppName";
+    localMAutoDBInfo.colsMap.put("AppName", "TEXT");
     localStringBuilder.append(" AppName TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "UserName";
-    locala.IBN.put("UserName", "TEXT");
+    localMAutoDBInfo.columns[3] = "UserName";
+    localMAutoDBInfo.colsMap.put("UserName", "TEXT");
     localStringBuilder.append(" UserName TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "IconUrl";
-    locala.IBN.put("IconUrl", "TEXT");
+    localMAutoDBInfo.columns[4] = "IconUrl";
+    localMAutoDBInfo.colsMap.put("IconUrl", "TEXT");
     localStringBuilder.append(" IconUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "BriefIntro";
-    locala.IBN.put("BriefIntro", "TEXT");
+    localMAutoDBInfo.columns[5] = "BriefIntro";
+    localMAutoDBInfo.colsMap.put("BriefIntro", "TEXT");
     localStringBuilder.append(" BriefIntro TEXT");
     localStringBuilder.append(", ");
-    locala.columns[6] = "isSync";
-    locala.IBN.put("isSync", "INTEGER default 'false' ");
+    localMAutoDBInfo.columns[6] = "isSync";
+    localMAutoDBInfo.colsMap.put("isSync", "INTEGER default 'false' ");
     localStringBuilder.append(" isSync INTEGER default 'false' ");
     localStringBuilder.append(", ");
-    locala.columns[7] = "debugType";
-    locala.IBN.put("debugType", "INTEGER");
+    localMAutoDBInfo.columns[7] = "debugType";
+    localMAutoDBInfo.colsMap.put("debugType", "INTEGER");
     localStringBuilder.append(" debugType INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[8] = "createTime";
-    locala.IBN.put("createTime", "LONG");
+    localMAutoDBInfo.columns[8] = "createTime";
+    localMAutoDBInfo.colsMap.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
-    locala.columns[9] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[9] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(45095);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.b.a.a
  * JD-Core Version:    0.7.0.1
  */

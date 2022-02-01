@@ -5,18 +5,18 @@ import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.account.a.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
-import com.tencent.mm.protocal.protobuf.auo;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.k;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.protocal.protobuf.bfx;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.ao;
 
 public final class f
 {
-  public static String aUd()
+  public static String boP()
   {
     AppMethodBeat.i(125529);
     String str = Build.MANUFACTURER + "-" + Build.MODEL;
@@ -24,28 +24,28 @@ public final class f
     return str;
   }
   
-  public static String di(Context paramContext)
+  public static String dD(Context paramContext)
   {
     AppMethodBeat.i(125528);
     if (paramContext == null)
     {
-      if (k.IwL)
+      if (ChannelUtil.isNokiaAol)
       {
-        paramContext = ak.getContext().getString(2131762749);
+        paramContext = MMApplicationContext.getContext().getString(2131764834);
         AppMethodBeat.o(125528);
         return paramContext;
       }
-      paramContext = ak.getContext().getString(2131762748);
+      paramContext = MMApplicationContext.getContext().getString(2131764833);
       AppMethodBeat.o(125528);
       return paramContext;
     }
-    if (k.IwL)
+    if (ChannelUtil.isNokiaAol)
     {
-      paramContext = paramContext.getString(2131762749);
+      paramContext = paramContext.getString(2131764834);
       AppMethodBeat.o(125528);
       return paramContext;
     }
-    paramContext = paramContext.getString(2131762748);
+    paramContext = paramContext.getString(2131764833);
     AppMethodBeat.o(125528);
     return paramContext;
   }
@@ -53,21 +53,21 @@ public final class f
   public static void p(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(125527);
-    if (!g.ajM())
+    if (!g.aAc())
     {
       AppMethodBeat.o(125527);
       return;
     }
-    int i = v.aAI();
-    auo localauo;
+    int i = z.aUe();
+    bfx localbfx;
     if (paramBoolean1)
     {
       i |= 0x4000;
-      g.ajR().ajA().set(40, Integer.valueOf(i));
+      g.aAh().azQ().set(40, Integer.valueOf(i));
       if (paramBoolean2)
       {
-        localauo = new auo();
-        localauo.GLx = 28;
+        localbfx = new bfx();
+        localbfx.LPB = 28;
         if (!paramBoolean1) {
           break label126;
         }
@@ -76,9 +76,9 @@ public final class f
     label126:
     for (i = 1;; i = 2)
     {
-      localauo.xsz = i;
-      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azE().d(new k.a(23, localauo));
-      a.iUA.MM();
+      localbfx.BsD = i;
+      ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new k.a(23, localbfx));
+      a.jRu.WZ();
       AppMethodBeat.o(125527);
       return;
       i &= 0xFFFFBFFF;

@@ -8,9 +8,9 @@ import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.g;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.eeh;
-import com.tencent.mm.protocal.protobuf.eei;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.protocal.protobuf.eyp;
+import com.tencent.mm.protocal.protobuf.eyq;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.io.IOException;
 import java.util.LinkedList;
 
@@ -36,25 +36,25 @@ public final class f
   protected final void send()
   {
     AppMethodBeat.i(30126);
-    Object localObject = a.eOb().aGH(this.username);
-    eei localeei = new eei();
+    Object localObject = a.fVK().aWj(this.username);
+    eyq localeyq = new eyq();
     if (this.type == 1)
     {
-      eeh localeeh = new eeh();
-      localeeh.uvE = ((com.tencent.mm.plugin.wear.model.f)localObject).id;
-      localeeh.nIJ = this.username;
-      localeeh.nJO = this.nickname;
-      localeeh.hFS = ak.getContext().getString(2131761707);
+      eyp localeyp = new eyp();
+      localeyp.xNF = ((com.tencent.mm.plugin.wear.model.f)localObject).id;
+      localeyp.UserName = this.username;
+      localeyp.oUJ = this.nickname;
+      localeyp.iAc = MMApplicationContext.getContext().getString(2131763675);
       localObject = com.tencent.mm.aj.c.a(this.username, false, -1, null);
       if (localObject != null) {
-        localeeh.IiK = new b(h.at((Bitmap)localObject));
+        localeyp.Nvo = new b(h.aF((Bitmap)localObject));
       }
-      localeei.nIE.add(localeeh);
+      localeyq.oTA.add(localeyp);
     }
     try
     {
-      a.eOh();
-      r.a(20006, localeei.toByteArray(), true);
+      a.fVQ();
+      r.a(20006, localeyq.toByteArray(), true);
       AppMethodBeat.o(30126);
       return;
     }
@@ -66,7 +66,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.f
  * JD-Core Version:    0.7.0.1
  */

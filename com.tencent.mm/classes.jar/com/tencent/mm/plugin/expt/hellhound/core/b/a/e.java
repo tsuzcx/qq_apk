@@ -5,6 +5,10 @@ import android.content.Intent;
 
 abstract interface e
 {
+  public abstract void P(Activity paramActivity);
+  
+  public abstract void Q(Activity paramActivity);
+  
   public abstract void R(Activity paramActivity);
   
   public abstract void S(Activity paramActivity);
@@ -15,13 +19,9 @@ abstract interface e
   
   public abstract void V(Activity paramActivity);
   
-  public abstract void W(Activity paramActivity);
-  
-  public abstract void X(Activity paramActivity);
-  
   public abstract void a(Activity paramActivity, Intent paramIntent);
   
-  public abstract void a(Activity paramActivity, boolean paramBoolean);
+  public abstract void b(Activity paramActivity, boolean paramBoolean);
   
   public abstract void d(Intent paramIntent, Activity paramActivity);
   

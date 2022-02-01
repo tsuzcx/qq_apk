@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.wallet_core.ui.CustomerScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/jmj" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:gravity="center" android:layout_gravity="center" android:id="@id/jml" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/cl" android:layout_marginRight="@dimen/c5" android:text="@string/j2s" android:layout_marginHorizontal="@dimen/c5" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/jmk" android:background="@drawable/csj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="69.599976dip">
+                <ImageView android:layout_gravity="center_vertical" android:id="@id/jlz" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginLeft="6.399994dip" android:src="@raw/default_avatar" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="center_vertical" android:id="@id/jmm" android:layout_width="0.0dip" android:layout_marginLeft="@dimen/ct" android:layout_marginRight="@dimen/cn" android:text="{user}" android:layout_weight="1.0" style="@style/mk" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</com.tencent.mm.wallet_core.ui.CustomerScrollView>

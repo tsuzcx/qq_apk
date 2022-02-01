@@ -5,7 +5,7 @@ import android.content.res.Resources.Theme;
 import android.content.res.TypedArray;
 import android.support.design.a.a;
 import android.support.v4.view.g;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.View.MeasureSpec;
@@ -15,9 +15,9 @@ import android.view.ViewGroup.MarginLayoutParams;
 public class FlowLayout
   extends ViewGroup
 {
-  private int kG;
-  private int kH;
-  private boolean kI = false;
+  private int kI;
+  private int kJ;
+  private boolean kK = false;
   
   public FlowLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,8 +28,8 @@ public class FlowLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     paramContext = paramContext.getTheme().obtainStyledAttributes(paramAttributeSet, a.a.FlowLayout, 0, 0);
-    this.kG = paramContext.getDimensionPixelSize(2, 0);
-    this.kH = paramContext.getDimensionPixelSize(1, 0);
+    this.kI = paramContext.getDimensionPixelSize(2, 0);
+    this.kJ = paramContext.getDimensionPixelSize(1, 0);
     paramContext.recycle();
   }
   
@@ -48,12 +48,12 @@ public class FlowLayout
   
   protected int getItemSpacing()
   {
-    return this.kH;
+    return this.kJ;
   }
   
   protected int getLineSpacing()
   {
-    return this.kG;
+    return this.kI;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -73,7 +73,7 @@ public class FlowLayout
     int m;
     label134:
     int i1;
-    if (t.Y(this) == 1)
+    if (u.Z(this) == 1)
     {
       j = 1;
       if (j == 0) {
@@ -107,13 +107,13 @@ public class FlowLayout
         int i3 = localView.getMeasuredWidth();
         i = paramInt1;
         i1 = paramInt3;
-        if (!this.kI)
+        if (!this.kK)
         {
           i = paramInt1;
           i1 = paramInt3;
           if (paramInt3 + n + i3 > i2)
           {
-            i = paramInt4 + this.kG;
+            i = paramInt4 + this.kI;
             i1 = paramInt2;
           }
         }
@@ -124,7 +124,7 @@ public class FlowLayout
         }
         localView.layout(i2 - paramInt1, i, i2 - i1 - n, paramInt4);
         label235:
-        paramInt3 = i1 + (m + n + localView.getMeasuredWidth() + this.kH);
+        paramInt3 = i1 + (m + n + localView.getMeasuredWidth() + this.kJ);
         paramInt1 = i;
       }
     }
@@ -197,10 +197,10 @@ public class FlowLayout
       {
         m = i;
         i5 = k;
-        if (!this.kI)
+        if (!this.kK)
         {
           i5 = getPaddingLeft();
-          m = i2 + this.kG;
+          m = i2 + this.kI;
         }
       }
       k = i5 + i4 + localView.getMeasuredWidth();
@@ -209,7 +209,7 @@ public class FlowLayout
       if (k > j) {
         i = k;
       }
-      k = i5 + (i3 + i4 + localView.getMeasuredWidth() + this.kH);
+      k = i5 + (i3 + i4 + localView.getMeasuredWidth() + this.kJ);
       i2 = m + i2;
     }
     for (int j = m;; j = m)
@@ -235,22 +235,22 @@ public class FlowLayout
   
   protected void setItemSpacing(int paramInt)
   {
-    this.kH = paramInt;
+    this.kJ = paramInt;
   }
   
   protected void setLineSpacing(int paramInt)
   {
-    this.kG = paramInt;
+    this.kI = paramInt;
   }
   
   public void setSingleLine(boolean paramBoolean)
   {
-    this.kI = paramBoolean;
+    this.kK = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.internal.FlowLayout
  * JD-Core Version:    0.7.0.1
  */

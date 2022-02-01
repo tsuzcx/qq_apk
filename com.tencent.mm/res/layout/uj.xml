@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <ListView android:id="@id/b1h" android:background="@color/xo" android:focusable="true" android:transcriptMode="disabled" android:overScrollMode="never" style="@style/n3" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:gravity="center" android:id="@id/blq" android:paddingTop="0.0dip" android:paddingBottom="60.0dip" android:visibility="gone" android:text="@string/d_7" android:layout_centerInParent="true" style="@style/lv" />
-</RelativeLayout>
+<LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:background="#ffdfe0e0" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/eaa" android:background="@raw/sns_shoot_location_normal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ir" android:layout_marginTop="@dimen/ir" android:layout_marginBottom="@dimen/ir" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/a9v" android:id="@id/do_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_marginTop="@dimen/ir" android:layout_marginBottom="@dimen/ir" android:singleLine="true" />
+</LinearLayout>

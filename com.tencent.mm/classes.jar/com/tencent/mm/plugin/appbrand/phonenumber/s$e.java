@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.appbrand.phonenumber;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
 final class s$e
   implements DialogInterface.OnClickListener
 {
-  public static final e mpa;
+  public static final e nzM;
   
   static
   {
     AppMethodBeat.i(148092);
-    mpa = new e();
+    nzM = new e();
     AppMethodBeat.o(148092);
   }
   

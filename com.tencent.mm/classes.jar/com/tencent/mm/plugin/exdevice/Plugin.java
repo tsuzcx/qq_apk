@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.exdevice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.bd;
 import com.tencent.mm.plugin.exdevice.model.ad;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -18,7 +18,7 @@ public class Plugin
     return locala;
   }
   
-  public az createSubCore()
+  public bd createSubCore()
   {
     AppMethodBeat.i(23142);
     ad localad = new ad();
@@ -33,7 +33,7 @@ public class Plugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.Plugin
  * JD-Core Version:    0.7.0.1
  */

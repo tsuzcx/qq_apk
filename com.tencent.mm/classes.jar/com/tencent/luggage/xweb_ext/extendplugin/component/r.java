@@ -7,39 +7,39 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class r
   implements i
 {
-  private Map<Class<? extends j>, j> csb;
+  private Map<Class<? extends j>, j> cEr;
   
   public r()
   {
-    AppMethodBeat.i(220418);
-    this.csb = new ConcurrentHashMap();
-    AppMethodBeat.o(220418);
+    AppMethodBeat.i(215555);
+    this.cEr = new ConcurrentHashMap();
+    AppMethodBeat.o(215555);
   }
   
-  public final <AddOn extends j> AddOn U(Class<AddOn> paramClass)
+  public final <AddOn extends j> AddOn X(Class<AddOn> paramClass)
   {
-    AppMethodBeat.i(220420);
-    j localj = (j)this.csb.get(paramClass);
+    AppMethodBeat.i(215557);
+    j localj = (j)this.cEr.get(paramClass);
     if ((localj != null) && (paramClass.isInstance(localj)))
     {
-      AppMethodBeat.o(220420);
+      AppMethodBeat.o(215557);
       return localj;
     }
-    AppMethodBeat.o(220420);
+    AppMethodBeat.o(215557);
     return null;
   }
   
   public final <AddOn extends j> void a(Class<AddOn> paramClass, AddOn paramAddOn)
   {
-    AppMethodBeat.i(220419);
+    AppMethodBeat.i(215556);
     if (paramAddOn == null)
     {
-      this.csb.remove(paramClass);
-      AppMethodBeat.o(220419);
+      this.cEr.remove(paramClass);
+      AppMethodBeat.o(215556);
       return;
     }
-    this.csb.put(paramClass, paramAddOn);
-    AppMethodBeat.o(220419);
+    this.cEr.put(paramClass, paramAddOn);
+    AppMethodBeat.o(215556);
   }
   
   public final String getName()

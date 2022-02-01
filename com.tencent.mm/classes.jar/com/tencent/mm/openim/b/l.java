@@ -1,50 +1,52 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.cgd;
-import com.tencent.mm.protocal.protobuf.cge;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.cwk;
+import com.tencent.mm.protocal.protobuf.cwl;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class l
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public k.b iKy;
+  private i callback;
+  public k.b jHe;
   private int opType;
-  private final com.tencent.mm.ak.b rr;
+  private final d rr;
   
   public l(k.b paramb)
   {
     AppMethodBeat.i(116859);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cgd();
-    ((b.a)localObject).hQG = new cge();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/openimoplog";
-    ((b.a)localObject).funcId = 806;
-    this.rr = ((b.a)localObject).aDS();
-    this.opType = paramb.vWm;
-    this.iKy = paramb;
-    ae.i("MicroMsg.Openim.NetSceneOpenIMOPLog", "type: %d", new Object[] { Integer.valueOf(this.opType) });
-    localObject = (cgd)this.rr.hQD.hQJ;
-    ((cgd)localObject).type = this.opType;
-    ((cgd)localObject).HsB = new com.tencent.mm.bw.b(paramb.getBuffer());
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new cwk();
+    ((d.a)localObject).iLO = new cwl();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/openimoplog";
+    ((d.a)localObject).funcId = 806;
+    this.rr = ((d.a)localObject).aXF();
+    this.opType = paramb.zqr;
+    this.jHe = paramb;
+    Log.i("MicroMsg.Openim.NetSceneOpenIMOPLog", "type: %d", new Object[] { Integer.valueOf(this.opType) });
+    localObject = (cwk)this.rr.iLK.iLR;
+    ((cwk)localObject).type = this.opType;
+    ((cwk)localObject).MBx = new b(paramb.getBuffer());
     AppMethodBeat.o(116859);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(116860);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(116860);
     return i;
   }
@@ -54,10 +56,10 @@ public final class l
     return 806;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(116861);
-    ae.i("MicroMsg.Openim.NetSceneOpenIMOPLog", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, opType:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.opType) });
+    Log.i("MicroMsg.Openim.NetSceneOpenIMOPLog", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, opType:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Integer.valueOf(this.opType) });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(116861);
   }

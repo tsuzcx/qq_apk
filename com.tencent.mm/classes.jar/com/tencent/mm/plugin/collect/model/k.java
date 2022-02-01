@@ -1,56 +1,56 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cxx;
-import com.tencent.mm.protocal.protobuf.cxy;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dqs;
+import com.tencent.mm.protocal.protobuf.dqt;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.r;
 
 public final class k
   extends r
 {
-  public cxy pha;
+  public dqt qwj;
   
   public k(String paramString, int paramInt)
   {
     AppMethodBeat.i(63825);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cxx();
-    ((b.a)localObject).hQG = new cxy();
-    ((b.a)localObject).funcId = 1800;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/scanf2fmaterialcode";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (cxx)this.rr.hQD.hQJ;
-    ((cxx)localObject).HIq = paramString;
-    ((cxx)localObject).scene = paramInt;
-    ae.i("MicroMsg.NetSceneF2fMaterial", "req url: %s, %s", new Object[] { paramString, Integer.valueOf(paramInt) });
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dqs();
+    ((d.a)localObject).iLO = new dqt();
+    ((d.a)localObject).funcId = 1800;
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/scanf2fmaterialcode";
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (dqs)this.rr.iLK.iLR;
+    ((dqs)localObject).MTB = paramString;
+    ((dqs)localObject).scene = paramInt;
+    Log.i("MicroMsg.NetSceneF2fMaterial", "req url: %s, %s", new Object[] { paramString, Integer.valueOf(paramInt) });
     AppMethodBeat.o(63825);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
     AppMethodBeat.i(63826);
-    this.pha = ((cxy)((b)paramq).hQE.hQJ);
-    ae.i("MicroMsg.NetSceneF2fMaterial", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.pha.dmy), this.pha.phe });
+    this.qwj = ((dqt)((d)params).iLL.iLR);
+    Log.i("MicroMsg.NetSceneF2fMaterial", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.qwj.dDN), this.qwj.qwn });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(63826);
   }
   
-  public final void e(q paramq)
+  public final void e(s params)
   {
-    paramq = (cxy)((b)paramq).hQE.hQJ;
-    this.LVj = paramq.dmy;
-    this.LVk = paramq.phe;
+    params = (dqt)((d)params).iLL.iLR;
+    this.RtZ = params.dDN;
+    this.Rua = params.qwn;
   }
   
   public final int getType()

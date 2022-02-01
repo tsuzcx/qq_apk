@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.ui.aa;
 
 public class TextButtonPreference
   extends Preference
@@ -24,7 +24,7 @@ public class TextButtonPreference
   
   public final int getLayoutResource()
   {
-    return 2131494808;
+    return 2131495542;
   }
   
   protected final void onBindView(View paramView)
@@ -44,7 +44,7 @@ public class TextButtonPreference
   {
     AppMethodBeat.i(142679);
     super.onCreateView(paramViewGroup);
-    paramViewGroup = z.jV(this.mContext).inflate(2131494808, paramViewGroup, false);
+    paramViewGroup = aa.jQ(this.mContext).inflate(2131495542, paramViewGroup, false);
     AppMethodBeat.o(142679);
     return paramViewGroup;
   }

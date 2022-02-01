@@ -4,178 +4,141 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class fl
-  extends cvw
+  extends dop
 {
-  public int FPb;
-  public int FPc;
-  public int FPd;
-  public long FPe;
-  public int FQb;
-  public int FQe;
-  public long FQh;
-  public String content;
-  public int oGc;
+  public int KIJ;
+  public int KIK;
+  public int KIL;
+  public long KIM;
+  public int offset;
+  public int pTI;
   public int scene;
   public String session_id;
-  public String title;
   public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(103199);
+    AppMethodBeat.i(103189);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        paramVarArgs.ni(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
       if (this.url != null) {
-        paramVarArgs.d(2, this.url);
+        paramVarArgs.e(2, this.url);
       }
-      if (this.content != null) {
-        paramVarArgs.d(4, this.content);
-      }
-      paramVarArgs.aZ(5, this.FQh);
-      paramVarArgs.aS(6, this.oGc);
-      paramVarArgs.aS(7, this.FQb);
-      if (this.title != null) {
-        paramVarArgs.d(8, this.title);
-      }
-      paramVarArgs.aS(9, this.scene);
-      paramVarArgs.aS(10, this.FPd);
-      paramVarArgs.aS(11, this.FPc);
-      paramVarArgs.aS(12, this.FPb);
+      paramVarArgs.aM(4, this.offset);
+      paramVarArgs.aM(6, this.pTI);
+      paramVarArgs.aM(7, this.scene);
+      paramVarArgs.aM(8, this.KIL);
+      paramVarArgs.aM(9, this.KIK);
+      paramVarArgs.aM(10, this.KIJ);
       if (this.session_id != null) {
-        paramVarArgs.d(13, this.session_id);
+        paramVarArgs.e(11, this.session_id);
       }
-      paramVarArgs.aZ(14, this.FPe);
-      paramVarArgs.aS(15, this.FQe);
-      AppMethodBeat.o(103199);
+      paramVarArgs.bb(12, this.KIM);
+      AppMethodBeat.o(103189);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label962;
+        break label750;
       }
     }
-    label962:
-    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label750:
+    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      paramInt = i;
+      int i = paramInt;
       if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.url);
+        i = paramInt + g.a.a.b.b.a.f(2, this.url);
       }
-      i = paramInt;
-      if (this.content != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.content);
-      }
-      i = i + f.a.a.b.b.a.p(5, this.FQh) + f.a.a.b.b.a.bz(6, this.oGc) + f.a.a.b.b.a.bz(7, this.FQb);
-      paramInt = i;
-      if (this.title != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.title);
-      }
-      i = paramInt + f.a.a.b.b.a.bz(9, this.scene) + f.a.a.b.b.a.bz(10, this.FPd) + f.a.a.b.b.a.bz(11, this.FPc) + f.a.a.b.b.a.bz(12, this.FPb);
+      i = i + g.a.a.b.b.a.bu(4, this.offset) + g.a.a.b.b.a.bu(6, this.pTI) + g.a.a.b.b.a.bu(7, this.scene) + g.a.a.b.b.a.bu(8, this.KIL) + g.a.a.b.b.a.bu(9, this.KIK) + g.a.a.b.b.a.bu(10, this.KIJ);
       paramInt = i;
       if (this.session_id != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.session_id);
+        paramInt = i + g.a.a.b.b.a.f(11, this.session_id);
       }
-      i = f.a.a.b.b.a.p(14, this.FPe);
-      int j = f.a.a.b.b.a.bz(15, this.FQe);
-      AppMethodBeat.o(103199);
-      return paramInt + i + j;
+      i = g.a.a.b.b.a.r(12, this.KIM);
+      AppMethodBeat.o(103189);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(103199);
+        AppMethodBeat.o(103189);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         fl localfl = (fl)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         case 3: 
+        case 5: 
         default: 
-          AppMethodBeat.o(103199);
+          AppMethodBeat.o(103189);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localfl.BaseRequest = ((jc)localObject1);
+            localObject1 = new jr();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localfl.BaseRequest = ((jr)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(103199);
+          AppMethodBeat.o(103189);
           return 0;
         case 2: 
-          localfl.url = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(103199);
+          localfl.url = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(103189);
           return 0;
         case 4: 
-          localfl.content = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 5: 
-          localfl.FQh = ((f.a.a.a.a)localObject1).OmT.zd();
-          AppMethodBeat.o(103199);
+          localfl.offset = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(103189);
           return 0;
         case 6: 
-          localfl.oGc = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(103199);
+          localfl.pTI = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(103189);
           return 0;
         case 7: 
-          localfl.FQb = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(103199);
+          localfl.scene = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(103189);
           return 0;
         case 8: 
-          localfl.title = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(103199);
+          localfl.KIL = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(103189);
           return 0;
         case 9: 
-          localfl.scene = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(103199);
+          localfl.KIK = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(103189);
           return 0;
         case 10: 
-          localfl.FPd = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(103199);
+          localfl.KIJ = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(103189);
           return 0;
         case 11: 
-          localfl.FPc = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 12: 
-          localfl.FPb = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 13: 
-          localfl.session_id = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(103199);
-          return 0;
-        case 14: 
-          localfl.FPe = ((f.a.a.a.a)localObject1).OmT.zd();
-          AppMethodBeat.o(103199);
+          localfl.session_id = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(103189);
           return 0;
         }
-        localfl.FQe = ((f.a.a.a.a)localObject1).OmT.zc();
-        AppMethodBeat.o(103199);
+        localfl.KIM = ((g.a.a.a.a)localObject1).UbS.zl();
+        AppMethodBeat.o(103189);
         return 0;
       }
-      AppMethodBeat.o(103199);
+      AppMethodBeat.o(103189);
       return -1;
     }
   }

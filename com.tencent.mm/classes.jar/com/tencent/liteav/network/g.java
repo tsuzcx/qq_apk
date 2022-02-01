@@ -2,7 +2,7 @@ package com.tencent.liteav.network;
 
 import android.content.Context;
 import android.os.Handler;
-import com.tencent.liteav.basic.e.b;
+import com.tencent.liteav.basic.d.c;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -21,21 +21,25 @@ import org.json.JSONTokener;
 
 public class g
 {
-  private String a;
-  private String b;
-  private int c;
+  private final int a;
+  private final int b;
+  private String c;
   private String d;
-  private Handler e;
+  private int e;
+  private String f;
+  private Handler g;
   
   public g(Context paramContext)
   {
     AppMethodBeat.i(15413);
-    this.a = "";
-    this.b = "";
-    this.c = 0;
+    this.a = 5;
+    this.b = 2;
+    this.c = "";
     this.d = "";
+    this.e = 0;
+    this.f = "";
     if (paramContext != null) {
-      this.e = new Handler(paramContext.getMainLooper());
+      this.g = new Handler(paramContext.getMainLooper());
     }
     AppMethodBeat.o(15413);
   }
@@ -84,16 +88,17 @@ public class g
       {
         AppMethodBeat.i(15454);
         final int j = -1;
-        Object localObject1 = "";
-        int n;
+        int m;
         int i;
         int k;
-        label83:
+        int n;
+        label82:
+        int i1;
+        Object localObject1;
         Object localObject3;
-        int m;
         if ((paramString2 != null) && (!paramString2.isEmpty()))
         {
-          n = Integer.valueOf(paramString2).intValue();
+          m = Integer.valueOf(paramString2).intValue();
           i = 5;
           if (!g.a(g.this, true, paramString2, paramString4, paramString3))
           {
@@ -101,11 +106,14 @@ public class g
             i = k;
             if (k <= 0)
             {
-              k = 1;
-              if (k > 0)
+              i = 1;
+              n = 1;
+              i1 = i + n;
+              localObject1 = "";
+              if (i1 > 0)
               {
                 localObject3 = localObject1;
-                m = j;
+                k = j;
               }
             }
           }
@@ -115,93 +123,96 @@ public class g
           Object localObject2;
           for (;;)
           {
-            Object localObject4;
             Object localObject5;
             Object localObject6;
             try
             {
               localObject4 = new JSONObject();
               localObject3 = localObject1;
-              m = j;
-              ((JSONObject)localObject4).put("bizid", n);
+              k = j;
+              ((JSONObject)localObject4).put("bizid", m);
               localObject3 = localObject1;
-              m = j;
+              k = j;
               ((JSONObject)localObject4).put("stream_id", paramString1);
               localObject3 = localObject1;
-              m = j;
+              k = j;
               ((JSONObject)localObject4).put("txSecret", paramString3);
               localObject3 = localObject1;
-              m = j;
+              k = j;
               ((JSONObject)localObject4).put("txTime", paramString4);
               localObject3 = localObject1;
-              m = j;
+              k = j;
               ((JSONObject)localObject4).put("type", 1);
               localObject3 = localObject1;
-              m = j;
-              localObject4 = ((JSONObject)localObject4).toString();
+              k = j;
+              localObject5 = ((JSONObject)localObject4).toString();
+              if (i1 <= n) {
+                break label1329;
+              }
+              localObject4 = "https://livepull.myqcloud.com/getpulladdr";
               localObject3 = localObject1;
-              m = j;
-              localObject5 = (HttpsURLConnection)new URL("https://livepull.myqcloud.com/getpulladdr").openConnection();
+              k = j;
+              localObject4 = (HttpsURLConnection)new URL((String)localObject4).openConnection();
               localObject3 = localObject1;
-              m = j;
-              ((HttpsURLConnection)localObject5).setDoOutput(true);
+              k = j;
+              ((HttpsURLConnection)localObject4).setDoOutput(true);
               localObject3 = localObject1;
-              m = j;
-              ((HttpsURLConnection)localObject5).setDoInput(true);
+              k = j;
+              ((HttpsURLConnection)localObject4).setDoInput(true);
               localObject3 = localObject1;
-              m = j;
-              ((HttpsURLConnection)localObject5).setUseCaches(false);
+              k = j;
+              ((HttpsURLConnection)localObject4).setUseCaches(false);
               localObject3 = localObject1;
-              m = j;
-              ((HttpsURLConnection)localObject5).setConnectTimeout(5000);
+              k = j;
+              ((HttpsURLConnection)localObject4).setConnectTimeout(5000);
               localObject3 = localObject1;
-              m = j;
-              ((HttpsURLConnection)localObject5).setReadTimeout(5000);
+              k = j;
+              ((HttpsURLConnection)localObject4).setReadTimeout(5000);
               localObject3 = localObject1;
-              m = j;
-              ((HttpsURLConnection)localObject5).setRequestMethod("POST");
+              k = j;
+              ((HttpsURLConnection)localObject4).setRequestMethod("POST");
               localObject3 = localObject1;
-              m = j;
-              ((HttpsURLConnection)localObject5).setRequestProperty("Charsert", "UTF-8");
+              k = j;
+              ((HttpsURLConnection)localObject4).setRequestProperty("Charsert", "UTF-8");
               localObject3 = localObject1;
-              m = j;
-              ((HttpsURLConnection)localObject5).setRequestProperty("Content-Type", "text/plain;");
+              k = j;
+              ((HttpsURLConnection)localObject4).setRequestProperty("Content-Type", "text/plain;");
               localObject3 = localObject1;
-              m = j;
-              ((HttpsURLConnection)localObject5).setRequestProperty("Content-Length", String.valueOf(((String)localObject4).length()));
+              k = j;
+              ((HttpsURLConnection)localObject4).setRequestProperty("Content-Length", String.valueOf(((String)localObject5).length()));
               localObject3 = localObject1;
-              m = j;
-              TXCLog.e("TXRTMPAccUrlFetcher", "getAccelerateStreamPlayUrl: sendHttpRequest[ " + (String)localObject4 + "] retryIndex = " + k);
+              k = j;
+              TXCLog.e("TXRTMPAccUrlFetcher", "getAccelerateStreamPlayUrl: sendHttpRequest[ " + (String)localObject5 + "] retryIndex = " + i1);
               localObject3 = localObject1;
-              m = j;
-              new DataOutputStream(((HttpsURLConnection)localObject5).getOutputStream()).write(((String)localObject4).getBytes());
+              k = j;
+              new DataOutputStream(((HttpsURLConnection)localObject4).getOutputStream()).write(((String)localObject5).getBytes());
               localObject3 = localObject1;
-              m = j;
-              localObject5 = new BufferedReader(new InputStreamReader(((HttpsURLConnection)localObject5).getInputStream()));
+              k = j;
+              localObject5 = new BufferedReader(new InputStreamReader(((HttpsURLConnection)localObject4).getInputStream()));
               localObject4 = "";
               localObject3 = localObject1;
-              m = j;
+              k = j;
               localObject6 = ((BufferedReader)localObject5).readLine();
               if (localObject6 != null)
               {
                 localObject3 = localObject1;
-                m = j;
+                k = j;
                 localObject4 = (String)localObject4 + (String)localObject6;
                 continue;
               }
               localObject3 = localObject1;
-              m = j;
+              k = j;
               TXCLog.e("TXRTMPAccUrlFetcher", "getAccelerateStreamPlayUrl: receive response, strResponse = ".concat(String.valueOf(localObject4)));
               localObject3 = localObject1;
-              m = j;
+              k = j;
               Object localObject7 = (JSONObject)new JSONTokener((String)localObject4).nextValue();
               i = j;
               localObject3 = localObject1;
-              m = j;
+              k = j;
               if (((JSONObject)localObject7).has("code"))
               {
                 localObject3 = localObject1;
-                m = j;
+                k = j;
                 i = ((JSONObject)localObject7).getInt("code");
               }
               localObject4 = localObject1;
@@ -209,57 +220,57 @@ public class g
               {
                 localObject4 = localObject1;
                 localObject3 = localObject1;
-                m = i;
+                k = i;
                 if (((JSONObject)localObject7).has("message"))
                 {
                   localObject3 = localObject1;
-                  m = i;
+                  k = i;
                   localObject4 = ((JSONObject)localObject7).getString("message");
                 }
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 TXCLog.e("TXRTMPAccUrlFetcher", "getAccelerateStreamPlayUrl: errorCode = " + i + " errorMessage = " + (String)localObject4);
               }
               localObject3 = localObject4;
-              m = i;
+              k = i;
               localObject1 = localObject4;
               j = i;
               if (((JSONObject)localObject7).has("pull_addr"))
               {
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 localObject5 = new Vector();
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 localObject6 = new Vector();
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 localObject1 = ((JSONObject)localObject7).getJSONArray("pull_addr");
                 if (localObject1 != null)
                 {
                   localObject3 = localObject4;
-                  m = i;
+                  k = i;
                   if (((JSONArray)localObject1).length() != 0) {}
                 }
                 else
                 {
                   localObject3 = localObject4;
-                  m = i;
+                  k = i;
                   TXCLog.e("TXRTMPAccUrlFetcher", "getAccelerateStreamPlayUrl: no pull_addr");
                   localObject3 = localObject4;
-                  m = i;
+                  k = i;
                   if (paramInt != 1) {
-                    break label1105;
+                    break label1099;
                   }
                   localObject3 = localObject4;
-                  m = i;
+                  k = i;
                   localObject1 = localObject4;
                   j = i;
                   if (((Vector)localObject6).size() <= 0) {
-                    break label1091;
+                    break label1083;
                   }
                   localObject3 = localObject4;
-                  m = i;
+                  k = i;
                   g.b(g.this).post(new Runnable()
                   {
                     public void run()
@@ -276,82 +287,82 @@ public class g
                 }
                 j = 0;
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 if (j >= ((JSONArray)localObject1).length()) {
                   continue;
                 }
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 Object localObject8 = (JSONObject)((JSONArray)localObject1).get(j);
                 if (localObject8 == null) {
-                  break label1342;
+                  break label1337;
                 }
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 localObject7 = ((JSONObject)localObject8).getString("rtmp_url");
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 if (((JSONObject)localObject8).getInt("proto") != 1) {
-                  break label1349;
+                  break label1344;
                 }
                 bool = true;
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 TXCLog.e("TXRTMPAccUrlFetcher", "getAccelerateStreamPlayUrl: streamUrl = " + (String)localObject7 + " Q channel = " + bool);
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 localObject8 = TXCCommonUtil.getStreamIDByStreamUrl((String)localObject7);
                 if (localObject8 == null) {
-                  break label1342;
+                  break label1337;
                 }
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 if (!((String)localObject8).equalsIgnoreCase(paramString1)) {
-                  break label1342;
+                  break label1337;
                 }
                 if (bool)
                 {
                   localObject3 = localObject4;
-                  m = i;
+                  k = i;
                   ((Vector)localObject5).add(new e((String)localObject7, bool));
                 }
                 else
                 {
                   localObject3 = localObject4;
-                  m = i;
+                  k = i;
                   ((Vector)localObject6).add(new e((String)localObject7, bool));
                 }
               }
             }
             catch (Exception localException1)
             {
-              TXCLog.e("TXRTMPAccUrlFetcher", "getAccelerateStreamPlayUrl exception");
+              TXCLog.e("TXRTMPAccUrlFetcher", "getAccelerateStreamPlayUrl exception:" + localException1.toString());
+              j = k;
               localObject2 = localObject3;
-              j = m;
             }
             try
             {
-              label1091:
-              label1105:
+              label1083:
+              label1099:
               do
               {
                 do
                 {
                   sleep(1000L, 0);
-                  k -= 1;
+                  i1 -= 1;
                   break;
                   localObject3 = localObject4;
-                  m = i;
+                  k = i;
                   if (paramInt != 2) {
-                    break label1176;
+                    break label1167;
                   }
                   localObject3 = localObject4;
-                  m = i;
+                  k = i;
                   localObject2 = localObject4;
                   j = i;
                 } while (((Vector)localObject5).size() <= 0);
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 g.b(g.this).post(new Runnable()
                 {
                   public void run()
@@ -366,27 +377,27 @@ public class g
                 AppMethodBeat.o(15454);
                 return;
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 localObject2 = ((Vector)localObject6).iterator();
                 for (;;)
                 {
                   localObject3 = localObject4;
-                  m = i;
+                  k = i;
                   if (!((Iterator)localObject2).hasNext()) {
                     break;
                   }
                   localObject3 = localObject4;
-                  m = i;
+                  k = i;
                   ((Vector)localObject5).add((e)((Iterator)localObject2).next());
                 }
                 localObject3 = localObject4;
-                m = i;
+                k = i;
                 localObject2 = localObject4;
                 j = i;
               } while (((Vector)localObject5).size() <= 0);
-              label1176:
+              label1167:
               localObject3 = localObject4;
-              m = i;
+              k = i;
               g.b(g.this).post(new Runnable()
               {
                 public void run()
@@ -422,14 +433,17 @@ public class g
           });
           AppMethodBeat.o(15454);
           return;
-          k = i;
-          break label83;
-          n = 0;
+          n = 2;
+          break label82;
+          m = 0;
           break;
-          label1342:
+          label1329:
+          Object localObject4 = "https://livepullipv6.myqcloud.com/getpulladdr";
+          continue;
+          label1337:
           j += 1;
           continue;
-          label1349:
+          label1344:
           boolean bool = false;
         }
       }
@@ -462,7 +476,7 @@ public class g
   private long e()
   {
     AppMethodBeat.i(15416);
-    long l = b.a().a("Network", "AccRetryCountWithoutSecret");
+    long l = c.a().a("Network", "AccRetryCountWithoutSecret");
     AppMethodBeat.o(15416);
     return l;
   }
@@ -470,10 +484,10 @@ public class g
   public int a(final String paramString, int paramInt, final a parama)
   {
     AppMethodBeat.i(15414);
-    this.a = "";
-    this.b = "";
-    this.c = 0;
+    this.c = "";
     this.d = "";
+    this.e = 0;
+    this.f = "";
     if ((paramString == null) || (paramString.isEmpty()))
     {
       AppMethodBeat.o(15414);
@@ -546,22 +560,22 @@ public class g
   
   public String a()
   {
-    return this.a;
+    return this.c;
   }
   
   public String b()
   {
-    return this.b;
+    return this.d;
   }
   
   public int c()
   {
-    return this.c;
+    return this.e;
   }
   
   public String d()
   {
-    return this.d;
+    return this.f;
   }
   
   public static abstract interface a
@@ -571,7 +585,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.network.g
  * JD-Core Version:    0.7.0.1
  */

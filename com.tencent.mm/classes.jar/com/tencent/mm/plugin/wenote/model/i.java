@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.wenote.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 
 public final class i
 {
-  private static final f<Integer, com.tencent.mm.protocal.b.a.c> fVO;
+  private static final f<Integer, com.tencent.mm.protocal.b.a.c> gAU;
   
   static
   {
     AppMethodBeat.i(30341);
-    fVO = new com.tencent.mm.memory.a.c(32);
+    gAU = new com.tencent.mm.memory.a.c(32);
     AppMethodBeat.o(30341);
   }
   
-  public static String aAc()
+  public static String aTk()
   {
     AppMethodBeat.i(30340);
-    bc.aCg();
-    String str = com.tencent.mm.model.c.aAc();
+    bg.aVF();
+    String str = com.tencent.mm.model.c.aTk();
     AppMethodBeat.o(30340);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.i
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import com.tencent.mm.plugin.appbrand.appcache.a.b.a.a;
 import com.tencent.mm.plugin.appbrand.appcache.a.b.c;
 import com.tencent.mm.pluginsdk.j.a.c.l;
 import com.tencent.mm.pluginsdk.j.a.c.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 
 public final class bt
 {
@@ -17,75 +17,75 @@ public final class bt
   {
     AppMethodBeat.i(90671);
     bt.class.getClassLoader();
-    j.vN("wechatzstd");
+    j.Ed("wechatzstd");
     AppMethodBeat.o(90671);
   }
   
   public static void a(bs parambs, ae.a parama)
   {
     AppMethodBeat.i(90668);
-    bh localbh = ((e)g.ab(e.class)).aYP();
+    bh localbh = ((e)g.af(e.class)).bub();
     if (localbh == null)
     {
-      bj.a(parambs.Fhz, parambs.appId, b.a.a.jMF, null);
+      bj.a(parambs.JYs, parambs.appId, b.a.a.kOJ, null);
       AppMethodBeat.o(90668);
       return;
     }
-    parama.aZY();
+    parama.bvp();
     boolean bool = a(parambs);
-    parama.fJ(bool);
-    ae.i("MicroMsg.AppBrand.ZstdLogic", "processZstd suc:%b", new Object[] { Boolean.valueOf(bool) });
+    parama.gF(bool);
+    Log.i("MicroMsg.AppBrand.ZstdLogic", "processZstd, appId:%s, success:%b", new Object[] { parambs.appId, Boolean.valueOf(bool) });
     if (bool)
     {
-      bj.a(parambs.Fhz, parambs.appId, parambs.bbp(), parambs.pkgVersion, parambs.duK, parama);
+      bj.a(parambs.JYs, parambs.appId, parambs.bwC(), parambs.pkgVersion, parambs.dMe, parama);
       AppMethodBeat.o(90668);
       return;
     }
-    o.deleteFile(parambs.bbp());
-    parama = localbh.a(parambs.appId, parambs.pkgVersion, parambs.duK, new String[] { "downloadURL" });
+    s.deleteFile(parambs.bwC());
+    parama = localbh.a(parambs.appId, parambs.pkgVersion, parambs.dMe, new String[] { "downloadURL" });
     if (parama == null)
     {
-      bj.a(parambs.Fhz, parambs.appId, b.a.a.jMF, null);
+      bj.a(parambs.JYs, parambs.appId, b.a.a.kOJ, null);
       AppMethodBeat.o(90668);
       return;
     }
-    bj.Ml(parambs.Fhz);
-    bj.b(parambs.appId, parambs.duK, parambs.pkgVersion, parama.field_downloadURL, parambs.jKw);
+    bj.Vu(parambs.JYs);
+    bj.c(parambs.appId, parambs.dMe, parambs.pkgVersion, parama.field_downloadURL, parambs.kMv);
     AppMethodBeat.o(90668);
   }
   
   public static void a(bs parambs, m paramm, ae.a parama)
   {
     AppMethodBeat.i(90669);
-    ae.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, request(%s %d)", new Object[] { parambs.appId, Integer.valueOf(parambs.pkgVersion) });
+    Log.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, request(%s %d)", new Object[] { parambs.appId, Integer.valueOf(parambs.pkgVersion) });
     parama.a(paramm);
-    paramm = ((e)g.ab(e.class)).aYP();
+    paramm = ((e)g.af(e.class)).bub();
     if (paramm == null)
     {
-      ae.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, before fallback full_pkg, nil storage");
-      bj.a(parambs.Fhz, parambs.appId, b.a.a.jMF, null);
+      Log.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, before fallback full_pkg, nil storage");
+      bj.a(parambs.JYs, parambs.appId, b.a.a.kOJ, null);
       AppMethodBeat.o(90669);
       return;
     }
-    bj.Ml(parambs.Fhz);
-    if ((parambs.jKw instanceof b.c))
+    bj.Vu(parambs.JYs);
+    if ((parambs.kMv instanceof b.c))
     {
-      ((b.c)parambs.jKw).bbr();
-      paramm = paramm.a(parambs.appId, parambs.pkgVersion, parambs.duK, new String[] { "downloadURL" });
+      ((b.c)parambs.kMv).bwE();
+      paramm = paramm.a(parambs.appId, parambs.pkgVersion, parambs.dMe, new String[] { "downloadURL" });
       if (paramm == null)
       {
-        ae.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, before fallback full_pkg, nil record(%s %d)", new Object[] { parambs.appId, Integer.valueOf(parambs.pkgVersion) });
+        Log.e("MicroMsg.AppBrand.ZstdLogic", "onZstdPkgDownloadFail, before fallback full_pkg, nil record(%s %d)", new Object[] { parambs.appId, Integer.valueOf(parambs.pkgVersion) });
         AppMethodBeat.o(90669);
       }
     }
     else
     {
-      parambs.jKw.a(parambs.appId, b.a.a.jMz, null);
+      parambs.kMv.a(parambs.appId, b.a.a.kOD, null);
       AppMethodBeat.o(90669);
       return;
     }
-    if (!bj.b(parambs.appId, parambs.duK, parambs.pkgVersion, paramm.field_downloadURL, parambs.jKw)) {
-      parambs.jKw.a(parambs.appId, b.a.a.jMF, null);
+    if (!bj.c(parambs.appId, parambs.dMe, parambs.pkgVersion, paramm.field_downloadURL, parambs.kMv)) {
+      parambs.kMv.a(parambs.appId, b.a.a.kOJ, null);
     }
     AppMethodBeat.o(90669);
   }
@@ -99,36 +99,36 @@ public final class bt
     //   5: aload_0
     //   6: invokevirtual 187	com/tencent/mm/plugin/appbrand/appcache/bs:getFilePath	()Ljava/lang/String;
     //   9: astore 5
-    //   11: new 189	com/tencent/mm/vfs/k
+    //   11: new 189	com/tencent/mm/vfs/o
     //   14: dup
     //   15: aload 5
-    //   17: invokespecial 191	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   17: invokespecial 191	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
     //   20: astore_2
     //   21: aload_2
-    //   22: invokevirtual 195	com/tencent/mm/vfs/k:exists	()Z
+    //   22: invokevirtual 195	com/tencent/mm/vfs/o:exists	()Z
     //   25: ifne +17 -> 42
     //   28: ldc 85
     //   30: ldc 197
-    //   32: invokestatic 164	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   32: invokestatic 164	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   35: ldc 184
     //   37: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   40: iconst_0
     //   41: ireturn
-    //   42: new 189	com/tencent/mm/vfs/k
+    //   42: new 189	com/tencent/mm/vfs/o
     //   45: dup
     //   46: aload_0
-    //   47: invokevirtual 102	com/tencent/mm/plugin/appbrand/appcache/bs:bbp	()Ljava/lang/String;
-    //   50: invokespecial 191	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   47: invokevirtual 102	com/tencent/mm/plugin/appbrand/appcache/bs:bwC	()Ljava/lang/String;
+    //   50: invokespecial 191	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
     //   53: astore_0
     //   54: aload_0
-    //   55: invokevirtual 195	com/tencent/mm/vfs/k:exists	()Z
+    //   55: invokevirtual 195	com/tencent/mm/vfs/o:exists	()Z
     //   58: ifeq +24 -> 82
     //   61: aload_0
-    //   62: invokevirtual 200	com/tencent/mm/vfs/k:delete	()Z
+    //   62: invokevirtual 200	com/tencent/mm/vfs/o:delete	()Z
     //   65: ifne +17 -> 82
     //   68: ldc 85
     //   70: ldc 202
-    //   72: invokestatic 164	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   72: invokestatic 164	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   75: ldc 184
     //   77: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   80: iconst_0
@@ -136,13 +136,13 @@ public final class bt
     //   82: new 204	com/tencent/mars/zstd/ZstdInputStream
     //   85: dup
     //   86: aload_2
-    //   87: getfield 208	com/tencent/mm/vfs/k:mUri	Landroid/net/Uri;
-    //   90: invokestatic 214	com/tencent/mm/vfs/w:B	(Landroid/net/Uri;)Ljava/lang/String;
-    //   93: invokestatic 218	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   87: getfield 208	com/tencent/mm/vfs/o:mUri	Landroid/net/Uri;
+    //   90: invokestatic 214	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
+    //   93: invokestatic 218	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   96: invokespecial 221	com/tencent/mars/zstd/ZstdInputStream:<init>	(Ljava/io/InputStream;)V
     //   99: astore_2
     //   100: aload_0
-    //   101: invokestatic 225	com/tencent/mm/vfs/o:aj	(Lcom/tencent/mm/vfs/k;)Ljava/io/OutputStream;
+    //   101: invokestatic 225	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
     //   104: astore_0
     //   105: aload_0
     //   106: astore 4
@@ -187,7 +187,7 @@ public final class bt
     //   170: iconst_0
     //   171: aload 5
     //   173: aastore
-    //   174: invokestatic 156	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   174: invokestatic 156	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   177: aload_0
     //   178: ifnull +7 -> 185
     //   181: aload_0
@@ -211,7 +211,7 @@ public final class bt
     //   212: aload_2
     //   213: astore_3
     //   214: aload 5
-    //   216: invokestatic 118	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
+    //   216: invokestatic 118	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
     //   219: pop
     //   220: aload_0
     //   221: ifnull +7 -> 228
@@ -320,7 +320,7 @@ public final class bt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bt
  * JD-Core Version:    0.7.0.1
  */

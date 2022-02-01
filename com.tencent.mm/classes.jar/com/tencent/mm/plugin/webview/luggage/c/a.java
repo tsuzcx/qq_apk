@@ -43,7 +43,7 @@ public final class a
     }
   }
   
-  public static void b(Window paramWindow, final boolean paramBoolean)
+  public static void c(Window paramWindow, final boolean paramBoolean)
   {
     AppMethodBeat.i(78761);
     if (paramBoolean)
@@ -57,7 +57,7 @@ public final class a
         {
           AppMethodBeat.i(78760);
           if ((paramAnonymousInt & 0x4) == 0) {
-            this.loq.getDecorView().setSystemUiVisibility(a.a(this.loq, paramBoolean));
+            this.muX.getDecorView().setSystemUiVisibility(a.a(this.muX, paramBoolean));
           }
           AppMethodBeat.o(78760);
         }

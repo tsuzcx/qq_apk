@@ -6,23 +6,23 @@ import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.d.b;
-import com.tencent.mm.ui.ao;
-import d.a.e;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.emoji.e.b;
+import com.tencent.mm.ui.ar;
+import kotlin.a.e;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"DEFAULT_STROKE_COLOR", "", "DEFAULT_TEXT_COLOR", "STROKE_COLORS", "", "getSTROKE_COLORS", "()[I", "TEXT_COLORS", "getTEXT_COLORS", "findStrokeColor", "textColor", "findTextColor", "isRedPackageScene", "", "scene", "waitUploading", "waitingMixing", "getIconNorColor", "Landroid/view/View;", "getIconSelColor", "getTextColor", "setSvgDrawable", "", "Landroid/widget/ImageView;", "resId", "color", "plugin-emojicapture_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"DEFAULT_STROKE_COLOR", "", "DEFAULT_TEXT_COLOR", "STROKE_COLORS", "", "getSTROKE_COLORS", "()[I", "TEXT_COLORS", "getTEXT_COLORS", "findStrokeColor", "textColor", "findTextColor", "isRedPackageScene", "", "scene", "waitUploading", "waitingMixing", "getIconNorColor", "Landroid/view/View;", "getIconSelColor", "getTextColor", "setSvgDrawable", "", "Landroid/widget/ImageView;", "resId", "color", "plugin-emojicapture_release"})
 public final class c
 {
-  private static final int[] qbk = { -1, -16777216, -314573, -12493, -4920114, -4724993, -144437 };
-  private static final int[] qbl = { -16777216, -1, -15616, -2724096, -16339626, -15954996, -298125 };
+  private static final int[] rsh = { -1, -16777216, -314573, -12493, -4920114, -4724993, -144437 };
+  private static final int[] rsi = { -16777216, -1, -15616, -2724096, -16339626, -15954996, -298125 };
   
-  public static final int CD(int paramInt)
+  public static final int Go(int paramInt)
   {
     int j = 1;
     AppMethodBeat.i(475);
-    Object localObject = qbk;
+    Object localObject = rsh;
     int i;
     if (localObject.length == 0)
     {
@@ -44,7 +44,7 @@ public final class c
       i = 0;
       break;
       i = localObject[0];
-      int m = e.P((int[])localObject);
+      int m = e.X((int[])localObject);
       k = i;
       if (m != 0)
       {
@@ -82,21 +82,21 @@ public final class c
     return -1;
   }
   
-  public static final int CE(int paramInt)
+  public static final int Gp(int paramInt)
   {
     AppMethodBeat.i(476);
-    paramInt = e.n(qbk, paramInt);
+    paramInt = e.n(rsh, paramInt);
     if (paramInt < 0)
     {
       AppMethodBeat.o(476);
       return -16777216;
     }
-    paramInt = qbl[paramInt];
+    paramInt = rsi[paramInt];
     AppMethodBeat.o(476);
     return paramInt;
   }
   
-  public static final boolean CF(int paramInt)
+  public static final boolean Gq(int paramInt)
   {
     switch (paramInt)
     {
@@ -106,10 +106,10 @@ public final class c
     return true;
   }
   
-  public static final boolean CG(int paramInt)
+  public static final boolean Gr(int paramInt)
   {
     AppMethodBeat.i(480);
-    if ((CF(paramInt)) && ((paramInt == 4) || (paramInt == 5)))
+    if ((Gq(paramInt)) && ((paramInt == 4) || (paramInt == 5)))
     {
       AppMethodBeat.o(480);
       return true;
@@ -122,38 +122,38 @@ public final class c
   {
     AppMethodBeat.i(479);
     p.h(paramImageView, "$this$setSvgDrawable");
-    paramImageView.setImageDrawable(ao.k(paramImageView.getContext(), paramInt1, paramInt2));
+    paramImageView.setImageDrawable(ar.m(paramImageView.getContext(), paramInt1, paramInt2));
     AppMethodBeat.o(479);
   }
   
-  public static final int[] clD()
+  public static final int[] cJF()
   {
-    return qbk;
+    return rsh;
   }
   
-  public static final int[] clE()
+  public static final int[] cJG()
   {
-    return qbl;
+    return rsi;
   }
   
-  public static final int dP(View paramView)
+  public static final int dH(View paramView)
   {
     AppMethodBeat.i(477);
     p.h(paramView, "$this$getIconSelColor");
     Context localContext = paramView.getContext();
     p.g(localContext, "context");
-    int i = localContext.getResources().getColor(b.cm(paramView.getContext()));
+    int i = localContext.getResources().getColor(b.cG(paramView.getContext()));
     AppMethodBeat.o(477);
     return i;
   }
   
-  public static final int dQ(View paramView)
+  public static final int dI(View paramView)
   {
     AppMethodBeat.i(478);
     p.h(paramView, "$this$getIconNorColor");
     paramView = paramView.getContext();
     p.g(paramView, "context");
-    int i = paramView.getResources().getColor(2131099732);
+    int i = paramView.getResources().getColor(2131099746);
     AppMethodBeat.o(478);
     return i;
   }

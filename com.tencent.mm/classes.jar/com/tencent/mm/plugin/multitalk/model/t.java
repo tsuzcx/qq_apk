@@ -1,270 +1,209 @@
 package com.tencent.mm.plugin.multitalk.model;
 
+import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.multitalk.ui.widget.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
-import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.multitalk.d.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.pb.common.b.a.a.a.as;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
+import kotlin.a.ae;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.o;
+import kotlin.s;
+import kotlin.x;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkScreenCastManager;", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastEventHandler;", "()V", "canReceiveScreenCast", "", "dispatchToPauseEvent", "Lkotlin/Function1;", "", "", "dispatchToStartEvent", "dispatchToStopEvent", "dispatcher", "", "", "mCurrenScreenCastList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "getMCurrenScreenCastList", "()Ljava/util/ArrayList;", "setMCurrenScreenCastList", "(Ljava/util/ArrayList;)V", "uiCallback", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "userStateMap", "Landroid/util/ArrayMap;", "close", "getCurrenScreenCastList", "getUserState", "wxUserName", "isCanReceiveScreenCast", "onSwitchVideoScreenSharingRsp", "rsp", "onVideoGroupMemberChange", "memberList", "", "Lcom/tencent/pb/common/network/protocol/nano/ProtocolContacts$VideoGroupMember;", "pauseScreenCast", "refreshScreenList", "registerUiCallback", "callback", "restartScreenCast", "resumeScreenCast", "startScreenCast", "stopScreenCast", "switchScreenCastState", "state", "Companion", "plugin-multitalk_release"})
 public final class t
+  implements h
 {
-  public static boolean Lm(int paramInt)
+  public static final t.a zNJ;
+  private final ArrayMap<String, Integer> zKT;
+  private i zNC;
+  public final boolean zND;
+  public ArrayList<String> zNE;
+  private final b<String, x> zNF;
+  private final b<String, x> zNG;
+  private final b<String, x> zNH;
+  private final Map<Integer, b<String, x>> zNI;
+  
+  static
   {
-    return (paramInt == 2) || (paramInt == 3);
+    AppMethodBeat.i(239633);
+    zNJ = new t.a((byte)0);
+    AppMethodBeat.o(239633);
   }
   
-  public static boolean Ln(int paramInt)
+  public t()
   {
-    return (paramInt == 1) || (paramInt == 3);
+    AppMethodBeat.i(239632);
+    this.zKT = new ArrayMap();
+    e locale = e.zZc;
+    this.zND = e.eqd();
+    this.zNF = ((b)new c(this));
+    this.zNG = ((b)new b(this));
+    this.zNH = ((b)new d(this));
+    this.zNI = ae.e(new o[] { s.U(Integer.valueOf(101), this.zNF), s.U(Integer.valueOf(102), this.zNG), s.U(Integer.valueOf(103), this.zNH) });
+    AppMethodBeat.o(239632);
   }
   
-  public static boolean c(i parami)
+  public static void Rk(int paramInt)
   {
-    return (parami == i.wvY) || (parami == i.wvZ) || (parami == i.wvW);
-  }
-  
-  public static a dtA()
-  {
-    AppMethodBeat.i(114589);
-    if (az.isWifi(ak.getContext()))
-    {
-      locala = a.wrZ;
-      AppMethodBeat.o(114589);
-      return locala;
+    AppMethodBeat.i(239625);
+    if (ac.eom() != null) {
+      q.Rj(paramInt);
     }
-    if (az.is4G(ak.getContext()))
-    {
-      locala = a.wsa;
-      AppMethodBeat.o(114589);
-      return locala;
-    }
-    if ((az.is3G(ak.getContext())) || (az.is2G(ak.getContext())))
-    {
-      locala = a.wsb;
-      AppMethodBeat.o(114589);
-      return locala;
-    }
-    a locala = a.wsc;
-    AppMethodBeat.o(114589);
-    return locala;
+    AppMethodBeat.o(239625);
   }
   
-  public static boolean dtB()
+  public final void Rd(int paramInt)
   {
-    AppMethodBeat.i(114590);
-    int i = ((Integer)g.ajR().ajA().get(am.a.IXO, Integer.valueOf(-1))).intValue();
-    long l = ((Long)g.ajR().ajA().get(am.a.IXP, Long.valueOf(-1L))).longValue();
-    if ((i > 0) && (l > 0L))
+    AppMethodBeat.i(239626);
+    Log.i("MicroMsg.MultiTalkScreenCastManager", String.valueOf(paramInt));
+    AppMethodBeat.o(239626);
+  }
+  
+  public final void a(i parami)
+  {
+    if (!this.zND) {
+      return;
+    }
+    this.zNC = parami;
+  }
+  
+  public final int aGj(String paramString)
+  {
+    AppMethodBeat.i(239629);
+    p.h(paramString, "wxUserName");
+    paramString = (Integer)this.zKT.get(paramString);
+    if (paramString != null)
     {
-      ae.i("MicroMsg.MultiTalkUtil", "checkMultiTalkAvailable, disableTime: %s, disableTimestamp: %s", new Object[] { Integer.valueOf(i), Long.valueOf(l) });
-      if (bu.aO(l) <= i * 1000)
+      int i = paramString.intValue();
+      AppMethodBeat.o(239629);
+      return i;
+    }
+    AppMethodBeat.o(239629);
+    return 100;
+  }
+  
+  public final void aGk(String paramString)
+  {
+    AppMethodBeat.i(239630);
+    i locali = this.zNC;
+    if (locali != null)
+    {
+      locali.aFD(paramString);
+      AppMethodBeat.o(239630);
+      return;
+    }
+    AppMethodBeat.o(239630);
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(239631);
+    this.zKT.clear();
+    this.zNC = null;
+    ArrayList localArrayList = this.zNE;
+    if (localArrayList != null) {
+      localArrayList.clear();
+    }
+    this.zNE = null;
+    AppMethodBeat.o(239631);
+  }
+  
+  public final ArrayList<String> enV()
+  {
+    AppMethodBeat.i(239628);
+    if (this.zNE != null)
+    {
+      localArrayList = this.zNE;
+      AppMethodBeat.o(239628);
+      return localArrayList;
+    }
+    ArrayList localArrayList = new ArrayList();
+    AppMethodBeat.o(239628);
+    return localArrayList;
+  }
+  
+  public final void fz(List<a.as> paramList)
+  {
+    AppMethodBeat.i(239627);
+    p.h(paramList, "memberList");
+    if (!this.zND)
+    {
+      AppMethodBeat.o(239627);
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    Log.i("MicroMsg.MultiTalkScreenCastManager", "memberList is ".concat(String.valueOf(paramList)));
+    Object localObject1 = (Iterable)paramList;
+    paramList = (Collection)new ArrayList();
+    localObject1 = ((Iterable)localObject1).iterator();
+    Object localObject2;
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = ((Iterator)localObject1).next();
+      if ((p.j(((a.as)localObject2).dLN, z.aTY()) ^ true)) {
+        paramList.add(localObject2);
+      }
+    }
+    paramList = ((Iterable)paramList).iterator();
+    while (paramList.hasNext())
+    {
+      localObject1 = (a.as)paramList.next();
+      localObject2 = (b)this.zNI.get(Integer.valueOf(((a.as)localObject1).RFm));
+      if (localObject2 != null)
       {
-        AppMethodBeat.o(114590);
-        return false;
+        String str = ((a.as)localObject1).dLN;
+        p.g(str, "it.wxUserName");
+        ((b)localObject2).invoke(str);
       }
-      g.ajR().ajA().set(am.a.IXO, Integer.valueOf(-1));
-      g.ajR().ajA().set(am.a.IXP, Long.valueOf(-1L));
-      AppMethodBeat.o(114590);
-      return true;
-    }
-    g.ajR().ajA().set(am.a.IXO, Integer.valueOf(-1));
-    g.ajR().ajA().set(am.a.IXP, Long.valueOf(-1L));
-    AppMethodBeat.o(114590);
-    return true;
-  }
-  
-  public static String dty()
-  {
-    AppMethodBeat.i(114585);
-    String str = k(z.dtK().wqU);
-    AppMethodBeat.o(114585);
-    return str;
-  }
-  
-  public static String dtz()
-  {
-    AppMethodBeat.i(114587);
-    String str = l(z.dtK().wqU);
-    AppMethodBeat.o(114587);
-    return str;
-  }
-  
-  public static String g(MultiTalkGroup paramMultiTalkGroup)
-  {
-    AppMethodBeat.i(114579);
-    if (paramMultiTalkGroup == null)
-    {
-      AppMethodBeat.o(114579);
-      return "";
-    }
-    StringBuffer localStringBuffer = new StringBuffer();
-    Object localObject = paramMultiTalkGroup.MgI;
-    localStringBuffer.append("->[usernamelist]");
-    if (localObject != null)
-    {
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)((Iterator)localObject).next();
-        localStringBuffer.append(localMultiTalkGroupMember.MgJ + "|");
-        localStringBuffer.append(localMultiTalkGroupMember.status + ", ");
+      if ((((a.as)localObject1).RFm == 101) || (((a.as)localObject1).RFm == 102)) {
+        localArrayList.add(((a.as)localObject1).dLN);
       }
     }
-    localStringBuffer.append(" ->createname:" + paramMultiTalkGroup.MgH);
-    localStringBuffer.append(" ->talkgroupId:" + paramMultiTalkGroup.wmz);
-    localStringBuffer.append(" ->wxGroupId:" + paramMultiTalkGroup.wmA);
-    paramMultiTalkGroup = localStringBuffer.toString();
-    AppMethodBeat.o(114579);
-    return paramMultiTalkGroup;
+    this.zNE = localArrayList;
+    AppMethodBeat.o(239627);
   }
   
-  public static boolean h(MultiTalkGroup paramMultiTalkGroup)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "wxUserName", "", "invoke"})
+  static final class b
+    extends kotlin.g.b.q
+    implements b<String, x>
   {
-    AppMethodBeat.i(114581);
-    if (paramMultiTalkGroup == null)
+    b(t paramt)
     {
-      AppMethodBeat.o(114581);
-      return false;
-    }
-    paramMultiTalkGroup = paramMultiTalkGroup.MgI.iterator();
-    int i = 0;
-    int j = 0;
-    while (paramMultiTalkGroup.hasNext())
-    {
-      MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)paramMultiTalkGroup.next();
-      if (localMultiTalkGroupMember.MgJ.equals(v.aAC()))
-      {
-        if (localMultiTalkGroupMember.status != 10) {
-          break label119;
-        }
-        if (i != 0)
-        {
-          AppMethodBeat.o(114581);
-          return true;
-        }
-        j = 1;
-      }
-      else
-      {
-        if (localMultiTalkGroupMember.status != 10) {
-          break label119;
-        }
-        if (j != 0)
-        {
-          AppMethodBeat.o(114581);
-          return true;
-        }
-        i = 1;
-      }
-    }
-    label119:
-    for (;;)
-    {
-      break;
-      AppMethodBeat.o(114581);
-      return false;
+      super();
     }
   }
   
-  public static boolean i(MultiTalkGroup paramMultiTalkGroup)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "wxUserName", "", "invoke"})
+  static final class c
+    extends kotlin.g.b.q
+    implements b<String, x>
   {
-    AppMethodBeat.i(190811);
-    paramMultiTalkGroup = paramMultiTalkGroup.MgI.iterator();
-    int i = 0;
-    if (paramMultiTalkGroup.hasNext())
+    c(t paramt)
     {
-      MultiTalkGroupMember localMultiTalkGroupMember = (MultiTalkGroupMember)paramMultiTalkGroup.next();
-      if ((localMultiTalkGroupMember.status != 10) && (localMultiTalkGroupMember.status != 1)) {
-        break label82;
-      }
-      i += 1;
-    }
-    label82:
-    for (;;)
-    {
-      break;
-      if (i > 1)
-      {
-        AppMethodBeat.o(190811);
-        return true;
-      }
-      AppMethodBeat.o(190811);
-      return false;
+      super();
     }
   }
   
-  public static boolean j(MultiTalkGroup paramMultiTalkGroup)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "wxUserName", "", "invoke"})
+  static final class d
+    extends kotlin.g.b.q
+    implements b<String, x>
   {
-    AppMethodBeat.i(114583);
-    boolean bool = paramMultiTalkGroup.MgH.equals(v.aAC());
-    AppMethodBeat.o(114583);
-    return bool;
-  }
-  
-  public static String k(MultiTalkGroup paramMultiTalkGroup)
-  {
-    AppMethodBeat.i(114584);
-    if (paramMultiTalkGroup == null)
+    d(t paramt)
     {
-      AppMethodBeat.o(114584);
-      return "";
+      super();
     }
-    String str2 = paramMultiTalkGroup.wmz;
-    String str1 = str2;
-    if (bu.isNullOrNil(str2)) {
-      str1 = paramMultiTalkGroup.MgG;
-    }
-    paramMultiTalkGroup = bu.bI(str1, "");
-    AppMethodBeat.o(114584);
-    return paramMultiTalkGroup;
-  }
-  
-  public static String l(MultiTalkGroup paramMultiTalkGroup)
-  {
-    AppMethodBeat.i(114586);
-    String str = null;
-    int i = 0;
-    if (i < paramMultiTalkGroup.MgI.size())
-    {
-      if (!((MultiTalkGroupMember)paramMultiTalkGroup.MgI.get(i)).MgJ.equals(v.aAC())) {
-        break label80;
-      }
-      str = ((MultiTalkGroupMember)paramMultiTalkGroup.MgI.get(i)).MgK;
-    }
-    label80:
-    for (;;)
-    {
-      i += 1;
-      break;
-      AppMethodBeat.o(114586);
-      return str;
-    }
-  }
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(114578);
-      wrZ = new a("WIFI", 0);
-      wsa = new a("_4G", 1);
-      wsb = new a("_3GOr_2G", 2);
-      wsc = new a("None", 3);
-      wsd = new a[] { wrZ, wsa, wsb, wsc };
-      AppMethodBeat.o(114578);
-    }
-    
-    private a() {}
   }
 }
 

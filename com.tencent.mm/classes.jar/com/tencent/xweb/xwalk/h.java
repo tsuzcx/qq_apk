@@ -11,16 +11,16 @@ import org.xwalk.core.XWalkView;
 public final class h
   implements e
 {
-  m MTQ;
-  o MTR;
-  XWalkView MTS;
+  m SGX;
+  o SGY;
+  XWalkView SGZ;
   
   public h(XWalkView paramXWalkView)
   {
     AppMethodBeat.i(154285);
-    this.MTS = paramXWalkView;
-    this.MTQ = new m(paramXWalkView);
-    this.MTR = new o(paramXWalkView);
+    this.SGZ = paramXWalkView;
+    this.SGX = new m(paramXWalkView);
+    this.SGY = new o(paramXWalkView);
     AppMethodBeat.o(154285);
   }
   
@@ -29,7 +29,7 @@ public final class h
     AppMethodBeat.i(154289);
     if ((paramJsResult instanceof g.c))
     {
-      boolean bool = this.MTQ.b(this.MTS, paramString1, paramString2, ((g.c)paramJsResult).MTM);
+      boolean bool = this.SGX.b(this.SGZ, paramString1, paramString2, ((g.c)paramJsResult).SGT);
       AppMethodBeat.o(154289);
       return bool;
     }
@@ -42,7 +42,7 @@ public final class h
     AppMethodBeat.i(154291);
     if ((paramo instanceof g.e))
     {
-      boolean bool = this.MTQ.a(this.MTS, paramString1, paramString2, paramString3, ((g.e)paramo).MTM);
+      boolean bool = this.SGX.a(this.SGZ, paramString1, paramString2, paramString3, ((g.e)paramo).SGT);
       AppMethodBeat.o(154291);
       return bool;
     }
@@ -55,7 +55,7 @@ public final class h
     AppMethodBeat.i(154290);
     if ((paramJsResult instanceof g.c))
     {
-      boolean bool = this.MTQ.a(this.MTS, paramString1, paramString2, ((g.c)paramJsResult).MTM);
+      boolean bool = this.SGX.a(this.SGZ, paramString1, paramString2, ((g.c)paramJsResult).SGT);
       AppMethodBeat.o(154290);
       return bool;
     }
@@ -66,7 +66,7 @@ public final class h
   public final void onHideCustomView()
   {
     AppMethodBeat.i(154288);
-    this.MTQ.gho();
+    this.SGX.huJ();
     AppMethodBeat.o(154288);
   }
   
@@ -74,7 +74,7 @@ public final class h
   {
     AppMethodBeat.i(154287);
     if ((paramCustomViewCallback instanceof g.a)) {
-      this.MTQ.a(paramView, ((g.a)paramCustomViewCallback).MTK);
+      this.SGX.a(paramView, ((g.a)paramCustomViewCallback).SGR);
     }
     AppMethodBeat.o(154287);
   }
@@ -82,13 +82,13 @@ public final class h
   public final void y(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(154286);
-    this.MTQ.a(this.MTS, paramString);
+    this.SGX.a(this.SGZ, paramString);
     AppMethodBeat.o(154286);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.xwalk.h
  * JD-Core Version:    0.7.0.1
  */

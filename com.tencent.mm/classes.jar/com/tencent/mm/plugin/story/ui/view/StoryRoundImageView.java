@@ -8,15 +8,15 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/StoryRoundImageView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "round", "getRound", "()I", "setRound", "(I)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/StoryRoundImageView;", "Landroid/widget/ImageView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "round", "getRound", "()I", "setRound", "(I)V", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-story_release"})
 public final class StoryRoundImageView
   extends ImageView
 {
-  private final RectF ciS;
-  private int hej;
-  private final Path lP;
+  private int cSo;
+  private final RectF cuN;
+  private final Path lR;
   
   public StoryRoundImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,26 +29,26 @@ public final class StoryRoundImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120303);
-    this.ciS = new RectF();
-    this.lP = new Path();
+    this.cuN = new RectF();
+    this.lR = new Path();
     AppMethodBeat.o(120303);
   }
   
   public final int getRound()
   {
-    return this.hej;
+    return this.cSo;
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(120301);
-    this.ciS.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
-    this.lP.addRoundRect(this.ciS, this.hej, this.hej, Path.Direction.CW);
+    this.cuN.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+    this.lR.addRoundRect(this.cuN, this.cSo, this.cSo, Path.Direction.CW);
     if (paramCanvas != null) {
       paramCanvas.save();
     }
     if (paramCanvas != null) {
-      paramCanvas.clipPath(this.lP);
+      paramCanvas.clipPath(this.lR);
     }
     super.onDraw(paramCanvas);
     if (paramCanvas != null)
@@ -62,12 +62,12 @@ public final class StoryRoundImageView
   
   public final void setRound(int paramInt)
   {
-    this.hej = paramInt;
+    this.cSo = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.view.StoryRoundImageView
  * JD-Core Version:    0.7.0.1
  */

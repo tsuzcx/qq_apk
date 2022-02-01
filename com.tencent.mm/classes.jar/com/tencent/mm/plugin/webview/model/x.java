@@ -1,63 +1,61 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.bqp;
-import com.tencent.mm.protocal.protobuf.bsm;
-import com.tencent.mm.protocal.protobuf.bsn;
-import com.tencent.mm.protocal.protobuf.bte;
-import com.tencent.mm.protocal.protobuf.btf;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cdi;
+import com.tencent.mm.protocal.protobuf.cfg;
+import com.tencent.mm.protocal.protobuf.cfh;
+import com.tencent.mm.protocal.protobuf.cfx;
+import com.tencent.mm.protocal.protobuf.cfy;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class x
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b rr;
+  private i callback;
+  private final com.tencent.mm.ak.d rr;
   
-  public x(List<btf> paramList)
+  public x(List<cfy> paramList)
   {
     AppMethodBeat.i(78909);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bsm();
-    ((b.a)localObject).hQG = new bsn();
-    ((b.a)localObject).uri = "/cgi-bin/mmux-bin/jslog";
-    ((b.a)localObject).funcId = 1803;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bsm)this.rr.hQD.hQJ;
-    bte localbte = new bte();
-    localbte.gvo = d.FFC;
-    localbte.gvp = d.FFB;
-    localbte.gvq = d.FFE;
-    localbte.gvr = d.FFF;
-    localbte.gvs = ad.fom();
-    localbte.GKM = ((int)(System.currentTimeMillis() / 1000L));
-    ((bsm)localObject).FMV = localbte;
-    ((bsm)localObject).FMW.addAll(paramList);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new cfg();
+    ((d.a)localObject).iLO = new cfh();
+    ((d.a)localObject).uri = "/cgi-bin/mmux-bin/jslog";
+    ((d.a)localObject).funcId = 1803;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (cfg)this.rr.iLK.iLR;
+    cfx localcfx = new cfx();
+    localcfx.hid = com.tencent.mm.protocal.d.KyJ;
+    localcfx.hie = com.tencent.mm.protocal.d.KyI;
+    localcfx.hif = com.tencent.mm.protocal.d.KyL;
+    localcfx.hig = com.tencent.mm.protocal.d.KyM;
+    localcfx.hih = LocaleUtil.getApplicationLanguage();
+    localcfx.LOF = ((int)(System.currentTimeMillis() / 1000L));
+    ((cfg)localObject).KGA = localcfx;
+    ((cfg)localObject).KGB.addAll(paramList);
     AppMethodBeat.o(78909);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(78911);
-    this.callback = paramf;
-    ae.d("MicroMsg.NetSceneJsLog", "doScene");
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    Log.d("MicroMsg.NetSceneJsLog", "doScene");
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(78911);
     return i;
   }
@@ -67,16 +65,16 @@ public final class x
     return 1803;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(78910);
-    ae.i("MicroMsg.NetSceneJsLog", "onGYNetEnd, netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    Log.i("MicroMsg.NetSceneJsLog", "onGYNetEnd, netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (bsn)((b)paramq).hQE.hQJ;
-      ae.i("MicroMsg.NetSceneJsLog", "received InvalidLogList: ");
+      params = (cfh)((com.tencent.mm.ak.d)params).iLL.iLR;
+      Log.i("MicroMsg.NetSceneJsLog", "received InvalidLogList: ");
       paramArrayOfByte = new StringBuilder("{ ");
-      if (!bu.ht(paramq.Hgk)) {
+      if (!Util.isNullOrNil(params.Mlt)) {
         break label165;
       }
       paramArrayOfByte.append("{  }");
@@ -84,18 +82,18 @@ public final class x
     for (;;)
     {
       paramArrayOfByte.append(" }");
-      ae.i("MicroMsg.NetSceneJsLog", paramArrayOfByte.toString());
-      h.a.eTH();
-      h.hd(paramq.Hgk);
+      Log.i("MicroMsg.NetSceneJsLog", paramArrayOfByte.toString());
+      h.a.gcu();
+      h.ii(params.Mlt);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(78910);
       return;
       label165:
-      Iterator localIterator = paramq.Hgk.iterator();
+      Iterator localIterator = params.Mlt.iterator();
       while (localIterator.hasNext())
       {
-        bqp localbqp = (bqp)localIterator.next();
-        paramArrayOfByte.append(String.format(" { logId(%d), interval(%d) },", new Object[] { Integer.valueOf(localbqp.HdZ), Integer.valueOf(localbqp.Hea) }));
+        cdi localcdi = (cdi)localIterator.next();
+        paramArrayOfByte.append(String.format(" { logId(%d), interval(%d) },", new Object[] { Integer.valueOf(localcdi.Mjf), Integer.valueOf(localcdi.Mjg) }));
       }
     }
   }

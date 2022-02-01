@@ -14,42 +14,42 @@ import android.widget.ListAdapter;
 final class i
   implements DialogInterface.OnClickListener, DialogInterface.OnDismissListener, DialogInterface.OnKeyListener, o.a
 {
-  h aaD;
-  private o.a afu;
-  b agy;
-  f agz;
+  h aaQ;
+  private o.a afH;
+  b agL;
+  f agM;
   
   public i(h paramh)
   {
-    this.aaD = paramh;
+    this.aaQ = paramh;
   }
   
   public final void a(h paramh, boolean paramBoolean)
   {
-    if (((paramBoolean) || (paramh == this.aaD)) && (this.agy != null)) {
-      this.agy.dismiss();
+    if (((paramBoolean) || (paramh == this.aaQ)) && (this.agL != null)) {
+      this.agL.dismiss();
     }
-    if (this.afu != null) {
-      this.afu.a(paramh, paramBoolean);
+    if (this.afH != null) {
+      this.afH.a(paramh, paramBoolean);
     }
   }
   
   public final boolean d(h paramh)
   {
-    if (this.afu != null) {
-      return this.afu.d(paramh);
+    if (this.afH != null) {
+      return this.afH.d(paramh);
     }
     return false;
   }
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.aaD.a((j)this.agz.getAdapter().getItem(paramInt), null, 0);
+    this.aaQ.a((j)this.agM.getAdapter().getItem(paramInt), null, 0);
   }
   
   public final void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.agz.a(this.aaD, true);
+    this.agM.a(this.aaQ, true);
   }
   
   public final boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
@@ -57,7 +57,7 @@ final class i
     if ((paramInt == 82) || (paramInt == 4)) {
       if ((paramKeyEvent.getAction() == 0) && (paramKeyEvent.getRepeatCount() == 0))
       {
-        paramDialogInterface = this.agy.getWindow();
+        paramDialogInterface = this.agL.getWindow();
         if (paramDialogInterface != null)
         {
           paramDialogInterface = paramDialogInterface.getDecorView();
@@ -74,7 +74,7 @@ final class i
       }
       else if ((paramKeyEvent.getAction() == 1) && (!paramKeyEvent.isCanceled()))
       {
-        Object localObject = this.agy.getWindow();
+        Object localObject = this.agL.getWindow();
         if (localObject != null)
         {
           localObject = ((Window)localObject).getDecorView();
@@ -83,7 +83,7 @@ final class i
             localObject = ((View)localObject).getKeyDispatcherState();
             if ((localObject != null) && (((KeyEvent.DispatcherState)localObject).isTracking(paramKeyEvent)))
             {
-              this.aaD.ab(true);
+              this.aaQ.aa(true);
               paramDialogInterface.dismiss();
               return true;
             }
@@ -91,7 +91,7 @@ final class i
         }
       }
     }
-    return this.aaD.performShortcut(paramInt, paramKeyEvent, 0);
+    return this.aaQ.performShortcut(paramInt, paramKeyEvent, 0);
   }
 }
 

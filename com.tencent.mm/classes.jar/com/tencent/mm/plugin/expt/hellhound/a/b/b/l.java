@@ -1,247 +1,144 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.b;
 
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.l;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.v;
-import java.lang.reflect.Field;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.a.c;
+import com.tencent.mm.hellhoundlib.b.b;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.t;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback;", "", "()V", "hasMore_Field", "Ljava/lang/reflect/Field;", "incrementList_Field", "isNeedClear_Field", "lastBuffer_Field", "pullType_Field", "getArgsOnFetchDone", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "args", "", "([Ljava/lang/Object;)Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "startMonitor", "", "ArgsOnFetchDone", "Companion", "FinderPullType", "plugin-expt_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback;", "", "()V", "mItemDecorationListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mItemDecorationListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mItemDecorationListener$1;", "mMethodMap", "Ljava/util/HashMap;", "", "Landroid/util/Pair;", "", "mRecyclerListener", "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1;", "mRecyclerViewRef", "Ljava/lang/ref/WeakReference;", "Landroid/support/v7/widget/RecyclerView;", "illegalPage", "", "pageName", "monitor", "", "needNotRun", "className", "unmonitor", "Companion", "plugin-expt_release"})
 public final class l
 {
-  public static final b reS;
-  private Field reN;
-  private Field reO;
-  private Field reP;
-  private Field reQ;
-  private Field reR;
+  public static final l.a sGb;
+  WeakReference<RecyclerView> sCb;
+  final HashMap<String, Pair<String, List<Pair<String, String>>>> sEh;
+  final b sFZ;
+  final c sGa;
   
   static
   {
-    AppMethodBeat.i(196524);
-    reS = new b((byte)0);
-    AppMethodBeat.o(196524);
+    AppMethodBeat.i(221004);
+    sGb = new l.a((byte)0);
+    AppMethodBeat.o(221004);
   }
   
   public l()
   {
-    AppMethodBeat.i(196523);
-    try
-    {
-      Object localObject = Class.forName("com.tencent.mm.plugin.finder.feed.model.internal.IResponse");
-      Field localField = ((Class)localObject).getDeclaredField("incrementList");
-      p.g(localField, "clazz.getDeclaredField(\"incrementList\")");
-      this.reN = localField;
-      localField = this.reN;
-      if (localField == null) {
-        p.bdF("incrementList_Field");
-      }
-      localField.setAccessible(true);
-      localField = ((Class)localObject).getDeclaredField("lastBuffer");
-      p.g(localField, "clazz.getDeclaredField(\"lastBuffer\")");
-      this.reO = localField;
-      localField = this.reO;
-      if (localField == null) {
-        p.bdF("lastBuffer_Field");
-      }
-      localField.setAccessible(true);
-      localField = ((Class)localObject).getDeclaredField("pullType");
-      p.g(localField, "clazz.getDeclaredField(\"pullType\")");
-      this.reP = localField;
-      localField = this.reP;
-      if (localField == null) {
-        p.bdF("pullType_Field");
-      }
-      localField.setAccessible(true);
-      localField = ((Class)localObject).getDeclaredField("hasMore");
-      p.g(localField, "clazz.getDeclaredField(\"hasMore\")");
-      this.reQ = localField;
-      localField = this.reQ;
-      if (localField == null) {
-        p.bdF("hasMore_Field");
-      }
-      localField.setAccessible(true);
-      localObject = ((Class)localObject).getDeclaredField("isNeedClear");
-      p.g(localObject, "clazz.getDeclaredField(\"isNeedClear\")");
-      this.reR = ((Field)localObject);
-      localObject = this.reR;
-      if (localObject == null) {
-        p.bdF("isNeedClear_Field");
-      }
-      ((Field)localObject).setAccessible(true);
-      AppMethodBeat.o(196523);
-      return;
+    AppMethodBeat.i(221003);
+    this.sEh = new HashMap();
+    Object localObject = (List)new ArrayList();
+    ((List)localObject).add(new Pair("getItemOffsets", "(Landroid/graphics/Rect;Landroid/view/View;Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$State;)V"));
+    ((List)localObject).add(new Pair("onDrawOver", "(Landroid/graphics/Canvas;Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$State;)V"));
+    ((Map)this.sEh).put("com/tencent/mm/plugin/finder/feed/FinderTimelineMachineViewCallback$SpacesItemDecoration", new Pair("android/support/v7/widget/RecyclerView$ItemDecoration", localObject));
+    ((Map)this.sEh).put("com/tencent/mm/plugin/finder/search/FinderMixSearchViewCallback$SpacesItemDecoration", new Pair("android/support/v7/widget/RecyclerView$ItemDecoration", localObject));
+    ((Map)this.sEh).put("com/tencent/mm/plugin/finder/storage/FinderStaggeredConfig$getItemDecoration$", new Pair("android/support/v7/widget/RecyclerView$ItemDecoration", localObject));
+    localObject = this.sCb;
+    if (localObject != null) {
+      ((WeakReference)localObject).clear();
     }
-    catch (Exception localException)
-    {
-      ae.printErrStackTrace("HABBYGE-MALI.RefreshLoadMoreCallback", (Throwable)localException, "init crash: " + localException.getMessage(), new Object[0]);
-      AppMethodBeat.o(196523);
-    }
+    this.sFZ = new b(this);
+    this.sGa = new c();
+    AppMethodBeat.o(221003);
   }
   
-  public final a p(Object[] paramArrayOfObject)
+  static boolean apW(String paramString)
   {
-    AppMethodBeat.i(196522);
-    p.h(paramArrayOfObject, "args");
-    Object localObject1 = paramArrayOfObject[0];
-    try
+    AppMethodBeat.i(221002);
+    if (((p.j("com.tencent.mm.plugin.finder.ui.FinderTimelineMachineUI", paramString) ^ true)) && ((p.j("com.tencent.mm.plugin.finder.search.FinderMixSearchUI", paramString) ^ true)) && ((p.j("com.tencent.mm.plugin.finder.feed.ui.FinderFavFeedUI", paramString) ^ true)))
     {
-      paramArrayOfObject = this.reN;
-      if (paramArrayOfObject == null) {
-        p.bdF("incrementList_Field");
-      }
-      paramArrayOfObject = paramArrayOfObject.get(localObject1);
-      if (paramArrayOfObject == null)
-      {
-        paramArrayOfObject = new v("null cannot be cast to non-null type kotlin.collections.List<*>");
-        AppMethodBeat.o(196522);
-        throw paramArrayOfObject;
-      }
+      AppMethodBeat.o(221002);
+      return true;
     }
-    catch (Exception paramArrayOfObject)
-    {
-      ae.printErrStackTrace("HABBYGE-MALI.RefreshLoadMoreCallback", (Throwable)paramArrayOfObject, "getArgsOnFetchDone crash: " + paramArrayOfObject.getMessage(), new Object[0]);
-      AppMethodBeat.o(196522);
-      return null;
-    }
-    List localList = (List)paramArrayOfObject;
-    paramArrayOfObject = this.reO;
-    if (paramArrayOfObject == null) {
-      p.bdF("lastBuffer_Field");
-    }
-    paramArrayOfObject = paramArrayOfObject.get(localObject1);
-    if (paramArrayOfObject == null) {}
-    for (paramArrayOfObject = null;; paramArrayOfObject = (b)paramArrayOfObject)
-    {
-      localObject2 = this.reP;
-      if (localObject2 == null) {
-        p.bdF("pullType_Field");
-      }
-      localObject2 = ((Field)localObject2).get(localObject1);
-      if (localObject2 != null) {
-        break;
-      }
-      paramArrayOfObject = new v("null cannot be cast to non-null type kotlin.Int");
-      AppMethodBeat.o(196522);
-      throw paramArrayOfObject;
-    }
-    int i = ((Integer)localObject2).intValue();
-    Object localObject2 = this.reQ;
-    if (localObject2 == null) {
-      p.bdF("hasMore_Field");
-    }
-    localObject2 = ((Field)localObject2).get(localObject1);
-    if (localObject2 == null)
-    {
-      paramArrayOfObject = new v("null cannot be cast to non-null type kotlin.Boolean");
-      AppMethodBeat.o(196522);
-      throw paramArrayOfObject;
-    }
-    boolean bool = ((Boolean)localObject2).booleanValue();
-    localObject2 = this.reR;
-    if (localObject2 == null) {
-      p.bdF("isNeedClear_Field");
-    }
-    localObject1 = ((Field)localObject2).get(localObject1);
-    if (localObject1 == null)
-    {
-      paramArrayOfObject = new v("null cannot be cast to non-null type kotlin.Boolean");
-      AppMethodBeat.o(196522);
-      throw paramArrayOfObject;
-    }
-    paramArrayOfObject = new a(localList, paramArrayOfObject, i, bool, ((Boolean)localObject1).booleanValue());
-    AppMethodBeat.o(196522);
-    return paramArrayOfObject;
+    AppMethodBeat.o(221002);
+    return false;
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$ArgsOnFetchDone;", "", "incrementList", "", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "pullType", "", "hasMore", "", "isNeedClear", "(Ljava/util/List;Lcom/tencent/mm/protobuf/ByteString;IZZ)V", "getHasMore", "()Z", "setHasMore", "(Z)V", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "setNeedClear", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "getPullType", "()I", "setPullType", "(I)V", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-expt_release"})
-  public static final class a
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mItemDecorationListener$1", "Lcom/tencent/mm/hellhoundlib/method/IHellMethodMonitorCallback;", "runOnEnter", "", "className", "", "methodName", "methodDec", "caller", "", "args", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Object;[Ljava/lang/Object;)V", "runOnExit", "retVal", "plugin-expt_release"})
+  public static final class b
+    implements c
   {
-    private boolean hasMore;
-    public List<?> incrementList;
-    private boolean isNeedClear;
-    private b lastBuffer;
-    public int pullType;
+    public final void a(String paramString1, String paramString2, String paramString3, Object paramObject1, Object paramObject2) {}
     
-    public a(List<?> paramList, b paramb, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+    public final void a(String paramString1, String paramString2, String paramString3, Object paramObject, Object[] paramArrayOfObject)
     {
-      this.incrementList = paramList;
-      this.lastBuffer = paramb;
-      this.pullType = paramInt;
-      this.hasMore = paramBoolean1;
-      this.isNeedClear = paramBoolean2;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(196518);
-      if (this != paramObject)
+      AppMethodBeat.i(220999);
+      if (l.apX(paramString1))
       {
-        if ((paramObject instanceof a))
+        AppMethodBeat.o(220999);
+        return;
+      }
+      if ((p.j(paramString2, "getItemOffsets")) && (p.j(paramString3, "(Landroid/graphics/Rect;Landroid/view/View;Landroid/support/v7/widget/RecyclerView;Landroid/support/v7/widget/RecyclerView$State;)V")) && (paramArrayOfObject != null) && (paramArrayOfObject.length >= 4))
+      {
+        paramString1 = l.a(this.sGc);
+        if (paramString1 != null) {
+          paramString1 = (RecyclerView)paramString1.get();
+        }
+        while (paramString1 == null)
         {
-          paramObject = (a)paramObject;
-          if ((!p.i(this.incrementList, paramObject.incrementList)) || (!p.i(this.lastBuffer, paramObject.lastBuffer)) || (this.pullType != paramObject.pullType) || (this.hasMore != paramObject.hasMore) || (this.isNeedClear != paramObject.isNeedClear)) {}
+          paramString1 = paramArrayOfObject[2];
+          if (paramString1 == null)
+          {
+            paramString1 = new t("null cannot be cast to non-null type android.support.v7.widget.RecyclerView");
+            AppMethodBeat.o(220999);
+            throw paramString1;
+            paramString1 = null;
+          }
+          else
+          {
+            paramString1 = (RecyclerView)paramString1;
+            paramString1.a((RecyclerView.l)l.b(this.sGc));
+            l.a(this.sGc, new WeakReference(paramString1));
+          }
         }
       }
-      else
-      {
-        AppMethodBeat.o(196518);
-        return true;
-      }
-      AppMethodBeat.o(196518);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(196516);
-      String str = "ArgsOnFetchDone(incrementList=" + this.incrementList + ", lastBuffer=" + this.lastBuffer + ", pullType=" + this.pullType + ", hasMore=" + this.hasMore + ", isNeedClear=" + this.isNeedClear + ")";
-      AppMethodBeat.o(196516);
-      return str;
+      AppMethodBeat.o(220999);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$Companion;", "", "()V", "TAG", "", "plugin-expt_release"})
-  public static final class b {}
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RefreshLoadMoreCallback$FinderPullType;", "", "value", "", "(Ljava/lang/String;II)V", "getValue", "()I", "PULL_TYPE_ENTER", "PULL_TYPE_TOP", "PULL_TYPE_BOTTOM", "PULL_TYPE_PRE_FETCH", "PULL_TYPE_REFRESH", "plugin-expt_release"})
-  public static enum c
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "onScrolled", "dx", "dy", "plugin-expt_release"})
+  public static final class c
+    extends RecyclerView.l
   {
-    final int value;
-    
-    static
+    public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(196519);
-      c localc1 = new c("PULL_TYPE_ENTER", 0, 0);
-      reT = localc1;
-      c localc2 = new c("PULL_TYPE_TOP", 1, 1);
-      reU = localc2;
-      c localc3 = new c("PULL_TYPE_BOTTOM", 2, 2);
-      reV = localc3;
-      c localc4 = new c("PULL_TYPE_PRE_FETCH", 3, 3);
-      reW = localc4;
-      c localc5 = new c("PULL_TYPE_REFRESH", 4, 4);
-      reX = localc5;
-      reY = new c[] { localc1, localc2, localc3, localc4, localc5 };
-      AppMethodBeat.o(196519);
+      AppMethodBeat.i(221000);
+      b localb = new b();
+      localb.bm(paramRecyclerView);
+      localb.pH(paramInt);
+      a.b("com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+      p.h(paramRecyclerView, "recyclerView");
+      k.sFY.onScrollStateChanged(paramRecyclerView, paramInt);
+      a.a(this, "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
+      AppMethodBeat.o(221000);
     }
     
-    private c(int paramInt)
+    public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
     {
-      this.value = paramInt;
+      AppMethodBeat.i(221001);
+      b localb = new b();
+      localb.bm(paramRecyclerView);
+      localb.pH(paramInt1);
+      localb.pH(paramInt2);
+      a.b("com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
+      p.h(paramRecyclerView, "recyclerView");
+      k.sFY.e(paramRecyclerView, paramInt2);
+      a.a(this, "com/tencent/mm/plugin/expt/hellhound/ext/finder/monitor/RecyclerItemDecorationCallback$mRecyclerListener$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
+      AppMethodBeat.o(221001);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.a.b.b.l
  * JD-Core Version:    0.7.0.1
  */

@@ -1,47 +1,47 @@
 package com.tencent.mm.plugin.sns.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public final class f
 {
-  public static String[] zHA;
-  public static HashMap<String, a> zHB;
-  public static final Pattern zHz;
+  public static String[] DRA;
+  public static HashMap<String, a> DRB;
+  public static final Pattern DRz;
   
   static
   {
     AppMethodBeat.i(96137);
-    zHz = Pattern.compile("\\{([\\s\\S]*?)\\}");
-    zHA = new String[] { "{sex", "{username", "{richtext" };
-    zHB = new HashMap();
+    DRz = Pattern.compile("\\{([\\s\\S]*?)\\}");
+    DRA = new String[] { "{sex", "{username", "{richtext" };
+    DRB = new HashMap();
     AppMethodBeat.o(96137);
   }
   
   public static String a(d.a parama)
   {
     AppMethodBeat.i(96136);
-    if (zHB.containsKey(parama.zHw))
+    if (DRB.containsKey(parama.DRw))
     {
-      if ((a)zHB.get(parama.zHw) == a.zHC)
+      if ((a)DRB.get(parama.DRw) == a.DRC)
       {
-        parama = parama.zHw;
+        parama = parama.DRw;
         AppMethodBeat.o(96136);
         return parama;
       }
-      parama = parama.zHv;
+      parama = parama.DRv;
       AppMethodBeat.o(96136);
       return parama;
     }
-    Object localObject2 = parama.zHw;
+    Object localObject2 = parama.DRw;
     Object localObject1 = localObject2;
-    if (bu.isNullOrNil((String)localObject2))
+    if (Util.isNullOrNil((String)localObject2))
     {
-      parama = parama.zHv;
+      parama = parama.DRv;
       AppMethodBeat.o(96136);
       return parama;
     }
@@ -49,32 +49,32 @@ public final class f
     label240:
     for (;;)
     {
-      localObject2 = zHz.matcher((CharSequence)localObject1);
+      localObject2 = DRz.matcher((CharSequence)localObject1);
       if (((Matcher)localObject2).find())
       {
         i = ((Matcher)localObject2).groupCount();
         localObject2 = ((Matcher)localObject2).group();
-        ae.i("MicroMsg.SnsAbTestUtil", "hello matcher group() " + i + " " + (String)localObject2);
+        Log.i("MicroMsg.SnsAbTestUtil", "hello matcher group() " + i + " " + (String)localObject2);
         localObject1 = ((String)localObject1).replace((CharSequence)localObject2, "");
         i = 0;
-        if (i >= zHA.length) {
+        if (i >= DRA.length) {
           break label237;
         }
-        if (((String)localObject2).indexOf(zHA[i]) < 0) {}
+        if (((String)localObject2).indexOf(DRA[i]) < 0) {}
       }
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
           break label240;
         }
-        zHB.put(parama.zHw, a.zHD);
-        parama = parama.zHv;
+        DRB.put(parama.DRw, a.DRD);
+        parama = parama.DRv;
         AppMethodBeat.o(96136);
         return parama;
         i += 1;
         break;
-        zHB.put(parama.zHw, a.zHC);
-        parama = parama.zHw;
+        DRB.put(parama.DRw, a.DRC);
+        parama = parama.DRw;
         AppMethodBeat.o(96136);
         return parama;
       }
@@ -86,9 +86,9 @@ public final class f
     static
     {
       AppMethodBeat.i(96135);
-      zHC = new a("OK", 0);
-      zHD = new a("FAIL", 1);
-      zHE = new a[] { zHC, zHD };
+      DRC = new a("OK", 0);
+      DRD = new a("FAIL", 1);
+      DRE = new a[] { DRC, DRD };
       AppMethodBeat.o(96135);
     }
     

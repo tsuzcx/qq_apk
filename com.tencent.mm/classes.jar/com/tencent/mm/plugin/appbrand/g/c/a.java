@@ -1,23 +1,21 @@
 package com.tencent.mm.plugin.appbrand.g.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.g.a.d;
-import rx.d.a;
 
 public class a
 {
-  private static a kgJ;
+  private static a lks;
   
-  public static a bgb()
+  public static a bBu()
   {
     AppMethodBeat.i(158949);
-    if (kgJ == null) {}
+    if (lks == null) {}
     try
     {
-      if (kgJ == null) {
-        kgJ = new a();
+      if (lks == null) {
+        lks = new a();
       }
-      a locala = kgJ;
+      a locala = lks;
       AppMethodBeat.o(158949);
       return locala;
     }
@@ -29,7 +27,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.a
  * JD-Core Version:    0.7.0.1
  */

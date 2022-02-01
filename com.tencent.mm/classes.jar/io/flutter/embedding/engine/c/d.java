@@ -13,26 +13,26 @@ import java.util.Locale;
 
 public final class d
 {
-  public final k vOr;
+  public final k bbv;
   
   public d(DartExecutor paramDartExecutor)
   {
     AppMethodBeat.i(10222);
-    this.vOr = new k(paramDartExecutor, "flutter/localization", g.Nda);
+    this.bbv = new k(paramDartExecutor, "flutter/localization", g.SSl);
     AppMethodBeat.o(10222);
   }
   
-  public final void jf(List<Locale> paramList)
+  public final void km(List<Locale> paramList)
   {
     AppMethodBeat.i(10223);
-    a.giD();
+    a.hwd();
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator = paramList.iterator();
     if (localIterator.hasNext())
     {
       Locale localLocale = (Locale)localIterator.next();
       new StringBuilder("Locale (Language: ").append(localLocale.getLanguage()).append(", Country: ").append(localLocale.getCountry()).append(", Variant: ").append(localLocale.getVariant()).append(")");
-      a.giD();
+      a.hwd();
       localArrayList.add(localLocale.getLanguage());
       localArrayList.add(localLocale.getCountry());
       if (Build.VERSION.SDK_INT >= 21) {}
@@ -43,13 +43,13 @@ public final class d
         break;
       }
     }
-    this.vOr.a("setLocale", localArrayList, null);
+    this.bbv.a("setLocale", localArrayList, null);
     AppMethodBeat.o(10223);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     io.flutter.embedding.engine.c.d
  * JD-Core Version:    0.7.0.1
  */

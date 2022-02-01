@@ -6,14 +6,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class ba$4
   implements View.OnClickListener
 {
@@ -21,19 +21,19 @@ final class ba$4
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(216226);
+    AppMethodBeat.i(208187);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/live/plugin/LiveVerifyPlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    ae.i("MicroMsg.LiveVerifyPlugin", "jumpToVerifyAgreementLink.");
+    localb.bm(paramView);
+    a.b("com/tencent/mm/live/plugin/LiveVerifyPlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    Log.i("MicroMsg.LiveVerifyPlugin", "jumpToVerifyAgreementLink.");
     paramView = new Intent();
-    paramView.putExtra("title", this.gVw.getContext().getString(2131766733));
-    paramView.putExtra("rawUrl", this.gVw.getContext().getString(2131766731, new Object[] { ad.fom() }));
+    paramView.putExtra("title", this.hOq.getContext().getString(2131762430));
+    paramView.putExtra("rawUrl", this.hOq.getContext().getString(2131762428, new Object[] { LocaleUtil.getApplicationLanguage() }));
     paramView.putExtra("showShare", false);
     paramView.putExtra("neverGetA8Key", true);
-    d.b(this.gVw.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
+    c.b(this.hOq.getContext(), "webview", ".ui.tools.WebViewUI", paramView);
     a.a(this, "com/tencent/mm/live/plugin/LiveVerifyPlugin$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(216226);
+    AppMethodBeat.o(208187);
   }
 }
 

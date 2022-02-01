@@ -8,33 +8,32 @@ import android.text.TextUtils;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ch.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d.a;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.p;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g.a;
 import com.tencent.mm.pluginsdk.model.app.g;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class z
   extends q
 {
-  public z(Context paramContext, p paramp, ViewGroup paramViewGroup)
+  public z(Context paramContext, com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q paramq, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramp, paramViewGroup);
+    super(paramContext, paramq, paramViewGroup);
     AppMethodBeat.i(96657);
-    paramContext = h.m(paramp.zQt, true, false);
-    paramViewGroup = this.zVg;
+    paramContext = h.o(paramq.DYs, true, false);
+    paramViewGroup = this.Edn;
     if (paramContext == null) {}
     for (paramContext = "";; paramContext = paramContext.field_packageName)
     {
-      paramViewGroup.jH("pkg", paramContext);
-      this.zVg.jH("appid", paramp.zQt);
+      paramViewGroup.kv("pkg", paramContext);
+      this.Edn.kv("appid", paramq.DYs);
       AppMethodBeat.o(96657);
       return;
     }
   }
   
-  private boolean E(Context paramContext, final String paramString1, final String paramString2)
+  private boolean I(Context paramContext, final String paramString1, final String paramString2)
   {
     AppMethodBeat.i(96659);
     if ((paramContext == null) || (TextUtils.isEmpty(paramString1)))
@@ -66,36 +65,36 @@ public final class z
     }
     catch (Exception paramContext)
     {
-      ae.e("AdLandingPageOpenAppBtnComp", bu.o(paramContext));
+      Log.e("AdLandingPageOpenAppBtnComp", Util.stackTraceToString(paramContext));
       AppMethodBeat.o(96659);
     }
     return false;
   }
   
-  protected final void eap()
+  protected final void fde()
   {
     AppMethodBeat.i(96658);
-    Object localObject = eaI();
-    if (h.s(this.context, ((p)localObject).zQt))
+    Object localObject = fdx();
+    if (h.s(this.context, ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q)localObject).DYs))
     {
-      localObject = h.m(((p)localObject).zQt, true, false);
-      if ((localObject != null) && (!TextUtils.isEmpty(((g)localObject).field_packageName)) && (E(this.context, ((g)localObject).field_packageName, h.a(this.context, (g)localObject, null))))
+      localObject = h.o(((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.q)localObject).DYs, true, false);
+      if ((localObject != null) && (!TextUtils.isEmpty(((g)localObject).field_packageName)) && (I(this.context, ((g)localObject).field_packageName, h.a(this.context, (g)localObject, null))))
       {
-        eaq();
+        fdf();
         AppMethodBeat.o(96658);
         return;
       }
-      super.eap();
+      super.fde();
       AppMethodBeat.o(96658);
       return;
     }
-    super.eap();
+    super.fde();
     AppMethodBeat.o(96658);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.z
  * JD-Core Version:    0.7.0.1
  */

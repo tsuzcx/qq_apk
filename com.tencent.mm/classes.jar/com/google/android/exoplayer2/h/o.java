@@ -26,30 +26,30 @@ import java.util.regex.Pattern;
 public final class o
   implements s
 {
-  private static final Pattern CONTENT_RANGE_HEADER;
-  private static final AtomicReference<byte[]> skipBufferReference;
-  private final boolean allowCrossProtocolRedirects;
-  private final w<? super o> bEG;
-  private final com.google.android.exoplayer2.i.o<String> bFl;
-  private final s.f bFm;
-  private final s.f bFn;
-  private j bxi;
-  private long bytesRead;
-  private long bytesSkipped;
-  private long bytesToRead;
-  private long bytesToSkip;
-  private final int connectTimeoutMillis;
+  private static final Pattern bFq;
+  private static final AtomicReference<byte[]> bFr;
+  private final w<? super o> bEI;
+  private long bFA;
+  private long bFB;
+  private final boolean bFs;
+  private final int bFt;
+  private final int bFu;
+  private final com.google.android.exoplayer2.i.o<String> bFv;
+  private final s.f bFw;
+  private final s.f bFx;
+  private long bFy;
+  private long bFz;
+  private j bxj;
   private HttpURLConnection connection;
   private InputStream inputStream;
   private boolean opened;
-  private final int readTimeoutMillis;
   private final String userAgent;
   
   static
   {
     AppMethodBeat.i(93077);
-    CONTENT_RANGE_HEADER = Pattern.compile("^bytes (\\d+)-(\\d+)/(\\d+)$");
-    skipBufferReference = new AtomicReference();
+    bFq = Pattern.compile("^bytes (\\d+)-(\\d+)/(\\d+)$");
+    bFr = new AtomicReference();
     AppMethodBeat.o(93077);
   }
   
@@ -63,13 +63,13 @@ public final class o
       throw paramString;
     }
     this.userAgent = paramString;
-    this.bFl = null;
-    this.bEG = paramw;
-    this.bFn = new s.f();
-    this.connectTimeoutMillis = paramInt1;
-    this.readTimeoutMillis = paramInt2;
-    this.allowCrossProtocolRedirects = paramBoolean;
-    this.bFm = paramf;
+    this.bFv = null;
+    this.bEI = paramw;
+    this.bFx = new s.f();
+    this.bFt = paramInt1;
+    this.bFu = paramInt2;
+    this.bFs = paramBoolean;
+    this.bFw = paramf;
     AppMethodBeat.o(93069);
   }
   
@@ -77,19 +77,19 @@ public final class o
   {
     AppMethodBeat.i(93074);
     HttpURLConnection localHttpURLConnection = (HttpURLConnection)paramURL.openConnection();
-    localHttpURLConnection.setConnectTimeout(this.connectTimeoutMillis);
-    localHttpURLConnection.setReadTimeout(this.readTimeoutMillis);
+    localHttpURLConnection.setConnectTimeout(this.bFt);
+    localHttpURLConnection.setReadTimeout(this.bFu);
     Object localObject;
-    if (this.bFm != null)
+    if (this.bFw != null)
     {
-      paramURL = this.bFm.getSnapshot().entrySet().iterator();
+      paramURL = this.bFw.wM().entrySet().iterator();
       while (paramURL.hasNext())
       {
         localObject = (Map.Entry)paramURL.next();
         localHttpURLConnection.setRequestProperty((String)((Map.Entry)localObject).getKey(), (String)((Map.Entry)localObject).getValue());
       }
     }
-    paramURL = this.bFn.getSnapshot().entrySet().iterator();
+    paramURL = this.bFx.wM().entrySet().iterator();
     while (paramURL.hasNext())
     {
       localObject = (Map.Entry)paramURL.next();
@@ -137,26 +137,6 @@ public final class o
     }
   }
   
-  private void closeConnectionQuietly()
-  {
-    AppMethodBeat.i(93076);
-    if (this.connection != null) {}
-    try
-    {
-      this.connection.disconnect();
-      this.connection = null;
-      AppMethodBeat.o(93076);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        b.e("DefaultHttpDataSource", "Unexpected error while disconnecting", new Object[] { localException });
-      }
-    }
-  }
-  
   private static long getContentLength(HttpURLConnection paramHttpURLConnection)
   {
     AppMethodBeat.i(93075);
@@ -172,7 +152,7 @@ public final class o
       Matcher localMatcher;
       if (!TextUtils.isEmpty(paramHttpURLConnection))
       {
-        localMatcher = CONTENT_RANGE_HEADER.matcher(paramHttpURLConnection);
+        localMatcher = bFq.matcher(paramHttpURLConnection);
         l2 = l1;
         if (!localMatcher.find()) {}
       }
@@ -182,7 +162,7 @@ public final class o
         l3 = Long.parseLong(localMatcher.group(1));
         l3 = l2 - l3 + 1L;
         if (l1 >= 0L) {
-          break label154;
+          break label153;
         }
         l2 = l3;
       }
@@ -205,7 +185,7 @@ public final class o
         b.e("DefaultHttpDataSource", "Unexpected Content-Length [" + str + "]", new Object[0]);
         l1 = l2;
         continue;
-        label154:
+        label153:
         l2 = l1;
         if (l1 != l3)
         {
@@ -216,23 +196,43 @@ public final class o
     }
   }
   
+  private void wL()
+  {
+    AppMethodBeat.i(93076);
+    if (this.connection != null) {}
+    try
+    {
+      this.connection.disconnect();
+      this.connection = null;
+      AppMethodBeat.o(93076);
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        b.e("DefaultHttpDataSource", "Unexpected error while disconnecting", new Object[] { localException });
+      }
+    }
+  }
+  
   public final long a(j paramj)
   {
     AppMethodBeat.i(93071);
-    this.bxi = paramj;
-    this.bytesRead = 0L;
-    this.bytesSkipped = 0L;
+    this.bxj = paramj;
+    this.bFB = 0L;
+    this.bFA = 0L;
     long l1;
     Object localObject3;
     int j;
     try
     {
       localObject1 = new URL(paramj.uri.toString());
-      arrayOfByte = paramj.bEK;
+      arrayOfByte = paramj.bEO;
       l1 = paramj.position;
       l2 = paramj.length;
-      bool = paramj.isFlagSet(1);
-      if (!this.allowCrossProtocolRedirects)
+      bool = paramj.eW(1);
+      if (!this.bFs)
       {
         localObject3 = a((URL)localObject1, arrayOfByte, l1, l2, bool, true);
         this.connection = ((HttpURLConnection)localObject3);
@@ -255,7 +255,7 @@ public final class o
       if ((i < 200) || (i > 299))
       {
         localObject1 = this.connection.getHeaderFields();
-        closeConnectionQuietly();
+        wL();
         paramj = new s.e(i, (Map)localObject1, paramj);
         if (i == 416) {
           paramj.initCause(new h());
@@ -266,7 +266,7 @@ public final class o
     }
     catch (IOException localIOException2)
     {
-      closeConnectionQuietly();
+      wL();
       paramj = new s.c("Unable to connect to " + paramj.uri.toString(), localIOException2, paramj);
       AppMethodBeat.o(93071);
       throw paramj;
@@ -314,9 +314,9 @@ public final class o
       AppMethodBeat.o(93071);
       throw ((Throwable)localObject2);
       String str = this.connection.getContentType();
-      if ((this.bFl != null) && (!this.bFl.evaluate(str)))
+      if ((this.bFv != null) && (!this.bFv.aj(str)))
       {
-        closeConnectionQuietly();
+        wL();
         paramj = new s.d(str, paramj);
         AppMethodBeat.o(93071);
         throw paramj;
@@ -324,14 +324,14 @@ public final class o
       if ((i == 200) && (paramj.position != 0L))
       {
         l1 = paramj.position;
-        this.bytesToSkip = l1;
-        if (paramj.isFlagSet(1)) {
+        this.bFy = l1;
+        if (paramj.eW(1)) {
           break label717;
         }
         if (paramj.length == -1L) {
           break label673;
         }
-        this.bytesToRead = paramj.length;
+        this.bFz = paramj.length;
       }
       for (;;)
       {
@@ -339,10 +339,10 @@ public final class o
         {
           this.inputStream = this.connection.getInputStream();
           this.opened = true;
-          if (this.bEG != null) {
-            this.bEG.a(this, paramj);
+          if (this.bEI != null) {
+            this.bEI.a(this, paramj);
           }
-          l1 = this.bytesToRead;
+          l1 = this.bFz;
           AppMethodBeat.o(93071);
           return l1;
         }
@@ -350,7 +350,7 @@ public final class o
         {
           label673:
           label717:
-          closeConnectionQuietly();
+          wL();
           paramj = new s.c(localIOException3, paramj, 1);
           AppMethodBeat.o(93071);
           throw paramj;
@@ -360,14 +360,14 @@ public final class o
         l1 = getContentLength(this.connection);
         if (l1 != -1L)
         {
-          l1 -= this.bytesToSkip;
-          this.bytesToRead = l1;
+          l1 -= this.bFy;
+          this.bFz = l1;
         }
         else
         {
           l1 = -1L;
           continue;
-          this.bytesToRead = paramj.length;
+          this.bFz = paramj.length;
         }
       }
     }
@@ -384,10 +384,10 @@ public final class o
       if (this.inputStream != null)
       {
         localObject1 = this.connection;
-        if (this.bytesToRead != -1L) {
+        if (this.bFz != -1L) {
           break label131;
         }
-        l1 = this.bytesToRead;
+        l1 = this.bFz;
         if (x.SDK_INT != 19)
         {
           i = x.SDK_INT;
@@ -424,12 +424,12 @@ public final class o
         }
         catch (IOException localIOException)
         {
-          s.c localc = new s.c(localIOException, this.bxi, 3);
+          s.c localc = new s.c(localIOException, this.bxj, 3);
           AppMethodBeat.o(93073);
           throw localc;
         }
-        l1 = this.bytesToRead;
-        l2 = this.bytesRead;
+        l1 = this.bFz;
+        l2 = this.bFB;
         l1 -= l2;
         break;
         if (l1 > 2048L)
@@ -448,12 +448,12 @@ public final class o
     finally
     {
       this.inputStream = null;
-      closeConnectionQuietly();
+      wL();
       if (this.opened)
       {
         this.opened = false;
-        if (this.bEG != null) {
-          this.bEG.ah(this);
+        if (this.bEI != null) {
+          this.bEI.ai(this);
         }
       }
       AppMethodBeat.o(93073);
@@ -481,18 +481,18 @@ public final class o
     {
       try
       {
-        if (this.bytesSkipped == this.bytesToSkip) {
+        if (this.bFA == this.bFy) {
           break label200;
         }
-        byte[] arrayOfByte2 = (byte[])skipBufferReference.getAndSet(null);
+        byte[] arrayOfByte2 = (byte[])bFr.getAndSet(null);
         arrayOfByte1 = arrayOfByte2;
         if (arrayOfByte2 == null) {
           arrayOfByte1 = new byte[4096];
         }
-        if (this.bytesSkipped == this.bytesToSkip) {
+        if (this.bFA == this.bFy) {
           break;
         }
-        i = (int)Math.min(this.bytesToSkip - this.bytesSkipped, arrayOfByte1.length);
+        i = (int)Math.min(this.bFy - this.bFA, arrayOfByte1.length);
         i = this.inputStream.read(arrayOfByte1, 0, i);
         if (Thread.interrupted())
         {
@@ -503,7 +503,7 @@ public final class o
       }
       catch (IOException paramArrayOfByte)
       {
-        paramArrayOfByte = new s.c(paramArrayOfByte, this.bxi, 2);
+        paramArrayOfByte = new s.c(paramArrayOfByte, this.bxj, 2);
         AppMethodBeat.o(93072);
         throw paramArrayOfByte;
       }
@@ -513,12 +513,12 @@ public final class o
         AppMethodBeat.o(93072);
         throw paramArrayOfByte;
       }
-      this.bytesSkipped += i;
-      if (this.bEG != null) {
-        this.bEG.e(this, i);
+      this.bFA += i;
+      if (this.bEI != null) {
+        this.bEI.d(this, i);
       }
     }
-    skipBufferReference.set(arrayOfByte1);
+    bFr.set(arrayOfByte1);
     label200:
     if (paramInt2 == 0)
     {
@@ -526,9 +526,9 @@ public final class o
       return 0;
     }
     int i = paramInt2;
-    if (this.bytesToRead != -1L)
+    if (this.bFz != -1L)
     {
-      long l = this.bytesToRead - this.bytesRead;
+      long l = this.bFz - this.bFB;
       if (l == 0L)
       {
         AppMethodBeat.o(93072);
@@ -539,7 +539,7 @@ public final class o
     paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, i);
     if (paramInt1 == -1)
     {
-      if (this.bytesToRead != -1L)
+      if (this.bFz != -1L)
       {
         paramArrayOfByte = new EOFException();
         AppMethodBeat.o(93072);
@@ -548,9 +548,9 @@ public final class o
       AppMethodBeat.o(93072);
       return -1;
     }
-    this.bytesRead += paramInt1;
-    if (this.bEG != null) {
-      this.bEG.e(this, paramInt1);
+    this.bFB += paramInt1;
+    if (this.bEI != null) {
+      this.bEI.d(this, paramInt1);
     }
     AppMethodBeat.o(93072);
     return paramInt1;
@@ -558,7 +558,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.h.o
  * JD-Core Version:    0.7.0.1
  */

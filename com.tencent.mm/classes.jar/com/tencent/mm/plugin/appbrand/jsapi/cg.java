@@ -1,35 +1,31 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.util.SparseArray;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.luggage.h.f.c;
+import com.tencent.luggage.sdk.g.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.d;
+import com.tencent.mm.br.c;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.wallet.e;
 
 public final class cg
-  extends a<d>
+  extends d<k>
 {
-  public static final int CTRL_INDEX = 215;
-  public static final String NAME = "updatePerfData";
-  private static final SparseArray<Integer> kxZ;
+  public static final int CTRL_INDEX = 616;
+  public static final String NAME = "openWCPayLQTDetail";
+  final int lBa;
   
-  static
+  public cg()
   {
-    AppMethodBeat.i(147147);
-    SparseArray localSparseArray = new SparseArray();
-    kxZ = localSparseArray;
-    localSparseArray.put("firstRenderTime".hashCode(), Integer.valueOf(301));
-    kxZ.put("reRenderTime".hashCode(), Integer.valueOf(302));
-    kxZ.put("webview2AppServiceTotalTime".hashCode(), Integer.valueOf(402));
-    kxZ.put("webview2AppServiceDataSize".hashCode(), Integer.valueOf(403));
-    kxZ.put("webview2AppServiceNativeTime".hashCode(), Integer.valueOf(404));
-    kxZ.put("appService2WebviewTotalTime".hashCode(), Integer.valueOf(405));
-    kxZ.put("appService2WebviewDataSize".hashCode(), Integer.valueOf(406));
-    kxZ.put("appService2WebviewNativeTime".hashCode(), Integer.valueOf(407));
-    AppMethodBeat.o(147147);
+    AppMethodBeat.i(174765);
+    this.lBa = a.aK(this);
+    AppMethodBeat.o(174765);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.cg
  * JD-Core Version:    0.7.0.1
  */

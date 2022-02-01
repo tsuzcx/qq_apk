@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.scanner.ui.widget;
 
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-final class ScanSharedMaskView$c
-  implements View.OnClickListener
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$animateShowScanTips$1", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "plugin-scan_release"})
+public final class ScanSharedMaskView$c
+  extends AnimatorListenerAdapter
 {
-  ScanSharedMaskView$c(ScanSharedMaskView paramScanSharedMaskView) {}
+  ScanSharedMaskView$c(boolean paramBoolean) {}
   
-  public final void onClick(View paramView)
+  public final void onAnimationCancel(Animator paramAnimator)
   {
-    AppMethodBeat.i(52449);
-    Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-    localObject = ScanSharedMaskView.a(this.yOU);
-    if (localObject != null) {
-      ((View.OnClickListener)localObject).onClick(paramView);
-    }
-    a.a(this, "com/tencent/mm/plugin/scanner/ui/widget/ScanSharedMaskView$init$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(52449);
+    AppMethodBeat.i(170076);
+    super.onAnimationCancel(paramAnimator);
+    ScanSharedMaskView.b(this.CST, this.rti);
+    AppMethodBeat.o(170076);
+  }
+  
+  public final void onAnimationEnd(Animator paramAnimator)
+  {
+    AppMethodBeat.i(170075);
+    super.onAnimationEnd(paramAnimator);
+    ScanSharedMaskView.b(this.CST, this.rti);
+    AppMethodBeat.o(170075);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.ScanSharedMaskView.c
  * JD-Core Version:    0.7.0.1
  */

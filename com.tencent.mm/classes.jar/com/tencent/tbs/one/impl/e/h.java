@@ -44,12 +44,16 @@ public class h
     this.j = new ConcurrentHashMap();
     this.k = new ConcurrentHashMap();
     this.l = new b(this);
-    this.a = paramContext;
-    this.b = paramString;
-    this.c = com.tencent.tbs.one.impl.common.f.a(paramContext.getDir("tbs", 0), paramString);
-    com.tencent.tbs.one.impl.a.c.d(this.c);
-    com.tencent.tbs.one.impl.a.c.d(com.tencent.tbs.one.impl.common.f.d(this.c));
-    AppMethodBeat.o(174116);
+    if (paramContext.getApplicationContext() != null) {}
+    for (this.a = paramContext.getApplicationContext();; this.a = paramContext)
+    {
+      this.b = paramString;
+      this.c = com.tencent.tbs.one.impl.common.f.a(paramContext.getDir("tbs", 0), paramString);
+      com.tencent.tbs.one.impl.a.c.d(this.c);
+      com.tencent.tbs.one.impl.a.c.d(com.tencent.tbs.one.impl.common.f.d(this.c));
+      AppMethodBeat.o(174116);
+      return;
+    }
   }
   
   private com.tencent.tbs.one.impl.c.b f(String paramString)
@@ -68,7 +72,7 @@ public class h
   
   public com.tencent.tbs.one.impl.a.a<e<d>> a(Bundle paramBundle, l<e<d>> paraml)
   {
-    AppMethodBeat.i(192423);
+    AppMethodBeat.i(188009);
     String str = this.b;
     com.tencent.tbs.one.impl.a.f.a("[%s] Installing DEPS", new Object[] { str });
     if (this.f != null)
@@ -85,20 +89,20 @@ public class h
       if (!((File)localObject).exists())
       {
         paraml.a(105, "Failed to find DEPS file " + ((File)localObject).getAbsolutePath(), null);
-        AppMethodBeat.o(192423);
+        AppMethodBeat.o(188009);
         return null;
       }
       try
       {
         paramBundle = d.a((File)localObject);
         paraml.a(e.a(e.a.b, paramBundle));
-        AppMethodBeat.o(192423);
+        AppMethodBeat.o(188009);
         return null;
       }
       catch (TBSOneException paramBundle)
       {
         paraml.a(paramBundle.getErrorCode(), paramBundle.getMessage(), paramBundle.getCause());
-        AppMethodBeat.o(192423);
+        AppMethodBeat.o(188009);
         return null;
       }
     }
@@ -106,12 +110,12 @@ public class h
   
   public com.tencent.tbs.one.impl.a.a<e<File>> a(Bundle paramBundle, d.a parama, l<e<File>> paraml)
   {
-    AppMethodBeat.i(192424);
+    AppMethodBeat.i(188010);
     com.tencent.tbs.one.impl.a.f.a("[%s] Installing component %s, version: %d", new Object[] { this.b, parama.a, Integer.valueOf(parama.c) });
     paramBundle = a(parama.a, parama.c);
     com.tencent.tbs.one.impl.a.c.d(paramBundle);
     paraml.a(e.a(e.a.b, paramBundle));
-    AppMethodBeat.o(192424);
+    AppMethodBeat.o(188010);
     return null;
   }
   
@@ -133,9 +137,9 @@ public class h
   
   public void a(Bundle paramBundle, String paramString, TBSOneCallback<File> paramTBSOneCallback)
   {
-    AppMethodBeat.i(192422);
+    AppMethodBeat.i(188008);
     f(paramString).a(paramBundle, paramTBSOneCallback);
-    AppMethodBeat.o(192422);
+    AppMethodBeat.o(188008);
   }
   
   protected void a(e<d> parame)
@@ -148,7 +152,7 @@ public class h
   
   public void a(String paramString, Bundle paramBundle, TBSOneCallback<TBSOneComponent> paramTBSOneCallback)
   {
-    AppMethodBeat.i(192420);
+    AppMethodBeat.i(188006);
     paramString = f(paramString);
     if (paramString.l != null)
     {
@@ -158,7 +162,7 @@ public class h
         paramTBSOneCallback.onProgressChanged(0, 100);
         paramTBSOneCallback.onCompleted(paramString.l);
       }
-      AppMethodBeat.o(192420);
+      AppMethodBeat.o(188006);
       return;
     }
     if (paramTBSOneCallback != null)
@@ -169,11 +173,11 @@ public class h
     if (paramString.k != null)
     {
       paramString.b();
-      AppMethodBeat.o(192420);
+      AppMethodBeat.o(188006);
       return;
     }
     paramString.a(paramBundle);
-    AppMethodBeat.o(192420);
+    AppMethodBeat.o(188006);
   }
   
   public void a(String paramString, Object paramObject)
@@ -195,9 +199,9 @@ public class h
   
   public void b(String paramString, Bundle paramBundle, TBSOneCallback<File> paramTBSOneCallback)
   {
-    AppMethodBeat.i(192421);
+    AppMethodBeat.i(188007);
     f(paramString).a(paramBundle, paramTBSOneCallback);
-    AppMethodBeat.o(192421);
+    AppMethodBeat.o(188007);
   }
   
   public final boolean b()
@@ -249,7 +253,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.h
  * JD-Core Version:    0.7.0.1
  */

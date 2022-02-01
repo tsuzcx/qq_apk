@@ -9,70 +9,70 @@ import java.util.NoSuchElementException;
 final class b<S, T>
   implements Iterator<T>
 {
-  private final a.a<S, ? extends T> LIO;
-  private final Iterator<? extends S> LIP;
-  private Iterator<? extends T> LIQ;
-  private T LIR;
-  private boolean LIS;
+  private final a.a<S, ? extends T> ReQ;
+  private final Iterator<? extends S> ReR;
+  private Iterator<? extends T> ReS;
+  private T ReT;
+  private boolean ReU;
   
   public b(Iterator<? extends S> paramIterator, a.a<S, ? extends T> parama)
   {
-    AppMethodBeat.i(193456);
-    this.LIP = paramIterator;
-    this.LIO = parama;
-    this.LIQ = Collections.emptyList().iterator();
-    AppMethodBeat.o(193456);
+    AppMethodBeat.i(187770);
+    this.ReR = paramIterator;
+    this.ReQ = parama;
+    this.ReS = Collections.emptyList().iterator();
+    AppMethodBeat.o(187770);
   }
   
   public final boolean hasNext()
   {
-    AppMethodBeat.i(193457);
-    if (this.LIS)
+    AppMethodBeat.i(187771);
+    if (this.ReU)
     {
-      AppMethodBeat.o(193457);
+      AppMethodBeat.o(187771);
       return true;
     }
-    if (this.LIQ == null)
+    if (this.ReS == null)
     {
-      AppMethodBeat.o(193457);
+      AppMethodBeat.o(187771);
       return false;
     }
-    if (!this.LIQ.hasNext())
+    if (!this.ReS.hasNext())
     {
-      this.LIR = null;
-      this.LIQ = null;
-      if (this.LIP.hasNext())
+      this.ReT = null;
+      this.ReS = null;
+      if (this.ReR.hasNext())
       {
-        Object localObject = this.LIO.em(this.LIP.next());
+        Object localObject = this.ReQ.eq(this.ReR.next());
         if (localObject != null) {}
         for (localObject = ((Iterable)localObject).iterator();; localObject = Collections.emptyList().iterator())
         {
-          this.LIQ = ((Iterator)localObject);
+          this.ReS = ((Iterator)localObject);
           break;
         }
       }
-      AppMethodBeat.o(193457);
+      AppMethodBeat.o(187771);
       return false;
     }
-    this.LIR = this.LIQ.next();
-    this.LIS = true;
-    AppMethodBeat.o(193457);
+    this.ReT = this.ReS.next();
+    this.ReU = true;
+    AppMethodBeat.o(187771);
     return true;
   }
   
   public final T next()
   {
-    AppMethodBeat.i(193458);
-    if ((!this.LIS) && (!hasNext()))
+    AppMethodBeat.i(187772);
+    if ((!this.ReU) && (!hasNext()))
     {
       localObject = new NoSuchElementException();
-      AppMethodBeat.o(193458);
+      AppMethodBeat.o(187772);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.LIR;
-    this.LIR = null;
-    this.LIS = false;
-    AppMethodBeat.o(193458);
+    Object localObject = this.ReT;
+    this.ReT = null;
+    this.ReU = false;
+    AppMethodBeat.o(187772);
     return localObject;
   }
 }

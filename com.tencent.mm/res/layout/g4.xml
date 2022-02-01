@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/al4" style="@style/qp"
+<RelativeLayout android:id="@id/be_" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/aif" android:background="@color/xo" android:scrollbars="vertical" style="@style/n3" />
-</LinearLayout>
+    <ImageView android:id="@id/ggg" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="40.0dip" android:src="@raw/actionbar_icon_light_close" android:layout_alignParentTop="true" android:layout_marginStart="24.0dip" android:layout_alignParentStart="true" />
+    <ImageView android:id="@id/ggs" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="40.0dip" android:src="@raw/app_brand_video_share" android:layout_alignParentTop="true" android:layout_marginEnd="24.0dip" android:layout_alignParentEnd="true" />
+</RelativeLayout>

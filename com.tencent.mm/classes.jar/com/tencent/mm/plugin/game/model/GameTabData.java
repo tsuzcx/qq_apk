@@ -5,11 +5,11 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.game.commlib.a;
-import com.tencent.mm.plugin.game.d.av;
-import com.tencent.mm.plugin.game.d.dv;
-import com.tencent.mm.plugin.game.f.c;
+import com.tencent.mm.plugin.game.e.c;
+import com.tencent.mm.plugin.game.protobuf.aw;
+import com.tencent.mm.plugin.game.protobuf.dv;
 import com.tencent.mm.plugin.game.ui.tab.GameTabHomeUI;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
@@ -21,8 +21,8 @@ public class GameTabData
   implements Parcelable
 {
   public static final Parcelable.Creator<GameTabData> CREATOR;
-  public LinkedHashMap<String, TabItem> upf;
-  public StatusBar upg;
+  public LinkedHashMap<String, TabItem> xHy;
+  public StatusBar xHz;
   
   static
   {
@@ -34,76 +34,76 @@ public class GameTabData
   public GameTabData()
   {
     AppMethodBeat.i(41565);
-    this.upf = new LinkedHashMap();
-    this.upg = new StatusBar();
+    this.xHy = new LinkedHashMap();
+    this.xHz = new StatusBar();
     AppMethodBeat.o(41565);
   }
   
   private GameTabData(Parcel paramParcel)
   {
     AppMethodBeat.i(41566);
-    e(paramParcel);
+    f(paramParcel);
     AppMethodBeat.o(41566);
   }
   
-  private void e(Parcel paramParcel)
+  private void f(Parcel paramParcel)
   {
     AppMethodBeat.i(41567);
     int j = paramParcel.readInt();
-    if (this.upf == null) {
-      this.upf = new LinkedHashMap();
+    if (this.xHy == null) {
+      this.xHy = new LinkedHashMap();
     }
     int i = 0;
     while (i < j)
     {
       TabItem localTabItem = (TabItem)paramParcel.readParcelable(TabItem.class.getClassLoader());
       if (localTabItem != null) {
-        this.upf.put(localTabItem.upi, localTabItem);
+        this.xHy.put(localTabItem.xHB, localTabItem);
       }
       i += 1;
     }
-    this.upg = ((StatusBar)paramParcel.readParcelable(StatusBar.class.getClassLoader()));
+    this.xHz = ((StatusBar)paramParcel.readParcelable(StatusBar.class.getClassLoader()));
     AppMethodBeat.o(41567);
   }
   
-  public static GameTabData ei(List<av> paramList)
+  public static GameTabData fb(List<aw> paramList)
   {
     AppMethodBeat.i(41569);
-    if (bu.ht(paramList))
+    if (Util.isNullOrNil(paramList))
     {
       AppMethodBeat.o(41569);
       return null;
     }
     GameTabData localGameTabData = new GameTabData();
-    Object localObject = a.cZu();
+    Object localObject = a.dSU();
     if (localObject != null)
     {
-      localGameTabData.upg.uph = ((dv)localObject).uph;
-      localGameTabData.upg.color = c.parseColor(((dv)localObject).hDr);
+      localGameTabData.xHz.xHA = ((dv)localObject).xHA;
+      localGameTabData.xHz.color = c.parseColor(((dv)localObject).ixw);
     }
     localObject = paramList.iterator();
     int i = 0;
     while (((Iterator)localObject).hasNext())
     {
-      av localav = (av)((Iterator)localObject).next();
-      if ((localav != null) && (!bu.isNullOrNil(localav.usu)))
+      aw localaw = (aw)((Iterator)localObject).next();
+      if ((localaw != null) && (!Util.isNullOrNil(localaw.xKM)))
       {
         TabItem localTabItem = new TabItem();
-        localTabItem.upi = localav.usu;
-        localTabItem.title = localav.Title;
-        localTabItem.upj = localav.usv;
-        localTabItem.upk = localav.usw;
-        localTabItem.jumpUrl = localav.uqf;
-        localTabItem.upn = localav.usx;
-        localTabItem.upo = localav.usy;
-        if (localTabItem.upk)
+        localTabItem.xHB = localaw.xKM;
+        localTabItem.title = localaw.Title;
+        localTabItem.xHC = localaw.xKN;
+        localTabItem.xHD = localaw.xKO;
+        localTabItem.jumpUrl = localaw.xIy;
+        localTabItem.xHG = localaw.xKP;
+        localTabItem.xHH = localaw.xKQ;
+        if (localTabItem.xHD)
         {
-          localTabItem.upp = GameTabHomeUI.class.getName();
-          localTabItem.upq = false;
-          localTabItem.dGL = localav.usz;
-          localTabItem.upr = localav.urc;
-          localTabItem.ulT = localav.ura;
-          localGameTabData.upf.put(localTabItem.upi, localTabItem);
+          localTabItem.xHI = GameTabHomeUI.class.getName();
+          localTabItem.xHJ = false;
+          localTabItem.dYu = localaw.xKR;
+          localTabItem.xHK = localaw.xJv;
+          localTabItem.xEl = localaw.xJt;
+          localGameTabData.xHy.put(localTabItem.xHB, localTabItem);
         }
         else
         {
@@ -112,7 +112,7 @@ public class GameTabData
           if (j != 0) {}
           for (paramList = String.valueOf(j);; paramList = "")
           {
-            localTabItem.upp = paramList;
+            localTabItem.xHI = paramList;
             i += 1;
             break;
           }
@@ -123,12 +123,12 @@ public class GameTabData
     return localGameTabData;
   }
   
-  public final List<TabItem> afz()
+  public final List<TabItem> avn()
   {
     AppMethodBeat.i(41564);
     ArrayList localArrayList = new ArrayList();
-    if (this.upf != null) {
-      localArrayList.addAll(this.upf.values());
+    if (this.xHy != null) {
+      localArrayList.addAll(this.xHy.values());
     }
     AppMethodBeat.o(41564);
     return localArrayList;
@@ -142,12 +142,12 @@ public class GameTabData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(41568);
-    paramParcel.writeInt(this.upf.size());
-    Iterator localIterator = this.upf.entrySet().iterator();
+    paramParcel.writeInt(this.xHy.size());
+    Iterator localIterator = this.xHy.entrySet().iterator();
     while (localIterator.hasNext()) {
       paramParcel.writeParcelable((Parcelable)((Map.Entry)localIterator.next()).getValue(), paramInt);
     }
-    paramParcel.writeParcelable(this.upg, paramInt);
+    paramParcel.writeParcelable(this.xHz, paramInt);
     AppMethodBeat.o(41568);
   }
   
@@ -156,7 +156,7 @@ public class GameTabData
   {
     public static final Parcelable.Creator<StatusBar> CREATOR;
     public int color;
-    public String uph;
+    public String xHA;
     
     static
     {
@@ -167,16 +167,16 @@ public class GameTabData
     
     public StatusBar()
     {
-      this.uph = null;
+      this.xHA = null;
       this.color = 0;
     }
     
     public StatusBar(Parcel paramParcel)
     {
       AppMethodBeat.i(41557);
-      this.uph = null;
+      this.xHA = null;
       this.color = 0;
-      this.uph = paramParcel.readString();
+      this.xHA = paramParcel.readString();
       this.color = paramParcel.readInt();
       AppMethodBeat.o(41557);
     }
@@ -189,7 +189,7 @@ public class GameTabData
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(41558);
-      paramParcel.writeString(this.uph);
+      paramParcel.writeString(this.xHA);
       paramParcel.writeInt(this.color);
       AppMethodBeat.o(41558);
     }
@@ -199,20 +199,20 @@ public class GameTabData
     implements Parcelable
   {
     public static final Parcelable.Creator<TabItem> CREATOR;
-    public int dGL;
+    public int dYu;
     public String jumpUrl;
     public String title;
-    public String ulT;
-    public String upi;
-    public boolean upj;
-    public boolean upk;
-    public int upl;
-    public int upm;
-    public String upn;
-    public String upo;
-    public String upp;
-    public boolean upq;
-    public int upr;
+    public String xEl;
+    public String xHB;
+    public boolean xHC;
+    public boolean xHD;
+    public int xHE;
+    public int xHF;
+    public String xHG;
+    public String xHH;
+    public String xHI;
+    public boolean xHJ;
+    public int xHK;
     
     static
     {
@@ -226,24 +226,24 @@ public class GameTabData
     public TabItem(Parcel paramParcel)
     {
       AppMethodBeat.i(41561);
-      this.upi = paramParcel.readString();
+      this.xHB = paramParcel.readString();
       this.title = paramParcel.readString();
       this.jumpUrl = paramParcel.readString();
       if (paramParcel.readByte() != 0)
       {
         bool1 = true;
-        this.upj = bool1;
+        this.xHC = bool1;
         if (paramParcel.readByte() == 0) {
           break label152;
         }
         bool1 = true;
         label58:
-        this.upk = bool1;
-        this.upl = paramParcel.readInt();
-        this.upm = paramParcel.readInt();
-        this.upn = paramParcel.readString();
-        this.upo = paramParcel.readString();
-        this.upp = paramParcel.readString();
+        this.xHD = bool1;
+        this.xHE = paramParcel.readInt();
+        this.xHF = paramParcel.readInt();
+        this.xHG = paramParcel.readString();
+        this.xHH = paramParcel.readString();
+        this.xHI = paramParcel.readString();
         if (paramParcel.readByte() == 0) {
           break label157;
         }
@@ -252,10 +252,10 @@ public class GameTabData
       label157:
       for (boolean bool1 = bool2;; bool1 = false)
       {
-        this.upq = bool1;
-        this.dGL = paramParcel.readInt();
-        this.upr = paramParcel.readInt();
-        this.ulT = paramParcel.readString();
+        this.xHJ = bool1;
+        this.dYu = paramParcel.readInt();
+        this.xHK = paramParcel.readInt();
+        this.xEl = paramParcel.readString();
         AppMethodBeat.o(41561);
         return;
         bool1 = false;
@@ -274,25 +274,25 @@ public class GameTabData
     {
       int i = 1;
       AppMethodBeat.i(41562);
-      paramParcel.writeString(this.upi);
+      paramParcel.writeString(this.xHB);
       paramParcel.writeString(this.title);
       paramParcel.writeString(this.jumpUrl);
-      if (this.upj)
+      if (this.xHC)
       {
         paramInt = 1;
         paramParcel.writeByte((byte)paramInt);
-        if (!this.upk) {
+        if (!this.xHD) {
           break label151;
         }
         paramInt = 1;
         label55:
         paramParcel.writeByte((byte)paramInt);
-        paramParcel.writeInt(this.upl);
-        paramParcel.writeInt(this.upm);
-        paramParcel.writeString(this.upn);
-        paramParcel.writeString(this.upo);
-        paramParcel.writeString(this.upp);
-        if (!this.upq) {
+        paramParcel.writeInt(this.xHE);
+        paramParcel.writeInt(this.xHF);
+        paramParcel.writeString(this.xHG);
+        paramParcel.writeString(this.xHH);
+        paramParcel.writeString(this.xHI);
+        if (!this.xHJ) {
           break label156;
         }
       }
@@ -301,9 +301,9 @@ public class GameTabData
       for (paramInt = i;; paramInt = 0)
       {
         paramParcel.writeByte((byte)paramInt);
-        paramParcel.writeInt(this.dGL);
-        paramParcel.writeInt(this.upr);
-        paramParcel.writeString(this.ulT);
+        paramParcel.writeInt(this.dYu);
+        paramParcel.writeInt(this.xHK);
+        paramParcel.writeString(this.xEl);
         AppMethodBeat.o(41562);
         return;
         paramInt = 0;
@@ -316,7 +316,7 @@ public class GameTabData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.GameTabData
  * JD-Core Version:    0.7.0.1
  */

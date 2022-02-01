@@ -6,8 +6,8 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.ac;
@@ -15,35 +15,35 @@ import com.tencent.xweb.ac;
 public class ContactQZoneWebView
   extends WebViewUI
 {
-  private boolean EqD = false;
-  private String EqE = "";
-  private String dJL = "";
+  private boolean JdM = false;
+  private String JdN = "";
+  private String eby = "";
   
-  final void aJU(String paramString)
+  final void bab(String paramString)
   {
     AppMethodBeat.i(79547);
-    if (this.EqD)
+    if (this.JdM)
     {
       AppMethodBeat.o(79547);
       return;
     }
-    this.EqD = true;
+    this.JdM = true;
     Object localObject = paramString.substring(19);
-    ae.d("MicroMsg.ContactQZoneWebView", "get url :".concat(String.valueOf(localObject)));
+    Log.d("MicroMsg.ContactQZoneWebView", "get url :".concat(String.valueOf(localObject)));
     paramString = new Intent();
     paramString.putExtra("nowUrl", (String)localObject);
-    paramString.putExtra("tweetid", bu.nullAsNil(getIntent().getStringExtra("tweetid")));
-    paramString.putExtra("htmlData", this.EqE);
+    paramString.putExtra("tweetid", Util.nullAsNil(getIntent().getStringExtra("tweetid")));
+    paramString.putExtra("htmlData", this.JdN);
     paramString.putExtra("type", getIntent().getIntExtra("type", 0));
     localObject = new Bundle();
     ((Bundle)localObject).putInt("stat_scene", 4);
-    ((Bundle)localObject).putString("stat_url", eRj());
+    ((Bundle)localObject).putString("stat_url", fZM());
     paramString.putExtra("_stat_obj", (Bundle)localObject);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/webview/ui/tools/ContactQZoneWebView", "gotoImageView", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/webview/ui/tools/ContactQZoneWebView", "gotoImageView", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/ContactQZoneWebView", "gotoImageView", "(Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    com.tencent.mm.plugin.webview.a.a.iUz.q(paramString, this);
+    com.tencent.mm.plugin.webview.a.a.jRt.p(paramString, this);
     AppMethodBeat.o(79547);
   }
   
@@ -51,15 +51,15 @@ public class ContactQZoneWebView
   {
     AppMethodBeat.i(79545);
     super.onCreate(paramBundle);
-    setMMTitle(getString(2131766262));
-    this.osM.setWebViewClient(new ac()
+    setMMTitle(getString(2131768773));
+    this.pGj.setWebViewClient(new ac()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(79543);
         if (paramAnonymousString.startsWith("weixin://viewimage/"))
         {
-          ContactQZoneWebView.this.aJU(paramAnonymousString);
+          ContactQZoneWebView.this.bab(paramAnonymousString);
           paramAnonymousWebView.stopLoading();
         }
         for (;;)
@@ -80,14 +80,14 @@ public class ContactQZoneWebView
         AppMethodBeat.i(79544);
         if (paramAnonymousString.startsWith("weixin://viewimage/"))
         {
-          ContactQZoneWebView.this.aJU(paramAnonymousString);
+          ContactQZoneWebView.this.bab(paramAnonymousString);
           paramAnonymousWebView.stopLoading();
           AppMethodBeat.o(79544);
           return;
         }
         if (paramAnonymousString.equals(ContactQZoneWebView.a(ContactQZoneWebView.this)))
         {
-          bu.ce(ContactQZoneWebView.this, paramAnonymousString);
+          Util.jump(ContactQZoneWebView.this, paramAnonymousString);
           paramAnonymousWebView.stopLoading();
           AppMethodBeat.o(79544);
           return;
@@ -96,8 +96,8 @@ public class ContactQZoneWebView
         AppMethodBeat.o(79544);
       }
     });
-    this.osM.loadUrl(bRn());
-    ae.d("MicroMsg.ContactQZoneWebView", "loadUrl:loadUrl, url = " + bRn());
+    this.pGj.loadUrl(coX());
+    Log.d("MicroMsg.ContactQZoneWebView", "loadUrl:loadUrl, url = " + coX());
     AppMethodBeat.o(79545);
   }
   
@@ -105,7 +105,7 @@ public class ContactQZoneWebView
   {
     AppMethodBeat.i(79546);
     super.onResume();
-    this.EqD = false;
+    this.JdM = false;
     AppMethodBeat.o(79546);
   }
   

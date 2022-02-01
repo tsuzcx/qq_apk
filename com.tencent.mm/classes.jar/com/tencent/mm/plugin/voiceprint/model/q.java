@@ -1,87 +1,87 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class q
-  implements f
+  implements i
 {
-  private String CmN;
-  private int CmT;
-  public String Cng;
-  public int Cnh;
-  public a Cnx;
+  private String GQO;
+  private int GQT;
+  public String GRf;
+  public int GRg;
+  public a GRw;
   
   public q()
   {
     AppMethodBeat.i(29809);
-    this.Cnx = null;
-    this.Cnh = -1;
-    this.Cng = null;
-    this.CmN = null;
-    this.CmT = 0;
-    bc.ajj().a(611, this);
-    bc.ajj().a(613, this);
+    this.GRw = null;
+    this.GRg = -1;
+    this.GRf = null;
+    this.GQO = null;
+    this.GQT = 0;
+    bg.azz().a(611, this);
+    bg.azz().a(613, this);
     AppMethodBeat.o(29809);
   }
   
   public q(a parama)
   {
     this();
-    this.Cnx = parama;
+    this.GRw = parama;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(29810);
-    ae.d("MicroMsg.VoicePrintUnLockService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.d("MicroMsg.VoicePrintUnLockService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 != 0) && (paramInt2 != 0))
     {
       if (paramInt2 == -34)
       {
-        ae.d("MicroMsg.VoicePrintUnLockService", "blocked by limit");
-        if (this.Cnx != null) {
-          this.Cnx.exR();
+        Log.d("MicroMsg.VoicePrintUnLockService", "blocked by limit");
+        if (this.GRw != null) {
+          this.GRw.fEF();
         }
         AppMethodBeat.o(29810);
         return;
       }
-      if (this.Cnx != null) {
-        this.Cnx.exP();
+      if (this.GRw != null) {
+        this.GRw.fED();
       }
       AppMethodBeat.o(29810);
       return;
     }
-    if (paramn.getType() == 611)
+    if (paramq.getType() == 611)
     {
-      paramString = (d)paramn;
-      this.Cnh = paramString.CmM;
-      this.Cng = paramString.CmL;
-      this.CmN = paramString.CmN;
-      ae.d("MicroMsg.VoicePrintUnLockService", "onGetVoiceText, resId:%d, verifyKey:%s, voiceText==null:%b", new Object[] { Integer.valueOf(this.Cnh), this.CmN, Boolean.valueOf(bu.isNullOrNil(this.Cng)) });
-      if (this.Cnx != null) {
-        this.Cnx.aEV(this.Cng);
+      paramString = (d)paramq;
+      this.GRg = paramString.GQN;
+      this.GRf = paramString.GQM;
+      this.GQO = paramString.GQO;
+      Log.d("MicroMsg.VoicePrintUnLockService", "onGetVoiceText, resId:%d, verifyKey:%s, voiceText==null:%b", new Object[] { Integer.valueOf(this.GRg), this.GQO, Boolean.valueOf(Util.isNullOrNil(this.GRf)) });
+      if (this.GRw != null) {
+        this.GRw.aUv(this.GRf);
       }
     }
-    if (paramn.getType() == 613) {
-      if (((j)paramn).Nv == 0)
+    if (paramq.getType() == 613) {
+      if (((j)paramq).NH == 0)
       {
-        ae.d("MicroMsg.VoicePrintUnLockService", "onVerify, success");
-        if (this.Cnx != null)
+        Log.d("MicroMsg.VoicePrintUnLockService", "onVerify, success");
+        if (this.GRw != null)
         {
-          this.Cnx.tg(true);
+          this.GRw.wP(true);
           AppMethodBeat.o(29810);
         }
       }
       else
       {
-        ae.d("MicroMsg.VoicePrintUnLockService", "onVerify, failed");
-        if (this.Cnx != null) {
-          this.Cnx.tg(false);
+        Log.d("MicroMsg.VoicePrintUnLockService", "onVerify, failed");
+        if (this.GRw != null) {
+          this.GRw.wP(false);
         }
       }
     }
@@ -90,18 +90,18 @@ public final class q
   
   public static abstract interface a
   {
-    public abstract void aEV(String paramString);
+    public abstract void aUv(String paramString);
     
-    public abstract void exP();
+    public abstract void fED();
     
-    public abstract void exR();
+    public abstract void fEF();
     
-    public abstract void tg(boolean paramBoolean);
+    public abstract void wP(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.q
  * JD-Core Version:    0.7.0.1
  */

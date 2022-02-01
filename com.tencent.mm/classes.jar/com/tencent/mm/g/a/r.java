@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class r
-  extends b
+  extends IEvent
 {
-  public a dlq;
+  public a dCD;
   
   public r()
   {
@@ -15,22 +16,22 @@ public final class r
   
   private r(byte paramByte)
   {
-    AppMethodBeat.i(218635);
-    this.dlq = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(226034);
+    this.dCD = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(218635);
+    AppMethodBeat.o(226034);
   }
   
   public static final class a
   {
-    public boolean dlr = false;
-    public boolean dls = false;
+    public WXMediaMessage dCE;
+    public String toUser;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.r
  * JD-Core Version:    0.7.0.1
  */

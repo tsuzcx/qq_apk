@@ -3,58 +3,58 @@ package com.tencent.mm.plugin.order.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 
 public final class b
 {
-  public HashSet<String> wSa;
+  public HashSet<String> ANV;
   
   public b()
   {
     AppMethodBeat.i(66658);
-    this.wSa = new HashSet();
-    Zq();
+    this.ANV = new HashSet();
+    and();
     AppMethodBeat.o(66658);
   }
   
-  private void Zq()
+  private void and()
   {
     AppMethodBeat.i(66659);
-    this.wSa.clear();
-    g.ajS();
-    Iterator localIterator = bu.U(((String)g.ajR().ajA().get(204803, "")).split(";")).iterator();
+    this.ANV.clear();
+    g.aAi();
+    Iterator localIterator = Util.stringsToList(((String)g.aAh().azQ().get(204803, "")).split(";")).iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if ((!bu.isNullOrNil(str)) && (!this.wSa.contains(str))) {
-        this.wSa.add(str);
+      if ((!Util.isNullOrNil(str)) && (!this.ANV.contains(str))) {
+        this.ANV.add(str);
       }
     }
-    g.ajS();
-    g.ajR().ajA().set(204817, Integer.valueOf(this.wSa.size()));
-    ae.d("MicroMsg.WalletOrdersManager", "notifyTrans.size() : " + this.wSa.size());
+    g.aAi();
+    g.aAh().azQ().set(204817, Integer.valueOf(this.ANV.size()));
+    Log.d("MicroMsg.WalletOrdersManager", "notifyTrans.size() : " + this.ANV.size());
     AppMethodBeat.o(66659);
   }
   
-  public final void dBs()
+  public final void Yy()
   {
     AppMethodBeat.i(66660);
     StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.wSa.iterator();
+    Iterator localIterator = this.ANV.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (!bu.isNullOrNil(str)) {
+      if (!Util.isNullOrNil(str)) {
         localStringBuffer.append(str + ";");
       }
     }
-    g.ajS();
-    g.ajR().ajA().set(204803, localStringBuffer.toString());
+    g.aAi();
+    g.aAh().azQ().set(204803, localStringBuffer.toString());
     AppMethodBeat.o(66660);
   }
 }

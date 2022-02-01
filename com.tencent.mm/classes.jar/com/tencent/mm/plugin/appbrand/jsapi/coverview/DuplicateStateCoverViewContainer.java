@@ -7,7 +7,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.aa.e;
+import com.tencent.mm.plugin.appbrand.jsapi.ac.e;
 import com.tencent.mm.plugin.appbrand.jsapi.base.f;
 import com.tencent.mm.plugin.appbrand.widget.base.AppBrandViewMotionCompat;
 
@@ -24,7 +24,7 @@ public class DuplicateStateCoverViewContainer
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean bkM()
+  public final boolean bGj()
   {
     return true;
   }
@@ -34,8 +34,8 @@ public class DuplicateStateCoverViewContainer
     AppMethodBeat.i(140671);
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    boolean bool = cD(this).contains(f1, f2);
-    if ((paramMotionEvent.getActionMasked() == 0) && (!G(paramMotionEvent.getX(), paramMotionEvent.getY())) && (!bool))
+    boolean bool = cu(this).contains(f1, f2);
+    if ((paramMotionEvent.getActionMasked() == 0) && (!K(paramMotionEvent.getX(), paramMotionEvent.getY())) && (!bool))
     {
       AppMethodBeat.o(140671);
       return false;
@@ -54,10 +54,10 @@ public class DuplicateStateCoverViewContainer
           View localView = getChildAt(j);
           f1 = paramMotionEvent.getX();
           f2 = paramMotionEvent.getY();
-          if (((!(localView instanceof CoverViewContainer)) || (((CoverViewContainer)localView).bkM())) && (AppBrandViewMotionCompat.cW(localView)) && (AppBrandViewMotionCompat.a(this, f1, f2, localView)) && (localView.isDuplicateParentStateEnabled()))
+          if (((!(localView instanceof CoverViewContainer)) || (((CoverViewContainer)localView).bGj())) && (AppBrandViewMotionCompat.cN(localView)) && (AppBrandViewMotionCompat.a(this, f1, f2, localView)) && (localView.isDuplicateParentStateEnabled()))
           {
             e.a(this, paramMotionEvent, localView, i);
-            if (((localView instanceof f)) && (((f)localView).bjI())) {
+            if (((localView instanceof f)) && (((f)localView).bEY())) {
               break;
             }
           }

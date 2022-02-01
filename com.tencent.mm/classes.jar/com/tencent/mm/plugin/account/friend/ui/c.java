@@ -12,51 +12,51 @@ public final class c
   implements View.OnClickListener
 {
   private Context context;
-  private a jiG;
+  private a kgI;
   
   public c(Context paramContext, a parama)
   {
     this.context = paramContext;
-    this.jiG = parama;
+    this.kgI = parama;
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(131231);
     Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/account/friend/ui/InviteContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    ((b)localObject).bm(paramView);
+    a.b("com/tencent/mm/plugin/account/friend/ui/InviteContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
     paramView = (b)paramView.getTag();
-    localObject = paramView.jiI;
+    localObject = paramView.kgK;
     final int i = paramView.position;
-    int j = p.ew((String)localObject);
+    int j = p.fd((String)localObject);
     new g(this.context, new g.a()
     {
-      public final void h(boolean paramAnonymousBoolean, String paramAnonymousString)
+      public final void i(boolean paramAnonymousBoolean, String paramAnonymousString)
       {
         AppMethodBeat.i(131230);
-        c.a(c.this).ft(paramAnonymousBoolean);
+        c.a(c.this).gm(paramAnonymousBoolean);
         AppMethodBeat.o(131230);
       }
-    }).r(new int[] { j });
+    }).t(new int[] { j });
     a.a(this, "com/tencent/mm/plugin/account/friend/ui/InviteContactListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(131231);
   }
   
   public static abstract interface a
   {
-    public abstract void ft(boolean paramBoolean);
+    public abstract void gm(boolean paramBoolean);
   }
   
   public static final class b
   {
-    public String jiI;
+    public String kgK;
     public int position;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.c
  * JD-Core Version:    0.7.0.1
  */

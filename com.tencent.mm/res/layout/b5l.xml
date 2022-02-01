@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/oc" style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:layout_gravity="center_vertical" android:id="@id/cum" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerVertical="true" />
-    <TextView android:layout_gravity="center_vertical" android:id="@id/cvq" android:layout_width="fill_parent" android:layout_height="@dimen/jm" style="@style/m3" />
-</LinearLayout>

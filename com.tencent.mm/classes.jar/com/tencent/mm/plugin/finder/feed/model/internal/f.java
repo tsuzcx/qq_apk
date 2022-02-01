@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "onFetchDone", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "onFetchDone", "", "response", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "plugin-finder_release"})
 public abstract interface f<T extends i>
 {
   public abstract void onFetchDone(IResponse<T> paramIResponse);

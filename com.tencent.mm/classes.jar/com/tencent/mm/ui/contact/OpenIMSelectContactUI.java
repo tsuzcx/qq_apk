@@ -7,18 +7,19 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.v;
-import com.tencent.mm.n.e;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.z;
+import com.tencent.mm.n.f;
 import com.tencent.mm.openim.a.a.a;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.contact.a.k;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.t.b;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -28,46 +29,46 @@ import java.util.List;
 public class OpenIMSelectContactUI
   extends MMBaseSelectContactUI
 {
-  private int KFT;
-  private HashSet<String> KLl;
-  private HashSet<String> KLm;
-  private int KLn;
-  private boolean KLo;
-  private SelectContactUI.a KLp;
-  private String dwb;
-  private List<String> fUR;
-  private HashSet<String> iYq;
+  private int PSP;
+  private HashSet<String> PYm;
+  private HashSet<String> PYn;
+  private int PYo;
+  private boolean PYp;
+  private SelectContactUI.a PYq;
+  private String dNI;
+  private List<String> gzY;
+  private HashSet<String> jVV;
   private String title;
   
   public OpenIMSelectContactUI()
   {
     AppMethodBeat.i(37946);
-    this.KLo = true;
-    this.KLp = new SelectContactUI.a();
+    this.PYp = true;
+    this.PYq = new SelectContactUI.a();
     AppMethodBeat.o(37946);
   }
   
-  private boolean H(List<String> paramList1, List<String> paramList2)
+  private boolean D(List<String> paramList1, List<String> paramList2)
   {
     AppMethodBeat.i(37955);
-    ae.i("OpenIMSelectContactUI", "handleSelect %s, cancel %s", new Object[] { paramList1, paramList2 });
+    Log.i("OpenIMSelectContactUI", "handleSelect %s, cancel %s", new Object[] { paramList1, paramList2 });
     Intent localIntent = new Intent();
-    localIntent.putExtra("Select_Contact", bu.m(paramList1, ","));
-    localIntent.putExtra("Cancel_Select_Contact", bu.m(paramList2, ","));
+    localIntent.putExtra("Select_Contact", Util.listToString(paramList1, ","));
+    localIntent.putExtra("Cancel_Select_Contact", Util.listToString(paramList2, ","));
     setResult(-1, localIntent);
     finish();
     AppMethodBeat.o(37955);
     return true;
   }
   
-  private void Zv()
+  private void ani()
   {
     AppMethodBeat.i(37953);
-    if ((u.hasAttr(this.KLn, 64)) && (this.iYq.size() > 0))
+    if ((u.hasAttr(this.PYo, 64)) && (this.jVV.size() > 0))
     {
-      updateOptionMenuText(1, getString(2131755693) + "(" + this.iYq.size() + ")");
+      updateOptionMenuText(1, getString(2131755763) + "(" + this.jVV.size() + ")");
       int i = getIntent().getIntExtra("min_limit_num", 0);
-      if ((u.hasAttr(this.KLn, 262144)) && (this.iYq.size() < i))
+      if ((u.hasAttr(this.PYo, 262144)) && (this.jVV.size() < i))
       {
         enableOptionMenu(1, false);
         AppMethodBeat.o(37953);
@@ -77,88 +78,144 @@ public class OpenIMSelectContactUI
       AppMethodBeat.o(37953);
       return;
     }
-    updateOptionMenuText(1, getString(2131755693));
+    updateOptionMenuText(1, getString(2131755763));
     enableOptionMenu(1, false);
     AppMethodBeat.o(37953);
   }
   
-  private void aNT(String paramString)
+  private void bev(String paramString)
   {
     AppMethodBeat.i(37954);
-    if (this.vUs == null)
+    if (this.zoy == null)
     {
       AppMethodBeat.o(37954);
       return;
     }
-    this.vUs.aNT(paramString);
+    this.zoy.bev(paramString);
     AppMethodBeat.o(37954);
   }
   
-  public final void Q(int paramInt, String paramString)
+  public final void M(View paramView, int paramInt)
+  {
+    int i = 0;
+    AppMethodBeat.i(234016);
+    int j = paramInt - getContentLV().getHeaderViewsCount();
+    if (j < 0)
+    {
+      Log.i("OpenIMSelectContactUI", "offsetPosition is Smaller than 0, offsetPosition=%d | position=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(234016);
+      return;
+    }
+    paramView = gUP().anH(j);
+    if (paramView == null)
+    {
+      AppMethodBeat.o(234016);
+      return;
+    }
+    if (paramView.contact == null)
+    {
+      AppMethodBeat.o(234016);
+      return;
+    }
+    if (paramView.contact.field_deleteFlag == 1)
+    {
+      AppMethodBeat.o(234016);
+      return;
+    }
+    paramView = paramView.contact.field_username;
+    Log.i("OpenIMSelectContactUI", "ClickUser=%s", new Object[] { paramView });
+    if (u.hasAttr(this.PYo, 64))
+    {
+      if ((u.hasAttr(this.PYo, 131072)) && (this.jVV.size() >= getIntent().getIntExtra("max_limit_num", 2147483647))) {
+        if (!this.PYm.contains(paramView))
+        {
+          gUW();
+          if (this.jVV.contains(paramView))
+          {
+            bev(paramView);
+            this.jVV.remove(paramView);
+          }
+        }
+        else
+        {
+          ani();
+          if ((this.PYp) && ((this.PSP == 1) || (this.PSP == 0))) {
+            if (this.PYm == null) {
+              break label444;
+            }
+          }
+        }
+      }
+      label444:
+      for (paramInt = this.PYm.size();; paramInt = 0)
+      {
+        if (this.jVV != null) {
+          i = this.jVV.size();
+        }
+        j = Util.safeParseInt(com.tencent.mm.n.h.aqJ().getValue("ChatRoomInviteStartCount"));
+        this.PYq.e(this, paramInt + i, j);
+        gUQ().notifyDataSetChanged();
+        AppMethodBeat.o(234016);
+        return;
+        String str = getIntent().getStringExtra("too_many_member_tip_string");
+        paramView = str;
+        if (Util.isNullOrNil(str)) {
+          paramView = getString(2131765131, new Object[] { Integer.valueOf(getIntent().getIntExtra("max_limit_num", 10)) });
+        }
+        com.tencent.mm.ui.base.h.d(getContext(), paramView, "", new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
+        });
+        break;
+        if (this.PYm.contains(paramView)) {
+          break;
+        }
+        gUW();
+        bev(paramView);
+        if (this.jVV.contains(paramView))
+        {
+          this.jVV.remove(paramView);
+          break;
+        }
+        this.jVV.add(paramView);
+        break;
+      }
+    }
+    D(Util.stringsToList(new String[] { paramView }), new ArrayList(0));
+    AppMethodBeat.o(234016);
+  }
+  
+  public final void T(int paramInt, String paramString)
   {
     AppMethodBeat.i(37956);
     if (paramInt == 1)
     {
-      this.iYq.remove(paramString);
-      fMv().notifyDataSetChanged();
-      Zv();
+      this.jVV.remove(paramString);
+      gUP().notifyDataSetChanged();
+      ani();
     }
     AppMethodBeat.o(37956);
-  }
-  
-  protected final void Zm()
-  {
-    AppMethodBeat.i(37948);
-    super.Zm();
-    this.dwb = getIntent().getStringExtra("openim_appid");
-    this.title = getIntent().getStringExtra("titile");
-    this.KFT = getIntent().getIntExtra("list_type", -1);
-    this.KLn = getIntent().getIntExtra("list_attr", u.KJQ);
-    this.fUR = new ArrayList();
-    this.iYq = new HashSet();
-    this.KLm = new HashSet();
-    this.KLl = new HashSet();
-    Object localObject = getIntent().getStringExtra("always_select_contact");
-    if (!bu.isNullOrNil((String)localObject)) {
-      this.KLl.addAll(bu.U(((String)localObject).split(",")));
-    }
-    localObject = getIntent().getStringExtra("already_select_contact");
-    if (!bu.isNullOrNil((String)localObject))
-    {
-      this.iYq.addAll(bu.U(((String)localObject).split(",")));
-      this.KLm.addAll(this.iYq);
-    }
-    localObject = new HashSet();
-    String str = getIntent().getStringExtra("block_contact");
-    if (!bu.isNullOrNil(str)) {
-      ((HashSet)localObject).addAll(bu.U(str.split(",")));
-    }
-    localObject = new HashSet((Collection)localObject);
-    ((HashSet)localObject).addAll(u.fMH());
-    ((HashSet)localObject).addAll(u.fMI());
-    this.fUR.addAll((Collection)localObject);
-    AppMethodBeat.o(37948);
   }
   
   public final boolean a(com.tencent.mm.ui.contact.a.a parama)
   {
     AppMethodBeat.i(37957);
     boolean bool;
-    if ((parama.KJj) && (parama.contact != null))
+    if ((parama.PWh) && (parama.contact != null))
     {
-      bool = this.iYq.contains(parama.contact.field_username);
+      bool = this.jVV.contains(parama.contact.field_username);
       AppMethodBeat.o(37957);
       return bool;
     }
-    if ((parama.KJk) && (parama.contact != null))
+    if ((parama.PWi) && (parama.contact != null))
     {
-      bool = this.iYq.contains(parama.contact.field_username);
+      bool = this.jVV.contains(parama.contact.field_username);
       AppMethodBeat.o(37957);
       return bool;
     }
     if ((parama instanceof k))
     {
-      bool = this.iYq.isEmpty();
+      bool = this.jVV.isEmpty();
       AppMethodBeat.o(37957);
       return bool;
     }
@@ -166,50 +223,46 @@ public class OpenIMSelectContactUI
     return false;
   }
   
-  protected final boolean aRT()
+  protected final void amZ()
   {
-    return false;
-  }
-  
-  protected final boolean aRU()
-  {
-    return false;
-  }
-  
-  protected final String aRV()
-  {
-    AppMethodBeat.i(37949);
-    if (bu.isNullOrNil(this.title)) {
-      this.title = ((com.tencent.mm.openim.a.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.openim.a.a.class)).a(this.dwb, "openim_acct_type_title", a.a.iKm);
+    AppMethodBeat.i(37948);
+    super.amZ();
+    this.dNI = getIntent().getStringExtra("openim_appid");
+    this.title = getIntent().getStringExtra("titile");
+    this.PSP = getIntent().getIntExtra("list_type", -1);
+    this.PYo = getIntent().getIntExtra("list_attr", u.PWR);
+    this.gzY = new ArrayList();
+    this.jVV = new HashSet();
+    this.PYn = new HashSet();
+    this.PYm = new HashSet();
+    Object localObject = getIntent().getStringExtra("always_select_contact");
+    if (!Util.isNullOrNil((String)localObject)) {
+      this.PYm.addAll(Util.stringsToList(((String)localObject).split(",")));
     }
-    String str = this.title;
-    AppMethodBeat.o(37949);
-    return str;
-  }
-  
-  protected final q aRW()
-  {
-    AppMethodBeat.i(37950);
-    boolean bool = u.hasAttr(this.KLn, 64);
-    aa localaa = new aa(this.dwb, this, this.fUR, bool);
-    AppMethodBeat.o(37950);
-    return localaa;
-  }
-  
-  protected final o aRX()
-  {
-    AppMethodBeat.i(37951);
-    s locals = new s(this, this.fUR, u.hasAttr(this.KLn, 64), this.scene);
-    AppMethodBeat.o(37951);
-    return locals;
+    localObject = getIntent().getStringExtra("already_select_contact");
+    if (!Util.isNullOrNil((String)localObject))
+    {
+      this.jVV.addAll(Util.stringsToList(((String)localObject).split(",")));
+      this.PYn.addAll(this.jVV);
+    }
+    localObject = new HashSet();
+    String str = getIntent().getStringExtra("block_contact");
+    if (!Util.isNullOrNil(str)) {
+      ((HashSet)localObject).addAll(Util.stringsToList(str.split(",")));
+    }
+    localObject = new HashSet((Collection)localObject);
+    ((HashSet)localObject).addAll(u.gVb());
+    ((HashSet)localObject).addAll(u.gVc());
+    this.gzY.addAll((Collection)localObject);
+    AppMethodBeat.o(37948);
   }
   
   public final boolean b(com.tencent.mm.ui.contact.a.a parama)
   {
     AppMethodBeat.i(37958);
-    if ((parama.KJj) && (parama.contact != null))
+    if ((parama.PWh) && (parama.contact != null))
     {
-      boolean bool = this.KLl.contains(parama.contact.field_username);
+      boolean bool = this.PYm.contains(parama.contact.field_username);
       AppMethodBeat.o(37958);
       return bool;
     }
@@ -217,7 +270,45 @@ public class OpenIMSelectContactUI
     return false;
   }
   
-  public final boolean fME()
+  protected final boolean bmA()
+  {
+    return false;
+  }
+  
+  protected final String bmB()
+  {
+    AppMethodBeat.i(37949);
+    if (Util.isNullOrNil(this.title)) {
+      this.title = ((com.tencent.mm.openim.a.a)g.af(com.tencent.mm.openim.a.a.class)).a(this.dNI, "openim_acct_type_title", a.a.jGS);
+    }
+    String str = this.title;
+    AppMethodBeat.o(37949);
+    return str;
+  }
+  
+  protected final q bmC()
+  {
+    AppMethodBeat.i(37950);
+    boolean bool = u.hasAttr(this.PYo, 64);
+    aa localaa = new aa(this.dNI, this, this.gzY, bool);
+    AppMethodBeat.o(37950);
+    return localaa;
+  }
+  
+  protected final o bmD()
+  {
+    AppMethodBeat.i(37951);
+    s locals = new s(this, this.gzY, u.hasAttr(this.PYo, 64), this.scene);
+    AppMethodBeat.o(37951);
+    return locals;
+  }
+  
+  protected final boolean bmz()
+  {
+    return false;
+  }
+  
+  public final boolean gUY()
   {
     return false;
   }
@@ -226,26 +317,26 @@ public class OpenIMSelectContactUI
   {
     AppMethodBeat.i(37947);
     super.onCreate(paramBundle);
-    if (u.hasAttr(this.KLn, 64)) {
-      addTextOptionMenu(1, getString(2131755835), new MenuItem.OnMenuItemClickListener()
+    if (u.hasAttr(this.PYo, 64)) {
+      addTextOptionMenu(1, getString(2131755921), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(37945);
           paramAnonymousMenuItem = OpenIMSelectContactUI.a(OpenIMSelectContactUI.this, u.hasAttr(OpenIMSelectContactUI.a(OpenIMSelectContactUI.this), 8192));
-          paramAnonymousMenuItem.remove(v.aAC());
+          paramAnonymousMenuItem.remove(z.aTY());
           ArrayList localArrayList = new ArrayList(OpenIMSelectContactUI.b(OpenIMSelectContactUI.this));
           localArrayList.removeAll(paramAnonymousMenuItem);
           boolean bool = OpenIMSelectContactUI.a(OpenIMSelectContactUI.this, paramAnonymousMenuItem, localArrayList);
           AppMethodBeat.o(37945);
           return bool;
         }
-      }, null, s.b.JwA);
+      }, null, t.b.OGU);
     }
-    Zv();
-    paramBundle = this.iYq.iterator();
+    ani();
+    paramBundle = this.jVV.iterator();
     while (paramBundle.hasNext()) {
-      aNT((String)paramBundle.next());
+      bev((String)paramBundle.next());
     }
     AppMethodBeat.o(37947);
   }
@@ -255,100 +346,10 @@ public class OpenIMSelectContactUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  public final void rj(int paramInt)
-  {
-    int i = 0;
-    AppMethodBeat.i(37952);
-    int j = paramInt - getContentLV().getHeaderViewsCount();
-    if (j < 0)
-    {
-      ae.i("OpenIMSelectContactUI", "offsetPosition is Smaller than 0, offsetPosition=%d | position=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(37952);
-      return;
-    }
-    Object localObject = fMv().aeW(j);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(37952);
-      return;
-    }
-    if (((com.tencent.mm.ui.contact.a.a)localObject).contact == null)
-    {
-      AppMethodBeat.o(37952);
-      return;
-    }
-    if (((com.tencent.mm.ui.contact.a.a)localObject).contact.field_deleteFlag == 1)
-    {
-      AppMethodBeat.o(37952);
-      return;
-    }
-    localObject = ((com.tencent.mm.ui.contact.a.a)localObject).contact.field_username;
-    ae.i("OpenIMSelectContactUI", "ClickUser=%s", new Object[] { localObject });
-    if (u.hasAttr(this.KLn, 64))
-    {
-      if ((u.hasAttr(this.KLn, 131072)) && (this.iYq.size() >= getIntent().getIntExtra("max_limit_num", 2147483647))) {
-        if (!this.KLl.contains(localObject))
-        {
-          fMC();
-          if (this.iYq.contains(localObject))
-          {
-            aNT((String)localObject);
-            this.iYq.remove(localObject);
-          }
-        }
-        else
-        {
-          Zv();
-          if ((this.KLo) && ((this.KFT == 1) || (this.KFT == 0))) {
-            if (this.KLl == null) {
-              break label464;
-            }
-          }
-        }
-      }
-      label464:
-      for (paramInt = this.KLl.size();; paramInt = 0)
-      {
-        if (this.iYq != null) {
-          i = this.iYq.size();
-        }
-        j = bu.aSB(com.tencent.mm.n.g.acL().getValue("ChatRoomInviteStartCount"));
-        this.KLp.e(this, paramInt + i, j);
-        fMw().notifyDataSetChanged();
-        AppMethodBeat.o(37952);
-        return;
-        String str = getIntent().getStringExtra("too_many_member_tip_string");
-        localObject = str;
-        if (bu.isNullOrNil(str)) {
-          localObject = getString(2131762994, new Object[] { Integer.valueOf(getIntent().getIntExtra("max_limit_num", 10)) });
-        }
-        h.d(getContext(), (String)localObject, "", new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
-        });
-        break;
-        if (this.KLl.contains(localObject)) {
-          break;
-        }
-        fMC();
-        aNT((String)localObject);
-        if (this.iYq.contains(localObject))
-        {
-          this.iYq.remove(localObject);
-          break;
-        }
-        this.iYq.add(localObject);
-        break;
-      }
-    }
-    H(bu.U(new String[] { localObject }), new ArrayList(0));
-    AppMethodBeat.o(37952);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.contact.OpenIMSelectContactUI
  * JD-Core Version:    0.7.0.1
  */

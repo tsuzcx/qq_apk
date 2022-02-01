@@ -2,26 +2,26 @@ package com.tencent.mm.lib.riskscanner;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class a
 {
-  private static ThreadLocal<Long> gIH;
+  private static ThreadLocal<Long> hvA;
   
   static
   {
     AppMethodBeat.i(138298);
-    gIH = new ThreadLocal();
+    hvA = new ThreadLocal();
     AppMethodBeat.o(138298);
   }
   
-  public static void alh()
+  public static void aBA()
   {
     AppMethodBeat.i(138295);
-    ae.i("MicroMsg.RiskScannerReportService", "Report scan triggering.");
-    e.ywz.idkeyStat(590L, 0L, 1L, true);
-    gIH.set(Long.valueOf(bu.HQ()));
+    Log.i("MicroMsg.RiskScannerReportService", "Report scan triggering.");
+    e.Cxv.idkeyStat(590L, 0L, 1L, true);
+    hvA.set(Long.valueOf(Util.currentTicks()));
     AppMethodBeat.o(138295);
   }
   
@@ -40,10 +40,10 @@ final class a
     //   15: aload_0
     //   16: invokevirtual 77	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   19: aastore
-    //   20: invokestatic 80	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   23: getstatic 23	com/tencent/mm/lib/riskscanner/a:gIH	Ljava/lang/ThreadLocal;
+    //   20: invokestatic 80	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   23: getstatic 23	com/tencent/mm/lib/riskscanner/a:hvA	Ljava/lang/ThreadLocal;
     //   26: invokevirtual 83	java/lang/ThreadLocal:remove	()V
-    //   29: getstatic 44	com/tencent/mm/plugin/report/e:ywz	Lcom/tencent/mm/plugin/report/e;
+    //   29: getstatic 44	com/tencent/mm/plugin/report/e:Cxv	Lcom/tencent/mm/plugin/report/e;
     //   32: ldc2_w 45
     //   35: ldc2_w 84
     //   38: lconst_1
@@ -69,7 +69,7 @@ final class a
     //   75: ldc 107
     //   77: invokevirtual 113	java/lang/String:replace	(Ljava/lang/CharSequence;Ljava/lang/CharSequence;)Ljava/lang/String;
     //   80: astore_0
-    //   81: getstatic 44	com/tencent/mm/plugin/report/e:ywz	Lcom/tencent/mm/plugin/report/e;
+    //   81: getstatic 44	com/tencent/mm/plugin/report/e:Cxv	Lcom/tencent/mm/plugin/report/e;
     //   84: sipush 14177
     //   87: ldc 115
     //   89: aload_0
@@ -188,37 +188,37 @@ final class a
     //   60	101	232	java/lang/Throwable
   }
   
-  public static void mZ(int paramInt)
+  public static void qn(int paramInt)
   {
     AppMethodBeat.i(138297);
-    ae.i("MicroMsg.RiskScannerReportService", "Report scan result, %d", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.RiskScannerReportService", "Report scan result, %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
-      e.ywz.idkeyStat(590L, 3L, 1L, true);
+      e.Cxv.idkeyStat(590L, 3L, 1L, true);
       AppMethodBeat.o(138297);
       return;
     case 0: 
-      Long localLong = (Long)gIH.get();
+      Long localLong = (Long)hvA.get();
       if (localLong != null)
       {
-        long l = bu.HQ() - localLong.longValue();
-        ae.i("MicroMsg.RiskScannerReportService", "Scan cost: %d ms", new Object[] { Long.valueOf(l) });
-        e.ywz.c(590, 5, 1, (int)l, true);
+        long l = Util.currentTicks() - localLong.longValue();
+        Log.i("MicroMsg.RiskScannerReportService", "Scan cost: %d ms", new Object[] { Long.valueOf(l) });
+        e.Cxv.b(590, 5, 1, (int)l, true);
         AppMethodBeat.o(138297);
         return;
       }
-      e.ywz.idkeyStat(590L, 1L, 1L, true);
+      e.Cxv.idkeyStat(590L, 1L, 1L, true);
       AppMethodBeat.o(138297);
       return;
     }
-    e.ywz.idkeyStat(590L, 2L, 1L, true);
+    e.Cxv.idkeyStat(590L, 2L, 1L, true);
     AppMethodBeat.o(138297);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.lib.riskscanner.a
  * JD-Core Version:    0.7.0.1
  */

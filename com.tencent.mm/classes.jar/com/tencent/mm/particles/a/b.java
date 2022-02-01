@@ -10,39 +10,39 @@ import android.view.animation.Interpolator;
 public abstract class b
 {
   public int alpha;
-  private final Matrix gR = new Matrix();
-  public Interpolator iLK;
-  public Rect iLL;
-  public float iLQ;
-  public float iLS;
-  public Float iLU;
-  public Float iLW;
-  public Long iMA;
-  public Long iMB;
-  public float iMC;
-  public float iMD;
-  public Long iME;
-  public float iMF;
-  public float iMG;
-  public float iMH;
-  public float iMI;
-  public float iMJ;
-  public boolean iMK;
-  public boolean iML;
-  public float iMM;
-  public float iMN;
-  public float iMO;
-  public float iMP;
-  public float iMc;
-  public Float iMe;
-  public long iMg;
-  private final Paint iMu = new Paint(1);
-  public long iMv;
-  public float iMw;
-  public float iMx;
-  public float iMy;
-  public float iMz;
-  public VelocityTracker oj;
+  private final Matrix gT = new Matrix();
+  public float jIE;
+  public float jIG;
+  public Float jII;
+  public Float jIK;
+  public float jIQ;
+  public Float jIS;
+  public long jIU;
+  public Interpolator jIy;
+  public Rect jIz;
+  public float jJA;
+  public float jJB;
+  public float jJC;
+  public float jJD;
+  private final Paint jJi = new Paint(1);
+  public long jJj;
+  public float jJk;
+  public float jJl;
+  public float jJm;
+  public float jJn;
+  public Long jJo;
+  public Long jJp;
+  public float jJq;
+  public float jJr;
+  public Long jJs;
+  public float jJt;
+  public float jJu;
+  public float jJv;
+  public float jJw;
+  public float jJx;
+  public boolean jJy;
+  public boolean jJz;
+  public VelocityTracker ol;
   public boolean terminated;
   
   public static float a(long paramLong, float paramFloat1, float paramFloat2, float paramFloat3, Long paramLong1, Float paramFloat)
@@ -139,74 +139,84 @@ public abstract class b
   public final void a(Canvas paramCanvas, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     paramCanvas.save();
-    paramCanvas.clipRect(this.iLL);
-    this.gR.reset();
-    this.iMu.setAlpha(this.alpha);
-    a(paramCanvas, this.gR, this.iMu, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    paramCanvas.clipRect(this.jIz);
+    this.gT.reset();
+    this.jJi.setAlpha(this.alpha);
+    a(paramCanvas, this.gT, this.jJi, paramFloat1, paramFloat2, paramFloat3, paramFloat4);
     paramCanvas.restore();
   }
   
   protected abstract void a(Canvas paramCanvas, Matrix paramMatrix, Paint paramPaint, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
   
+  public final float bkP()
+  {
+    return this.jJk;
+  }
+  
+  public final float bkQ()
+  {
+    return this.jJl;
+  }
+  
   public abstract int getHeight();
   
   public abstract int getWidth();
   
-  public final void j(Rect paramRect)
+  public final void k(Rect paramRect)
   {
-    this.iLL = paramRect;
-    this.iMA = a(this.iLU, this.iMy, this.iLQ);
-    this.iMB = a(this.iLW, this.iMz, this.iLS);
-    this.iME = a(this.iMe, this.iMD, this.iMc);
-    if (this.iMF == 0.0F) {
-      if (this.iMg < 0L) {
+    this.jIz = paramRect;
+    this.jJo = a(this.jII, this.jJm, this.jIE);
+    this.jJp = a(this.jIK, this.jJn, this.jIG);
+    this.jJs = a(this.jIS, this.jJr, this.jIQ);
+    if (this.jJt == 0.0F) {
+      if (this.jIU < 0L) {
         break label199;
       }
     }
     label199:
-    for (float f = (float)this.iMg;; f = 9.223372E+018F)
+    for (float f = (float)this.jIU;; f = 9.223372E+018F)
     {
-      this.iMF = f;
-      this.iMF = Math.min((float)a(this.iMw, this.iMy, this.iLQ, this.iMA, this.iLU, paramRect.left - getWidth(), paramRect.right), this.iMF);
-      this.iMF = Math.min((float)a(this.iMx, this.iMz, this.iLS, this.iMB, this.iLW, paramRect.top - getHeight(), paramRect.bottom), this.iMF);
-      this.iMu.setAlpha(this.alpha);
+      this.jJt = f;
+      this.jJt = Math.min((float)a(this.jJk, this.jJm, this.jIE, this.jJo, this.jII, paramRect.left - getWidth(), paramRect.right), this.jJt);
+      this.jJt = Math.min((float)a(this.jJl, this.jJn, this.jIG, this.jJp, this.jIK, paramRect.top - getHeight(), paramRect.bottom), this.jJt);
+      this.jJi.setAlpha(this.alpha);
       return;
     }
   }
   
   public void reset()
   {
-    this.iMv = 0L;
-    this.iMx = 0.0F;
-    this.iMw = 0.0F;
-    this.iMz = 0.0F;
-    this.iMy = 0.0F;
-    this.iLS = 0.0F;
-    this.iLQ = 0.0F;
-    this.iLW = null;
-    this.iLU = null;
-    this.iMB = null;
-    this.iMA = null;
-    this.iMC = 0.0F;
-    this.iMD = 0.0F;
-    this.iMc = 0.0F;
-    this.iMe = null;
-    this.iME = null;
-    this.iMg = 0L;
-    this.iMF = 0.0F;
-    this.iMG = 0.0F;
-    this.iLK = null;
-    this.iMI = 0.0F;
-    this.iMH = 0.0F;
-    this.iMJ = 0.0F;
+    this.jJj = 0L;
+    this.jJl = 0.0F;
+    this.jJk = 0.0F;
+    this.jJn = 0.0F;
+    this.jJm = 0.0F;
+    this.jIG = 0.0F;
+    this.jIE = 0.0F;
+    this.jIK = null;
+    this.jII = null;
+    this.jJp = null;
+    this.jJo = null;
+    this.jJq = 0.0F;
+    this.jJr = 0.0F;
+    this.jIQ = 0.0F;
+    this.jIS = null;
+    this.jJs = null;
+    this.jIU = 0L;
+    this.jJt = 0.0F;
+    this.jJu = 0.0F;
+    this.jIy = null;
+    this.jJw = 0.0F;
+    this.jJv = 0.0F;
+    this.jJx = 0.0F;
     this.alpha = 255;
-    this.iMK = false;
+    this.jJy = false;
     this.terminated = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.particles.a.b
  * JD-Core Version:    0.7.0.1
  */

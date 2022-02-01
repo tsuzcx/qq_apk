@@ -1,7 +1,6 @@
 package com.tencent.smtt.sdk;
 
 import android.annotation.TargetApi;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -9,7 +8,9 @@ import android.os.Build.VERSION;
 import android.os.Message;
 import android.view.View;
 import android.webkit.GeolocationPermissions.Callback;
+import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient.CustomViewCallback;
+import android.webkit.WebChromeClient.FileChooserParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.interfaces.GeolocationPermissionsCallback;
 import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomViewCallback;
@@ -56,18 +57,10 @@ class SystemWebChromeClient
     return localView;
   }
   
-  public void getVisitedHistory(final android.webkit.ValueCallback<String[]> paramValueCallback)
+  public void getVisitedHistory(ValueCallback<String[]> paramValueCallback)
   {
     AppMethodBeat.i(54844);
-    this.b.getVisitedHistory(new ValueCallback()
-    {
-      public void a(String[] paramAnonymousArrayOfString)
-      {
-        AppMethodBeat.i(54566);
-        paramValueCallback.onReceiveValue(paramAnonymousArrayOfString);
-        AppMethodBeat.o(54566);
-      }
-    });
+    this.b.getVisitedHistory(new SystemWebChromeClient.1(this, paramValueCallback));
     AppMethodBeat.o(54844);
   }
   
@@ -264,100 +257,35 @@ class SystemWebChromeClient
     AppMethodBeat.o(54864);
   }
   
-  public boolean onShowFileChooser(android.webkit.WebView paramWebView, final android.webkit.ValueCallback<Uri[]> paramValueCallback, final android.webkit.WebChromeClient.FileChooserParams paramFileChooserParams)
+  public boolean onShowFileChooser(android.webkit.WebView paramWebView, ValueCallback<Uri[]> paramValueCallback, WebChromeClient.FileChooserParams paramFileChooserParams)
   {
     AppMethodBeat.i(54869);
-    paramValueCallback = new ValueCallback()
-    {
-      public void a(Uri[] paramAnonymousArrayOfUri)
-      {
-        AppMethodBeat.i(54940);
-        paramValueCallback.onReceiveValue(paramAnonymousArrayOfUri);
-        AppMethodBeat.o(54940);
-      }
-    };
-    paramFileChooserParams = new WebChromeClient.FileChooserParams()
-    {
-      public Intent createIntent()
-      {
-        AppMethodBeat.i(54062);
-        Intent localIntent = paramFileChooserParams.createIntent();
-        AppMethodBeat.o(54062);
-        return localIntent;
-      }
-      
-      public String[] getAcceptTypes()
-      {
-        AppMethodBeat.i(54058);
-        String[] arrayOfString = paramFileChooserParams.getAcceptTypes();
-        AppMethodBeat.o(54058);
-        return arrayOfString;
-      }
-      
-      public String getFilenameHint()
-      {
-        AppMethodBeat.i(54061);
-        String str = paramFileChooserParams.getFilenameHint();
-        AppMethodBeat.o(54061);
-        return str;
-      }
-      
-      public int getMode()
-      {
-        AppMethodBeat.i(54057);
-        int i = paramFileChooserParams.getMode();
-        AppMethodBeat.o(54057);
-        return i;
-      }
-      
-      public CharSequence getTitle()
-      {
-        AppMethodBeat.i(54060);
-        CharSequence localCharSequence = paramFileChooserParams.getTitle();
-        AppMethodBeat.o(54060);
-        return localCharSequence;
-      }
-      
-      public boolean isCaptureEnabled()
-      {
-        AppMethodBeat.i(54059);
-        boolean bool = paramFileChooserParams.isCaptureEnabled();
-        AppMethodBeat.o(54059);
-        return bool;
-      }
-    };
+    paramValueCallback = new SystemWebChromeClient.4(this, paramValueCallback);
+    paramFileChooserParams = new SystemWebChromeClient.5(this, paramFileChooserParams);
     this.a.a(paramWebView);
     boolean bool = this.b.onShowFileChooser(this.a, paramValueCallback, paramFileChooserParams);
     AppMethodBeat.o(54869);
     return bool;
   }
   
-  public void openFileChooser(android.webkit.ValueCallback<Uri> paramValueCallback)
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback)
   {
     AppMethodBeat.i(54866);
     openFileChooser(paramValueCallback, null, null);
     AppMethodBeat.o(54866);
   }
   
-  public void openFileChooser(android.webkit.ValueCallback<Uri> paramValueCallback, String paramString)
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString)
   {
     AppMethodBeat.i(54867);
     openFileChooser(paramValueCallback, paramString, null);
     AppMethodBeat.o(54867);
   }
   
-  public void openFileChooser(final android.webkit.ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
+  public void openFileChooser(ValueCallback<Uri> paramValueCallback, String paramString1, String paramString2)
   {
     AppMethodBeat.i(54868);
-    this.b.openFileChooser(new ValueCallback()
-    {
-      public void a(Uri paramAnonymousUri)
-      {
-        AppMethodBeat.i(54333);
-        paramValueCallback.onReceiveValue(paramAnonymousUri);
-        AppMethodBeat.o(54333);
-      }
-    }, paramString1, paramString2);
+    this.b.openFileChooser(new SystemWebChromeClient.3(this, paramValueCallback), paramString1, paramString2);
     AppMethodBeat.o(54868);
   }
   
@@ -523,7 +451,7 @@ class SystemWebChromeClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebChromeClient
  * JD-Core Version:    0.7.0.1
  */

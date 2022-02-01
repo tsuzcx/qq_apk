@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/d3q" android:padding="@dimen/hd" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ProgressBar android:layout_width="@dimen/b7" android:layout_height="@dimen/b7" android:indeterminateDrawable="@drawable/c8j" />
-        <TextView android:textSize="@dimen/gu" android:textColor="@color/FG_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:text="@string/hvp" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/hyc" android:padding="@dimen/hd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/b7" android:layout_height="@dimen/b7" android:src="@raw/icons_outlined_refresh" app:iconColor="@color/FG_1" />
-        <TextView android:textSize="@dimen/gu" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:text="@string/hvo" />
-    </LinearLayout>
-</FrameLayout>
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:id="@id/bf6" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ad.widget.twistad.TwistDegreeView android:id="@id/iza" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/gab" android:layout_width="58.0dip" android:layout_height="58.0dip" android:layout_marginTop="4.0dip" android:src="@drawable/bth" android:scaleType="centerInside" />
+    <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/ir5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="30.0dip" android:singleLine="true" android:includeFontPadding="false" android:shadowColor="#33000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
+    <TextView android:textSize="17.0dip" android:textColor="#ccffffff" android:ellipsize="end" android:id="@id/bn8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="30.0dip" android:singleLine="true" android:includeFontPadding="false" android:shadowColor="#33000000" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" />
+</LinearLayout>

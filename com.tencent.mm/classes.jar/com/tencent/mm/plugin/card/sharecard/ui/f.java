@@ -11,36 +11,36 @@ import com.tencent.mm.ui.MMActivity;
 
 public final class f
 {
-  View iFK;
-  private MMActivity oDq;
-  b oJE;
-  ImageView oJI;
-  TextView oJJ;
-  TextView oJK;
+  View jBN;
+  private MMActivity pQZ;
+  b pXs;
+  ImageView pXw;
+  TextView pXx;
+  TextView pXy;
   
   public f(MMActivity paramMMActivity, View paramView)
   {
-    this.oDq = paramMMActivity;
-    this.iFK = paramView;
+    this.pQZ = paramMMActivity;
+    this.jBN = paramView;
   }
   
   public final void updateView()
   {
     AppMethodBeat.i(113091);
-    this.oJJ.setVisibility(0);
-    this.oJI.setImageDrawable(this.oDq.getResources().getDrawable(2131231458));
-    this.oJJ.setText(2131756970);
-    this.oJK.setText(2131756969);
-    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.oJI.getLayoutParams();
-    localLayoutParams.topMargin = this.oDq.getResources().getDimensionPixelOffset(2131165993);
-    this.oJI.setLayoutParams(localLayoutParams);
-    this.oJI.invalidate();
+    this.pXx.setVisibility(0);
+    this.pXw.setImageDrawable(this.pQZ.getResources().getDrawable(2131231522));
+    this.pXx.setText(2131757140);
+    this.pXy.setText(2131757139);
+    LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.pXw.getLayoutParams();
+    localLayoutParams.topMargin = this.pQZ.getResources().getDimensionPixelOffset(2131166025);
+    this.pXw.setLayoutParams(localLayoutParams);
+    this.pXw.invalidate();
     AppMethodBeat.o(113091);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.f
  * JD-Core Version:    0.7.0.1
  */

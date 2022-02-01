@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckBox android:textColor="@color/vj" android:ellipsize="end" android:gravity="center" android:id="@id/dje" android:background="@drawable/a2d" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="36.0dip" android:maxHeight="36.0dip" android:minHeight="36.0dip" android:singleLine="true" style="@style/ql"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="top" android:orientation="horizontal" android:background="@color/afz" android:paddingLeft="@dimen/aot" android:paddingTop="@dimen/ib" android:paddingRight="@dimen/aot" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="13.0dip" android:textColor="@color/a2t" android:ellipsize="end" android:id="@id/e61" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:maxEms="8" android:singleLine="true" android:includeFontPadding="false" />
+    <TextView android:textSize="13.0dip" android:textColor="@color/a2x" android:gravity="left" android:id="@id/j2g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="28.0dip" android:singleLine="false" android:includeFontPadding="false" />
+</LinearLayout>

@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ahf;
+import com.tencent.mm.protocal.protobuf.ajr;
 
 public class EnterTimeParcel
   implements Parcelable
 {
   public static final Parcelable.Creator<EnterTimeParcel> CREATOR;
-  public String hDr;
-  public int yif;
-  public String yig;
-  public String yih;
-  public int yii;
+  public int Cjg;
+  public String Cjh;
+  public String Cji;
+  public int Cjj;
+  public String ixw;
   
   static
   {
@@ -28,21 +28,21 @@ public class EnterTimeParcel
   public EnterTimeParcel(Parcel paramParcel)
   {
     AppMethodBeat.i(67406);
-    this.yif = paramParcel.readInt();
-    this.yig = paramParcel.readString();
-    this.yih = paramParcel.readString();
-    this.yii = paramParcel.readInt();
-    this.hDr = paramParcel.readString();
+    this.Cjg = paramParcel.readInt();
+    this.Cjh = paramParcel.readString();
+    this.Cji = paramParcel.readString();
+    this.Cjj = paramParcel.readInt();
+    this.ixw = paramParcel.readString();
     AppMethodBeat.o(67406);
   }
   
-  public EnterTimeParcel(ahf paramahf)
+  public EnterTimeParcel(ajr paramajr)
   {
-    this.yif = paramahf.yif;
-    this.yig = paramahf.yig;
-    this.yih = paramahf.yih;
-    this.yii = paramahf.yii;
-    this.hDr = paramahf.hDr;
+    this.Cjg = paramajr.Cjg;
+    this.Cjh = paramajr.Cjh;
+    this.Cji = paramajr.Cji;
+    this.Cjj = paramajr.Cjj;
+    this.ixw = paramajr.ixw;
   }
   
   public int describeContents()
@@ -53,17 +53,17 @@ public class EnterTimeParcel
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(67407);
-    paramParcel.writeInt(this.yif);
-    paramParcel.writeString(this.yig);
-    paramParcel.writeString(this.yih);
-    paramParcel.writeInt(this.yii);
-    paramParcel.writeString(this.hDr);
+    paramParcel.writeInt(this.Cjg);
+    paramParcel.writeString(this.Cjh);
+    paramParcel.writeString(this.Cji);
+    paramParcel.writeInt(this.Cjj);
+    paramParcel.writeString(this.ixw);
     AppMethodBeat.o(67407);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.model.EnterTimeParcel
  * JD-Core Version:    0.7.0.1
  */

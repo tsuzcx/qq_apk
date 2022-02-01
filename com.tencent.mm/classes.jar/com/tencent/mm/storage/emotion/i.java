@@ -1,39 +1,39 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class i
-  extends j<h>
+  extends MAutoStorage<h>
   implements g.a
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(105107);
-    SQL_CREATE = new String[] { j.getCreateSQLs(h.info, "EmojiSuggestDescInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(h.info, "EmojiSuggestDescInfo") };
     AppMethodBeat.o(105107);
   }
   
-  public i(e parame)
+  public i(ISQLiteDatabase paramISQLiteDatabase)
   {
-    this(parame, h.info, "EmojiSuggestDescInfo");
+    this(paramISQLiteDatabase, h.info, "EmojiSuggestDescInfo");
   }
   
-  private i(e parame, c.a parama, String paramString)
+  private i(ISQLiteDatabase paramISQLiteDatabase, IAutoDBItem.MAutoDBInfo paramMAutoDBInfo, String paramString)
   {
-    super(parame, parama, paramString, null);
-    this.db = parame;
+    super(paramISQLiteDatabase, paramMAutoDBInfo, paramString, null);
+    this.db = paramISQLiteDatabase;
   }
   
   public final int a(g paramg)
@@ -42,12 +42,12 @@ public final class i
     return 0;
   }
   
-  public final boolean aU(ArrayList<ArrayList<String>> paramArrayList)
+  public final boolean bm(ArrayList<ArrayList<String>> paramArrayList)
   {
     AppMethodBeat.i(105106);
     if (paramArrayList.isEmpty())
     {
-      ae.i("MicroMsg.emoji.EmojiDescMapStorage", "group list is null.");
+      Log.i("MicroMsg.emoji.EmojiDescMapStorage", "group list is null.");
       AppMethodBeat.o(105106);
       return false;
     }
@@ -56,7 +56,7 @@ public final class i
     if ((this.db instanceof com.tencent.mm.storagebase.h))
     {
       localh = (com.tencent.mm.storagebase.h)this.db;
-      l = localh.yi(Thread.currentThread().getId());
+      l = localh.beginTransaction(Thread.currentThread().getId());
     }
     for (;;)
     {
@@ -73,9 +73,9 @@ public final class i
         while (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
-          if (!bu.isNullOrNil(str))
+          if (!Util.isNullOrNil(str))
           {
-            ae.d("MicroMsg.emoji.EmojiDescMapStorage", "insert groupID%s, word:%s", new Object[] { String.valueOf(i), str });
+            Log.d("MicroMsg.emoji.EmojiDescMapStorage", "insert groupID%s, word:%s", new Object[] { String.valueOf(i), str });
             insert(new h(String.valueOf(i), str));
           }
         }
@@ -86,7 +86,7 @@ public final class i
       {
         break;
         if (localh != null) {
-          localh.sW(l);
+          localh.endTransaction(l);
         }
         AppMethodBeat.o(105106);
         return false;
@@ -98,7 +98,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.i
  * JD-Core Version:    0.7.0.1
  */

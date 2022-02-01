@@ -7,21 +7,21 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class ElfCheckResponse
   implements Parcelable
 {
   public static final Parcelable.Creator<ElfCheckResponse> CREATOR;
-  Bundle En;
-  public long cJR;
-  public boolean cNF;
+  boolean AUn;
+  boolean AUo;
+  private String AUp;
+  private long AUq;
+  long AUr;
+  Bundle Ew;
+  public long dap;
+  public boolean ded;
   String processName;
-  boolean wXp;
-  boolean wXq;
-  private String wXr;
-  private long wXs;
-  long wXt;
   
   static
   {
@@ -36,14 +36,14 @@ public class ElfCheckResponse
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.wXp = bool1;
+      this.AUn = bool1;
       if (paramParcel.readByte() == 0) {
         break label112;
       }
       bool1 = true;
       label34:
-      this.cNF = bool1;
-      this.cJR = paramParcel.readLong();
+      this.ded = bool1;
+      this.dap = paramParcel.readLong();
       if (paramParcel.readByte() == 0) {
         break label117;
       }
@@ -52,12 +52,12 @@ public class ElfCheckResponse
     label117:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.wXq = bool1;
-      this.wXr = paramParcel.readString();
+      this.AUo = bool1;
+      this.AUp = paramParcel.readString();
       this.processName = paramParcel.readString();
-      this.wXs = paramParcel.readLong();
-      this.wXt = paramParcel.readLong();
-      this.En = paramParcel.readBundle();
+      this.AUq = paramParcel.readLong();
+      this.AUr = paramParcel.readLong();
+      this.Ew = paramParcel.readBundle();
       AppMethodBeat.o(124982);
       return;
       bool1 = false;
@@ -69,13 +69,13 @@ public class ElfCheckResponse
   
   public ElfCheckResponse(boolean paramBoolean1, long paramLong, boolean paramBoolean2, boolean paramBoolean3, String paramString1, String paramString2)
   {
-    this.wXq = paramBoolean3;
-    this.wXp = paramBoolean2;
+    this.AUo = paramBoolean3;
+    this.AUn = paramBoolean2;
     this.processName = paramString1;
-    this.wXr = paramString2;
-    this.wXt = 1000L;
-    this.cJR = paramLong;
-    this.cNF = paramBoolean1;
+    this.AUp = paramString2;
+    this.AUr = 1000L;
+    this.dap = paramLong;
+    this.ded = paramBoolean1;
   }
   
   public int describeContents()
@@ -86,7 +86,7 @@ public class ElfCheckResponse
   public String toString()
   {
     AppMethodBeat.i(124980);
-    String str = this.wXp + "," + this.wXq + "," + this.wXs + "," + this.processName + "," + this.wXr + "," + this.wXt;
+    String str = this.AUn + "," + this.AUo + "," + this.AUq + "," + this.processName + "," + this.AUp + "," + this.AUr;
     AppMethodBeat.o(124980);
     return str;
   }
@@ -95,18 +95,18 @@ public class ElfCheckResponse
   {
     byte b2 = 1;
     AppMethodBeat.i(124981);
-    if (this.wXp)
+    if (this.AUn)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.cNF) {
+      if (!this.ded) {
         break label110;
       }
       b1 = 1;
       label31:
       paramParcel.writeByte(b1);
-      paramParcel.writeLong(this.cJR);
-      if (!this.wXq) {
+      paramParcel.writeLong(this.dap);
+      if (!this.AUo) {
         break label115;
       }
     }
@@ -115,11 +115,11 @@ public class ElfCheckResponse
     for (byte b1 = b2;; b1 = 0)
     {
       paramParcel.writeByte(b1);
-      paramParcel.writeString(this.wXr);
+      paramParcel.writeString(this.AUp);
       paramParcel.writeString(this.processName);
-      paramParcel.writeLong(this.wXs);
-      paramParcel.writeLong(this.wXt);
-      paramParcel.writeBundle(this.En);
+      paramParcel.writeLong(this.AUq);
+      paramParcel.writeLong(this.AUr);
+      paramParcel.writeBundle(this.Ew);
       AppMethodBeat.o(124981);
       return;
       b1 = 0;
@@ -131,7 +131,7 @@ public class ElfCheckResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.elf.ElfCheckResponse
  * JD-Core Version:    0.7.0.1
  */

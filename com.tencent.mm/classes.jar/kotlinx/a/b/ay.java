@@ -1,83 +1,83 @@
 package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
+import kotlin.g.b.p;
 import kotlinx.a.n;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/PrimitiveSerialDescriptor;", "Lkotlinx/serialization/SerialDescriptor;", "serialName", "", "kind", "Lkotlinx/serialization/PrimitiveKind;", "(Ljava/lang/String;Lkotlinx/serialization/PrimitiveKind;)V", "elementsCount", "", "getElementsCount", "()I", "getKind", "()Lkotlinx/serialization/PrimitiveKind;", "getSerialName", "()Ljava/lang/String;", "error", "", "getElementAnnotations", "", "", "index", "getElementDescriptor", "getElementIndex", "name", "getElementName", "isElementOptional", "", "toString", "kotlinx-serialization-runtime"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/PrimitiveSerialDescriptor;", "Lkotlinx/serialization/SerialDescriptor;", "serialName", "", "kind", "Lkotlinx/serialization/PrimitiveKind;", "(Ljava/lang/String;Lkotlinx/serialization/PrimitiveKind;)V", "elementsCount", "", "getElementsCount", "()I", "getKind", "()Lkotlinx/serialization/PrimitiveKind;", "getSerialName", "()Ljava/lang/String;", "error", "", "getElementAnnotations", "", "", "index", "getElementDescriptor", "getElementIndex", "name", "getElementName", "isElementOptional", "", "toString", "kotlinx-serialization-runtime"})
 public final class ay
   implements n
 {
-  private final String OiM;
-  private final kotlinx.a.l OjU;
+  private final String TXI;
+  private final kotlinx.a.l TYP;
   
   public ay(String paramString, kotlinx.a.l paraml)
   {
-    AppMethodBeat.i(199686);
-    this.OiM = paramString;
-    this.OjU = paraml;
-    AppMethodBeat.o(199686);
+    AppMethodBeat.i(225458);
+    this.TXI = paramString;
+    this.TYP = paraml;
+    AppMethodBeat.o(225458);
   }
   
-  private static Void gBA()
+  private static Void hOH()
   {
-    AppMethodBeat.i(199685);
+    AppMethodBeat.i(225457);
     Throwable localThrowable = (Throwable)new IllegalStateException("Primitive descriptor does not have elements");
-    AppMethodBeat.o(199685);
+    AppMethodBeat.o(225457);
     throw localThrowable;
   }
   
-  public final String amt(int paramInt)
+  public final String awc(int paramInt)
   {
-    AppMethodBeat.i(199681);
-    gBA();
-    AppMethodBeat.o(199681);
+    AppMethodBeat.i(225453);
+    hOH();
+    AppMethodBeat.o(225453);
     throw null;
   }
   
-  public final n amu(int paramInt)
+  public final n awd(int paramInt)
   {
-    AppMethodBeat.i(199683);
-    gBA();
-    AppMethodBeat.o(199683);
+    AppMethodBeat.i(225455);
+    hOH();
+    AppMethodBeat.o(225455);
     throw null;
   }
   
-  public final int beQ(String paramString)
+  public final int buF(String paramString)
   {
-    AppMethodBeat.i(199682);
+    AppMethodBeat.i(225454);
     p.h(paramString, "name");
-    gBA();
-    AppMethodBeat.o(199682);
+    hOH();
+    AppMethodBeat.o(225454);
     throw null;
   }
   
-  public final String gBs()
-  {
-    return this.OiM;
-  }
-  
-  public final boolean gBu()
+  public final boolean hOB()
   {
     return false;
   }
   
-  public final int gBv()
+  public final int hOC()
   {
     return 0;
   }
   
+  public final String hOz()
+  {
+    return this.TXI;
+  }
+  
   public final String toString()
   {
-    AppMethodBeat.i(199684);
-    String str = "PrimitiveDescriptor(" + this.OiM + ')';
-    AppMethodBeat.o(199684);
+    AppMethodBeat.i(225456);
+    String str = "PrimitiveDescriptor(" + this.TXI + ')';
+    AppMethodBeat.o(225456);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlinx.a.b.ay
  * JD-Core Version:    0.7.0.1
  */

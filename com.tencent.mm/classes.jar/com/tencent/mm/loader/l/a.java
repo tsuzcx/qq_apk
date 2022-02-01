@@ -1,9 +1,11 @@
 package com.tencent.mm.loader.l;
 
+import android.annotation.TargetApi;
 import android.graphics.Bitmap;
+import android.os.Build.VERSION;
 import com.tencent.mm.loader.e.b.g;
 import com.tencent.mm.loader.h.a.b;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
 import java.io.InputStream;
 
 public final class a
@@ -13,21 +15,35 @@ public final class a
     if ((paramInt1 <= 0) || (paramInt2 <= 0))
     {
       if ((paramg != null) && (paramg.width > 0) && (paramg.width > 0)) {
-        return h.b(paramInputStream, paramg.width, paramg.height);
+        return BitmapUtil.getBitmapNative(paramInputStream, paramg.width, paramg.height);
       }
-      return h.R(paramInputStream);
+      return BitmapUtil.getBitmapNative(paramInputStream);
     }
-    return h.a(paramInputStream, 0.0F, paramInt2, paramInt1);
+    return BitmapUtil.decodeStream(paramInputStream, 0.0F, paramInt2, paramInt1);
   }
   
-  public static boolean d(com.tencent.mm.loader.h.a.a parama)
+  @TargetApi(12)
+  public static long bR(Object paramObject)
   {
-    return (parama == null) || (parama.arS() == b.hjk) || (parama.arS() == b.hjj) || (parama.arS() == b.hjl);
+    if ((paramObject != null) && ((paramObject instanceof Bitmap)))
+    {
+      paramObject = (Bitmap)paramObject;
+      if (Build.VERSION.SDK_INT >= 12) {
+        return paramObject.getByteCount();
+      }
+      return paramObject.getRowBytes() * paramObject.getHeight();
+    }
+    return 0L;
+  }
+  
+  public static boolean e(com.tencent.mm.loader.h.a.a parama)
+  {
+    return (parama == null) || (parama.aKr() == b.ich) || (parama.aKr() == b.icg) || (parama.aKr() == b.ici);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.l.a
  * JD-Core Version:    0.7.0.1
  */

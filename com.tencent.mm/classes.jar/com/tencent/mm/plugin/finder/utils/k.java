@@ -2,246 +2,467 @@ package com.tencent.mm.plugin.finder.utils;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.text.Layout;
-import android.text.Selection;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.style.ClickableSpan;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
+import android.text.format.DateFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.view.j;
-import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import d.g.b.p;
-import d.l;
-import d.n.n;
-import d.v;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/utils/FinderOriginalUtil;", "", "()V", "ORIGINAL_TERMS_URL", "", "TAG", "debugOriginalNeedCheck", "", "getDebugOriginalNeedCheck", "()Z", "setDebugOriginalNeedCheck", "(Z)V", "checkInsertOriginalRedDot", "", "checkPostNeedOriginal", "context", "Lcom/tencent/mm/ui/MMActivity;", "continuePost", "Lkotlin/Function0;", "getRemainApplyCount", "", "getRemainForwardCount", "getSelfOriginalEntranceFlag", "getSelfOriginalFlag", "getSpamDay", "getSpamYearFlag", "isSelfOriginal", "isSelfOriginalNeedCheck", "isSelfOriginalSpam", "setSpanTouch", "tv", "Landroid/widget/TextView;", "text", "Landroid/text/Spannable;", "spanLink", "Landroid/content/Context;", "h5url", "allText", "linkText", "descTv", "logTag", "rawDescText", "startTag", "endTag", "plugin-finder_release"})
 public final class k
 {
-  public static final String TAG = "Finder.FinderOriginalUtil";
-  public static final k sWF;
+  private static HashMap<Long, Long> pMp;
+  private static HashMap<Long, String> pMq;
+  private static Map<String, List<String>> vVB;
+  private static Map<String, List<String>> vVC;
+  public static String vVD;
   
   static
   {
-    AppMethodBeat.i(205107);
-    sWF = new k();
-    TAG = "Finder.FinderOriginalUtil";
-    AppMethodBeat.o(205107);
+    AppMethodBeat.i(168642);
+    vVB = new HashMap();
+    vVC = new HashMap();
+    pMp = new HashMap();
+    pMq = new HashMap();
+    vVD = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
+    AppMethodBeat.o(168642);
   }
   
-  public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, final TextView paramTextView, String paramString4)
+  public static String Gb(long paramLong)
   {
-    AppMethodBeat.i(205100);
-    p.h(paramContext, "context");
-    p.h(paramString1, "h5url");
-    p.h(paramString2, "allText");
-    p.h(paramString3, "linkText");
-    p.h(paramTextView, "descTv");
-    p.h(paramString4, "logTag");
-    int i = n.a((CharSequence)paramString2, paramString3, 0, false, 6);
-    int j = i + paramString3.length();
-    paramString3 = new SpannableString((CharSequence)paramString2);
-    if ((i >= 0) && (j <= paramString2.length()))
+    AppMethodBeat.i(168641);
+    if (paramLong <= 0L)
     {
-      paramString2 = ak.getContext();
-      p.g(paramString2, "MMApplicationContext.getContext()");
-      int k = paramString2.getResources().getColor(2131100547);
-      paramString2 = ak.getContext();
-      p.g(paramString2, "MMApplicationContext.getContext()");
-      paramString3.setSpan(new j(paramString1, k, paramString2.getResources().getColor(2131099658), (d.g.a.b)new k.b(paramString4, paramContext)), i, j, 17);
+      AppMethodBeat.o(168641);
+      return "0";
     }
-    paramTextView.setText((CharSequence)paramString3);
-    paramTextView.setOnTouchListener((View.OnTouchListener)new a((Spannable)paramString3, paramTextView));
-    AppMethodBeat.o(205100);
-  }
-  
-  public static int cNR()
-  {
-    AppMethodBeat.i(205101);
-    Object localObject = g.ajR();
-    p.g(localObject, "MMKernel.storage()");
-    localObject = ((e)localObject).ajA().get(am.a.Jbf, Integer.valueOf(1));
-    if (localObject == null)
+    if (paramLong <= 999L)
     {
-      localObject = new v("null cannot be cast to non-null type kotlin.Int");
-      AppMethodBeat.o(205101);
-      throw ((Throwable)localObject);
+      AppMethodBeat.o(168641);
+      return String.valueOf(paramLong);
     }
-    int i = ((Integer)localObject).intValue();
-    if (i < 0)
+    if ((vVD.equals("zh_CN")) || (vVD.equals("zh_HK")) || (vVD.equals("zh_TW")))
     {
-      AppMethodBeat.o(205101);
-      return 0;
-    }
-    AppMethodBeat.o(205101);
-    return i;
-  }
-  
-  public static boolean cNS()
-  {
-    AppMethodBeat.i(205102);
-    Object localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cKG().value()).intValue() != 1)
-    {
-      localObject = g.ajR();
-      p.g(localObject, "MMKernel.storage()");
-      if (!p.i(((e)localObject).ajA().get(am.a.Jbj, Integer.valueOf(0)), Integer.valueOf(1))) {}
-    }
-    else
-    {
-      AppMethodBeat.o(205102);
-      return true;
-    }
-    AppMethodBeat.o(205102);
-    return false;
-  }
-  
-  public static int cNT()
-  {
-    AppMethodBeat.i(205103);
-    e locale = g.ajR();
-    p.g(locale, "MMKernel.storage()");
-    int i = locale.ajA().getInt(am.a.Jbe, 0);
-    AppMethodBeat.o(205103);
-    return i;
-  }
-  
-  public static boolean cNU()
-  {
-    AppMethodBeat.i(205104);
-    e locale = g.ajR();
-    p.g(locale, "MMKernel.storage()");
-    if (locale.ajA().getInt(am.a.Jbi, 0) > 0)
-    {
-      AppMethodBeat.o(205104);
-      return true;
-    }
-    AppMethodBeat.o(205104);
-    return false;
-  }
-  
-  public static int cNV()
-  {
-    AppMethodBeat.i(205105);
-    e locale = g.ajR();
-    p.g(locale, "MMKernel.storage()");
-    int i = locale.ajA().getInt(am.a.Jbh, 0);
-    AppMethodBeat.o(205105);
-    return i;
-  }
-  
-  public static boolean cNW()
-  {
-    AppMethodBeat.i(205106);
-    if (cNT() == 2)
-    {
-      AppMethodBeat.o(205106);
-      return true;
-    }
-    AppMethodBeat.o(205106);
-    return false;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "view", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
-  static final class a
-    implements View.OnTouchListener
-  {
-    a(Spannable paramSpannable, TextView paramTextView) {}
-    
-    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(205098);
-      Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramView);
-      ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramMotionEvent);
-      a.b("com/tencent/mm/plugin/finder/utils/FinderOriginalUtil$setSpanTouch$touchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
-      p.g(paramMotionEvent, "event");
-      int j = paramMotionEvent.getAction();
-      if (paramView == null)
+      if (paramLong <= 9999L)
       {
-        paramView = new v("null cannot be cast to non-null type android.widget.TextView");
-        AppMethodBeat.o(205098);
-        throw paramView;
+        AppMethodBeat.o(168641);
+        return String.valueOf(paramLong);
       }
-      paramView = (TextView)paramView;
-      localObject1 = this.sMT;
-      Object localObject2;
-      int k;
-      int i;
-      if ((j == 1) || (j == 3))
+      if (paramLong <= 99990000L)
       {
-        localObject2 = (ClickableSpan[])((Spannable)localObject1).getSpans(0, this.sMT.length(), ClickableSpan.class);
-        if (localObject2 != null)
+        str = MMApplicationContext.getContext().getString(2131760357, new Object[] { Double.valueOf((float)paramLong * 1.0F / 10000.0F - 0.05D) });
+        AppMethodBeat.o(168641);
+        return str;
+      }
+      str = MMApplicationContext.getContext().getString(2131760361, new Object[] { Integer.valueOf(1) });
+      AppMethodBeat.o(168641);
+      return str;
+    }
+    if (paramLong <= 990000L)
+    {
+      str = MMApplicationContext.getContext().getString(2131760359, new Object[] { Double.valueOf((float)paramLong * 1.0F / 1000.0F - 0.05D) });
+      AppMethodBeat.o(168641);
+      return str;
+    }
+    if (paramLong <= 99990000L)
+    {
+      str = MMApplicationContext.getContext().getString(2131760358, new Object[] { Double.valueOf((float)paramLong * 1.0F / 1000000.0F - 0.05D) });
+      AppMethodBeat.o(168641);
+      return str;
+    }
+    String str = MMApplicationContext.getContext().getString(2131760362, new Object[] { Integer.valueOf(100) });
+    AppMethodBeat.o(168641);
+    return str;
+  }
+  
+  public static String Lv(int paramInt)
+  {
+    AppMethodBeat.i(168639);
+    if (paramInt <= 0)
+    {
+      AppMethodBeat.o(168639);
+      return "0";
+    }
+    if (paramInt <= 999)
+    {
+      AppMethodBeat.o(168639);
+      return String.valueOf(paramInt);
+    }
+    if ((vVD.equals("zh_CN")) || (vVD.equals("zh_HK")) || (vVD.equals("zh_TW")))
+    {
+      if (paramInt <= 9999)
+      {
+        AppMethodBeat.o(168639);
+        return String.valueOf(paramInt);
+      }
+      if (paramInt <= 100000)
+      {
+        str = MMApplicationContext.getContext().getString(2131760357, new Object[] { Double.valueOf(paramInt * 1.0F / 10000.0F - 0.05D) });
+        AppMethodBeat.o(168639);
+        return str;
+      }
+      str = MMApplicationContext.getContext().getString(2131760360, new Object[] { Integer.valueOf(10) });
+      AppMethodBeat.o(168639);
+      return str;
+    }
+    if (paramInt <= 100000)
+    {
+      str = MMApplicationContext.getContext().getString(2131760359, new Object[] { Double.valueOf(paramInt * 1.0F / 1000.0F - 0.05D) });
+      AppMethodBeat.o(168639);
+      return str;
+    }
+    String str = MMApplicationContext.getContext().getString(2131760365, new Object[] { Integer.valueOf(100) });
+    AppMethodBeat.o(168639);
+    return str;
+  }
+  
+  public static String Lw(int paramInt)
+  {
+    AppMethodBeat.i(258533);
+    String str = Gb(paramInt);
+    AppMethodBeat.o(258533);
+    return str;
+  }
+  
+  public static String Lx(int paramInt)
+  {
+    AppMethodBeat.i(241819);
+    if (paramInt <= 0)
+    {
+      AppMethodBeat.o(241819);
+      return "0";
+    }
+    if ((vVD.equals("zh_CN")) || (vVD.equals("zh_HK")) || (vVD.equals("zh_TW")))
+    {
+      if (paramInt <= 9999)
+      {
+        AppMethodBeat.o(241819);
+        return String.valueOf(paramInt);
+      }
+      if (paramInt <= 99990000)
+      {
+        str = MMApplicationContext.getContext().getString(2131760357, new Object[] { Double.valueOf(paramInt * 1.0F / 10000.0F - 0.05D) });
+        AppMethodBeat.o(241819);
+        return str;
+      }
+      str = MMApplicationContext.getContext().getString(2131760364, new Object[] { Double.valueOf(paramInt * 1.0F / 10000.0F / 10000.0F - 0.05D) });
+      AppMethodBeat.o(241819);
+      return str;
+    }
+    if (paramInt <= 999)
+    {
+      AppMethodBeat.o(241819);
+      return String.valueOf(paramInt);
+    }
+    if (paramInt <= 990000)
+    {
+      str = MMApplicationContext.getContext().getString(2131760359, new Object[] { Double.valueOf(paramInt * 1.0F / 1000.0F - 0.05D) });
+      AppMethodBeat.o(241819);
+      return str;
+    }
+    if (paramInt <= 990000000)
+    {
+      str = MMApplicationContext.getContext().getString(2131760363, new Object[] { Double.valueOf(paramInt * 1.0F / 1000.0F / 1000.0F - 0.05D) });
+      AppMethodBeat.o(241819);
+      return str;
+    }
+    String str = MMApplicationContext.getContext().getString(2131760366, new Object[] { Double.valueOf(paramInt * 1.0F / 10000.0F / 10000.0F / 10.0F - 0.05D) });
+    AppMethodBeat.o(241819);
+    return str;
+  }
+  
+  public static String f(Context paramContext, long paramLong)
+  {
+    int i = 1;
+    long l3;
+    label130:
+    Object localObject;
+    int j;
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(168637);
+        if (paramLong < 3600000L)
         {
-          k = localObject2.length;
-          i = 0;
-          while (i < k)
+          paramContext = "";
+          AppMethodBeat.o(168637);
+          return paramContext;
+        }
+        l3 = cl.aWy();
+        if (!pMp.containsKey(Long.valueOf(paramLong))) {
+          break label696;
+        }
+        if (l3 - ((Long)pMp.get(Long.valueOf(paramLong))).longValue() < 60000L)
+        {
+          if (pMq.containsKey(Long.valueOf(paramLong)))
           {
-            Object localObject3 = localObject2[i];
-            if ((localObject3 instanceof o))
-            {
-              ((o)localObject3).setIsPressed(false);
-              paramTextView.invalidate();
-            }
-            i += 1;
+            paramContext = (String)pMq.get(Long.valueOf(paramLong));
+            AppMethodBeat.o(168637);
           }
         }
-      }
-      if ((j == 1) || (j == 0))
-      {
-        i = (int)paramMotionEvent.getX();
-        k = (int)paramMotionEvent.getY();
-        int m = paramView.getTotalPaddingLeft();
-        int n = paramView.getTotalPaddingTop();
-        int i1 = paramView.getScrollX();
-        int i2 = paramView.getScrollY();
-        localObject2 = paramView.getLayout();
-        i = ((Layout)localObject2).getOffsetForHorizontal(((Layout)localObject2).getLineForVertical(k - n + i2), i - m + i1);
-        localObject2 = (ClickableSpan[])((Spannable)localObject1).getSpans(i, i, ClickableSpan.class);
-        if (localObject2.length != 0)
-        {
-          localObject2 = localObject2[0];
-          if (j == 1) {
-            ((ClickableSpan)localObject2).onClick((View)paramView);
-          }
+        else {
+          pMp.remove(Long.valueOf(paramLong));
         }
       }
-      for (boolean bool = true;; bool = false)
+      finally {}
+      break label696;
+      if (localObject < 0L)
       {
-        paramView = k.sWF;
-        ae.i(k.cNX(), "touch " + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ", ret:" + bool);
-        a.a(bool, this, "com/tencent/mm/plugin/finder/utils/FinderOriginalUtil$setSpanTouch$touchListener$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(205098);
-        return bool;
-        if (j != 0) {
-          break;
+        paramContext = DateFormat.format(paramContext.getString(2131760832), paramLong);
+        pMq.put(Long.valueOf(paramLong), paramContext);
+        pMp.put(Long.valueOf(paramLong), Long.valueOf(l3));
+        AppMethodBeat.o(168637);
+      }
+      else if (localObject / 3600000L == 0L)
+      {
+        j = (int)(localObject / 60000L);
+        if (j > 0) {
+          break label732;
         }
-        if ((localObject2 instanceof o))
-        {
-          ((o)localObject2).setIsPressed(true);
-          paramTextView.invalidate();
-        }
-        Selection.setSelection((Spannable)localObject1, ((Spannable)localObject1).getSpanStart(localObject2), ((Spannable)localObject1).getSpanEnd(localObject2));
-        break;
-        Selection.removeSelection((Spannable)localObject1);
       }
     }
+    for (;;)
+    {
+      paramContext = paramContext.getResources().getString(2131760622, new Object[] { Integer.valueOf(i) });
+      pMq.put(Long.valueOf(paramLong), paramContext);
+      pMp.put(Long.valueOf(paramLong), Long.valueOf(l3));
+      AppMethodBeat.o(168637);
+      break;
+      if (localObject <= 86400000L)
+      {
+        j = (int)(localObject / 3600000L);
+        i = j;
+        if (j <= 0) {
+          i = 1;
+        }
+        paramContext = paramContext.getResources().getString(2131760621, new Object[] { Integer.valueOf(i) });
+        pMq.put(Long.valueOf(paramLong), paramContext);
+        pMp.put(Long.valueOf(paramLong), Long.valueOf(l3));
+        AppMethodBeat.o(168637);
+        break;
+      }
+      if (localObject <= 172800000L)
+      {
+        paramContext = paramContext.getString(2131760868);
+        pMq.put(Long.valueOf(paramLong), paramContext);
+        pMp.put(Long.valueOf(paramLong), Long.valueOf(l3));
+        AppMethodBeat.o(168637);
+        break;
+      }
+      if (localObject <= 259200000L)
+      {
+        paramContext = paramContext.getString(2131760851);
+        pMq.put(Long.valueOf(paramLong), paramContext);
+        pMp.put(Long.valueOf(paramLong), Long.valueOf(l3));
+        AppMethodBeat.o(168637);
+        break;
+      }
+      if (localObject <= 2592000000L)
+      {
+        paramContext = paramContext.getResources().getQuantityString(2131623947, (int)(localObject / 86400000L), new Object[] { Integer.valueOf((int)(localObject / 86400000L)) });
+        pMq.put(Long.valueOf(paramLong), paramContext);
+        pMp.put(Long.valueOf(paramLong), Long.valueOf(l3));
+        AppMethodBeat.o(168637);
+        break;
+      }
+      if (localObject <= 31536000000L)
+      {
+        paramContext = paramContext.getResources().getQuantityString(2131623948, (int)(localObject / 2592000000L), new Object[] { Integer.valueOf((int)(localObject / 2592000000L)) });
+        pMq.put(Long.valueOf(paramLong), paramContext);
+        pMp.put(Long.valueOf(paramLong), Long.valueOf(l3));
+        AppMethodBeat.o(168637);
+        break;
+      }
+      paramContext = paramContext.getResources().getQuantityString(2131623949, (int)(localObject / 31536000000L), new Object[] { Integer.valueOf((int)(localObject / 31536000000L)) });
+      pMq.put(Long.valueOf(paramLong), paramContext);
+      pMp.put(Long.valueOf(paramLong), Long.valueOf(l3));
+      AppMethodBeat.o(168637);
+      break;
+      label696:
+      long l2 = l3 - paramLong;
+      long l1 = l2;
+      if (l2 >= 0L) {
+        break label130;
+      }
+      l1 = l2;
+      if (l2 <= -3600000L) {
+        break label130;
+      }
+      l1 = 0L;
+      break label130;
+      label732:
+      i = j;
+    }
+  }
+  
+  public static String gm(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(241817);
+    Object localObject = y.vXH;
+    if (y.LC(paramInt1))
+    {
+      localObject = Gb(paramInt2);
+      AppMethodBeat.o(241817);
+      return localObject;
+    }
+    localObject = Lv(paramInt2);
+    AppMethodBeat.o(241817);
+    return localObject;
+  }
+  
+  public static CharSequence j(Context paramContext, long paramLong)
+  {
+    AppMethodBeat.i(241813);
+    paramContext = DateFormat.format(paramContext.getString(2131760844), paramLong);
+    AppMethodBeat.o(241813);
+    return paramContext;
+  }
+  
+  public static String k(Context paramContext, long paramLong)
+  {
+    AppMethodBeat.i(241814);
+    paramContext = l(paramContext, paramLong);
+    AppMethodBeat.o(241814);
+    return paramContext;
+  }
+  
+  public static String l(Context paramContext, long paramLong)
+  {
+    AppMethodBeat.i(241815);
+    GregorianCalendar localGregorianCalendar1 = new GregorianCalendar();
+    long l = localGregorianCalendar1.getTimeInMillis();
+    GregorianCalendar localGregorianCalendar2 = new GregorianCalendar();
+    localGregorianCalendar2.setTimeInMillis(paramLong);
+    if (localGregorianCalendar1.get(6) == localGregorianCalendar2.get(6))
+    {
+      paramContext = paramContext.getString(2131760859);
+      pMq.put(Long.valueOf(paramLong), paramContext);
+      pMp.put(Long.valueOf(paramLong), Long.valueOf(l));
+      AppMethodBeat.o(241815);
+      return paramContext;
+    }
+    if (localGregorianCalendar1.get(6) == localGregorianCalendar2.get(6) + 1)
+    {
+      paramContext = paramContext.getString(2131760868);
+      pMq.put(Long.valueOf(paramLong), paramContext);
+      pMp.put(Long.valueOf(paramLong), Long.valueOf(l));
+      AppMethodBeat.o(241815);
+      return paramContext;
+    }
+    if (localGregorianCalendar1.get(6) == localGregorianCalendar2.get(6) + 2)
+    {
+      paramContext = paramContext.getString(2131760851);
+      pMq.put(Long.valueOf(paramLong), paramContext);
+      pMp.put(Long.valueOf(paramLong), Long.valueOf(l));
+      AppMethodBeat.o(241815);
+      return paramContext;
+    }
+    if (localGregorianCalendar1.get(1) == localGregorianCalendar2.get(1))
+    {
+      paramContext = DateFormat.format(paramContext.getString(2131760813), paramLong);
+      pMq.put(Long.valueOf(paramLong), paramContext);
+      pMp.put(Long.valueOf(paramLong), Long.valueOf(l));
+      AppMethodBeat.o(241815);
+      return paramContext;
+    }
+    paramContext = DateFormat.format(paramContext.getString(2131760832), paramLong);
+    pMq.put(Long.valueOf(paramLong), paramContext);
+    pMp.put(Long.valueOf(paramLong), Long.valueOf(l));
+    AppMethodBeat.o(241815);
+    return paramContext;
+  }
+  
+  public static String m(Context paramContext, long paramLong)
+  {
+    AppMethodBeat.i(241816);
+    if (paramLong < 3600000L)
+    {
+      AppMethodBeat.o(241816);
+      return "";
+    }
+    long l1 = System.currentTimeMillis();
+    if (pMp.containsKey(Long.valueOf(paramLong))) {
+      if (l1 - ((Long)pMp.get(Long.valueOf(paramLong))).longValue() < 60000L)
+      {
+        if (pMq.containsKey(Long.valueOf(paramLong)))
+        {
+          paramContext = (String)pMq.get(Long.valueOf(paramLong));
+          AppMethodBeat.o(241816);
+          return paramContext;
+        }
+      }
+      else {
+        pMp.remove(Long.valueOf(paramLong));
+      }
+    }
+    int i;
+    if ((l1 - paramLong) / 3600000L == 0L)
+    {
+      j = (int)((l1 - paramLong) / 60000L);
+      i = j;
+      if (j <= 0) {
+        i = 1;
+      }
+      paramContext = paramContext.getResources().getString(2131760622, new Object[] { Integer.valueOf(i) });
+      pMq.put(Long.valueOf(paramLong), paramContext);
+      pMp.put(Long.valueOf(paramLong), Long.valueOf(l1));
+      AppMethodBeat.o(241816);
+      return paramContext;
+    }
+    GregorianCalendar localGregorianCalendar1 = new GregorianCalendar();
+    GregorianCalendar localGregorianCalendar2 = new GregorianCalendar(localGregorianCalendar1.get(1), localGregorianCalendar1.get(2), localGregorianCalendar1.get(5));
+    long l2 = paramLong - localGregorianCalendar2.getTimeInMillis();
+    if ((l2 > 0L) && (l2 <= 86400000L))
+    {
+      j = (int)((l1 - paramLong) / 3600000L);
+      i = j;
+      if (j <= 0) {
+        i = 1;
+      }
+      paramContext = paramContext.getResources().getString(2131760621, new Object[] { Integer.valueOf(i) });
+      pMq.put(Long.valueOf(paramLong), paramContext);
+      pMp.put(Long.valueOf(paramLong), Long.valueOf(l1));
+      AppMethodBeat.o(241816);
+      return paramContext;
+    }
+    l2 = localGregorianCalendar2.getTimeInMillis();
+    int j = (int)((l2 + 86400000L - paramLong) / 86400000L);
+    if ((paramLong - l2 + 2592000000L > 0L) && (j <= 30))
+    {
+      i = j;
+      if (j <= 0) {
+        i = 1;
+      }
+      paramContext = paramContext.getResources().getQuantityString(2131623947, i, new Object[] { Integer.valueOf(i) });
+      pMq.put(Long.valueOf(paramLong), paramContext);
+      pMp.put(Long.valueOf(paramLong), Long.valueOf(l1));
+      AppMethodBeat.o(241816);
+      return paramContext;
+    }
+    localGregorianCalendar2 = new GregorianCalendar();
+    localGregorianCalendar2.setTimeInMillis(paramLong);
+    if (localGregorianCalendar1.get(1) == localGregorianCalendar2.get(1))
+    {
+      paramContext = DateFormat.format(paramContext.getString(2131760813), paramLong);
+      pMq.put(Long.valueOf(paramLong), paramContext);
+      pMp.put(Long.valueOf(paramLong), Long.valueOf(l1));
+      AppMethodBeat.o(241816);
+      return paramContext;
+    }
+    paramContext = DateFormat.format(paramContext.getString(2131760832), paramLong);
+    pMq.put(Long.valueOf(paramLong), paramContext);
+    pMp.put(Long.valueOf(paramLong), Long.valueOf(l1));
+    AppMethodBeat.o(241816);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.utils.k
  * JD-Core Version:    0.7.0.1
  */

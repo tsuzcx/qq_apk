@@ -5,27 +5,22 @@ import android.content.res.Configuration;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class PLTextView
   extends StaticTextView
 {
-  private static boolean gHA = false;
-  private static long gHs = 0L;
-  private static int gHt = 0;
-  private static long gHu = -2147483648L;
-  private static long gHv = 0L;
-  private static int gHw = 0;
-  private static long gHx = -2147483648L;
-  private static long gHy = 0L;
-  private static long gHz;
-  private static int gir = 0;
-  
-  static
-  {
-    gHz = -2147483648L;
-  }
+  private static int gRJ = 0;
+  private static long hug = 0L;
+  private static int huh = 0;
+  private static long hui = -2147483648L;
+  private static long huj = 0L;
+  private static int huk = 0;
+  private static long hul = -2147483648L;
+  private static long hum = 0L;
+  private static long hun = -2147483648L;
+  private static boolean huo = false;
   
   public PLTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,12 +32,21 @@ public class PLTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  protected void A(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(141025);
+    super.setText(paramCharSequence, false);
+    AppMethodBeat.o(141025);
+  }
+  
+  protected void B(CharSequence paramCharSequence) {}
+  
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(141026);
     super.onConfigurationChanged(paramConfiguration);
     if (getLayoutWrapper() != null) {
-      getLayoutWrapper().gHR = false;
+      getLayoutWrapper().huF = false;
     }
     AppMethodBeat.o(141026);
   }
@@ -51,17 +55,17 @@ public class PLTextView
   {
     AppMethodBeat.i(141024);
     long l = 0L;
-    if (gHA) {
+    if (huo) {
       l = System.currentTimeMillis();
     }
     super.onDraw(paramCanvas);
-    if (gHA)
+    if (huo)
     {
       l = System.currentTimeMillis() - l;
-      gHy += l;
-      gir += 1;
-      if (l > gHz) {
-        gHz = l;
+      hum += l;
+      gRJ += 1;
+      if (l > hun) {
+        hun = l;
       }
     }
     AppMethodBeat.o(141024);
@@ -71,17 +75,17 @@ public class PLTextView
   {
     AppMethodBeat.i(141023);
     long l = 0L;
-    if (gHA) {
+    if (huo) {
       l = System.currentTimeMillis();
     }
     super.onMeasure(paramInt1, paramInt2);
-    if (gHA)
+    if (huo)
     {
       l = System.currentTimeMillis() - l;
-      gHv += l;
-      gHw += 1;
-      if (l > gHx) {
-        gHx = l;
+      huj += l;
+      huk += 1;
+      if (l > hul) {
+        hul = l;
       }
     }
     AppMethodBeat.o(141023);
@@ -90,10 +94,10 @@ public class PLTextView
   public void setText(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(141022);
-    if (bu.ah(paramCharSequence))
+    if (Util.isNullOrNil(paramCharSequence))
     {
       if (h.DEBUG) {
-        ae.d("MicroMsg.PLTextView", "set null text");
+        Log.d("MicroMsg.PLTextView", "set null text");
       }
       AppMethodBeat.o(141022);
       return;
@@ -103,15 +107,15 @@ public class PLTextView
     if (h.DEBUG) {
       l1 = System.currentTimeMillis();
     }
-    if ((getLayoutWrapper() != null) && (getLayoutWrapper().gHR)) {
-      c.gHq.a(getConfig(), getLayoutWrapper());
+    if ((getLayoutWrapper() != null) && (getLayoutWrapper().huF)) {
+      c.hue.a(getConfig(), getLayoutWrapper());
     }
-    f localf = c.gHq.a(getConfig(), paramCharSequence);
+    f localf = c.hue.a(getConfig(), paramCharSequence);
     boolean bool;
     if (localf != null)
     {
       bool = true;
-      y(paramCharSequence);
+      B(paramCharSequence);
       setTextLayout(localf);
     }
     for (;;)
@@ -119,36 +123,27 @@ public class PLTextView
       if (h.DEBUG)
       {
         l2 = System.currentTimeMillis();
-        ae.d("MicroMsg.PLTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s hitCache %s", new Object[] { Double.valueOf((l2 - l1) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence, Boolean.valueOf(bool) });
+        Log.d("MicroMsg.PLTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s hitCache %s", new Object[] { Double.valueOf((l2 - l1) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence, Boolean.valueOf(bool) });
       }
-      if (gHA)
+      if (huo)
       {
         l1 = l2 - l1;
-        gHs += l1;
-        gHt += 1;
-        if (l1 > gHu) {
-          gHu = l1;
+        hug += l1;
+        huh += 1;
+        if (l1 > hui) {
+          hui = l1;
         }
       }
       AppMethodBeat.o(141022);
       return;
       bool = false;
-      x(paramCharSequence);
+      A(paramCharSequence);
     }
   }
-  
-  protected void x(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(141025);
-    super.setText(paramCharSequence, false);
-    AppMethodBeat.o(141025);
-  }
-  
-  protected void y(CharSequence paramCharSequence) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.PLTextView
  * JD-Core Version:    0.7.0.1
  */

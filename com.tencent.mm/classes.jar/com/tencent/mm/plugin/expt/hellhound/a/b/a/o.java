@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.expt.hellhound.a.b.a;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFeedFlowMonitor;", "", "free", "", "report", "startMonitor", "stopMonitor", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/feedflow/IFeedFlowMonitor;", "", "free", "", "report", "startMonitor", "stopMonitor", "plugin-expt_release"})
 public abstract interface o
 {
-  public abstract void cqe();
-  
-  public abstract void cqn();
-  
   public abstract void free();
   
   public abstract void report();
+  
+  public abstract void startMonitor();
+  
+  public abstract void stopMonitor();
 }
 
 

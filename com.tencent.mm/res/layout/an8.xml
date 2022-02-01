@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:id="@id/b3t" android:background="@color/c9" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp"
+<FrameLayout android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/c3" android:gravity="center" android:id="@id/f9b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i5" />
-    <android.support.v7.widget.RecyclerView android:id="@id/cjv" android:background="@color/c9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/bi" android:gravity="center|left" android:id="@id/j9" android:background="@color/rx" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/ju" android:paddingRight="@dimen/jn" android:paddingBottom="@dimen/ju" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/dst" android:background="#cc000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/jm" android:layout_alignParentBottom="true">
-        <ImageButton android:id="@id/gev" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/jm" android:src="@drawable/a5v" android:scaleType="center" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/btz" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/jm" android:src="@drawable/a5s" android:scaleType="center" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/b95" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/jm" android:src="@drawable/a5t" android:scaleType="center" android:layout_weight="1.0" />
-        <ImageButton android:id="@id/f55" android:background="@null" android:layout_width="0.0dip" android:layout_height="@dimen/jm" android:src="@drawable/a5u" android:scaleType="center" android:layout_weight="1.0" />
-    </LinearLayout>
-</RelativeLayout>
+    <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:gravity="center_horizontal" android:id="@id/g02" android:background="@color/kz" android:paddingTop="@dimen/hy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ListView android:id="@id/hf1" android:background="@color/kz" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/np" />
+</FrameLayout>

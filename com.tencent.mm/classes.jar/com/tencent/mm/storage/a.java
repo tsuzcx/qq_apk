@@ -2,62 +2,62 @@ package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.c;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
   extends c
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(153150);
-    c.a locala = new c.a();
-    locala.IBL = new Field[8];
-    locala.columns = new String[9];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[8];
+    localMAutoDBInfo.columns = new String[9];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "abtestkey";
-    locala.IBN.put("abtestkey", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "abtestkey";
+    localMAutoDBInfo.colsMap.put("abtestkey", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" abtestkey TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "abtestkey";
-    locala.columns[1] = "value";
-    locala.IBN.put("value", "TEXT");
+    localMAutoDBInfo.primaryKey = "abtestkey";
+    localMAutoDBInfo.columns[1] = "value";
+    localMAutoDBInfo.colsMap.put("value", "TEXT");
     localStringBuilder.append(" value TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "expId";
-    locala.IBN.put("expId", "TEXT");
+    localMAutoDBInfo.columns[2] = "expId";
+    localMAutoDBInfo.colsMap.put("expId", "TEXT");
     localStringBuilder.append(" expId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "sequence";
-    locala.IBN.put("sequence", "LONG");
+    localMAutoDBInfo.columns[3] = "sequence";
+    localMAutoDBInfo.colsMap.put("sequence", "LONG");
     localStringBuilder.append(" sequence LONG");
     localStringBuilder.append(", ");
-    locala.columns[4] = "prioritylevel";
-    locala.IBN.put("prioritylevel", "INTEGER");
+    localMAutoDBInfo.columns[4] = "prioritylevel";
+    localMAutoDBInfo.colsMap.put("prioritylevel", "INTEGER");
     localStringBuilder.append(" prioritylevel INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[5] = "startTime";
-    locala.IBN.put("startTime", "LONG");
+    localMAutoDBInfo.columns[5] = "startTime";
+    localMAutoDBInfo.colsMap.put("startTime", "LONG");
     localStringBuilder.append(" startTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[6] = "endTime";
-    locala.IBN.put("endTime", "LONG");
+    localMAutoDBInfo.columns[6] = "endTime";
+    localMAutoDBInfo.colsMap.put("endTime", "LONG");
     localStringBuilder.append(" endTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[7] = "noReport";
-    locala.IBN.put("noReport", "INTEGER");
+    localMAutoDBInfo.columns[7] = "noReport";
+    localMAutoDBInfo.colsMap.put("noReport", "INTEGER");
     localStringBuilder.append(" noReport INTEGER");
-    locala.columns[8] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[8] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(153150);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
@@ -65,7 +65,7 @@ public final class a
   public final boolean isValid()
   {
     AppMethodBeat.i(153149);
-    long l = bu.aRi();
+    long l = Util.nowSecond();
     if ((l >= this.field_startTime) && (l < this.field_endTime))
     {
       AppMethodBeat.o(153149);

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.ball.model;
 
 import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 final class BallInfo$b
@@ -53,7 +53,7 @@ final class BallInfo$b
       AppMethodBeat.o(127526);
       return;
     }
-    ae.w("MicroMsg.BallInfo", "not support type, class:%s", new Object[] { paramObject.getClass() });
+    Log.w("MicroMsg.BallInfo", "not support type, class:%s", new Object[] { paramObject.getClass() });
     put("type", 0);
     AppMethodBeat.o(127526);
   }

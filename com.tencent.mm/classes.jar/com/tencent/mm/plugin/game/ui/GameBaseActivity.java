@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.game.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.e.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.game.d.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class GameBaseActivity
   extends MMActivity
 {
   private long mStartTime = 0L;
-  private int uwH = 1;
-  private long uwI = 0L;
-  private long uwJ = 0L;
+  private int xOI = 1;
+  private long xOJ = 0L;
+  private long xyY = 0L;
   
-  protected boolean dcA()
+  protected boolean dWh()
   {
     return true;
   }
   
-  public abstract int dcB();
+  public abstract int dWi();
   
-  public abstract int dcC();
+  public abstract int dWj();
   
   public abstract int getScene();
   
@@ -36,9 +36,9 @@ public abstract class GameBaseActivity
     if (this.mStartTime != 0L)
     {
       long l = System.currentTimeMillis() - this.mStartTime;
-      ae.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.uwI) });
-      if (dcA()) {
-        a.a(this.uwH, getScene(), dcB(), dcC(), "", "", l / 1000L, this.uwI / 1000L);
+      Log.i("MicroMsg.GameBaseActivity", "visit page(%s), stayTime:%sms, foregroundTime:%sms", new Object[] { getClass().getSimpleName(), Long.valueOf(l), Long.valueOf(this.xyY) });
+      if (dWh()) {
+        a.a(this.xOI, getScene(), dWi(), dWj(), "", "", l / 1000L, this.xyY / 1000L);
       }
     }
     super.onDestroy();
@@ -47,7 +47,7 @@ public abstract class GameBaseActivity
   public void onPause()
   {
     super.onPause();
-    this.uwI += System.currentTimeMillis() - this.uwJ;
+    this.xyY += System.currentTimeMillis() - this.xOJ;
   }
   
   public void onResume()
@@ -55,7 +55,7 @@ public abstract class GameBaseActivity
     if (this.mStartTime == 0L) {
       this.mStartTime = System.currentTimeMillis();
     }
-    this.uwJ = System.currentTimeMillis();
+    this.xOJ = System.currentTimeMillis();
     super.onResume();
   }
   

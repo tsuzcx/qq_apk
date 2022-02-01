@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/o4" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/jv" android:textColor="@color/y0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="20.0dip" android:layout_marginBottom="6.0dip" android:text="@string/h2z" />
-        <com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemGroupView android:orientation="vertical" android:id="@id/ecd" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:id="@id/it2" android:layout_width="fill_parent" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" style="@style/hx" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/bf0" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/FG_0" android:ellipsize="end" android:gravity="center|left" android:id="@id/ipm" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minHeight="@dimen/wz" android:text="@string/wx" android:maxLines="2" android:layout_weight="1.0" android:lineSpacingExtra="@dimen/k_" />
+        <RelativeLayout android:id="@id/bgx" android:layout_width="@dimen/wz" android:layout_height="@dimen/wz" android:layout_marginLeft="@dimen/hs">
+            <ImageView android:id="@id/bgv" android:background="@color/wt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        </RelativeLayout>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

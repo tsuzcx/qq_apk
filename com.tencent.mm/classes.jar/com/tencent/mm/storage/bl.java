@@ -1,63 +1,98 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.cp;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.bt;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class bl
-  extends cp
+  extends bt
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(213448);
-    c.a locala = new c.a();
-    locala.IBL = new Field[3];
-    locala.columns = new String[4];
+    AppMethodBeat.i(43197);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[17];
+    localMAutoDBInfo.columns = new String[18];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "encryptUsername";
-    locala.IBN.put("encryptUsername", "TEXT default ''  PRIMARY KEY ");
-    localStringBuilder.append(" encryptUsername TEXT default ''  PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "talker";
+    localMAutoDBInfo.colsMap.put("talker", "TEXT default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" talker TEXT default '0'  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "encryptUsername";
-    locala.columns[1] = "username";
-    locala.IBN.put("username", "TEXT default '' ");
-    localStringBuilder.append(" username TEXT default '' ");
+    localMAutoDBInfo.primaryKey = "talker";
+    localMAutoDBInfo.columns[1] = "encryptTalker";
+    localMAutoDBInfo.colsMap.put("encryptTalker", "TEXT default '' ");
+    localStringBuilder.append(" encryptTalker TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[2] = "modifyTime";
-    locala.IBN.put("modifyTime", "LONG default '0' ");
-    localStringBuilder.append(" modifyTime LONG default '0' ");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(213448);
+    localMAutoDBInfo.columns[2] = "displayName";
+    localMAutoDBInfo.colsMap.put("displayName", "TEXT default '' ");
+    localStringBuilder.append(" displayName TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "state";
+    localMAutoDBInfo.colsMap.put("state", "INTEGER default '0' ");
+    localStringBuilder.append(" state INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "lastModifiedTime";
+    localMAutoDBInfo.colsMap.put("lastModifiedTime", "LONG default '0' ");
+    localStringBuilder.append(" lastModifiedTime LONG default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "isNew";
+    localMAutoDBInfo.colsMap.put("isNew", "INTEGER default '0' ");
+    localStringBuilder.append(" isNew INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "addScene";
+    localMAutoDBInfo.colsMap.put("addScene", "INTEGER default '0' ");
+    localStringBuilder.append(" addScene INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[7] = "fmsgSysRowId";
+    localMAutoDBInfo.colsMap.put("fmsgSysRowId", "LONG default '0' ");
+    localStringBuilder.append(" fmsgSysRowId LONG default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[8] = "fmsgIsSend";
+    localMAutoDBInfo.colsMap.put("fmsgIsSend", "INTEGER default '0' ");
+    localStringBuilder.append(" fmsgIsSend INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[9] = "fmsgType";
+    localMAutoDBInfo.colsMap.put("fmsgType", "INTEGER default '0' ");
+    localStringBuilder.append(" fmsgType INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[10] = "fmsgContent";
+    localMAutoDBInfo.colsMap.put("fmsgContent", "TEXT default '' ");
+    localStringBuilder.append(" fmsgContent TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[11] = "recvFmsgType";
+    localMAutoDBInfo.colsMap.put("recvFmsgType", "INTEGER default '0' ");
+    localStringBuilder.append(" recvFmsgType INTEGER default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[12] = "contentFromUsername";
+    localMAutoDBInfo.colsMap.put("contentFromUsername", "TEXT default '' ");
+    localStringBuilder.append(" contentFromUsername TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[13] = "contentNickname";
+    localMAutoDBInfo.colsMap.put("contentNickname", "TEXT default '' ");
+    localStringBuilder.append(" contentNickname TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[14] = "contentPhoneNumMD5";
+    localMAutoDBInfo.colsMap.put("contentPhoneNumMD5", "TEXT default '' ");
+    localStringBuilder.append(" contentPhoneNumMD5 TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[15] = "contentFullPhoneNumMD5";
+    localMAutoDBInfo.colsMap.put("contentFullPhoneNumMD5", "TEXT default '' ");
+    localStringBuilder.append(" contentFullPhoneNumMD5 TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[16] = "contentVerifyContent";
+    localMAutoDBInfo.colsMap.put("contentVerifyContent", "TEXT default '' ");
+    localStringBuilder.append(" contentVerifyContent TEXT default '' ");
+    localMAutoDBInfo.columns[17] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(43197);
   }
   
-  public bl()
-  {
-    AppMethodBeat.i(213447);
-    this.field_encryptUsername = "";
-    this.field_username = "";
-    AppMethodBeat.o(213447);
-  }
-  
-  public bl(String paramString)
-  {
-    this();
-    AppMethodBeat.i(213446);
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    this.field_encryptUsername = str;
-    this.field_modifyTime = System.currentTimeMillis();
-    AppMethodBeat.o(213446);
-  }
-  
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

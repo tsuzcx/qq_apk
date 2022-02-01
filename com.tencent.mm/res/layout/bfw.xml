@@ -1,3 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.davemorrissey.labs.subscaleview.view.SubsamplingScaleImageView android:id="@id/g95" android:background="#01000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageButton android:id="@id/fx8" android:background="@drawable/amp" android:visibility="visible" android:layout_width="60.0dip" android:layout_height="60.0dip" android:contentDescription="@string/eke" />
+    <LinearLayout android:gravity="center" android:id="@id/fxg" android:background="@drawable/aof" android:visibility="gone" android:layout_width="49.0dip" android:layout_height="49.0dip">
+        <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
+    </LinearLayout>
+</FrameLayout>

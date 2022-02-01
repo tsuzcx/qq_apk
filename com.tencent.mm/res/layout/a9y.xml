@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/c8z" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:id="@id/gro" android:background="@null" android:layout_width="120.0dip" android:layout_height="120.0dip" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="12.0sp" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/c91" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="90.0dip" android:text="@string/cn5" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</LinearLayout>
+<RelativeLayout android:paddingTop="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/x1" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginBottom="@dimen/c5" android:src="@drawable/bca" />
+    <android.support.constraint.ConstraintLayout android:id="@id/e23" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_toRightOf="@id/x1" android:layout_centerVertical="true">
+        <TextView android:ellipsize="end" android:id="@id/fzg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:singleLine="true" app:layout_constraintBottom_toTopOf="@id/w2" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m" app:layout_constraintVertical_chainStyle="g8_" app:layout_constraintWidth_default="jr1" style="@style/xn" />
+        <ImageView android:id="@id/w0" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/bt" app:layout_constraintBottom_toBottomOf="@id/fzg" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toRightOf="@id/fzg" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="@id/fzg" />
+        <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/cw_" android:paddingLeft="@dimen/bt" android:paddingRight="@dimen/bt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginLeft="@dimen/bt" android:layout_marginRight="@dimen/ct" app:layout_constraintBottom_toBottomOf="@id/fzg" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintLeft_toRightOf="@id/w0" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="@id/fzg" app:logo_mode="g43" app:logo_style="dup" />
+        <TextView android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/w2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toBottomOf="@id/fzg" style="@style/hv" />
+    </android.support.constraint.ConstraintLayout>
+    <ImageView android:background="@drawable/a75" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cq" android:layout_alignParentBottom="true" />
+</RelativeLayout>

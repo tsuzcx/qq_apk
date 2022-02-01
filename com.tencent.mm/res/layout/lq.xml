@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/aer" android:background="@drawable/k9" android:paddingLeft="@dimen/o" android:paddingRight="@dimen/o" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="31.599976dip" android:layout_marginTop="@dimen/ha" android:layout_marginBottom="@dimen/hk">
-        <ImageView android:id="@id/aeq" android:layout_width="@dimen/ud" android:layout_height="@dimen/ud" android:layout_marginRight="@dimen/hu" android:src="@drawable/bdv" android:scaleType="fitCenter" />
-        <TextView android:textSize="@dimen/gx" android:textColor="#ff576b95" android:ellipsize="end" android:gravity="left" android:id="@id/aes" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/alw" android:singleLine="true" />
-    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:gravity="center_horizontal" android:id="@id/fzz" android:background="@color/a2h" android:paddingTop="@dimen/hy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/tx" />
+        <ListView android:id="@id/ed2" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/np" />
+        <com.tencent.mm.ui.base.sortview.SortViewScrollBar android:layout_gravity="center|right" android:id="@id/hrg" android:layout_width="@dimen/e" android:layout_height="fill_parent" />
+    </FrameLayout>
 </LinearLayout>

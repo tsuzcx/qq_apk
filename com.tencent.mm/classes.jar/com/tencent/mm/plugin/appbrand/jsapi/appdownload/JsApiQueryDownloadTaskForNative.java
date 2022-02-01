@@ -4,14 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONArray;
@@ -19,7 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class JsApiQueryDownloadTaskForNative
-  extends a<r>
+  extends d<com.tencent.mm.plugin.appbrand.s>
 {
   public static final int CTRL_INDEX = 661;
   public static final String NAME = "queryDownloadTaskForNative";
@@ -28,19 +26,19 @@ public final class JsApiQueryDownloadTaskForNative
     extends MainProcessTask
   {
     public static final Parcelable.Creator<QueryDownloadTask> CREATOR;
-    private int cgA;
-    private r jzD;
-    private m kwe;
-    private boolean kwm;
-    private String kwn;
-    private long kwo;
-    private JSONArray kzb;
-    private JSONArray kzc;
-    private JSONArray kzd;
-    private String kze;
-    private long kzf;
-    private float kzg;
-    private boolean kzh;
+    private int csv;
+    private com.tencent.mm.plugin.appbrand.s kAr;
+    private p lAi;
+    private boolean lAq;
+    private String lAr;
+    private long lAs;
+    private boolean lDA;
+    private JSONArray lDu;
+    private JSONArray lDv;
+    private JSONArray lDw;
+    private String lDx;
+    private long lDy;
+    private float lDz;
     
     static
     {
@@ -52,21 +50,21 @@ public final class JsApiQueryDownloadTaskForNative
     public QueryDownloadTask(Parcel paramParcel)
     {
       AppMethodBeat.i(45882);
-      e(paramParcel);
+      f(paramParcel);
       AppMethodBeat.o(45882);
     }
     
-    public QueryDownloadTask(m paramm, r paramr, int paramInt, JSONObject paramJSONObject)
+    public QueryDownloadTask(p paramp, com.tencent.mm.plugin.appbrand.s params, int paramInt, JSONObject paramJSONObject)
     {
       AppMethodBeat.i(45881);
-      biw();
-      this.kwe = paramm;
-      this.jzD = paramr;
-      this.cgA = paramInt;
-      this.kwo = paramJSONObject.optLong("downloadId");
-      this.kzb = paramJSONObject.optJSONArray("downloadIdArray");
-      this.kzc = paramJSONObject.optJSONArray("appIdArray");
-      this.kwm = true;
+      bDJ();
+      this.lAi = paramp;
+      this.kAr = params;
+      this.csv = paramInt;
+      this.lAs = paramJSONObject.optLong("downloadId");
+      this.lDu = paramJSONObject.optJSONArray("downloadIdArray");
+      this.lDv = paramJSONObject.optJSONArray("appIdArray");
+      this.lAq = true;
       AppMethodBeat.o(45881);
     }
     
@@ -85,7 +83,7 @@ public final class JsApiQueryDownloadTaskForNative
       {
         for (;;)
         {
-          ae.e("MicroMsg.JsApiQueryDownloadTaskForNative", paramFileDownloadTaskInfo.getMessage());
+          Log.e("MicroMsg.JsApiQueryDownloadTaskForNative", paramFileDownloadTaskInfo.getMessage());
         }
       }
     }
@@ -102,12 +100,12 @@ public final class JsApiQueryDownloadTaskForNative
       case 0: 
       default: 
         str = "default";
-        ae.i("MicroMsg.JsApiQueryDownloadTaskForNative", "doQueryDownloadTask, state = %s", new Object[] { str });
+        Log.i("MicroMsg.JsApiQueryDownloadTaskForNative", "doQueryDownloadTask, state = %s", new Object[] { str });
         f = 0.0F;
-        if (paramFileDownloadTaskInfo.nyl != 0L)
+        if (paramFileDownloadTaskInfo.oJj != 0L)
         {
-          l = paramFileDownloadTaskInfo.ptA * 100L / paramFileDownloadTaskInfo.nyl;
-          f = (float)paramFileDownloadTaskInfo.ptA * 100.0F / (float)paramFileDownloadTaskInfo.nyl;
+          l = paramFileDownloadTaskInfo.qJe * 100L / paramFileDownloadTaskInfo.oJj;
+          f = (float)paramFileDownloadTaskInfo.qJe * 100.0F / (float)paramFileDownloadTaskInfo.oJj;
         }
         break;
       }
@@ -120,7 +118,7 @@ public final class JsApiQueryDownloadTaskForNative
           localJSONObject.put("state", str);
           localJSONObject.put("progress", l);
           localJSONObject.put("progress_float", f);
-          if (!paramFileDownloadTaskInfo.ptD) {
+          if (!paramFileDownloadTaskInfo.qJh) {
             continue;
           }
           i = 1;
@@ -129,17 +127,17 @@ public final class JsApiQueryDownloadTaskForNative
         catch (JSONException paramFileDownloadTaskInfo)
         {
           int i;
-          ae.e("MicroMsg.JsApiQueryDownloadTaskForNative", paramFileDownloadTaskInfo.getMessage());
+          Log.e("MicroMsg.JsApiQueryDownloadTaskForNative", paramFileDownloadTaskInfo.getMessage());
           continue;
         }
         AppMethodBeat.o(45886);
         return localJSONObject;
-        this.kwn = "fail_apilevel_too_low";
+        this.lAr = "fail_apilevel_too_low";
         AppMethodBeat.o(45886);
         return localJSONObject;
         str = "downloading";
         break;
-        if (o.fB(paramFileDownloadTaskInfo.path))
+        if (com.tencent.mm.vfs.s.YS(paramFileDownloadTaskInfo.path))
         {
           str = "download_succ";
           break;
@@ -168,112 +166,112 @@ public final class JsApiQueryDownloadTaskForNative
       {
         for (;;)
         {
-          ae.e("MicroMsg.JsApiQueryDownloadTaskForNative", paramString.getMessage());
+          Log.e("MicroMsg.JsApiQueryDownloadTaskForNative", paramString.getMessage());
         }
       }
     }
     
-    public final void aOX()
+    public final void bjj()
     {
       AppMethodBeat.i(45883);
-      ae.i("MicroMsg.JsApiQueryDownloadTaskForNative", "doQueryDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.kwo) });
+      Log.i("MicroMsg.JsApiQueryDownloadTaskForNative", "doQueryDownloadTask, downloadId = %d", new Object[] { Long.valueOf(this.lAs) });
       int i;
-      if ((this.kzb != null) && (this.kzb.length() > 0))
+      if ((this.lDu != null) && (this.lDu.length() > 0))
       {
-        this.kzd = new JSONArray();
+        this.lDw = new JSONArray();
         i = 0;
-        while (i < this.kzb.length())
+        while (i < this.lDu.length())
         {
-          long l = this.kzb.optLong(i);
-          localObject = f.cdA().uj(l);
-          this.kzd.put(a(l, (FileDownloadTaskInfo)localObject));
+          long l = this.lDu.optLong(i);
+          localObject = f.cBv().Co(l);
+          this.lDw.put(a(l, (FileDownloadTaskInfo)localObject));
           i += 1;
         }
-        this.kwm = false;
+        this.lAq = false;
       }
       for (;;)
       {
-        biG();
+        bDU();
         AppMethodBeat.o(45883);
         return;
-        if ((this.kzc != null) && (this.kzc.length() > 0))
+        if ((this.lDv != null) && (this.lDv.length() > 0))
         {
-          this.kzd = new JSONArray();
+          this.lDw = new JSONArray();
           i = 0;
-          while (i < this.kzc.length())
+          while (i < this.lDv.length())
           {
-            localObject = this.kzc.optString(i);
-            FileDownloadTaskInfo localFileDownloadTaskInfo = f.cdA().aaZ((String)localObject);
-            this.kzd.put(a((String)localObject, localFileDownloadTaskInfo));
+            localObject = this.lDv.optString(i);
+            FileDownloadTaskInfo localFileDownloadTaskInfo = f.cBv().alg((String)localObject);
+            this.lDw.put(a((String)localObject, localFileDownloadTaskInfo));
             i += 1;
           }
-          this.kwm = false;
+          this.lAq = false;
         }
         else
         {
-          if (this.kwo > 0L) {
+          if (this.lAs > 0L) {
             break;
           }
-          this.kwn = "downloadId invalid";
+          this.lAr = "downloadId invalid";
         }
       }
-      Object localObject = f.cdA().uj(this.kwo);
+      Object localObject = f.cBv().Co(this.lAs);
       switch (((FileDownloadTaskInfo)localObject).status)
       {
       case 0: 
       default: 
-        this.kze = "default";
+        this.lDx = "default";
       }
       for (;;)
       {
-        ae.i("MicroMsg.JsApiQueryDownloadTaskForNative", "doQueryDownloadTask, state = %s", new Object[] { this.kze });
-        if (((FileDownloadTaskInfo)localObject).nyl != 0L)
+        Log.i("MicroMsg.JsApiQueryDownloadTaskForNative", "doQueryDownloadTask, state = %s", new Object[] { this.lDx });
+        if (((FileDownloadTaskInfo)localObject).oJj != 0L)
         {
-          this.kzf = (((float)((FileDownloadTaskInfo)localObject).ptA / (float)((FileDownloadTaskInfo)localObject).nyl * 100.0F));
-          this.kzg = ((float)((FileDownloadTaskInfo)localObject).ptA * 100.0F / (float)((FileDownloadTaskInfo)localObject).nyl);
+          this.lDy = (((float)((FileDownloadTaskInfo)localObject).qJe / (float)((FileDownloadTaskInfo)localObject).oJj * 100.0F));
+          this.lDz = ((float)((FileDownloadTaskInfo)localObject).qJe * 100.0F / (float)((FileDownloadTaskInfo)localObject).oJj);
         }
-        this.kzh = ((FileDownloadTaskInfo)localObject).ptD;
-        this.kwm = false;
+        this.lDA = ((FileDownloadTaskInfo)localObject).qJh;
+        this.lAq = false;
         break;
-        this.kwn = "fail_apilevel_too_low";
+        this.lAr = "fail_apilevel_too_low";
         break;
-        this.kze = "downloading";
+        this.lDx = "downloading";
         continue;
-        if (o.fB(((FileDownloadTaskInfo)localObject).path))
+        if (com.tencent.mm.vfs.s.YS(((FileDownloadTaskInfo)localObject).path))
         {
-          this.kze = "download_succ";
+          this.lDx = "download_succ";
         }
         else
         {
-          this.kze = "default";
+          this.lDx = "default";
           continue;
-          this.kze = "download_pause";
+          this.lDx = "download_pause";
           continue;
-          this.kze = "download_fail";
+          this.lDx = "download_fail";
         }
       }
     }
     
-    public final void aOY()
+    public final void bjk()
     {
       AppMethodBeat.i(45887);
-      bix();
+      bDK();
       boolean bool;
-      if (this.jzD == null)
+      if (this.kAr == null)
       {
         bool = true;
-        ae.d("MicroMsg.JsApiQueryDownloadTaskForNative", "callback, service is null: %b", new Object[] { Boolean.valueOf(bool) });
-        if (!this.kwm) {
+        Log.d("MicroMsg.JsApiQueryDownloadTaskForNative", "callback, service is null: %b", new Object[] { Boolean.valueOf(bool) });
+        if (!this.lAq) {
           break label110;
         }
-        if (!bu.isNullOrNil(this.kwn)) {
+        if (!Util.isNullOrNil(this.lAr)) {
           break label89;
         }
       }
       label89:
-      for (Object localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.kwn }))
+      for (Object localObject = "fail";; localObject = String.format("fail:%s", new Object[] { this.lAr }))
       {
-        this.jzD.h(this.cgA, this.kwe.e((String)localObject, null));
+        this.kAr.i(this.csv, this.lAi.h((String)localObject, null));
         AppMethodBeat.o(45887);
         return;
         bool = false;
@@ -281,53 +279,53 @@ public final class JsApiQueryDownloadTaskForNative
       }
       label110:
       localObject = new HashMap();
-      if (this.kzd != null) {
-        ((Map)localObject).put("result", this.kzd);
+      if (this.lDw != null) {
+        ((Map)localObject).put("result", this.lDw);
       }
       for (;;)
       {
-        this.jzD.h(this.cgA, this.kwe.n("ok", (Map)localObject));
+        this.kAr.i(this.csv, this.lAi.n("ok", (Map)localObject));
         AppMethodBeat.o(45887);
         return;
-        ((Map)localObject).put("downloadId", Long.valueOf(this.kwo));
-        ((Map)localObject).put("state", this.kze);
-        ((Map)localObject).put("progress", Long.valueOf(this.kzf));
-        ((Map)localObject).put("progress_float", Float.valueOf(this.kzg));
-        ((Map)localObject).put("reserve_for_wifi", Boolean.valueOf(this.kzh));
+        ((Map)localObject).put("downloadId", Long.valueOf(this.lAs));
+        ((Map)localObject).put("state", this.lDx);
+        ((Map)localObject).put("progress", Long.valueOf(this.lDy));
+        ((Map)localObject).put("progress_float", Float.valueOf(this.lDz));
+        ((Map)localObject).put("reserve_for_wifi", Boolean.valueOf(this.lDA));
       }
     }
     
-    public final void e(Parcel paramParcel)
+    public final void f(Parcel paramParcel)
     {
       boolean bool2 = true;
       AppMethodBeat.i(45888);
-      this.kwo = paramParcel.readLong();
+      this.lAs = paramParcel.readLong();
       if (paramParcel.readInt() == 1) {}
       for (bool1 = true;; bool1 = false)
       {
-        this.kwm = bool1;
-        this.kwn = paramParcel.readString();
-        this.kze = paramParcel.readString();
-        this.kzf = paramParcel.readLong();
+        this.lAq = bool1;
+        this.lAr = paramParcel.readString();
+        this.lDx = paramParcel.readString();
+        this.lDy = paramParcel.readLong();
         String str1 = paramParcel.readString();
         String str2 = paramParcel.readString();
         String str3 = paramParcel.readString();
         if (str1 != null) {}
         try
         {
-          this.kzb = new JSONArray(str1);
+          this.lDu = new JSONArray(str1);
           if (str2 != null) {
-            this.kzc = new JSONArray(str2);
+            this.lDv = new JSONArray(str2);
           }
           if (str3 != null) {
-            this.kzd = new JSONArray(str3);
+            this.lDw = new JSONArray(str3);
           }
         }
         catch (JSONException localJSONException)
         {
           for (;;)
           {
-            ae.printErrStackTrace("MicroMsg.JsApiQueryDownloadTaskForNative", localJSONException, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.JsApiQueryDownloadTaskForNative", localJSONException, "", new Object[0]);
             continue;
             bool1 = false;
           }
@@ -336,7 +334,7 @@ public final class JsApiQueryDownloadTaskForNative
           break;
         }
         bool1 = bool2;
-        this.kzh = bool1;
+        this.lDA = bool1;
         AppMethodBeat.o(45888);
         return;
       }
@@ -347,33 +345,33 @@ public final class JsApiQueryDownloadTaskForNative
       int i = 1;
       Object localObject2 = null;
       AppMethodBeat.i(45889);
-      paramParcel.writeLong(this.kwo);
+      paramParcel.writeLong(this.lAs);
       Object localObject1;
-      if (this.kwm)
+      if (this.lAq)
       {
         paramInt = 1;
         paramParcel.writeInt(paramInt);
-        paramParcel.writeString(this.kwn);
-        paramParcel.writeString(this.kze);
-        paramParcel.writeLong(this.kzf);
-        if (this.kzb == null) {
+        paramParcel.writeString(this.lAr);
+        paramParcel.writeString(this.lDx);
+        paramParcel.writeLong(this.lDy);
+        if (this.lDu == null) {
           break label153;
         }
-        localObject1 = this.kzb.toString();
+        localObject1 = this.lDu.toString();
         label73:
         paramParcel.writeString((String)localObject1);
-        if (this.kzc == null) {
+        if (this.lDv == null) {
           break label159;
         }
-        localObject1 = this.kzc.toString();
+        localObject1 = this.lDv.toString();
         label95:
         paramParcel.writeString((String)localObject1);
         localObject1 = localObject2;
-        if (this.kzd != null) {
-          localObject1 = this.kzd.toString();
+        if (this.lDw != null) {
+          localObject1 = this.lDw.toString();
         }
         paramParcel.writeString((String)localObject1);
-        if (!this.kzh) {
+        if (!this.lDA) {
           break label165;
         }
       }

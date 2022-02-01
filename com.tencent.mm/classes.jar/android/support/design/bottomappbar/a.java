@@ -6,34 +6,34 @@ import android.support.design.f.d;
 public final class a
   extends b
 {
-  float hr;
-  float hs;
   float ht;
   float hu;
   float hv;
+  float hw;
+  float hx;
   
   public a(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.hs = paramFloat1;
-    this.hr = paramFloat2;
-    this.hu = paramFloat3;
+    this.hu = paramFloat1;
+    this.ht = paramFloat2;
+    this.hw = paramFloat3;
     if (paramFloat3 < 0.0F) {
       throw new IllegalArgumentException("cradleVerticalOffset must be positive.");
     }
-    this.hv = 0.0F;
+    this.hx = 0.0F;
   }
   
   public final void a(float paramFloat1, float paramFloat2, d paramd)
   {
-    if (this.ht == 0.0F)
+    if (this.hv == 0.0F)
     {
       paramd.j(paramFloat1);
       return;
     }
-    float f1 = (this.hs * 2.0F + this.ht) / 2.0F;
-    float f2 = paramFloat2 * this.hr;
-    float f3 = paramFloat1 / 2.0F + this.hv;
-    paramFloat2 = this.hu * paramFloat2 + (1.0F - paramFloat2) * f1;
+    float f1 = (this.hu * 2.0F + this.hv) / 2.0F;
+    float f2 = paramFloat2 * this.ht;
+    float f3 = paramFloat1 / 2.0F + this.hx;
+    paramFloat2 = this.hw * paramFloat2 + (1.0F - paramFloat2) * f1;
     if (paramFloat2 / f1 >= 1.0F)
     {
       paramd.j(paramFloat1);

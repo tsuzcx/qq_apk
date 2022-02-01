@@ -6,52 +6,52 @@ import java.util.Arrays;
 
 public final class s
 {
-  public final a MAA = new a(0, true);
-  public final a MAB = new a(1, true);
-  public final a MAC = new a(2, true);
-  public final a MAD = new a(3, true);
-  public final a MAE = new a(4, true);
-  public final a MAF = new a(5, true);
-  public final a MAG = new a(6, true);
-  public final a MAH = new a(4096, true);
-  public final a MAI = new a(4097, true);
-  public final a MAJ = new a(4098, true);
-  public final a MAK = new a(4099, true);
-  public final a MAL = new a(8192, false);
-  public final a MAM = new a(8193, true);
-  public final a MAN = new a(8194, false);
-  public final a MAO = new a(8195, false);
-  public final a MAQ = new a(8196, false);
-  public final a MAR = new a(8197, false);
-  public final a MAS = new a(8198, true);
-  public final a[] MAT = { this.MAA, this.MAB, this.MAC, this.MAD, this.MAE, this.MAF, this.MAG, this.MAH, this.MAI, this.MAJ, this.MAK, this.MAL, this.MAM, this.MAN, this.MAO, this.MAQ, this.MAR, this.MAS };
-  public int MAU;
-  public int MAV;
-  public int MAW;
+  public final a SgE = new a(0, true);
+  public final a SgF = new a(1, true);
+  public final a SgG = new a(2, true);
+  public final a SgH = new a(3, true);
+  public final a SgI = new a(4, true);
+  public final a SgJ = new a(5, true);
+  public final a SgK = new a(6, true);
+  public final a SgL = new a(4096, true);
+  public final a SgM = new a(4097, true);
+  public final a SgN = new a(4098, true);
+  public final a SgO = new a(4099, true);
+  public final a SgP = new a(8192, false);
+  public final a SgQ = new a(8193, true);
+  public final a SgR = new a(8194, false);
+  public final a SgS = new a(8195, false);
+  public final a SgT = new a(8196, false);
+  public final a SgU = new a(8197, false);
+  public final a SgV = new a(8198, true);
+  public final a[] SgW = { this.SgE, this.SgF, this.SgG, this.SgH, this.SgI, this.SgJ, this.SgK, this.SgL, this.SgM, this.SgN, this.SgO, this.SgP, this.SgQ, this.SgR, this.SgS, this.SgT, this.SgU, this.SgV };
+  public int SgX;
+  public int SgY;
+  public int SgZ;
   public int dataSize;
   public int fileSize;
-  public int iAi;
-  public byte[] vxd = new byte[20];
+  public int jvw;
+  public byte[] yRs = new byte[20];
   
   final void a(i.e parame)
   {
-    int k = parame.aKX.getInt();
+    int k = parame.aKP.getInt();
     int i = 0;
     a locala;
     for (Object localObject = null; i < k; localObject = locala)
     {
-      int m = parame.aKX.getShort();
-      parame.aKX.getShort();
-      a[] arrayOfa = this.MAT;
+      int m = parame.aKP.getShort();
+      parame.aKP.getShort();
+      a[] arrayOfa = this.SgW;
       int n = arrayOfa.length;
       int j = 0;
       while (j < n)
       {
         locala = arrayOfa[j];
-        if (locala.MAY == m)
+        if (locala.Sha == m)
         {
-          j = parame.aKX.getInt();
-          n = parame.aKX.getInt();
+          j = parame.aKP.getInt();
+          n = parame.aKP.getInt();
           if (((locala.size == 0) || (locala.size == j)) && ((locala.off == -1) || (locala.off == n))) {
             break label178;
           }
@@ -68,13 +68,13 @@ public final class s
       }
       i += 1;
     }
-    this.MAA.off = 0;
-    Arrays.sort(this.MAT);
+    this.SgE.off = 0;
+    Arrays.sort(this.SgW);
     i = 1;
-    while (i < this.MAT.length)
+    while (i < this.SgW.length)
     {
-      if (this.MAT[i].off == -1) {
-        this.MAT[i].off = this.MAT[(i - 1)].off;
+      if (this.SgW[i].off == -1) {
+        this.SgW[i].off = this.SgW[(i - 1)].off;
       }
       i += 1;
     }
@@ -82,7 +82,7 @@ public final class s
   
   public final void b(i.e parame)
   {
-    a[] arrayOfa = this.MAT;
+    a[] arrayOfa = this.SgW;
     int m = arrayOfa.length;
     int i = 0;
     int k;
@@ -95,7 +95,7 @@ public final class s
       i += 1;
     }
     parame.writeInt(j);
-    arrayOfa = this.MAT;
+    arrayOfa = this.SgW;
     j = arrayOfa.length;
     i = 0;
     while (i < j)
@@ -103,7 +103,7 @@ public final class s
       a locala = arrayOfa[i];
       if (locala.exists())
       {
-        parame.writeShort(locala.MAY);
+        parame.writeShort(locala.Sha);
         parame.writeShort((short)0);
         parame.writeInt(locala.size);
         parame.writeInt(locala.off);
@@ -112,13 +112,13 @@ public final class s
     }
   }
   
-  public final void gcJ()
+  public final void hoR()
   {
     int j = this.fileSize;
-    int i = this.MAT.length - 1;
+    int i = this.SgW.length - 1;
     while (i >= 0)
     {
-      a locala = this.MAT[i];
+      a locala = this.SgW[i];
       int k = j;
       if (locala.off != -1)
       {
@@ -131,23 +131,23 @@ public final class s
       i -= 1;
       j = k;
     }
-    this.MAW = (this.MAA.byteCount + this.MAB.byteCount + this.MAC.byteCount + this.MAD.byteCount + this.MAE.byteCount + this.MAF.byteCount + this.MAG.byteCount);
-    this.dataSize = (this.fileSize - this.MAW);
+    this.SgZ = (this.SgE.byteCount + this.SgF.byteCount + this.SgG.byteCount + this.SgH.byteCount + this.SgI.byteCount + this.SgJ.byteCount + this.SgK.byteCount);
+    this.dataSize = (this.fileSize - this.SgZ);
   }
   
   public static final class a
     implements Comparable<a>
   {
-    public final short MAY;
-    public boolean MAZ;
+    public final short Sha;
+    public boolean Shb;
     public int byteCount = 0;
     public int off = -1;
     public int size = 0;
     
     public a(int paramInt, boolean paramBoolean)
     {
-      this.MAY = ((short)paramInt);
-      this.MAZ = paramBoolean;
+      this.Sha = ((short)paramInt);
+      this.Shb = paramBoolean;
       if (paramInt == 0)
       {
         this.off = 0;
@@ -160,7 +160,7 @@ public final class s
       this.size = 1;
     }
     
-    private static int aik(int paramInt)
+    private static int arK(int paramInt)
     {
       switch (paramInt)
       {
@@ -211,7 +211,7 @@ public final class s
     
     public final String toString()
     {
-      return String.format("Section[type=%#x,off=%#x,size=%#x]", new Object[] { Short.valueOf(this.MAY), Integer.valueOf(this.off), Integer.valueOf(this.size) });
+      return String.format("Section[type=%#x,off=%#x,size=%#x]", new Object[] { Short.valueOf(this.Sha), Integer.valueOf(this.off), Integer.valueOf(this.size) });
     }
     
     public static abstract class a<T>
@@ -238,7 +238,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.a.s
  * JD-Core Version:    0.7.0.1
  */

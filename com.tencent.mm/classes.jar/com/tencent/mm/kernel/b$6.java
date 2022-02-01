@@ -1,50 +1,50 @@
 package com.tencent.mm.kernel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ci;
-import com.tencent.mm.model.ci.a;
-import com.tencent.mm.sdk.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.model.cm;
+import com.tencent.mm.model.cm.a;
+import com.tencent.mm.sdk.crash.CallbackForReset;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.Set;
 
 public final class b$6
-  implements a
+  implements CallbackForReset
 {
   public b$6(b paramb) {}
   
-  public final void xC(String paramString)
+  public final void callbackForReset(String paramString)
   {
     AppMethodBeat.i(132052);
-    ae.w("MMKernel.CoreNetwork", "CallbackForReset errorStack %s ", new Object[] { paramString });
-    g.ajS();
-    if (g.ajT() != null)
+    Log.w("MMKernel.CoreNetwork", "CallbackForReset errorStack %s ", new Object[] { paramString });
+    g.aAi();
+    if (g.aAj() != null)
     {
-      g.ajS();
-      ci localci = g.ajT();
-      localci.isRunning = true;
-      Iterator localIterator = localci.hLo.iterator();
+      g.aAi();
+      cm localcm = g.aAj();
+      localcm.isRunning = true;
+      Iterator localIterator = localcm.iGc.iterator();
       while (localIterator.hasNext())
       {
-        ci.a locala = (ci.a)localIterator.next();
+        cm.a locala = (cm.a)localIterator.next();
         if (locala != null) {
-          locala.aDe();
+          locala.aWC();
         }
       }
-      localci.isRunning = false;
+      localcm.isRunning = false;
     }
-    g.ajS();
-    if (g.ajR() != null)
+    g.aAi();
+    if (g.aAh() != null)
     {
-      g.ajS();
-      g.ajR().uv(paramString);
+      g.aAi();
+      g.aAh().CL(paramString);
     }
     AppMethodBeat.o(132052);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kernel.b.6
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:id="@id/d2t" android:background="@color/eq" android:scrollbars="none" android:overScrollMode="never" style="@style/n3" />
-        <com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitScrollBar android:layout_gravity="center|right" android:id="@id/fi6" android:layout_width="@dimen/b" android:layout_height="fill_parent" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/km" android:layout_gravity="center_horizontal" android:id="@id/y0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/ghg" />
-    </FrameLayout>
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/b3s" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:text="0x27001530" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/g3k" android:layout_width="120.0dip" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cb" android:text="@string/x_" style="@style/ou" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/wc" android:layout_width="300.0dip" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cb" android:text="@string/a4s" style="@style/ou" />
 </LinearLayout>

@@ -1,40 +1,40 @@
 package com.tencent.mm.model;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.storage.ab;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/model/BizRecFeedReport;", "", "()V", "reportIdKey1590", "", "value", "", "reportKv22101", "actionType", "", "position", "plugin-biz_release"})
 public final class o
 {
-  public static int aAu()
+  public static final o iBV;
+  
+  static
   {
-    AppMethodBeat.i(20317);
-    if (!g.ajM())
-    {
-      ae.w("MicroMsg.BottleConversationLogic", "get Bottle Total Conversation Unread, but has not set uin");
-      AppMethodBeat.o(20317);
-      return 0;
-    }
-    Cursor localCursor = ((l)g.ab(l.class)).azL().fuT();
-    if ((localCursor != null) && (localCursor.getCount() > 0)) {
-      localCursor.moveToFirst();
-    }
-    for (int i = localCursor.getInt(0);; i = 0)
-    {
-      if (localCursor != null) {
-        localCursor.close();
-      }
-      AppMethodBeat.o(20317);
-      return i;
-    }
+    AppMethodBeat.i(212379);
+    iBV = new o();
+    AppMethodBeat.o(212379);
+  }
+  
+  public static void Aa(long paramLong)
+  {
+    AppMethodBeat.i(212377);
+    h.CyF.idkeyStat(1590L, paramLong, 1L, false);
+    AppMethodBeat.o(212377);
+  }
+  
+  public static void dk(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(212378);
+    int i = ab.getSessionId();
+    h.CyF.a(22101, new Object[] { String.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.o(212378);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.model.o
  * JD-Core Version:    0.7.0.1
  */

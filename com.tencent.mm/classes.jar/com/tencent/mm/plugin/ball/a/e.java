@@ -3,66 +3,34 @@ package com.tencent.mm.plugin.ball.a;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.view.MotionEvent;
+import android.graphics.Bitmap.Config;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.b;
-import com.tencent.mm.ui.base.b.a;
+import com.tencent.mm.ui.base.b.b;
+import com.tencent.mm.ui.n.a;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
-import com.tencent.mm.ui.widget.SwipeBackLayout.b;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class e
   implements f
 {
-  private final Activity activity;
+  public Activity activity;
   
   public e(Activity paramActivity)
   {
     this.activity = paramActivity;
   }
   
-  public void a(final f.a parama)
+  public void a(f.a parama)
   {
     AppMethodBeat.i(127522);
-    if (((this.activity instanceof MMActivity)) && (((MMActivity)this.activity).getSwipeBackLayout() != null)) {
-      ((MMActivity)this.activity).getSwipeBackLayout().setSwipeBackListener(new SwipeBackLayout.b()
-      {
-        public final void aQ(float paramAnonymousFloat)
-        {
-          AppMethodBeat.i(127512);
-          if (parama != null) {
-            parama.aR(paramAnonymousFloat);
-          }
-          AppMethodBeat.o(127512);
-        }
-        
-        public final int bq(boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(127514);
-          if (parama != null)
-          {
-            int i = parama.iJ(paramAnonymousBoolean);
-            AppMethodBeat.o(127514);
-            return i;
-          }
-          AppMethodBeat.o(127514);
-          return 1;
-        }
-        
-        public final void k(MotionEvent paramAnonymousMotionEvent)
-        {
-          AppMethodBeat.i(127513);
-          if (parama != null) {
-            parama.k(paramAnonymousMotionEvent);
-          }
-          AppMethodBeat.o(127513);
-        }
-      });
+    if ((this.activity instanceof MMActivity)) {
+      ((MMActivity)this.activity).getSwipeBackLayout();
     }
     AppMethodBeat.o(127522);
   }
@@ -70,36 +38,40 @@ public class e
   public void a(final f.b paramb)
   {
     AppMethodBeat.i(127524);
-    ae.i("MicroMsg.FloatBallPageAdapter", "convertToTranslucent");
-    b.a(this.activity, new b.a()
+    Log.i("MicroMsg.FloatBallPageAdapter", "convertToTranslucent");
+    final AtomicInteger localAtomicInteger = new AtomicInteger(0);
+    b.a(this.activity, new b.b()
     {
-      public final void iI(boolean paramAnonymousBoolean)
+      public final void ei(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(127515);
-        if (paramb != null) {
-          paramb.iI(paramAnonymousBoolean);
+        AppMethodBeat.i(188573);
+        if ((!paramAnonymousBoolean) && (localAtomicInteger.getAndIncrement() <= 0))
+        {
+          b.a(e.this.activity, new b.b()
+          {
+            public final void ei(boolean paramAnonymous2Boolean)
+            {
+              AppMethodBeat.i(188572);
+              if (e.1.this.oWd != null) {
+                e.1.this.oWd.ei(paramAnonymous2Boolean);
+              }
+              AppMethodBeat.o(188572);
+            }
+          });
+          AppMethodBeat.o(188573);
+          return;
         }
-        AppMethodBeat.o(127515);
+        if (paramb != null) {
+          paramb.ei(paramAnonymousBoolean);
+        }
+        AppMethodBeat.o(188573);
       }
     });
-    ae.i("MicroMsg.FloatBallPageAdapter", "float ball page convertActivityToTranslucent");
+    Log.i("MicroMsg.FloatBallPageAdapter", "float ball page convertActivityToTranslucent");
     AppMethodBeat.o(127524);
   }
   
-  public ViewGroup bKN()
-  {
-    AppMethodBeat.i(127517);
-    ViewGroup localViewGroup = (ViewGroup)this.activity.getWindow().getDecorView();
-    AppMethodBeat.o(127517);
-    return localViewGroup;
-  }
-  
-  public int bKO()
-  {
-    return -1;
-  }
-  
-  public boolean bhh()
+  public boolean aGg()
   {
     AppMethodBeat.i(127521);
     if (((this.activity instanceof MMActivity)) && (((MMActivity)this.activity).getSwipeBackLayout() != null))
@@ -111,32 +83,28 @@ public class e
     return false;
   }
   
-  public boolean bhu()
+  public boolean bCI()
   {
     return true;
   }
   
-  public void ge(boolean paramBoolean)
+  public ViewGroup chG()
   {
-    AppMethodBeat.i(127523);
-    ae.i("MicroMsg.FloatBallPageAdapter", "finish, withAnimation:%s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (getIntent() != null)
+    AppMethodBeat.i(127517);
+    Object localObject = getActivity();
+    if (localObject == null)
     {
-      if (!paramBoolean) {
-        break label71;
-      }
-      getIntent().putExtra("MMActivity.OverrideExitAnimation", 2130772100);
-      getIntent().putExtra("MMActivity.OverrideEnterAnimation", 2130771986);
+      AppMethodBeat.o(127517);
+      return null;
     }
-    for (;;)
-    {
-      this.activity.finish();
-      AppMethodBeat.o(127523);
-      return;
-      label71:
-      getIntent().putExtra("MMActivity.OverrideExitAnimation", 0);
-      getIntent().putExtra("MMActivity.OverrideEnterAnimation", 0);
-    }
+    localObject = (ViewGroup)((Activity)localObject).getWindow().getDecorView();
+    AppMethodBeat.o(127517);
+    return localObject;
+  }
+  
+  public int chH()
+  {
+    return -1;
   }
   
   public Activity getActivity()
@@ -147,7 +115,7 @@ public class e
   public Bitmap getBitmap()
   {
     AppMethodBeat.i(127520);
-    Bitmap localBitmap = h.ga(getMaskView());
+    Bitmap localBitmap = a.a(getMaskView(), Bitmap.Config.ARGB_8888);
     AppMethodBeat.o(127520);
     return localBitmap;
   }
@@ -168,9 +136,15 @@ public class e
   public Intent getIntent()
   {
     AppMethodBeat.i(127516);
-    Intent localIntent = this.activity.getIntent();
+    Object localObject = getActivity();
+    if (localObject == null)
+    {
+      AppMethodBeat.o(127516);
+      return null;
+    }
+    localObject = ((Activity)localObject).getIntent();
     AppMethodBeat.o(127516);
-    return localIntent;
+    return localObject;
   }
   
   public View getMaskView()
@@ -185,10 +159,35 @@ public class e
     AppMethodBeat.o(127519);
     return null;
   }
+  
+  public void hb(boolean paramBoolean)
+  {
+    AppMethodBeat.i(127523);
+    Log.i("MicroMsg.FloatBallPageAdapter", "finish, withAnimation:%s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (getIntent() != null)
+    {
+      if (!paramBoolean) {
+        break label78;
+      }
+      getIntent().putExtra("MMActivity.OverrideExitAnimation", 2130772124);
+      getIntent().putExtra("MMActivity.OverrideEnterAnimation", 2130771986);
+    }
+    for (;;)
+    {
+      if (getActivity() != null) {
+        getActivity().finish();
+      }
+      AppMethodBeat.o(127523);
+      return;
+      label78:
+      getIntent().putExtra("MMActivity.OverrideExitAnimation", 0);
+      getIntent().putExtra("MMActivity.OverrideEnterAnimation", 0);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.a.e
  * JD-Core Version:    0.7.0.1
  */

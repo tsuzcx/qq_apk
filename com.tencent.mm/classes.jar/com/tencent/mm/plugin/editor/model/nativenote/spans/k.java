@@ -11,31 +11,31 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class k
   implements LeadingMarginSpan, g<Boolean>, h<Boolean>
 {
-  public static float pDR = 0.0F;
+  public static float qTi = 0.0F;
+  private float gPN;
   private float mWidth;
-  private final int pDL;
-  public boolean pDM;
-  private final int pDP;
-  private float pDQ;
+  private final int qTd;
+  public boolean qTe;
+  private final int qTh;
   
   private k(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    this.pDQ = 10.0F;
-    this.pDP = paramInt1;
-    this.pDL = paramInt2;
-    this.pDM = paramBoolean;
+    this.gPN = 10.0F;
+    this.qTh = paramInt1;
+    this.qTd = paramInt2;
+    this.qTe = paramBoolean;
   }
   
   public k(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     AppMethodBeat.i(181942);
-    this.pDQ = 10.0F;
-    this.pDP = paramInt1;
-    this.pDL = paramInt2;
+    this.gPN = 10.0F;
+    this.qTh = paramInt1;
+    this.qTd = paramInt2;
     if ((paramBoolean1) && (paramBoolean3) && (!paramBoolean2)) {}
     for (paramBoolean1 = true;; paramBoolean1 = false)
     {
-      this.pDM = paramBoolean1;
+      this.qTe = paramBoolean1;
       AppMethodBeat.o(181942);
       return;
     }
@@ -45,14 +45,14 @@ public class k
   {
     AppMethodBeat.i(181944);
     paramCharSequence = (Spanned)paramCharSequence;
-    if ((!this.pDM) && (paramCharSequence.getSpanStart(this) == paramInt6))
+    if ((!this.qTe) && (paramCharSequence.getSpanStart(this) == paramInt6))
     {
       paramCharSequence = paramPaint.getStyle();
       float f = paramPaint.getTextSize();
       paramPaint.setStyle(Paint.Style.FILL);
-      this.pDQ = (paramInt4 - paramInt3);
-      this.mWidth = paramPaint.measureText(this.pDP + ".");
-      paramCanvas.drawText(this.pDP + ".", paramInt1, paramInt4, paramPaint);
+      this.gPN = (paramInt4 - paramInt3);
+      this.mWidth = paramPaint.measureText(this.qTh + ".");
+      paramCanvas.drawText(this.qTh + ".", paramInt1, paramInt4, paramPaint);
       paramPaint.setStyle(paramCharSequence);
       paramPaint.setTextSize(f);
     }
@@ -62,24 +62,24 @@ public class k
   public int getLeadingMargin(boolean paramBoolean)
   {
     AppMethodBeat.i(181943);
-    if (this.mWidth + 2.0F > pDR) {}
-    for (float f = this.mWidth + 2.0F;; f = pDR)
+    if (this.mWidth + 2.0F > qTi) {}
+    for (float f = this.mWidth + 2.0F;; f = qTi)
     {
-      pDR = Math.max(Math.round(f), this.pDL);
-      if (!this.pDM) {
+      qTi = Math.max(Math.round(f), this.qTd);
+      if (!this.qTe) {
         break;
       }
       AppMethodBeat.o(181943);
       return 0;
     }
-    int i = (int)pDR;
+    int i = (int)qTi;
     AppMethodBeat.o(181943);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.spans.k
  * JD-Core Version:    0.7.0.1
  */

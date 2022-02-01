@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<no name provided>", "", "t", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<no name provided>", "", "t", "", "invoke"})
 public final class j$a$a
   extends q
   implements b<Long, String>
 {
-  public static final a oxQ;
+  public static final a pLu;
   
   static
   {
-    AppMethodBeat.i(209151);
-    oxQ = new a();
-    AppMethodBeat.o(209151);
+    AppMethodBeat.i(195974);
+    pLu = new a();
+    AppMethodBeat.o(195974);
   }
   
   j$a$a()

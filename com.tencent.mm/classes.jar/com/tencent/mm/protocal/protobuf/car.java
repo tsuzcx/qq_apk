@@ -4,163 +4,116 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class car
-  extends cvw
+  extends com.tencent.mm.bw.a
 {
-  public int FNu;
-  public LinkedList<cat> FUY;
-  public int Hop;
-  public LinkedList<caq> Hoq;
-  public int Hor;
-  public String Hos;
-  public int Scene;
-  
-  public car()
-  {
-    AppMethodBeat.i(127498);
-    this.Hoq = new LinkedList();
-    this.FUY = new LinkedList();
-    AppMethodBeat.o(127498);
-  }
+  public acn MfU;
+  public float height;
+  public String thumbUrl;
+  public float width;
+  public String xve;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(127499);
+    AppMethodBeat.i(209722);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.thumbUrl != null) {
+        paramVarArgs.e(1, this.thumbUrl);
+      }
+      paramVarArgs.E(2, this.width);
+      paramVarArgs.E(3, this.height);
+      if (this.MfU != null)
       {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.ni(4, this.MfU.computeSize());
+        this.MfU.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.FNu);
-      paramVarArgs.aS(3, this.Hop);
-      paramVarArgs.e(4, 8, this.Hoq);
-      paramVarArgs.aS(5, this.Hor);
-      paramVarArgs.e(6, 8, this.FUY);
-      if (this.Hos != null) {
-        paramVarArgs.d(7, this.Hos);
+      if (this.xve != null) {
+        paramVarArgs.e(5, this.xve);
       }
-      paramVarArgs.aS(8, this.Scene);
-      AppMethodBeat.o(127499);
+      AppMethodBeat.o(209722);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label826;
+      if (this.thumbUrl == null) {
+        break label520;
       }
     }
-    label826:
-    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label520:
+    for (paramInt = g.a.a.b.b.a.f(1, this.thumbUrl) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.FNu) + f.a.a.b.b.a.bz(3, this.Hop) + f.a.a.a.c(4, 8, this.Hoq) + f.a.a.b.b.a.bz(5, this.Hor) + f.a.a.a.c(6, 8, this.FUY);
+      int i = paramInt + (g.a.a.b.b.a.fS(2) + 4) + (g.a.a.b.b.a.fS(3) + 4);
       paramInt = i;
-      if (this.Hos != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.Hos);
+      if (this.MfU != null) {
+        paramInt = i + g.a.a.a.nh(4, this.MfU.computeSize());
       }
-      i = f.a.a.b.b.a.bz(8, this.Scene);
-      AppMethodBeat.o(127499);
-      return paramInt + i;
+      i = paramInt;
+      if (this.xve != null) {
+        i = paramInt + g.a.a.b.b.a.f(5, this.xve);
+      }
+      AppMethodBeat.o(209722);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = (byte[])paramVarArgs[0];
-        this.Hoq.clear();
-        this.FUY.clear();
-        paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(127499);
+        AppMethodBeat.o(209722);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         car localcar = (car)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(127499);
+          AppMethodBeat.o(209722);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcar.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(127499);
+          localcar.thumbUrl = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(209722);
           return 0;
         case 2: 
-          localcar.FNu = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(127499);
+          localcar.width = Float.intBitsToFloat(((g.a.a.a.a)localObject1).UbS.zm());
+          AppMethodBeat.o(209722);
           return 0;
         case 3: 
-          localcar.Hop = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(127499);
+          localcar.height = Float.intBitsToFloat(((g.a.a.a.a)localObject1).UbS.zm());
+          AppMethodBeat.o(209722);
           return 0;
         case 4: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new caq();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((caq)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcar.Hoq.add(localObject1);
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new acn();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((acn)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localcar.MfU = ((acn)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(127499);
-          return 0;
-        case 5: 
-          localcar.Hor = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(127499);
-          return 0;
-        case 6: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new cat();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((cat)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcar.FUY.add(localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(127499);
-          return 0;
-        case 7: 
-          localcar.Hos = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(127499);
+          AppMethodBeat.o(209722);
           return 0;
         }
-        localcar.Scene = ((f.a.a.a.a)localObject1).OmT.zc();
-        AppMethodBeat.o(127499);
+        localcar.xve = ((g.a.a.a.a)localObject1).UbS.readString();
+        AppMethodBeat.o(209722);
         return 0;
       }
-      AppMethodBeat.o(127499);
+      AppMethodBeat.o(209722);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.car
  * JD-Core Version:    0.7.0.1
  */

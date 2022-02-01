@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/a_c" android:paddingLeft="@dimen/ad4" android:paddingRight="@dimen/ad4" android:clickable="true" android:layout_width="fill_parent" android:layout_height="@dimen/adf"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/adi" android:textColor="@color/y4" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d5v" />
+    <com.tencent.mm.ui.widget.picker.WheelView android:id="@id/g5a" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    <com.tencent.mm.ui.widget.picker.WheelView android:id="@id/g5b" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
 </LinearLayout>

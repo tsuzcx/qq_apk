@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bnj;
-import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ml
-  extends b
+  extends IEvent
 {
-  public a dAZ;
+  public a dRT;
   
   public ml()
   {
@@ -17,22 +15,26 @@ public final class ml
   
   private ml(byte paramByte)
   {
-    AppMethodBeat.i(101728);
-    this.dAZ = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(155544);
+    this.dRT = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(101728);
+    AppMethodBeat.o(155544);
   }
   
   public static final class a
   {
-    public LinkedList<bnj> dBa;
-    public boolean dBb = false;
+    public boolean dRU = false;
+    public int dRV;
+    public boolean dRW = false;
+    public int dRX;
+    public boolean dRY = false;
+    public int dRZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ml
  * JD-Core Version:    0.7.0.1
  */

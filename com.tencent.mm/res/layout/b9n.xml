@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/egd" android:background="@color/rz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip"
+<LinearLayout android:gravity="center|left" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/s0" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/egc" android:paddingLeft="10.0dip" android:paddingTop="6.0dip" android:paddingRight="10.0dip" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{Content}" android:drawableLeft="@raw/seller_warning" android:drawablePadding="10.0dip" />
+    <TextView android:id="@id/ipm" android:layout_width="@dimen/em" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:singleLine="true" style="@style/mi" />
+    <ImageView android:id="@id/dvz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k_" android:src="@raw/card_photoicon" />
+    <TextView android:textColor="@color/x0" android:ellipsize="end" android:id="@id/ied" android:singleLine="true" style="@style/ml" />
 </LinearLayout>

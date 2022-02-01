@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.appbrand.task.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ho;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.ia;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class b
-  extends ho
+  extends ia
 {
-  static final c.a jJU;
+  static final IAutoDBItem.MAutoDBInfo kLR;
   
   static
   {
-    AppMethodBeat.i(223016);
-    c.a locala = new c.a();
-    locala.IBL = new Field[3];
-    locala.columns = new String[4];
+    AppMethodBeat.i(227533);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[3];
+    localMAutoDBInfo.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appId";
-    locala.IBN.put("appId", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" appId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "appId";
-    locala.columns[1] = "permissionDemo";
-    locala.IBN.put("permissionDemo", "INTEGER default 'false' ");
+    localMAutoDBInfo.primaryKey = "appId";
+    localMAutoDBInfo.columns[1] = "permissionDemo";
+    localMAutoDBInfo.colsMap.put("permissionDemo", "INTEGER default 'false' ");
     localStringBuilder.append(" permissionDemo INTEGER default 'false' ");
     localStringBuilder.append(", ");
-    locala.columns[2] = "versiontime";
-    locala.IBN.put("versiontime", "LONG");
+    localMAutoDBInfo.columns[2] = "versiontime";
+    localMAutoDBInfo.colsMap.put("versiontime", "LONG");
     localStringBuilder.append(" versiontime LONG");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    jJU = locala;
-    AppMethodBeat.o(223016);
+    localMAutoDBInfo.columns[3] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    kLR = localMAutoDBInfo;
+    AppMethodBeat.o(227533);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return jJU;
+    return kLR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.task.a.b
  * JD-Core Version:    0.7.0.1
  */

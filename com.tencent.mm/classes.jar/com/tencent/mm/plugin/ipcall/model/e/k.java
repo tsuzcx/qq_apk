@@ -1,54 +1,55 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cnu;
-import com.tencent.mm.protocal.protobuf.cnv;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dfo;
+import com.tencent.mm.protocal.protobuf.dfp;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class k
-  extends n
-  implements com.tencent.mm.network.k
+  extends q
+  implements m
 {
-  private f callback;
-  private b rr;
-  public cnu uZi;
-  public cnv uZj;
+  private i callback;
+  private d rr;
+  public dfo yrI;
+  public dfp yrJ;
   
   public k(int paramInt, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(25481);
     this.rr = null;
-    this.uZi = null;
-    this.uZj = null;
+    this.yrI = null;
+    this.yrJ = null;
     this.callback = null;
-    b.a locala = new b.a();
-    locala.hQF = new cnu();
-    locala.hQG = new cnv();
+    d.a locala = new d.a();
+    locala.iLN = new dfo();
+    locala.iLO = new dfp();
     locala.funcId = 726;
     locala.uri = "/cgi-bin/micromsg-bin/pstnredirect";
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    this.uZi = ((cnu)this.rr.hQD.hQJ);
-    this.uZi.Gxq = paramInt;
-    this.uZi.Gxr = paramLong1;
-    this.uZi.Hzz = paramLong2;
+    this.rr = locala.aXF();
+    this.yrI = ((dfo)this.rr.iLK.iLR);
+    this.yrI.LsZ = paramInt;
+    this.yrI.Lta = paramLong1;
+    this.yrI.MKi = paramLong2;
     AppMethodBeat.o(25481);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(25482);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(25482);
     return i;
   }
@@ -58,11 +59,11 @@ public final class k
     return 726;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(25483);
-    ae.i("MicroMsg.NetSceneIPCallRedirect", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.uZj = ((cnv)((b)paramq).hQE.hQJ);
+    Log.i("MicroMsg.NetSceneIPCallRedirect", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.yrJ = ((dfp)((d)params).iLL.iLR);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

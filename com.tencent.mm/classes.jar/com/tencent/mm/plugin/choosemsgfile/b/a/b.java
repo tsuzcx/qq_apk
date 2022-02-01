@@ -1,26 +1,26 @@
 package com.tencent.mm.plugin.choosemsgfile.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 public final class b
 {
-  private static final ThreadPoolExecutor oYo;
+  private static final ThreadPoolExecutor qnn;
   
   static
   {
     AppMethodBeat.i(123226);
-    oYo = new ThreadPoolExecutor(0, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
+    qnn = new ThreadPoolExecutor(0, 1, 1L, TimeUnit.SECONDS, new LinkedBlockingDeque());
     AppMethodBeat.o(123226);
   }
   
   public static void a(com.tencent.mm.plugin.choosemsgfile.b.b.a parama, a parama1, com.tencent.mm.vending.e.b paramb)
   {
     AppMethodBeat.i(123225);
-    ae.i("MicroMsg.MsgFileMgr", "sumbit() item:%s", new Object[] { parama });
+    Log.i("MicroMsg.MsgFileMgr", "sumbit() item:%s", new Object[] { parama });
     Object localObject = null;
     switch (parama.getType())
     {
@@ -29,8 +29,8 @@ public final class b
     }
     while (parama == null)
     {
-      ae.e("MicroMsg.MsgFileMgr", "downloadTask is null, return");
-      parama1.cat();
+      Log.e("MicroMsg.MsgFileMgr", "downloadTask is null, return");
+      parama1.cyk();
       AppMethodBeat.o(123225);
       return;
       parama = new e(parama, parama1, paramb);
@@ -43,20 +43,20 @@ public final class b
     }
     if (!parama.checkValid())
     {
-      ae.e("MicroMsg.MsgFileMgr", "downloadTask is invalid, return");
-      parama1.cav();
+      Log.e("MicroMsg.MsgFileMgr", "downloadTask is invalid, return");
+      parama1.cym();
       AppMethodBeat.o(123225);
       return;
     }
-    if (!parama.caw()) {
-      oYo.submit(parama);
+    if (!parama.cyn()) {
+      qnn.submit(parama);
     }
     AppMethodBeat.o(123225);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.a.b
  * JD-Core Version:    0.7.0.1
  */

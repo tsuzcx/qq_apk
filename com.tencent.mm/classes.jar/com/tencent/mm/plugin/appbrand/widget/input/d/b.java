@@ -4,27 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum b
 {
-  public final int nnU;
+  public final int oxA;
   
   static
   {
     AppMethodBeat.i(131524);
-    nnO = new b("DONE", 0, 6);
-    nnP = new b("SEARCH", 1, 3);
-    nnQ = new b("NEXT", 2, 5);
-    nnR = new b("GO", 3, 2);
-    nnS = new b("SEND", 4, 4);
-    nnT = new b("RETURN", 5, 0);
-    nnV = new b[] { nnO, nnP, nnQ, nnR, nnS, nnT };
+    oxu = new b("DONE", 0, 6);
+    oxv = new b("SEARCH", 1, 3);
+    oxw = new b("NEXT", 2, 5);
+    oxx = new b("GO", 3, 2);
+    oxy = new b("SEND", 4, 4);
+    oxz = new b("RETURN", 5, 0);
+    oxB = new b[] { oxu, oxv, oxw, oxx, oxy, oxz };
     AppMethodBeat.o(131524);
   }
   
   private b(int paramInt)
   {
-    this.nnU = paramInt;
+    this.oxA = paramInt;
   }
   
-  public static b We(String paramString)
+  public static b aga(String paramString)
   {
     AppMethodBeat.i(131523);
     paramString = (b)d.h(paramString, b.class);
@@ -32,17 +32,17 @@ public enum b
     return paramString;
   }
   
-  public static b ij(boolean paramBoolean)
+  public static b jk(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return nnT;
+      return oxz;
     }
-    return nnO;
+    return oxu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.d.b
  * JD-Core Version:    0.7.0.1
  */

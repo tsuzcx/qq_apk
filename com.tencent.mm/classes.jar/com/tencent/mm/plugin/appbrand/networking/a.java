@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.appbrand.networking;
 
-import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
-import d.n.n;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/networking/AppBrandCgiArgsCheckUtil;", "", "()V", "TAG", "", "isValidCgiArgs", "", "appId", "userName", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/networking/AppBrandCgiArgsCheckUtil;", "", "()V", "TAG", "", "isValidCgiArgs", "", "appId", "userName", "plugin-appbrand-integration_release"})
 public final class a
 {
-  public static final a mbL;
+  public static final a njw;
   
   static
   {
-    AppMethodBeat.i(223811);
-    mbL = new a();
-    AppMethodBeat.o(223811);
+    AppMethodBeat.i(229061);
+    njw = new a();
+    AppMethodBeat.o(229061);
   }
   
-  public static final boolean ej(String paramString1, String paramString2)
+  public static final boolean eA(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(223810);
-    if (((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qLa, 1) == 1) {}
+    AppMethodBeat.i(229060);
+    if (((b)g.af(b.class)).a(b.a.sgZ, 1) == 1) {}
     for (int i = 1; i == 0; i = 0)
     {
-      AppMethodBeat.o(223810);
+      AppMethodBeat.o(229060);
       return true;
     }
-    String str1 = bu.bI(paramString1, "");
+    String str1 = Util.nullAs(paramString1, "");
     if (str1 == null) {
-      p.gkB();
+      p.hyc();
     }
-    String str2 = bu.bI(paramString2, "");
+    String str2 = Util.nullAs(paramString2, "");
     if (str2 == null) {
-      p.gkB();
+      p.hyc();
     }
-    if (((paramString1 == null) && (paramString2 == null)) || ((n.aD((CharSequence)str1)) && ((n.aD((CharSequence)str2)) || (!n.nG(str2, "@app")) || (str2.length() < 5)))) {}
+    if (((paramString1 == null) && (paramString2 == null)) || ((n.aL((CharSequence)str1)) && ((n.aL((CharSequence)str2)) || (!n.K(str2, "@app", false)) || (str2.length() < 5)))) {}
     for (boolean bool = false;; bool = true)
     {
       if (!bool)
       {
-        ae.e("MicroMsg.AppBrandCgiArgsCheckUtil", "isValidCgiArgs: invalid cgi args appId [" + paramString1 + "] userName [" + paramString2 + "] stack [" + Log.getStackTraceString(new Throwable()) + ']');
-        com.tencent.mm.plugin.report.service.g.yxI.dD(369, 34);
+        com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.AppBrandCgiArgsCheckUtil", "isValidCgiArgs: invalid cgi args appId [" + paramString1 + "] userName [" + paramString2 + "] stack [" + android.util.Log.getStackTraceString(new Throwable()) + ']');
+        h.CyF.dN(369, 34);
       }
-      AppMethodBeat.o(223810);
+      AppMethodBeat.o(229060);
       return bool;
     }
   }

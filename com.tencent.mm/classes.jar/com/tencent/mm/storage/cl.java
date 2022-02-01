@@ -1,77 +1,78 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.c.gb;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
-public final class cl
-  extends j<ck>
+public class cl
+  extends gb
 {
-  public static final String[] SQL_CREATE;
-  public e db;
+  protected static Field[] fields;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(32891);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ck.info, "UserOpenIdInApp") };
-    AppMethodBeat.o(32891);
+    AppMethodBeat.i(43301);
+    fields = gb.getValidFields(cl.class);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[11];
+    localMAutoDBInfo.columns = new String[12];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "svrid";
+    localMAutoDBInfo.colsMap.put("svrid", "LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "svrid";
+    localMAutoDBInfo.columns[1] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER");
+    localStringBuilder.append(" status INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "type";
+    localMAutoDBInfo.colsMap.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "scene";
+    localMAutoDBInfo.colsMap.put("scene", "INTEGER");
+    localStringBuilder.append(" scene INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "createtime";
+    localMAutoDBInfo.colsMap.put("createtime", "LONG");
+    localStringBuilder.append(" createtime LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "talker";
+    localMAutoDBInfo.colsMap.put("talker", "TEXT");
+    localStringBuilder.append(" talker TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "content";
+    localMAutoDBInfo.colsMap.put("content", "TEXT");
+    localStringBuilder.append(" content TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[7] = "sayhiuser";
+    localMAutoDBInfo.colsMap.put("sayhiuser", "TEXT");
+    localStringBuilder.append(" sayhiuser TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[8] = "sayhicontent";
+    localMAutoDBInfo.colsMap.put("sayhicontent", "TEXT");
+    localStringBuilder.append(" sayhicontent TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[9] = "imgpath";
+    localMAutoDBInfo.colsMap.put("imgpath", "TEXT");
+    localStringBuilder.append(" imgpath TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[10] = "isSend";
+    localMAutoDBInfo.colsMap.put("isSend", "INTEGER");
+    localStringBuilder.append(" isSend INTEGER");
+    localMAutoDBInfo.columns[11] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(43301);
   }
   
-  public cl(e parame)
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    super(parame, ck.info, "UserOpenIdInApp", null);
-    AppMethodBeat.i(32887);
-    this.db = parame;
-    parame.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppAppIdUsernameIndex ON UserOpenIdInApp ( appId,username )");
-    parame.execSQL("UserOpenIdInApp", "CREATE INDEX IF NOT EXISTS userOpenIdInAppOpenIdIndex ON UserOpenIdInApp ( openId )");
-    AppMethodBeat.o(32887);
-  }
-  
-  public final boolean a(ck paramck)
-  {
-    AppMethodBeat.i(32889);
-    if ((paramck == null) || (bu.isNullOrNil(paramck.field_appId)) || (bu.isNullOrNil(paramck.field_openId)) || (bu.isNullOrNil(paramck.field_username)))
-    {
-      ae.w("MicroMsg.scanner.UserOpenIdInAppStorage", "wrong argument");
-      AppMethodBeat.o(32889);
-      return false;
-    }
-    ContentValues localContentValues = paramck.convertTo();
-    if (this.db.replace("UserOpenIdInApp", ck.info.IBM, localContentValues) > 0L) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ae.d("MicroMsg.scanner.UserOpenIdInAppStorage", "replace: appId=%s, username=%s, ret=%s ", new Object[] { paramck.field_appId, paramck.field_username, Boolean.valueOf(bool) });
-      AppMethodBeat.o(32889);
-      return bool;
-    }
-  }
-  
-  public final ck aVZ(String paramString)
-  {
-    AppMethodBeat.i(32888);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(32888);
-      return null;
-    }
-    Cursor localCursor = this.db.a("UserOpenIdInApp", null, "openId=?", new String[] { bu.aSk(paramString) }, null, null, null, 2);
-    if (!localCursor.moveToFirst())
-    {
-      ae.w("MicroMsg.scanner.UserOpenIdInAppStorage", "get null with openId:".concat(String.valueOf(paramString)));
-      localCursor.close();
-      AppMethodBeat.o(32888);
-      return null;
-    }
-    paramString = new ck();
-    paramString.convertFrom(localCursor);
-    localCursor.close();
-    AppMethodBeat.o(32888);
-    return paramString;
+    return info;
   }
 }
 

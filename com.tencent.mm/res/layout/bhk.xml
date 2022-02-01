@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="0.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="20.0dip" android:textColor="#ff515151" android:gravity="center" android:id="@id/gva" android:background="@drawable/ah_" android:layout_width="fill_parent" android:layout_height="111.0dip" android:layout_margin="0.0dip" android:maxHeight="111.0dip" android:minHeight="111.0dip" android:text="@string/gnv" />
+<LinearLayout android:orientation="vertical" android:id="@id/jf4" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/ji9" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/jef" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/a05">
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/ao9" android:minHeight="45.0dip" app:contentHint="@string/ieg" app:encryptType="g_n" app:titleText="@string/ieh" style="@style/a03" />
+            <TextView android:id="@id/jez" android:visibility="invisible" android:text="@string/i9k" style="@style/a0k" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/bk5" android:imeOptions="actionNext" app:contentHint="@string/i9l" app:encryptType="g_o" app:titleText="@string/i9m" style="@style/a0e" />
+            <TextView android:id="@id/jeo" android:visibility="invisible" android:text="@string/i9k" style="@style/a0k" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/bkj" app:contentHint="@string/i9o" app:encryptType="g_p" app:titleText="@string/i9t" style="@style/a0f" />
+            <TextView android:textColor="@color/uj" android:gravity="center" android:id="@id/i4j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:text="@string/ios" />
+            <Button android:enabled="false" android:id="@id/fz0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:layout_marginBottom="38.0dip" android:text="@string/x5" style="@style/a0u" />
+            <TextView android:layout_gravity="bottom" android:id="@id/jhr" android:paddingTop="5.0dip" android:layout_height="fill_parent" android:layout_margin="0.0dip" style="@style/a13" />
+        </LinearLayout>
+    </ScrollView>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c21" />
 </LinearLayout>

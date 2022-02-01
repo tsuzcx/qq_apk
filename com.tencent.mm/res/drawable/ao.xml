@@ -1,22 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false">
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/x" />
-            <solid android:color="#05000000" />
-        </shape>
-    </item>
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/x" />
-            <solid android:color="@color/gm" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/x" />
-            <solid android:color="@color/gl" />
-        </shape>
-    </item>
-</selector>
+    <size android:height="@dimen/n8" android:width="@dimen/n8" />
+    <solid android:color="@android:color/white" />
+</shape>

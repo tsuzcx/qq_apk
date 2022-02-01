@@ -3,74 +3,99 @@ package com.tencent.mm.ui.chatting.d;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.af;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.byp.b.a.a;
-import com.tencent.mm.plugin.expt.b.c;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.conv.j;
-import com.tencent.mm.plugin.finder.extension.reddot.e;
-import com.tencent.mm.plugin.finder.report.b;
-import com.tencent.mm.plugin.finder.report.b.a;
-import com.tencent.mm.plugin.finder.report.b.d;
-import com.tencent.mm.plugin.finder.report.b.d.a;
-import com.tencent.mm.plugin.finder.report.y;
-import com.tencent.mm.plugin.finder.storage.d;
-import com.tencent.mm.plugin.finder.storage.w;
+import com.tencent.mm.plugin.finder.conv.k;
+import com.tencent.mm.plugin.finder.report.ai;
+import com.tencent.mm.plugin.finder.report.d;
+import com.tencent.mm.plugin.finder.report.d.a;
+import com.tencent.mm.plugin.finder.report.d.d;
+import com.tencent.mm.plugin.finder.report.d.d.a;
+import com.tencent.mm.plugin.finder.storage.ag;
+import com.tencent.mm.plugin.finder.storage.e;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
+import com.tencent.mm.plugin.i.a.m;
+import com.tencent.mm.plugin.i.a.n;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.chatting.d.b.s;
+import com.tencent.mm.ui.chatting.d.b.u;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
+import kotlin.g.b.p;
 
-@com.tencent.mm.ui.chatting.d.a.a(fJv=com.tencent.mm.ui.chatting.d.b.h.class)
+@com.tencent.mm.ui.chatting.d.a.a(gRF=com.tencent.mm.ui.chatting.d.b.h.class)
 class i
   extends a
   implements com.tencent.mm.ui.chatting.d.b.h
 {
-  private k.a Kcu;
+  private com.tencent.mm.ui.blur.f EBK;
+  private MStorage.IOnStorageChange PnQ;
+  private final MStorage.IOnStorageChange PnR;
   
   i()
   {
-    AppMethodBeat.i(187295);
-    this.Kcu = new k.a()
+    AppMethodBeat.i(233055);
+    this.PnQ = new MStorage.IOnStorageChange()
     {
-      public final void a(String paramAnonymousString, m paramAnonymousm)
+      public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
       {
-        AppMethodBeat.i(187293);
-        if (paramAnonymousm.dmp.equals(i.this.cXJ.Cqh.field_username)) {
+        AppMethodBeat.i(233052);
+        if (paramAnonymousMStorageEventData.event.equals(i.this.dom.GUe.field_username)) {
           i.a(i.this);
         }
-        AppMethodBeat.o(187293);
+        AppMethodBeat.o(233052);
       }
     };
-    AppMethodBeat.o(187295);
+    this.PnR = new MStorage.IOnStorageChange()
+    {
+      public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
+      {
+        AppMethodBeat.i(233053);
+        Log.i("MicroMsg.ChattingBypComponent", "onNotifyChange ".concat(String.valueOf(paramAnonymousString)));
+        com.tencent.mm.model.bg.aVF();
+        paramAnonymousString = com.tencent.mm.model.c.aSN().Kn(i.this.dom.getTalkerUserName());
+        if ((paramAnonymousString != null) && ((int)paramAnonymousString.gMZ != 0))
+        {
+          if (Util.isNullOrNil(paramAnonymousString.field_nickname)) {
+            paramAnonymousString.setNickname(i.this.dom.GUe.field_nickname);
+          }
+          i.this.dom.aw(paramAnonymousString);
+          ((com.tencent.mm.ui.chatting.d.b.aa)i.this.dom.bh(com.tencent.mm.ui.chatting.d.b.aa.class)).gPx();
+          ((com.tencent.mm.ui.chatting.d.b.aa)i.this.dom.bh(com.tencent.mm.ui.chatting.d.b.aa.class)).BR(true);
+          i.this.dom.cmy();
+        }
+        AppMethodBeat.o(233053);
+      }
+    };
+    this.EBK = null;
+    AppMethodBeat.o(233055);
   }
   
-  private void fHp()
+  private void gPv()
   {
-    AppMethodBeat.i(187301);
-    Object localObject = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getSessionInfoStorage().ajt(this.cXJ.Cqh.field_username);
+    AppMethodBeat.i(233061);
+    Object localObject = ((PluginFinder)g.ah(PluginFinder.class)).getSessionInfoStorage().avz(this.dom.GUe.field_username);
     ChatFooter localChatFooter;
-    if ((((s)this.cXJ.bh(s.class)).fHF() != null) && (an.aji(this.cXJ.Cqh.field_username)))
+    if ((((u)this.dom.bh(u.class)).gPO() != null) && (as.avl(this.dom.GUe.field_username)))
     {
-      localChatFooter = ((s)this.cXJ.bh(s.class)).fHF();
-      if (((j)localObject).field_disableSendMsg == 1) {
+      localChatFooter = ((u)this.dom.bh(u.class)).gPO();
+      if (((k)localObject).field_disableSendMsg == 1) {
         break label199;
       }
     }
@@ -78,206 +103,211 @@ class i
     for (boolean bool = true;; bool = false)
     {
       localChatFooter.setFooterStatus(bool);
-      localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().aUK(this.cXJ.fJy());
-      bool = an.aUu(this.cXJ.fJy());
-      ((s)this.cXJ.bh(s.class)).fHF().a(this.cXJ.fJy(), Boolean.valueOf(bool), this.cXJ.Kkd.getContext().getString(2131766841, new Object[] { ((an)localObject).adF() }));
-      AppMethodBeat.o(187301);
+      localObject = ((l)g.af(l.class)).aSN().bjJ(this.dom.gRI());
+      bool = as.bjt(this.dom.gRI());
+      ((u)this.dom.bh(u.class)).gPO().a(this.dom.gRI(), Boolean.valueOf(bool), this.dom.Pwc.getContext().getString(2131760448, new Object[] { ((as)localObject).arI() }));
+      AppMethodBeat.o(233061);
       return;
     }
   }
   
-  public final boolean aUu(String paramString)
+  public final boolean bjt(String paramString)
   {
-    AppMethodBeat.i(187297);
-    boolean bool = an.aUu(paramString);
-    AppMethodBeat.o(187297);
+    AppMethodBeat.i(233057);
+    boolean bool = as.bjt(paramString);
+    AppMethodBeat.o(233057);
     return bool;
   }
   
-  public final boolean aXD(String paramString)
+  public final boolean bmH(String paramString)
   {
-    AppMethodBeat.i(187298);
-    boolean bool = an.aUt(paramString);
-    AppMethodBeat.o(187298);
+    AppMethodBeat.i(233058);
+    boolean bool = as.bjs(paramString);
+    AppMethodBeat.o(233058);
     return bool;
   }
   
-  public final void fAt()
+  public final void gIl()
   {
-    AppMethodBeat.i(187300);
-    super.fAt();
-    if (!fHo())
+    AppMethodBeat.i(233060);
+    super.gIl();
+    if (!gPu())
     {
-      AppMethodBeat.o(187300);
+      AppMethodBeat.o(233060);
       return;
     }
-    ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getSessionInfoStorage().add(this.Kcu);
-    AppMethodBeat.o(187300);
+    ((PluginFinder)g.ah(PluginFinder.class)).getSessionInfoStorage().add(this.PnQ);
+    ((m)g.af(m.class)).m(this.PnR);
+    AppMethodBeat.o(233060);
   }
   
-  public final void fAu()
+  public final void gIm()
   {
-    AppMethodBeat.i(187299);
-    super.fAu();
-    if (!fHo())
+    AppMethodBeat.i(233059);
+    super.gIm();
+    if (!gPu())
     {
-      AppMethodBeat.o(187299);
+      AppMethodBeat.o(233059);
       return;
     }
-    fHp();
-    ((com.tencent.mm.plugin.i.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.g.class)).ajb(this.cXJ.getTalkerUserName());
-    if (!bu.isNullOrNil(this.cXJ.getTalkerUserName())) {
-      com.tencent.e.h.MqF.aP(new Runnable()
+    gPv();
+    ((n)g.af(n.class)).ave(this.dom.getTalkerUserName());
+    if (!Util.isNullOrNil(this.dom.getTalkerUserName())) {
+      com.tencent.f.h.RTc.aY(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(187294);
-          List localList = ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().eB(Collections.singletonList("findermessage006"));
+          AppMethodBeat.i(233054);
+          List localList = ((l)g.af(l.class)).eiy().fw(Collections.singletonList("findermessage006"));
           Iterator localIterator = localList.iterator();
           while (localIterator.hasNext())
           {
-            bv localbv = (bv)localIterator.next();
-            a.a locala = com.tencent.mm.plugin.byp.b.a.oBL;
-            if (!com.tencent.mm.plugin.byp.b.a.bUi().contains(Long.valueOf(localbv.field_msgId)))
+            ca localca = (ca)localIterator.next();
+            a.a locala = com.tencent.mm.plugin.byp.b.a.pPx;
+            if (!com.tencent.mm.plugin.byp.b.a.crV().contains(Long.valueOf(localca.field_msgId)))
             {
-              localbv.setStatus(5);
-              ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().a(localbv.field_msgId, localbv);
+              localca.setStatus(5);
+              ((l)g.af(l.class)).eiy().a(localca.field_msgId, localca);
             }
           }
-          ae.i("MicroMsg.ChattingBypComponent", "sending msg size=%s talker=%s username=%s", new Object[] { Integer.valueOf(localList.size()), i.this.cXJ.fGT(), i.this.cXJ.getTalkerUserName() });
-          AppMethodBeat.o(187294);
+          Log.i("MicroMsg.ChattingBypComponent", "sending msg size=%s talker=%s username=%s", new Object[] { Integer.valueOf(localList.size()), i.this.dom.gOZ(), i.this.dom.getTalkerUserName() });
+          AppMethodBeat.o(233054);
         }
       });
     }
-    Object localObject2 = ((com.tencent.mm.plugin.i.a.p)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.p.class)).ajf(this.cXJ.getTalkerUserName());
-    Object localObject1 = b.sxb;
-    localObject1 = b.cFf();
+    Object localObject2 = ((com.tencent.mm.plugin.i.a.aa)g.af(com.tencent.mm.plugin.i.a.aa.class)).avi(this.dom.getTalkerUserName());
+    Object localObject1 = d.vdp;
+    localObject1 = d.dnJ();
     long l;
-    if (an.aUu((String)localObject2))
+    if (as.bjt((String)localObject2))
     {
       l = 2L;
-      String str = this.cXJ.getTalkerUserName();
-      d.g.b.p.h(localObject2, "talkUserName");
-      d.g.b.p.h(str, "chatName");
-      ((b.d)localObject1).sxk = l;
-      ((b.d)localObject1).sxm = ((String)localObject2);
-      ((b.d)localObject1).sxq = str;
-      ((b.d)localObject1).sxe = ch.aDc();
-      ((b.d)localObject1).sxo = String.valueOf(((b.d)localObject1).sxe);
-      localObject2 = b.sxb;
-      if (!b.cFc().sCH) {
+      String str = this.dom.getTalkerUserName();
+      p.h(localObject2, "talkUserName");
+      p.h(str, "chatName");
+      ((d.d)localObject1).vdx = l;
+      ((d.d)localObject1).vdz = ((String)localObject2);
+      ((d.d)localObject1).vdD = str;
+      ((d.d)localObject1).sTp = cl.aWA();
+      ((d.d)localObject1).vdB = String.valueOf(((d.d)localObject1).sTp);
+      localObject2 = d.vdp;
+      if (!d.dnG().viM) {
         break label272;
       }
-      localObject2 = b.sxb;
-      ((b.d)localObject1).sxn = b.cFc().sCI.sxd;
+      localObject2 = d.vdp;
+      ((d.d)localObject1).vdA = d.dnG().viN.vdr;
     }
     for (;;)
     {
-      ae.i(((b.d)localObject1).TAG, "onEnterChat:talkUserNameL" + ((b.d)localObject1).sxm + ", chatNameL" + ((b.d)localObject1).sxq + "， accountTypeL" + ((b.d)localObject1).sxk);
-      AppMethodBeat.o(187299);
+      Log.i(((d.d)localObject1).TAG, "onEnterChat:talkUserNameL" + ((d.d)localObject1).vdz + ", chatNameL" + ((d.d)localObject1).vdD + "， accountTypeL" + ((d.d)localObject1).vdx);
+      AppMethodBeat.o(233059);
       return;
       l = 1L;
       break;
       label272:
-      localObject2 = b.sxb;
-      if (b.cFb().sCH)
+      localObject2 = d.vdp;
+      if (d.dnF().viM)
       {
-        localObject2 = b.sxb;
-        ((b.d)localObject1).sxn = b.cFb().sCI.sxd;
+        localObject2 = d.vdp;
+        ((d.d)localObject1).vdA = d.dnF().viN.vdr;
       }
     }
   }
   
-  public final void fAy()
+  public final void gIo()
   {
-    AppMethodBeat.i(187302);
-    super.fAy();
-    if (!fHo())
+    AppMethodBeat.i(233062);
+    super.gIo();
+    if (!gPu())
     {
-      AppMethodBeat.o(187302);
+      AppMethodBeat.o(233062);
       return;
     }
-    ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().ajp(this.cXJ.getTalkerUserName());
-    ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getSessionInfoStorage().remove(this.Kcu);
+    ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage().avs(this.dom.getTalkerUserName());
+    ((PluginFinder)g.ah(PluginFinder.class)).getSessionInfoStorage().remove(this.PnQ);
+    ((m)g.af(m.class)).l(this.PnR);
     Object localObject3;
     Object localObject2;
-    if (an.aUu(((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getSessionInfoStorage().ajt(this.cXJ.Cqh.field_username).field_talker))
+    if (as.bjt(((PluginFinder)g.ah(PluginFinder.class)).getSessionInfoStorage().avz(this.dom.GUe.field_username).field_talker))
     {
-      ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getRedDotManager().sax.cBi();
-      localObject3 = this.cXJ.getTalkerUserName();
-      localObject2 = ((c)com.tencent.mm.kernel.g.ab(c.class)).cos();
-      if ((this.cXJ == null) || (this.cXJ.Kkd.getContext() == null)) {
-        break label574;
+      ((PluginFinder)g.ah(PluginFinder.class)).getRedDotManager().tJB.dat();
+      if (this.EBK != null) {
+        this.EBK.destroy();
+      }
+      localObject3 = this.dom.getTalkerUserName();
+      localObject2 = ((com.tencent.mm.plugin.expt.b.c)g.af(com.tencent.mm.plugin.expt.b.c.class)).cMD();
+      if ((this.dom == null) || (this.dom.Pwc.getContext() == null)) {
+        break label605;
       }
     }
-    label574:
-    for (int i = this.cXJ.Kkd.getContext().getIntent().getIntExtra("key_comment_scene", 0);; i = 0)
+    label605:
+    for (int i = this.dom.Pwc.getContext().getIntent().getIntExtra("key_comment_scene", 0);; i = 0)
     {
-      Object localObject1 = FinderReporterUIC.tnG;
-      String str = FinderReporterUIC.a.GW(i + 100);
-      localObject1 = b.sxb;
-      b.d locald = b.cFf();
+      Object localObject1 = FinderReporterUIC.wzC;
+      String str = FinderReporterUIC.a.MG(i + 100);
+      localObject1 = d.vdp;
+      d.d locald = d.dnJ();
       localObject1 = localObject3;
       if (localObject3 == null) {
         localObject1 = "";
       }
       long l = i;
-      d.g.b.p.h(localObject1, "talker");
-      localObject3 = new af();
-      ((af)localObject3).dWv = l;
+      p.h(localObject1, "talker");
+      localObject3 = new com.tencent.mm.g.b.a.bg();
+      ((com.tencent.mm.g.b.a.bg)localObject3).esa = l;
       if (localObject2 == null) {
         localObject2 = "";
       }
       for (;;)
       {
-        ((af)localObject3).dRJ = ((af)localObject3).t("sessionid", (String)localObject2, true);
+        ((com.tencent.mm.g.b.a.bg)localObject3).els = ((com.tencent.mm.g.b.a.bg)localObject3).x("sessionid", (String)localObject2, true);
         if (str == null) {}
         for (localObject2 = "";; localObject2 = str)
         {
-          ((af)localObject3).dWy = ((af)localObject3).t("clicktabcontextid", (String)localObject2, true);
-          ((af)localObject3).dWw = locald.sxk;
-          ((af)localObject3).dWx = ((af)localObject3).t("talkerUsername", locald.sxm, true);
-          ((af)localObject3).dWA = ((af)localObject3).t("chatSessionid", locald.sxo, true);
-          ((af)localObject3).dWz = ((af)localObject3).t("chatListSessionid", locald.sxn, true);
-          ((af)localObject3).dWB = (ch.aDc() - locald.sxe);
-          ((af)localObject3).dWC = ((af)localObject3).t("chatName", locald.sxq, true);
-          ((af)localObject3).dWD = locald.sxr;
-          ((af)localObject3).dWG = locald.sxu;
-          l = locald.sxe;
-          d.g.b.p.h(localObject1, "talker");
-          d.g.b.p.h(localObject3, "chatEnterStruct");
-          locald.sxl.post((Runnable)new b.d.a(locald, (String)localObject1, l, (af)localObject3));
-          locald.sxk = 0L;
-          locald.sxm = "";
-          locald.sxn = "";
-          locald.sxo = "";
-          locald.sxp = 0L;
-          locald.sxq = "";
-          locald.sxr = 0L;
-          locald.sxs = 0L;
-          locald.sxt = 0L;
-          locald.sxu = 0L;
-          locald.sxe = 0L;
-          AppMethodBeat.o(187302);
+          ((com.tencent.mm.g.b.a.bg)localObject3).esd = ((com.tencent.mm.g.b.a.bg)localObject3).x("clicktabcontextid", (String)localObject2, true);
+          ((com.tencent.mm.g.b.a.bg)localObject3).esb = locald.vdx;
+          ((com.tencent.mm.g.b.a.bg)localObject3).esc = ((com.tencent.mm.g.b.a.bg)localObject3).x("talkerUsername", locald.vdz, true);
+          ((com.tencent.mm.g.b.a.bg)localObject3).esf = ((com.tencent.mm.g.b.a.bg)localObject3).x("chatSessionid", locald.vdB, true);
+          ((com.tencent.mm.g.b.a.bg)localObject3).ese = ((com.tencent.mm.g.b.a.bg)localObject3).x("chatListSessionid", locald.vdA, true);
+          ((com.tencent.mm.g.b.a.bg)localObject3).esg = (cl.aWA() - locald.sTp);
+          ((com.tencent.mm.g.b.a.bg)localObject3).esh = ((com.tencent.mm.g.b.a.bg)localObject3).x("chatName", locald.vdD, true);
+          ((com.tencent.mm.g.b.a.bg)localObject3).esi = locald.vdE;
+          ((com.tencent.mm.g.b.a.bg)localObject3).esl = locald.vdH;
+          l = locald.sTp;
+          p.h(localObject1, "talker");
+          p.h(localObject3, "chatEnterStruct");
+          locald.vdy.post((Runnable)new d.d.a(locald, (String)localObject1, l, (com.tencent.mm.g.b.a.bg)localObject3));
+          locald.vdx = 0L;
+          locald.vdz = "";
+          locald.vdA = "";
+          locald.vdB = "";
+          locald.vdC = 0L;
+          locald.vdD = "";
+          locald.vdE = 0L;
+          locald.vdF = 0L;
+          locald.vdG = 0L;
+          locald.vdH = 0L;
+          locald.sTp = 0L;
+          AppMethodBeat.o(233062);
           return;
-          ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getRedDotManager().sax.cBh();
+          ((PluginFinder)g.ah(PluginFinder.class)).getRedDotManager().tJB.das();
           break;
         }
       }
     }
   }
   
-  public final boolean fHo()
+  public final boolean gPu()
   {
-    AppMethodBeat.i(187296);
-    boolean bool = an.aji(this.cXJ.getTalkerUserName());
-    AppMethodBeat.o(187296);
+    AppMethodBeat.i(233056);
+    boolean bool = as.avl(this.dom.getTalkerUserName());
+    AppMethodBeat.o(233056);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.i
  * JD-Core Version:    0.7.0.1
  */

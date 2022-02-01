@@ -21,16 +21,16 @@ import com.tencent.mm.plugin.game.model.s;
 public class TabItemView
   extends LinearLayout
 {
-  private int dmr;
-  private TextView uGA;
-  private View uGB;
-  private TextView uGz;
+  private int dDG;
+  private TextView trw;
+  private TextView xYM;
+  private View xYN;
   
   public TabItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(183906);
-    c(paramContext, paramAttributeSet);
+    b(paramContext, paramAttributeSet);
     AppMethodBeat.o(183906);
   }
   
@@ -38,25 +38,25 @@ public class TabItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(183907);
-    c(paramContext, paramAttributeSet);
+    b(paramContext, paramAttributeSet);
     AppMethodBeat.o(183907);
   }
   
-  private void c(Context paramContext, AttributeSet paramAttributeSet)
+  private void b(Context paramContext, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(183910);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, g.a.TabItemView);
     String str = paramAttributeSet.getString(0);
     paramAttributeSet.recycle();
-    LayoutInflater.from(paramContext).inflate(2131494353, this, true);
-    this.uGz = ((TextView)findViewById(2131305601));
-    this.uGA = ((TextView)findViewById(2131305600));
-    this.uGB = findViewById(2131305599);
-    this.uGz.setText(str);
-    if (a.ir(getContext()))
+    LayoutInflater.from(paramContext).inflate(2131494918, this, true);
+    this.trw = ((TextView)findViewById(2131308838));
+    this.xYM = ((TextView)findViewById(2131308837));
+    this.xYN = findViewById(2131308835);
+    this.trw.setText(str);
+    if (a.jk(getContext()))
     {
-      this.uGz.setTextSize(0, a.ay(getContext(), 2131165414) * a.ip(getContext()));
-      this.uGA.setTextSize(0, a.ay(getContext(), 2131165441) * a.ip(getContext()));
+      this.trw.setTextSize(0, a.aH(getContext(), 2131165425) * a.ji(getContext()));
+      this.xYM.setTextSize(0, a.aH(getContext(), 2131165457) * a.ji(getContext()));
     }
     AppMethodBeat.o(183910);
   }
@@ -66,27 +66,27 @@ public class TabItemView
     AppMethodBeat.i(183909);
     if (paramBoolean)
     {
-      this.uGz.setTextColor(getResources().getColor(2131100711));
-      this.uGB.setVisibility(0);
-      this.uGA.setVisibility(8);
-      ((f)g.ab(f.class)).cZl().execSQL("GameRawMessage", "update GameRawMessage set isRead=1 where showType=".concat(String.valueOf(this.dmr)));
-      ((e)g.ab(e.class)).cZk();
-      int i = this.dmr;
-      o localo = r.dbL();
+      this.trw.setTextColor(getResources().getColor(2131100904));
+      this.xYN.setVisibility(0);
+      this.xYM.setVisibility(8);
+      ((f)g.af(f.class)).dSK().execSQL("GameRawMessage", "update GameRawMessage set isRead=1 where showType=".concat(String.valueOf(this.dDG)));
+      ((e)g.af(e.class)).dSJ();
+      int i = this.dDG;
+      o localo = r.dVs();
       if ((localo != null) && (localo.field_showType == i)) {
-        r.dbM();
+        r.dVt();
       }
       AppMethodBeat.o(183909);
       return;
     }
-    this.uGz.setTextColor(getResources().getColor(2131100212));
-    this.uGB.setVisibility(8);
+    this.trw.setTextColor(getResources().getColor(2131100245));
+    this.xYN.setVisibility(8);
     AppMethodBeat.o(183909);
   }
   
   public void setShowType(int paramInt)
   {
-    this.dmr = paramInt;
+    this.dDG = paramInt;
   }
   
   public void setUnreadCount(int paramInt)
@@ -94,24 +94,24 @@ public class TabItemView
     AppMethodBeat.i(183908);
     if (paramInt > 0)
     {
-      this.uGA.setVisibility(0);
+      this.xYM.setVisibility(0);
       if (paramInt < 100)
       {
-        this.uGA.setText(String.valueOf(paramInt));
+        this.xYM.setText(String.valueOf(paramInt));
         AppMethodBeat.o(183908);
         return;
       }
-      this.uGA.setText(2131759956);
+      this.xYM.setText(2131761311);
       AppMethodBeat.o(183908);
       return;
     }
-    this.uGA.setVisibility(8);
+    this.xYM.setVisibility(8);
     AppMethodBeat.o(183908);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.message.TabItemView
  * JD-Core Version:    0.7.0.1
  */

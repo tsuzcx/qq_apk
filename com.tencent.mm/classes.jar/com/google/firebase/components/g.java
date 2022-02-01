@@ -7,14 +7,14 @@ import java.util.List;
 public final class g
   extends h
 {
-  private final List<a<?>> bKz;
+  private final List<a<?>> bKP;
   
   @KeepForSdk
   public g(List<a<?>> paramList) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.firebase.components.g
  * JD-Core Version:    0.7.0.1
  */

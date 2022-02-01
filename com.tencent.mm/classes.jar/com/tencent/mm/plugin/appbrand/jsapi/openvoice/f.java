@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.openvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.b;
-import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.p;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.cloudvoip.cloudvoice.d.q;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -12,17 +12,17 @@ public final class f
 {
   public static final int CTRL_INDEX = 521;
   public static final String NAME = "updateVoIPChatMuteConfig";
-  boolean leJ;
-  boolean leK;
-  private boolean leL;
+  boolean mkb;
+  boolean mkc;
+  private boolean mkd;
   
   public f()
   {
     AppMethodBeat.i(174848);
-    this.leJ = false;
-    this.leK = false;
-    this.leL = false;
-    com.tencent.mm.plugin.appbrand.permission.c.Uy("updateVoIPChatMuteConfig");
+    this.mkb = false;
+    this.mkc = false;
+    this.mkd = false;
+    com.tencent.mm.plugin.appbrand.permission.c.aem("updateVoIPChatMuteConfig");
     AppMethodBeat.o(174848);
   }
   
@@ -35,16 +35,16 @@ public final class f
       final boolean bool1 = localJSONObject.getBoolean("muteMicrophone");
       boolean bool2 = localJSONObject.getBoolean("muteEarphone");
       boolean bool3 = paramJSONObject.optBoolean("handsFree", false);
-      ae.i("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateVoIPChatMuteConfig", "hy: muteMicroPhone:%b, muteEarPhone:%b, handsFree:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-      p.pdY.a(bool2, new b() {});
-      p.pdY.b(bool1, new b() {});
-      p.pdY.c(bool3, new b() {});
+      Log.i("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateVoIPChatMuteConfig", "hy: muteMicroPhone:%b, muteEarPhone:%b, handsFree:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+      q.qta.a(bool2, new b() {});
+      q.qta.b(bool1, new b() {});
+      q.qta.c(bool3, new b() {});
       AppMethodBeat.o(46690);
       return;
     }
     catch (JSONException paramc)
     {
-      ae.printErrStackTrace("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateVoIPChatMuteConfig", paramc, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.OpenVoice.JsApiCloudVoiceUpdateVoIPChatMuteConfig", paramc, "", new Object[0]);
       AppMethodBeat.o(46690);
     }
   }

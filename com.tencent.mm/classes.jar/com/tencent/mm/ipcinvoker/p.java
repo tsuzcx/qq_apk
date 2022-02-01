@@ -7,28 +7,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class p
 {
-  private static volatile p gAB;
-  private Handler gAC;
+  private static volatile p hnp;
+  private Handler hnq;
   private Handler mHandler;
   
   private p()
   {
     AppMethodBeat.i(158760);
-    this.mHandler = l.ahP();
-    this.gAC = new Handler(Looper.getMainLooper());
+    this.mHandler = l.ayc();
+    this.hnq = new Handler(Looper.getMainLooper());
     AppMethodBeat.o(158760);
   }
   
-  private static p ahS()
+  public static boolean A(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(158766);
+    l.post(paramRunnable);
+    AppMethodBeat.o(158766);
+    return true;
+  }
+  
+  private static p ayf()
   {
     AppMethodBeat.i(158759);
-    if (gAB == null) {}
+    if (hnp == null) {}
     try
     {
-      if (gAB == null) {
-        gAB = new p();
+      if (hnp == null) {
+        hnp = new p();
       }
-      p localp = gAB;
+      p localp = hnp;
       AppMethodBeat.o(158759);
       return localp;
     }
@@ -38,26 +46,18 @@ public class p
     }
   }
   
-  public static HandlerThread ahT()
+  public static HandlerThread ayg()
   {
     AppMethodBeat.i(158761);
-    HandlerThread localHandlerThread = (HandlerThread)ahS().mHandler.getLooper().getThread();
+    HandlerThread localHandlerThread = (HandlerThread)ayf().mHandler.getLooper().getThread();
     AppMethodBeat.o(158761);
     return localHandlerThread;
-  }
-  
-  public static boolean f(Runnable paramRunnable, long paramLong)
-  {
-    AppMethodBeat.i(197963);
-    boolean bool = ahS().gAC.postDelayed(paramRunnable, paramLong);
-    AppMethodBeat.o(197963);
-    return bool;
   }
   
   public static boolean post(Runnable paramRunnable)
   {
     AppMethodBeat.i(158762);
-    boolean bool = ahS().mHandler.post(paramRunnable);
+    boolean bool = ayf().mHandler.post(paramRunnable);
     AppMethodBeat.o(158762);
     return bool;
   }
@@ -65,25 +65,25 @@ public class p
   public static boolean postDelayed(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(158763);
-    boolean bool = ahS().mHandler.postDelayed(paramRunnable, paramLong);
+    boolean bool = ayf().mHandler.postDelayed(paramRunnable, paramLong);
     AppMethodBeat.o(158763);
-    return bool;
-  }
-  
-  public static boolean x(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(158764);
-    boolean bool = ahS().gAC.post(paramRunnable);
-    AppMethodBeat.o(158764);
     return bool;
   }
   
   public static boolean y(Runnable paramRunnable)
   {
-    AppMethodBeat.i(158766);
-    l.post(paramRunnable);
-    AppMethodBeat.o(158766);
-    return true;
+    AppMethodBeat.i(158764);
+    boolean bool = ayf().hnq.post(paramRunnable);
+    AppMethodBeat.o(158764);
+    return bool;
+  }
+  
+  public static boolean z(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(158765);
+    boolean bool = ayf().hnq.postDelayed(paramRunnable, 100L);
+    AppMethodBeat.o(158765);
+    return bool;
   }
 }
 

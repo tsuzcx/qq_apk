@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/bx5" android:paddingLeft="52.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout android:gravity="center" android:layout_height="fill_parent" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/d17" android:paddingTop="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/a4c" />
-    </FrameLayout>
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <android.support.constraint.ConstraintLayout android:id="@id/d15" android:background="@drawable/oe" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@id/tm" android:layout_width="@dimen/c9" android:layout_height="@dimen/c9" android:layout_marginTop="2.0dip" android:src="@drawable/aq8" android:layout_marginEnd="@dimen/c0" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-            <TextView android:textSize="@dimen/gu" android:textColor="@color/FG_1" android:ellipsize="end" android:gravity="top" android:id="@id/e3t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:maxWidth="105.0dip" android:text="{nickname}" android:singleLine="true" app:layout_constraintLeft_toRightOf="@id/tm" app:layout_constraintTop_toTopOf="ea8" />
-            <LinearLayout android:orientation="horizontal" android:id="@id/ay2" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintLeft_toRightOf="@id/e3t" app:layout_constraintTop_toTopOf="ea8">
-                <TextView android:textSize="@dimen/gu" android:textColor="@color/FG_1" android:gravity="top" android:id="@id/c8l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c99" android:maxLines="1" />
-                <TextView android:textSize="@dimen/gu" android:textColor="@color/Orange" android:gravity="top" android:id="@id/egj" android:background="@drawable/ub" android:paddingLeft="@dimen/bq" android:paddingRight="@dimen/bq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c9_" android:maxLines="1" android:layout_marginStart="@dimen/bq" />
-            </LinearLayout>
-            <TextView android:textSize="@dimen/gu" android:textColor="@color/BW_0_Alpha_0_3" android:gravity="center|left" android:id="@id/axx" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{time}" android:maxLines="1" android:layout_weight="1.0" android:layout_marginStart="@dimen/ci" app:layout_constraintBaseline_toBaselineOf="@id/e3t" app:layout_constraintLeft_toRightOf="@id/ay2" />
-            <com.tencent.mm.plugin.finder.view.FinderCollapsibleTextView android:textSize="@dimen/gu" android:textColor="@color/FG_0" android:id="@id/ax1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="36.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="@dimen/cb" android:text="{content}" android:lineSpacingExtra="@dimen/ci" app:layout_constraintTop_toBottomOf="@id/e3t" />
-            <LinearLayout android:orientation="horizontal" android:id="@id/axb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="36.0dip" app:layout_constraintTop_toBottomOf="@id/ax1">
-                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ax_" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="@dimen/bq" android:src="@raw/icons_filled_error" android:contentDescription="{icon}" app:iconColor="@color/Red" />
-                <TextView android:textSize="12.0dip" android:textColor="@color/Red" android:id="@id/axa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bq" android:layout_marginTop="@dimen/bq" android:text="@string/c_m" />
-            </LinearLayout>
-        </android.support.constraint.ConstraintLayout>
-        <View android:id="@id/bx3" android:background="@color/os" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
-    <FrameLayout android:id="@id/d16" android:paddingTop="2.0dip" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/a4c" />
-    </FrameLayout>
+    <ListView android:id="@id/c49" android:background="@color/afz" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/np" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:ellipsize="none" android:gravity="center" android:id="@id/c4_" android:padding="@dimen/hs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bxn" android:singleLine="false" android:lineSpacingExtra="4.0dip" style="@style/mi" />
 </LinearLayout>

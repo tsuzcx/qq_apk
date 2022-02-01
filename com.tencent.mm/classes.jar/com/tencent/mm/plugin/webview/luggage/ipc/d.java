@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.webview.luggage.ipc;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public class d
@@ -18,16 +18,16 @@ public class d
     paramBundle = paramBundle.getString("data");
     if (str == null)
     {
-      ae.e("MicroMsg.JsApiMMActivityTask", "jsapi is null");
-      parama.r(new Bundle());
+      Log.e("MicroMsg.JsApiMMActivityTask", "jsapi is null");
+      parama.v(new Bundle());
       AppMethodBeat.o(78494);
       return;
     }
     try
     {
-      ((bq)Class.forName(str).newInstance()).a(paramContext, paramBundle, new bq.a()
+      ((br)Class.forName(str).newInstance()).a(paramContext, paramBundle, new br.a()
       {
-        public final void f(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
+        public final void i(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
           AppMethodBeat.i(78493);
           Bundle localBundle = new Bundle();
@@ -36,7 +36,7 @@ public class d
           for (paramAnonymousString = paramAnonymousJSONObject.toString();; paramAnonymousString = "")
           {
             localBundle.putString("data", paramAnonymousString);
-            parama.r(localBundle);
+            parama.v(localBundle);
             AppMethodBeat.o(78493);
             return;
           }
@@ -47,8 +47,8 @@ public class d
     }
     catch (Exception paramContext)
     {
-      ae.printErrStackTrace("MicroMsg.JsApiMMActivityTask", paramContext, "", new Object[0]);
-      parama.r(new Bundle());
+      Log.printErrStackTrace("MicroMsg.JsApiMMActivityTask", paramContext, "", new Object[0]);
+      parama.v(new Bundle());
       AppMethodBeat.o(78494);
     }
   }

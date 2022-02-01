@@ -2,51 +2,51 @@ package android.support.v7.widget;
 
 final class ap
 {
-  int Af = 0;
-  int Ah = 0;
-  int OQ = -2147483648;
-  int avj = -2147483648;
-  int avk = 0;
-  int avl = 0;
-  boolean avm = false;
+  int Al = 0;
+  int An = 0;
+  int Pc = -2147483648;
+  int avh = -2147483648;
+  int avi = 0;
+  int avj = 0;
+  boolean avk = false;
   boolean mIsRtl = false;
   
-  public final void aG(int paramInt1, int paramInt2)
+  public final void aA(int paramInt1, int paramInt2)
   {
-    this.avj = paramInt1;
-    this.OQ = paramInt2;
-    this.avm = true;
+    this.avh = paramInt1;
+    this.Pc = paramInt2;
+    this.avk = true;
     if (this.mIsRtl)
     {
       if (paramInt2 != -2147483648) {
-        this.Af = paramInt2;
+        this.Al = paramInt2;
       }
       if (paramInt1 != -2147483648) {
-        this.Ah = paramInt1;
+        this.An = paramInt1;
       }
     }
     do
     {
       return;
       if (paramInt1 != -2147483648) {
-        this.Af = paramInt1;
+        this.Al = paramInt1;
       }
     } while (paramInt2 == -2147483648);
-    this.Ah = paramInt2;
+    this.An = paramInt2;
   }
   
-  public final void aH(int paramInt1, int paramInt2)
+  public final void aB(int paramInt1, int paramInt2)
   {
-    this.avm = false;
+    this.avk = false;
     if (paramInt1 != -2147483648)
     {
-      this.avk = paramInt1;
-      this.Af = paramInt1;
+      this.avi = paramInt1;
+      this.Al = paramInt1;
     }
     if (paramInt2 != -2147483648)
     {
-      this.avl = paramInt2;
-      this.Ah = paramInt2;
+      this.avj = paramInt2;
+      this.An = paramInt2;
     }
   }
 }

@@ -4,57 +4,57 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory.Options;
 import android.graphics.Rect;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.p;
+import com.tencent.mm.sdk.platformtools.FileSeekingInputStream;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.BufferedInputStream;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
 public abstract class l
 {
-  private static j hzt = new j();
-  private static m hzu = new m();
-  private static int hzv = -1;
+  private static j itB = new j();
+  private static m itC = new m();
+  private static int itD = -1;
   
-  public static l ayS()
+  public static l aRY()
   {
-    if (hzv == -1) {
-      if (!ayT()) {
+    if (itD == -1) {
+      if (!aRZ()) {
         break label48;
       }
     }
     label48:
-    for (hzv = 1;; hzv = 2) {
-      switch (hzv)
+    for (itD = 1;; itD = 2) {
+      switch (itD)
       {
       default: 
-        return hzu;
+        return itC;
       }
     }
-    return hzt;
-    return hzu;
+    return itB;
+    return itC;
   }
   
-  public static boolean ayT()
+  public static boolean aRZ()
   {
-    boolean bool = d.lA(19);
-    ae.i("MicroMsg.PlatformBitmapFactory", "canUseInBitmapFactory, isVersionMatch: %b, isART: %b, result: %s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(bu.fpP()), Boolean.valueOf(bool) });
+    boolean bool = d.oD(19);
+    Log.i("MicroMsg.PlatformBitmapFactory", "canUseInBitmapFactory, isVersionMatch: %b, isART: %b, result: %s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(Util.isART()), Boolean.valueOf(bool) });
     return bool;
   }
   
-  protected static InputStream v(InputStream paramInputStream)
+  protected static InputStream u(InputStream paramInputStream)
   {
     if (paramInputStream.markSupported()) {
       return paramInputStream;
     }
     if ((paramInputStream instanceof FileInputStream)) {
-      return new p((FileInputStream)paramInputStream);
+      return new FileSeekingInputStream((FileInputStream)paramInputStream);
     }
     return new BufferedInputStream(paramInputStream);
   }
   
-  protected static void w(InputStream paramInputStream)
+  protected static void v(InputStream paramInputStream)
   {
     try
     {
@@ -63,19 +63,19 @@ public abstract class l
     }
     catch (Exception paramInputStream)
     {
-      ae.printErrStackTrace("MicroMsg.PlatformBitmapFactory", paramInputStream, "reset stream error: %s", new Object[] { paramInputStream.getMessage() });
+      Log.printErrStackTrace("MicroMsg.PlatformBitmapFactory", paramInputStream, "reset stream error: %s", new Object[] { paramInputStream.getMessage() });
     }
   }
-  
-  public abstract void D(Bitmap paramBitmap);
   
   public abstract Bitmap a(String paramString, BitmapFactory.Options paramOptions);
   
   public abstract Bitmap a(String paramString, Rect paramRect, BitmapFactory.Options paramOptions);
+  
+  public abstract void x(Bitmap paramBitmap);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.memory.l
  * JD-Core Version:    0.7.0.1
  */

@@ -6,9 +6,9 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class f
 {
-  private static AtomicReference<byte[]> MEK = new AtomicReference();
+  private static AtomicReference<byte[]> SkI = new AtomicReference();
   
-  public static int W(InputStream paramInputStream)
+  public static int T(InputStream paramInputStream)
   {
     int i = -1;
     byte[] arrayOfByte = new byte[1];
@@ -30,7 +30,7 @@ public final class f
       if (paramArrayOfByte == null) {
         throw new NullPointerException("dst == null");
       }
-      b.aW(paramArrayOfByte.length, 0, paramInt2);
+      b.checkOffsetAndCount(paramArrayOfByte.length, 0, paramInt2);
       while (paramInt2 > 0)
       {
         int i = paramInputStream.read(paramArrayOfByte, paramInt1, paramInt2);
@@ -45,7 +45,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.d.a.f
  * JD-Core Version:    0.7.0.1
  */

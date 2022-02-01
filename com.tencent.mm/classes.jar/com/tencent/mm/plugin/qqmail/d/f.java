@@ -5,47 +5,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   extends com.tencent.mm.bw.a
 {
+  public int Brl;
+  public String Brm;
+  public long Brn;
   public int FileSize;
-  public int nJb;
-  public int xri;
-  public String xrj;
-  public long xrk;
+  public int oTW;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(122660);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.xri);
-      if (this.xrj != null) {
-        paramVarArgs.d(2, this.xrj);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.Brl);
+      if (this.Brm != null) {
+        paramVarArgs.e(2, this.Brm);
       }
-      paramVarArgs.aS(3, this.nJb);
-      paramVarArgs.aS(4, this.FileSize);
-      paramVarArgs.aZ(5, this.xrk);
+      paramVarArgs.aM(3, this.oTW);
+      paramVarArgs.aM(4, this.FileSize);
+      paramVarArgs.bb(5, this.Brn);
       AppMethodBeat.o(122660);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.xri) + 0;
+      int i = g.a.a.b.b.a.bu(1, this.Brl) + 0;
       paramInt = i;
-      if (this.xrj != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.xrj);
+      if (this.Brm != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.Brm);
       }
-      i = f.a.a.b.b.a.bz(3, this.nJb);
-      int j = f.a.a.b.b.a.bz(4, this.FileSize);
-      int k = f.a.a.b.b.a.p(5, this.xrk);
+      i = g.a.a.b.b.a.bu(3, this.oTW);
+      int j = g.a.a.b.b.a.bu(4, this.FileSize);
+      int k = g.a.a.b.b.a.r(5, this.Brn);
       AppMethodBeat.o(122660);
       return paramInt + i + j + k;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(122660);
@@ -53,7 +53,7 @@ public final class f
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       f localf = (f)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -61,23 +61,23 @@ public final class f
         AppMethodBeat.o(122660);
         return -1;
       case 1: 
-        localf.xri = locala.OmT.zc();
+        localf.Brl = locala.UbS.zi();
         AppMethodBeat.o(122660);
         return 0;
       case 2: 
-        localf.xrj = locala.OmT.readString();
+        localf.Brm = locala.UbS.readString();
         AppMethodBeat.o(122660);
         return 0;
       case 3: 
-        localf.nJb = locala.OmT.zc();
+        localf.oTW = locala.UbS.zi();
         AppMethodBeat.o(122660);
         return 0;
       case 4: 
-        localf.FileSize = locala.OmT.zc();
+        localf.FileSize = locala.UbS.zi();
         AppMethodBeat.o(122660);
         return 0;
       }
-      localf.xrk = locala.OmT.zd();
+      localf.Brn = locala.UbS.zl();
       AppMethodBeat.o(122660);
       return 0;
     }

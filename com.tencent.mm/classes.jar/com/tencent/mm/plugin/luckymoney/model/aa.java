@@ -1,48 +1,80 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.i.c;
+import com.tencent.mm.i.d;
+import com.tencent.mm.i.g.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.io.ByteArrayOutputStream;
 
 public final class aa
-  extends n
-  implements k
+  implements g.a
 {
-  private f callback;
-  private b rr;
+  String rCh = null;
+  boolean yWA = true;
+  a yWy;
+  String yWz;
   
-  public final int doScene(e parame, f paramf)
+  public final int a(String paramString, int paramInt, c paramc, d paramd, boolean paramBoolean)
   {
-    AppMethodBeat.i(65275);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(65275);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 980;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(65276);
-    ae.d("MicroMsg.NetSceneAsyncBizSubscribe", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.i(65240);
+    Log.d("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd:cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
+    if ((paramd != null) && (this.rCh.equals(paramString)) && (!Util.isNullOrNil(paramd.field_fileId)))
+    {
+      Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer success, sceneResult.field_retCode:" + paramd.field_retCode);
+      if ((paramInt == 0) && (paramd.field_retCode == 0)) {
+        if (this.yWA)
+        {
+          Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, upload callback success");
+          Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd:transfer done, mediaid=%s, completeInfo=%s", new Object[] { paramString, paramd.toString() });
+          if (this.yWy != null) {
+            this.yWy.bN(this.yWz, true);
+          }
+        }
+      }
     }
-    AppMethodBeat.o(65276);
+    for (;;)
+    {
+      AppMethodBeat.o(65240);
+      return 0;
+      Log.i("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, download callback success");
+      break;
+      Log.e("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, fail");
+      if (this.yWy != null)
+      {
+        this.yWy.bN(this.yWz, false);
+        continue;
+        if ((paramd != null) && (this.rCh.equals(paramString)) && (paramd.field_retCode != 0))
+        {
+          Log.e("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: transfer done, fail, sceneResult.field_retCode:" + paramd.field_retCode);
+          if (this.yWy != null) {
+            this.yWy.bN(this.yWz, false);
+          }
+        }
+        else if (paramc != null)
+        {
+          Log.d("MicroMsg.LuckyMoneyNewYearImageUploader", "ljd: upload progressing....");
+        }
+      }
+    }
+  }
+  
+  public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream) {}
+  
+  public final byte[] f(String paramString, byte[] paramArrayOfByte)
+  {
+    return null;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void bN(String paramString, boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.aa
  * JD-Core Version:    0.7.0.1
  */

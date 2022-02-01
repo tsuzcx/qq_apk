@@ -16,20 +16,20 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.plugin.profile.ui.newbizinfo.b.g;
 import com.tencent.mm.plugin.profile.ui.newbizinfo.c.c;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.pb;
-import com.tencent.mm.protocal.protobuf.pd;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.protocal.protobuf.py;
+import com.tencent.mm.protocal.protobuf.qa;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.al;
 import com.tencent.mm.ui.ao;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.tools.o;
 import java.util.Iterator;
@@ -39,28 +39,28 @@ import java.util.List;
 public class NewBizInfoMenuPreference
   extends Preference
 {
-  private an contact;
+  private LinearLayout BjB;
+  private List<qa> BjC;
+  private py BjD;
+  private as contact;
   private long enterTime;
-  private MMActivity fNT;
-  private int jij;
+  private MMActivity gte;
+  private int kgm;
   private int lineHeight;
-  private boolean qnX;
+  private boolean rFe;
   private int state;
-  private LinearLayout xlA;
-  private List<pd> xlB;
-  private pb xlC;
   
   public NewBizInfoMenuPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27526);
     this.state = 0;
-    this.qnX = false;
+    this.rFe = false;
     this.lineHeight = 0;
-    this.jij = 0;
+    this.kgm = 0;
     this.enterTime = 0L;
-    this.fNT = ((MMActivity)paramContext);
-    this.qnX = false;
+    this.gte = ((MMActivity)paramContext);
+    this.rFe = false;
     AppMethodBeat.o(27526);
   }
   
@@ -69,24 +69,24 @@ public class NewBizInfoMenuPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27527);
     this.state = 0;
-    this.qnX = false;
+    this.rFe = false;
     this.lineHeight = 0;
-    this.jij = 0;
+    this.kgm = 0;
     this.enterTime = 0L;
-    this.fNT = ((MMActivity)paramContext);
-    this.qnX = false;
+    this.gte = ((MMActivity)paramContext);
+    this.rFe = false;
     AppMethodBeat.o(27527);
   }
   
-  private View a(pd parampd)
+  private View a(qa paramqa)
   {
     AppMethodBeat.i(27531);
-    View localView = View.inflate(this.fNT, 2131493605, null);
-    TextView localTextView = (TextView)localView.findViewById(2131302727);
-    ImageView localImageView = (ImageView)localView.findViewById(2131302726);
+    View localView = View.inflate(this.gte, 2131493724, null);
+    TextView localTextView = (TextView)localView.findViewById(2131305294);
+    ImageView localImageView = (ImageView)localView.findViewById(2131305293);
     this.lineHeight = ((int)localTextView.getTextSize());
-    al(localImageView, (int)localTextView.getTextSize() * 3 / 4);
-    switch (parampd.type)
+    an(localImageView, (int)localTextView.getTextSize() * 3 / 4);
+    switch (paramqa.type)
     {
     case 1: 
     case 3: 
@@ -97,26 +97,26 @@ public class NewBizInfoMenuPreference
     case 6: 
       for (;;)
       {
-        localTextView.setText(k.c(this.fNT, parampd.name));
-        o.gZ(localView);
+        localTextView.setText(l.c(this.gte, paramqa.name));
+        o.hq(localView);
         AppMethodBeat.o(27531);
         return localView;
         localImageView.setVisibility(0);
-        localImageView.setImageDrawable(ao.k(this.fNT, 2131689769, this.fNT.getResources().getColor(2131099735)));
+        localImageView.setImageDrawable(ar.m(this.gte, 2131689780, this.gte.getResources().getColor(2131099749)));
         continue;
         localImageView.setVisibility(8);
       }
     }
     localImageView.setVisibility(0);
-    if (al.isDarkMode()) {}
-    for (int i = 2131231205;; i = 2131231204)
+    if (ao.isDarkMode()) {}
+    for (int i = 2131231262;; i = 2131231261)
     {
       localImageView.setImageResource(i);
       break;
     }
   }
   
-  private static void al(View paramView, int paramInt)
+  private static void an(View paramView, int paramInt)
   {
     AppMethodBeat.i(27532);
     ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
@@ -126,24 +126,24 @@ public class NewBizInfoMenuPreference
     AppMethodBeat.o(27532);
   }
   
-  private void dEy()
+  private void dmp()
   {
     AppMethodBeat.i(27534);
-    if ((this.xlC != null) && (this.xlC.FXj != null))
+    if ((this.BjD != null) && (this.BjD.KQV != null))
     {
       this.state = 4;
       AppMethodBeat.o(27534);
       return;
     }
-    if (this.xlC != null)
+    if (this.BjD != null)
     {
-      if ((this.xlC != null) && (this.xlB != null) && (this.xlB.size() <= 0))
+      if ((this.BjD != null) && (this.BjC != null) && (this.BjC.size() <= 0))
       {
         this.state = 2;
         AppMethodBeat.o(27534);
         return;
       }
-      if ((this.xlC != null) && (this.xlB != null) && (this.xlB.size() > 0))
+      if ((this.BjD != null) && (this.BjC != null) && (this.BjC.size() > 0))
       {
         this.state = 3;
         AppMethodBeat.o(27534);
@@ -156,33 +156,33 @@ public class NewBizInfoMenuPreference
     AppMethodBeat.o(27534);
   }
   
-  private void dkv()
+  private void eeh()
   {
     AppMethodBeat.i(27530);
-    this.xlA.removeAllViews();
+    this.BjB.removeAllViews();
     int i = 0;
-    while (i < this.xlB.size())
+    while (i < this.BjC.size())
     {
-      Object localObject2 = (pd)this.xlB.get(i);
-      Object localObject1 = a((pd)localObject2);
+      Object localObject2 = (qa)this.BjC.get(i);
+      Object localObject1 = a((qa)localObject2);
       ((View)localObject1).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(27523);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMenuPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          if (this.xlD == null)
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMenuPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          if (this.BjE == null)
           {
-            ae.w("MicroMsg.NewBizInfoServicePreference", "onClick serviceInfo is null, err");
+            Log.w("MicroMsg.NewBizInfoServicePreference", "onClick serviceInfo is null, err");
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMenuPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(27523);
             return;
           }
-          c.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, 1100, NewBizInfoMenuPreference.b(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.c(NewBizInfoMenuPreference.this));
-          ae.i("MicroMsg.NewBizInfoServicePreference", "onClick serviceInfo.type:%d", new Object[] { Integer.valueOf(this.xlD.type) });
-          switch (this.xlD.type)
+          c.c(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, 1100, NewBizInfoMenuPreference.b(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.c(NewBizInfoMenuPreference.this));
+          Log.i("MicroMsg.NewBizInfoServicePreference", "onClick serviceInfo.type:%d", new Object[] { Integer.valueOf(this.BjE.type) });
+          switch (this.BjE.type)
           {
           }
           for (;;)
@@ -190,34 +190,34 @@ public class NewBizInfoMenuPreference
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/newbizinfo/NewBizInfoMenuPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(27523);
             return;
-            NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this, this.xlD);
+            NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this, this.BjE);
             continue;
-            g.a(this.xlD, NewBizInfoMenuPreference.d(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username);
-            com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, String.valueOf(this.xlD.id), this.xlD.key, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.xnK, this.xlD.name, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.hf(NewBizInfoMenuPreference.e(NewBizInfoMenuPreference.this).indexOf(this.xlD), -1), this.xlD.Dnu);
+            g.a(this.BjE, NewBizInfoMenuPreference.d(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username);
+            com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, String.valueOf(this.BjE.id), this.BjE.key, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.BlL, this.BjE.name, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.hP(NewBizInfoMenuPreference.e(NewBizInfoMenuPreference.this).indexOf(this.BjE), -1), this.BjE.HWM);
             continue;
-            g.b(this.xlD, NewBizInfoMenuPreference.d(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username);
-            com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, String.valueOf(this.xlD.id), this.xlD.key, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.xnK, this.xlD.name, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.hf(NewBizInfoMenuPreference.e(NewBizInfoMenuPreference.this).indexOf(this.xlD), -1), this.xlD.value);
+            g.b(this.BjE, NewBizInfoMenuPreference.d(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username);
+            com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, String.valueOf(this.BjE.id), this.BjE.key, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.BlL, this.BjE.name, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.hP(NewBizInfoMenuPreference.e(NewBizInfoMenuPreference.this).indexOf(this.BjE), -1), this.BjE.value);
             continue;
-            g.c(this.xlD, NewBizInfoMenuPreference.d(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username);
-            com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, String.valueOf(this.xlD.id), this.xlD.key, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.xnK, this.xlD.name, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.hf(NewBizInfoMenuPreference.e(NewBizInfoMenuPreference.this).indexOf(this.xlD), -1), this.xlD.value);
+            g.c(this.BjE, NewBizInfoMenuPreference.d(NewBizInfoMenuPreference.this), NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username);
+            com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.b(NewBizInfoMenuPreference.a(NewBizInfoMenuPreference.this).field_username, String.valueOf(this.BjE.id), this.BjE.key, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.BlL, this.BjE.name, com.tencent.mm.plugin.profile.ui.newbizinfo.c.b.hP(NewBizInfoMenuPreference.e(NewBizInfoMenuPreference.this).indexOf(this.BjE), -1), this.BjE.value);
           }
         }
       });
-      this.xlA.addView((View)localObject1);
+      this.BjB.addView((View)localObject1);
       localObject2 = (LinearLayout.LayoutParams)((View)localObject1).getLayoutParams();
       ((LinearLayout.LayoutParams)localObject2).height = -2;
       ((LinearLayout.LayoutParams)localObject2).width = -1;
       ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
       ((LinearLayout.LayoutParams)localObject2).gravity = 16;
       ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      if (i != this.xlB.size() - 1)
+      if (i != this.BjC.size() - 1)
       {
-        localObject1 = new ImageView(this.fNT);
-        ((ImageView)localObject1).setBackgroundColor(this.fNT.getResources().getColor(2131099736));
-        this.xlA.addView((View)localObject1);
+        localObject1 = new ImageView(this.gte);
+        ((ImageView)localObject1).setBackgroundColor(this.gte.getResources().getColor(2131099750));
+        this.BjB.addView((View)localObject1);
         localObject2 = (LinearLayout.LayoutParams)((ImageView)localObject1).getLayoutParams();
         ((LinearLayout.LayoutParams)localObject2).height = this.lineHeight;
-        ((LinearLayout.LayoutParams)localObject2).width = Math.round(this.fNT.getResources().getDisplayMetrics().density * 0.5F);
+        ((LinearLayout.LayoutParams)localObject2).width = Math.round(this.gte.getResources().getDisplayMetrics().density * 0.5F);
         ((LinearLayout.LayoutParams)localObject2).gravity = 16;
         ((ImageView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
       }
@@ -229,53 +229,53 @@ public class NewBizInfoMenuPreference
   private void initView()
   {
     AppMethodBeat.i(27529);
-    if ((!this.qnX) || (this.xlA == null))
+    if ((!this.rFe) || (this.BjB == null))
     {
       AppMethodBeat.o(27529);
       return;
     }
     if ((this.state != 1) && (this.state != 2) && (this.state == 3))
     {
-      this.xlA.setVisibility(0);
-      dkv();
+      this.BjB.setVisibility(0);
+      eeh();
       AppMethodBeat.o(27529);
       return;
     }
-    this.xlA.setVisibility(8);
+    this.BjB.setVisibility(8);
     AppMethodBeat.o(27529);
   }
   
-  public final void a(pb parampb, an paraman, int paramInt, long paramLong)
+  public final void a(py parampy, as paramas, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(186592);
-    if ((parampb == null) || (parampb.GcJ == null))
+    AppMethodBeat.i(231955);
+    if ((parampy == null) || (parampy.KWP == null))
     {
-      AppMethodBeat.o(186592);
+      AppMethodBeat.o(231955);
       return;
     }
-    this.contact = paraman;
-    this.xlC = parampb;
-    this.xlB = a.a(parampb.GcJ);
-    this.jij = paramInt;
+    this.contact = paramas;
+    this.BjD = parampy;
+    this.BjC = a.a(parampy.KWP);
+    this.kgm = paramInt;
     this.enterTime = paramLong;
-    dEy();
+    dmp();
     initView();
-    AppMethodBeat.o(186592);
+    AppMethodBeat.o(231955);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27528);
     super.onBindView(paramView);
-    this.xlA = ((LinearLayout)paramView.findViewById(2131298599));
-    this.qnX = true;
+    this.BjB = ((LinearLayout)paramView.findViewById(2131299036));
+    this.rFe = true;
     initView();
     AppMethodBeat.o(27528);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.NewBizInfoMenuPreference
  * JD-Core Version:    0.7.0.1
  */

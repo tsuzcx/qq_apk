@@ -9,154 +9,146 @@ import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.j;
-import d.g.b.p;
-import d.l;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bodyColor", "bodyPaint", "Landroid/graphics/Paint;", "deleteColor", "deletePaint", "endColor", "endPaint", "prepareDelete", "", "subFinish", "subProgress", "Ljava/util/ArrayList;", "", "getDrawBodyRect", "Landroid/graphics/RectF;", "index", "getDrawEndRect", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "delete", "removeCurrentProgress", "verify", "(Ljava/lang/Integer;)V", "reset", "updateProgress", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/progress/HorizontalSubProgressBar;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "bodyColor", "bodyPaint", "Landroid/graphics/Paint;", "deleteColor", "deletePaint", "endColor", "endPaint", "prepareDelete", "", "subFinish", "subProgress", "Ljava/util/ArrayList;", "", "getDrawBodyRect", "Landroid/graphics/RectF;", "index", "getDrawEndRect", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "delete", "removeCurrentProgress", "verify", "(Ljava/lang/Integer;)V", "reset", "updateProgress", "Companion", "plugin-recordvideo_release"})
 public final class HorizontalSubProgressBar
   extends View
 {
-  public static final HorizontalSubProgressBar.a xWE;
+  public static final HorizontalSubProgressBar.a BXp;
+  private int BXl;
+  private Paint BXm;
+  private Paint BXn;
+  boolean BXo;
   private final int endColor;
-  ArrayList<Float> wgC;
-  private boolean wgG;
-  private final int wgs;
-  private Paint wgv;
-  private int xWA;
-  private Paint xWB;
-  private Paint xWC;
-  boolean xWD;
+  private final int zAS;
+  private Paint zAV;
+  ArrayList<Float> zBc;
+  private boolean zBg;
   
   static
   {
-    AppMethodBeat.i(206649);
-    xWE = new HorizontalSubProgressBar.a((byte)0);
-    AppMethodBeat.o(206649);
+    AppMethodBeat.i(237424);
+    BXp = new HorizontalSubProgressBar.a((byte)0);
+    AppMethodBeat.o(237424);
   }
   
   public HorizontalSubProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(206647);
-    this.xWA = Color.parseColor("#FA9D3B");
+    AppMethodBeat.i(237422);
+    this.BXl = Color.parseColor("#FA9D3B");
     this.endColor = Color.parseColor("#ffffff");
-    this.wgs = Color.parseColor("#FA5151");
-    this.xWB = new Paint();
-    this.xWC = new Paint();
-    this.wgv = new Paint();
-    this.wgC = new ArrayList();
-    this.xWB.setStyle(Paint.Style.FILL);
-    this.xWB.setColor(this.xWA);
-    this.xWB.setAntiAlias(true);
-    this.xWC.setStyle(Paint.Style.FILL);
-    this.xWC.setColor(this.endColor);
-    this.xWC.setAntiAlias(true);
-    this.wgv.setStyle(Paint.Style.FILL);
-    this.wgv.setColor(this.wgs);
-    this.wgv.setAntiAlias(true);
-    AppMethodBeat.o(206647);
+    this.zAS = Color.parseColor("#FA5151");
+    this.BXm = new Paint();
+    this.BXn = new Paint();
+    this.zAV = new Paint();
+    this.zBc = new ArrayList();
+    this.BXm.setStyle(Paint.Style.FILL);
+    this.BXm.setColor(this.BXl);
+    this.BXm.setAntiAlias(true);
+    this.BXn.setStyle(Paint.Style.FILL);
+    this.BXn.setColor(this.endColor);
+    this.BXn.setAntiAlias(true);
+    this.zAV.setStyle(Paint.Style.FILL);
+    this.zAV.setColor(this.zAS);
+    this.zAV.setAntiAlias(true);
+    AppMethodBeat.o(237422);
   }
   
   public HorizontalSubProgressBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(206648);
-    this.xWA = Color.parseColor("#FA9D3B");
+    AppMethodBeat.i(237423);
+    this.BXl = Color.parseColor("#FA9D3B");
     this.endColor = Color.parseColor("#ffffff");
-    this.wgs = Color.parseColor("#FA5151");
-    this.xWB = new Paint();
-    this.xWC = new Paint();
-    this.wgv = new Paint();
-    this.wgC = new ArrayList();
-    this.xWB.setStyle(Paint.Style.FILL);
-    this.xWB.setColor(this.xWA);
-    this.xWB.setAntiAlias(true);
-    this.xWC.setStyle(Paint.Style.FILL);
-    this.xWC.setColor(this.endColor);
-    this.xWC.setAntiAlias(true);
-    this.wgv.setStyle(Paint.Style.FILL);
-    this.wgv.setColor(this.wgs);
-    this.wgv.setAntiAlias(true);
-    AppMethodBeat.o(206648);
+    this.zAS = Color.parseColor("#FA5151");
+    this.BXm = new Paint();
+    this.BXn = new Paint();
+    this.zAV = new Paint();
+    this.zBc = new ArrayList();
+    this.BXm.setStyle(Paint.Style.FILL);
+    this.BXm.setColor(this.BXl);
+    this.BXm.setAntiAlias(true);
+    this.BXn.setStyle(Paint.Style.FILL);
+    this.BXn.setColor(this.endColor);
+    this.BXn.setAntiAlias(true);
+    this.zAV.setStyle(Paint.Style.FILL);
+    this.zAV.setColor(this.zAS);
+    this.zAV.setAntiAlias(true);
+    AppMethodBeat.o(237423);
   }
   
-  private final RectF Oq(int paramInt)
+  private final RectF VF(int paramInt)
   {
-    AppMethodBeat.i(206646);
-    Object localObject = this.wgC.get(paramInt);
+    AppMethodBeat.i(237421);
+    Object localObject = this.zBc.get(paramInt);
     p.g(localObject, "subProgress[index]");
     float f2 = ((Number)localObject).floatValue() * getWidth() / 100.0F;
     float f3 = getHeight();
     if (paramInt == 0) {}
-    for (float f1 = 0.0F;; f1 = ((Number)this.wgC.get(paramInt - 1)).floatValue() * getWidth() / 100.0F)
+    for (float f1 = 0.0F;; f1 = ((Number)this.zBc.get(paramInt - 1)).floatValue() * getWidth() / 100.0F)
     {
       localObject = new RectF(f1, 0.0F, f2, f3);
-      AppMethodBeat.o(206646);
+      AppMethodBeat.o(237421);
       return localObject;
     }
   }
   
-  public final void as(ArrayList<Float> paramArrayList)
+  public final void aJ(ArrayList<Float> paramArrayList)
   {
-    AppMethodBeat.i(206641);
+    AppMethodBeat.i(237416);
     p.h(paramArrayList, "subProgress");
-    this.wgC.clear();
-    this.wgC.addAll((Collection)paramArrayList);
-    this.xWD = false;
-    this.wgG = false;
+    this.zBc.clear();
+    this.zBc.addAll((Collection)paramArrayList);
+    this.BXo = false;
+    this.zBg = false;
     postInvalidate();
-    AppMethodBeat.o(206641);
+    AppMethodBeat.o(237416);
   }
   
-  public final void dJZ()
+  public final void eKU()
   {
-    AppMethodBeat.i(206642);
-    this.xWD = true;
+    AppMethodBeat.i(237417);
+    this.BXo = true;
     postInvalidate();
-    AppMethodBeat.o(206642);
+    AppMethodBeat.o(237417);
   }
   
   public final void m(Integer paramInteger)
   {
-    AppMethodBeat.i(206644);
-    this.wgG = false;
+    AppMethodBeat.i(237419);
+    this.zBg = false;
     if (paramInteger != null)
     {
-      i = this.wgC.size();
+      i = this.zBc.size();
       if (paramInteger.intValue() == i)
       {
-        AppMethodBeat.o(206644);
+        AppMethodBeat.o(237419);
         return;
       }
     }
-    if (!((Collection)this.wgC).isEmpty()) {}
+    if (!((Collection)this.zBc).isEmpty()) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        this.wgC.remove(this.wgC.size() - 1);
+        this.zBc.remove(this.zBc.size() - 1);
       }
       invalidate();
-      AppMethodBeat.o(206644);
+      AppMethodBeat.o(237419);
       return;
     }
   }
   
-  public final void oD(boolean paramBoolean)
-  {
-    AppMethodBeat.i(206643);
-    this.wgG = paramBoolean;
-    invalidate();
-    AppMethodBeat.o(206643);
-  }
-  
   protected final void onDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(206645);
-    Object localObject1 = (Iterable)this.wgC;
+    AppMethodBeat.i(237420);
+    Object localObject1 = (Iterable)this.zBc;
     int i = 0;
     localObject1 = ((Iterable)localObject1).iterator();
     while (((Iterator)localObject1).hasNext())
@@ -164,34 +156,42 @@ public final class HorizontalSubProgressBar
       Object localObject2 = ((Iterator)localObject1).next();
       int j = i + 1;
       if (i < 0) {
-        j.gkd();
+        j.hxH();
       }
       ((Number)localObject2).floatValue();
-      if ((i == this.wgC.size() - 1) && (this.wgG)) {
+      if ((i == this.zBc.size() - 1) && (this.zBg)) {
         if (paramCanvas != null) {
-          paramCanvas.drawRect(Oq(i), this.wgv);
+          paramCanvas.drawRect(VF(i), this.zAV);
         }
       }
       for (;;)
       {
-        if (((i == this.wgC.size() - 1) && (!this.xWD)) || (paramCanvas == null)) {
+        if (((i == this.zBc.size() - 1) && (!this.BXo)) || (paramCanvas == null)) {
           break label230;
         }
-        localObject2 = this.wgC.get(i);
+        localObject2 = this.zBc.get(i);
         p.g(localObject2, "subProgress[index]");
         float f1 = ((Number)localObject2).floatValue() * getWidth() / 100.0F;
         float f2 = getHeight();
-        paramCanvas.drawRect(new RectF(f1 - getWidth() * 0.0053F, 0.0F, f1, f2), this.xWC);
+        paramCanvas.drawRect(new RectF(f1 - getWidth() * 0.0053F, 0.0F, f1, f2), this.BXn);
         i = j;
         break;
         if (paramCanvas != null) {
-          paramCanvas.drawRect(Oq(i), this.xWB);
+          paramCanvas.drawRect(VF(i), this.BXm);
         }
       }
       label230:
       i = j;
     }
-    AppMethodBeat.o(206645);
+    AppMethodBeat.o(237420);
+  }
+  
+  public final void rl(boolean paramBoolean)
+  {
+    AppMethodBeat.i(237418);
+    this.zBg = paramBoolean;
+    invalidate();
+    AppMethodBeat.o(237418);
   }
 }
 

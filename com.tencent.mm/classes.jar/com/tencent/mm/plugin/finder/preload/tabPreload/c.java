@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.finder.preload.tabPreload;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/FriendTabPreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;", "core", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "(Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;)V", "performChangeEnterTargetTab", "", "lastTab", "", "targetTab", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/FriendTabPreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;", "core", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "(Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;)V", "performChangeEnterTargetTab", "", "lastTab", "", "targetTab", "plugin-finder_release"})
 public final class c
   extends f
 {
   public c(FinderStreamTabPreloadCore paramFinderStreamTabPreloadCore)
   {
     super(1, paramFinderStreamTabPreloadCore);
-    AppMethodBeat.i(203565);
-    AppMethodBeat.o(203565);
+    AppMethodBeat.i(249577);
+    AppMethodBeat.o(249577);
   }
   
-  public final void fI(int paramInt1, int paramInt2)
+  public final void gc(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(203564);
-    super.fI(paramInt1, paramInt2);
-    if (this.dvm == paramInt2)
+    AppMethodBeat.i(249576);
+    super.gc(paramInt1, paramInt2);
+    if (this.dLS == paramInt2)
     {
-      final long l = FinderStreamTabPreloadCore.ag(this.dvm, true);
-      ae.i(this.TAG, "[performChangeEnterTargetTab] interval=".concat(String.valueOf(l)));
+      final long l = FinderStreamTabPreloadCore.al(this.dLS, true);
+      Log.i(this.TAG, "[performChangeEnterTargetTab] interval=".concat(String.valueOf(l)));
       if ((l > 0L) && (l < 9223372036854775807L))
       {
-        this.suO.aiE("performChangeEnterTargetTab");
-        a(f.c.svc, (b)new a(this, l));
+        this.uVb.aut("performChangeEnterTargetTab");
+        a(f.c.uVo, null, (b)new a(this, l));
       }
     }
-    AppMethodBeat.o(203564);
+    AppMethodBeat.o(249576);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;", "invoke"})
   static final class a
     extends q
-    implements b<f.d, z>
+    implements b<f.d, x>
   {
     a(c paramc, long paramLong)
     {
@@ -48,7 +48,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.preload.tabPreload.c
  * JD-Core Version:    0.7.0.1
  */

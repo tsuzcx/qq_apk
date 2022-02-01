@@ -5,9 +5,9 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.m;
+import android.support.v7.widget.RecyclerView.l;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,38 +17,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.d.a.e;
 import com.tencent.mm.plugin.story.d.a.f;
 import com.tencent.mm.plugin.story.i.h;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMFragment;
-import d.g.a.b;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
 import java.util.Collection;
 import java.util.List;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumUI;", "Lcom/tencent/mm/ui/MMFragment;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;", "()V", "mPresenter", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IPresenter;", "mRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "mStoryAlbumAdapter", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumAdapter;", "mStoryBubblePostFailLayout", "Landroid/widget/LinearLayout;", "mStoryBubblePostFailTv", "Landroid/widget/TextView;", "mStoryFavEntrancePanel", "Landroid/view/View;", "mStoryNoDataTv", "mStoryPostFailLayout", "mStoryPostFailTv", "mUsername", "", "dealContentView", "", "v", "getLayoutId", "", "goDateStoryGallery", "position", "dateList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "goFavAlbum", "initActionBar", "initViews", "loadFromDB", "loadFromRemote", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBubbleFail", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onIsAll", "onLoadFinish", "datas", "", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "onStoryPostFail", "list", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "supportNavigationSwipeBack", "", "Companion", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumUI;", "Lcom/tencent/mm/ui/MMFragment;", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IView;", "()V", "mPresenter", "Lcom/tencent/mm/plugin/story/contract/AlbumContract$IPresenter;", "mRecyclerView", "Landroid/support/v7/widget/RecyclerView;", "mStoryAlbumAdapter", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumAdapter;", "mStoryBubblePostFailLayout", "Landroid/widget/LinearLayout;", "mStoryBubblePostFailTv", "Landroid/widget/TextView;", "mStoryFavEntrancePanel", "Landroid/view/View;", "mStoryNoDataTv", "mStoryPostFailLayout", "mStoryPostFailTv", "mUsername", "", "dealContentView", "", "v", "enableFavorite", "", "getLayoutId", "", "goDateStoryGallery", "position", "dateList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "goFavAlbum", "initActionBar", "initViews", "loadFromDB", "loadFromRemote", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBubbleFail", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onIsAll", "onLoadFinish", "datas", "", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumInfo;", "onStoryPostFail", "list", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "supportNavigationSwipeBack", "Companion", "plugin-story_release"})
 public final class StoryAlbumUI
   extends MMFragment
   implements a.f
 {
-  public static final StoryAlbumUI.a Bon;
+  public static final a Fzd;
   private static final String TAG = "MicroMsg.StoryAlbumUI";
-  private LinearLayout Bof;
-  private LinearLayout Bog;
-  private TextView Boh;
-  private TextView Boi;
-  private TextView Boj;
-  private View Bok;
-  private a Bol;
-  private a.e Bom;
-  private RecyclerView anl;
-  private String lJm = "";
+  private LinearLayout FyV;
+  private LinearLayout FyW;
+  private TextView FyX;
+  private TextView FyY;
+  private TextView FyZ;
+  private View Fza;
+  private a Fzb;
+  private a.e Fzc;
+  private String mRa = "";
+  private RecyclerView mRecyclerView;
   
   static
   {
     AppMethodBeat.i(119842);
-    Bon = new StoryAlbumUI.a((byte)0);
+    Fzd = new a((byte)0);
     TAG = "MicroMsg.StoryAlbumUI";
     AppMethodBeat.o(119842);
   }
@@ -56,20 +55,20 @@ public final class StoryAlbumUI
   private final void loadFromDB()
   {
     AppMethodBeat.i(119835);
-    a.e locale = this.Bom;
+    a.e locale = this.Fzc;
     if (locale == null) {
-      p.bdF("mPresenter");
+      kotlin.g.b.p.btv("mPresenter");
     }
-    locale.ekY();
+    locale.fnz();
     AppMethodBeat.o(119835);
   }
   
   public final void dealContentView(View paramView)
   {
     AppMethodBeat.i(119837);
-    p.h(paramView, "v");
+    kotlin.g.b.p.h(paramView, "v");
     super.dealContentView(paramView);
-    this.Bom = ((a.e)new com.tencent.mm.plugin.story.g.a((a.f)this));
+    this.Fzc = ((a.e)new com.tencent.mm.plugin.story.g.a((a.f)this));
     Object localObject = getActivity();
     if (localObject != null)
     {
@@ -85,87 +84,87 @@ public final class StoryAlbumUI
     }
     localObject = "";
     label70:
-    this.lJm = ((String)localObject);
-    ae.i(TAG, "initViews username=" + this.lJm);
-    localObject = paramView.findViewById(2131296618);
-    p.g(localObject, "v.findViewById(R.id.album_story_recycler)");
-    this.anl = ((RecyclerView)localObject);
-    localObject = paramView.findViewById(2131296621);
-    p.g(localObject, "v.findViewById(R.id.album_story_send_fail_layout)");
-    this.Bof = ((LinearLayout)localObject);
-    localObject = paramView.findViewById(2131296540);
-    p.g(localObject, "v.findViewById(R.id.album_bubble_send_fail_layout)");
-    this.Bog = ((LinearLayout)localObject);
-    localObject = paramView.findViewById(2131296622);
-    p.g(localObject, "v.findViewById(R.id.album_story_send_fail_tips)");
-    this.Boh = ((TextView)localObject);
-    localObject = paramView.findViewById(2131296541);
-    p.g(localObject, "v.findViewById(R.id.album_bubble_send_fail_tips)");
-    this.Boi = ((TextView)localObject);
+    this.mRa = ((String)localObject);
+    Log.i(TAG, "initViews username=" + this.mRa);
+    localObject = paramView.findViewById(2131296695);
+    kotlin.g.b.p.g(localObject, "v.findViewById(R.id.album_story_recycler)");
+    this.mRecyclerView = ((RecyclerView)localObject);
+    localObject = paramView.findViewById(2131296698);
+    kotlin.g.b.p.g(localObject, "v.findViewById(R.id.album_story_send_fail_layout)");
+    this.FyV = ((LinearLayout)localObject);
+    localObject = paramView.findViewById(2131296616);
+    kotlin.g.b.p.g(localObject, "v.findViewById(R.id.album_bubble_send_fail_layout)");
+    this.FyW = ((LinearLayout)localObject);
+    localObject = paramView.findViewById(2131296699);
+    kotlin.g.b.p.g(localObject, "v.findViewById(R.id.album_story_send_fail_tips)");
+    this.FyX = ((TextView)localObject);
     localObject = paramView.findViewById(2131296617);
-    p.g(localObject, "v.findViewById(R.id.album_story_no_data_tip_tv)");
-    this.Boj = ((TextView)localObject);
-    paramView = paramView.findViewById(2131296616);
-    p.g(paramView, "v.findViewById(R.id.album_story_no_data_fav_panel)");
-    this.Bok = paramView;
-    this.Bol = new a();
-    paramView = this.Bol;
+    kotlin.g.b.p.g(localObject, "v.findViewById(R.id.album_bubble_send_fail_tips)");
+    this.FyY = ((TextView)localObject);
+    localObject = paramView.findViewById(2131296694);
+    kotlin.g.b.p.g(localObject, "v.findViewById(R.id.album_story_no_data_tip_tv)");
+    this.FyZ = ((TextView)localObject);
+    paramView = paramView.findViewById(2131296693);
+    kotlin.g.b.p.g(paramView, "v.findViewById(R.id.album_story_no_data_fav_panel)");
+    this.Fza = paramView;
+    this.Fzb = new a();
+    paramView = this.Fzb;
     if (paramView == null) {
-      p.bdF("mStoryAlbumAdapter");
+      kotlin.g.b.p.btv("mStoryAlbumAdapter");
     }
-    paramView.BnQ = ((b)new c(this));
-    paramView = this.Bol;
+    paramView.FyG = ((b)new c(this));
+    paramView = this.Fzb;
     if (paramView == null) {
-      p.bdF("mStoryAlbumAdapter");
+      kotlin.g.b.p.btv("mStoryAlbumAdapter");
     }
-    paramView.BnR = ((d.g.a.a)new StoryAlbumUI.d(this));
-    paramView = this.anl;
+    paramView.FyH = ((kotlin.g.a.a)new StoryAlbumUI.d(this));
+    paramView = this.mRecyclerView;
     if (paramView == null) {
-      p.bdF("mRecyclerView");
+      kotlin.g.b.p.btv("mRecyclerView");
     }
-    localObject = this.Bol;
+    localObject = this.Fzb;
     if (localObject == null) {
-      p.bdF("mStoryAlbumAdapter");
+      kotlin.g.b.p.btv("mStoryAlbumAdapter");
     }
     paramView.setAdapter((RecyclerView.a)localObject);
-    paramView = this.anl;
+    paramView = this.mRecyclerView;
     if (paramView == null) {
-      p.bdF("mRecyclerView");
+      kotlin.g.b.p.btv("mRecyclerView");
     }
     getActivity();
-    paramView.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    paramView = this.anl;
+    paramView.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
+    paramView = this.mRecyclerView;
     if (paramView == null) {
-      p.bdF("mRecyclerView");
+      kotlin.g.b.p.btv("mRecyclerView");
     }
-    paramView.a((RecyclerView.m)new e(this));
-    paramView = this.Bok;
+    paramView.a((RecyclerView.l)new e(this));
+    paramView = this.Fza;
     if (paramView == null) {
-      p.bdF("mStoryFavEntrancePanel");
+      kotlin.g.b.p.btv("mStoryFavEntrancePanel");
     }
     paramView.setOnClickListener((View.OnClickListener)new StoryAlbumUI.f(this));
-    paramView = this.Bom;
+    paramView = this.Fzc;
     if (paramView == null) {
-      p.bdF("mPresenter");
+      kotlin.g.b.p.btv("mPresenter");
     }
-    paramView.onCreate(this.lJm);
+    paramView.onCreate(this.mRa);
     loadFromDB();
-    paramView = this.Bom;
+    paramView = this.Fzc;
     if (paramView == null) {
-      p.bdF("mPresenter");
+      kotlin.g.b.p.btv("mPresenter");
     }
-    paramView.ekW();
+    paramView.fnx();
     AppMethodBeat.o(119837);
   }
   
-  public final void ekZ()
+  public final void fnA()
   {
     AppMethodBeat.i(119841);
-    a locala = this.Bol;
+    a locala = this.Fzb;
     if (locala == null) {
-      p.bdF("mStoryAlbumAdapter");
+      kotlin.g.b.p.btv("mStoryAlbumAdapter");
     }
-    locala.oTp = true;
+    locala.qhf = true;
     if (!((Collection)locala.mItemList).isEmpty()) {}
     for (int i = 1;; i = 0)
     {
@@ -179,64 +178,69 @@ public final class StoryAlbumUI
   
   public final int getLayoutId()
   {
-    return 2131495658;
+    return 2131496563;
   }
   
-  public final void gk(List<c> paramList)
+  public final void hh(List<c> paramList)
   {
     AppMethodBeat.i(119840);
-    p.h(paramList, "datas");
-    ae.i(TAG, "onLoadFinish datas.size=" + paramList.size());
-    a locala = this.Bol;
+    kotlin.g.b.p.h(paramList, "datas");
+    Log.i(TAG, "onLoadFinish datas.size=" + paramList.size());
+    a locala = this.Fzb;
     if (locala == null) {
-      p.bdF("mStoryAlbumAdapter");
+      kotlin.g.b.p.btv("mStoryAlbumAdapter");
     }
-    locala.gB(paramList);
+    locala.hy(paramList);
     if (paramList.isEmpty())
     {
-      paramList = this.Bok;
+      paramList = this.Fza;
       if (paramList == null) {
-        p.bdF("mStoryFavEntrancePanel");
+        kotlin.g.b.p.btv("mStoryFavEntrancePanel");
       }
       paramList.setVisibility(0);
-      paramList = this.Boj;
+      paramList = this.FyZ;
       if (paramList == null) {
-        p.bdF("mStoryNoDataTv");
+        kotlin.g.b.p.btv("mStoryNoDataTv");
       }
       paramList.setVisibility(0);
-      paramList = this.anl;
+      paramList = this.mRecyclerView;
       if (paramList == null) {
-        p.bdF("mRecyclerView");
+        kotlin.g.b.p.btv("mRecyclerView");
       }
       paramList.setVisibility(8);
+      if (!com.tencent.mm.plugin.textstatus.a.p.fvC()) {
+        break label240;
+      }
     }
-    for (;;)
+    label240:
+    for (boolean bool = com.tencent.mm.plugin.story.c.a.a.FkW.gIi();; bool = com.tencent.mm.plugin.story.c.a.a.FkW.fnd())
     {
-      if (!com.tencent.mm.plugin.story.c.a.a.AZY.ekC())
+      if (!bool)
       {
-        paramList = this.Bok;
+        paramList = this.Fza;
         if (paramList == null) {
-          p.bdF("mStoryFavEntrancePanel");
+          kotlin.g.b.p.btv("mStoryFavEntrancePanel");
         }
         paramList.setVisibility(8);
       }
       AppMethodBeat.o(119840);
       return;
-      paramList = this.Bok;
+      paramList = this.Fza;
       if (paramList == null) {
-        p.bdF("mStoryFavEntrancePanel");
+        kotlin.g.b.p.btv("mStoryFavEntrancePanel");
       }
       paramList.setVisibility(8);
-      paramList = this.Boj;
+      paramList = this.FyZ;
       if (paramList == null) {
-        p.bdF("mStoryNoDataTv");
+        kotlin.g.b.p.btv("mStoryNoDataTv");
       }
       paramList.setVisibility(8);
-      paramList = this.anl;
+      paramList = this.mRecyclerView;
       if (paramList == null) {
-        p.bdF("mRecyclerView");
+        kotlin.g.b.p.btv("mRecyclerView");
       }
       paramList.setVisibility(0);
+      break;
     }
   }
   
@@ -244,7 +248,7 @@ public final class StoryAlbumUI
   {
     AppMethodBeat.i(119838);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ae.d(TAG, "onActivityResult requestCode=" + paramInt1 + " resultCode=" + paramInt2);
+    Log.d(TAG, "onActivityResult requestCode=" + paramInt1 + " resultCode=" + paramInt2);
     if (paramInt1 == 1) {
       loadFromDB();
     }
@@ -255,7 +259,7 @@ public final class StoryAlbumUI
   {
     AppMethodBeat.i(119836);
     super.onCreate(paramBundle);
-    setMMTitle(2131755251);
+    setMMTitle(2131755286);
     setBackBtn((MenuItem.OnMenuItemClickListener)new StoryAlbumUI.b(this));
     AppMethodBeat.o(119836);
   }
@@ -264,11 +268,11 @@ public final class StoryAlbumUI
   {
     AppMethodBeat.i(119839);
     super.onDestroy();
-    a.e locale = this.Bom;
+    a.e locale = this.Fzc;
     if (locale == null) {
-      p.bdF("mPresenter");
+      kotlin.g.b.p.btv("mPresenter");
     }
-    locale.efC();
+    locale.fib();
     AppMethodBeat.o(119839);
   }
   
@@ -277,10 +281,13 @@ public final class StoryAlbumUI
     return false;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "storyHistoryInfo", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumUI$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-story_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "storyHistoryInfo", "Lcom/tencent/mm/plugin/story/storage/StoryHistoryInfo;", "invoke"})
   static final class c
     extends q
-    implements b<h, z>
+    implements b<h, x>
   {
     c(StoryAlbumUI paramStoryAlbumUI)
     {
@@ -288,21 +295,21 @@ public final class StoryAlbumUI
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/story/ui/album/StoryAlbumUI$initViews$3", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener;", "onLoadMore", "", "plugin-story_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/story/ui/album/StoryAlbumUI$initViews$3", "Lcom/tencent/mm/plugin/story/ui/album/StoryAlbumScrollListener;", "onLoadMore", "", "plugin-story_release"})
   public static final class e
     extends e
   {
-    public final void ZC()
+    public final void onLoadMore()
     {
       AppMethodBeat.i(119833);
-      StoryAlbumUI.c(this.Boo).ekV();
+      StoryAlbumUI.c(this.Fze).fnw();
       AppMethodBeat.o(119833);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.album.StoryAlbumUI
  * JD-Core Version:    0.7.0.1
  */

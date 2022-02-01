@@ -5,6 +5,7 @@ import android.media.AudioFormat;
 import android.media.AudioFormat.Builder;
 import android.media.AudioTrack;
 import android.media.AudioTrack.Builder;
+import android.media.PlaybackParams;
 import android.os.Build.VERSION;
 import android.os.Handler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -207,6 +208,22 @@ abstract class BaseDecodeDataComponent
     return "ID: " + this.mPlayerID + ". " + paramString;
   }
   
+  protected long calculatePcmPlayTime(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong)
+  {
+    if ((paramInt1 == 0) || (paramInt2 == 0) || (paramLong == 0L)) {
+      return 0L;
+    }
+    return (paramArrayOfByte.length * 1000.0F / paramInt1 / paramInt2 / (float)paramLong);
+  }
+  
+  protected long calculatePcmPlayTime(float[] paramArrayOfFloat, int paramInt, long paramLong)
+  {
+    if ((paramInt == 0) || (paramLong == 0L)) {
+      return 0L;
+    }
+    return (paramArrayOfFloat.length * 1000.0F / paramInt / (float)paramLong);
+  }
+  
   void callExceptionCallback(int paramInt1, int paramInt2)
   {
     callExceptionCallback(paramInt1, paramInt2, 0);
@@ -313,6 +330,25 @@ abstract class BaseDecodeDataComponent
       return this.mAudioTrack.getAudioSessionId();
     }
     return 0;
+  }
+  
+  float getSpeed()
+  {
+    float f2 = 1.0F;
+    float f1;
+    if (this.mSpeedToSet != null) {
+      f1 = this.mSpeedToSet.floatValue();
+    }
+    do
+    {
+      do
+      {
+        return f1;
+        f1 = f2;
+      } while (Build.VERSION.SDK_INT < 23);
+      f1 = f2;
+    } while (this.mAudioTrack == null);
+    return this.mAudioTrack.getPlaybackParams().getSpeed();
   }
   
   abstract void handleDecodeData();
@@ -613,7 +649,7 @@ abstract class BaseDecodeDataComponent
   
   void refreshTimeAndNotify(int paramInt)
   {
-    if (this.mSignalControl.isWaiting())
+    if ((this.mSignalControl.isWaiting()) && (isPlaying()))
     {
       Logger.d("BaseDecodeDataComponent", axiliary("lock is Waiting, event: seek, doNotify"));
       this.mSignalControl.doNotify();
@@ -784,7 +820,7 @@ abstract class BaseDecodeDataComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.BaseDecodeDataComponent
  * JD-Core Version:    0.7.0.1
  */

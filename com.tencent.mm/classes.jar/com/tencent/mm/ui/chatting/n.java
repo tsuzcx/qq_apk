@@ -9,27 +9,27 @@ import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.al.ag;
 import com.tencent.mm.av.i;
-import com.tencent.mm.br.d.a;
-import com.tencent.mm.g.a.cw;
-import com.tencent.mm.g.a.qi;
-import com.tencent.mm.g.a.qi.b;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.br.c.a;
+import com.tencent.mm.g.a.cz;
+import com.tencent.mm.g.a.rc;
+import com.tencent.mm.g.a.rc.b;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.modelvideo.s;
 import com.tencent.mm.modelvideo.t;
 import com.tencent.mm.modelvideo.u;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bf;
-import com.tencent.mm.sdk.platformtools.bf.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread.ThreadObject;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.ui.bizchat.BizChatSelectConversationUI;
-import com.tencent.mm.ui.chatting.d.m;
+import com.tencent.mm.ui.chatting.e.a;
 import com.tencent.mm.ui.widget.snackbar.b;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -37,135 +37,135 @@ import java.util.List;
 
 public final class n
 {
-  private static p JUY = null;
-  private static a JVt;
+  private static a PgF;
+  private static com.tencent.mm.ui.base.q Pgl = null;
   
-  public static void a(com.tencent.mm.ui.chatting.e.a parama, String paramString, long paramLong)
+  public static void a(a parama, String paramString, long paramLong)
   {
     AppMethodBeat.i(34480);
-    Activity localActivity = parama.Kkd.getContext();
-    if ((!bu.isNullOrNil(paramString)) && (paramString.length() > 0))
+    Activity localActivity = parama.Pwc.getContext();
+    if ((!Util.isNullOrNil(paramString)) && (paramString.length() > 0))
     {
-      localActivity.getString(2131755906);
-      JUY = h.b(localActivity, localActivity.getString(2131763073), false, null);
-      m.KcB.c(new b(parama, localActivity, paramString, paramLong, JVt));
+      localActivity.getString(2131755998);
+      Pgl = h.a(localActivity, localActivity.getString(2131765232), false, null);
+      com.tencent.mm.ui.chatting.d.m.PnZ.add(new b(parama, localActivity, paramString, paramLong, PgF));
     }
-    ((com.tencent.mm.ui.chatting.d.b.l)parama.bh(com.tencent.mm.ui.chatting.d.b.l.class)).fHt();
+    ((com.tencent.mm.ui.chatting.d.b.l)parama.bh(com.tencent.mm.ui.chatting.d.b.l.class)).gPz();
     AppMethodBeat.o(34480);
   }
   
-  public static void a(final com.tencent.mm.ui.chatting.e.a parama, List<bv> paramList, boolean paramBoolean, final m paramm, final an paraman)
+  public static void a(final a parama, List<ca> paramList, boolean paramBoolean, final com.tencent.mm.ui.chatting.d.m paramm, final as paramas)
   {
     AppMethodBeat.i(34476);
     if (parama == null)
     {
-      ae.w("MicroMsg.ChattingEditModeSendToBrand", "do send to brand fail, fragment is null");
+      Log.w("MicroMsg.ChattingEditModeSendToBrand", "do send to brand fail, fragment is null");
       AppMethodBeat.o(34476);
       return;
     }
     if ((paramList == null) || (paramList.isEmpty()))
     {
-      ae.w("MicroMsg.ChattingEditModeSendToBrand", "do send to brand fail, select item empty");
+      Log.w("MicroMsg.ChattingEditModeSendToBrand", "do send to brand fail, select item empty");
       AppMethodBeat.o(34476);
       return;
     }
     Object localObject = new a((byte)0);
-    JVt = (a)localObject;
-    ((a)localObject).JVr = new LinkedList(paramList);
-    JVt.JSi = paramBoolean;
-    JVt.dFY = paraman.field_username;
-    JVt.JVz = true;
-    final Activity localActivity = parama.Kkd.getContext();
+    PgF = (a)localObject;
+    ((a)localObject).PgD = new LinkedList(paramList);
+    PgF.Pdm = paramBoolean;
+    PgF.from = paramas.field_username;
+    PgF.PgM = true;
+    final Activity localActivity = parama.Pwc.getContext();
     if (localActivity == null)
     {
       AppMethodBeat.o(34476);
       return;
     }
     com.tencent.mm.ui.tools.l locall = new com.tencent.mm.ui.tools.l(localActivity);
-    locall.LfW = new n.1();
-    locall.LfX = new n.2(localActivity);
+    locall.HMa = new n.1();
+    locall.HMb = new n.2(localActivity);
     if (com.tencent.mm.pluginsdk.model.app.q.s(localActivity, "com.tencent.wework")) {}
-    for (localObject = k.fFn();; localObject = k.fFm())
+    for (localObject = k.gNv();; localObject = k.gNu())
     {
-      locall.LfS = new n.3((List)localObject);
-      locall.LfT = new n.e()
+      locall.HLX = new n.3((List)localObject);
+      locall.HLY = new o.g()
       {
         public final void onMMMenuItemSelected(final MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
           AppMethodBeat.i(34467);
           if (paramAnonymousMenuItem.getItemId() == 1193046)
           {
-            if (k.ig(this.JVk))
+            if (k.jj(this.Pgx))
             {
-              h.a(localActivity, localActivity.getString(2131757937), "", localActivity.getString(2131755012), new DialogInterface.OnClickListener()
+              h.a(localActivity, localActivity.getString(2131758177), "", localActivity.getString(2131755013), new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
               });
               AppMethodBeat.o(34467);
               return;
             }
-            if (k.ih(this.JVk))
+            if (k.jk(this.Pgx))
             {
-              h.a(localActivity, localActivity.getString(2131757938), "", localActivity.getString(2131755012), new DialogInterface.OnClickListener()
+              h.a(localActivity, localActivity.getString(2131758178), "", localActivity.getString(2131755013), new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
               });
               AppMethodBeat.o(34467);
               return;
             }
-            if (k.jdMethod_if(this.JVk))
+            if (k.ji(this.Pgx))
             {
-              h.a(localActivity, localActivity.getString(2131757939), "", new DialogInterface.OnClickListener()
+              h.a(localActivity, localActivity.getString(2131758179), "", new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
               }, null);
               AppMethodBeat.o(34467);
               return;
             }
-            if ((o.a(parama, this.JVk, paraman)) && (paramm != null)) {
-              paramm.fHt();
+            if ((o.a(parama, this.Pgx, paramas)) && (paramm != null)) {
+              paramm.gPz();
             }
             AppMethodBeat.o(34467);
             return;
           }
-          if (k.ig(this.JVk))
+          if (k.jj(this.Pgx))
           {
-            h.a(localActivity, localActivity.getString(2131757937), "", localActivity.getString(2131755012), new DialogInterface.OnClickListener()
+            h.a(localActivity, localActivity.getString(2131758177), "", localActivity.getString(2131755013), new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
             });
             AppMethodBeat.o(34467);
             return;
           }
-          if (k.ih(this.JVk))
+          if (k.jk(this.Pgx))
           {
-            h.a(localActivity, localActivity.getString(2131757938), "", localActivity.getString(2131755012), new DialogInterface.OnClickListener()
+            h.a(localActivity, localActivity.getString(2131758178), "", localActivity.getString(2131755013), new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
             });
             AppMethodBeat.o(34467);
             return;
           }
-          Object localObject = this.JVk;
+          Object localObject = this.Pgx;
           if (localObject == null)
           {
-            ae.w("MicroMsg.ChattingEditModeLogic", "check contain undownload image or video error, select item empty");
+            Log.w("MicroMsg.ChattingEditModeLogic", "check contain undownload image or video error, select item empty");
             break label380;
             break label380;
           }
           label324:
           label380:
-          bv localbv;
+          ca localca;
           do
           {
             Iterator localIterator;
             do
             {
               paramAnonymousInt = 0;
-              if ((paramAnonymousInt == 0) && (!k.jdMethod_if(this.JVk))) {
+              if ((paramAnonymousInt == 0) && (!k.ji(this.Pgx))) {
                 break;
               }
-              h.a(localActivity, localActivity.getString(2131757939), "", new DialogInterface.OnClickListener()
+              h.a(localActivity, localActivity.getString(2131758179), "", new DialogInterface.OnClickListener()
               {
                 public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
               }, null);
@@ -173,49 +173,49 @@ public final class n
               return;
               localIterator = ((List)localObject).iterator();
             } while (!localIterator.hasNext());
-            localbv = (bv)localIterator.next();
-          } while (localbv.field_isSend == 1);
-          if (localbv.ftg()) {
-            if (localbv.field_msgId <= 0L) {
+            localca = (ca)localIterator.next();
+          } while (localca.field_isSend == 1);
+          if (localca.gAz()) {
+            if (localca.field_msgId <= 0L) {
               break label892;
             }
           }
           label890:
           label892:
-          for (localObject = com.tencent.mm.av.q.aIX().G(localbv.field_talker, localbv.field_msgId);; localObject = null)
+          for (localObject = com.tencent.mm.av.q.bcR().H(localca.field_talker, localca.field_msgId);; localObject = null)
           {
-            if (((localObject == null) || (((com.tencent.mm.av.g)localObject).doE <= 0L)) && (localbv.field_msgSvrId > 0L)) {
-              localObject = com.tencent.mm.av.q.aIX().F(localbv.field_talker, localbv.field_msgSvrId);
+            if (((localObject == null) || (((com.tencent.mm.av.g)localObject).localId <= 0L)) && (localca.field_msgSvrId > 0L)) {
+              localObject = com.tencent.mm.av.q.bcR().G(localca.field_talker, localca.field_msgSvrId);
             }
             for (;;)
             {
-              if ((localObject == null) || ((((com.tencent.mm.av.g)localObject).offset >= ((com.tencent.mm.av.g)localObject).hPI) && (((com.tencent.mm.av.g)localObject).hPI != 0))) {
+              if ((localObject == null) || ((((com.tencent.mm.av.g)localObject).offset >= ((com.tencent.mm.av.g)localObject).iKP) && (((com.tencent.mm.av.g)localObject).iKP != 0))) {
                 break label890;
               }
               paramAnonymousInt = 1;
               break label324;
-              if (localbv.cyG())
+              if (localca.cWJ())
               {
-                localObject = com.tencent.mm.modelvideo.o.aNh().HD(localbv.field_imgPath);
+                localObject = com.tencent.mm.modelvideo.o.bhj().Qq(localca.field_imgPath);
                 if ((localObject == null) || (((s)localObject).status == 199) || (((s)localObject).status == 199)) {
                   break;
                 }
                 paramAnonymousInt = 1;
                 break label324;
               }
-              if (localbv.cyI())
+              if (localca.cWL())
               {
-                localObject = u.Ia(localbv.field_imgPath);
+                localObject = u.QN(localca.field_imgPath);
                 if ((localObject == null) || (((s)localObject).status == 199) || (((s)localObject).status == 199)) {
                   break;
                 }
                 paramAnonymousInt = 1;
                 break label324;
               }
-              if (!localbv.fvH()) {
+              if (!localca.gDo()) {
                 break;
               }
-              if (!k.aS(localbv))
+              if (!k.bi(localca))
               {
                 paramAnonymousInt = 1;
                 break label324;
@@ -223,27 +223,27 @@ public final class n
               paramAnonymousInt = 0;
               break label324;
               localObject = (String)paramAnonymousMenuItem.getTitle();
-              if (com.tencent.mm.al.g.Eq((String)localObject))
+              if (com.tencent.mm.al.g.Ne((String)localObject))
               {
-                if (this.JVk.size() <= 1)
+                if (this.Pgx.size() <= 1)
                 {
-                  n.fFs().JVz = true;
-                  n.a((String)localObject, parama, this.JVk);
+                  n.gNA().PgM = true;
+                  n.a((String)localObject, parama, this.Pgx);
                   AppMethodBeat.o(34467);
                   return;
                 }
                 paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(localActivity, 1, false);
-                paramAnonymousMenuItem.LfS = new n.d()
+                paramAnonymousMenuItem.HLX = new o.f()
                 {
-                  public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
+                  public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramAnonymous2m)
                   {
                     AppMethodBeat.i(34464);
-                    paramAnonymous2l.jM(0, 2131761385);
-                    paramAnonymous2l.jM(1, 2131761386);
+                    paramAnonymous2m.kV(0, 2131763226);
+                    paramAnonymous2m.kV(1, 2131763227);
                     AppMethodBeat.o(34464);
                   }
                 };
-                paramAnonymousMenuItem.LfT = new n.e()
+                paramAnonymousMenuItem.HLY = new o.g()
                 {
                   public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
                   {
@@ -255,30 +255,30 @@ public final class n
                     {
                       AppMethodBeat.o(34465);
                       return;
-                      n.fFs().JVz = true;
-                      n.a(this.fOp, n.4.this.JVv, n.4.this.JVk);
+                      n.gNA().PgM = true;
+                      n.a(this.gtz, n.4.this.PgH, n.4.this.Pgx);
                       AppMethodBeat.o(34465);
                       return;
-                      n.fFs().JVz = false;
-                      n.a(this.fOp, n.4.this.JVv, n.4.this.JVk);
+                      n.gNA().PgM = false;
+                      n.a(this.gtz, n.4.this.PgH, n.4.this.Pgx);
                     }
                   }
                 };
-                paramAnonymousMenuItem.cPF();
+                paramAnonymousMenuItem.dGm();
                 AppMethodBeat.o(34467);
                 return;
               }
-              if (k.id(this.JVk))
+              if (k.jg(this.Pgx))
               {
-                localObject = localActivity.getString(2131760348);
+                localObject = localActivity.getString(2131761793);
                 h.a(localActivity, (String)localObject, "", new DialogInterface.OnClickListener()
                 {
                   public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
                   {
                     AppMethodBeat.i(34466);
-                    paramAnonymous2DialogInterface = n.4.this.JVk;
+                    paramAnonymous2DialogInterface = n.4.this.Pgx;
                     if ((paramAnonymous2DialogInterface == null) || (paramAnonymous2DialogInterface.isEmpty())) {
-                      ae.w("MicroMsg.ChattingEditModeLogic", "check contain only invalid send to brand service error, select item empty");
+                      Log.w("MicroMsg.ChattingEditModeLogic", "check contain only invalid send to brand service error, select item empty");
                     }
                     label33:
                     for (paramAnonymous2Int = 1;; paramAnonymous2Int = 0)
@@ -286,9 +286,9 @@ public final class n
                       if (paramAnonymous2Int == 0) {
                         break label182;
                       }
-                      ae.w("MicroMsg.ChattingEditModeSendToBrand", "only contain invalid msg, exit long click mode");
-                      if (n.4.this.JVw != null) {
-                        n.4.this.JVw.fHt();
+                      Log.w("MicroMsg.ChattingEditModeSendToBrand", "only contain invalid msg, exit long click mode");
+                      if (n.4.this.PgJ != null) {
+                        n.4.this.PgJ.gPz();
                       }
                       AppMethodBeat.o(34466);
                       return;
@@ -296,21 +296,21 @@ public final class n
                       if (!paramAnonymous2DialogInterface.hasNext()) {
                         break label33;
                       }
-                      bv localbv = (bv)paramAnonymous2DialogInterface.next();
-                      if (k.aW(localbv)) {
+                      ca localca = (ca)paramAnonymous2DialogInterface.next();
+                      if (k.bm(localca)) {
                         break label33;
                       }
-                      if ((localbv.ftf()) || (k.aR(localbv)) || (localbv.fvE()) || (k.aT(localbv)) || (k.aU(localbv)) || (localbv.getType() == -1879048186) || (k.bb(localbv)) || (k.aV(localbv)) || (k.ba(localbv)) || (k.bg(localbv))) {
+                      if ((localca.gAy()) || (k.bh(localca)) || (localca.gDl()) || (k.bj(localca)) || (k.bk(localca)) || (localca.getType() == -1879048186) || (k.br(localca)) || (k.bl(localca)) || (k.bq(localca)) || (k.bw(localca))) {
                         break;
                       }
                     }
                     label182:
                     paramAnonymous2DialogInterface = n.4.this.val$context;
-                    n.4.this.val$context.getString(2131755906);
-                    n.e(h.b(paramAnonymous2DialogInterface, n.4.this.val$context.getString(2131763073), false, null));
-                    m.KcB.c(new n.b(n.4.this.JVv, n.4.this.val$context, paramAnonymousMenuItem.getTitle(), -1L, n.fFs()));
-                    if (n.4.this.JVw != null) {
-                      n.4.this.JVw.fHt();
+                    n.4.this.val$context.getString(2131755998);
+                    n.e(h.a(paramAnonymous2DialogInterface, n.4.this.val$context.getString(2131765232), false, null));
+                    com.tencent.mm.ui.chatting.d.m.PnZ.add(new n.b(n.4.this.PgH, n.4.this.val$context, paramAnonymousMenuItem.getTitle(), -1L, n.gNA()));
+                    if (n.4.this.PgJ != null) {
+                      n.4.this.PgJ.gPz();
                     }
                     AppMethodBeat.o(34466);
                   }
@@ -319,11 +319,11 @@ public final class n
                 return;
               }
               localObject = localActivity;
-              localActivity.getString(2131755906);
-              n.e(h.b((Context)localObject, localActivity.getString(2131763073), false, null));
-              m.KcB.c(new n.b(parama, localActivity, paramAnonymousMenuItem.getTitle(), -1L, n.fFs()));
+              localActivity.getString(2131755998);
+              n.e(h.a((Context)localObject, localActivity.getString(2131765232), false, null));
+              com.tencent.mm.ui.chatting.d.m.PnZ.add(new n.b(parama, localActivity, paramAnonymousMenuItem.getTitle(), -1L, n.gNA()));
               if (paramm != null) {
-                paramm.fHt();
+                paramm.gPz();
               }
               AppMethodBeat.o(34467);
               return;
@@ -332,35 +332,35 @@ public final class n
           }
         }
       };
-      locall.fOP();
+      locall.gXI();
       AppMethodBeat.o(34476);
       return;
     }
   }
   
-  public static void a(String paramString, com.tencent.mm.ui.chatting.e.a parama)
+  public static void a(String paramString, a parama)
   {
     AppMethodBeat.i(34478);
-    Object localObject = com.tencent.mm.al.g.eX(paramString);
+    Object localObject = com.tencent.mm.al.g.fJ(paramString);
     if (localObject == null)
     {
       AppMethodBeat.o(34478);
       return;
     }
-    if (((com.tencent.mm.api.c)localObject).Kx())
+    if (((com.tencent.mm.api.c)localObject).UH())
     {
-      localObject = new Intent(parama.Kkd.getContext(), BizChatSelectConversationUI.class);
+      localObject = new Intent(parama.Pwc.getContext(), BizChatSelectConversationUI.class);
       ((Intent)localObject).putExtra("enterprise_biz_name", paramString);
       ((Intent)localObject).putExtra("biz_chat_scene", 2);
-      ((Intent)localObject).putExtra("enterprise_extra_params", JVt.JVz);
-      parama.a((Intent)localObject, 225, new d.a()
+      ((Intent)localObject).putExtra("enterprise_extra_params", PgF.PgM);
+      parama.a((Intent)localObject, 225, new c.a()
       {
         public final void onActivityResult(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
         {
           AppMethodBeat.i(34469);
           if (paramAnonymousIntent == null)
           {
-            ae.w("MicroMsg.ChattingEditModeSendToBrand", "[onActivityResult] data is null!");
+            Log.w("MicroMsg.ChattingEditModeSendToBrand", "[onActivityResult] data is null!");
             AppMethodBeat.o(34469);
             return;
           }
@@ -368,7 +368,7 @@ public final class n
           {
             String str = paramAnonymousIntent.getStringExtra("enterprise_biz_name");
             long l = paramAnonymousIntent.getLongExtra("key_biz_chat_id", -1L);
-            n.a(this.JVv, str, l);
+            n.a(this.PgH, str, l);
           }
           AppMethodBeat.o(34469);
         }
@@ -376,47 +376,47 @@ public final class n
       AppMethodBeat.o(34478);
       return;
     }
-    if (((com.tencent.mm.api.c)localObject).Kv())
+    if (((com.tencent.mm.api.c)localObject).UF())
     {
       localObject = new Intent();
       ((Intent)localObject).putExtra("enterprise_biz_name", paramString);
       ((Intent)localObject).putExtra("enterprise_scene", 1);
-      com.tencent.mm.br.d.a(parama.Kkd, "brandservice", ".ui.EnterpriseBizContactPlainListUI", (Intent)localObject, 225);
+      com.tencent.mm.br.c.a(parama.Pwc, "brandservice", ".ui.EnterpriseBizContactPlainListUI", (Intent)localObject, 225);
     }
     AppMethodBeat.o(34478);
   }
   
-  public static void a(String paramString, final com.tencent.mm.ui.chatting.e.a parama, List<bv> paramList)
+  public static void a(String paramString, final a parama, List<ca> paramList)
   {
     AppMethodBeat.i(34477);
-    Activity localActivity = parama.Kkd.getContext();
+    Activity localActivity = parama.Pwc.getContext();
     if (localActivity == null)
     {
       AppMethodBeat.o(34477);
       return;
     }
-    Object localObject = com.tencent.mm.al.g.eX(paramString);
+    Object localObject = com.tencent.mm.al.g.fJ(paramString);
     if (localObject == null)
     {
       AppMethodBeat.o(34477);
       return;
     }
-    boolean bool1 = ((com.tencent.mm.api.c)localObject).Kx();
+    boolean bool1 = ((com.tencent.mm.api.c)localObject).UH();
     boolean bool2;
     int i;
-    if (JVt.JVz)
+    if (PgF.PgM)
     {
-      bool2 = k.id(paramList);
+      bool2 = k.jg(paramList);
       if (bool1) {
         if ((paramList == null) || (paramList.isEmpty()))
         {
-          ae.w("MicroMsg.ChattingEditModeLogic", "check contain invalid send to bizchat msg error, selected item empty");
+          Log.w("MicroMsg.ChattingEditModeLogic", "check contain invalid send to bizchat msg error, selected item empty");
           i = 1;
-          JVt.JVr = new LinkedList(paramList);
+          PgF.PgD = new LinkedList(paramList);
           if ((!bool2) && (i == 0)) {
             break label268;
           }
-          paramList = localActivity.getString(2131758441);
+          paramList = localActivity.getString(2131758739);
         }
       }
     }
@@ -429,7 +429,7 @@ public final class n
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(34468);
-            n.a(this.Jqs, parama);
+            n.a(this.OAy, parama);
             AppMethodBeat.o(34468);
           }
         }, null);
@@ -440,8 +440,8 @@ public final class n
         {
           if (((Iterator)localObject).hasNext())
           {
-            bv localbv = (bv)((Iterator)localObject).next();
-            if ((!localbv.isText()) && (!localbv.ftf()) && (!localbv.ftg()) && (!localbv.cVJ()) && (!k.aZ(localbv)))
+            ca localca = (ca)((Iterator)localObject).next();
+            if ((!localca.isText()) && (!localca.gAy()) && (!localca.gAz()) && (!localca.dOS()) && (!k.bp(localca)))
             {
               i = 1;
               break;
@@ -453,7 +453,7 @@ public final class n
         if (!bool2) {
           break label268;
         }
-        paramList = localActivity.getString(2131758442);
+        paramList = localActivity.getString(2131758740);
         continue;
       }
       a(paramString, parama);
@@ -464,184 +464,184 @@ public final class n
     }
   }
   
-  public static qi cp(Context paramContext, String paramString)
+  public static rc cI(Context paramContext, String paramString)
   {
     AppMethodBeat.i(34479);
-    qi localqi = new qi();
-    localqi.dFS.type = 6;
-    localqi.dFS.dFX = JVt.JVr;
-    localqi.dFS.toUser = paramString;
-    localqi.dFS.dFY = JVt.dFY;
-    localqi.dFS.context = paramContext;
-    com.tencent.mm.sdk.b.a.IvT.l(localqi);
-    JVt.dFl = localqi.dFT.dFl;
-    JVt.JVs = localqi.dFT.dGa;
+    rc localrc = new rc();
+    localrc.dXF.type = 6;
+    localrc.dXF.dXK = PgF.PgD;
+    localrc.dXF.toUser = paramString;
+    localrc.dXF.from = PgF.from;
+    localrc.dXF.context = paramContext;
+    EventCenter.instance.publish(localrc);
+    PgF.dWX = localrc.dXG.dWX;
+    PgF.PgE = localrc.dXG.dXM;
     AppMethodBeat.o(34479);
-    return localqi;
+    return localrc;
   }
   
   static final class a
   {
-    boolean JSi;
-    List<bv> JVr;
-    com.tencent.mm.protocal.b.a.d JVs;
-    boolean JVz;
-    String dFY;
-    cw dFl;
+    boolean Pdm;
+    List<ca> PgD;
+    com.tencent.mm.protocal.b.a.d PgE;
+    boolean PgM;
+    cz dWX;
+    String from;
   }
   
   static final class b
-    implements bf.a
+    implements QueueWorkerThread.ThreadObject
   {
-    private n.a JVA;
-    private com.tencent.mm.ui.chatting.e.a cXJ;
+    private n.a PgN;
     private Context context;
-    private String hSG;
-    private long oex;
-    private boolean rCv;
+    private a dom;
+    private String iNV;
+    private long ppv;
+    private boolean tca;
     
-    public b(com.tencent.mm.ui.chatting.e.a parama, Context paramContext, String paramString, long paramLong, n.a parama1)
+    public b(a parama, Context paramContext, String paramString, long paramLong, n.a parama1)
     {
       AppMethodBeat.i(34470);
-      this.cXJ = parama;
+      this.dom = parama;
       this.context = paramContext;
-      this.hSG = paramString;
-      this.oex = paramLong;
-      this.JVA = parama1;
-      this.rCv = com.tencent.mm.al.g.vz(paramString);
+      this.iNV = paramString;
+      this.ppv = paramLong;
+      this.PgN = parama1;
+      this.tca = com.tencent.mm.al.g.DQ(paramString);
       AppMethodBeat.o(34470);
     }
     
-    private void a(Context paramContext, bv parambv, boolean paramBoolean, String paramString)
+    private void a(Context paramContext, ca paramca, boolean paramBoolean, String paramString)
     {
       AppMethodBeat.i(34472);
-      if (parambv.isText())
+      if (paramca.isText())
       {
-        k.a(paramContext, paramString, parambv, paramBoolean);
+        k.a(paramContext, paramString, paramca, paramBoolean);
         AppMethodBeat.o(34472);
         return;
       }
-      if (parambv.ftg())
+      if (paramca.gAz())
       {
-        k.b(paramContext, paramString, parambv);
+        k.b(paramContext, paramString, paramca);
         AppMethodBeat.o(34472);
         return;
       }
-      if ((parambv.cyG()) && (!this.rCv))
+      if ((paramca.cWJ()) && (!this.tca))
       {
-        k.c(paramContext, paramString, parambv);
+        k.c(paramContext, paramString, paramca);
         AppMethodBeat.o(34472);
         return;
       }
-      if (parambv.cVJ())
+      if (paramca.dOS())
       {
-        k.c(paramContext, paramString, parambv, paramBoolean);
+        k.c(paramContext, paramString, paramca, paramBoolean);
         AppMethodBeat.o(34472);
         return;
       }
-      if (((parambv.fvG()) || (parambv.fvH())) && (!this.rCv))
+      if (((paramca.gDn()) || (paramca.gDo())) && (!this.tca))
       {
-        if (!k.aR(parambv))
+        if (!k.bh(paramca))
         {
-          k.a(paramContext, paramString, parambv);
+          k.a(paramContext, paramString, paramca);
           AppMethodBeat.o(34472);
         }
       }
-      else if (parambv.cVH())
+      else if (paramca.dOQ())
       {
-        if ((this.rCv) && (!k.aZ(parambv)))
+        if ((this.tca) && (!k.bp(paramca)))
         {
           AppMethodBeat.o(34472);
           return;
         }
-        if (k.ba(parambv))
+        if (k.bq(paramca))
         {
           AppMethodBeat.o(34472);
           return;
         }
-        if (parambv.getType() == 318767153)
+        if (paramca.getType() == 318767153)
         {
           AppMethodBeat.o(34472);
           return;
         }
-        if (k.bg(parambv))
+        if (k.bw(paramca))
         {
           AppMethodBeat.o(34472);
           return;
         }
-        if (!k.aT(parambv)) {
-          k.b(paramContext, paramString, parambv, paramBoolean);
+        if (!k.bj(paramca)) {
+          k.b(paramContext, paramString, paramca, paramBoolean);
         }
       }
       AppMethodBeat.o(34472);
     }
     
-    private void fFu()
+    private void gNC()
     {
       AppMethodBeat.i(34473);
-      Iterator localIterator = this.JVA.JVr.iterator();
+      Iterator localIterator = this.PgN.PgD.iterator();
       while (localIterator.hasNext())
       {
-        bv localbv = (bv)localIterator.next();
-        a(this.context, localbv, this.JVA.JSi, this.hSG);
+        ca localca = (ca)localIterator.next();
+        a(this.context, localca, this.PgN.Pdm, this.iNV);
       }
       AppMethodBeat.o(34473);
     }
     
-    private void fFv()
+    private void gND()
     {
       AppMethodBeat.i(34474);
-      n.cp(this.context, this.hSG);
-      qi localqi = new qi();
-      localqi.dFS.type = 5;
-      localqi.dFS.dFX = this.JVA.JVr;
-      localqi.dFS.toUser = this.hSG;
-      localqi.dFS.dFY = this.JVA.dFY;
-      localqi.dFS.context = this.context;
-      localqi.dFS.dFl = this.JVA.dFl;
-      localqi.dFS.dGa = this.JVA.JVs;
-      com.tencent.mm.sdk.b.a.IvT.l(localqi);
+      n.cI(this.context, this.iNV);
+      rc localrc = new rc();
+      localrc.dXF.type = 5;
+      localrc.dXF.dXK = this.PgN.PgD;
+      localrc.dXF.toUser = this.iNV;
+      localrc.dXF.from = this.PgN.from;
+      localrc.dXF.context = this.context;
+      localrc.dXF.dWX = this.PgN.dWX;
+      localrc.dXF.dXM = this.PgN.PgE;
+      EventCenter.instance.publish(localrc);
       AppMethodBeat.o(34474);
     }
     
-    public final boolean aEC()
+    public final boolean doInBackground()
     {
       AppMethodBeat.i(34471);
-      if (this.rCv)
+      if (this.tca)
       {
-        com.tencent.mm.al.a.c localc = ag.aGr().bd(this.oex);
-        synchronized (com.tencent.mm.al.a.e.hUD)
+        com.tencent.mm.al.a.c localc = ag.baj().bs(this.ppv);
+        synchronized (com.tencent.mm.al.a.e.iPQ)
         {
-          String str = com.tencent.mm.al.a.e.We();
+          String str = com.tencent.mm.al.a.e.ajw();
           com.tencent.mm.al.a.e.d(localc);
-          if (this.JVA.JVz)
+          if (this.PgN.PgM)
           {
-            fFu();
-            com.tencent.mm.al.a.e.EX(str);
+            gNC();
+            com.tencent.mm.al.a.e.NL(str);
             AppMethodBeat.o(34471);
             return true;
           }
-          fFv();
+          gND();
         }
       }
-      if (this.JVA.JVz) {
-        fFu();
+      if (this.PgN.PgM) {
+        gNC();
       }
       for (;;)
       {
         AppMethodBeat.o(34471);
         return true;
-        fFv();
+        gND();
       }
     }
     
-    public final boolean aED()
+    public final boolean onPostExecute()
     {
       AppMethodBeat.i(34475);
-      if (n.fFt() != null) {
-        n.fFt().dismiss();
+      if (n.gNB() != null) {
+        n.gNB().dismiss();
       }
-      b.a(this.context, this.cXJ.findViewById(2131302320), this.context.getString(2131759420), null);
+      b.a(this.context, this.dom.findViewById(2131304715), this.context.getString(2131760708), null);
       AppMethodBeat.o(34475);
       return true;
     }
@@ -649,7 +649,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.n
  * JD-Core Version:    0.7.0.1
  */

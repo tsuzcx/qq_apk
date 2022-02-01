@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.appbrand.pip;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.page.ac;
 import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.page.t.i;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.page.w;
+import com.tencent.mm.plugin.appbrand.page.w.i;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 
 final class f$2
-  implements t.i
+  implements w.i
 {
   f$2(f paramf) {}
   
-  public final void q(q paramq)
+  public final void r(t paramt)
   {
-    AppMethodBeat.i(207911);
-    ae.i(this.msR.crG, "onPageDestroy, page: " + f.r(paramq));
-    if (!paramq.mew)
+    AppMethodBeat.i(219513);
+    Log.i(this.nDA.cDW, "onPageDestroy, page: " + f.s(paramt));
+    if (!paramt.noQ)
     {
-      z localz = paramq.getCurrentPageView();
-      ae.i(this.msR.crG, "onPageDestroy, remove " + localz + " from mPageView2PageScopedPipInfoMap");
-      this.msR.msu.remove(Integer.valueOf(localz.hashCode()));
+      ac localac = paramt.getCurrentPageView();
+      Log.i(this.nDA.cDW, "onPageDestroy, remove " + localac + " from mPageView2PageScopedPipInfoMap");
+      this.nDA.nDe.remove(Integer.valueOf(localac.hashCode()));
     }
-    while (this.msR.msz == null)
+    while (this.nDA.nDj == null)
     {
-      AppMethodBeat.o(207911);
+      AppMethodBeat.o(219513);
       return;
-      ae.i(this.msR.crG, "onPageDestroy, " + f.r(paramq) + " is PipVideoRelated");
+      Log.i(this.nDA.cDW, "onPageDestroy, " + f.s(paramt) + " is PipVideoRelated");
     }
-    if (paramq == this.msR.msz)
+    if (paramt == this.nDA.nDj)
     {
-      this.msR.msA = false;
-      this.msR.jzE.setPipVideoRelatedPage(this.msR.msz);
+      this.nDA.nDk = false;
+      this.nDA.kAs.setPipVideoRelatedPage(this.nDA.nDj);
     }
-    AppMethodBeat.o(207911);
+    AppMethodBeat.o(219513);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.f.2
  * JD-Core Version:    0.7.0.1
  */

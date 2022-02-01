@@ -2,236 +2,243 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bu;
 
 public final class jq
   extends a
 {
-  public long dWt = 0L;
-  private long dYi = 0L;
-  private String eCX = "";
-  private String eCY = "";
-  private String eCZ = "";
-  public jq.c eDa;
-  public b eDb;
-  private String eDc = "";
-  public d eDd;
-  public e eDe;
-  public jq.a eDf;
-  private String euy = "";
+  private String eQC = "";
+  private long eQF = 0L;
+  private long eQG = 0L;
+  private long eQM = 0L;
+  private long eQN = 0L;
+  private long eQO = 0L;
+  private long eQP = 2L;
+  private long eQQ = 0L;
+  private long eQS = 0L;
+  private long eQT = 0L;
+  private long eSc = 0L;
+  private long eSd = 0L;
+  private long eSe = 0L;
+  private long eSf = 0L;
+  private long eSg = 0L;
+  private long eSh = 0L;
+  private String eSi = "";
+  private long elI = 0L;
+  private long eqk = 0L;
+  private long etp = 0L;
   
-  public final String RC()
+  public final String abV()
   {
-    int j = -1;
-    AppMethodBeat.i(2608);
+    AppMethodBeat.i(74986);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.euy);
+    ((StringBuffer)localObject).append(this.elI);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eCX);
+    ((StringBuffer)localObject).append(this.eQC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dYi);
+    ((StringBuffer)localObject).append(this.etp);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eCY);
+    ((StringBuffer)localObject).append(this.eqk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eCZ);
+    ((StringBuffer)localObject).append(this.eSc);
     ((StringBuffer)localObject).append(",");
-    if (this.eDa != null)
-    {
-      i = this.eDa.value;
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      if (this.eDb == null) {
-        break label287;
-      }
-      i = this.eDb.value;
-      label139:
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dWt);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eDc);
-      ((StringBuffer)localObject).append(",");
-      if (this.eDd == null) {
-        break label292;
-      }
-      i = this.eDd.value;
-      label199:
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      if (this.eDe == null) {
-        break label297;
-      }
-    }
-    label287:
-    label292:
-    label297:
-    for (int i = this.eDe.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      i = j;
-      if (this.eDf != null) {
-        i = this.eDf.value;
-      }
-      ((StringBuffer)localObject).append(i);
-      localObject = ((StringBuffer)localObject).toString();
-      axO((String)localObject);
-      AppMethodBeat.o(2608);
-      return localObject;
-      i = -1;
-      break;
-      i = -1;
-      break label139;
-      i = -1;
-      break label199;
-    }
-  }
-  
-  public final String RD()
-  {
-    AppMethodBeat.i(2609);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("AppId:").append(this.euy);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PageId:").append(this.eCX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ActionTimeStampMs:").append(this.dYi);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ShareTicket:").append(this.eCY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ChattingId:").append(this.eCZ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsGroupChatting:").append(this.eDa);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EventId:").append(this.eDb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.dWt);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SceneNote:").append(this.eDc);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MsgState:").append(this.eDd);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SubScribeState:").append(this.eDe);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.eDf);
+    ((StringBuffer)localObject).append(this.eSd);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eSe);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eQF);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eQG);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eSf);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eSg);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eSh);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eSi);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eQM);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eQN);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eQO);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eQP);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eQQ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eQS);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eQT);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(2609);
+    aMq((String)localObject);
+    AppMethodBeat.o(74986);
     return localObject;
   }
   
-  public final jq VA()
+  public final String abW()
   {
-    AppMethodBeat.i(2604);
-    this.dYi = bu.fpO();
-    super.bh("ActionTimeStampMs", this.dYi);
-    AppMethodBeat.o(2604);
+    AppMethodBeat.i(74987);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("NetType:").append(this.elI);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("PublishObjectId:").append(this.eQC);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("EnterScene:").append(this.etp);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("EnterTime:").append(this.eqk);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("QuitTime:").append(this.eSc);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("HasRecordVideo:").append(this.eSd);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("HasEnterAllbum:").append(this.eSe);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("EmojiWidgetCount:").append(this.eQF);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("TextWidgetCount:").append(this.eQG);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("isAddMusic:").append(this.eSf);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("isAddPosition:").append(this.eSg);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ActionTrace:").append(this.eSh);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("NewActionTrace:").append(this.eSi);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("VideoObjectId:").append(this.eQM);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsClickSearchMusic:").append(this.eQN);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsPublicTimeLine:").append(this.eQO);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("PublishVideoType:").append(this.eQP);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("PhotoCount:").append(this.eQQ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("IsAddTextIntro:").append(this.eQS);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("AddTextIntroWordCount:").append(this.eQT);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(74987);
+    return localObject;
+  }
+  
+  public final jq ahL()
+  {
+    this.eSd = 1L;
+    return this;
+  }
+  
+  public final jq ahM()
+  {
+    this.eSe = 1L;
+    return this;
+  }
+  
+  public final jq ahN()
+  {
+    this.eSg = 1L;
+    return this;
+  }
+  
+  public final jq ahO()
+  {
+    this.eQN = 1L;
+    return this;
+  }
+  
+  public final jq ahP()
+  {
+    this.eQS = 1L;
     return this;
   }
   
   public final int getId()
   {
-    return 16024;
+    return 16639;
   }
   
-  public final jq sA(String paramString)
+  public final jq sB(long paramLong)
   {
-    AppMethodBeat.i(2605);
-    this.eCY = t("ShareTicket", paramString, true);
-    AppMethodBeat.o(2605);
+    this.elI = paramLong;
     return this;
   }
   
-  public final jq sB(String paramString)
+  public final jq sC(long paramLong)
   {
-    AppMethodBeat.i(2606);
-    this.eCZ = t("ChattingId", paramString, true);
-    AppMethodBeat.o(2606);
+    this.etp = paramLong;
     return this;
   }
   
-  public final jq sC(String paramString)
+  public final jq sD(long paramLong)
   {
-    AppMethodBeat.i(2607);
-    this.eDc = t("SceneNote", paramString, true);
-    AppMethodBeat.o(2607);
+    this.eqk = paramLong;
     return this;
   }
   
-  public final jq sy(String paramString)
+  public final jq sE(long paramLong)
   {
-    AppMethodBeat.i(2602);
-    this.euy = t("AppId", paramString, true);
-    AppMethodBeat.o(2602);
+    this.eSc = paramLong;
     return this;
   }
   
-  public final jq sz(String paramString)
+  public final jq sF(long paramLong)
   {
-    AppMethodBeat.i(2603);
-    this.eCX = t("PageId", paramString, true);
-    AppMethodBeat.o(2603);
+    this.eQF = paramLong;
     return this;
   }
   
-  public static enum b
+  public final jq sG(long paramLong)
   {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(2592);
-      eDo = new b("SHAREAPPMSG", 0, 1);
-      eDp = new b("CLICKAPPMSG", 1, 2);
-      eDq = new b("CLICKSUBSCRIBETV", 2, 3);
-      eDr = new b("CLICKSTARTGAME", 3, 4);
-      eDs = new b[] { eDo, eDp, eDq, eDr };
-      AppMethodBeat.o(2592);
-    }
-    
-    private b(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    this.eQG = paramLong;
+    return this;
   }
   
-  public static enum d
+  public final jq sH(long paramLong)
   {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(2598);
-      eDx = new d("DEFAULT", 0, 0);
-      eDy = new d("DOING", 1, 1);
-      eDz = new d("DONE", 2, 2);
-      eDA = new d[] { eDx, eDy, eDz };
-      AppMethodBeat.o(2598);
-    }
-    
-    private d(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    this.eSf = paramLong;
+    return this;
   }
   
-  public static enum e
+  public final jq sI(long paramLong)
   {
-    final int value;
-    
-    static
-    {
-      AppMethodBeat.i(2601);
-      eDB = new e("DEFAULT", 0, 0);
-      eDC = new e("NOTSUBSCRIBE", 1, 1);
-      eDD = new e("SUBSCRIBE", 2, 2);
-      eDE = new e[] { eDB, eDC, eDD };
-      AppMethodBeat.o(2601);
-    }
-    
-    private e(int paramInt)
-    {
-      this.value = paramInt;
-    }
+    this.eQM = paramLong;
+    return this;
+  }
+  
+  public final jq sJ(long paramLong)
+  {
+    this.eQO = paramLong;
+    return this;
+  }
+  
+  public final jq sK(long paramLong)
+  {
+    this.eQP = paramLong;
+    return this;
+  }
+  
+  public final jq sL(long paramLong)
+  {
+    this.eQQ = paramLong;
+    return this;
+  }
+  
+  public final jq wV(String paramString)
+  {
+    AppMethodBeat.i(74984);
+    this.eQC = x("PublishObjectId", paramString, true);
+    AppMethodBeat.o(74984);
+    return this;
+  }
+  
+  public final jq wW(String paramString)
+  {
+    AppMethodBeat.i(74985);
+    this.eSi = x("NewActionTrace", paramString, true);
+    AppMethodBeat.o(74985);
+    return this;
   }
 }
 

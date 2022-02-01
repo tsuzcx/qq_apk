@@ -1,33 +1,33 @@
 package com.tencent.mm.openim.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  public h hKK;
+  public h iFy;
   
   static
   {
     AppMethodBeat.i(151328);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "OpenIMAccTypeInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "OpenIMAccTypeInfo") };
     AppMethodBeat.o(151328);
   }
   
   public b(h paramh)
   {
     super(paramh, a.info, "OpenIMAccTypeInfo", null);
-    this.hKK = paramh;
+    this.iFy = paramh;
   }
   
   public final boolean a(a parama)
   {
     AppMethodBeat.i(151326);
-    parama.field_updateTime = bu.aRi();
+    parama.field_updateTime = Util.nowSecond();
     boolean bool = super.replace(parama);
     AppMethodBeat.o(151326);
     return bool;

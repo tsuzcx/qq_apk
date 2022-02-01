@@ -8,29 +8,29 @@ public class g
   {
     AppMethodBeat.i(137009);
     f localf = new f();
-    localf.ijX = paramInt;
-    localf.ike = paramString1;
-    localf.ikb = paramString2;
-    localf.ikc = paramString3;
-    localf.ikh = paramString4;
-    localf.ikg = paramString5;
-    localf.ikf = paramString6;
-    localf.ikk = paramString8;
-    localf.ikm = paramString11;
-    localf.ikj = paramString9;
-    localf.ijZ = paramString7;
-    localf.ika = 0.0F;
-    localf.ikd = paramString10;
-    localf.ijY = 1;
-    localf.iki = null;
-    localf.ikp = paramString7;
+    localf.jeT = paramInt;
+    localf.jfa = paramString1;
+    localf.jeX = paramString2;
+    localf.jeY = paramString3;
+    localf.jfd = paramString4;
+    localf.jfc = paramString5;
+    localf.jfb = paramString6;
+    localf.jfg = paramString8;
+    localf.jfi = paramString11;
+    localf.jff = paramString9;
+    localf.jeV = paramString7;
+    localf.jeW = 0.0F;
+    localf.jeZ = paramString10;
+    localf.jeU = 1;
+    localf.jfe = null;
+    localf.jfl = paramString7;
     AppMethodBeat.o(137009);
     return localf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ay.g
  * JD-Core Version:    0.7.0.1
  */

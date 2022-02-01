@@ -15,42 +15,47 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.aa;
+import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.v;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.d.a;
 import com.tencent.mm.plugin.sight.encode.a.a;
 import com.tencent.mm.plugin.sight.encode.a.a.a;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
 public abstract class SightCameraView
   extends FrameLayout
   implements d.a
 {
-  protected int hxH = 320;
-  private long mSh = 0L;
-  private com.tencent.mm.model.d ozB = new com.tencent.mm.model.d();
-  private Animation vdD;
-  protected boolean zlA = false;
-  protected int zlB = 6500;
-  protected a zlC;
-  private aw zlD = new aw(Looper.getMainLooper(), new aw.a()
+  protected e Dql;
+  protected a Dqm;
+  protected ImageView Dqn;
+  protected Runnable Dqo;
+  protected long Dqp = -1L;
+  protected SightCameraView.b Dqq = SightCameraView.b.DqC;
+  protected boolean Dqr = false;
+  protected boolean Dqs = false;
+  protected int Dqt = 6500;
+  protected a Dqu;
+  private MTimerHandler Dqv = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
   {
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(28780);
-      float f = (float)SightCameraView.this.zlu.dTY() / SightCameraView.this.zlB;
+      float f = (float)SightCameraView.this.Dqm.eVY() / SightCameraView.this.Dqt;
       if ((Float.compare(f, 0.0F) <= 0) && (System.currentTimeMillis() - SightCameraView.a(SightCameraView.this) > 20000L))
       {
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SightCameraView", "ERROR record duration, %dms !!!", new Object[] { Long.valueOf(20000L) });
-        SightCameraView.this.cvy();
+        Log.e("MicroMsg.SightCameraView", "ERROR record duration, %dms !!!", new Object[] { Long.valueOf(20000L) });
+        SightCameraView.this.cTH();
         AppMethodBeat.o(28780);
         return false;
       }
-      if ((Float.compare(f, 1.0F) > 0) && (SightCameraView.this.zlu.dTZ() == a.a.zke)) {
-        if (!SightCameraView.this.zlu.Np()) {
+      if ((Float.compare(f, 1.0F) > 0) && (SightCameraView.this.Dqm.eVZ() == a.a.DoU)) {
+        if (!SightCameraView.this.Dqm.XB()) {
           SightCameraView.b(SightCameraView.this);
         }
       }
@@ -58,20 +63,17 @@ public abstract class SightCameraView
       {
         AppMethodBeat.o(28780);
         return true;
-        SightCameraView.this.bc(f);
+        SightCameraView.this.bi(f);
       }
     }
   }, true);
-  private int zlE = -1;
-  private Runnable zlF = new SightCameraView.2(this);
-  private Runnable zlG = new SightCameraView.3(this);
-  protected e zlt;
-  protected a zlu;
-  protected ImageView zlv;
-  protected Runnable zlw;
-  protected long zlx = -1L;
-  protected SightCameraView.b zly = SightCameraView.b.zlK;
-  protected boolean zlz = false;
+  private int Dqw = -1;
+  private Runnable Dqx = new SightCameraView.2(this);
+  private Runnable Dqy = new SightCameraView.3(this);
+  protected int irF = 320;
+  private long ofl = 0L;
+  private com.tencent.mm.model.d pNk = new com.tencent.mm.model.d();
+  private Animation ywd;
   
   public SightCameraView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -81,115 +83,115 @@ public abstract class SightCameraView
   public SightCameraView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    if (com.tencent.mm.plugin.sight.base.e.dTv()) {
-      inflate(getContext(), 2131495449, this);
+    if (com.tencent.mm.plugin.sight.base.e.eVu()) {
+      inflate(getContext(), 2131496322, this);
     }
     for (;;)
     {
-      this.zlz = false;
-      this.zlA = false;
-      this.zlt = new e();
-      paramContext = this.zlt;
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightCamera", "init needRotate %s", new Object[] { Boolean.FALSE });
-      if (com.tencent.mm.compatible.deviceinfo.ae.geO.gez)
+      this.Dqr = false;
+      this.Dqs = false;
+      this.Dql = new e();
+      paramContext = this.Dql;
+      Log.i("MicroMsg.SightCamera", "init needRotate %s", new Object[] { Boolean.FALSE });
+      if (ae.gKv.gKa)
       {
-        paramContext.zlr.waN = com.tencent.mm.compatible.deviceinfo.ae.geO.mVideoHeight;
-        paramContext.zlr.waO = com.tencent.mm.compatible.deviceinfo.ae.geO.mVideoWidth;
-        paramContext.zlr.waM = com.tencent.mm.compatible.deviceinfo.ae.geO.geB;
+        paramContext.Dqi.ifO = ae.gKv.mVideoHeight;
+        paramContext.Dqi.ifN = ae.gKv.mVideoWidth;
+        paramContext.Dqi.zuR = ae.gKv.gKc;
       }
-      paramContext.zlr.waX = com.tencent.mm.compatible.deviceinfo.d.getNumberOfCameras();
-      paramContext.zlr.dHi = 0;
-      this.zlv = ((ImageView)findViewById(2131303526));
-      dUr();
+      paramContext.Dqi.zva = com.tencent.mm.compatible.deviceinfo.d.getNumberOfCameras();
+      paramContext.Dqi.dYT = 0;
+      this.Dqn = ((ImageView)findViewById(2131306293));
+      eWr();
       return;
-      inflate(getContext(), 2131495448, this);
+      inflate(getContext(), 2131496321, this);
     }
   }
   
-  private void dUr()
+  private void eWr()
   {
-    if (this.zlv.getVisibility() == 4) {
+    if (this.Dqn.getVisibility() == 4) {
       return;
     }
-    if (this.vdD != null) {
-      this.vdD.cancel();
+    if (this.ywd != null) {
+      this.ywd.cancel();
     }
-    this.zlv.setVisibility(4);
+    this.Dqn.setVisibility(4);
   }
   
-  public final void aAo() {}
+  public final void aTw() {}
   
-  public final void aAp() {}
+  public final void aTx() {}
   
-  public final void aAq() {}
+  public final void aTy() {}
   
-  public final void aAr() {}
+  public final void aTz() {}
   
-  protected abstract void bM(String paramString, boolean paramBoolean);
-  
-  public final void bc(float paramFloat)
+  public final void bi(float paramFloat)
   {
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SightCameraView", "update progress %f", new Object[] { Float.valueOf(paramFloat) });
-    if (this.zlE < 0) {
-      this.zlE = getResources().getDisplayMetrics().widthPixels;
+    Log.d("MicroMsg.SightCameraView", "update progress %f", new Object[] { Float.valueOf(paramFloat) });
+    if (this.Dqw < 0) {
+      this.Dqw = getResources().getDisplayMetrics().widthPixels;
     }
     if (paramFloat < 0.0F)
     {
-      localLayoutParams = this.zlv.getLayoutParams();
-      localLayoutParams.width = this.zlE;
-      this.zlv.setLayoutParams(localLayoutParams);
+      localLayoutParams = this.Dqn.getLayoutParams();
+      localLayoutParams.width = this.Dqw;
+      this.Dqn.setLayoutParams(localLayoutParams);
       return;
     }
     if (paramFloat > 1.0F)
     {
-      i = this.zlE / 2;
-      localLayoutParams = this.zlv.getLayoutParams();
-      localLayoutParams.width = (this.zlE - (i - 1) * 2);
-      this.zlv.setLayoutParams(localLayoutParams);
+      i = this.Dqw / 2;
+      localLayoutParams = this.Dqn.getLayoutParams();
+      localLayoutParams.width = (this.Dqw - (i - 1) * 2);
+      this.Dqn.setLayoutParams(localLayoutParams);
       return;
     }
     int i = (int)(getResources().getDisplayMetrics().widthPixels * paramFloat / 2.0F);
-    ViewGroup.LayoutParams localLayoutParams = this.zlv.getLayoutParams();
-    localLayoutParams.width = (this.zlE - i * 2);
-    this.zlv.setLayoutParams(localLayoutParams);
+    ViewGroup.LayoutParams localLayoutParams = this.Dqn.getLayoutParams();
+    localLayoutParams.width = (this.Dqw - i * 2);
+    this.Dqn.setLayoutParams(localLayoutParams);
   }
   
-  protected final void cvy()
+  protected final void cTH()
   {
-    com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.SightCameraView", "cancel record");
-    if (this.zlu == null) {
+    Log.w("MicroMsg.SightCameraView", "cancel record");
+    if (this.Dqm == null) {
       throw new IllegalStateException("The mSightMedia must be set!");
     }
-    bc.ajU().cZF().removeCallbacks(this.zlF);
-    bc.ajU().aw(this.zlG);
-    this.zlD.stopTimer();
-    bc(0.0F);
-    dUr();
+    bg.aAk().getWorkerHandler().removeCallbacks(this.Dqx);
+    bg.aAk().postToWorker(this.Dqy);
+    this.Dqv.stopTimer();
+    bi(0.0F);
+    eWr();
     setKeepScreenOn(false);
   }
   
-  protected abstract void dUq();
+  protected abstract void ce(String paramString, boolean paramBoolean);
   
-  protected final void dUs()
+  protected abstract void eWq();
+  
+  protected final void eWs()
   {
-    this.ozB.ez(false);
+    this.pNk.fp(false);
   }
   
   public a.a getCurMediaStatus()
   {
-    return this.zlu.dTZ();
+    return this.Dqm.eVZ();
   }
   
   public int getDuration()
   {
-    return this.zlu.getDuration();
+    return this.Dqm.getDuration();
   }
   
   protected abstract Surface getPreviewSurface();
   
   public String getRecordPath()
   {
-    return this.zlu.getRecordPath();
+    return this.Dqm.getRecordPath();
   }
   
   protected abstract int getSurfaceHeight();
@@ -202,85 +204,85 @@ public abstract class SightCameraView
   {
     boolean bool = false;
     e locale;
-    if ((paramMotionEvent.getAction() == 0) && (this.zlz) && (this.zlA))
+    if ((paramMotionEvent.getAction() == 0) && (this.Dqr) && (this.Dqs))
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightCameraView", "check double click %dms", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - this.zlx) });
-      if (SystemClock.elapsedRealtime() - this.zlx >= 400L) {
+      Log.i("MicroMsg.SightCameraView", "check double click %dms", new Object[] { Long.valueOf(SystemClock.elapsedRealtime() - this.Dqp) });
+      if (SystemClock.elapsedRealtime() - this.Dqp >= 400L) {
         break label381;
       }
-      this.zlt.zls.removeMessages(4354);
-      locale = this.zlt;
-      if (locale.vZG) {
+      this.Dql.Dqk.removeMessages(4354);
+      locale = this.Dql;
+      if (locale.ztJ) {
         break label125;
       }
-      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.SightCamera", "want to trigger zoom, but current status is not preview");
+      Log.w("MicroMsg.SightCamera", "want to trigger zoom, but current status is not preview");
     }
     for (;;)
     {
-      this.zlx = SystemClock.elapsedRealtime();
+      this.Dqp = SystemClock.elapsedRealtime();
       paramMotionEvent.getX();
       paramMotionEvent.getY();
-      com.tencent.mm.compatible.util.d.lB(14);
+      com.tencent.mm.compatible.util.d.oE(14);
       return true;
       try
       {
         label125:
-        Camera.Parameters localParameters = locale.gaZ.getParameters();
+        Camera.Parameters localParameters = locale.gGr.getParameters();
         if (localParameters == null) {
           continue;
         }
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightCamera", "trigger zoom, has zoomed %B, isSupported %B", new Object[] { Boolean.valueOf(locale.hsj), Boolean.valueOf(localParameters.isZoomSupported()) });
+        Log.i("MicroMsg.SightCamera", "trigger zoom, has zoomed %B, isSupported %B", new Object[] { Boolean.valueOf(locale.ztI), Boolean.valueOf(localParameters.isZoomSupported()) });
         if (!localParameters.isZoomSupported()) {
           continue;
         }
-        locale.zls.removeMessages(4353);
-        if (locale.hsj)
+        locale.Dqk.removeMessages(4353);
+        if (locale.ztI)
         {
-          locale.zls.hsk = false;
-          locale.zls.hsj = false;
-          locale.zls.hsi = (e.a.f(localParameters) * -1);
-          locale.zls.sendMessage(locale.zls.obtainMessage(4353, locale.gaZ));
-          if (!locale.hsj) {
+          locale.Dqk.zul = false;
+          locale.Dqk.ztI = false;
+          locale.Dqk.zuk = (e.a.e(localParameters) * -1);
+          locale.Dqk.sendMessage(locale.Dqk.obtainMessage(4353, locale.gGr));
+          if (!locale.ztI) {
             bool = true;
           }
-          locale.hsj = bool;
+          locale.ztI = bool;
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.SightCamera", "getParameters failed %s", new Object[] { localException.getMessage() });
-          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.SightCamera", localException, "", new Object[0]);
+          Log.e("MicroMsg.SightCamera", "getParameters failed %s", new Object[] { localException.getMessage() });
+          Log.printErrStackTrace("MicroMsg.SightCamera", localException, "", new Object[0]);
           localObject = null;
           continue;
-          locale.zls.hsk = false;
-          locale.zls.hsj = true;
-          locale.zls.hsi = e.a.f((Camera.Parameters)localObject);
-          locale.zls.sendMessage(locale.zls.obtainMessage(4353, locale.gaZ));
+          locale.Dqk.zul = false;
+          locale.Dqk.ztI = true;
+          locale.Dqk.zuk = e.a.e((Camera.Parameters)localObject);
+          locale.Dqk.sendMessage(locale.Dqk.obtainMessage(4353, locale.gGr));
         }
       }
       label381:
-      Object localObject = this.zlt;
+      Object localObject = this.Dql;
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       int i = getSurfaceWidth();
       int j = getSurfaceHeight();
-      if (!com.tencent.mm.compatible.util.d.lB(14))
+      if (!com.tencent.mm.compatible.util.d.oE(14))
       {
-        ((e)localObject).zls.removeMessages(4354);
-        ((e)localObject).zls.gpg = f1;
-        ((e)localObject).zls.gph = f2;
-        ((e)localObject).zls.hsm = i;
-        ((e)localObject).zls.hsn = j;
-        ((e)localObject).zls.sendMessageDelayed(((e)localObject).zls.obtainMessage(4354, ((e)localObject).gaZ), 400L);
+        ((e)localObject).Dqk.removeMessages(4354);
+        ((e)localObject).Dqk.gZZ = f1;
+        ((e)localObject).Dqk.haa = f2;
+        ((e)localObject).Dqk.imO = i;
+        ((e)localObject).Dqk.imP = j;
+        ((e)localObject).Dqk.sendMessageDelayed(((e)localObject).Dqk.obtainMessage(4354, ((e)localObject).gGr), 400L);
       }
     }
   }
   
   protected final void requestAudioFocus()
   {
-    this.ozB.a(this);
+    this.pNk.a(this);
   }
   
   public abstract void setFixPreviewRate(float paramFloat);
@@ -293,44 +295,44 @@ public abstract class SightCameraView
     ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
     localLayoutParams.width = localDisplayMetrics.widthPixels;
     localLayoutParams.height = ((int)(localDisplayMetrics.widthPixels / paramFloat));
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.SightCameraView", "resizeLayout width:%d, height:%d, previewRate %f", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height), Float.valueOf(paramFloat) });
+    Log.i("MicroMsg.SightCameraView", "resizeLayout width:%d, height:%d, previewRate %f", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height), Float.valueOf(paramFloat) });
     postInvalidate();
   }
   
   public void setRecordMaxDuring(int paramInt)
   {
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.SightCameraView", "setRecordMaxDuring recordMaxDuring : ".concat(String.valueOf(paramInt)));
-    this.zlB = paramInt;
+    Log.d("MicroMsg.SightCameraView", "setRecordMaxDuring recordMaxDuring : ".concat(String.valueOf(paramInt)));
+    this.Dqt = paramInt;
   }
   
   public void setSightCameraUIIm(a parama)
   {
-    this.zlC = parama;
+    this.Dqu = parama;
   }
   
   public void setSightMedia(a parama)
   {
-    this.zlu = parama;
-    if ((this.zlu != null) && (this.zlt != null)) {
-      this.zlt.mPreviewCallback = this.zlu.dUa();
+    this.Dqm = parama;
+    if ((this.Dqm != null) && (this.Dql != null)) {
+      this.Dql.Dqj = this.Dqm.eWa();
     }
   }
   
   protected void setStopCallback(Runnable paramRunnable)
   {
-    this.zlw = paramRunnable;
+    this.Dqo = paramRunnable;
   }
   
   public void setTargetWidth(int paramInt)
   {
-    this.hxH = paramInt;
+    this.irF = paramInt;
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.encode.ui.SightCameraView
  * JD-Core Version:    0.7.0.1
  */

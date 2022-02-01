@@ -1,10 +1,15 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import android.app.Activity;
+import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class np
-  extends b
+  extends IEvent
 {
+  public a dTL;
+  
   public np()
   {
     this((byte)0);
@@ -12,8 +17,19 @@ public final class np
   
   private np(byte paramByte)
   {
-    this.IvZ = false;
+    AppMethodBeat.i(116036);
+    this.dTL = new a();
+    this.order = false;
     this.callback = null;
+    AppMethodBeat.o(116036);
+  }
+  
+  public static final class a
+  {
+    public Activity activity;
+    public String dDX;
+    public int dTJ = 0;
+    public Bundle dTM;
   }
 }
 

@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cdb;
-import com.tencent.mm.protocal.protobuf.cdc;
-import com.tencent.mm.protocal.protobuf.cdf;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cth;
+import com.tencent.mm.protocal.protobuf.cti;
+import com.tencent.mm.protocal.protobuf.ctl;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Set;
 
 public final class ac
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public final b rr;
+  private i callback;
+  public final d rr;
   
   public ac(int paramInt)
   {
     AppMethodBeat.i(131102);
-    b.a locala = new b.a();
-    locala.hQF = new cdb();
-    locala.hQG = new cdc();
+    d.a locala = new d.a();
+    locala.iLN = new cth();
+    locala.iLO = new cti();
     locala.uri = "/cgi-bin/micromsg-bin/newgetinvitefriend";
     locala.funcId = 135;
-    locala.hQH = 23;
+    locala.iLP = 23;
     locala.respCmdId = 1000000023;
-    this.rr = locala.aDS();
-    ((cdb)this.rr.hQD.hQJ).Hee = paramInt;
+    this.rr = locala.aXF();
+    ((cth)this.rr.iLK.iLR).Mjk = paramInt;
     AppMethodBeat.o(131102);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(131103);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(131103);
     return i;
   }
@@ -54,25 +54,25 @@ public final class ac
     return 135;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131104);
-    paramq = (cdc)this.rr.hQE.hQJ;
-    ae.d("MicroMsg.NetSceneGetInviteFriend", "friend:" + paramq.uuU.size() + " group:" + paramq.GroupList.size());
+    params = (cti)this.rr.iLL.iLR;
+    Log.d("MicroMsg.NetSceneGetInviteFriend", "friend:" + params.xMV.size() + " group:" + params.GroupList.size());
     paramArrayOfByte = new HashSet();
     LinkedList localLinkedList = new LinkedList();
     paramInt1 = 0;
-    while (paramInt1 < paramq.HpA)
+    while (paramInt1 < params.Myh)
     {
-      if (!paramArrayOfByte.contains(((cdf)paramq.uuU.get(paramInt1)).nIJ))
+      if (!paramArrayOfByte.contains(((ctl)params.xMV.get(paramInt1)).UserName))
       {
-        localLinkedList.add(paramq.uuU.get(paramInt1));
-        paramArrayOfByte.add(((cdf)paramq.uuU.get(paramInt1)).nIJ);
+        localLinkedList.add(params.xMV.get(paramInt1));
+        paramArrayOfByte.add(((ctl)params.xMV.get(paramInt1)).UserName);
       }
       paramInt1 += 1;
     }
-    paramq.uuU = localLinkedList;
-    paramq.HpA = localLinkedList.size();
+    params.xMV = localLinkedList;
+    params.Myh = localLinkedList.size();
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(131104);
   }

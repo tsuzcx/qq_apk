@@ -6,13 +6,13 @@ public abstract interface m
 {
   public abstract boolean a(WXMediaMessage paramWXMediaMessage, String paramString1, String paramString2, String paramString3, int paramInt);
   
-  public abstract void dWc();
+  public abstract void eZn();
   
-  public abstract boolean jk(String paramString1, String paramString2);
+  public abstract boolean jW(String paramString1, String paramString2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.b.m
  * JD-Core Version:    0.7.0.1
  */

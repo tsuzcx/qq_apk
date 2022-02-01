@@ -7,7 +7,7 @@ import java.io.InputStream;
 public class SFSInputStream
   extends InputStream
 {
-  private long bbz = 0L;
+  private long mMarkPosition = 0L;
   private long mNativePtr;
   
   public SFSInputStream(long paramLong)
@@ -88,7 +88,7 @@ public class SFSInputStream
       AppMethodBeat.o(156026);
       return;
     }
-    this.bbz = nativeSeek(this.mNativePtr, 0L, 1);
+    this.mMarkPosition = nativeSeek(this.mNativePtr, 0L, 1);
     AppMethodBeat.o(156026);
   }
   
@@ -162,13 +162,13 @@ public class SFSInputStream
       AppMethodBeat.o(156027);
       throw localIOException;
     }
-    if (this.bbz < 0L)
+    if (this.mMarkPosition < 0L)
     {
       localIOException = new IOException("Previous call to mark() failed.");
       AppMethodBeat.o(156027);
       throw localIOException;
     }
-    if (nativeSeek(this.mNativePtr, this.bbz, 0) != this.bbz)
+    if (nativeSeek(this.mNativePtr, this.mMarkPosition, 0) != this.mMarkPosition)
     {
       localIOException = new IOException("Seeking to previous position failed.");
       AppMethodBeat.o(156027);
@@ -207,7 +207,7 @@ public class SFSInputStream
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsfs.SFSInputStream
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,7 @@
 package com.tencent.luggage.sdk.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -11,81 +9,83 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksManager;", "", "()V", "TAG", "", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksCollection;", "addTasksCollection", "", "collection", "id", "finishByInstanceId", "instanceId", "getTasksCollectionById", "luggage-wechat-full-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksManager;", "", "()V", "TAG", "", "map", "Ljava/util/concurrent/ConcurrentHashMap;", "Lcom/tencent/luggage/sdk/tasks/AppBrandParallelTasksCollection;", "addTasksCollection", "", "collection", "id", "finishByInstanceId", "instanceId", "getTasksCollectionById", "luggage-wechat-full-sdk_release"})
 public final class c
 {
-  private static final ConcurrentHashMap<String, b> cqi;
-  public static final c cqj;
+  private static final ConcurrentHashMap<String, b> cCB;
+  public static final c cCC;
   
   static
   {
-    AppMethodBeat.i(220938);
-    cqj = new c();
-    cqi = new ConcurrentHashMap();
-    AppMethodBeat.o(220938);
+    AppMethodBeat.i(230048);
+    cCC = new c();
+    cCB = new ConcurrentHashMap();
+    AppMethodBeat.o(230048);
   }
   
   public static void a(b paramb, String paramString)
   {
-    AppMethodBeat.i(220936);
+    AppMethodBeat.i(230046);
     p.h(paramb, "collection");
     p.h(paramString, "id");
-    if ((b)cqi.put(paramString, paramb) != null) {
-      ae.e("Luggage.AppBrandParallelTasksManager", "add duplicate collection id = [%s]", new Object[] { paramString });
+    if ((b)cCB.put(paramString, paramb) != null) {
+      Log.e("Luggage.AppBrandParallelTasksManager", "add duplicate collection id = [%s]", new Object[] { paramString });
     }
-    AppMethodBeat.o(220936);
+    AppMethodBeat.o(230046);
   }
   
-  public static b dq(String paramString)
+  public static b dJ(String paramString)
   {
-    AppMethodBeat.i(220935);
+    AppMethodBeat.i(230045);
     p.h(paramString, "instanceId");
-    if (cqi.get(paramString) == null)
+    if (cCB.get(paramString) == null)
     {
       b localb = new b();
-      ((Map)cqi).put(paramString, localb);
+      ((Map)cCB).put(paramString, localb);
     }
-    paramString = cqi.get(paramString);
+    paramString = cCB.get(paramString);
     if (paramString == null) {
-      p.gkB();
+      p.hyc();
     }
     paramString = (b)paramString;
-    AppMethodBeat.o(220935);
+    AppMethodBeat.o(230045);
     return paramString;
   }
   
-  public static void dr(String paramString)
+  public static void dK(String paramString)
   {
-    AppMethodBeat.i(220937);
+    AppMethodBeat.i(230047);
     p.h(paramString, "instanceId");
-    paramString = (b)cqi.remove(paramString);
+    paramString = (b)cCB.remove(paramString);
     if (paramString != null)
     {
-      ae.i("Luggage.AppBrandParallelTasksCollection", "finishAllTask: ");
-      Iterator localIterator = ((Map)paramString.cqf).entrySet().iterator();
+      Log.i("Luggage.AppBrandParallelTasksCollection", "finishAllTask: ");
+      Iterator localIterator = ((Map)paramString.cCy).entrySet().iterator();
       while (localIterator.hasNext())
       {
         a locala = (a)((Map.Entry)localIterator.next()).getValue();
-        if (locala.Fq()) {
+        if (locala.OZ()) {
           locala.cancel();
         }
       }
-      paramString.cqf.clear();
-      localIterator = ((Iterable)paramString.cqg).iterator();
+      paramString.cCy.clear();
+      localIterator = ((Iterable)paramString.cCz).iterator();
       while (localIterator.hasNext()) {
-        ((d.g.a.a)localIterator.next()).invoke();
+        ((kotlin.g.a.a)localIterator.next()).invoke();
       }
-      paramString.cqg.clear();
-      AppMethodBeat.o(220937);
+      paramString.cCz.clear();
+      AppMethodBeat.o(230047);
       return;
     }
-    AppMethodBeat.o(220937);
+    AppMethodBeat.o(230047);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.e.c
  * JD-Core Version:    0.7.0.1
  */

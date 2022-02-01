@@ -6,79 +6,80 @@ import java.util.LinkedList;
 public final class apt
   extends com.tencent.mm.bw.a
 {
-  public FinderContact contact;
-  public boolean dsB;
+  public int LBD;
+  public LinkedList<apu> iAd;
+  
+  public apt()
+  {
+    AppMethodBeat.i(209359);
+    this.iAd = new LinkedList();
+    AppMethodBeat.o(209359);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(189376);
+    AppMethodBeat.i(209360);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.contact != null)
-      {
-        paramVarArgs.lJ(1, this.contact.computeSize());
-        this.contact.writeFields(paramVarArgs);
-      }
-      paramVarArgs.bC(2, this.dsB);
-      AppMethodBeat.o(189376);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.e(1, 8, this.iAd);
+      paramVarArgs.aM(2, this.LBD);
+      AppMethodBeat.o(209360);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.contact == null) {
-        break label350;
-      }
-    }
-    label350:
-    for (paramInt = f.a.a.a.lI(1, this.contact.computeSize()) + 0;; paramInt = 0)
+    int i;
+    if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.amF(2);
-      AppMethodBeat.o(189376);
-      return paramInt + i;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
-          }
-        }
-        AppMethodBeat.o(189376);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-        apt localapt = (apt)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
-        {
-        default: 
-          AppMethodBeat.o(189376);
-          return -1;
-        case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new FinderContact();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localapt.contact = ((FinderContact)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(189376);
-          return 0;
-        }
-        localapt.dsB = ((f.a.a.a.a)localObject1).OmT.gvY();
-        AppMethodBeat.o(189376);
-        return 0;
-      }
-      AppMethodBeat.o(189376);
-      return -1;
+      paramInt = g.a.a.a.c(1, 8, this.iAd);
+      i = g.a.a.b.b.a.bu(2, this.LBD);
+      AppMethodBeat.o(209360);
+      return paramInt + 0 + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.iAd.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      AppMethodBeat.o(209360);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+      apt localapt = (apt)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(209360);
+        return -1;
+      case 1: 
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new apu();
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((apu)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+          localapt.iAd.add(localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(209360);
+        return 0;
+      }
+      localapt.LBD = ((g.a.a.a.a)localObject1).UbS.zi();
+      AppMethodBeat.o(209360);
+      return 0;
+    }
+    AppMethodBeat.o(209360);
+    return -1;
   }
 }
 

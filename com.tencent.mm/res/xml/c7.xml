@@ -1,19 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <Preference android:key="settings_username" android:layout="@layout/aop" android:title="@string/fc_" />
-    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:key="settings_mobile" android:layout="@layout/aop" android:title="@string/f7n" />
-    <com.tencent.mm.ui.base.preference.PluginTextPreference android:key="settings_about_vusertitle" />
-    <com.tencent.mm.plugin.setting.ui.setting.SelfVuserPreference android:key="settings_about_vuserinfo" />
-    <Preference android:key="settings_about_vuser_about" android:layout="@layout/aop" android:title="@string/bba" />
-    <PreferenceSmallCategory />
-    <Preference android:key="settings_independent_password" android:layout="@layout/aop" android:title="@string/f6n" />
-    <com.tencent.mm.ui.base.preference.IconPreference android:key="settings_voiceprint_title" android:layout="@layout/aop" android:title="@string/fce" />
-    <com.tencent.mm.ui.base.preference.IconPreference android:key="settings_fingerprint_title" android:layout="@layout/aop" android:title="@string/f6g" />
-    <com.tencent.mm.ui.base.preference.IconPreference android:key="settings_facedect_title" android:layout="@layout/aop" android:title="@string/bxk" />
-    <PreferenceSmallCategory />
-    <Preference android:key="settings_trust_friend" android:layout="@layout/aop" android:title="@string/fbm" />
-    <Preference android:key="settings_manage_login_device" android:layout="@layout/aop" android:title="@string/f7c" />
-    <com.tencent.mm.ui.base.preference.IconPreference android:key="settings_more_safe" android:title="@string/f8c" />
-    <PreferenceSmallCategory />
-    <SummaryBelowPreference android:key="settings_security_center" android:summary="@string/f_p" android:title="@string/f_o" />
+    <CheckBoxPreference android:defaultValue="false" android:key="follow_system" android:summary="@string/gle" android:title="@string/w8" />
+    <PreferenceTitleCategory android:key="manual_title" android:title="@string/glf" />
+    <SelectPreference android:key="normal_mode" android:title="@string/glm" />
+    <SelectPreference android:key="dark_mode" android:title="@string/go9" />
 </PreferenceScreen>

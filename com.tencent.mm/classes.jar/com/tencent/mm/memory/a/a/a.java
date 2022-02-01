@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f.b;
 import com.tencent.mm.b.f.c;
 import com.tencent.mm.memory.a.a.a.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -14,30 +14,30 @@ import java.util.Date;
 public class a
   implements c<String>
 {
-  String hzN;
-  WeakReference<f.b> hzO;
-  WeakReference<f.c> hzP;
-  public int hzQ;
-  long hzR;
-  String hzS;
+  String itU;
+  WeakReference<f.b> itV;
+  WeakReference<f.c> itW;
+  public int itX;
+  long itY;
+  String itZ;
   public String key;
   Object object;
   
   public a(String paramString1, String paramString2, Object paramObject, int paramInt, f.b paramb, f.c paramc)
   {
     AppMethodBeat.i(156490);
-    this.hzQ = 0;
-    this.hzR = 0L;
+    this.itX = 0;
+    this.itY = 0L;
     this.key = paramString1;
-    this.hzN = paramString2;
+    this.itU = paramString2;
     this.object = paramObject;
-    this.hzQ = paramInt;
-    this.hzO = new WeakReference(paramb);
-    this.hzP = new WeakReference(paramc);
-    this.hzR = System.currentTimeMillis();
-    this.hzS = new SimpleDateFormat("HH:mm:ss").format(new Date(this.hzR));
-    if (com.tencent.mm.memory.a.a.a.a.hAc) {
-      ae.i("MicroMsg.BusinessBitmap", "BusinessBitmap build key %s sizes: %s cacheTime %s object %s stack [%s]", new Object[] { paramString1, bu.sL(paramInt), this.hzS, paramObject, bu.fpN().toString() });
+    this.itX = paramInt;
+    this.itV = new WeakReference(paramb);
+    this.itW = new WeakReference(paramc);
+    this.itY = System.currentTimeMillis();
+    this.itZ = new SimpleDateFormat("HH:mm:ss").format(new Date(this.itY));
+    if (com.tencent.mm.memory.a.a.a.a.iuj) {
+      Log.i("MicroMsg.BusinessBitmap", "BusinessBitmap build key %s sizes: %s cacheTime %s object %s stack [%s]", new Object[] { paramString1, Util.getSizeKB(paramInt), this.itZ, paramObject, Util.getStack().toString() });
     }
     AppMethodBeat.o(156490);
   }
@@ -73,14 +73,14 @@ public class a
   public String toString()
   {
     AppMethodBeat.i(156493);
-    String str = String.format("StructBitmap %s key:%s size %s realObj %s cacheTime %s now %s", new Object[] { Integer.valueOf(hashCode()), this.key, bu.sL(this.hzQ), this.object, this.hzS, new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())) });
+    String str = String.format("StructBitmap %s key:%s size %s realObj %s cacheTime %s now %s", new Object[] { Integer.valueOf(hashCode()), this.key, Util.getSizeKB(this.itX), this.object, this.itZ, new SimpleDateFormat("HH:mm:ss").format(new Date(System.currentTimeMillis())) });
     AppMethodBeat.o(156493);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a
  * JD-Core Version:    0.7.0.1
  */

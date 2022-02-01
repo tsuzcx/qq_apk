@@ -1,67 +1,147 @@
 package com.tencent.mm.plugin.sns.storage;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.model.ah;
+import com.tencent.mm.g.c.gh;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class h
+  extends gh
+  implements Cloneable
 {
-  public static boolean a(String paramString, p paramp)
+  protected static IAutoDBItem.MAutoDBInfo info;
+  public int Emk;
+  
+  static
   {
-    AppMethodBeat.i(97445);
-    if (x.ayP(paramString))
-    {
-      bool = ah.dXE().b(x.aze(paramString), paramp);
-      AppMethodBeat.o(97445);
-      return bool;
-    }
-    boolean bool = ah.dXH().b(x.aze(paramString), paramp.ecy());
-    AppMethodBeat.o(97445);
-    return bool;
+    AppMethodBeat.i(97453);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[13];
+    localMAutoDBInfo.columns = new String[14];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "snsID";
+    localMAutoDBInfo.colsMap.put("snsID", "LONG");
+    localStringBuilder.append(" snsID LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[1] = "parentID";
+    localMAutoDBInfo.colsMap.put("parentID", "LONG");
+    localStringBuilder.append(" parentID LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "isRead";
+    localMAutoDBInfo.colsMap.put("isRead", "SHORT default '0' ");
+    localStringBuilder.append(" isRead SHORT default '0' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "createTime";
+    localMAutoDBInfo.colsMap.put("createTime", "INTEGER");
+    localStringBuilder.append(" createTime INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "talker";
+    localMAutoDBInfo.colsMap.put("talker", "TEXT");
+    localStringBuilder.append(" talker TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "type";
+    localMAutoDBInfo.colsMap.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "isSend";
+    localMAutoDBInfo.colsMap.put("isSend", "INTEGER default 'false' ");
+    localStringBuilder.append(" isSend INTEGER default 'false' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[7] = "curActionBuf";
+    localMAutoDBInfo.colsMap.put("curActionBuf", "BLOB");
+    localStringBuilder.append(" curActionBuf BLOB");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[8] = "refActionBuf";
+    localMAutoDBInfo.colsMap.put("refActionBuf", "BLOB");
+    localStringBuilder.append(" refActionBuf BLOB");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[9] = "commentSvrID";
+    localMAutoDBInfo.colsMap.put("commentSvrID", "LONG");
+    localStringBuilder.append(" commentSvrID LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[10] = "clientId";
+    localMAutoDBInfo.colsMap.put("clientId", "TEXT");
+    localStringBuilder.append(" clientId TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[11] = "commentflag";
+    localMAutoDBInfo.colsMap.put("commentflag", "INTEGER");
+    localStringBuilder.append(" commentflag INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[12] = "isSilence";
+    localMAutoDBInfo.colsMap.put("isSilence", "INTEGER default '0' ");
+    localStringBuilder.append(" isSilence INTEGER default '0' ");
+    localMAutoDBInfo.columns[13] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(97453);
   }
   
-  public static p aBq(String paramString)
+  public final void convertFrom(Cursor paramCursor)
   {
-    AppMethodBeat.i(97444);
-    if (x.ayP(paramString))
+    AppMethodBeat.i(97450);
+    try
     {
-      paramString = ah.dXE().AG(x.aze(paramString));
-      AppMethodBeat.o(97444);
-      return paramString;
+      super.convertFrom(paramCursor);
+      this.Emk = ((int)this.systemRowid);
+      AppMethodBeat.o(97450);
+      return;
     }
-    paramString = ah.dXH().Ax(x.aze(paramString));
-    if (paramString != null)
+    catch (Exception paramCursor)
     {
-      paramString = paramString.ebV();
-      AppMethodBeat.o(97444);
-      return paramString;
+      String str = paramCursor.getMessage();
+      Log.e("MicroMsg.SnsComment", "error ".concat(String.valueOf(str)));
+      if ((str != null) && (str.contains("Unable to convert"))) {
+        aj.faT().eIQ();
+      }
+      try
+      {
+        AppMethodBeat.o(97450);
+        throw paramCursor;
+      }
+      catch (Exception paramCursor)
+      {
+        Log.printErrStackTrace("MicroMsg.SnsComment", paramCursor, "", new Object[0]);
+        AppMethodBeat.o(97450);
+      }
     }
-    AppMethodBeat.o(97444);
-    return null;
   }
   
-  public static p aBr(String paramString)
+  public final void feD()
   {
-    AppMethodBeat.i(97446);
-    if (x.ayP(paramString))
+    this.field_commentflag |= 0x1;
+  }
+  
+  public final h feE()
+  {
+    AppMethodBeat.i(97451);
+    try
     {
-      paramString = ah.dXE().Rw(x.aBN(paramString));
-      AppMethodBeat.o(97446);
-      return paramString;
+      h localh = (h)super.clone();
+      AppMethodBeat.o(97451);
+      return localh;
     }
-    paramString = ah.dXH().Rr(x.aBN(paramString));
-    if (paramString != null)
+    catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      paramString = paramString.ebV();
-      AppMethodBeat.o(97446);
-      return paramString;
+      for (;;)
+      {
+        Log.e("MicroMsg.SnsComment", "snscomment clone error");
+        Object localObject = null;
+      }
     }
-    AppMethodBeat.o(97446);
-    return null;
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.h
  * JD-Core Version:    0.7.0.1
  */

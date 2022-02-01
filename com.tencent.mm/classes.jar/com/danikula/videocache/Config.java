@@ -26,16 +26,16 @@ class Config
   
   File generateCacheFile(String paramString)
   {
-    AppMethodBeat.i(195102);
+    AppMethodBeat.i(223129);
     paramString = this.fileNameGenerator.generate(paramString);
     paramString = new File(this.cacheRoot, paramString);
-    AppMethodBeat.o(195102);
+    AppMethodBeat.o(223129);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.danikula.videocache.Config
  * JD-Core Version:    0.7.0.1
  */

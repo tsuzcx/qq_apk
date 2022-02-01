@@ -14,14 +14,14 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class MusicPreference
   extends Preference
 {
-  private View.OnClickListener km;
-  private boolean lVw;
+  public String CEJ;
+  public String CEK;
+  public String CEL;
+  private ImageButton CKH;
+  a CKI;
+  private boolean gVd;
+  private View.OnClickListener ko;
   private View mView;
-  public String yCa;
-  public String yCb;
-  public String yCc;
-  private ImageButton yGT;
-  a yGU;
   
   public MusicPreference(Context paramContext)
   {
@@ -38,11 +38,11 @@ public class MusicPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(51808);
     this.mView = null;
-    this.yGT = null;
-    this.yCa = "";
-    this.yCb = "";
-    this.yCc = "";
-    setLayoutResource(2131494875);
+    this.CKH = null;
+    this.CEJ = "";
+    this.CEK = "";
+    this.CEL = "";
+    setLayoutResource(2131495612);
     AppMethodBeat.o(51808);
   }
   
@@ -62,28 +62,28 @@ public class MusicPreference
   {
     AppMethodBeat.i(51811);
     super.onBindView(paramView);
-    if (this.km == null) {
-      this.km = new View.OnClickListener()
+    if (this.ko == null) {
+      this.ko = new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(51807);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/scanner/ui/MusicPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/scanner/ui/MusicPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           if (MusicPreference.a(MusicPreference.this) == null)
           {
             a.a(this, "com/tencent/mm/plugin/scanner/ui/MusicPreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(51807);
             return;
           }
-          if (paramAnonymousView.getId() == 2131303376)
+          if (paramAnonymousView.getId() == 2131306089)
           {
             if (!MusicPreference.b(MusicPreference.this)) {
               break label136;
             }
             MusicPreference.a(MusicPreference.this, false);
-            MusicPreference.c(MusicPreference.this).setImageResource(2131233641);
+            MusicPreference.c(MusicPreference.this).setImageResource(2131234454);
           }
           for (;;)
           {
@@ -93,36 +93,36 @@ public class MusicPreference
             return;
             label136:
             MusicPreference.a(MusicPreference.this, true);
-            MusicPreference.c(MusicPreference.this).setImageResource(2131233642);
+            MusicPreference.c(MusicPreference.this).setImageResource(2131234455);
           }
         }
       };
     }
-    this.yGT = ((ImageButton)paramView.findViewById(2131303376));
-    this.yGT.setOnClickListener(this.km);
-    if (this.lVw)
+    this.CKH = ((ImageButton)paramView.findViewById(2131306089));
+    this.CKH.setOnClickListener(this.ko);
+    if (this.gVd)
     {
-      this.yGT.setImageResource(2131233642);
+      this.CKH.setImageResource(2131234455);
       AppMethodBeat.o(51811);
       return;
     }
-    this.yGT.setImageResource(2131233641);
+    this.CKH.setImageResource(2131234454);
     AppMethodBeat.o(51811);
   }
   
-  public final void qD(boolean paramBoolean)
+  public final void tV(boolean paramBoolean)
   {
     AppMethodBeat.i(51810);
-    this.lVw = paramBoolean;
-    if (this.yGT != null)
+    this.gVd = paramBoolean;
+    if (this.CKH != null)
     {
       if (paramBoolean)
       {
-        this.yGT.setImageResource(2131233642);
+        this.CKH.setImageResource(2131234455);
         AppMethodBeat.o(51810);
         return;
       }
-      this.yGT.setImageResource(2131233641);
+      this.CKH.setImageResource(2131234454);
     }
     AppMethodBeat.o(51810);
   }
@@ -134,7 +134,7 @@ public class MusicPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.MusicPreference
  * JD-Core Version:    0.7.0.1
  */

@@ -7,22 +7,22 @@ import com.tencent.mm.pluginsdk.n;
 public final class a
   implements n
 {
-  private static l iUA;
-  public static m iUz;
+  public static m jRt;
+  private static l jRu;
   
   public final void a(l paraml)
   {
-    iUA = paraml;
+    jRu = paraml;
   }
   
   public final void a(m paramm)
   {
-    iUz = paramm;
+    jRt = paramm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.a
  * JD-Core Version:    0.7.0.1
  */

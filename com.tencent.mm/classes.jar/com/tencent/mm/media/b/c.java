@@ -1,63 +1,76 @@
 package com.tencent.mm.media.b;
 
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.n.e;
+import com.tencent.mm.n.f;
 import com.tencent.mm.plugin.mmsight.model.CaptureMMProxy;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/config/SimpleElementConfig;", "T", "", "()V", "elementConfig", "getElementConfig", "()Ljava/lang/Object;", "setElementConfig", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "getConfig", "getFloatDynamicConfig", "", "key", "", "defValue", "getIntDynamicConfig", "", "initDefaultConfig", "loadConfig", "", "resetConfig", "update", "parse", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/config/SimpleElementConfig;", "T", "", "()V", "elementConfig", "getElementConfig", "()Ljava/lang/Object;", "setElementConfig", "(Ljava/lang/Object;)V", "Ljava/lang/Object;", "getConfig", "getConfigByStatus", "getFloatDynamicConfig", "", "key", "", "defValue", "getIntDynamicConfig", "", "initDefaultConfig", "loadConfig", "", "loadConfigByStatus", "resetConfig", "update", "parse", "plugin-mediaeditor_release"})
 public abstract class c<T>
 {
-  protected T hkD;
+  protected T idA;
   
-  protected int Z(String paramString, int paramInt)
+  protected final T aLQ()
+  {
+    Object localObject = this.idA;
+    if (localObject == null) {
+      p.btv("elementConfig");
+    }
+    return localObject;
+  }
+  
+  public abstract T aLR();
+  
+  public abstract void aLS();
+  
+  public final T aLT()
+  {
+    this.idA = aLR();
+    aLS();
+    Object localObject = this.idA;
+    if (localObject == null) {
+      p.btv("elementConfig");
+    }
+    return localObject;
+  }
+  
+  protected int ab(String paramString, int paramInt)
   {
     p.h(paramString, "key");
-    if (ak.cpe())
+    if (MMApplicationContext.isMMProcess())
     {
-      com.tencent.mm.kernel.c.a locala = g.ab(com.tencent.mm.plugin.zero.b.a.class);
+      com.tencent.mm.kernel.c.a locala = g.af(com.tencent.mm.plugin.zero.b.a.class);
       p.g(locala, "MMKernel.service<IConfig…onfigService::class.java)");
-      return bu.getInt(((com.tencent.mm.plugin.zero.b.a)locala).acL().getValue(paramString), paramInt);
+      return Util.getInt(((com.tencent.mm.plugin.zero.b.a)locala).aqJ().getValue(paramString), paramInt);
     }
-    return bu.getInt(CaptureMMProxy.getInstance().getDynamicConfig(paramString), paramInt);
+    return Util.getInt(CaptureMMProxy.getInstance().getDynamicConfig(paramString), paramInt);
   }
   
-  protected final T atq()
+  public void ajX() {}
+  
+  public final T ajY()
   {
-    Object localObject = this.hkD;
+    this.idA = aLR();
+    ajX();
+    Object localObject = this.idA;
     if (localObject == null) {
-      p.bdF("elementConfig");
+      p.btv("elementConfig");
     }
     return localObject;
   }
   
-  public abstract T atr();
-  
-  public abstract void ats();
-  
-  public final T att()
-  {
-    this.hkD = atr();
-    ats();
-    Object localObject = this.hkD;
-    if (localObject == null) {
-      p.bdF("elementConfig");
-    }
-    return localObject;
-  }
-  
-  protected final void bJ(T paramT)
+  protected final void bS(T paramT)
   {
     p.h(paramT, "<set-?>");
-    this.hkD = paramT;
+    this.idA = paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.media.b.c
  * JD-Core Version:    0.7.0.1
  */

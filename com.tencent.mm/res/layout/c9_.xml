@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="17.0dip" android:id="@id/jia" android:layout_width="0.0dip" android:layout_weight="0.3" style="@style/a0d" />
+        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="17.0dip" android:id="@id/jf4" android:layout_width="0.0dip" android:layout_marginLeft="0.0dip" android:layout_weight="0.7" style="@style/a09" />
+    </LinearLayout>
+</merge>

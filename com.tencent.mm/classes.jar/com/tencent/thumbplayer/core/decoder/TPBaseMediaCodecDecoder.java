@@ -2,13 +2,13 @@ package com.tencent.thumbplayer.core.decoder;
 
 import android.media.MediaCodec;
 import android.media.MediaCodec.BufferInfo;
-import android.media.MediaCodec.Callback;
 import android.media.MediaCodec.CodecException;
 import android.media.MediaCodec.CryptoInfo;
 import android.media.MediaCodecInfo;
 import android.media.MediaCodecList;
 import android.media.MediaFormat;
 import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Looper;
@@ -17,6 +17,10 @@ import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.thumbplayer.core.common.TPNativeLog;
 import com.tencent.thumbplayer.core.common.TPUnitendCodecUtils;
+import com.tencent.tmediacodec.b.a;
+import com.tencent.tmediacodec.b.b;
+import com.tencent.tmediacodec.b.c;
+import com.tencent.tmediacodec.b.c;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 import java.nio.ByteBuffer;
@@ -27,19 +31,23 @@ public abstract class TPBaseMediaCodecDecoder
   implements ITPMediaCodecDecoder
 {
   private static final int MEDIA_CODEC_ERROR_INDEX = -1000;
-  private static long MEDIA_CODEC_INPUT_TIMEOUT_US = 10000L;
-  private static long MEDIA_CODEC_OUTPUT_TIMEOUT_US = 10000L;
+  private static long MEDIA_CODEC_INPUT_TIMEOUT_US = 2000L;
+  private static long MEDIA_CODEC_OUTPUT_TIMEOUT_US = 2000L;
   private static final int MSG_FLUSH = 1002;
   private static final int MSG_RELEASE = 1003;
   private static final int MSG_RELEASE_OUTPUT_BUFFER = 1000;
   private static final int MSG_SET_OUTPUT_SURFACE = 1001;
-  private MediaCodec mCodec = null;
+  private com.tencent.tmediacodec.b mCodec = null;
+  protected int mCodecId;
   private MediaCodec.CryptoInfo mCryptoInfo = null;
   private HandlerThread mDecodeThread = null;
   private AsyncDecodeHandler mDecoderHandler = null;
+  protected int mDolbyVisionLevel = 0;
+  protected int mDolbyVisionProfile = 0;
   protected int mDrmType = -1;
-  private boolean mEnableAsyncMode = false;
+  protected boolean mEnableAsyncMode = false;
   private boolean mEnableAudioPassThrough = false;
+  protected boolean mEnableMediaCodecReuse = false;
   private boolean mEnableSetOutputSurfaceApi = false;
   private TPFrameInfo mFrameInfo = new TPFrameInfo();
   private int mHandlerResult = 0;
@@ -50,41 +58,51 @@ public abstract class TPBaseMediaCodecDecoder
   protected Surface mSurface = null;
   private final Object mThreadLock = new Object();
   
+  public TPBaseMediaCodecDecoder(int paramInt)
+  {
+    this.mCodecId = paramInt;
+  }
+  
   private int decodeAsync(byte[] paramArrayOfByte, boolean paramBoolean1, long paramLong, boolean paramBoolean2)
   {
-    Object localObject1 = (Integer)this.mInputQueue.poll();
-    if (localObject1 == null) {
+    Integer localInteger = (Integer)this.mInputQueue.poll();
+    if (localInteger == null) {
       return 1;
     }
     for (;;)
     {
       try
       {
-        Object localObject2 = this.mCodec.getInputBuffer(((Integer)localObject1).intValue());
-        if (localObject2 != null) {
-          ((ByteBuffer)localObject2).put(paramArrayOfByte);
+        localObject = this.mCodec;
+        i = localInteger.intValue();
+        if (((com.tencent.tmediacodec.b)localObject).Sll == null) {
+          break label176;
+        }
+        localObject = ((com.tencent.tmediacodec.b)localObject).Sll.hps().getInputBuffer(i);
+        if (localObject != null) {
+          ((ByteBuffer)localObject).put(paramArrayOfByte);
         }
         int j;
         if ((paramBoolean2) && (this.mCryptoInfo != null))
         {
           paramArrayOfByte = this.mCodec;
-          j = ((Integer)localObject1).intValue();
-          localObject1 = this.mCryptoInfo;
+          j = localInteger.intValue();
+          localObject = this.mCryptoInfo;
           if (!paramBoolean1) {
-            break label154;
+            break label182;
           }
           i = 1;
-          paramArrayOfByte.queueSecureInputBuffer(j, 0, (MediaCodec.CryptoInfo)localObject1, paramLong, i);
+          paramArrayOfByte.a(j, (MediaCodec.CryptoInfo)localObject, paramLong, i);
         }
         else
         {
-          localObject2 = this.mCodec;
-          j = ((Integer)localObject1).intValue();
+          localObject = this.mCodec;
+          j = localInteger.intValue();
           int k = paramArrayOfByte.length;
           if (paramBoolean1)
           {
             i = 1;
-            ((MediaCodec)localObject2).queueInputBuffer(j, 0, k, paramLong, i);
+            ((com.tencent.tmediacodec.b)localObject).a(j, k, paramLong, i);
           }
         }
       }
@@ -95,7 +113,10 @@ public abstract class TPBaseMediaCodecDecoder
       int i = 0;
       continue;
       return 0;
-      label154:
+      label176:
+      Object localObject = null;
+      continue;
+      label182:
       i = 0;
     }
   }
@@ -149,7 +170,10 @@ public abstract class TPBaseMediaCodecDecoder
     }
     try
     {
-      this.mCodec.flush();
+      com.tencent.tmediacodec.b localb = this.mCodec;
+      if (localb.Sll != null) {
+        localb.Sll.flush();
+      }
       return 0;
     }
     catch (Exception localException)
@@ -172,8 +196,14 @@ public abstract class TPBaseMediaCodecDecoder
     this.mStarted = false;
     try
     {
-      this.mCodec.stop();
-      this.mCodec.release();
+      com.tencent.tmediacodec.b localb = this.mCodec;
+      if (localb.Sll != null) {
+        localb.Sll.stop();
+      }
+      localb = this.mCodec;
+      if (localb.Sll != null) {
+        localb.Sll.release();
+      }
       return 0;
     }
     catch (Exception localException)
@@ -209,38 +239,41 @@ public abstract class TPBaseMediaCodecDecoder
     if (this.mSurface == paramSurface) {
       TPNativeLog.printLog(3, getLogTag(), "setOutputSurface: set the same surface.");
     }
-    Surface localSurface;
-    do
+    for (;;)
     {
       return 0;
-      localSurface = this.mSurface;
+      Object localObject = this.mSurface;
       this.mSurface = paramSurface;
-    } while (this.mCodec == null);
-    if ((localSurface != null) && (paramSurface != null)) {
-      try
-      {
-        if ((paramSurface.isValid()) && (Build.VERSION.SDK_INT >= 23) && (this.mEnableSetOutputSurfaceApi))
-        {
-          this.mCodec.setOutputSurface(paramSurface);
-          return 0;
+      if (this.mCodec != null) {
+        if ((localObject != null) && (paramSurface != null)) {
+          try
+          {
+            if ((paramSurface.isValid()) && (Build.VERSION.SDK_INT >= 23) && (this.mEnableSetOutputSurfaceApi))
+            {
+              localObject = this.mCodec;
+              if (((com.tencent.tmediacodec.b)localObject).Sll == null) {
+                continue;
+              }
+              ((com.tencent.tmediacodec.b)localObject).Sll.setOutputSurface(paramSurface);
+              return 0;
+            }
+          }
+          catch (Exception paramSurface)
+          {
+            TPNativeLog.printLog(4, getLogTag(), "setOutputSurface onMediaCodecException:\n" + getStackTrace(paramSurface));
+            return 3;
+          }
         }
       }
-      catch (Exception paramSurface)
-      {
-        return onMediaCodecException(paramSurface);
-      }
     }
-    this.mCodec.stop();
-    this.mCodec.release();
-    initMediaCodecInternal();
-    return 4;
+    return 3;
   }
   
   private int handleSignalEndOfStream(int paramInt)
   {
     try
     {
-      this.mCodec.queueInputBuffer(paramInt, 0, 0, 0L, 4);
+      this.mCodec.a(paramInt, 0, 0L, 4);
       return 0;
     }
     catch (Exception localException)
@@ -252,43 +285,108 @@ public abstract class TPBaseMediaCodecDecoder
   
   private boolean initMediaCodecInternal()
   {
-    try
+    label255:
+    Object localObject2;
+    for (;;)
     {
-      Object localObject = selectCodec(getMimeType());
-      if (localObject == null)
+      try
       {
-        TPNativeLog.printLog(3, getLogTag(), "initMediaCodec failed! no such codec by mime type: " + getMimeType());
+        Object localObject1 = selectCodec(getMimeType());
+        if (localObject1 == null)
+        {
+          TPNativeLog.printLog(3, getLogTag(), "initMediaCodec failed! no such codec by mime type: " + getMimeType());
+          return false;
+        }
+        if (getMimeType().equals("audio/vnd.dts"))
+        {
+          TPNativeLog.printLog(2, getLogTag(), "initMediaCodec current mime type:" + getMimeType() + " is audio dts, need set input timeout to 0!");
+          MEDIA_CODEC_INPUT_TIMEOUT_US = 0L;
+          MEDIA_CODEC_OUTPUT_TIMEOUT_US = 0L;
+        }
+        TPNativeLog.printLog(2, getLogTag(), "initMediaCodec mime:" + getMimeType() + " profile:" + this.mDolbyVisionProfile + " level:" + this.mDolbyVisionLevel + " mDrmType:" + this.mDrmType);
+        if (this.mDolbyVisionProfile <= 0) {
+          break label255;
+        }
+        if (2 == this.mDrmType)
+        {
+          bool = true;
+          localObject1 = TPUnitendCodecUtils.getDolbyVisionDecoderName(getMimeType(), this.mDolbyVisionProfile, this.mDolbyVisionLevel, bool);
+          TPNativeLog.printLog(2, getLogTag(), "initMediaCodec Dolby Vision codecName:".concat(String.valueOf(localObject1)));
+          if (localObject1 != null) {
+            break;
+          }
+          TPNativeLog.printLog(4, getLogTag(), "initMediaCodec failed, codecName is null.");
+          return false;
+        }
+      }
+      catch (Exception localException)
+      {
+        TPNativeLog.printLog(4, getLogTag(), getStackTrace(localException));
         return false;
       }
-      if (getMimeType().equals("audio/vnd.dts"))
-      {
-        TPNativeLog.printLog(2, getLogTag(), "initMediaCodec current mime type:" + getMimeType() + " is audio dts, need set input timeout to 0!");
-        MEDIA_CODEC_INPUT_TIMEOUT_US = 0L;
-        MEDIA_CODEC_OUTPUT_TIMEOUT_US = 0L;
+      bool = false;
+      continue;
+      if (2 == this.mDrmType) {
+        localObject2 = TPUnitendCodecUtils.getSecureDecoderName(getMimeType());
+      } else {
+        localObject2 = ((MediaCodecInfo)localObject2).getName();
       }
-      if (2 == this.mDrmType) {}
-      for (localObject = TPUnitendCodecUtils.getSecureDecoderName(getMimeType());; localObject = ((MediaCodecInfo)localObject).getName())
+    }
+    this.mCodec = new com.tencent.tmediacodec.b((String)localObject2, b.b.Slt);
+    Object localObject3 = this.mCodec;
+    if ((this.mEnableMediaCodecReuse) && (!this.mEnableAsyncMode)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((com.tencent.tmediacodec.b)localObject3).Slo = bool;
+      this.mCodec.Slm = new com.tencent.tmediacodec.a.b()
       {
-        this.mCodec = MediaCodec.createByCodecName((String)localObject);
-        TPNativeLog.printLog(2, getLogTag(), "initMediaCodec codec name: ".concat(String.valueOf(localObject)));
-        if ((this.mEnableAsyncMode) && (Build.VERSION.SDK_INT >= 23))
+        public void onReuseCodecAPIException(String paramAnonymousString, Throwable paramAnonymousThrowable)
         {
-          TPNativeLog.printLog(2, getLogTag(), "MediaCodec EnableAsyncMode！");
-          this.mDecodeThread = new HandlerThread("MediaCodecThread");
-          this.mDecodeThread.start();
-          this.mDecoderHandler = new AsyncDecodeHandler(this.mDecodeThread.getLooper());
-          this.mCodec.setCallback(new BufferCallback(null), this.mDecoderHandler);
+          AppMethodBeat.i(189883);
+          super.onReuseCodecAPIException(paramAnonymousString, paramAnonymousThrowable);
+          TPMediaCodecManager.onMediaCodecException(TPBaseMediaCodecDecoder.this.mCodecId, paramAnonymousString);
+          AppMethodBeat.o(189883);
         }
+        
+        public void onStarted(Boolean paramAnonymousBoolean, String paramAnonymousString)
+        {
+          AppMethodBeat.i(189882);
+          super.onStarted(paramAnonymousBoolean, paramAnonymousString);
+          TPMediaCodecManager.onMediaCodecReady(TPBaseMediaCodecDecoder.this.mCodecId, paramAnonymousString);
+          AppMethodBeat.o(189882);
+        }
+      };
+      TPNativeLog.printLog(2, getLogTag(), "initMediaCodec codec name: ".concat(String.valueOf(localObject2)));
+      AsyncDecodeHandler localAsyncDecodeHandler;
+      if ((this.mEnableAsyncMode) && (Build.VERSION.SDK_INT >= 23))
+      {
+        TPNativeLog.printLog(2, getLogTag(), "MediaCodec EnableAsyncMode！");
+        this.mDecodeThread = new HandlerThread("MediaCodecThread");
+        this.mDecodeThread.start();
+        this.mDecoderHandler = new AsyncDecodeHandler(this.mDecodeThread.getLooper());
+        localObject2 = this.mCodec;
+        localObject3 = new BufferCallback(null);
+        localAsyncDecodeHandler = this.mDecoderHandler;
+        if (Build.VERSION.SDK_INT >= 23) {
+          break label479;
+        }
+        com.tencent.tmediacodec.g.b.bqS("TMediaCodec");
+      }
+      for (;;)
+      {
         configCodec(this.mCodec);
         this.mCodec.start();
         this.mStarted = true;
         return true;
+        label479:
+        if (((com.tencent.tmediacodec.b)localObject2).Sll != null)
+        {
+          MediaCodec localMediaCodec = ((com.tencent.tmediacodec.b)localObject2).Sll.hps();
+          if (localMediaCodec != null) {
+            localMediaCodec.setCallback(new b.c((com.tencent.tmediacodec.b)localObject2, (b.a)localObject3), localAsyncDecodeHandler);
+          }
+        }
       }
-      return false;
-    }
-    catch (Exception localException)
-    {
-      TPNativeLog.printLog(4, getLogTag(), getStackTrace(localException));
     }
   }
   
@@ -334,32 +432,38 @@ public abstract class TPBaseMediaCodecDecoder
   
   private int queueInputBuffer(byte[] paramArrayOfByte, long paramLong, boolean paramBoolean)
   {
-    ByteBuffer[] arrayOfByteBuffer = this.mCodec.getInputBuffers();
-    int i = 103;
-    int j;
-    try
+    Object localObject = this.mCodec;
+    if (((com.tencent.tmediacodec.b)localObject).Sll != null)
     {
-      j = this.mCodec.dequeueInputBuffer(MEDIA_CODEC_INPUT_TIMEOUT_US);
-      if (j >= 0)
+      localObject = ((com.tencent.tmediacodec.b)localObject).Sll.hps();
+      if (localObject == null) {}
+    }
+    for (localObject = ((MediaCodec)localObject).getInputBuffers();; localObject = null)
+    {
+      int i;
+      try
       {
-        arrayOfByteBuffer[j].put(paramArrayOfByte);
-        if ((paramBoolean) && (this.mCryptoInfo != null)) {
-          this.mCodec.queueSecureInputBuffer(j, 0, this.mCryptoInfo, paramLong, 0);
-        } else {
-          this.mCodec.queueInputBuffer(j, 0, paramArrayOfByte.length, paramLong, 0);
+        i = this.mCodec.dequeueInputBuffer(MEDIA_CODEC_INPUT_TIMEOUT_US);
+        if (i >= 0)
+        {
+          localObject[i].put(paramArrayOfByte);
+          if ((paramBoolean) && (this.mCryptoInfo != null)) {
+            this.mCodec.a(i, this.mCryptoInfo, paramLong, 0);
+          } else {
+            this.mCodec.a(i, paramArrayOfByte.length, paramLong, 0);
+          }
         }
       }
+      catch (Exception paramArrayOfByte)
+      {
+        return onMediaCodecException(paramArrayOfByte);
+      }
+      if (i == -1) {
+        return 1;
+      }
+      return 103;
+      return 0;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      return onMediaCodecException(paramArrayOfByte);
-    }
-    if (j == -1)
-    {
-      return 1;
-      i = 0;
-    }
-    return i;
   }
   
   private int releaseAsync()
@@ -456,7 +560,7 @@ public abstract class TPBaseMediaCodecDecoder
     }
   }
   
-  abstract void configCodec(MediaCodec paramMediaCodec);
+  abstract void configCodec(com.tencent.tmediacodec.b paramb);
   
   public int decode(byte[] paramArrayOfByte, boolean paramBoolean1, long paramLong, boolean paramBoolean2)
   {
@@ -484,15 +588,28 @@ public abstract class TPBaseMediaCodecDecoder
       int i;
       try
       {
-        i = this.mCodec.dequeueOutputBuffer(localBufferInfo, MEDIA_CODEC_OUTPUT_TIMEOUT_US);
-        if (i < 0) {
-          break label208;
-        }
-        if (localBufferInfo.flags == 4)
+        com.tencent.tmediacodec.b localb = this.mCodec;
+        long l = MEDIA_CODEC_OUTPUT_TIMEOUT_US;
+        if (localb.Sll != null)
         {
-          TPNativeLog.printLog(2, getLogTag(), "dequeueOutputBuffer: BUFFER_FLAG_END_OF_STREAM");
-          this.mFrameInfo.errCode = 2;
-          return this.mFrameInfo;
+          i = localb.Sll.dequeueOutputBuffer(localBufferInfo, l);
+          if (i < 0) {
+            break label244;
+          }
+          if (localBufferInfo.flags == 4)
+          {
+            TPNativeLog.printLog(2, getLogTag(), "dequeueOutputBuffer: BUFFER_FLAG_END_OF_STREAM");
+            this.mFrameInfo.errCode = 2;
+            return this.mFrameInfo;
+          }
+        }
+        else
+        {
+          i = -1000;
+          continue;
+        }
+        if (localException.flags != 2) {
+          break label198;
         }
       }
       catch (Exception localException)
@@ -500,7 +617,7 @@ public abstract class TPBaseMediaCodecDecoder
         this.mFrameInfo.errCode = onMediaCodecException(localException);
         return this.mFrameInfo;
       }
-      if ((localException.flags == 2) && (this.mEnableAudioPassThrough))
+      if (this.mEnableAudioPassThrough)
       {
         TPNativeLog.printLog(2, getLogTag(), "dequeueOutputBuffer: BUFFER_FLAG_CODEC_CONFIG, AudioPassThrough");
         this.mFrameInfo.bufferIndex = i;
@@ -509,18 +626,30 @@ public abstract class TPBaseMediaCodecDecoder
       }
       else
       {
+        label198:
         this.mFrameInfo.bufferIndex = i;
         this.mFrameInfo.ptsUs = localException.presentationTimeUs;
         this.mFrameInfo.errCode = 0;
         processOutputBuffer(this.mCodec, i, localException, this.mFrameInfo);
         continue;
-        label208:
+        label244:
+        Object localObject;
         if (i == -2)
         {
-          processOutputFormatChanged(this.mCodec.getOutputFormat());
-          this.mFrameInfo.errCode = 1;
+          localObject = this.mCodec;
+          if (((com.tencent.tmediacodec.b)localObject).Sll != null)
+          {
+            localObject = ((com.tencent.tmediacodec.b)localObject).Sll.hps();
+            if (localObject == null) {}
+          }
+          for (localObject = ((MediaCodec)localObject).getOutputFormat();; localObject = null)
+          {
+            processOutputFormatChanged((MediaFormat)localObject);
+            this.mFrameInfo.errCode = 1;
+            break;
+          }
         }
-        else if (i == -1)
+        if (i == -1)
         {
           this.mFrameInfo.errCode = 1;
         }
@@ -529,7 +658,7 @@ public abstract class TPBaseMediaCodecDecoder
           TPNativeLog.printLog(2, getLogTag(), "dequeueOutputBuffer: INFO_OUTPUT_BUFFERS_CHANGED!");
           this.mFrameInfo.errCode = 1;
         }
-        else if (localException.flags == 4)
+        else if (((MediaCodec.BufferInfo)localObject).flags == 4)
         {
           TPNativeLog.printLog(2, getLogTag(), "dequeueOutputBuffer: BUFFER_FLAG_END_OF_STREAM!");
           this.mFrameInfo.errCode = 2;
@@ -568,9 +697,9 @@ public abstract class TPBaseMediaCodecDecoder
   
   abstract void processMediaCodecException(Exception paramException);
   
-  abstract void processOutputBuffer(MediaCodec paramMediaCodec, int paramInt, MediaCodec.BufferInfo paramBufferInfo, TPFrameInfo paramTPFrameInfo);
+  abstract void processOutputBuffer(com.tencent.tmediacodec.b paramb, int paramInt, MediaCodec.BufferInfo paramBufferInfo, TPFrameInfo paramTPFrameInfo);
   
-  abstract void processOutputConfigData(MediaCodec paramMediaCodec, int paramInt, MediaCodec.BufferInfo paramBufferInfo, TPFrameInfo paramTPFrameInfo);
+  abstract void processOutputConfigData(com.tencent.tmediacodec.b paramb, int paramInt, MediaCodec.BufferInfo paramBufferInfo, TPFrameInfo paramTPFrameInfo);
   
   abstract void processOutputFormatChanged(MediaFormat paramMediaFormat);
   
@@ -599,6 +728,35 @@ public abstract class TPBaseMediaCodecDecoder
       this.mCryptoInfo = new MediaCodec.CryptoInfo();
     }
     this.mCryptoInfo.set(paramInt1, paramArrayOfInt1, paramArrayOfInt2, paramArrayOfByte1, paramArrayOfByte2, paramInt2);
+  }
+  
+  public int setOperateRate(float paramFloat)
+  {
+    if (this.mCodec != null) {}
+    try
+    {
+      if (Build.VERSION.SDK_INT >= 19)
+      {
+        TPNativeLog.printLog(2, getLogTag(), "setOperateRate: ".concat(String.valueOf(paramFloat)));
+        Bundle localBundle = new Bundle();
+        localBundle.putShort("priority", (short)0);
+        localBundle.putFloat("operating-rate", paramFloat);
+        Object localObject = this.mCodec.Sll;
+        if (localObject != null)
+        {
+          localObject = ((c)localObject).hps();
+          if (localObject != null) {
+            ((MediaCodec)localObject).setParameters(localBundle);
+          }
+        }
+      }
+      return 0;
+    }
+    catch (Exception localException)
+    {
+      TPNativeLog.printLog(3, getLogTag(), "setOperateRate: " + paramFloat + " failed.");
+    }
+    return 0;
   }
   
   public int setOutputSurface(Surface paramSurface)
@@ -633,6 +791,8 @@ public abstract class TPBaseMediaCodecDecoder
         continue;
         this.mEnableAudioPassThrough = paramBoolean;
         TPNativeLog.printLog(2, getLogTag(), "BOOL_SET_IS_AUDIO_PASSTHROUGH mEnableAudioPassThrough:" + this.mEnableAudioPassThrough);
+        continue;
+        this.mEnableMediaCodecReuse = paramBoolean;
       }
     }
   }
@@ -698,7 +858,7 @@ public abstract class TPBaseMediaCodecDecoder
     {
       boolean bool = false;
       int i = 0;
-      AppMethodBeat.i(197465);
+      AppMethodBeat.i(189884);
       for (;;)
       {
         synchronized (TPBaseMediaCodecDecoder.this.mThreadLock)
@@ -707,7 +867,7 @@ public abstract class TPBaseMediaCodecDecoder
           {
           case 1000: 
             TPBaseMediaCodecDecoder.this.handleMessageComplete(i);
-            AppMethodBeat.o(197465);
+            AppMethodBeat.o(189884);
             return;
             TPBaseMediaCodecDecoder localTPBaseMediaCodecDecoder = TPBaseMediaCodecDecoder.this;
             i = paramMessage.arg1;
@@ -731,66 +891,66 @@ public abstract class TPBaseMediaCodecDecoder
   }
   
   class BufferCallback
-    extends MediaCodec.Callback
+    extends b.a
   {
     private BufferCallback() {}
     
-    public void onError(MediaCodec paramMediaCodec, MediaCodec.CodecException paramCodecException)
+    public void onError(com.tencent.tmediacodec.b paramb, MediaCodec.CodecException paramCodecException)
     {
-      AppMethodBeat.i(197468);
+      AppMethodBeat.i(189887);
       TPNativeLog.printLog(4, TPBaseMediaCodecDecoder.this.getLogTag(), "onError: " + TPBaseMediaCodecDecoder.this.getStackTrace(paramCodecException));
       TPBaseMediaCodecDecoder.this.handleRelease();
-      AppMethodBeat.o(197468);
+      AppMethodBeat.o(189887);
     }
     
-    public void onInputBufferAvailable(MediaCodec paramMediaCodec, int paramInt)
+    public void onInputBufferAvailable(com.tencent.tmediacodec.b paramb, int paramInt)
     {
-      AppMethodBeat.i(197466);
+      AppMethodBeat.i(189885);
       try
       {
         TPBaseMediaCodecDecoder.this.mInputQueue.put(Integer.valueOf(paramInt));
-        AppMethodBeat.o(197466);
+        AppMethodBeat.o(189885);
         return;
       }
-      catch (Exception paramMediaCodec)
+      catch (Exception paramb)
       {
-        TPNativeLog.printLog(3, TPBaseMediaCodecDecoder.this.getLogTag(), TPBaseMediaCodecDecoder.this.getStackTrace(paramMediaCodec));
-        AppMethodBeat.o(197466);
+        TPNativeLog.printLog(3, TPBaseMediaCodecDecoder.this.getLogTag(), TPBaseMediaCodecDecoder.this.getStackTrace(paramb));
+        AppMethodBeat.o(189885);
       }
     }
     
-    public void onOutputBufferAvailable(MediaCodec paramMediaCodec, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
+    public void onOutputBufferAvailable(com.tencent.tmediacodec.b paramb, int paramInt, MediaCodec.BufferInfo paramBufferInfo)
     {
-      AppMethodBeat.i(197467);
+      AppMethodBeat.i(189886);
       try
       {
         TPFrameInfo localTPFrameInfo = new TPFrameInfo();
         localTPFrameInfo.errCode = 0;
         localTPFrameInfo.bufferIndex = paramInt;
         localTPFrameInfo.ptsUs = paramBufferInfo.presentationTimeUs;
-        TPBaseMediaCodecDecoder.this.processOutputBuffer(paramMediaCodec, paramInt, paramBufferInfo, localTPFrameInfo);
+        TPBaseMediaCodecDecoder.this.processOutputBuffer(paramb, paramInt, paramBufferInfo, localTPFrameInfo);
         TPBaseMediaCodecDecoder.this.mOutputQueue.put(localTPFrameInfo);
-        AppMethodBeat.o(197467);
+        AppMethodBeat.o(189886);
         return;
       }
-      catch (Exception paramMediaCodec)
+      catch (Exception paramb)
       {
-        TPNativeLog.printLog(3, TPBaseMediaCodecDecoder.this.getLogTag(), TPBaseMediaCodecDecoder.this.getStackTrace(paramMediaCodec));
-        AppMethodBeat.o(197467);
+        TPNativeLog.printLog(3, TPBaseMediaCodecDecoder.this.getLogTag(), TPBaseMediaCodecDecoder.this.getStackTrace(paramb));
+        AppMethodBeat.o(189886);
       }
     }
     
-    public void onOutputFormatChanged(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
+    public void onOutputFormatChanged(com.tencent.tmediacodec.b paramb, MediaFormat paramMediaFormat)
     {
-      AppMethodBeat.i(197469);
+      AppMethodBeat.i(189888);
       TPBaseMediaCodecDecoder.this.processOutputFormatChanged(paramMediaFormat);
-      AppMethodBeat.o(197469);
+      AppMethodBeat.o(189888);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPBaseMediaCodecDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,14 @@ import java.util.regex.Pattern;
 
 public final class h
 {
-  private static final Pattern bDO;
   private static final Pattern bDP;
+  private static final Pattern bDQ;
   
   static
   {
     AppMethodBeat.i(92916);
-    bDO = Pattern.compile("^NOTE(( |\t).*)?$");
-    bDP = Pattern.compile("^﻿?WEBVTT(( |\t).*)?$");
+    bDP = Pattern.compile("^NOTE(( |\t).*)?$");
+    bDQ = Pattern.compile("^﻿?WEBVTT(( |\t).*)?$");
     AppMethodBeat.o(92916);
   }
   
@@ -22,7 +22,7 @@ public final class h
   {
     AppMethodBeat.i(92912);
     paramm = paramm.readLine();
-    if ((paramm == null) || (!bDP.matcher(paramm).matches()))
+    if ((paramm == null) || (!bDQ.matcher(paramm).matches()))
     {
       paramm = new com.google.android.exoplayer2.f.f("Expected WEBVTT. Got ".concat(String.valueOf(paramm)));
       AppMethodBeat.o(92912);
@@ -41,7 +41,7 @@ public final class h
       if (localObject == null) {
         break;
       }
-      if (bDO.matcher((CharSequence)localObject).matches()) {
+      if (bDP.matcher((CharSequence)localObject).matches()) {
         for (;;)
         {
           localObject = paramm.readLine();
@@ -50,7 +50,7 @@ public final class h
           }
         }
       }
-      localObject = f.bDD.matcher((CharSequence)localObject);
+      localObject = f.bDF.matcher((CharSequence)localObject);
     } while (!((Matcher)localObject).matches());
     AppMethodBeat.o(92915);
     return localObject;
@@ -92,7 +92,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.h
  * JD-Core Version:    0.7.0.1
  */

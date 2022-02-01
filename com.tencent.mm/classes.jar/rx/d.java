@@ -9,22 +9,22 @@ import rx.internal.util.h;
 
 public class d<T>
 {
-  final d.a<T> Oui;
+  final a<T> UjW;
   
-  protected d(d.a<T> parama)
+  protected d(a<T> parama)
   {
-    this.Oui = parama;
+    this.UjW = parama;
   }
   
   public static d<Long> a(TimeUnit paramTimeUnit, g paramg)
   {
     AppMethodBeat.i(90058);
-    paramTimeUnit = a(new rx.internal.a.g(paramTimeUnit, paramg));
+    paramTimeUnit = a(new rx.internal.a.g(0L, 1000L, paramTimeUnit, paramg));
     AppMethodBeat.o(90058);
     return paramTimeUnit;
   }
   
-  public static <T> d<T> a(d.a<T> parama)
+  public static <T> d<T> a(a<T> parama)
   {
     AppMethodBeat.i(90055);
     parama = new d(rx.d.c.b(parama));
@@ -49,7 +49,7 @@ public class d<T>
   public static <T> j a(i<? super T> parami, d<T> paramd)
   {
     AppMethodBeat.i(90066);
-    if (paramd.Oui == null)
+    if (paramd.UjW == null)
     {
       parami = new IllegalStateException("onSubscribe function can not be null.");
       AppMethodBeat.o(90066);
@@ -59,31 +59,31 @@ public class d<T>
     parami = new rx.c.a(parami);
     try
     {
-      rx.d.c.a(paramd, paramd.Oui).cr(parami);
+      rx.d.c.a(paramd, paramd.UjW).cA(parami);
       paramd = rx.d.c.c(parami);
       AppMethodBeat.o(90066);
       return paramd;
     }
     catch (Throwable paramd)
     {
-      rx.a.b.L(paramd);
-      if (parami.Ous.OxN) {
-        rx.d.c.onError(rx.d.c.T(paramd));
+      rx.a.b.N(paramd);
+      if (parami.Ukg.UnB) {
+        rx.d.c.onError(rx.d.c.V(paramd));
       }
       for (;;)
       {
-        parami = rx.f.d.gEf();
+        parami = rx.f.d.hRn();
         AppMethodBeat.o(90066);
         return parami;
         try
         {
-          parami.onError(rx.d.c.T(paramd));
+          parami.onError(rx.d.c.V(paramd));
         }
         catch (Throwable parami)
         {
-          rx.a.b.L(parami);
+          rx.a.b.N(parami);
           parami = new rx.a.e("Error occurred attempting to subscribe [" + paramd.getMessage() + "] and then again while trying to pass to onError.", parami);
-          rx.d.c.T(parami);
+          rx.d.c.V(parami);
           AppMethodBeat.o(90066);
           throw parami;
         }
@@ -102,7 +102,7 @@ public class d<T>
   public final <R> d<R> a(d.b<? extends R, ? super T> paramb)
   {
     AppMethodBeat.i(90056);
-    paramb = a(new rx.internal.a.d(this.Oui, paramb));
+    paramb = a(new rx.internal.a.d(this.UjW, paramb));
     AppMethodBeat.o(90056);
     return paramb;
   }
@@ -126,7 +126,7 @@ public class d<T>
   public final j a(rx.b.b<? super T> paramb)
   {
     AppMethodBeat.i(90063);
-    paramb = a(new rx.internal.util.a(paramb, rx.internal.util.c.Oxq, rx.b.c.gDv()), this);
+    paramb = a(new rx.internal.util.a(paramb, rx.internal.util.c.Une, rx.b.c.hQD()), this);
     AppMethodBeat.o(90063);
     return paramb;
   }
@@ -134,7 +134,7 @@ public class d<T>
   public final j a(rx.b.b<? super T> paramb, rx.b.b<Throwable> paramb1)
   {
     AppMethodBeat.i(90064);
-    paramb = a(new rx.internal.util.a(paramb, paramb1, rx.b.c.gDv()), this);
+    paramb = a(new rx.internal.util.a(paramb, paramb1, rx.b.c.hQD()), this);
     AppMethodBeat.o(90064);
     return paramb;
   }
@@ -145,47 +145,51 @@ public class d<T>
     try
     {
       parami.onStart();
-      rx.d.c.a(this, this.Oui).cr(parami);
+      rx.d.c.a(this, this.UjW).cA(parami);
       j localj = rx.d.c.c(parami);
       AppMethodBeat.o(90065);
       return localj;
     }
     catch (Throwable localThrowable)
     {
-      rx.a.b.L(localThrowable);
+      rx.a.b.N(localThrowable);
       try
       {
-        parami.onError(rx.d.c.T(localThrowable));
-        parami = rx.f.d.gEf();
+        parami.onError(rx.d.c.V(localThrowable));
+        parami = rx.f.d.hRn();
         AppMethodBeat.o(90065);
         return parami;
       }
       catch (Throwable parami)
       {
-        rx.a.b.L(parami);
+        rx.a.b.N(parami);
         parami = new rx.a.e("Error occurred attempting to subscribe [" + localThrowable.getMessage() + "] and then again while trying to pass to onError.", parami);
-        rx.d.c.T(parami);
+        rx.d.c.V(parami);
         AppMethodBeat.o(90065);
         throw parami;
       }
     }
   }
   
-  public final d<T> gDq()
+  public final d<T> hQy()
   {
     AppMethodBeat.i(90062);
-    d locald = a(k.b.Ovx);
+    d locald = a(k.b.Ull);
     AppMethodBeat.o(90062);
     return locald;
   }
   
-  public final d<T> gDr()
+  public final d<T> hQz()
   {
     AppMethodBeat.i(90067);
     d locald = a(new m());
     AppMethodBeat.o(90067);
     return locald;
   }
+  
+  public static abstract interface a<T>
+    extends rx.b.b<i<? super T>>
+  {}
   
   public static abstract interface c<T, R>
     extends rx.b.e<d<T>, d<R>>

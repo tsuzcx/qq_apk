@@ -1,27 +1,25 @@
 package com.tencent.mm.plugin.appbrand.appcache;
 
-import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.sdk.platformtools.ae;
 
 public final class at
 {
-  private static a jKh;
-  private static ICommLibReader jKi = null;
+  private static a kMg;
+  private static ICommLibReader kMh = null;
   
   public static void a(a parama)
   {
-    jKh = parama;
+    kMg = parama;
   }
   
-  public static ICommLibReader baF()
+  public static ICommLibReader bvT()
   {
     AppMethodBeat.i(184407);
     try
     {
-      ICommLibReader localICommLibReader = jKi;
-      ae.i("MicroMsg.AppBrand.WxaCommLibPreloadSessionInMM", "getCurrentAcceptedCommLibReader [%s], stacktrace=%s", new Object[] { localICommLibReader, Log.getStackTraceString(new Throwable()) });
+      ICommLibReader localICommLibReader = kMh;
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrand.WxaCommLibPreloadSessionInMM", "getCurrentAcceptedCommLibReader [%s], stacktrace=%s", new Object[] { localICommLibReader, android.util.Log.getStackTraceString(new Throwable()) });
       AppMethodBeat.o(184407);
       return localICommLibReader;
     }
@@ -36,9 +34,9 @@ public final class at
     AppMethodBeat.i(90567);
     try
     {
-      jKi = paramICommLibReader;
-      if (jKh != null) {
-        jKh.b(paramICommLibReader);
+      kMh = paramICommLibReader;
+      if (kMg != null) {
+        kMg.b(paramICommLibReader);
       }
       AppMethodBeat.o(90567);
       return;
@@ -56,7 +54,7 @@ public final class at
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.at
  * JD-Core Version:    0.7.0.1
  */

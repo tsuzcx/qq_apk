@@ -9,10 +9,10 @@ public class SetPwdInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<SetPwdInfo> CREATOR;
-  public int Dlt;
-  public String kCZ;
-  public String kDa;
-  public String vCG;
+  public int HUM;
+  public String lHA;
+  public String lHB;
+  public String yXJ;
   
   static
   {
@@ -23,19 +23,19 @@ public class SetPwdInfo
   
   public SetPwdInfo()
   {
-    this.kCZ = "";
-    this.kDa = "";
+    this.lHA = "";
+    this.lHB = "";
   }
   
   protected SetPwdInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70202);
-    this.kCZ = "";
-    this.kDa = "";
-    this.Dlt = paramParcel.readInt();
-    this.vCG = paramParcel.readString();
-    this.kCZ = paramParcel.readString();
-    this.kDa = paramParcel.readString();
+    this.lHA = "";
+    this.lHB = "";
+    this.HUM = paramParcel.readInt();
+    this.yXJ = paramParcel.readString();
+    this.lHA = paramParcel.readString();
+    this.lHB = paramParcel.readString();
     AppMethodBeat.o(70202);
   }
   
@@ -47,16 +47,16 @@ public class SetPwdInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70203);
-    paramParcel.writeInt(this.Dlt);
-    paramParcel.writeString(this.vCG);
-    paramParcel.writeString(this.kCZ);
-    paramParcel.writeString(this.kDa);
+    paramParcel.writeInt(this.HUM);
+    paramParcel.writeString(this.yXJ);
+    paramParcel.writeString(this.lHA);
+    paramParcel.writeString(this.lHB);
     AppMethodBeat.o(70203);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.util.SetPwdInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -200,20 +200,20 @@ public class SQLiteCursor
   
   public boolean moveToPosition(int paramInt)
   {
-    AppMethodBeat.i(186133);
+    AppMethodBeat.i(193937);
     if (!super.moveToPosition(paramInt))
     {
-      AppMethodBeat.o(186133);
+      AppMethodBeat.o(193937);
       return false;
     }
     int i = getCount();
     if (paramInt >= i)
     {
       this.mPos = i;
-      AppMethodBeat.o(186133);
+      AppMethodBeat.o(193937);
       return false;
     }
-    AppMethodBeat.o(186133);
+    AppMethodBeat.o(193937);
     return true;
   }
   

@@ -1,15 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class yu
-  extends b
+  extends IEvent
 {
-  public a dOK;
-  public b dOL;
-  
   public yu()
   {
     this((byte)0);
@@ -17,24 +12,13 @@ public final class yu
   
   private yu(byte paramByte)
   {
-    AppMethodBeat.i(91226);
-    this.dOK = new a();
-    this.dOL = new b();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(91226);
   }
-  
-  public static final class a
-  {
-    public LinkedList<String> dOM;
-  }
-  
-  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.yu
  * JD-Core Version:    0.7.0.1
  */

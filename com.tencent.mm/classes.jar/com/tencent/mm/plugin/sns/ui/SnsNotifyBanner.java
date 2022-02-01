@@ -15,10 +15,10 @@ import com.tencent.mm.hellhoundlib.b.b;
 public class SnsNotifyBanner
   extends RelativeLayout
 {
-  private TextView AxP;
-  private ImageView AxQ;
-  int AxR;
-  private a AxS;
+  private TextView EHf;
+  private ImageView EHg;
+  int EHh;
+  private a EHi;
   private View mContentView;
   private LayoutInflater mInflater;
   
@@ -26,7 +26,7 @@ public class SnsNotifyBanner
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98934);
-    this.AxR = 0;
+    this.EHh = 0;
     init();
     AppMethodBeat.o(98934);
   }
@@ -35,7 +35,7 @@ public class SnsNotifyBanner
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(98933);
-    this.AxR = 0;
+    this.EHh = 0;
     init();
     AppMethodBeat.o(98933);
   }
@@ -44,17 +44,17 @@ public class SnsNotifyBanner
   {
     AppMethodBeat.i(98935);
     this.mInflater = ((LayoutInflater)getContext().getSystemService("layout_inflater"));
-    this.mContentView = this.mInflater.inflate(2131495573, this, true);
-    this.AxP = ((TextView)this.mContentView.findViewById(2131304941));
-    this.AxQ = ((ImageView)this.mContentView.findViewById(2131304940));
-    this.AxQ.setOnClickListener(new View.OnClickListener()
+    this.mContentView = this.mInflater.inflate(2131496468, this, true);
+    this.EHf = ((TextView)this.mContentView.findViewById(2131308080));
+    this.EHg = ((ImageView)this.mContentView.findViewById(2131308079));
+    this.EHg.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98931);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         SnsNotifyBanner.this.setVisibility(8);
         a.a(this, "com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(98931);
@@ -66,24 +66,24 @@ public class SnsNotifyBanner
   public void setOnClickNotify(a parama)
   {
     AppMethodBeat.i(98936);
-    this.AxS = parama;
-    this.AxP.setOnClickListener(new View.OnClickListener()
+    this.EHi = parama;
+    this.EHf.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(98932);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (SnsNotifyBanner.a(SnsNotifyBanner.this) == null)
         {
           a.a(this, "com/tencent/mm/plugin/sns/ui/SnsNotifyBanner$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(98932);
           return;
         }
-        if (SnsNotifyBanner.this.AxR > 0)
+        if (SnsNotifyBanner.this.EHh > 0)
         {
-          SnsNotifyBanner.this.AxR = 0;
+          SnsNotifyBanner.this.EHh = 0;
           SnsNotifyBanner.a(SnsNotifyBanner.this);
         }
         for (;;)
@@ -103,7 +103,7 @@ public class SnsNotifyBanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsNotifyBanner
  * JD-Core Version:    0.7.0.1
  */

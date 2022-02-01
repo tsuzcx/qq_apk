@@ -2,13 +2,15 @@ package com.tencent.mm.plugin.aa.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vending.c.b;
+import com.tencent.mm.vending.h.e;
 import com.tencent.mm.vending.j.c;
+import com.tencent.mm.vending.j.f;
 
 public final class h
   implements b<g>
 {
-  protected g iVH;
-  public final a iVI;
+  protected g jSB;
+  public final a jSC;
   
   public h()
   {
@@ -20,22 +22,22 @@ public final class h
   private h(g paramg)
   {
     AppMethodBeat.i(63337);
-    this.iVI = new a();
-    this.iVH = paramg;
+    this.jSC = new a();
+    this.jSB = paramg;
     AppMethodBeat.o(63337);
   }
   
-  public final g aRF()
+  public final g bmk()
   {
-    return this.iVH;
+    return this.jSB;
   }
   
   public final class a
-    implements com.tencent.mm.vending.h.e<c<String, String>, com.tencent.mm.vending.j.e<String, Long, Integer, String>>
+    implements e<c<String, String>, f<String, Long, Integer, String, String>>
   {
     public a() {}
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
     }
@@ -43,7 +45,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.h
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,14 @@ import android.content.ComponentName;
 import android.net.Uri;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.e.g;
+import com.tencent.mm.plugin.webview.f.g;
 import com.tencent.mm.plugin.webview.model.al;
 import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.plugin.webview.stub.e.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.k;
 import com.tencent.mm.plugin.webview.ui.tools.widget.k.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.k.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.widget.MMWebView;
 
 public class b
@@ -21,25 +21,25 @@ public class b
   {
     super(paramMMWebView, (byte)0);
     AppMethodBeat.i(80849);
-    this.EJa = new a((byte)0);
+    this.JyR = new a((byte)0);
     AppMethodBeat.o(80849);
   }
   
-  public boolean aKs(String paramString)
+  public boolean baG(String paramString)
   {
     AppMethodBeat.i(80850);
-    boolean bool = super.aKs(paramString);
+    boolean bool = super.baG(paramString);
     AppMethodBeat.o(80850);
     return bool;
   }
   
-  public void eXZ()
+  public void ghe()
   {
     AppMethodBeat.i(80851);
     try
     {
-      this.EAy.a(this.EIP, true, null);
-      if (aKW(this.EIP))
+      this.JpV.a(this.JyF, true, null);
+      if (bbm(this.JyF))
       {
         AppMethodBeat.o(80851);
         return;
@@ -49,60 +49,60 @@ public class b
     {
       for (;;)
       {
-        ae.w("MicroMsg.GameFloatWebViewClient", "postBinded, jumpToActivity, ex = " + localException.getMessage());
+        Log.w("MicroMsg.GameFloatWebViewClient", "postBinded, jumpToActivity, ex = " + localException.getMessage());
       }
-      Uri localUri = Uri.parse(this.EIP);
+      Uri localUri = Uri.parse(this.JyF);
       Object localObject = localUri;
       if (localUri.getScheme() == null)
       {
-        this.EIP += "http://";
-        localObject = Uri.parse(this.EIP);
+        this.JyF += "http://";
+        localObject = Uri.parse(this.JyF);
       }
       if (((Uri)localObject).getScheme().startsWith("http"))
       {
-        ae.i("MicroMsg.GameFloatWebViewClient", "uri scheme not startwith http, scheme = " + ((Uri)localObject).getScheme());
-        if (this.EIV) {}
-        for (localObject = "";; localObject = this.EIP)
+        Log.i("MicroMsg.GameFloatWebViewClient", "uri scheme not startwith http, scheme = " + ((Uri)localObject).getScheme());
+        if (this.JyL) {}
+        for (localObject = "";; localObject = this.JyF)
         {
-          this.EIN = new k.a((String)localObject);
-          this.EIV = false;
-          if ((!this.EIJ) && (!this.EeB.has(this.EIP))) {
+          this.JyD = new k.a((String)localObject);
+          this.JyL = false;
+          if ((!this.Jyz) && (!this.IRi.has(this.JyF))) {
             break label299;
           }
-          if (al.aIG(this.EIP)) {
+          if (al.aYH(this.JyF)) {
             break;
           }
-          ae.f("MicroMsg.GameFloatWebViewClient", "loadInitialUrl, canLoadUrl fail, url = " + this.EIP);
-          aKt(this.EIP);
+          Log.f("MicroMsg.GameFloatWebViewClient", "loadInitialUrl, canLoadUrl fail, url = " + this.JyF);
+          baH(this.JyF);
           AppMethodBeat.o(80851);
           return;
         }
-        if (aKr(this.EIP))
+        if (baF(this.JyF))
         {
-          amx(this.EIP);
+          azM(this.JyF);
           AppMethodBeat.o(80851);
           return;
         }
-        this.hLV.loadUrl(this.EIP);
+        this.iGY.loadUrl(this.JyF);
         AppMethodBeat.o(80851);
         return;
         label299:
-        if (aKr(this.EIP))
+        if (baF(this.JyF))
         {
-          amx(this.EIP);
-          this.EIQ = this.EIP;
+          azM(this.JyF);
+          this.JyG = this.JyF;
         }
-        at(this.EIP, false);
+        av(this.JyF, false);
         AppMethodBeat.o(80851);
         return;
       }
-      if (!al.aIG(this.EIP))
+      if (!al.aYH(this.JyF))
       {
-        aKt(this.EIP);
+        baH(this.JyF);
         AppMethodBeat.o(80851);
         return;
       }
-      this.hLV.loadUrl(this.EIP);
+      this.iGY.loadUrl(this.JyF);
       AppMethodBeat.o(80851);
     }
   }
@@ -118,26 +118,26 @@ public class b
     public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
     {
       AppMethodBeat.i(80847);
-      ae.i("MicroMsg.GameFloatWebViewClient", "onServiceConnected");
-      if (b.this.hLV == null)
+      Log.i("MicroMsg.GameFloatWebViewClient", "onServiceConnected");
+      if (b.this.iGY == null)
       {
-        ae.e("MicroMsg.GameFloatWebViewClient", "onServiceConnected, activity destroyed");
+        Log.e("MicroMsg.GameFloatWebViewClient", "onServiceConnected, activity destroyed");
         AppMethodBeat.o(80847);
         return;
       }
       try
       {
-        b.this.EAy = e.a.H(paramIBinder);
-        b.this.EAy.a(b.this.EJb, b.this.hLV.hashCode());
-        b.this.eZk();
-        b.this.a(b.this.EAy, b.this.EeB);
-        b.this.eXZ();
+        b.this.JpV = e.a.H(paramIBinder);
+        b.this.JpV.a(b.this.JyS, b.this.iGY.hashCode());
+        b.this.giq();
+        b.this.a(b.this.JpV, b.this.IRi);
+        b.this.ghe();
         AppMethodBeat.o(80847);
         return;
       }
       catch (Exception paramComponentName)
       {
-        ae.e("MicroMsg.GameFloatWebViewClient", "addCallback fail, ex = %s", new Object[] { paramComponentName.getMessage() });
+        Log.e("MicroMsg.GameFloatWebViewClient", "addCallback fail, ex = %s", new Object[] { paramComponentName.getMessage() });
         AppMethodBeat.o(80847);
       }
     }

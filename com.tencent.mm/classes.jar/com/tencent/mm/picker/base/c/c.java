@@ -8,62 +8,101 @@ import java.util.TimerTask;
 public final class c
   extends TimerTask
 {
-  private final WheelView iNn;
-  private int iNr;
-  private int iNs;
-  private int offset;
+  private float jKc;
+  private final float jKd;
+  private final WheelView jKe;
   
-  public c(WheelView paramWheelView, int paramInt)
+  public c(WheelView paramWheelView, float paramFloat)
   {
-    this.iNn = paramWheelView;
-    this.offset = paramInt;
-    this.iNr = 2147483647;
-    this.iNs = 0;
+    this.jKe = paramWheelView;
+    this.jKd = paramFloat;
+    this.jKc = 2.147484E+009F;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(175298);
-    if (this.iNr == 2147483647) {
-      this.iNr = this.offset;
-    }
-    this.iNs = ((int)(this.iNr * 0.1F));
-    if (this.iNs == 0) {
-      if (this.iNr >= 0) {
-        break label92;
+    float f1 = 2000.0F;
+    AppMethodBeat.i(175296);
+    if (this.jKc == 2.147484E+009F)
+    {
+      if (Math.abs(this.jKd) <= 2000.0F) {
+        break label103;
+      }
+      if (this.jKd <= 0.0F) {
+        break label97;
       }
     }
-    label92:
-    for (this.iNs = -1; Math.abs(this.iNr) <= 1; this.iNs = 1)
+    label97:
+    label103:
+    for (this.jKc = f1;; this.jKc = this.jKd)
     {
-      this.iNn.aQp();
-      this.iNn.getHandler().sendEmptyMessage(3000);
-      AppMethodBeat.o(175298);
+      if ((Math.abs(this.jKc) < 0.0F) || (Math.abs(this.jKc) > 20.0F)) {
+        break label114;
+      }
+      this.jKe.bkU();
+      this.jKe.getHandler().sendEmptyMessage(2000);
+      AppMethodBeat.o(175296);
       return;
+      f1 = -2000.0F;
+      break;
     }
-    this.iNn.setTotalScrollY(this.iNn.getTotalScrollY() + this.iNs);
-    if (!this.iNn.iuX)
+    label114:
+    int i = (int)(this.jKc / 100.0F);
+    this.jKe.setTotalScrollY(this.jKe.getTotalScrollY() - i);
+    float f5;
+    float f3;
+    float f4;
+    float f2;
+    if (!this.jKe.jqj)
     {
-      float f1 = this.iNn.getItemHeight();
-      float f2 = -this.iNn.getInitPosition();
-      float f3 = this.iNn.getItemsCount() - 1 - this.iNn.getInitPosition();
-      if ((this.iNn.getTotalScrollY() <= f2 * f1) || (this.iNn.getTotalScrollY() >= f1 * f3))
+      f5 = this.jKe.getItemHeight();
+      f3 = -this.jKe.getInitPosition() * f5;
+      f4 = (this.jKe.getItemsCount() - 1 - this.jKe.getInitPosition()) * f5;
+      if (this.jKe.getTotalScrollY() - f5 * 0.25D < f3)
       {
-        this.iNn.setTotalScrollY(this.iNn.getTotalScrollY() - this.iNs);
-        this.iNn.aQp();
-        this.iNn.getHandler().sendEmptyMessage(3000);
-        AppMethodBeat.o(175298);
-        return;
+        f2 = this.jKe.getTotalScrollY() + i;
+        f1 = f4;
+        if (this.jKe.getTotalScrollY() > f2) {
+          break label347;
+        }
+        this.jKc = 40.0F;
+        this.jKe.setTotalScrollY((int)f2);
       }
     }
-    this.iNn.getHandler().sendEmptyMessage(1000);
-    this.iNr -= this.iNs;
-    AppMethodBeat.o(175298);
+    else
+    {
+      label262:
+      if (this.jKc >= 0.0F) {
+        break label378;
+      }
+    }
+    label347:
+    label378:
+    for (this.jKc += 20.0F;; this.jKc -= 20.0F)
+    {
+      this.jKe.getHandler().sendEmptyMessage(1000);
+      AppMethodBeat.o(175296);
+      return;
+      f1 = f4;
+      f2 = f3;
+      if (this.jKe.getTotalScrollY() + f5 * 0.25D <= f4) {
+        break;
+      }
+      f1 = this.jKe.getTotalScrollY() + i;
+      f2 = f3;
+      break;
+      if (this.jKe.getTotalScrollY() < f1) {
+        break label262;
+      }
+      this.jKe.setTotalScrollY((int)f1);
+      this.jKc = -40.0F;
+      break label262;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.picker.base.c.c
  * JD-Core Version:    0.7.0.1
  */

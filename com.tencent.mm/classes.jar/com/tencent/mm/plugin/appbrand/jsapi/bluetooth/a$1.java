@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class a$1
   implements a.a
@@ -10,21 +10,21 @@ final class a$1
   public final void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(144473);
-    ae.e(paramString1, paramString2, paramVarArgs);
+    Log.e(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(144473);
   }
   
   public final void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(144475);
-    ae.i(paramString1, paramString2, paramVarArgs);
+    Log.i(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(144475);
   }
   
   public final void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(144474);
-    ae.w(paramString1, paramString2, paramVarArgs);
+    Log.w(paramString1, paramString2, paramVarArgs);
     AppMethodBeat.o(144474);
   }
 }

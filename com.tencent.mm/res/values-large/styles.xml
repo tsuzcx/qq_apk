@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="c3" parent="@style/c1" />
-    <style name="c_" parent="@style/c8" />
-    <style name="ch" parent="@style/cf" />
-    <style name="cq" parent="@style/co" />
+    <style name="c4" parent="@style/c2" />
+    <style name="ca" parent="@style/c9" />
+    <style name="ci" parent="@style/cg" />
+    <style name="cr" parent="@style/cp" />
 </resources>

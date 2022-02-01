@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.webview.ui.tools;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.c;
 import java.util.Map;
 
 public final class d
 {
-  private static Boolean Erz = null;
+  private static Boolean JeG = null;
   
-  private static boolean eVA()
+  private static boolean ges()
   {
-    AppMethodBeat.i(198178);
+    AppMethodBeat.i(211041);
     StringBuilder localStringBuilder = new StringBuilder(8);
     int i = 0;
     for (;;)
@@ -33,29 +33,29 @@ public final class d
         String str2 = localStringBuilder.toString();
         localStringBuilder.delete(0, localStringBuilder.length());
         localStringBuilder.append((d.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-        if (localStringBuilder.toString().equals(iv(str2, localStringBuilder.toString()))) {
+        if (localStringBuilder.toString().equals(jg(str2, localStringBuilder.toString()))) {
           break label174;
         }
-        AppMethodBeat.o(198178);
+        AppMethodBeat.o(211041);
         return true;
-        AppMethodBeat.o(198178);
+        AppMethodBeat.o(211041);
       }
     }
     str1 = localStringBuilder.toString();
     localStringBuilder.delete(0, localStringBuilder.length());
     localStringBuilder.append((d.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-    if (!localStringBuilder.toString().equals(iv(str1, localStringBuilder.toString())))
+    if (!localStringBuilder.toString().equals(jg(str1, localStringBuilder.toString())))
     {
-      AppMethodBeat.o(198178);
+      AppMethodBeat.o(211041);
       return true;
     }
-    AppMethodBeat.o(198178);
+    AppMethodBeat.o(211041);
     return false;
     label174:
     return false;
   }
   
-  public static String eVB()
+  public static String geu()
   {
     AppMethodBeat.i(79675);
     Object localObject1 = new StringBuilder(8);
@@ -73,11 +73,11 @@ public final class d
       }
       finally
       {
-        localObject1 = iv(((StringBuilder)localObject1).toString(), "");
+        localObject1 = jg(((StringBuilder)localObject1).toString(), "");
         AppMethodBeat.o(79675);
       }
     }
-    localObject1 = iv(((StringBuilder)localObject1).toString(), "");
+    localObject1 = jg(((StringBuilder)localObject1).toString(), "");
     AppMethodBeat.o(79675);
     return localObject1;
     return localObject1;
@@ -105,7 +105,7 @@ public final class d
         String str2 = localStringBuilder.toString();
         localStringBuilder.delete(0, localStringBuilder.length());
         localStringBuilder.append((d.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-        if (localStringBuilder.toString().equals(iv(str2, localStringBuilder.toString()))) {
+        if (localStringBuilder.toString().equals(jg(str2, localStringBuilder.toString()))) {
           break label174;
         }
         AppMethodBeat.o(79676);
@@ -116,7 +116,7 @@ public final class d
     str1 = localStringBuilder.toString();
     localStringBuilder.delete(0, localStringBuilder.length());
     localStringBuilder.append((d.class.hashCode() >>> 31 | 0x1) ^ 0x1);
-    if (!localStringBuilder.toString().equals(iv(str1, localStringBuilder.toString())))
+    if (!localStringBuilder.toString().equals(jg(str1, localStringBuilder.toString())))
     {
       AppMethodBeat.o(79676);
       return true;
@@ -130,45 +130,45 @@ public final class d
   public static boolean isEnabled()
   {
     AppMethodBeat.i(79674);
-    if (Erz == null) {
-      Erz = Boolean.valueOf(eVA());
+    if (JeG == null) {
+      JeG = Boolean.valueOf(ges());
     }
-    boolean bool = Erz.booleanValue();
+    boolean bool = JeG.booleanValue();
     AppMethodBeat.o(79674);
     return bool;
   }
   
-  private static String iv(String paramString1, String paramString2)
+  private static String jg(String paramString1, String paramString2)
   {
     AppMethodBeat.i(79677);
     try
     {
-      localObject = a.a.gAX;
-      localObject = a.xi("100460");
+      localObject = a.a.hnM;
+      localObject = a.Fu("100460");
       if ((localObject == null) || (!((c)localObject).isValid()))
       {
-        ae.w("MicroMsg.WebViewHelper", "check point 1, explained by src code.");
+        Log.w("MicroMsg.WebViewHelper", "check point 1, explained by src code.");
         AppMethodBeat.o(79677);
         return paramString2;
       }
     }
     catch (Throwable paramString1)
     {
-      ae.printErrStackTrace("MicroMsg.WebViewHelper", paramString1, "check point 1-1, explained by src code.", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.WebViewHelper", paramString1, "check point 1-1, explained by src code.", new Object[0]);
       AppMethodBeat.o(79677);
       return paramString2;
     }
-    Object localObject = ((c)localObject).fsy();
+    Object localObject = ((c)localObject).gzz();
     if (localObject == null)
     {
-      ae.w("MicroMsg.WebViewHelper", "check point 2, explained by src code.");
+      Log.w("MicroMsg.WebViewHelper", "check point 2, explained by src code.");
       AppMethodBeat.o(79677);
       return paramString2;
     }
     localObject = (String)((Map)localObject).get(paramString1);
     if (localObject != null)
     {
-      ae.i("MicroMsg.WebViewHelper", "st, sk: %s, val:%s", new Object[] { paramString1, localObject });
+      Log.i("MicroMsg.WebViewHelper", "st, sk: %s, val:%s", new Object[] { paramString1, localObject });
       AppMethodBeat.o(79677);
       return localObject;
     }

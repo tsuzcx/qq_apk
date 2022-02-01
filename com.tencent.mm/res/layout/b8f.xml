@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/al4" android:background="@color/a_r" style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/aiw" android:textColor="@color/y4" android:id="@id/fm_" android:background="@color/xy" android:paddingTop="@dimen/d" android:paddingBottom="@dimen/d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fkb" android:paddingStart="@dimen/o" android:paddingEnd="@dimen/o" />
-    <GridView android:id="@id/fm9" android:background="@color/xo" android:paddingLeft="@dimen/hj" android:paddingTop="@dimen/hu" android:paddingRight="@dimen/hj" android:paddingBottom="@dimen/hu" android:scrollbars="vertical" android:numColumns="5" style="@style/n3" />
-</LinearLayout>

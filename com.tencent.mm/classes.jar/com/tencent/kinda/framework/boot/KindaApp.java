@@ -9,9 +9,9 @@ import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.modularize.KindaAppModuleManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expansions.a;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public class KindaApp
 {
@@ -19,7 +19,7 @@ public class KindaApp
   private static KindaApp instance;
   private KindaAppModuleManager appModuleManager;
   private IAppKinda kinda;
-  private ar threadHandler;
+  private MMHandlerThread threadHandler;
   
   static
   {
@@ -32,8 +32,8 @@ public class KindaApp
   public KindaApp()
   {
     AppMethodBeat.i(18612);
-    ae.i("MicroMsg.Kinda.KindaApp", "create kinda app");
-    g.yxI.dD(782, 30);
+    Log.i("MicroMsg.Kinda.KindaApp", "create kinda app");
+    h.CyF.dN(782, 30);
     this.appModuleManager = new KindaAppModuleManager();
     this.appModuleManager.registerModule(new KindaBaseViewModule());
     this.appModuleManager.registerModule(new KindaBaseServiceModule());
@@ -59,7 +59,7 @@ public class KindaApp
   public static boolean isEnabled()
   {
     AppMethodBeat.i(18609);
-    boolean bool = a.cof();
+    boolean bool = a.cMr();
     AppMethodBeat.o(18609);
     return bool;
   }
@@ -76,7 +76,7 @@ public class KindaApp
   public void notifyAllUseCases(ITransmitKvData paramITransmitKvData)
   {
     AppMethodBeat.i(18616);
-    ae.i("MicroMsg.Kinda.KindaApp", "notifyAllUseCases");
+    Log.i("MicroMsg.Kinda.KindaApp", "notifyAllUseCases");
     this.kinda.notifyAllUseCases(paramITransmitKvData);
     AppMethodBeat.o(18616);
   }
@@ -84,7 +84,7 @@ public class KindaApp
   public void onBackground()
   {
     AppMethodBeat.i(18615);
-    ae.i("MicroMsg.Kinda.KindaApp", "onBackground");
+    Log.i("MicroMsg.Kinda.KindaApp", "onBackground");
     this.kinda.applicationEnterBackground();
     AppMethodBeat.o(18615);
   }
@@ -100,20 +100,20 @@ public class KindaApp
   public void onForeground()
   {
     AppMethodBeat.i(18614);
-    ae.i("MicroMsg.Kinda.KindaApp", "onForeground");
+    Log.i("MicroMsg.Kinda.KindaApp", "onForeground");
     this.kinda.applicationEnterForeground();
     AppMethodBeat.o(18614);
   }
   
   public void reInitModule()
   {
-    AppMethodBeat.i(193148);
+    AppMethodBeat.i(214439);
     if (this.appModuleManager != null)
     {
       this.appModuleManager.initAllModule();
       this.kinda = IAppKinda.getInstance();
     }
-    AppMethodBeat.o(193148);
+    AppMethodBeat.o(214439);
   }
   
   public void releaseAppKinda()
@@ -123,7 +123,7 @@ public class KindaApp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.boot.KindaApp
  * JD-Core Version:    0.7.0.1
  */

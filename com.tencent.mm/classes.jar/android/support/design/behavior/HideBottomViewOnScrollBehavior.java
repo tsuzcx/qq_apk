@@ -15,7 +15,7 @@ public class HideBottomViewOnScrollBehavior<V extends View>
   extends CoordinatorLayout.Behavior<V>
 {
   private int currentState = 2;
-  private ViewPropertyAnimator ha;
+  private ViewPropertyAnimator hc;
   private int height = 0;
   
   public HideBottomViewOnScrollBehavior() {}
@@ -27,7 +27,7 @@ public class HideBottomViewOnScrollBehavior<V extends View>
   
   private void a(V paramV, int paramInt, long paramLong, TimeInterpolator paramTimeInterpolator)
   {
-    this.ha = paramV.animate().translationY(paramInt).setInterpolator(paramTimeInterpolator).setDuration(paramLong).setListener(new AnimatorListenerAdapter()
+    this.hc = paramV.animate().translationY(paramInt).setInterpolator(paramTimeInterpolator).setDuration(paramLong).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -60,29 +60,29 @@ public class HideBottomViewOnScrollBehavior<V extends View>
   
   protected void b(V paramV)
   {
-    if (this.ha != null)
+    if (this.hc != null)
     {
-      this.ha.cancel();
+      this.hc.cancel();
       paramV.clearAnimation();
     }
     this.currentState = 2;
-    a(paramV, 0, 225L, a.gL);
+    a(paramV, 0, 225L, a.gN);
   }
   
   protected void c(V paramV)
   {
-    if (this.ha != null)
+    if (this.hc != null)
     {
-      this.ha.cancel();
+      this.hc.cancel();
       paramV.clearAnimation();
     }
     this.currentState = 1;
-    a(paramV, this.height, 175L, a.gK);
+    a(paramV, this.height, 175L, a.gM);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.behavior.HideBottomViewOnScrollBehavior
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,18 @@
+package com.tencent.mm.plugin.taskbar.api;
+
+import com.tencent.mm.plugin.multitask.model.MultiTaskInfo;
+
+public abstract interface c$a
+{
+  public abstract void a(MultiTaskInfo paramMultiTaskInfo);
+  
+  public abstract void b(MultiTaskInfo paramMultiTaskInfo);
+  
+  public abstract void c(MultiTaskInfo paramMultiTaskInfo);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+ * Qualified Name:     com.tencent.mm.plugin.taskbar.api.c.a
+ * JD-Core Version:    0.7.0.1
+ */

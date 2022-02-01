@@ -1,342 +1,88 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
-import android.app.Activity;
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.c;
-import com.tencent.mm.plugin.webview.c.d;
-import com.tencent.mm.plugin.webview.c.f;
-import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.plugin.webview.ui.tools.video.samelayer.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.g.b.q;
-import d.v;
-import d.z;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.f;
+import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
+import org.json.JSONObject;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "enableFullScreen", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "getSafeAreaInsets", "getScreenBrightness", "getVolume", "handleMsg", "hideKeyBoard", "setOrientation", "setScreenBrightness", "setVolume", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleAdAction;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "ACTION_REPORT", "", "KEY_ACTION", "KEY_DATA", "TAG", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "doReport", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "data", "handleMsg", "plugin-webview_release"})
 public final class k
-  extends com.tencent.mm.plugin.webview.c.c.a
+  extends a
 {
-  private static final int ECX = 372;
-  public static final k EHF;
-  private static final String dLB = "handleDeviceInfo";
+  private static final int CDJ = 367;
+  public static final k Jxm;
+  private static final String edq = "handleAdAction";
   
   static
   {
-    AppMethodBeat.i(199411);
-    EHF = new k();
-    ECX = 372;
-    dLB = "handleDeviceInfo";
-    AppMethodBeat.o(199411);
+    AppMethodBeat.i(182677);
+    Jxm = new k();
+    CDJ = 367;
+    edq = "handleAdAction";
+    AppMethodBeat.o(182677);
   }
   
-  public final boolean a(final d paramd, final com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(f paramf, n paramn)
   {
-    int i = 0;
-    AppMethodBeat.i(199410);
-    p.h(paramd, "env");
-    p.h(paraml, "msg");
-    Object localObject = (String)paraml.xqN.get("action");
-    ae.i("MicroMsg.JsApiHandleDeviceInfo", "handleDeviceInfo action=%s", new Object[] { localObject });
-    if (bu.isNullOrNil((String)localObject))
+    int j = 0;
+    AppMethodBeat.i(210598);
+    p.h(paramf, "env");
+    p.h(paramn, "msg");
+    Object localObject = (String)paramn.params.get("action");
+    Log.i("MicroMsg.JsApiHandleMPPageAction", "alvinfluo handleAdAction action: %s", new Object[] { localObject });
+    CharSequence localCharSequence = (CharSequence)localObject;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
     {
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":fail action is empty", null);
-      AppMethodBeat.o(199410);
+      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail action is empty", null);
+      AppMethodBeat.o(210598);
       return true;
     }
-    boolean bool;
-    if (p.i("enableFullScreen", localObject))
+    if (p.j(localObject, "report"))
     {
-      bool = bu.getBoolean((String)paraml.xqN.get("enable"), false);
-      if ((paramd.context instanceof b))
+      localObject = (String)paramn.params.get("data");
+      localCharSequence = (CharSequence)localObject;
+      if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+      for (i = 1; i != 0; i = 0)
       {
-        if (!bool) {
-          break label288;
-        }
-        switch (bu.getInt((String)paraml.xqN.get("orientation"), 0))
-        {
-        }
-        for (;;)
-        {
-          localObject = paramd.context;
-          if (localObject != null) {
-            break;
-          }
-          paramd = new v("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.video.samelayer.IWebViewUIFullScreen");
-          AppMethodBeat.o(199410);
-          throw paramd;
-          i = 90;
-          continue;
-          i = -90;
-        }
-        ((b)localObject).aw(null, i);
-      }
-      for (;;)
-      {
-        paramd.DQe.i(paraml.Efy, paraml.lcx + ":ok", null);
-        AppMethodBeat.o(199410);
-        return true;
-        label288:
-        localObject = paramd.context;
-        if (localObject == null)
-        {
-          paramd = new v("null cannot be cast to non-null type com.tencent.mm.plugin.webview.ui.tools.video.samelayer.IWebViewUIFullScreen");
-          AppMethodBeat.o(199410);
-          throw paramd;
-        }
-        ((b)localObject).eWo();
-      }
-    }
-    Context localContext;
-    if (p.i("setOrientation", localObject))
-    {
-      i = bu.getInt((String)paraml.xqN.get("orientation"), 0);
-      bool = bu.getBoolean((String)paraml.xqN.get("lock"), true);
-      ae.i("MicroMsg.JsApiHandleDeviceInfo", "setOrientation orientation=" + i + ", lock=" + bool);
-      if ((paramd.context instanceof b))
-      {
-        if (!bool) {
-          break label554;
-        }
-        localContext = paramd.context;
-        localObject = localContext;
-        if (!(localContext instanceof Activity)) {
-          localObject = null;
-        }
-        localObject = (Activity)localObject;
-        if (localObject != null) {
-          switch (i)
-          {
-          default: 
-            ((Activity)localObject).setRequestedOrientation(1);
-          }
-        }
-      }
-      for (;;)
-      {
-        paramd.DQe.i(paraml.Efy, paraml.lcx + ":ok", null);
-        AppMethodBeat.o(199410);
-        return true;
-        ((Activity)localObject).setRequestedOrientation(0);
-        continue;
-        ((Activity)localObject).setRequestedOrientation(8);
-        continue;
-        label554:
-        localContext = paramd.context;
-        localObject = localContext;
-        if (!(localContext instanceof Activity)) {
-          localObject = null;
-        }
-        localObject = (Activity)localObject;
-        if (localObject != null) {
-          ((Activity)localObject).setRequestedOrientation(-1);
-        }
-      }
-    }
-    final float f;
-    if (p.i("setVolume", localObject))
-    {
-      ae.i("MicroMsg.JsApiHandleDeviceInfo", "setVolume");
-      f = (float)bu.getDouble((String)paraml.xqN.get("data"), 0.0D);
-      if ((f < 0.0F) || (f > 1.0F))
-      {
-        AppMethodBeat.o(199410);
-        return false;
-      }
-      localContext = paramd.context;
-      localObject = localContext;
-      if (!(localContext instanceof Activity)) {
-        localObject = null;
-      }
-      localObject = (Activity)localObject;
-      if (localObject != null)
-      {
-        c.h((d.g.a.a)new f((Activity)localObject, f, paramd, paraml));
-        AppMethodBeat.o(199410);
+        paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail data is empty", null);
+        AppMethodBeat.o(210598);
         return true;
       }
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":fail", null);
-      AppMethodBeat.o(199410);
+      localObject = new JSONObject((String)localObject);
+      int k = Util.safeParseInt(((JSONObject)localObject).optString("logid"));
+      localObject = ((JSONObject)localObject).optString("logstr");
+      Log.v("MicroMsg.JsApiHandleMPPageAction", "alvinluo handleAdAction doReport logId: %s, logStr: %s", new Object[] { Integer.valueOf(k), localObject });
+      p.g(localObject, "logStr");
+      i = j;
+      if (((CharSequence)localObject).length() > 0) {
+        i = 1;
+      }
+      if (i != 0) {
+        com.tencent.mm.plugin.report.service.h.CyF.kvStat(k, (String)localObject);
+      }
+      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", null);
+      AppMethodBeat.o(210598);
       return true;
     }
-    if (p.i("getVolume", localObject))
-    {
-      localContext = paramd.context;
-      localObject = localContext;
-      if (!(localContext instanceof Activity)) {
-        localObject = null;
-      }
-      localObject = (Activity)localObject;
-      if (localObject != null)
-      {
-        c.h((d.g.a.a)new c((Activity)localObject, paramd, paraml));
-        AppMethodBeat.o(199410);
-        return true;
-      }
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":fail", null);
-      AppMethodBeat.o(199410);
-      return false;
-    }
-    if (p.i("setScreenBrightness", localObject))
-    {
-      ae.i("MicroMsg.JsApiHandleDeviceInfo", "setScreenBrightness");
-      f = (float)bu.getDouble((String)paraml.xqN.get("data"), 0.0D);
-      if ((f < 0.0F) || (f > 1.0F))
-      {
-        AppMethodBeat.o(199410);
-        return false;
-      }
-      localContext = paramd.context;
-      localObject = localContext;
-      if (!(localContext instanceof Activity)) {
-        localObject = null;
-      }
-      if ((Activity)localObject != null)
-      {
-        c.h((d.g.a.a)new e(paramd, f, paraml));
-        paramd.DQe.i(paraml.Efy, paraml.lcx + ":ok", null);
-        AppMethodBeat.o(199410);
-        return true;
-      }
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":fail", null);
-      AppMethodBeat.o(199410);
-      return true;
-    }
-    if (p.i("getScreenBrightness", localObject))
-    {
-      localContext = paramd.context;
-      localObject = localContext;
-      if (!(localContext instanceof Activity)) {
-        localObject = null;
-      }
-      localObject = (Activity)localObject;
-      if (localObject != null)
-      {
-        c.h((d.g.a.a)new b((Activity)localObject, paramd, paraml));
-        AppMethodBeat.o(199410);
-        return true;
-      }
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":fail", null);
-      AppMethodBeat.o(199410);
-      return false;
-    }
-    if (p.i("getSafeAreaInsets", localObject))
-    {
-      localContext = paramd.context;
-      localObject = localContext;
-      if (!(localContext instanceof Activity)) {
-        localObject = null;
-      }
-      localObject = (Activity)localObject;
-      if (localObject != null)
-      {
-        c.h((d.g.a.a)new a((Activity)localObject, paramd, paraml));
-        AppMethodBeat.o(199410);
-        return true;
-      }
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":fail", null);
-      AppMethodBeat.o(199410);
-      return false;
-    }
-    if (p.i("hideKeyBoard", localObject))
-    {
-      localContext = paramd.context;
-      localObject = localContext;
-      if (!(localContext instanceof WebViewUI)) {
-        localObject = null;
-      }
-      localObject = (WebViewUI)localObject;
-      if (localObject != null)
-      {
-        c.h((d.g.a.a)new d((WebViewUI)localObject, paramd, paraml));
-        AppMethodBeat.o(199410);
-        return true;
-      }
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":fail", null);
-      AppMethodBeat.o(199410);
-      return false;
-    }
-    AppMethodBeat.o(199410);
+    AppMethodBeat.o(210598);
     return false;
   }
   
-  public final int eSw()
+  public final int ePA()
   {
-    return ECX;
+    return CDJ;
   }
   
-  public final String eSx()
+  public final String ePz()
   {
-    return dLB;
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$getSafeAreaInsets$1$1"})
-  static final class a
-    extends q
-    implements d.g.a.a<z>
-  {
-    a(Activity paramActivity, d paramd, com.tencent.mm.plugin.webview.c.l paraml)
-    {
-      super();
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$getScreenBrightness$1$1"})
-  static final class b
-    extends q
-    implements d.g.a.a<z>
-  {
-    b(Activity paramActivity, d paramd, com.tencent.mm.plugin.webview.c.l paraml)
-    {
-      super();
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$getVolume$1$1"})
-  static final class c
-    extends q
-    implements d.g.a.a<z>
-  {
-    c(Activity paramActivity, d paramd, com.tencent.mm.plugin.webview.c.l paraml)
-    {
-      super();
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$hideKeyBoard$1$1"})
-  static final class d
-    extends q
-    implements d.g.a.a<z>
-  {
-    d(WebViewUI paramWebViewUI, d paramd, com.tencent.mm.plugin.webview.c.l paraml)
-    {
-      super();
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$setScreenBrightness$1$1"})
-  static final class e
-    extends q
-    implements d.g.a.a<z>
-  {
-    e(d paramd, float paramFloat, com.tencent.mm.plugin.webview.c.l paraml)
-    {
-      super();
-    }
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiHandleDeviceInfo$setVolume$1$1"})
-  static final class f
-    extends q
-    implements d.g.a.a<z>
-  {
-    f(Activity paramActivity, float paramFloat, d paramd, com.tencent.mm.plugin.webview.c.l paraml)
-    {
-      super();
-    }
+    return edq;
   }
 }
 

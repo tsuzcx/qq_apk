@@ -1,67 +1,39 @@
 package com.tencent.mm.plugin.sns.ad.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Collection;
-import java.util.Map;
+import com.tencent.mm.plugin.report.service.h;
 
 public final class c
+  implements a
 {
-  public static <K, V> boolean aJ(Map<K, V> paramMap)
+  public final void a(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(219175);
-    if (!isEmpty(paramMap))
+    AppMethodBeat.i(94969);
+    switch (paramInt)
     {
-      AppMethodBeat.o(219175);
-      return true;
+    default: 
+      h.CyF.a(12990, paramVarArgs);
+      AppMethodBeat.o(94969);
+      return;
     }
-    AppMethodBeat.o(219175);
-    return false;
+    AppMethodBeat.o(94969);
   }
   
-  public static <T> boolean isEmpty(Collection<T> paramCollection)
+  public final int getKey()
   {
-    AppMethodBeat.i(219172);
-    if ((paramCollection == null) || (paramCollection.isEmpty()))
-    {
-      AppMethodBeat.o(219172);
-      return true;
-    }
-    AppMethodBeat.o(219172);
-    return false;
+    return 12990;
   }
   
-  public static <K, V> boolean isEmpty(Map<K, V> paramMap)
+  public final void v(Object... paramVarArgs)
   {
-    AppMethodBeat.i(219174);
-    if ((paramMap == null) || (paramMap.isEmpty()))
-    {
-      AppMethodBeat.o(219174);
-      return true;
-    }
-    AppMethodBeat.o(219174);
-    return false;
-  }
-  
-  public static <T> boolean m(Collection<T> paramCollection)
-  {
-    AppMethodBeat.i(219173);
-    if (!isEmpty(paramCollection))
-    {
-      AppMethodBeat.o(219173);
-      return true;
-    }
-    AppMethodBeat.o(219173);
-    return false;
-  }
-  
-  public static <T> boolean w(T[] paramArrayOfT)
-  {
-    return (paramArrayOfT == null) || (paramArrayOfT.length == 0);
+    AppMethodBeat.i(94968);
+    a(0, paramVarArgs);
+    AppMethodBeat.o(94968);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.f.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.jsapi.base;
 
 public abstract interface f
 {
-  public abstract boolean bjI();
+  public abstract boolean bEY();
 }
 
 

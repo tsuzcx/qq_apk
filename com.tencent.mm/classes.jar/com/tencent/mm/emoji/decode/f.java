@@ -6,31 +6,31 @@ import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.plugin.gif.MMGIFJNI;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.InputStream;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/decode/MMGIFDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "stream", "Ljava/io/InputStream;", "(Ljava/io/InputStream;)V", "TAG", "", "currFrame", "", "currFrameTime", "framePicker", "Lcom/tencent/mm/emoji/decode/FramePicker;", "gifPointer", "", "lastValidFrame", "Landroid/graphics/Bitmap;", "metadata", "", "startPerformance", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/decode/MMGIFDecoder;", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "", "([B)V", "stream", "Ljava/io/InputStream;", "(Ljava/io/InputStream;)V", "TAG", "", "currFrame", "", "currFrameTime", "framePicker", "Lcom/tencent/mm/emoji/decode/FramePicker;", "gifPointer", "", "lastValidFrame", "Landroid/graphics/Bitmap;", "metadata", "", "startPerformance", "decodeNextFrame", "", "destroy", "drawFrameBitmap", "", "bitmap", "frameCount", "frameHeight", "frameTime", "frameWidth", "getFrame", "seekTo", "timeMs", "plugin-emojisdk_release"})
 public final class f
   implements d
 {
   private final String TAG;
-  private int fMX;
-  private int gkA;
-  private int gkB;
-  private final c gkC;
-  private Bitmap gkx;
-  private long gky;
-  private final int[] gkz;
+  private Bitmap gUK;
+  private long gUL;
+  private final int[] gUM;
+  private int gUN;
+  private int gUO;
+  private final c gUP;
+  private int gsi;
   
   public f(InputStream paramInputStream)
   {
     AppMethodBeat.i(105373);
     this.TAG = "MicroMsg.GIF.MMGIFDecoder";
-    this.gkz = new int[6];
-    this.gkA = -1;
+    this.gUM = new int[6];
+    this.gUN = -1;
     boolean bool = WXHardCoderJNI.hcGifEnable;
     int j = WXHardCoderJNI.hcGifDelay;
     int k = WXHardCoderJNI.hcGifCPU;
@@ -38,17 +38,17 @@ public final class f
     if (WXHardCoderJNI.hcGifThr) {}
     for (int i = Process.myTid();; i = 0)
     {
-      this.fMX = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, this.TAG);
-      this.gky = MMGIFJNI.openByInputStrem(paramInputStream, this.gkz);
-      if ((this.gkz[0] > 1024) || (this.gkz[1] > 1024))
+      this.gsi = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, this.TAG);
+      this.gUL = MMGIFJNI.openByInputStrem(paramInputStream, this.gUM);
+      if ((this.gUM[0] > 1024) || (this.gUM[1] > 1024))
       {
-        ae.w(this.TAG, "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.gkz[0]), Integer.valueOf(this.gkz[1]) });
-        g.yxI.idkeyStat(401L, 2L, 1L, false);
+        Log.w(this.TAG, "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.gUM[0]), Integer.valueOf(this.gUM[1]) });
+        h.CyF.idkeyStat(401L, 2L, 1L, false);
       }
-      paramInputStream = Bitmap.createBitmap(this.gkz[0], this.gkz[1], Bitmap.Config.ARGB_8888);
+      paramInputStream = Bitmap.createBitmap(this.gUM[0], this.gUM[1], Bitmap.Config.ARGB_8888);
       p.g(paramInputStream, "Bitmap.createBitmap(fram… Bitmap.Config.ARGB_8888)");
-      this.gkx = paramInputStream;
-      this.gkC = new c(this.gkz[2]);
+      this.gUK = paramInputStream;
+      this.gUP = new c(this.gUM[2]);
       AppMethodBeat.o(105373);
       return;
     }
@@ -58,8 +58,8 @@ public final class f
   {
     AppMethodBeat.i(105372);
     this.TAG = "MicroMsg.GIF.MMGIFDecoder";
-    this.gkz = new int[6];
-    this.gkA = -1;
+    this.gUM = new int[6];
+    this.gUN = -1;
     boolean bool = WXHardCoderJNI.hcGifEnable;
     int j = WXHardCoderJNI.hcGifDelay;
     int k = WXHardCoderJNI.hcGifCPU;
@@ -67,65 +67,60 @@ public final class f
     if (WXHardCoderJNI.hcGifThr) {}
     for (int i = Process.myTid();; i = 0)
     {
-      this.fMX = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, this.TAG);
-      this.gky = MMGIFJNI.openByByteArray(paramArrayOfByte, this.gkz);
-      if ((this.gkz[0] > 1024) || (this.gkz[1] > 1024))
+      this.gsi = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcGifTimeout, 602, WXHardCoderJNI.hcGifAction, this.TAG);
+      this.gUL = MMGIFJNI.openByByteArray(paramArrayOfByte, this.gUM);
+      if ((this.gUM[0] > 1024) || (this.gUM[1] > 1024))
       {
-        ae.w(this.TAG, "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.gkz[0]), Integer.valueOf(this.gkz[1]) });
-        g.yxI.idkeyStat(401L, 2L, 1L, false);
+        Log.w(this.TAG, "emoji width or height over size. Width:%d Height:%d", new Object[] { Integer.valueOf(this.gUM[0]), Integer.valueOf(this.gUM[1]) });
+        h.CyF.idkeyStat(401L, 2L, 1L, false);
       }
-      paramArrayOfByte = Bitmap.createBitmap(this.gkz[0], this.gkz[1], Bitmap.Config.ARGB_8888);
+      paramArrayOfByte = Bitmap.createBitmap(this.gUM[0], this.gUM[1], Bitmap.Config.ARGB_8888);
       p.g(paramArrayOfByte, "Bitmap.createBitmap(fram… Bitmap.Config.ARGB_8888)");
-      this.gkx = paramArrayOfByte;
-      this.gkC = new c(this.gkz[2]);
+      this.gUK = paramArrayOfByte;
+      this.gUP = new c(this.gUM[2]);
       AppMethodBeat.o(105372);
       return;
     }
   }
   
-  public final void aeG()
+  public final void auo()
   {
     AppMethodBeat.i(105370);
-    Bitmap localBitmap = this.gkx;
-    MMGIFJNI.drawFrameBitmap(this.gky, localBitmap, this.gkz);
-    this.gkA = this.gkz[5];
-    this.gkB = this.gkz[4];
-    ae.d(this.TAG, "drawFrameBitmap: decode frame " + this.gkA + ", " + this.gkB);
+    Bitmap localBitmap = this.gUK;
+    MMGIFJNI.drawFrameBitmap(this.gUL, localBitmap, this.gUM);
+    this.gUN = this.gUM[5];
+    this.gUO = this.gUM[4];
+    Log.d(this.TAG, "drawFrameBitmap: decode frame " + this.gUN + ", " + this.gUO);
     AppMethodBeat.o(105370);
   }
   
-  public final Bitmap aeH()
+  public final int aup()
   {
-    return this.gkx;
+    return this.gUM[2];
   }
   
-  public final int aeI()
+  public final int auq()
   {
-    return this.gkz[2];
-  }
-  
-  public final int aeJ()
-  {
-    if (this.gkz[2] == 1) {
+    if (this.gUM[2] == 1) {
       return 2147483647;
     }
-    return this.gkz[4];
+    return this.gUM[4];
   }
   
-  public final int aeK()
+  public final int aur()
   {
-    return this.gkz[0];
+    return this.gUM[0];
   }
   
-  public final int aeL()
+  public final int aus()
   {
-    return this.gkz[1];
+    return this.gUM[1];
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(105371);
-    if (this.fMX != 0) {
+    if (this.gsi != 0) {
       if ((!WXHardCoderJNI.hcGifEnable) && (!WXHardCoderJNI.hcGifFrameEnable)) {
         break label60;
       }
@@ -133,47 +128,52 @@ public final class f
     label60:
     for (boolean bool = true;; bool = false)
     {
-      WXHardCoderJNI.stopPerformance(bool, this.fMX);
-      this.fMX = 0;
-      long l = this.gky;
-      this.gky = 0L;
+      WXHardCoderJNI.stopPerformance(bool, this.gsi);
+      this.gsi = 0;
+      long l = this.gUL;
+      this.gUL = 0L;
       MMGIFJNI.recycle(l);
       AppMethodBeat.o(105371);
       return;
     }
   }
   
+  public final Bitmap getFrame()
+  {
+    return this.gUK;
+  }
+  
   public final void seekTo(long paramLong)
   {
     int k = 0;
-    AppMethodBeat.i(188544);
-    if (this.gkB <= 0) {
-      aeG();
+    AppMethodBeat.i(199863);
+    if (this.gUO <= 0) {
+      auo();
     }
-    int j = this.gkC.lW((int)paramLong);
-    int m = this.gkz[2];
+    int j = this.gUP.pe((int)paramLong);
+    int m = this.gUM[2];
     int i = 0;
     while ((i < m) && (j < 0))
     {
-      aeG();
-      this.gkC.cw(this.gkA, this.gkB);
-      j = this.gkC.lW((int)paramLong);
+      auo();
+      this.gUP.cz(this.gUN, this.gUO);
+      j = this.gUP.pe((int)paramLong);
       i += 1;
     }
-    j = (j - this.gkA + this.gkz[2]) % this.gkz[2];
-    ae.d(this.TAG, "seekTo: " + paramLong + ", " + this.gkA + ", " + j + ", " + aeJ() + ", " + this.gkz[2] + 65292 + this.gkC.gkv);
+    j = (j - this.gUN + this.gUM[2]) % this.gUM[2];
+    Log.d(this.TAG, "seekTo: " + paramLong + ", " + this.gUN + ", " + j + ", " + auq() + ", " + this.gUM[2] + 65292 + this.gUP.gUI);
     i = k;
     while (i < j)
     {
-      aeG();
+      auo();
       i += 1;
     }
-    AppMethodBeat.o(188544);
+    AppMethodBeat.o(199863);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.f
  * JD-Core Version:    0.7.0.1
  */

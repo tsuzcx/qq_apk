@@ -1,38 +1,62 @@
 package com.tencent.mm.plugin.game.ui.chat_tab;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.iy;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.gamelife.a.c;
-import com.tencent.mm.plugin.gamelife.e.a;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 
 class GameWebTabUI$a
-  implements b<IPCInteger, IPCInteger>
+  implements b<IPCInteger, Bundle>
 {
-  private k.a uEW;
-  private d<IPCInteger> uFL;
+  private MStorage.IOnStorageChange xWT;
+  private com.tencent.mm.pluginsdk.c.a xWU;
+  private d<Bundle> xXQ;
   
   private GameWebTabUI$a()
   {
-    AppMethodBeat.i(195762);
-    this.uEW = new k.a()
+    AppMethodBeat.i(204289);
+    this.xWT = new MStorage.IOnStorageChange()
     {
-      public final void a(String paramAnonymousString, m paramAnonymousm)
+      public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
       {
-        AppMethodBeat.i(195761);
-        if (((paramAnonymousm.obj instanceof a)) && (GameWebTabUI.a.a(GameWebTabUI.a.this) != null))
-        {
-          int i = ((c)g.ab(c.class)).ddp();
-          GameWebTabUI.a.a(GameWebTabUI.a.this).be(new IPCInteger(i));
+        AppMethodBeat.i(204287);
+        if (((paramAnonymousMStorageEventData.obj instanceof com.tencent.mm.plugin.gamelife.e.a)) && (GameWebTabUI.a.a(GameWebTabUI.a.this) != null)) {
+          GameWebTabUI.a.a(GameWebTabUI.a.this).bn(GameWebTabUI.a.dWG());
         }
-        AppMethodBeat.o(195761);
+        AppMethodBeat.o(204287);
       }
     };
-    AppMethodBeat.o(195762);
+    this.xWU = new com.tencent.mm.pluginsdk.c.a()
+    {
+      public final void g(IEvent paramAnonymousIEvent)
+      {
+        AppMethodBeat.i(204288);
+        if (((paramAnonymousIEvent instanceof iy)) && (GameWebTabUI.a.a(GameWebTabUI.a.this) != null)) {
+          GameWebTabUI.a.a(GameWebTabUI.a.this).bn(GameWebTabUI.a.dWG());
+        }
+        AppMethodBeat.o(204288);
+      }
+    };
+    AppMethodBeat.o(204289);
+  }
+  
+  private static Bundle dWF()
+  {
+    AppMethodBeat.i(204290);
+    int i = ((com.tencent.mm.plugin.gamelife.a.c)g.af(com.tencent.mm.plugin.gamelife.a.c.class)).dWZ();
+    int j = ((com.tencent.mm.plugin.game.api.c)g.af(com.tencent.mm.plugin.game.api.c.class)).NY(1);
+    int k = ((com.tencent.mm.plugin.game.api.c)g.af(com.tencent.mm.plugin.game.api.c.class)).NY(2);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("msg_unread_count", i + j);
+    localBundle.putInt("notify_unread_count", k);
+    AppMethodBeat.o(204290);
+    return localBundle;
   }
 }
 

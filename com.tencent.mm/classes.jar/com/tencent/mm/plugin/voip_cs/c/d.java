@@ -8,183 +8,183 @@ import android.os.Build;
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.m;
-import com.tencent.mm.protocal.protobuf.dyy;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.etf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
 {
-  public static int CLW = 0;
-  public static int CLX = 1;
-  public static int CLY = 2;
-  public int CLZ;
-  public long CMA;
-  public int CMB;
-  public int CMC;
-  public int CMD;
-  public int CME;
-  public String CMF;
-  public String CMG;
-  public String CMH;
-  public int CMI;
-  public int CMJ;
-  public int CMK;
-  public int CML;
-  public int CMM;
-  public int CMN;
-  public int CMa;
-  public int CMb;
-  public int CMc;
-  public int CMd;
-  public int CMe;
-  public int CMf;
-  public int CMg;
-  public int CMh;
-  public int CMi;
-  public int CMj;
-  public String CMk;
-  public int CMl;
-  public int CMm;
-  public int CMn;
-  public int CMo;
-  public int CMp;
-  public int CMq;
-  public int CMr;
-  public int CMs;
-  public int CMt;
-  public int CMu;
-  public int CMv;
-  public long CMw;
-  public int CMx;
-  public long CMy;
-  public long CMz;
-  public int CwF;
-  public int CwV;
-  public int Cxa;
-  public int Cxb;
-  public int Cxc;
-  public int CyG;
+  public static int HqM = 0;
+  public static int HqN = 1;
+  public static int HqO = 2;
+  public int HaK;
+  public int HaO;
+  public int HaP;
+  public int HaQ;
+  public int Hau;
+  public int Hcv;
+  public int HqP;
+  public int HqQ;
+  public int HqR;
+  public int HqS;
+  public int HqT;
+  public int HqU;
+  public int HqV;
+  public int HqW;
+  public int HqX;
+  public int HqY;
+  public int HqZ;
+  public int HrA;
+  public int HrB;
+  public int HrC;
+  public int HrD;
+  public String Hra;
+  public int Hrb;
+  public int Hrc;
+  public int Hrd;
+  public int Hre;
+  public int Hrf;
+  public int Hrg;
+  public int Hrh;
+  public int Hri;
+  public int Hrj;
+  public int Hrk;
+  public int Hrl;
+  public long Hrm;
+  public int Hrn;
+  public long Hro;
+  public long Hrp;
+  public long Hrq;
+  public int Hrr;
+  public int Hrs;
+  public int Hrt;
+  public int Hru;
+  public String Hrv;
+  public String Hrw;
+  public String Hrx;
+  public int Hry;
+  public int Hrz;
   public int channelStrategy;
   public int cpuFlag0;
   public int dataType;
   public String deviceModel;
-  public int gKA;
+  public int hzL;
   public int networkType;
   public long roomId;
-  public long uXg;
-  public String uYD;
-  public String uYE;
-  public long uYu;
   public int videoFps;
+  public long ypH;
+  public long yqU;
+  public String yrd;
+  public String yre;
   
   public d()
   {
     AppMethodBeat.i(125349);
     this.dataType = 0;
-    this.CLZ = 0;
-    this.CMa = 0;
-    this.CMb = 0;
+    this.HqP = 0;
+    this.HqQ = 0;
+    this.HqR = 0;
     this.videoFps = 0;
-    this.CMc = 0;
-    this.CMd = 0;
-    this.CMe = 0;
-    this.CMf = 0;
-    this.CMg = 0;
-    this.CMh = 0;
+    this.HqS = 0;
+    this.HqT = 0;
+    this.HqU = 0;
+    this.HqV = 0;
+    this.HqW = 0;
+    this.HqX = 0;
     this.networkType = 0;
-    this.CMi = 0;
-    this.gKA = 0;
-    this.CwV = 0;
+    this.HqY = 0;
+    this.hzL = 0;
+    this.HaK = 0;
     this.roomId = 0L;
-    this.uXg = 0L;
-    this.CMk = "";
-    this.CwF = 0;
-    this.CMm = 0;
-    this.CMn = 0;
-    this.CMo = 0;
-    this.CMp = 0;
-    this.Cxb = 0;
-    this.Cxa = 0;
-    this.CMq = 0;
-    this.CMr = 1;
-    this.CMs = 0;
-    this.CMt = 0;
-    this.CMu = 0;
-    this.CMv = 0;
-    this.CMw = 0L;
-    this.CMy = 0L;
-    this.CMz = 0L;
-    this.CMA = 0L;
-    this.uYu = 0L;
+    this.ypH = 0L;
+    this.Hra = "";
+    this.Hau = 0;
+    this.Hrc = 0;
+    this.Hrd = 0;
+    this.Hre = 0;
+    this.Hrf = 0;
+    this.HaP = 0;
+    this.HaO = 0;
+    this.Hrg = 0;
+    this.Hrh = 1;
+    this.Hri = 0;
+    this.Hrj = 0;
+    this.Hrk = 0;
+    this.Hrl = 0;
+    this.Hrm = 0L;
+    this.Hro = 0L;
+    this.Hrp = 0L;
+    this.Hrq = 0L;
+    this.yqU = 0L;
     this.channelStrategy = 1;
-    this.CyG = 0;
-    this.Cxc = 0;
-    this.CMD = -1;
-    this.CME = 0;
-    this.CMF = "";
+    this.Hcv = 0;
+    this.HaQ = 0;
+    this.Hrt = -1;
+    this.Hru = 0;
+    this.Hrv = "";
     this.deviceModel = "";
-    this.CMG = "";
-    this.CMH = "";
-    this.CMI = 0;
-    this.CMJ = 0;
-    this.CMK = 0;
-    this.CML = 0;
-    this.CMM = 0;
-    this.CMN = 0;
-    this.cpuFlag0 = m.aao();
-    this.uYE = "";
-    this.uYD = "";
-    this.CMF = Build.MANUFACTURER;
-    if (this.CMF.contains(",")) {
-      this.CMF = this.CMF.replace(',', ' ');
+    this.Hrw = "";
+    this.Hrx = "";
+    this.Hry = 0;
+    this.Hrz = 0;
+    this.HrA = 0;
+    this.HrB = 0;
+    this.HrC = 0;
+    this.HrD = 0;
+    this.cpuFlag0 = m.aon();
+    this.yre = "";
+    this.yrd = "";
+    this.Hrv = Build.MANUFACTURER;
+    if (this.Hrv.contains(",")) {
+      this.Hrv = this.Hrv.replace(',', ' ');
     }
     this.deviceModel = Build.MODEL;
     if (this.deviceModel.contains(",")) {
       this.deviceModel = this.deviceModel.replace(',', ' ');
     }
-    this.CMG = Build.VERSION.SDK;
-    if (this.CMG.contains(",")) {
-      this.CMG = this.CMG.replace(',', ' ');
+    this.Hrw = Build.VERSION.SDK;
+    if (this.Hrw.contains(",")) {
+      this.Hrw = this.Hrw.replace(',', ' ');
     }
-    this.CMH = Build.VERSION.RELEASE;
-    if (this.CMH.contains(",")) {
-      this.CMH = this.CMH.replace(',', ' ');
+    this.Hrx = Build.VERSION.RELEASE;
+    if (this.Hrx.contains(",")) {
+      this.Hrx = this.Hrx.replace(',', ' ');
     }
     AppMethodBeat.o(125349);
   }
   
-  public static int eFp()
+  public static int fMx()
   {
     AppMethodBeat.i(125354);
     int i;
     try
     {
-      Object localObject = (ConnectivityManager)ak.getContext().getSystemService("connectivity");
+      Object localObject = (ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity");
       if (localObject != null)
       {
         localObject = ((ConnectivityManager)localObject).getNetworkInfo(0);
         if (localObject == null)
         {
-          i = CLW;
+          i = HqM;
           AppMethodBeat.o(125354);
           return i;
         }
         if (((NetworkInfo)localObject).getState() == NetworkInfo.State.CONNECTED)
         {
-          i = CLX;
+          i = HqN;
           AppMethodBeat.o(125354);
           return i;
         }
-        i = CLY;
+        i = HqO;
         AppMethodBeat.o(125354);
         return i;
       }
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.VoipCSReportHelper", "isMobileNetworkAvailable fail!");
-      i = CLW;
+      Log.e("MicroMsg.VoipCSReportHelper", "isMobileNetworkAvailable fail!");
+      i = HqM;
       AppMethodBeat.o(125354);
     }
     return i;
@@ -246,64 +246,64 @@ public final class d
     }
     catch (NullPointerException paramContext)
     {
-      ae.printErrStackTrace("MicroMsg.VoipCSReportHelper", paramContext, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.VoipCSReportHelper", paramContext, "", new Object[0]);
       AppMethodBeat.o(125355);
     }
     return 0;
   }
   
-  public final void VJ(int paramInt)
+  public final void aei(int paramInt)
   {
     AppMethodBeat.i(125350);
-    this.Cxa = Math.abs(paramInt);
+    this.HaO = Math.abs(paramInt);
     AppMethodBeat.o(125350);
   }
   
-  public final void eFm()
+  public final void fMu()
   {
     AppMethodBeat.i(125351);
-    ae.d("MicroMsg.VoipCSReportHelper", "markEndTalk");
-    if ((this.CMM == 0) && (this.CML != 0))
+    Log.d("MicroMsg.VoipCSReportHelper", "markEndTalk");
+    if ((this.HrC == 0) && (this.HrB != 0))
     {
-      this.CMM = ((int)(System.currentTimeMillis() / 1000L));
-      this.uYu = (this.CMM - this.CML);
+      this.HrC = ((int)(System.currentTimeMillis() / 1000L));
+      this.yqU = (this.HrC - this.HrB);
     }
     AppMethodBeat.o(125351);
   }
   
-  public final void eFn()
+  public final void fMv()
   {
     AppMethodBeat.i(125352);
-    ae.d("MicroMsg.VoipCSReportHelper", "markUserAccept");
-    if (this.CMy == 0L)
+    Log.d("MicroMsg.VoipCSReportHelper", "markUserAccept");
+    if (this.Hro == 0L)
     {
-      this.CMK = ((int)(System.currentTimeMillis() / 1000L));
-      this.CMy = (this.CMK - this.CMI);
+      this.HrA = ((int)(System.currentTimeMillis() / 1000L));
+      this.Hro = (this.HrA - this.Hry);
     }
     AppMethodBeat.o(125352);
   }
   
-  public final dyy eFo()
+  public final etf fMw()
   {
     AppMethodBeat.i(125353);
-    dyy localdyy = new dyy();
-    localdyy.nJA = 2;
-    localdyy.GcA = this.uYD;
-    ae.i("MicroMsg.VoipCSReportHelper", "getVoipCSEngineReportData, result: %s", new Object[] { localdyy.GcA });
-    String[] arrayOfString = this.uYD.split(",");
+    etf localetf = new etf();
+    localetf.oUv = 2;
+    localetf.KWF = this.yrd;
+    Log.i("MicroMsg.VoipCSReportHelper", "getVoipCSEngineReportData, result: %s", new Object[] { localetf.KWF });
+    String[] arrayOfString = this.yrd.split(",");
     if ((arrayOfString != null) && (arrayOfString.length > 0)) {}
     try
     {
-      this.videoFps = bu.getInt(arrayOfString[8], 0);
-      this.CMc = bu.getInt(arrayOfString[10], 0);
+      this.videoFps = Util.getInt(arrayOfString[8], 0);
+      this.HqS = Util.getInt(arrayOfString[10], 0);
       AppMethodBeat.o(125353);
-      return localdyy;
+      return localetf;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.e("MicroMsg.VoipCSReportHelper", "get videoFps and rate fail!!");
+        Log.e("MicroMsg.VoipCSReportHelper", "get videoFps and rate fail!!");
       }
     }
   }

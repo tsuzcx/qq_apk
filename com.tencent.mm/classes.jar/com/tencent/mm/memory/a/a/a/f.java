@@ -3,65 +3,95 @@ package com.tencent.mm.memory.a.a.a;
 import com.tencent.mm.b.f.b;
 import com.tencent.mm.b.f.c;
 import com.tencent.mm.b.h;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class f<T, V extends c<T>>
   implements d<T, V>
 {
-  h<T, V> hAt;
-  b<T, V> hAu = null;
-  f.b<T, V> hAv;
-  f.c<T, V> hAw;
-  a hzY = null;
+  h<T, V> iuA;
+  b<T, V> iuB = null;
+  f.b<T, V> iuC;
+  f.c<T, V> iuD;
+  a iuf = null;
   
   public f(a parama, f.b<T, V> paramb, f.c<T, V> paramc)
   {
-    this.hzY = parama;
-    this.hAv = paramb;
-    this.hAw = paramc;
-    this.hAt = new h(this.hzY.hAd, new f.b()new f.c {}, new f.c() {});
-    this.hAu = new b(this.hzY, new b.a()new b.b {}, new b.b() {});
+    this.iuf = parama;
+    this.iuC = paramb;
+    this.iuD = paramc;
+    this.iuA = new h(this.iuf.iuk, new f.b()new f.c {}, new f.c() {});
+    this.iuB = new b(this.iuf, new b.a()new b.b {}, new b.b() {});
   }
   
-  public final boolean A(T paramT1, T paramT2)
+  protected abstract T B(T paramT1, T paramT2);
+  
+  public final boolean C(T paramT1, T paramT2)
   {
-    boolean bool1 = this.hAt.aN(u(paramT1, paramT2));
-    boolean bool2 = this.hAu.bS(paramT1).aN(paramT2);
+    return (this.iuA.check(B(paramT1, paramT2))) || (this.iuB.C(paramT1, paramT2));
+  }
+  
+  public final boolean H(T paramT1, T paramT2)
+  {
+    boolean bool1 = this.iuA.checkAndUpTime(B(paramT1, paramT2));
+    boolean bool2 = this.iuB.cc(paramT1).checkAndUpTime(paramT2);
     return (bool1) || (bool2);
   }
   
-  public final void ahx()
+  public final void aSq()
   {
-    ae.i("MicroMsg.UsageLruMap", "resetSize %s", new Object[] { Integer.valueOf(this.hzY.hAd) });
-    this.hAt.setMaxSize(this.hzY.hAd);
+    Log.i("MicroMsg.UsageLruMap", "growMaxSize %s and old %s  result %s", new Object[] { Double.valueOf(1.0D), Integer.valueOf(this.iuf.iuk), Integer.valueOf((int)(this.iuf.iuk * 2.0D)) });
+    this.iuA.setMaxSize((int)(this.iuf.iuk * 2.0D));
   }
   
-  public final void azk()
+  public final void axJ()
   {
-    ae.i("MicroMsg.UsageLruMap", "growMaxSize %s and old %s  result %s", new Object[] { Double.valueOf(1.0D), Integer.valueOf(this.hzY.hAd), Integer.valueOf((int)(this.hzY.hAd * 2.0D)) });
-    this.hAt.setMaxSize((int)(this.hzY.hAd * 2.0D));
+    Log.i("MicroMsg.UsageLruMap", "resetSize %s", new Object[] { Integer.valueOf(this.iuf.iuk) });
+    this.iuA.setMaxSize(this.iuf.iuk);
+  }
+  
+  public final int createCount()
+  {
+    return this.iuA.createCount();
+  }
+  
+  public final int evictionCount()
+  {
+    return this.iuA.evictionCount();
+  }
+  
+  public final int hitCount()
+  {
+    return this.iuA.hitCount();
+  }
+  
+  public final int maxSize()
+  {
+    return this.iuA.maxSize();
+  }
+  
+  public final int missCount()
+  {
+    return this.iuA.missCount();
+  }
+  
+  public final int putCount()
+  {
+    return this.iuA.putCount();
   }
   
   public final int size()
   {
-    return this.hAt.size();
+    return this.iuA.size();
   }
   
   public final void trimToSize(int paramInt)
   {
-    this.hAt.trimToSize(paramInt);
-  }
-  
-  protected abstract T u(T paramT1, T paramT2);
-  
-  public final boolean v(T paramT1, T paramT2)
-  {
-    return (this.hAt.aM(u(paramT1, paramT2))) || (this.hAu.v(paramT1, paramT2));
+    this.iuA.trimToSize(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a.f
  * JD-Core Version:    0.7.0.1
  */

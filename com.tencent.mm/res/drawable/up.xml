@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<animation-list android:oneshot="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="16.0dip" />
-    <solid android:color="@color/BW_0_Alpha_0_1" />
-</shape>
+    <item android:duration="67" android:drawable="@drawable/c7s" />
+    <item android:duration="67" android:drawable="@drawable/c83" />
+    <item android:duration="67" android:drawable="@drawable/c8f" />
+    <item android:duration="67" android:drawable="@drawable/c8g" />
+    <item android:duration="67" android:drawable="@drawable/c8i" />
+    <item android:duration="67" android:drawable="@drawable/c8j" />
+    <item android:duration="67" android:drawable="@drawable/c7t" />
+    <item android:duration="67" android:drawable="@drawable/c7u" />
+    <item android:duration="67" android:drawable="@drawable/c7w" />
+    <item android:duration="67" android:drawable="@drawable/c7x" />
+    <item android:duration="67" android:drawable="@drawable/c7z" />
+    <item android:duration="67" android:drawable="@drawable/c80" />
+    <item android:duration="67" android:drawable="@drawable/c82" />
+    <item android:duration="67" android:drawable="@drawable/c84" />
+    <item android:duration="67" android:drawable="@drawable/c86" />
+    <item android:duration="67" android:drawable="@drawable/c87" />
+    <item android:duration="67" android:drawable="@drawable/c89" />
+    <item android:duration="67" android:drawable="@drawable/c8_" />
+    <item android:duration="67" android:drawable="@drawable/c8b" />
+    <item android:duration="67" android:drawable="@drawable/c8c" />
+    <item android:duration="67" android:drawable="@drawable/c8e" />
+</animation-list>

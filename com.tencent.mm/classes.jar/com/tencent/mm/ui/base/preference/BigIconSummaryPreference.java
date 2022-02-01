@@ -24,14 +24,14 @@ public class BigIconSummaryPreference
   {
     AppMethodBeat.i(142501);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    paramViewGroup.setMinimumHeight(paramViewGroup.getResources().getDimensionPixelSize(2131165494));
+    paramViewGroup.setMinimumHeight(paramViewGroup.getResources().getDimensionPixelSize(2131165512));
     AppMethodBeat.o(142501);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.BigIconSummaryPreference
  * JD-Core Version:    0.7.0.1
  */

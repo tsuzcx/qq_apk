@@ -8,41 +8,41 @@ import android.text.TextUtils;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.at;
-import com.tencent.mm.plugin.appbrand.jsapi.c.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c.b;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.ui.t;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.f.a;
+import com.tencent.mm.plugin.appbrand.jsapi.f.b;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.page.ag;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.appbrand.ui.y;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.e.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vending.c.a;
 import com.tencent.mm.vending.g.g;
 
 @SuppressLint({"ViewConstructor"})
 public final class d
-  extends ad
+  extends ag
 {
-  private boolean kpx = false;
+  private boolean ltg = false;
   
   d()
   {
     super(e.class);
   }
   
-  public final com.tencent.mm.vending.g.c<Bitmap> Eu()
+  public final com.tencent.mm.vending.g.c<Bitmap> NT()
   {
     AppMethodBeat.i(45186);
-    com.tencent.mm.vending.g.c localc = g.fSA().c(new a() {});
+    com.tencent.mm.vending.g.c localc = g.hdG().c(new a() {});
     AppMethodBeat.o(45186);
     return localc;
   }
   
-  public final void PD(String paramString) {}
+  public final void YO(String paramString) {}
   
-  public final void PE(final String paramString)
+  public final void YP(final String paramString)
   {
     AppMethodBeat.i(45184);
     runOnUiThread(new Runnable()
@@ -51,7 +51,7 @@ public final class d
       {
         AppMethodBeat.i(45177);
         Object localObject = d.this;
-        if (e.a.Wa(paramString) == e.a.mZn) {}
+        if (e.a.afW(paramString) == e.a.oms) {}
         for (boolean bool = true;; bool = false)
         {
           d.a((d)localObject, bool);
@@ -59,7 +59,7 @@ public final class d
           {
             localObject = ((Activity)d.this.getContext()).getWindow();
             if (localObject != null) {
-              t.c((Window)localObject, d.a(d.this));
+              y.d((Window)localObject, d.a(d.this));
             }
           }
           AppMethodBeat.o(45177);
@@ -73,10 +73,10 @@ public final class d
   public final void a(Context paramContext, AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(45181);
-    long l = bu.HQ();
+    long l = Util.currentTicks();
     super.a(paramContext, paramAppBrandRuntime);
-    this.ktB = new a((byte)0);
-    ae.i("AppBrandGame.WAGamePageView", "[damonlei] WAGamePageView init cost [%d]ms", new Object[] { Long.valueOf(bu.aO(l)) });
+    this.lxr = new a((byte)0);
+    Log.i("AppBrandGame.WAGamePageView", "[damonlei] WAGamePageView init cost [%d]ms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
     AppMethodBeat.o(45181);
   }
   
@@ -93,22 +93,22 @@ public final class d
       AppMethodBeat.o(45183);
       return;
     }
-    if ((getRuntime() == null) || (getRuntime().aXz() == null))
+    if ((getRuntime() == null) || (getRuntime().bsE() == null))
     {
-      ae.w("AppBrandGame.WAGamePageView", "publish runtime destroyed, event %s", new Object[] { paramString1 });
+      Log.w("AppBrandGame.WAGamePageView", "publish runtime destroyed, event %s", new Object[] { paramString1 });
       AppMethodBeat.o(45183);
       return;
     }
-    getRuntime().aXz().c(paramString1, paramString2, aXX());
+    getRuntime().bsE().c(paramString1, paramString2, getComponentId());
     AppMethodBeat.o(45183);
   }
   
-  public final String bhY()
+  public final String bDn()
   {
     return null;
   }
   
-  public final void bhZ()
+  public final void bDo()
   {
     AppMethodBeat.i(45185);
     runOnUiThread(new Runnable()
@@ -120,7 +120,7 @@ public final class d
         {
           Window localWindow = ((Activity)d.this.getContext()).getWindow();
           if (localWindow != null) {
-            t.c(localWindow, d.a(d.this));
+            y.d(localWindow, d.a(d.this));
           }
         }
         AppMethodBeat.o(45178);
@@ -129,30 +129,30 @@ public final class d
     AppMethodBeat.o(45185);
   }
   
-  public final void gh(boolean paramBoolean) {}
+  public final void he(boolean paramBoolean) {}
   
-  public final void sD(int paramInt) {}
+  public final void wA(int paramInt) {}
   
-  public final void sE(int paramInt) {}
+  public final void wz(int paramInt) {}
   
   static final class a
-    implements c.b
+    implements f.b
   {
-    public final void S(int paramInt, String paramString) {}
+    public final void V(int paramInt, String paramString) {}
     
-    public final void a(at paramat, c.a parama)
+    public final void a(bc parambc, f.a parama)
     {
       AppMethodBeat.i(45180);
-      parama.PL("UnsupportedOperation");
+      parama.Zb("UnsupportedOperation");
       AppMethodBeat.o(45180);
     }
     
-    public final void a(m paramm, String paramString1, int paramInt, String paramString2) {}
+    public final void a(p paramp, String paramString1, int paramInt, String paramString2) {}
     
-    public final boolean a(m paramm, String paramString, int paramInt, c.a parama)
+    public final boolean a(p paramp, String paramString, int paramInt, f.a parama)
     {
       AppMethodBeat.i(45179);
-      parama.PL("UnsupportedOperation");
+      parama.Zb("UnsupportedOperation");
       AppMethodBeat.o(45179);
       return true;
     }
@@ -160,7 +160,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.f.d
  * JD-Core Version:    0.7.0.1
  */

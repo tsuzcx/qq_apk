@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class MultiTalkingSmallService
   extends Service
@@ -14,9 +14,9 @@ public class MultiTalkingSmallService
   public IBinder onBind(Intent paramIntent)
   {
     AppMethodBeat.i(114612);
-    ae.i("MicroMsg.MultiTalkingSmallService", "MultiTalkingSmallService onBind");
+    Log.i("MicroMsg.MultiTalkingSmallService", "MultiTalkingSmallService onBind");
     paramIntent = (Notification)paramIntent.getParcelableExtra("notification");
-    if ((d.lA(26)) && (paramIntent != null)) {
+    if ((d.oD(26)) && (paramIntent != null)) {
       startForeground(43, paramIntent);
     }
     AppMethodBeat.o(114612);
@@ -26,21 +26,21 @@ public class MultiTalkingSmallService
   public void onCreate()
   {
     AppMethodBeat.i(114614);
-    ae.i("MicroMsg.MultiTalkingSmallService", "MultiTalkingSmallService onCreate");
+    Log.i("MicroMsg.MultiTalkingSmallService", "MultiTalkingSmallService onCreate");
     AppMethodBeat.o(114614);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(114615);
-    ae.i("MicroMsg.MultiTalkingSmallService", "MultiTalkingSmallService onDestroy");
+    Log.i("MicroMsg.MultiTalkingSmallService", "MultiTalkingSmallService onDestroy");
     AppMethodBeat.o(114615);
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
     AppMethodBeat.i(114613);
-    ae.i("MicroMsg.MultiTalkingSmallService", "MultiTalkingSmallService onUnbind");
+    Log.i("MicroMsg.MultiTalkingSmallService", "MultiTalkingSmallService onUnbind");
     stopSelf();
     boolean bool = super.onUnbind(paramIntent);
     AppMethodBeat.o(114613);

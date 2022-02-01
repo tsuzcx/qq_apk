@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class qr
-  extends b
+  extends IEvent
 {
-  public a dGr;
+  public a dXg;
   
   public qr()
   {
@@ -16,21 +15,24 @@ public final class qr
   
   private qr(byte paramByte)
   {
-    AppMethodBeat.i(177635);
-    this.dGr = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(91214);
+    this.dXg = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(177635);
+    AppMethodBeat.o(91214);
   }
   
   public static final class a
   {
-    public Activity activity;
+    public String dWG;
+    public long dXd;
+    public String dXh;
+    public String username;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.qr
  * JD-Core Version:    0.7.0.1
  */

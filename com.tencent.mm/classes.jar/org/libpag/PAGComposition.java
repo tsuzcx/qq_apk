@@ -9,10 +9,10 @@ public class PAGComposition
 {
   static
   {
-    AppMethodBeat.i(216888);
-    b.loadLibrary("libpag");
+    AppMethodBeat.i(236857);
+    b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(216888);
+    AppMethodBeat.o(236857);
   }
   
   public PAGComposition(long paramLong)
@@ -50,9 +50,9 @@ public class PAGComposition
   
   public int numLayers()
   {
-    AppMethodBeat.i(216887);
+    AppMethodBeat.i(236856);
     int i = numChildren();
-    AppMethodBeat.o(216887);
+    AppMethodBeat.o(236856);
     return i;
   }
   
@@ -74,7 +74,7 @@ public class PAGComposition
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.libpag.PAGComposition
  * JD-Core Version:    0.7.0.1
  */

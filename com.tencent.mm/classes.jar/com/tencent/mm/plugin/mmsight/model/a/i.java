@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.mmsight.model.a;
 import android.media.MediaRecorder;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.h.e;
+import com.tencent.mm.compatible.i.e;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class i
   implements c
@@ -14,24 +14,24 @@ public final class i
   private int audioBitrate;
   private int audioChannelCount;
   private int audioSampleRate;
-  c.a wbK;
-  private aq wbQ;
-  private MediaRecorder wcd;
-  private boolean wce;
+  c.a zvM;
+  private MMHandler zvS;
+  private MediaRecorder zwf;
+  private boolean zwg;
   
   public i(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(89496);
-    this.wce = false;
-    this.wbQ = new aq()
+    this.zwg = false;
+    this.zvS = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(89495);
-        if (i.this.wbK != null)
+        if (i.this.zvM != null)
         {
-          i.this.wbK.ayu();
-          i.this.wbK = null;
+          i.this.zvM.aQY();
+          i.this.zvM = null;
         }
         AppMethodBeat.o(89495);
       }
@@ -42,31 +42,31 @@ public final class i
     if (this.audioChannelCount <= 0) {
       this.audioChannelCount = 1;
     }
-    ae.i("MicroMsg.MMSightAACMediaRecorder", "MMSightAACMediaRecorder, sampleRate: %s, bitrate: %s, audioChannelCount: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.i("MicroMsg.MMSightAACMediaRecorder", "MMSightAACMediaRecorder, sampleRate: %s, bitrate: %s, audioChannelCount: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(89496);
   }
   
-  public final int E(int paramInt, String paramString)
+  public final int H(int paramInt, String paramString)
   {
     AppMethodBeat.i(89497);
-    ae.i("MicroMsg.MMSightAACMediaRecorder", "MMSightAACMediaRecorder init tempPath[%s], sampleRate[%d]", new Object[] { paramString, Integer.valueOf(this.audioSampleRate) });
-    this.wcd = new e();
-    this.wcd.setAudioSource(1);
-    this.wcd.setOutputFormat(2);
-    this.wcd.setAudioEncoder(3);
-    this.wcd.setAudioChannels(this.audioChannelCount);
-    this.wcd.setAudioEncodingBitRate(this.audioBitrate);
-    this.wcd.setAudioSamplingRate(this.audioSampleRate);
-    this.wcd.setOutputFile(paramString);
+    Log.i("MicroMsg.MMSightAACMediaRecorder", "MMSightAACMediaRecorder init tempPath[%s], sampleRate[%d]", new Object[] { paramString, Integer.valueOf(this.audioSampleRate) });
+    this.zwf = new e();
+    this.zwf.setAudioSource(1);
+    this.zwf.setOutputFormat(2);
+    this.zwf.setAudioEncoder(3);
+    this.zwf.setAudioChannels(this.audioChannelCount);
+    this.zwf.setAudioEncodingBitRate(this.audioBitrate);
+    this.zwf.setAudioSamplingRate(this.audioSampleRate);
+    this.zwf.setOutputFile(paramString);
     try
     {
-      this.wcd.prepare();
+      this.zwf.prepare();
       AppMethodBeat.o(89497);
       return 0;
     }
     catch (Exception paramString)
     {
-      ae.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", paramString, "mediaRecorder prepare error: %s", new Object[] { paramString.getMessage() });
+      Log.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", paramString, "mediaRecorder prepare error: %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(89497);
     }
     return -1;
@@ -75,23 +75,23 @@ public final class i
   public final int a(c.a parama)
   {
     AppMethodBeat.i(89498);
-    ae.i("MicroMsg.MMSightAACMediaRecorder", "start, onPcmReady: %s", new Object[] { parama });
-    this.wbK = parama;
+    Log.i("MicroMsg.MMSightAACMediaRecorder", "start, onPcmReady: %s", new Object[] { parama });
+    this.zvM = parama;
     try
     {
-      if ((this.wcd != null) && (!this.wce)) {
-        this.wcd.start();
+      if ((this.zwf != null) && (!this.zwg)) {
+        this.zwf.start();
       }
       return 0;
     }
     catch (Exception parama)
     {
-      ae.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", parama, "start record aac.mp4 error:%s", new Object[] { parama.getMessage() });
+      Log.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", parama, "start record aac.mp4 error:%s", new Object[] { parama.getMessage() });
       return -1;
     }
     finally
     {
-      this.wbQ.sendEmptyMessage(0);
+      this.zvS.sendEmptyMessage(0);
       AppMethodBeat.o(89498);
     }
   }
@@ -99,32 +99,32 @@ public final class i
   public final int a(c.b paramb)
   {
     AppMethodBeat.i(89499);
-    ae.i("MicroMsg.MMSightAACMediaRecorder", "stop, mediaRecorder: %s, callback: %s", new Object[] { this.wcd, paramb });
-    if (this.wcd == null)
+    Log.i("MicroMsg.MMSightAACMediaRecorder", "stop, mediaRecorder: %s, callback: %s", new Object[] { this.zwf, paramb });
+    if (this.zwf == null)
     {
       if (paramb != null) {
-        paramb.ayt();
+        paramb.aQX();
       }
       AppMethodBeat.o(89499);
       return 0;
     }
     try
     {
-      if (!this.wce)
+      if (!this.zwg)
       {
-        this.wcd.stop();
-        this.wcd.release();
+        this.zwf.stop();
+        this.zwf.release();
       }
-      this.wcd = null;
+      this.zwf = null;
       if (paramb != null) {
-        paramb.ayt();
+        paramb.aQX();
       }
       AppMethodBeat.o(89499);
       return 0;
     }
     catch (Exception paramb)
     {
-      ae.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", paramb, "stop record aac.mp4 error:%s", new Object[] { paramb.getMessage() });
+      Log.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", paramb, "stop record aac.mp4 error:%s", new Object[] { paramb.getMessage() });
       AppMethodBeat.o(89499);
     }
     return -1;
@@ -135,60 +135,60 @@ public final class i
     AppMethodBeat.i(89500);
     try
     {
-      if (this.wcd != null)
+      if (this.zwf != null)
       {
-        if (!this.wce)
+        if (!this.zwg)
         {
-          this.wcd.stop();
-          this.wcd.release();
+          this.zwf.stop();
+          this.zwf.release();
         }
-        this.wcd = null;
+        this.zwf = null;
       }
       AppMethodBeat.o(89500);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", localException, "clear error: %s", new Object[] { localException.getMessage() });
+      Log.printErrStackTrace("MicroMsg.MMSightAACMediaRecorder", localException, "clear error: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(89500);
     }
   }
   
-  public final void dqg() {}
+  public final void ejW() {}
   
-  public final com.tencent.mm.audio.b.c.a dqh()
+  public final com.tencent.mm.audio.b.c.a ejX()
   {
     return null;
-  }
-  
-  public final void oe(int paramInt) {}
-  
-  public final void ox(boolean paramBoolean)
-  {
-    this.wce = paramBoolean;
   }
   
   public final void pause()
   {
     AppMethodBeat.i(89501);
-    if (d.lA(24)) {
-      this.wcd.pause();
+    if (d.oD(24)) {
+      this.zwf.pause();
     }
     AppMethodBeat.o(89501);
+  }
+  
+  public final void rA(int paramInt) {}
+  
+  public final void rc(boolean paramBoolean)
+  {
+    this.zwg = paramBoolean;
   }
   
   public final void resume()
   {
     AppMethodBeat.i(89502);
-    if (d.lA(24)) {
-      this.wcd.resume();
+    if (d.oD(24)) {
+      this.zwf.resume();
     }
     AppMethodBeat.o(89502);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.i
  * JD-Core Version:    0.7.0.1
  */

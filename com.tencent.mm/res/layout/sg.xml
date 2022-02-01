@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@null" android:paddingLeft="@dimen/hs" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/hs" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/iq"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/go1" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <RelativeLayout android:id="@id/gnv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/i" android:textColor="@color/s5" android:id="@id/gm9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/gni" android:visibility="gone" android:layout_width="@dimen/act" android:layout_height="@dimen/act" android:layout_centerInParent="true" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/gms" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a4q" />
-    <TextView android:textColor="@color/a0g" android:id="@id/go6" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/gmi" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar android:id="@id/gne" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:onClick="onClick" />
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <TextView android:textColor="@color/a2x" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ipm" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" style="@style/mp" />
+        <TextView android:textSize="@dimen/kc" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/iol" android:layout_width="fill_parent" android:layout_height="0.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/mo" />
     </LinearLayout>
-</RelativeLayout>
+    <Button android:layout_gravity="center|right" android:id="@id/bto" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/tm" style="@style/ow" />
+</LinearLayout>

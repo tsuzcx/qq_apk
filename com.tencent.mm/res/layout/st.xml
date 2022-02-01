@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/gs"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/ha">
-        <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ImageView android:id="@id/ayn" android:layout_width="@dimen/be" android:layout_height="@dimen/be" />
-            <ProgressBar android:layout_gravity="center" android:id="@id/d45" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a4p" />
-        </FrameLayout>
-        <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <com.tencent.mm.ui.widget.edittext.PasterEditText android:textSize="@dimen/ia" android:textColor="@color/to" android:ellipsize="end" android:id="@id/ayq" android:background="@drawable/bm8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="0.0dip" android:maxLines="3" />
-        </ScrollView>
+    <LinearLayout android:gravity="right" android:layout_gravity="right" android:orientation="horizontal" android:id="@id/atz" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/gu">
+        <LinearLayout android:orientation="vertical" android:id="@id/auf" android:layout_width="@dimen/wm" android:layout_height="wrap_content" style="@style/gu">
+            <LinearLayout android:orientation="vertical" android:background="@drawable/c4k" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/ir" android:paddingRight="@dimen/hs" android:paddingBottom="@dimen/bt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxWidth="@dimen/xb" android:minHeight="@dimen/ad">
+                <com.tencent.mm.ui.widget.MMNeat7extView android:layout_gravity="left" android:id="@id/cre" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip" android:singleLine="false" style="@style/mp" />
+                <RelativeLayout android:layout_gravity="left" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5">
+                    <ImageView android:id="@id/crb" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:layout_alignParentEnd="true" />
+                    <com.tencent.mm.ui.widget.MMTextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_5" android:id="@id/crf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aul" android:layout_marginEnd="@dimen/ct" android:layout_toStartOf="@id/crb" android:layout_alignParentStart="true" />
+                </RelativeLayout>
+                <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="@dimen/ir" />
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt">
+                    <ImageView android:id="@id/crd" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/live_chatting_icon" />
+                    <TextView android:textSize="@dimen/kc" android:textColor="@color/FG_1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="@string/da9" style="@style/hv" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <include layout="@layout/qr" />
     </LinearLayout>
 </LinearLayout>

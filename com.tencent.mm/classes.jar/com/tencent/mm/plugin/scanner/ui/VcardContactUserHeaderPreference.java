@@ -6,22 +6,22 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class VcardContactUserHeaderPreference
   extends Preference
 {
-  String bVF;
+  String CHK;
+  private ImageView COW;
+  private TextView COX;
+  private TextView COY;
+  private TextView COZ;
+  private TextView CPa;
   private final Context context;
+  String fullName;
+  String nickName;
   String title;
-  String yEK;
-  private ImageView yLj;
-  private TextView yLk;
-  private TextView yLl;
-  private TextView yLm;
-  private TextView yLn;
-  String yLo;
   
   public VcardContactUserHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,29 +39,29 @@ public class VcardContactUserHeaderPreference
   {
     AppMethodBeat.i(52014);
     super.onBindView(paramView);
-    ae.e("MicroMsg.scanner.VcardContactUserHeaderPreference", "onbindview");
-    this.yLj = ((ImageView)paramView.findViewById(2131306266));
-    this.yLk = ((TextView)paramView.findViewById(2131306267));
-    if (this.yLo != null) {
-      this.yLk.setText(this.yLo);
+    Log.e("MicroMsg.scanner.VcardContactUserHeaderPreference", "onbindview");
+    this.COW = ((ImageView)paramView.findViewById(2131309677));
+    this.COX = ((TextView)paramView.findViewById(2131309678));
+    if (this.fullName != null) {
+      this.COX.setText(this.fullName);
     }
-    this.yLl = ((TextView)paramView.findViewById(2131306268));
-    if (this.bVF != null)
+    this.COY = ((TextView)paramView.findViewById(2131309679));
+    if (this.nickName != null)
     {
-      this.yLl.setText(this.context.getString(2131764630, new Object[] { this.bVF }));
-      this.yLl.setVisibility(0);
+      this.COY.setText(this.context.getString(2131767000, new Object[] { this.nickName }));
+      this.COY.setVisibility(0);
     }
-    this.yLm = ((TextView)paramView.findViewById(2131306269));
-    if (this.yEK != null)
+    this.COZ = ((TextView)paramView.findViewById(2131309680));
+    if (this.CHK != null)
     {
-      this.yLm.setText(this.context.getString(2131764635, new Object[] { this.yEK }));
-      this.yLm.setVisibility(0);
+      this.COZ.setText(this.context.getString(2131767005, new Object[] { this.CHK }));
+      this.COZ.setVisibility(0);
     }
-    this.yLn = ((TextView)paramView.findViewById(2131306270));
+    this.CPa = ((TextView)paramView.findViewById(2131309681));
     if (this.title != null)
     {
-      this.yLn.setText(this.context.getString(2131764636, new Object[] { this.title }));
-      this.yLn.setVisibility(0);
+      this.CPa.setText(this.context.getString(2131767006, new Object[] { this.title }));
+      this.CPa.setVisibility(0);
     }
     AppMethodBeat.o(52014);
   }

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CheckedTextView android:textAppearance="@style/ob" android:textColor="@color/a2x" android:ellipsize="marquee" android:gravity="center_vertical" android:id="@id/b0h" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checkMark="@drawable/arh" android:maxHeight="48.0dip" android:minHeight="48.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

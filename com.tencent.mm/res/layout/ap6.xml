@@ -1,24 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="?rd" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:background="@color/a2h" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <TextView android:id="@android:id/title" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" style="@style/lw" />
-        <TextView android:gravity="center_vertical" android:id="@id/ja" android:layout_width="@dimen/eb" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" android:singleLine="true" style="@style/lw" />
-        <RelativeLayout android:layout_width="@dimen/f" android:layout_height="@dimen/f" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn">
-            <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/coy" android:layout_width="@dimen/f" android:layout_height="@dimen/f" android:scaleType="fitXY" />
-            <ImageView android:id="@id/fox" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:layout_marginBottom="@dimen/d" android:src="@raw/sns_sight_icon_mark" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <RelativeLayout android:layout_width="@dimen/f" android:layout_height="@dimen/f" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn">
-            <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/coz" android:layout_width="@dimen/f" android:layout_height="@dimen/f" android:scaleType="fitXY" />
-            <ImageView android:id="@id/foy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:layout_marginBottom="@dimen/d" android:src="@raw/sns_sight_icon_mark" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <RelativeLayout android:layout_width="@dimen/f" android:layout_height="@dimen/f" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn">
-            <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/cp0" android:layout_width="@dimen/f" android:layout_height="@dimen/f" android:scaleType="fitXY" />
-            <ImageView android:id="@id/foz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:layout_marginBottom="@dimen/d" android:src="@raw/sns_sight_icon_mark" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-        <RelativeLayout android:layout_width="@dimen/f" android:layout_height="@dimen/f" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="@dimen/jn" android:layout_marginBottom="@dimen/jn">
-            <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/cp1" android:layout_width="@dimen/f" android:layout_height="@dimen/f" android:scaleType="fitXY" />
-            <ImageView android:id="@id/fp0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/d" android:layout_marginBottom="@dimen/d" android:src="@raw/sns_sight_icon_mark" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-        </RelativeLayout>
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.mm.plugin.game.ui.GameCenterListView android:id="@id/ddg" android:focusable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/a66" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
+    <RelativeLayout android:id="@id/c2v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/l4" android:gravity="center" android:background="@null" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/dns" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <ViewStub android:id="@id/dkk" android:layout="@layout/aqp" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip" />
+</FrameLayout>

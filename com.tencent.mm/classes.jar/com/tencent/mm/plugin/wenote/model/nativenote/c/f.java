@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 public final class f
 {
-  public static View e(RecyclerView paramRecyclerView, int paramInt)
+  public static View d(RecyclerView paramRecyclerView, int paramInt)
   {
     AppMethodBeat.i(30622);
     if (paramRecyclerView == null)
@@ -21,7 +21,7 @@ public final class f
       paramRecyclerView = paramRecyclerView.getLayoutManager();
       if ((paramRecyclerView instanceof LinearLayoutManager))
       {
-        paramRecyclerView = ((LinearLayoutManager)paramRecyclerView).bY(paramInt);
+        paramRecyclerView = ((LinearLayoutManager)paramRecyclerView).findViewByPosition(paramInt);
         AppMethodBeat.o(30622);
         return paramRecyclerView;
       }
@@ -35,7 +35,7 @@ public final class f
     }
   }
   
-  public static c fO(View paramView)
+  public static c gh(View paramView)
   {
     AppMethodBeat.i(30623);
     if (paramView == null)
@@ -43,9 +43,9 @@ public final class f
       AppMethodBeat.o(30623);
       return null;
     }
-    WXRTEditText localWXRTEditText1 = (WXRTEditText)paramView.findViewById(2131304265);
-    WXRTEditText localWXRTEditText2 = (WXRTEditText)paramView.findViewById(2131297580);
-    paramView = (WXRTEditText)paramView.findViewById(2131297578);
+    WXRTEditText localWXRTEditText1 = (WXRTEditText)paramView.findViewById(2131307188);
+    WXRTEditText localWXRTEditText2 = (WXRTEditText)paramView.findViewById(2131297819);
+    paramView = (WXRTEditText)paramView.findViewById(2131297817);
     if (localWXRTEditText1 != null) {
       paramView = new c(localWXRTEditText1);
     }
@@ -63,7 +63,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.c.f
  * JD-Core Version:    0.7.0.1
  */

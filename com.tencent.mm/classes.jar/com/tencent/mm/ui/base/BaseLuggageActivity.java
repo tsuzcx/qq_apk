@@ -2,24 +2,26 @@ package com.tencent.mm.ui.base;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.view.Window;
-import com.tencent.luggage.h.e;
-import com.tencent.luggage.h.e.e;
+import com.tencent.luggage.h.f;
+import com.tencent.luggage.h.f.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.BaseActivity;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.ar;
 
 public class BaseLuggageActivity
   extends BaseActivity
-  implements e.e
+  implements f.e
 {
-  private static boolean aWS(String paramString)
+  private static boolean blR(String paramString)
   {
     AppMethodBeat.i(176011);
     String str1 = Build.MODEL;
@@ -29,7 +31,7 @@ public class BaseLuggageActivity
       AppMethodBeat.o(176011);
       return false;
     }
-    if ((mq(str1, paramString)) || (mq(str2, paramString)))
+    if ((ne(str1, paramString)) || (ne(str2, paramString)))
     {
       AppMethodBeat.o(176011);
       return true;
@@ -38,7 +40,7 @@ public class BaseLuggageActivity
     return false;
   }
   
-  private static boolean mq(String paramString1, String paramString2)
+  private static boolean ne(String paramString1, String paramString2)
   {
     AppMethodBeat.i(176010);
     if ((paramString1 == null) || (paramString2 == null))
@@ -46,14 +48,22 @@ public class BaseLuggageActivity
       AppMethodBeat.o(176010);
       return false;
     }
-    boolean bool = bu.lX(paramString1.toLowerCase(), paramString2.toLowerCase());
+    boolean bool = Util.isEqual(paramString1.toLowerCase(), paramString2.toLowerCase());
     AppMethodBeat.o(176010);
     return bool;
   }
   
   public int getLayoutId()
   {
-    return 2131492992;
+    return 2131493027;
+  }
+  
+  public Resources getResources()
+  {
+    AppMethodBeat.i(204437);
+    Resources localResources = MMApplicationContext.getResources();
+    AppMethodBeat.o(204437);
+    return localResources;
   }
   
   protected final void hideActionbarLine()
@@ -69,7 +79,7 @@ public class BaseLuggageActivity
   {
     AppMethodBeat.i(131598);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    e.aB(this).onActivityResult(paramInt1, paramInt2, paramIntent);
+    f.aK(this).onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(131598);
   }
   
@@ -77,7 +87,7 @@ public class BaseLuggageActivity
   {
     AppMethodBeat.i(131599);
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    e.aB(this).b(paramInt, paramArrayOfInt);
+    f.aK(this).b(paramInt, paramArrayOfInt);
     AppMethodBeat.o(131599);
   }
   
@@ -94,14 +104,14 @@ public class BaseLuggageActivity
     View localView;
     if (Build.VERSION.SDK_INT >= 26)
     {
-      if ((!aWS("y83a")) && (!aWS("y83")) && (!aWS("v1732a")) && (!aWS("v1732t"))) {
+      if ((!blR("y83a")) && (!blR("y83")) && (!blR("v1732a")) && (!blR("v1732t"))) {
         break label100;
       }
       i = 1;
       if (i == 0)
       {
         getWindow().setNavigationBarColor(paramInt);
-        boolean bool = ao.acF(paramInt);
+        boolean bool = ar.aln(paramInt);
         localView = getWindow().getDecorView();
         paramInt = localView.getSystemUiVisibility();
         if (!bool) {
@@ -134,14 +144,14 @@ public class BaseLuggageActivity
     }
     catch (Throwable localThrowable)
     {
-      ae.printErrStackTrace("MicroMsg.BaseLuggageActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.BaseLuggageActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
       AppMethodBeat.o(131601);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.BaseLuggageActivity
  * JD-Core Version:    0.7.0.1
  */

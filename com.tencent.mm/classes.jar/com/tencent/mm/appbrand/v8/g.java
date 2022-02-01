@@ -5,36 +5,36 @@ import android.os.Looper;
 import android.os.Message;
 import com.eclipsesource.v8.V8ScriptException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.BlockingDeque;
 
 public final class g
   implements c
 {
-  private c.a cYP;
-  private final a cYQ;
-  k cYR;
+  private c.a dpu;
+  private final a dpv;
+  k dpw;
   private final Looper mLooper;
   
   g(Looper paramLooper)
   {
     AppMethodBeat.i(144002);
-    this.cYP = null;
-    this.cYR = new k();
+    this.dpu = null;
+    this.dpw = new k();
     this.mLooper = paramLooper;
-    this.cYQ = new a(paramLooper);
+    this.dpv = new a(paramLooper);
     AppMethodBeat.o(144002);
   }
   
-  public final String Cx()
+  public final String LP()
   {
     AppMethodBeat.i(185101);
-    String str = (String)this.cYR.cZh.peek();
+    String str = (String)this.dpw.dpM.peek();
     AppMethodBeat.o(185101);
     return str;
   }
   
-  public final boolean Nk()
+  public final boolean Xw()
   {
     AppMethodBeat.i(144004);
     if (this.mLooper.getThread().getId() == Thread.currentThread().getId())
@@ -48,65 +48,35 @@ public final class g
   
   public final void a(c.a parama)
   {
-    this.cYP = parama;
+    this.dpu = parama;
   }
   
   public final void b(Runnable paramRunnable, long paramLong, boolean paramBoolean)
   {
-    AppMethodBeat.i(194156);
-    this.cYQ.post(paramRunnable);
-    AppMethodBeat.o(194156);
+    AppMethodBeat.i(216876);
+    this.dpv.post(paramRunnable);
+    AppMethodBeat.o(216876);
   }
   
   final void c(V8ScriptException paramV8ScriptException)
   {
     AppMethodBeat.i(144008);
-    if (this.cYP != null) {
-      this.cYP.b(paramV8ScriptException);
+    if (this.dpu != null) {
+      this.dpu.b(paramV8ScriptException);
     }
     AppMethodBeat.o(144008);
   }
   
-  public final void c(Runnable paramRunnable, boolean paramBoolean)
+  public final void cS(boolean paramBoolean)
   {
-    AppMethodBeat.i(194155);
-    if (paramRunnable == null)
-    {
-      AppMethodBeat.o(194155);
-      return;
-    }
-    if (Thread.currentThread().getId() == this.mLooper.getThread().getId()) {
-      try
-      {
-        paramRunnable.run();
-        if (this.cYR.enable) {
-          this.cYR.cZh.remove(null);
-        }
-        AppMethodBeat.o(194155);
-        return;
-      }
-      catch (V8ScriptException paramRunnable)
-      {
-        for (;;)
-        {
-          c(paramRunnable);
-        }
-      }
-    }
-    this.cYQ.post(paramRunnable);
-    AppMethodBeat.o(194155);
-  }
-  
-  public final void cj(boolean paramBoolean)
-  {
-    this.cYR.enable = paramBoolean;
+    this.dpw.enable = paramBoolean;
   }
   
   public final boolean doInnerLoopTask()
   {
-    AppMethodBeat.i(194158);
-    ae.e("doInnerLoopTask", "should not to be here");
-    AppMethodBeat.o(194158);
+    AppMethodBeat.i(216878);
+    Log.e("doInnerLoopTask", "should not to be here");
+    AppMethodBeat.o(216878);
     return true;
   }
   
@@ -130,9 +100,39 @@ public final class g
   
   public final void resumeLoopTasks()
   {
-    AppMethodBeat.i(194157);
-    ae.e("resumeLoopTasks", "should not to be here");
-    AppMethodBeat.o(194157);
+    AppMethodBeat.i(216877);
+    Log.e("resumeLoopTasks", "should not to be here");
+    AppMethodBeat.o(216877);
+  }
+  
+  public final void u(Runnable paramRunnable)
+  {
+    AppMethodBeat.i(216875);
+    if (paramRunnable == null)
+    {
+      AppMethodBeat.o(216875);
+      return;
+    }
+    if (Thread.currentThread().getId() == this.mLooper.getThread().getId()) {
+      try
+      {
+        paramRunnable.run();
+        if (this.dpw.enable) {
+          this.dpw.dpM.remove(null);
+        }
+        AppMethodBeat.o(216875);
+        return;
+      }
+      catch (V8ScriptException paramRunnable)
+      {
+        for (;;)
+        {
+          c(paramRunnable);
+        }
+      }
+    }
+    this.dpv.post(paramRunnable);
+    AppMethodBeat.o(216875);
   }
   
   final class a
@@ -149,8 +149,8 @@ public final class g
       try
       {
         super.dispatchMessage(paramMessage);
-        if (g.this.cYR.enable) {
-          g.this.cYR.cZh.pollFirst();
+        if (g.this.dpw.enable) {
+          g.this.dpw.dpM.pollFirst();
         }
         AppMethodBeat.o(144001);
         return;
@@ -167,7 +167,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.appbrand.v8.g
  * JD-Core Version:    0.7.0.1
  */

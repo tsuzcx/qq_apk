@@ -1,98 +1,27 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/VLogGenerateModel;", "", "outputDurationMs", "", "outputAudioType", "outputPath", "", "targetWidth", "targetHeight", "videoBitrate", "audioBitrate", "frameRate", "videoRotate", "audioSampleRate", "audioChannelCount", "(IILjava/lang/String;IIIIIIII)V", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "getAudioChannelCount", "setAudioChannelCount", "getAudioSampleRate", "setAudioSampleRate", "getFrameRate", "setFrameRate", "getOutputAudioType", "setOutputAudioType", "getOutputDurationMs", "setOutputDurationMs", "getOutputPath", "()Ljava/lang/String;", "setOutputPath", "(Ljava/lang/String;)V", "getTargetHeight", "setTargetHeight", "getTargetWidth", "setTargetWidth", "getVideoBitrate", "setVideoBitrate", "getVideoRotate", "setVideoRotate", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "", "other", "hashCode", "toString", "plugin-vlog_release"})
-public final class y
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/ScaleType;", "", "(Ljava/lang/String;I)V", "CENTER_CROP", "CENTER_INSIDE", "VERTICAL_DISPLAY", "NOT_SCALE", "plugin-vlog_release"})
+public enum y
 {
-  public int BYg;
-  public int BYh;
-  public int audioBitrate;
-  public int audioChannelCount;
-  public int audioSampleRate;
-  public int frameRate;
-  public int hoy;
-  public String pYH;
-  public int targetHeight;
-  public int targetWidth;
-  public int videoBitrate;
-  
-  private y(String paramString)
+  static
   {
-    AppMethodBeat.i(110935);
-    this.BYg = 0;
-    this.BYh = 0;
-    this.pYH = paramString;
-    this.targetWidth = 0;
-    this.targetHeight = 0;
-    this.videoBitrate = 0;
-    this.audioBitrate = 0;
-    this.frameRate = 0;
-    this.hoy = 0;
-    this.audioSampleRate = 0;
-    this.audioChannelCount = 1;
-    AppMethodBeat.o(110935);
+    AppMethodBeat.i(110928);
+    y localy1 = new y("CENTER_CROP", 0);
+    GyZ = localy1;
+    y localy2 = new y("CENTER_INSIDE", 1);
+    Gza = localy2;
+    y localy3 = new y("VERTICAL_DISPLAY", 2);
+    Gzb = localy3;
+    y localy4 = new y("NOT_SCALE", 3);
+    Gzc = localy4;
+    Gzd = new y[] { localy1, localy2, localy3, localy4 };
+    AppMethodBeat.o(110928);
   }
   
-  public final void aEK(String paramString)
-  {
-    AppMethodBeat.i(110934);
-    p.h(paramString, "<set-?>");
-    this.pYH = paramString;
-    AppMethodBeat.o(110934);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(110939);
-    if (this != paramObject)
-    {
-      if ((paramObject instanceof y))
-      {
-        paramObject = (y)paramObject;
-        if ((this.BYg != paramObject.BYg) || (this.BYh != paramObject.BYh) || (!p.i(this.pYH, paramObject.pYH)) || (this.targetWidth != paramObject.targetWidth) || (this.targetHeight != paramObject.targetHeight) || (this.videoBitrate != paramObject.videoBitrate) || (this.audioBitrate != paramObject.audioBitrate) || (this.frameRate != paramObject.frameRate) || (this.hoy != paramObject.hoy) || (this.audioSampleRate != paramObject.audioSampleRate) || (this.audioChannelCount != paramObject.audioChannelCount)) {}
-      }
-    }
-    else
-    {
-      AppMethodBeat.o(110939);
-      return true;
-    }
-    AppMethodBeat.o(110939);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(110938);
-    int j = this.BYg;
-    int k = this.BYh;
-    String str = this.pYH;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      int m = this.targetWidth;
-      int n = this.targetHeight;
-      int i1 = this.videoBitrate;
-      int i2 = this.audioBitrate;
-      int i3 = this.frameRate;
-      int i4 = this.hoy;
-      int i5 = this.audioSampleRate;
-      int i6 = this.audioChannelCount;
-      AppMethodBeat.o(110938);
-      return ((((((((i + (j * 31 + k) * 31) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6;
-    }
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(110937);
-    String str = "VLogGenerateModel(outputDurationMs=" + this.BYg + ", outputAudioType=" + this.BYh + ", outputPath=" + this.pYH + ", targetWidth=" + this.targetWidth + ", targetHeight=" + this.targetHeight + ", videoBitrate=" + this.videoBitrate + ", audioBitrate=" + this.audioBitrate + ", frameRate=" + this.frameRate + ", videoRotate=" + this.hoy + ", audioSampleRate=" + this.audioSampleRate + ", audioChannelCount=" + this.audioChannelCount + ")";
-    AppMethodBeat.o(110937);
-    return str;
-  }
+  private y() {}
 }
 
 

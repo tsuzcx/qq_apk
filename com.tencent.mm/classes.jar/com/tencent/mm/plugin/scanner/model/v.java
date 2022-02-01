@@ -1,464 +1,273 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import android.content.Context;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.scanner.api.ScanImagePHashInfo;
-import com.tencent.mm.protocal.protobuf.GoodsObject;
-import com.tencent.mm.protocal.protobuf.me;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.l;
-import org.json.JSONObject;
+import java.io.File;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/ScanFastFocusEngineManager;", "", "()V", "KEY_SCAN_CONFIG_GUIDE_WORDING", "", "KEY_SCAN_CONFIG_LAST_UPDATE_TIME_SUFFIX", "TAG", "THREAD_LOOP_TAG", "count", "", "focusEngineNative", "Lcom/tencent/mm/plugin/scanner/model/ScanFastFocusEngineNative;", "isAICrop", "", "isInit", "isUsingAI", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "scanPointResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "serverState", "checkAndUpdateScanConfig", "", "computeImagePHash", "Lcom/tencent/mm/plugin/scanner/api/ScanImagePHashInfo;", "imageData", "", "imageWidth", "imageHeight", "slidedImage", "getCropObject", "Lcom/tencent/mm/protocal/protobuf/GoodsObject;", "getPointObjects", "getReportString", "getScanConfigGuideWording", "init", "width", "height", "cameraRotation", "usingAI", "initMMKV", "initNetSpeed", "needUpdateScanConfig", "type", "onUpdateScanConfigSuccess", "response", "Lcom/tencent/mm/protocal/protobuf/MMBizScanConfSyncResp;", "parseRemoteResult", "Lcom/tencent/mm/plugin/scanner/model/ScanGoodsRemoteResult;", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageResponse;", "source", "process", "pixelFormat", "release", "reset", "runTask", "task", "Lcom/tencent/mm/plugin/scanner/model/ScanFocusEngineTask;", "tag", "saveUpdateScanConfigTime", "timestamp", "", "setConfig", "config", "setServerState", "shouldJump", "Lcom/tencent/mm/plugin/scanner/model/ScanFrameProcessResult;", "minX", "", "minY", "maxX", "maxY", "frameId", "forceJump", "updateScanConfig", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/model/ScanAssetsManager;", "", "()V", "CENTER_DET_BIN_FILE_NAME", "", "CENTER_DET_PARAM_FILE_NAME", "TAG", "checkDirectory", "", "context", "Landroid/content/Context;", "copyFileFromAssets", "srcFileName", "dstFileName", "getCenterBinFilePath", "getCenterParamFilePath", "getSavedFileDirectory", "init", "plugin-scan_release"})
 public final class v
 {
-  private static boolean cBE;
-  private static ay cCf;
-  private static int count;
-  private static ScanFastFocusEngineNative yDm;
-  private static int yDn;
-  private static boolean yDo;
-  private static boolean yDp;
-  private static ac yDq;
-  public static final v yDr;
+  public static final v CFW;
   
   static
   {
-    AppMethodBeat.i(52213);
-    yDr = new v();
-    yDm = new ScanFastFocusEngineNative();
-    yDn = -1;
-    yDq = new ac();
-    String str = com.tencent.mm.model.v.aAC() + "_scan_config_mmkv";
-    cCf = ay.aRW(str);
-    ae.v("MicroMsg.ScanFastFocusEngineManager", "initMMKV key: %s", new Object[] { str });
-    AppMethodBeat.o(52213);
+    AppMethodBeat.i(52184);
+    CFW = new v();
+    AppMethodBeat.o(52184);
   }
   
-  public static final ScanImagePHashInfo C(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static String cF(Context paramContext)
   {
-    AppMethodBeat.i(189580);
-    p.h(paramArrayOfByte, "imageData");
-    paramArrayOfByte = yDm.computeImagePHash(paramArrayOfByte, paramInt1, paramInt2, false);
-    AppMethodBeat.o(189580);
-    return paramArrayOfByte;
+    AppMethodBeat.i(52183);
+    p.h(paramContext, "context");
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramContext = paramContext.getFilesDir();
+    p.g(paramContext, "context.filesDir");
+    paramContext = paramContext.getParent() + "/scan_goods/";
+    AppMethodBeat.o(52183);
+    return paramContext;
   }
   
-  private static void OY(int paramInt)
+  /* Error */
+  public static void j(Context paramContext, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(189581);
-    ae.i("MicroMsg.ScanFastFocusEngineManager", "alvinluo updateScanConfig type: %d", new Object[] { Integer.valueOf(paramInt) });
-    u.a(paramInt, (u.a)new v.c(paramInt));
-    AppMethodBeat.o(189581);
-  }
-  
-  public static final x a(me paramme, int paramInt)
-  {
-    AppMethodBeat.i(52205);
-    p.h(paramme, "response");
-    x localx = new x();
-    if (paramme != null)
-    {
-      localx.dmw = paramme.dwj;
-      localx.jumpType = paramme.FXF;
-      localx.yDv = paramme.FXG;
-      localx.yDw = paramme.FXH;
-      localx.rSl = paramme.FXI;
-      localx.yDx = paramme.FXJ;
-      localx.sessionId = paramme.FXv;
-      localx.yDy = paramme.FXu;
-      localx.yDz = paramme.FXL;
-    }
-    if (paramme.FXJ != null)
-    {
-      if (paramInt != 1) {
-        break label392;
-      }
-      float f1 = paramme.FXJ.relative_minx;
-      float f2 = paramme.FXJ.relative_miny;
-      float f3 = paramme.FXJ.relative_maxx;
-      float f4 = paramme.FXJ.relative_maxy;
-      paramInt = paramme.FXu;
-      boolean bool = paramme.FXK;
-      if (!cBE) {
-        break label387;
-      }
-      ae.v("MicroMsg.ScanFastFocusEngineManager", "alvinluo shouldJump minX: %f, minY: %f, maxX: %f, maxY: %f, frameId: %d, forceJump: %b", new Object[] { Float.valueOf(f1), Float.valueOf(f2), Float.valueOf(f3), Float.valueOf(f4), Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-      paramme = yDm.shouldJump(f1, f2, f3, f4, paramInt, bool);
-      if (paramme != null)
-      {
-        localx.yDu = paramme.shouldJump;
-        localx.centerX = ((paramme.minX + paramme.maxX) / 2.0F);
-        f1 = paramme.minY;
-        localx.centerY = ((paramme.maxY + f1) / 2.0F);
-      }
-    }
-    for (;;)
-    {
-      localx.centerX = Math.max(0.0F, localx.centerX);
-      localx.centerX = Math.min(1.0F, localx.centerX);
-      localx.centerY = Math.max(0.0F, localx.centerY);
-      localx.centerY = Math.min(1.0F, localx.centerY);
-      ae.v("MicroMsg.ScanFastFocusEngineManager", "alvinluo parseRemoteResult centerX: %f, centerY: %f", new Object[] { Float.valueOf(localx.centerX), Float.valueOf(localx.centerY) });
-      AppMethodBeat.o(52205);
-      return localx;
-      label387:
-      paramme = null;
-      break;
-      label392:
-      if (paramInt == 2)
-      {
-        localx.yDu = true;
-        localx.centerX = ((paramme.FXJ.relative_minx + paramme.FXJ.relative_maxx) / 2.0F);
-        localx.centerY = ((paramme.FXJ.relative_miny + paramme.FXJ.relative_maxy) / 2.0F);
-      }
-    }
-  }
-  
-  public static final void a(w paramw)
-  {
-    AppMethodBeat.i(52212);
-    p.h(paramw, "task");
-    count += 1;
-    ae.v("MicroMsg.ScanFastFocusEngineManager", "alvinluo runTask %d", new Object[] { Integer.valueOf(count) });
-    h.MqF.f((Runnable)paramw, "AiScanImageDecodeQueue_decode_task");
-    AppMethodBeat.o(52212);
-  }
-  
-  public static final void a(w paramw, String paramString)
-  {
-    AppMethodBeat.i(161055);
-    p.h(paramw, "task");
-    p.h(paramString, "tag");
-    h.MqF.f((Runnable)paramw, paramString);
-    AppMethodBeat.o(161055);
-  }
-  
-  public static final int d(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    AppMethodBeat.i(189579);
-    ae.i("MicroMsg.ScanFastFocusEngineManager", "alvinluo initFocusEngine isInit: %b, width: %d, height: %d, cameraRotation: %d, useAI: %b", new Object[] { Boolean.valueOf(cBE), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean) });
-    if (cBE)
-    {
-      ae.w("MicroMsg.ScanFastFocusEngineManager", "alvinluo initFocusEngine has inited and ignore");
-      AppMethodBeat.o(189579);
-      return 0;
-    }
-    long l1 = System.currentTimeMillis();
-    cBE = true;
-    Object localObject1 = t.yDh;
-    localObject1 = ak.getContext();
-    p.g(localObject1, "MMApplicationContext.getContext()");
-    p.h(localObject1, "context");
-    localObject1 = t.cl((Context)localObject1) + "center_det.bin";
-    Object localObject2 = t.yDh;
-    localObject2 = ak.getContext();
-    p.g(localObject2, "MMApplicationContext.getContext()");
-    p.h(localObject2, "context");
-    localObject2 = t.cl((Context)localObject2) + "center_det.param";
-    paramInt2 = yDm.nativeInit(paramInt1, paramInt2, 0, 0, paramInt3, (String)localObject1, (String)localObject2, paramBoolean);
-    if (!o.fB((String)localObject1)) {
-      ae.w("MicroMsg.ScanFastFocusEngineManager", "alvinluo initFocusEngine centerBin not exist");
-    }
-    if (!o.fB((String)localObject2)) {
-      ae.w("MicroMsg.ScanFastFocusEngineManager", "alvinluo initFocusEngine centerParam not exist");
-    }
-    yDo = yDm.isUsingAI();
-    yDp = yDm.isAICrop();
-    long l2 = System.currentTimeMillis();
-    ae.i("MicroMsg.ScanFastFocusEngineManager", "alvinluo initFocusEngine result: %d, usingAI: %b, aiCrop: %b, init cost: %d", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(yDo), Boolean.valueOf(yDp), Long.valueOf(l2 - l1) });
-    if (paramInt2 != 0)
-    {
-      AppMethodBeat.o(189579);
-      return paramInt2;
-    }
-    localObject1 = g.ajj();
-    p.g(localObject1, "MMKernel.getNetSceneQueue()");
-    if (((q)localObject1).aFd() != 6)
-    {
-      localObject1 = g.ajj();
-      p.g(localObject1, "MMKernel.getNetSceneQueue()");
-      if (((q)localObject1).aFd() != 4) {}
-    }
-    else if (az.getNetType(ak.getContext()) == 0)
-    {
-      paramInt1 = 0;
-      ae.i("MicroMsg.ScanFastFocusEngineManager", "alvinluo initNetSpeed: %d", new Object[] { Integer.valueOf(paramInt1) });
-      yDm.setNetSpeed(paramInt1);
-      OY(2);
-      localObject1 = cCf;
-      if (localObject1 == null) {
-        break label484;
-      }
-      l1 = ((ay)localObject1).getLong("scan_config_last_update_3", 0L);
-      label429:
-      if ((l1 != 0L) && ((l1 <= 0L) || (System.currentTimeMillis() - l1 < 86400000L))) {
-        break label490;
-      }
-    }
-    label484:
-    label490:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      if (paramInt1 != 0) {
-        OY(3);
-      }
-      AppMethodBeat.o(189579);
-      return paramInt2;
-      paramInt1 = 1;
-      break;
-      paramInt1 = 1;
-      break;
-      l1 = 0L;
-      break label429;
-    }
-  }
-  
-  public static final ac dOr()
-  {
-    Object localObject = null;
-    AppMethodBeat.i(52204);
-    if (cBE)
-    {
-      yDq.points = yDm.getPointObjects();
-      yDq.pointCount = yDm.pointCount;
-      int i = yDq.pointCount;
-      int j = yDq.hashCode();
-      ScanPoint[] arrayOfScanPoint = yDq.points;
-      if (arrayOfScanPoint != null) {
-        localObject = Integer.valueOf(arrayOfScanPoint.hashCode());
-      }
-      ae.v("MicroMsg.ScanFastFocusEngineManager", "alvinluo getPointObjects pointCount: %d, hashCode: %d, %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), localObject });
-      localObject = yDq;
-      AppMethodBeat.o(52204);
-      return localObject;
-    }
-    AppMethodBeat.o(52204);
-    return null;
-  }
-  
-  public static final GoodsObject dOs()
-  {
-    AppMethodBeat.i(52206);
-    if (cBE)
-    {
-      ae.v("MicroMsg.ScanFastFocusEngineManager", "alvinluo getCropObject %f, %f, %f, %f", new Object[] { Float.valueOf(yDm.cropObject.relative_minx), Float.valueOf(yDm.cropObject.relative_maxx), Float.valueOf(yDm.cropObject.relative_miny), Float.valueOf(yDm.cropObject.relative_maxy) });
-      GoodsObject localGoodsObject = yDm.cropObject;
-      AppMethodBeat.o(52206);
-      return localGoodsObject;
-    }
-    AppMethodBeat.o(52206);
-    return null;
-  }
-  
-  public static final void dOt()
-  {
-    AppMethodBeat.i(52209);
-    if (yDn != 0) {
-      a((w)new b());
-    }
-    AppMethodBeat.o(52209);
-  }
-  
-  public static final String dOu()
-  {
-    AppMethodBeat.i(189582);
-    Object localObject = cCf;
-    String str2;
-    if (localObject != null)
-    {
-      str2 = ((ay)localObject).getString("scan_config_guide_wording", "");
-      localObject = str2;
-      if (str2 != null) {}
-    }
-    else
-    {
-      localObject = "";
-    }
-    p.g(localObject, "mmkv?.getString(KEY_SCAN…_GUIDE_WORDING, \"\") ?: \"\"");
-    for (;;)
-    {
-      try
-      {
-        str2 = ad.fom();
-        localObject = new JSONObject((String)localObject);
-        ae.i("MicroMsg.ScanFastFocusEngineManager", "getScanConfigGuideWording currentLanguage: %s", new Object[] { str2 });
-        if (str2 == null)
-        {
-          AppMethodBeat.o(189582);
-          return null;
-        }
-        switch (str2.hashCode())
-        {
-        case 3241: 
-          if (!str2.equals("en")) {
-            continue;
-          }
-          localObject = ((JSONObject)localObject).optString("desc_english");
-          AppMethodBeat.o(189582);
-          return localObject;
-        }
-      }
-      catch (Exception localException)
-      {
-        ae.printErrStackTrace("MicroMsg.ScanFastFocusEngineManager", (Throwable)localException, "getScanConfigGuideWording exception", new Object[0]);
-        AppMethodBeat.o(189582);
-        return null;
-      }
-      if (str2.equals("zh_CN"))
-      {
-        String str1 = localException.optString("desc_chinese");
-        AppMethodBeat.o(189582);
-        return str1;
-      }
-    }
-  }
-  
-  public static final String getReportString()
-  {
-    AppMethodBeat.i(52211);
-    if (cBE)
-    {
-      String str = yDm.getReportString();
-      AppMethodBeat.o(52211);
-      return str;
-    }
-    ae.w("MicroMsg.ScanFastFocusEngineManager", "alvinluo getReportString is not init");
-    AppMethodBeat.o(52211);
-    return null;
-  }
-  
-  public static final boolean isAICrop()
-  {
-    return yDp;
-  }
-  
-  public static final boolean isUsingAI()
-  {
-    return yDo;
-  }
-  
-  public static final ScanFastFocusEngineNative process(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    Object localObject2 = null;
-    AppMethodBeat.i(52203);
-    p.h(paramArrayOfByte, "imageData");
-    if (cBE)
-    {
-      long l1 = System.currentTimeMillis();
-      yDm.resetStatus();
-      ScanFastFocusEngineNative localScanFastFocusEngineNative = yDm.process(paramArrayOfByte, paramInt1, paramInt2);
-      long l2 = System.currentTimeMillis();
-      Integer localInteger1;
-      if (localScanFastFocusEngineNative != null)
-      {
-        paramArrayOfByte = Integer.valueOf(localScanFastFocusEngineNative.result);
-        if (localScanFastFocusEngineNative == null) {
-          break label179;
-        }
-        localInteger1 = Integer.valueOf(localScanFastFocusEngineNative.width);
-        label76:
-        if (localScanFastFocusEngineNative == null) {
-          break label185;
-        }
-      }
-      label179:
-      label185:
-      for (Integer localInteger2 = Integer.valueOf(localScanFastFocusEngineNative.height);; localInteger2 = null)
-      {
-        Object localObject1 = localObject2;
-        if (localScanFastFocusEngineNative != null)
-        {
-          byte[] arrayOfByte = localScanFastFocusEngineNative.bestImageData;
-          localObject1 = localObject2;
-          if (arrayOfByte != null) {
-            localObject1 = Integer.valueOf(arrayOfByte.length);
-          }
-        }
-        ae.d("MicroMsg.ScanFastFocusEngineManager", "alvinluo process result: %s, cost: %d, width: %d, height: %d, bestImageData: %s", new Object[] { paramArrayOfByte, Long.valueOf(l2 - l1), localInteger1, localInteger2, localObject1 });
-        AppMethodBeat.o(52203);
-        return localScanFastFocusEngineNative;
-        paramArrayOfByte = null;
-        break;
-        localInteger1 = null;
-        break label76;
-      }
-    }
-    AppMethodBeat.o(52203);
-    return null;
-  }
-  
-  public static final void release()
-  {
-    AppMethodBeat.i(52208);
-    if (cBE)
-    {
-      ae.i("MicroMsg.ScanFastFocusEngineManager", "alvinluo release");
-      yDm.nativeRelease();
-      cBE = false;
-    }
-    AppMethodBeat.o(52208);
-  }
-  
-  public static final void reset()
-  {
-    AppMethodBeat.i(52207);
-    if (cBE)
-    {
-      ae.d("MicroMsg.ScanFastFocusEngineManager", "alvinluo focusEngineNative reset");
-      yDm.reset();
-    }
-    AppMethodBeat.o(52207);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
-  static final class a
-    implements w
-  {
-    a(String paramString) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(52198);
-      v localv = v.yDr;
-      if (v.dOw())
-      {
-        localv = v.yDr;
-        v.dOv().setConfig(this.yDs);
-      }
-      AppMethodBeat.o(52198);
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
-  static final class b
-    implements w
-  {
-    public final void run()
-    {
-      AppMethodBeat.i(52199);
-      ae.i("MicroMsg.ScanFastFocusEngineManager", "alvinluo setServerState: %d", new Object[] { Integer.valueOf(this.yDt) });
-      v localv = v.yDr;
-      v.OZ(this.yDt);
-      localv = v.yDr;
-      v.dOv().setServerState(this.yDt);
-      AppMethodBeat.o(52199);
-    }
+    // Byte code:
+    //   0: ldc 92
+    //   2: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: ldc 52
+    //   8: invokestatic 58	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   11: aload_1
+    //   12: ldc 93
+    //   14: invokestatic 58	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   17: aload_2
+    //   18: ldc 94
+    //   20: invokestatic 58	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   23: ldc 96
+    //   25: ldc 98
+    //   27: iconst_2
+    //   28: anewarray 4	java/lang/Object
+    //   31: dup
+    //   32: iconst_0
+    //   33: aload_1
+    //   34: aastore
+    //   35: dup
+    //   36: iconst_1
+    //   37: aload_2
+    //   38: aastore
+    //   39: invokestatic 104	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   42: new 106	com/tencent/mm/vfs/o
+    //   45: dup
+    //   46: aload_2
+    //   47: invokespecial 109	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
+    //   50: astore 6
+    //   52: aload 6
+    //   54: invokevirtual 113	com/tencent/mm/vfs/o:exists	()Z
+    //   57: ifne +9 -> 66
+    //   60: aload 6
+    //   62: invokevirtual 116	com/tencent/mm/vfs/o:createNewFile	()Z
+    //   65: pop
+    //   66: aload_0
+    //   67: invokevirtual 120	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   70: aload_1
+    //   71: invokevirtual 126	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   74: astore_0
+    //   75: aload 6
+    //   77: invokestatic 132	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
+    //   80: astore 5
+    //   82: aload 5
+    //   84: astore 4
+    //   86: aload_0
+    //   87: astore_2
+    //   88: sipush 1024
+    //   91: newarray byte
+    //   93: astore 7
+    //   95: aload_0
+    //   96: ifnonnull +12 -> 108
+    //   99: aload 5
+    //   101: astore 4
+    //   103: aload_0
+    //   104: astore_2
+    //   105: invokestatic 135	kotlin/g/b/p:hyc	()V
+    //   108: aload 5
+    //   110: astore 4
+    //   112: aload_0
+    //   113: astore_2
+    //   114: aload_0
+    //   115: aload 7
+    //   117: invokevirtual 141	java/io/InputStream:read	([B)I
+    //   120: istore_3
+    //   121: iload_3
+    //   122: iconst_m1
+    //   123: if_icmpeq +71 -> 194
+    //   126: aload 5
+    //   128: astore 4
+    //   130: aload_0
+    //   131: astore_2
+    //   132: aload 5
+    //   134: aload 7
+    //   136: iconst_0
+    //   137: iload_3
+    //   138: invokevirtual 147	java/io/OutputStream:write	([BII)V
+    //   141: goto -46 -> 95
+    //   144: astore_2
+    //   145: aload 5
+    //   147: astore_1
+    //   148: aload_2
+    //   149: astore 5
+    //   151: aload_1
+    //   152: astore 4
+    //   154: aload_0
+    //   155: astore_2
+    //   156: ldc 96
+    //   158: aload 5
+    //   160: checkcast 149	java/lang/Throwable
+    //   163: ldc 151
+    //   165: iconst_0
+    //   166: anewarray 4	java/lang/Object
+    //   169: invokestatic 155	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   172: aload_0
+    //   173: ifnull +7 -> 180
+    //   176: aload_0
+    //   177: invokevirtual 158	java/io/InputStream:close	()V
+    //   180: aload_1
+    //   181: ifnull +89 -> 270
+    //   184: aload_1
+    //   185: invokevirtual 159	java/io/OutputStream:close	()V
+    //   188: ldc 92
+    //   190: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   193: return
+    //   194: aload 5
+    //   196: astore 4
+    //   198: aload_0
+    //   199: astore_2
+    //   200: aload 5
+    //   202: invokevirtual 162	java/io/OutputStream:flush	()V
+    //   205: aload 5
+    //   207: astore 4
+    //   209: aload_0
+    //   210: astore_2
+    //   211: ldc 96
+    //   213: ldc 164
+    //   215: iconst_2
+    //   216: anewarray 4	java/lang/Object
+    //   219: dup
+    //   220: iconst_0
+    //   221: aload_1
+    //   222: aastore
+    //   223: dup
+    //   224: iconst_1
+    //   225: aload 6
+    //   227: invokevirtual 168	com/tencent/mm/vfs/o:length	()J
+    //   230: invokestatic 174	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   233: aastore
+    //   234: invokestatic 176	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   237: aload_0
+    //   238: invokevirtual 158	java/io/InputStream:close	()V
+    //   241: aload 5
+    //   243: ifnull +21 -> 264
+    //   246: aload 5
+    //   248: invokevirtual 159	java/io/OutputStream:close	()V
+    //   251: ldc 92
+    //   253: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   256: return
+    //   257: astore_0
+    //   258: ldc 92
+    //   260: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   263: return
+    //   264: ldc 92
+    //   266: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   269: return
+    //   270: ldc 92
+    //   272: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   275: return
+    //   276: astore_0
+    //   277: ldc 92
+    //   279: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   282: return
+    //   283: astore_1
+    //   284: aconst_null
+    //   285: astore 4
+    //   287: aconst_null
+    //   288: astore_0
+    //   289: aload_0
+    //   290: ifnull +7 -> 297
+    //   293: aload_0
+    //   294: invokevirtual 158	java/io/InputStream:close	()V
+    //   297: aload 4
+    //   299: ifnull +8 -> 307
+    //   302: aload 4
+    //   304: invokevirtual 159	java/io/OutputStream:close	()V
+    //   307: ldc 92
+    //   309: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   312: aload_1
+    //   313: athrow
+    //   314: astore_0
+    //   315: goto -8 -> 307
+    //   318: astore_1
+    //   319: aconst_null
+    //   320: astore 4
+    //   322: goto -33 -> 289
+    //   325: astore_1
+    //   326: aload_2
+    //   327: astore_0
+    //   328: goto -39 -> 289
+    //   331: astore 5
+    //   333: aconst_null
+    //   334: astore_1
+    //   335: aconst_null
+    //   336: astore_0
+    //   337: goto -186 -> 151
+    //   340: astore 5
+    //   342: aconst_null
+    //   343: astore_1
+    //   344: goto -193 -> 151
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	347	0	paramContext	Context
+    //   0	347	1	paramString1	String
+    //   0	347	2	paramString2	String
+    //   120	18	3	i	int
+    //   84	237	4	localObject1	Object
+    //   80	167	5	localObject2	Object
+    //   331	1	5	localException1	java.lang.Exception
+    //   340	1	5	localException2	java.lang.Exception
+    //   50	176	6	localo	com.tencent.mm.vfs.o
+    //   93	42	7	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   88	95	144	java/lang/Exception
+    //   105	108	144	java/lang/Exception
+    //   114	121	144	java/lang/Exception
+    //   132	141	144	java/lang/Exception
+    //   200	205	144	java/lang/Exception
+    //   211	237	144	java/lang/Exception
+    //   237	241	257	java/lang/Exception
+    //   246	256	257	java/lang/Exception
+    //   176	180	276	java/lang/Exception
+    //   184	193	276	java/lang/Exception
+    //   42	66	283	finally
+    //   66	75	283	finally
+    //   293	297	314	java/lang/Exception
+    //   302	307	314	java/lang/Exception
+    //   75	82	318	finally
+    //   88	95	325	finally
+    //   105	108	325	finally
+    //   114	121	325	finally
+    //   132	141	325	finally
+    //   156	172	325	finally
+    //   200	205	325	finally
+    //   211	237	325	finally
+    //   42	66	331	java/lang/Exception
+    //   66	75	331	java/lang/Exception
+    //   75	82	340	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.model.v
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ public class LogInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<LogInfo> CREATOR;
-  public long hNo;
   public int level;
   public String message;
+  public long ts;
   
   static
   {
@@ -28,7 +28,7 @@ public class LogInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(76376);
-    paramParcel.writeLong(this.hNo);
+    paramParcel.writeLong(this.ts);
     paramParcel.writeInt(this.level);
     paramParcel.writeString(this.message);
     AppMethodBeat.o(76376);
@@ -36,7 +36,7 @@ public class LogInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.LogInfo
  * JD-Core Version:    0.7.0.1
  */

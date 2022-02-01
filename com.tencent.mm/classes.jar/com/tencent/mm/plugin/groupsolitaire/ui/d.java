@@ -13,13 +13,15 @@ import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.br.c.a;
+import com.tencent.mm.br.c.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire;
 import com.tencent.mm.plugin.messenger.foundation.a.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.p;
 import java.util.HashMap;
 
 public final class d
@@ -28,44 +30,44 @@ public final class d
   ValueAnimator animator;
   public String content;
   boolean isNew;
-  TextView lHk;
   private int lastType;
   private View mContentView;
   Context mContext;
-  aq mHandler;
-  public String uNM;
-  com.tencent.mm.br.d.b uOf;
-  public o uOg;
-  public View uOh;
-  d uOi;
-  boolean uOj;
-  public String uOk;
-  com.tencent.mm.plugin.groupsolitaire.c.a uOl;
-  String uOm;
-  int uOn;
-  int uOo;
-  int uOp;
-  int[] uOq;
-  public com.tencent.mm.plugin.groupsolitaire.c.a uOr;
-  private String uOs;
-  public a uOt;
-  public b uOu;
-  public c uOv;
-  public View uOw;
+  MMHandler mHandler;
+  TextView mPa;
+  int[] wrA;
+  c.b ygC;
+  public p ygD;
+  public View ygE;
+  d ygF;
+  boolean ygG;
+  public String ygH;
+  com.tencent.mm.plugin.groupsolitaire.c.a ygI;
+  String ygJ;
+  int ygK;
+  int ygL;
+  int ygM;
+  public com.tencent.mm.plugin.groupsolitaire.c.a ygN;
+  private String ygO;
+  public a ygP;
+  public b ygQ;
+  public c ygR;
+  public View ygS;
+  public String ygk;
   
-  public d(Context paramContext, com.tencent.mm.br.d.b paramb, d paramd)
+  public d(Context paramContext, c.b paramb, d paramd)
   {
     AppMethodBeat.i(110504);
     this.animator = null;
-    this.uOj = false;
-    this.uOk = "";
-    this.uNM = "";
-    this.uOl = null;
-    this.uOm = "";
-    this.uOr = null;
-    this.uOs = "";
-    this.uOv = null;
-    this.mHandler = new aq()
+    this.ygG = false;
+    this.ygH = "";
+    this.ygk = "";
+    this.ygI = null;
+    this.ygJ = "";
+    this.ygN = null;
+    this.ygO = "";
+    this.ygR = null;
+    this.mHandler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -80,10 +82,10 @@ public final class d
           d locald = d.this;
           String str = (String)paramAnonymousMessage.obj;
           int i = paramAnonymousMessage.arg1;
-          ae.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "showTips()");
-          if ((!((j)g.ab(j.class)).anN(locald.uNM)) || (bu.isNullOrNil(locald.content)) || (locald.uOw == null))
+          Log.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "showTips()");
+          if ((!((j)g.af(j.class)).aBg(locald.ygk)) || (Util.isNullOrNil(locald.content)) || (locald.ygS == null))
           {
-            ae.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "showTips() show close");
+            Log.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "showTips() show close");
             AppMethodBeat.o(110497);
             return;
           }
@@ -91,140 +93,140 @@ public final class d
           locald.isNew = false;
           if (i == 1)
           {
-            locald.lHk.setText(2131760114);
+            locald.mPa.setText(2131761495);
             locald.isNew = true;
           }
-          while (locald.uOg.isShowing())
+          while (locald.ygD.isShowing())
           {
-            ae.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "showTips() mBubbleState isShowing");
+            Log.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "showTips() mBubbleState isShowing");
             AppMethodBeat.o(110497);
             return;
-            locald.isNew = com.tencent.mm.plugin.groupsolitaire.b.b.T(locald.uNM, str, locald.uOl.uNg.size());
+            locald.isNew = com.tencent.mm.plugin.groupsolitaire.b.b.U(locald.ygk, str, locald.ygI.yfE.size());
             if (locald.isNew)
             {
-              locald.lHk.setText(2131760114);
-              if (com.tencent.mm.plugin.groupsolitaire.b.b.anQ(locald.uOl.header))
+              locald.mPa.setText(2131761495);
+              if (com.tencent.mm.plugin.groupsolitaire.b.b.aBj(locald.ygI.header))
               {
-                if (locald.uOg.isShowing()) {
-                  locald.dev();
+                if (locald.ygD.isShowing()) {
+                  locald.dYf();
                 }
                 AppMethodBeat.o(110497);
               }
             }
             else
             {
-              locald.lHk.setText(2131760113);
+              locald.mPa.setText(2131761494);
             }
           }
           if (locald.isNew) {
             if (i == 1)
             {
-              ((PluginGroupSolitaire)g.ad(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
-              com.tencent.mm.plugin.groupsolitaire.b.d.dY(locald.uNM, 3);
+              ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
+              com.tencent.mm.plugin.groupsolitaire.b.d.en(locald.ygk, 3);
             }
           }
           for (;;)
           {
-            if (locald.uOh != null)
+            if (locald.ygE != null)
             {
-              locald.uOq = new int[2];
-              locald.uOh.getLocationInWindow(locald.uOq);
-              locald.uOp = 0;
-              locald.uOn = (locald.uOh.getWidth() - locald.uOg.getWidth() - com.tencent.mm.cb.a.fromDPToPix(locald.mContext, 8));
-              locald.uOo = (locald.uOq[1] - locald.uOg.getHeight() - com.tencent.mm.cb.a.fromDPToPix(locald.mContext, 8));
-              if ((locald.uOv != null) && (!locald.uOv.dex())) {
-                locald.uOo += locald.uOv.dew();
+              locald.wrA = new int[2];
+              locald.ygE.getLocationInWindow(locald.wrA);
+              locald.ygM = 0;
+              locald.ygK = (locald.ygE.getWidth() - locald.ygD.getWidth() - com.tencent.mm.cb.a.fromDPToPix(locald.mContext, 8));
+              locald.ygL = (locald.wrA[1] - locald.ygD.getHeight() - com.tencent.mm.cb.a.fromDPToPix(locald.mContext, 8));
+              if ((locald.ygR != null) && (!locald.ygR.dYh())) {
+                locald.ygL += locald.ygR.dYg();
               }
-              locald.uOg.showAtLocation(locald.uOh, 0, locald.uOn, locald.uOo);
-              locald.uOh.getViewTreeObserver().addOnGlobalLayoutListener(new d.3(locald));
+              locald.ygD.showAtLocation(locald.ygE, 0, locald.ygK, locald.ygL);
+              locald.ygE.getViewTreeObserver().addOnGlobalLayoutListener(new d.3(locald));
             }
             AppMethodBeat.o(110497);
             return;
-            ((PluginGroupSolitaire)g.ad(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
-            com.tencent.mm.plugin.groupsolitaire.b.d.dY(locald.uNM, 2);
+            ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
+            com.tencent.mm.plugin.groupsolitaire.b.d.en(locald.ygk, 2);
             continue;
-            ((PluginGroupSolitaire)g.ad(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
-            com.tencent.mm.plugin.groupsolitaire.b.d.dY(locald.uNM, 1);
+            ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireReportManager();
+            com.tencent.mm.plugin.groupsolitaire.b.d.en(locald.ygk, 1);
           }
-          d.this.dev();
+          d.this.dYf();
         }
       }
     };
     this.isNew = false;
-    ae.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "SuggestSolitatireTips()");
+    Log.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "SuggestSolitatireTips()");
     this.mContext = paramContext;
-    this.uOf = paramb;
-    this.uOi = paramd;
-    this.uOt = new a(this.mContext, this.mHandler, this);
-    this.uOu = new b(this.mContext, this.mHandler, this);
-    this.uOm = this.mContext.getString(2131760093);
-    this.mContentView = View.inflate(this.mContext, 2131495733, null);
+    this.ygC = paramb;
+    this.ygF = paramd;
+    this.ygP = new a(this.mContext, this.mHandler, this);
+    this.ygQ = new b(this.mContext, this.mHandler, this);
+    this.ygJ = this.mContext.getString(2131761473);
+    this.mContentView = View.inflate(this.mContext, 2131496638, null);
     this.mContentView.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(110499);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/groupsolitaire/ui/SuggestSolitatireTips$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-        ae.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "click Tips");
-        if ((d.this.uOl == null) && (!com.tencent.mm.plugin.groupsolitaire.b.b.aF(d.this.mContext, d.this.content)))
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/groupsolitaire/ui/SuggestSolitatireTips$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        Log.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "click Tips");
+        if ((d.this.ygI == null) && (!com.tencent.mm.plugin.groupsolitaire.b.b.aS(d.this.mContext, d.this.content)))
         {
-          ae.e("MicroMsg.groupsolitaire.SuggestSolitatireTips", "why here???");
+          Log.e("MicroMsg.groupsolitaire.SuggestSolitatireTips", "why here???");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/groupsolitaire/ui/SuggestSolitatireTips$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(110499);
           return;
         }
         paramAnonymousView = new Intent();
-        if (d.this.uOl == null)
+        if (d.this.ygI == null)
         {
-          d.this.uOl = new com.tencent.mm.plugin.groupsolitaire.c.a();
-          d.this.uOl.header = (d.this.uOm + "\n");
-          d.this.uOl.field_key = com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.uOl);
-          d.this.uOl.separator = ".";
-          d.this.uOl.uNi = 1;
+          d.this.ygI = new com.tencent.mm.plugin.groupsolitaire.c.a();
+          d.this.ygI.header = (d.this.ygJ + "\n");
+          d.this.ygI.field_key = com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.ygI);
+          d.this.ygI.separator = ".";
+          d.this.ygI.yfG = 1;
           paramAnonymousView.putExtra("key_group_solitatire_create", true);
           paramAnonymousView.putExtra("key_group_solitatire_scene", 4);
-          paramAnonymousView.putExtra("key_group_solitatire_key", d.this.uOl.field_key);
-          paramAnonymousView.putExtra("key_group_solitatire_chatroom_username", d.this.uNM);
-          com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.uNM, d.this.uOl);
-          ((PluginGroupSolitaire)g.ad(PluginGroupSolitaire.class)).getGroupSolitatireManager().c(d.this.uNM, d.this.uOl);
-          com.tencent.mm.br.d.a(d.this.uOf, "groupsolitaire", ".ui.GroupSolitatireEditUI", paramAnonymousView, 3001, new com.tencent.mm.br.d.a()
+          paramAnonymousView.putExtra("key_group_solitatire_key", d.this.ygI.field_key);
+          paramAnonymousView.putExtra("key_group_solitatire_chatroom_username", d.this.ygk);
+          com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.ygk, d.this.ygI);
+          ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireManager().c(d.this.ygk, d.this.ygI);
+          com.tencent.mm.br.c.a(d.this.ygC, "groupsolitaire", ".ui.GroupSolitatireEditUI", paramAnonymousView, 3001, new c.a()
           {
             public final void onActivityResult(int paramAnonymous2Int1, int paramAnonymous2Int2, Intent paramAnonymous2Intent)
             {
               AppMethodBeat.i(110498);
               if (paramAnonymous2Int1 == 3001)
               {
-                ae.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "dealWithRequestCode() REQUEST_CODE_VIEW_GROUP_SOLITATIRE resultCode:%s", new Object[] { Integer.valueOf(paramAnonymous2Int2) });
-                if ((-1 == paramAnonymous2Int2) && (d.this.uOi != null))
+                Log.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "dealWithRequestCode() REQUEST_CODE_VIEW_GROUP_SOLITATIRE resultCode:%s", new Object[] { Integer.valueOf(paramAnonymous2Int2) });
+                if ((-1 == paramAnonymous2Int2) && (d.this.ygF != null))
                 {
-                  d.this.uOi.dey();
+                  d.this.ygF.dYi();
                   d.this.reset();
                   if (paramAnonymous2Intent != null) {
-                    d.this.uOi.aoa(paramAnonymous2Intent.getStringExtra("key_group_solitatire_content"));
+                    d.this.ygF.aBt(paramAnonymous2Intent.getStringExtra("key_group_solitatire_content"));
                   }
-                  d.this.uOj = true;
+                  d.this.ygG = true;
                 }
               }
               AppMethodBeat.o(110498);
             }
           });
-          d.this.dev();
+          d.this.dYf();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/groupsolitaire/ui/SuggestSolitatireTips$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(110499);
           return;
         }
-        d.this.uOl.field_key = com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.uOl);
-        localObject = com.tencent.mm.plugin.groupsolitaire.b.b.hp(d.this.uNM, d.this.uOl.field_key);
+        d.this.ygI.field_key = com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.ygI);
+        localObject = com.tencent.mm.plugin.groupsolitaire.b.b.hW(d.this.ygk, d.this.ygI.field_key);
         if (((Boolean)((Pair)localObject).first).booleanValue()) {
           if (d.this.isNew)
           {
             paramAnonymousView.putExtra("key_group_solitatire_create", true);
-            if (!com.tencent.mm.plugin.groupsolitaire.b.b.aG(d.this.mContext, d.this.content))
+            if (!com.tencent.mm.plugin.groupsolitaire.b.b.aT(d.this.mContext, d.this.content))
             {
-              d.this.uOl.header = (d.this.mContext.getString(2131760093) + "\n" + d.this.uOl.header);
-              d.this.uOl.field_key = com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.uOl);
+              d.this.ygI.header = (d.this.mContext.getString(2131761473) + "\n" + d.this.ygI.header);
+              d.this.ygI.field_key = com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.ygI);
             }
           }
         }
@@ -233,68 +235,68 @@ public final class d
           paramAnonymousView.putExtra("key_group_solitatire_scene", 3);
           break;
           paramAnonymousView.putExtra("key_group_solitatire_create", false);
-          d.this.uOl = com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.uOl, d.this.uOr, (com.tencent.mm.plugin.groupsolitaire.c.a)((Pair)localObject).second);
+          d.this.ygI = com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.ygI, d.this.ygN, (com.tencent.mm.plugin.groupsolitaire.c.a)((Pair)localObject).second);
           continue;
-          if (!com.tencent.mm.plugin.groupsolitaire.b.b.aG(d.this.mContext, d.this.content))
+          if (!com.tencent.mm.plugin.groupsolitaire.b.b.aT(d.this.mContext, d.this.content))
           {
-            d.this.uOl.header = (d.this.mContext.getString(2131760093) + "\n" + d.this.uOl.header);
-            d.this.uOl.field_key = com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.uOl);
+            d.this.ygI.header = (d.this.mContext.getString(2131761473) + "\n" + d.this.ygI.header);
+            d.this.ygI.field_key = com.tencent.mm.plugin.groupsolitaire.b.b.a(d.this.ygI);
           }
           paramAnonymousView.putExtra("key_group_solitatire_create", true);
         }
       }
     });
-    this.uOg = new o(this.mContentView, com.tencent.mm.cb.a.ay(this.mContext, 2131166919), com.tencent.mm.cb.a.ay(this.mContext, 2131166918), true);
-    this.uOg.setBackgroundDrawable(new ColorDrawable(0));
-    this.uOg.setOutsideTouchable(false);
-    this.uOg.setFocusable(false);
-    this.uOg.setAnimationStyle(2131821219);
-    this.lHk = ((TextView)this.mContentView.findViewById(2131305112));
-    this.lHk.setTextSize(0, com.tencent.mm.cb.a.ay(this.mContext, 2131165466));
-    ((TextView)this.mContentView.findViewById(2131305109)).setTextSize(0, com.tencent.mm.cb.a.ay(this.mContext, 2131165192));
+    this.ygD = new p(this.mContentView, com.tencent.mm.cb.a.aH(this.mContext, 2131167054), com.tencent.mm.cb.a.aH(this.mContext, 2131167053), true);
+    this.ygD.setBackgroundDrawable(new ColorDrawable(0));
+    this.ygD.setOutsideTouchable(false);
+    this.ygD.setFocusable(false);
+    this.ygD.setAnimationStyle(2131821257);
+    this.mPa = ((TextView)this.mContentView.findViewById(2131308279));
+    this.mPa.setTextSize(0, com.tencent.mm.cb.a.aH(this.mContext, 2131165482));
+    ((TextView)this.mContentView.findViewById(2131308276)).setTextSize(0, com.tencent.mm.cb.a.aH(this.mContext, 2131165195));
     this.lastType = 1;
     AppMethodBeat.o(110504);
   }
   
-  public final void anY(String paramString)
+  public final void aBr(String paramString)
   {
-    this.uOm = paramString;
+    this.ygJ = paramString;
   }
   
   public final void c(com.tencent.mm.plugin.groupsolitaire.c.a parama, String paramString)
   {
     AppMethodBeat.i(178797);
-    if (this.uOr == null)
+    if (this.ygN == null)
     {
-      this.uOr = parama;
-      this.uOs = paramString;
+      this.ygN = parama;
+      this.ygO = paramString;
       AppMethodBeat.o(178797);
       return;
     }
-    if ((this.uOr != null) && (parama == null))
+    if ((this.ygN != null) && (parama == null))
     {
-      this.uOr = null;
-      this.uOs = "";
+      this.ygN = null;
+      this.ygO = "";
       AppMethodBeat.o(178797);
       return;
     }
-    ae.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "setCopyGroupSolitaire repeat");
+    Log.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "setCopyGroupSolitaire repeat");
     AppMethodBeat.o(178797);
   }
   
-  public final boolean deu()
+  public final boolean dYe()
   {
-    boolean bool = this.uOj;
-    this.uOj = false;
+    boolean bool = this.ygG;
+    this.ygG = false;
     return bool;
   }
   
-  public final void dev()
+  public final void dYf()
   {
     AppMethodBeat.i(110505);
-    ae.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "hideTips()");
-    if (this.uOg.isShowing()) {
-      this.uOg.dismiss();
+    Log.i("MicroMsg.groupsolitaire.SuggestSolitatireTips", "hideTips()");
+    if (this.ygD.isShowing()) {
+      this.ygD.dismiss();
     }
     this.mHandler.removeCallbacksAndMessages(null);
     this.mHandler.removeMessages(20002);
@@ -303,35 +305,35 @@ public final class d
   
   public final void j(com.tencent.mm.plugin.groupsolitaire.c.a parama)
   {
-    this.uOl = parama;
+    this.ygI = parama;
   }
   
   public final void reset()
   {
-    this.uOk = "";
-    this.uOr = null;
-    this.uOl = null;
+    this.ygH = "";
+    this.ygN = null;
+    this.ygI = null;
   }
   
   public static class a
     implements Runnable
   {
     protected String content;
-    protected aq handler;
+    protected MMHandler handler;
     protected Context mContext;
-    protected String uNM;
-    protected c uOB;
+    protected c ygX;
+    protected String ygk;
     
-    public a(Context paramContext, aq paramaq, c paramc)
+    public a(Context paramContext, MMHandler paramMMHandler, c paramc)
     {
       this.mContext = paramContext;
-      this.handler = paramaq;
-      this.uOB = paramc;
+      this.handler = paramMMHandler;
+      this.ygX = paramc;
     }
     
-    public final void anZ(String paramString)
+    public final void aBs(String paramString)
     {
-      this.uNM = paramString;
+      this.ygk = paramString;
     }
     
     public void run()
@@ -339,17 +341,17 @@ public final class d
       AppMethodBeat.i(110503);
       try
       {
-        Pair localPair = ((PluginGroupSolitaire)g.ad(PluginGroupSolitaire.class)).getGroupSolitatireManager().ht(this.content, this.uNM);
-        if (((Integer)localPair.first).intValue() > com.tencent.mm.plugin.groupsolitaire.b.b.ded())
+        Pair localPair = ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireManager().ia(this.content, this.ygk);
+        if (((Integer)localPair.first).intValue() > com.tencent.mm.plugin.groupsolitaire.b.b.dXN())
         {
           this.handler.sendEmptyMessage(20002);
           AppMethodBeat.o(110503);
           return;
         }
-        if ((((Integer)localPair.first).intValue() <= 0) && ((localPair.second == null) || (((com.tencent.mm.plugin.groupsolitaire.c.a)localPair.second).uNi <= 0))) {
+        if ((((Integer)localPair.first).intValue() <= 0) && ((localPair.second == null) || (((com.tencent.mm.plugin.groupsolitaire.c.a)localPair.second).yfG <= 0))) {
           break label219;
         }
-        this.uOB.j((com.tencent.mm.plugin.groupsolitaire.c.a)localPair.second);
+        this.ygX.j((com.tencent.mm.plugin.groupsolitaire.c.a)localPair.second);
         if (com.tencent.mm.plugin.groupsolitaire.b.b.d((com.tencent.mm.plugin.groupsolitaire.c.a)localPair.second))
         {
           Message localMessage2 = new Message();
@@ -362,7 +364,7 @@ public final class d
       }
       catch (Exception localException)
       {
-        ae.e("MicroMsg.groupsolitaire.SuggestSolitatireTips", "CheckRunnable run() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        Log.e("MicroMsg.groupsolitaire.SuggestSolitatireTips", "CheckRunnable run() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         AppMethodBeat.o(110503);
         return;
       }
@@ -370,13 +372,13 @@ public final class d
       AppMethodBeat.o(110503);
       return;
       label219:
-      if (com.tencent.mm.plugin.groupsolitaire.b.b.aF(this.mContext, this.content))
+      if (com.tencent.mm.plugin.groupsolitaire.b.b.aS(this.mContext, this.content))
       {
-        this.uOB.j(null);
+        this.ygX.j(null);
         Message localMessage1 = new Message();
         localMessage1.what = 20001;
         localMessage1.arg1 = 1;
-        this.uOB.anY(this.content.trim());
+        this.ygX.aBr(this.content.trim());
         this.handler.sendMessage(localMessage1);
         AppMethodBeat.o(110503);
         return;
@@ -394,9 +396,9 @@ public final class d
   public final class b
     extends d.a
   {
-    public b(Context paramContext, aq paramaq, c paramc)
+    public b(Context paramContext, MMHandler paramMMHandler, c paramc)
     {
-      super(paramaq, paramc);
+      super(paramMMHandler, paramc);
     }
     
     public final void run()
@@ -404,23 +406,23 @@ public final class d
       AppMethodBeat.i(178796);
       try
       {
-        Pair localPair = ((PluginGroupSolitaire)g.ad(PluginGroupSolitaire.class)).getGroupSolitatireManager().ht(this.content, this.uNM);
+        Pair localPair = ((PluginGroupSolitaire)g.ah(PluginGroupSolitaire.class)).getGroupSolitatireManager().ia(this.content, this.ygk);
         int i = ((Integer)localPair.first).intValue();
-        int j = com.tencent.mm.plugin.groupsolitaire.b.b.ded();
+        int j = com.tencent.mm.plugin.groupsolitaire.b.b.dXN();
         if (i > j)
         {
           AppMethodBeat.o(178796);
           return;
         }
         if (((Integer)localPair.first).intValue() > 0) {
-          this.uOB.c((com.tencent.mm.plugin.groupsolitaire.c.a)localPair.second, this.content);
+          this.ygX.c((com.tencent.mm.plugin.groupsolitaire.c.a)localPair.second, this.content);
         }
         AppMethodBeat.o(178796);
         return;
       }
       catch (Exception localException)
       {
-        ae.e("MicroMsg.groupsolitaire.SuggestSolitatireTips", "CheckRunnable run() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        Log.e("MicroMsg.groupsolitaire.SuggestSolitatireTips", "CheckRunnable run() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         AppMethodBeat.o(178796);
       }
     }
@@ -428,21 +430,21 @@ public final class d
   
   public static abstract interface c
   {
-    public abstract int dew();
+    public abstract int dYg();
     
-    public abstract boolean dex();
+    public abstract boolean dYh();
   }
   
   public static abstract interface d
   {
-    public abstract void aoa(String paramString);
+    public abstract void aBt(String paramString);
     
-    public abstract void dey();
+    public abstract void dYi();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.ui.d
  * JD-Core Version:    0.7.0.1
  */

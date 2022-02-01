@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class cr
-  extends b
+  extends IEvent
 {
-  public a doF;
-  public b doG;
+  public a dFK;
   
   public cr()
   {
@@ -16,27 +17,32 @@ public final class cr
   
   private cr(byte paramByte)
   {
-    AppMethodBeat.i(127401);
-    this.doF = new a();
-    this.doG = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(115973);
+    this.dFK = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(127401);
+    AppMethodBeat.o(115973);
   }
   
   public static final class a
   {
-    public long doH = 0L;
-  }
-  
-  public static final class b
-  {
-    public boolean doq = false;
+    public Activity activity;
+    public String dDX;
+    public int dFL;
+    public int dFM;
+    public String dFN;
+    public String dFO;
+    public Bundle dFP;
+    public int from = -1;
+    public String imagePath;
+    public int scene = -1;
+    public String source;
+    public int sourceType = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.cr
  * JD-Core Version:    0.7.0.1
  */

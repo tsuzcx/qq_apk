@@ -8,11 +8,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public abstract class b<_Struct, _Change>
   extends Vending<_Struct, Integer, _Change>
 {
-  public int LDN = 5;
-  private a LDO = new a((byte)0);
+  public int QZi = 5;
+  private a QZj = new a((byte)0);
   public int mCount = 0;
   
-  private void ky(int paramInt1, int paramInt2)
+  private void lR(int paramInt1, int paramInt2)
   {
     int i;
     int j;
@@ -25,9 +25,9 @@ public abstract class b<_Struct, _Change>
     for (;;)
     {
       int k;
-      synchronized (this.LDO)
+      synchronized (this.QZj)
       {
-        Object localObject1 = this.LDO;
+        Object localObject1 = this.QZj;
         if (!((a)localObject1).initialized)
         {
           ((a)localObject1).set(j, paramInt1);
@@ -37,8 +37,8 @@ public abstract class b<_Struct, _Change>
         }
         else
         {
-          paramInt2 = ((a)localObject1).Af;
-          k = ((a)localObject1).Ah;
+          paramInt2 = ((a)localObject1).Al;
+          k = ((a)localObject1).An;
           if (paramInt2 > paramInt1) {
             break label479;
           }
@@ -96,12 +96,12 @@ public abstract class b<_Struct, _Change>
           j = m - paramInt2;
           localf = getLoader();
           localInteger = Integer.valueOf(j);
-          if (localf.jOp.get()) {}
+          if (localf.kQW.get()) {}
         }
-        synchronized (localf.LDU)
+        synchronized (localf.QZp)
         {
-          Vending.f.b localb = (Vending.f.b)localf.LDS.get(localInteger);
-          if ((localb != null) && (localb != Vending.f.b.LDW))
+          Vending.f.b localb = (Vending.f.b)localf.QZn.get(localInteger);
+          if ((localb != null) && (localb != Vending.f.b.QZr))
           {
             paramInt2 += 1;
             break label295;
@@ -115,7 +115,7 @@ public abstract class b<_Struct, _Change>
             j = k + paramInt2;
             break label311;
           }
-          localf.LDS.put(localInteger, Vending.f.b.LDX);
+          localf.QZn.put(localInteger, Vending.f.b.QZs);
           localf.mVendingHandler.sendMessage(localf.mVendingHandler.obtainMessage(0, localInteger));
         }
         label455:
@@ -140,9 +140,7 @@ public abstract class b<_Struct, _Change>
     }
   }
   
-  protected abstract _Struct Sg(int paramInt);
-  
-  protected abstract int fSj();
+  protected abstract _Struct aac(int paramInt);
   
   public final <T> T get(int paramInt)
   {
@@ -154,13 +152,15 @@ public abstract class b<_Struct, _Change>
     return super.get(Integer.valueOf(paramInt));
   }
   
+  protected abstract int hdn();
+  
   protected void loaderClear()
   {
-    synchronized (this.LDO)
+    synchronized (this.QZj)
     {
-      a locala2 = this.LDO;
-      locala2.Af = -1;
-      locala2.Ah = -1;
+      a locala2 = this.QZj;
+      locala2.Al = -1;
+      locala2.An = -1;
       locala2.initialized = false;
       return;
     }
@@ -168,26 +168,26 @@ public abstract class b<_Struct, _Change>
   
   protected void synchronizing(int paramInt, Object paramObject)
   {
-    this.mCount = fSj();
+    this.mCount = hdn();
     a.i("Vending.ForwardVending", "the count %s", new Object[] { Integer.valueOf(this.mCount) });
   }
   
   static final class a
   {
-    public int Af = -1;
-    public int Ah = -1;
+    public int Al = -1;
+    public int An = -1;
     boolean initialized = false;
     
     final void set(int paramInt1, int paramInt2)
     {
-      this.Af = paramInt1;
-      this.Ah = paramInt2;
+      this.Al = paramInt1;
+      this.An = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.vending.base.b
  * JD-Core Version:    0.7.0.1
  */

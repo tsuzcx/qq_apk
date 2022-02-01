@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.expt.hellhound.a.b.a;
 
 public abstract interface p
 {
-  public abstract void kZ(boolean paramBoolean);
+  public abstract void md(boolean paramBoolean);
 }
 
 

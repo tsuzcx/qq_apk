@@ -28,67 +28,67 @@ public class ActionBarOverlayLayout
   extends ViewGroup
   implements m, t
 {
-  static final int[] Qo = { 2130968600, 16842841 };
-  private final o UH;
-  private u ZH;
-  private boolean aax;
-  private int ahF;
-  private int ahG = 0;
-  private ContentFrameLayout ahH;
-  ActionBarContainer ahI;
-  private Drawable ahJ;
-  private boolean ahK;
-  public boolean ahL;
-  private boolean ahM;
-  boolean ahN;
-  private int ahO;
-  private int ahP;
-  private final Rect ahQ = new Rect();
-  private final Rect ahR = new Rect();
-  private final Rect ahS = new Rect();
-  private final Rect ahT = new Rect();
-  private final Rect ahU = new Rect();
-  private final Rect ahV = new Rect();
-  private final Rect ahW = new Rect();
-  private a ahX;
-  private OverScroller ahY;
-  ViewPropertyAnimator ahZ;
-  final AnimatorListenerAdapter aia = new AnimatorListenerAdapter()
+  static final int[] QA = { 2130968601, 16842841 };
+  private final o UV;
+  private u ZU;
+  private boolean aaK;
+  private int ahS = 0;
+  private ContentFrameLayout ahT;
+  ActionBarContainer ahU;
+  private Drawable ahV;
+  private boolean ahW;
+  public boolean ahX;
+  private boolean ahY;
+  boolean ahZ;
+  private int aia;
+  private int aib;
+  private final Rect aic = new Rect();
+  private final Rect aie = new Rect();
+  private final Rect aif = new Rect();
+  private final Rect aig = new Rect();
+  private final Rect aih = new Rect();
+  private final Rect aii = new Rect();
+  private final Rect aij = new Rect();
+  private a aik;
+  private OverScroller ail;
+  ViewPropertyAnimator aim;
+  final AnimatorListenerAdapter ain = new AnimatorListenerAdapter()
   {
     public final void onAnimationCancel(Animator paramAnonymousAnimator)
     {
-      ActionBarOverlayLayout.this.ahZ = null;
-      ActionBarOverlayLayout.this.ahN = false;
+      ActionBarOverlayLayout.this.aim = null;
+      ActionBarOverlayLayout.this.ahZ = false;
     }
     
     public final void onAnimationEnd(Animator paramAnonymousAnimator)
     {
-      ActionBarOverlayLayout.this.ahZ = null;
-      ActionBarOverlayLayout.this.ahN = false;
+      ActionBarOverlayLayout.this.aim = null;
+      ActionBarOverlayLayout.this.ahZ = false;
     }
   };
-  private final Runnable aib = new Runnable()
+  private final Runnable aio = new Runnable()
   {
     public final void run()
     {
-      ActionBarOverlayLayout.this.ir();
-      ActionBarOverlayLayout.this.ahZ = ActionBarOverlayLayout.this.ahI.animate().translationY(0.0F).setListener(ActionBarOverlayLayout.this.aia);
+      ActionBarOverlayLayout.this.iA();
+      ActionBarOverlayLayout.this.aim = ActionBarOverlayLayout.this.ahU.animate().translationY(0.0F).setListener(ActionBarOverlayLayout.this.ain);
     }
   };
-  private final Runnable aic = new Runnable()
+  private final Runnable aip = new Runnable()
   {
     public final void run()
     {
-      ActionBarOverlayLayout.this.ir();
-      ActionBarOverlayLayout.this.ahZ = ActionBarOverlayLayout.this.ahI.animate().translationY(-ActionBarOverlayLayout.this.ahI.getHeight()).setListener(ActionBarOverlayLayout.this.aia);
+      ActionBarOverlayLayout.this.iA();
+      ActionBarOverlayLayout.this.aim = ActionBarOverlayLayout.this.ahU.animate().translationY(-ActionBarOverlayLayout.this.ahU.getHeight()).setListener(ActionBarOverlayLayout.this.ain);
     }
   };
+  private int mActionBarHeight;
   
   public ActionBarOverlayLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     init(paramContext);
-    this.UH = new o(this);
+    this.UV = new o(this);
   }
   
   private static boolean a(View paramView, Rect paramRect, boolean paramBoolean)
@@ -118,7 +118,7 @@ public class ActionBarOverlayLayout
     return bool;
   }
   
-  private static u ba(View paramView)
+  private static u bb(View paramView)
   {
     if ((paramView instanceof u)) {
       return (u)paramView;
@@ -132,10 +132,10 @@ public class ActionBarOverlayLayout
   private void init(Context paramContext)
   {
     boolean bool2 = true;
-    TypedArray localTypedArray = getContext().getTheme().obtainStyledAttributes(Qo);
-    this.ahF = localTypedArray.getDimensionPixelSize(0, 0);
-    this.ahJ = localTypedArray.getDrawable(1);
-    if (this.ahJ == null)
+    TypedArray localTypedArray = getContext().getTheme().obtainStyledAttributes(QA);
+    this.mActionBarHeight = localTypedArray.getDimensionPixelSize(0, 0);
+    this.ahV = localTypedArray.getDrawable(1);
+    if (this.ahV == null)
     {
       bool1 = true;
       setWillNotDraw(bool1);
@@ -147,33 +147,33 @@ public class ActionBarOverlayLayout
     label94:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.ahK = bool1;
-      this.ahY = new OverScroller(paramContext);
+      this.ahW = bool1;
+      this.ail = new OverScroller(paramContext);
       return;
       bool1 = false;
       break;
     }
   }
   
-  private void iq()
+  private void iz()
   {
-    if (this.ahH == null)
+    if (this.ahT == null)
     {
-      this.ahH = ((ContentFrameLayout)findViewById(2131296344));
-      this.ahI = ((ActionBarContainer)findViewById(2131296345));
-      this.ZH = ba(findViewById(2131296343));
+      this.ahT = ((ContentFrameLayout)findViewById(2131296364));
+      this.ahU = ((ActionBarContainer)findViewById(2131296366));
+      this.ZU = bb(findViewById(2131296363));
     }
   }
   
   public final void a(Menu paramMenu, o.a parama)
   {
-    iq();
-    this.ZH.a(paramMenu, parama);
+    iz();
+    this.ZU.a(paramMenu, parama);
   }
   
-  public final void bv(int paramInt)
+  public final void bw(int paramInt)
   {
-    iq();
+    iz();
     switch (paramInt)
     {
     case 2: 
@@ -192,35 +192,35 @@ public class ActionBarOverlayLayout
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.ahJ != null) && (!this.ahK)) {
-      if (this.ahI.getVisibility() != 0) {
+    if ((this.ahV != null) && (!this.ahW)) {
+      if (this.ahU.getVisibility() != 0) {
         break label82;
       }
     }
     label82:
-    for (int i = (int)(this.ahI.getBottom() + this.ahI.getTranslationY() + 0.5F);; i = 0)
+    for (int i = (int)(this.ahU.getBottom() + this.ahU.getTranslationY() + 0.5F);; i = 0)
     {
-      this.ahJ.setBounds(0, i, getWidth(), this.ahJ.getIntrinsicHeight() + i);
-      this.ahJ.draw(paramCanvas);
+      this.ahV.setBounds(0, i, getWidth(), this.ahV.getIntrinsicHeight() + i);
+      this.ahV.draw(paramCanvas);
       return;
     }
   }
   
   protected boolean fitSystemWindows(Rect paramRect)
   {
-    iq();
-    android.support.v4.view.t.ao(this);
-    boolean bool = a(this.ahI, paramRect, false);
-    this.ahT.set(paramRect);
-    bh.a(this, this.ahT, this.ahQ);
-    if (!this.ahU.equals(this.ahT))
+    iz();
+    android.support.v4.view.u.ao(this);
+    boolean bool = a(this.ahU, paramRect, false);
+    this.aig.set(paramRect);
+    bh.a(this, this.aig, this.aic);
+    if (!this.aih.equals(this.aig))
     {
-      this.ahU.set(this.ahT);
+      this.aih.set(this.aig);
       bool = true;
     }
-    if (!this.ahR.equals(this.ahQ))
+    if (!this.aie.equals(this.aic))
     {
-      this.ahR.set(this.ahQ);
+      this.aie.set(this.aic);
       bool = true;
     }
     if (bool) {
@@ -229,10 +229,10 @@ public class ActionBarOverlayLayout
     return true;
   }
   
-  public final void gF()
+  public final void gM()
   {
-    iq();
-    this.ZH.dismissPopupMenus();
+    iz();
+    this.ZU.dismissPopupMenus();
   }
   
   protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
@@ -242,73 +242,73 @@ public class ActionBarOverlayLayout
   
   public int getActionBarHideOffset()
   {
-    if (this.ahI != null) {
-      return -(int)this.ahI.getTranslationY();
+    if (this.ahU != null) {
+      return -(int)this.ahU.getTranslationY();
     }
     return 0;
   }
   
   public int getNestedScrollAxes()
   {
-    return this.UH.PP;
+    return this.UV.Qb;
   }
   
   public CharSequence getTitle()
   {
-    iq();
-    return this.ZH.getTitle();
+    iz();
+    return this.ZU.getTitle();
   }
   
   public final boolean hideOverflowMenu()
   {
-    iq();
-    return this.ZH.hideOverflowMenu();
+    iz();
+    return this.ZU.hideOverflowMenu();
   }
   
-  final void ir()
+  final void iA()
   {
-    removeCallbacks(this.aib);
-    removeCallbacks(this.aic);
-    if (this.ahZ != null) {
-      this.ahZ.cancel();
+    removeCallbacks(this.aio);
+    removeCallbacks(this.aip);
+    if (this.aim != null) {
+      this.aim.cancel();
     }
   }
   
-  public final boolean is()
+  public final boolean iB()
   {
-    iq();
-    return this.ZH.is();
+    iz();
+    return this.ZU.iB();
+  }
+  
+  public final boolean iC()
+  {
+    iz();
+    return this.ZU.iC();
+  }
+  
+  public final void iD()
+  {
+    iz();
+    this.ZU.iD();
   }
   
   public final boolean isOverflowMenuShowing()
   {
-    iq();
-    return this.ZH.isOverflowMenuShowing();
-  }
-  
-  public final boolean it()
-  {
-    iq();
-    return this.ZH.it();
-  }
-  
-  public final void iu()
-  {
-    iq();
-    this.ZH.iu();
+    iz();
+    return this.ZU.isOverflowMenuShowing();
   }
   
   protected void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
     init(getContext());
-    android.support.v4.view.t.ap(this);
+    android.support.v4.view.u.ap(this);
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    ir();
+    iA();
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -337,57 +337,57 @@ public class ActionBarOverlayLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    iq();
-    measureChildWithMargins(this.ahI, paramInt1, 0, paramInt2, 0);
-    Object localObject = (LayoutParams)this.ahI.getLayoutParams();
-    int i1 = Math.max(0, this.ahI.getMeasuredWidth() + ((LayoutParams)localObject).leftMargin + ((LayoutParams)localObject).rightMargin);
-    int i = this.ahI.getMeasuredHeight();
+    iz();
+    measureChildWithMargins(this.ahU, paramInt1, 0, paramInt2, 0);
+    Object localObject = (LayoutParams)this.ahU.getLayoutParams();
+    int i1 = Math.max(0, this.ahU.getMeasuredWidth() + ((LayoutParams)localObject).leftMargin + ((LayoutParams)localObject).rightMargin);
+    int i = this.ahU.getMeasuredHeight();
     int j = ((LayoutParams)localObject).topMargin;
     int n = Math.max(0, ((LayoutParams)localObject).bottomMargin + (i + j));
-    int m = View.combineMeasuredStates(0, this.ahI.getMeasuredState());
+    int m = View.combineMeasuredStates(0, this.ahU.getMeasuredState());
     int k;
-    if ((android.support.v4.view.t.ao(this) & 0x100) != 0)
+    if ((android.support.v4.view.u.ao(this) & 0x100) != 0)
     {
       j = 1;
       if (j == 0) {
         break label444;
       }
-      k = this.ahF;
+      k = this.mActionBarHeight;
       i = k;
-      if (this.ahM)
+      if (this.ahY)
       {
         i = k;
-        if (this.ahI.getTabContainer() != null) {
-          i = k + this.ahF;
+        if (this.ahU.getTabContainer() != null) {
+          i = k + this.mActionBarHeight;
         }
       }
     }
     for (;;)
     {
       label153:
-      this.ahS.set(this.ahQ);
-      this.ahV.set(this.ahT);
-      if ((!this.ahL) && (j == 0))
+      this.aif.set(this.aic);
+      this.aii.set(this.aig);
+      if ((!this.ahX) && (j == 0))
       {
-        localObject = this.ahS;
+        localObject = this.aif;
         ((Rect)localObject).top = (i + ((Rect)localObject).top);
-        localObject = this.ahS;
+        localObject = this.aif;
       }
       for (((Rect)localObject).bottom += 0;; ((Rect)localObject).bottom += 0)
       {
-        a(this.ahH, this.ahS, true);
-        if (!this.ahW.equals(this.ahV))
+        a(this.ahT, this.aif, true);
+        if (!this.aij.equals(this.aii))
         {
-          this.ahW.set(this.ahV);
-          this.ahH.g(this.ahV);
+          this.aij.set(this.aii);
+          this.ahT.g(this.aii);
         }
-        measureChildWithMargins(this.ahH, paramInt1, 0, paramInt2, 0);
-        localObject = (LayoutParams)this.ahH.getLayoutParams();
-        i = Math.max(i1, this.ahH.getMeasuredWidth() + ((LayoutParams)localObject).leftMargin + ((LayoutParams)localObject).rightMargin);
-        j = this.ahH.getMeasuredHeight();
+        measureChildWithMargins(this.ahT, paramInt1, 0, paramInt2, 0);
+        localObject = (LayoutParams)this.ahT.getLayoutParams();
+        i = Math.max(i1, this.ahT.getMeasuredWidth() + ((LayoutParams)localObject).leftMargin + ((LayoutParams)localObject).rightMargin);
+        j = this.ahT.getMeasuredHeight();
         k = ((LayoutParams)localObject).topMargin;
         j = Math.max(n, ((LayoutParams)localObject).bottomMargin + (j + k));
-        k = View.combineMeasuredStates(m, this.ahH.getMeasuredState());
+        k = View.combineMeasuredStates(m, this.ahT.getMeasuredState());
         m = getPaddingLeft();
         n = getPaddingRight();
         j = Math.max(j + (getPaddingTop() + getPaddingBottom()), getSuggestedMinimumHeight());
@@ -396,14 +396,14 @@ public class ActionBarOverlayLayout
         j = 0;
         break;
         label444:
-        if (this.ahI.getVisibility() == 8) {
+        if (this.ahU.getVisibility() == 8) {
           break label506;
         }
-        i = this.ahI.getMeasuredHeight();
+        i = this.ahU.getMeasuredHeight();
         break label153;
-        localObject = this.ahV;
+        localObject = this.aii;
         ((Rect)localObject).top = (i + ((Rect)localObject).top);
-        localObject = this.ahV;
+        localObject = this.aii;
       }
       label506:
       i = 0;
@@ -413,24 +413,24 @@ public class ActionBarOverlayLayout
   public boolean onNestedFling(View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
     int i = 0;
-    if ((!this.aax) || (!paramBoolean)) {
+    if ((!this.aaK) || (!paramBoolean)) {
       return false;
     }
-    this.ahY.fling(0, 0, 0, (int)paramFloat2, 0, 0, -2147483648, 2147483647);
-    if (this.ahY.getFinalY() > this.ahI.getHeight()) {
+    this.ail.fling(0, 0, 0, (int)paramFloat2, 0, 0, -2147483648, 2147483647);
+    if (this.ail.getFinalY() > this.ahU.getHeight()) {
       i = 1;
     }
     if (i != 0)
     {
-      ir();
-      this.aic.run();
+      iA();
+      this.aip.run();
     }
     for (;;)
     {
-      this.ahN = true;
+      this.ahZ = true;
       return true;
-      ir();
-      this.aib.run();
+      iA();
+      this.aio.run();
     }
   }
   
@@ -443,43 +443,43 @@ public class ActionBarOverlayLayout
   
   public void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.ahO += paramInt2;
-    setActionBarHideOffset(this.ahO);
+    this.aia += paramInt2;
+    setActionBarHideOffset(this.aia);
   }
   
   public void onNestedScrollAccepted(View paramView1, View paramView2, int paramInt)
   {
-    this.UH.PP = paramInt;
-    this.ahO = getActionBarHideOffset();
-    ir();
-    if (this.ahX != null) {
-      this.ahX.gT();
+    this.UV.Qb = paramInt;
+    this.aia = getActionBarHideOffset();
+    iA();
+    if (this.aik != null) {
+      this.aik.ha();
     }
   }
   
   public boolean onStartNestedScroll(View paramView1, View paramView2, int paramInt)
   {
-    if (((paramInt & 0x2) == 0) || (this.ahI.getVisibility() != 0)) {
+    if (((paramInt & 0x2) == 0) || (this.ahU.getVisibility() != 0)) {
       return false;
     }
-    return this.aax;
+    return this.aaK;
   }
   
   public void onStopNestedScroll(View paramView)
   {
-    if ((this.aax) && (!this.ahN))
+    if ((this.aaK) && (!this.ahZ))
     {
-      if (this.ahO <= this.ahI.getHeight())
+      if (this.aia <= this.ahU.getHeight())
       {
-        ir();
-        postDelayed(this.aib, 600L);
+        iA();
+        postDelayed(this.aio, 600L);
       }
     }
     else {
       return;
     }
-    ir();
-    postDelayed(this.aic, 600L);
+    iA();
+    postDelayed(this.aip, 600L);
   }
   
   public void onWindowSystemUiVisibilityChanged(int paramInt)
@@ -488,9 +488,9 @@ public class ActionBarOverlayLayout
     if (Build.VERSION.SDK_INT >= 16) {
       super.onWindowSystemUiVisibilityChanged(paramInt);
     }
-    iq();
-    int k = this.ahP;
-    this.ahP = paramInt;
+    iz();
+    int k = this.aib;
+    this.aib = paramInt;
     int i;
     int j;
     if ((paramInt & 0x4) == 0)
@@ -501,24 +501,24 @@ public class ActionBarOverlayLayout
       }
       j = 1;
       label49:
-      if (this.ahX != null)
+      if (this.aik != null)
       {
-        a locala = this.ahX;
+        a locala = this.aik;
         if (j != 0) {
           break label125;
         }
         label66:
-        locala.U(bool);
+        locala.T(bool);
         if ((i == 0) && (j != 0)) {
           break label131;
         }
-        this.ahX.gQ();
+        this.aik.gX();
       }
     }
     for (;;)
     {
-      if ((((k ^ paramInt) & 0x100) != 0) && (this.ahX != null)) {
-        android.support.v4.view.t.ap(this);
+      if ((((k ^ paramInt) & 0x100) != 0) && (this.aik != null)) {
+        android.support.v4.view.u.ap(this);
       }
       return;
       i = 0;
@@ -530,53 +530,53 @@ public class ActionBarOverlayLayout
       bool = false;
       break label66;
       label131:
-      this.ahX.gS();
+      this.aik.gZ();
     }
   }
   
   protected void onWindowVisibilityChanged(int paramInt)
   {
     super.onWindowVisibilityChanged(paramInt);
-    this.ahG = paramInt;
-    if (this.ahX != null) {
-      this.ahX.onWindowVisibilityChanged(paramInt);
+    this.ahS = paramInt;
+    if (this.aik != null) {
+      this.aik.onWindowVisibilityChanged(paramInt);
     }
   }
   
   public void setActionBarHideOffset(int paramInt)
   {
-    ir();
-    paramInt = Math.max(0, Math.min(paramInt, this.ahI.getHeight()));
-    this.ahI.setTranslationY(-paramInt);
+    iA();
+    paramInt = Math.max(0, Math.min(paramInt, this.ahU.getHeight()));
+    this.ahU.setTranslationY(-paramInt);
   }
   
   public void setActionBarVisibilityCallback(a parama)
   {
-    this.ahX = parama;
+    this.aik = parama;
     if (getWindowToken() != null)
     {
-      this.ahX.onWindowVisibilityChanged(this.ahG);
-      if (this.ahP != 0)
+      this.aik.onWindowVisibilityChanged(this.ahS);
+      if (this.aib != 0)
       {
-        onWindowSystemUiVisibilityChanged(this.ahP);
-        android.support.v4.view.t.ap(this);
+        onWindowSystemUiVisibilityChanged(this.aib);
+        android.support.v4.view.u.ap(this);
       }
     }
   }
   
   public void setHasNonEmbeddedTabs(boolean paramBoolean)
   {
-    this.ahM = paramBoolean;
+    this.ahY = paramBoolean;
   }
   
   public void setHideOnContentScrollEnabled(boolean paramBoolean)
   {
-    if (paramBoolean != this.aax)
+    if (paramBoolean != this.aaK)
     {
-      this.aax = paramBoolean;
+      this.aaK = paramBoolean;
       if (!paramBoolean)
       {
-        ir();
+        iA();
         setActionBarHideOffset(0);
       }
     }
@@ -584,29 +584,29 @@ public class ActionBarOverlayLayout
   
   public void setIcon(int paramInt)
   {
-    iq();
-    this.ZH.setIcon(paramInt);
+    iz();
+    this.ZU.setIcon(paramInt);
   }
   
   public void setIcon(Drawable paramDrawable)
   {
-    iq();
-    this.ZH.setIcon(paramDrawable);
+    iz();
+    this.ZU.setIcon(paramDrawable);
   }
   
   public void setLogo(int paramInt)
   {
-    iq();
-    this.ZH.setLogo(paramInt);
+    iz();
+    this.ZU.setLogo(paramInt);
   }
   
   public void setOverlayMode(boolean paramBoolean)
   {
-    this.ahL = paramBoolean;
+    this.ahX = paramBoolean;
     if ((paramBoolean) && (getContext().getApplicationInfo().targetSdkVersion < 19)) {}
     for (paramBoolean = true;; paramBoolean = false)
     {
-      this.ahK = paramBoolean;
+      this.ahW = paramBoolean;
       return;
     }
   }
@@ -617,14 +617,14 @@ public class ActionBarOverlayLayout
   
   public void setWindowCallback(Window.Callback paramCallback)
   {
-    iq();
-    this.ZH.setWindowCallback(paramCallback);
+    iz();
+    this.ZU.setWindowCallback(paramCallback);
   }
   
   public void setWindowTitle(CharSequence paramCharSequence)
   {
-    iq();
-    this.ZH.setWindowTitle(paramCharSequence);
+    iz();
+    this.ZU.setWindowTitle(paramCharSequence);
   }
   
   public boolean shouldDelayChildPressedState()
@@ -634,8 +634,8 @@ public class ActionBarOverlayLayout
   
   public final boolean showOverflowMenu()
   {
-    iq();
-    return this.ZH.showOverflowMenu();
+    iz();
+    return this.ZU.showOverflowMenu();
   }
   
   public static class LayoutParams
@@ -659,13 +659,13 @@ public class ActionBarOverlayLayout
   
   public static abstract interface a
   {
-    public abstract void U(boolean paramBoolean);
+    public abstract void T(boolean paramBoolean);
     
-    public abstract void gQ();
+    public abstract void gX();
     
-    public abstract void gS();
+    public abstract void gZ();
     
-    public abstract void gT();
+    public abstract void ha();
     
     public abstract void onWindowVisibilityChanged(int paramInt);
   }

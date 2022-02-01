@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class b
 {
-  public static final int oZP;
+  public static final int qoN;
   
   static
   {
     AppMethodBeat.i(170097);
-    oZP = b.class.hashCode() & 0xFFFF;
+    qoN = b.class.hashCode() & 0xFFFF;
     AppMethodBeat.o(170097);
   }
 }

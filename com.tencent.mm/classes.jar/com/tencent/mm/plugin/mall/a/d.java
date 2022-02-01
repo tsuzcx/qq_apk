@@ -1,40 +1,40 @@
 package com.tencent.mm.plugin.mall.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class d
 {
-  public String vPf;
-  public int vPg;
-  public String vPh;
+  public String zjj;
+  public int zjk;
+  public String zjl;
   
   public d(String paramString)
   {
     AppMethodBeat.i(65990);
-    this.vPf = "";
-    this.vPg = 0;
-    this.vPh = "";
+    this.zjj = "";
+    this.zjk = 0;
+    this.zjl = "";
     try
     {
       paramString = new JSONObject(paramString);
-      this.vPf = paramString.optString("eu_protocol_url");
-      this.vPg = paramString.optInt("0");
-      this.vPh = paramString.optString("wxpay_protocol_url");
+      this.zjj = paramString.optString("eu_protocol_url");
+      this.zjk = paramString.optInt("0");
+      this.zjl = paramString.optString("wxpay_protocol_url");
       AppMethodBeat.o(65990);
       return;
     }
     catch (Exception paramString)
     {
-      ae.printErrStackTrace("MciroMsg.EUInfo", paramString, "", new Object[0]);
+      Log.printErrStackTrace("MciroMsg.EUInfo", paramString, "", new Object[0]);
       AppMethodBeat.o(65990);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.d
  * JD-Core Version:    0.7.0.1
  */

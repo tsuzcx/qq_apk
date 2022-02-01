@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class id
-  extends b
+  extends IEvent
 {
-  public a dvK;
+  public a dMJ;
   
   public id()
   {
@@ -16,27 +15,23 @@ public final class id
   
   private id(byte paramByte)
   {
-    AppMethodBeat.i(116030);
-    this.dvK = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(196973);
+    this.dMJ = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116030);
+    AppMethodBeat.o(196973);
   }
   
   public static final class a
   {
-    public int actionCode;
-    public String appId;
-    public Context context;
-    public String extMsg;
-    public String messageAction;
-    public String messageExt;
-    public int scene;
+    public boolean dMK = false;
+    public int dML = -1;
+    public int scene = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.id
  * JD-Core Version:    0.7.0.1
  */

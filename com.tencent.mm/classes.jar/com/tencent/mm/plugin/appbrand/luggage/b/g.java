@@ -19,7 +19,7 @@ public final class g
     AppMethodBeat.o(47485);
   }
   
-  public final k av(Context paramContext)
+  public final k aE(Context paramContext)
   {
     AppMethodBeat.i(47484);
     paramContext = new d(paramContext);
@@ -30,7 +30,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.g
  * JD-Core Version:    0.7.0.1
  */

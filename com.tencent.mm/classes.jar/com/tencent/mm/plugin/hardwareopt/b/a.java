@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.hardwareopt.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bok;
+import com.tencent.mm.protocal.protobuf.cbc;
 
 public class a
 {
-  private static volatile a uQM = null;
-  private bok uQN = null;
+  private static volatile a yjo = null;
+  private cbc yjp = null;
   
-  public static a deP()
+  public static a dYJ()
   {
     AppMethodBeat.i(55555);
-    if (uQM == null) {
+    if (yjo == null) {
       try
       {
-        if (uQM == null) {
-          uQM = new a();
+        if (yjo == null) {
+          yjo = new a();
         }
-        a locala1 = uQM;
+        a locala1 = yjo;
         return locala1;
       }
       finally
@@ -25,20 +25,20 @@ public class a
         AppMethodBeat.o(55555);
       }
     }
-    a locala2 = uQM;
+    a locala2 = yjo;
     AppMethodBeat.o(55555);
     return locala2;
   }
   
-  public final bok deQ()
+  public final cbc dYK()
   {
     AppMethodBeat.i(55556);
-    if (this.uQN == null) {
-      this.uQN = new bok();
+    if (this.yjp == null) {
+      this.yjp = new cbc();
     }
-    bok localbok = this.uQN;
+    cbc localcbc = this.yjp;
     AppMethodBeat.o(55556);
-    return localbok;
+    return localcbc;
   }
 }
 

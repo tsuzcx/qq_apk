@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bzh;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class qc
-  extends b
+  extends IEvent
 {
-  public a dFB;
-  public b dFC;
+  public a dWm;
+  public b dWn;
   
   public qc()
   {
@@ -17,25 +16,27 @@ public final class qc
   
   private qc(byte paramByte)
   {
-    AppMethodBeat.i(125624);
-    this.dFB = new a();
-    this.dFC = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(155374);
+    this.dWm = new a();
+    this.dWn = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125624);
+    AppMethodBeat.o(155374);
   }
   
   public static final class a
   {
-    public String username;
+    public String dWo;
+    public String dWp;
+    public String dWq;
+    public int dWr = 0;
+    public int dWs = 0;
+    public int opType = 0;
   }
   
   public static final class b
   {
-    public bzh dFD;
-    public bzh dFE;
-    public bzh dFF;
-    public bzh dFG;
+    public boolean dFE;
   }
 }
 

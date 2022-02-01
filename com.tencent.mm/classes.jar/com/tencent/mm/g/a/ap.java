@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ap
-  extends b
+  extends IEvent
 {
-  public a dmn;
-  public b dmo;
+  public a dDt;
+  public b dDu;
   
   public ap()
   {
@@ -16,38 +17,35 @@ public final class ap
   
   private ap(byte paramByte)
   {
-    AppMethodBeat.i(155543);
-    this.dmn = new a();
-    this.dmo = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(131616);
+    this.dDt = new a();
+    this.dDu = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(155543);
+    AppMethodBeat.o(131616);
   }
   
   public static final class a
   {
-    public String dmp;
-    public int position = 0;
-    public int type;
+    public int action = 0;
+    public Context context;
+    public String dDv;
+    public long dDw = 0L;
+    public boolean dDx = false;
+    public Runnable dDy;
+    public int fromScene = 0;
+    public int offset = 0;
+    public String title;
   }
   
   public static final class b
   {
-    public String Title;
-    public String desc;
-    public int dmq = 0;
-    public int dmr = 0;
-    public int dms = 0;
-    public int dmt = 0;
-    public String dmu;
-    public int position = 0;
-    public String url;
-    public boolean visible = false;
+    public boolean dDz = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.ap
  * JD-Core Version:    0.7.0.1
  */

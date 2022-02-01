@@ -3,33 +3,33 @@ package com.tencent.mm.plugin.gamelife;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gamelife.g.d;
 import com.tencent.mm.storagebase.h.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
 final class PluginGameLife$i
   implements h.b
 {
-  public static final i uIl;
+  public static final i yay;
   
   static
   {
-    AppMethodBeat.i(211965);
-    uIl = new i();
-    AppMethodBeat.o(211965);
+    AppMethodBeat.i(241204);
+    yay = new i();
+    AppMethodBeat.o(241204);
   }
   
   public final String[] getSQLs()
   {
-    AppMethodBeat.i(211964);
-    Object localObject = d.uJT;
-    localObject = d.cBk();
-    AppMethodBeat.o(211964);
+    AppMethodBeat.i(241203);
+    Object localObject = d.yck;
+    localObject = d.dax();
+    AppMethodBeat.o(241203);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.PluginGameLife.i
  * JD-Core Version:    0.7.0.1
  */

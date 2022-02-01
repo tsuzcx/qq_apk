@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/biv" android:padding="@dimen/ci" android:layout_width="@dimen/a0s" android:layout_height="@dimen/a0s" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/jo" android:textColor="@color/mi" android:gravity="center_horizontal" android:id="@id/biw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ci" android:maxLines="2" android:layout_below="@id/biv" android:layout_centerHorizontal="true" />
-    <com.tencent.mm.plugin.emojicapture.ui.capture.StickerSelectFrame android:id="@id/bj1" android:visibility="gone" android:layout_width="@dimen/a0s" android:layout_height="@dimen/a0s" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingLeft="@dimen/g" android:paddingRight="@dimen/g" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="@dimen/hs" android:layout_marginBottom="@dimen/hs">
+        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="24.0dip" android:layout_height="0.30000007dip" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/a61" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t7" android:layout_marginRight="@dimen/t7" android:text="@string/aih" />
+        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="24.0dip" android:layout_height="0.30000007dip" />
+    </LinearLayout>
+</FrameLayout>

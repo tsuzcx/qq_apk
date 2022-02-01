@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.finder.widget.edit.FinderEditTextView android:id="@id/bgm" android:background="@color/a25" android:padding="@dimen/cb" android:layout_width="fill_parent" android:layout_height="400.0dip" />
-    <com.tencent.mm.plugin.finder.widget.edit.FinderEditFooter android:id="@id/bga" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <RelativeLayout android:layout_width="36.0dip" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:gravity="center" android:id="@id/c5t" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="999+" android:singleLine="true" style="@style/oc" />
+        <ImageView android:id="@id/c5s" android:scaleType="center" android:layout_below="@id/c5t" style="@style/i_" />
+        <ProgressBar android:id="@id/c5w" android:indeterminateDrawable="@drawable/ape" style="@style/i_" />
+    </RelativeLayout>
+</merge>

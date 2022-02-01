@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.drp;
-import com.tencent.mm.protocal.protobuf.gx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.ell;
+import com.tencent.mm.protocal.protobuf.hk;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
 
 public final class j$d
   extends l.e
   implements l.c
 {
-  public drp FGl;
+  public ell Kzw;
   
   public j$d()
   {
     AppMethodBeat.i(133092);
-    this.FGl = new drp();
+    this.Kzw = new ell();
     AppMethodBeat.o(133092);
   }
   
@@ -28,24 +28,24 @@ public final class j$d
     AppMethodBeat.i(133093);
     try
     {
-      this.FGl = ((drp)this.FGl.parseFrom(paramArrayOfByte));
-      l.a(this, this.FGl.getBaseResponse());
-      if ((this.FGl.getBaseResponse().Ret == 0) && ((this.FGl.HYs == null) || (this.FGl.HYs.qkC == 0) || (bu.cF(z.a(this.FGl.HYs.FRr)))))
+      this.Kzw = ((ell)this.Kzw.parseFrom(paramArrayOfByte));
+      l.a(this, this.Kzw.getBaseResponse());
+      if ((this.Kzw.getBaseResponse().Ret == 0) && ((this.Kzw.Nky == null) || (this.Kzw.Nky.rBx == 0) || (Util.isNullOrNil(z.a(this.Kzw.Nky.KKY)))))
       {
-        ae.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
-        this.FGl.getBaseResponse().Ret = -1;
+        Log.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
+        this.Kzw.getBaseResponse().Ret = -1;
       }
       paramArrayOfByte = getErrMsg();
-      ae.i("MicroMsg.MMAuth", "summerauthkick auto errmsg[%s]", new Object[] { paramArrayOfByte });
-      a.xz(paramArrayOfByte);
-      int i = this.FGl.getBaseResponse().Ret;
+      Log.i("MicroMsg.MMAuth", "summerauthkick auto errmsg[%s]", new Object[] { paramArrayOfByte });
+      a.FL(paramArrayOfByte);
+      int i = this.Kzw.getBaseResponse().Ret;
       AppMethodBeat.o(133093);
       return i;
     }
     catch (IOException paramArrayOfByte)
     {
-      ae.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { bu.o(paramArrayOfByte) });
-      this.FGl.getBaseResponse().Ret = -1;
+      Log.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
+      this.Kzw.getBaseResponse().Ret = -1;
       AppMethodBeat.o(133093);
     }
     return -1;
@@ -53,7 +53,7 @@ public final class j$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.j.d
  * JD-Core Version:    0.7.0.1
  */

@@ -13,70 +13,76 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.jl;
-import com.tencent.mm.g.a.jl.b;
-import com.tencent.mm.g.a.jm;
-import com.tencent.mm.g.a.jm.a;
+import com.tencent.mm.ak.ac;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.compatible.util.f;
+import com.tencent.mm.g.a.ka;
+import com.tencent.mm.g.a.ka.b;
+import com.tencent.mm.g.a.kb;
+import com.tencent.mm.g.a.kb.a;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.plugin.account.bind.a.b;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.protocal.protobuf.lt;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.mk;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.a;
 import com.tencent.mm.ui.applet.SecurityImage.b;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
 import java.lang.ref.WeakReference;
 
 public class VerifyQQUI
   extends MMWizardActivity
-  implements com.tencent.mm.ak.f
+  implements i
 {
-  private String dxq;
-  private String dxs;
-  private byte[] hPk;
-  private long jfB;
-  private String jfC;
-  private String jfD;
-  private String jfE;
-  private b jfF;
-  private SecurityImage jfm;
-  private p tipDialog;
+  private String dOX;
+  private String dOZ;
+  private byte[] iKr;
+  private long kdE;
+  private String kdF;
+  private String kdG;
+  private String kdH;
+  private b kdI;
+  private SecurityImage kdp;
+  private com.tencent.mm.ui.base.q tipDialog;
   
   public VerifyQQUI()
   {
     AppMethodBeat.i(110211);
     this.tipDialog = null;
-    this.jfB = 0L;
-    this.jfC = "";
-    this.hPk = null;
-    this.jfD = "";
-    this.jfm = null;
-    this.jfF = new b(this);
+    this.kdE = 0L;
+    this.kdF = "";
+    this.iKr = null;
+    this.kdG = "";
+    this.kdp = null;
+    this.kdI = new b(this);
     AppMethodBeat.o(110211);
   }
   
   public int getLayoutId()
   {
-    return 2131493187;
+    return 2131493233;
   }
   
   public void initView()
   {
     AppMethodBeat.i(110216);
-    Object localObject = new jl();
-    ((jl)localObject).dxo.context = this;
-    com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
-    this.dxq = ((jl)localObject).dxp.dxq;
-    localObject = new jm();
-    com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
-    this.dxs = ((jm)localObject).dxr.dxs;
-    setMMTitle(2131756549);
+    Object localObject = new ka();
+    ((ka)localObject).dOV.context = this;
+    EventCenter.instance.publish((IEvent)localObject);
+    this.dOX = ((ka)localObject).dOW.dOX;
+    localObject = new kb();
+    EventCenter.instance.publish((IEvent)localObject);
+    this.dOZ = ((kb)localObject).dOY.dOZ;
+    setMMTitle(2131756685);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -88,9 +94,9 @@ public class VerifyQQUI
         return true;
       }
     });
-    findViewById(2131297264);
-    findViewById(2131297263);
-    addTextOptionMenu(0, getString(2131755779), this.jfF);
+    findViewById(2131297420);
+    findViewById(2131297419);
+    addTextOptionMenu(0, getString(2131755858), this.kdI);
     AppMethodBeat.o(110216);
   }
   
@@ -98,7 +104,7 @@ public class VerifyQQUI
   {
     AppMethodBeat.i(110212);
     super.onCreate(paramBundle);
-    g.ajj().a(144, this);
+    g.azz().a(144, this);
     AppMethodBeat.o(110212);
   }
   
@@ -106,7 +112,7 @@ public class VerifyQQUI
   {
     AppMethodBeat.i(110213);
     super.onDestroy();
-    g.ajj().b(144, this);
+    g.azz().b(144, this);
     AppMethodBeat.o(110213);
   }
   
@@ -118,32 +124,32 @@ public class VerifyQQUI
     AppMethodBeat.o(110214);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(110217);
-    ae.i("MicroMsg.VerifyQQUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    Log.i("MicroMsg.VerifyQQUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
     if (this.tipDialog != null)
     {
       this.tipDialog.dismiss();
       this.tipDialog = null;
     }
-    com.tencent.mm.plugin.account.bind.a.b localb = (com.tencent.mm.plugin.account.bind.a.b)paramn;
-    byte[] arrayOfByte = g.ajP().aiR().sc(localb.ipu);
-    ae.i("MicroMsg.NetSceneBindQQ", "getRespImgBuf getWtloginMgr getVerifyImg:%d  uin:%d", new Object[] { Integer.valueOf(bu.n(arrayOfByte, new byte[0]).length), Long.valueOf(localb.ipu) });
-    if (bu.cF(arrayOfByte)) {
-      arrayOfByte = com.tencent.mm.platformtools.z.a(((lt)localb.rr.hQE.hQJ).FNK);
+    b localb = (b)paramq;
+    byte[] arrayOfByte = g.aAf().azh().Ai(localb.jkB);
+    Log.i("MicroMsg.NetSceneBindQQ", "getRespImgBuf getWtloginMgr getVerifyImg:%d  uin:%d", new Object[] { Integer.valueOf(Util.nullAs(arrayOfByte, new byte[0]).length), Long.valueOf(localb.jkB) });
+    if (Util.isNullOrNil(arrayOfByte)) {
+      arrayOfByte = z.a(((mk)localb.rr.iLL.iLR).KHp);
     }
     for (;;)
     {
-      this.hPk = arrayOfByte;
-      this.jfD = ((lt)((com.tencent.mm.plugin.account.bind.a.b)paramn).rr.hQE.hQJ).FWK;
-      if (this.hPk != null) {
-        ae.d("MicroMsg.VerifyQQUI", "imgSid:" + this.jfD + " img len" + this.hPk.length + " " + com.tencent.mm.compatible.util.f.abr());
+      this.iKr = arrayOfByte;
+      this.kdG = ((mk)((b)paramq).rr.iLL.iLR).KQw;
+      if (this.iKr != null) {
+        Log.d("MicroMsg.VerifyQQUI", "imgSid:" + this.kdG + " img len" + this.iKr.length + " " + f.apq());
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        com.tencent.mm.plugin.account.a.a.iUA.MM();
-        h.a(getContext(), 2131756544, 2131756545, new DialogInterface.OnClickListener()
+        com.tencent.mm.plugin.account.a.a.jRu.WZ();
+        h.a(getContext(), 2131756680, 2131756681, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -160,7 +166,7 @@ public class VerifyQQUI
         switch (paramInt2)
         {
         default: 
-          paramString = com.tencent.mm.h.a.uU(paramString);
+          paramString = com.tencent.mm.h.a.Dk(paramString);
           if (paramString != null)
           {
             paramString.a(this, null, null);
@@ -173,7 +179,7 @@ public class VerifyQQUI
       {
         AppMethodBeat.o(110217);
         return;
-        paramString = com.tencent.mm.h.a.uU(paramString);
+        paramString = com.tencent.mm.h.a.Dk(paramString);
         if (paramString != null)
         {
           paramString.a(this, null, null);
@@ -181,44 +187,44 @@ public class VerifyQQUI
         }
         else
         {
-          h.l(getContext(), 2131756546, 2131756541);
+          h.n(getContext(), 2131756682, 2131756677);
           i = 1;
           continue;
-          h.l(getContext(), 2131756537, 2131756541);
+          h.n(getContext(), 2131756673, 2131756677);
           i = 1;
           continue;
-          h.l(getContext(), 2131756540, 2131755906);
+          h.n(getContext(), 2131756676, 2131755998);
           i = 1;
           continue;
-          h.l(getContext(), 2131756538, 2131755906);
+          h.n(getContext(), 2131756674, 2131755998);
           i = 1;
           continue;
-          if (this.hPk != null) {
-            ae.d("MicroMsg.VerifyQQUI", "imgSid:" + this.jfD + " img len" + this.hPk.length + " " + com.tencent.mm.compatible.util.f.abr());
+          if (this.iKr != null) {
+            Log.d("MicroMsg.VerifyQQUI", "imgSid:" + this.kdG + " img len" + this.iKr.length + " " + f.apq());
           }
-          if (!g.ajM())
+          if (!g.aAc())
           {
             i = 1;
           }
           else
           {
-            if (this.jfm == null) {
-              this.jfm = SecurityImage.a.a(getContext(), 0, this.hPk, this.jfD, this.jfE, new DialogInterface.OnClickListener()
+            if (this.kdp == null) {
+              this.kdp = SecurityImage.a.a(getContext(), 0, this.iKr, this.kdG, this.kdH, new DialogInterface.OnClickListener()
               {
                 public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                 {
                   AppMethodBeat.i(110205);
-                  paramAnonymousDialogInterface = new com.tencent.mm.plugin.account.bind.a.b(VerifyQQUI.c(VerifyQQUI.this), VerifyQQUI.d(VerifyQQUI.this), VerifyQQUI.e(VerifyQQUI.this).getSecImgSid(), VerifyQQUI.e(VerifyQQUI.this).getSecImgCode(), VerifyQQUI.e(VerifyQQUI.this).getSecImgEncryptKey(), VerifyQQUI.f(VerifyQQUI.this), VerifyQQUI.g(VerifyQQUI.this), true);
-                  g.ajj().a(paramAnonymousDialogInterface, 0);
+                  paramAnonymousDialogInterface = new b(VerifyQQUI.c(VerifyQQUI.this), VerifyQQUI.d(VerifyQQUI.this), VerifyQQUI.e(VerifyQQUI.this).getSecImgSid(), VerifyQQUI.e(VerifyQQUI.this).getSecImgCode(), VerifyQQUI.e(VerifyQQUI.this).getSecImgEncryptKey(), VerifyQQUI.f(VerifyQQUI.this), VerifyQQUI.g(VerifyQQUI.this), true);
+                  g.azz().a(paramAnonymousDialogInterface, 0);
                   VerifyQQUI localVerifyQQUI = VerifyQQUI.this;
                   AppCompatActivity localAppCompatActivity = VerifyQQUI.this.getContext();
-                  VerifyQQUI.this.getString(2131756545);
-                  VerifyQQUI.a(localVerifyQQUI, h.b(localAppCompatActivity, VerifyQQUI.this.getString(2131756536), true, new DialogInterface.OnCancelListener()
+                  VerifyQQUI.this.getString(2131756681);
+                  VerifyQQUI.a(localVerifyQQUI, h.a(localAppCompatActivity, VerifyQQUI.this.getString(2131756672), true, new DialogInterface.OnCancelListener()
                   {
                     public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
                     {
                       AppMethodBeat.i(110204);
-                      g.ajj().a(paramAnonymousDialogInterface);
+                      g.azz().a(paramAnonymousDialogInterface);
                       AppMethodBeat.o(110204);
                     }
                   }));
@@ -238,19 +244,19 @@ public class VerifyQQUI
             {
               i = 1;
               break;
-              if (this.hPk != null) {
-                ae.d("MicroMsg.VerifyQQUI", "imgSid:" + this.jfD + " img len" + this.hPk.length + " " + com.tencent.mm.compatible.util.f.abr());
+              if (this.iKr != null) {
+                Log.d("MicroMsg.VerifyQQUI", "imgSid:" + this.kdG + " img len" + this.iKr.length + " " + f.apq());
               }
-              this.jfm.b(0, this.hPk, this.jfD, this.jfE);
+              this.kdp.b(0, this.iKr, this.kdG, this.kdH);
             }
-            h.l(getContext(), 2131756539, 2131755906);
+            h.n(getContext(), 2131756675, 2131755998);
             i = 1;
             continue;
             i = 0;
           }
         }
       }
-      Toast.makeText(this, getString(2131759490, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      Toast.makeText(this, getString(2131760805, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
       AppMethodBeat.o(110217);
       return;
     }
@@ -276,11 +282,11 @@ public class VerifyQQUI
   {
     a() {}
     
-    public final void aSU()
+    public final void bnH()
     {
       AppMethodBeat.i(110207);
-      com.tencent.mm.plugin.account.bind.a.b localb = new com.tencent.mm.plugin.account.bind.a.b(VerifyQQUI.c(VerifyQQUI.this), VerifyQQUI.d(VerifyQQUI.this), VerifyQQUI.i(VerifyQQUI.this), "", VerifyQQUI.j(VerifyQQUI.this), 2, true);
-      g.ajj().a(localb, 0);
+      b localb = new b(VerifyQQUI.c(VerifyQQUI.this), VerifyQQUI.d(VerifyQQUI.this), VerifyQQUI.i(VerifyQQUI.this), "", VerifyQQUI.j(VerifyQQUI.this), 2, true);
+      g.azz().a(localb, 0);
       AppMethodBeat.o(110207);
     }
   }
@@ -288,61 +294,61 @@ public class VerifyQQUI
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
-    WeakReference<VerifyQQUI> cyH;
+    WeakReference<VerifyQQUI> cMO;
     
     protected b(VerifyQQUI paramVerifyQQUI)
     {
       AppMethodBeat.i(110209);
-      this.cyH = new WeakReference(paramVerifyQQUI);
+      this.cMO = new WeakReference(paramVerifyQQUI);
       AppMethodBeat.o(110209);
     }
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(110210);
-      paramMenuItem = (VerifyQQUI)this.cyH.get();
+      paramMenuItem = (VerifyQQUI)this.cMO.get();
       if ((paramMenuItem == null) || (paramMenuItem.isFinishing()))
       {
         AppMethodBeat.o(110210);
         return true;
       }
-      Object localObject = (EditText)paramMenuItem.findViewById(2131297264);
-      EditText localEditText = (EditText)paramMenuItem.findViewById(2131297263);
+      Object localObject = (EditText)paramMenuItem.findViewById(2131297420);
+      EditText localEditText = (EditText)paramMenuItem.findViewById(2131297419);
       localObject = ((EditText)localObject).getText().toString().trim();
       VerifyQQUI.a(paramMenuItem, localEditText.getText().toString().trim());
       try
       {
-        VerifyQQUI.a(paramMenuItem, bu.getLong((String)localObject, 0L));
+        VerifyQQUI.a(paramMenuItem, Util.getLong((String)localObject, 0L));
         if (VerifyQQUI.c(paramMenuItem) < 10000L)
         {
-          h.l(paramMenuItem.getContext(), 2131756543, 2131756541);
+          h.n(paramMenuItem.getContext(), 2131756679, 2131756677);
           AppMethodBeat.o(110210);
           return true;
         }
       }
       catch (Exception localException)
       {
-        h.l(paramMenuItem.getContext(), 2131756543, 2131756541);
+        h.n(paramMenuItem.getContext(), 2131756679, 2131756677);
         AppMethodBeat.o(110210);
         return true;
       }
       if (VerifyQQUI.d(paramMenuItem).equals(""))
       {
-        h.l(paramMenuItem.getContext(), 2131756542, 2131756541);
+        h.n(paramMenuItem.getContext(), 2131756678, 2131756677);
         AppMethodBeat.o(110210);
         return true;
       }
       paramMenuItem.hideVKB();
-      final com.tencent.mm.plugin.account.bind.a.b localb = new com.tencent.mm.plugin.account.bind.a.b(VerifyQQUI.c(paramMenuItem), VerifyQQUI.d(paramMenuItem), "", "", "", VerifyQQUI.f(paramMenuItem), VerifyQQUI.g(paramMenuItem), false);
-      g.ajj().a(localb, 0);
+      final b localb = new b(VerifyQQUI.c(paramMenuItem), VerifyQQUI.d(paramMenuItem), "", "", "", VerifyQQUI.f(paramMenuItem), VerifyQQUI.g(paramMenuItem), false);
+      g.azz().a(localb, 0);
       localObject = paramMenuItem.getContext();
-      paramMenuItem.getString(2131756545);
-      VerifyQQUI.a(paramMenuItem, h.b((Context)localObject, paramMenuItem.getString(2131756536), true, new DialogInterface.OnCancelListener()
+      paramMenuItem.getString(2131756681);
+      VerifyQQUI.a(paramMenuItem, h.a((Context)localObject, paramMenuItem.getString(2131756672), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(110208);
-          g.ajj().a(localb);
+          g.azz().a(localb);
           AppMethodBeat.o(110208);
         }
       }));
@@ -353,7 +359,7 @@ public class VerifyQQUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.VerifyQQUI
  * JD-Core Version:    0.7.0.1
  */

@@ -9,9 +9,9 @@ import com.tencent.mm.kiss.widget.textview.a.a;
 public class SnsCommentPreloadTextView
   extends PLTextView
 {
-  private static a AUy = null;
-  private static int AUz = 0;
-  private boolean AUA = false;
+  private static a Ffe = null;
+  private static int Fff = 0;
+  private boolean Ffg = false;
   
   public SnsCommentPreloadTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,10 +26,10 @@ public class SnsCommentPreloadTextView
   public static a getTextViewConfig()
   {
     AppMethodBeat.i(100524);
-    if (AUy == null) {
-      AUy = d.eiI().getTextViewConfig();
+    if (Ffe == null) {
+      Ffe = d.fli().getTextViewConfig();
     }
-    a locala = AUy;
+    a locala = Ffe;
     AppMethodBeat.o(100524);
     return locala;
   }
@@ -37,21 +37,35 @@ public class SnsCommentPreloadTextView
   public static int getViewWidth()
   {
     AppMethodBeat.i(100527);
-    if (AUz == 0) {
-      AUz = d.eiI().getViewWidth();
+    if (Fff == 0) {
+      Fff = d.fli().getViewWidth();
     }
-    int i = AUz;
+    int i = Fff;
     AppMethodBeat.o(100527);
     return i;
   }
   
-  public final a akW()
+  public final void A(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(100526);
+    super.A(paramCharSequence);
+    AppMethodBeat.o(100526);
+  }
+  
+  public final void B(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(100525);
+    super.B(paramCharSequence);
+    AppMethodBeat.o(100525);
+  }
+  
+  public final a aBn()
   {
     AppMethodBeat.i(100523);
-    if (AUy == null) {
-      AUy = d.eiI().getTextViewConfig();
+    if (Ffe == null) {
+      Ffe = d.fli().getTextViewConfig();
     }
-    a locala = AUy;
+    a locala = Ffe;
     AppMethodBeat.o(100523);
     return locala;
   }
@@ -62,24 +76,10 @@ public class SnsCommentPreloadTextView
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(100528);
   }
-  
-  public final void x(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(100526);
-    super.x(paramCharSequence);
-    AppMethodBeat.o(100526);
-  }
-  
-  public final void y(CharSequence paramCharSequence)
-  {
-    AppMethodBeat.i(100525);
-    super.y(paramCharSequence);
-    AppMethodBeat.o(100525);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsCommentPreloadTextView
  * JD-Core Version:    0.7.0.1
  */

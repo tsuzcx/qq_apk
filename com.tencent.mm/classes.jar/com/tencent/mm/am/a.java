@@ -3,16 +3,16 @@ package com.tencent.mm.am;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
 import com.tencent.mm.memory.a.c;
-import com.tencent.mm.model.v;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.util.Map;
 
 public final class a
 {
-  private static int hVS = 0;
-  private static int hVT = 0;
+  private static int iQQ = 0;
+  private static int iQR = 0;
   
   public static String a(a parama)
   {
@@ -23,11 +23,11 @@ public final class a
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder("");
-    localStringBuilder.append(bu.nullAsNil(parama.hWc));
+    localStringBuilder.append(Util.nullAsNil(parama.iRa));
     localStringBuilder.append("\n-------------------\n");
-    localStringBuilder.append(bu.nullAsNil(parama.hWa));
+    localStringBuilder.append(Util.nullAsNil(parama.iQY));
     localStringBuilder.append("\n-------------------\n");
-    localStringBuilder.append(bu.nullAsNil(parama.hVX));
+    localStringBuilder.append(Util.nullAsNil(parama.iQV));
     parama = localStringBuilder.toString();
     AppMethodBeat.o(20473);
     return parama;
@@ -37,14 +37,14 @@ public final class a
   {
     AppMethodBeat.i(20474);
     StringBuilder localStringBuilder = new StringBuilder("");
-    if (!v.zK(parama.dzZ))
+    if (!z.Im(parama.dRL))
     {
-      localStringBuilder.append(parama.hVU);
+      localStringBuilder.append(parama.iQS);
       localStringBuilder.append(": ");
     }
-    if (bu.isNullOrNil(parama.hWc)) {
-      if (bu.isNullOrNil(parama.hWa)) {
-        parama = parama.hVX;
+    if (Util.isNullOrNil(parama.iRa)) {
+      if (Util.isNullOrNil(parama.iQY)) {
+        parama = parama.iQV;
       }
     }
     for (;;)
@@ -53,40 +53,40 @@ public final class a
       parama = localStringBuilder.toString();
       AppMethodBeat.o(20474);
       return parama;
-      parama = parama.hWa;
+      parama = parama.iQY;
       continue;
-      parama = parama.hWc;
+      parama = parama.iRa;
     }
   }
   
   public static final class a
   {
-    private static final f<Integer, a> fVO;
-    public String dzZ;
-    public String hVU;
-    public String hVV;
-    public String hVW;
-    public String hVX;
-    public String hVY;
-    public String hVZ;
-    public String hWa;
-    public String hWb;
-    public String hWc;
+    private static final f<Integer, a> gAU;
+    public String dRL;
+    public String iQS;
+    public String iQT;
+    public String iQU;
+    public String iQV;
+    public String iQW;
+    public String iQX;
+    public String iQY;
+    public String iQZ;
+    public String iRa;
     public String toUser;
     
     static
     {
       AppMethodBeat.i(20472);
-      fVO = new c(100);
+      gAU = new c(100);
       AppMethodBeat.o(20472);
     }
     
-    public static final a Fi(String paramString)
+    public static final a NS(String paramString)
     {
       AppMethodBeat.i(20471);
-      if (bu.isNullOrNil(paramString))
+      if (Util.isNullOrNil(paramString))
       {
-        ae.e("MicroMsg.BrandQALogic", "empty xml to parse");
+        Log.e("MicroMsg.BrandQALogic", "empty xml to parse");
         AppMethodBeat.o(20471);
         return null;
       }
@@ -96,42 +96,42 @@ public final class a
         localObject = paramString.substring(i);
       }
       i = ((String)localObject).hashCode();
-      paramString = (a)fVO.get(Integer.valueOf(i));
+      paramString = (a)gAU.get(Integer.valueOf(i));
       if (paramString != null)
       {
         AppMethodBeat.o(20471);
         return paramString;
       }
-      paramString = bx.M((String)localObject, "qamsg");
+      paramString = XmlParser.parseXml((String)localObject, "qamsg", null);
       if (paramString == null)
       {
-        ae.e("MicroMsg.BrandQALogic", "parse msg failed");
+        Log.e("MicroMsg.BrandQALogic", "parse msg failed");
         AppMethodBeat.o(20471);
         return null;
       }
       try
       {
         localObject = new a();
-        ((a)localObject).dzZ = ((String)paramString.get(".qamsg.$fromUser"));
-        ((a)localObject).hVU = ((String)paramString.get(".qamsg.$fromNickname"));
+        ((a)localObject).dRL = ((String)paramString.get(".qamsg.$fromUser"));
+        ((a)localObject).iQS = ((String)paramString.get(".qamsg.$fromNickname"));
         ((a)localObject).toUser = ((String)paramString.get(".qamsg.$title"));
-        ((a)localObject).hVV = ((String)paramString.get(".qamsg.question.$id"));
-        ((a)localObject).hVW = ((String)paramString.get(".qamsg.question.$fromUser"));
-        ((a)localObject).hVX = ((String)paramString.get(".qamsg.question.content"));
-        ((a)localObject).hVY = ((String)paramString.get(".qamsg.answer.$id"));
-        ((a)localObject).hVZ = ((String)paramString.get(".qamsg.answer.$fromUser"));
-        ((a)localObject).hWa = ((String)paramString.get(".qamsg.answer.content"));
-        ((a)localObject).hVY = ((String)paramString.get(".qamsg.answer1.$id"));
-        ((a)localObject).hWb = ((String)paramString.get(".qamsg.answer1.$fromUser"));
-        ((a)localObject).hWc = ((String)paramString.get(".qamsg.answer1.content"));
-        fVO.q(Integer.valueOf(i), localObject);
+        ((a)localObject).iQT = ((String)paramString.get(".qamsg.question.$id"));
+        ((a)localObject).iQU = ((String)paramString.get(".qamsg.question.$fromUser"));
+        ((a)localObject).iQV = ((String)paramString.get(".qamsg.question.content"));
+        ((a)localObject).iQW = ((String)paramString.get(".qamsg.answer.$id"));
+        ((a)localObject).iQX = ((String)paramString.get(".qamsg.answer.$fromUser"));
+        ((a)localObject).iQY = ((String)paramString.get(".qamsg.answer.content"));
+        ((a)localObject).iQW = ((String)paramString.get(".qamsg.answer1.$id"));
+        ((a)localObject).iQZ = ((String)paramString.get(".qamsg.answer1.$fromUser"));
+        ((a)localObject).iRa = ((String)paramString.get(".qamsg.answer1.content"));
+        gAU.x(Integer.valueOf(i), localObject);
         AppMethodBeat.o(20471);
         return localObject;
       }
       catch (Exception paramString)
       {
-        ae.e("MicroMsg.BrandQALogic", "parse qamessage xml failed");
-        ae.printErrStackTrace("MicroMsg.BrandQALogic", paramString, "", new Object[0]);
+        Log.e("MicroMsg.BrandQALogic", "parse qamessage xml failed");
+        Log.printErrStackTrace("MicroMsg.BrandQALogic", paramString, "", new Object[0]);
         AppMethodBeat.o(20471);
       }
       return null;
@@ -140,7 +140,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.am.a
  * JD-Core Version:    0.7.0.1
  */

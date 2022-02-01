@@ -7,7 +7,6 @@ import android.hardware.Camera.Size;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.youtu.ytcommon.tools.YTCameraSetting;
 import com.tencent.youtu.ytcommon.tools.YTException;
-import com.tencent.youtu.ytcommon.tools.YTLogger;
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectResult;
 import com.tencent.youtu.ytposedetect.jni.YTPoseDetectJNIInterface;
 
@@ -17,19 +16,51 @@ public class PoseDetectProcessManager
   private Camera mCamera = null;
   private Camera.Parameters mCameraParameters = null;
   public int mCameraRotate;
-  public int mDesiredPreviewHeight = 720;
-  public int mDesiredPreviewWidth = 1280;
+  public int mDesiredPreviewHeight = 480;
+  public int mDesiredPreviewWidth = 640;
   public boolean mIsDetecting = false;
   
-  private void setCamera(Context paramContext, Camera paramCamera, int paramInt)
+  private int setCamera(Context paramContext, Camera paramCamera, int paramInt)
   {
-    AppMethodBeat.i(62520);
+    AppMethodBeat.i(192535);
     this.mCamera = paramCamera;
-    this.mCameraParameters = paramCamera.getParameters();
-    this.mDesiredPreviewHeight = this.mCameraParameters.getPreviewSize().height;
-    this.mDesiredPreviewWidth = this.mCameraParameters.getPreviewSize().width;
-    YTLogger.i("FaceDetectProcess", "[PoseDetectProcessManager.setCamera] mDesiredPreviewWidth: " + this.mDesiredPreviewWidth + " mDesiredPreviewHeight: " + this.mDesiredPreviewHeight);
-    AppMethodBeat.o(62520);
+    int i = 0;
+    paramInt = 3;
+    for (;;)
+    {
+      if (paramInt > 0)
+      {
+        try
+        {
+          this.mCameraParameters = paramCamera.getParameters();
+          this.mDesiredPreviewHeight = this.mCameraParameters.getPreviewSize().height;
+          this.mDesiredPreviewWidth = this.mCameraParameters.getPreviewSize().width;
+          YTPoseDetectJNIInterface.nativeLog("FaceDetectProcess", "[PoseDetectProcessManager.setCamera] mDesiredPreviewWidth: " + this.mDesiredPreviewWidth + " mDesiredPreviewHeight: " + this.mDesiredPreviewHeight);
+          paramInt = 0;
+        }
+        catch (Exception paramContext)
+        {
+          YTPoseDetectJNIInterface.nativeLog("FaceDetectProcess", "[PoseDetectProcessManager.setCamera] failed:" + paramContext + " retry " + paramInt);
+          paramInt -= 1;
+        }
+        try
+        {
+          Thread.sleep(10L);
+          if (paramInt == 0) {
+            i = 3;
+          }
+        }
+        catch (InterruptedException paramContext)
+        {
+          for (;;)
+          {
+            YTPoseDetectJNIInterface.nativeLog("FaceDetectProcess", "[PoseDetectProcessManager.setCamera] sleep failed:".concat(String.valueOf(paramContext)));
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(192535);
+    return i;
   }
   
   public void clearAll()
@@ -50,17 +81,17 @@ public class PoseDetectProcessManager
   
   public int poseDetect(float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, int paramInt1, byte[] paramArrayOfByte, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt2)
   {
-    AppMethodBeat.i(195238);
+    AppMethodBeat.i(192534);
     int i = YTCameraSetting.getRotateTag(this.mCameraRotate, 1);
     paramInt1 = YTPoseDetectJNIInterface.poseDetect(paramArrayOfFloat1, paramArrayOfFloat2, paramInt1, paramArrayOfByte, this.mDesiredPreviewWidth, this.mDesiredPreviewHeight, i, paramFloat1, paramFloat2, paramFloat3, paramInt2);
-    AppMethodBeat.o(195238);
+    AppMethodBeat.o(192534);
     return paramInt1;
   }
   
   public void restoreCamera()
   {
     AppMethodBeat.i(62521);
-    if (this.mCamera != null) {
+    if ((this.mCamera != null) && (this.mCameraParameters != null)) {
       try
       {
         this.mCamera.setParameters(this.mCameraParameters);
@@ -68,7 +99,7 @@ public class PoseDetectProcessManager
       }
       catch (Exception localException)
       {
-        YTLogger.w("FaceDetectProcess", "restoreCamera failed. ");
+        YTPoseDetectJNIInterface.nativeLog("FaceDetectProcess", "restoreCamera failed. ");
         YTException.report(localException);
         return;
       }
@@ -86,9 +117,15 @@ public class PoseDetectProcessManager
   {
     AppMethodBeat.i(62516);
     if (this.mIsDetecting) {
-      YTLogger.w("FaceDetectProcess", "Restart FaceDetect process. YTPoseDetectInterface.stop() should be called before the next start, or maybe camera's parameter may be setting wrong.");
+      YTPoseDetectJNIInterface.nativeLog("FaceDetectProcess", "Restart FaceDetect process. YTPoseDetectInterface.stop() should be called before the next start, or maybe camera's parameter may be setting wrong.");
     }
-    setCamera(paramContext, paramCamera, paramInt);
+    int i = setCamera(paramContext, paramCamera, paramInt);
+    if (i != 0)
+    {
+      paramPoseDetectResult.onFailed(i, "set camera failed", "reset again");
+      AppMethodBeat.o(62516);
+      return;
+    }
     this.mCameraRotate = YTCameraSetting.getVideoRotate(paramContext, paramInt);
     this.mIsDetecting = true;
     paramPoseDetectResult.onSuccess();
@@ -109,7 +146,7 @@ public class PoseDetectProcessManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytposedetect.manager.PoseDetectProcessManager
  * JD-Core Version:    0.7.0.1
  */

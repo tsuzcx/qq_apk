@@ -1,26 +1,27 @@
 package com.tencent.mm.av;
 
-import android.os.HandlerThread;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.v;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.model.z;
 import com.tencent.mm.modelmulti.o;
 import com.tencent.mm.modelmulti.o.b;
 import com.tencent.mm.modelmulti.o.d;
 import com.tencent.mm.modelmulti.o.e;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -29,59 +30,59 @@ import java.util.Queue;
 import java.util.Set;
 
 public final class k
-  implements f, com.tencent.mm.ak.g
+  implements com.tencent.mm.ak.i, j
 {
-  private static Set<Integer> idH;
-  private Queue<g> djp;
-  private boolean djt;
-  int dju;
-  private long djv;
-  f.a djy;
-  private aw djz;
-  private LinkedList<n> idI;
-  public a idJ;
-  private boolean idK;
-  public com.tencent.mm.ak.k idL;
+  private static Set<Integer> iYD;
+  private Queue<g> dAA;
+  private boolean dAE;
+  int dAF;
+  private long dAG;
+  f.a dAI;
+  private MTimerHandler dAJ;
+  private LinkedList<n> iYE;
+  public a iYF;
+  private boolean iYG;
+  public com.tencent.mm.ak.n iYH;
   private boolean running;
   
   static
   {
     AppMethodBeat.i(150665);
-    idH = new HashSet();
+    iYD = new HashSet();
     AppMethodBeat.o(150665);
   }
   
   public k()
   {
     AppMethodBeat.i(150654);
-    this.idI = new LinkedList();
-    this.idJ = null;
-    this.idK = false;
-    this.idL = new com.tencent.mm.ak.k()
+    this.iYE = new LinkedList();
+    this.iYF = null;
+    this.iYG = false;
+    this.iYH = new com.tencent.mm.ak.n()
     {
-      public final void aEZ()
+      public final void aYO()
       {
         AppMethodBeat.i(150643);
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+        com.tencent.mm.kernel.g.aAi();
+        com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(150642);
-            ae.i("MicroMsg.ImgService", "on image upload end. queue size : " + k.a(k.this).size());
+            Log.i("MicroMsg.ImgService", "on image upload end. queue size : " + k.a(k.this).size());
             k.a(k.this, false);
             if (k.a(k.this).size() > 0)
             {
               n localn = (n)k.a(k.this).poll();
               if (localn != null)
               {
-                ae.i("MicroMsg.ImgService", "upload image scene hashcode : " + localn.hashCode());
-                com.tencent.mm.kernel.g.ajQ().gDv.a(localn, 0);
+                Log.i("MicroMsg.ImgService", "upload image scene hashcode : " + localn.hashCode());
+                com.tencent.mm.kernel.g.aAg().hqi.a(localn, 0);
                 k.a(k.this, true);
                 AppMethodBeat.o(150642);
                 return;
               }
-              ae.w("MicroMsg.ImgService", "poll image scene is null");
+              Log.w("MicroMsg.ImgService", "poll image scene is null");
             }
             AppMethodBeat.o(150642);
           }
@@ -89,143 +90,116 @@ public final class k
         AppMethodBeat.o(150643);
       }
     };
-    this.djp = new LinkedList();
+    this.dAA = new LinkedList();
     this.running = false;
-    this.dju = 0;
-    this.djv = 0L;
-    this.djt = false;
-    this.djy = new f.a();
-    com.tencent.mm.kernel.g.ajS();
-    this.djz = new aw(com.tencent.mm.kernel.g.ajU().IxZ.getLooper(), new aw.a()
-    {
-      public final boolean onTimerExpired()
-      {
-        AppMethodBeat.i(150649);
-        try
-        {
-          k.e(k.this);
-          AppMethodBeat.o(150649);
-          return false;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            ae.e("MicroMsg.ImgService", "exception:%s", new Object[] { bu.o(localException) });
-          }
-        }
-      }
-      
-      public final String toString()
-      {
-        AppMethodBeat.i(150650);
-        String str = super.toString() + "|scenePusher";
-        AppMethodBeat.o(150650);
-        return str;
-      }
-    }, false);
-    if (com.tencent.mm.kernel.g.ajQ().gDv != null) {
-      com.tencent.mm.kernel.g.ajQ().gDv.a(110, this);
+    this.dAF = 0;
+    this.dAG = 0L;
+    this.dAE = false;
+    this.dAI = new f.a();
+    com.tencent.mm.kernel.g.aAi();
+    this.dAJ = new MTimerHandler(com.tencent.mm.kernel.g.aAk().getLooper(), new k.5(this), false);
+    if (com.tencent.mm.kernel.g.aAg().hqi != null) {
+      com.tencent.mm.kernel.g.aAg().hqi.a(110, this);
     }
-    this.idI.clear();
-    this.idK = false;
+    this.iYE.clear();
+    this.iYG = false;
     AppMethodBeat.o(150654);
   }
   
-  private void Qd()
+  private void aax()
   {
     AppMethodBeat.i(150660);
-    this.djp.clear();
+    this.dAA.clear();
     this.running = false;
-    ae.d("MicroMsg.ImgService", "Finish service use time(ms):" + this.djy.abs());
+    Log.d("MicroMsg.ImgService", "Finish service use time(ms):" + this.dAI.apr());
     AppMethodBeat.o(150660);
   }
   
-  public static boolean pA(int paramInt)
+  public static boolean tn(int paramInt)
+  {
+    AppMethodBeat.i(150652);
+    if ((CrashReportFactory.hasDebuger()) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {
+      Log.i("MicroMsg.ImgService", "setRun imgLocalId %s %s", new Object[] { Integer.valueOf(paramInt), Util.getStack().toString() });
+    }
+    boolean bool = iYD.add(Integer.valueOf(paramInt));
+    AppMethodBeat.o(150652);
+    return bool;
+  }
+  
+  public static boolean to(int paramInt)
   {
     AppMethodBeat.i(150653);
-    if ((com.tencent.mm.sdk.a.b.fnF()) || (j.IS_FLAVOR_RED) || (j.IS_FLAVOR_PURPLE)) {
-      ae.i("MicroMsg.ImgService", "removeRun imgLocalId %s %s", new Object[] { Integer.valueOf(paramInt), bu.fpN().toString() });
+    if ((CrashReportFactory.hasDebuger()) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {
+      Log.i("MicroMsg.ImgService", "removeRun imgLocalId %s %s", new Object[] { Integer.valueOf(paramInt), Util.getStack().toString() });
     }
-    boolean bool = idH.remove(Integer.valueOf(paramInt));
+    boolean bool = iYD.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(150653);
     return bool;
   }
   
-  public static void pB(int paramInt)
+  public static void tp(int paramInt)
   {
     AppMethodBeat.i(150658);
-    ae.w("MicroMsg.ImgService", "setImgError, %d", new Object[] { Integer.valueOf(paramInt) });
-    g localg = q.aIX().pw(paramInt);
-    if ((localg == null) || (localg.doE <= 0L))
+    Log.w("MicroMsg.ImgService", "setImgError, %d", new Object[] { Integer.valueOf(paramInt) });
+    g localg = q.bcR().tl(paramInt);
+    if ((localg == null) || (localg.localId <= 0L))
     {
       AppMethodBeat.o(150658);
       return;
     }
-    Object localObject = q.aIX().py((int)localg.doE);
+    Object localObject = q.bcR().tm((int)localg.localId);
     if (localObject != null)
     {
       ((g)localObject).setStatus(-1);
-      ((g)localObject).dEu = 264;
-      q.aIX().a((int)((g)localObject).doE, (g)localObject);
+      ((g)localObject).cSx = 264;
+      q.bcR().a((int)((g)localObject).localId, (g)localObject);
     }
-    for (localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().ys(((g)localObject).icx); ((ei)localObject).field_msgId != localg.icx; localObject = ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().ys(localg.icx))
+    for (localObject = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().Hb(((g)localObject).iXv); ((eo)localObject).field_msgId != localg.iXv; localObject = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().Hb(localg.iXv))
     {
       AppMethodBeat.o(150658);
       return;
       localg.setStatus(-1);
-      localg.dEu = 264;
-      q.aIX().a(paramInt, localg);
+      localg.cSx = 264;
+      q.bcR().a(paramInt, localg);
     }
-    ((bv)localObject).setStatus(5);
-    e.ywz.idkeyStat(111L, 31L, 1L, true);
-    ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().a((int)((ei)localObject).field_msgId, (bv)localObject);
+    ((ca)localObject).setStatus(5);
+    e.Cxv.idkeyStat(111L, 31L, 1L, true);
+    ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a((int)((eo)localObject).field_msgId, (ca)localObject);
     AppMethodBeat.o(150658);
-  }
-  
-  public static boolean pz(int paramInt)
-  {
-    AppMethodBeat.i(150652);
-    if ((com.tencent.mm.sdk.a.b.fnF()) || (j.IS_FLAVOR_RED) || (j.IS_FLAVOR_PURPLE)) {
-      ae.i("MicroMsg.ImgService", "setRun imgLocalId %s %s", new Object[] { Integer.valueOf(paramInt), bu.fpN().toString() });
-    }
-    boolean bool = idH.add(Integer.valueOf(paramInt));
-    AppMethodBeat.o(150652);
-    return bool;
   }
   
   public final long a(String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(150655);
-    if (v.f(paramString3, paramString2, paramBoolean)) {}
+    if (z.f(paramString3, paramString2, paramBoolean)) {}
     for (int i = 1;; i = 0)
     {
-      ae.v("MicroMsg.ImgService", "pushsendimage, param.compressImg:%b, compresstype:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i) });
-      o.e locale = o.a(o.d.iiQ).pn(3);
-      locale.dzZ = paramString1;
+      Log.v("MicroMsg.ImgService", "pushsendimage, param.compressImg:%b, compresstype:%d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i) });
+      o.e locale = o.a(o.d.jdL).tc(3);
+      locale.dRL = paramString1;
       locale.toUser = paramString2;
-      locale.iey = paramString3;
-      locale.icr = i;
-      locale.iiW = this;
-      locale.dyw = paramInt;
-      locale.iiX = this.idL;
-      locale.iiZ = true;
-      locale.iiY = 2131231564;
-      locale.iiV = 10;
-      paramString1 = (n)locale.aJO().iiO;
+      locale.iZt = paramString3;
+      locale.iXp = i;
+      locale.jdS = this;
+      locale.dQd = paramInt;
+      locale.jdT = this.iYH;
+      locale.jdV = true;
+      locale.jdU = 2131231628;
+      locale.jdR = 10;
+      paramString1 = (n)locale.bdQ().jdJ;
       a(paramString1);
-      long l = paramString1.aIJ().field_msgId;
+      long l = paramString1.bcD().field_msgId;
       AppMethodBeat.o(150655);
       return l;
     }
   }
   
-  public final void a(int paramInt1, int paramInt2, com.tencent.mm.ak.n paramn)
+  public final void a(int paramInt1, int paramInt2, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(150662);
-    paramn = (n)paramn;
-    if ((this.idJ != null) && (paramn != null) && (paramn.aIJ() != null)) {
-      this.idJ.a(paramn.aIJ().field_msgId, paramInt1, paramInt2);
+    paramq = (n)paramq;
+    if ((this.iYF != null) && (paramq != null) && (paramq.bcD() != null)) {
+      this.iYF.a(paramq.bcD().field_msgId, paramInt1, paramInt2);
     }
     AppMethodBeat.o(150662);
   }
@@ -238,20 +212,20 @@ public final class k
       AppMethodBeat.o(150657);
       return;
     }
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(150644);
-        ae.i("MicroMsg.ImgService", "offer to queue ? %b, scene hashcode %d", new Object[] { Boolean.valueOf(k.b(k.this)), Integer.valueOf(paramn.hashCode()) });
+        Log.i("MicroMsg.ImgService", "offer to queue ? %b, scene hashcode %d", new Object[] { Boolean.valueOf(k.b(k.this)), Integer.valueOf(paramn.hashCode()) });
         if (k.b(k.this))
         {
           k.a(k.this).offer(paramn);
           AppMethodBeat.o(150644);
           return;
         }
-        com.tencent.mm.kernel.g.ajQ().gDv.a(paramn, 0);
+        com.tencent.mm.kernel.g.aAg().hqi.a(paramn, 0);
         k.a(k.this, true);
         AppMethodBeat.o(150644);
       }
@@ -266,42 +240,42 @@ public final class k
     if (paramArrayList.hasNext())
     {
       String str = (String)paramArrayList.next();
-      if (v.f(str, paramString2, false)) {}
+      if (z.f(str, paramString2, false)) {}
       for (int i = 1;; i = 0)
       {
-        ae.v("MicroMsg.ImgService", "pushsendimage, param.compressImg:%b, compresstype:%d", new Object[] { Boolean.FALSE, Integer.valueOf(i) });
-        o.e locale = o.a(o.d.iiQ).pn(3);
-        locale.dzZ = paramString1;
+        Log.v("MicroMsg.ImgService", "pushsendimage, param.compressImg:%b, compresstype:%d", new Object[] { Boolean.FALSE, Integer.valueOf(i) });
+        o.e locale = o.a(o.d.jdL).tc(3);
+        locale.dRL = paramString1;
         locale.toUser = paramString2;
-        locale.iey = str;
-        locale.icr = i;
-        locale.iiW = this;
-        locale.dyw = 0;
-        locale.iiX = this.idL;
-        locale.iiZ = true;
-        locale.iiY = 2131231564;
-        locale.iiV = 10;
-        a((n)locale.aJO().iiO);
+        locale.iZt = str;
+        locale.iXp = i;
+        locale.jdS = this;
+        locale.dQd = 0;
+        locale.jdT = this.iYH;
+        locale.jdV = true;
+        locale.jdU = 2131231628;
+        locale.jdR = 10;
+        a((n)locale.bdQ().jdJ);
         break;
       }
     }
     AppMethodBeat.o(150656);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.ak.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(150659);
-    ae.i("MicroMsg.ImgService", "onSceneEnd errType %d, errCode %d, errMsg %s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    Log.i("MicroMsg.ImgService", "onSceneEnd errType %d, errCode %d, errMsg %s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     a locala;
     long l;
-    if ((paramn instanceof n))
+    if ((paramq instanceof n))
     {
-      paramString = (n)paramn;
-      if ((this.idJ != null) && (paramString != null) && (paramString.aIJ() != null))
+      paramString = (n)paramq;
+      if ((this.iYF != null) && (paramString != null) && (paramString.bcD() != null))
       {
-        locala = this.idJ;
-        l = paramString.aIJ().field_msgId;
-        if (paramString.aIJ().field_status == 5) {
+        locala = this.iYF;
+        l = paramString.bcD().field_msgId;
+        if (paramString.bcD().field_status == 5) {
           break label136;
         }
       }
@@ -310,30 +284,30 @@ public final class k
     for (boolean bool = true;; bool = false)
     {
       locala.j(l, bool);
-      com.tencent.mm.kernel.g.ajS();
-      com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+      com.tencent.mm.kernel.g.aAi();
+      com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(150645);
-          if (paramn.getType() != 110)
+          if (paramq.getType() != 110)
           {
             AppMethodBeat.o(150645);
             return;
           }
-          if (!(paramn instanceof n))
+          if (!(paramq instanceof n))
           {
             AppMethodBeat.o(150645);
             return;
           }
           k.c(k.this);
-          int i = (int)((n)paramn).idT;
+          int i = (int)((n)paramq).iYP;
           if (k.d(k.this) > 0) {
             k.e(k.this);
           }
           for (;;)
           {
-            k.pA(i);
+            k.to(i);
             AppMethodBeat.o(150645);
             return;
             k.f(k.this);
@@ -356,8 +330,8 @@ public final class k
   public final void run()
   {
     AppMethodBeat.i(150661);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -370,13 +344,13 @@ public final class k
             AppMethodBeat.o(150647);
             return;
           }
-          ae.e("MicroMsg.ImgService", "ERR: Try Run service runningFlag:" + k.h(k.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + k.h(k.this));
+          Log.e("MicroMsg.ImgService", "ERR: Try Run service runningFlag:" + k.h(k.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + k.h(k.this));
         }
-        ae.i("MicroMsg.ImgService", "run from run");
+        Log.i("MicroMsg.ImgService", "run from run");
         k.i(k.this);
         k.j(k.this);
-        k.this.djy.gfF = SystemClock.elapsedRealtime();
-        k.k(k.this).ay(10L, 10L);
+        k.this.dAI.gLm = SystemClock.elapsedRealtime();
+        k.k(k.this).startTimer(10L);
         AppMethodBeat.o(150647);
       }
       
@@ -400,7 +374,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.k
  * JD-Core Version:    0.7.0.1
  */

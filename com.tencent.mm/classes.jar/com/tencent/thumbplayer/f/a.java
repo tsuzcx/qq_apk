@@ -1,55 +1,80 @@
 package com.tencent.thumbplayer.f;
 
-import com.tencent.thumbplayer.b.b.b;
-import com.tencent.thumbplayer.b.f;
-import com.tencent.thumbplayer.b.p;
-import com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.thumbplayer.utils.g;
 
-public abstract interface a
+public final class a
 {
-  public abstract void FC(long paramLong);
+  public b RVM;
+  private String mTag;
   
-  public abstract com.tencent.thumbplayer.b.a.a a(com.tencent.thumbplayer.b.a.a parama, long paramLong, p paramp);
+  public a(b paramb)
+  {
+    AppMethodBeat.i(189267);
+    this.RVM = paramb;
+    this.mTag = this.RVM.tag;
+    AppMethodBeat.o(189267);
+  }
   
-  public abstract String a(int paramInt, String paramString, b paramb);
+  public a(b paramb, String paramString)
+  {
+    AppMethodBeat.i(189268);
+    this.RVM = new b(paramb, paramString);
+    this.mTag = this.RVM.tag;
+    AppMethodBeat.o(189268);
+  }
   
-  public abstract String a(long paramLong, String paramString, p paramp);
+  public final void a(b paramb)
+  {
+    AppMethodBeat.i(189269);
+    if (paramb == null)
+    {
+      this.RVM = new b(this.mTag);
+      AppMethodBeat.o(189269);
+      return;
+    }
+    this.RVM = paramb;
+    AppMethodBeat.o(189269);
+  }
   
-  public abstract void a(p paramp);
+  public final void debug(String paramString)
+  {
+    AppMethodBeat.i(189271);
+    g.d(this.RVM.tag, paramString);
+    AppMethodBeat.o(189271);
+  }
   
-  public abstract void a(ITPPlayListener paramITPPlayListener);
+  public final void error(String paramString)
+  {
+    AppMethodBeat.i(189274);
+    g.e(this.RVM.tag, paramString);
+    AppMethodBeat.o(189274);
+  }
   
-  public abstract void ahU(int paramInt);
+  public final void info(String paramString)
+  {
+    AppMethodBeat.i(189272);
+    g.i(this.RVM.tag, paramString);
+    AppMethodBeat.o(189272);
+  }
   
-  public abstract void b(f paramf);
+  public final void r(Exception paramException)
+  {
+    AppMethodBeat.i(189270);
+    g.e(this.RVM.tag, paramException);
+    AppMethodBeat.o(189270);
+  }
   
-  public abstract String bbp(String paramString);
-  
-  public abstract com.tencent.thumbplayer.b.a.a c(com.tencent.thumbplayer.b.a.a parama);
-  
-  public abstract void gaT();
-  
-  public abstract void gbw();
-  
-  public abstract boolean gbx();
-  
-  public abstract String gby();
-  
-  public abstract com.tencent.thumbplayer.b.b.a gbz();
-  
-  public abstract boolean isEnable();
-  
-  public abstract void mW(String paramString1, String paramString2);
-  
-  public abstract void pauseDownload();
-  
-  public abstract void release();
-  
-  public abstract void stopDownload();
+  public final void warn(String paramString)
+  {
+    AppMethodBeat.i(189273);
+    g.w(this.RVM.tag, paramString);
+    AppMethodBeat.o(189273);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.f.a
  * JD-Core Version:    0.7.0.1
  */

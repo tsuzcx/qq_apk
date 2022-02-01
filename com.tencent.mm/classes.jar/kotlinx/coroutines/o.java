@@ -1,37 +1,37 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.d;
-import d.l;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
+import kotlin.d.d;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/CancelledContinuation;", "Lkotlin/coroutines/Continuation;", "continuation", "", "cause", "", "handled", "<init>", "(Lkotlin/coroutines/Continuation;Ljava/lang/Throwable;Z)V", "makeResumed", "()Z", "kotlinx-coroutines-core", "Lkotlinx/coroutines/CompletedExceptionally;"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/CancelledContinuation;", "Lkotlin/coroutines/Continuation;", "continuation", "", "cause", "", "handled", "<init>", "(Lkotlin/coroutines/Continuation;Ljava/lang/Throwable;Z)V", "makeResumed", "()Z", "kotlinx-coroutines-core", "Lkotlinx/coroutines/CompletedExceptionally;"})
 public final class o
-  extends u
+  extends v
 {
-  private static final AtomicIntegerFieldUpdater OeL;
+  private static final AtomicIntegerFieldUpdater TTF;
   private volatile int _resumed;
   
   static
   {
-    AppMethodBeat.i(209266);
-    OeL = AtomicIntegerFieldUpdater.newUpdater(o.class, "_resumed");
-    AppMethodBeat.o(209266);
+    AppMethodBeat.i(192408);
+    TTF = AtomicIntegerFieldUpdater.newUpdater(o.class, "_resumed");
+    AppMethodBeat.o(192408);
   }
   
   public o(d<?> paramd, Throwable paramThrowable, boolean paramBoolean) {}
   
-  public final boolean gzw()
+  public final boolean hMA()
   {
-    AppMethodBeat.i(209264);
-    boolean bool = OeL.compareAndSet(this, 0, 1);
-    AppMethodBeat.o(209264);
+    AppMethodBeat.i(192406);
+    boolean bool = TTF.compareAndSet(this, 0, 1);
+    AppMethodBeat.o(192406);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.o
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class AppBrandTimePickerV2
-  implements com.tencent.mm.plugin.appbrand.jsapi.p.c<String>
+  implements com.tencent.mm.plugin.appbrand.jsapi.r.c<String>
 {
   private Context context;
   private int currentHour;
@@ -43,22 +43,22 @@ public class AppBrandTimePickerV2
     AppMethodBeat.i(138078);
     if (paramList.size() == 1)
     {
-      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165289), 0, this.context.getResources().getDimensionPixelSize(2131165289));
+      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
       AppMethodBeat.o(138078);
       return;
     }
     if (paramList.size() == 2)
     {
-      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
-      ((WheelView)paramList.get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289), 0, this.context.getResources().getDimensionPixelSize(2131165289));
+      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296));
+      ((WheelView)paramList.get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
       AppMethodBeat.o(138078);
       return;
     }
     if (paramList.size() == 3)
     {
-      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165274), this.context.getResources().getDimensionPixelSize(2131165289));
-      ((WheelView)paramList.get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165274), this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165274), this.context.getResources().getDimensionPixelSize(2131165289));
-      ((WheelView)paramList.get(2)).setPadding(this.context.getResources().getDimensionPixelSize(2131165274), this.context.getResources().getDimensionPixelSize(2131165289), 0, this.context.getResources().getDimensionPixelSize(2131165289));
+      ((WheelView)paramList.get(0)).setPadding(0, this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296));
+      ((WheelView)paramList.get(1)).setPadding(this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296));
+      ((WheelView)paramList.get(2)).setPadding(this.context.getResources().getDimensionPixelSize(2131165277), this.context.getResources().getDimensionPixelSize(2131165296), 0, this.context.getResources().getDimensionPixelSize(2131165296));
     }
     AppMethodBeat.o(138078);
   }
@@ -76,7 +76,7 @@ public class AppBrandTimePickerV2
   public String currentValue()
   {
     AppMethodBeat.i(138080);
-    this.pvTime.aQB();
+    this.pvTime.blg();
     String str = String.format(Locale.US, "%02d:%02d", new Object[] { Integer.valueOf(this.currentHour), Integer.valueOf(this.currentMinute) });
     AppMethodBeat.o(138080);
     return str;
@@ -86,7 +86,7 @@ public class AppBrandTimePickerV2
   {
     AppMethodBeat.i(138081);
     if (this.mView == null) {
-      this.mView = this.pvTime.aQD();
+      this.mView = this.pvTime.bli();
     }
     View localView = this.mView;
     AppMethodBeat.o(138081);
@@ -113,18 +113,18 @@ public class AppBrandTimePickerV2
         AppBrandTimePickerV2.access$000(AppBrandTimePickerV2.this, paramAnonymousDate);
         AppMethodBeat.o(138075);
       }
-    }).b(new boolean[] { 0, 0, 0, 1, 1, 0 }).a((Calendar)localObject).a(localCalendar1, localCalendar2).aQu();
-    paramInt1 = android.support.v4.content.b.n(this.context, 2131099656);
-    ((com.tencent.mm.picker.b.b)localObject).iOb.iNG = paramInt1;
+    }).b(new boolean[] { 0, 0, 0, 1, 1, 0 }).a((Calendar)localObject).a(localCalendar1, localCalendar2).bkZ();
+    paramInt1 = android.support.v4.content.b.n(this.context, 2131099657);
+    ((com.tencent.mm.picker.b.b)localObject).jKP.jKu = paramInt1;
     ((com.tencent.mm.picker.b.b)localObject).a(this.pvTime);
-    this.pvTime.setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165923));
-    this.context.getResources().getDimensionPixelSize(2131166681);
-    this.pvTime.du(this.context.getResources().getDimensionPixelSize(2131165289), this.context.getResources().getDimensionPixelSize(2131165289));
-    localObject = this.pvTime.iOU.aQG().iterator();
+    this.pvTime.setDividerHeight(this.context.getResources().getDimensionPixelSize(2131165950));
+    this.context.getResources().getDimensionPixelSize(2131166801);
+    this.pvTime.dE(this.context.getResources().getDimensionPixelSize(2131165296), this.context.getResources().getDimensionPixelSize(2131165296));
+    localObject = this.pvTime.jLJ.bll().iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((WheelView)((Iterator)localObject).next()).qT(android.support.v4.content.b.n(this.context, 2131099664)).qS(this.context.getResources().getDimensionPixelSize(2131165289)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
+      ((WheelView)((Iterator)localObject).next()).uL(android.support.v4.content.b.n(this.context, 2131099669)).uK(this.context.getResources().getDimensionPixelSize(2131165296)).setBackgroundColor(android.support.v4.content.b.n(this.context, 2131099653));
     }
-    configPadding(this.pvTime.iOU.aQG());
+    configPadding(this.pvTime.jLJ.bll());
     AppMethodBeat.o(138077);
   }
   
@@ -155,7 +155,7 @@ public class AppBrandTimePickerV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.AppBrandTimePickerV2
  * JD-Core Version:    0.7.0.1
  */

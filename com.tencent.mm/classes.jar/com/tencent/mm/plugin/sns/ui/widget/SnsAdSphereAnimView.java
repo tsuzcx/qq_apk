@@ -7,33 +7,33 @@ import android.os.Looper;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.g.a.a;
-import com.tencent.mm.plugin.sns.ad.g.a.c;
-import com.tencent.mm.plugin.sns.ad.g.a.d;
-import com.tencent.mm.plugin.sns.ad.g.a.e;
-import com.tencent.mm.plugin.sns.ad.g.a.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.sns.ad.widget.a.a;
+import com.tencent.mm.plugin.sns.ad.widget.a.c;
+import com.tencent.mm.plugin.sns.ad.widget.a.d;
+import com.tencent.mm.plugin.sns.ad.widget.a.e;
+import com.tencent.mm.plugin.sns.ad.widget.a.f;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class SnsAdSphereAnimView
   extends FrameLayout
 {
-  public static int ATM = 1;
-  public static int ATN = 2;
-  public static int ATO = 3;
-  public static int ATP = 4;
-  public Handler AOj;
-  public a ATQ;
-  public int ATR;
-  private long jWf;
+  public static int Fes = 1;
+  public static int Fet = 2;
+  public static int Feu = 3;
+  public static int Fev = 4;
+  public Handler DAC;
+  public a Few;
+  public int Fex;
+  private long kZb;
   public Context mContext;
   
   public SnsAdSphereAnimView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(179378);
-    this.ATR = 0;
-    this.jWf = 0L;
-    this.AOj = new Handler(Looper.getMainLooper());
+    this.Fex = 0;
+    this.kZb = 0L;
+    this.DAC = new Handler(Looper.getMainLooper());
     this.mContext = paramContext;
     AppMethodBeat.o(179378);
   }
@@ -42,9 +42,9 @@ public class SnsAdSphereAnimView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(179379);
-    this.ATR = 0;
-    this.jWf = 0L;
-    this.AOj = new Handler(Looper.getMainLooper());
+    this.Fex = 0;
+    this.kZb = 0L;
+    this.DAC = new Handler(Looper.getMainLooper());
     this.mContext = paramContext;
     AppMethodBeat.o(179379);
   }
@@ -52,13 +52,13 @@ public class SnsAdSphereAnimView
   public final void clear()
   {
     AppMethodBeat.i(179380);
-    ae.i("SnsAdSphereAnimView", "clear");
-    if (this.ATQ != null)
+    Log.i("SnsAdSphereAnimView", "clear");
+    if (this.Few != null)
     {
-      this.ATQ.clear();
-      this.ATQ = null;
+      this.Few.clear();
+      this.Few = null;
     }
-    this.AOj.removeCallbacksAndMessages(null);
+    this.DAC.removeCallbacksAndMessages(null);
     AppMethodBeat.o(179380);
   }
   
@@ -72,7 +72,7 @@ public class SnsAdSphereAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsAdSphereAnimView
  * JD-Core Version:    0.7.0.1
  */

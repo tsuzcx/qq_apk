@@ -1,118 +1,71 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.c;
-import com.google.b.a.e;
+import com.google.a.a.b;
+import com.google.a.a.c;
+import com.google.a.a.e;
+import com.google.a.a.g;
+import java.util.Arrays;
 
 public final class a$ax
   extends e
 {
-  private static volatile ax[] MfJ;
-  public int Cuf = 0;
-  public long Cug = 0L;
-  public int Mde = 0;
-  public a.ay[] Met = a.ay.fXF();
-  public String MfK = "";
-  public String groupId = "";
+  private static volatile ax[] RFt;
+  public int RFu = 0;
+  public int RFv = 0;
+  public byte[] RFw = g.cbu;
   
   public a$ax()
   {
-    this.bQO = -1;
+    this.cbo = -1;
   }
   
-  public static ax[] fXE()
+  public static ax[] hjj()
   {
-    if (MfJ == null) {}
-    synchronized (c.bQN)
+    if (RFt == null) {}
+    synchronized (c.cbn)
     {
-      if (MfJ == null) {
-        MfJ = new ax[0];
+      if (RFt == null) {
+        RFt = new ax[0];
       }
-      return MfJ;
+      return RFt;
     }
+  }
+  
+  public final int Ig()
+  {
+    int j = super.Ig();
+    int i = j;
+    if (this.RFu != 0) {
+      i = j + b.bu(1, this.RFu);
+    }
+    j = i;
+    if (this.RFv != 0) {
+      j = i + b.bu(2, this.RFv);
+    }
+    i = j;
+    if (!Arrays.equals(this.RFw, g.cbu)) {
+      i = j + b.c(3, this.RFw);
+    }
+    return i;
   }
   
   public final void a(b paramb)
   {
-    if (!this.groupId.equals("")) {
-      paramb.d(1, this.groupId);
+    if (this.RFu != 0) {
+      paramb.bs(1, this.RFu);
     }
-    if (this.Cuf != 0) {
-      paramb.bx(2, this.Cuf);
+    if (this.RFv != 0) {
+      paramb.bs(2, this.RFv);
     }
-    if (this.Cug != 0L) {
-      paramb.n(3, this.Cug);
-    }
-    if ((this.Met != null) && (this.Met.length > 0))
-    {
-      int i = 0;
-      while (i < this.Met.length)
-      {
-        a.ay localay = this.Met[i];
-        if (localay != null) {
-          paramb.a(4, localay);
-        }
-        i += 1;
-      }
-    }
-    if (this.Mde != 0) {
-      paramb.by(5, this.Mde);
-    }
-    if (!this.MfK.equals("")) {
-      paramb.d(6, this.MfK);
+    if (!Arrays.equals(this.RFw, g.cbu)) {
+      paramb.b(3, this.RFw);
     }
     super.a(paramb);
-  }
-  
-  public final int zq()
-  {
-    int j = super.zq();
-    int i = j;
-    if (!this.groupId.equals("")) {
-      i = j + b.e(1, this.groupId);
-    }
-    j = i;
-    if (this.Cuf != 0) {
-      j = i + b.bz(2, this.Cuf);
-    }
-    i = j;
-    if (this.Cug != 0L) {
-      i = j + b.p(3, this.Cug);
-    }
-    j = i;
-    if (this.Met != null)
-    {
-      j = i;
-      if (this.Met.length > 0)
-      {
-        j = 0;
-        while (j < this.Met.length)
-        {
-          a.ay localay = this.Met[j];
-          int k = i;
-          if (localay != null) {
-            k = i + b.b(4, localay);
-          }
-          j += 1;
-          i = k;
-        }
-        j = i;
-      }
-    }
-    i = j;
-    if (this.Mde != 0) {
-      i = j + b.bA(5, this.Mde);
-    }
-    j = i;
-    if (!this.MfK.equals("")) {
-      j = i + b.e(6, this.MfK);
-    }
-    return j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.ax
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.facebook.device.yearclass;
 
 import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.IOException;
@@ -55,7 +55,7 @@ public class DeviceInfo
         while ((i < paramArrayOfByte.length) && (Character.isDigit(paramArrayOfByte[i]))) {
           i += 1;
         }
-        paramInt = bu.aSB(new String(paramArrayOfByte, 0, paramInt, i - paramInt));
+        paramInt = Util.safeParseInt(new String(paramArrayOfByte, 0, paramInt, i - paramInt));
         AppMethodBeat.o(133646);
         return paramInt;
       }
@@ -106,7 +106,7 @@ public class DeviceInfo
     //   68: astore 4
     //   70: aload_3
     //   71: invokevirtual 93	java/io/File:getPath	()Ljava/lang/String;
-    //   74: invokestatic 99	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   74: invokestatic 99	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   77: astore_3
     //   78: aload_3
     //   79: aload 4
@@ -133,7 +133,7 @@ public class DeviceInfo
     //   117: iconst_0
     //   118: iload_1
     //   119: invokespecial 108	java/lang/String:<init>	([BII)V
-    //   122: invokestatic 50	com/tencent/mm/sdk/platformtools/bu:aSB	(Ljava/lang/String;)I
+    //   122: invokestatic 50	com/tencent/mm/sdk/platformtools/Util:safeParseInt	(Ljava/lang/String;)I
     //   125: invokestatic 114	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   128: astore 4
     //   130: iload_0
@@ -174,7 +174,7 @@ public class DeviceInfo
     //   192: iconst_m1
     //   193: if_icmpne -25 -> 168
     //   196: ldc 122
-    //   198: invokestatic 99	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   198: invokestatic 99	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   201: astore_3
     //   202: ldc 124
     //   204: aload_3
@@ -259,7 +259,7 @@ public class DeviceInfo
     //   5: aconst_null
     //   6: astore_2
     //   7: aload_0
-    //   8: invokestatic 99	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   8: invokestatic 99	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   11: astore_0
     //   12: new 140	java/io/BufferedReader
     //   15: dup
@@ -352,7 +352,7 @@ public class DeviceInfo
       AppMethodBeat.o(133641);
       return -1;
     }
-    int i = bu.getInt(paramString.substring(2), 0);
+    int i = Util.getInt(paramString.substring(2), 0);
     AppMethodBeat.o(133641);
     return i + 1;
   }
@@ -423,7 +423,7 @@ public class DeviceInfo
     //   47: lload_2
     //   48: lreturn
     //   49: ldc 217
-    //   51: invokestatic 99	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   51: invokestatic 99	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   54: astore_0
     //   55: ldc 219
     //   57: aload_0
@@ -529,7 +529,7 @@ public class DeviceInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.facebook.device.yearclass.DeviceInfo
  * JD-Core Version:    0.7.0.1
  */

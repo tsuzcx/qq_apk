@@ -2,17 +2,17 @@ package com.tencent.mm.toolkit.a.a;
 
 public abstract interface e
 {
-  public abstract boolean bbe();
+  public abstract boolean bws();
   
   public abstract int getTimeout();
   
   public static final class a
     implements e
   {
-    private final int JlT = 3;
-    private final float JlU = 1.0F;
-    private int JlV = 5000;
-    private int JlW = 0;
+    private final int OvM = 3;
+    private final float OvN = 1.0F;
+    private int OvO = 5000;
+    private int OvP = 0;
     
     public a()
     {
@@ -21,16 +21,16 @@ public abstract interface e
     
     private a(byte paramByte) {}
     
-    public final boolean bbe()
+    public final boolean bws()
     {
-      this.JlW += 1;
-      this.JlV = ((int)(this.JlV + this.JlV * this.JlU));
-      return this.JlW < this.JlT;
+      this.OvP += 1;
+      this.OvO = ((int)(this.OvO + this.OvO * this.OvN));
+      return this.OvP < this.OvM;
     }
     
     public final int getTimeout()
     {
-      return this.JlV;
+      return this.OvO;
     }
   }
 }

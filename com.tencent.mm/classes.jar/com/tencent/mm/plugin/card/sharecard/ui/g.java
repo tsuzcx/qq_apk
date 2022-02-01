@@ -13,13 +13,13 @@ public final class g
   extends BaseAdapter
 {
   Context mContext;
-  c oJA;
-  List<b> oJL;
+  c pXo;
+  List<b> pXz;
   
-  public final b Ay(int paramInt)
+  public final b Ed(int paramInt)
   {
     AppMethodBeat.i(113093);
-    b localb = (b)this.oJL.get(paramInt);
+    b localb = (b)this.pXz.get(paramInt);
     AppMethodBeat.o(113093);
     return localb;
   }
@@ -27,7 +27,7 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(113092);
-    int i = this.oJL.size();
+    int i = this.pXz.size();
     AppMethodBeat.o(113092);
     return i;
   }
@@ -40,15 +40,15 @@ public final class g
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(113094);
-    paramViewGroup = Ay(paramInt);
-    paramView = this.oJA.a(paramInt, paramView, paramViewGroup);
+    paramViewGroup = Ed(paramInt);
+    paramView = this.pXo.a(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(113094);
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.g
  * JD-Core Version:    0.7.0.1
  */

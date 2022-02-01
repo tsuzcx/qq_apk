@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bj;
-import com.tencent.mm.protocal.protobuf.bk;
-import com.tencent.mm.protocal.protobuf.dnf;
-import com.tencent.mm.protocal.protobuf.dol;
+import com.tencent.mm.protocal.protobuf.bn;
+import com.tencent.mm.protocal.protobuf.bo;
+import com.tencent.mm.protocal.protobuf.egw;
+import com.tencent.mm.protocal.protobuf.eih;
 import com.tencent.mm.vending.j.a;
 import com.tencent.mm.vending.j.b;
 import java.util.Iterator;
@@ -13,31 +13,31 @@ import java.util.LinkedList;
 
 public final class g
 {
-  public f qZn;
+  public f szE;
   
-  public static com.tencent.mm.vending.j.c<dnf, Integer> a(bk parambk, bj parambj)
+  public static com.tencent.mm.vending.j.c<egw, Integer> a(bo parambo, bn parambn)
   {
     AppMethodBeat.i(121899);
-    if ((parambk == null) || (parambk.FLM.isEmpty()))
+    if ((parambo == null) || (parambo.KFn.isEmpty()))
     {
       AppMethodBeat.o(121899);
       return null;
     }
-    int i = parambk.FLM.size() - 1;
+    int i = parambo.KFn.size() - 1;
     while (i >= 0)
     {
-      dnf localdnf = (dnf)parambk.FLM.get(i);
-      if ((localdnf != null) && (!localdnf.HUq.isEmpty()))
+      egw localegw = (egw)parambo.KFn.get(i);
+      if ((localegw != null) && (!localegw.NgI.isEmpty()))
       {
-        int j = localdnf.HUq.size() - 1;
+        int j = localegw.NgI.size() - 1;
         while (j >= 0)
         {
-          bj localbj = (bj)localdnf.HUq.get(j);
-          if ((localbj != null) && (h.a(parambj.FLG, localbj.FLG)))
+          bn localbn = (bn)localegw.NgI.get(j);
+          if ((localbn != null) && (h.a(parambn.KFh, localbn.KFh)))
           {
-            parambk = a.N(localdnf, Integer.valueOf(i));
+            parambo = a.Q(localegw, Integer.valueOf(i));
             AppMethodBeat.o(121899);
-            return parambk;
+            return parambo;
           }
           j -= 1;
         }
@@ -48,27 +48,27 @@ public final class g
     return null;
   }
   
-  static com.tencent.mm.vending.j.c<Integer, Integer> a(bk parambk, String paramString)
+  static com.tencent.mm.vending.j.c<Integer, Integer> a(bo parambo, String paramString)
   {
-    AppMethodBeat.i(195993);
+    AppMethodBeat.i(220423);
     if (TextUtils.isEmpty(paramString))
     {
-      parambk = a.N(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(195993);
-      return parambk;
+      parambo = a.Q(Integer.valueOf(-1), Integer.valueOf(-1));
+      AppMethodBeat.o(220423);
+      return parambo;
     }
-    if (parambk == null)
+    if (parambo == null)
     {
-      parambk = com.tencent.mm.vending.j.c.N(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(195993);
-      return parambk;
+      parambo = com.tencent.mm.vending.j.c.Q(Integer.valueOf(-1), Integer.valueOf(-1));
+      AppMethodBeat.o(220423);
+      return parambo;
     }
-    int i = parambk.FLM.size();
+    int i = parambo.KFn.size();
     if (i <= 0)
     {
-      parambk = com.tencent.mm.vending.j.c.N(Integer.valueOf(-1), Integer.valueOf(-1));
-      AppMethodBeat.o(195993);
-      return parambk;
+      parambo = com.tencent.mm.vending.j.c.Q(Integer.valueOf(-1), Integer.valueOf(-1));
+      AppMethodBeat.o(220423);
+      return parambo;
     }
     i -= 1;
     int k = -1;
@@ -76,13 +76,13 @@ public final class g
     int m;
     if (i >= 0)
     {
-      dnf localdnf = (dnf)parambk.FLM.get(i);
-      m = localdnf.HUq.size() - 1;
+      egw localegw = (egw)parambo.KFn.get(i);
+      m = localegw.NgI.size() - 1;
       label123:
       if (m < 0) {
         break label220;
       }
-      if (paramString.equals(((bj)localdnf.HUq.get(m)).FLG.activityName))
+      if (paramString.equals(((bn)localegw.NgI.get(m)).KFh.activityName))
       {
         k = m;
         j = i;
@@ -97,44 +97,44 @@ public final class g
       break label123;
       if (j == -1)
       {
-        parambk = com.tencent.mm.vending.j.c.N(Integer.valueOf(-1), Integer.valueOf(-1));
-        AppMethodBeat.o(195993);
-        return parambk;
+        parambo = com.tencent.mm.vending.j.c.Q(Integer.valueOf(-1), Integer.valueOf(-1));
+        AppMethodBeat.o(220423);
+        return parambo;
       }
-      parambk = a.N(Integer.valueOf(j), Integer.valueOf(k));
-      AppMethodBeat.o(195993);
-      return parambk;
+      parambo = a.Q(Integer.valueOf(j), Integer.valueOf(k));
+      AppMethodBeat.o(220423);
+      return parambo;
     }
   }
   
-  static void a(bk parambk, bj parambj, boolean paramBoolean)
+  static void a(bo parambo, bn parambn, boolean paramBoolean)
   {
     AppMethodBeat.i(121901);
-    dnf localdnf = new dnf();
-    localdnf.HUp = paramBoolean;
-    localdnf.HUq.addLast(parambj);
-    parambj = parambk;
-    if (parambk == null) {
-      parambj = new bk();
+    egw localegw = new egw();
+    localegw.NgH = paramBoolean;
+    localegw.NgI.addLast(parambn);
+    parambn = parambo;
+    if (parambo == null) {
+      parambn = new bo();
     }
-    parambj.FLM.addLast(localdnf);
+    parambn.KFn.addLast(localegw);
     AppMethodBeat.o(121901);
   }
   
-  private static void a(bk parambk, dnf paramdnf)
+  private static void a(bo parambo, egw paramegw)
   {
     AppMethodBeat.i(121905);
-    if ((paramdnf.HUq.isEmpty()) && (!parambk.FLM.isEmpty())) {
-      parambk.FLM.removeLast();
+    if ((paramegw.NgI.isEmpty()) && (!parambo.KFn.isEmpty())) {
+      parambo.KFn.removeLast();
     }
     AppMethodBeat.o(121905);
   }
   
-  public static bj aeM(String paramString)
+  public static bn apc(String paramString)
   {
     AppMethodBeat.i(121911);
-    bk localbk = c.cpr();
-    paramString = a(localbk, paramString);
+    bo localbo = c.cNK();
+    paramString = a(localbo, paramString);
     int i = ((Integer)paramString.get(0)).intValue();
     int j = ((Integer)paramString.get(1)).intValue();
     if ((i < 0) || (j < 0))
@@ -142,41 +142,41 @@ public final class g
       AppMethodBeat.o(121911);
       return null;
     }
-    paramString = (bj)((dnf)localbk.FLM.get(i)).HUq.get(j);
+    paramString = (bn)((egw)localbo.KFn.get(i)).NgI.get(j);
     AppMethodBeat.o(121911);
     return paramString;
   }
   
-  static void b(bk parambk, bj parambj)
+  static void b(bo parambo, bn parambn)
   {
     AppMethodBeat.i(121900);
-    dnf localdnf1 = null;
-    if (!parambk.FLM.isEmpty()) {
-      localdnf1 = (dnf)parambk.FLM.getLast();
+    egw localegw1 = null;
+    if (!parambo.KFn.isEmpty()) {
+      localegw1 = (egw)parambo.KFn.getLast();
     }
-    dnf localdnf2 = localdnf1;
-    if (localdnf1 == null)
+    egw localegw2 = localegw1;
+    if (localegw1 == null)
     {
-      localdnf2 = new dnf();
-      parambk.FLM.addLast(localdnf2);
+      localegw2 = new egw();
+      parambo.KFn.addLast(localegw2);
     }
-    localdnf2.HUq.addLast(parambj);
+    localegw2.NgI.addLast(parambn);
     AppMethodBeat.o(121900);
   }
   
-  static boolean b(bk parambk)
+  static boolean b(bo parambo)
   {
     AppMethodBeat.i(121902);
-    if (parambk == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(121902);
       return false;
     }
-    dnf localdnf = null;
-    if (!parambk.FLM.isEmpty()) {
-      localdnf = (dnf)parambk.FLM.getLast();
+    egw localegw = null;
+    if (!parambo.KFn.isEmpty()) {
+      localegw = (egw)parambo.KFn.getLast();
     }
-    if ((localdnf != null) && (localdnf.HUp))
+    if ((localegw != null) && (localegw.NgH))
     {
       AppMethodBeat.o(121902);
       return true;
@@ -185,95 +185,95 @@ public final class g
     return false;
   }
   
-  static bj c(bk parambk)
+  static bn c(bo parambo)
   {
     AppMethodBeat.i(121906);
-    if (parambk == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(121906);
       return null;
     }
-    if (!parambk.FLM.isEmpty()) {}
-    for (parambk = (dnf)parambk.FLM.getLast();; parambk = null)
+    if (!parambo.KFn.isEmpty()) {}
+    for (parambo = (egw)parambo.KFn.getLast();; parambo = null)
     {
-      if (parambk == null)
+      if (parambo == null)
       {
         AppMethodBeat.o(121906);
         return null;
       }
-      if (parambk.HUq.isEmpty())
+      if (parambo.NgI.isEmpty())
       {
         AppMethodBeat.o(121906);
         return null;
       }
-      parambk = (bj)parambk.HUq.getLast();
+      parambo = (bn)parambo.NgI.getLast();
       AppMethodBeat.o(121906);
-      return parambk;
+      return parambo;
     }
   }
   
-  static com.tencent.mm.vending.j.c<Integer, Integer> c(bk parambk, bj parambj)
+  static com.tencent.mm.vending.j.c<Integer, Integer> c(bo parambo, bn parambn)
   {
     AppMethodBeat.i(121907);
-    parambk = a(parambk, parambj.FLG.activityName);
+    parambo = a(parambo, parambn.KFh.activityName);
     AppMethodBeat.o(121907);
-    return parambk;
+    return parambo;
   }
   
-  public static com.tencent.mm.vending.j.c<bk, bj> cpz()
+  public static com.tencent.mm.vending.j.c<bo, bn> cNS()
   {
     AppMethodBeat.i(121909);
-    Object localObject = c.cpr();
-    localObject = a.N(localObject, e((bk)localObject));
+    Object localObject = c.cNK();
+    localObject = a.Q(localObject, e((bo)localObject));
     AppMethodBeat.o(121909);
     return localObject;
   }
   
-  static LinkedList<dnf> d(bk parambk)
+  static LinkedList<egw> d(bo parambo)
   {
-    if (parambk == null) {
+    if (parambo == null) {
       return null;
     }
-    return parambk.FLM;
+    return parambo.KFn;
   }
   
-  public static bj e(bk parambk)
+  public static bn e(bo parambo)
   {
     AppMethodBeat.i(121910);
-    if (parambk == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(121910);
       return null;
     }
-    if (!parambk.FLM.isEmpty()) {}
-    for (parambk = (dnf)parambk.FLM.getLast();; parambk = null)
+    if (!parambo.KFn.isEmpty()) {}
+    for (parambo = (egw)parambo.KFn.getLast();; parambo = null)
     {
-      if (parambk == null)
+      if (parambo == null)
       {
         AppMethodBeat.o(121910);
         return null;
       }
-      if (parambk.HUq.isEmpty())
+      if (parambo.NgI.isEmpty())
       {
         AppMethodBeat.o(121910);
         return null;
       }
-      parambk = (bj)parambk.HUq.getLast();
+      parambo = (bn)parambo.NgI.getLast();
       AppMethodBeat.o(121910);
-      return parambk;
+      return parambo;
     }
   }
   
-  final void a(bk parambk, int paramInt, bj parambj)
+  final void a(bo parambo, int paramInt, bn parambn)
   {
     AppMethodBeat.i(121903);
-    if (parambk == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(121903);
       return;
     }
-    dnf localdnf = (dnf)parambk.FLM.getLast();
-    int i = localdnf.HUq.size();
+    egw localegw = (egw)parambo.KFn.getLast();
+    int i = localegw.NgI.size();
     if ((paramInt < 0) || (paramInt >= i))
     {
       AppMethodBeat.o(121903);
@@ -282,27 +282,27 @@ public final class g
     i -= 1;
     while (i >= paramInt)
     {
-      bj localbj = (bj)localdnf.HUq.remove(i);
-      if (this.qZn != null)
+      bn localbn = (bn)localegw.NgI.remove(i);
+      if (this.szE != null)
       {
-        localbj.FLG.timestamp = parambj.FLG.timestamp;
-        this.qZn.c(localbj, parambj);
+        localbn.KFh.timestamp = parambn.KFh.timestamp;
+        this.szE.c(localbn, parambn);
       }
       i -= 1;
     }
-    a(parambk, localdnf);
+    a(parambo, localegw);
     AppMethodBeat.o(121903);
   }
   
-  final void b(bk parambk, int paramInt, bj parambj)
+  final void b(bo parambo, int paramInt, bn parambn)
   {
     AppMethodBeat.i(121904);
-    if (parambk == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(121904);
       return;
     }
-    int i = parambk.FLM.size();
+    int i = parambo.KFn.size();
     if ((paramInt < 0) || (paramInt >= i))
     {
       AppMethodBeat.o(121904);
@@ -311,14 +311,14 @@ public final class g
     i -= 1;
     while (i >= paramInt)
     {
-      Iterator localIterator = ((dnf)parambk.FLM.remove(i)).HUq.iterator();
+      Iterator localIterator = ((egw)parambo.KFn.remove(i)).NgI.iterator();
       while (localIterator.hasNext())
       {
-        bj localbj = (bj)localIterator.next();
-        if (this.qZn != null)
+        bn localbn = (bn)localIterator.next();
+        if (this.szE != null)
         {
-          localbj.FLG.timestamp = parambj.FLG.timestamp;
-          this.qZn.c(localbj, parambj);
+          localbn.KFh.timestamp = parambn.KFh.timestamp;
+          this.szE.c(localbn, parambn);
         }
       }
       i -= 1;

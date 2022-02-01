@@ -2,11 +2,13 @@ package com.tencent.mmkv;
 
 public abstract interface a
 {
-  public abstract c aSa(String paramString);
+  public abstract void mmkvLog(b paramb, String paramString1, int paramInt, String paramString2, String paramString3);
   
-  public abstract c aSb(String paramString);
+  public abstract c onMMKVCRCCheckFail(String paramString);
   
-  public abstract void l(String paramString1, int paramInt, String paramString2, String paramString3);
+  public abstract c onMMKVFileLengthError(String paramString);
+  
+  public abstract boolean wantLogRedirecting();
 }
 
 

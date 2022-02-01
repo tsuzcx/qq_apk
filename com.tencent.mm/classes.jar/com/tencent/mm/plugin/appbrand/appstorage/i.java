@@ -1,91 +1,92 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 
 public final class i
   extends j
 {
-  private final String jPH;
-  private final String jPI;
-  private String jPJ;
-  private final u jPK;
-  public volatile long jPL;
+  private final String kSp;
+  private final String kSq;
+  private String kSr;
+  private final u kSs;
+  public volatile long kSt;
   
-  public i(String paramString1, String paramString2, String paramString3, i.a parama)
+  public i(String paramString1, String paramString2, String paramString3, a parama)
   {
-    AppMethodBeat.i(195067);
-    this.jPL = -1L;
-    this.jPJ = paramString1;
-    paramString1 = w.B(new k(paramString1).fTh());
-    this.jPH = paramString2;
-    this.jPI = paramString3;
-    this.jPK = new u(paramString1, this.jPH, this.jPI, parama);
-    AppMethodBeat.o(195067);
+    AppMethodBeat.i(196156);
+    this.kSt = -1L;
+    this.kSr = paramString1;
+    paramString1 = aa.z(new o(paramString1).her());
+    this.kSp = paramString2;
+    this.kSq = paramString3;
+    this.kSs = new u(paramString1, this.kSp, this.kSq, parama);
+    AppMethodBeat.o(196156);
   }
   
-  public final boolean LZ(String paramString)
+  public final o VV(String paramString)
   {
-    AppMethodBeat.i(195068);
-    boolean bool = bu.nullAsNil(paramString).startsWith(this.jPI);
-    AppMethodBeat.o(195068);
-    return bool;
-  }
-  
-  public final k MM(String paramString)
-  {
-    AppMethodBeat.i(195073);
-    paramString = this.jPK.MZ(paramString);
-    AppMethodBeat.o(195073);
+    AppMethodBeat.i(196162);
+    paramString = this.kSs.Wi(paramString);
+    AppMethodBeat.o(196162);
     return paramString;
   }
   
-  public final boolean MN(String paramString)
+  public final boolean VW(String paramString)
   {
     return false;
   }
   
-  public final m Ma(String paramString)
+  public final boolean Vi(String paramString)
   {
-    AppMethodBeat.i(195070);
-    if (this.jPK.cK(paramString) == null)
+    AppMethodBeat.i(196157);
+    boolean bool = Util.nullAsNil(paramString).startsWith(this.kSq);
+    AppMethodBeat.o(196157);
+    return bool;
+  }
+  
+  public final m Vj(String paramString)
+  {
+    AppMethodBeat.i(196159);
+    if (this.kSs.dI(paramString) == null)
     {
-      paramString = m.jPS;
-      AppMethodBeat.o(195070);
+      paramString = m.kSA;
+      AppMethodBeat.o(196159);
       return paramString;
     }
-    paramString = m.jPM;
-    AppMethodBeat.o(195070);
+    paramString = m.kSu;
+    AppMethodBeat.o(196159);
     return paramString;
   }
   
-  public final m a(String paramString, long paramLong1, long paramLong2, com.tencent.mm.plugin.appbrand.y.i<ByteBuffer> parami)
+  public final m a(String paramString, long paramLong1, long paramLong2, com.tencent.mm.plugin.appbrand.ac.i<ByteBuffer> parami)
   {
-    AppMethodBeat.i(195072);
-    if (!LZ(paramString))
+    AppMethodBeat.i(196161);
+    if (!Vi(paramString))
     {
-      paramString = m.jQc;
-      AppMethodBeat.o(195072);
+      paramString = m.kSK;
+      AppMethodBeat.o(196161);
       return paramString;
     }
-    paramString = this.jPK.cK(paramString);
+    paramString = this.kSs.dI(paramString);
     if (paramString == null)
     {
-      paramString = m.jPS;
-      AppMethodBeat.o(195072);
+      paramString = m.kSA;
+      AppMethodBeat.o(196161);
       return paramString;
     }
     int i = paramString.limit();
     Object localObject = g(paramLong1, paramLong2, i);
-    if (localObject != m.jPM)
+    if (localObject != m.kSu)
     {
-      AppMethodBeat.o(195072);
+      AppMethodBeat.o(196161);
       return localObject;
     }
     long l = paramLong2;
@@ -97,88 +98,93 @@ public final class i
     paramString = ByteBuffer.wrap((byte[])localObject);
     paramString.order(ByteOrder.BIG_ENDIAN);
     parami.value = paramString;
-    paramString = m.jPM;
-    AppMethodBeat.o(195072);
+    paramString = m.kSu;
+    AppMethodBeat.o(196161);
     return paramString;
   }
   
   public final m a(String paramString, FileStructStat paramFileStructStat)
   {
-    AppMethodBeat.i(195074);
-    if (!LZ(paramString))
+    AppMethodBeat.i(196163);
+    if (!Vi(paramString))
     {
-      paramString = m.jQc;
-      AppMethodBeat.o(195074);
+      paramString = m.kSK;
+      AppMethodBeat.o(196163);
       return paramString;
     }
-    paramString = this.jPK.cK(paramString);
+    paramString = this.kSs.dI(paramString);
     if (paramString == null)
     {
-      paramString = m.jPS;
-      AppMethodBeat.o(195074);
+      paramString = m.kSA;
+      AppMethodBeat.o(196163);
       return paramString;
     }
     if (paramFileStructStat == null)
     {
-      paramString = m.jPN;
-      AppMethodBeat.o(195074);
+      paramString = m.kSv;
+      AppMethodBeat.o(196163);
       return paramString;
     }
     paramFileStructStat.st_mode = 33152;
     paramFileStructStat.st_size = paramString.limit();
-    paramString = m.jPM;
-    AppMethodBeat.o(195074);
+    paramString = m.kSu;
+    AppMethodBeat.o(196163);
     return paramString;
   }
   
-  public final m b(String paramString, com.tencent.mm.plugin.appbrand.y.i<ByteBuffer> parami)
+  public final m b(String paramString, com.tencent.mm.plugin.appbrand.ac.i<ByteBuffer> parami)
   {
-    AppMethodBeat.i(195071);
-    if (!LZ(paramString))
+    AppMethodBeat.i(196160);
+    if (!Vi(paramString))
     {
-      paramString = m.jQc;
-      AppMethodBeat.o(195071);
+      paramString = m.kSK;
+      AppMethodBeat.o(196160);
       return paramString;
     }
-    paramString = this.jPK.cK(paramString);
+    paramString = this.kSs.dI(paramString);
     if (paramString == null)
     {
-      paramString = m.jPS;
-      AppMethodBeat.o(195071);
+      paramString = m.kSA;
+      AppMethodBeat.o(196160);
       return paramString;
     }
     parami.value = paramString;
-    paramString = m.jPM;
-    AppMethodBeat.o(195071);
+    paramString = m.kSu;
+    AppMethodBeat.o(196160);
     return paramString;
   }
   
-  public final void bcb()
+  public final void bxq()
   {
-    AppMethodBeat.i(195076);
-    this.jPK.clear();
-    AppMethodBeat.o(195076);
+    AppMethodBeat.i(196165);
+    this.kSs.clear();
+    AppMethodBeat.o(196165);
   }
   
   public final void initialize()
   {
-    AppMethodBeat.i(195069);
-    if (!o.aZI(this.jPJ)) {
-      ae.e("MicroMsg.Luggage.BlobFileSystem", "Initialization Failed");
+    AppMethodBeat.i(196158);
+    if (!s.boN(this.kSr)) {
+      Log.e("MicroMsg.Luggage.BlobFileSystem", "Initialization Failed");
     }
-    AppMethodBeat.o(195069);
+    AppMethodBeat.o(196158);
   }
   
   public final void release()
   {
-    AppMethodBeat.i(195075);
-    this.jPK.clear();
-    AppMethodBeat.o(195075);
+    AppMethodBeat.i(196164);
+    this.kSs.clear();
+    AppMethodBeat.o(196164);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract f bxr();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.i
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.card.d;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.model.e;
-import com.tencent.mm.protocal.protobuf.th;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.um;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,11 +20,11 @@ public final class h
     AppMethodBeat.i(113802);
     if (paramLinkedList.size() == 0)
     {
-      ae.e("MicroMsg.CardListItemParser", "parseCardListItemToJson list == null || list.size() == 0");
+      Log.e("MicroMsg.CardListItemParser", "parseCardListItemToJson list == null || list.size() == 0");
       AppMethodBeat.o(113802);
       return "";
     }
-    ae.i("MicroMsg.CardListItemParser", "parseCardListItemToJson is_succ:" + paramBoolean + " scene:" + paramInt);
+    Log.i("MicroMsg.CardListItemParser", "parseCardListItemToJson is_succ:" + paramBoolean + " scene:" + paramInt);
     JSONStringer localJSONStringer = new JSONStringer();
     if (paramInt == 8) {}
     for (;;)
@@ -45,13 +45,13 @@ public final class h
         {
           paramLinkedList = "cardId";
           localJSONStringer.key(paramLinkedList);
-          localJSONStringer.value(locale.oEo);
+          localJSONStringer.value(locale.pRX);
           if (paramInt != 26) {
             break label353;
           }
           paramLinkedList = "cardExt";
           localJSONStringer.key(paramLinkedList);
-          if (locale.dJc != null) {
+          if (locale.eaP != null) {
             break label272;
           }
           paramLinkedList = "";
@@ -82,13 +82,13 @@ public final class h
       }
       catch (Exception paramLinkedList)
       {
-        ae.printErrStackTrace("MicroMsg.CardListItemParser", paramLinkedList, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.CardListItemParser", paramLinkedList, "", new Object[0]);
         AppMethodBeat.o(113802);
         return "";
       }
       continue;
       label272:
-      paramLinkedList = locale.dJc;
+      paramLinkedList = locale.eaP;
       continue;
       label281:
       paramLinkedList = Integer.valueOf(1);
@@ -119,12 +119,12 @@ public final class h
     }
   }
   
-  public static ArrayList<th> cL(String paramString, int paramInt)
+  public static ArrayList<um> cR(String paramString, int paramInt)
   {
     AppMethodBeat.i(113801);
     if (TextUtils.isEmpty(paramString))
     {
-      ae.e("MicroMsg.CardListItemParser", "parseCardListItemArray jsonContent is null");
+      Log.e("MicroMsg.CardListItemParser", "parseCardListItemArray jsonContent is null");
       AppMethodBeat.o(113801);
       return null;
     }
@@ -138,7 +138,7 @@ public final class h
         paramString = new JSONObject(paramString).optJSONArray("card_list");
         if ((paramString == null) || (paramString.length() == 0))
         {
-          ae.e("MicroMsg.CardListItemParser", "parseCardListItemArray cardItemListJson is null");
+          Log.e("MicroMsg.CardListItemParser", "parseCardListItemArray cardItemListJson is null");
           AppMethodBeat.o(113801);
           return null;
           if (paramInt == 26)
@@ -168,28 +168,28 @@ public final class h
         try
         {
           localJSONObject = new JSONObject(paramString.optString(i));
-          th localth = new th();
+          um localum = new um();
           if (paramInt == 26)
           {
             str = "cardId";
-            localth.oEo = localJSONObject.optString(str);
+            localum.pRX = localJSONObject.optString(str);
             if (paramInt != 26) {
               break label278;
             }
             str = "cardExt";
-            localth.dJc = localJSONObject.optString(str);
-            localArrayList.add(localth);
+            localum.eaP = localJSONObject.optString(str);
+            localArrayList.add(localum);
           }
         }
         catch (JSONException localJSONException)
         {
-          ae.printErrStackTrace("MicroMsg.CardListItemParser", localJSONException, "protect itemJSON for AppBrand", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.CardListItemParser", localJSONException, "protect itemJSON for AppBrand", new Object[0]);
         }
         str = "card_id";
       }
       catch (JSONException paramString)
       {
-        ae.printErrStackTrace("MicroMsg.CardListItemParser", paramString, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.CardListItemParser", paramString, "", new Object[0]);
         AppMethodBeat.o(113801);
         return null;
       }
@@ -207,12 +207,12 @@ public final class h
     }
   }
   
-  public static String cM(String paramString, int paramInt)
+  public static String cS(String paramString, int paramInt)
   {
     AppMethodBeat.i(113803);
     if (TextUtils.isEmpty(paramString))
     {
-      ae.e("MicroMsg.CardListItemParser", "parseCardListItemArray jsonContent is null");
+      Log.e("MicroMsg.CardListItemParser", "parseCardListItemArray jsonContent is null");
       AppMethodBeat.o(113803);
       return null;
     }
@@ -225,7 +225,7 @@ public final class h
         JSONArray localJSONArray = new JSONObject(paramString).optJSONArray("card_list");
         if ((localJSONArray == null) || (localJSONArray.length() == 0))
         {
-          ae.e("MicroMsg.CardListItemParser", "parseCardListItemArray cardItemListJson is null");
+          Log.e("MicroMsg.CardListItemParser", "parseCardListItemArray cardItemListJson is null");
           AppMethodBeat.o(113803);
           return null;
         }
@@ -270,7 +270,7 @@ public final class h
               break label397;
             }
             paramString = "isSuccess";
-            ae.i("MicroMsg.CardListItemParser", localJSONObject.optInt(paramString));
+            Log.i("MicroMsg.CardListItemParser", localJSONObject.optInt(paramString));
             i += 1;
             continue;
           }
@@ -281,7 +281,7 @@ public final class h
       }
       catch (JSONException paramString)
       {
-        ae.printErrStackTrace("MicroMsg.CardListItemParser", paramString, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.CardListItemParser", paramString, "", new Object[0]);
         AppMethodBeat.o(113803);
         return "";
       }
@@ -310,7 +310,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.h
  * JD-Core Version:    0.7.0.1
  */

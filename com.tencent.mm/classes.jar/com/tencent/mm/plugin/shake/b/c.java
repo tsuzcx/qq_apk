@@ -2,87 +2,87 @@ package com.tencent.mm.plugin.shake.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.modelstat.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.List;
 
 public final class c
   extends l.b
-  implements f
+  implements i
 {
+  int DgG;
+  int DgH;
+  boolean DgI;
+  boolean DgJ;
+  b DgK;
+  a DgL;
+  private int DgM;
+  MMHandler DgN;
+  Runnable DgO;
   private Context context;
-  float fHj;
-  float fHk;
-  private b.a fHp;
-  d hTg;
-  int zbO;
-  int zbP;
-  boolean zbQ;
-  boolean zbR;
-  b zbS;
-  a zbT;
-  private int zbU;
-  aq zbV;
-  Runnable zbW;
+  private b.a gmA;
+  float gmu;
+  float gmv;
+  d iOv;
   
   public c(Context paramContext, l.a parama)
   {
     super(parama);
     AppMethodBeat.i(28094);
-    this.fHj = -85.0F;
-    this.fHk = -1000.0F;
-    this.zbO = 1;
-    this.zbP = -1000;
-    this.zbQ = false;
-    this.zbR = true;
-    this.zbU = 0;
-    this.zbV = new aq();
-    this.zbW = new Runnable()
+    this.gmu = -85.0F;
+    this.gmv = -1000.0F;
+    this.DgG = 1;
+    this.DgH = -1000;
+    this.DgI = false;
+    this.DgJ = true;
+    this.DgM = 0;
+    this.DgN = new MMHandler();
+    this.DgO = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(28092);
-        if ((c.this.zbV != null) && (c.this.zbW != null)) {
-          c.this.zbV.removeCallbacks(c.this.zbW);
+        if ((c.this.DgN != null) && (c.this.DgO != null)) {
+          c.this.DgN.removeCallbacks(c.this.DgO);
         }
-        if (c.this.zbT != null) {
-          bc.ajj().a(c.this.zbT);
+        if (c.this.DgL != null) {
+          bg.azz().a(c.this.DgL);
         }
-        if ((c.this.zbS != null) && (c.this.zbS.dNz != null)) {
-          c.this.zbT = new a(c.this.zbS.dNz);
+        if ((c.this.DgK != null) && (c.this.DgK.efs != null)) {
+          c.this.DgL = new a(c.this.DgK.efs);
         }
-        if (c.this.zbT != null) {
-          bc.ajj().a(c.this.zbT, 0);
+        if (c.this.DgL != null) {
+          bg.azz().a(c.this.DgL, 0);
         }
         AppMethodBeat.o(28092);
       }
     };
-    this.fHp = new b.a()
+    this.gmA = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
         AppMethodBeat.i(28093);
-        e locale = e.aMb();
+        e locale = e.bge();
         boolean bool1;
         if (paramAnonymousInt == 0)
         {
           bool1 = false;
-          if (c.this.hTg != null) {
+          if (c.this.iOv != null) {
             break label112;
           }
         }
         label112:
-        for (boolean bool2 = false;; bool2 = c.this.hTg.iam)
+        for (boolean bool2 = false;; bool2 = c.this.iOv.iVk)
         {
           locale.a(2002, bool1, bool2, paramAnonymousFloat1, paramAnonymousFloat2, (int)paramAnonymousDouble2);
-          ae.i("MicroMsg.ShakeFriendService", "getlocaion lat %f lng %f hasGetLbsInfo " + c.this.zbQ, new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
+          Log.i("MicroMsg.ShakeFriendService", "getlocaion lat %f lng %f hasGetLbsInfo " + c.this.DgI, new Object[] { Float.valueOf(paramAnonymousFloat2), Float.valueOf(paramAnonymousFloat1) });
           if (paramAnonymousBoolean) {
             break label127;
           }
@@ -92,14 +92,14 @@ public final class c
           break;
         }
         label127:
-        if ((c.this.zbR) && (c.this.fHj == -85.0F) && (c.this.fHk == -1000.0F))
+        if ((c.this.DgJ) && (c.this.gmu == -85.0F) && (c.this.gmv == -1000.0F))
         {
-          c.this.zbR = false;
-          c.this.fHj = paramAnonymousFloat2;
-          c.this.fHk = paramAnonymousFloat1;
-          c.this.zbP = ((int)paramAnonymousDouble2);
-          c.this.zbO = paramAnonymousInt;
-          c.this.zbQ = true;
+          c.this.DgJ = false;
+          c.this.gmu = paramAnonymousFloat2;
+          c.this.gmv = paramAnonymousFloat1;
+          c.this.DgH = ((int)paramAnonymousDouble2);
+          c.this.DgG = paramAnonymousInt;
+          c.this.DgI = true;
         }
         AppMethodBeat.o(28093);
         return false;
@@ -109,24 +109,24 @@ public final class c
     AppMethodBeat.o(28094);
   }
   
-  private void dRO()
+  private void eTP()
   {
     AppMethodBeat.i(28097);
-    this.hTg = d.aIh();
-    this.zbR = true;
-    this.hTg.a(this.fHp, true);
+    this.iOv = d.bca();
+    this.DgJ = true;
+    this.iOv.a(this.gmA, true);
     AppMethodBeat.o(28097);
   }
   
-  public final void dRP()
+  public final void eTQ()
   {
     AppMethodBeat.i(28101);
-    super.dRP();
-    bc.ajj().b(161, this);
-    bc.ajj().b(162, this);
-    bc.ajj().b(1251, this);
-    if (this.hTg != null) {
-      this.hTg.c(this.fHp);
+    super.eTQ();
+    bg.azz().b(161, this);
+    bg.azz().b(162, this);
+    bg.azz().b(1251, this);
+    if (this.iOv != null) {
+      this.iOv.c(this.gmA);
     }
     AppMethodBeat.o(28101);
   }
@@ -134,69 +134,69 @@ public final class c
   public final void init()
   {
     AppMethodBeat.i(28095);
-    bc.ajj().a(161, this);
-    bc.ajj().a(162, this);
-    bc.ajj().a(1251, this);
-    dRO();
+    bg.azz().a(161, this);
+    bg.azz().a(162, this);
+    bg.azz().a(1251, this);
+    eTP();
     AppMethodBeat.o(28095);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(28102);
-    switch (paramn.getType())
+    switch (paramq.getType())
     {
     }
     for (;;)
     {
       AppMethodBeat.o(28102);
       return;
-      paramString = (b)paramn;
-      if ((paramString.dRN() == 3) || (paramString.dRN() == 4))
+      paramString = (b)paramq;
+      if ((paramString.eTO() == 3) || (paramString.eTO() == 4))
       {
-        ae.v("MicroMsg.ShakeFriendService", "onSceneEnd ignore location report response");
+        Log.v("MicroMsg.ShakeFriendService", "onSceneEnd ignore location report response");
         AppMethodBeat.o(28102);
         return;
       }
       if ((paramInt2 != 0) || (paramInt1 != 0) || (paramString.ret != 0))
       {
-        ae.e("MicroMsg.ShakeFriendService", "onSceneEnd reprot failed");
-        this.zcf.d(null, 3L);
+        Log.e("MicroMsg.ShakeFriendService", "onSceneEnd reprot failed");
+        this.DgX.f(null, 3L);
         AppMethodBeat.o(28102);
         return;
       }
-      this.zbV.postDelayed(this.zbW, 3000L);
+      this.DgN.postDelayed(this.DgO, 3000L);
       AppMethodBeat.o(28102);
       return;
-      paramString = (a)paramn;
+      paramString = (a)paramq;
       if ((paramInt2 != 0) || (paramInt1 != 0) || (paramString.ret != 0))
       {
-        this.zcf.d(null, 3L);
+        this.DgX.f(null, 3L);
         AppMethodBeat.o(28102);
         return;
       }
-      paramString = paramString.zbM;
+      paramString = paramString.DgE;
       if (paramString.size() == 0)
       {
-        ae.i("MicroMsg.ShakeFriendService", "empty shake get list");
-        this.zcf.d(null, 3L);
+        Log.i("MicroMsg.ShakeFriendService", "empty shake get list");
+        this.DgX.f(null, 3L);
         AppMethodBeat.o(28102);
         return;
       }
-      this.zcf.d(paramString, 1L);
+      this.DgX.f(paramString, 1L);
       AppMethodBeat.o(28102);
       return;
-      paramString = (com.tencent.mm.plugin.shake.c.a.b)paramn;
+      paramString = (com.tencent.mm.plugin.shake.c.a.b)paramq;
       if ((paramInt2 != 0) || (paramInt1 != 0))
       {
-        if (this.zcf != null)
+        if (this.DgX != null)
         {
-          this.zcf.a(1251, null, 2L);
+          this.DgX.a(1251, null, 2L);
           AppMethodBeat.o(28102);
         }
       }
-      else if (this.zcf != null) {
-        this.zcf.a(1251, paramString.zcy, 1L);
+      else if (this.DgX != null) {
+        this.DgX.a(1251, paramString.Dhq, 1L);
       }
     }
   }
@@ -204,8 +204,8 @@ public final class c
   public final void pause()
   {
     AppMethodBeat.i(28099);
-    if (this.hTg != null) {
-      this.hTg.c(this.fHp);
+    if (this.iOv != null) {
+      this.iOv.c(this.gmA);
     }
     AppMethodBeat.o(28099);
   }
@@ -213,14 +213,14 @@ public final class c
   public final void reset()
   {
     AppMethodBeat.i(28098);
-    if (this.zbS != null) {
-      bc.ajj().a(this.zbS);
+    if (this.DgK != null) {
+      bg.azz().a(this.DgK);
     }
-    if (this.zbT != null) {
-      bc.ajj().a(this.zbT);
+    if (this.DgL != null) {
+      bg.azz().a(this.DgL);
     }
-    if ((this.zbV != null) && (this.zbW != null)) {
-      this.zbV.removeCallbacks(this.zbW);
+    if ((this.DgN != null) && (this.DgO != null)) {
+      this.DgN.removeCallbacks(this.DgO);
     }
     AppMethodBeat.o(28098);
   }
@@ -228,8 +228,8 @@ public final class c
   public final void resume()
   {
     AppMethodBeat.i(28100);
-    if (this.hTg != null) {
-      this.hTg.a(this.fHp, true);
+    if (this.iOv != null) {
+      this.iOv.a(this.gmA, true);
     }
     AppMethodBeat.o(28100);
   }
@@ -239,21 +239,21 @@ public final class c
     AppMethodBeat.i(28096);
     reset();
     init();
-    this.zbS = new b(this.fHk, this.fHj, this.zbP, this.zbO, "", "");
-    bc.ajj().a(this.zbS, 0);
-    if (!this.zbQ)
+    this.DgK = new b(this.gmv, this.gmu, this.DgH, this.DgG, "", "");
+    bg.azz().a(this.DgK, 0);
+    if (!this.DgI)
     {
-      if (this.hTg == null) {
-        dRO();
+      if (this.iOv == null) {
+        eTP();
       }
-      this.hTg.b(this.fHp, true);
+      this.iOv.b(this.gmA, true);
     }
     AppMethodBeat.o(28096);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,35 @@
 package com.tencent.mm.av;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
-import com.tencent.mm.g.b.a.j;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.i.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.q.b;
+import com.tencent.mm.an.f;
+import com.tencent.mm.g.b.a.w;
+import com.tencent.mm.g.b.a.y;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.i.g.a;
-import com.tencent.mm.model.x;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bez;
-import com.tencent.mm.protocal.protobuf.bfa;
-import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.bqv;
+import com.tencent.mm.protocal.protobuf.bqw;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.ImgUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MMNativeJpeg;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bx;
-import com.tencent.mm.sdk.platformtools.u;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.bz;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.vfs.o;
 import java.io.ByteArrayOutputStream;
 import java.util.HashSet;
@@ -32,74 +37,74 @@ import java.util.Map;
 import junit.framework.Assert;
 
 public final class m
-  extends n
-  implements com.tencent.mm.network.k
+  extends com.tencent.mm.ak.q
+  implements com.tencent.mm.network.m
 {
   String TAG;
-  com.tencent.mm.ak.f callback;
-  bv dlw;
-  int glf;
-  long gzw;
-  int hPI;
-  private boolean hPz;
-  private int icr;
-  final com.tencent.mm.ak.g idS;
-  public final long idT;
-  private long idU;
-  private int idV;
-  private com.tencent.mm.modelstat.h idW;
-  String idX;
-  private String idY;
-  public String idZ;
-  int iea;
-  public boolean ieb;
-  private int iec;
-  private String ied;
-  private int iee;
-  boolean ief;
-  private g.a ieg;
+  com.tencent.mm.ak.i callback;
+  ca dCM;
+  int gVY;
+  long hmj;
+  private boolean iKG;
+  int iKP;
+  private int iXp;
+  final j iYO;
+  public final long iYP;
+  private long iYQ;
+  private int iYR;
+  private com.tencent.mm.modelstat.h iYS;
+  String iYT;
+  private String iYU;
+  public String iYV;
+  int iYW;
+  public boolean iYX;
+  private int iYY;
+  private String iYZ;
+  private int iZa;
+  boolean iZb;
+  private g.a iZc;
   private long msgId;
-  private final com.tencent.mm.ak.b rr;
+  private final com.tencent.mm.ak.d rr;
   private int startOffset;
   long startTime;
   private int token;
   
-  public m(long paramLong1, long paramLong2, int paramInt, com.tencent.mm.ak.g paramg)
+  public m(long paramLong1, long paramLong2, int paramInt, j paramj)
   {
-    this(paramLong1, paramLong2, paramInt, paramg, -1);
+    this(paramLong1, paramLong2, paramInt, paramj, -1);
   }
   
-  public m(long paramLong1, long paramLong2, int paramInt1, final com.tencent.mm.ak.g paramg, int paramInt2)
+  public m(long paramLong1, long paramLong2, int paramInt1, final j paramj, int paramInt2)
   {
     AppMethodBeat.i(150673);
     this.TAG = "MicroMsg.NetSceneGetMsgImg";
-    this.idU = -1L;
-    this.idW = null;
+    this.iYQ = -1L;
+    this.iYS = null;
     this.msgId = -1L;
-    this.dlw = null;
-    this.idX = "";
+    this.dCM = null;
+    this.iYT = "";
     this.startTime = 0L;
     this.startOffset = -1;
-    this.glf = 0;
-    this.hPz = true;
-    this.idY = "";
-    this.idZ = "";
-    this.hPI = 0;
-    this.iea = -1;
-    this.ieb = false;
-    this.iec = -1;
-    this.ied = null;
-    this.iee = 0;
+    this.gVY = 0;
+    this.iKG = true;
+    this.iYU = "";
+    this.iYV = "";
+    this.iKP = 0;
+    this.iYW = -1;
+    this.iYX = false;
+    this.iYY = -1;
+    this.iYZ = null;
+    this.iZa = 0;
     this.token = -1;
-    this.ief = false;
-    this.ieg = new g.a()
+    this.iZb = false;
+    this.iZc = new g.a()
     {
-      public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, d paramAnonymousd, boolean paramAnonymousBoolean)
+      public final int a(String paramAnonymousString, int paramAnonymousInt, com.tencent.mm.i.c paramAnonymousc, com.tencent.mm.i.d paramAnonymousd, boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(150671);
         if (paramAnonymousInt == -21006)
         {
-          ae.i(m.this.TAG, "cdntra  ERR_CNDCOM_MEDIA_IS_DOWNLOADING clientid:%s", new Object[] { m.this.idX });
+          Log.i(m.this.TAG, "cdntra  ERR_CNDCOM_MEDIA_IS_DOWNLOADING clientid:%s", new Object[] { m.this.iYT });
           AppMethodBeat.o(150671);
           return 0;
         }
@@ -110,13 +115,13 @@ public final class m
         int k;
         if (paramAnonymousInt != 0)
         {
-          k.pB((int)m.this.idT);
-          k.pA((int)m.this.idT);
+          k.tp((int)m.this.iYP);
+          k.to((int)m.this.iYP);
           l1 = m.this.startTime;
-          l2 = com.tencent.mm.sdk.platformtools.bu.fpO();
-          i = com.tencent.mm.an.c.cC(ak.getContext());
-          j = m.this.glf;
-          k = m.this.hPI;
+          l2 = Util.nowMilliSecond();
+          i = com.tencent.mm.an.c.cY(MMApplicationContext.getContext());
+          j = m.this.gVY;
+          k = m.this.iKP;
           if (paramAnonymousd == null)
           {
             paramAnonymousString = "";
@@ -125,11 +130,11 @@ public final class m
             }
           }
           label304:
-          for (paramAnonymousc = "";; paramAnonymousc = paramAnonymousd.fKX)
+          for (paramAnonymousc = "";; paramAnonymousc = paramAnonymousd.gqk)
           {
             paramAnonymousString = com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(2), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), paramAnonymousString, "", "", "", "", "", "", "", paramAnonymousc });
-            new j(paramAnonymousString).aLH();
-            new com.tencent.mm.g.b.a.h(paramAnonymousString).aLH();
+            new y(paramAnonymousString).bfK();
+            new w(paramAnonymousString).bfK();
             m.this.callback.onSceneEnd(3, paramAnonymousInt, "", m.this);
             AppMethodBeat.o(150671);
             return 0;
@@ -137,21 +142,21 @@ public final class m
             break;
           }
         }
-        g localg = q.aIX().c(Long.valueOf(m.this.gzw));
+        g localg = q.bcR().c(Long.valueOf(m.this.hmj));
         if (paramAnonymousc != null)
         {
-          if (paramAnonymousc.field_finishedLength == m.this.hPI)
+          if (paramAnonymousc.field_finishedLength == m.this.iKP)
           {
-            ae.d(m.this.TAG, "cdntra ignore progress 100%");
+            Log.d(m.this.TAG, "cdntra ignore progress 100%");
             AppMethodBeat.o(150671);
             return 0;
           }
-          m.this.ief = true;
-          if (!m.this.ieb) {
-            m.this.ieb = paramAnonymousc.field_mtlnotify;
+          m.this.iZb = true;
+          if (!m.this.iYX) {
+            m.this.iYX = paramAnonymousc.field_mtlnotify;
           }
-          ae.i(m.this.TAG, "cdntra progresscallback id:%s finish:%d total:%d,  canshowProgressimg:%b", new Object[] { m.this.idX, Long.valueOf(paramAnonymousc.field_finishedLength), Long.valueOf(paramAnonymousc.field_toltalLength), Boolean.valueOf(m.this.ieb) });
-          m.a(m.this, localg, m.this.hPI, localg.offset, (int)paramAnonymousc.field_finishedLength - localg.offset);
+          Log.i(m.this.TAG, "cdntra progresscallback id:%s finish:%d total:%d,  canshowProgressimg:%b", new Object[] { m.this.iYT, Long.valueOf(paramAnonymousc.field_finishedLength), Long.valueOf(paramAnonymousc.field_toltalLength), Boolean.valueOf(m.this.iYX) });
+          m.a(m.this, localg, m.this.iKP, localg.offset, (int)paramAnonymousc.field_finishedLength - localg.offset);
           AppMethodBeat.o(150671);
           return 0;
         }
@@ -160,15 +165,15 @@ public final class m
           if (paramAnonymousd.field_retCode == 0) {
             break label965;
           }
-          k.pA((int)m.this.idT);
-          ae.e(m.this.TAG, "cdntra sceneResult.retCode :%d", new Object[] { Integer.valueOf(paramAnonymousd.field_retCode) });
+          k.to((int)m.this.iYP);
+          Log.e(m.this.TAG, "cdntra sceneResult.retCode :%d", new Object[] { Integer.valueOf(paramAnonymousd.field_retCode) });
           m.this.callback.onSceneEnd(3, paramAnonymousd.field_retCode, "", m.this);
           paramAnonymousInt = paramAnonymousd.field_retCode;
           l1 = m.this.startTime;
-          l2 = com.tencent.mm.sdk.platformtools.bu.fpO();
-          i = com.tencent.mm.an.c.cC(ak.getContext());
-          j = m.this.glf;
-          k = m.this.hPI;
+          l2 = Util.nowMilliSecond();
+          i = com.tencent.mm.an.c.cY(MMApplicationContext.getContext());
+          j = m.this.gVY;
+          k = m.this.iKP;
           if (paramAnonymousd != null) {
             break label1338;
           }
@@ -179,15 +184,15 @@ public final class m
           }
           paramAnonymousc = "";
           label636:
-          new j(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(2), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), paramAnonymousString, "", "", "", "", "", "", "", paramAnonymousc })).aLH();
+          new y(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(2), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), paramAnonymousString, "", "", "", "", "", "", "", paramAnonymousc })).bfK();
           if (paramAnonymousd.field_retCode != 0)
           {
             paramAnonymousInt = paramAnonymousd.field_retCode;
             l1 = m.this.startTime;
-            l2 = com.tencent.mm.sdk.platformtools.bu.fpO();
-            i = com.tencent.mm.an.c.cC(ak.getContext());
-            j = m.this.glf;
-            k = m.this.hPI;
+            l2 = Util.nowMilliSecond();
+            i = com.tencent.mm.an.c.cY(MMApplicationContext.getContext());
+            j = m.this.gVY;
+            k = m.this.iKP;
             if (paramAnonymousd != null) {
               break label1356;
             }
@@ -201,21 +206,21 @@ public final class m
         label965:
         label1356:
         label1365:
-        for (paramAnonymousc = "";; paramAnonymousc = paramAnonymousd.fKX)
+        for (paramAnonymousc = "";; paramAnonymousc = paramAnonymousd.gqk)
         {
-          new com.tencent.mm.g.b.a.h(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(2), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), paramAnonymousString, "", "", "", "", "", "", "", paramAnonymousc })).aLH();
+          new w(com.tencent.mm.plugin.report.a.t(new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(2), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), paramAnonymousString, "", "", "", "", "", "", "", paramAnonymousc })).bfK();
           AppMethodBeat.o(150671);
           return 0;
-          ae.i(m.this.TAG, "cdntra getimg ok. need convert:%b", new Object[] { Boolean.valueOf(paramAnonymousd.field_convert2baseline) });
-          if (localg.icr == 1)
+          Log.i(m.this.TAG, "cdntra getimg ok. need convert:%b", new Object[] { Boolean.valueOf(paramAnonymousd.field_convert2baseline) });
+          if (localg.iXp == 1)
           {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(198L, 26L, localg.hPI, false);
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(198L, 27L, 1L, false);
-            paramAnonymousc = com.tencent.mm.plugin.report.service.g.yxI;
-            if (m.this.dlw != null)
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(198L, 26L, localg.iKP, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(198L, 27L, 1L, false);
+            paramAnonymousc = com.tencent.mm.plugin.report.service.h.CyF;
+            if (m.this.dCM != null)
             {
-              paramAnonymousString = m.this.dlw.field_talker;
-              if (!x.wb(paramAnonymousString)) {
+              paramAnonymousString = m.this.dCM.field_talker;
+              if (!ab.Eq(paramAnonymousString)) {
                 break label1194;
               }
             }
@@ -224,11 +229,11 @@ public final class m
               paramAnonymousc.idkeyStat(198L, l1, 1L, false);
               if (paramAnonymousd.field_convert2baseline)
               {
-                ae.i(m.this.TAG, "cdntra need convert2baseline. file:%s", new Object[] { m.this.idZ });
-                paramAnonymousBoolean = MMNativeJpeg.Convert2Baseline(m.this.idZ, 60);
-                ae.i(m.this.TAG, "convert result:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+                Log.i(m.this.TAG, "cdntra need convert2baseline. file:%s", new Object[] { m.this.iYV });
+                paramAnonymousBoolean = MMNativeJpeg.Convert2Baseline(m.this.iYV, 60);
+                Log.i(m.this.TAG, "convert result:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
               }
-              if (!m.this.ief) {
+              if (!m.this.iZb) {
                 break label1300;
               }
               m.a(m.this, localg, localg.offset, localg.offset, 0);
@@ -237,14 +242,14 @@ public final class m
               break label1059;
             }
           }
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(198L, 21L, localg.hPI, false);
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(198L, 22L, 1L, false);
-          paramAnonymousc = com.tencent.mm.plugin.report.service.g.yxI;
-          if (m.this.dlw != null)
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(198L, 21L, localg.iKP, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(198L, 22L, 1L, false);
+          paramAnonymousc = com.tencent.mm.plugin.report.service.h.CyF;
+          if (m.this.dCM != null)
           {
-            paramAnonymousString = m.this.dlw.field_talker;
+            paramAnonymousString = m.this.dCM.field_talker;
             label1260:
-            if (!x.wb(paramAnonymousString)) {
+            if (!ab.Eq(paramAnonymousString)) {
               break label1292;
             }
           }
@@ -255,11 +260,11 @@ public final class m
             paramAnonymousString = "";
             break label1260;
           }
-          m.a(m.this, localg, m.this.hPI, localg.offset, m.this.hPI - localg.offset);
+          m.a(m.this, localg, m.this.iKP, localg.offset, m.this.iKP - localg.offset);
           break;
           paramAnonymousString = paramAnonymousd.field_transInfo;
           break label628;
-          paramAnonymousc = paramAnonymousd.fKX;
+          paramAnonymousc = paramAnonymousd.gqk;
           break label636;
           paramAnonymousString = paramAnonymousd.field_transInfo;
           break label824;
@@ -275,56 +280,56 @@ public final class m
     };
     boolean bool;
     g localg;
-    if ((paramLong1 >= 0L) && (paramLong2 >= 0L) && (paramg != null))
+    if ((paramLong1 >= 0L) && (paramLong2 >= 0L) && (paramj != null))
     {
       bool = true;
       Assert.assertTrue(bool);
-      this.idS = paramg;
-      this.icr = paramInt1;
-      this.idT = paramLong1;
-      this.idU = paramLong1;
-      this.gzw = paramLong1;
+      this.iYO = paramj;
+      this.iXp = paramInt1;
+      this.iYP = paramLong1;
+      this.iYQ = paramLong1;
+      this.hmj = paramLong1;
       this.msgId = paramLong2;
-      this.iec = paramInt2;
-      localg = q.aIX().c(Long.valueOf(this.gzw));
+      this.iYY = paramInt2;
+      localg = q.bcR().c(Long.valueOf(this.hmj));
       if (paramInt1 != 1) {
         break label595;
       }
-      this.gzw = localg.icz;
-      localg = q.aIX().c(Long.valueOf(this.gzw));
+      this.hmj = localg.iXx;
+      localg = q.bcR().c(Long.valueOf(this.hmj));
     }
     label595:
     for (;;)
     {
-      this.TAG = (this.TAG + "[" + this.gzw + "]");
-      Object localObject = new b.a();
-      ((b.a)localObject).hQF = new bez();
-      ((b.a)localObject).hQG = new bfa();
-      ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getmsgimg";
-      ((b.a)localObject).funcId = 109;
-      ((b.a)localObject).hQH = 10;
-      ((b.a)localObject).respCmdId = 1000000010;
-      this.rr = ((b.a)localObject).aDS();
-      localObject = (bez)this.rr.hQD.hQJ;
-      this.dlw = ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().ys(paramLong2);
-      ((bez)localObject).xsC = localg.offset;
-      ((bez)localObject).xsB = localg.hPI;
-      ae.d(this.TAG, "cdntra offset:%d total:%d stack:[%s]", new Object[] { Integer.valueOf(localg.offset), Integer.valueOf(localg.hPI), com.tencent.mm.sdk.platformtools.bu.fpN() });
-      ((bez)localObject).xrk = this.dlw.field_msgSvrId;
-      ((bez)localObject).FNG = new cxn().aQV(this.dlw.field_talker);
-      ((bez)localObject).FNH = new cxn().aQV((String)com.tencent.mm.kernel.g.ajR().ajA().get(2, null));
-      ((bez)localObject).GUb = paramInt1;
+      this.TAG = (this.TAG + "[" + this.hmj + "]");
+      Object localObject = new d.a();
+      ((d.a)localObject).iLN = new bqv();
+      ((d.a)localObject).iLO = new bqw();
+      ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getmsgimg";
+      ((d.a)localObject).funcId = 109;
+      ((d.a)localObject).iLP = 10;
+      ((d.a)localObject).respCmdId = 1000000010;
+      this.rr = ((d.a)localObject).aXF();
+      localObject = (bqv)this.rr.iLK.iLR;
+      this.dCM = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().Hb(paramLong2);
+      ((bqv)localObject).BsG = localg.offset;
+      ((bqv)localObject).BsF = localg.iKP;
+      Log.d(this.TAG, "cdntra offset:%d total:%d stack:[%s]", new Object[] { Integer.valueOf(localg.offset), Integer.valueOf(localg.iKP), Util.getStack() });
+      ((bqv)localObject).Brn = this.dCM.field_msgSvrId;
+      ((bqv)localObject).KHl = new dqi().bhy(this.dCM.field_talker);
+      ((bqv)localObject).KHm = new dqi().bhy((String)com.tencent.mm.kernel.g.aAh().azQ().get(2, null));
+      ((bqv)localObject).LYt = paramInt1;
       if (localg.offset == 0) {
-        this.idW = new com.tencent.mm.modelstat.h(getType(), false, localg.hPI);
+        this.iYS = new com.tencent.mm.modelstat.h(getType(), false, localg.iKP);
       }
-      this.idV = 8192;
-      if (paramg != null) {
-        ar.f(new Runnable()
+      this.iYR = 8192;
+      if (paramj != null) {
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(150670);
-            paramg.a(this.iei, this.iej, m.this);
+            paramj.a(this.iZe, this.iZf, m.this);
             AppMethodBeat.o(150670);
           }
         });
@@ -339,134 +344,121 @@ public final class m
   private boolean a(final g paramg, int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(150678);
-    paramg.pq(paramInt1);
+    paramg.tf(paramInt1);
     paramg.setOffset(paramInt2 + paramInt3);
-    this.idV = paramInt3;
+    this.iYR = paramInt3;
     if (paramArrayOfByte != null) {
-      o.e(this.idZ, paramArrayOfByte, paramArrayOfByte.length);
+      com.tencent.mm.vfs.s.e(this.iYV, paramArrayOfByte, paramArrayOfByte.length);
     }
-    ae.d(this.TAG, "onGYNetEnd : offset = " + paramg.offset + " totalLen = " + paramg.hPI + " stack:[%s]", new Object[] { com.tencent.mm.sdk.platformtools.bu.fpN() });
-    String str2 = null;
-    paramArrayOfByte = str2;
-    String str1;
+    Log.d(this.TAG, "onGYNetEnd : offset = " + paramg.offset + " totalLen = " + paramg.iKP + " stack:[%s]", new Object[] { Util.getStack() });
+    String str1 = null;
+    paramArrayOfByte = str1;
     boolean bool1;
-    String str3;
-    com.tencent.mm.vfs.k localk;
-    String str4;
-    if (paramg.aIA())
+    o localo;
+    if (paramg.bcu())
     {
-      str1 = u.aRI(this.idZ);
-      bool1 = u.aRF(this.idZ);
-      str3 = this.idZ + "_hevc";
-      localk = new com.tencent.mm.vfs.k(this.idZ);
-      boolean bool2 = u.aRH(this.idZ);
-      paramArrayOfByte = str1;
+      paramArrayOfByte = ImgUtil.identifyImgType(this.iYV);
+      bool1 = ImgUtil.isImgFile(this.iYV);
+      localo = new o(this.iYV);
+      if (ImgUtil.isWXGF(this.iYV))
+      {
+        Log.i(this.TAG, "hevc download is hevc %s", new Object[] { Boolean.valueOf(bool1) });
+        str2 = com.tencent.mm.vfs.s.k(this.iYV, false);
+        str2 = str2 + "_temp";
+        paramInt2 = ((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.emoji.b.c.class)).nativeWxam2Pic(this.iYV, str2);
+        paramInt3 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rYx, 1);
+        Log.i(this.TAG, "convert jpg: %s path %s, config %s", new Object[] { Integer.valueOf(paramInt2), str2, Integer.valueOf(paramInt3) });
+        if (paramInt2 != 0) {
+          bool1 = false;
+        }
+        for (;;)
+        {
+          bool2 = bool1;
+          if (bool1) {
+            break;
+          }
+          this.iKG = false;
+          com.tencent.mm.vfs.s.deleteFile(this.iYV);
+          d(paramg);
+          AppMethodBeat.o(150678);
+          return false;
+          paramArrayOfByte = ImgUtil.identifyImgType(str2);
+          if (paramInt3 == 1)
+          {
+            com.tencent.mm.vfs.s.nx(str2, this.iYV);
+          }
+          else
+          {
+            String str3 = q.bcR().o(this.iYU, null, paramArrayOfByte);
+            str3 = ((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.emoji.b.c.class)).alX(str3);
+            com.tencent.mm.vfs.s.nx(this.iYV, str3);
+            com.tencent.mm.vfs.s.nx(str2, this.iYV);
+            paramg.Ou(str3);
+          }
+        }
+      }
+      boolean bool2 = bool1;
       if (!bool2) {
-        break label563;
+        break label592;
       }
-      if (this.hPz) {
-        break label453;
-      }
-      ae.e(this.TAG, "sceneEndproc: download jpg get hevc");
-      bool1 = false;
-      paramArrayOfByte = str1;
-      if (!bool1) {
-        break label611;
-      }
-      str2 = this.idY + paramArrayOfByte;
-      str1 = q.aIX().o(this.idY, null, paramArrayOfByte);
-      ae.i(this.TAG, "sceneEndproc ext:%s tmp:%s tmpfull:%s full:%s ", new Object[] { paramArrayOfByte, this.idY, this.idZ, str1 });
-      paramArrayOfByte = ((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.c.class)).abV(str2);
-      str4 = ((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.c.class)).abV(str1);
-      if (!bool2) {
-        break label566;
-      }
-      new com.tencent.mm.vfs.k(str3).ag(new com.tencent.mm.vfs.k(str4));
-      localk.ag(new com.tencent.mm.vfs.k(str1));
-      label371:
-      paramg.FF(str2);
-      paramg.FJ(paramArrayOfByte);
-      paramg.FE(h.FL(str1));
-      paramg.pv(this.icr);
+      String str2 = this.iYU + paramArrayOfByte;
+      str1 = q.bcR().o(this.iYU, null, paramArrayOfByte);
+      Log.i(this.TAG, "sceneEndproc ext:%s tmp:%s tmpfull:%s full:%s ", new Object[] { paramArrayOfByte, this.iYU, this.iYV, str1 });
+      localo.am(new o(str1));
+      paramg.Oq(str2);
+      paramg.Op(h.Ow(str1));
+      paramg.tk(this.iXp);
     }
-    for (paramArrayOfByte = str1;; paramArrayOfByte = str2)
+    for (paramArrayOfByte = str1; q.bcR().a(Long.valueOf(this.hmj), paramg) < 0; paramArrayOfByte = str1)
     {
-      if (q.aIX().a(Long.valueOf(this.gzw), paramg) >= 0) {
-        break label669;
-      }
-      ae.e(this.TAG, "onGYNetEnd : update img fail");
+      Log.e(this.TAG, "onGYNetEnd : update img fail");
       this.callback.onSceneEnd(3, -1, "", this);
       AppMethodBeat.o(150678);
       return false;
-      label453:
-      localk.ag(new com.tencent.mm.vfs.k(str3));
-      if (((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.c.class)).nativeWxam2Pic(str3, this.idZ) != 0)
+      label592:
+      if (this.iXp == 1)
       {
-        ae.w(this.TAG, "download hevc decode failed");
-        this.hPz = false;
-        o.deleteFile(str3);
-        o.deleteFile(this.idZ);
-        d(paramg);
-        AppMethodBeat.o(150678);
-        return false;
+        paramArrayOfByte = q.bcR().c(Long.valueOf(this.iYQ));
+        paramArrayOfByte.tg(0);
+        q.bcR().a(Long.valueOf(this.iYQ), paramArrayOfByte);
       }
-      paramArrayOfByte = u.aRI(this.idZ);
-      ae.i(this.TAG, "hevc download is hevc %b", new Object[] { Boolean.TRUE });
-      label563:
-      break;
-      label566:
-      if (o.aZR(str4) > 0L)
-      {
-        o.deleteFile(str4);
-        com.tencent.mm.plugin.report.service.g.yxI.dD(944, 10);
-      }
-      localk.ag(new com.tencent.mm.vfs.k(str1));
-      break label371;
-      label611:
-      if (this.icr == 1)
-      {
-        paramArrayOfByte = q.aIX().c(Long.valueOf(this.idU));
-        paramArrayOfByte.pr(0);
-        q.aIX().a(Long.valueOf(this.idU), paramArrayOfByte);
-      }
-      localk.delete();
+      localo.delete();
     }
-    label669:
-    if (this.idS != null) {
-      ar.f(new Runnable()
+    if (this.iYO != null) {
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(150672);
-          m.this.idS.a(paramg.offset, paramg.hPI, m.this);
+          m.this.iYO.a(paramg.offset, paramg.iKP, m.this);
           AppMethodBeat.o(150672);
         }
       });
     }
-    ae.d(this.TAG, "cdntra check iscompleted :%b clientid:%s", new Object[] { Boolean.valueOf(paramg.aIA()), this.idX });
-    if (paramg.aIA())
+    Log.d(this.TAG, "cdntra check iscompleted :%b clientid:%s", new Object[] { Boolean.valueOf(paramg.bcu()), this.iYT });
+    if (paramg.bcu())
     {
-      if (com.tencent.mm.sdk.platformtools.bu.isNullOrNil(this.idX)) {
-        com.tencent.mm.plugin.report.service.g.yxI.f(10420, new Object[] { Integer.valueOf(0), Integer.valueOf(2), Long.valueOf(this.startTime), Long.valueOf(com.tencent.mm.sdk.platformtools.bu.fpO()), Integer.valueOf(com.tencent.mm.an.c.cC(ak.getContext())), Integer.valueOf(this.glf), Integer.valueOf(paramInt1 - this.startOffset) });
+      if (Util.isNullOrNil(this.iYT)) {
+        com.tencent.mm.plugin.report.service.h.CyF.a(10420, new Object[] { Integer.valueOf(0), Integer.valueOf(2), Long.valueOf(this.startTime), Long.valueOf(Util.nowMilliSecond()), Integer.valueOf(com.tencent.mm.an.c.cY(MMApplicationContext.getContext())), Integer.valueOf(this.gVY), Integer.valueOf(paramInt1 - this.startOffset) });
       }
       bool1 = false;
-      if (this.iea > 0) {
-        bool1 = q.aIX().a(paramArrayOfByte, paramg.icq, this.iea, 1, this.dlw.fmo, this.dlw.fmp);
+      if (this.iYW > 0) {
+        bool1 = q.bcR().a(paramArrayOfByte, paramg.iXo, this.iYW, 1, this.dCM.fQS, this.dCM.fQT);
       }
       if (bool1)
       {
-        paramg.aIC();
-        ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().a(this.dlw.field_msgId, this.dlw);
+        paramg.bcw();
+        ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(this.dCM.field_msgId, this.dCM);
       }
-      q.aIX().a(Long.valueOf(this.gzw), paramg);
-      ae.d(this.TAG, "cdntra ext:%s %s %s  MediaCheckDuplicationStorage md5:%s", new Object[] { this.idZ, paramArrayOfByte, paramg.ico, this.ied });
-      if (this.idW != null) {
-        this.idW.sB(paramg.hPI);
+      q.bcR().a(Long.valueOf(this.hmj), paramg);
+      Log.d(this.TAG, "cdntra ext:%s %s %s  MediaCheckDuplicationStorage md5:%s", new Object[] { this.iYV, paramArrayOfByte, paramg.iXm, this.iYZ });
+      if (this.iYS != null) {
+        this.iYS.AH(paramg.iKP);
       }
-      if ((!com.tencent.mm.sdk.platformtools.bu.isNullOrNil(this.ied)) && (this.iee > 0))
+      if ((!Util.isNullOrNil(this.iYZ)) && (this.iZa > 0))
       {
-        com.tencent.mm.plugin.image.c.dfJ();
-        com.tencent.mm.plugin.image.c.azN().G(this.ied, this.iee, paramArrayOfByte);
+        com.tencent.mm.plugin.image.c.dZD();
+        com.tencent.mm.plugin.image.c.aSV().P(this.iYZ, this.iZa, paramArrayOfByte);
       }
       this.callback.onSceneEnd(0, 0, "", this);
       AppMethodBeat.o(150678);
@@ -479,191 +471,191 @@ public final class m
   private boolean d(g paramg)
   {
     AppMethodBeat.i(150674);
-    if (com.tencent.mm.sdk.platformtools.bu.isNullOrNil(paramg.icA))
+    if (Util.isNullOrNil(paramg.iXy))
     {
       AppMethodBeat.o(150674);
       return false;
     }
-    Map localMap = bx.M(paramg.icA, "msg");
+    Map localMap = XmlParser.parseXml(paramg.iXy, "msg", null);
     if (localMap == null)
     {
-      ae.e(this.TAG, "parse cdnInfo failed. [%s]", new Object[] { paramg.icA });
+      Log.e(this.TAG, "parse cdnInfo failed. [%s]", new Object[] { paramg.iXy });
       AppMethodBeat.o(150674);
       return false;
     }
-    this.hPI = 0;
+    this.iKP = 0;
     String str2;
     String str1;
-    if (this.icr != 1)
+    if (this.iXp != 1)
     {
       str2 = (String)localMap.get(".msg.img.$cdnmidimgurl");
-      this.hPI = com.tencent.mm.sdk.platformtools.bu.getInt((String)localMap.get(".msg.img.$length"), 0);
-      if (this.icr == 1) {
-        break label296;
+      this.iKP = Util.getInt((String)localMap.get(".msg.img.$length"), 0);
+      if (this.iXp == 1) {
+        break label297;
       }
       str3 = (String)localMap.get(".msg.img.$tpurl");
       str1 = str3;
-      if (com.tencent.mm.sdk.platformtools.bu.isNullOrNil(str3)) {
-        break label348;
+      if (Util.isNullOrNil(str3)) {
+        break label349;
       }
-      this.hPI = com.tencent.mm.sdk.platformtools.bu.getInt((String)localMap.get(".msg.img.$tplength"), 0);
+      this.iKP = Util.getInt((String)localMap.get(".msg.img.$tplength"), 0);
       str1 = str3;
     }
-    label296:
-    label348:
+    label297:
+    label349:
     for (;;)
     {
-      ae.d(this.TAG, "cdntra read xml  comptype:%d totallen:%d url:[%s] [%s]", new Object[] { Integer.valueOf(this.icr), Integer.valueOf(this.hPI), str2, str1 });
-      if ((!com.tencent.mm.sdk.platformtools.bu.isNullOrNil(str2)) || (!com.tencent.mm.sdk.platformtools.bu.isNullOrNil(str1))) {
-        break label351;
+      Log.d(this.TAG, "cdntra read xml  comptype:%d totallen:%d url:[%s] [%s]", new Object[] { Integer.valueOf(this.iXp), Integer.valueOf(this.iKP), str2, str1 });
+      if ((!Util.isNullOrNil(str2)) || (!Util.isNullOrNil(str1))) {
+        break label352;
       }
-      ae.e(this.TAG, "cdntra get cdnUrlfailed.");
+      Log.e(this.TAG, "cdntra get cdnUrlfailed.");
       AppMethodBeat.o(150674);
       return false;
       str2 = (String)localMap.get(".msg.img.$cdnbigimgurl");
-      this.hPI = com.tencent.mm.sdk.platformtools.bu.getInt((String)localMap.get(".msg.img.$hdlength"), 0);
+      this.iKP = Util.getInt((String)localMap.get(".msg.img.$hdlength"), 0);
       break;
       str3 = (String)localMap.get(".msg.img.$tphdurl");
       str1 = str3;
-      if (!com.tencent.mm.sdk.platformtools.bu.isNullOrNil(str3))
+      if (!Util.isNullOrNil(str3))
       {
-        this.hPI = com.tencent.mm.sdk.platformtools.bu.getInt((String)localMap.get(".msg.img.$tphdlength"), 0);
+        this.iKP = Util.getInt((String)localMap.get(".msg.img.$tphdlength"), 0);
         str1 = str3;
       }
     }
-    label351:
+    label352:
     String str3 = (String)localMap.get(".msg.img.$aeskey");
-    if (com.tencent.mm.sdk.platformtools.bu.isNullOrNil(str3))
+    if (Util.isNullOrNil(str3))
     {
-      ae.e(this.TAG, "cdntra get aes key failed.");
+      Log.e(this.TAG, "cdntra get aes key failed.");
       AppMethodBeat.o(150674);
       return false;
     }
-    this.idX = com.tencent.mm.an.c.a("downimg", paramg.icw, this.dlw.field_talker, this.dlw.field_msgId);
-    if (com.tencent.mm.sdk.platformtools.bu.isNullOrNil(this.idX))
+    this.iYT = com.tencent.mm.an.c.a("downimg", paramg.iXu, this.dCM.field_talker, this.dCM.field_msgId);
+    if (Util.isNullOrNil(this.iYT))
     {
-      ae.w(this.TAG, "cdntra genClientId failed not use cdn imgLocalId:%d", new Object[] { Long.valueOf(this.gzw) });
+      Log.w(this.TAG, "cdntra genClientId failed not use cdn imgLocalId:%d", new Object[] { Long.valueOf(this.hmj) });
       AppMethodBeat.o(150674);
       return false;
     }
     String str4 = (String)localMap.get(".msg.img.$md5");
     int i;
     boolean bool;
-    if ((com.tencent.mm.sdk.platformtools.bu.isNullOrNil(str1)) && (!com.tencent.mm.sdk.platformtools.bu.isNullOrNil(str4)) && ((com.tencent.mm.sdk.platformtools.bu.isNullOrNil((String)localMap.get(".msg.img.$cdnbigimgurl"))) || (this.icr == 1)))
+    if ((Util.isNullOrNil(str1)) && (!Util.isNullOrNil(str4)) && ((Util.isNullOrNil((String)localMap.get(".msg.img.$cdnbigimgurl"))) || (this.iXp == 1)))
     {
-      com.tencent.mm.plugin.image.c.dfJ();
-      String str5 = com.tencent.mm.plugin.image.c.azN().gz(str4, this.hPI);
-      i = (int)o.aZR(str5);
-      int j = this.hPI - i;
+      com.tencent.mm.plugin.image.c.dZD();
+      String str5 = com.tencent.mm.plugin.image.c.aSV().gS(str4, this.iKP);
+      i = (int)com.tencent.mm.vfs.s.boW(str5);
+      int j = this.iKP - i;
       String str6 = this.TAG;
-      int k = this.hPI;
+      int k = this.iKP;
       Object localObject = localMap.get(".msg.img.$cdnbigimgurl");
-      if (this.icr == 1)
+      if (this.iXp == 1)
       {
         bool = true;
-        ae.i(str6, "MediaCheckDuplicationStorage: totallen:%s md5:%s big:%s NOcompress:%s  dup(len:%d path:%s) diffLen:%d to:%s", new Object[] { Integer.valueOf(k), str4, localObject, Boolean.valueOf(bool), Integer.valueOf(i), str5, Integer.valueOf(j), this.idZ });
-        if (com.tencent.mm.sdk.platformtools.bu.isNullOrNil(str5)) {
-          break label913;
+        Log.i(str6, "MediaCheckDuplicationStorage: totallen:%s md5:%s big:%s NOcompress:%s  dup(len:%d path:%s) diffLen:%d to:%s", new Object[] { Integer.valueOf(k), str4, localObject, Boolean.valueOf(bool), Integer.valueOf(i), str5, Integer.valueOf(j), this.iYV });
+        if (Util.isNullOrNil(str5)) {
+          break label914;
         }
         if ((j < 0) || (j > 16)) {
-          break label927;
+          break label928;
         }
         bool = false;
-        if (!com.tencent.mm.sdk.platformtools.bu.lX(str5, this.idZ)) {
-          if (o.mF(str5, this.idZ) < 0L) {
-            break label907;
+        if (!Util.isEqual(str5, this.iYV)) {
+          if (com.tencent.mm.vfs.s.nw(str5, this.iYV) < 0L) {
+            break label908;
           }
         }
       }
-      label907:
+      label908:
       for (bool = true;; bool = false)
       {
-        ae.i(this.TAG, "MediaCheckDuplicationStorage copy dup file now :%s -> %s [%b]", new Object[] { str5, this.idZ, Boolean.valueOf(bool) });
-        a(paramg, this.hPI, this.hPI, 0, null);
-        if (this.dlw != null) {
-          ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().a(new i.c(this.dlw.field_talker, "update", this.dlw));
+        Log.i(this.TAG, "MediaCheckDuplicationStorage copy dup file now :%s -> %s [%b]", new Object[] { str5, this.iYV, Boolean.valueOf(bool) });
+        a(paramg, this.iKP, this.iKP, 0, null);
+        if (this.dCM != null) {
+          ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().a(new i.c(this.dCM.field_talker, "update", this.dCM));
         }
-        com.tencent.mm.plugin.report.service.g.yxI.f(13267, new Object[] { str2, Long.valueOf(this.dlw.field_msgSvrId), str4, Long.valueOf(this.dlw.field_createTime / 1000L), this.dlw.field_talker, Integer.valueOf(3), Integer.valueOf(i) });
+        com.tencent.mm.plugin.report.service.h.CyF.a(13267, new Object[] { str2, Long.valueOf(this.dCM.field_msgSvrId), str4, Long.valueOf(this.dCM.field_createTime / 1000L), this.dCM.field_talker, Integer.valueOf(3), Integer.valueOf(i) });
         AppMethodBeat.o(150674);
         return true;
         bool = false;
         break;
       }
-      label913:
-      this.ied = str4;
-      this.iee = this.hPI;
+      label914:
+      this.iYZ = str4;
+      this.iZa = this.iKP;
     }
-    label927:
-    if ((this.hPz) && (((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.c.class)).chd()))
+    label928:
+    if ((this.iKG) && (((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.emoji.b.c.class)).cEP()))
     {
       bool = true;
-      ae.i(this.TAG, "checkUseCdn: %s, %s", new Object[] { Boolean.valueOf(this.hPz), Boolean.valueOf(bool) });
+      Log.i(this.TAG, "checkUseCdn: %s, %s", new Object[] { Boolean.valueOf(this.iKG), Boolean.valueOf(bool) });
       paramg = new com.tencent.mm.i.g();
       if (!bool) {
-        break label1364;
+        break label1365;
       }
-      paramg.fLl = "task_NetSceneGetMsgImg_1";
-      paramg.field_mediaId = this.idX;
-      label1014:
-      paramg.field_fullpath = this.idZ;
-      paramg.field_fileType = this.glf;
-      paramg.field_totalLen = this.hPI;
+      paramg.taskName = "task_NetSceneGetMsgImg_1";
+      paramg.field_mediaId = this.iYT;
+      label1015:
+      paramg.field_fullpath = this.iYV;
+      paramg.field_fileType = this.gVY;
+      paramg.field_totalLen = this.iKP;
       paramg.field_aesKey = str3;
       paramg.field_fileId = str2;
-      paramg.field_priority = com.tencent.mm.i.a.fKA;
-      paramg.fLm = this.ieg;
-      if (!x.wb(this.dlw.field_talker)) {
-        break label1401;
+      paramg.field_priority = com.tencent.mm.i.a.gpM;
+      paramg.gqy = this.iZc;
+      if (!ab.Eq(this.dCM.field_talker)) {
+        break label1402;
       }
       i = 1;
-      label1080:
+      label1081:
       paramg.field_chattype = i;
       if (!bool) {
-        break label1406;
+        break label1407;
       }
       i = 2;
-      label1092:
+      label1093:
       paramg.expectImageFormat = i;
-      if (!com.tencent.mm.sdk.platformtools.bu.isNullOrNil(str1))
+      if (!Util.isNullOrNil(str1))
       {
         str2 = (String)localMap.get(".msg.img.$tpauthkey");
         paramg.field_fileType = 19;
         paramg.field_authKey = str2;
-        paramg.fLp = str1;
+        paramg.gqB = str1;
         paramg.field_fileId = "";
       }
-      ae.i(this.TAG, "cdnautostart %s %b", new Object[] { "image_" + this.dlw.field_msgId, Boolean.valueOf(com.tencent.mm.an.f.aGZ().hWG.contains("image_" + this.dlw.field_msgId)) });
-      if (!com.tencent.mm.an.f.aGZ().hWG.contains("image_" + this.dlw.field_msgId)) {
-        break label1411;
+      Log.i(this.TAG, "cdnautostart %s %b", new Object[] { "image_" + this.dCM.field_msgId, Boolean.valueOf(f.baQ().iRE.contains("image_" + this.dCM.field_msgId)) });
+      if (!f.baQ().iRE.contains("image_" + this.dCM.field_msgId)) {
+        break label1412;
       }
-      com.tencent.mm.an.f.aGZ().hWG.remove("image_" + this.dlw.field_msgId);
+      f.baQ().iRE.remove("image_" + this.dCM.field_msgId);
     }
-    label1411:
+    label1412:
     for (paramg.field_autostart = true;; paramg.field_autostart = false)
     {
-      if (com.tencent.mm.an.f.aGZ().b(paramg, this.iec)) {
-        break label1419;
+      if (f.baQ().b(paramg, this.iYY)) {
+        break label1420;
       }
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 196L, 1L, false);
-      ae.e(this.TAG, "addRecvTask failed :%s", new Object[] { this.idX });
-      this.idX = "";
+      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 196L, 1L, false);
+      Log.e(this.TAG, "addRecvTask failed :%s", new Object[] { this.iYT });
+      this.iYT = "";
       AppMethodBeat.o(150674);
       return false;
       bool = false;
       break;
-      label1364:
-      paramg.fLl = "task_NetSceneGetMsgImg_2";
-      paramg.field_mediaId = (this.idX + "_hevc");
-      break label1014;
-      label1401:
+      label1365:
+      paramg.taskName = "task_NetSceneGetMsgImg_2";
+      paramg.field_mediaId = (this.iYT + "_hevc");
+      break label1015;
+      label1402:
       i = 0;
-      break label1080;
-      label1406:
+      break label1081;
+      label1407:
       i = 1;
-      break label1092;
+      break label1093;
     }
-    label1419:
-    ae.i(this.TAG, "add recv task");
+    label1420:
+    Log.i(this.TAG, "add recv task");
     AppMethodBeat.o(150674);
     return true;
   }
@@ -671,48 +663,48 @@ public final class m
   public final void cancel()
   {
     AppMethodBeat.i(150675);
-    if ((!com.tencent.mm.sdk.platformtools.bu.isNullOrNil(this.idX)) && (com.tencent.mm.an.f.aGZ() != null))
+    if ((!Util.isNullOrNil(this.iYT)) && (f.baQ() != null))
     {
-      ae.d(this.TAG, "cancel recv task");
-      com.tencent.mm.an.f.aGZ().Fs(this.idX);
+      Log.d(this.TAG, "cancel recv task");
+      f.baQ().Oc(this.iYT);
     }
     super.cancel();
     AppMethodBeat.o(150675);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, com.tencent.mm.ak.i parami)
   {
     AppMethodBeat.i(150676);
-    this.callback = paramf;
-    paramf = (bez)this.rr.hQD.hQJ;
-    g localg = q.aIX().c(Long.valueOf(this.gzw));
-    if (localg.doE == 0L)
+    this.callback = parami;
+    parami = (bqv)this.rr.iLK.iLR;
+    g localg = q.bcR().c(Long.valueOf(this.hmj));
+    if (localg.localId == 0L)
     {
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 195L, 1L, false);
-      ae.e(this.TAG, "doScene id:%d  img:%s", new Object[] { Long.valueOf(this.gzw), localg });
+      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 195L, 1L, false);
+      Log.e(this.TAG, "doScene id:%d  img:%s", new Object[] { Long.valueOf(this.hmj), localg });
       AppMethodBeat.o(150676);
       return -1;
     }
     if (localg.status != 0)
     {
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 194L, 1L, false);
-      ae.e(this.TAG, "doSceneError, id:%d, status:%d", new Object[] { Long.valueOf(localg.doE), Integer.valueOf(localg.status) });
+      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 194L, 1L, false);
+      Log.e(this.TAG, "doSceneError, id:%d, status:%d", new Object[] { Long.valueOf(localg.localId), Integer.valueOf(localg.status) });
       AppMethodBeat.o(150676);
       return -1;
     }
-    String str = localg.ico;
+    String str = localg.iXm;
     if (str.startsWith("SERVERID://"))
     {
-      this.idY = com.tencent.mm.b.g.getMessageDigest(localg.ico.getBytes());
-      this.idZ = q.aIX().o(this.idY, null, ".temp");
-      localg.FF(this.idY + ".temp");
-      q.aIX().a(Long.valueOf(this.gzw), localg);
-      ae.i(this.TAG, "doscene id:%d comp:%d off:%d total:%d name:%s tmp:%s full:%s", new Object[] { Long.valueOf(localg.doE), Integer.valueOf(this.icr), Integer.valueOf(localg.offset), Integer.valueOf(localg.hPI), str, this.idY, this.idZ });
+      this.iYU = com.tencent.mm.b.g.getMessageDigest(localg.iXm.getBytes());
+      this.iYV = q.bcR().o(this.iYU, null, ".temp");
+      localg.Oq(this.iYU + ".temp");
+      q.bcR().a(Long.valueOf(this.hmj), localg);
+      Log.i(this.TAG, "doscene id:%d comp:%d off:%d total:%d name:%s tmp:%s full:%s", new Object[] { Long.valueOf(localg.localId), Integer.valueOf(this.iXp), Integer.valueOf(localg.offset), Integer.valueOf(localg.iKP), str, this.iYU, this.iYV });
       if (this.startTime == 0L)
       {
-        this.startTime = com.tencent.mm.sdk.platformtools.bu.fpO();
+        this.startTime = Util.nowMilliSecond();
         this.startOffset = localg.offset;
-        if (this.icr != 1) {
+        if (this.iXp != 1) {
           break label452;
         }
       }
@@ -720,29 +712,29 @@ public final class m
     label452:
     for (int i = com.tencent.mm.i.a.MediaType_FULLSIZEIMAGE;; i = com.tencent.mm.i.a.MediaType_IMAGE)
     {
-      this.glf = i;
+      this.gVY = i;
       if (!d(localg)) {
         break label459;
       }
-      ae.d(this.TAG, "cdntra this img use cdn : %s", new Object[] { this.idX });
+      Log.d(this.TAG, "cdntra this img use cdn : %s", new Object[] { this.iYT });
       AppMethodBeat.o(150676);
       return 0;
-      this.idY = localg.ico;
-      this.idZ = q.aIX().o(this.idY, null, "");
+      this.iYU = localg.iXm;
+      this.iYV = q.bcR().o(this.iYU, null, "");
       break;
     }
     label459:
-    ae.d(this.TAG, "cdntra this img NOT USE CDN: %s", new Object[] { this.idX });
-    localg.FI("");
-    localg.dEu = 4096;
-    q.aIX().a(Long.valueOf(this.gzw), localg);
-    paramf.xsC = localg.offset;
-    paramf.xsD = this.idV;
-    paramf.xsB = localg.hPI;
-    if (this.idW != null) {
-      this.idW.aMf();
+    Log.d(this.TAG, "cdntra this img NOT USE CDN: %s", new Object[] { this.iYT });
+    localg.Ot("");
+    localg.cSx = 4096;
+    q.bcR().a(Long.valueOf(this.hmj), localg);
+    parami.BsG = localg.offset;
+    parami.BsH = this.iYR;
+    parami.BsF = localg.iKP;
+    if (this.iYS != null) {
+      this.iYS.bgi();
     }
-    i = dispatch(parame, this.rr, this);
+    i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(150676);
     return i;
   }
@@ -752,12 +744,12 @@ public final class m
     return 109;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(150677);
-    if ((paramInt2 == 3) && (paramInt3 == -1) && (!com.tencent.mm.sdk.platformtools.bu.isNullOrNil(this.idX)))
+    if ((paramInt2 == 3) && (paramInt3 == -1) && (!Util.isNullOrNil(this.iYT)))
     {
-      ae.w(this.TAG, "cdntra using cdn trans,  wait cdn service callback! clientid:%s", new Object[] { this.idX });
+      Log.w(this.TAG, "cdntra using cdn trans,  wait cdn service callback! clientid:%s", new Object[] { this.iYT });
       AppMethodBeat.o(150677);
       return;
     }
@@ -765,50 +757,50 @@ public final class m
     {
       if (paramInt2 == 4)
       {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 193L, 1L, false);
-        com.tencent.mm.plugin.report.service.g.yxI.f(10420, new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(2), Long.valueOf(this.startTime), Long.valueOf(com.tencent.mm.sdk.platformtools.bu.fpO()), Integer.valueOf(com.tencent.mm.an.c.cC(ak.getContext())), Integer.valueOf(this.glf), Integer.valueOf(this.hPI - this.startOffset) });
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 193L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.a(10420, new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(2), Long.valueOf(this.startTime), Long.valueOf(Util.nowMilliSecond()), Integer.valueOf(com.tencent.mm.an.c.cY(MMApplicationContext.getContext())), Integer.valueOf(this.gVY), Integer.valueOf(this.iKP - this.startOffset) });
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(150677);
       return;
     }
-    paramString = (bfa)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
-    paramq = q.aIX().c(Long.valueOf(this.gzw));
+    paramString = (bqw)((com.tencent.mm.ak.d)params).iLL.iLR;
+    params = q.bcR().c(Long.valueOf(this.hmj));
     paramInt1 = 0;
-    if (paramString.xsD <= 0)
+    if (paramString.BsH <= 0)
     {
-      ae.e(this.TAG, "flood control, malformed data_len");
+      Log.e(this.TAG, "flood control, malformed data_len");
       paramInt1 = -1;
     }
     while (paramInt1 != 0)
     {
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 192L, 1L, false);
-      com.tencent.mm.plugin.report.service.g.yxI.f(10420, new Object[] { Integer.valueOf(-1), Integer.valueOf(2), Long.valueOf(this.startTime), Long.valueOf(com.tencent.mm.sdk.platformtools.bu.fpO()), Integer.valueOf(com.tencent.mm.an.c.cC(ak.getContext())), Integer.valueOf(this.glf), Integer.valueOf(this.hPI - this.startOffset) });
+      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 192L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.CyF.a(10420, new Object[] { Integer.valueOf(-1), Integer.valueOf(2), Long.valueOf(this.startTime), Long.valueOf(Util.nowMilliSecond()), Integer.valueOf(com.tencent.mm.an.c.cY(MMApplicationContext.getContext())), Integer.valueOf(this.gVY), Integer.valueOf(this.iKP - this.startOffset) });
       this.callback.onSceneEnd(4, -1, "", this);
       AppMethodBeat.o(150677);
       return;
-      if ((paramString.xsE == null) || (paramString.xsD != paramString.xsE.getILen()))
+      if ((paramString.BsI == null) || (paramString.BsH != paramString.BsI.getILen()))
       {
-        ae.e(this.TAG, "flood control, malformed data is null or dataLen not match with data buf length");
+        Log.e(this.TAG, "flood control, malformed data is null or dataLen not match with data buf length");
         paramInt1 = -1;
       }
-      else if ((paramString.xsC < 0) || (paramString.xsC + paramString.xsD > paramString.xsB))
+      else if ((paramString.BsG < 0) || (paramString.BsG + paramString.BsH > paramString.BsF))
       {
-        ae.e(this.TAG, "flood control, malformed start pos");
+        Log.e(this.TAG, "flood control, malformed start pos");
         paramInt1 = -1;
       }
-      else if (paramString.xsC != paramq.offset)
+      else if (paramString.BsG != params.offset)
       {
-        ae.e(this.TAG, "flood control, malformed start_pos");
+        Log.e(this.TAG, "flood control, malformed start_pos");
         paramInt1 = -1;
       }
-      else if (paramString.xsB <= 0)
+      else if (paramString.BsF <= 0)
       {
-        ae.e(this.TAG, "flood control, malformed total_len");
+        Log.e(this.TAG, "flood control, malformed total_len");
         paramInt1 = -1;
       }
     }
-    if ((a(paramq, paramString.xsB, paramString.xsC, paramString.xsD, paramString.xsE.getBuffer().zr)) && (doScene(dispatcher(), this.callback) < 0)) {
+    if ((a(params, paramString.BsF, paramString.BsG, paramString.BsH, paramString.BsI.getBuffer().zy)) && (doScene(dispatcher(), this.callback) < 0)) {
       this.callback.onSceneEnd(3, -1, "", this);
     }
     AppMethodBeat.o(150677);
@@ -816,20 +808,20 @@ public final class m
   
   public final int securityLimitCount()
   {
-    if (this.icr == 0) {
+    if (this.iXp == 0) {
       return 100;
     }
     return 1280;
   }
   
-  public final n.b securityVerificationChecked(com.tencent.mm.network.q paramq)
+  public final q.b securityVerificationChecked(com.tencent.mm.network.s params)
   {
-    return n.b.hRi;
+    return q.b.iMq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.m
  * JD-Core Version:    0.7.0.1
  */

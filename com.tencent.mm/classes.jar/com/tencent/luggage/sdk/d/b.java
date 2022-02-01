@@ -10,28 +10,28 @@ import com.tencent.mm.plugin.appbrand.platform.window.a.o;
 import com.tencent.mm.plugin.appbrand.platform.window.e.a;
 import com.tencent.mm.plugin.appbrand.platform.window.e.b;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.task.g;
-import com.tencent.mm.plugin.appbrand.ui.ab;
+import com.tencent.mm.plugin.appbrand.task.k;
+import com.tencent.mm.plugin.appbrand.ui.ah;
 import com.tencent.mm.plugin.appbrand.widget.input.n;
-import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
 
 public class b
   extends AppBrandRuntimeContainer<d>
 {
-  public b(g paramg, Class<? extends d> paramClass)
+  public b(k paramk, Class<? extends d> paramClass)
   {
-    super(paramg, paramClass);
+    super(paramk, paramClass);
     AppMethodBeat.i(146890);
     AppMethodBeat.o(146890);
   }
   
-  public boolean Fa()
+  public boolean OH()
   {
     AppMethodBeat.i(146894);
     if (getStackSize() <= 0)
     {
-      bx(false);
+      bY(false);
       AppMethodBeat.o(146894);
       return true;
     }
@@ -47,27 +47,27 @@ public class b
       AppMethodBeat.o(146891);
       return;
     }
-    a.jw(this.mContext).runOnUiThread(new Runnable()
+    AndroidContextUtil.castActivityOrNull(this.mContext).runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(169444);
-        n.J(a.jw(b.this.mContext));
+        n.J(AndroidContextUtil.castActivityOrNull(b.this.mContext));
         if (paramd == null) {
           b.a(b.this, paramAppBrandInitConfigLU.appId);
         }
         d locald = (d)b.b(b.this, paramAppBrandInitConfigLU.appId);
-        paramAppBrandInitConfigLU.cmE = paramAppBrandStatObject;
+        paramAppBrandInitConfigLU.cyA = paramAppBrandStatObject;
         if (locald == null)
         {
           locald = (d)b.a(b.this, paramAppBrandInitConfigLU);
           b.a(b.this, locald);
           b.a(b.this, paramd, locald, paramAppBrandInitConfigLU);
         }
-        while (b.this.w(locald)) {
-          if (locald.aWl() != null)
+        while (b.this.v(locald)) {
+          if (locald.brg() != null)
           {
-            locald.jzW = true;
+            locald.gs(true);
             AppMethodBeat.o(169444);
             return;
             if (paramd == locald)
@@ -82,7 +82,7 @@ public class b
           }
           else
           {
-            locald.jzW = false;
+            locald.gs(false);
           }
         }
         AppMethodBeat.o(169444);
@@ -97,7 +97,7 @@ public class b
     if (paramAppBrandRuntime1 == null) {}
     for (String str = "null";; str = paramAppBrandRuntime1.mAppId)
     {
-      ae.i("Luggage.AppBrandRuntimeContainerLU[AppBrandSplashAd]", "onRuntimeClose entered, in.appId[%s], out.appId[%s], out.isFinishing[%b], out.canDoCloseAnimation[%b], mIsActivityPaused[%b], stackSize[%d]", new Object[] { str, paramAppBrandRuntime2.mAppId, Boolean.valueOf(paramAppBrandRuntime2.SB), Boolean.valueOf(paramAppBrandRuntime2.aWJ()), Boolean.valueOf(this.jBn), Integer.valueOf(getStackSize()) });
+      Log.i("Luggage.AppBrandRuntimeContainerLU[AppBrandSplashAd]", "onRuntimeClose entered, in.appId[%s], out.appId[%s], out.isFinishing[%b], out.canDoCloseAnimation[%b], mIsActivityPaused[%b], stackSize[%d]", new Object[] { str, paramAppBrandRuntime2.mAppId, Boolean.valueOf(paramAppBrandRuntime2.SO), Boolean.valueOf(paramAppBrandRuntime2.brG()), Boolean.valueOf(this.kCg), Integer.valueOf(getStackSize()) });
       paramRunnable = new Runnable()
       {
         public final void run()
@@ -107,19 +107,19 @@ public class b
           AppMethodBeat.o(169447);
         }
       };
-      if (this.jBn) {
-        paramAppBrandRuntime2.jzX = false;
+      if (this.kCg) {
+        paramAppBrandRuntime2.kAO = false;
       }
-      if (paramAppBrandRuntime2.SB) {
+      if (paramAppBrandRuntime2.SO) {
         break label177;
       }
       if (getStackSize() <= 1) {
         break label166;
       }
-      if (!paramAppBrandRuntime2.aWJ()) {
+      if (!paramAppBrandRuntime2.brG()) {
         break;
       }
-      ((ab)e.K(ab.class)).a(paramAppBrandRuntime1, paramAppBrandRuntime2, paramRunnable);
+      ((ah)e.M(ah.class)).a(paramAppBrandRuntime1, paramAppBrandRuntime2, paramRunnable);
       AppMethodBeat.o(146893);
       return;
     }
@@ -127,11 +127,11 @@ public class b
     AppMethodBeat.o(146893);
     return;
     label166:
-    bx(true);
+    bY(true);
     AppMethodBeat.o(146893);
     return;
     label177:
-    if (!w(paramAppBrandRuntime2))
+    if (!v(paramAppBrandRuntime2))
     {
       paramRunnable.run();
       AppMethodBeat.o(146893);
@@ -139,9 +139,9 @@ public class b
     }
     if (getStackSize() > 1)
     {
-      if (paramAppBrandRuntime2.aWJ())
+      if (paramAppBrandRuntime2.brG())
       {
-        ((ab)e.K(ab.class)).a(paramAppBrandRuntime1, paramAppBrandRuntime2, paramRunnable);
+        ((ah)e.M(ah.class)).a(paramAppBrandRuntime1, paramAppBrandRuntime2, paramRunnable);
         AppMethodBeat.o(146893);
         return;
       }
@@ -149,14 +149,14 @@ public class b
       AppMethodBeat.o(146893);
       return;
     }
-    bx(false);
+    bY(false);
     AppMethodBeat.o(146893);
   }
   
-  protected void bx(boolean paramBoolean)
+  protected void bY(boolean paramBoolean)
   {
     AppMethodBeat.i(146892);
-    Activity localActivity = a.jw(this.mContext);
+    Activity localActivity = AndroidContextUtil.castActivityOrNull(this.mContext);
     if (localActivity == null)
     {
       AppMethodBeat.o(146892);
@@ -164,17 +164,19 @@ public class b
     }
     if (!localActivity.isFinishing())
     {
-      if ((this.jBk.aXc()) && (paramBoolean)) {
+      boolean bool = this.kCd.bsc();
+      int i = getStackSize();
+      if ((bool) && (paramBoolean)) {
         localActivity.moveTaskToBack(true);
       }
-      while (getStackSize() <= 0)
+      while (i <= 0)
       {
         localActivity.overridePendingTransition(0, 0);
         AppMethodBeat.o(146892);
         return;
         localActivity.finish();
       }
-      ((ab)e.K(ab.class)).m(localActivity);
+      ((ah)e.M(ah.class)).m(localActivity);
     }
     AppMethodBeat.o(146892);
   }
@@ -182,7 +184,7 @@ public class b
   public final void onBackPressed()
   {
     AppMethodBeat.i(146895);
-    if (Fa())
+    if (OH())
     {
       AppMethodBeat.o(146895);
       return;
@@ -193,7 +195,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.d.b
  * JD-Core Version:    0.7.0.1
  */

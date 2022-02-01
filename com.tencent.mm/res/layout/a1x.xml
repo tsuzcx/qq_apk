@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4" style="@style/mz"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/bsq" android:background="@drawable/bip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <View android:id="@id/bri" android:background="@drawable/rs" android:layout_width="62.0dip" android:layout_height="fill_parent" android:alpha="0.75" />
-        <RelativeLayout android:background="@drawable/bij" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/bso" android:layout_marginLeft="@dimen/a2s" style="@style/iq" />
-            <ImageView android:id="@id/bsp" android:layout_marginRight="@dimen/a2s" android:layout_alignParentRight="true" style="@style/iq" />
-            <ImageView android:id="@id/bsi" android:layout_marginLeft="@dimen/a2s" android:layout_alignParentBottom="true" style="@style/iq" />
-            <ImageView android:id="@id/bsj" android:layout_marginRight="@dimen/a2s" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/iq" />
-            <ImageView android:id="@id/bsl" android:layout_marginTop="@dimen/a2s" style="@style/ir" />
-            <ImageView android:id="@id/bsk" android:layout_marginBottom="@dimen/a2s" android:layout_alignParentBottom="true" style="@style/ir" />
-            <ImageView android:id="@id/bsn" android:layout_marginTop="@dimen/a2s" android:layout_alignParentRight="true" style="@style/ir" />
-            <ImageView android:id="@id/bsm" android:layout_marginBottom="@dimen/a2s" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/ir" />
-        </RelativeLayout>
-        <RelativeLayout android:id="@id/br9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </RelativeLayout>
-</merge>
+    <LinearLayout android:id="@id/be9" android:layout_height="@dimen/k4" style="@style/nr">
+        <TextView android:id="@android:id/title" style="@style/mi" />
+    </LinearLayout>
+</LinearLayout>

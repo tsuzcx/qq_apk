@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:theme="@style/p8" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="@color/afz" android:padding="@dimen/c5" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:id="@id/dxs" android:layout_width="0.0dip" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/cb" android:text="@string/dk1" android:layout_weight="1.0" style="@style/qs" />
+                <View android:layout_width="@dimen/cb" android:layout_height="wrap_content" />
+                <Button android:id="@id/gh2" android:layout_width="0.0dip" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/cb" android:text="@string/dk2" android:layout_weight="1.0" style="@style/qs" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:id="@id/gh4" android:layout_width="0.0dip" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/cb" android:text="@string/dk4" android:layout_weight="1.0" style="@style/qs" />
+                <View android:layout_width="@dimen/cb" android:layout_height="wrap_content" />
+                <Button android:id="@id/gh3" android:layout_width="0.0dip" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/cb" android:text="@string/dk3" android:layout_weight="1.0" style="@style/qs" />
+            </LinearLayout>
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:id="@id/dy9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

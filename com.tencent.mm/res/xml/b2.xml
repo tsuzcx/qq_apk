@@ -1,11 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference android:defaultValue="true" android:key="checkbox_preference_one" android:title="@string/hz6" />
-    <PreferenceFooterCategory android:key="preference_footer_1" android:title="@string/hz7" />
-    <CheckBoxPreference android:defaultValue="false" android:key="settings_message_mute" android:title="@string/hu9" />
-    <PreferenceFooterCategory android:key="settings_message_mute_desc" android:title="@string/hu8" />
-    <CheckBoxPreference android:defaultValue="false" android:key="feed_reproduction" android:title="@string/hyk" />
-    <PreferenceFooterCategory android:key="feed_reproduction_tips" android:title="@string/hym" />
-    <SummaryBelowPreference android:key="settings_blacklist" android:summary="@string/c90" android:title="@string/hhr" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory android:title="^_^" />
 </PreferenceScreen>

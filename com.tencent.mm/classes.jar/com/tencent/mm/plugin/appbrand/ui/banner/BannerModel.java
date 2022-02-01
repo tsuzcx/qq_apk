@@ -10,12 +10,12 @@ final class BannerModel
   implements Parcelable
 {
   public static final Parcelable.Creator<BannerModel> CREATOR;
-  private static volatile BannerModel mNl;
+  private static volatile BannerModel oay;
   String appId;
   String appName;
-  int hSZ;
-  String jTr;
-  String mNk;
+  int iOo;
+  String kVZ;
+  String oax;
   
   static
   {
@@ -30,20 +30,20 @@ final class BannerModel
   {
     AppMethodBeat.i(49037);
     this.appId = paramParcel.readString();
-    this.hSZ = paramParcel.readInt();
+    this.iOo = paramParcel.readInt();
     this.appName = paramParcel.readString();
-    this.jTr = paramParcel.readString();
-    this.mNk = paramParcel.readString();
+    this.kVZ = paramParcel.readString();
+    this.oax = paramParcel.readString();
     AppMethodBeat.o(49037);
   }
   
-  static BannerModel bBa()
+  static BannerModel bYe()
   {
     AppMethodBeat.i(49038);
     try
     {
-      BannerModel localBannerModel = ((e)g.ab(e.class)).bAR();
-      mNl = localBannerModel;
+      BannerModel localBannerModel = ((e)g.af(e.class)).bXW();
+      oay = localBannerModel;
       return localBannerModel;
     }
     finally
@@ -52,11 +52,11 @@ final class BannerModel
     }
   }
   
-  static BannerModel bBb()
+  static BannerModel bYf()
   {
     try
     {
-      BannerModel localBannerModel = mNl;
+      BannerModel localBannerModel = oay;
       return localBannerModel;
     }
     finally {}
@@ -71,16 +71,16 @@ final class BannerModel
   {
     AppMethodBeat.i(49036);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.hSZ);
+    paramParcel.writeInt(this.iOo);
     paramParcel.writeString(this.appName);
-    paramParcel.writeString(this.jTr);
-    paramParcel.writeString(this.mNk);
+    paramParcel.writeString(this.kVZ);
+    paramParcel.writeString(this.oax);
     AppMethodBeat.o(49036);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.banner.BannerModel
  * JD-Core Version:    0.7.0.1
  */

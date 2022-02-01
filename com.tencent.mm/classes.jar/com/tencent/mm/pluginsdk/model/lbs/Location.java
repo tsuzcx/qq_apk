@@ -4,17 +4,17 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class Location
   implements Parcelable
 {
   public static final Parcelable.Creator<Location> CREATOR;
   public int accuracy;
-  public int dBw;
-  public String dBy;
-  public float iab;
-  public float iac;
+  public int dTl;
+  public String dTn;
+  public float iUY;
+  public float iUZ;
   public String mac;
   
   static
@@ -28,12 +28,12 @@ public class Location
   
   public Location(float paramFloat1, float paramFloat2, int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    this.iab = paramFloat1;
-    this.iac = paramFloat2;
+    this.iUY = paramFloat1;
+    this.iUZ = paramFloat2;
     this.accuracy = paramInt1;
-    this.dBw = paramInt2;
+    this.dTl = paramInt2;
     this.mac = paramString1;
-    this.dBy = paramString2;
+    this.dTn = paramString2;
   }
   
   public int describeContents()
@@ -41,12 +41,12 @@ public class Location
     return 0;
   }
   
-  public final boolean fdY()
+  public final boolean gnj()
   {
     AppMethodBeat.i(151845);
-    if ((this.iab == -85.0F) || (this.iac == -1000.0F))
+    if ((this.iUY == -85.0F) || (this.iUZ == -1000.0F))
     {
-      ae.d("MicroMsg.Radar.Location", "mac and cellId is null");
+      Log.d("MicroMsg.Radar.Location", "mac and cellId is null");
       AppMethodBeat.o(151845);
       return true;
     }
@@ -57,18 +57,18 @@ public class Location
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(151846);
-    paramParcel.writeFloat(this.iab);
-    paramParcel.writeFloat(this.iac);
+    paramParcel.writeFloat(this.iUY);
+    paramParcel.writeFloat(this.iUZ);
     paramParcel.writeInt(this.accuracy);
-    paramParcel.writeInt(this.dBw);
+    paramParcel.writeInt(this.dTl);
     paramParcel.writeString(this.mac);
-    paramParcel.writeString(this.dBy);
+    paramParcel.writeString(this.dTn);
     AppMethodBeat.o(151846);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.lbs.Location
  * JD-Core Version:    0.7.0.1
  */

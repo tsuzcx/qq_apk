@@ -1,56 +1,37 @@
 package com.tencent.mm.network;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.l;
-import java.io.InputStream;
+import com.tencent.mm.network.a.b;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"runUse", "R", "T", "", "target", "asException", "block", "Lkotlin/Function1;", "(Ljava/lang/Object;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "use", "Lcom/tencent/mm/network/MMHttpUrlConnection;", "(Lcom/tencent/mm/network/MMHttpUrlConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "Lcom/tencent/mm/network/MMHttpUrlCronetConnection;", "(Lcom/tencent/mm/network/MMHttpUrlCronetConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "Lcom/tencent/mm/network/MMHttpsUrlConnection;", "(Lcom/tencent/mm/network/MMHttpsUrlConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "Ljava/net/URLConnection;", "(Ljava/net/URLConnection;Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)Ljava/lang/Object;", "mmkernel_release"})
 public final class ag
 {
-  public static final <T, R> R a(T paramT, b<? super T, ? extends R> paramb)
+  public b jFR = null;
+  public boolean jFS = false;
+  
+  public static boolean dl(Context paramContext)
   {
-    AppMethodBeat.i(193521);
-    try
+    AppMethodBeat.i(132931);
+    if ((paramContext != null) && (!NetStatusUtil.isWap(paramContext)))
     {
-      paramb = paramb.invoke(paramT);
+      AppMethodBeat.o(132931);
+      return true;
     }
-    catch (Throwable paramb)
+    AppMethodBeat.o(132931);
+    return false;
+  }
+  
+  public static boolean dm(Context paramContext)
+  {
+    AppMethodBeat.i(132932);
+    if ((paramContext != null) && (NetStatusUtil.isWifi(paramContext)))
     {
-      label29:
-      AppMethodBeat.o(193521);
-      throw paramb;
+      AppMethodBeat.o(132932);
+      return true;
     }
-    finally
-    {
-      try
-      {
-        InputStream localInputStream = ((x)paramT).getInputStream();
-        if (localInputStream != null) {
-          localInputStream.close();
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        break label68;
-      }
-      ((x)paramT).disconnect();
-      AppMethodBeat.o(193521);
-    }
-    try
-    {
-      localInputStream = ((x)paramT).getInputStream();
-      if (localInputStream != null) {
-        localInputStream.close();
-      }
-    }
-    catch (Throwable localThrowable2)
-    {
-      break label29;
-    }
-    ((x)paramT).disconnect();
-    AppMethodBeat.o(193521);
-    return paramb;
+    AppMethodBeat.o(132932);
+    return false;
   }
 }
 

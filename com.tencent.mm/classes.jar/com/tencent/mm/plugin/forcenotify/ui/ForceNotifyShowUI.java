@@ -20,45 +20,44 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.AppForegroundDelegate;
-import com.tencent.mm.av.q;
+import com.tencent.mm.app.o;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
-import com.tencent.mm.plugin.appbrand.service.o.a;
+import com.tencent.mm.plugin.appbrand.service.q.a;
 import com.tencent.mm.plugin.forcenotify.b.c;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.be;
-import com.tencent.mm.sdk.platformtools.be.b;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
-import d.g.b.p;
-import d.n.n;
-import d.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.PlaySound;
+import com.tencent.mm.sdk.platformtools.PlaySound.SPEAKERON;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
+import kotlin.g.b.p;
+import kotlin.n.n;
+import kotlin.t;
 
 @com.tencent.mm.ui.base.a(3)
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyShowUI;", "Lcom/tencent/mm/plugin/forcenotify/ui/BaseForceNotifyShowUI;", "Lcom/tencent/mm/app/IAppForegroundListener;", "()V", "UIHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "audioFocusChangeListener", "Landroid/media/AudioManager$OnAudioFocusChangeListener;", "info", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "mAudioManager", "Landroid/media/AudioManager;", "mSoundPlay", "Landroid/media/MediaPlayer;", "mVibrator", "Landroid/os/Vibrator;", "stopSoundRunnable", "Ljava/lang/Runnable;", "getLayoutId", "", "onAppBackground", "", "activity", "", "onAppForeground", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "", "keyCode", "event", "Landroid/view/KeyEvent;", "onPause", "onResume", "onStart", "onStop", "reset", "setBlurBg", "view", "Landroid/view/View;", "plugin-force-notify_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/forcenotify/ui/ForceNotifyShowUI;", "Lcom/tencent/mm/plugin/forcenotify/ui/BaseForceNotifyShowUI;", "Lcom/tencent/mm/app/IAppForegroundListener;", "()V", "UIHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "audioFocusChangeListener", "Landroid/media/AudioManager$OnAudioFocusChangeListener;", "info", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "mAudioManager", "Landroid/media/AudioManager;", "mSoundPlay", "Landroid/media/MediaPlayer;", "mVibrator", "Landroid/os/Vibrator;", "stopSoundRunnable", "Ljava/lang/Runnable;", "getLayoutId", "", "onAppBackground", "", "activity", "", "onAppForeground", "onBackPressed", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onKeyDown", "", "keyCode", "event", "Landroid/view/KeyEvent;", "onPause", "onResume", "onStart", "onStop", "reset", "setBlurBg", "view", "Landroid/view/View;", "plugin-force-notify_release"})
 public final class ForceNotifyShowUI
   extends BaseForceNotifyShowUI
-  implements com.tencent.mm.app.o
+  implements o
 {
   private AudioManager.OnAudioFocusChangeListener audioFocusChangeListener;
   private AudioManager mAudioManager;
-  private Vibrator mZD;
-  private MediaPlayer tvm;
-  private Runnable tvn;
-  private final aq tvo;
-  private com.tencent.mm.plugin.forcenotify.c.d tvp;
+  private Vibrator ooM;
+  private MediaPlayer wMs;
+  private Runnable wMt;
+  private final MMHandler wMu;
+  private com.tencent.mm.plugin.forcenotify.c.d wMv;
   
   public ForceNotifyShowUI()
   {
     AppMethodBeat.i(149247);
-    this.tvo = new aq(Looper.getMainLooper());
-    this.tvp = new com.tencent.mm.plugin.forcenotify.c.d();
+    this.wMu = new MMHandler(Looper.getMainLooper());
+    this.wMv = new com.tencent.mm.plugin.forcenotify.c.d();
     AppMethodBeat.o(149247);
   }
   
@@ -70,7 +69,7 @@ public final class ForceNotifyShowUI
     localObject = ((Window)localObject).getDecorView();
     p.g(localObject, "window.decorView");
     ((View)localObject).setKeepScreenOn(false);
-    this.tvo.removeCallbacksAndMessages(null);
+    this.wMu.removeCallbacksAndMessages(null);
     localObject = this.mAudioManager;
     if (localObject != null) {
       ((AudioManager)localObject).abandonAudioFocus(this.audioFocusChangeListener);
@@ -79,25 +78,25 @@ public final class ForceNotifyShowUI
     {
       localObject = getWindow();
       p.g(localObject, "window");
-      ((Window)localObject).getDecorView().removeCallbacks(this.tvn);
-      localObject = this.tvn;
+      ((Window)localObject).getDecorView().removeCallbacks(this.wMt);
+      localObject = this.wMt;
       if (localObject != null) {
         ((Runnable)localObject).run();
       }
-      this.tvn = null;
+      this.wMt = null;
       AppMethodBeat.o(149246);
       return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
-      ae.printErrStackTrace(this.TAG, (Throwable)localIllegalStateException, "", new Object[0]);
+      Log.printErrStackTrace(this.TAG, (Throwable)localIllegalStateException, "", new Object[0]);
       AppMethodBeat.o(149246);
     }
   }
   
   public final int getLayoutId()
   {
-    return 2131494166;
+    return 2131494721;
   }
   
   public final void onAppBackground(String paramString)
@@ -113,9 +112,9 @@ public final class ForceNotifyShowUI
   {
     AppMethodBeat.i(149238);
     super.onBackPressed();
-    ae.i(this.TAG, "[onBackPressed]");
-    String str = String.valueOf(this.tvp.field_CreateTime / 1000L) + this.tvp.field_UserName;
-    ((com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class)).f(this.tvp.field_ForcePushId, str, 8, ch.aDb() / 1000L);
+    Log.i(this.TAG, "[onBackPressed]");
+    String str = String.valueOf(this.wMv.field_CreateTime / 1000L) + this.wMv.field_UserName;
+    ((com.tencent.mm.plugin.forcenotify.a.a)g.af(com.tencent.mm.plugin.forcenotify.a.a.class)).f(this.wMv.field_ForcePushId, str, 8, cl.aWz() / 1000L);
     AppMethodBeat.o(149238);
   }
   
@@ -123,20 +122,20 @@ public final class ForceNotifyShowUI
   {
     AppMethodBeat.i(149237);
     super.onCreate(paramBundle);
-    com.tencent.mm.util.d.evs();
-    ae.i(this.TAG, "[onCreate] username=" + this.username);
+    com.tencent.mm.util.d.fAL();
+    Log.i(this.TAG, "[onCreate] username=" + this.username);
     paramBundle = this.username;
     Object localObject1;
     if (paramBundle != null)
     {
-      localObject1 = com.tencent.mm.plugin.forcenotify.d.a.tuN;
-      this.tvp = com.tencent.mm.plugin.forcenotify.d.a.akB(paramBundle);
+      localObject1 = com.tencent.mm.plugin.forcenotify.d.a.wLU;
+      this.wMv = com.tencent.mm.plugin.forcenotify.d.a.axG(paramBundle);
     }
-    AppForegroundDelegate.cTA.a((com.tencent.mm.app.o)this);
+    AppForegroundDelegate.djR.a((o)this);
     paramBundle = getSystemService("audio");
     if (paramBundle == null)
     {
-      paramBundle = new v("null cannot be cast to non-null type android.media.AudioManager");
+      paramBundle = new t("null cannot be cast to non-null type android.media.AudioManager");
       AppMethodBeat.o(149237);
       throw paramBundle;
     }
@@ -144,11 +143,11 @@ public final class ForceNotifyShowUI
     paramBundle = getContext().getSystemService("vibrator");
     if (paramBundle == null)
     {
-      paramBundle = new v("null cannot be cast to non-null type android.os.Vibrator");
+      paramBundle = new t("null cannot be cast to non-null type android.os.Vibrator");
       AppMethodBeat.o(149237);
       throw paramBundle;
     }
-    this.mZD = ((Vibrator)paramBundle);
+    this.ooM = ((Vibrator)paramBundle);
     paramBundle = this.mAudioManager;
     label189:
     Object localObject2;
@@ -159,118 +158,118 @@ public final class ForceNotifyShowUI
       paramBundle = Integer.valueOf(paramBundle.getVibrateSetting(1));
       localObject1 = this.mAudioManager;
       if (localObject1 == null) {
-        break label681;
+        break label682;
       }
       localObject1 = Integer.valueOf(((AudioManager)localObject1).getVibrateSetting(0));
       localObject2 = this.mAudioManager;
       if (localObject2 == null) {
-        break label686;
+        break label687;
       }
       localObject2 = Integer.valueOf(((AudioManager)localObject2).getRingerMode());
-      ae.i(this.TAG, "V:%s V1:%s  R:%s", new Object[] { paramBundle, localObject1, localObject2 });
-      this.audioFocusChangeListener = ((AudioManager.OnAudioFocusChangeListener)b.tvr);
+      Log.i(this.TAG, "V:%s V1:%s  R:%s", new Object[] { paramBundle, localObject1, localObject2 });
+      this.audioFocusChangeListener = ((AudioManager.OnAudioFocusChangeListener)b.wMx);
       paramBundle = this.mAudioManager;
       if (paramBundle == null) {
-        break label692;
+        break label693;
       }
       paramBundle = Integer.valueOf(paramBundle.requestAudioFocus(this.audioFocusChangeListener, 3, 2));
       label270:
-      this.tvo.postDelayed((Runnable)new c(this), 1000L);
+      this.wMu.postDelayed((Runnable)new c(this), 1000L);
       localObject1 = getWindow();
       p.g(localObject1, "window");
       localObject1 = ((Window)localObject1).getDecorView();
       p.g(localObject1, "window.decorView");
       ((View)localObject1).setKeepScreenOn(true);
-      p.g(findViewById(2131298739), "findViewById(R.id.content)");
-      getWindow().setBackgroundDrawable((Drawable)new ColorDrawable(getResources().getColor(2131100384)));
-      ae.i(this.TAG, "[onCreate] username:%s requestAudioFocus:%s", new Object[] { this.username, paramBundle });
-      localObject1 = (TextView)findViewById(2131302867);
-      paramBundle = (ImageView)findViewById(2131297008);
-      findViewById(2131300872).setOnClickListener((View.OnClickListener)new d(this));
-      this.tvn = ((Runnable)new e(this));
-      this.tvo.postDelayed(this.tvn, 60000L);
-      localObject2 = (CharSequence)this.tvp.field_ForcePushId;
+      p.g(findViewById(2131299180), "findViewById(R.id.content)");
+      getWindow().setBackgroundDrawable((Drawable)new ColorDrawable(getResources().getColor(2131100484)));
+      Log.i(this.TAG, "[onCreate] username:%s requestAudioFocus:%s", new Object[] { this.username, paramBundle });
+      localObject1 = (TextView)findViewById(2131305440);
+      paramBundle = (ImageView)findViewById(2131297134);
+      findViewById(2131302466).setOnClickListener((View.OnClickListener)new d(this));
+      this.wMt = ((Runnable)new e(this));
+      this.wMu.postDelayed(this.wMt, 60000L);
+      localObject2 = (CharSequence)this.wMv.field_ForcePushId;
       if ((localObject2 != null) && (((CharSequence)localObject2).length() != 0)) {
-        break label697;
+        break label698;
       }
       i = 1;
       label486:
       if (i != 0) {
-        break label702;
+        break label703;
       }
-      localObject2 = this.tvp.field_ForcePushId;
+      localObject2 = this.wMv.field_ForcePushId;
       p.g(localObject2, "info.field_ForcePushId");
-      if (!n.nG((String)localObject2, "@miniapp")) {
-        break label702;
+      if (!n.K((String)localObject2, "@miniapp", false)) {
+        break label703;
       }
-      ((com.tencent.mm.plugin.appbrand.service.o)g.ab(com.tencent.mm.plugin.appbrand.service.o.class)).a(this.username, (o.a)new f(this, paramBundle, (TextView)localObject1));
-      paramBundle = (com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class);
+      ((com.tencent.mm.plugin.appbrand.service.q)g.af(com.tencent.mm.plugin.appbrand.service.q.class)).a(this.username, (q.a)new f(this, paramBundle, (TextView)localObject1));
+      paramBundle = (com.tencent.mm.plugin.forcenotify.a.a)g.af(com.tencent.mm.plugin.forcenotify.a.a.class);
       localObject1 = this.username;
-      localObject2 = c.tuL;
+      localObject2 = c.wLS;
       localObject2 = getContext();
       p.g(localObject2, "context");
-      if (!c.fl((Context)localObject2)) {
-        break label829;
+      if (!c.fR((Context)localObject2)) {
+        break label830;
       }
-      localObject2 = c.tuL;
+      localObject2 = c.wLS;
       localObject2 = getContext();
       p.g(localObject2, "context");
-      if (!c.fm((Context)localObject2)) {
-        break label824;
+      if (!c.fS((Context)localObject2)) {
+        break label825;
       }
       i = 1;
     }
     for (;;)
     {
-      paramBundle.B((String)localObject1, i, ch.aDb() / 1000L);
+      paramBundle.A((String)localObject1, i, cl.aWz() / 1000L);
       if (this.username != null)
       {
-        paramBundle = com.tencent.mm.plugin.forcenotify.d.a.tuN;
+        paramBundle = com.tencent.mm.plugin.forcenotify.d.a.wLU;
         localObject1 = this.username;
         if (localObject1 == null) {
-          p.gkB();
+          p.hyc();
         }
-        paramBundle.Dc((String)localObject1);
+        paramBundle.gC((String)localObject1);
       }
       AppMethodBeat.o(149237);
       return;
       paramBundle = null;
       break;
-      label681:
+      label682:
       localObject1 = null;
       break label189;
-      label686:
+      label687:
       localObject2 = null;
       break label210;
-      label692:
+      label693:
       paramBundle = null;
       break label270;
-      label697:
+      label698:
       i = 0;
       break label486;
-      label702:
-      localObject2 = this.tvp;
-      com.tencent.mm.kernel.c.a locala = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+      label703:
+      localObject2 = this.wMv;
+      com.tencent.mm.kernel.c.a locala = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
       p.g(locala, "MMKernel.service(IMessengerStorage::class.java)");
-      ((com.tencent.mm.plugin.forcenotify.c.d)localObject2).contact = ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).azF().BH(this.username);
+      ((com.tencent.mm.plugin.forcenotify.c.d)localObject2).contact = ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).aSN().Kn(this.username);
       a.b.d(paramBundle, this.username, 0.1F);
       p.g(localObject1, "titleView");
       localObject2 = (Context)getContext();
-      paramBundle = this.tvp.contact;
+      paramBundle = this.wMv.contact;
       if (paramBundle != null) {}
-      for (paramBundle = paramBundle.adG();; paramBundle = null)
+      for (paramBundle = paramBundle.arJ();; paramBundle = null)
       {
-        ((TextView)localObject1).setText((CharSequence)k.a((Context)localObject2, (CharSequence)paramBundle, (int)((TextView)localObject1).getTextSize(), 0, null, null));
+        ((TextView)localObject1).setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.a((Context)localObject2, (CharSequence)paramBundle, (int)((TextView)localObject1).getTextSize(), 0, null, null));
         break;
       }
-      label824:
+      label825:
       i = 4;
       continue;
-      label829:
-      localObject2 = c.tuL;
+      label830:
+      localObject2 = c.wLS;
       localObject2 = getContext();
       p.g(localObject2, "context");
-      if (c.fm((Context)localObject2)) {
+      if (c.fS((Context)localObject2)) {
         i = 3;
       } else {
         i = 2;
@@ -283,11 +282,11 @@ public final class ForceNotifyShowUI
     AppMethodBeat.i(149245);
     super.onDestroy();
     reset();
-    String str = this.tvp.field_ForcePushId;
+    String str = this.wMv.field_ForcePushId;
     if (str != null) {
-      com.tencent.mm.plugin.forcenotify.d.a.tuN.Dc(str);
+      com.tencent.mm.plugin.forcenotify.d.a.wLU.gC(str);
     }
-    AppForegroundDelegate.cTA.b((com.tencent.mm.app.o)this);
+    AppForegroundDelegate.djR.b((o)this);
     AppMethodBeat.o(149245);
   }
   
@@ -295,7 +294,7 @@ public final class ForceNotifyShowUI
   {
     AppMethodBeat.i(149240);
     p.h(paramKeyEvent, "event");
-    ae.i(this.TAG, "[onKeyDown] keyCode:".concat(String.valueOf(paramInt)));
+    Log.i(this.TAG, "[onKeyDown] keyCode:".concat(String.valueOf(paramInt)));
     reset();
     boolean bool = super.onKeyDown(paramInt, paramKeyEvent);
     AppMethodBeat.o(149240);
@@ -306,7 +305,7 @@ public final class ForceNotifyShowUI
   {
     AppMethodBeat.i(149243);
     super.onPause();
-    ae.i(this.TAG, "onPause");
+    Log.i(this.TAG, "onPause");
     AppMethodBeat.o(149243);
   }
   
@@ -314,7 +313,7 @@ public final class ForceNotifyShowUI
   {
     AppMethodBeat.i(149242);
     super.onResume();
-    ae.i(this.TAG, "onResume");
+    Log.i(this.TAG, "onResume");
     AppMethodBeat.o(149242);
   }
   
@@ -322,7 +321,7 @@ public final class ForceNotifyShowUI
   {
     AppMethodBeat.i(149241);
     super.onStart();
-    ae.i(this.TAG, "onStart");
+    Log.i(this.TAG, "onStart");
     AppMethodBeat.o(149241);
   }
   
@@ -330,7 +329,7 @@ public final class ForceNotifyShowUI
   {
     AppMethodBeat.i(149244);
     super.onStop();
-    ae.i(this.TAG, "onStop");
+    Log.i(this.TAG, "onStop");
     reset();
     AppMethodBeat.o(149244);
   }
@@ -341,7 +340,7 @@ public final class ForceNotifyShowUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -350,28 +349,28 @@ public final class ForceNotifyShowUI
     public final void run()
     {
       AppMethodBeat.i(149230);
-      ForceNotifyShowUI.d(this.tvq);
+      ForceNotifyShowUI.d(this.wMw);
       AppMethodBeat.o(149230);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "onAudioFocusChange"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "onAudioFocusChange"})
   static final class b
     implements AudioManager.OnAudioFocusChangeListener
   {
-    public static final b tvr;
+    public static final b wMx;
     
     static
     {
       AppMethodBeat.i(149231);
-      tvr = new b();
+      wMx = new b();
       AppMethodBeat.o(149231);
     }
     
     public final void onAudioFocusChange(int paramInt) {}
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -380,20 +379,20 @@ public final class ForceNotifyShowUI
     public final void run()
     {
       AppMethodBeat.i(149232);
-      Object localObject = c.tuL;
-      localObject = this.tvq.getContext();
+      Object localObject = c.wLS;
+      localObject = this.wMw.getContext();
       p.g(localObject, "context");
-      if (!c.fl((Context)localObject)) {
-        ForceNotifyShowUI.a(this.tvq, be.a((Context)this.tvq.getContext(), 2131759601, be.b.Izy, 2, true, null));
+      if (!c.fR((Context)localObject)) {
+        ForceNotifyShowUI.a(this.wMw, PlaySound.playRoot((Context)this.wMw.getContext(), 2131760922, PlaySound.SPEAKERON.NOTSET, 2, true, null));
       }
-      localObject = c.tuL;
-      localObject = this.tvq.getContext();
+      localObject = c.wLS;
+      localObject = this.wMw.getContext();
       p.g(localObject, "context");
-      if (c.fm((Context)localObject))
+      if (c.fS((Context)localObject))
       {
-        localObject = ForceNotifyShowUI.b(this.tvq);
+        localObject = ForceNotifyShowUI.b(this.wMw);
         if (localObject == null) {
-          p.gkB();
+          p.hyc();
         }
         ((Vibrator)localObject).vibrate(new long[] { 1000L, 1000L, 1000L, 1000L }, 0);
       }
@@ -401,7 +400,7 @@ public final class ForceNotifyShowUI
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -411,21 +410,21 @@ public final class ForceNotifyShowUI
     {
       AppMethodBeat.i(149233);
       b localb = new b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/forcenotify/ui/ForceNotifyShowUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      if (ForceNotifyShowUI.c(this.tvq).field_CreateTime > 0L)
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/forcenotify/ui/ForceNotifyShowUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      if (ForceNotifyShowUI.c(this.wMw).field_CreateTime > 0L)
       {
-        paramView = String.valueOf(ForceNotifyShowUI.c(this.tvq).field_CreateTime / 1000L) + ForceNotifyShowUI.c(this.tvq).field_UserName;
-        ((com.tencent.mm.plugin.forcenotify.a.a)g.ab(com.tencent.mm.plugin.forcenotify.a.a.class)).f(ForceNotifyShowUI.c(this.tvq).field_ForcePushId, paramView, 2, ch.aDb() / 1000L);
+        paramView = String.valueOf(ForceNotifyShowUI.c(this.wMw).field_CreateTime / 1000L) + ForceNotifyShowUI.c(this.wMw).field_UserName;
+        ((com.tencent.mm.plugin.forcenotify.a.a)g.af(com.tencent.mm.plugin.forcenotify.a.a.class)).f(ForceNotifyShowUI.c(this.wMw).field_ForcePushId, paramView, 2, cl.aWz() / 1000L);
       }
-      this.tvq.finish();
-      this.tvq.overridePendingTransition(0, 2130772106);
+      this.wMw.finish();
+      this.wMw.overridePendingTransition(0, 2130772130);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/forcenotify/ui/ForceNotifyShowUI$onCreate$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(149233);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class e
     implements Runnable
   {
@@ -436,19 +435,19 @@ public final class ForceNotifyShowUI
       AppMethodBeat.i(149234);
       try
       {
-        Object localObject = ForceNotifyShowUI.b(this.tvq);
+        Object localObject = ForceNotifyShowUI.b(this.wMw);
         if (localObject != null) {
           ((Vibrator)localObject).cancel();
         }
-        localObject = ForceNotifyShowUI.a(this.tvq);
+        localObject = ForceNotifyShowUI.a(this.wMw);
         if (localObject != null) {
           ((MediaPlayer)localObject).stop();
         }
-        localObject = ForceNotifyShowUI.a(this.tvq);
+        localObject = ForceNotifyShowUI.a(this.wMw);
         if (localObject != null) {
           ((MediaPlayer)localObject).release();
         }
-        localObject = this.tvq.getWindow();
+        localObject = this.wMw.getWindow();
         p.g(localObject, "window");
         localObject = ((Window)localObject).getDecorView();
         p.g(localObject, "window.decorView");
@@ -463,34 +462,34 @@ public final class ForceNotifyShowUI
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "kotlin.jvm.PlatformType", "onGetWeAppInfo"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/appbrand/config/WxaAttributes;", "kotlin.jvm.PlatformType", "onGetWeAppInfo"})
   static final class f
-    implements o.a
+    implements q.a
   {
     f(ForceNotifyShowUI paramForceNotifyShowUI, ImageView paramImageView, TextView paramTextView) {}
     
     public final void b(final WxaAttributes paramWxaAttributes)
     {
       AppMethodBeat.i(149236);
-      ae.i(this.tvq.TAG, "getOrSync result=".concat(String.valueOf(paramWxaAttributes)));
+      Log.i(this.wMw.TAG, "getOrSync result=".concat(String.valueOf(paramWxaAttributes)));
       if (paramWxaAttributes == null)
       {
         AppMethodBeat.o(149236);
         return;
       }
-      ar.f((Runnable)new Runnable()
+      MMHandlerThread.postToMainThread((Runnable)new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(149235);
-          q.aJb().loadImage(this.tvc, this.tvu.tvs);
-          TextView localTextView1 = this.tvu.tvt;
+          com.tencent.mm.av.q.bcV().loadImage(this.wMi, this.wMz.tEl);
+          TextView localTextView1 = this.wMz.wMy;
           p.g(localTextView1, "titleView");
-          Context localContext = (Context)this.tvu.tvq.getContext();
+          Context localContext = (Context)this.wMz.wMw.getContext();
           CharSequence localCharSequence = (CharSequence)paramWxaAttributes.field_nickname;
-          TextView localTextView2 = this.tvu.tvt;
+          TextView localTextView2 = this.wMz.wMy;
           p.g(localTextView2, "titleView");
-          localTextView1.setText((CharSequence)k.a(localContext, localCharSequence, (int)localTextView2.getTextSize(), 0, null, null));
+          localTextView1.setText((CharSequence)com.tencent.mm.pluginsdk.ui.span.l.a(localContext, localCharSequence, (int)localTextView2.getTextSize(), 0, null, null));
           AppMethodBeat.o(149235);
         }
       });
@@ -500,7 +499,7 @@ public final class ForceNotifyShowUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.ui.ForceNotifyShowUI
  * JD-Core Version:    0.7.0.1
  */

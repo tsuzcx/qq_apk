@@ -7,38 +7,30 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.conv.c;
 import com.tencent.mm.plugin.finder.conv.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.LinkedList;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationXXUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "()V", "tipDialog", "Landroid/app/ProgressDialog;", "getTipDialog", "()Landroid/app/ProgressDialog;", "setTipDialog", "(Landroid/app/ProgressDialog;)V", "doSomethingOnConvDel", "", "getLayoutId", "", "getTitleResId", "isLastHiSession", "", "onChattingUIExit", "showMoreSheet", "updateActionBar", "talkerType", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationXXUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "()V", "tipDialog", "Landroid/app/ProgressDialog;", "getTipDialog", "()Landroid/app/ProgressDialog;", "setTipDialog", "(Landroid/app/ProgressDialog;)V", "doSomethingOnConvDel", "", "getLayoutId", "", "getTitleResId", "isLastHiSession", "", "onChattingUIExit", "showMoreSheet", "updateActionBar", "talkerType", "plugin-finder_release"})
 public final class FinderConversationXXUI
   extends FinderConversationParentUI
 {
   private HashMap _$_findViewCache;
-  private ProgressDialog fOC;
+  private ProgressDialog gtM;
   
-  public final boolean ZL()
+  public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(204538);
-    if ((this.sLZ.oeJ.size() == 1) && (((c)this.sLZ.oeJ.get(0)).field_type != 1)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      setResult(1);
-      finish();
-      overridePendingTransition(0, 0);
-      AppMethodBeat.o(204538);
-      return true;
+    AppMethodBeat.i(252236);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
     }
-    boolean bool = super.ZL();
-    AppMethodBeat.o(204538);
-    return bool;
+    AppMethodBeat.o(252236);
   }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204539);
+    AppMethodBeat.i(252235);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -49,40 +41,57 @@ public final class FinderConversationXXUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204539);
+    AppMethodBeat.o(252235);
     return localView1;
   }
   
-  public final void cMb()
+  public final boolean any()
   {
-    AppMethodBeat.i(204537);
-    ProgressDialog localProgressDialog = this.fOC;
+    AppMethodBeat.i(252234);
+    if ((this.vHP.ppH.size() == 1) && (((c)this.vHP.ppH.get(0)).field_type != 1)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      setResult(1);
+      finish();
+      overridePendingTransition(0, 0);
+      AppMethodBeat.o(252234);
+      return true;
+    }
+    boolean bool = super.any();
+    AppMethodBeat.o(252234);
+    return bool;
+  }
+  
+  public final void dyZ()
+  {
+    AppMethodBeat.i(252233);
+    ProgressDialog localProgressDialog = this.gtM;
     if (localProgressDialog != null)
     {
-      ae.i("Finder.FinderConversationParentUI", "datasize " + this.sLZ.oeJ.isEmpty());
-      if ((this.sLZ.oeJ.isEmpty()) && (localProgressDialog.isShowing()))
+      Log.i("Finder.FinderConversationParentUI", "datasize " + this.vHP.ppH.isEmpty());
+      if ((this.vHP.ppH.isEmpty()) && (localProgressDialog.isShowing()))
       {
-        ae.i("Finder.FinderConversationParentUI", "clear hello conv finish");
-        localProgressDialog = this.fOC;
+        Log.i("Finder.FinderConversationParentUI", "clear hello conv finish");
+        localProgressDialog = this.gtM;
         if (localProgressDialog != null) {
           localProgressDialog.dismiss();
         }
-        this.fOC = null;
+        this.gtM = null;
       }
-      AppMethodBeat.o(204537);
+      AppMethodBeat.o(252233);
       return;
     }
-    AppMethodBeat.o(204537);
+    AppMethodBeat.o(252233);
   }
   
-  public final int cMd()
+  public final int dzb()
   {
-    return 2131766544;
+    return 2131759619;
   }
   
   public final int getLayoutId()
   {
-    return 2131496390;
+    return 2131494231;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

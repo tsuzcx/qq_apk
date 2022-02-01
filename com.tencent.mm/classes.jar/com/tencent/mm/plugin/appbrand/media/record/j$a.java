@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.appbrand.media.record;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 
 final class j$a
   implements j.b
 {
-  public final void D(ArrayList<IDKey> paramArrayList)
+  public final void J(ArrayList<IDKey> paramArrayList)
   {
     AppMethodBeat.i(146332);
-    ae.v("Luggage.RecordStat", "lstIdKeyDataInfos:%s, isImportant:%b", new Object[] { paramArrayList, Boolean.TRUE });
+    Log.v("Luggage.RecordStat", "lstIdKeyDataInfos:%s, isImportant:%b", new Object[] { paramArrayList, Boolean.TRUE });
     AppMethodBeat.o(146332);
   }
   
-  public final void rd(long paramLong)
+  public final void yU(long paramLong)
   {
     AppMethodBeat.i(146331);
-    ae.v("Luggage.RecordStat", "ID:%d, key:%d, val:%d, isImportant:%b", new Object[] { Long.valueOf(689L), Long.valueOf(paramLong), Long.valueOf(1L), Boolean.TRUE });
+    Log.v("Luggage.RecordStat", "ID:%d, key:%d, val:%d, isImportant:%b", new Object[] { Long.valueOf(689L), Long.valueOf(paramLong), Long.valueOf(1L), Boolean.TRUE });
     AppMethodBeat.o(146331);
   }
 }

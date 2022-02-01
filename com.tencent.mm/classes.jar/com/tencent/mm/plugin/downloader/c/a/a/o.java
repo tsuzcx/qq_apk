@@ -7,34 +7,34 @@ public final class o
 {
   public int limit;
   public int offset;
-  public long pqD;
+  public long qGi;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(153057);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.offset);
-      paramVarArgs.aS(2, this.limit);
-      paramVarArgs.aZ(3, this.pqD);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.offset);
+      paramVarArgs.aM(2, this.limit);
+      paramVarArgs.bb(3, this.qGi);
       AppMethodBeat.o(153057);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.offset);
-      int i = f.a.a.b.b.a.bz(2, this.limit);
-      int j = f.a.a.b.b.a.p(3, this.pqD);
+      paramInt = g.a.a.b.b.a.bu(1, this.offset);
+      int i = g.a.a.b.b.a.bu(2, this.limit);
+      int j = g.a.a.b.b.a.r(3, this.qGi);
       AppMethodBeat.o(153057);
       return paramInt + 0 + i + j;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(153057);
@@ -42,7 +42,7 @@ public final class o
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       o localo = (o)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -50,15 +50,15 @@ public final class o
         AppMethodBeat.o(153057);
         return -1;
       case 1: 
-        localo.offset = locala.OmT.zc();
+        localo.offset = locala.UbS.zi();
         AppMethodBeat.o(153057);
         return 0;
       case 2: 
-        localo.limit = locala.OmT.zc();
+        localo.limit = locala.UbS.zi();
         AppMethodBeat.o(153057);
         return 0;
       }
-      localo.pqD = locala.OmT.zd();
+      localo.qGi = locala.UbS.zl();
       AppMethodBeat.o(153057);
       return 0;
     }

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_below="@id/ao5" style="@style/go"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/o5" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gp">
-        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
-        <com.tencent.mm.ui.widget.MMTextView android:id="@id/ala" android:background="@drawable/l8" android:maxWidth="@dimen/w9" android:minHeight="@dimen/aa" style="@style/h0" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/b02" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="@dimen/c3" android:layout_height="@dimen/c3">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:id="@id/irc" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:src="@raw/toast_ok" app:iconColor="@color/am" />
+        <TextView android:textSize="@dimen/t" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/ird" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:layout_marginRight="@dimen/c5" android:maxLines="2" />
     </LinearLayout>
 </LinearLayout>

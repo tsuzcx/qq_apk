@@ -1,54 +1,51 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.d.a;
 import com.tencent.mm.bw.a;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.ati;
-import com.tencent.mm.protocal.protobuf.atj;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.protocal.protobuf.atq;
+import com.tencent.mm.protocal.protobuf.atr;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Collection;
+import java.util.LinkedList;
+import java.util.List;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderUtils;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderUtilsResp;", "type", "", "url", "", "(ILjava/lang/String;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderUtilsReq;", "getType", "()I", "getUrl", "()Ljava/lang/String;", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderGetSvrExptConfig;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetSvrExptConfigResponse;", "exptIds", "", "", "(Ljava/util/List;)V", "TAG", "", "request", "Lcom/tencent/mm/protocal/protobuf/FinderGetSvrExptConfigRequest;", "onCgiEnd", "", "errType", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-finder_release"})
 public final class o
-  extends w<atj>
+  extends an<atr>
 {
   private final String TAG;
-  private ati rQL;
-  private final int type;
-  private final String url;
+  private atq tti;
   
-  public o(String paramString)
+  public o(List<Integer> paramList)
   {
     super(null);
-    AppMethodBeat.i(201490);
-    this.type = 1;
-    this.url = paramString;
-    this.TAG = "Finder.CgiFinderUtils";
-    this.rQL = new ati();
-    paramString = this.rQL;
-    Object localObject = v.rRb;
-    paramString.GEg = v.a(this.rQw);
-    this.rQL.username = com.tencent.mm.model.v.aAK();
-    this.rQL.type = this.type;
-    this.rQL.url = this.url;
-    paramString = new b.a();
-    paramString.c((a)this.rQL);
-    localObject = new atj();
-    ((atj)localObject).setBaseResponse(new BaseResponse());
-    ((atj)localObject).getBaseResponse().ErrMsg = new cxn();
-    paramString.d((a)localObject);
-    paramString.DN("/cgi-bin/micromsg-bin/finderutils");
-    paramString.oS(4046);
-    c(paramString.aDS());
-    ae.i(this.TAG, "init type:" + this.type + ", url:" + this.url);
-    AppMethodBeat.o(201490);
+    AppMethodBeat.i(242232);
+    this.TAG = "Finder.CgiFinderGetSvrExptConfig";
+    this.tti = new atq();
+    Object localObject = this.tti;
+    am localam = am.tuw;
+    ((atq)localObject).LBM = am.a(this.ttO);
+    this.tti.LEB.addAll((Collection)paramList);
+    paramList = new d.a();
+    paramList.c((a)this.tti);
+    localObject = new atr();
+    ((atr)localObject).setBaseResponse(new BaseResponse());
+    ((atr)localObject).getBaseResponse().ErrMsg = new dqi();
+    paramList.d((a)localObject);
+    paramList.MB("/cgi-bin/micromsg-bin/findergetsvrexptconfig");
+    paramList.sG(5864);
+    c(paramList.aXF());
+    Log.i(this.TAG, "init");
+    AppMethodBeat.o(242232);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.o
  * JD-Core Version:    0.7.0.1
  */

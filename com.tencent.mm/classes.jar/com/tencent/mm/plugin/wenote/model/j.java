@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.wenote.model;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qi;
-import com.tencent.mm.g.a.qi.b;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.w;
+import com.tencent.mm.g.a.rc;
+import com.tencent.mm.g.a.rc.b;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.wenote.model.a.m;
 import com.tencent.mm.plugin.wenote.model.a.o;
 import com.tencent.mm.plugin.wenote.model.a.s;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.k;
-import com.tencent.mm.protocal.b.a.c;
-import com.tencent.mm.protocal.protobuf.ajx;
-import com.tencent.mm.protocal.protobuf.ajy;
-import com.tencent.mm.protocal.protobuf.ajz;
-import com.tencent.mm.protocal.protobuf.akh;
-import com.tencent.mm.protocal.protobuf.akp;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.protocal.protobuf.amm;
+import com.tencent.mm.protocal.protobuf.amn;
+import com.tencent.mm.protocal.protobuf.amv;
+import com.tencent.mm.protocal.protobuf.and;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -29,129 +29,135 @@ import java.util.LinkedList;
 public final class j
   extends d
 {
-  private static HashMap<String, m> ERQ;
-  private Long ERO;
-  private boolean ERP;
-  private int ERr;
-  private String ERs;
-  private int dCr;
-  private boolean dCy;
-  private String dDn;
-  private akp dum;
-  private c xHY;
+  private static HashMap<String, m> JHD;
+  private com.tencent.mm.protocal.b.a.c BHZ;
+  private Long JHB;
+  private boolean JHC;
+  private int JHd;
+  private String JHe;
+  private byte[] JHj;
+  private and dLx;
+  private int dUh;
+  private boolean dUo;
+  private String dVc;
   
   static
   {
     AppMethodBeat.i(30356);
-    ERQ = new HashMap();
+    JHD = new HashMap();
     AppMethodBeat.o(30356);
   }
   
   public j()
   {
     AppMethodBeat.i(30344);
-    this.xHY = null;
-    this.dCr = 0;
-    this.ERr = 0;
-    this.ERP = false;
-    this.dum = new akp();
-    this.ERe.clear();
-    e.cxF();
+    this.BHZ = null;
+    this.dUh = 0;
+    this.JHd = 0;
+    this.JHC = false;
+    this.dLx = new and();
+    this.JHj = null;
+    this.JGQ.clear();
+    e.cVJ();
     AppMethodBeat.o(30344);
   }
   
-  private static c awG(String paramString)
+  private static com.tencent.mm.protocal.b.a.c aKY(String paramString)
   {
     AppMethodBeat.i(30347);
-    qi localqi = new qi();
-    localqi.dFS.type = 0;
-    localqi.dFS.dFU = paramString;
-    a.IvT.l(localqi);
-    paramString = localqi.dFT.dGd;
+    rc localrc = new rc();
+    localrc.dXF.type = 0;
+    localrc.dXF.dXH = paramString;
+    EventCenter.instance.publish(localrc);
+    paramString = localrc.dXG.dXP;
     AppMethodBeat.o(30347);
     return paramString;
   }
   
-  private void hm(Context paramContext)
+  private void ig(Context paramContext)
   {
     AppMethodBeat.i(30346);
     Intent localIntent = new Intent();
     localIntent.putExtra("note_open_from_scene", 1);
-    localIntent.putExtra("edit_status", this.ERj);
-    localIntent.putExtra("note_msgid", this.ERO);
-    localIntent.putExtra("record_show_share", this.dCy);
-    localIntent.putExtra("fav_note_xml", this.dDn);
-    localIntent.putExtra("fav_note_out_of_date", this.ERP);
-    localIntent.putExtra("fav_note_scroll_to_position", this.dCr);
-    localIntent.putExtra("fav_note_scroll_to_offset", this.ERr);
-    localIntent.putExtra("fav_note_scroll_to_offset", this.ERr);
-    if (!bu.isNullOrNil(this.ERs)) {
-      localIntent.putExtra("fav_note_link_source_info", this.ERs);
+    localIntent.putExtra("edit_status", this.JGV);
+    localIntent.putExtra("note_msgid", this.JHB);
+    localIntent.putExtra("record_show_share", this.dUo);
+    localIntent.putExtra("fav_note_xml", this.dVc);
+    localIntent.putExtra("fav_note_out_of_date", this.JHC);
+    localIntent.putExtra("fav_note_scroll_to_position", this.dUh);
+    localIntent.putExtra("fav_note_scroll_to_offset", this.JHd);
+    localIntent.putExtra("fav_note_scroll_to_offset", this.JHd);
+    if (!Util.isNullOrNil(this.JHe)) {
+      localIntent.putExtra("fav_note_link_source_info", this.JHe);
     }
-    localIntent.putExtra("key_detail_fav_scene", this.dum.scene);
-    localIntent.putExtra("key_detail_fav_sub_scene", this.dum.otZ);
-    localIntent.putExtra("key_detail_fav_index", this.dum.index);
-    com.tencent.mm.br.d.b(paramContext, "wenote", ".ui.nativenote.NoteEditorUI", localIntent);
+    localIntent.putExtra("key_detail_fav_scene", this.dLx.scene);
+    localIntent.putExtra("key_detail_fav_sub_scene", this.dLx.pHw);
+    localIntent.putExtra("key_detail_fav_index", this.dLx.index);
+    localIntent.putExtra("key_multi_task_common_info", this.JHj);
+    com.tencent.mm.br.c.b(paramContext, "wenote", ".ui.nativenote.NoteEditorUI", localIntent);
     AppMethodBeat.o(30346);
   }
   
-  public final String a(ajx paramajx)
+  public final String a(aml paramaml)
   {
     AppMethodBeat.i(30349);
-    qi localqi = new qi();
-    localqi.dFS.type = 1;
-    localqi.dFS.dtI = paramajx;
-    localqi.dFS.msgId = this.ERO.longValue();
-    a.IvT.l(localqi);
-    paramajx = localqi.dFT.thumbPath;
+    rc localrc = new rc();
+    localrc.dXF.type = 1;
+    localrc.dXF.dKT = paramaml;
+    localrc.dXF.msgId = this.JHB.longValue();
+    EventCenter.instance.publish(localrc);
+    paramaml = localrc.dXG.thumbPath;
     AppMethodBeat.o(30349);
-    return paramajx;
+    return paramaml;
   }
   
-  public final void a(ajx paramajx, String paramString)
+  public final void a(aml paramaml, String paramString)
   {
     AppMethodBeat.i(30351);
-    qi localqi = new qi();
-    localqi.dFS.type = 8;
-    localqi.dFS.dtI = paramajx;
-    localqi.dFS.msgId = this.ERO.longValue();
-    localqi.dFS.thumbPath = paramString;
-    a.IvT.l(localqi);
+    rc localrc = new rc();
+    localrc.dXF.type = 8;
+    localrc.dXF.dKT = paramaml;
+    localrc.dXF.msgId = this.JHB.longValue();
+    localrc.dXF.thumbPath = paramString;
+    EventCenter.instance.publish(localrc);
     AppMethodBeat.o(30351);
   }
   
-  public final void a(String paramString, Long paramLong, boolean paramBoolean, Context paramContext, int paramInt1, int paramInt2, akp paramakp)
+  public final void a(String paramString, Long paramLong, boolean paramBoolean, Context paramContext, int paramInt1, int paramInt2, and paramand, Bundle paramBundle)
   {
-    AppMethodBeat.i(30345);
-    this.dDn = paramString;
-    this.ERO = paramLong;
-    this.dCy = paramBoolean;
-    this.dCr = paramInt1;
-    this.ERr = paramInt2;
-    this.dum = paramakp;
-    this.xHY = awG(paramString);
-    if ((this.xHY != null) && (this.xHY.hFT != null) && (this.xHY.hFT.size() > 1))
-    {
-      paramString = new qi();
-      paramString.dFS.type = 9;
-      paramString.dFS.dtI = ((ajx)this.xHY.hFT.get(0));
-      paramString.dFS.msgId = this.ERO.longValue();
-      a.IvT.l(paramString);
-      this.ERP = paramString.dFT.dGf;
+    AppMethodBeat.i(232132);
+    this.dVc = paramString;
+    this.JHB = paramLong;
+    this.dUo = paramBoolean;
+    this.dUh = paramInt1;
+    this.JHd = paramInt2;
+    this.dLx = paramand;
+    if (paramBundle != null) {
+      this.JHj = paramBundle.getByteArray("key_multi_task_common_info");
     }
-    if ((this.xHY != null) && (this.xHY.FId != null)) {}
-    for (this.ERs = (this.xHY.FId.GBX + ";" + this.xHY.FId.GBY + ";" + this.xHY.pWN);; this.ERs = null)
+    this.BHZ = aKY(paramString);
+    if ((this.BHZ != null) && (this.BHZ.iAd != null) && (this.BHZ.iAd.size() > 1))
     {
-      hm(paramContext);
-      bc.ajU().aw(new Runnable()
+      paramString = new rc();
+      paramString.dXF.type = 9;
+      paramString.dXF.dKT = ((aml)this.BHZ.iAd.get(0));
+      paramString.dXF.msgId = this.JHB.longValue();
+      EventCenter.instance.publish(paramString);
+      this.JHC = paramString.dXG.dXQ;
+    }
+    if ((this.BHZ != null) && (this.BHZ.KBr != null)) {}
+    for (this.JHe = (this.BHZ.KBr.LxT + ";" + this.BHZ.KBr.LxU + ";" + this.BHZ.rnM);; this.JHe = null)
+    {
+      ig(paramContext);
+      bg.aAk().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(30342);
           j.a(j.this);
-          j.this.hk(j.this.ERc.xHu);
-          if (k.faM() != null) {
-            k.faQ();
+          j.this.iq(j.this.JGO.BHs);
+          if (k.gjR() != null) {
+            k.gjV();
           }
           AppMethodBeat.o(30342);
         }
@@ -164,43 +170,43 @@ public final class j
           return str;
         }
       });
-      AppMethodBeat.o(30345);
+      AppMethodBeat.o(232132);
       return;
     }
   }
   
-  public final void bD(Context paramContext, String paramString)
+  public final void bX(Context paramContext, String paramString)
   {
     AppMethodBeat.i(30352);
     paramContext = new Intent();
-    paramContext.putExtra("message_id", this.ERO);
-    paramContext.putExtra("record_xml", this.dDn);
-    paramContext.putExtra("record_data_id", ((o)this.ERg.get(paramString)).dua);
-    com.tencent.mm.br.d.b(ak.getContext(), "record", ".ui.RecordMsgFileUI", paramContext);
+    paramContext.putExtra("message_id", this.JHB);
+    paramContext.putExtra("record_xml", this.dVc);
+    paramContext.putExtra("record_data_id", ((o)this.JGS.get(paramString)).dLl);
+    com.tencent.mm.br.c.b(MMApplicationContext.getContext(), "record", ".ui.RecordMsgFileUI", paramContext);
     AppMethodBeat.o(30352);
   }
   
-  public final void bE(Context paramContext, String paramString)
+  public final void bY(Context paramContext, String paramString)
   {
     paramContext = null;
     AppMethodBeat.i(30354);
-    Object localObject = ((o)this.ERg.get(paramString)).pAv;
-    if (((ajx)localObject).GAu != null) {}
-    for (localObject = ((ajx)localObject).GAu.GBb;; localObject = null)
+    Object localObject = ((o)this.JGS.get(paramString)).qPM;
+    if (((aml)localObject).Lwh != null) {}
+    for (localObject = ((aml)localObject).Lwh.LwO;; localObject = null)
     {
       if (localObject != null) {
-        if (bu.isNullOrNil(((ajz)localObject).GBE)) {
+        if (Util.isNullOrNil(((amn)localObject).LxA)) {
           break label99;
         }
       }
       label99:
-      for (paramContext = w.zP(((ajz)localObject).GBE);; paramContext = w.zP(((ajz)localObject).dzZ))
+      for (paramContext = aa.getDisplayName(((amn)localObject).LxA);; paramContext = aa.getDisplayName(((amn)localObject).dRL))
       {
-        paramString = (s)this.ERg.get(paramString);
+        paramString = (s)this.JGS.get(paramString);
         if (paramString != null) {
           break;
         }
-        h.cm(ak.getContext(), ak.getContext().getString(2131758969));
+        h.cD(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131759293));
         AppMethodBeat.o(30354);
         return;
       }
@@ -208,61 +214,61 @@ public final class j
       ((Intent)localObject).putExtra("map_view_type", 2);
       ((Intent)localObject).putExtra("kwebmap_slat", paramString.lat);
       ((Intent)localObject).putExtra("kwebmap_lng", paramString.lng);
-      ((Intent)localObject).putExtra("kPoiName", paramString.jGd);
-      ((Intent)localObject).putExtra("Kwebmap_locaion", paramString.hZQ);
-      if (paramString.ESo >= 0.0D) {
-        ((Intent)localObject).putExtra("kwebmap_scale", paramString.ESo);
+      ((Intent)localObject).putExtra("kPoiName", paramString.kHV);
+      ((Intent)localObject).putExtra("Kwebmap_locaion", paramString.iUO);
+      if (paramString.JIb >= 0.0D) {
+        ((Intent)localObject).putExtra("kwebmap_scale", paramString.JIb);
       }
       ((Intent)localObject).putExtra("kisUsername", paramContext);
       ((Intent)localObject).putExtra("kwebmap_from_to", true);
       ((Intent)localObject).putExtra("KFavLocSigleView", true);
       ((Intent)localObject).putExtra("kFavCanDel", false);
       ((Intent)localObject).putExtra("kFavCanRemark", false);
-      com.tencent.mm.br.d.b(ak.getContext(), "location", ".ui.RedirectUI", (Intent)localObject);
+      com.tencent.mm.br.c.b(MMApplicationContext.getContext(), "location", ".ui.RedirectUI", (Intent)localObject);
       AppMethodBeat.o(30354);
       return;
     }
   }
   
-  public final void bF(Context paramContext, String paramString)
+  public final void bZ(Context paramContext, String paramString)
   {
     AppMethodBeat.i(30353);
     paramContext = new Intent();
-    paramContext.putExtra("message_id", this.ERO);
-    paramContext.putExtra("record_data_id", ((o)this.ERg.get(paramString)).dua);
-    paramContext.putExtra("record_xml", this.dDn);
-    com.tencent.mm.br.d.b(ak.getContext(), "record", ".ui.RecordMsgImageUI", paramContext);
+    paramContext.putExtra("message_id", this.JHB);
+    paramContext.putExtra("record_data_id", ((o)this.JGS.get(paramString)).dLl);
+    paramContext.putExtra("record_xml", this.dVc);
+    com.tencent.mm.br.c.b(MMApplicationContext.getContext(), "record", ".ui.RecordMsgImageUI", paramContext);
     AppMethodBeat.o(30353);
   }
   
-  public final String d(ajx paramajx)
+  public final String d(aml paramaml)
   {
     AppMethodBeat.i(30348);
-    qi localqi = new qi();
-    localqi.dFS.type = 1;
-    localqi.dFS.dtI = paramajx;
-    localqi.dFS.msgId = this.ERO.longValue();
-    a.IvT.l(localqi);
-    paramajx = localqi.dFT.dGe;
+    rc localrc = new rc();
+    localrc.dXF.type = 1;
+    localrc.dXF.dKT = paramaml;
+    localrc.dXF.msgId = this.JHB.longValue();
+    EventCenter.instance.publish(localrc);
+    paramaml = localrc.dXG.dataPath;
     AppMethodBeat.o(30348);
-    return paramajx;
+    return paramaml;
   }
   
-  public final void p(ajx paramajx)
+  public final void p(aml paramaml)
   {
     AppMethodBeat.i(30350);
-    qi localqi = new qi();
-    localqi.dFS.type = 8;
-    localqi.dFS.dtI = paramajx;
-    localqi.dFS.msgId = this.ERO.longValue();
-    localqi.dFS.thumbPath = "";
-    a.IvT.l(localqi);
+    rc localrc = new rc();
+    localrc.dXF.type = 8;
+    localrc.dXF.dKT = paramaml;
+    localrc.dXF.msgId = this.JHB.longValue();
+    localrc.dXF.thumbPath = "";
+    EventCenter.instance.publish(localrc);
     AppMethodBeat.o(30350);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.j
  * JD-Core Version:    0.7.0.1
  */

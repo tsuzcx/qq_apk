@@ -1,124 +1,99 @@
 package com.tencent.mm.plugin.finder.viewmodel;
 
 import android.arch.lifecycle.ViewModel;
-import android.support.v7.widget.RecyclerView.n;
-import android.support.v7.widget.RecyclerView.w;
-import android.view.View;
+import android.support.v7.widget.RecyclerView.m;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.n;
-import com.tencent.mm.plugin.finder.model.n.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.finder.model.s;
+import com.tencent.mm.plugin.finder.model.s.a;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderRecyclerViewPool;", "Landroid/arch/lifecycle/ViewModel;", "()V", "bulletSubtitleViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "getBulletSubtitleViewPool", "()Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "setBulletSubtitleViewPool", "(Landroid/support/v7/widget/RecyclerView$RecycledViewPool;)V", "commentDrawerViewPool", "getCommentDrawerViewPool", "setCommentDrawerViewPool", "foldedLayoutViewPool", "getFoldedLayoutViewPool", "setFoldedLayoutViewPool", "gridViewPool", "getGridViewPool", "setGridViewPool", "mediaBannerViewPool", "getMediaBannerViewPool", "setMediaBannerViewPool", "staggeredViewPool", "getStaggeredViewPool", "setStaggeredViewPool", "timelinePool", "getTimelinePool", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderRecyclerViewPool;", "Landroid/arch/lifecycle/ViewModel;", "()V", "bulletSubtitleViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "getBulletSubtitleViewPool", "()Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "setBulletSubtitleViewPool", "(Landroid/support/v7/widget/RecyclerView$RecycledViewPool;)V", "commentDrawerViewPool", "getCommentDrawerViewPool", "setCommentDrawerViewPool", "foldedLayoutViewPool", "getFoldedLayoutViewPool", "setFoldedLayoutViewPool", "fullFoldedLayoutViewPool", "getFullFoldedLayoutViewPool", "setFullFoldedLayoutViewPool", "fullTimeLinePool", "getFullTimeLinePool", "gridViewPool", "getGridViewPool", "setGridViewPool", "mediaBannerViewPool", "getMediaBannerViewPool", "setMediaBannerViewPool", "staggeredViewPool", "getStaggeredViewPool", "setStaggeredViewPool", "timelinePool", "getTimelinePool", "Companion", "plugin-finder_release"})
 public final class FinderRecyclerViewPool
   extends ViewModel
 {
-  public static final FinderRecyclerViewPool.a tkX;
-  public RecyclerView.n sce;
-  public final RecyclerView.n tkR;
-  public RecyclerView.n tkS;
-  public RecyclerView.n tkT;
-  public RecyclerView.n tkU;
-  public RecyclerView.n tkV;
-  private RecyclerView.n tkW;
+  public static final a wuC;
+  public RecyclerView.m tLO;
+  private RecyclerView.m wuA;
+  public RecyclerView.m wuB;
+  public final RecyclerView.m wuu;
+  public final RecyclerView.m wuv;
+  public RecyclerView.m wuw;
+  public RecyclerView.m wux;
+  public RecyclerView.m wuy;
+  public RecyclerView.m wuz;
   
   static
   {
-    AppMethodBeat.i(206062);
-    tkX = new FinderRecyclerViewPool.a((byte)0);
-    AppMethodBeat.o(206062);
+    AppMethodBeat.i(255359);
+    wuC = new a((byte)0);
+    AppMethodBeat.o(255359);
   }
   
   public FinderRecyclerViewPool()
   {
-    AppMethodBeat.i(206061);
-    Object localObject = new b();
-    ((b)localObject).aC(4, 18);
-    ((b)localObject).aC(2, 12);
-    this.tkR = ((RecyclerView.n)localObject);
-    localObject = new RecyclerView.n();
-    ((RecyclerView.n)localObject).aC(2, 16);
-    ((RecyclerView.n)localObject).aC(4, 12);
-    this.sce = ((RecyclerView.n)localObject);
-    localObject = new RecyclerView.n();
-    ((RecyclerView.n)localObject).aC(4, 20);
-    ((RecyclerView.n)localObject).aC(2, 20);
-    ((RecyclerView.n)localObject).aC(-3, 2);
-    this.tkS = ((RecyclerView.n)localObject);
-    localObject = new RecyclerView.n();
-    ((RecyclerView.n)localObject).aC(4, 20);
-    ((RecyclerView.n)localObject).aC(2, 20);
-    ((RecyclerView.n)localObject).aC(-3, 2);
-    this.tkT = ((RecyclerView.n)localObject);
-    localObject = new RecyclerView.n();
-    n.a locala = n.sth;
-    ((RecyclerView.n)localObject).aC(n.cEw(), 10);
-    locala = n.sth;
-    ((RecyclerView.n)localObject).aC(n.cEx(), 10);
-    this.tkU = ((RecyclerView.n)localObject);
-    localObject = new RecyclerView.n();
-    locala = n.sth;
-    ((RecyclerView.n)localObject).aC(n.cEw(), 10);
-    locala = n.sth;
-    ((RecyclerView.n)localObject).aC(n.cEx(), 5);
-    this.tkV = ((RecyclerView.n)localObject);
-    localObject = new RecyclerView.n();
-    ((RecyclerView.n)localObject).aC(4, 10);
-    ((RecyclerView.n)localObject).aC(2, 10);
-    this.tkW = ((RecyclerView.n)localObject);
-    AppMethodBeat.o(206061);
+    AppMethodBeat.i(255358);
+    Object localObject = new c();
+    ((c)localObject).aw(4, 18);
+    ((c)localObject).aw(2, 6);
+    ((c)localObject).aw(2003, 0);
+    this.wuu = ((RecyclerView.m)localObject);
+    localObject = new b();
+    ((b)localObject).aw(4, 18);
+    ((b)localObject).aw(2, 6);
+    this.wuv = ((RecyclerView.m)localObject);
+    localObject = new RecyclerView.m();
+    ((RecyclerView.m)localObject).aw(2, 16);
+    ((RecyclerView.m)localObject).aw(4, 12);
+    this.tLO = ((RecyclerView.m)localObject);
+    localObject = new RecyclerView.m();
+    ((RecyclerView.m)localObject).aw(4, 20);
+    ((RecyclerView.m)localObject).aw(2, 20);
+    ((RecyclerView.m)localObject).aw(-3, 2);
+    ((RecyclerView.m)localObject).aw(2003, 0);
+    this.wuw = ((RecyclerView.m)localObject);
+    localObject = new RecyclerView.m();
+    ((RecyclerView.m)localObject).aw(4, 20);
+    ((RecyclerView.m)localObject).aw(2, 20);
+    ((RecyclerView.m)localObject).aw(-3, 2);
+    this.wux = ((RecyclerView.m)localObject);
+    localObject = new RecyclerView.m();
+    s.a locala = s.uOj;
+    ((RecyclerView.m)localObject).aw(s.dky(), 10);
+    locala = s.uOj;
+    ((RecyclerView.m)localObject).aw(s.dkz(), 10);
+    this.wuy = ((RecyclerView.m)localObject);
+    localObject = new RecyclerView.m();
+    locala = s.uOj;
+    ((RecyclerView.m)localObject).aw(s.dky(), 10);
+    locala = s.uOj;
+    ((RecyclerView.m)localObject).aw(s.dkz(), 5);
+    this.wuz = ((RecyclerView.m)localObject);
+    localObject = new RecyclerView.m();
+    ((RecyclerView.m)localObject).aw(4, 10);
+    ((RecyclerView.m)localObject).aw(2, 10);
+    this.wuA = ((RecyclerView.m)localObject);
+    localObject = new RecyclerView.m();
+    ((RecyclerView.m)localObject).aw(4, 10);
+    this.wuB = ((RecyclerView.m)localObject);
+    AppMethodBeat.o(255358);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/viewmodel/FinderRecyclerViewPool$timelinePool$1", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "getRecycledView", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "viewType", "", "putRecycledView", "", "scrap", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/viewmodel/FinderRecyclerViewPool$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/viewmodel/FinderRecyclerViewPool$fullTimeLinePool$1", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "plugin-finder_release"})
   public static final class b
-    extends RecyclerView.n
-  {
-    public final RecyclerView.w cr(int paramInt)
-    {
-      AppMethodBeat.i(206060);
-      RecyclerView.w localw = super.cr(paramInt);
-      StringBuilder localStringBuilder;
-      View localView;
-      if (ae.getLogLevel() <= 1)
-      {
-        localStringBuilder = new StringBuilder("getRecycledView hash=");
-        if (localw == null) {
-          break label94;
-        }
-        localView = localw.auu;
-        if (localView == null) {
-          break label99;
-        }
-      }
-      label94:
-      label99:
-      for (int i = localView.hashCode();; i = 0)
-      {
-        ae.d("Finder.RecyclerViewPoolVM", i + " viewType=" + paramInt + " size=" + cq(paramInt));
-        AppMethodBeat.o(206060);
-        return localw;
-        localView = null;
-        break;
-      }
-    }
-    
-    public final void q(RecyclerView.w paramw)
-    {
-      AppMethodBeat.i(206059);
-      p.h(paramw, "scrap");
-      super.q(paramw);
-      if (ae.getLogLevel() <= 1) {
-        ae.d("Finder.RecyclerViewPoolVM", "putRecycledView hash=" + paramw.auu.hashCode() + " viewType=" + paramw.lQ() + " size=" + cq(paramw.lQ()));
-      }
-      AppMethodBeat.o(206059);
-    }
-  }
+    extends RecyclerView.m
+  {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/viewmodel/FinderRecyclerViewPool$timelinePool$1", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "plugin-finder_release"})
+  public static final class c
+    extends RecyclerView.m
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.FinderRecyclerViewPool
  * JD-Core Version:    0.7.0.1
  */

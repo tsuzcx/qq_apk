@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/bzg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip"
+<LinearLayout android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/don" android:layout_width="fill_parent" android:layout_height="0.0dip" android:minHeight="148.0dip" android:layout_weight="1.0">
-        <ProgressBar android:id="@id/dpm" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a4p" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dog" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/i" android:textColor="@color/y4" android:gravity="center" android:id="@id/dpn" android:padding="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/afz" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginTop="@dimen/k">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/dgz" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/drm" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="center_vertical" android:id="@id/dgy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" />
     </LinearLayout>
 </LinearLayout>

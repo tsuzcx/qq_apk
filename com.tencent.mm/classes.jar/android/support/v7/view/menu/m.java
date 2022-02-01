@@ -16,7 +16,7 @@ import android.widget.PopupWindow.OnDismissListener;
 abstract class m
   implements o, s, AdapterView.OnItemClickListener
 {
-  Rect agQ;
+  Rect ahd;
   
   protected static int a(ListAdapter paramListAdapter, ViewGroup paramViewGroup, Context paramContext, int paramInt)
   {
@@ -115,7 +115,7 @@ abstract class m
     return 0;
   }
   
-  protected boolean hJ()
+  protected boolean hS()
   {
     return true;
   }
@@ -123,9 +123,9 @@ abstract class m
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
     paramView = (ListAdapter)paramAdapterView.getAdapter();
-    paramAdapterView = a(paramView).afZ;
+    paramAdapterView = a(paramView).agm;
     paramView = (MenuItem)paramView.getItem(paramInt);
-    if (hJ()) {}
+    if (hS()) {}
     for (paramInt = 0;; paramInt = 4)
     {
       paramAdapterView.a(paramView, this, paramInt);

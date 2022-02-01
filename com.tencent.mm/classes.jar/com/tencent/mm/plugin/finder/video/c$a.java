@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.finder.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"valid", "", "size", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"valid", "", "size", "invoke"})
 final class c$a
   extends q
   implements b<Float, Float>
 {
-  public static final a sYx;
+  public static final a wct;
   
   static
   {
-    AppMethodBeat.i(205233);
-    sYx = new a();
-    AppMethodBeat.o(205233);
+    AppMethodBeat.i(254013);
+    wct = new a();
+    AppMethodBeat.o(254013);
   }
   
   c$a()
@@ -24,7 +24,7 @@ final class c$a
     super(1);
   }
   
-  public static float al(float paramFloat)
+  public static float au(float paramFloat)
   {
     float f;
     if (paramFloat > 1.0F) {

@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.k.b;
 import com.tencent.mm.plugin.k.d;
 import com.tencent.mm.plugin.k.e;
 import com.tencent.mm.plugin.location_soso.ViewManager;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tencentmap.mapsdk.map.CameraUpdate;
 import com.tencent.tencentmap.mapsdk.map.CameraUpdateFactory;
 import com.tencent.tencentmap.mapsdk.map.MapController;
@@ -80,7 +80,7 @@ public class SoSoMapView
       public void animateTo(double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
         AppMethodBeat.i(146623);
-        ae.d("MicroMsg.SoSoMapView", "animteTo slat:" + paramAnonymousDouble1 + " slong:" + paramAnonymousDouble2);
+        Log.d("MicroMsg.SoSoMapView", "animteTo slat:" + paramAnonymousDouble1 + " slong:" + paramAnonymousDouble2);
         if (SoSoMapView.this.firstanim) {
           SoSoMapView.this.getMap().moveCamera(CameraUpdateFactory.newLatLng(new LatLng(paramAnonymousDouble1, paramAnonymousDouble2)));
         }
@@ -96,7 +96,7 @@ public class SoSoMapView
       public void animateTo(double paramAnonymousDouble1, double paramAnonymousDouble2, int paramAnonymousInt)
       {
         AppMethodBeat.i(146622);
-        ae.d("MicroMsg.SoSoMapView", "animteTo slat:" + paramAnonymousDouble1 + " slong:" + paramAnonymousDouble2 + " zoom:" + paramAnonymousInt);
+        Log.d("MicroMsg.SoSoMapView", "animteTo slat:" + paramAnonymousDouble1 + " slong:" + paramAnonymousDouble2 + " zoom:" + paramAnonymousInt);
         if (SoSoMapView.this.firstanim) {
           SoSoMapView.this.getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(paramAnonymousDouble1, paramAnonymousDouble2), paramAnonymousInt));
         }
@@ -126,7 +126,7 @@ public class SoSoMapView
       public void setZoom(int paramAnonymousInt)
       {
         AppMethodBeat.i(146621);
-        ae.d("MicroMsg.SoSoMapView", "set Zoom %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        Log.d("MicroMsg.SoSoMapView", "set Zoom %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         SoSoMapView.this.getMap().moveCamera(CameraUpdateFactory.zoomTo(paramAnonymousInt));
         AppMethodBeat.o(146621);
       }
@@ -147,7 +147,7 @@ public class SoSoMapView
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.SoSoMapView", localException, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.SoSoMapView", localException, "", new Object[0]);
       AppMethodBeat.o(146630);
     }
   }
@@ -170,7 +170,7 @@ public class SoSoMapView
   public void addNullView(View paramView)
   {
     AppMethodBeat.i(146636);
-    ae.d("MicroMsg.SoSoMapView", "addNullView ");
+    Log.d("MicroMsg.SoSoMapView", "addNullView ");
     addView(paramView);
     AppMethodBeat.o(146636);
   }
@@ -463,7 +463,7 @@ public class SoSoMapView
   public void updateLocaitonPinLayout(View paramView, double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(146650);
-    ae.d("MicroMsg.SoSoMapView", "updateLocationPinLayout");
+    Log.d("MicroMsg.SoSoMapView", "updateLocationPinLayout");
     updateLocaitonPinLayout(paramView, paramDouble1, paramDouble2, false);
     AppMethodBeat.o(146650);
   }
@@ -500,7 +500,7 @@ public class SoSoMapView
   {
     AppMethodBeat.i(146649);
     getIController().setCenter(paramDouble1, paramDouble2);
-    ae.d("MicroMsg.SoSoMapView", "zoomToSpan " + (int)(1000000.0D * paramDouble3) + " " + (int)(1000000.0D * paramDouble4) + "  " + 1000000.0D * paramDouble1 + " " + 1000000.0D * paramDouble2);
+    Log.d("MicroMsg.SoSoMapView", "zoomToSpan " + (int)(1000000.0D * paramDouble3) + " " + (int)(1000000.0D * paramDouble4) + "  " + 1000000.0D * paramDouble1 + " " + 1000000.0D * paramDouble2);
     if ((paramDouble3 == 0.0D) || (paramDouble4 == 0.0D))
     {
       AppMethodBeat.o(146649);
@@ -514,7 +514,7 @@ public class SoSoMapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location_soso.api.SoSoMapView
  * JD-Core Version:    0.7.0.1
  */

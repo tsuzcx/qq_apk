@@ -17,26 +17,26 @@ public class DecoderTrackSegment
   public DecoderTrackSegment(long paramLong)
   {
     this(new CMTimeRange(CMTime.CMTimeZero, new CMTime((float)paramLong / 1000.0F)), null);
-    AppMethodBeat.i(214814);
-    AppMethodBeat.o(214814);
+    AppMethodBeat.i(218147);
+    AppMethodBeat.o(218147);
   }
   
   public DecoderTrackSegment(AssetTrack paramAssetTrack, AssetTrackSegment paramAssetTrackSegment)
   {
     this(paramAssetTrackSegment.getTimeMapping().getSource().clone(), DecoderAssetTrack.create(paramAssetTrack, paramAssetTrackSegment));
-    AppMethodBeat.i(214816);
+    AppMethodBeat.i(218149);
     setScaledDuration(paramAssetTrackSegment.getScaleDuration());
-    AppMethodBeat.o(214816);
+    AppMethodBeat.o(218149);
   }
   
   public DecoderTrackSegment(CMTimeRange paramCMTimeRange, DecoderAssetTrack paramDecoderAssetTrack)
   {
-    AppMethodBeat.i(214815);
+    AppMethodBeat.i(218148);
     this.videoAsset = paramDecoderAssetTrack;
     this.timeRange = paramCMTimeRange;
     this.scaledDuration = paramCMTimeRange.getDuration();
     this.decoderStartTime = CMTime.CMTimeZero;
-    AppMethodBeat.o(214815);
+    AppMethodBeat.o(218148);
   }
   
   public CMTime getDecoderStartTime()
@@ -71,7 +71,7 @@ public class DecoderTrackSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.decoder.DecoderTrackSegment
  * JD-Core Version:    0.7.0.1
  */

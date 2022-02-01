@@ -1,37 +1,37 @@
 package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.k.j;
-import d.l;
 import java.util.Arrays;
+import kotlin.g.b.p;
+import kotlin.k.j;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/ShortArrayBuilder;", "Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "", "bufferWithData", "([S)V", "buffer", "<set-?>", "", "position", "getPosition", "()I", "append", "", "c", "", "append$kotlinx_serialization_runtime", "build", "ensureCapacity", "requiredCapacity", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/ShortArrayBuilder;", "Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "", "bufferWithData", "([S)V", "buffer", "<set-?>", "", "position", "getPosition", "()I", "append", "", "c", "", "append$kotlinx_serialization_runtime", "build", "ensureCapacity", "requiredCapacity", "kotlinx-serialization-runtime"})
 public final class bc
   extends av<short[]>
 {
-  short[] OjX;
+  short[] TYS;
   int position;
   
   public bc(short[] paramArrayOfShort)
   {
-    AppMethodBeat.i(199649);
-    this.OjX = paramArrayOfShort;
+    AppMethodBeat.i(225421);
+    this.TYS = paramArrayOfShort;
     this.position = paramArrayOfShort.length;
     ensureCapacity(10);
-    AppMethodBeat.o(199649);
+    AppMethodBeat.o(225421);
   }
   
   public final void ensureCapacity(int paramInt)
   {
-    AppMethodBeat.i(199647);
-    if (this.OjX.length < paramInt)
+    AppMethodBeat.i(225419);
+    if (this.TYS.length < paramInt)
     {
-      short[] arrayOfShort = Arrays.copyOf(this.OjX, j.lw(paramInt, this.OjX.length * 2));
+      short[] arrayOfShort = Arrays.copyOf(this.TYS, j.mZ(paramInt, this.TYS.length * 2));
       p.g(arrayOfShort, "java.util.Arrays.copyOf(this, newSize)");
-      this.OjX = arrayOfShort;
+      this.TYS = arrayOfShort;
     }
-    AppMethodBeat.o(199647);
+    AppMethodBeat.o(225419);
   }
   
   public final int getPosition()
@@ -41,7 +41,7 @@ public final class bc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlinx.a.b.bc
  * JD-Core Version:    0.7.0.1
  */

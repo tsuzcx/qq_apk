@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gn;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.gq;
+import com.tencent.mm.sdk.event.IListener;
 
 public final class f
-  extends c<gn>
+  extends IListener<gq>
 {
   public f()
   {
     AppMethodBeat.i(161618);
-    this.__eventId = gn.class.getName().hashCode();
+    this.__eventId = gq.class.getName().hashCode();
     AppMethodBeat.o(161618);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.f
  * JD-Core Version:    0.7.0.1
  */

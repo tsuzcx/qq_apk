@@ -19,11 +19,11 @@ public abstract class AbsStoryPreference
   
   public abstract void a(d paramd);
   
-  public abstract void ekw();
+  public abstract void fmX();
   
-  public abstract void ekx();
+  public abstract void fmY();
   
-  public abstract void eky();
+  public abstract void fmZ();
   
   public abstract void onCreate(String paramString);
   
@@ -31,7 +31,7 @@ public abstract class AbsStoryPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.AbsStoryPreference
  * JD-Core Version:    0.7.0.1
  */

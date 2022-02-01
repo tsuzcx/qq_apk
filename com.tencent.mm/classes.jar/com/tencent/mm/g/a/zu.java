@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a.a;
-import com.tencent.mm.plugin.appbrand.appcache.h;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class zu
-  extends b
+  extends IEvent
 {
-  public a dQk;
+  public a efP;
   
   public zu()
   {
@@ -17,24 +15,28 @@ public final class zu
   
   private zu(byte paramByte)
   {
-    AppMethodBeat.i(90538);
-    this.dQk = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(91224);
+    this.efP = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(90538);
+    AppMethodBeat.o(91224);
   }
   
   public static final class a
   {
-    public long cLN;
-    public h dQl;
-    public a.a dQm;
-    public long dQn;
+    public String appId;
+    public String dDL;
+    public String dQk;
+    public int efQ;
+    public String nonceStr;
+    public String packageExt;
+    public String signType;
+    public String timeStamp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.zu
  * JD-Core Version:    0.7.0.1
  */

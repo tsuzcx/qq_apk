@@ -4,8 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v4.view.a.c;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.support.v7.app.e;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -20,11 +19,11 @@ import android.widget.FrameLayout;
 public class a
   extends e
 {
-  private BottomSheetBehavior<FrameLayout> ou;
-  boolean ov;
-  boolean ow;
+  private BottomSheetBehavior.a oA;
+  private BottomSheetBehavior<FrameLayout> ow;
   boolean ox;
-  private BottomSheetBehavior.a oy;
+  boolean oy;
+  boolean oz;
   
   public a(Context paramContext)
   {
@@ -35,8 +34,8 @@ public class a
   
   private View a(int paramInt, View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    FrameLayout localFrameLayout = (FrameLayout)View.inflate(getContext(), 2131493693, null);
-    CoordinatorLayout localCoordinatorLayout = (CoordinatorLayout)localFrameLayout.findViewById(2131298793);
+    FrameLayout localFrameLayout = (FrameLayout)View.inflate(getContext(), 2131493824, null);
+    CoordinatorLayout localCoordinatorLayout = (CoordinatorLayout)localFrameLayout.findViewById(2131299248);
     View localView = paramView;
     if (paramInt != 0)
     {
@@ -45,59 +44,36 @@ public class a
         localView = getLayoutInflater().inflate(paramInt, localCoordinatorLayout, false);
       }
     }
-    paramView = (FrameLayout)localCoordinatorLayout.findViewById(2131299011);
-    this.ou = BottomSheetBehavior.l(paramView);
-    this.ou.oi = this.oy;
-    this.ou.nZ = this.ov;
+    paramView = (FrameLayout)localCoordinatorLayout.findViewById(2131299514);
+    this.ow = BottomSheetBehavior.l(paramView);
+    this.ow.ok = this.oA;
+    this.ow.ob = this.ox;
     if (paramLayoutParams == null) {
       paramView.addView(localView);
     }
     for (;;)
     {
-      localCoordinatorLayout.findViewById(2131306045).setOnClickListener(new View.OnClickListener()
+      localCoordinatorLayout.findViewById(2131309368).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          if ((a.this.ov) && (a.this.isShowing()))
+          if ((a.this.ox) && (a.this.isShowing()))
           {
             paramAnonymousView = a.this;
-            if (!paramAnonymousView.ox)
+            if (!paramAnonymousView.oz)
             {
               TypedArray localTypedArray = paramAnonymousView.getContext().obtainStyledAttributes(new int[] { 16843611 });
-              paramAnonymousView.ow = localTypedArray.getBoolean(0, true);
+              paramAnonymousView.oy = localTypedArray.getBoolean(0, true);
               localTypedArray.recycle();
-              paramAnonymousView.ox = true;
+              paramAnonymousView.oz = true;
             }
-            if (paramAnonymousView.ow) {
+            if (paramAnonymousView.oy) {
               a.this.cancel();
             }
           }
         }
       });
-      t.a(paramView, new android.support.v4.view.a()
-      {
-        public final void onInitializeAccessibilityNodeInfo(View paramAnonymousView, c paramAnonymousc)
-        {
-          super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousc);
-          if (a.this.ov)
-          {
-            paramAnonymousc.addAction(1048576);
-            paramAnonymousc.setDismissable(true);
-            return;
-          }
-          paramAnonymousc.setDismissable(false);
-        }
-        
-        public final boolean performAccessibilityAction(View paramAnonymousView, int paramAnonymousInt, Bundle paramAnonymousBundle)
-        {
-          if ((paramAnonymousInt == 1048576) && (a.this.ov))
-          {
-            a.this.cancel();
-            return true;
-          }
-          return super.performAccessibilityAction(paramAnonymousView, paramAnonymousInt, paramAnonymousBundle);
-        }
-      });
+      u.a(paramView, new a.2(this));
       paramView.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
@@ -128,19 +104,19 @@ public class a
   protected void onStart()
   {
     super.onStart();
-    if ((this.ou != null) && (this.ou.state == 5)) {
-      this.ou.setState(4);
+    if ((this.ow != null) && (this.ow.state == 5)) {
+      this.ow.setState(4);
     }
   }
   
   public void setCancelable(boolean paramBoolean)
   {
     super.setCancelable(paramBoolean);
-    if (this.ov != paramBoolean)
+    if (this.ox != paramBoolean)
     {
-      this.ov = paramBoolean;
-      if (this.ou != null) {
-        this.ou.nZ = paramBoolean;
+      this.ox = paramBoolean;
+      if (this.ow != null) {
+        this.ow.ob = paramBoolean;
       }
     }
   }
@@ -148,11 +124,11 @@ public class a
   public void setCanceledOnTouchOutside(boolean paramBoolean)
   {
     super.setCanceledOnTouchOutside(paramBoolean);
-    if ((paramBoolean) && (!this.ov)) {
-      this.ov = true;
+    if ((paramBoolean) && (!this.ox)) {
+      this.ox = true;
     }
-    this.ow = paramBoolean;
-    this.ox = true;
+    this.oy = paramBoolean;
+    this.oz = true;
   }
   
   public void setContentView(int paramInt)
@@ -172,7 +148,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.design.widget.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,140 +1,151 @@
 package com.tencent.mm.plugin.finder.storage;
 
-import android.arch.lifecycle.ViewModelProvider;
-import android.content.Context;
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.GridLayoutManager.b;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.n;
-import android.support.v7.widget.RecyclerView.w;
-import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.aa;
-import com.tencent.mm.plugin.finder.convert.o;
-import com.tencent.mm.plugin.finder.convert.s;
-import com.tencent.mm.plugin.finder.viewmodel.FinderRecyclerViewPool;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.a;
-import d.g.b.p;
-import d.g.b.y.f;
-import d.l;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.logic.c;
+import com.tencent.mm.plugin.finder.storage.logic.c.a;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.aqv;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.a.j;
+import kotlin.a.v;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderGridLayoutConfig;", "Lcom/tencent/mm/plugin/finder/storage/IFinderLayoutConfig;", "()V", "gridSpanCount", "", "getGridSpanCount", "()I", "getIfReachBottom", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "getItemConvertFactory", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "extraMap", "Lkotlin/Function1;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "getItemDecoration", "Landroid/support/v7/widget/RecyclerView$ItemDecoration;", "getLayoutManager", "Landroid/support/v7/widget/RecyclerView$LayoutManager;", "context", "Landroid/content/Context;", "getSpanSizeLookup", "Landroid/support/v7/widget/GridLayoutManager$SpanSizeLookup;", "getViewHolder", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "parent", "Landroid/view/ViewGroup;", "getViewPool", "Landroid/support/v7/widget/RecyclerView$RecycledViewPool;", "Lcom/tencent/mm/ui/MMActivity;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderFeedAttachInfoItem;", "", "info", "Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;)V", "continueFlag", "getContinueFlag", "()Ljava/lang/Object;", "getInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderFeedAttachListInfo;", "setInfo", "innerList", "", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "objectList", "", "getObjectList", "()Ljava/util/List;", "showLeft", "", "getShowLeft", "()Z", "setShowLeft", "(Z)V", "wording", "", "getWording", "()Ljava/lang/String;", "plugin-finder_release"})
 public final class k
-  implements z
 {
-  final int sge = 3;
+  public boolean vDG;
+  private final List<BaseFinderFeed> vDH;
+  public aqv vDI;
   
-  public final com.tencent.mm.view.recyclerview.c B(d.g.a.b<? super Integer, ? extends com.tencent.mm.view.recyclerview.b<?>> paramb)
+  public k(aqv paramaqv)
   {
-    AppMethodBeat.i(204238);
-    paramb = (com.tencent.mm.view.recyclerview.c)new a(paramb);
-    AppMethodBeat.o(204238);
-    return paramb;
+    AppMethodBeat.i(251726);
+    this.vDI = paramaqv;
+    this.vDG = true;
+    this.vDH = ((List)new ArrayList());
+    AppMethodBeat.o(251726);
   }
   
-  public final com.tencent.mm.view.recyclerview.c cCV()
+  public final List<BaseFinderFeed> dxB()
   {
-    AppMethodBeat.i(204237);
-    com.tencent.mm.view.recyclerview.c localc = B(null);
-    AppMethodBeat.o(204237);
-    return localc;
-  }
-  
-  public final RecyclerView.i eP(Context paramContext)
-  {
-    AppMethodBeat.i(204234);
-    p.h(paramContext, "context");
-    paramContext = new y.f();
-    paramContext.NiY = new GridLayoutManager(this.sge);
-    ((GridLayoutManager)paramContext.NiY).a((GridLayoutManager.b)new k.c(paramContext));
-    ((GridLayoutManager)paramContext.NiY).aw(true);
-    paramContext = (RecyclerView.i)paramContext.NiY;
-    AppMethodBeat.o(204234);
-    return paramContext;
-  }
-  
-  public final RecyclerView.n f(MMActivity paramMMActivity)
-  {
-    AppMethodBeat.i(204239);
-    p.h(paramMMActivity, "context");
-    a locala = a.KEX;
-    paramMMActivity = ((FinderRecyclerViewPool)a.s(paramMMActivity).get(FinderRecyclerViewPool.class)).tkT;
-    AppMethodBeat.o(204239);
-    return paramMMActivity;
-  }
-  
-  public final RecyclerView.h getItemDecoration()
-  {
-    AppMethodBeat.i(204236);
-    RecyclerView.h localh = (RecyclerView.h)new k.b(this);
-    AppMethodBeat.o(204236);
-    return localh;
-  }
-  
-  public final RecyclerView.w q(ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(204235);
-    p.h(paramViewGroup, "parent");
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131496208, paramViewGroup, false);
-    p.g(paramViewGroup, "convertView");
-    paramViewGroup = (RecyclerView.w)new aa(paramViewGroup);
-    AppMethodBeat.o(204235);
-    return paramViewGroup;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/storage/FinderGridLayoutConfig$getItemConvertFactory$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
-  public static final class a
-    implements com.tencent.mm.view.recyclerview.c
-  {
-    a(d.g.a.b paramb) {}
-    
-    public final com.tencent.mm.view.recyclerview.b<?> AX(int paramInt)
+    AppMethodBeat.i(251725);
+    Object localObject1 = this.vDI;
+    Object localObject2;
+    if ((localObject1 != null) && (Util.isNullOrNil(this.vDH)) && (!Util.isNullOrNil((List)((aqv)localObject1).tbD)))
     {
-      AppMethodBeat.i(204231);
-      switch (paramInt)
+      localObject1 = ((aqv)localObject1).tbD;
+      Object localObject3;
+      Object localObject4;
+      if (localObject1 != null)
       {
-      default: 
-        localObject = this.sIN;
-        if (localObject != null)
+        localObject1 = (Iterable)localObject1;
+        localObject2 = (Collection)new ArrayList();
+        localObject3 = ((Iterable)localObject1).iterator();
+        label131:
+        label134:
+        while (((Iterator)localObject3).hasNext())
         {
-          com.tencent.mm.view.recyclerview.b localb = (com.tencent.mm.view.recyclerview.b)((d.g.a.b)localObject).invoke(Integer.valueOf(paramInt));
-          localObject = localb;
-          if (localb != null) {}
+          localObject4 = ((Iterator)localObject3).next();
+          localObject1 = (FinderObject)localObject4;
+          if (localObject1 != null)
+          {
+            localObject1 = ((FinderObject)localObject1).objectDesc;
+            label104:
+            if (localObject1 == null) {
+              break label131;
+            }
+          }
+          for (int i = 1;; i = 0)
+          {
+            if (i == 0) {
+              break label134;
+            }
+            ((Collection)localObject2).add(localObject4);
+            break;
+            localObject1 = null;
+            break label104;
+          }
         }
-        else
-        {
-          p.gkB();
-          localObject = null;
-        }
-        AppMethodBeat.o(204231);
-        return localObject;
-      case 4: 
-      case 3002: 
-        localObject = (com.tencent.mm.view.recyclerview.b)new com.tencent.mm.plugin.finder.convert.c();
-        AppMethodBeat.o(204231);
-        return localObject;
-      case 2: 
-      case 3001: 
-        localObject = (com.tencent.mm.view.recyclerview.b)new com.tencent.mm.plugin.finder.convert.c();
-        AppMethodBeat.o(204231);
-        return localObject;
-      case -3: 
-        localObject = (com.tencent.mm.view.recyclerview.b)new s();
-        AppMethodBeat.o(204231);
-        return localObject;
+        localObject1 = (List)localObject2;
       }
-      Object localObject = (com.tencent.mm.view.recyclerview.b)new o();
-      AppMethodBeat.o(204231);
-      return localObject;
+      while (localObject1 != null)
+      {
+        localObject2 = (Iterable)localObject1;
+        localObject1 = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
+        localObject2 = ((Iterable)localObject2).iterator();
+        for (;;)
+        {
+          if (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (FinderObject)((Iterator)localObject2).next();
+            localObject4 = FinderItem.Companion;
+            p.g(localObject3, "feed");
+            localObject3 = FinderItem.a.a((FinderObject)localObject3, 1);
+            localObject4 = c.vGN;
+            ((Collection)localObject1).add(c.a.s((FinderItem)localObject3));
+            continue;
+            localObject1 = null;
+            break;
+          }
+        }
+        localObject1 = (List)localObject1;
+        localObject2 = this.vDH;
+        if (localObject1 == null) {
+          break label283;
+        }
+      }
     }
+    label283:
+    for (localObject1 = (Collection)localObject1;; localObject1 = (Collection)v.SXr)
+    {
+      ((List)localObject2).addAll((Collection)localObject1);
+      localObject1 = this.vDH;
+      AppMethodBeat.o(251725);
+      return localObject1;
+      localObject1 = null;
+      break;
+    }
+  }
+  
+  public final String getWording()
+  {
+    AppMethodBeat.i(251724);
+    Object localObject = this.vDI;
+    String str;
+    if (localObject != null)
+    {
+      str = ((aqv)localObject).dQx;
+      localObject = str;
+      if (str != null) {}
+    }
+    else
+    {
+      localObject = g.aAh();
+      p.g(localObject, "MMKernel.storage()");
+      str = ((e)localObject).azQ().a(ar.a.OkE, "");
+      localObject = str;
+      if (str == null) {
+        localObject = "";
+      }
+    }
+    p.g(localObject, "info?.wording ?: (MMKern…G_STRING_SYNC, \"\") ?: \"\")");
+    AppMethodBeat.o(251724);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.k
  * JD-Core Version:    0.7.0.1
  */

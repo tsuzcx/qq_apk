@@ -234,9 +234,9 @@ public class DeviceAuthDialog
   private void presentConfirmation(final String paramString1, final Utility.PermissionsPair paramPermissionsPair, final String paramString2, String paramString3, final Date paramDate1, final Date paramDate2)
   {
     AppMethodBeat.i(7762);
-    String str1 = getResources().getString(2131757523);
-    Object localObject = getResources().getString(2131757522);
-    String str2 = getResources().getString(2131757521);
+    String str1 = getResources().getString(2131757743);
+    Object localObject = getResources().getString(2131757742);
+    String str2 = getResources().getString(2131757741);
     paramString3 = String.format((String)localObject, new Object[] { paramString3 });
     localObject = new AlertDialog.Builder(getContext());
     ((AlertDialog.Builder)localObject).setMessage(str1).setCancelable(true).setNegativeButton(paramString3, new DialogInterface.OnClickListener()
@@ -303,18 +303,18 @@ public class DeviceAuthDialog
   protected int getLayoutResId(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2131493570;
+      return 2131493686;
     }
-    return 2131493568;
+    return 2131493684;
   }
   
   protected View initializeContentView(boolean paramBoolean)
   {
     AppMethodBeat.i(7758);
     View localView = getActivity().getLayoutInflater().inflate(getLayoutResId(paramBoolean), null);
-    this.progressBar = localView.findViewById(2131303518);
-    this.confirmationCode = ((TextView)localView.findViewById(2131298574));
-    ((Button)localView.findViewById(2131297691)).setOnClickListener(new View.OnClickListener()
+    this.progressBar = localView.findViewById(2131306284);
+    this.confirmationCode = ((TextView)localView.findViewById(2131299011));
+    ((Button)localView.findViewById(2131297964)).setOnClickListener(new View.OnClickListener()
     {
       public void onClick(View paramAnonymousView)
       {
@@ -323,8 +323,8 @@ public class DeviceAuthDialog
         AppMethodBeat.o(7736);
       }
     });
-    this.instructions = ((TextView)localView.findViewById(2131298498));
-    this.instructions.setText(Html.fromHtml(getString(2131757502)));
+    this.instructions = ((TextView)localView.findViewById(2131298917));
+    this.instructions.setText(Html.fromHtml(getString(2131757722)));
     AppMethodBeat.o(7758);
     return localView;
   }
@@ -350,7 +350,7 @@ public class DeviceAuthDialog
   public Dialog onCreateDialog(Bundle paramBundle)
   {
     AppMethodBeat.i(7752);
-    this.dialog = new Dialog(getActivity(), 2131821695);
+    this.dialog = new Dialog(getActivity(), 2131821743);
     if ((DeviceRequestsHelper.isAvailable()) && (!this.isRetry)) {}
     for (boolean bool = true;; bool = false)
     {
@@ -605,7 +605,7 @@ public class DeviceAuthDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.login.DeviceAuthDialog
  * JD-Core Version:    0.7.0.1
  */

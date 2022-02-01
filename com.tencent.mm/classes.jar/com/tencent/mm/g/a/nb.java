@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class nb
-  extends b
+  extends IEvent
 {
-  public a dCa;
-  public b dCb;
+  public a dSL;
+  public b dSM;
   
   public nb()
   {
@@ -16,31 +17,28 @@ public final class nb
   
   private nb(byte paramByte)
   {
-    AppMethodBeat.i(110275);
-    this.dCa = new a();
-    this.dCb = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(155373);
+    this.dSL = new a();
+    this.dSM = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(110275);
+    AppMethodBeat.o(155373);
   }
   
   public static final class a
   {
-    public boolean dCc = false;
-    public String key;
-    public int type = 0;
-    public String username;
+    public Activity dKq;
+    public Runnable dSN;
   }
   
   public static final class b
   {
-    public long dCd;
-    public long msgId;
+    public boolean dFE = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.nb
  * JD-Core Version:    0.7.0.1
  */

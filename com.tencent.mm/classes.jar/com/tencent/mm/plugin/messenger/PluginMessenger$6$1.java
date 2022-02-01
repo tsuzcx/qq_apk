@@ -15,32 +15,32 @@ final class PluginMessenger$6$1
   
   public final void onClickImp(View paramView)
   {
-    AppMethodBeat.i(218134);
+    AppMethodBeat.i(194463);
     try
     {
-      if (this.fMA.get() != null)
+      if (this.grM.get() != null)
       {
         paramView = new LiveConfig.a();
-        paramView.gJg = LiveConfig.gJc;
-        paramView.gJi = this.vUT;
-        paramView.gJl = this.vUU;
-        paramView.gJh = this.vUV;
-        paramView.scene = LiveConfig.gIY;
-        paramView = paramView.alq();
-        ((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).liveEntranceJumper().d((Context)this.fMA.get(), paramView);
+        paramView.hvZ = LiveConfig.hvV;
+        paramView.hwa = this.zoZ;
+        paramView.hwd = this.zpa;
+        paramView.liveId = this.zpb;
+        paramView.scene = LiveConfig.hvR;
+        paramView = paramView.aBR();
+        ((com.tencent.mm.live.a)g.ah(com.tencent.mm.live.a.class)).liveEntranceJumper().d((Context)this.grM.get(), paramView);
       }
-      AppMethodBeat.o(218134);
+      AppMethodBeat.o(194463);
       return;
     }
     catch (Throwable paramView)
     {
-      AppMethodBeat.o(218134);
+      AppMethodBeat.o(194463);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.PluginMessenger.6.1
  * JD-Core Version:    0.7.0.1
  */

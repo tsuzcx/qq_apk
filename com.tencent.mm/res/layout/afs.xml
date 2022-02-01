@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MultiTouchImageView android:layout_gravity="center" android:id="@id/co4" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <com.tencent.mm.ui.base.WxImageView android:layout_gravity="center" android:id="@id/h76" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/gmv" android:layout_width="@dimen/br" android:layout_height="@dimen/br" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:id="@id/dm7" android:background="@drawable/ag4" android:padding="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/a_u" android:id="@id/btq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/a_o" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>

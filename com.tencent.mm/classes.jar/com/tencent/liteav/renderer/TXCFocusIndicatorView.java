@@ -29,15 +29,7 @@ public class TXCFocusIndicatorView
     AppMethodBeat.i(16938);
     this.mSize = 0;
     this.mFocusAreaStroke = 2;
-    this.mHideRunnable = new Runnable()
-    {
-      public void run()
-      {
-        AppMethodBeat.i(16750);
-        TXCFocusIndicatorView.this.setVisibility(8);
-        AppMethodBeat.o(16750);
-      }
-    };
+    this.mHideRunnable = new TXCFocusIndicatorView.1(this);
     init(null, 0);
     AppMethodBeat.o(16938);
   }
@@ -48,15 +40,7 @@ public class TXCFocusIndicatorView
     AppMethodBeat.i(16939);
     this.mSize = 0;
     this.mFocusAreaStroke = 2;
-    this.mHideRunnable = new Runnable()
-    {
-      public void run()
-      {
-        AppMethodBeat.i(16750);
-        TXCFocusIndicatorView.this.setVisibility(8);
-        AppMethodBeat.o(16750);
-      }
-    };
+    this.mHideRunnable = new TXCFocusIndicatorView.1(this);
     init(paramAttributeSet, 0);
     AppMethodBeat.o(16939);
   }
@@ -67,15 +51,7 @@ public class TXCFocusIndicatorView
     AppMethodBeat.i(16940);
     this.mSize = 0;
     this.mFocusAreaStroke = 2;
-    this.mHideRunnable = new Runnable()
-    {
-      public void run()
-      {
-        AppMethodBeat.i(16750);
-        TXCFocusIndicatorView.this.setVisibility(8);
-        AppMethodBeat.o(16750);
-      }
-    };
+    this.mHideRunnable = new TXCFocusIndicatorView.1(this);
     init(paramAttributeSet, paramInt);
     AppMethodBeat.o(16940);
   }
@@ -125,7 +101,7 @@ public class TXCFocusIndicatorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.liteav.renderer.TXCFocusIndicatorView
  * JD-Core Version:    0.7.0.1
  */

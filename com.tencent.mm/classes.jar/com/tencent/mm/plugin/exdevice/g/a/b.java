@@ -1,38 +1,38 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 
 public final class b
 {
-  public static String adq(String paramString)
+  public static String anz(String paramString)
   {
     AppMethodBeat.i(23501);
-    if ((bu.isNullOrNil(paramString)) || ("#".equals(paramString)))
+    if ((Util.isNullOrNil(paramString)) || ("#".equals(paramString)))
     {
       AppMethodBeat.o(23501);
       return "";
     }
-    Object localObject = aj.ej(paramString);
-    localObject = new k(d.cmW(), (String)localObject);
-    if (((k)localObject).exists())
+    Object localObject = MD5Util.getMD5String(paramString);
+    localObject = new o(d.cKY(), (String)localObject);
+    if (((o)localObject).exists())
     {
-      paramString = w.B(((k)localObject).fTh());
+      paramString = aa.z(((o)localObject).her());
       AppMethodBeat.o(23501);
       return paramString;
     }
     try
     {
-      ((k)localObject).createNewFile();
-      bc.ajU().aw(new a(paramString, (k)localObject));
+      ((o)localObject).createNewFile();
+      bg.aAk().postToWorker(new a(paramString, (o)localObject));
       AppMethodBeat.o(23501);
       return "";
     }
@@ -40,7 +40,7 @@ public final class b
     {
       for (;;)
       {
-        ae.d("MicroMsg.ExdevicePictureLocalizer", "hy: %s", new Object[] { localIOException.toString() });
+        Log.d("MicroMsg.ExdevicePictureLocalizer", "hy: %s", new Object[] { localIOException.toString() });
       }
     }
   }
@@ -48,21 +48,21 @@ public final class b
   static final class a
     implements Runnable
   {
-    private k qll;
+    private o rCg;
     private String url;
     
-    a(String paramString, k paramk)
+    a(String paramString, o paramo)
     {
       this.url = paramString;
-      this.qll = paramk;
+      this.rCg = paramo;
     }
     
     public final void run()
     {
       AppMethodBeat.i(23499);
-      byte[] arrayOfByte = bu.aSF(this.url);
+      byte[] arrayOfByte = Util.httpGet(this.url);
       if (arrayOfByte != null) {
-        o.f(w.B(this.qll.mUri), arrayOfByte, arrayOfByte.length);
+        s.f(aa.z(this.rCg.mUri), arrayOfByte, arrayOfByte.length);
       }
       AppMethodBeat.o(23499);
     }

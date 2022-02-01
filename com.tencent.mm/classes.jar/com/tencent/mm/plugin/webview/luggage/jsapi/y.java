@@ -8,14 +8,14 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.HashMap;
 import java.util.Map;
 
 public class y
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
@@ -24,14 +24,14 @@ public class y
     localHashMap.put("osVersion", Integer.valueOf(Build.VERSION.SDK_INT));
     localHashMap.put("cpuCores", Integer.valueOf(DeviceInfo.getNumberOfCPUCores()));
     localHashMap.put("cpuFreqHz", Integer.valueOf(DeviceInfo.getCPUMaxFreqKHz()));
-    localHashMap.put("memory", Long.valueOf(DeviceInfo.getTotalMemory(ak.getContext())));
+    localHashMap.put("memory", Long.valueOf(DeviceInfo.getTotalMemory(MMApplicationContext.getContext())));
     localHashMap.put("brand", Build.BRAND);
     localHashMap.put("model", Build.MODEL);
     paramb.e("", localHashMap);
     AppMethodBeat.o(78560);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

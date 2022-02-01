@@ -10,12 +10,12 @@ import com.tencent.mm.pointers.PInt;
 
 public final class a
 {
-  private static final b nmZ;
+  private static final b owG;
   
   static
   {
     AppMethodBeat.i(136677);
-    nmZ = new b()
+    owG = new b()
     {
       public final Spannable a(Spannable paramAnonymousSpannable, int paramAnonymousInt, PInt paramAnonymousPInt, Spannable.Factory paramAnonymousFactory)
       {
@@ -35,7 +35,7 @@ public final class a
         return paramAnonymousContext;
       }
       
-      public final b.a uB(int paramAnonymousInt)
+      public final b.a ys(int paramAnonymousInt)
       {
         return null;
       }
@@ -43,13 +43,13 @@ public final class a
     AppMethodBeat.o(136677);
   }
   
-  public static b bFO()
+  public static b cce()
   {
     AppMethodBeat.i(136676);
-    b localb = (b)e.K(b.class);
+    b localb = (b)e.M(b.class);
     if (localb == null)
     {
-      localb = nmZ;
+      localb = owG;
       AppMethodBeat.o(136676);
       return localb;
     }

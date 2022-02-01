@@ -7,7 +7,7 @@ import java.util.Set;
 
 public final class b
 {
-  public static void L(Throwable paramThrowable)
+  public static void N(Throwable paramThrowable)
   {
     if ((paramThrowable instanceof f)) {
       throw ((f)paramThrowable);
@@ -32,7 +32,7 @@ public final class b
     }
   }
   
-  public static Throwable M(Throwable paramThrowable)
+  public static Throwable O(Throwable paramThrowable)
   {
     AppMethodBeat.i(90046);
     int i = 0;
@@ -54,7 +54,7 @@ public final class b
   public static void a(Throwable paramThrowable, rx.e<?> parame)
   {
     AppMethodBeat.i(90049);
-    L(paramThrowable);
+    N(paramThrowable);
     parame.onError(paramThrowable);
     AppMethodBeat.o(90049);
   }
@@ -62,7 +62,7 @@ public final class b
   public static void a(Throwable paramThrowable, rx.e<?> parame, Object paramObject)
   {
     AppMethodBeat.i(90048);
-    L(paramThrowable);
+    N(paramThrowable);
     parame.onError(g.a(paramThrowable, paramObject));
     AppMethodBeat.o(90048);
   }
@@ -104,7 +104,7 @@ public final class b
     }
   }
   
-  public static void jI(List<? extends Throwable> paramList)
+  public static void kP(List<? extends Throwable> paramList)
   {
     AppMethodBeat.i(90047);
     if ((paramList != null) && (!paramList.isEmpty()))

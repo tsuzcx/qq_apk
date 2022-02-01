@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.byp.a;
 
-import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.h.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.aa;
 import com.tencent.mm.plugin.messenger.foundation.a.k;
-import com.tencent.mm.protocal.protobuf.cg;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.protocal.protobuf.rp;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.protocal.protobuf.cp;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.ss;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -20,94 +20,94 @@ import java.util.LinkedList;
 public abstract class a
   implements b
 {
-  public final void M(LinkedList<rp> paramLinkedList)
+  public final void O(LinkedList<ss> paramLinkedList)
   {
-    ae.i("BaseBypSyncHandler", "[onReceive] size=%s", new Object[] { Integer.valueOf(paramLinkedList.size()) });
-    com.tencent.mm.plugin.messenger.foundation.a.l locall = (com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    Log.i("BaseBypSyncHandler", "[onReceive] size=%s", new Object[] { Integer.valueOf(paramLinkedList.size()) });
+    com.tencent.mm.plugin.messenger.foundation.a.l locall = (com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     for (;;)
     {
-      rp localrp;
-      cg localcg;
+      ss localss;
+      cp localcp;
       try
       {
-        locall.doJ().aqX("BaseBypSyncHandler");
+        locall.eiy().aEs("BaseBypSyncHandler");
         Iterator localIterator = paramLinkedList.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
-        localrp = (rp)localIterator.next();
-        if (localrp.oIw != 1) {
+        localss = (ss)localIterator.next();
+        if (localss.pWk != 1) {
           continue;
         }
-        localcg = new cg();
-        localcg.parseFrom(localrp.oGT.zr);
-        if (bu.isNullOrNil(localcg.FNg))
+        localcp = new cp();
+        localcp.parseFrom(localss.pUz.zy);
+        if (Util.isNullOrNil(localcp.KGL))
         {
-          ae.e("BaseBypSyncHandler", "msg_session_id is null! FromUserName=%s ToUserName=%s", new Object[] { z.a(localcg.FNf.FNG), z.a(localcg.FNf.FNH) });
+          Log.e("BaseBypSyncHandler", "msg_session_id is null! FromUserName=%s ToUserName=%s", new Object[] { z.a(localcp.KGK.KHl), z.a(localcp.KGK.KHm) });
           continue;
         }
       }
       catch (IOException paramLinkedList)
       {
-        ae.l("BaseBypSyncHandler", "", new Object[] { paramLinkedList });
+        Log.printDebugStack("BaseBypSyncHandler", "", new Object[] { paramLinkedList });
         return;
-        if (localcg.FNf.xrk == 0L)
+        if (localcp.KGK.Brn == 0L)
         {
-          ae.e("BaseBypSyncHandler", "NewMsgId is zero! FromUserName=%s ToUserName=%s", new Object[] { z.a(localcg.FNf.FNG), z.a(localcg.FNf.FNH) });
+          Log.e("BaseBypSyncHandler", "NewMsgId is zero! FromUserName=%s ToUserName=%s", new Object[] { z.a(localcp.KGK.KHl), z.a(localcp.KGK.KHm) });
           continue;
         }
       }
       finally
       {
-        locall.doJ().aqY("BaseBypSyncHandler");
+        locall.eiy().aEt("BaseBypSyncHandler");
       }
-      if (!a(localcg))
+      if (!a(localcp))
       {
-        ae.e("BaseBypSyncHandler", "[onReceive] ignore this msg %s", new Object[] { localcg.FNg });
+        Log.e("BaseBypSyncHandler", "[onReceive] ignore this msg %s", new Object[] { localcp.KGL });
       }
       else
       {
-        if (localcg.FNi)
+        if (localcp.KGN)
         {
-          paramLinkedList = localcg.FNf.FNG;
+          paramLinkedList = localcp.KGK.KHl;
           label302:
           paramLinkedList = z.a(paramLinkedList);
-          String str = (String)g.ajR().ajA().get(2, "");
-          if ((localcg.FNi) && (!paramLinkedList.equals(str))) {
-            locall.azO().ev(paramLinkedList, bUe());
+          String str = (String)g.aAh().azQ().get(2, "");
+          if ((localcp.KGN) && (!paramLinkedList.equals(str))) {
+            locall.aSW().eJ(paramLinkedList, crR());
           }
-          if (!localcg.FNi) {
+          if (!localcp.KGN) {
             break label461;
           }
-          localcg.FNf.FNH = z.Jw(localcg.FNg);
+          localcp.KGK.KHm = z.Su(localcp.KGL);
         }
         for (;;)
         {
-          paramLinkedList = new e.a(localcg.FNf, false, false, false);
-          paramLinkedList.hQS = new cg().parseFrom(localrp.oGT.zr);
-          paramLinkedList.what = bUf();
-          ((k)g.ab(k.class)).processAddMsg(paramLinkedList, bUg());
+          paramLinkedList = new h.a(localcp.KGK, false, false, false);
+          paramLinkedList.iMa = new cp().parseFrom(localss.pUz.zy);
+          paramLinkedList.what = crS();
+          ((k)g.af(k.class)).processAddMsg(paramLinkedList, crT());
           break;
-          paramLinkedList = localcg.FNf.FNH;
+          paramLinkedList = localcp.KGK.KHm;
           break label302;
           label461:
-          localcg.FNf.FNG = z.Jw(localcg.FNg);
+          localcp.KGK.KHl = z.Su(localcp.KGL);
         }
       }
     }
-    locall.doJ().aqY("BaseBypSyncHandler");
+    locall.eiy().aEt("BaseBypSyncHandler");
   }
   
-  protected boolean a(cg paramcg)
+  protected boolean a(cp paramcp)
   {
     return true;
   }
   
-  protected abstract int bUe();
+  protected abstract int crR();
   
-  protected abstract int bUf();
+  protected abstract int crS();
   
-  protected abstract aa bUg();
+  protected abstract aa crT();
 }
 
 

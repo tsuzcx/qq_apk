@@ -1,39 +1,39 @@
 package kotlinx.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 import kotlinx.a.z;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/JsonConfiguration;", "", "encodeDefaults", "", "ignoreUnknownKeys", "isLenient", "serializeSpecialFloatingPointValues", "allowStructuredMapKeys", "prettyPrint", "unquotedPrint", "indent", "", "useArrayPolymorphism", "classDiscriminator", "updateMode", "Lkotlinx/serialization/UpdateMode;", "(ZZZZZZZLjava/lang/String;ZLjava/lang/String;Lkotlinx/serialization/UpdateMode;)V", "getAllowStructuredMapKeys$kotlinx_serialization_runtime", "()Z", "getClassDiscriminator$kotlinx_serialization_runtime", "()Ljava/lang/String;", "getEncodeDefaults$kotlinx_serialization_runtime", "getIgnoreUnknownKeys$kotlinx_serialization_runtime", "getIndent$kotlinx_serialization_runtime", "isLenient$kotlinx_serialization_runtime", "getPrettyPrint$kotlinx_serialization_runtime", "getSerializeSpecialFloatingPointValues$kotlinx_serialization_runtime", "getUnquotedPrint$kotlinx_serialization_runtime", "updateMode$annotations", "()V", "getUpdateMode$kotlinx_serialization_runtime", "()Lkotlinx/serialization/UpdateMode;", "getUseArrayPolymorphism$kotlinx_serialization_runtime", "component1", "component1$kotlinx_serialization_runtime", "component10", "component10$kotlinx_serialization_runtime", "component11", "component11$kotlinx_serialization_runtime", "component2", "component2$kotlinx_serialization_runtime", "component3", "component3$kotlinx_serialization_runtime", "component4", "component4$kotlinx_serialization_runtime", "component5", "component5$kotlinx_serialization_runtime", "component6", "component6$kotlinx_serialization_runtime", "component7", "component7$kotlinx_serialization_runtime", "component8", "component8$kotlinx_serialization_runtime", "component9", "component9$kotlinx_serialization_runtime", "copy", "equals", "other", "hashCode", "", "toString", "Companion", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/json/JsonConfiguration;", "", "encodeDefaults", "", "ignoreUnknownKeys", "isLenient", "serializeSpecialFloatingPointValues", "allowStructuredMapKeys", "prettyPrint", "unquotedPrint", "indent", "", "useArrayPolymorphism", "classDiscriminator", "updateMode", "Lkotlinx/serialization/UpdateMode;", "(ZZZZZZZLjava/lang/String;ZLjava/lang/String;Lkotlinx/serialization/UpdateMode;)V", "getAllowStructuredMapKeys$kotlinx_serialization_runtime", "()Z", "getClassDiscriminator$kotlinx_serialization_runtime", "()Ljava/lang/String;", "getEncodeDefaults$kotlinx_serialization_runtime", "getIgnoreUnknownKeys$kotlinx_serialization_runtime", "getIndent$kotlinx_serialization_runtime", "isLenient$kotlinx_serialization_runtime", "getPrettyPrint$kotlinx_serialization_runtime", "getSerializeSpecialFloatingPointValues$kotlinx_serialization_runtime", "getUnquotedPrint$kotlinx_serialization_runtime", "updateMode$annotations", "()V", "getUpdateMode$kotlinx_serialization_runtime", "()Lkotlinx/serialization/UpdateMode;", "getUseArrayPolymorphism$kotlinx_serialization_runtime", "component1", "component1$kotlinx_serialization_runtime", "component10", "component10$kotlinx_serialization_runtime", "component11", "component11$kotlinx_serialization_runtime", "component2", "component2$kotlinx_serialization_runtime", "component3", "component3$kotlinx_serialization_runtime", "component4", "component4$kotlinx_serialization_runtime", "component5", "component5$kotlinx_serialization_runtime", "component6", "component6$kotlinx_serialization_runtime", "component7", "component7$kotlinx_serialization_runtime", "component8", "component8$kotlinx_serialization_runtime", "component9", "component9$kotlinx_serialization_runtime", "copy", "equals", "other", "hashCode", "", "toString", "Companion", "kotlinx-serialization-runtime"})
 public final class d
 {
-  private static final String OkD;
-  private static final String OkE;
-  private static final d OkF;
-  private static final d OkG;
-  public static final a OkH;
-  public final z Oji;
-  public final boolean OkA;
-  public final boolean OkB;
-  public final String OkC;
-  public final boolean Okv;
-  public final boolean Okw;
-  public final boolean Okx;
-  public final boolean Oky;
-  public final boolean Okz;
-  public final boolean bNj;
-  public final String bQD;
+  private static final String TZA;
+  private static final String TZB;
+  private static final d TZC;
+  private static final d TZD;
+  public static final d.a TZE;
+  public final z TYe;
+  public final boolean TZq;
+  public final boolean TZr;
+  public final boolean TZs;
+  public final boolean TZt;
+  public final boolean TZu;
+  public final boolean TZv;
+  public final boolean TZw;
+  public final String TZx;
+  public final boolean TZy;
+  public final String TZz;
   
   static
   {
-    AppMethodBeat.i(199869);
-    OkH = new a((byte)0);
-    OkD = "    ";
-    OkE = "type";
-    OkF = new d(false, false, false, false, false, false, false, null, false, null, null, 2047);
-    OkG = new d(true, false, false, false, true, false, false, OkD, false, OkE, null, 1024);
-    AppMethodBeat.o(199869);
+    AppMethodBeat.i(225641);
+    TZE = new d.a((byte)0);
+    TZA = "    ";
+    TZB = "type";
+    TZC = new d(false, false, false, false, false, false, false, null, false, null, null, 2047);
+    TZD = new d(true, false, false, false, true, false, false, TZA, false, TZB, null, 1024);
+    AppMethodBeat.o(225641);
   }
   
   public d()
@@ -43,50 +43,50 @@ public final class d
   
   private d(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, boolean paramBoolean5, boolean paramBoolean6, boolean paramBoolean7, String paramString1, boolean paramBoolean8, String paramString2, z paramz)
   {
-    AppMethodBeat.i(199867);
-    this.Okv = paramBoolean1;
-    this.Okw = paramBoolean2;
-    this.Okx = paramBoolean3;
-    this.bNj = paramBoolean4;
-    this.Oky = paramBoolean5;
-    this.Okz = paramBoolean6;
-    this.OkA = paramBoolean7;
-    this.bQD = paramString1;
-    this.OkB = paramBoolean8;
-    this.OkC = paramString2;
-    this.Oji = paramz;
-    if ((this.OkB) && (!p.i(this.OkC, OkE)))
+    AppMethodBeat.i(225639);
+    this.TZq = paramBoolean1;
+    this.TZr = paramBoolean2;
+    this.TZs = paramBoolean3;
+    this.TZt = paramBoolean4;
+    this.TZu = paramBoolean5;
+    this.TZv = paramBoolean6;
+    this.TZw = paramBoolean7;
+    this.TZx = paramString1;
+    this.TZy = paramBoolean8;
+    this.TZz = paramString2;
+    this.TYe = paramz;
+    if ((this.TZy) && (!p.j(this.TZz, TZB)))
     {
       paramString1 = (Throwable)new IllegalArgumentException("Class discriminator should not be specified when array polymorphism is specified".toString());
-      AppMethodBeat.o(199867);
+      AppMethodBeat.o(225639);
       throw paramString1;
     }
-    if ((!this.Okz) && (!p.i(this.bQD, OkD)))
+    if ((!this.TZv) && (!p.j(this.TZx, TZA)))
     {
       paramString1 = (Throwable)new IllegalArgumentException("Indent should not be specified when default printing mode is used".toString());
-      AppMethodBeat.o(199867);
+      AppMethodBeat.o(225639);
       throw paramString1;
     }
-    AppMethodBeat.o(199867);
+    AppMethodBeat.o(225639);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(199872);
+    AppMethodBeat.i(225644);
     if (this != paramObject)
     {
       if ((paramObject instanceof d))
       {
         paramObject = (d)paramObject;
-        if ((this.Okv != paramObject.Okv) || (this.Okw != paramObject.Okw) || (this.Okx != paramObject.Okx) || (this.bNj != paramObject.bNj) || (this.Oky != paramObject.Oky) || (this.Okz != paramObject.Okz) || (this.OkA != paramObject.OkA) || (!p.i(this.bQD, paramObject.bQD)) || (this.OkB != paramObject.OkB) || (!p.i(this.OkC, paramObject.OkC)) || (!p.i(this.Oji, paramObject.Oji))) {}
+        if ((this.TZq != paramObject.TZq) || (this.TZr != paramObject.TZr) || (this.TZs != paramObject.TZs) || (this.TZt != paramObject.TZt) || (this.TZu != paramObject.TZu) || (this.TZv != paramObject.TZv) || (this.TZw != paramObject.TZw) || (!p.j(this.TZx, paramObject.TZx)) || (this.TZy != paramObject.TZy) || (!p.j(this.TZz, paramObject.TZz)) || (!p.j(this.TYe, paramObject.TYe))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(199872);
+      AppMethodBeat.o(225644);
       return true;
     }
-    AppMethodBeat.o(199872);
+    AppMethodBeat.o(225644);
     return false;
   }
   
@@ -97,18 +97,15 @@ public final class d
   
   public final String toString()
   {
-    AppMethodBeat.i(199870);
-    String str = "JsonConfiguration(encodeDefaults=" + this.Okv + ", ignoreUnknownKeys=" + this.Okw + ", isLenient=" + this.Okx + ", serializeSpecialFloatingPointValues=" + this.bNj + ", allowStructuredMapKeys=" + this.Oky + ", prettyPrint=" + this.Okz + ", unquotedPrint=" + this.OkA + ", indent=" + this.bQD + ", useArrayPolymorphism=" + this.OkB + ", classDiscriminator=" + this.OkC + ", updateMode=" + this.Oji + ")";
-    AppMethodBeat.o(199870);
+    AppMethodBeat.i(225642);
+    String str = "JsonConfiguration(encodeDefaults=" + this.TZq + ", ignoreUnknownKeys=" + this.TZr + ", isLenient=" + this.TZs + ", serializeSpecialFloatingPointValues=" + this.TZt + ", allowStructuredMapKeys=" + this.TZu + ", prettyPrint=" + this.TZv + ", unquotedPrint=" + this.TZw + ", indent=" + this.TZx + ", useArrayPolymorphism=" + this.TZy + ", classDiscriminator=" + this.TZz + ", updateMode=" + this.TYe + ")";
+    AppMethodBeat.o(225642);
     return str;
   }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/json/JsonConfiguration$Companion;", "", "()V", "Default", "Lkotlinx/serialization/json/JsonConfiguration;", "Default$annotations", "getDefault", "()Lkotlinx/serialization/json/JsonConfiguration;", "Stable", "Stable$annotations", "getStable", "defaultDiscriminator", "", "defaultDiscriminator$annotations", "defaultIndent", "defaultIndent$annotations", "kotlinx-serialization-runtime"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlinx.a.c.d
  * JD-Core Version:    0.7.0.1
  */

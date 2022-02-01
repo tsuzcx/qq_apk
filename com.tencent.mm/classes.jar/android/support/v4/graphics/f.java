@@ -18,10 +18,10 @@ import java.util.List;
 final class f
   extends i
 {
-  private static final Class JN;
-  private static final Constructor JO;
-  private static final Method JP;
-  private static final Method JQ;
+  private static final Class JX;
+  private static final Constructor JY;
+  private static final Method JZ;
+  private static final Method Ka;
   
   static
   {
@@ -31,10 +31,10 @@ final class f
       localConstructor = localClass.getConstructor(new Class[0]);
       localMethod2 = localClass.getMethod("addFontWeightStyle", new Class[] { ByteBuffer.class, Integer.TYPE, List.class, Integer.TYPE, Boolean.TYPE });
       Method localMethod1 = Typeface.class.getMethod("createFromFamiliesWithDefault", new Class[] { Array.newInstance(localClass, 1).getClass() });
-      JO = localConstructor;
-      JN = localClass;
-      JP = localMethod2;
-      JQ = localMethod1;
+      JY = localConstructor;
+      JX = localClass;
+      JZ = localMethod2;
+      Ka = localMethod1;
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
@@ -59,7 +59,7 @@ final class f
   {
     try
     {
-      paramBoolean = ((Boolean)JP.invoke(paramObject, new Object[] { paramByteBuffer, Integer.valueOf(paramInt1), null, Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) })).booleanValue();
+      paramBoolean = ((Boolean)JZ.invoke(paramObject, new Object[] { paramByteBuffer, Integer.valueOf(paramInt1), null, Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean) })).booleanValue();
       return paramBoolean;
     }
     catch (IllegalAccessException paramObject)
@@ -73,16 +73,11 @@ final class f
     }
   }
   
-  public static boolean ev()
-  {
-    return JP != null;
-  }
-  
-  private static Object ew()
+  private static Object eA()
   {
     try
     {
-      Object localObject = JO.newInstance(new Object[0]);
+      Object localObject = JY.newInstance(new Object[0]);
       return localObject;
     }
     catch (InstantiationException localInstantiationException)
@@ -100,13 +95,18 @@ final class f
     }
   }
   
+  public static boolean ez()
+  {
+    return JZ != null;
+  }
+  
   private static Typeface q(Object paramObject)
   {
     try
     {
-      Object localObject = Array.newInstance(JN, 1);
+      Object localObject = Array.newInstance(JX, 1);
       Array.set(localObject, 0, paramObject);
-      paramObject = (Typeface)JQ.invoke(null, new Object[] { localObject });
+      paramObject = (Typeface)Ka.invoke(null, new Object[] { localObject });
       return paramObject;
     }
     catch (IllegalAccessException paramObject)
@@ -122,16 +122,16 @@ final class f
   
   public final Typeface a(Context paramContext, c.b paramb, Resources paramResources, int paramInt)
   {
-    Object localObject1 = ew();
-    paramb = paramb.Jv;
+    Object localObject1 = eA();
+    paramb = paramb.JE;
     int i = paramb.length;
     paramInt = 0;
     while (paramInt < i)
     {
       Object localObject2 = paramb[paramInt];
-      ByteBuffer localByteBuffer = j.a(paramContext, paramResources, localObject2.JA);
+      ByteBuffer localByteBuffer = j.a(paramContext, paramResources, localObject2.JJ);
       if (localByteBuffer == null) {}
-      while (!a(localObject1, localByteBuffer, localObject2.Jz, localObject2.Jw, localObject2.Jx)) {
+      while (!a(localObject1, localByteBuffer, localObject2.JI, localObject2.JF, localObject2.JG)) {
         return null;
       }
       paramInt += 1;
@@ -141,7 +141,7 @@ final class f
   
   public final Typeface a(Context paramContext, b.b[] paramArrayOfb, int paramInt)
   {
-    Object localObject = ew();
+    Object localObject = eA();
     n localn = new n();
     int j = paramArrayOfb.length;
     int i = 0;
@@ -153,10 +153,10 @@ final class f
       ByteBuffer localByteBuffer1 = localByteBuffer2;
       if (localByteBuffer2 == null)
       {
-        localByteBuffer1 = j.b(paramContext, localUri);
+        localByteBuffer1 = j.a(paramContext, null, localUri);
         localn.put(localUri, localByteBuffer1);
       }
-      if (!a(localObject, localByteBuffer1, localb.Jz, localb.Jw, localb.Jx)) {
+      if (!a(localObject, localByteBuffer1, localb.JI, localb.JF, localb.JG)) {
         return null;
       }
       i += 1;

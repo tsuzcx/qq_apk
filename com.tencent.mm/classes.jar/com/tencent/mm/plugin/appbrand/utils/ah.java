@@ -28,7 +28,7 @@ public final class ah
     AppMethodBeat.o(140861);
   }
   
-  private static long A(byte[] paramArrayOfByte, int paramInt)
+  private static long C(byte[] paramArrayOfByte, int paramInt)
   {
     long l = 0L;
     int i = paramInt;
@@ -40,7 +40,7 @@ public final class ah
     return l & 0xFFFFFFFF;
   }
   
-  private boolean G(byte[] paramArrayOfByte, int paramInt)
+  private boolean I(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(140869);
     for (this.pos = 0; this.pos < 8; this.pos += 1)
@@ -54,7 +54,7 @@ public final class ah
       int i = this.pos;
       arrayOfByte[i] = ((byte)(arrayOfByte[i] ^ paramArrayOfByte[(this.crypt + 0 + this.pos)]));
     }
-    this.prePlain = az(this.prePlain);
+    this.prePlain = aQ(this.prePlain);
     if (this.prePlain == null)
     {
       AppMethodBeat.o(140869);
@@ -158,7 +158,7 @@ public final class ah
     }
   }
   
-  private byte[] az(byte[] paramArrayOfByte)
+  private byte[] aQ(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(140867);
     int i = 16;
@@ -173,12 +173,12 @@ public final class ah
       long l1;
       try
       {
-        l3 = A(paramArrayOfByte, 0);
-        l2 = A(paramArrayOfByte, 4);
-        l4 = A(this.key, 0);
-        l5 = A(this.key, 4);
-        l6 = A(this.key, 8);
-        l7 = A(this.key, 12);
+        l3 = C(paramArrayOfByte, 0);
+        l2 = C(paramArrayOfByte, 4);
+        l4 = C(this.key, 0);
+        l5 = C(this.key, 4);
+        l6 = C(this.key, 8);
+        l7 = C(this.key, 12);
         l1 = 3816266640L;
       }
       catch (IOException paramArrayOfByte)
@@ -218,7 +218,7 @@ public final class ah
       AppMethodBeat.o(140862);
       return null;
     }
-    this.prePlain = az(paramArrayOfByte1);
+    this.prePlain = aQ(paramArrayOfByte1);
     if (this.prePlain == null)
     {
       AppMethodBeat.o(140862);
@@ -255,7 +255,7 @@ public final class ah
         if (this.pos != 8) {
           continue;
         }
-        if (!G(paramArrayOfByte1, paramInt))
+        if (!I(paramArrayOfByte1, paramInt))
         {
           AppMethodBeat.o(140862);
           return null;
@@ -280,7 +280,7 @@ public final class ah
           if (this.pos == 8)
           {
             this.preCrypt = (this.crypt - 8);
-            if (!G(paramArrayOfByte1, paramInt))
+            if (!I(paramArrayOfByte1, paramInt))
             {
               AppMethodBeat.o(140862);
               return null;
@@ -298,7 +298,7 @@ public final class ah
                 if (this.pos == 8)
                 {
                   this.preCrypt = this.crypt;
-                  if (!G(paramArrayOfByte1, paramInt))
+                  if (!I(paramArrayOfByte1, paramInt))
                   {
                     AppMethodBeat.o(140862);
                     return null;
@@ -335,12 +335,12 @@ public final class ah
       long l1;
       try
       {
-        l3 = A(paramArrayOfByte, 0);
-        l2 = A(paramArrayOfByte, 4);
-        l4 = A(this.key, 0);
-        l5 = A(this.key, 4);
-        l6 = A(this.key, 8);
-        l7 = A(this.key, 12);
+        l3 = C(paramArrayOfByte, 0);
+        l2 = C(paramArrayOfByte, 4);
+        l4 = C(this.key, 0);
+        l5 = C(this.key, 4);
+        l6 = C(this.key, 8);
+        l7 = C(this.key, 12);
         l1 = 0L;
       }
       catch (IOException paramArrayOfByte)
@@ -423,7 +423,7 @@ public final class ah
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.ah
  * JD-Core Version:    0.7.0.1
  */

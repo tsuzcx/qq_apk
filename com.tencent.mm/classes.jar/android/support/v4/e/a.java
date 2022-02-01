@@ -10,7 +10,7 @@ public class a<K, V>
   extends n<K, V>
   implements Map<K, V>
 {
-  i<K, V> Or;
+  i<K, V> OD;
   
   public a() {}
   
@@ -24,10 +24,10 @@ public class a<K, V>
     super(paramn);
   }
   
-  private i<K, V> fl()
+  private i<K, V> fr()
   {
-    if (this.Or == null) {
-      this.Or = new i()
+    if (this.OD == null) {
+      this.OD = new i()
       {
         protected final int E(Object paramAnonymousObject)
         {
@@ -54,42 +54,42 @@ public class a<K, V>
           a.this.put(paramAnonymousK, paramAnonymousV);
         }
         
-        protected final int fm()
+        protected final int fs()
         {
           return a.this.mSize;
         }
         
-        protected final Map<K, V> fn()
+        protected final Map<K, V> ft()
         {
           return a.this;
         }
         
-        protected final void fo()
+        protected final void fu()
         {
           a.this.clear();
         }
         
         protected final Object z(int paramAnonymousInt1, int paramAnonymousInt2)
         {
-          return a.this.OA[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
+          return a.this.OO[((paramAnonymousInt1 << 1) + paramAnonymousInt2)];
         }
       };
     }
-    return this.Or;
+    return this.OD;
   }
   
   public Set<Map.Entry<K, V>> entrySet()
   {
-    i locali = fl();
-    if (locali.OJ == null) {
-      locali.OJ = new i.b(locali);
+    i locali = fr();
+    if (locali.OX == null) {
+      locali.OX = new i.b(locali);
     }
-    return locali.OJ;
+    return locali.OX;
   }
   
   public Set<K> keySet()
   {
-    return fl().getKeySet();
+    return fr().getKeySet();
   }
   
   public void putAll(Map<? extends K, ? extends V> paramMap)
@@ -105,11 +105,11 @@ public class a<K, V>
   
   public Collection<V> values()
   {
-    i locali = fl();
-    if (locali.OM == null) {
-      locali.OM = new i.e(locali);
+    i locali = fr();
+    if (locali.OZ == null) {
+      locali.OZ = new i.e(locali);
     }
-    return locali.OM;
+    return locali.OZ;
   }
 }
 

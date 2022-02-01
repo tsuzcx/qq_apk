@@ -1,67 +1,68 @@
 package com.tencent.mm.plugin.aa.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.plugin.aa.model.cgi.i;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.plugin.aa.model.cgi.j;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.protobuf.a;
-import com.tencent.mm.protocal.protobuf.p;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.r;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vending.g.b;
 
 public final class g
-  implements f
+  implements i
 {
-  boolean iVG = false;
-  b iVo;
+  boolean jSA = false;
+  b jSi;
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(63334);
-    ae.i("MicroMsg.AAPayLogic", "AAPayLogic, onSceneEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.iVG = false;
+    Log.i("MicroMsg.AAPayLogic", "AAPayLogic, onSceneEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.jSA = false;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramString = ((i)paramn).iWq;
-      ae.i("MicroMsg.AAPayLogic", "AAPayLogic, onSceneEnd, retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(paramString.dmy), paramString.phe });
-      if (paramString.dmy == 0)
+      paramString = ((j)paramq).jTn;
+      Log.i("MicroMsg.AAPayLogic", "AAPayLogic, onSceneEnd, retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(paramString.dDN), paramString.qwn });
+      if (paramString.dDN == 0)
       {
-        com.tencent.mm.vending.g.g.a(this.iVo, new Object[] { paramString });
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(407L, 9L, 1L, false);
+        com.tencent.mm.vending.g.g.a(this.jSi, new Object[] { paramString });
+        h.CyF.idkeyStat(407L, 9L, 1L, false);
         AppMethodBeat.o(63334);
         return;
       }
-      if (this.iVo != null)
+      if (this.jSi != null)
       {
-        if ((paramString.FIq == null) || (paramString.FIq.dEu != 1) || (bu.isNullOrNil(paramString.FIq.phk)) || (bu.isNullOrNil(paramString.FIq.kCZ)) || (bu.isNullOrNil(paramString.FIq.kDa)) || (bu.isNullOrNil(paramString.FIq.dyI))) {
+        if ((paramString.KBE == null) || (paramString.KBE.cSx != 1) || (Util.isNullOrNil(paramString.KBE.qwt)) || (Util.isNullOrNil(paramString.KBE.lHA)) || (Util.isNullOrNil(paramString.KBE.lHB)) || (Util.isNullOrNil(paramString.KBE.dQx))) {
           break label232;
         }
-        this.iVo.ef(paramString.FIq);
+        this.jSi.ej(paramString.KBE);
       }
       for (;;)
       {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(407L, 11L, 1L, false);
+        h.CyF.idkeyStat(407L, 11L, 1L, false);
         AppMethodBeat.o(63334);
         return;
         label232:
-        if ((paramString.dmy > 0) && (!bu.isNullOrNil(paramString.phe))) {
-          this.iVo.ef(paramString.phe);
+        if ((paramString.dDN > 0) && (!Util.isNullOrNil(paramString.qwn))) {
+          this.jSi.ej(paramString.qwn);
         } else {
-          this.iVo.ef(Boolean.FALSE);
+          this.jSi.ej(Boolean.FALSE);
         }
       }
     }
-    if (this.iVo != null) {
-      this.iVo.ef(Boolean.FALSE);
+    if (this.jSi != null) {
+      this.jSi.ej(Boolean.FALSE);
     }
-    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(407L, 10L, 1L, false);
+    h.CyF.idkeyStat(407L, 10L, 1L, false);
     AppMethodBeat.o(63334);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,143 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.support.v7.widget.RecyclerView.w;
+import android.content.Context;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.a;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.view.FinderPostProgressView;
-import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.plugin.finder.event.base.c;
+import com.tencent.mm.plugin.finder.feed.i;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.report.ag;
+import com.tencent.mm.plugin.finder.report.ag.a;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.view.FinderMediaBanner;
+import com.tencent.mm.plugin.finder.view.adapter.FinderMediaBannerAdapter;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.view.MediaBanner.c;
+import com.tencent.mm.view.recyclerview.h;
+import java.util.Collection;
+import java.util.LinkedList;
+import kotlin.g.b.p;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderGridViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "failedArea", "getFailedArea", "()Landroid/view/View;", "setFailedArea", "likeArea", "getLikeArea", "setLikeArea", "likeImgview", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getLikeImgview", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setLikeImgview", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "progress", "Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;", "getProgress", "()Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;", "setProgress", "(Lcom/tencent/mm/plugin/finder/view/FinderPostProgressView;)V", "progressAnimator", "Landroid/animation/ValueAnimator;", "getProgressAnimator", "()Landroid/animation/ValueAnimator;", "setProgressAnimator", "(Landroid/animation/ValueAnimator;)V", "progressArea", "getProgressArea", "setProgressArea", "bindMedia", "", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "dataPos", "", "bindImage", "", "fromSearch", "itemClickListener", "Lkotlin/Function0;", "dealLickArea", "context", "Landroid/content/Context;", "refreshLickArea", "isActionLike", "plugin-finder_release"})
-public final class aa
-  extends RecyclerView.w
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedMixConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedConvert;", "Lcom/tencent/mm/plugin/finder/model/FinderFeedMix;", "videoCore", "Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;", "contract", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;", "safeMode", "", "tabType", "", "(Lcom/tencent/mm/plugin/finder/video/FinderVideoCore;Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;ZI)V", "convertMedia", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "getLayoutId", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "onMediaClick", "view", "Landroid/view/View;", "finderObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "Companion", "plugin-finder_release"})
+public class aa
+  extends l<com.tencent.mm.plugin.finder.model.aa>
 {
-  private ValueAnimator kqQ;
-  private View rIf;
-  private View rXh;
-  FinderPostProgressView rXi;
-  private View rXj;
-  private WeImageView rXk;
+  public static final a tDy;
+  private final i tAi;
+  private final com.tencent.mm.plugin.finder.video.k tCD;
   
-  public aa(View paramView)
+  static
   {
-    super(paramView);
-    AppMethodBeat.i(201856);
-    View localView = paramView.findViewById(2131303504);
-    p.g(localView, "itemView.findViewById(R.id.profile_upload_area)");
-    this.rIf = localView;
-    localView = paramView.findViewById(2131303466);
-    p.g(localView, "itemView.findViewById(R.…profile_item_failed_area)");
-    this.rXh = localView;
-    localView = paramView.findViewById(2131303466);
-    p.g(localView, "itemView.findViewById(R.…profile_item_failed_area)");
-    this.rXh = localView;
-    localView = paramView.findViewById(2131303505);
-    p.g(localView, "itemView.findViewById(R.….profile_upload_progress)");
-    this.rXi = ((FinderPostProgressView)localView);
-    localView = paramView.findViewById(2131307916);
-    p.g(localView, "itemView.findViewById(R.id.profile_like_area)");
-    this.rXj = localView;
-    paramView = paramView.findViewById(2131307917);
-    p.g(paramView, "itemView.findViewById(R.id.profile_like_iv)");
-    this.rXk = ((WeImageView)paramView);
-    AppMethodBeat.o(201856);
+    AppMethodBeat.i(165404);
+    tDy = new a((byte)0);
+    AppMethodBeat.o(165404);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate"})
-  static final class b
-    implements ValueAnimator.AnimatorUpdateListener
+  private aa(com.tencent.mm.plugin.finder.video.k paramk, i parami, boolean paramBoolean, int paramInt)
   {
-    b(aa paramaa) {}
-    
-    public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
+    super(parami, paramBoolean, paramInt);
+    AppMethodBeat.i(165402);
+    this.tCD = paramk;
+    this.tAi = parami;
+    AppMethodBeat.o(165402);
+  }
+  
+  public final void a(RecyclerView paramRecyclerView, h paramh, int paramInt)
+  {
+    AppMethodBeat.i(165399);
+    p.h(paramRecyclerView, "recyclerView");
+    p.h(paramh, "holder");
+    super.a(paramRecyclerView, paramh, paramInt);
+    FinderMediaBanner localFinderMediaBanner = (FinderMediaBanner)paramh.Mn(2131304549);
+    localFinderMediaBanner.setAdapter((RecyclerView.a)new FinderMediaBannerAdapter(this.tCD));
+    localFinderMediaBanner.setViewPool(this.tAi.dcf());
+    localFinderMediaBanner.setParentRecyclerView(paramRecyclerView);
+    localFinderMediaBanner.setPageChangeCallback((MediaBanner.c)new b(paramh));
+    AppMethodBeat.o(165399);
+  }
+  
+  public final void a(h paramh, View paramView, FinderObject paramFinderObject)
+  {
+    AppMethodBeat.i(165401);
+    p.h(paramh, "holder");
+    p.h(paramView, "view");
+    p.h(paramFinderObject, "finderObject");
+    super.a(paramh, paramView, paramFinderObject);
+    paramh = paramView.findViewById(2131305954);
+    if (paramh != null) {}
+    for (paramh = paramh.getTag(); p.j(paramh, Boolean.FALSE); paramh = null)
     {
-      AppMethodBeat.i(201852);
-      FinderPostProgressView localFinderPostProgressView = this.rXm.rXi;
-      paramValueAnimator = paramValueAnimator.getAnimatedValue();
-      if (paramValueAnimator == null)
+      AppMethodBeat.o(165401);
+      return;
+    }
+    paramh = paramView.findViewById(2131307042);
+    if ((paramh != null) && (paramh.getVisibility() == 0))
+    {
+      AppMethodBeat.o(165401);
+      return;
+    }
+    if (this.tCD.weV != paramFinderObject.id)
+    {
+      AppMethodBeat.o(165401);
+      return;
+    }
+    paramh = com.tencent.mm.plugin.finder.report.k.vfA;
+    com.tencent.mm.plugin.finder.report.k.h(paramFinderObject);
+    AppMethodBeat.o(165401);
+  }
+  
+  public final int getLayoutId()
+  {
+    return 2131492886;
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedMixConvert$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/convert/FinderFeedMixConvert$onCreateViewHolder$1", "Lcom/tencent/mm/view/MediaBanner$IPageChangeCallback;", "onPageChange", "", "position", "", "isIdle", "", "isAuto", "plugin-finder_release"})
+  public static final class b
+    implements MediaBanner.c
+  {
+    b(h paramh) {}
+    
+    public final void e(int paramInt, boolean paramBoolean1, boolean paramBoolean2)
+    {
+      AppMethodBeat.i(243074);
+      com.tencent.mm.plugin.finder.model.aa localaa = (com.tencent.mm.plugin.finder.model.aa)this.qhp.hgv();
+      Object localObject1 = localaa.feedObject.getMediaList().get(paramInt);
+      p.g(localObject1, "feed.feedObject.mediaList[position]");
+      localObject1 = (cjl)localObject1;
+      Object localObject2 = FinderReporterUIC.wzC;
+      localObject2 = this.qhp.getContext();
+      p.g(localObject2, "holder.context");
+      localObject2 = FinderReporterUIC.a.fH((Context)localObject2);
+      if (localObject2 != null)
       {
-        paramValueAnimator = new v("null cannot be cast to non-null type kotlin.Int");
-        AppMethodBeat.o(201852);
-        throw paramValueAnimator;
+        localObject2 = FinderReporterUIC.a((FinderReporterUIC)localObject2);
+        if (localObject2 != null)
+        {
+          localObject2 = new ag((c)localObject2).doV();
+          long l = localaa.feedObject.getId();
+          String str = localaa.feedObject.getObjectNonceId();
+          LinkedList localLinkedList = new LinkedList((Collection)localaa.feedObject.getMediaList());
+          p.g(localaa, "feed");
+          ((ag.a)localObject2).a(l, (cjl)localObject1, str, paramInt, localLinkedList, (BaseFinderFeed)localaa, paramBoolean2);
+          AppMethodBeat.o(243074);
+          return;
+        }
       }
-      localFinderPostProgressView.setProgress(((Integer)paramValueAnimator).intValue());
-      this.rXm.rXi.invalidate();
-      AppMethodBeat.o(201852);
+      AppMethodBeat.o(243074);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.aa
  * JD-Core Version:    0.7.0.1
  */

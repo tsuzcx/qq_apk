@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView android:id="@id/g8t" android:layout_width="100.0dip" android:layout_height="100.0dip" android:scaleType="centerCrop" />
-        <ImageView android:id="@id/fsv" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip">
+        <include layout="@layout/atj" />
+    </LinearLayout>
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:layout_marginBottom="66.0dip" android:src="@drawable/bgl" />
+    <Button android:textSize="20.0dip" android:id="@id/fu5" android:layout_marginLeft="50.0dip" android:layout_marginRight="50.0dip" android:text="@string/h1w" style="@style/ou" />
 </LinearLayout>

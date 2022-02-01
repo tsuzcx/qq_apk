@@ -9,16 +9,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class MMFormSelectorView
   extends LinearLayout
 {
   private String hint;
-  private TextView iYj;
+  private TextView jVO;
   private int layout;
   private Context mContext;
-  private EditText mqR;
+  private EditText nBD;
   private String title;
   
   public MMFormSelectorView(Context paramContext, AttributeSet paramAttributeSet)
@@ -52,13 +52,13 @@ public class MMFormSelectorView
   public String getText()
   {
     AppMethodBeat.i(141933);
-    if (this.mqR != null)
+    if (this.nBD != null)
     {
-      String str = this.mqR.getText().toString();
+      String str = this.nBD.getText().toString();
       AppMethodBeat.o(141933);
       return str;
     }
-    ae.e("MicroMsg.MMFormSelectorView", "contentET is null!");
+    Log.e("MicroMsg.MMFormSelectorView", "contentET is null!");
     AppMethodBeat.o(141933);
     return null;
   }
@@ -66,19 +66,19 @@ public class MMFormSelectorView
   public void onFinishInflate()
   {
     AppMethodBeat.i(141927);
-    this.iYj = ((TextView)findViewById(2131305902));
-    this.mqR = ((EditText)findViewById(2131299306));
-    if ((this.iYj == null) || (this.mqR == null))
+    this.jVO = ((TextView)findViewById(2131309195));
+    this.nBD = ((EditText)findViewById(2131299910));
+    if ((this.jVO == null) || (this.nBD == null))
     {
-      ae.w("MicroMsg.MMFormSelectorView", "titleTV : %s, contentET : %s", new Object[] { this.iYj, this.mqR });
+      Log.w("MicroMsg.MMFormSelectorView", "titleTV : %s, contentET : %s", new Object[] { this.jVO, this.nBD });
       AppMethodBeat.o(141927);
       return;
     }
     if (this.title != null) {
-      this.iYj.setText(this.title);
+      this.jVO.setText(this.title);
     }
     if (this.hint != null) {
-      this.mqR.setHint(this.hint);
+      this.nBD.setHint(this.hint);
     }
     AppMethodBeat.o(141927);
   }
@@ -86,71 +86,71 @@ public class MMFormSelectorView
   public void setHint(int paramInt)
   {
     AppMethodBeat.i(141931);
-    if (this.mqR != null)
+    if (this.nBD != null)
     {
-      this.mqR.setHint(paramInt);
+      this.nBD.setHint(paramInt);
       AppMethodBeat.o(141931);
       return;
     }
-    ae.e("MicroMsg.MMFormSelectorView", "contentET is null!");
+    Log.e("MicroMsg.MMFormSelectorView", "contentET is null!");
     AppMethodBeat.o(141931);
   }
   
   public void setHint(String paramString)
   {
     AppMethodBeat.i(141929);
-    if (this.mqR != null)
+    if (this.nBD != null)
     {
-      this.mqR.setHint(paramString);
+      this.nBD.setHint(paramString);
       AppMethodBeat.o(141929);
       return;
     }
-    ae.e("MicroMsg.MMFormSelectorView", "contentET is null!");
+    Log.e("MicroMsg.MMFormSelectorView", "contentET is null!");
     AppMethodBeat.o(141929);
   }
   
   public void setText(String paramString)
   {
     AppMethodBeat.i(141932);
-    if (this.mqR != null)
+    if (this.nBD != null)
     {
-      this.mqR.setText(paramString);
+      this.nBD.setText(paramString);
       AppMethodBeat.o(141932);
       return;
     }
-    ae.e("MicroMsg.MMFormSelectorView", "contentET is null!");
+    Log.e("MicroMsg.MMFormSelectorView", "contentET is null!");
     AppMethodBeat.o(141932);
   }
   
   public void setTitle(int paramInt)
   {
     AppMethodBeat.i(141930);
-    if (this.iYj != null)
+    if (this.jVO != null)
     {
-      this.iYj.setText(paramInt);
+      this.jVO.setText(paramInt);
       AppMethodBeat.o(141930);
       return;
     }
-    ae.e("MicroMsg.MMFormSelectorView", "titleTV is null!");
+    Log.e("MicroMsg.MMFormSelectorView", "titleTV is null!");
     AppMethodBeat.o(141930);
   }
   
   public void setTitle(String paramString)
   {
     AppMethodBeat.i(141928);
-    if (this.iYj != null)
+    if (this.jVO != null)
     {
-      this.iYj.setText(paramString);
+      this.jVO.setText(paramString);
       AppMethodBeat.o(141928);
       return;
     }
-    ae.e("MicroMsg.MMFormSelectorView", "titleTV is null!");
+    Log.e("MicroMsg.MMFormSelectorView", "titleTV is null!");
     AppMethodBeat.o(141928);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFormSelectorView
  * JD-Core Version:    0.7.0.1
  */

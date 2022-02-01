@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.topstory.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dpa;
+import com.tencent.mm.protocal.protobuf.eiw;
 
 public final class c
 {
-  public dpa BIY;
-  public boolean BIZ;
-  public boolean sDg;
-  public long tNh;
+  public eiw GjH;
+  public boolean GjI;
+  public boolean vtY;
+  public long xeh;
   
-  public c(dpa paramdpa)
+  public c(eiw parameiw)
   {
     AppMethodBeat.i(91003);
-    this.BIY = paramdpa;
-    this.tNh = System.currentTimeMillis();
+    this.GjH = parameiw;
+    this.xeh = System.currentTimeMillis();
     AppMethodBeat.o(91003);
   }
   
@@ -27,14 +27,14 @@ public final class c
       return false;
     }
     paramObject = (c)paramObject;
-    boolean bool = this.BIY.udb.equals(paramObject.BIY.udb);
+    boolean bool = this.GjH.psI.equals(paramObject.GjH.psI);
     AppMethodBeat.o(91004);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -14,14 +14,14 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.l;
+import android.support.v7.widget.RecyclerView.v;
 import android.support.v7.widget.as;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
@@ -44,22 +44,23 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.cw;
-import com.tencent.mm.g.a.cw.b;
-import com.tencent.mm.g.a.gu;
-import com.tencent.mm.g.a.gx;
-import com.tencent.mm.g.a.gx.b;
-import com.tencent.mm.g.a.qi;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.a.cz;
+import com.tencent.mm.g.a.cz.b;
+import com.tencent.mm.g.a.gy;
+import com.tencent.mm.g.a.hb;
+import com.tencent.mm.g.a.hb.b;
+import com.tencent.mm.g.a.rc;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.h.a;
 import com.tencent.mm.plugin.fav.a.x;
 import com.tencent.mm.plugin.fav.ui.detail.BaseFavDetailReportUI;
 import com.tencent.mm.plugin.fav.ui.j;
-import com.tencent.mm.plugin.wenote.model.a.m;
+import com.tencent.mm.plugin.multitask.b.b.a;
+import com.tencent.mm.plugin.wenote.model.a.l;
 import com.tencent.mm.plugin.wenote.model.a.w;
 import com.tencent.mm.plugin.wenote.model.nativenote.c.e.10;
 import com.tencent.mm.plugin.wenote.model.nativenote.c.e.11;
@@ -73,233 +74,237 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.d.a;
 import com.tencent.mm.plugin.wenote.model.nativenote.manager.g.a;
 import com.tencent.mm.plugin.wenote.ui.nativenote.adapter.NoteLinearLayoutManager;
-import com.tencent.mm.protocal.protobuf.ajx;
-import com.tencent.mm.protocal.protobuf.akn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.protocal.protobuf.anb;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.e.e;
 import com.tencent.mm.ui.widget.snackbar.a.b;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 public class NoteEditorUI
   extends BaseFavDetailReportUI
-  implements com.tencent.mm.ak.f, com.tencent.mm.plugin.wenote.model.nativenote.b.a, g.a, a
+  implements com.tencent.mm.ak.i, com.tencent.mm.plugin.wenote.model.nativenote.b.a, g.a, a
 {
-  boolean ERj;
-  boolean ERx;
-  private int EST;
-  com.tencent.mm.plugin.wenote.model.nativenote.manager.k ETB;
-  private com.tencent.mm.plugin.wenote.ui.nativenote.adapter.b ETC;
-  private LinearLayout ETD;
-  private c ETE;
-  private RelativeLayout ETF;
-  private com.tencent.mm.plugin.wenote.model.nativenote.manager.g ETG;
-  private TextView ETH;
-  private boolean ETI;
-  boolean ETJ;
-  private boolean ETK;
-  private String ETL;
-  private NoteLinearLayoutManager ETM;
-  private boolean ETN;
-  private a ETO;
-  private boolean ETP;
-  private final Object ETQ;
-  private String ETR;
-  private int ETS;
-  private int ETT;
-  private int ETU;
-  private String[] ETV;
-  private boolean ETW;
-  private long ETX;
-  private boolean ETY;
-  private String ETZ;
-  boolean EUa;
-  private boolean EUb;
-  private boolean EUc;
-  private com.tencent.mm.plugin.wenote.b.b EUd;
-  private boolean EUe;
-  private boolean EUf;
-  ViewTreeObserver.OnGlobalLayoutListener EUg;
-  private boolean EUh;
-  private com.tencent.mm.sdk.b.c<gu> EUi;
-  private int afo;
-  ViewTreeObserver.OnGlobalLayoutListener ajt;
-  private RecyclerView anl;
-  long doE;
-  private ProgressDialog fOC;
-  private aq gKO;
-  private boolean hLB;
-  private float keU;
-  private float keV;
+  boolean JGV;
+  boolean JHk;
+  private int JIH;
+  private TextView JJA;
+  private boolean JJB;
+  boolean JJC;
+  private boolean JJD;
+  private String JJE;
+  private NoteLinearLayoutManager JJF;
+  private boolean JJG;
+  private a JJH;
+  private boolean JJI;
+  private final Object JJJ;
+  private String JJK;
+  private int JJL;
+  private int JJM;
+  private String[] JJN;
+  private boolean JJO;
+  private long JJP;
+  private boolean JJQ;
+  private String JJR;
+  boolean JJS;
+  private boolean JJT;
+  private boolean JJU;
+  private com.tencent.mm.plugin.wenote.multitask.a JJV;
+  private boolean JJW;
+  private boolean JJX;
+  private boolean JJY;
+  ViewTreeObserver.OnGlobalLayoutListener JJZ;
+  com.tencent.mm.plugin.wenote.model.nativenote.manager.k JJu;
+  private com.tencent.mm.plugin.wenote.ui.nativenote.adapter.b JJv;
+  private LinearLayout JJw;
+  private c JJx;
+  private RelativeLayout JJy;
+  private com.tencent.mm.plugin.wenote.model.nativenote.manager.g JJz;
+  private boolean JKa;
+  private IListener<gy> JKb;
+  private com.tencent.mm.plugin.wenote.b.a UtI;
+  private int afB;
+  ViewTreeObserver.OnGlobalLayoutListener ajG;
+  private ProgressDialog gtM;
+  private MMHandler hAk;
+  private boolean iGD;
+  private float liD;
+  private float liE;
+  long localId;
   private View mContentView;
+  private int mLastOffset;
+  private RecyclerView mRecyclerView;
   private long msgId;
-  private ajx pyA;
-  View.OnTouchListener pyB;
-  private LinearLayout pym;
-  private boolean pyq;
-  private int pyr;
-  private RecyclerView.m pys;
-  private boolean pyt;
-  private boolean pyx;
-  private int pyy;
-  private boolean pyz;
-  private String qiw;
-  private com.tencent.mm.ui.base.p qpG;
-  private String ruE;
-  protected a.b ufz;
+  private LinearLayout qND;
+  private boolean qNH;
+  private int qNI;
+  private RecyclerView.l qNJ;
+  private boolean qNK;
+  private boolean qNO;
+  private int qNP;
+  private boolean qNQ;
+  private aml qNR;
+  View.OnTouchListener qNS;
+  private com.tencent.mm.ui.base.q rGN;
+  private String rzs;
+  private String sUB;
+  protected a.b xxK;
   
   public NoteEditorUI()
   {
     AppMethodBeat.i(30749);
-    this.ETE = null;
-    this.ETF = null;
-    this.ETG = null;
+    this.JJx = null;
+    this.JJy = null;
+    this.JJz = null;
     this.mContentView = null;
-    this.ETH = null;
-    this.ETI = false;
+    this.JJA = null;
+    this.JJB = false;
     this.msgId = -1L;
-    this.doE = -1L;
-    this.qiw = "";
-    this.ERj = false;
-    this.ETJ = false;
-    this.ERx = false;
-    this.ETK = false;
-    this.ETL = "";
-    this.pyt = false;
-    this.fOC = null;
-    this.ETN = false;
-    this.ETP = false;
-    this.ETQ = new Object();
-    this.pym = null;
-    this.ETR = "";
-    this.afo = 0;
-    this.ETS = 0;
-    this.ETT = 0;
-    this.ETU = 0;
-    this.ETV = null;
-    this.ETW = true;
-    this.ETX = 0L;
-    this.ETY = false;
-    this.EUa = false;
-    this.EUb = false;
-    this.EUc = false;
-    this.pyq = true;
-    this.pyr = 0;
-    this.pys = null;
-    this.EUe = false;
-    this.EUf = false;
-    this.ajt = new ViewTreeObserver.OnGlobalLayoutListener()
+    this.localId = -1L;
+    this.rzs = "";
+    this.JGV = false;
+    this.JJC = false;
+    this.JHk = false;
+    this.JJD = false;
+    this.JJE = "";
+    this.qNK = false;
+    this.gtM = null;
+    this.JJG = false;
+    this.JJI = false;
+    this.JJJ = new Object();
+    this.qND = null;
+    this.JJK = "";
+    this.afB = 0;
+    this.mLastOffset = 0;
+    this.JJL = 0;
+    this.JJM = 0;
+    this.JJN = null;
+    this.JJO = true;
+    this.JJP = 0L;
+    this.JJQ = false;
+    this.JJS = false;
+    this.JJT = false;
+    this.JJU = false;
+    this.qNH = true;
+    this.qNI = 0;
+    this.qNJ = null;
+    this.JJW = false;
+    this.JJX = false;
+    this.JJY = false;
+    this.ajG = new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(30739);
         long l = System.currentTimeMillis();
-        ae.i("MicroMsg.Note.NoteEditorUI", "startnoteeditorui, onGlobalLayout, current time is %d,from oncreate to dataloading, cost %d", new Object[] { Long.valueOf(l), Long.valueOf(l - NoteEditorUI.O(NoteEditorUI.this)) });
-        ar localar = bc.ajU();
+        Log.i("MicroMsg.Note.NoteEditorUI", "startnoteeditorui, onGlobalLayout, current time is %d,from oncreate to dataloading, cost %d", new Object[] { Long.valueOf(l), Long.valueOf(l - NoteEditorUI.R(NoteEditorUI.this)) });
+        MMHandlerThread localMMHandlerThread = bg.aAk();
         Runnable local1 = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(30738);
-            NoteEditorUI.this.vH(false);
+            NoteEditorUI.this.zD(false);
             AppMethodBeat.o(30738);
           }
         };
         if (NoteEditorUI.d(NoteEditorUI.this) == 1) {}
         for (l = 100L;; l = 0L)
         {
-          localar.n(local1, l);
-          NoteEditorUI.P(NoteEditorUI.this).getViewTreeObserver().removeGlobalOnLayoutListener(NoteEditorUI.this.ajt);
+          localMMHandlerThread.postToWorkerDelayed(local1, l);
+          NoteEditorUI.S(NoteEditorUI.this).getViewTreeObserver().removeGlobalOnLayoutListener(NoteEditorUI.this.ajG);
           AppMethodBeat.o(30739);
           return;
         }
       }
     };
-    this.EUg = new ViewTreeObserver.OnGlobalLayoutListener()
+    this.JJZ = new ViewTreeObserver.OnGlobalLayoutListener()
     {
       public final void onGlobalLayout()
       {
         AppMethodBeat.i(30740);
-        ae.i("MicroMsg.Note.NoteEditorUI", "mOnGlobalLayoutComplaintListener scrollRange:" + NoteEditorUI.P(NoteEditorUI.this).computeVerticalScrollRange());
-        if (NoteEditorUI.Q(NoteEditorUI.this) != null)
+        Log.i("MicroMsg.Note.NoteEditorUI", "mOnGlobalLayoutComplaintListener scrollRange:" + NoteEditorUI.S(NoteEditorUI.this).computeVerticalScrollRange());
+        if (NoteEditorUI.T(NoteEditorUI.this) != null)
         {
-          if (NoteEditorUI.P(NoteEditorUI.this).computeVerticalScrollRange() + NoteEditorUI.Q(NoteEditorUI.this).getMeasuredHeight() > NoteEditorUI.P(NoteEditorUI.this).getMeasuredHeight())
+          if (NoteEditorUI.S(NoteEditorUI.this).computeVerticalScrollRange() + NoteEditorUI.T(NoteEditorUI.this).getMeasuredHeight() > NoteEditorUI.S(NoteEditorUI.this).getMeasuredHeight())
           {
-            NoteEditorUI.R(NoteEditorUI.this).EUS = true;
-            NoteEditorUI.R(NoteEditorUI.this).asY.notifyChanged();
-            NoteEditorUI.Q(NoteEditorUI.this).setVisibility(8);
-            NoteEditorUI.P(NoteEditorUI.this).getViewTreeObserver().removeOnGlobalLayoutListener(NoteEditorUI.this.EUg);
+            NoteEditorUI.U(NoteEditorUI.this).JKL = true;
+            NoteEditorUI.U(NoteEditorUI.this).atj.notifyChanged();
+            NoteEditorUI.T(NoteEditorUI.this).setVisibility(8);
+            NoteEditorUI.S(NoteEditorUI.this).getViewTreeObserver().removeOnGlobalLayoutListener(NoteEditorUI.this.JJZ);
             AppMethodBeat.o(30740);
             return;
           }
-          NoteEditorUI.Q(NoteEditorUI.this).setVisibility(0);
+          NoteEditorUI.T(NoteEditorUI.this).setVisibility(0);
         }
         AppMethodBeat.o(30740);
       }
     };
-    this.EUh = false;
-    this.keU = 0.0F;
-    this.keV = 0.0F;
-    this.pyB = new View.OnTouchListener()
+    this.JKa = false;
+    this.liD = 0.0F;
+    this.liE = 0.0F;
+    this.qNS = new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(30691);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$11", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (paramAnonymousMotionEvent.getAction() == 0)
         {
-          NoteEditorUI.a(NoteEditorUI.this, paramAnonymousMotionEvent.getX());
-          NoteEditorUI.b(NoteEditorUI.this, paramAnonymousMotionEvent.getY());
+          NoteEditorUI.b(NoteEditorUI.this, paramAnonymousMotionEvent.getX());
+          NoteEditorUI.a(NoteEditorUI.this, paramAnonymousMotionEvent.getY());
         }
         float f1;
         float f2;
-        if ((paramAnonymousMotionEvent.getAction() == 1) && (NoteEditorUI.P(NoteEditorUI.this).o(paramAnonymousMotionEvent.getX(), paramAnonymousMotionEvent.getY()) == null))
+        if ((paramAnonymousMotionEvent.getAction() == 1) && (NoteEditorUI.S(NoteEditorUI.this).o(paramAnonymousMotionEvent.getX(), paramAnonymousMotionEvent.getY()) == null))
         {
-          f1 = Math.abs(NoteEditorUI.U(NoteEditorUI.this) - paramAnonymousMotionEvent.getX());
-          f2 = Math.abs(NoteEditorUI.V(NoteEditorUI.this) - paramAnonymousMotionEvent.getY());
+          f1 = Math.abs(NoteEditorUI.X(NoteEditorUI.this) - paramAnonymousMotionEvent.getX());
+          f2 = Math.abs(NoteEditorUI.Y(NoteEditorUI.this) - paramAnonymousMotionEvent.getY());
           if ((f1 < 30.0F) && (f2 < 30.0F))
           {
             if (NoteEditorUI.b(NoteEditorUI.this).getVisibility() == 8) {
-              break label223;
+              break label172;
             }
             if (NoteEditorUI.a(NoteEditorUI.this) != null) {
-              NoteEditorUI.a(NoteEditorUI.this).pBe.dismiss();
+              NoteEditorUI.a(NoteEditorUI.this).qQv.dismiss();
             }
             NoteEditorUI.b(NoteEditorUI.this).setVisibility(8);
           }
         }
         for (;;)
         {
-          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$11", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(30691);
           return false;
-          label223:
-          int i = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().size();
-          paramAnonymousView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().YE(i - 1);
+          label172:
+          int i = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().size();
+          paramAnonymousView = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().ahp(i - 1);
           if (paramAnonymousView != null)
           {
-            boolean bool = paramAnonymousView.pAj;
-            com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfB();
-            paramAnonymousView.pAj = true;
-            paramAnonymousView.pAp = false;
-            paramAnonymousView.pAl = -1;
-            NoteEditorUI.R(NoteEditorUI.this).cj(i - 1);
+            boolean bool = paramAnonymousView.qPA;
+            com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDr();
+            paramAnonymousView.qPA = true;
+            paramAnonymousView.qPG = false;
+            paramAnonymousView.qPC = -1;
+            NoteEditorUI.U(NoteEditorUI.this).ci(i - 1);
             NoteEditorUI.this.e(true, 50L);
-            NoteEditorUI.this.N(1, 0L);
+            NoteEditorUI.this.Q(1, 0L);
             if ((NoteEditorUI.M(NoteEditorUI.this)) && (bool))
             {
               NoteEditorUI.D(NoteEditorUI.this).postDelayed(new Runnable()
@@ -307,27 +312,27 @@ public class NoteEditorUI
                 public final void run()
                 {
                   AppMethodBeat.i(30690);
-                  com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().kk(true);
-                  com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().kj(true);
+                  com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().ln(true);
+                  com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().lm(true);
                   AppMethodBeat.o(30690);
                 }
               }, 100L);
               continue;
               if (paramAnonymousMotionEvent.getAction() == 2)
               {
-                f1 = Math.abs(NoteEditorUI.U(NoteEditorUI.this) - paramAnonymousMotionEvent.getX());
-                f2 = Math.abs(NoteEditorUI.V(NoteEditorUI.this) - paramAnonymousMotionEvent.getY());
+                f1 = Math.abs(NoteEditorUI.X(NoteEditorUI.this) - paramAnonymousMotionEvent.getX());
+                f2 = Math.abs(NoteEditorUI.Y(NoteEditorUI.this) - paramAnonymousMotionEvent.getY());
                 if ((f1 > 120.0F) || (f2 > 120.0F)) {
                   if (NoteEditorUI.M(NoteEditorUI.this))
                   {
-                    if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgd() == 1)
+                    if (com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().getSelectType() == 1)
                     {
-                      NoteEditorUI.this.ceN();
-                      com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgj();
+                      NoteEditorUI.this.cCD();
+                      com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cDY();
                     }
                   }
-                  else if (!NoteEditorUI.W(NoteEditorUI.this)) {
-                    NoteEditorUI.this.ceN();
+                  else if (!NoteEditorUI.Z(NoteEditorUI.this)) {
+                    NoteEditorUI.this.cCD();
                   }
                 }
               }
@@ -336,71 +341,43 @@ public class NoteEditorUI
         }
       }
     };
-    this.qpG = null;
-    this.pyx = false;
-    this.pyy = -1;
-    this.pyz = false;
-    this.ufz = new NoteEditorUI.18(this);
-    this.EUi = new com.tencent.mm.sdk.b.c()
+    this.rGN = null;
+    this.qNO = false;
+    this.qNP = -1;
+    this.qNQ = false;
+    this.xxK = new a.b()
     {
-      private boolean fbd()
+      public final void bDZ()
+      {
+        AppMethodBeat.i(30709);
+        hb localhb = new hb();
+        localhb.dLm.type = 35;
+        EventCenter.instance.publish(localhb);
+        AppMethodBeat.o(30709);
+      }
+    };
+    this.JKb = new IListener()
+    {
+      private boolean gkj()
       {
         AppMethodBeat.i(179748);
-        ae.i("MicroMsg.Note.NoteEditorUI", "FavNoteSaveEvent, isFinish:%s", new Object[] { Boolean.valueOf(NoteEditorUI.aj(NoteEditorUI.this)) });
+        Log.i("MicroMsg.Note.NoteEditorUI", "FavNoteSaveEvent, isFinish:%s", new Object[] { Boolean.valueOf(NoteEditorUI.an(NoteEditorUI.this)) });
         NoteEditorUI.this.goBack();
-        if (!NoteEditorUI.aj(NoteEditorUI.this)) {
+        if (!NoteEditorUI.an(NoteEditorUI.this)) {
           NoteEditorUI.this.finish();
         }
         AppMethodBeat.o(179748);
         return true;
       }
     };
-    this.hLB = false;
+    this.iGD = false;
     AppMethodBeat.o(30749);
   }
   
-  private void aLG(final String paramString)
-  {
-    AppMethodBeat.i(30757);
-    final int i = this.ETB.ESQ;
-    final String str = this.ETB.ESR;
-    final long l = this.ETB.ESS;
-    akn localakn = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().abO(paramString);
-    bc.ajU().aw(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(30743);
-        NoteEditorUI.this.a(paramString, true, false, i, str, l, this.EUn);
-        AppMethodBeat.o(30743);
-      }
-    });
-    AppMethodBeat.o(30757);
-  }
-  
-  private void aLH(final String paramString)
-  {
-    AppMethodBeat.i(30758);
-    final int i = this.ETB.ESQ;
-    final String str = this.ETB.ESR;
-    final long l = this.ETB.ESS;
-    akn localakn = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().abO(paramString);
-    bc.ajU().aw(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(30689);
-        NoteEditorUI.this.a(paramString, false, false, i, str, l, this.EUn);
-        AppMethodBeat.o(30689);
-      }
-    });
-    AppMethodBeat.o(30758);
-  }
-  
-  static boolean abA(String paramString)
+  static boolean alG(String paramString)
   {
     AppMethodBeat.i(30772);
-    if (bu.isNullOrNil(com.tencent.mm.plugin.wenote.c.b.abK(paramString)))
+    if (Util.isNullOrNil(com.tencent.mm.plugin.wenote.c.b.alQ(paramString)))
     {
       AppMethodBeat.o(30772);
       return true;
@@ -409,12 +386,50 @@ public class NoteEditorUI
     return false;
   }
   
-  private boolean ceZ()
+  private void bbX(final String paramString)
+  {
+    AppMethodBeat.i(30757);
+    final int i = this.JJu.JIE;
+    final String str = this.JJu.JIF;
+    final long l = this.JJu.JIG;
+    anb localanb = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().alU(paramString);
+    bg.aAk().postToWorker(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(30743);
+        NoteEditorUI.this.a(paramString, true, false, i, str, l, this.JKg);
+        AppMethodBeat.o(30743);
+      }
+    });
+    AppMethodBeat.o(30757);
+  }
+  
+  private void bbY(final String paramString)
+  {
+    AppMethodBeat.i(30758);
+    final int i = this.JJu.JIE;
+    final String str = this.JJu.JIF;
+    final long l = this.JJu.JIG;
+    anb localanb = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().alU(paramString);
+    bg.aAk().postToWorker(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(30689);
+        NoteEditorUI.this.a(paramString, false, false, i, str, l, this.JKg);
+        AppMethodBeat.o(30689);
+      }
+    });
+    AppMethodBeat.o(30758);
+  }
+  
+  private boolean cCP()
   {
     AppMethodBeat.i(30753);
-    if ((this.ETE != null) && (this.ETE.pEG))
+    if ((this.JJx != null) && (this.JJx.qTX))
     {
-      ceJ();
+      cCz();
       AppMethodBeat.o(30753);
       return false;
     }
@@ -422,13 +437,13 @@ public class NoteEditorUI
     return true;
   }
   
-  private void cnq()
+  private void cLD()
   {
     AppMethodBeat.i(30802);
-    if (this.qpG != null)
+    if (this.rGN != null)
     {
-      this.qpG.dismiss();
-      this.qpG = null;
+      this.rGN.dismiss();
+      this.rGN = null;
     }
     AppMethodBeat.o(30802);
   }
@@ -440,8 +455,8 @@ public class NoteEditorUI
     boolean bool4;
     if (paramq != null)
     {
-      bool4 = paramq.ESe;
-      if (this.EST != 1) {
+      bool4 = paramq.JHR;
+      if (this.JIH != 1) {
         break label85;
       }
     }
@@ -450,13 +465,13 @@ public class NoteEditorUI
     {
       bool2 = bool3;
       if (bool4 == bool1) {
-        if ((this.EST != 1) || (paramq.ESg != this.msgId))
+        if ((this.JIH != 1) || (paramq.JHT != this.msgId))
         {
           bool2 = bool3;
-          if (this.EST == 2)
+          if (this.JIH == 2)
           {
             bool2 = bool3;
-            if (paramq.ESf != this.doE) {}
+            if (paramq.JHS != this.localId) {}
           }
         }
         else
@@ -468,24 +483,15 @@ public class NoteEditorUI
     }
   }
   
-  private void faY()
-  {
-    AppMethodBeat.i(30755);
-    if (this.EUd != null) {
-      this.EUd.WY(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().aLF(getString(2131766212)));
-    }
-    AppMethodBeat.o(30755);
-  }
-  
-  private boolean fbb()
+  private boolean gkg()
   {
     AppMethodBeat.i(30800);
-    gx localgx = new gx();
-    localgx.dub.type = 19;
-    localgx.dub.doH = this.doE;
-    localgx.dub.dui = -1;
-    com.tencent.mm.sdk.b.a.IvT.l(localgx);
-    if (!localgx.duc.dus)
+    hb localhb = new hb();
+    localhb.dLm.type = 19;
+    localhb.dLm.dFW = this.localId;
+    localhb.dLm.dLt = -1;
+    EventCenter.instance.publish(localhb);
+    if (!localhb.dLn.dLD)
     {
       AppMethodBeat.o(30800);
       return true;
@@ -494,18 +500,55 @@ public class NoteEditorUI
     return false;
   }
   
-  public static void fbc()
+  public static void gkh()
   {
     AppMethodBeat.i(30803);
-    ae.i("MicroMsg.Note.NoteEditorUI", "dealExpose()");
+    Log.i("MicroMsg.Note.NoteEditorUI", "dealExpose()");
     Intent localIntent = new Intent();
     localIntent.putExtra("showShare", false);
-    localIntent.putExtra("rawUrl", String.format("https://weixin110.qq.com/security/readtemplate?t=weixin_report/w_type&scene=%d#wechat_redirect", new Object[] { Integer.valueOf(57) }));
-    com.tencent.mm.br.d.b(ak.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
+    localIntent.putExtra("rawUrl", String.format(e.e.OyU, new Object[] { Integer.valueOf(57) }));
+    com.tencent.mm.br.c.b(MMApplicationContext.getContext(), "webview", ".ui.tools.WebViewUI", localIntent);
     AppMethodBeat.o(30803);
   }
   
-  public final void BH(final int paramInt)
+  private void gki()
+  {
+    AppMethodBeat.i(232135);
+    int i = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().size();
+    int j = this.mRecyclerView.getChildCount();
+    if (i == j)
+    {
+      i = j - 1;
+      float f1 = 0.0F;
+      if (i >= 0)
+      {
+        View localView = this.mRecyclerView.getChildAt(i);
+        float f2 = u.ae(localView);
+        if (f1 > localView.getBottom() + f2) {}
+        for (;;)
+        {
+          i -= 1;
+          break;
+          f1 = localView.getBottom() + f2;
+        }
+      }
+      if ((f1 < com.tencent.mm.compatible.util.i.getScreenWH(getApplicationContext())[1]) && (f1 > 0.0F)) {
+        this.JJY = true;
+      }
+    }
+    AppMethodBeat.o(232135);
+  }
+  
+  private void hea()
+  {
+    AppMethodBeat.i(30755);
+    if (this.UtI != null) {
+      this.UtI.agT(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().bbV(getString(2131768720)));
+    }
+    AppMethodBeat.o(30755);
+  }
+  
+  public final void Fr(final int paramInt)
   {
     AppMethodBeat.i(30761);
     Handler localHandler = getWindow().getDecorView().getHandler();
@@ -519,88 +562,76 @@ public class NoteEditorUI
       public final void run()
       {
         AppMethodBeat.i(30692);
-        ae.i("MicroMsg.Note.NoteEditorUI", "huahuastart: onNotifyItemChanged,position is %d", new Object[] { Integer.valueOf(paramInt) });
-        NoteEditorUI.R(NoteEditorUI.this).cj(paramInt);
-        ae.i("MicroMsg.Note.NoteEditorUI", "huahuaend: onNotifyItemChanged,position is %d", new Object[] { Integer.valueOf(paramInt) });
+        Log.i("MicroMsg.Note.NoteEditorUI", "huahuastart: onNotifyItemChanged,position is %d", new Object[] { Integer.valueOf(paramInt) });
+        NoteEditorUI.U(NoteEditorUI.this).ci(paramInt);
+        Log.i("MicroMsg.Note.NoteEditorUI", "huahuaend: onNotifyItemChanged,position is %d", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(30692);
       }
     }, 0L);
     AppMethodBeat.o(30761);
   }
   
-  public final void BI(int paramInt)
+  public final void Fs(int paramInt)
   {
     AppMethodBeat.i(30763);
     try
     {
-      this.ETC.ck(paramInt);
+      this.JJv.cj(paramInt);
       AppMethodBeat.o(30763);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.Note.NoteEditorUI", localException, "", new Object[0]);
-      ae.e("MicroMsg.Note.NoteEditorUI", "onNotifyItemInserted error,positionStart:%d", new Object[] { Integer.valueOf(paramInt) });
+      Log.printErrStackTrace("MicroMsg.Note.NoteEditorUI", localException, "", new Object[0]);
+      Log.e("MicroMsg.Note.NoteEditorUI", "onNotifyItemInserted error,positionStart:%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(30763);
     }
   }
   
-  public final void BJ(int paramInt)
+  public final void Ft(int paramInt)
   {
     AppMethodBeat.i(30762);
     try
     {
-      this.ETC.cl(paramInt);
+      this.JJv.ck(paramInt);
       AppMethodBeat.o(30762);
       return;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.Note.NoteEditorUI", "onNotifyItemRemoved error,positionStart:%d", new Object[] { Integer.valueOf(paramInt) });
+      Log.e("MicroMsg.Note.NoteEditorUI", "onNotifyItemRemoved error,positionStart:%d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(30762);
     }
   }
   
-  public final void BK(final int paramInt)
+  public final void Fu(int paramInt)
   {
     AppMethodBeat.i(30795);
-    if ((paramInt < 0) || (paramInt >= com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().size()))
+    if ((paramInt < 0) || (paramInt >= com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().size()))
     {
       AppMethodBeat.o(30795);
       return;
     }
-    this.gKO.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(30717);
-        RecyclerView localRecyclerView = NoteEditorUI.P(NoteEditorUI.this);
-        com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(paramInt, new com.tencent.mm.hellhoundlib.b.a());
-        com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, locala.ahE(), "com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$33", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
-        localRecyclerView.ca(((Integer)locala.mt(0)).intValue());
-        com.tencent.mm.hellhoundlib.a.a.a(localRecyclerView, "com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$33", "run", "()V", "Undefined", "scrollToPosition", "(I)V");
-        AppMethodBeat.o(30717);
-      }
-    });
+    this.hAk.post(new NoteEditorUI.26(this, paramInt));
     AppMethodBeat.o(30795);
   }
   
-  public final void N(final int paramInt, long paramLong)
+  public final void Q(final int paramInt, long paramLong)
   {
     AppMethodBeat.i(30787);
-    ae.i("MicroMsg.Note.NoteEditorUI", "onUpdateToolBarVisibility, style:%s, delay:%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-    if ((this.EST != 2) || (!this.ETB.ESU))
+    Log.i("MicroMsg.Note.NoteEditorUI", "onUpdateToolBarVisibility, style:%s, delay:%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    if ((this.JIH != 2) || (!this.JJu.JII))
     {
       AppMethodBeat.o(30787);
       return;
     }
-    this.gKO.postDelayed(new Runnable()
+    this.hAk.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(30715);
-        ImageButton localImageButton = (ImageButton)NoteEditorUI.T(NoteEditorUI.this).findViewById(2131306983);
-        View localView = NoteEditorUI.T(NoteEditorUI.this).findViewById(2131306984);
+        ImageButton localImageButton = (ImageButton)NoteEditorUI.W(NoteEditorUI.this).findViewById(2131310483);
+        View localView = NoteEditorUI.W(NoteEditorUI.this).findViewById(2131310484);
         switch (paramInt)
         {
         }
@@ -608,30 +639,30 @@ public class NoteEditorUI
         {
           AppMethodBeat.o(30715);
           return;
-          NoteEditorUI.ai(NoteEditorUI.this).setVisibility(8);
-          if (!NoteEditorUI.g(NoteEditorUI.this).pEG)
+          NoteEditorUI.am(NoteEditorUI.this).setVisibility(8);
+          if (!NoteEditorUI.g(NoteEditorUI.this).qTX)
           {
-            NoteEditorUI.T(NoteEditorUI.this).setVisibility(8);
+            NoteEditorUI.W(NoteEditorUI.this).setVisibility(8);
             AppMethodBeat.o(30715);
             return;
           }
-          NoteEditorUI.T(NoteEditorUI.this).setVisibility(0);
+          NoteEditorUI.W(NoteEditorUI.this).setVisibility(0);
           AppMethodBeat.o(30715);
           return;
-          localImageButton.setImageResource(2131690952);
+          localImageButton.setImageResource(2131691249);
           localView.setVisibility(8);
-          NoteEditorUI.T(NoteEditorUI.this).setVisibility(0);
-          NoteEditorUI.ai(NoteEditorUI.this).setVisibility(8);
+          NoteEditorUI.W(NoteEditorUI.this).setVisibility(0);
+          NoteEditorUI.am(NoteEditorUI.this).setVisibility(8);
           AppMethodBeat.o(30715);
           return;
-          NoteEditorUI.T(NoteEditorUI.this).setVisibility(0);
-          NoteEditorUI.ai(NoteEditorUI.this).setVisibility(8);
+          NoteEditorUI.W(NoteEditorUI.this).setVisibility(0);
+          NoteEditorUI.am(NoteEditorUI.this).setVisibility(8);
           AppMethodBeat.o(30715);
           return;
-          localImageButton.setImageResource(2131690951);
+          localImageButton.setImageResource(2131691248);
           localView.setVisibility(0);
-          NoteEditorUI.T(NoteEditorUI.this).setVisibility(0);
-          NoteEditorUI.ai(NoteEditorUI.this).setVisibility(0);
+          NoteEditorUI.W(NoteEditorUI.this).setVisibility(0);
+          NoteEditorUI.am(NoteEditorUI.this).setVisibility(0);
         }
       }
     }, paramLong);
@@ -642,7 +673,7 @@ public class NoteEditorUI
   {
     AppMethodBeat.i(30789);
     if (paramWXRTEditText != null) {
-      if ((com.tencent.mm.plugin.wenote.model.nativenote.manager.f.jhZ == null) || (com.tencent.mm.plugin.wenote.model.nativenote.manager.f.jhZ.size() <= 0)) {
+      if ((com.tencent.mm.plugin.wenote.model.nativenote.manager.f.kgc == null) || (com.tencent.mm.plugin.wenote.model.nativenote.manager.f.kgc.size() <= 0)) {
         break label38;
       }
     }
@@ -652,20 +683,20 @@ public class NoteEditorUI
       AppMethodBeat.o(30789);
       return;
     }
-    ArrayList localArrayList = com.tencent.mm.plugin.wenote.model.nativenote.manager.f.cfu();
-    if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().N(localArrayList))
+    ArrayList localArrayList = com.tencent.mm.plugin.wenote.model.nativenote.manager.f.cDk();
+    if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().U(localArrayList))
     {
-      ceH();
+      cCx();
       AppMethodBeat.o(30789);
       return;
     }
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().a(localArrayList, paramWXRTEditText, true, true, false, false);
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().a(localArrayList, paramWXRTEditText, true, true, false, false);
     i = paramWXRTEditText.getRecyclerItemPosition();
     int j = localArrayList.size();
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().fh(i, j + i + 1);
-    ceN();
-    if (this.pyq) {
-      com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgj();
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().fx(i, j + i + 1);
+    cCD();
+    if (this.qNH) {
+      com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cDY();
     }
     AppMethodBeat.o(30789);
   }
@@ -673,75 +704,75 @@ public class NoteEditorUI
   public final void a(WXRTEditText paramWXRTEditText, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(30783);
-    if ((this.EST != 2) || (!this.ETB.ESU))
+    if ((this.JIH != 2) || (!this.JJu.JII))
     {
       AppMethodBeat.o(30783);
       return;
     }
-    ((NoteLinearLayoutManager)this.anl.getLayoutManager()).pyS = paramBoolean;
-    if (this.pyt) {
-      ((NoteLinearLayoutManager)this.anl.getLayoutManager()).pyS = false;
+    ((NoteLinearLayoutManager)this.mRecyclerView.getLayoutManager()).qOj = paramBoolean;
+    if (this.qNK) {
+      ((NoteLinearLayoutManager)this.mRecyclerView.getLayoutManager()).qOj = false;
     }
     if (paramBoolean)
     {
-      if ((!this.ERj) && (!this.ETJ))
+      if ((!this.JGV) && (!this.JJC))
       {
-        this.ETL = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfG();
-        this.ETJ = true;
+        this.JJE = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDw();
+        this.JJC = true;
       }
       if ((paramWXRTEditText != null) && (paramWXRTEditText.getEditTextType() == 1))
       {
-        com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().aa(paramInt, true);
+        com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().ag(paramInt, true);
         AppMethodBeat.o(30783);
         return;
       }
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().aa(paramInt, false);
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().ag(paramInt, false);
       AppMethodBeat.o(30783);
       return;
     }
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().Z(-1, false);
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().af(-1, false);
     AppMethodBeat.o(30783);
   }
   
-  public final void a(String paramString1, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString2, long paramLong, akn paramakn)
+  public final void a(String paramString1, boolean paramBoolean1, boolean paramBoolean2, int paramInt, String paramString2, long paramLong, anb paramanb)
   {
     AppMethodBeat.i(179751);
-    ae.i("MicroMsg.Note.NoteEditorUI", "setEditorExportLogic,htmlLength: %s, isInsert:%s, htmlstr:%s", new Object[] { Integer.valueOf(paramString1.length()), Boolean.valueOf(paramBoolean1), paramString1 });
-    if ((!paramBoolean1) && (paramString1.equals(this.ETL)))
+    Log.i("MicroMsg.Note.NoteEditorUI", "setEditorExportLogic,htmlLength: %s, isInsert:%s, htmlstr:%s", new Object[] { Integer.valueOf(paramString1.length()), Boolean.valueOf(paramBoolean1), paramString1 });
+    if ((!paramBoolean1) && (paramString1.equals(this.JJE)))
     {
-      if ((!this.EUa) && (paramInt > 0) && (!bu.isNullOrNil(paramString2)) && (paramLong > 0L))
+      if ((!this.JJS) && (paramInt > 0) && (!Util.isNullOrNil(paramString2)) && (paramLong > 0L))
       {
-        paramString1 = new gx();
-        paramString1.dub.type = 19;
-        paramString1.dub.dui = -3;
-        paramString1.dub.doH = this.doE;
-        paramakn = new Intent();
-        paramakn.putExtra("fav_note_item_status", paramInt);
-        paramakn.putExtra("fav_note_xml", paramString2);
-        paramakn.putExtra("fav_note_item_updatetime", paramLong);
-        paramString1.dub.due = paramakn;
-        com.tencent.mm.sdk.b.a.IvT.l(paramString1);
+        paramString1 = new hb();
+        paramString1.dLm.type = 19;
+        paramString1.dLm.dLt = -3;
+        paramString1.dLm.dFW = this.localId;
+        paramanb = new Intent();
+        paramanb.putExtra("fav_note_item_status", paramInt);
+        paramanb.putExtra("fav_note_xml", paramString2);
+        paramanb.putExtra("fav_note_item_updatetime", paramLong);
+        paramString1.dLm.dLp = paramanb;
+        EventCenter.instance.publish(paramString1);
       }
       AppMethodBeat.o(179751);
       return;
     }
-    if (paramakn == null)
+    if (paramanb == null)
     {
-      ae.e("MicroMsg.Note.NoteEditorUI", "protoitem is null,return");
+      Log.e("MicroMsg.Note.NoteEditorUI", "protoitem is null,return");
       AppMethodBeat.o(179751);
       return;
     }
     int i;
     if (paramBoolean1)
     {
-      paramString2 = new gx();
-      paramString2.dub.type = 19;
-      paramString2.dub.doN = paramakn;
-      paramString2.dub.title = paramString1;
-      paramString2.dub.doH = this.doE;
-      paramString2.dub.desc = "fav_add_new_note";
-      com.tencent.mm.sdk.b.a.IvT.l(paramString2);
-      ae.i("MicroMsg.Note.NoteEditorUI", "write html to file suc");
+      paramString2 = new hb();
+      paramString2.dLm.type = 19;
+      paramString2.dLm.dGb = paramanb;
+      paramString2.dLm.title = paramString1;
+      paramString2.dLm.dFW = this.localId;
+      paramString2.dLm.desc = "fav_add_new_note";
+      EventCenter.instance.publish(paramString2);
+      Log.i("MicroMsg.Note.NoteEditorUI", "write html to file suc");
       i = 20;
       paramInt = i;
       if (!paramBoolean1) {
@@ -749,12 +780,12 @@ public class NoteEditorUI
       }
       paramInt = i;
       label305:
-      paramString2 = new gx();
-      paramString2.dub.type = 30;
-      paramString2.dub.dui = 6;
-      paramString2.dub.doH = this.doE;
-      com.tencent.mm.sdk.b.a.IvT.l(paramString2);
-      if (paramString2.duc.ret != 1) {
+      paramString2 = new hb();
+      paramString2.dLm.type = 30;
+      paramString2.dLm.dLt = 6;
+      paramString2.dLm.dFW = this.localId;
+      EventCenter.instance.publish(paramString2);
+      if (paramString2.dLn.ret != 1) {
         break label509;
       }
       i = 1;
@@ -762,29 +793,29 @@ public class NoteEditorUI
       if (i == 0) {
         break label515;
       }
-      this.ERj = false;
-      this.ERx = false;
-      this.ETJ = true;
-      ae.i("MicroMsg.Note.NoteEditorUI", "hasUploadToServer: insert");
+      this.JGV = false;
+      this.JHk = false;
+      this.JJC = true;
+      Log.i("MicroMsg.Note.NoteEditorUI", "hasUploadToServer: insert");
     }
     for (;;)
     {
       for (;;)
       {
-        this.ETL = paramString1;
-        ae.i("MicroMsg.Note.NoteEditorUI", "setEditorExportLogic end");
+        this.JJE = paramString1;
+        Log.i("MicroMsg.Note.NoteEditorUI", "setEditorExportLogic end");
         AppMethodBeat.o(179751);
         return;
-        paramString2 = new gx();
-        paramString2.dub.type = 19;
-        paramString2.dub.doN = paramakn;
-        paramString2.dub.title = paramString1;
-        paramString2.dub.doH = this.doE;
-        paramString2.dub.desc = "";
-        if (this.ETK) {
-          paramString2.dub.dui = -2;
+        paramString2 = new hb();
+        paramString2.dLm.type = 19;
+        paramString2.dLm.dGb = paramanb;
+        paramString2.dLm.title = paramString1;
+        paramString2.dLm.dFW = this.localId;
+        paramString2.dLm.desc = "";
+        if (this.JJD) {
+          paramString2.dLm.dLt = -2;
         }
-        com.tencent.mm.sdk.b.a.IvT.l(paramString2);
+        EventCenter.instance.publish(paramString2);
         break;
         label509:
         i = 0;
@@ -799,9 +830,9 @@ public class NoteEditorUI
             break label305;
             label539:
             i = paramInt;
-            paramString2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(this.doE);
+            paramString2 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(this.localId);
             if (com.tencent.mm.plugin.fav.a.b.g(paramString2)) {
-              ae.i("MicroMsg.Note.NoteEditorUI", "hasUploadToServer: update, %s", new Object[] { Integer.valueOf(paramString2.field_itemStatus) });
+              Log.i("MicroMsg.Note.NoteEditorUI", "hasUploadToServer: update, %s", new Object[] { Integer.valueOf(paramString2.field_itemStatus) });
             }
           }
         }
@@ -825,37 +856,251 @@ public class NoteEditorUI
     }
   }
   
-  public final void ceE()
+  public final void cCA()
+  {
+    AppMethodBeat.i(30760);
+    if (this.JJx != null) {
+      this.JJx.a(null);
+    }
+    AppMethodBeat.o(30760);
+  }
+  
+  public final void cCB()
+  {
+    AppMethodBeat.i(30777);
+    com.tencent.mm.ui.base.h.c(this, getString(2131763608), "", getString(2131763607), getString(2131763606), new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(30710);
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cEi();
+        AppMethodBeat.o(30710);
+      }
+    }, null);
+    AppMethodBeat.o(30777);
+  }
+  
+  public final void cCD()
+  {
+    AppMethodBeat.i(30782);
+    if ((this.JIH != 2) || (!this.JJu.JII))
+    {
+      AppMethodBeat.o(30782);
+      return;
+    }
+    int i = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDq();
+    com.tencent.mm.plugin.wenote.model.a.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().ahp(i);
+    if (localc != null)
+    {
+      localc.qPA = false;
+      localc.qPG = false;
+      Fr(i);
+    }
+    this.hAk.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(30711);
+        WXRTEditText localWXRTEditText = NoteEditorUI.l(NoteEditorUI.this).gjQ();
+        if (localWXRTEditText != null) {
+          localWXRTEditText.clearFocus();
+        }
+        AppMethodBeat.o(30711);
+      }
+    });
+    e(false, 0L);
+    Q(0, 0L);
+    AppMethodBeat.o(30782);
+  }
+  
+  public final int cCE()
+  {
+    AppMethodBeat.i(30779);
+    if (this.JJG)
+    {
+      int i = com.tencent.mm.compatible.util.i.getKeyBordHeightPx(this);
+      AppMethodBeat.o(30779);
+      return i;
+    }
+    AppMethodBeat.o(30779);
+    return 0;
+  }
+  
+  public final int cCF()
+  {
+    AppMethodBeat.i(30780);
+    int j = 0;
+    int i = j;
+    if (this.JJw != null)
+    {
+      i = j;
+      if (this.JJw.getVisibility() == 0) {
+        i = this.qNI + 0;
+      }
+    }
+    j = i;
+    if (this.qND != null)
+    {
+      j = i;
+      if (this.qND.getVisibility() == 0) {
+        j = i + this.qNI;
+      }
+    }
+    AppMethodBeat.o(30780);
+    return j;
+  }
+  
+  public final boolean cCG()
+  {
+    AppMethodBeat.i(30781);
+    if ((this.JJu != null) && (this.JJu.gjQ() != null))
+    {
+      AppMethodBeat.o(30781);
+      return true;
+    }
+    AppMethodBeat.o(30781);
+    return false;
+  }
+  
+  public final RecyclerView cCH()
+  {
+    return this.mRecyclerView;
+  }
+  
+  public final RecyclerView cCI()
+  {
+    return this.mRecyclerView;
+  }
+  
+  public final Context cCJ()
+  {
+    AppMethodBeat.i(30769);
+    AppCompatActivity localAppCompatActivity = getContext();
+    AppMethodBeat.o(30769);
+    return localAppCompatActivity;
+  }
+  
+  public final void cCL()
+  {
+    AppMethodBeat.i(30791);
+    com.tencent.mm.plugin.wenote.model.a.i locali = new com.tencent.mm.plugin.wenote.model.a.i();
+    locali.content = "";
+    locali.qPA = true;
+    locali.qPG = false;
+    locali.qPC = 0;
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDp();
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().a(locali);
+    cCu();
+    e(true, 50L);
+    Q(1, 0L);
+    AppMethodBeat.o(30791);
+  }
+  
+  public final void cCM()
+  {
+    AppMethodBeat.i(30792);
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.f.c(getContext(), com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDx());
+    AppMethodBeat.o(30792);
+  }
+  
+  public final void cCN()
+  {
+    AppMethodBeat.i(30793);
+    com.tencent.mm.plugin.wenote.model.nativenote.manager.f.c(getContext(), com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDx());
+    cCL();
+    AppMethodBeat.o(30793);
+  }
+  
+  public final void cCO()
+  {
+    AppMethodBeat.i(30790);
+    getContext();
+    int i = com.tencent.mm.plugin.wenote.model.nativenote.manager.f.cDn();
+    Object localObject;
+    if (i == 2)
+    {
+      if (com.tencent.mm.plugin.wenote.model.nativenote.manager.f.cDm())
+      {
+        cCx();
+        AppMethodBeat.o(30790);
+        return;
+      }
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDp();
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.f.clearData();
+      localObject = new com.tencent.mm.plugin.wenote.model.a.i();
+      ((com.tencent.mm.plugin.wenote.model.a.i)localObject).content = "";
+      ((com.tencent.mm.plugin.wenote.model.a.i)localObject).qPA = false;
+      ((com.tencent.mm.plugin.wenote.model.a.i)localObject).qPG = false;
+      ((com.tencent.mm.plugin.wenote.model.a.i)localObject).qPC = 0;
+      ((com.tencent.mm.plugin.wenote.model.a.i)localObject).qPI = true;
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().a((com.tencent.mm.plugin.wenote.model.a.c)localObject);
+      cCu();
+      AppMethodBeat.o(30790);
+      return;
+    }
+    if (i == 3)
+    {
+      localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.f.cDk();
+      if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().U((ArrayList)localObject))
+      {
+        cCx();
+        AppMethodBeat.o(30790);
+        return;
+      }
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDp();
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().a((ArrayList)localObject, null, false, false, false, false);
+      cCD();
+      AppMethodBeat.o(30790);
+      return;
+    }
+    AppMethodBeat.o(30790);
+  }
+  
+  public final void cCu()
   {
     AppMethodBeat.i(30766);
     try
     {
-      this.ETC.asY.notifyChanged();
+      this.JJv.atj.notifyChanged();
+      if ((com.tencent.mm.ui.ao.isMultiTaskMode()) && (this.JJV != null))
+      {
+        com.tencent.mm.plugin.wenote.multitask.a locala = this.JJV;
+        int i = com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGZ;
+        String str1 = com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGY;
+        String str2 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().bbV(getString(2131768720));
+        kotlin.g.b.p.h(str1, "jsonData");
+        kotlin.g.b.p.h(str2, "title");
+        locala.type = i;
+        locala.data = str1;
+        locala.title = str2;
+      }
       AppMethodBeat.o(30766);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.Note.NoteEditorUI", localException, "", new Object[0]);
-      ae.i("MicroMsg.Note.NoteEditorUI", "onNotifyDataChanged error");
-      AppMethodBeat.o(30766);
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.Note.NoteEditorUI", localException, "", new Object[0]);
+        Log.i("MicroMsg.Note.NoteEditorUI", "onNotifyDataChanged error");
+      }
     }
   }
   
-  public final void ceF()
+  public final void cCv()
   {
     AppMethodBeat.i(30788);
-    if (!this.ETE.pEG)
+    if (!this.JJx.qTX)
     {
-      ceN();
+      cCD();
       final AppCompatActivity localAppCompatActivity = getContext();
-      this.gKO.postDelayed(new Runnable()
+      this.hAk.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(30716);
-          int i = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().size();
-          int j = NoteEditorUI.P(NoteEditorUI.this).getChildCount();
+          int i = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().size();
+          int j = NoteEditorUI.S(NoteEditorUI.this).getChildCount();
           Object localObject;
           if (i == j)
           {
@@ -863,8 +1108,8 @@ public class NoteEditorUI
             i = j - 1;
             if (i >= 0)
             {
-              localObject = NoteEditorUI.P(NoteEditorUI.this).getChildAt(i);
-              float f2 = t.ad((View)localObject);
+              localObject = NoteEditorUI.S(NoteEditorUI.this).getChildAt(i);
+              float f2 = u.ae((View)localObject);
               if (f1 > ((View)localObject).getBottom() + f2) {}
               for (;;)
               {
@@ -873,7 +1118,7 @@ public class NoteEditorUI
                 f1 = ((View)localObject).getBottom() + f2;
               }
             }
-            if ((f1 < com.tencent.mm.compatible.util.i.eF(localAppCompatActivity)[1]) && (f1 > 0.0F))
+            if ((f1 < com.tencent.mm.compatible.util.i.getScreenWH(localAppCompatActivity)[1]) && (f1 > 0.0F))
             {
               localObject = (RelativeLayout.LayoutParams)NoteEditorUI.b(NoteEditorUI.this).getLayoutParams();
               ((RelativeLayout.LayoutParams)localObject).height = ((int)f1);
@@ -891,7 +1136,7 @@ public class NoteEditorUI
             tmp189_185[1] = 0;
             tmp189_185;
             ((com.tencent.mm.plugin.wenote.model.nativenote.manager.g)localObject).mParentView.getLocationOnScreen(arrayOfInt);
-            ((com.tencent.mm.plugin.wenote.model.nativenote.manager.g)localObject).pBe.showAtLocation(((com.tencent.mm.plugin.wenote.model.nativenote.manager.g)localObject).mParentView, 49, 0, arrayOfInt[1] + 50);
+            ((com.tencent.mm.plugin.wenote.model.nativenote.manager.g)localObject).qQv.showAtLocation(((com.tencent.mm.plugin.wenote.model.nativenote.manager.g)localObject).mParentView, 49, 0, arrayOfInt[1] + 50);
           }
           AppMethodBeat.o(30716);
         }
@@ -900,18 +1145,18 @@ public class NoteEditorUI
     AppMethodBeat.o(30788);
   }
   
-  public final void ceG()
+  public final void cCw()
   {
     AppMethodBeat.i(30796);
-    this.gKO.post(new Runnable()
+    this.hAk.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(30718);
-        if (NoteEditorUI.af(NoteEditorUI.this) != null)
+        if (NoteEditorUI.aj(NoteEditorUI.this) != null)
         {
-          NoteEditorUI.af(NoteEditorUI.this).dismiss();
-          NoteEditorUI.ag(NoteEditorUI.this);
+          NoteEditorUI.aj(NoteEditorUI.this).dismiss();
+          NoteEditorUI.ak(NoteEditorUI.this);
         }
         AppMethodBeat.o(30718);
       }
@@ -919,21 +1164,21 @@ public class NoteEditorUI
     AppMethodBeat.o(30796);
   }
   
-  public final void ceH()
+  public final void cCx()
   {
     AppMethodBeat.i(30797);
-    if ((this.ERj) || (this.ETJ))
+    if ((this.JGV) || (this.JJC))
     {
-      ceN();
-      if (this.pyq) {
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgj();
+      cCD();
+      if (this.qNH) {
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cDY();
       }
-      this.gKO.postDelayed(new Runnable()
+      this.hAk.postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(30719);
-          com.tencent.mm.ui.base.h.c(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131766230), null, true);
+          com.tencent.mm.ui.base.h.c(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131768738), null, true);
           AppMethodBeat.o(30719);
         }
       }, 100L);
@@ -941,235 +1186,35 @@ public class NoteEditorUI
     AppMethodBeat.o(30797);
   }
   
-  public final void ceJ()
+  public final void cCz()
   {
     AppMethodBeat.i(30752);
-    com.tencent.mm.ui.base.h.c(getContext(), getString(2131761647), null, true);
+    com.tencent.mm.ui.base.h.c(getContext(), getString(2131763615), null, true);
     AppMethodBeat.o(30752);
-  }
-  
-  public final void ceK()
-  {
-    AppMethodBeat.i(30760);
-    if (this.ETE != null) {
-      this.ETE.a(null);
-    }
-    AppMethodBeat.o(30760);
-  }
-  
-  public final void ceL()
-  {
-    AppMethodBeat.i(30777);
-    com.tencent.mm.ui.base.h.e(this, getString(2131761640), "", getString(2131761639), getString(2131761638), new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(30710);
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgt();
-        AppMethodBeat.o(30710);
-      }
-    }, null);
-    AppMethodBeat.o(30777);
-  }
-  
-  public final void ceN()
-  {
-    AppMethodBeat.i(30782);
-    if ((this.EST != 2) || (!this.ETB.ESU))
-    {
-      AppMethodBeat.o(30782);
-      return;
-    }
-    int i = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfA();
-    com.tencent.mm.plugin.wenote.model.a.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().YE(i);
-    if (localc != null)
-    {
-      localc.pAj = false;
-      localc.pAp = false;
-      BH(i);
-    }
-    this.gKO.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(30711);
-        WXRTEditText localWXRTEditText = NoteEditorUI.l(NoteEditorUI.this).faL();
-        if (localWXRTEditText != null) {
-          localWXRTEditText.clearFocus();
-        }
-        AppMethodBeat.o(30711);
-      }
-    });
-    e(false, 0L);
-    N(0, 0L);
-    AppMethodBeat.o(30782);
-  }
-  
-  public final int ceO()
-  {
-    AppMethodBeat.i(30779);
-    if (this.ETN)
-    {
-      int i = com.tencent.mm.compatible.util.i.iK(this);
-      AppMethodBeat.o(30779);
-      return i;
-    }
-    AppMethodBeat.o(30779);
-    return 0;
-  }
-  
-  public final int ceP()
-  {
-    AppMethodBeat.i(30780);
-    int j = 0;
-    int i = j;
-    if (this.ETD != null)
-    {
-      i = j;
-      if (this.ETD.getVisibility() == 0) {
-        i = this.pyr + 0;
-      }
-    }
-    j = i;
-    if (this.pym != null)
-    {
-      j = i;
-      if (this.pym.getVisibility() == 0) {
-        j = i + this.pyr;
-      }
-    }
-    AppMethodBeat.o(30780);
-    return j;
-  }
-  
-  public final boolean ceQ()
-  {
-    AppMethodBeat.i(30781);
-    if ((this.ETB != null) && (this.ETB.faL() != null))
-    {
-      AppMethodBeat.o(30781);
-      return true;
-    }
-    AppMethodBeat.o(30781);
-    return false;
-  }
-  
-  public final RecyclerView ceR()
-  {
-    return this.anl;
-  }
-  
-  public final RecyclerView ceS()
-  {
-    return this.anl;
-  }
-  
-  public final Context ceT()
-  {
-    AppMethodBeat.i(30769);
-    AppCompatActivity localAppCompatActivity = getContext();
-    AppMethodBeat.o(30769);
-    return localAppCompatActivity;
-  }
-  
-  public final void ceV()
-  {
-    AppMethodBeat.i(30791);
-    com.tencent.mm.plugin.wenote.model.a.i locali = new com.tencent.mm.plugin.wenote.model.a.i();
-    locali.content = "";
-    locali.pAj = true;
-    locali.pAp = false;
-    locali.pAl = 0;
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfz();
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().a(locali);
-    ceE();
-    e(true, 50L);
-    N(1, 0L);
-    AppMethodBeat.o(30791);
-  }
-  
-  public final void ceW()
-  {
-    AppMethodBeat.i(30792);
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.f.c(getContext(), com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfH());
-    AppMethodBeat.o(30792);
-  }
-  
-  public final void ceX()
-  {
-    AppMethodBeat.i(30793);
-    com.tencent.mm.plugin.wenote.model.nativenote.manager.f.c(getContext(), com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfH());
-    ceV();
-    AppMethodBeat.o(30793);
-  }
-  
-  public final void ceY()
-  {
-    AppMethodBeat.i(30790);
-    getContext();
-    int i = com.tencent.mm.plugin.wenote.model.nativenote.manager.f.cfx();
-    Object localObject;
-    if (i == 2)
-    {
-      if (com.tencent.mm.plugin.wenote.model.nativenote.manager.f.cfw())
-      {
-        ceH();
-        AppMethodBeat.o(30790);
-        return;
-      }
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfz();
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.f.clearData();
-      localObject = new com.tencent.mm.plugin.wenote.model.a.i();
-      ((com.tencent.mm.plugin.wenote.model.a.i)localObject).content = "";
-      ((com.tencent.mm.plugin.wenote.model.a.i)localObject).pAj = false;
-      ((com.tencent.mm.plugin.wenote.model.a.i)localObject).pAp = false;
-      ((com.tencent.mm.plugin.wenote.model.a.i)localObject).pAl = 0;
-      ((com.tencent.mm.plugin.wenote.model.a.i)localObject).pAr = true;
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().a((com.tencent.mm.plugin.wenote.model.a.c)localObject);
-      ceE();
-      AppMethodBeat.o(30790);
-      return;
-    }
-    if (i == 3)
-    {
-      localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.f.cfu();
-      if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().N((ArrayList)localObject))
-      {
-        ceH();
-        AppMethodBeat.o(30790);
-        return;
-      }
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfz();
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().a((ArrayList)localObject, null, false, false, false, false);
-      ceN();
-      AppMethodBeat.o(30790);
-      return;
-    }
-    AppMethodBeat.o(30790);
   }
   
   public final void e(final boolean paramBoolean, long paramLong)
   {
     AppMethodBeat.i(30786);
-    ae.i("MicroMsg.Note.NoteEditorUI", "onUpdateVKBVisibility setShow:%s, delay:%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) });
-    if ((this.EST != 2) || (!this.ETB.ESU))
+    Log.i("MicroMsg.Note.NoteEditorUI", "onUpdateVKBVisibility setShow:%s, delay:%s", new Object[] { Boolean.valueOf(paramBoolean), Long.valueOf(paramLong) });
+    if ((this.JIH != 2) || (!this.JJu.JII))
     {
       AppMethodBeat.o(30786);
       return;
     }
-    this.gKO.postDelayed(new Runnable()
+    this.hAk.postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(30713);
-        ae.i("MicroMsg.Note.NoteEditorUI", "onUpdateVKBVisibility 2 isVKBShow:%s", new Object[] { Boolean.valueOf(NoteEditorUI.S(NoteEditorUI.this)) });
-        if ((paramBoolean) && (!NoteEditorUI.S(NoteEditorUI.this)))
+        Log.i("MicroMsg.Note.NoteEditorUI", "onUpdateVKBVisibility 2 isVKBShow:%s", new Object[] { Boolean.valueOf(NoteEditorUI.V(NoteEditorUI.this)) });
+        if ((paramBoolean) && (!NoteEditorUI.V(NoteEditorUI.this)))
         {
           NoteEditorUI.this.showVKB();
           AppMethodBeat.o(30713);
           return;
         }
-        if ((!paramBoolean) && (NoteEditorUI.S(NoteEditorUI.this))) {
+        if ((!paramBoolean) && (NoteEditorUI.V(NoteEditorUI.this))) {
           NoteEditorUI.this.hideVKB();
         }
         AppMethodBeat.o(30713);
@@ -1178,474 +1223,356 @@ public class NoteEditorUI
     AppMethodBeat.o(30786);
   }
   
-  public final void faC()
-  {
-    AppMethodBeat.i(30799);
-    com.tencent.mm.ui.base.h.a(this, getString(2131761871), getString(2131761885), getString(2131760598), getString(2131756766), false, new NoteEditorUI.30(this), new NoteEditorUI.31(this));
-    AppMethodBeat.o(30799);
-  }
-  
-  public final void faD()
-  {
-    AppMethodBeat.i(30778);
-    Toast.makeText(getContext(), getString(2131761644), 0).show();
-    AppMethodBeat.o(30778);
-  }
-  
-  public final void faE()
-  {
-    AppMethodBeat.i(30784);
-    if ((!this.ERj) && (!this.ETJ))
-    {
-      this.ETL = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfG();
-      this.ETJ = true;
-    }
-    AppMethodBeat.o(30784);
-  }
-  
-  public final void faZ()
-  {
-    AppMethodBeat.i(30756);
-    if (this.EUf)
-    {
-      AppMethodBeat.o(30756);
-      return;
-    }
-    this.ETE.a(this);
-    Object localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfG();
-    if (abA((String)localObject))
-    {
-      localObject = new gx();
-      ((gx)localObject).dub.type = 12;
-      ((gx)localObject).dub.doH = this.doE;
-      com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
-      AppMethodBeat.o(30756);
-      return;
-    }
-    if ((this.ERx) || (this.ERj))
-    {
-      ae.i("MicroMsg.Note.NoteEditorUI", "leave noteeditorui, do savewnnotefavitem");
-      aLG((String)localObject);
-      AppMethodBeat.o(30756);
-      return;
-    }
-    if (this.ETJ)
-    {
-      ae.i("MicroMsg.Note.NoteEditorUI", "leave noteeditorui, do updateWNNoteFavitem");
-      aLH((String)localObject);
-    }
-    AppMethodBeat.o(30756);
-  }
-  
-  public final com.tencent.mm.plugin.wenote.model.nativenote.b.a fba()
-  {
-    return this;
-  }
-  
-  public final void fd(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(30764);
-    try
-    {
-      this.ETC.ar(paramInt1, paramInt2);
-      AppMethodBeat.o(30764);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ae.printErrStackTrace("MicroMsg.Note.NoteEditorUI", localException, "", new Object[0]);
-      ae.e("MicroMsg.Note.NoteEditorUI", "onNotifyitemRangeInsert error,positionStart:%d,count:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(30764);
-    }
-  }
-  
-  public final void fe(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(30765);
-    try
-    {
-      this.ETC.ap(paramInt1, paramInt2);
-      AppMethodBeat.o(30765);
-      return;
-    }
-    catch (Exception localException)
-    {
-      ae.e("MicroMsg.Note.NoteEditorUI", "onNotifyItemRangeChanged error,positionStart:%d,count:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(30765);
-    }
-  }
-  
-  public final void ff(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(30794);
-    if (Math.abs(paramInt2 - paramInt1) > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.pyt = bool;
-      AppMethodBeat.o(30794);
-      return;
-    }
-  }
-  
-  public void finish()
-  {
-    AppMethodBeat.i(179753);
-    ae.i("MicroMsg.Note.NoteEditorUI", "finish, %s, isFinish:%s", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.hLB) });
-    this.hLB = true;
-    super.finish();
-    AppMethodBeat.o(179753);
-  }
-  
   /* Error */
-  public final void g(Object arg1, final boolean paramBoolean)
+  public final void f(Object arg1, final boolean paramBoolean)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
     //   2: sipush 30768
-    //   5: invokestatic 220	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: ldc_w 641
-    //   11: ldc_w 1158
+    //   5: invokestatic 221	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: ldc_w 652
+    //   11: ldc_w 1173
     //   14: iconst_1
-    //   15: anewarray 262	java/lang/Object
+    //   15: anewarray 263	java/lang/Object
     //   18: dup
     //   19: iconst_0
     //   20: iload_2
-    //   21: invokestatic 889	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   21: invokestatic 935	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   24: aastore
-    //   25: invokestatic 718	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   25: invokestatic 769	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   28: aload_0
-    //   29: getfield 265	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:ETQ	Ljava/lang/Object;
+    //   29: getfield 266	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:JJJ	Ljava/lang/Object;
     //   32: astore 4
     //   34: aload 4
     //   36: monitorenter
-    //   37: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
-    //   40: invokevirtual 1053	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:cfz	()V
+    //   37: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   40: invokevirtual 1068	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:cDp	()V
     //   43: aload_1
-    //   44: checkcast 816	java/util/ArrayList
+    //   44: checkcast 864	java/util/ArrayList
     //   47: astore_1
     //   48: aload_1
     //   49: ifnonnull +15 -> 64
     //   52: aload 4
     //   54: monitorexit
     //   55: sipush 30768
-    //   58: invokestatic 339	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   58: invokestatic 340	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   61: aload_0
     //   62: monitorexit
     //   63: return
-    //   64: ldc_w 641
-    //   67: ldc_w 1160
-    //   70: invokestatic 648	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   64: ldc_w 652
+    //   67: ldc_w 1175
+    //   70: invokestatic 659	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   73: aload_0
-    //   74: getfield 579	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:EST	I
+    //   74: getfield 594	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:JIH	I
     //   77: iconst_2
     //   78: if_icmpne +843 -> 921
     //   81: aload_0
-    //   82: getfield 285	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:ETY	Z
+    //   82: getfield 286	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:JJQ	Z
     //   85: ifne +836 -> 921
-    //   88: invokestatic 1166	com/tencent/mm/plugin/wenote/model/c:fau	()Lcom/tencent/mm/plugin/wenote/model/c;
-    //   91: getfield 1170	com/tencent/mm/plugin/wenote/model/c:EQZ	Lcom/tencent/mm/plugin/wenote/model/d;
-    //   94: getfield 1176	com/tencent/mm/plugin/wenote/model/d:ERc	Lcom/tencent/mm/plugin/wenote/model/a/m;
+    //   88: invokestatic 1121	com/tencent/mm/plugin/wenote/model/c:gjz	()Lcom/tencent/mm/plugin/wenote/model/c;
+    //   91: getfield 1125	com/tencent/mm/plugin/wenote/model/c:JGL	Lcom/tencent/mm/plugin/wenote/model/d;
+    //   94: getfield 1179	com/tencent/mm/plugin/wenote/model/d:JGO	Lcom/tencent/mm/plugin/wenote/model/a/m;
     //   97: astore 5
     //   99: aload 5
     //   101: ifnonnull +20 -> 121
     //   104: aload 4
     //   106: monitorexit
     //   107: sipush 30768
-    //   110: invokestatic 339	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   110: invokestatic 340	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   113: goto -52 -> 61
     //   116: astore_1
     //   117: aload_0
     //   118: monitorexit
     //   119: aload_1
     //   120: athrow
-    //   121: new 1178	com/tencent/mm/plugin/wenote/model/a/e
+    //   121: new 1181	com/tencent/mm/plugin/wenote/model/a/e
     //   124: dup
     //   125: aload 5
-    //   127: getfield 1183	com/tencent/mm/plugin/wenote/model/a/m:ESd	J
-    //   130: invokespecial 1185	com/tencent/mm/plugin/wenote/model/a/e:<init>	(J)V
+    //   127: getfield 1186	com/tencent/mm/plugin/wenote/model/a/m:JHQ	J
+    //   130: invokespecial 1188	com/tencent/mm/plugin/wenote/model/a/e:<init>	(J)V
     //   133: astore 5
     //   135: aload 5
     //   137: iconst_0
-    //   138: putfield 1186	com/tencent/mm/plugin/wenote/model/a/e:pAj	Z
+    //   138: putfield 1189	com/tencent/mm/plugin/wenote/model/a/e:qPA	Z
     //   141: aload 5
     //   143: iconst_0
-    //   144: putfield 1187	com/tencent/mm/plugin/wenote/model/a/e:pAp	Z
-    //   147: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   144: putfield 1190	com/tencent/mm/plugin/wenote/model/a/e:qPG	Z
+    //   147: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
     //   150: aload 5
-    //   152: invokevirtual 1056	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
+    //   152: invokevirtual 1071	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
     //   155: pop
     //   156: goto +765 -> 921
     //   159: iload_3
     //   160: aload_1
-    //   161: invokevirtual 817	java/util/ArrayList:size	()I
+    //   161: invokevirtual 865	java/util/ArrayList:size	()I
     //   164: if_icmpge +120 -> 284
     //   167: aload_1
     //   168: iload_3
-    //   169: invokevirtual 1191	java/util/ArrayList:get	(I)Ljava/lang/Object;
-    //   172: checkcast 1193	com/tencent/mm/plugin/wenote/model/a/o
+    //   169: invokevirtual 1194	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   172: checkcast 1196	com/tencent/mm/plugin/wenote/model/a/o
     //   175: astore 5
     //   177: aload 5
-    //   179: invokevirtual 1196	com/tencent/mm/plugin/wenote/model/a/o:getType	()I
+    //   179: invokevirtual 1199	com/tencent/mm/plugin/wenote/model/a/o:getType	()I
     //   182: bipush 20
     //   184: if_icmpne +746 -> 930
     //   187: aload 5
-    //   189: checkcast 1198	com/tencent/mm/plugin/wenote/model/a/b
+    //   189: checkcast 1201	com/tencent/mm/plugin/wenote/model/a/b
     //   192: astore 5
     //   194: aload_0
-    //   195: getfield 285	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:ETY	Z
+    //   195: getfield 286	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:JJQ	Z
     //   198: ifeq +11 -> 209
     //   201: aload 5
-    //   203: getfield 1201	com/tencent/mm/plugin/wenote/model/a/b:zhV	Z
+    //   203: getfield 1204	com/tencent/mm/plugin/wenote/model/a/b:DmM	Z
     //   206: ifne +724 -> 930
-    //   209: new 1041	com/tencent/mm/plugin/wenote/model/a/i
+    //   209: new 1056	com/tencent/mm/plugin/wenote/model/a/i
     //   212: dup
-    //   213: invokespecial 1042	com/tencent/mm/plugin/wenote/model/a/i:<init>	()V
+    //   213: invokespecial 1057	com/tencent/mm/plugin/wenote/model/a/i:<init>	()V
     //   216: astore 6
     //   218: aload 6
     //   220: aload 5
-    //   222: getfield 1204	com/tencent/mm/plugin/wenote/model/a/b:pAw	Ljava/lang/String;
-    //   225: putfield 1207	com/tencent/mm/plugin/wenote/model/a/t:pAw	Ljava/lang/String;
+    //   222: getfield 1207	com/tencent/mm/plugin/wenote/model/a/b:qPN	Ljava/lang/String;
+    //   225: putfield 1210	com/tencent/mm/plugin/wenote/model/a/t:qPN	Ljava/lang/String;
     //   228: aload 6
-    //   230: new 1209	java/lang/StringBuilder
+    //   230: new 1212	java/lang/StringBuilder
     //   233: dup
-    //   234: invokespecial 1210	java/lang/StringBuilder:<init>	()V
+    //   234: invokespecial 1213	java/lang/StringBuilder:<init>	()V
     //   237: aload_0
-    //   238: ldc_w 1211
-    //   241: invokevirtual 424	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:getString	(I)Ljava/lang/String;
-    //   244: invokevirtual 1215	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   247: ldc_w 1217
-    //   250: invokevirtual 1215	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: ldc_w 1214
+    //   241: invokevirtual 431	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:getString	(I)Ljava/lang/String;
+    //   244: invokevirtual 1218	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: ldc_w 1220
+    //   250: invokevirtual 1218	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   253: aload 5
-    //   255: getfield 1220	com/tencent/mm/plugin/wenote/model/a/b:pAA	Ljava/lang/String;
-    //   258: invokevirtual 1215	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   261: ldc_w 1222
-    //   264: invokevirtual 1215	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   267: invokevirtual 1225	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   270: putfield 1226	com/tencent/mm/plugin/wenote/model/a/t:content	Ljava/lang/String;
+    //   255: getfield 1223	com/tencent/mm/plugin/wenote/model/a/b:qPR	Ljava/lang/String;
+    //   258: invokevirtual 1218	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: ldc_w 1225
+    //   264: invokevirtual 1218	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   267: invokevirtual 1228	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   270: putfield 1229	com/tencent/mm/plugin/wenote/model/a/t:content	Ljava/lang/String;
     //   273: aload_1
     //   274: iload_3
     //   275: aload 6
-    //   277: invokevirtual 1230	java/util/ArrayList:set	(ILjava/lang/Object;)Ljava/lang/Object;
+    //   277: invokevirtual 1233	java/util/ArrayList:set	(ILjava/lang/Object;)Ljava/lang/Object;
     //   280: pop
     //   281: goto +649 -> 930
     //   284: aload_1
-    //   285: invokevirtual 1234	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   285: invokevirtual 1237	java/util/ArrayList:iterator	()Ljava/util/Iterator;
     //   288: astore_1
     //   289: aload_1
-    //   290: invokeinterface 1239 1 0
+    //   290: invokeinterface 1242 1 0
     //   295: ifeq +523 -> 818
     //   298: aload_1
-    //   299: invokeinterface 1243 1 0
-    //   304: checkcast 1193	com/tencent/mm/plugin/wenote/model/a/o
+    //   299: invokeinterface 1246 1 0
+    //   304: checkcast 1196	com/tencent/mm/plugin/wenote/model/a/o
     //   307: astore 5
     //   309: aload 5
-    //   311: getfield 1244	com/tencent/mm/plugin/wenote/model/a/o:type	I
+    //   311: getfield 1247	com/tencent/mm/plugin/wenote/model/a/o:type	I
     //   314: tableswitch	default:+623 -> 937, -3:+-25->289, -2:+-25->289, -1:+485->799, 0:+110->424, 1:+141->455, 2:+374->688, 3:+393->707, 4:+412->726, 5:+447->761, 6:+466->780, 7:+110->424, 8:+110->424, 9:+110->424, 10:+110->424, 11:+110->424, 12:+110->424, 13:+110->424, 14:+110->424, 15:+110->424, 16:+110->424, 17:+110->424, 18:+110->424, 19:+110->424, 20:+431->745
     //   425: iconst_2
-    //   426: checkcast 1246	com/tencent/mm/plugin/wenote/model/a/j
+    //   426: checkcast 1249	com/tencent/mm/plugin/wenote/model/a/j
     //   429: astore 5
-    //   431: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   431: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
     //   434: aload 5
-    //   436: invokevirtual 1056	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
+    //   436: invokevirtual 1071	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
     //   439: pop
     //   440: goto -151 -> 289
     //   443: astore_1
     //   444: aload 4
     //   446: monitorexit
     //   447: sipush 30768
-    //   450: invokestatic 339	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   450: invokestatic 340	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   453: aload_1
     //   454: athrow
     //   455: aload 5
-    //   457: checkcast 1041	com/tencent/mm/plugin/wenote/model/a/i
+    //   457: checkcast 1056	com/tencent/mm/plugin/wenote/model/a/i
     //   460: astore 5
     //   462: aload 5
-    //   464: getfield 1045	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
-    //   467: invokestatic 492	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   464: getfield 1060	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
+    //   467: invokestatic 484	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   470: ifeq +10 -> 480
     //   473: aload 5
-    //   475: ldc 240
-    //   477: putfield 1045	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
+    //   475: ldc 241
+    //   477: putfield 1060	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
     //   480: aload 5
     //   482: aload 5
-    //   484: getfield 1045	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
-    //   487: ldc_w 1248
-    //   490: ldc_w 1250
-    //   493: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   496: ldc_w 1256
-    //   499: ldc_w 1258
-    //   502: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   505: ldc_w 1260
-    //   508: ldc_w 1262
-    //   511: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   514: ldc_w 1264
-    //   517: ldc_w 1266
-    //   520: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   523: ldc_w 1268
-    //   526: ldc_w 1270
-    //   529: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   532: ldc_w 1272
-    //   535: ldc_w 1274
-    //   538: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   541: ldc_w 1276
-    //   544: ldc_w 1278
-    //   547: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   550: ldc_w 1280
-    //   553: ldc_w 1282
-    //   556: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   559: ldc_w 1284
-    //   562: ldc_w 1286
-    //   565: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   568: ldc_w 1288
-    //   571: ldc_w 1290
-    //   574: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   577: ldc_w 1292
-    //   580: ldc_w 1294
-    //   583: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   586: ldc_w 1296
-    //   589: ldc_w 1298
-    //   592: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   595: ldc_w 1300
-    //   598: ldc_w 1302
-    //   601: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   604: ldc_w 1304
-    //   607: ldc_w 1306
-    //   610: invokevirtual 1254	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   613: putfield 1045	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
+    //   484: getfield 1060	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
+    //   487: ldc_w 1251
+    //   490: ldc_w 1253
+    //   493: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   496: ldc_w 1259
+    //   499: ldc_w 1261
+    //   502: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   505: ldc_w 1263
+    //   508: ldc_w 1265
+    //   511: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   514: ldc_w 1267
+    //   517: ldc_w 1269
+    //   520: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   523: ldc_w 1271
+    //   526: ldc_w 1273
+    //   529: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   532: ldc_w 1275
+    //   535: ldc_w 1277
+    //   538: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   541: ldc_w 1279
+    //   544: ldc_w 1281
+    //   547: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   550: ldc_w 1283
+    //   553: ldc_w 1285
+    //   556: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   559: ldc_w 1287
+    //   562: ldc_w 1289
+    //   565: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   568: ldc_w 1291
+    //   571: ldc_w 1293
+    //   574: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   577: ldc_w 1295
+    //   580: ldc_w 1297
+    //   583: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   586: ldc_w 1299
+    //   589: ldc_w 1301
+    //   592: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   595: ldc_w 1303
+    //   598: ldc_w 1305
+    //   601: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   604: ldc_w 1307
+    //   607: ldc_w 1309
+    //   610: invokevirtual 1257	java/lang/String:replaceAll	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   613: putfield 1060	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
     //   616: aload 5
-    //   618: getfield 1045	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
-    //   621: invokevirtual 884	java/lang/String:length	()I
+    //   618: getfield 1060	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
+    //   621: invokevirtual 930	java/lang/String:length	()I
     //   624: bipush 100
     //   626: if_icmple +24 -> 650
     //   629: aload 5
-    //   631: getfield 1045	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
-    //   634: invokestatic 1312	com/tencent/mm/plugin/wenote/model/nativenote/a/a:abM	(Ljava/lang/String;)Landroid/text/Spanned;
+    //   631: getfield 1060	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
+    //   634: invokestatic 1315	com/tencent/mm/plugin/wenote/model/nativenote/a/a:alS	(Ljava/lang/String;)Landroid/text/Spanned;
     //   637: pop
-    //   638: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   638: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
     //   641: aload 5
-    //   643: invokevirtual 1056	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
+    //   643: invokevirtual 1071	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
     //   646: pop
     //   647: goto -358 -> 289
     //   650: aload 5
-    //   652: getfield 1045	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
-    //   655: invokestatic 1315	com/tencent/mm/plugin/wenote/c/b:abJ	(Ljava/lang/String;)Z
+    //   652: getfield 1060	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
+    //   655: invokestatic 1318	com/tencent/mm/plugin/wenote/c/b:alP	(Ljava/lang/String;)Z
     //   658: ifeq -20 -> 638
     //   661: aload 5
     //   663: aload 5
-    //   665: getfield 1045	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
+    //   665: getfield 1060	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
     //   668: iconst_0
     //   669: aload 5
-    //   671: getfield 1045	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
-    //   674: invokevirtual 884	java/lang/String:length	()I
+    //   671: getfield 1060	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
+    //   674: invokevirtual 930	java/lang/String:length	()I
     //   677: iconst_5
     //   678: isub
-    //   679: invokevirtual 1319	java/lang/String:substring	(II)Ljava/lang/String;
-    //   682: putfield 1045	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
+    //   679: invokevirtual 1322	java/lang/String:substring	(II)Ljava/lang/String;
+    //   682: putfield 1060	com/tencent/mm/plugin/wenote/model/a/i:content	Ljava/lang/String;
     //   685: goto -47 -> 638
     //   688: aload 5
-    //   690: checkcast 1321	com/tencent/mm/plugin/wenote/model/a/f
+    //   690: checkcast 1324	com/tencent/mm/plugin/wenote/model/a/f
     //   693: astore 5
-    //   695: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   695: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
     //   698: aload 5
-    //   700: invokevirtual 1056	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
+    //   700: invokevirtual 1071	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
     //   703: pop
     //   704: goto -415 -> 289
     //   707: aload 5
-    //   709: checkcast 1323	com/tencent/mm/plugin/wenote/model/a/g
+    //   709: checkcast 1326	com/tencent/mm/plugin/wenote/model/a/g
     //   712: astore 5
-    //   714: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   714: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
     //   717: aload 5
-    //   719: invokevirtual 1056	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
+    //   719: invokevirtual 1071	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
     //   722: pop
     //   723: goto -434 -> 289
     //   726: aload 5
-    //   728: checkcast 1325	com/tencent/mm/plugin/wenote/model/a/l
+    //   728: checkcast 1328	com/tencent/mm/plugin/wenote/model/a/l
     //   731: astore 5
-    //   733: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   733: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
     //   736: aload 5
-    //   738: invokevirtual 1056	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
+    //   738: invokevirtual 1071	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
     //   741: pop
     //   742: goto -453 -> 289
     //   745: aload 5
-    //   747: checkcast 1198	com/tencent/mm/plugin/wenote/model/a/b
+    //   747: checkcast 1201	com/tencent/mm/plugin/wenote/model/a/b
     //   750: astore 6
-    //   752: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   752: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
     //   755: aload 6
-    //   757: invokevirtual 1056	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
+    //   757: invokevirtual 1071	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
     //   760: pop
     //   761: aload 5
-    //   763: checkcast 1327	com/tencent/mm/plugin/wenote/model/a/d
+    //   763: checkcast 1330	com/tencent/mm/plugin/wenote/model/a/d
     //   766: astore 5
-    //   768: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   768: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
     //   771: aload 5
-    //   773: invokevirtual 1056	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
+    //   773: invokevirtual 1071	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
     //   776: pop
     //   777: goto -488 -> 289
     //   780: aload 5
-    //   782: checkcast 1329	com/tencent/mm/plugin/wenote/model/a/k
+    //   782: checkcast 1332	com/tencent/mm/plugin/wenote/model/a/k
     //   785: astore 5
-    //   787: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   787: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
     //   790: aload 5
-    //   792: invokevirtual 1056	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
+    //   792: invokevirtual 1071	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
     //   795: pop
     //   796: goto -507 -> 289
     //   799: aload 5
-    //   801: checkcast 1331	com/tencent/mm/plugin/wenote/model/a/h
+    //   801: checkcast 1334	com/tencent/mm/plugin/wenote/model/a/h
     //   804: astore 5
-    //   806: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   806: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
     //   809: aload 5
-    //   811: invokevirtual 1056	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
+    //   811: invokevirtual 1071	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:a	(Lcom/tencent/mm/plugin/wenote/model/a/c;)Z
     //   814: pop
     //   815: goto -526 -> 289
     //   818: aload 4
     //   820: monitorexit
-    //   821: ldc_w 641
-    //   824: ldc_w 1333
-    //   827: invokestatic 648	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   821: ldc_w 652
+    //   824: ldc_w 1336
+    //   827: invokestatic 659	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   830: iload_2
     //   831: ifne +16 -> 847
-    //   834: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   834: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
     //   837: astore_1
     //   838: aload_1
     //   839: monitorenter
     //   840: aload_1
     //   841: iconst_1
-    //   842: putfield 1336	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:ESr	Z
+    //   842: putfield 1339	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:JIe	Z
     //   845: aload_1
     //   846: monitorexit
-    //   847: new 106	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$5
+    //   847: new 104	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$5
     //   850: dup
     //   851: aload_0
     //   852: iload_2
-    //   853: invokespecial 1337	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$5:<init>	(Lcom/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI;Z)V
-    //   856: invokestatic 1340	com/tencent/mm/sdk/platformtools/ar:f	(Ljava/lang/Runnable;)V
+    //   853: invokespecial 1340	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$5:<init>	(Lcom/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI;Z)V
+    //   856: invokestatic 1344	com/tencent/mm/sdk/platformtools/MMHandlerThread:postToMainThread	(Ljava/lang/Runnable;)V
     //   859: aload_0
-    //   860: getfield 275	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:ETT	I
+    //   860: getfield 276	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:JJL	I
     //   863: ifgt +10 -> 873
     //   866: aload_0
-    //   867: getfield 277	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:ETU	I
+    //   867: getfield 278	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:JJM	I
     //   870: ifeq +22 -> 892
     //   873: aload_0
-    //   874: getfield 348	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:gKO	Lcom/tencent/mm/sdk/platformtools/aq;
-    //   877: new 108	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$6
+    //   874: getfield 349	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI:hAk	Lcom/tencent/mm/sdk/platformtools/MMHandler;
+    //   877: new 106	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$6
     //   880: dup
     //   881: aload_0
-    //   882: invokespecial 1341	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$6:<init>	(Lcom/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI;)V
-    //   885: ldc2_w 974
-    //   888: invokevirtual 807	com/tencent/mm/sdk/platformtools/aq:postDelayed	(Ljava/lang/Runnable;J)Z
+    //   882: invokespecial 1345	com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$6:<init>	(Lcom/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI;)V
+    //   885: ldc2_w 1160
+    //   888: invokevirtual 855	com/tencent/mm/sdk/platformtools/MMHandler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   891: pop
-    //   892: invokestatic 452	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:faG	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
-    //   895: invokevirtual 1344	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:cfE	()Ljava/lang/String;
+    //   892: invokestatic 510	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:gjL	()Lcom/tencent/mm/plugin/wenote/model/nativenote/manager/c;
+    //   895: invokevirtual 1348	com/tencent/mm/plugin/wenote/model/nativenote/manager/c:cDu	()Ljava/lang/String;
     //   898: pop
     //   899: sipush 30768
-    //   902: invokestatic 339	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   902: invokestatic 340	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   905: goto -844 -> 61
     //   908: astore 4
     //   910: aload_1
     //   911: monitorexit
     //   912: sipush 30768
-    //   915: invokestatic 339	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   915: invokestatic 340	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   918: aload 4
     //   920: athrow
     //   921: iload_2
@@ -1706,64 +1633,182 @@ public class NoteEditorUI
     //   910	912	908	finally
   }
   
+  public void finish()
+  {
+    AppMethodBeat.i(179753);
+    Log.i("MicroMsg.Note.NoteEditorUI", "finish, %s, isFinish:%s", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.iGD) });
+    this.iGD = true;
+    super.finish();
+    AppMethodBeat.o(179753);
+  }
+  
+  public final void ft(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(30764);
+    try
+    {
+      this.JJv.as(paramInt1, paramInt2);
+      AppMethodBeat.o(30764);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.printErrStackTrace("MicroMsg.Note.NoteEditorUI", localException, "", new Object[0]);
+      Log.e("MicroMsg.Note.NoteEditorUI", "onNotifyitemRangeInsert error,positionStart:%d,count:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(30764);
+    }
+  }
+  
+  public final void fu(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(30765);
+    try
+    {
+      this.JJv.aq(paramInt1, paramInt2);
+      AppMethodBeat.o(30765);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.Note.NoteEditorUI", "onNotifyItemRangeChanged error,positionStart:%d,count:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(30765);
+    }
+  }
+  
+  public final void fv(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(30794);
+    if (Math.abs(paramInt2 - paramInt1) > 0) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.qNK = bool;
+      AppMethodBeat.o(30794);
+      return;
+    }
+  }
+  
   public int getLayoutId()
   {
-    return 2131495032;
+    return 2131495864;
+  }
+  
+  public final void gjH()
+  {
+    AppMethodBeat.i(30799);
+    com.tencent.mm.ui.base.h.a(this, getString(2131763876), getString(2131763890), getString(2131762043), getString(2131756929), false, new NoteEditorUI.30(this), new NoteEditorUI.31(this));
+    AppMethodBeat.o(30799);
+  }
+  
+  public final void gjI()
+  {
+    AppMethodBeat.i(30778);
+    Toast.makeText(getContext(), getString(2131763612), 0).show();
+    AppMethodBeat.o(30778);
+  }
+  
+  public final void gjJ()
+  {
+    AppMethodBeat.i(30784);
+    if ((!this.JGV) && (!this.JJC))
+    {
+      this.JJE = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDw();
+      this.JJC = true;
+    }
+    AppMethodBeat.o(30784);
+  }
+  
+  public final void gke()
+  {
+    AppMethodBeat.i(30756);
+    if (this.JJX)
+    {
+      AppMethodBeat.o(30756);
+      return;
+    }
+    this.JJx.a(this);
+    Object localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDw();
+    if (alG((String)localObject))
+    {
+      localObject = new hb();
+      ((hb)localObject).dLm.type = 12;
+      ((hb)localObject).dLm.dFW = this.localId;
+      EventCenter.instance.publish((IEvent)localObject);
+      AppMethodBeat.o(30756);
+      return;
+    }
+    if ((this.JHk) || (this.JGV))
+    {
+      Log.i("MicroMsg.Note.NoteEditorUI", "leave noteeditorui, do savewnnotefavitem");
+      bbX((String)localObject);
+      AppMethodBeat.o(30756);
+      return;
+    }
+    if (this.JJC)
+    {
+      Log.i("MicroMsg.Note.NoteEditorUI", "leave noteeditorui, do updateWNNoteFavitem");
+      bbY((String)localObject);
+    }
+    AppMethodBeat.o(30756);
+  }
+  
+  public final com.tencent.mm.plugin.wenote.model.nativenote.b.a gkf()
+  {
+    return this;
   }
   
   public final void goBack()
   {
     AppMethodBeat.i(30754);
-    ae.i("MicroMsg.Note.NoteEditorUI", "goback %s, localid:%s, hasDoGoBack:%s", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.doE), Boolean.valueOf(this.EUh) });
-    if (this.EUh)
+    Log.i("MicroMsg.Note.NoteEditorUI", "goback %s, localid:%s, hasDoGoBack:%s", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(this.localId), Boolean.valueOf(this.JKa) });
+    if (this.JKa)
     {
       AppMethodBeat.o(30754);
       return;
     }
-    this.EUh = true;
+    this.JKa = true;
     try
     {
-      if ((this.EST != 2) || (!this.ETB.ESU))
+      if ((this.JIH != 2) || (!this.JJu.JII))
       {
-        faY();
+        hea();
         return;
       }
-      if ((!this.ETJ) && (!this.ERj))
+      if ((!this.JJC) && (!this.JGV))
       {
-        if (fbb())
+        if (gkg())
         {
-          faY();
+          hea();
           return;
         }
-        this.ETJ = true;
-        this.ETK = true;
+        this.JJC = true;
+        this.JJD = true;
       }
-      faZ();
-      faY();
+      gke();
+      hea();
       return;
     }
     finally
     {
-      ae.i("MicroMsg.Note.NoteEditorUI", "goback %s finally", new Object[] { Integer.valueOf(hashCode()) });
-      if (this.pyq) {
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().onDestroy();
+      Log.i("MicroMsg.Note.NoteEditorUI", "goback %s finally", new Object[] { Integer.valueOf(hashCode()) });
+      if (this.qNH) {
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().onDestroy();
       }
-      if (this.ETB != null) {
-        this.ETB.onDestroy();
+      if (this.JJu != null) {
+        this.JJu.onDestroy();
       }
-      if (com.tencent.mm.plugin.wenote.model.c.fau().EQZ != null)
+      if (com.tencent.mm.plugin.wenote.model.c.gjz().JGL != null)
       {
-        com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERg.clear();
-        com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERf.clear();
-        com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERe.clear();
+        com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGS.clear();
+        com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGR.clear();
+        com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGQ.clear();
       }
-      com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.fbf().destroy();
-      if (com.tencent.mm.plugin.wenote.model.k.faz() != null)
+      com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.gkl().destroy();
+      if (com.tencent.mm.plugin.wenote.model.k.gjE() != null)
       {
-        com.tencent.mm.plugin.wenote.model.k.faz();
+        com.tencent.mm.plugin.wenote.model.k.gjE();
         com.tencent.mm.plugin.wenote.model.k.destroy();
       }
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().faH();
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().gjM();
       AppMethodBeat.o(30754);
     }
   }
@@ -1772,17 +1817,17 @@ public class NoteEditorUI
   {
     AppMethodBeat.i(30770);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ae.i("MicroMsg.Note.NoteEditorUI", "onActivityResult reqCode: %d, retCod: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    this.pyy = paramInt1;
+    Log.i("MicroMsg.Note.NoteEditorUI", "onActivityResult reqCode: %d, retCod: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    this.qNP = paramInt1;
     if (paramInt2 != -1)
     {
-      this.pyx = false;
+      this.qNO = false;
       AppMethodBeat.o(30770);
       return;
     }
-    this.pyx = true;
-    int i = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFileSizeLimit(true);
-    paramInt2 = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFileSizeLimitInMB(true);
+    this.qNO = true;
+    int i = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFileSizeLimit(true);
+    paramInt2 = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFileSizeLimitInMB(true);
     switch (paramInt1)
     {
     }
@@ -1803,43 +1848,43 @@ public class NoteEditorUI
         label238:
         for (paramIntent = null;; paramIntent = paramIntent.getStringExtra("custom_send_text"))
         {
-          if (!bu.isNullOrNil((String)localObject1)) {
+          if (!Util.isNullOrNil((String)localObject1)) {
             break label249;
           }
-          ae.w("MicroMsg.Note.NoteEditorUI", "want to send record msg, but toUser is null");
+          Log.w("MicroMsg.Note.NoteEditorUI", "want to send record msg, but toUser is null");
           AppMethodBeat.o(30770);
           return;
           localObject1 = paramIntent.getStringExtra("Select_Conv_User");
           break;
         }
         label249:
-        bc.aCg();
-        Object localObject2 = com.tencent.mm.model.c.azI().ys(this.msgId);
-        if (((ei)localObject2).field_msgId != this.msgId)
+        bg.aVF();
+        Object localObject2 = com.tencent.mm.model.c.aSQ().Hb(this.msgId);
+        if (((eo)localObject2).field_msgId != this.msgId)
         {
-          ae.w("MicroMsg.Note.NoteEditorUI", "want to send record msg, but message info is null");
+          Log.w("MicroMsg.Note.NoteEditorUI", "want to send record msg, but message info is null");
           AppMethodBeat.o(30770);
           return;
         }
-        Object localObject3 = com.tencent.mm.ui.base.h.b(getContext(), getString(2131758906), false, null);
-        bc.ajU().aw(new Runnable()
+        Object localObject3 = com.tencent.mm.ui.base.h.a(getContext(), getString(2131759230), false, null);
+        bg.aAk().postToWorker(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(30697);
-            qi localqi = new qi();
-            localqi.dFS.type = 4;
-            localqi.dFS.dCi = this.hHF;
-            localqi.dFS.toUser = this.cXi;
-            localqi.dFS.duh = paramIntent;
-            com.tencent.mm.sdk.b.a.IvT.l(localqi);
-            ar.f(new Runnable()
+            rc localrc = new rc();
+            localrc.dXF.type = 4;
+            localrc.dXF.dTX = this.iBP;
+            localrc.dXF.toUser = this.dnJ;
+            localrc.dXF.dLs = paramIntent;
+            EventCenter.instance.publish(localrc);
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(30696);
-                NoteEditorUI.8.this.rDo.dismiss();
-                com.tencent.mm.ui.widget.snackbar.b.n(NoteEditorUI.this, NoteEditorUI.this.getString(2131759420));
+                NoteEditorUI.8.this.tcT.dismiss();
+                com.tencent.mm.ui.widget.snackbar.b.r(NoteEditorUI.this, NoteEditorUI.this.getString(2131760708));
                 AppMethodBeat.o(30696);
               }
             });
@@ -1866,37 +1911,37 @@ public class NoteEditorUI
         label390:
         for (paramIntent = null;; paramIntent = paramIntent.getStringExtra("custom_send_text"))
         {
-          if (!bu.isNullOrNil((String)localObject1)) {
+          if (!Util.isNullOrNil((String)localObject1)) {
             break label401;
           }
-          ae.w("MicroMsg.Note.NoteEditorUI", "want to send record msg, but toUser is null");
+          Log.w("MicroMsg.Note.NoteEditorUI", "want to send record msg, but toUser is null");
           AppMethodBeat.o(30770);
           return;
           localObject1 = paramIntent.getStringExtra("Select_Conv_User");
           break;
         }
         label401:
-        localObject2 = com.tencent.mm.ui.base.h.b(getContext(), getString(2131758906), false, null);
-        localObject3 = new gx();
-        ((gx)localObject3).dub.type = 13;
-        ((gx)localObject3).dub.context = getContext();
-        ((gx)localObject3).dub.toUser = ((String)localObject1);
-        ((gx)localObject3).dub.duh = paramIntent;
-        ((gx)localObject3).dub.doH = this.doE;
-        ((gx)localObject3).dub.dug = new Runnable()
+        localObject2 = com.tencent.mm.ui.base.h.a(getContext(), getString(2131759230), false, null);
+        localObject3 = new hb();
+        ((hb)localObject3).dLm.type = 13;
+        ((hb)localObject3).dLm.context = getContext();
+        ((hb)localObject3).dLm.toUser = ((String)localObject1);
+        ((hb)localObject3).dLm.dLs = paramIntent;
+        ((hb)localObject3).dLm.dFW = this.localId;
+        ((hb)localObject3).dLm.dLr = new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(30699);
-            this.rDo.dismiss();
-            com.tencent.mm.ui.widget.snackbar.b.n(NoteEditorUI.this, NoteEditorUI.this.getString(2131759420));
+            this.tcT.dismiss();
+            com.tencent.mm.ui.widget.snackbar.b.r(NoteEditorUI.this, NoteEditorUI.this.getString(2131760708));
             AppMethodBeat.o(30699);
           }
         };
-        com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject3);
+        EventCenter.instance.publish((IEvent)localObject3);
         paramInt1 = 2;
         continue;
-        ae.i("MicroMsg.Note.NoteEditorUI", "onActivityResult back from gallery");
+        Log.i("MicroMsg.Note.NoteEditorUI", "onActivityResult back from gallery");
         if (paramIntent.getParcelableExtra("key_req_result") == null) {}
         for (paramInt1 = 2;; paramInt1 = 1)
         {
@@ -1904,61 +1949,61 @@ public class NoteEditorUI
           if ((localObject1 == null) || (((ArrayList)localObject1).size() <= 0)) {
             break label767;
           }
-          com.tencent.mm.plugin.report.service.g.yxI.f(14547, new Object[] { Integer.valueOf(paramInt1) });
-          if (!com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().fg(0, ((ArrayList)localObject1).size())) {
+          com.tencent.mm.plugin.report.service.h.CyF.a(14547, new Object[] { Integer.valueOf(paramInt1) });
+          if (!com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().fw(0, ((ArrayList)localObject1).size())) {
             break label605;
           }
-          ceH();
+          cCx();
           paramInt1 = 0;
           break;
         }
         label605:
         localObject2 = getContext();
-        getString(2131755906);
-        this.fOC = com.tencent.mm.ui.base.h.b((Context)localObject2, getString(2131755936), true, new DialogInterface.OnCancelListener()
+        getString(2131755998);
+        this.gtM = com.tencent.mm.ui.base.h.a((Context)localObject2, getString(2131756029), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
             AppMethodBeat.i(30700);
-            if (NoteEditorUI.af(NoteEditorUI.this) != null)
+            if (NoteEditorUI.aj(NoteEditorUI.this) != null)
             {
-              NoteEditorUI.af(NoteEditorUI.this).dismiss();
-              NoteEditorUI.ag(NoteEditorUI.this);
+              NoteEditorUI.aj(NoteEditorUI.this).dismiss();
+              NoteEditorUI.ak(NoteEditorUI.this);
             }
             AppMethodBeat.o(30700);
           }
         });
-        bc.ajU().aw(new Runnable()
+        bg.aAk().postToWorker(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(30701);
             ArrayList localArrayList = new ArrayList();
             int i = 0;
-            while (i < this.pyJ.size())
+            while (i < this.qOa.size())
             {
-              String str = (String)this.pyJ.get(i);
+              String str = (String)this.qOa.get(i);
               com.tencent.mm.plugin.wenote.model.a.f localf = new com.tencent.mm.plugin.wenote.model.a.f();
-              localf.pAx = true;
+              localf.qPO = true;
               localf.type = 2;
-              localf.pAw = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfE();
-              localf.dua = com.tencent.mm.plugin.wenote.model.f.abL(localf.toString());
-              NoteEditorUI.a(NoteEditorUI.this, new ajx());
-              NoteEditorUI.ah(NoteEditorUI.this).aPP(localf.dua);
-              localf.pAu = com.tencent.mm.plugin.wenote.c.c.fs(str, com.tencent.mm.plugin.wenote.model.f.b(NoteEditorUI.ah(NoteEditorUI.this)));
-              localf.dCC = com.tencent.mm.plugin.wenote.c.c.ft(localf.pAu, com.tencent.mm.plugin.wenote.model.f.a(NoteEditorUI.ah(NoteEditorUI.this)));
+              localf.qPN = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDu();
+              localf.dLl = com.tencent.mm.plugin.wenote.model.f.alR(localf.toString());
+              NoteEditorUI.a(NoteEditorUI.this, new aml());
+              NoteEditorUI.al(NoteEditorUI.this).bgs(localf.dLl);
+              localf.qPL = com.tencent.mm.plugin.wenote.c.c.fJ(str, com.tencent.mm.plugin.wenote.model.f.b(NoteEditorUI.al(NoteEditorUI.this)));
+              localf.dUs = com.tencent.mm.plugin.wenote.c.c.fK(localf.qPL, com.tencent.mm.plugin.wenote.model.f.a(NoteEditorUI.al(NoteEditorUI.this)));
               localArrayList.add(localf);
               i += 1;
             }
-            if ((NoteEditorUI.af(NoteEditorUI.this) != null) && (NoteEditorUI.af(NoteEditorUI.this).isShowing()))
+            if ((NoteEditorUI.aj(NoteEditorUI.this) != null) && (NoteEditorUI.aj(NoteEditorUI.this).isShowing()))
             {
-              com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().a(localArrayList, NoteEditorUI.l(NoteEditorUI.this).faP(), true, false, true, false);
+              com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().a(localArrayList, NoteEditorUI.l(NoteEditorUI.this).gjU(), true, false, true, false);
               NoteEditorUI.this.e(true, 100L);
-              NoteEditorUI.this.N(1, 0L);
+              NoteEditorUI.this.Q(1, 0L);
               AppMethodBeat.o(30701);
               return;
             }
-            ae.i("MicroMsg.Note.NoteEditorUI", "user canceled");
+            Log.i("MicroMsg.Note.NoteEditorUI", "user canceled");
             AppMethodBeat.o(30701);
           }
         });
@@ -1967,7 +2012,7 @@ public class NoteEditorUI
           localObject1 = paramIntent.getStringArrayListExtra("key_select_video_list");
           localObject2 = paramIntent.getStringExtra("K_SEGMENTVIDEOPATH");
           paramIntent = (Intent)localObject1;
-          if (!bu.isNullOrNil((String)localObject2))
+          if (!Util.isNullOrNil((String)localObject2))
           {
             paramIntent = (Intent)localObject1;
             if (localObject1 == null)
@@ -1979,49 +2024,49 @@ public class NoteEditorUI
           if ((paramIntent == null) || (paramIntent.size() <= 0)) {
             break label1085;
           }
-          com.tencent.mm.plugin.report.service.g.yxI.f(14547, new Object[] { Integer.valueOf(paramInt1) });
-          if (!com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().fg(0, paramIntent.size())) {
+          com.tencent.mm.plugin.report.service.h.CyF.a(14547, new Object[] { Integer.valueOf(paramInt1) });
+          if (!com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().fw(0, paramIntent.size())) {
             break label779;
           }
-          ceH();
+          cCx();
           paramInt1 = 0;
           break;
           label767:
-          ae.i("MicroMsg.Note.NoteEditorUI", "no pic selected");
+          Log.i("MicroMsg.Note.NoteEditorUI", "no pic selected");
         }
         label779:
         Object localObject1 = (String)paramIntent.get(0);
-        paramIntent = com.tencent.mm.plugin.sight.base.e.ayN((String)localObject1);
+        paramIntent = com.tencent.mm.plugin.sight.base.e.aNx((String)localObject1);
         if (paramIntent == null)
         {
-          ae.e("MicroMsg.Note.NoteEditorUI", "mediaInfo is null, videoPath is %s", new Object[] { bu.nullAsNil((String)localObject1) });
+          Log.e("MicroMsg.Note.NoteEditorUI", "mediaInfo is null, videoPath is %s", new Object[] { Util.nullAsNil((String)localObject1) });
           paramInt1 = 0;
         }
         else
         {
           paramInt1 = paramIntent.getVideoDuration();
           paramIntent = new com.tencent.mm.plugin.wenote.model.a.k();
-          paramIntent.pAx = true;
+          paramIntent.qPO = true;
           paramIntent.thumbPath = "";
-          paramIntent.dCC = "";
+          paramIntent.dUs = "";
           paramIntent.duration = paramInt1;
           paramIntent.type = 6;
-          paramIntent.pAw = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfE();
-          paramIntent.pAy = o.aaw((String)localObject1);
-          paramIntent.dua = com.tencent.mm.plugin.wenote.model.f.abL(paramIntent.toString());
-          this.pyA = new ajx();
-          this.pyA.aPP(paramIntent.dua);
-          this.pyA.aPM(paramIntent.pAy);
-          localObject2 = com.tencent.mm.plugin.wenote.model.f.a(this.pyA);
-          localObject3 = com.tencent.mm.plugin.wenote.model.f.b(this.pyA);
-          if (bu.isNullOrNil((String)localObject1))
+          paramIntent.qPN = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDu();
+          paramIntent.qPP = s.akC((String)localObject1);
+          paramIntent.dLl = com.tencent.mm.plugin.wenote.model.f.alR(paramIntent.toString());
+          this.qNR = new aml();
+          this.qNR.bgs(paramIntent.dLl);
+          this.qNR.bgp(paramIntent.qPP);
+          localObject2 = com.tencent.mm.plugin.wenote.model.f.a(this.qNR);
+          localObject3 = com.tencent.mm.plugin.wenote.model.f.b(this.qNR);
+          if (Util.isNullOrNil((String)localObject1))
           {
-            ae.e("MicroMsg.Note.NoteEditorUI", "video is null");
+            Log.e("MicroMsg.Note.NoteEditorUI", "video is null");
             paramInt1 = 0;
           }
           else
           {
-            ae.v("MicroMsg.Note.NoteEditorUI", "compressNoteVideo path: %s", new Object[] { localObject1 });
+            Log.v("MicroMsg.Note.NoteEditorUI", "compressNoteVideo path: %s", new Object[] { localObject1 });
             ArrayList localArrayList = new ArrayList();
             localArrayList.add(localObject1);
             localObject1 = new com.tencent.mm.plugin.wenote.model.nativenote.manager.d(localArrayList, (String)localObject2, (String)localObject3, paramIntent, new d.a()
@@ -2029,8 +2074,8 @@ public class NoteEditorUI
               public final void a(String paramAnonymousString, com.tencent.mm.plugin.wenote.model.a.k paramAnonymousk)
               {
                 AppMethodBeat.i(30706);
-                ae.i("MicroMsg.Note.NoteEditorUI", "compressNoteVideo onImportFinish");
-                if ((!bu.isNullOrNil(paramAnonymousString)) && (o.fB(paramAnonymousString)) && (paramAnonymousk != null)) {
+                Log.i("MicroMsg.Note.NoteEditorUI", "compressNoteVideo onImportFinish");
+                if ((!Util.isNullOrNil(paramAnonymousString)) && (s.YS(paramAnonymousString)) && (paramAnonymousk != null)) {
                   paramAnonymousk.thumbPath = paramAnonymousString;
                 }
                 AppMethodBeat.o(30706);
@@ -2039,58 +2084,58 @@ public class NoteEditorUI
               public final void b(String paramAnonymousString, com.tencent.mm.plugin.wenote.model.a.k paramAnonymousk)
               {
                 AppMethodBeat.i(30707);
-                ae.i("MicroMsg.Note.NoteEditorUI", "compressNoteVideo onExportFinish");
-                if (NoteEditorUI.af(NoteEditorUI.this) != null)
+                Log.i("MicroMsg.Note.NoteEditorUI", "compressNoteVideo onExportFinish");
+                if (NoteEditorUI.aj(NoteEditorUI.this) != null)
                 {
-                  NoteEditorUI.af(NoteEditorUI.this).dismiss();
-                  NoteEditorUI.ag(NoteEditorUI.this);
+                  NoteEditorUI.aj(NoteEditorUI.this).dismiss();
+                  NoteEditorUI.ak(NoteEditorUI.this);
                 }
-                if ((!bu.isNullOrNil(paramAnonymousString)) && (o.fB(paramAnonymousString)) && (paramAnonymousk != null) && (!paramAnonymousk.pAF)) {
-                  if (new com.tencent.mm.vfs.k(paramAnonymousString).length() < ((af)com.tencent.mm.kernel.g.ad(af.class)).getFileSizeLimit(false))
+                if ((!Util.isNullOrNil(paramAnonymousString)) && (s.YS(paramAnonymousString)) && (paramAnonymousk != null) && (!paramAnonymousk.qPW)) {
+                  if (new o(paramAnonymousString).length() < ((af)com.tencent.mm.kernel.g.ah(af.class)).getFileSizeLimit(false))
                   {
-                    paramAnonymousk.dCC = paramAnonymousString;
-                    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().a(paramAnonymousk, NoteEditorUI.l(NoteEditorUI.this).faP(), false, true, false);
+                    paramAnonymousk.dUs = paramAnonymousString;
+                    com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().a(paramAnonymousk, NoteEditorUI.l(NoteEditorUI.this).gjU(), false, true, false);
                   }
                 }
                 for (;;)
                 {
                   NoteEditorUI.this.e(true, 100L);
-                  NoteEditorUI.this.N(1, 0L);
+                  NoteEditorUI.this.Q(1, 0L);
                   AppMethodBeat.o(30707);
                   return;
-                  Toast.makeText(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131759024), 1).show();
+                  Toast.makeText(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131759350), 1).show();
                   continue;
-                  ae.i("MicroMsg.Note.NoteEditorUI", "file not exist or user canceled");
+                  Log.i("MicroMsg.Note.NoteEditorUI", "file not exist or user canceled");
                 }
               }
             });
             localObject2 = getContext();
-            getString(2131755906);
-            this.fOC = com.tencent.mm.ui.base.h.b((Context)localObject2, getString(2131755936), true, new DialogInterface.OnCancelListener()
+            getString(2131755998);
+            this.gtM = com.tencent.mm.ui.base.h.a((Context)localObject2, getString(2131756029), true, new DialogInterface.OnCancelListener()
             {
               public final void onCancel(DialogInterface paramAnonymousDialogInterface)
               {
                 AppMethodBeat.i(30708);
-                paramAnonymousDialogInterface = this.EUr;
+                paramAnonymousDialogInterface = this.JKk;
                 paramAnonymousDialogInterface.isStop = true;
                 paramAnonymousDialogInterface.interrupt();
-                paramIntent.pAF = true;
+                paramIntent.qPW = true;
                 NoteEditorUI.this.e(true, 100L);
-                NoteEditorUI.this.N(1, 0L);
+                NoteEditorUI.this.Q(1, 0L);
                 AppMethodBeat.o(30708);
               }
             });
-            com.tencent.mm.sdk.g.b.c((Runnable)localObject1, "NoteEditor_importVideo");
+            ThreadPool.post((Runnable)localObject1, "NoteEditor_importVideo");
             paramInt1 = 0;
             continue;
             label1085:
-            ae.i("MicroMsg.Note.NoteEditorUI", "no video selected");
+            Log.i("MicroMsg.Note.NoteEditorUI", "no video selected");
             paramInt1 = 0;
             continue;
-            com.tencent.mm.plugin.report.service.g.yxI.f(14547, new Object[] { Integer.valueOf(4) });
-            if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().fg(0, 1))
+            com.tencent.mm.plugin.report.service.h.CyF.a(14547, new Object[] { Integer.valueOf(4) });
+            if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().fw(0, 1))
             {
-              ceH();
+              cCx();
               paramInt1 = 0;
             }
             else
@@ -2098,83 +2143,83 @@ public class NoteEditorUI
               localObject1 = new com.tencent.mm.plugin.wenote.model.a.g();
               ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).lat = ((float)paramIntent.getDoubleExtra("kwebmap_slat", 0.0D));
               ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).lng = ((float)paramIntent.getDoubleExtra("kwebmap_lng", 0.0D));
-              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).ESo = paramIntent.getIntExtra("kwebmap_scale", 0);
-              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).hZQ = bu.bI(paramIntent.getStringExtra("Kwebmap_locaion"), "");
-              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).jGd = paramIntent.getStringExtra("kPoiName");
-              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).pAw = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfE();
+              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).JIb = paramIntent.getIntExtra("kwebmap_scale", 0);
+              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).iUO = Util.nullAs(paramIntent.getStringExtra("Kwebmap_locaion"), "");
+              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).kHV = paramIntent.getStringExtra("kPoiName");
+              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).qPN = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDu();
               ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).type = 3;
-              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).pAx = true;
-              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).dCC = "";
-              com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().a((com.tencent.mm.plugin.wenote.model.a.c)localObject1, this.ETB.faP(), false, false, false);
+              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).qPO = true;
+              ((com.tencent.mm.plugin.wenote.model.a.g)localObject1).dUs = "";
+              com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().a((com.tencent.mm.plugin.wenote.model.a.c)localObject1, this.JJu.gjU(), false, false, false);
               paramInt1 = 0;
               continue;
-              com.tencent.mm.plugin.report.service.g.yxI.f(14547, new Object[] { Integer.valueOf(5) });
+              com.tencent.mm.plugin.report.service.h.CyF.a(14547, new Object[] { Integer.valueOf(5) });
               paramIntent = paramIntent.getStringExtra("choosed_file_path");
-              if (bu.isNullOrNil(paramIntent))
+              if (Util.isNullOrNil(paramIntent))
               {
                 paramInt1 = 1;
               }
               else
               {
-                localObject1 = new com.tencent.mm.vfs.k(paramIntent);
-                if (!((com.tencent.mm.vfs.k)localObject1).exists())
+                localObject1 = new o(paramIntent);
+                if (!((o)localObject1).exists())
                 {
                   paramInt1 = 1;
                 }
-                else if (((com.tencent.mm.vfs.k)localObject1).length() >= i)
+                else if (((o)localObject1).length() >= i)
                 {
                   paramInt1 = 3;
                 }
-                else if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().fg(0, 1))
+                else if (com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().fw(0, 1))
                 {
-                  ceH();
+                  cCx();
                   paramInt1 = 2;
                 }
                 else
                 {
-                  if (this.fOC != null)
+                  if (this.gtM != null)
                   {
-                    this.fOC.dismiss();
-                    this.fOC = null;
+                    this.gtM.dismiss();
+                    this.gtM = null;
                   }
                   localObject2 = getContext();
-                  getString(2131755906);
-                  this.fOC = com.tencent.mm.ui.base.h.b((Context)localObject2, getString(2131755936), true, new DialogInterface.OnCancelListener()
+                  getString(2131755998);
+                  this.gtM = com.tencent.mm.ui.base.h.a((Context)localObject2, getString(2131756029), true, new DialogInterface.OnCancelListener()
                   {
                     public final void onCancel(DialogInterface paramAnonymousDialogInterface)
                     {
                       AppMethodBeat.i(30703);
-                      if (NoteEditorUI.af(NoteEditorUI.this) != null)
+                      if (NoteEditorUI.aj(NoteEditorUI.this) != null)
                       {
-                        NoteEditorUI.af(NoteEditorUI.this).dismiss();
-                        NoteEditorUI.ag(NoteEditorUI.this);
+                        NoteEditorUI.aj(NoteEditorUI.this).dismiss();
+                        NoteEditorUI.ak(NoteEditorUI.this);
                       }
                       AppMethodBeat.o(30703);
                     }
                   });
                   localObject2 = new com.tencent.mm.plugin.wenote.model.a.d();
-                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).title = ((com.tencent.mm.vfs.k)localObject1).getName();
-                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).content = com.tencent.mm.plugin.wenote.model.f.ba((float)((com.tencent.mm.vfs.k)localObject1).length());
-                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).kVn = com.tencent.mm.plugin.wenote.model.h.aLD(o.aaw(paramIntent));
-                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).pAw = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfE();
+                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).title = ((o)localObject1).getName();
+                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).content = com.tencent.mm.plugin.wenote.model.f.getLengthStr((float)((o)localObject1).length());
+                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).mav = com.tencent.mm.plugin.wenote.model.h.bbT(s.akC(paramIntent));
+                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).qPN = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDu();
                   ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).type = 5;
-                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).pAx = true;
-                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).pAy = o.aaw(paramIntent);
-                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).dua = com.tencent.mm.plugin.wenote.model.f.abL(localObject2.toString());
-                  this.pyA = new ajx();
-                  this.pyA.aPP(((com.tencent.mm.plugin.wenote.model.a.d)localObject2).dua);
-                  this.pyA.aPM(((com.tencent.mm.plugin.wenote.model.a.d)localObject2).pAy);
-                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).dCC = com.tencent.mm.plugin.wenote.model.f.b(this.pyA);
-                  o.mF(paramIntent, ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).dCC);
-                  com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().a((com.tencent.mm.plugin.wenote.model.a.c)localObject2, this.ETB.faP(), false, true, false);
+                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).qPO = true;
+                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).qPP = s.akC(paramIntent);
+                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).dLl = com.tencent.mm.plugin.wenote.model.f.alR(localObject2.toString());
+                  this.qNR = new aml();
+                  this.qNR.bgs(((com.tencent.mm.plugin.wenote.model.a.d)localObject2).dLl);
+                  this.qNR.bgp(((com.tencent.mm.plugin.wenote.model.a.d)localObject2).qPP);
+                  ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).dUs = com.tencent.mm.plugin.wenote.model.f.b(this.qNR);
+                  s.nw(paramIntent, ((com.tencent.mm.plugin.wenote.model.a.d)localObject2).dUs);
+                  com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().a((com.tencent.mm.plugin.wenote.model.a.c)localObject2, this.JJu.gjU(), false, true, false);
                   paramInt1 = 2;
                   continue;
-                  this.gKO.post(new Runnable()
+                  this.hAk.post(new Runnable()
                   {
                     public final void run()
                     {
                       AppMethodBeat.i(30704);
-                      Toast.makeText(NoteEditorUI.this, NoteEditorUI.this.getString(2131763646), 0).show();
+                      Toast.makeText(NoteEditorUI.this, NoteEditorUI.this.getString(2131765834), 0).show();
                       AppMethodBeat.o(30704);
                     }
                   });
@@ -2190,35 +2235,35 @@ public class NoteEditorUI
                   label1676:
                   for (paramIntent = null;; paramIntent = paramIntent.getStringExtra("custom_send_text"))
                   {
-                    if (!bu.isNullOrNil((String)localObject1)) {
+                    if (!Util.isNullOrNil((String)localObject1)) {
                       break label1687;
                     }
-                    ae.w("MicroMsg.Note.NoteEditorUI", "want to send note from sns, but toUser is null");
+                    Log.w("MicroMsg.Note.NoteEditorUI", "want to send note from sns, but toUser is null");
                     AppMethodBeat.o(30770);
                     return;
                     localObject1 = paramIntent.getStringExtra("Select_Conv_User");
                     break;
                   }
                   label1687:
-                  localObject2 = com.tencent.mm.ui.base.h.b(getContext(), getString(2131758906), false, null);
-                  localObject3 = new gx();
-                  ((gx)localObject3).dub.type = 13;
-                  ((gx)localObject3).dub.context = getContext();
-                  ((gx)localObject3).dub.toUser = ((String)localObject1);
-                  ((gx)localObject3).dub.duh = paramIntent;
-                  ((gx)localObject3).dub.doH = this.doE;
-                  ((gx)localObject3).dub.doN = com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERk;
-                  ((gx)localObject3).dub.dug = new Runnable()
+                  localObject2 = com.tencent.mm.ui.base.h.a(getContext(), getString(2131759230), false, null);
+                  localObject3 = new hb();
+                  ((hb)localObject3).dLm.type = 13;
+                  ((hb)localObject3).dLm.context = getContext();
+                  ((hb)localObject3).dLm.toUser = ((String)localObject1);
+                  ((hb)localObject3).dLm.dLs = paramIntent;
+                  ((hb)localObject3).dLm.dFW = this.localId;
+                  ((hb)localObject3).dLm.dGb = com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGW;
+                  ((hb)localObject3).dLm.dLr = new Runnable()
                   {
                     public final void run()
                     {
                       AppMethodBeat.i(30705);
-                      this.rDo.dismiss();
-                      com.tencent.mm.ui.widget.snackbar.b.n(NoteEditorUI.this, NoteEditorUI.this.getString(2131759420));
+                      this.tcT.dismiss();
+                      com.tencent.mm.ui.widget.snackbar.b.r(NoteEditorUI.this, NoteEditorUI.this.getString(2131760708));
                       AppMethodBeat.o(30705);
                     }
                   };
-                  com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject3);
+                  EventCenter.instance.publish((IEvent)localObject3);
                   paramInt1 = 2;
                 }
               }
@@ -2229,18 +2274,18 @@ public class NoteEditorUI
       paramIntent = paramIntent.getBundleExtra("result_data");
       if ((paramIntent != null) && (paramIntent.getString("go_next", "").equals("gdpr_auth_location")))
       {
-        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IYR, Boolean.TRUE);
-        com.tencent.mm.pluginsdk.permission.b.b(getContext(), "android.permission.ACCESS_COARSE_LOCATION", 64);
+        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Oho, Boolean.TRUE);
+        com.tencent.mm.pluginsdk.permission.b.b(getContext(), "android.permission.ACCESS_FINE_LOCATION", 64);
       }
     }
     if (1 == paramInt1)
     {
-      com.tencent.mm.ui.base.h.cm(getContext(), getString(2131758884));
+      com.tencent.mm.ui.base.h.cD(getContext(), getString(2131759208));
       AppMethodBeat.o(30770);
       return;
     }
     if (3 == paramInt1) {
-      Toast.makeText(getContext(), getString(2131759025, new Object[] { Integer.valueOf(paramInt2) }), 1).show();
+      Toast.makeText(getContext(), getString(2131759351, new Object[] { Integer.valueOf(paramInt2) }), 1).show();
     }
     AppMethodBeat.o(30770);
   }
@@ -2248,12 +2293,23 @@ public class NoteEditorUI
   public void onBackPressed()
   {
     AppMethodBeat.i(30751);
-    if (!ceZ())
+    if (!cCP())
     {
       AppMethodBeat.o(30751);
       return;
     }
-    if ((this.EUd != null) && (this.EUd.sy(2)))
+    gki();
+    if (this.JJV != null)
+    {
+      com.tencent.mm.plugin.wenote.multitask.a locala = this.JJV;
+      b.a locala1 = com.tencent.mm.plugin.multitask.b.b.Abw;
+      if (locala.l(2, com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().bbV(getString(2131768720)), this.JJY))
+      {
+        AppMethodBeat.o(30751);
+        return;
+      }
+    }
+    if ((this.UtI != null) && (this.UtI.wu(2)))
     {
       AppMethodBeat.o(30751);
       return;
@@ -2267,10 +2323,10 @@ public class NoteEditorUI
   {
     AppMethodBeat.i(30776);
     super.onCancel();
-    if (this.pyq)
+    if (this.qNH)
     {
-      com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().kk(false);
-      com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().kj(false);
+      com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().ln(false);
+      com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().lm(false);
     }
     AppMethodBeat.o(30776);
   }
@@ -2278,281 +2334,252 @@ public class NoteEditorUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(30750);
-    ae.i("MicroMsg.Note.NoteEditorUI", "onCreate %s", new Object[] { Integer.valueOf(hashCode()) });
-    customfixStatusbar(true);
-    this.EST = getIntent().getIntExtra("note_open_from_scene", 2);
+    Log.i("MicroMsg.Note.NoteEditorUI", "onCreate %s", new Object[] { Integer.valueOf(hashCode()) });
+    this.JIH = getIntent().getIntExtra("note_open_from_scene", 2);
     this.msgId = getIntent().getLongExtra("note_msgid", -1L);
-    this.EUb = getIntent().getBooleanExtra("record_show_share", false);
-    this.doE = getIntent().getLongExtra("note_fav_localid", -1L);
-    this.qiw = getIntent().getStringExtra("note_link_sns_localid");
-    this.ERj = getIntent().getBooleanExtra("edit_status", false);
-    this.ERx = getIntent().getBooleanExtra("need_save", false);
-    if (this.ERx) {
-      this.EUe = true;
-    }
-    this.ETJ = this.ERx;
-    this.ETR = getIntent().getStringExtra("fav_note_xml");
-    this.ETT = getIntent().getIntExtra("fav_note_scroll_to_position", 0);
-    this.ETU = getIntent().getIntExtra("fav_note_scroll_to_offset", 0);
-    this.ruE = getIntent().getStringExtra("fav_note_thumbpath");
-    this.ETW = getIntent().getBooleanExtra("show_share", true);
-    this.ETZ = getIntent().getStringExtra("fav_note_link_sns_xml");
+    this.JJT = getIntent().getBooleanExtra("record_show_share", false);
+    this.localId = getIntent().getLongExtra("note_fav_localid", -1L);
+    this.rzs = getIntent().getStringExtra("note_link_sns_localid");
+    this.JGV = getIntent().getBooleanExtra("edit_status", false);
+    this.JHk = getIntent().getBooleanExtra("need_save", false);
+    this.JJC = this.JHk;
+    this.JJK = getIntent().getStringExtra("fav_note_xml");
+    this.JJL = getIntent().getIntExtra("fav_note_scroll_to_position", 0);
+    this.JJM = getIntent().getIntExtra("fav_note_scroll_to_offset", 0);
+    this.sUB = getIntent().getStringExtra("fav_note_thumbpath");
+    this.JJO = getIntent().getBooleanExtra("show_share", true);
+    this.JJR = getIntent().getStringExtra("fav_note_link_sns_xml");
     Object localObject1 = getIntent().getStringExtra("fav_note_link_source_info");
-    this.EUc = getIntent().getBooleanExtra("fav_note_out_of_date", false);
-    if (!bu.isNullOrNil((String)localObject1)) {
-      this.ETV = ((String)localObject1).split(";");
+    this.JJU = getIntent().getBooleanExtra("fav_note_out_of_date", false);
+    if (!Util.isNullOrNil((String)localObject1)) {
+      this.JJN = ((String)localObject1).split(";");
     }
     if (getIntent().getIntExtra("note_fav_post_scene", 0) == 6) {
-      this.ETY = true;
+      this.JJQ = true;
     }
-    com.tencent.mm.plugin.wenote.model.d.ERl = false;
-    if ((this.ETV == null) && (this.doE > 0L))
+    com.tencent.mm.plugin.wenote.model.d.JGX = false;
+    if ((this.JJN == null) && (this.localId > 0L))
     {
-      localObject1 = new gx();
-      ((gx)localObject1).dub.type = 30;
-      ((gx)localObject1).dub.dui = 3;
-      ((gx)localObject1).dub.doH = this.doE;
-      com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject1);
-      if (!bu.isNullOrNil(((gx)localObject1).duc.path)) {
-        break label432;
+      localObject1 = new hb();
+      ((hb)localObject1).dLm.type = 30;
+      ((hb)localObject1).dLm.dLt = 3;
+      ((hb)localObject1).dLm.dFW = this.localId;
+      EventCenter.instance.publish((IEvent)localObject1);
+      if (!Util.isNullOrNil(((hb)localObject1).dLn.path)) {
+        break label415;
       }
     }
-    label432:
-    for (localObject1 = null;; localObject1 = ((gx)localObject1).duc.path.split(";"))
+    label415:
+    for (localObject1 = null;; localObject1 = ((hb)localObject1).dLn.path.split(";"))
     {
-      this.ETV = ((String[])localObject1);
-      if ((this.ETV == null) || (this.ETV.length >= 3)) {
+      this.JJN = ((String[])localObject1);
+      if ((this.JJN == null) || (this.JJN.length >= 3)) {
         break;
       }
       AppMethodBeat.o(30750);
       return;
     }
-    this.gKO = new aq();
-    localObject1 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG();
+    this.hAk = new MMHandler();
+    localObject1 = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL();
     ((com.tencent.mm.plugin.wenote.model.nativenote.manager.c)localObject1).mDataList = new ArrayList();
-    ((com.tencent.mm.plugin.wenote.model.nativenote.manager.c)localObject1).ESq = this;
-    ((com.tencent.mm.plugin.wenote.model.nativenote.manager.c)localObject1).pAZ = new ajx();
-    ((com.tencent.mm.plugin.wenote.model.nativenote.manager.c)localObject1).pBa = 0;
-    ((com.tencent.mm.plugin.wenote.model.nativenote.manager.c)localObject1).pBb = 0;
-    ((com.tencent.mm.plugin.wenote.model.nativenote.manager.c)localObject1).pBc = 0;
-    ae.i("MicroMsg.Note.NoteEditorUI", "OnCreate MainActivity, before setContentView");
+    ((com.tencent.mm.plugin.wenote.model.nativenote.manager.c)localObject1).JId = this;
+    ((com.tencent.mm.plugin.wenote.model.nativenote.manager.c)localObject1).qQq = new aml();
+    ((com.tencent.mm.plugin.wenote.model.nativenote.manager.c)localObject1).qQr = 0;
+    ((com.tencent.mm.plugin.wenote.model.nativenote.manager.c)localObject1).qQs = 0;
+    ((com.tencent.mm.plugin.wenote.model.nativenote.manager.c)localObject1).qQt = 0;
+    Log.i("MicroMsg.Note.NoteEditorUI", "OnCreate MainActivity, before setContentView");
     com.tencent.mm.pluginsdk.h.q(this);
     super.onCreate(paramBundle);
-    int i;
-    if ((!this.EUe) && (com.tencent.mm.plugin.wenote.model.c.fau().EQZ != null) && (com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERm != null))
-    {
-      this.EUd = new com.tencent.mm.plugin.wenote.b.b(this, new com.tencent.mm.plugin.wenote.b.a(this));
-      if (!bu.isNullOrNil(this.qiw)) {
-        break label2907;
-      }
-      this.EUd.ac(3, this.doE + "_" + this.msgId);
-      paramBundle = this.EUd;
-      localObject1 = this.doE;
-      paramBundle.bLD().dyc = ((String)localObject1);
-      paramBundle.bLz();
-      this.EUd.eD("eventData", com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERm);
-      paramBundle = this.EUd;
-      i = com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERn;
-      if ((paramBundle.nLK != null) && ((!paramBundle.nLK.hasExtra("eventType")) || (paramBundle.nLK.getIntExtra("eventType", i) != i)))
-      {
-        ae.i("MicroMsg.FloatBallHelper", "updateIntExtra, %s:%s", new Object[] { "eventType", Integer.valueOf(i) });
-        paramBundle.nLK.cr("eventType", i);
-        paramBundle.bLz();
-      }
-    }
-    wa(this.doE);
-    ae.i("MicroMsg.Note.NoteEditorUI", "OnCreate MainActivity, after setContentView");
-    paramBundle = new com.tencent.mm.plugin.wenote.model.a.i();
-    paramBundle.content = "";
-    paramBundle.pAj = true;
-    paramBundle.pAp = false;
-    if (this.ERj)
-    {
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().a(paramBundle);
-      this.ETY = true;
-    }
     this.mContentView = getContentView();
-    this.mContentView.getRootView().setBackgroundColor(getContext().getResources().getColor(2131101179));
-    this.anl = ((RecyclerView)findViewById(2131306986));
-    this.ETD = ((LinearLayout)this.mContentView.findViewById(2131299256));
-    this.ETD.setVisibility(8);
-    this.pym = ((LinearLayout)this.ETD.findViewById(2131302950));
-    this.pym.setVisibility(8);
-    this.ETF = ((RelativeLayout)findViewById(2131306975));
-    this.ETF.setOnClickListener(new View.OnClickListener()
+    int i;
+    label835:
+    boolean bool;
+    if ((!this.JJW) && (com.tencent.mm.plugin.wenote.model.c.gjz().JGL != null) && (com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGY != null))
     {
-      public final void onClick(View paramAnonymousView)
+      this.UtI = new com.tencent.mm.plugin.wenote.b.a(this, new com.tencent.mm.plugin.wenote.b.b(this));
+      if (Util.isNullOrNil(this.rzs))
       {
-        AppMethodBeat.i(30688);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if (NoteEditorUI.a(NoteEditorUI.this) != null) {
-          NoteEditorUI.a(NoteEditorUI.this).pBe.dismiss();
+        this.UtI.G(3, this.localId + "_" + this.msgId);
+        paramBundle = this.UtI;
+        localObject1 = this.localId;
+        paramBundle.ciw().dPJ = ((String)localObject1);
+        paramBundle.cit();
+        this.UtI.eU("eventData", com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGY);
+        paramBundle = this.UtI;
+        i = com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGZ;
+        if ((paramBundle.oWE != null) && ((!paramBundle.oWE.hasExtra("eventType")) || (paramBundle.oWE.getIntExtra("eventType", i) != i)))
+        {
+          Log.i("MicroMsg.FloatBallHelper", "updateIntExtra, %s:%s", new Object[] { "eventType", Integer.valueOf(i) });
+          paramBundle.oWE.cy("eventType", i);
+          paramBundle.cit();
         }
-        NoteEditorUI.b(NoteEditorUI.this).setVisibility(8);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(30688);
+        this.JJV = new com.tencent.mm.plugin.wenote.multitask.a(this, new com.tencent.mm.plugin.wenote.multitask.b(this));
+        if (!Util.isNullOrNil(this.rzs)) {
+          break label2975;
+        }
+        this.JJV.G(3, this.localId + "_" + this.msgId);
       }
-    });
-    this.ETG = new com.tencent.mm.plugin.wenote.model.nativenote.manager.g(this, this.ETF);
-    this.ETG.ESy = this;
-    this.ETM = new NoteLinearLayoutManager();
-    this.ETM.pyR = com.tencent.mm.compatible.util.i.eF(this)[1];
-    this.anl.setLayoutManager(this.ETM);
-    this.anl.setHasFixedSize(true);
-    this.ETO = new a();
-    this.anl.a(this.ETO);
-    this.ETB = new com.tencent.mm.plugin.wenote.model.nativenote.manager.k(this);
-    this.ETB.doH = this.doE;
-    this.ETB.EST = this.EST;
-    this.ETB.ESU = this.ETY;
-    if (this.ERx)
+    }
+    else
     {
-      paramBundle = this.ETB;
-      if ((paramBundle.ESM < 0L) && (paramBundle.doH > 0L))
+      Ee(this.localId);
+      Log.i("MicroMsg.Note.NoteEditorUI", "OnCreate MainActivity, after setContentView");
+      paramBundle = new com.tencent.mm.plugin.wenote.model.a.i();
+      paramBundle.content = "";
+      paramBundle.qPA = true;
+      paramBundle.qPG = false;
+      if (this.JGV)
       {
-        paramBundle.ESV.ay(60000L, 60000L);
-        paramBundle.ESM = bu.HQ();
-        paramBundle.ESN = "";
+        com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().a(paramBundle);
+        this.JJQ = true;
       }
-    }
-    this.ETC = new com.tencent.mm.plugin.wenote.ui.nativenote.adapter.b(this.ETB);
-    this.anl.setAdapter(this.ETC);
-    if (this.EST == 2) {
-      this.anl.setOnTouchListener(this.pyB);
-    }
-    this.anl.getItemAnimator().atc = 0L;
-    this.anl.getItemAnimator().atf = 0L;
-    this.anl.getItemAnimator().ate = 0L;
-    this.anl.getItemAnimator().atd = 120L;
-    ((as)this.anl.getItemAnimator()).awK = false;
-    if ((this.EST == 1) || (this.EST == 4))
-    {
-      this.ETH = ((TextView)findViewById(2131302920));
-      this.ETH.setOnClickListener(new View.OnClickListener()
+      this.mRecyclerView = ((RecyclerView)findViewById(2131310486));
+      this.JJw = ((LinearLayout)this.mContentView.findViewById(2131299828));
+      this.JJw.setVisibility(8);
+      this.qND = ((LinearLayout)this.JJw.findViewById(2131305537));
+      this.qND.setVisibility(8);
+      this.JJy = ((RelativeLayout)findViewById(2131310475));
+      this.JJy.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(30702);
+          AppMethodBeat.i(30688);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          NoteEditorUI.fbc();
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(30702);
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          if (NoteEditorUI.a(NoteEditorUI.this) != null) {
+            NoteEditorUI.a(NoteEditorUI.this).qQv.dismiss();
+          }
+          NoteEditorUI.b(NoteEditorUI.this).setVisibility(8);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(30688);
         }
       });
-    }
-    this.pyr = com.tencent.mm.cb.a.fromDPToPix(this, 48);
-    boolean bool;
-    if (this.pyq)
-    {
-      ae.i("MicroMsg.Note.NoteEditorUI", "use multiselect");
-      if ((this.EST == 2) && (this.ETY))
+      this.JJz = new com.tencent.mm.plugin.wenote.model.nativenote.manager.g(this, this.JJy);
+      this.JJz.JIl = this;
+      this.JJF = new NoteLinearLayoutManager();
+      this.JJF.qOi = com.tencent.mm.compatible.util.i.getScreenWH(this)[1];
+      this.mRecyclerView.setLayoutManager(this.JJF);
+      this.mRecyclerView.setHasFixedSize(true);
+      this.JJH = new a();
+      this.mRecyclerView.a(this.JJH);
+      this.JJu = new com.tencent.mm.plugin.wenote.model.nativenote.manager.k(this);
+      this.JJu.dFW = this.localId;
+      this.JJu.JIH = this.JIH;
+      this.JJu.JIx = this.JJT;
+      this.JJu.JII = this.JJQ;
+      if (this.JHk)
       {
+        paramBundle = this.JJu;
+        if ((paramBundle.JIA < 0L) && (paramBundle.dFW > 0L))
+        {
+          paramBundle.JIJ.startTimer(60000L);
+          paramBundle.JIA = Util.currentTicks();
+          paramBundle.JIB = "";
+        }
+      }
+      this.JJv = new com.tencent.mm.plugin.wenote.ui.nativenote.adapter.b(this.JJu);
+      this.mRecyclerView.setAdapter(this.JJv);
+      if (this.JIH == 2) {
+        this.mRecyclerView.setOnTouchListener(this.qNS);
+      }
+      this.mRecyclerView.getItemAnimator().atn = 0L;
+      this.mRecyclerView.getItemAnimator().atq = 0L;
+      this.mRecyclerView.getItemAnimator().atp = 0L;
+      this.mRecyclerView.getItemAnimator().ato = 120L;
+      ((as)this.mRecyclerView.getItemAnimator()).awI = false;
+      if ((this.JIH == 1) || (this.JIH == 4))
+      {
+        this.JJA = ((TextView)findViewById(2131305507));
+        this.JJA.setOnClickListener(new NoteEditorUI.12(this));
+      }
+      this.qNI = com.tencent.mm.cb.a.fromDPToPix(this, 48);
+      if (this.qNH)
+      {
+        Log.i("MicroMsg.Note.NoteEditorUI", "use multiselect");
+        if ((this.JIH != 2) || (!this.JJQ)) {
+          break label3006;
+        }
         bool = true;
-        label1347:
-        i = getResources().getColor(2131100713);
-        paramBundle = com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR();
-        ae.i("NoteSelectManager", "onInit start");
-        paramBundle.pCY = bool;
-        paramBundle.pDb = 14;
-        paramBundle.pDc = 32;
-        paramBundle.pDd = (com.tencent.mm.cb.a.fromDPToPix(this, 21) - paramBundle.pDc);
-        paramBundle.pDe = (com.tencent.mm.cb.a.fromDPToPix(this, 40) + paramBundle.pDc * 2);
-        paramBundle.pDf = (com.tencent.mm.cb.a.fromDPToPix(this, 240) + paramBundle.pDc * 2);
-        paramBundle.pCZ = com.tencent.mm.cb.a.fromDPToPix(this, 22);
-        paramBundle.pDa = com.tencent.mm.cb.a.fromDPToPix(this, 1);
+        label1383:
+        i = getResources().getColor(2131100907);
+        paramBundle = com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW();
+        Log.i("NoteSelectManager", "onInit start");
+        paramBundle.qSq = bool;
+        paramBundle.qSt = 14;
+        paramBundle.qSu = 32;
+        paramBundle.qSv = (com.tencent.mm.cb.a.fromDPToPix(this, 21) - paramBundle.qSu);
+        paramBundle.qSw = (com.tencent.mm.cb.a.fromDPToPix(this, 40) + paramBundle.qSu * 2);
+        paramBundle.qSx = (com.tencent.mm.cb.a.fromDPToPix(this, 240) + paramBundle.qSu * 2);
+        paramBundle.qSr = com.tencent.mm.cb.a.fromDPToPix(this, 22);
+        paramBundle.qSs = com.tencent.mm.cb.a.fromDPToPix(this, 1);
         paramBundle.mScreenHeight = getResources().getDisplayMetrics().heightPixels;
         paramBundle.mScreenWidth = getResources().getDisplayMetrics().widthPixels;
-        paramBundle.pDj = new int[] { -1, -1 };
-        paramBundle.pDk = new int[] { -1, -1 };
-        paramBundle.pDl = new int[] { -1, -1 };
-        paramBundle.pDm = new int[] { -1, -1 };
-        localObject1 = new com.tencent.mm.plugin.wenote.model.nativenote.c.a(this, 2, paramBundle.pCZ, paramBundle.pDa, i, paramBundle);
-        paramBundle.pDn = new PopupWindow((View)localObject1, ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getViewWidth(), ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getViewHeight(), false);
-        paramBundle.pDn.setClippingEnabled(false);
-        paramBundle.pDn.setAnimationStyle(2131821737);
-        paramBundle.pDh = ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getOffsetForCursorMid();
-        paramBundle.pDi = com.tencent.mm.cb.a.fromDPToPix(this, 6);
-        Object localObject2 = new com.tencent.mm.plugin.wenote.model.nativenote.c.a(this, 3, paramBundle.pCZ, paramBundle.pDa, i, paramBundle);
-        paramBundle.pDo = new PopupWindow((View)localObject2, ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject2).getViewWidth(), ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getViewHeight(), false);
-        paramBundle.pDo.setClippingEnabled(false);
-        paramBundle.pDo.setAnimationStyle(2131821736);
-        localObject2 = new com.tencent.mm.plugin.wenote.model.nativenote.c.a(this, 4, paramBundle.pCZ, paramBundle.pDa, i, paramBundle);
-        paramBundle.pDp = new PopupWindow((View)localObject2, ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject2).getViewWidth(), ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getViewHeight(), false);
-        paramBundle.pDp.setClippingEnabled(false);
-        paramBundle.pDp.setAnimationStyle(2131821738);
-        localObject2 = LayoutInflater.from(this).inflate(2131495035, null);
+        paramBundle.qSB = new int[] { -1, -1 };
+        paramBundle.qSC = new int[] { -1, -1 };
+        paramBundle.qSD = new int[] { -1, -1 };
+        paramBundle.qSE = new int[] { -1, -1 };
+        localObject1 = new com.tencent.mm.plugin.wenote.model.nativenote.c.a(this, 2, paramBundle.qSr, paramBundle.qSs, i, paramBundle);
+        paramBundle.qSF = new PopupWindow((View)localObject1, ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getViewWidth(), ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getViewHeight(), false);
+        paramBundle.qSF.setClippingEnabled(false);
+        paramBundle.qSF.setAnimationStyle(2131821787);
+        paramBundle.qSz = ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getOffsetForCursorMid();
+        paramBundle.qSA = com.tencent.mm.cb.a.fromDPToPix(this, 6);
+        Object localObject2 = new com.tencent.mm.plugin.wenote.model.nativenote.c.a(this, 3, paramBundle.qSr, paramBundle.qSs, i, paramBundle);
+        paramBundle.qSG = new PopupWindow((View)localObject2, ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject2).getViewWidth(), ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getViewHeight(), false);
+        paramBundle.qSG.setClippingEnabled(false);
+        paramBundle.qSG.setAnimationStyle(2131821786);
+        localObject2 = new com.tencent.mm.plugin.wenote.model.nativenote.c.a(this, 4, paramBundle.qSr, paramBundle.qSs, i, paramBundle);
+        paramBundle.qSH = new PopupWindow((View)localObject2, ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject2).getViewWidth(), ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getViewHeight(), false);
+        paramBundle.qSH.setClippingEnabled(false);
+        paramBundle.qSH.setAnimationStyle(2131821788);
+        localObject2 = LayoutInflater.from(this).inflate(2131495867, null);
         ((View)localObject2).measure(View.MeasureSpec.makeMeasureSpec(0, 0), View.MeasureSpec.makeMeasureSpec(0, 0));
-        paramBundle.pDq = new PopupWindow((View)localObject2, -2, -2, false);
-        paramBundle.pDq.setBackgroundDrawable(getResources().getDrawable(2131234275));
-        paramBundle.pDq.setClippingEnabled(false);
-        paramBundle.pDq.setAnimationStyle(2131821740);
-        paramBundle.pDw = ((TextView)((View)localObject2).findViewById(2131302913));
-        paramBundle.pDx = ((TextView)((View)localObject2).findViewById(2131302942));
-        paramBundle.pDy = ((TextView)((View)localObject2).findViewById(2131302939));
-        paramBundle.pDz = ((TextView)((View)localObject2).findViewById(2131302938));
-        paramBundle.pDA = ((TextView)((View)localObject2).findViewById(2131302923));
-        paramBundle.pDB = ((TextView)((View)localObject2).findViewById(2131302922));
-        paramBundle.pDC = ((TextView)((View)localObject2).findViewById(2131302921));
-        paramBundle.pDD = ((TextView)((View)localObject2).findViewById(2131302934));
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.pDw, paramBundle.pDb);
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.pDx, paramBundle.pDb);
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.pDy, paramBundle.pDb);
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.pDz, paramBundle.pDb);
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.pDA, paramBundle.pDb);
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.pDB, paramBundle.pDb);
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.pDC, paramBundle.pDb);
-        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.pDD, paramBundle.pDb);
-        paramBundle.pDw.setOnClickListener(new e.10(paramBundle));
-        paramBundle.pDx.setOnClickListener(new e.11(paramBundle));
-        paramBundle.pDy.setOnClickListener(new e.12(paramBundle));
-        paramBundle.pDz.setOnClickListener(new e.13(paramBundle));
-        paramBundle.pDA.setOnClickListener(new e.2(paramBundle));
-        paramBundle.pDB.setOnClickListener(new e.3(paramBundle));
-        paramBundle.pDC.setOnClickListener(new e.4(paramBundle));
-        paramBundle.pDD.setOnClickListener(new e.5(paramBundle));
-        paramBundle.pDg = ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getViewPadding();
-        paramBundle.ETc = this;
-        paramBundle.ETd = new com.tencent.mm.plugin.wenote.model.nativenote.c.d();
-        paramBundle.ETe = new com.tencent.mm.plugin.wenote.model.nativenote.c.b();
-        paramBundle.mHandler = new aq();
+        paramBundle.qSI = new PopupWindow((View)localObject2, -2, -2, false);
+        paramBundle.qSI.setBackgroundDrawable(getResources().getDrawable(2131235152));
+        paramBundle.qSI.setClippingEnabled(false);
+        paramBundle.qSI.setAnimationStyle(2131821790);
+        paramBundle.qSO = ((TextView)((View)localObject2).findViewById(2131305500));
+        paramBundle.qSP = ((TextView)((View)localObject2).findViewById(2131305529));
+        paramBundle.qSQ = ((TextView)((View)localObject2).findViewById(2131305526));
+        paramBundle.qSR = ((TextView)((View)localObject2).findViewById(2131305525));
+        paramBundle.qSS = ((TextView)((View)localObject2).findViewById(2131305510));
+        paramBundle.qST = ((TextView)((View)localObject2).findViewById(2131305509));
+        paramBundle.qSU = ((TextView)((View)localObject2).findViewById(2131305508));
+        paramBundle.qSV = ((TextView)((View)localObject2).findViewById(2131305521));
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.qSO, paramBundle.qSt);
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.qSP, paramBundle.qSt);
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.qSQ, paramBundle.qSt);
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.qSR, paramBundle.qSt);
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.qSS, paramBundle.qSt);
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.qST, paramBundle.qSt);
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.qSU, paramBundle.qSt);
+        com.tencent.mm.plugin.wenote.model.nativenote.c.e.i(paramBundle.qSV, paramBundle.qSt);
+        paramBundle.qSO.setOnClickListener(new e.10(paramBundle));
+        paramBundle.qSP.setOnClickListener(new e.11(paramBundle));
+        paramBundle.qSQ.setOnClickListener(new e.12(paramBundle));
+        paramBundle.qSR.setOnClickListener(new e.13(paramBundle));
+        paramBundle.qSS.setOnClickListener(new e.2(paramBundle));
+        paramBundle.qST.setOnClickListener(new e.3(paramBundle));
+        paramBundle.qSU.setOnClickListener(new e.4(paramBundle));
+        paramBundle.qSV.setOnClickListener(new e.5(paramBundle));
+        paramBundle.qSy = ((com.tencent.mm.plugin.wenote.model.nativenote.c.a)localObject1).getViewPadding();
+        paramBundle.JIQ = this;
+        paramBundle.JIR = new com.tencent.mm.plugin.wenote.model.nativenote.c.d();
+        paramBundle.JIS = new com.tencent.mm.plugin.wenote.model.nativenote.c.b();
+        paramBundle.mHandler = new MMHandler();
         com.tencent.mm.plugin.wenote.model.nativenote.c.e.mHasInit = true;
-        ae.i("NoteSelectManager", "onInit end");
-        this.pys = new RecyclerView.m()
+        Log.i("NoteSelectManager", "onInit end");
+        this.qNJ = new RecyclerView.l()
         {
-          public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
-          {
-            AppMethodBeat.i(30742);
-            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousRecyclerView);
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt1);
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt2);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$8", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-            super.a(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
-            if (paramAnonymousInt2 > 30)
-            {
-              com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgn();
-              com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgl();
-            }
-            localObject = com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().faS();
-            if (((NoteEditorUI.S(NoteEditorUI.this)) || ((NoteEditorUI.T(NoteEditorUI.this) != null) && (NoteEditorUI.T(NoteEditorUI.this).getVisibility() == 0))) && (((com.tencent.mm.plugin.wenote.model.nativenote.c.d)localObject).cgd() == 2) && (com.tencent.mm.plugin.wenote.model.nativenote.c.f.e(paramAnonymousRecyclerView, ((com.tencent.mm.plugin.wenote.model.nativenote.c.d)localObject).dgI) == null)) {
-              NoteEditorUI.this.ceN();
-            }
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$8", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-            AppMethodBeat.o(30742);
-          }
-          
-          public final void b(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
+          public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
           {
             AppMethodBeat.i(30741);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousRecyclerView);
-            localb.mu(paramAnonymousInt);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$8", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
-            super.b(paramAnonymousRecyclerView, paramAnonymousInt);
+            localb.bm(paramAnonymousRecyclerView);
+            localb.pH(paramAnonymousInt);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$8", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
+            super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
             switch (paramAnonymousInt)
             {
             }
@@ -2561,29 +2588,48 @@ public class NoteEditorUI
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$8", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
               AppMethodBeat.o(30741);
               return;
-              com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgn();
-              com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgl();
+              com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cEc();
+              com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cEa();
               continue;
-              boolean bool = com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgm();
-              com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().kk(bool);
-              bool = com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgk();
-              com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().kj(bool);
-              com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().f(false, 50L);
+              boolean bool = com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cEb();
+              com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().ln(bool);
+              bool = com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cDZ();
+              com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().lm(bool);
+              com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().f(false, 50L);
             }
           }
+          
+          public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
+          {
+            AppMethodBeat.i(30742);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousRecyclerView);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).pH(paramAnonymousInt1);
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).pH(paramAnonymousInt2);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$8", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+            super.onScrolled(paramAnonymousRecyclerView, paramAnonymousInt1, paramAnonymousInt2);
+            if (paramAnonymousInt2 > 30)
+            {
+              com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cEc();
+              com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cEa();
+            }
+            localObject = com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().gjX();
+            if (((NoteEditorUI.V(NoteEditorUI.this)) || ((NoteEditorUI.W(NoteEditorUI.this) != null) && (NoteEditorUI.W(NoteEditorUI.this).getVisibility() == 0))) && (((com.tencent.mm.plugin.wenote.model.nativenote.c.d)localObject).getSelectType() == 2) && (com.tencent.mm.plugin.wenote.model.nativenote.c.f.d(paramAnonymousRecyclerView, ((com.tencent.mm.plugin.wenote.model.nativenote.c.d)localObject).bNu) == null)) {
+              NoteEditorUI.this.cCD();
+            }
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/NoteEditorUI$8", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
+            AppMethodBeat.o(30742);
+          }
         };
-        this.anl.a(this.pys);
+        this.mRecyclerView.a(this.qNJ);
       }
-    }
-    else
-    {
-      if (this.qpG != null)
+      if (this.rGN != null)
       {
-        this.qpG.dismiss();
-        this.qpG = null;
+        this.rGN.dismiss();
+        this.rGN = null;
       }
-      if ((!this.ERj) && (!this.EUc)) {
-        this.qpG = com.tencent.mm.ui.base.h.b(getContext(), getString(2131766275), true, new DialogInterface.OnCancelListener()
+      if ((!this.JGV) && (!this.JJU)) {
+        this.rGN = com.tencent.mm.ui.base.h.a(getContext(), 3, getString(2131768786), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
@@ -2597,111 +2643,85 @@ public class NoteEditorUI
           }
         });
       }
-      if (this.EUc)
+      if (this.JJU)
       {
-        ae.i("MicroMsg.Note.NoteEditorUI", "open msg note,  out of date");
-        com.tencent.mm.ui.base.h.c(getContext(), getContext().getString(2131761642), null, true);
+        Log.i("MicroMsg.Note.NoteEditorUI", "open msg note,  out of date");
+        com.tencent.mm.ui.base.h.c(getContext(), getContext().getString(2131763610), null, true);
       }
-      if (this.ETW) {
-        addIconOptionMenu(1, 2131764451, 2131689493, new MenuItem.OnMenuItemClickListener()
+      if (this.JJO) {
+        addIconOptionMenu(1, 2131766795, 2131689495, new MenuItem.OnMenuItemClickListener()
         {
           public final boolean onMenuItemClick(final MenuItem paramAnonymousMenuItem)
           {
             int j = 1;
             AppMethodBeat.i(30736);
             paramAnonymousMenuItem = new com.tencent.mm.ui.widget.a.e(NoteEditorUI.this.getContext(), 1, false);
-            paramAnonymousMenuItem.LfS = new n.d()
+            paramAnonymousMenuItem.HLX = new o.f()
             {
-              public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymous2l)
+              public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramAnonymous2m)
               {
                 AppMethodBeat.i(30724);
                 if (NoteEditorUI.d(NoteEditorUI.this) == 1)
                 {
-                  paramAnonymous2l.d(4, NoteEditorUI.this.getString(2131759001));
-                  if (NoteEditorUI.e(NoteEditorUI.this) != null)
-                  {
-                    if (!NoteEditorUI.e(NoteEditorUI.this).bLw()) {
-                      break label122;
-                    }
-                    paramAnonymous2l.d(16, NoteEditorUI.this.getString(2131756770));
+                  paramAnonymous2m.d(4, NoteEditorUI.this.getString(2131759326));
+                  if ((NoteEditorUI.e(NoteEditorUI.this) != null) && (NoteEditorUI.e(NoteEditorUI.this).bPq())) {
+                    paramAnonymous2m.d(17, NoteEditorUI.this.getString(2131758718));
                   }
-                  for (;;)
-                  {
-                    NoteEditorUI.a(NoteEditorUI.this, paramAnonymous2l);
-                    paramAnonymous2l.d(3, NoteEditorUI.this.getString(2131761941));
-                    AppMethodBeat.o(30724);
-                    return;
-                    label122:
-                    paramAnonymous2l.d(15, NoteEditorUI.this.getString(2131758422));
-                  }
+                  NoteEditorUI.a(NoteEditorUI.this, paramAnonymous2m);
+                  paramAnonymous2m.d(3, NoteEditorUI.this.getString(2131763947));
+                  AppMethodBeat.o(30724);
+                  return;
                 }
                 String str;
                 if (NoteEditorUI.d(NoteEditorUI.this) == 2)
                 {
-                  paramAnonymous2l.d(0, NoteEditorUI.this.getString(2131759001));
-                  if (NoteEditorUI.e(NoteEditorUI.this) != null)
-                  {
-                    if (NoteEditorUI.e(NoteEditorUI.this).bLw()) {
-                      paramAnonymous2l.d(16, NoteEditorUI.this.getString(2131756770));
-                    }
+                  paramAnonymous2m.d(0, NoteEditorUI.this.getString(2131759326));
+                  if ((NoteEditorUI.e(NoteEditorUI.this) != null) && (NoteEditorUI.e(NoteEditorUI.this).bPq())) {
+                    paramAnonymous2m.d(17, NoteEditorUI.this.getString(2131758718));
                   }
-                  else
-                  {
-                    if (com.tencent.mm.plugin.wenote.c.a.faX()) {
-                      paramAnonymous2l.d(7, NoteEditorUI.this.getContext().getString(2131758951));
-                    }
-                    if (!NoteEditorUI.f(NoteEditorUI.this)) {
-                      paramAnonymous2l.d(14, NoteEditorUI.this.getString(2131758988));
-                    }
-                    str = (String)com.tencent.mm.model.c.d.aDI().xi("100353").fsy().get("Close");
-                    if (bu.isNullOrNil(str)) {
-                      break label592;
-                    }
+                  if (com.tencent.mm.plugin.wenote.c.a.gkd()) {
+                    paramAnonymous2m.d(7, NoteEditorUI.this.getContext().getString(2131759275));
+                  }
+                  if (!NoteEditorUI.f(NoteEditorUI.this)) {
+                    paramAnonymous2m.d(14, NoteEditorUI.this.getString(2131759313));
+                  }
+                  str = (String)com.tencent.mm.model.c.d.aXu().Fu("100353").gzz().get("Close");
+                  if (Util.isNullOrNil(str)) {
+                    break label526;
                   }
                 }
-                label570:
-                label592:
-                for (int i = bu.getInt(str, 0);; i = 0)
+                label526:
+                for (int i = Util.getInt(str, 0);; i = 0)
                 {
                   if (i == 0) {}
                   for (i = 1;; i = 0)
                   {
                     if (i != 0) {
-                      paramAnonymous2l.d(8, NoteEditorUI.this.getContext().getString(2131761651));
+                      paramAnonymous2m.d(8, NoteEditorUI.this.getContext().getString(2131763619));
                     }
-                    NoteEditorUI.a(NoteEditorUI.this, paramAnonymous2l);
-                    paramAnonymous2l.d(1, NoteEditorUI.this.getString(2131758875));
-                    paramAnonymous2l.d(2, NoteEditorUI.this.getContext().getString(2131755707));
+                    NoteEditorUI.a(NoteEditorUI.this, paramAnonymous2m);
+                    paramAnonymous2m.d(1, NoteEditorUI.this.getString(2131759199));
+                    paramAnonymous2m.d(2, NoteEditorUI.this.getContext().getString(2131755778));
                     AppMethodBeat.o(30724);
                     return;
-                    paramAnonymous2l.d(15, NoteEditorUI.this.getString(2131758422));
-                    break;
                   }
                   if (NoteEditorUI.d(NoteEditorUI.this) == 4)
                   {
-                    paramAnonymous2l.d(9, NoteEditorUI.this.getString(2131759001));
-                    if (NoteEditorUI.e(NoteEditorUI.this) != null)
-                    {
-                      if (!NoteEditorUI.e(NoteEditorUI.this).bLw()) {
-                        break label570;
-                      }
-                      paramAnonymous2l.d(16, NoteEditorUI.this.getString(2131756770));
+                    paramAnonymous2m.d(9, NoteEditorUI.this.getString(2131759326));
+                    if ((NoteEditorUI.e(NoteEditorUI.this) != null) && (NoteEditorUI.e(NoteEditorUI.this).bPq())) {
+                      paramAnonymous2m.d(17, NoteEditorUI.this.getString(2131758718));
                     }
-                  }
-                  for (;;)
-                  {
-                    if (com.tencent.mm.plugin.wenote.c.a.faX()) {
-                      paramAnonymous2l.d(12, NoteEditorUI.this.getContext().getString(2131758951));
+                    if (com.tencent.mm.plugin.wenote.c.a.gkd()) {
+                      paramAnonymous2m.d(12, NoteEditorUI.this.getContext().getString(2131759275));
                     }
-                    paramAnonymous2l.d(10, NoteEditorUI.this.getString(2131761941));
-                    AppMethodBeat.o(30724);
-                    return;
-                    paramAnonymous2l.d(15, NoteEditorUI.this.getString(2131758422));
+                    paramAnonymous2m.d(10, NoteEditorUI.this.getString(2131763947));
                   }
+                  AppMethodBeat.o(30724);
+                  return;
                 }
               }
             };
-            paramAnonymousMenuItem.LfT = new n.e()
+            paramAnonymousMenuItem.HLY = new o.g()
             {
               public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
               {
@@ -2720,7 +2740,7 @@ public class NoteEditorUI
                   if (NoteEditorUI.g(NoteEditorUI.this) != null) {
                     NoteEditorUI.g(NoteEditorUI.this).a(null);
                   }
-                  NoteEditorUI.a(NoteEditorUI.this, com.tencent.mm.ui.base.h.b(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755015), true, new DialogInterface.OnCancelListener()
+                  NoteEditorUI.a(NoteEditorUI.this, com.tencent.mm.ui.base.h.a(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755016), true, new DialogInterface.OnCancelListener()
                   {
                     public final void onCancel(DialogInterface paramAnonymous3DialogInterface)
                     {
@@ -2733,74 +2753,74 @@ public class NoteEditorUI
                       AppMethodBeat.o(30725);
                     }
                   }));
-                  com.tencent.mm.sdk.g.b.c(new Runnable()
+                  ThreadPool.post(new Runnable()
                   {
                     public final void run()
                     {
                       AppMethodBeat.i(30727);
                       NoteEditorUI localNoteEditorUI = NoteEditorUI.this;
-                      Object localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfG();
-                      if (NoteEditorUI.abA((String)localObject))
+                      Object localObject = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDw();
+                      if (NoteEditorUI.alG((String)localObject))
                       {
-                        localObject = new gx();
-                        ((gx)localObject).dub.type = 12;
-                        ((gx)localObject).dub.doH = localNoteEditorUI.doE;
-                        com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
+                        localObject = new hb();
+                        ((hb)localObject).dLm.type = 12;
+                        ((hb)localObject).dLm.dFW = localNoteEditorUI.localId;
+                        EventCenter.instance.publish((IEvent)localObject);
                         if (NoteEditorUI.c(NoteEditorUI.this) == null) {
                           AppMethodBeat.o(30727);
                         }
                       }
                       else
                       {
-                        if ((localNoteEditorUI.ERx) || (localNoteEditorUI.ERj))
+                        if ((localNoteEditorUI.JHk) || (localNoteEditorUI.JGV))
                         {
-                          ae.i("MicroMsg.Note.NoteEditorUI", "syncWNNoteFavItem noteeditorui, do savewnnotefavitem");
-                          localNoteEditorUI.a((String)localObject, true, true, localNoteEditorUI.ETB.ESQ, localNoteEditorUI.ETB.ESR, localNoteEditorUI.ETB.ESS, com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().abO((String)localObject));
+                          Log.i("MicroMsg.Note.NoteEditorUI", "syncWNNoteFavItem noteeditorui, do savewnnotefavitem");
+                          localNoteEditorUI.a((String)localObject, true, true, localNoteEditorUI.JJu.JIE, localNoteEditorUI.JJu.JIF, localNoteEditorUI.JJu.JIG, com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().alU((String)localObject));
                         }
                         for (;;)
                         {
-                          localNoteEditorUI.EUa = true;
+                          localNoteEditorUI.JJS = true;
                           break;
-                          if (localNoteEditorUI.ETJ)
+                          if (localNoteEditorUI.JJC)
                           {
-                            ae.i("MicroMsg.Note.NoteEditorUI", "syncWNNoteFavItem noteeditorui, do updateWNNoteFavitem");
-                            localNoteEditorUI.a((String)localObject, false, true, localNoteEditorUI.ETB.ESQ, localNoteEditorUI.ETB.ESR, localNoteEditorUI.ETB.ESS, com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().abO((String)localObject));
+                            Log.i("MicroMsg.Note.NoteEditorUI", "syncWNNoteFavItem noteeditorui, do updateWNNoteFavitem");
+                            localNoteEditorUI.a((String)localObject, false, true, localNoteEditorUI.JJu.JIE, localNoteEditorUI.JJu.JIF, localNoteEditorUI.JJu.JIG, com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().alU((String)localObject));
                           }
                         }
                       }
-                      ar.f(new Runnable()
+                      MMHandlerThread.postToMainThread(new Runnable()
                       {
                         public final void run()
                         {
                           AppMethodBeat.i(30726);
                           NoteEditorUI.h(NoteEditorUI.this);
-                          Object localObject = new gx();
-                          ((gx)localObject).dub.type = 32;
-                          ((gx)localObject).dub.doH = NoteEditorUI.i(NoteEditorUI.this);
-                          com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
-                          boolean bool = ((gx)localObject).duc.dus;
-                          if (((gx)localObject).duc.ret != 0) {}
-                          for (int i = 1; ((gx)localObject).duc.path == null; i = 0)
+                          Object localObject = new hb();
+                          ((hb)localObject).dLm.type = 32;
+                          ((hb)localObject).dLm.dFW = NoteEditorUI.i(NoteEditorUI.this);
+                          EventCenter.instance.publish((IEvent)localObject);
+                          boolean bool = ((hb)localObject).dLn.dLD;
+                          if (((hb)localObject).dLn.ret != 0) {}
+                          for (int i = 1; ((hb)localObject).dLn.path == null; i = 0)
                           {
-                            com.tencent.mm.ui.base.h.cm(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131758987));
+                            com.tencent.mm.ui.base.h.cD(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131759312));
                             AppMethodBeat.o(30726);
                             return;
                           }
                           if (bool)
                           {
-                            com.tencent.mm.ui.base.h.cm(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755013));
+                            com.tencent.mm.ui.base.h.cD(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755014));
                             AppMethodBeat.o(30726);
                             return;
                           }
                           if (i != 0)
                           {
-                            com.tencent.mm.ui.base.h.cm(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755014));
+                            com.tencent.mm.ui.base.h.cD(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755015));
                             AppMethodBeat.o(30726);
                             return;
                           }
                           if (NoteEditorUI.j(NoteEditorUI.this))
                           {
-                            com.tencent.mm.ui.base.h.cm(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131759064, new Object[] { bu.sL(com.tencent.mm.n.b.acv()) }));
+                            com.tencent.mm.ui.base.h.cD(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131759395, new Object[] { Util.getSizeKB(com.tencent.mm.n.c.aqu()) }));
                             AppMethodBeat.o(30726);
                             return;
                           }
@@ -2809,10 +2829,10 @@ public class NoteEditorUI
                           ((Intent)localObject).putExtra("scene_from", 1);
                           ((Intent)localObject).putExtra("mutil_select_is_ret", true);
                           ((Intent)localObject).putExtra("select_fav_local_id", NoteEditorUI.i(NoteEditorUI.this));
-                          com.tencent.mm.br.d.c(NoteEditorUI.this, ".ui.transmit.SelectConversationUI", (Intent)localObject, 4101);
-                          com.tencent.mm.plugin.fav.a.h.i(NoteEditorUI.i(NoteEditorUI.this), 1, 0);
+                          com.tencent.mm.br.c.c(NoteEditorUI.this, ".ui.transmit.SelectConversationUI", (Intent)localObject, 4101);
+                          com.tencent.mm.plugin.fav.a.h.w(NoteEditorUI.i(NoteEditorUI.this), 1);
                           localObject = NoteEditorUI.k(NoteEditorUI.this);
-                          ((h.a)localObject).rAM += 1;
+                          ((h.a)localObject).tar += 1;
                           AppMethodBeat.o(30726);
                         }
                       });
@@ -2824,48 +2844,48 @@ public class NoteEditorUI
                   if (NoteEditorUI.g(NoteEditorUI.this) != null) {
                     NoteEditorUI.g(NoteEditorUI.this).a(null);
                   }
-                  NoteEditorUI.l(NoteEditorUI.this).faO();
+                  NoteEditorUI.l(NoteEditorUI.this).gjT();
                   paramAnonymous2MenuItem = new Intent();
                   paramAnonymous2MenuItem.putExtra("key_fav_scene", 2);
                   paramAnonymous2MenuItem.putExtra("key_fav_item_id", NoteEditorUI.i(NoteEditorUI.this));
                   com.tencent.mm.plugin.fav.a.b.b(NoteEditorUI.this.getContext(), ".ui.FavTagEditUI", paramAnonymous2MenuItem);
                   paramAnonymous2MenuItem = NoteEditorUI.m(NoteEditorUI.this);
-                  paramAnonymous2MenuItem.rAP += 1;
+                  paramAnonymous2MenuItem.tau += 1;
                   AppMethodBeat.o(30734);
                   return;
-                  com.tencent.mm.ui.base.h.a(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755709), "", new DialogInterface.OnClickListener()
+                  com.tencent.mm.ui.base.h.a(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755780), "", new DialogInterface.OnClickListener()
                   {
                     public final void onClick(final DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                     {
                       AppMethodBeat.i(30729);
-                      paramAnonymous3DialogInterface = com.tencent.mm.ui.base.h.b(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755709), false, null);
-                      NoteEditorUI.l(NoteEditorUI.this).faO();
-                      gx localgx = new gx();
-                      localgx.dub.type = 12;
-                      localgx.dub.doH = NoteEditorUI.i(NoteEditorUI.this);
-                      localgx.dub.dug = new Runnable()
+                      paramAnonymous3DialogInterface = com.tencent.mm.ui.base.h.a(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755780), false, null);
+                      NoteEditorUI.l(NoteEditorUI.this).gjT();
+                      hb localhb = new hb();
+                      localhb.dLm.type = 12;
+                      localhb.dLm.dFW = NoteEditorUI.i(NoteEditorUI.this);
+                      localhb.dLm.dLr = new Runnable()
                       {
                         public final void run()
                         {
                           AppMethodBeat.i(30728);
-                          NoteEditorUI.n(NoteEditorUI.this).rAQ = true;
+                          NoteEditorUI.n(NoteEditorUI.this).tav = true;
                           paramAnonymous3DialogInterface.dismiss();
                           NoteEditorUI.o(NoteEditorUI.this);
-                          ae.d("MicroMsg.Note.NoteEditorUI", "do del, local id %d", new Object[] { Long.valueOf(NoteEditorUI.i(NoteEditorUI.this)) });
+                          Log.d("MicroMsg.Note.NoteEditorUI", "do del, local id %d", new Object[] { Long.valueOf(NoteEditorUI.i(NoteEditorUI.this)) });
                           NoteEditorUI.this.finish();
                           AppMethodBeat.o(30728);
                         }
                       };
-                      com.tencent.mm.sdk.b.a.IvT.l(localgx);
+                      EventCenter.instance.publish(localhb);
                       AppMethodBeat.o(30729);
                     }
                   }, null);
                   AppMethodBeat.o(30734);
                   return;
-                  paramAnonymous2MenuItem = new cw();
-                  com.tencent.mm.pluginsdk.model.g.a(paramAnonymous2MenuItem, NoteEditorUI.p(NoteEditorUI.this));
-                  com.tencent.mm.sdk.b.a.IvT.l(paramAnonymous2MenuItem);
-                  com.tencent.mm.plugin.fav.ui.e.a(paramAnonymous2MenuItem.doM.ret, NoteEditorUI.this, NoteEditorUI.this.ufz);
+                  paramAnonymous2MenuItem = new cz();
+                  com.tencent.mm.pluginsdk.model.h.a(paramAnonymous2MenuItem, NoteEditorUI.p(NoteEditorUI.this));
+                  EventCenter.instance.publish(paramAnonymous2MenuItem);
+                  com.tencent.mm.plugin.fav.ui.e.a(paramAnonymous2MenuItem.dGa.ret, NoteEditorUI.this, NoteEditorUI.this.xxK);
                   AppMethodBeat.o(30734);
                   return;
                   paramAnonymous2MenuItem = new Intent();
@@ -2874,56 +2894,56 @@ public class NoteEditorUI
                   paramAnonymous2MenuItem.putExtra("mutil_select_is_ret", true);
                   paramAnonymous2MenuItem.putExtra("Retr_Msg_Type", 2);
                   paramAnonymous2MenuItem.putExtra("Retr_Msg_Id", NoteEditorUI.p(NoteEditorUI.this));
-                  com.tencent.mm.br.d.c(NoteEditorUI.this, ".ui.transmit.SelectConversationUI", paramAnonymous2MenuItem, 4096);
+                  com.tencent.mm.br.c.c(NoteEditorUI.this, ".ui.transmit.SelectConversationUI", paramAnonymous2MenuItem, 4096);
                   paramAnonymous2MenuItem = NoteEditorUI.q(NoteEditorUI.this);
-                  paramAnonymous2MenuItem.rAM += 1;
+                  paramAnonymous2MenuItem.tar += 1;
                   AppMethodBeat.o(30734);
                   return;
-                  NoteEditorUI.l(NoteEditorUI.this).faO();
+                  NoteEditorUI.l(NoteEditorUI.this).gjT();
                   paramAnonymous2MenuItem = new com.tencent.mm.plugin.wenote.model.a.q();
                   if (NoteEditorUI.d(NoteEditorUI.this) == 1)
                   {
                     bool = true;
-                    paramAnonymous2MenuItem.ESe = bool;
-                    paramAnonymous2MenuItem.ESi = NoteEditorUI.r(NoteEditorUI.this);
-                    paramAnonymous2MenuItem.ESh = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().aLF(NoteEditorUI.this.getString(2131766212));
-                    paramAnonymous2MenuItem.ESj = NoteEditorUI.s(NoteEditorUI.this);
-                    paramAnonymous2MenuItem.ESk = NoteEditorUI.t(NoteEditorUI.this);
+                    paramAnonymous2MenuItem.JHR = bool;
+                    paramAnonymous2MenuItem.JHV = NoteEditorUI.r(NoteEditorUI.this);
+                    paramAnonymous2MenuItem.JHU = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().bbV(NoteEditorUI.this.getString(2131768720));
+                    paramAnonymous2MenuItem.JHW = NoteEditorUI.s(NoteEditorUI.this);
+                    paramAnonymous2MenuItem.JHX = NoteEditorUI.t(NoteEditorUI.this);
                     if (NoteEditorUI.d(NoteEditorUI.this) != 1) {
-                      break label828;
+                      break label832;
                     }
-                    paramAnonymous2MenuItem.ESg = NoteEditorUI.p(NoteEditorUI.this);
+                    paramAnonymous2MenuItem.JHT = NoteEditorUI.p(NoteEditorUI.this);
                     if (!NoteEditorUI.u(NoteEditorUI.this)) {
-                      break label793;
+                      break label797;
                     }
-                    paramAnonymous2MenuItem.rCw = true;
-                    com.tencent.mm.plugin.report.service.g.yxI.f(14790, new Object[] { Integer.valueOf(3), Integer.valueOf(1) });
+                    paramAnonymous2MenuItem.tcb = true;
+                    com.tencent.mm.plugin.report.service.h.CyF.a(14790, new Object[] { Integer.valueOf(3), Integer.valueOf(1) });
                   }
                   for (;;)
                   {
-                    com.tencent.mm.plugin.report.service.g.yxI.f(18728, new Object[] { Integer.valueOf(1) });
-                    bc.aCg();
-                    com.tencent.mm.model.c.ajA().set(am.a.ITV, Long.valueOf(System.currentTimeMillis()));
-                    com.tencent.mm.plugin.wenote.model.nativenote.manager.h.faJ().c(paramAnonymous2MenuItem);
-                    com.tencent.mm.ui.widget.snackbar.b.n(NoteEditorUI.this, NoteEditorUI.this.getString(2131766213));
+                    com.tencent.mm.plugin.report.service.h.CyF.a(18728, new Object[] { Integer.valueOf(1) });
+                    bg.aVF();
+                    com.tencent.mm.model.c.azQ().set(ar.a.Ocj, Long.valueOf(System.currentTimeMillis()));
+                    com.tencent.mm.plugin.wenote.model.nativenote.manager.h.gjO().c(paramAnonymous2MenuItem);
+                    com.tencent.mm.ui.widget.snackbar.b.r(NoteEditorUI.this, NoteEditorUI.this.getString(2131768721));
                     AppMethodBeat.o(30734);
                     return;
                     bool = false;
                     break;
-                    label793:
-                    paramAnonymous2MenuItem.rCw = false;
-                    com.tencent.mm.plugin.report.service.g.yxI.f(14790, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
+                    label797:
+                    paramAnonymous2MenuItem.tcb = false;
+                    com.tencent.mm.plugin.report.service.h.CyF.a(14790, new Object[] { Integer.valueOf(2), Integer.valueOf(1) });
                     continue;
-                    label828:
-                    com.tencent.mm.plugin.report.service.g.yxI.f(14790, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
-                    paramAnonymous2MenuItem.ESf = NoteEditorUI.i(NoteEditorUI.this);
+                    label832:
+                    com.tencent.mm.plugin.report.service.h.CyF.a(14790, new Object[] { Integer.valueOf(1), Integer.valueOf(1) });
+                    paramAnonymous2MenuItem.JHS = NoteEditorUI.i(NoteEditorUI.this);
                   }
-                  com.tencent.mm.plugin.report.service.g.yxI.f(14790, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
-                  com.tencent.mm.plugin.wenote.model.nativenote.manager.h.faJ().c(null);
-                  com.tencent.mm.ui.widget.snackbar.b.n(NoteEditorUI.this, NoteEditorUI.this.getString(2131766207));
+                  com.tencent.mm.plugin.report.service.h.CyF.a(14790, new Object[] { Integer.valueOf(1), Integer.valueOf(2) });
+                  com.tencent.mm.plugin.wenote.model.nativenote.manager.h.gjO().c(null);
+                  com.tencent.mm.ui.widget.snackbar.b.r(NoteEditorUI.this, NoteEditorUI.this.getString(2131768715));
                   AppMethodBeat.o(30734);
                   return;
-                  com.tencent.mm.plugin.fav.a.h.i(NoteEditorUI.i(NoteEditorUI.this), 0, 0);
+                  com.tencent.mm.plugin.fav.a.h.w(NoteEditorUI.i(NoteEditorUI.this), 0);
                   if ((NoteEditorUI.v(NoteEditorUI.this)) || (NoteEditorUI.w(NoteEditorUI.this))) {
                     paramAnonymous2Int = 1;
                   }
@@ -2932,8 +2952,8 @@ public class NoteEditorUI
                   {
                     if (paramAnonymous2Int != 0)
                     {
-                      NoteEditorUI.l(NoteEditorUI.this).faO();
-                      NoteEditorUI.this.faZ();
+                      NoteEditorUI.l(NoteEditorUI.this).gjT();
+                      NoteEditorUI.this.gke();
                       NoteEditorUI.z(NoteEditorUI.this);
                     }
                     if ((NoteEditorUI.v(NoteEditorUI.this)) || (NoteEditorUI.w(NoteEditorUI.this)))
@@ -2942,14 +2962,14 @@ public class NoteEditorUI
                       NoteEditorUI.B(NoteEditorUI.this);
                       NoteEditorUI.C(NoteEditorUI.this);
                     }
-                    paramAnonymous2MenuItem = new gx();
-                    paramAnonymous2MenuItem.dub.type = 30;
-                    paramAnonymous2MenuItem.dub.dui = 1;
-                    paramAnonymous2MenuItem.dub.doH = NoteEditorUI.i(NoteEditorUI.this);
-                    com.tencent.mm.sdk.b.a.IvT.l(paramAnonymous2MenuItem);
-                    str = paramAnonymous2MenuItem.duc.path;
-                    NoteEditorUI.a(NoteEditorUI.this, paramAnonymous2MenuItem.duc.thumbPath);
-                    if (!bu.isNullOrNil(str)) {
+                    paramAnonymous2MenuItem = new hb();
+                    paramAnonymous2MenuItem.dLm.type = 30;
+                    paramAnonymous2MenuItem.dLm.dLt = 1;
+                    paramAnonymous2MenuItem.dLm.dFW = NoteEditorUI.i(NoteEditorUI.this);
+                    EventCenter.instance.publish(paramAnonymous2MenuItem);
+                    str = paramAnonymous2MenuItem.dLn.path;
+                    NoteEditorUI.a(NoteEditorUI.this, paramAnonymous2MenuItem.dLn.thumbPath);
+                    if (!Util.isNullOrNil(str)) {
                       break;
                     }
                     NoteEditorUI.D(NoteEditorUI.this).post(new Runnable()
@@ -2957,7 +2977,7 @@ public class NoteEditorUI
                       public final void run()
                       {
                         AppMethodBeat.i(30730);
-                        Toast.makeText(NoteEditorUI.this, NoteEditorUI.this.getString(2131763645), 0).show();
+                        Toast.makeText(NoteEditorUI.this, NoteEditorUI.this.getString(2131765833), 0).show();
                         AppMethodBeat.o(30730);
                       }
                     });
@@ -2967,17 +2987,17 @@ public class NoteEditorUI
                     if (NoteEditorUI.x(NoteEditorUI.this))
                     {
                       paramAnonymous2Int = i;
-                      if (!com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().cfG().equals(NoteEditorUI.y(NoteEditorUI.this))) {
+                      if (!com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().cDw().equals(NoteEditorUI.y(NoteEditorUI.this))) {
                         paramAnonymous2Int = 1;
                       }
                     }
                   }
                   NoteEditorUI.b(NoteEditorUI.this, str);
                   paramAnonymous2MenuItem = NoteEditorUI.E(NoteEditorUI.this);
-                  paramAnonymous2MenuItem.rAN += 1;
+                  paramAnonymous2MenuItem.tas += 1;
                   AppMethodBeat.o(30734);
                   return;
-                  NoteEditorUI.a(NoteEditorUI.this, com.tencent.mm.ui.base.h.b(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131766275), true, new DialogInterface.OnCancelListener()
+                  NoteEditorUI.a(NoteEditorUI.this, com.tencent.mm.ui.base.h.a(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131768786), true, new DialogInterface.OnCancelListener()
                   {
                     public final void onCancel(DialogInterface paramAnonymous3DialogInterface)
                     {
@@ -2990,21 +3010,21 @@ public class NoteEditorUI
                       AppMethodBeat.o(30731);
                     }
                   }));
-                  paramAnonymous2MenuItem = new gx();
-                  paramAnonymous2MenuItem.dub.type = 32;
-                  paramAnonymous2MenuItem.dub.doH = NoteEditorUI.i(NoteEditorUI.this);
-                  paramAnonymous2MenuItem.dub.doN = com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERk;
-                  com.tencent.mm.sdk.b.a.IvT.l(paramAnonymous2MenuItem);
-                  boolean bool = paramAnonymous2MenuItem.duc.dus;
-                  if (paramAnonymous2MenuItem.duc.path == null)
+                  paramAnonymous2MenuItem = new hb();
+                  paramAnonymous2MenuItem.dLm.type = 32;
+                  paramAnonymous2MenuItem.dLm.dFW = NoteEditorUI.i(NoteEditorUI.this);
+                  paramAnonymous2MenuItem.dLm.dGb = com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGW;
+                  EventCenter.instance.publish(paramAnonymous2MenuItem);
+                  boolean bool = paramAnonymous2MenuItem.dLn.dLD;
+                  if (paramAnonymous2MenuItem.dLn.path == null)
                   {
                     NoteEditorUI.h(NoteEditorUI.this);
-                    Toast.makeText(NoteEditorUI.this.getContext(), NoteEditorUI.this.getContext().getString(2131761646), 1).show();
-                    paramAnonymous2MenuItem = com.tencent.mm.plugin.report.service.g.yxI;
+                    Toast.makeText(NoteEditorUI.this.getContext(), NoteEditorUI.this.getContext().getString(2131763614), 1).show();
+                    paramAnonymous2MenuItem = com.tencent.mm.plugin.report.service.h.CyF;
                     if (NoteEditorUI.f(NoteEditorUI.this)) {}
                     for (;;)
                     {
-                      paramAnonymous2MenuItem.f(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(5), Integer.valueOf(paramAnonymous2Int) });
+                      paramAnonymous2MenuItem.a(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(5), Integer.valueOf(paramAnonymous2Int) });
                       AppMethodBeat.o(30734);
                       return;
                       paramAnonymous2Int = 0;
@@ -3013,12 +3033,12 @@ public class NoteEditorUI
                   if (bool)
                   {
                     NoteEditorUI.h(NoteEditorUI.this);
-                    Toast.makeText(NoteEditorUI.this.getContext(), NoteEditorUI.this.getContext().getString(2131761646), 1).show();
-                    paramAnonymous2MenuItem = com.tencent.mm.plugin.report.service.g.yxI;
+                    Toast.makeText(NoteEditorUI.this.getContext(), NoteEditorUI.this.getContext().getString(2131763614), 1).show();
+                    paramAnonymous2MenuItem = com.tencent.mm.plugin.report.service.h.CyF;
                     if (NoteEditorUI.f(NoteEditorUI.this)) {}
                     for (paramAnonymous2Int = k;; paramAnonymous2Int = 0)
                     {
-                      paramAnonymous2MenuItem.f(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(5), Integer.valueOf(paramAnonymous2Int) });
+                      paramAnonymous2MenuItem.a(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(5), Integer.valueOf(paramAnonymous2Int) });
                       AppMethodBeat.o(30734);
                       return;
                     }
@@ -3028,44 +3048,44 @@ public class NoteEditorUI
                     public final void run()
                     {
                       AppMethodBeat.i(30732);
-                      NoteEditorUI.l(NoteEditorUI.this).faO();
+                      NoteEditorUI.l(NoteEditorUI.this).gjT();
                       com.tencent.mm.plugin.wenote.model.a.a locala = new com.tencent.mm.plugin.wenote.model.a.a();
-                      locala.pAj = false;
-                      locala.pAp = false;
-                      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().a(locala);
-                      int i = NoteEditorUI.l(NoteEditorUI.this).EST;
-                      NoteEditorUI.l(NoteEditorUI.this).EST = 3;
-                      com.tencent.mm.plugin.wenote.model.h.YD(i);
+                      locala.qPA = false;
+                      locala.qPG = false;
+                      com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().a(locala);
+                      int i = NoteEditorUI.l(NoteEditorUI.this).JIH;
+                      NoteEditorUI.l(NoteEditorUI.this).JIH = 3;
+                      com.tencent.mm.plugin.wenote.model.h.aho(i);
                       AppMethodBeat.o(30732);
                     }
                   });
                   AppMethodBeat.o(30734);
                   return;
-                  paramAnonymous2MenuItem = new gx();
-                  paramAnonymous2MenuItem.dub.type = 32;
-                  paramAnonymous2MenuItem.dub.doH = NoteEditorUI.i(NoteEditorUI.this);
-                  paramAnonymous2MenuItem.dub.doN = com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERk;
-                  com.tencent.mm.sdk.b.a.IvT.l(paramAnonymous2MenuItem);
-                  bool = paramAnonymous2MenuItem.duc.dus;
+                  paramAnonymous2MenuItem = new hb();
+                  paramAnonymous2MenuItem.dLm.type = 32;
+                  paramAnonymous2MenuItem.dLm.dFW = NoteEditorUI.i(NoteEditorUI.this);
+                  paramAnonymous2MenuItem.dLm.dGb = com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGW;
+                  EventCenter.instance.publish(paramAnonymous2MenuItem);
+                  bool = paramAnonymous2MenuItem.dLn.dLD;
                   paramAnonymous2Int = j;
-                  if (paramAnonymous2MenuItem.duc.ret != 0) {
+                  if (paramAnonymous2MenuItem.dLn.ret != 0) {
                     paramAnonymous2Int = 1;
                   }
-                  if (paramAnonymous2MenuItem.duc.path == null)
+                  if (paramAnonymous2MenuItem.dLn.path == null)
                   {
-                    com.tencent.mm.ui.base.h.cm(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131758987));
+                    com.tencent.mm.ui.base.h.cD(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131759312));
                     AppMethodBeat.o(30734);
                     return;
                   }
                   if (bool)
                   {
-                    com.tencent.mm.ui.base.h.cm(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755013));
+                    com.tencent.mm.ui.base.h.cD(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755014));
                     AppMethodBeat.o(30734);
                     return;
                   }
                   if (paramAnonymous2Int != 0)
                   {
-                    com.tencent.mm.ui.base.h.cm(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755014));
+                    com.tencent.mm.ui.base.h.cD(NoteEditorUI.this.getContext(), NoteEditorUI.this.getString(2131755015));
                     AppMethodBeat.o(30734);
                     return;
                   }
@@ -3074,25 +3094,25 @@ public class NoteEditorUI
                   paramAnonymous2MenuItem.putExtra("scene_from", 1);
                   paramAnonymous2MenuItem.putExtra("mutil_select_is_ret", true);
                   paramAnonymous2MenuItem.putExtra("select_fav_local_id", NoteEditorUI.i(NoteEditorUI.this));
-                  paramAnonymous2MenuItem.putExtra("Retr_fav_xml_str", com.tencent.mm.plugin.wenote.model.c.fau().EQZ.fav());
-                  com.tencent.mm.br.d.c(NoteEditorUI.this, ".ui.transmit.SelectConversationUI", paramAnonymous2MenuItem, 4355);
+                  paramAnonymous2MenuItem.putExtra("Retr_fav_xml_str", com.tencent.mm.plugin.wenote.model.c.gjz().JGL.gjA());
+                  com.tencent.mm.br.c.c(NoteEditorUI.this, ".ui.transmit.SelectConversationUI", paramAnonymous2MenuItem, 4355);
                   paramAnonymous2MenuItem = NoteEditorUI.F(NoteEditorUI.this);
-                  paramAnonymous2MenuItem.rAM += 1;
+                  paramAnonymous2MenuItem.tar += 1;
                   AppMethodBeat.o(30734);
                   return;
-                  com.tencent.mm.plugin.wenote.model.h.bI(NoteEditorUI.this.getContext(), NoteEditorUI.G(NoteEditorUI.this));
+                  com.tencent.mm.plugin.wenote.model.h.cc(NoteEditorUI.this.getContext(), NoteEditorUI.G(NoteEditorUI.this));
                   AppMethodBeat.o(30734);
                   return;
                   AppMethodBeat.o(30734);
                   return;
-                  if (bu.isNullOrNil(NoteEditorUI.H(NoteEditorUI.this)))
+                  if (Util.isNullOrNil(NoteEditorUI.H(NoteEditorUI.this)))
                   {
                     NoteEditorUI.D(NoteEditorUI.this).post(new Runnable()
                     {
                       public final void run()
                       {
                         AppMethodBeat.i(30733);
-                        Toast.makeText(NoteEditorUI.this, NoteEditorUI.this.getString(2131763645), 0).show();
+                        Toast.makeText(NoteEditorUI.this, NoteEditorUI.this.getString(2131765833), 0).show();
                         AppMethodBeat.o(30733);
                       }
                     });
@@ -3100,7 +3120,7 @@ public class NoteEditorUI
                     return;
                   }
                   paramAnonymous2MenuItem = NoteEditorUI.I(NoteEditorUI.this);
-                  paramAnonymous2MenuItem.rAN += 1;
+                  paramAnonymous2MenuItem.tas += 1;
                   NoteEditorUI.b(NoteEditorUI.this, NoteEditorUI.H(NoteEditorUI.this));
                   AppMethodBeat.o(30734);
                   return;
@@ -3110,38 +3130,25 @@ public class NoteEditorUI
                     paramAnonymous2MenuItem.putExtra("k_username", NoteEditorUI.J(NoteEditorUI.this)[1]);
                   }
                   paramAnonymous2MenuItem.putExtra("showShare", NoteEditorUI.K(NoteEditorUI.this));
-                  paramAnonymous2MenuItem.putExtra("rawUrl", String.format("https://weixin110.qq.com/security/readtemplate?t=weixin_report/w_type&scene=%d#wechat_redirect", new Object[] { Integer.valueOf(33) }));
-                  com.tencent.mm.br.d.b(NoteEditorUI.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymous2MenuItem);
+                  paramAnonymous2MenuItem.putExtra("rawUrl", String.format(e.e.OyU, new Object[] { Integer.valueOf(33) }));
+                  com.tencent.mm.br.c.b(NoteEditorUI.this.getContext(), "webview", ".ui.tools.WebViewUI", paramAnonymous2MenuItem);
                   AppMethodBeat.o(30734);
                   return;
                   j.a(NoteEditorUI.this, NoteEditorUI.i(NoteEditorUI.this), NoteEditorUI.L(NoteEditorUI.this));
                   AppMethodBeat.o(30734);
                   return;
-                  if (NoteEditorUI.e(NoteEditorUI.this) != null)
-                  {
-                    NoteEditorUI.e(NoteEditorUI.this).o(true, 2);
-                    AppMethodBeat.o(30734);
-                    return;
+                  if (NoteEditorUI.e(NoteEditorUI.this) != null) {
+                    NoteEditorUI.e(NoteEditorUI.this).bbW(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().bbV(NoteEditorUI.this.getString(2131768720)));
                   }
-                  ae.w("MicroMsg.Note.NoteEditorUI", "noteFloatBallHelper is null");
-                  AppMethodBeat.o(30734);
-                  return;
-                  if (NoteEditorUI.e(NoteEditorUI.this) != null)
-                  {
-                    NoteEditorUI.e(NoteEditorUI.this).o(false, 2);
-                    AppMethodBeat.o(30734);
-                    return;
-                  }
-                  ae.w("MicroMsg.Note.NoteEditorUI", "noteFloatBallHelper is null");
                 }
               }
             };
             if (NoteEditorUI.d(NoteEditorUI.this) == 2)
             {
-              com.tencent.mm.plugin.wenote.model.nativenote.manager.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG();
+              com.tencent.mm.plugin.wenote.model.nativenote.manager.c localc = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL();
               int i = j;
-              if (localc.pBc <= 0) {
-                if (localc.pBb <= 0) {
+              if (localc.qQt <= 0) {
+                if (localc.qQs <= 0) {
                   break label97;
                 }
               }
@@ -3154,13 +3161,13 @@ public class NoteEditorUI
             }
             if (NoteEditorUI.d(NoteEditorUI.this) == 2)
             {
-              NoteEditorUI.this.ceN();
+              NoteEditorUI.this.cCD();
               if (NoteEditorUI.a(NoteEditorUI.this) != null) {
-                NoteEditorUI.a(NoteEditorUI.this).pBe.dismiss();
+                NoteEditorUI.a(NoteEditorUI.this).qQv.dismiss();
               }
               NoteEditorUI.b(NoteEditorUI.this).setVisibility(8);
               if (NoteEditorUI.M(NoteEditorUI.this)) {
-                com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgj();
+                com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cDY();
               }
             }
             NoteEditorUI.D(NoteEditorUI.this).postDelayed(new Runnable()
@@ -3168,7 +3175,7 @@ public class NoteEditorUI
               public final void run()
               {
                 AppMethodBeat.i(30735);
-                paramAnonymousMenuItem.cPF();
+                paramAnonymousMenuItem.dGm();
                 AppMethodBeat.o(30735);
               }
             }, 100L);
@@ -3177,11 +3184,11 @@ public class NoteEditorUI
           }
         });
       }
-      if (!this.ETY) {
-        break label2943;
+      if (!this.JJQ) {
+        break label3011;
       }
-      setMMTitle(getString(2131759034));
-      label2385:
+      setMMTitle(getString(2131759360));
+      label2422:
       setBackBtnVisible(true);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
@@ -3193,7 +3200,18 @@ public class NoteEditorUI
             AppMethodBeat.o(30737);
             return true;
           }
-          if ((NoteEditorUI.e(NoteEditorUI.this) != null) && (NoteEditorUI.e(NoteEditorUI.this).sy(1)))
+          NoteEditorUI.O(NoteEditorUI.this);
+          if (NoteEditorUI.e(NoteEditorUI.this) != null)
+          {
+            paramAnonymousMenuItem = NoteEditorUI.e(NoteEditorUI.this);
+            b.a locala = com.tencent.mm.plugin.multitask.b.b.Abw;
+            if (paramAnonymousMenuItem.l(1, com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().bbV(NoteEditorUI.this.getString(2131768720)), NoteEditorUI.P(NoteEditorUI.this)))
+            {
+              AppMethodBeat.o(30737);
+              return true;
+            }
+          }
+          if ((NoteEditorUI.Q(NoteEditorUI.this) != null) && (NoteEditorUI.Q(NoteEditorUI.this).wu(1)))
           {
             AppMethodBeat.o(30737);
             return true;
@@ -3203,65 +3221,68 @@ public class NoteEditorUI
           AppMethodBeat.o(30737);
           return true;
         }
-      }, 2131689490);
+      }, 2131689492);
       com.tencent.mm.pluginsdk.h.r(this);
-      if (this.ERj)
+      if (this.JGV)
       {
         e(true, 300L);
-        N(1, 0L);
+        Q(1, 0L);
       }
-      if ((this.EST != 2) || (!this.ETY)) {
-        break label2957;
+      if ((this.JIH != 2) || (!this.JJQ)) {
+        break label3025;
       }
-      this.ETE = new c();
-      paramBundle = this.ETE;
-      localObject1 = this.ETD;
-      paramBundle.jwV = ((View)localObject1);
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.k.faM().ESO = paramBundle;
-      paramBundle.EUD = ((LinearLayout)((View)localObject1).findViewById(2131302950));
-      paramBundle.EUC = ((ImageButton)((View)localObject1).findViewById(2131306983));
-      paramBundle.EUE = ((ImageButton)((View)localObject1).findViewById(2131306979));
-      paramBundle.EUF = ((ImageButton)((View)localObject1).findViewById(2131306981));
-      paramBundle.EUG = ((ImageButton)((View)localObject1).findViewById(2131306980));
-      paramBundle.EUH = ((ImageButton)((View)localObject1).findViewById(2131306982));
-      paramBundle.EUI = ((LinearLayout)paramBundle.EUD.findViewById(2131307009));
-      paramBundle.EUJ = ((LinearLayout)paramBundle.EUD.findViewById(2131307012));
-      paramBundle.EUK = ((LinearLayout)paramBundle.EUD.findViewById(2131307010));
-      paramBundle.EUL = ((LinearLayout)paramBundle.EUD.findViewById(2131307011));
-      paramBundle.EUM = ((LinearLayout)paramBundle.EUD.findViewById(2131302458));
-      paramBundle.EUC.setOnClickListener(new c.1(paramBundle, this));
-      paramBundle.EUG.setOnClickListener(new c.6(paramBundle, this));
-      paramBundle.EUH.setOnClickListener(new c.7(paramBundle, this, this));
-      paramBundle.EUE.setOnClickListener(new c.8(paramBundle, this));
-      paramBundle.EUF.setOnClickListener(new c.9(paramBundle, this));
-      paramBundle.EUM.setOnClickListener(new c.10(paramBundle, this));
-      paramBundle.EUI.setOnClickListener(new c.11(paramBundle, this));
-      paramBundle.EUJ.setOnClickListener(new c.12(paramBundle, this));
-      paramBundle.EUK.setOnClickListener(new c.13(paramBundle, this));
-      paramBundle.EUL.setOnClickListener(new c.2(paramBundle, this));
+      this.JJx = new c();
+      paramBundle = this.JJx;
+      localObject1 = this.JJw;
+      paramBundle.kvj = ((View)localObject1);
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.k.gjR().JIC = paramBundle;
+      paramBundle.JKw = ((LinearLayout)((View)localObject1).findViewById(2131305537));
+      paramBundle.JKv = ((ImageButton)((View)localObject1).findViewById(2131310483));
+      paramBundle.JKx = ((ImageButton)((View)localObject1).findViewById(2131310479));
+      paramBundle.JKy = ((ImageButton)((View)localObject1).findViewById(2131310481));
+      paramBundle.JKz = ((ImageButton)((View)localObject1).findViewById(2131310480));
+      paramBundle.JKA = ((ImageButton)((View)localObject1).findViewById(2131310482));
+      paramBundle.JKB = ((LinearLayout)paramBundle.JKw.findViewById(2131310533));
+      paramBundle.JKC = ((LinearLayout)paramBundle.JKw.findViewById(2131310536));
+      paramBundle.JKD = ((LinearLayout)paramBundle.JKw.findViewById(2131310534));
+      paramBundle.JKE = ((LinearLayout)paramBundle.JKw.findViewById(2131310535));
+      paramBundle.JKF = ((LinearLayout)paramBundle.JKw.findViewById(2131304865));
+      paramBundle.JKv.setOnClickListener(new c.1(paramBundle, this));
+      paramBundle.JKz.setOnClickListener(new c.6(paramBundle, this));
+      paramBundle.JKA.setOnClickListener(new c.7(paramBundle, this, this));
+      paramBundle.JKx.setOnClickListener(new c.8(paramBundle, this));
+      paramBundle.JKy.setOnClickListener(new c.9(paramBundle, this));
+      paramBundle.JKF.setOnClickListener(new c.10(paramBundle, this));
+      paramBundle.JKB.setOnClickListener(new c.11(paramBundle, this));
+      paramBundle.JKC.setOnClickListener(new c.12(paramBundle, this));
+      paramBundle.JKD.setOnClickListener(new c.13(paramBundle, this));
+      paramBundle.JKE.setOnClickListener(new c.2(paramBundle, this));
       getWindow().setSoftInputMode(18);
     }
     for (;;)
     {
-      this.anl.getViewTreeObserver().addOnGlobalLayoutListener(this.ajt);
-      if (this.ETH != null) {
-        this.anl.getViewTreeObserver().addOnGlobalLayoutListener(this.EUg);
+      this.mRecyclerView.getViewTreeObserver().addOnGlobalLayoutListener(this.ajG);
+      if (this.JJA != null) {
+        this.mRecyclerView.getViewTreeObserver().addOnGlobalLayoutListener(this.JJZ);
       }
-      this.ETX = System.currentTimeMillis();
-      ae.i("MicroMsg.Note.NoteEditorUI", "startnoteeditorui, oncreate , currenttime is %d", new Object[] { Long.valueOf(this.ETX) });
-      bc.ajj().a(921, this);
+      this.JJP = System.currentTimeMillis();
+      Log.i("MicroMsg.Note.NoteEditorUI", "startnoteeditorui, oncreate , currenttime is %d", new Object[] { Long.valueOf(this.JJP) });
+      bg.azz().a(921, this);
       AppMethodBeat.o(30750);
       return;
-      label2907:
-      this.EUd.ac(3, "fav_" + this.qiw);
+      this.UtI.G(3, "fav_" + this.rzs);
       break;
+      label2975:
+      this.JJV.G(3, "fav_" + this.rzs);
+      break label835;
+      label3006:
       bool = false;
-      break label1347;
-      label2943:
-      setMMTitle(getString(2131759035));
-      break label2385;
-      label2957:
-      this.ETD.setVisibility(8);
+      break label1383;
+      label3011:
+      setMMTitle(getString(2131759361));
+      break label2422;
+      label3025:
+      this.JJw.setVisibility(8);
     }
   }
   
@@ -3270,17 +3291,17 @@ public class NoteEditorUI
     AppMethodBeat.i(30759);
     super.onDestroy();
     goBack();
-    ae.i("MicroMsg.Note.NoteEditorUI", "onDestroy %s", new Object[] { Integer.valueOf(hashCode()) });
-    this.hLB = true;
-    if (this.EUd != null) {
-      this.EUd.onDestroy();
+    Log.i("MicroMsg.Note.NoteEditorUI", "onDestroy %s", new Object[] { Integer.valueOf(hashCode()) });
+    this.iGD = true;
+    if (this.UtI != null) {
+      this.UtI.onDestroy();
     }
-    if ((this.pyq) && (this.anl != null))
+    if ((this.qNH) && (this.mRecyclerView != null))
     {
-      this.anl.b(this.pys);
-      this.anl.getViewTreeObserver().removeOnGlobalLayoutListener(this.EUg);
+      this.mRecyclerView.b(this.qNJ);
+      this.mRecyclerView.getViewTreeObserver().removeOnGlobalLayoutListener(this.JJZ);
     }
-    bc.ajj().b(921, this);
+    bg.azz().b(921, this);
     AppMethodBeat.o(30759);
   }
   
@@ -3288,14 +3309,14 @@ public class NoteEditorUI
   {
     AppMethodBeat.i(30775);
     super.onDrag();
-    if (this.pyq)
+    if (this.qNH)
     {
-      com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgn();
-      com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgl();
+      com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cEc();
+      com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cEa();
     }
-    if (this.ETN)
+    if (this.JJG)
     {
-      ae.i("MicroMsg.Note.NoteEditorUI", "onSwipeBack close vkb");
+      Log.i("MicroMsg.Note.NoteEditorUI", "onSwipeBack close vkb");
       hideVKB();
     }
     AppMethodBeat.o(30775);
@@ -3308,20 +3329,20 @@ public class NoteEditorUI
     if (keyboardState() == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      this.ETN = bool;
-      if (this.ETN) {
-        N(1, 0L);
+      this.JJG = bool;
+      if (this.JJG) {
+        Q(1, 0L);
       }
-      if (this.pyq) {
-        this.gKO.postDelayed(new Runnable()
+      if (this.qNH) {
+        this.hAk.postDelayed(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(30712);
-            boolean bool = com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgm();
-            com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().kk(bool);
-            bool = com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().cgk();
-            com.tencent.mm.plugin.wenote.model.nativenote.c.e.faR().kj(bool);
+            boolean bool = com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cEb();
+            com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().ln(bool);
+            bool = com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().cDZ();
+            com.tencent.mm.plugin.wenote.model.nativenote.c.e.gjW().lm(bool);
             AppMethodBeat.o(30712);
           }
         }, 200L);
@@ -3335,24 +3356,27 @@ public class NoteEditorUI
   {
     AppMethodBeat.i(30774);
     super.onPause();
-    if (this.EUd != null) {
-      this.EUd.bhk();
+    if (this.UtI != null) {
+      this.UtI.aGj();
     }
-    if (this.ETE != null) {
-      this.ETE.a(this);
+    if (this.JJV != null) {
+      this.JJV.aGj();
     }
-    if (com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.fbf().cgS()) {
-      com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.fbf().stopPlay();
+    if (this.JJx != null) {
+      this.JJx.a(this);
     }
-    this.pyz = this.ETN;
+    if (com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.gkl().cEF()) {
+      com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.a.gkl().stopPlay();
+    }
+    this.qNQ = this.JJG;
     e(false, 0L);
-    com.tencent.mm.plugin.wenote.model.a.q localq = com.tencent.mm.plugin.wenote.model.nativenote.manager.h.faJ().faK();
+    com.tencent.mm.plugin.wenote.model.a.q localq = com.tencent.mm.plugin.wenote.model.nativenote.manager.h.gjO().gjP();
     if (e(localq))
     {
-      localq.ESh = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().aLF(getString(2131766212));
-      localq.ESj = this.afo;
-      localq.ESk = this.ETS;
-      com.tencent.mm.plugin.wenote.model.nativenote.manager.h.faJ().c(localq);
+      localq.JHU = com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().bbV(getString(2131768720));
+      localq.JHW = this.afB;
+      localq.JHX = this.mLastOffset;
+      com.tencent.mm.plugin.wenote.model.nativenote.manager.h.gjO().c(localq);
     }
     AppMethodBeat.o(30774);
   }
@@ -3363,11 +3387,11 @@ public class NoteEditorUI
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
     if ((paramArrayOfInt == null) || (paramArrayOfInt.length <= 0))
     {
-      ae.i("MicroMsg.Note.NoteEditorUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
+      Log.i("MicroMsg.Note.NoteEditorUI", "onRequestPermissionsResult grantResults length 0. requestCode[%d], tid[%d]", new Object[] { Integer.valueOf(paramInt), Long.valueOf(Thread.currentThread().getId()) });
       AppMethodBeat.o(30798);
       return;
     }
-    ae.i("MicroMsg.Note.NoteEditorUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    Log.i("MicroMsg.Note.NoteEditorUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -3377,11 +3401,11 @@ public class NoteEditorUI
       return;
       if (paramArrayOfInt[0] != 0)
       {
-        faC();
+        gjH();
         AppMethodBeat.o(30798);
         return;
-        if ((com.tencent.mm.aw.b.Gw((String)com.tencent.mm.kernel.g.ajR().ajA().get(274436, null))) && (paramArrayOfInt[0] != 0)) {
-          com.tencent.mm.ui.base.h.a(getContext(), getString(2131761869), getString(2131761885), getString(2131760598), getString(2131756766), false, new NoteEditorUI.29(this), null);
+        if ((com.tencent.mm.aw.b.Pi((String)com.tencent.mm.kernel.g.aAh().azQ().get(274436, null))) && (paramArrayOfInt[0] != 0)) {
+          com.tencent.mm.ui.base.h.a(getContext(), getString(2131763874), getString(2131763890), getString(2131762043), getString(2131756929), false, new NoteEditorUI.29(this), null);
         }
       }
     }
@@ -3391,59 +3415,62 @@ public class NoteEditorUI
   {
     AppMethodBeat.i(30773);
     super.onResume();
-    ae.i("MicroMsg.Note.NoteEditorUI", "onResume %s", new Object[] { Integer.valueOf(hashCode()) });
-    if (this.EUd != null) {
-      this.EUd.bhj();
+    Log.i("MicroMsg.Note.NoteEditorUI", "onResume %s", new Object[] { Integer.valueOf(hashCode()) });
+    if (this.UtI != null) {
+      this.UtI.bCA();
     }
-    if (this.EST == 2) {
-      switch (this.pyy)
+    if (this.JJV != null) {
+      this.JJV.bCA();
+    }
+    if (this.JIH == 2) {
+      switch (this.qNP)
       {
       }
     }
     for (;;)
     {
-      this.pyy = -1;
-      this.pyx = false;
+      this.qNP = -1;
+      this.qNO = false;
       AppMethodBeat.o(30773);
       return;
-      if (this.pyz)
+      if (this.qNQ)
       {
         e(true, 100L);
-        N(1, 0L);
+        Q(1, 0L);
         continue;
         e(true, 100L);
-        N(1, 0L);
+        Q(1, 0L);
         continue;
-        if (!this.pyx)
+        if (!this.qNO)
         {
           e(true, 100L);
-          N(1, 0L);
+          Q(1, 0L);
         }
       }
     }
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, final String paramString, com.tencent.mm.ak.q paramq)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(30801);
-        if (paramn.getType() != 921)
+        if (paramq.getType() != 921)
         {
           AppMethodBeat.o(30801);
           return;
         }
-        if (!(paramn instanceof com.tencent.mm.plugin.wenote.model.b))
+        if (!(paramq instanceof com.tencent.mm.plugin.wenote.model.b))
         {
           AppMethodBeat.o(30801);
           continue;
         }
-        paramn = (com.tencent.mm.plugin.wenote.model.b)paramn;
+        paramq = (com.tencent.mm.plugin.wenote.model.b)paramq;
       }
       finally {}
-      if (paramn.EQQ == 1) {
+      if (paramq.JGC == 1) {
         break;
       }
       AppMethodBeat.o(30801);
@@ -3451,20 +3478,20 @@ public class NoteEditorUI
     int j;
     if (paramInt2 == 0)
     {
-      ae.i("MicroMsg.Note.NoteEditorUI", "genlong pic , allow");
-      paramString = this.anl.getAdapter();
+      Log.i("MicroMsg.Note.NoteEditorUI", "genlong pic , allow");
+      paramString = this.mRecyclerView.getAdapter();
       if (paramString != null)
       {
         j = paramString.getItemCount();
         if (j <= 0)
         {
-          cnq();
-          Toast.makeText(getContext(), getContext().getString(2131761646), 1).show();
-          paramString = com.tencent.mm.plugin.report.service.g.yxI;
-          if (this.ETY) {}
+          cLD();
+          Toast.makeText(getContext(), getContext().getString(2131763614), 1).show();
+          paramString = com.tencent.mm.plugin.report.service.h.CyF;
+          if (this.JJQ) {}
           for (paramInt1 = 1;; paramInt1 = 0)
           {
-            paramString.f(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(paramInt1) });
+            paramString.a(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(paramInt1) });
             AppMethodBeat.o(30801);
             break;
           }
@@ -3483,12 +3510,12 @@ public class NoteEditorUI
           int m;
           if (paramInt1 < j)
           {
-            localObject = paramString.d(this.anl, paramString.getItemViewType(paramInt1));
-            paramString.a((RecyclerView.w)localObject, paramInt1);
-            ((RecyclerView.w)localObject).auu.measure(View.MeasureSpec.makeMeasureSpec(this.anl.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
-            ((RecyclerView.w)localObject).auu.layout(0, 0, ((RecyclerView.w)localObject).auu.getMeasuredWidth(), ((RecyclerView.w)localObject).auu.getMeasuredHeight());
-            k = ((RecyclerView.w)localObject).auu.getWidth();
-            m = ((RecyclerView.w)localObject).auu.getHeight();
+            localObject = paramString.d(this.mRecyclerView, paramString.getItemViewType(paramInt1));
+            paramString.a((RecyclerView.v)localObject, paramInt1);
+            ((RecyclerView.v)localObject).aus.measure(View.MeasureSpec.makeMeasureSpec(this.mRecyclerView.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(0, 0));
+            ((RecyclerView.v)localObject).aus.layout(0, 0, ((RecyclerView.v)localObject).aus.getMeasuredWidth(), ((RecyclerView.v)localObject).aus.getMeasuredHeight());
+            k = ((RecyclerView.v)localObject).aus.getWidth();
+            m = ((RecyclerView.v)localObject).aus.getHeight();
             i = paramInt2;
             if (k <= 0) {
               break label1507;
@@ -3509,7 +3536,7 @@ public class NoteEditorUI
             {
               Bitmap localBitmap;
               Canvas localCanvas;
-              com.tencent.mm.plugin.report.service.g localg;
+              com.tencent.mm.plugin.report.service.h localh;
               paramInt2 = 0;
               continue;
               paramInt2 += 1;
@@ -3522,16 +3549,16 @@ public class NoteEditorUI
           }
           try
           {
-            ((RecyclerView.w)localObject).auu.draw(localCanvas);
+            ((RecyclerView.v)localObject).aus.draw(localCanvas);
             localb.put(String.valueOf(paramInt1), localBitmap);
-            i = paramInt2 + ((RecyclerView.w)localObject).auu.getMeasuredHeight();
+            i = paramInt2 + ((RecyclerView.v)localObject).aus.getMeasuredHeight();
           }
           catch (Exception localException)
           {
-            cnq();
-            Toast.makeText(getContext(), getContext().getString(2131761646), 1).show();
-            localg = com.tencent.mm.plugin.report.service.g.yxI;
-            if (!this.ETY) {
+            cLD();
+            Toast.makeText(getContext(), getContext().getString(2131763614), 1).show();
+            localh = com.tencent.mm.plugin.report.service.h.CyF;
+            if (!this.JJQ) {
               continue;
             }
           }
@@ -3544,12 +3571,12 @@ public class NoteEditorUI
             paramString.recycle();
             break label1523;
           }
-          cnq();
-          Toast.makeText(getContext(), getContext().getString(2131761646), 1).show();
+          cLD();
+          Toast.makeText(getContext(), getContext().getString(2131763614), 1).show();
           AppMethodBeat.o(30801);
           break;
           i = 1;
-          localg.f(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(i) });
+          localh.a(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(i) });
           continue;
         }
         catch (Exception paramString)
@@ -3558,17 +3585,17 @@ public class NoteEditorUI
           {
             com.tencent.mm.memory.a.b localb;
             Object localObject;
-            ae.e("MicroMsg.Note.NoteEditorUI", "genlongpic fail,Exception error msg a");
-            cnq();
-            Toast.makeText(getContext(), getContext().getString(2131761646), 1).show();
-            paramString = com.tencent.mm.plugin.report.service.g.yxI;
-            if (!this.ETY) {
+            Log.e("MicroMsg.Note.NoteEditorUI", "genlongpic fail,Exception error msg a");
+            cLD();
+            Toast.makeText(getContext(), getContext().getString(2131763614), 1).show();
+            paramString = com.tencent.mm.plugin.report.service.h.CyF;
+            if (!this.JJQ) {
               break label1309;
             }
             paramInt1 = 1;
-            paramString.f(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(paramInt1) });
-            this.ETB.EST = paramn.EQU;
-            com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().Y(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.faG().size() - 1, false);
+            paramString.a(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(paramInt1) });
+            this.JJu.JIH = paramq.JGG;
+            com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().ae(com.tencent.mm.plugin.wenote.model.nativenote.manager.c.gjL().size() - 1, false);
             AppMethodBeat.o(30801);
             break;
             i = 0;
@@ -3578,7 +3605,7 @@ public class NoteEditorUI
               paramInt1 = com.tencent.mm.cb.a.fromDPToPix(getContext(), 14);
               try
               {
-                paramString = Bitmap.createBitmap(this.anl.getMeasuredWidth() + 0, paramInt2 + paramInt1, Bitmap.Config.ARGB_8888);
+                paramString = Bitmap.createBitmap(this.mRecyclerView.getMeasuredWidth() + 0, paramInt2 + paramInt1, Bitmap.Config.ARGB_8888);
                 localObject = new Canvas(paramString);
                 ((Canvas)localObject).drawColor(-1);
                 paramInt2 = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
@@ -3604,21 +3631,21 @@ public class NoteEditorUI
               {
                 for (;;)
                 {
-                  ae.e("MicroMsg.Note.NoteEditorUI", "favorite, note, gen long pic ,rgb 888  error,errormsg ");
+                  Log.e("MicroMsg.Note.NoteEditorUI", "favorite, note, gen long pic ,rgb 888  error,errormsg ");
                   try
                   {
-                    paramString = Bitmap.createBitmap(this.anl.getMeasuredWidth() + 0, paramInt2 + paramInt1, Bitmap.Config.RGB_565);
+                    paramString = Bitmap.createBitmap(this.mRecyclerView.getMeasuredWidth() + 0, paramInt2 + paramInt1, Bitmap.Config.RGB_565);
                   }
                   catch (Throwable paramString)
                   {
-                    paramString = com.tencent.mm.plugin.report.service.g.yxI;
-                    if (this.ETY) {}
+                    paramString = com.tencent.mm.plugin.report.service.h.CyF;
+                    if (this.JJQ) {}
                     for (paramInt1 = 1;; paramInt1 = 0)
                     {
-                      paramString.f(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(paramInt1) });
-                      ae.e("MicroMsg.Note.NoteEditorUI", "favorite, note, gen long pic , 565 error,errormsg is er:");
-                      cnq();
-                      Toast.makeText(getContext(), getContext().getString(2131761646), 1).show();
+                      paramString.a(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(paramInt1) });
+                      Log.e("MicroMsg.Note.NoteEditorUI", "favorite, note, gen long pic , 565 error,errormsg is er:");
+                      cLD();
+                      Toast.makeText(getContext(), getContext().getString(2131763614), 1).show();
                       paramInt1 = 0;
                       while (paramInt1 < j)
                       {
@@ -3636,27 +3663,27 @@ public class NoteEditorUI
             }
             catch (Exception paramString)
             {
-              ae.e("MicroMsg.Note.NoteEditorUI", "genlongpic fail,error msg Exception");
-              ae.printErrStackTrace("MicroMsg.Note.NoteEditorUI", paramString, "", new Object[0]);
-              cnq();
-              Toast.makeText(getContext(), getContext().getString(2131761646), 1).show();
-              paramString = com.tencent.mm.plugin.report.service.g.yxI;
-              if (this.ETY) {}
+              Log.e("MicroMsg.Note.NoteEditorUI", "genlongpic fail,error msg Exception");
+              Log.printErrStackTrace("MicroMsg.Note.NoteEditorUI", paramString, "", new Object[0]);
+              cLD();
+              Toast.makeText(getContext(), getContext().getString(2131763614), 1).show();
+              paramString = com.tencent.mm.plugin.report.service.h.CyF;
+              if (this.JJQ) {}
               for (paramInt1 = 1;; paramInt1 = 0)
               {
-                paramString.f(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(paramInt1) });
+                paramString.a(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(paramInt1) });
                 AppMethodBeat.o(30801);
                 break;
               }
-              if (this.qpG == null) {
+              if (this.rGN == null) {
                 break label1291;
               }
             }
           }
-          if (this.qpG.isShowing())
+          if (this.rGN.isShowing())
           {
-            cnq();
-            bc.ajU().aw(new Runnable()
+            cLD();
+            bg.aAk().postToWorker(new Runnable()
             {
               public final void run()
               {
@@ -3665,24 +3692,24 @@ public class NoteEditorUI
                 {
                   public final void run()
                   {
-                    AppMethodBeat.i(186687);
-                    com.tencent.mm.plugin.wenote.model.h.a(NoteEditorUI.this.getContext(), NoteEditorUI.32.this.EUt, NoteEditorUI.f(NoteEditorUI.this));
-                    Toast.makeText(NoteEditorUI.this.getContext(), NoteEditorUI.this.getContext().getString(2131757969, new Object[] { com.tencent.mm.sdk.f.b.fjf() }), 1).show();
-                    AppMethodBeat.o(186687);
+                    AppMethodBeat.i(232133);
+                    com.tencent.mm.plugin.wenote.model.h.a(NoteEditorUI.this.getContext(), NoteEditorUI.32.this.JKm, NoteEditorUI.f(NoteEditorUI.this));
+                    Toast.makeText(NoteEditorUI.this.getContext(), NoteEditorUI.this.getContext().getString(2131758218, new Object[] { AndroidMediaUtil.getToastSysCameraPath() }), 1).show();
+                    AppMethodBeat.o(232133);
                   }
                 }, new Runnable()
                 {
                   public final void run()
                   {
                     int i = 1;
-                    AppMethodBeat.i(186688);
-                    ae.e("MicroMsg.Note.NoteEditorUI", "save image fail, no sdcard privilege.");
-                    com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yxI;
+                    AppMethodBeat.i(232134);
+                    Log.e("MicroMsg.Note.NoteEditorUI", "save image fail, no sdcard privilege.");
+                    com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.CyF;
                     if (NoteEditorUI.f(NoteEditorUI.this)) {}
                     for (;;)
                     {
-                      localg.f(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(i) });
-                      AppMethodBeat.o(186688);
+                      localh.a(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(i) });
+                      AppMethodBeat.o(232134);
                       return;
                       i = 0;
                     }
@@ -3697,15 +3724,15 @@ public class NoteEditorUI
         catch (Throwable paramString)
         {
           label677:
-          ae.e("MicroMsg.Note.NoteEditorUI", "genlongpic fail,Throwable error msg throw");
-          cnq();
-          Toast.makeText(getContext(), getContext().getString(2131761646), 1).show();
-          paramString = com.tencent.mm.plugin.report.service.g.yxI;
-          if (!this.ETY) {}
+          Log.e("MicroMsg.Note.NoteEditorUI", "genlongpic fail,Throwable error msg throw");
+          cLD();
+          Toast.makeText(getContext(), getContext().getString(2131763614), 1).show();
+          paramString = com.tencent.mm.plugin.report.service.h.CyF;
+          if (!this.JJQ) {}
         }
         for (paramInt1 = 1;; paramInt1 = 0)
         {
-          paramString.f(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(paramInt1) });
+          paramString.a(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(paramInt1) });
           break label677;
           label1291:
           if ((paramString == null) || (paramString.isRecycled())) {
@@ -3717,23 +3744,23 @@ public class NoteEditorUI
           paramInt1 = 0;
           break;
         }
-        paramString = com.tencent.mm.plugin.report.service.g.yxI;
-        if (!this.ETY) {
+        paramString = com.tencent.mm.plugin.report.service.h.CyF;
+        if (!this.JJQ) {
           break label1541;
         }
         paramInt1 = 1;
-        paramString.f(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(paramInt1) });
-        cnq();
-        Toast.makeText(getContext(), getContext().getString(2131761646), 1).show();
+        paramString.a(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(paramInt1) });
+        cLD();
+        Toast.makeText(getContext(), getContext().getString(2131763614), 1).show();
       }
-      paramString = com.tencent.mm.plugin.report.service.g.yxI;
-      if (this.ETY) {}
+      paramString = com.tencent.mm.plugin.report.service.h.CyF;
+      if (this.JJQ) {}
       for (paramInt1 = 1;; paramInt1 = 0)
       {
-        paramString.f(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(4), Integer.valueOf(paramInt1) });
-        ae.e("MicroMsg.Note.NoteEditorUI", "genlong pic , not allow");
-        cnq();
-        Toast.makeText(getContext(), getContext().getString(2131761646), 1).show();
+        paramString.a(14811, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(4), Integer.valueOf(paramInt1) });
+        Log.e("MicroMsg.Note.NoteEditorUI", "genlong pic , not allow");
+        cLD();
+        Toast.makeText(getContext(), getContext().getString(2131763614), 1).show();
         break;
       }
       label1507:
@@ -3745,8 +3772,8 @@ public class NoteEditorUI
   {
     AppMethodBeat.i(179752);
     super.onStart();
-    ae.i("MicroMsg.Note.NoteEditorUI", "onStart %s", new Object[] { Integer.valueOf(hashCode()) });
-    com.tencent.mm.sdk.b.a.IvT.c(this.EUi);
+    Log.i("MicroMsg.Note.NoteEditorUI", "onStart %s", new Object[] { Integer.valueOf(hashCode()) });
+    EventCenter.instance.addListener(this.JKb);
     AppMethodBeat.o(179752);
   }
   
@@ -3754,8 +3781,8 @@ public class NoteEditorUI
   {
     AppMethodBeat.i(179750);
     super.onStop();
-    ae.i("MicroMsg.Note.NoteEditorUI", "onStop %s", new Object[] { Integer.valueOf(hashCode()) });
-    com.tencent.mm.sdk.b.a.IvT.d(this.EUi);
+    Log.i("MicroMsg.Note.NoteEditorUI", "onStop %s", new Object[] { Integer.valueOf(hashCode()) });
+    EventCenter.instance.removeListener(this.JKb);
     AppMethodBeat.o(179750);
   }
   
@@ -3765,54 +3792,54 @@ public class NoteEditorUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void vH(boolean paramBoolean)
+  public final void zD(boolean paramBoolean)
   {
     AppMethodBeat.i(30767);
-    ae.i("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,force:%B", new Object[] { Boolean.valueOf(paramBoolean) });
-    if ((this.ETI) || (com.tencent.mm.plugin.wenote.model.c.fau().EQZ == null))
+    Log.i("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,force:%B", new Object[] { Boolean.valueOf(paramBoolean) });
+    if ((this.JJB) || (com.tencent.mm.plugin.wenote.model.c.gjz().JGL == null))
     {
-      boolean bool = this.ETI;
-      if (com.tencent.mm.plugin.wenote.model.c.fau().EQZ == null) {}
+      boolean bool = this.JJB;
+      if (com.tencent.mm.plugin.wenote.model.c.gjz().JGL == null) {}
       for (paramBoolean = true;; paramBoolean = false)
       {
-        ae.e("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,isInitDataList:%B,SubCoreWNNoteMsg.getCore().getWnNoteBase() == null :%B", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
+        Log.e("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,isInitDataList:%B,SubCoreWNNoteMsg.getCore().getWnNoteBase() == null :%B", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
         AppMethodBeat.o(30767);
         return;
       }
     }
     w localw;
-    if (this.EST != 1)
+    if (this.JIH != 1)
     {
-      ae.i("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,open from fav");
-      if (com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERd == null)
+      Log.i("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,open from fav");
+      if (com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGP == null)
       {
-        ae.e("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,SubCoreWNNoteMsg.getCore().getWnNoteBase().mClickedFavItemInfo == null ");
+        Log.e("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,SubCoreWNNoteMsg.getCore().getWnNoteBase().mClickedFavItemInfo == null ");
         AppMethodBeat.o(30767);
         return;
       }
-      localw = (w)com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERe.get(Long.toString(com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERd.field_localId));
+      localw = (w)com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGQ.get(Long.toString(com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGP.field_localId));
     }
-    while ((localw != null) && (!this.ERj))
+    while ((localw != null) && (!this.JGV))
     {
-      this.ETP = localw.pAE;
-      if (!localw.pAE)
+      this.JJI = localw.qPV;
+      if (!localw.qPV)
       {
-        this.ETI = true;
-        g(localw.pAD, true);
+        this.JJB = true;
+        f(localw.qPU, true);
         AppMethodBeat.o(30767);
         return;
-        ae.i("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,open from Session");
-        if (com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERc == null)
+        Log.i("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,open from Session");
+        if (com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGO == null)
         {
-          ae.e("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,SubCoreWNNoteMsg.getCore().getWnNoteBase().mWNNoteData == null ");
+          Log.e("MicroMsg.Note.NoteEditorUI", "notifyNoteDataListFresh,SubCoreWNNoteMsg.getCore().getWnNoteBase().mWNNoteData == null ");
           AppMethodBeat.o(30767);
           return;
         }
-        localw = (w)com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERe.get(Long.toString(com.tencent.mm.plugin.wenote.model.c.fau().EQZ.ERc.msgId));
+        localw = (w)com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGQ.get(Long.toString(com.tencent.mm.plugin.wenote.model.c.gjz().JGL.JGO.msgId));
       }
       else
       {
-        g(localw.pAD, false);
+        f(localw.qPU, false);
       }
     }
     AppMethodBeat.o(30767);
@@ -3823,55 +3850,57 @@ public class NoteEditorUI
   {
     a() {}
     
-    public final void b(RecyclerView paramRecyclerView, int paramInt)
-    {
-      AppMethodBeat.i(30748);
-      super.b(paramRecyclerView, paramInt);
-      if (paramRecyclerView.getLayoutManager() != null)
-      {
-        paramRecyclerView = ((LinearLayoutManager)NoteEditorUI.P(NoteEditorUI.this).getLayoutManager()).getChildAt(0);
-        if (paramRecyclerView != null)
-        {
-          NoteEditorUI.b(NoteEditorUI.this, paramRecyclerView.getTop());
-          NoteEditorUI.a(NoteEditorUI.this, LinearLayoutManager.bB(paramRecyclerView));
-        }
-      }
-      AppMethodBeat.o(30748);
-    }
-    
-    public final void cff()
+    public final void cCV()
     {
       AppMethodBeat.i(30744);
-      NoteEditorUI.ad(NoteEditorUI.this);
+      NoteEditorUI.ag(NoteEditorUI.this);
       AppMethodBeat.o(30744);
     }
     
-    public final void cfg()
+    public final void cCW()
     {
       AppMethodBeat.i(30745);
       NoteEditorUI.this.showActionbarLine();
-      NoteEditorUI.ad(NoteEditorUI.this);
+      NoteEditorUI.ag(NoteEditorUI.this);
       AppMethodBeat.o(30745);
     }
     
-    public final void cfh()
+    public final void cCX()
     {
       AppMethodBeat.i(30746);
       NoteEditorUI.this.hideActionbarLine();
       AppMethodBeat.o(30746);
     }
     
-    public final void fbe()
+    public final void gkk()
     {
       AppMethodBeat.i(30747);
-      NoteEditorUI.ae(NoteEditorUI.this).rAR = true;
+      NoteEditorUI.ai(NoteEditorUI.this).taw = true;
+      NoteEditorUI.ah(NoteEditorUI.this);
       AppMethodBeat.o(30747);
+    }
+    
+    public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+    {
+      AppMethodBeat.i(30748);
+      super.onScrollStateChanged(paramRecyclerView, paramInt);
+      if (paramRecyclerView.getLayoutManager() != null)
+      {
+        paramRecyclerView = (LinearLayoutManager)NoteEditorUI.S(NoteEditorUI.this).getLayoutManager();
+        View localView = paramRecyclerView.getChildAt(0);
+        if (localView != null)
+        {
+          NoteEditorUI.b(NoteEditorUI.this, localView.getTop());
+          NoteEditorUI.a(NoteEditorUI.this, paramRecyclerView.getPosition(localView));
+        }
+      }
+      AppMethodBeat.o(30748);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.NoteEditorUI
  * JD-Core Version:    0.7.0.1
  */

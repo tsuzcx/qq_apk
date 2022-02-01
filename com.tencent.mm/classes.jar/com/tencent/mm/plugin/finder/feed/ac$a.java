@@ -1,51 +1,74 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.presenter.base.a;
-import com.tencent.mm.protocal.protobuf.aov;
-import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import com.tencent.mm.view.recyclerview.c;
-import com.tencent.mm.view.recyclerview.d.b;
-import d.l;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
+import com.tencent.mm.plugin.finder.feed.model.internal.BaseFeedLoader;
+import com.tencent.mm.plugin.finder.storage.al;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.view.recyclerview.f;
+import java.util.ArrayList;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderTimelineContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderTimelineContract$ViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "checkAutoFlingToRefresh", "", "isHard", "", "isWithRefresh", "getFinderContextId", "", "getHeaderInfo", "", "Lcom/tencent/mm/view/recyclerview/RecyclerViewAdapterEx$FixedViewInfo;", "getTabType", "", "loadMoreData", "onAutoToLoadMore", "onBackPressed", "onLoadMoreEnd", "reason", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;", "", "onRefreshEnd", "onUIPause", "onUIResume", "onUserVisibleFocused", "refreshMsgNotify", "requestInsert", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "centerFeed", "keepUnreadSize", "hasReadFeeds", "isPrefetch", "relatedEntranceInfo", "Lcom/tencent/mm/protocal/protobuf/FinderGetRelatedEntranceInfo;", "requestRefresh", "plugin-finder_release"})
-public abstract interface ac$a
-  extends h, a<ac.b>
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderRelatedFeedUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderBaseGridFeedUIContract$Presenter;", "context", "Lcom/tencent/mm/ui/MMActivity;", "scene", "", "commentScene", "loader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "(Lcom/tencent/mm/ui/MMActivity;IILcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "initViewCallback", "", "loadInitData", "loadMoreData", "refreshRV", "data", "Landroid/content/Intent;", "requestRefresh", "plugin-finder_release"})
+public final class ac$a
+  extends c.a
 {
-  public abstract void N(boolean paramBoolean1, boolean paramBoolean2);
+  public ac$a(MMActivity paramMMActivity, BaseFinderFeedLoader paramBaseFinderFeedLoader)
+  {
+    super(paramMMActivity, paramBaseFinderFeedLoader);
+    AppMethodBeat.i(244095);
+    AppMethodBeat.o(244095);
+  }
   
-  public abstract void a(BaseFinderFeed paramBaseFinderFeed1, BaseFinderFeed paramBaseFinderFeed2, int paramInt, List<? extends BaseFinderFeed> paramList, boolean paramBoolean, aov paramaov);
+  public final void boE()
+  {
+    AppMethodBeat.i(244092);
+    this.tFM.requestLoadMore();
+    AppMethodBeat.o(244092);
+  }
   
-  public abstract void a(RefreshLoadMoreLayout.c<Object> paramc);
+  public final void dcb()
+  {
+    AppMethodBeat.i(244091);
+    c.b localb = this.tMd;
+    if (localb != null)
+    {
+      localb.ab((ArrayList)this.tFM.getDataListJustForAdapter());
+      AppMethodBeat.o(244091);
+      return;
+    }
+    AppMethodBeat.o(244091);
+  }
   
-  public abstract void aTS();
+  public final f dce()
+  {
+    AppMethodBeat.i(244094);
+    Object localObject = this.tMd;
+    if (localObject != null) {}
+    for (localObject = ((c.b)localObject).dcs();; localObject = null)
+    {
+      if (localObject == null) {
+        p.hyc();
+      }
+      localObject = ((al)localObject).dcK();
+      AppMethodBeat.o(244094);
+      return localObject;
+    }
+  }
   
-  public abstract void b(RefreshLoadMoreLayout.c<Object> paramc);
+  public final void dcp()
+  {
+    AppMethodBeat.i(244093);
+    BaseFeedLoader.requestInit$default(this.tFM, false, 1, null);
+    AppMethodBeat.o(244093);
+  }
   
-  public abstract c cCq();
-  
-  public abstract List<d.b> cDj();
-  
-  public abstract void cDk();
-  
-  public abstract int cDl();
-  
-  public abstract void cDm();
-  
-  public abstract String cpk();
-  
-  public abstract boolean onBackPressed();
-  
-  public abstract void onUIPause();
-  
-  public abstract void onUIResume();
-  
-  public abstract void requestRefresh();
+  public final void requestRefresh() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ac.a
  * JD-Core Version:    0.7.0.1
  */

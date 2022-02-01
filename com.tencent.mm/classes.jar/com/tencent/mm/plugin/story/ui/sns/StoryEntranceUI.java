@@ -4,8 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.i;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.Window;
@@ -15,42 +15,44 @@ import com.tencent.mm.plugin.story.f.f.a;
 import com.tencent.mm.plugin.story.f.j;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.i.f;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.v;
-import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "()V", "TYPE_TIP", "", "getTYPE_TIP", "()I", "TYPE_USERNAME", "getTYPE_USERNAME", "entranceAdapter", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceUI$EntranceAdapter;", "entranceRecycler", "Landroid/support/v7/widget/RecyclerView;", "readNameList", "", "", "kotlin.jvm.PlatformType", "", "storyTypeIndex", "userNameList", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceUI$DataObject;", "finish", "", "getLayoutId", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "Companion", "DataObject", "EntranceAdapter", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "()V", "TYPE_TIP", "", "getTYPE_TIP", "()I", "TYPE_USERNAME", "getTYPE_USERNAME", "entranceAdapter", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceUI$EntranceAdapter;", "entranceRecycler", "Landroid/support/v7/widget/RecyclerView;", "readNameList", "", "", "kotlin.jvm.PlatformType", "", "storyTypeIndex", "userNameList", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceUI$DataObject;", "finish", "", "getLayoutId", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "Companion", "DataObject", "EntranceAdapter", "plugin-story_release"})
 public final class StoryEntranceUI
   extends MMActivity
-  implements k.a
+  implements MStorage.IOnStorageChange
 {
-  public static final StoryEntranceUI.a Bpt;
+  public static final a FAf;
   private static final String TAG = "MicroMsg.StoryEntranceUI";
-  private final int Bpm;
-  private final int Bpn;
-  private RecyclerView Bpo;
-  private StoryEntranceUI.c Bpp;
-  private int Bpq;
-  private List<StoryEntranceUI.b> Bpr;
-  private List<String> Bps;
+  private RecyclerView FAa;
+  private StoryEntranceUI.c FAb;
+  private int FAc;
+  private List<StoryEntranceUI.b> FAd;
+  private List<String> FAe;
+  private final int FzY;
+  private final int FzZ;
   
   static
   {
     AppMethodBeat.i(119981);
-    Bpt = new StoryEntranceUI.a((byte)0);
+    FAf = new a((byte)0);
     TAG = "MicroMsg.StoryEntranceUI";
     AppMethodBeat.o(119981);
   }
@@ -58,54 +60,23 @@ public final class StoryEntranceUI
   public StoryEntranceUI()
   {
     AppMethodBeat.i(119980);
-    this.Bpm = 1;
-    this.Bpn = 2;
-    this.Bpq = -1;
-    this.Bpr = Collections.synchronizedList((List)new LinkedList());
-    this.Bps = Collections.synchronizedList((List)new LinkedList());
+    this.FzY = 1;
+    this.FzZ = 2;
+    this.FAc = -1;
+    this.FAd = Collections.synchronizedList((List)new LinkedList());
+    this.FAe = Collections.synchronizedList((List)new LinkedList());
     AppMethodBeat.o(119980);
-  }
-  
-  public final void a(String paramString, com.tencent.mm.sdk.e.m paramm)
-  {
-    AppMethodBeat.i(119979);
-    if ((paramString != null) && (paramm != null) && ((paramm.obj instanceof f))) {
-      switch (paramString.hashCode())
-      {
-      }
-    }
-    do
-    {
-      ae.i(TAG, "unknown event ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(119979);
-      return;
-    } while (!paramString.equals("notify_story_read"));
-    paramString = paramm.obj;
-    if (paramString == null)
-    {
-      paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.story.storage.StoryExtInfo");
-      AppMethodBeat.o(119979);
-      throw paramString;
-    }
-    paramString = ((f)paramString).getUserName();
-    this.Bps.add(paramString);
-    paramString = this.Bpp;
-    if (paramString == null) {
-      p.bdF("entranceAdapter");
-    }
-    paramString.notifyDataSetChanged();
-    AppMethodBeat.o(119979);
   }
   
   public final void finish()
   {
     AppMethodBeat.i(119978);
-    ae.i(TAG, "finish " + this.Bps.size());
-    if (this.Bpr.size() > 0)
+    Log.i(TAG, "finish " + this.FAe.size());
+    if (this.FAd.size() > 0)
     {
-      Object localObject1 = ((StoryEntranceUI.b)this.Bpr.get(0)).userName;
-      Object localObject2 = j.BbE;
-      localObject2 = j.b.elC().aCW((String)localObject1);
+      Object localObject1 = ((StoryEntranceUI.b)this.FAd.get(0)).userName;
+      Object localObject2 = j.Fmy;
+      localObject2 = j.b.fod().aRS((String)localObject1);
       if (localObject2 != null)
       {
         long l2 = ((f)localObject2).field_updateTime;
@@ -113,12 +84,12 @@ public final class StoryEntranceUI
         if (l2 == 0L) {
           l1 = ((f)localObject2).field_storyPostTime * 1000L;
         }
-        ae.i(TAG, "finish updateTime user:" + (String)localObject1 + " updateTime: " + l1);
+        Log.i(TAG, "finish updateTime user:" + (String)localObject1 + " updateTime: " + l1);
         if (l1 > 0L)
         {
-          localObject1 = com.tencent.mm.kernel.g.ajR();
+          localObject1 = com.tencent.mm.kernel.g.aAh();
           p.g(localObject1, "MMKernel.storage()");
-          ((e)localObject1).ajA().set(am.a.Jag, Long.valueOf(l1));
+          ((e)localObject1).azQ().set(ar.a.OiM, Long.valueOf(l1));
         }
       }
     }
@@ -128,64 +99,64 @@ public final class StoryEntranceUI
   
   public final int getLayoutId()
   {
-    return 2131495690;
+    return 2131496595;
   }
   
   public final void onCreate(Bundle arg1)
   {
     AppMethodBeat.i(119976);
-    ae.i(TAG, "StoryEntranceUI create ".concat(String.valueOf(this)));
+    Log.i(TAG, "StoryEntranceUI create ".concat(String.valueOf(this)));
     supportRequestWindowFeature(1);
     getWindow().addFlags(1024);
     super.onCreate(???);
-    ??? = j.BbE;
-    j.b.elC().add((k.a)this);
-    setMMTitle(2131763983);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new d(this), 2131689488);
-    ??? = findViewById(2131305410);
+    ??? = j.Fmy;
+    j.b.fod().add((MStorage.IOnStorageChange)this);
+    setMMTitle(2131766221);
+    setBackBtn((MenuItem.OnMenuItemClickListener)new d(this), 2131689490);
+    ??? = findViewById(2131308616);
     p.g(???, "findViewById(R.id.story_entrance_recycler)");
-    this.Bpo = ((RecyclerView)???);
-    ??? = this.Bpo;
+    this.FAa = ((RecyclerView)???);
+    ??? = this.FAa;
     if (??? == null) {
-      p.bdF("entranceRecycler");
+      p.btv("entranceRecycler");
     }
-    ???.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    this.Bpp = new StoryEntranceUI.c(this);
-    ??? = this.Bpo;
+    ???.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
+    this.FAb = new StoryEntranceUI.c(this);
+    ??? = this.FAa;
     if (??? == null) {
-      p.bdF("entranceRecycler");
+      p.btv("entranceRecycler");
     }
     ???.setItemViewCacheSize(0);
-    ??? = this.Bpo;
+    ??? = this.FAa;
     if (??? == null) {
-      p.bdF("entranceRecycler");
+      p.btv("entranceRecycler");
     }
-    ??? = this.Bpp;
+    ??? = this.FAb;
     if (??? == null) {
-      p.bdF("entranceAdapter");
+      p.btv("entranceAdapter");
     }
     ???.setAdapter((RecyclerView.a)???);
-    ??? = this.Bpp;
+    ??? = this.FAb;
     if (??? == null) {
-      p.bdF("entranceAdapter");
+      p.btv("entranceAdapter");
     }
-    ???.sLA = ((d.g.a.m)new e(this));
-    ??? = a.BeK.ekI();
-    ??? = a.BeK.ekJ();
-    ae.i(TAG, "userNames " + ((List)???).size() + " lastUserNames " + ???.size());
+    ???.uAj = ((m)new e(this));
+    ??? = a.FpB.fnj();
+    ??? = a.FpB.fnk();
+    Log.i(TAG, "userNames " + ((List)???).size() + " lastUserNames " + ???.size());
     synchronized ((Iterable)???)
     {
       localObject4 = ((Iterable)???).iterator();
       if (((Iterator)localObject4).hasNext())
       {
         String str = (String)((Iterator)localObject4).next();
-        this.Bpr.add(new StoryEntranceUI.b(str, 1));
+        this.FAd.add(new StoryEntranceUI.b(str, 1));
       }
     }
-    Object localObject4 = z.Nhr;
-    this.Bpq = this.Bpr.size();
+    Object localObject4 = x.SXb;
+    this.FAc = this.FAd.size();
     if (???.size() > 0) {
-      this.Bpr.add(new StoryEntranceUI.b("", 2));
+      this.FAd.add(new StoryEntranceUI.b("", 2));
     }
     synchronized ((Iterable)???)
     {
@@ -193,19 +164,19 @@ public final class StoryEntranceUI
       if (((Iterator)???).hasNext())
       {
         localObject4 = (String)((Iterator)???).next();
-        this.Bpr.add(new StoryEntranceUI.b((String)localObject4, 1));
+        this.FAd.add(new StoryEntranceUI.b((String)localObject4, 1));
       }
     }
-    Object localObject3 = z.Nhr;
-    ??? = this.Bpp;
+    Object localObject3 = x.SXb;
+    ??? = this.FAb;
     if (??? == null) {
-      p.bdF("entranceAdapter");
+      p.btv("entranceAdapter");
     }
-    localObject3 = this.Bpr;
+    localObject3 = this.FAd;
     p.g(localObject3, "userNameList");
     p.h(localObject3, "extinfoList");
-    ???.gTw.clear();
-    ???.gTw.addAll((Collection)localObject3);
+    ???.hKT.clear();
+    ???.hKT.addAll((Collection)localObject3);
     ???.notifyDataSetChanged();
     AppMethodBeat.o(119976);
   }
@@ -214,9 +185,40 @@ public final class StoryEntranceUI
   {
     AppMethodBeat.i(119977);
     super.onDestroy();
-    j.b localb = j.BbE;
-    j.b.elC().remove((k.a)this);
+    j.b localb = j.Fmy;
+    j.b.fod().remove((MStorage.IOnStorageChange)this);
     AppMethodBeat.o(119977);
+  }
+  
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
+  {
+    AppMethodBeat.i(119979);
+    if ((paramString != null) && (paramMStorageEventData != null) && ((paramMStorageEventData.obj instanceof f))) {
+      switch (paramString.hashCode())
+      {
+      }
+    }
+    do
+    {
+      Log.i(TAG, "unknown event ".concat(String.valueOf(paramString)));
+      AppMethodBeat.o(119979);
+      return;
+    } while (!paramString.equals("notify_story_read"));
+    paramString = paramMStorageEventData.obj;
+    if (paramString == null)
+    {
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.story.storage.StoryExtInfo");
+      AppMethodBeat.o(119979);
+      throw paramString;
+    }
+    paramString = ((f)paramString).getUserName();
+    this.FAe.add(paramString);
+    paramString = this.FAb;
+    if (paramString == null) {
+      p.btv("entranceAdapter");
+    }
+    paramString.notifyDataSetChanged();
+    AppMethodBeat.o(119979);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -225,7 +227,10 @@ public final class StoryEntranceUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceUI$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class d
     implements MenuItem.OnMenuItemClickListener
   {
@@ -234,16 +239,16 @@ public final class StoryEntranceUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(119974);
-      this.Bpu.finish();
+      this.FAg.finish();
       AppMethodBeat.o(119974);
       return true;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "position", "", "item", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceUI$DataObject;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "position", "", "item", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceUI$DataObject;", "invoke"})
   static final class e
     extends q
-    implements d.g.a.m<Integer, StoryEntranceUI.b, z>
+    implements m<Integer, StoryEntranceUI.b, x>
   {
     e(StoryEntranceUI paramStoryEntranceUI)
     {
@@ -253,7 +258,7 @@ public final class StoryEntranceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.sns.StoryEntranceUI
  * JD-Core Version:    0.7.0.1
  */

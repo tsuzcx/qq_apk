@@ -2,193 +2,193 @@ package com.tencent.mm.contact.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.am;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.aq;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.messenger.foundation.a.r;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import junit.framework.Assert;
 
 public final class a
 {
-  public static am h(an paraman)
+  public static aq h(as paramas)
   {
-    AppMethodBeat.i(221691);
-    if (paraman != null) {}
-    an localan1;
+    AppMethodBeat.i(257873);
+    if (paramas != null) {}
+    as localas1;
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      an localan2 = ((l)g.ab(l.class)).azF().BH(paraman.field_username);
-      if (localan2 != null)
+      as localas2 = ((l)g.af(l.class)).aSN().Kn(paramas.field_username);
+      if (localas2 != null)
       {
-        localan1 = localan2;
-        if (!bu.isNullOrNil(localan2.field_username)) {}
+        localas1 = localas2;
+        if (!Util.isNullOrNil(localas2.field_username)) {}
       }
       else
       {
-        localan1 = paraman;
+        localas1 = paramas;
       }
-      localan1.acU();
-      if (!an.aUq(paraman.field_username)) {
+      localas1.aqS();
+      if (!as.bjp(paramas.field_username)) {
         break;
       }
-      paraman = ((r)g.ab(r.class)).wl(paraman.field_username);
-      AppMethodBeat.o(221691);
-      return paraman;
+      paramas = ((r)g.af(r.class)).EA(paramas.field_username);
+      AppMethodBeat.o(257873);
+      return paramas;
     }
-    paraman = j(localan1);
-    AppMethodBeat.o(221691);
-    return paraman;
+    paramas = j(localas1);
+    AppMethodBeat.o(257873);
+    return paramas;
   }
   
-  public static am i(an paraman)
+  public static aq i(as paramas)
   {
-    AppMethodBeat.i(221692);
+    AppMethodBeat.i(257874);
     boolean bool;
-    if (paraman != null)
+    if (paramas != null)
     {
       bool = true;
       Assert.assertTrue(bool);
-      an localan = ((l)g.ab(l.class)).azF().BH(paraman.field_username);
-      if (localan != null)
+      as localas = ((l)g.af(l.class)).aSN().Kn(paramas.field_username);
+      if (localas != null)
       {
-        localObject = localan;
-        if (!bu.isNullOrNil(localan.field_username)) {}
+        localObject = localas;
+        if (!Util.isNullOrNil(localas.field_username)) {}
       }
       else
       {
-        localObject = paraman;
+        localObject = paramas;
       }
-      ((an)localObject).acV();
-      if (!an.aUq(paraman.field_username)) {
+      ((as)localObject).aqT();
+      if (!as.bjp(paramas.field_username)) {
         break label119;
       }
     }
     label119:
-    for (Object localObject = ((r)g.ab(r.class)).wm(paraman.field_username);; localObject = j((an)localObject))
+    for (Object localObject = ((r)g.af(r.class)).EB(paramas.field_username);; localObject = j((as)localObject))
     {
       if (localObject != null) {
-        ((am)localObject).a(new b() {});
+        ((aq)localObject).a(new b() {});
       }
-      AppMethodBeat.o(221692);
+      AppMethodBeat.o(257874);
       return localObject;
       bool = false;
       break;
     }
   }
   
-  private static am j(an paraman)
+  private static aq j(as paramas)
   {
-    AppMethodBeat.i(221693);
-    if (paraman != null) {}
+    AppMethodBeat.i(257875);
+    if (paramas != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (an.aUq(paraman.field_username)) {
+      if (as.bjp(paramas.field_username)) {
         break;
       }
-      paraman = k(paraman);
-      AppMethodBeat.o(221693);
-      return paraman;
+      paramas = k(paramas);
+      AppMethodBeat.o(257875);
+      return paramas;
     }
-    AppMethodBeat.o(221693);
+    AppMethodBeat.o(257875);
     return null;
   }
   
-  private static am k(an paraman)
+  private static aq k(as paramas)
   {
-    AppMethodBeat.i(221694);
-    com.tencent.mm.contact.a.a.b localb = com.tencent.mm.contact.a.a.a.adK();
-    localb.a(new k.a(2, x.H(paraman)));
-    AppMethodBeat.o(221694);
+    AppMethodBeat.i(257876);
+    com.tencent.mm.contact.a.a.b localb = com.tencent.mm.contact.a.a.a.arN();
+    localb.a(new k.a(2, ab.H(paramas)));
+    AppMethodBeat.o(257876);
     return localb;
   }
   
-  public static void l(an paraman)
+  public static void l(as paramas)
   {
-    AppMethodBeat.i(221695);
+    AppMethodBeat.i(257877);
     boolean bool;
-    an localan2;
-    if (paraman != null)
+    as localas2;
+    if (paramas != null)
     {
       bool = true;
       Assert.assertTrue(bool);
-      localan2 = ((l)g.ab(l.class)).azF().BH(paraman.field_username);
-      localan1 = paraman;
-      if (localan2 != null) {
-        if (!bu.isNullOrNil(localan2.field_username)) {
+      localas2 = ((l)g.af(l.class)).aSN().Kn(paramas.field_username);
+      localas1 = paramas;
+      if (localas2 != null) {
+        if (!Util.isNullOrNil(localas2.field_username)) {
           break label75;
         }
       }
     }
     label75:
-    for (an localan1 = paraman;; localan1 = localan2)
+    for (as localas1 = paramas;; localas1 = localas2)
     {
-      localan1.acU();
-      n(localan1);
-      AppMethodBeat.o(221695);
+      localas1.aqS();
+      n(localas1);
+      AppMethodBeat.o(257877);
       return;
       bool = false;
       break;
     }
   }
   
-  public static void m(an paraman)
+  public static void m(as paramas)
   {
-    AppMethodBeat.i(221696);
+    AppMethodBeat.i(257878);
     boolean bool;
-    an localan2;
-    if (paraman != null)
+    as localas2;
+    if (paramas != null)
     {
       bool = true;
       Assert.assertTrue(bool);
-      localan2 = ((l)g.ab(l.class)).azF().BH(paraman.field_username);
-      localan1 = paraman;
-      if (localan2 != null) {
-        if (!bu.isNullOrNil(localan2.field_username)) {
+      localas2 = ((l)g.af(l.class)).aSN().Kn(paramas.field_username);
+      localas1 = paramas;
+      if (localas2 != null) {
+        if (!Util.isNullOrNil(localas2.field_username)) {
           break label75;
         }
       }
     }
     label75:
-    for (an localan1 = paraman;; localan1 = localan2)
+    for (as localas1 = paramas;; localas1 = localas2)
     {
-      localan1.acV();
-      n(localan1);
-      AppMethodBeat.o(221696);
+      localas1.aqT();
+      n(localas1);
+      AppMethodBeat.o(257878);
       return;
       bool = false;
       break;
     }
   }
   
-  private static void n(an paraman)
+  private static void n(as paramas)
   {
-    AppMethodBeat.i(221697);
-    if (paraman != null) {}
+    AppMethodBeat.i(257879);
+    if (paramas != null) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if ((int)paraman.ght == 0)
+      if ((int)paramas.gMZ == 0)
       {
-        ((l)g.ab(l.class)).azF().ao(paraman);
-        ((l)g.ab(l.class)).azF().BH(paraman.field_username);
+        ((l)g.af(l.class)).aSN().aq(paramas);
+        ((l)g.af(l.class)).aSN().Kn(paramas.field_username);
       }
-      ((l)g.ab(l.class)).azF().c(paraman.field_username, paraman);
-      AppMethodBeat.o(221697);
+      ((l)g.af(l.class)).aSN().c(paramas.field_username, paramas);
+      AppMethodBeat.o(257879);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.contact.a.a
  * JD-Core Version:    0.7.0.1
  */

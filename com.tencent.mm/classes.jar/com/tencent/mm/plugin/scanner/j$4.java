@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.scanner;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class j$4
   implements Runnable
@@ -13,18 +13,18 @@ final class j$4
   public final void run()
   {
     AppMethodBeat.i(169954);
-    if (!g.ajM())
+    if (!g.aAc())
     {
       AppMethodBeat.o(169954);
       return;
     }
-    if (bu.isNullOrNil(j.d(this.yzx)))
+    if (Util.isNullOrNil(j.d(this.CAB)))
     {
-      ae.e("MicroMsg.scanner.SubCoreScanner", "accPath == null in onAccountPostReset");
+      Log.e("MicroMsg.scanner.SubCoreScanner", "accPath == null in onAccountPostReset");
       AppMethodBeat.o(169954);
       return;
     }
-    bu.n(j.d(this.yzx) + "image/scan/img", "scanbook", 604800000L);
+    Util.deleteOutOfDateFile(j.d(this.CAB) + "image/scan/img", "scanbook", 604800000L);
     AppMethodBeat.o(169954);
   }
   
@@ -38,7 +38,7 @@ final class j$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.j.4
  * JD-Core Version:    0.7.0.1
  */

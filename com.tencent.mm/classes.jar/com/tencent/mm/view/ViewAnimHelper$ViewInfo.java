@@ -10,7 +10,7 @@ public class ViewAnimHelper$ViewInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ViewInfo> CREATOR;
-  public Rect Lro;
+  public Rect QMg;
   
   static
   {
@@ -22,16 +22,16 @@ public class ViewAnimHelper$ViewInfo
   public ViewAnimHelper$ViewInfo(Rect paramRect)
   {
     AppMethodBeat.i(143618);
-    this.Lro = new Rect();
-    this.Lro.set(paramRect);
+    this.QMg = new Rect();
+    this.QMg.set(paramRect);
     AppMethodBeat.o(143618);
   }
   
   protected ViewAnimHelper$ViewInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(143620);
-    this.Lro = new Rect();
-    this.Lro = ((Rect)paramParcel.readParcelable(Rect.class.getClassLoader()));
+    this.QMg = new Rect();
+    this.QMg = ((Rect)paramParcel.readParcelable(Rect.class.getClassLoader()));
     AppMethodBeat.o(143620);
   }
   
@@ -43,13 +43,13 @@ public class ViewAnimHelper$ViewInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(143619);
-    paramParcel.writeParcelable(this.Lro, paramInt);
+    paramParcel.writeParcelable(this.QMg, paramInt);
     AppMethodBeat.o(143619);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.view.ViewAnimHelper.ViewInfo
  * JD-Core Version:    0.7.0.1
  */

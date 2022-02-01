@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import java.util.List;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class es
-  extends b
+  extends IEvent
 {
-  public a dqS;
-  public b dqT;
+  public a dIa;
   
   public es()
   {
@@ -17,20 +16,19 @@ public final class es
   
   private es(byte paramByte)
   {
-    AppMethodBeat.i(116005);
-    this.dqS = new a();
-    this.dqT = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(116002);
+    this.dIa = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116005);
+    AppMethodBeat.o(116002);
   }
   
   public static final class a
   {
-    public List dqf;
+    public Context context;
+    public int op = 0;
+    public String userName;
   }
-  
-  public static final class b {}
 }
 
 

@@ -1,37 +1,37 @@
 package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.k.j;
-import d.l;
 import java.util.Arrays;
+import kotlin.g.b.p;
+import kotlin.k.j;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/FloatArrayBuilder;", "Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "", "bufferWithData", "([F)V", "buffer", "<set-?>", "", "position", "getPosition", "()I", "append", "", "c", "", "append$kotlinx_serialization_runtime", "build", "ensureCapacity", "requiredCapacity", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/FloatArrayBuilder;", "Lkotlinx/serialization/internal/PrimitiveArrayBuilder;", "", "bufferWithData", "([F)V", "buffer", "<set-?>", "", "position", "getPosition", "()I", "append", "", "c", "", "append$kotlinx_serialization_runtime", "build", "ensureCapacity", "requiredCapacity", "kotlinx-serialization-runtime"})
 public final class r
   extends av<float[]>
 {
-  float[] Ojt;
+  float[] TYp;
   int position;
   
   public r(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(199739);
-    this.Ojt = paramArrayOfFloat;
+    AppMethodBeat.i(225511);
+    this.TYp = paramArrayOfFloat;
     this.position = paramArrayOfFloat.length;
     ensureCapacity(10);
-    AppMethodBeat.o(199739);
+    AppMethodBeat.o(225511);
   }
   
   public final void ensureCapacity(int paramInt)
   {
-    AppMethodBeat.i(199737);
-    if (this.Ojt.length < paramInt)
+    AppMethodBeat.i(225509);
+    if (this.TYp.length < paramInt)
     {
-      float[] arrayOfFloat = Arrays.copyOf(this.Ojt, j.lw(paramInt, this.Ojt.length * 2));
+      float[] arrayOfFloat = Arrays.copyOf(this.TYp, j.mZ(paramInt, this.TYp.length * 2));
       p.g(arrayOfFloat, "java.util.Arrays.copyOf(this, newSize)");
-      this.Ojt = arrayOfFloat;
+      this.TYp = arrayOfFloat;
     }
-    AppMethodBeat.o(199737);
+    AppMethodBeat.o(225509);
   }
   
   public final int getPosition()
@@ -41,7 +41,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlinx.a.b.r
  * JD-Core Version:    0.7.0.1
  */

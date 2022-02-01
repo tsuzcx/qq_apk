@@ -2,7 +2,7 @@ package android.support.v4.widget;
 
 import android.content.res.Resources;
 import android.os.SystemClock;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
@@ -15,47 +15,47 @@ import android.view.animation.Interpolator;
 public abstract class a
   implements View.OnTouchListener
 {
-  private static final int Sf = ;
-  boolean FH;
-  final a RR = new a();
-  private final Interpolator RS = new AccelerateInterpolator();
-  final View RT;
-  private float[] RU = { 0.0F, 0.0F };
-  private float[] RV = { 3.4028235E+38F, 3.4028235E+38F };
-  private int RW;
-  private int RX;
-  private float[] RY = { 0.0F, 0.0F };
-  private float[] RZ = { 0.0F, 0.0F };
-  private float[] Sa = { 3.4028235E+38F, 3.4028235E+38F };
-  private boolean Sb;
-  boolean Sc;
-  boolean Sd;
-  private boolean Se;
+  private static final int Ss = ;
+  boolean FR;
+  final a Se = new a();
+  private final Interpolator Sf = new AccelerateInterpolator();
+  final View Sg;
+  private float[] Sh = { 0.0F, 0.0F };
+  private float[] Si = { 3.4028235E+38F, 3.4028235E+38F };
+  private int Sj;
+  private int Sk;
+  private float[] Sl = { 0.0F, 0.0F };
+  private float[] Sm = { 0.0F, 0.0F };
+  private float[] Sn = { 3.4028235E+38F, 3.4028235E+38F };
+  private boolean So;
+  boolean Sp;
+  boolean Sq;
+  private boolean Sr;
   private boolean mEnabled;
   private Runnable mRunnable;
   
   public a(View paramView)
   {
-    this.RT = paramView;
+    this.Sg = paramView;
     paramView = Resources.getSystem().getDisplayMetrics();
     int i = (int)(1575.0F * paramView.density + 0.5F);
     int j = (int)(paramView.density * 315.0F + 0.5F);
     float f = i;
-    this.Sa[0] = (f / 1000.0F);
-    this.Sa[1] = (f / 1000.0F);
+    this.Sn[0] = (f / 1000.0F);
+    this.Sn[1] = (f / 1000.0F);
     f = j;
-    this.RZ[0] = (f / 1000.0F);
-    this.RZ[1] = (f / 1000.0F);
-    this.RW = 1;
-    this.RV[0] = 3.4028235E+38F;
-    this.RV[1] = 3.4028235E+38F;
-    this.RU[0] = 0.2F;
-    this.RU[1] = 0.2F;
-    this.RY[0] = 0.001F;
-    this.RY[1] = 0.001F;
-    this.RX = Sf;
-    this.RR.Sg = 500;
-    this.RR.Sh = 500;
+    this.Sm[0] = (f / 1000.0F);
+    this.Sm[1] = (f / 1000.0F);
+    this.Sj = 1;
+    this.Si[0] = 3.4028235E+38F;
+    this.Si[1] = 3.4028235E+38F;
+    this.Sh[0] = 0.2F;
+    this.Sh[1] = 0.2F;
+    this.Sl[0] = 0.001F;
+    this.Sl[1] = 0.001F;
+    this.Sk = Ss;
+    this.Se.St = 500;
+    this.Se.Su = 500;
   }
   
   static int B(int paramInt1, int paramInt2)
@@ -71,13 +71,13 @@ public abstract class a
   
   private float a(int paramInt, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    paramFloat1 = f(this.RU[paramInt], paramFloat2, this.RV[paramInt], paramFloat1);
+    paramFloat1 = f(this.Sh[paramInt], paramFloat2, this.Si[paramInt], paramFloat1);
     if (paramFloat1 == 0.0F) {
       return 0.0F;
     }
-    float f2 = this.RY[paramInt];
-    paramFloat2 = this.RZ[paramInt];
-    float f1 = this.Sa[paramInt];
+    float f2 = this.Sl[paramInt];
+    paramFloat2 = this.Sm[paramInt];
+    float f1 = this.Sn[paramInt];
     paramFloat3 = f2 * paramFloat3;
     if (paramFloat1 > 0.0F) {
       return e(paramFloat1 * paramFloat3, paramFloat2, f1);
@@ -103,7 +103,7 @@ public abstract class a
     paramFloat3 = k(paramFloat4, paramFloat1);
     paramFloat2 = k(paramFloat2 - paramFloat4, paramFloat1) - paramFloat3;
     if (paramFloat2 < 0.0F) {}
-    for (paramFloat1 = -this.RS.getInterpolation(-paramFloat2);; paramFloat1 = this.RS.getInterpolation(paramFloat2))
+    for (paramFloat1 = -this.Sf.getInterpolation(-paramFloat2);; paramFloat1 = this.Sf.getInterpolation(paramFloat2))
     {
       paramFloat1 = e(paramFloat1, -1.0F, 1.0F);
       do
@@ -114,14 +114,14 @@ public abstract class a
     }
   }
   
-  private void fD()
+  private void fK()
   {
-    if (this.Sc)
+    if (this.Sp)
     {
-      this.FH = false;
+      this.FR = false;
       return;
     }
-    this.RR.fD();
+    this.Se.fK();
   }
   
   private float k(float paramFloat1, float paramFloat2)
@@ -134,7 +134,7 @@ public abstract class a
         do
         {
           return 0.0F;
-          switch (this.RW)
+          switch (this.Sj)
           {
           default: 
             return 0.0F;
@@ -143,31 +143,31 @@ public abstract class a
         if (paramFloat1 >= 0.0F) {
           return 1.0F - paramFloat1 / paramFloat2;
         }
-      } while ((!this.FH) || (this.RW != 1));
+      } while ((!this.FR) || (this.Sj != 1));
       return 1.0F;
     } while (paramFloat1 >= 0.0F);
     return paramFloat1 / -paramFloat2;
   }
   
-  public final a M(boolean paramBoolean)
+  public final a L(boolean paramBoolean)
   {
     if ((this.mEnabled) && (!paramBoolean)) {
-      fD();
+      fK();
     }
     this.mEnabled = paramBoolean;
     return this;
   }
   
-  public abstract void aR(int paramInt);
+  public abstract void aS(int paramInt);
   
-  public abstract boolean aS(int paramInt);
+  public abstract boolean aT(int paramInt);
   
-  final boolean bX()
+  final boolean bZ()
   {
-    a locala = this.RR;
-    int i = locala.fF();
-    int j = locala.fE();
-    if ((i == 0) || (!aS(i)))
+    a locala = this.Se;
+    int i = locala.fM();
+    int j = locala.fL();
+    if ((i == 0) || (!aT(i)))
     {
       if (j != 0) {}
       return false;
@@ -184,33 +184,33 @@ public abstract class a
       switch (paramMotionEvent.getActionMasked())
       {
       }
-      while ((this.Se) && (this.FH))
+      while ((this.Sr) && (this.FR))
       {
         return true;
-        this.Sd = true;
-        this.Sb = false;
-        float f1 = a(0, paramMotionEvent.getX(), paramView.getWidth(), this.RT.getWidth());
-        float f2 = a(1, paramMotionEvent.getY(), paramView.getHeight(), this.RT.getHeight());
-        paramView = this.RR;
-        paramView.Si = f1;
-        paramView.Sj = f2;
-        if ((!this.FH) && (bX()))
+        this.Sq = true;
+        this.So = false;
+        float f1 = a(0, paramMotionEvent.getX(), paramView.getWidth(), this.Sg.getWidth());
+        float f2 = a(1, paramMotionEvent.getY(), paramView.getHeight(), this.Sg.getHeight());
+        paramView = this.Se;
+        paramView.Sv = f1;
+        paramView.Sw = f2;
+        if ((!this.FR) && (bZ()))
         {
           if (this.mRunnable == null) {
             this.mRunnable = new b();
           }
-          this.FH = true;
-          this.Sc = true;
-          if ((!this.Sb) && (this.RX > 0)) {
-            t.a(this.RT, this.mRunnable, this.RX);
+          this.FR = true;
+          this.Sp = true;
+          if ((!this.So) && (this.Sk > 0)) {
+            u.a(this.Sg, this.mRunnable, this.Sk);
           }
           for (;;)
           {
-            this.Sb = true;
+            this.So = true;
             break;
             this.mRunnable.run();
           }
-          fD();
+          fK();
         }
       }
     }
@@ -218,34 +218,34 @@ public abstract class a
   
   static final class a
   {
-    int Bc = 0;
-    int Bd = 0;
-    int Sg;
-    int Sh;
-    float Si;
-    float Sj;
-    long Sk = 0L;
-    long Sl = -1L;
-    float Sm;
-    int Sn;
+    int Bi = 0;
+    int Bj = 0;
+    int SA;
+    int St;
+    int Su;
+    float Sv;
+    float Sw;
+    long Sx = 0L;
+    long Sy = -1L;
+    float Sz;
     long mStartTime = -9223372036854775808L;
     
-    public final void fD()
+    public final void fK()
     {
       long l = AnimationUtils.currentAnimationTimeMillis();
-      this.Sn = a.B((int)(l - this.mStartTime), this.Sh);
-      this.Sm = l(l);
-      this.Sl = l;
+      this.SA = a.B((int)(l - this.mStartTime), this.Su);
+      this.Sz = l(l);
+      this.Sy = l;
     }
     
-    public final int fE()
+    public final int fL()
     {
-      return (int)(this.Si / Math.abs(this.Si));
+      return (int)(this.Sv / Math.abs(this.Sv));
     }
     
-    public final int fF()
+    public final int fM()
     {
-      return (int)(this.Sj / Math.abs(this.Sj));
+      return (int)(this.Sw / Math.abs(this.Sw));
     }
     
     final float l(long paramLong)
@@ -253,13 +253,13 @@ public abstract class a
       if (paramLong < this.mStartTime) {
         return 0.0F;
       }
-      if ((this.Sl < 0L) || (paramLong < this.Sl)) {
-        return a.e((float)(paramLong - this.mStartTime) / this.Sg, 0.0F, 1.0F) * 0.5F;
+      if ((this.Sy < 0L) || (paramLong < this.Sy)) {
+        return a.e((float)(paramLong - this.mStartTime) / this.St, 0.0F, 1.0F) * 0.5F;
       }
-      long l = this.Sl;
-      float f1 = this.Sm;
-      float f2 = this.Sm;
-      return a.e((float)(paramLong - l) / this.Sn, 0.0F, 1.0F) * f2 + (1.0F - f1);
+      long l = this.Sy;
+      float f1 = this.Sz;
+      float f2 = this.Sz;
+      return a.e((float)(paramLong - l) / this.SA, 0.0F, 1.0F) * f2 + (1.0F - f1);
     }
   }
   
@@ -270,49 +270,49 @@ public abstract class a
     
     public final void run()
     {
-      if (!a.this.FH) {
+      if (!a.this.FR) {
         return;
       }
-      if (a.this.Sc)
+      if (a.this.Sp)
       {
-        a.this.Sc = false;
-        locala = a.this.RR;
+        a.this.Sp = false;
+        locala = a.this.Se;
         locala.mStartTime = AnimationUtils.currentAnimationTimeMillis();
-        locala.Sl = -1L;
-        locala.Sk = locala.mStartTime;
-        locala.Sm = 0.5F;
-        locala.Bc = 0;
-        locala.Bd = 0;
+        locala.Sy = -1L;
+        locala.Sx = locala.mStartTime;
+        locala.Sz = 0.5F;
+        locala.Bi = 0;
+        locala.Bj = 0;
       }
-      a.a locala = a.this.RR;
-      if ((locala.Sl > 0L) && (AnimationUtils.currentAnimationTimeMillis() > locala.Sl + locala.Sn)) {}
-      for (int i = 1; (i != 0) || (!a.this.bX()); i = 0)
+      a.a locala = a.this.Se;
+      if ((locala.Sy > 0L) && (AnimationUtils.currentAnimationTimeMillis() > locala.Sy + locala.SA)) {}
+      for (int i = 1; (i != 0) || (!a.this.bZ()); i = 0)
       {
-        a.this.FH = false;
+        a.this.FR = false;
         return;
       }
-      if (a.this.Sd)
+      if (a.this.Sq)
       {
-        a.this.Sd = false;
+        a.this.Sq = false;
         a locala1 = a.this;
         l1 = SystemClock.uptimeMillis();
         MotionEvent localMotionEvent = MotionEvent.obtain(l1, l1, 3, 0.0F, 0.0F, 0);
-        locala1.RT.onTouchEvent(localMotionEvent);
+        locala1.Sg.onTouchEvent(localMotionEvent);
         localMotionEvent.recycle();
       }
-      if (locala.Sk == 0L) {
+      if (locala.Sx == 0L) {
         throw new RuntimeException("Cannot compute scroll delta before calling start()");
       }
       long l1 = AnimationUtils.currentAnimationTimeMillis();
       float f = locala.l(l1);
       f = f * 4.0F + -4.0F * f * f;
-      long l2 = l1 - locala.Sk;
-      locala.Sk = l1;
-      locala.Bc = ((int)((float)l2 * f * locala.Si));
-      locala.Bd = ((int)((float)l2 * f * locala.Sj));
-      i = locala.Bd;
-      a.this.aR(i);
-      t.b(a.this.RT, this);
+      long l2 = l1 - locala.Sx;
+      locala.Sx = l1;
+      locala.Bi = ((int)((float)l2 * f * locala.Sv));
+      locala.Bj = ((int)((float)l2 * f * locala.Sw));
+      i = locala.Bj;
+      a.this.aS(i);
+      u.b(a.this.Sg, this);
     }
   }
 }

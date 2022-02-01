@@ -1,163 +1,490 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
+import android.os.Looper;
+import android.os.MessageQueue;
+import android.os.MessageQueue.IdleHandler;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.at;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.az;
-import d.g.a.b;
-import d.g.b.p;
-import d.l;
-import d.v;
-import java.util.Arrays;
-import java.util.Iterator;
+import com.tencent.mm.ag.v;
+import com.tencent.mm.al.ag;
+import com.tencent.mm.av.a.a.c.a;
+import com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.pluginsdk.ui.applet.e;
+import com.tencent.mm.pluginsdk.ui.applet.l;
+import com.tencent.mm.pluginsdk.ui.applet.m;
+import com.tencent.mm.pluginsdk.ui.applet.m.a;
+import com.tencent.mm.pluginsdk.ui.applet.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.aa;
+import com.tencent.mm.storage.z;
+import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"bundleToString", "", "bundle", "Landroid/os/Bundle;", "findProcess", "", "context", "Landroid/content/Context;", "predicate", "Lkotlin/Function1;", "Landroid/app/ActivityManager$RunningAppProcessInfo;", "getNetWorkType", "isExpire", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "key", "duration", "", "isNullOrEmpty", "", "putNow", "", "toDebugString", "Landroid/content/Intent;", "toInt", "", "plugin-brandservice_release"})
 public final class d
 {
-  private static final String Q(Bundle paramBundle)
+  private static Boolean pAC;
+  private static Boolean pAD;
+  private static HashSet<Long> pAw;
+  private static HashSet<String> pAx;
+  private boolean pAA;
+  public boolean pAB;
+  private int pAt;
+  private int pAu;
+  public int pAv;
+  public List<z> pAy;
+  private List<z> pAz;
+  public BizTimeLineUI pro;
+  
+  static
   {
-    AppMethodBeat.i(6581);
-    StringBuilder localStringBuilder = new StringBuilder("Bundle[");
-    if (paramBundle == null)
+    AppMethodBeat.i(6181);
+    pAw = new HashSet();
+    pAx = new HashSet();
+    pAC = null;
+    pAD = null;
+    AppMethodBeat.o(6181);
+  }
+  
+  public d(BizTimeLineUI paramBizTimeLineUI, int paramInt1, int paramInt2, List<z> paramList)
+  {
+    AppMethodBeat.i(6160);
+    this.pAv = 0;
+    this.pAy = new LinkedList();
+    this.pAA = false;
+    this.pAB = false;
+    this.pro = paramBizTimeLineUI;
+    this.pAt = paramInt1;
+    this.pAu = paramInt2;
+    this.pAz = paramList;
+    if (this.pAz.size() <= 10) {
+      Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
+      {
+        public final boolean queueIdle()
+        {
+          AppMethodBeat.i(6154);
+          d.this.onLoadMore();
+          AppMethodBeat.o(6154);
+          return false;
+        }
+      });
+    }
+    AppMethodBeat.o(6160);
+  }
+  
+  private static void BG(long paramLong)
+  {
+    AppMethodBeat.i(6166);
+    pAw.add(Long.valueOf(paramLong));
+    AppMethodBeat.o(6166);
+  }
+  
+  private z De(int paramInt)
+  {
+    AppMethodBeat.i(6173);
+    try
     {
-      localStringBuilder.append("null");
-      localStringBuilder.append("]");
-      paramBundle = localStringBuilder.toString();
-      p.g(paramBundle, "out.toString()");
-      AppMethodBeat.o(6581);
-      return paramBundle;
+      z localz;
+      if (paramInt < this.pAz.size())
+      {
+        localz = (z)this.pAz.get(paramInt);
+        AppMethodBeat.o(6173);
+        return localz;
+      }
+      if (paramInt < this.pAz.size() + this.pAy.size())
+      {
+        localz = (z)this.pAy.get(paramInt - this.pAz.size());
+        AppMethodBeat.o(6173);
+        return localz;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.w("MicroMsg.BizTimeLineImgLoader", "getItem error %s", new Object[] { localThrowable.getMessage() });
+      AppMethodBeat.o(6173);
+    }
+    return null;
+  }
+  
+  public static String OO(String paramString)
+  {
+    AppMethodBeat.i(258319);
+    paramString = com.tencent.mm.api.b.u(paramString, 1);
+    AppMethodBeat.o(258319);
+    return paramString;
+  }
+  
+  private boolean a(v paramv, String paramString, final long paramLong, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(6165);
+    if (a(paramString, paramLong, paramInt))
+    {
+      AppMethodBeat.o(6165);
+      return false;
+    }
+    Log.v("MicroMsg.BizTimeLineImgLoader", "doPreLoadNext pos %d", new Object[] { Integer.valueOf(paramInt) });
+    ImageView localImageView = new ImageView(this.pro);
+    this.pAv += 1;
+    if ((paramInt == 0) && (paramBoolean)) {
+      a(paramLong, paramInt, paramv, paramString, localImageView, getContentWidth(), this.pAt, true, new m.a()
+      {
+        public final void onFinish()
+        {
+          AppMethodBeat.i(6156);
+          d.e(d.this);
+          d.this.m(paramLong, this.keB);
+          AppMethodBeat.o(6156);
+        }
+        
+        public final void onStart() {}
+      }, false, -1);
     }
     for (;;)
     {
-      Object localObject;
-      try
+      AppMethodBeat.o(6165);
+      return true;
+      a(paramLong, paramInt, paramv, paramString, localImageView, this.pAu, this.pAu, true, new m.a()
       {
-        Iterator localIterator = paramBundle.keySet().iterator();
-        i = 1;
-        if (!localIterator.hasNext()) {
-          break;
+        public final void onFinish()
+        {
+          AppMethodBeat.i(6157);
+          d.e(d.this);
+          d.this.m(paramLong, this.keB);
+          AppMethodBeat.o(6157);
         }
-        localObject = (String)localIterator.next();
-        if (i == 0) {
-          localStringBuilder.append(", ");
-        }
-        localStringBuilder.append((String)localObject).append('=');
-        localObject = paramBundle.get((String)localObject);
-        if ((localObject instanceof Object[])) {
-          localStringBuilder.append(Arrays.toString((Object[])localObject));
-        } else if ((localObject instanceof Bundle)) {
-          localStringBuilder.append(Q((Bundle)localObject));
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        localStringBuilder.append("can not read bundle");
-      }
-      break;
-      localStringBuilder.append(localObject);
-      int i = 0;
+        
+        public final void onStart() {}
+      }, -1, 2.0F);
     }
   }
   
-  public static final boolean a(ay paramay, String paramString, long paramLong)
+  public static boolean a(z paramz, v paramv)
   {
-    AppMethodBeat.i(6577);
-    p.h(paramay, "$this$isExpire");
-    p.h(paramString, "key");
-    boolean bool = at.ax(paramay.getLong(paramString, 0L), paramLong);
-    AppMethodBeat.o(6577);
+    AppMethodBeat.i(6174);
+    if ((paramz == null) || (paramv == null))
+    {
+      AppMethodBeat.o(6174);
+      return false;
+    }
+    boolean bool = com.tencent.mm.plugin.brandservice.ui.b.a.a(paramz, paramv);
+    AppMethodBeat.o(6174);
     return bool;
   }
   
-  public static final String ag(Intent paramIntent)
+  private static boolean a(String paramString, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(6580);
-    p.h(paramIntent, "$this$toDebugString");
-    paramIntent = paramIntent.toString() + " " + Q(paramIntent.getExtras());
-    AppMethodBeat.o(6580);
-    return paramIntent;
+    AppMethodBeat.i(6169);
+    if (pAx.contains(paramLong + "_" + paramInt))
+    {
+      AppMethodBeat.o(6169);
+      return true;
+    }
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(6169);
+      return false;
+    }
+    if (!com.tencent.mm.vfs.s.YS(com.tencent.mm.pluginsdk.model.s.bdu(com.tencent.mm.api.b.u(paramString, 1))))
+    {
+      AppMethodBeat.o(6169);
+      return false;
+    }
+    pAx.add(paramLong + "_" + paramInt);
+    AppMethodBeat.o(6169);
+    return true;
   }
   
-  public static final void b(ay paramay, String paramString)
+  private z cnA()
   {
-    AppMethodBeat.i(6576);
-    p.h(paramay, "$this$putNow");
-    p.h(paramString, "key");
-    paramay.putLong(paramString, System.currentTimeMillis());
-    AppMethodBeat.o(6576);
-  }
-  
-  public static final String bQb()
-  {
-    AppMethodBeat.i(6579);
-    Context localContext = ak.getContext();
-    if (az.isWifi(localContext))
+    AppMethodBeat.i(6167);
+    int i = 0;
+    try
     {
-      AppMethodBeat.o(6579);
-      return "wifi";
-    }
-    if (az.is5G(localContext))
-    {
-      AppMethodBeat.o(6579);
-      return "5g";
-    }
-    if (az.is4G(localContext))
-    {
-      AppMethodBeat.o(6579);
-      return "4g";
-    }
-    if (az.is3G(localContext))
-    {
-      AppMethodBeat.o(6579);
-      return "3g";
-    }
-    if (az.is2G(localContext))
-    {
-      AppMethodBeat.o(6579);
-      return "2g";
-    }
-    AppMethodBeat.o(6579);
-    return "none";
-  }
-  
-  public static final boolean c(Context paramContext, b<? super ActivityManager.RunningAppProcessInfo, Boolean> paramb)
-  {
-    AppMethodBeat.i(6578);
-    p.h(paramContext, "context");
-    p.h(paramb, "predicate");
-    paramContext = paramContext.getSystemService("activity");
-    if (paramContext == null)
-    {
-      paramContext = new v("null cannot be cast to non-null type android.app.ActivityManager");
-      AppMethodBeat.o(6578);
-      throw paramContext;
-    }
-    paramContext = ((ActivityManager)paramContext).getRunningAppProcesses().iterator();
-    while (paramContext.hasNext())
-    {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)paramContext.next();
-      p.g(localRunningAppProcessInfo, "info");
-      if (((Boolean)paramb.invoke(localRunningAppProcessInfo)).booleanValue())
+      while (i < this.pAz.size() + this.pAy.size())
       {
-        AppMethodBeat.o(6578);
-        return true;
+        z localz = De(i);
+        if ((localz != null) && (localz.gAt()) && (localz.field_isRead != 1) && (!pAw.contains(Long.valueOf(localz.field_msgId))))
+        {
+          Log.v("MicroMsg.BizTimeLineImgLoader", "getNextPreloadInfo pos=%d,msg id=%d", new Object[] { Integer.valueOf(i), Long.valueOf(localz.field_msgId) });
+          AppMethodBeat.o(6167);
+          return localz;
+        }
+        i += 1;
+        BG(localz.field_msgId);
+      }
+      return null;
+    }
+    catch (Exception localException)
+    {
+      Log.w("MicroMsg.BizTimeLineImgLoader", "getNextPreloadInfo %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(6167);
+    }
+  }
+  
+  private static boolean cnC()
+  {
+    AppMethodBeat.i(6175);
+    if (pAC == null) {
+      cnE();
+    }
+    boolean bool = pAC.booleanValue();
+    AppMethodBeat.o(6175);
+    return bool;
+  }
+  
+  public static boolean cnD()
+  {
+    AppMethodBeat.i(6176);
+    if (pAD == null) {
+      cnE();
+    }
+    boolean bool = pAD.booleanValue();
+    AppMethodBeat.o(6176);
+    return bool;
+  }
+  
+  private static void cnE()
+  {
+    AppMethodBeat.i(6177);
+    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rTq, 1) == 1)
+    {
+      bool = true;
+      pAC = Boolean.valueOf(bool);
+      if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rTr, 0) != 1) {
+        break label104;
       }
     }
-    AppMethodBeat.o(6578);
-    return false;
+    label104:
+    for (boolean bool = true;; bool = false)
+    {
+      pAD = Boolean.valueOf(bool);
+      Log.i("MicroMsg.BizTimeLineImgLoader", "BizTimeLineImg initABTest %b/%b", new Object[] { pAC, pAD });
+      AppMethodBeat.o(6177);
+      return;
+      bool = false;
+      break;
+    }
+  }
+  
+  public final void a(long paramLong, int paramInt1, v paramv, String paramString, ImageView paramImageView, int paramInt2, int paramInt3, boolean paramBoolean, m.a parama, int paramInt4, float paramFloat)
+  {
+    AppMethodBeat.i(195022);
+    paramImageView.setContentDescription(this.pro.getString(2131757392));
+    paramString = com.tencent.mm.api.b.u(paramString, 1);
+    Object localObject = com.tencent.mm.pluginsdk.ui.applet.g.Kev;
+    if (com.tencent.mm.pluginsdk.ui.applet.g.aig(1))
+    {
+      localObject = com.tencent.mm.pluginsdk.model.a.JUl;
+      com.tencent.mm.pluginsdk.model.a.n(paramLong, paramInt1, paramv.url);
+    }
+    localObject = com.tencent.mm.pluginsdk.model.b.JUJ;
+    localObject = new c.a();
+    ((c.a)localObject).jbt = 2131100173;
+    ((c.a)localObject).jbf = true;
+    localObject = ((c.a)localObject).dr(paramInt2, paramInt3);
+    ((c.a)localObject).jbv = "2131231315";
+    ((c.a)localObject).jaU = new n(1);
+    ((c.a)localObject).jbC = new e(1);
+    ((c.a)localObject).jbD = new l();
+    ((c.a)localObject).fullPath = com.tencent.mm.pluginsdk.model.s.bdu(paramString);
+    com.tencent.mm.pluginsdk.model.b.a(paramLong, paramInt1, paramv, paramString, paramImageView, paramInt4, paramBoolean, ((c.a)localObject).bdv(), new m(1, paramInt2, paramInt3, true, true, paramFloat, parama));
+    AppMethodBeat.o(195022);
+  }
+  
+  public final void a(long paramLong, int paramInt1, v paramv, String paramString, ImageView paramImageView, int paramInt2, int paramInt3, boolean paramBoolean1, m.a parama, boolean paramBoolean2, int paramInt4)
+  {
+    AppMethodBeat.i(6161);
+    paramImageView.setContentDescription(this.pro.getString(2131757392));
+    paramString = com.tencent.mm.api.b.u(paramString, 1);
+    Object localObject = com.tencent.mm.pluginsdk.ui.applet.g.Kev;
+    if (com.tencent.mm.pluginsdk.ui.applet.g.aig(1))
+    {
+      localObject = com.tencent.mm.pluginsdk.model.a.JUl;
+      com.tencent.mm.pluginsdk.model.a.n(paramLong, paramInt1, paramv.url);
+    }
+    int i;
+    if (paramBoolean2)
+    {
+      i = 2131231310;
+      if (!paramBoolean2) {
+        break label236;
+      }
+    }
+    label236:
+    for (int j = 2131231307;; j = 2131231312)
+    {
+      float f = com.tencent.mm.cb.a.fromDPToPix(this.pro, 8);
+      localObject = com.tencent.mm.pluginsdk.model.b.JUJ;
+      localObject = new c.a();
+      ((c.a)localObject).jbt = j;
+      ((c.a)localObject).jbf = true;
+      localObject = ((c.a)localObject).dr(paramInt2, paramInt3);
+      ((c.a)localObject).jbv = String.valueOf(i);
+      ((c.a)localObject).jaU = new n(1);
+      ((c.a)localObject).jbC = new e(1);
+      ((c.a)localObject).jbD = new l();
+      ((c.a)localObject).fullPath = com.tencent.mm.pluginsdk.model.s.bdu(paramString);
+      com.tencent.mm.pluginsdk.model.b.a(paramLong, paramInt1, paramv, paramString, paramImageView, paramInt4, paramBoolean1, ((c.a)localObject).bdv(), new m(1, paramInt2, paramInt3, false, paramBoolean2, f, parama));
+      AppMethodBeat.o(6161);
+      return;
+      i = 0;
+      break;
+    }
+  }
+  
+  public final void a(String paramString, ImageView paramImageView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(195023);
+    paramImageView.setContentDescription(this.pro.getString(2131757392));
+    Object localObject = com.tencent.mm.pluginsdk.model.b.JUJ;
+    localObject = new c.a();
+    ((c.a)localObject).jbd = true;
+    ((c.a)localObject).jbq = 2131100173;
+    localObject = ((c.a)localObject).dr(paramInt1, paramInt2);
+    ((c.a)localObject).jbi = 4;
+    com.tencent.mm.pluginsdk.model.b.a(-1L, -1, null, paramString, paramImageView, paramInt3, false, ((c.a)localObject).bdv(), new m());
+    AppMethodBeat.o(195023);
+  }
+  
+  public final z cnB()
+  {
+    AppMethodBeat.i(6172);
+    try
+    {
+      if (this.pAz.size() > 0)
+      {
+        z localz = (z)this.pAz.get(this.pAz.size() - 1);
+        AppMethodBeat.o(6172);
+        return localz;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.w("MicroMsg.BizTimeLineImgLoader", "getItem error %s", new Object[] { localThrowable.getMessage() });
+      AppMethodBeat.o(6172);
+    }
+    return null;
+  }
+  
+  public final void cnz()
+  {
+    AppMethodBeat.i(6164);
+    if (!cnC())
+    {
+      AppMethodBeat.o(6164);
+      return;
+    }
+    if ((this.pAA) || (this.pAB))
+    {
+      Log.v("MicroMsg.BizTimeLineImgLoader", "preLoadNext loading %b, onPause %b", new Object[] { Boolean.valueOf(this.pAA), Boolean.valueOf(this.pAB) });
+      AppMethodBeat.o(6164);
+      return;
+    }
+    this.pAA = true;
+    Log.v("MicroMsg.BizTimeLineImgLoader", "preLoadNext");
+    com.tencent.mm.plugin.brandservice.b.a("BizTimeLineImgLoaderThread", new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(6155);
+        d.a(d.this);
+        if ((d.b(d.this) == null) || (d.b(d.this).isFinishing()))
+        {
+          AppMethodBeat.o(6155);
+          return;
+        }
+        if ((d.cnD()) && (!NetStatusUtil.isWifi(d.b(d.this))))
+        {
+          AppMethodBeat.o(6155);
+          return;
+        }
+        if (!d.c(d.this))
+        {
+          Log.v("MicroMsg.BizTimeLineImgLoader", "not all visibleItem loaded");
+          AppMethodBeat.o(6155);
+          return;
+        }
+        z localz = d.d(d.this);
+        if (localz == null)
+        {
+          Log.v("MicroMsg.BizTimeLineImgLoader", "not loading");
+          AppMethodBeat.o(6155);
+          return;
+        }
+        d.a(d.this, localz);
+        AppMethodBeat.o(6155);
+      }
+    }, 500L);
+    AppMethodBeat.o(6164);
+  }
+  
+  public final int getContentWidth()
+  {
+    AppMethodBeat.i(6163);
+    int i = com.tencent.mm.cb.a.jn(this.pro);
+    int j = com.tencent.mm.plugin.brandservice.ui.timeline.b.prD;
+    AppMethodBeat.o(6163);
+    return i - j;
+  }
+  
+  public final void m(long paramLong, int paramInt)
+  {
+    AppMethodBeat.i(6168);
+    Log.v("MicroMsg.BizTimeLineImgLoader", "onLoadFinish mLoadingCount %d", new Object[] { Integer.valueOf(this.pAv) });
+    pAx.add(paramLong + "_" + paramInt);
+    if (this.pAv <= 0) {
+      cnz();
+    }
+    AppMethodBeat.o(6168);
+  }
+  
+  public final void onLoadMore()
+  {
+    AppMethodBeat.i(6171);
+    if (!cnC())
+    {
+      AppMethodBeat.o(6171);
+      return;
+    }
+    com.tencent.mm.plugin.brandservice.b.a("BizTimeLineImgLoaderThread", new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(6159);
+        if ((d.b(d.this) == null) || (d.b(d.this).isFinishing()))
+        {
+          AppMethodBeat.o(6159);
+          return;
+        }
+        z localz = d.this.cnB();
+        if (localz == null)
+        {
+          AppMethodBeat.o(6159);
+          return;
+        }
+        MMHandlerThread.postToMainThread(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(6158);
+            d.f(d.this).clear();
+            d.f(d.this).addAll(this.hjk);
+            AppMethodBeat.o(6158);
+          }
+        });
+        AppMethodBeat.o(6159);
+      }
+    }, 0L);
+    AppMethodBeat.o(6171);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.preload.d
  * JD-Core Version:    0.7.0.1
  */

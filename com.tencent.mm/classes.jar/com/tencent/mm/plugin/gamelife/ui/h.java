@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.gamelife.ui;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/ui/IGameLifeContract;", "", "IConversationPresenter", "IConversationView", "plugin-gamelife_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/ui/IGameLifeContract;", "", "IConversationPresenter", "IConversationView", "plugin-gamelife_release"})
 public abstract interface h {}
 
 

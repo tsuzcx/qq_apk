@@ -9,14 +9,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class FlutterFragment
   extends Fragment
 {
-  private String NcN = "/";
+  private String SRY = "/";
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(159077);
     super.onCreate(paramBundle);
     if (getArguments() != null) {
-      this.NcN = getArguments().getString("route");
+      this.SRY = getArguments().getString("route");
     }
     AppMethodBeat.o(159077);
   }
@@ -30,7 +30,7 @@ public class FlutterFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.facade.FlutterFragment
  * JD-Core Version:    0.7.0.1
  */

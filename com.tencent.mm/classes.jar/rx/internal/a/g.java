@@ -11,15 +11,15 @@ import rx.i;
 public final class g
   implements d.a<Long>
 {
-  final TimeUnit OuU;
-  final rx.g OuV;
-  final long iMv = 0L;
+  final TimeUnit UkI;
+  final rx.g UkJ;
+  final long jJj = 0L;
   final long period = 1000L;
   
-  public g(TimeUnit paramTimeUnit, rx.g paramg)
+  public g(long paramLong1, long paramLong2, TimeUnit paramTimeUnit, rx.g paramg)
   {
-    this.OuU = paramTimeUnit;
-    this.OuV = paramg;
+    this.UkI = paramTimeUnit;
+    this.UkJ = paramg;
   }
 }
 

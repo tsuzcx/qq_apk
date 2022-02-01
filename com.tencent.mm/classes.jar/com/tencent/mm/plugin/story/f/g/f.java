@@ -3,74 +3,74 @@ package com.tencent.mm.plugin.story.f.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.i.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/upload/UploadUtil;", "", "()V", "markStoryError", "", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "errType", "", "errMsg", "", "block", "Lkotlin/Function0;", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/upload/UploadUtil;", "", "()V", "markStoryError", "", "storyInfo", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "errType", "", "errMsg", "", "block", "Lkotlin/Function0;", "plugin-story_release"})
 public final class f
 {
-  public static final f BfX;
+  public static final f FqO;
   
   static
   {
     AppMethodBeat.i(119139);
-    BfX = new f();
+    FqO = new f();
     AppMethodBeat.o(119139);
   }
   
-  public static void a(com.tencent.mm.plugin.story.i.j paramj, int paramInt, String paramString, d.g.a.a<z> parama)
+  public static void a(com.tencent.mm.plugin.story.i.j paramj, int paramInt, String paramString, kotlin.g.a.a<x> parama)
   {
     AppMethodBeat.i(119138);
     p.h(paramj, "storyInfo");
     p.h(paramString, "errMsg");
     p.h(parama, "block");
-    ae.i("MicroMsg.StoryPostTask", "processError localId " + (int)paramj.systemRowid + " processError " + paramInt + " errMsg: " + paramString);
-    ae.d("MicroMsg.StoryPostTask", "post error ".concat(String.valueOf(paramInt)));
-    paramj.ecs();
-    paramString = com.tencent.mm.plugin.story.f.j.BbE;
-    j.b.elB().a((int)paramj.systemRowid, paramj);
-    paramj = com.tencent.mm.plugin.story.i.a.BkN;
-    if (paramInt == com.tencent.mm.plugin.story.i.a.eoy()) {
-      ae.e("MicroMsg.StoryPostTask", "upload find timeLine is null delete this item");
+    Log.i("MicroMsg.StoryPostTask", "processError localId " + (int)paramj.systemRowid + " processError " + paramInt + " errMsg: " + paramString);
+    Log.d("MicroMsg.StoryPostTask", "post error ".concat(String.valueOf(paramInt)));
+    paramj.setItemDie();
+    paramString = com.tencent.mm.plugin.story.f.j.Fmy;
+    j.b.foc().a((int)paramj.systemRowid, paramj);
+    paramj = com.tencent.mm.plugin.story.i.a.FvD;
+    if (paramInt == com.tencent.mm.plugin.story.i.a.fqY()) {
+      Log.e("MicroMsg.StoryPostTask", "upload find timeLine is null delete this item");
     }
     for (;;)
     {
       parama.invoke();
       AppMethodBeat.o(119138);
       return;
-      paramj = com.tencent.mm.plugin.story.i.a.BkN;
-      if (paramInt == com.tencent.mm.plugin.story.i.a.eoz())
+      paramj = com.tencent.mm.plugin.story.i.a.FvD;
+      if (paramInt == com.tencent.mm.plugin.story.i.a.fqZ())
       {
-        ae.e("MicroMsg.StoryPostTask", "parser protobuf error");
+        Log.e("MicroMsg.StoryPostTask", "parser protobuf error");
       }
       else
       {
-        paramj = com.tencent.mm.plugin.story.i.a.BkN;
-        if (paramInt == com.tencent.mm.plugin.story.i.a.eoA())
+        paramj = com.tencent.mm.plugin.story.i.a.FvD;
+        if (paramInt == com.tencent.mm.plugin.story.i.a.fra())
         {
-          ae.e("MicroMsg.StoryPostTask", "local id is not in db");
+          Log.e("MicroMsg.StoryPostTask", "local id is not in db");
         }
         else
         {
-          paramj = com.tencent.mm.plugin.story.i.a.BkN;
-          if (paramInt == com.tencent.mm.plugin.story.i.a.eoB())
+          paramj = com.tencent.mm.plugin.story.i.a.FvD;
+          if (paramInt == com.tencent.mm.plugin.story.i.a.frb())
           {
-            ae.e("MicroMsg.StoryPostTask", "arg is error");
+            Log.e("MicroMsg.StoryPostTask", "arg is error");
           }
           else
           {
-            paramj = com.tencent.mm.plugin.story.i.a.BkN;
-            if (paramInt == com.tencent.mm.plugin.story.i.a.eoC())
+            paramj = com.tencent.mm.plugin.story.i.a.FvD;
+            if (paramInt == com.tencent.mm.plugin.story.i.a.frc())
             {
-              ae.e("MicroMsg.StoryPostTask", "pullTimeLineXml  error");
+              Log.e("MicroMsg.StoryPostTask", "pullTimeLineXml  error");
             }
             else
             {
-              paramj = com.tencent.mm.plugin.story.i.a.BkN;
-              if (paramInt == com.tencent.mm.plugin.story.i.a.eoD()) {
-                ae.e("MicroMsg.StoryPostTask", "errtle  error");
+              paramj = com.tencent.mm.plugin.story.i.a.FvD;
+              if (paramInt == com.tencent.mm.plugin.story.i.a.frd()) {
+                Log.e("MicroMsg.StoryPostTask", "errtle  error");
               }
             }
           }
@@ -81,7 +81,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.g.f
  * JD-Core Version:    0.7.0.1
  */

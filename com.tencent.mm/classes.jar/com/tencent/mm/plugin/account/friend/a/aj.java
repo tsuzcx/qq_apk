@@ -1,59 +1,53 @@
 package com.tencent.mm.plugin.account.friend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.aj.i;
-import com.tencent.mm.aj.j;
-import com.tencent.mm.aj.p;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.c.a;
-import com.tencent.mm.protocal.protobuf.bvd;
-import com.tencent.mm.protocal.protobuf.bve;
-import com.tencent.mm.protocal.protobuf.bvf;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.ar.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.cik;
+import com.tencent.mm.protocal.protobuf.cil;
+import com.tencent.mm.protocal.protobuf.cim;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class aj
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b rr;
+  private i callback;
+  private final d rr;
   
   public aj(String paramString, List<String[]> paramList)
   {
     AppMethodBeat.i(131132);
     this.callback = null;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bve();
-    ((b.a)localObject).hQG = new bvf();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/listmfriend";
-    ((b.a)localObject).funcId = 431;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bve)this.rr.hQD.hQJ;
-    ((bve)localObject).xrf = paramString;
-    ((bve)localObject).HhV = 0;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new cil();
+    ((d.a)localObject).iLO = new cim();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/listmfriend";
+    ((d.a)localObject).funcId = 431;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (cil)this.rr.iLK.iLR;
+    ((cil)localObject).Bri = paramString;
+    ((cil)localObject).Mnx = 0;
     if (paramList == null) {}
     for (;;)
     {
-      ((bve)localObject).HhT = i;
-      ((bve)localObject).HhW = new LinkedList();
-      ((bve)localObject).HhU = new LinkedList();
+      ((cil)localObject).Mnv = i;
+      ((cil)localObject).Mny = new LinkedList();
+      ((cil)localObject).Mnw = new LinkedList();
       if (paramList == null) {
         break;
       }
@@ -61,8 +55,8 @@ public final class aj
       while (paramString.hasNext())
       {
         paramList = (String[])paramString.next();
-        if (!bu.isNullOrNil(paramList[2])) {
-          ((bve)localObject).HhU.add(new cxn().aQV(paramList[2]));
+        if (!Util.isNullOrNil(paramList[2])) {
+          ((cil)localObject).Mnw.add(new dqi().bhy(paramList[2]));
         }
       }
       i = paramList.size();
@@ -70,29 +64,29 @@ public final class aj
     AppMethodBeat.o(131132);
   }
   
-  public final LinkedList<bvd> aTF()
+  public final LinkedList<cik> bor()
   {
     AppMethodBeat.i(131134);
-    Object localObject = ((bvf)this.rr.hQE.hQJ).HhX;
+    Object localObject = ((cim)this.rr.iLL.iLR).Mnz;
     if (localObject != null)
     {
       localObject = ((LinkedList)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
-        bvd localbvd = (bvd)((Iterator)localObject).next();
-        a.aVH().aAh().mb(localbvd.nIJ, localbvd.GNI);
+        cik localcik = (cik)((Iterator)localObject).next();
+        a.bqE().aTp().mP(localcik.UserName, localcik.LRO);
       }
     }
-    localObject = ((bvf)this.rr.hQE.hQJ).HhX;
+    localObject = ((cim)this.rr.iLL.iLR).Mnz;
     AppMethodBeat.o(131134);
     return localObject;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(131133);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(131133);
     return i;
   }
@@ -102,52 +96,11 @@ public final class aj
     return 431;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, final q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131135);
-    paramq = (bvf)this.rr.hQE.hQJ;
-    com.tencent.mm.kernel.g.ajU().a(new ar.a()
-    {
-      public final boolean aEC()
-      {
-        AppMethodBeat.i(131130);
-        if ((paramq != null) && (paramq.HhX.size() > 0))
-        {
-          Iterator localIterator = paramq.HhX.iterator();
-          while (localIterator.hasNext())
-          {
-            bvd localbvd = (bvd)localIterator.next();
-            if (localbvd.nJb == 1)
-            {
-              i locali = new i();
-              locali.username = localbvd.nIJ;
-              locali.hPQ = localbvd.GnN;
-              locali.hPP = localbvd.GnO;
-              locali.dEu = -1;
-              ae.d("MicroMsg.NetSceneListMFriend", "getmlist  %s b[%s] s[%s]", new Object[] { locali.getUsername(), locali.aEG(), locali.aEH() });
-              locali.eQU = 3;
-              locali.eD(true);
-              p.aEN().b(locali);
-            }
-          }
-        }
-        AppMethodBeat.o(131130);
-        return true;
-      }
-      
-      public final boolean aED()
-      {
-        return false;
-      }
-      
-      public final String toString()
-      {
-        AppMethodBeat.i(131131);
-        String str = super.toString() + "|onGYNetEnd";
-        AppMethodBeat.o(131131);
-        return str;
-      }
-    });
+    params = (cim)this.rr.iLL.iLR;
+    com.tencent.mm.kernel.g.aAk().postAtFrontOfWorker(new aj.1(this, params));
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(131135);
   }

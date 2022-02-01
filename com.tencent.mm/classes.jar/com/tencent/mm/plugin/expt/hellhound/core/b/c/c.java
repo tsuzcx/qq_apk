@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.expt.hellhound.core.b.c;
 
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.dwx;
-import d.l;
+import com.tencent.mm.protocal.protobuf.erd;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/IViewOpListener;", "", "onEvent", "", "view", "Landroid/view/View;", "viewNode", "Lcom/tencent/mm/protocal/protobuf/ViewNode;", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/IViewOpListener;", "", "onEvent", "", "view", "Landroid/view/View;", "viewNode", "Lcom/tencent/mm/protocal/protobuf/ViewNode;", "plugin-expt_release"})
 public abstract interface c
 {
-  public abstract void a(View paramView, dwx paramdwx);
+  public abstract void a(View paramView, erd paramerd);
 }
 
 

@@ -2,11 +2,14 @@ package com.tencent.mm.plugin.aa.ui;
 
 import android.animation.Animator;
 import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.os.Bundle;
@@ -26,20 +29,22 @@ import com.tencent.mm.b.g;
 import com.tencent.mm.compatible.util.Exif;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.plugin.aa.model.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.sdk.platformtools.r;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.ForceGpuUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MultiTouchImageView;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.ui.tools.MMGestureGallery;
 import com.tencent.mm.ui.tools.MMGestureGallery.c;
 import com.tencent.mm.ui.tools.MMGestureGallery.f;
 import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import com.tencent.mm.view.AnimationLayout;
 import com.tencent.mm.view.ViewAnimHelper;
 import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
@@ -47,32 +52,33 @@ import com.tencent.mm.view.ViewAnimHelper.ViewInfo;
 public class AAImagPreviewUI
   extends MMActivity
 {
-  private View fQH;
-  private String hBa;
-  private MMGestureGallery iXA;
-  private a iXB;
-  private int iXC;
-  private int iXD;
-  private Dialog iXE = null;
-  private AnimationLayout iXF;
-  private boolean iXG = false;
-  private ViewAnimHelper.ViewInfo iXH;
-  private ImageView iXI;
-  private final int iXy = 1;
-  private final int iXz = 2;
+  private View gvQ;
   private String imagePath;
+  private String imageUrl;
+  private int jUA;
+  private int jUB;
+  private Dialog jUC = null;
+  private AnimationLayout jUD;
+  private boolean jUE = false;
+  private ViewAnimHelper.ViewInfo jUF;
+  private ImageView jUG;
+  private int jUH;
+  private final int jUw = 1;
+  private final int jUx = 2;
+  private MMGestureGallery jUy;
+  private a jUz;
   
   private static void a(MultiTouchImageView paramMultiTouchImageView, Bitmap paramBitmap)
   {
     AppMethodBeat.i(63489);
-    r.z(paramMultiTouchImageView, paramBitmap.getWidth(), paramBitmap.getHeight());
+    ForceGpuUtil.decideLayerType(paramMultiTouchImageView, paramBitmap.getWidth(), paramBitmap.getHeight());
     int i = paramMultiTouchImageView.getWidth();
     int j = paramMultiTouchImageView.getHeight();
     Matrix localMatrix = new Matrix();
     localMatrix.reset();
     float f1 = paramBitmap.getWidth() / paramBitmap.getHeight();
     float f2 = paramBitmap.getHeight() / paramBitmap.getWidth();
-    ae.v("MicroMsg.PreviewHdHeadImg", "whDiv is " + f1 + " hwDiv is " + f2);
+    Log.v("MicroMsg.PreviewHdHeadImg", "whDiv is " + f1 + " hwDiv is " + f2);
     if ((f2 >= 2.0F) && (paramBitmap.getHeight() >= 480))
     {
       f1 = paramBitmap.getWidth() / i;
@@ -87,7 +93,7 @@ public class AAImagPreviewUI
     for (;;)
     {
       paramMultiTouchImageView.setImageMatrix(localMatrix);
-      paramMultiTouchImageView.cH(paramBitmap.getWidth(), paramBitmap.getHeight());
+      paramMultiTouchImageView.cN(paramBitmap.getWidth(), paramBitmap.getHeight());
       paramMultiTouchImageView.setMaxZoomDoubleTab(true);
       paramMultiTouchImageView.setImageBitmap(paramBitmap);
       AppMethodBeat.o(63489);
@@ -109,7 +115,7 @@ public class AAImagPreviewUI
       {
         localMatrix.postScale(1.0F, 1.0F);
         f1 = (j - paramBitmap.getHeight()) / 2;
-        ae.d("MicroMsg.PreviewHdHeadImg", " offsety ".concat(String.valueOf(f1)));
+        Log.d("MicroMsg.PreviewHdHeadImg", " offsety ".concat(String.valueOf(f1)));
         localMatrix.postTranslate(0.0F, f1);
       }
     }
@@ -144,47 +150,55 @@ public class AAImagPreviewUI
     }
   }
   
-  private void aRN()
+  private void bms()
   {
-    AppMethodBeat.i(189735);
-    if (this.iXG)
+    AppMethodBeat.i(212959);
+    if (this.jUE)
     {
-      AppMethodBeat.o(189735);
+      AppMethodBeat.o(212959);
       return;
     }
-    this.iXG = true;
-    ae.i("MicroMsg.PreviewHdHeadImg", "runExitAnimation");
-    this.iXF.a(this.iXI, this.fQH, this.iXH, new Animator.AnimatorListener()new AAImagPreviewUI.11
+    this.jUE = true;
+    Log.i("MicroMsg.PreviewHdHeadImg", "runExitAnimation");
+    this.jUD.a(this.jUG, this.gvQ, this.jUF, new Animator.AnimatorListener()new ValueAnimator.AnimatorUpdateListener
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(224224);
+        AppMethodBeat.i(212952);
         AAImagPreviewUI.this.finish();
-        AAImagPreviewUI.this.overridePendingTransition(2130771986, 2130771986);
-        AppMethodBeat.o(224224);
+        AAImagPreviewUI.this.overridePendingTransition(2130772188, 2130772189);
+        AppMethodBeat.o(212952);
       }
       
       public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
       
       public final void onAnimationStart(Animator paramAnonymousAnimator) {}
-    }, new AAImagPreviewUI.11(this));
-    AppMethodBeat.o(189735);
+    }, new ValueAnimator.AnimatorUpdateListener()
+    {
+      public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
+      {
+        AppMethodBeat.i(212953);
+        ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
+        AppMethodBeat.o(212953);
+      }
+    });
+    AppMethodBeat.o(212959);
   }
   
   public void finish()
   {
     AppMethodBeat.i(63488);
     super.finish();
-    aRN();
-    overridePendingTransition(2130771986, 2130771986);
+    bms();
+    overridePendingTransition(2130772188, 2130772189);
     AppMethodBeat.o(63488);
   }
   
   public int getLayoutId()
   {
-    return 2131492881;
+    return 2131492897;
   }
   
   public void initView()
@@ -192,53 +206,53 @@ public class AAImagPreviewUI
     AppMethodBeat.i(63487);
     hideTitleView();
     fullScreenNoTitleBar(true);
-    if (d.lA(19)) {
+    if (d.oD(19)) {
       getWindow().setFlags(201327616, 201327616);
     }
     for (;;)
     {
-      this.iXF = ((AnimationLayout)findViewById(2131296674));
-      this.fQH = findViewById(2131304241);
-      this.iXI = ((ImageView)findViewById(2131300336));
-      if (this.iXH == null) {
-        this.iXH = ViewAnimHelper.o(this.iXI, getContext().getWindow().getDecorView());
+      this.jUD = ((AnimationLayout)findViewById(2131296763));
+      this.gvQ = findViewById(2131307160);
+      this.jUG = ((ImageView)findViewById(2131301854));
+      if (this.jUF == null) {
+        this.jUF = ViewAnimHelper.q(this.jUG, getContext().getWindow().getDecorView());
       }
-      this.iXA = ((MMGestureGallery)findViewById(2131300335));
-      this.iXA.setVerticalFadingEdgeEnabled(false);
-      this.iXA.setHorizontalFadingEdgeEnabled(false);
-      this.iXA.setSingleClickOverListener(new MMGestureGallery.f()
+      this.jUy = ((MMGestureGallery)findViewById(2131301853));
+      this.jUy.setVerticalFadingEdgeEnabled(false);
+      this.jUy.setHorizontalFadingEdgeEnabled(false);
+      this.jUy.setSingleClickOverListener(new MMGestureGallery.f()
       {
-        public final void aRO()
+        public final void bmt()
         {
           AppMethodBeat.i(63477);
           AAImagPreviewUI.this.finish();
           AppMethodBeat.o(63477);
         }
       });
-      this.iXA.setLongClickOverListener(new MMGestureGallery.c()
+      this.jUy.setLongClickOverListener(new MMGestureGallery.c()
       {
-        public final void aRP()
+        public final void bmu()
         {
           AppMethodBeat.i(63480);
           e locale = new e(AAImagPreviewUI.this, 1, false);
-          locale.LfS = new n.d()
+          locale.HLX = new o.f()
           {
-            public final void onCreateMMMenu(l paramAnonymous2l)
+            public final void onCreateMMMenu(m paramAnonymous2m)
             {
               AppMethodBeat.i(63478);
-              paramAnonymous2l.jM(1, 2131760662);
+              paramAnonymous2m.kV(1, 2131762187);
               if (AAImagPreviewUI.a(AAImagPreviewUI.this) == 1) {
-                paramAnonymous2l.jM(2, 2131760653);
+                paramAnonymous2m.a(2, AAImagPreviewUI.this.getContext().getResources().getColor(2131099818), AAImagPreviewUI.this.getString(2131762173));
               }
               AppMethodBeat.o(63478);
             }
           };
-          locale.LfT = new n.e()
+          locale.HLY = new o.g()
           {
             public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
             {
               AppMethodBeat.i(63479);
-              ae.i("MicroMsg.PreviewHdHeadImg", "onMMMenuItemSelected %s", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()) });
+              Log.i("MicroMsg.PreviewHdHeadImg", "onMMMenuItemSelected %s", new Object[] { Integer.valueOf(paramAnonymous2MenuItem.getItemId()) });
               switch (paramAnonymous2MenuItem.getItemId())
               {
               }
@@ -254,12 +268,12 @@ public class AAImagPreviewUI
               }
             }
           };
-          locale.cPF();
+          locale.dGm();
           AppMethodBeat.o(63480);
         }
       });
-      this.iXB = new a((byte)0);
-      this.iXA.setAdapter(this.iXB);
+      this.jUz = new a((byte)0);
+      this.jUy.setAdapter(this.jUz);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -270,28 +284,28 @@ public class AAImagPreviewUI
           return true;
         }
       });
-      if (!this.iXG)
+      if (!this.jUE)
       {
-        this.iXG = true;
-        ae.i("MicroMsg.PreviewHdHeadImg", "runEnterAnimation");
-        this.iXF.b(this.iXI, this.fQH, this.iXH, new Animator.AnimatorListener()
+        this.jUE = true;
+        Log.i("MicroMsg.PreviewHdHeadImg", "runEnterAnimation");
+        this.jUD.b(this.jUG, this.gvQ, this.jUF, new Animator.AnimatorListener()
         {
           public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
           
           public final void onAnimationEnd(Animator paramAnonymousAnimator)
           {
-            AppMethodBeat.i(189734);
-            AAImagPreviewUI.f(AAImagPreviewUI.this);
-            AppMethodBeat.o(189734);
+            AppMethodBeat.i(212958);
+            AAImagPreviewUI.g(AAImagPreviewUI.this);
+            AppMethodBeat.o(212958);
           }
           
           public final void onAnimationRepeat(Animator paramAnonymousAnimator) {}
           
           public final void onAnimationStart(Animator paramAnonymousAnimator)
           {
-            AppMethodBeat.i(224227);
-            AAImagPreviewUI.e(AAImagPreviewUI.this).setVisibility(0);
-            AppMethodBeat.o(224227);
+            AppMethodBeat.i(212957);
+            AAImagPreviewUI.f(AAImagPreviewUI.this).setVisibility(0);
+            AppMethodBeat.o(212957);
           }
         }, null);
       }
@@ -303,10 +317,10 @@ public class AAImagPreviewUI
   
   public void onBackPressed()
   {
-    AppMethodBeat.i(189736);
+    AppMethodBeat.i(212960);
     super.onBackPressed();
-    aRN();
-    AppMethodBeat.o(189736);
+    bms();
+    AppMethodBeat.o(212960);
   }
   
   public void onCreate(Bundle paramBundle)
@@ -314,13 +328,14 @@ public class AAImagPreviewUI
     AppMethodBeat.i(63486);
     customfixStatusbar(true);
     super.onCreate(paramBundle);
-    overridePendingTransition(0, 0);
+    overridePendingTransition(2130772188, 2130772189);
     getWindow().getDecorView().setSystemUiVisibility(1280);
-    this.iXC = getIntent().getIntExtra("use_scene", 1);
-    this.iXD = getIntent().getIntExtra("scene", 1);
+    this.jUA = getIntent().getIntExtra("use_scene", 1);
+    this.jUB = getIntent().getIntExtra("scene", 1);
     this.imagePath = getIntent().getStringExtra("path");
-    this.hBa = getIntent().getStringExtra("url");
-    this.iXH = ((ViewAnimHelper.ViewInfo)getIntent().getParcelableExtra("view_info"));
+    this.imageUrl = getIntent().getStringExtra("url");
+    this.jUF = ((ViewAnimHelper.ViewInfo)getIntent().getParcelableExtra("view_info"));
+    this.jUH = getIntent().getIntExtra("aa_type", 2);
     initView();
     setResult(0);
     AppMethodBeat.o(63486);
@@ -355,8 +370,8 @@ public class AAImagPreviewUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(63485);
-      paramView = View.inflate(AAImagPreviewUI.this.getContext(), 2131492882, null);
-      paramViewGroup = (MultiTouchImageView)paramView.findViewById(2131300914);
+      paramView = View.inflate(AAImagPreviewUI.this.getContext(), 2131492898, null);
+      paramViewGroup = (MultiTouchImageView)paramView.findViewById(2131302526);
       paramView.setLayoutParams(new Gallery.LayoutParams(-1, -1));
       AAImagPreviewUI.a(AAImagPreviewUI.this, paramViewGroup);
       AppMethodBeat.o(63485);
@@ -366,7 +381,7 @@ public class AAImagPreviewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.AAImagPreviewUI
  * JD-Core Version:    0.7.0.1
  */

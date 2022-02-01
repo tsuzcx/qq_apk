@@ -7,7 +7,7 @@ import com.tencent.tencentmap.mapsdk.maps.model.OverlayLevel;
 public class CircleInfo
 {
   public int borderColor;
-  public int borderWidth;
+  public float borderWidth;
   public int centerX;
   public int centerY;
   public boolean drawBorder = true;
@@ -20,7 +20,7 @@ public class CircleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.map.lib.models.CircleInfo
  * JD-Core Version:    0.7.0.1
  */

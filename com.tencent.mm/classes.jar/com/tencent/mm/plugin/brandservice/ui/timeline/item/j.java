@@ -1,245 +1,274 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.aiq;
-import com.tencent.mm.protocal.protobuf.ccu;
-import com.tencent.mm.protocal.protobuf.dmq;
-import com.tencent.mm.protocal.protobuf.np;
-import com.tencent.mm.protocal.protobuf.nq;
-import com.tencent.mm.protocal.protobuf.nr;
-import com.tencent.mm.protocal.protobuf.ny;
-import com.tencent.mm.protocal.protobuf.ol;
-import com.tencent.mm.protocal.protobuf.om;
-import com.tencent.mm.protocal.protobuf.sx;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
-import d.v;
-import d.z;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.ak.aa.a;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.al.ag;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.protocal.protobuf.ale;
+import com.tencent.mm.protocal.protobuf.ege;
+import com.tencent.mm.protocal.protobuf.pk;
+import com.tencent.mm.protocal.protobuf.pl;
+import com.tencent.mm.protocal.protobuf.pm;
+import com.tencent.mm.protocal.protobuf.pn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.z;
+import java.util.HashSet;
 import java.util.List;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.atomic.AtomicInteger;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"TAG", "", "value", "", "isOpenFollow", "()Z", "setOpenFollow", "(Z)V", "doBizFeedbackReq", "", "cardType", "", "levelType", "wrapper", "Lcom/tencent/mm/protocal/protobuf/TLRecCardWrapper;", "selectFeedback", "", "isSupportStyle", "style", "plugin-brandservice_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/item/BizTLCardUpdateMgr;", "", "()V", "STATE_IDLE", "", "STATE_UPDATING", "TAG", "", "isUpdateCardOpen", "", "()Z", "isUpdateCardOpen$delegate", "Lkotlin/Lazy;", "mgrState", "Ljava/util/concurrent/atomic/AtomicInteger;", "getMgrState", "()Ljava/util/concurrent/atomic/AtomicInteger;", "setMgrState", "(Ljava/util/concurrent/atomic/AtomicInteger;)V", "setQueue", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "getSetQueue", "()Ljava/util/HashSet;", "updateQueue", "Ljava/util/concurrent/ConcurrentLinkedDeque;", "Lcom/tencent/mm/protocal/protobuf/BizRecArticleCardLite;", "getUpdateQueue", "()Ljava/util/concurrent/ConcurrentLinkedDeque;", "addUpdateQueue", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "checkUpdate", "tryUpdate", "plugin-brandservice_release"})
 public final class j
 {
-  private static boolean oiL = true;
+  private static AtomicInteger pul;
+  private static final ConcurrentLinkedDeque<pl> pum;
+  private static final HashSet<Long> pun;
+  private static final kotlin.f puo;
+  public static final j pup;
   
-  public static final void a(int paramInt, dmq paramdmq, List<String> paramList)
+  static
   {
-    AppMethodBeat.i(208685);
-    p.h(paramdmq, "wrapper");
-    switch (paramdmq.style)
+    AppMethodBeat.i(195293);
+    pup = new j();
+    pul = new AtomicInteger(2);
+    pum = new ConcurrentLinkedDeque();
+    pun = new HashSet();
+    puo = kotlin.g.ah((kotlin.g.a.a)a.puq);
+    AppMethodBeat.o(195293);
+  }
+  
+  public static AtomicInteger cmI()
+  {
+    return pul;
+  }
+  
+  public static HashSet<Long> cmJ()
+  {
+    return pun;
+  }
+  
+  private final void cmK()
+  {
+    AppMethodBeat.i(195292);
+    if (pum.size() <= 0)
     {
-    default: 
-      AppMethodBeat.o(208685);
+      Log.i("MicroMsg.BizTLCardUpdateMgr", "tryUpdate size <= 0");
+      AppMethodBeat.o(195292);
       return;
     }
-    if ((paramdmq.HTS == null) || (bu.ht((List)paramdmq.HTS.Gal)))
+    try
     {
-      AppMethodBeat.o(208685);
-      return;
-    }
-    Object localObject1 = new com.tencent.mm.ak.b.a();
-    ((com.tencent.mm.ak.b.a)localObject1).c((a)new nq());
-    ((com.tencent.mm.ak.b.a)localObject1).d((a)new nr());
-    ((com.tencent.mm.ak.b.a)localObject1).DN("/cgi-bin/mmbiz-bin/timeline/bizfeedback");
-    ((com.tencent.mm.ak.b.a)localObject1).oS(4898);
-    Object localObject2 = z.Nhr;
-    com.tencent.mm.ak.b localb = ((com.tencent.mm.ak.b.a)localObject1).aDS();
-    localObject1 = localb.aEU();
-    if (localObject1 == null)
-    {
-      paramdmq = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizFeedbackReq");
-      AppMethodBeat.o(208685);
-      throw paramdmq;
-    }
-    nq localnq = (nq)localObject1;
-    localnq.Gam = 3;
-    localObject1 = new LinkedList();
-    localObject2 = paramdmq.HTS.Gal;
-    p.g(localObject2, "wrapper.extraInfo.BizInfo");
-    Object localObject3 = (Iterable)localObject2;
-    localObject2 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject3, 10));
-    localObject3 = ((Iterable)localObject3).iterator();
-    Object localObject4;
-    while (((Iterator)localObject3).hasNext())
-    {
-      Object localObject5 = (om)((Iterator)localObject3).next();
-      localObject4 = new ny();
-      ((ny)localObject4).FZa = ((om)localObject5).nIJ;
-      LinkedList localLinkedList = new LinkedList();
-      Object localObject6 = ((om)localObject5).Gcu;
-      p.g(localObject6, "it.AppMsg");
-      Object localObject7 = (Iterable)localObject6;
-      localObject6 = (Collection)new ArrayList(d.a.j.a((Iterable)localObject7, 10));
-      localObject7 = ((Iterable)localObject7).iterator();
-      while (((Iterator)localObject7).hasNext()) {
-        ((Collection)localObject6).add(((ol)((Iterator)localObject7).next()).FYs);
+      int i = pul.get();
+      if (i == 1) {
+        return;
       }
-      localLinkedList.addAll((Collection)localObject6);
-      localObject6 = z.Nhr;
-      ((ny)localObject4).GaF = localLinkedList;
-      ((ny)localObject4).GaG = ((om)localObject5).nJO;
-      localObject5 = z.Nhr;
-      ((Collection)localObject2).add(localObject4);
-    }
-    ((LinkedList)localObject1).addAll((Collection)localObject2);
-    localObject2 = z.Nhr;
-    localnq.Gal = ((LinkedList)localObject1);
-    localnq.Gan = paramdmq.style;
-    localObject2 = paramdmq.dmp;
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = "";
-    }
-    localnq.Gao = ((String)localObject1);
-    localnq.Gap = paramdmq.HDI;
-    localObject2 = paramdmq.HTS.Gaq;
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = "";
-    }
-    localnq.Gaq = ((String)localObject1);
-    localObject2 = paramdmq.HTS.Gau;
-    localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = "";
-    }
-    localnq.Gau = ((String)localObject1);
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      paramdmq = z.Nhr;
-      paramdmq = z.Nhr;
-      x.a(localb, (x.a)a.oiM);
-      AppMethodBeat.o(208685);
-      return;
-      localObject1 = new np();
-      ((np)localObject1).FZa = ((om)paramdmq.HTS.Gal.get(0)).nIJ;
-      if (!bu.ht(paramList))
+      pul.set(1);
+      Object localObject1 = x.SXb;
+      localObject1 = new d.a();
+      ((d.a)localObject1).c((com.tencent.mm.bw.a)new pm());
+      ((d.a)localObject1).d((com.tencent.mm.bw.a)new pn());
+      ((d.a)localObject1).MB("/cgi-bin/mmbiz-bin/timeline/bizrecommendarticle");
+      ((d.a)localObject1).sG(1084);
+      localObject1 = ((d.a)localObject1).aXF();
+      localObject2 = ((d)localObject1).aYJ();
+      if (localObject2 == null)
       {
-        paramdmq = new LinkedList();
-        if (paramList == null) {
-          p.gkB();
-        }
-        localObject2 = (Iterable)paramList;
-        paramList = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
-        localObject2 = ((Iterable)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          localObject4 = (String)((Iterator)localObject2).next();
-          localObject3 = new ccu();
-          ((ccu)localObject3).hFS = ((String)localObject4);
-          localObject4 = z.Nhr;
-          paramList.add(localObject3);
-        }
-        paramdmq.addAll((Collection)paramList);
-        paramList = z.Nhr;
-        ((np)localObject1).FPC = paramdmq;
-      }
-      paramdmq = z.Nhr;
-      localnq.Gas = ((np)localObject1);
-      continue;
-      switch (paramdmq.style)
-      {
-      default: 
-        paramdmq = new sx();
-        paramdmq.dms = 1;
-        paramList = z.Nhr;
-        localnq.Gar = paramdmq;
-        break;
-      case 102: 
-        paramdmq = new sx();
-        if (!bu.ht(paramList))
-        {
-          localObject1 = new LinkedList();
-          if (paramList == null) {
-            p.gkB();
-          }
-          localObject2 = (Iterable)paramList;
-          paramList = (Collection)new ArrayList(d.a.j.a((Iterable)localObject2, 10));
-          localObject2 = ((Iterable)localObject2).iterator();
-          while (((Iterator)localObject2).hasNext())
-          {
-            localObject4 = (String)((Iterator)localObject2).next();
-            localObject3 = new ccu();
-            ((ccu)localObject3).hFS = ((String)localObject4);
-            localObject4 = z.Nhr;
-            paramList.add(localObject3);
-          }
-          ((LinkedList)localObject1).addAll((Collection)paramList);
-          paramList = z.Nhr;
-          paramdmq.FPC = ((LinkedList)localObject1);
-        }
-        paramList = z.Nhr;
-        localnq.Gar = paramdmq;
+        localObject1 = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizRecommendArticleReq");
+        AppMethodBeat.o(195292);
+        throw ((Throwable)localObject1);
       }
     }
-  }
-  
-  public static final void bPA()
-  {
-    AppMethodBeat.i(208684);
-    if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qBr, 1) == 1) {}
-    for (boolean bool = true;; bool = false)
+    finally
     {
-      oiL = bool;
-      AppMethodBeat.o(208684);
-      return;
+      AppMethodBeat.o(195292);
     }
+    Object localObject2 = (pm)localObject2;
+    ((pm)localObject2).KWB = ((pl)pum.removeFirst());
+    Log.i("MicroMsg.BizTLCardUpdateMgr", "tryUpdate msgId = " + ((pm)localObject2).KWB.KWz);
+    com.tencent.mm.ak.aa.a(locald, (aa.a)b.pur);
+    AppMethodBeat.o(195292);
   }
   
-  public static final boolean bPz()
+  public static final boolean k(z paramz)
   {
-    return oiL;
-  }
-  
-  public static final boolean zn(int paramInt)
-  {
-    switch (paramInt)
+    int i = 0;
+    AppMethodBeat.i(195291);
+    p.h(paramz, "info");
+    if ((paramz.gAD() == null) || (!paramz.gAu()))
     {
-    default: 
+      AppMethodBeat.o(195291);
       return false;
     }
+    switch (paramz.gAD().style)
+    {
+    default: 
+      AppMethodBeat.o(195291);
+      return false;
+    case 101: 
+    case 102: 
+    case 103: 
+      Log.i("MicroMsg.BizTLCardUpdateMgr", "checkUpdate msgId = " + paramz.field_msgId);
+      j localj = pup;
+      p.h(paramz, "info");
+      Object localObject;
+      if ((((Boolean)puo.getValue()).booleanValue()) && (paramz.gAu()) && (((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.rUb, 1) != 0))
+      {
+        ege localege = paramz.gAD();
+        if (localege == null) {
+          break label276;
+        }
+        localObject = localege.NfY;
+        if ((localObject != null) && (localege.Nga != null) && (!Util.isNullOrNil((List)localege.Nga.KUf)))
+        {
+          p.h(localege, "$this$isExpire");
+          int j = MultiProcessMMKV.getSingleMMKV("brandService").decodeInt("BizRecommendCardRefreshIntervalSec", 300);
+          if (Math.abs(System.currentTimeMillis() - localege.lastUpdateTime) / 1000L > j) {
+            i = 1;
+          }
+          if (i != 0) {
+            break label281;
+          }
+        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(195291);
+        return true;
+        label276:
+        localObject = null;
+        break;
+        try
+        {
+          label281:
+          if (!pun.contains(Long.valueOf(paramz.field_msgId)))
+          {
+            localObject = k.l(paramz);
+            pun.add(Long.valueOf(((pl)localObject).KWz));
+            pum.add(localObject);
+            Log.i("MicroMsg.BizTLCardUpdateMgr", "addUpdateQueue msgId = " + paramz.field_msgId + ", queue size = " + pum.size());
+          }
+          paramz = x.SXb;
+          localj.cmK();
+        }
+        finally
+        {
+          AppMethodBeat.o(195291);
+        }
+      }
+    }
+    AppMethodBeat.o(195291);
     return true;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "<anonymous parameter 1>", "<anonymous parameter 2>", "", "<anonymous parameter 3>", "Lcom/tencent/mm/modelbase/CommReqResp;", "<anonymous parameter 4>", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class a
-    implements x.a
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<Boolean>
   {
-    public static final a oiM;
+    public static final a puq;
     
     static
     {
-      AppMethodBeat.i(208683);
-      oiM = new a();
-      AppMethodBeat.o(208683);
+      AppMethodBeat.i(195286);
+      puq = new a();
+      AppMethodBeat.o(195286);
     }
     
-    public final int a(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.b paramb, n paramn)
+    a()
     {
-      AppMethodBeat.i(208682);
-      p.h(paramb, "<anonymous parameter 3>");
-      p.h(paramn, "<anonymous parameter 4>");
-      AppMethodBeat.o(208682);
-      return 0;
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "errType", "errCode", "errMsg", "", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "callback"})
+  static final class b
+    implements aa.a
+  {
+    public static final b pur;
+    
+    static
+    {
+      AppMethodBeat.i(195290);
+      pur = new b();
+      AppMethodBeat.o(195290);
+    }
+    
+    public final int a(int paramInt1, int paramInt2, String paramString, d paramd, final com.tencent.mm.ak.q paramq)
+    {
+      Object localObject = null;
+      AppMethodBeat.i(195289);
+      p.h(paramd, "rr");
+      p.h(paramq, "scene");
+      paramString = j.pup;
+      j.cmI().set(2);
+      j.a(j.pup);
+      if ((paramInt1 != 0) || (paramInt2 != 0))
+      {
+        AppMethodBeat.o(195289);
+        return 0;
+      }
+      paramq = paramd.aYK();
+      paramString = paramq;
+      if (!(paramq instanceof pn)) {
+        paramString = null;
+      }
+      paramq = (pn)paramString;
+      if (paramq == null)
+      {
+        AppMethodBeat.o(195289);
+        return 0;
+      }
+      paramString = paramd.aYJ();
+      if (!(paramString instanceof pm)) {
+        paramString = localObject;
+      }
+      for (;;)
+      {
+        paramString = (pm)paramString;
+        if (paramString == null)
+        {
+          AppMethodBeat.o(195289);
+          return 0;
+        }
+        if (paramString.KWB.KWz != paramq.KWC.KWz)
+        {
+          AppMethodBeat.o(195289);
+          return 0;
+        }
+        paramString = ag.ban().MM(paramString.KWB.KWz);
+        if (paramString == null)
+        {
+          AppMethodBeat.o(195289);
+          return 0;
+        }
+        if ((paramq.KWC == null) || (Util.isNullOrNil((List)paramq.KWC.KUf)))
+        {
+          AppMethodBeat.o(195289);
+          return 0;
+        }
+        paramd = j.pup;
+        j.cmJ().remove(Long.valueOf(paramString.field_msgId));
+        MultiProcessMMKV.getSingleMMKV("brandService").encode("BizRecommendCardRefreshIntervalSec", Math.min(300, paramq.KSO));
+        Log.i("MicroMsg.BizTLCardUpdateMgr", "tryUpdate success msgId = " + paramString.field_msgId);
+        com.tencent.mm.co.g.hio().h((com.tencent.mm.vending.c.a)new com.tencent.mm.vending.c.a() {}).b((com.tencent.mm.vending.c.a)new j.b.2(paramString));
+        AppMethodBeat.o(195289);
+        return 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.j
  * JD-Core Version:    0.7.0.1
  */

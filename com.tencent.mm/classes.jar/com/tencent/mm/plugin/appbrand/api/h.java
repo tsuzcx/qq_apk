@@ -1,37 +1,41 @@
 package com.tencent.mm.plugin.appbrand.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class h
   implements d
 {
-  public boolean hAZ;
+  public float dTj;
+  public String kHV;
+  public float latitude;
   
-  public final String aYO()
+  public final String bua()
   {
-    AppMethodBeat.i(200271);
+    AppMethodBeat.i(153193);
     try
     {
       Object localObject = new JSONObject();
-      ((JSONObject)localObject).put("isPrivateMessage", this.hAZ);
+      ((JSONObject)localObject).put("latitude", this.latitude);
+      ((JSONObject)localObject).put("longitude", this.dTj);
+      ((JSONObject)localObject).put("name", this.kHV);
       localObject = new JSONObject().put("location", localObject).toString();
-      AppMethodBeat.o(200271);
+      AppMethodBeat.o(153193);
       return localObject;
     }
     catch (JSONException localJSONException)
     {
-      ae.printErrStackTrace("MicroMsg.WeAppPrivateMessageNativeExtraData", localJSONException, "", new Object[0]);
-      AppMethodBeat.o(200271);
+      Log.printErrStackTrace("MicroMsg.WeAppOpenPoiNativeExtraData", localJSONException, "", new Object[0]);
+      AppMethodBeat.o(153193);
     }
     return "{}";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.api.h
  * JD-Core Version:    0.7.0.1
  */

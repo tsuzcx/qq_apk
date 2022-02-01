@@ -31,127 +31,140 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.ap;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.ui.as;
+import com.tencent.mm.ui.at;
 
 public final class c
   extends Dialog
   implements DialogInterface
 {
-  private Button Dim;
-  private LinearLayout Ivb;
-  private TextView Ivc;
-  public TextView Ivd;
-  public TextView Ive;
-  private TextView Ivf;
-  private TextView Ivg;
-  private TextView Ivh;
-  private ImageView Ivi;
-  private View Ivj;
-  private LinearLayout Ivk;
-  private ViewStub Ivl;
-  public LinearLayout Ivm;
-  private ViewGroup Ivn;
-  private LinearLayout Ivo;
-  private ViewGroup Ivp;
-  private View Ivq;
-  private boolean Ivr;
-  private Animation Ivs;
-  private Animation Ivt;
-  private Animation Ivu;
-  private Animation Ivv;
-  public c.a.c Ivw;
-  private DialogInterface.OnDismissListener Ivx;
-  private View ahw;
+  private Button FNQ;
+  private Button HRF;
+  private LinearLayout NIA;
+  private TextView NIB;
+  public TextView NIC;
+  public TextView NID;
+  private TextView NIE;
+  private TextView NIF;
+  private TextView NIG;
+  private ImageView NIH;
+  private View NII;
+  private ViewStub NIJ;
+  public LinearLayout NIK;
+  private ViewGroup NIL;
+  private LinearLayout NIM;
+  private ViewGroup NIN;
+  private View NIO;
+  private boolean NIP;
+  private Animation NIQ;
+  private Animation NIR;
+  private Animation NIS;
+  private Animation NIT;
+  public c.a.c NIU;
+  private DialogInterface.OnDismissListener NIV;
+  private View ahJ;
   com.tencent.mm.ui.widget.a.c iOnDialogDismissListener;
+  private TextView jUu;
   private Context mContext;
   private EditText mEditText;
   private boolean needEdit;
-  private TextView jdField_new;
-  private boolean ov;
-  private Button rse;
+  private LinearLayout nmr;
+  private boolean ox;
   
   public c(Context paramContext)
   {
-    super(paramContext, 2131821723);
-    AppMethodBeat.i(211911);
-    this.Ivr = false;
+    super(paramContext, 2131821772);
+    AppMethodBeat.i(204673);
+    this.NIP = false;
     this.needEdit = false;
     this.mContext = paramContext;
-    this.Ivb = ((LinearLayout)View.inflate(this.mContext, 2131494766, null));
-    this.Dim = ((Button)this.Ivb.findViewById(2131302314));
-    this.rse = ((Button)this.Ivb.findViewById(2131302301));
-    this.jdField_new = ((TextView)this.Ivb.findViewById(2131302315));
-    this.Ivc = ((TextView)this.Ivb.findViewById(2131302317));
-    this.Ivd = ((TextView)this.Ivb.findViewById(2131302307));
-    this.Ive = ((TextView)this.Ivb.findViewById(2131307292));
-    this.Ivf = ((TextView)this.Ivb.findViewById(2131302312));
-    this.Ivg = ((TextView)this.Ivb.findViewById(2131302311));
-    this.Ivh = ((TextView)this.Ivb.findViewById(2131298564));
-    this.mEditText = ((EditText)this.Ivb.findViewById(2131298569));
-    this.Ivi = ((ImageView)this.Ivb.findViewById(2131302310));
-    this.Ivk = ((LinearLayout)this.Ivb.findViewById(2131302316));
-    this.Ivl = ((ViewStub)this.Ivb.findViewById(2131305933));
-    this.Ivm = ((LinearLayout)this.Ivb.findViewById(2131302308));
-    this.Ivn = ((ViewGroup)this.Ivb.findViewById(2131302295));
-    this.Ivq = this.Ivb.findViewById(2131302300);
-    this.Ivo = ((LinearLayout)this.Ivb.findViewById(2131302303));
-    this.Ivp = ((ViewGroup)this.Ivb.findViewById(2131305932));
+    this.NIA = ((LinearLayout)View.inflate(this.mContext, 2131495500, null));
+    this.HRF = ((Button)this.NIA.findViewById(2131304709));
+    this.FNQ = ((Button)this.NIA.findViewById(2131304695));
+    this.jUu = ((TextView)this.NIA.findViewById(2131304710));
+    this.NIB = ((TextView)this.NIA.findViewById(2131304712));
+    this.NIC = ((TextView)this.NIA.findViewById(2131304701));
+    this.NID = ((TextView)this.NIA.findViewById(2131304702));
+    this.NIE = ((TextView)this.NIA.findViewById(2131304707));
+    this.NIF = ((TextView)this.NIA.findViewById(2131304706));
+    this.NIG = ((TextView)this.NIA.findViewById(2131298999));
+    this.mEditText = ((EditText)this.NIA.findViewById(2131299004));
+    this.NIH = ((ImageView)this.NIA.findViewById(2131304705));
+    this.nmr = ((LinearLayout)this.NIA.findViewById(2131304711));
+    this.NIJ = ((ViewStub)this.NIA.findViewById(2131309231));
+    this.NIK = ((LinearLayout)this.NIA.findViewById(2131304703));
+    this.NIL = ((ViewGroup)this.NIA.findViewById(2131304689));
+    this.NIO = this.NIA.findViewById(2131304694);
+    this.NIM = ((LinearLayout)this.NIA.findViewById(2131304697));
+    this.NIN = ((ViewGroup)this.NIA.findViewById(2131309230));
     setCanceledOnTouchOutside(true);
-    this.Ivs = AnimationUtils.loadAnimation(this.mContext, 2130771981);
-    this.Ivt = AnimationUtils.loadAnimation(this.mContext, 2130771981);
-    this.Ivu = AnimationUtils.loadAnimation(this.mContext, 2130771982);
-    this.Ivv = AnimationUtils.loadAnimation(this.mContext, 2130771982);
-    AppMethodBeat.o(211911);
+    this.NIQ = AnimationUtils.loadAnimation(this.mContext, 2130771981);
+    this.NIR = AnimationUtils.loadAnimation(this.mContext, 2130771981);
+    this.NIS = AnimationUtils.loadAnimation(this.mContext, 2130771982);
+    this.NIT = AnimationUtils.loadAnimation(this.mContext, 2130771982);
+    AppMethodBeat.o(204673);
+  }
+  
+  private void AH(boolean paramBoolean)
+  {
+    AppMethodBeat.i(204679);
+    if (paramBoolean)
+    {
+      int i = at.fromDPToPix(this.mContext, 8);
+      this.NIK.setVisibility(0);
+      this.NIK.setPadding(i, i, i, i);
+      this.NIK.setBackgroundResource(2131232009);
+    }
+    AppMethodBeat.o(204679);
   }
   
   private void a(CharSequence paramCharSequence, final DialogInterface.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(211923);
-    if (this.rse != null)
+    AppMethodBeat.i(204685);
+    if (this.FNQ != null)
     {
-      this.rse.setVisibility(0);
-      this.rse.setText(paramCharSequence);
-      this.rse.setOnClickListener(new View.OnClickListener()
+      this.FNQ.setVisibility(0);
+      this.FNQ.setText(paramCharSequence);
+      this.FNQ.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(211903);
+          AppMethodBeat.i(204665);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           if (paramOnClickListener != null) {
             paramOnClickListener.onClick(c.this, -2);
           }
-          if (this.IvG) {
+          if (this.NJe) {
             c.this.cancel();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(211903);
+          AppMethodBeat.o(204665);
         }
       });
     }
-    AppMethodBeat.o(211923);
+    AppMethodBeat.o(204685);
   }
   
   private void a(CharSequence paramCharSequence, final boolean paramBoolean, final DialogInterface.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(211920);
-    if (this.Dim == null)
+    AppMethodBeat.i(204682);
+    if (this.HRF == null)
     {
-      AppMethodBeat.o(211920);
+      AppMethodBeat.o(204682);
       return;
     }
-    this.Dim.setVisibility(0);
-    this.Dim.setText(paramCharSequence);
-    this.Dim.setOnClickListener(new View.OnClickListener()
+    this.HRF.setVisibility(0);
+    this.HRF.setText(paramCharSequence);
+    this.HRF.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(211902);
+        AppMethodBeat.i(204664);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (paramOnClickListener != null) {
           paramOnClickListener.onClick(c.this, -1);
         }
@@ -159,284 +172,271 @@ public final class c
           c.this.dismiss();
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(211902);
+        AppMethodBeat.o(204664);
       }
     });
-    AppMethodBeat.o(211920);
+    AppMethodBeat.o(204682);
   }
   
-  private void aaU(int paramInt)
+  private void ajJ(int paramInt)
   {
-    AppMethodBeat.i(211915);
-    if (this.Ivd != null) {
-      this.Ivd.setTextColor(paramInt);
+    AppMethodBeat.i(204677);
+    if (this.NIC != null) {
+      this.NIC.setTextColor(paramInt);
     }
-    AppMethodBeat.o(211915);
+    AppMethodBeat.o(204677);
   }
   
-  private void aaV(int paramInt)
+  private void ajK(int paramInt)
   {
-    AppMethodBeat.i(211918);
-    if (this.Ivm != null) {
-      this.Ivm.setVisibility(paramInt);
+    AppMethodBeat.i(204680);
+    if (this.NIK != null) {
+      this.NIK.setVisibility(paramInt);
     }
-    if (this.Ivo != null) {
-      this.Ivo.setVisibility(paramInt);
+    if (this.NIM != null) {
+      this.NIM.setVisibility(paramInt);
     }
-    if ((this.Ivh != null) && (this.Ivr)) {
-      this.Ivh.setVisibility(paramInt);
+    if ((this.NIG != null) && (this.NIP)) {
+      this.NIG.setVisibility(paramInt);
     }
     if (this.mEditText != null)
     {
       if (!this.needEdit)
       {
         this.mEditText.setVisibility(8);
-        AppMethodBeat.o(211918);
+        AppMethodBeat.o(204680);
         return;
       }
       this.mEditText.setVisibility(paramInt);
     }
-    AppMethodBeat.o(211918);
+    AppMethodBeat.o(204680);
   }
   
-  private void aaW(int paramInt)
+  private void ajL(int paramInt)
   {
-    AppMethodBeat.i(211921);
-    this.Dim.setTextColor(paramInt);
-    AppMethodBeat.o(211921);
+    AppMethodBeat.i(204683);
+    this.HRF.setTextColor(paramInt);
+    AppMethodBeat.o(204683);
   }
   
-  private void aaX(int paramInt)
+  private void ajM(int paramInt)
   {
-    AppMethodBeat.i(211922);
-    this.rse.setTextColor(paramInt);
-    AppMethodBeat.o(211922);
+    AppMethodBeat.i(204684);
+    this.FNQ.setTextColor(paramInt);
+    AppMethodBeat.o(204684);
   }
   
   private void b(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(211925);
-    this.Ivq.setVisibility(8);
-    this.Ivn.removeAllViews();
-    this.Ivn.addView(paramView, paramLayoutParams);
-    AppMethodBeat.o(211925);
+    AppMethodBeat.i(204687);
+    this.NIO.setVisibility(8);
+    this.NIL.removeAllViews();
+    this.NIL.addView(paramView, paramLayoutParams);
+    AppMethodBeat.o(204687);
   }
   
-  private void fX(View paramView)
+  private void gq(View paramView)
   {
-    AppMethodBeat.i(211919);
-    this.ahw = paramView;
-    if (this.ahw != null)
+    AppMethodBeat.i(204681);
+    this.ahJ = paramView;
+    if (this.ahJ != null)
     {
-      this.Ivm.setVisibility(0);
-      this.Ivo.setVisibility(0);
-      this.Ivo.removeAllViews();
-      this.Ivo.setGravity(1);
-      this.Ivo.addView(this.ahw, new LinearLayout.LayoutParams(-1, -1));
+      this.NIK.setVisibility(0);
+      this.NIM.setVisibility(0);
+      this.NIM.removeAllViews();
+      this.NIM.setGravity(1);
+      this.NIM.addView(this.ahJ, new LinearLayout.LayoutParams(-1, -1));
     }
-    AppMethodBeat.o(211919);
-  }
-  
-  private void wH(boolean paramBoolean)
-  {
-    AppMethodBeat.i(211917);
-    if (paramBoolean)
-    {
-      int i = aq.fromDPToPix(this.mContext, 8);
-      this.Ivm.setVisibility(0);
-      this.Ivm.setPadding(i, i, i, i);
-      this.Ivm.setBackgroundResource(2131231925);
-    }
-    AppMethodBeat.o(211917);
+    AppMethodBeat.o(204681);
   }
   
   public final void a(final a parama)
   {
-    AppMethodBeat.i(211926);
+    AppMethodBeat.i(204688);
     int i;
     if ((parama.title != null) && (parama.title.length() > 0))
     {
-      i = parama.IuT;
-      if (this.jdField_new != null) {
-        this.jdField_new.setGravity(i);
+      i = parama.NIs;
+      if (this.jUu != null) {
+        this.jUu.setGravity(i);
       }
       setTitle(parama.title);
     }
     Object localObject4;
     Object localObject1;
-    if ((parama.Iul != null) && (parama.Iul.length() > 0))
+    if ((parama.NHK != null) && (parama.NHK.length() > 0))
     {
-      localObject4 = parama.Iul;
-      this.Ivk.setVisibility(0);
-      this.Ivc.setVisibility(0);
+      localObject4 = parama.NHK;
+      this.nmr.setVisibility(0);
+      this.NIB.setVisibility(0);
       localObject1 = localObject4;
-      if (this.Ivw != null)
+      if (this.NIU != null)
       {
-        localObject1 = this.Ivw;
+        localObject1 = this.NIU;
         ((CharSequence)localObject4).toString();
-        this.jdField_new.getTextSize();
-        localObject1 = ((c.a.c)localObject1).fnA();
+        this.jUu.getTextSize();
+        localObject1 = ((c.a.c)localObject1).gxn();
       }
-      this.Ivc.setText((CharSequence)localObject1);
+      this.NIB.setText((CharSequence)localObject1);
     }
-    if (parama.FjE != 0)
+    if (parama.Kaw != 0)
     {
-      i = parama.FjE;
-      this.jdField_new.setTextColor(ColorStateList.valueOf(i));
+      i = parama.Kaw;
+      this.jUu.setTextColor(ColorStateList.valueOf(i));
     }
-    if (parama.IuQ != 0)
+    if (parama.NIp != 0)
     {
-      i = parama.IuQ;
-      this.jdField_new.setMaxLines(i);
+      i = parama.NIp;
+      this.jUu.setMaxLines(i);
     }
-    if (parama.IuR != 0)
+    if (parama.NIq != 0)
     {
-      i = parama.IuR;
-      this.Ivd.setMaxLines(i);
+      i = parama.NIq;
+      this.NIC.setMaxLines(i);
     }
-    if (parama.vd != null) {
-      fX(parama.vd);
+    if (parama.vk != null) {
+      gq(parama.vk);
     }
-    if (parama.IuO != null)
+    if (parama.NIn != null)
     {
-      localObject4 = parama.IuO;
-      this.Ivk.setVisibility(0);
-      this.Ivl.setLayoutResource(2131493580);
+      localObject4 = parama.NIn;
+      this.nmr.setVisibility(0);
+      this.NIJ.setLayoutResource(2131493697);
     }
     try
     {
-      localObject1 = (LinearLayout)this.Ivl.inflate();
+      localObject1 = (LinearLayout)this.NIJ.inflate();
       ((LinearLayout)localObject1).addView((View)localObject4);
-      if (parama.IuP != null)
+      if (parama.NIo != null)
       {
-        this.Ivj = parama.IuP;
-        if (this.Ivj != null)
+        this.NII = parama.NIo;
+        if (this.NII != null)
         {
-          this.Ivm.setVisibility(8);
-          this.Ivh.setVisibility(8);
+          this.NIK.setVisibility(8);
+          this.NIG.setVisibility(8);
           this.mEditText.setVisibility(8);
-          this.Ivp.removeAllViews();
-          this.Ivp.addView(this.Ivj, new LinearLayout.LayoutParams(-1, -1));
-          this.Ivp.setVisibility(8);
+          this.NIN.removeAllViews();
+          this.NIN.addView(this.NII, new LinearLayout.LayoutParams(-1, -1));
+          this.NIN.setVisibility(8);
         }
       }
-      if (parama.Iuw != null)
+      if (parama.NHV != null)
       {
-        localObject1 = parama.Iuw;
-        if (this.ahw == null)
+        localObject1 = parama.NHV;
+        if (this.ahJ == null)
         {
-          this.Ivm.setVisibility(0);
-          this.Ivi.setVisibility(0);
-          this.Ivi.setBackgroundDrawable((Drawable)localObject1);
+          this.NIK.setVisibility(0);
+          this.NIH.setVisibility(0);
+          this.NIH.setBackgroundDrawable((Drawable)localObject1);
         }
       }
-      if ((parama.Iuy != null) && (parama.Iuy.length() > 0)) {
-        setMessage(parama.Iuy);
+      if ((parama.NHX != null) && (parama.NHX.length() > 0)) {
+        setMessage(parama.NHX);
       }
-      wH(parama.IuH);
+      AH(parama.NIg);
       if (parama.thumbPath != null)
       {
         localObject1 = parama.thumbPath;
-        i = aq.fromDPToPix(this.mContext, 120);
-        this.Ivm.setVisibility(0);
-        this.Ivi.setVisibility(0);
-        if ((this.Ivi instanceof com.tencent.mm.ui.f.a)) {
-          ((com.tencent.mm.ui.f.a)this.Ivi).aK((String)localObject1, i, i);
+        i = at.fromDPToPix(this.mContext, 120);
+        this.NIK.setVisibility(0);
+        this.NIH.setVisibility(0);
+        if ((this.NIH instanceof com.tencent.mm.ui.g.a)) {
+          ((com.tencent.mm.ui.g.a)this.NIH).aM((String)localObject1, i, i);
         }
-        i = parama.IuV;
-        this.Ivm.setVisibility(i);
-        this.Ivi.setVisibility(i);
+        i = parama.NIu;
+        this.NIK.setVisibility(i);
+        this.NIH.setVisibility(i);
       }
-      if ((!parama.IuZ) && (!parama.Iva))
+      if ((!parama.NIy) && (!parama.NIz))
       {
-        if ((parama.Iuy != null) && (parama.Iuy.length() > 0)) {
-          setMessage(parama.Iuy);
+        if ((parama.NHX != null) && (parama.NHX.length() > 0)) {
+          setMessage(parama.NHX);
         }
-        if ((parama.Iuz == null) || (parama.Iuz.length() <= 0)) {
+        if ((parama.NHY == null) || (parama.NHY.length() <= 0)) {
           break label1950;
         }
-        localObject1 = parama.Iuz;
-        this.Ivm.setVisibility(0);
-        this.Ivf.setVisibility(0);
-        this.Ivf.setMaxLines(2);
-        this.Ivf.setText((CharSequence)localObject1);
-        if ((parama.IuA != null) && (parama.IuA.length() > 0))
+        localObject1 = parama.NHY;
+        this.NIK.setVisibility(0);
+        this.NIE.setVisibility(0);
+        this.NIE.setMaxLines(2);
+        this.NIE.setText((CharSequence)localObject1);
+        if ((parama.NHZ != null) && (parama.NHZ.length() > 0))
         {
-          localObject4 = parama.IuA;
+          localObject4 = parama.NHZ;
           if (localObject4 != null)
           {
-            this.Ivm.setVisibility(0);
-            this.Ivg.setVisibility(0);
+            this.NIK.setVisibility(0);
+            this.NIF.setVisibility(0);
             localObject1 = localObject4;
-            if (this.Ivw != null)
+            if (this.NIU != null)
             {
-              localObject1 = this.Ivw;
-              this.Ivg.getContext();
+              localObject1 = this.NIU;
+              this.NIF.getContext();
               ((CharSequence)localObject4).toString();
-              this.Ivg.getTextSize();
-              localObject1 = ((c.a.c)localObject1).fnA();
+              this.NIF.getTextSize();
+              localObject1 = ((c.a.c)localObject1).gxn();
             }
-            this.Ivg.setText((CharSequence)localObject1);
+            this.NIF.setText((CharSequence)localObject1);
           }
         }
-        if (parama.Iux != null)
+        if (parama.NHW != null)
         {
-          localObject1 = parama.Iux;
-          if (this.ahw == null)
+          localObject1 = parama.NHW;
+          if (this.ahJ == null)
           {
-            this.Ivm.setVisibility(0);
-            this.Ivi.setVisibility(0);
-            this.Ivi.setImageBitmap((Bitmap)localObject1);
+            this.NIK.setVisibility(0);
+            this.NIH.setVisibility(0);
+            this.NIH.setImageBitmap((Bitmap)localObject1);
           }
         }
       }
-      if (parama.IuZ)
+      if (parama.NIy)
       {
-        localObject1 = parama.Iux;
-        localObject5 = parama.Iuz;
-        localObject4 = parama.IuA;
-        localObject6 = View.inflate(this.mContext, 2131493583, null);
+        localObject1 = parama.NHW;
+        localObject5 = parama.NHY;
+        localObject4 = parama.NHZ;
+        localObject6 = View.inflate(this.mContext, 2131493700, null);
         if (localObject1 != null)
         {
-          localObject7 = (ImageView)((View)localObject6).findViewById(2131302310);
+          localObject7 = (ImageView)((View)localObject6).findViewById(2131304705);
           ((ImageView)localObject7).setVisibility(0);
           ((ImageView)localObject7).setImageBitmap((Bitmap)localObject1);
         }
         if (localObject5 != null)
         {
-          localObject7 = (TextView)((View)localObject6).findViewById(2131302312);
+          localObject7 = (TextView)((View)localObject6).findViewById(2131304707);
           ((TextView)localObject7).setVisibility(0);
           localObject1 = localObject5;
-          if (this.Ivw != null)
+          if (this.NIU != null)
           {
-            localObject1 = this.Ivw;
+            localObject1 = this.NIU;
             ((CharSequence)localObject5).toString();
             ((TextView)localObject7).getTextSize();
-            localObject1 = ((c.a.c)localObject1).fnA();
+            localObject1 = ((c.a.c)localObject1).gxn();
           }
           ((TextView)localObject7).setText((CharSequence)localObject1);
         }
         if (localObject4 != null)
         {
-          localObject5 = (TextView)((View)localObject6).findViewById(2131302311);
+          localObject5 = (TextView)((View)localObject6).findViewById(2131304706);
           ((TextView)localObject5).setVisibility(0);
-          if (this.Ivw == null) {
+          if (this.NIU == null) {
             break label2233;
           }
-          localObject1 = this.Ivw;
+          localObject1 = this.NIU;
           ((CharSequence)localObject4).toString();
           ((TextView)localObject5).getTextSize();
-          localObject1 = ((c.a.c)localObject1).fnA();
+          localObject1 = ((c.a.c)localObject1).gxn();
           ((TextView)localObject5).setText((CharSequence)localObject1);
         }
-        fX((View)localObject6);
-        if ((parama.Iup != null) || (parama.Iuq != null))
+        gq((View)localObject6);
+        if ((parama.NHO != null) || (parama.NHP != null))
         {
-          localObject4 = parama.Iup;
-          localObject5 = parama.Iuq;
-          bool = parama.Iur;
-          localObject6 = parama.Iut;
-          this.Ivl.setLayoutResource(2131493593);
+          localObject4 = parama.NHO;
+          localObject5 = parama.NHP;
+          bool = parama.NHQ;
+          localObject6 = parama.NHS;
+          this.NIJ.setLayoutResource(2131493710);
         }
       }
     }
@@ -450,329 +450,329 @@ public final class c
           Object localObject6;
           Object localObject7;
           boolean bool;
-          localObject1 = (LinearLayout)this.Ivl.inflate();
+          localObject1 = (LinearLayout)this.NIJ.inflate();
           if ((localObject1 != null) && (localObject4 != null)) {
-            ((ImageView)((LinearLayout)localObject1).findViewById(2131305922)).setVisibility(0);
+            ((ImageView)((LinearLayout)localObject1).findViewById(2131309220)).setVisibility(0);
           }
           if ((localObject1 != null) && (localObject5 != null))
           {
-            localObject7 = (TextView)((LinearLayout)localObject1).findViewById(2131305945);
+            localObject7 = (TextView)((LinearLayout)localObject1).findViewById(2131309245);
             ((TextView)localObject7).setVisibility(0);
             localObject4 = localObject5;
-            if (this.Ivw != null)
+            if (this.NIU != null)
             {
-              localObject4 = this.Ivw;
+              localObject4 = this.NIU;
               ((CharSequence)localObject5).toString();
-              this.jdField_new.getTextSize();
-              localObject4 = ((c.a.c)localObject4).fnA();
+              this.jUu.getTextSize();
+              localObject4 = ((c.a.c)localObject4).gxn();
             }
             ((TextView)localObject7).setText((CharSequence)localObject4);
           }
           if ((Boolean.valueOf(bool).booleanValue()) && (localObject1 != null))
           {
-            localObject4 = (ImageView)((LinearLayout)localObject1).findViewById(2131300962);
+            localObject4 = (ImageView)((LinearLayout)localObject1).findViewById(2131302598);
             ((ImageView)localObject4).setVisibility(0);
-            aaV(0);
+            ajK(0);
             ((LinearLayout)localObject1).setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
-                AppMethodBeat.i(211899);
+                AppMethodBeat.i(204661);
                 b localb = new b();
-                localb.bd(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                if (this.Ivz.isSelected())
+                localb.bm(paramAnonymousView);
+                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                if (this.NIX.isSelected())
                 {
                   c.b(c.this).startAnimation(c.a(c.this));
                   c.a(c.this).setAnimationListener(new Animation.AnimationListener()
                   {
                     public final void onAnimationEnd(Animation paramAnonymous2Animation)
                     {
-                      AppMethodBeat.i(211896);
+                      AppMethodBeat.i(204658);
                       c.b(c.this).setVisibility(8);
                       c.a(c.this, 0);
-                      AppMethodBeat.o(211896);
+                      AppMethodBeat.o(204658);
                     }
                     
                     public final void onAnimationRepeat(Animation paramAnonymous2Animation) {}
                     
                     public final void onAnimationStart(Animation paramAnonymous2Animation)
                     {
-                      AppMethodBeat.i(211895);
+                      AppMethodBeat.i(204657);
                       c.a(c.this, c.c(c.this));
-                      AppMethodBeat.o(211895);
+                      AppMethodBeat.o(204657);
                     }
                   });
-                  ObjectAnimator.ofFloat(this.Ivz, "rotation", new float[] { 180.0F, 0.0F }).setDuration(200L).start();
-                  this.Ivz.setSelected(false);
+                  ObjectAnimator.ofFloat(this.NIX, "rotation", new float[] { 180.0F, 0.0F }).setDuration(200L).start();
+                  this.NIX.setSelected(false);
                 }
                 for (;;)
                 {
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                  AppMethodBeat.o(211899);
+                  AppMethodBeat.o(204661);
                   return;
                   c.b(c.this).startAnimation(c.d(c.this));
                   c.d(c.this).setAnimationListener(new Animation.AnimationListener()
                   {
                     public final void onAnimationEnd(Animation paramAnonymous2Animation)
                     {
-                      AppMethodBeat.i(211898);
+                      AppMethodBeat.i(204660);
                       c.b(c.this).setVisibility(0);
                       c.a(c.this, 8);
-                      AppMethodBeat.o(211898);
+                      AppMethodBeat.o(204660);
                     }
                     
                     public final void onAnimationRepeat(Animation paramAnonymous2Animation) {}
                     
                     public final void onAnimationStart(Animation paramAnonymous2Animation)
                     {
-                      AppMethodBeat.i(211897);
+                      AppMethodBeat.i(204659);
                       c.a(c.this, c.e(c.this));
-                      AppMethodBeat.o(211897);
+                      AppMethodBeat.o(204659);
                     }
                   });
-                  ObjectAnimator.ofFloat(this.Ivz, "rotation", new float[] { 0.0F, 180.0F }).setDuration(200L).start();
-                  this.Ivz.setSelected(true);
+                  ObjectAnimator.ofFloat(this.NIX, "rotation", new float[] { 0.0F, 180.0F }).setDuration(200L).start();
+                  this.NIX.setSelected(true);
                 }
               }
             });
           }
-          if (parama.Iuu != null)
+          if (parama.NHT != null)
           {
-            localObject1 = parama.Iuu;
-            if ((this.Ivm != null) && (this.Ivm.getVisibility() == 0)) {
-              this.Ivm.setOnClickListener(new View.OnClickListener()
+            localObject1 = parama.NHT;
+            if ((this.NIK != null) && (this.NIK.getVisibility() == 0)) {
+              this.NIK.setOnClickListener(new View.OnClickListener()
               {
                 public final void onClick(View paramAnonymousView)
                 {
-                  AppMethodBeat.i(211900);
+                  AppMethodBeat.i(204662);
                   b localb = new b();
-                  localb.bd(paramAnonymousView);
-                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+                  localb.bm(paramAnonymousView);
+                  com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
                   com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                  AppMethodBeat.o(211900);
+                  AppMethodBeat.o(204662);
                 }
               });
             }
           }
           else
           {
-            if ((parama.Ium != null) && (parama.Ium.length() > 0))
+            if ((parama.NHL != null) && (parama.NHL.length() > 0))
             {
-              localObject1 = parama.Ium;
+              localObject1 = parama.NHL;
               if (localObject1 != null)
               {
-                this.Ivh.setVisibility(0);
-                this.Ivh.setText((CharSequence)localObject1);
+                this.NIG.setVisibility(0);
+                this.NIG.setText((CharSequence)localObject1);
               }
-              this.Ivr = true;
-              i = parama.IuS;
-              if (this.Ivh != null) {
-                this.Ivh.setGravity(i);
+              this.NIP = true;
+              i = parama.NIr;
+              if (this.NIG != null) {
+                this.NIG.setGravity(i);
               }
             }
-            if ((parama.Iun != null) && (parama.Iun.length() > 0))
+            if ((parama.NHM != null) && (parama.NHM.length() > 0))
             {
-              localObject1 = parama.Iun;
+              localObject1 = parama.NHM;
               this.mEditText.setVisibility(0);
               this.mEditText.setHint((CharSequence)localObject1);
             }
-            if (parama.Iuo)
+            if (parama.NHN)
             {
-              this.needEdit = parama.Iuo;
-              if (!parama.Iuo) {
+              this.needEdit = parama.NHN;
+              if (!parama.NHN) {
                 continue;
               }
               this.mEditText.setVisibility(0);
             }
-            if ((parama.IuB != null) && (parama.IuB.length() > 0)) {
-              a(parama.IuB, parama.IuY, parama.IuJ);
+            if ((parama.NIa != null) && (parama.NIa.length() > 0)) {
+              a(parama.NIa, parama.NIx, parama.NIi);
             }
-            if ((parama.IuC != null) && (parama.IuC.length() > 0)) {
-              a(parama.IuC, parama.IuK);
+            if ((parama.NIb != null) && (parama.NIb.length() > 0)) {
+              a(parama.NIb, parama.NIj);
             }
-            if (parama.IuX != 0) {
-              aaW(parama.IuX);
+            if (parama.NIw != 0) {
+              ajL(parama.NIw);
             }
-            if (parama.IuW != 0) {
-              aaX(parama.IuW);
+            if (parama.NIv != 0) {
+              ajM(parama.NIv);
             }
-            if (parama.XL != null) {
-              setOnCancelListener(parama.XL);
+            if (parama.XY != null) {
+              setOnCancelListener(parama.XY);
             }
-            if (parama.XM != null)
+            if (parama.XZ != null)
             {
-              this.Ivx = parama.XM;
-              setOnDismissListener(parama.XM);
+              this.NIV = parama.XZ;
+              setOnDismissListener(parama.XZ);
             }
-            if (parama.Iuv != null) {
-              this.Ivw = parama.Iuv;
+            if (parama.NHU != null) {
+              this.NIU = parama.NHU;
             }
-            setCancelable(parama.ov);
-            this.ov = parama.ov;
-            if (!this.ov) {
-              super.setCancelable(parama.IuG);
+            setCancelable(parama.ox);
+            this.ox = parama.ox;
+            if (!this.ox) {
+              super.setCancelable(parama.NIf);
             }
-            if ((parama.IuD != null) || (parama.IuE != null) || (parama.IuF != null))
+            if ((parama.NIc != null) || (parama.NId != null) || (parama.NIe != null))
             {
-              localObject1 = View.inflate(this.mContext, 2131493592, null);
-              localObject4 = (Button)((View)localObject1).findViewById(2131302297);
-              localObject5 = (Button)((View)localObject1).findViewById(2131302298);
-              localObject6 = (Button)((View)localObject1).findViewById(2131302299);
-              if (parama.IuD != null)
+              localObject1 = View.inflate(this.mContext, 2131493709, null);
+              localObject4 = (Button)((View)localObject1).findViewById(2131304691);
+              localObject5 = (Button)((View)localObject1).findViewById(2131304692);
+              localObject6 = (Button)((View)localObject1).findViewById(2131304693);
+              if (parama.NIc != null)
               {
                 ((Button)localObject4).setVisibility(0);
-                ((Button)localObject4).setText(parama.IuD);
+                ((Button)localObject4).setText(parama.NIc);
                 ((Button)localObject4).setOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymousView)
                   {
-                    AppMethodBeat.i(211904);
+                    AppMethodBeat.i(204666);
                     b localb = new b();
-                    localb.bd(paramAnonymousView);
-                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                    if (parama.IuL != null) {
-                      parama.IuL.onClick(c.this, -1);
+                    localb.bm(paramAnonymousView);
+                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                    if (parama.NIk != null) {
+                      parama.NIk.onClick(c.this, -1);
                     }
                     c.this.dismiss();
                     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                    AppMethodBeat.o(211904);
+                    AppMethodBeat.o(204666);
                   }
                 });
               }
-              if (parama.IuE != null)
+              if (parama.NId != null)
               {
                 ((Button)localObject5).setVisibility(0);
-                ((Button)localObject5).setText(parama.IuE);
+                ((Button)localObject5).setText(parama.NId);
                 ((Button)localObject5).setOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymousView)
                   {
-                    AppMethodBeat.i(211905);
+                    AppMethodBeat.i(204667);
                     b localb = new b();
-                    localb.bd(paramAnonymousView);
-                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                    if (parama.IuM != null) {
-                      parama.IuM.onClick(c.this, -2);
+                    localb.bm(paramAnonymousView);
+                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                    if (parama.NIl != null) {
+                      parama.NIl.onClick(c.this, -2);
                     }
                     c.this.dismiss();
                     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                    AppMethodBeat.o(211905);
+                    AppMethodBeat.o(204667);
                   }
                 });
               }
-              if (parama.IuF != null)
+              if (parama.NIe != null)
               {
                 ((Button)localObject6).setVisibility(0);
-                ((Button)localObject6).setText(parama.IuF);
+                ((Button)localObject6).setText(parama.NIe);
                 ((Button)localObject6).setOnClickListener(new View.OnClickListener()
                 {
                   public final void onClick(View paramAnonymousView)
                   {
-                    AppMethodBeat.i(211906);
+                    AppMethodBeat.i(204668);
                     b localb = new b();
-                    localb.bd(paramAnonymousView);
-                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                    if (parama.IuN != null) {
-                      parama.IuN.onClick(c.this, -3);
+                    localb.bm(paramAnonymousView);
+                    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                    if (parama.NIm != null) {
+                      parama.NIm.onClick(c.this, -3);
                     }
                     c.this.dismiss();
                     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                    AppMethodBeat.o(211906);
+                    AppMethodBeat.o(204668);
                   }
                 });
               }
               b((View)localObject1, new LinearLayout.LayoutParams(-1, -1));
             }
-            if (parama.Ius)
+            if (parama.NHR)
             {
-              localObject1 = View.inflate(this.mContext, 2131493579, null);
-              this.rse = ((Button)((View)localObject1).findViewById(2131302301));
-              this.Dim = ((Button)((View)localObject1).findViewById(2131302314));
-              if (parama.IuX != 0) {
-                aaW(parama.IuX);
+              localObject1 = View.inflate(this.mContext, 2131493696, null);
+              this.FNQ = ((Button)((View)localObject1).findViewById(2131304695));
+              this.HRF = ((Button)((View)localObject1).findViewById(2131304709));
+              if (parama.NIw != 0) {
+                ajL(parama.NIw);
               }
-              if (parama.IuW != 0) {
-                aaX(parama.IuW);
+              if (parama.NIv != 0) {
+                ajM(parama.NIv);
               }
-              if ((parama.IuB != null) && (parama.IuB.length() > 0)) {
-                a(parama.IuB, parama.IuY, parama.IuJ);
+              if ((parama.NIa != null) && (parama.NIa.length() > 0)) {
+                a(parama.NIa, parama.NIx, parama.NIi);
               }
-              if ((parama.IuC != null) && (parama.IuC.length() > 0)) {
-                a(parama.IuC, parama.IuK);
+              if ((parama.NIb != null) && (parama.NIb.length() > 0)) {
+                a(parama.NIb, parama.NIj);
               }
               b((View)localObject1, new LinearLayout.LayoutParams(-1, -1));
             }
-            AppMethodBeat.o(211926);
+            AppMethodBeat.o(204688);
             return;
             localException1 = localException1;
-            this.Ivl.setVisibility(0);
+            this.NIJ.setVisibility(0);
             Object localObject2 = null;
             continue;
             label1950:
-            wH(false);
+            AH(false);
             continue;
-            if (!parama.Iva) {
+            if (!parama.NIz) {
               continue;
             }
-            localObject2 = parama.Iux;
-            localObject5 = parama.Iuz;
-            localObject4 = parama.IuA;
-            localObject6 = View.inflate(this.mContext, 2131493584, null);
+            localObject2 = parama.NHW;
+            localObject5 = parama.NHY;
+            localObject4 = parama.NHZ;
+            localObject6 = View.inflate(this.mContext, 2131493701, null);
             if (localObject2 != null)
             {
-              localObject7 = (ImageView)((View)localObject6).findViewById(2131302310);
+              localObject7 = (ImageView)((View)localObject6).findViewById(2131304705);
               ((ImageView)localObject7).setVisibility(0);
               ((ImageView)localObject7).setImageBitmap((Bitmap)localObject2);
             }
             if (localObject5 != null)
             {
-              localObject7 = (TextView)((View)localObject6).findViewById(2131302312);
+              localObject7 = (TextView)((View)localObject6).findViewById(2131304707);
               ((TextView)localObject7).setVisibility(0);
               localObject2 = localObject5;
-              if (this.Ivw != null)
+              if (this.NIU != null)
               {
-                localObject2 = this.Ivw;
+                localObject2 = this.NIU;
                 ((CharSequence)localObject5).toString();
                 ((TextView)localObject7).getTextSize();
-                localObject2 = ((c.a.c)localObject2).fnA();
+                localObject2 = ((c.a.c)localObject2).gxn();
               }
               ((TextView)localObject7).setText((CharSequence)localObject2);
             }
             if (localObject4 != null)
             {
-              localObject5 = (TextView)((View)localObject6).findViewById(2131302311);
+              localObject5 = (TextView)((View)localObject6).findViewById(2131304706);
               ((TextView)localObject5).setVisibility(0);
-              if (this.Ivw == null) {
+              if (this.NIU == null) {
                 continue;
               }
-              localObject2 = this.Ivw;
+              localObject2 = this.NIU;
               ((CharSequence)localObject4).toString();
               ((TextView)localObject5).getTextSize();
-              localObject2 = ((c.a.c)localObject2).fnA();
+              localObject2 = ((c.a.c)localObject2).gxn();
               ((TextView)localObject5).setText((CharSequence)localObject2);
             }
-            fX((View)localObject6);
+            gq((View)localObject6);
           }
         }
         catch (Exception localException2)
         {
-          this.Ivl.setVisibility(0);
+          this.NIJ.setVisibility(0);
           localObject3 = null;
           continue;
-          if (this.Ivo == null) {
+          if (this.NIM == null) {
             continue;
           }
-          this.Ivo.setOnClickListener(new View.OnClickListener()
+          this.NIM.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
-              AppMethodBeat.i(211901);
+              AppMethodBeat.i(204663);
               b localb = new b();
-              localb.bd(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+              localb.bm(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/sdcard_migrate/ui/NoSVGMMAlertDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(211901);
+              AppMethodBeat.o(204663);
             }
           });
           continue;
@@ -789,20 +789,20 @@ public final class c
   
   public final void dismiss()
   {
-    AppMethodBeat.i(211928);
+    AppMethodBeat.i(204690);
     if (Looper.myLooper() != Looper.getMainLooper())
     {
       new Handler(Looper.getMainLooper()).post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(211907);
+          AppMethodBeat.i(204669);
           c.this.dismiss();
-          AppMethodBeat.o(211907);
+          AppMethodBeat.o(204669);
         }
       });
-      ap.e("MicroMsg.MMAlertDialog", "dialog dismiss error!", new Object[0]);
-      AppMethodBeat.o(211928);
+      as.e("MicroMsg.MMAlertDialog", "dialog dismiss error!", new Object[0]);
+      AppMethodBeat.o(204690);
       return;
     }
     try
@@ -817,7 +817,7 @@ public final class c
         if (this.iOnDialogDismissListener != null) {
           this.iOnDialogDismissListener.onDialogDismiss(this);
         }
-        AppMethodBeat.o(211928);
+        AppMethodBeat.o(204690);
         return;
         super.dismiss();
       }
@@ -826,163 +826,163 @@ public final class c
     {
       for (;;)
       {
-        ap.e("MicroMsg.MMAlertDialog", "dismiss exception, e = " + localException.getMessage(), new Object[0]);
+        as.e("MicroMsg.MMAlertDialog", "dismiss exception, e = " + localException.getMessage(), new Object[0]);
       }
     }
   }
   
   protected final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(211912);
+    AppMethodBeat.i(204674);
     super.onCreate(paramBundle);
-    setContentView(this.Ivb);
-    AppMethodBeat.o(211912);
+    setContentView(this.NIA);
+    AppMethodBeat.o(204674);
   }
   
   public final void setCancelable(boolean paramBoolean)
   {
-    AppMethodBeat.i(211924);
+    AppMethodBeat.i(204686);
     super.setCancelable(paramBoolean);
-    this.ov = paramBoolean;
-    setCanceledOnTouchOutside(this.ov);
-    AppMethodBeat.o(211924);
+    this.ox = paramBoolean;
+    setCanceledOnTouchOutside(this.ox);
+    AppMethodBeat.o(204686);
   }
   
   public final void setMessage(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(211916);
-    this.Ivm.setVisibility(0);
-    this.Ivd.setVisibility(0);
+    AppMethodBeat.i(204678);
+    this.NIK.setVisibility(0);
+    this.NIC.setVisibility(0);
     Object localObject = paramCharSequence;
-    if (this.Ivw != null)
+    if (this.NIU != null)
     {
-      localObject = this.Ivw;
-      this.Ivd.getContext();
+      localObject = this.NIU;
+      this.NIC.getContext();
       paramCharSequence.toString();
-      this.Ivd.getTextSize();
-      localObject = ((c.a.c)localObject).fnA();
+      this.NIC.getTextSize();
+      localObject = ((c.a.c)localObject).gxn();
     }
-    this.Ivd.setText((CharSequence)localObject);
-    AppMethodBeat.o(211916);
+    this.NIC.setText((CharSequence)localObject);
+    AppMethodBeat.o(204678);
   }
   
   public final void setTitle(int paramInt)
   {
-    AppMethodBeat.i(211914);
-    this.Ivk.setVisibility(0);
-    this.jdField_new.setVisibility(0);
-    this.jdField_new.setMaxLines(2);
-    this.jdField_new.setText(paramInt);
-    this.jdField_new.getPaint().setFakeBoldText(true);
-    aaU(this.mContext.getResources().getColor(2131099734));
-    AppMethodBeat.o(211914);
+    AppMethodBeat.i(204676);
+    this.nmr.setVisibility(0);
+    this.jUu.setVisibility(0);
+    this.jUu.setMaxLines(2);
+    this.jUu.setText(paramInt);
+    this.jUu.getPaint().setFakeBoldText(true);
+    ajJ(this.mContext.getResources().getColor(2131099748));
+    AppMethodBeat.o(204676);
   }
   
   public final void setTitle(CharSequence paramCharSequence)
   {
-    AppMethodBeat.i(211913);
-    this.Ivk.setVisibility(0);
-    this.jdField_new.setVisibility(0);
+    AppMethodBeat.i(204675);
+    this.nmr.setVisibility(0);
+    this.jUu.setVisibility(0);
     Object localObject = paramCharSequence;
-    if (this.Ivw != null)
+    if (this.NIU != null)
     {
-      localObject = this.Ivw;
+      localObject = this.NIU;
       paramCharSequence.toString();
-      this.jdField_new.getTextSize();
-      localObject = ((c.a.c)localObject).fnA();
+      this.jUu.getTextSize();
+      localObject = ((c.a.c)localObject).gxn();
     }
-    this.jdField_new.setMaxLines(2);
-    this.jdField_new.setText((CharSequence)localObject);
-    this.jdField_new.getPaint().setFakeBoldText(true);
-    aaU(this.mContext.getResources().getColor(2131099734));
-    AppMethodBeat.o(211913);
+    this.jUu.setMaxLines(2);
+    this.jUu.setText((CharSequence)localObject);
+    this.jUu.getPaint().setFakeBoldText(true);
+    ajJ(this.mContext.getResources().getColor(2131099748));
+    AppMethodBeat.o(204675);
   }
   
   public final void show()
   {
-    AppMethodBeat.i(211927);
+    AppMethodBeat.i(204689);
     try
     {
       super.show();
-      AppMethodBeat.o(211927);
+      AppMethodBeat.o(204689);
       return;
     }
     catch (Exception localException)
     {
-      ap.printErrStackTrace("MicroMsg.MMAlertDialog", localException, "", new Object[0]);
-      AppMethodBeat.o(211927);
+      as.printErrStackTrace("MicroMsg.MMAlertDialog", localException, "", new Object[0]);
+      AppMethodBeat.o(204689);
     }
   }
   
   public static final class a
   {
-    private a IvI;
+    private a NJg;
     private Context mContext;
     
     public a(Context paramContext)
     {
-      AppMethodBeat.i(211908);
+      AppMethodBeat.i(204670);
       this.mContext = paramContext;
-      this.IvI = new a();
-      AppMethodBeat.o(211908);
+      this.NJg = new a();
+      AppMethodBeat.o(204670);
+    }
+    
+    public final a AI(boolean paramBoolean)
+    {
+      this.NJg.ox = false;
+      return this;
     }
     
     public final a a(DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.IvI.IuJ = paramOnClickListener;
-      return this;
-    }
-    
-    public final a aRp(String paramString)
-    {
-      this.IvI.title = paramString;
-      return this;
-    }
-    
-    public final a aRq(String paramString)
-    {
-      this.IvI.Iuy = paramString;
-      return this;
-    }
-    
-    public final a aRr(String paramString)
-    {
-      this.IvI.IuB = paramString;
-      return this;
-    }
-    
-    public final a aRs(String paramString)
-    {
-      this.IvI.IuC = paramString;
+      this.NJg.NIi = paramOnClickListener;
       return this;
     }
     
     public final a b(DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.IvI.IuK = paramOnClickListener;
+      this.NJg.NIj = paramOnClickListener;
       return this;
     }
     
-    public final a fnx()
+    public final a bhS(String paramString)
     {
-      AppMethodBeat.i(211909);
-      this.IvI.IuB = this.mContext.getString(2131755835);
-      AppMethodBeat.o(211909);
+      this.NJg.title = null;
       return this;
     }
     
-    public final a fny()
+    public final a bhT(String paramString)
     {
-      this.IvI.ov = false;
+      this.NJg.NHX = paramString;
       return this;
     }
     
-    public final c fnz()
+    public final a bhU(String paramString)
     {
-      AppMethodBeat.i(211910);
+      this.NJg.NIa = paramString;
+      return this;
+    }
+    
+    public final a bhV(String paramString)
+    {
+      this.NJg.NIb = paramString;
+      return this;
+    }
+    
+    public final a gxl()
+    {
+      AppMethodBeat.i(204671);
+      this.NJg.NIa = this.mContext.getString(2131755921);
+      AppMethodBeat.o(204671);
+      return this;
+    }
+    
+    public final c gxm()
+    {
+      AppMethodBeat.i(204672);
       c localc = new c(this.mContext);
-      localc.a(this.IvI);
-      AppMethodBeat.o(211910);
+      localc.a(this.NJg);
+      AppMethodBeat.o(204672);
       return localc;
     }
     
@@ -992,7 +992,7 @@ public final class c
     
     public static abstract interface c
     {
-      public abstract CharSequence fnA();
+      public abstract CharSequence gxn();
     }
   }
 }

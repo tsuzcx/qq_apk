@@ -2,45 +2,45 @@ package com.tencent.mm.plugin.aa.model.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class d
-  extends j<c>
+  extends MAutoStorage<c>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] iWL;
-  public static Map<String, c> iWM;
-  private e db;
+  private static final String[] jTH;
+  public static Map<String, c> jTI;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(63431);
-    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "AARecord") };
-    iWL = new String[] { "*", "rowid" };
-    iWM = new HashMap();
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "AARecord") };
+    jTH = new String[] { "*", "rowid" };
+    jTI = new HashMap();
     AppMethodBeat.o(63431);
   }
   
-  public d(e parame)
+  public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, c.info, "AARecord", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, c.info, "AARecord", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final c JF(String paramString)
+  public final c SD(String paramString)
   {
     AppMethodBeat.i(63424);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(63424);
       return null;
     }
-    paramString = this.db.a("AARecord", iWL, "billNo=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.query("AARecord", jTH, "billNo=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -57,7 +57,7 @@ public final class d
     {
       for (;;)
       {
-        ae.e("MicroMsg.AARecordStorage", "getRecordByBillno error: %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.AARecordStorage", "getRecordByBillno error: %s", new Object[] { localException.getMessage() });
         if (paramString != null) {
           paramString.close();
         }
@@ -78,8 +78,8 @@ public final class d
   public final boolean a(c paramc)
   {
     AppMethodBeat.i(63425);
-    if ((paramc != null) && (iWM.containsKey(paramc.field_billNo))) {
-      iWM.put(paramc.field_billNo, paramc);
+    if ((paramc != null) && (jTI.containsKey(paramc.field_billNo))) {
+      jTI.put(paramc.field_billNo, paramc);
     }
     boolean bool = super.insert(paramc);
     AppMethodBeat.o(63425);
@@ -89,8 +89,8 @@ public final class d
   public final boolean a(c paramc, String... paramVarArgs)
   {
     AppMethodBeat.i(63426);
-    if ((paramc != null) && (iWM.containsKey(paramc.field_billNo))) {
-      iWM.remove(paramc.field_billNo);
+    if ((paramc != null) && (jTI.containsKey(paramc.field_billNo))) {
+      jTI.remove(paramc.field_billNo);
     }
     boolean bool = super.delete(paramc, paramVarArgs);
     AppMethodBeat.o(63426);
@@ -100,8 +100,8 @@ public final class d
   public final boolean b(c paramc)
   {
     AppMethodBeat.i(63427);
-    if ((paramc != null) && (iWM.containsKey(paramc.field_billNo))) {
-      iWM.put(paramc.field_billNo, paramc);
+    if ((paramc != null) && (jTI.containsKey(paramc.field_billNo))) {
+      jTI.put(paramc.field_billNo, paramc);
     }
     boolean bool = super.replace(paramc);
     AppMethodBeat.o(63427);
@@ -110,7 +110,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,19 +5,19 @@ import android.content.Intent;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.a;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
 public final class b
   implements Thread.UncaughtExceptionHandler
 {
+  private int Czp = 0;
+  private long Czq = 0L;
   private Context context = null;
   private String stackTrace = "";
   private String threadName = "";
-  private int yyr = 0;
-  private long yys = 0L;
   
   public b(Context paramContext)
   {
@@ -39,7 +39,7 @@ public final class b
       if ((i + 1) * 512 < this.stackTrace.length()) {}
       for (paramThread = this.stackTrace.substring(i * 512, (i + 1) * 512);; paramThread = this.stackTrace.substring(i * 512))
       {
-        g.yxI.f(17910, new Object[] { a.hju, j.hju, this.threadName, Integer.valueOf(0), paramThread, Integer.valueOf(1), Integer.valueOf(i + 1), Integer.valueOf(j), Long.valueOf(l) });
+        h.CyF.a(17910, new Object[] { a.CLIENT_VERSION, BuildInfo.CLIENT_VERSION, this.threadName, Integer.valueOf(0), paramThread, Integer.valueOf(1), Integer.valueOf(i + 1), Integer.valueOf(j), Long.valueOf(l) });
         i += 1;
         break;
       }
@@ -57,7 +57,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.rubbishbin.b
  * JD-Core Version:    0.7.0.1
  */

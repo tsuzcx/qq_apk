@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
 import com.tencent.mm.plugin.wear.model.h;
-import com.tencent.mm.protocal.protobuf.efo;
+import com.tencent.mm.protocal.protobuf.ezw;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 
 public final class l
   extends c
 {
-  private int inP;
+  private int jiX;
   private String talker;
   
   public l(int paramInt, String paramString)
   {
-    this.inP = paramInt;
+    this.jiX = paramInt;
     this.talker = paramString;
   }
   
@@ -28,20 +28,20 @@ public final class l
   protected final void send()
   {
     AppMethodBeat.i(30134);
-    switch (this.inP)
+    switch (this.jiX)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(30134);
       return;
-      efo localefo = new efo();
-      localefo.HGP = this.talker;
-      localefo.nJO = h.aGM(this.talker);
+      ezw localezw = new ezw();
+      localezw.MRZ = this.talker;
+      localezw.oUJ = h.aWo(this.talker);
       try
       {
-        a.eOh();
-        r.a(this.inP, localefo.toByteArray(), false);
+        a.fVQ();
+        r.a(this.jiX, localezw.toByteArray(), false);
         AppMethodBeat.o(30134);
         return;
       }
@@ -52,8 +52,8 @@ public final class l
       }
       try
       {
-        a.eOh();
-        r.a(this.inP, this.talker.getBytes("utf8"), false);
+        a.fVQ();
+        r.a(this.jiX, this.talker.getBytes("utf8"), false);
         AppMethodBeat.o(30134);
         return;
       }
@@ -63,7 +63,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.l
  * JD-Core Version:    0.7.0.1
  */

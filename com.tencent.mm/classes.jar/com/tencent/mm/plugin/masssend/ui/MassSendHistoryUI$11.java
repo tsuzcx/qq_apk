@@ -1,0 +1,35 @@
+package com.tencent.mm.plugin.masssend.ui;
+
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
+
+final class MassSendHistoryUI$11
+  implements View.OnClickListener
+{
+  MassSendHistoryUI$11(MassSendHistoryUI paramMassSendHistoryUI) {}
+  
+  public final void onClick(View paramView)
+  {
+    AppMethodBeat.i(26426);
+    Object localObject = new b();
+    ((b)localObject).bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/masssend/ui/MassSendHistoryUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    localObject = new Intent(this.zoi, MassSendSelectContactUI.class);
+    paramView = this.zoi;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/masssend/ui/MassSendHistoryUI$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
+    com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/masssend/ui/MassSendHistoryUI$8", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/masssend/ui/MassSendHistoryUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(26426);
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.plugin.masssend.ui.MassSendHistoryUI.11
+ * JD-Core Version:    0.7.0.1
+ */

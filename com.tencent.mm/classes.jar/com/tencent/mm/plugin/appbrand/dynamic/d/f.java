@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.appbrand.dynamic.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aa.b.b.a;
-import com.tencent.mm.model.z.b;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.modelappbrand.LogInfo;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.recovery.util.Util;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -36,24 +36,24 @@ public final class f
           if (localJSONObject != null)
           {
             LogInfo localLogInfo = new LogInfo();
-            localLogInfo.hNo = localJSONObject.optLong("ts");
+            localLogInfo.ts = localJSONObject.optLong("ts");
             localLogInfo.level = (localJSONObject.optInt("level") + 1);
             localLogInfo.message = localJSONObject.optString("msg");
             localArrayList.add(localLogInfo);
-            ae.d("MicroMsg.JsApiFunc_Log", "ts : %s, level : %d, msg : %s", new Object[] { Util.getTimeFormat(localLogInfo.hNo), Integer.valueOf(localLogInfo.level), localLogInfo.message });
+            Log.d("MicroMsg.JsApiFunc_Log", "ts : %s, level : %d, msg : %s", new Object[] { Util.getTimeFormat(localLogInfo.ts), Integer.valueOf(localLogInfo.level), localLogInfo.message });
           }
         }
         else
         {
-          com.tencent.mm.plugin.appbrand.dynamic.debugger.a.c(parama.aiA().getString("__page_view_id", null), localArrayList);
-          parama1.bk(a(true, "", null));
+          com.tencent.mm.plugin.appbrand.dynamic.debugger.a.d(parama.ayQ().getString("__page_view_id", null), localArrayList);
+          parama1.bt(a(true, "", null));
           AppMethodBeat.o(121312);
           return;
         }
       }
       catch (JSONException parama)
       {
-        parama1.bk(a(false, "dataArray is null", null));
+        parama1.bt(a(false, "dataArray is null", null));
         AppMethodBeat.o(121312);
         return;
       }
@@ -63,7 +63,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.f
  * JD-Core Version:    0.7.0.1
  */

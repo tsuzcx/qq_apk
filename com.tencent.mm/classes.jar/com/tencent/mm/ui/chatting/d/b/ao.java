@@ -1,11 +1,15 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.ui.chatting.d.af;
 
 public abstract interface ao
-  extends ad
+  extends af
 {
-  public abstract void fHA();
+  public abstract void amF(int paramInt);
+  
+  public abstract void keepSignalling();
+  
+  public abstract void stopSignalling();
 }
 
 

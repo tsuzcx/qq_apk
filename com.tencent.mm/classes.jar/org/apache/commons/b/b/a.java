@@ -12,11 +12,11 @@ import org.apache.commons.b.h;
 
 public final class a
 {
-  private static final Object Osr = new Object();
-  private static String[] Oss = { "getCause", "getNextException", "getTargetException", "getException", "getSourceException", "getRootCause", "getCausedByException", "getNested", "getLinkedException", "getNestedException", "getLinkedCause", "getThrowable" };
-  private static final Method Ost;
-  private static final Method Osu;
-  static Class Osv;
+  private static final Object Uhp = new Object();
+  private static String[] Uhq = { "getCause", "getNextException", "getTargetException", "getException", "getSourceException", "getRootCause", "getCausedByException", "getNested", "getLinkedException", "getNestedException", "getLinkedCause", "getThrowable" };
+  private static final Method Uhr;
+  private static final Method Uhs;
+  static Class Uht;
   
   static
   {
@@ -26,11 +26,11 @@ public final class a
     {
       try
       {
-        if (Osv != null) {
+        if (Uht != null) {
           continue;
         }
-        localObject1 = bfm("java.lang.Throwable");
-        Osv = (Class)localObject1;
+        localObject1 = bvc("java.lang.Throwable");
+        Uht = (Class)localObject1;
         localObject1 = ((Class)localObject1).getMethod("getCause", null);
       }
       catch (Exception localException1)
@@ -38,24 +38,24 @@ public final class a
         Object localObject1;
         localClass1 = null;
         continue;
-        localClass1 = Osv;
+        localClass1 = Uht;
         continue;
-        localClass2 = Osv;
+        localClass2 = Uht;
         continue;
       }
-      Ost = (Method)localObject1;
+      Uhr = (Method)localObject1;
       try
       {
-        if (Osv != null) {
+        if (Uht != null) {
           continue;
         }
-        localObject1 = bfm("java.lang.Throwable");
-        Osv = (Class)localObject1;
-        if (Osv != null) {
+        localObject1 = bvc("java.lang.Throwable");
+        Uht = (Class)localObject1;
+        if (Uht != null) {
           continue;
         }
-        localClass2 = bfm("java.lang.Throwable");
-        Osv = localClass2;
+        localClass2 = bvc("java.lang.Throwable");
+        Uht = localClass2;
         localObject1 = ((Class)localObject1).getMethod("initCause", new Class[] { localClass2 });
       }
       catch (Exception localException2)
@@ -65,25 +65,25 @@ public final class a
         Object localObject2 = localObject3;
         continue;
       }
-      Osu = (Method)localObject1;
+      Uhs = (Method)localObject1;
       AppMethodBeat.o(40719);
       return;
-      localObject1 = Osv;
+      localObject1 = Uht;
     }
   }
   
-  public static Throwable H(Throwable paramThrowable)
+  public static Throwable J(Throwable paramThrowable)
   {
     AppMethodBeat.i(40712);
-    synchronized (Osr)
+    synchronized (Uhp)
     {
-      paramThrowable = a(paramThrowable, Oss);
+      paramThrowable = a(paramThrowable, Uhq);
       AppMethodBeat.o(40712);
       return paramThrowable;
     }
   }
   
-  public static void N(List paramList1, List paramList2)
+  public static void J(List paramList1, List paramList2)
   {
     AppMethodBeat.i(40716);
     int i = paramList1.size();
@@ -120,9 +120,9 @@ public final class a
       }
       localObject2 = ???;
       if (??? == null) {}
-      synchronized (Osr)
+      synchronized (Uhp)
       {
-        localObject2 = Oss;
+        localObject2 = Uhq;
         int i = 0;
         for (;;)
         {
@@ -133,7 +133,7 @@ public final class a
           ??? = localObject2[i];
           if (??? != null)
           {
-            localObject1 = e(paramThrowable, ???);
+            localObject1 = f(paramThrowable, ???);
             ??? = (String[])localObject1;
             if (localObject1 != null) {
               break;
@@ -150,14 +150,14 @@ public final class a
     }
     Object localObject2 = ???;
     if (??? == null) {
-      localObject2 = f(paramThrowable, "detail");
+      localObject2 = g(paramThrowable, "detail");
     }
     label162:
     AppMethodBeat.o(40713);
     return localObject2;
   }
   
-  private static Class bfm(String paramString)
+  private static Class bvc(String paramString)
   {
     AppMethodBeat.i(40718);
     try
@@ -174,10 +174,10 @@ public final class a
     }
   }
   
-  static String[] bfx(String paramString)
+  static String[] bvn(String paramString)
   {
     AppMethodBeat.i(40717);
-    paramString = new StringTokenizer(paramString, h.Oex);
+    paramString = new StringTokenizer(paramString, h.TTr);
     ArrayList localArrayList = new ArrayList();
     while (paramString.hasMoreTokens()) {
       localArrayList.add(paramString.nextToken());
@@ -187,17 +187,17 @@ public final class a
     return paramString;
   }
   
-  private static Throwable e(Throwable paramThrowable, String paramString)
+  private static Throwable f(Throwable paramThrowable, String paramString)
   {
     AppMethodBeat.i(40714);
     try
     {
       paramString = paramThrowable.getClass().getMethod(paramString, null);
       if (paramString != null) {
-        if (Osv == null)
+        if (Uht == null)
         {
-          localClass = bfm("java.lang.Throwable");
-          Osv = localClass;
+          localClass = bvc("java.lang.Throwable");
+          Uht = localClass;
           if (!localClass.isAssignableFrom(paramString.getReturnType())) {
             break label85;
           }
@@ -210,7 +210,7 @@ public final class a
       {
         try
         {
-          paramThrowable = (Throwable)paramString.invoke(paramThrowable, org.apache.commons.b.a.OpM);
+          paramThrowable = (Throwable)paramString.invoke(paramThrowable, org.apache.commons.b.a.UeK);
           AppMethodBeat.o(40714);
           return paramThrowable;
         }
@@ -238,22 +238,22 @@ public final class a
       {
         paramString = null;
         continue;
-        localClass = Osv;
+        localClass = Uht;
       }
     }
   }
   
-  private static Throwable f(Throwable paramThrowable, String paramString)
+  private static Throwable g(Throwable paramThrowable, String paramString)
   {
     AppMethodBeat.i(40715);
     try
     {
       paramString = paramThrowable.getClass().getField(paramString);
       if (paramString != null) {
-        if (Osv == null)
+        if (Uht == null)
         {
-          localClass = bfm("java.lang.Throwable");
-          Osv = localClass;
+          localClass = bvc("java.lang.Throwable");
+          Uht = localClass;
           if (!localClass.isAssignableFrom(paramString.getType())) {
             break label81;
           }
@@ -290,19 +290,19 @@ public final class a
       {
         paramString = null;
         continue;
-        localClass = Osv;
+        localClass = Uht;
       }
     }
   }
   
-  public static boolean gCK()
+  public static boolean hPO()
   {
-    return Ost != null;
+    return Uhr != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.apache.commons.b.b.a
  * JD-Core Version:    0.7.0.1
  */

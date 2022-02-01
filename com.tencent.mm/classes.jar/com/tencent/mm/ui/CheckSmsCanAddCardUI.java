@@ -6,41 +6,41 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.aa;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.br.c;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.account.ui.SimpleLoginUI;
-import com.tencent.mm.protocal.protobuf.xz;
-import com.tencent.mm.protocal.protobuf.ya;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.zn;
+import com.tencent.mm.protocal.protobuf.zo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class CheckSmsCanAddCardUI
   extends MMActivity
-  implements f
+  implements i
 {
-  private String JoR;
-  private b rr;
+  private String OyL;
+  private d rr;
   
-  private void fzg()
+  private void gGU()
   {
     AppMethodBeat.i(32989);
-    Toast.makeText(this, getString(2131764651), 1).show();
-    LauncherUI.jM(this);
+    Toast.makeText(this, getString(2131767022), 1).show();
+    LauncherUI.jI(this);
     finish();
     AppMethodBeat.o(32989);
   }
   
   protected int getLayoutId()
   {
-    return 2131494530;
+    return 2131495126;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -48,7 +48,7 @@ public class CheckSmsCanAddCardUI
     AppMethodBeat.i(32986);
     super.onCreate(paramBundle);
     hideTitleView();
-    if ((!bc.aCh()) || (bc.aiT()))
+    if ((!bg.aVG()) || (bg.azj()))
     {
       MMWizardActivity.b(this, new Intent(this, SimpleLoginUI.class), getIntent());
       finish();
@@ -59,37 +59,37 @@ public class CheckSmsCanAddCardUI
     if (paramBundle != null)
     {
       String str = paramBundle.getHost();
-      if ((!bu.isNullOrNil(str)) && (str.equals("cardpackage"))) {
+      if ((!Util.isNullOrNil(str)) && (str.equals("cardpackage"))) {
         break label224;
       }
-      ae.e("MicroMsg.CheckSmsCanAddCardUI", "err host, host = %s", new Object[] { str });
+      Log.e("MicroMsg.CheckSmsCanAddCardUI", "err host, host = %s", new Object[] { str });
     }
     for (int i = 0;; i = 1)
     {
       if (i == 0) {
         break label267;
       }
-      bc.ajj().a(1038, this);
-      paramBundle = new b.a();
-      paramBundle.hQF = new xz();
-      paramBundle.hQG = new ya();
+      bg.azz().a(1038, this);
+      paramBundle = new d.a();
+      paramBundle.iLN = new zn();
+      paramBundle.iLO = new zo();
       paramBundle.funcId = 1038;
       paramBundle.uri = "/cgi-bin/mmbiz-bin/api/checksmscanaddcard";
-      this.rr = paramBundle.aDS();
-      ((xz)this.rr.hQD.hQJ).GpY = this.JoR;
-      ae.i("MicroMsg.CheckSmsCanAddCardUI", "encry value is %s", new Object[] { this.JoR });
-      this.rr = x.d(this.rr);
+      this.rr = paramBundle.aXF();
+      ((zn)this.rr.iLK.iLR).LkQ = this.OyL;
+      Log.i("MicroMsg.CheckSmsCanAddCardUI", "encry value is %s", new Object[] { this.OyL });
+      this.rr = aa.d(this.rr);
       AppMethodBeat.o(32986);
       return;
       label224:
-      this.JoR = paramBundle.getQueryParameter("encrystr");
-      ae.i("MicroMsg.CheckSmsCanAddCardUI", "encryptCardInfo = %s", new Object[] { this.JoR });
-      if (bu.isNullOrNil(this.JoR)) {
+      this.OyL = paramBundle.getQueryParameter("encrystr");
+      Log.i("MicroMsg.CheckSmsCanAddCardUI", "encryptCardInfo = %s", new Object[] { this.OyL });
+      if (Util.isNullOrNil(this.OyL)) {
         break;
       }
     }
     label267:
-    fzg();
+    gGU();
     AppMethodBeat.o(32986);
   }
   
@@ -97,31 +97,31 @@ public class CheckSmsCanAddCardUI
   {
     AppMethodBeat.i(32987);
     super.onDestroy();
-    bc.ajj().b(1038, this);
+    bg.azz().b(1038, this);
     AppMethodBeat.o(32987);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(32988);
-    ae.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    Log.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      paramn = (ya)this.rr.hQE.hQJ;
-      paramString = paramn.dJb;
-      paramn = paramn.dJc;
-      ae.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd cardid:%s extMsg:%s", new Object[] { paramString, paramn });
+      paramq = (zo)this.rr.iLL.iLR;
+      paramString = paramq.eaO;
+      paramq = paramq.eaP;
+      Log.i("MicroMsg.CheckSmsCanAddCardUI", "onSceneEnd cardid:%s extMsg:%s", new Object[] { paramString, paramq });
       Intent localIntent = new Intent();
       localIntent.putExtra("key_card_id", paramString);
-      localIntent.putExtra("key_card_ext", paramn);
+      localIntent.putExtra("key_card_ext", paramq);
       localIntent.putExtra("key_from_scene", 8);
       localIntent.putExtra("key_is_sms_add_card", true);
-      d.c(this, "card", ".ui.CardDetailUI", localIntent);
+      c.c(this, "card", ".ui.CardDetailUI", localIntent);
       finish();
       AppMethodBeat.o(32988);
       return;
     }
-    fzg();
+    gGU();
     AppMethodBeat.o(32988);
   }
   
@@ -133,7 +133,7 @@ public class CheckSmsCanAddCardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.CheckSmsCanAddCardUI
  * JD-Core Version:    0.7.0.1
  */

@@ -7,18 +7,18 @@ import com.tencent.mm.plugin.card.model.am;
 public final class d
   implements a
 {
-  private c oLh;
+  private c pYV;
   
   public d(c paramc)
   {
-    this.oLh = paramc;
+    this.pYV = paramc;
   }
   
   public final void onCreate()
   {
     AppMethodBeat.i(113185);
-    if (this.oLh != null) {
-      am.bWc().add(this.oLh);
+    if (this.pYV != null) {
+      am.ctQ().add(this.pYV);
     }
     AppMethodBeat.o(113185);
   }
@@ -26,11 +26,11 @@ public final class d
   public final void onDestroy()
   {
     AppMethodBeat.i(113186);
-    if (this.oLh != null)
+    if (this.pYV != null)
     {
-      am.bWc().remove(this.oLh);
-      this.oLh.release();
-      this.oLh = null;
+      am.ctQ().remove(this.pYV);
+      this.pYV.release();
+      this.pYV = null;
     }
     AppMethodBeat.o(113186);
   }
@@ -38,15 +38,15 @@ public final class d
   public final void onNotify()
   {
     AppMethodBeat.i(113187);
-    if (this.oLh != null) {
-      this.oLh.a(null, null);
+    if (this.pYV != null) {
+      this.pYV.onNotifyChange(null, null);
     }
     AppMethodBeat.o(113187);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.d
  * JD-Core Version:    0.7.0.1
  */

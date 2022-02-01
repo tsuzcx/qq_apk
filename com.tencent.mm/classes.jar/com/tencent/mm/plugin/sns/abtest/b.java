@@ -6,74 +6,74 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.AnimationUtils;
 import android.widget.AbsoluteLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public final class b
 {
-  int ahF;
-  int mKJ;
+  int DrA;
+  int DrB;
+  boolean DrC;
+  AbsoluteLayout DrD;
+  boolean DrE;
+  boolean DrF;
+  NotInterestMenu.c Drl;
+  NotInterestMenu Drq;
+  ViewGroup Drr;
+  NotInterestMenu.b Drs;
+  Animation Drt;
+  Animation Dru;
+  private Animation Drv;
+  private Animation Drw;
+  int Drx;
+  int Dry;
+  int Drz;
+  int mActionBarHeight;
   int mScreenHeight;
-  NotInterestMenu.b zmA;
-  Animation zmB;
-  Animation zmC;
-  private Animation zmD;
-  private Animation zmE;
-  int zmF;
-  int zmG;
-  int zmH;
-  int zmI;
-  int zmJ;
-  boolean zmK;
-  AbsoluteLayout zmL;
-  boolean zmM;
-  boolean zmN;
-  NotInterestMenu.c zmt;
-  NotInterestMenu zmy;
-  ViewGroup zmz;
+  int mStatusBarHeight;
   
   public b(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(94952);
-    this.zmA = new NotInterestMenu.b()
+    this.Drs = new NotInterestMenu.b()
     {
-      public final void dUx()
+      public final void eWx()
       {
         AppMethodBeat.i(94945);
-        b.this.dUy();
+        b.this.eWy();
         AppMethodBeat.o(94945);
       }
     };
-    this.zmB = null;
-    this.zmC = null;
-    this.zmD = null;
-    this.zmE = null;
-    this.mKJ = 0;
-    this.ahF = 0;
-    this.zmF = 0;
-    this.zmG = 0;
-    this.zmH = 0;
+    this.Drt = null;
+    this.Dru = null;
+    this.Drv = null;
+    this.Drw = null;
+    this.mStatusBarHeight = 0;
+    this.mActionBarHeight = 0;
+    this.Drx = 0;
+    this.Dry = 0;
+    this.Drz = 0;
     this.mScreenHeight = 0;
-    this.zmI = 0;
-    this.zmJ = 0;
-    this.zmK = false;
-    this.zmL = null;
-    this.zmM = false;
-    this.zmN = false;
-    this.zmz = paramViewGroup;
-    this.zmB = AnimationUtils.loadAnimation(ak.getContext(), 2130772022);
-    this.zmB.setFillAfter(true);
-    this.zmB.setDuration(100L);
-    this.zmB.setAnimationListener(new Animation.AnimationListener()
+    this.DrA = 0;
+    this.DrB = 0;
+    this.DrC = false;
+    this.DrD = null;
+    this.DrE = false;
+    this.DrF = false;
+    this.Drr = paramViewGroup;
+    this.Drt = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), 2130772028);
+    this.Drt.setFillAfter(true);
+    this.Drt.setDuration(100L);
+    this.Drt.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(94946);
-        if (b.this.zmy != null) {
-          b.this.zmy.setVisibility(0);
+        if (b.this.Drq != null) {
+          b.this.Drq.setVisibility(0);
         }
-        b.this.zmM = false;
-        b.this.zmK = true;
+        b.this.DrE = false;
+        b.this.DrC = true;
         AppMethodBeat.o(94946);
       }
       
@@ -81,22 +81,22 @@ public final class b
       
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
-        b.this.zmM = true;
+        b.this.DrE = true;
       }
     });
-    this.zmC = AnimationUtils.loadAnimation(ak.getContext(), 2130772025);
-    this.zmC.setFillAfter(true);
-    this.zmC.setDuration(100L);
-    this.zmC.setAnimationListener(new Animation.AnimationListener()
+    this.Dru = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), 2130772031);
+    this.Dru.setFillAfter(true);
+    this.Dru.setDuration(100L);
+    this.Dru.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(94947);
-        if (b.this.zmy != null) {
-          b.this.zmy.setVisibility(0);
+        if (b.this.Drq != null) {
+          b.this.Drq.setVisibility(0);
         }
-        b.this.zmM = false;
-        b.this.zmK = true;
+        b.this.DrE = false;
+        b.this.DrC = true;
         AppMethodBeat.o(94947);
       }
       
@@ -104,27 +104,27 @@ public final class b
       
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
-        b.this.zmM = true;
+        b.this.DrE = true;
       }
     });
-    this.zmD = AnimationUtils.loadAnimation(ak.getContext(), 2130772023);
-    this.zmD.setFillAfter(true);
-    this.zmD.setDuration(100L);
-    this.zmD.setAnimationListener(new Animation.AnimationListener()
+    this.Drv = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), 2130772029);
+    this.Drv.setFillAfter(true);
+    this.Drv.setDuration(100L);
+    this.Drv.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(94949);
-        ar.f(new Runnable()
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(94948);
-            b.this.dUy();
+            b.this.eWy();
             AppMethodBeat.o(94948);
           }
         });
-        b.this.zmM = false;
+        b.this.DrE = false;
         AppMethodBeat.o(94949);
       }
       
@@ -132,27 +132,27 @@ public final class b
       
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
-        b.this.zmM = true;
+        b.this.DrE = true;
       }
     });
-    this.zmE = AnimationUtils.loadAnimation(ak.getContext(), 2130772024);
-    this.zmE.setFillAfter(true);
-    this.zmE.setDuration(100L);
-    this.zmE.setAnimationListener(new Animation.AnimationListener()
+    this.Drw = AnimationUtils.loadAnimation(MMApplicationContext.getContext(), 2130772030);
+    this.Drw.setFillAfter(true);
+    this.Drw.setDuration(100L);
+    this.Drw.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(94951);
-        ar.f(new Runnable()
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(94950);
-            b.this.dUy();
+            b.this.eWy();
             AppMethodBeat.o(94950);
           }
         });
-        b.this.zmM = false;
+        b.this.DrE = false;
         AppMethodBeat.o(94951);
       }
       
@@ -160,29 +160,29 @@ public final class b
       
       public final void onAnimationStart(Animation paramAnonymousAnimation)
       {
-        b.this.zmM = true;
+        b.this.DrE = true;
       }
     });
     AppMethodBeat.o(94952);
   }
   
-  public final void dUy()
+  public final void eWy()
   {
     AppMethodBeat.i(94953);
-    if ((this.zmL != null) && (this.zmz != null) && (this.zmy != null))
+    if ((this.DrD != null) && (this.Drr != null) && (this.Drq != null))
     {
-      this.zmL.removeView(this.zmy);
-      this.zmz.removeView(this.zmL);
-      this.zmL = null;
-      this.zmy = null;
-      this.zmK = false;
+      this.DrD.removeView(this.Drq);
+      this.Drr.removeView(this.DrD);
+      this.DrD = null;
+      this.Drq = null;
+      this.DrC = false;
     }
     AppMethodBeat.o(94953);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.abtest.b
  * JD-Core Version:    0.7.0.1
  */

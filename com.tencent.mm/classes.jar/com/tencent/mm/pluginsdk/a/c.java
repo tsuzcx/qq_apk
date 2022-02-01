@@ -5,30 +5,30 @@ import com.tencent.mm.pluginsdk.o.b;
 public final class c
   implements o.b
 {
-  public final int dSe()
+  public final int eUf()
   {
     return 0;
   }
   
-  public final void dSf() {}
+  public final void eUg() {}
   
-  public final boolean dSg()
+  public final boolean eUh()
   {
     return false;
   }
   
-  public final void dSh() {}
+  public final void eUi() {}
   
-  public final void dSi() {}
+  public final void eUj() {}
   
-  public final boolean dSj()
+  public final boolean eUk()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -8,6 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.qqmusic.mediaplayer.audiofx.IAudioListener;
 import com.tencent.qqmusic.mediaplayer.util.Logger;
 import com.tencent.qqmusic.mediaplayer.util.WaitNotify;
+import com.tencent.qqmusic.mediaplayer.util.WaitNotify.WaitListener;
 import com.tencent.qqmusic.mediaplayer.utils.AudioUtil;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -248,9 +249,9 @@ class StaticDecodeDataComponent
         {
           public void run()
           {
-            AppMethodBeat.i(76480);
+            AppMethodBeat.i(76712);
             StaticDecodeDataComponent.this.mCallback.playerPaused(StaticDecodeDataComponent.this.mCorePlayer);
-            AppMethodBeat.o(76480);
+            AppMethodBeat.o(76712);
           }
         }, 20);
         doWaitForPaused();
@@ -275,9 +276,9 @@ class StaticDecodeDataComponent
           {
             public void run()
             {
-              AppMethodBeat.i(76712);
+              AppMethodBeat.i(76724);
               StaticDecodeDataComponent.this.mCallback.playerStopped(StaticDecodeDataComponent.this.mCorePlayer);
-              AppMethodBeat.o(76712);
+              AppMethodBeat.o(76724);
             }
           }, 20);
           AppMethodBeat.o(76746);
@@ -311,9 +312,9 @@ class StaticDecodeDataComponent
             {
               public void run()
               {
-                AppMethodBeat.i(76724);
+                AppMethodBeat.i(190297);
                 StaticDecodeDataComponent.this.mCallback.playerEnded(StaticDecodeDataComponent.this.mCorePlayer);
-                AppMethodBeat.o(76724);
+                AppMethodBeat.o(190297);
               }
             }, 20);
           }
@@ -482,7 +483,12 @@ class StaticDecodeDataComponent
           AppMethodBeat.o(76742);
           return;
         }
-        this.mStateRunner.transfer(Integer.valueOf(2));
+        if (!this.mStateRunner.transfer(Integer.valueOf(2), new Integer[] { Integer.valueOf(3) }))
+        {
+          Logger.e("StaticDecodeDataComponent", "failed to transfer to PREPARED because cur State is NOT PREPARING!!");
+          AppMethodBeat.o(76742);
+          return;
+        }
         this.mIsfirstStarted = false;
         initAudioListeners(this.mTargetBitDepth, this.mInformation, getCurPosition());
         postRunnable(new Runnable()
@@ -499,7 +505,7 @@ class StaticDecodeDataComponent
             StaticDecodeDataComponent.this.mCallback.playerPrepared(StaticDecodeDataComponent.this.mCorePlayer);
             AppMethodBeat.o(76481);
           }
-        }, 20);
+        }, 0);
       }
       catch (SoNotFindException localSoNotFindException)
       {
@@ -509,7 +515,20 @@ class StaticDecodeDataComponent
         }
       }
       Logger.i("StaticDecodeDataComponent", axiliary("prepared. waiting..."));
-      this.mSignalControl.doWait();
+      this.mSignalControl.doWait(20L, 100, new WaitNotify.WaitListener()
+      {
+        public boolean keepWaiting()
+        {
+          AppMethodBeat.i(190296);
+          if (StaticDecodeDataComponent.this.getPlayerState() == 2)
+          {
+            AppMethodBeat.o(190296);
+            return true;
+          }
+          AppMethodBeat.o(190296);
+          return false;
+        }
+      });
       Logger.i("StaticDecodeDataComponent", axiliary("woke after preparing"));
       playAudioTrack();
       AppMethodBeat.o(76742);
@@ -523,7 +542,7 @@ class StaticDecodeDataComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.StaticDecodeDataComponent
  * JD-Core Version:    0.7.0.1
  */

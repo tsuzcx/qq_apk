@@ -5,27 +5,27 @@ import java.util.Stack;
 
 final class f
 {
-  private static f LFk;
-  ThreadLocal<Stack<c>> LFl;
+  private static f RaD;
+  ThreadLocal<Stack<c>> RaE;
   
   static
   {
     AppMethodBeat.i(177492);
-    LFk = null;
-    LFk = new f();
+    RaD = null;
+    RaD = new f();
     AppMethodBeat.o(177492);
   }
   
   private f()
   {
     AppMethodBeat.i(177491);
-    this.LFl = new ThreadLocal();
+    this.RaE = new ThreadLocal();
     AppMethodBeat.o(177491);
   }
   
-  public static f fSz()
+  public static f hdF()
   {
-    return LFk;
+    return RaD;
   }
 }
 

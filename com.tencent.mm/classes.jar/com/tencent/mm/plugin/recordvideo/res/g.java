@@ -1,93 +1,95 @@
 package com.tencent.mm.plugin.recordvideo.res;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.plugin.xlabeffect.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "Lcom/tencent/mm/plugin/recordvideo/res/IVideoResReport;", "startKey", "", "(I)V", "checkRes", "", "editExist", "editNotExist", "finishDownload", "initExist", "initNotExist", "report", "key", "unzipFail", "unzipSuccess", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/res/VideoLabelModelResLogic;", "Lcom/tencent/mm/plugin/recordvideo/res/BaseVideoResLogic;", "()V", "RES_FILE_NAME", "", "TAG", "reporter", "Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "getReporter", "()Lcom/tencent/mm/plugin/recordvideo/res/VideoResIDKeyReport;", "afterUnZipRes", "", "success", "", "getFileDirName", "getFilePathKeys", "", "()[Ljava/lang/String;", "getModelFilePath", "getResParentPath", "getResType", "", "getTag", "isModelReady", "plugin-recordvideo_release"})
 public final class g
-  implements b
+  extends a
 {
-  public static final g.a xXy;
-  private final int xXr;
+  private static final h BYk;
+  public static final g BYp;
   
   static
   {
-    AppMethodBeat.i(206694);
-    xXy = new g.a((byte)0);
-    AppMethodBeat.o(206694);
+    AppMethodBeat.i(237499);
+    BYp = new g();
+    BYk = new h(75);
+    AppMethodBeat.o(237499);
   }
   
-  public g(int paramInt)
+  public final int eLi()
   {
-    this.xXr = paramInt;
+    return 80;
   }
   
-  private static void md(int paramInt)
+  public final String[] eLj()
   {
-    AppMethodBeat.i(206693);
-    com.tencent.mm.plugin.report.service.g.yxI.dD(1388, paramInt);
-    AppMethodBeat.o(206693);
+    return new String[] { "path" };
   }
   
-  public final void aHH()
+  public final String eLk()
   {
-    AppMethodBeat.i(206689);
-    md(this.xXr + 4);
-    AppMethodBeat.o(206689);
+    AppMethodBeat.i(237495);
+    String str = b.aKC() + "ImageLabel/";
+    AppMethodBeat.o(237495);
+    return str;
   }
   
-  public final void dKr()
+  public final String eLl()
   {
-    AppMethodBeat.i(206685);
-    md(this.xXr);
-    AppMethodBeat.o(206685);
+    return "ImageLabelModel/";
   }
   
-  public final void dKs()
+  public final String eLy()
   {
-    AppMethodBeat.i(206686);
-    md(this.xXr + 1);
-    AppMethodBeat.o(206686);
+    AppMethodBeat.i(237496);
+    String str = eLk() + "ImageLabel.xnet";
+    AppMethodBeat.o(237496);
+    return str;
   }
   
-  public final void dKt()
+  public final boolean eLz()
   {
-    AppMethodBeat.i(206687);
-    md(this.xXr + 2);
-    AppMethodBeat.o(206687);
+    AppMethodBeat.i(237497);
+    if ((this.BXZ) && (s.YS(eLy())))
+    {
+      AppMethodBeat.o(237497);
+      return true;
+    }
+    AppMethodBeat.o(237497);
+    return false;
   }
   
-  public final void dKu()
+  public final String getTag()
   {
-    AppMethodBeat.i(206688);
-    md(this.xXr + 3);
-    AppMethodBeat.o(206688);
+    return "MicroMsg.VideoLabelModelResLogic";
   }
   
-  public final void dKv()
+  public final void tu(boolean paramBoolean)
   {
-    AppMethodBeat.i(206690);
-    md(this.xXr + 5);
-    AppMethodBeat.o(206690);
-  }
-  
-  public final void dKw()
-  {
-    AppMethodBeat.i(206691);
-    md(this.xXr + 6);
-    AppMethodBeat.o(206691);
-  }
-  
-  public final void dKx()
-  {
-    AppMethodBeat.i(206692);
-    md(this.xXr + 7);
-    AppMethodBeat.o(206692);
+    AppMethodBeat.i(237498);
+    if (paramBoolean)
+    {
+      Log.i("MicroMsg.VideoLabelModelResLogic", "afterUnZipRes, success:".concat(String.valueOf(paramBoolean)));
+      Object localObject = new StringBuilder();
+      e locale = e.JRF;
+      localObject = ((StringBuilder)localObject).append(e.glu()).append("/");
+      locale = e.JRF;
+      localObject = e.glv();
+      s.nx(eLy(), (String)localObject);
+      Log.i("MicroMsg.VideoLabelModelResLogic", "afterUnZipRes, copy image label model path, from:" + eLy() + " to " + (String)localObject);
+    }
+    AppMethodBeat.o(237498);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.g
  * JD-Core Version:    0.7.0.1
  */

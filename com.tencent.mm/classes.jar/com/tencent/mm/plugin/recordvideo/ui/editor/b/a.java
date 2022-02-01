@@ -2,62 +2,62 @@ package com.tencent.mm.plugin.recordvideo.ui.editor.b;
 
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameInfo;", "", "bitmap", "Landroid/graphics/Bitmap;", "frameDuration", "", "(Landroid/graphics/Bitmap;J)V", "getBitmap", "()Landroid/graphics/Bitmap;", "getFrameDuration", "()J", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameInfo;", "", "bitmap", "Landroid/graphics/Bitmap;", "frameDuration", "", "(Landroid/graphics/Bitmap;J)V", "getBitmap", "()Landroid/graphics/Bitmap;", "getFrameDuration", "()J", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-recordvideo_release"})
 public final class a
 {
+  public final long CgA;
   public final Bitmap bitmap;
-  public final long yfB;
   
   public a(Bitmap paramBitmap, long paramLong)
   {
-    AppMethodBeat.i(207058);
+    AppMethodBeat.i(237899);
     this.bitmap = paramBitmap;
-    this.yfB = paramLong;
-    AppMethodBeat.o(207058);
+    this.CgA = paramLong;
+    AppMethodBeat.o(237899);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(207061);
+    AppMethodBeat.i(237902);
     if (this != paramObject)
     {
       if ((paramObject instanceof a))
       {
         paramObject = (a)paramObject;
-        if ((!p.i(this.bitmap, paramObject.bitmap)) || (this.yfB != paramObject.yfB)) {}
+        if ((!p.j(this.bitmap, paramObject.bitmap)) || (this.CgA != paramObject.CgA)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(207061);
+      AppMethodBeat.o(237902);
       return true;
     }
-    AppMethodBeat.o(207061);
+    AppMethodBeat.o(237902);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(207060);
+    AppMethodBeat.i(237901);
     Bitmap localBitmap = this.bitmap;
     if (localBitmap != null) {}
     for (int i = localBitmap.hashCode();; i = 0)
     {
-      long l = this.yfB;
+      long l = this.CgA;
       int j = (int)(l ^ l >>> 32);
-      AppMethodBeat.o(207060);
+      AppMethodBeat.o(237901);
       return i * 31 + j;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(207059);
-    String str = "FrameInfo(bitmap=" + this.bitmap + ", frameDuration=" + this.yfB + ")";
-    AppMethodBeat.o(207059);
+    AppMethodBeat.i(237900);
+    String str = "FrameInfo(bitmap=" + this.bitmap + ", frameDuration=" + this.CgA + ")";
+    AppMethodBeat.o(237900);
     return str;
   }
 }

@@ -1,5 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp"
+<RelativeLayout android:background="@color/a74" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v4.view.ViewPager android:id="@id/dgs" android:clickable="true" android:layout_width="fill_parent" android:layout_height="300.0dip" android:layout_centerVertical="true" />
+    <RelativeLayout android:id="@id/e95" android:background="@color/a74" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/hs" android:layout_toLeftOf="@id/io4" android:layout_alignTop="@id/io4" android:layout_alignBottom="@id/io4" android:layout_alignParentLeft="true">
+            <View android:layout_gravity="center" android:background="#ffcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="@dimen/hs" android:layout_toRightOf="@id/io4" android:layout_alignTop="@id/io4" android:layout_alignBottom="@id/io4" android:layout_alignParentRight="true">
+            <View android:layout_gravity="center" android:background="#ffcccccc" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:gravity="center" android:id="@id/io4" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i1" android:hint="@string/e7f" android:layout_centerHorizontal="true" />
+        <com.tencent.mm.ui.base.MMGridView android:gravity="center" android:id="@id/guw" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/i1" android:layout_marginRight="@dimen/hs" android:listSelector="@android:color/transparent" android:horizontalSpacing="@dimen/a9z" android:verticalSpacing="@dimen/a9z" android:stretchMode="columnWidth" android:numColumns="3" android:minHeight="180.0dip" android:layout_below="@id/io4" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:gravity="center" android:id="@id/bn6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/i1" android:layout_marginRight="@dimen/hs" android:layout_below="@id/guw" android:layout_centerHorizontal="true" />
+        <Button android:id="@id/ahq" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="50.0dip" android:layout_marginRight="@dimen/hs" android:layout_marginBottom="@dimen/k5" android:text="@string/e7b" android:layout_below="@id/bn6" style="@style/ou" />
+    </RelativeLayout>
+    <ListView android:id="@id/gv0" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@android:color/transparent" />
 </RelativeLayout>

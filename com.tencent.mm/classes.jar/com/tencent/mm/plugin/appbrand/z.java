@@ -1,36 +1,82 @@
 package com.tencent.mm.plugin.appbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.base.g;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import org.json.JSONObject;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.kernel.c.c;
+import com.tencent.mm.kernel.c.d;
+import com.tencent.mm.kernel.c.d.a;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
-final class z
-  implements g
+public final class z
+  extends d
 {
-  public final e c(c paramc, JSONObject paramJSONObject)
+  private final Set<Class<? extends a>> kEJ;
+  private volatile d.a kEK;
+  
+  public z()
   {
-    AppMethodBeat.i(134624);
-    if ((paramc instanceof e))
+    AppMethodBeat.i(134622);
+    this.kEJ = Collections.newSetFromMap(new ConcurrentHashMap());
+    super.a(new d.a()
     {
-      paramc = (e)paramc;
-      AppMethodBeat.o(134624);
-      return paramc;
+      public final void a(Class<? extends a> paramAnonymousClass, a paramAnonymousa)
+      {
+        AppMethodBeat.i(134621);
+        d.a locala = z.b(z.this);
+        if (locala != null) {
+          locala.a(paramAnonymousClass, paramAnonymousa);
+        }
+        AppMethodBeat.o(134621);
+      }
+      
+      public final void a(Class<? extends a> paramAnonymousClass, c paramAnonymousc)
+      {
+        AppMethodBeat.i(134619);
+        z.a(z.this).add(paramAnonymousClass);
+        d.a locala = z.b(z.this);
+        if (locala != null) {
+          locala.a(paramAnonymousClass, paramAnonymousc);
+        }
+        AppMethodBeat.o(134619);
+      }
+      
+      public final void b(Class<? extends a> paramAnonymousClass, c paramAnonymousc)
+      {
+        AppMethodBeat.i(134620);
+        d.a locala = z.b(z.this);
+        if (locala != null) {
+          locala.b(paramAnonymousClass, paramAnonymousc);
+        }
+        AppMethodBeat.o(134620);
+      }
+    });
+    AppMethodBeat.o(134622);
+  }
+  
+  public final void a(d.a parama)
+  {
+    this.kEK = parama;
+  }
+  
+  public final void unregisterAll()
+  {
+    AppMethodBeat.i(134623);
+    Object localObject = new HashSet(this.kEJ);
+    this.kEJ.clear();
+    localObject = ((Set)localObject).iterator();
+    while (((Iterator)localObject).hasNext()) {
+      super.ag((Class)((Iterator)localObject).next());
     }
-    if ((paramc instanceof r))
-    {
-      paramc = ((r)paramc).getCurrentPageView();
-      AppMethodBeat.o(134624);
-      return paramc;
-    }
-    AppMethodBeat.o(134624);
-    return null;
+    AppMethodBeat.o(134623);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.z
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <CheckBoxPreference android1:persistent="true" android:key="settings_active_silence_time" android:summary="@string/f4l" android:title="@string/f4j" />
-    <CheckBoxPreference android1:persistent="true" android:key="settings_active_time_full" android:summary="@string/f4l" android:title="@string/f4k" />
-    <Preference android:key="settings_active_begin_time" android:layout="@layout/aop" android:title="@string/f4h" />
-    <Preference android:key="settings_active_end_time" android:layout="@layout/aop" android:title="@string/f4i" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <PreferenceTitleCategory android:title="@string/gnh" />
+    <CheckBoxPreference android:key="settings_need_verify" android:layout="@layout/b8j" android:title="@string/gri" />
+    <CheckBoxPreference android:key="settings_recommend_mobilefriends_to_me" android:summary="@string/gt8" android:title="@string/bel" />
+    <CheckBoxPreference android:key="settings_find_google_contact" android:summary="@string/gt7" android:title="@string/goy" />
+    <Preference android:key="settings_add_me_way" android:layout="@layout/b8j" android:title="@string/gnb" />
+    <Preference android:key="settings_about_blacklist" android:layout="@layout/b8j" android:title="@string/gt3" />
+    <Preference android:key="settings_unfamiliar_contact" android:layout="@layout/b8j" android:title="@string/gw2" />
+    <PreferenceTitleCategory android:key="settings_add_friends_timeline_tip" android:title="@string/gni" />
+    <Preference android:key="timline_outside_permiss" android:title="@string/h97" />
+    <Preference android:key="timeline_black_permiss" android:title="@string/h57" />
+    <Preference android:key="edit_timeline_group" android:title="@string/gt1" />
+    <CheckBoxPreference android:key="timeline_stranger_show" android:layout="@layout/b8j" android:title="@string/bb9" />
+    <IconPreference android:key="timeline_recent_show_select" android:title="@string/bb4" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="profile_finder_like_show" android:layout="@layout/b8j" android:title="@string/d7x" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="timeline_live_list_show" android:layout="@layout/b8j" android:title="@string/d_6" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_auth_manage" android:title="@string/gnf" />
+    <PreferenceCategory />
 </PreferenceScreen>

@@ -5,21 +5,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   implements i<String>
 {
-  public final boolean av(byte[] paramArrayOfByte)
+  public final boolean aM(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(211180);
-    if (!h.aw(paramArrayOfByte))
+    AppMethodBeat.i(234849);
+    if (!h.aN(paramArrayOfByte))
     {
-      AppMethodBeat.o(211180);
+      AppMethodBeat.o(234849);
       return true;
     }
-    AppMethodBeat.o(211180);
+    AppMethodBeat.o(234849);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.e.g
  * JD-Core Version:    0.7.0.1
  */

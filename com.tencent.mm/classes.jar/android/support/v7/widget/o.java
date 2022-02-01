@@ -9,20 +9,20 @@ final class o
 {
   private static an j(q paramq)
   {
-    return (an)paramq.jp();
+    return (an)paramq.jy();
   }
   
   public final float a(q paramq)
   {
-    return j(paramq).auQ;
+    return j(paramq).auO;
   }
   
   public final void a(q paramq, float paramFloat)
   {
     paramq = j(paramq);
-    if (paramFloat != paramq.auN)
+    if (paramFloat != paramq.auL)
     {
-      paramq.auN = paramFloat;
+      paramq.auL = paramFloat;
       paramq.h(null);
       paramq.invalidateSelf();
     }
@@ -31,7 +31,7 @@ final class o
   public final void a(q paramq, Context paramContext, ColorStateList paramColorStateList, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     paramq.q(new an(paramColorStateList, paramFloat1));
-    paramContext = paramq.jq();
+    paramContext = paramq.jz();
     paramContext.setClipToOutline(true);
     paramContext.setElevation(paramFloat2);
     b(paramq, paramFloat3);
@@ -46,7 +46,7 @@ final class o
   
   public final float b(q paramq)
   {
-    return j(paramq).auN * 2.0F;
+    return j(paramq).auL * 2.0F;
   }
   
   public final void b(q paramq, float paramFloat)
@@ -57,22 +57,22 @@ final class o
   
   public final float c(q paramq)
   {
-    return j(paramq).auN * 2.0F;
+    return j(paramq).auL * 2.0F;
   }
   
   public final void c(q paramq, float paramFloat)
   {
-    paramq.jq().setElevation(paramFloat);
+    paramq.jz().setElevation(paramFloat);
   }
   
   public final float d(q paramq)
   {
-    return j(paramq).auN;
+    return j(paramq).auL;
   }
   
   public final float e(q paramq)
   {
-    return paramq.jq().getElevation();
+    return paramq.jz().getElevation();
   }
   
   public final void f(q paramq)
@@ -82,8 +82,8 @@ final class o
       paramq.e(0, 0, 0, 0);
       return;
     }
-    float f1 = j(paramq).auQ;
-    float f2 = j(paramq).auN;
+    float f1 = j(paramq).auO;
+    float f2 = j(paramq).auL;
     int i = (int)Math.ceil(ao.b(f1, f2, paramq.getPreventCornerOverlap()));
     int j = (int)Math.ceil(ao.a(f1, f2, paramq.getPreventCornerOverlap()));
     paramq.e(i, j, i, j);
@@ -91,17 +91,17 @@ final class o
   
   public final void g(q paramq)
   {
-    b(paramq, j(paramq).auQ);
+    b(paramq, j(paramq).auO);
   }
   
   public final void h(q paramq)
   {
-    b(paramq, j(paramq).auQ);
+    b(paramq, j(paramq).auO);
   }
   
   public final ColorStateList i(q paramq)
   {
-    return j(paramq).auT;
+    return j(paramq).auR;
   }
   
   public final void initStatic() {}

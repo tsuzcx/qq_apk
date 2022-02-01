@@ -14,7 +14,22 @@ import javax.crypto.spec.SecretKeySpec;
 
 public final class a
 {
-  public static final byte[] eOA()
+  public static final HashMap<String, Object> fWi()
+  {
+    AppMethodBeat.i(131327);
+    Object localObject1 = KeyPairGenerator.getInstance("RSA");
+    ((KeyPairGenerator)localObject1).initialize(1024);
+    Object localObject2 = ((KeyPairGenerator)localObject1).generateKeyPair();
+    localObject1 = (RSAPublicKey)((KeyPair)localObject2).getPublic();
+    localObject2 = (RSAPrivateKey)((KeyPair)localObject2).getPrivate();
+    HashMap localHashMap = new HashMap(2);
+    localHashMap.put("RSAPublicKey", localObject1);
+    localHashMap.put("RSAPrivateKey", localObject2);
+    AppMethodBeat.o(131327);
+    return localHashMap;
+  }
+  
+  public static final byte[] fWj()
   {
     AppMethodBeat.i(131329);
     try
@@ -32,21 +47,6 @@ public final class a
     return null;
   }
   
-  public static final HashMap<String, Object> eOz()
-  {
-    AppMethodBeat.i(131327);
-    Object localObject1 = KeyPairGenerator.getInstance("RSA");
-    ((KeyPairGenerator)localObject1).initialize(1024);
-    Object localObject2 = ((KeyPairGenerator)localObject1).generateKeyPair();
-    localObject1 = (RSAPublicKey)((KeyPair)localObject2).getPublic();
-    localObject2 = (RSAPrivateKey)((KeyPair)localObject2).getPrivate();
-    HashMap localHashMap = new HashMap(2);
-    localHashMap.put("RSAPublicKey", localObject1);
-    localHashMap.put("RSAPrivateKey", localObject2);
-    AppMethodBeat.o(131327);
-    return localHashMap;
-  }
-  
   public static final byte[] j(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(131328);
@@ -60,7 +60,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.a.a
  * JD-Core Version:    0.7.0.1
  */

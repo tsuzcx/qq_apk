@@ -10,10 +10,10 @@ import android.media.MediaCodecInfo.CodecCapabilities;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.z;
-import com.tencent.mm.compatible.h.c;
+import com.tencent.mm.compatible.i.c;
 import com.tencent.mm.plugin.mmsight.model.a.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
 
 @TargetApi(21)
@@ -26,7 +26,7 @@ public final class j
   {
     super(paramc, paramMediaFormat, paramInt);
     AppMethodBeat.i(107676);
-    ae.i(TAG, "init ");
+    Log.i(TAG, "init ");
     AppMethodBeat.o(107676);
   }
   
@@ -39,8 +39,8 @@ public final class j
     int i = 0;
     paramImage = paramImage.getPlanes();
     int k = i3 * i4 * ImageFormat.getBitsPerPixel(j) / 8;
-    ae.i(TAG, "planes len %d, datalen: %s width %d height %d format %d", new Object[] { Integer.valueOf(paramImage.length), Integer.valueOf(k), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(j) });
-    byte[] arrayOfByte1 = k.wcg.h(Integer.valueOf(k));
+    Log.i(TAG, "planes len %d, datalen: %s width %d height %d format %d", new Object[] { Integer.valueOf(paramImage.length), Integer.valueOf(k), Integer.valueOf(i3), Integer.valueOf(i4), Integer.valueOf(j) });
+    byte[] arrayOfByte1 = k.zwi.h(Integer.valueOf(k));
     k = 0;
     while (k < paramImage.length)
     {
@@ -60,8 +60,8 @@ public final class j
       label297:
       for (int n = i4;; n = i4 / 2)
       {
-        ae.v(TAG, "row planes rowStride %d w %d h %d pixelStride %d", new Object[] { Integer.valueOf(i5), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i6) });
-        arrayOfByte2 = k.wcg.h(Integer.valueOf(i5));
+        Log.v(TAG, "row planes rowStride %d w %d h %d pixelStride %d", new Object[] { Integer.valueOf(i5), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i6) });
+        arrayOfByte2 = k.zwi.h(Integer.valueOf(i5));
         i1 = 0;
         for (;;)
         {
@@ -103,29 +103,140 @@ public final class j
         localByteBuffer.get(arrayOfByte2, 0, i5);
       }
       label384:
-      k.wcg.k(arrayOfByte2);
+      k.zwi.k(arrayOfByte2);
       k += 1;
     }
     AppMethodBeat.o(107679);
     return arrayOfByte1;
   }
   
-  protected final int a(MediaCodecInfo paramMediaCodecInfo, String paramString)
+  protected final boolean aMg()
+  {
+    AppMethodBeat.i(107678);
+    if (this.iec == null)
+    {
+      Log.e(TAG, "drainDecoder, decoder is null");
+      AppMethodBeat.o(107678);
+      return true;
+    }
+    int i = this.iec.dequeueOutputBuffer(this.bufferInfo, 60000L);
+    Log.i(TAG, "outputBufferIndex-->".concat(String.valueOf(i)));
+    if (i == -1)
+    {
+      Log.i(TAG, "no output from decoder available, break");
+      label70:
+      AppMethodBeat.o(107678);
+      return false;
+    }
+    if (i == -3) {
+      Log.i(TAG, "decoder output buffers changed");
+    }
+    for (;;)
+    {
+      int j = this.iec.dequeueOutputBuffer(this.bufferInfo, 60000L);
+      i = j;
+      if (j >= 0) {
+        break;
+      }
+      break label70;
+      if (i == -2)
+      {
+        this.jtq = this.iec.getOutputFormat();
+        Log.i(TAG, "decoder output format changed: " + this.jtq);
+      }
+      else if (i < 0)
+      {
+        Log.w(TAG, "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
+      }
+      else
+      {
+        Log.v(TAG, "perform decoding");
+        long l = Util.currentTicks();
+        byte[] arrayOfByte = b(this.iec.getOutputImage(i));
+        Log.v(TAG, "perform decoding costImage %s", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+        if (arrayOfByte == null) {
+          break label70;
+        }
+        if (arrayOfByte.length != 0)
+        {
+          MediaCodec.BufferInfo localBufferInfo = this.bufferInfo;
+          if (arrayOfByte == null) {
+            Log.e(TAG, "processDecodeOutputBuffer error! byteBuffer is null");
+          }
+          for (;;)
+          {
+            this.iec.releaseOutputBuffer(i, false);
+            l = this.bufferInfo.presentationTimeUs;
+            if ((this.endTimeMs == 1L) || (l < this.endTimeMs * 1000L)) {
+              break;
+            }
+            Log.e(TAG, "exceed endTimeMs");
+            AppMethodBeat.o(107678);
+            return true;
+            Log.i(TAG, "processDecodeOutputBuffer, byteBuffer: %s, bufferInfo: %s, size: %d", new Object[] { arrayOfByte, localBufferInfo, Integer.valueOf(localBufferInfo.size) });
+            this.jtq = this.iec.getOutputFormat();
+            if (this.zxX != null) {
+              this.zxX.bJ(arrayOfByte);
+            }
+          }
+          if ((this.bufferInfo.flags & 0x4) != 0)
+          {
+            Log.i(TAG, "receive end of stream");
+            try
+            {
+              this.iec.stop();
+              this.iec.release();
+              this.iec = null;
+              AppMethodBeat.o(107678);
+              return true;
+            }
+            catch (Exception localException)
+            {
+              for (;;)
+              {
+                Log.e(TAG, "stop and release decoder error: %s", new Object[] { localException.getMessage() });
+              }
+            }
+          }
+          AppMethodBeat.o(107678);
+          return false;
+        }
+        this.iec.releaseOutputBuffer(i, false);
+      }
+    }
+  }
+  
+  public final int bhK()
+  {
+    return 2;
+  }
+  
+  protected final boolean isRecognizedFormat(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return false;
+    }
+    return true;
+  }
+  
+  protected final int selectColorFormat(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
     AppMethodBeat.i(107677);
-    ae.i(TAG, "selectColorFormat, mimeType: %s, codecInfo: %s", new Object[] { paramString, paramMediaCodecInfo });
-    long l = bu.HQ();
+    Log.i(TAG, "selectColorFormat, mimeType: %s, codecInfo: %s", new Object[] { paramString, paramMediaCodecInfo });
+    long l = Util.currentTicks();
     paramString = paramMediaCodecInfo.getCapabilitiesForType(paramString);
-    ae.i(TAG, "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(bu.aO(l)) });
-    ae.i(TAG, "color format length: %s", new Object[] { Integer.valueOf(paramString.colorFormats.length) });
+    Log.i(TAG, "getCapabilitiesForType used %sms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+    Log.i(TAG, "color format length: %s", new Object[] { Integer.valueOf(paramString.colorFormats.length) });
     int i = 0;
     int k;
     for (int j = 0; i < paramString.colorFormats.length; j = k)
     {
       int m = paramString.colorFormats[i];
-      ae.i(TAG, "capabilities colorFormat: %s", new Object[] { Integer.valueOf(m) });
+      Log.i(TAG, "capabilities colorFormat: %s", new Object[] { Integer.valueOf(m) });
       k = j;
-      if (qr(m)) {
+      if (isRecognizedFormat(m)) {
         if (m <= j)
         {
           k = j;
@@ -138,125 +249,14 @@ public final class j
       }
       i += 1;
     }
-    ae.i(TAG, "codec: %s, colorFormat: %s", new Object[] { paramMediaCodecInfo.getName(), Integer.valueOf(j) });
+    Log.i(TAG, "codec: %s, colorFormat: %s", new Object[] { paramMediaCodecInfo.getName(), Integer.valueOf(j) });
     AppMethodBeat.o(107677);
     return j;
-  }
-  
-  public final int aNG()
-  {
-    return 2;
-  }
-  
-  protected final boolean atF()
-  {
-    AppMethodBeat.i(107678);
-    if (this.hlf == null)
-    {
-      ae.e(TAG, "drainDecoder, decoder is null");
-      AppMethodBeat.o(107678);
-      return true;
-    }
-    int i = this.hlf.dequeueOutputBuffer(this.bufferInfo, 60000L);
-    ae.i(TAG, "outputBufferIndex-->".concat(String.valueOf(i)));
-    if (i == -1)
-    {
-      ae.i(TAG, "no output from decoder available, break");
-      label70:
-      AppMethodBeat.o(107678);
-      return false;
-    }
-    if (i == -3) {
-      ae.i(TAG, "decoder output buffers changed");
-    }
-    for (;;)
-    {
-      int j = this.hlf.dequeueOutputBuffer(this.bufferInfo, 60000L);
-      i = j;
-      if (j >= 0) {
-        break;
-      }
-      break label70;
-      if (i == -2)
-      {
-        this.iya = this.hlf.getOutputFormat();
-        ae.i(TAG, "decoder output format changed: " + this.iya);
-      }
-      else if (i < 0)
-      {
-        ae.w(TAG, "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
-      }
-      else
-      {
-        ae.v(TAG, "perform decoding");
-        long l = bu.HQ();
-        byte[] arrayOfByte = b(this.hlf.getOutputImage(i));
-        ae.v(TAG, "perform decoding costImage %s", new Object[] { Long.valueOf(bu.aO(l)) });
-        if (arrayOfByte == null) {
-          break label70;
-        }
-        if (arrayOfByte.length != 0)
-        {
-          MediaCodec.BufferInfo localBufferInfo = this.bufferInfo;
-          if (arrayOfByte == null) {
-            ae.e(TAG, "processDecodeOutputBuffer error! byteBuffer is null");
-          }
-          for (;;)
-          {
-            this.hlf.releaseOutputBuffer(i, false);
-            l = this.bufferInfo.presentationTimeUs;
-            if ((this.hlm == 1L) || (l < this.hlm * 1000L)) {
-              break;
-            }
-            ae.e(TAG, "exceed endTimeMs");
-            AppMethodBeat.o(107678);
-            return true;
-            ae.i(TAG, "processDecodeOutputBuffer, byteBuffer: %s, bufferInfo: %s, size: %d", new Object[] { arrayOfByte, localBufferInfo, Integer.valueOf(localBufferInfo.size) });
-            this.iya = this.hlf.getOutputFormat();
-            if (this.wdp != null) {
-              this.wdp.bs(arrayOfByte);
-            }
-          }
-          if ((this.bufferInfo.flags & 0x4) != 0)
-          {
-            ae.i(TAG, "receive end of stream");
-            try
-            {
-              this.hlf.stop();
-              this.hlf.release();
-              this.hlf = null;
-              AppMethodBeat.o(107678);
-              return true;
-            }
-            catch (Exception localException)
-            {
-              for (;;)
-              {
-                ae.e(TAG, "stop and release decoder error: %s", new Object[] { localException.getMessage() });
-              }
-            }
-          }
-          AppMethodBeat.o(107678);
-          return false;
-        }
-        this.hlf.releaseOutputBuffer(i, false);
-      }
-    }
-  }
-  
-  protected final boolean qr(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.j
  * JD-Core Version:    0.7.0.1
  */

@@ -2,30 +2,35 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class fn
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eUF;
-  private static final int fgF = "createtime".hashCode();
-  private static final int fsQ = "uid".hashCode();
-  private static final int fsR;
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PushDuplicateLaunchWxaAppRespTableStartTimeIndex ON PredownloadIssueLaunchWxaAppResponse(startTime)", "CREATE INDEX IF NOT EXISTS PushDuplicateLaunchWxaAppRespTableEndTimeIndex ON PredownloadIssueLaunchWxaAppResponse(endTime)" };
+  private static final int fVm = "launchProtoBlob".hashCode();
+  private static final int fjQ;
+  private static final int fjx = "startTime".hashCode();
+  private static final int fjy = "endTime".hashCode();
+  private static final int fkj = "appId".hashCode();
+  private static final int flJ = "reportId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eTT = true;
-  private boolean fgu = true;
-  public long field_createtime;
-  public String field_devicetype;
-  public String field_name;
-  public String field_uid;
-  private boolean fsO = true;
-  private boolean fsP = true;
+  private boolean fVl = true;
+  public String field_appId;
+  public long field_endTime;
+  public byte[] field_launchProtoBlob;
+  public long field_reportId;
+  public int field_scene;
+  public long field_startTime;
+  private boolean fjO = true;
+  private boolean fjS = true;
+  private boolean fjq = true;
+  private boolean fjr = true;
+  private boolean flE = true;
   
   static
   {
-    eUF = "name".hashCode();
-    fsR = "devicetype".hashCode();
+    fjQ = "scene".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -41,24 +46,27 @@ public abstract class fn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fsQ != k) {
-        break label65;
+      if (fkj != k) {
+        break label60;
       }
-      this.field_uid = paramCursor.getString(i);
-      this.fsO = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eUF == k) {
-        this.field_name = paramCursor.getString(i);
-      } else if (fsR == k) {
-        this.field_devicetype = paramCursor.getString(i);
-      } else if (fgF == k) {
-        this.field_createtime = paramCursor.getLong(i);
+      label60:
+      if (fjQ == k) {
+        this.field_scene = paramCursor.getInt(i);
+      } else if (fVm == k) {
+        this.field_launchProtoBlob = paramCursor.getBlob(i);
+      } else if (fjx == k) {
+        this.field_startTime = paramCursor.getLong(i);
+      } else if (fjy == k) {
+        this.field_endTime = paramCursor.getLong(i);
+      } else if (flJ == k) {
+        this.field_reportId = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -68,26 +76,23 @@ public abstract class fn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.field_uid == null) {
-      this.field_uid = "";
+    if (this.fjS) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.fsO) {
-      localContentValues.put("uid", this.field_uid);
+    if (this.fjO) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.field_name == null) {
-      this.field_name = "";
+    if (this.fVl) {
+      localContentValues.put("launchProtoBlob", this.field_launchProtoBlob);
     }
-    if (this.eTT) {
-      localContentValues.put("name", this.field_name);
+    if (this.fjq) {
+      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
     }
-    if (this.field_devicetype == null) {
-      this.field_devicetype = "";
+    if (this.fjr) {
+      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
     }
-    if (this.fsP) {
-      localContentValues.put("devicetype", this.field_devicetype);
-    }
-    if (this.fgu) {
-      localContentValues.put("createtime", Long.valueOf(this.field_createtime));
+    if (this.flE) {
+      localContentValues.put("reportId", Long.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -97,7 +102,7 @@ public abstract class fn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.fn
  * JD-Core Version:    0.7.0.1
  */

@@ -10,35 +10,35 @@ import java.util.Arrays;
 public final class f
   extends a
 {
-  public final float[] xLE;
-  private final float[] xLc;
-  private final float[] xLd;
-  private FloatBuffer xLe;
-  private FloatBuffer xLf;
-  private int xLg;
-  private int xLi;
+  public final float[] BLK;
+  private final float[] BLg;
+  private final float[] BLh;
+  private FloatBuffer BLi;
+  private FloatBuffer BLj;
+  private int BLk;
+  private int BLm;
   
   public f()
   {
     AppMethodBeat.i(75012);
-    this.xLc = new float[] { -1.0F, -1.0F, 0.0F, 1.0F, -1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F };
-    this.xLd = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
-    this.xLE = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
+    this.BLg = new float[] { -1.0F, -1.0F, 0.0F, 1.0F, -1.0F, 0.0F, -1.0F, 1.0F, 0.0F, 1.0F, 1.0F, 0.0F };
+    this.BLh = new float[] { 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F };
+    this.BLK = new float[] { 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 0.0F, 0.0F, 1.0F };
     AppMethodBeat.o(75012);
   }
   
-  public static void dIw()
+  public static void eJj()
   {
     AppMethodBeat.i(75016);
     GLES20.glDrawArrays(5, 0, 4);
     AppMethodBeat.o(75016);
   }
   
-  public final void Ok(int paramInt)
+  public final void Vz(int paramInt)
   {
     AppMethodBeat.i(75014);
     GLES20.glBindTexture(3553, paramInt);
-    GLES20.glUniform1f(this.xLg, 0.0F);
+    GLES20.glUniform1f(this.BLk, 0.0F);
     AppMethodBeat.o(75014);
   }
   
@@ -54,10 +54,10 @@ public final class f
     float f5 = -1.0F;
     float f4 = 0.0F;
     float f3 = 1.0F;
-    float[] arrayOfFloat1 = Arrays.copyOf(this.xLd, this.xLd.length);
-    float[] arrayOfFloat2 = Arrays.copyOf(this.xLc, this.xLc.length);
+    float[] arrayOfFloat1 = Arrays.copyOf(this.BLh, this.BLh.length);
+    float[] arrayOfFloat2 = Arrays.copyOf(this.BLg, this.BLg.length);
     float f1;
-    switch (1.xLF[parama.ordinal()])
+    switch (1.BLL[parama.ordinal()])
     {
     default: 
       f1 = 1.0F;
@@ -78,13 +78,13 @@ public final class f
       arrayOfFloat2[7] = f6;
       arrayOfFloat2[9] = f7;
       arrayOfFloat2[10] = f6;
-      this.xLe = ByteBuffer.allocateDirect(arrayOfFloat2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.xLe.put(arrayOfFloat2).position(0);
-      GLES20.glVertexAttribPointer(0, 3, 5126, false, 0, this.xLe);
+      this.BLi = ByteBuffer.allocateDirect(arrayOfFloat2.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.BLi.put(arrayOfFloat2).position(0);
+      GLES20.glVertexAttribPointer(0, 3, 5126, false, 0, this.BLi);
       GLES20.glEnableVertexAttribArray(0);
-      this.xLf = ByteBuffer.allocateDirect(arrayOfFloat1.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
-      this.xLf.put(arrayOfFloat1).position(0);
-      GLES20.glVertexAttribPointer(1, 2, 5126, false, 0, this.xLf);
+      this.BLj = ByteBuffer.allocateDirect(arrayOfFloat1.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer();
+      this.BLj.put(arrayOfFloat1).position(0);
+      GLES20.glVertexAttribPointer(1, 2, 5126, false, 0, this.BLj);
       GLES20.glEnableVertexAttribArray(1);
       new StringBuilder("scale cost:").append(System.currentTimeMillis() - l);
       AppMethodBeat.o(75017);
@@ -133,7 +133,7 @@ public final class f
     }
   }
   
-  public final void dIv()
+  public final void eJi()
   {
     AppMethodBeat.i(75013);
     int[] arrayOfInt = new int[1];
@@ -158,22 +158,22 @@ public final class f
       AppMethodBeat.o(75013);
       return;
     }
-    this.xLi = GLES20.glGetUniformLocation(k, "uMVPMatrix");
-    this.xLg = GLES20.glGetUniformLocation(k, "u_Texture");
-    this.xKX = k;
+    this.BLm = GLES20.glGetUniformLocation(k, "uMVPMatrix");
+    this.BLk = GLES20.glGetUniformLocation(k, "u_Texture");
+    this.BLb = k;
     AppMethodBeat.o(75013);
   }
   
   public final void m(float[] paramArrayOfFloat)
   {
     AppMethodBeat.i(75015);
-    GLES20.glUniformMatrix4fv(this.xLi, 1, false, paramArrayOfFloat, 0);
+    GLES20.glUniformMatrix4fv(this.BLm, 1, false, paramArrayOfFloat, 0);
     AppMethodBeat.o(75015);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.background.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.scanner;
 
 public final class a
 {
-  public static int OS(int paramInt)
+  public static int Wo(int paramInt)
   {
     switch (paramInt)
     {
@@ -26,7 +26,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,16 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Context;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.platform.window.c;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import kotlin.l;
 
-public abstract interface ai
-{
-  public abstract void C(AppBrandRuntime paramAppBrandRuntime);
-  
-  public abstract void a(AppBrandRuntime paramAppBrandRuntime, AppBrandInitConfig paramAppBrandInitConfig);
-  
-  public abstract void a(AppBrandRuntime paramAppBrandRuntime, Object paramObject);
-  
-  public abstract AppBrandRuntime getActiveRuntime();
-  
-  public abstract Context getContext();
-  
-  public abstract int getStackSize();
-  
-  public abstract c getWindowAndroid();
-  
-  public abstract AppBrandRuntime v(AppBrandRuntime paramAppBrandRuntime);
-  
-  public abstract boolean w(AppBrandRuntime paramAppBrandRuntime);
-  
-  public abstract void x(AppBrandRuntime paramAppBrandRuntime);
-}
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/IPC_TASK_stashPersistentApp;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/IPC_PARAM_stashPersistentApp;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
+final class ai
+  implements k<IPC_PARAM_stashPersistentApp, IPCVoid>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ai
  * JD-Core Version:    0.7.0.1
  */

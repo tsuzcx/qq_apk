@@ -7,53 +7,53 @@ import java.util.LinkedList;
 public final class f
   extends i
 {
-  public b qkS;
-  public b qkT;
+  public b rBN;
+  public b rBO;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(23490);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.qlg != null)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.rCb != null)
       {
-        paramVarArgs.lJ(1, this.qlg.computeSize());
-        this.qlg.writeFields(paramVarArgs);
+        paramVarArgs.ni(1, this.rCb.computeSize());
+        this.rCb.writeFields(paramVarArgs);
       }
-      if (this.qkS != null) {
-        paramVarArgs.c(2, this.qkS);
+      if (this.rBN != null) {
+        paramVarArgs.c(2, this.rBN);
       }
-      if (this.qkT != null) {
-        paramVarArgs.c(3, this.qkT);
+      if (this.rBO != null) {
+        paramVarArgs.c(3, this.rBO);
       }
       AppMethodBeat.o(23490);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.qlg == null) {
+      if (this.rCb == null) {
         break label439;
       }
     }
     label439:
-    for (int i = f.a.a.a.lI(1, this.qlg.computeSize()) + 0;; i = 0)
+    for (int i = g.a.a.a.nh(1, this.rCb.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.qkS != null) {
-        paramInt = i + f.a.a.b.b.a.b(2, this.qkS);
+      if (this.rBN != null) {
+        paramInt = i + g.a.a.b.b.a.b(2, this.rBN);
       }
       i = paramInt;
-      if (this.qkT != null) {
-        i = paramInt + f.a.a.b.b.a.b(3, this.qkT);
+      if (this.rBO != null) {
+        i = paramInt + g.a.a.b.b.a.b(3, this.rBO);
       }
       AppMethodBeat.o(23490);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = i.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = i.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(23490);
@@ -61,7 +61,7 @@ public final class f
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         f localf = (f)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -70,26 +70,26 @@ public final class f
           AppMethodBeat.o(23490);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new d();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((d)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, i.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localf.qlg = ((d)localObject1);
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((d)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, i.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localf.rCb = ((d)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(23490);
           return 0;
         case 2: 
-          localf.qkS = ((f.a.a.a.a)localObject1).OmT.gCk();
+          localf.rBN = ((g.a.a.a.a)localObject1).UbS.hPo();
           AppMethodBeat.o(23490);
           return 0;
         }
-        localf.qkT = ((f.a.a.a.a)localObject1).OmT.gCk();
+        localf.rBO = ((g.a.a.a.a)localObject1).UbS.hPo();
         AppMethodBeat.o(23490);
         return 0;
       }
@@ -100,7 +100,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.f.f
  * JD-Core Version:    0.7.0.1
  */

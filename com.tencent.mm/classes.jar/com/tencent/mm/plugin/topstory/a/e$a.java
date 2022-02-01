@@ -6,13 +6,13 @@ public abstract interface e$a
   
   public abstract void a(int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, boolean paramBoolean);
   
-  public abstract void aEe(String paramString);
+  public abstract void bt(String paramString, long paramLong);
   
-  public abstract void br(String paramString, long paramLong);
+  public abstract void fP(String paramString, int paramInt);
   
-  public abstract void bs(String paramString, long paramLong);
+  public abstract void fxO();
   
-  public abstract void eso();
+  public abstract void p(String paramString, long paramLong, int paramInt);
 }
 
 

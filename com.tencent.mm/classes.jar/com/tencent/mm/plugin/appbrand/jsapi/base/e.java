@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi.base;
 
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.plugin.appbrand.ac.g;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public abstract class e<CONTEXT extends c>
-  extends a<CONTEXT>
+public abstract class e<CONTEXT extends f>
+  extends d<CONTEXT>
 {
-  protected static float[] E(JSONObject paramJSONObject)
+  protected static float[] L(JSONObject paramJSONObject)
   {
     try
     {
@@ -20,7 +20,7 @@ public abstract class e<CONTEXT extends c>
     return null;
   }
   
-  protected static int F(JSONObject paramJSONObject)
+  protected static int M(JSONObject paramJSONObject)
   {
     try
     {
@@ -34,7 +34,7 @@ public abstract class e<CONTEXT extends c>
     return -1;
   }
   
-  protected static Boolean G(JSONObject paramJSONObject)
+  protected static Boolean N(JSONObject paramJSONObject)
   {
     try
     {
@@ -45,7 +45,7 @@ public abstract class e<CONTEXT extends c>
     return null;
   }
   
-  protected static Boolean H(JSONObject paramJSONObject)
+  protected static Boolean O(JSONObject paramJSONObject)
   {
     try
     {
@@ -56,19 +56,19 @@ public abstract class e<CONTEXT extends c>
     return null;
   }
   
-  protected int A(JSONObject paramJSONObject)
+  protected int H(JSONObject paramJSONObject)
   {
     throw new JSONException("viewId do not exist, override the method getViewId(data).");
   }
   
-  protected Boolean B(JSONObject paramJSONObject)
+  protected Boolean I(JSONObject paramJSONObject)
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.base.e
  * JD-Core Version:    0.7.0.1
  */

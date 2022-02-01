@@ -13,7 +13,7 @@ final class u$5
   public final void run()
   {
     AppMethodBeat.i(34613);
-    h.a(this.JWV.mContext, this.xxH, this.JWV.mContext.getString(2131757092), null, null);
+    h.a(this.Pij.mContext, this.BxJ, this.Pij.mContext.getString(2131757293), null, null);
     AppMethodBeat.o(34613);
   }
 }

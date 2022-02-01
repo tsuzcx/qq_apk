@@ -1,52 +1,52 @@
 package com.tencent.mm.modelvoiceaddr.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cvq;
-import com.tencent.mm.protocal.protobuf.cvr;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.doj;
+import com.tencent.mm.protocal.protobuf.dok;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class a
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  cvq iCx;
-  private b rr;
+  private i callback;
+  doj jxM;
+  private d rr;
   
-  a(int paramInt, LinkedList<cxn> paramLinkedList, cxn paramcxn1, cxn paramcxn2)
+  a(int paramInt, LinkedList<dqi> paramLinkedList, dqi paramdqi1, dqi paramdqi2)
   {
     AppMethodBeat.i(148644);
-    b.a locala = new b.a();
-    locala.hQF = new cvq();
-    locala.hQG = new cvr();
+    d.a locala = new d.a();
+    locala.iLN = new doj();
+    locala.iLO = new dok();
     locala.uri = "/cgi-bin/micromsg-bin/reportvoiceresult";
     locala.funcId = 228;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    this.iCx = ((cvq)this.rr.hQD.hQJ);
-    this.iCx.HGz = paramInt;
-    this.iCx.HGA = paramLinkedList;
-    this.iCx.HGB = paramcxn1;
-    this.iCx.HGC = paramcxn2;
+    this.rr = locala.aXF();
+    this.jxM = ((doj)this.rr.iLK.iLR);
+    this.jxM.MRJ = paramInt;
+    this.jxM.MRK = paramLinkedList;
+    this.jxM.MRL = paramdqi1;
+    this.jxM.MRM = paramdqi2;
     AppMethodBeat.o(148644);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(148645);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(148645);
     return i;
   }
@@ -56,10 +56,10 @@ public final class a
     return 228;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(148646);
-    ae.d("MicroMsg.NetSceneNewVoiceInputReport", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
+    Log.d("MicroMsg.NetSceneNewVoiceInputReport", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(148646);
   }

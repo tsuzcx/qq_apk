@@ -13,41 +13,41 @@ import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.plugin.messenger.foundation.a.a.m;
 import com.tencent.mm.plugin.messenger.foundation.a.a.n;
 import com.tencent.mm.plugin.messenger.foundation.a.a.o;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bw;
 
 public abstract interface l
   extends a
 {
-  public abstract c aAi();
+  public abstract j aSM();
   
-  public abstract o aJP();
+  public abstract bv aSN();
   
-  public abstract j azE();
+  public abstract n aSO();
   
-  public abstract bq azF();
+  public abstract f aSP();
   
-  public abstract n azG();
+  public abstract bw aST();
   
-  public abstract f azH();
+  public abstract com.tencent.mm.plugin.messenger.foundation.a.a.l aSW();
   
-  public abstract br azL();
+  public abstract c aTq();
   
-  public abstract com.tencent.mm.plugin.messenger.foundation.a.a.l azO();
+  public abstract o bdR();
   
-  public abstract h doD();
+  public abstract h eis();
   
-  public abstract b doE();
+  public abstract b eit();
   
-  public abstract m doF();
+  public abstract m eiu();
   
-  public abstract g doG();
+  public abstract g eiv();
   
-  public abstract d doH();
+  public abstract d eiw();
   
-  public abstract e doI();
+  public abstract e eix();
   
-  public abstract i doJ();
+  public abstract i eiy();
 }
 
 

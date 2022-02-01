@@ -2,29 +2,29 @@ package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.e.h;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.l;
 import com.tencent.mm.plugin.finder.upload.g.a;
-import com.tencent.mm.plugin.finder.upload.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.finder.upload.q;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 class JsApiResendProfileFeed$ResendProfileFeedTask
   extends MainProcessTask
-  implements l
+  implements q
 {
   public static final Parcelable.Creator<ResendProfileFeedTask> CREATOR;
-  private String dmp;
-  private r kQI;
-  private String kQL;
-  private long kQV;
-  private int kmu;
+  private String event;
+  private com.tencent.mm.plugin.appbrand.s lVM;
+  private String lVP;
+  private long lVZ;
+  private int lqe;
   
   static
   {
@@ -36,26 +36,26 @@ class JsApiResendProfileFeed$ResendProfileFeedTask
   public JsApiResendProfileFeed$ResendProfileFeedTask(Parcel paramParcel)
   {
     AppMethodBeat.i(163977);
-    e(paramParcel);
+    f(paramParcel);
     AppMethodBeat.o(163977);
   }
   
-  public JsApiResendProfileFeed$ResendProfileFeedTask(r paramr, int paramInt, long paramLong)
+  public JsApiResendProfileFeed$ResendProfileFeedTask(com.tencent.mm.plugin.appbrand.s params, int paramInt, long paramLong)
   {
-    this.kQI = paramr;
-    this.kmu = paramInt;
-    this.kQV = paramLong;
+    this.lVM = params;
+    this.lqe = paramInt;
+    this.lVZ = paramLong;
   }
   
-  public final void aOX()
+  public final void bjj()
   {
     AppMethodBeat.i(163981);
-    h.MqF.f(new Runnable()
+    h.RTc.b(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(163976);
-        Object localObject = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getFeedStorage().xg(JsApiResendProfileFeed.ResendProfileFeedTask.a(JsApiResendProfileFeed.ResendProfileFeedTask.this));
+        Object localObject = ((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getFeedStorage().Fz(JsApiResendProfileFeed.ResendProfileFeedTask.a(JsApiResendProfileFeed.ResendProfileFeedTask.this));
         JSONObject localJSONObject = new JSONObject();
         if (((FinderItem)localObject).field_localFlag == 0) {}
         try
@@ -66,10 +66,10 @@ class JsApiResendProfileFeed$ResendProfileFeedTask
           JsApiResendProfileFeed.ResendProfileFeedTask.b(JsApiResendProfileFeed.ResendProfileFeedTask.this);
           AppMethodBeat.o(163976);
           return;
-          g.a locala = com.tencent.mm.plugin.finder.upload.g.sUx;
-          com.tencent.mm.plugin.finder.upload.g.cNo().k((FinderItem)localObject);
-          localObject = com.tencent.mm.plugin.finder.upload.g.sUx;
-          com.tencent.mm.plugin.finder.upload.g.cNo().a(JsApiResendProfileFeed.ResendProfileFeedTask.this);
+          g.a locala = com.tencent.mm.plugin.finder.upload.g.vSJ;
+          com.tencent.mm.plugin.finder.upload.g.dBa().t((FinderItem)localObject);
+          localObject = com.tencent.mm.plugin.finder.upload.g.vSJ;
+          com.tencent.mm.plugin.finder.upload.g.dBa().a(JsApiResendProfileFeed.ResendProfileFeedTask.this);
           JsApiResendProfileFeed.ResendProfileFeedTask.a(JsApiResendProfileFeed.ResendProfileFeedTask.this, a.a("", 0, localJSONObject));
           JsApiResendProfileFeed.ResendProfileFeedTask.c(JsApiResendProfileFeed.ResendProfileFeedTask.this);
           AppMethodBeat.o(163976);
@@ -84,27 +84,27 @@ class JsApiResendProfileFeed$ResendProfileFeedTask
     AppMethodBeat.o(163981);
   }
   
-  public final void aOY()
+  public final void bjk()
   {
     AppMethodBeat.i(163980);
-    ae.i("MicroMsg.Finder.JsApiResendProfileFeed", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.kQI.getAppId(), this.kQL, Integer.valueOf(this.kmu), Boolean.valueOf(this.kQI.isRunning()) });
-    if ((!bu.isNullOrNil(this.dmp)) && (this.dmp.equals("onPostEnd")))
+    Log.i("MicroMsg.Finder.JsApiResendProfileFeed", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.lVM.getAppId(), this.lVP, Integer.valueOf(this.lqe), Boolean.valueOf(this.lVM.isRunning()) });
+    if ((!Util.isNullOrNil(this.event)) && (this.event.equals("onPostEnd")))
     {
-      new JsApiResendProfileFeed.a((byte)0).g(this.kQI).PP(this.kQL).bja();
-      bix();
+      new JsApiResendProfileFeed.a((byte)0).g(this.lVM).Zg(this.lVP).bEo();
+      bDK();
       AppMethodBeat.o(163980);
       return;
     }
-    this.kQI.h(this.kmu, this.kQL);
+    this.lVM.i(this.lqe, this.lVP);
     AppMethodBeat.o(163980);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     AppMethodBeat.i(163978);
-    this.kQV = paramParcel.readLong();
-    this.dmp = paramParcel.readString();
-    this.kQL = paramParcel.readString();
+    this.lVZ = paramParcel.readLong();
+    this.event = paramParcel.readString();
+    this.lVP = paramParcel.readString();
     AppMethodBeat.o(163978);
   }
   
@@ -112,20 +112,20 @@ class JsApiResendProfileFeed$ResendProfileFeedTask
   {
     AppMethodBeat.i(163982);
     Object localObject;
-    if (paramLong == this.kQV)
+    if (paramLong == this.lVZ)
     {
-      localObject = com.tencent.mm.plugin.finder.upload.g.sUx;
-      com.tencent.mm.plugin.finder.upload.g.cNo().b(this);
+      localObject = com.tencent.mm.plugin.finder.upload.g.vSJ;
+      com.tencent.mm.plugin.finder.upload.g.dBa().b(this);
       localObject = new JSONObject();
     }
     try
     {
       ((JSONObject)localObject).put("feedLocalId", String.valueOf(paramLong));
-      this.dmp = "onPostEnd";
+      this.event = "onPostEnd";
       if (paramBoolean)
       {
-        this.kQL = a.a("", 0, (JSONObject)localObject);
-        biG();
+        this.lVP = a.a("", 0, (JSONObject)localObject);
+        bDU();
         AppMethodBeat.o(163982);
         return;
       }
@@ -134,9 +134,9 @@ class JsApiResendProfileFeed$ResendProfileFeedTask
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Finder.JsApiResendProfileFeed", localException, "PostFinderTask onPostEnd", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Finder.JsApiResendProfileFeed", localException, "PostFinderTask onPostEnd", new Object[0]);
         continue;
-        this.kQL = a.a("post fail", -1, (JSONObject)localObject);
+        this.lVP = a.a("post fail", -1, (JSONObject)localObject);
       }
     }
   }
@@ -147,18 +147,18 @@ class JsApiResendProfileFeed$ResendProfileFeedTask
   {
     AppMethodBeat.i(163983);
     Object localObject;
-    if (paramLong1 == this.kQV)
+    if (paramLong1 == this.lVZ)
     {
-      localObject = com.tencent.mm.plugin.finder.upload.g.sUx;
-      com.tencent.mm.plugin.finder.upload.g.cNo().b(this);
+      localObject = com.tencent.mm.plugin.finder.upload.g.vSJ;
+      com.tencent.mm.plugin.finder.upload.g.dBa().b(this);
       localObject = new JSONObject();
     }
     try
     {
       ((JSONObject)localObject).put("feedLocalId", String.valueOf(paramLong1));
-      this.dmp = "onPostEnd";
-      this.kQL = a.a("", 0, (JSONObject)localObject);
-      biG();
+      this.event = "onPostEnd";
+      this.lVP = a.a("", 0, (JSONObject)localObject);
+      bDU();
       AppMethodBeat.o(163983);
       return;
     }
@@ -166,7 +166,7 @@ class JsApiResendProfileFeed$ResendProfileFeedTask
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Finder.JsApiResendProfileFeed", localException, "PostFinderTask onPostEnd", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Finder.JsApiResendProfileFeed", localException, "PostFinderTask onPostEnd", new Object[0]);
       }
     }
   }
@@ -176,15 +176,15 @@ class JsApiResendProfileFeed$ResendProfileFeedTask
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(163979);
-    paramParcel.writeLong(this.kQV);
-    paramParcel.writeString(this.dmp);
-    paramParcel.writeString(this.kQL);
+    paramParcel.writeLong(this.lVZ);
+    paramParcel.writeString(this.event);
+    paramParcel.writeString(this.lVP);
     AppMethodBeat.o(163979);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.finder.JsApiResendProfileFeed.ResendProfileFeedTask
  * JD-Core Version:    0.7.0.1
  */

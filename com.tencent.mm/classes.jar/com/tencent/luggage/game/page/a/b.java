@@ -3,57 +3,57 @@ package com.tencent.luggage.game.page.a;
 import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.page.a.h;
+import com.tencent.mm.plugin.appbrand.page.ac;
 import com.tencent.mm.plugin.appbrand.page.c.c.b;
-import com.tencent.mm.plugin.appbrand.page.z;
 
 public final class b
   implements com.tencent.mm.plugin.appbrand.page.a.b, h
 {
-  private final a clv;
-  private final z clw;
+  private final a cxq;
+  private final ac cxr;
   
-  public b(z paramz)
+  public b(ac paramac)
   {
     AppMethodBeat.i(130682);
-    this.clv = new a(paramz);
-    this.clw = paramz;
+    this.cxq = new a(paramac);
+    this.cxr = paramac;
     AppMethodBeat.o(130682);
   }
   
-  public final void DN()
+  public final void Nj()
   {
     AppMethodBeat.i(130684);
-    this.clw.runOnUiThread(new Runnable()
+    this.cxr.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(130680);
-        b.a(b.this).DN();
+        b.a(b.this).Nj();
         AppMethodBeat.o(130680);
       }
     });
     AppMethodBeat.o(130684);
   }
   
-  public final void DO()
+  public final void Nk()
   {
     AppMethodBeat.i(130685);
-    this.clw.runOnUiThread(new Runnable()
+    this.cxr.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(130681);
-        b.a(b.this).DO();
+        b.a(b.this).Nk();
         AppMethodBeat.o(130681);
       }
     });
     AppMethodBeat.o(130685);
   }
   
-  public final boolean DQ()
+  public final boolean Nm()
   {
     AppMethodBeat.i(130686);
-    if (this.clv.DP() == c.b.mlC)
+    if (this.cxq.Nl() == c.b.nwa)
     {
       AppMethodBeat.o(130686);
       return true;
@@ -73,13 +73,13 @@ public final class b
   public final void onForeground()
   {
     AppMethodBeat.i(130683);
-    this.clv.Dy();
+    this.cxq.MV();
     AppMethodBeat.o(130683);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.game.page.a.b
  * JD-Core Version:    0.7.0.1
  */

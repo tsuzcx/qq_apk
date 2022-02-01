@@ -1,148 +1,166 @@
 package com.tencent.mm.live.core.core.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.live.core.core.c.c;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import d.g.b.p;
-import d.l;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashMap;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/model/LiveStatus;", "", "()V", "anchorID", "", "availableAudioUsers", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "floatMode", "Lcom/tencent/mm/live/core/core/model/LiveStatus$MiniWindowMode;", "isDebugMode", "", "()Z", "setDebugMode", "(Z)V", "linkMicStatus", "Lcom/tencent/mm/live/core/core/model/LiveStatus$LinkMicStatus;", "liveID", "", "liveRoomStatus", "Lcom/tencent/mm/live/core/core/model/LiveStatus$LiveRoomStatus;", "networkQuality", "", "resumeFromPermissionCheck", "selfSdkID", "getSelfSdkID", "()Ljava/lang/String;", "setSelfSdkID", "(Ljava/lang/String;)V", "videoMicID", "addAvailableAudioUser", "", "sdkID", "audioLinkMic", "changeToFloatMode", "changeToNormalMode", "changeToPermissionMode", "checkInRoom", "currentRoomID", "enterRoom", "exitRoom", "getAnchorID", "getNetworkQuality", "getVideoMicID", "isEnterRoom", "isFloatMode", "isInAudioLinkMic", "isInRoom", "(Ljava/lang/Long;)Z", "isInVideoLinkMic", "isNormalMode", "isResumeFromPermissionCheck", "noLinkMic", "removeAvailableAudioUser", "setAnchorID", "id", "setResumeFromPermissionCheck", "value", "setVideoMicID", "updateNetworkQuality", "quality", "updateStart", "status", "videoLinkMic", "Companion", "LinkMicStatus", "LiveRoomStatus", "MiniWindowMode", "plugin-core_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "", "liveName", "", "liveId", "", "audienceMode", "", "anchorUserId", "appId", "bizId", "liveScene", "cdnSwitchMode", "Lcom/tencent/mm/live/core/core/model/CdnSwitchMode;", "cdnQualitySvrcfg", "cdnH265BackCfg", "cdnUrlMap", "Ljava/util/HashMap;", "Lkotlin/collections/HashMap;", "startTime", "(Ljava/lang/String;JILjava/lang/String;JJILcom/tencent/mm/live/core/core/model/CdnSwitchMode;IILjava/util/HashMap;J)V", "getAnchorUserId", "()Ljava/lang/String;", "setAnchorUserId", "(Ljava/lang/String;)V", "getAppId", "()J", "setAppId", "(J)V", "getAudienceMode", "()I", "setAudienceMode", "(I)V", "getBizId", "setBizId", "getCdnH265BackCfg", "setCdnH265BackCfg", "getCdnQualitySvrcfg", "setCdnQualitySvrcfg", "getCdnSwitchMode", "()Lcom/tencent/mm/live/core/core/model/CdnSwitchMode;", "setCdnSwitchMode", "(Lcom/tencent/mm/live/core/core/model/CdnSwitchMode;)V", "getCdnUrlMap", "()Ljava/util/HashMap;", "setCdnUrlMap", "(Ljava/util/HashMap;)V", "getLiveId", "setLiveId", "getLiveName", "setLiveName", "getLiveScene", "setLiveScene", "getStartTime", "setStartTime", "component1", "component10", "component11", "component12", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "", "other", "getCdnUrl", "cdnQualityTag", "hashCode", "indexOfUrl", "url", "toString", "plugin-core_release"})
 public final class e
 {
-  public static final e.a gKB;
-  public int gKA;
-  public boolean gKr;
-  public e.c gKs;
-  public b gKt;
-  public d gKu;
-  public long gKv;
-  public String gKw;
-  public String gKx;
-  public String gKy;
-  private ArrayList<String> gKz;
-  public boolean isDebugMode;
-  
-  static
-  {
-    AppMethodBeat.i(196846);
-    gKB = new e.a((byte)0);
-    AppMethodBeat.o(196846);
-  }
+  public long appId;
+  private String hwb;
+  public int hzl;
+  public String hzm;
+  public long hzn;
+  public int hzo;
+  public a hzp;
+  public int hzq;
+  public int hzr;
+  public HashMap<Integer, String> hzs;
+  public long liveId;
+  public long startTime;
   
   public e()
   {
-    AppMethodBeat.i(196845);
-    this.gKs = e.c.gKG;
-    this.gKt = b.gKC;
-    this.gKu = d.gKK;
-    this.gKv = -1L;
-    this.gKw = "";
-    this.gKx = "";
-    this.gKz = new ArrayList();
-    Object localObject = c.c.gJR;
-    this.gKA = c.c.alJ();
-    localObject = g.ajR();
-    p.g(localObject, "MMKernel.storage()");
-    if (((com.tencent.mm.kernel.e)localObject).ajA().getInt(am.a.JdF, 0) == 1) {}
-    for (;;)
+    this(null, 0L, 0, null, 0L, 0L, 0, null, null, 0L, 4095);
+  }
+  
+  private e(String paramString1, long paramLong1, int paramInt1, String paramString2, long paramLong2, long paramLong3, int paramInt2, a parama, HashMap<Integer, String> paramHashMap, long paramLong4)
+  {
+    AppMethodBeat.i(196458);
+    this.hwb = paramString1;
+    this.liveId = paramLong1;
+    this.hzl = paramInt1;
+    this.hzm = paramString2;
+    this.appId = paramLong2;
+    this.hzn = paramLong3;
+    this.hzo = paramInt2;
+    this.hzp = parama;
+    this.hzq = 0;
+    this.hzr = 0;
+    this.hzs = paramHashMap;
+    this.startTime = paramLong4;
+    AppMethodBeat.o(196458);
+  }
+  
+  public final void Gn(String paramString)
+  {
+    AppMethodBeat.i(196456);
+    p.h(paramString, "<set-?>");
+    this.hwb = paramString;
+    AppMethodBeat.o(196456);
+  }
+  
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(196457);
+    p.h(parama, "<set-?>");
+    this.hzp = parama;
+    AppMethodBeat.o(196457);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(196462);
+    if (this != paramObject)
     {
-      this.isDebugMode = bool;
-      AppMethodBeat.o(196845);
-      return;
-      bool = false;
+      if ((paramObject instanceof e))
+      {
+        paramObject = (e)paramObject;
+        if ((!p.j(this.hwb, paramObject.hwb)) || (this.liveId != paramObject.liveId) || (this.hzl != paramObject.hzl) || (!p.j(this.hzm, paramObject.hzm)) || (this.appId != paramObject.appId) || (this.hzn != paramObject.hzn) || (this.hzo != paramObject.hzo) || (!p.j(this.hzp, paramObject.hzp)) || (this.hzq != paramObject.hzq) || (this.hzr != paramObject.hzr) || (!p.j(this.hzs, paramObject.hzs)) || (this.startTime != paramObject.startTime)) {}
+      }
     }
-  }
-  
-  private final boolean alS()
-  {
-    return this.gKs == e.c.gKH;
-  }
-  
-  public final boolean alR()
-  {
-    return this.gKu == d.gKK;
-  }
-  
-  public final boolean alT()
-  {
-    return this.gKt == b.gKE;
-  }
-  
-  public final boolean alU()
-  {
-    return this.gKt == b.gKD;
-  }
-  
-  public final boolean b(Long paramLong)
-  {
-    AppMethodBeat.i(196844);
-    boolean bool;
-    if (paramLong == null)
+    else
     {
-      bool = alS();
-      AppMethodBeat.o(196844);
-      return bool;
+      AppMethodBeat.o(196462);
+      return true;
     }
-    long l = this.gKv;
-    if (paramLong.longValue() == l)
-    {
-      bool = alS();
-      AppMethodBeat.o(196844);
-      return bool;
-    }
-    AppMethodBeat.o(196844);
+    AppMethodBeat.o(196462);
     return false;
   }
   
-  public final boolean isFloatMode()
+  public final int hashCode()
   {
-    return this.gKu == d.gKL;
+    int m = 0;
+    AppMethodBeat.i(196461);
+    Object localObject = this.hwb;
+    int i;
+    long l;
+    int n;
+    int i1;
+    int j;
+    label65:
+    int i2;
+    int i3;
+    int i4;
+    if (localObject != null)
+    {
+      i = localObject.hashCode();
+      l = this.liveId;
+      n = (int)(l ^ l >>> 32);
+      i1 = this.hzl;
+      localObject = this.hzm;
+      if (localObject == null) {
+        break label245;
+      }
+      j = localObject.hashCode();
+      l = this.appId;
+      i2 = (int)(l ^ l >>> 32);
+      l = this.hzn;
+      i3 = (int)(l ^ l >>> 32);
+      i4 = this.hzo;
+      localObject = this.hzp;
+      if (localObject == null) {
+        break label250;
+      }
+    }
+    label245:
+    label250:
+    for (int k = localObject.hashCode();; k = 0)
+    {
+      int i5 = this.hzq;
+      int i6 = this.hzr;
+      localObject = this.hzs;
+      if (localObject != null) {
+        m = localObject.hashCode();
+      }
+      l = this.startTime;
+      int i7 = (int)(l ^ l >>> 32);
+      AppMethodBeat.o(196461);
+      return ((((k + ((((j + ((i * 31 + n) * 31 + i1) * 31) * 31 + i2) * 31 + i3) * 31 + i4) * 31) * 31 + i5) * 31 + i6) * 31 + m) * 31 + i7;
+      i = 0;
+      break;
+      j = 0;
+      break label65;
+    }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/model/LiveStatus$LinkMicStatus;", "", "(Ljava/lang/String;I)V", "NO_LINK_MIC", "AUDIO_LINK_MIC", "VIDEO_LINK_MIC", "plugin-core_release"})
-  public static enum b
+  public final String qr(int paramInt)
   {
-    static
-    {
-      AppMethodBeat.i(196835);
-      b localb1 = new b("NO_LINK_MIC", 0);
-      gKC = localb1;
-      b localb2 = new b("AUDIO_LINK_MIC", 1);
-      gKD = localb2;
-      b localb3 = new b("VIDEO_LINK_MIC", 2);
-      gKE = localb3;
-      gKF = new b[] { localb1, localb2, localb3 };
-      AppMethodBeat.o(196835);
+    AppMethodBeat.i(196455);
+    Log.i("LiveRoomInfo", "getCdnUrl cdnQualitySvrcfg".concat(String.valueOf(paramInt)));
+    String str2 = (String)this.hzs.get(Integer.valueOf(paramInt));
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = (String)this.hzs.get(Integer.valueOf(0));
     }
-    
-    private b() {}
+    AppMethodBeat.o(196455);
+    return str1;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/model/LiveStatus$MiniWindowMode;", "", "(Ljava/lang/String;I)V", "NORMAL_MODE", "FLOAT_MODE", "PERMISSION_MODE", "plugin-core_release"})
-  public static enum d
+  public final String toString()
   {
-    static
-    {
-      AppMethodBeat.i(196841);
-      d locald1 = new d("NORMAL_MODE", 0);
-      gKK = locald1;
-      d locald2 = new d("FLOAT_MODE", 1);
-      gKL = locald2;
-      d locald3 = new d("PERMISSION_MODE", 2);
-      gKM = locald3;
-      gKN = new d[] { locald1, locald2, locald3 };
-      AppMethodBeat.o(196841);
-    }
-    
-    private d() {}
+    AppMethodBeat.i(196460);
+    String str = "LiveRoomInfo(liveName=" + this.hwb + ", liveId=" + this.liveId + ", audienceMode=" + this.hzl + ", anchorUserId=" + this.hzm + ", appId=" + this.appId + ", bizId=" + this.hzn + ", liveScene=" + this.hzo + ", cdnSwitchMode=" + this.hzp + ", cdnQualitySvrcfg=" + this.hzq + ", cdnH265BackCfg=" + this.hzr + ", cdnUrlMap=" + this.hzs + ", startTime=" + this.startTime + ")";
+    AppMethodBeat.o(196460);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.core.b.e
  * JD-Core Version:    0.7.0.1
  */

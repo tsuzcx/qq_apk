@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.ipcall.model.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.util.Map;
 
 public final class a
@@ -12,25 +12,25 @@ public final class a
   public String Desc = "";
   public String ImgUrl = "";
   public String Title = "";
-  public int nJA = 0;
-  public String vac = "";
+  public int oUv = 0;
+  public String ysC = "";
   
-  public static a aoz(String paramString)
+  public static a aBT(String paramString)
   {
     AppMethodBeat.i(25530);
-    ae.d(TAG, "getIPCallActivityMsgInfoFromXML:".concat(String.valueOf(paramString)));
+    Log.d(TAG, "getIPCallActivityMsgInfoFromXML:".concat(String.valueOf(paramString)));
     a locala = new a();
     int i = paramString.indexOf("<ActivityInfo");
     if (i == -1)
     {
-      ae.e(TAG, "msgContent not start with <ActivityInfo");
+      Log.e(TAG, "msgContent not start with <ActivityInfo");
       AppMethodBeat.o(25530);
       return locala;
     }
-    Map localMap = bx.M(paramString.substring(i), "ActivityInfo");
+    Map localMap = XmlParser.parseXml(paramString.substring(i), "ActivityInfo", null);
     if (localMap == null)
     {
-      ae.e(TAG, "XmlParser values is null, xml %s", new Object[] { paramString });
+      Log.e(TAG, "XmlParser values is null, xml %s", new Object[] { paramString });
       AppMethodBeat.o(25530);
       return null;
     }
@@ -44,12 +44,12 @@ public final class a
       locala.ImgUrl = ((String)localMap.get(".ActivityInfo.ImgUrl"));
     }
     if (localMap.containsKey(".ActivityInfo.StartBtnText")) {
-      locala.vac = ((String)localMap.get(".ActivityInfo.StartBtnText"));
+      locala.ysC = ((String)localMap.get(".ActivityInfo.StartBtnText"));
     }
     if (localMap.containsKey(".ActivityInfo.ActivityType")) {
-      locala.nJA = bu.getInt((String)localMap.get(".ActivityInfo.ActivityType"), 0);
+      locala.oUv = Util.getInt((String)localMap.get(".ActivityInfo.ActivityType"), 0);
     }
-    ae.d(TAG, "msgInfo:", new Object[] { locala.toString() });
+    Log.d(TAG, "msgInfo:", new Object[] { locala.toString() });
     AppMethodBeat.o(25530);
     return locala;
   }

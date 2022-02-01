@@ -3,24 +3,24 @@ package com.tencent.mm.videocomposition.c;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/sdk/BitmapUtil;", "", "()V", "TAG", "", "calculateInSampleSize", "", "originWidth", "originHeight", "reqWidth", "reqHeight", "rotate", "Landroid/graphics/Bitmap;", "temBmp", "degree", "", "video_composition_release"})
+@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/videocomposition/sdk/BitmapUtil;", "", "()V", "TAG", "", "calculateInSampleSize", "", "originWidth", "originHeight", "reqWidth", "reqHeight", "rotate", "Landroid/graphics/Bitmap;", "temBmp", "degree", "", "video_composition_release"})
 public final class a
 {
-  public static final a LKn;
+  public static final a Rig;
   
   static
   {
-    AppMethodBeat.i(195051);
-    LKn = new a();
-    AppMethodBeat.o(195051);
+    AppMethodBeat.i(216860);
+    Rig = new a();
+    AppMethodBeat.o(216860);
   }
   
-  public static int O(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static int calculateInSampleSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(195049);
+    AppMethodBeat.i(216858);
     int j = 1;
     if ((paramInt1 > paramInt4) || (paramInt2 > paramInt3))
     {
@@ -40,16 +40,16 @@ public final class a
         }
       }
     }
-    AppMethodBeat.o(195049);
+    AppMethodBeat.o(216858);
     return j;
   }
   
-  public static Bitmap a(Bitmap paramBitmap, float paramFloat)
+  public static Bitmap rotate(Bitmap paramBitmap, float paramFloat)
   {
-    AppMethodBeat.i(195050);
+    AppMethodBeat.i(216859);
     if ((paramBitmap == null) || (paramFloat % 360.0F == 0.0F))
     {
-      AppMethodBeat.o(195050);
+      AppMethodBeat.o(216859);
       return paramBitmap;
     }
     Object localObject = new Matrix();
@@ -65,19 +65,19 @@ public final class a
         {
           bool = true;
           b.d("BitmapUtil", bool + "  degree:" + paramFloat, new Object[0]);
-          if ((p.i(paramBitmap, localObject) ^ true))
+          if ((p.j(paramBitmap, localObject) ^ true))
           {
             b.i("BitmapUtil", "rotate bitmap recycle ajsdfasdf adsf. %s", new Object[] { paramBitmap });
             paramBitmap.recycle();
           }
-          AppMethodBeat.o(195050);
+          AppMethodBeat.o(216859);
           return localObject;
         }
       }
       catch (Throwable localThrowable)
       {
-        b.d("BitmapUtil", "createBitmap failed : %s ", new Object[] { c.o(localThrowable) });
-        AppMethodBeat.o(195050);
+        b.d("BitmapUtil", "createBitmap failed : %s ", new Object[] { e.stackTraceToString(localThrowable) });
+        AppMethodBeat.o(216859);
         return paramBitmap;
       }
       boolean bool = false;
@@ -86,7 +86,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.videocomposition.c.a
  * JD-Core Version:    0.7.0.1
  */

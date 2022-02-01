@@ -7,62 +7,63 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.u;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.webview.luggage.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import java.util.HashMap;
 import java.util.Map;
 
 public class r
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(final b<g>.a paramb)
   {
     AppMethodBeat.i(175742);
     Intent localIntent = new Intent();
-    String str3 = ((g)paramb.chg).getUrl();
+    String str3 = ((g)paramb.cta).getUrl();
     localIntent.putExtra("req_url", str3);
-    String str2 = ((g)paramb.chg).EgL.getAppId();
+    String str2 = ((g)paramb.cta).ITw.getAppId();
     String str1 = str2;
-    if (bu.isNullOrNil(str2))
+    if (Util.isNullOrNil(str2))
     {
       str1 = str2;
-      if (!bu.isNullOrNil(str3))
+      if (!Util.isNullOrNil(str3))
       {
         str1 = str2;
-        if (Uri.parse(str3).getHost().equals("game.weixin.qq.com")) {
+        if (Uri.parse(str3).getHost().equals(WeChatHosts.domainString(2131761707))) {
           str1 = "wx62d9035fd4fd2059";
         }
       }
     }
     localIntent.putExtra("req_app_id", str1);
     localIntent.putExtra("launch_from_webview", true);
-    ((MMActivity)((g)paramb.chg).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
+    ((MMActivity)((g)paramb.cta).mContext).mmSetOnActivityResultCallback(new MMActivity.a()
     {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(175741);
         if (paramAnonymousInt1 == (r.this.hashCode() & 0xFFFF))
         {
-          ((MMActivity)((g)paramb.chg).mContext).mmSetOnActivityResultCallback(null);
+          ((MMActivity)((g)paramb.cta).mContext).mmSetOnActivityResultCallback(null);
           if ((paramAnonymousInt2 == -1) && (paramAnonymousIntent != null))
           {
-            String str1 = bu.bI(paramAnonymousIntent.getStringExtra("nationalCode"), "");
-            String str2 = bu.bI(paramAnonymousIntent.getStringExtra("userName"), "");
-            String str3 = bu.bI(paramAnonymousIntent.getStringExtra("telNumber"), "");
-            String str4 = bu.bI(paramAnonymousIntent.getStringExtra("addressPostalCode"), "");
-            String str5 = bu.bI(paramAnonymousIntent.getStringExtra("proviceFirstStageName"), "");
-            String str6 = bu.bI(paramAnonymousIntent.getStringExtra("addressCitySecondStageName"), "");
-            String str7 = bu.bI(paramAnonymousIntent.getStringExtra("addressCountiesThirdStageName"), "");
-            paramAnonymousIntent = bu.bI(paramAnonymousIntent.getStringExtra("addressDetailInfo"), "");
-            ae.i("MicroMsg.JsApiEditAddress", "first =  " + str5 + " ; detail =" + paramAnonymousIntent + "; second = " + str6 + " ; tel = " + str3 + "; third = " + str7);
-            if (!bu.isNullOrNil(str2))
+            String str1 = Util.nullAs(paramAnonymousIntent.getStringExtra("nationalCode"), "");
+            String str2 = Util.nullAs(paramAnonymousIntent.getStringExtra("userName"), "");
+            String str3 = Util.nullAs(paramAnonymousIntent.getStringExtra("telNumber"), "");
+            String str4 = Util.nullAs(paramAnonymousIntent.getStringExtra("addressPostalCode"), "");
+            String str5 = Util.nullAs(paramAnonymousIntent.getStringExtra("proviceFirstStageName"), "");
+            String str6 = Util.nullAs(paramAnonymousIntent.getStringExtra("addressCitySecondStageName"), "");
+            String str7 = Util.nullAs(paramAnonymousIntent.getStringExtra("addressCountiesThirdStageName"), "");
+            paramAnonymousIntent = Util.nullAs(paramAnonymousIntent.getStringExtra("addressDetailInfo"), "");
+            Log.i("MicroMsg.JsApiEditAddress", "first =  " + str5 + " ; detail =" + paramAnonymousIntent + "; second = " + str6 + " ; tel = " + str3 + "; third = " + str7);
+            if (!Util.isNullOrNil(str2))
             {
               HashMap localHashMap = new HashMap();
               localHashMap.put("nationalCode", str1);
@@ -80,20 +81,20 @@ public class r
           }
           if (paramAnonymousInt2 == 0)
           {
-            paramb.a("cancel", null);
+            paramb.c("cancel", null);
             AppMethodBeat.o(175741);
             return;
           }
-          paramb.a("fail", null);
+          paramb.c("fail", null);
         }
         AppMethodBeat.o(175741);
       }
     });
-    d.a(((g)paramb.chg).mContext, "address", ".ui.WalletSelectAddrUI", localIntent, hashCode() & 0xFFFF, false);
+    c.a(((g)paramb.cta).mContext, "address", ".ui.WalletSelectAddrUI", localIntent, hashCode() & 0xFFFF, false);
     AppMethodBeat.o(175742);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

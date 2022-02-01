@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/po" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/aj" android:ellipsize="end" android:id="@id/ahd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="8.0dip" android:text="风景" android:singleLine="true" />
-    <android.support.v7.widget.RecyclerView android:id="@id/ahc" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>

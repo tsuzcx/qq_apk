@@ -9,7 +9,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class LuckyMoneyEnvelopeTouchRecyclerView
   extends RecyclerView
 {
-  public a vJo;
+  public a zer;
   
   public LuckyMoneyEnvelopeTouchRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,8 +24,8 @@ public class LuckyMoneyEnvelopeTouchRecyclerView
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(65596);
-    if (this.vJo != null) {
-      this.vJo.onInterceptTouchEvent(paramMotionEvent);
+    if (this.zer != null) {
+      this.zer.onInterceptTouchEvent(paramMotionEvent);
     }
     boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
     AppMethodBeat.o(65596);

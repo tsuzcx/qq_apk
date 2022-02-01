@@ -1,235 +1,78 @@
 package com.tencent.mm.plugin.account.model;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.ui.g.a.a;
-import com.tencent.mm.ui.g.a.a.1;
-import com.tencent.mm.ui.g.a.a.a;
-import com.tencent.mm.ui.g.a.c;
-import com.tencent.mm.ui.g.a.e;
-import com.tencent.mm.ui.g.a.f;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.net.MalformedURLException;
-import java.util.Iterator;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.platformtools.z;
+import com.tencent.mm.protocal.ac;
+import com.tencent.mm.protocal.l.d;
+import com.tencent.mm.protocal.protobuf.ehg;
+import com.tencent.mm.protocal.protobuf.ehh;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class j
+  extends q
+  implements m
 {
-  aq handler;
-  private c jkr;
-  a jks;
+  private i callback;
+  public d rr;
   
-  public j(c paramc, a parama)
+  public j(String paramString)
   {
-    this.jkr = paramc;
-    this.jks = parama;
+    AppMethodBeat.i(127838);
+    d.a locala = new d.a();
+    locala.iLN = new ehg();
+    locala.iLO = new ehh();
+    locala.uri = "/cgi-bin/micromsg-bin/thirdappverify";
+    locala.funcId = 755;
+    locala.iLP = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.aXF();
+    ((ehg)this.rr.iLK.iLR).Luy = paramString;
+    ((ehg)this.rr.iLK.iLR).NgU = 1;
+    ((ehg)this.rr.iLK.iLR).rBI = LocaleUtil.getApplicationLanguage();
+    paramString = Util.getUuidRandom();
+    ((ehg)this.rr.iLK.iLR).KPW = z.aC(paramString);
+    this.rr.setRsaInfo(ac.gtT());
+    this.rr.option = 1;
+    this.rr.getReqObj().setPassKey(paramString);
+    this.rr.getReqObj().setSceneStatus(1);
+    AppMethodBeat.o(127838);
   }
   
-  public final void aSJ()
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(127846);
-    this.handler = new aq()
-    {
-      public final void handleMessage(Message paramAnonymousMessage)
-      {
-        AppMethodBeat.i(127841);
-        switch (paramAnonymousMessage.what)
-        {
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(127841);
-          return;
-          if (j.this.jks != null)
-          {
-            j.this.jks.onError(paramAnonymousMessage.arg1, (String)paramAnonymousMessage.obj);
-            AppMethodBeat.o(127841);
-            return;
-            if (j.this.jks != null) {
-              j.this.jks.y(paramAnonymousMessage.getData());
-            }
-          }
-        }
-      }
-    };
-    Bundle localBundle = new Bundle();
-    localBundle.putString("client_id", ak.getContext().getString(2131758773));
-    localBundle.putString("client_secret", ak.getContext().getString(2131758788));
-    localBundle.putString("grant_type", "fb_exchange_token");
-    localBundle.putString("fb_exchange_token", this.jkr.jbU);
-    a.a local2 = new a.a()
-    {
-      public final void Kp(String paramAnonymousString)
-      {
-        AppMethodBeat.i(127842);
-        if ((paramAnonymousString == null) || (paramAnonymousString.length() == 0))
-        {
-          ae.e("MicroMsg.RefreshTokenRunner", "response is null or nil");
-          j.a(j.this, 1, "response is null or nil");
-          AppMethodBeat.o(127842);
-          return;
-        }
-        Object localObject1;
-        if ((paramAnonymousString.contains("access_token")) && (paramAnonymousString.length() > 12))
-        {
-          for (;;)
-          {
-            String str1;
-            JSONArray localJSONArray;
-            Object localObject3;
-            String str2;
-            try
-            {
-              localObject1 = f.aYF(paramAnonymousString);
-              if (((JSONObject)localObject1).has("access_token"))
-              {
-                paramAnonymousString = new Bundle();
-                localObject2 = ((JSONObject)localObject1).keys();
-                if (!((Iterator)localObject2).hasNext()) {
-                  break;
-                }
-                str1 = (String)((Iterator)localObject2).next();
-                localJSONArray = ((JSONObject)localObject1).optJSONArray(str1);
-                localObject3 = Double.valueOf(((JSONObject)localObject1).optDouble(str1));
-                str2 = ((JSONObject)localObject1).optString(str1);
-                if ((localJSONArray == null) || (localJSONArray.length() > 0)) {
-                  break label189;
-                }
-                paramAnonymousString.putStringArray(str1, new String[0]);
-                continue;
-              }
-              if (localJSONArray == null) {
-                break label254;
-              }
-            }
-            catch (Throwable paramAnonymousString)
-            {
-              ae.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
-              j.a(j.this, 2, "decodeUrl fail");
-              AppMethodBeat.o(127842);
-              return;
-            }
-            label189:
-            int i;
-            if (!Double.isNaN(localJSONArray.optDouble(0)))
-            {
-              localObject3 = new double[localJSONArray.length()];
-              i = 0;
-              while (i < localJSONArray.length())
-              {
-                localObject3[i] = localJSONArray.optDouble(i);
-                i += 1;
-              }
-              paramAnonymousString.putDoubleArray(str1, (double[])localObject3);
-            }
-            else
-            {
-              label254:
-              if ((localJSONArray != null) && (localJSONArray.optString(0) != null))
-              {
-                localObject3 = new String[localJSONArray.length()];
-                i = 0;
-                while (i < localJSONArray.length())
-                {
-                  localObject3[i] = localJSONArray.optString(i);
-                  i += 1;
-                }
-                paramAnonymousString.putStringArray(str1, (String[])localObject3);
-              }
-              else if (!((Double)localObject3).isNaN())
-              {
-                paramAnonymousString.putDouble(str1, ((Double)localObject3).doubleValue());
-              }
-              else if (str2 != null)
-              {
-                paramAnonymousString.putString(str1, str2);
-              }
-              else
-              {
-                System.err.println("unable to transform json to bundle ".concat(String.valueOf(str1)));
-              }
-            }
-          }
-          localObject1 = j.this;
-          Object localObject2 = Message.obtain();
-          ((Message)localObject2).what = 2;
-          ((Message)localObject2).setData(paramAnonymousString);
-          ((j)localObject1).handler.sendMessage((Message)localObject2);
-          AppMethodBeat.o(127842);
-          return;
-        }
-        try
-        {
-          f.aYF(paramAnonymousString);
-          j.a(j.this, 2, "parseJson error");
-          AppMethodBeat.o(127842);
-          return;
-        }
-        catch (Exception paramAnonymousString)
-        {
-          for (;;)
-          {
-            ae.e("MicroMsg.RefreshTokenRunner", "parseJson exception : " + paramAnonymousString.getMessage());
-            ae.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
-          }
-        }
-        catch (e paramAnonymousString)
-        {
-          localObject1 = "errCode = " + paramAnonymousString.mErrorCode + ", errType = " + paramAnonymousString.KWC + ", errMsg = " + paramAnonymousString.getMessage();
-          ae.e("MicroMsg.RefreshTokenRunner", "parseJson facebookerror, ".concat(String.valueOf(localObject1)));
-          ae.printErrStackTrace("MicroMsg.RefreshTokenRunner", paramAnonymousString, "", new Object[0]);
-          j.a(j.this, 3, (String)localObject1);
-          AppMethodBeat.o(127842);
-        }
-      }
-      
-      public final void a(FileNotFoundException paramAnonymousFileNotFoundException)
-      {
-        AppMethodBeat.i(127844);
-        ae.e("MicroMsg.RefreshTokenRunner", "onFileNotFoundException");
-        j.a(j.this, 2, paramAnonymousFileNotFoundException.getMessage());
-        AppMethodBeat.o(127844);
-      }
-      
-      public final void a(MalformedURLException paramAnonymousMalformedURLException)
-      {
-        AppMethodBeat.i(127845);
-        ae.e("MicroMsg.RefreshTokenRunner", "onMalformedURLException");
-        j.a(j.this, 2, paramAnonymousMalformedURLException.getMessage());
-        AppMethodBeat.o(127845);
-      }
-      
-      public final void c(IOException paramAnonymousIOException)
-      {
-        AppMethodBeat.i(127843);
-        ae.e("MicroMsg.RefreshTokenRunner", "onIOException");
-        j.a(j.this, 2, paramAnonymousIOException.getMessage());
-        AppMethodBeat.o(127843);
-      }
-    };
-    b.c(new a.1(new a(this.jkr), "oauth/access_token", localBundle, "GET", local2), "AsyncFacebookRunner_request");
-    AppMethodBeat.o(127846);
+    AppMethodBeat.i(127839);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(127839);
+    return i;
   }
   
-  public static abstract interface a
+  public final int getType()
   {
-    public abstract void onError(int paramInt, String paramString);
-    
-    public abstract void y(Bundle paramBundle);
+    return 755;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(127840);
+    Log.i("MicroMsg.NetSceneVerifyThirdApp", "errType %d,errCode %d,errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(127840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.model.j
  * JD-Core Version:    0.7.0.1
  */

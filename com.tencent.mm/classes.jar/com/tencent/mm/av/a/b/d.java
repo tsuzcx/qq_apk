@@ -1,20 +1,20 @@
 package com.tencent.mm.av.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
   implements com.tencent.mm.av.a.c.g
 {
-  public final String Gl(String paramString)
+  public final String OX(String paramString)
   {
     AppMethodBeat.i(130413);
     String str = null;
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
       str = com.tencent.mm.b.g.getMessageDigest(paramString.getBytes());
-      ae.d("MicroMsg.imageloader.DefaultImageFileNameCreator", "[cpan] create image file name :%s", new Object[] { str });
+      Log.d("MicroMsg.imageloader.DefaultImageFileNameCreator", "[cpan] create image file name :%s", new Object[] { str });
     }
     AppMethodBeat.o(130413);
     return str;

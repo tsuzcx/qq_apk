@@ -1,68 +1,68 @@
 package com.tencent.mm.plugin.remittance.bankcard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.axn;
-import com.tencent.mm.protocal.protobuf.axo;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bix;
+import com.tencent.mm.protocal.protobuf.biy;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
   extends b
 {
+  public biy CiO;
   private final String TAG;
-  private f callback;
+  private i callback;
   public String md5;
-  private com.tencent.mm.ak.b rr;
-  public axo yhN;
+  private d rr;
   
   public g(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67367);
     this.TAG = "MicroMsg.NetSceneBankRemitGetBankInfo";
-    b.a locala = new b.a();
-    locala.hQF = new axn();
-    locala.hQG = new axo();
+    d.a locala = new d.a();
+    locala.iLN = new bix();
+    locala.iLO = new biy();
     locala.funcId = 1542;
     locala.uri = "/cgi-bin/mmpay-bin/getbankinfo_tsbc";
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ((axn)this.rr.hQD.hQJ).God = paramString1;
+    this.rr = locala.aXF();
+    ((bix)this.rr.iLK.iLR).LiQ = paramString1;
     this.md5 = paramString2;
     AppMethodBeat.o(67367);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
     AppMethodBeat.i(67369);
-    ae.i("MicroMsg.NetSceneBankRemitGetBankInfo", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.yhN = ((axo)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
-    ae.i("MicroMsg.NetSceneBankRemitGetBankInfo", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.yhN.dmy), this.yhN.phe });
+    Log.i("MicroMsg.NetSceneBankRemitGetBankInfo", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.CiO = ((biy)((d)params).iLL.iLR);
+    Log.i("MicroMsg.NetSceneBankRemitGetBankInfo", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.CiO.dDN), this.CiO.qwn });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(67369);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(67368);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(67368);
     return i;
   }
   
-  public final void e(q paramq)
+  public final void e(s params)
   {
-    paramq = (axo)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
-    this.LVj = paramq.dmy;
-    this.LVk = paramq.phe;
+    params = (biy)((d)params).iLL.iLR;
+    this.RtZ = params.dDN;
+    this.Rua = params.qwn;
   }
   
   public final int getType()

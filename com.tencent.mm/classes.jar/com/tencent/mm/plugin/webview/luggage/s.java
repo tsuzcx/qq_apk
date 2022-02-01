@@ -14,36 +14,37 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.webkit.WebView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qe;
-import com.tencent.mm.g.a.qf;
+import com.tencent.mm.g.a.qy;
+import com.tencent.mm.g.a.qz;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.n.f;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic;
 import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic.a;
 import com.tencent.mm.plugin.webview.luggage.c.b.a;
 import com.tencent.mm.plugin.webview.luggage.c.b.c;
 import com.tencent.mm.plugin.webview.modeltools.h.c;
-import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.ui.tools.x;
-import com.tencent.mm.pluginsdk.ui.tools.x.a;
+import com.tencent.mm.pluginsdk.ui.tools.z;
+import com.tencent.mm.pluginsdk.ui.tools.z.a;
 import com.tencent.mm.protocal.GeneralControlWrapper;
-import com.tencent.mm.protocal.protobuf.bkj;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.u;
+import com.tencent.mm.protocal.protobuf.bws;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.ImgUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
-import com.tencent.mm.ui.e.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.e.p;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.a.e.b;
 import com.tencent.mm.ui.widget.snackbar.a.b;
 import com.tencent.mm.vending.g.d.b;
-import com.tencent.mm.vfs.o;
 import com.tencent.xweb.WebView.b;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,39 +52,39 @@ import java.util.Map;
 
 public final class s
 {
-  public g Egl;
-  int Eic;
-  com.tencent.mm.ui.widget.a.e kxz;
-  com.tencent.mm.plugin.webview.modeltools.h lAa;
-  WebView.b lAb;
-  WebView.b lAc;
-  ScanCodeSheetItemLogic lAg;
-  private h.c lAi;
-  String lzW;
-  a.b ufz;
-  int ztB;
+  int DDM;
+  public g ISU;
+  int IUQ;
+  com.tencent.mm.ui.widget.a.e lBM;
+  String mHk;
+  com.tencent.mm.plugin.webview.modeltools.h mHo;
+  WebView.b mHp;
+  WebView.b mHq;
+  ScanCodeSheetItemLogic mHu;
+  private h.c mHw;
+  a.b xxK;
   
   public s(g paramg)
   {
     AppMethodBeat.i(78461);
-    this.lAi = new h.c()
+    this.mHw = new h.c()
     {
-      public final void Sa(String paramAnonymousString)
+      public final void abF(String paramAnonymousString)
       {
         AppMethodBeat.i(78435);
         s locals = s.this;
         Bundle localBundle = new Bundle();
         localBundle.putInt("type", 1);
         localBundle.putString("img_path", paramAnonymousString);
-        localBundle.putInt("x_down", locals.Egl.oef);
-        localBundle.putInt("y_down", locals.Egl.oeg);
-        com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", localBundle, s.d.class, new s.6(locals));
+        localBundle.putInt("x_down", locals.ISU.ppd);
+        localBundle.putInt("y_down", locals.ISU.ppe);
+        com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, localBundle, s.d.class, new s.6(locals));
         AppMethodBeat.o(78435);
       }
     };
-    this.ufz = new a.b()
+    this.xxK = new a.b()
     {
-      public final void biY()
+      public final void bDZ()
       {
         AppMethodBeat.i(78443);
         FavUrlTask localFavUrlTask = new FavUrlTask();
@@ -92,40 +93,40 @@ public final class s
         AppMethodBeat.o(78443);
       }
     };
-    this.Egl = paramg;
-    this.Egl.getWebView().setOnLongClickListener(new View.OnLongClickListener()
+    this.ISU = paramg;
+    this.ISU.ITd.setOnLongClickListener(new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(78447);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageWebViewLongClickHelper$7", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-        ae.v("MicroMsg.LuggageWebViewLongClickHelper", "registerForContextMenu normal view long click");
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/luggage/LuggageWebViewLongClickHelper$7", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        Log.v("MicroMsg.LuggageWebViewLongClickHelper", "registerForContextMenu normal view long click");
         localObject = s.this;
-        ((s)localObject).lzW = null;
-        ((s)localObject).lAc = null;
-        ((s)localObject).lAb = null;
-        ((s)localObject).lAg.onDismiss();
-        if (s.this.eTq())
+        ((s)localObject).mHk = null;
+        ((s)localObject).mHq = null;
+        ((s)localObject).mHp = null;
+        ((s)localObject).mHu.onDismiss();
+        if (s.this.gcd())
         {
           com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/webview/luggage/LuggageWebViewLongClickHelper$7", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
           AppMethodBeat.o(78447);
           return false;
         }
-        boolean bool = s.this.fK(paramAnonymousView);
+        boolean bool = s.this.gd(paramAnonymousView);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/webview/luggage/LuggageWebViewLongClickHelper$7", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(78447);
         return bool;
       }
     });
-    this.lAg = new ScanCodeSheetItemLogic(paramg.mContext, new ScanCodeSheetItemLogic.a()
+    this.mHu = new ScanCodeSheetItemLogic(paramg.mContext, new ScanCodeSheetItemLogic.a()
     {
-      public final void bpT()
+      public final void bLz()
       {
         AppMethodBeat.i(78444);
-        if ((s.this.kxz != null) && (s.this.kxz.isShowing())) {
-          s.this.eTr();
+        if ((s.this.lBM != null) && (s.this.lBM.isShowing())) {
+          s.this.gce();
         }
         AppMethodBeat.o(78444);
       }
@@ -133,15 +134,15 @@ public final class s
     AppMethodBeat.o(78461);
   }
   
-  private boolean aIv(final String paramString)
+  private boolean aYx(final String paramString)
   {
     AppMethodBeat.i(78466);
-    if (this.kxz == null) {
-      this.kxz = new com.tencent.mm.ui.widget.a.e(this.Egl.mContext, 1, false);
+    if (this.lBM == null) {
+      this.lBM = new com.tencent.mm.ui.widget.a.e(this.ISU.mContext, 1, false);
     }
-    this.kxz.LfS = new n.d()
+    this.lBM.HLX = new o.f()
     {
-      public final void onCreateMMMenu(l paramAnonymousl)
+      public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramAnonymousm)
       {
         AppMethodBeat.i(78448);
         s locals = s.this;
@@ -150,42 +151,42 @@ public final class s
         int i;
         label269:
         Object localObject2;
-        if (ak.cpe())
+        if (MMApplicationContext.isMMProcess())
         {
-          bool1 = com.tencent.mm.kernel.g.ajM();
-          boolean bool2 = locals.Egl.eSU().aJy(locals.Egl.getUrl()).fkg();
-          boolean bool3 = locals.Egl.eSU().aJy(locals.Egl.getUrl()).fkh();
-          ae.i("MicroMsg.LuggageWebViewLongClickHelper", "installMenuItems hasSetAcc = %b, canShareImage = %b, canFavImage = %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
+          bool1 = com.tencent.mm.kernel.g.aAc();
+          boolean bool2 = locals.ISU.gbF().aZF(locals.ISU.getUrl()).gtH();
+          boolean bool3 = locals.ISU.gbF().aZF(locals.ISU.getUrl()).gtI();
+          Log.i("MicroMsg.LuggageWebViewLongClickHelper", "installMenuItems hasSetAcc = %b, canShareImage = %b, canFavImage = %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
           localObject1 = new ArrayList();
           if ((bool1) && (bool2)) {
-            ((List)localObject1).add(new s.c(1, locals.Egl.mContext.getString(2131762163)));
+            ((List)localObject1).add(new s.c(1, locals.ISU.mContext.getString(2131764184)));
           }
-          ((List)localObject1).add(new s.c(2, locals.Egl.mContext.getString(2131762783)));
+          ((List)localObject1).add(new s.c(2, locals.ISU.mContext.getString(2131764870)));
           if ((bool1) && (bool3)) {
-            ((List)localObject1).add(new s.c(3, locals.Egl.mContext.getString(2131761941)));
+            ((List)localObject1).add(new s.c(3, locals.ISU.mContext.getString(2131763947)));
           }
-          if (locals.lzW != null) {
-            ((List)localObject1).add(new s.c(4, locals.lAg.OT(locals.Eic)));
+          if (locals.mHk != null) {
+            ((List)localObject1).add(new s.c(4, locals.mHu.Wp(locals.IUQ)));
           }
-          locals.kxz.setFooterView(null);
-          paramAnonymousl.clear();
+          locals.lBM.setFooterView(null);
+          paramAnonymousm.clear();
           i = 0;
           if (i >= ((List)localObject1).size()) {
-            break label407;
+            break label408;
           }
           localObject2 = (s.c)((List)localObject1).get(i);
           if (((s.c)localObject2).id != 4) {
-            break label389;
+            break label390;
           }
-          localObject2 = locals.kxz;
+          localObject2 = locals.lBM;
           s.3 local3 = new s.3(locals);
-          ((com.tencent.mm.ui.widget.a.e)localObject2).setFooterView(locals.lAg.a(local3, locals.Eic, locals.lzW, 7));
+          ((com.tencent.mm.ui.widget.a.e)localObject2).setFooterView(locals.mHu.a(local3, locals.IUQ, locals.mHk, 7));
         }
         for (;;)
         {
           i += 1;
           break label269;
-          localObject1 = (Bundle)com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", null, b.c.class);
+          localObject1 = (Bundle)com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, null, b.c.class);
           if (localObject1 != null)
           {
             bool1 = ((Bundle)localObject1).getBoolean("has_set_uin", false);
@@ -193,14 +194,14 @@ public final class s
           }
           bool1 = true;
           break;
-          label389:
-          paramAnonymousl.d(((s.c)localObject2).id, ((s.c)localObject2).title);
+          label390:
+          paramAnonymousm.d(((s.c)localObject2).id, ((s.c)localObject2).title);
         }
-        label407:
+        label408:
         AppMethodBeat.o(78448);
       }
     };
-    this.kxz.LfT = new n.e()
+    this.lBM.HLY = new o.g()
     {
       public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
       {
@@ -214,65 +215,65 @@ public final class s
           return;
           paramAnonymousMenuItem = s.this;
           String str = paramString;
-          x.a(paramAnonymousMenuItem.Egl.mContext, str, com.tencent.xweb.c.geY().getCookie(str), com.tencent.mm.compatible.util.e.abo(), new s.4(paramAnonymousMenuItem));
+          z.a(paramAnonymousMenuItem.ISU.mContext, str, com.tencent.xweb.c.hsp().getCookie(str), com.tencent.mm.compatible.util.e.apn(), new s.4(paramAnonymousMenuItem));
           AppMethodBeat.o(78449);
           return;
           paramAnonymousMenuItem = s.this;
           str = paramString;
-          x.b(paramAnonymousMenuItem.Egl.mContext, str, com.tencent.xweb.c.geY().getCookie(str), com.tencent.mm.compatible.util.e.abo());
+          z.b(paramAnonymousMenuItem.ISU.mContext, str, com.tencent.xweb.c.hsp().getCookie(str), com.tencent.mm.compatible.util.e.apn());
           AppMethodBeat.o(78449);
           return;
           paramAnonymousMenuItem = s.this;
           str = paramString;
-          x.a(paramAnonymousMenuItem.Egl.mContext, str, com.tencent.xweb.c.geY().getCookie(str), com.tencent.mm.compatible.util.e.abo(), new s.5(paramAnonymousMenuItem));
+          z.a(paramAnonymousMenuItem.ISU.mContext, str, com.tencent.xweb.c.hsp().getCookie(str), com.tencent.mm.compatible.util.e.apn(), new s.5(paramAnonymousMenuItem));
         }
       }
     };
-    this.kxz.KtV = new e.b()
+    this.lBM.PGl = new e.b()
     {
       public final void onDismiss()
       {
         AppMethodBeat.i(78436);
-        if (s.this.lAa != null) {
+        if (s.this.mHo != null) {
           try
           {
-            s.this.Eic = 0;
-            s.this.lzW = null;
-            s.this.lAg.onDismiss();
-            String str = s.this.lAa.Eog;
+            s.this.IUQ = 0;
+            s.this.mHk = null;
+            s.this.mHu.onDismiss();
+            String str = s.this.mHo.Jbk;
             Bundle localBundle = new Bundle();
             localBundle.putInt("type", 2);
             localBundle.putString("img_path", str);
-            com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", localBundle, s.d.class, null);
-            s.this.lAa.eUL();
+            com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, localBundle, s.d.class, null);
+            s.this.mHo.gdA();
             AppMethodBeat.o(78436);
             return;
           }
           catch (Exception localException)
           {
-            ae.e("MicroMsg.LuggageWebViewLongClickHelper", "cancel capture failed");
+            Log.e("MicroMsg.LuggageWebViewLongClickHelper", "cancel capture failed");
           }
         }
         AppMethodBeat.o(78436);
       }
     };
-    if (!((Activity)this.Egl.mContext).isFinishing()) {
-      this.kxz.cPF();
+    if (!((Activity)this.ISU.mContext).isFinishing()) {
+      this.lBM.dGm();
     }
-    boolean bool = this.kxz.isShowing();
+    boolean bool = this.lBM.isShowing();
     AppMethodBeat.o(78466);
     return bool;
   }
   
-  private boolean eTs()
+  private boolean gcf()
   {
     AppMethodBeat.i(78467);
-    if (!this.Egl.eSU().aJy(this.Egl.getUrl()).fkc())
+    if (!this.ISU.gbF().aZF(this.ISU.getUrl()).gtD())
     {
       AppMethodBeat.o(78467);
       return false;
     }
-    IPCBoolean localIPCBoolean = (IPCBoolean)com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", null, b.class);
+    IPCBoolean localIPCBoolean = (IPCBoolean)com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, null, b.class);
     if ((localIPCBoolean != null) && (localIPCBoolean.value))
     {
       AppMethodBeat.o(78467);
@@ -285,12 +286,12 @@ public final class s
   final boolean a(WebView.b paramb)
   {
     AppMethodBeat.i(78464);
-    boolean bool = aIv(paramb.mExtra);
-    if ((bu.isNullOrNil(this.lzW)) && (eTs()))
+    boolean bool = aYx(paramb.mExtra);
+    if ((Util.isNullOrNil(this.mHk)) && (gcf()))
     {
-      this.lAc = paramb;
-      this.lAa = new com.tencent.mm.plugin.webview.modeltools.h();
-      this.lAa.a(this.Egl.getWebView(), this.lAi);
+      this.mHq = paramb;
+      this.mHo = new com.tencent.mm.plugin.webview.modeltools.h();
+      this.mHo.a(this.ISU.ITd, this.mHw);
     }
     AppMethodBeat.o(78464);
     return bool;
@@ -299,38 +300,38 @@ public final class s
   final boolean b(WebView.b paramb)
   {
     AppMethodBeat.i(78465);
-    boolean bool = aIv(paramb.mExtra);
-    if ((bu.isNullOrNil(this.lzW)) && (eTs()))
+    boolean bool = aYx(paramb.mExtra);
+    if ((Util.isNullOrNil(this.mHk)) && (gcf()))
     {
-      this.lAb = paramb;
-      this.lAa = new com.tencent.mm.plugin.webview.modeltools.h();
-      this.lAa.a(this.Egl.getWebView(), this.lAi);
+      this.mHp = paramb;
+      this.mHo = new com.tencent.mm.plugin.webview.modeltools.h();
+      this.mHo.a(this.ISU.ITd, this.mHw);
     }
     AppMethodBeat.o(78465);
     return bool;
   }
   
-  final boolean eTq()
+  final boolean gcd()
   {
-    return this.Egl == null;
+    return this.ISU == null;
   }
   
-  final void eTr()
+  final void gce()
   {
     AppMethodBeat.i(78462);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(78446);
-        if (s.this.lAb != null)
+        if (s.this.mHp != null)
         {
-          s.this.b(s.this.lAb);
+          s.this.b(s.this.mHp);
           AppMethodBeat.o(78446);
           return;
         }
-        if (s.this.lAc != null) {
-          s.this.a(s.this.lAc);
+        if (s.this.mHq != null) {
+          s.this.a(s.this.mHq);
         }
         AppMethodBeat.o(78446);
       }
@@ -338,7 +339,7 @@ public final class s
     AppMethodBeat.o(78462);
   }
   
-  final boolean fK(View paramView)
+  final boolean gd(View paramView)
   {
     AppMethodBeat.i(78463);
     for (;;)
@@ -348,7 +349,7 @@ public final class s
         if (!(paramView instanceof WebView)) {
           continue;
         }
-        paramView = this.Egl.getWebView().getHitTestResult();
+        paramView = this.ISU.ITd.getHitTestResult();
         if (paramView == null)
         {
           AppMethodBeat.o(78463);
@@ -360,7 +361,7 @@ public final class s
       }
       catch (Exception paramView)
       {
-        ae.e("MicroMsg.LuggageWebViewLongClickHelper", "onCreateContextMenu exp %s", new Object[] { paramView.getMessage() });
+        Log.e("MicroMsg.LuggageWebViewLongClickHelper", "onCreateContextMenu exp %s", new Object[] { paramView.getMessage() });
         continue;
       }
       AppMethodBeat.o(78463);
@@ -387,14 +388,14 @@ public final class s
   static class b
     implements k<IPCBoolean, IPCBoolean>
   {
-    private static IPCBoolean eTt()
+    private static IPCBoolean gcg()
     {
       boolean bool = true;
       AppMethodBeat.i(78451);
       IPCBoolean localIPCBoolean = new IPCBoolean();
       try
       {
-        i = bu.getInt(com.tencent.mm.n.g.acL().getValue("EnableWebviewScanQRCode"), 1);
+        i = Util.getInt(com.tencent.mm.n.h.aqJ().getValue("EnableWebviewScanQRCode"), 1);
         if (i == 1)
         {
           localIPCBoolean.value = bool;
@@ -406,7 +407,7 @@ public final class s
       {
         for (;;)
         {
-          ae.e("MicroMsg.LuggageWebViewLongClickHelper", "isAllowScanQRCode parseInt failed");
+          Log.e("MicroMsg.LuggageWebViewLongClickHelper", "isAllowScanQRCode parseInt failed");
           int i = 0;
           continue;
           bool = false;
@@ -430,16 +431,16 @@ public final class s
   static class d
     implements com.tencent.mm.ipcinvoker.b<Bundle, Bundle>
   {
-    private Map<String, Integer> Eih;
-    private com.tencent.mm.sdk.b.c Eii;
-    private com.tencent.mm.ipcinvoker.d gAo;
-    private com.tencent.mm.sdk.b.c gzF;
+    private Map<String, Integer> IUV;
+    private IListener IUW;
+    private IListener hms;
+    private com.tencent.mm.ipcinvoker.d hnd;
     
     private d()
     {
       AppMethodBeat.i(78456);
-      this.gzF = new com.tencent.mm.sdk.b.c() {};
-      this.Eii = new com.tencent.mm.sdk.b.c() {};
+      this.hms = new IListener() {};
+      this.IUW = new IListener() {};
       AppMethodBeat.o(78456);
     }
   }
@@ -451,17 +452,17 @@ public final class s
     {
       AppMethodBeat.i(78460);
       Object localObject = paramBundle.getString("img_path");
-      if (u.aRG((String)localObject))
+      if (ImgUtil.isGif((String)localObject))
       {
         paramBundle = com.tencent.mm.b.g.getMD5((String)localObject);
-        paramBundle = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aci(paramBundle);
-        if ((paramBundle != null) && (paramBundle.fxn())) {
+        paramBundle = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aml(paramBundle);
+        if ((paramBundle != null) && (paramBundle.hRx())) {
           break label412;
         }
-        paramBundle = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr();
-        ak.getContext();
-        paramBundle = paramBundle.ack((String)localObject);
-        paramBundle = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aci(paramBundle);
+        paramBundle = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr();
+        MMApplicationContext.getContext();
+        paramBundle = paramBundle.amn((String)localObject);
+        paramBundle = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aml(paramBundle);
       }
       label259:
       label406:
@@ -478,21 +479,21 @@ public final class s
           label116:
           BitmapFactory.Options localOptions = new BitmapFactory.Options();
           localOptions.inJustDecodeBounds = true;
-          if (((com.tencent.mm.sdk.platformtools.h.decodeFile((String)localObject, localOptions) == null) || (localOptions.outHeight <= com.tencent.mm.n.b.acp())) && (localOptions.outWidth <= com.tencent.mm.n.b.acp())) {
+          if (((BitmapUtil.decodeFile((String)localObject, localOptions) == null) || (localOptions.outHeight <= com.tencent.mm.n.c.aqo())) && (localOptions.outWidth <= com.tencent.mm.n.c.aqo())) {
             break label406;
           }
         }
         for (int i = 1;; i = 0)
         {
-          if ((l > com.tencent.mm.n.b.acq()) || (i != 0))
+          if ((l > com.tencent.mm.n.c.aqp()) || (i != 0))
           {
-            com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131758246), "", paramContext.getString(2131760315), null);
-            com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131758246), "", paramContext.getString(2131760315), "", false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131758534), "", paramContext.getString(2131761757), null);
+            com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131758534), "", paramContext.getString(2131761757), "", false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(78458);
-                parama.r(null);
+                parama.v(null);
                 AppMethodBeat.o(78458);
               }
             }, new DialogInterface.OnClickListener()
@@ -500,26 +501,26 @@ public final class s
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(78459);
-                parama.r(null);
+                parama.v(null);
                 AppMethodBeat.o(78459);
               }
             });
             AppMethodBeat.o(78460);
             return;
-            l = o.aZR(paramBundle.fSQ());
+            l = com.tencent.mm.vfs.s.boW(paramBundle.hRM());
             break;
-            localObject = paramBundle.fSQ();
+            localObject = paramBundle.hRM();
             break label116;
           }
           localObject = new Intent();
           if (paramBundle != null) {}
-          for (paramBundle = paramBundle.Lj();; paramBundle = "")
+          for (paramBundle = paramBundle.getMd5();; paramBundle = "")
           {
             ((Intent)localObject).putExtra("Retr_File_Name", paramBundle);
             ((Intent)localObject).putExtra("Retr_Msg_Type", 5);
             ((Intent)localObject).putExtra("Retr_MsgImgScene", 1);
-            com.tencent.mm.plugin.webview.a.a.iUz.k((Intent)localObject, paramContext);
-            parama.r(null);
+            com.tencent.mm.plugin.webview.a.a.jRt.k((Intent)localObject, paramContext);
+            parama.v(null);
             AppMethodBeat.o(78460);
             return;
           }
@@ -528,8 +529,8 @@ public final class s
           paramBundle.putExtra("Retr_Compress_Type", 0);
           paramBundle.putExtra("Retr_Msg_Type", 0);
           paramBundle.addFlags(268435456);
-          com.tencent.mm.plugin.webview.a.a.iUz.k(paramBundle, paramContext);
-          parama.r(null);
+          com.tencent.mm.plugin.webview.a.a.jRt.k(paramBundle, paramContext);
+          parama.v(null);
           AppMethodBeat.o(78460);
           return;
         }

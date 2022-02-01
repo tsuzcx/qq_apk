@@ -8,18 +8,16 @@ import android.os.RemoteException;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
 import com.tencent.mm.compatible.util.n;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.modelappbrand.b;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.stub.e;
 import com.tencent.mm.plugin.webview.ui.tools.fts.FTSSOSMoreWebViewUI;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.search.FTSEditTextView.b;
 import com.tencent.mm.ui.search.a.c;
 import java.util.List;
@@ -27,20 +25,20 @@ import java.util.List;
 public class AppBrandSOSUI
   extends FTSSOSMoreWebViewUI
 {
-  private String mJA;
-  private String mJB;
-  private View mJz;
+  private String nWA;
+  private View nWy;
+  private String nWz;
   private int scene;
   
   public final void a(String paramString1, String paramString2, List<a.c> paramList, FTSEditTextView.b paramb)
   {
     AppMethodBeat.i(163179);
     if (!TextUtils.isEmpty(paramString2)) {
-      this.mJz.setVisibility(8);
+      this.nWy.setVisibility(8);
     }
     try
     {
-      this.lzT.k(10001, null);
+      this.mHh.j(10001, null);
       super.a(paramString1, paramString2, paramList, paramb);
       AppMethodBeat.o(163179);
       return;
@@ -49,16 +47,16 @@ public class AppBrandSOSUI
     {
       for (;;)
       {
-        ae.e("MicroMsg.AppBrandSOSUI", "refresh keyword id error : %s", new Object[] { localRemoteException });
+        Log.e("MicroMsg.AppBrandSOSUI", "refresh keyword id error : %s", new Object[] { localRemoteException });
       }
     }
   }
   
-  public final boolean bAu()
+  public final boolean awE()
   {
     AppMethodBeat.i(21127);
-    this.mJz.setVisibility(8);
-    boolean bool = super.bAu();
+    this.nWy.setVisibility(8);
+    boolean bool = super.awE();
     AppMethodBeat.o(21127);
     return bool;
   }
@@ -67,46 +65,23 @@ public class AppBrandSOSUI
   {
     AppMethodBeat.i(21129);
     super.dealContentView(paramView);
-    this.mJA = getIntent().getStringExtra("key_nearby_url");
+    this.nWz = getIntent().getStringExtra("key_nearby_url");
     getIntent().getStringExtra("key_nearby_list_id");
-    this.mJz = getLayoutInflater().inflate(2131493053, (ViewGroup)paramView, false);
-    View localView1 = this.mJz.findViewById(2131302682);
-    localView1.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(21124);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandSOSUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-        if (TextUtils.isEmpty(AppBrandSOSUI.a(AppBrandSOSUI.this)))
-        {
-          a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandSOSUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(21124);
-          return;
-        }
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("showShare", false);
-        ((Intent)localObject).putExtra("rawUrl", AppBrandSOSUI.a(AppBrandSOSUI.this));
-        ((Intent)localObject).putExtra("geta8key_scene", 41);
-        ((Intent)localObject).putExtra("show_long_click_popup_menu", false);
-        d.b(paramAnonymousView.getContext(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-        a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandSOSUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(21124);
-      }
-    });
-    if (TextUtils.isEmpty(this.mJA))
+    this.nWy = getLayoutInflater().inflate(2131493092, (ViewGroup)paramView, false);
+    View localView1 = this.nWy.findViewById(2131305236);
+    localView1.setOnClickListener(new AppBrandSOSUI.1(this));
+    if (TextUtils.isEmpty(this.nWz))
     {
       localView1.setVisibility(8);
-      this.mJz.setVisibility(8);
+      this.nWy.setVisibility(8);
     }
     while ((paramView instanceof FrameLayout))
     {
-      ((FrameLayout)paramView).addView(this.mJz);
+      ((FrameLayout)paramView).addView(this.nWy);
       AppMethodBeat.o(21129);
       return;
       localView1.setVisibility(0);
-      this.mJz.setVisibility(0);
+      this.nWy.setVisibility(0);
     }
     paramView = paramView.getLayoutParams();
     int k;
@@ -114,8 +89,8 @@ public class AppBrandSOSUI
     int i;
     if (getWindow().hasFeature(9))
     {
-      localView1 = this.mJz;
-      k = this.mJz.getPaddingLeft();
+      localView1 = this.nWy;
+      k = this.nWy.getPaddingLeft();
       localRect = new Rect();
       int j = getActionBarHeight();
       View localView2 = getWindow().getDecorView();
@@ -125,7 +100,7 @@ public class AppBrandSOSUI
       localView2.getLocationOnScreen(arrayOfInt);
       i = j;
       if (m == 0) {
-        i = j + n.B(getContext(), 0);
+        i = j + n.D(getContext(), 0);
       }
       if ((m - localRect.height() < 0) || (arrayOfInt[1] <= 200)) {
         break label321;
@@ -134,8 +109,8 @@ public class AppBrandSOSUI
     }
     for (;;)
     {
-      localView1.setPadding(k, i + this.mJz.getPaddingTop(), this.mJz.getPaddingRight(), this.mJz.getPaddingBottom());
-      addContentView(this.mJz, paramView);
+      localView1.setPadding(k, i + this.nWy.getPaddingTop(), this.nWy.getPaddingRight(), this.nWy.getPaddingBottom());
+      addContentView(this.nWy, paramView);
       AppMethodBeat.o(21129);
       return;
       label321:
@@ -161,13 +136,13 @@ public class AppBrandSOSUI
   {
     AppMethodBeat.i(21125);
     super.onCreate(paramBundle);
-    overridePendingTransition(2130772095, 0);
-    this.mJB = getIntent().getStringExtra("key_session_id");
+    overridePendingTransition(2130772119, 0);
+    this.nWA = getIntent().getStringExtra("key_session_id");
     this.scene = getIntent().getIntExtra("ftsbizscene", 0);
-    ae.i("MicroMsg.AppBrandSOSUI", "onCreate oreh report weAppSearchClickStream(13929) statSessionId:%s", new Object[] { this.mJB });
-    g.yxI.f(13929, new Object[] { this.mJB, "", Integer.valueOf(1), Integer.valueOf(this.scene) });
+    Log.i("MicroMsg.AppBrandSOSUI", "onCreate oreh report weAppSearchClickStream(13929) statSessionId:%s", new Object[] { this.nWA });
+    h.CyF.a(13929, new Object[] { this.nWA, "", Integer.valueOf(1), Integer.valueOf(this.scene) });
     paramBundle = new Intent();
-    paramBundle.putExtra("key_session_id", this.mJB);
+    paramBundle.putExtra("key_session_id", this.nWA);
     paramBundle.putExtra("ftsbizscene", this.scene);
     setResult(-1, paramBundle);
     AppMethodBeat.o(21125);
@@ -177,7 +152,7 @@ public class AppBrandSOSUI
   {
     AppMethodBeat.i(21126);
     if ((this.scene == 3) || (this.scene == 16)) {
-      g.yxI.f(13929, new Object[] { this.mJB, com.tencent.mm.modelappbrand.b.hNh, Integer.valueOf(2), Integer.valueOf(this.scene) });
+      h.CyF.a(13929, new Object[] { this.nWA, b.iIn, Integer.valueOf(2), Integer.valueOf(this.scene) });
     }
     super.onDestroy();
     AppMethodBeat.o(21126);
@@ -191,7 +166,7 @@ public class AppBrandSOSUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandSOSUI
  * JD-Core Version:    0.7.0.1
  */

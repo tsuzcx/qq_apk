@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class wi
-  extends b
+  extends IEvent
 {
-  public a dLN;
+  public a ect;
   
   public wi()
   {
@@ -15,17 +15,19 @@ public final class wi
   
   private wi(byte paramByte)
   {
-    AppMethodBeat.i(149890);
-    this.dLN = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(125647);
+    this.ect = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(149890);
+    AppMethodBeat.o(125647);
   }
   
   public static final class a
   {
-    public String dLO;
-    public int dsO = 0;
+    public String ecu;
+    public String id;
+    public String result;
+    public int type;
   }
 }
 

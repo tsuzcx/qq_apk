@@ -1,193 +1,166 @@
 package com.tencent.mm.plugin.appbrand.app;
 
-import android.app.Activity;
-import android.app.Application;
-import android.os.Bundle;
-import android.os.SystemClock;
-import android.util.SparseIntArray;
+import android.content.Context;
+import android.os.Parcelable;
+import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.d;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.appbrand.task.AppBrandPreloadProfiler;
-import com.tencent.mm.plugin.appbrand.ui.AppBrandPluginUI;
-import com.tencent.mm.plugin.appbrand.y.a;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.ipcinvoker.b;
+import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.b.a;
+import com.tencent.mm.opensdk.modelbiz.WXLaunchWxaRedirectingPage.Req;
+import com.tencent.mm.plugin.appbrand.appcache.e;
+import com.tencent.mm.plugin.appbrand.service.f;
+import com.tencent.mm.plugin.appbrand.service.z;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/app/AppBrandMixExportLogicServiceAnyProcess;", "Lcom/tencent/mm/plugin/appbrand/service/IAppBrandMixExportLogicService;", "()V", "TAG", "", "appbrandGameOnStartReportCanvasDataEvent", "", "appid", "buildLowVersionUrl", "appId", "cleanupAppBrandFileLogic", "getInfoByQRCodeResult", "Lcom/tencent/mm/vending/pipeline/Pipeline;", "Landroid/util/Pair;", "codeResultStr", "codeType", "", "codeVersion", "getTipNameByDebugType", "type", "keyStepToggleSwitch", "processName", "keepOpenTime", "", "notifyIpcEventToAppBrand", "T", "Landroid/os/Parcelable;", "data", "(Ljava/lang/String;Landroid/os/Parcelable;)V", "onAppBrandFindMoreEntranceExposed", "openWeappFunctionalPageByDeepLink", "context", "Landroid/content/Context;", "sdkReq", "Lcom/tencent/mm/opensdk/modelbiz/WXLaunchWxaRedirectingPage$Req;", "appPackageName", "deepLinkUri", "transferBuffer", "preloadEnvForMiniGame", "scene", "Lcom/tencent/mm/plugin/appbrand/service/PRELOAD_SCENE;", "preloadEnvForMiniProgram", "preloadEnvForPluginApp", "requestOpenDocumentInAppBrandProcess", "filePath", "fileExt", "showMenu", "", "triggerAppBrandCleanupLogic", "plugin-appbrand-integration_release"})
 public final class c
+  implements f
 {
-  private static volatile boolean jGl = false;
-  private static volatile boolean jGm = false;
+  public static final c kIc;
   
-  public static void a(com.tencent.mm.plugin.appbrand.task.e parame, final AppBrandPreloadProfiler paramAppBrandPreloadProfiler, final boolean paramBoolean1, final boolean paramBoolean2, final int paramInt)
+  static
   {
-    AppMethodBeat.i(222091);
-    jGm = true;
-    if ((parame == null) || (parame == com.tencent.mm.plugin.appbrand.task.e.mDg))
+    AppMethodBeat.i(227972);
+    kIc = new c();
+    AppMethodBeat.o(227972);
+  }
+  
+  public final String Ur(String paramString)
+  {
+    AppMethodBeat.i(227967);
+    paramString = (Throwable)new IllegalStateException("Not support".toString());
+    AppMethodBeat.o(227967);
+    throw paramString;
+  }
+  
+  public final Pair<Integer, String> a(Context paramContext, WXLaunchWxaRedirectingPage.Req paramReq, String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(227971);
+    paramContext = (Throwable)new IllegalStateException("Not support".toString());
+    AppMethodBeat.o(227971);
+    throw paramContext;
+  }
+  
+  public final void a(Context paramContext, String paramString1, String paramString2, String paramString3, boolean paramBoolean, String paramString4)
+  {
+    AppMethodBeat.i(227966);
+    paramContext = (Throwable)new IllegalStateException("Not support".toString());
+    AppMethodBeat.o(227966);
+    throw paramContext;
+  }
+  
+  public final void a(z paramz)
+  {
+    AppMethodBeat.i(227961);
+    p.h(paramz, "scene");
+    a.a(new IPCString(paramz.name()), (b)c.kIf, null);
+    AppMethodBeat.o(227961);
+  }
+  
+  public final <T extends Parcelable> void a(String paramString, T paramT)
+  {
+    AppMethodBeat.i(227965);
+    paramString = (Throwable)new IllegalStateException("Not support".toString());
+    AppMethodBeat.o(227965);
+    throw paramString;
+  }
+  
+  public final void b(z paramz)
+  {
+    AppMethodBeat.i(227962);
+    p.h(paramz, "scene");
+    a.a(new IPCString(paramz.name()), (b)b.kIe, null);
+    AppMethodBeat.o(227962);
+  }
+  
+  public final void bui()
+  {
+    AppMethodBeat.i(227964);
+    Throwable localThrowable = (Throwable)new IllegalStateException("Not support".toString());
+    AppMethodBeat.o(227964);
+    throw localThrowable;
+  }
+  
+  public final void buj()
+  {
+    AppMethodBeat.i(227969);
+    Throwable localThrowable = (Throwable)new IllegalStateException("Not support".toString());
+    AppMethodBeat.o(227969);
+    throw localThrowable;
+  }
+  
+  public final void buk()
+  {
+    AppMethodBeat.i(227970);
+    Throwable localThrowable = (Throwable)new IllegalStateException("Not support".toString());
+    AppMethodBeat.o(227970);
+    throw localThrowable;
+  }
+  
+  public final void c(z paramz)
+  {
+    AppMethodBeat.i(227963);
+    p.h(paramz, "scene");
+    a.a(new IPCString(paramz.name()), (b)a.kId, null);
+    AppMethodBeat.o(227963);
+  }
+  
+  public final Pair<String, Integer> vN(int paramInt)
+  {
+    AppMethodBeat.i(227968);
+    Pair localPair = new Pair(e.vO(paramInt), Integer.valueOf(2131231041));
+    AppMethodBeat.o(227968);
+    return localPair;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class a<InputType, ResultType>
+    implements b<IPCString, IPCVoid>
+  {
+    public static final a kId;
+    
+    static
     {
-      ae.i("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile]", "dl: AppBrandProcessPreloader said I can not preload [nil] type.");
-      AppMethodBeat.o(222091);
-      return;
-    }
-    if (paramAppBrandPreloadProfiler == null) {
-      paramAppBrandPreloadProfiler = new AppBrandPreloadProfiler();
-    }
-    for (;;)
-    {
-      paramAppBrandPreloadProfiler.mCi = SystemClock.elapsedRealtime();
-      ar.f(new Runnable()
-      {
-        private Integer Ly(String paramAnonymousString)
-        {
-          AppMethodBeat.i(222088);
-          c.JG();
-          boolean bool = c.jGl;
-          ae.i("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile]", "start misc preload type[%s], aggressive[%b], reason[%s], skip[%b]", new Object[] { this.jGo, Boolean.valueOf(paramBoolean1), paramAnonymousString, Boolean.valueOf(bool) });
-          if (!bool) {}
-          for (;;)
-          {
-            try
-            {
-              AppBrandMainProcessService.bio();
-              if (!paramBoolean1) {
-                continue;
-              }
-              if (com.tencent.mm.plugin.appbrand.task.c.bzr()) {
-                com.tencent.mm.plugin.appbrand.task.c.a(this.jGo, null, true, paramAppBrandPreloadProfiler, paramInt);
-              }
-              c.Lx("preload aggressive before keepalive");
-              if (((h)com.tencent.mm.kernel.g.ajO().ajq()).mProcessName.endsWith(":appbrand0")) {
-                com.tencent.mm.plugin.appbrand.keepalive.b.b(AppBrandPluginUI.class.getName(), new Runnable()
-                {
-                  public final void run()
-                  {
-                    AppMethodBeat.i(44106);
-                    c.Lx("preload aggressive after keepalive");
-                    AppMethodBeat.o(44106);
-                  }
-                });
-              }
-              if ((((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qJv, 0) != 0) && (paramBoolean2)) {
-                com.tencent.mm.plugin.appbrand.luggage.c.e.btm();
-              }
-            }
-            catch (Exception paramAnonymousString)
-            {
-              ae.printErrStackTrace("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile]", paramAnonymousString, "Preload [%s] in IdleHandler encountered Exception", new Object[] { this.jGo.name() });
-              continue;
-            }
-            AppMethodBeat.o(222088);
-            return Integer.valueOf(0);
-            com.tencent.mm.plugin.appbrand.task.c.a(this.jGo, null, false, paramAppBrandPreloadProfiler, paramInt);
-          }
-        }
-      }
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(222090);
-          this.jGu.invoke("MMHandlerThread.postToMainThread");
-          AppMethodBeat.o(222090);
-        }
-      });
-      AppMethodBeat.o(222091);
-      return;
+      AppMethodBeat.i(227956);
+      kId = new a();
+      AppMethodBeat.o(227956);
     }
   }
   
-  public static boolean aYY()
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class b<InputType, ResultType>
+    implements b<IPCString, IPCVoid>
   {
-    return jGm;
-  }
-  
-  public static void fH(boolean paramBoolean)
-  {
-    AppMethodBeat.i(44110);
-    ae.i("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile]", "setSkipMiscPreload %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    jGl = paramBoolean;
-    AppMethodBeat.o(44110);
-  }
-  
-  public static void k(Application paramApplication)
-  {
-    AppMethodBeat.i(44108);
-    paramApplication.registerActivityLifecycleCallbacks(new a()
+    public static final b kIe;
+    
+    static
     {
-      private final SparseIntArray jGn;
-      
-      private void A(Activity paramAnonymousActivity)
-      {
-        AppMethodBeat.i(44100);
-        if (paramAnonymousActivity == null)
-        {
-          AppMethodBeat.o(44100);
-          return;
-        }
-        this.jGn.put(paramAnonymousActivity.hashCode(), 1);
-        c.fH(true);
-        aYZ();
-        AppMethodBeat.o(44100);
-      }
-      
-      private void B(Activity paramAnonymousActivity)
-      {
-        AppMethodBeat.i(44101);
-        if (paramAnonymousActivity == null)
-        {
-          AppMethodBeat.o(44101);
-          return;
-        }
-        this.jGn.delete(paramAnonymousActivity.hashCode());
-        if (this.jGn.size() <= 0) {
-          c.fH(false);
-        }
-        aYZ();
-        AppMethodBeat.o(44101);
-      }
-      
-      private void aYZ()
-      {
-        AppMethodBeat.i(222087);
-        ae.i("MicroMsg.AppBrandProcessProfileInit[applaunch][PreloadProfile]", "alive activity count %d", new Object[] { Integer.valueOf(this.jGn.size()) });
-        AppMethodBeat.o(222087);
-      }
-      
-      public final void onActivityCreated(Activity paramAnonymousActivity, Bundle paramAnonymousBundle)
-      {
-        AppMethodBeat.i(44102);
-        A(paramAnonymousActivity);
-        AppMethodBeat.o(44102);
-      }
-      
-      public final void onActivityDestroyed(Activity paramAnonymousActivity)
-      {
-        AppMethodBeat.i(44105);
-        B(paramAnonymousActivity);
-        AppMethodBeat.o(44105);
-      }
-      
-      public final void onActivityStarted(Activity paramAnonymousActivity)
-      {
-        AppMethodBeat.i(44103);
-        A(paramAnonymousActivity);
-        AppMethodBeat.o(44103);
-      }
-      
-      public final void onActivityStopped(Activity paramAnonymousActivity)
-      {
-        AppMethodBeat.i(44104);
-        B(paramAnonymousActivity);
-        AppMethodBeat.o(44104);
-      }
-    });
-    AppMethodBeat.o(44108);
+      AppMethodBeat.i(227958);
+      kIe = new b();
+      AppMethodBeat.o(227958);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Lcom/tencent/mm/ipcinvoker/type/IPCString;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  static final class c<InputType, ResultType>
+    implements b<IPCString, IPCVoid>
+  {
+    public static final c kIf;
+    
+    static
+    {
+      AppMethodBeat.i(227960);
+      kIf = new c();
+      AppMethodBeat.o(227960);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.app.c
  * JD-Core Version:    0.7.0.1
  */

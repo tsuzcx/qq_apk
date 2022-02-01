@@ -5,8 +5,8 @@ import android.os.Looper;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 import java.util.Map;
 
@@ -14,54 +14,54 @@ public final class c
   implements Runnable
 {
   private Bitmap bitmap;
-  private b igP;
-  private com.tencent.mm.av.a.c igR;
+  private b jbK;
+  private com.tencent.mm.av.a.c jbM;
   private String key;
   private String url;
   
   public c(String paramString1, com.tencent.mm.av.a.c paramc, Bitmap paramBitmap, b paramb, String paramString2)
   {
     this.url = paramString1;
-    this.igR = paramc;
+    this.jbM = paramc;
     this.bitmap = paramBitmap;
-    this.igP = paramb;
+    this.jbK = paramb;
     this.key = paramString2;
   }
   
   public final void run()
   {
     AppMethodBeat.i(130441);
-    if ((!bu.isNullOrNil(this.url)) && (this.igR != null) && (this.bitmap != null) && (!this.bitmap.isRecycled()) && (this.igP != null))
+    if ((!Util.isNullOrNil(this.url)) && (this.jbM != null) && (this.bitmap != null) && (!this.bitmap.isRecycled()) && (this.jbK != null))
     {
-      Object localObject1 = this.igP;
-      Object localObject2 = this.igR;
-      localObject1 = (String)((b)localObject1).ifR.get(Integer.valueOf(((com.tencent.mm.av.a.c)localObject2).hhK));
+      Object localObject1 = this.jbK;
+      Object localObject2 = this.jbM;
+      localObject1 = (String)((b)localObject1).jaM.get(Integer.valueOf(((com.tencent.mm.av.a.c)localObject2).iaH));
       if (this.url.equals(localObject1))
       {
-        localObject2 = this.igR;
+        localObject2 = this.jbM;
         localObject1 = this.bitmap;
-        if ((Looper.myLooper() == Looper.getMainLooper()) && (((com.tencent.mm.av.a.c)localObject2).hhI != null))
+        if ((Looper.myLooper() == Looper.getMainLooper()) && (((com.tencent.mm.av.a.c)localObject2).iaF != null))
         {
-          localObject2 = (ImageView)((com.tencent.mm.av.a.c)localObject2).hhI.get();
+          localObject2 = (ImageView)((com.tencent.mm.av.a.c)localObject2).iaF.get();
           if (localObject2 != null) {
             ((ImageView)localObject2).setImageBitmap((Bitmap)localObject1);
           }
         }
-        this.igP.a(this.igR);
+        this.jbK.a(this.jbM);
         AppMethodBeat.o(130441);
         return;
       }
-      ae.w("MicroMsg.imageloader.ImageShowTask", "[cpan] url is not equals view url.");
+      Log.w("MicroMsg.imageloader.ImageShowTask", "[cpan] url is not equals view url.");
       AppMethodBeat.o(130441);
       return;
     }
-    ae.w("MicroMsg.imageloader.ImageShowTask", "[cpan] run something is null.");
+    Log.w("MicroMsg.imageloader.ImageShowTask", "[cpan] run something is null.");
     AppMethodBeat.o(130441);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.av.a.f.c
  * JD-Core Version:    0.7.0.1
  */

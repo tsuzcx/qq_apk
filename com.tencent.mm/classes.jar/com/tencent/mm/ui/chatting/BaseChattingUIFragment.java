@@ -13,23 +13,27 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d.a;
+import com.tencent.mm.br.c.a;
 import com.tencent.mm.contact.c;
-import com.tencent.mm.g.a.nt;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.a.ol;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.kernel.d;
-import com.tencent.mm.model.x;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.MMFragment;
+import com.tencent.mm.ui.chatting.d.ag;
 import com.tencent.mm.ui.chatting.d.b.j;
 import com.tencent.mm.ui.chatting.d.b.n;
 import com.tencent.mm.ui.chatting.d.h.a;
 import com.tencent.mm.ui.chatting.d.k;
 import com.tencent.mm.ui.chatting.d.p;
-import com.tencent.mm.ui.v;
+import com.tencent.mm.ui.w;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -40,91 +44,91 @@ public abstract class BaseChattingUIFragment
   extends MMFragment
   implements ae, af
 {
-  int JTA;
-  protected String JTu;
-  protected String JTv;
-  private k JTw = new k();
-  public boolean JTx = false;
-  private int JTy = 0;
-  int JTz;
-  public com.tencent.mm.ui.chatting.e.a cXJ = new com.tencent.mm.ui.chatting.e.a(this, this, this);
-  private long dCI;
+  protected String PeA;
+  private k PeB = new k();
+  public boolean PeC = false;
+  private int PeD = 0;
+  int PeE;
+  int PeF;
+  protected String Pez;
+  private long dUy;
+  public com.tencent.mm.ui.chatting.e.a dom = new com.tencent.mm.ui.chatting.e.a(this, this, this);
   private long lastResumeTime;
   
   public BaseChattingUIFragment()
   {
-    fEN();
+    gMV();
   }
   
-  public BaseChattingUIFragment(byte paramByte)
+  public BaseChattingUIFragment(boolean paramBoolean)
   {
     super(true);
-    fEN();
+    gMV();
   }
   
-  private void ads(int paramInt)
+  private void amc(int paramInt)
   {
-    this.JTy |= paramInt;
+    this.PeD |= paramInt;
   }
   
-  private void adt(int paramInt)
+  private void amd(int paramInt)
   {
-    this.JTy &= (paramInt ^ 0xFFFFFFFF);
-  }
-  
-  private void cWY()
-  {
-    d(32, new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(34297);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[doStop] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.JTv, Boolean.valueOf(BaseChattingUIFragment.this.JTx) });
-        BaseChattingUIFragment.this.cXJ.Kkm = true;
-        AppMethodBeat.o(34297);
-      }
-    });
+    this.PeD &= (paramInt ^ 0xFFFFFFFF);
   }
   
   private void d(int paramInt, Runnable paramRunnable)
   {
     boolean bool1 = isStrict(paramInt);
-    boolean bool2 = adr(paramInt);
+    boolean bool2 = amb(paramInt);
     if ((bool2) && (bool1))
     {
-      ads(paramInt);
+      amc(paramInt);
       if (2 == paramInt) {
-        adt(64);
+        amd(64);
       }
       for (;;)
       {
         paramRunnable.run();
         return;
         if (64 == paramInt) {
-          adt(2);
+          amd(2);
         } else if (4 == paramInt) {
-          adt(32);
+          amd(32);
         } else if (32 == paramInt) {
-          adt(4);
+          amd(4);
         } else if (8 == paramInt) {
-          adt(16);
+          amd(16);
         } else if (16 == paramInt) {
-          adt(8);
+          amd(8);
         } else if (128 == paramInt) {
-          adt(256);
+          amd(256);
         } else if (256 == paramInt) {
-          adt(128);
+          amd(128);
         } else if (512 == paramInt) {
-          adt(1024);
+          amd(1024);
         } else if (1024 == paramInt) {
-          adt(512);
+          amd(512);
         }
       }
     }
-    com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.BaseChattingUIFragment", "catch! [check] %s flag:%x isNever:%s isStrict:%s", new Object[] { this.JTv, Integer.valueOf(paramInt), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+    Log.w("MicroMsg.BaseChattingUIFragment", "catch! [check] %s flag:%x isNever:%s isStrict:%s", new Object[] { this.PeA, Integer.valueOf(paramInt), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
   }
   
-  private void fEN()
+  private void dQn()
+  {
+    d(32, new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(34297);
+        Log.i("MicroMsg.BaseChattingUIFragment", "[doStop] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.PeA, Boolean.valueOf(BaseChattingUIFragment.this.PeC) });
+        BaseChattingUIFragment.this.dom.Pwl = true;
+        AppMethodBeat.o(34297);
+      }
+    });
+  }
+  
+  private void gMV()
   {
     Bundle localBundle = new Bundle();
     if (!localBundle.containsKey(getClass().getName())) {
@@ -133,42 +137,42 @@ public abstract class BaseChattingUIFragment
     setArguments(localBundle);
   }
   
-  private void fEU()
+  private void gNc()
   {
     d(4, new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(34294);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[doStart] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.JTv, Boolean.valueOf(BaseChattingUIFragment.this.JTx) });
+        Log.i("MicroMsg.BaseChattingUIFragment", "[doStart] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.PeA, Boolean.valueOf(BaseChattingUIFragment.this.PeC) });
         AppMethodBeat.o(34294);
       }
     });
   }
   
-  private boolean fEX()
+  private boolean gNf()
   {
-    return (adr(256)) && (!adr(128));
+    return (amb(256)) && (!amb(128));
   }
   
-  private void ffV()
+  private void gpe()
   {
     d(64, new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(34298);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[doDestroy] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.JTv, Boolean.valueOf(BaseChattingUIFragment.this.JTx) });
-        if ((BaseChattingUIFragment.this.adr(16)) && (!BaseChattingUIFragment.this.adr(8)))
+        Log.i("MicroMsg.BaseChattingUIFragment", "[doDestroy] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.PeA, Boolean.valueOf(BaseChattingUIFragment.this.PeC) });
+        if ((BaseChattingUIFragment.this.amb(16)) && (!BaseChattingUIFragment.this.amb(8)))
         {
-          RuntimeException localRuntimeException = new RuntimeException(String.format("[doDestroy] never doPause, activity:%s isPreLoaded:%b isForeground:%b isFinishing:%b isNeverCreate:%b", new Object[] { BaseChattingUIFragment.this.JTv, Boolean.valueOf(BaseChattingUIFragment.this.JTx), Boolean.valueOf(BaseChattingUIFragment.this.cXJ.cCq), Boolean.valueOf(BaseChattingUIFragment.this.isFinishing()), Boolean.valueOf(BaseChattingUIFragment.this.adr(2)) }));
+          RuntimeException localRuntimeException = new RuntimeException(String.format("[doDestroy] never doPause, activity:%s isPreLoaded:%b isForeground:%b isFinishing:%b isNeverCreate:%b", new Object[] { BaseChattingUIFragment.this.PeA, Boolean.valueOf(BaseChattingUIFragment.this.PeC), Boolean.valueOf(BaseChattingUIFragment.this.dom.cQp), Boolean.valueOf(BaseChattingUIFragment.this.isFinishing()), Boolean.valueOf(BaseChattingUIFragment.this.amb(2)) }));
           AppMethodBeat.o(34298);
           throw localRuntimeException;
         }
-        BaseChattingUIFragment.this.cXJ.cCq = false;
-        BaseChattingUIFragment.this.cXJ.setFocused(false);
-        BaseChattingUIFragment.this.cXJ.Kkk = false;
-        BaseChattingUIFragment.this.cXJ.yi(false);
+        BaseChattingUIFragment.this.dom.cQp = false;
+        BaseChattingUIFragment.this.dom.setFocused(false);
+        BaseChattingUIFragment.this.dom.Pwj = false;
+        BaseChattingUIFragment.this.dom.BX(false);
         BaseChattingUIFragment.e(BaseChattingUIFragment.this);
         AppMethodBeat.o(34298);
       }
@@ -177,8 +181,8 @@ public abstract class BaseChattingUIFragment
   
   private boolean isStrict(int paramInt)
   {
-    if ((4 == paramInt) && (adr(2))) {}
-    while (((8 == paramInt) && (adr(4))) || ((16 == paramInt) && (adr(8))) || ((32 == paramInt) && (adr(4))) || ((64 == paramInt) && (adr(2))) || ((512 == paramInt) && (adr(256)))) {
+    if ((4 == paramInt) && (amb(2))) {}
+    while (((8 == paramInt) && (amb(4))) || ((16 == paramInt) && (amb(8))) || ((32 == paramInt) && (amb(4))) || ((64 == paramInt) && (amb(2))) || ((512 == paramInt) && (amb(256)))) {
       return false;
     }
     return true;
@@ -189,172 +193,172 @@ public abstract class BaseChattingUIFragment
     getListView().addHeaderView(paramView);
   }
   
-  public final boolean adr(int paramInt)
+  public final boolean amb(int paramInt)
   {
-    return (this.JTy & paramInt) == 0;
+    return (this.PeD & paramInt) == 0;
   }
   
-  protected void aq(an paraman)
+  protected void as(as paramas)
   {
-    this.JTv = String.format(this.JTu, new Object[] { paraman.field_username });
-    this.cXJ.au(paraman);
+    this.PeA = String.format(this.Pez, new Object[] { paramas.field_username });
+    this.dom.aw(paramas);
   }
   
-  public final int bGB()
+  public final int cda()
   {
     return getListView().getFooterViewsCount();
   }
   
-  public void dFr() {}
-  
-  public void ehQ()
+  public void doPause()
   {
     d(16, new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(34296);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[doPause] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.JTv, Boolean.valueOf(BaseChattingUIFragment.this.JTx) });
-        BaseChattingUIFragment.b(BaseChattingUIFragment.this).fAw();
+        Log.i("MicroMsg.BaseChattingUIFragment", "[doPause] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.PeA, Boolean.valueOf(BaseChattingUIFragment.this.PeC) });
+        BaseChattingUIFragment.b(BaseChattingUIFragment.this).cFy();
         BaseChattingUIFragment.b(BaseChattingUIFragment.this, BaseChattingUIFragment.c(BaseChattingUIFragment.this) + (System.currentTimeMillis() - BaseChattingUIFragment.d(BaseChattingUIFragment.this)));
-        BaseChattingUIFragment.this.cXJ.Kkm = true;
+        BaseChattingUIFragment.this.dom.Pwl = true;
         AppMethodBeat.o(34296);
       }
     });
   }
   
-  public void fEB()
-  {
-    d(2, new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(34293);
-        BaseChattingUIFragment.this.cXJ.cCq = true;
-        BaseChattingUIFragment.this.cXJ.setFocused(true);
-        BaseChattingUIFragment.this.cXJ.Kkk = false;
-        BaseChattingUIFragment.this.cXJ.yi(false);
-        BaseChattingUIFragment.this.cXJ.Kkm = false;
-        BaseChattingUIFragment.b(BaseChattingUIFragment.this).fAs();
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[doCreate] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.JTv, Boolean.valueOf(BaseChattingUIFragment.this.JTx) });
-        AppMethodBeat.o(34293);
-      }
-    });
-  }
-  
-  public void fED()
+  public void doResume()
   {
     d(8, new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(34295);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[doResume] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.JTv, Boolean.valueOf(BaseChattingUIFragment.this.JTx) });
-        BaseChattingUIFragment.b(BaseChattingUIFragment.this).fAv();
+        Log.i("MicroMsg.BaseChattingUIFragment", "[doResume] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.PeA, Boolean.valueOf(BaseChattingUIFragment.this.PeC) });
+        BaseChattingUIFragment.b(BaseChattingUIFragment.this).cFx();
         BaseChattingUIFragment.a(BaseChattingUIFragment.this, System.currentTimeMillis());
         AppMethodBeat.o(34295);
       }
     });
   }
   
-  public final void fEO()
+  public void eGg() {}
+  
+  public void gMJ()
   {
-    fEB();
-    if ((this.isCurrentActivity) || (this.JTx)) {
+    d(2, new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(34293);
+        BaseChattingUIFragment.this.dom.cQp = true;
+        BaseChattingUIFragment.this.dom.setFocused(true);
+        BaseChattingUIFragment.this.dom.Pwj = false;
+        BaseChattingUIFragment.this.dom.BX(false);
+        BaseChattingUIFragment.this.dom.Pwl = false;
+        BaseChattingUIFragment.b(BaseChattingUIFragment.this).gIk();
+        Log.i("MicroMsg.BaseChattingUIFragment", "[doCreate] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.PeA, Boolean.valueOf(BaseChattingUIFragment.this.PeC) });
+        AppMethodBeat.o(34293);
+      }
+    });
+  }
+  
+  public final void gMW()
+  {
+    gMJ();
+    if ((this.isCurrentActivity) || (this.PeC)) {
       onEnterBegin();
     }
   }
   
-  public final void fEP()
+  public final void gMX()
   {
-    if (this.cXJ.cCq) {
-      fEU();
+    if (this.dom.cQp) {
+      gNc();
     }
   }
   
-  public final void fEQ()
+  public final void gMY()
   {
-    if (this.cXJ.cCq)
+    if (this.dom.cQp)
     {
-      fED();
-      if ((this.isCurrentActivity) || (this.JTx)) {
+      doResume();
+      if ((this.isCurrentActivity) || (this.PeC)) {
         onEnterEnd();
       }
     }
   }
   
-  public final void fER()
+  public final void gMZ()
   {
-    if ((this.cXJ.cCq) || (isFinishing()))
+    if ((this.dom.cQp) || (isFinishing()))
     {
-      if ((adr(8)) && (!isFinishing()) && (!fEW()))
+      if ((amb(8)) && (!isFinishing()) && (!gNe()))
       {
-        com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.BaseChattingUIFragment", "[onPause] is never doResume before doPause! Because while entering ChattingUI, the app back to background.");
-        fED();
+        Log.w("MicroMsg.BaseChattingUIFragment", "[onPause] is never doResume before doPause! Because while entering ChattingUI, the app back to background.");
+        doResume();
         onEnterEnd();
       }
-      ehQ();
+      doPause();
     }
   }
   
-  public final void fES()
+  public final void gNa()
   {
-    if (((this.cXJ.cCq) || (isFinishing())) && (!fEX()))
+    if (((this.dom.cQp) || (isFinishing())) && (!gNf()))
     {
-      if (adr(16))
+      if (amb(16))
       {
-        com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.BaseChattingUIFragment.Sys", "[onStop] activity:%s is never pause when stop coming!", new Object[] { this.JTv });
-        ehQ();
+        Log.w("MicroMsg.BaseChattingUIFragment.Sys", "[onStop] activity:%s is never pause when stop coming!", new Object[] { this.PeA });
+        doPause();
       }
-      cWY();
+      dQn();
     }
   }
   
-  public final void fET()
+  public final void gNb()
   {
     d(512, new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(34290);
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.BaseChattingUIFragment", "fallback for SwipeBack");
+        Log.d("MicroMsg.BaseChattingUIFragment", "fallback for SwipeBack");
         BaseChattingUIFragment.a(BaseChattingUIFragment.this);
         BaseChattingUIFragment.this.onExitBegin();
         AppMethodBeat.o(34290);
       }
     });
-    ffV();
+    gpe();
     onExitEnd();
   }
   
-  public void fEV()
+  public void gNd()
   {
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[doDetach] activity:%s isPreLoaded:%b", new Object[] { this.JTv, Boolean.valueOf(this.JTx) });
-    Iterator localIterator = this.cXJ.KjZ.KrM.entrySet().iterator();
+    Log.i("MicroMsg.BaseChattingUIFragment", "[doDetach] activity:%s isPreLoaded:%b", new Object[] { this.PeA, Boolean.valueOf(this.PeC) });
+    Iterator localIterator = this.dom.PvZ.PDU.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if ((localEntry.getValue() instanceof com.tencent.mm.ui.chatting.d.ae)) {
-        ((com.tencent.mm.ui.chatting.d.ae)localEntry.getValue()).fGE();
+      if ((localEntry.getValue() instanceof ag)) {
+        ((ag)localEntry.getValue()).gOK();
       }
     }
   }
   
-  public final boolean fEW()
+  public final boolean gNe()
   {
-    return (adr(1024)) && (!adr(512));
+    return (amb(1024)) && (!amb(512));
   }
   
-  public abstract v fEY();
+  public abstract w gNg();
   
-  public abstract boolean fEZ();
+  public abstract boolean gNh();
   
-  public com.tencent.mm.ui.chatting.n.a.a fFa()
+  public com.tencent.mm.ui.chatting.n.a.a gNi()
   {
     return null;
   }
   
-  public void fFb() {}
+  public void gNj() {}
   
   public final View getChildAt(int paramInt)
   {
@@ -373,32 +377,32 @@ public abstract class BaseChattingUIFragment
   
   public String getIdentityString()
   {
-    an localan = this.cXJ.Cqh;
-    if ((localan == null) || ((int)localan.ght == 0) || (bu.isNullOrNil(localan.field_username))) {
+    as localas = this.dom.GUe;
+    if ((localas == null) || ((int)localas.gMZ == 0) || (Util.isNullOrNil(localas.field_username))) {
       return "";
     }
-    if (com.tencent.mm.kernel.g.ajM())
+    if (com.tencent.mm.kernel.g.aAc())
     {
-      if (com.tencent.mm.al.g.vz(localan.field_username)) {
+      if (com.tencent.mm.al.g.DQ(localas.field_username)) {
         return "_EnterpriseChat";
       }
-      if (com.tencent.mm.al.g.Es(localan.field_username)) {
+      if (com.tencent.mm.al.g.Ng(localas.field_username)) {
         return "_EnterpriseFatherBiz";
       }
-      if (com.tencent.mm.al.g.Er(localan.field_username)) {
+      if (com.tencent.mm.al.g.Nf(localas.field_username)) {
         return "_EnterpriseChildBiz";
       }
     }
-    if (localan.fug()) {
+    if (localas.gBM()) {
       return "_bizContact";
     }
-    if (x.wb(localan.field_username)) {
+    if (ab.Eq(localas.field_username)) {
       return "_chatroom";
     }
-    if (x.Ac(localan.field_username)) {
+    if (ab.IG(localas.field_username)) {
       return "_bottle";
     }
-    if (x.Ad(localan.field_username)) {
+    if (ab.IH(localas.field_username)) {
       return "_QQ";
     }
     return "";
@@ -411,15 +415,15 @@ public abstract class BaseChattingUIFragment
   
   public abstract ListView getListView();
   
-  protected void kp(Context paramContext)
+  protected void kh(Context paramContext)
   {
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[doAttach] activity:%s isPreLoaded:%b", new Object[] { this.JTv, Boolean.valueOf(this.JTx) });
+    Log.i("MicroMsg.BaseChattingUIFragment", "[doAttach] activity:%s isPreLoaded:%b", new Object[] { this.PeA, Boolean.valueOf(this.PeC) });
   }
   
   public final void onActivityCreated(Bundle paramBundle)
   {
     super.onActivityCreated(paramBundle);
-    fEO();
+    gMW();
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -428,44 +432,44 @@ public abstract class BaseChattingUIFragment
     if (paramIntent == null) {}
     for (boolean bool = true;; bool = false)
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "onActivityResult return, requestCode:%d resultCode:%s data is null? %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
-      if (this.cXJ.cCq) {
+      Log.i("MicroMsg.BaseChattingUIFragment", "onActivityResult return, requestCode:%d resultCode:%s data is null? %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+      if (this.dom.cQp) {
         break;
       }
-      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.BaseChattingUIFragment", "[onActivityResult] not foreground, return, requestCode:%d", new Object[] { Integer.valueOf(paramInt1) });
+      Log.w("MicroMsg.BaseChattingUIFragment", "[onActivityResult] not foreground, return, requestCode:%d", new Object[] { Integer.valueOf(paramInt1) });
       return;
     }
-    Object localObject = this.cXJ.Kka.getFragment();
+    Object localObject = this.dom.Pwa.getFragment();
     if (localObject != null)
     {
       localObject = com.tencent.mm.ui.chatting.i.b.d((Fragment)localObject, paramInt1);
       if (localObject != null) {
-        ((d.a)localObject).onActivityResult(paramInt1, paramInt2, paramIntent);
+        ((c.a)localObject).onActivityResult(paramInt1, paramInt2, paramIntent);
       }
     }
-    this.cXJ.Kkb.onActivityResult(paramInt1, paramInt2, paramIntent);
+    this.dom.Pwb.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
   public final void onAttach(Context paramContext)
   {
     super.onAttach(paramContext);
-    this.JTu = (getActivity().getClass().getName() + "@" + hashCode() + " @talker:%s");
-    kp(paramContext);
-    this.cXJ.a(j.class, this.JTw);
-    this.cXJ.a(n.class, this.cXJ.Kkb);
+    this.Pez = (getActivity().getClass().getName() + "@" + hashCode() + " @talker:%s");
+    kh(paramContext);
+    this.dom.a(j.class, this.PeB);
+    this.dom.a(n.class, this.dom.Pwb);
     paramContext = com.tencent.mm.ui.chatting.d.h.getComponents().iterator();
     while (paramContext.hasNext())
     {
       h.a locala = (h.a)paramContext.next();
-      this.cXJ.a(locala.aWK, locala.fHn());
+      this.dom.a(locala.aWC, locala.gPt());
     }
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (this.cXJ.cCq) {
-      this.cXJ.Kkb.onConfigurationChanged(paramConfiguration);
+    if (this.dom.cQp) {
+      this.dom.Pwb.onConfigurationChanged(paramConfiguration);
     }
   }
   
@@ -489,14 +493,14 @@ public abstract class BaseChattingUIFragment
   public final void onDestroy()
   {
     super.onDestroy();
-    com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.BaseChattingUIFragment.Sys", "[onDestroy] activity:%s isForeground:%s isFinishing:%s", new Object[] { this.JTv, Boolean.valueOf(this.cXJ.cCq), Boolean.valueOf(isFinishing()) });
-    fET();
+    Log.w("MicroMsg.BaseChattingUIFragment.Sys", "[onDestroy] activity:%s isForeground:%s isFinishing:%s", new Object[] { this.PeA, Boolean.valueOf(this.dom.cQp), Boolean.valueOf(isFinishing()) });
+    gNb();
   }
   
   public final void onDetach()
   {
     super.onDetach();
-    fEV();
+    gNd();
   }
   
   public void onEnterBegin()
@@ -506,21 +510,21 @@ public abstract class BaseChattingUIFragment
       public final void run()
       {
         AppMethodBeat.i(34299);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[onEnterBegin] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.JTv, Boolean.valueOf(BaseChattingUIFragment.this.JTx) });
+        Log.i("MicroMsg.BaseChattingUIFragment", "[onEnterBegin] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.PeA, Boolean.valueOf(BaseChattingUIFragment.this.PeC) });
         BaseChattingUIFragment localBaseChattingUIFragment = BaseChattingUIFragment.this;
         boolean bool = WXHardCoderJNI.hcEnterChattingEnable;
         int j = WXHardCoderJNI.hcEnterChattingDelay;
         int k = WXHardCoderJNI.hcEnterChattingCPU;
         int m = WXHardCoderJNI.hcEnterChattingIO;
         if (WXHardCoderJNI.hcEnterChattingThr) {}
-        for (int i = com.tencent.mm.kernel.g.ajU().foN();; i = 0)
+        for (int i = com.tencent.mm.kernel.g.aAk().getProcessTid();; i = 0)
         {
-          localBaseChattingUIFragment.JTz = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcEnterChattingTimeout, 301, WXHardCoderJNI.hcEnterChattingAction, "ChattingUIFragment");
-          BaseChattingUIFragment.this.cXJ.cCq = true;
-          BaseChattingUIFragment.this.cXJ.setFocused(true);
-          BaseChattingUIFragment.this.cXJ.Kkk = false;
-          BaseChattingUIFragment.this.cXJ.yi(false);
-          BaseChattingUIFragment.b(BaseChattingUIFragment.this).fAt();
+          localBaseChattingUIFragment.PeE = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcEnterChattingTimeout, 301, WXHardCoderJNI.hcEnterChattingAction, "ChattingUIFragment");
+          BaseChattingUIFragment.this.dom.cQp = true;
+          BaseChattingUIFragment.this.dom.setFocused(true);
+          BaseChattingUIFragment.this.dom.Pwj = false;
+          BaseChattingUIFragment.this.dom.BX(false);
+          BaseChattingUIFragment.b(BaseChattingUIFragment.this).gIl();
           BaseChattingUIFragment.b(BaseChattingUIFragment.this, 0L);
           AppMethodBeat.o(34299);
           return;
@@ -536,11 +540,11 @@ public abstract class BaseChattingUIFragment
       public final void run()
       {
         AppMethodBeat.i(34300);
-        BaseChattingUIFragment.b(BaseChattingUIFragment.this).fAu();
+        BaseChattingUIFragment.b(BaseChattingUIFragment.this).gIm();
         BaseChattingUIFragment localBaseChattingUIFragment = BaseChattingUIFragment.this;
-        WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcEnterChattingEnable, localBaseChattingUIFragment.JTz);
-        localBaseChattingUIFragment.JTz = 0;
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[onEnterEnd] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.JTv, Boolean.valueOf(BaseChattingUIFragment.this.JTx) });
+        WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcEnterChattingEnable, localBaseChattingUIFragment.PeE);
+        localBaseChattingUIFragment.PeE = 0;
+        Log.i("MicroMsg.BaseChattingUIFragment", "[onEnterEnd] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.PeA, Boolean.valueOf(BaseChattingUIFragment.this.PeC) });
         AppMethodBeat.o(34300);
       }
     });
@@ -554,17 +558,17 @@ public abstract class BaseChattingUIFragment
       {
         int i = 0;
         AppMethodBeat.i(34291);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[onExitBegin] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.JTv, Boolean.valueOf(BaseChattingUIFragment.this.JTx) });
+        Log.i("MicroMsg.BaseChattingUIFragment", "[onExitBegin] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.PeA, Boolean.valueOf(BaseChattingUIFragment.this.PeC) });
         BaseChattingUIFragment localBaseChattingUIFragment = BaseChattingUIFragment.this;
         boolean bool = WXHardCoderJNI.hcQuitChattingEnable;
         int j = WXHardCoderJNI.hcQuitChattingDelay;
         int k = WXHardCoderJNI.hcQuitChattingCPU;
         int m = WXHardCoderJNI.hcQuitChattingIO;
         if (WXHardCoderJNI.hcQuitChattingThr) {
-          i = com.tencent.mm.kernel.g.ajU().foN();
+          i = com.tencent.mm.kernel.g.aAk().getProcessTid();
         }
-        localBaseChattingUIFragment.JTA = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcQuitChattingTimeout, 302, WXHardCoderJNI.hcQuitChattingAction, "ChattingUIFragment");
-        BaseChattingUIFragment.b(BaseChattingUIFragment.this).fAx();
+        localBaseChattingUIFragment.PeF = WXHardCoderJNI.startPerformance(bool, j, k, m, i, WXHardCoderJNI.hcQuitChattingTimeout, 302, WXHardCoderJNI.hcQuitChattingAction, "ChattingUIFragment");
+        BaseChattingUIFragment.b(BaseChattingUIFragment.this).gIn();
         AppMethodBeat.o(34291);
       }
     });
@@ -577,23 +581,23 @@ public abstract class BaseChattingUIFragment
       public final void run()
       {
         AppMethodBeat.i(34292);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.BaseChattingUIFragment", "[onExitEnd] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.JTv, Boolean.valueOf(BaseChattingUIFragment.this.JTx) });
-        BaseChattingUIFragment.b(BaseChattingUIFragment.this).fAy();
+        Log.i("MicroMsg.BaseChattingUIFragment", "[onExitEnd] activity:%s isPreLoaded:%b", new Object[] { BaseChattingUIFragment.this.PeA, Boolean.valueOf(BaseChattingUIFragment.this.PeC) });
+        BaseChattingUIFragment.b(BaseChattingUIFragment.this).gIo();
         Object localObject = BaseChattingUIFragment.this;
-        if (((BaseChattingUIFragment)localObject).JTA != 0)
+        if (((BaseChattingUIFragment)localObject).PeF != 0)
         {
-          WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcQuitChattingEnable, ((BaseChattingUIFragment)localObject).JTA);
-          ((BaseChattingUIFragment)localObject).JTA = 0;
+          WXHardCoderJNI.stopPerformance(WXHardCoderJNI.hcQuitChattingEnable, ((BaseChattingUIFragment)localObject).PeF);
+          ((BaseChattingUIFragment)localObject).PeF = 0;
         }
-        BaseChattingUIFragment.this.cXJ.cCq = false;
-        BaseChattingUIFragment.this.cXJ.setFocused(false);
-        BaseChattingUIFragment.this.cXJ.Kkk = false;
-        BaseChattingUIFragment.this.cXJ.yi(false);
-        localObject = new nt();
-        ((nt)localObject).dCH.action = 1;
-        ((nt)localObject).dCH.username = BaseChattingUIFragment.this.cXJ.getTalkerUserName();
-        ((nt)localObject).dCH.dCI = BaseChattingUIFragment.c(BaseChattingUIFragment.this);
-        com.tencent.mm.sdk.b.a.IvT.a((com.tencent.mm.sdk.b.b)localObject, Looper.getMainLooper());
+        BaseChattingUIFragment.this.dom.cQp = false;
+        BaseChattingUIFragment.this.dom.setFocused(false);
+        BaseChattingUIFragment.this.dom.Pwj = false;
+        BaseChattingUIFragment.this.dom.BX(false);
+        localObject = new ol();
+        ((ol)localObject).dUx.action = 1;
+        ((ol)localObject).dUx.username = BaseChattingUIFragment.this.dom.getTalkerUserName();
+        ((ol)localObject).dUx.dUy = BaseChattingUIFragment.c(BaseChattingUIFragment.this);
+        EventCenter.instance.asyncPublish((IEvent)localObject, Looper.getMainLooper());
         AppMethodBeat.o(34292);
       }
     });
@@ -601,41 +605,41 @@ public abstract class BaseChattingUIFragment
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    return this.cXJ.Kkb.onKeyDown(paramInt, paramKeyEvent);
+    return this.dom.Pwb.onKeyDown(paramInt, paramKeyEvent);
   }
   
   public final void onPause()
   {
     super.onPause();
-    com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.BaseChattingUIFragment.Sys", "[onPause] activity:%s isForeground:%s isFinishing:%s isExiting:%s", new Object[] { this.JTv, Boolean.valueOf(this.cXJ.cCq), Boolean.valueOf(isFinishing()), Boolean.valueOf(fEW()) });
-    fER();
+    Log.w("MicroMsg.BaseChattingUIFragment.Sys", "[onPause] activity:%s isForeground:%s isFinishing:%s isExiting:%s", new Object[] { this.PeA, Boolean.valueOf(this.dom.cQp), Boolean.valueOf(isFinishing()), Boolean.valueOf(gNe()) });
+    gMZ();
   }
   
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    this.cXJ.Kkb.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
+    this.dom.Pwb.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
   }
   
   public final void onResume()
   {
     super.onResume();
-    com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.BaseChattingUIFragment.Sys", "[onResume] activity:%s isForeground:%s isFinishing:%s", new Object[] { this.JTv, Boolean.valueOf(this.cXJ.cCq), Boolean.valueOf(isFinishing()) });
-    fEQ();
+    Log.w("MicroMsg.BaseChattingUIFragment.Sys", "[onResume] activity:%s isForeground:%s isFinishing:%s", new Object[] { this.PeA, Boolean.valueOf(this.dom.cQp), Boolean.valueOf(isFinishing()) });
+    gMY();
   }
   
   public final void onStart()
   {
     super.onStart();
-    com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.BaseChattingUIFragment.Sys", "[onStart] activity:%s isForeground:%s isFinishing:%s", new Object[] { this.JTv, Boolean.valueOf(this.cXJ.cCq), Boolean.valueOf(isFinishing()) });
-    fEP();
+    Log.w("MicroMsg.BaseChattingUIFragment.Sys", "[onStart] activity:%s isForeground:%s isFinishing:%s", new Object[] { this.PeA, Boolean.valueOf(this.dom.cQp), Boolean.valueOf(isFinishing()) });
+    gMX();
   }
   
   public final void onStop()
   {
     super.onStop();
-    com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.BaseChattingUIFragment.Sys", "[onStop] activity:%s isForeground:%s isFinishing:%s isEntering:%s", new Object[] { this.JTv, Boolean.valueOf(this.cXJ.cCq), Boolean.valueOf(isFinishing()), Boolean.valueOf(fEX()) });
-    fES();
+    Log.w("MicroMsg.BaseChattingUIFragment.Sys", "[onStop] activity:%s isForeground:%s isFinishing:%s isEntering:%s", new Object[] { this.PeA, Boolean.valueOf(this.dom.cQp), Boolean.valueOf(isFinishing()), Boolean.valueOf(gNf()) });
+    gNa();
   }
   
   public boolean supportNavigationSwipeBack()
@@ -643,10 +647,10 @@ public abstract class BaseChattingUIFragment
     if (this.isCurrentActivity) {
       return false;
     }
-    com.tencent.mm.kernel.g.ajS();
-    if (com.tencent.mm.compatible.d.b.ca(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).ca))
+    com.tencent.mm.kernel.g.aAi();
+    if (com.tencent.mm.compatible.e.b.cv(((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).ca))
     {
-      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.BaseChattingUIFragment", "Running on a Chromebook, so we not support swipeback and so on");
+      Log.w("MicroMsg.BaseChattingUIFragment", "Running on a Chromebook, so we not support swipeback and so on");
       return false;
     }
     return true;
@@ -654,7 +658,7 @@ public abstract class BaseChattingUIFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.BaseChattingUIFragment
  * JD-Core Version:    0.7.0.1
  */

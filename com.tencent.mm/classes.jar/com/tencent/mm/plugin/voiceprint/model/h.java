@@ -2,124 +2,121 @@ package com.tencent.mm.plugin.voiceprint.model;
 
 import android.os.Handler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n.b;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bi.a;
-import com.tencent.mm.model.bi.b;
-import com.tencent.mm.modelvoice.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.q.b;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bm.a;
+import com.tencent.mm.model.bm.b;
+import com.tencent.mm.modelvoice.n;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dwf;
-import com.tencent.mm.protocal.protobuf.dyb;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.protocal.protobuf.eqj;
+import com.tencent.mm.protocal.protobuf.esi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class h
-  extends com.tencent.mm.ak.n
-  implements k
+  extends q
+  implements com.tencent.mm.network.m
 {
-  public boolean CmQ;
-  private boolean CmR;
-  private Handler CmS;
-  private int CmT;
-  int Nv;
-  f callback;
+  private boolean CIm;
+  public boolean GQR;
+  private Handler GQS;
+  private int GQT;
+  int NH;
+  i callback;
   private String filename;
-  private int fq;
-  private final q hRG;
-  String jnq;
+  private int fs;
+  private final com.tencent.mm.network.s iMO;
+  String kly;
   
   public h(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(29778);
-    this.fq = 0;
-    this.CmQ = false;
-    this.CmR = false;
-    this.CmS = null;
-    this.CmT = 0;
-    this.Nv = 0;
-    this.jnq = "";
-    ae.d("MicroMsg.NetSceneRsaVertifyVoicePrint", "resid %d vertifyTicket %s", new Object[] { Integer.valueOf(paramInt), bu.bI(paramString2, "") });
-    this.hRG = new c();
-    bi.a locala = (bi.a)this.hRG.getReqObj();
+    this.fs = 0;
+    this.GQR = false;
+    this.CIm = false;
+    this.GQS = null;
+    this.GQT = 0;
+    this.NH = 0;
+    this.kly = "";
+    Log.d("MicroMsg.NetSceneRsaVertifyVoicePrint", "resid %d vertifyTicket %s", new Object[] { Integer.valueOf(paramInt), Util.nullAs(paramString2, "") });
+    this.iMO = new c();
+    bm.a locala = (bm.a)this.iMO.getReqObj();
     this.filename = paramString1;
-    this.fq = 0;
-    locala.hJm.HEK = paramInt;
-    locala.hJm.GYw = paramString2;
-    this.CmT = 0;
-    locala.hJm.HEI = 0;
-    ae.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "voiceRegist %d %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(0) });
-    this.CmQ = true;
-    exO();
+    this.fs = 0;
+    locala.iDW.MPS = paramInt;
+    locala.iDW.Mdm = paramString2;
+    this.GQT = 0;
+    locala.iDW.MPQ = 0;
+    Log.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "voiceRegist %d %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(0) });
+    this.GQR = true;
+    fEC();
     AppMethodBeat.o(29778);
   }
   
-  private int exO()
+  private int fEC()
   {
     AppMethodBeat.i(29780);
-    bi.a locala = (bi.a)this.hRG.getReqObj();
-    dyb localdyb = new dyb();
-    new g();
-    locala.hJm.Ibx = localdyb;
-    Object localObject = new com.tencent.mm.modelvoice.n(m.ch(this.filename, false));
-    int i = (int)o.aZR(m.ch(this.filename, false));
-    if (i - this.fq >= 6000) {}
+    bm.a locala = (bm.a)this.iMO.getReqObj();
+    esi localesi = new esi();
+    new com.tencent.mm.modelvoice.g();
+    locala.iDW.NnN = localesi;
+    Object localObject = new n(m.cz(this.filename, false));
+    int i = (int)com.tencent.mm.vfs.s.boW(m.cz(this.filename, false));
+    if (i - this.fs >= 6000) {}
     int j;
-    for (localObject = ((com.tencent.mm.modelvoice.n)localObject).dr(this.fq, 6000);; localObject = ((com.tencent.mm.modelvoice.n)localObject).dr(j, i - j))
+    for (localObject = ((n)localObject).dB(this.fs, 6000);; localObject = ((n)localObject).dB(j, i - j))
     {
-      ae.d("MicroMsg.NetSceneRsaVertifyVoicePrint", "read offset %d, ret %d , buf len %d, totallen %d finish %b", new Object[] { Integer.valueOf(this.fq), Integer.valueOf(((g)localObject).ret), Integer.valueOf(((g)localObject).diR), Integer.valueOf(i), Boolean.valueOf(this.CmQ) });
-      if (((g)localObject).diR != 0) {
+      Log.d("MicroMsg.NetSceneRsaVertifyVoicePrint", "read offset %d, ret %d , buf len %d, totallen %d finish %b", new Object[] { Integer.valueOf(this.fs), Integer.valueOf(((com.tencent.mm.modelvoice.g)localObject).ret), Integer.valueOf(((com.tencent.mm.modelvoice.g)localObject).dAc), Integer.valueOf(i), Boolean.valueOf(this.GQR) });
+      if (((com.tencent.mm.modelvoice.g)localObject).dAc != 0) {
         break;
       }
       AppMethodBeat.o(29780);
       return -2;
-      j = this.fq;
+      j = this.fs;
     }
-    if (((g)localObject).ret < 0)
+    if (((com.tencent.mm.modelvoice.g)localObject).ret < 0)
     {
-      ae.w("MicroMsg.NetSceneRsaVertifyVoicePrint", "readerror %d", new Object[] { Integer.valueOf(((g)localObject).ret) });
+      Log.w("MicroMsg.NetSceneRsaVertifyVoicePrint", "readerror %d", new Object[] { Integer.valueOf(((com.tencent.mm.modelvoice.g)localObject).ret) });
       AppMethodBeat.o(29780);
       return -1;
     }
-    if (this.fq >= 469000)
+    if (this.fs >= 469000)
     {
-      ae.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "moffset > maxfile %d", new Object[] { Integer.valueOf(this.fq) });
+      Log.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "moffset > maxfile %d", new Object[] { Integer.valueOf(this.fs) });
       AppMethodBeat.o(29780);
       return -1;
     }
-    localdyb.Idb = new SKBuiltinBuffer_t().setBuffer(((g)localObject).buf);
-    localdyb.xsC = this.fq;
-    localdyb.IcZ = ((g)localObject).diR;
-    localdyb.Ida = 0;
-    locala.hJm.HEI = this.CmT;
-    if (this.CmQ)
+    localesi.Npz = new SKBuiltinBuffer_t().setBuffer(((com.tencent.mm.modelvoice.g)localObject).buf);
+    localesi.BsG = this.fs;
+    localesi.Npx = ((com.tencent.mm.modelvoice.g)localObject).dAc;
+    localesi.Npy = 0;
+    locala.iDW.MPQ = this.GQT;
+    if (this.GQR)
     {
-      j = (int)o.aZR(m.ch(this.filename, false));
-      if (((g)localObject).ixC >= j)
+      j = (int)com.tencent.mm.vfs.s.boW(m.cz(this.filename, false));
+      if (((com.tencent.mm.modelvoice.g)localObject).jsR >= j)
       {
-        localdyb.Ida = 1;
-        this.CmR = true;
-        ae.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "the last one pack for uploading totallen %d", new Object[] { Integer.valueOf(i) });
+        localesi.Npy = 1;
+        this.CIm = true;
+        Log.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "the last one pack for uploading totallen %d", new Object[] { Integer.valueOf(i) });
       }
     }
-    this.fq = ((g)localObject).ixC;
-    locala.hJm.Ibx = localdyb;
+    this.fs = ((com.tencent.mm.modelvoice.g)localObject).jsR;
+    locala.iDW.NnN = localesi;
     AppMethodBeat.o(29780);
     return 0;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(29779);
-    this.callback = paramf;
-    int i = dispatch(parame, this.hRG, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iMO, this);
     AppMethodBeat.o(29779);
     return i;
   }
@@ -129,26 +126,26 @@ public final class h
     return 617;
   }
   
-  public final void onGYNetEnd(final int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(final int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29781);
-    ae.d("MicroMsg.NetSceneRsaVertifyVoicePrint", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
-    paramArrayOfByte = (bi.b)paramq.getRespObj();
+    Log.d("MicroMsg.NetSceneRsaVertifyVoicePrint", "onGYNetEnd  errType:" + paramInt2 + " errCode:" + paramInt3);
+    paramArrayOfByte = (bm.b)params.getRespObj();
     if ((paramInt2 == 4) && (paramInt3 == -102))
     {
-      paramInt1 = paramq.getReqObj().getRsaInfo().ver;
-      ae.d("MicroMsg.NetSceneRsaVertifyVoicePrint", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
-      bc.ajU().aw(new Runnable()
+      paramInt1 = params.getReqObj().getRsaInfo().ver;
+      Log.d("MicroMsg.NetSceneRsaVertifyVoicePrint", "summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
+      bg.aAk().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(29777);
-          new com.tencent.mm.modelsimple.m().doScene(h.this.dispatcher(), new f()
+          new com.tencent.mm.modelsimple.m().doScene(h.this.dispatcher(), new i()
           {
-            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, com.tencent.mm.ak.n paramAnonymous2n)
+            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, q paramAnonymous2q)
             {
               AppMethodBeat.i(29776);
-              ae.d("MicroMsg.NetSceneRsaVertifyVoicePrint", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+              Log.d("MicroMsg.NetSceneRsaVertifyVoicePrint", "summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2q.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
               if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
               {
                 h.this.callback.onSceneEnd(paramAnonymous2Int1, paramAnonymous2Int2, "", h.this);
@@ -171,26 +168,26 @@ public final class h
       AppMethodBeat.o(29781);
       return;
     }
-    this.CmT = paramArrayOfByte.hJn.HEI;
-    this.Nv = paramArrayOfByte.hJn.Gpf;
-    this.jnq = paramArrayOfByte.hJn.Iby;
-    int i = paramArrayOfByte.hJn.HEI;
-    int j = this.Nv;
-    boolean bool = bu.isNullOrNil(this.jnq);
-    if (bu.isNullOrNil(this.jnq)) {}
-    for (paramInt1 = 0;; paramInt1 = this.jnq.length())
+    this.GQT = paramArrayOfByte.iDX.MPQ;
+    this.NH = paramArrayOfByte.iDX.LjQ;
+    this.kly = paramArrayOfByte.iDX.NnO;
+    int i = paramArrayOfByte.iDX.MPQ;
+    int j = this.NH;
+    boolean bool = Util.isNullOrNil(this.kly);
+    if (Util.isNullOrNil(this.kly)) {}
+    for (paramInt1 = 0;; paramInt1 = this.kly.length())
     {
-      ae.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "voice VoiceTicket %d mResult %d mAuthPwd is null: %b, mAuthPwd.len: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool), Integer.valueOf(paramInt1) });
-      if (!this.CmR) {
+      Log.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "voice VoiceTicket %d mResult %d mAuthPwd is null: %b, mAuthPwd.len: %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool), Integer.valueOf(paramInt1) });
+      if (!this.CIm) {
         break;
       }
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(29781);
       return;
     }
-    ae.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "tryDoScene ret %d", new Object[] { Integer.valueOf(exO()) });
+    Log.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "tryDoScene ret %d", new Object[] { Integer.valueOf(fEC()) });
     doScene(dispatcher(), this.callback);
-    ae.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "loop doscene");
+    Log.i("MicroMsg.NetSceneRsaVertifyVoicePrint", "loop doscene");
     AppMethodBeat.o(29781);
   }
   
@@ -199,14 +196,14 @@ public final class h
     return 240;
   }
   
-  public final n.b securityVerificationChecked(q paramq)
+  public final q.b securityVerificationChecked(com.tencent.mm.network.s params)
   {
-    return n.b.hRi;
+    return q.b.iMq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.h
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ public final class n
 {
   public n()
   {
-    this.Ony = 268;
+    this.Ucx = 268;
   }
 }
 

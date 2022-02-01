@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/nl"
+<LinearLayout android:background="@color/afz" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/fel" android:background="@color/xo" android:choiceMode="singleChoice" style="@style/n3" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/bfs" android:layout_width="fill_parent" android:layout_height="@dimen/k4">
+        <LinearLayout android:orientation="vertical" android:background="@drawable/b6_" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/h98" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/fo8" android:layout_weight="1.0" />
+            <View android:id="@id/h99" android:background="@color/afp" android:layout_width="fill_parent" android:layout_height="@dimen/kb" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:background="@drawable/b6_" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center" android:id="@id/hcx" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="@string/fo9" android:layout_weight="1.0" />
+            <View android:id="@id/hcy" android:background="@color/afp" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="@dimen/kb" />
+        </LinearLayout>
+    </LinearLayout>
+    <ListView android:id="@id/gnr" android:layout_weight="1.0" style="@style/np" />
 </LinearLayout>

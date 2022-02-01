@@ -18,7 +18,7 @@ import android.graphics.RectF;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
   extends View
@@ -26,58 +26,58 @@ public final class e
   public int mHeight;
   private Paint mPaint;
   public int mWidth;
-  private Paint nOq;
-  private Bitmap nSa;
-  private Path nSb;
-  private Rect nSc;
-  private RectF nSd;
-  private int nSe;
-  public int nSf;
-  public int nSg;
-  public int nSh;
-  public int nSi;
-  public boolean nSj;
-  private int nSk;
-  private AnimatorListenerAdapter nSl;
+  private Paint oZj;
+  private Bitmap pcQ;
+  private Path pcR;
+  private Rect pcS;
+  private RectF pcT;
+  private int pcU;
+  public int pcV;
+  public int pcW;
+  public int pcX;
+  public int pcY;
+  public boolean pcZ;
+  private int pda;
+  private AnimatorListenerAdapter pdb;
   
   public e(Context paramContext, Bitmap paramBitmap)
   {
     super(paramContext);
     AppMethodBeat.i(106522);
-    this.nSi = -1;
+    this.pcY = -1;
     this.mPaint = new Paint();
-    this.nSb = new Path();
-    this.nOq = new Paint();
+    this.pcR = new Path();
+    this.oZj = new Paint();
     paramContext = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
-    this.nOq.setXfermode(paramContext);
-    this.nSa = paramBitmap;
+    this.oZj.setXfermode(paramContext);
+    this.pcQ = paramBitmap;
     this.mWidth = paramBitmap.getWidth();
     this.mHeight = paramBitmap.getHeight();
-    this.nSc = new Rect(0, 0, this.mWidth, this.mHeight);
-    this.nSd = new RectF();
-    this.nSd.left = 0.0F;
-    this.nSd.top = 0.0F;
-    this.nSd.right = this.mWidth;
-    this.nSd.bottom = this.mHeight;
-    ae.i("MicroMsg.TransformToFloatBallAnimationMaskView", String.format("init: mWidth:%d mHeight:%d", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) }));
+    this.pcS = new Rect(0, 0, this.mWidth, this.mHeight);
+    this.pcT = new RectF();
+    this.pcT.left = 0.0F;
+    this.pcT.top = 0.0F;
+    this.pcT.right = this.mWidth;
+    this.pcT.bottom = this.mHeight;
+    Log.i("MicroMsg.TransformToFloatBallAnimationMaskView", String.format("init: mWidth:%d mHeight:%d", new Object[] { Integer.valueOf(this.mWidth), Integer.valueOf(this.mHeight) }));
     AppMethodBeat.o(106522);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(106523);
-    if (this.nSj) {
-      paramCanvas.translate(this.nSe, 0.0F);
+    if (this.pcZ) {
+      paramCanvas.translate(this.pcU, 0.0F);
     }
     for (;;)
     {
-      this.nSb.reset();
-      this.nSb.addRoundRect(this.nSd, this.nSf, this.nSf, Path.Direction.CW);
-      paramCanvas.clipPath(this.nSb);
-      paramCanvas.drawBitmap(this.nSa, this.nSc, this.nSc, this.mPaint);
+      this.pcR.reset();
+      this.pcR.addRoundRect(this.pcT, this.pcV, this.pcV, Path.Direction.CW);
+      paramCanvas.clipPath(this.pcR);
+      paramCanvas.drawBitmap(this.pcQ, this.pcS, this.pcS, this.mPaint);
       AppMethodBeat.o(106523);
       return;
-      paramCanvas.drawColor(Color.argb(this.nSk, 0, 0, 0));
+      paramCanvas.drawColor(Color.argb(this.pda, 0, 0, 0));
     }
   }
   
@@ -90,12 +90,12 @@ public final class e
   
   public final void setContentStartPosX(int paramInt)
   {
-    this.nSi = paramInt;
+    this.pcY = paramInt;
   }
   
   public final void setListener(AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    this.nSl = paramAnimatorListenerAdapter;
+    this.pdb = paramAnimatorListenerAdapter;
   }
 }
 

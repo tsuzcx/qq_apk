@@ -9,19 +9,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.r;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.ui.editor.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.ao;
-import d.a.j;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.n.k;
-import d.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ar;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -29,72 +22,78 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.n.k;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditMenuPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "isNotifyMoment", "", "()Z", "setNotifyMoment", "(Z)V", "menuDialog", "Landroid/support/design/widget/BottomSheetDialog;", "mergedUserList", "Ljava/util/ArrayList;", "getMergedUserList", "()Ljava/util/ArrayList;", "setMergedUserList", "(Ljava/util/ArrayList;)V", "moreBtn", "Landroid/widget/ImageView;", "moreMenuStatusGroup", "Landroid/widget/LinearLayout;", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "scene", "", "selectedChatroomList", "getSelectedChatroomList", "()Ljava/lang/String;", "setSelectedChatroomList", "(Ljava/lang/String;)V", "selectedIndex", "getSelectedIndex", "()I", "setSelectedIndex", "(I)V", "selectedLabelList", "getSelectedLabelList", "setSelectedLabelList", "selectedUserList", "getSelectedUserList", "setSelectedUserList", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "cleanSelectedCache", "", "createMenuDialog", "getContactNamesFromChatroom", "chatrooms", "", "getContactNamesFromLabelsAndOtherUserName", "labels", "userNames", "getSelectIndex", "goLabelUI", "hasSelectedRange", "mergeSelectedRangeUser", "name", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "onClick", "v", "Landroid/view/View;", "release", "reset", "setScene", "setVisibility", "visibility", "updateMenuStatus", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditMenuPlugin;", "Landroid/view/View$OnClickListener;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "parent", "Landroid/view/ViewGroup;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "isNotifyMoment", "", "()Z", "setNotifyMoment", "(Z)V", "menuDialog", "Landroid/support/design/widget/BottomSheetDialog;", "mergedUserList", "Ljava/util/ArrayList;", "getMergedUserList", "()Ljava/util/ArrayList;", "setMergedUserList", "(Ljava/util/ArrayList;)V", "moreBtn", "Landroid/widget/ImageView;", "moreMenuStatusGroup", "Landroid/widget/LinearLayout;", "getParent", "()Landroid/view/ViewGroup;", "setParent", "(Landroid/view/ViewGroup;)V", "scene", "", "selectedChatroomList", "getSelectedChatroomList", "()Ljava/lang/String;", "setSelectedChatroomList", "(Ljava/lang/String;)V", "selectedIndex", "getSelectedIndex", "()I", "setSelectedIndex", "(I)V", "selectedLabelList", "getSelectedLabelList", "setSelectedLabelList", "selectedUserList", "getSelectedUserList", "setSelectedUserList", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "cleanSelectedCache", "", "createMenuDialog", "getContactNamesFromChatroom", "chatrooms", "", "getContactNamesFromLabelsAndOtherUserName", "labels", "userNames", "getSelectIndex", "goLabelUI", "hasSelectedRange", "mergeSelectedRangeUser", "name", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "onClick", "v", "Landroid/view/View;", "release", "reset", "setScene", "setVisibility", "visibility", "updateMenuStatus", "plugin-recordvideo_release"})
 public final class i
   implements View.OnClickListener, t
 {
+  private final ImageView BQk;
+  private final LinearLayout BQl;
+  private android.support.design.widget.a BQm;
+  public boolean BQn;
+  private String BQo;
+  private String BQp;
+  private String BQq;
+  private ArrayList<String> BQr;
   private final String TAG;
-  public int bxN;
-  private ViewGroup gsV;
+  public int bxP;
+  private ViewGroup parent;
   private int scene;
-  private d tbP;
-  private final ImageView xQh;
-  private final LinearLayout xQi;
-  private android.support.design.widget.a xQj;
-  public boolean xQk;
-  private String xQl;
-  private String xQm;
-  private String xQn;
-  private ArrayList<String> xQo;
+  private d wgr;
   
   public i(ViewGroup paramViewGroup, d paramd)
   {
     AppMethodBeat.i(75524);
-    this.gsV = paramViewGroup;
-    this.tbP = paramd;
+    this.parent = paramViewGroup;
+    this.wgr = paramd;
     this.TAG = "MicroMsg.EditMenuPlugin";
-    paramViewGroup = this.gsV.findViewById(2131303885);
+    paramViewGroup = this.parent.findViewById(2131306709);
     p.g(paramViewGroup, "parent.findViewById(R.id.record_editor_more_menu)");
-    this.xQh = ((ImageView)paramViewGroup);
-    paramViewGroup = this.gsV.findViewById(2131303886);
+    this.BQk = ((ImageView)paramViewGroup);
+    paramViewGroup = this.parent.findViewById(2131306710);
     p.g(paramViewGroup, "parent.findViewById(R.id…r_more_menu_status_group)");
-    this.xQi = ((LinearLayout)paramViewGroup);
-    this.xQk = true;
-    this.xQo = new ArrayList();
-    this.xQh.setVisibility(8);
-    this.xQh.setOnClickListener((View.OnClickListener)this);
+    this.BQl = ((LinearLayout)paramViewGroup);
+    this.BQn = true;
+    this.BQr = new ArrayList();
+    this.BQk.setVisibility(8);
+    this.BQk.setOnClickListener((View.OnClickListener)this);
     AppMethodBeat.o(75524);
   }
   
-  private final void dJH()
+  private final void eKw()
   {
-    this.bxN = 0;
-    this.xQl = null;
-    this.xQm = null;
-    this.xQn = null;
+    this.bxP = 0;
+    this.BQo = null;
+    this.BQp = null;
+    this.BQq = null;
   }
   
-  private final void dJI()
+  private final void eKx()
   {
     AppMethodBeat.i(75515);
-    this.xQi.removeAllViews();
+    this.BQl.removeAllViews();
     LinearLayout.LayoutParams localLayoutParams;
-    if (!this.xQk)
+    if (!this.BQn)
     {
-      localObject = new ImageView(this.gsV.getContext());
-      ((ImageView)localObject).setImageDrawable(ao.k(this.gsV.getContext(), 2131690435, -1));
-      localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.cb.a.ay(this.gsV.getContext(), 2131166749), com.tencent.mm.cb.a.ay(this.gsV.getContext(), 2131166749));
-      localLayoutParams.topMargin = com.tencent.mm.cb.a.ay(this.gsV.getContext(), 2131165480);
-      this.xQi.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
+      localObject = new ImageView(this.parent.getContext());
+      ((ImageView)localObject).setImageDrawable(ar.m(this.parent.getContext(), 2131690611, -1));
+      localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.cb.a.aH(this.parent.getContext(), 2131166869), com.tencent.mm.cb.a.aH(this.parent.getContext(), 2131166869));
+      localLayoutParams.topMargin = com.tencent.mm.cb.a.aH(this.parent.getContext(), 2131165498);
+      this.BQl.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
     }
-    Object localObject = (CharSequence)this.xQl;
+    Object localObject = (CharSequence)this.BQo;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0))
     {
       i = 1;
       if (i != 0)
       {
-        localObject = (CharSequence)this.xQm;
+        localObject = (CharSequence)this.BQp;
         if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
           break label307;
         }
@@ -102,7 +101,7 @@ public final class i
         label164:
         if (i != 0)
         {
-          localObject = (CharSequence)this.xQn;
+          localObject = (CharSequence)this.BQq;
           if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
             break label312;
           }
@@ -121,11 +120,11 @@ public final class i
     {
       if (i != 0)
       {
-        localObject = new ImageView(this.gsV.getContext());
-        ((ImageView)localObject).setImageDrawable(ao.k(this.gsV.getContext(), 2131690427, -1));
-        localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.cb.a.ay(this.gsV.getContext(), 2131166749), com.tencent.mm.cb.a.ay(this.gsV.getContext(), 2131166749));
-        localLayoutParams.topMargin = com.tencent.mm.cb.a.ay(this.gsV.getContext(), 2131165480);
-        this.xQi.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
+        localObject = new ImageView(this.parent.getContext());
+        ((ImageView)localObject).setImageDrawable(ar.m(this.parent.getContext(), 2131690596, -1));
+        localLayoutParams = new LinearLayout.LayoutParams(com.tencent.mm.cb.a.aH(this.parent.getContext(), 2131166869), com.tencent.mm.cb.a.aH(this.parent.getContext(), 2131166869));
+        localLayoutParams.topMargin = com.tencent.mm.cb.a.aH(this.parent.getContext(), 2131165498);
+        this.BQl.addView((View)localObject, (ViewGroup.LayoutParams)localLayoutParams);
       }
       AppMethodBeat.o(75515);
       return;
@@ -138,7 +137,7 @@ public final class i
     }
   }
   
-  private final void fk(List<String> paramList)
+  private final void gg(List<String> paramList)
   {
     AppMethodBeat.i(75516);
     if ((paramList == null) || (paramList.isEmpty()))
@@ -151,30 +150,30 @@ public final class i
     {
       String str1 = (String)paramList.next();
       ArrayList localArrayList = new ArrayList();
-      Object localObject = r.zB(str1);
+      Object localObject = com.tencent.mm.model.v.Id(str1);
       if (localObject != null)
       {
-        ae.d(this.TAG, "getContactNamesFromChatroom chatromm:%s membersCount:%s", new Object[] { str1, Integer.valueOf(((List)localObject).size()) });
+        Log.d(this.TAG, "getContactNamesFromChatroom chatromm:%s membersCount:%s", new Object[] { str1, Integer.valueOf(((List)localObject).size()) });
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext())
         {
           String str2 = (String)((Iterator)localObject).next();
-          if ((!this.xQo.contains(str2)) && (x.An(str2)))
+          if ((!this.BQr.contains(str2)) && (ab.IS(str2)))
           {
-            ae.i(this.TAG, "getContactNamesFromChatroom memberName:%s", new Object[] { str2 });
-            this.xQo.add(str2);
+            Log.i(this.TAG, "getContactNamesFromChatroom memberName:%s", new Object[] { str2 });
+            this.BQr.add(str2);
           }
-          if (x.An(str2)) {
+          if (ab.IS(str2)) {
             localArrayList.add(str2);
           }
         }
-        ae.d(this.TAG, "%s , %s", new Object[] { str1, Integer.valueOf(localArrayList.size()) });
+        Log.d(this.TAG, "%s , %s", new Object[] { str1, Integer.valueOf(localArrayList.size()) });
       }
     }
     AppMethodBeat.o(75516);
   }
   
-  private final void p(List<String> paramList1, List<String> paramList2)
+  private final void r(List<String> paramList1, List<String> paramList2)
   {
     AppMethodBeat.i(163428);
     Iterator localIterator;
@@ -189,20 +188,20 @@ public final class i
       if (localIterator.hasNext())
       {
         localObject = (String)localIterator.next();
-        localObject = com.tencent.mm.plugin.label.a.a.dig().apr(com.tencent.mm.plugin.label.a.a.dig().apo((String)localObject));
+        localObject = com.tencent.mm.plugin.label.a.a.ecg().aCK(com.tencent.mm.plugin.label.a.a.ecg().aCH((String)localObject));
         if ((localObject == null) || (((List)localObject).size() == 0)) {
-          ae.e(this.TAG, "dz: getContactNamesFromLabelsAndOtherUserName,namelist get bu label is null");
+          Log.e(this.TAG, "dz: getContactNamesFromLabelsAndOtherUserName,namelist get bu label is null");
         }
       }
       else
       {
-        this.xQo = new ArrayList((Collection)localHashSet);
+        this.BQr = new ArrayList((Collection)localHashSet);
         if (paramList1 == null) {
           break;
         }
         paramList1 = paramList1.iterator();
         while (paramList1.hasNext()) {
-          bu.isNullOrNil((String)paramList1.next());
+          Util.isNullOrNil((String)paramList1.next());
         }
       }
       Object localObject = ((List)localObject).iterator();
@@ -210,7 +209,7 @@ public final class i
       {
         String str = (String)((Iterator)localObject).next();
         localHashSet.add(str);
-        ae.d(this.TAG, "dz:name : %s", new Object[] { str });
+        Log.d(this.TAG, "dz:name : %s", new Object[] { str });
       }
     }
     if ((paramList2 != null) && (paramList2.size() > 0))
@@ -219,33 +218,28 @@ public final class i
       while (paramList1.hasNext())
       {
         paramList2 = (String)paramList1.next();
-        if (!this.xQo.contains(paramList2)) {
-          this.xQo.add(paramList2);
+        if (!this.BQr.contains(paramList2)) {
+          this.BQr.add(paramList2);
         }
       }
     }
     AppMethodBeat.o(163428);
   }
   
-  public final boolean aoQ()
-  {
-    return false;
-  }
+  public final void aSs() {}
   
-  public final void azm() {}
-  
-  public final String dJJ()
+  public final String eKy()
   {
     Object localObject3 = null;
     AppMethodBeat.i(75520);
-    this.xQo.clear();
+    this.BQr.clear();
     Object localObject2;
     int i;
-    if (!bu.isNullOrNil(this.xQm))
+    if (!Util.isNullOrNil(this.BQp))
     {
-      localObject1 = this.xQm;
+      localObject1 = this.BQp;
       if (localObject1 == null) {
-        p.gkB();
+        p.hyc();
       }
       localObject1 = (CharSequence)localObject1;
       localObject1 = new k(",").q((CharSequence)localObject1, 0);
@@ -263,13 +257,13 @@ public final class i
           }
         }
       }
-      for (localObject1 = j.b((Iterable)localObject1, ((ListIterator)localObject2).nextIndex() + 1);; localObject1 = (List)d.a.v.NhH)
+      for (localObject1 = j.b((Iterable)localObject1, ((ListIterator)localObject2).nextIndex() + 1);; localObject1 = (List)kotlin.a.v.SXr)
       {
         localObject1 = ((Collection)localObject1).toArray(new String[0]);
         if (localObject1 != null) {
           break label184;
         }
-        localObject1 = new d.v("null cannot be cast to non-null type kotlin.Array<T>");
+        localObject1 = new kotlin.t("null cannot be cast to non-null type kotlin.Array<T>");
         AppMethodBeat.o(75520);
         throw ((Throwable)localObject1);
         i = 0;
@@ -283,11 +277,11 @@ public final class i
     for (Object localObject1 = Arrays.asList((String[])Arrays.copyOf((Object[])localObject1, localObject1.length));; localObject1 = null)
     {
       ListIterator localListIterator;
-      if (!bu.isNullOrNil(this.xQl))
+      if (!Util.isNullOrNil(this.BQo))
       {
-        localObject2 = this.xQl;
+        localObject2 = this.BQo;
         if (localObject2 == null) {
-          p.gkB();
+          p.hyc();
         }
         localObject2 = (CharSequence)localObject2;
         localObject2 = new k(",").q((CharSequence)localObject2, 0);
@@ -305,13 +299,13 @@ public final class i
             }
           }
         }
-        for (localObject2 = j.b((Iterable)localObject2, localListIterator.nextIndex() + 1);; localObject2 = (List)d.a.v.NhH)
+        for (localObject2 = j.b((Iterable)localObject2, localListIterator.nextIndex() + 1);; localObject2 = (List)kotlin.a.v.SXr)
         {
           localObject2 = ((Collection)localObject2).toArray(new String[0]);
           if (localObject2 != null) {
             break label374;
           }
-          localObject1 = new d.v("null cannot be cast to non-null type kotlin.Array<T>");
+          localObject1 = new kotlin.t("null cannot be cast to non-null type kotlin.Array<T>");
           AppMethodBeat.o(75520);
           throw ((Throwable)localObject1);
           i = 0;
@@ -324,11 +318,11 @@ public final class i
       }
       for (localObject2 = Arrays.asList((String[])Arrays.copyOf((Object[])localObject2, localObject2.length));; localObject2 = null)
       {
-        if (!bu.isNullOrNil(this.xQn))
+        if (!Util.isNullOrNil(this.BQq))
         {
-          localObject3 = this.xQn;
+          localObject3 = this.BQq;
           if (localObject3 == null) {
-            p.gkB();
+            p.hyc();
           }
           localObject3 = (CharSequence)localObject3;
           localObject3 = new k(",").q((CharSequence)localObject3, 0);
@@ -346,13 +340,13 @@ public final class i
               }
             }
           }
-          for (localObject3 = j.b((Iterable)localObject3, localListIterator.nextIndex() + 1);; localObject3 = (List)d.a.v.NhH)
+          for (localObject3 = j.b((Iterable)localObject3, localListIterator.nextIndex() + 1);; localObject3 = (List)kotlin.a.v.SXr)
           {
             localObject3 = ((Collection)localObject3).toArray(new String[0]);
             if (localObject3 != null) {
               break label579;
             }
-            localObject1 = new d.v("null cannot be cast to non-null type kotlin.Array<T>");
+            localObject1 = new kotlin.t("null cannot be cast to non-null type kotlin.Array<T>");
             AppMethodBeat.o(75520);
             throw ((Throwable)localObject1);
             i = 0;
@@ -364,10 +358,10 @@ public final class i
           localObject3 = (String[])localObject3;
           localObject3 = Arrays.asList((String[])Arrays.copyOf((Object[])localObject3, localObject3.length));
         }
-        p((List)localObject1, (List)localObject2);
-        fk((List)localObject3);
-        ae.i(this.TAG, "mergeSelectedRangeUser count:" + this.xQo.size());
-        localObject1 = bu.m((List)this.xQo, ",");
+        r((List)localObject1, (List)localObject2);
+        gg((List)localObject3);
+        Log.i(this.TAG, "mergeSelectedRangeUser count:" + this.BQr.size());
+        localObject1 = Util.listToString((List)this.BQr, ",");
         p.g(localObject1, "Util.listToString(mergedUserList, \",\")");
         AppMethodBeat.o(75520);
         return localObject1;
@@ -383,7 +377,7 @@ public final class i
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(75523);
-    ae.i(this.TAG, "onActivityResult requestCode:" + paramInt1 + " resultCode:" + paramInt2);
+    Log.i(this.TAG, "onActivityResult requestCode:" + paramInt1 + " resultCode:" + paramInt2);
     switch (paramInt1)
     {
     }
@@ -393,22 +387,27 @@ public final class i
       return;
       if ((paramInt2 == -1) && (paramIntent != null))
       {
-        this.bxN = paramIntent.getIntExtra("Ktag_range_index", 0);
-        this.xQm = paramIntent.getStringExtra("Klabel_name_list");
-        this.xQl = paramIntent.getStringExtra("Kother_user_name_list");
-        this.xQn = paramIntent.getStringExtra("Kchat_room_name_list");
-        dJI();
+        this.bxP = paramIntent.getIntExtra("Ktag_range_index", 0);
+        this.BQp = paramIntent.getStringExtra("Klabel_name_list");
+        this.BQo = paramIntent.getStringExtra("Kother_user_name_list");
+        this.BQq = paramIntent.getStringExtra("Kchat_room_name_list");
+        eKx();
       }
     }
+  }
+  
+  public final boolean onBackPress()
+  {
+    return false;
   }
   
   public final void onClick(View paramView)
   {
     AppMethodBeat.i(75517);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/plugin/EditMenuPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    paramView = this.xQj;
+    localb.bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/plugin/EditMenuPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    paramView = this.BQm;
     if (paramView != null) {
       paramView.dismiss();
     }
@@ -417,19 +416,19 @@ public final class i
     }
     for (paramView = null;; paramView = (android.support.design.widget.a)paramView)
     {
-      this.xQj = paramView;
-      paramView = this.xQj;
+      this.BQm = paramView;
+      paramView = this.BQm;
       if (paramView != null) {
         paramView.show();
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/EditMenuPlugin", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(75517);
       return;
-      paramView = this.gsV.getContext();
+      paramView = this.parent.getContext();
       p.g(paramView, "parent.context");
       paramView = new e(paramView);
-      paramView.ycp = this.xQk;
-      paramView.yco = ((d.g.a.a)new a(this));
+      paramView.Cds = this.BQn;
+      paramView.Cdr = ((kotlin.g.a.a)new a(this));
     }
   }
   
@@ -439,11 +438,11 @@ public final class i
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(206573);
+    AppMethodBeat.i(237287);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(206573);
+    AppMethodBeat.o(237287);
   }
   
   public final void onResume() {}
@@ -451,25 +450,25 @@ public final class i
   public final void release()
   {
     AppMethodBeat.i(75521);
-    this.xQi.removeAllViews();
-    this.xQk = true;
-    dJH();
+    this.BQl.removeAllViews();
+    this.BQn = true;
+    eKw();
     AppMethodBeat.o(75521);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(75522);
-    this.xQi.removeAllViews();
-    this.xQk = true;
-    dJH();
+    this.BQl.removeAllViews();
+    this.BQn = true;
+    eKw();
     AppMethodBeat.o(75522);
   }
   
   public final void setScene(int paramInt)
   {
     AppMethodBeat.i(75519);
-    ae.i(this.TAG, "setScene ".concat(String.valueOf(paramInt)));
+    Log.i(this.TAG, "setScene ".concat(String.valueOf(paramInt)));
     this.scene = paramInt;
     switch (paramInt)
     {
@@ -478,28 +477,28 @@ public final class i
     {
       AppMethodBeat.o(75519);
       return;
-      this.xQh.setImageDrawable(ao.k(this.gsV.getContext(), 2131690436, -1));
-      if (!com.tencent.mm.plugin.recordvideo.b.a.a.xNF.dIQ())
+      this.BQk.setImageDrawable(ar.m(this.parent.getContext(), 2131690612, -1));
+      if (!com.tencent.mm.plugin.recordvideo.b.a.a.BNL.eJD())
       {
-        this.xQh.setVisibility(8);
+        this.BQk.setVisibility(8);
         AppMethodBeat.o(75519);
         return;
       }
-      this.xQh.setVisibility(0);
+      this.BQk.setVisibility(0);
     }
   }
   
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(75518);
-    this.xQh.setVisibility(paramInt);
+    this.BQk.setVisibility(paramInt);
     AppMethodBeat.o(75518);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class a
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     a(i parami)
     {
@@ -509,7 +508,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.i
  * JD-Core Version:    0.7.0.1
  */

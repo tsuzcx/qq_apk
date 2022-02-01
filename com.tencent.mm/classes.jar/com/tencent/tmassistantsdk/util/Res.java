@@ -2,8 +2,8 @@ package com.tencent.tmassistantsdk.util;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.reflect.Field;
 
 public class Res
@@ -31,13 +31,13 @@ public class Res
     try
     {
       paramString1 = Class.forName(this.RclassName + "$" + paramString1);
-      int i = bu.getInt(paramString1.getField(paramString2).get(paramString1.newInstance()).toString(), -1);
+      int i = Util.getInt(paramString1.getField(paramString2).get(paramString1.newInstance()).toString(), -1);
       AppMethodBeat.o(102525);
       return i;
     }
     catch (Exception paramString1)
     {
-      ae.printErrStackTrace("Res", paramString1, "", new Object[0]);
+      Log.printErrStackTrace("Res", paramString1, "", new Object[0]);
       AppMethodBeat.o(102525);
     }
     return -1;
@@ -85,7 +85,7 @@ public class Res
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.util.Res
  * JD-Core Version:    0.7.0.1
  */

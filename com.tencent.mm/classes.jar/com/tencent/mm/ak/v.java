@@ -1,485 +1,665 @@
 package com.tencent.mm.ak;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.model.bd;
+import com.tencent.mm.network.a.b;
+import com.tencent.mm.network.e;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.h;
 import com.tencent.mm.network.j;
+import com.tencent.mm.network.k;
+import com.tencent.mm.network.n;
 import com.tencent.mm.network.q;
-import com.tencent.mm.network.r;
-import com.tencent.mm.network.r.a;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.protocal.MMProtocalJni;
-import com.tencent.mm.protocal.f;
-import com.tencent.mm.protocal.h;
-import com.tencent.mm.protocal.i;
-import com.tencent.mm.protocal.j.e;
-import com.tencent.mm.protocal.j.e.a;
-import com.tencent.mm.protocal.j.h;
-import com.tencent.mm.protocal.j.i;
-import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.cdj;
-import com.tencent.mm.protocal.protobuf.czw;
-import com.tencent.mm.protocal.x.a;
-import com.tencent.mm.protocal.x.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.network.t;
+import com.tencent.mm.protocal.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.List;
 
 public final class v
-  extends r.a
+  implements g
 {
-  private q hRG;
-  h hRV;
-  i hRW;
-  aq handler;
+  public final h iML;
+  private u iMM;
   
-  public v(q paramq) {}
-  
-  public v(q paramq, aq paramaq)
+  public v(h paramh)
   {
-    AppMethodBeat.i(132451);
-    this.hRG = paramq;
-    this.hRV = new u(paramq.getReqObj(), paramq.getType());
-    this.hRW = new w(paramq.getRespObj(), paramq.getType());
-    this.handler = paramaq;
-    AppMethodBeat.o(132451);
+    this.iML = paramh;
   }
   
-  public final void a(com.tencent.mm.network.d paramd, final j paramj, final int paramInt1, final int paramInt2)
+  public final void MH(String paramString)
   {
-    AppMethodBeat.i(132460);
-    this.handler.post(new Runnable()
+    AppMethodBeat.i(132397);
+    try
     {
-      public final void run()
-      {
-        AppMethodBeat.i(132449);
-        v localv = new v(new m(), v.this.handler);
-        try
-        {
-          paramj.a(localv, paramInt1, paramInt2, "");
-          AppMethodBeat.o(132449);
-          return;
-        }
-        catch (RemoteException localRemoteException)
-        {
-          ae.e("MicroMsg.RemoteReqResp", "exception:%s", new Object[] { bu.o(localRemoteException) });
-          AppMethodBeat.o(132449);
-        }
-      }
-    });
-    AppMethodBeat.o(132460);
-  }
-  
-  public final void a(final j paramj, final int paramInt1, final int paramInt2)
-  {
-    AppMethodBeat.i(132459);
-    this.handler.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(132448);
-        int j = bd.aCl().getInt("key_auth_update_version", 0);
-        int i;
-        Object localObject;
-        label77:
-        label98:
-        long l;
-        if (j <= 637665332) {
-          if (f.FFQ)
-          {
-            i = 252;
-            if (j != 0) {
-              break label482;
-            }
-            localObject = ak.getContext().getSharedPreferences("ticket_prefs", g.abv());
-            if (!bu.isNullOrNil(((SharedPreferences)localObject).getString("_auth_ticket", ""))) {
-              break label440;
-            }
-            if (!f.FFQ) {
-              break label433;
-            }
-            i = 763;
-            ae.i("MicroMsg.RemoteReqResp", "summerauth dealWithAutoAuth revise to autoauth");
-            e.ywz.idkeyStat(148L, 50L, 1L, true);
-            ae.i("MicroMsg.RemoteReqResp", "summerauth dealWithAutoAuth updateVersion:%d, clientVersion:%d WLOGIN_BUG_VERSION:%d, newAuthType:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(com.tencent.mm.protocal.d.FFH), Integer.valueOf(637665332), Integer.valueOf(i) });
-            if ((i != 252) && (i != 701)) {
-              break label499;
-            }
-            e.ywz.idkeyStat(148L, 48L, 1L, true);
-            localObject = e.ywz;
-            if (!f.FFQ) {
-              break label485;
-            }
-            l = 115L;
-            label183:
-            ((e)localObject).idkeyStat(148L, l, 1L, true);
-            localObject = e.ywz;
-            if (!f.FFR) {
-              break label492;
-            }
-            l = 117L;
-            label209:
-            ((e)localObject).idkeyStat(148L, l, 1L, true);
-            if (((v.a(v.this).getType() != 702) && (v.a(v.this).getType() != 701) && (v.a(v.this).getType() != 763) && (v.a(v.this).getType() != 252)) || (((j.i)v.a(v.this).getRespObj()).gxH != 2)) {
-              break label616;
-            }
-          }
-        }
-        label433:
-        label440:
-        label482:
-        label485:
-        label616:
-        for (j = 1;; j = 0)
-        {
-          ae.i("MicroMsg.RemoteReqResp", "summerauth dealWithAutoAuth old type:%d new auth type:%d, reqFlag:%d", new Object[] { Integer.valueOf(v.a(v.this).getType()), Integer.valueOf(i), Integer.valueOf(j) });
-          localObject = j.e.a.FGm.dc(i, j);
-          if (localObject == null) {}
-          for (localObject = null;; localObject = new v((q)localObject, v.this.handler))
-          {
-            try
-            {
-              paramj.a((r)localObject, paramInt1, paramInt2, "");
-              AppMethodBeat.o(132448);
-              return;
-            }
-            catch (RemoteException localRemoteException)
-            {
-              label492:
-              label499:
-              ae.e("MicroMsg.RemoteReqResp", "exception:%s", new Object[] { bu.o(localRemoteException) });
-              AppMethodBeat.o(132448);
-              return;
-            }
-            i = 701;
-            break;
-            if (f.FFQ)
-            {
-              i = 763;
-              break;
-            }
-            i = 702;
-            break;
-            i = 702;
-            break label77;
-            e.ywz.idkeyStat(148L, 49L, 1L, true);
-            ae.i("MicroMsg.RemoteReqResp", "summerauth dealWithAutoAuth keep manual as old [%s]", new Object[] { bu.aSM(((SharedPreferences)localObject).getString("_auth_ticket", "")) });
-            break label98;
-            l = 116L;
-            break label183;
-            l = 118L;
-            break label209;
-            localObject = e.ywz;
-            if (f.FFQ)
-            {
-              l = 111L;
-              ((e)localObject).idkeyStat(148L, l, 1L, true);
-              localObject = e.ywz;
-              if (!f.FFR) {
-                break label561;
-              }
-            }
-            for (l = 113L;; l = 114L)
-            {
-              ((e)localObject).idkeyStat(148L, l, 1L, true);
-              break;
-              l = 112L;
-              break label514;
-            }
-          }
-        }
-      }
-    });
-    AppMethodBeat.o(132459);
-  }
-  
-  public final void a(j paramj, final int paramInt1, final int paramInt2, final String paramString)
-  {
-    AppMethodBeat.i(132458);
-    this.handler.post(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(132447);
-        ae.d("MicroMsg.RemoteReqResp", "summerauth doAutoAuthEnd type:%d, stack[%s]", new Object[] { Integer.valueOf(v.a(v.this).getType()), bu.fpN() });
-        j.h localh = (j.h)v.a(v.this).getReqObj();
-        j.i locali = (j.i)v.a(v.this).getRespObj();
-        if (locali == null)
-        {
-          ae.f("MicroMsg.RemoteReqResp", "null auth.resp");
-          AppMethodBeat.o(132447);
-          return;
-        }
-        j.e.a.FGm.a(localh, locali, paramInt1, paramInt2, paramString);
-        AppMethodBeat.o(132447);
-      }
-    });
-    AppMethodBeat.o(132458);
-  }
-  
-  public final int aFA()
-  {
-    AppMethodBeat.i(132461);
-    int j = getType();
-    int i = -1;
-    ae.d("MicroMsg.RemoteReqResp", "summerauth decodeAndRetriveAccInfo type:%d", new Object[] { Integer.valueOf(j) });
-    switch (j)
-    {
-    default: 
-    case 252: 
-    case 701: 
-    case 702: 
-    case 763: 
-      for (;;)
-      {
-        AppMethodBeat.o(132461);
-        return i;
-        i = bd.a(this.hRG);
-      }
+      this.iML.MH(paramString);
+      AppMethodBeat.o(132397);
+      return;
     }
-    Object localObject2 = this.hRG;
-    Object localObject1 = (x.a)((q)localObject2).getReqObj();
-    x.b localb = (x.b)((q)localObject2).getRespObj();
-    ae.i("MicroMsg.MMReqRespReg2", "summerauth decodeAndRetriveAccInfo type:%d, stack[%s]", new Object[] { Integer.valueOf(((x.a)localObject1).getFuncId()), bu.fpN() });
-    if (localb.gxH != 0) {
-      ae.d("MicroMsg.MMReqRespReg2", "summerauth decodeAndRetriveAccInfo resp just decoded and ret result:%d", new Object[] { Integer.valueOf(localb.gxH) });
-    }
-    for (;;)
+    catch (Exception paramString)
     {
-      i = localb.gxH;
-      break;
-      Object localObject3 = localb.FGY.Hqm;
-      if (localObject3 != null)
-      {
-        j = ((czw)localObject3).FRG;
-        localObject2 = ((czw)localObject3).FRq;
-        byte[] arrayOfByte1 = z.a(((czw)localObject3).FRJ);
-        byte[] arrayOfByte2 = z.a(((czw)localObject3).FRK);
-        localObject3 = z.a(((czw)localObject3).FRr);
-        int k = ((afy)localObject2).FSl.getILen();
-        int m = ((afy)localObject2).Gwi;
-        label276:
-        byte[] arrayOfByte4;
-        if (localObject3 == null)
-        {
-          i = -1;
-          ae.d("MicroMsg.MMReqRespReg2", "summerauth svr ecdh key len:%d, nid:%d sessionKey len:%d, sessionKey：%s, clientSession[%s], serverSession[%s]", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i), bu.aSM(bu.cE((byte[])localObject3)), bu.aSM(bu.cE(arrayOfByte1)), bu.aSM(bu.cE(arrayOfByte2)) });
-          byte[] arrayOfByte3 = z.a(((afy)localObject2).FSl);
-          arrayOfByte4 = ((x.a)localObject1).FGk;
-          localObject1 = null;
-          if (bu.cF(arrayOfByte3)) {
-            break label687;
-          }
-          k = arrayOfByte3.length;
-          localObject1 = bu.aSM(bu.cE(arrayOfByte3));
-          if (arrayOfByte4 != null) {
-            break label673;
-          }
-          i = -1;
-          label392:
-          ae.d("MicroMsg.MMReqRespReg2", "summerauth svrPubKey len:%d value:%s prikey len:%d, values:%s", new Object[] { Integer.valueOf(k), localObject1, Integer.valueOf(i), bu.aSM(bu.cE(arrayOfByte4)) });
-          localObject1 = new PByteArray();
-          k = MMProtocalJni.computerKeyWithAllStr(((afy)localObject2).Gwi, arrayOfByte3, arrayOfByte4, (PByteArray)localObject1, 0);
-          localObject1 = ((PByteArray)localObject1).value;
-          if (localObject1 != null) {
-            break label680;
-          }
-          i = -1;
-          label472:
-          ae.i("MicroMsg.MMReqRespReg2", "summerauth ComputerKeyWithAllStr ret:%d, agreedECDHKey len: %d, values:%s", new Object[] { Integer.valueOf(k), Integer.valueOf(i), bu.aSM(bu.cE((byte[])localObject1)) });
-          label508:
-          if (localObject1 == null) {
-            break label698;
-          }
-          localObject2 = localObject1;
-          label517:
-          localb.FGp = ((byte[])localObject2);
-          if ((j & 0x4) == 0) {
-            break label778;
-          }
-          ae.d("MicroMsg.MMReqRespReg2", "summerauth must decode session key");
-          if (bu.cF((byte[])localObject1)) {
-            break label749;
-          }
-          localObject1 = MMProtocalJni.aesDecrypt((byte[])localObject3, (byte[])localObject1);
-          if (localObject3 != null) {
-            break label706;
-          }
-          i = -1;
-          label561:
-          localObject2 = bu.cE((byte[])localObject3);
-          if (localObject1 != null) {
-            break label713;
-          }
-        }
-        label673:
-        label680:
-        label687:
-        label698:
-        label706:
-        label713:
-        for (j = -1;; j = localObject1.length)
-        {
-          ae.d("MicroMsg.MMReqRespReg2", "summerauth aesDecrypt sessionKey len:%d, value:%s, session len:%d, value:%s", new Object[] { Integer.valueOf(i), localObject2, Integer.valueOf(j), bu.aSM(bu.cE((byte[])localObject1)) });
-          if (bu.cF((byte[])localObject1)) {
-            break label720;
-          }
-          ae.d("MicroMsg.MMReqRespReg2", "summerauth decode session key succ session:%s", new Object[] { bu.aSM(bu.cE((byte[])localObject1)) });
-          localb.b((byte[])localObject1, arrayOfByte1, arrayOfByte2);
-          localb.gxH = 1;
-          break;
-          i = localObject3.length;
-          break label276;
-          i = arrayOfByte4.length;
-          break label392;
-          i = localObject1.length;
-          break label472;
-          ae.w("MicroMsg.MMReqRespReg2", "summerauth svr ecdh key is null!");
-          break label508;
-          localObject2 = new byte[0];
-          break label517;
-          i = localObject3.length;
-          break label561;
-        }
-        label720:
-        ae.d("MicroMsg.MMReqRespReg2", "summerauth decode session key failed ret null!");
-        localb.b(new byte[0], arrayOfByte1, arrayOfByte2);
-        localb.gxH = 2;
-        continue;
-        label749:
-        ae.d("MicroMsg.MMReqRespReg2", "summerauth decode session key failed as agreedECDHKey is null!");
-        localb.b(new byte[0], arrayOfByte1, arrayOfByte2);
-        localb.gxH = 2;
-        continue;
-        label778:
-        ae.d("MicroMsg.MMReqRespReg2", "summerauth not need decode session key");
-        localb.b((byte[])localObject3, arrayOfByte1, arrayOfByte2);
-        localb.gxH = 1;
-      }
-      else
-      {
-        ae.d("MicroMsg.MMReqRespReg2", "summerauth decodeAndRetriveAccInfo sect null and decode failed!");
-        localb.b(new byte[0], new byte[0], new byte[0]);
-        localb.gxH = 2;
-      }
+      Log.e("MicroMsg.RDispatcher", "ipxxStatistics remote call error, %s", new Object[] { paramString });
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
+      AppMethodBeat.o(132397);
     }
   }
   
-  public final h aFy()
+  public final void MI(String paramString)
   {
-    return this.hRV;
+    AppMethodBeat.i(132410);
+    try
+    {
+      this.iML.MI(paramString);
+      AppMethodBeat.o(132410);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
+      AppMethodBeat.o(132410);
+    }
   }
   
-  public final i aFz()
+  public final void MJ(String paramString)
   {
-    return this.hRW;
+    AppMethodBeat.i(132417);
+    try
+    {
+      this.iML.MJ(paramString);
+      AppMethodBeat.o(132417);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
+      AppMethodBeat.o(132417);
+    }
   }
   
-  public final boolean getIsLongPolling()
+  public final int a(t paramt, n paramn)
   {
-    AppMethodBeat.i(193555);
-    boolean bool = this.hRG.getIsLongPolling();
-    AppMethodBeat.o(193555);
-    return bool;
+    AppMethodBeat.i(132385);
+    try
+    {
+      int i = this.iML.a(paramt, paramn);
+      AppMethodBeat.o(132385);
+      return i;
+    }
+    catch (Exception paramt)
+    {
+      Log.e("MicroMsg.RDispatcher", "remote dispatcher lost, send failed, %s", new Object[] { paramt });
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramt) });
+      AppMethodBeat.o(132385);
+    }
+    return -1;
   }
   
-  public final boolean getIsUserCmd()
+  public final int a(String paramString, boolean paramBoolean, List<String> paramList)
   {
-    AppMethodBeat.i(132452);
-    boolean bool = this.hRG.getIsUserCmd();
-    AppMethodBeat.o(132452);
-    return bool;
+    AppMethodBeat.i(132399);
+    try
+    {
+      int i = this.iML.a(paramString, paramBoolean, paramList);
+      AppMethodBeat.o(132399);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
+      AppMethodBeat.o(132399);
+    }
+    return -1;
   }
   
-  public final int getLongPollingTimeout()
+  public final void a(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    AppMethodBeat.i(193556);
-    int i = this.hRG.getLongPollingTimeout();
-    AppMethodBeat.o(193556);
-    return i;
+    AppMethodBeat.i(132402);
+    try
+    {
+      this.iML.a(paramInt1, paramString, paramInt2, paramBoolean);
+      AppMethodBeat.o(132402);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
+      AppMethodBeat.o(132402);
+    }
   }
   
-  public final int getMMReqRespHash()
+  public final void a(b paramb)
   {
-    AppMethodBeat.i(132453);
-    int i = this.hRG.hashCode();
-    AppMethodBeat.o(132453);
-    return i;
+    AppMethodBeat.i(132392);
+    try
+    {
+      this.iML.a(paramb);
+      AppMethodBeat.o(132392);
+      return;
+    }
+    catch (Exception paramb)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramb) });
+      AppMethodBeat.o(132392);
+    }
   }
   
-  public final int getNewExtFlags()
+  public final void a(j paramj)
   {
-    AppMethodBeat.i(193557);
-    int i = this.hRG.getNewExtFlags();
-    AppMethodBeat.o(193557);
-    return i;
+    AppMethodBeat.i(132415);
+    try
+    {
+      this.iML.a(paramj);
+      AppMethodBeat.o(132415);
+      return;
+    }
+    catch (Exception paramj)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramj) });
+      AppMethodBeat.o(132415);
+    }
   }
   
-  public final int getOptions()
+  public final void a(q paramq)
   {
-    AppMethodBeat.i(132454);
-    int i = this.hRG.getOptions();
-    AppMethodBeat.o(132454);
-    return i;
+    AppMethodBeat.i(132408);
+    try
+    {
+      this.iML.a(paramq);
+      AppMethodBeat.o(132408);
+      return;
+    }
+    catch (Exception paramq)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramq) });
+      AppMethodBeat.o(132408);
+    }
   }
   
-  public final int getTimeOut()
+  public final void a(ab paramab)
   {
-    AppMethodBeat.i(132462);
-    int i = this.hRG.getTimeOut();
-    AppMethodBeat.o(132462);
-    return i;
+    AppMethodBeat.i(132396);
+    try
+    {
+      this.iML.a(paramab);
+      AppMethodBeat.o(132396);
+      return;
+    }
+    catch (Exception paramab)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramab) });
+      AppMethodBeat.o(132396);
+    }
   }
   
-  public final byte[] getTransHeader()
+  public final void a(boolean paramBoolean, String paramString1, String paramString2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(193558);
-    byte[] arrayOfByte = this.hRG.getTransHeader();
-    AppMethodBeat.o(193558);
-    return arrayOfByte;
+    AppMethodBeat.i(132390);
+    try
+    {
+      this.iML.a(paramBoolean, paramString1, paramString2, paramArrayOfInt1, paramArrayOfInt2, paramInt1, paramInt2, paramString3, paramString4);
+      AppMethodBeat.o(132390);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      Log.e("MicroMsg.RDispatcher", "dkidc setIDCHostInfo ip failed, core service down, %s", new Object[] { paramString1 });
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramString1) });
+      AppMethodBeat.o(132390);
+    }
   }
   
-  public final int getType()
+  public final boolean aYT()
   {
-    AppMethodBeat.i(132455);
-    int i = this.hRG.getType();
-    AppMethodBeat.o(132455);
-    return i;
+    AppMethodBeat.i(132394);
+    try
+    {
+      boolean bool = this.iML.aYT();
+      AppMethodBeat.o(132394);
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "core service down, guess network stable, %s", new Object[] { localException });
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132394);
+    }
+    return true;
   }
   
-  public final String getUri()
+  public final e aZh()
   {
-    AppMethodBeat.i(132456);
-    String str = this.hRG.getUri();
-    AppMethodBeat.o(132456);
-    return str;
+    AppMethodBeat.i(132391);
+    try
+    {
+      if (this.iMM == null) {
+        this.iMM = new u(this.iML.bjw());
+      }
+      u localu = this.iMM;
+      AppMethodBeat.o(132391);
+      return localu;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "getAccInfo failed, core service down, %s", new Object[] { localException });
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132391);
+    }
+    return null;
   }
   
-  public final boolean isSingleSession()
+  public final k aZi()
   {
-    AppMethodBeat.i(132463);
-    boolean bool = this.hRG.isSingleSession();
-    AppMethodBeat.o(132463);
-    return bool;
+    AppMethodBeat.i(132395);
+    try
+    {
+      k localk = this.iML.bjy();
+      AppMethodBeat.o(132395);
+      return localk;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132395);
+    }
+    return null;
   }
   
-  public final void setConnectionInfo(String paramString)
+  public final void aZj()
   {
-    AppMethodBeat.i(132457);
-    this.hRG.setConnectionInfo(paramString);
-    AppMethodBeat.o(132457);
+    AppMethodBeat.i(132414);
+    try
+    {
+      this.iML.aZj();
+      AppMethodBeat.o(132414);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132414);
+    }
+  }
+  
+  public final void aZk()
+  {
+    AppMethodBeat.i(132416);
+    try
+    {
+      this.iML.aZk();
+      AppMethodBeat.o(132416);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132416);
+    }
+  }
+  
+  public final String[] aZl()
+  {
+    AppMethodBeat.i(197065);
+    try
+    {
+      String[] arrayOfString = this.iML.aZl();
+      AppMethodBeat.o(197065);
+      return arrayOfString;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(197065);
+    }
+    return null;
+  }
+  
+  public final void addHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(132401);
+    try
+    {
+      this.iML.addHostInfo(paramArrayOfString1, paramArrayOfString2, paramArrayOfInt);
+      AppMethodBeat.o(132401);
+      return;
+    }
+    catch (Exception paramArrayOfString1)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfString1) });
+      AppMethodBeat.o(132401);
+    }
+  }
+  
+  public final void cancel(int paramInt)
+  {
+    AppMethodBeat.i(132388);
+    try
+    {
+      this.iML.cancel(paramInt);
+      AppMethodBeat.o(132388);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "cancel remote rr failed, netid=%d, %s", new Object[] { Integer.valueOf(paramInt), localException });
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132388);
+    }
+  }
+  
+  public final void d(String paramString1, long paramLong, String paramString2)
+  {
+    AppMethodBeat.i(132403);
+    try
+    {
+      this.iML.d(paramString1, paramLong, paramString2);
+      AppMethodBeat.o(132403);
+      return;
+    }
+    catch (Exception paramString1)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramString1) });
+      AppMethodBeat.o(132403);
+    }
+  }
+  
+  public final void fA(boolean paramBoolean)
+  {
+    AppMethodBeat.i(132412);
+    try
+    {
+      this.iML.fA(paramBoolean);
+      AppMethodBeat.o(132412);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132412);
+    }
+  }
+  
+  public final void fB(boolean paramBoolean)
+  {
+    AppMethodBeat.i(132413);
+    try
+    {
+      this.iML.fB(paramBoolean);
+      AppMethodBeat.o(132413);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132413);
+    }
+  }
+  
+  public final void forceUseV6(boolean paramBoolean)
+  {
+    AppMethodBeat.i(176842);
+    try
+    {
+      this.iML.forceUseV6(paramBoolean);
+      AppMethodBeat.o(176842);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(176842);
+    }
+  }
+  
+  public final void fy(boolean paramBoolean)
+  {
+    AppMethodBeat.i(132393);
+    try
+    {
+      this.iML.fy(paramBoolean);
+      AppMethodBeat.o(132393);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "change active status failed, core service down, %s", new Object[] { localException });
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132393);
+    }
+  }
+  
+  public final void fz(boolean paramBoolean)
+  {
+    AppMethodBeat.i(132411);
+    try
+    {
+      this.iML.fz(paramBoolean);
+      AppMethodBeat.o(132411);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132411);
+    }
+  }
+  
+  public final int getHostByName(String paramString, List<String> paramList)
+  {
+    AppMethodBeat.i(132398);
+    try
+    {
+      int i = this.iML.getHostByName(paramString, paramList);
+      AppMethodBeat.o(132398);
+      return i;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
+      AppMethodBeat.o(132398);
+    }
+    return -1;
+  }
+  
+  public final String[] getIPsString(boolean paramBoolean)
+  {
+    AppMethodBeat.i(132387);
+    try
+    {
+      String[] arrayOfString = this.iML.getIPsString(paramBoolean);
+      AppMethodBeat.o(132387);
+      return arrayOfString;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "query remote network server ip failed, %s", new Object[] { localException });
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132387);
+    }
+    return null;
+  }
+  
+  public final String getIspId()
+  {
+    AppMethodBeat.i(132404);
+    try
+    {
+      String str = this.iML.getIspId();
+      AppMethodBeat.o(132404);
+      return str;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132404);
+    }
+    return null;
+  }
+  
+  public final String getNetworkServerIp()
+  {
+    AppMethodBeat.i(132386);
+    try
+    {
+      String str = this.iML.getNetworkServerIp();
+      AppMethodBeat.o(132386);
+      return str;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "query remote network server ip failed, %s", new Object[] { localException });
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132386);
+    }
+    return null;
+  }
+  
+  public final void keepSignalling()
+  {
+    AppMethodBeat.i(132406);
+    try
+    {
+      this.iML.keepSignalling();
+      AppMethodBeat.o(132406);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132406);
+    }
+  }
+  
+  public final void reportFailIp(String paramString)
+  {
+    AppMethodBeat.i(132409);
+    try
+    {
+      this.iML.reportFailIp(paramString);
+      AppMethodBeat.o(132409);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
+      AppMethodBeat.o(132409);
+    }
+  }
+  
+  public final void reportV6Status(boolean paramBoolean)
+  {
+    AppMethodBeat.i(176841);
+    try
+    {
+      this.iML.reportV6Status(paramBoolean);
+      AppMethodBeat.o(176841);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(176841);
+    }
+  }
+  
+  public final void reset()
+  {
+    AppMethodBeat.i(132389);
+    try
+    {
+      this.iML.reset();
+      AppMethodBeat.o(132389);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "reset failed, core service down, %s", new Object[] { localException });
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132389);
+    }
+  }
+  
+  public final void setDebugHost(String paramString)
+  {
+    AppMethodBeat.i(197064);
+    try
+    {
+      this.iML.setDebugHost(paramString);
+      AppMethodBeat.o(197064);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
+      AppMethodBeat.o(197064);
+    }
+  }
+  
+  public final void setHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(132400);
+    try
+    {
+      this.iML.setHostInfo(paramArrayOfString1, paramArrayOfString2, paramArrayOfInt);
+      AppMethodBeat.o(132400);
+      return;
+    }
+    catch (Exception paramArrayOfString1)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfString1) });
+      AppMethodBeat.o(132400);
+    }
+  }
+  
+  public final void setSignallingStrategy(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(132405);
+    try
+    {
+      this.iML.setSignallingStrategy(paramLong1, paramLong2);
+      AppMethodBeat.o(132405);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132405);
+    }
+  }
+  
+  public final void stopSignalling()
+  {
+    AppMethodBeat.i(132407);
+    try
+    {
+      this.iML.stopSignalling();
+      AppMethodBeat.o(132407);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(132407);
+    }
+  }
+  
+  public final void switchProcessActiveState(boolean paramBoolean)
+  {
+    AppMethodBeat.i(197063);
+    try
+    {
+      this.iML.switchProcessActiveState(paramBoolean);
+      AppMethodBeat.o(197063);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.RDispatcher", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      AppMethodBeat.o(197063);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ak.v
  * JD-Core Version:    0.7.0.1
  */

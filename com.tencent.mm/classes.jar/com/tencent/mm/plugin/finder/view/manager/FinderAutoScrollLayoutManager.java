@@ -3,57 +3,62 @@ package com.tencent.mm.plugin.finder.view.manager;
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.r;
+import android.support.v7.widget.RecyclerView.r.a;
 import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.RecyclerView.s.a;
-import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.Interpolator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/manager/FinderAutoScrollLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "smoothScrollToPosition", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "position", "", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/manager/FinderAutoScrollLayoutManager;", "Landroid/support/v7/widget/LinearLayoutManager;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "smoothScrollToPosition", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "position", "", "Companion", "plugin-finder_release"})
 public final class FinderAutoScrollLayoutManager
   extends LinearLayoutManager
 {
-  public static final FinderAutoScrollLayoutManager.a tju;
+  public static final a wsO;
   
   static
   {
-    AppMethodBeat.i(206000);
-    tju = new FinderAutoScrollLayoutManager.a((byte)0);
-    AppMethodBeat.o(206000);
+    AppMethodBeat.i(255258);
+    wsO = new a((byte)0);
+    AppMethodBeat.o(255258);
   }
   
   public FinderAutoScrollLayoutManager(Context paramContext)
   {
-    AppMethodBeat.i(205999);
-    AppMethodBeat.o(205999);
+    AppMethodBeat.i(255257);
+    AppMethodBeat.o(255257);
   }
   
-  public final void a(RecyclerView paramRecyclerView, RecyclerView.t paramt, int paramInt)
+  public final void smoothScrollToPosition(RecyclerView paramRecyclerView, RecyclerView.s params, int paramInt)
   {
-    AppMethodBeat.i(205998);
+    AppMethodBeat.i(255256);
     if (paramRecyclerView != null) {}
-    for (paramt = paramRecyclerView.getContext();; paramt = null)
+    for (params = paramRecyclerView.getContext();; params = null)
     {
-      paramRecyclerView = new b(paramRecyclerView, paramt);
+      paramRecyclerView = new b(paramRecyclerView, params);
       if (paramInt < 0) {
         break;
       }
-      paramRecyclerView.cz(paramInt);
-      a((RecyclerView.s)paramRecyclerView);
-      AppMethodBeat.o(205998);
+      paramRecyclerView.ct(paramInt);
+      startSmoothScroll((RecyclerView.r)paramRecyclerView);
+      AppMethodBeat.o(255256);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ae.e("Finder.AutoScrollLayoutManager", "Invalid target position");
-    AppMethodBeat.o(205998);
+    Log.e("Finder.AutoScrollLayoutManager", "Invalid target position");
+    AppMethodBeat.o(255256);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/view/manager/FinderAutoScrollLayoutManager$smoothScrollToPosition$linearSmoothScroller$1", "Landroid/support/v7/widget/LinearSmoothScroller;", "calculateDtToFit", "", "viewStart", "viewEnd", "boxStart", "boxEnd", "snapPreference", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "calculateTimeForDeceleration", "dx", "onTargetFound", "", "targetView", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "action", "Landroid/support/v7/widget/RecyclerView$SmoothScroller$Action;", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/manager/FinderAutoScrollLayoutManager$Companion;", "", "()V", "DURATION_PER_SCREEN", "", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/manager/FinderAutoScrollLayoutManager$smoothScrollToPosition$linearSmoothScroller$1", "Landroid/support/v7/widget/LinearSmoothScroller;", "calculateDtToFit", "", "viewStart", "viewEnd", "boxStart", "boxEnd", "snapPreference", "calculateSpeedPerPixel", "", "displayMetrics", "Landroid/util/DisplayMetrics;", "calculateTimeForDeceleration", "dx", "onTargetFound", "", "targetView", "Landroid/view/View;", "state", "Landroid/support/v7/widget/RecyclerView$State;", "action", "Landroid/support/v7/widget/RecyclerView$SmoothScroller$Action;", "plugin-finder_release"})
   public static final class b
-    extends android.support.v7.widget.ae
+    extends ae
   {
     b(RecyclerView paramRecyclerView, Context paramContext)
     {
@@ -62,33 +67,33 @@ public final class FinderAutoScrollLayoutManager
     
     public final float a(DisplayMetrics paramDisplayMetrics)
     {
-      AppMethodBeat.i(205995);
+      AppMethodBeat.i(255253);
       p.h(paramDisplayMetrics, "displayMetrics");
       float f = 4000.0F / paramDisplayMetrics.widthPixels;
-      AppMethodBeat.o(205995);
+      AppMethodBeat.o(255253);
       return f;
     }
     
-    public final void a(View paramView, RecyclerView.t paramt, RecyclerView.s.a parama)
+    public final void a(View paramView, RecyclerView.s params, RecyclerView.r.a parama)
     {
-      AppMethodBeat.i(205997);
+      AppMethodBeat.i(255255);
       p.h(paramView, "targetView");
-      p.h(paramt, "state");
+      p.h(params, "state");
       p.h(parama, "action");
-      int i = F(paramView, kt());
-      int j = E(paramView, ku());
-      int k = ce((int)Math.sqrt(i * i + j * j));
+      int i = F(paramView, kz());
+      int j = E(paramView, kA());
+      int k = cd((int)Math.sqrt(i * i + j * j));
       if (k > 0) {
-        parama.a(-i, -j, k, (Interpolator)this.aqG);
+        parama.a(-i, -j, k, (Interpolator)this.aqS);
       }
-      AppMethodBeat.o(205997);
+      AppMethodBeat.o(255255);
     }
     
-    public final int cd(int paramInt)
+    public final int cc(int paramInt)
     {
-      AppMethodBeat.i(205996);
-      paramInt = ce(paramInt);
-      AppMethodBeat.o(205996);
+      AppMethodBeat.i(255254);
+      paramInt = cd(paramInt);
+      AppMethodBeat.o(255254);
       return paramInt;
     }
     
@@ -100,7 +105,7 @@ public final class FinderAutoScrollLayoutManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.manager.FinderAutoScrollLayoutManager
  * JD-Core Version:    0.7.0.1
  */

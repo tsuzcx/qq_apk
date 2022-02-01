@@ -2,35 +2,35 @@ package com.tencent.mm.plugin.expt.hellhound.a.d;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.auq;
-import com.tencent.mm.protocal.protobuf.aus;
-import com.tencent.mm.protocal.protobuf.dca;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.bfz;
+import com.tencent.mm.protocal.protobuf.bgb;
+import com.tencent.mm.protocal.protobuf.dve;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.util.LinkedList;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/fuzzymatch/FuzzyMatchDao;", "", "()V", "Companion", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/fuzzymatch/FuzzyMatchDao;", "", "()V", "Companion", "plugin-expt_release"})
 public final class d
 {
-  public static final a rgC;
+  public static final a sHY;
   
   static
   {
     AppMethodBeat.i(122581);
-    rgC = new a((byte)0);
+    sHY = new a((byte)0);
     AppMethodBeat.o(122581);
   }
   
-  public static final void a(auq paramauq)
+  public static final void a(bfz parambfz)
   {
     AppMethodBeat.i(161614);
-    a.a(paramauq);
+    a.a(parambfz);
     AppMethodBeat.o(161614);
   }
   
-  public static final void a(String paramString, aus paramaus, int paramInt)
+  public static final void a(String paramString, bgb parambgb, int paramInt)
   {
     AppMethodBeat.i(169400);
     if (paramString == null)
@@ -38,38 +38,38 @@ public final class d
       AppMethodBeat.o(169400);
       return;
     }
-    if (paramaus == null)
+    if (parambgb == null)
     {
       AppMethodBeat.o(169400);
       return;
     }
-    paramString = a.afu(paramString);
+    paramString = a.aqf(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(169400);
       return;
     }
-    paramString.GLy.set(paramInt, paramaus);
+    paramString.LPC.set(paramInt, parambgb);
     a.a(paramString);
     AppMethodBeat.o(169400);
   }
   
-  public static final Pair<aus, Integer> ai(String paramString, long paramLong)
+  public static final Pair<bgb, Integer> ah(String paramString, long paramLong)
   {
     AppMethodBeat.i(169399);
-    paramString = a.afu(paramString);
+    paramString = a.aqf(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(169399);
       return null;
     }
-    int i = paramString.GLy.size() - 1;
+    int i = paramString.LPC.size() - 1;
     while (i >= 0)
     {
-      aus localaus = (aus)paramString.GLy.get(i);
-      if (localaus.GLJ == paramLong)
+      bgb localbgb = (bgb)paramString.LPC.get(i);
+      if (localbgb.LPN == paramLong)
       {
-        paramString = Pair.create(localaus, Integer.valueOf(i));
+        paramString = Pair.create(localbgb, Integer.valueOf(i));
         AppMethodBeat.o(169399);
         return paramString;
       }
@@ -79,87 +79,87 @@ public final class d
     return null;
   }
   
-  public static final auq cqV()
+  public static final bfz cPD()
   {
     AppMethodBeat.i(161613);
-    auq localauq = a.cqV();
+    bfz localbfz = a.cPD();
     AppMethodBeat.o(161613);
-    return localauq;
+    return localbfz;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/fuzzymatch/FuzzyMatchDao$Companion;", "", "()V", "KEY_MMKV", "", "TAG", "_read", "", "_write", "", "bytes", "getFuzzyMatchInfo", "Lcom/tencent/mm/protocal/protobuf/FuzzyMatchInfo;", "getPaths", "Landroid/util/Pair;", "Lcom/tencent/mm/protocal/protobuf/FuzzyPath;", "", "sessionId", "pagePathId", "", "getSessionFuzzyPath", "Lcom/tencent/mm/protocal/protobuf/SessionFuzzyPath;", "getSessionFuzzyPath2", "getSessionFuzzyPath3", "reset", "resetOnSessionStart", "curSessionId", "setFuzzyMatchInfo", "info", "updatePaths", "path", "index", "updateSessionMatchInfo", "sessionPath", "plugin-expt_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/fuzzymatch/FuzzyMatchDao$Companion;", "", "()V", "KEY_MMKV", "", "TAG", "_read", "", "_write", "", "bytes", "getFuzzyMatchInfo", "Lcom/tencent/mm/protocal/protobuf/FuzzyMatchInfo;", "getPaths", "Landroid/util/Pair;", "Lcom/tencent/mm/protocal/protobuf/FuzzyPath;", "", "sessionId", "pagePathId", "", "getSessionFuzzyPath", "Lcom/tencent/mm/protocal/protobuf/SessionFuzzyPath;", "getSessionFuzzyPath2", "getSessionFuzzyPath3", "reset", "resetOnSessionStart", "curSessionId", "setFuzzyMatchInfo", "info", "updatePaths", "path", "index", "updateSessionMatchInfo", "sessionPath", "plugin-expt_release"})
   public static final class a
   {
-    public static void a(auq paramauq)
+    public static void a(bfz parambfz)
     {
       AppMethodBeat.i(122580);
-      if (paramauq == null)
+      if (parambfz == null)
       {
         AppMethodBeat.o(122580);
         return;
       }
       try
       {
-        paramauq = paramauq.toByteArray();
-        if (paramauq == null)
+        parambfz = parambfz.toByteArray();
+        if (parambfz == null)
         {
           AppMethodBeat.o(122580);
           return;
         }
       }
-      catch (IOException paramauq)
+      catch (IOException parambfz)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.FuzzyMatchDao", (Throwable)paramauq, "FuzzyMatchDao, setFuzzyMatchInfo: %s", new Object[] { paramauq.getMessage() });
+        Log.printErrStackTrace("HABBYGE-MALI.FuzzyMatchDao", (Throwable)parambfz, "FuzzyMatchDao, setFuzzyMatchInfo: %s", new Object[] { parambfz.getMessage() });
         AppMethodBeat.o(122580);
         return;
       }
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.p("mmkv_fuzzy_pgs_io", paramauq);
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_fuzzy_pgs_io", parambfz);
       AppMethodBeat.o(122580);
     }
     
-    public static void a(dca paramdca)
+    public static void a(dve paramdve)
     {
       AppMethodBeat.i(122579);
-      if (paramdca == null)
+      if (paramdve == null)
       {
         AppMethodBeat.o(122579);
         return;
       }
-      auq localauq = cqV();
-      if (localauq == null)
+      bfz localbfz = cPD();
+      if (localbfz == null)
       {
-        localauq = new auq();
-        ae.i("HABBYGE-MALI.FuzzyMatchDao", "updateSessionMatchInfo, addNew: " + paramdca.dAa);
-        localauq.GLz.addLast(paramdca);
-        paramdca = localauq;
-        a(paramdca);
+        localbfz = new bfz();
+        Log.i("HABBYGE-MALI.FuzzyMatchDao", "updateSessionMatchInfo, addNew: " + paramdve.dRM);
+        localbfz.LPD.addLast(paramdve);
+        paramdve = localbfz;
+        a(paramdve);
         AppMethodBeat.o(122579);
         return;
       }
-      int i = localauq.GLz.size() - 1;
+      int i = localbfz.LPD.size() - 1;
       label85:
       if (i >= 0)
       {
-        dca localdca = (dca)localauq.GLz.get(i);
-        if ((localdca != null) && (p.i(localdca.dAa, paramdca.dAa))) {
-          localauq.GLz.set(i, paramdca);
+        dve localdve = (dve)localbfz.LPD.get(i);
+        if ((localdve != null) && (p.j(localdve.dRM, paramdve.dRM))) {
+          localbfz.LPD.set(i, paramdve);
         }
       }
       for (i = 1;; i = 0)
       {
         if (i == 0)
         {
-          ae.i("HABBYGE-MALI.FuzzyMatchDao", "updateSessionMatchInfo, add: " + paramdca.dAa);
-          localauq.GLz.addLast(paramdca);
+          Log.i("HABBYGE-MALI.FuzzyMatchDao", "updateSessionMatchInfo, add: " + paramdve.dRM);
+          localbfz.LPD.addLast(paramdve);
         }
-        paramdca = localauq;
+        paramdve = localbfz;
         break;
         i -= 1;
         break label85;
       }
     }
     
-    public static dca afu(String paramString)
+    public static dve aqf(String paramString)
     {
       AppMethodBeat.i(122578);
       if (paramString == null)
@@ -167,20 +167,20 @@ public final class d
         AppMethodBeat.o(122578);
         return null;
       }
-      auq localauq = cqV();
-      if (localauq == null)
+      bfz localbfz = cPD();
+      if (localbfz == null)
       {
         AppMethodBeat.o(122578);
         return null;
       }
-      int i = localauq.GLz.size() - 1;
+      int i = localbfz.LPD.size() - 1;
       while (i >= 0)
       {
-        dca localdca = (dca)localauq.GLz.get(i);
-        if (!(p.i(paramString, localdca.dAa) ^ true))
+        dve localdve = (dve)localbfz.LPD.get(i);
+        if (!(p.j(paramString, localdve.dRM) ^ true))
         {
           AppMethodBeat.o(122578);
-          return localdca;
+          return localdve;
         }
         i -= 1;
       }
@@ -188,23 +188,23 @@ public final class d
       return null;
     }
     
-    public static Pair<dca, Integer> afv(String paramString)
+    public static Pair<dve, Integer> aqg(String paramString)
     {
       AppMethodBeat.i(169396);
       p.h(paramString, "sessionId");
-      auq localauq = cqV();
-      if (localauq == null) {
-        localauq = new auq();
+      bfz localbfz = cPD();
+      if (localbfz == null) {
+        localbfz = new bfz();
       }
       for (;;)
       {
-        int i = localauq.GLz.size() - 1;
+        int i = localbfz.LPD.size() - 1;
         while (i >= 0)
         {
-          Object localObject = localauq.GLz.get(i);
+          Object localObject = localbfz.LPD.get(i);
           p.g(localObject, "fuzzyMatchInfo.sessionFuzzyPaths[i]");
-          localObject = (dca)localObject;
-          if (p.i(paramString, ((dca)localObject).dAa))
+          localObject = (dve)localObject;
+          if (p.j(paramString, ((dve)localObject).dRM))
           {
             paramString = Pair.create(localObject, Integer.valueOf(i));
             p.g(paramString, "Pair.create(tmpSessionPath, i)");
@@ -213,40 +213,40 @@ public final class d
           }
           i -= 1;
         }
-        paramString = new dca();
-        localauq.GLz.addLast(paramString);
-        a(localauq);
-        paramString = Pair.create(paramString, Integer.valueOf(localauq.GLz.size() - 1));
+        paramString = new dve();
+        localbfz.LPD.addLast(paramString);
+        a(localbfz);
+        paramString = Pair.create(paramString, Integer.valueOf(localbfz.LPD.size() - 1));
         p.g(paramString, "Pair.create(tmpSessionPa…ssionFuzzyPaths.size - 1)");
         AppMethodBeat.o(169396);
         return paramString;
       }
     }
     
-    public static void b(dca paramdca, int paramInt)
+    public static void b(dve paramdve, int paramInt)
     {
       AppMethodBeat.i(169397);
-      if (paramdca == null)
+      if (paramdve == null)
       {
         AppMethodBeat.o(169397);
         return;
       }
-      auq localauq = cqV();
-      if (localauq == null)
+      bfz localbfz = cPD();
+      if (localbfz == null)
       {
-        localauq = new auq();
-        localauq.GLz.addLast(paramdca);
+        localbfz = new bfz();
+        localbfz.LPD.addLast(paramdve);
       }
-      for (paramdca = localauq;; paramdca = localauq)
+      for (paramdve = localbfz;; paramdve = localbfz)
       {
-        a(paramdca);
+        a(paramdve);
         AppMethodBeat.o(169397);
         return;
-        localauq.GLz.set(paramInt, paramdca);
+        localbfz.LPD.set(paramInt, paramdve);
       }
     }
     
-    public static auq cqV()
+    public static bfz cPD()
     {
       AppMethodBeat.i(122577);
       byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("mmkv_fuzzy_pgs_io");
@@ -261,16 +261,16 @@ public final class d
         AppMethodBeat.o(122577);
         return null;
       }
-      auq localauq = new auq();
+      bfz localbfz = new bfz();
       try
       {
-        localauq.parseFrom(arrayOfByte);
+        localbfz.parseFrom(arrayOfByte);
         AppMethodBeat.o(122577);
-        return localauq;
+        return localbfz;
       }
       catch (Exception localException)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.FuzzyMatchDao", (Throwable)localException, "FuzzyMatchDao, getFuzzyMatchInfo: %s", new Object[] { localException.getMessage() });
+        Log.printErrStackTrace("HABBYGE-MALI.FuzzyMatchDao", (Throwable)localException, "FuzzyMatchDao, getFuzzyMatchInfo: %s", new Object[] { localException.getMessage() });
         AppMethodBeat.o(122577);
       }
       return null;
@@ -279,46 +279,46 @@ public final class d
     public static void reset()
     {
       AppMethodBeat.i(169398);
-      if (!com.tencent.mm.plugin.expt.hellhound.core.b.cpe())
+      if (!com.tencent.mm.plugin.expt.hellhound.core.b.isMMProcess())
       {
         AppMethodBeat.o(169398);
         return;
       }
-      ae.i("HABBYGE-MALI.FuzzyMatchDao", "FuzzyMatchDao, reset...");
-      auq localauq = cqV();
-      if (localauq == null)
+      Log.i("HABBYGE-MALI.FuzzyMatchDao", "FuzzyMatchDao, reset...");
+      bfz localbfz = cPD();
+      if (localbfz == null)
       {
         AppMethodBeat.o(169398);
         return;
       }
-      int i = localauq.GLz.size() - 1;
+      int i = localbfz.LPD.size() - 1;
       if (i >= 0)
       {
-        dca localdca = (dca)localauq.GLz.get(i);
-        if ((localdca == null) || (localdca.GLy.isEmpty())) {
-          localauq.GLz.remove(i);
+        dve localdve = (dve)localbfz.LPD.get(i);
+        if ((localdve == null) || (localdve.LPC.isEmpty())) {
+          localbfz.LPD.remove(i);
         }
         for (;;)
         {
           i -= 1;
           break;
-          int j = localdca.GLy.size() - 1;
+          int j = localdve.LPC.size() - 1;
           while (j >= 0)
           {
-            Object localObject = localdca.GLy.get(j);
+            Object localObject = localdve.LPC.get(j);
             p.g(localObject, "sessionPath.paths[j]");
-            localObject = (aus)localObject;
-            if ((localObject == null) || (((aus)localObject).GLG.isEmpty()) || (((aus)localObject).GLH)) {
-              localdca.GLy.remove(j);
+            localObject = (bgb)localObject;
+            if ((localObject == null) || (((bgb)localObject).LPK.isEmpty()) || (((bgb)localObject).LPL)) {
+              localdve.LPC.remove(j);
             }
             j -= 1;
           }
-          if (localdca.GLy.isEmpty()) {
-            localauq.GLz.remove(i);
+          if (localdve.LPC.isEmpty()) {
+            localbfz.LPD.remove(i);
           }
         }
       }
-      a(localauq);
+      a(localbfz);
       AppMethodBeat.o(169398);
     }
   }

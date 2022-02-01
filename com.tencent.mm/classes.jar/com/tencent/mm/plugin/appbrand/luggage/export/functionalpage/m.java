@@ -6,18 +6,18 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.ui.MMFragmentActivity.a;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalUIAnimationStyle;", "", "()V", "setOpenAnimation", "", "activity", "Landroid/app/Activity;", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfig;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/FunctionalUIAnimationStyle;", "", "()V", "setOpenAnimation", "", "activity", "Landroid/app/Activity;", "config", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfig;", "stat", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandStatObject;", "plugin-appbrand-integration_release"})
 public final class m
 {
-  public static final m lTd;
+  public static final m naG;
   
   static
   {
     AppMethodBeat.i(50877);
-    lTd = new m();
+    naG = new m();
     AppMethodBeat.o(50877);
   }
   
@@ -38,7 +38,7 @@ public final class m
     {
       if (g.e((AppBrandInitConfigWC)paramAppBrandInitConfig, paramAppBrandStatObject))
       {
-        paramActivity.overridePendingTransition(MMFragmentActivity.a.mTi, MMFragmentActivity.a.mTj);
+        paramActivity.overridePendingTransition(MMFragmentActivity.a.ogm, MMFragmentActivity.a.ogn);
         bool1 = true;
       }
     }
@@ -55,7 +55,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.m
  * JD-Core Version:    0.7.0.1
  */

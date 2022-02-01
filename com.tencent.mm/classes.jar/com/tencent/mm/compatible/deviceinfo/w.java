@@ -2,27 +2,27 @@ package com.tencent.mm.compatible.deviceinfo;
 
 import android.hardware.Camera;
 import android.os.Looper;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class w
 {
-  private static final Object gdo;
+  private static final Object gIM;
   
   static
   {
     AppMethodBeat.i(155764);
-    gdo = new Object();
+    gIM = new Object();
     AppMethodBeat.o(155764);
   }
   
   public static v b(int paramInt, Looper paramLooper)
   {
     AppMethodBeat.i(155761);
-    if (d.lA(28)) {
+    if (d.oD(28)) {
       try
       {
         v localv = new v(c(paramInt, paramLooper));
@@ -31,7 +31,7 @@ public final class w
       }
       catch (Exception localException)
       {
-        ae.printErrStackTrace("MicroMsg.MMCamera", localException, "opnImpl error, try camera directly, myLooper: %s", new Object[] { Looper.myLooper() });
+        Log.printErrStackTrace("MicroMsg.MMCamera", localException, "opnImpl error, try camera directly, myLooper: %s", new Object[] { Looper.myLooper() });
         if (Looper.myLooper() == null)
         {
           paramLooper = new v(d(paramInt, paramLooper));
@@ -76,57 +76,57 @@ public final class w
     }
     final Camera[] arrayOfCamera = new Camera[1];
     arrayOfCamera[0] = null;
-    h.MqF.aO(new Runnable()
+    h.RTc.aX(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(155759);
         try
         {
-          if (this.gdp >= 0) {
-            arrayOfCamera[0] = Camera.open(this.gdp);
+          if (this.gIN >= 0) {
+            arrayOfCamera[0] = Camera.open(this.gIN);
           }
         }
         catch (Exception localException1)
         {
-          synchronized (w.gdo)
+          synchronized (w.gIM)
           {
             try
             {
               for (;;)
               {
-                w.gdo.notifyAll();
-                ae.i("MicroMsg.MMCamera", "openCamera notifyAll");
+                w.gIM.notifyAll();
+                Log.i("MicroMsg.MMCamera", "openCamera notifyAll");
                 AppMethodBeat.o(155759);
                 return;
                 arrayOfCamera[0] = Camera.open();
               }
               localException1 = localException1;
-              ae.printErrStackTrace("MicroMsg.MMCamera", localException1, "syncCreateCamera error in new free thread", new Object[0]);
+              Log.printErrStackTrace("MicroMsg.MMCamera", localException1, "syncCreateCamera error in new free thread", new Object[0]);
             }
             catch (Exception localException2)
             {
               for (;;)
               {
-                ae.printErrStackTrace("MicroMsg.MMCamera", localException2, "MMCamera_openLooperNull notify error", new Object[0]);
+                Log.printErrStackTrace("MicroMsg.MMCamera", localException2, "MMCamera_openLooperNull notify error", new Object[0]);
               }
             }
           }
         }
       }
     });
-    paramLooper = gdo;
+    paramLooper = gIM;
     if (arrayOfCamera[0] == null) {}
     try
     {
-      gdo.wait();
-      ae.i("MicroMsg.MMCamera", "openCamera wait finish");
+      gIM.wait();
+      Log.i("MicroMsg.MMCamera", "openCamera wait finish");
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.MMCamera", localException, "MMCamera_openLooperNull wait error", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.MMCamera", localException, "MMCamera_openLooperNull wait error", new Object[0]);
       }
     }
     finally
@@ -154,7 +154,7 @@ public final class w
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.compatible.deviceinfo.w
  * JD-Core Version:    0.7.0.1
  */

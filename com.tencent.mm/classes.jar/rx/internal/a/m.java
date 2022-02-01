@@ -23,9 +23,9 @@ public final class m<T>
         AppMethodBeat.i(90304);
         parami.a(new f()
         {
-          final AtomicLong Ovm;
+          final AtomicLong Ula;
           
-          public final void Gq(long paramAnonymous2Long)
+          public final void Pw(long paramAnonymous2Long)
           {
             AppMethodBeat.i(90300);
             if ((paramAnonymous2Long > 0L) && (!m.1.this.completed))
@@ -34,13 +34,13 @@ public final class m<T>
               long l2;
               do
               {
-                l1 = this.Ovm.get();
+                l1 = this.Ula.get();
                 l2 = Math.min(paramAnonymous2Long, m.this.limit - l1);
                 if (l2 == 0L) {
                   break;
                 }
-              } while (!this.Ovm.compareAndSet(l1, l1 + l2));
-              paramAnonymousf.Gq(l2);
+              } while (!this.Ula.compareAndSet(l1, l1 + l2));
+              paramAnonymousf.Pw(l2);
               AppMethodBeat.o(90300);
               return;
             }
@@ -50,10 +50,10 @@ public final class m<T>
         AppMethodBeat.o(90304);
       }
       
-      public final void gC(T paramAnonymousT)
+      public final void gL(T paramAnonymousT)
       {
         AppMethodBeat.i(90303);
-        if (!this.Ous.OxN)
+        if (!this.Ukg.UnB)
         {
           int i = this.count;
           this.count = (i + 1);
@@ -62,19 +62,19 @@ public final class m<T>
             if (this.count == m.this.limit) {}
             for (i = 1;; i = 0)
             {
-              parami.gC(paramAnonymousT);
+              parami.gL(paramAnonymousT);
               if ((i == 0) || (this.completed)) {
                 break;
               }
               this.completed = true;
               try
               {
-                parami.gDo();
+                parami.hQw();
                 return;
               }
               finally
               {
-                this.Ous.gDs();
+                this.Ukg.hQA();
                 AppMethodBeat.o(90303);
               }
             }
@@ -82,13 +82,13 @@ public final class m<T>
         }
       }
       
-      public final void gDo()
+      public final void hQw()
       {
         AppMethodBeat.i(90301);
         if (!this.completed)
         {
           this.completed = true;
-          parami.gDo();
+          parami.hQw();
         }
         AppMethodBeat.o(90301);
       }
@@ -106,7 +106,7 @@ public final class m<T>
           }
           finally
           {
-            this.Ous.gDs();
+            this.Ukg.hQA();
             AppMethodBeat.o(90302);
           }
         }
@@ -115,8 +115,8 @@ public final class m<T>
     };
     if (this.limit == 0)
     {
-      parami.gDo();
-      local1.Ous.gDs();
+      parami.hQw();
+      local1.Ukg.hQA();
     }
     parami.b(local1);
     AppMethodBeat.o(90305);

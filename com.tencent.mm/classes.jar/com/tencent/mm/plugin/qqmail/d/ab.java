@@ -1,10 +1,15 @@
 package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,138 +19,138 @@ import java.util.Map;
 import java.util.Set;
 
 public final class ab
-  implements com.tencent.mm.ak.f
+  implements i
 {
-  private a xsg;
-  private Map<String, String> xsh;
-  private Map<String, String> xsi;
-  private Map<String, String> xsj;
-  private Map<String, String> xsk;
-  private d xsl;
-  private c xsm;
-  private HashMap<Long, Integer> xsn;
-  private HashMap<Long, String> xso;
-  private HashMap<String, Integer> xsp;
-  private int xsq;
-  ArrayList<e> xsr;
-  String xss;
-  String xst;
-  HashMap<String, String> xsu;
-  b xsv;
-  int xsw;
-  private com.tencent.mm.ak.g xsx;
+  int BsA;
+  private j BsB;
+  private a Bsk;
+  private Map<String, String> Bsl;
+  private Map<String, String> Bsm;
+  private Map<String, String> Bsn;
+  private Map<String, String> Bso;
+  private d Bsp;
+  private c Bsq;
+  private HashMap<Long, Integer> Bsr;
+  private HashMap<Long, String> Bss;
+  private HashMap<String, Integer> Bst;
+  private int Bsu;
+  ArrayList<e> Bsv;
+  String Bsw;
+  String Bsx;
+  HashMap<String, String> Bsy;
+  b Bsz;
   
   public ab()
   {
     AppMethodBeat.i(122778);
-    this.xsh = new HashMap();
-    this.xsi = new LinkedHashMap();
-    this.xsj = new LinkedHashMap();
-    this.xsk = new HashMap();
-    this.xsl = null;
-    this.xsm = null;
-    this.xsn = new HashMap();
-    this.xso = new HashMap();
-    this.xsp = new HashMap();
-    this.xsq = 0;
-    this.xsr = new ArrayList();
-    this.xss = null;
-    this.xst = null;
-    this.xsu = new HashMap();
-    this.xsw = 0;
-    this.xsx = new com.tencent.mm.ak.g()
+    this.Bsl = new HashMap();
+    this.Bsm = new LinkedHashMap();
+    this.Bsn = new LinkedHashMap();
+    this.Bso = new HashMap();
+    this.Bsp = null;
+    this.Bsq = null;
+    this.Bsr = new HashMap();
+    this.Bss = new HashMap();
+    this.Bst = new HashMap();
+    this.Bsu = 0;
+    this.Bsv = new ArrayList();
+    this.Bsw = null;
+    this.Bsx = null;
+    this.Bsy = new HashMap();
+    this.BsA = 0;
+    this.BsB = new j()
     {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, n paramAnonymousn)
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, com.tencent.mm.ak.q paramAnonymousq)
       {
         AppMethodBeat.i(122776);
-        ae.i("MicroMsg.ShareModeMailAppService", "currentSendFile: %s, offset: %d, totalLen: %d, filesInfo.size: %d", new Object[] { ab.this.xss, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(ab.this.xsr.size()) });
+        Log.i("MicroMsg.ShareModeMailAppService", "currentSendFile: %s, offset: %d, totalLen: %d, filesInfo.size: %d", new Object[] { ab.this.Bsw, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(ab.this.Bsv.size()) });
         if (paramAnonymousInt1 >= paramAnonymousInt2)
         {
-          HashMap localHashMap = ab.this.xsu;
-          String str = ab.this.xst;
-          paramAnonymousn = (u)paramAnonymousn;
-          if (paramAnonymousn.rr != null) {}
-          for (paramAnonymousn = (ai)paramAnonymousn.rr.hQE.hQJ;; paramAnonymousn = null)
+          HashMap localHashMap = ab.this.Bsy;
+          String str = ab.this.Bsx;
+          paramAnonymousq = (u)paramAnonymousq;
+          if (paramAnonymousq.rr != null) {}
+          for (paramAnonymousq = (ai)paramAnonymousq.rr.iLL.iLR;; paramAnonymousq = null)
           {
-            localHashMap.put(str, paramAnonymousn.xrj);
-            if (ab.this.xsv != null) {
-              ab.this.xsr.size();
+            localHashMap.put(str, paramAnonymousq.Brm);
+            if (ab.this.Bsz != null) {
+              ab.this.Bsv.size();
             }
-            if (!ab.this.xsr.isEmpty()) {
+            if (!ab.this.Bsv.isEmpty()) {
               break;
             }
-            ae.i("MicroMsg.ShareModeMailAppService", "finished send all files");
+            Log.i("MicroMsg.ShareModeMailAppService", "finished send all files");
             AppMethodBeat.o(122776);
             return;
           }
-          ae.i("MicroMsg.ShareModeMailAppService", "finished send one file, continue to send another one");
-          paramAnonymousn = (ab.e)ab.this.xsr.remove(0);
-          ab.this.xss = paramAnonymousn.fileId;
-          ab.this.xst = paramAnonymousn.fileName;
-          paramAnonymousn = new u(ab.this.xst, ab.this.xss, this);
-          com.tencent.mm.kernel.g.ajQ().gDv.a(paramAnonymousn, 0);
+          Log.i("MicroMsg.ShareModeMailAppService", "finished send one file, continue to send another one");
+          paramAnonymousq = (ab.e)ab.this.Bsv.remove(0);
+          ab.this.Bsw = paramAnonymousq.fileId;
+          ab.this.Bsx = paramAnonymousq.fileName;
+          paramAnonymousq = new u(ab.this.Bsx, ab.this.Bsw, this);
+          g.aAg().hqi.a(paramAnonymousq, 0);
         }
         AppMethodBeat.o(122776);
       }
     };
-    com.tencent.mm.kernel.g.ajQ().gDv.a(483, this);
-    com.tencent.mm.kernel.g.ajQ().gDv.a(484, this);
-    com.tencent.mm.kernel.g.ajQ().gDv.a(485, this);
+    g.aAg().hqi.a(483, this);
+    g.aAg().hqi.a(484, this);
+    g.aAg().hqi.a(485, this);
     AppMethodBeat.o(122778);
   }
   
   private void a(q paramq)
   {
     AppMethodBeat.i(122790);
-    this.xsq += 1;
-    ae.i("MicroMsg.ShareModeMailAppService", "processCheckImgStatusSceneEnd, checkTimes: %d", new Object[] { Integer.valueOf(this.xsq) });
-    paramq = paramq.dFA().iterator();
+    this.Bsu += 1;
+    Log.i("MicroMsg.ShareModeMailAppService", "processCheckImgStatusSceneEnd, checkTimes: %d", new Object[] { Integer.valueOf(this.Bsu) });
+    paramq = paramq.eGp().iterator();
     while (paramq.hasNext())
     {
       f localf = (f)paramq.next();
-      long l = localf.xri;
-      int i = localf.nJb;
-      if (this.xsn.containsKey(Long.valueOf(l)))
+      long l = localf.Brl;
+      int i = localf.oTW;
+      if (this.Bsr.containsKey(Long.valueOf(l)))
       {
-        ae.i("MicroMsg.ShareModeMailAppService", "msgSvrId: %d, status: %d", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
+        Log.i("MicroMsg.ShareModeMailAppService", "msgSvrId: %d, status: %d", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
         if (i == 0)
         {
-          this.xsn.remove(Long.valueOf(l));
-          if (localf.xrj != null)
+          this.Bsr.remove(Long.valueOf(l));
+          if (localf.Brm != null)
           {
-            ae.i("MicroMsg.ShareModeMailAppService", "msgSvrId: %d, attachId: %s", new Object[] { Long.valueOf(l), localf.xrj });
-            this.xso.put(Long.valueOf(l), localf.xrj);
-            this.xsp.put(localf.xrj, Integer.valueOf(localf.FileSize));
+            Log.i("MicroMsg.ShareModeMailAppService", "msgSvrId: %d, attachId: %s", new Object[] { Long.valueOf(l), localf.Brm });
+            this.Bss.put(Long.valueOf(l), localf.Brm);
+            this.Bst.put(localf.Brm, Integer.valueOf(localf.FileSize));
           }
         }
         else
         {
-          this.xsn.put(Long.valueOf(l), Integer.valueOf(i));
+          this.Bsr.put(Long.valueOf(l), Integer.valueOf(i));
         }
       }
     }
-    if (this.xsn.isEmpty())
+    if (this.Bsr.isEmpty())
     {
-      ae.i("MicroMsg.ShareModeMailAppService", "all image is in server");
-      if (this.xsg != null) {
+      Log.i("MicroMsg.ShareModeMailAppService", "all image is in server");
+      if (this.Bsk != null) {
         new ArrayList();
       }
       AppMethodBeat.o(122790);
       return;
     }
-    if (this.xsq < 3)
+    if (this.Bsu < 3)
     {
-      ae.i("MicroMsg.ShareModeMailAppService", "checkTime small than limit, doScene again");
-      paramq = new q(k(this.xsn));
-      com.tencent.mm.kernel.g.ajQ().gDv.a(paramq, 0);
+      Log.i("MicroMsg.ShareModeMailAppService", "checkTime small than limit, doScene again");
+      paramq = new q(l(this.Bsr));
+      g.aAg().hqi.a(paramq, 0);
       AppMethodBeat.o(122790);
       return;
     }
-    k(this.xsn);
+    l(this.Bsr);
     AppMethodBeat.o(122790);
   }
   
-  private static ArrayList<Long> k(HashMap<Long, Integer> paramHashMap)
+  private static ArrayList<Long> l(HashMap<Long, Integer> paramHashMap)
   {
     AppMethodBeat.i(122789);
     ArrayList localArrayList = new ArrayList();
@@ -157,21 +162,21 @@ public final class ab
     return localArrayList;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(122786);
-    ae.i("MicroMsg.ShareModeMailAppService", "onSceneEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.i("MicroMsg.ShareModeMailAppService", "onSceneEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 != 0) || (paramInt2 != 0))
     {
-      ae.e("MicroMsg.ShareModeMailAppService", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (paramn.getType() == 483)
+      Log.e("MicroMsg.ShareModeMailAppService", "errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (paramq.getType() == 483)
       {
-        a((q)paramn);
+        a((q)paramq);
         AppMethodBeat.o(122786);
         return;
       }
-      if (this.xsm != null) {
-        ar.f(new Runnable()
+      if (this.Bsq != null) {
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
@@ -183,14 +188,14 @@ public final class ab
       AppMethodBeat.o(122786);
       return;
     }
-    if (paramn.getType() == 483)
+    if (paramq.getType() == 483)
     {
-      a((q)paramn);
+      a((q)paramq);
       AppMethodBeat.o(122786);
       return;
     }
-    if (paramn.getType() != 484) {
-      paramn.getType();
+    if (paramq.getType() != 484) {
+      paramq.getType();
     }
     AppMethodBeat.o(122786);
   }

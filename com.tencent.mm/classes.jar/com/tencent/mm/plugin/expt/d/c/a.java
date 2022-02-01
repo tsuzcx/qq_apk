@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.platformtools.r;
 import com.tencent.mm.platformtools.r.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,17 +17,17 @@ public final class a
   private static boolean a(r.a parama, String paramString)
   {
     bool2 = false;
-    AppMethodBeat.i(195900);
-    if ((parama == null) || (org.apache.commons.b.g.ef(paramString)))
+    AppMethodBeat.i(220322);
+    if ((parama == null) || (org.apache.commons.b.g.eP(paramString)))
     {
-      AppMethodBeat.o(195900);
+      AppMethodBeat.o(220322);
       return false;
     }
     localObject = null;
     locala = null;
     try
     {
-      parama = parama.a("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?;", new String[] { paramString }, 0);
+      parama = parama.rawQuery("SELECT 1 FROM sqlite_master WHERE type='table' AND name=?;", new String[] { paramString });
       locala = parama;
       localObject = parama;
       bool1 = parama.moveToNext();
@@ -48,7 +48,7 @@ public final class a
       for (;;)
       {
         localObject = locala;
-        ae.e("EdgeComputingDBService", "[EdgeComputingDBService] checkTableExist throw Exception : " + parama.getMessage());
+        Log.e("EdgeComputingDBService", "[EdgeComputingDBService] checkTableExist throw Exception : " + parama.getMessage());
         boolean bool1 = bool2;
         if (locala != null)
         {
@@ -64,21 +64,21 @@ public final class a
     finally
     {
       if ((localObject == null) || (((Cursor)localObject).isClosed())) {
-        break label177;
+        break label176;
       }
       ((Cursor)localObject).close();
-      AppMethodBeat.o(195900);
+      AppMethodBeat.o(220322);
     }
-    AppMethodBeat.o(195900);
+    AppMethodBeat.o(220322);
     return bool1;
   }
   
   private static boolean a(r.a parama, String paramString, List<String> paramList)
   {
-    AppMethodBeat.i(195901);
-    if ((parama == null) || (org.apache.commons.b.g.ef(paramString)) || (paramList == null) || (paramList.size() <= 0))
+    AppMethodBeat.i(220323);
+    if ((parama == null) || (org.apache.commons.b.g.eP(paramString)) || (paramList == null) || (paramList.size() <= 0))
     {
-      AppMethodBeat.o(195901);
+      AppMethodBeat.o(220323);
       return false;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -91,35 +91,35 @@ public final class a
       localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
     }
     localStringBuilder.append(");");
-    ae.i("EdgeComputingDBService", "[EdgeComputingDBService] createTable tableName : %s", new Object[] { paramString });
-    ae.d("EdgeComputingDBService", "[EdgeComputingDBService] createTable tableName : %s, createTableSQL : %s", new Object[] { paramString, localStringBuilder.toString() });
+    Log.i("EdgeComputingDBService", "[EdgeComputingDBService] createTable tableName : %s", new Object[] { paramString });
+    Log.d("EdgeComputingDBService", "[EdgeComputingDBService] createTable tableName : %s, createTableSQL : %s", new Object[] { paramString, localStringBuilder.toString() });
     if ((parama instanceof h)) {}
     for (;;)
     {
       long l;
       if (parama != null) {
-        l = parama.yi(-1L);
+        l = parama.beginTransaction(-1L);
       }
       for (;;)
       {
         try
         {
           bool = parama.execSQL(paramString, localStringBuilder.toString());
-          parama.sW(l);
+          parama.endTransaction(l);
         }
         catch (Exception paramString)
         {
-          ae.e("EdgeComputingDBService", "[EdgeComputingDataDao] createTable throw Exception : " + paramString.getMessage());
-          parama.sW(l);
+          Log.e("EdgeComputingDBService", "[EdgeComputingDataDao] createTable throw Exception : " + paramString.getMessage());
+          parama.endTransaction(l);
           bool = false;
           continue;
         }
         finally
         {
-          parama.sW(l);
-          AppMethodBeat.o(195901);
+          parama.endTransaction(l);
+          AppMethodBeat.o(220323);
         }
-        AppMethodBeat.o(195901);
+        AppMethodBeat.o(220323);
         return bool;
         boolean bool = false;
       }
@@ -129,14 +129,14 @@ public final class a
   
   public final boolean c(String paramString1, String paramString2, List<String> paramList, List<List<String>> paramList1)
   {
-    AppMethodBeat.i(195899);
-    if ((org.apache.commons.b.g.ef(paramString1)) || (org.apache.commons.b.g.ef(paramString2)) || (paramList == null) || (paramList.size() <= 0) || (paramList1.size() <= 0))
+    AppMethodBeat.i(220321);
+    if ((org.apache.commons.b.g.eP(paramString1)) || (org.apache.commons.b.g.eP(paramString2)) || (paramList == null) || (paramList.size() <= 0) || (paramList1.size() <= 0))
     {
-      AppMethodBeat.o(195899);
+      AppMethodBeat.o(220321);
       return false;
     }
-    Object localObject = com.tencent.mm.kernel.g.ajR().cachePath + paramString1;
-    ae.d("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB dbPath : " + paramString1 + ", realDBPath : " + (String)localObject);
+    Object localObject = com.tencent.mm.kernel.g.aAh().cachePath + paramString1;
+    Log.d("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB dbPath : " + paramString1 + ", realDBPath : " + (String)localObject);
     paramString1 = null;
     label236:
     label243:
@@ -150,17 +150,17 @@ public final class a
     {
       for (;;)
       {
-        ae.e("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB createDBInstance throw Exception : " + localException.getMessage());
-        ae.d("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB createDBInstance throw Exception, realDBPath : ".concat(String.valueOf(localObject)));
+        Log.e("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB createDBInstance throw Exception : " + localException.getMessage());
+        Log.d("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB createDBInstance throw Exception, realDBPath : ".concat(String.valueOf(localObject)));
       }
       if ((a(paramString1, paramString2)) || (a(paramString1, paramString2, paramList))) {
         break label243;
       }
-      if ((paramString1 == null) || (paramString1.fqe())) {
+      if ((paramString1 == null) || (paramString1.isClose())) {
         break label236;
       }
-      paramString1.ra(hashCode());
-      AppMethodBeat.o(195899);
+      paramString1.uS(hashCode());
+      AppMethodBeat.o(220321);
       return false;
       localStringBuilder = new StringBuilder("INSERT INTO ");
       localStringBuilder.append(paramString2).append(" ( ");
@@ -194,7 +194,7 @@ public final class a
             {
               for (;;)
               {
-                ae.e("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB throw Exception : " + paramList1.getMessage());
+                Log.e("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB throw Exception : " + paramList1.getMessage());
                 paramList1 = "''";
               }
             }
@@ -210,7 +210,7 @@ public final class a
       }
       localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
       localStringBuilder.append(";");
-      ae.d("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB tableName : ".concat(String.valueOf(paramString2)));
+      Log.d("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB tableName : ".concat(String.valueOf(paramString2)));
       bool2 = false;
       if (!(paramString1 instanceof h)) {
         break label749;
@@ -218,8 +218,8 @@ public final class a
     }
     if (paramString1 == null)
     {
-      ae.d("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB dataDB is null, realDBPath : ".concat(String.valueOf(localObject)));
-      AppMethodBeat.o(195899);
+      Log.d("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB dataDB is null, realDBPath : ".concat(String.valueOf(localObject)));
+      AppMethodBeat.o(220321);
       return false;
     }
     label337:
@@ -232,20 +232,20 @@ public final class a
     {
       bool1 = bool2;
       if (paramList != null) {
-        l = paramList.yi(-1L);
+        l = paramList.beginTransaction(-1L);
       }
       try
       {
         bool1 = paramString1.execSQL(paramString2, localStringBuilder.toString());
         bool2 = bool1;
-        paramList.sW(l);
+        paramList.endTransaction(l);
         bool1 = bool2;
         if (paramString1 != null)
         {
           bool1 = bool2;
-          if (!paramString1.fqe())
+          if (!paramString1.isClose())
           {
-            paramString1.ra(hashCode());
+            paramString1.uS(hashCode());
             bool1 = bool2;
           }
         }
@@ -254,15 +254,15 @@ public final class a
       {
         for (;;)
         {
-          ae.e("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB throw Exception : " + paramString2.getMessage());
-          paramList.sW(l);
+          Log.e("EdgeComputingDBService", "[EdgeComputingDBService] saveDatasToDB throw Exception : " + paramString2.getMessage());
+          paramList.endTransaction(l);
           bool1 = bool2;
           if (paramString1 != null)
           {
             bool1 = bool2;
-            if (!paramString1.fqe())
+            if (!paramString1.isClose())
             {
-              paramString1.ra(hashCode());
+              paramString1.uS(hashCode());
               bool1 = bool2;
             }
           }
@@ -270,36 +270,36 @@ public final class a
       }
       finally
       {
-        paramList.sW(l);
-        if ((paramString1 == null) || (paramString1.fqe())) {
+        paramList.endTransaction(l);
+        if ((paramString1 == null) || (paramString1.isClose())) {
           continue;
         }
-        paramString1.ra(hashCode());
-        AppMethodBeat.o(195899);
+        paramString1.uS(hashCode());
+        AppMethodBeat.o(220321);
       }
-      AppMethodBeat.o(195899);
+      AppMethodBeat.o(220321);
       return bool1;
     }
   }
   
-  public final List<List<String>> fU(String paramString1, String paramString2)
+  public final List<List<String>> gn(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(195898);
-    if ((org.apache.commons.b.g.ef(paramString1)) || (org.apache.commons.b.g.ef(paramString2)))
+    AppMethodBeat.i(220320);
+    if ((org.apache.commons.b.g.eP(paramString1)) || (org.apache.commons.b.g.eP(paramString2)))
     {
-      AppMethodBeat.o(195898);
+      AppMethodBeat.o(220320);
       return null;
     }
-    Object localObject1 = com.tencent.mm.kernel.g.ajR().cachePath + paramString1;
-    ae.d("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL dbPath : " + paramString1 + ", realDBPath : " + (String)localObject1 + ", sql : " + paramString2);
+    Object localObject1 = com.tencent.mm.kernel.g.aAh().cachePath + paramString1;
+    Log.d("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL dbPath : " + paramString1 + ", realDBPath : " + (String)localObject1 + ", sql : " + paramString2);
     String[] arrayOfString;
     try
     {
       paramString1 = r.a(hashCode(), (String)localObject1, new HashMap(), true);
       if (paramString1 == null)
       {
-        ae.d("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL dataDB is null, realDBPath : ".concat(String.valueOf(localObject1)));
-        AppMethodBeat.o(195898);
+        Log.d("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL dataDB is null, realDBPath : ".concat(String.valueOf(localObject1)));
+        AppMethodBeat.o(220320);
         return null;
       }
     }
@@ -307,19 +307,19 @@ public final class a
     {
       for (;;)
       {
-        ae.e("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL createDBInstance throw Exception : " + paramString1.getMessage());
-        ae.d("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL createDBInstance throw Exception, realDBPath : ".concat(String.valueOf(localObject1)));
+        Log.e("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL createDBInstance throw Exception : " + paramString1.getMessage());
+        Log.d("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL createDBInstance throw Exception, realDBPath : ".concat(String.valueOf(localObject1)));
         paramString1 = null;
       }
       try
       {
-        paramString2 = paramString1.a(paramString2, null, 0);
+        paramString2 = paramString1.rawQuery(paramString2, null);
         if ((paramString2 == null) || (!paramString2.moveToFirst()))
         {
-          if ((paramString1 != null) && (!paramString1.fqe())) {
-            paramString1.ra(hashCode());
+          if ((paramString1 != null) && (!paramString1.isClose())) {
+            paramString1.uS(hashCode());
           }
-          AppMethodBeat.o(195898);
+          AppMethodBeat.o(220320);
           return null;
         }
       }
@@ -327,7 +327,7 @@ public final class a
       {
         for (;;)
         {
-          ae.e("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL rawQuery throw Exception : " + paramString2.getMessage());
+          Log.e("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL rawQuery throw Exception : " + paramString2.getMessage());
           paramString2 = null;
         }
         arrayOfString = paramString2.getColumnNames();
@@ -336,10 +336,10 @@ public final class a
           if ((paramString2 != null) && (!paramString2.isClosed())) {
             paramString2.close();
           }
-          if ((paramString1 != null) && (!paramString1.fqe())) {
-            paramString1.ra(hashCode());
+          if ((paramString1 != null) && (!paramString1.isClose())) {
+            paramString1.uS(hashCode());
           }
-          AppMethodBeat.o(195898);
+          AppMethodBeat.o(220320);
           return null;
         }
         localObject1 = new ArrayList();
@@ -353,7 +353,7 @@ public final class a
         i = 0;
         int j = arrayOfString.length;
         if (i >= j) {
-          break label568;
+          break label567;
         }
         try
         {
@@ -374,21 +374,21 @@ public final class a
         if ((paramString2 != null) && (!paramString2.isClosed())) {
           paramString2.close();
         }
-        if ((paramString1 != null) && (!paramString1.fqe())) {
-          paramString1.ra(hashCode());
+        if ((paramString1 != null) && (!paramString1.isClose())) {
+          paramString1.uS(hashCode());
         }
       }
       catch (Exception localException1)
       {
-        ae.e("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL moveToNext throw Exception : " + localException1.getMessage());
+        Log.e("EdgeComputingDBService", "[EdgeComputingDBService] queryDataBySQL moveToNext throw Exception : " + localException1.getMessage());
         if ((paramString2 == null) || (paramString2.isClosed())) {
           continue;
         }
         paramString2.close();
-        if ((paramString1 == null) || (paramString1.fqe())) {
+        if ((paramString1 == null) || (paramString1.isClose())) {
           continue;
         }
-        paramString1.ra(hashCode());
+        paramString1.uS(hashCode());
         continue;
       }
       finally
@@ -397,22 +397,22 @@ public final class a
           continue;
         }
         paramString2.close();
-        if ((paramString1 == null) || (paramString1.fqe())) {
+        if ((paramString1 == null) || (paramString1.isClose())) {
           continue;
         }
-        paramString1.ra(hashCode());
-        AppMethodBeat.o(195898);
+        paramString1.uS(hashCode());
+        AppMethodBeat.o(220320);
       }
-      AppMethodBeat.o(195898);
+      AppMethodBeat.o(220320);
       return localObject1;
-      label568:
+      label567:
       int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.c.a
  * JD-Core Version:    0.7.0.1
  */

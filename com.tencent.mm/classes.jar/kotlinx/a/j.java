@@ -1,9 +1,9 @@
 package kotlinx.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/PolymorphicKind;", "Lkotlinx/serialization/SerialKind;", "()V", "OPEN", "SEALED", "Lkotlinx/serialization/PolymorphicKind$SEALED;", "Lkotlinx/serialization/PolymorphicKind$OPEN;", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/PolymorphicKind;", "Lkotlinx/serialization/SerialKind;", "()V", "OPEN", "SEALED", "Lkotlinx/serialization/PolymorphicKind$SEALED;", "Lkotlinx/serialization/PolymorphicKind$OPEN;", "kotlinx-serialization-runtime"})
 public abstract class j
   extends s
 {
@@ -12,17 +12,17 @@ public abstract class j
     super((byte)0);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/PolymorphicKind$OPEN;", "Lkotlinx/serialization/PolymorphicKind;", "()V", "kotlinx-serialization-runtime"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/PolymorphicKind$OPEN;", "Lkotlinx/serialization/PolymorphicKind;", "()V", "kotlinx-serialization-runtime"})
   public static final class a
     extends j
   {
-    public static final a Oiq;
+    public static final a TXm;
     
     static
     {
-      AppMethodBeat.i(199835);
-      Oiq = new a();
-      AppMethodBeat.o(199835);
+      AppMethodBeat.i(225607);
+      TXm = new a();
+      AppMethodBeat.o(225607);
     }
     
     private a()
@@ -31,17 +31,17 @@ public abstract class j
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/PolymorphicKind$SEALED;", "Lkotlinx/serialization/PolymorphicKind;", "()V", "kotlinx-serialization-runtime"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/PolymorphicKind$SEALED;", "Lkotlinx/serialization/PolymorphicKind;", "()V", "kotlinx-serialization-runtime"})
   public static final class b
     extends j
   {
-    public static final b Oir;
+    public static final b TXn;
     
     static
     {
-      AppMethodBeat.i(199593);
-      Oir = new b();
-      AppMethodBeat.o(199593);
+      AppMethodBeat.i(225365);
+      TXn = new b();
+      AppMethodBeat.o(225365);
     }
     
     private b()
@@ -52,7 +52,7 @@ public abstract class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlinx.a.j
  * JD-Core Version:    0.7.0.1
  */

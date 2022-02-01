@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:topLeftRadius="12.0dip" android:topRightRadius="12.0dip" android:bottomLeftRadius="12.0dip" android:bottomRightRadius="12.0dip" />
-    <solid android:color="@color/f" />
-    <padding android:left="12.0dip" android:right="12.0dip" />
-    <stroke android:width="2.0px" android:color="@color/rf" />
-    <size android:height="24.0dip" />
-</shape>
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/ac_" />
+            <size android:height="@dimen/cb" android:width="@dimen/cb" />
+        </shape>
+    </item>
+    <item android:gravity="center" android:height="15.0dip" android:width="15.0dip" android:drawable="@raw/icons_filled_live_checkbox_off" />
+</layer-list>

@@ -4,16 +4,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  public static a dcu()
+  public static a dWb()
   {
     AppMethodBeat.i(41660);
     Object localObject = new IntentFilter("android.intent.action.BATTERY_CHANGED");
-    Intent localIntent = ak.getContext().registerReceiver(null, (IntentFilter)localObject);
+    Intent localIntent = MMApplicationContext.getContext().registerReceiver(null, (IntentFilter)localObject);
     localObject = new a();
     if (localIntent != null) {}
     for (;;)
@@ -32,15 +32,15 @@ public final class a
       {
         int i;
         int j;
-        ae.e("MicroMsg.BatteryHelper", "err:%s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.BatteryHelper", "err:%s", new Object[] { localException.getMessage() });
         continue;
         boolean bool = true;
         continue;
       }
-      ((a)localObject).mUV = bool;
+      ((a)localObject).ohV = bool;
       i = localIntent.getIntExtra("level", -1);
       j = localIntent.getIntExtra("scale", -1);
-      ((a)localObject).upR = (i / j);
+      ((a)localObject).xIk = (i / j);
       AppMethodBeat.o(41660);
       return localObject;
       bool = false;
@@ -49,13 +49,13 @@ public final class a
   
   public static final class a
   {
-    boolean mUV = false;
-    float upR = 0.0F;
+    boolean ohV = false;
+    float xIk = 0.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.a.a
  * JD-Core Version:    0.7.0.1
  */

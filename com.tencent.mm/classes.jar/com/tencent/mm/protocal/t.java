@@ -3,9 +3,9 @@ package com.tencent.mm.protocal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.azl;
-import com.tencent.mm.protocal.protobuf.azm;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.bkv;
+import com.tencent.mm.protocal.protobuf.bkw;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class t
 {
@@ -13,12 +13,12 @@ public final class t
     extends l.d
     implements l.b
   {
-    public azl FGR;
+    public bkv KAc;
     
     public a()
     {
       AppMethodBeat.i(133107);
-      this.FGR = new azl();
+      this.KAc = new bkv();
       AppMethodBeat.o(133107);
     }
     
@@ -35,11 +35,11 @@ public final class t
     public final byte[] toProtoBuf()
     {
       AppMethodBeat.i(133108);
-      setRsaInfo(ac.fkp());
-      this.FGR.FWl = new SKBuiltinBuffer_t().setBuffer(bu.fpG());
-      this.FGR.GPC = ac.fkn().ver;
-      this.FGR.setBaseRequest(l.a(this));
-      byte[] arrayOfByte = this.FGR.toByteArray();
+      setRsaInfo(ac.gtT());
+      this.KAc.KPW = new SKBuiltinBuffer_t().setBuffer(Util.getUuidRandom());
+      this.KAc.LTJ = ac.gtR().ver;
+      this.KAc.setBaseRequest(l.a(this));
+      byte[] arrayOfByte = this.KAc.toByteArray();
       AppMethodBeat.o(133108);
       return arrayOfByte;
     }
@@ -49,21 +49,21 @@ public final class t
     extends l.e
     implements l.c
   {
-    public azm FGS;
+    public bkw KAd;
     
     public b()
     {
       AppMethodBeat.i(133109);
-      this.FGS = new azm();
+      this.KAd = new bkw();
       AppMethodBeat.o(133109);
     }
     
     public final int fromProtoBuf(byte[] paramArrayOfByte)
     {
       AppMethodBeat.i(133110);
-      this.FGS = ((azm)new azm().parseFrom(paramArrayOfByte));
-      l.a(this, this.FGS.getBaseResponse());
-      int i = this.FGS.getBaseResponse().Ret;
+      this.KAd = ((bkw)new bkw().parseFrom(paramArrayOfByte));
+      l.a(this, this.KAd.getBaseResponse());
+      int i = this.KAd.getBaseResponse().Ret;
       AppMethodBeat.o(133110);
       return i;
     }

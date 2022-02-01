@@ -4,20 +4,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  public String fIQ;
+  public String goe;
   public int mStatus;
   public String openId;
-  public int pcE;
-  public String wmt;
-  public int wmu;
-  public long wmv;
-  public int wmw;
+  public int qrD;
+  public int qtI;
+  public int zHA;
+  public String zHx;
+  public int zHy;
+  public long zHz;
   
   public final String toString()
   {
-    AppMethodBeat.i(190464);
-    String str = "ILinkMember{memberId=" + this.pcE + ", openId='" + this.openId + '\'' + ", mUserName='" + this.fIQ + '\'' + ", mInviteUserName='" + this.wmt + '\'' + ", mStatus='" + this.mStatus + '\'' + ", mReason='" + this.wmu + '\'' + ", mInviteTime='" + this.wmv + '\'' + ", mHoldStatus='" + this.wmw + '\'' + '}';
-    AppMethodBeat.o(190464);
+    AppMethodBeat.i(239037);
+    String str = "ILinkMember{memberId=" + this.qrD + ", openId='" + this.openId + '\'' + ", mUserName='" + this.goe + '\'' + ", mInviteUserName='" + this.zHx + '\'' + ", mStatus='" + this.mStatus + '\'' + ", mReason='" + this.zHy + '\'' + ", mInviteTime='" + this.zHz + '\'' + ", mHoldStatus='" + this.zHA + '\'' + ", mScreenStatus='" + this.qtI + '\'' + '}';
+    AppMethodBeat.o(239037);
     return str;
   }
 }

@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@drawable/cao" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/fks" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:ellipsize="end" android:id="@id/fkt" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dtf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k" android:layout_centerInParent="true">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.TabIconView android:id="@id/dtx" android:layout_width="34.0dip" android:layout_height="34.0dip" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+            <TextView android:id="@id/j0_" android:visibility="invisible" android:layout_marginLeft="-12.0dip" android:layout_toRightOf="@id/dtx" android:layout_alignTop="@id/dtx" style="@style/zr" />
+            <ImageView android:id="@id/bt8" android:visibility="invisible" android:layout_marginTop="1.0dip" android:layout_marginRight="-1.0dip" android:layout_alignTop="@id/dtx" android:layout_alignRight="@id/dtx" style="@style/zs" />
+        </RelativeLayout>
+        <TextView android:textSize="@dimen/a3" android:textColor="@color/ag2" android:gravity="center" android:id="@id/dub" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eub" />
     </LinearLayout>
 </RelativeLayout>

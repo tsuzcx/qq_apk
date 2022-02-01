@@ -59,20 +59,20 @@ public class RotateActionArg
     return false;
   }
   
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145111);
-    super.h(paramParcel);
-    this.degrees = paramParcel.readFloat();
-    AppMethodBeat.o(145111);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145115);
     int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.degrees) });
     AppMethodBeat.o(145115);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145111);
+    super.i(paramParcel);
+    this.degrees = paramParcel.readFloat();
+    AppMethodBeat.o(145111);
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -93,7 +93,7 @@ public class RotateActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RotateActionArg
  * JD-Core Version:    0.7.0.1
  */

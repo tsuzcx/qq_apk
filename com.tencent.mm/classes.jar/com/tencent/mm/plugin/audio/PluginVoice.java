@@ -13,10 +13,10 @@ public class PluginVoice
   public void configure(g paramg)
   {
     AppMethodBeat.i(177451);
-    if (paramg.akL())
+    if (paramg.aBb())
     {
-      com.tencent.mm.vfs.u.ap("voice", "voice", 19);
-      com.tencent.mm.vfs.u.ap("voice2", "voice2", 19);
+      com.tencent.mm.vfs.y.at("voice", "voice", 19);
+      com.tencent.mm.vfs.y.at("voice2", "voice2", 19);
     }
     AppMethodBeat.o(177451);
   }
@@ -24,8 +24,8 @@ public class PluginVoice
   public void execute(g paramg)
   {
     AppMethodBeat.i(148651);
-    if (paramg.akL()) {
-      pin(new com.tencent.mm.model.u(o.class));
+    if (paramg.aBb()) {
+      pin(new com.tencent.mm.model.y(o.class));
     }
     AppMethodBeat.o(148651);
   }

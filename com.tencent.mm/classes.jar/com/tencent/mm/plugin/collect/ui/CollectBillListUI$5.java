@@ -16,16 +16,16 @@ final class CollectBillListUI$5
   {
     AppMethodBeat.i(64051);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/collect/ui/CollectBillListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    CollectBillListUI.d(this.pkD).dismiss();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/collect/ui/CollectBillListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    CollectBillListUI.d(this.qzO).dismiss();
     a.a(this, "com/tencent/mm/plugin/collect/ui/CollectBillListUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(64051);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.ui.CollectBillListUI.5
  * JD-Core Version:    0.7.0.1
  */

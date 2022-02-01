@@ -9,10 +9,10 @@ import java.util.Map;
 public final class c$f
   implements com.tencent.xweb.WebResourceRequest
 {
-  private Map<String, String> Fjf;
-  private boolean MQX;
-  private boolean MQY;
-  a MQZ;
+  private Map<String, String> JZZ;
+  private boolean SEb;
+  private boolean SEc;
+  a SEd;
   private String method;
   private Uri url;
   
@@ -22,11 +22,11 @@ public final class c$f
     if (Build.VERSION.SDK_INT >= 21)
     {
       this.url = paramWebResourceRequest.getUrl();
-      this.MQX = paramWebResourceRequest.isForMainFrame();
-      this.MQY = paramWebResourceRequest.hasGesture();
+      this.SEb = paramWebResourceRequest.isForMainFrame();
+      this.SEc = paramWebResourceRequest.hasGesture();
       this.method = paramWebResourceRequest.getMethod();
-      this.Fjf = paramWebResourceRequest.getRequestHeaders();
-      this.MQZ = new a(this);
+      this.JZZ = paramWebResourceRequest.getRequestHeaders();
+      this.SEd = new a(this);
     }
     AppMethodBeat.o(153666);
   }
@@ -38,7 +38,7 @@ public final class c$f
   
   public final Map<String, String> getRequestHeaders()
   {
-    return this.Fjf;
+    return this.JZZ;
   }
   
   public final Uri getUrl()
@@ -48,17 +48,17 @@ public final class c$f
   
   public final boolean hasGesture()
   {
-    return this.MQY;
+    return this.SEc;
   }
   
   public final boolean isForMainFrame()
   {
-    return this.MQX;
+    return this.SEb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.sys.c.f
  * JD-Core Version:    0.7.0.1
  */

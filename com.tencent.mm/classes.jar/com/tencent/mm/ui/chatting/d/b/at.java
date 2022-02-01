@@ -1,45 +1,33 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import android.view.View;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.MMFragment;
-import com.tencent.mm.ui.chatting.d;
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.chatting.d.af;
+import com.tencent.mm.ui.chatting.viewitems.ChattingItemTranslate.c;
 
 public abstract interface at
-  extends ad
+  extends af
 {
-  public abstract void EE(long paramLong);
+  public abstract ChattingItemTranslate.c NB(long paramLong);
   
-  public abstract boolean EF(long paramLong);
+  public abstract boolean NC(long paramLong);
   
-  public abstract void EG(long paramLong);
+  public abstract boolean NF(long paramLong);
   
-  public abstract void EH(long paramLong);
+  public abstract void NG(long paramLong);
   
-  public abstract boolean EI(long paramLong);
+  public abstract boolean NH(long paramLong);
   
-  public abstract boolean Pd();
+  public abstract String S(long paramLong, String paramString);
   
-  public abstract void a(long paramLong, View paramView);
+  public abstract void a(ca paramca, boolean paramBoolean, int paramInt1, int paramInt2);
   
-  public abstract void a(MMFragment paramMMFragment, boolean paramBoolean);
+  public abstract void amG(int paramInt);
   
-  public abstract boolean bV(bv parambv);
+  public abstract boolean ch(ca paramca);
   
-  public abstract boolean bW(bv parambv);
+  public abstract boolean gRs();
   
-  public abstract d fJn();
-  
-  public abstract void fJo();
-  
-  public abstract boolean fJp();
-  
-  public abstract void fJq();
-  
-  public abstract void fJr();
-  
-  public abstract void yg(boolean paramBoolean);
+  public abstract void gRt();
 }
 
 

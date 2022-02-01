@@ -2,53 +2,55 @@ package com.tencent.mm.plugin.recordvideo.b;
 
 import android.graphics.Point;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.k.e.a;
+import com.tencent.mm.media.k.f;
+import com.tencent.mm.media.k.f.a;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.mmsight.d;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/config/ImageToVideoConfig;", "", "()V", "CheckRemuxFlag", "", "getCheckRemuxFlag", "()Z", "setCheckRemuxFlag", "(Z)V", "FrameRate", "", "getFrameRate", "()I", "setFrameRate", "(I)V", "Height", "getHeight", "setHeight", "IFrameInterval", "getIFrameInterval", "setIFrameInterval", "MaxSize", "RemuxFlag", "getRemuxFlag", "setRemuxFlag", "VIDEO_DURATION", "getVIDEO_DURATION", "Width", "getWidth", "setWidth", "maxSize", "getMaxSize", "getScaleSize", "Landroid/graphics/Point;", "origWidth", "origHeight", "setupWindowSize", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/config/ImageToVideoConfig;", "", "()V", "CheckRemuxFlag", "", "getCheckRemuxFlag", "()Z", "setCheckRemuxFlag", "(Z)V", "FrameRate", "", "getFrameRate", "()I", "setFrameRate", "(I)V", "Height", "getHeight", "setHeight", "IFrameInterval", "getIFrameInterval", "setIFrameInterval", "MaxSize", "RemuxFlag", "getRemuxFlag", "setRemuxFlag", "VIDEO_DURATION", "getVIDEO_DURATION", "Width", "getWidth", "setWidth", "maxSize", "getMaxSize", "getScaleSize", "Landroid/graphics/Point;", "origWidth", "origHeight", "setupWindowSize", "plugin-recordvideo_release"})
 public final class e
 {
-  private static int Height = 0;
-  private static int Width = 0;
-  private static final int xMZ = 15000;
-  private static int xNa;
-  private static int xNb;
-  private static int xNc;
-  private static boolean xNd;
-  private static boolean xNe;
-  public static final e xNf;
+  private static final int BNg = 15000;
+  private static int BNh;
+  private static int BNi;
+  private static int BNj;
+  private static boolean BNk;
+  private static boolean BNl;
+  public static final e BNm;
+  private static int Height;
+  private static int Width;
   
   static
   {
     AppMethodBeat.i(75372);
-    xNf = new e();
-    xMZ = 15000;
-    xNa = 15;
-    xNb = 10;
-    xNd = true;
+    BNm = new e();
+    BNg = 15000;
+    BNh = 15;
+    BNi = 10;
+    BNk = true;
     AppMethodBeat.o(75372);
   }
   
-  public static int dIF()
+  public static int eJs()
   {
-    return xMZ;
+    return BNg;
   }
   
-  public static boolean dIG()
+  public static boolean eJt()
   {
-    return xNd;
+    return BNk;
   }
   
-  public static boolean dIH()
+  public static boolean eJu()
   {
-    return xNe;
+    return BNl;
   }
   
   public static int getFrameRate()
   {
-    return xNa;
+    return BNh;
   }
   
   public static int getHeight()
@@ -61,40 +63,40 @@ public final class e
     return Width;
   }
   
-  public static void pP(boolean paramBoolean)
+  public static void ta(boolean paramBoolean)
   {
-    xNd = paramBoolean;
+    BNk = paramBoolean;
   }
   
-  public static void pQ(boolean paramBoolean)
+  public static void tb(boolean paramBoolean)
   {
-    xNe = paramBoolean;
+    BNl = paramBoolean;
   }
   
-  public final Point dII()
+  public final Point eJv()
   {
     try
     {
       AppMethodBeat.i(75371);
       if ((Width <= 0) || (Height <= 0))
       {
-        localObject1 = com.tencent.mm.modelcontrol.d.aHh();
+        localObject1 = com.tencent.mm.modelcontrol.e.baZ();
         p.g(localObject1, "SubCoreVideoControl.getCore()");
-        localObject1 = ((com.tencent.mm.modelcontrol.d)localObject1).aHl();
+        localObject1 = ((com.tencent.mm.modelcontrol.e)localObject1).bbd();
         int k = ((VideoTransPara)localObject1).width;
-        e.a locala = com.tencent.mm.media.k.e.hrM;
-        int j = e.a.nS(((VideoTransPara)localObject1).width);
+        f.a locala = f.ilG;
+        int j = f.a.ro(((VideoTransPara)localObject1).width);
         int i = j;
         if (j % 16 != 0) {
-          i = com.tencent.mm.plugin.mmsight.d.KG(j);
+          i = d.QH(j);
         }
         j = k;
         if (k % 16 != 0) {
-          j = com.tencent.mm.plugin.mmsight.d.KG(k);
+          j = d.QH(k);
         }
         Width = j;
         Height = i;
-        xNc = Width;
+        BNj = Width;
       }
       Object localObject1 = new Point(Width, Height);
       AppMethodBeat.o(75371);
@@ -106,17 +108,17 @@ public final class e
   public final int getMaxSize()
   {
     AppMethodBeat.i(75370);
-    if (xNc <= 0) {
-      dII();
+    if (BNj <= 0) {
+      eJv();
     }
-    int i = xNc;
+    int i = BNj;
     AppMethodBeat.o(75370);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.b.e
  * JD-Core Version:    0.7.0.1
  */

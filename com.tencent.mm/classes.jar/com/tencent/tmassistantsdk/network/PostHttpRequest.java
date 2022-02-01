@@ -1,13 +1,14 @@
 package com.tencent.tmassistantsdk.network;
 
 import com.qq.taf.jce.JceStruct;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import org.apache.http.client.methods.HttpPost;
 
 public abstract class PostHttpRequest
 {
-  static final String REQUEST_SERVER_URL = "http://masdk.3g.qq.com/";
+  static final String REQUEST_SERVER_URL = "http://" + WeChatHosts.domainString(2131761720) + "/";
   static final String TAG = "BaseHttpRequest";
   HttpPost mHttpPost = null;
   
@@ -18,42 +19,42 @@ public abstract class PostHttpRequest
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   3: getfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
     //   6: ifnull +51 -> 57
     //   9: aload_0
-    //   10: getfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-    //   13: invokevirtual 31	org/apache/http/client/methods/HttpPost:isAborted	()Z
+    //   10: getfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   13: invokevirtual 56	org/apache/http/client/methods/HttpPost:isAborted	()Z
     //   16: ifne +41 -> 57
-    //   19: ldc 13
-    //   21: new 33	java/lang/StringBuilder
+    //   19: ldc 11
+    //   21: new 17	java/lang/StringBuilder
     //   24: dup
-    //   25: ldc 35
-    //   27: invokespecial 38	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   25: ldc 58
+    //   27: invokespecial 23	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   30: aload_0
-    //   31: invokevirtual 42	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   34: ldc 44
-    //   36: invokevirtual 47	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 51	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: invokestatic 57	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   31: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   34: ldc 63
+    //   36: invokevirtual 34	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokestatic 69	com/tencent/tmassistantsdk/util/TMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   45: aload_0
-    //   46: getfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-    //   49: invokevirtual 60	org/apache/http/client/methods/HttpPost:abort	()V
+    //   46: getfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   49: invokevirtual 72	org/apache/http/client/methods/HttpPost:abort	()V
     //   52: aload_0
     //   53: aconst_null
-    //   54: putfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   54: putfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
     //   57: aload_0
     //   58: monitorexit
     //   59: return
     //   60: astore_1
-    //   61: ldc 13
+    //   61: ldc 11
     //   63: aload_1
-    //   64: ldc 62
+    //   64: ldc 74
     //   66: iconst_0
     //   67: anewarray 4	java/lang/Object
-    //   70: invokestatic 68	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   70: invokestatic 80	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   73: aload_0
     //   74: aconst_null
-    //   75: putfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   75: putfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
     //   78: goto -21 -> 57
     //   81: astore_1
     //   82: aload_0
@@ -63,7 +64,7 @@ public abstract class PostHttpRequest
     //   86: astore_1
     //   87: aload_0
     //   88: aconst_null
-    //   89: putfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+    //   89: putfield 47	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
     //   92: aload_1
     //   93: athrow
     // Local variable table:
@@ -96,7 +97,7 @@ public abstract class PostHttpRequest
         if (this.mHttpPost != null) {
           continue;
         }
-        h.MqF.aR(new Runnable()
+        h.RTc.ba(new Runnable()
         {
           /* Error */
           public void run()
@@ -115,425 +116,425 @@ public abstract class PostHttpRequest
             //   21: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
             //   24: new 53	org/apache/http/client/methods/HttpPost
             //   27: dup
-            //   28: ldc 55
-            //   30: invokespecial 58	org/apache/http/client/methods/HttpPost:<init>	(Ljava/lang/String;)V
-            //   33: putfield 62	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-            //   36: aload_0
-            //   37: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   40: getfield 62	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-            //   43: ldc 64
-            //   45: ldc 66
-            //   47: invokevirtual 70	org/apache/http/client/methods/HttpPost:addHeader	(Ljava/lang/String;Ljava/lang/String;)V
-            //   50: aload_0
-            //   51: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   54: getfield 62	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-            //   57: new 72	org/apache/http/entity/ByteArrayEntity
-            //   60: dup
-            //   61: aload_2
-            //   62: invokespecial 75	org/apache/http/entity/ByteArrayEntity:<init>	([B)V
-            //   65: invokevirtual 79	org/apache/http/client/methods/HttpPost:setEntity	(Lorg/apache/http/HttpEntity;)V
-            //   68: invokestatic 85	com/tencent/tmassistantsdk/downloadservice/HttpClientUtil:createHttpClient	()Lorg/apache/http/client/HttpClient;
-            //   71: astore_3
-            //   72: aload_3
-            //   73: astore_2
-            //   74: aload_3
-            //   75: invokestatic 89	com/tencent/tmassistantsdk/downloadservice/HttpClientUtil:setProxy	(Lorg/apache/http/client/HttpClient;)V
-            //   78: aload_3
-            //   79: astore_2
-            //   80: aload_3
-            //   81: aload_0
-            //   82: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   85: getfield 62	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-            //   88: invokeinterface 95 2 0
-            //   93: astore 4
-            //   95: aload 4
-            //   97: ifnull +288 -> 385
-            //   100: aload_3
-            //   101: astore_2
-            //   102: aload 4
-            //   104: invokeinterface 101 1 0
-            //   109: invokeinterface 107 1 0
-            //   114: sipush 200
-            //   117: if_icmpne +268 -> 385
-            //   120: aload_3
-            //   121: astore_2
-            //   122: aload 4
-            //   124: invokeinterface 111 1 0
-            //   129: astore 6
-            //   131: aload 6
-            //   133: ifnull +252 -> 385
-            //   136: aload_3
-            //   137: astore_2
-            //   138: new 113	org/apache/http/util/ByteArrayBuffer
-            //   141: dup
-            //   142: aload 6
-            //   144: invokeinterface 119 1 0
-            //   149: l2i
-            //   150: invokespecial 121	org/apache/http/util/ByteArrayBuffer:<init>	(I)V
-            //   153: astore 4
-            //   155: aload_3
-            //   156: astore_2
-            //   157: aload 6
-            //   159: invokeinterface 125 1 0
-            //   164: astore 6
-            //   166: aload_3
-            //   167: astore_2
-            //   168: sipush 2048
-            //   171: newarray byte
-            //   173: astore 7
-            //   175: aload_3
-            //   176: astore_2
-            //   177: aload 6
-            //   179: aload 7
-            //   181: invokevirtual 131	java/io/InputStream:read	([B)I
-            //   184: istore_1
-            //   185: iload_1
-            //   186: iconst_m1
-            //   187: if_icmpeq +78 -> 265
-            //   190: aload_3
-            //   191: astore_2
-            //   192: aload 4
-            //   194: aload 7
-            //   196: iconst_0
-            //   197: iload_1
-            //   198: invokevirtual 135	org/apache/http/util/ByteArrayBuffer:append	([BII)V
-            //   201: goto -26 -> 175
-            //   204: astore 4
-            //   206: aload_3
-            //   207: astore_2
-            //   208: ldc 137
-            //   210: aload 4
-            //   212: ldc 139
-            //   214: iconst_0
-            //   215: anewarray 4	java/lang/Object
-            //   218: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-            //   221: aload_3
-            //   222: astore_2
-            //   223: aload_0
-            //   224: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   227: aload 5
-            //   229: aconst_null
-            //   230: sipush 601
-            //   233: invokevirtual 149	com/tencent/tmassistantsdk/network/PostHttpRequest:onFinished	(Lcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;I)V
-            //   236: aload_0
-            //   237: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   240: aconst_null
-            //   241: putfield 62	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-            //   244: aload_3
-            //   245: ifnull +391 -> 636
-            //   248: aload_3
-            //   249: invokeinterface 153 1 0
-            //   254: invokeinterface 158 1 0
-            //   259: ldc 35
-            //   261: invokestatic 161	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-            //   264: return
-            //   265: aload_3
-            //   266: astore_2
-            //   267: aload 4
-            //   269: invokevirtual 165	org/apache/http/util/ByteArrayBuffer:buffer	()[B
-            //   272: astore 4
-            //   274: aload 4
-            //   276: ifnull +109 -> 385
-            //   279: aload_3
-            //   280: astore_2
-            //   281: aload 4
-            //   283: arraylength
-            //   284: iconst_4
-            //   285: if_icmple +100 -> 385
-            //   288: aload_3
-            //   289: astore_2
-            //   290: aload 4
-            //   292: invokestatic 169	com/tencent/tmassistantsdk/protocol/ProtocolPackage:unpackPackage	([B)Lcom/tencent/tmassistantsdk/protocol/jce/Response;
-            //   295: astore 4
-            //   297: aload 4
-            //   299: ifnull +86 -> 385
-            //   302: aload_3
-            //   303: astore_2
-            //   304: aload 4
-            //   306: getfield 175	com/tencent/tmassistantsdk/protocol/jce/Response:body	[B
-            //   309: ifnull +76 -> 385
-            //   312: aload_3
-            //   313: astore_2
-            //   314: aload_0
-            //   315: getfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest$1:val$sendRequest	Lcom/qq/taf/jce/JceStruct;
-            //   318: aload 4
-            //   320: getfield 175	com/tencent/tmassistantsdk/protocol/jce/Response:body	[B
-            //   323: invokestatic 179	com/tencent/tmassistantsdk/protocol/ProtocolPackage:unpageageJceResponse	(Lcom/qq/taf/jce/JceStruct;[B)Lcom/qq/taf/jce/JceStruct;
-            //   326: astore 6
-            //   328: aload 6
-            //   330: ifnull +55 -> 385
-            //   333: aload_3
-            //   334: astore_2
-            //   335: aload_0
-            //   336: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   339: aload_0
-            //   340: getfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest$1:val$sendRequest	Lcom/qq/taf/jce/JceStruct;
-            //   343: aload 6
-            //   345: aload 4
-            //   347: getfield 183	com/tencent/tmassistantsdk/protocol/jce/Response:head	Lcom/tencent/tmassistantsdk/protocol/jce/RspHead;
-            //   350: getfield 189	com/tencent/tmassistantsdk/protocol/jce/RspHead:ret	I
-            //   353: invokevirtual 149	com/tencent/tmassistantsdk/network/PostHttpRequest:onFinished	(Lcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;I)V
-            //   356: aload_0
-            //   357: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   360: aconst_null
-            //   361: putfield 62	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-            //   364: aload_3
-            //   365: ifnull +14 -> 379
-            //   368: aload_3
-            //   369: invokeinterface 153 1 0
-            //   374: invokeinterface 158 1 0
-            //   379: ldc 35
-            //   381: invokestatic 161	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-            //   384: return
-            //   385: aload_0
-            //   386: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   389: aconst_null
-            //   390: putfield 62	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-            //   393: aload_3
-            //   394: ifnull +242 -> 636
-            //   397: aload_3
-            //   398: invokeinterface 153 1 0
-            //   403: invokeinterface 158 1 0
-            //   408: ldc 35
-            //   410: invokestatic 161	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-            //   413: return
-            //   414: astore 4
-            //   416: aconst_null
-            //   417: astore_3
-            //   418: aload_3
-            //   419: astore_2
-            //   420: ldc 137
-            //   422: aload 4
-            //   424: ldc 139
-            //   426: iconst_0
-            //   427: anewarray 4	java/lang/Object
-            //   430: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-            //   433: aload_3
-            //   434: astore_2
-            //   435: aload_0
-            //   436: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   439: aload 5
-            //   441: aconst_null
-            //   442: iconst_1
-            //   443: invokevirtual 149	com/tencent/tmassistantsdk/network/PostHttpRequest:onFinished	(Lcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;I)V
-            //   446: aload_0
-            //   447: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   450: aconst_null
-            //   451: putfield 62	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-            //   454: aload_3
-            //   455: ifnull +181 -> 636
-            //   458: aload_3
-            //   459: invokeinterface 153 1 0
-            //   464: invokeinterface 158 1 0
-            //   469: ldc 35
-            //   471: invokestatic 161	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-            //   474: return
-            //   475: astore 4
-            //   477: aconst_null
-            //   478: astore_3
-            //   479: aload_3
-            //   480: astore_2
-            //   481: ldc 137
-            //   483: aload 4
-            //   485: ldc 139
-            //   487: iconst_0
-            //   488: anewarray 4	java/lang/Object
-            //   491: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-            //   494: aload_3
-            //   495: astore_2
-            //   496: aload_0
-            //   497: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   500: aload 5
-            //   502: aconst_null
-            //   503: sipush 602
-            //   506: invokevirtual 149	com/tencent/tmassistantsdk/network/PostHttpRequest:onFinished	(Lcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;I)V
-            //   509: aload_0
-            //   510: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   513: aconst_null
-            //   514: putfield 62	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-            //   517: aload_3
-            //   518: ifnull +118 -> 636
-            //   521: aload_3
-            //   522: invokeinterface 153 1 0
-            //   527: invokeinterface 158 1 0
-            //   532: ldc 35
-            //   534: invokestatic 161	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-            //   537: return
-            //   538: astore 4
-            //   540: aconst_null
-            //   541: astore_3
-            //   542: aload_3
-            //   543: astore_2
-            //   544: ldc 137
-            //   546: aload 4
-            //   548: ldc 139
-            //   550: iconst_0
-            //   551: anewarray 4	java/lang/Object
-            //   554: invokestatic 145	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-            //   557: aload_3
-            //   558: astore_2
-            //   559: aload_0
-            //   560: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   563: aload_0
-            //   564: getfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest$1:val$sendRequest	Lcom/qq/taf/jce/JceStruct;
-            //   567: aconst_null
-            //   568: sipush 604
-            //   571: invokevirtual 149	com/tencent/tmassistantsdk/network/PostHttpRequest:onFinished	(Lcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;I)V
-            //   574: aload_0
-            //   575: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   578: aconst_null
-            //   579: putfield 62	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-            //   582: aload_3
-            //   583: ifnull +53 -> 636
-            //   586: aload_3
-            //   587: invokeinterface 153 1 0
-            //   592: invokeinterface 158 1 0
-            //   597: ldc 35
-            //   599: invokestatic 161	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-            //   602: return
-            //   603: astore_3
-            //   604: aconst_null
-            //   605: astore_2
-            //   606: aload_0
-            //   607: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
-            //   610: aconst_null
-            //   611: putfield 62	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
-            //   614: aload_2
-            //   615: ifnull +14 -> 629
-            //   618: aload_2
-            //   619: invokeinterface 153 1 0
-            //   624: invokeinterface 158 1 0
-            //   629: ldc 35
-            //   631: invokestatic 161	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-            //   634: aload_3
-            //   635: athrow
-            //   636: ldc 35
-            //   638: invokestatic 161	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-            //   641: return
-            //   642: astore_3
-            //   643: goto -37 -> 606
-            //   646: astore 4
-            //   648: goto -106 -> 542
-            //   651: astore 4
-            //   653: goto -174 -> 479
-            //   656: astore 4
-            //   658: goto -240 -> 418
-            //   661: astore 4
-            //   663: aconst_null
-            //   664: astore_3
-            //   665: goto -459 -> 206
+            //   28: getstatic 57	com/tencent/tmassistantsdk/network/PostHttpRequest:REQUEST_SERVER_URL	Ljava/lang/String;
+            //   31: invokespecial 60	org/apache/http/client/methods/HttpPost:<init>	(Ljava/lang/String;)V
+            //   34: putfield 64	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+            //   37: aload_0
+            //   38: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   41: getfield 64	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+            //   44: ldc 66
+            //   46: ldc 68
+            //   48: invokevirtual 72	org/apache/http/client/methods/HttpPost:addHeader	(Ljava/lang/String;Ljava/lang/String;)V
+            //   51: aload_0
+            //   52: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   55: getfield 64	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+            //   58: new 74	org/apache/http/entity/ByteArrayEntity
+            //   61: dup
+            //   62: aload_2
+            //   63: invokespecial 77	org/apache/http/entity/ByteArrayEntity:<init>	([B)V
+            //   66: invokevirtual 81	org/apache/http/client/methods/HttpPost:setEntity	(Lorg/apache/http/HttpEntity;)V
+            //   69: invokestatic 87	com/tencent/tmassistantsdk/downloadservice/HttpClientUtil:createHttpClient	()Lorg/apache/http/client/HttpClient;
+            //   72: astore_3
+            //   73: aload_3
+            //   74: astore_2
+            //   75: aload_3
+            //   76: invokestatic 91	com/tencent/tmassistantsdk/downloadservice/HttpClientUtil:setProxy	(Lorg/apache/http/client/HttpClient;)V
+            //   79: aload_3
+            //   80: astore_2
+            //   81: aload_3
+            //   82: aload_0
+            //   83: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   86: getfield 64	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+            //   89: invokeinterface 97 2 0
+            //   94: astore 4
+            //   96: aload 4
+            //   98: ifnull +288 -> 386
+            //   101: aload_3
+            //   102: astore_2
+            //   103: aload 4
+            //   105: invokeinterface 103 1 0
+            //   110: invokeinterface 109 1 0
+            //   115: sipush 200
+            //   118: if_icmpne +268 -> 386
+            //   121: aload_3
+            //   122: astore_2
+            //   123: aload 4
+            //   125: invokeinterface 113 1 0
+            //   130: astore 6
+            //   132: aload 6
+            //   134: ifnull +252 -> 386
+            //   137: aload_3
+            //   138: astore_2
+            //   139: new 115	org/apache/http/util/ByteArrayBuffer
+            //   142: dup
+            //   143: aload 6
+            //   145: invokeinterface 121 1 0
+            //   150: l2i
+            //   151: invokespecial 123	org/apache/http/util/ByteArrayBuffer:<init>	(I)V
+            //   154: astore 4
+            //   156: aload_3
+            //   157: astore_2
+            //   158: aload 6
+            //   160: invokeinterface 127 1 0
+            //   165: astore 6
+            //   167: aload_3
+            //   168: astore_2
+            //   169: sipush 2048
+            //   172: newarray byte
+            //   174: astore 7
+            //   176: aload_3
+            //   177: astore_2
+            //   178: aload 6
+            //   180: aload 7
+            //   182: invokevirtual 133	java/io/InputStream:read	([B)I
+            //   185: istore_1
+            //   186: iload_1
+            //   187: iconst_m1
+            //   188: if_icmpeq +78 -> 266
+            //   191: aload_3
+            //   192: astore_2
+            //   193: aload 4
+            //   195: aload 7
+            //   197: iconst_0
+            //   198: iload_1
+            //   199: invokevirtual 137	org/apache/http/util/ByteArrayBuffer:append	([BII)V
+            //   202: goto -26 -> 176
+            //   205: astore 4
+            //   207: aload_3
+            //   208: astore_2
+            //   209: ldc 139
+            //   211: aload 4
+            //   213: ldc 141
+            //   215: iconst_0
+            //   216: anewarray 4	java/lang/Object
+            //   219: invokestatic 147	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+            //   222: aload_3
+            //   223: astore_2
+            //   224: aload_0
+            //   225: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   228: aload 5
+            //   230: aconst_null
+            //   231: sipush 601
+            //   234: invokevirtual 151	com/tencent/tmassistantsdk/network/PostHttpRequest:onFinished	(Lcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;I)V
+            //   237: aload_0
+            //   238: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   241: aconst_null
+            //   242: putfield 64	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+            //   245: aload_3
+            //   246: ifnull +391 -> 637
+            //   249: aload_3
+            //   250: invokeinterface 155 1 0
+            //   255: invokeinterface 160 1 0
+            //   260: ldc 35
+            //   262: invokestatic 163	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   265: return
+            //   266: aload_3
+            //   267: astore_2
+            //   268: aload 4
+            //   270: invokevirtual 167	org/apache/http/util/ByteArrayBuffer:buffer	()[B
+            //   273: astore 4
+            //   275: aload 4
+            //   277: ifnull +109 -> 386
+            //   280: aload_3
+            //   281: astore_2
+            //   282: aload 4
+            //   284: arraylength
+            //   285: iconst_4
+            //   286: if_icmple +100 -> 386
+            //   289: aload_3
+            //   290: astore_2
+            //   291: aload 4
+            //   293: invokestatic 171	com/tencent/tmassistantsdk/protocol/ProtocolPackage:unpackPackage	([B)Lcom/tencent/tmassistantsdk/protocol/jce/Response;
+            //   296: astore 4
+            //   298: aload 4
+            //   300: ifnull +86 -> 386
+            //   303: aload_3
+            //   304: astore_2
+            //   305: aload 4
+            //   307: getfield 177	com/tencent/tmassistantsdk/protocol/jce/Response:body	[B
+            //   310: ifnull +76 -> 386
+            //   313: aload_3
+            //   314: astore_2
+            //   315: aload_0
+            //   316: getfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest$1:val$sendRequest	Lcom/qq/taf/jce/JceStruct;
+            //   319: aload 4
+            //   321: getfield 177	com/tencent/tmassistantsdk/protocol/jce/Response:body	[B
+            //   324: invokestatic 181	com/tencent/tmassistantsdk/protocol/ProtocolPackage:unpageageJceResponse	(Lcom/qq/taf/jce/JceStruct;[B)Lcom/qq/taf/jce/JceStruct;
+            //   327: astore 6
+            //   329: aload 6
+            //   331: ifnull +55 -> 386
+            //   334: aload_3
+            //   335: astore_2
+            //   336: aload_0
+            //   337: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   340: aload_0
+            //   341: getfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest$1:val$sendRequest	Lcom/qq/taf/jce/JceStruct;
+            //   344: aload 6
+            //   346: aload 4
+            //   348: getfield 185	com/tencent/tmassistantsdk/protocol/jce/Response:head	Lcom/tencent/tmassistantsdk/protocol/jce/RspHead;
+            //   351: getfield 191	com/tencent/tmassistantsdk/protocol/jce/RspHead:ret	I
+            //   354: invokevirtual 151	com/tencent/tmassistantsdk/network/PostHttpRequest:onFinished	(Lcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;I)V
+            //   357: aload_0
+            //   358: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   361: aconst_null
+            //   362: putfield 64	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+            //   365: aload_3
+            //   366: ifnull +14 -> 380
+            //   369: aload_3
+            //   370: invokeinterface 155 1 0
+            //   375: invokeinterface 160 1 0
+            //   380: ldc 35
+            //   382: invokestatic 163	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   385: return
+            //   386: aload_0
+            //   387: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   390: aconst_null
+            //   391: putfield 64	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+            //   394: aload_3
+            //   395: ifnull +242 -> 637
+            //   398: aload_3
+            //   399: invokeinterface 155 1 0
+            //   404: invokeinterface 160 1 0
+            //   409: ldc 35
+            //   411: invokestatic 163	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   414: return
+            //   415: astore 4
+            //   417: aconst_null
+            //   418: astore_3
+            //   419: aload_3
+            //   420: astore_2
+            //   421: ldc 139
+            //   423: aload 4
+            //   425: ldc 141
+            //   427: iconst_0
+            //   428: anewarray 4	java/lang/Object
+            //   431: invokestatic 147	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+            //   434: aload_3
+            //   435: astore_2
+            //   436: aload_0
+            //   437: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   440: aload 5
+            //   442: aconst_null
+            //   443: iconst_1
+            //   444: invokevirtual 151	com/tencent/tmassistantsdk/network/PostHttpRequest:onFinished	(Lcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;I)V
+            //   447: aload_0
+            //   448: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   451: aconst_null
+            //   452: putfield 64	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+            //   455: aload_3
+            //   456: ifnull +181 -> 637
+            //   459: aload_3
+            //   460: invokeinterface 155 1 0
+            //   465: invokeinterface 160 1 0
+            //   470: ldc 35
+            //   472: invokestatic 163	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   475: return
+            //   476: astore 4
+            //   478: aconst_null
+            //   479: astore_3
+            //   480: aload_3
+            //   481: astore_2
+            //   482: ldc 139
+            //   484: aload 4
+            //   486: ldc 141
+            //   488: iconst_0
+            //   489: anewarray 4	java/lang/Object
+            //   492: invokestatic 147	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+            //   495: aload_3
+            //   496: astore_2
+            //   497: aload_0
+            //   498: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   501: aload 5
+            //   503: aconst_null
+            //   504: sipush 602
+            //   507: invokevirtual 151	com/tencent/tmassistantsdk/network/PostHttpRequest:onFinished	(Lcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;I)V
+            //   510: aload_0
+            //   511: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   514: aconst_null
+            //   515: putfield 64	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+            //   518: aload_3
+            //   519: ifnull +118 -> 637
+            //   522: aload_3
+            //   523: invokeinterface 155 1 0
+            //   528: invokeinterface 160 1 0
+            //   533: ldc 35
+            //   535: invokestatic 163	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   538: return
+            //   539: astore 4
+            //   541: aconst_null
+            //   542: astore_3
+            //   543: aload_3
+            //   544: astore_2
+            //   545: ldc 139
+            //   547: aload 4
+            //   549: ldc 141
+            //   551: iconst_0
+            //   552: anewarray 4	java/lang/Object
+            //   555: invokestatic 147	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+            //   558: aload_3
+            //   559: astore_2
+            //   560: aload_0
+            //   561: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   564: aload_0
+            //   565: getfield 21	com/tencent/tmassistantsdk/network/PostHttpRequest$1:val$sendRequest	Lcom/qq/taf/jce/JceStruct;
+            //   568: aconst_null
+            //   569: sipush 604
+            //   572: invokevirtual 151	com/tencent/tmassistantsdk/network/PostHttpRequest:onFinished	(Lcom/qq/taf/jce/JceStruct;Lcom/qq/taf/jce/JceStruct;I)V
+            //   575: aload_0
+            //   576: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   579: aconst_null
+            //   580: putfield 64	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+            //   583: aload_3
+            //   584: ifnull +53 -> 637
+            //   587: aload_3
+            //   588: invokeinterface 155 1 0
+            //   593: invokeinterface 160 1 0
+            //   598: ldc 35
+            //   600: invokestatic 163	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   603: return
+            //   604: astore_3
+            //   605: aconst_null
+            //   606: astore_2
+            //   607: aload_0
+            //   608: getfield 19	com/tencent/tmassistantsdk/network/PostHttpRequest$1:this$0	Lcom/tencent/tmassistantsdk/network/PostHttpRequest;
+            //   611: aconst_null
+            //   612: putfield 64	com/tencent/tmassistantsdk/network/PostHttpRequest:mHttpPost	Lorg/apache/http/client/methods/HttpPost;
+            //   615: aload_2
+            //   616: ifnull +14 -> 630
+            //   619: aload_2
+            //   620: invokeinterface 155 1 0
+            //   625: invokeinterface 160 1 0
+            //   630: ldc 35
+            //   632: invokestatic 163	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   635: aload_3
+            //   636: athrow
+            //   637: ldc 35
+            //   639: invokestatic 163	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+            //   642: return
+            //   643: astore_3
+            //   644: goto -37 -> 607
+            //   647: astore 4
+            //   649: goto -106 -> 543
+            //   652: astore 4
+            //   654: goto -174 -> 480
+            //   657: astore 4
+            //   659: goto -240 -> 419
+            //   662: astore 4
+            //   664: aconst_null
+            //   665: astore_3
+            //   666: goto -459 -> 207
             // Local variable table:
             //   start	length	slot	name	signature
-            //   0	668	0	this	1
-            //   184	14	1	i	int
-            //   19	600	2	localObject1	Object
-            //   71	516	3	localHttpClient	org.apache.http.client.HttpClient
-            //   603	32	3	localObject2	Object
-            //   642	1	3	localObject3	Object
-            //   664	1	3	localObject4	Object
-            //   93	100	4	localObject5	Object
-            //   204	64	4	localConnectTimeoutException1	org.apache.http.conn.ConnectTimeoutException
-            //   272	74	4	localObject6	Object
-            //   414	9	4	localConnectException1	java.net.ConnectException
-            //   475	9	4	localSocketTimeoutException1	java.net.SocketTimeoutException
-            //   538	9	4	localException1	java.lang.Exception
-            //   646	1	4	localException2	java.lang.Exception
-            //   651	1	4	localSocketTimeoutException2	java.net.SocketTimeoutException
-            //   656	1	4	localConnectException2	java.net.ConnectException
-            //   661	1	4	localConnectTimeoutException2	org.apache.http.conn.ConnectTimeoutException
-            //   12	489	5	localRequest	com.tencent.tmassistantsdk.protocol.jce.Request
-            //   129	215	6	localObject7	Object
-            //   173	22	7	arrayOfByte	byte[]
+            //   0	669	0	this	1
+            //   185	14	1	i	int
+            //   19	601	2	localObject1	Object
+            //   72	516	3	localHttpClient	org.apache.http.client.HttpClient
+            //   604	32	3	localObject2	Object
+            //   643	1	3	localObject3	Object
+            //   665	1	3	localObject4	Object
+            //   94	100	4	localObject5	Object
+            //   205	64	4	localConnectTimeoutException1	org.apache.http.conn.ConnectTimeoutException
+            //   273	74	4	localObject6	Object
+            //   415	9	4	localConnectException1	java.net.ConnectException
+            //   476	9	4	localSocketTimeoutException1	java.net.SocketTimeoutException
+            //   539	9	4	localException1	java.lang.Exception
+            //   647	1	4	localException2	java.lang.Exception
+            //   652	1	4	localSocketTimeoutException2	java.net.SocketTimeoutException
+            //   657	1	4	localConnectException2	java.net.ConnectException
+            //   662	1	4	localConnectTimeoutException2	org.apache.http.conn.ConnectTimeoutException
+            //   12	490	5	localRequest	com.tencent.tmassistantsdk.protocol.jce.Request
+            //   130	215	6	localObject7	Object
+            //   174	22	7	arrayOfByte	byte[]
             // Exception table:
             //   from	to	target	type
-            //   74	78	204	org/apache/http/conn/ConnectTimeoutException
-            //   80	95	204	org/apache/http/conn/ConnectTimeoutException
-            //   102	120	204	org/apache/http/conn/ConnectTimeoutException
-            //   122	131	204	org/apache/http/conn/ConnectTimeoutException
-            //   138	155	204	org/apache/http/conn/ConnectTimeoutException
-            //   157	166	204	org/apache/http/conn/ConnectTimeoutException
-            //   168	175	204	org/apache/http/conn/ConnectTimeoutException
-            //   177	185	204	org/apache/http/conn/ConnectTimeoutException
-            //   192	201	204	org/apache/http/conn/ConnectTimeoutException
-            //   267	274	204	org/apache/http/conn/ConnectTimeoutException
-            //   281	288	204	org/apache/http/conn/ConnectTimeoutException
-            //   290	297	204	org/apache/http/conn/ConnectTimeoutException
-            //   304	312	204	org/apache/http/conn/ConnectTimeoutException
-            //   314	328	204	org/apache/http/conn/ConnectTimeoutException
-            //   335	356	204	org/apache/http/conn/ConnectTimeoutException
-            //   68	72	414	java/net/ConnectException
-            //   68	72	475	java/net/SocketTimeoutException
-            //   68	72	538	java/lang/Exception
-            //   68	72	603	finally
-            //   74	78	642	finally
-            //   80	95	642	finally
-            //   102	120	642	finally
-            //   122	131	642	finally
-            //   138	155	642	finally
-            //   157	166	642	finally
-            //   168	175	642	finally
-            //   177	185	642	finally
-            //   192	201	642	finally
-            //   208	221	642	finally
-            //   223	236	642	finally
-            //   267	274	642	finally
-            //   281	288	642	finally
-            //   290	297	642	finally
-            //   304	312	642	finally
-            //   314	328	642	finally
-            //   335	356	642	finally
-            //   420	433	642	finally
-            //   435	446	642	finally
-            //   481	494	642	finally
-            //   496	509	642	finally
-            //   544	557	642	finally
-            //   559	574	642	finally
-            //   74	78	646	java/lang/Exception
-            //   80	95	646	java/lang/Exception
-            //   102	120	646	java/lang/Exception
-            //   122	131	646	java/lang/Exception
-            //   138	155	646	java/lang/Exception
-            //   157	166	646	java/lang/Exception
-            //   168	175	646	java/lang/Exception
-            //   177	185	646	java/lang/Exception
-            //   192	201	646	java/lang/Exception
-            //   267	274	646	java/lang/Exception
-            //   281	288	646	java/lang/Exception
-            //   290	297	646	java/lang/Exception
-            //   304	312	646	java/lang/Exception
-            //   314	328	646	java/lang/Exception
-            //   335	356	646	java/lang/Exception
-            //   74	78	651	java/net/SocketTimeoutException
-            //   80	95	651	java/net/SocketTimeoutException
-            //   102	120	651	java/net/SocketTimeoutException
-            //   122	131	651	java/net/SocketTimeoutException
-            //   138	155	651	java/net/SocketTimeoutException
-            //   157	166	651	java/net/SocketTimeoutException
-            //   168	175	651	java/net/SocketTimeoutException
-            //   177	185	651	java/net/SocketTimeoutException
-            //   192	201	651	java/net/SocketTimeoutException
-            //   267	274	651	java/net/SocketTimeoutException
-            //   281	288	651	java/net/SocketTimeoutException
-            //   290	297	651	java/net/SocketTimeoutException
-            //   304	312	651	java/net/SocketTimeoutException
-            //   314	328	651	java/net/SocketTimeoutException
-            //   335	356	651	java/net/SocketTimeoutException
-            //   74	78	656	java/net/ConnectException
-            //   80	95	656	java/net/ConnectException
-            //   102	120	656	java/net/ConnectException
-            //   122	131	656	java/net/ConnectException
-            //   138	155	656	java/net/ConnectException
-            //   157	166	656	java/net/ConnectException
-            //   168	175	656	java/net/ConnectException
-            //   177	185	656	java/net/ConnectException
-            //   192	201	656	java/net/ConnectException
-            //   267	274	656	java/net/ConnectException
-            //   281	288	656	java/net/ConnectException
-            //   290	297	656	java/net/ConnectException
-            //   304	312	656	java/net/ConnectException
-            //   314	328	656	java/net/ConnectException
-            //   335	356	656	java/net/ConnectException
-            //   68	72	661	org/apache/http/conn/ConnectTimeoutException
+            //   75	79	205	org/apache/http/conn/ConnectTimeoutException
+            //   81	96	205	org/apache/http/conn/ConnectTimeoutException
+            //   103	121	205	org/apache/http/conn/ConnectTimeoutException
+            //   123	132	205	org/apache/http/conn/ConnectTimeoutException
+            //   139	156	205	org/apache/http/conn/ConnectTimeoutException
+            //   158	167	205	org/apache/http/conn/ConnectTimeoutException
+            //   169	176	205	org/apache/http/conn/ConnectTimeoutException
+            //   178	186	205	org/apache/http/conn/ConnectTimeoutException
+            //   193	202	205	org/apache/http/conn/ConnectTimeoutException
+            //   268	275	205	org/apache/http/conn/ConnectTimeoutException
+            //   282	289	205	org/apache/http/conn/ConnectTimeoutException
+            //   291	298	205	org/apache/http/conn/ConnectTimeoutException
+            //   305	313	205	org/apache/http/conn/ConnectTimeoutException
+            //   315	329	205	org/apache/http/conn/ConnectTimeoutException
+            //   336	357	205	org/apache/http/conn/ConnectTimeoutException
+            //   69	73	415	java/net/ConnectException
+            //   69	73	476	java/net/SocketTimeoutException
+            //   69	73	539	java/lang/Exception
+            //   69	73	604	finally
+            //   75	79	643	finally
+            //   81	96	643	finally
+            //   103	121	643	finally
+            //   123	132	643	finally
+            //   139	156	643	finally
+            //   158	167	643	finally
+            //   169	176	643	finally
+            //   178	186	643	finally
+            //   193	202	643	finally
+            //   209	222	643	finally
+            //   224	237	643	finally
+            //   268	275	643	finally
+            //   282	289	643	finally
+            //   291	298	643	finally
+            //   305	313	643	finally
+            //   315	329	643	finally
+            //   336	357	643	finally
+            //   421	434	643	finally
+            //   436	447	643	finally
+            //   482	495	643	finally
+            //   497	510	643	finally
+            //   545	558	643	finally
+            //   560	575	643	finally
+            //   75	79	647	java/lang/Exception
+            //   81	96	647	java/lang/Exception
+            //   103	121	647	java/lang/Exception
+            //   123	132	647	java/lang/Exception
+            //   139	156	647	java/lang/Exception
+            //   158	167	647	java/lang/Exception
+            //   169	176	647	java/lang/Exception
+            //   178	186	647	java/lang/Exception
+            //   193	202	647	java/lang/Exception
+            //   268	275	647	java/lang/Exception
+            //   282	289	647	java/lang/Exception
+            //   291	298	647	java/lang/Exception
+            //   305	313	647	java/lang/Exception
+            //   315	329	647	java/lang/Exception
+            //   336	357	647	java/lang/Exception
+            //   75	79	652	java/net/SocketTimeoutException
+            //   81	96	652	java/net/SocketTimeoutException
+            //   103	121	652	java/net/SocketTimeoutException
+            //   123	132	652	java/net/SocketTimeoutException
+            //   139	156	652	java/net/SocketTimeoutException
+            //   158	167	652	java/net/SocketTimeoutException
+            //   169	176	652	java/net/SocketTimeoutException
+            //   178	186	652	java/net/SocketTimeoutException
+            //   193	202	652	java/net/SocketTimeoutException
+            //   268	275	652	java/net/SocketTimeoutException
+            //   282	289	652	java/net/SocketTimeoutException
+            //   291	298	652	java/net/SocketTimeoutException
+            //   305	313	652	java/net/SocketTimeoutException
+            //   315	329	652	java/net/SocketTimeoutException
+            //   336	357	652	java/net/SocketTimeoutException
+            //   75	79	657	java/net/ConnectException
+            //   81	96	657	java/net/ConnectException
+            //   103	121	657	java/net/ConnectException
+            //   123	132	657	java/net/ConnectException
+            //   139	156	657	java/net/ConnectException
+            //   158	167	657	java/net/ConnectException
+            //   169	176	657	java/net/ConnectException
+            //   178	186	657	java/net/ConnectException
+            //   193	202	657	java/net/ConnectException
+            //   268	275	657	java/net/ConnectException
+            //   282	289	657	java/net/ConnectException
+            //   291	298	657	java/net/ConnectException
+            //   305	313	657	java/net/ConnectException
+            //   315	329	657	java/net/ConnectException
+            //   336	357	657	java/net/ConnectException
+            //   69	73	662	org/apache/http/conn/ConnectTimeoutException
           }
         });
       }
@@ -543,7 +544,7 @@ public abstract class PostHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.network.PostHttpRequest
  * JD-Core Version:    0.7.0.1
  */

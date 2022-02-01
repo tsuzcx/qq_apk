@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:orientation="vertical" android:background="@color/a_r" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/e6v" android:layout_width="fill_parent" android:layout_height="176.0dip">
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/bcg" android:paddingLeft="@dimen/zf" android:paddingRight="@dimen/zf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="34.0dip">
-            <TextView android:textSize="@dimen/z_" android:textColor="@color/l9" android:gravity="center" android:layout_gravity="center" android:id="@id/b55" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-            <EditText android:textSize="@dimen/z_" android:textColor="@color/y4" android:gravity="left" android:layout_gravity="center_horizontal" android:id="@id/ecy" android:background="@color/a7c" android:paddingLeft="@dimen/zb" android:paddingRight="@dimen/zb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:cursorVisible="false" android:maxLines="1" android:singleLine="true" android:editable="false" android:layout_weight="0.6" android:inputType="phone" />
-            <LinearLayout android:gravity="center" android:id="@id/ecx" android:clickable="true" android:longClickable="true" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="35.0dip">
-                <Button android:layout_gravity="center" android:background="@drawable/a6e" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:longClickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
-            </LinearLayout>
-        </LinearLayout>
-        <RelativeLayout android:id="@id/b53" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/zf" android:layout_below="@id/bcg">
-            <TextView android:textSize="12.0dip" android:textColor="@color/l9" android:gravity="center" android:layout_gravity="center" android:id="@id/b57" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
-        </RelativeLayout>
-        <TextView android:textSize="@dimen/zg" android:textColor="@color/la" android:id="@id/bch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:singleLine="true" android:layout_below="@id/bcg" android:layout_centerHorizontal="true" />
-        <TextView android:textSize="13.0dip" android:textColor="@color/km" android:id="@id/bc1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/d91" android:layout_below="@id/bch" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <RelativeLayout android:id="@id/b86" android:background="@color/BW_97" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/e6v" android:layout_alignParentBottom="true">
-        <FrameLayout android:id="@id/bdy" android:background="@color/l_" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-        <ImageButton android:id="@id/bby" android:background="@null" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginBottom="14.0dip" android:src="@drawable/pn" android:scaleType="center" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        <com.tencent.mm.plugin.ipcall.ui.DialPad android:id="@id/bcd" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/bby" android:layout_below="@id/bdy" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</RelativeLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/bz" android:paddingStart="@dimen/ct"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="168.0dip" android:layout_height="@dimen/bx" app:cornerRadius="4.0dip">
+            <ImageView android:id="@id/imb" android:background="@color/tw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+            <TextView android:textSize="@dimen/a3" android:textColor="@android:color/white" android:layout_gravity="end|bottom|center" android:id="@id/j4n" android:background="@drawable/we" android:paddingLeft="@dimen/ct" android:paddingTop="2.0dip" android:paddingRight="@dimen/ct" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct" android:text="00:00" android:layout_marginEnd="@dimen/ct" />
+        </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+        <android.support.constraint.ConstraintLayout android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct">
+            <TextView android:textSize="@dimen/h_" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/j4f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="3" android:paddingEnd="@dimen/cb" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:id="@id/j4w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toBottomOf="@id/j4f" />
+            <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_1" android:id="@id/j4_" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintStart_toEndOf="@id/j4w" app:layout_constraintTop_toTopOf="@id/j4w" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+</FrameLayout>

@@ -4,15 +4,15 @@ import com.google.android.exoplayer2.Format;
 
 public final class j
 {
-  public final Format bdI;
-  public final long bdM;
-  public final int biG;
-  public final long bot;
-  public final long bou;
-  public final int bov;
-  public final long[] bow;
-  public final long[] box;
-  private final k[] boy;
+  public final Format bdF;
+  public final long bdJ;
+  public final int biD;
+  public final long boo;
+  public final long bop;
+  public final int boq;
+  public final long[] bor;
+  public final long[] bos;
+  private final k[] bot;
   public final int id;
   public final int type;
   
@@ -20,28 +20,28 @@ public final class j
   {
     this.id = paramInt1;
     this.type = paramInt2;
-    this.bot = paramLong1;
-    this.bou = paramLong2;
-    this.bdM = paramLong3;
-    this.bdI = paramFormat;
-    this.bov = paramInt3;
-    this.boy = paramArrayOfk;
-    this.biG = paramInt4;
-    this.bow = paramArrayOfLong1;
-    this.box = paramArrayOfLong2;
+    this.boo = paramLong1;
+    this.bop = paramLong2;
+    this.bdJ = paramLong3;
+    this.bdF = paramFormat;
+    this.boq = paramInt3;
+    this.bot = paramArrayOfk;
+    this.biD = paramInt4;
+    this.bor = paramArrayOfLong1;
+    this.bos = paramArrayOfLong2;
   }
   
-  public final k eo(int paramInt)
+  public final k ei(int paramInt)
   {
-    if (this.boy == null) {
+    if (this.bot == null) {
       return null;
     }
-    return this.boy[paramInt];
+    return this.bot[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.j
  * JD-Core Version:    0.7.0.1
  */

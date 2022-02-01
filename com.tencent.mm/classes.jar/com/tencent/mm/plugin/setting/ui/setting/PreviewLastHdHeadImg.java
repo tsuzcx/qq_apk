@@ -18,25 +18,27 @@ import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.model.v;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 
 public class PreviewLastHdHeadImg
   extends MMActivity
   implements View.OnClickListener
 {
-  private ImageView dtJ;
-  private String dzD;
+  private Bitmap CZw;
+  private TextView CZx;
+  private ImageView dKU;
+  private String dRr;
   private String username;
-  private Bitmap yUG;
-  private TextView yUH;
   
   private static boolean e(Bitmap paramBitmap, String paramString)
   {
@@ -44,14 +46,14 @@ public class PreviewLastHdHeadImg
     if ((paramString != null) && (!paramString.equals(""))) {
       try
       {
-        h.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, paramString, true);
+        BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, paramString, true);
         AppMethodBeat.o(73943);
         return true;
       }
       catch (Exception paramBitmap)
       {
-        ae.printErrStackTrace("MicroMsg.PreviewLastHdHeadImg", paramBitmap, "", new Object[0]);
-        ae.e("MicroMsg.PreviewLastHdHeadImg", "saveBitmapToImage failed:" + paramBitmap.toString());
+        Log.printErrStackTrace("MicroMsg.PreviewLastHdHeadImg", paramBitmap, "", new Object[0]);
+        Log.e("MicroMsg.PreviewLastHdHeadImg", "saveBitmapToImage failed:" + paramBitmap.toString());
       }
     }
     AppMethodBeat.o(73943);
@@ -60,40 +62,40 @@ public class PreviewLastHdHeadImg
   
   public int getLayoutId()
   {
-    return 2131494410;
+    return 2131494982;
   }
   
   public void initView()
   {
     AppMethodBeat.i(73942);
-    setMMTitle(2131763256);
-    setActionbarColor(getResources().getColor(2131101053));
+    setMMTitle(2131765426);
+    setActionbarColor(getResources().getColor(2131101287));
     setNavigationbarColor(getResources().getColor(2131099654));
-    this.username = v.aAC();
-    this.dzD = getIntent().getStringExtra("last_avatar_path");
-    this.dtJ = ((ImageView)findViewById(2131300697));
-    this.yUG = h.aRC(this.dzD);
-    this.yUH = ((TextView)findViewById(2131306229));
-    this.dtJ.setImageBitmap(this.yUG);
-    this.yUH.setOnClickListener(this);
-    addIconOptionMenu(0, 2131690603, new MenuItem.OnMenuItemClickListener()
+    this.username = z.aTY();
+    this.dRr = getIntent().getStringExtra("last_avatar_path");
+    this.dKU = ((ImageView)findViewById(2131302268));
+    this.CZw = BitmapUtil.getBitmapNative(this.dRr);
+    this.CZx = ((TextView)findViewById(2131309628));
+    this.dKU.setImageBitmap(this.CZw);
+    this.CZx.setOnClickListener(this);
+    addIconOptionMenu(0, 2131690843, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(73939);
         paramAnonymousMenuItem = new e(PreviewLastHdHeadImg.this, 1, false);
-        paramAnonymousMenuItem.LfS = new n.d()
+        paramAnonymousMenuItem.HLX = new o.f()
         {
-          public final void onCreateMMMenu(l paramAnonymous2l)
+          public final void onCreateMMMenu(m paramAnonymous2m)
           {
             AppMethodBeat.i(73937);
             if (PreviewLastHdHeadImg.a(PreviewLastHdHeadImg.this) != null) {
-              paramAnonymous2l.jM(0, 2131760065);
+              paramAnonymous2m.kV(0, 2131761443);
             }
             AppMethodBeat.o(73937);
           }
         };
-        paramAnonymousMenuItem.LfT = new n.e()
+        paramAnonymousMenuItem.HLY = new o.g()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
@@ -102,7 +104,7 @@ public class PreviewLastHdHeadImg
             AppMethodBeat.o(73938);
           }
         };
-        paramAnonymousMenuItem.cPF();
+        paramAnonymousMenuItem.dGm();
         AppMethodBeat.o(73939);
         return true;
       }
@@ -123,11 +125,11 @@ public class PreviewLastHdHeadImg
   public void onClick(View paramView)
   {
     AppMethodBeat.i(73944);
-    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/setting/ui/setting/PreviewLastHdHeadImg", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+    Object localObject = new b();
+    ((b)localObject).bm(paramView);
+    a.b("com/tencent/mm/plugin/setting/ui/setting/PreviewLastHdHeadImg", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
     paramView = getIntent().getStringExtra("CropImage_OutputPath");
-    if ((paramView != null) && (e(this.yUG, paramView)))
+    if ((paramView != null) && (e(this.CZw, paramView)))
     {
       localObject = new Intent();
       ((Intent)localObject).putExtra("CropImage_OutputPath", paramView);
@@ -161,7 +163,7 @@ public class PreviewLastHdHeadImg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.PreviewLastHdHeadImg
  * JD-Core Version:    0.7.0.1
  */

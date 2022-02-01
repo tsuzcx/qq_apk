@@ -11,8 +11,8 @@ import java.util.List;
 
 public final class e
 {
-  private static c MpN = c.MpO;
-  private static e.a MpR;
+  private static c RSk = c.RSl;
+  private static e.a RSo;
   private static volatile Boolean a = Boolean.FALSE;
   private static List<d> c;
   private static boolean d;
@@ -31,9 +31,9 @@ public final class e
       AppMethodBeat.o(174272);
       return;
     }
-    MpR.a = paramString1;
-    Object localObject = MpR;
-    paramString1 = c.ahA(paramInt);
+    RSo.a = paramString1;
+    Object localObject = RSo;
+    paramString1 = c.aqN(paramInt);
     localObject = ((e.a)localObject).a;
     try
     {
@@ -44,7 +44,7 @@ public final class e
         return;
       }
       paramInt = paramString1.h;
-      int i = MpN.h;
+      int i = RSk.h;
       if (paramInt < i)
       {
         AppMethodBeat.o(174272);
@@ -67,7 +67,7 @@ public final class e
     }
   }
   
-  public static void cB(Context paramContext, String paramString)
+  public static void cV(Context paramContext, String paramString)
   {
     AppMethodBeat.i(174269);
     try
@@ -75,7 +75,7 @@ public final class e
       Object localObject;
       if (!a.booleanValue())
       {
-        MpR = new e.a((byte)0);
+        RSo = new e.a((byte)0);
         localObject = new ArrayList();
         c = (List)localObject;
         ((List)localObject).add(new com.tencent.tbs.a.a.b(paramContext, new a(), new com.tencent.tbs.a.a.b.b(), new com.tencent.tbs.a.a.a.b()));
@@ -91,7 +91,7 @@ public final class e
       label127:
       for (f = ((File)localObject).getAbsolutePath();; f = paramContext.getFilesDir() + File.separator + paramString)
       {
-        MpN = c.MpO;
+        RSk = c.RSl;
         d = true;
         a = Boolean.TRUE;
         AppMethodBeat.o(174269);
@@ -118,7 +118,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tbs.a.e
  * JD-Core Version:    0.7.0.1
  */

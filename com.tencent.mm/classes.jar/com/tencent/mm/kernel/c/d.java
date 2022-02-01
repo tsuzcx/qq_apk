@@ -1,69 +1,69 @@
 package com.tencent.mm.kernel.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Modifier;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class d
 {
-  private static final d gGR;
-  private ConcurrentHashMap<Class<? extends a>, c> gGP;
-  private a gGQ;
+  private static final d htF;
+  private ConcurrentHashMap<Class<? extends a>, c> htD;
+  private a htE;
   
   static
   {
     AppMethodBeat.i(157489);
-    gGR = new d();
+    htF = new d();
     AppMethodBeat.o(157489);
   }
   
   public d()
   {
     AppMethodBeat.i(157484);
-    this.gGP = new ConcurrentHashMap();
-    this.gGQ = null;
+    this.htD = new ConcurrentHashMap();
+    this.htE = null;
     AppMethodBeat.o(157484);
   }
   
   public void a(a parama)
   {
-    this.gGQ = parama;
+    this.htE = parama;
   }
   
-  public final void ac(Class<? extends a> paramClass)
+  public final void ag(Class<? extends a> paramClass)
   {
     AppMethodBeat.i(157488);
-    c localc = (c)this.gGP.remove(paramClass);
+    c localc = (c)this.htD.remove(paramClass);
     if ((localc instanceof b)) {
-      ((b)localc).akN();
+      ((b)localc).aBd();
     }
-    if (this.gGQ != null) {
-      this.gGQ.b(paramClass, localc);
+    if (this.htE != null) {
+      this.htE.b(paramClass, localc);
     }
     AppMethodBeat.o(157488);
   }
   
-  public final <T extends a> T al(Class<T> paramClass)
+  public final <T extends a> T ap(Class<T> paramClass)
   {
     AppMethodBeat.i(157485);
-    Object localObject = (c)this.gGP.get(paramClass);
+    Object localObject = (c)this.htD.get(paramClass);
     if ((!paramClass.isInterface()) && (Modifier.isAbstract(paramClass.getModifiers()))) {
-      ae.w("MicroMsg.ServiceHub", "Did you call service by using the service implementation class ?? Use interface class instead!! Carl is warning u!");
+      Log.w("MicroMsg.ServiceHub", "Did you call service by using the service implementation class ?? Use interface class instead!! Carl is warning u!");
     }
     for (int i = 1;; i = 0)
     {
       if (localObject != null) {}
-      for (localObject = ((c)localObject).akO();; localObject = null)
+      for (localObject = ((c)localObject).aBe();; localObject = null)
       {
-        if (this.gGQ != null) {
-          this.gGQ.a(paramClass, (a)localObject);
+        if (this.htE != null) {
+          this.htE.a(paramClass, (a)localObject);
         }
         AppMethodBeat.o(157485);
         return localObject;
-        ae.e("MicroMsg.ServiceHub", "Service(%s) not found!!! ", new Object[] { paramClass });
+        Log.e("MicroMsg.ServiceHub", "Service(%s) not found!!! ", new Object[] { paramClass });
         if (i != 0) {
-          ae.e("MicroMsg.ServiceHub", "This error must cause by using implementation class to call service! Use interface instead! Understand?");
+          Log.e("MicroMsg.ServiceHub", "This error must cause by using implementation class to call service! Use interface instead! Understand?");
         }
       }
     }
@@ -79,14 +79,14 @@ public class d
   public final <T extends a, N extends T> void c(Class<T> paramClass, c<N> paramc)
   {
     AppMethodBeat.i(157487);
-    this.gGP.put(paramClass, paramc);
+    this.htD.put(paramClass, paramc);
     if ((paramc instanceof b)) {
-      ((b)paramc).akM();
+      ((b)paramc).aBc();
     }
-    if (this.gGQ != null) {
-      this.gGQ.a(paramClass, paramc);
+    if (this.htE != null) {
+      this.htE.a(paramClass, paramc);
     }
-    ae.i("MicroMsg.ServiceHub", "register service %s %s", new Object[] { paramClass, paramc });
+    Log.i("MicroMsg.ServiceHub", "register service %s %s", new Object[] { paramClass, paramc });
     AppMethodBeat.o(157487);
   }
   

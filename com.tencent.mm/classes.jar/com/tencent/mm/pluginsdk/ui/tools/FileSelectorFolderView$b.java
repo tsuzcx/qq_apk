@@ -40,13 +40,13 @@ public final class FileSelectorFolderView$b
     AppMethodBeat.i(31952);
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(2131494146, null);
+      paramView = LayoutInflater.from(this.mContext).inflate(2131494701, null);
       paramViewGroup = new FileSelectorFolderView.c(paramView);
       paramView.setTag(paramViewGroup);
       switch (paramInt)
       {
       default: 
-        paramViewGroup.titleTv.setText(2131755726);
+        paramViewGroup.titleTv.setText(2131755797);
       }
     }
     for (;;)
@@ -55,9 +55,9 @@ public final class FileSelectorFolderView$b
       return paramView;
       paramViewGroup = (FileSelectorFolderView.c)paramView.getTag();
       break;
-      paramViewGroup.titleTv.setText(2131759059);
+      paramViewGroup.titleTv.setText(2131759387);
       continue;
-      paramViewGroup.titleTv.setText(2131759060);
+      paramViewGroup.titleTv.setText(2131759388);
     }
   }
 }

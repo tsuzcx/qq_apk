@@ -3,22 +3,22 @@ package com.tencent.luggage.xweb_ext.extendplugin.component;
 import android.view.View;
 import com.tencent.luggage.xweb_ext.extendplugin.a.a;
 import com.tencent.mm.ab.i;
-import com.tencent.mm.plugin.appbrand.jsapi.q.b;
-import com.tencent.mm.plugin.appbrand.jsapi.q.b.a;
-import com.tencent.mm.plugin.appbrand.jsapi.q.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.s.b;
+import com.tencent.mm.plugin.appbrand.jsapi.s.b.a;
+import com.tencent.mm.plugin.appbrand.jsapi.s.g;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class c<OriginVideoContainer extends g, PipVideoContainer extends View>
   implements p<OriginVideoContainer, PipVideoContainer>
 {
-  private final a cru;
+  private final a cDK;
   
   protected c(a parama)
   {
-    this.cru = parama;
+    this.cDK = parama;
   }
   
-  public final b dx(final String paramString)
+  public final b dQ(final String paramString)
   {
     try
     {
@@ -36,30 +36,30 @@ public abstract class c<OriginVideoContainer extends g, PipVideoContainer extend
       {
         new b()
         {
-          public final b.a FO()
+          public final b.a Px()
           {
             return paramString;
           }
           
-          public final Boolean FP()
+          public final Boolean Py()
           {
-            return this.crE;
+            return this.cDU;
           }
         };
-        paramString = b.a.Rc(paramString);
+        paramString = b.a.aaE(paramString);
         break;
       }
       return null;
     }
     catch (Exception paramString)
     {
-      ae.printErrStackTrace("MicroMsg.AppBrand.AbsXWebPipInfoProvider#" + this.cru.getId(), paramString, "getPipExtra fail", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.AppBrand.AbsXWebPipInfoProvider#" + this.cDK.getId(), paramString, "getPipExtra fail", new Object[0]);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.c
  * JD-Core Version:    0.7.0.1
  */

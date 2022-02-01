@@ -6,12 +6,12 @@ import java.util.HashMap;
 
 public class SpellMap
 {
-  public static HashMap<String, String> iQO;
+  public static HashMap<String, String> jNI;
   
   static
   {
     AppMethodBeat.i(132985);
-    iQO = new HashMap();
+    jNI = new HashMap();
     AppMethodBeat.o(132985);
   }
   
@@ -94,7 +94,7 @@ public class SpellMap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.SpellMap
  * JD-Core Version:    0.7.0.1
  */

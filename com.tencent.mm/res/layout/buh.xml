@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textSize="15.0dip" android:textColor="@android:color/white" android:id="@id/i0b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerInParent="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/hw1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
+    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/glr" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" style="@style/a61" />
+</RelativeLayout>

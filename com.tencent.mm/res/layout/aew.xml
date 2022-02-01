@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="26.0dip" android:layout_height="30.0dip" android:layout_marginTop="78.0dip" android:src="@raw/honey_pay_no_record_icon" android:scaleType="centerCrop" app:iconColor="@color/FG_2" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="30.0dip" android:text="@string/d11" />
-</LinearLayout>

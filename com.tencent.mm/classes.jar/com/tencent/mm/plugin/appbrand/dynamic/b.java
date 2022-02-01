@@ -2,32 +2,32 @@ package com.tencent.mm.plugin.appbrand.dynamic;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class b
 {
-  private static aq khX;
-  private static aq khY;
-  private static aq khZ;
+  private static MMHandler llG;
+  private static MMHandler llH;
+  private static MMHandler llI;
   
   static
   {
     AppMethodBeat.i(121140);
-    khX = new aq("DynamicPage#WorkerThread");
-    khY = new aq("DynamicPage#IPCThread");
-    khZ = new aq(Looper.getMainLooper());
+    llG = new MMHandler("DynamicPage#WorkerThread");
+    llH = new MMHandler("DynamicPage#IPCThread");
+    llI = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(121140);
   }
   
-  public static boolean Q(Runnable paramRunnable)
+  public static boolean V(Runnable paramRunnable)
   {
     AppMethodBeat.i(121139);
-    boolean bool = khZ.post(paramRunnable);
+    boolean bool = llI.post(paramRunnable);
     AppMethodBeat.o(121139);
     return bool;
   }
   
-  public static boolean k(Runnable paramRunnable, long paramLong)
+  public static boolean j(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(121138);
     if (paramRunnable == null)
@@ -35,7 +35,7 @@ public final class b
       AppMethodBeat.o(121138);
       return false;
     }
-    boolean bool = khX.postDelayed(paramRunnable, paramLong);
+    boolean bool = llG.postDelayed(paramRunnable, paramLong);
     AppMethodBeat.o(121138);
     return bool;
   }
@@ -48,14 +48,14 @@ public final class b
       AppMethodBeat.o(121137);
       return false;
     }
-    boolean bool = khX.post(paramRunnable);
+    boolean bool = llG.post(paramRunnable);
     AppMethodBeat.o(121137);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b
  * JD-Core Version:    0.7.0.1
  */

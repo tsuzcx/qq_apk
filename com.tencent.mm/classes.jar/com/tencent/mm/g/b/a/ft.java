@@ -2,212 +2,116 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Arrays;
 
 public final class ft
   extends a
 {
-  private String dUF = "";
-  public long dUG = 0L;
-  public long dUH = 0L;
-  public long dUI = 0L;
-  public long dUJ = 0L;
-  public long dUK = 0L;
-  public long dUL = 0L;
-  public long dUM = 0L;
-  public long dUN = 0L;
-  public long dUO = 0L;
-  private String dUP = "";
-  public long dUQ = 0L;
-  public long dUR = 0L;
-  public long dUS = 0L;
-  private String env = "";
-  private String enw = "";
+  public String eHv;
+  public long eHw;
+  public long eHx;
+  public long erY;
   
-  public final String RC()
+  public ft()
   {
-    AppMethodBeat.i(126699);
+    this.eHv = "";
+    this.erY = 0L;
+    this.eHw = 0L;
+    this.eHx = 0L;
+  }
+  
+  public ft(String paramString)
+  {
+    AppMethodBeat.i(121753);
+    this.eHv = "";
+    this.erY = 0L;
+    this.eHw = 0L;
+    this.eHx = 0L;
+    if (paramString != null)
+    {
+      paramString = paramString.split(",");
+      if (paramString != null)
+      {
+        if (paramString.length >= 4) {
+          break label123;
+        }
+        String[] arrayOfString = new String[4];
+        Arrays.fill(arrayOfString, 0, 4, "");
+        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
+        paramString = arrayOfString;
+      }
+    }
+    label123:
+    for (;;)
+    {
+      sK(paramString[0]);
+      this.erY = Util.getLong(paramString[1], 0L);
+      pk(Util.getLong(paramString[2], 0L));
+      this.eHx = Util.getLong(paramString[3], 0L);
+      AppMethodBeat.o(121753);
+      return;
+    }
+  }
+  
+  public final String abV()
+  {
+    AppMethodBeat.i(121756);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.env);
+    ((StringBuffer)localObject).append(this.eHv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enw);
+    ((StringBuffer)localObject).append(this.erY);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUF);
+    ((StringBuffer)localObject).append(this.eHw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUG);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUI);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUJ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUK);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUL);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUM);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUN);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUO);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUQ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUS);
+    ((StringBuffer)localObject).append(this.eHx);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(126699);
+    aMq((String)localObject);
+    AppMethodBeat.o(121756);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(126700);
+    AppMethodBeat.i(121757);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Tid:").append(this.env);
+    ((StringBuffer)localObject).append("Name:").append(this.eHv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoUrl:").append(this.enw);
+    ((StringBuffer)localObject).append("Type:").append(this.erY);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NewMd5:").append(this.dUF);
+    ((StringBuffer)localObject).append("TimeStampMs:").append(this.eHw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DownloadStartTime:").append(this.dUG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DownloadEndTime:").append(this.dUH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoSize:").append(this.dUI);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoDuration:").append(this.dUJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoBitrate:").append(this.dUK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AudioBitrate:").append(this.dUL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoFps:").append(this.dUM);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoWidth:").append(this.dUN);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoHeight:").append(this.dUO);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CDNIp:").append(this.dUP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OriginalAudioChannel:").append(this.dUQ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HadPreloadSize:").append(this.dUR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HadPreloadCompletion:").append(this.dUS);
+    ((StringBuffer)localObject).append("HashCode:").append(this.eHx);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(126700);
+    AppMethodBeat.o(121757);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16665;
+    return 0;
   }
   
-  public final ft kL(long paramLong)
+  public final ft pk(long paramLong)
   {
-    this.dUG = paramLong;
+    AppMethodBeat.i(121755);
+    this.eHw = paramLong;
+    super.bj("TimeStampMs", this.eHw);
+    AppMethodBeat.o(121755);
     return this;
   }
   
-  public final ft kM(long paramLong)
+  public final ft sK(String paramString)
   {
-    this.dUH = paramLong;
-    return this;
-  }
-  
-  public final ft kN(long paramLong)
-  {
-    this.dUI = paramLong;
-    return this;
-  }
-  
-  public final ft kO(long paramLong)
-  {
-    this.dUJ = paramLong;
-    return this;
-  }
-  
-  public final ft kP(long paramLong)
-  {
-    this.dUK = paramLong;
-    return this;
-  }
-  
-  public final ft kQ(long paramLong)
-  {
-    this.dUL = paramLong;
-    return this;
-  }
-  
-  public final ft kR(long paramLong)
-  {
-    this.dUM = paramLong;
-    return this;
-  }
-  
-  public final ft kS(long paramLong)
-  {
-    this.dUN = paramLong;
-    return this;
-  }
-  
-  public final ft kT(long paramLong)
-  {
-    this.dUO = paramLong;
-    return this;
-  }
-  
-  public final ft kU(long paramLong)
-  {
-    this.dUQ = paramLong;
-    return this;
-  }
-  
-  public final ft kV(long paramLong)
-  {
-    this.dUR = paramLong;
-    return this;
-  }
-  
-  public final ft kW(long paramLong)
-  {
-    this.dUS = paramLong;
-    return this;
-  }
-  
-  public final ft pb(String paramString)
-  {
-    AppMethodBeat.i(126696);
-    this.enw = t("VideoUrl", paramString, true);
-    AppMethodBeat.o(126696);
-    return this;
-  }
-  
-  public final ft pc(String paramString)
-  {
-    AppMethodBeat.i(126697);
-    this.dUF = t("NewMd5", paramString, true);
-    AppMethodBeat.o(126697);
-    return this;
-  }
-  
-  public final ft pd(String paramString)
-  {
-    AppMethodBeat.i(126698);
-    this.dUP = t("CDNIp", paramString, true);
-    AppMethodBeat.o(126698);
+    AppMethodBeat.i(121754);
+    this.eHv = x("Name", paramString, true);
+    AppMethodBeat.o(121754);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ft
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ public abstract interface a
   
   public abstract void a(String paramString, Map<String, String> paramMap, a.c paramc);
   
-  public abstract Bitmap cA(String paramString);
+  public abstract Bitmap cR(String paramString);
 }
 
 

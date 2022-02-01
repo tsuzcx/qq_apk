@@ -1,7 +1,6 @@
 package com.tencent.mm.recoveryv2;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -12,110 +11,109 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Closeable;
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
 
 public final class l
 {
-  static int aj(long paramLong, int paramInt)
+  static int am(long paramLong, int paramInt)
   {
-    AppMethodBeat.i(195399);
+    AppMethodBeat.i(193887);
     if ((paramLong < -2147483648L) || (paramLong > 2147483647L))
     {
       a.a.log(5, "MicroMsg.recovery.utils", paramLong + " cannot be cast to int without changing its value.");
-      AppMethodBeat.o(195399);
+      AppMethodBeat.o(193887);
       return paramInt;
     }
     paramInt = (int)paramLong;
-    AppMethodBeat.o(195399);
+    AppMethodBeat.o(193887);
     return paramInt;
   }
   
   /* Error */
-  private static String bp(Context paramContext)
+  private static String bJ(Context paramContext)
   {
     // Byte code:
-    //   0: ldc 59
-    //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 65	android/os/Process:myPid	()I
+    //   0: ldc 58
+    //   2: invokestatic 18	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: invokestatic 64	android/os/Process:myPid	()I
     //   8: istore_1
     //   9: aload_0
-    //   10: ldc 67
-    //   12: invokevirtual 73	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   15: checkcast 75	android/app/ActivityManager
-    //   18: invokevirtual 79	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
+    //   10: ldc 66
+    //   12: invokevirtual 72	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
+    //   15: checkcast 74	android/app/ActivityManager
+    //   18: invokevirtual 78	android/app/ActivityManager:getRunningAppProcesses	()Ljava/util/List;
     //   21: astore 4
     //   23: aload_0
-    //   24: invokevirtual 82	android/content/Context:getPackageName	()Ljava/lang/String;
+    //   24: invokevirtual 81	android/content/Context:getPackageName	()Ljava/lang/String;
     //   27: astore_0
     //   28: aload 4
-    //   30: invokeinterface 88 1 0
+    //   30: invokeinterface 87 1 0
     //   35: astore 4
     //   37: aload 4
-    //   39: invokeinterface 94 1 0
+    //   39: invokeinterface 93 1 0
     //   44: ifeq +58 -> 102
     //   47: aload 4
-    //   49: invokeinterface 98 1 0
-    //   54: checkcast 100	android/app/ActivityManager$RunningAppProcessInfo
+    //   49: invokeinterface 97 1 0
+    //   54: checkcast 99	android/app/ActivityManager$RunningAppProcessInfo
     //   57: astore 5
     //   59: aload 5
-    //   61: getfield 104	android/app/ActivityManager$RunningAppProcessInfo:pid	I
+    //   61: getfield 103	android/app/ActivityManager$RunningAppProcessInfo:pid	I
     //   64: iload_1
     //   65: if_icmpne -28 -> 37
     //   68: aload_0
     //   69: aload 5
-    //   71: getfield 108	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
-    //   74: invokevirtual 114	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   71: getfield 107	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
+    //   74: invokevirtual 113	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   77: ifeq -40 -> 37
     //   80: aload 5
-    //   82: getfield 108	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
+    //   82: getfield 107	android/app/ActivityManager$RunningAppProcessInfo:processName	Ljava/lang/String;
     //   85: astore_0
-    //   86: ldc 59
-    //   88: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   86: ldc 58
+    //   88: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   91: aload_0
     //   92: areturn
     //   93: astore_0
     //   94: iconst_5
-    //   95: ldc 25
-    //   97: ldc 116
-    //   99: invokestatic 50	com/tencent/mm/recoveryv2/a$a:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   95: ldc 24
+    //   97: ldc 115
+    //   99: invokestatic 49	com/tencent/mm/recoveryv2/a$a:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   102: sipush 128
     //   105: newarray byte
     //   107: astore 5
     //   109: aconst_null
     //   110: astore 4
-    //   112: new 118	java/io/FileInputStream
+    //   112: new 117	java/io/FileInputStream
     //   115: dup
-    //   116: new 27	java/lang/StringBuilder
+    //   116: new 26	java/lang/StringBuilder
     //   119: dup
-    //   120: ldc 120
-    //   122: invokespecial 123	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   120: ldc 119
+    //   122: invokespecial 122	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   125: iload_1
-    //   126: invokevirtual 126	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   129: ldc 128
-    //   131: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   137: invokespecial 129	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   126: invokevirtual 125	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   129: ldc 127
+    //   131: invokevirtual 39	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: invokevirtual 43	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   137: invokespecial 128	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   140: astore_0
     //   141: aload_0
     //   142: aload 5
-    //   144: invokevirtual 133	java/io/FileInputStream:read	([B)I
+    //   144: invokevirtual 132	java/io/FileInputStream:read	([B)I
     //   147: istore_3
     //   148: iload_3
     //   149: ifle +40 -> 189
     //   152: iconst_0
     //   153: istore_1
     //   154: goto +117 -> 271
-    //   157: new 110	java/lang/String
+    //   157: new 109	java/lang/String
     //   160: dup
     //   161: aload 5
     //   163: iconst_0
     //   164: iload_2
-    //   165: invokespecial 136	java/lang/String:<init>	([BII)V
+    //   165: invokespecial 135	java/lang/String:<init>	([BII)V
     //   168: astore 4
     //   170: aload_0
-    //   171: invokestatic 140	com/tencent/mm/recoveryv2/l$b:closeQuietly	(Ljava/lang/Object;)V
-    //   174: ldc 59
-    //   176: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   171: invokestatic 139	com/tencent/mm/recoveryv2/l$b:closeQuietly	(Ljava/lang/Object;)V
+    //   174: ldc 58
+    //   176: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   179: aload 4
     //   181: areturn
     //   182: iload_1
@@ -124,28 +122,28 @@ public final class l
     //   185: istore_1
     //   186: goto +85 -> 271
     //   189: aload_0
-    //   190: invokestatic 140	com/tencent/mm/recoveryv2/l$b:closeQuietly	(Ljava/lang/Object;)V
-    //   193: ldc 59
-    //   195: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   198: ldc 142
+    //   190: invokestatic 139	com/tencent/mm/recoveryv2/l$b:closeQuietly	(Ljava/lang/Object;)V
+    //   193: ldc 58
+    //   195: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   198: ldc 141
     //   200: areturn
     //   201: astore_0
     //   202: aload 4
     //   204: astore_0
     //   205: iconst_5
-    //   206: ldc 25
-    //   208: ldc 144
-    //   210: invokestatic 50	com/tencent/mm/recoveryv2/a$a:log	(ILjava/lang/String;Ljava/lang/String;)V
+    //   206: ldc 24
+    //   208: ldc 143
+    //   210: invokestatic 49	com/tencent/mm/recoveryv2/a$a:log	(ILjava/lang/String;Ljava/lang/String;)V
     //   213: aload_0
-    //   214: invokestatic 140	com/tencent/mm/recoveryv2/l$b:closeQuietly	(Ljava/lang/Object;)V
+    //   214: invokestatic 139	com/tencent/mm/recoveryv2/l$b:closeQuietly	(Ljava/lang/Object;)V
     //   217: goto -24 -> 193
     //   220: astore_0
     //   221: aconst_null
     //   222: astore 4
     //   224: aload 4
-    //   226: invokestatic 140	com/tencent/mm/recoveryv2/l$b:closeQuietly	(Ljava/lang/Object;)V
-    //   229: ldc 59
-    //   231: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   226: invokestatic 139	com/tencent/mm/recoveryv2/l$b:closeQuietly	(Ljava/lang/Object;)V
+    //   229: ldc 58
+    //   231: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   234: aload_0
     //   235: athrow
     //   236: astore 4
@@ -189,7 +187,7 @@ public final class l
     //   246	1	4	localObject3	Object
     //   251	6	4	localObject4	Object
     //   261	1	4	localObject5	Object
-    //   266	1	4	localException	Exception
+    //   266	1	4	localException	java.lang.Exception
     //   57	222	5	localObject6	Object
     // Exception table:
     //   from	to	target	type
@@ -204,58 +202,58 @@ public final class l
     //   157	170	266	java/lang/Exception
   }
   
-  static boolean cb(Context paramContext, String paramString)
-  {
-    AppMethodBeat.i(195396);
-    if ((bp(paramContext) != null) && (bp(paramContext).equals(paramContext.getPackageName() + paramString)))
-    {
-      AppMethodBeat.o(195396);
-      return true;
-    }
-    AppMethodBeat.o(195396);
-    return false;
-  }
-  
   static <T> T checkNotNull(T paramT, String paramString)
   {
-    AppMethodBeat.i(195395);
+    AppMethodBeat.i(193883);
     if (paramT == null)
     {
       paramT = new RuntimeException(String.valueOf(paramString));
-      AppMethodBeat.o(195395);
+      AppMethodBeat.o(193883);
       throw paramT;
     }
-    AppMethodBeat.o(195395);
+    AppMethodBeat.o(193883);
     return paramT;
   }
   
-  public static File ib(Context paramContext)
+  static boolean cv(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(195394);
+    AppMethodBeat.i(193884);
+    if ((bJ(paramContext) != null) && (bJ(paramContext).equals(paramContext.getPackageName() + paramString)))
+    {
+      AppMethodBeat.o(193884);
+      return true;
+    }
+    AppMethodBeat.o(193884);
+    return false;
+  }
+  
+  public static File iU(Context paramContext)
+  {
+    AppMethodBeat.i(193882);
     paramContext = new File(paramContext.getFilesDir().getParentFile(), "MicroMsg/recovery");
-    AppMethodBeat.o(195394);
+    AppMethodBeat.o(193882);
     return paramContext;
   }
   
-  static String ic(Context paramContext)
+  static String iV(Context paramContext)
   {
-    AppMethodBeat.i(195398);
+    AppMethodBeat.i(193886);
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramContext.getPackageName(), 0);
       if (paramContext != null)
       {
         paramContext = paramContext.versionName;
-        AppMethodBeat.o(195398);
+        AppMethodBeat.o(193886);
         return paramContext;
       }
     }
     catch (RuntimeException paramContext)
     {
       a.w("MicroMsg.recovery.utils", "get version name fail", paramContext);
-      AppMethodBeat.o(195398);
+      AppMethodBeat.o(193886);
       return null;
-      AppMethodBeat.o(195398);
+      AppMethodBeat.o(193886);
       return null;
     }
     catch (PackageManager.NameNotFoundException paramContext)
@@ -267,97 +265,52 @@ public final class l
   
   static boolean isNumeric(String paramString)
   {
-    AppMethodBeat.i(195400);
+    AppMethodBeat.i(193888);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(195400);
+      AppMethodBeat.o(193888);
       return false;
     }
     if (paramString.startsWith("-"))
     {
       bool = TextUtils.isDigitsOnly(paramString.substring(1));
-      AppMethodBeat.o(195400);
+      AppMethodBeat.o(193888);
       return bool;
     }
     boolean bool = TextUtils.isDigitsOnly(paramString);
-    AppMethodBeat.o(195400);
+    AppMethodBeat.o(193888);
     return bool;
-  }
-  
-  static final class a
-  {
-    private static Application IoX;
-    
-    public static Application flp()
-    {
-      AppMethodBeat.i(195386);
-      if (IoX == null) {
-        IoX = getApplication();
-      }
-      Application localApplication = IoX;
-      AppMethodBeat.o(195386);
-      return localApplication;
-    }
-    
-    private static Application getApplication()
-    {
-      AppMethodBeat.i(195387);
-      try
-      {
-        Object localObject1 = Class.forName("android.app.AppGlobals").getDeclaredMethod("getInitialApplication", new Class[0]);
-        ((Method)localObject1).setAccessible(true);
-        localObject1 = (Application)((Method)localObject1).invoke(null, new Object[0]);
-        AppMethodBeat.o(195387);
-        return localObject1;
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          try
-          {
-            Object localObject2 = Class.forName("android.app.ActivityThread").getDeclaredMethod("currentApplication", new Class[0]);
-            ((Method)localObject2).setAccessible(true);
-            localObject2 = (Application)((Method)localObject2).invoke(null, new Object[0]);
-          }
-          catch (Exception localException2)
-          {
-            Object localObject3 = null;
-          }
-        }
-      }
-    }
   }
   
   @SuppressLint({"LongLogTag"})
   public static final class b
   {
-    public static boolean L(File paramFile)
+    public static boolean M(File paramFile)
     {
-      AppMethodBeat.i(195389);
+      AppMethodBeat.i(193877);
       if (paramFile == null)
       {
-        AppMethodBeat.o(195389);
+        AppMethodBeat.o(193877);
         return false;
       }
       if (paramFile.isDirectory())
       {
-        bool = M(paramFile);
-        AppMethodBeat.o(195389);
+        bool = N(paramFile);
+        AppMethodBeat.o(193877);
         return bool;
       }
       boolean bool = safeDeleteFile(paramFile);
-      AppMethodBeat.o(195389);
+      AppMethodBeat.o(193877);
       return bool;
     }
     
-    private static boolean M(File paramFile)
+    private static boolean N(File paramFile)
     {
       int i = 0;
-      AppMethodBeat.i(195391);
+      AppMethodBeat.i(193879);
       if ((paramFile == null) || (!paramFile.exists()))
       {
-        AppMethodBeat.o(195391);
+        AppMethodBeat.o(193879);
         return false;
       }
       if (paramFile.isFile()) {
@@ -365,7 +318,7 @@ public final class l
       }
       for (;;)
       {
-        AppMethodBeat.o(195391);
+        AppMethodBeat.o(193879);
         return true;
         if (paramFile.isDirectory())
         {
@@ -375,7 +328,7 @@ public final class l
             int j = arrayOfFile.length;
             while (i < j)
             {
-              M(arrayOfFile[i]);
+              N(arrayOfFile[i]);
               i += 1;
             }
             safeDeleteFile(paramFile);
@@ -384,23 +337,23 @@ public final class l
       }
     }
     
-    static void N(File paramFile)
+    static void O(File paramFile)
     {
-      AppMethodBeat.i(195392);
+      AppMethodBeat.i(193880);
       if (paramFile == null)
       {
         paramFile = new IOException("File is null.");
-        AppMethodBeat.o(195392);
+        AppMethodBeat.o(193880);
         throw paramFile;
       }
       if (paramFile.exists()) {
-        L(paramFile);
+        M(paramFile);
       }
       File localFile = paramFile.getParentFile();
       if (localFile == null)
       {
         paramFile = new IOException("Can not create parent for current file, path = " + paramFile.getAbsolutePath());
-        AppMethodBeat.o(195392);
+        AppMethodBeat.o(193880);
         throw paramFile;
       }
       if (!localFile.exists()) {
@@ -409,29 +362,29 @@ public final class l
       if (!paramFile.createNewFile())
       {
         paramFile = new IOException("Create file fail, file already exists.");
-        AppMethodBeat.o(195392);
+        AppMethodBeat.o(193880);
         throw paramFile;
       }
-      AppMethodBeat.o(195392);
+      AppMethodBeat.o(193880);
     }
     
-    public static File[] O(File paramFile)
+    public static File[] P(File paramFile)
     {
-      AppMethodBeat.i(195393);
+      AppMethodBeat.i(193881);
       try
       {
         paramFile = paramFile.listFiles();
         if (paramFile != null)
         {
-          AppMethodBeat.o(195393);
+          AppMethodBeat.o(193881);
           return paramFile;
         }
-        AppMethodBeat.o(195393);
+        AppMethodBeat.o(193881);
         return new File[0];
       }
       catch (Throwable paramFile)
       {
-        AppMethodBeat.o(195393);
+        AppMethodBeat.o(193881);
       }
       return new File[0];
     }
@@ -439,22 +392,22 @@ public final class l
     @SuppressLint({"NewApi"})
     static void closeQuietly(Object paramObject)
     {
-      AppMethodBeat.i(195388);
+      AppMethodBeat.i(193876);
       if (paramObject == null)
       {
-        AppMethodBeat.o(195388);
+        AppMethodBeat.o(193876);
         return;
       }
       if ((paramObject instanceof Closeable)) {
         try
         {
           ((Closeable)paramObject).close();
-          AppMethodBeat.o(195388);
+          AppMethodBeat.o(193876);
           return;
         }
         catch (Throwable paramObject)
         {
-          AppMethodBeat.o(195388);
+          AppMethodBeat.o(193876);
           return;
         }
       }
@@ -462,20 +415,20 @@ public final class l
         try
         {
           ((AutoCloseable)paramObject).close();
-          AppMethodBeat.o(195388);
+          AppMethodBeat.o(193876);
           return;
         }
         catch (Throwable paramObject) {}
       }
-      AppMethodBeat.o(195388);
+      AppMethodBeat.o(193876);
     }
     
     private static boolean safeDeleteFile(File paramFile)
     {
-      AppMethodBeat.i(195390);
+      AppMethodBeat.i(193878);
       if (paramFile == null)
       {
-        AppMethodBeat.o(195390);
+        AppMethodBeat.o(193878);
         return true;
       }
       if (paramFile.exists())
@@ -486,10 +439,10 @@ public final class l
           new StringBuilder("Failed to delete file, try to delete when exit. path: ").append(paramFile.getPath());
           paramFile.deleteOnExit();
         }
-        AppMethodBeat.o(195390);
+        AppMethodBeat.o(193878);
         return bool;
       }
-      AppMethodBeat.o(195390);
+      AppMethodBeat.o(193878);
       return true;
     }
   }

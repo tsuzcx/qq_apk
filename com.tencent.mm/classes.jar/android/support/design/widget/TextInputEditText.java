@@ -13,7 +13,7 @@ public class TextInputEditText
 {
   public TextInputEditText(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130968945);
+    this(paramContext, paramAttributeSet, 2130968974);
   }
   
   public TextInputEditText(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -43,7 +43,7 @@ public class TextInputEditText
   public CharSequence getHint()
   {
     TextInputLayout localTextInputLayout = getTextInputLayout();
-    if ((localTextInputLayout != null) && (localTextInputLayout.vB)) {
+    if ((localTextInputLayout != null) && (localTextInputLayout.vI)) {
       return localTextInputLayout.getHint();
     }
     return super.getHint();
@@ -60,7 +60,7 @@ public class TextInputEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.widget.TextInputEditText
  * JD-Core Version:    0.7.0.1
  */

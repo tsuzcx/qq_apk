@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/oq" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/g4n" android:background="@color/oq" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/n3" />
-    <ListView android:id="@id/f9k" android:background="@color/oq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@color/oe" android:dividerHeight="@dimen/e2" style="@style/n3" />
-    <include android:id="@id/bvc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/a36" />
-    <TextView android:textColor="@color/km" android:gravity="center_horizontal" android:id="@id/f8t" android:background="@color/a_r" android:paddingTop="@dimen/he" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/c2z" />
-    <include layout="@layout/a2j" />
-</RelativeLayout>
+<ScrollView android:scrollbars="none" android:fillViewport="true" style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/h68" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj">
+            <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2RewardBannerView android:id="@id/a2s" android:background="@drawable/t_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/l4" android:id="@id/h64" android:paddingLeft="@dimen/i1" android:paddingTop="@dimen/hs" android:paddingRight="@dimen/i1" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bv5" />
+            <com.tencent.mm.plugin.emoji.ui.GridInScrollView android:gravity="center_horizontal" android:id="@android:id/list" android:background="@color/ac_" android:focusable="true" android:scrollbars="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i1" android:layout_marginRight="@dimen/i1" android:listSelector="@android:color/transparent" android:cacheColorHint="#00000000" android:horizontalSpacing="@dimen/ib" android:verticalSpacing="@dimen/hs" android:numColumns="3" android:divider="@null" android:dividerHeight="0.0dip" />
+            <LinearLayout android:gravity="bottom|center" android:layout_gravity="bottom|center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textColor="@color/n5" android:gravity="bottom|center" android:layout_gravity="bottom|center" android:id="@id/h66" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ir" android:text="@string/bvf" style="@style/p_" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:id="@id/h69" android:visibility="gone" style="@style/rj">
+            <com.tencent.mm.ui.base.MMFormInputView android:id="@id/h6_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/br" android:layout_marginTop="@dimen/hv" android:layout_marginRight="@dimen/br" android:layout_marginBottom="@dimen/ir" form:form_hint="@string/bvg" form:form_layout="@layout/a3_" form:form_title="@string/bvh" style="@style/nn" />
+            <Button android:id="@id/h6a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/br" android:layout_marginTop="@dimen/ir" android:layout_marginRight="@dimen/br" android:layout_marginBottom="@dimen/ir" android:text="@string/bvi" style="@style/oy" />
+        </LinearLayout>
+    </FrameLayout>
+</ScrollView>

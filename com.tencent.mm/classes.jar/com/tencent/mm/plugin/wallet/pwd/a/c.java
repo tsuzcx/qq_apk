@@ -1,27 +1,26 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.protocal.protobuf.cqh;
-import com.tencent.mm.protocal.protobuf.cqi;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.protocal.protobuf.dig;
+import com.tencent.mm.protocal.protobuf.dih;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends a<cqi>
+  extends com.tencent.mm.ak.c<dih>
 {
   public c()
   {
     AppMethodBeat.i(69524);
-    b.a locala = new b.a();
-    locala.hQF = new cqh();
-    locala.hQG = new cqi();
+    d.a locala = new d.a();
+    locala.iLN = new dig();
+    locala.iLO = new dih();
     locala.funcId = 2904;
     locala.uri = "/cgi-bin/mmpay-bin/queryunipayorder";
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    c(locala.aDS());
-    ae.i("MicroMsg.CgiQueryUniPayOrder", "query uni pay order");
+    c(locala.aXF());
+    Log.i("MicroMsg.CgiQueryUniPayOrder", "query uni pay order");
     AppMethodBeat.o(69524);
   }
 }

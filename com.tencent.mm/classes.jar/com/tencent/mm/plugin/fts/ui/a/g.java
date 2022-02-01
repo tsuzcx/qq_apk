@@ -11,20 +11,20 @@ import com.tencent.mm.plugin.fts.a.d;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.ui.b.c;
 import com.tencent.mm.plugin.fts.ui.n;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g
   extends m
 {
-  private a tLX;
-  CharSequence tLY;
+  private a xcY;
+  CharSequence xcZ;
   
   public g(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112072);
-    this.tLX = new a();
+    this.xcY = new a();
     AppMethodBeat.o(112072);
   }
   
@@ -32,18 +32,18 @@ public final class g
   {
     AppMethodBeat.i(112073);
     super.a(paramContext, parama, paramVarArgs);
-    paramVarArgs = d.ahd(this.kno.talker);
+    paramVarArgs = d.arL(this.lqW.talker);
     parama = paramVarArgs;
-    if (bu.isNullOrNil(paramVarArgs)) {
-      parama = d.ahd(this.kno.tEY);
+    if (Util.isNullOrNil(paramVarArgs)) {
+      parama = d.arL(this.lqW.wVX);
     }
-    this.tLY = k.d(paramContext, parama, b.c.tIY);
+    this.xcZ = l.d(paramContext, parama, b.c.wZX);
     AppMethodBeat.o(112073);
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a.b agQ()
+  public final com.tencent.mm.plugin.fts.a.d.a.a.b axc()
   {
-    return this.tLX;
+    return this.xcY;
   }
   
   public final class a
@@ -57,15 +57,15 @@ public final class g
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(112070);
-      paramViewGroup = LayoutInflater.from(paramContext).inflate(2131494215, paramViewGroup, false);
-      m.a locala = (m.a)g.this.tMz;
-      locala.fQl = ((ImageView)paramViewGroup.findViewById(2131297008));
-      locala.fQm = ((TextView)paramViewGroup.findViewById(2131302867));
-      locala.fVU = ((TextView)paramViewGroup.findViewById(2131302555));
-      locala.knu = paramViewGroup.findViewById(2131299154);
-      locala.fVV = ((TextView)paramViewGroup.findViewById(2131305822));
-      locala.fQl.getLayoutParams().width = com.tencent.mm.cb.a.ax(paramContext, 2131165558);
-      locala.fQl.getLayoutParams().height = com.tencent.mm.cb.a.ax(paramContext, 2131165558);
+      paramViewGroup = LayoutInflater.from(paramContext).inflate(2131494770, paramViewGroup, false);
+      m.a locala = (m.a)g.this.xdz;
+      locala.gvv = ((ImageView)paramViewGroup.findViewById(2131297134));
+      locala.gvw = ((TextView)paramViewGroup.findViewById(2131305440));
+      locala.gBb = ((TextView)paramViewGroup.findViewById(2131304987));
+      locala.lrc = paramViewGroup.findViewById(2131299682);
+      locala.timeTV = ((TextView)paramViewGroup.findViewById(2131309101));
+      locala.gvv.getLayoutParams().width = com.tencent.mm.cb.a.aG(paramContext, 2131165576);
+      locala.gvv.getLayoutParams().height = com.tencent.mm.cb.a.aG(paramContext, 2131165576);
       paramViewGroup.setTag(locala);
       AppMethodBeat.o(112070);
       return paramViewGroup;
@@ -76,25 +76,25 @@ public final class g
       AppMethodBeat.i(112071);
       paramContext = (g)parama1;
       parama = (m.a)parama;
-      n.p(parama.knu, g.this.tGL);
-      if (bu.isNullOrNil(paramContext.kno.talker)) {
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fQl, paramContext.kno.tEY);
+      n.q(parama.lrc, g.this.wXK);
+      if (Util.isNullOrNil(paramContext.lqW.talker)) {
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.gvv, paramContext.lqW.wVX);
       }
       for (;;)
       {
-        n.a(paramContext.tLY, parama.fQm);
-        n.a(paramContext.heE, parama.fVU);
-        n.a(paramContext.tMx, parama.fVV);
+        n.a(paramContext.xcZ, parama.gvw);
+        n.a(paramContext.hXr, parama.gBb);
+        n.a(paramContext.xdx, parama.timeTV);
         AppMethodBeat.o(112071);
         return;
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fQl, paramContext.kno.talker);
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.gvv, paramContext.lqW.talker);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/dnq" android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a7c" android:overScrollMode="never" />
+    <Button android:id="@id/i2m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="get challenge" />
+    <Button android:id="@id/gzk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="regen and upload ask" />
+    <Button android:id="@id/gzl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="regen and upload pay auth key" />
 </LinearLayout>

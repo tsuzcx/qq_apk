@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.subapp.jdbiz;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b
 {
@@ -12,7 +12,7 @@ public final class b
   public final boolean isValid()
   {
     AppMethodBeat.i(28867);
-    if (!bu.isNullOrNil(this.username))
+    if (!Util.isNullOrNil(this.username))
     {
       AppMethodBeat.o(28867);
       return true;
@@ -31,7 +31,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.jdbiz.b
  * JD-Core Version:    0.7.0.1
  */

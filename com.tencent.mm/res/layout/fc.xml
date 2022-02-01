@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:id="@id/qs" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:layout_width="64.0dip" android:layout_height="64.0dip">
-            <ImageView android:id="@id/azh" android:layout_width="53.299988dip" android:layout_height="53.299988dip" android:layout_centerInParent="true" />
-        </RelativeLayout>
-        <View android:layout_width="@dimen/i_" style="@style/oh" />
-        <TextView android:textStyle="bold" android:id="@id/b0e" android:layout_weight="1.0" style="@style/lx" />
-    </LinearLayout>
-    <TextView android:id="@id/b01" android:background="@drawable/bvc" android:padding="6.0dip" android:minHeight="@dimen/jm" android:singleLine="false" style="@style/le" />
-</LinearLayout>
+    <com.tencent.mm.pluginsdk.ui.CommonVideoView android:id="@id/qq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

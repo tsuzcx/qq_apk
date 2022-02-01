@@ -19,17 +19,17 @@ class p
   
   public p()
   {
-    AppMethodBeat.i(192590);
+    AppMethodBeat.i(188241);
     this.a = false;
     this.b = false;
     this.c = null;
     this.c = new HashMap();
-    AppMethodBeat.o(192590);
+    AppMethodBeat.o(188241);
   }
   
   public JSONObject a()
   {
-    AppMethodBeat.i(192593);
+    AppMethodBeat.i(188244);
     JSONObject localJSONObject = new JSONObject();
     if (this.c != null) {
       try
@@ -40,7 +40,7 @@ class p
           Map.Entry localEntry = (Map.Entry)localIterator.next();
           localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
         }
-        AppMethodBeat.o(192593);
+        AppMethodBeat.o(188244);
       }
       catch (Exception localException) {}
     }
@@ -53,10 +53,10 @@ class p
     {
       try
       {
-        AppMethodBeat.i(192591);
+        AppMethodBeat.i(188242);
         if (TextUtils.isEmpty(paramString))
         {
-          AppMethodBeat.o(192591);
+          AppMethodBeat.o(188242);
           return;
         }
         str = "";
@@ -64,7 +64,7 @@ class p
         {
           str = "_begin";
           this.c.put(paramString + str, String.valueOf(System.currentTimeMillis()));
-          AppMethodBeat.o(192591);
+          AppMethodBeat.o(188242);
           continue;
         }
         if (paramByte != 2) {
@@ -125,12 +125,12 @@ class p
     {
       try
       {
-        AppMethodBeat.i(192594);
+        AppMethodBeat.i(188245);
         if (x.a().b())
         {
           if (((!this.b) || (!this.a)) && (System.currentTimeMillis() % 10L != 0L))
           {
-            AppMethodBeat.o(192594);
+            AppMethodBeat.o(188245);
             return bool;
           }
           this.b = true;
@@ -143,19 +143,19 @@ class p
             this.c.put("app_scene_id", QbSdk.mSettings.get("app_scene_id"));
           }
           TbsOneGreyInfoHelper.getCoreEntry().getX5CoreMessy().setTbsInitPerformanceData(paramInt, this.c);
-          AppMethodBeat.o(192594);
+          AppMethodBeat.o(188245);
           continue;
         }
         bool = false;
       }
       finally {}
-      AppMethodBeat.o(192594);
+      AppMethodBeat.o(188245);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.p
  * JD-Core Version:    0.7.0.1
  */

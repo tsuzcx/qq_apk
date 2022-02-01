@@ -4,7 +4,7 @@ import java.util.List;
 
 public abstract interface d
 {
-  public abstract void eU(List paramList);
+  public abstract void fP(List paramList);
 }
 
 

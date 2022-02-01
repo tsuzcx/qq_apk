@@ -15,17 +15,17 @@ public final class j
     super(paramView, paramb);
   }
   
-  public final void etN()
+  public final void fzj()
   {
     AppMethodBeat.i(126398);
-    if (this.BOr == null)
+    if (this.GoY == null)
     {
-      this.BOr = new k(this.BLL.dkN(), this.BLL, this);
-      this.BOs.removeAllViews();
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.BLL.etj().x, this.BLL.etj().y);
-      this.BOs.addView(this.BOr, localLayoutParams);
+      this.GoY = new k(this.Gmr.eeF(), this.Gmr, this);
+      this.GoZ.removeAllViews();
+      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(this.Gmr.cZM().x, this.Gmr.cZM().y);
+      this.GoZ.addView(this.GoY, localLayoutParams);
     }
-    this.BOr.a(this.BIY, etc());
+    this.GoY.a(this.GjH, fyz());
     AppMethodBeat.o(126398);
   }
 }

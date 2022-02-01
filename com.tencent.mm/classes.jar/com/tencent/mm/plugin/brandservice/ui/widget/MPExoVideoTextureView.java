@@ -6,12 +6,12 @@ import android.opengl.GLES20;
 import android.util.AttributeSet;
 import android.view.Surface;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.i.e;
-import com.tencent.mm.pluginsdk.ui.tools.u;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.pluginsdk.ui.tools.w;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.MMTextureView;
 import javax.microedition.khronos.egl.EGL10;
 import javax.microedition.khronos.egl.EGLConfig;
@@ -23,7 +23,7 @@ public class MPExoVideoTextureView
 {
   private int mVideoHeight;
   private int mVideoWidth;
-  private u ozo;
+  private w pMX;
   
   public MPExoVideoTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,7 +34,7 @@ public class MPExoVideoTextureView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(6261);
-    this.ozo = new u();
+    this.pMX = new w();
     this.mVideoWidth = 0;
     this.mVideoHeight = 0;
     AppMethodBeat.o(6261);
@@ -64,7 +64,7 @@ public class MPExoVideoTextureView
     AppMethodBeat.o(6267);
   }
   
-  public final void bTA()
+  public final void crn()
   {
     AppMethodBeat.i(6263);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)getLayoutParams();
@@ -73,7 +73,7 @@ public class MPExoVideoTextureView
     AppMethodBeat.o(6263);
   }
   
-  public final void bTB()
+  public final void cro()
   {
     AppMethodBeat.i(6266);
     try
@@ -81,7 +81,7 @@ public class MPExoVideoTextureView
       SurfaceTexture localSurfaceTexture = getSurfaceTexture();
       if (localSurfaceTexture != null)
       {
-        ae.i("MicroMsg.MPExoVideoTextureView", "%d releaseSurface", new Object[] { Integer.valueOf(hashCode()) });
+        Log.i("MicroMsg.MPExoVideoTextureView", "%d releaseSurface", new Object[] { Integer.valueOf(hashCode()) });
         h(localSurfaceTexture);
       }
       AppMethodBeat.o(6266);
@@ -89,7 +89,7 @@ public class MPExoVideoTextureView
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.MPExoVideoTextureView", localException, "release surface", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.MPExoVideoTextureView", localException, "release surface", new Object[0]);
       AppMethodBeat.o(6266);
     }
   }
@@ -97,7 +97,7 @@ public class MPExoVideoTextureView
   public final void h(Surface paramSurface)
   {
     AppMethodBeat.i(6268);
-    h.MqF.aO(new MPExoVideoTextureView.1(this, paramSurface));
+    h.RTc.aX(new MPExoVideoTextureView.1(this, paramSurface));
     AppMethodBeat.o(6268);
   }
   
@@ -114,15 +114,15 @@ public class MPExoVideoTextureView
     paramInt2 = getDefaultSize(1, paramInt2);
     int i = this.mVideoWidth;
     int j = this.mVideoHeight;
-    this.ozo.y(paramInt1, paramInt2, i, j);
-    setMeasuredDimension(this.ozo.lyb, this.ozo.lyc);
+    this.pMX.y(paramInt1, paramInt2, i, j);
+    setMeasuredDimension(this.pMX.mEZ, this.pMX.mFa);
     AppMethodBeat.o(6265);
   }
   
   public void setScaleType(i.e parame)
   {
     AppMethodBeat.i(6264);
-    this.ozo.a(parame);
+    this.pMX.a(parame);
     requestLayout();
     AppMethodBeat.o(6264);
   }
@@ -136,14 +136,14 @@ public class MPExoVideoTextureView
   public final void stop()
   {
     AppMethodBeat.i(6262);
-    bTB();
-    this.ozo.reset();
+    cro();
+    this.pMX.reset();
     AppMethodBeat.o(6262);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.widget.MPExoVideoTextureView
  * JD-Core Version:    0.7.0.1
  */

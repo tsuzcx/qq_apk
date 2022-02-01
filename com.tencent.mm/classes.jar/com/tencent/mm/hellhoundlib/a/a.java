@@ -11,19 +11,19 @@ import java.util.Set;
 
 public final class a
 {
-  private static final Map<String, d> gyX;
+  private static final Map<String, d> hlK;
   
   static
   {
     AppMethodBeat.i(55540);
-    gyX = new HashMap();
+    hlK = new HashMap();
     AppMethodBeat.o(55540);
   }
   
   public static void a(Object paramObject, String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(183792);
-    com.tencent.mm.hellhoundlib.a.ahD();
+    com.tencent.mm.hellhoundlib.a.axP();
     com.tencent.mm.hellhoundlib.a.a(paramString1, null, null, paramString2, paramString3, paramString4, paramObject, null);
     AppMethodBeat.o(183792);
   }
@@ -31,7 +31,7 @@ public final class a
   public static void a(Object paramObject, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(183794);
-    com.tencent.mm.hellhoundlib.a.ahD();
+    com.tencent.mm.hellhoundlib.a.axP();
     com.tencent.mm.hellhoundlib.a.a(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramObject, null);
     AppMethodBeat.o(183794);
   }
@@ -39,24 +39,24 @@ public final class a
   public static void a(Object paramObject, Object[] paramArrayOfObject, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     AppMethodBeat.i(177077);
-    com.tencent.mm.hellhoundlib.a.ahD();
+    com.tencent.mm.hellhoundlib.a.axP();
     com.tencent.mm.hellhoundlib.a.a(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramObject, paramArrayOfObject);
     AppMethodBeat.o(177077);
   }
   
   public static void a(String paramString1, String arg1, String paramString3, String paramString4, Object paramObject)
   {
-    AppMethodBeat.i(195471);
+    AppMethodBeat.i(186282);
     Object localObject = ??? + "|" + paramString3 + "|" + paramString4;
-    synchronized (gyX)
+    synchronized (hlK)
     {
-      localObject = (d)gyX.get(localObject);
-      if ((localObject == null) || (((d)localObject).gyY == null) || (((d)localObject).gyY.isEmpty()))
+      localObject = (d)hlK.get(localObject);
+      if ((localObject == null) || (((d)localObject).hlL == null) || (((d)localObject).hlL.isEmpty()))
       {
-        AppMethodBeat.o(195471);
+        AppMethodBeat.o(186282);
         return;
       }
-      localObject = ((d)localObject).gyY.iterator();
+      localObject = ((d)localObject).hlL.iterator();
       while (((Iterator)localObject).hasNext())
       {
         b localb = (b)((Iterator)localObject).next();
@@ -65,19 +65,19 @@ public final class a
         }
       }
     }
-    AppMethodBeat.o(195471);
+    AppMethodBeat.o(186282);
   }
   
   public static void a(String paramString1, String arg1, String paramString3, String paramString4, Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(195469);
+    AppMethodBeat.i(186280);
     Object localObject = ??? + "|" + paramString3 + "|" + paramString4;
-    synchronized (gyX)
+    synchronized (hlK)
     {
-      localObject = (d)gyX.get(localObject);
+      localObject = (d)hlK.get(localObject);
       if ((localObject == null) || (((d)localObject).listeners == null) || (((d)localObject).listeners.isEmpty()))
       {
-        AppMethodBeat.o(195469);
+        AppMethodBeat.o(186280);
         return;
       }
       localObject = ((d)localObject).listeners.iterator();
@@ -89,16 +89,16 @@ public final class a
         }
       }
     }
-    AppMethodBeat.o(195469);
+    AppMethodBeat.o(186280);
   }
   
   public static void a(String paramString1, String arg1, String paramString3, String paramString4, Object paramObject, Object[] paramArrayOfObject)
   {
     AppMethodBeat.i(183790);
     Object localObject = ??? + "|" + paramString3 + "|" + paramString4;
-    synchronized (gyX)
+    synchronized (hlK)
     {
-      localObject = (d)gyX.get(localObject);
+      localObject = (d)hlK.get(localObject);
       if ((localObject == null) || (((d)localObject).listeners == null) || (((d)localObject).listeners.isEmpty()))
       {
         AppMethodBeat.o(183790);
@@ -118,25 +118,25 @@ public final class a
   
   public static void a(boolean paramBoolean, Object paramObject, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(195472);
-    com.tencent.mm.hellhoundlib.a.ahD();
+    AppMethodBeat.i(186283);
+    com.tencent.mm.hellhoundlib.a.axP();
     com.tencent.mm.hellhoundlib.a.a(paramString1, null, null, paramString2, paramString3, paramString4, paramObject, Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(195472);
+    AppMethodBeat.o(186283);
   }
   
   public static boolean a(Object paramObject, boolean paramBoolean, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    AppMethodBeat.i(195473);
-    com.tencent.mm.hellhoundlib.a.ahD();
+    AppMethodBeat.i(186284);
+    com.tencent.mm.hellhoundlib.a.axP();
     com.tencent.mm.hellhoundlib.a.a(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, paramObject, Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(195473);
+    AppMethodBeat.o(186284);
     return paramBoolean;
   }
   
   public static void b(String paramString1, String paramString2, String paramString3, String paramString4, Object paramObject)
   {
     AppMethodBeat.i(177075);
-    com.tencent.mm.hellhoundlib.a.ahD();
+    com.tencent.mm.hellhoundlib.a.axP();
     com.tencent.mm.hellhoundlib.a.a(paramString1, null, null, paramString2, paramString3, paramString4, paramObject, null);
     AppMethodBeat.o(177075);
   }
@@ -144,24 +144,24 @@ public final class a
   public static void b(String paramString1, String paramString2, String paramString3, String paramString4, Object paramObject, Object[] paramArrayOfObject)
   {
     AppMethodBeat.i(177076);
-    com.tencent.mm.hellhoundlib.a.ahD();
+    com.tencent.mm.hellhoundlib.a.axP();
     com.tencent.mm.hellhoundlib.a.a(paramString1, null, null, paramString2, paramString3, paramString4, paramObject, paramArrayOfObject);
     AppMethodBeat.o(177076);
   }
   
   public static void b(String paramString1, String paramString2, String paramString3, String arg3, String paramString5, String paramString6, Object paramObject, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(195470);
+    AppMethodBeat.i(186281);
     paramString6 = ??? + "|" + paramString5 + "|" + paramString6;
-    synchronized (gyX)
+    synchronized (hlK)
     {
-      paramString6 = (d)gyX.get(paramString6);
-      if ((paramString6 == null) || (paramString6.gyY == null) || (paramString6.gyY.isEmpty()))
+      paramString6 = (d)hlK.get(paramString6);
+      if ((paramString6 == null) || (paramString6.hlL == null) || (paramString6.hlL.isEmpty()))
       {
-        AppMethodBeat.o(195470);
+        AppMethodBeat.o(186281);
         return;
       }
-      paramString6 = paramString6.gyY.iterator();
+      paramString6 = paramString6.hlL.iterator();
       while (paramString6.hasNext())
       {
         b localb = (b)paramString6.next();
@@ -170,7 +170,7 @@ public final class a
         }
       }
     }
-    AppMethodBeat.o(195470);
+    AppMethodBeat.o(186281);
   }
   
   public static void c(List<Pair<String, String>> paramList, b paramb)
@@ -184,7 +184,7 @@ public final class a
     for (;;)
     {
       String str;
-      synchronized (gyX)
+      synchronized (hlK)
       {
         Iterator localIterator = paramList.iterator();
         if (!localIterator.hasNext()) {
@@ -192,23 +192,23 @@ public final class a
         }
         paramList = (Pair)localIterator.next();
         str = "Undefined|" + (String)paramList.first + "|" + (String)paramList.second;
-        if (gyX.containsKey(str))
+        if (hlK.containsKey(str))
         {
-          d locald = (d)gyX.get(str);
+          d locald = (d)hlK.get(str);
           paramList = locald;
           if (locald == null) {
             paramList = new d();
           }
-          if (paramList.gyY.contains(paramb)) {
+          if (paramList.hlL.contains(paramb)) {
             continue;
           }
-          paramList.gyY.add(paramb);
-          gyX.put(str, paramList);
+          paramList.hlL.add(paramb);
+          hlK.put(str, paramList);
         }
       }
       paramList = new d();
-      paramList.gyY.add(paramb);
-      gyX.put(str, paramList);
+      paramList.hlL.add(paramb);
+      hlK.put(str, paramList);
     }
     AppMethodBeat.o(177072);
   }
@@ -224,7 +224,7 @@ public final class a
     for (;;)
     {
       String str2;
-      synchronized (gyX)
+      synchronized (hlK)
       {
         Iterator localIterator1 = paramMap.entrySet().iterator();
         continue;
@@ -243,23 +243,23 @@ public final class a
         }
         paramMap = (Pair)localIterator2.next();
         str2 = str1 + "_EXEC_|" + (String)paramMap.first + "|" + (String)paramMap.second;
-        if (gyX.containsKey(str2))
+        if (hlK.containsKey(str2))
         {
-          d locald = (d)gyX.get(str2);
+          d locald = (d)hlK.get(str2);
           paramMap = locald;
           if (locald == null) {
             paramMap = new d();
           }
-          if (paramMap.gyY.contains(paramb)) {
+          if (paramMap.hlL.contains(paramb)) {
             continue;
           }
-          paramMap.gyY.add(paramb);
-          gyX.put(str2, paramMap);
+          paramMap.hlL.add(paramb);
+          hlK.put(str2, paramMap);
         }
       }
       paramMap = new d();
-      paramMap.gyY.add(paramb);
-      gyX.put(str2, paramMap);
+      paramMap.hlL.add(paramb);
+      hlK.put(str2, paramMap);
     }
     AppMethodBeat.o(183788);
   }
@@ -272,19 +272,19 @@ public final class a
       AppMethodBeat.o(183787);
       return;
     }
-    synchronized (gyX)
+    synchronized (hlK)
     {
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         Object localObject = (Pair)paramList.next();
         localObject = "Undefined|" + (String)((Pair)localObject).first + "|" + (String)((Pair)localObject).second;
-        d locald = (d)gyX.get(localObject);
-        if ((locald != null) && (locald.gyY != null) && (!locald.gyY.isEmpty()) && (locald.gyY.contains(paramb)))
+        d locald = (d)hlK.get(localObject);
+        if ((locald != null) && (locald.hlL != null) && (!locald.hlL.isEmpty()) && (locald.hlL.contains(paramb)))
         {
-          locald.gyY.remove(paramb);
-          if ((locald.gyY.isEmpty()) && (locald.listeners.isEmpty())) {
-            gyX.remove(localObject);
+          locald.hlL.remove(paramb);
+          if ((locald.hlL.isEmpty()) && (locald.listeners.isEmpty())) {
+            hlK.remove(localObject);
           }
         }
       }
@@ -300,7 +300,7 @@ public final class a
       AppMethodBeat.o(183789);
       return;
     }
-    synchronized (gyX)
+    synchronized (hlK)
     {
       Object localObject2;
       d locald;
@@ -326,11 +326,11 @@ public final class a
           }
           localObject2 = (Pair)((Iterator)localObject1).next();
           localObject2 = str + "_EXEC_|" + (String)((Pair)localObject2).first + "|" + (String)((Pair)localObject2).second;
-          locald = (d)gyX.get(localObject2);
-        } while ((locald == null) || (locald.gyY == null) || (locald.gyY.isEmpty()) || (!locald.gyY.contains(paramb)));
-        locald.gyY.remove(paramb);
-      } while ((!locald.gyY.isEmpty()) || (!locald.listeners.isEmpty()));
-      gyX.remove(localObject2);
+          locald = (d)hlK.get(localObject2);
+        } while ((locald == null) || (locald.hlL == null) || (locald.hlL.isEmpty()) || (!locald.hlL.contains(paramb)));
+        locald.hlL.remove(paramb);
+      } while ((!locald.hlL.isEmpty()) || (!locald.listeners.isEmpty()));
+      hlK.remove(localObject2);
     }
     AppMethodBeat.o(183789);
   }
@@ -346,7 +346,7 @@ public final class a
     for (;;)
     {
       String str2;
-      synchronized (gyX)
+      synchronized (hlK)
       {
         Iterator localIterator1 = paramMap.entrySet().iterator();
         continue;
@@ -365,9 +365,9 @@ public final class a
         }
         paramMap = (Pair)localIterator2.next();
         str2 = str1 + "|" + (String)paramMap.first + "|" + (String)paramMap.second;
-        if (gyX.containsKey(str2))
+        if (hlK.containsKey(str2))
         {
-          d locald = (d)gyX.get(str2);
+          d locald = (d)hlK.get(str2);
           paramMap = locald;
           if (locald == null) {
             paramMap = new d();
@@ -376,12 +376,12 @@ public final class a
             continue;
           }
           paramMap.listeners.add(paramc);
-          gyX.put(str2, paramMap);
+          hlK.put(str2, paramMap);
         }
       }
       paramMap = new d();
       paramMap.listeners.add(paramc);
-      gyX.put(str2, paramMap);
+      hlK.put(str2, paramMap);
     }
     AppMethodBeat.o(55532);
   }
@@ -394,7 +394,7 @@ public final class a
       AppMethodBeat.o(177068);
       return;
     }
-    synchronized (gyX)
+    synchronized (hlK)
     {
       Object localObject2;
       d locald;
@@ -420,11 +420,11 @@ public final class a
           }
           localObject2 = (Pair)((Iterator)localObject1).next();
           localObject2 = str + "|" + (String)((Pair)localObject2).first + "|" + (String)((Pair)localObject2).second;
-          locald = (d)gyX.get(localObject2);
+          locald = (d)hlK.get(localObject2);
         } while ((locald == null) || (locald.listeners == null) || (locald.listeners.isEmpty()) || (!locald.listeners.contains(paramc)));
         locald.listeners.remove(paramc);
-      } while ((!locald.listeners.isEmpty()) || (!locald.gyY.isEmpty()));
-      gyX.remove(localObject2);
+      } while ((!locald.listeners.isEmpty()) || (!locald.hlL.isEmpty()));
+      hlK.remove(localObject2);
     }
     AppMethodBeat.o(177068);
   }
@@ -440,7 +440,7 @@ public final class a
     for (;;)
     {
       String str2;
-      synchronized (gyX)
+      synchronized (hlK)
       {
         Iterator localIterator1 = paramMap.entrySet().iterator();
         continue;
@@ -459,9 +459,9 @@ public final class a
         }
         paramMap = (Pair)localIterator2.next();
         str2 = str1 + (String)localPair.first + "|" + (String)paramMap.first + "|" + (String)paramMap.second;
-        if (gyX.containsKey(str2))
+        if (hlK.containsKey(str2))
         {
-          d locald = (d)gyX.get(str2);
+          d locald = (d)hlK.get(str2);
           paramMap = locald;
           if (locald == null) {
             paramMap = new d();
@@ -470,12 +470,12 @@ public final class a
             continue;
           }
           paramMap.listeners.add(paramc);
-          gyX.put(str2, paramMap);
+          hlK.put(str2, paramMap);
         }
       }
       paramMap = new d();
       paramMap.listeners.add(paramc);
-      gyX.put(str2, paramMap);
+      hlK.put(str2, paramMap);
     }
     AppMethodBeat.o(168722);
   }
@@ -488,7 +488,7 @@ public final class a
       AppMethodBeat.o(177069);
       return;
     }
-    synchronized (gyX)
+    synchronized (hlK)
     {
       Object localObject2;
       d locald;
@@ -515,11 +515,11 @@ public final class a
           }
           localObject2 = (Pair)localIterator.next();
           localObject2 = str + (String)((Pair)localObject1).first + "|" + (String)((Pair)localObject2).first + "|" + (String)((Pair)localObject2).second;
-          locald = (d)gyX.get(localObject2);
+          locald = (d)hlK.get(localObject2);
         } while ((locald == null) || (locald.listeners == null) || (locald.listeners.isEmpty()) || (!locald.listeners.contains(paramc)));
         locald.listeners.remove(paramc);
-      } while ((!locald.listeners.isEmpty()) || (!locald.gyY.isEmpty()));
-      gyX.remove(localObject2);
+      } while ((!locald.listeners.isEmpty()) || (!locald.hlL.isEmpty()));
+      hlK.remove(localObject2);
     }
     AppMethodBeat.o(177069);
   }
@@ -535,7 +535,7 @@ public final class a
     for (;;)
     {
       String str3;
-      synchronized (gyX)
+      synchronized (hlK)
       {
         Iterator localIterator1 = paramMap.entrySet().iterator();
         continue;
@@ -561,9 +561,9 @@ public final class a
         }
         paramMap = (Pair)localIterator3.next();
         str3 = str1 + str2 + "|" + (String)paramMap.first + "|" + (String)paramMap.second;
-        if (gyX.containsKey(str3))
+        if (hlK.containsKey(str3))
         {
-          d locald = (d)gyX.get(str3);
+          d locald = (d)hlK.get(str3);
           paramMap = locald;
           if (locald == null) {
             paramMap = new d();
@@ -572,12 +572,12 @@ public final class a
             continue;
           }
           paramMap.listeners.add(paramc);
-          gyX.put(str3, paramMap);
+          hlK.put(str3, paramMap);
         }
       }
       paramMap = new d();
       paramMap.listeners.add(paramc);
-      gyX.put(str3, paramMap);
+      hlK.put(str3, paramMap);
     }
     AppMethodBeat.o(177070);
   }
@@ -590,7 +590,7 @@ public final class a
       AppMethodBeat.o(177071);
       return;
     }
-    synchronized (gyX)
+    synchronized (hlK)
     {
       paramMap = paramMap.entrySet().iterator();
       break label95;
@@ -627,11 +627,11 @@ public final class a
           }
           localObject3 = (Pair)((Iterator)localObject2).next();
           localObject3 = str1 + str2 + "|" + (String)((Pair)localObject3).first + "|" + (String)((Pair)localObject3).second;
-          locald = (d)gyX.get(localObject3);
+          locald = (d)hlK.get(localObject3);
         } while ((locald == null) || (locald.listeners == null) || (locald.listeners.isEmpty()) || (!locald.listeners.contains(paramc)));
         locald.listeners.remove(paramc);
-      } while ((!locald.listeners.isEmpty()) || (!locald.gyY.isEmpty()));
-      gyX.remove(localObject3);
+      } while ((!locald.listeners.isEmpty()) || (!locald.hlL.isEmpty()));
+      hlK.remove(localObject3);
     }
     AppMethodBeat.o(177071);
   }

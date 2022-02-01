@@ -4,44 +4,44 @@ import android.content.Context;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public class g
-  extends bq<s>
+  extends br<s>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama)
+  public final void a(Context paramContext, String paramString, br.a parama)
   {
     AppMethodBeat.i(78524);
-    ae.i("MicroMsg.JsApiCancelDownloadTask", "invokeInMM");
-    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.PM(paramString);
+    Log.i("MicroMsg.JsApiCancelDownloadTask", "invokeInMM");
+    paramContext = com.tencent.mm.plugin.webview.luggage.c.b.Zc(paramString);
     if (paramContext == null)
     {
-      parama.f("fail", null);
+      parama.i("fail", null);
       AppMethodBeat.o(78524);
       return;
     }
     long l = paramContext.optLong("download_id");
     if (l <= 0L)
     {
-      ae.e("MicroMsg.JsApiCancelDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
-      parama.f("invalid_downloadid", null);
+      Log.e("MicroMsg.JsApiCancelDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
+      parama.i("invalid_downloadid", null);
       AppMethodBeat.o(78524);
       return;
     }
-    if (f.cdA().ui(l) > 0)
+    if (f.cBv().Cn(l) > 0)
     {
-      parama.f(null, null);
+      parama.i(null, null);
       AppMethodBeat.o(78524);
       return;
     }
-    parama.f("fail", null);
+    parama.i("fail", null);
     AppMethodBeat.o(78524);
   }
   
   public final void b(com.tencent.luggage.d.b<s>.a paramb) {}
   
-  public final int ced()
+  public final int dTs()
   {
     return 1;
   }

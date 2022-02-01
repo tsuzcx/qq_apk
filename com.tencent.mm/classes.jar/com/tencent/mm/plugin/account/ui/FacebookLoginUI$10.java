@@ -13,19 +13,19 @@ final class FacebookLoginUI$10
   public final void run()
   {
     AppMethodBeat.i(127993);
-    Object localObject2 = com.tencent.mm.plugin.account.a.a.iUz.bE(this.jmS);
+    Object localObject2 = com.tencent.mm.plugin.account.a.a.jRt.bZ(this.klb);
     ((Intent)localObject2).addFlags(67108864);
-    Object localObject1 = this.jmS;
-    localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/account/ui/FacebookLoginUI$8", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((FacebookLoginUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
+    Object localObject1 = this.klb;
+    localObject2 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject2);
+    com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/plugin/account/ui/FacebookLoginUI$8", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((FacebookLoginUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/account/ui/FacebookLoginUI$8", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     localObject1 = new StringBuilder();
-    g.ajP();
-    localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.ajd()).append(",").append(this.jmS.getClass().getName()).append(",L14,");
-    g.ajP();
-    com.tencent.mm.plugin.b.a.vG(com.tencent.mm.kernel.a.xB("L14") + ",4");
-    this.jmS.finish();
+    g.aAf();
+    localObject1 = ((StringBuilder)localObject1).append(com.tencent.mm.kernel.a.azt()).append(",").append(this.klb.getClass().getName()).append(",L14,");
+    g.aAf();
+    com.tencent.mm.plugin.b.a.DX(com.tencent.mm.kernel.a.FN("L14") + ",4");
+    this.klb.finish();
     AppMethodBeat.o(127993);
   }
 }

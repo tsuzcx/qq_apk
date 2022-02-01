@@ -1,64 +1,106 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.protocal.protobuf.dsu;
-import com.tencent.mm.protocal.protobuf.dsv;
+import com.tencent.mm.plugin.appbrand.ui.recents.q;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import java.util.List;
 
-final class ac
-  extends a<dsv>
+public final class ac
+  extends q<LocalUsageInfo>
 {
-  private final String cmr;
-  private final dsu jTh;
-  private final b jTi;
-  
-  ac(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, String paramString1, int paramInt4, String paramString2)
+  public ac(List<LocalUsageInfo> paramList1, List<LocalUsageInfo> paramList2)
   {
-    AppMethodBeat.i(44640);
-    this.cmr = paramString2;
-    b.a locala = new b.a();
-    dsu localdsu = new dsu();
-    int i = paramInt1;
-    if (paramInt1 == 0) {
-      i = 1000;
-    }
-    localdsu.scene = i;
-    if (paramBoolean) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      localdsu.HYH = paramInt1;
-      localdsu.Gdl = paramInt2;
-      localdsu.HYI = 2;
-      localdsu.HYJ = paramInt3;
-      localdsu.username = paramString1;
-      localdsu.reason = paramInt4;
-      localdsu.session_id = paramString2;
-      this.jTh = localdsu;
-      locala.hQF = localdsu;
-      locala.hQG = new dsv();
-      locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/updatewxausagerecord";
-      locala.funcId = 1149;
-      paramString1 = locala.aDS();
-      this.jTi = paramString1;
-      c(paramString1);
-      AppMethodBeat.o(44640);
-      return;
-    }
+    super(bl(paramList1), bl(paramList2));
+    AppMethodBeat.i(44643);
+    AppMethodBeat.o(44643);
   }
   
-  static ac bm(String paramString, int paramInt)
+  private static <T> ArrayList<T> bl(List<T> paramList)
   {
-    AppMethodBeat.i(44641);
-    paramString = new ac(1001, false, paramInt, 2, paramString, 1, null);
-    AppMethodBeat.o(44641);
-    return paramString;
+    AppMethodBeat.i(44644);
+    if ((paramList instanceof ArrayList))
+    {
+      paramList = (ArrayList)paramList;
+      AppMethodBeat.o(44644);
+      return paramList;
+    }
+    if (Util.isNullOrNil(paramList))
+    {
+      paramList = new ArrayList(0);
+      AppMethodBeat.o(44644);
+      return paramList;
+    }
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    localArrayList.addAll(paramList);
+    AppMethodBeat.o(44644);
+    return localArrayList;
+  }
+  
+  public final Object h(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(44647);
+    if (paramInt1 >= this.oew.size())
+    {
+      AppMethodBeat.o(44647);
+      return null;
+    }
+    Bundle localBundle = new Bundle();
+    try
+    {
+      LocalUsageInfo localLocalUsageInfo1 = (LocalUsageInfo)this.oew.get(paramInt1);
+      LocalUsageInfo localLocalUsageInfo2 = (LocalUsageInfo)this.oex.get(paramInt2);
+      if (!Util.nullAsNil(localLocalUsageInfo1.kVZ).equals(localLocalUsageInfo2.kVZ)) {
+        localBundle.putString("icon", localLocalUsageInfo2.kVZ);
+      }
+      if (!Util.nullAsNil(localLocalUsageInfo1.nickname).equals(localLocalUsageInfo2.nickname)) {
+        localBundle.putString("nick_name", localLocalUsageInfo2.nickname);
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localBundle.clear();
+      }
+      AppMethodBeat.o(44647);
+    }
+    if (localBundle.size() <= 0)
+    {
+      AppMethodBeat.o(44647);
+      return null;
+    }
+    return localBundle;
+  }
+  
+  public final boolean i(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(44645);
+    LocalUsageInfo localLocalUsageInfo1 = (LocalUsageInfo)this.oew.get(paramInt1);
+    LocalUsageInfo localLocalUsageInfo2 = (LocalUsageInfo)this.oex.get(paramInt2);
+    if ((Util.nullAsNil(localLocalUsageInfo1.username).equals(localLocalUsageInfo2.username)) && (localLocalUsageInfo1.iOo == localLocalUsageInfo2.iOo))
+    {
+      AppMethodBeat.o(44645);
+      return true;
+    }
+    AppMethodBeat.o(44645);
+    return false;
+  }
+  
+  public final boolean j(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(44646);
+    LocalUsageInfo localLocalUsageInfo1 = (LocalUsageInfo)this.oew.get(paramInt1);
+    LocalUsageInfo localLocalUsageInfo2 = (LocalUsageInfo)this.oex.get(paramInt2);
+    boolean bool = Util.nullAsNil(localLocalUsageInfo1.kVZ).equals(localLocalUsageInfo2.kVZ);
+    AppMethodBeat.o(44646);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ac
  * JD-Core Version:    0.7.0.1
  */

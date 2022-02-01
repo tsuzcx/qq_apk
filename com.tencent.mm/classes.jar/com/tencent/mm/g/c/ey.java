@@ -2,75 +2,50 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class ey
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eYM = "fileName".hashCode();
-  private static final int fnH = "musicId".hashCode();
-  private static final int fqb = "musicUrl".hashCode();
-  private static final int fqc = "indexBitData".hashCode();
-  private static final int fqd = "fileCacheComplete".hashCode();
-  private static final int fqe = "pieceFileMIMEType".hashCode();
-  private static final int fqf = "removeDirtyBit".hashCode();
+  private static final int fTV;
+  private static final int fTW;
+  private static final int fTX;
+  private static final int fTY = "seq".hashCode();
+  private static final int fjR;
+  private static final int fqf;
+  private static final int fum;
+  private static final int fus = "encryptUsername".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eYj = true;
-  public int field_fileCacheComplete;
-  public String field_fileName;
-  public byte[] field_indexBitData;
-  public String field_musicId;
-  public String field_musicUrl;
-  public String field_pieceFileMIMEType;
-  public int field_removeDirtyBit;
-  private boolean fmX = true;
-  private boolean fpW = true;
-  private boolean fpX = true;
-  private boolean fpY = true;
-  private boolean fpZ = true;
-  private boolean fqa = true;
+  private static final int username_HASHCODE;
+  private boolean __hadSetusername = true;
+  private boolean fTR = true;
+  private boolean fTS = true;
+  private boolean fTT = true;
+  private boolean fTU = true;
+  public int field_addState;
+  public String field_encryptUsername;
+  public String field_nickname;
+  public String field_oldUsername;
+  public String field_pinyinName;
+  public int field_seq;
+  public int field_showHead;
+  public String field_ticket;
+  public String field_username;
+  private boolean fjP = true;
+  private boolean fqb = true;
+  private boolean ftU = true;
+  private boolean fua = true;
   
-  public static c.a VD()
+  static
   {
-    c.a locala = new c.a();
-    locala.IBL = new Field[7];
-    locala.columns = new String[8];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "musicId";
-    locala.IBN.put("musicId", "TEXT PRIMARY KEY ");
-    localStringBuilder.append(" musicId TEXT PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IBM = "musicId";
-    locala.columns[1] = "musicUrl";
-    locala.IBN.put("musicUrl", "TEXT");
-    localStringBuilder.append(" musicUrl TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "fileName";
-    locala.IBN.put("fileName", "TEXT");
-    localStringBuilder.append(" fileName TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "indexBitData";
-    locala.IBN.put("indexBitData", "BLOB");
-    localStringBuilder.append(" indexBitData BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "fileCacheComplete";
-    locala.IBN.put("fileCacheComplete", "INTEGER");
-    localStringBuilder.append(" fileCacheComplete INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "pieceFileMIMEType";
-    locala.IBN.put("pieceFileMIMEType", "TEXT");
-    localStringBuilder.append(" pieceFileMIMEType TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "removeDirtyBit";
-    locala.IBN.put("removeDirtyBit", "INTEGER");
-    localStringBuilder.append(" removeDirtyBit INTEGER");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    fTV = "oldUsername".hashCode();
+    fjR = "ticket".hashCode();
+    fqf = "nickname".hashCode();
+    fTW = "addState".hashCode();
+    fum = "showHead".hashCode();
+    fTX = "pinyinName".hashCode();
+    username_HASHCODE = "username".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -86,30 +61,33 @@ public abstract class ey
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fnH != k) {
-        break label65;
+      if (fus != k) {
+        break label60;
       }
-      this.field_musicId = paramCursor.getString(i);
-      this.fmX = true;
+      this.field_encryptUsername = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (fqb == k) {
-        this.field_musicUrl = paramCursor.getString(i);
-      } else if (eYM == k) {
-        this.field_fileName = paramCursor.getString(i);
-      } else if (fqc == k) {
-        this.field_indexBitData = paramCursor.getBlob(i);
-      } else if (fqd == k) {
-        this.field_fileCacheComplete = paramCursor.getInt(i);
-      } else if (fqe == k) {
-        this.field_pieceFileMIMEType = paramCursor.getString(i);
+      label60:
+      if (fTV == k) {
+        this.field_oldUsername = paramCursor.getString(i);
+      } else if (fjR == k) {
+        this.field_ticket = paramCursor.getString(i);
       } else if (fqf == k) {
-        this.field_removeDirtyBit = paramCursor.getInt(i);
+        this.field_nickname = paramCursor.getString(i);
+      } else if (fTW == k) {
+        this.field_addState = paramCursor.getInt(i);
+      } else if (fum == k) {
+        this.field_showHead = paramCursor.getInt(i);
+      } else if (fTX == k) {
+        this.field_pinyinName = paramCursor.getString(i);
+      } else if (username_HASHCODE == k) {
+        this.field_username = paramCursor.getString(i);
+      } else if (fTY == k) {
+        this.field_seq = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -119,26 +97,32 @@ public abstract class ey
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fmX) {
-      localContentValues.put("musicId", this.field_musicId);
+    if (this.fua) {
+      localContentValues.put("encryptUsername", this.field_encryptUsername);
     }
-    if (this.fpW) {
-      localContentValues.put("musicUrl", this.field_musicUrl);
+    if (this.fTR) {
+      localContentValues.put("oldUsername", this.field_oldUsername);
     }
-    if (this.eYj) {
-      localContentValues.put("fileName", this.field_fileName);
+    if (this.fjP) {
+      localContentValues.put("ticket", this.field_ticket);
     }
-    if (this.fpX) {
-      localContentValues.put("indexBitData", this.field_indexBitData);
+    if (this.fqb) {
+      localContentValues.put("nickname", this.field_nickname);
     }
-    if (this.fpY) {
-      localContentValues.put("fileCacheComplete", Integer.valueOf(this.field_fileCacheComplete));
+    if (this.fTS) {
+      localContentValues.put("addState", Integer.valueOf(this.field_addState));
     }
-    if (this.fpZ) {
-      localContentValues.put("pieceFileMIMEType", this.field_pieceFileMIMEType);
+    if (this.ftU) {
+      localContentValues.put("showHead", Integer.valueOf(this.field_showHead));
     }
-    if (this.fqa) {
-      localContentValues.put("removeDirtyBit", Integer.valueOf(this.field_removeDirtyBit));
+    if (this.fTT) {
+      localContentValues.put("pinyinName", this.field_pinyinName);
+    }
+    if (this.__hadSetusername) {
+      localContentValues.put("username", this.field_username);
+    }
+    if (this.fTU) {
+      localContentValues.put("seq", Integer.valueOf(this.field_seq));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -148,7 +132,7 @@ public abstract class ey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.ey
  * JD-Core Version:    0.7.0.1
  */

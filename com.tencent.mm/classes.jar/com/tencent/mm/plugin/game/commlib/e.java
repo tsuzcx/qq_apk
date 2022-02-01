@@ -4,42 +4,42 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class e
 {
-  private static final String gwm;
-  private static LinkedList<String> udF;
-  private static final String udG;
-  private static final String udH;
+  private static final String hja;
+  private static LinkedList<String> xvr;
+  private static final String xvs;
+  private static final String xvt;
   
   static
   {
     AppMethodBeat.i(149404);
-    udF = new LinkedList();
-    udG = ak.getPackageName();
-    gwm = ak.getPackageName() + ":tools";
-    udH = ak.getPackageName() + ":toolsmp";
-    udF.add(gwm);
-    udF.add(udH);
+    xvr = new LinkedList();
+    xvs = MMApplicationContext.getPackageName();
+    hja = MMApplicationContext.getPackageName() + ":tools";
+    xvt = MMApplicationContext.getPackageName() + ":toolsmp";
+    xvr.add(hja);
+    xvr.add(xvt);
     AppMethodBeat.o(149404);
   }
   
-  public static void aml(String paramString)
+  public static void azp(String paramString)
   {
     AppMethodBeat.i(149402);
-    if ((paramString.equals(udG)) || (udF.contains(paramString))) {
-      a.cZs();
+    if ((paramString.equals(xvs)) || (xvr.contains(paramString))) {
+      a.dSS();
     }
     AppMethodBeat.o(149402);
   }
   
-  public static void cZD()
+  public static void dTe()
   {
     AppMethodBeat.i(149403);
-    Iterator localIterator = udF.iterator();
+    Iterator localIterator = xvr.iterator();
     while (localIterator.hasNext()) {
       h.a((String)localIterator.next(), null, a.class, null);
     }
@@ -52,7 +52,7 @@ public final class e
     public void invoke(Object paramObject, d paramd)
     {
       AppMethodBeat.i(149401);
-      a.cZs();
+      a.dSS();
       AppMethodBeat.o(149401);
     }
   }

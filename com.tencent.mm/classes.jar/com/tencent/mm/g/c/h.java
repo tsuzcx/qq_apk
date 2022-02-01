@@ -2,53 +2,35 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class h
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEL;
-  private static final int eFO = "createTime".hashCode();
-  private static final int eGD = "appId".hashCode();
-  private static final int eGE = "sdkVer".hashCode();
-  private static final int eGF = "mediaSvrId".hashCode();
-  private static final int eGG = "mediaId".hashCode();
-  private static final int eGH = "clientAppDataId".hashCode();
-  private static final int eGI;
-  private static final int eGJ;
-  private static final int eGK;
-  private static final int eGL = "lastModifyTime".hashCode();
-  private static final int eGM = "fileFullPath".hashCode();
-  private static final int eGN = "fullXml".hashCode();
-  private static final int eGO = "msgInfoId".hashCode();
-  private static final int eGP = "netTimes".hashCode();
-  private static final int eGQ = "isUseCdn".hashCode();
-  private static final int eGR = "signature".hashCode();
-  private static final int eGS = "fakeAeskey".hashCode();
-  private static final int eGT = "fakeSignature".hashCode();
+  private static final int createTime_HASHCODE = "createTime".hashCode();
+  private static final int fjl;
+  private static final int fkj = "appId".hashCode();
+  private static final int fkk = "sdkVer".hashCode();
+  private static final int fkl = "mediaSvrId".hashCode();
+  private static final int fkm = "mediaId".hashCode();
+  private static final int fkn = "clientAppDataId".hashCode();
+  private static final int fko;
+  private static final int fkp;
+  private static final int fkq;
+  private static final int fkr = "lastModifyTime".hashCode();
+  private static final int fks = "fileFullPath".hashCode();
+  private static final int fkt = "fullXml".hashCode();
+  private static final int fku = "msgInfoId".hashCode();
+  private static final int fkv = "netTimes".hashCode();
+  private static final int fkw = "isUseCdn".hashCode();
+  private static final int fkx = "signature".hashCode();
+  private static final int fky = "fakeAeskey".hashCode();
+  private static final int fkz = "fakeSignature".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
+  private boolean __hadSetcreateTime = true;
   private boolean __hadSettype = true;
-  private boolean eEI = true;
-  private boolean eFr = true;
-  private boolean eGA = true;
-  private boolean eGB = true;
-  private boolean eGC = true;
-  private boolean eGm = true;
-  private boolean eGn = true;
-  private boolean eGo = true;
-  private boolean eGp = true;
-  private boolean eGq = true;
-  private boolean eGr = true;
-  private boolean eGs = true;
-  private boolean eGt = true;
-  private boolean eGu = true;
-  private boolean eGv = true;
-  private boolean eGw = true;
-  private boolean eGx = true;
-  private boolean eGy = true;
-  private boolean eGz = true;
   public String field_appId;
   public String field_clientAppDataId;
   public long field_createTime;
@@ -69,13 +51,31 @@ public abstract class h
   public long field_status;
   public long field_totalLen;
   public long field_type;
+  private boolean fjS = true;
+  private boolean fjT = true;
+  private boolean fjU = true;
+  private boolean fjV = true;
+  private boolean fjW = true;
+  private boolean fjX = true;
+  private boolean fjY = true;
+  private boolean fjZ = true;
+  private boolean fji = true;
+  private boolean fka = true;
+  private boolean fkb = true;
+  private boolean fkc = true;
+  private boolean fkd = true;
+  private boolean fke = true;
+  private boolean fkf = true;
+  private boolean fkg = true;
+  private boolean fkh = true;
+  private boolean fki = true;
   
   static
   {
-    eGI = "totalLen".hashCode();
-    eGJ = "offset".hashCode();
-    eEL = "status".hashCode();
-    eGK = "isUpload".hashCode();
+    fko = "totalLen".hashCode();
+    fkp = "offset".hashCode();
+    fjl = "status".hashCode();
+    fkq = "isUpload".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -91,7 +91,7 @@ public abstract class h
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGD != k) {
+      if (fkj != k) {
         break label60;
       }
       this.field_appId = paramCursor.getString(i);
@@ -102,19 +102,19 @@ public abstract class h
       break label20;
       break;
       label60:
-      if (eGE == k)
+      if (fkk == k)
       {
         this.field_sdkVer = paramCursor.getLong(i);
       }
-      else if (eGF == k)
+      else if (fkl == k)
       {
         this.field_mediaSvrId = paramCursor.getString(i);
       }
-      else if (eGG == k)
+      else if (fkm == k)
       {
         this.field_mediaId = paramCursor.getString(i);
       }
-      else if (eGH == k)
+      else if (fkn == k)
       {
         this.field_clientAppDataId = paramCursor.getString(i);
       }
@@ -122,21 +122,21 @@ public abstract class h
       {
         this.field_type = paramCursor.getLong(i);
       }
-      else if (eGI == k)
+      else if (fko == k)
       {
         this.field_totalLen = paramCursor.getLong(i);
       }
-      else if (eGJ == k)
+      else if (fkp == k)
       {
         this.field_offset = paramCursor.getLong(i);
       }
-      else if (eEL == k)
+      else if (fjl == k)
       {
         this.field_status = paramCursor.getLong(i);
       }
       else
       {
-        if (eGK == k)
+        if (fkq == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -145,25 +145,25 @@ public abstract class h
             break;
           }
         }
-        if (eFO == k) {
+        if (createTime_HASHCODE == k) {
           this.field_createTime = paramCursor.getLong(i);
-        } else if (eGL == k) {
+        } else if (fkr == k) {
           this.field_lastModifyTime = paramCursor.getLong(i);
-        } else if (eGM == k) {
+        } else if (fks == k) {
           this.field_fileFullPath = paramCursor.getString(i);
-        } else if (eGN == k) {
+        } else if (fkt == k) {
           this.field_fullXml = paramCursor.getString(i);
-        } else if (eGO == k) {
+        } else if (fku == k) {
           this.field_msgInfoId = paramCursor.getLong(i);
-        } else if (eGP == k) {
+        } else if (fkv == k) {
           this.field_netTimes = paramCursor.getLong(i);
-        } else if (eGQ == k) {
+        } else if (fkw == k) {
           this.field_isUseCdn = paramCursor.getInt(i);
-        } else if (eGR == k) {
+        } else if (fkx == k) {
           this.field_signature = paramCursor.getString(i);
-        } else if (eGS == k) {
+        } else if (fky == k) {
           this.field_fakeAeskey = paramCursor.getString(i);
-        } else if (eGT == k) {
+        } else if (fkz == k) {
           this.field_fakeSignature = paramCursor.getString(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -175,64 +175,64 @@ public abstract class h
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGm) {
+    if (this.fjS) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eGn) {
+    if (this.fjT) {
       localContentValues.put("sdkVer", Long.valueOf(this.field_sdkVer));
     }
-    if (this.eGo) {
+    if (this.fjU) {
       localContentValues.put("mediaSvrId", this.field_mediaSvrId);
     }
-    if (this.eGp) {
+    if (this.fjV) {
       localContentValues.put("mediaId", this.field_mediaId);
     }
-    if (this.eGq) {
+    if (this.fjW) {
       localContentValues.put("clientAppDataId", this.field_clientAppDataId);
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Long.valueOf(this.field_type));
     }
-    if (this.eGr) {
+    if (this.fjX) {
       localContentValues.put("totalLen", Long.valueOf(this.field_totalLen));
     }
-    if (this.eGs) {
+    if (this.fjY) {
       localContentValues.put("offset", Long.valueOf(this.field_offset));
     }
-    if (this.eEI) {
+    if (this.fji) {
       localContentValues.put("status", Long.valueOf(this.field_status));
     }
-    if (this.eGt) {
+    if (this.fjZ) {
       localContentValues.put("isUpload", Boolean.valueOf(this.field_isUpload));
     }
-    if (this.eFr) {
+    if (this.__hadSetcreateTime) {
       localContentValues.put("createTime", Long.valueOf(this.field_createTime));
     }
-    if (this.eGu) {
+    if (this.fka) {
       localContentValues.put("lastModifyTime", Long.valueOf(this.field_lastModifyTime));
     }
-    if (this.eGv) {
+    if (this.fkb) {
       localContentValues.put("fileFullPath", this.field_fileFullPath);
     }
-    if (this.eGw) {
+    if (this.fkc) {
       localContentValues.put("fullXml", this.field_fullXml);
     }
-    if (this.eGx) {
+    if (this.fkd) {
       localContentValues.put("msgInfoId", Long.valueOf(this.field_msgInfoId));
     }
-    if (this.eGy) {
+    if (this.fke) {
       localContentValues.put("netTimes", Long.valueOf(this.field_netTimes));
     }
-    if (this.eGz) {
+    if (this.fkf) {
       localContentValues.put("isUseCdn", Integer.valueOf(this.field_isUseCdn));
     }
-    if (this.eGA) {
+    if (this.fkg) {
       localContentValues.put("signature", this.field_signature);
     }
-    if (this.eGB) {
+    if (this.fkh) {
       localContentValues.put("fakeAeskey", this.field_fakeAeskey);
     }
-    if (this.eGC) {
+    if (this.fki) {
       localContentValues.put("fakeSignature", this.field_fakeSignature);
     }
     if (this.systemRowid > 0L) {

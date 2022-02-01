@@ -13,7 +13,7 @@ public class GetStorageSizeTask
 {
   public static final Parcelable.Creator<GetStorageSizeTask> CREATOR;
   public String appId;
-  public Runnable kuv;
+  public Runnable lyv;
   public int size;
   
   static
@@ -28,35 +28,35 @@ public class GetStorageSizeTask
   protected GetStorageSizeTask(Parcel paramParcel)
   {
     AppMethodBeat.i(147226);
-    e(paramParcel);
+    f(paramParcel);
     AppMethodBeat.o(147226);
   }
   
-  public final void aOX()
+  public final void bjj()
   {
     AppMethodBeat.i(147222);
-    if (e.K(a.class) == null) {}
-    for (d locald = null; locald == null; locald = ((a)e.K(a.class)).El())
+    if (e.M(a.class) == null) {}
+    for (d locald = null; locald == null; locald = ((a)e.M(a.class)).NK())
     {
-      biG();
+      bDU();
       AppMethodBeat.o(147222);
       return;
     }
-    this.size = locald.MC(this.appId);
-    biG();
+    this.size = locald.VL(this.appId);
+    bDU();
     AppMethodBeat.o(147222);
   }
   
-  public final void aOY()
+  public final void bjk()
   {
     AppMethodBeat.i(147223);
-    if (this.kuv != null) {
-      this.kuv.run();
+    if (this.lyv != null) {
+      this.lyv.run();
     }
     AppMethodBeat.o(147223);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     AppMethodBeat.i(147225);
     this.appId = paramParcel.readString();
@@ -75,7 +75,7 @@ public class GetStorageSizeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.GetStorageSizeTask
  * JD-Core Version:    0.7.0.1
  */

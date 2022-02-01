@@ -3,33 +3,36 @@ package com.tencent.mm.al;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class j
-  extends com.tencent.mm.sdk.e.j<h>
+  extends MAutoStorage<h>
 {
   public static final String[] SQL_CREATE;
-  private com.tencent.mm.sdk.e.e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(124085);
-    SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(h.info, "BizKF") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(h.info, "BizKF") };
     AppMethodBeat.o(124085);
   }
   
-  public j(com.tencent.mm.sdk.e.e parame)
+  public j(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, h.info, "BizKF", null);
+    super(paramISQLiteDatabase, h.info, "BizKF", null);
     AppMethodBeat.i(124077);
-    this.db = parame;
-    parame.execSQL("BizKF", "CREATE INDEX IF NOT EXISTS BizKFAppIdUsernameIndex ON BizKF ( brandUsername )");
-    parame.execSQL("BizKF", "CREATE INDEX IF NOT EXISTS BizKFOpenIdIndex ON BizKF ( openId )");
+    this.db = paramISQLiteDatabase;
+    paramISQLiteDatabase.execSQL("BizKF", "CREATE INDEX IF NOT EXISTS BizKFAppIdUsernameIndex ON BizKF ( brandUsername )");
+    paramISQLiteDatabase.execSQL("BizKF", "CREATE INDEX IF NOT EXISTS BizKFOpenIdIndex ON BizKF ( openId )");
     AppMethodBeat.o(124077);
   }
   
@@ -53,37 +56,23 @@ public final class j
   private boolean b(h paramh)
   {
     AppMethodBeat.i(124080);
-    if ((paramh == null) || (bu.isNullOrNil(paramh.field_openId)) || (bu.isNullOrNil(paramh.field_brandUsername)))
+    if ((paramh == null) || (Util.isNullOrNil(paramh.field_openId)) || (Util.isNullOrNil(paramh.field_brandUsername)))
     {
-      ae.w("MicroMsg.BizKFStorage", "wrong argument");
+      Log.w("MicroMsg.BizKFStorage", "wrong argument");
       AppMethodBeat.o(124080);
       return false;
     }
     ContentValues localContentValues = paramh.convertTo();
-    if (this.db.replace("BizKF", h.info.IBM, localContentValues) > 0L) {}
+    if (this.db.replace("BizKF", h.info.primaryKey, localContentValues) > 0L) {}
     for (boolean bool = true;; bool = false)
     {
-      ae.i("MicroMsg.BizKFStorage", "replace: openId=%s, brandUsername=%s, ret=%s ", new Object[] { paramh.field_openId, paramh.field_brandUsername, Boolean.valueOf(bool) });
+      Log.i("MicroMsg.BizKFStorage", "replace: openId=%s, brandUsername=%s, ret=%s ", new Object[] { paramh.field_openId, paramh.field_brandUsername, Boolean.valueOf(bool) });
       AppMethodBeat.o(124080);
       return bool;
     }
   }
   
-  public final int EA(String paramString)
-  {
-    AppMethodBeat.i(124082);
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(124082);
-      return -1;
-    }
-    int i = this.db.delete("BizKF", "brandUsername = ?", new String[] { paramString });
-    ae.i("MicroMsg.BizKFStorage", "deleteKFWorker by brand username(u:%s, r:%d).", new Object[] { paramString, Integer.valueOf(i) });
-    AppMethodBeat.o(124082);
-    return i;
-  }
-  
-  public final h Ey(String paramString)
+  public final h Nm(String paramString)
   {
     AppMethodBeat.i(124078);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -91,10 +80,10 @@ public final class j
       AppMethodBeat.o(124078);
       return null;
     }
-    Cursor localCursor = this.db.a("BizKF", null, "openId=?", new String[] { paramString }, null, null, null, 2);
+    Cursor localCursor = this.db.query("BizKF", null, "openId=?", new String[] { paramString }, null, null, null, 2);
     if (!localCursor.moveToFirst())
     {
-      ae.w("MicroMsg.BizKFStorage", "get null with openId:".concat(String.valueOf(paramString)));
+      Log.w("MicroMsg.BizKFStorage", "get null with openId:".concat(String.valueOf(paramString)));
       localCursor.close();
       AppMethodBeat.o(124078);
       return null;
@@ -106,18 +95,18 @@ public final class j
     return paramString;
   }
   
-  public final h Ez(String paramString)
+  public final h Nn(String paramString)
   {
     AppMethodBeat.i(124081);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(124081);
       return null;
     }
-    Cursor localCursor = this.db.a("BizKF", null, "brandUsername = ? order by kfType desc ", new String[] { paramString }, null, null, null, 2);
+    Cursor localCursor = this.db.query("BizKF", null, "brandUsername = ? order by kfType desc ", new String[] { paramString }, null, null, null, 2);
     if (!localCursor.moveToFirst())
     {
-      ae.w("MicroMsg.BizKFStorage", "get null with brandUsername:".concat(String.valueOf(paramString)));
+      Log.w("MicroMsg.BizKFStorage", "get null with brandUsername:".concat(String.valueOf(paramString)));
       localCursor.close();
       AppMethodBeat.o(124081);
       return null;
@@ -129,17 +118,31 @@ public final class j
     return paramString;
   }
   
+  public final int No(String paramString)
+  {
+    AppMethodBeat.i(124082);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(124082);
+      return -1;
+    }
+    int i = this.db.delete("BizKF", "brandUsername = ?", new String[] { paramString });
+    Log.i("MicroMsg.BizKFStorage", "deleteKFWorker by brand username(u:%s, r:%d).", new Object[] { paramString, Integer.valueOf(i) });
+    AppMethodBeat.o(124082);
+    return i;
+  }
+  
   public final int f(LinkedList<h> paramLinkedList)
   {
     AppMethodBeat.i(124083);
     if (paramLinkedList.size() <= 0)
     {
-      ae.e("MicroMsg.BizKFStorage", "null kfs");
+      Log.e("MicroMsg.BizKFStorage", "null kfs");
       AppMethodBeat.o(124083);
       return 0;
     }
     if ((this.db instanceof com.tencent.mm.storagebase.h)) {}
-    for (long l = ((com.tencent.mm.storagebase.h)this.db).yi(Thread.currentThread().getId());; l = 0L)
+    for (long l = ((com.tencent.mm.storagebase.h)this.db).beginTransaction(Thread.currentThread().getId());; l = 0L)
     {
       paramLinkedList = paramLinkedList.iterator();
       int i = 0;
@@ -156,9 +159,9 @@ public final class j
       {
         break;
         if ((this.db instanceof com.tencent.mm.storagebase.h)) {
-          g.ajR().gDX.sW(l);
+          g.aAh().hqK.endTransaction(l);
         }
-        ae.i("MicroMsg.BizKFStorage", "insertOrUpdateBizKFs %d", new Object[] { Integer.valueOf(i) });
+        Log.i("MicroMsg.BizKFStorage", "insertOrUpdateBizKFs %d", new Object[] { Integer.valueOf(i) });
         AppMethodBeat.o(124083);
         return i;
       }
@@ -167,7 +170,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.al.j
  * JD-Core Version:    0.7.0.1
  */

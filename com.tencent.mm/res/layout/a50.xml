@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/cj5" android:background="@color/BW_93" android:paddingTop="@dimen/ci" android:paddingBottom="@dimen/c5" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/jo" android:textColor="@color/FG_2" android:id="@id/cj4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c9x" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center_horizontal" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/k5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:id="@id/wn" android:layout_width="24.0dip" android:layout_height="24.0dip" android:src="@drawable/bca" android:contentDescription="@string/ty" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="left" android:layout_gravity="center_vertical" android:id="@id/ipp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/bz4" android:singleLine="true" android:shadowColor="#99000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="10.0" />
+        </LinearLayout>
     </RelativeLayout>
-</LinearLayout>
+</merge>

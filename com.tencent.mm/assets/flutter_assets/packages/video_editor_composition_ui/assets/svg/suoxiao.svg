@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>suoxiao</title>
+    <g id="suoxiao" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" fill-opacity="0.8">
+        <g id="缩小" transform="translate(14.000000, 12.000000)" fill="#FFFFFF" fill-rule="nonzero">
+            <polygon id="矩形-2" points="15.25 30.75 15.25 45 10.75 45 10.749 38.431 4.09099026 45.0909903 0.909009742 41.9090097 7.568 35.25 1 35.25 1 30.75"></polygon>
+            <polygon id="矩形-2备份" transform="translate(8.079505, 7.920495) rotate(90.000000) translate(-8.079505, -7.920495) " points="15.25 0.75 15.25 15 10.75 15 10.75 8.43 4.09099026 15.0909903 0.909009742 11.9090097 7.57 5.249 1 5.25 1 0.75"></polygon>
+            <polygon id="矩形-2备份-3" transform="translate(38.079505, 37.920495) scale(-1, 1) translate(-38.079505, -37.920495) " points="45.25 30.75 45.25 45 40.75 45 40.75 38.43 34.0909903 45.0909903 30.9090097 41.9090097 37.568 35.25 31 35.25 31 30.75"></polygon>
+            <polygon id="矩形-2备份-2" transform="translate(38.079505, 7.920495) scale(-1, 1) rotate(90.000000) translate(-38.079505, -7.920495) " points="45.25 0.75 45.25 15 40.75 15 40.75 8.43 34.0909903 15.0909903 30.9090097 11.9090097 37.57 5.249 31 5.25 31 0.75"></polygon>
+        </g>
+    </g>
+</svg>

@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.finder.viewmodel.component;
 
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.UIComponent;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTimelineReporterUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/support/v4/app/Fragment;)V", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "clickTabContextId", "", "getClickTabContextId", "()Ljava/lang/String;", "setClickTabContextId", "(Ljava/lang/String;)V", "contextId", "getContextId", "setContextId", "reporter", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter;", "getReporter", "()Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter;", "setReporter", "(Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter;)V", "sessionId", "getSessionId", "setSessionId", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderTimelineReporterUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "fragment", "Landroid/support/v4/app/Fragment;", "(Landroid/support/v4/app/Fragment;)V", "activity", "Landroid/support/v7/app/AppCompatActivity;", "(Landroid/support/v7/app/AppCompatActivity;)V", "clickTabContextId", "", "getClickTabContextId", "()Ljava/lang/String;", "setClickTabContextId", "(Ljava/lang/String;)V", "contextId", "getContextId", "setContextId", "reporter", "Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter;", "getReporter", "()Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter;", "setReporter", "(Lcom/tencent/mm/plugin/finder/report/FinderSingleFeedFlowReporter;)V", "sessionId", "getSessionId", "setSessionId", "plugin-finder_release"})
 public final class FinderTimelineReporterUIC
   extends UIComponent
 {
   public FinderTimelineReporterUIC(Fragment paramFragment)
   {
     super(paramFragment);
-    AppMethodBeat.i(206325);
-    AppMethodBeat.o(206325);
+    AppMethodBeat.i(256004);
+    AppMethodBeat.o(256004);
   }
   
-  public FinderTimelineReporterUIC(MMActivity paramMMActivity)
+  public FinderTimelineReporterUIC(AppCompatActivity paramAppCompatActivity)
   {
-    super(paramMMActivity);
-    AppMethodBeat.i(206326);
-    AppMethodBeat.o(206326);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(256005);
+    AppMethodBeat.o(256005);
   }
 }
 

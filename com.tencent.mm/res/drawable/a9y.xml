@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ripple android:color="@color/z8"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/mask">
-        <color android:color="@color/a_r" />
-    </item>
-    <item>
+    <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <solid android:color="@color/a7c" />
+            <corners android:topLeftRadius="@dimen/ct" android:topRightRadius="@dimen/ct" />
+            <solid android:color="@color/aa" />
         </shape>
     </item>
-</ripple>
+    <item android:drawable="@drawable/a_1" />
+</selector>

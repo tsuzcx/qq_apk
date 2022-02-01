@@ -8,7 +8,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public abstract class b
-  implements com.tencent.matrix.b.b, d.a
+  implements com.tencent.matrix.b.c, d.a
 {
   public static final int PLUGIN_CREATE = 0;
   public static final int PLUGIN_DESTROYED = 8;
@@ -64,12 +64,12 @@ public abstract class b
     this.status = 1;
     this.application = paramApplication;
     this.pluginListener = paramc;
-    a.cBz.a(this);
+    a.cPA.a(this);
   }
   
   public boolean isForeground()
   {
-    return a.cBz.cBB;
+    return a.cPA.cPB;
   }
   
   public boolean isPluginDestroyed()
@@ -97,8 +97,8 @@ public abstract class b
     if (paramc.tag == null) {
       paramc.tag = getTag();
     }
-    paramc.cFH = this;
-    JSONObject localJSONObject = paramc.cFG;
+    paramc.cWf = this;
+    JSONObject localJSONObject = paramc.cWe;
     try
     {
       if (paramc.tag != null) {
@@ -159,7 +159,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.e.b
  * JD-Core Version:    0.7.0.1
  */

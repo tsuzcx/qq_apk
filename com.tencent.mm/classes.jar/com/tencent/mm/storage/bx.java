@@ -1,81 +1,93 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.g.c.eb;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public final class bx
-  extends com.tencent.mm.bw.a
+  extends eb
 {
-  public LinkedList<by> JhD;
+  public static IAutoDBItem.MAutoDBInfo info;
   
-  public bx()
+  static
   {
-    AppMethodBeat.i(43274);
-    this.JhD = new LinkedList();
-    AppMethodBeat.o(43274);
+    AppMethodBeat.i(43200);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[14];
+    localMAutoDBInfo.columns = new String[15];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "svrid";
+    localMAutoDBInfo.colsMap.put("svrid", "LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "svrid";
+    localMAutoDBInfo.columns[1] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER");
+    localStringBuilder.append(" status INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "type";
+    localMAutoDBInfo.colsMap.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "scene";
+    localMAutoDBInfo.colsMap.put("scene", "INTEGER");
+    localStringBuilder.append(" scene INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "createtime";
+    localMAutoDBInfo.colsMap.put("createtime", "LONG");
+    localStringBuilder.append(" createtime LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "talker";
+    localMAutoDBInfo.colsMap.put("talker", "TEXT");
+    localStringBuilder.append(" talker TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "content";
+    localMAutoDBInfo.colsMap.put("content", "TEXT");
+    localStringBuilder.append(" content TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[7] = "sayhiuser";
+    localMAutoDBInfo.colsMap.put("sayhiuser", "TEXT");
+    localStringBuilder.append(" sayhiuser TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[8] = "sayhicontent";
+    localMAutoDBInfo.colsMap.put("sayhicontent", "TEXT");
+    localStringBuilder.append(" sayhicontent TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[9] = "imgpath";
+    localMAutoDBInfo.colsMap.put("imgpath", "TEXT");
+    localStringBuilder.append(" imgpath TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[10] = "isSend";
+    localMAutoDBInfo.colsMap.put("isSend", "INTEGER");
+    localStringBuilder.append(" isSend INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[11] = "sayhiencryptuser";
+    localMAutoDBInfo.colsMap.put("sayhiencryptuser", "TEXT");
+    localStringBuilder.append(" sayhiencryptuser TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[12] = "ticket";
+    localMAutoDBInfo.colsMap.put("ticket", "TEXT");
+    localStringBuilder.append(" ticket TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[13] = "flag";
+    localMAutoDBInfo.colsMap.put("flag", "INTEGER");
+    localStringBuilder.append(" flag INTEGER");
+    localMAutoDBInfo.columns[14] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(43200);
   }
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(43275);
-    if (paramInt == 0)
-    {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.JhD);
-      AppMethodBeat.o(43275);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.a.c(1, 8, this.JhD);
-      AppMethodBeat.o(43275);
-      return paramInt + 0;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.JhD.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
-      }
-      AppMethodBeat.o(43275);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      bx localbx = (bx)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(43275);
-        return -1;
-      }
-      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new by();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((by)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localbx.JhD.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(43275);
-      return 0;
-    }
-    AppMethodBeat.o(43275);
-    return -1;
+    return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.storage.bx
  * JD-Core Version:    0.7.0.1
  */

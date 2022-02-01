@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:background="@drawable/c7n" android:layout_width="fill_parent" android:layout_height="400.0dip"
+<LinearLayout android:background="@drawable/asv" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/i1v" android:paddingTop="@dimen/ci" android:paddingBottom="@dimen/ci" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="@dimen/ci" android:paddingEnd="@dimen/ci" />
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/e2m" android:background="@drawable/qb" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/iq">
+        <ImageView android:id="@id/hyg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ak5" android:layout_marginRight="@dimen/ak6" android:layout_alignParentLeft="true" android:layout_centerInParent="true" android:contentDescription="@null" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/hyn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hs" android:layout_marginBottom="@dimen/g" android:layout_toRightOf="@id/hyg" android:layout_alignParentTop="true" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/a8y" android:id="@id/hym" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hs" android:layout_toRightOf="@id/hyg" android:layout_below="@id/hyn" />
+    </RelativeLayout>
+</LinearLayout>

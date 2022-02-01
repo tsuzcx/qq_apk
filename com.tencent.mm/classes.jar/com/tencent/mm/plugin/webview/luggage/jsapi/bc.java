@@ -1,59 +1,47 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.webview.luggage.g.14;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class bc
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78623);
-    ae.i("MicroMsg.JsApiSetCloseWindowConfirmDialogInfo", "invoke");
-    boolean bool = paramb.chh.cgn.optBoolean("switch");
-    String str1 = paramb.chh.cgn.optString("title_cn");
-    String str2 = paramb.chh.cgn.optString("title_eng");
-    String str3 = paramb.chh.cgn.optString("ok_cn");
-    String str4 = paramb.chh.cgn.optString("ok_eng");
-    String str5 = paramb.chh.cgn.optString("cancel_cn");
-    String str6 = paramb.chh.cgn.optString("cancel_eng");
-    m localm = ((g)paramb.chg).eSQ();
-    if (localm == null)
+    AppMethodBeat.i(78622);
+    Log.i("MicroMsg.JsApiSetBounceBackground", "invokeInOwn");
+    String str = paramb.ctb.csi.optString("backgroundColor");
+    if (Util.isNullOrNil(str))
     {
-      AppMethodBeat.o(78623);
+      paramb.c("invalid_data", null);
+      AppMethodBeat.o(78622);
       return;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putBoolean("close_window_confirm_dialog_switch", Boolean.valueOf(bool).booleanValue());
-    localBundle.putString("close_window_confirm_dialog_title_cn", str1);
-    localBundle.putString("close_window_confirm_dialog_title_eng", str2);
-    localBundle.putString("close_window_confirm_dialog_ok_cn", str3);
-    localBundle.putString("close_window_confirm_dialog_ok_eng", str4);
-    localBundle.putString("close_window_confirm_dialog_cancel_cn", str5);
-    localBundle.putString("close_window_confirm_dialog_cancel_eng", str6);
-    localm.setCloseWindowConfirmInfo(localBundle);
-    paramb.a("", null);
-    AppMethodBeat.o(78623);
+    g localg = (g)paramb.cta;
+    localg.mHandler.post(new g.14(localg, str));
+    paramb.c("", null);
+    AppMethodBeat.o(78622);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setCloseWindowConfirmDialogInfo";
+    return "setBounceBackground";
   }
 }
 

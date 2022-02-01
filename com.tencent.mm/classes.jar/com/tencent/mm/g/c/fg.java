@@ -2,64 +2,76 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class fg
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGY = "username".hashCode();
-  private static final int fqY = "originalArticleCount".hashCode();
-  private static final int fqZ = "friendSubscribeCount".hashCode();
-  private static final int fra = "allArticleWording".hashCode();
-  private static final int frb = "historyArticlesUrl".hashCode();
-  private static final int frc = "userRole".hashCode();
-  private static final int frd = "banReason".hashCode();
-  private static final int fre = "showRecommendArticle".hashCode();
-  private static final int frf = "showService".hashCode();
-  private static final int frg = "messageListStr".hashCode();
-  private static final int frh = "serviceInfoListStr".hashCode();
-  private static final int fri = "bizAccountListStr".hashCode();
-  private static final int frj = "cacheTime".hashCode();
-  private static final int frk = "decryptUserName".hashCode();
-  private static final int frl = "hiddenAvatar".hashCode();
-  private static final int frm = "hiddenButtonBeforeFocus".hashCode();
-  private static final int frn = "newBanReason".hashCode();
+  private static final int fCq = "fileName".hashCode();
+  private static final int fSn = "musicId".hashCode();
+  private static final int fUG = "musicUrl".hashCode();
+  private static final int fUH = "indexBitData".hashCode();
+  private static final int fUI = "fileCacheComplete".hashCode();
+  private static final int fUJ = "pieceFileMIMEType".hashCode();
+  private static final int fUK = "removeDirtyBit".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGV = true;
-  public String field_allArticleWording;
-  public String field_banReason;
-  public String field_bizAccountListStr;
-  public long field_cacheTime;
-  public String field_decryptUserName;
-  public int field_friendSubscribeCount;
-  public int field_hiddenAvatar;
-  public int field_hiddenButtonBeforeFocus;
-  public String field_historyArticlesUrl;
-  public String field_messageListStr;
-  public String field_newBanReason;
-  public int field_originalArticleCount;
-  public String field_serviceInfoListStr;
-  public int field_showRecommendArticle;
-  public int field_showService;
-  public int field_userRole;
-  public String field_username;
-  private boolean fqI = true;
-  private boolean fqJ = true;
-  private boolean fqK = true;
-  private boolean fqL = true;
-  private boolean fqM = true;
-  private boolean fqN = true;
-  private boolean fqO = true;
-  private boolean fqP = true;
-  private boolean fqQ = true;
-  private boolean fqR = true;
-  private boolean fqS = true;
-  private boolean fqT = true;
-  private boolean fqU = true;
-  private boolean fqV = true;
-  private boolean fqW = true;
-  private boolean fqX = true;
+  private boolean fBM = true;
+  private boolean fRD = true;
+  private boolean fUB = true;
+  private boolean fUC = true;
+  private boolean fUD = true;
+  private boolean fUE = true;
+  private boolean fUF = true;
+  public int field_fileCacheComplete;
+  public String field_fileName;
+  public byte[] field_indexBitData;
+  public String field_musicId;
+  public String field_musicUrl;
+  public String field_pieceFileMIMEType;
+  public int field_removeDirtyBit;
+  
+  public static IAutoDBItem.MAutoDBInfo ajs()
+  {
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[7];
+    localMAutoDBInfo.columns = new String[8];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "musicId";
+    localMAutoDBInfo.colsMap.put("musicId", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" musicId TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "musicId";
+    localMAutoDBInfo.columns[1] = "musicUrl";
+    localMAutoDBInfo.colsMap.put("musicUrl", "TEXT");
+    localStringBuilder.append(" musicUrl TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "fileName";
+    localMAutoDBInfo.colsMap.put("fileName", "TEXT");
+    localStringBuilder.append(" fileName TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "indexBitData";
+    localMAutoDBInfo.colsMap.put("indexBitData", "BLOB");
+    localStringBuilder.append(" indexBitData BLOB");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "fileCacheComplete";
+    localMAutoDBInfo.colsMap.put("fileCacheComplete", "INTEGER");
+    localStringBuilder.append(" fileCacheComplete INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "pieceFileMIMEType";
+    localMAutoDBInfo.colsMap.put("pieceFileMIMEType", "TEXT");
+    localStringBuilder.append(" pieceFileMIMEType TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "removeDirtyBit";
+    localMAutoDBInfo.colsMap.put("removeDirtyBit", "INTEGER");
+    localStringBuilder.append(" removeDirtyBit INTEGER");
+    localMAutoDBInfo.columns[7] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -74,11 +86,11 @@ public abstract class fg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGY != k) {
+      if (fSn != k) {
         break label65;
       }
-      this.field_username = paramCursor.getString(i);
-      this.eGV = true;
+      this.field_musicId = paramCursor.getString(i);
+      this.fRD = true;
     }
     for (;;)
     {
@@ -86,38 +98,18 @@ public abstract class fg
       break label20;
       break;
       label65:
-      if (fqY == k) {
-        this.field_originalArticleCount = paramCursor.getInt(i);
-      } else if (fqZ == k) {
-        this.field_friendSubscribeCount = paramCursor.getInt(i);
-      } else if (fra == k) {
-        this.field_allArticleWording = paramCursor.getString(i);
-      } else if (frb == k) {
-        this.field_historyArticlesUrl = paramCursor.getString(i);
-      } else if (frc == k) {
-        this.field_userRole = paramCursor.getInt(i);
-      } else if (frd == k) {
-        this.field_banReason = paramCursor.getString(i);
-      } else if (fre == k) {
-        this.field_showRecommendArticle = paramCursor.getInt(i);
-      } else if (frf == k) {
-        this.field_showService = paramCursor.getInt(i);
-      } else if (frg == k) {
-        this.field_messageListStr = paramCursor.getString(i);
-      } else if (frh == k) {
-        this.field_serviceInfoListStr = paramCursor.getString(i);
-      } else if (fri == k) {
-        this.field_bizAccountListStr = paramCursor.getString(i);
-      } else if (frj == k) {
-        this.field_cacheTime = paramCursor.getLong(i);
-      } else if (frk == k) {
-        this.field_decryptUserName = paramCursor.getString(i);
-      } else if (frl == k) {
-        this.field_hiddenAvatar = paramCursor.getInt(i);
-      } else if (frm == k) {
-        this.field_hiddenButtonBeforeFocus = paramCursor.getInt(i);
-      } else if (frn == k) {
-        this.field_newBanReason = paramCursor.getString(i);
+      if (fUG == k) {
+        this.field_musicUrl = paramCursor.getString(i);
+      } else if (fCq == k) {
+        this.field_fileName = paramCursor.getString(i);
+      } else if (fUH == k) {
+        this.field_indexBitData = paramCursor.getBlob(i);
+      } else if (fUI == k) {
+        this.field_fileCacheComplete = paramCursor.getInt(i);
+      } else if (fUJ == k) {
+        this.field_pieceFileMIMEType = paramCursor.getString(i);
+      } else if (fUK == k) {
+        this.field_removeDirtyBit = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -127,59 +119,26 @@ public abstract class fg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
+    if (this.fRD) {
+      localContentValues.put("musicId", this.field_musicId);
     }
-    if (this.fqI) {
-      localContentValues.put("originalArticleCount", Integer.valueOf(this.field_originalArticleCount));
+    if (this.fUB) {
+      localContentValues.put("musicUrl", this.field_musicUrl);
     }
-    if (this.fqJ) {
-      localContentValues.put("friendSubscribeCount", Integer.valueOf(this.field_friendSubscribeCount));
+    if (this.fBM) {
+      localContentValues.put("fileName", this.field_fileName);
     }
-    if (this.fqK) {
-      localContentValues.put("allArticleWording", this.field_allArticleWording);
+    if (this.fUC) {
+      localContentValues.put("indexBitData", this.field_indexBitData);
     }
-    if (this.fqL) {
-      localContentValues.put("historyArticlesUrl", this.field_historyArticlesUrl);
+    if (this.fUD) {
+      localContentValues.put("fileCacheComplete", Integer.valueOf(this.field_fileCacheComplete));
     }
-    if (this.fqM) {
-      localContentValues.put("userRole", Integer.valueOf(this.field_userRole));
+    if (this.fUE) {
+      localContentValues.put("pieceFileMIMEType", this.field_pieceFileMIMEType);
     }
-    if (this.fqN) {
-      localContentValues.put("banReason", this.field_banReason);
-    }
-    if (this.fqO) {
-      localContentValues.put("showRecommendArticle", Integer.valueOf(this.field_showRecommendArticle));
-    }
-    if (this.fqP) {
-      localContentValues.put("showService", Integer.valueOf(this.field_showService));
-    }
-    if (this.fqQ) {
-      localContentValues.put("messageListStr", this.field_messageListStr);
-    }
-    if (this.fqR) {
-      localContentValues.put("serviceInfoListStr", this.field_serviceInfoListStr);
-    }
-    if (this.fqS) {
-      localContentValues.put("bizAccountListStr", this.field_bizAccountListStr);
-    }
-    if (this.fqT) {
-      localContentValues.put("cacheTime", Long.valueOf(this.field_cacheTime));
-    }
-    if (this.field_decryptUserName == null) {
-      this.field_decryptUserName = "";
-    }
-    if (this.fqU) {
-      localContentValues.put("decryptUserName", this.field_decryptUserName);
-    }
-    if (this.fqV) {
-      localContentValues.put("hiddenAvatar", Integer.valueOf(this.field_hiddenAvatar));
-    }
-    if (this.fqW) {
-      localContentValues.put("hiddenButtonBeforeFocus", Integer.valueOf(this.field_hiddenButtonBeforeFocus));
-    }
-    if (this.fqX) {
-      localContentValues.put("newBanReason", this.field_newBanReason);
+    if (this.fUF) {
+      localContentValues.put("removeDirtyBit", Integer.valueOf(this.field_removeDirtyBit));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -189,7 +148,7 @@ public abstract class fg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.c.fg
  * JD-Core Version:    0.7.0.1
  */

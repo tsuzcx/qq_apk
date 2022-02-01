@@ -1,71 +1,71 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.ch;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bhw;
-import com.tencent.mm.protocal.protobuf.bhx;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.cl;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.btu;
+import com.tencent.mm.protocal.protobuf.btv;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class aa
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private bhx hTH;
-  private a<aa> hTI;
-  private final b rr;
+  private i callback;
+  private btv iOT;
+  private a<aa> iOU;
+  private final d rr;
   
   public aa()
   {
-    AppMethodBeat.i(188889);
-    ae.i("MicroMsg.NetSceneGetReceiptAssisPluginMenu", "NetSceneGetReceiptAssisPluginMenu begin");
-    b.a locala = new b.a();
+    AppMethodBeat.i(212182);
+    Log.i("MicroMsg.NetSceneGetReceiptAssisPluginMenu", "NetSceneGetReceiptAssisPluginMenu begin");
+    d.a locala = new d.a();
     locala.funcId = 1769;
     locala.uri = "/cgi-bin/mmpay-bin/getreceiptassismenu";
-    bhw localbhw = new bhw();
-    localbhw.timestamp = ch.aDb();
-    locala.hQF = localbhw;
-    locala.hQG = new bhx();
-    locala.hQH = 0;
+    btu localbtu = new btu();
+    localbtu.timestamp = cl.aWz();
+    locala.iLN = localbtu;
+    locala.iLO = new btv();
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    AppMethodBeat.o(188889);
+    this.rr = locala.aXF();
+    AppMethodBeat.o(212182);
   }
   
   public aa(a<aa> parama)
   {
     this();
-    this.hTI = parama;
+    this.iOU = parama;
   }
   
-  public final bhx aGj()
+  public final btv bab()
   {
-    AppMethodBeat.i(188892);
-    if (this.hTH == null)
+    AppMethodBeat.i(212185);
+    if (this.iOT == null)
     {
-      localbhx = new bhx();
-      AppMethodBeat.o(188892);
-      return localbhx;
+      localbtv = new btv();
+      AppMethodBeat.o(212185);
+      return localbtv;
     }
-    bhx localbhx = this.hTH;
-    AppMethodBeat.o(188892);
-    return localbhx;
+    btv localbtv = this.iOT;
+    AppMethodBeat.o(212185);
+    return localbtv;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(188890);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(188890);
+    AppMethodBeat.i(212183);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(212183);
     return i;
   }
   
@@ -74,23 +74,23 @@ public final class aa
     return 1769;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(188891);
-    ae.w("MicroMsg.NetSceneGetReceiptAssisPluginMenu", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(212184);
+    Log.w("MicroMsg.NetSceneGetReceiptAssisPluginMenu", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.hTH = ((bhx)((b)paramq).hQE.hQJ);
+      this.iOT = ((btv)((d)params).iLL.iLR);
     }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    if (this.hTI != null) {
-      this.hTI.a(paramInt2, paramInt3, paramString, this);
+    if (this.iOU != null) {
+      this.iOU.a(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(188891);
+    AppMethodBeat.o(212184);
   }
   
-  public static abstract interface a<T extends n>
+  public static abstract interface a<T extends q>
   {
     public abstract void a(int paramInt1, int paramInt2, String paramString, T paramT);
   }

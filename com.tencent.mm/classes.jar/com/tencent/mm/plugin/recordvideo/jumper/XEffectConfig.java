@@ -9,13 +9,13 @@ public class XEffectConfig
   implements Parcelable
 {
   public static final Parcelable.Creator<XEffectConfig> CREATOR;
-  public boolean xOG;
-  public boolean xOH;
-  public int xOI;
-  public int xOJ;
-  public int xOK;
-  public int xOL;
-  public int xOM;
+  public boolean BOM;
+  public boolean BON;
+  public int hDb;
+  public int hDc;
+  public int hDd;
+  public int hDe;
+  public int hDf;
   
   static
   {
@@ -26,29 +26,29 @@ public class XEffectConfig
   
   public XEffectConfig()
   {
-    this.xOG = false;
-    this.xOH = false;
-    this.xOI = -1;
-    this.xOJ = -1;
-    this.xOK = -1;
-    this.xOL = -1;
-    this.xOM = -1;
+    this.BOM = false;
+    this.BON = false;
+    this.hDb = -1;
+    this.hDc = -1;
+    this.hDd = -1;
+    this.hDe = -1;
+    this.hDf = -1;
   }
   
   protected XEffectConfig(Parcel paramParcel)
   {
     AppMethodBeat.i(182591);
-    this.xOG = false;
-    this.xOH = false;
-    this.xOI = -1;
-    this.xOJ = -1;
-    this.xOK = -1;
-    this.xOL = -1;
-    this.xOM = -1;
+    this.BOM = false;
+    this.BON = false;
+    this.hDb = -1;
+    this.hDc = -1;
+    this.hDd = -1;
+    this.hDe = -1;
+    this.hDf = -1;
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.xOG = bool1;
+      this.BOM = bool1;
       if (paramParcel.readByte() == 0) {
         break label125;
       }
@@ -56,12 +56,12 @@ public class XEffectConfig
     label125:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.xOH = bool1;
-      this.xOI = paramParcel.readInt();
-      this.xOJ = paramParcel.readInt();
-      this.xOK = paramParcel.readInt();
-      this.xOL = paramParcel.readInt();
-      this.xOM = paramParcel.readInt();
+      this.BON = bool1;
+      this.hDb = paramParcel.readInt();
+      this.hDc = paramParcel.readInt();
+      this.hDd = paramParcel.readInt();
+      this.hDe = paramParcel.readInt();
+      this.hDf = paramParcel.readInt();
       AppMethodBeat.o(182591);
       return;
       bool1 = false;
@@ -78,11 +78,11 @@ public class XEffectConfig
   {
     byte b2 = 1;
     AppMethodBeat.i(182592);
-    if (this.xOG)
+    if (this.BOM)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.xOH) {
+      if (!this.BON) {
         break label88;
       }
     }
@@ -90,11 +90,11 @@ public class XEffectConfig
     for (byte b1 = b2;; b1 = 0)
     {
       paramParcel.writeByte(b1);
-      paramParcel.writeInt(this.xOI);
-      paramParcel.writeInt(this.xOJ);
-      paramParcel.writeInt(this.xOK);
-      paramParcel.writeInt(this.xOL);
-      paramParcel.writeInt(this.xOM);
+      paramParcel.writeInt(this.hDb);
+      paramParcel.writeInt(this.hDc);
+      paramParcel.writeInt(this.hDd);
+      paramParcel.writeInt(this.hDe);
+      paramParcel.writeInt(this.hDf);
       AppMethodBeat.o(182592);
       return;
       b1 = 0;
@@ -104,7 +104,7 @@ public class XEffectConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.jumper.XEffectConfig
  * JD-Core Version:    0.7.0.1
  */

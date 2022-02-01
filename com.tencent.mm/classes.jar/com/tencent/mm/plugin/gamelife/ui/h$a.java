@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.gamelife.ui;
 
-import d.l;
-import d.o;
+import kotlin.l;
+import kotlin.o;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/ui/IGameLifeContract$IConversationView;", "", "disableLoadMore", "", "dismissLoadingView", "finishLoadMore", "size", "", "getVisibleItemRange", "Lkotlin/Pair;", "initialLoadFailed", "isChattingClosed", "", "loadMoreFailed", "showEmptyView", "show", "startChatting", "sessionId", "", "selfUsername", "talker", "plugin-gamelife_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/ui/IGameLifeContract$IConversationView;", "", "disableLoadMore", "", "now", "", "dismissLoadingView", "finishLoadMore", "size", "", "getVisibleItemRange", "Lkotlin/Pair;", "initialLoadFailed", "isChattingClosed", "loadMoreFailed", "showEmptyView", "show", "startChatting", "sessionId", "", "selfUsername", "talker", "plugin-gamelife_release"})
 public abstract interface h$a
 {
-  public abstract void IE(int paramInt);
+  public abstract void OF(int paramInt);
   
-  public abstract boolean ZJ();
+  public abstract boolean anw();
   
-  public abstract void al(String paramString1, String paramString2, String paramString3);
+  public abstract void at(String paramString1, String paramString2, String paramString3);
   
-  public abstract void ddH();
+  public abstract void dXr();
   
-  public abstract void ddI();
+  public abstract void dXs();
   
-  public abstract void ddJ();
+  public abstract void dXt();
   
-  public abstract void ddK();
+  public abstract o<Integer, Integer> dXu();
   
-  public abstract o<Integer, Integer> ddL();
+  public abstract void mB(boolean paramBoolean);
   
-  public abstract void id(boolean paramBoolean);
+  public abstract void pY(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.ui.h.a
  * JD-Core Version:    0.7.0.1
  */

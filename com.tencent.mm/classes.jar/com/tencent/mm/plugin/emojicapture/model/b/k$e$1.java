@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.emojicapture.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
 final class k$e$1
   extends q
-  implements b<Long, z>
+  implements b<Long, x>
 {
-  public static final 1 pZx;
+  public static final 1 rqu;
   
   static
   {
     AppMethodBeat.i(305);
-    pZx = new 1();
+    rqu = new 1();
     AppMethodBeat.o(305);
   }
   

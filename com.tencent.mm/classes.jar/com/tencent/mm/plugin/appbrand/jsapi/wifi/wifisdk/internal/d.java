@@ -1,103 +1,192 @@
 package com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal;
 
-import android.content.Context;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import java.util.BitSet;
+import java.util.List;
 
 public final class d
 {
-  public static int lBg = -1;
+  public static WifiManager chC;
   
-  public static String Se(String paramString)
+  public static int addNetwork(WifiConfiguration paramWifiConfiguration)
   {
-    AppMethodBeat.i(144728);
-    if (paramString == null)
+    AppMethodBeat.i(144719);
+    int i;
+    try
     {
-      AppMethodBeat.o(144728);
-      return "";
-    }
-    int i = paramString.length();
-    if ((i > 1) && (paramString.charAt(0) == '"') && (paramString.charAt(i - 1) == '"'))
-    {
-      paramString = paramString.substring(1, i - 1);
-      AppMethodBeat.o(144728);
-      return paramString;
-    }
-    AppMethodBeat.o(144728);
-    return paramString;
-  }
-  
-  public static int Sf(String paramString)
-  {
-    AppMethodBeat.i(208365);
-    WifiInfo localWifiInfo = ((WifiManager)ak.getContext().getSystemService("wifi")).getConnectionInfo();
-    if ((localWifiInfo != null) && (localWifiInfo.getBSSID() != null) && (localWifiInfo.getBSSID().equals(paramString)))
-    {
-      int i = c.tT(localWifiInfo.getRssi());
-      AppMethodBeat.o(208365);
+      i = chC.addNetwork(paramWifiConfiguration);
+      AppMethodBeat.o(144719);
       return i;
     }
-    AppMethodBeat.o(208365);
-    return 0;
+    catch (Throwable paramWifiConfiguration)
+    {
+      i = e.mIE;
+      AppMethodBeat.o(144719);
+    }
+    return i;
   }
   
-  public static int a(ScanResult paramScanResult)
+  public static boolean disableNetwork(int paramInt)
   {
-    AppMethodBeat.i(144730);
-    if ((paramScanResult == null) || (paramScanResult.capabilities == null))
+    AppMethodBeat.i(144722);
+    try
     {
-      AppMethodBeat.o(144730);
-      return -1;
+      boolean bool = chC.disableNetwork(paramInt);
+      AppMethodBeat.o(144722);
+      return bool;
     }
-    if (paramScanResult.capabilities.contains("WEP"))
+    catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(144730);
-      return 1;
+      AppMethodBeat.o(144722);
     }
-    if (paramScanResult.capabilities.contains("PSK"))
-    {
-      AppMethodBeat.o(144730);
-      return 2;
-    }
-    if (paramScanResult.capabilities.contains("EAP"))
-    {
-      AppMethodBeat.o(144730);
-      return 3;
-    }
-    AppMethodBeat.o(144730);
-    return 0;
+    return false;
   }
   
-  public static int d(WifiConfiguration paramWifiConfiguration)
+  public static List<WifiConfiguration> getConfiguredNetworks()
   {
-    AppMethodBeat.i(144729);
-    if (paramWifiConfiguration.allowedKeyManagement.get(1))
+    AppMethodBeat.i(144718);
+    try
     {
-      AppMethodBeat.o(144729);
-      return 2;
+      List localList = chC.getConfiguredNetworks();
+      AppMethodBeat.o(144718);
+      return localList;
     }
-    if ((paramWifiConfiguration.allowedKeyManagement.get(2)) || (paramWifiConfiguration.allowedKeyManagement.get(3)))
+    catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(144729);
-      return 3;
+      AppMethodBeat.o(144718);
     }
-    if (paramWifiConfiguration.wepKeys[0] != null)
+    return null;
+  }
+  
+  public static WifiInfo getConnectionInfo()
+  {
+    AppMethodBeat.i(144724);
+    try
     {
-      AppMethodBeat.o(144729);
-      return 1;
+      WifiInfo localWifiInfo = chC.getConnectionInfo();
+      AppMethodBeat.o(144724);
+      return localWifiInfo;
     }
-    AppMethodBeat.o(144729);
-    return 0;
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(144724);
+    }
+    return null;
+  }
+  
+  public static List<ScanResult> getScanResults()
+  {
+    AppMethodBeat.i(144725);
+    try
+    {
+      List localList = chC.getScanResults();
+      AppMethodBeat.o(144725);
+      return localList;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(144725);
+    }
+    return null;
+  }
+  
+  public static boolean isWifiEnabled()
+  {
+    AppMethodBeat.i(144727);
+    try
+    {
+      boolean bool = chC.isWifiEnabled();
+      AppMethodBeat.o(144727);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(144727);
+    }
+    return false;
+  }
+  
+  public static boolean removeNetwork(int paramInt)
+  {
+    AppMethodBeat.i(144720);
+    try
+    {
+      boolean bool = chC.removeNetwork(paramInt);
+      AppMethodBeat.o(144720);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(144720);
+    }
+    return false;
+  }
+  
+  public static boolean saveConfiguration()
+  {
+    AppMethodBeat.i(144726);
+    try
+    {
+      boolean bool = chC.saveConfiguration();
+      AppMethodBeat.o(144726);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(144726);
+    }
+    return false;
+  }
+  
+  public static boolean startScan()
+  {
+    AppMethodBeat.i(144723);
+    try
+    {
+      boolean bool = chC.startScan();
+      AppMethodBeat.o(144723);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(144723);
+    }
+    return false;
+  }
+  
+  public static boolean xQ(int paramInt)
+  {
+    AppMethodBeat.i(144721);
+    try
+    {
+      boolean bool = chC.enableNetwork(paramInt, true);
+      AppMethodBeat.o(144721);
+      return bool;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(144721);
+    }
+    return false;
+  }
+  
+  public static int xR(int paramInt)
+  {
+    if (paramInt <= -100) {
+      return 0;
+    }
+    if (paramInt >= -55) {
+      return 99;
+    }
+    return (int)((paramInt + 100) * 99.0F / 45.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.d
  * JD-Core Version:    0.7.0.1
  */

@@ -2,40 +2,40 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ahq;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.akc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(153157);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "ABTestInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "ABTestInfo") };
     AppMethodBeat.o(153157);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "ABTestInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "ABTestInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final void B(List<a> paramList, int paramInt)
+  public final void H(List<a> paramList, int paramInt)
   {
     AppMethodBeat.i(153151);
     int i = 0;
-    long l = bu.aRi();
+    long l = Util.nowSecond();
     this.db.delete("ABTestInfo", String.format(Locale.US, "%s<>0 and %s<%d", new Object[] { "endTime", "endTime", Long.valueOf(l) }), null);
     a locala1;
     if (1 == paramInt)
@@ -50,9 +50,9 @@ public final class b
     if (paramList.hasNext())
     {
       locala1 = (a)paramList.next();
-      if ((locala1 == null) || (bu.isNullOrNil(locala1.field_abtestkey)))
+      if ((locala1 == null) || (Util.isNullOrNil(locala1.field_abtestkey)))
       {
-        ae.e("MicroMsg.ABTestInfoStorage", "saveIfNecessary, Invalid item");
+        Log.e("MicroMsg.ABTestInfoStorage", "saveIfNecessary, Invalid item");
         bool = false;
         label147:
         if (!bool) {
@@ -70,16 +70,16 @@ public final class b
       if (!super.get(locala2, new String[0]))
       {
         bool = super.insertNotify(locala1, false);
-        ae.i("MicroMsg.ABTestInfoStorage", "Inserted: %s, Result: %b", new Object[] { locala1.field_abtestkey, Boolean.valueOf(bool) });
+        Log.i("MicroMsg.ABTestInfoStorage", "Inserted: %s, Result: %b", new Object[] { locala1.field_abtestkey, Boolean.valueOf(bool) });
         break label147;
       }
       if (((locala1.field_sequence > locala2.field_sequence) && (locala1.field_prioritylevel == locala2.field_prioritylevel)) || (locala1.field_prioritylevel > locala2.field_prioritylevel))
       {
         bool = super.updateNotify(locala1, false, new String[0]);
-        ae.i("MicroMsg.ABTestInfoStorage", "Updated: %s, Result: %b, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { locala1.field_abtestkey, Boolean.valueOf(bool), Long.valueOf(locala2.field_sequence), Long.valueOf(locala1.field_sequence), Integer.valueOf(locala2.field_prioritylevel), Integer.valueOf(locala1.field_prioritylevel) });
+        Log.i("MicroMsg.ABTestInfoStorage", "Updated: %s, Result: %b, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { locala1.field_abtestkey, Boolean.valueOf(bool), Long.valueOf(locala2.field_sequence), Long.valueOf(locala1.field_sequence), Integer.valueOf(locala2.field_prioritylevel), Integer.valueOf(locala1.field_prioritylevel) });
         break label147;
       }
-      ae.i("MicroMsg.ABTestInfoStorage", "Ignored: %s, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { locala1.field_abtestkey, Long.valueOf(locala2.field_sequence), Long.valueOf(locala1.field_sequence), Integer.valueOf(locala2.field_prioritylevel), Integer.valueOf(locala1.field_prioritylevel) });
+      Log.i("MicroMsg.ABTestInfoStorage", "Ignored: %s, Seq: %d, %d, PriorityLV: %d, %d", new Object[] { locala1.field_abtestkey, Long.valueOf(locala2.field_sequence), Long.valueOf(locala1.field_sequence), Integer.valueOf(locala2.field_prioritylevel), Integer.valueOf(locala1.field_prioritylevel) });
       bool = false;
       break label147;
       if (paramInt != 0) {
@@ -90,7 +90,7 @@ public final class b
     }
   }
   
-  public final a aTG(String paramString)
+  public final a biB(String paramString)
   {
     AppMethodBeat.i(153153);
     a locala = new a();
@@ -99,12 +99,45 @@ public final class b
     if ((bool) && (locala.field_endTime == 0L)) {
       locala.field_endTime = 9223372036854775807L;
     }
-    ae.i("MicroMsg.ABTestInfoStorage", "getByLayerId, id: %s, return: %b", new Object[] { paramString, Boolean.valueOf(bool) });
+    Log.i("MicroMsg.ABTestInfoStorage", "getByLayerId, id: %s, return: %b", new Object[] { paramString, Boolean.valueOf(bool) });
     AppMethodBeat.o(153153);
     return locala;
   }
   
-  public final LinkedList<ahq> fsw()
+  public final int gO(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(153154);
+    paramString = biB(paramString);
+    if (paramString.isValid())
+    {
+      paramInt = Util.getInt(paramString.field_value, paramInt);
+      AppMethodBeat.o(153154);
+      return paramInt;
+    }
+    AppMethodBeat.o(153154);
+    return paramInt;
+  }
+  
+  public final String getExpIdByKey(String paramString)
+  {
+    AppMethodBeat.i(153155);
+    paramString = biB(paramString);
+    if (paramString.isValid())
+    {
+      if (paramString.field_expId == null)
+      {
+        AppMethodBeat.o(153155);
+        return "";
+      }
+      paramString = paramString.field_expId;
+      AppMethodBeat.o(153155);
+      return paramString;
+    }
+    AppMethodBeat.o(153155);
+    return "";
+  }
+  
+  public final LinkedList<akc> gzx()
   {
     AppMethodBeat.i(153152);
     LinkedList localLinkedList = new LinkedList();
@@ -124,12 +157,12 @@ public final class b
     for (;;)
     {
       locala.convertFrom(localCursor);
-      ahq localahq = new ahq();
+      akc localakc = new akc();
       try
       {
-        localahq.GuP = bu.getInt(locala.field_expId, 0);
-        localahq.priority = locala.field_prioritylevel;
-        localLinkedList.add(localahq);
+        localakc.Lqu = Util.getInt(locala.field_expId, 0);
+        localakc.priority = locala.field_prioritylevel;
+        localLinkedList.add(localakc);
         if (localCursor.moveToNext()) {
           continue;
         }
@@ -141,13 +174,13 @@ public final class b
       {
         for (;;)
         {
-          ae.e("MicroMsg.ABTestInfoStorage", "expId parse failed, %s", new Object[] { locala.field_expId });
+          Log.e("MicroMsg.ABTestInfoStorage", "expId parse failed, %s", new Object[] { locala.field_expId });
         }
       }
     }
   }
   
-  public final String fsx()
+  public final String gzy()
   {
     AppMethodBeat.i(153156);
     Object localObject = getAll();
@@ -177,39 +210,6 @@ public final class b
     localObject = localStringBuilder.toString();
     AppMethodBeat.o(153156);
     return localObject;
-  }
-  
-  public final String getExpIdByKey(String paramString)
-  {
-    AppMethodBeat.i(153155);
-    paramString = aTG(paramString);
-    if (paramString.isValid())
-    {
-      if (paramString.field_expId == null)
-      {
-        AppMethodBeat.o(153155);
-        return "";
-      }
-      paramString = paramString.field_expId;
-      AppMethodBeat.o(153155);
-      return paramString;
-    }
-    AppMethodBeat.o(153155);
-    return "";
-  }
-  
-  public final int gv(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(153154);
-    paramString = aTG(paramString);
-    if (paramString.isValid())
-    {
-      paramInt = bu.getInt(paramString.field_value, paramInt);
-      AppMethodBeat.o(153154);
-      return paramInt;
-    }
-    AppMethodBeat.o(153154);
-    return paramInt;
   }
 }
 

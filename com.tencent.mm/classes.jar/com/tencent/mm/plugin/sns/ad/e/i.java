@@ -1,117 +1,130 @@
 package com.tencent.mm.plugin.sns.ad.e;
 
-import android.util.Base64;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.AnimatorSet.Builder;
+import android.animation.ObjectAnimator;
+import android.content.Context;
+import android.content.res.Resources;
+import android.util.DisplayMetrics;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsns.g;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.plugin.sns.storage.e;
-import com.tencent.mm.plugin.sns.storage.f;
-import com.tencent.mm.plugin.sns.storage.q;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.djc;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.io.IOException;
 
 public final class i
 {
-  public static String a(long paramLong, Object... paramVarArgs)
+  protected View DsR;
+  protected View DsS;
+  protected AnimatorSet DsT;
+  protected AnimatorSet DsU;
+  protected boolean DsV;
+  protected boolean DsW;
+  private final int dgM;
+  protected Context mContext;
+  protected boolean nmN;
+  
+  public i(View paramView1, View paramView2, Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(94986);
-    ah.dXy();
-    paramVarArgs = new StringBuilder(l.u(paramVarArgs));
-    a(paramLong, paramVarArgs);
-    paramVarArgs = paramVarArgs.toString();
-    AppMethodBeat.o(94986);
-    return paramVarArgs;
+    AppMethodBeat.i(201937);
+    this.nmN = false;
+    this.dgM = 500;
+    this.DsR = paramView1;
+    this.DsS = paramView2;
+    this.mContext = paramContext;
+    this.DsW = paramBoolean;
+    paramContext = ObjectAnimator.ofFloat(null, "alpha", new float[] { 1.0F, 0.0F });
+    paramContext.setDuration(0L);
+    if (this.DsW)
+    {
+      paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { -180.0F, 10.0F });
+      paramView1.setDuration(500L);
+      ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(null, "alpha", new float[] { 0.0F, 1.0F });
+      localObjectAnimator.setDuration(0L);
+      localObjectAnimator.setStartDelay(250L);
+      if (!this.DsW) {
+        break label397;
+      }
+      paramView2 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 10.0F, 0.0F });
+      label161:
+      paramView2.setDuration(500L);
+      AnimatorSet localAnimatorSet = new AnimatorSet();
+      localAnimatorSet.play(paramContext).with(paramView1).with(localObjectAnimator);
+      localAnimatorSet.play(paramView2).after(paramView1);
+      this.DsT = localAnimatorSet;
+      if (!this.DsW) {
+        break label419;
+      }
+    }
+    label397:
+    label419:
+    for (paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 0.0F, 190.0F });; paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 0.0F, -190.0F }))
+    {
+      paramView1.setDuration(500L);
+      paramView2 = ObjectAnimator.ofFloat(null, "alpha", new float[] { 1.0F, 0.0F });
+      paramView2.setDuration(0L);
+      paramView2.setStartDelay(250L);
+      paramContext = new AnimatorSet();
+      paramContext.play(paramView1).with(paramView2);
+      this.DsU = paramContext;
+      this.DsT.addListener(new AnimatorListenerAdapter()
+      {
+        public final void onAnimationStart(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(201935);
+          super.onAnimationStart(paramAnonymousAnimator);
+          i.this.nmN = true;
+          AppMethodBeat.o(201935);
+        }
+      });
+      this.DsU.addListener(new AnimatorListenerAdapter()
+      {
+        public final void onAnimationEnd(Animator paramAnonymousAnimator)
+        {
+          AppMethodBeat.i(201936);
+          super.onAnimationEnd(paramAnonymousAnimator);
+          i.this.nmN = false;
+          AppMethodBeat.o(201936);
+        }
+      });
+      float f = this.DsR.getContext().getResources().getDisplayMetrics().density * -3000.0F;
+      this.DsR.setCameraDistance(f);
+      this.DsS.setCameraDistance(f);
+      AppMethodBeat.o(201937);
+      return;
+      paramView1 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { 180.0F, -10.0F });
+      break;
+      paramView2 = ObjectAnimator.ofFloat(null, "rotationY", new float[] { -10.0F, 0.0F });
+      break label161;
+    }
   }
   
-  public static void a(long paramLong, StringBuilder paramStringBuilder)
+  public final void eWQ()
   {
-    AppMethodBeat.i(94987);
-    Object localObject = ah.dXH().Ax(paramLong);
-    if (localObject != null)
+    AppMethodBeat.i(201938);
+    if (!this.nmN)
     {
-      localObject = ((e)localObject).ebP();
-      if (localObject != null)
+      if (!this.DsV)
       {
-        com.tencent.mm.modelstat.p.a(((TimeLineObject)localObject).AiG, paramStringBuilder);
-        AppMethodBeat.o(94987);
+        this.DsT.setTarget(this.DsR);
+        this.DsU.setTarget(this.DsS);
+        this.DsT.start();
+        this.DsU.start();
+        this.DsV = true;
+        AppMethodBeat.o(201938);
         return;
       }
-      ae.v("SnsAdExtUtil", "l timeLineObject null, snsId %d", new Object[] { Long.valueOf(paramLong) });
-      paramStringBuilder.append(",,");
-      AppMethodBeat.o(94987);
-      return;
+      this.DsT.setTarget(this.DsS);
+      this.DsU.setTarget(this.DsR);
+      this.DsT.start();
+      this.DsU.start();
+      this.DsV = false;
     }
-    ae.v("SnsAdExtUtil", "l snsInfo null, snsId %d", new Object[] { Long.valueOf(paramLong) });
-    paramStringBuilder.append(",,");
-    AppMethodBeat.o(94987);
-  }
-  
-  public static void a(String paramString, g paramg)
-  {
-    AppMethodBeat.i(94985);
-    Object localObject = ah.dXE().aBq(paramString);
-    if (localObject != null)
-    {
-      localObject = ((com.tencent.mm.plugin.sns.storage.p)localObject).ebP();
-      if (localObject != null)
-      {
-        com.tencent.mm.modelstat.p.a(((TimeLineObject)localObject).AiG, paramg);
-        AppMethodBeat.o(94985);
-        return;
-      }
-      ae.v("SnsAdExtUtil", "timeLineObject null, snsId %s", new Object[] { paramString });
-      AppMethodBeat.o(94985);
-      return;
-    }
-    ae.v("SnsAdExtUtil", "snsInfo null, snsId %s", new Object[] { paramString });
-    AppMethodBeat.o(94985);
-  }
-  
-  private static String ayV(String paramString)
-  {
-    AppMethodBeat.i(94989);
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(94989);
-      return "";
-    }
-    paramString = Base64.decode(paramString, 0);
-    djc localdjc = new djc();
-    try
-    {
-      localdjc.parseFrom(paramString);
-      paramString = com.tencent.mm.modelstat.p.a(localdjc.HQJ);
-      AppMethodBeat.o(94989);
-      return paramString;
-    }
-    catch (IOException paramString)
-    {
-      ae.e("SnsAdExtUtil", "", new Object[] { paramString });
-      AppMethodBeat.o(94989);
-    }
-    return "";
-  }
-  
-  public static String b(TimeLineObject paramTimeLineObject)
-  {
-    AppMethodBeat.i(94988);
-    if (paramTimeLineObject != null)
-    {
-      paramTimeLineObject = ayV(paramTimeLineObject.AiG);
-      AppMethodBeat.o(94988);
-      return paramTimeLineObject;
-    }
-    ae.v("SnsAdExtUtil", "getSnsStatExt timeLineObject null");
-    AppMethodBeat.o(94988);
-    return null;
+    AppMethodBeat.o(201938);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.e.i
  * JD-Core Version:    0.7.0.1
  */

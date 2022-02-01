@@ -1,178 +1,52 @@
 package com.tencent.mm.plugin.appbrand.jsapi.coverview;
 
-import android.view.MotionEvent;
+import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.aa.e.b;
-import com.tencent.mm.plugin.appbrand.jsapi.aa.e.c;
-import com.tencent.mm.plugin.appbrand.jsapi.aa.e.d;
-import com.tencent.mm.plugin.appbrand.jsapi.aa.e.e;
-import com.tencent.mm.plugin.appbrand.jsapi.aa.e.f;
-import com.tencent.mm.plugin.appbrand.jsapi.at;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mm.model.ad.b;
+import com.tencent.mm.plugin.appbrand.jsapi.ac.c.b;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 
-public final class b
+final class b
+  extends bc
+  implements c.b
 {
-  private static int action = 0;
-  private static int duP = 0;
-  private static long gOH = 0L;
-  private static long kOp = 0L;
+  private static final int CTRL_INDEX = 678;
+  public static final String NAME = "onImageViewLoad";
+  private final ad.b lTf;
+  private final h lTg;
   
-  public static void a(e parame, int paramInt, MotionEvent paramMotionEvent, String paramString, boolean paramBoolean)
+  b(int paramInt, ad.b paramb, h paramh)
   {
-    AppMethodBeat.i(197222);
-    int i = paramMotionEvent.getActionIndex();
-    int j = paramMotionEvent.getPointerId(i);
-    float f1 = paramMotionEvent.getX(i);
-    float f2 = paramMotionEvent.getY(i);
-    if ((action == paramMotionEvent.getAction()) && (duP == j) && (kOp == paramMotionEvent.getEventTime()) && (gOH == paramMotionEvent.getDownTime()))
-    {
-      ae.i("MicroMsg.InsertViewTouchEventDispatch", "action:%d, eventId:%d, eventTime:%d, downTime:%d, don't send Duplicate event", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Integer.valueOf(j), Long.valueOf(paramMotionEvent.getEventTime()), Long.valueOf(paramMotionEvent.getDownTime()) });
-      AppMethodBeat.o(197222);
-      return;
-    }
-    action = paramMotionEvent.getAction();
-    duP = j;
-    kOp = paramMotionEvent.getEventTime();
-    gOH = paramMotionEvent.getDownTime();
-    e.f localf = new e.f();
-    localf.b(j, f1, f2);
-    JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("data", paramString);
-      localJSONObject.put("viewId", paramInt);
-      label203:
-      ae.i("MicroMsg.InsertViewTouchEventDispatch", "action:%d, eventId:%d, eventTime:%d, downTime:%d", new Object[] { Integer.valueOf(paramMotionEvent.getAction()), Integer.valueOf(j), Long.valueOf(kOp), Long.valueOf(gOH) });
-      paramString = null;
-      switch (paramMotionEvent.getAction())
-      {
-      default: 
-        paramMotionEvent = paramString;
-      }
-      for (;;)
-      {
-        if ((paramMotionEvent != null) && (paramBoolean))
-        {
-          paramMotionEvent.PQ(localJSONObject.toString());
-          parame.a(paramMotionEvent);
-          AppMethodBeat.o(197222);
-          return;
-        }
-        try
-        {
-          localJSONObject.put("touch", localf.toJSONObject());
-          label335:
-          paramMotionEvent = new e.c();
-          continue;
-          paramString = new JSONArray();
-          try
-          {
-            localJSONObject.put("touches", paramString);
-            label363:
-            paramMotionEvent = v(paramMotionEvent);
-            if (paramMotionEvent.length > 0)
-            {
-              paramInt = 0;
-              while (paramInt < paramMotionEvent.length)
-              {
-                paramString.put(paramMotionEvent[paramInt].toJSONObject());
-                paramInt += 1;
-              }
-            }
-            paramMotionEvent = new e.d();
-            continue;
-            try
-            {
-              localJSONObject.put("touch", localf.toJSONObject());
-              label423:
-              paramMotionEvent = new e.e();
-              continue;
-              paramString = new JSONArray();
-              try
-              {
-                localJSONObject.put("touches", paramString);
-                label451:
-                paramMotionEvent = v(paramMotionEvent);
-                if (paramMotionEvent.length > 0)
-                {
-                  paramInt = 0;
-                  while (paramInt < paramMotionEvent.length)
-                  {
-                    paramString.put(paramMotionEvent[paramInt].toJSONObject());
-                    paramInt += 1;
-                  }
-                }
-                paramMotionEvent = new e.b();
-                continue;
-                if (paramMotionEvent != null)
-                {
-                  paramMotionEvent.PQ(localJSONObject.toString());
-                  parame.b(paramMotionEvent);
-                }
-                AppMethodBeat.o(197222);
-                return;
-              }
-              catch (JSONException localJSONException1)
-              {
-                break label451;
-              }
-            }
-            catch (JSONException paramMotionEvent)
-            {
-              break label423;
-            }
-          }
-          catch (JSONException localJSONException2)
-          {
-            break label363;
-          }
-        }
-        catch (JSONException paramMotionEvent)
-        {
-          break label335;
-        }
-      }
-    }
-    catch (JSONException paramString)
-    {
-      break label203;
-    }
+    AppMethodBeat.i(193662);
+    p("viewId", Integer.valueOf(paramInt));
+    this.lTf = paramb;
+    this.lTg = paramh;
+    AppMethodBeat.o(193662);
   }
   
-  private static e.f[] v(MotionEvent paramMotionEvent)
+  public final void f(BitmapFactory.Options paramOptions)
   {
-    int j = 0;
-    AppMethodBeat.i(137517);
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramMotionEvent.getPointerCount())
+    AppMethodBeat.i(193663);
+    if (paramOptions != null)
     {
-      e.f localf = new e.f();
-      localf.id = paramMotionEvent.getPointerId(i);
-      localf.x = paramMotionEvent.getX(i);
-      localf.y = paramMotionEvent.getY(i);
-      localArrayList.add(localf);
-      i += 1;
+      p("errMsg", "ok");
+      p("size", new b.1(this, paramOptions));
     }
-    paramMotionEvent = new e.f[localArrayList.size()];
-    i = j;
-    while (i < localArrayList.size())
+    while ((this.lTf != null) && ("webview".equals(this.lTf.getString("sendTo", null))))
     {
-      paramMotionEvent[i] = ((e.f)localArrayList.get(i));
-      i += 1;
+      this.lTg.a(this);
+      AppMethodBeat.o(193663);
+      return;
+      p("errMsg", "fail");
     }
-    AppMethodBeat.o(137517);
-    return paramMotionEvent;
+    this.lTg.a(this, null);
+    AppMethodBeat.o(193663);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.coverview.b
  * JD-Core Version:    0.7.0.1
  */

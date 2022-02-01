@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class wt
-  extends b
+  extends IEvent
 {
-  public a dMm;
+  public a edh;
   
   public wt()
   {
@@ -15,22 +15,21 @@ public final class wt
   
   private wt(byte paramByte)
   {
-    AppMethodBeat.i(201314);
-    this.dMm = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(194254);
+    this.edh = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(201314);
+    AppMethodBeat.o(194254);
   }
   
   public static final class a
   {
-    public int dMn;
-    public int dvm;
+    public String edi;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.wt
  * JD-Core Version:    0.7.0.1
  */

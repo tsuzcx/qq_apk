@@ -20,9 +20,9 @@ import java.util.Set;
 public abstract class BaseIPCService
   extends Service
 {
-  private volatile boolean gzI;
-  private volatile boolean gzJ;
-  private a.a gzK = new a.a()
+  private volatile boolean hmv;
+  private volatile boolean hmw;
+  private a.a hmx = new a.a()
   {
     public final void a(final Bundle paramAnonymousBundle, final String paramAnonymousString, final com.tencent.mm.ipcinvoker.b.b paramAnonymousb)
     {
@@ -101,50 +101,50 @@ public abstract class BaseIPCService
     }
   };
   
-  public final void dy(boolean paramBoolean)
+  public final void eo(boolean paramBoolean)
   {
-    if ((this.gzJ) && (!paramBoolean))
+    if ((this.hmw) && (!paramBoolean))
     {
       com.tencent.mm.ipcinvoker.h.b.i("IPC.BaseIPCService", "abort kill self(%s), the service was connected by other process.", new Object[] { getProcessName() });
       return;
     }
     com.tencent.mm.ipcinvoker.h.b.i("IPC.BaseIPCService", "kill self(%s)", new Object[] { getProcessName() });
-    this.gzI = true;
-    c.ahJ().ahK();
-    Object localObject1 = c.ahJ();
+    this.hmv = true;
+    c.axW().axX();
+    Object localObject1 = c.axW();
     com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCBridgeManager", "releaseAllIPCBridge", new Object[0]);
-    if (!((c)localObject1).gzW.isEmpty()) {}
-    synchronized (((c)localObject1).gzW)
+    if (!((c)localObject1).hmJ.isEmpty()) {}
+    synchronized (((c)localObject1).hmJ)
     {
-      if (((c)localObject1).gzW.isEmpty()) {}
+      if (((c)localObject1).hmJ.isEmpty()) {}
       do
       {
         HashSet localHashSet;
         do
         {
           stopSelf();
-          localObject1 = j.ahN();
+          localObject1 = j.aya();
           ??? = getProcessName();
-          ((j)localObject1).gAr.remove(???);
-          l.w(new Runnable()
+          ((j)localObject1).hng.remove(???);
+          l.x(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(158710);
               com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
               Object localObject = new Object();
-              com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahE(), "com/tencent/mm/ipcinvoker/BaseIPCService$2", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-              Process.killProcess(((Integer)locala.mt(0)).intValue());
+              com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/ipcinvoker/BaseIPCService$2", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+              Process.killProcess(((Integer)locala.pG(0)).intValue());
               com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/ipcinvoker/BaseIPCService$2", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
               AppMethodBeat.o(158710);
             }
           });
           return;
-          localHashSet = new HashSet(((c)localObject1).gzW.keySet());
+          localHashSet = new HashSet(((c)localObject1).hmJ.keySet());
         } while (localHashSet.isEmpty());
         ??? = localHashSet.iterator();
       } while (!((Iterator)???).hasNext());
-      ((c)localObject1).xc((String)((Iterator)???).next());
+      ((c)localObject1).t((String)((Iterator)???).next(), false);
     }
   }
   
@@ -152,20 +152,20 @@ public abstract class BaseIPCService
   
   public IBinder onBind(Intent paramIntent)
   {
-    com.tencent.mm.ipcinvoker.h.b.i("IPC.BaseIPCService", "onBind(%s), killSelf(%s)", new Object[] { paramIntent, Boolean.valueOf(this.gzI) });
-    if (this.gzI)
+    com.tencent.mm.ipcinvoker.h.b.i("IPC.BaseIPCService", "onBind(%s), killSelf(%s)", new Object[] { paramIntent, Boolean.valueOf(this.hmv) });
+    if (this.hmv)
     {
       com.tencent.mm.ipcinvoker.h.b.i("IPC.BaseIPCService", "need to kill self, return null Binder object.", new Object[0]);
       return null;
     }
-    paramIntent = j.ahN();
-    String str = g.ahM();
+    paramIntent = j.aya();
+    String str = g.axZ();
     if ((str == null) || (str.length() == 0)) {}
     for (;;)
     {
-      this.gzJ = true;
-      return this.gzK;
-      paramIntent.gAr.put(str, this);
+      this.hmw = true;
+      return this.hmx;
+      paramIntent.hng.put(str, this);
     }
   }
   
@@ -173,25 +173,25 @@ public abstract class BaseIPCService
   {
     com.tencent.mm.ipcinvoker.h.b.i("IPC.BaseIPCService", "onUnbind(%s)", new Object[] { paramIntent });
     boolean bool = super.onUnbind(paramIntent);
-    this.gzJ = false;
+    this.hmw = false;
     return bool;
   }
   
   static final class a
     implements d<Parcelable>, com.tencent.mm.ipcinvoker.e.a
   {
-    com.tencent.mm.ipcinvoker.b.b gzR;
-    final List<com.tencent.mm.ipcinvoker.e.b> gzS;
+    com.tencent.mm.ipcinvoker.b.b hmE;
+    final List<com.tencent.mm.ipcinvoker.e.b> hmF;
     
     public a(com.tencent.mm.ipcinvoker.b.b paramb)
     {
       AppMethodBeat.i(158713);
-      this.gzS = new LinkedList();
-      this.gzR = paramb;
+      this.hmF = new LinkedList();
+      this.hmE = paramb;
       if (paramb != null)
       {
         com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCInvokeCallbackProxy", "keep ref of callback(%s)", new Object[] { Integer.valueOf(paramb.hashCode()) });
-        com.tencent.mm.ipcinvoker.f.b.bi(paramb);
+        com.tencent.mm.ipcinvoker.f.b.br(paramb);
       }
       AppMethodBeat.o(158713);
     }
@@ -204,14 +204,14 @@ public abstract class BaseIPCService
         AppMethodBeat.o(158715);
         return;
       }
-      synchronized (this.gzS)
+      synchronized (this.hmF)
       {
-        if (this.gzS.contains(paramb))
+        if (this.hmF.contains(paramb))
         {
           AppMethodBeat.o(158715);
           return;
         }
-        this.gzS.add(paramb);
+        this.hmF.add(paramb);
         AppMethodBeat.o(158715);
         return;
       }
@@ -223,11 +223,11 @@ public abstract class BaseIPCService
       try
       {
         com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCInvokeCallbackProxy", "finalize(%s)", new Object[] { Integer.valueOf(hashCode()) });
-        if (this.gzR != null)
+        if (this.hmE != null)
         {
-          com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCInvokeCallbackProxy", "finalize, release callback(%s)", new Object[] { Integer.valueOf(this.gzR.hashCode()) });
-          l.post(new a(this.gzR));
-          this.gzR = null;
+          com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCInvokeCallbackProxy", "finalize, release callback(%s)", new Object[] { Integer.valueOf(this.hmE.hashCode()) });
+          l.post(new a(this.hmE));
+          this.hmE = null;
         }
         return;
       }
@@ -241,21 +241,21 @@ public abstract class BaseIPCService
     static final class a
       implements Runnable
     {
-      private static final Bundle gzT;
-      com.tencent.mm.ipcinvoker.b.b gzR;
+      private static final Bundle hmG;
+      com.tencent.mm.ipcinvoker.b.b hmE;
       
       static
       {
         AppMethodBeat.i(158712);
         Bundle localBundle = new Bundle();
-        gzT = localBundle;
+        hmG = localBundle;
         localBundle.putBoolean("__command_release_ref", true);
         AppMethodBeat.o(158712);
       }
       
       a(com.tencent.mm.ipcinvoker.b.b paramb)
       {
-        this.gzR = paramb;
+        this.hmE = paramb;
       }
       
       public final void run()
@@ -263,10 +263,10 @@ public abstract class BaseIPCService
         AppMethodBeat.i(158711);
         try
         {
-          com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCInvokeCallbackProxy", "notify release ref of callback(%s).", new Object[] { Integer.valueOf(this.gzR.hashCode()) });
-          this.gzR.r(gzT);
-          com.tencent.mm.ipcinvoker.f.b.bj(this.gzR);
-          this.gzR = null;
+          com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCInvokeCallbackProxy", "notify release ref of callback(%s).", new Object[] { Integer.valueOf(this.hmE.hashCode()) });
+          this.hmE.v(hmG);
+          com.tencent.mm.ipcinvoker.f.b.bs(this.hmE);
+          this.hmE = null;
           AppMethodBeat.o(158711);
           return;
         }
@@ -287,7 +287,7 @@ public abstract class BaseIPCService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.BaseIPCService
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.clean.c;
 
 public abstract interface b
 {
-  public abstract void fb(int paramInt1, int paramInt2);
+  public abstract void Ce(long paramLong);
   
-  public abstract void tZ(long paramLong);
+  public abstract void fo(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.c.b
  * JD-Core Version:    0.7.0.1
  */

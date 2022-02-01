@@ -5,12 +5,12 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 @Deprecated
 public final class HomeKeyMonitor
 {
-  boolean qZl;
+  boolean szC;
   
   public class MonitorReceiver
     extends BroadcastReceiver
@@ -18,12 +18,12 @@ public final class HomeKeyMonitor
     public void onReceive(Context paramContext, Intent paramIntent)
     {
       AppMethodBeat.i(121898);
-      if (!this.qZm.qZl)
+      if (!this.szD.szC)
       {
         AppMethodBeat.o(121898);
         return;
       }
-      this.qZm.qZl = false;
+      this.szD.szC = false;
       if ("android.intent.action.CLOSE_SYSTEM_DIALOGS".equals(paramIntent.getAction()))
       {
         paramContext = paramIntent.getStringExtra("reason");
@@ -31,12 +31,12 @@ public final class HomeKeyMonitor
         {
           if (paramContext.equals("homekey"))
           {
-            ae.i("HomeKeyMonitor", "habbyge-homeKey ------------------ %d", new Object[] { Integer.valueOf(Process.myPid()) });
+            Log.i("HomeKeyMonitor", "habbyge-homeKey ------------------ %d", new Object[] { Integer.valueOf(Process.myPid()) });
             AppMethodBeat.o(121898);
             return;
           }
           if (paramContext.equals("recentapps")) {
-            ae.i("HomeKeyMonitor", "habbyge-multiTaskKey ------------------ %d", new Object[] { Integer.valueOf(Process.myPid()) });
+            Log.i("HomeKeyMonitor", "habbyge-multiTaskKey ------------------ %d", new Object[] { Integer.valueOf(Process.myPid()) });
           }
         }
       }

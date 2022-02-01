@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/ac_" android:layout_width="wrap_content" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/ahh" android:layout_width="fill_parent" android:layout_height="2.0dip" android:layout_centerInParent="true" />
-    <TextView android:textSize="16.0sp" android:textColor="@color/a_u" android:id="@id/b51" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@id/ahh" android:layout_centerHorizontal="true" />
-    <ImageView android:id="@id/b50" android:layout_width="wrap_content" android:layout_height="0.0dip" android:src="@drawable/a3k" android:scaleType="centerInside" android:layout_alignTop="@id/b51" android:layout_alignBottom="@id/b51" android:layout_marginEnd="8.0dip" android:layout_toStartOf="@id/b51" />
-    <TextView android:textColor="#fff43530" android:id="@id/b4z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dpy" android:layout_below="@id/ahh" android:layout_centerHorizontal="true" />
+    <RelativeLayout android:layout_width="128.0dip" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/ft" android:textStyle="bold" android:textColor="@color/l4" android:ellipsize="end" android:id="@id/iga" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_centerInParent="true" />
+        <TextView android:textSize="@dimen/go" android:textColor="@android:color/white" android:gravity="center" android:id="@id/ig_" android:background="@drawable/b16" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="8.0dip" android:minWidth="18.0dip" android:text="1" android:layout_toRightOf="@id/iga" />
+    </RelativeLayout>
+    <View android:id="@id/ig8" android:background="@color/a2x" android:layout_width="70.0dip" android:layout_height="2.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
 </RelativeLayout>

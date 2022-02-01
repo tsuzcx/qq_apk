@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.fav.b.e;
 
-import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.network.n.a;
+import com.tencent.mm.network.p;
+import com.tencent.mm.network.p.a;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.aj;
-import com.tencent.mm.plugin.fav.a.h;
 import com.tencent.mm.plugin.fav.a.r;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -25,21 +25,21 @@ import java.util.Map;
 import java.util.Queue;
 
 public final class b
-  implements f, r
+  implements i, r
 {
-  private static Map<Long, f.a> djr;
-  private Queue<com.tencent.mm.plugin.fav.a.g> djp;
-  private boolean djt;
-  private long djv;
-  public aw djz;
-  public com.tencent.mm.network.n hWv;
-  private boolean rCA;
+  private static Map<Long, f.a> dAC;
+  private Queue<com.tencent.mm.plugin.fav.a.g> dAA;
+  private boolean dAE;
+  private long dAG;
+  public MTimerHandler dAJ;
+  public p iRt;
   private boolean running;
+  private boolean tcf;
   
   static
   {
     AppMethodBeat.i(101621);
-    djr = new HashMap();
+    dAC = new HashMap();
     AppMethodBeat.o(101621);
   }
   
@@ -47,10 +47,10 @@ public final class b
   {
     AppMethodBeat.i(101616);
     this.running = false;
-    this.djv = 0L;
-    this.djt = false;
-    this.djp = new LinkedList();
-    this.hWv = new n.a()
+    this.dAG = 0L;
+    this.dAE = false;
+    this.dAA = new LinkedList();
+    this.iRt = new p.a()
     {
       public final void onNetworkChange(int paramAnonymousInt)
       {
@@ -58,22 +58,22 @@ public final class b
         boolean bool;
         try
         {
-          bool = az.isWifi(ak.getContext());
+          bool = NetStatusUtil.isWifi(MMApplicationContext.getContext());
           if ((paramAnonymousInt != 4) && (paramAnonymousInt != 6))
           {
             b.a(b.this, bool);
             AppMethodBeat.o(101611);
             return;
           }
-          ae.i("MicroMsg.Fav.FavCheckCdnService", "onNetworkChange st:%d isWifi:%B, lastIsWifi:%B", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(bool), Boolean.valueOf(b.c(b.this)) });
+          Log.i("MicroMsg.Fav.FavCheckCdnService", "onNetworkChange st:%d isWifi:%B, lastIsWifi:%B", new Object[] { Integer.valueOf(paramAnonymousInt), Boolean.valueOf(bool), Boolean.valueOf(b.c(b.this)) });
           if ((!b.c(b.this)) && (bool))
           {
             b localb = b.this;
-            Object localObject = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().cwN();
+            Object localObject = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().cUR();
             if ((localObject == null) || (((List)localObject).size() <= 0)) {
               break label271;
             }
-            ae.i("MicroMsg.Fav.FavCheckCdnService", "startAll list.size:%d", new Object[] { Integer.valueOf(((List)localObject).size()) });
+            Log.i("MicroMsg.Fav.FavCheckCdnService", "startAll list.size:%d", new Object[] { Integer.valueOf(((List)localObject).size()) });
             localObject = ((List)localObject).iterator();
             while (((Iterator)localObject).hasNext())
             {
@@ -81,7 +81,7 @@ public final class b
               if (localg.field_itemStatus == 3)
               {
                 localg.field_itemStatus = 1;
-                ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().a(localg, new String[] { "localId" });
+                ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().a(localg, new String[] { "localId" });
               }
             }
             localException.run();
@@ -89,7 +89,7 @@ public final class b
         }
         catch (Exception localException)
         {
-          ae.printErrStackTrace("MicroMsg.Fav.FavCheckCdnService", localException, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.Fav.FavCheckCdnService", localException, "", new Object[0]);
           AppMethodBeat.o(101611);
           return;
         }
@@ -99,11 +99,11 @@ public final class b
           AppMethodBeat.o(101611);
           return;
           label271:
-          ae.i("MicroMsg.Fav.FavCheckCdnService", "startAll list.size 0");
+          Log.i("MicroMsg.Fav.FavCheckCdnService", "startAll list.size 0");
         }
       }
     };
-    this.djz = new aw(com.tencent.mm.kernel.g.ajU().IxZ.getLooper(), new aw.a()
+    this.dAJ = new MTimerHandler(com.tencent.mm.kernel.g.aAk().getLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
@@ -118,7 +118,7 @@ public final class b
         {
           for (;;)
           {
-            ae.printErrStackTrace("MicroMsg.Fav.FavCheckCdnService", localException, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.Fav.FavCheckCdnService", localException, "", new Object[0]);
           }
         }
       }
@@ -131,49 +131,49 @@ public final class b
         return str;
       }
     }, false);
-    this.rCA = az.isWifi(ak.getContext());
-    com.tencent.mm.kernel.g.ajQ().a(this.hWv);
-    com.tencent.mm.kernel.g.ajj().a(404, this);
+    this.tcf = NetStatusUtil.isWifi(MMApplicationContext.getContext());
+    com.tencent.mm.kernel.g.aAg().a(this.iRt);
+    com.tencent.mm.kernel.g.azz().a(404, this);
     AppMethodBeat.o(101616);
   }
   
-  public final void Qd()
+  public final void aax()
   {
     AppMethodBeat.i(101619);
-    this.djp.clear();
-    djr.clear();
+    this.dAA.clear();
+    dAC.clear();
     this.running = false;
-    this.djt = false;
+    this.dAE = false;
     AppMethodBeat.o(101619);
   }
   
-  public final void onSceneEnd(final int paramInt1, int paramInt2, String paramString, final com.tencent.mm.ak.n paramn)
+  public final void onSceneEnd(final int paramInt1, int paramInt2, String paramString, final q paramq)
   {
     AppMethodBeat.i(101617);
-    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(101609);
-        if (paramn.getType() != 404)
+        if (paramq.getType() != 404)
         {
           AppMethodBeat.o(101609);
           return;
         }
-        if (!(paramn instanceof aj))
+        if (!(paramq instanceof aj))
         {
           AppMethodBeat.o(101609);
           return;
         }
         b.a(b.this);
-        long l = ((aj)paramn).rBM.field_localId;
-        com.tencent.mm.plugin.fav.a.g localg = ((aj)paramn).rBM;
-        b.abc().remove(Long.valueOf(l));
+        long l = ((aj)paramq).tbr.field_localId;
+        com.tencent.mm.plugin.fav.a.g localg = ((aj)paramq).tbr;
+        b.apb().remove(Long.valueOf(l));
         if (paramInt1 != 0)
         {
-          ae.e("MicroMsg.Fav.FavCheckCdnService", "achieved retry limit, set error, localId:%d", new Object[] { Long.valueOf(l) });
-          com.tencent.mm.plugin.report.service.g.yxI.f(10659, new Object[] { Integer.valueOf(0), Integer.valueOf(localg.field_type), Integer.valueOf(-2), Long.valueOf(com.tencent.mm.plugin.fav.a.b.b(localg)), Long.valueOf(h.vN(localg.field_localId)) });
-          ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().ac(3, l);
+          Log.e("MicroMsg.Fav.FavCheckCdnService", "achieved retry limit, set error, localId:%d", new Object[] { Long.valueOf(l) });
+          com.tencent.mm.plugin.report.service.h.CyF.a(10659, new Object[] { Integer.valueOf(0), Integer.valueOf(localg.field_type), Integer.valueOf(-2), Long.valueOf(com.tencent.mm.plugin.fav.a.b.b(localg)), Long.valueOf(com.tencent.mm.plugin.fav.a.h.DR(localg.field_localId)) });
+          ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().af(3, l);
         }
         b.b(b.this);
         AppMethodBeat.o(101609);
@@ -193,7 +193,7 @@ public final class b
   public final void run()
   {
     AppMethodBeat.i(101618);
-    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -206,11 +206,11 @@ public final class b
             AppMethodBeat.o(101612);
             return;
           }
-          ae.e("MicroMsg.Fav.FavCheckCdnService", "klem ERR: Try Run service runningFlag:" + b.e(b.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + b.e(b.this));
+          Log.e("MicroMsg.Fav.FavCheckCdnService", "klem ERR: Try Run service runningFlag:" + b.e(b.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + b.e(b.this));
         }
         b.a(b.this);
         b.f(b.this);
-        b.g(b.this).ay(10L, 10L);
+        b.g(b.this).startTimer(10L);
         AppMethodBeat.o(101612);
       }
       

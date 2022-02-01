@@ -1,13 +1,14 @@
 package com.tencent.mm.appbrand.v8;
 
 import com.eclipsesource.v8.MultiContextV8;
+import com.eclipsesource.v8.V8;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class y
   extends a
 {
-  private MultiContextV8 cYm;
+  private MultiContextV8 doQ;
   
   y(IJSRuntime.Config paramConfig)
   {
@@ -22,36 +23,44 @@ public class y
     return paramConfig;
   }
   
-  final MultiContextV8 Ng()
+  final MultiContextV8 Xs()
   {
     AppMethodBeat.i(144127);
-    this.cYm = MultiContextV8.createMultiContextV8(this.cYu, this.cYs, this.cYt);
-    this.cYt = null;
-    MultiContextV8 localMultiContextV8 = this.cYm;
+    this.doQ = MultiContextV8.createMultiContextV8(this.doZ, this.doX, this.doY);
+    this.doY = null;
+    MultiContextV8 localMultiContextV8 = this.doQ;
     AppMethodBeat.o(144127);
     return localMultiContextV8;
   }
   
-  c Nh()
+  c Xt()
   {
     AppMethodBeat.i(144128);
-    z localz = z.ck(this.cYA.cYL);
+    ab localab = ab.a(new ab.a()
+    {
+      public final void XP()
+      {
+        AppMethodBeat.i(216925);
+        y.a(y.this).getV8().pumpMessageLoopDirect();
+        AppMethodBeat.o(216925);
+      }
+    }, this.dpf.dpp);
     AppMethodBeat.o(144128);
-    return localz;
+    return localab;
   }
   
-  final void Ni()
+  final void Xu()
   {
     AppMethodBeat.i(144129);
     try
     {
-      this.cYm.release();
+      this.doQ.release();
       AppMethodBeat.o(144129);
       return;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.V8JSRuntime", "commonCleanUp exp = %s", new Object[] { localException });
+      Log.e("MicroMsg.V8JSRuntime", "commonCleanUp exp = %s", new Object[] { localException });
       AppMethodBeat.o(144129);
     }
   }

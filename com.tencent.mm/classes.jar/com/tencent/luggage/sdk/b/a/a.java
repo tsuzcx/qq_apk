@@ -1,8 +1,8 @@
 package com.tencent.luggage.sdk.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -10,36 +10,36 @@ import java.util.LinkedList;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class a<ComponentImpType extends b, ComponentLogicImp extends a, Component extends c>
+public class a<ComponentImpType extends b, ComponentLogicImp extends a, Component extends f>
 {
-  private ConcurrentHashMap<String, Class<? extends ComponentLogicImp>> cnm;
+  private ConcurrentHashMap<String, Class<? extends ComponentLogicImp>> czl;
   
   public a()
   {
     AppMethodBeat.i(146714);
-    this.cnm = new ConcurrentHashMap(2);
+    this.czl = new ConcurrentHashMap(2);
     AppMethodBeat.o(146714);
   }
   
   public final ComponentLogicImp a(ComponentImpType paramComponentImpType, Component paramComponent)
   {
     AppMethodBeat.i(146716);
-    Class localClass = (Class)this.cnm.get(paramComponentImpType.getClass().getName());
+    Class localClass = (Class)this.czl.get(paramComponentImpType.getClass().getName());
     if (localClass != null) {
       try
       {
-        paramComponentImpType = (a)org.a.a.bF(localClass).ai(new Object[] { paramComponent }).object;
+        paramComponentImpType = (a)org.a.a.bF(localClass).ak(new Object[] { paramComponent }).object;
         AppMethodBeat.o(146716);
         return paramComponentImpType;
       }
       catch (Exception paramComponentImpType)
       {
-        ae.printErrStackTrace("Luggage.AppBrandLogicFactory", paramComponentImpType, "hy: construct failed!", new Object[0]);
+        Log.printErrStackTrace("Luggage.AppBrandLogicFactory", paramComponentImpType, "hy: construct failed!", new Object[0]);
         AppMethodBeat.o(146716);
         return null;
       }
     }
-    ae.w("Luggage.AppBrandLogicFactory", "hy: implement corresponding to type %s not found!", new Object[] { paramComponentImpType });
+    Log.w("Luggage.AppBrandLogicFactory", "hy: implement corresponding to type %s not found!", new Object[] { paramComponentImpType });
     AppMethodBeat.o(146716);
     return null;
   }
@@ -47,26 +47,26 @@ public class a<ComponentImpType extends b, ComponentLogicImp extends a, Componen
   public final void a(ComponentImpType paramComponentImpType, Class<? extends ComponentLogicImp> paramClass)
   {
     AppMethodBeat.i(146715);
-    this.cnm.put(paramComponentImpType.getClass().getName(), paramClass);
+    this.czl.put(paramComponentImpType.getClass().getName(), paramClass);
     AppMethodBeat.o(146715);
   }
   
-  public static abstract class a<Component extends c>
+  public static abstract class a<Component extends f>
   {
-    protected Component cnn;
-    protected final Map<Class, Object> cno = new HashMap(2);
+    protected Component czm;
+    protected final Map<Class, Object> czn = new HashMap(2);
     
     public a(Component paramComponent)
     {
-      this.cnn = paramComponent;
+      this.czm = paramComponent;
     }
     
-    public final Component Eo()
+    public final Component NN()
     {
       try
       {
-        c localc = this.cnn;
-        return localc;
+        f localf = this.czm;
+        return localf;
       }
       finally
       {
@@ -75,23 +75,23 @@ public class a<ComponentImpType extends b, ComponentLogicImp extends a, Componen
       }
     }
     
-    protected final Collection<Object> Ep()
+    protected final Collection<Object> NO()
     {
-      synchronized (this.cno)
+      synchronized (this.czn)
       {
-        LinkedList localLinkedList = new LinkedList(this.cno.values());
+        LinkedList localLinkedList = new LinkedList(this.czn.values());
         return localLinkedList;
       }
     }
     
-    public <T> T Q(Class<T> paramClass)
+    public <T> T S(Class<T> paramClass)
     {
-      synchronized (this.cno)
+      synchronized (this.czn)
       {
-        Object localObject1 = paramClass.cast(this.cno.get(paramClass));
+        Object localObject1 = paramClass.cast(this.czn.get(paramClass));
         if (localObject1 == null)
         {
-          localObject1 = this.cno.values().iterator();
+          localObject1 = this.czn.values().iterator();
           Object localObject2;
           do
           {
@@ -110,9 +110,9 @@ public class a<ComponentImpType extends b, ComponentLogicImp extends a, Componen
     
     protected final <T> void b(Class<T> paramClass, T paramT)
     {
-      synchronized (this.cno)
+      synchronized (this.czn)
       {
-        this.cno.put(paramClass, paramT);
+        this.czn.put(paramClass, paramT);
         return;
       }
     }
@@ -122,7 +122,7 @@ public class a<ComponentImpType extends b, ComponentLogicImp extends a, Componen
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.a
  * JD-Core Version:    0.7.0.1
  */

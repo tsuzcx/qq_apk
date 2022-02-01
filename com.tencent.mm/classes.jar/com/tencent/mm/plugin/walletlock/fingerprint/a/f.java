@@ -1,48 +1,49 @@
 package com.tencent.mm.plugin.walletlock.fingerprint.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cgt;
-import com.tencent.mm.protocal.protobuf.cgu;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cxa;
+import com.tencent.mm.protocal.protobuf.cxb;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private com.tencent.mm.ak.f callback;
-  private b rr;
+  private i callback;
+  private d rr;
   
   public f(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(129686);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cgt();
-    ((b.a)localObject).hQG = new cgu();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/opensotertouchlock";
-    ((b.a)localObject).funcId = 1967;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (cgt)this.rr.hQD.hQJ;
-    ae.d("MicroMsg.NetSceneOpenSoterFingerprintLock", "alvinluo json: %s, signature: %s, token: %s", new Object[] { paramString1, paramString2, paramString3 });
-    ((cgt)localObject).HsE = paramString1;
-    ((cgt)localObject).signature = paramString2;
-    ((cgt)localObject).DgT = paramString3;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new cxa();
+    ((d.a)localObject).iLO = new cxb();
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/opensotertouchlock";
+    ((d.a)localObject).funcId = 1967;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (cxa)this.rr.iLK.iLR;
+    Log.d("MicroMsg.NetSceneOpenSoterFingerprintLock", "alvinluo json: %s, signature: %s, token: %s", new Object[] { paramString1, paramString2, paramString3 });
+    ((cxa)localObject).MBA = paramString1;
+    ((cxa)localObject).signature = paramString2;
+    ((cxa)localObject).HQm = paramString3;
     AppMethodBeat.o(129686);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(129687);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(129687);
     return i;
   }
@@ -52,10 +53,10 @@ public final class f
     return 1967;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(129688);
-    ae.i("MicroMsg.NetSceneOpenSoterFingerprintLock", "alvinluo open soter fingerprint lock errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.i("MicroMsg.NetSceneOpenSoterFingerprintLock", "alvinluo open soter fingerprint lock errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

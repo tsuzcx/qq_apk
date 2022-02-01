@@ -6,36 +6,36 @@ import android.support.v7.d.a.d;
 public final class a
   implements DrawerLayout.c
 {
-  private final a.a WF;
-  private d WG;
-  private boolean WH;
-  boolean WI;
-  private final int WJ;
-  private final int WK;
+  private final a.a WS;
+  private d WT;
+  private boolean WU;
+  boolean WV;
+  private final int WW;
+  private final int WX;
   
   private void N(float paramFloat)
   {
     if (paramFloat == 1.0F) {
-      this.WG.aa(true);
+      this.WT.Z(true);
     }
     for (;;)
     {
-      this.WG.setProgress(paramFloat);
+      this.WT.setProgress(paramFloat);
       return;
       if (paramFloat == 0.0F) {
-        this.WG.aa(false);
+        this.WT.Z(false);
       }
     }
   }
   
-  private void bg(int paramInt)
+  private void bh(int paramInt)
   {
-    this.WF.bg(paramInt);
+    this.WS.bh(paramInt);
   }
   
   public final void F(float paramFloat)
   {
-    if (this.WH)
+    if (this.WU)
     {
       N(Math.min(1.0F, Math.max(0.0F, paramFloat)));
       return;
@@ -43,25 +43,25 @@ public final class a
     N(0.0F);
   }
   
-  public final void fP()
+  public final void fW()
   {
     N(1.0F);
-    if (this.WI) {
-      bg(this.WK);
+    if (this.WV) {
+      bh(this.WX);
     }
   }
   
-  public final void fQ()
+  public final void fX()
   {
     N(0.0F);
-    if (this.WI) {
-      bg(this.WJ);
+    if (this.WV) {
+      bh(this.WW);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.app.a
  * JD-Core Version:    0.7.0.1
  */

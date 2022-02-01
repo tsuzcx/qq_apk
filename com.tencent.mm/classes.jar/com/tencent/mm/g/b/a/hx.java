@@ -6,169 +6,78 @@ import com.tencent.mm.plugin.report.a;
 public final class hx
   extends a
 {
-  private long dWt;
-  private String esa = "";
-  private long etb;
-  private long euA;
-  private hx.a euY;
-  private String euZ = "";
-  private String euy = "";
-  private long eva;
-  private hx.b evb;
-  private String evc = "";
-  private long evd;
-  private long eve;
+  public long eLd = 0L;
+  public int eMF = 0;
+  public long eMG = 0L;
+  public long eMH = 0L;
+  private String eMI = "";
+  private String euw = "";
   
-  public final String RC()
+  public final String abV()
   {
-    int j = -1;
-    AppMethodBeat.i(180160);
+    AppMethodBeat.i(121773);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.euy);
+    ((StringBuffer)localObject).append(this.eMF);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etb);
+    ((StringBuffer)localObject).append(this.euw);
     ((StringBuffer)localObject).append(",");
-    if (this.euY != null) {}
-    for (int i = this.euY.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.euA);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.euZ);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eva);
-      ((StringBuffer)localObject).append(",");
-      i = j;
-      if (this.evb != null) {
-        i = this.evb.value;
-      }
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.evc);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.esa);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dWt);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.evd);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.eve);
-      localObject = ((StringBuffer)localObject).toString();
-      axO((String)localObject);
-      AppMethodBeat.o(180160);
-      return localObject;
-    }
-  }
-  
-  public final String RD()
-  {
-    AppMethodBeat.i(180161);
-    Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("AppId:").append(this.euy);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.etb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppState:").append(this.euY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.euA);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PluginAppid:").append(this.euZ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PluginVersion:").append(this.eva);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PluginState:").append(this.evb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("networkType:").append(this.evc);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("InstanceId:").append(this.esa);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.dWt);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("updateScene:").append(this.evd);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("updateResult:").append(this.eve);
+    ((StringBuffer)localObject).append(this.eLd);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eMG);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eMH);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eMI);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(180161);
+    aMq((String)localObject);
+    AppMethodBeat.o(121773);
     return localObject;
   }
   
-  public final hx a(hx.a parama)
+  public final String abW()
   {
-    this.euY = parama;
-    return this;
-  }
-  
-  public final hx a(hx.b paramb)
-  {
-    this.evb = paramb;
-    return this;
+    AppMethodBeat.i(121774);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append("PId:").append(this.eMF);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("PName:").append(this.euw);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Seq:").append(this.eLd);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SubSeq:").append(this.eMG);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SubSeqSum:").append(this.eMH);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("DataContent:").append(this.eMI);
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(121774);
+    return localObject;
   }
   
   public final int getId()
   {
-    return 19280;
+    return 16976;
   }
   
-  public final hx nA(long paramLong)
+  public final hx vF(String paramString)
   {
-    this.eve = paramLong;
+    AppMethodBeat.i(121771);
+    this.euw = x("PName", paramString, true);
+    AppMethodBeat.o(121771);
     return this;
   }
   
-  public final hx nx(long paramLong)
+  public final hx vG(String paramString)
   {
-    this.etb = paramLong;
-    return this;
-  }
-  
-  public final hx ny(long paramLong)
-  {
-    this.euA = paramLong;
-    return this;
-  }
-  
-  public final hx nz(long paramLong)
-  {
-    this.dWt = paramLong;
-    return this;
-  }
-  
-  public final hx qX(String paramString)
-  {
-    AppMethodBeat.i(180156);
-    this.euy = t("AppId", paramString, true);
-    AppMethodBeat.o(180156);
-    return this;
-  }
-  
-  public final hx qY(String paramString)
-  {
-    AppMethodBeat.i(180157);
-    this.euZ = t("PluginAppid", paramString, true);
-    AppMethodBeat.o(180157);
-    return this;
-  }
-  
-  public final hx qZ(String paramString)
-  {
-    AppMethodBeat.i(180158);
-    this.evc = t("networkType", paramString, true);
-    AppMethodBeat.o(180158);
-    return this;
-  }
-  
-  public final hx ra(String paramString)
-  {
-    AppMethodBeat.i(180159);
-    this.esa = t("InstanceId", paramString, true);
-    AppMethodBeat.o(180159);
+    AppMethodBeat.i(121772);
+    this.eMI = x("DataContent", paramString, false);
+    AppMethodBeat.o(121772);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.hx
  * JD-Core Version:    0.7.0.1
  */

@@ -10,24 +10,24 @@ import java.util.Map;
 
 public final class c
 {
-  private static List<a> gAG;
-  private static Map<String, a> gAH;
+  private static List<a> hnv;
+  private static Map<String, a> hnw;
   
   static
   {
     AppMethodBeat.i(158796);
-    gAG = new LinkedList();
-    gAH = new HashMap();
+    hnv = new LinkedList();
+    hnw = new HashMap();
     AppMethodBeat.o(158796);
   }
   
   public static Object a(String paramString, Parcel paramParcel)
   {
     AppMethodBeat.i(158794);
-    paramString = (a)gAH.get(paramString);
+    paramString = (a)hnw.get(paramString);
     if (paramString != null)
     {
-      paramString = paramString.c(paramParcel);
+      paramString = paramString.d(paramParcel);
       AppMethodBeat.o(158794);
       return paramString;
     }
@@ -38,34 +38,34 @@ public final class c
   public static void a(a parama)
   {
     AppMethodBeat.i(158795);
-    if ((parama == null) || (gAG.contains(parama)))
+    if ((parama == null) || (hnv.contains(parama)))
     {
       AppMethodBeat.o(158795);
       return;
     }
-    gAH.put(parama.getClass().getName(), parama);
-    gAG.add(parama);
+    hnw.put(parama.getClass().getName(), parama);
+    hnv.add(parama);
     AppMethodBeat.o(158795);
   }
   
   public static void a(Object paramObject, Parcel paramParcel)
   {
     AppMethodBeat.i(158793);
-    a locala = bh(paramObject);
+    a locala = bq(paramObject);
     if (locala != null) {
       locala.a(paramObject, paramParcel);
     }
     AppMethodBeat.o(158793);
   }
   
-  public static a bh(Object paramObject)
+  public static a bq(Object paramObject)
   {
     AppMethodBeat.i(158792);
-    Iterator localIterator = gAG.iterator();
+    Iterator localIterator = hnv.iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
-      if (locala.bg(paramObject))
+      if (locala.bp(paramObject))
       {
         AppMethodBeat.o(158792);
         return locala;
@@ -77,7 +77,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.c
  * JD-Core Version:    0.7.0.1
  */

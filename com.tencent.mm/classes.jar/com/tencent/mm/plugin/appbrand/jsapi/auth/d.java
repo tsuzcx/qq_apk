@@ -5,24 +5,26 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.a.b;
 import com.tencent.mm.plugin.appbrand.a.c.a;
 import com.tencent.mm.plugin.appbrand.utils.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
+import java.util.Queue;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 class d
   extends j<a>
   implements c, e
 {
-  private static final Map<String, d> kBa;
-  private static final d kBb;
+  private static final Map<String, d> lFs;
+  private static final d lFt;
   
   static
   {
     AppMethodBeat.i(46017);
-    kBa = new android.support.v4.e.a();
-    kBb = new d()
+    lFs = new android.support.v4.e.a();
+    lFt = new d()
     {
-      protected final boolean bju()
+      protected final boolean bEI()
       {
         return true;
       }
@@ -32,23 +34,23 @@ class d
   
   private d(AppBrandRuntime paramAppBrandRuntime) {}
   
-  public static d U(AppBrandRuntime paramAppBrandRuntime)
+  public static d V(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(46009);
     if ((paramAppBrandRuntime == null) || (paramAppBrandRuntime.isDestroyed()))
     {
-      paramAppBrandRuntime = kBb;
+      paramAppBrandRuntime = lFt;
       AppMethodBeat.o(46009);
       return paramAppBrandRuntime;
     }
-    synchronized (kBa)
+    synchronized (lFs)
     {
-      d locald2 = (d)kBa.get(paramAppBrandRuntime.mAppId);
+      d locald2 = (d)lFs.get(paramAppBrandRuntime.mAppId);
       d locald1 = locald2;
       if (locald2 == null)
       {
         locald1 = new d(paramAppBrandRuntime);
-        kBa.put(paramAppBrandRuntime.mAppId, locald1);
+        lFs.put(paramAppBrandRuntime.mAppId, locald1);
       }
       AppMethodBeat.o(46009);
       return locald1;
@@ -58,25 +60,25 @@ class d
   protected final void a(a parama)
   {
     AppMethodBeat.i(46012);
-    ae.d(this.mName, "about to executeTask %s", new Object[] { parama.toString() });
-    parama.aUs();
+    Log.d(getName(), "about to executeTask %s", new Object[] { parama.toString() });
+    parama.bpf();
     AppMethodBeat.o(46012);
   }
   
   public final void a(final i parami, final com.tencent.mm.plugin.appbrand.d paramd, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(220783);
-    ae.i("MicroMsg.AppBrandAuthJsApiQueue", "execute name[%s], callbackId[%d], appId[%s]", new Object[] { parami.getName(), Integer.valueOf(paramInt), paramd.getAppId() });
-    super.cJ(new a()
+    AppMethodBeat.i(229890);
+    Log.i("MicroMsg.AppBrandAuthJsApiQueue", "execute name[%s], callbackId[%d], appId[%s]", new Object[] { parami.getName(), Integer.valueOf(paramInt), paramd.getAppId() });
+    super.cQ(new a()
     {
-      public final void aUs()
+      public final void bpf()
       {
         AppMethodBeat.i(46007);
-        ae.i("MicroMsg.AppBrandAuthJsApiQueue", "about to call AuthInvoke, api[%s]", new Object[] { d.this.mName });
+        Log.i("MicroMsg.AppBrandAuthJsApiQueue", "about to call AuthInvoke, api[%s]", new Object[] { d.this.getName() });
         if (!paramd.isRunning())
         {
-          ae.e("MicroMsg.AppBrandAuthJsApiQueue", "doAuth but component not running, api = %s", new Object[] { parami.getName() });
-          jdField_this.abg(2);
+          Log.e("MicroMsg.AppBrandAuthJsApiQueue", "doAuth but component not running, api = %s", new Object[] { parami.getName() });
+          jdField_this.sendMessage(2);
           AppMethodBeat.o(46007);
           return;
         }
@@ -92,24 +94,33 @@ class d
         return str;
       }
     });
-    AppMethodBeat.o(220783);
+    try
+    {
+      paramJSONObject.put("queueLength", this.ogP.size());
+      AppMethodBeat.o(229890);
+      return;
+    }
+    catch (JSONException parami)
+    {
+      AppMethodBeat.o(229890);
+    }
   }
   
-  public final void bjq()
+  public final void bEE()
   {
     AppMethodBeat.i(46011);
-    abg(2);
+    sendMessage(2);
     AppMethodBeat.o(46011);
   }
   
-  protected boolean bju()
+  protected boolean bEI()
   {
     return false;
   }
   
   static abstract interface a
   {
-    public abstract void aUs();
+    public abstract void bpf();
   }
 }
 

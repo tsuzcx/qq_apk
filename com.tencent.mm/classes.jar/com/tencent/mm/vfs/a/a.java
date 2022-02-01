@@ -3,29 +3,29 @@ package com.tencent.mm.vfs.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Iterator;
 
-public class a<S, T>
+public final class a<S, T>
   implements Iterable<T>
 {
-  private final Iterable<? extends S> LIN;
-  private final a<S, ? extends T> LIO;
+  private final Iterable<? extends S> ReP;
+  private final a<S, ? extends T> ReQ;
   
   public a(Iterable<? extends S> paramIterable, a<S, ? extends T> parama)
   {
-    this.LIN = paramIterable;
-    this.LIO = parama;
+    this.ReP = paramIterable;
+    this.ReQ = parama;
   }
   
-  public Iterator<T> iterator()
+  public final Iterator<T> iterator()
   {
-    AppMethodBeat.i(193455);
-    b localb = new b(this.LIN.iterator(), this.LIO);
-    AppMethodBeat.o(193455);
+    AppMethodBeat.i(187769);
+    b localb = new b(this.ReP.iterator(), this.ReQ);
+    AppMethodBeat.o(187769);
     return localb;
   }
   
   public static abstract interface a<S, T>
   {
-    public abstract Iterable<? extends T> em(S paramS);
+    public abstract Iterable<? extends T> eq(S paramS);
   }
 }
 

@@ -1,459 +1,345 @@
 package com.tencent.xweb.xwalk.a;
 
-import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.util.Pair;
-import android.view.ViewGroup;
-import android.webkit.ValueCallback;
-import com.tencent.xweb.e;
-import com.tencent.xweb.f.a;
-import com.tencent.xweb.util.g;
-import com.tencent.xweb.util.h;
-import com.tencent.xweb.y;
+import android.os.AsyncTask;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.xweb.ai;
+import com.tencent.xweb.internal.a.b;
+import com.tencent.xweb.xwalk.p;
+import com.tencent.xweb.xwalk.updater.Scheduler;
+import com.tencent.xweb.xwalk.updater.a.c;
+import com.tencent.xweb.xwalk.updater.a.d;
+import com.tencent.xweb.xwalk.updater.a.e;
+import com.tencent.xweb.xwalk.updater.c;
+import com.tencent.xweb.xwalk.updater.j.c;
 import java.io.File;
-import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import org.xwalk.core.Log;
+import org.xwalk.core.NetworkUtil;
 import org.xwalk.core.XWalkEnvironment;
+import org.xwalk.core.XWalkInitializer;
+import org.xwalk.core.XWalkLibraryLoader.DownloadInfo;
+import org.xwalk.core.XWalkLibraryLoader.DownloadListener;
+import org.xwalk.core.XWalkLibraryLoader.HttpDownloadTask;
+import org.xwalk.core.XWalkLibraryLoader.WXFileDownloaderTask;
 
-public abstract class l
-  extends f
+public final class l
+  extends AsyncTask<String, Integer, Integer>
 {
-  protected Class MVi = null;
-  protected Class MVj = null;
-  protected int MVk = -1;
-  ValueCallback<Pair<Integer, String>> MVl = new ValueCallback() {};
-  ValueCallback<Pair<Integer, String>> MVm = new ValueCallback() {};
+  String SHX;
+  j SHY;
+  private final Object SIa;
+  a SIb;
+  private Map<String, b> SIc;
+  private int SId;
+  private int SIe;
+  private int SIf;
+  private int SIg;
+  private int SIh;
+  boolean SIi;
   
-  private String a(ClassLoader paramClassLoader)
+  public l()
   {
-    if (paramClassLoader != null) {}
-    for (;;)
-    {
-      try
-      {
-        paramClassLoader = paramClassLoader.loadClass(ghJ());
-        paramClassLoader = paramClassLoader.getMethod("getSupportFormats", new Class[0]);
-        paramClassLoader.setAccessible(true);
-        String str = (String)paramClassLoader.invoke(null, new Object[0]);
-        paramClassLoader = str;
-        if (str == null) {
-          paramClassLoader = "";
-        }
-        return paramClassLoader;
-      }
-      catch (Exception paramClassLoader)
-      {
-        Log.e(getPluginName(), "loadSupportFormatsFromPlugin error: " + paramClassLoader.getMessage());
-      }
-      ghV();
-      paramClassLoader = this.MVj;
-    }
-    return "";
+    AppMethodBeat.i(154522);
+    this.SIa = new Object();
+    this.SIb = new a();
+    this.SIc = new HashMap();
+    this.SId = 0;
+    this.SIe = 0;
+    this.SIf = 0;
+    this.SIg = 0;
+    this.SIh = 0;
+    this.SIi = false;
+    this.SHX = "";
+    this.SHY = null;
+    AppMethodBeat.o(154522);
   }
   
-  private String ajz(int paramInt)
+  private void be(int paramInt1, int paramInt2, int paramInt3)
   {
-    String str = aju(paramInt);
-    if ((str == null) || (str.isEmpty()))
+    AppMethodBeat.i(154526);
+    if (paramInt2 <= paramInt1)
     {
-      Log.e(getPluginName(), "getDexDir, versionDir is empty");
-      return "";
-    }
-    return str + File.separator + "dex";
-  }
-  
-  private boolean bde(String paramString)
-  {
-    if (XWalkEnvironment.getApplicationContext() == null)
-    {
-      Log.e(getPluginName(), "saveSupportFormats, context is null");
-      return false;
-    }
-    Object localObject = XWalkEnvironment.getSharedPreferencesForPluginVersionInfo(getPluginName());
-    if (localObject == null)
-    {
-      Log.e(getPluginName(), "saveSupportFormats, sp is null");
-      return false;
-    }
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putString("supportFormats", paramString);
-    boolean bool = ((SharedPreferences.Editor)localObject).commit();
-    Log.i(getPluginName(), "loadSupportFormat, ret = " + bool + ", formats: " + paramString);
-    return bool;
-  }
-  
-  private void ghV()
-  {
-    try
-    {
-      if ((this.MVi == null) || (this.MVj == null) || (this.MVk != this.MUN))
-      {
-        Log.i(getPluginName(), "load class of version " + this.MUN);
-        ClassLoader localClassLoader = h.bp(ajr(this.MUN), ajz(this.MUN), null);
-        this.MVi = localClassLoader.loadClass(ghI());
-        this.MVj = localClassLoader.loadClass(ghJ());
-        this.MVk = this.MUN;
-      }
+      Log.i("XWalkPluginUp", "status not changed, return");
+      AppMethodBeat.o(154526);
       return;
     }
-    finally {}
-  }
-  
-  public final int a(com.tencent.xweb.xwalk.updater.c paramc)
-  {
-    Log.i(getPluginName(), "performInstall version " + paramc.version);
-    boolean bool1 = b(paramc);
-    if (!bool1)
+    Log.i("XWalkPluginUp", "change status from " + paramInt1 + " to " + paramInt2 + " errcode: " + paramInt3);
+    if (hvt())
     {
-      Log.e(getPluginName(), "performInstall unZipAndCheck failed");
-      g.dr(getPluginName(), paramc.MVY);
-    }
-    do
-    {
-      return -1;
-      if (!paramc.MVY) {
-        break label138;
+      if ((paramInt1 != 0) || (paramInt2 != 1)) {
+        break label192;
       }
-      try
-      {
-        boolean bool2 = c(paramc);
-        bool1 = bool2;
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          Log.e(getPluginName(), "performInstall doPatch error: ", localException1);
-        }
-      }
-      if (bool1) {
-        break label138;
-      }
-      Log.e(getPluginName(), "performInstall doPatch failed, delete all");
-      g.bcX(getPluginName());
-      paramc = aju(paramc.version);
-    } while (paramc.isEmpty());
-    com.tencent.xweb.util.c.bcQ(paramc);
-    return -1;
-    label138:
-    Object localObject1 = ajr(paramc.version);
-    String str = ajz(paramc.version);
-    Object localObject2 = new File(str);
-    if (!((File)localObject2).exists()) {
-      ((File)localObject2).mkdirs();
+      this.SHY.hst();
     }
     for (;;)
     {
-      try
+      if (paramInt2 == 5)
       {
-        localObject1 = a(h.bp((String)localObject1, str, null));
-        bde((String)localObject1);
-        localObject1 = ((String)localObject1).split(",");
-        y.gfo().a((String[])localObject1, f.a.MMe);
-        e.al((String[])localObject1);
-        if (XWalkEnvironment.getApplicationContext() == null)
+        com.tencent.xweb.util.h.dz(15718, this.SIb.errCode + "," + this.SId + "," + this.SIe + "," + this.SIf + "," + this.SIg + "," + this.SIh);
+        k.hvs();
+        this.SIi = true;
+      }
+      AppMethodBeat.o(154526);
+      return;
+      label192:
+      if ((paramInt1 != 0) && (paramInt2 == 5)) {
+        this.SHY.asR(paramInt3);
+      }
+    }
+  }
+  
+  public final void a(HashMap<String, String> paramHashMap, String paramString, j paramj)
+  {
+    AppMethodBeat.i(207345);
+    if (paramHashMap != null)
+    {
+      paramHashMap = (String)paramHashMap.get("UpdaterCheckType");
+      if ((paramHashMap != null) && (paramHashMap.equals("1"))) {
+        k.OY(0L);
+      }
+    }
+    this.SHX = paramString;
+    this.SHY = paramj;
+    AppMethodBeat.o(207345);
+  }
+  
+  final boolean b(int paramInt1, int paramInt2, Map<String, b> paramMap)
+  {
+    AppMethodBeat.i(154525);
+    for (;;)
+    {
+      Object localObject2;
+      synchronized (this.SIa)
+      {
+        int i = this.SIb.SIk;
+        if (paramInt1 > i)
         {
-          Log.e(getPluginName(), "clearPatchDownloadInfo, context is null");
-          localObject1 = ajv(paramc.version);
-          if ((localObject1 != null) && (!((String)localObject1).isEmpty())) {
-            com.tencent.xweb.util.c.bcQ((String)localObject1);
+          this.SIb.SIk = paramInt1;
+          if (paramInt2 != 1) {
+            this.SIb.errCode = paramInt2;
           }
-          ajt(paramc.version);
-          Log.i(getPluginName(), "performInstall version " + this.MUN + " success");
-          return 0;
-          localObject2 = ((File)localObject2).listFiles();
-          if ((localObject2 == null) || (localObject2.length <= 0)) {
+          if (this.SIb.SIk != 4) {
+            break label201;
+          }
+          if (this.SIc.size() == 0)
+          {
+            this.SIb.SIk = 5;
             continue;
           }
-          int j = localObject2.length;
-          int i = 0;
-          if (i >= j) {
-            continue;
+        }
+        else
+        {
+          paramInt1 = this.SIb.SIk;
+          paramInt2 = this.SIb.errCode;
+          be(i, paramInt1, paramInt2);
+          if (paramInt1 <= i) {
+            break;
           }
-          Object localObject3 = localObject2[i];
-          if ((localObject3 != null) && (localObject3.exists())) {
-            localObject3.delete();
-          }
-          i += 1;
+          AppMethodBeat.o(154525);
+          return true;
+        }
+        paramMap = this.SIc.entrySet().iterator();
+        if (!paramMap.hasNext()) {
           continue;
         }
-        localObject1 = XWalkEnvironment.getSharedPreferencesForPluginVersionInfo(getPluginName());
-        if (localObject1 == null)
-        {
-          Log.e(getPluginName(), "clearPatchDownloadInfo, sp is null");
+        localObject2 = (b)((Map.Entry)paramMap.next()).getValue();
+        if ((localObject2 == null) || (((b)localObject2).Cch)) {
           continue;
         }
-        localEditor = localException2.edit();
+        ((b)localObject2).jpQ.cancel(true);
       }
-      catch (Exception localException2)
+      label201:
+      if ((this.SIb.SIk == 3) && (paramMap != null))
       {
-        g.ds(getPluginName(), paramc.MVY);
-        Log.e(getPluginName(), "performInstall error: " + localException2.getMessage());
-        return -1;
-      }
-      SharedPreferences.Editor localEditor;
-      localEditor.putInt("patchDownloadCount", 0);
-      localEditor.commit();
-    }
-  }
-  
-  public final boolean a(HashMap<String, String> paramHashMap, Activity paramActivity, ViewGroup paramViewGroup, ValueCallback<Pair<String, Object>> paramValueCallback, final ValueCallback<Integer> paramValueCallback1)
-  {
-    if ((paramActivity == null) || (paramViewGroup == null))
-    {
-      Log.e(getPluginName(), "readFile params is null");
-      c("", paramValueCallback1, -5);
-      return false;
-    }
-    final String str = (String)paramHashMap.get("file_ext");
-    if ((str == null) || (str.isEmpty()))
-    {
-      Log.e(getPluginName(), "readFile fileExt is null");
-      c("", paramValueCallback1, -5);
-      return false;
-    }
-    int j = this.MUN;
-    if (j <= 0)
-    {
-      Log.e(getPluginName(), "readFile plugin not installed");
-      c(str, paramValueCallback1, -2);
-      return false;
-    }
-    if (paramValueCallback != null) {}
-    for (int i = 1;; i = 0)
-    {
-      i = ajs(i);
-      if (j >= i) {
-        break;
-      }
-      Log.e(getPluginName(), "readFile plugin version is too old, require: ".concat(String.valueOf(i)));
-      c(str, paramValueCallback1, -11);
-      return false;
-    }
-    Log.i(getPluginName(), "readFile by xweb, plugin version ".concat(String.valueOf(j)));
-    if ("XFilesPPTReader".equalsIgnoreCase(getPluginName())) {
-      ajy(1068);
-    }
-    try
-    {
-      paramHashMap.put("cache_dir", ajv(j));
-      paramHashMap.put("res_dir", ajw(j));
-      ghV();
-      if (paramValueCallback != null)
-      {
-        Method localMethod = this.MVi.getMethod("readFile", new Class[] { Activity.class, ViewGroup.class, ClassLoader.class, HashMap.class, ValueCallback.class, ValueCallback.class, ValueCallback.class, ValueCallback.class });
-        localMethod.setAccessible(true);
-        e.onStart(str);
-        localMethod.invoke(null, new Object[] { paramActivity, paramViewGroup, this.MVi.getClassLoader(), paramHashMap, paramValueCallback, this.MVl, this.MVm, new ValueCallback() {} });
-      }
-      for (;;)
-      {
-        return true;
-        if ("XFilesPDFReader".equalsIgnoreCase(getPluginName()))
+        paramMap = paramMap.entrySet().iterator();
+        while (paramMap.hasNext())
         {
-          ajy(1071);
-          break;
+          Object localObject3 = (Map.Entry)paramMap.next();
+          localObject2 = (String)((Map.Entry)localObject3).getKey();
+          localObject3 = (b)((Map.Entry)localObject3).getValue();
+          this.SIc.put(localObject2, localObject3);
+          if (((b)localObject3).type == 1) {
+            ((XWalkLibraryLoader.HttpDownloadTask)((b)localObject3).jpQ).execute(new Void[0]);
+          } else if (((b)localObject3).type == 2) {
+            ((XWalkLibraryLoader.WXFileDownloaderTask)((b)localObject3).jpQ).execute(new Void[0]);
+          } else {
+            this.SIc.remove(localObject2);
+          }
         }
-        if ("XFilesWordReader".equalsIgnoreCase(getPluginName()))
-        {
-          ajy(1069);
-          break;
-        }
-        if ("XFilesExcelReader".equalsIgnoreCase(getPluginName()))
-        {
-          ajy(1070);
-          break;
-        }
-        Log.e(getPluginName(), "unknown report id");
-        break;
-        paramValueCallback = this.MVi.getMethod("readFile", new Class[] { Activity.class, ViewGroup.class, ClassLoader.class, HashMap.class, ValueCallback.class, ValueCallback.class, ValueCallback.class });
-        paramValueCallback.setAccessible(true);
-        e.onStart(str);
-        paramValueCallback.invoke(null, new Object[] { paramActivity, paramViewGroup, this.MVi.getClassLoader(), paramHashMap, this.MVl, this.MVm, new ValueCallback() {} });
-      }
-      return false;
-    }
-    catch (Exception paramHashMap)
-    {
-      Log.e(getPluginName(), "readFile error: " + paramHashMap.getMessage());
-      com.tencent.xweb.f.a(getPluginName(), j, "invoke error ", paramHashMap);
-      c(str, paramValueCallback1, -3);
-    }
-  }
-  
-  public abstract String ajr(int paramInt);
-  
-  public abstract int ajs(int paramInt);
-  
-  public final String bz(int paramInt, boolean paramBoolean)
-  {
-    String str = aju(paramInt);
-    if ((str == null) || (str.isEmpty())) {
-      return "";
-    }
-    if (!paramBoolean) {
-      return str + File.separator + getPluginName() + ".zip";
-    }
-    return str + File.separator + getPluginName() + ".patch";
-  }
-  
-  protected final void c(String paramString, ValueCallback<Integer> paramValueCallback, int paramInt)
-  {
-    String str;
-    if (paramString != null)
-    {
-      str = paramString;
-      if (!paramString.isEmpty()) {}
-    }
-    else
-    {
-      if (!"XFilesPPTReader".equalsIgnoreCase(getPluginName())) {
-        break label144;
-      }
-      str = "ppt";
-    }
-    for (;;)
-    {
-      int i = this.MUN;
-      if ((i > 0) && ((paramInt == -3) || (paramInt == -13))) {}
-      label144:
-      try
-      {
-        this.MVi = null;
-        this.MVj = null;
-        this.MVk = -1;
-        Log.e(getPluginName(), "invoke error or abi not match, abandon current version ".concat(String.valueOf(i)));
-        paramString = aju(i);
-        ajt(-1);
-        if ((paramString != null) && (!paramString.isEmpty())) {
-          com.tencent.xweb.util.c.bcQ(paramString);
-        }
-        com.tencent.xweb.f.be(str, i, paramInt);
-        if (paramValueCallback != null) {
-          paramValueCallback.onReceiveValue(Integer.valueOf(paramInt));
-        }
-        return;
-      }
-      finally {}
-      if ("XFilesPDFReader".equalsIgnoreCase(getPluginName()))
-      {
-        str = "pdf";
-      }
-      else if ("XFilesWordReader".equalsIgnoreCase(getPluginName()))
-      {
-        str = "doc";
-      }
-      else if ("XFilesExcelReader".equalsIgnoreCase(getPluginName()))
-      {
-        str = "xls";
-      }
-      else
-      {
-        Log.e(getPluginName(), "onReceiveValueProcess unknown fileExt");
-        str = paramString;
+        this.SId = this.SIc.size();
       }
     }
-  }
-  
-  public final boolean dw(String paramString, boolean paramBoolean)
-  {
-    if (this.MUN < 0)
-    {
-      Log.i(getPluginName(), "isSupport, not installed");
-      return false;
-    }
-    Object localObject1;
-    if (XWalkEnvironment.getApplicationContext() == null)
-    {
-      Log.e(getPluginName(), "getSupportFormat, context is null");
-      localObject1 = "";
-    }
-    for (;;)
-    {
-      Object localObject2 = localObject1;
-      if (((String)localObject1).isEmpty())
-      {
-        localObject2 = localObject1;
-        if (!paramBoolean) {}
-      }
-      try
-      {
-        localObject2 = a(null);
-        bde((String)localObject2);
-        return ((String)localObject2).toLowerCase().contains(paramString.toLowerCase());
-      }
-      catch (Exception paramString)
-      {
-        Log.e(getPluginName(), "isSupport error: " + paramString.getMessage());
-      }
-      localObject1 = XWalkEnvironment.getSharedPreferencesForPluginVersionInfo(getPluginName());
-      if (localObject1 == null)
-      {
-        Log.e(getPluginName(), "getSupportFormat, sp is null");
-        localObject1 = "";
-      }
-      else
-      {
-        localObject1 = ((SharedPreferences)localObject1).getString("supportFormats", "");
-      }
-    }
+    AppMethodBeat.o(154525);
     return false;
   }
   
-  public abstract String ghI();
-  
-  public abstract String ghJ();
-  
-  public final boolean ghK()
+  public final void hR(String paramString, int paramInt)
   {
+    AppMethodBeat.i(154524);
+    XWalkEnvironment.addXWalkInitializeLog("XWalkPluginUp", "onNotifyResult: " + paramString + " install retCode: " + paramInt);
+    for (;;)
+    {
+      synchronized (this.SIa)
+      {
+        if (this.SIb.SIk == 5)
+        {
+          AppMethodBeat.o(154524);
+          return;
+        }
+        switch (paramInt)
+        {
+        default: 
+          ((b)this.SIc.get(paramString)).Cch = true;
+          paramString = this.SIc.entrySet().iterator();
+          if (!paramString.hasNext()) {
+            break;
+          }
+          b localb = (b)((Map.Entry)paramString.next()).getValue();
+          if ((localb == null) || (localb.Cch)) {
+            continue;
+          }
+          paramInt = 0;
+          int i = this.SIb.SIk;
+          if (paramInt != 0)
+          {
+            this.SIc.clear();
+            this.SIb.SIk = 5;
+            if ((this.SIf > 0) || (this.SIg > 0)) {
+              this.SIb.errCode = -9;
+            }
+          }
+          paramInt = this.SIb.SIk;
+          int j = this.SIb.errCode;
+          be(i, paramInt, j);
+          AppMethodBeat.o(154524);
+          return;
+        case -3: 
+          this.SIe += 1;
+        }
+      }
+      this.SIf += 1;
+      continue;
+      this.SIg += 1;
+      continue;
+      this.SIh += 1;
+      continue;
+      paramInt = 1;
+    }
+  }
+  
+  final boolean hvt()
+  {
+    AppMethodBeat.i(154527);
+    if ((this.SHX != null) && (!this.SHX.isEmpty()) && (this.SHY != null))
+    {
+      AppMethodBeat.o(154527);
+      return true;
+    }
+    AppMethodBeat.o(154527);
     return false;
   }
   
-  public final void ghL()
+  protected final void onPreExecute()
   {
-    if (this.MUN < 0) {
-      Log.i(getPluginName(), "checkFiles, not installed");
-    }
-    String str;
-    do
-    {
-      do
-      {
-        return;
-      } while (bA(this.MUN, true));
-      Log.e(getPluginName(), "checkFiles failed, abandon version " + this.MUN);
-      g.bcY(getPluginName());
-      str = aju(this.MUN);
-      ajt(-1);
-    } while ((str == null) || (str.isEmpty()));
-    com.tencent.xweb.util.c.bcQ(str);
+    AppMethodBeat.i(154528);
+    b(1, 1, null);
+    super.onPreExecute();
+    AppMethodBeat.o(154528);
   }
   
-  public final void r(HashMap<String, String> paramHashMap)
+  public static final class a
   {
-    if (this.MVi == null)
+    public int SIk = 0;
+    public int errCode = 0;
+  }
+  
+  public static final class b
+  {
+    public boolean Cch = false;
+    public AsyncTask jpQ = null;
+    public int type = 1;
+  }
+  
+  public static final class c
+    implements XWalkLibraryLoader.DownloadListener
+  {
+    private l SHZ;
+    private g SIl;
+    private c SIm;
+    private boolean SIn;
+    
+    c(l paraml, g paramg, c paramc)
     {
-      Log.e(getPluginName(), "finishReadFile error, loadedReaderClass is null");
-      return;
+      AppMethodBeat.i(207344);
+      this.SHZ = paraml;
+      this.SIl = paramg;
+      this.SIm = paramc;
+      if (paramc != null)
+      {
+        this.SIn = paramc.SJc;
+        AppMethodBeat.o(207344);
+        return;
+      }
+      this.SIn = false;
+      AppMethodBeat.o(207344);
     }
-    try
+    
+    public final void onDownloadCancelled()
     {
-      Method localMethod = this.MVi.getMethod("finishReadFile", new Class[] { HashMap.class });
-      localMethod.setAccessible(true);
-      localMethod.invoke(null, new Object[] { paramHashMap });
-      return;
+      AppMethodBeat.i(154519);
+      this.SHZ.hR(this.SIl.getPluginName(), -3);
+      com.tencent.xweb.util.h.dL(this.SIl.getPluginName(), this.SIn);
+      a.bsQ(this.SIl.getPluginName()).e(null);
+      AppMethodBeat.o(154519);
     }
-    catch (Exception paramHashMap)
+    
+    public final void onDownloadCompleted(XWalkLibraryLoader.DownloadInfo paramDownloadInfo)
     {
-      Log.e(getPluginName(), "finishReadFile error: " + paramHashMap.getMessage());
+      AppMethodBeat.i(154520);
+      com.tencent.xweb.util.h.dK(this.SIl.getPluginName(), this.SIn);
+      a.bsQ(this.SIl.getPluginName()).e(null);
+      new AsyncTask() {}.execute(new Void[0]);
+      AppMethodBeat.o(154520);
+    }
+    
+    public final void onDownloadFailed(XWalkLibraryLoader.DownloadInfo paramDownloadInfo)
+    {
+      AppMethodBeat.i(154521);
+      this.SHZ.hR(this.SIl.getPluginName(), -1);
+      com.tencent.xweb.util.h.dL(this.SIl.getPluginName(), this.SIn);
+      a.bsQ(this.SIl.getPluginName()).e(null);
+      AppMethodBeat.o(154521);
+    }
+    
+    public final void onDownloadStarted(int paramInt)
+    {
+      AppMethodBeat.i(154517);
+      com.tencent.xweb.util.h.dJ(this.SIl.getPluginName(), this.SIn);
+      AppMethodBeat.o(154517);
+    }
+    
+    public final void onDownloadUpdated(int paramInt)
+    {
+      AppMethodBeat.i(154518);
+      l locall = this.SHZ;
+      String str = this.SIl.getPluginName();
+      if ((locall.SIb.SIk == 3) && (locall.hvt()) && (locall.SHX.equals(str))) {
+        locall.SHY.asQ(paramInt);
+      }
+      AppMethodBeat.o(154518);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.xwalk.a.l
  * JD-Core Version:    0.7.0.1
  */

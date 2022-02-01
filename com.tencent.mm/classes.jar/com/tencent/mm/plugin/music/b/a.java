@@ -3,90 +3,90 @@ package com.tencent.mm.plugin.music.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ai.b;
 import com.tencent.mm.ai.d;
-import com.tencent.mm.g.a.v;
-import com.tencent.mm.g.a.v.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.g.a.x;
+import com.tencent.mm.g.a.x.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public static boolean a(v paramv)
+  public static boolean a(x paramx)
   {
     boolean bool = true;
     AppMethodBeat.i(137010);
-    if (paramv.dlA.action != 6) {
-      ae.d("MicroMsg.Audio.AudioActionListener", "callback, action:%d", new Object[] { Integer.valueOf(paramv.dlA.action) });
+    if (paramx.dCQ.action != 6) {
+      Log.d("MicroMsg.Audio.AudioActionListener", "callback, action:%d", new Object[] { Integer.valueOf(paramx.dCQ.action) });
     }
-    switch (paramv.dlA.action)
+    switch (paramx.dCQ.action)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(137010);
       return bool;
-      Object localObject = f.duL().ij(paramv.dlA.appId, paramv.dlA.ddg);
-      paramv.dlA.ddg = ((String)localObject);
+      Object localObject = h.esI().iS(paramx.dCQ.appId, paramx.dCQ.dtX);
+      paramx.dCQ.dtX = ((String)localObject);
       continue;
-      bool = f.duL().h(paramv.dlA.dlD);
-      paramv.dlB.result = bool;
+      bool = h.esI().m(paramx.dCQ.dCT);
+      paramx.dCR.result = bool;
       continue;
-      bool = f.duL().b(paramv.dlA.ddg, paramv.dlA.dlD);
-      paramv.dlB.result = bool;
+      bool = h.esI().b(paramx.dCQ.dtX, paramx.dCQ.dCT);
+      paramx.dCR.result = bool;
       continue;
-      bool = f.duL().asX(paramv.dlA.ddg);
-      paramv.dlB.result = bool;
+      bool = h.esI().aGT(paramx.dCQ.dtX);
+      paramx.dCR.result = bool;
       continue;
-      bool = f.duL().asY(paramv.dlA.ddg);
-      paramv.dlB.result = bool;
+      bool = h.esI().aGU(paramx.dCQ.dtX);
+      paramx.dCR.result = bool;
       continue;
-      bool = f.duL().asZ(paramv.dlA.ddg);
-      paramv.dlB.result = bool;
+      bool = h.esI().aGV(paramx.dCQ.dtX);
+      paramx.dCR.result = bool;
       continue;
-      bool = f.duL().ata(paramv.dlA.ddg);
-      paramv.dlB.result = bool;
+      bool = h.esI().aGW(paramx.dCQ.dtX);
+      paramx.dCR.result = true;
       continue;
-      bool = f.duL().eB(paramv.dlA.ddg, paramv.dlA.dlC);
-      paramv.dlB.result = bool;
+      bool = h.esI().eQ(paramx.dCQ.dtX, paramx.dCQ.dCS);
+      paramx.dCR.result = bool;
       continue;
-      bool = f.duL().atb(paramv.dlA.ddg);
-      paramv.dlB.result = bool;
+      bool = h.esI().aGX(paramx.dCQ.dtX);
+      paramx.dCR.result = bool;
       continue;
-      bool = f.duL().Dj(paramv.dlA.ddg);
-      paramv.dlB.result = bool;
+      bool = h.esI().LT(paramx.dCQ.dtX);
+      paramx.dCR.result = bool;
       continue;
-      bool = f.duL().gt(paramv.dlA.ddg);
-      paramv.dlB.result = bool;
+      bool = h.esI().hi(paramx.dCQ.dtX);
+      paramx.dCR.result = bool;
       continue;
-      bool = f.duL().atc(paramv.dlA.ddg);
-      paramv.dlB.result = bool;
+      bool = h.esI().aGY(paramx.dCQ.dtX);
+      paramx.dCR.result = bool;
       continue;
-      localObject = f.duL().atd(paramv.dlA.ddg);
-      paramv.dlB.dlF = ((d)localObject);
+      localObject = h.esI().aGZ(paramx.dCQ.dtX);
+      paramx.dCR.dCV = ((d)localObject);
       continue;
-      int i = f.duL().ate(paramv.dlA.appId);
-      paramv.dlB.count = i;
+      int i = h.esI().aHa(paramx.dCQ.appId);
+      paramx.dCR.count = i;
       continue;
-      f.duL().atg(paramv.dlA.appId);
+      h.esI().aHc(paramx.dCQ.appId);
       continue;
-      f.duL().ath(paramv.dlA.appId);
+      h.esI().aHd(paramx.dCQ.appId);
       continue;
-      f.duL().ato(paramv.dlA.processName);
+      h.esI().aHk(paramx.dCQ.processName);
       continue;
-      localObject = f.duL().Dk(paramv.dlA.ddg);
-      paramv.dlA.dlD = ((b)localObject);
+      localObject = h.esI().LU(paramx.dCQ.dtX);
+      paramx.dCQ.dCT = ((b)localObject);
       continue;
-      bool = f.duL().g(paramv.dlA.dlD);
-      paramv.dlB.result = bool;
+      bool = h.esI().l(paramx.dCQ.dCT);
+      paramx.dCR.result = bool;
       continue;
-      bool = f.duL().a(paramv.dlA.dlE);
-      paramv.dlB.result = true;
+      bool = h.esI().a(paramx.dCQ.dCU);
+      paramx.dCR.result = true;
       continue;
-      paramv.dlB.dlE = f.duL().dlE;
+      paramx.dCR.dCU = h.esI().dCU;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.a
  * JD-Core Version:    0.7.0.1
  */

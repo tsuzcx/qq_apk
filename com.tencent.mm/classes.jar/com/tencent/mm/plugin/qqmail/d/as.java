@@ -9,22 +9,22 @@ public final class as
   
   public as(l paraml)
   {
-    AppMethodBeat.i(217981);
+    AppMethodBeat.i(198637);
     if (paraml != null)
     {
-      this.vly = paraml.vly;
+      this.yFq = paraml.yFq;
       this.name = paraml.name;
-      this.xrw = paraml.xrw;
-      this.xrv = paraml.xrv;
+      this.Bry = paraml.Bry;
+      this.bNi = paraml.bNi;
       this.pinyin = paraml.pinyin;
     }
-    AppMethodBeat.o(217981);
+    AppMethodBeat.o(198637);
   }
   
   public final boolean equals(Object paramObject)
   {
     if (paramObject == null) {}
-    while (this.xrv != ((as)paramObject).xrv) {
+    while (this.bNi != ((as)paramObject).bNi) {
       return false;
     }
     return true;
@@ -32,7 +32,7 @@ public final class as
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d.as
  * JD-Core Version:    0.7.0.1
  */

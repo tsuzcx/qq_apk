@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.recordvideo.res;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class c
-  implements az
+  implements bd
 {
   public void clearPluginData(int paramInt) {}
   
@@ -17,29 +18,30 @@ public class c
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    AppMethodBeat.i(206497);
-    e.xXw.init();
-    f.xXx.init();
-    d locald = d.xXs;
+    AppMethodBeat.i(237202);
+    e.BYn.init();
+    f.BYo.init();
+    d locald = d.BYj;
     d.init();
-    AppMethodBeat.o(206497);
+    g.BYp.init();
+    AppMethodBeat.o(237202);
   }
   
   public void onAccountRelease()
   {
-    AppMethodBeat.i(206498);
-    e.xXw.hZz.dead();
-    f.xXx.hZz.dead();
-    d locald = d.xXs;
-    d.unInit();
-    AppMethodBeat.o(206498);
+    AppMethodBeat.i(237203);
+    e.BYn.iUx.dead();
+    f.BYo.iUx.dead();
+    d locald = d.BYj;
+    g.BYp.iUx.dead();
+    AppMethodBeat.o(237203);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.res.c
  * JD-Core Version:    0.7.0.1
  */

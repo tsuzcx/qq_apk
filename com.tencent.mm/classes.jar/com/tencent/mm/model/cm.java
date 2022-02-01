@@ -1,60 +1,54 @@
 package com.tencent.mm.model;
 
-import android.app.PendingIntent;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Map;
-import java.util.UUID;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class cm
 {
-  Map<String, String> hFw;
+  public Set<a> iGc;
+  public boolean isRunning;
   
-  public cm(Map<String, String> paramMap)
+  public cm()
   {
-    this.hFw = paramMap;
+    AppMethodBeat.i(132286);
+    this.isRunning = false;
+    this.iGc = new HashSet();
+    AppMethodBeat.o(132286);
   }
   
-  final PendingIntent E(String paramString, long paramLong)
+  public final boolean a(a parama)
   {
-    AppMethodBeat.i(186356);
-    String str;
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(132287);
+    if (this.isRunning)
     {
-      ae.e("MicroMsg.WakenPushMsgExtension", "dzmonster:dealDeepLink[url is null]");
-      str = "com.tencent.mm.ui.LauncherUI";
+      Log.e("MicroMsg.UninitForUEH", "add , is running , forbid add");
+      AppMethodBeat.o(132287);
+      return false;
     }
-    for (;;)
+    boolean bool = this.iGc.add(parama);
+    AppMethodBeat.o(132287);
+    return bool;
+  }
+  
+  public final boolean b(a parama)
+  {
+    AppMethodBeat.i(132288);
+    if (this.isRunning)
     {
-      Intent localIntent = new Intent();
-      localIntent.setClassName(ak.getContext(), str);
-      localIntent.setFlags(536870912);
-      localIntent.putExtra("LauncherUI.Show.Update.DialogMsg", (String)this.hFw.get(".sysmsg.WakenPush.PushContent"));
-      if (!paramString.equals("weixin://dl/update_newest_version")) {
-        localIntent.putExtra("LauncherUI.Show.Update.Url", (String)this.hFw.get(".sysmsg.WakenPush.Jump"));
-      }
-      g.yxI.idkeyStat(405L, 32L, 1L, true);
-      paramString = PendingIntent.getActivity(ak.getContext(), UUID.randomUUID().hashCode(), localIntent, 134217728);
-      AppMethodBeat.o(186356);
-      return paramString;
-      if (((0x4 & paramLong) == 4L) && (paramString.startsWith("weixin://dl/moments")))
-      {
-        str = "com.tencent.mm.plugin.sns.ui.SnsTimeLineUI";
-      }
-      else if (((0x40000 & paramLong) == 262144L) && (paramString.startsWith("weixin://dl/recommendation")))
-      {
-        str = "com.tencent.mm.plugin.subapp.ui.friend.FMessageConversationUI";
-      }
-      else
-      {
-        ae.e("MicroMsg.WakenPushMsgExtension", "dzmonster:dealDeepLink[unable to deal with the deep link:%s)", new Object[] { paramString });
-        str = "com.tencent.mm.ui.LauncherUI";
-      }
+      Log.e("MicroMsg.UninitForUEH", "remove , is running , forbid remove");
+      AppMethodBeat.o(132288);
+      return false;
     }
+    boolean bool = this.iGc.remove(parama);
+    AppMethodBeat.o(132288);
+    return bool;
+  }
+  
+  public static abstract interface a
+  {
+    public abstract boolean aWC();
   }
 }
 

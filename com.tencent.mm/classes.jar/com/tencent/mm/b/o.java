@@ -2,12 +2,12 @@ package com.tencent.mm.b;
 
 public final class o
 {
-  public static int E(byte[] paramArrayOfByte)
+  public static int S(byte[] paramArrayOfByte)
   {
     return (paramArrayOfByte[3] & 0xFF) << 24 | (paramArrayOfByte[2] & 0xFF) << 16 | (paramArrayOfByte[1] & 0xFF) << 8 | (paramArrayOfByte[0] & 0xFF) << 0;
   }
   
-  public static byte[] hi(int paramInt)
+  public static byte[] iC(int paramInt)
   {
     int j = 0;
     byte[] arrayOfByte1 = new byte[4];
@@ -27,7 +27,7 @@ public final class o
     return arrayOfByte2;
   }
   
-  public static int t(byte[] paramArrayOfByte, int paramInt)
+  public static int v(byte[] paramArrayOfByte, int paramInt)
   {
     return (paramArrayOfByte[paramInt] & 0xFF) << 24 | (paramArrayOfByte[(paramInt + 1)] & 0xFF) << 16 | (paramArrayOfByte[(paramInt + 2)] & 0xFF) << 8 | (paramArrayOfByte[(paramInt + 3)] & 0xFF) << 0;
   }

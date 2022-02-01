@@ -1,98 +1,90 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cbw;
-import com.tencent.mm.protocal.protobuf.cmg;
-import com.tencent.mm.protocal.protobuf.coy;
-import com.tencent.mm.protocal.protobuf.de;
-import com.tencent.mm.vending.c.b;
-import com.tencent.mm.vending.g.g;
-import com.tencent.mm.vending.h.e;
-import com.tencent.mm.vending.j.d;
-import com.tencent.mm.vending.j.h;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.platformtools.ac;
+import com.tencent.mm.plugin.wxpay.a.a;
+import com.tencent.mm.protocal.protobuf.cux;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.wallet_core.c.aa;
+import java.io.IOException;
+import kotlin.n.d;
 
-public class x
-  implements b<w>
+public final class x
 {
-  protected w CPl;
-  public final d CPm;
-  public final a CPn;
-  public final b CPo;
-  public final c CPp;
+  private static x HtZ;
+  private cux Hua;
   
-  public x()
+  public static x fMZ()
   {
-    this(new w());
-    AppMethodBeat.i(68502);
-    AppMethodBeat.o(68502);
+    AppMethodBeat.i(68491);
+    if (HtZ == null) {
+      HtZ = new x();
+    }
+    x localx = HtZ;
+    AppMethodBeat.o(68491);
+    return localx;
   }
   
-  private x(w paramw)
+  public final void a(cux paramcux)
   {
-    AppMethodBeat.i(68503);
-    this.CPm = new d();
-    this.CPn = new a();
-    this.CPo = new b();
-    this.CPp = new c();
-    this.CPl = paramw;
-    AppMethodBeat.o(68503);
-  }
-  
-  public final class a
-    implements e<de, h<String, String, String, String, Integer, Integer, Integer>>
-  {
-    public a() {}
-    
-    public final String Wz()
+    AppMethodBeat.i(68492);
+    Log.i("MicroMsg.LqtOnClickRedeemCache", "setCache OnClickRedeemRes balance %s, bank_balance %s, lq_balance %s", new Object[] { Integer.valueOf(paramcux.MAf), Integer.valueOf(paramcux.MAh), Integer.valueOf(paramcux.MAg) });
+    this.Hua = paramcux;
+    if (paramcux != null) {}
+    try
     {
-      return "Vending.UI";
+      paramcux = new String(paramcux.toByteArray(), d.ISO_8859_1);
+      ((a)g.ah(a.class)).getWalletCacheStg().set(ar.a.OfF, paramcux);
+      if (ac.jPE)
+      {
+        this.Hua.MAf = 100000000;
+        this.Hua.MAh = 50000000;
+        this.Hua.MAg = 50000000;
+      }
+      AppMethodBeat.o(68492);
+      return;
+    }
+    catch (IOException paramcux)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", paramcux, "", new Object[0]);
+      }
     }
   }
   
-  public final class b
-    implements e<cbw, h<Integer, String, String, String, Integer, Integer, String>>
+  public final cux fNa()
   {
-    public b() {}
-    
-    public final String Wz()
+    AppMethodBeat.i(182502);
+    Object localObject;
+    if (this.Hua == null)
     {
-      return "Vending.UI";
+      Log.d("MicroMsg.LqtOnClickRedeemCache", "cache is null");
+      localObject = (String)((a)g.ah(a.class)).getWalletCacheStg().get(ar.a.OfF, "");
+      if (Util.isNullOrNil((String)localObject)) {}
     }
-  }
-  
-  public final class c
-    implements e<coy, d<Integer, Integer, Integer>>
-  {
-    public c() {}
-    
-    public final String Wz()
+    try
     {
-      return "Vending.UI";
+      this.Hua = ((cux)new cux().parseFrom(((String)localObject).getBytes(d.ISO_8859_1)));
+      localObject = this.Hua;
+      AppMethodBeat.o(182502);
+      return localObject;
     }
-    
-    public final com.tencent.mm.vending.g.c<coy> iK(int paramInt1, int paramInt2)
+    catch (IOException localIOException)
     {
-      AppMethodBeat.i(68499);
-      com.tencent.mm.vending.g.c localc = g.h(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(6)).c(this);
-      AppMethodBeat.o(68499);
-      return localc;
-    }
-  }
-  
-  public final class d
-    implements e<cmg, com.tencent.mm.vending.j.c<Integer, Integer>>
-  {
-    public d() {}
-    
-    public final String Wz()
-    {
-      return "Vending.UI";
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.LqtOnClickRedeemCache", localIOException, "", new Object[0]);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.model.lqt.x
  * JD-Core Version:    0.7.0.1
  */

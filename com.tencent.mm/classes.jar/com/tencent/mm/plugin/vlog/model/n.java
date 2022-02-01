@@ -1,31 +1,37 @@
 package com.tencent.mm.plugin.vlog.model;
 
-import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"getInteger", "", "Landroid/media/MediaFormat;", "name", "", "defaultValue", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/FpsCounter;", "", "()V", "frames", "", "getFrames", "()I", "setFrames", "(I)V", "lastTick", "", "getLastTick", "()J", "setLastTick", "(J)V", "addFrame", "", "getFps", "reset", "plugin-vlog_release"})
 public final class n
 {
-  public static final int c(MediaFormat paramMediaFormat, String paramString, int paramInt)
+  public int frames;
+  public long jkM;
+  
+  public final int getFps()
   {
-    AppMethodBeat.i(191178);
-    p.h(paramMediaFormat, "$this$getInteger");
-    p.h(paramString, "name");
-    if (paramMediaFormat.containsKey(paramString))
+    AppMethodBeat.i(190581);
+    if (this.frames == 0)
     {
-      paramInt = paramMediaFormat.getInteger(paramString);
-      AppMethodBeat.o(191178);
-      return paramInt;
+      AppMethodBeat.o(190581);
+      return 0;
     }
-    AppMethodBeat.o(191178);
-    return paramInt;
+    int i = (int)(this.frames * 1000 / Util.ticksToNow(this.jkM));
+    AppMethodBeat.o(190581);
+    return i;
+  }
+  
+  public final void reset()
+  {
+    this.jkM = 0L;
+    this.frames = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.n
  * JD-Core Version:    0.7.0.1
  */

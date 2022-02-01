@@ -9,12 +9,12 @@ import org.json.JSONTokener;
 public final class f
   implements i<Object>
 {
-  public static final f NcZ;
+  public static final f SSk;
   
   static
   {
     AppMethodBeat.i(9882);
-    NcZ = new f();
+    SSk = new f();
     AppMethodBeat.o(9882);
   }
   
@@ -29,7 +29,7 @@ public final class f
     Object localObject;
     try
     {
-      localObject = p.Ndi;
+      localObject = p.SSt;
       paramByteBuffer = new JSONTokener(p.P(paramByteBuffer));
       localObject = paramByteBuffer.nextValue();
       if (paramByteBuffer.more())
@@ -49,7 +49,7 @@ public final class f
     return localObject;
   }
   
-  public final ByteBuffer eJ(Object paramObject)
+  public final ByteBuffer eP(Object paramObject)
   {
     AppMethodBeat.i(9880);
     if (paramObject == null)
@@ -60,20 +60,20 @@ public final class f
     paramObject = h.wrap(paramObject);
     if ((paramObject instanceof String))
     {
-      localp = p.Ndi;
-      paramObject = p.bdC(JSONObject.quote((String)paramObject));
+      localp = p.SSt;
+      paramObject = p.btr(JSONObject.quote((String)paramObject));
       AppMethodBeat.o(9880);
       return paramObject;
     }
-    p localp = p.Ndi;
-    paramObject = p.bdC(paramObject.toString());
+    p localp = p.SSt;
+    paramObject = p.btr(paramObject.toString());
     AppMethodBeat.o(9880);
     return paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     io.flutter.plugin.a.f
  * JD-Core Version:    0.7.0.1
  */

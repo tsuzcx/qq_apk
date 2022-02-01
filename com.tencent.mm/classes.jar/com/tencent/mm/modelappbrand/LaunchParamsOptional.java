@@ -10,10 +10,10 @@ public final class LaunchParamsOptional
   implements Parcelable
 {
   public static final Parcelable.Creator<LaunchParamsOptional> CREATOR;
-  public String cmv;
-  public String cmw;
-  public AppBrandWeishiParams cmy;
-  public String hNn;
+  public String cyq;
+  public String cyr;
+  public AppBrandWeishiParams cyt;
+  public String iIt;
   
   static
   {
@@ -27,9 +27,9 @@ public final class LaunchParamsOptional
   private LaunchParamsOptional(Parcel paramParcel)
   {
     AppMethodBeat.i(146920);
-    this.cmv = paramParcel.readString();
-    this.cmw = paramParcel.readString();
-    this.cmy = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
+    this.cyq = paramParcel.readString();
+    this.cyr = paramParcel.readString();
+    this.cyt = ((AppBrandWeishiParams)paramParcel.readParcelable(AppBrandWeishiParams.class.getClassLoader()));
     AppMethodBeat.o(146920);
   }
   
@@ -41,15 +41,15 @@ public final class LaunchParamsOptional
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(146919);
-    paramParcel.writeString(this.cmv);
-    paramParcel.writeString(this.cmw);
-    paramParcel.writeParcelable(this.cmy, paramInt);
+    paramParcel.writeString(this.cyq);
+    paramParcel.writeString(this.cyr);
+    paramParcel.writeParcelable(this.cyt, paramInt);
     AppMethodBeat.o(146919);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.LaunchParamsOptional
  * JD-Core Version:    0.7.0.1
  */

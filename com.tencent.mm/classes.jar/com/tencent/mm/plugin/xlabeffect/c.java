@@ -1,163 +1,170 @@
 package com.tencent.mm.plugin.xlabeffect;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import d.g.a.m;
-import d.l;
-import d.z;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.g.a.m;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/xlabeffect/XLabEffectGlobalConfig;", "", "()V", "COUNT_DIFF", "", "KEY_END_COUNT", "", "KEY_EYE_BRIGHT", "KEY_EYE_MORPH", "KEY_FACE_MORPH", "KEY_SKIN_BRIGHT", "KEY_SKIN_SMOOTH", "KEY_START_COUNT", "MMKV_NAME", "TAG", "endCount", "eyeBright", "getEyeBright", "()I", "setEyeBright", "(I)V", "eyeMorph", "getEyeMorph", "setEyeMorph", "faceMorph", "getFaceMorph", "setFaceMorph", "onConfigChange", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "type", "value", "", "getOnConfigChange", "()Lkotlin/jvm/functions/Function2;", "setOnConfigChange", "(Lkotlin/jvm/functions/Function2;)V", "skinBright", "getSkinBright", "setSkinBright", "skinSmooth", "getSkinSmooth", "setSkinSmooth", "startCount", "getNumOfThread", "markEnd", "markStart", "setConfig", "plugin-xlabeffect_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/xlabeffect/XLabEffectGlobalConfig;", "", "()V", "COUNT_DIFF", "", "KEY_END_COUNT", "", "KEY_EYE_BRIGHT", "KEY_EYE_MORPH", "KEY_FACE_MORPH", "KEY_SKIN_BRIGHT", "KEY_SKIN_SMOOTH", "KEY_START_COUNT", "MMKV_NAME", "TAG", "endCount", "eyeBright", "getEyeBright", "()I", "setEyeBright", "(I)V", "eyeMorph", "getEyeMorph", "setEyeMorph", "faceMorph", "getFaceMorph", "setFaceMorph", "onConfigChange", "Lkotlin/Function2;", "Lkotlin/ParameterName;", "name", "type", "value", "", "getOnConfigChange", "()Lkotlin/jvm/functions/Function2;", "setOnConfigChange", "(Lkotlin/jvm/functions/Function2;)V", "rosy", "getRosy", "setRosy", "skinBright", "getSkinBright", "setSkinBright", "skinSmooth", "getSkinSmooth", "setSkinSmooth", "startCount", "getNumOfThread", "markEnd", "markStart", "setConfig", "plugin-xlabeffect_release"})
 public final class c
 {
-  private static int FaE = 0;
-  private static int FaF = 0;
-  public static final c FaG;
+  public static final c JRA;
+  private static int JRy = 0;
+  private static int JRz = 0;
   private static final String TAG = "MicroMsg.XLabEffectConfig";
-  private static m<? super Integer, ? super Integer, z> huG;
-  private static int xOI;
-  private static int xOJ;
-  private static int xOK;
-  private static int xOL;
-  private static int xOM;
+  private static int hDb;
+  private static int hDc;
+  private static int hDd;
+  private static int hDe;
+  private static int hDf;
+  private static int hDg;
+  private static m<? super Integer, ? super Integer, x> ioh;
   
   static
   {
     AppMethodBeat.i(184222);
-    FaG = new c();
+    JRA = new c();
     TAG = "MicroMsg.XLabEffectConfig";
-    xOI = 65;
-    xOK = 60;
-    xOL = 100;
-    xOM = 30;
-    ay localay = ay.aRW("xlab_effect_config");
-    ae.i(TAG, "config is : " + xOI + ", " + xOJ + ", " + xOK + ", " + xOL + ", " + xOM);
-    FaE = localay.getInt("start_count", FaE);
-    FaF = localay.getInt("end_count", FaF);
-    ae.i(TAG, "count track is : " + FaE + ", " + FaF);
+    hDb = 65;
+    hDd = 60;
+    hDe = 100;
+    hDf = 30;
+    hDg = 20;
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("xlab_effect_config");
+    Log.i(TAG, "config is : " + hDb + ", " + hDc + ", " + hDd + ", " + hDe + ", " + hDf);
+    JRy = localMultiProcessMMKV.getInt("start_count", JRy);
+    JRz = localMultiProcessMMKV.getInt("end_count", JRz);
+    Log.i(TAG, "count track is : " + JRy + ", " + JRz);
     AppMethodBeat.o(184222);
   }
   
-  public static void b(m<? super Integer, ? super Integer, z> paramm)
+  public static int aEl()
   {
-    huG = paramm;
+    return hDb;
   }
   
-  public static int fcb()
+  public static int aEm()
   {
-    return xOI;
+    return hDc;
   }
   
-  public static int fcc()
+  public static int aEn()
   {
-    return xOJ;
+    return hDd;
   }
   
-  public static int fcd()
+  public static int aEo()
   {
-    return xOK;
+    return hDe;
   }
   
-  public static int fce()
+  public static int aEp()
   {
-    return xOL;
+    return hDf;
   }
   
-  public static int fcf()
+  public static int aEq()
   {
-    return xOM;
+    return hDg;
   }
   
-  public static void fcg()
+  public static void b(m<? super Integer, ? super Integer, x> paramm)
+  {
+    ioh = paramm;
+  }
+  
+  public static void glp()
   {
     AppMethodBeat.i(184219);
-    FaE += 1;
-    ay.aRW("xlab_effect_config").putInt("start_count", FaE);
+    JRy += 1;
+    MultiProcessMMKV.getMMKV("xlab_effect_config").putInt("start_count", JRy);
     AppMethodBeat.o(184219);
   }
   
-  public static void fch()
+  public static void glq()
   {
     AppMethodBeat.i(184220);
-    FaF += 1;
-    ay.aRW("xlab_effect_config").putInt("end_count", FaF);
+    JRz += 1;
+    MultiProcessMMKV.getMMKV("xlab_effect_config").putInt("end_count", JRz);
     AppMethodBeat.o(184220);
   }
   
-  public static int fci()
+  public static int glr()
   {
     int i = 0;
     AppMethodBeat.i(184221);
-    ay.aRW("xlab_effect_config");
+    MultiProcessMMKV.getMMKV("xlab_effect_config");
     boolean bool;
-    if (FaE - FaF < 3)
+    if (JRy - JRz < 3)
     {
       bool = true;
       if (bool) {
         i = 1;
       }
       if (i == 0) {
-        break label78;
+        break label85;
       }
-      g.yxI.dD(1012, 101);
+      h.CyF.dN(1012, 101);
     }
     for (;;)
     {
-      ae.i(TAG, "getNumOfThread: true, ".concat(String.valueOf(bool)));
+      Log.i(TAG, "getNumOfThread: true, " + bool);
       if (i == 0) {
-        break label92;
+        break label99;
       }
       AppMethodBeat.o(184221);
       return 2;
       bool = false;
       break;
-      label78:
-      g.yxI.dD(1012, 102);
+      label85:
+      h.CyF.dN(1012, 102);
     }
-    label92:
+    label99:
     AppMethodBeat.o(184221);
     return 1;
   }
   
-  public static void jn(int paramInt1, int paramInt2)
+  public static void ky(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(184218);
-    ae.i(TAG, "setConfig: " + paramInt1 + ", " + paramInt2);
-    Object localObject = ay.aRW("xlab_effect_config");
+    Log.i(TAG, "setConfig: " + paramInt1 + ", " + paramInt2);
+    Object localObject = MultiProcessMMKV.getMMKV("xlab_effect_config");
     switch (paramInt1)
     {
     }
     for (;;)
     {
-      localObject = huG;
+      localObject = ioh;
       if (localObject == null) {
         break;
       }
-      ((m)localObject).p(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
+      ((m)localObject).invoke(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
       AppMethodBeat.o(184218);
       return;
-      xOI = paramInt2;
-      ((ay)localObject).putInt("skin_smooth", xOI);
+      hDb = paramInt2;
+      ((MultiProcessMMKV)localObject).putInt("skin_smooth", hDb);
       continue;
-      xOJ = paramInt2;
-      ((ay)localObject).putInt("eye_morph", xOJ);
+      hDc = paramInt2;
+      ((MultiProcessMMKV)localObject).putInt("eye_morph", hDc);
       continue;
-      xOK = paramInt2;
-      ((ay)localObject).putInt("face_morph", xOK);
+      hDd = paramInt2;
+      ((MultiProcessMMKV)localObject).putInt("face_morph", hDd);
       continue;
-      xOL = paramInt2;
-      ((ay)localObject).putInt("skin_bright", xOL);
+      hDe = paramInt2;
+      ((MultiProcessMMKV)localObject).putInt("skin_bright", hDe);
       continue;
-      xOM = paramInt2;
-      ((ay)localObject).putInt("eye_bright", xOM);
+      hDf = paramInt2;
+      ((MultiProcessMMKV)localObject).putInt("eye_bright", hDf);
     }
     AppMethodBeat.o(184218);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.xlabeffect.c
  * JD-Core Version:    0.7.0.1
  */

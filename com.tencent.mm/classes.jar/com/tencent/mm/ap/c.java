@@ -2,12 +2,12 @@ package com.tencent.mm.ap;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.expt.h.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.o;
 import java.io.Serializable;
 import java.util.Iterator;
 import java.util.List;
@@ -16,45 +16,45 @@ import java.util.concurrent.CopyOnWriteArrayList;
 final class c
   implements Runnable
 {
-  private static long hYH = 0L;
-  int hYG;
-  private d hYI;
-  a hYJ;
-  private long hYK;
-  long hYL;
-  long hYM;
-  String hYN;
-  private String hYO;
-  boolean hYP;
+  private static long iTF = 0L;
+  int iTE;
+  private d iTG;
+  a iTH;
+  private long iTI;
+  long iTJ;
+  long iTK;
+  String iTL;
+  private String iTM;
+  boolean iTN;
   
   c()
   {
     AppMethodBeat.i(132530);
-    this.hYG = 0;
-    this.hYI = null;
-    this.hYJ = new a();
-    this.hYK = 0L;
-    this.hYL = 0L;
-    this.hYM = 0L;
-    this.hYN = null;
-    this.hYO = null;
-    this.hYP = false;
-    if (this.hYN == null)
+    this.iTE = 0;
+    this.iTG = null;
+    this.iTH = new a();
+    this.iTI = 0L;
+    this.iTJ = 0L;
+    this.iTK = 0L;
+    this.iTL = null;
+    this.iTM = null;
+    this.iTN = false;
+    if (this.iTL == null)
     {
-      this.hYN = (b.asb() + "ProcessDetector");
-      k localk = new k(this.hYN);
-      if (!localk.exists()) {
-        localk.mkdirs();
+      this.iTL = (b.aKB() + "ProcessDetector");
+      o localo = new o(this.iTL);
+      if (!localo.exists()) {
+        localo.mkdirs();
       }
     }
-    if (ak.cpe())
+    if (MMApplicationContext.isMMProcess())
     {
-      this.hYO = (this.hYN + "/mm");
+      this.iTM = (this.iTL + "/mm");
       AppMethodBeat.o(132530);
       return;
     }
-    if (ak.foA()) {
-      this.hYO = (this.hYN + "/push");
+    if (MMApplicationContext.isPushProcess()) {
+      this.iTM = (this.iTL + "/push");
     }
     AppMethodBeat.o(132530);
   }
@@ -72,7 +72,7 @@ final class c
       }
       else
       {
-        if (paramLong - localb.hZn < 259200000L) {
+        if (paramLong - localb.iUl < 259200000L) {
           break;
         }
         paramList.remove(localb);
@@ -95,14 +95,14 @@ final class c
     {
       try
       {
-        localIterator = parama.hYQ.iterator();
+        localIterator = parama.iTO.iterator();
         if (!localIterator.hasNext()) {
           break;
         }
         localObject = (d)localIterator.next();
         if (localObject == null)
         {
-          parama.hYQ.remove(localObject);
+          parama.iTO.remove(localObject);
           continue;
         }
         if (l - ((d)localObject).endTime < 259200000L) {
@@ -111,64 +111,64 @@ final class c
       }
       catch (Exception parama)
       {
-        ae.printErrStackTrace("MicroMsg.ActiveDetector.ProcessDetector", parama, "check data exception.", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ActiveDetector.ProcessDetector", parama, "check data exception.", new Object[0]);
         AppMethodBeat.o(132532);
         return;
       }
-      parama.hYQ.remove(localObject);
+      parama.iTO.remove(localObject);
     }
-    Iterator localIterator = parama.hYR.iterator();
+    Iterator localIterator = parama.iTP.iterator();
     while (localIterator.hasNext())
     {
       localObject = (c)localIterator.next();
       if (localObject == null)
       {
-        parama.hYR.remove(localObject);
+        parama.iTP.remove(localObject);
       }
       else
       {
         if (l - ((c)localObject).time < 259200000L) {
           break;
         }
-        parama.hYR.remove(localObject);
+        parama.iTP.remove(localObject);
       }
     }
-    localIterator = parama.hYS.iterator();
+    localIterator = parama.iTQ.iterator();
     while (localIterator.hasNext())
     {
       localObject = (c)localIterator.next();
       if (localObject == null)
       {
-        parama.hYS.remove(localObject);
+        parama.iTQ.remove(localObject);
       }
       else
       {
         if (l - ((c)localObject).time < 259200000L) {
           break;
         }
-        parama.hYS.remove(localObject);
+        parama.iTQ.remove(localObject);
       }
     }
-    a(l, parama.hYT);
-    a(l, parama.hYU);
-    a(l, parama.hYV);
-    a(l, parama.hYW);
-    a(l, parama.hYX);
-    a(l, parama.hYY);
-    a(l, parama.hYZ);
-    a(l, parama.hZa);
-    a(l, parama.hZb);
-    a(l, parama.hZc);
-    a(l, parama.hZd);
-    a(l, parama.hZe);
-    a(l, parama.hZf);
-    a(l, parama.hZg);
-    a(l, parama.hZh);
-    a(l, parama.hZi);
-    a(l, parama.hZj);
-    a(l, parama.hZk);
-    a(l, parama.hZl);
-    a(l, parama.hZm);
+    a(l, parama.iTR);
+    a(l, parama.iTS);
+    a(l, parama.iTT);
+    a(l, parama.iTU);
+    a(l, parama.iTV);
+    a(l, parama.iTW);
+    a(l, parama.iTX);
+    a(l, parama.iTY);
+    a(l, parama.iTZ);
+    a(l, parama.iUa);
+    a(l, parama.iUb);
+    a(l, parama.iUc);
+    a(l, parama.iUd);
+    a(l, parama.iUe);
+    a(l, parama.iUf);
+    a(l, parama.iUg);
+    a(l, parama.iUh);
+    a(l, parama.iUi);
+    a(l, parama.iUj);
+    a(l, parama.iUk);
     AppMethodBeat.o(132532);
   }
   
@@ -191,17 +191,6 @@ final class c
     return false;
   }
   
-  private static long aHz()
-  {
-    AppMethodBeat.i(132534);
-    if (hYH == 0L) {
-      hYH = bu.getLong(d.ctr().b("clicfg_android_process_detect_time", "5", false, true), 5L) * 60L * 1000L;
-    }
-    long l = hYH;
-    AppMethodBeat.o(132534);
-    return l;
-  }
-  
   private static void b(a parama)
   {
     AppMethodBeat.i(132535);
@@ -209,30 +198,30 @@ final class c
     localStringBuilder.append(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ProcessInfo <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<\n");
     Iterator localIterator;
     Object localObject;
-    if (parama.hYQ.size() > 0)
+    if (parama.iTO.size() > 0)
     {
       localStringBuilder.append("processStatusList:\n");
-      localIterator = parama.hYQ.iterator();
+      localIterator = parama.iTO.iterator();
       while (localIterator.hasNext())
       {
         localObject = (d)localIterator.next();
         localStringBuilder.append("\t").append(localObject).append("\n");
       }
     }
-    if (parama.hYR.size() > 0)
+    if (parama.iTP.size() > 0)
     {
       localStringBuilder.append("sendInterProcessList:\n");
-      localIterator = parama.hYR.iterator();
+      localIterator = parama.iTP.iterator();
       while (localIterator.hasNext())
       {
         localObject = (c)localIterator.next();
         localStringBuilder.append("\t").append(localObject).append("\n");
       }
     }
-    if (parama.hYS.size() > 0)
+    if (parama.iTQ.size() > 0)
     {
       localStringBuilder.append("receiveInterProcessList:\n");
-      localIterator = parama.hYS.iterator();
+      localIterator = parama.iTQ.iterator();
       while (localIterator.hasNext())
       {
         localObject = (c)localIterator.next();
@@ -240,30 +229,41 @@ final class c
       }
     }
     localStringBuilder.append(">>>>>>>>>>>>>>>>>>>>> foreground <<<<<<<<<<<<<<<<<<<<<\n");
-    a(localStringBuilder, parama.hYT, "foregroundDelayed2sMsgList");
-    a(localStringBuilder, parama.hYU, "foregroundDelayed5sMsgList");
-    a(localStringBuilder, parama.hYV, "foregroundDelayed10sMsgList");
-    a(localStringBuilder, parama.hYW, "foregroundDelayed30sMsgList");
-    a(localStringBuilder, parama.hYX, "foregroundDelayed1minMsgList");
-    a(localStringBuilder, parama.hYY, "foregroundDelayed3minMsgList");
-    a(localStringBuilder, parama.hYZ, "foregroundDelayed5minMsgList");
-    a(localStringBuilder, parama.hZa, "foregroundDelayed10minMsgList");
-    a(localStringBuilder, parama.hZb, "foregroundDelayed30minMsgList");
-    a(localStringBuilder, parama.hZc, "foregroundDelayed1hMsgList");
+    a(localStringBuilder, parama.iTR, "foregroundDelayed2sMsgList");
+    a(localStringBuilder, parama.iTS, "foregroundDelayed5sMsgList");
+    a(localStringBuilder, parama.iTT, "foregroundDelayed10sMsgList");
+    a(localStringBuilder, parama.iTU, "foregroundDelayed30sMsgList");
+    a(localStringBuilder, parama.iTV, "foregroundDelayed1minMsgList");
+    a(localStringBuilder, parama.iTW, "foregroundDelayed3minMsgList");
+    a(localStringBuilder, parama.iTX, "foregroundDelayed5minMsgList");
+    a(localStringBuilder, parama.iTY, "foregroundDelayed10minMsgList");
+    a(localStringBuilder, parama.iTZ, "foregroundDelayed30minMsgList");
+    a(localStringBuilder, parama.iUa, "foregroundDelayed1hMsgList");
     localStringBuilder.append(">>>>>>>>>>>>>>>>>>>>> background <<<<<<<<<<<<<<<<<<<<<\n");
-    a(localStringBuilder, parama.hZd, "backgroundDelayed2sMsgList");
-    a(localStringBuilder, parama.hZe, "backgroundDelayed5sMsgList");
-    a(localStringBuilder, parama.hZf, "backgroundDelayed10sMsgList");
-    a(localStringBuilder, parama.hZg, "backgroundDelayed30sMsgList");
-    a(localStringBuilder, parama.hZh, "backgroundDelayed1minMsgList");
-    a(localStringBuilder, parama.hZi, "backgroundDelayed3minMsgList");
-    a(localStringBuilder, parama.hZj, "backgroundDelayed5minMsgList");
-    a(localStringBuilder, parama.hZk, "backgroundDelayed10minMsgList");
-    a(localStringBuilder, parama.hZl, "backgroundDelayed30minMsgList");
-    a(localStringBuilder, parama.hZm, "backgroundDelayed1hMsgList");
+    a(localStringBuilder, parama.iUb, "backgroundDelayed2sMsgList");
+    a(localStringBuilder, parama.iUc, "backgroundDelayed5sMsgList");
+    a(localStringBuilder, parama.iUd, "backgroundDelayed10sMsgList");
+    a(localStringBuilder, parama.iUe, "backgroundDelayed30sMsgList");
+    a(localStringBuilder, parama.iUf, "backgroundDelayed1minMsgList");
+    a(localStringBuilder, parama.iUg, "backgroundDelayed3minMsgList");
+    a(localStringBuilder, parama.iUh, "backgroundDelayed5minMsgList");
+    a(localStringBuilder, parama.iUi, "backgroundDelayed10minMsgList");
+    a(localStringBuilder, parama.iUj, "backgroundDelayed30minMsgList");
+    a(localStringBuilder, parama.iUk, "backgroundDelayed1hMsgList");
     localStringBuilder.append(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> END <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
-    ae.i("MicroMsg.ActiveDetector.ProcessDetector", "printProcessInfoAndReport()\n".concat(String.valueOf(localStringBuilder)));
+    Log.i("MicroMsg.ActiveDetector.ProcessDetector", "printProcessInfoAndReport()\n".concat(String.valueOf(localStringBuilder)));
     AppMethodBeat.o(132535);
+  }
+  
+  private static long bbs()
+  {
+    AppMethodBeat.i(132534);
+    if (iTF == 0L) {
+      iTF = Util.getLong(d.cRY().b("clicfg_android_process_detect_time", "5", false, true), 5L) * 60L * 1000L;
+    }
+    long l = iTF;
+    AppMethodBeat.o(132534);
+    return l;
   }
   
   /* Error */
@@ -274,204 +274,204 @@ final class c
     //   3: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: invokestatic 151	java/lang/System:currentTimeMillis	()J
-    //   10: putfield 60	com/tencent/mm/ap/c:hYL	J
+    //   10: putfield 60	com/tencent/mm/ap/c:iTJ	J
     //   13: aload_0
     //   14: aload_0
-    //   15: getfield 60	com/tencent/mm/ap/c:hYL	J
-    //   18: putfield 62	com/tencent/mm/ap/c:hYM	J
+    //   15: getfield 60	com/tencent/mm/ap/c:iTJ	J
+    //   18: putfield 62	com/tencent/mm/ap/c:iTK	J
     //   21: aload_0
     //   22: new 17	com/tencent/mm/ap/c$d
     //   25: dup
     //   26: invokespecial 364	com/tencent/mm/ap/c$d:<init>	()V
-    //   29: putfield 53	com/tencent/mm/ap/c:hYI	Lcom/tencent/mm/ap/c$d;
+    //   29: putfield 53	com/tencent/mm/ap/c:iTG	Lcom/tencent/mm/ap/c$d;
     //   32: aload_0
-    //   33: getfield 53	com/tencent/mm/ap/c:hYI	Lcom/tencent/mm/ap/c$d;
+    //   33: getfield 53	com/tencent/mm/ap/c:iTG	Lcom/tencent/mm/ap/c$d;
     //   36: invokestatic 369	android/os/Process:myPid	()I
     //   39: aload_0
-    //   40: getfield 60	com/tencent/mm/ap/c:hYL	J
+    //   40: getfield 60	com/tencent/mm/ap/c:iTJ	J
     //   43: aload_0
-    //   44: getfield 62	com/tencent/mm/ap/c:hYM	J
+    //   44: getfield 62	com/tencent/mm/ap/c:iTK	J
     //   47: aload_0
-    //   48: getfield 51	com/tencent/mm/ap/c:hYG	I
+    //   48: getfield 51	com/tencent/mm/ap/c:iTE	I
     //   51: invokevirtual 372	com/tencent/mm/ap/c$d:b	(IJJI)V
     //   54: aload_0
-    //   55: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   58: getfield 155	com/tencent/mm/ap/c$a:hYQ	Ljava/util/List;
+    //   55: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   58: getfield 155	com/tencent/mm/ap/c$a:iTO	Ljava/util/List;
     //   61: invokeinterface 375 1 0
     //   66: ifeq +425 -> 491
     //   69: aload_0
-    //   70: getfield 66	com/tencent/mm/ap/c:hYO	Ljava/lang/String;
-    //   73: invokestatic 381	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
-    //   76: invokestatic 387	com/tencent/mm/ap/b:z	(Ljava/io/InputStream;)Ljava/lang/Object;
+    //   70: getfield 66	com/tencent/mm/ap/c:iTM	Ljava/lang/String;
+    //   73: invokestatic 381	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   76: invokestatic 387	com/tencent/mm/ap/b:y	(Ljava/io/InputStream;)Ljava/lang/Object;
     //   79: checkcast 8	com/tencent/mm/ap/c$a
     //   82: astore 9
     //   84: aload 9
     //   86: ifnull +405 -> 491
     //   89: aload 9
-    //   91: getfield 171	com/tencent/mm/ap/c$a:hYR	Ljava/util/List;
+    //   91: getfield 171	com/tencent/mm/ap/c$a:iTP	Ljava/util/List;
     //   94: aload_0
-    //   95: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   98: getfield 171	com/tencent/mm/ap/c$a:hYR	Ljava/util/List;
+    //   95: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   98: getfield 171	com/tencent/mm/ap/c$a:iTP	Ljava/util/List;
     //   101: invokeinterface 391 2 0
     //   106: pop
     //   107: aload 9
-    //   109: getfield 177	com/tencent/mm/ap/c$a:hYS	Ljava/util/List;
+    //   109: getfield 177	com/tencent/mm/ap/c$a:iTQ	Ljava/util/List;
     //   112: aload_0
-    //   113: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   116: getfield 177	com/tencent/mm/ap/c$a:hYS	Ljava/util/List;
+    //   113: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   116: getfield 177	com/tencent/mm/ap/c$a:iTQ	Ljava/util/List;
     //   119: invokeinterface 391 2 0
     //   124: pop
     //   125: aload 9
-    //   127: getfield 180	com/tencent/mm/ap/c$a:hYT	Ljava/util/List;
+    //   127: getfield 180	com/tencent/mm/ap/c$a:iTR	Ljava/util/List;
     //   130: aload_0
-    //   131: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   134: getfield 180	com/tencent/mm/ap/c$a:hYT	Ljava/util/List;
+    //   131: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   134: getfield 180	com/tencent/mm/ap/c$a:iTR	Ljava/util/List;
     //   137: invokeinterface 391 2 0
     //   142: pop
     //   143: aload 9
-    //   145: getfield 185	com/tencent/mm/ap/c$a:hYU	Ljava/util/List;
+    //   145: getfield 185	com/tencent/mm/ap/c$a:iTS	Ljava/util/List;
     //   148: aload_0
-    //   149: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   152: getfield 185	com/tencent/mm/ap/c$a:hYU	Ljava/util/List;
+    //   149: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   152: getfield 185	com/tencent/mm/ap/c$a:iTS	Ljava/util/List;
     //   155: invokeinterface 391 2 0
     //   160: pop
     //   161: aload 9
-    //   163: getfield 188	com/tencent/mm/ap/c$a:hYV	Ljava/util/List;
+    //   163: getfield 188	com/tencent/mm/ap/c$a:iTT	Ljava/util/List;
     //   166: aload_0
-    //   167: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   170: getfield 188	com/tencent/mm/ap/c$a:hYV	Ljava/util/List;
+    //   167: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   170: getfield 188	com/tencent/mm/ap/c$a:iTT	Ljava/util/List;
     //   173: invokeinterface 391 2 0
     //   178: pop
     //   179: aload 9
-    //   181: getfield 191	com/tencent/mm/ap/c$a:hYW	Ljava/util/List;
+    //   181: getfield 191	com/tencent/mm/ap/c$a:iTU	Ljava/util/List;
     //   184: aload_0
-    //   185: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   188: getfield 191	com/tencent/mm/ap/c$a:hYW	Ljava/util/List;
+    //   185: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   188: getfield 191	com/tencent/mm/ap/c$a:iTU	Ljava/util/List;
     //   191: invokeinterface 391 2 0
     //   196: pop
     //   197: aload 9
-    //   199: getfield 194	com/tencent/mm/ap/c$a:hYX	Ljava/util/List;
+    //   199: getfield 194	com/tencent/mm/ap/c$a:iTV	Ljava/util/List;
     //   202: aload_0
-    //   203: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   206: getfield 194	com/tencent/mm/ap/c$a:hYX	Ljava/util/List;
+    //   203: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   206: getfield 194	com/tencent/mm/ap/c$a:iTV	Ljava/util/List;
     //   209: invokeinterface 391 2 0
     //   214: pop
     //   215: aload 9
-    //   217: getfield 197	com/tencent/mm/ap/c$a:hYY	Ljava/util/List;
+    //   217: getfield 197	com/tencent/mm/ap/c$a:iTW	Ljava/util/List;
     //   220: aload_0
-    //   221: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   224: getfield 197	com/tencent/mm/ap/c$a:hYY	Ljava/util/List;
+    //   221: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   224: getfield 197	com/tencent/mm/ap/c$a:iTW	Ljava/util/List;
     //   227: invokeinterface 391 2 0
     //   232: pop
     //   233: aload 9
-    //   235: getfield 200	com/tencent/mm/ap/c$a:hYZ	Ljava/util/List;
+    //   235: getfield 200	com/tencent/mm/ap/c$a:iTX	Ljava/util/List;
     //   238: aload_0
-    //   239: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   242: getfield 200	com/tencent/mm/ap/c$a:hYZ	Ljava/util/List;
+    //   239: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   242: getfield 200	com/tencent/mm/ap/c$a:iTX	Ljava/util/List;
     //   245: invokeinterface 391 2 0
     //   250: pop
     //   251: aload 9
-    //   253: getfield 203	com/tencent/mm/ap/c$a:hZa	Ljava/util/List;
+    //   253: getfield 203	com/tencent/mm/ap/c$a:iTY	Ljava/util/List;
     //   256: aload_0
-    //   257: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   260: getfield 203	com/tencent/mm/ap/c$a:hZa	Ljava/util/List;
+    //   257: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   260: getfield 203	com/tencent/mm/ap/c$a:iTY	Ljava/util/List;
     //   263: invokeinterface 391 2 0
     //   268: pop
     //   269: aload 9
-    //   271: getfield 206	com/tencent/mm/ap/c$a:hZb	Ljava/util/List;
+    //   271: getfield 206	com/tencent/mm/ap/c$a:iTZ	Ljava/util/List;
     //   274: aload_0
-    //   275: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   278: getfield 206	com/tencent/mm/ap/c$a:hZb	Ljava/util/List;
+    //   275: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   278: getfield 206	com/tencent/mm/ap/c$a:iTZ	Ljava/util/List;
     //   281: invokeinterface 391 2 0
     //   286: pop
     //   287: aload 9
-    //   289: getfield 209	com/tencent/mm/ap/c$a:hZc	Ljava/util/List;
+    //   289: getfield 209	com/tencent/mm/ap/c$a:iUa	Ljava/util/List;
     //   292: aload_0
-    //   293: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   296: getfield 209	com/tencent/mm/ap/c$a:hZc	Ljava/util/List;
+    //   293: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   296: getfield 209	com/tencent/mm/ap/c$a:iUa	Ljava/util/List;
     //   299: invokeinterface 391 2 0
     //   304: pop
     //   305: aload 9
-    //   307: getfield 212	com/tencent/mm/ap/c$a:hZd	Ljava/util/List;
+    //   307: getfield 212	com/tencent/mm/ap/c$a:iUb	Ljava/util/List;
     //   310: aload_0
-    //   311: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   314: getfield 212	com/tencent/mm/ap/c$a:hZd	Ljava/util/List;
+    //   311: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   314: getfield 212	com/tencent/mm/ap/c$a:iUb	Ljava/util/List;
     //   317: invokeinterface 391 2 0
     //   322: pop
     //   323: aload 9
-    //   325: getfield 215	com/tencent/mm/ap/c$a:hZe	Ljava/util/List;
+    //   325: getfield 215	com/tencent/mm/ap/c$a:iUc	Ljava/util/List;
     //   328: aload_0
-    //   329: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   332: getfield 215	com/tencent/mm/ap/c$a:hZe	Ljava/util/List;
+    //   329: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   332: getfield 215	com/tencent/mm/ap/c$a:iUc	Ljava/util/List;
     //   335: invokeinterface 391 2 0
     //   340: pop
     //   341: aload 9
-    //   343: getfield 218	com/tencent/mm/ap/c$a:hZf	Ljava/util/List;
+    //   343: getfield 218	com/tencent/mm/ap/c$a:iUd	Ljava/util/List;
     //   346: aload_0
-    //   347: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   350: getfield 218	com/tencent/mm/ap/c$a:hZf	Ljava/util/List;
+    //   347: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   350: getfield 218	com/tencent/mm/ap/c$a:iUd	Ljava/util/List;
     //   353: invokeinterface 391 2 0
     //   358: pop
     //   359: aload 9
-    //   361: getfield 221	com/tencent/mm/ap/c$a:hZg	Ljava/util/List;
+    //   361: getfield 221	com/tencent/mm/ap/c$a:iUe	Ljava/util/List;
     //   364: aload_0
-    //   365: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   368: getfield 221	com/tencent/mm/ap/c$a:hZg	Ljava/util/List;
+    //   365: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   368: getfield 221	com/tencent/mm/ap/c$a:iUe	Ljava/util/List;
     //   371: invokeinterface 391 2 0
     //   376: pop
     //   377: aload 9
-    //   379: getfield 224	com/tencent/mm/ap/c$a:hZh	Ljava/util/List;
+    //   379: getfield 224	com/tencent/mm/ap/c$a:iUf	Ljava/util/List;
     //   382: aload_0
-    //   383: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   386: getfield 224	com/tencent/mm/ap/c$a:hZh	Ljava/util/List;
+    //   383: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   386: getfield 224	com/tencent/mm/ap/c$a:iUf	Ljava/util/List;
     //   389: invokeinterface 391 2 0
     //   394: pop
     //   395: aload 9
-    //   397: getfield 227	com/tencent/mm/ap/c$a:hZi	Ljava/util/List;
+    //   397: getfield 227	com/tencent/mm/ap/c$a:iUg	Ljava/util/List;
     //   400: aload_0
-    //   401: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   404: getfield 227	com/tencent/mm/ap/c$a:hZi	Ljava/util/List;
+    //   401: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   404: getfield 227	com/tencent/mm/ap/c$a:iUg	Ljava/util/List;
     //   407: invokeinterface 391 2 0
     //   412: pop
     //   413: aload 9
-    //   415: getfield 230	com/tencent/mm/ap/c$a:hZj	Ljava/util/List;
+    //   415: getfield 230	com/tencent/mm/ap/c$a:iUh	Ljava/util/List;
     //   418: aload_0
-    //   419: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   422: getfield 230	com/tencent/mm/ap/c$a:hZj	Ljava/util/List;
+    //   419: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   422: getfield 230	com/tencent/mm/ap/c$a:iUh	Ljava/util/List;
     //   425: invokeinterface 391 2 0
     //   430: pop
     //   431: aload 9
-    //   433: getfield 233	com/tencent/mm/ap/c$a:hZk	Ljava/util/List;
+    //   433: getfield 233	com/tencent/mm/ap/c$a:iUi	Ljava/util/List;
     //   436: aload_0
-    //   437: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   440: getfield 233	com/tencent/mm/ap/c$a:hZk	Ljava/util/List;
+    //   437: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   440: getfield 233	com/tencent/mm/ap/c$a:iUi	Ljava/util/List;
     //   443: invokeinterface 391 2 0
     //   448: pop
     //   449: aload 9
-    //   451: getfield 236	com/tencent/mm/ap/c$a:hZl	Ljava/util/List;
+    //   451: getfield 236	com/tencent/mm/ap/c$a:iUj	Ljava/util/List;
     //   454: aload_0
-    //   455: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   458: getfield 236	com/tencent/mm/ap/c$a:hZl	Ljava/util/List;
+    //   455: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   458: getfield 236	com/tencent/mm/ap/c$a:iUj	Ljava/util/List;
     //   461: invokeinterface 391 2 0
     //   466: pop
     //   467: aload 9
-    //   469: getfield 239	com/tencent/mm/ap/c$a:hZm	Ljava/util/List;
+    //   469: getfield 239	com/tencent/mm/ap/c$a:iUk	Ljava/util/List;
     //   472: aload_0
-    //   473: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   476: getfield 239	com/tencent/mm/ap/c$a:hZm	Ljava/util/List;
+    //   473: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   476: getfield 239	com/tencent/mm/ap/c$a:iUk	Ljava/util/List;
     //   479: invokeinterface 391 2 0
     //   484: pop
     //   485: aload_0
     //   486: aload 9
-    //   488: putfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
+    //   488: putfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
     //   491: aload_0
-    //   492: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
+    //   492: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
     //   495: invokestatic 393	com/tencent/mm/ap/c:a	(Lcom/tencent/mm/ap/c$a;)V
     //   498: aload_0
-    //   499: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   502: getfield 155	com/tencent/mm/ap/c$a:hYQ	Ljava/util/List;
+    //   499: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   502: getfield 155	com/tencent/mm/ap/c$a:iTO	Ljava/util/List;
     //   505: aload_0
-    //   506: getfield 53	com/tencent/mm/ap/c:hYI	Lcom/tencent/mm/ap/c$d;
+    //   506: getfield 53	com/tencent/mm/ap/c:iTG	Lcom/tencent/mm/ap/c$d;
     //   509: invokeinterface 396 2 0
     //   514: pop
     //   515: ldc 157
@@ -481,28 +481,28 @@ final class c
     //   524: dup
     //   525: iconst_0
     //   526: aload_0
-    //   527: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   530: getfield 155	com/tencent/mm/ap/c$a:hYQ	Ljava/util/List;
+    //   527: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   530: getfield 155	com/tencent/mm/ap/c$a:iTO	Ljava/util/List;
     //   533: invokeinterface 245 1 0
     //   538: invokestatic 403	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   541: aastore
     //   542: dup
     //   543: iconst_1
     //   544: aload_0
-    //   545: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   548: getfield 171	com/tencent/mm/ap/c$a:hYR	Ljava/util/List;
+    //   545: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   548: getfield 171	com/tencent/mm/ap/c$a:iTP	Ljava/util/List;
     //   551: invokeinterface 245 1 0
     //   556: invokestatic 403	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   559: aastore
     //   560: dup
     //   561: iconst_2
     //   562: aload_0
-    //   563: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   566: getfield 177	com/tencent/mm/ap/c$a:hYS	Ljava/util/List;
+    //   563: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   566: getfield 177	com/tencent/mm/ap/c$a:iTQ	Ljava/util/List;
     //   569: invokeinterface 245 1 0
     //   574: invokestatic 403	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   577: aastore
-    //   578: invokestatic 406	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   578: invokestatic 406	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   581: ldc 157
     //   583: ldc_w 408
     //   586: iconst_1
@@ -510,67 +510,67 @@ final class c
     //   590: dup
     //   591: iconst_0
     //   592: aload_0
-    //   593: getfield 68	com/tencent/mm/ap/c:hYP	Z
+    //   593: getfield 68	com/tencent/mm/ap/c:iTN	Z
     //   596: invokestatic 413	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   599: aastore
-    //   600: invokestatic 406	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   603: invokestatic 418	com/tencent/mm/model/ch:aDa	()J
+    //   600: invokestatic 406	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   603: invokestatic 418	com/tencent/mm/model/cl:aWy	()J
     //   606: lstore_3
     //   607: lload_3
     //   608: ldc_w 420
-    //   611: invokestatic 426	com/tencent/mm/sdk/platformtools/ay:aRW	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/ay;
+    //   611: invokestatic 426	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:getMMKV	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
     //   614: ldc_w 428
     //   617: lconst_0
-    //   618: invokevirtual 429	com/tencent/mm/sdk/platformtools/ay:getLong	(Ljava/lang/String;J)J
+    //   618: invokevirtual 429	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:getLong	(Ljava/lang/String;J)J
     //   621: lsub
     //   622: ldc2_w 430
     //   625: lcmp
     //   626: iflt +34 -> 660
     //   629: ldc_w 420
-    //   632: invokestatic 426	com/tencent/mm/sdk/platformtools/ay:aRW	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/ay;
-    //   635: invokevirtual 435	com/tencent/mm/sdk/platformtools/ay:edit	()Landroid/content/SharedPreferences$Editor;
+    //   632: invokestatic 426	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:getMMKV	(Ljava/lang/String;)Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
+    //   635: invokevirtual 435	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:edit	()Landroid/content/SharedPreferences$Editor;
     //   638: ldc_w 428
     //   641: lload_3
     //   642: invokeinterface 441 4 0
     //   647: invokeinterface 444 1 0
     //   652: pop
     //   653: aload_0
-    //   654: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
+    //   654: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
     //   657: invokestatic 446	com/tencent/mm/ap/c:b	(Lcom/tencent/mm/ap/c$a;)V
-    //   660: invokestatic 268	com/tencent/mm/plugin/expt/h/d:ctr	()Lcom/tencent/mm/plugin/expt/h/d;
+    //   660: invokestatic 340	com/tencent/mm/plugin/expt/h/d:cRY	()Lcom/tencent/mm/plugin/expt/h/d;
     //   663: ldc_w 448
     //   666: ldc_w 450
     //   669: iconst_0
     //   670: iconst_1
-    //   671: invokevirtual 275	com/tencent/mm/plugin/expt/h/d:b	(Ljava/lang/String;Ljava/lang/String;ZZ)Ljava/lang/String;
+    //   671: invokevirtual 347	com/tencent/mm/plugin/expt/h/d:b	(Ljava/lang/String;Ljava/lang/String;ZZ)Ljava/lang/String;
     //   674: ldc_w 450
-    //   677: invokestatic 454	com/tencent/mm/sdk/platformtools/bu:lX	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   677: invokestatic 454	com/tencent/mm/sdk/platformtools/Util:isEqual	(Ljava/lang/String;Ljava/lang/String;)Z
     //   680: ifeq +429 -> 1109
     //   683: iconst_1
     //   684: istore_1
     //   685: iload_1
     //   686: ifeq +786 -> 1472
     //   689: aload_0
-    //   690: getfield 68	com/tencent/mm/ap/c:hYP	Z
+    //   690: getfield 68	com/tencent/mm/ap/c:iTN	Z
     //   693: ifeq +779 -> 1472
     //   696: invokestatic 460	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   699: invokevirtual 463	java/lang/Thread:isInterrupted	()Z
     //   702: ifne +770 -> 1472
     //   705: ldc 157
     //   707: ldc_w 465
-    //   710: invokestatic 359	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   710: invokestatic 332	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   713: invokestatic 369	android/os/Process:myPid	()I
     //   716: istore_1
     //   717: invokestatic 151	java/lang/System:currentTimeMillis	()J
     //   720: lstore_3
     //   721: aload_0
-    //   722: getfield 53	com/tencent/mm/ap/c:hYI	Lcom/tencent/mm/ap/c$d;
+    //   722: getfield 53	com/tencent/mm/ap/c:iTG	Lcom/tencent/mm/ap/c$d;
     //   725: astore 10
     //   727: aload_0
-    //   728: getfield 62	com/tencent/mm/ap/c:hYM	J
+    //   728: getfield 62	com/tencent/mm/ap/c:iTK	J
     //   731: lstore 5
     //   733: aload_0
-    //   734: getfield 51	com/tencent/mm/ap/c:hYG	I
+    //   734: getfield 51	com/tencent/mm/ap/c:iTE	I
     //   737: istore_2
     //   738: lload_3
     //   739: lload 5
@@ -581,7 +581,7 @@ final class c
     //   749: iload_2
     //   750: if_icmpne +16 -> 766
     //   753: lload 7
-    //   755: invokestatic 470	com/tencent/mm/ap/c:aHz	()J
+    //   755: invokestatic 470	com/tencent/mm/ap/c:bbs	()J
     //   758: ldc2_w 471
     //   761: ladd
     //   762: lcmp
@@ -598,16 +598,16 @@ final class c
     //   782: if_icmpeq +9 -> 791
     //   785: aload 9
     //   787: iconst_1
-    //   788: putfield 478	com/tencent/mm/ap/c$d:hYB	Z
+    //   788: putfield 478	com/tencent/mm/ap/c$d:iTz	Z
     //   791: lload 7
-    //   793: invokestatic 470	com/tencent/mm/ap/c:aHz	()J
+    //   793: invokestatic 470	com/tencent/mm/ap/c:bbs	()J
     //   796: ldc2_w 471
     //   799: ladd
     //   800: lcmp
     //   801: ifle +688 -> 1489
     //   804: aload 9
     //   806: iconst_0
-    //   807: putfield 481	com/tencent/mm/ap/c$d:hYA	Z
+    //   807: putfield 481	com/tencent/mm/ap/c$d:iTy	Z
     //   810: goto +679 -> 1489
     //   813: aload 9
     //   815: ifnull +315 -> 1130
@@ -619,15 +619,15 @@ final class c
     //   828: iconst_0
     //   829: aload 9
     //   831: aastore
-    //   832: invokestatic 406	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   832: invokestatic 406	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   835: aload_0
     //   836: aload 9
-    //   838: putfield 53	com/tencent/mm/ap/c:hYI	Lcom/tencent/mm/ap/c$d;
+    //   838: putfield 53	com/tencent/mm/ap/c:iTG	Lcom/tencent/mm/ap/c$d;
     //   841: aload_0
-    //   842: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   845: getfield 155	com/tencent/mm/ap/c$a:hYQ	Ljava/util/List;
+    //   842: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   845: getfield 155	com/tencent/mm/ap/c$a:iTO	Ljava/util/List;
     //   848: aload_0
-    //   849: getfield 53	com/tencent/mm/ap/c:hYI	Lcom/tencent/mm/ap/c$d;
+    //   849: getfield 53	com/tencent/mm/ap/c:iTG	Lcom/tencent/mm/ap/c$d;
     //   852: invokeinterface 396 2 0
     //   857: pop
     //   858: ldc 157
@@ -637,44 +637,44 @@ final class c
     //   867: dup
     //   868: iconst_0
     //   869: aload_0
-    //   870: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   873: getfield 171	com/tencent/mm/ap/c$a:hYR	Ljava/util/List;
+    //   870: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   873: getfield 171	com/tencent/mm/ap/c$a:iTP	Ljava/util/List;
     //   876: aastore
     //   877: dup
     //   878: iconst_1
     //   879: aload_0
-    //   880: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   883: getfield 177	com/tencent/mm/ap/c$a:hYS	Ljava/util/List;
+    //   880: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   883: getfield 177	com/tencent/mm/ap/c$a:iTQ	Ljava/util/List;
     //   886: aastore
-    //   887: invokestatic 487	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   887: invokestatic 487	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   890: aload_0
     //   891: lload_3
-    //   892: putfield 62	com/tencent/mm/ap/c:hYM	J
+    //   892: putfield 62	com/tencent/mm/ap/c:iTK	J
     //   895: aload_0
-    //   896: getfield 58	com/tencent/mm/ap/c:hYK	J
+    //   896: getfield 58	com/tencent/mm/ap/c:iTI	J
     //   899: lconst_0
     //   900: lcmp
     //   901: ifle +16 -> 917
     //   904: lload_3
     //   905: aload_0
-    //   906: getfield 58	com/tencent/mm/ap/c:hYK	J
+    //   906: getfield 58	com/tencent/mm/ap/c:iTI	J
     //   909: lsub
     //   910: ldc2_w 488
     //   913: lcmp
     //   914: ifle +107 -> 1021
     //   917: aload_0
     //   918: lload_3
-    //   919: putfield 58	com/tencent/mm/ap/c:hYK	J
+    //   919: putfield 58	com/tencent/mm/ap/c:iTI	J
     //   922: aload_0
-    //   923: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
+    //   923: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
     //   926: ifnull +28 -> 954
     //   929: aload_0
-    //   930: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   933: getfield 155	com/tencent/mm/ap/c$a:hYQ	Ljava/util/List;
+    //   930: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   933: getfield 155	com/tencent/mm/ap/c$a:iTO	Ljava/util/List;
     //   936: ifnull +18 -> 954
     //   939: aload_0
-    //   940: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   943: getfield 155	com/tencent/mm/ap/c$a:hYQ	Ljava/util/List;
+    //   940: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   943: getfield 155	com/tencent/mm/ap/c$a:iTO	Ljava/util/List;
     //   946: invokeinterface 375 1 0
     //   951: ifeq +226 -> 1177
     //   954: ldc 157
@@ -684,9 +684,9 @@ final class c
     //   963: dup
     //   964: iconst_0
     //   965: aload_0
-    //   966: getfield 53	com/tencent/mm/ap/c:hYI	Lcom/tencent/mm/ap/c$d;
+    //   966: getfield 53	com/tencent/mm/ap/c:iTG	Lcom/tencent/mm/ap/c$d;
     //   969: aastore
-    //   970: invokestatic 406	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   970: invokestatic 406	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   973: ldc 157
     //   975: ldc_w 493
     //   978: iconst_2
@@ -694,21 +694,21 @@ final class c
     //   982: dup
     //   983: iconst_0
     //   984: aload_0
-    //   985: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   988: getfield 171	com/tencent/mm/ap/c$a:hYR	Ljava/util/List;
+    //   985: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   988: getfield 171	com/tencent/mm/ap/c$a:iTP	Ljava/util/List;
     //   991: invokeinterface 245 1 0
     //   996: invokestatic 403	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   999: aastore
     //   1000: dup
     //   1001: iconst_1
     //   1002: aload_0
-    //   1003: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
-    //   1006: getfield 177	com/tencent/mm/ap/c$a:hYS	Ljava/util/List;
+    //   1003: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
+    //   1006: getfield 177	com/tencent/mm/ap/c$a:iTQ	Ljava/util/List;
     //   1009: invokeinterface 245 1 0
     //   1014: invokestatic 403	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1017: aastore
-    //   1018: invokestatic 406	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   1021: invokestatic 470	com/tencent/mm/ap/c:aHz	()J
+    //   1018: invokestatic 406	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1021: invokestatic 470	com/tencent/mm/ap/c:bbs	()J
     //   1024: invokestatic 497	java/lang/Thread:sleep	(J)V
     //   1027: goto -367 -> 660
     //   1030: astore 9
@@ -721,12 +721,12 @@ final class c
     //   1043: invokestatic 502	android/os/Process:myTid	()I
     //   1046: invokestatic 403	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   1049: aastore
-    //   1050: invokestatic 406	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1050: invokestatic 406	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1053: invokestatic 460	java/lang/Thread:currentThread	()Ljava/lang/Thread;
     //   1056: invokevirtual 505	java/lang/Thread:interrupt	()V
     //   1059: aload_0
     //   1060: iconst_0
-    //   1061: putfield 68	com/tencent/mm/ap/c:hYP	Z
+    //   1061: putfield 68	com/tencent/mm/ap/c:iTN	Z
     //   1064: goto -404 -> 660
     //   1067: astore 9
     //   1069: ldc 157
@@ -743,9 +743,9 @@ final class c
     //   1096: dup
     //   1097: iconst_0
     //   1098: aload_0
-    //   1099: getfield 66	com/tencent/mm/ap/c:hYO	Ljava/lang/String;
+    //   1099: getfield 66	com/tencent/mm/ap/c:iTM	Ljava/lang/String;
     //   1102: aastore
-    //   1103: invokestatic 514	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1103: invokestatic 514	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1106: goto -615 -> 491
     //   1109: iconst_0
     //   1110: istore_1
@@ -766,9 +766,9 @@ final class c
     //   1139: dup
     //   1140: iconst_0
     //   1141: aload_0
-    //   1142: getfield 53	com/tencent/mm/ap/c:hYI	Lcom/tencent/mm/ap/c$d;
+    //   1142: getfield 53	com/tencent/mm/ap/c:iTG	Lcom/tencent/mm/ap/c$d;
     //   1145: aastore
-    //   1146: invokestatic 487	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1146: invokestatic 487	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1149: goto -291 -> 858
     //   1152: astore 9
     //   1154: ldc 157
@@ -780,7 +780,7 @@ final class c
     //   1165: aload 9
     //   1167: invokevirtual 511	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1170: aastore
-    //   1171: invokestatic 514	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1171: invokestatic 514	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1174: goto -514 -> 660
     //   1177: ldc 157
     //   1179: ldc_w 520
@@ -789,16 +789,16 @@ final class c
     //   1186: dup
     //   1187: iconst_0
     //   1188: aload_0
-    //   1189: getfield 66	com/tencent/mm/ap/c:hYO	Ljava/lang/String;
+    //   1189: getfield 66	com/tencent/mm/ap/c:iTM	Ljava/lang/String;
     //   1192: aastore
-    //   1193: invokestatic 487	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1193: invokestatic 487	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1196: aload_0
-    //   1197: getfield 56	com/tencent/mm/ap/c:hYJ	Lcom/tencent/mm/ap/c$a;
+    //   1197: getfield 56	com/tencent/mm/ap/c:iTH	Lcom/tencent/mm/ap/c$a;
     //   1200: astore 11
     //   1202: aload_0
-    //   1203: getfield 66	com/tencent/mm/ap/c:hYO	Ljava/lang/String;
+    //   1203: getfield 66	com/tencent/mm/ap/c:iTM	Ljava/lang/String;
     //   1206: iconst_0
-    //   1207: invokestatic 524	com/tencent/mm/vfs/o:db	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   1207: invokestatic 524	com/tencent/mm/vfs/s:dw	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   1210: astore 9
     //   1212: aload 11
     //   1214: ifnull -260 -> 954
@@ -831,7 +831,7 @@ final class c
     //   1278: invokevirtual 511	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1281: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1284: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1287: invokestatic 546	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1287: invokestatic 546	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   1290: goto -336 -> 954
     //   1293: astore 9
     //   1295: ldc 157
@@ -848,9 +848,9 @@ final class c
     //   1322: dup
     //   1323: iconst_0
     //   1324: aload_0
-    //   1325: getfield 66	com/tencent/mm/ap/c:hYO	Ljava/lang/String;
+    //   1325: getfield 66	com/tencent/mm/ap/c:iTM	Ljava/lang/String;
     //   1328: aastore
-    //   1329: invokestatic 514	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   1329: invokestatic 514	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   1332: goto -378 -> 954
     //   1335: astore 11
     //   1337: aconst_null
@@ -866,7 +866,7 @@ final class c
     //   1359: invokevirtual 511	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1362: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1365: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1368: invokestatic 546	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1368: invokestatic 546	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   1371: aload 10
     //   1373: ifnull -419 -> 954
     //   1376: aload 10
@@ -882,7 +882,7 @@ final class c
     //   1401: invokevirtual 511	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1404: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1407: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1410: invokestatic 546	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1410: invokestatic 546	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   1413: goto -459 -> 954
     //   1416: astore 10
     //   1418: aconst_null
@@ -905,7 +905,7 @@ final class c
     //   1457: invokevirtual 511	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   1460: invokevirtual 81	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1463: invokevirtual 86	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1466: invokestatic 546	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1466: invokestatic 546	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   1469: goto -38 -> 1431
     //   1472: ldc_w 363
     //   1475: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -999,56 +999,56 @@ final class c
   static final class a
     implements Serializable
   {
-    final List<c.d> hYQ;
-    final List<c.c> hYR;
-    final List<c.c> hYS;
-    final List<c.b> hYT;
-    final List<c.b> hYU;
-    final List<c.b> hYV;
-    final List<c.b> hYW;
-    final List<c.b> hYX;
-    final List<c.b> hYY;
-    final List<c.b> hYZ;
-    final List<c.b> hZa;
-    final List<c.b> hZb;
-    final List<c.b> hZc;
-    final List<c.b> hZd;
-    final List<c.b> hZe;
-    final List<c.b> hZf;
-    final List<c.b> hZg;
-    final List<c.b> hZh;
-    final List<c.b> hZi;
-    final List<c.b> hZj;
-    final List<c.b> hZk;
-    final List<c.b> hZl;
-    final List<c.b> hZm;
+    final List<c.d> iTO;
+    final List<c.c> iTP;
+    final List<c.c> iTQ;
+    final List<c.b> iTR;
+    final List<c.b> iTS;
+    final List<c.b> iTT;
+    final List<c.b> iTU;
+    final List<c.b> iTV;
+    final List<c.b> iTW;
+    final List<c.b> iTX;
+    final List<c.b> iTY;
+    final List<c.b> iTZ;
+    final List<c.b> iUa;
+    final List<c.b> iUb;
+    final List<c.b> iUc;
+    final List<c.b> iUd;
+    final List<c.b> iUe;
+    final List<c.b> iUf;
+    final List<c.b> iUg;
+    final List<c.b> iUh;
+    final List<c.b> iUi;
+    final List<c.b> iUj;
+    final List<c.b> iUk;
     
     a()
     {
       AppMethodBeat.i(132524);
-      this.hYQ = new CopyOnWriteArrayList();
-      this.hYR = new CopyOnWriteArrayList();
-      this.hYS = new CopyOnWriteArrayList();
-      this.hYT = new CopyOnWriteArrayList();
-      this.hYU = new CopyOnWriteArrayList();
-      this.hYV = new CopyOnWriteArrayList();
-      this.hYW = new CopyOnWriteArrayList();
-      this.hYX = new CopyOnWriteArrayList();
-      this.hYY = new CopyOnWriteArrayList();
-      this.hYZ = new CopyOnWriteArrayList();
-      this.hZa = new CopyOnWriteArrayList();
-      this.hZb = new CopyOnWriteArrayList();
-      this.hZc = new CopyOnWriteArrayList();
-      this.hZd = new CopyOnWriteArrayList();
-      this.hZe = new CopyOnWriteArrayList();
-      this.hZf = new CopyOnWriteArrayList();
-      this.hZg = new CopyOnWriteArrayList();
-      this.hZh = new CopyOnWriteArrayList();
-      this.hZi = new CopyOnWriteArrayList();
-      this.hZj = new CopyOnWriteArrayList();
-      this.hZk = new CopyOnWriteArrayList();
-      this.hZl = new CopyOnWriteArrayList();
-      this.hZm = new CopyOnWriteArrayList();
+      this.iTO = new CopyOnWriteArrayList();
+      this.iTP = new CopyOnWriteArrayList();
+      this.iTQ = new CopyOnWriteArrayList();
+      this.iTR = new CopyOnWriteArrayList();
+      this.iTS = new CopyOnWriteArrayList();
+      this.iTT = new CopyOnWriteArrayList();
+      this.iTU = new CopyOnWriteArrayList();
+      this.iTV = new CopyOnWriteArrayList();
+      this.iTW = new CopyOnWriteArrayList();
+      this.iTX = new CopyOnWriteArrayList();
+      this.iTY = new CopyOnWriteArrayList();
+      this.iTZ = new CopyOnWriteArrayList();
+      this.iUa = new CopyOnWriteArrayList();
+      this.iUb = new CopyOnWriteArrayList();
+      this.iUc = new CopyOnWriteArrayList();
+      this.iUd = new CopyOnWriteArrayList();
+      this.iUe = new CopyOnWriteArrayList();
+      this.iUf = new CopyOnWriteArrayList();
+      this.iUg = new CopyOnWriteArrayList();
+      this.iUh = new CopyOnWriteArrayList();
+      this.iUi = new CopyOnWriteArrayList();
+      this.iUj = new CopyOnWriteArrayList();
+      this.iUk = new CopyOnWriteArrayList();
       AppMethodBeat.o(132524);
     }
   }
@@ -1056,11 +1056,11 @@ final class c
   static final class b
     implements Serializable
   {
-    long hYD = 0L;
-    long hYE = 0L;
-    long hYF = 0L;
-    long hYz = 0L;
-    long hZn = 0L;
+    long iTB = 0L;
+    long iTC = 0L;
+    long iTD = 0L;
+    long iTx = 0L;
+    long iUl = 0L;
     int msgType = 0;
     int pid = 0;
     String username = "";
@@ -1068,11 +1068,11 @@ final class c
     b(int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString, int paramInt2)
     {
       this.pid = paramInt1;
-      this.hYz = paramLong1;
-      this.hZn = paramLong2;
-      this.hYD = paramLong3;
-      this.hYE = paramLong4;
-      this.hYF = paramLong5;
+      this.iTx = paramLong1;
+      this.iUl = paramLong2;
+      this.iTB = paramLong3;
+      this.iTC = paramLong4;
+      this.iTD = paramLong5;
       this.username = paramString;
       this.msgType = paramInt2;
     }
@@ -1080,7 +1080,7 @@ final class c
     public final String toString()
     {
       AppMethodBeat.i(132525);
-      String str = String.format("pid:%s, server time:%s, client time:%s, msg server time:%s, intervalTime:%s, msg server id:%s username:%s, msgType:%s", new Object[] { Integer.valueOf(this.pid), a.sp(this.hYz), a.sp(this.hZn), a.sp(this.hYD), Long.valueOf(this.hYE), Long.valueOf(this.hYF), this.username, Integer.valueOf(this.msgType) });
+      String str = String.format("pid:%s, server time:%s, client time:%s, msg server time:%s, intervalTime:%s, msg server id:%s username:%s, msgType:%s", new Object[] { Integer.valueOf(this.pid), a.Av(this.iTx), a.Av(this.iUl), a.Av(this.iTB), Long.valueOf(this.iTC), Long.valueOf(this.iTD), this.username, Integer.valueOf(this.msgType) });
       AppMethodBeat.o(132525);
       return str;
     }
@@ -1089,23 +1089,23 @@ final class c
   static final class c
     implements Serializable
   {
-    long hYz = 0L;
-    long hZo;
+    long iTx = 0L;
+    long iUm;
     long time = 0L;
     int type = 0;
     
     c(long paramLong1, long paramLong2, int paramInt, long paramLong3)
     {
-      this.hYz = paramLong1;
+      this.iTx = paramLong1;
       this.time = paramLong2;
       this.type = paramInt;
-      this.hZo = paramLong3;
+      this.iUm = paramLong3;
     }
     
     public final String toString()
     {
       AppMethodBeat.i(132526);
-      String str = String.format("serverTime:%s,time:%s,type:%s,recvTime:%s", new Object[] { a.sp(this.hYz), a.sp(this.time), Integer.valueOf(this.type), Long.valueOf(this.hZo) });
+      String str = String.format("serverTime:%s,time:%s,type:%s,recvTime:%s", new Object[] { a.Av(this.iTx), a.Av(this.time), Integer.valueOf(this.type), Long.valueOf(this.iUm) });
       AppMethodBeat.o(132526);
       return str;
     }
@@ -1115,9 +1115,9 @@ final class c
     implements Serializable
   {
     long endTime = 0L;
-    boolean hYA = true;
-    boolean hYB = false;
-    long hZp = 0L;
+    boolean iTy = true;
+    boolean iTz = false;
+    long iUn = 0L;
     int networkStatus = 0;
     int pid = 0;
     long startTime = 0L;
@@ -1141,7 +1141,7 @@ final class c
       if (this.startTime <= 0L)
       {
         this.startTime = paramLong1;
-        this.hZp = ch.aDa();
+        this.iUn = cl.aWy();
       }
       this.endTime = paramLong2;
       this.networkStatus = paramInt2;
@@ -1151,7 +1151,7 @@ final class c
     public final String toString()
     {
       AppMethodBeat.i(132529);
-      String str = String.format("pid:%s,startServerTime:%s,startTime:%s,endTime:%s,normalExecute:%s,changedNetworkStatus:%s,networkStatus:%s", new Object[] { Integer.valueOf(this.pid), a.sp(this.hZp), a.sp(this.startTime), a.sp(this.endTime), Boolean.valueOf(this.hYA), Boolean.valueOf(this.hYB), Integer.valueOf(this.networkStatus) });
+      String str = String.format("pid:%s,startServerTime:%s,startTime:%s,endTime:%s,normalExecute:%s,changedNetworkStatus:%s,networkStatus:%s", new Object[] { Integer.valueOf(this.pid), a.Av(this.iUn), a.Av(this.startTime), a.Av(this.endTime), Boolean.valueOf(this.iTy), Boolean.valueOf(this.iTz), Integer.valueOf(this.networkStatus) });
       AppMethodBeat.o(132529);
       return str;
     }

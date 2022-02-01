@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/sentpic_camera_icon_pressed" />
-    <item android:drawable="@raw/sentpic_camera_icon" />
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a1" />
+            <solid android:color="#4dffc300" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a1" />
+            <solid android:color="#b3ffc300" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a1" />
+            <solid android:color="#ffffc300" />
+        </shape>
+    </item>
 </selector>

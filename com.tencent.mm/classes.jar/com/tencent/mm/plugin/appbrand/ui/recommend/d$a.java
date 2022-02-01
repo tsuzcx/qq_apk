@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.appbrand.ui.recommend;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ay;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
 final class d$a
   extends q
-  implements a<ay>
+  implements a<MultiProcessMMKV>
 {
-  public static final a mSc;
+  public static final a ofg;
   
   static
   {
     AppMethodBeat.i(51350);
-    mSc = new a();
+    ofg = new a();
     AppMethodBeat.o(51350);
   }
   

@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.appbrand.platform.window.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.Timer;
 import java.util.TimerTask;
 
 final class h
 {
-  int mur = 0;
-  a mus = null;
-  Timer mut = null;
+  int nFa = 0;
+  a nFb = null;
+  Timer nFc = null;
   
   final void a(final a parama)
   {
     AppMethodBeat.i(176742);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(176740);
         h.a(h.this);
-        h.this.mus = parama;
-        h.this.mut = new Timer();
-        h.this.mut.schedule(new TimerTask()
+        h.this.nFb = parama;
+        h.this.nFc = new Timer();
+        h.this.nFc.schedule(new TimerTask()
         {
           public final void run()
           {
             AppMethodBeat.i(176739);
-            ar.f(new Runnable()
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(176738);
-                ae.w("MicroMsg.AppBrandDeviceOrientationRetrier", "hy: still not cancelled, trigger retry");
+                Log.w("MicroMsg.AppBrandDeviceOrientationRetrier", "hy: still not cancelled, trigger retry");
                 h localh = h.this;
-                localh.mur += 1;
-                if (h.this.mur > 3)
+                localh.nFa += 1;
+                if (h.this.nFa > 3)
                 {
-                  if (h.this.mus != null) {
-                    h.this.mus.bxH();
+                  if (h.this.nFb != null) {
+                    h.this.nFb.bTS();
                   }
-                  h.this.mut.cancel();
+                  h.this.nFc.cancel();
                   AppMethodBeat.o(176738);
                   return;
                 }
-                if (h.this.mus != null) {
-                  h.this.mus.bxI();
+                if (h.this.nFb != null) {
+                  h.this.nFb.bTT();
                 }
                 AppMethodBeat.o(176738);
               }
@@ -60,16 +60,16 @@ final class h
     AppMethodBeat.o(176742);
   }
   
-  final void bxJ()
+  final void bTU()
   {
     AppMethodBeat.i(176743);
-    ae.i("MicroMsg.AppBrandDeviceOrientationRetrier", "cancelTickTok");
-    ar.f(new Runnable()
+    Log.i("MicroMsg.AppBrandDeviceOrientationRetrier", "cancelTickTok");
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(176741);
-        ae.i("MicroMsg.AppBrandDeviceOrientationRetrier", "cancelTikTok reset");
+        Log.i("MicroMsg.AppBrandDeviceOrientationRetrier", "cancelTikTok reset");
         h.a(h.this);
         AppMethodBeat.o(176741);
       }
@@ -79,14 +79,14 @@ final class h
   
   static abstract interface a
   {
-    public abstract void bxH();
+    public abstract void bTS();
     
-    public abstract void bxI();
+    public abstract void bTT();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.a.h
  * JD-Core Version:    0.7.0.1
  */

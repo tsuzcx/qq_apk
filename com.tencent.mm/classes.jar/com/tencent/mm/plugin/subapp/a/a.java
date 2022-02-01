@@ -3,88 +3,88 @@ package com.tencent.mm.plugin.subapp.a;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.audio.b.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import d.g.a.b;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyRespone", "", "(Lkotlin/jvm/functions/Function1;)V", "hasbeginRec", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager;", "Lcom/tencent/mm/plugin/audio/mgr/BaseRecorderAudioManager;", "onStartRecord", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "isImmediatelyRespone", "", "(Lkotlin/jvm/functions/Function1;)V", "hasbeginRec", "getOnStartRecord", "()Lkotlin/jvm/functions/Function1;", "setOnStartRecord", "onAudioDeviceStateChanged", "status", "", "releaseAudioRecordDevice", "requestAudioRecordDevice", "Companion", "app_release"})
 public final class a
   extends d
 {
-  public static final a.a Byu;
-  private boolean Byt;
-  private b<? super Boolean, z> dcV;
+  public static final a.a FJf;
+  private boolean FJe;
+  private b<? super Boolean, x> dtM;
   
   static
   {
-    AppMethodBeat.i(188257);
-    Byu = new a.a((byte)0);
-    AppMethodBeat.o(188257);
+    AppMethodBeat.i(230897);
+    FJf = new a.a((byte)0);
+    AppMethodBeat.o(230897);
   }
   
-  public a(b<? super Boolean, z> paramb)
+  public a(b<? super Boolean, x> paramb)
   {
-    AppMethodBeat.i(188256);
-    this.dcV = paramb;
-    AppMethodBeat.o(188256);
+    AppMethodBeat.i(230896);
+    this.dtM = paramb;
+    AppMethodBeat.o(230896);
   }
   
-  public final void Oc()
+  public final void Yo()
   {
-    AppMethodBeat.i(188254);
+    AppMethodBeat.i(230894);
     int i = b("record", Integer.valueOf(4));
-    this.Byt = false;
+    this.FJe = false;
     if (i != 0)
     {
-      hE(100);
-      AppMethodBeat.o(188254);
+      iY(100);
+      AppMethodBeat.o(230894);
       return;
     }
     new b(this).sendEmptyMessageDelayed(0, 50L);
-    AppMethodBeat.o(188254);
+    AppMethodBeat.o(230894);
   }
   
-  public final void hE(int paramInt)
+  public final void iY(int paramInt)
   {
-    AppMethodBeat.i(188255);
-    super.hE(paramInt);
-    ae.d("MicroMsg.VoiceRemindRecordAudioManager", " Recorder onAudioDeviceStateChange :".concat(String.valueOf(paramInt)));
-    if (this.Byt)
+    AppMethodBeat.i(230895);
+    super.iY(paramInt);
+    Log.d("MicroMsg.VoiceRemindRecordAudioManager", " Recorder onAudioDeviceStateChange :".concat(String.valueOf(paramInt)));
+    if (this.FJe)
     {
-      AppMethodBeat.o(188255);
+      AppMethodBeat.o(230895);
       return;
     }
-    this.Byt = true;
-    this.dcV.invoke(Boolean.TRUE);
-    AppMethodBeat.o(188255);
+    this.FJe = true;
+    this.dtM.invoke(Boolean.TRUE);
+    AppMethodBeat.o(230895);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager$requestAudioRecordDevice$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "app_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/subapp/audio/VoiceRemindRecordAudioManager$requestAudioRecordDevice$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "app_release"})
   public static final class b
-    extends aq
+    extends MMHandler
   {
     public final void handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(188253);
+      AppMethodBeat.i(230893);
       p.h(paramMessage, "msg");
-      ae.d("MicroMsg.VoiceRemindRecordAudioManager", " Recorder handleMessage");
-      if (a.a(this.Byv))
+      Log.d("MicroMsg.VoiceRemindRecordAudioManager", " Recorder handleMessage");
+      if (a.a(this.FJg))
       {
-        AppMethodBeat.o(188253);
+        AppMethodBeat.o(230893);
         return;
       }
-      this.Byv.hE(200);
-      this.Byv.Wv("record");
-      AppMethodBeat.o(188253);
+      this.FJg.iY(200);
+      this.FJg.agq("record");
+      AppMethodBeat.o(230893);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.a.a
  * JD-Core Version:    0.7.0.1
  */

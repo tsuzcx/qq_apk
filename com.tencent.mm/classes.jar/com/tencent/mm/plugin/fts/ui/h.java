@@ -4,13 +4,13 @@ import android.os.Looper;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ap;
 import com.tencent.mm.plugin.chatroom.a.c;
 import com.tencent.mm.plugin.fts.a.d.e.b;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.ui.d.f;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -18,34 +18,34 @@ public final class h
   extends d
   implements e.b
 {
-  private aq tJe;
-  private f tKo;
-  private boolean tKp;
+  private MMHandler xad;
+  private f xbn;
+  private boolean xbo;
   
   public h(e parame, String paramString, int paramInt)
   {
     super(parame);
     AppMethodBeat.i(111906);
-    this.tJe = new aq(Looper.getMainLooper());
+    this.xad = new MMHandler(Looper.getMainLooper());
     parame = parame.getContext();
     HashSet localHashSet = new HashSet();
     localHashSet.add(Integer.valueOf(160));
-    parame = (f)((n)g.ad(n.class)).createFTSUIUnitList(localHashSet, parame, this, paramInt).get(0);
-    parame.tFT = paramString;
-    if (x.wb(paramString)) {
-      parame.tKj = ((c)g.ab(c.class)).azP().Bx(paramString);
+    parame = (f)((n)g.ah(n.class)).createFTSUIUnitList(localHashSet, parame, this, paramInt).get(0);
+    parame.wWS = paramString;
+    if (ab.Eq(paramString)) {
+      parame.xbi = ((c)g.af(c.class)).aSX().Kd(paramString);
     }
-    this.tKo = parame;
+    this.xbn = parame;
     AppMethodBeat.o(111906);
   }
   
-  protected final com.tencent.mm.plugin.fts.a.d.a.a Ho(int paramInt)
+  protected final com.tencent.mm.plugin.fts.a.d.a.a No(int paramInt)
   {
     AppMethodBeat.i(111908);
-    com.tencent.mm.plugin.fts.a.d.a.a locala = this.tKo.Ho(paramInt);
+    com.tencent.mm.plugin.fts.a.d.a.a locala = this.xbn.No(paramInt);
     if (locala != null)
     {
-      locala.tGM = paramInt;
+      locala.wXL = paramInt;
       locala.pageType = 4;
     }
     AppMethodBeat.o(111908);
@@ -55,56 +55,56 @@ public final class h
   public final void a(com.tencent.mm.plugin.fts.a.d.e parame, String paramString)
   {
     AppMethodBeat.i(111907);
-    setCount(parame.Hn(0));
+    setCount(parame.Nn(0));
     notifyDataSetChanged();
-    ao(getCount(), true);
+    ax(getCount(), true);
     AppMethodBeat.o(111907);
   }
   
   protected final boolean a(View paramView, com.tencent.mm.plugin.fts.a.d.a.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(111910);
-    this.tKo.a(paramView, parama, paramBoolean);
-    if ((parama.tGU) && (!this.tKp))
+    this.xbn.a(paramView, parama, paramBoolean);
+    if ((parama.wXT) && (!this.xbo))
     {
-      this.tKp = true;
-      l.c(this.query, true, this.tKo.cVR(), -2);
+      this.xbo = true;
+      l.c(this.query, true, this.xbn.dPa(), -2);
     }
     AppMethodBeat.o(111910);
     return false;
   }
   
-  protected final void cVS()
+  protected final int dOI()
   {
-    AppMethodBeat.i(111909);
-    this.tKp = false;
-    this.tKo.a(this.query, this.tJe, new HashSet(), 0L);
-    AppMethodBeat.o(111909);
+    AppMethodBeat.i(258735);
+    int i = this.xbn.dPa();
+    AppMethodBeat.o(258735);
+    return i;
   }
   
-  protected final int cVz()
+  protected final void dPb()
   {
-    AppMethodBeat.i(224510);
-    int i = this.tKo.cVR();
-    AppMethodBeat.o(224510);
-    return i;
+    AppMethodBeat.i(111909);
+    this.xbo = false;
+    this.xbn.a(this.query, this.xad, new HashSet(), 0L);
+    AppMethodBeat.o(111909);
   }
   
   public final void finish()
   {
     AppMethodBeat.i(111911);
     super.finish();
-    if (!this.tKp)
+    if (!this.xbo)
     {
-      this.tKp = true;
-      l.c(this.query, false, this.tKo.cVR(), -2);
+      this.xbo = true;
+      l.c(this.query, false, this.xbn.dPa(), -2);
     }
     AppMethodBeat.o(111911);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.h
  * JD-Core Version:    0.7.0.1
  */

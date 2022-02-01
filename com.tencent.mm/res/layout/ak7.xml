@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/daj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <FrameLayout android:orientation="vertical" android:id="@id/dam" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <RelativeLayout android:layout_gravity="center" android:id="@id/dfk" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <ImageView android:id="@id/dan" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/ci" android:src="@raw/lucky_money_mute_icon" android:scaleType="centerInside" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-            <ImageView android:id="@id/dfl" android:visibility="visible" android:layout_width="44.0dip" android:layout_height="44.0dip" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" />
-        </RelativeLayout>
-    </FrameLayout>
-    <ProgressBar android:id="@id/dak" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a4p" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/dal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/lucky_money_detail_story_video_error_icon" />
-        <TextView android:textSize="@dimen/jo" android:textColor="@color/a_r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="{dddd}" style="@style/t1" />
-    </LinearLayout>
-</RelativeLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/a2n" android:padding="@dimen/c5" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@raw/icons_filled_cutie" />
+    <ImageView android:layout_gravity="end|bottom|center" android:id="@id/a2o" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" />
+</merge>

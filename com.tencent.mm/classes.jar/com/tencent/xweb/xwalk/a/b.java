@@ -3,20 +3,20 @@ package com.tencent.xweb.xwalk.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
-  extends l
+  extends m
 {
-  public final String ajr(int paramInt)
+  public final String ata(int paramInt)
   {
     AppMethodBeat.i(157173);
-    String str = dd(paramInt, "excelreader.apk");
+    String str = dA(paramInt, "excelreader.apk");
     AppMethodBeat.o(157173);
     return str;
   }
   
-  public final int ajs(int paramInt)
+  public final int atb(int paramInt)
   {
     if (paramInt == 1) {
-      return 2147483647;
+      return 238;
     }
     return 100;
   }
@@ -26,19 +26,19 @@ public final class b
     return "XFilesExcelReader";
   }
   
-  public final String ghI()
+  public final String hvg()
   {
     return "com.tencent.xweb.xfiles.excel.ExcelReader";
   }
   
-  public final String ghJ()
+  public final String hvh()
   {
     return "com.tencent.xweb.xfiles.excel.ExcelReaderEnvironment";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.xwalk.a.b
  * JD-Core Version:    0.7.0.1
  */

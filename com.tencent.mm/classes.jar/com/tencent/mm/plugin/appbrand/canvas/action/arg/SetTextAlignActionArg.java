@@ -11,7 +11,7 @@ public class SetTextAlignActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetTextAlignActionArg> CREATOR;
-  public String jWV;
+  public String kZR;
   
   static
   {
@@ -51,32 +51,32 @@ public class SetTextAlignActionArg
       return false;
     }
     paramObject = (SetTextAlignActionArg)paramObject;
-    boolean bool = Objects.equals(this.jWV, paramObject.jWV);
+    boolean bool = Objects.equals(this.kZR, paramObject.kZR);
     AppMethodBeat.o(145244);
     return bool;
-  }
-  
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145241);
-    super.h(paramParcel);
-    this.jWV = paramParcel.readString();
-    AppMethodBeat.o(145241);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145245);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.jWV });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.kZR });
     AppMethodBeat.o(145245);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145241);
+    super.i(paramParcel);
+    this.kZR = paramParcel.readString();
+    AppMethodBeat.o(145241);
   }
   
   public final void parse(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(145242);
     super.parse(paramJSONObject);
-    this.jWV = paramJSONObject.optJSONArray("data").optString(0);
+    this.kZR = paramJSONObject.optJSONArray("data").optString(0);
     AppMethodBeat.o(145242);
   }
   
@@ -84,13 +84,13 @@ public class SetTextAlignActionArg
   {
     AppMethodBeat.i(145243);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeString(this.jWV);
+    paramParcel.writeString(this.kZR);
     AppMethodBeat.o(145243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetTextAlignActionArg
  * JD-Core Version:    0.7.0.1
  */

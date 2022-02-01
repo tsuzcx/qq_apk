@@ -1,87 +1,115 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
 
 public final class dpe
   extends com.tencent.mm.bw.a
 {
-  public b Geo;
-  public int Gep;
-  public int HWF;
-  public int HWG;
+  public String Desc;
+  public String IconUrl;
+  public String MEq;
+  public String MEr;
+  public String Title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91718);
+    AppMethodBeat.i(117904);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(7, this.HWF);
-      if (this.Geo != null) {
-        paramVarArgs.c(8, this.Geo);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.MEq != null) {
+        paramVarArgs.e(1, this.MEq);
       }
-      paramVarArgs.aS(9, this.Gep);
-      paramVarArgs.aS(10, this.HWG);
-      AppMethodBeat.o(91718);
+      if (this.Title != null) {
+        paramVarArgs.e(2, this.Title);
+      }
+      if (this.Desc != null) {
+        paramVarArgs.e(3, this.Desc);
+      }
+      if (this.IconUrl != null) {
+        paramVarArgs.e(4, this.IconUrl);
+      }
+      if (this.MEr != null) {
+        paramVarArgs.e(5, this.MEr);
+      }
+      AppMethodBeat.o(117904);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.MEq == null) {
+        break label454;
+      }
+    }
+    label454:
+    for (int i = g.a.a.b.b.a.f(1, this.MEq) + 0;; i = 0)
     {
-      int i = f.a.a.b.b.a.bz(7, this.HWF) + 0;
       paramInt = i;
-      if (this.Geo != null) {
-        paramInt = i + f.a.a.b.b.a.b(8, this.Geo);
+      if (this.Title != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.Title);
       }
-      i = f.a.a.b.b.a.bz(9, this.Gep);
-      int j = f.a.a.b.b.a.bz(10, this.HWG);
-      AppMethodBeat.o(91718);
-      return paramInt + i + j;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
+      i = paramInt;
+      if (this.Desc != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.Desc);
       }
-      AppMethodBeat.o(91718);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      dpe localdpe = (dpe)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = i;
+      if (this.IconUrl != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.IconUrl);
+      }
+      i = paramInt;
+      if (this.MEr != null) {
+        i = paramInt + g.a.a.b.b.a.f(5, this.MEr);
+      }
+      AppMethodBeat.o(117904);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(91718);
-        return -1;
-      case 7: 
-        localdpe.HWF = locala.OmT.zc();
-        AppMethodBeat.o(91718);
-        return 0;
-      case 8: 
-        localdpe.Geo = locala.OmT.gCk();
-        AppMethodBeat.o(91718);
-        return 0;
-      case 9: 
-        localdpe.Gep = locala.OmT.zc();
-        AppMethodBeat.o(91718);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
+        }
+        AppMethodBeat.o(117904);
         return 0;
       }
-      localdpe.HWG = locala.OmT.zc();
-      AppMethodBeat.o(91718);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        dpe localdpe = (dpe)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(117904);
+          return -1;
+        case 1: 
+          localdpe.MEq = locala.UbS.readString();
+          AppMethodBeat.o(117904);
+          return 0;
+        case 2: 
+          localdpe.Title = locala.UbS.readString();
+          AppMethodBeat.o(117904);
+          return 0;
+        case 3: 
+          localdpe.Desc = locala.UbS.readString();
+          AppMethodBeat.o(117904);
+          return 0;
+        case 4: 
+          localdpe.IconUrl = locala.UbS.readString();
+          AppMethodBeat.o(117904);
+          return 0;
+        }
+        localdpe.MEr = locala.UbS.readString();
+        AppMethodBeat.o(117904);
+        return 0;
+      }
+      AppMethodBeat.o(117904);
+      return -1;
     }
-    AppMethodBeat.o(91718);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dpe
  * JD-Core Version:    0.7.0.1
  */

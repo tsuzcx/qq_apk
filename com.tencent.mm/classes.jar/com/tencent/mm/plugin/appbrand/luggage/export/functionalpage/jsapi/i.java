@@ -1,41 +1,40 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi;
 
+import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.i.p;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
+import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalJsApiOpenUrl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalJsApiOpenLocation;", "Lcom/tencent/mm/plugin/appbrand/jsapi/lbs/JsApiOpenLocation;", "()V", "invoke", "", "service", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "data", "Lorg/json/JSONObject;", "callbackId", "", "plugin-appbrand-integration_release"})
 public final class i
-  extends a<d>
+  extends p
 {
-  public static final int CTRL_INDEX = 201;
-  public static final String NAME = "openUrl";
-  @Deprecated
-  public static final a lTU;
-  
-  static
+  public final void a(final f paramf, final JSONObject paramJSONObject, final int paramInt)
   {
-    AppMethodBeat.i(223695);
-    lTU = new a((byte)0);
-    AppMethodBeat.o(223695);
+    AppMethodBeat.i(228914);
+    if (paramf != null) {}
+    for (Context localContext = paramf.getContext();; localContext = null)
+    {
+      d.b(localContext, (b)new a(this, paramf, paramInt, paramJSONObject));
+      AppMethodBeat.o(228914);
+      return;
+    }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalJsApiOpenUrl$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"})
-  static final class a {}
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "invoke"})
-  static final class b
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "invoke"})
+  static final class a
     extends q
-    implements b<MMActivity, z>
+    implements b<MMActivity, x>
   {
-    b(i parami, d paramd, int paramInt, String paramString)
+    a(i parami, f paramf, int paramInt, JSONObject paramJSONObject)
     {
       super();
     }
@@ -43,7 +42,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi.i
  * JD-Core Version:    0.7.0.1
  */

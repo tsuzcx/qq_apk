@@ -15,14 +15,14 @@ final class LaunchAAByPersonAmountSelectUI$7
   {
     AppMethodBeat.i(63597);
     if (paramInt == 1) {
-      this.iZd.hideTenpayKB();
+      this.jWI.hideTenpayKB();
     }
     AppMethodBeat.o(63597);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.LaunchAAByPersonAmountSelectUI.7
  * JD-Core Version:    0.7.0.1
  */

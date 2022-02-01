@@ -2,10 +2,10 @@ package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dg;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.c.dm;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Collections;
 import java.util.Comparator;
@@ -18,51 +18,51 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class e
-  extends dg
+  extends dm
 {
-  protected static c.a info;
-  public LinkedList<GroupToolItem> fOm;
-  public LinkedList<GroupToolItem> fOn;
+  protected static IAutoDBItem.MAutoDBInfo info;
+  public LinkedList<GroupToolItem> gtw;
+  public LinkedList<GroupToolItem> gtx;
   
   static
   {
     AppMethodBeat.i(182159);
-    c.a locala = new c.a();
-    locala.IBL = new Field[4];
-    locala.columns = new String[5];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[4];
+    localMAutoDBInfo.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "chatroomname";
-    locala.IBN.put("chatroomname", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "chatroomname";
+    localMAutoDBInfo.colsMap.put("chatroomname", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" chatroomname TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "chatroomname";
-    locala.columns[1] = "stickToollist";
-    locala.IBN.put("stickToollist", "TEXT");
+    localMAutoDBInfo.primaryKey = "chatroomname";
+    localMAutoDBInfo.columns[1] = "stickToollist";
+    localMAutoDBInfo.colsMap.put("stickToollist", "TEXT");
     localStringBuilder.append(" stickToollist TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "recentUseToolList";
-    locala.IBN.put("recentUseToolList", "TEXT");
+    localMAutoDBInfo.columns[2] = "recentUseToolList";
+    localMAutoDBInfo.colsMap.put("recentUseToolList", "TEXT");
     localStringBuilder.append(" recentUseToolList TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "queryState";
-    locala.IBN.put("queryState", "INTEGER");
+    localMAutoDBInfo.columns[3] = "queryState";
+    localMAutoDBInfo.colsMap.put("queryState", "INTEGER");
     localStringBuilder.append(" queryState INTEGER");
-    locala.columns[4] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[4] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(182159);
   }
   
   public e()
   {
     AppMethodBeat.i(182154);
-    this.fOm = new LinkedList();
-    this.fOn = new LinkedList();
+    this.gtw = new LinkedList();
+    this.gtx = new LinkedList();
     this.field_queryState = 0;
     AppMethodBeat.o(182154);
   }
   
-  public static String Q(List<GroupToolItem> paramList)
+  public static String W(List<GroupToolItem> paramList)
   {
     AppMethodBeat.i(182158);
     JSONArray localJSONArray = new JSONArray();
@@ -75,23 +75,38 @@ public final class e
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("username", localGroupToolItem.username);
         localJSONObject.put("path", localGroupToolItem.path);
-        localJSONObject.put("updateTime", localGroupToolItem.fOl);
+        localJSONObject.put("updateTime", localGroupToolItem.crj);
         localJSONArray.put(localJSONObject);
       }
       return paramList;
     }
     catch (JSONException paramList)
     {
-      ae.e("MicroMsg.roomtools.GroupTools", "getToolsJsonStr() Exception:%s", new Object[] { paramList.getMessage() });
+      Log.e("MicroMsg.roomtools.GroupTools", "getToolsJsonStr() Exception:%s", new Object[] { paramList.getMessage() });
       paramList = localJSONArray.toString();
       AppMethodBeat.o(182158);
     }
   }
   
-  public final boolean YB()
+  public final void a(GroupToolItem paramGroupToolItem)
+  {
+    AppMethodBeat.i(194060);
+    if (this.gtx.contains(paramGroupToolItem)) {
+      this.gtx.remove(paramGroupToolItem);
+    }
+    this.gtx.add(paramGroupToolItem);
+    Collections.sort(this.gtx, new Comparator() {});
+    if (this.gtx.size() > 20) {
+      this.gtx.remove(this.gtx.size() - 1);
+    }
+    this.field_recentUseToolList = W(this.gtx);
+    AppMethodBeat.o(194060);
+  }
+  
+  public final boolean amo()
   {
     AppMethodBeat.i(182157);
-    if (this.fOm.size() >= 8)
+    if (this.gtw.size() >= 8)
     {
       AppMethodBeat.o(182157);
       return true;
@@ -100,31 +115,16 @@ public final class e
     return false;
   }
   
-  public final void a(GroupToolItem paramGroupToolItem)
-  {
-    AppMethodBeat.i(217146);
-    if (this.fOn.contains(paramGroupToolItem)) {
-      this.fOn.remove(paramGroupToolItem);
-    }
-    this.fOn.add(paramGroupToolItem);
-    Collections.sort(this.fOn, new Comparator() {});
-    if (this.fOn.size() > 20) {
-      this.fOn.remove(this.fOn.size() - 1);
-    }
-    this.field_recentUseToolList = Q(this.fOn);
-    AppMethodBeat.o(217146);
-  }
-  
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(182155);
     super.convertFrom(paramCursor);
-    this.fOm.clear();
+    this.gtw.clear();
     int j;
     int i;
     JSONObject localJSONObject;
     GroupToolItem localGroupToolItem;
-    if (!bu.isNullOrNil(this.field_stickToollist)) {
+    if (!Util.isNullOrNil(this.field_stickToollist)) {
       try
       {
         paramCursor = new JSONArray(this.field_stickToollist);
@@ -134,19 +134,19 @@ public final class e
         {
           localJSONObject = new JSONObject(paramCursor.getString(i));
           localGroupToolItem = new GroupToolItem();
-          localGroupToolItem.username = bu.bI(localJSONObject.getString("username"), "");
-          localGroupToolItem.path = bu.bI(localJSONObject.getString("path"), "");
-          this.fOm.add(localGroupToolItem);
+          localGroupToolItem.username = Util.nullAs(localJSONObject.getString("username"), "");
+          localGroupToolItem.path = Util.nullAs(localJSONObject.getString("path"), "");
+          this.gtw.add(localGroupToolItem);
           i += 1;
         }
-        this.fOn.clear();
+        this.gtx.clear();
       }
       catch (Exception paramCursor)
       {
-        ae.e("MicroMsg.roomtools.GroupTools", "parseStickTools() Exception:%s", new Object[] { paramCursor.getMessage() });
+        Log.e("MicroMsg.roomtools.GroupTools", "parseStickTools() Exception:%s", new Object[] { paramCursor.getMessage() });
       }
     }
-    if (!bu.isNullOrNil(this.field_recentUseToolList)) {
+    if (!Util.isNullOrNil(this.field_recentUseToolList)) {
       try
       {
         paramCursor = new JSONArray(this.field_recentUseToolList);
@@ -156,10 +156,10 @@ public final class e
         {
           localJSONObject = new JSONObject(paramCursor.getString(i));
           localGroupToolItem = new GroupToolItem();
-          localGroupToolItem.username = bu.bI(localJSONObject.getString("username"), "");
-          localGroupToolItem.path = bu.bI(localJSONObject.getString("path"), "");
-          localGroupToolItem.fOl = localJSONObject.getLong("updateTime");
-          this.fOn.add(localGroupToolItem);
+          localGroupToolItem.username = Util.nullAs(localJSONObject.getString("username"), "");
+          localGroupToolItem.path = Util.nullAs(localJSONObject.getString("path"), "");
+          localGroupToolItem.crj = localJSONObject.getLong("updateTime");
+          this.gtx.add(localGroupToolItem);
           i += 1;
         }
         AppMethodBeat.o(182155);
@@ -167,7 +167,7 @@ public final class e
       }
       catch (Exception paramCursor)
       {
-        ae.e("MicroMsg.roomtools.GroupTools", "parseRecentUseTools() Exception:%s", new Object[] { paramCursor.getMessage() });
+        Log.e("MicroMsg.roomtools.GroupTools", "parseRecentUseTools() Exception:%s", new Object[] { paramCursor.getMessage() });
       }
     }
     AppMethodBeat.o(182155);
@@ -176,7 +176,7 @@ public final class e
   public final boolean equals(Object paramObject)
   {
     AppMethodBeat.i(182156);
-    if (bu.lX(((e)paramObject).field_chatroomname, this.field_chatroomname))
+    if (Util.isEqual(((e)paramObject).field_chatroomname, this.field_chatroomname))
     {
       AppMethodBeat.o(182156);
       return true;
@@ -185,14 +185,14 @@ public final class e
     return false;
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.e
  * JD-Core Version:    0.7.0.1
  */

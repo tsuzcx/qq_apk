@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="8.0dip" />
-    <solid android:color="@color/aj" />
-</shape>
+    <item android:state_enabled="false" android:state_checked="true" android:drawable="@raw/checkbox_selected_grey" />
+    <item android:state_enabled="false" android:state_checked="false" android:drawable="@drawable/p5" />
+    <item android:state_checked="true" android:drawable="@raw/checkbox_selected_red" />
+    <item android:drawable="@drawable/p5" />
+</selector>

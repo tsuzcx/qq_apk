@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView android:id="@id/f61" android:layout_width="fill_parent" android:layout_height="48.0dip" android:src="@drawable/bxc" android:layout_centerHorizontal="true" />
-    <LinearLayout android:id="@id/dy2" android:background="@drawable/a9g" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="@dimen/hd" android:layout_marginBottom="@dimen/he" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:padding="@dimen/i_" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@raw/my_qr_code" app:iconColor="@color/BW_100_Alpha_0_9" />
-    </LinearLayout>
-    <ImageView android:id="@id/c6v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <View android:id="@id/dvn" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/gu" android:textColor="#b3ffffff" android:id="@id/dvo" android:visibility="invisible" android:text="@string/evy" android:singleLine="false" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/sv" />
-    <ImageView android:id="@id/f6h" android:padding="@dimen/i_" android:visibility="gone" android:layout_width="@dimen/aez" android:layout_height="@dimen/aez" android:src="@raw/scan_success_mark_dot" />
-</merge>
+    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/f6f" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView android:id="@id/gy2" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>

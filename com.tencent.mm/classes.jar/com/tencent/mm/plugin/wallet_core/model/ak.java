@@ -2,29 +2,29 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class ak
 {
-  public ArrayList<Bankcard> Dsr;
-  public String Dss;
+  public ArrayList<Bankcard> IbD;
+  public String IbE;
   
   public ak()
   {
     AppMethodBeat.i(70472);
-    this.Dsr = new ArrayList();
+    this.IbD = new ArrayList();
     AppMethodBeat.o(70472);
   }
   
-  public final Bankcard aFM(String paramString)
+  public final Bankcard aVl(String paramString)
   {
     AppMethodBeat.i(70473);
     Bankcard localBankcard;
-    if (this.Dsr.size() > 0)
+    if (this.IbD.size() > 0)
     {
-      Iterator localIterator = this.Dsr.iterator();
+      Iterator localIterator = this.IbD.iterator();
       do
       {
         if (!localIterator.hasNext()) {
@@ -36,24 +36,24 @@ public final class ak
     for (paramString = localBankcard;; paramString = null)
     {
       if (paramString == null) {
-        ae.e("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo return null");
+        Log.e("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo return null");
       }
       for (;;)
       {
         AppMethodBeat.o(70473);
         return paramString;
-        ae.i("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo succ");
+        Log.i("MicroMsg.WalletRepaymentBankcardMgr", "getBankcardBySerialNo succ");
         continue;
-        ae.e("MicroMsg.WalletRepaymentBankcardMgr", "repayment bankcard list size is 0");
+        Log.e("MicroMsg.WalletRepaymentBankcardMgr", "repayment bankcard list size is 0");
         paramString = null;
       }
     }
   }
   
-  public final boolean eJt()
+  public final boolean fQW()
   {
     AppMethodBeat.i(70474);
-    if (this.Dsr.size() > 0)
+    if (this.IbD.size() > 0)
     {
       AppMethodBeat.o(70474);
       return true;
@@ -62,30 +62,30 @@ public final class ak
     return false;
   }
   
-  public final Bankcard eJu()
+  public final Bankcard fQX()
   {
     AppMethodBeat.i(70475);
-    if (eJt())
+    if (fQW())
     {
-      if (!TextUtils.isEmpty(this.Dss))
+      if (!TextUtils.isEmpty(this.IbE))
       {
-        localBankcard = aFM(this.Dss);
+        localBankcard = aVl(this.IbE);
         AppMethodBeat.o(70475);
         return localBankcard;
       }
-      ae.i("MicroMsg.WalletRepaymentBankcardMgr", "last_use_card_serialno is empty,return the first one");
-      Bankcard localBankcard = (Bankcard)this.Dsr.get(0);
+      Log.i("MicroMsg.WalletRepaymentBankcardMgr", "last_use_card_serialno is empty,return the first one");
+      Bankcard localBankcard = (Bankcard)this.IbD.get(0);
       AppMethodBeat.o(70475);
       return localBankcard;
     }
-    ae.e("MicroMsg.WalletRepaymentBankcardMgr", "Repayment card list is null");
+    Log.e("MicroMsg.WalletRepaymentBankcardMgr", "Repayment card list is null");
     AppMethodBeat.o(70475);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ak
  * JD-Core Version:    0.7.0.1
  */

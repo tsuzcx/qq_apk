@@ -54,9 +54,9 @@ public final class e
   
   public final void disableAutoCreateX5Webview()
   {
-    AppMethodBeat.i(207551);
+    AppMethodBeat.i(207240);
     QbSdk.disableAutoCreateX5Webview();
-    AppMethodBeat.o(207551);
+    AppMethodBeat.o(207240);
   }
   
   public final void forceSysWebView()
@@ -64,6 +64,14 @@ public final class e
     AppMethodBeat.i(154137);
     QbSdk.forceSysWebView();
     AppMethodBeat.o(154137);
+  }
+  
+  public final String getMiniQBVersion(Context paramContext)
+  {
+    AppMethodBeat.i(207241);
+    paramContext = QbSdk.getMiniQBVersion(paramContext);
+    AppMethodBeat.o(207241);
+    return paramContext;
   }
   
   public final boolean getTBSInstalling()
@@ -96,6 +104,13 @@ public final class e
     AppMethodBeat.o(154126);
   }
   
+  public final void setNewDnsHostList(String paramString)
+  {
+    AppMethodBeat.i(207243);
+    QbSdk.setNewDnsHostList(paramString);
+    AppMethodBeat.o(207243);
+  }
+  
   public final void setUploadCode(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(154138);
@@ -105,9 +120,9 @@ public final class e
   
   public final void setWebContentsDebuggingEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(207552);
+    AppMethodBeat.i(207242);
     WebView.setWebContentsDebuggingEnabled(paramBoolean);
-    AppMethodBeat.o(207552);
+    AppMethodBeat.o(207242);
   }
   
   public final int startMiniQBToLoadUrl(Context paramContext, String paramString, HashMap<String, String> paramHashMap, ValueCallback<String> paramValueCallback)
@@ -121,18 +136,18 @@ public final class e
   static final class a
     implements TbsListener
   {
-    h MSC;
+    h SFI;
     
     public a(h paramh)
     {
-      this.MSC = paramh;
+      this.SFI = paramh;
     }
     
     public final void onDownloadFinish(int paramInt)
     {
       AppMethodBeat.i(154121);
-      if (this.MSC != null) {
-        this.MSC.onDownloadFinish(paramInt);
+      if (this.SFI != null) {
+        this.SFI.onDownloadFinish(paramInt);
       }
       AppMethodBeat.o(154121);
     }
@@ -140,8 +155,8 @@ public final class e
     public final void onDownloadProgress(int paramInt)
     {
       AppMethodBeat.i(154123);
-      if (this.MSC != null) {
-        this.MSC.onDownloadProgress(paramInt);
+      if (this.SFI != null) {
+        this.SFI.onDownloadProgress(paramInt);
       }
       AppMethodBeat.o(154123);
     }
@@ -149,8 +164,8 @@ public final class e
     public final void onInstallFinish(int paramInt)
     {
       AppMethodBeat.i(154122);
-      if (this.MSC != null) {
-        this.MSC.onInstallFinish(paramInt);
+      if (this.SFI != null) {
+        this.SFI.onInstallFinish(paramInt);
       }
       AppMethodBeat.o(154122);
     }
@@ -158,7 +173,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.x5.sdk.e
  * JD-Core Version:    0.7.0.1
  */

@@ -5,36 +5,46 @@ public class SdkInfo
   public static final int kRatioBase = 10000;
   public static final int kTimeBase = 1000000;
   
+  public static class EncodeMode
+  {
+    public static final int kEncodeModeCBR = 2;
+    public static final int kEncodeModeCQ = 0;
+    public static final int kEncodeModeVBR = 1;
+  }
+  
   public static class ErrCode
   {
     public static final int kErrCodeEnd = 699;
     public static final int kErrCodeFailed = 601;
-    public static final int kErrCodeFormatNotSupport = 609;
-    public static final int kErrCodeInitDecoderFailed = 613;
-    public static final int kErrCodeInitDemuxFailed = 611;
-    public static final int kErrCodeInitEncoderFailed = 612;
-    public static final int kErrCodeInitMuxerFailed = 610;
-    public static final int kErrCodeInitResamplerFailed = 614;
+    public static final int kErrCodeFormatUnSupport = 609;
     public static final int kErrCodeInterrupt = 606;
-    public static final int kErrCodeMarshalFailed = 605;
-    public static final int kErrCodeNoMedia = 615;
+    public static final int kErrCodeIoError = 617;
+    public static final int kErrCodeNoTrack = 615;
     public static final int kErrCodeNotFound = 608;
     public static final int kErrCodeNotSupport = 616;
     public static final int kErrCodeParmasInvalid = 607;
-    public static final int kErrCodeRequestNotSupport = 603;
+    public static final int kErrCodeRequestUnSupport = 603;
     public static final int kErrCodeSdkNotReady = 602;
     public static final int kErrCodeSuccess = 0;
-    public static final int kErrCodeUnmarshalFailed = 604;
   }
   
   public static class MediaConfigKey
   {
+    public static final int kConfigAutoRotate = 103;
     public static final int kConfigAvSyncDiscard = 53;
+    public static final int kConfigCache = 50;
+    public static final int kConfigEncodeMode = 104;
     public static final int kConfigHwDecoder = 51;
     public static final int kConfigHwEncoder = 52;
-    public static final int kConfigLogLvl = 100;
-    public static final int kConfigSaveTmpFile = 50;
+    public static final int kConfigLogLvl = 7;
+    public static final int kConfigSwitchCode = 102;
     public static final int kConfigTraceAll = 1;
+    public static final int kConfigTraceDecoder = 3;
+    public static final int kConfigTraceFfmpeg = 6;
+    public static final int kConfigTraceFormatter = 4;
+    public static final int kConfigTraceFrames = 5;
+    public static final int kConfigTraceParser = 2;
+    public static final int kConfigTransitionCode = 101;
   }
   
   public static class MediaFormat
@@ -58,6 +68,15 @@ public class SdkInfo
     public static final int MFMT_VIDEO_RGBA32 = 52;
     public static final int MFMT_VIDEO_YUV420P = 1;
     public static final int MFMT_VIDEO_YUVJ420P = 4;
+  }
+  
+  public static class MediaLogLvl
+  {
+    public static final int kMediaLogDebug = 4;
+    public static final int kMediaLogError = 1;
+    public static final int kMediaLogInfo = 3;
+    public static final int kMediaLogTrace = 5;
+    public static final int kMediaLogWarn = 2;
   }
   
   public static class MediaType

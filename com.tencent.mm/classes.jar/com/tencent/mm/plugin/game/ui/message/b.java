@@ -13,26 +13,52 @@ import java.util.HashMap;
 public final class b
   extends FrameLayout
 {
-  View GG;
-  private int fRv;
-  private int uFO;
-  d uGb;
+  private View GQ;
+  private int gwE;
+  private int xXT;
+  private boolean xXU;
+  e xYl;
   
-  public b(Context paramContext, int paramInt)
+  public b(Context paramContext, int paramInt, boolean paramBoolean)
   {
     super(paramContext);
-    AppMethodBeat.i(183881);
-    this.fRv = paramInt;
-    this.GG = LayoutInflater.from(getContext()).inflate(2131494354, this, false);
-    if (((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cZl().In(2) != 0)
+    AppMethodBeat.i(204317);
+    this.gwE = paramInt;
+    this.xXU = paramBoolean;
+    this.GQ = LayoutInflater.from(getContext()).inflate(2131494919, this, false);
+    if ((((com.tencent.mm.plugin.game.api.f)g.af(com.tencent.mm.plugin.game.api.f.class)).dSK().Oo(2) != 0) && (this.xXU))
     {
-      this.uGb = new d(getContext(), this.fRv);
-      addView(this.uGb, new FrameLayout.LayoutParams(-1, -1));
-      AppMethodBeat.o(183881);
+      this.xYl = new e(getContext(), this.gwE);
+      this.xYl.setEmptyCallback(new c()
+      {
+        public final void dWH()
+        {
+          AppMethodBeat.i(204316);
+          b.this.refreshView();
+          AppMethodBeat.o(204316);
+        }
+      });
+      addView(this.xYl, new FrameLayout.LayoutParams(-1, -1));
+      AppMethodBeat.o(204317);
       return;
     }
-    addView(this.GG);
-    AppMethodBeat.o(183881);
+    addView(this.GQ);
+    AppMethodBeat.o(204317);
+  }
+  
+  public final void refreshView()
+  {
+    AppMethodBeat.i(204318);
+    if (((com.tencent.mm.plugin.game.api.f)g.af(com.tencent.mm.plugin.game.api.f.class)).dSK().Oo(2) == 0)
+    {
+      if ((this.xYl != null) && (indexOfChild(this.xYl) >= 0)) {
+        removeView(this.xYl);
+      }
+      if ((this.GQ != null) && (indexOfChild(this.GQ) < 0)) {
+        addView(this.GQ);
+      }
+    }
+    AppMethodBeat.o(204318);
   }
   
   public final void resume()
@@ -40,20 +66,20 @@ public final class b
     AppMethodBeat.i(184807);
     HashMap localHashMap = new HashMap();
     localHashMap.put("tab", "2");
-    localHashMap.put("newnotice", String.valueOf(this.uFO));
-    com.tencent.mm.game.report.f.a(getContext(), 13, 1300, 0, 1, this.fRv, com.tencent.mm.game.report.f.r(localHashMap));
-    this.uFO = 0;
+    localHashMap.put("newnotice", String.valueOf(this.xXT));
+    com.tencent.mm.game.report.f.a(getContext(), 13, 1300, 0, 1, this.gwE, com.tencent.mm.game.report.f.t(localHashMap));
+    this.xXT = 0;
     AppMethodBeat.o(184807);
   }
   
   public final void setNewMessageCount(int paramInt)
   {
-    this.uFO = paramInt;
+    this.xXT = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.message.b
  * JD-Core Version:    0.7.0.1
  */

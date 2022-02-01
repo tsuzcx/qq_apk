@@ -5,8 +5,9 @@ import com.tencent.luggage.d.d;
 import com.tencent.luggage.d.p;
 import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.plugin.webview.luggage.q.a;
-import com.tencent.mm.ui.base.l;
 import org.json.JSONObject;
 
 public final class m
@@ -17,13 +18,13 @@ public final class m
     super(2);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
+  public final void a(Context paramContext, g paramg)
   {
     AppMethodBeat.i(78708);
-    paramg.eSV().aIs("shareTimeline");
-    paramg.chX.a(new d()
+    paramg.gbG().aYu("shareTimeline");
+    paramg.ctS.a(new d()
     {
-      public final JSONObject BP()
+      public final JSONObject Ld()
       {
         return null;
       }
@@ -33,15 +34,15 @@ public final class m
         return "menu:share:timeline";
       }
     });
-    com.tencent.mm.plugin.report.service.g.yxI.dD(982, 10);
+    h.CyF.dN(982, 10);
     AppMethodBeat.o(78708);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
+  public final void a(Context paramContext, g paramg, com.tencent.mm.ui.base.m paramm)
   {
     AppMethodBeat.i(78707);
-    if (paramg.HZ(23)) {
-      paraml.a(2, paramContext.getString(2131762164), 2131689817);
+    if (paramg.Oc(23)) {
+      paramm.b(2, paramContext.getString(2131764185), 2131689830);
     }
     AppMethodBeat.o(78707);
   }

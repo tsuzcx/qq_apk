@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g4" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <View android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
-        <Button android:id="@id/dz" android:background="@null" android:layout_width="40.0dip" android:layout_height="fill_parent" />
-    </LinearLayout>
-</FrameLayout>
+    <ListView android:id="@id/ecm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="#ffd9d9d9" android:dividerHeight="1.0px" android:headerDividersEnabled="true" android:footerDividersEnabled="false" />
+</LinearLayout>

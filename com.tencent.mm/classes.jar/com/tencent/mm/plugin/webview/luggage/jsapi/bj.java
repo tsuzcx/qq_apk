@@ -1,154 +1,76 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.Bitmap.CompressFormat;
-import android.view.MenuItem;
+import android.os.Bundle;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
+import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.av.d;
-import com.tencent.mm.av.q;
-import com.tencent.mm.g.a.sv;
-import com.tencent.mm.g.a.sv.a;
-import com.tencent.mm.g.a.sy;
-import com.tencent.mm.game.report.f;
-import com.tencent.mm.ipcinvoker.p;
-import com.tencent.mm.model.x;
-import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
-import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.widget.a.e.b;
-import java.io.ByteArrayOutputStream;
-import java.io.OutputStream;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class bj
-  extends br<com.tencent.mm.plugin.webview.luggage.g>
+  extends bs<g>
 {
-  public final void a(final Context paramContext, final String paramString, final bq.a parama)
+  public final void a(Context paramContext, String paramString, br.a parama) {}
+  
+  public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(198106);
-    p.x(new Runnable()
+    int j = 1;
+    AppMethodBeat.i(78628);
+    Log.i("MicroMsg.JsApiSetScreenOrientation", "invoke");
+    Object localObject = paramb.ctb.csi.optString("orientation");
+    if (Util.isNullOrNil((String)localObject))
     {
-      /* Error */
-      public final void run()
-      {
-        // Byte code:
-        //   0: ldc 45
-        //   2: invokestatic 51	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-        //   5: new 53	org/json/JSONObject
-        //   8: dup
-        //   9: aload_0
-        //   10: getfield 31	com/tencent/mm/plugin/webview/luggage/jsapi/bj$1:ktK	Ljava/lang/String;
-        //   13: invokespecial 56	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-        //   16: astore_3
-        //   17: aload_3
-        //   18: ldc 58
-        //   20: invokevirtual 62	org/json/JSONObject:optJSONObject	(Ljava/lang/String;)Lorg/json/JSONObject;
-        //   23: astore 4
-        //   25: ldc 64
-        //   27: astore_2
-        //   28: aload_2
-        //   29: astore_1
-        //   30: aload 4
-        //   32: ifnull +14 -> 46
-        //   35: aload 4
-        //   37: invokevirtual 68	org/json/JSONObject:toString	()Ljava/lang/String;
-        //   40: ldc 70
-        //   42: invokestatic 76	java/net/URLEncoder:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-        //   45: astore_1
-        //   46: new 78	com/tencent/mm/ui/widget/a/e
-        //   49: dup
-        //   50: aload_0
-        //   51: getfield 35	com/tencent/mm/plugin/webview/luggage/jsapi/bj$1:val$context	Landroid/content/Context;
-        //   54: iconst_0
-        //   55: iconst_0
-        //   56: invokespecial 81	com/tencent/mm/ui/widget/a/e:<init>	(Landroid/content/Context;IZ)V
-        //   59: astore_2
-        //   60: aload_2
-        //   61: new 13	com/tencent/mm/plugin/webview/luggage/jsapi/bj$1$1
-        //   64: dup
-        //   65: aload_0
-        //   66: invokespecial 84	com/tencent/mm/plugin/webview/luggage/jsapi/bj$1$1:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bj$1;)V
-        //   69: putfield 88	com/tencent/mm/ui/widget/a/e:LfS	Lcom/tencent/mm/ui/base/n$d;
-        //   72: aload_2
-        //   73: new 15	com/tencent/mm/plugin/webview/luggage/jsapi/bj$1$2
-        //   76: dup
-        //   77: aload_0
-        //   78: aload_3
-        //   79: aload_1
-        //   80: aload_2
-        //   81: invokespecial 91	com/tencent/mm/plugin/webview/luggage/jsapi/bj$1$2:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bj$1;Lorg/json/JSONObject;Ljava/lang/String;Lcom/tencent/mm/ui/widget/a/e;)V
-        //   84: putfield 95	com/tencent/mm/ui/widget/a/e:LfT	Lcom/tencent/mm/ui/base/n$e;
-        //   87: aload_2
-        //   88: new 17	com/tencent/mm/plugin/webview/luggage/jsapi/bj$1$3
-        //   91: dup
-        //   92: aload_0
-        //   93: aload_1
-        //   94: invokespecial 98	com/tencent/mm/plugin/webview/luggage/jsapi/bj$1$3:<init>	(Lcom/tencent/mm/plugin/webview/luggage/jsapi/bj$1;Ljava/lang/String;)V
-        //   97: putfield 102	com/tencent/mm/ui/widget/a/e:KtV	Lcom/tencent/mm/ui/widget/a/e$b;
-        //   100: aload_2
-        //   101: invokevirtual 105	com/tencent/mm/ui/widget/a/e:cPF	()V
-        //   104: ldc 45
-        //   106: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   109: return
-        //   110: astore_1
-        //   111: ldc 110
-        //   113: aload_1
-        //   114: ldc 64
-        //   116: iconst_0
-        //   117: anewarray 4	java/lang/Object
-        //   120: invokestatic 116	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   123: aload_0
-        //   124: getfield 33	com/tencent/mm/plugin/webview/luggage/jsapi/bj$1:pva	Lcom/tencent/mm/plugin/webview/luggage/jsapi/bq$a;
-        //   127: aconst_null
-        //   128: aconst_null
-        //   129: invokevirtual 122	com/tencent/mm/plugin/webview/luggage/jsapi/bq$a:f	(Ljava/lang/String;Lorg/json/JSONObject;)V
-        //   132: ldc 45
-        //   134: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-        //   137: return
-        //   138: astore_1
-        //   139: aload_2
-        //   140: astore_1
-        //   141: goto -95 -> 46
-        // Local variable table:
-        //   start	length	slot	name	signature
-        //   0	144	0	this	1
-        //   29	65	1	localObject1	Object
-        //   110	4	1	localJSONException	org.json.JSONException
-        //   138	1	1	localUnsupportedEncodingException	java.io.UnsupportedEncodingException
-        //   140	1	1	localObject2	Object
-        //   27	113	2	localObject3	Object
-        //   16	63	3	localJSONObject1	JSONObject
-        //   23	13	4	localJSONObject2	JSONObject
-        // Exception table:
-        //   from	to	target	type
-        //   5	17	110	org/json/JSONException
-        //   35	46	138	java/io/UnsupportedEncodingException
+      Log.e("MicroMsg.JsApiSetScreenOrientation", "data is null");
+      paramb.c("invalid_data", null);
+      AppMethodBeat.o(78628);
+      return;
+    }
+    int i;
+    if (((String)localObject).equals("horizontal")) {
+      i = 0;
+    }
+    for (;;)
+    {
+      localObject = (g)paramb.cta;
+      ((s)localObject).mParams.putInt("screen_orientation", i);
+      ((g)localObject).gbz();
+      paramb.c("", null);
+      AppMethodBeat.o(78628);
+      return;
+      i = j;
+      if (!((String)localObject).equals("vertical")) {
+        if (((String)localObject).equals("sensor"))
+        {
+          i = 4;
+        }
+        else if (((String)localObject).equals("horizontal_unforced"))
+        {
+          i = 0;
+        }
+        else
+        {
+          i = j;
+          if (!((String)localObject).equals("vertical_unforced")) {
+            i = -1;
+          }
+        }
       }
-    });
-    AppMethodBeat.o(198106);
+    }
   }
   
-  public final void b(com.tencent.luggage.d.b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
-  
-  public final int ced()
+  public final int dTs()
   {
-    return 2;
+    return 0;
   }
   
   public final String name()
   {
-    return "shareCustomContent";
+    return "setScreenOrientation";
   }
 }
 

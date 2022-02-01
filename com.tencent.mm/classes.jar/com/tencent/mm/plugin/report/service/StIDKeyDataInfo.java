@@ -9,10 +9,10 @@ class StIDKeyDataInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<StIDKeyDataInfo> CREATOR;
+  public boolean CxY;
   public long key;
-  public long pXC;
+  public long oIi;
   public long value;
-  public boolean yxc;
   
   static
   {
@@ -26,13 +26,13 @@ class StIDKeyDataInfo
   protected StIDKeyDataInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(143929);
-    this.pXC = paramParcel.readLong();
+    this.oIi = paramParcel.readLong();
     this.key = paramParcel.readLong();
     this.value = paramParcel.readLong();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.yxc = bool;
+      this.CxY = bool;
       AppMethodBeat.o(143929);
       return;
       bool = false;
@@ -47,10 +47,10 @@ class StIDKeyDataInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(143928);
-    paramParcel.writeLong(this.pXC);
+    paramParcel.writeLong(this.oIi);
     paramParcel.writeLong(this.key);
     paramParcel.writeLong(this.value);
-    if (this.yxc) {}
+    if (this.CxY) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);

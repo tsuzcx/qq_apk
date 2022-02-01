@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/cuz" android:background="@drawable/a9y" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/t9">
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/td" android:textColor="@color/y4" android:id="@id/cvt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t_" />
-            <TextView android:textSize="@dimen/tc" android:textColor="@color/fr" android:id="@id/cuh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t_" android:layout_marginTop="2.0dip" />
+    <android.support.v7.widget.RecyclerView android:id="@id/dj4" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    <ImageView android:id="@id/dj2" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@raw/actionbar_icon_light_back" android:layout_alignParentTop="true" android:layout_marginStart="24.0dip" android:layout_alignParentStart="true" />
+    <View android:id="@id/fac" android:background="@color/sz" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/aaq" android:background="@color/sz" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_above="@id/fac">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip">
+            <TextView android:textSize="17.0sp" android:textColor="@color/h7" android:ellipsize="end" android:id="@id/ir3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <com.tencent.mm.plugin.game.media.GameVideoTagContainer android:orientation="horizontal" android:id="@id/j6l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
         </LinearLayout>
-        <CheckBox android:gravity="right" android:id="@id/cub" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="@dimen/t_" style="@style/lj" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="12.0dip">
+            <TextView android:textSize="14.0sp" android:textColor="@color/BW_100_Alpha_0_5" android:id="@id/fti" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b4m" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <View android:background="@color/BW_100_Alpha_0_1" android:layout_width="1.0px" android:layout_height="14.0dip" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" />
+                <TextView android:textSize="14.0sp" android:textColor="@color/BW_100_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dnz" />
+                <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.0dip" android:src="@raw/video_preview_info" />
+            </LinearLayout>
+        </LinearLayout>
+        <TextView android:background="@color/BW_100_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0dip" />
+        <LinearLayout android:gravity="center" android:layout_gravity="right" android:orientation="horizontal" android:id="@id/hpl" android:background="@drawable/a6k" android:layout_width="76.0dip" android:layout_height="32.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip">
+            <ImageView android:layout_gravity="center_vertical" android:background="@raw/game_haowan_share" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/l4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/dsl" />
+        </LinearLayout>
+        <Button android:textColor="@color/afz" android:layout_gravity="right" android:id="@id/b_4" android:background="@drawable/a6i" android:layout_marginTop="8.0dip" android:layout_marginRight="16.0dip" android:text="@string/dt5" style="@style/os" />
     </LinearLayout>
-    <ImageView android:layout_gravity="bottom" android:id="@id/bdj" android:layout_marginLeft="@dimen/t_" style="@style/hp" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/epy" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+        <com.tencent.mm.plugin.game.media.CycleProgressView android:layout_gravity="center_horizontal" android:id="@id/bk8" android:layout_width="36.0dip" android:layout_height="36.0dip" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/afz" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/dtb" />
+    </LinearLayout>
+</RelativeLayout>

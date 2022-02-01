@@ -9,104 +9,122 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.util.Base64;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.protocal.protobuf.dnx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.protocal.protobuf.eht;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 import java.io.File;
 
 public final class d
 {
-  private static String uUZ = "tinker-boots-install-info";
-  private static String uVa = "tinker-boots-last-show";
-  private static String uVb = "tinker-boots-show-time";
-  private static String uVc = "";
+  private static String ynA = "tinker-boots-install-info";
+  private static String ynB = "tinker-boots-last-show";
+  private static String ynC = "tinker-boots-show-time";
+  private static String ynD = "";
   
-  public static void a(dnx paramdnx)
+  public static void a(eht parameht)
   {
     AppMethodBeat.i(117529);
     try
     {
-      ak.getContext().getSharedPreferences("tinker_patch_share_config", g.abv()).edit().putString(uUZ, Base64.encodeToString(paramdnx.toByteArray(), 0)).apply();
-      ae.d("MicroMsg.UpdateUtil", "save tinker install update info.");
+      MMApplicationContext.getContext().getSharedPreferences("tinker_patch_share_config", g.aps()).edit().putString(ynA, Base64.encodeToString(parameht.toByteArray(), 0)).apply();
+      Log.d("MicroMsg.UpdateUtil", "save tinker install update info.");
       AppMethodBeat.o(117529);
       return;
     }
-    catch (Exception paramdnx)
+    catch (Exception parameht)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.UpdateUtil", paramdnx, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.UpdateUtil", parameht, "", new Object[0]);
       }
     }
   }
   
-  public static void aM(Context paramContext, String paramString)
+  public static int aBM(String paramString)
+  {
+    AppMethodBeat.i(196801);
+    if (!Util.isNullOrNil(paramString)) {}
+    for (;;)
+    {
+      try
+      {
+        i = Integer.decode(paramString).intValue();
+        Log.i("MicroMsg.UpdateUtil", "parseClientVersion %s %s", new Object[] { paramString, Integer.valueOf(i) });
+        AppMethodBeat.o(196801);
+        return i;
+      }
+      catch (Exception localException) {}
+      int i = 0;
+    }
+  }
+  
+  public static String aBN(String paramString)
+  {
+    AppMethodBeat.i(117533);
+    paramString = dZC() + paramString + ".apk";
+    AppMethodBeat.o(117533);
+    return paramString;
+  }
+  
+  public static void aZ(Context paramContext, String paramString)
   {
     AppMethodBeat.i(117528);
     Intent localIntent = new Intent("android.intent.action.VIEW");
     localIntent.addFlags(268435456);
     localIntent.setDataAndType(Uri.fromFile(new File(paramString)), "application/vnd.android.package-archive");
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/mm/plugin/hp/util/UpdateUtil", "install", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString.mt(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.axQ(), "com/tencent/mm/plugin/hp/util/UpdateUtil", "install", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/hp/util/UpdateUtil", "install", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(117528);
   }
   
-  public static String aot(String paramString)
-  {
-    AppMethodBeat.i(117533);
-    paramString = dfI() + paramString + ".apk";
-    AppMethodBeat.o(117533);
-    return paramString;
-  }
-  
-  public static void dfG()
+  public static void dZA()
   {
     AppMethodBeat.i(117530);
-    ae.i("MicroMsg.UpdateUtil", "clearInstallUpdateInfo.");
-    SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("tinker_patch_share_config", g.abv());
-    localSharedPreferences.edit().putString(uUZ, "").apply();
-    localSharedPreferences.edit().putLong(uVa, 0L).apply();
-    localSharedPreferences.edit().putInt(uVb, 0).apply();
+    Log.i("MicroMsg.UpdateUtil", "clearInstallUpdateInfo.");
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("tinker_patch_share_config", g.aps());
+    localSharedPreferences.edit().putString(ynA, "").apply();
+    localSharedPreferences.edit().putLong(ynB, 0L).apply();
+    localSharedPreferences.edit().putInt(ynC, 0).apply();
     AppMethodBeat.o(117530);
   }
   
-  public static void dfH()
+  public static void dZB()
   {
     AppMethodBeat.i(117531);
-    h.MqF.aO(new Runnable()
+    h.RTc.aX(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(117526);
-        ae.i("MicroMsg.UpdateUtil", "delete apk file. on worker thread");
-        o.dd(d.dfI(), true);
+        Log.i("MicroMsg.UpdateUtil", "delete apk file. on worker thread");
+        s.dy(d.dZC(), true);
         AppMethodBeat.o(117526);
       }
     });
     AppMethodBeat.o(117531);
   }
   
-  public static String dfI()
+  public static String dZC()
   {
     AppMethodBeat.i(117532);
-    if (bu.isNullOrNil(uVc)) {
-      uVc = b.asm() + "bsdiff/";
+    if (Util.isNullOrNil(ynD)) {
+      ynD = b.aKM() + "bsdiff/";
     }
-    String str = uVc;
+    String str = ynD;
     AppMethodBeat.o(117532);
     return str;
   }
   
-  public static String fJ(Context paramContext)
+  public static String gp(Context paramContext)
   {
     AppMethodBeat.i(117527);
     try
@@ -117,7 +135,7 @@ public final class d
     }
     catch (Exception paramContext)
     {
-      ae.printErrStackTrace("MicroMsg.UpdateUtil", paramContext, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.UpdateUtil", paramContext, "", new Object[0]);
       AppMethodBeat.o(117527);
     }
     return null;
@@ -125,7 +143,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.d.d
  * JD-Core Version:    0.7.0.1
  */

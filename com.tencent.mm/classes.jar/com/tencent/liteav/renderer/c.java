@@ -265,44 +265,43 @@ public class c
   {
     AppMethodBeat.i(16735);
     if (this.m) {}
-    RuntimeException localRuntimeException;
     for (this.f = a("uniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n  gl_Position = uMVPMatrix * aPosition;\n  vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}\n", "#extension GL_OES_EGL_image_external : require\nprecision mediump float;\nvarying vec2 vTextureCoord;\nuniform samplerExternalOES sTexture;\nvoid main() {\n  gl_FragColor = texture2D(sTexture, vTextureCoord);\n}\n"); this.f == 0; this.f = a("uniform mat4 uMVPMatrix;\nuniform mat4 uSTMatrix;\nattribute vec4 aPosition;\nattribute vec4 aTextureCoord;\nvarying vec2 vTextureCoord;\nvoid main() {\n  gl_Position = uMVPMatrix * aPosition;\n  vTextureCoord = (uSTMatrix * aTextureCoord).xy;\n}\n", "varying highp vec2 vTextureCoord;\n \nuniform sampler2D sTexture;\n \nvoid main()\n{\n     gl_FragColor = texture2D(sTexture, vTextureCoord);\n}"))
     {
-      localRuntimeException = new RuntimeException("failed creating program");
+      TXCLog.e("TXCOesTextureRender", "failed creating program");
       AppMethodBeat.o(16735);
-      throw localRuntimeException;
+      return;
     }
     this.j = GLES20.glGetAttribLocation(this.f, "aPosition");
     a("glGetAttribLocation aPosition");
     if (this.j == -1)
     {
-      localRuntimeException = new RuntimeException("Could not get attrib location for aPosition");
+      TXCLog.e("TXCOesTextureRender", "Could not get attrib location for aPosition");
       AppMethodBeat.o(16735);
-      throw localRuntimeException;
+      return;
     }
     this.k = GLES20.glGetAttribLocation(this.f, "aTextureCoord");
     a("glGetAttribLocation aTextureCoord");
     if (this.k == -1)
     {
-      localRuntimeException = new RuntimeException("Could not get attrib location for aTextureCoord");
+      TXCLog.e("TXCOesTextureRender", "Could not get attrib location for aTextureCoord");
       AppMethodBeat.o(16735);
-      throw localRuntimeException;
+      return;
     }
     this.h = GLES20.glGetUniformLocation(this.f, "uMVPMatrix");
     a("glGetUniformLocation uMVPMatrix");
     if (this.h == -1)
     {
-      localRuntimeException = new RuntimeException("Could not get attrib location for uMVPMatrix");
+      TXCLog.e("TXCOesTextureRender", "Could not get attrib location for uMVPMatrix");
       AppMethodBeat.o(16735);
-      throw localRuntimeException;
+      return;
     }
     this.i = GLES20.glGetUniformLocation(this.f, "uSTMatrix");
     a("glGetUniformLocation uSTMatrix");
     if (this.i == -1)
     {
-      localRuntimeException = new RuntimeException("Could not get attrib location for uSTMatrix");
+      TXCLog.e("TXCOesTextureRender", "Could not get attrib location for uSTMatrix");
       AppMethodBeat.o(16735);
-      throw localRuntimeException;
+      return;
     }
     if (this.m) {
       d();
@@ -328,7 +327,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.renderer.c
  * JD-Core Version:    0.7.0.1
  */

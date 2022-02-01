@@ -1,25 +1,25 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.y.m;
-import com.tencent.mm.plugin.appbrand.y.m.a;
-import d.g.a.a;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.plugin.appbrand.ac.m;
+import com.tencent.mm.plugin.appbrand.ac.m.a;
+import kotlin.g.a.a;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"runOnWorkThread", "", "action", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"runOnWorkThread", "", "action", "Lkotlin/Function0;", "plugin-appbrand-integration_release"})
 public final class e
 {
-  public static final void t(a<z> parama)
+  public static final void v(a<x> parama)
   {
     AppMethodBeat.i(50331);
     p.h(parama, "action");
-    m.bCj().postToWorker((Runnable)new a(parama));
+    m.bZn().postToWorker((Runnable)new a(parama));
     AppMethodBeat.o(50331);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -28,7 +28,7 @@ public final class e
     public final void run()
     {
       AppMethodBeat.i(50330);
-      this.jUr.invoke();
+      this.kXn.invoke();
       AppMethodBeat.o(50330);
     }
   }

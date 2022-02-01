@@ -1,105 +1,85 @@
 package com.tencent.mm.plugin.appbrand.r;
 
-import android.os.Binder;
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.exu;
+import com.tencent.mm.protocal.protobuf.exv;
+import com.tencent.mm.protocal.protobuf.exw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import java.util.Locale;
 
-public abstract interface b
-  extends IInterface
+public final class b
+  extends q
+  implements m
 {
-  public abstract void t(IBinder paramIBinder);
+  private i heq;
+  private d iIu;
+  private exv nhv;
   
-  public abstract void vj(int paramInt);
-  
-  public static abstract class a
-    extends Binder
-    implements b
+  public b()
   {
-    public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
-    {
-      switch (paramInt1)
-      {
-      default: 
-        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-      case 1598968902: 
-        paramParcel2.writeString("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCallback");
-        return true;
-      case 1: 
-        paramParcel1.enforceInterface("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCallback");
-        vj(paramParcel1.readInt());
-        paramParcel2.writeNoException();
-        return true;
-      }
-      paramParcel1.enforceInterface("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCallback");
-      t(paramParcel1.readStrongBinder());
-      paramParcel2.writeNoException();
-      return true;
+    AppMethodBeat.i(47749);
+    d.a locala = new d.a();
+    locala.iLN = new exu();
+    locala.iLO = new exv();
+    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/weappsearchtitle";
+    locala.funcId = getType();
+    locala.iLP = 0;
+    locala.respCmdId = 0;
+    this.iIu = locala.aXF();
+    AppMethodBeat.o(47749);
+  }
+  
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  {
+    AppMethodBeat.i(47750);
+    Log.i("MicroMsg.NetSceneGetWeAppSearchTitle", "doScene");
+    this.heq = parami;
+    int i = dispatch(paramg, this.iIu, this);
+    AppMethodBeat.o(47750);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 1170;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(47751);
+    Log.i("MicroMsg.NetSceneGetWeAppSearchTitle", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.nhv = ((exv)this.iIu.iLL.iLR);
+    if (this.heq != null) {
+      this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    
-    static final class a
-      implements b
+    if (this.nhv.Nvb == null)
     {
-      private IBinder mRemote;
-      
-      a(IBinder paramIBinder)
-      {
-        this.mRemote = paramIBinder;
-      }
-      
-      public final IBinder asBinder()
-      {
-        return this.mRemote;
-      }
-      
-      public final void t(IBinder paramIBinder)
-      {
-        AppMethodBeat.i(222925);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCallback");
-          localParcel1.writeStrongBinder(paramIBinder);
-          this.mRemote.transact(2, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(222925);
-        }
-      }
-      
-      public final void vj(int paramInt)
-      {
-        AppMethodBeat.i(48001);
-        Parcel localParcel1 = Parcel.obtain();
-        Parcel localParcel2 = Parcel.obtain();
-        try
-        {
-          localParcel1.writeInterfaceToken("com.tencent.mm.plugin.appbrand.preloading.IAppBrandProgressTriggerCallback");
-          localParcel1.writeInt(paramInt);
-          this.mRemote.transact(1, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          return;
-        }
-        finally
-        {
-          localParcel2.recycle();
-          localParcel1.recycle();
-          AppMethodBeat.o(48001);
-        }
-      }
+      AppMethodBeat.o(47751);
+      return;
     }
+    paramString = com.tencent.mm.kernel.g.aAh().azQ();
+    paramString.set(ar.a.Oai, Locale.getDefault().getLanguage());
+    paramString.set(ar.a.Oaj, this.nhv.Nvb.xJH);
+    paramString.set(ar.a.Oam, this.nhv.Nvb.Nve);
+    paramString.set(ar.a.Oan, Long.valueOf(System.currentTimeMillis()));
+    paramString.set(ar.a.Oak, this.nhv.Nvc.xJH);
+    paramString.set(ar.a.Oal, this.nhv.Nvd.xJH);
+    AppMethodBeat.o(47751);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.r.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,78 +1,73 @@
 package com.tencent.mm.plugin.aa.model.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.protobuf.o;
 import com.tencent.mm.protocal.protobuf.p;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.wallet_core.c.j;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
-  extends n
-  implements k, j
+  extends q
+  implements m
 {
-  private f callback;
-  private b gRX;
-  private o iWp;
-  public p iWq;
+  private com.tencent.mm.ak.i callback;
+  private d hJu;
+  private o jTk;
+  public p jTl;
   
-  public i(String paramString1, long paramLong, int paramInt, String paramString2)
+  public i()
   {
-    AppMethodBeat.i(63388);
-    b.a locala = new b.a();
-    locala.hQF = new o();
-    locala.hQG = new p();
-    locala.funcId = 1629;
-    locala.uri = "/cgi-bin/mmpay-bin/newaapay";
-    locala.hQH = 0;
+    AppMethodBeat.i(63385);
+    d.a locala = new d.a();
+    locala.iLN = new o();
+    locala.iLO = new p();
+    locala.funcId = 1698;
+    locala.uri = "/cgi-bin/mmpay-bin/newaaoperation";
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.gRX = locala.aDS();
-    this.iWp = ((o)this.gRX.hQD.hQJ);
-    this.iWp.FIe = paramString1;
-    this.iWp.FIv = paramLong;
-    this.iWp.scene = paramInt;
-    this.iWp.FIf = paramString2;
-    ae.i("MicroMsg.NetSceneAAPay", "NetSceneAAPay, bill_no: %s, pay_amount: %s, scene: %s, groupid: %s", new Object[] { this.iWp.FIe, Long.valueOf(this.iWp.FIv), Integer.valueOf(this.iWp.scene), this.iWp.FIf });
-    AppMethodBeat.o(63388);
+    this.hJu = locala.aXF();
+    this.jTk = ((o)this.hJu.iLK.iLR);
+    AppMethodBeat.o(63385);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
   {
-    AppMethodBeat.i(63389);
-    this.callback = paramf;
-    int i = dispatch(parame, this.gRX, this);
-    AppMethodBeat.o(63389);
+    AppMethodBeat.i(63386);
+    this.callback = parami;
+    int i = dispatch(paramg, this.hJu, this);
+    AppMethodBeat.o(63386);
     return i;
   }
   
   public final int getType()
   {
-    return 1629;
+    return 1698;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(63390);
-    ae.i("MicroMsg.NetSceneAAPay", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.iWq = ((p)((b)paramq).hQE.hQJ);
-    ae.i("MicroMsg.NetSceneAAPay", "retcode: %s, retmsg: %s, paymsgid:%s", new Object[] { Integer.valueOf(this.iWq.dmy), this.iWq.phe, this.iWq.dFs });
+    AppMethodBeat.i(63387);
+    Log.i("MicroMsg.NetSceneAAOperation", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.jTl = ((p)((d)params).iLL.iLR);
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      Log.i("MicroMsg.NetSceneAAOperation", "retCode: %s, retMsg: %s, max_payer_num: %s, max_receiver_num: %s, max_total_num: %s, max_total_amount: %s, max_per_amount: %s, notice: %s, notice_url: %s", new Object[] { Integer.valueOf(this.jTl.dDN), this.jTl.qwn, Integer.valueOf(this.jTl.jTs), Integer.valueOf(this.jTl.jTt), Integer.valueOf(this.jTl.jTu), Long.valueOf(this.jTl.jTv), Long.valueOf(this.jTl.jTw), this.jTl.jTx, this.jTl.jTy });
+    }
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(63390);
+    AppMethodBeat.o(63387);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.cgi.i
  * JD-Core Version:    0.7.0.1
  */

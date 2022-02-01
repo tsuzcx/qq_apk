@@ -10,15 +10,15 @@ public final class a
   
   public final String toString()
   {
-    AppMethodBeat.i(195922);
+    AppMethodBeat.i(220344);
     String str = "EdgeComputingFieldModel{index=" + this.index + ", type=" + this.type + ", name='" + this.name + '\'' + '}';
-    AppMethodBeat.o(195922);
+    AppMethodBeat.o(220344);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.e.a.a
  * JD-Core Version:    0.7.0.1
  */

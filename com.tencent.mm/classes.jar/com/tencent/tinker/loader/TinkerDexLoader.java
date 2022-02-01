@@ -210,7 +210,7 @@ public class TinkerDexLoader
         deleteOutOfDateOATFile(paramString1);
         ShareTinkerLog.w("Tinker.TinkerDexLoader", "systemOTA, try parallel oat dexes, targetISA:".concat(String.valueOf(localObject3)), new Object[0]);
         paramString2 = new File(paramString1 + "/interpet");
-        TinkerDexOptimizer.optimizeAll(paramTinkerApplication, localArrayList, paramString2, true, paramTinkerApplication.isUseDelegateLastClassLoaderOnAPI29AndAbove(), (String)localObject3, new TinkerDexOptimizer.ResultCallback()
+        TinkerDexOptimizer.optimizeAll(paramTinkerApplication, localArrayList, paramString2, true, paramTinkerApplication.isUseDelegateLastClassLoader(), (String)localObject3, new TinkerDexOptimizer.ResultCallback()
         {
           long start;
           
@@ -251,7 +251,7 @@ public class TinkerDexLoader
     }
     try
     {
-      SystemClassLoaderAdder.installDexes(paramTinkerApplication, localClassLoader, paramString2, localArrayList, paramBoolean2, paramTinkerApplication.isUseDelegateLastClassLoaderOnAPI29AndAbove());
+      SystemClassLoaderAdder.installDexes(paramTinkerApplication, localClassLoader, paramString2, localArrayList, paramBoolean2, paramTinkerApplication.isUseDelegateLastClassLoader());
       return true;
     }
     catch (Throwable paramTinkerApplication)

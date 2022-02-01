@@ -1,23 +1,86 @@
 package com.tencent.mm.audio.mix.g;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.audio.mix.i.b;
+
 public final class a
-  implements b
 {
-  private com.tencent.mm.ai.b deo;
-  
-  public a(com.tencent.mm.ai.b paramb)
+  public static boolean I(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.deo = paramb;
+    AppMethodBeat.i(136884);
+    if (!jg(paramInt1))
+    {
+      AppMethodBeat.o(136884);
+      return false;
+    }
+    if (!jh(paramInt2))
+    {
+      AppMethodBeat.o(136884);
+      return false;
+    }
+    if (!ji(paramInt3))
+    {
+      AppMethodBeat.o(136884);
+      return false;
+    }
+    AppMethodBeat.o(136884);
+    return true;
   }
   
-  public final com.tencent.mm.ai.b PA()
+  private static boolean jg(int paramInt)
   {
-    return this.deo;
+    AppMethodBeat.i(136885);
+    if (paramInt <= 0)
+    {
+      b.e("MicroMsg.Mix.AudioMixConfig", "sampleRate is illegal! %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(136885);
+      return false;
+    }
+    if (paramInt == 44100)
+    {
+      AppMethodBeat.o(136885);
+      return true;
+    }
+    AppMethodBeat.o(136885);
+    return false;
+  }
+  
+  private static boolean jh(int paramInt)
+  {
+    AppMethodBeat.i(136886);
+    if (paramInt <= 0)
+    {
+      b.e("MicroMsg.Mix.AudioMixConfig", "channels is illegal, %d", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(136886);
+      return false;
+    }
+    if (paramInt == 2)
+    {
+      AppMethodBeat.o(136886);
+      return true;
+    }
+    AppMethodBeat.o(136886);
+    return false;
+  }
+  
+  private static boolean ji(int paramInt)
+  {
+    AppMethodBeat.i(136887);
+    if (paramInt <= 0) {
+      b.e("MicroMsg.Mix.AudioMixConfig", "encode is illegal, %d", new Object[] { Integer.valueOf(paramInt) });
+    }
+    if (paramInt == 2)
+    {
+      AppMethodBeat.o(136887);
+      return true;
+    }
+    AppMethodBeat.o(136887);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.g.a
  * JD-Core Version:    0.7.0.1
  */

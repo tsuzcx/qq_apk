@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|top" android:orientation="horizontal" android:id="@id/b1l" android:background="@color/c" android:paddingTop="@dimen/hu" android:paddingBottom="@dimen/hu" android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/b1h" style="@style/hi" />
-    <include layout="@layout/b1h" style="@style/hi" />
-    <include layout="@layout/b1h" style="@style/hi" />
-    <include layout="@layout/b1h" style="@style/hi" />
-    <include layout="@layout/b1h" style="@style/hi" />
+    <com.tencent.mm.plugin.game.ui.GameMessageBubbleView android:gravity="center_horizontal" android:id="@id/dho" android:background="@color/afz" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center|left" android:id="@id/dhn" android:background="@drawable/a57" android:padding="@dimen/k5" android:focusable="true" android:clickable="true" android:duplicateParentState="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs" android:layout_marginBottom="@dimen/hs">
+            <ImageView android:id="@id/dhm" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:ellipsize="end" android:id="@id/dhl" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+    </com.tencent.mm.plugin.game.ui.GameMessageBubbleView>
 </LinearLayout>

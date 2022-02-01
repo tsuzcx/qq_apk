@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:clipChildren="false" android:clipToPadding="false" android:layout_below="@id/ayf" style="@style/gs"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gu">
+        <TextView android:layout_gravity="right" android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
+        <LinearLayout android:layout_gravity="right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/ayb" style="@style/h2" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/j0y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/c5" style="@style/a71" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/ayd" android:paddingRight="@dimen/k5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <com.tencent.mm.ui.widget.MMNeat7extView android:textColor="@color/jg" android:gravity="center_vertical" android:id="@id/auk" android:background="@drawable/oq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/xb" android:minHeight="@dimen/ad" style="@style/h4" />
+                <TextView android:id="@id/atq" android:layout_marginLeft="0.0dip" style="@style/gj" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/atw" android:background="@drawable/n9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/bt">
+                    <TextView android:textSize="@dimen/kc" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="center" android:id="@id/atx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginRight="@dimen/ct" android:text="@string/dwk" android:singleLine="true" android:includeFontPadding="false" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <ViewStub android:layout_gravity="right" android:id="@id/iva" android:layout="@layout/tn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i2" android:layout_marginRight="5.0dip" />
+    </LinearLayout>
+    <include layout="@layout/qr" />
+</LinearLayout>

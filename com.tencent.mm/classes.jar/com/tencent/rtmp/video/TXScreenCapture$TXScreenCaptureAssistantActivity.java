@@ -54,10 +54,10 @@ public class TXScreenCapture$TXScreenCaptureAssistantActivity
   
   public void onDestroy()
   {
-    AppMethodBeat.i(221670);
+    AppMethodBeat.i(222656);
     super.onDestroy();
     TXCLog.i("TXScreenCaptureAssistantActivity", "onDestroy ".concat(String.valueOf(this)));
-    AppMethodBeat.o(221670);
+    AppMethodBeat.o(222656);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -68,7 +68,7 @@ public class TXScreenCapture$TXScreenCaptureAssistantActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.video.TXScreenCapture.TXScreenCaptureAssistantActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -7,21 +7,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class PhotoView$c
   implements Interpolator
 {
-  Interpolator LMM;
+  Interpolator Rlb;
   
   private PhotoView$c(PhotoView paramPhotoView)
   {
     AppMethodBeat.i(164267);
-    this.LMM = new DecelerateInterpolator();
+    this.Rlb = new DecelerateInterpolator();
     AppMethodBeat.o(164267);
   }
   
   public final float getInterpolation(float paramFloat)
   {
     AppMethodBeat.i(164268);
-    if (this.LMM != null)
+    if (this.Rlb != null)
     {
-      paramFloat = this.LMM.getInterpolation(paramFloat);
+      paramFloat = this.Rlb.getInterpolation(paramFloat);
       AppMethodBeat.o(164268);
       return paramFloat;
     }
@@ -31,7 +31,7 @@ final class PhotoView$c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.view.PhotoView.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<decelerateInterpolator android:factor="1.2"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<animation-list android:oneshot="false"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:duration="200" android:drawable="@drawable/bfe" />
+    <item android:duration="200" android:drawable="@drawable/bff" />
+    <item android:duration="200" android:drawable="@drawable/bfg" />
+</animation-list>

@@ -6,39 +6,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.record.a.b;
 import com.tencent.mm.plugin.record.a.c;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract class i<T extends c>
   implements b
 {
-  private boolean xGJ = false;
-  final int xGK = 3;
-  private final int xGL = 300000;
-  private SparseArray<i<T>.a> xGM = new SparseArray();
-  private LinkedList<T> xGN = new LinkedList();
-  private long xGO = 0L;
+  private boolean BGI = false;
+  final int BGJ = 3;
+  private final int BGK = 300000;
+  private SparseArray<i<T>.a> BGL = new SparseArray();
+  private LinkedList<T> BGM = new LinkedList();
+  private long BGN = 0L;
   
-  protected abstract List<T> dHC();
+  protected abstract List<T> eIp();
   
-  protected final void dHD()
+  protected final void eIq()
   {
-    this.xGJ = false;
+    this.BGI = false;
     run();
   }
   
   public final void finish()
   {
-    this.xGN.clear();
-    this.xGM.clear();
-    this.xGJ = false;
+    this.BGM.clear();
+    this.BGL.clear();
+    this.BGI = false;
   }
   
   public final void run()
   {
-    g.ajS();
-    g.ajU().aw(new Runnable()
+    g.aAi();
+    g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -59,21 +59,21 @@ public abstract class i<T extends c>
   
   final class a
   {
-    int iQA;
-    long xGQ;
+    long BGP;
+    int jNv;
     
     private a()
     {
       AppMethodBeat.i(9490);
-      this.xGQ = SystemClock.elapsedRealtime();
-      this.iQA = i.this.xGK;
+      this.BGP = SystemClock.elapsedRealtime();
+      this.jNv = i.this.BGJ;
       AppMethodBeat.o(9490);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.i
  * JD-Core Version:    0.7.0.1
  */

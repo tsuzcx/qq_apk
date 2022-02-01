@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<View android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="@dimen/ch"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.emoji.view.EmojiStatusView android:id="@id/ur" android:background="?ka" android:layout_width="@dimen/cs" android:layout_height="@dimen/cs" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cl" android:scaleType="fitCenter" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/az" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/BW_0_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h2k" />
+        <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="0.0dip" android:layout_height="1.0px" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:layout_weight="1.0" />
+    </LinearLayout>
+</LinearLayout>

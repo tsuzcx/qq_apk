@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.c;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.search.FTSEditTextView.b;
 import com.tencent.mm.ui.search.a.c;
 import java.util.ArrayList;
@@ -16,18 +16,18 @@ import java.util.List;
 public class FTSTalkerMessageUI
   extends FTSBaseUI
 {
-  private int lox;
+  private int mve;
   private String query;
-  private String tFU;
-  private m tLl;
+  private String wWT;
+  private m xcm;
   
   protected final d a(e parame)
   {
     AppMethodBeat.i(112033);
-    if (this.tLl == null) {
-      this.tLl = new m(this, this.tFU, this.lox);
+    if (this.xcm == null) {
+      this.xcm = new m(this, this.wWT, this.mve);
     }
-    parame = this.tLl;
+    parame = this.xcm;
     AppMethodBeat.o(112033);
     return parame;
   }
@@ -39,41 +39,41 @@ public class FTSTalkerMessageUI
     AppMethodBeat.o(168772);
   }
   
-  protected final void cVY()
+  protected final void dPh()
   {
     AppMethodBeat.i(112032);
-    super.cVY();
-    this.tFU = getIntent().getStringExtra("key_talker_query");
+    super.dPh();
+    this.wWT = getIntent().getStringExtra("key_talker_query");
     this.query = getIntent().getStringExtra("key_query");
-    this.lox = getIntent().getIntExtra("Search_Scene", 0);
-    ae.i("MicroMsg.FTS.FTSTalkerMessageUI", "initSearchData query=%s talkerQuery=%s", new Object[] { this.query, this.tFU });
+    this.mve = getIntent().getIntExtra("Search_Scene", 0);
+    Log.i("MicroMsg.FTS.FTSTalkerMessageUI", "initSearchData query=%s talkerQuery=%s", new Object[] { this.query, this.wWT });
     AppMethodBeat.o(112032);
   }
   
   public int getLayoutId()
   {
-    return 2131494220;
+    return 2131494776;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(112031);
     super.onCreate(paramBundle);
-    ((n)g.ad(n.class)).getFTSImageLoader().cVe();
+    ((n)g.ah(n.class)).getFTSImageLoader().dOn();
     paramBundle = new a((byte)0);
-    a.a(paramBundle, this.tFU);
+    a.a(paramBundle, this.wWT);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramBundle);
-    u(this.query, localArrayList);
-    cVT();
+    v(this.query, localArrayList);
+    dPc();
     AppMethodBeat.o(112031);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(112034);
-    this.tLl.finish();
-    ((n)g.ad(n.class)).getFTSImageLoader().cVc();
+    this.xcm.finish();
+    ((n)g.ah(n.class)).getFTSImageLoader().dOl();
     super.onDestroy();
     AppMethodBeat.o(112034);
   }
@@ -87,7 +87,7 @@ public class FTSTalkerMessageUI
   final class a
     implements a.c
   {
-    private String fXp;
+    private String gCv;
     
     private a() {}
     
@@ -98,13 +98,13 @@ public class FTSTalkerMessageUI
     
     public final String getTagName()
     {
-      return this.fXp;
+      return this.gCv;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.FTSTalkerMessageUI
  * JD-Core Version:    0.7.0.1
  */

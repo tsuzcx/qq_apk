@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:padding="@dimen/i_" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="168.0dip" android:minHeight="64.0dip" style="@style/r_">
-        <ProgressBar android:id="@id/ekn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i_" style="@style/a4p" />
-        <TextView android:textSize="@dimen/q" android:textColor="@color/y3" android:id="@id/eko" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i_" android:maxWidth="200.0dip" />
+<LinearLayout android:orientation="vertical" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/ib">
+        <EditText android:id="@id/dyu" android:layout_width="100.0dip" android:layout_marginRight="10.0dip" android:hint="logId" android:inputType="number" style="@style/mb" />
+        <Button android:id="@id/b_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="confirm" />
+        <Button android:id="@id/er9" android:layout_marginRight="10.0dip" android:text="select log" style="@style/p5" />
+        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/bkz" android:layout_width="100.0dip" android:layout_height="@dimen/kg" app:off_color="#ff999999" app:off_text="off" app:on_color="@color/afp" app:on_text="on" app:slide_color="#ff76fef3" />
     </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/ib">
+        <TextView android:textSize="@dimen/is" android:id="@id/hi0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ListView android:id="@id/e6x" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="@dimen/ib" android:divider="@color/afp" android:dividerHeight="1.0dip" />
 </LinearLayout>

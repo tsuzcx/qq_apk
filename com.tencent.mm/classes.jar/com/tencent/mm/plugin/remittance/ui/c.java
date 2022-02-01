@@ -12,126 +12,122 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.hn;
+import com.tencent.mm.g.b.a.le;
 import com.tencent.mm.plugin.remittance.model.w;
-import com.tencent.mm.protocal.protobuf.xr;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.zd;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 import com.tencent.mm.ui.widget.a.d;
 import com.tencent.mm.ui.widget.a.f.c;
 
 public final class c
 {
+  private zd Cpw;
+  public a CqB;
   public Context mContext;
-  private xr yoG;
-  public a ypK;
   
   public c(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  public final void a(final w paramw, final xr paramxr, final a parama)
+  public final void a(final w paramw, final zd paramzd, final a parama)
   {
     AppMethodBeat.i(67940);
-    this.ypK = parama;
-    this.yoG = paramxr;
-    Object localObject = View.inflate(this.mContext, 2131495198, null);
-    TextView localTextView = (TextView)((View)localObject).findViewById(2131301313);
-    parama = (EditText)((View)localObject).findViewById(2131300111);
-    ((MMNeat7extView)((View)localObject).findViewById(2131298739)).aq(this.yoG.dyI);
-    localTextView.setText(paramxr.wSB);
-    paramxr = new com.tencent.mm.ui.widget.a.f.a(this.mContext);
-    paramxr.au(this.yoG.title).hg((View)localObject);
-    paramxr.aZu(this.mContext.getResources().getString(2131755903));
-    localObject = com.tencent.mm.ui.tools.b.c.d(parama);
-    ((com.tencent.mm.ui.tools.b.c)localObject).njK = com.tencent.mm.ui.tools.f.a.Lfg;
-    localObject = ((com.tencent.mm.ui.tools.b.c)localObject).kj(1, 1);
-    ((com.tencent.mm.ui.tools.b.c)localObject).LiL = false;
-    ((com.tencent.mm.ui.tools.b.c)localObject).a(null);
+    this.CqB = parama;
+    this.Cpw = paramzd;
+    Object localObject = View.inflate(this.mContext, 2131496041, null);
+    TextView localTextView = (TextView)((View)localObject).findViewById(2131303013);
+    parama = (EditText)((View)localObject).findViewById(2131301551);
+    ((MMNeat7extView)((View)localObject).findViewById(2131299180)).aw(this.Cpw.dQx);
+    localTextView.setText(paramzd.AOv);
+    paramzd = new com.tencent.mm.ui.widget.a.f.a(this.mContext);
+    paramzd.aC(this.Cpw.title).hu((View)localObject);
+    paramzd.boA(this.mContext.getResources().getString(2131755995));
+    com.tencent.mm.ui.tools.b.c.f(parama).a(com.tencent.mm.ui.tools.f.a.Quh).lv(1, 1).CN(false).a(null);
     parama.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
-        AppMethodBeat.i(190004);
-        if (paramxr.jfl != null)
+        AppMethodBeat.i(213751);
+        if (paramzd.kdo != null)
         {
           if (parama.length() > 0)
           {
-            paramxr.jfl.aaW(c.this.mContext.getResources().getColor(2131099770));
-            paramxr.jfl.getButton(-1).setEnabled(true);
-            AppMethodBeat.o(190004);
+            paramzd.kdo.ajL(c.this.mContext.getResources().getColor(2131099784));
+            paramzd.kdo.getButton(-1).setEnabled(true);
+            AppMethodBeat.o(213751);
             return;
           }
-          paramxr.jfl.aaW(-2141754475);
-          paramxr.jfl.getButton(-1).setEnabled(false);
+          paramzd.kdo.ajL(-2141754475);
+          paramzd.kdo.getButton(-1).setEnabled(false);
         }
-        AppMethodBeat.o(190004);
+        AppMethodBeat.o(213751);
       }
       
       public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     });
-    ar.o(new Runnable()
+    MMHandlerThread.postToMainThreadDelayed(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(190007);
+        AppMethodBeat.i(213754);
         parama.requestFocus();
         ((InputMethodManager)c.this.mContext.getSystemService("input_method")).showSoftInput(parama, 0);
-        AppMethodBeat.o(190007);
+        AppMethodBeat.o(213754);
       }
     }, 200L);
-    localObject = new hn();
-    ((hn)localObject).etH = paramw.vxx;
-    localObject = ((hn)localObject).qx(paramw.username);
-    ((hn)localObject).etA = 1L;
-    ((hn)localObject).aLH();
-    paramxr.c(new f.c()
+    localObject = new le();
+    ((le)localObject).eXN = paramw.yRL;
+    localObject = ((le)localObject).yr(paramw.username);
+    ((le)localObject).eXG = 1L;
+    ((le)localObject).bfK();
+    paramzd.c(new f.c()
     {
-      public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
+      public final void e(boolean paramAnonymousBoolean, String paramAnonymousString)
       {
-        AppMethodBeat.i(190008);
+        AppMethodBeat.i(213755);
         if (paramAnonymousBoolean)
         {
-          paramAnonymousString = new hn();
-          paramAnonymousString.etH = paramw.vxx;
-          paramAnonymousString = paramAnonymousString.qx(paramw.username);
-          paramAnonymousString.etA = 3L;
-          paramAnonymousString.aLH();
-          c.this.ypK.axB(parama.getText().toString());
-          AppMethodBeat.o(190008);
+          paramAnonymousString = new le();
+          paramAnonymousString.eXN = paramw.yRL;
+          paramAnonymousString = paramAnonymousString.yr(paramw.username);
+          paramAnonymousString.eXG = 3L;
+          paramAnonymousString.bfK();
+          c.this.CqB.aMb(parama.getText().toString());
+          AppMethodBeat.o(213755);
           return;
         }
-        paramAnonymousString = new hn();
-        paramAnonymousString.etH = paramw.vxx;
-        paramAnonymousString = paramAnonymousString.qx(paramw.username);
-        paramAnonymousString.etA = 2L;
-        paramAnonymousString.aLH();
-        c.this.ypK.onCancel();
-        AppMethodBeat.o(190008);
+        paramAnonymousString = new le();
+        paramAnonymousString.eXN = paramw.yRL;
+        paramAnonymousString = paramAnonymousString.yr(paramw.username);
+        paramAnonymousString.eXG = 2L;
+        paramAnonymousString.bfK();
+        c.this.CqB.onCancel();
+        AppMethodBeat.o(213755);
       }
     }).show();
-    if ((paramxr.jfl != null) && (bu.ah(parama.getText())))
+    if ((paramzd.kdo != null) && (Util.isNullOrNil(parama.getText())))
     {
-      paramxr.jfl.getButton(-1).setEnabled(false);
-      paramxr.jfl.aaW(-2141754475);
+      paramzd.kdo.getButton(-1).setEnabled(false);
+      paramzd.kdo.ajL(-2141754475);
     }
     AppMethodBeat.o(67940);
   }
   
   public static abstract interface a
   {
-    public abstract void axB(String paramString);
+    public abstract void aMb(String paramString);
     
     public abstract void onCancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,163 +2,176 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.g.a;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.atn;
-import com.tencent.mm.protocal.protobuf.bou;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.ben;
+import com.tencent.mm.protocal.protobuf.cbm;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  static void DD(int paramInt)
+  static void Hq(int paramInt)
   {
-    AppMethodBeat.i(196166);
-    atn localatn2 = csg();
-    atn localatn1 = localatn2;
-    if (localatn2 == null) {
-      localatn1 = new atn();
+    AppMethodBeat.i(220598);
+    ben localben2 = cQO();
+    ben localben1 = localben2;
+    if (localben2 == null) {
+      localben1 = new ben();
     }
-    localatn1.type = paramInt;
-    a(localatn1);
-    AppMethodBeat.o(196166);
+    localben1.type = paramInt;
+    a(localben1);
+    AppMethodBeat.o(220598);
   }
   
-  public static void a(atn paramatn)
+  public static void a(ben paramben)
   {
     AppMethodBeat.i(122285);
-    if (paramatn == null)
+    if (paramben == null)
     {
       AppMethodBeat.o(122285);
       return;
     }
     try
     {
-      com.tencent.mm.plugin.expt.hellhound.core.a.b.p("mmkv_key_hell_floatS", paramatn.toByteArray());
+      com.tencent.mm.plugin.expt.hellhound.core.a.b.o("mmkv_key_hell_floatS", paramben.toByteArray());
       AppMethodBeat.o(122285);
       return;
     }
-    catch (Exception paramatn)
+    catch (Exception paramben)
     {
-      ae.printErrStackTrace("HABBYGE-MALI.FloatSessionDao", paramatn, "FloatSessionDao._writeBack: %s", new Object[] { paramatn.getMessage() });
+      Log.printErrStackTrace("HABBYGE-MALI.FloatSessionDao", paramben, "FloatSessionDao._writeBack: %s", new Object[] { paramben.getMessage() });
       AppMethodBeat.o(122285);
     }
   }
   
-  public static void b(bou parambou)
+  public static void b(cbm paramcbm)
   {
     AppMethodBeat.i(122279);
-    if (parambou == null)
+    if (paramcbm == null)
     {
       AppMethodBeat.o(122279);
       return;
     }
-    atn localatn2 = csg();
-    atn localatn1 = localatn2;
-    if (localatn2 == null) {
-      localatn1 = new atn();
+    ben localben2 = cQO();
+    ben localben1 = localben2;
+    if (localben2 == null) {
+      localben1 = new ben();
     }
-    localatn1.GKr = new bou();
-    localatn1.GKr.duQ = parambou.duQ;
-    localatn1.GKr.dAa = parambou.dAa;
-    localatn1.GKr.aHQ = parambou.aHQ;
-    a(localatn1);
+    localben1.LOl = new cbm();
+    localben1.LOl.dMl = paramcbm.dMl;
+    localben1.LOl.dRM = paramcbm.dRM;
+    localben1.LOl.aHK = paramcbm.aHK;
+    a(localben1);
     AppMethodBeat.o(122279);
   }
   
-  public static bou csd()
+  public static cbm cQL()
   {
     AppMethodBeat.i(122280);
-    Object localObject = csg();
+    Object localObject = cQO();
     if (localObject == null)
     {
       AppMethodBeat.o(122280);
       return null;
     }
-    localObject = ((atn)localObject).GKr;
+    localObject = ((ben)localObject).LOl;
     AppMethodBeat.o(122280);
     return localObject;
   }
   
-  public static int cse()
+  public static int cQM()
   {
     AppMethodBeat.i(184390);
-    atn localatn = csg();
-    if (localatn == null)
+    ben localben = cQO();
+    if (localben == null)
     {
       AppMethodBeat.o(184390);
       return 8;
     }
-    int i = localatn.GKv;
+    int i = localben.LOp;
     AppMethodBeat.o(184390);
     return i;
   }
   
-  public static Pair<Integer, Integer> csf()
+  public static Pair<Integer, Integer> cQN()
   {
     AppMethodBeat.i(122284);
-    Object localObject = csg();
+    Object localObject = cQO();
     if (localObject == null)
     {
       AppMethodBeat.o(122284);
       return null;
     }
-    localObject = Pair.create(Integer.valueOf(((atn)localObject).GKs), Integer.valueOf(((atn)localObject).GKt));
+    localObject = Pair.create(Integer.valueOf(((ben)localObject).LOm), Integer.valueOf(((ben)localObject).LOn));
     AppMethodBeat.o(122284);
     return localObject;
   }
   
-  public static atn csg()
+  public static ben cQO()
   {
     AppMethodBeat.i(122286);
     byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("mmkv_key_hell_floatS");
     if ((arrayOfByte == null) || (arrayOfByte.length <= 0))
     {
-      ae.e("HABBYGE-MALI.FloatSessionDao", "HellSession read(): NULL");
       AppMethodBeat.o(122286);
       return null;
     }
-    atn localatn = new atn();
+    ben localben = new ben();
     try
     {
-      localatn.parseFrom(arrayOfByte);
+      localben.parseFrom(arrayOfByte);
       AppMethodBeat.o(122286);
-      return localatn;
+      return localben;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("HABBYGE-MALI.FloatSessionDao", localException, "FloatSessionDao._read: %s", new Object[] { localException.getMessage() });
+      Log.printErrStackTrace("HABBYGE-MALI.FloatSessionDao", localException, "FloatSessionDao._read: %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(122286);
     }
     return null;
   }
   
-  public static void fx(int paramInt1, int paramInt2)
+  public static void fN(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(122283);
-    atn localatn2 = csg();
-    atn localatn1 = localatn2;
-    if (localatn2 == null) {
-      localatn1 = new atn();
+    ben localben2 = cQO();
+    ben localben1 = localben2;
+    if (localben2 == null) {
+      localben1 = new ben();
     }
     if (paramInt1 != -1) {
-      localatn1.GKs = paramInt1;
+      localben1.LOm = paramInt1;
     }
     if (paramInt2 != -1) {
-      localatn1.GKt = paramInt2;
+      localben1.LOn = paramInt2;
     }
-    a(localatn1);
+    a(localben1);
     AppMethodBeat.o(122283);
   }
   
-  public static void lc(boolean paramBoolean)
+  static int getMethod()
+  {
+    AppMethodBeat.i(220599);
+    ben localben = cQO();
+    if (localben == null)
+    {
+      AppMethodBeat.o(220599);
+      return -1;
+    }
+    int i = localben.type;
+    AppMethodBeat.o(220599);
+    return i;
+  }
+  
+  public static void mk(boolean paramBoolean)
   {
     AppMethodBeat.i(122281);
-    atn localatn2 = csg();
-    atn localatn1 = localatn2;
-    if (localatn2 == null) {
-      localatn1 = new atn();
+    ben localben2 = cQO();
+    ben localben1 = localben2;
+    if (localben2 == null) {
+      localben1 = new ben();
     }
-    localatn1.GKu = paramBoolean;
-    a(localatn1);
-    ae.d("HABBYGE-MALI.FloatSessionDao", "setClickMenuItem: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    localben1.LOo = paramBoolean;
+    a(localben1);
+    Log.d("HABBYGE-MALI.FloatSessionDao", "setClickMenuItem: %b", new Object[] { Boolean.valueOf(paramBoolean) });
     AppMethodBeat.o(122281);
   }
 }

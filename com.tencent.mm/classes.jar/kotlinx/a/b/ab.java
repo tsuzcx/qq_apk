@@ -5,29 +5,29 @@ import kotlinx.a.h;
 import kotlinx.a.l.f;
 import kotlinx.a.n;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/IntSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Integer;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/IntSerializer;", "Lkotlinx/serialization/KSerializer;", "", "()V", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "getDescriptor", "()Lkotlinx/serialization/SerialDescriptor;", "deserialize", "decoder", "Lkotlinx/serialization/Decoder;", "(Lkotlinx/serialization/Decoder;)Ljava/lang/Integer;", "serialize", "", "encoder", "Lkotlinx/serialization/Encoder;", "value", "kotlinx-serialization-runtime"})
 public final class ab
   implements h<Integer>
 {
-  private static final n Ois;
-  public static final ab Ojy;
+  private static final n TXo;
+  public static final ab TYt;
   
   static
   {
-    AppMethodBeat.i(199708);
-    Ojy = new ab();
-    Ois = (n)new ay("kotlin.Int", (kotlinx.a.l)l.f.OiA);
-    AppMethodBeat.o(199708);
+    AppMethodBeat.i(225480);
+    TYt = new ab();
+    TXo = (n)new ay("kotlin.Int", (kotlinx.a.l)l.f.TXw);
+    AppMethodBeat.o(225480);
   }
   
-  public final n eOR()
+  public final n fWv()
   {
-    return Ois;
+    return TXo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlinx.a.b.ab
  * JD-Core Version:    0.7.0.1
  */

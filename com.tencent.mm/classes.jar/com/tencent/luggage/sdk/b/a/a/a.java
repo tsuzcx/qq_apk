@@ -7,51 +7,47 @@ import com.tencent.mm.game.liblockstep.LockStepNative;
 import com.tencent.mm.game.liblockstep.LockStepNative.ILockStepListener;
 import com.tencent.mm.game.liblockstep.LockStepNative.ILockStepReportListener;
 import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.config.k;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.x.f;
-import com.tencent.mm.plugin.appbrand.jsapi.x.f.c;
-import com.tencent.mm.plugin.appbrand.jsruntime.i;
-import com.tencent.mm.plugin.appbrand.jsruntime.m.a;
-import com.tencent.mm.plugin.appbrand.jsruntime.q;
-import com.tencent.mm.plugin.appbrand.jsruntime.v;
-import com.tencent.mm.plugin.appbrand.s.b;
-import com.tencent.mm.plugin.appbrand.y.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.plugin.appbrand.jsapi.z.f.c;
+import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.m.m.a;
+import com.tencent.mm.plugin.appbrand.m.q;
+import com.tencent.mm.plugin.appbrand.m.v;
+import com.tencent.mm.plugin.appbrand.w.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public final class a
 {
-  public String cnA;
-  public boolean cnB;
-  public final a cnC;
-  protected LockStepNative cnz;
+  protected LockStepNative czB;
+  public String czC;
+  public boolean czD;
+  public final a czE;
   
   public a()
   {
     AppMethodBeat.i(146750);
-    this.cnA = null;
-    this.cnB = true;
-    this.cnC = new a(new Runnable()
+    this.czC = null;
+    this.czD = true;
+    this.czE = new a(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(146748);
         synchronized (a.this)
         {
-          if (a.this.cnz != null)
+          if (a.this.czB != null)
           {
-            ae.i("Luggage.LockStepNativeInstallHelper", "DestroyTask destoryLockStep");
-            a.this.cnz.destoryLockStep();
-            a.this.cnz = null;
+            Log.i("Luggage.LockStepNativeInstallHelper", "DestroyTask destoryLockStep");
+            a.this.czB.destoryLockStep();
+            a.this.czB = null;
             AppMethodBeat.o(146748);
             return;
           }
-          ae.i("Luggage.LockStepNativeInstallHelper", "DestroyTask lockStepNative is null");
+          Log.i("Luggage.LockStepNativeInstallHelper", "DestroyTask lockStepNative is null");
         }
       }
     });
@@ -63,40 +59,40 @@ public final class a
     AppMethodBeat.i(146753);
     try
     {
-      f.c localc1 = f.dx(ak.getContext());
-      ae.i("Luggage.LockStepNativeInstallHelper", "networkType = %s", new Object[] { localc1.value });
-      ae.i("Luggage.LockStepNativeInstallHelper", "getStatisticsNetType ret:%d", new Object[] { Integer.valueOf(az.getNetType(ak.getContext())) });
-      f.c localc2 = f.c.lnh;
+      f.c localc1 = com.tencent.mm.plugin.appbrand.jsapi.z.f.dS(MMApplicationContext.getContext());
+      Log.i("Luggage.LockStepNativeInstallHelper", "networkType = %s", new Object[] { localc1.value });
+      Log.i("Luggage.LockStepNativeInstallHelper", "getStatisticsNetType ret:%d", new Object[] { Integer.valueOf(NetStatusUtil.getNetType(MMApplicationContext.getContext())) });
+      f.c localc2 = f.c.mtL;
       if (localc1 == localc2)
       {
         AppMethodBeat.o(146753);
         return -1;
       }
-      localc2 = f.c.lni;
+      localc2 = f.c.mtM;
       if (localc1 == localc2)
       {
         AppMethodBeat.o(146753);
         return 2;
       }
-      localc2 = f.c.lnj;
+      localc2 = f.c.mtN;
       if (localc1 == localc2)
       {
         AppMethodBeat.o(146753);
         return 3;
       }
-      localc2 = f.c.lnk;
+      localc2 = f.c.mtO;
       if (localc1 == localc2)
       {
         AppMethodBeat.o(146753);
         return 4;
       }
-      localc2 = f.c.lnl;
+      localc2 = f.c.mtP;
       if (localc1 == localc2)
       {
         AppMethodBeat.o(146753);
         return 5;
       }
-      localc2 = f.c.lnm;
+      localc2 = f.c.mtQ;
       if (localc1 == localc2)
       {
         AppMethodBeat.o(146753);
@@ -107,14 +103,14 @@ public final class a
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("Luggage.LockStepNativeInstallHelper", localException, "getStatisticsNetType_", new Object[0]);
+      Log.printErrStackTrace("Luggage.LockStepNativeInstallHelper", localException, "getStatisticsNetType_", new Object[0]);
       AppMethodBeat.o(146753);
     }
     return -1;
   }
   
   final class a
-    extends l
+    extends com.tencent.mm.plugin.appbrand.ac.l
     implements m.a
   {
     a(Runnable paramRunnable)
@@ -132,7 +128,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.b.a.a.a
  * JD-Core Version:    0.7.0.1
  */

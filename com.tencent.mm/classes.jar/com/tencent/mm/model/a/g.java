@@ -3,34 +3,34 @@ package com.tencent.mm.model.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.u;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.y;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class g
-  implements az
+  implements bd
 {
-  private c hLC = null;
+  private c iGE = null;
   
-  private static g aDg()
+  private static g aWS()
   {
     AppMethodBeat.i(153100);
-    g localg = (g)u.ap(g.class);
+    g localg = (g)y.at(g.class);
     AppMethodBeat.o(153100);
     return localg;
   }
   
-  public static c aDh()
+  public static c aWT()
   {
     AppMethodBeat.i(153103);
-    com.tencent.mm.kernel.g.ajP().aiU();
-    if (aDg().hLC == null) {
-      aDg().hLC = new c();
+    com.tencent.mm.kernel.g.aAf().azk();
+    if (aWS().iGE == null) {
+      aWS().iGE = new c();
     }
-    c localc = aDg().hLC;
+    c localc = aWS().iGE;
     AppMethodBeat.o(153103);
     return localc;
   }
@@ -45,15 +45,15 @@ public class g
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(153101);
-    c localc = aDh();
+    c localc = aWT();
     long l = System.currentTimeMillis();
     try
     {
-      localc.Ch((String)com.tencent.mm.kernel.g.ajR().ajA().get(328193, null));
-      if (localc.aDf()) {
-        f.Cj(localc.hLx.hLt);
+      localc.KS((String)com.tencent.mm.kernel.g.aAh().azQ().get(328193, null));
+      if (localc.aWR()) {
+        f.KU(localc.iGz.iGw);
       }
-      ae.i("MicroMsg.abtest.AbTestManager", "[Abtest] init use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
+      Log.i("MicroMsg.abtest.AbTestManager", "[Abtest] init use time:%d", new Object[] { Long.valueOf(System.currentTimeMillis() - l) });
       AppMethodBeat.o(153101);
       return;
     }
@@ -61,7 +61,7 @@ public class g
     {
       for (;;)
       {
-        ae.e("MicroMsg.abtest.AbTestManager", "[Abtest] updateAbTestCase exception:%s", new Object[] { localException.toString() });
+        Log.e("MicroMsg.abtest.AbTestManager", "[Abtest] updateAbTestCase exception:%s", new Object[] { localException.toString() });
       }
     }
   }
@@ -69,9 +69,9 @@ public class g
   public void onAccountRelease()
   {
     AppMethodBeat.i(153102);
-    c localc = aDh();
-    localc.hLy = null;
-    localc.hLx = null;
+    c localc = aWT();
+    localc.iGA = null;
+    localc.iGz = null;
     AppMethodBeat.o(153102);
   }
   

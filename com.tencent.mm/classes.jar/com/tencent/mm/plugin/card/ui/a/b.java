@@ -10,19 +10,19 @@ public final class b
     super(paramMMActivity);
   }
   
-  public final boolean bYV()
+  public final boolean cwL()
   {
     return true;
   }
   
-  public final boolean bYW()
+  public final boolean cwM()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.b
  * JD-Core Version:    0.7.0.1
  */

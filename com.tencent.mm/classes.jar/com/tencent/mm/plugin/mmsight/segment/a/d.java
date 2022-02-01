@@ -12,12 +12,12 @@ import com.tencent.mm.compatible.b.k;
 public final class d
   implements a
 {
-  private MediaPlayer iAq;
+  private MediaPlayer jvF;
   
   public d()
   {
     AppMethodBeat.i(107751);
-    this.iAq = new k();
+    this.jvF = new k();
     AppMethodBeat.o(107751);
   }
   
@@ -26,16 +26,16 @@ public final class d
     AppMethodBeat.i(107768);
     if (parama == null)
     {
-      this.iAq.setOnErrorListener(null);
+      this.jvF.setOnErrorListener(null);
       AppMethodBeat.o(107768);
       return;
     }
-    this.iAq.setOnErrorListener(new MediaPlayer.OnErrorListener()
+    this.jvF.setOnErrorListener(new MediaPlayer.OnErrorListener()
     {
       public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(107750);
-        boolean bool = parama.gB(paramAnonymousInt1, paramAnonymousInt2);
+        boolean bool = parama.hc(paramAnonymousInt1, paramAnonymousInt2);
         AppMethodBeat.o(107750);
         return bool;
       }
@@ -48,16 +48,16 @@ public final class d
     AppMethodBeat.i(107765);
     if (paramb == null)
     {
-      this.iAq.setOnPreparedListener(null);
+      this.jvF.setOnPreparedListener(null);
       AppMethodBeat.o(107765);
       return;
     }
-    this.iAq.setOnPreparedListener(new MediaPlayer.OnPreparedListener()
+    this.jvF.setOnPreparedListener(new MediaPlayer.OnPreparedListener()
     {
       public final void onPrepared(MediaPlayer paramAnonymousMediaPlayer)
       {
         AppMethodBeat.i(107747);
-        paramb.dw(paramAnonymousMediaPlayer);
+        paramb.dD(paramAnonymousMediaPlayer);
         AppMethodBeat.o(107747);
       }
     });
@@ -69,16 +69,16 @@ public final class d
     AppMethodBeat.i(107766);
     if (paramc == null)
     {
-      this.iAq.setOnSeekCompleteListener(null);
+      this.jvF.setOnSeekCompleteListener(null);
       AppMethodBeat.o(107766);
       return;
     }
-    this.iAq.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener()
+    this.jvF.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener()
     {
       public final void onSeekComplete(MediaPlayer paramAnonymousMediaPlayer)
       {
         AppMethodBeat.i(107748);
-        paramc.dx(paramAnonymousMediaPlayer);
+        paramc.dE(paramAnonymousMediaPlayer);
         AppMethodBeat.o(107748);
       }
     });
@@ -90,16 +90,16 @@ public final class d
     AppMethodBeat.i(107767);
     if (paramd == null)
     {
-      this.iAq.setOnVideoSizeChangedListener(null);
+      this.jvF.setOnVideoSizeChangedListener(null);
       AppMethodBeat.o(107767);
       return;
     }
-    this.iAq.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener()
+    this.jvF.setOnVideoSizeChangedListener(new MediaPlayer.OnVideoSizeChangedListener()
     {
       public final void onVideoSizeChanged(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(107749);
-        paramd.ak(paramAnonymousInt1, paramAnonymousInt2, 0);
+        paramd.ap(paramAnonymousInt1, paramAnonymousInt2, 0);
         AppMethodBeat.o(107749);
       }
     });
@@ -109,7 +109,7 @@ public final class d
   public final int getCurrentPosition()
   {
     AppMethodBeat.i(107760);
-    int i = this.iAq.getCurrentPosition();
+    int i = this.jvF.getCurrentPosition();
     AppMethodBeat.o(107760);
     return i;
   }
@@ -117,7 +117,7 @@ public final class d
   public final int getDuration()
   {
     AppMethodBeat.i(107761);
-    int i = this.iAq.getDuration();
+    int i = this.jvF.getDuration();
     AppMethodBeat.o(107761);
     return i;
   }
@@ -125,7 +125,7 @@ public final class d
   public final boolean isPlaying()
   {
     AppMethodBeat.i(107758);
-    boolean bool = this.iAq.isPlaying();
+    boolean bool = this.jvF.isPlaying();
     AppMethodBeat.o(107758);
     return bool;
   }
@@ -133,42 +133,42 @@ public final class d
   public final void pause()
   {
     AppMethodBeat.i(107757);
-    this.iAq.pause();
+    this.jvF.pause();
     AppMethodBeat.o(107757);
   }
   
   public final void prepareAsync()
   {
     AppMethodBeat.i(107754);
-    this.iAq.prepareAsync();
+    this.jvF.prepareAsync();
     AppMethodBeat.o(107754);
   }
   
   public final void release()
   {
     AppMethodBeat.i(107762);
-    this.iAq.release();
+    this.jvF.release();
     AppMethodBeat.o(107762);
   }
   
   public final void seekTo(int paramInt)
   {
     AppMethodBeat.i(107759);
-    this.iAq.seekTo(paramInt);
+    this.jvF.seekTo(paramInt);
     AppMethodBeat.o(107759);
   }
   
   public final void setAudioStreamType(int paramInt)
   {
     AppMethodBeat.i(107763);
-    this.iAq.setAudioStreamType(paramInt);
+    this.jvF.setAudioStreamType(paramInt);
     AppMethodBeat.o(107763);
   }
   
   public final void setDataSource(String paramString)
   {
     AppMethodBeat.i(107753);
-    this.iAq.setDataSource(paramString);
+    this.jvF.setDataSource(paramString);
     AppMethodBeat.o(107753);
   }
   
@@ -177,34 +177,34 @@ public final class d
   public final void setLooping(boolean paramBoolean)
   {
     AppMethodBeat.i(107764);
-    this.iAq.setLooping(paramBoolean);
+    this.jvF.setLooping(paramBoolean);
     AppMethodBeat.o(107764);
   }
   
   public final void setSurface(Surface paramSurface)
   {
     AppMethodBeat.i(107752);
-    this.iAq.setSurface(paramSurface);
+    this.jvF.setSurface(paramSurface);
     AppMethodBeat.o(107752);
   }
   
   public final void start()
   {
     AppMethodBeat.i(107755);
-    this.iAq.start();
+    this.jvF.start();
     AppMethodBeat.o(107755);
   }
   
   public final void stop()
   {
     AppMethodBeat.i(107756);
-    this.iAq.stop();
+    this.jvF.stop();
     AppMethodBeat.o(107756);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.a.d
  * JD-Core Version:    0.7.0.1
  */

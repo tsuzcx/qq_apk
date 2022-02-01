@@ -14,8 +14,8 @@ public final class c$2
   public final void a(e parame)
   {
     AppMethodBeat.i(158958);
-    if (this.kgZ != null) {
-      this.kgZ.a(parame);
+    if (this.lkI != null) {
+      this.lkI.a(parame);
     }
     AppMethodBeat.o(158958);
   }
@@ -23,22 +23,22 @@ public final class c$2
   public final void b(e parame)
   {
     AppMethodBeat.i(158957);
-    String str = parame.khG.get("SID");
+    String str = parame.llp.get("SID");
     com.tencent.mm.plugin.appbrand.g.c.b.c localc = new com.tencent.mm.plugin.appbrand.g.c.b.c();
-    parame = parame.khG;
-    localc.khD = parame.get("SID");
+    parame = parame.llp;
+    localc.llm = parame.get("SID");
     localc.timeout = parame.get("TIMEOUT");
-    localc.khE = this.kgY;
-    this.kha.kgW.put(str, localc);
-    if (this.kgZ != null) {
-      this.kgZ.a(localc);
+    localc.lln = this.lkH;
+    this.lkJ.lkF.put(str, localc);
+    if (this.lkI != null) {
+      this.lkI.a(localc);
     }
     AppMethodBeat.o(158957);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.c.2
  * JD-Core Version:    0.7.0.1
  */

@@ -5,40 +5,40 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class g
 {
-  int dEu;
-  int dgI;
-  int hPF;
-  int hPG;
-  String hPH;
-  int hPI;
-  int hPJ;
-  String hPK;
-  String hPL;
-  int hPM;
-  int hPN;
+  int bNu;
+  int cSx;
+  int iKM;
+  int iKN;
+  String iKO;
+  int iKP;
+  int iKQ;
+  String iKR;
+  String iKS;
+  int iKT;
+  int iKU;
   String username;
   
   public g()
   {
     AppMethodBeat.i(150279);
-    this.dEu = -1;
+    this.cSx = -1;
     reset();
     AppMethodBeat.o(150279);
   }
   
-  public final String aEE()
+  public final String aYp()
   {
-    if (this.hPH == null) {
+    if (this.iKO == null) {
       return "";
     }
-    return this.hPH;
+    return this.iKO;
   }
   
   public final ContentValues convertTo()
   {
     AppMethodBeat.i(150280);
     ContentValues localContentValues = new ContentValues();
-    if ((this.dEu & 0x1) != 0)
+    if ((this.cSx & 0x1) != 0)
     {
       if (this.username == null)
       {
@@ -48,55 +48,55 @@ public final class g
     }
     else
     {
-      if ((this.dEu & 0x2) != 0) {
-        localContentValues.put("imgwidth", Integer.valueOf(this.hPF));
+      if ((this.cSx & 0x2) != 0) {
+        localContentValues.put("imgwidth", Integer.valueOf(this.iKM));
       }
-      if ((this.dEu & 0x4) != 0) {
-        localContentValues.put("imgheigth", Integer.valueOf(this.hPG));
+      if ((this.cSx & 0x4) != 0) {
+        localContentValues.put("imgheigth", Integer.valueOf(this.iKN));
       }
-      if ((this.dEu & 0x8) != 0) {
-        localContentValues.put("imgformat", aEE());
+      if ((this.cSx & 0x8) != 0) {
+        localContentValues.put("imgformat", aYp());
       }
-      if ((this.dEu & 0x10) != 0) {
-        localContentValues.put("totallen", Integer.valueOf(this.hPI));
+      if ((this.cSx & 0x10) != 0) {
+        localContentValues.put("totallen", Integer.valueOf(this.iKP));
       }
-      if ((this.dEu & 0x20) != 0) {
-        localContentValues.put("startpos", Integer.valueOf(this.dgI));
+      if ((this.cSx & 0x20) != 0) {
+        localContentValues.put("startpos", Integer.valueOf(this.bNu));
       }
-      if ((this.dEu & 0x40) != 0) {
-        localContentValues.put("headimgtype", Integer.valueOf(this.hPJ));
+      if ((this.cSx & 0x40) != 0) {
+        localContentValues.put("headimgtype", Integer.valueOf(this.iKQ));
       }
-      if ((this.dEu & 0x80) != 0)
+      if ((this.cSx & 0x80) != 0)
       {
-        if (this.hPK != null) {
+        if (this.iKR != null) {
           break label291;
         }
         str = "";
         label193:
         localContentValues.put("reserved1", str);
       }
-      if ((this.dEu & 0x100) != 0) {
-        if (this.hPL != null) {
+      if ((this.cSx & 0x100) != 0) {
+        if (this.iKS != null) {
           break label299;
         }
       }
     }
     label291:
     label299:
-    for (String str = "";; str = this.hPL)
+    for (String str = "";; str = this.iKS)
     {
       localContentValues.put("reserved2", str);
-      if ((this.dEu & 0x200) != 0) {
-        localContentValues.put("reserved3", Integer.valueOf(this.hPM));
+      if ((this.cSx & 0x200) != 0) {
+        localContentValues.put("reserved3", Integer.valueOf(this.iKT));
       }
-      if ((this.dEu & 0x400) != 0) {
-        localContentValues.put("reserved4", Integer.valueOf(this.hPN));
+      if ((this.cSx & 0x400) != 0) {
+        localContentValues.put("reserved4", Integer.valueOf(this.iKU));
       }
       AppMethodBeat.o(150280);
       return localContentValues;
       str = this.username;
       break;
-      str = this.hPK;
+      str = this.iKR;
       break label193;
     }
   }
@@ -104,21 +104,21 @@ public final class g
   public final void reset()
   {
     this.username = "";
-    this.hPF = 0;
-    this.hPG = 0;
-    this.hPH = "";
-    this.hPI = 0;
-    this.dgI = 0;
-    this.hPJ = 0;
-    this.hPK = "";
-    this.hPL = "";
-    this.hPM = 0;
-    this.hPN = 0;
+    this.iKM = 0;
+    this.iKN = 0;
+    this.iKO = "";
+    this.iKP = 0;
+    this.bNu = 0;
+    this.iKQ = 0;
+    this.iKR = "";
+    this.iKS = "";
+    this.iKT = 0;
+    this.iKU = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.aj.g
  * JD-Core Version:    0.7.0.1
  */

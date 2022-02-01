@@ -1,31 +1,31 @@
 package com.tencent.mm.app.plugin.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fn;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.fq;
+import com.tencent.mm.sdk.event.IListener;
 
 public final class a$a
-  extends c<fn>
+  extends IListener<fq>
 {
-  a.i cXS;
-  a.e cXT;
-  a.f cXU;
-  a.d cXV;
-  a.h cXW;
-  a.g cXX;
-  a.c cXY;
-  a.b cXZ;
+  a.g doA;
+  a.c doB;
+  a.b doC;
+  a.i dov;
+  a.e dow;
+  a.f dox;
+  a.d doy;
+  a.h doz;
   
   public a$a()
   {
     AppMethodBeat.i(161260);
-    this.__eventId = fn.class.getName().hashCode();
+    this.__eventId = fq.class.getName().hashCode();
     AppMethodBeat.o(161260);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.plugin.b.a.a
  * JD-Core Version:    0.7.0.1
  */

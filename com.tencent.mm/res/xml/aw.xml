@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<paths
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <external-path name="external" path="" />
-    <root-path name="root_path" path="" />
-</paths>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="facebook_auth_tip" android:layout="@layout/b_7" android:title="@string/c74" />
+    <PreferenceCategory android:key="facebook_auth_cat" />
+    <Preference android:key="facebook_auth_bind_btn" android:layout="@layout/a6l" android:title="@string/c73" />
+    <Preference android:key="facebook_auth_account" android:layout="@layout/b8j" android:title="@string/c76" />
+    <PreferenceCategory android:key="facebook_auth_cat2" />
+    <Preference android:key="facebook_auth_unbind_btn" android:layout="@layout/bg7" android:title="@string/c7c" />
+</PreferenceScreen>

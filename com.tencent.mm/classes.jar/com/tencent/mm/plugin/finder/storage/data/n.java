@@ -1,62 +1,55 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.am;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.ana;
-import d.l;
+import com.tencent.mm.plugin.finder.feed.w;
+import com.tencent.mm.plugin.finder.model.c;
+import com.tencent.mm.protocal.protobuf.aqq;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/PageFinderItem;", "Lcom/tencent/mm/plugin/finder/storage/data/PageItem;", "source", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "(Lcom/tencent/mm/protocal/protobuf/FinderFPItem;)V", "type", "", "id", "", "finderObject", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "sourceFlag", "(IJLcom/tencent/mm/protocal/protobuf/FinderObject;I)V", "extract", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "targetDataType", "toRVFeed", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/data/LbsSectionOp;", "Lcom/tencent/mm/plugin/finder/storage/data/PageDataOp;", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "()V", "extract", "data", "Lcom/tencent/mm/protocal/protobuf/FinderFPItem;", "isTargetDataType", "", "dataType", "", "targetDataType", "plugin-finder_release"})
 public final class n
-  extends o
 {
-  public n(int paramInt1, long paramLong, FinderObject paramFinderObject, int paramInt2)
+  public static final n vGA;
+  
+  static
   {
-    AppMethodBeat.i(204434);
-    ana localana = this.sLi;
-    localana.id = paramLong;
-    localana.type = paramInt1;
-    localana.GFh = paramFinderObject;
-    localana.GFi = paramInt2;
-    paramFinderObject = h.sKR;
-    localana.dataType = 0;
-    AppMethodBeat.o(204434);
+    AppMethodBeat.i(252026);
+    vGA = new n();
+    AppMethodBeat.o(252026);
   }
   
-  public n(ana paramana)
+  public static c b(aqq paramaqq)
   {
-    super(paramana);
-    AppMethodBeat.i(204433);
-    AppMethodBeat.o(204433);
-  }
-  
-  public final am cLN()
-  {
-    AppMethodBeat.i(204432);
-    int i = this.sLi.dataType;
-    Object localObject = h.sKR;
-    if (i == 0)
+    int i = 1;
+    AppMethodBeat.i(252025);
+    p.h(paramaqq, "data");
+    if (paramaqq.dataType == 1) {}
+    while (i != 0)
     {
-      localObject = h.sKR;
-      localObject = h.a(this.sLi);
-      if (localObject != null)
+      paramaqq = paramaqq.LCF;
+      if (paramaqq != null)
       {
-        j localj = j.sKW;
-        localObject = j.g((FinderItem)localObject);
-        AppMethodBeat.o(204432);
-        return localObject;
+        w localw = w.tOM;
+        p.g(paramaqq, "it");
+        paramaqq = w.a(paramaqq);
+        AppMethodBeat.o(252025);
+        return paramaqq;
+        i = 0;
       }
-      AppMethodBeat.o(204432);
-      return null;
+      else
+      {
+        AppMethodBeat.o(252025);
+        return null;
+      }
     }
-    AppMethodBeat.o(204432);
+    AppMethodBeat.o(252025);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.n
  * JD-Core Version:    0.7.0.1
  */

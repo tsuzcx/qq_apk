@@ -6,8 +6,8 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.i;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,28 +17,26 @@ import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.vf;
-import com.tencent.mm.g.b.a.fu;
-import com.tencent.mm.g.b.a.fv;
+import com.tencent.mm.g.a.we;
+import com.tencent.mm.g.b.a.ji;
+import com.tencent.mm.g.b.a.jj;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.story.c.a.a.a;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.g.f.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.blur.BlurView;
 import com.tencent.mm.ui.blur.c;
-import d.g.b.p;
-import d.g.b.q;
-import d.v;
-import d.z;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -49,31 +47,35 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.t;
+import kotlin.x;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/story/ui/sns/DialogLifeStyle;", "context", "Landroid/content/Context;", "click", "Landroid/view/View$OnClickListener;", "(Landroid/content/Context;Landroid/view/View$OnClickListener;)V", "blurLayout", "Lcom/tencent/mm/ui/blur/BlurView;", "clearTxt", "Landroid/widget/TextView;", "entranceAdapter", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceView$EntranceAdapter;", "entranceRecycler", "Landroid/support/v7/widget/RecyclerView;", "noDataView", "Landroid/view/View;", "replyToIndexMap", "Ljava/util/LinkedHashMap;", "", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "shouldClear", "", "storyClearReport", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryEntranceExposeCleanStruct;", "storyTypeNewIndex", "", "storyTypeOlderIndex", "storyTypeReplyCount", "uiContext", "userNameList", "", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceView$DataObject;", "kotlin.jvm.PlatformType", "", "buildRender", "", "finish", "hideContent", "showContent", "Companion", "DataObject", "EntranceAdapter", "plugin-story_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/mm/plugin/story/ui/sns/DialogLifeStyle;", "context", "Landroid/content/Context;", "click", "Landroid/view/View$OnClickListener;", "(Landroid/content/Context;Landroid/view/View$OnClickListener;)V", "blurLayout", "Lcom/tencent/mm/ui/blur/BlurView;", "clearTxt", "Landroid/widget/TextView;", "entranceAdapter", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceView$EntranceAdapter;", "entranceRecycler", "Landroid/support/v7/widget/RecyclerView;", "noDataView", "Landroid/view/View;", "replyToIndexMap", "Ljava/util/LinkedHashMap;", "", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "shouldClear", "", "storyClearReport", "Lcom/tencent/mm/autogen/mmdata/rpt/StoryEntranceExposeCleanStruct;", "storyTypeNewIndex", "", "storyTypeOlderIndex", "storyTypeReplyCount", "uiContext", "userNameList", "", "Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceView$DataObject;", "kotlin.jvm.PlatformType", "", "buildRender", "", "finish", "hideContent", "showContent", "Companion", "DataObject", "EntranceAdapter", "plugin-story_release"})
 public final class d
   extends LinearLayout
   implements a
 {
-  public static final d.a BpI;
-  private int BpA;
-  private int BpB;
-  private View BpC;
-  private TextView BpD;
-  private boolean BpE;
-  private BlurView BpF;
-  private fu BpG;
-  private LinkedHashMap<String, ArrayList<Long>> BpH;
-  private RecyclerView Bpo;
-  private List<d.b> Bpr;
-  private d.c Bpy;
-  private int Bpz;
+  public static final a FAu;
+  private RecyclerView FAa;
+  private List<d.b> FAd;
+  private d.c FAk;
+  private int FAl;
+  private int FAm;
+  private int FAn;
+  private View FAo;
+  private TextView FAp;
+  private boolean FAq;
+  private BlurView FAr;
+  private ji FAs;
+  private LinkedHashMap<String, ArrayList<Long>> FAt;
   private Context uiContext;
   
   static
   {
     AppMethodBeat.i(119999);
-    BpI = new d.a((byte)0);
+    FAu = new a((byte)0);
     AppMethodBeat.o(119999);
   }
   
@@ -81,38 +83,38 @@ public final class d
   {
     super(???);
     AppMethodBeat.i(119998);
-    this.Bpz = -1;
-    this.BpA = -1;
-    this.BpB = -1;
-    this.Bpr = Collections.synchronizedList((List)new LinkedList());
-    this.BpG = new fu();
-    this.BpH = new LinkedHashMap();
+    this.FAl = -1;
+    this.FAm = -1;
+    this.FAn = -1;
+    this.FAd = Collections.synchronizedList((List)new LinkedList());
+    this.FAs = new ji();
+    this.FAt = new LinkedHashMap();
     this.uiContext = ???;
-    Object localObject1 = LayoutInflater.from(???).inflate(2131495690, (ViewGroup)this, true);
+    Object localObject1 = LayoutInflater.from(???).inflate(2131496595, (ViewGroup)this, true);
     if (localObject1 == null)
     {
-      ??? = new v("null cannot be cast to non-null type android.widget.LinearLayout");
+      ??? = new t("null cannot be cast to non-null type android.widget.LinearLayout");
       AppMethodBeat.o(119998);
       throw ???;
     }
     localObject1 = (LinearLayout)localObject1;
-    Object localObject4 = (LinearLayout)((LinearLayout)localObject1).findViewById(2131304983);
-    Object localObject2 = LayoutInflater.from(???).inflate(2131495688, null);
+    Object localObject4 = (LinearLayout)((LinearLayout)localObject1).findViewById(2131308133);
+    Object localObject2 = LayoutInflater.from(???).inflate(2131496593, null);
     Object localObject3 = new ViewGroup.LayoutParams(-1, -1);
-    if (((a.a)com.tencent.mm.plugin.story.c.a.a.AZY.att()).xNN)
+    if (((a.a)com.tencent.mm.plugin.story.c.a.a.FkW.aLT()).BNT)
     {
-      this.BpF = new BlurView(???);
-      Object localObject5 = this.BpF;
+      this.FAr = new BlurView(???);
+      Object localObject5 = this.FAr;
       if (localObject5 != null) {
-        ((BlurView)localObject5).adm(Color.parseColor("#B31D1D1D"));
+        ((BlurView)localObject5).alW(Color.parseColor("#B31D1D1D"));
       }
       localObject5 = this.uiContext;
       if (localObject5 == null) {
-        p.bdF("uiContext");
+        p.btv("uiContext");
       }
       if (localObject5 == null)
       {
-        ??? = new v("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
+        ??? = new t("null cannot be cast to non-null type com.tencent.mm.ui.MMActivity");
         AppMethodBeat.o(119998);
         throw ???;
       }
@@ -122,7 +124,7 @@ public final class d
       localObject5 = ((Window)localObject5).getDecorView();
       if (localObject5 == null)
       {
-        ??? = new v("null cannot be cast to non-null type android.view.ViewGroup");
+        ??? = new t("null cannot be cast to non-null type android.view.ViewGroup");
         AppMethodBeat.o(119998);
         throw ???;
       }
@@ -133,46 +135,46 @@ public final class d
       p.g(localObject6, "activity.window.decorView");
       localObject6 = ((View)localObject6).getBackground();
       i = com.tencent.mm.cb.a.fromDPToPix(getContext(), 20);
-      BlurView localBlurView = this.BpF;
+      BlurView localBlurView = this.FAr;
       if (localBlurView != null)
       {
-        localObject5 = localBlurView.B((ViewGroup)localObject5).fEl().G((Drawable)localObject6);
+        localObject5 = localBlurView.L((ViewGroup)localObject5).gMt().F((Drawable)localObject6);
         localObject6 = this.uiContext;
         if (localObject6 == null) {
-          p.bdF("uiContext");
+          p.btv("uiContext");
         }
-        ((BlurView)localObject5).b((com.tencent.mm.ui.blur.b)new com.tencent.mm.ui.blur.f((Context)localObject6)).bU(20.0F).fEk().bT(i * 1.0F);
+        ((BlurView)localObject5).b((com.tencent.mm.ui.blur.b)new com.tencent.mm.ui.blur.f((Context)localObject6)).cw(20.0F).gMs().cv(i * 1.0F);
       }
-      ((LinearLayout)localObject4).addView((View)this.BpF, (ViewGroup.LayoutParams)localObject3);
-      localObject4 = this.BpF;
+      ((LinearLayout)localObject4).addView((View)this.FAr, (ViewGroup.LayoutParams)localObject3);
+      localObject4 = this.FAr;
       if (localObject4 != null) {
         ((BlurView)localObject4).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
       }
-      ((LinearLayout)localObject1).findViewById(2131298372).setOnClickListener(???);
-      localObject2 = ((LinearLayout)localObject1).findViewById(2131302877);
+      ((LinearLayout)localObject1).findViewById(2131298781).setOnClickListener(???);
+      localObject2 = ((LinearLayout)localObject1).findViewById(2131305450);
       p.g(localObject2, "parent.findViewById<View>(R.id.no_data)");
-      this.BpC = ((View)localObject2);
-      localObject2 = ((LinearLayout)localObject1).findViewById(2131298351);
+      this.FAo = ((View)localObject2);
+      localObject2 = ((LinearLayout)localObject1).findViewById(2131298750);
       p.g(localObject2, "parent.findViewById<TextView>(R.id.clear_txt)");
-      this.BpD = ((TextView)localObject2);
-      this.BpD.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+      this.FAp = ((TextView)localObject2);
+      this.FAp.setOnClickListener((View.OnClickListener)new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(119982);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/sns/StoryEntranceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          paramAnonymousView = this.BpJ;
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/story/ui/sns/StoryEntranceView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          paramAnonymousView = this.FAv;
           boolean bool;
-          if (!d.a(this.BpJ))
+          if (!d.a(this.FAv))
           {
             bool = true;
             d.a(paramAnonymousView, bool);
-            if (!d.a(this.BpJ)) {
+            if (!d.a(this.FAv)) {
               break label96;
             }
-            d.b(this.BpJ);
+            d.b(this.FAv);
           }
           for (;;)
           {
@@ -182,102 +184,99 @@ public final class d
             bool = false;
             break;
             label96:
-            d.c(this.BpJ);
+            d.c(this.FAv);
           }
         }
       });
-      localObject1 = ((LinearLayout)localObject1).findViewById(2131305410);
+      localObject1 = ((LinearLayout)localObject1).findViewById(2131308616);
       p.g(localObject1, "parent.findViewById(R.id.story_entrance_recycler)");
-      this.Bpo = ((RecyclerView)localObject1);
-      this.Bpo.setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-      this.Bpy = new d.c(this);
-      this.Bpo.setItemViewCacheSize(0);
-      this.Bpo.setAdapter((RecyclerView.a)this.Bpy);
-      this.Bpy.sLA = ((d.g.a.m)new q(???) {});
-      ??? = com.tencent.mm.plugin.story.f.f.a.BeK.ekI();
-      localObject1 = com.tencent.mm.plugin.story.f.f.a.BeK.ekJ();
-      this.BpH = com.tencent.mm.plugin.story.f.f.a.BeK.ekK();
-      if (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxz, 1) == 1)
+      this.FAa = ((RecyclerView)localObject1);
+      this.FAa.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
+      this.FAk = new d.c(this);
+      this.FAa.setItemViewCacheSize(0);
+      this.FAa.setAdapter((RecyclerView.a)this.FAk);
+      this.FAk.uAj = ((kotlin.g.a.m)new q(???) {});
+      ??? = com.tencent.mm.plugin.story.f.f.a.FpB.fnj();
+      localObject1 = com.tencent.mm.plugin.story.f.f.a.FpB.fnk();
+      this.FAt = com.tencent.mm.plugin.story.f.f.a.FpB.fnl();
+      if (((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rPr, 1) == 1)
       {
         if (((Collection)???).isEmpty()) {
-          break label982;
+          break label980;
         }
         i = 1;
         label696:
         if (i == 0) {
-          break label987;
+          break label985;
         }
-        ??? = com.tencent.mm.plugin.story.g.f.BgS;
-        ??? = f.a.cb((String)???.get(0), false);
-        if (??? != null)
-        {
-          localObject2 = com.tencent.mm.plugin.story.ui.view.gallery.m.BwQ;
-          com.tencent.mm.plugin.story.ui.view.gallery.m.x(d.a.j.listOf(???.Bec), 5);
+        ??? = com.tencent.mm.plugin.story.g.f.FrJ;
+        ??? = f.a.ct((String)???.get(0), false);
+        if (??? != null) {
+          com.tencent.mm.plugin.story.ui.view.gallery.m.FHB.C(kotlin.a.j.listOf(???.FoT), 5);
         }
       }
-      label739:
-      ae.i("MicroMsg.StoryEntranceView", "userNames " + ???.size() + " lastUserNames " + ((List)localObject1).size());
-      if (((Map)this.BpH).isEmpty()) {
-        break label1054;
+      label737:
+      Log.i("MicroMsg.StoryEntranceView", "userNames " + ???.size() + " lastUserNames " + ((List)localObject1).size());
+      if (((Map)this.FAt).isEmpty()) {
+        break label1050;
       }
     }
-    label1052:
-    label1054:
+    label1048:
+    label1050:
     for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        this.Bpr.add(new d.b("", 4));
-        this.BpB = (this.BpH.size() + 1);
+        this.FAd.add(new d.b("", 4));
+        this.FAn = (this.FAt.size() + 1);
       }
-      ??? = this.BpH.entrySet();
+      ??? = this.FAt.entrySet();
       p.g(???, "replyToIndexMap.entries");
       synchronized ((Iterable)???)
       {
         localObject2 = ???.iterator();
         if (!((Iterator)localObject2).hasNext()) {
-          break label1059;
+          break label1055;
         }
         localObject4 = (Map.Entry)((Iterator)localObject2).next();
-        localObject3 = this.Bpr;
+        localObject3 = this.FAd;
         localObject4 = ((Map.Entry)localObject4).getKey();
         p.g(localObject4, "it.key");
         ((List)localObject3).add(new d.b((String)localObject4, 5));
       }
       p.g(localObject2, "contentLayout");
-      ((View)localObject2).setBackground(???.getResources().getDrawable(2131231155));
+      ((View)localObject2).setBackground(???.getResources().getDrawable(2131231202));
       ((LinearLayout)localObject4).addView((View)localObject2, (ViewGroup.LayoutParams)localObject3);
       break;
-      label982:
+      label980:
       i = 0;
       break label696;
-      label987:
+      label985:
       if (!((Collection)localObject1).isEmpty()) {}
       for (i = 1;; i = 0)
       {
         if (i == 0) {
-          break label1052;
+          break label1048;
         }
-        ??? = com.tencent.mm.plugin.story.g.f.BgS;
-        ??? = f.a.cb((String)((List)localObject1).get(0), false);
+        ??? = com.tencent.mm.plugin.story.g.f.FrJ;
+        ??? = f.a.ct((String)((List)localObject1).get(0), false);
         if (??? == null) {
           break;
         }
-        localObject2 = com.tencent.mm.plugin.story.ui.view.gallery.m.BwQ;
-        com.tencent.mm.plugin.story.ui.view.gallery.m.x(d.a.j.listOf(???.Bec), 5);
+        com.tencent.mm.plugin.story.ui.view.gallery.m.FHB.C(kotlin.a.j.listOf(???.FoT), 5);
         break;
       }
-      break label739;
+      break label737;
     }
-    label1059:
-    localObject2 = z.Nhr;
+    label1055:
+    localObject2 = x.SXb;
     if (!???.isEmpty())
     {
-      this.Bpz = this.Bpr.size();
-      this.Bpr.add(new d.b("", 3));
+      this.FAl = this.FAd.size();
+      this.FAd.add(new d.b("", 3));
     }
-    ??? = com.tencent.mm.plugin.story.h.h.BjR;
-    com.tencent.mm.plugin.story.h.h.eoe().iI(???.size());
+    ??? = com.tencent.mm.plugin.story.h.h.FuH;
+    com.tencent.mm.plugin.story.h.h.fqE().lI(???.size());
     ??? = "";
     for (;;)
     {
@@ -287,32 +286,32 @@ public final class d
         if (((Iterator)localObject2).hasNext())
         {
           localObject3 = (String)((Iterator)localObject2).next();
-          this.Bpr.add(new d.b((String)localObject3, 1));
-          localObject4 = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+          this.FAd.add(new d.b((String)localObject3, 1));
+          localObject4 = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
           p.g(localObject4, "MMKernel.service(IMessengerStorage::class.java)");
-          localObject4 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject4).azF().BH((String)localObject3);
+          localObject4 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject4).aSN().Kn((String)localObject3);
           p.g(localObject4, "contact");
-          if (((an)localObject4).adx())
+          if (((as)localObject4).arA())
           {
-            localObject4 = com.tencent.mm.plugin.story.h.h.BjR;
-            localObject4 = com.tencent.mm.plugin.story.h.h.eoe();
-            ((fv)localObject4).iJ(((fv)localObject4).TD() + 1);
+            localObject4 = com.tencent.mm.plugin.story.h.h.FuH;
+            localObject4 = com.tencent.mm.plugin.story.h.h.fqE();
+            ((jj)localObject4).lJ(((jj)localObject4).ahs() + 1);
           }
           ??? = ??? + '|' + (String)localObject3;
           continue;
         }
-        localObject2 = z.Nhr;
+        localObject2 = x.SXb;
         if (((CharSequence)???).length() > 0)
         {
           i = 1;
           ??? = ???;
           if (i == 0) {
-            break label1366;
+            break label1362;
           }
           if (??? != null) {
             break;
           }
-          ??? = new v("null cannot be cast to non-null type java.lang.String");
+          ??? = new t("null cannot be cast to non-null type java.lang.String");
           AppMethodBeat.o(119998);
           throw ???;
         }
@@ -321,17 +320,17 @@ public final class d
     }
     ??? = ???.substring(1);
     p.g(???, "(this as java.lang.String).substring(startIndex)");
-    label1366:
-    ??? = com.tencent.mm.plugin.story.h.h.BjR;
-    com.tencent.mm.plugin.story.h.h.eoe().pf(???);
-    ??? = com.tencent.mm.plugin.story.h.h.BjR;
-    com.tencent.mm.plugin.story.h.h.eoe().iK(((List)localObject1).size());
-    this.BpA = this.Bpr.size();
+    label1362:
+    ??? = com.tencent.mm.plugin.story.h.h.FuH;
+    com.tencent.mm.plugin.story.h.h.fqE().wO(???);
+    ??? = com.tencent.mm.plugin.story.h.h.FuH;
+    com.tencent.mm.plugin.story.h.h.fqE().lK(((List)localObject1).size());
+    this.FAm = this.FAd.size();
     if (!((Collection)localObject1).isEmpty()) {}
     for (i = 1;; i = 0)
     {
       if (i != 0) {
-        this.Bpr.add(new d.b("", 2));
+        this.FAd.add(new d.b("", 2));
       }
       ??? = "";
       for (;;)
@@ -342,32 +341,32 @@ public final class d
           if (((Iterator)localObject1).hasNext())
           {
             localObject2 = (String)((Iterator)localObject1).next();
-            this.Bpr.add(new d.b((String)localObject2, 1));
-            localObject3 = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+            this.FAd.add(new d.b((String)localObject2, 1));
+            localObject3 = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
             p.g(localObject3, "MMKernel.service(IMessengerStorage::class.java)");
-            localObject3 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject3).azF().BH((String)localObject2);
+            localObject3 = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject3).aSN().Kn((String)localObject2);
             p.g(localObject3, "contact");
-            if (((an)localObject3).adx())
+            if (((as)localObject3).arA())
             {
-              localObject3 = com.tencent.mm.plugin.story.h.h.BjR;
-              localObject3 = com.tencent.mm.plugin.story.h.h.eoe();
-              ((fv)localObject3).iL(((fv)localObject3).TE() + 1);
+              localObject3 = com.tencent.mm.plugin.story.h.h.FuH;
+              localObject3 = com.tencent.mm.plugin.story.h.h.fqE();
+              ((jj)localObject3).lL(((jj)localObject3).aht() + 1);
             }
             ??? = ??? + '|' + (String)localObject2;
             continue;
           }
-          localObject1 = z.Nhr;
+          localObject1 = x.SXb;
           if (((CharSequence)???).length() > 0)
           {
             i = 1;
             ??? = ???;
             if (i == 0) {
-              break label1690;
+              break label1686;
             }
             if (??? != null) {
               break;
             }
-            ??? = new v("null cannot be cast to non-null type java.lang.String");
+            ??? = new t("null cannot be cast to non-null type java.lang.String");
             AppMethodBeat.o(119998);
             throw ???;
           }
@@ -376,26 +375,26 @@ public final class d
       }
       ??? = ???.substring(1);
       p.g(???, "(this as java.lang.String).substring(startIndex)");
-      label1690:
-      ??? = com.tencent.mm.plugin.story.h.h.BjR;
-      com.tencent.mm.plugin.story.h.h.eoe().pg(???);
-      ??? = com.tencent.mm.plugin.story.h.h.BjR;
-      com.tencent.mm.plugin.story.h.h.eoe().lb(this.BpH.size());
-      ??? = com.tencent.mm.plugin.story.h.h.BjR;
-      com.tencent.mm.plugin.story.h.h.eof();
-      ??? = this.Bpy;
-      ??? = this.Bpr;
+      label1686:
+      ??? = com.tencent.mm.plugin.story.h.h.FuH;
+      com.tencent.mm.plugin.story.h.h.fqE().wP(???);
+      ??? = com.tencent.mm.plugin.story.h.h.FuH;
+      com.tencent.mm.plugin.story.h.h.fqE().sd(this.FAt.size());
+      ??? = com.tencent.mm.plugin.story.h.h.FuH;
+      com.tencent.mm.plugin.story.h.h.fqF();
+      ??? = this.FAk;
+      ??? = this.FAd;
       p.g(???, "userNameList");
       p.h(???, "extInfoList");
-      ???.gTw.clear();
-      ???.gTw.addAll((Collection)???);
+      ???.hKT.clear();
+      ???.hKT.addAll((Collection)???);
       ???.notifyDataSetChanged();
-      ??? = this.BpG;
-      ??? = com.tencent.mm.plugin.story.h.h.BjR;
-      ???.kX(com.tencent.mm.plugin.story.h.h.eod());
-      ??? = new vf();
-      ???.dKz.dKA = true;
-      com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)???);
+      ??? = this.FAs;
+      ??? = com.tencent.mm.plugin.story.h.h.FuH;
+      ???.rZ(com.tencent.mm.plugin.story.h.h.fqD());
+      ??? = new we();
+      ???.ecn.eco = true;
+      EventCenter.instance.publish((IEvent)???);
       AppMethodBeat.o(119998);
       return;
     }
@@ -404,18 +403,18 @@ public final class d
   public final void finish()
   {
     AppMethodBeat.i(119997);
-    Object localObject1 = this.BpG;
-    if (this.BpE) {}
+    Object localObject1 = this.FAs;
+    if (this.FAq) {}
     for (long l = 1L;; l = 0L)
     {
-      ((fu)localObject1).la(l);
-      this.BpG.aLH();
-      if (!this.BpE) {
+      ((ji)localObject1).sc(l);
+      this.FAs.bfK();
+      if (!this.FAq) {
         break label200;
       }
-      localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
-      com.tencent.mm.plugin.story.f.j.Be(ch.aDb() + 10L);
-      localObject1 = ((Map)this.BpH).entrySet().iterator();
+      localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
+      com.tencent.mm.plugin.story.f.j.Kj(cl.aWz() + 10L);
+      localObject1 = ((Map)this.FAt).entrySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Map.Entry)((Iterator)localObject1).next();
@@ -424,29 +423,29 @@ public final class d
         while (((Iterator)localObject2).hasNext())
         {
           l = ((Number)((Iterator)localObject2).next()).longValue();
-          localObject3 = com.tencent.mm.plugin.story.f.b.b.Bdv;
-          com.tencent.mm.plugin.story.f.b.b.Bf(l);
+          localObject3 = com.tencent.mm.plugin.story.f.b.b.Fom;
+          com.tencent.mm.plugin.story.f.b.b.Kk(l);
         }
       }
     }
-    localObject1 = g.ajR();
+    localObject1 = g.aAh();
     p.g(localObject1, "MMKernel.storage()");
-    localObject1 = ((e)localObject1).ajA();
-    Object localObject2 = am.a.Jah;
-    Object localObject3 = com.tencent.mm.plugin.story.f.j.BbE;
-    ((aj)localObject1).set((am.a)localObject2, Long.valueOf(j.b.elO()));
+    localObject1 = ((e)localObject1).azQ();
+    Object localObject2 = ar.a.OiN;
+    Object localObject3 = com.tencent.mm.plugin.story.f.j.Fmy;
+    ((ao)localObject1).set((ar.a)localObject2, Long.valueOf(j.b.fop()));
     label200:
-    localObject1 = new vf();
-    ((vf)localObject1).dKz.dKA = false;
-    com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject1);
-    ae.i("MicroMsg.StoryEntranceView", "finish");
-    if (this.Bpr.size() > 0)
+    localObject1 = new we();
+    ((we)localObject1).ecn.eco = false;
+    EventCenter.instance.publish((IEvent)localObject1);
+    Log.i("MicroMsg.StoryEntranceView", "finish");
+    if (this.FAd.size() > 0)
     {
-      localObject1 = g.ajR();
+      localObject1 = g.aAh();
       p.g(localObject1, "MMKernel.storage()");
-      ((e)localObject1).ajA().set(am.a.Jag, Long.valueOf(ch.aDb()));
+      ((e)localObject1).azQ().set(ar.a.OiM, Long.valueOf(cl.aWz()));
     }
-    localObject1 = this.BpF;
+    localObject1 = this.FAr;
     if (localObject1 != null)
     {
       localObject1 = ((BlurView)localObject1).getBlurController();
@@ -454,14 +453,17 @@ public final class d
         ((c)localObject1).destroy();
       }
     }
-    localObject1 = com.tencent.mm.plugin.story.f.f.a.BeK;
-    com.tencent.mm.plugin.story.f.f.a.emE();
+    localObject1 = com.tencent.mm.plugin.story.f.f.a.FpB;
+    com.tencent.mm.plugin.story.f.f.a.fpf();
     AppMethodBeat.o(119997);
   }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/sns/StoryEntranceView$Companion;", "", "()V", "AGO_TYPE_TIP", "", "NEW_TYPE_TIP", "REPLY_TYPE_TIP", "TAG", "", "TYPE_REPLY_USERNAME", "TYPE_USERNAME", "plugin-story_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.ui.sns.d
  * JD-Core Version:    0.7.0.1
  */

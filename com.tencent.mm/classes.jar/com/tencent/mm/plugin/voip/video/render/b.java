@@ -1,19 +1,20 @@
 package com.tencent.mm.plugin.voip.video.render;
 
-import d.l;
+import kotlin.g.a.a;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/render/IVoIPRendererEvent;", "", "onLocalDataRendererAvailable", "", "ret", "", "width", "height", "onRendererDrawPerFrameCost", "time", "", "type", "onStartCameraError", "plugin-voip_release"})
-public abstract interface b
+@l(hxD={1, 1, 16})
+final class b
+  implements Runnable
 {
-  public abstract void ad(long paramLong, int paramInt);
-  
-  public abstract void aw(int paramInt1, int paramInt2, int paramInt3);
-  
-  public abstract void eyO();
+  b(a parama)
+  {
+    this.cuq = parama;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.render.b
  * JD-Core Version:    0.7.0.1
  */

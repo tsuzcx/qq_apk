@@ -6,274 +6,109 @@ import com.tencent.mm.plugin.report.a;
 public final class hr
   extends a
 {
-  private String dTr = "";
-  private int dTw;
-  private String dUt = "";
-  private String dWh = "";
-  private long euk;
-  private String eum = "";
-  private String eun = "";
-  private String eur = "";
-  private int eus;
-  private long eut;
-  private long euu;
-  private int euv = -1;
-  private long euw;
-  private int eux;
+  public long eBS = 0L;
+  private String eMh = "";
+  public long eMi = 0L;
+  public long eMj = 0L;
+  public long eMk = 0L;
+  public long eMl = 0L;
+  private String eMm = "";
+  private String eMn = "";
+  private String enR = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(195822);
+    AppMethodBeat.i(76368);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTr);
+    ((StringBuffer)localObject).append(this.eMh);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWh);
+    ((StringBuffer)localObject).append(this.eMi);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eut);
+    ((StringBuffer)localObject).append(this.eMj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.euu);
+    ((StringBuffer)localObject).append(this.eMk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.euv);
+    ((StringBuffer)localObject).append(this.enR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eum);
+    ((StringBuffer)localObject).append(this.eBS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eun);
+    ((StringBuffer)localObject).append(this.eMl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUt);
+    ((StringBuffer)localObject).append(this.eMm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTw);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.euk);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.euw);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eux);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eur);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eus);
+    ((StringBuffer)localObject).append(this.eMn);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(195822);
+    aMq((String)localObject);
+    AppMethodBeat.o(76368);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(195823);
+    AppMethodBeat.i(76369);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
+    ((StringBuffer)localObject).append("statId:").append(this.eMh);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FeedId:").append(this.dWh);
+    ((StringBuffer)localObject).append("statEvent:").append(this.eMi);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StartExposureMs:").append(this.eut);
+    ((StringBuffer)localObject).append("statTimeStamp:").append(this.eMj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EndExposureMs:").append(this.euu);
+    ((StringBuffer)localObject).append("success:").append(this.eMk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DisAppearType:").append(this.euv);
+    ((StringBuffer)localObject).append("appid:").append(this.enR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ItemExposureAreaWeigth:").append(this.eum);
+    ((StringBuffer)localObject).append("searchType:").append(this.eBS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ScreenExposureAreaWeigth:").append(this.eun);
+    ((StringBuffer)localObject).append("hasInitData:").append(this.eMl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ContextId:").append(this.dUt);
+    ((StringBuffer)localObject).append("netType:").append(this.eMm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.dTw);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UpdataTimeMs:").append(this.euk);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ItemExposureTimeMs:").append(this.euw);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ItemPos:").append(this.eux);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ItemBufffer:").append(this.eur);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ItemArrayIndex:").append(this.eus);
+    ((StringBuffer)localObject).append("jsError:").append(this.eMn);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(195823);
+    AppMethodBeat.o(76369);
     return localObject;
-  }
-  
-  public final long UK()
-  {
-    return this.euk;
-  }
-  
-  public final String UM()
-  {
-    return this.eum;
-  }
-  
-  public final String UN()
-  {
-    return this.eun;
-  }
-  
-  public final String UR()
-  {
-    return this.dUt;
-  }
-  
-  public final String US()
-  {
-    return this.eur;
-  }
-  
-  public final int UT()
-  {
-    return this.eus;
-  }
-  
-  public final String UU()
-  {
-    return this.dWh;
-  }
-  
-  public final long UV()
-  {
-    return this.eut;
-  }
-  
-  public final long UW()
-  {
-    return this.euu;
-  }
-  
-  public final int UX()
-  {
-    return this.euv;
-  }
-  
-  public final long UY()
-  {
-    return this.euw;
-  }
-  
-  public final int UZ()
-  {
-    return this.eux;
   }
   
   public final int getId()
   {
-    return 19944;
+    return 14452;
   }
   
-  public final int getScene()
+  public final hr vs(String paramString)
   {
-    return this.dTw;
-  }
-  
-  public final String getSessionId()
-  {
-    return this.dTr;
-  }
-  
-  public final hr iV(int paramInt)
-  {
-    this.euv = paramInt;
+    AppMethodBeat.i(76364);
+    this.eMh = x("statId", paramString, true);
+    AppMethodBeat.o(76364);
     return this;
   }
   
-  public final hr iW(int paramInt)
+  public final hr vt(String paramString)
   {
-    this.dTw = paramInt;
+    AppMethodBeat.i(76365);
+    this.enR = x("appid", paramString, true);
+    AppMethodBeat.o(76365);
     return this;
   }
   
-  public final hr iX(int paramInt)
+  public final hr vu(String paramString)
   {
-    this.eux = paramInt;
+    AppMethodBeat.i(76366);
+    this.eMm = x("netType", paramString, true);
+    AppMethodBeat.o(76366);
     return this;
   }
   
-  public final hr iY(int paramInt)
+  public final hr vv(String paramString)
   {
-    this.eus = paramInt;
-    return this;
-  }
-  
-  public final hr nn(long paramLong)
-  {
-    this.eut = paramLong;
-    return this;
-  }
-  
-  public final hr no(long paramLong)
-  {
-    this.euu = paramLong;
-    return this;
-  }
-  
-  public final hr np(long paramLong)
-  {
-    AppMethodBeat.i(195819);
-    this.euk = paramLong;
-    super.bg("UpdataTimeMs", this.euk);
-    AppMethodBeat.o(195819);
-    return this;
-  }
-  
-  public final hr nq(long paramLong)
-  {
-    AppMethodBeat.i(195820);
-    this.euw = paramLong;
-    super.bg("ItemExposureTimeMs", this.euw);
-    AppMethodBeat.o(195820);
-    return this;
-  }
-  
-  public final hr qK(String paramString)
-  {
-    AppMethodBeat.i(195814);
-    this.dTr = t("SessionId", paramString, true);
-    AppMethodBeat.o(195814);
-    return this;
-  }
-  
-  public final hr qL(String paramString)
-  {
-    AppMethodBeat.i(195815);
-    this.dWh = t("FeedId", paramString, true);
-    AppMethodBeat.o(195815);
-    return this;
-  }
-  
-  public final hr qM(String paramString)
-  {
-    AppMethodBeat.i(195816);
-    this.eum = t("ItemExposureAreaWeigth", paramString, true);
-    AppMethodBeat.o(195816);
-    return this;
-  }
-  
-  public final hr qN(String paramString)
-  {
-    AppMethodBeat.i(195817);
-    this.eun = t("ScreenExposureAreaWeigth", paramString, true);
-    AppMethodBeat.o(195817);
-    return this;
-  }
-  
-  public final hr qO(String paramString)
-  {
-    AppMethodBeat.i(195818);
-    this.dUt = t("ContextId", paramString, true);
-    AppMethodBeat.o(195818);
-    return this;
-  }
-  
-  public final hr qP(String paramString)
-  {
-    AppMethodBeat.i(195821);
-    this.eur = t("ItemBufffer", paramString, true);
-    AppMethodBeat.o(195821);
+    AppMethodBeat.i(76367);
+    this.eMn = x("jsError", paramString, true);
+    AppMethodBeat.o(76367);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.b.a.hr
  * JD-Core Version:    0.7.0.1
  */

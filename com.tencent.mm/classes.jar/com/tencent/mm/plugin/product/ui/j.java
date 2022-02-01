@@ -14,19 +14,19 @@ import java.util.LinkedList;
 public final class j
   extends BaseAdapter
 {
+  m BbG;
+  String BbH;
   private Context mContext;
-  m xee;
-  String xef;
   
   public j(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  private h Nj(int paramInt)
+  private h Uw(int paramInt)
   {
     AppMethodBeat.i(67032);
-    h localh = (h)this.xee.xcE.get(paramInt);
+    h localh = (h)this.BbG.Bag.get(paramInt);
     AppMethodBeat.o(67032);
     return localh;
   }
@@ -34,9 +34,9 @@ public final class j
   public final int getCount()
   {
     AppMethodBeat.i(67031);
-    if (this.xee.xcE != null)
+    if (this.BbG.Bag != null)
     {
-      int i = this.xee.xcE.size();
+      int i = this.BbG.Bag.size();
       AppMethodBeat.o(67031);
       return i;
     }
@@ -52,28 +52,28 @@ public final class j
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(67034);
-    paramViewGroup = Nj(paramInt);
+    paramViewGroup = Uw(paramInt);
     if ((paramView == null) || (paramView.getTag() == null)) {
-      paramView = View.inflate(this.mContext, 2131495126, null);
+      paramView = View.inflate(this.mContext, 2131495969, null);
     }
     for (;;)
     {
       CheckBox localCheckBox = (CheckBox)paramView;
       localCheckBox.setText(paramViewGroup.name);
-      localCheckBox.setEnabled(paramViewGroup.iH);
-      localCheckBox.setChecked(paramViewGroup.id.equals(this.xef));
-      if (!paramViewGroup.iH) {
-        paramView.setBackgroundResource(2131233649);
+      localCheckBox.setEnabled(paramViewGroup.iJ);
+      localCheckBox.setChecked(paramViewGroup.id.equals(this.BbH));
+      if (!paramViewGroup.iJ) {
+        paramView.setBackgroundResource(2131234462);
       }
       for (;;)
       {
-        paramView.setTag(new Pair(this.xee.xcC, paramViewGroup.id));
+        paramView.setTag(new Pair(this.BbG.Bae, paramViewGroup.id));
         AppMethodBeat.o(67034);
         return paramView;
-        if (paramViewGroup.id.equals(this.xef)) {
-          paramView.setBackgroundResource(2131233651);
+        if (paramViewGroup.id.equals(this.BbH)) {
+          paramView.setBackgroundResource(2131234464);
         } else {
-          paramView.setBackgroundResource(2131233650);
+          paramView.setBackgroundResource(2131234463);
         }
       }
     }
@@ -82,14 +82,14 @@ public final class j
   public final boolean isEnabled(int paramInt)
   {
     AppMethodBeat.i(67033);
-    boolean bool = Nj(paramInt).iH;
+    boolean bool = Uw(paramInt).iJ;
     AppMethodBeat.o(67033);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.j
  * JD-Core Version:    0.7.0.1
  */

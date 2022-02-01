@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.DoubleTabView android:id="@id/j8" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.ui.base.CustomViewPager android:id="@id/jc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/b64" android:layout_width="0.0dip" android:layout_height="@dimen/ci" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/ct" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/bt" android:src="@raw/icons_outlined_search" app:iconColor="@color/BW_70" />
+        <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_centerVertical="true">
+            <view android:textSize="@dimen/is" android:textColor="@color/a2w" android:textColorHint="@color/uj" android:ellipsize="end" android:id="@id/bxz" android:background="@null" android:paddingRight="@dimen/ip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/yn" android:singleLine="true" android:includeFontPadding="false" android:layout_centerVertical="true" android:inputType="text" android:imeOptions="actionSearch" android:textCursorDrawable="@drawable/a70" class="com.tencent.mm.ui.tools.ActionBarSearchView$ActionBarEditText" />
+            <view android:textSize="@dimen/is" android:textColor="@color/a2w" android:textColorHint="@color/wr" android:ellipsize="end" android:id="@id/jaj" android:background="@null" android:focusable="false" android:focusableInTouchMode="false" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="@string/yn" android:singleLine="true" android:includeFontPadding="false" android:layout_alignTop="@id/bxz" android:layout_centerVertical="true" android:inputType="text" android:imeOptions="actionSearch" android:textCursorDrawable="@drawable/a70" android:layout_alignStart="@id/bxz" class="com.tencent.mm.ui.tools.ActionBarSearchView$ActionBarEditText" />
+            <ProgressBar android:id="@id/jah" android:visibility="gone" android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/c_4" android:layout_toRightOf="@id/jaj" android:layout_centerVertical="true" />
+        </RelativeLayout>
+        <ImageButton android:id="@id/i59" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/as6" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/is" android:textColor="@color/g_" android:id="@id/aib" android:paddingLeft="@dimen/c5" android:paddingRight="@dimen/c5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/sz" />
 </LinearLayout>

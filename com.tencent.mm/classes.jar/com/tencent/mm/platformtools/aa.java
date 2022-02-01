@@ -3,15 +3,14 @@ package com.tencent.mm.platformtools;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.c;
 import com.tencent.mm.b.g;
 import com.tencent.mm.b.s;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import org.apache.http.client.HttpClient;
@@ -28,10 +27,10 @@ public final class aa
     //   0: ldc 11
     //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 23	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 23	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifne +10 -> 19
     //   12: aload_1
-    //   13: invokestatic 23	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   13: invokestatic 23	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   16: ifeq +29 -> 45
     //   19: ldc 25
     //   21: ldc 27
@@ -45,13 +44,13 @@ public final class aa
     //   32: iconst_1
     //   33: aload_1
     //   34: aastore
-    //   35: invokestatic 33	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   35: invokestatic 33	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   38: ldc 11
     //   40: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   43: iconst_0
     //   44: ireturn
     //   45: aload_0
-    //   46: invokestatic 42	com/tencent/mm/vfs/o:aZR	(Ljava/lang/String;)J
+    //   46: invokestatic 42	com/tencent/mm/vfs/s:boW	(Ljava/lang/String;)J
     //   49: l2i
     //   50: istore 5
     //   52: iload 5
@@ -69,7 +68,7 @@ public final class aa
     //   71: iload 5
     //   73: invokestatic 50	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   76: aastore
-    //   77: invokestatic 33	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   77: invokestatic 33	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   80: ldc 11
     //   82: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   85: iconst_0
@@ -80,7 +79,7 @@ public final class aa
     //   94: aload_0
     //   95: iconst_0
     //   96: iconst_m1
-    //   97: invokestatic 55	com/tencent/mm/vfs/o:bb	(Ljava/lang/String;II)[B
+    //   97: invokestatic 55	com/tencent/mm/vfs/s:aW	(Ljava/lang/String;II)[B
     //   100: astore 10
     //   102: aload 10
     //   104: aload_0
@@ -111,14 +110,14 @@ public final class aa
     //   145: iconst_2
     //   146: aload_0
     //   147: aastore
-    //   148: invokestatic 68	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   148: invokestatic 68	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   151: iload 9
     //   153: ifeq +13 -> 166
     //   156: iload_2
     //   157: ifeq +9 -> 166
     //   160: aload_0
     //   161: iconst_1
-    //   162: invokestatic 72	com/tencent/mm/vfs/o:dd	(Ljava/lang/String;Z)Z
+    //   162: invokestatic 72	com/tencent/mm/vfs/s:dy	(Ljava/lang/String;Z)Z
     //   165: pop
     //   166: ldc 11
     //   168: invokestatic 36	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -136,7 +135,7 @@ public final class aa
     //   188: ldc 51
     //   190: newarray byte
     //   192: astore 13
-    //   194: invokestatic 77	com/tencent/mm/sdk/platformtools/bu:fpO	()J
+    //   194: invokestatic 77	com/tencent/mm/sdk/platformtools/Util:nowMilliSecond	()J
     //   197: l2i
     //   198: istore 7
     //   200: aconst_null
@@ -144,7 +143,7 @@ public final class aa
     //   203: aconst_null
     //   204: astore 10
     //   206: aload_0
-    //   207: invokestatic 81	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   207: invokestatic 81	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   210: astore 12
     //   212: iconst_0
     //   213: istore 4
@@ -175,7 +174,7 @@ public final class aa
     //   265: iconst_0
     //   266: aload_0
     //   267: aastore
-    //   268: invokestatic 33	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   268: invokestatic 33	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   271: aload 12
     //   273: ifnull +8 -> 281
     //   276: aload 12
@@ -281,7 +280,7 @@ public final class aa
     //   460: iconst_5
     //   461: aload_0
     //   462: aastore
-    //   463: invokestatic 68	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   463: invokestatic 68	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   466: iload 4
     //   468: iconst_1
     //   469: iadd
@@ -306,7 +305,7 @@ public final class aa
     //   506: astore 11
     //   508: aload_0
     //   509: iconst_1
-    //   510: invokestatic 72	com/tencent/mm/vfs/o:dd	(Ljava/lang/String;Z)Z
+    //   510: invokestatic 72	com/tencent/mm/vfs/s:dy	(Ljava/lang/String;Z)Z
     //   513: pop
     //   514: aload 12
     //   516: ifnull +8 -> 524
@@ -326,20 +325,20 @@ public final class aa
     //   544: dup
     //   545: iconst_0
     //   546: aload_1
-    //   547: invokestatic 109	com/tencent/mm/sdk/platformtools/bu:o	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   547: invokestatic 110	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
     //   550: aastore
-    //   551: invokestatic 33	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   551: invokestatic 33	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   554: aload 10
     //   556: astore 11
     //   558: ldc 25
-    //   560: ldc 111
+    //   560: ldc 112
     //   562: iconst_1
     //   563: anewarray 4	java/lang/Object
     //   566: dup
     //   567: iconst_0
     //   568: aload_0
     //   569: aastore
-    //   570: invokestatic 33	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   570: invokestatic 33	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   573: aload 10
     //   575: ifnull +8 -> 583
     //   578: aload 10
@@ -419,78 +418,80 @@ public final class aa
   public static boolean a(String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(143771);
-    paramBoolean1 = a(paramString1, paramString2, paramBoolean1, paramBoolean2, 20003);
+    paramBoolean1 = a(paramString1, paramString2, paramBoolean1, paramBoolean2, 1, 20003);
     AppMethodBeat.o(143771);
     return paramBoolean1;
   }
   
-  public static boolean a(String paramString1, final String paramString2, final boolean paramBoolean1, boolean paramBoolean2, final int paramInt)
+  public static boolean a(String paramString1, final String paramString2, final boolean paramBoolean1, boolean paramBoolean2, int paramInt1, final int paramInt2)
   {
-    AppMethodBeat.i(143770);
+    AppMethodBeat.i(224148);
     if (paramBoolean2)
     {
-      b.d(new Runnable()
+      ThreadPool.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(143769);
-          aa.a(this.val$filePath, paramString2, paramBoolean1, paramInt);
+          aa.a(this.val$filePath, paramString2, paramBoolean1, paramInt2);
           AppMethodBeat.o(143769);
         }
-      }, "StackReportUploader_uploadFileDirect");
-      AppMethodBeat.o(143770);
+      }, "StackReportUploader_uploadFileDirect", paramInt1);
+      AppMethodBeat.o(224148);
       return true;
     }
-    paramBoolean1 = a(paramString1, paramString2, paramBoolean1, paramInt);
-    AppMethodBeat.o(143770);
+    paramBoolean1 = a(paramString1, paramString2, paramBoolean1, paramInt2);
+    AppMethodBeat.o(224148);
     return paramBoolean1;
   }
   
   private static boolean a(byte[] paramArrayOfByte, String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(143773);
-    if (bu.cF(paramArrayOfByte))
+    if (Util.isNullOrNil(paramArrayOfByte))
     {
-      ae.e("MicroMsg.StackReportUploader", "read file failed:%s", new Object[] { paramString1 });
+      Log.e("MicroMsg.StackReportUploader", "read file failed:%s", new Object[] { paramString1 });
       AppMethodBeat.o(143773);
       return false;
     }
     if (paramArrayOfByte.length > 128000)
     {
-      ae.e("MicroMsg.StackReportUploader", "file :%s data len error:%d", new Object[] { paramString1, Integer.valueOf(paramArrayOfByte.length) });
+      Log.e("MicroMsg.StackReportUploader", "file :%s data len error:%d", new Object[] { paramString1, Integer.valueOf(paramArrayOfByte.length) });
       AppMethodBeat.o(143773);
       return false;
     }
     int i = paramArrayOfByte.length;
-    String str = g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.FFH), Integer.valueOf(i) }).getBytes()).toLowerCase();
+    String str1 = g.getMessageDigest(String.format("weixin#$()%d%d", new Object[] { Integer.valueOf(d.KyO), Integer.valueOf(i) }).getBytes()).toLowerCase();
     paramArrayOfByte = s.compress(paramArrayOfByte);
-    if (bu.cF(paramArrayOfByte))
+    if (Util.isNullOrNil(paramArrayOfByte))
     {
-      ae.e("MicroMsg.StackReportUploader", "zip data failed file:%s", new Object[] { paramString1 });
+      Log.e("MicroMsg.StackReportUploader", "zip data failed file:%s", new Object[] { paramString1 });
       AppMethodBeat.o(143773);
       return false;
     }
     Object localObject = new PByteArray();
-    c.a((PByteArray)localObject, paramArrayOfByte, str.getBytes());
+    com.tencent.mm.b.c.a((PByteArray)localObject, paramArrayOfByte, str1.getBytes());
     paramArrayOfByte = ((PByteArray)localObject).value;
-    if (bu.cF(paramArrayOfByte)) {
-      ae.e("MicroMsg.StackReportUploader", "encrypt data failed file:%s", new Object[] { paramString1 });
+    if (Util.isNullOrNil(paramArrayOfByte)) {
+      Log.e("MicroMsg.StackReportUploader", "encrypt data failed file:%s", new Object[] { paramString1 });
     }
-    paramString1 = ak.getContext().getSharedPreferences("system_config_prefs", 0);
-    localObject = "https://" + paramString1.getString("support.weixin.qq.com", "support.weixin.qq.com");
+    paramString1 = MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0);
+    localObject = new StringBuilder("https://");
+    String str2 = com.tencent.mm.network.c.icB;
+    localObject = paramString1.getString(str2, str2);
     paramString1 = new StringBuffer();
     paramString1.append((String)localObject + "/cgi-bin/mmsupport-bin/stackreport?version=");
-    paramString1.append(Integer.toHexString(d.FFH));
+    paramString1.append(Integer.toHexString(d.KyO));
     paramString1.append("&devicetype=");
-    paramString1.append(d.hjv);
+    paramString1.append(d.ics);
     paramString1.append("&filelength=");
     paramString1.append(i);
     paramString1.append("&sum=");
-    paramString1.append(str);
+    paramString1.append(str1);
     paramString1.append("&reporttype=");
     paramString1.append(paramInt);
     paramString1.append("&reportvalue=");
-    paramString1.append(bu.fpO() + ".0.1");
+    paramString1.append(Util.nowMilliSecond() + ".0.1");
     if ((paramString2 != null) && (!paramString2.equals("")))
     {
       paramString1.append("&username=");
@@ -506,21 +507,21 @@ public final class aa
       paramArrayOfByte = paramString2.execute(paramString1);
       if ((paramArrayOfByte == null) || (paramArrayOfByte.getStatusLine() == null))
       {
-        ae.e("MicroMsg.StackReportUploader", "execute http failed resp null");
+        Log.e("MicroMsg.StackReportUploader", "execute http failed resp null");
         AppMethodBeat.o(143773);
         return false;
       }
     }
     catch (Exception paramArrayOfByte)
     {
-      ae.e("MicroMsg.StackReportUploader", "exception:%s", new Object[] { bu.o(paramArrayOfByte) });
-      ae.d("MicroMsg.StackReportUploader", "execute post failed msg:%s", new Object[] { paramArrayOfByte.getMessage() });
+      Log.e("MicroMsg.StackReportUploader", "exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
+      Log.d("MicroMsg.StackReportUploader", "execute post failed msg:%s", new Object[] { paramArrayOfByte.getMessage() });
       AppMethodBeat.o(143773);
       return false;
     }
     if (paramArrayOfByte.getStatusLine().getStatusCode() != 200)
     {
-      ae.e("MicroMsg.StackReportUploader", "error response code:%d ", new Object[] { Integer.valueOf(paramArrayOfByte.getStatusLine().getStatusCode()) });
+      Log.e("MicroMsg.StackReportUploader", "error response code:%d ", new Object[] { Integer.valueOf(paramArrayOfByte.getStatusLine().getStatusCode()) });
       AppMethodBeat.o(143773);
       return false;
     }
@@ -542,7 +543,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.aa
  * JD-Core Version:    0.7.0.1
  */

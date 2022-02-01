@@ -2,21 +2,12 @@ package com.tencent.mm.plugin.scanner.api;
 
 public final class d
 {
-  public long dmK;
-  public String dmw;
-  public int errCode;
-  public String errMsg;
-  public int errType;
-  public String imagePath;
-  public int jumpType;
-  public boolean success;
-  public int yzN;
-  public String yzR;
-  public String yzS;
+  public boolean CAK = true;
+  public boolean CAL = false;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.api.d
  * JD-Core Version:    0.7.0.1
  */

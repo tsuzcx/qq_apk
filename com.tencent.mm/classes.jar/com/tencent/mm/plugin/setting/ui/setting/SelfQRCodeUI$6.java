@@ -13,13 +13,13 @@ final class SelfQRCodeUI$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(190309);
+    AppMethodBeat.i(256477);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/setting/ui/setting/SelfQRCodeUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    SelfQRCodeUI.h(this.yUO);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/setting/ui/setting/SelfQRCodeUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    SelfQRCodeUI.h(this.CZE);
     a.a(this, "com/tencent/mm/plugin/setting/ui/setting/SelfQRCodeUI$14", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(190309);
+    AppMethodBeat.o(256477);
   }
 }
 

@@ -22,27 +22,27 @@ public class log_14375
     AppMethodBeat.i(151549);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.import_ds_);
-      paramVarArgs.aS(2, this.ds_);
-      paramVarArgs.aZ(3, this.uin_);
-      paramVarArgs.aS(4, this.device_);
-      paramVarArgs.aS(5, this.clientVersion_);
-      paramVarArgs.aZ(6, this.time_stamp_);
-      paramVarArgs.aS(7, this.type_);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.import_ds_);
+      paramVarArgs.aM(2, this.ds_);
+      paramVarArgs.bb(3, this.uin_);
+      paramVarArgs.aM(4, this.device_);
+      paramVarArgs.aM(5, this.clientVersion_);
+      paramVarArgs.bb(6, this.time_stamp_);
+      paramVarArgs.aM(7, this.type_);
       if (this.dbStatusInfo_ != null)
       {
-        paramVarArgs.lJ(8, this.dbStatusInfo_.computeSize());
+        paramVarArgs.ni(8, this.dbStatusInfo_.computeSize());
         this.dbStatusInfo_.writeFields(paramVarArgs);
       }
       if (this.sdStatusInfo_ != null)
       {
-        paramVarArgs.lJ(9, this.sdStatusInfo_.computeSize());
+        paramVarArgs.ni(9, this.sdStatusInfo_.computeSize());
         this.sdStatusInfo_.writeFields(paramVarArgs);
       }
       if (this.heavyDetailInfo_ != null)
       {
-        paramVarArgs.lJ(10, this.heavyDetailInfo_.computeSize());
+        paramVarArgs.ni(10, this.heavyDetailInfo_.computeSize());
         this.heavyDetailInfo_.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(151549);
@@ -51,28 +51,28 @@ public class log_14375
     int i;
     if (paramInt == 1)
     {
-      i = f.a.a.b.b.a.bz(1, this.import_ds_) + 0 + f.a.a.b.b.a.bz(2, this.ds_) + f.a.a.b.b.a.p(3, this.uin_) + f.a.a.b.b.a.bz(4, this.device_) + f.a.a.b.b.a.bz(5, this.clientVersion_) + f.a.a.b.b.a.p(6, this.time_stamp_) + f.a.a.b.b.a.bz(7, this.type_);
+      i = g.a.a.b.b.a.bu(1, this.import_ds_) + 0 + g.a.a.b.b.a.bu(2, this.ds_) + g.a.a.b.b.a.r(3, this.uin_) + g.a.a.b.b.a.bu(4, this.device_) + g.a.a.b.b.a.bu(5, this.clientVersion_) + g.a.a.b.b.a.r(6, this.time_stamp_) + g.a.a.b.b.a.bu(7, this.type_);
       paramInt = i;
       if (this.dbStatusInfo_ != null) {
-        paramInt = i + f.a.a.a.lI(8, this.dbStatusInfo_.computeSize());
+        paramInt = i + g.a.a.a.nh(8, this.dbStatusInfo_.computeSize());
       }
       i = paramInt;
       if (this.sdStatusInfo_ != null) {
-        i = paramInt + f.a.a.a.lI(9, this.sdStatusInfo_.computeSize());
+        i = paramInt + g.a.a.a.nh(9, this.sdStatusInfo_.computeSize());
       }
       paramInt = i;
       if (this.heavyDetailInfo_ != null) {
-        paramInt = i + f.a.a.a.lI(10, this.heavyDetailInfo_.computeSize());
+        paramInt = i + g.a.a.a.nh(10, this.heavyDetailInfo_.computeSize());
       }
       AppMethodBeat.o(151549);
       return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(151549);
@@ -80,7 +80,7 @@ public class log_14375
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
       log_14375 locallog_14375 = (log_14375)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       Object localObject2;
@@ -91,73 +91,73 @@ public class log_14375
         AppMethodBeat.o(151549);
         return -1;
       case 1: 
-        locallog_14375.import_ds_ = ((f.a.a.a.a)localObject1).OmT.zc();
+        locallog_14375.import_ds_ = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(151549);
         return 0;
       case 2: 
-        locallog_14375.ds_ = ((f.a.a.a.a)localObject1).OmT.zc();
+        locallog_14375.ds_ = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(151549);
         return 0;
       case 3: 
-        locallog_14375.uin_ = ((f.a.a.a.a)localObject1).OmT.zd();
+        locallog_14375.uin_ = ((g.a.a.a.a)localObject1).UbS.zl();
         AppMethodBeat.o(151549);
         return 0;
       case 4: 
-        locallog_14375.device_ = ((f.a.a.a.a)localObject1).OmT.zc();
+        locallog_14375.device_ = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(151549);
         return 0;
       case 5: 
-        locallog_14375.clientVersion_ = ((f.a.a.a.a)localObject1).OmT.zc();
+        locallog_14375.clientVersion_ = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(151549);
         return 0;
       case 6: 
-        locallog_14375.time_stamp_ = ((f.a.a.a.a)localObject1).OmT.zd();
+        locallog_14375.time_stamp_ = ((g.a.a.a.a)localObject1).UbS.zl();
         AppMethodBeat.o(151549);
         return 0;
       case 7: 
-        locallog_14375.type_ = ((f.a.a.a.a)localObject1).OmT.zc();
+        locallog_14375.type_ = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(151549);
         return 0;
       case 8: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new BDStatusInfo();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((BDStatusInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((BDStatusInfo)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
           locallog_14375.dbStatusInfo_ = ((BDStatusInfo)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(151549);
         return 0;
       case 9: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new SDStatusInfo();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((SDStatusInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((SDStatusInfo)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
           locallog_14375.sdStatusInfo_ = ((SDStatusInfo)localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(151549);
         return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+      paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
       i = paramVarArgs.size();
       paramInt = 0;
       while (paramInt < i)
       {
         localObject2 = (byte[])paramVarArgs.get(paramInt);
         localObject1 = new HeavyDetailInfo();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (bool = true; bool; bool = ((HeavyDetailInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+        localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (bool = true; bool; bool = ((HeavyDetailInfo)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
         locallog_14375.heavyDetailInfo_ = ((HeavyDetailInfo)localObject1);
         paramInt += 1;
       }

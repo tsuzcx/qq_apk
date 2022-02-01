@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:padding="15.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
-    <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@string/dbu" />
-</LinearLayout>
+<RelativeLayout android:paddingLeft="32.0dip" android:paddingRight="32.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/e4s" android:background="@drawable/icon" android:layout_width="62.0dip" android:layout_height="62.0dip" android:layout_marginTop="97.0dip" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="22.0sp" android:textColor="@color/fr" android:id="@id/ixw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="33.0dip" android:layout_marginBottom="16.0dip" android:text="@string/fxf" android:layout_below="@id/e4s" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/j7l" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/j7e" android:layout_below="@id/ixw">
+        <TextView android:textSize="17.0sp" android:textColor="@color/fr" android:gravity="center_horizontal" android:id="@id/iyw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fxi" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/j7e" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginBottom="96.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+        <Button android:id="@id/aey" android:visibility="visible" android:layout_width="184.0dip" android:layout_height="40.0dip" android:text="@string/fxd" style="@style/ov" />
+        <ProgressBar android:id="@id/glj" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" />
+    </LinearLayout>
+</RelativeLayout>

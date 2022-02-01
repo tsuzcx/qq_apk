@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:drawable="@drawable/byw" />
-    <item android:state_pressed="true" android:drawable="@drawable/byw" />
-    <item android:drawable="@drawable/byw" />
-</selector>
+    <solid android:color="@color/afz" />
+    <corners android:bottomLeftRadius="@dimen/lq" android:bottomRightRadius="@dimen/lq" />
+</shape>

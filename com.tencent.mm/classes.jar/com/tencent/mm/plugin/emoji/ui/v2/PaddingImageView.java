@@ -10,9 +10,9 @@ import com.tencent.mm.cb.a;
 public class PaddingImageView
   extends FrameLayout
 {
-  ImageView cuP;
-  ImageView pWe;
-  private int pWf;
+  ImageView cIN;
+  ImageView rnd;
+  private int rne;
   
   public PaddingImageView(Context paramContext)
   {
@@ -41,26 +41,26 @@ public class PaddingImageView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(109411);
-    this.pWf = a.ax(getContext(), 2131165516);
-    this.cuP = new ImageView(paramContext);
-    this.cuP.setPadding(this.pWf, this.pWf, this.pWf, this.pWf);
-    this.pWe = new ImageView(paramContext);
+    this.rne = a.aG(getContext(), 2131165534);
+    this.cIN = new ImageView(paramContext);
+    this.cIN.setPadding(this.rne, this.rne, this.rne, this.rne);
+    this.rnd = new ImageView(paramContext);
     AppMethodBeat.o(109411);
   }
   
   public ImageView getImageView()
   {
-    return this.cuP;
+    return this.cIN;
   }
   
   public ImageView getImageViewFG()
   {
-    return this.pWe;
+    return this.rnd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.v2.PaddingImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ public final class d
   {
     AppMethodBeat.i(22635);
     getClass().getClassLoader();
-    j.vN("wechatvoicereco");
+    j.Ed("wechatvoicereco");
     AppMethodBeat.o(22635);
   }
   
@@ -23,7 +23,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.e.d
  * JD-Core Version:    0.7.0.1
  */

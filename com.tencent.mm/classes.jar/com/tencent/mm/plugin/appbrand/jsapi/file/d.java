@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
-import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
 
 public class d
-  implements j
+  implements m
 {
-  public long cmV = 10L;
-  public long kai = 10L;
+  public long cyR = 10L;
+  public long ldl = 10L;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.d
  * JD-Core Version:    0.7.0.1
  */

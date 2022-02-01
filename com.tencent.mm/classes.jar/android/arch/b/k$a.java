@@ -5,38 +5,38 @@ import android.support.v7.h.d;
 final class k$a
   implements d
 {
-  private final int fq;
-  private final d fr;
+  private final int fs;
+  private final d ft;
   
   private k$a(int paramInt, d paramd)
   {
-    this.fq = paramInt;
-    this.fr = paramd;
+    this.fs = paramInt;
+    this.ft = paramd;
   }
   
   public final void c(int paramInt1, int paramInt2, Object paramObject)
   {
-    this.fr.c(this.fq + paramInt1, paramInt2, paramObject);
+    this.ft.c(this.fs + paramInt1, paramInt2, paramObject);
   }
   
   public final void f(int paramInt1, int paramInt2)
   {
-    this.fr.f(this.fq + paramInt1, paramInt2);
+    this.ft.f(this.fs + paramInt1, paramInt2);
   }
   
   public final void k(int paramInt1, int paramInt2)
   {
-    this.fr.k(this.fq + paramInt1, paramInt2);
+    this.ft.k(this.fs + paramInt1, paramInt2);
   }
   
   public final void l(int paramInt1, int paramInt2)
   {
-    this.fr.l(this.fq + paramInt1, this.fq + paramInt2);
+    this.ft.l(this.fs + paramInt1, this.fs + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.arch.b.k.a
  * JD-Core Version:    0.7.0.1
  */

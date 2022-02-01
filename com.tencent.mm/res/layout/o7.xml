@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.base.MaskLayout android:id="@id/akx" android:clipChildren="false" android:clipToPadding="false" style="@style/gl"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.chatting.view.ChattingAvatarImageView android:id="@id/aku" android:focusable="false" style="@style/gn" />
-    <ViewStub android:id="@id/anw" android:layout="@layout/o8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_alignParentBottom="true" />
-</com.tencent.mm.ui.base.MaskLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ana" android:background="@drawable/lw" android:paddingLeft="@dimen/r" android:paddingRight="@dimen/r" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="31.599976dip" android:layout_marginTop="@dimen/hs" android:layout_marginBottom="@dimen/i2">
+        <ImageView android:id="@id/an_" android:layout_width="@dimen/v9" android:layout_height="@dimen/v9" android:layout_marginRight="@dimen/ib" android:src="@drawable/c24" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/hc" android:textColor="#ff576b95" android:ellipsize="end" android:gravity="left" android:id="@id/anb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aqa" android:singleLine="true" />
+    </LinearLayout>
+</LinearLayout>

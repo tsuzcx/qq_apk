@@ -3,29 +3,34 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.offenread;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.support.v7.h.c.a;
+import android.support.v7.h.c.b;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.view.ViewStub;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ao;
-import com.tencent.mm.model.w;
+import com.tencent.mm.g.a.aq;
+import com.tencent.mm.model.aa;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView;
 import com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView.a;
+import com.tencent.mm.plugin.brandservice.ui.timeline.item.BizTLRecCardCanvasView;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.protocal.protobuf.cei;
-import com.tencent.mm.protocal.protobuf.cel;
-import com.tencent.mm.protocal.protobuf.dwn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.y;
+import com.tencent.mm.pluginsdk.ui.tools.z;
+import com.tencent.mm.protocal.protobuf.cup;
+import com.tencent.mm.protocal.protobuf.cus;
+import com.tencent.mm.protocal.protobuf.eqs;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ab;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -34,35 +39,35 @@ import java.util.List;
 public class BizTimeLineHotListView
   extends MRecyclerView
 {
-  public static int omu;
+  public static int pze;
   private Context mContext;
-  private List<b> mMj;
   private int mScreenWidth;
-  private float ntw;
-  private int ntx;
-  g omm;
-  private a omn;
-  boolean omo;
-  private f omp;
-  private i omq;
-  private float omr;
-  private float oms;
-  private float omt;
-  public com.tencent.mm.sdk.b.c<ao> omv;
+  private List<c> nZr;
+  private float oDy;
+  private int oDz;
+  h pyW;
+  private a pyX;
+  boolean pyY;
+  private g pyZ;
+  private j pza;
+  private float pzb;
+  private float pzc;
+  private float pzd;
+  public IListener<aq> pzf;
   
   public BizTimeLineHotListView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(6081);
-    this.mMj = new ArrayList();
-    this.ntw = 0.0F;
+    this.nZr = new ArrayList();
+    this.oDy = 0.0F;
     this.mScreenWidth = 0;
-    this.ntx = 0;
-    this.omo = false;
-    this.omr = 0.0F;
-    this.oms = 0.0F;
-    this.omt = 0.0F;
-    this.omv = new com.tencent.mm.sdk.b.c() {};
+    this.oDz = 0;
+    this.pyY = false;
+    this.pzb = 0.0F;
+    this.pzc = 0.0F;
+    this.pzd = 0.0F;
+    this.pzf = new IListener() {};
     this.mContext = paramContext;
     init();
     AppMethodBeat.o(6081);
@@ -72,54 +77,84 @@ public class BizTimeLineHotListView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(6082);
-    this.mMj = new ArrayList();
-    this.ntw = 0.0F;
+    this.nZr = new ArrayList();
+    this.oDy = 0.0F;
     this.mScreenWidth = 0;
-    this.ntx = 0;
-    this.omo = false;
-    this.omr = 0.0F;
-    this.oms = 0.0F;
-    this.omt = 0.0F;
-    this.omv = new com.tencent.mm.sdk.b.c() {};
+    this.oDz = 0;
+    this.pyY = false;
+    this.pzb = 0.0F;
+    this.pzc = 0.0F;
+    this.pzd = 0.0F;
+    this.pzf = new IListener() {};
     this.mContext = paramContext;
     init();
     AppMethodBeat.o(6082);
   }
   
-  private static void a(d paramd, dwn paramdwn)
+  private static boolean Dj(int paramInt)
   {
-    AppMethodBeat.i(208496);
-    if ((paramd != null) && (paramdwn != null))
+    AppMethodBeat.i(194985);
+    if (paramInt <= 0)
     {
-      paramd.title = paramdwn.title;
-      paramd.iZX = paramdwn.IbP;
-      paramd.appId = paramdwn.dwb;
-      paramd.hCp = paramdwn.hCp;
-      paramd.ona = paramdwn.IbJ;
-      paramd.aDD = paramdwn.version;
-      paramd.omY = paramdwn.IbI;
-      paramd.omZ = paramdwn.IbM;
-      paramd.omV = zE(paramdwn.IbI);
+      AppMethodBeat.o(194985);
+      return false;
     }
-    AppMethodBeat.o(208496);
+    int i = MultiProcessMMKV.getSingleMMKV("MicroMsg.BizTimeLineHotListView").decodeInt("VideoChannelTopBarVersion", 0);
+    Log.i("MicroMsg.BizTimeLineHotListView", "getVideoChannelUnReadState, version: %d, lastVersion: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+    if (paramInt > i)
+    {
+      AppMethodBeat.o(194985);
+      return true;
+    }
+    AppMethodBeat.o(194985);
+    return false;
   }
   
-  private void bK(List<b> paramList)
+  private static void a(b paramb)
+  {
+    AppMethodBeat.i(194987);
+    paramb.oDp.setVisibility(0);
+    paramb.pzj.setVisibility(0);
+    if (paramb.pvr != null) {
+      paramb.pvr.setVisibility(8);
+    }
+    AppMethodBeat.o(194987);
+  }
+  
+  private static void a(e parame, eqs parameqs)
+  {
+    AppMethodBeat.i(194986);
+    if ((parame != null) && (parameqs != null))
+    {
+      parame.title = parameqs.title;
+      parame.jXM = parameqs.Noh;
+      parame.appId = parameqs.dNI;
+      parame.iwv = parameqs.iwv;
+      parame.pzQ = parameqs.Nob;
+      parame.appVersion = parameqs.version;
+      parame.pzO = parameqs.Noa;
+      parame.pzP = parameqs.Noe;
+      parame.pzL = Dj(parameqs.Noa);
+    }
+    AppMethodBeat.o(194986);
+  }
+  
+  private void bX(List<c> paramList)
   {
     AppMethodBeat.i(6093);
-    if (this.mMj == null)
+    if (paramList == null)
     {
       AppMethodBeat.o(6093);
       return;
     }
-    b localb = new b(2);
-    localb.FQp = "__BizTimeLine.CustomItem__";
-    paramList.add(0, localb);
-    cq(paramList);
+    c localc = new c(2);
+    localc.KJV = "__BizTimeLine.CustomItem__";
+    paramList.add(0, localc);
+    cE(paramList);
     AppMethodBeat.o(6093);
   }
   
-  private void cq(List<b> paramList)
+  private void cE(List<c> paramList)
   {
     AppMethodBeat.i(175433);
     if (paramList == null)
@@ -127,45 +162,45 @@ public class BizTimeLineHotListView
       AppMethodBeat.o(175433);
       return;
     }
-    if (com.tencent.mm.plugin.brandservice.b.c.bOt())
+    if (com.tencent.mm.plugin.brandservice.b.c.clu())
     {
-      ae.i("MicroMsg.BizTimeLineHotListView", "alvinluo addCustomItems timeline top bar entry is open");
-      d locald = new d();
-      dwn localdwn = com.tencent.mm.plugin.brandservice.b.c.bOv();
-      if (localdwn != null)
+      Log.i("MicroMsg.BizTimeLineHotListView", "alvinluo addCustomItems timeline top bar entry is open");
+      e locale = new e();
+      eqs localeqs = com.tencent.mm.plugin.brandservice.b.c.clw();
+      if (localeqs != null)
       {
-        locald.FQp = "__BizTimeLine.VideoChannelEntry__";
-        a(locald, localdwn);
-        paramList.add(1, locald);
-        locald.position = 1;
-        this.omo = true;
+        locale.KJV = "__BizTimeLine.VideoChannelEntry__";
+        a(locale, localeqs);
+        paramList.add(1, locale);
+        locale.position = 1;
+        this.pyY = true;
       }
     }
     AppMethodBeat.o(175433);
   }
   
-  private void g(RecyclerView.w paramw, int paramInt)
+  private void g(RecyclerView.v paramv, int paramInt)
   {
     AppMethodBeat.i(6087);
-    ae.d("MicroMsg.BizTimeLineHotListView", "alvinluo updateAlpha pos: %d", new Object[] { Integer.valueOf(paramInt) });
-    if (paramw != null)
+    Log.d("MicroMsg.BizTimeLineHotListView", "alvinluo updateAlpha pos: %d", new Object[] { Integer.valueOf(paramInt) });
+    if (paramv != null)
     {
-      float f = paramw.auu.getX();
+      float f = paramv.aus.getX();
       if (f >= this.mScreenWidth - getItemWidth() / 2)
       {
-        paramw.auu.setAlpha(0.3F);
+        paramv.aus.setAlpha(0.3F);
         AppMethodBeat.o(6087);
         return;
       }
-      if ((f < this.mScreenWidth - getItemWidth() / 2) && (f >= this.ntw))
+      if ((f < this.mScreenWidth - getItemWidth() / 2) && (f >= this.oDy))
       {
-        f = 1.0F - (f - this.ntw) / this.ntx * 0.7F;
-        ae.d("MicroMsg.BizTimeLineHotListView", "alvinluo updateAlpha %f", new Object[] { Float.valueOf(f) });
-        paramw.auu.setAlpha(f);
+        f = 1.0F - (f - this.oDy) / this.oDz * 0.7F;
+        Log.d("MicroMsg.BizTimeLineHotListView", "alvinluo updateAlpha %f", new Object[] { Float.valueOf(f) });
+        paramv.aus.setAlpha(f);
         AppMethodBeat.o(6087);
         return;
       }
-      paramw.auu.setAlpha(1.0F);
+      paramv.aus.setAlpha(1.0F);
     }
     AppMethodBeat.o(6087);
   }
@@ -173,267 +208,283 @@ public class BizTimeLineHotListView
   private void init()
   {
     AppMethodBeat.i(175432);
-    ae.v("MicroMsg.BizTimeLineHotListView", "alvinluo init");
-    omu = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 16);
-    this.omv.alive();
+    Log.v("MicroMsg.BizTimeLineHotListView", "alvinluo init");
+    pze = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 16);
+    this.pzf.alive();
+    setItemAnimator(null);
     AppMethodBeat.o(175432);
   }
   
-  private static boolean zE(int paramInt)
+  public final void a(Context paramContext, List<c> paramList, g paramg, j paramj)
   {
-    AppMethodBeat.i(208495);
-    if (paramInt <= 0)
-    {
-      AppMethodBeat.o(208495);
-      return false;
-    }
-    int i = ay.aRX("MicroMsg.BizTimeLineHotListView").decodeInt("VideoChannelTopBarVersion", 0);
-    ae.i("MicroMsg.BizTimeLineHotListView", "getVideoChannelUnReadState, version: %d, lastVersion: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-    if (paramInt > i)
-    {
-      AppMethodBeat.o(208495);
-      return true;
-    }
-    AppMethodBeat.o(208495);
-    return false;
-  }
-  
-  public final void a(Context paramContext, List<b> paramList, f paramf, i parami)
-  {
-    AppMethodBeat.i(208494);
-    this.omp = paramf;
-    this.omq = parami;
-    this.mMj.addAll(paramList);
-    bK(this.mMj);
-    this.omn = new a(paramContext);
+    AppMethodBeat.i(194984);
+    this.pyZ = paramg;
+    this.pza = paramj;
+    this.nZr.addAll(paramList);
+    bX(this.nZr);
+    this.pyX = new a(paramContext);
     paramList = new LinearLayoutManager()
     {
-      public final boolean ka()
+      public final boolean supportsPredictiveItemAnimations()
       {
         return false;
       }
     };
     paramList.setOrientation(0);
     setLayoutManager(paramList);
-    setAdapter(this.omn);
-    this.omm = new g(getCustomItemCount());
-    paramList = this.omm;
+    setAdapter(this.pyX);
+    this.pyW = new h(getCustomItemCount());
+    paramList = this.pyW;
     int i = a.getCompletelyCountPerPage();
     paramList.mContext = paramContext;
-    paramList.ong = this;
-    paramList.ntO = i;
-    paramList.ong.b(paramList);
-    paramList.ong.a(paramList);
-    paramList.ntR = ((LinearLayoutManager)paramList.ong.getLayoutManager());
-    paramList.atl = new g.1(paramList, paramList.ong.getContext());
-    paramList.ntN = new g.2(paramList, paramList.ong.getContext());
-    setOnScrollPageListener(new g.a()
+    paramList.pzW = this;
+    paramList.oDS = i;
+    paramList.pzW.b(paramList);
+    paramList.pzW.a(paramList);
+    paramList.oDV = ((LinearLayoutManager)paramList.pzW.getLayoutManager());
+    paramList.mSmoothScroller = new h.1(paramList, paramList.pzW.getContext());
+    paramList.oDR = new h.2(paramList, paramList.pzW.getContext());
+    setOnScrollPageListener(new h.a()
     {
-      public final void N(int paramAnonymousInt, boolean paramAnonymousBoolean)
+      public final void Dk(int paramAnonymousInt)
       {
-        AppMethodBeat.i(208491);
+        AppMethodBeat.i(194979);
+        int i = BizTimeLineHotListView.this.getCurrentPage();
+        Log.d("MicroMsg.BizTimeLineHotListView", "alvinluo ScrollPageListener onScrolled offsetOfCurPage: %d, , currentPage: %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
+        BizTimeLineHotListView.a(BizTimeLineHotListView.this, paramAnonymousInt, i);
+        BizTimeLineHotListView.f(BizTimeLineHotListView.this);
+        AppMethodBeat.o(194979);
+      }
+      
+      public final void V(int paramAnonymousInt, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(194980);
         if (!paramAnonymousBoolean)
         {
           int i = (int)(System.currentTimeMillis() / 1000L);
-          com.tencent.mm.plugin.report.service.g.yxI.f(15721, new Object[] { "", Integer.valueOf(0), Integer.valueOf(10), Integer.valueOf(i), Integer.valueOf(y.getSessionId()) });
+          com.tencent.mm.plugin.report.service.h.CyF.a(15721, new Object[] { "", Integer.valueOf(0), Integer.valueOf(10), Integer.valueOf(i), Integer.valueOf(ab.getSessionId()) });
         }
         BizTimeLineHotListView.a(BizTimeLineHotListView.this, paramAnonymousInt);
-        BizTimeLineHotListView.this.bPL();
-        AppMethodBeat.o(208491);
-      }
-      
-      public final void zF(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(208490);
-        int i = BizTimeLineHotListView.this.getCurrentPage();
-        ae.d("MicroMsg.BizTimeLineHotListView", "alvinluo ScrollPageListener onScrolled offsetOfCurPage: %d, , currentPage: %d", new Object[] { Integer.valueOf(paramAnonymousInt), Integer.valueOf(i) });
-        BizTimeLineHotListView.a(BizTimeLineHotListView.this, paramAnonymousInt, i);
-        BizTimeLineHotListView.f(BizTimeLineHotListView.this);
-        AppMethodBeat.o(208490);
+        BizTimeLineHotListView.this.cnm();
+        AppMethodBeat.o(194980);
       }
     });
     setOnItemClickListener(new MRecyclerView.a()
     {
-      public final void T(View paramAnonymousView, int paramAnonymousInt)
+      public final void S(View paramAnonymousView, int paramAnonymousInt)
       {
         AppMethodBeat.i(175429);
-        b localb = (b)BizTimeLineHotListView.a(BizTimeLineHotListView.this).get(paramAnonymousInt);
-        if (localb == null)
+        c localc = (c)BizTimeLineHotListView.a(BizTimeLineHotListView.this).get(paramAnonymousInt);
+        if (localc == null)
         {
           AppMethodBeat.o(175429);
           return;
         }
-        f localf = BizTimeLineHotListView.d(BizTimeLineHotListView.this);
-        cei localcei;
-        if (localb != null)
+        Object localObject = BizTimeLineHotListView.d(BizTimeLineHotListView.this);
+        cup localcup;
+        if (localc != null)
         {
-          if (localb.type != 1) {
-            break label226;
+          if (localc.type != 1) {
+            break label237;
           }
-          localcei = new cei();
-          localcei.GaH = localb.FQp;
-          localcei.uoI = (localb.position - 1);
-          localcei.Hrc = ((int)(System.currentTimeMillis() / 1000L));
-          if (!localb.omV) {
-            break label221;
+          localcup = new cup();
+          localcup.KUC = localc.KJV;
+          localcup.xHb = (localc.position - 1);
+          localcup.MzR = ((int)(System.currentTimeMillis() / 1000L));
+          if (!localc.pzL) {
+            break label232;
           }
           paramAnonymousInt = 1;
-          localcei.Hrb = paramAnonymousInt;
-          localcei.type = 0;
-          localf.ond.add(localcei);
+          localcup.MzQ = paramAnonymousInt;
+          localcup.type = 0;
+          ((g)localObject).pzT.add(localcup);
         }
-        label398:
+        label295:
+        label324:
+        label354:
+        label483:
         for (;;)
         {
-          label300:
-          if (localb.type == 1)
+          label232:
+          label488:
+          if (localc.type == 1)
           {
             paramAnonymousView = new Intent();
-            paramAnonymousView.putExtra("Chat_User", localb.FQp);
+            paramAnonymousView.putExtra("Chat_User", localc.KJV);
             paramAnonymousView.putExtra("finish_direct", true);
             paramAnonymousView.putExtra("KOpenArticleSceneFromScene", 91);
             paramAnonymousView.putExtra("specific_chat_from_scene", 8);
             paramAnonymousView.putExtra("preChatTYPE", 12);
-            com.tencent.mm.br.d.f(BizTimeLineHotListView.e(BizTimeLineHotListView.this), ".ui.chatting.ChattingUI", paramAnonymousView);
-            localb.omV = false;
-            BizTimeLineHotListView.this.a(localb);
+            com.tencent.mm.br.c.f(BizTimeLineHotListView.e(BizTimeLineHotListView.this), ".ui.chatting.ChattingUI", paramAnonymousView);
+            localc.pzL = false;
+            BizTimeLineHotListView.this.a(localc);
             AppMethodBeat.o(175429);
             return;
-            label221:
             paramAnonymousInt = 0;
             break;
-            label226:
-            if (localb.type == 3)
+            label237:
+            if (localc.type == 3)
             {
-              localcei = new cei();
-              localcei.uoI = (localb.position - 1);
-              localcei.Hrc = ((int)(System.currentTimeMillis() / 1000L));
-              localcei.type = 1;
-              com.tencent.mm.plugin.brandservice.b.c localc = com.tencent.mm.plugin.brandservice.b.c.och;
-              localcei.hCp = com.tencent.mm.plugin.brandservice.b.c.jk(false);
-              localc = com.tencent.mm.plugin.brandservice.b.c.och;
-              if (com.tencent.mm.plugin.brandservice.b.c.bOB())
+              localcup = new cup();
+              long l = System.currentTimeMillis();
+              localcup.xHb = (localc.position - 1);
+              localcup.MzR = ((int)(l / 1000L));
+              com.tencent.mm.plugin.brandservice.b.c localc1 = com.tencent.mm.plugin.brandservice.b.c.pne;
+              if (com.tencent.mm.plugin.brandservice.b.c.clF())
               {
+                paramAnonymousInt = 2;
+                localcup.type = paramAnonymousInt;
+                localcup.iwv = com.tencent.mm.plugin.brandservice.b.c.pne.kj(false);
+                if (!com.tencent.mm.plugin.brandservice.b.c.pne.clC()) {
+                  break label483;
+                }
                 paramAnonymousInt = 1;
-                localcei.Hre = paramAnonymousInt;
-                localc = com.tencent.mm.plugin.brandservice.b.c.och;
-                localcei.Hrd = com.tencent.mm.plugin.brandservice.b.c.bOC();
-                localc = com.tencent.mm.plugin.brandservice.b.c.och;
-                if (!com.tencent.mm.plugin.brandservice.b.c.bOA()) {
-                  break label398;
+                localcup.MzT = paramAnonymousInt;
+                localc1 = com.tencent.mm.plugin.brandservice.b.c.pne;
+                localcup.MzS = com.tencent.mm.plugin.brandservice.b.c.clD();
+                if (!com.tencent.mm.plugin.brandservice.b.c.pne.clB()) {
+                  break label488;
+                }
+                paramAnonymousInt = 1;
+                localcup.MzU = paramAnonymousInt;
+                localcup.MzV = l;
+                Log.d("MicroMsg.BizTimeLineOftenReadReport", "onClick is_default_icon %d, is_icon_cache %d", new Object[] { Integer.valueOf(localcup.MzU), Integer.valueOf(localcup.MzT) });
+                ((g)localObject).pzT.add(localcup);
+                localObject = com.tencent.mm.plugin.brandservice.b.c.pne;
+                if (!com.tencent.mm.plugin.brandservice.b.c.clF()) {
+                  break label493;
                 }
               }
+              label493:
               for (paramAnonymousInt = 1;; paramAnonymousInt = 0)
               {
-                localcei.Hrf = paramAnonymousInt;
-                localcei.Hrg = System.currentTimeMillis();
-                ae.d("MicroMsg.BizTimeLineOftenReadReport", "onClick is_default_icon %d, is_icon_cache %d", new Object[] { Integer.valueOf(localcei.Hrf), Integer.valueOf(localcei.Hre) });
-                localf.ond.add(localcei);
+                com.tencent.mm.plugin.report.service.h.CyF.a(21258, new Object[] { Integer.valueOf(2), Long.valueOf(l), Integer.valueOf(0), z.bfG(localcup.iwv), Integer.valueOf(paramAnonymousInt) });
                 break;
+                paramAnonymousInt = 1;
+                break label295;
                 paramAnonymousInt = 0;
-                break label300;
+                break label324;
+                paramAnonymousInt = 0;
+                break label354;
               }
             }
           }
         }
-        if (localb.type == 3)
+        if (localc.type == 3)
         {
-          ae.i("MicroMsg.BizTimeLineHotListView", "alvinluo onClick jump to video channel");
-          if ((localb instanceof d)) {
-            BizTimeLineHotListView.a(BizTimeLineHotListView.this, (d)localb, paramAnonymousView);
+          Log.i("MicroMsg.BizTimeLineHotListView", "alvinluo onClick jump to video channel");
+          if ((localc instanceof e)) {
+            BizTimeLineHotListView.a(BizTimeLineHotListView.this, (e)localc, paramAnonymousView);
           }
         }
         AppMethodBeat.o(175429);
       }
     });
-    AppMethodBeat.o(208494);
+    AppMethodBeat.o(194984);
   }
   
-  public final void a(b paramb)
+  public final void a(c paramc)
   {
-    AppMethodBeat.i(208493);
-    if (paramb == null)
+    AppMethodBeat.i(194983);
+    if (paramc == null)
     {
-      AppMethodBeat.o(208493);
+      AppMethodBeat.o(194983);
       return;
     }
-    b localb = (b)ci(paramb.position);
+    b localb = (b)ch(paramc.position);
     if (localb == null)
     {
-      ae.e("MicroMsg.BizTimeLineHotListView", "refreshUnread %s", new Object[] { paramb.FQp });
-      AppMethodBeat.o(208493);
+      Log.e("MicroMsg.BizTimeLineHotListView", "refreshUnread %s", new Object[] { paramc.KJV });
+      AppMethodBeat.o(194983);
       return;
     }
-    if (paramb.omV)
+    if (paramc.pzL)
     {
-      localb.omC.setVisibility(0);
-      AppMethodBeat.o(208493);
+      localb.pzk.setVisibility(0);
+      AppMethodBeat.o(194983);
       return;
     }
-    localb.omC.setVisibility(8);
-    AppMethodBeat.o(208493);
+    localb.pzk.setVisibility(8);
+    AppMethodBeat.o(194983);
   }
   
-  public final boolean aj(int paramInt1, int paramInt2)
+  public final boolean ak(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(6088);
-    g localg = this.omm;
-    localg.P(localg.wW(localg.mOffsetX + paramInt1), false);
-    boolean bool = super.aj(paramInt1, paramInt2);
+    h localh = this.pyW;
+    localh.W(localh.AE(localh.mOffsetX + paramInt1), false);
+    boolean bool = super.ak(paramInt1, paramInt2);
     AppMethodBeat.o(6088);
     return bool;
   }
   
-  public final boolean bGD()
+  public final void c(List<c> paramList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(194982);
+    paramList = new ArrayList(paramList);
+    bX(paramList);
+    Log.i("MicroMsg.BizTimeLineHotListView", "alvinluo refreshData new list: %d, old list: %d, configurationChanged: %b", new Object[] { Integer.valueOf(paramList.size()), Integer.valueOf(this.nZr.size()), Boolean.valueOf(paramBoolean) });
+    Object localObject = new b(this.nZr, paramList);
+    if (paramBoolean) {
+      ((b)localObject).pzK = true;
+    }
+    localObject = android.support.v7.h.c.a((c.a)localObject, true);
+    this.nZr.clear();
+    this.nZr.addAll(paramList);
+    ((c.b)localObject).a(this.pyX);
+    AppMethodBeat.o(194982);
+  }
+  
+  public final boolean cdc()
   {
     return false;
   }
   
-  public final void bPL()
+  public final void cnm()
   {
     AppMethodBeat.i(6085);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(this.mMj);
+    localArrayList.addAll(this.nZr);
     int m = getCurrentPage();
-    int j = g.wZ(m);
-    int k = g.xa(m);
+    int j = h.AH(m);
+    int k = h.Dl(m);
     int i = j;
     if (m == 0) {
       i = j + 1;
     }
     if ((i <= k) && (i < localArrayList.size()))
     {
-      b localb = (b)localArrayList.get(i);
-      f localf;
-      if (localb != null)
+      Object localObject = (c)localArrayList.get(i);
+      g localg;
+      if (localObject != null)
       {
-        localf = this.omp;
-        if (localb != null)
+        localg = this.pyZ;
+        if (localObject != null)
         {
-          if (localb.type != 1) {
+          if (((c)localObject).type != 1) {
             break label300;
           }
-          localcel = (cel)localf.onc.get(localb.FQp);
-          if (localcel != null) {
+          localcus = (cus)localg.pzS.get(((c)localObject).KJV);
+          if (localcus != null) {
             break label233;
           }
-          localcel = new cel();
-          localcel.GaH = localb.FQp;
-          if (!localb.omV) {
+          localcus = new cus();
+          localcus.KUC = ((c)localObject).KJV;
+          if (!((c)localObject).pzL) {
             break label228;
           }
           j = 1;
-          localcel.Hrb = j;
-          localcel.Hrc = ((int)(System.currentTimeMillis() / 1000L));
-          localcel.uoI = (localb.position - 1);
-          localcel.oDa = 1;
-          localcel.type = 0;
-          localf.onc.put(localb.FQp, localcel);
+          localcus.MzQ = j;
+          localcus.MzR = ((int)(System.currentTimeMillis() / 1000L));
+          localcus.xHb = (((c)localObject).position - 1);
+          localcus.pQJ = 1;
+          localcus.type = 0;
+          localg.pzS.put(((c)localObject).KJV, localcus);
         }
       }
       label228:
       label233:
-      while (localb.type != 3)
+      while (((c)localObject).type != 3)
       {
         for (;;)
         {
@@ -441,74 +492,81 @@ public class BizTimeLineHotListView
           break;
           j = 0;
         }
-        if (localb.omV) {}
+        if (((c)localObject).pzL) {}
         for (j = 1;; j = 0)
         {
-          localcel.Hrb = j;
-          localcel.Hrc = ((int)(System.currentTimeMillis() / 1000L));
-          localcel.uoI = (localb.position - 1);
-          localcel.type = 0;
-          localcel.oDa += 1;
+          localcus.MzQ = j;
+          localcus.MzR = ((int)(System.currentTimeMillis() / 1000L));
+          localcus.xHb = (((c)localObject).position - 1);
+          localcus.type = 0;
+          localcus.pQJ += 1;
           break;
         }
       }
       label300:
-      cel localcel = new cel();
-      localcel.Hrc = ((int)(System.currentTimeMillis() / 1000L));
-      localcel.uoI = (localb.position - 1);
-      localcel.oDa = 1;
-      localcel.type = 1;
-      com.tencent.mm.plugin.brandservice.b.c localc = com.tencent.mm.plugin.brandservice.b.c.och;
-      localcel.hCp = com.tencent.mm.plugin.brandservice.b.c.jk(false);
-      localc = com.tencent.mm.plugin.brandservice.b.c.och;
-      if (com.tencent.mm.plugin.brandservice.b.c.bOB())
+      cus localcus = new cus();
+      long l = System.currentTimeMillis();
+      localcus.MzR = ((int)(l / 1000L));
+      localcus.xHb = (((c)localObject).position - 1);
+      localcus.pQJ = 1;
+      com.tencent.mm.plugin.brandservice.b.c localc = com.tencent.mm.plugin.brandservice.b.c.pne;
+      if (com.tencent.mm.plugin.brandservice.b.c.clF())
       {
+        j = 2;
+        label366:
+        localcus.type = j;
+        localcus.iwv = com.tencent.mm.plugin.brandservice.b.c.pne.kj(false);
+        if (!com.tencent.mm.plugin.brandservice.b.c.pne.clC()) {
+          break label544;
+        }
         j = 1;
-        label382:
-        localcel.Hre = j;
-        localc = com.tencent.mm.plugin.brandservice.b.c.och;
-        localcel.Hrd = com.tencent.mm.plugin.brandservice.b.c.bOC();
-        localc = com.tencent.mm.plugin.brandservice.b.c.och;
-        if (!com.tencent.mm.plugin.brandservice.b.c.bOA()) {
-          break label468;
+        label395:
+        localcus.MzT = j;
+        localc = com.tencent.mm.plugin.brandservice.b.c.pne;
+        localcus.MzS = com.tencent.mm.plugin.brandservice.b.c.clD();
+        if (!com.tencent.mm.plugin.brandservice.b.c.pne.clB()) {
+          break label549;
+        }
+        j = 1;
+        label425:
+        localcus.MzU = j;
+        j = g.pzU;
+        g.pzU = j + 1;
+        localcus.MzZ = j;
+        localcus.MzV = l;
+        localg.pzS.put(((c)localObject).KJV, localcus);
+        localObject = com.tencent.mm.plugin.brandservice.b.c.pne;
+        if (!com.tencent.mm.plugin.brandservice.b.c.clF()) {
+          break label554;
         }
       }
-      label468:
+      label544:
+      label549:
+      label554:
       for (j = 1;; j = 0)
       {
-        localcel.Hrf = j;
-        j = f.one;
-        f.one = j + 1;
-        localcel.Hrk = j;
-        localcel.Hrg = System.currentTimeMillis();
-        localf.onc.put(localb.FQp, localcel);
+        com.tencent.mm.plugin.report.service.h.CyF.a(21258, new Object[] { Integer.valueOf(1), Long.valueOf(l), Integer.valueOf(0), z.bfG(localcus.iwv), Integer.valueOf(j) });
         break;
+        j = 1;
+        break label366;
         j = 0;
-        break label382;
+        break label395;
+        j = 0;
+        break label425;
       }
     }
     AppMethodBeat.o(6085);
   }
   
-  public final void cg(List<b> paramList)
-  {
-    AppMethodBeat.i(6084);
-    this.mMj.clear();
-    this.mMj.addAll(paramList);
-    bK(this.mMj);
-    this.omn.asY.notifyChanged();
-    AppMethodBeat.o(6084);
-  }
-  
   public a getAdapter()
   {
-    return this.omn;
+    return this.pyX;
   }
   
   public int getCurrentPage()
   {
-    if (this.omm != null) {
-      return this.omm.nnp;
+    if (this.pyW != null) {
+      return this.pyW.owW;
     }
     return 0;
   }
@@ -521,7 +579,7 @@ public class BizTimeLineHotListView
   public int getDataCount()
   {
     AppMethodBeat.i(6090);
-    int i = this.mMj.size();
+    int i = this.nZr.size();
     AppMethodBeat.o(6090);
     return i;
   }
@@ -529,7 +587,7 @@ public class BizTimeLineHotListView
   public int getItemPadding()
   {
     AppMethodBeat.i(6089);
-    int i = a.ec(getContext());
+    int i = a.ew(getContext());
     AppMethodBeat.o(6089);
     return i;
   }
@@ -537,14 +595,14 @@ public class BizTimeLineHotListView
   public int getItemWidth()
   {
     AppMethodBeat.i(6092);
-    int i = a.eb(this.mContext);
+    int i = a.ev(this.mContext);
     AppMethodBeat.o(6092);
     return i;
   }
   
   public int getShowCount()
   {
-    if (this.omo) {
+    if (this.pyY) {
       return 13;
     }
     return 12;
@@ -565,10 +623,10 @@ public class BizTimeLineHotListView
     AppMethodBeat.o(6083);
   }
   
-  public void setOnScrollPageListener(g.a parama)
+  public void setOnScrollPageListener(h.a parama)
   {
-    if (this.omm != null) {
-      this.omm.oni = parama;
+    if (this.pyW != null) {
+      this.pyW.pzY = parama;
     }
   }
   
@@ -582,79 +640,92 @@ public class BizTimeLineHotListView
       this.mContext = paramContext;
     }
     
-    private void a(BizTimeLineHotListView.b paramb, b paramb1, int paramInt)
+    private void a(BizTimeLineHotListView.b paramb, c paramc, int paramInt)
     {
       AppMethodBeat.i(6077);
       int j = BizTimeLineHotListView.this.getItemWidth();
       float f = BizTimeLineHotListView.this.getShowCountPerPage();
       int i = j;
-      if (j <= 0) {
-        i = (int)(BizTimeLineHotListView.this.getWidth() / f);
-      }
-      j = i;
-      if (i <= 0) {
-        j = (int)(BizTimeLineHotListView.this.getResources().getDisplayMetrics().widthPixels / f);
-      }
-      i = j;
       if (paramInt == BizTimeLineHotListView.c(BizTimeLineHotListView.this).getItemCount() - 1)
       {
         double d = j;
         i = (int)((1.0D - (Math.ceil(f) - f)) * d);
-        ae.i("MicroMsg.BizTimeLineHotListView", "alvinluo lastPosition %d set width %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+        Log.i("MicroMsg.BizTimeLineHotListView", "alvinluo lastPosition %d set width %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
       }
-      paramb.auu.getLayoutParams().width = i;
-      paramb.auu.setScaleX(1.0F);
-      paramb.auu.setScaleY(1.0F);
-      paramb.titleTv.setText("pos:".concat(String.valueOf(paramInt)));
-      ae.d("MicroMsg.BizTimeLineHotListView", "alvinluo onBindCustomViewHolder postion: %d, width: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
-      Object localObject;
-      if ((paramb1 != null) && (paramb1.type == 1))
+      j = i;
+      if (paramc != null)
       {
-        a.b.d(paramb.mdt, paramb1.FQp);
-        localObject = w.zP(paramb1.FQp);
+        j = i;
+        if (paramc.type == 3) {
+          j = a.eN(this.mContext);
+        }
+      }
+      paramb.aus.getLayoutParams().width = j;
+      paramb.aus.setScaleX(1.0F);
+      paramb.aus.setScaleY(1.0F);
+      Log.d("MicroMsg.BizTimeLineHotListView", "alvinluo onBindCustomViewHolder postion: %d, width: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j) });
+      Object localObject;
+      boolean bool;
+      if ((paramc != null) && (paramc.type == 1))
+      {
+        BizTimeLineHotListView.b(paramb);
+        a.b.d(paramb.nnL, paramc.KJV);
+        localObject = aa.getDisplayName(paramc.KJV);
         paramb.titleTv.setText((CharSequence)localObject);
-        if (paramb1.omV)
+        paramb.titleTv.setTextSize(0, com.tencent.mm.cb.a.aH(this.mContext, 2131165594) * com.tencent.mm.cb.a.ji(BizTimeLineHotListView.this.getContext()));
+        paramb.titleTv.setTextColor(this.mContext.getResources().getColor(2131100584));
+        if (paramc.pzL)
         {
-          paramb.omC.setVisibility(0);
-          paramb.omD.setVisibility(8);
+          paramb.pzk.setVisibility(0);
+          paramb.pzl.setVisibility(8);
+          paramb.pzp.setVisibility(8);
+          paramb.pzo.setVisibility(8);
+          paramb.pzn.setVisibility(8);
+          bool = true;
         }
       }
       for (;;)
       {
-        BizTimeLineHotListView.a(BizTimeLineHotListView.this, paramb, paramb1, paramInt);
+        BizTimeLineHotListView.a(BizTimeLineHotListView.this, paramb, paramc, paramInt, bool);
         AppMethodBeat.o(6077);
         return;
-        paramb.omC.setVisibility(8);
+        paramb.pzk.setVisibility(8);
         break;
-        if ((paramb1 != null) && (paramb1.type == 3))
+        if ((paramc != null) && (paramc.type == 3) && ((paramc instanceof e)))
         {
-          if ((paramb1 instanceof d))
+          localObject = com.tencent.mm.plugin.brandservice.b.c.pne;
+          if (com.tencent.mm.plugin.brandservice.b.c.clF())
           {
-            localObject = (d)paramb1;
-            com.tencent.mm.plugin.brandservice.b.c localc = com.tencent.mm.plugin.brandservice.b.c.och;
-            if (!com.tencent.mm.plugin.brandservice.b.c.e(paramb.mdt)) {
-              paramb.mdt.setImageResource(2131231342);
+            paramb.oDp.setVisibility(8);
+            paramb.pzj.setVisibility(8);
+            if (paramb.pzm == null)
+            {
+              paramb.pzm = ((ViewStub)paramb.aus.findViewById(2131309900)).inflate();
+              paramb.pvr = ((BizTLRecCardCanvasView)paramb.pzm.findViewById(2131309731));
             }
-            BizTimeLineHotListView.a(BizTimeLineHotListView.this, (d)localObject, paramb.titleTv);
+            localObject = paramb.pvr;
+            ((BizTLRecCardCanvasView)localObject).setVisibility(0);
+            com.tencent.mm.plugin.brandservice.b.c localc = com.tencent.mm.plugin.brandservice.b.c.pne;
+            ((BizTLRecCardCanvasView)localObject).a(0L, "__biz_video_channel_canvas_id__", "vc", "");
+            bool = false;
           }
-          if (paramb1.omV) {
-            paramb.omC.setVisibility(0);
-          }
-          for (;;)
+          else
           {
-            paramb.omD.setVisibility(0);
-            break;
-            paramb.omC.setVisibility(8);
+            localObject = (e)paramc;
+            BizTimeLineHotListView.a(BizTimeLineHotListView.this, paramb, (e)localObject);
           }
         }
-        paramb.omD.setVisibility(8);
+        else
+        {
+          bool = true;
+        }
       }
     }
     
     public final int getItemCount()
     {
       AppMethodBeat.i(6075);
-      if (bu.ht(BizTimeLineHotListView.a(BizTimeLineHotListView.this)))
+      if (Util.isNullOrNil(BizTimeLineHotListView.a(BizTimeLineHotListView.this)))
       {
         AppMethodBeat.o(6075);
         return 0;
@@ -690,42 +761,64 @@ public class BizTimeLineHotListView
     public final int getItemViewType(int paramInt)
     {
       AppMethodBeat.i(6076);
-      paramInt = super.getItemViewType(paramInt);
+      if ((paramInt < BizTimeLineHotListView.a(BizTimeLineHotListView.this).size()) && (paramInt - BizTimeLineHotListView.this.getCustomItemCount() <= BizTimeLineHotListView.this.getShowCount()))
+      {
+        c localc = (c)BizTimeLineHotListView.a(BizTimeLineHotListView.this).get(paramInt);
+        if ((localc != null) && (localc.type == 3) && ((localc instanceof e)))
+        {
+          AppMethodBeat.o(6076);
+          return 1;
+        }
+      }
       AppMethodBeat.o(6076);
-      return paramInt;
+      return 0;
     }
   }
   
   public final class b
-    extends RecyclerView.w
+    extends RecyclerView.v
   {
-    public View auu;
-    public ImageView mdt;
-    public ImageView ndo;
-    public FrameLayout omB;
-    public ImageView omC;
-    public ImageView omD;
+    public View aus;
+    public ImageView nnL;
+    public RelativeLayout oDp;
+    public ImageView ooB;
+    public BizTLRecCardCanvasView pvr;
+    public View pzj;
+    public ImageView pzk;
+    public ImageView pzl;
+    public View pzm;
+    public TextView pzn;
+    public ImageView pzo;
+    public ImageView pzp;
     public TextView titleTv;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(6080);
-      this.auu = paramView;
+      this.pzm = null;
+      this.pzn = null;
+      this.pzo = null;
+      this.pzp = null;
+      this.aus = paramView;
       paramView.getLayoutParams().width = (BizTimeLineHotListView.this.getResources().getDisplayMetrics().widthPixels / 4);
-      this.mdt = ((ImageView)paramView.findViewById(2131297336));
-      this.ndo = ((ImageView)paramView.findViewById(2131297337));
-      this.omB = ((FrameLayout)paramView.findViewById(2131297338));
-      this.titleTv = ((TextView)paramView.findViewById(2131297339));
-      this.omC = ((ImageView)paramView.findViewById(2131297340));
-      this.omD = ((ImageView)paramView.findViewById(2131307281));
+      this.nnL = ((ImageView)paramView.findViewById(2131297542));
+      this.ooB = ((ImageView)paramView.findViewById(2131297543));
+      this.oDp = ((RelativeLayout)paramView.findViewById(2131297544));
+      this.pzj = paramView.findViewById(2131297549);
+      this.titleTv = ((TextView)paramView.findViewById(2131297548));
+      this.pzk = ((ImageView)paramView.findViewById(2131297550));
+      this.pzl = ((ImageView)paramView.findViewById(2131297545));
+      this.pzn = ((TextView)paramView.findViewById(2131297541));
+      this.pzo = ((ImageView)paramView.findViewById(2131297546));
+      this.pzp = ((ImageView)paramView.findViewById(2131297547));
       AppMethodBeat.o(6080);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotListView
  * JD-Core Version:    0.7.0.1
  */

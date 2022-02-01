@@ -1,119 +1,79 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
-import android.util.Base64;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.luckymoney.a.a;
-import com.tencent.mm.protocal.protobuf.ctb;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.protocal.protobuf.bvi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.io.IOException;
 
 public final class k
+  extends com.tencent.mm.wallet_core.c.a<bvi, d>
 {
-  private e vAg;
-  j vvL;
+  private static k yUJ;
   
-  public k()
+  public static k eeZ()
   {
-    AppMethodBeat.i(65179);
-    init();
-    AppMethodBeat.o(65179);
+    AppMethodBeat.i(65165);
+    if (yUJ == null) {
+      yUJ = new k();
+    }
+    k localk = yUJ;
+    AppMethodBeat.o(65165);
+    return localk;
   }
   
-  private void init()
+  private static bvi efa()
   {
-    AppMethodBeat.i(65180);
-    this.vvL = new j();
-    g.ajS();
-    String str = (String)g.ajR().ajA().get(356355, null);
-    if (bu.isNullOrNil(str))
+    AppMethodBeat.i(65167);
+    Object localObject = (String)g.aAh().azQ().get(ar.a.Ofg, "");
+    if (Util.isNullOrNil((String)localObject))
     {
-      this.vvL.vvk = 2000.0D;
-      this.vvL.vvh = 100;
-      this.vvL.vvl = 200.0D;
-      this.vvL.vvj = 0.01D;
-      this.vvL.vvi = 200.0D;
+      AppMethodBeat.o(65167);
+      return null;
     }
-    for (;;)
+    localObject = ((String)localObject).getBytes(org.apache.commons.a.a.ISO_8859_1);
+    try
     {
-      ae.i("MicroMsg.LuckyMoneyConfigManager", "LuckyMoneyConfig init maxTotalAmount:" + this.vvL.vvk + " maxTotalNum:" + this.vvL.vvh + " perGroupMaxValue:" + this.vvL.vvl + " perMinValue:" + this.vvL.vvj + " perPersonMaxValue:" + this.vvL.vvi);
-      AppMethodBeat.o(65180);
-      return;
+      localObject = (bvi)new bvi().parseFrom((byte[])localObject);
+      AppMethodBeat.o(65167);
+      return localObject;
+    }
+    catch (IOException localIOException)
+    {
+      Log.printErrStackTrace("MicroMsg.GetShowSourceAsyncLoader", localIOException, "", new Object[0]);
+      AppMethodBeat.o(65167);
+    }
+    return null;
+  }
+  
+  public final void b(c.a<bvi> parama)
+  {
+    AppMethodBeat.i(182454);
+    Log.i("MicroMsg.GetShowSourceAsyncLoader", "errType: %s, errCode: %s", new Object[] { Integer.valueOf(parama.errCode), Integer.valueOf(parama.errType) });
+    if ((parama.errType == 0) && (parama.errCode == 0) && (((bvi)parama.iLC).dDN == 0)) {
       try
       {
-        this.vvL.parseFrom(str.getBytes("ISO-8859-1"));
-        dlj();
+        parama = new String(((bvi)parama.iLC).toByteArray(), org.apache.commons.a.a.ISO_8859_1);
+        g.aAh().azQ().set(ar.a.Ofg, parama);
+        AppMethodBeat.o(182454);
+        return;
       }
-      catch (Exception localException)
+      catch (IOException parama)
       {
-        ae.w("MicroMsg.LuckyMoneyConfigManager", "parseConfig exp, " + localException.getLocalizedMessage());
-        this.vvL.vvk = 2000.0D;
-        this.vvL.vvh = 100;
-        this.vvL.vvl = 200.0D;
-        this.vvL.vvj = 0.01D;
-        this.vvL.vvi = 200.0D;
+        Log.printErrStackTrace("MicroMsg.GetShowSourceAsyncLoader", parama, "", new Object[0]);
       }
     }
-  }
-  
-  final void dlj()
-  {
-    AppMethodBeat.i(65181);
-    if (this.vvL != null)
-    {
-      this.vAg = e.apX(this.vvL.vAe);
-      if ((this.vAg != null) && (this.vAg.vzN != null))
-      {
-        ((a)g.ab(a.class)).a(this.vAg.vzN);
-        g.ajR().ajA().set(am.a.IWU, Integer.valueOf(1));
-        if (!bu.isNullOrNil(this.vvL.vAf))
-        {
-          ae.d("MicroMsg.LuckyMoneyConfigManager", "parse cover info");
-          try
-          {
-            ctb localctb = (ctb)new ctb().parseFrom(Base64.decode(this.vvL.vAf, 0));
-            this.vAg.vzN.hCs = localctb.hCs;
-            AppMethodBeat.o(65181);
-            return;
-          }
-          catch (IOException localIOException)
-          {
-            ae.printErrStackTrace("MicroMsg.LuckyMoneyConfigManager", localIOException, "", new Object[0]);
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(65181);
-  }
-  
-  public final j dlk()
-  {
-    AppMethodBeat.i(65182);
-    if (this.vvL == null) {
-      init();
-    }
-    j localj = this.vvL;
-    AppMethodBeat.o(65182);
-    return localj;
-  }
-  
-  public final e dll()
-  {
-    AppMethodBeat.i(65183);
-    if (this.vAg == null) {
-      init();
-    }
-    e locale = this.vAg;
-    AppMethodBeat.o(65183);
-    return locale;
+    AppMethodBeat.o(182454);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,98 +1,61 @@
 package com.tencent.mm.plugin.finder.cgi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.aop;
-import com.tencent.mm.protocal.protobuf.aoq;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.protocal.protobuf.aot;
+import com.tencent.mm.protocal.protobuf.aou;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetMsgSessionId;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/FinderGetMsgSessionIdResponse;", "scene", "", "username", "", "(ILjava/lang/String;)V", "objectId", "", "commentId", "(ILjava/lang/String;JJ)V", "fansId", "(Ljava/lang/String;)V", "onCgiBack", "", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLiveBanComment;", "Lcom/tencent/mm/plugin/finder/cgi/FinderCgi;", "Lcom/tencent/mm/protocal/protobuf/FinderBanLiveCommentResponse;", "liveId", "", "objectId", "audienceUsername", "", "scene", "", "enable", "", "callback", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLiveBanComment$CallBack;", "(JJLjava/lang/String;IZLcom/tencent/mm/plugin/finder/cgi/CgiFinderLiveBanComment$CallBack;)V", "TAG", "request", "Lcom/tencent/mm/protocal/protobuf/FinderBanLiveCommentRequest;", "initReqResp", "", "onCgiEnd", "errType", "errCode", "errMsg", "resp", "Lcom/tencent/mm/modelbase/NetSceneBase;", "CallBack", "plugin-finder_release"})
 public final class t
-  extends com.tencent.mm.ak.a<aoq>
+  extends an<aou>
 {
-  public static final a rQZ;
+  private final String TAG;
+  private a ttv;
+  private aot ttw;
   
-  static
+  public t(long paramLong1, long paramLong2, String paramString, boolean paramBoolean, a parama)
   {
-    AppMethodBeat.i(201505);
-    rQZ = new a((byte)0);
-    AppMethodBeat.o(201505);
+    AppMethodBeat.i(242243);
+    this.TAG = "Finder.CgiFinderLiveBanComment";
+    this.ttv = parama;
+    this.ttw = new aot();
+    this.ttw.liveId = paramLong1;
+    this.ttw.hFK = paramLong2;
+    this.ttw.LAP = paramString;
+    this.ttw.scene = 2;
+    this.ttw.enable = paramBoolean;
+    paramString = this.ttw;
+    parama = am.tuw;
+    paramString.LAI = am.cXY();
+    paramString = new d.a();
+    paramString.c((a)this.ttw);
+    parama = new aou();
+    parama.setBaseResponse(new BaseResponse());
+    parama.getBaseResponse().ErrMsg = new dqi();
+    paramString.d((a)parama);
+    paramString.MB("/cgi-bin/micromsg-bin/finderbanlivecomment");
+    paramString.sG(6656);
+    c(paramString.aXF());
+    Log.i(this.TAG, "CgiFinderLiveBanComment init " + this.ttw.liveId + ',' + this.ttw.LAP);
+    AppMethodBeat.o(242243);
   }
   
-  public t(int paramInt, String paramString)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/CgiFinderLiveBanComment$CallBack;", "", "onFail", "", "errType", "", "errCode", "errMsg", "", "enable", "", "onSuccess", "plugin-finder_release"})
+  public static abstract interface a
   {
-    AppMethodBeat.i(201502);
-    b.a locala = new b.a();
-    Object localObject = new aop();
-    v localv = v.rRb;
-    ((aop)localObject).GFS = v.czz();
-    ((aop)localObject).scene = paramInt;
-    ((aop)localObject).oBN = paramString;
-    locala.c((com.tencent.mm.bw.a)localObject);
-    localObject = new aoq();
-    ((aoq)localObject).setBaseResponse(new BaseResponse());
-    ((aoq)localObject).getBaseResponse().ErrMsg = new cxn();
-    locala.d((com.tencent.mm.bw.a)localObject);
-    locala.DN("/cgi-bin/micromsg-bin/findergetmsgsessionid");
-    locala.oS(3828);
-    c(locala.aDS());
-    ae.i("Finder.CgiGetMsgSessionId", "[CgiGetMsgSessionId] scene=" + paramInt + " username=" + paramString);
-    AppMethodBeat.o(201502);
+    public abstract void mO(boolean paramBoolean);
+    
+    public abstract void t(int paramInt1, int paramInt2, boolean paramBoolean);
   }
-  
-  public t(int paramInt, String paramString, long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(201503);
-    b.a locala = new b.a();
-    Object localObject = new aop();
-    v localv = v.rRb;
-    ((aop)localObject).GFS = v.czz();
-    ((aop)localObject).scene = paramInt;
-    ((aop)localObject).GFU = paramLong1;
-    ((aop)localObject).GFV = paramLong2;
-    ((aop)localObject).oBN = paramString;
-    locala.c((com.tencent.mm.bw.a)localObject);
-    localObject = new aoq();
-    ((aoq)localObject).setBaseResponse(new BaseResponse());
-    ((aoq)localObject).getBaseResponse().ErrMsg = new cxn();
-    locala.d((com.tencent.mm.bw.a)localObject);
-    locala.DN("/cgi-bin/micromsg-bin/findergetmsgsessionid");
-    locala.oS(3828);
-    c(locala.aDS());
-    ae.i("Finder.CgiGetMsgSessionId", "[CgiGetMsgSessionId] scene=" + paramInt + " username=" + paramString + " objectId=" + paramLong1 + " commentId=" + paramLong2);
-    AppMethodBeat.o(201503);
-  }
-  
-  public t(String paramString)
-  {
-    AppMethodBeat.i(201504);
-    b.a locala = new b.a();
-    Object localObject = new aop();
-    v localv = v.rRb;
-    ((aop)localObject).GFS = v.czz();
-    ((aop)localObject).scene = 1;
-    ((aop)localObject).GFT = paramString;
-    locala.c((com.tencent.mm.bw.a)localObject);
-    localObject = new aoq();
-    ((aoq)localObject).setBaseResponse(new BaseResponse());
-    ((aoq)localObject).getBaseResponse().ErrMsg = new cxn();
-    locala.d((com.tencent.mm.bw.a)localObject);
-    locala.DN("/cgi-bin/micromsg-bin/findergetmsgsessionid");
-    locala.oS(3828);
-    c(locala.aDS());
-    ae.i("Finder.CgiGetMsgSessionId", "[CgiGetMsgSessionId] fansId=".concat(String.valueOf(paramString)));
-    AppMethodBeat.o(201504);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/CgiGetMsgSessionId$Companion;", "", "()V", "MSG_SCENE_FINDER", "", "MSG_SCENE_STRANGER", "TAG", "", "plugin-finder_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.t
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView android:textColor="@color/y4" android:id="@id/bm1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="订阅号广告" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:id="@id/i4e" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="PreviewMode" android:onClick="onClick" style="@style/o8" />
-            <Button android:id="@id/i58" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="RleaseMode" android:onClick="onClick" style="@style/o8" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:id="@id/m4" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="AdOpen" android:onClick="onClick" style="@style/o8" />
-            <Button android:id="@id/dz" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="AdClose" android:onClick="onClick" style="@style/o8" />
-            <Button android:id="@id/i4c" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="PkgInfo" android:onClick="onClick" style="@style/o8" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:id="@id/axs" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="NormalMode" android:onClick="onClick" style="@style/o8" />
-            <Button android:id="@id/ab3" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="清理广告曝光时间" android:onClick="onClick" style="@style/o8" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:id="@id/c2b" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="TestMode" android:onClick="onClick" style="@style/o8" />
-            <Button android:id="@id/c2a" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="TestMode【mock data】" android:onClick="onClick" style="@style/o8" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <Button android:id="@id/i72" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="测试Canvas" android:onClick="onClick" style="@style/o8" />
-            <Button android:id="@id/i7g" android:layout_marginLeft="@dimen/c5" android:layout_marginTop="@dimen/c5" android:text="秒开操作" android:onClick="onClick" style="@style/o8" />
+<LinearLayout android:orientation="vertical" android:id="@id/b9o" android:background="@drawable/av5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/hxe" android:background="@drawable/av_" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <LinearLayout android:orientation="horizontal" android:paddingRight="10.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="top" android:id="@id/hxd" android:paddingLeft="8.0dip" android:paddingTop="13.0dip" android:paddingRight="8.0dip" android:visibility="invisible" android:layout_width="33.0dip" android:layout_height="33.0dip" android:src="@raw/friendactivity_writeicon" android:scaleType="center" app:iconColor="@color/Link" />
+        <LinearLayout android:orientation="horizontal" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip">
+            <com.tencent.mm.plugin.sns.ui.widget.SnsAvatarImageView android:id="@id/j9" android:focusable="false" android:scaleType="centerCrop" style="@style/un" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <RelativeLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textSize="12.0dip" android:textColor="@color/a9v" android:layout_gravity="center_vertical" android:id="@id/jn" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" />
+                    <TextView android:textSize="13.0dip" android:textColor="@color/a2x" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/jk" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200.0dip" android:singleLine="true" android:layout_toLeftOf="@id/jn" android:layout_alignParentStart="true" />
+                </RelativeLayout>
+                <FrameLayout android:id="@id/jb" android:background="@drawable/auv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
+                    <TextView android:textSize="15.0dip" android:textColor="@color/a8v" android:layout_gravity="center_vertical" android:id="@id/jc" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </FrameLayout>
+                <com.tencent.mm.plugin.sns.ui.SnsTranslateResultView android:id="@id/i1c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                <com.tencent.mm.emoji.view.EmojiStatusView android:id="@id/jd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:adjustViewBounds="true" android:maxWidth="120.0dip" android:maxHeight="120.0dip" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+</LinearLayout>

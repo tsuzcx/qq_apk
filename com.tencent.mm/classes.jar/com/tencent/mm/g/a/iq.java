@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import java.util.ArrayList;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class iq
-  extends b
+  extends IEvent
 {
-  public a dwp;
+  public a dNl;
   
   public iq()
   {
@@ -16,21 +15,21 @@ public final class iq
   
   private iq(byte paramByte)
   {
-    AppMethodBeat.i(125617);
-    this.dwp = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(125616);
+    this.dNl = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125617);
+    AppMethodBeat.o(125616);
   }
   
   public static final class a
   {
-    public ArrayList dwq;
+    public int scene;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.iq
  * JD-Core Version:    0.7.0.1
  */

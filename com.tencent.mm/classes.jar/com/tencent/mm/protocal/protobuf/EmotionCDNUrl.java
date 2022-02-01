@@ -14,14 +14,14 @@ public class EmotionCDNUrl
     AppMethodBeat.i(104771);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.Url != null) {
-        paramVarArgs.d(1, this.Url);
+        paramVarArgs.e(1, this.Url);
       }
       if (this.AesKey != null) {
-        paramVarArgs.d(2, this.AesKey);
+        paramVarArgs.e(2, this.AesKey);
       }
-      paramVarArgs.aS(3, this.FileSize);
+      paramVarArgs.aM(3, this.FileSize);
       AppMethodBeat.o(104771);
       return 0;
     }
@@ -31,21 +31,21 @@ public class EmotionCDNUrl
       }
     }
     label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Url) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.Url) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.AesKey != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.AesKey);
+        i = paramInt + g.a.a.b.b.a.f(2, this.AesKey);
       }
-      paramInt = f.a.a.b.b.a.bz(3, this.FileSize);
+      paramInt = g.a.a.b.b.a.bu(3, this.FileSize);
       AppMethodBeat.o(104771);
       return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(104771);
@@ -53,7 +53,7 @@ public class EmotionCDNUrl
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         EmotionCDNUrl localEmotionCDNUrl = (EmotionCDNUrl)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -61,15 +61,15 @@ public class EmotionCDNUrl
           AppMethodBeat.o(104771);
           return -1;
         case 1: 
-          localEmotionCDNUrl.Url = locala.OmT.readString();
+          localEmotionCDNUrl.Url = locala.UbS.readString();
           AppMethodBeat.o(104771);
           return 0;
         case 2: 
-          localEmotionCDNUrl.AesKey = locala.OmT.readString();
+          localEmotionCDNUrl.AesKey = locala.UbS.readString();
           AppMethodBeat.o(104771);
           return 0;
         }
-        localEmotionCDNUrl.FileSize = locala.OmT.zc();
+        localEmotionCDNUrl.FileSize = locala.UbS.zi();
         AppMethodBeat.o(104771);
         return 0;
       }
@@ -80,7 +80,7 @@ public class EmotionCDNUrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.EmotionCDNUrl
  * JD-Core Version:    0.7.0.1
  */

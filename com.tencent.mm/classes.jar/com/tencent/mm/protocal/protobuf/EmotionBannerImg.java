@@ -15,14 +15,14 @@ public class EmotionBannerImg
     AppMethodBeat.i(104769);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.ImgUrl != null) {
-        paramVarArgs.d(1, this.ImgUrl);
+        paramVarArgs.e(1, this.ImgUrl);
       }
-      paramVarArgs.aS(2, this.Width);
-      paramVarArgs.aS(3, this.Height);
+      paramVarArgs.aM(2, this.Width);
+      paramVarArgs.aM(3, this.Height);
       if (this.StripUrl != null) {
-        paramVarArgs.d(4, this.StripUrl);
+        paramVarArgs.e(4, this.StripUrl);
       }
       AppMethodBeat.o(104769);
       return 0;
@@ -33,21 +33,21 @@ public class EmotionBannerImg
       }
     }
     label362:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ImgUrl) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.ImgUrl) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.Width) + f.a.a.b.b.a.bz(3, this.Height);
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.Width) + g.a.a.b.b.a.bu(3, this.Height);
       paramInt = i;
       if (this.StripUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.StripUrl);
+        paramInt = i + g.a.a.b.b.a.f(4, this.StripUrl);
       }
       AppMethodBeat.o(104769);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(104769);
@@ -55,7 +55,7 @@ public class EmotionBannerImg
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         EmotionBannerImg localEmotionBannerImg = (EmotionBannerImg)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -63,19 +63,19 @@ public class EmotionBannerImg
           AppMethodBeat.o(104769);
           return -1;
         case 1: 
-          localEmotionBannerImg.ImgUrl = locala.OmT.readString();
+          localEmotionBannerImg.ImgUrl = locala.UbS.readString();
           AppMethodBeat.o(104769);
           return 0;
         case 2: 
-          localEmotionBannerImg.Width = locala.OmT.zc();
+          localEmotionBannerImg.Width = locala.UbS.zi();
           AppMethodBeat.o(104769);
           return 0;
         case 3: 
-          localEmotionBannerImg.Height = locala.OmT.zc();
+          localEmotionBannerImg.Height = locala.UbS.zi();
           AppMethodBeat.o(104769);
           return 0;
         }
-        localEmotionBannerImg.StripUrl = locala.OmT.readString();
+        localEmotionBannerImg.StripUrl = locala.UbS.readString();
         AppMethodBeat.o(104769);
         return 0;
       }

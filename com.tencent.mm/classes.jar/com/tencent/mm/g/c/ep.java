@@ -2,25 +2,28 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class ep
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEL = "status".hashCode();
-  private static final int fpi = "reqkey".hashCode();
-  private static final int fpj = "ack_key".hashCode();
-  private static final int fpk = "receive_time".hashCode();
+  private static final int fRj = "quotedMsgId".hashCode();
+  private static final int fRk = "quotedMsgSvrId".hashCode();
+  private static final int fjf = "msgId".hashCode();
+  private static final int fjl = "status".hashCode();
+  private static final int fqv = "msgSvrId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEI = true;
-  public String field_ack_key;
-  public long field_receive_time;
-  public String field_reqkey;
+  private boolean fRh = true;
+  private boolean fRi = true;
+  public long field_msgId;
+  public long field_msgSvrId;
+  public long field_quotedMsgId;
+  public long field_quotedMsgSvrId;
   public int field_status;
-  private boolean fpf = true;
-  private boolean fpg = true;
-  private boolean fph = true;
+  private boolean fjb = true;
+  private boolean fji = true;
+  private boolean fqh = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -35,24 +38,25 @@ public abstract class ep
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fpi != k) {
-        break label65;
+      if (fjf != k) {
+        break label60;
       }
-      this.field_reqkey = paramCursor.getString(i);
-      this.fpf = true;
+      this.field_msgId = paramCursor.getLong(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (fpj == k) {
-        this.field_ack_key = paramCursor.getString(i);
-      } else if (eEL == k) {
+      label60:
+      if (fqv == k) {
+        this.field_msgSvrId = paramCursor.getLong(i);
+      } else if (fRj == k) {
+        this.field_quotedMsgId = paramCursor.getLong(i);
+      } else if (fRk == k) {
+        this.field_quotedMsgSvrId = paramCursor.getLong(i);
+      } else if (fjl == k) {
         this.field_status = paramCursor.getInt(i);
-      } else if (fpk == k) {
-        this.field_receive_time = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -62,17 +66,20 @@ public abstract class ep
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fpf) {
-      localContentValues.put("reqkey", this.field_reqkey);
+    if (this.fjb) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.fpg) {
-      localContentValues.put("ack_key", this.field_ack_key);
+    if (this.fqh) {
+      localContentValues.put("msgSvrId", Long.valueOf(this.field_msgSvrId));
     }
-    if (this.eEI) {
+    if (this.fRh) {
+      localContentValues.put("quotedMsgId", Long.valueOf(this.field_quotedMsgId));
+    }
+    if (this.fRi) {
+      localContentValues.put("quotedMsgSvrId", Long.valueOf(this.field_quotedMsgSvrId));
+    }
+    if (this.fji) {
       localContentValues.put("status", Integer.valueOf(this.field_status));
-    }
-    if (this.fph) {
-      localContentValues.put("receive_time", Long.valueOf(this.field_receive_time));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -82,7 +89,7 @@ public abstract class ep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.ep
  * JD-Core Version:    0.7.0.1
  */

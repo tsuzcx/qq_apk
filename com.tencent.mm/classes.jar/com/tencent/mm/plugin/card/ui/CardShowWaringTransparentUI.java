@@ -17,14 +17,14 @@ public class CardShowWaringTransparentUI
 {
   public int getLayoutId()
   {
-    return 2131493352;
+    return 2131493443;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(113579);
     super.onCreate(paramBundle);
-    h.a(this, getString(2131757013, new Object[] { getIntent().getStringExtra("KEY_BRAND_NAME") }), getString(2131757014), getString(2131756894), new DialogInterface.OnClickListener()
+    h.a(this, getString(2131757183, new Object[] { getIntent().getStringExtra("KEY_BRAND_NAME") }), getString(2131757184), getString(2131757064), new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {

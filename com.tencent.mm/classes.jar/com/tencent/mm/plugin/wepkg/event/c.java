@@ -5,54 +5,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class c
 {
-  private static ConcurrentLinkedQueue<WeakReference<a>> EWX;
+  private static ConcurrentLinkedQueue<WeakReference<a>> JMO;
   
   static
   {
     AppMethodBeat.i(110644);
-    EWX = new ConcurrentLinkedQueue();
+    JMO = new ConcurrentLinkedQueue();
     AppMethodBeat.o(110644);
   }
   
-  public static <T extends Parcelable> void a(T paramT, a parama)
+  public static <T extends Parcelable> void a(T paramT, c.a parama)
   {
     AppMethodBeat.i(110643);
-    ToolsProcessIPCService.a(paramT, b.class, new d()
+    if (MMApplicationContext.isMainProcess())
     {
-      public final void be(Object paramAnonymousObject)
+      Iterator localIterator = JMO.iterator();
+      while (localIterator.hasNext())
       {
-        AppMethodBeat.i(110638);
-        if (this.EWY != null) {
-          this.EWY.dxH();
+        WeakReference localWeakReference = (WeakReference)localIterator.next();
+        if (localWeakReference.get() != null) {
+          ((a)localWeakReference.get()).dt(paramT);
         }
-        AppMethodBeat.o(110638);
       }
-    });
+    }
+    ToolsProcessIPCService.a(paramT, b.class, new c.1(parama));
     AppMethodBeat.o(110643);
   }
   
   public static void a(a parama)
   {
     AppMethodBeat.i(110640);
-    EWX.add(new WeakReference(parama));
+    JMO.add(new WeakReference(parama));
     AppMethodBeat.o(110640);
   }
   
   public static void b(a parama)
   {
     AppMethodBeat.i(110641);
-    Iterator localIterator = EWX.iterator();
+    Iterator localIterator = JMO.iterator();
     while (localIterator.hasNext())
     {
       WeakReference localWeakReference = (WeakReference)localIterator.next();
       if (localWeakReference.get() == parama) {
-        EWX.remove(localWeakReference);
+        JMO.remove(localWeakReference);
       }
     }
     AppMethodBeat.o(110641);
@@ -61,13 +63,8 @@ public final class c
   public static void clear()
   {
     AppMethodBeat.i(110642);
-    EWX.clear();
+    JMO.clear();
     AppMethodBeat.o(110642);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void dxH();
   }
   
   static class b
@@ -76,22 +73,22 @@ public final class c
     public void invoke(Object paramObject, d paramd)
     {
       AppMethodBeat.i(110639);
-      Iterator localIterator = c.aBJ().iterator();
+      Iterator localIterator = c.aVh().iterator();
       while (localIterator.hasNext())
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if (localWeakReference.get() != null) {
-          ((a)localWeakReference.get()).dM(paramObject);
+          ((a)localWeakReference.get()).dt(paramObject);
         }
       }
-      paramd.be(null);
+      paramd.bn(null);
       AppMethodBeat.o(110639);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.event.c
  * JD-Core Version:    0.7.0.1
  */

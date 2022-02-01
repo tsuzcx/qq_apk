@@ -1,65 +1,38 @@
 package com.tencent.mm.plugin.finder.video;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.vlog.model.v;
-import com.tencent.mm.protocal.protobuf.aaq;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.videocomposition.a.a;
-import com.tencent.mm.videocomposition.h;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/FinderVideoThumbFetcherFactory;", "", "()V", "getThumbFetcher", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "width", "", "height", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderVideoMixRenderer;", "Lcom/tencent/mm/media/render/MixRenderer;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "TAG", "", "videoHeight", "videoWidth", "doInitRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "setVideoSize", "", "width", "height", "plugin-finder_release"})
 public final class m
+  extends com.tencent.mm.media.j.c
 {
-  public static final m tbn;
+  final String TAG = "MicroMsg.FinderVideoMixRenderer";
+  int videoHeight;
+  int videoWidth;
   
-  static
+  public m(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(205486);
-    tbn = new m();
-    AppMethodBeat.o(205486);
+    super(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, 4);
   }
   
-  public static com.tencent.mm.videocomposition.c f(bvz parambvz)
+  public final com.tencent.mm.media.j.b.a aEC()
   {
-    AppMethodBeat.i(205485);
-    d.g.b.p.h(parambvz, "media");
-    Object localObject1 = parambvz.HiW;
-    Object localObject2 = com.tencent.mm.plugin.finder.utils.p.sXz;
-    if ((!com.tencent.mm.plugin.finder.utils.p.d(parambvz)) && (localObject1 != null))
-    {
-      parambvz = com.tencent.mm.plugin.vlog.model.f.a((aaq)localObject1);
-      localObject1 = com.tencent.mm.plugin.vlog.model.f.b((aaq)localObject1);
-      ((com.tencent.mm.plugin.recordvideo.ui.editor.b.c)localObject1).start();
-      parambvz.F((b)localObject1);
-      long l = parambvz.BXI.getPlayStart();
-      localObject2 = com.tencent.mm.videocomposition.a.LJa;
-      parambvz = (com.tencent.mm.videocomposition.c)new s(l, (com.tencent.mm.videocomposition.c)a.a.b(parambvz.getComposition()), (d.g.a.a)new a((com.tencent.mm.plugin.recordvideo.ui.editor.b.c)localObject1));
-      AppMethodBeat.o(205485);
-      return parambvz;
-    }
-    parambvz = (com.tencent.mm.videocomposition.c)new f(parambvz);
-    AppMethodBeat.o(205485);
-    return parambvz;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements d.g.a.a<z>
-  {
-    a(com.tencent.mm.plugin.recordvideo.ui.editor.b.c paramc)
-    {
-      super();
-    }
+    AppMethodBeat.i(254334);
+    Object localObject = new c(this.hDn, this.hDo, this.hEp, this.hEq, this.ijy, this.scaleType);
+    ((com.tencent.mm.media.j.b.a)localObject).ijA = this.ijA;
+    int i = this.videoWidth;
+    int j = this.videoHeight;
+    ((c)localObject).videoWidth = i;
+    ((c)localObject).videoHeight = j;
+    localObject = (com.tencent.mm.media.j.b.a)localObject;
+    AppMethodBeat.o(254334);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class qm
-  extends b
+  extends IEvent
 {
-  public a dGl;
-  
   public qm()
   {
     this((byte)0);
@@ -15,16 +12,8 @@ public final class qm
   
   private qm(byte paramByte)
   {
-    AppMethodBeat.i(168780);
-    this.dGl = new a();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(168780);
-  }
-  
-  public static final class a
-  {
-    public boolean dGm = false;
   }
 }
 

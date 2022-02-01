@@ -1,73 +1,63 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.os.Bundle;
 import com.tencent.luggage.d.b;
-import com.tencent.luggage.d.b.a;
-import com.tencent.luggage.d.h;
-import com.tencent.luggage.d.j;
-import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.i.a.aj;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class am
-  extends br<g>
+  extends bs<com.tencent.mm.plugin.webview.luggage.g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
-  
-  public final void b(final b<g>.a paramb)
+  public final void a(Context paramContext, String paramString, br.a parama)
   {
-    AppMethodBeat.i(78590);
-    ae.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "invokeInOwn");
-    final String str = paramb.chh.cgn.optString("url");
-    ae.i("MicroMsg.JsApiOpenUrlWithExtraWebview", "url: %s", new Object[] { str });
-    if (bu.isNullOrNil(str))
+    AppMethodBeat.i(210948);
+    Log.d("MicroMsg.JsApiOpenFinderView", "invokeInMM");
+    try
     {
-      paramb.a("fail", null);
-      AppMethodBeat.o(78590);
-      return;
-    }
-    Object localObject = Uri.parse(str);
-    if ((bu.nullAsNil(((Uri)localObject).getQueryParameter("not_in_game_luggage")).equals("1")) || ((((Uri)localObject).getHost() != null) && (!((Uri)localObject).getHost().equals("game.weixin.qq.com"))))
-    {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("rawUrl", str);
-      d.b(((g)paramb.chg).mContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-      paramb.a("", null);
-      AppMethodBeat.o(78590);
-      return;
-    }
-    ar.f(new Runnable()
-    {
-      public final void run()
+      paramString = new JSONObject(paramString);
+      if (paramString == null)
       {
-        AppMethodBeat.i(78589);
-        Bundle localBundle = new Bundle();
-        localBundle.putString("rawUrl", str);
-        localBundle.putBoolean("from_find_more_friend", ((g)paramb.chg).mParams.getBoolean("from_find_more_friend", false));
-        ((g)paramb.chg).chm.Ch().h(str, localBundle);
-        AppMethodBeat.o(78589);
+        parama.i("data is null", null);
+        AppMethodBeat.o(210948);
+        return;
       }
-    });
-    paramb.a("", null);
-    AppMethodBeat.o(78590);
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        paramString = null;
+      }
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("extInfo", new JSONObject(paramString.optString("extInfo")));
+        ((aj)com.tencent.mm.kernel.g.ah(aj.class)).enterFinderUI(paramContext, localJSONObject.toString());
+        parama.i(null, null);
+        AppMethodBeat.o(210948);
+        return;
+      }
+      catch (JSONException paramContext)
+      {
+        parama.i("fail", null);
+        AppMethodBeat.o(210948);
+      }
+    }
   }
   
-  public final int ced()
+  public final void b(b<com.tencent.mm.plugin.webview.luggage.g>.a paramb) {}
+  
+  public final int dTs()
   {
-    return 0;
+    return 2;
   }
   
   public final String name()
   {
-    return "openUrlWithExtraWebview";
+    return "openFinderView";
   }
 }
 

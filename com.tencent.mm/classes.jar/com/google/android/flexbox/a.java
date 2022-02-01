@@ -11,11 +11,11 @@ abstract interface a
   
   public abstract void a(b paramb);
   
-  public abstract int cj(View paramView);
-  
-  public abstract View fi(int paramInt);
+  public abstract int bV(View paramView);
   
   public abstract View fj(int paramInt);
+  
+  public abstract View fk(int paramInt);
   
   public abstract int getAlignContent();
   
@@ -51,15 +51,15 @@ abstract interface a
   
   public abstract void setFlexLines(List<b> paramList);
   
-  public abstract int w(int paramInt1, int paramInt2, int paramInt3);
+  public abstract int t(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract int x(int paramInt1, int paramInt2, int paramInt3);
+  public abstract int u(int paramInt1, int paramInt2, int paramInt3);
   
-  public abstract boolean xu();
+  public abstract boolean xC();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.flexbox.a
  * JD-Core Version:    0.7.0.1
  */

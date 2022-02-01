@@ -22,11 +22,11 @@ public class a
   extends e
 {
   private static final String LOGTAG = a.class.getSimpleName();
-  private b abH;
-  private f abI;
-  private int abJ = -1;
-  private int abK = -1;
-  private boolean xi;
+  private b abU;
+  private f abV;
+  private int abW = -1;
+  private int abX = -1;
+  private boolean xp;
   
   public a()
   {
@@ -50,16 +50,16 @@ public class a
     localObject = new a();
     TypedArray localTypedArray = android.support.v4.content.a.g.a(paramResources, paramTheme, paramAttributeSet, android.support.v7.a.a.a.AnimatedStateListDrawableCompat);
     ((a)localObject).setVisible(localTypedArray.getBoolean(1, true), true);
-    b localb = ((a)localObject).abH;
+    b localb = ((a)localObject).abU;
     if (Build.VERSION.SDK_INT >= 21) {
       localb.mChangingConfigurations |= localTypedArray.getChangingConfigurations();
     }
-    localb.acn = localTypedArray.getBoolean(2, localb.acn);
-    localb.acq = localTypedArray.getBoolean(3, localb.acq);
-    localb.acD = localTypedArray.getInt(4, localb.acD);
-    localb.acE = localTypedArray.getInt(5, localb.acE);
-    ((a)localObject).setDither(localTypedArray.getBoolean(0, localb.acC));
-    ((b)localObject).abU.e(paramResources);
+    localb.acA = localTypedArray.getBoolean(2, localb.acA);
+    localb.acD = localTypedArray.getBoolean(3, localb.acD);
+    localb.acQ = localTypedArray.getInt(4, localb.acQ);
+    localb.acR = localTypedArray.getInt(5, localb.acR);
+    ((a)localObject).setDither(localTypedArray.getBoolean(0, localb.acP));
+    ((b)localObject).ach.e(paramResources);
     localTypedArray.recycle();
     ((a)localObject).c(paramContext, paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
     ((a)localObject).onStateChange(((a)localObject).getState());
@@ -142,10 +142,10 @@ public class a
               localObject1 = Drawable.createFromXmlInner(paramResources, paramXmlPullParser, paramAttributeSet);
             }
           }
-          localObject2 = this.abH;
+          localObject2 = this.abU;
           i = ((e.a)localObject2).addChild((Drawable)localObject1);
-          ((e.a)localObject2).acS[i] = arrayOfInt;
-          ((b)localObject2).abN.put(i, Integer.valueOf(n));
+          ((e.a)localObject2).adf[i] = arrayOfInt;
+          ((b)localObject2).aca.put(i, Integer.valueOf(n));
         }
         else if (paramXmlPullParser.getName().equals("transition"))
         {
@@ -195,19 +195,19 @@ public class a
     if ((i == -1) || (j == -1)) {
       throw new XmlPullParserException(paramXmlPullParser.getPositionDescription() + ": <transition> tag requires 'fromId' & 'toId' attributes");
     }
-    return this.abH.a(i, j, (Drawable)localObject, bool);
+    return this.abU.a(i, j, (Drawable)localObject, bool);
   }
   
-  private b hh()
+  private b hq()
   {
-    return new b(this.abH, this, null);
+    return new b(this.abU, this, null);
   }
   
   protected final void a(b.b paramb)
   {
     super.a(paramb);
     if ((paramb instanceof b)) {
-      this.abH = ((b)paramb);
+      this.abU = ((b)paramb);
     }
   }
   
@@ -219,36 +219,36 @@ public class a
   public void jumpToCurrentState()
   {
     super.jumpToCurrentState();
-    if (this.abI != null)
+    if (this.abV != null)
     {
-      this.abI.stop();
-      this.abI = null;
-      selectDrawable(this.abJ);
-      this.abJ = -1;
-      this.abK = -1;
+      this.abV.stop();
+      this.abV = null;
+      selectDrawable(this.abW);
+      this.abW = -1;
+      this.abX = -1;
     }
   }
   
   public Drawable mutate()
   {
-    if ((!this.xi) && (super.mutate() == this))
+    if ((!this.xp) && (super.mutate() == this))
     {
-      this.abH.hk();
-      this.xi = true;
+      this.abU.ht();
+      this.xp = true;
     }
     return this;
   }
   
   protected boolean onStateChange(int[] paramArrayOfInt)
   {
-    int j = this.abH.g(paramArrayOfInt);
+    int j = this.abU.g(paramArrayOfInt);
     Object localObject;
     int i;
-    if (j != this.abZ)
+    if (j != this.acm)
     {
-      localObject = this.abI;
+      localObject = this.abV;
       if (localObject != null) {
-        if (j == this.abJ)
+        if (j == this.abW)
         {
           i = 1;
           if ((i == 0) && (!selectDrawable(j))) {
@@ -268,35 +268,35 @@ public class a
         bool2 = bool1 | ((Drawable)localObject).setState(paramArrayOfInt);
       }
       return bool2;
-      if ((j == this.abK) && (((f)localObject).hl()))
+      if ((j == this.abX) && (((f)localObject).hu()))
       {
         ((f)localObject).reverse();
-        this.abJ = this.abK;
-        this.abK = j;
+        this.abW = this.abX;
+        this.abX = j;
         i = 1;
         break;
       }
-      i = this.abJ;
+      i = this.abW;
       ((f)localObject).stop();
       int k;
       int m;
       for (;;)
       {
-        this.abI = null;
-        this.abK = -1;
-        this.abJ = -1;
-        localObject = this.abH;
-        k = ((b)localObject).bs(i);
-        m = ((b)localObject).bs(j);
+        this.abV = null;
+        this.abX = -1;
+        this.abW = -1;
+        localObject = this.abU;
+        k = ((b)localObject).bt(i);
+        m = ((b)localObject).bt(j);
         if ((m != 0) && (k != 0)) {
           break label191;
         }
         i = 0;
         break;
-        i = this.abZ;
+        i = this.acm;
       }
       long l = b.K(k, m);
-      int n = (int)((Long)((b)localObject).abM.get(l, Long.valueOf(-1L))).longValue();
+      int n = (int)((Long)((b)localObject).abZ.get(l, Long.valueOf(-1L))).longValue();
       if (n < 0)
       {
         i = 0;
@@ -304,7 +304,7 @@ public class a
       }
       l = b.K(k, m);
       Drawable localDrawable;
-      if ((((Long)((b)localObject).abM.get(l, Long.valueOf(-1L))).longValue() & 0x0) != 0L)
+      if ((((Long)((b)localObject).abZ.get(l, Long.valueOf(-1L))).longValue() & 0x0) != 0L)
       {
         bool1 = true;
         selectDrawable(n);
@@ -313,7 +313,7 @@ public class a
           break label398;
         }
         l = b.K(k, m);
-        if ((((Long)((b)localObject).abM.get(l, Long.valueOf(-1L))).longValue() & 0x0) == 0L) {
+        if ((((Long)((b)localObject).abZ.get(l, Long.valueOf(-1L))).longValue() & 0x0) == 0L) {
           break label392;
         }
         bool2 = true;
@@ -323,9 +323,9 @@ public class a
       for (;;)
       {
         ((f)localObject).start();
-        this.abI = ((f)localObject);
-        this.abK = i;
-        this.abJ = j;
+        this.abV = ((f)localObject);
+        this.abX = i;
+        this.abW = j;
         i = 1;
         break;
         bool1 = false;
@@ -352,10 +352,10 @@ public class a
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    if ((this.abI != null) && ((bool) || (paramBoolean2)))
+    if ((this.abV != null) && ((bool) || (paramBoolean2)))
     {
       if (paramBoolean1) {
-        this.abI.start();
+        this.abV.start();
       }
     }
     else {
@@ -368,42 +368,42 @@ public class a
   static final class a
     extends a.f
   {
-    private final Animatable abL;
+    private final Animatable abY;
     
     a(Animatable paramAnimatable)
     {
       super();
-      this.abL = paramAnimatable;
+      this.abY = paramAnimatable;
     }
     
     public final void start()
     {
-      this.abL.start();
+      this.abY.start();
     }
     
     public final void stop()
     {
-      this.abL.stop();
+      this.abY.stop();
     }
   }
   
   static final class b
     extends e.a
   {
-    android.support.v4.e.g<Long> abM;
-    o<Integer> abN;
+    android.support.v4.e.g<Long> abZ;
+    o<Integer> aca;
     
     b(b paramb, a parama, Resources paramResources)
     {
       super(parama, paramResources);
       if (paramb != null)
       {
-        this.abM = paramb.abM;
-        this.abN = paramb.abN;
+        this.abZ = paramb.abZ;
+        this.aca = paramb.aca;
         return;
       }
-      this.abM = new android.support.v4.e.g();
-      this.abN = new o();
+      this.abZ = new android.support.v4.e.g();
+      this.aca = new o();
     }
     
     static long K(int paramInt1, int paramInt2)
@@ -419,21 +419,21 @@ public class a
       if (paramBoolean) {
         l1 = 8589934592L;
       }
-      this.abM.append(l2, Long.valueOf(i | l1));
+      this.abZ.append(l2, Long.valueOf(i | l1));
       if (paramBoolean)
       {
         l2 = K(paramInt2, paramInt1);
-        this.abM.append(l2, Long.valueOf(l1 | i | 0x0));
+        this.abZ.append(l2, Long.valueOf(l1 | i | 0x0));
       }
       return i;
     }
     
-    final int bs(int paramInt)
+    final int bt(int paramInt)
     {
       if (paramInt < 0) {
         return 0;
       }
-      return ((Integer)this.abN.get(paramInt, Integer.valueOf(0))).intValue();
+      return ((Integer)this.aca.get(paramInt, Integer.valueOf(0))).intValue();
     }
     
     final int g(int[] paramArrayOfInt)
@@ -445,10 +445,10 @@ public class a
       return super.h(StateSet.WILD_CARD);
     }
     
-    final void hk()
+    final void ht()
     {
-      this.abM = this.abM.fr();
-      this.abN = this.abN.fs();
+      this.abZ = this.abZ.fx();
+      this.aca = this.aca.fy();
     }
     
     public final Drawable newDrawable()
@@ -465,30 +465,30 @@ public class a
   static final class c
     extends a.f
   {
-    private final c abO;
+    private final c acb;
     
     c(c paramc)
     {
       super();
-      this.abO = paramc;
+      this.acb = paramc;
     }
     
     public final void start()
     {
-      this.abO.start();
+      this.acb.start();
     }
     
     public final void stop()
     {
-      this.abO.stop();
+      this.acb.stop();
     }
   }
   
   static final class d
     extends a.f
   {
-    private final ObjectAnimator abP;
-    private final boolean abQ;
+    private final ObjectAnimator acc;
+    private final boolean acd;
     
     d(AnimationDrawable paramAnimationDrawable, boolean paramBoolean1, boolean paramBoolean2)
     {
@@ -510,10 +510,10 @@ public class a
         if (Build.VERSION.SDK_INT >= 18) {
           paramAnimationDrawable.setAutoCancel(true);
         }
-        paramAnimationDrawable.setDuration(locale.abT);
+        paramAnimationDrawable.setDuration(locale.acg);
         paramAnimationDrawable.setInterpolator(locale);
-        this.abQ = paramBoolean2;
-        this.abP = paramAnimationDrawable;
+        this.acd = paramBoolean2;
+        this.acc = paramAnimationDrawable;
         return;
         i = 0;
         break;
@@ -522,33 +522,33 @@ public class a
       }
     }
     
-    public final boolean hl()
+    public final boolean hu()
     {
-      return this.abQ;
+      return this.acd;
     }
     
     public final void reverse()
     {
-      this.abP.reverse();
+      this.acc.reverse();
     }
     
     public final void start()
     {
-      this.abP.start();
+      this.acc.start();
     }
     
     public final void stop()
     {
-      this.abP.cancel();
+      this.acc.cancel();
     }
   }
   
   static final class e
     implements TimeInterpolator
   {
-    private int[] abR;
-    private int abS;
-    int abT;
+    private int[] ace;
+    private int acf;
+    int acg;
     
     e(AnimationDrawable paramAnimationDrawable, boolean paramBoolean)
     {
@@ -558,11 +558,11 @@ public class a
     private int a(AnimationDrawable paramAnimationDrawable, boolean paramBoolean)
     {
       int m = paramAnimationDrawable.getNumberOfFrames();
-      this.abS = m;
-      if ((this.abR == null) || (this.abR.length < m)) {
-        this.abR = new int[m];
+      this.acf = m;
+      if ((this.ace == null) || (this.ace.length < m)) {
+        this.ace = new int[m];
       }
-      int[] arrayOfInt = this.abR;
+      int[] arrayOfInt = this.ace;
       int i = 0;
       int j = 0;
       if (i < m)
@@ -577,15 +577,15 @@ public class a
           break;
         }
       }
-      this.abT = j;
+      this.acg = j;
       return j;
     }
     
     public final float getInterpolation(float paramFloat)
     {
-      int j = (int)(this.abT * paramFloat + 0.5F);
-      int k = this.abS;
-      int[] arrayOfInt = this.abR;
+      int j = (int)(this.acg * paramFloat + 0.5F);
+      int k = this.acf;
+      int[] arrayOfInt = this.ace;
       int i = 0;
       while ((i < k) && (j >= arrayOfInt[i]))
       {
@@ -593,7 +593,7 @@ public class a
         i += 1;
       }
       if (i < k) {}
-      for (paramFloat = j / this.abT;; paramFloat = 0.0F) {
+      for (paramFloat = j / this.acg;; paramFloat = 0.0F) {
         return paramFloat + i / k;
       }
     }
@@ -601,7 +601,7 @@ public class a
   
   static abstract class f
   {
-    public boolean hl()
+    public boolean hu()
     {
       return false;
     }

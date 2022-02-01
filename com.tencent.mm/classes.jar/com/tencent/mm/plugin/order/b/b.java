@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.order.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(66705);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "OrderCommonMsgXml") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "OrderCommonMsgXml") };
     AppMethodBeat.o(66705);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "OrderCommonMsgXml", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "OrderCommonMsgXml", null);
+    this.db = paramISQLiteDatabase;
   }
   
   public final boolean a(a parama)
@@ -42,7 +42,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.order.b.b
  * JD-Core Version:    0.7.0.1
  */

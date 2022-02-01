@@ -30,27 +30,14 @@ class Mp3DecodeBase
   
   static boolean isXingVBRheader(byte[] paramArrayOfByte, int paramInt)
   {
-    boolean bool2 = true;
-    boolean bool1;
+    boolean bool = true;
     if ((paramArrayOfByte == null) || (paramInt < 4)) {
-      bool1 = false;
+      bool = false;
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        if ((paramArrayOfByte[0] != 88) || (paramArrayOfByte[1] != 105) || (paramArrayOfByte[2] != 110)) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramArrayOfByte[3] == 103);
-      if ((paramArrayOfByte[0] != 73) || (paramArrayOfByte[1] != 110) || (paramArrayOfByte[2] != 102)) {
-        break;
-      }
-      bool1 = bool2;
-    } while (paramArrayOfByte[3] == 111);
-    return false;
+    while ((paramArrayOfByte[0] == 88) && (paramArrayOfByte[1] == 105) && (paramArrayOfByte[2] == 110) && (paramArrayOfByte[3] == 103)) {
+      return bool;
+    }
+    return (paramArrayOfByte[0] != 73) || (paramArrayOfByte[1] != 110) || (paramArrayOfByte[2] != 102) || (paramArrayOfByte[3] != 111);
   }
   
   static int readByte(byte[] paramArrayOfByte, int paramInt)
@@ -135,7 +122,7 @@ class Mp3DecodeBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.seektable.mp3.Mp3DecodeBase
  * JD-Core Version:    0.7.0.1
  */

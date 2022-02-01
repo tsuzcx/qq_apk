@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.widget.AbsListView.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -19,31 +19,31 @@ public final class b
   implements c.a
 {
   private final Calendar calendar;
-  private final TypedArray fLZ;
-  private final a fMa;
-  public final a<com.tencent.mm.chatroom.d.a> fMb;
-  private final Collection<com.tencent.mm.chatroom.d.a> fMc;
-  private final Integer fMd;
-  private final Integer fMe;
-  private final boolean fMf;
+  private final TypedArray grn;
+  private final a gro;
+  public final a<com.tencent.mm.chatroom.d.a> grp;
+  private final Collection<com.tencent.mm.chatroom.d.a> grq;
+  private final Integer grr;
+  private final Integer grs;
+  private final boolean grt;
   private final Context mContext;
   
   public b(Context paramContext, a parama, TypedArray paramTypedArray, long paramLong, Collection<com.tencent.mm.chatroom.d.a> paramCollection)
   {
     AppMethodBeat.i(12437);
-    this.fLZ = paramTypedArray;
+    this.grn = paramTypedArray;
     this.calendar = Calendar.getInstance();
-    this.fMe = Integer.valueOf(paramTypedArray.getInt(15, this.calendar.get(2) % 12));
+    this.grs = Integer.valueOf(paramTypedArray.getInt(15, this.calendar.get(2) % 12));
     if (-1L != paramLong) {
       this.calendar.setTimeInMillis(paramLong);
     }
-    this.fMd = Integer.valueOf(paramTypedArray.getInt(13, this.calendar.get(2)));
-    this.fMf = paramTypedArray.getBoolean(16, false);
-    this.fMb = new a();
-    this.fMc = paramCollection;
+    this.grr = Integer.valueOf(paramTypedArray.getInt(13, this.calendar.get(2)));
+    this.grt = paramTypedArray.getBoolean(16, false);
+    this.grp = new a();
+    this.grq = paramCollection;
     this.mContext = paramContext;
-    this.fMa = parama;
-    if (this.fLZ.getBoolean(10, false)) {
+    this.gro = parama;
+    if (this.grn.getBoolean(10, false)) {
       c(new com.tencent.mm.chatroom.d.a(System.currentTimeMillis()));
     }
     AppMethodBeat.o(12437);
@@ -52,7 +52,7 @@ public final class b
   private void c(com.tencent.mm.chatroom.d.a parama)
   {
     AppMethodBeat.i(12440);
-    this.fMa.a(parama);
+    this.gro.a(parama);
     d(parama);
     AppMethodBeat.o(12440);
   }
@@ -60,40 +60,40 @@ public final class b
   private void d(com.tencent.mm.chatroom.d.a parama)
   {
     AppMethodBeat.i(12441);
-    if (this.fMf)
+    if (this.grt)
     {
       int i;
-      if ((this.fMb.first != null) && (this.fMb.fMg == null))
+      if ((this.grp.first != null) && (this.grp.gru == null))
       {
-        this.fMb.fMg = parama;
-        if (((com.tencent.mm.chatroom.d.a)this.fMb.first).month < parama.month) {
+        this.grp.gru = parama;
+        if (((com.tencent.mm.chatroom.d.a)this.grp.first).month < parama.month) {
           i = 0;
         }
       }
       else
       {
-        while (i < ((com.tencent.mm.chatroom.d.a)this.fMb.first).month - parama.month - 1)
+        while (i < ((com.tencent.mm.chatroom.d.a)this.grp.first).month - parama.month - 1)
         {
-          this.fMa.a(parama);
+          this.gro.a(parama);
           i += 1;
           continue;
-          if (this.fMb.fMg == null) {
+          if (this.grp.gru == null) {
             break label144;
           }
-          this.fMb.first = parama;
-          this.fMb.fMg = null;
+          this.grp.first = parama;
+          this.grp.gru = null;
         }
       }
     }
     for (;;)
     {
-      this.asY.notifyChanged();
+      this.atj.notifyChanged();
       AppMethodBeat.o(12441);
       return;
       label144:
-      this.fMb.first = parama;
+      this.grp.first = parama;
       continue;
-      this.fMb.first = parama;
+      this.grp.first = parama;
     }
   }
   
@@ -109,14 +109,14 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(12438);
-    int j = (new com.tencent.mm.chatroom.d.a(this.fMa.Ym()).year - this.calendar.get(1) + 1) * 12;
+    int j = (new com.tencent.mm.chatroom.d.a(this.gro.alZ()).year - this.calendar.get(1) + 1) * 12;
     int i = j;
-    if (this.fMd.intValue() != -1) {
-      i = j - this.fMd.intValue();
+    if (this.grr.intValue() != -1) {
+      i = j - this.grr.intValue();
     }
     j = i;
-    if (this.fMe.intValue() != -1) {
-      j = i - (12 - this.fMe.intValue() - 1);
+    if (this.grs.intValue() != -1) {
+      j = i - (12 - this.grs.intValue() - 1);
     }
     AppMethodBeat.o(12438);
     return j;
@@ -130,30 +130,30 @@ public final class b
   public static final class a<K>
     implements Serializable
   {
-    K fMg;
     K first;
+    K gru;
   }
   
   public static final class b
-    extends RecyclerView.w
+    extends RecyclerView.v
   {
-    final c fMh;
+    final c grv;
     
     public b(View paramView, c.a parama)
     {
       super();
       AppMethodBeat.i(12436);
-      this.fMh = ((c)paramView);
-      this.fMh.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
-      this.fMh.setClickable(true);
-      this.fMh.setOnDayClickListener(parama);
+      this.grv = ((c)paramView);
+      this.grv.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
+      this.grv.setClickable(true);
+      this.grv.setOnDayClickListener(parama);
       AppMethodBeat.o(12436);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.chatroom.a.b
  * JD-Core Version:    0.7.0.1
  */

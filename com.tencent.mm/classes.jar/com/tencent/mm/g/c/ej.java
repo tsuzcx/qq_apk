@@ -2,28 +2,37 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class ej
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEF = "msgId".hashCode();
-  private static final int eEL = "status".hashCode();
-  private static final int eMO = "msgSvrId".hashCode();
-  private static final int fmF = "quotedMsgId".hashCode();
-  private static final int fmG = "quotedMsgSvrId".hashCode();
+  private static final int fQf = "packet_id".hashCode();
+  private static final int fQm = "media_type".hashCode();
+  private static final int fQn = "media_url".hashCode();
+  private static final int fQo = "media_md5".hashCode();
+  private static final int fQp = "media_fuzzy_thumbnail_url".hashCode();
+  private static final int fQq = "media_fuzzy_thumbnail_md5".hashCode();
+  private static final int fyA = "height".hashCode();
+  private static final int fyz = "width".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEB = true;
-  private boolean eEI = true;
-  private boolean eMA = true;
-  public long field_msgId;
-  public long field_msgSvrId;
-  public long field_quotedMsgId;
-  public long field_quotedMsgSvrId;
-  public int field_status;
-  private boolean fmD = true;
-  private boolean fmE = true;
+  private boolean fPX = true;
+  private boolean fQh = true;
+  private boolean fQi = true;
+  private boolean fQj = true;
+  private boolean fQk = true;
+  private boolean fQl = true;
+  public int field_height;
+  public String field_media_fuzzy_thumbnail_md5;
+  public String field_media_fuzzy_thumbnail_url;
+  public String field_media_md5;
+  public int field_media_type;
+  public String field_media_url;
+  public String field_packet_id;
+  public int field_width;
+  private boolean fxN = true;
+  private boolean fxO = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,10 +47,10 @@ public abstract class ej
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEF != k) {
+      if (fQm != k) {
         break label60;
       }
-      this.field_msgId = paramCursor.getLong(i);
+      this.field_media_type = paramCursor.getInt(i);
     }
     for (;;)
     {
@@ -49,14 +58,20 @@ public abstract class ej
       break label20;
       break;
       label60:
-      if (eMO == k) {
-        this.field_msgSvrId = paramCursor.getLong(i);
-      } else if (fmF == k) {
-        this.field_quotedMsgId = paramCursor.getLong(i);
-      } else if (fmG == k) {
-        this.field_quotedMsgSvrId = paramCursor.getLong(i);
-      } else if (eEL == k) {
-        this.field_status = paramCursor.getInt(i);
+      if (fQn == k) {
+        this.field_media_url = paramCursor.getString(i);
+      } else if (fQo == k) {
+        this.field_media_md5 = paramCursor.getString(i);
+      } else if (fyA == k) {
+        this.field_height = paramCursor.getInt(i);
+      } else if (fyz == k) {
+        this.field_width = paramCursor.getInt(i);
+      } else if (fQf == k) {
+        this.field_packet_id = paramCursor.getString(i);
+      } else if (fQp == k) {
+        this.field_media_fuzzy_thumbnail_url = paramCursor.getString(i);
+      } else if (fQq == k) {
+        this.field_media_fuzzy_thumbnail_md5 = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -66,20 +81,29 @@ public abstract class ej
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eEB) {
-      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
+    if (this.fQh) {
+      localContentValues.put("media_type", Integer.valueOf(this.field_media_type));
     }
-    if (this.eMA) {
-      localContentValues.put("msgSvrId", Long.valueOf(this.field_msgSvrId));
+    if (this.fQi) {
+      localContentValues.put("media_url", this.field_media_url);
     }
-    if (this.fmD) {
-      localContentValues.put("quotedMsgId", Long.valueOf(this.field_quotedMsgId));
+    if (this.fQj) {
+      localContentValues.put("media_md5", this.field_media_md5);
     }
-    if (this.fmE) {
-      localContentValues.put("quotedMsgSvrId", Long.valueOf(this.field_quotedMsgSvrId));
+    if (this.fxO) {
+      localContentValues.put("height", Integer.valueOf(this.field_height));
     }
-    if (this.eEI) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.fxN) {
+      localContentValues.put("width", Integer.valueOf(this.field_width));
+    }
+    if (this.fPX) {
+      localContentValues.put("packet_id", this.field_packet_id);
+    }
+    if (this.fQk) {
+      localContentValues.put("media_fuzzy_thumbnail_url", this.field_media_fuzzy_thumbnail_url);
+    }
+    if (this.fQl) {
+      localContentValues.put("media_fuzzy_thumbnail_md5", this.field_media_fuzzy_thumbnail_md5);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -89,7 +113,7 @@ public abstract class ej
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.c.ej
  * JD-Core Version:    0.7.0.1
  */

@@ -2,21 +2,21 @@ package com.tencent.mm.plugin.wallet;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
-  public String CNW;
-  public StringBuffer CNX;
+  public String HsN;
+  public StringBuffer HsO;
   public int index;
   
   public a()
   {
     AppMethodBeat.i(117554);
-    this.CNW = "";
+    this.HsN = "";
     this.index = 0;
-    this.CNX = new StringBuffer();
+    this.HsO = new StringBuffer();
     AppMethodBeat.o(117554);
   }
   
@@ -29,13 +29,13 @@ public final class a
       return false;
     }
     paramIntent.putExtra("WECHAT_PAY_LOG_REPORT_INDEX", parama.index);
-    paramIntent.putExtra("WECHAT_PAY_LOG_REPORT_DATA", parama.CNX.toString());
-    paramIntent.putExtra("WECHAT_PAY_LOG_REPORT_BASEIFO", parama.CNW);
+    paramIntent.putExtra("WECHAT_PAY_LOG_REPORT_DATA", parama.HsO.toString());
+    paramIntent.putExtra("WECHAT_PAY_LOG_REPORT_BASEIFO", parama.HsN);
     AppMethodBeat.o(117559);
     return true;
   }
   
-  public static a aT(Intent paramIntent)
+  public static a be(Intent paramIntent)
   {
     AppMethodBeat.i(117560);
     int i = paramIntent.getIntExtra("WECHAT_PAY_LOG_REPORT_INDEX", -1);
@@ -46,17 +46,17 @@ public final class a
     }
     a locala = new a();
     locala.index = i;
-    locala.CNX = new StringBuffer(bu.bI(paramIntent.getStringExtra("WECHAT_PAY_LOG_REPORT_DATA"), ""));
-    locala.CNW = bu.bI(paramIntent.getStringExtra("WECHAT_PAY_LOG_REPORT_BASEIFO"), "");
+    locala.HsO = new StringBuffer(Util.nullAs(paramIntent.getStringExtra("WECHAT_PAY_LOG_REPORT_DATA"), ""));
+    locala.HsN = Util.nullAs(paramIntent.getStringExtra("WECHAT_PAY_LOG_REPORT_BASEIFO"), "");
     AppMethodBeat.o(117560);
     return locala;
   }
   
-  public static a fu(String paramString, int paramInt)
+  public static a fV(String paramString, int paramInt)
   {
     AppMethodBeat.i(117555);
     a locala = new a();
-    locala.CNW = (paramString + "," + paramInt);
+    locala.HsN = (paramString + "," + paramInt);
     AppMethodBeat.o(117555);
     return locala;
   }
@@ -65,7 +65,7 @@ public final class a
   {
     AppMethodBeat.i(117557);
     if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
-      ae.w("MicroMsg.PayLogReport", "vals is null, use '' as value");
+      Log.w("MicroMsg.PayLogReport", "vals is null, use '' as value");
     }
     StringBuilder localStringBuilder;
     for (paramVarArgs = "";; paramVarArgs = localStringBuilder.toString())
@@ -84,26 +84,26 @@ public final class a
     }
   }
   
-  public final void cp(int paramInt, String paramString)
+  public final void cG(int paramInt, String paramString)
   {
     AppMethodBeat.i(117558);
     paramString = String.format("{%d, %s, %d, %s},", new Object[] { Integer.valueOf(this.index), Long.valueOf(System.currentTimeMillis()), Integer.valueOf(paramInt), paramString });
     this.index += 1;
-    ae.i("MicroMsg.PayLogReport", "test for log ".concat(String.valueOf(paramString)));
-    this.CNX.append(paramString);
+    Log.i("MicroMsg.PayLogReport", "test for log ".concat(String.valueOf(paramString)));
+    this.HsO.append(paramString);
     AppMethodBeat.o(117558);
   }
   
-  public final void j(int paramInt, Object... paramVarArgs)
+  public final void k(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(117556);
-    cp(paramInt, u(paramVarArgs));
+    cG(paramInt, u(paramVarArgs));
     AppMethodBeat.o(117556);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,35 +7,35 @@ import rx.i;
 public final class a<T>
   extends i<T>
 {
-  final b<? super T> Oxg;
-  final b<Throwable> Oxh;
-  final rx.b.a Oxi;
+  final b<? super T> UmU;
+  final b<Throwable> UmV;
+  final rx.b.a UmW;
   
   public a(b<? super T> paramb, b<Throwable> paramb1, rx.b.a parama)
   {
-    this.Oxg = paramb;
-    this.Oxh = paramb1;
-    this.Oxi = parama;
+    this.UmU = paramb;
+    this.UmV = paramb1;
+    this.UmW = parama;
   }
   
-  public final void gC(T paramT)
+  public final void gL(T paramT)
   {
     AppMethodBeat.i(90208);
-    this.Oxg.cr(paramT);
+    this.UmU.cA(paramT);
     AppMethodBeat.o(90208);
   }
   
-  public final void gDo()
+  public final void hQw()
   {
     AppMethodBeat.i(90210);
-    this.Oxi.call();
+    this.UmW.call();
     AppMethodBeat.o(90210);
   }
   
   public final void onError(Throwable paramThrowable)
   {
     AppMethodBeat.i(90209);
-    this.Oxh.cr(paramThrowable);
+    this.UmV.cA(paramThrowable);
     AppMethodBeat.o(90209);
   }
 }

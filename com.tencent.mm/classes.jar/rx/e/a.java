@@ -8,44 +8,44 @@ import rx.d.a;
 public final class a<T>
   extends b<T, T>
 {
-  private final rx.internal.a.c<T> OuH;
-  final c<T> OyH;
+  private final rx.internal.a.c<T> Ukv;
+  final c<T> Uov;
   
   public a(d.a<T> parama, c<T> paramc)
   {
     super(parama);
     AppMethodBeat.i(90423);
-    this.OuH = rx.internal.a.c.gDy();
-    this.OyH = paramc;
+    this.Ukv = rx.internal.a.c.hQG();
+    this.Uov = paramc;
     AppMethodBeat.o(90423);
   }
   
-  public final void gC(T paramT)
+  public final void gL(T paramT)
   {
     AppMethodBeat.i(90426);
-    c.b[] arrayOfb = ((c.a)this.OyH.get()).OyP;
+    c.b[] arrayOfb = ((c.a)this.Uov.get()).UoD;
     int j = arrayOfb.length;
     int i = 0;
     while (i < j)
     {
-      arrayOfb[i].gC(paramT);
+      arrayOfb[i].gL(paramT);
       i += 1;
     }
     AppMethodBeat.o(90426);
   }
   
-  public final void gDo()
+  public final void hQw()
   {
     AppMethodBeat.i(90424);
-    if (this.OyH.active)
+    if (this.Uov.active)
     {
-      Object localObject = rx.internal.a.c.gDz();
-      c.b[] arrayOfb = this.OyH.gF(localObject);
+      Object localObject = rx.internal.a.c.hQH();
+      c.b[] arrayOfb = this.Uov.gO(localObject);
       int j = arrayOfb.length;
       int i = 0;
       while (i < j)
       {
-        arrayOfb[i].gG(localObject);
+        arrayOfb[i].gP(localObject);
         i += 1;
       }
     }
@@ -55,11 +55,11 @@ public final class a<T>
   public final void onError(Throwable paramThrowable)
   {
     AppMethodBeat.i(90425);
-    if (this.OyH.active)
+    if (this.Uov.active)
     {
-      Object localObject2 = rx.internal.a.c.N(paramThrowable);
+      Object localObject2 = rx.internal.a.c.P(paramThrowable);
       paramThrowable = null;
-      c.b[] arrayOfb = this.OyH.gF(localObject2);
+      c.b[] arrayOfb = this.Uov.gO(localObject2);
       int j = arrayOfb.length;
       int i = 0;
       for (;;)
@@ -69,7 +69,7 @@ public final class a<T>
           Object localObject1 = arrayOfb[i];
           try
           {
-            ((c.b)localObject1).gG(localObject2);
+            ((c.b)localObject1).gP(localObject2);
             i += 1;
           }
           catch (Throwable localThrowable)
@@ -86,7 +86,7 @@ public final class a<T>
           }
         }
       }
-      rx.a.b.jI(paramThrowable);
+      rx.a.b.kP(paramThrowable);
     }
     AppMethodBeat.o(90425);
   }

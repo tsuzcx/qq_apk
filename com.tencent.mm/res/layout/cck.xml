@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/ea6" android:layout_width="40.0dip" android:layout_height="fill_parent" android:layout_alignParentLeft="true">
+        <ImageView android:id="@id/ea5" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/b6e" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toLeftOf="@id/h6r" android:layout_toRightOf="@id/ea6" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/d8i" android:layout_width="20.0dip" android:layout_height="20.0dip" />
+        <TextView android:textSize="13.0sp" android:textColor="#ff888888" android:ellipsize="end" android:id="@id/d8x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="7.0dip" android:layout_marginRight="14.0dip" android:text="由**小程序提供" />
+    </LinearLayout>
+    <RelativeLayout android:id="@id/h6r" android:layout_width="40.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/h6o" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/b6e" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:rotation="180.0" />
+    </RelativeLayout>
+</RelativeLayout>

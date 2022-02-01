@@ -13,56 +13,56 @@ import java.util.Map;
 public abstract interface FileSystem
   extends Parcelable
 {
-  public abstract b cd(Map<String, String> paramMap);
+  public abstract b cj(Map<String, String> paramMap);
   
   public static final class a
   {
-    public long IAg;
-    public long IAi;
-    public long IAj;
-    public long LGf;
-    public long bGr;
+    public long RbL;
+    public long availableBlocks;
+    public long bGI;
+    public long blockSize;
+    public long totalBlocks;
   }
   
   public static abstract interface b
   {
-    public abstract boolean Dc(String paramString);
-    
     public abstract void a(CancellationSignal paramCancellationSignal);
     
     public abstract boolean a(String paramString1, b paramb, String paramString2);
     
-    public abstract ReadableByteChannel aZD(String paramString);
+    public abstract ReadableByteChannel boI(String paramString);
     
-    public abstract ByteChannel aZE(String paramString);
+    public abstract ByteChannel boJ(String paramString);
     
-    public abstract FileSystem.a aZF(String paramString);
+    public abstract FileSystem.a boK(String paramString);
     
-    public abstract boolean aZG(String paramString);
+    public abstract boolean boL(String paramString);
     
-    public abstract c aZH(String paramString);
+    public abstract e boM(String paramString);
     
-    public abstract boolean aZI(String paramString);
+    public abstract boolean boN(String paramString);
     
     public abstract long c(String paramString1, b paramb, String paramString2);
     
-    public abstract boolean cp(String paramString, long paramLong);
+    public abstract boolean ck(String paramString, long paramLong);
     
-    public abstract WritableByteChannel da(String paramString, boolean paramBoolean);
+    public abstract WritableByteChannel dv(String paramString, boolean paramBoolean);
     
-    public abstract OutputStream db(String paramString, boolean paramBoolean);
+    public abstract OutputStream dw(String paramString, boolean paramBoolean);
     
-    public abstract Iterable<c> dc(String paramString, boolean paramBoolean);
+    public abstract Iterable<e> dx(String paramString, boolean paramBoolean);
     
-    public abstract boolean dd(String paramString, boolean paramBoolean);
+    public abstract boolean dy(String paramString, boolean paramBoolean);
     
-    public abstract String de(String paramString, boolean paramBoolean);
+    public abstract String dz(String paramString, boolean paramBoolean);
     
-    public abstract FileSystem fSK();
+    public abstract boolean gC(String paramString);
     
-    public abstract int fSL();
+    public abstract FileSystem hdQ();
     
-    public abstract ParcelFileDescriptor mA(String paramString1, String paramString2);
+    public abstract int hdR();
+    
+    public abstract ParcelFileDescriptor nr(String paramString1, String paramString2);
     
     public abstract InputStream openRead(String paramString);
   }

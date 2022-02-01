@@ -6,13 +6,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class c
   extends BroadcastReceiver
 {
-  a<Boolean> IFO;
-  a<Boolean> IFP;
+  a<Boolean> NMG;
+  a<Boolean> NMH;
   
   c(Context paramContext)
   {
@@ -38,8 +38,8 @@ final class c
         bool1 = true;
       }
     }
-    this.IFO = new a("charging", Boolean.valueOf(bool1));
-    this.IFP = new a("interactive", Boolean.valueOf(((PowerManager)paramContext.getSystemService("power")).isScreenOn()));
+    this.NMG = new a("charging", Boolean.valueOf(bool1));
+    this.NMH = new a("interactive", Boolean.valueOf(((PowerManager)paramContext.getSystemService("power")).isScreenOn()));
     AppMethodBeat.o(133217);
   }
   
@@ -65,7 +65,7 @@ final class c
     for (;;)
     {
       if (paramContext != null) {
-        ae.i("MicroMsg.SystemStatus", "System status changed: %s = %s", new Object[] { paramContext.name(), paramContext.get().toString() });
+        Log.i("MicroMsg.SystemStatus", "System status changed: %s = %s", new Object[] { paramContext.name(), paramContext.get().toString() });
       }
       AppMethodBeat.o(133218);
       return;
@@ -89,17 +89,17 @@ final class c
       }
       i = 3;
       break;
-      this.IFP.set(Boolean.TRUE);
-      paramContext = this.IFP;
+      this.NMH.set(Boolean.TRUE);
+      paramContext = this.NMH;
       continue;
-      this.IFP.set(Boolean.FALSE);
-      paramContext = this.IFP;
+      this.NMH.set(Boolean.FALSE);
+      paramContext = this.NMH;
       continue;
-      this.IFO.set(Boolean.TRUE);
-      paramContext = this.IFO;
+      this.NMG.set(Boolean.TRUE);
+      paramContext = this.NMG;
       continue;
-      this.IFO.set(Boolean.FALSE);
-      paramContext = this.IFO;
+      this.NMG.set(Boolean.FALSE);
+      paramContext = this.NMG;
     }
   }
 }

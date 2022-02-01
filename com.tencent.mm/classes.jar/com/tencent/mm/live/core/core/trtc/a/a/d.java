@@ -1,60 +1,76 @@
 package com.tencent.mm.live.core.core.trtc.a.a;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.Serializable;
 
 public final class d
   implements Serializable
 {
-  public boolean cuD = false;
-  private transient boolean gLO = true;
-  public int gLU = 108;
-  public int gLV = 15;
-  public boolean gLW = true;
-  public boolean gLX = false;
-  public int gLY = 0;
-  private boolean gLZ = true;
-  private boolean gMa = false;
-  public boolean gMb = false;
-  public boolean gMc = false;
-  public boolean gMd = false;
-  public boolean gMe = true;
-  public int gMf = 0;
-  public boolean gMg = true;
+  public boolean cIw = false;
+  private boolean hBA = false;
+  public boolean hBB = false;
+  public boolean hBC = false;
+  public boolean hBD = false;
+  public boolean hBE = true;
+  public int hBF = 0;
+  public boolean hBG = true;
+  private transient boolean hBm = true;
+  public int hBu = 108;
+  public int hBv = 15;
+  public boolean hBw = true;
+  public boolean hBx = false;
+  public int hBy = 0;
+  private boolean hBz = true;
   public int mQosMode = 1;
   public int mQosPreference = 2;
   public int mVideoBitrate = 600;
   
-  public final boolean amn()
+  public final String Lb()
   {
-    return this.gLW;
+    AppMethodBeat.i(196278);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.hBu).append("-").append(this.hBv).append("-").append(this.mVideoBitrate).append("-").append(this.mQosPreference).append("-").append(this.mQosMode);
+    localObject = ((StringBuilder)localObject).toString();
+    AppMethodBeat.o(196278);
+    return localObject;
   }
   
-  public final void dI(boolean paramBoolean)
+  public final int aDR()
   {
-    this.gLW = paramBoolean;
+    return this.hBv;
   }
   
-  public final void dJ(boolean paramBoolean)
+  public final boolean aDS()
   {
-    this.gMg = paramBoolean;
+    return this.hBw;
   }
   
-  public final void dK(boolean paramBoolean)
+  public final void eA(boolean paramBoolean)
   {
-    this.gLZ = paramBoolean;
+    this.hBw = paramBoolean;
   }
   
-  public final void nc(int paramInt)
+  public final void eB(boolean paramBoolean)
+  {
+    this.hBG = paramBoolean;
+  }
+  
+  public final void eC(boolean paramBoolean)
+  {
+    this.hBz = paramBoolean;
+  }
+  
+  public final void qt(int paramInt)
   {
     this.mQosMode = paramInt;
   }
   
-  public final void nd(int paramInt)
+  public final void qu(int paramInt)
   {
-    this.gLV = paramInt;
+    this.hBv = paramInt;
   }
   
-  public final void ne(int paramInt)
+  public final void qv(int paramInt)
   {
     this.mQosPreference = paramInt;
   }
@@ -66,12 +82,12 @@ public final class d
   
   public final void setVideoResolution(int paramInt)
   {
-    this.gLU = paramInt;
+    this.hBu = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.a.a.d
  * JD-Core Version:    0.7.0.1
  */

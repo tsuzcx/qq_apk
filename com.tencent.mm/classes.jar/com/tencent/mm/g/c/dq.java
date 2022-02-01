@@ -2,22 +2,22 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class dq
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fin = "countryCode".hashCode();
-  private static final int fio = "callTimeCount".hashCode();
-  private static final int fip = "lastCallTime".hashCode();
+  private static final int fMp = "appusername".hashCode();
+  private static final int fMs = "score".hashCode();
+  private static final int fne = "title".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  public long field_callTimeCount;
-  public int field_countryCode;
-  public long field_lastCallTime;
-  private boolean fik = true;
-  private boolean fil = true;
-  private boolean fim = true;
+  private boolean fMm;
+  private boolean fMr;
+  public String field_appusername;
+  public int field_score;
+  public String field_title;
+  private boolean fnb;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,22 +32,21 @@ public abstract class dq
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fin != k) {
-        break label65;
+      if (fMp != k) {
+        break label60;
       }
-      this.field_countryCode = paramCursor.getInt(i);
-      this.fik = true;
+      this.field_appusername = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (fio == k) {
-        this.field_callTimeCount = paramCursor.getLong(i);
-      } else if (fip == k) {
-        this.field_lastCallTime = paramCursor.getLong(i);
+      label60:
+      if (fne == k) {
+        this.field_title = paramCursor.getString(i);
+      } else if (fMs == k) {
+        this.field_score = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -57,14 +56,14 @@ public abstract class dq
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fik) {
-      localContentValues.put("countryCode", Integer.valueOf(this.field_countryCode));
+    if (this.fMm) {
+      localContentValues.put("appusername", this.field_appusername);
     }
-    if (this.fil) {
-      localContentValues.put("callTimeCount", Long.valueOf(this.field_callTimeCount));
+    if (this.fnb) {
+      localContentValues.put("title", this.field_title);
     }
-    if (this.fim) {
-      localContentValues.put("lastCallTime", Long.valueOf(this.field_lastCallTime));
+    if (this.fMr) {
+      localContentValues.put("score", Integer.valueOf(this.field_score));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

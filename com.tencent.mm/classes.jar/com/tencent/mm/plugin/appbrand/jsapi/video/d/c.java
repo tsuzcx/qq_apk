@@ -4,8 +4,10 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.base.d;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.video.e;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -15,33 +17,33 @@ public final class c
   private static final int CTRL_INDEX = 114;
   public static final String NAME = "operateVideoPlayer";
   
-  public final int A(JSONObject paramJSONObject)
+  public final int H(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(211259);
+    AppMethodBeat.i(234928);
     int i = paramJSONObject.optInt("videoPlayerId");
-    AppMethodBeat.o(211259);
+    AppMethodBeat.o(234928);
     return i;
   }
   
-  public final boolean c(com.tencent.mm.plugin.appbrand.jsapi.e parame, int paramInt, View paramView, JSONObject paramJSONObject)
+  public final boolean c(h paramh, int paramInt, View paramView, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(211260);
-    ae.i("MicroMsg.JsApiOperateVideoPlayer", "onOperateView videoPlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
+    AppMethodBeat.i(234929);
+    Log.i("MicroMsg.JsApiOperateVideoPlayer", "onOperateView videoPlayerId=%d", new Object[] { Integer.valueOf(paramInt) });
     if (!(paramView instanceof CoverViewContainer))
     {
-      ae.w("MicroMsg.JsApiOperateVideoPlayer", "view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(211260);
+      Log.w("MicroMsg.JsApiOperateVideoPlayer", "view(%s) is not a instance of CoverViewContainer", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(234929);
       return false;
     }
-    parame = (AppBrandVideoView)((CoverViewContainer)paramView).ax(AppBrandVideoView.class);
-    if (parame == null)
+    paramh = (AppBrandVideoView)((CoverViewContainer)paramView).aB(AppBrandVideoView.class);
+    if (paramh == null)
     {
-      ae.e("MicroMsg.JsApiOperateVideoPlayer", "view not AppBrandVideoView");
-      AppMethodBeat.o(211260);
+      Log.e("MicroMsg.JsApiOperateVideoPlayer", "view not AppBrandVideoView");
+      AppMethodBeat.o(234929);
       return false;
     }
     paramView = paramJSONObject.optString("type");
-    ae.i("MicroMsg.JsApiOperateVideoPlayer", "onOperateView operateType=%s", new Object[] { paramView });
+    Log.i("MicroMsg.JsApiOperateVideoPlayer", "onOperateView operateType=%s", new Object[] { paramView });
     paramInt = -1;
     switch (paramView.hashCode())
     {
@@ -51,8 +53,8 @@ public final class c
       switch (paramInt)
       {
       default: 
-        ae.w("MicroMsg.JsApiOperateVideoPlayer", "onOperateView operateType not supported: %s", new Object[] { paramView });
-        AppMethodBeat.o(211260);
+        Log.w("MicroMsg.JsApiOperateVideoPlayer", "onOperateView operateType not supported: %s", new Object[] { paramView });
+        AppMethodBeat.o(234929);
         return false;
         if (paramView.equals("play"))
         {
@@ -95,80 +97,80 @@ public final class c
         break;
       }
     }
-    parame.start();
+    paramh.start();
     for (;;)
     {
-      AppMethodBeat.o(211260);
+      AppMethodBeat.o(234929);
       return true;
-      parame.pause();
+      paramh.pause();
       continue;
-      parame.stop();
+      paramh.stop();
       continue;
       paramView = paramJSONObject.optJSONArray("data");
       paramInt = -1;
       if ((paramView == null) || (paramView.length() == 0)) {
-        ae.w("MicroMsg.JsApiOperateVideoPlayer", "onOperateView directionArr nil");
+        Log.w("MicroMsg.JsApiOperateVideoPlayer", "onOperateView directionArr nil");
       }
       for (;;)
       {
-        parame.q(true, paramInt);
+        paramh.p(true, paramInt);
         break;
         paramInt = paramView.optInt(0, -1);
       }
-      parame.q(false, -1);
+      paramh.p(false, -1);
       continue;
       paramView = paramJSONObject.optJSONArray("data");
       if ((paramView == null) || (paramView.length() == 0))
       {
-        ae.w("MicroMsg.JsApiOperateVideoPlayer", "onOperateView dataArr nil");
-        AppMethodBeat.o(211260);
+        Log.w("MicroMsg.JsApiOperateVideoPlayer", "onOperateView dataArr nil");
+        AppMethodBeat.o(234929);
         return false;
       }
       double d = paramView.optDouble(0, -1.0D);
       if (d < 0.0D)
       {
-        ae.i("MicroMsg.JsApiOperateVideoPlayer", "rate invalid %f", new Object[] { Double.valueOf(d) });
-        AppMethodBeat.o(211260);
+        Log.i("MicroMsg.JsApiOperateVideoPlayer", "rate invalid %f", new Object[] { Double.valueOf(d) });
+        AppMethodBeat.o(234929);
         return false;
       }
       float f = (float)d;
-      ae.i("MicroMsg.Video.AppBrandVideoView", "setPlaybackRate %s", new Object[] { Float.valueOf(f) });
-      parame.lpd.aE(f);
+      Log.i("MicroMsg.Video.AppBrandVideoView", "setPlaybackRate %s", new Object[] { Float.valueOf(f) });
+      paramh.mvJ.aO(f);
       continue;
       paramView = paramJSONObject.optJSONArray("data");
       if ((paramView == null) || (paramView.length() == 0))
       {
-        ae.w("MicroMsg.JsApiOperateVideoPlayer", "onOperateView dataArr nil");
-        AppMethodBeat.o(211260);
+        Log.w("MicroMsg.JsApiOperateVideoPlayer", "onOperateView dataArr nil");
+        AppMethodBeat.o(234929);
         return false;
       }
       d = paramView.optDouble(0, -1.0D);
       if (d < 0.0D)
       {
-        ae.i("MicroMsg.JsApiOperateVideoPlayer", "pos invalid %s", new Object[] { Double.valueOf(d) });
-        AppMethodBeat.o(211260);
+        Log.i("MicroMsg.JsApiOperateVideoPlayer", "pos invalid %s", new Object[] { Double.valueOf(d) });
+        AppMethodBeat.o(234929);
         return false;
       }
-      parame.d(d, false);
+      paramh.d(d, false);
       continue;
       paramView = paramJSONObject.optJSONArray("data");
       if ((paramView == null) || (paramView.length() == 0))
       {
-        ae.w("MicroMsg.JsApiOperateVideoPlayer", "onOperateView dataArr nil");
-        AppMethodBeat.o(211260);
+        Log.w("MicroMsg.JsApiOperateVideoPlayer", "onOperateView dataArr nil");
+        AppMethodBeat.o(234929);
         return false;
       }
       if (paramView.length() == 1) {
-        parame.dr(paramView.optString(0, ""), "");
+        paramh.dG(paramView.optString(0, ""), "");
       } else {
-        parame.dr(paramView.optString(0, ""), paramView.optString(1, ""));
+        paramh.dG(paramView.optString(0, ""), paramView.optString(1, ""));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.d.c
  * JD-Core Version:    0.7.0.1
  */

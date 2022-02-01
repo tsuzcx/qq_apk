@@ -15,19 +15,19 @@ public final class a
     super(paramContext, paramArrayList, paramInt, paramOrders);
   }
   
-  public final Bankcard VS(int paramInt)
+  public final Bankcard aeu(int paramInt)
   {
     AppMethodBeat.i(72100);
     Bankcard localBankcard;
-    if ((this.CQh != null) && (this.CQh.size() != 0))
+    if ((this.Hva != null) && (this.Hva.size() != 0))
     {
-      localBankcard = (Bankcard)this.CQh.get(paramInt);
+      localBankcard = (Bankcard)this.Hva.get(paramInt);
       AppMethodBeat.o(72100);
       return localBankcard;
     }
     if (paramInt != getCount() - 1)
     {
-      localBankcard = (Bankcard)this.CQh.get(paramInt);
+      localBankcard = (Bankcard)this.Hva.get(paramInt);
       AppMethodBeat.o(72100);
       return localBankcard;
     }
@@ -38,9 +38,9 @@ public final class a
   public final int getCount()
   {
     AppMethodBeat.i(72099);
-    if ((this.CQh != null) && (this.CQh.size() != 0))
+    if ((this.Hva != null) && (this.Hva.size() != 0))
     {
-      int i = this.CQh.size();
+      int i = this.Hva.size();
       AppMethodBeat.o(72099);
       return i;
     }
@@ -50,7 +50,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pay.ui.a
  * JD-Core Version:    0.7.0.1
  */

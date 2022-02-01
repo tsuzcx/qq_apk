@@ -19,16 +19,16 @@ public class PreCachingAlgorithmDecorator<T extends ClusterItem>
   
   public PreCachingAlgorithmDecorator(Algorithm<T> paramAlgorithm)
   {
-    AppMethodBeat.i(217606);
+    AppMethodBeat.i(199529);
     this.b = new h(5);
     this.c = new ReentrantReadWriteLock();
     this.a = paramAlgorithm;
-    AppMethodBeat.o(217606);
+    AppMethodBeat.o(199529);
   }
   
   private Set<? extends Cluster<T>> a(int paramInt)
   {
-    AppMethodBeat.i(217614);
+    AppMethodBeat.i(199537);
     this.c.readLock().lock();
     Set localSet2 = (Set)this.b.get(Integer.valueOf(paramInt));
     this.c.readLock().unlock();
@@ -45,39 +45,39 @@ public class PreCachingAlgorithmDecorator<T extends ClusterItem>
       }
       this.c.writeLock().unlock();
     }
-    AppMethodBeat.o(217614);
+    AppMethodBeat.o(199537);
     return localSet1;
   }
   
   private void a()
   {
-    AppMethodBeat.i(217611);
+    AppMethodBeat.i(199534);
     this.b.evictAll();
-    AppMethodBeat.o(217611);
+    AppMethodBeat.o(199534);
   }
   
   public void addItem(T paramT)
   {
-    AppMethodBeat.i(217607);
+    AppMethodBeat.i(199530);
     this.a.addItem(paramT);
     a();
-    AppMethodBeat.o(217607);
+    AppMethodBeat.o(199530);
   }
   
   public void addItems(Collection<T> paramCollection)
   {
-    AppMethodBeat.i(217608);
+    AppMethodBeat.i(199531);
     this.a.addItems(paramCollection);
     a();
-    AppMethodBeat.o(217608);
+    AppMethodBeat.o(199531);
   }
   
   public void clearItems()
   {
-    AppMethodBeat.i(217609);
+    AppMethodBeat.i(199532);
     this.a.clearItems();
     a();
-    AppMethodBeat.o(217609);
+    AppMethodBeat.o(199532);
   }
   
   public Algorithm getAlgorithm()
@@ -87,7 +87,7 @@ public class PreCachingAlgorithmDecorator<T extends ClusterItem>
   
   public Set<? extends Cluster<T>> getClusters(double paramDouble)
   {
-    AppMethodBeat.i(217612);
+    AppMethodBeat.i(199535);
     int i = (int)paramDouble;
     Set localSet = a(i);
     if (this.b.get(Integer.valueOf(i + 1)) == null) {
@@ -96,29 +96,29 @@ public class PreCachingAlgorithmDecorator<T extends ClusterItem>
     if (this.b.get(Integer.valueOf(i - 1)) == null) {
       new Thread(new PreCachingAlgorithmDecorator.PrecacheRunnable(this, i - 1)).start();
     }
-    AppMethodBeat.o(217612);
+    AppMethodBeat.o(199535);
     return localSet;
   }
   
   public Collection<T> getItems()
   {
-    AppMethodBeat.i(217613);
+    AppMethodBeat.i(199536);
     Collection localCollection = this.a.getItems();
-    AppMethodBeat.o(217613);
+    AppMethodBeat.o(199536);
     return localCollection;
   }
   
   public void removeItem(T paramT)
   {
-    AppMethodBeat.i(217610);
+    AppMethodBeat.i(199533);
     this.a.removeItem(paramT);
     a();
-    AppMethodBeat.o(217610);
+    AppMethodBeat.o(199533);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.clustering.algo.PreCachingAlgorithmDecorator
  * JD-Core Version:    0.7.0.1
  */

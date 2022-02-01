@@ -5,11 +5,9 @@ import java.util.List;
 
 public abstract interface a
 {
-  public abstract int fXb();
-  
-  public abstract List<c> fXc();
-  
   public abstract int getEllipsisCount(int paramInt);
+  
+  public abstract int getEllipsisStart(int paramInt);
   
   public abstract int getLineBaseline(int paramInt);
   
@@ -31,7 +29,11 @@ public abstract interface a
   
   public abstract float getPrimaryHorizontal(int paramInt);
   
-  public abstract int kO(int paramInt1, int paramInt2);
+  public abstract int hiG();
+  
+  public abstract List<c> hiH();
+  
+  public abstract int mn(int paramInt1, int paramInt2);
 }
 
 

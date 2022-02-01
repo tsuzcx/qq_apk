@@ -1,146 +1,135 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bw.b;
 
 public final class dlc
   extends com.tencent.mm.bw.a
 {
-  public String hET;
-  public int hEU;
-  public String hEV;
-  public String hEW;
-  public String hEX;
-  public String hEY;
-  public String hEZ;
-  public String hFa;
+  public String KXA;
+  public b LXB;
+  public b LXC;
+  public String MOZ;
+  public b MPa;
+  public int Scene;
+  public String SessionId;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125846);
+    AppMethodBeat.i(104831);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.hET != null) {
-        paramVarArgs.d(1, this.hET);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.KXA != null) {
+        paramVarArgs.e(1, this.KXA);
       }
-      paramVarArgs.aS(2, this.hEU);
-      if (this.hEW != null) {
-        paramVarArgs.d(3, this.hEW);
+      if (this.MOZ != null) {
+        paramVarArgs.e(2, this.MOZ);
       }
-      if (this.hEX != null) {
-        paramVarArgs.d(4, this.hEX);
+      if (this.SessionId != null) {
+        paramVarArgs.e(3, this.SessionId);
       }
-      if (this.hEV != null) {
-        paramVarArgs.d(5, this.hEV);
+      if (this.LXC != null) {
+        paramVarArgs.c(4, this.LXC);
       }
-      if (this.hEY != null) {
-        paramVarArgs.d(6, this.hEY);
+      if (this.LXB != null) {
+        paramVarArgs.c(5, this.LXB);
       }
-      if (this.hEZ != null) {
-        paramVarArgs.d(7, this.hEZ);
+      paramVarArgs.aM(6, this.Scene);
+      if (this.MPa != null) {
+        paramVarArgs.c(7, this.MPa);
       }
-      if (this.hFa != null) {
-        paramVarArgs.d(8, this.hFa);
-      }
-      AppMethodBeat.o(125846);
+      AppMethodBeat.o(104831);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.hET == null) {
-        break label626;
+      if (this.KXA == null) {
+        break label562;
       }
     }
-    label626:
-    for (paramInt = f.a.a.b.b.a.e(1, this.hET) + 0;; paramInt = 0)
+    label562:
+    for (int i = g.a.a.b.b.a.f(1, this.KXA) + 0;; i = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.hEU);
       paramInt = i;
-      if (this.hEW != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.hEW);
+      if (this.MOZ != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.MOZ);
       }
       i = paramInt;
-      if (this.hEX != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.hEX);
+      if (this.SessionId != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.SessionId);
       }
       paramInt = i;
-      if (this.hEV != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.hEV);
+      if (this.LXC != null) {
+        paramInt = i + g.a.a.b.b.a.b(4, this.LXC);
       }
       i = paramInt;
-      if (this.hEY != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.hEY);
+      if (this.LXB != null) {
+        i = paramInt + g.a.a.b.b.a.b(5, this.LXB);
       }
+      i += g.a.a.b.b.a.bu(6, this.Scene);
       paramInt = i;
-      if (this.hEZ != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.hEZ);
+      if (this.MPa != null) {
+        paramInt = i + g.a.a.b.b.a.b(7, this.MPa);
       }
-      i = paramInt;
-      if (this.hFa != null) {
-        i = paramInt + f.a.a.b.b.a.e(8, this.hFa);
-      }
-      AppMethodBeat.o(125846);
-      return i;
+      AppMethodBeat.o(104831);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(125846);
+        AppMethodBeat.o(104831);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         dlc localdlc = (dlc)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(125846);
+          AppMethodBeat.o(104831);
           return -1;
         case 1: 
-          localdlc.hET = locala.OmT.readString();
-          AppMethodBeat.o(125846);
+          localdlc.KXA = locala.UbS.readString();
+          AppMethodBeat.o(104831);
           return 0;
         case 2: 
-          localdlc.hEU = locala.OmT.zc();
-          AppMethodBeat.o(125846);
+          localdlc.MOZ = locala.UbS.readString();
+          AppMethodBeat.o(104831);
           return 0;
         case 3: 
-          localdlc.hEW = locala.OmT.readString();
-          AppMethodBeat.o(125846);
+          localdlc.SessionId = locala.UbS.readString();
+          AppMethodBeat.o(104831);
           return 0;
         case 4: 
-          localdlc.hEX = locala.OmT.readString();
-          AppMethodBeat.o(125846);
+          localdlc.LXC = locala.UbS.hPo();
+          AppMethodBeat.o(104831);
           return 0;
         case 5: 
-          localdlc.hEV = locala.OmT.readString();
-          AppMethodBeat.o(125846);
+          localdlc.LXB = locala.UbS.hPo();
+          AppMethodBeat.o(104831);
           return 0;
         case 6: 
-          localdlc.hEY = locala.OmT.readString();
-          AppMethodBeat.o(125846);
-          return 0;
-        case 7: 
-          localdlc.hEZ = locala.OmT.readString();
-          AppMethodBeat.o(125846);
+          localdlc.Scene = locala.UbS.zi();
+          AppMethodBeat.o(104831);
           return 0;
         }
-        localdlc.hFa = locala.OmT.readString();
-        AppMethodBeat.o(125846);
+        localdlc.MPa = locala.UbS.hPo();
+        AppMethodBeat.o(104831);
         return 0;
       }
-      AppMethodBeat.o(125846);
+      AppMethodBeat.o(104831);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dlc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,455 +1,375 @@
 package com.tencent.mm.plugin.report.service;
 
-import android.content.Context;
+import android.widget.Toast;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.mars.smc.IDKey;
+import com.tencent.mars.smc.SmcLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
-import java.io.IOException;
+import com.tencent.mm.compatible.util.d;
+import com.tencent.mm.plugin.report.b.a;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.Map;
 
-public final class e
+public class e
 {
-  private static String filePath;
-  private static Byte yxw;
+  private static Map<Long, Long> Cyn;
+  private static a Cyo;
+  private static int Cyp;
+  private static boolean Cyq;
   
   static
   {
-    AppMethodBeat.i(143852);
-    filePath = getAppFilePath() + "/kvcomm/exception/";
-    yxw = Byte.valueOf((byte)0);
-    if (!o.fB(filePath)) {
-      o.aZI(filePath);
-    }
-    AppMethodBeat.o(143852);
+    AppMethodBeat.i(143841);
+    Cyo = new a();
+    Cyp = -1;
+    Cyq = false;
+    AppMethodBeat.o(143841);
   }
   
-  private static byte[] OO(int paramInt)
+  public static void a(long paramLong1, long paramLong2, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    return new byte[] { (byte)(paramInt >> 24 & 0xFF), (byte)(paramInt >> 16 & 0xFF), (byte)(paramInt >> 8 & 0xFF), (byte)(paramInt & 0xFF) };
-  }
-  
-  public static void a(int paramInt1, int paramInt2, String arg2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    AppMethodBeat.i(143848);
-    if (!o.fB(filePath))
-    {
-      ae.e("MicroMsg.ReportManagerKvCheck", "saveKVcommData, filepath:" + filePath + " not exist , logId:" + paramInt1 + ", type:" + paramInt2 + ", val:" + ??? + ", isImportant:" + paramBoolean2 + ", reportnow:" + paramBoolean1 + ", ignoreFreqLimit:" + paramBoolean3);
-      AppMethodBeat.o(143848);
-      return;
-    }
-    ae.i("MicroMsg.ReportManagerKvCheck", "saveKVcommData, logId:" + paramInt1 + ", type:" + paramInt2 + ", val:" + ??? + ", isImportant:" + paramBoolean2 + ", reportnow:" + paramBoolean1 + "," + paramBoolean3);
-    String str = dNG();
-    if ("MM".equals(str))
-    {
-      ae.e("MicroMsg.ReportManagerKvCheck", "error path, invalid processname:" + str + ", logId:" + paramInt1 + ", type:" + paramInt2 + ", val:" + ??? + ", isImportant:" + paramBoolean2 + ", reportnow:" + paramBoolean1 + ", ignoreFreqLimit:" + paramBoolean3);
-      AppMethodBeat.o(143848);
-      return;
-    }
-    str = filePath + str + ".statictis_new2";
-    Object localObject2 = new c();
-    ((c)localObject2).gvt = paramInt1;
-    ((c)localObject2).nJA = paramInt2;
-    ((c)localObject2).yxn = ???;
-    ((c)localObject2).yxg = paramBoolean2;
-    ((c)localObject2).yxo = paramBoolean1;
-    ((c)localObject2).yxp = paramBoolean3;
-    try
-    {
-      localObject2 = ((c)localObject2).toByteArray();
-      if (localObject2 == null)
-      {
-        ae.e("MicroMsg.ReportManagerKvCheck", "saveKVcommData, null == temp.");
-        AppMethodBeat.o(143848);
-        return;
-      }
-    }
-    catch (IOException ???)
-    {
-      ae.e("MicroMsg.ReportManagerKvCheck", "saveIDKeyData, IOException, detail:" + ???.getMessage());
-      AppMethodBeat.o(143848);
-      return;
-    }
-    synchronized (yxw)
-    {
-      if (o.e(str, OO(localObject2.length), 4) != 0)
-      {
-        ae.e("MicroMsg.ReportManagerKvCheck", "saveKVcommData, write obj_len to file:" + str + " fail.");
-        AppMethodBeat.o(143848);
-        return;
-      }
-      if (o.e(str, (byte[])localObject2, localObject2.length) != 0) {
-        ae.e("MicroMsg.ReportManagerKvCheck", "saveKVcommData, write object to file:" + str + " fail.");
-      }
-      AppMethodBeat.o(143848);
-      return;
-    }
-  }
-  
-  private static int bF(byte[] paramArrayOfByte)
-  {
-    int i = 0;
-    int k;
-    int m;
-    for (int j = 0;; j = ((m & 0xFF) << (3 - k) * 8) + j)
-    {
-      k = i;
-      if (k >= 4) {
-        break;
-      }
-      m = paramArrayOfByte[k];
-      i = k + 1;
-    }
-    return j;
-  }
-  
-  public static void c(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
-  {
-    AppMethodBeat.i(143849);
-    ae.i("MicroMsg.ReportManagerKvCheck", "saveIDKeyData, id:" + paramInt1 + ", key:" + paramInt2 + ", value:" + paramInt3 + ", isImportant:" + paramBoolean);
-    if (!o.fB(filePath))
-    {
-      ae.e("MicroMsg.ReportManagerKvCheck", "saveIDKeyData, filepath:" + filePath + " not exist , Id:" + paramInt1 + ", key:" + paramInt2 + ", value:" + paramInt3 + ", isImportant:" + paramBoolean);
-      AppMethodBeat.o(143849);
-      return;
-    }
-    String str = dNG();
-    if ("MM".equals(str))
-    {
-      ae.e("MicroMsg.ReportManagerKvCheck", "error path, current processname:" + str + ", id:" + paramInt1 + ", key:" + paramInt2 + ", val:" + paramInt3 + ", isImportant:" + paramBoolean);
-      AppMethodBeat.o(143849);
-      return;
-    }
-    str = filePath + str + ".monitor";
-    ??? = new b();
-    ((b)???).ID = paramInt1;
-    ((b)???).yxe = paramInt2;
-    ((b)???).yxf = paramInt3;
-    ((b)???).yxg = paramBoolean;
-    byte[] arrayOfByte;
-    try
-    {
-      arrayOfByte = ((b)???).toByteArray();
-      if (arrayOfByte == null)
-      {
-        ae.e("MicroMsg.ReportManagerKvCheck", "saveIDKeyData, null == temp.");
-        AppMethodBeat.o(143849);
-        return;
-      }
-    }
-    catch (IOException localIOException)
-    {
-      ae.e("MicroMsg.ReportManagerKvCheck", "saveIDKeyData, IOException, detail:" + localIOException.getMessage());
-      AppMethodBeat.o(143849);
-      return;
-    }
-    synchronized (yxw)
-    {
-      if (o.e(localIOException, OO(arrayOfByte.length), 4) != 0)
-      {
-        ae.e("MicroMsg.ReportManagerKvCheck", "saveIDKeyData, write obj_len to file:" + localIOException + " fail.");
-        AppMethodBeat.o(143849);
-        return;
-      }
-      if (o.e(localIOException, arrayOfByte, arrayOfByte.length) != 0) {
-        ae.e("MicroMsg.ReportManagerKvCheck", "saveIDKeyData, write object to file:" + localIOException + " fail.");
-      }
-      ae.d("MicroMsg.ReportManagerKvCheck", "saveIDKeyData, fileLength:" + o.aZR(localIOException));
-      AppMethodBeat.o(143849);
-      return;
-    }
-  }
-  
-  public static void dNF()
-  {
-    AppMethodBeat.i(143847);
+    AppMethodBeat.i(143835);
+    if (paramBoolean2) {}
     for (;;)
     {
-      int j;
-      String str1;
-      int i;
-      synchronized (yxw)
+      try
       {
-        if (!o.fB(filePath))
-        {
-          ae.w("MicroMsg.ReportManagerKvCheck", "loadFilesToReport, filepath:" + filePath + " not exist.");
-          AppMethodBeat.o(143847);
-          return;
-        }
-        k[] arrayOfk = new k(filePath).fTj();
-        if (arrayOfk == null)
-        {
-          ae.e("MicroMsg.ReportManagerKvCheck", "list file fail, filePath:" + filePath);
-          AppMethodBeat.o(143847);
-          return;
-        }
-        int k = arrayOfk.length;
-        j = 0;
-        if (j >= k) {
-          break label1018;
-        }
-        localObject2 = arrayOfk[j];
-        if (localObject2 == null)
-        {
-          ae.e("MicroMsg.ReportManagerKvCheck", "loadFilesToReport, file is null");
-        }
-        else
-        {
-          str1 = w.B(((k)localObject2).fTh());
-          i = 0;
-          int m = (int)o.aZR(str1);
-          ae.d("MicroMsg.ReportManagerKvCheck", "loadFilesToReport, filename:" + w.B(((k)localObject2).fTh()) + ", filelenth:" + m);
-          if (i >= m)
-          {
-            ae.d("MicroMsg.ReportManagerKvCheck", "loadFilesToReport, read to end, deletefile:".concat(String.valueOf(str1)));
-            o.deleteFile(str1);
-          }
-        }
+        SmcLogic.writeImportKvDataWithType(paramLong1, paramLong2, paramString, paramBoolean1, paramBoolean3);
+        k.eOK();
+        k.G(paramLong1, paramString);
+        AppMethodBeat.o(143835);
+        return;
       }
-      Object localObject2 = o.bb(str1, i, 4);
-      if (localObject2 == null)
+      catch (Exception localException)
       {
-        ae.e("MicroMsg.ReportManagerKvCheck", "loadFilesToReport, get obj_len fail. delete file:".concat(String.valueOf(str1)));
-      }
-      else
-      {
-        i += 4;
-        int n;
-        try
-        {
-          n = bF((byte[])localObject2);
-          localObject2 = o.bb(str1, i, n);
-          if (localObject2 != null) {
-            break label340;
-          }
-          ae.e("MicroMsg.ReportManagerKvCheck", "loadFilesToReport, get obj_data fail. delete file:".concat(String.valueOf(str1)));
-        }
-        catch (Exception localException1)
-        {
-          ae.e("MicroMsg.ReportManagerKvCheck", "loadFilesToReport, byteArrayToInt error. delete file:".concat(String.valueOf(str1)));
-        }
+        Log.e("MicroMsg.KVEasyReport", "localReport :%s", new Object[] { Util.stackTraceToString(localException) });
         continue;
-        label340:
-        i += n;
-        Object localObject3;
-        if (str1.contains(".statictis_new2")) {
-          localObject3 = new c();
+      }
+      try
+      {
+        SmcLogic.writeKvDataWithType(paramLong1, paramLong2, paramString, paramBoolean1, paramBoolean3);
+      }
+      catch (Throwable localThrowable)
+      {
+        Log.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
+        if (d.oE(20))
+        {
+          SmcLogic.writeKvDataWithType(paramLong1, paramLong2, paramString, paramBoolean1, paramBoolean3);
+          continue;
         }
+        AppMethodBeat.o(143835);
+        throw localThrowable;
+      }
+    }
+  }
+  
+  public static void a(long paramLong, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    AppMethodBeat.i(143834);
+    if (paramBoolean2) {}
+    for (;;)
+    {
+      try
+      {
+        SmcLogic.writeImportKvData(paramLong, paramString, paramBoolean1, paramBoolean3);
+        k.eOK();
+        k.G(paramLong, paramString);
+        AppMethodBeat.o(143834);
+        return;
+      }
+      catch (Exception localException)
+      {
+        Log.e("MicroMsg.KVEasyReport", "localReport :%s", new Object[] { Util.stackTraceToString(localException) });
+        continue;
+      }
+      try
+      {
+        SmcLogic.writeKvData(paramLong, paramString, paramBoolean1, paramBoolean3);
+      }
+      catch (Throwable localThrowable)
+      {
+        Log.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
+        if (d.oE(20))
+        {
+          SmcLogic.writeKvData(paramLong, paramString, paramBoolean1, paramBoolean3);
+          continue;
+        }
+        AppMethodBeat.o(143834);
+        throw localThrowable;
+      }
+    }
+  }
+  
+  public static void a(long paramLong, byte[] paramArrayOfByte, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(143836);
+    if (paramBoolean2) {
+      try
+      {
+        SmcLogic.writeImportKvPbData(paramLong, paramArrayOfByte, paramBoolean1);
+        AppMethodBeat.o(143836);
+        return;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        Log.e("MicroMsg.KVEasyReport", "localReport :%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
+        AppMethodBeat.o(143836);
+        return;
+      }
+    }
+    SmcLogic.writeKvPbData(paramLong, paramArrayOfByte, paramBoolean1);
+    AppMethodBeat.o(143836);
+  }
+  
+  public static void b(long paramLong1, long paramLong2, long paramLong3, boolean paramBoolean)
+  {
+    AppMethodBeat.i(143837);
+    for (;;)
+    {
+      int i;
+      if (e.class.getClassLoader() == null)
+      {
+        i = -1;
+        label16:
+        if (Thread.currentThread().getContextClassLoader() != null) {
+          break label179;
+        }
+      }
+      label179:
+      for (int j = -1;; j = Thread.currentThread().getContextClassLoader().hashCode())
+      {
+        Log.i("MicroMsg.KVEasyReport", "SmcLogic.reportIDKey class loader %s, %s ", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+        if (!c.Wj((int)paramLong1)) {
+          break label193;
+        }
+        Log.e("MicroMsg.KVEasyReport", "exception:%s", new Object[] { Util.stackTraceToString(new Exception("The IDKey has not applied yet, check your code, IDKey:(" + paramLong1 + "," + paramLong2 + ")")) });
+        if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {
+          h.RTc.aV(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(224155);
+              Toast.makeText(MMApplicationContext.getContext(), "The IDKey has not applied yet, check your code or contact with astrozhou", 1);
+              AppMethodBeat.o(224155);
+            }
+          });
+        }
+        paramLong1 = 1566L;
+        paramLong2 = 1L;
+        paramLong3 = 1L;
+        paramBoolean = false;
+        break;
+        i = e.class.getClassLoader().hashCode();
+        break label16;
+      }
+      try
+      {
+        label193:
+        SmcLogic.reportIDKey(paramLong1, paramLong2, paramLong3, paramBoolean);
+        if (Cyq)
+        {
+          if (Cyn == null) {
+            eOE();
+          }
+          long l = Util.nullAs((Long)Cyn.get(Long.valueOf(paramLong1)), 0L);
+          paramLong1 = l;
+          if (l > 0L) {
+            continue;
+          }
+        }
+        AppMethodBeat.o(143837);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
         for (;;)
         {
-          int i1;
-          boolean bool3;
-          boolean bool1;
-          long l1;
-          long l2;
-          try
-          {
-            ((c)localObject3).parseFrom(localException1);
-            n = ((c)localObject3).gvt;
-            i1 = ((c)localObject3).nJA;
-            String str2 = ((c)localObject3).yxn;
-            boolean bool2 = ((c)localObject3).yxg;
-            bool3 = ((c)localObject3).yxo;
-            bool1 = ((c)localObject3).yxp;
-            ae.i("MicroMsg.ReportManagerKvCheck", "loadFilesToReport, reportkvcomm, logid:" + n + ", type:" + i1 + ", value:" + str2 + ", isReportNow:" + bool3 + ", isImportant" + bool2);
-            localObject3 = g.yxI;
-            if (ak.cpe())
-            {
-              if (com.tencent.mm.plugin.report.a.c.ywG)
-              {
-                l1 = n;
-                l2 = i1;
-                bool2 = com.tencent.mm.plugin.report.a.c.ywH;
-                d.a(l1, l2, str2, bool2, bool2, bool1);
-                ae.d("MicroMsg.ReportManagerKvCheck", "loadFilesToReport, curLen:".concat(String.valueOf(i)));
-                break;
-              }
-              l1 = n;
-              l2 = i1;
-              d.a(l1, l2, str2, bool3, false, bool1);
-              continue;
-            }
-          }
-          catch (Exception localException2)
-          {
-            ae.e("MicroMsg.ReportManagerKvCheck", "loadFilesToReport(kvcomm), Exception:" + localException2.getMessage());
-          }
-          g.a(n, i1, localException2, bool3, bool1);
-          continue;
-          if (str1.contains(".monitor"))
-          {
-            localObject3 = new b();
-            try
-            {
-              ((b)localObject3).parseFrom(localException2);
-              l1 = ((b)localObject3).ID;
-              l2 = ((b)localObject3).yxe;
-              long l3 = ((b)localObject3).yxf;
-              bool1 = ((b)localObject3).yxg;
-              ae.i("MicroMsg.ReportManagerKvCheck", "loadFilesToReport, reportidkey, id:" + l1 + ", key:" + l2 + ", value:" + l3 + ", isImportant" + bool1);
-              g.yxI.idkeyStat(l1, l2, l3, bool1);
-            }
-            catch (IOException localIOException1)
-            {
-              ae.e("MicroMsg.ReportManagerKvCheck", "loadFilesToReport(idkey), IOException:" + localIOException1.getMessage());
-            }
+          Log.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
+          if (!d.oE(20)) {
             break;
           }
-          if (!str1.contains(".group_monitor")) {
-            break label999;
-          }
-          localObject3 = new a();
-          try
-          {
-            ((a)localObject3).parseFrom(localIOException1);
-            ArrayList localArrayList = new ArrayList();
-            bool1 = false;
-            localObject3 = ((a)localObject3).yxd.iterator();
-            while (((Iterator)localObject3).hasNext())
-            {
-              b localb = (b)((Iterator)localObject3).next();
-              IDKey localIDKey = new IDKey(localb.ID, localb.yxe, localb.yxf);
-              bool1 = localb.yxg;
-              localArrayList.add(localIDKey);
-              ae.i("MicroMsg.ReportManagerKvCheck", "loadFilesToReport, idkeyGroupStat, id:" + localb.ID + ", key:" + localb.yxe + ", value:" + localb.yxf + ", isImportant" + bool1);
-            }
-            g.yxI.b(localArrayList, bool1);
-          }
-          catch (IOException localIOException2)
-          {
-            ae.e("MicroMsg.ReportManagerKvCheck", "loadFilesToReport(idkey), IOException:" + localIOException2.getMessage());
-          }
+          SmcLogic.reportIDKey(paramLong1, paramLong2, paramLong3, paramBoolean);
         }
-        continue;
-        label999:
-        ae.e("MicroMsg.ReportManagerKvCheck", "invalid filename:".concat(String.valueOf(str1)));
-        continue;
-        label1018:
-        AppMethodBeat.o(143847);
-        return;
-        j += 1;
+        AppMethodBeat.o(143837);
+        throw localThrowable;
       }
     }
   }
   
-  private static String dNG()
+  public static void e(ArrayList<IDKey> paramArrayList, boolean paramBoolean)
   {
-    AppMethodBeat.i(143851);
-    Object localObject = ak.getProcessName();
-    if ((localObject == null) || (((String)localObject).length() == 0))
+    AppMethodBeat.i(143838);
+    if (paramArrayList != null)
     {
-      AppMethodBeat.o(143851);
-      return "MM";
-    }
-    localObject = ((String)localObject).split(":");
-    if (localObject.length <= 1)
-    {
-      AppMethodBeat.o(143851);
-      return "MM";
-    }
-    localObject = localObject[1];
-    AppMethodBeat.o(143851);
-    return localObject;
-  }
-  
-  public static void e(ArrayList<IDKey> arg0, boolean paramBoolean)
-  {
-    AppMethodBeat.i(143850);
-    Object localObject1 = ???.iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject3 = (IDKey)((Iterator)localObject1).next();
-      ae.i("MicroMsg.ReportManagerKvCheck", "saveGroupIDKeyData, id:" + ((IDKey)localObject3).GetID() + ", key:" + ((IDKey)localObject3).GetKey() + ", value:" + ((IDKey)localObject3).GetValue() + ", isImportant:" + paramBoolean);
-    }
-    if (!o.fB(filePath))
-    {
-      ae.e("MicroMsg.ReportManagerKvCheck", "saveGroupIDKeyData, filepath:" + filePath + " not exist ");
-      AppMethodBeat.o(143850);
-      return;
-    }
-    localObject1 = dNG();
-    if ("MM".equals(localObject1))
-    {
-      ae.e("MicroMsg.ReportManagerKvCheck", "error path, current processname:".concat(String.valueOf(localObject1)));
-      AppMethodBeat.o(143850);
-      return;
-    }
-    localObject1 = filePath + (String)localObject1 + ".group_monitor";
-    Object localObject3 = new a();
-    ((a)localObject3).nID = ???.size();
-    ??? = ???.iterator();
-    while (???.hasNext())
-    {
-      IDKey localIDKey = (IDKey)???.next();
-      b localb = new b();
-      localb.ID = ((int)localIDKey.GetID());
-      localb.yxe = ((int)localIDKey.GetKey());
-      localb.yxf = ((int)localIDKey.GetValue());
-      localb.yxg = paramBoolean;
-      ((a)localObject3).yxd.add(localb);
-    }
-    try
-    {
-      localObject3 = ((a)localObject3).toByteArray();
-      if (localObject3 == null)
+      int i = 0;
+      int j = 0;
+      while (i < paramArrayList.size())
       {
-        ae.e("MicroMsg.ReportManagerKvCheck", "saveGroupIDKeyData, null == temp.");
-        AppMethodBeat.o(143850);
-        return;
+        if (c.Wj((int)((IDKey)paramArrayList.get(i)).GetID()))
+        {
+          Log.e("MicroMsg.KVEasyReport", "exception:%s", new Object[] { Util.stackTraceToString(new Exception("The IDKey has not applied yet, check your code. IDKey:(" + ((IDKey)paramArrayList.get(i)).GetID() + "," + ((IDKey)paramArrayList.get(i)).GetKey() + ")")) });
+          if ((BuildInfo.DEBUG) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.IS_FLAVOR_PURPLE)) {
+            h.RTc.aV(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(224156);
+                Toast.makeText(MMApplicationContext.getContext(), "The IDKey has not applied yet, check your code or contact with astrozhou", 1);
+                AppMethodBeat.o(224156);
+              }
+            });
+          }
+          b(1566L, 1L, 1L, false);
+          j = 1;
+        }
+        i += 1;
       }
-    }
-    catch (IOException ???)
-    {
-      ae.e("MicroMsg.ReportManagerKvCheck", "saveGroupIDKeyData, IOException, detail:" + ???.getMessage());
-      AppMethodBeat.o(143850);
-      return;
-    }
-    synchronized (yxw)
-    {
-      if (o.e((String)localObject1, OO(localObject3.length), 4) != 0)
+      if (j != 0)
       {
-        ae.e("MicroMsg.ReportManagerKvCheck", "saveGroupIDKeyData, write obj_len to file:" + (String)localObject1 + " fail.");
-        AppMethodBeat.o(143850);
+        AppMethodBeat.o(143838);
         return;
       }
-      if (o.e((String)localObject1, (byte[])localObject3, localObject3.length) != 0) {
-        ae.e("MicroMsg.ReportManagerKvCheck", "saveGroupIDKeyData, write object to file:" + (String)localObject1 + " fail.");
+      try
+      {
+        SmcLogic.reportListIDKey((IDKey[])paramArrayList.toArray(new IDKey[paramArrayList.size()]), paramBoolean);
+        AppMethodBeat.o(143838);
+        return;
       }
-      AppMethodBeat.o(143850);
-      return;
+      catch (Throwable localThrowable)
+      {
+        Log.printErrStackTrace("MicroMsg.KVEasyReport", localThrowable, "", new Object[0]);
+        if (d.oE(20))
+        {
+          SmcLogic.reportListIDKey((IDKey[])paramArrayList.toArray(new IDKey[paramArrayList.size()]), paramBoolean);
+          AppMethodBeat.o(143838);
+          return;
+        }
+        AppMethodBeat.o(143838);
+        throw localThrowable;
+      }
     }
+    AppMethodBeat.o(143838);
   }
   
-  private static String getAppFilePath()
+  /* Error */
+  public static void eOE()
   {
-    AppMethodBeat.i(143846);
-    Object localObject = ak.getContext();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(143846);
-      return null;
-    }
-    try
-    {
-      localObject = k.W(((Context)localObject).getFilesDir());
-      if (!((k)localObject).exists()) {
-        ((k)localObject).createNewFile();
-      }
-      localObject = ((k)localObject).toString();
-      AppMethodBeat.o(143846);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      ae.e("MicroMsg.ReportManagerKvCheck", localException.getMessage());
-      AppMethodBeat.o(143846);
-    }
-    return null;
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc_w 262
+    //   6: invokestatic 26	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   9: getstatic 207	com/tencent/mm/plugin/report/service/e:Cyn	Ljava/util/Map;
+    //   12: ifnonnull +15 -> 27
+    //   15: new 264	java/util/HashMap
+    //   18: dup
+    //   19: bipush 20
+    //   21: invokespecial 266	java/util/HashMap:<init>	(I)V
+    //   24: putstatic 207	com/tencent/mm/plugin/report/service/e:Cyn	Ljava/util/Map;
+    //   27: invokestatic 270	com/tencent/mm/plugin/report/b/a:eOy	()Lcom/tencent/mm/protocal/protobuf/cbi;
+    //   30: astore_0
+    //   31: aload_0
+    //   32: ifnull +103 -> 135
+    //   35: aload_0
+    //   36: getfield 275	com/tencent/mm/protocal/protobuf/cbi:Mha	I
+    //   39: getstatic 35	com/tencent/mm/plugin/report/service/e:Cyp	I
+    //   42: if_icmpeq +93 -> 135
+    //   45: aload_0
+    //   46: getfield 275	com/tencent/mm/protocal/protobuf/cbi:Mha	I
+    //   49: putstatic 35	com/tencent/mm/plugin/report/service/e:Cyp	I
+    //   52: getstatic 207	com/tencent/mm/plugin/report/service/e:Cyn	Ljava/util/Map;
+    //   55: invokeinterface 278 1 0
+    //   60: aload_0
+    //   61: getfield 282	com/tencent/mm/protocal/protobuf/cbi:Mhb	Ljava/util/LinkedList;
+    //   64: astore_0
+    //   65: aload_0
+    //   66: ifnull +69 -> 135
+    //   69: aload_0
+    //   70: invokevirtual 288	java/util/LinkedList:iterator	()Ljava/util/Iterator;
+    //   73: astore_0
+    //   74: aload_0
+    //   75: invokeinterface 294 1 0
+    //   80: ifeq +55 -> 135
+    //   83: aload_0
+    //   84: invokeinterface 298 1 0
+    //   89: checkcast 300	com/tencent/mm/protocal/protobuf/crd
+    //   92: astore_1
+    //   93: getstatic 207	com/tencent/mm/plugin/report/service/e:Cyn	Ljava/util/Map;
+    //   96: new 212	java/lang/Long
+    //   99: dup
+    //   100: aload_1
+    //   101: getfield 303	com/tencent/mm/protocal/protobuf/crd:Mwu	I
+    //   104: i2l
+    //   105: invokespecial 306	java/lang/Long:<init>	(J)V
+    //   108: new 212	java/lang/Long
+    //   111: dup
+    //   112: aload_1
+    //   113: getfield 309	com/tencent/mm/protocal/protobuf/crd:Mwv	I
+    //   116: i2l
+    //   117: invokespecial 306	java/lang/Long:<init>	(J)V
+    //   120: invokeinterface 313 3 0
+    //   125: pop
+    //   126: goto -52 -> 74
+    //   129: astore_0
+    //   130: ldc 2
+    //   132: monitorexit
+    //   133: aload_0
+    //   134: athrow
+    //   135: ldc 67
+    //   137: ldc_w 315
+    //   140: iconst_4
+    //   141: anewarray 4	java/lang/Object
+    //   144: dup
+    //   145: iconst_0
+    //   146: getstatic 35	com/tencent/mm/plugin/report/service/e:Cyp	I
+    //   149: invokestatic 140	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   152: aastore
+    //   153: dup
+    //   154: iconst_1
+    //   155: getstatic 207	com/tencent/mm/plugin/report/service/e:Cyn	Ljava/util/Map;
+    //   158: invokeinterface 316 1 0
+    //   163: invokestatic 140	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   166: aastore
+    //   167: dup
+    //   168: iconst_2
+    //   169: getstatic 207	com/tencent/mm/plugin/report/service/e:Cyn	Ljava/util/Map;
+    //   172: aastore
+    //   173: dup
+    //   174: iconst_3
+    //   175: invokestatic 320	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
+    //   178: aastore
+    //   179: invokestatic 142	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   182: ldc_w 262
+    //   185: invokestatic 40	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   188: ldc 2
+    //   190: monitorexit
+    //   191: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   30	54	0	localObject1	Object
+    //   129	5	0	localObject2	Object
+    //   92	21	1	localcrd	com.tencent.mm.protocal.protobuf.crd
+    // Exception table:
+    //   from	to	target	type
+    //   3	27	129	finally
+    //   27	31	129	finally
+    //   35	65	129	finally
+    //   69	74	129	finally
+    //   74	126	129	finally
+    //   135	188	129	finally
+  }
+  
+  public static void tM(boolean paramBoolean)
+  {
+    AppMethodBeat.i(143839);
+    Log.i("MicroMsg.KVEasyReport", "summerhv setHeavyUser [%b %b], stack[%s]", new Object[] { Boolean.valueOf(Cyq), Boolean.valueOf(paramBoolean), Util.getStack() });
+    Cyq = paramBoolean;
+    AppMethodBeat.o(143839);
   }
 }
 

@@ -9,13 +9,14 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.i.b;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.plugin.sns.model.al;
+import com.tencent.mm.plugin.sns.j.b;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.model.an;
 import com.tencent.mm.plugin.sns.model.g;
-import com.tencent.mm.protocal.protobuf.bzh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.h;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -24,26 +25,26 @@ import java.util.List;
 
 public class SnsUploadBrowseUI
   extends SnsBaseGalleryUI
-  implements v.a
+  implements w.a
 {
-  private HashMap<Integer, Boolean> AFA;
-  private ArrayList<String> AFz;
-  private int Arq;
+  private int EAu;
+  private ArrayList<String> EPf;
+  private HashMap<Integer, Boolean> EPg;
   
   public SnsUploadBrowseUI()
   {
     AppMethodBeat.i(99509);
-    this.AFz = new ArrayList();
-    this.Arq = 0;
-    this.AFA = new HashMap();
+    this.EPf = new ArrayList();
+    this.EAu = 0;
+    this.EPg = new HashMap();
     AppMethodBeat.o(99509);
   }
   
-  public final void a(bzh parambzh, int paramInt, String paramString)
+  public final void a(cnb paramcnb, int paramInt, String paramString)
   {
     AppMethodBeat.i(99517);
-    super.a(parambzh, paramInt, paramString);
-    this.AFA.put(Integer.valueOf(paramInt), Boolean.TRUE);
+    super.a(paramcnb, paramInt, paramString);
+    this.EPg.put(Integer.valueOf(paramInt), Boolean.TRUE);
     AppMethodBeat.o(99517);
   }
   
@@ -52,8 +53,8 @@ public class SnsUploadBrowseUI
     AppMethodBeat.i(99515);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ae.d("MicroMsg.SnsUploadBrowseUI", "dispatchKeyEvent");
-      eha();
+      Log.d("MicroMsg.SnsUploadBrowseUI", "dispatchKeyEvent");
+      fjC();
       AppMethodBeat.o(99515);
       return true;
     }
@@ -62,35 +63,46 @@ public class SnsUploadBrowseUI
     return bool;
   }
   
-  public final void eha()
+  public final void fH(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(99518);
+    if (this.EAi != null) {
+      this.EAi.vu(true);
+    }
+    AppMethodBeat.o(99518);
+  }
+  
+  public final void fI(String paramString, int paramInt) {}
+  
+  public final void fjC()
   {
     AppMethodBeat.i(99514);
     Intent localIntent = new Intent();
-    Object localObject = this.Arj.getFlipList();
+    Object localObject = this.EAi.getFlipList();
     if (localObject == null)
     {
       AppMethodBeat.o(99514);
       return;
     }
-    this.AFz.clear();
+    this.EPf.clear();
     Iterator localIterator = ((List)localObject).iterator();
     if (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      localObject = ah.getAccSnsTmpPath() + localb.dKe.Id;
-      if (!localb.dKe.Id.startsWith("pre_temp_extend_pic")) {
+      localObject = aj.getAccSnsTmpPath() + localb.ebR.Id;
+      if (!localb.ebR.Id.startsWith("pre_temp_extend_pic")) {
         break label183;
       }
-      localObject = localb.dKe.Id.substring(19);
+      localObject = localb.ebR.Id.substring(19);
     }
     label183:
     for (;;)
     {
-      this.AFz.add(localObject);
+      this.EPf.add(localObject);
       break;
-      localIntent.putExtra("sns_gallery_temp_paths", this.AFz);
-      localIntent.putExtra("sns_update_preview_image_count", this.AFA.size());
-      this.AFA.clear();
+      localIntent.putExtra("sns_gallery_temp_paths", this.EPf);
+      localIntent.putExtra("sns_update_preview_image_count", this.EPg.size());
+      this.EPg.clear();
       setResult(-1, localIntent);
       finish();
       AppMethodBeat.o(99514);
@@ -98,63 +110,52 @@ public class SnsUploadBrowseUI
     }
   }
   
-  public final void fj(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(99518);
-    if (this.Arj != null) {
-      this.Arj.rY(true);
-    }
-    AppMethodBeat.o(99518);
-  }
-  
-  public final void fk(String paramString, int paramInt) {}
-  
   public int getLayoutId()
   {
-    return 2131495531;
+    return 2131496419;
   }
   
   public void initView()
   {
     AppMethodBeat.i(99516);
-    String str = bu.bI(getIntent().getStringExtra("sns_gallery_userName"), "");
-    this.AFz = getIntent().getStringArrayListExtra("sns_gallery_temp_paths");
-    if (this.AFz == null)
+    String str = Util.nullAs(getIntent().getStringExtra("sns_gallery_userName"), "");
+    this.EPf = getIntent().getStringArrayListExtra("sns_gallery_temp_paths");
+    if (this.EPf == null)
     {
       AppMethodBeat.o(99516);
       return;
     }
-    this.Arq = getIntent().getIntExtra("sns_gallery_position", 0);
-    this.Arj = new SnsInfoFlip(this);
-    this.Arj.setEnableHorLongBmpMode(false);
-    this.Arj.setShowTitle(true);
-    ah.getAccSnsTmpPath();
-    List localList = al.fT(this.AFz);
-    this.Arj.a(localList, str, this.Arq, this.Are, this);
-    this.Arj.setOnPageSelectListener(this);
-    addView(this.Arj);
+    this.EAu = getIntent().getIntExtra("sns_gallery_position", 0);
+    this.EAi = new SnsInfoFlip(this);
+    this.EAi.setEnableHorLongBmpMode(false);
+    this.EAi.setShowTitle(true);
+    aj.getAccSnsTmpPath();
+    List localList = an.gQ(this.EPf);
+    this.EAi.a(localList, str, this.EAu, this.EAd, this);
+    this.EAi.setOnPageSelectListener(this);
+    addView(this.EAi);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(99506);
-        SnsUploadBrowseUI.this.eha();
+        SnsUploadBrowseUI.this.fjC();
         AppMethodBeat.o(99506);
         return true;
       }
     });
-    addIconOptionMenu(0, 2131755707, 2131690551, new MenuItem.OnMenuItemClickListener()
+    addIconOptionMenu(0, 2131755778, 2131690780, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(99508);
-        h.a(SnsUploadBrowseUI.this, 2131763834, 2131755906, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        h.a(SnsUploadBrowseUI.this, 2131766060, 2131755998, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
           {
             AppMethodBeat.i(99507);
-            if (SnsUploadBrowseUI.this.Arj.efH() == 0) {
-              SnsUploadBrowseUI.this.eha();
+            if (SnsUploadBrowseUI.this.EAi.fih() == 0) {
+              SnsUploadBrowseUI.this.fjC();
             }
             AppMethodBeat.o(99507);
           }
@@ -172,7 +173,7 @@ public class SnsUploadBrowseUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(99519);
-    ae.i("MicroMsg.SnsUploadBrowseUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    Log.i("MicroMsg.SnsUploadBrowseUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
     if (paramInt2 != -1)
     {
       AppMethodBeat.o(99519);
@@ -184,6 +185,7 @@ public class SnsUploadBrowseUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(99510);
+    ao.bm(this);
     super.onCreate(paramBundle);
     initView();
     AppMethodBeat.o(99510);
@@ -192,7 +194,7 @@ public class SnsUploadBrowseUI
   public void onDestroy()
   {
     AppMethodBeat.i(99511);
-    ah.dXB().aE(this);
+    aj.faL().aI(this);
     super.onDestroy();
     AppMethodBeat.o(99511);
   }
@@ -200,8 +202,8 @@ public class SnsUploadBrowseUI
   public void onPause()
   {
     AppMethodBeat.i(99513);
-    if (this.Arj != null) {
-      this.Arj.onPause();
+    if (this.EAi != null) {
+      this.EAi.onPause();
     }
     super.onPause();
     AppMethodBeat.o(99513);
@@ -211,8 +213,8 @@ public class SnsUploadBrowseUI
   {
     AppMethodBeat.i(99512);
     super.onResume();
-    if (this.Arj != null) {
-      this.Arj.rY(false);
+    if (this.EAi != null) {
+      this.EAi.vu(false);
     }
     AppMethodBeat.o(99512);
   }
@@ -225,7 +227,7 @@ public class SnsUploadBrowseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsUploadBrowseUI
  * JD-Core Version:    0.7.0.1
  */

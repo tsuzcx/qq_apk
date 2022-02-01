@@ -11,39 +11,51 @@ class IPCCallbackData
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCCallbackData> CREATOR;
-  public boolean vkk;
-  public String vkl;
-  public String vkm;
+  public boolean cqT;
+  public String cqU;
+  public String cqV;
+  public boolean yEe;
   
   static
   {
-    AppMethodBeat.i(212366);
+    AppMethodBeat.i(198821);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(212366);
+    AppMethodBeat.o(198821);
   }
   
   public IPCCallbackData()
   {
-    this.vkk = false;
-    this.vkl = null;
-    this.vkm = null;
+    this.cqT = false;
+    this.yEe = false;
+    this.cqU = null;
+    this.cqV = null;
   }
   
   public IPCCallbackData(Parcel paramParcel)
   {
-    AppMethodBeat.i(212363);
-    this.vkk = false;
-    this.vkl = null;
-    this.vkm = null;
-    if (paramParcel.readInt() == 1) {}
-    for (;;)
+    AppMethodBeat.i(198818);
+    this.cqT = false;
+    this.yEe = false;
+    this.cqU = null;
+    this.cqV = null;
+    if (paramParcel.readInt() == 1)
     {
-      this.vkk = bool;
-      this.vkl = paramParcel.readString();
-      this.vkm = paramParcel.readString();
-      AppMethodBeat.o(212363);
+      bool1 = true;
+      this.cqT = bool1;
+      if (paramParcel.readInt() != 1) {
+        break label88;
+      }
+    }
+    label88:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.yEe = bool1;
+      this.cqU = paramParcel.readString();
+      this.cqV = paramParcel.readString();
+      AppMethodBeat.o(198818);
       return;
-      bool = false;
+      bool1 = false;
+      break;
     }
   }
   
@@ -52,38 +64,49 @@ class IPCCallbackData
     return 0;
   }
   
-  public final JSONObject dix()
+  public final JSONObject ecy()
   {
-    AppMethodBeat.i(212365);
-    if (this.vkm == null)
+    AppMethodBeat.i(198820);
+    if (this.cqV == null)
     {
-      AppMethodBeat.o(212365);
+      AppMethodBeat.o(198820);
       return null;
     }
     try
     {
-      JSONObject localJSONObject = new JSONObject(this.vkm);
-      AppMethodBeat.o(212365);
+      JSONObject localJSONObject = new JSONObject(this.cqV);
+      AppMethodBeat.o(198820);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      AppMethodBeat.o(212365);
+      AppMethodBeat.o(198820);
     }
     return null;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(212364);
-    if (this.vkk) {}
-    for (paramInt = 1;; paramInt = 0)
+    int i = 1;
+    AppMethodBeat.i(198819);
+    if (this.cqT)
+    {
+      paramInt = 1;
+      paramParcel.writeInt(paramInt);
+      if (!this.yEe) {
+        break label62;
+      }
+    }
+    label62:
+    for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.vkl);
-      paramParcel.writeString(this.vkm);
-      AppMethodBeat.o(212364);
+      paramParcel.writeString(this.cqU);
+      paramParcel.writeString(this.cqV);
+      AppMethodBeat.o(198819);
       return;
+      paramInt = 0;
+      break;
     }
   }
 }

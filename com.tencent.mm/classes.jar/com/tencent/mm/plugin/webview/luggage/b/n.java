@@ -13,37 +13,37 @@ import java.util.Map;
 
 public class n
 {
-  protected List<o> Ekf;
-  protected Map<Integer, a> ufn;
+  protected List<o> IXa;
+  protected Map<Integer, a> xxy;
   
   public n()
   {
     AppMethodBeat.i(78709);
-    this.Ekf = new LinkedList();
-    this.ufn = new HashMap();
-    cZQ();
-    cZR();
+    this.IXa = new LinkedList();
+    this.xxy = new HashMap();
+    dTx();
+    dTy();
     AppMethodBeat.o(78709);
   }
   
   private void a(a parama)
   {
     AppMethodBeat.i(78711);
-    this.ufn.put(Integer.valueOf(parama.id), parama);
+    this.xxy.put(Integer.valueOf(parama.id), parama);
     AppMethodBeat.o(78711);
   }
   
-  private void k(int paramInt, String paramString, boolean paramBoolean)
+  private void i(int paramInt, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(78713);
-    this.Ekf.add(new o(paramInt, paramString, paramBoolean, false));
+    this.IXa.add(new o(paramInt, paramString, paramBoolean, false));
     AppMethodBeat.o(78713);
   }
   
-  private void l(int paramInt, String paramString, boolean paramBoolean)
+  private void j(int paramInt, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(78714);
-    this.Ekf.add(new o(paramInt, paramString, paramBoolean, true));
+    this.IXa.add(new o(paramInt, paramString, paramBoolean, true));
     AppMethodBeat.o(78714);
   }
   
@@ -56,7 +56,7 @@ public class n
       return;
     }
     int i = paramMenuItem.getItemId();
-    Iterator localIterator = this.Ekf.iterator();
+    Iterator localIterator = this.IXa.iterator();
     do
     {
       if (!localIterator.hasNext()) {
@@ -66,7 +66,7 @@ public class n
     } while ((paramMenuItem == null) || (paramMenuItem.id != i));
     for (;;)
     {
-      paramMenuItem = (a)this.ufn.get(Integer.valueOf(paramMenuItem.id));
+      paramMenuItem = (a)this.xxy.get(Integer.valueOf(paramMenuItem.id));
       if (paramMenuItem != null) {
         break;
       }
@@ -78,34 +78,17 @@ public class n
     AppMethodBeat.o(78717);
   }
   
-  public final void aIA(String paramString)
-  {
-    AppMethodBeat.i(78721);
-    Iterator localIterator = this.Ekf.iterator();
-    while (localIterator.hasNext())
-    {
-      o localo = (o)localIterator.next();
-      if (localo.name.equals(paramString))
-      {
-        localo.nsb = false;
-        AppMethodBeat.o(78721);
-        return;
-      }
-    }
-    AppMethodBeat.o(78721);
-  }
-  
-  public final void aIz(String paramString)
+  public final void aYA(String paramString)
   {
     AppMethodBeat.i(78720);
-    Iterator localIterator = this.Ekf.iterator();
+    Iterator localIterator = this.IXa.iterator();
     while (localIterator.hasNext())
     {
       o localo = (o)localIterator.next();
       if (localo.name.equals(paramString)) {
-        if (!localo.Ekg)
+        if (!localo.IXb)
         {
-          localo.nsb = true;
+          localo.oBV = true;
           AppMethodBeat.o(78720);
           return;
         }
@@ -114,43 +97,60 @@ public class n
     AppMethodBeat.o(78720);
   }
   
-  public final void b(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, com.tencent.mm.ui.base.l paraml)
+  public final void aYB(String paramString)
+  {
+    AppMethodBeat.i(78721);
+    Iterator localIterator = this.IXa.iterator();
+    while (localIterator.hasNext())
+    {
+      o localo = (o)localIterator.next();
+      if (localo.name.equals(paramString))
+      {
+        localo.oBV = false;
+        AppMethodBeat.o(78721);
+        return;
+      }
+    }
+    AppMethodBeat.o(78721);
+  }
+  
+  public final void b(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, com.tencent.mm.ui.base.m paramm)
   {
     AppMethodBeat.i(78715);
-    Iterator localIterator = this.Ekf.iterator();
+    Iterator localIterator = this.IXa.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (o)localIterator.next();
-      if ((!((o)localObject).nsb) && (!((o)localObject).Ekh))
+      if ((!((o)localObject).oBV) && (!((o)localObject).IXc))
       {
-        localObject = (a)this.ufn.get(Integer.valueOf(((o)localObject).id));
+        localObject = (a)this.xxy.get(Integer.valueOf(((o)localObject).id));
         if (localObject != null) {
-          ((a)localObject).a(paramContext, paramg, paraml);
+          ((a)localObject).a(paramContext, paramg, paramm);
         }
       }
     }
     AppMethodBeat.o(78715);
   }
   
-  public final void c(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, com.tencent.mm.ui.base.l paraml)
+  public final void c(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, com.tencent.mm.ui.base.m paramm)
   {
     AppMethodBeat.i(78716);
-    Iterator localIterator = this.Ekf.iterator();
+    Iterator localIterator = this.IXa.iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (o)localIterator.next();
-      if ((!((o)localObject).nsb) && (((o)localObject).Ekh))
+      if ((!((o)localObject).oBV) && (((o)localObject).IXc))
       {
-        localObject = (a)this.ufn.get(Integer.valueOf(((o)localObject).id));
+        localObject = (a)this.xxy.get(Integer.valueOf(((o)localObject).id));
         if (localObject != null) {
-          ((a)localObject).a(paramContext, paramg, paraml);
+          ((a)localObject).a(paramContext, paramg, paramm);
         }
       }
     }
     AppMethodBeat.o(78716);
   }
   
-  protected void cZQ()
+  protected void dTx()
   {
     AppMethodBeat.i(78710);
     a(new h());
@@ -168,54 +168,54 @@ public class n
     AppMethodBeat.o(78710);
   }
   
-  protected void cZR()
+  protected void dTy()
   {
     AppMethodBeat.i(78712);
-    this.Ekf.clear();
-    l(35, "menuItem:minimize", true);
-    k(1, "menuItem:share:appMessage", false);
-    k(2, "menuItem:share:timeline", false);
+    this.IXa.clear();
+    j(35, "menuItem:minimize", true);
+    i(1, "menuItem:share:appMessage", false);
+    i(2, "menuItem:share:timeline", false);
     FavUrlTask localFavUrlTask = new FavUrlTask();
     localFavUrlTask.actionType = 3;
     AppBrandMainProcessService.b(localFavUrlTask);
-    if (localFavUrlTask.Egd)
+    if (localFavUrlTask.ISM)
     {
-      k(3, "menuItem:favorite", false);
-      l(12, "menuItem:editTag", false);
-      l(9, "menuItem:favorite", false);
+      i(3, "menuItem:favorite", false);
+      j(12, "menuItem:editTag", false);
+      j(9, "menuItem:favorite", false);
     }
-    l(31, "menuItem:search", true);
-    l(6, "menuItem:copyUrl", false);
-    k(7, "menuItem:openWithSafari", false);
-    k(27, "menuItem:finish", true);
-    l(28, "menuItem:refresh", true);
-    l(29, "menuItem:addShortcut", false);
+    j(31, "menuItem:search", true);
+    j(6, "menuItem:copyUrl", false);
+    i(7, "menuItem:openWithSafari", false);
+    i(27, "menuItem:finish", true);
+    j(28, "menuItem:refresh", true);
+    j(29, "menuItem:addShortcut", false);
     AppMethodBeat.o(78712);
   }
   
-  public final void eTk()
+  public final void gbX()
   {
     AppMethodBeat.i(78718);
-    Iterator localIterator = this.Ekf.iterator();
+    Iterator localIterator = this.IXa.iterator();
     while (localIterator.hasNext())
     {
       o localo = (o)localIterator.next();
-      if (!localo.Ekg) {
-        localo.nsb = true;
+      if (!localo.IXb) {
+        localo.oBV = true;
       }
     }
     AppMethodBeat.o(78718);
   }
   
-  public final void eTl()
+  public final void gbY()
   {
     AppMethodBeat.i(78719);
-    Iterator localIterator = this.Ekf.iterator();
+    Iterator localIterator = this.IXa.iterator();
     while (localIterator.hasNext())
     {
       o localo = (o)localIterator.next();
-      if (!localo.Ekg) {
-        localo.nsb = false;
+      if (!localo.IXb) {
+        localo.oBV = false;
       }
     }
     AppMethodBeat.o(78719);

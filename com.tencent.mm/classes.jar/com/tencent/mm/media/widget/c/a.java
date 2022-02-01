@@ -5,38 +5,38 @@ import android.media.MediaCodec.BufferInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.model.a.h;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Iterator;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/recorder/AACMediaCodecBufIdRecorder;", "Lcom/tencent/mm/plugin/mmsight/model/encode/MMSightAACMediaCodecRecorder;", "sampleRate", "", "bitrate", "channelCount", "useFFMpegMuxer", "", "(IIIZ)V", "TAG", "", "bufIDs", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "addShareBufID", "", "bufID", "init", "bufferId", "tempPath", "isIgnoreCodecConfig", "processOutPutBuffer", "outputBuffer", "Ljava/nio/ByteBuffer;", "info", "Landroid/media/MediaCodec$BufferInfo;", "processOutputBufferWithADTS", "profile", "freqIdx", "chanCfg", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/recorder/AACMediaCodecBufIdRecorder;", "Lcom/tencent/mm/plugin/mmsight/model/encode/MMSightAACMediaCodecRecorder;", "sampleRate", "", "bitrate", "channelCount", "useFFMpegMuxer", "", "(IIIZ)V", "TAG", "", "bufIDs", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "addShareBufID", "", "bufID", "init", "bufferId", "tempPath", "isIgnoreCodecConfig", "processOutPutBuffer", "outputBuffer", "Ljava/nio/ByteBuffer;", "info", "Landroid/media/MediaCodec$BufferInfo;", "processOutputBufferWithADTS", "profile", "freqIdx", "chanCfg", "plugin-mediaeditor_release"})
 @TargetApi(16)
 public final class a
   extends h
 {
   private final String TAG;
-  private ArrayList<Integer> hxy;
+  private ArrayList<Integer> irw;
   
   public a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
     super(paramInt1, paramInt2, paramInt3, null, paramBoolean);
     AppMethodBeat.i(94371);
     this.TAG = "MicroMsg.MMSightAACMediaCodecBufIdRecorder";
-    this.hxy = new ArrayList();
+    this.irw = new ArrayList();
     AppMethodBeat.o(94371);
   }
   
-  public final int E(int paramInt, String paramString)
+  public final int H(int paramInt, String paramString)
   {
     AppMethodBeat.i(94367);
     p.h(paramString, "tempPath");
-    ae.d(this.TAG, "bufferId:" + paramInt + " ,tempPath:" + paramString);
-    this.hxy.clear();
-    this.hxy.add(Integer.valueOf(paramInt));
-    paramInt = super.E(paramInt, paramString);
+    Log.d(this.TAG, "bufferId:" + paramInt + " ,tempPath:" + paramString);
+    this.irw.clear();
+    this.irw.add(Integer.valueOf(paramInt));
+    paramInt = super.H(paramInt, paramString);
     AppMethodBeat.o(94367);
     return paramInt;
   }
@@ -45,10 +45,10 @@ public final class a
   {
     AppMethodBeat.i(94370);
     p.h(paramBufferInfo, "info");
-    if ((this.hxy.size() >= 0) && (paramByteBuffer != null) && (!this.wbR))
+    if ((this.irw.size() >= 0) && (paramByteBuffer != null) && (!this.zvT))
     {
-      ae.d(this.TAG, "writeAACDataWithADTSLock  ,bufferInfo.size : " + paramBufferInfo.size + ", pts: " + paramBufferInfo.presentationTimeUs);
-      Iterator localIterator = ((Iterable)this.hxy).iterator();
+      Log.d(this.TAG, "writeAACDataWithADTSLock  ,bufferInfo.size : " + paramBufferInfo.size + ", pts: " + paramBufferInfo.presentationTimeUs);
+      Iterator localIterator = ((Iterable)this.irw).iterator();
       while (localIterator.hasNext()) {
         SightVideoJNI.writeAACDataWithADTSLock(((Number)localIterator.next()).intValue(), paramByteBuffer, paramBufferInfo.size, paramBufferInfo.presentationTimeUs, paramInt1, paramInt2, paramInt3);
       }
@@ -56,7 +56,7 @@ public final class a
     AppMethodBeat.o(94370);
   }
   
-  public final boolean ayb()
+  public final boolean aQF()
   {
     return true;
   }
@@ -66,29 +66,29 @@ public final class a
     AppMethodBeat.i(94369);
     p.h(paramByteBuffer, "outputBuffer");
     p.h(paramBufferInfo, "info");
-    if ((this.hxy.size() >= 0) && (!this.wbR))
+    if ((this.irw.size() >= 0) && (!this.zvT))
     {
-      Iterator localIterator = ((Iterable)this.hxy).iterator();
+      Iterator localIterator = ((Iterable)this.irw).iterator();
       while (localIterator.hasNext())
       {
         int i = ((Number)localIterator.next()).intValue();
-        ae.d(this.TAG, "writeAACDataLock  ,bufferInfo.size : " + paramBufferInfo.size + ", pts: " + paramBufferInfo.presentationTimeUs);
+        Log.d(this.TAG, "writeAACDataLock  ,bufferInfo.size : " + paramBufferInfo.size + ", pts: " + paramBufferInfo.presentationTimeUs);
         SightVideoJNI.writeAACDataLock(i, paramByteBuffer, paramBufferInfo.size, paramBufferInfo.presentationTimeUs);
       }
     }
     AppMethodBeat.o(94369);
   }
   
-  public final void oe(int paramInt)
+  public final void rA(int paramInt)
   {
     AppMethodBeat.i(94368);
-    this.hxy.add(Integer.valueOf(paramInt));
+    this.irw.add(Integer.valueOf(paramInt));
     AppMethodBeat.o(94368);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.media.widget.c.a
  * JD-Core Version:    0.7.0.1
  */

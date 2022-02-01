@@ -10,44 +10,44 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.czn;
-import com.tencent.mm.protocal.protobuf.qs;
-import com.tencent.mm.protocal.protobuf.qt;
-import com.tencent.mm.protocal.protobuf.ra;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.dso;
+import com.tencent.mm.protocal.protobuf.rt;
+import com.tencent.mm.protocal.protobuf.ru;
+import com.tencent.mm.protocal.protobuf.sb;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.tools.r;
-import com.tencent.mm.ui.tools.r.b;
+import com.tencent.mm.ui.base.sortview.a;
+import com.tencent.mm.ui.tools.s;
+import com.tencent.mm.ui.tools.s.b;
 import java.io.IOException;
 import java.util.LinkedList;
 import java.util.List;
 
 public class BizSearchDetailPageUI
   extends MMActivity
-  implements r.b
+  implements s.b
 {
-  private int fRv;
-  private int fq;
-  private r mSearchViewHelper;
-  private BizSearchResultItemContainer odb;
-  private long odc;
-  private String odd;
-  private int ode;
-  private Runnable odf;
+  private int fs;
+  private int gwE;
+  private s mSearchViewHelper;
+  private BizSearchResultItemContainer pnY;
+  private long pnZ;
+  private String poa;
+  private int pob;
+  private Runnable poc;
   
   public BizSearchDetailPageUI()
   {
     AppMethodBeat.i(5617);
-    this.odf = new Runnable()
+    this.poc = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(5613);
-        BizSearchDetailPageUI.c(BizSearchDetailPageUI.this).cA(BizSearchDetailPageUI.a(BizSearchDetailPageUI.this), BizSearchDetailPageUI.b(BizSearchDetailPageUI.this));
+        BizSearchDetailPageUI.c(BizSearchDetailPageUI.this).cH(BizSearchDetailPageUI.a(BizSearchDetailPageUI.this), BizSearchDetailPageUI.b(BizSearchDetailPageUI.this));
         BizSearchDetailPageUI.d(BizSearchDetailPageUI.this);
         AppMethodBeat.o(5613);
       }
@@ -55,45 +55,45 @@ public class BizSearchDetailPageUI
     AppMethodBeat.o(5617);
   }
   
-  public final boolean JO(String paramString)
+  public final boolean SN(String paramString)
   {
     return false;
   }
   
-  public final void JP(String paramString)
+  public final void SO(String paramString)
   {
     AppMethodBeat.i(5622);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(5622);
       return;
     }
     paramString = paramString.trim();
-    if (!paramString.equals(this.odd))
+    if (!paramString.equals(this.poa))
     {
-      ar.ay(this.odf);
-      this.odd = paramString;
-      ar.o(this.odf, 400L);
+      MMHandlerThread.removeRunnable(this.poc);
+      this.poa = paramString;
+      MMHandlerThread.postToMainThreadDelayed(this.poc, 400L);
     }
     AppMethodBeat.o(5622);
   }
   
-  public final void aSL()
+  public final void bnA() {}
+  
+  public final void bnB() {}
+  
+  public final void bny()
   {
     AppMethodBeat.i(5623);
     finish();
     AppMethodBeat.o(5623);
   }
   
-  public final void aSM() {}
-  
-  public final void aSN() {}
-  
-  public final void aSO() {}
+  public final void bnz() {}
   
   public int getLayoutId()
   {
-    return 2131493199;
+    return 2131493245;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -111,17 +111,17 @@ public class BizSearchDetailPageUI
       }
     });
     paramBundle = getIntent();
-    this.odc = paramBundle.getLongExtra("businessType", 0L);
+    this.pnZ = paramBundle.getLongExtra("businessType", 0L);
     boolean bool1 = paramBundle.getBooleanExtra("showEditText", false);
-    this.fRv = paramBundle.getIntExtra("fromScene", 0);
-    this.ode = paramBundle.getIntExtra("addContactScene", 35);
+    this.gwE = paramBundle.getIntExtra("fromScene", 0);
+    this.pob = paramBundle.getIntExtra("addContactScene", 35);
     Object localObject = paramBundle.getStringExtra("title");
     String str = paramBundle.getStringExtra("keyword");
     boolean bool2 = paramBundle.getBooleanExtra("showCatalog", false);
-    this.fq = paramBundle.getIntExtra("offset", 0);
-    if ((this.odc == 0L) || (bu.isNullOrNil(str)))
+    this.fs = paramBundle.getIntExtra("offset", 0);
+    if ((this.pnZ == 0L) || (Util.isNullOrNil(str)))
     {
-      ae.e("MicroMsg.BrandService.BizSearchDetailPageUI", "businessType(%d) or queryStr is nil.", new Object[] { Long.valueOf(this.odc) });
+      Log.e("MicroMsg.BrandService.BizSearchDetailPageUI", "businessType(%d) or queryStr is nil.", new Object[] { Long.valueOf(this.pnZ) });
       finish();
       AppMethodBeat.o(5618);
       return;
@@ -134,47 +134,47 @@ public class BizSearchDetailPageUI
     {
       try
       {
-        paramBundle = (qt)new qt().parseFrom(paramBundle);
+        paramBundle = (ru)new ru().parseFrom(paramBundle);
         if (paramBundle != null) {
           i = 1;
         }
-        this.odb = ((BizSearchResultItemContainer)findViewById(2131304388));
-        this.odb.setAdapter(new c(this));
-        this.odb.setBusinessTypes(new long[] { this.odc });
-        this.odb.setMode(1);
-        this.odb.setDisplayArgs$25decb5(bool2);
-        this.odb.setScene(this.fRv);
-        this.odb.setAddContactScene(this.ode);
-        this.odb.setReporter(new c.b()
+        this.pnY = ((BizSearchResultItemContainer)findViewById(2131307353));
+        this.pnY.setAdapter(new c(this));
+        this.pnY.setBusinessTypes(new long[] { this.pnZ });
+        this.pnY.setMode(1);
+        this.pnY.setDisplayArgs$25decb5(bool2);
+        this.pnY.setScene(this.gwE);
+        this.pnY.setAddContactScene(this.pob);
+        this.pnY.setReporter(new c.b()
         {
-          public final void a(c paramAnonymousc, com.tencent.mm.ui.base.sortview.a paramAnonymousa, int paramAnonymousInt1, String paramAnonymousString, int paramAnonymousInt2, int paramAnonymousInt3)
+          public final void a(c paramAnonymousc, a paramAnonymousa, int paramAnonymousInt1, String paramAnonymousString, int paramAnonymousInt2, int paramAnonymousInt3)
           {
             AppMethodBeat.i(5615);
-            qt localqt;
+            ru localru;
             StringBuilder localStringBuilder;
             if ((BizSearchDetailPageUI.e(BizSearchDetailPageUI.this) == 1) && (paramAnonymousa.type == 5))
             {
-              paramAnonymousa = (ra)paramAnonymousa.getData();
-              if ((paramAnonymousa.Gfp == null) || (paramAnonymousa.Gfp.GeN == null))
+              paramAnonymousa = (sb)paramAnonymousa.getData();
+              if ((paramAnonymousa.KZG == null) || (paramAnonymousa.KZG.KZe == null))
               {
-                ae.e("MicroMsg.BrandService.BizSearchDetailPageUI", "bcdItem.ContactItem == null || bcdItem.ContactItem.ContactItem == null");
+                Log.e("MicroMsg.BrandService.BizSearchDetailPageUI", "bcdItem.ContactItem == null || bcdItem.ContactItem.ContactItem == null");
                 AppMethodBeat.o(5615);
                 return;
               }
-              localqt = paramAnonymousc.zs(paramAnonymousInt3);
-              localStringBuilder = new StringBuilder().append(bu.nullAsNil(BizSearchDetailPageUI.a(BizSearchDetailPageUI.this))).append(",").append(paramAnonymousInt1).append(",").append(bu.nullAsNil(paramAnonymousString)).append(",").append(paramAnonymousInt2).append(",").append(paramAnonymousc.odl).append(",");
-              if (localqt != null) {
+              localru = paramAnonymousc.CX(paramAnonymousInt3);
+              localStringBuilder = new StringBuilder().append(Util.nullAsNil(BizSearchDetailPageUI.a(BizSearchDetailPageUI.this))).append(",").append(paramAnonymousInt1).append(",").append(Util.nullAsNil(paramAnonymousString)).append(",").append(paramAnonymousInt2).append(",").append(paramAnonymousc.poi).append(",");
+              if (localru != null) {
                 break label237;
               }
             }
             label237:
-            for (paramAnonymousc = "";; paramAnonymousc = localqt.GeS + ",1")
+            for (paramAnonymousc = "";; paramAnonymousc = localru.KZj + ",1")
             {
               paramAnonymousc = paramAnonymousc;
-              g.yxI.kvStat(10866, paramAnonymousc);
-              ae.d("MicroMsg.BrandService.BizSearchDetailPageUI", "report : ".concat(String.valueOf(paramAnonymousc)));
-              if ((paramAnonymousa.Gfp.GeN.Hhu & 0x8) > 0) {
-                g.yxI.kvStat(10298, paramAnonymousString + ",35");
+              h.CyF.kvStat(10866, paramAnonymousc);
+              Log.d("MicroMsg.BrandService.BizSearchDetailPageUI", "report : ".concat(String.valueOf(paramAnonymousc)));
+              if ((paramAnonymousa.KZG.KZe.MmK & 0x8) > 0) {
+                h.CyF.kvStat(10298, paramAnonymousString + ",35");
               }
               AppMethodBeat.o(5615);
               return;
@@ -183,26 +183,21 @@ public class BizSearchDetailPageUI
         });
         if (bool1)
         {
-          this.mSearchViewHelper = new r();
+          this.mSearchViewHelper = new s();
           addSearchMenu(true, this.mSearchViewHelper);
-          this.mSearchViewHelper.yP(false);
+          this.mSearchViewHelper.CK(false);
           this.mSearchViewHelper.clearFocus();
           this.mSearchViewHelper.setSearchContent(str);
-          this.mSearchViewHelper.Lhk = this;
-          this.odb.setOnTouchListener(new View.OnTouchListener()
+          this.mSearchViewHelper.Qwi = this;
+          this.pnY.setOnTouchListener(new View.OnTouchListener()
           {
             public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
             {
               AppMethodBeat.i(5616);
-              b localb = new b();
-              localb.bd(paramAnonymousView);
-              localb.bd(paramAnonymousMotionEvent);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/BizSearchDetailPageUI$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
               if (BizSearchDetailPageUI.f(BizSearchDetailPageUI.this) != null) {
                 BizSearchDetailPageUI.f(BizSearchDetailPageUI.this).clearFocus();
               }
               BizSearchDetailPageUI.this.hideVKB();
-              com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/brandservice/ui/BizSearchDetailPageUI$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
               AppMethodBeat.o(5616);
               return false;
             }
@@ -210,39 +205,39 @@ public class BizSearchDetailPageUI
           if (i == 0) {
             break label571;
           }
-          localObject = this.odb;
-          i = this.fq;
+          localObject = this.pnY;
+          i = this.fs;
           ((BizSearchResultItemContainer)localObject).reset();
           if (paramBundle != null) {
             break label445;
           }
-          ae.e("MicroMsg.BrandService.BizSearchResultItemContainer", "setFirst page content failed, content is null.");
+          Log.e("MicroMsg.BrandService.BizSearchResultItemContainer", "setFirst page content failed, content is null.");
           AppMethodBeat.o(5618);
           return;
         }
       }
       catch (IOException paramBundle)
       {
-        ae.printErrStackTrace("MicroMsg.BrandService.BizSearchDetailPageUI", paramBundle, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.BrandService.BizSearchDetailPageUI", paramBundle, "", new Object[0]);
         finish();
         AppMethodBeat.o(5618);
         return;
       }
-      if (!bu.isNullOrNil((String)localObject))
+      if (!Util.isNullOrNil((String)localObject))
       {
         setMMTitle((String)localObject);
         continue;
         label445:
-        ((BizSearchResultItemContainer)localObject).odv.dmf = str;
-        ((BizSearchResultItemContainer)localObject).setBusinessTypes(new long[] { paramBundle.GeP });
-        ((BizSearchResultItemContainer)localObject).odv.continueFlag = paramBundle.GeQ;
-        ((BizSearchResultItemContainer)localObject).odA = i;
+        ((BizSearchResultItemContainer)localObject).pot.dDv = str;
+        ((BizSearchResultItemContainer)localObject).setBusinessTypes(new long[] { paramBundle.KZg });
+        ((BizSearchResultItemContainer)localObject).pot.continueFlag = paramBundle.KZh;
+        ((BizSearchResultItemContainer)localObject).poy = i;
         LinkedList localLinkedList = new LinkedList();
         localLinkedList.add(paramBundle);
-        ((BizSearchResultItemContainer)localObject).odt.l(str, localLinkedList);
-        ((BizSearchResultItemContainer)localObject).odv.offset = (i + paramBundle.GeT);
-        paramBundle = ((BizSearchResultItemContainer)localObject).odv;
-        if (!((BizSearchResultItemContainer)localObject).odt.isEmpty()) {}
+        ((BizSearchResultItemContainer)localObject).poq.m(str, localLinkedList);
+        ((BizSearchResultItemContainer)localObject).pot.offset = (i + paramBundle.KZk);
+        paramBundle = ((BizSearchResultItemContainer)localObject).pot;
+        if (!((BizSearchResultItemContainer)localObject).poq.isEmpty()) {}
         for (bool1 = true;; bool1 = false)
         {
           paramBundle.isSearchMode = bool1;
@@ -250,7 +245,7 @@ public class BizSearchDetailPageUI
           return;
         }
         label571:
-        JP(str);
+        SO(str);
         AppMethodBeat.o(5618);
         return;
         paramBundle = null;
@@ -297,7 +292,7 @@ public class BizSearchDetailPageUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.BizSearchDetailPageUI
  * JD-Core Version:    0.7.0.1
  */

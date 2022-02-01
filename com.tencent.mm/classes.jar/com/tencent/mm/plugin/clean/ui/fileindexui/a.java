@@ -11,12 +11,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.w;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashSet;
 import java.util.List;
 
@@ -24,19 +24,19 @@ public final class a
   extends BaseAdapter
 {
   private List<c> dataList;
-  HashSet<Integer> nBH;
-  CleanChattingUI pbj;
+  HashSet<Integer> oMG;
+  CleanChattingUI qqi;
   
   public a(CleanChattingUI paramCleanChattingUI, List<c> paramList)
   {
     AppMethodBeat.i(22850);
-    this.pbj = paramCleanChattingUI;
-    this.nBH = new HashSet();
+    this.qqi = paramCleanChattingUI;
+    this.oMG = new HashSet();
     this.dataList = paramList;
     AppMethodBeat.o(22850);
   }
   
-  public final c Bg(int paramInt)
+  public final c EO(int paramInt)
   {
     AppMethodBeat.i(22852);
     if ((paramInt < 0) || (paramInt >= this.dataList.size()))
@@ -49,11 +49,11 @@ public final class a
     return localc;
   }
   
-  public final void cbd()
+  public final void cyS()
   {
     AppMethodBeat.i(22854);
-    this.nBH.clear();
-    this.pbj.a(this.nBH);
+    this.oMG.clear();
+    this.qqi.a(this.oMG);
     AppMethodBeat.o(22854);
   }
   
@@ -76,22 +76,22 @@ public final class a
     c localc1;
     if (paramView == null)
     {
-      paramView = this.pbj.getLayoutInflater().inflate(2131493544, paramViewGroup, false);
+      paramView = this.qqi.getLayoutInflater().inflate(2131493656, paramViewGroup, false);
       paramViewGroup = new a();
-      paramViewGroup.fQl = ((ImageView)paramView.findViewById(2131297008));
-      paramViewGroup.iYj = ((TextView)paramView.findViewById(2131305948));
-      paramViewGroup.iFO = ((TextView)paramView.findViewById(2131299008));
-      paramViewGroup.iYl = ((CheckBox)paramView.findViewById(2131304502));
-      paramViewGroup.nBJ = ((RelativeLayout)paramView.findViewById(2131304503));
+      paramViewGroup.gvv = ((ImageView)paramView.findViewById(2131297134));
+      paramViewGroup.jVO = ((TextView)paramView.findViewById(2131309249));
+      paramViewGroup.jBR = ((TextView)paramView.findViewById(2131299510));
+      paramViewGroup.jVQ = ((CheckBox)paramView.findViewById(2131307508));
+      paramViewGroup.oMI = ((RelativeLayout)paramView.findViewById(2131307509));
       paramView.setTag(paramViewGroup);
-      paramViewGroup.nBJ.setOnClickListener(new View.OnClickListener()
+      paramViewGroup.oMI.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(22849);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/clean/ui/fileindexui/CleanChattingAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           if (a.a(a.this).contains(Integer.valueOf(paramInt))) {
             a.a(a.this).remove(Integer.valueOf(paramInt));
           }
@@ -106,26 +106,26 @@ public final class a
           }
         }
       });
-      c localc2 = Bg(paramInt);
+      c localc2 = EO(paramInt);
       localc1 = localc2;
       if (localc2 == null)
       {
-        ae.e("MicroMsg.CleanChattingAdapter", "get item is null. [%d]", new Object[] { Integer.valueOf(paramInt) });
+        Log.e("MicroMsg.CleanChattingAdapter", "get item is null. [%d]", new Object[] { Integer.valueOf(paramInt) });
         localc1 = new c();
         localc1.size = 0L;
         localc1.username = "";
       }
-      a.b.c(paramViewGroup.fQl, localc1.username);
-      paramViewGroup.iYj.setText(bu.sL(localc1.size));
-      if (!x.wb(localc1.username)) {
+      a.b.c(paramViewGroup.gvv, localc1.username);
+      paramViewGroup.jVO.setText(Util.getSizeKB(localc1.size));
+      if (!ab.Eq(localc1.username)) {
         break label289;
       }
-      paramViewGroup.iFO.setText(k.b(this.pbj, w.getDisplayName(localc1.username, localc1.username), paramViewGroup.iFO.getTextSize()));
+      paramViewGroup.jBR.setText(l.b(this.qqi, aa.getDisplayName(localc1.username, localc1.username), paramViewGroup.jBR.getTextSize()));
       label248:
-      if (!this.nBH.contains(Integer.valueOf(paramInt))) {
+      if (!this.oMG.contains(Integer.valueOf(paramInt))) {
         break label321;
       }
-      paramViewGroup.iYl.setChecked(true);
+      paramViewGroup.jVQ.setChecked(true);
     }
     for (;;)
     {
@@ -134,27 +134,27 @@ public final class a
       paramViewGroup = (a)paramView.getTag();
       break;
       label289:
-      paramViewGroup.iFO.setText(k.b(this.pbj, w.zP(localc1.username), paramViewGroup.iFO.getTextSize()));
+      paramViewGroup.jBR.setText(l.b(this.qqi, aa.getDisplayName(localc1.username), paramViewGroup.jBR.getTextSize()));
       break label248;
       label321:
-      paramViewGroup.iYl.setChecked(false);
+      paramViewGroup.jVQ.setChecked(false);
     }
   }
   
   final class a
   {
-    ImageView fQl;
-    TextView iFO;
-    TextView iYj;
-    CheckBox iYl;
-    RelativeLayout nBJ;
+    ImageView gvv;
+    TextView jBR;
+    TextView jVO;
+    CheckBox jVQ;
+    RelativeLayout oMI;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.clean.ui.fileindexui.a
  * JD-Core Version:    0.7.0.1
  */

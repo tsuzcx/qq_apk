@@ -2,61 +2,63 @@ package com.tencent.mm.al;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.protocal.protobuf.ayi;
-import com.tencent.mm.protocal.protobuf.cqt;
-import com.tencent.mm.protocal.protobuf.dct;
-import com.tencent.mm.protocal.protobuf.iv;
-import com.tencent.mm.protocal.protobuf.nn;
-import com.tencent.mm.protocal.protobuf.no;
-import com.tencent.mm.protocal.protobuf.vv;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.kernel.b;
+import com.tencent.mm.protocal.protobuf.bjs;
+import com.tencent.mm.protocal.protobuf.dis;
+import com.tencent.mm.protocal.protobuf.dvx;
+import com.tencent.mm.protocal.protobuf.ji;
+import com.tencent.mm.protocal.protobuf.og;
+import com.tencent.mm.protocal.protobuf.oh;
+import com.tencent.mm.protocal.protobuf.xd;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.MStorageEvent;
 
 public final class e
-  extends j<d>
-  implements f
+  extends MAutoStorage<d>
+  implements i
 {
   public static final String[] SQL_CREATE;
-  public static iv hSC;
-  private com.tencent.mm.sdk.e.e db;
-  private final l<a, e.a.a> hSD;
+  public static ji iNR;
+  private ISQLiteDatabase db;
+  private final MStorageEvent<a, e.a.a> iNS;
   
   static
   {
     AppMethodBeat.i(124005);
-    SQL_CREATE = new String[] { j.getCreateSQLs(d.info, "BizEnterprise") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(d.info, "BizEnterprise") };
     AppMethodBeat.o(124005);
   }
   
-  public e(com.tencent.mm.sdk.e.e parame)
+  public e(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, d.info, "BizEnterprise", null);
+    super(paramISQLiteDatabase, d.info, "BizEnterprise", null);
     AppMethodBeat.i(123989);
-    this.hSD = new l() {};
-    this.db = parame;
-    parame.execSQL("BizEnterprise", "CREATE INDEX IF NOT EXISTS BizEnterpriseUserNameIndex ON BizEnterprise ( userName )");
-    com.tencent.mm.kernel.g.ajQ().gDv.a(1343, this);
-    com.tencent.mm.kernel.g.ajQ().gDv.a(1228, this);
+    this.iNS = new MStorageEvent() {};
+    this.db = paramISQLiteDatabase;
+    paramISQLiteDatabase.execSQL("BizEnterprise", "CREATE INDEX IF NOT EXISTS BizEnterpriseUserNameIndex ON BizEnterprise ( userName )");
+    com.tencent.mm.kernel.g.aAg().hqi.a(1343, this);
+    com.tencent.mm.kernel.g.aAg().hqi.a(1228, this);
     AppMethodBeat.o(123989);
   }
   
-  public static af a(String paramString, boolean paramBoolean, f paramf)
+  public static af a(String paramString, boolean paramBoolean, i parami)
   {
     AppMethodBeat.i(123999);
-    nn localnn = new nn();
-    localnn.FZx = paramString;
+    og localog = new og();
+    localog.KTt = paramString;
     if (paramBoolean) {}
     for (int i = 17;; i = 0)
     {
-      localnn.FZW = i;
-      localnn.FZU = 0;
-      paramString = new af(localnn, paramf);
-      if (!com.tencent.mm.kernel.g.ajQ().gDv.a(paramString, 0)) {
+      localog.KTQ = i;
+      localog.KTO = 0;
+      paramString = new af(localog, parami);
+      if (!com.tencent.mm.kernel.g.aAg().hqi.a(paramString, 0)) {
         break;
       }
       AppMethodBeat.o(123999);
@@ -69,7 +71,7 @@ public final class e
   public static void a(af paramaf)
   {
     AppMethodBeat.i(124001);
-    com.tencent.mm.kernel.g.ajQ().gDv.a(paramaf);
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramaf);
     paramaf.data = null;
     AppMethodBeat.o(124001);
   }
@@ -83,64 +85,64 @@ public final class e
       return false;
     }
     boolean bool2 = super.insert(paramd);
-    e.a.b localb = e.a.b.hSI;
+    e.a.b localb = e.a.b.iNX;
     boolean bool1 = bool2;
     if (!bool2)
     {
       bool1 = super.replace(paramd);
-      localb = e.a.b.hSK;
+      localb = e.a.b.iNZ;
     }
     if (bool1)
     {
       e.a.a locala = new e.a.a();
-      locala.hSG = paramd.field_userName;
-      locala.hSF = localb;
-      locala.hSH = paramd;
-      this.hSD.dW(locala);
-      this.hSD.doNotify();
+      locala.iNV = paramd.field_userName;
+      locala.iNU = localb;
+      locala.iNW = paramd;
+      this.iNS.event(locala);
+      this.iNS.doNotify();
     }
     AppMethodBeat.o(123996);
     return bool1;
   }
   
-  private boolean a(nn paramnn)
+  private boolean a(og paramog)
   {
     AppMethodBeat.i(123997);
-    d locald = Eb(paramnn.FZx);
-    locald.field_userName = paramnn.FZx;
-    locald.field_qyUin = paramnn.FZU;
-    locald.field_userUin = paramnn.FZV;
-    locald.field_wwMaxExposeTimes = paramnn.FZX;
-    locald.field_wwUserVid = paramnn.FZY;
-    locald.field_wwCorpId = paramnn.FZZ;
-    locald.field_userType = paramnn.FZI;
-    locald.field_chatOpen = paramnn.Gaa;
-    locald.field_wwUnreadCnt = paramnn.Gab;
-    locald.field_show_confirm = paramnn.Gac;
-    locald.field_use_preset_banner_tips = paramnn.Gae;
-    if (paramnn.Gaf != null)
+    d locald = MP(paramog.KTt);
+    locald.field_userName = paramog.KTt;
+    locald.field_qyUin = paramog.KTO;
+    locald.field_userUin = paramog.KTP;
+    locald.field_wwMaxExposeTimes = paramog.KTR;
+    locald.field_wwUserVid = paramog.KTS;
+    locald.field_wwCorpId = paramog.KTT;
+    locald.field_userType = paramog.KTD;
+    locald.field_chatOpen = paramog.KTU;
+    locald.field_wwUnreadCnt = paramog.KTV;
+    locald.field_show_confirm = paramog.KTW;
+    locald.field_use_preset_banner_tips = paramog.KTY;
+    if (paramog.KTZ != null)
     {
-      locald.field_hide_create_chat = paramnn.Gaf.GnH;
-      locald.field_hide_mod_chat_member = paramnn.Gaf.GnI;
+      locald.field_hide_create_chat = paramog.KTZ.Lil;
+      locald.field_hide_mod_chat_member = paramog.KTZ.Lim;
     }
-    locald.field_hide_colleage_invite = paramnn.Gah;
+    locald.field_hide_colleage_invite = paramog.KUb;
     try
     {
-      no localno = new no();
-      localno.Gag = paramnn.Gag;
-      localno.Gai = paramnn.Gai;
-      localno.Gaj = paramnn.Gaj;
-      localno.Gak = paramnn.Gak;
-      locald.field_raw_attrs = localno.toByteArray();
+      oh localoh = new oh();
+      localoh.KUa = paramog.KUa;
+      localoh.KUc = paramog.KUc;
+      localoh.KUd = paramog.KUd;
+      localoh.KUe = paramog.KUe;
+      locald.field_raw_attrs = localoh.toByteArray();
       label193:
-      hSC = paramnn.Gad;
-      if ((paramnn.FZY == 0L) && (paramnn.FZZ == 0L) && (paramnn.FZU != 0))
+      iNR = paramog.KTX;
+      if ((paramog.KTS == 0L) && (paramog.KTT == 0L) && (paramog.KTO != 0))
       {
-        locald.field_wwUserVid = paramnn.FZV;
-        locald.field_wwCorpId = paramnn.FZU;
+        locald.field_wwUserVid = paramog.KTP;
+        locald.field_wwCorpId = paramog.KTO;
       }
-      paramnn.FZW &= 0xFFFFFFF7;
-      locald.field_userFlag = (paramnn.FZW | locald.field_userFlag & 0x8);
+      paramog.KTQ &= 0xFFFFFFF7;
+      locald.field_userFlag = (paramog.KTQ | locald.field_userFlag & 0x8);
       boolean bool = a(locald);
       AppMethodBeat.o(123997);
       return bool;
@@ -151,22 +153,22 @@ public final class e
     }
   }
   
-  public static boolean a(String paramString, f paramf)
+  public static boolean a(String paramString, i parami)
   {
     AppMethodBeat.i(123998);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(123998);
       return false;
     }
-    if (g.Es(paramString)) {}
+    if (g.Ng(paramString)) {}
     for (int i = 1;; i = 2)
     {
-      paramString = new y(paramString, i, paramf);
-      boolean bool = com.tencent.mm.kernel.g.ajQ().gDv.a(paramString, 0);
+      paramString = new y(paramString, i, parami);
+      boolean bool = com.tencent.mm.kernel.g.aAg().hqi.a(paramString, 0);
       AppMethodBeat.o(123998);
       return bool;
-      if (!g.Er(paramString)) {
+      if (!g.Nf(paramString)) {
         break;
       }
     }
@@ -174,38 +176,38 @@ public final class e
     return false;
   }
   
-  public static String aFI()
+  public static String aZA()
   {
     AppMethodBeat.i(179034);
-    if (hSC == null) {
-      hSC = new iv();
+    if (iNR == null) {
+      iNR = new ji();
     }
-    String str = hSC.oGf;
+    String str = iNR.pTL;
     AppMethodBeat.o(179034);
     return str;
   }
   
-  public static String aFJ()
+  public static String aZB()
   {
     AppMethodBeat.i(179035);
-    if (hSC == null) {
-      hSC = new iv();
+    if (iNR == null) {
+      iNR = new ji();
     }
-    String str = hSC.pqW;
+    String str = iNR.qGB;
     AppMethodBeat.o(179035);
     return str;
   }
   
-  public static int aFK()
+  public static int aZC()
   {
     AppMethodBeat.i(179036);
-    if (hSC == null) {
-      hSC = new iv();
+    if (iNR == null) {
+      iNR = new ji();
     }
     int i = 0;
     try
     {
-      int j = Integer.parseInt(hSC.FUm);
+      int j = Integer.parseInt(iNR.KNV);
       i = j;
     }
     catch (Throwable localThrowable)
@@ -217,12 +219,12 @@ public final class e
     return i;
   }
   
-  public static String oY(int paramInt)
+  public static String sM(int paramInt)
   {
     AppMethodBeat.i(124003);
     String str = null;
-    if (hSC == null) {
-      hSC = new iv();
+    if (iNR == null) {
+      iNR = new ji();
     }
     switch (paramInt)
     {
@@ -231,42 +233,18 @@ public final class e
     {
       AppMethodBeat.o(124003);
       return str;
-      str = hSC.FUi;
+      str = iNR.KNR;
       continue;
-      str = hSC.FUj;
+      str = iNR.KNS;
       continue;
-      str = hSC.FUk;
+      str = iNR.KNT;
     }
   }
   
-  public final boolean Dc(String paramString)
-  {
-    AppMethodBeat.i(123995);
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(123995);
-      return false;
-    }
-    d locald = new d();
-    locald.field_userName = paramString;
-    boolean bool = super.delete(locald, new String[] { "userName" });
-    if (bool)
-    {
-      e.a.a locala = new e.a.a();
-      locala.hSG = paramString;
-      locala.hSF = e.a.b.hSJ;
-      locala.hSH = locald;
-      this.hSD.dW(locala);
-      this.hSD.doNotify();
-    }
-    AppMethodBeat.o(123995);
-    return bool;
-  }
-  
-  public final d Ea(String paramString)
+  public final d MO(String paramString)
   {
     AppMethodBeat.i(123992);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(123992);
       return null;
@@ -283,10 +261,10 @@ public final class e
     return null;
   }
   
-  public final d Eb(String paramString)
+  public final d MP(String paramString)
   {
     AppMethodBeat.i(123993);
-    d locald = Ea(paramString);
+    d locald = MO(paramString);
     if (locald == null)
     {
       locald = new d();
@@ -307,10 +285,10 @@ public final class e
     return locald;
   }
   
-  public final int Ec(String paramString)
+  public final int MQ(String paramString)
   {
     AppMethodBeat.i(123994);
-    paramString = Ea(paramString);
+    paramString = MO(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(123994);
@@ -321,10 +299,10 @@ public final class e
     return i;
   }
   
-  public final void Ed(String paramString)
+  public final void MR(String paramString)
   {
     AppMethodBeat.i(124000);
-    paramString = Eb(paramString);
+    paramString = MP(paramString);
     if (paramString.field_wwExposeTimes >= paramString.field_wwMaxExposeTimes)
     {
       AppMethodBeat.o(124000);
@@ -335,10 +313,10 @@ public final class e
     AppMethodBeat.o(124000);
   }
   
-  public final boolean Ee(String paramString)
+  public final boolean MS(String paramString)
   {
     AppMethodBeat.i(124002);
-    paramString = Ea(paramString);
+    paramString = MO(paramString);
     if ((paramString != null) && ((paramString.field_userFlag & 0x1) != 0) && ((paramString.field_userFlag & 0x10) != 0))
     {
       AppMethodBeat.o(124002);
@@ -351,8 +329,8 @@ public final class e
   public final void a(a parama)
   {
     AppMethodBeat.i(123991);
-    if (this.hSD != null) {
-      this.hSD.remove(parama);
+    if (this.iNS != null) {
+      this.iNS.remove(parama);
     }
     AppMethodBeat.o(123991);
   }
@@ -360,11 +338,35 @@ public final class e
   public final void a(a parama, Looper paramLooper)
   {
     AppMethodBeat.i(123990);
-    this.hSD.a(parama, paramLooper);
+    this.iNS.add(parama, paramLooper);
     AppMethodBeat.o(123990);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final boolean gC(String paramString)
+  {
+    AppMethodBeat.i(123995);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(123995);
+      return false;
+    }
+    d locald = new d();
+    locald.field_userName = paramString;
+    boolean bool = super.delete(locald, new String[] { "userName" });
+    if (bool)
+    {
+      e.a.a locala = new e.a.a();
+      locala.iNV = paramString;
+      locala.iNU = e.a.b.iNY;
+      locala.iNW = locald;
+      this.iNS.event(locala);
+      this.iNS.doNotify();
+    }
+    AppMethodBeat.o(123995);
+    return bool;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     int j = -1;
     AppMethodBeat.i(124004);
@@ -376,45 +378,45 @@ public final class e
     int i = paramInt2;
     Object localObject2;
     Object localObject1;
-    if ((paramn instanceof y))
+    if ((paramq instanceof y))
     {
-      localObject2 = (y)paramn;
-      if ((((y)localObject2).rr != null) && (((y)localObject2).rr.hQE.hQJ != null)) {}
-      for (localObject1 = (ayi)((y)localObject2).rr.hQE.hQJ; (localObject1 == null) || (((ayi)localObject1).FZD == null) || (((ayi)localObject1).FZD.ret != 0) || (((ayi)localObject1).GPf == null); localObject1 = null)
+      localObject2 = (y)paramq;
+      if ((((y)localObject2).rr != null) && (((y)localObject2).rr.iLL.iLR != null)) {}
+      for (localObject1 = (bjs)((y)localObject2).rr.iLL.iLR; (localObject1 == null) || (((bjs)localObject1).KTz == null) || (((bjs)localObject1).KTz.ret != 0) || (((bjs)localObject1).LTl == null); localObject1 = null)
       {
         AppMethodBeat.o(124004);
         return;
       }
-      if (!a(((ayi)localObject1).GPf)) {
+      if (!a(((bjs)localObject1).LTl)) {
         paramInt2 = -1;
       }
-      localObject1 = (f)((y)localObject2).data;
+      localObject1 = (i)((y)localObject2).data;
       i = paramInt2;
       if (localObject1 != null)
       {
-        ((f)localObject1).onSceneEnd(paramInt1, paramInt2, paramString, paramn);
+        ((i)localObject1).onSceneEnd(paramInt1, paramInt2, paramString, paramq);
         i = paramInt2;
       }
     }
-    if ((paramn instanceof af))
+    if ((paramq instanceof af))
     {
-      localObject2 = (af)paramn;
-      if ((((af)localObject2).rr != null) && (((af)localObject2).rr.hQE.hQJ != null)) {}
-      for (localObject1 = (dct)((af)localObject2).rr.hQE.hQJ; (localObject1 == null) || (((dct)localObject1).FZD == null) || (((dct)localObject1).FZD.ret != 0) || (((dct)localObject1).GPf == null); localObject1 = null)
+      localObject2 = (af)paramq;
+      if ((((af)localObject2).rr != null) && (((af)localObject2).rr.iLL.iLR != null)) {}
+      for (localObject1 = (dvx)((af)localObject2).rr.iLL.iLR; (localObject1 == null) || (((dvx)localObject1).KTz == null) || (((dvx)localObject1).KTz.ret != 0) || (((dvx)localObject1).LTl == null); localObject1 = null)
       {
         AppMethodBeat.o(124004);
         return;
       }
-      if (a(((dct)localObject1).GPf)) {
+      if (a(((dvx)localObject1).LTl)) {
         break label319;
       }
     }
     label319:
     for (paramInt2 = j;; paramInt2 = i)
     {
-      localObject1 = (f)((af)localObject2).data;
+      localObject1 = (i)((af)localObject2).data;
       if (localObject1 != null) {
-        ((f)localObject1).onSceneEnd(paramInt1, paramInt2, paramString, paramn);
+        ((i)localObject1).onSceneEnd(paramInt1, paramInt2, paramString, paramq);
       }
       AppMethodBeat.o(124004);
       return;
@@ -427,9 +429,9 @@ public final class e
     
     public static final class a
     {
-      public e.a.b hSF;
-      public String hSG;
-      public d hSH;
+      public e.a.b iNU;
+      public String iNV;
+      public d iNW;
     }
     
     public static enum b
@@ -437,10 +439,10 @@ public final class e
       static
       {
         AppMethodBeat.i(123988);
-        hSI = new b("INSERT", 0);
-        hSJ = new b("DELETE", 1);
-        hSK = new b("UPDATE", 2);
-        hSL = new b[] { hSI, hSJ, hSK };
+        iNX = new b("INSERT", 0);
+        iNY = new b("DELETE", 1);
+        iNZ = new b("UPDATE", 2);
+        iOa = new b[] { iNX, iNY, iNZ };
         AppMethodBeat.o(123988);
       }
       
@@ -450,7 +452,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.al.e
  * JD-Core Version:    0.7.0.1
  */

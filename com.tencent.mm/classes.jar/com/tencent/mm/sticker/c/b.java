@@ -1,41 +1,43 @@
 package com.tencent.mm.sticker.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.bdt;
-import com.tencent.mm.protocal.protobuf.bdu;
-import com.tencent.mm.protocal.protobuf.cxn;
-import d.l;
+import com.tencent.mm.protocal.protobuf.bph;
+import com.tencent.mm.protocal.protobuf.bpi;
+import com.tencent.mm.protocal.protobuf.dqi;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/task/CgiGetLensList;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetLensListResponse;", "type", "", "pageBuff", "", "lensCtx", "(I[B[B)V", "plugin-sticker_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/task/CgiGetLensList;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetLensListResponse;", "type", "", "pageBuff", "", "lensCtx", "(I[B[B)V", "plugin-sticker_release"})
 public final class b
-  extends com.tencent.mm.ak.a<bdu>
+  extends c<bpi>
 {
   public b(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     AppMethodBeat.i(105982);
-    bdt localbdt = new bdt();
-    localbdt.ReqType = paramInt;
+    bph localbph = new bph();
+    localbph.ReqType = paramInt;
     byte[] arrayOfByte = paramArrayOfByte1;
     if (paramArrayOfByte1 == null) {
       arrayOfByte = new byte[0];
     }
-    localbdt.GTp = new com.tencent.mm.bw.b(arrayOfByte);
+    localbph.LXB = new com.tencent.mm.bw.b(arrayOfByte);
     paramArrayOfByte1 = paramArrayOfByte2;
     if (paramArrayOfByte2 == null) {
       paramArrayOfByte1 = new byte[0];
     }
-    localbdt.GTq = new com.tencent.mm.bw.b(paramArrayOfByte1);
-    paramArrayOfByte1 = new bdu();
+    localbph.LXC = new com.tencent.mm.bw.b(paramArrayOfByte1);
+    paramArrayOfByte1 = new bpi();
     paramArrayOfByte1.setBaseResponse(new BaseResponse());
-    paramArrayOfByte1.getBaseResponse().ErrMsg = new cxn();
-    paramArrayOfByte2 = new b.a();
-    paramArrayOfByte2.c((com.tencent.mm.bw.a)localbdt);
-    paramArrayOfByte2.d((com.tencent.mm.bw.a)paramArrayOfByte1);
-    paramArrayOfByte2.DN("/cgi-bin/micromsg-bin/getlenslist");
-    paramArrayOfByte2.oS(3847);
-    c(paramArrayOfByte2.aDS());
+    paramArrayOfByte1.getBaseResponse().ErrMsg = new dqi();
+    paramArrayOfByte2 = new d.a();
+    paramArrayOfByte2.c((a)localbph);
+    paramArrayOfByte2.d((a)paramArrayOfByte1);
+    paramArrayOfByte2.MB("/cgi-bin/micromsg-bin/getlenslist");
+    paramArrayOfByte2.sG(3847);
+    c(paramArrayOfByte2.aXF());
     AppMethodBeat.o(105982);
   }
 }

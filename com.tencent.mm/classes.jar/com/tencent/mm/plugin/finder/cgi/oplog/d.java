@@ -1,68 +1,25 @@
 package com.tencent.mm.plugin.finder.cgi.oplog;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.plugin.finder.cgi.au;
-import com.tencent.mm.plugin.finder.cgi.au.a;
-import com.tencent.mm.plugin.i.a.j;
-import com.tencent.mm.plugin.i.a.s;
-import com.tencent.mm.protocal.protobuf.apy;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.finder.cgi.bx;
+import com.tencent.mm.plugin.finder.cgi.bx.a;
+import com.tencent.mm.plugin.i.a.p;
+import com.tencent.mm.protocal.protobuf.azc;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyBlackListService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyBlackList;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModBlackList;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "kotlin.jvm.PlatformType", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modifyCommentBlackList", "commentId", "", "feedId", "feedNonceId", "isBlack", "", "callback", "Lcom/tencent/mm/plugin/findersdk/api/IModifyUserResult;", "modifyFansBlackList", "fansId", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModMessageSetting;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderMessageMuteSetting;", "Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderOpLogCore;", "Lcom/tencent/mm/protocal/protobuf/FinderModMsgMuteSetting;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "convertToCmdBuf", "Lcom/tencent/mm/protobuf/ByteString;", "cmdBufItem", "getCmdId", "", "handleUpdateResult", "", "retCode", "modifyMessageMuteSetting", "ifOpen", "", "plugin-finder_release"})
 public final class d
-  extends h<apy>
-  implements f, j
+  extends k<azc>
+  implements p
 {
-  private static final int rTq = 1;
-  private static final int rTr = 2;
-  public static final a rTs;
-  private final String TAG = "Finder.FinderModifyBlackListService";
-  
-  static
-  {
-    AppMethodBeat.i(165301);
-    rTs = new a((byte)0);
-    rTq = 1;
-    rTr = 2;
-    AppMethodBeat.o(165301);
-  }
-  
-  public final void a(long paramLong1, long paramLong2, String paramString, s<apy> params)
-  {
-    AppMethodBeat.i(165299);
-    p.h(paramString, "feedNonceId");
-    apy localapy = new apy();
-    localapy.rQR = paramLong1;
-    localapy.refObjectId = paramLong2;
-    localapy.refObjectNonceId = paramString;
-    localapy.opType = rTq;
-    a(localapy, params);
-    AppMethodBeat.o(165299);
-  }
-  
-  public final void a(String paramString, boolean paramBoolean, s<apy> params)
-  {
-    AppMethodBeat.i(165298);
-    p.h(paramString, "fansId");
-    apy localapy = new apy();
-    localapy.GEH = paramString;
-    if (paramBoolean) {}
-    for (localapy.opType = rTq;; localapy.opType = rTr)
-    {
-      a(localapy, params);
-      AppMethodBeat.o(165298);
-      return;
-    }
-  }
+  private final String TAG = "Finder.FinderModMessageSetting";
   
   public final int getCmdId()
   {
-    AppMethodBeat.i(165297);
-    au.a locala = au.rRY;
-    int i = au.cAb();
-    AppMethodBeat.o(165297);
+    AppMethodBeat.i(242649);
+    bx.a locala = bx.tvW;
+    int i = bx.cYT();
+    AppMethodBeat.o(242649);
     return i;
   }
   
@@ -71,12 +28,23 @@ public final class d
     return this.TAG;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/cgi/oplog/FinderModifyBlackListService$Companion;", "", "()V", "ModBlackListOpAdd", "", "getModBlackListOpAdd", "()I", "ModBlackListOpDel", "getModBlackListOpDel", "plugin-finder_release"})
-  public static final class a {}
+  public final void mQ(boolean paramBoolean)
+  {
+    AppMethodBeat.i(242651);
+    azc localazc = new azc();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      localazc.opType = i;
+      a(localazc, null, false);
+      AppMethodBeat.o(242651);
+      return;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.cgi.oplog.d
  * JD-Core Version:    0.7.0.1
  */

@@ -7,8 +7,8 @@ import android.view.Surface;
 import com.tencent.liteav.TXCRenderAndDec;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.module.TXCStatus;
-import com.tencent.liteav.c;
-import com.tencent.liteav.f;
+import com.tencent.liteav.d;
+import com.tencent.liteav.g;
 import com.tencent.liteav.renderer.e;
 import com.tencent.liteav.trtc.impl.TRTCCloudImpl;
 import com.tencent.liteav.trtc.impl.TRTCRoomInfo;
@@ -59,7 +59,7 @@ public class WXTRTCCloud
   
   public static void destroySharedInstance()
   {
-    AppMethodBeat.i(221681);
+    AppMethodBeat.i(222687);
     try
     {
       if (sInstance != null)
@@ -72,7 +72,7 @@ public class WXTRTCCloud
     }
     finally
     {
-      AppMethodBeat.o(221681);
+      AppMethodBeat.o(222687);
     }
   }
   
@@ -132,7 +132,7 @@ public class WXTRTCCloud
   
   public void enableBlackStream(final boolean paramBoolean)
   {
-    AppMethodBeat.i(221684);
+    AppMethodBeat.i(222690);
     runOnMainThread(new Runnable()
     {
       public final void run()
@@ -156,7 +156,7 @@ public class WXTRTCCloud
         AppMethodBeat.o(14292);
       }
     });
-    AppMethodBeat.o(221684);
+    AppMethodBeat.o(222690);
   }
   
   public void enterRoom(TRTCCloudDef.TRTCParams paramTRTCParams, int paramInt)
@@ -187,9 +187,9 @@ public class WXTRTCCloud
   
   public int getMaxZoom()
   {
-    AppMethodBeat.i(221682);
+    AppMethodBeat.i(222688);
     int i = this.mCaptureAndEnc.q();
-    AppMethodBeat.o(221682);
+    AppMethodBeat.o(222688);
     return i;
   }
   
@@ -437,7 +437,7 @@ public class WXTRTCCloud
   
   public void notifyUserVoiceVolume(final ArrayList<TRTCCloudDef.TRTCVolumeInfo> paramArrayList, int paramInt)
   {
-    AppMethodBeat.i(221685);
+    AppMethodBeat.i(222691);
     runOnSDKThread(new Runnable()
     {
       public final void run()
@@ -482,8 +482,8 @@ public class WXTRTCCloud
               continue;
             }
             ((WXTRTCCloud.a)localObject1).a = i;
-            if (((WXTRTCCloud.a)localObject1).MHx != null) {
-              localObject1 = (WXTRTCCloud.ITXAudioVolumeEvaluationListener)((WXTRTCCloud.a)localObject1).MHx.get();
+            if (((WXTRTCCloud.a)localObject1).SpJ != null) {
+              localObject1 = (WXTRTCCloud.ITXAudioVolumeEvaluationListener)((WXTRTCCloud.a)localObject1).SpJ.get();
             }
           }
           for (;;)
@@ -541,7 +541,7 @@ public class WXTRTCCloud
         }
       }
     });
-    AppMethodBeat.o(221685);
+    AppMethodBeat.o(222691);
   }
   
   public void pausePusher()
@@ -591,7 +591,7 @@ public class WXTRTCCloud
           locala.a = 0;
           break;
           label107:
-          locala.MHx = new WeakReference(paramITXAudioVolumeEvaluationListener);
+          locala.SpJ = new WeakReference(paramITXAudioVolumeEvaluationListener);
         }
       }
     });
@@ -651,9 +651,9 @@ public class WXTRTCCloud
   
   public void setFocusPosition(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(221683);
+    AppMethodBeat.i(222689);
     this.mCaptureAndEnc.a(paramFloat1, paramFloat2);
-    AppMethodBeat.o(221683);
+    AppMethodBeat.o(222689);
   }
   
   public void setLocalSurface(final Surface paramSurface)
@@ -690,9 +690,9 @@ public class WXTRTCCloud
   
   public void setPushListener(ITXLivePushListener paramITXLivePushListener)
   {
-    AppMethodBeat.i(221686);
+    AppMethodBeat.i(222692);
     this.mPushListener = new WeakReference(paramITXLivePushListener);
-    AppMethodBeat.o(221686);
+    AppMethodBeat.o(222692);
   }
   
   public void setRemoteSubStreamSurface(final String paramString, final Surface paramSurface)
@@ -846,7 +846,6 @@ public class WXTRTCCloud
   public void startLocalAudio()
   {
     AppMethodBeat.i(14315);
-    this.mEnableEosMode = true;
     super.startLocalAudio();
     AppMethodBeat.o(14315);
   }
@@ -867,12 +866,12 @@ public class WXTRTCCloud
             if (paramBoolean) {
               locala.c = null;
             }
-            while ((locala.MHx == null) && (locala.c == null))
+            while ((locala.SpJ == null) && (locala.c == null))
             {
               WXTRTCCloud.this.mMapAudioVolumeListener.remove(paramString);
               AppMethodBeat.o(14296);
               return;
-              locala.MHx = null;
+              locala.SpJ = null;
             }
           }
           WXTRTCCloud.this.mMapAudioVolumeListener.remove(paramString);
@@ -911,14 +910,14 @@ public class WXTRTCCloud
   
   static final class a
   {
-    public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> MHx = null;
+    public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> SpJ = null;
     public int a;
     public WeakReference<WXTRTCCloud.ITXAudioVolumeEvaluationListener> c = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.trtc.WXTRTCCloud
  * JD-Core Version:    0.7.0.1
  */

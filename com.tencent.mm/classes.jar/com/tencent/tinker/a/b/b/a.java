@@ -2,7 +2,7 @@ package com.tencent.tinker.a.b.b;
 
 public final class a
 {
-  public static String FE(long paramLong)
+  public static String OI(long paramLong)
   {
     char[] arrayOfChar = new char[16];
     int i = 0;
@@ -15,7 +15,22 @@ public final class a
     return new String(arrayOfChar);
   }
   
-  public static String aiA(int paramInt)
+  public static String arZ(int paramInt)
+  {
+    char[] arrayOfChar = new char[8];
+    int j = 0;
+    int i = paramInt;
+    paramInt = j;
+    while (paramInt < 8)
+    {
+      arrayOfChar[(7 - paramInt)] = Character.forDigit(i & 0xF, 16);
+      i >>= 4;
+      paramInt += 1;
+    }
+    return new String(arrayOfChar);
+  }
+  
+  public static String asa(int paramInt)
   {
     char[] arrayOfChar = new char[4];
     int j = 0;
@@ -30,15 +45,15 @@ public final class a
     return new String(arrayOfChar);
   }
   
-  public static String aiB(int paramInt)
+  public static String asb(int paramInt)
   {
     if (paramInt == (char)paramInt) {
-      return aiA(paramInt);
+      return asa(paramInt);
     }
-    return aiz(paramInt);
+    return arZ(paramInt);
   }
   
-  public static String aiC(int paramInt)
+  public static String asc(int paramInt)
   {
     int i = 0;
     char[] arrayOfChar = new char[9];
@@ -57,25 +72,10 @@ public final class a
     }
     return new String(arrayOfChar);
   }
-  
-  public static String aiz(int paramInt)
-  {
-    char[] arrayOfChar = new char[8];
-    int j = 0;
-    int i = paramInt;
-    paramInt = j;
-    while (paramInt < 8)
-    {
-      arrayOfChar[(7 - paramInt)] = Character.forDigit(i & 0xF, 16);
-      i >>= 4;
-      paramInt += 1;
-    }
-    return new String(arrayOfChar);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.b.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/cu6" android:paddingLeft="@dimen/jn" android:layout_height="wrap_content" android:minHeight="@dimen/ho" style="@style/n5"
+<com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:background="#ffede6d3" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:id="@id/a9e" android:padding="@dimen/ci" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageButton android:layout_gravity="center_vertical" android:id="@id/a9d" android:background="@null" android:focusableInTouchMode="false" android:layout_width="@dimen/ap" android:layout_height="@dimen/ap" android:src="@drawable/nb" />
-    </LinearLayout>
-    <com.tencent.mm.ui.base.MaskLayout android:id="@id/fat" android:layout_width="@dimen/jg" android:layout_height="@dimen/jg" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/ci">
-        <ImageView android:id="@id/b3b" android:layout_width="@dimen/jf" android:layout_height="@dimen/jf" android:src="@raw/default_avatar" android:layout_centerVertical="true" />
-    </com.tencent.mm.ui.base.MaskLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/amv" android:paddingRight="@dimen/c5" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <com.tencent.mm.ui.base.EllipsizeTextView android:ellipsize="end" android:gravity="center|left" android:id="@id/fav" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/js" android:text="{nick}" android:singleLine="true" style="@style/m3" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/a0t" android:ellipsize="end" android:gravity="center|left" android:id="@id/fau" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/js" android:singleLine="true" style="@style/m3" />
-    </LinearLayout>
-</LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <View android:background="@drawable/af1" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginLeft="@dimen/aar" android:layout_marginRight="@dimen/aar" android:layout_alignParentBottom="true" />
+        <RelativeLayout android:background="@color/yf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/aap" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/aap">
+            <ImageView android:id="@id/afr" android:paddingLeft="15.0dip" android:paddingTop="15.0dip" android:paddingRight="20.0dip" android:paddingBottom="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/cc4" />
+            <ListView android:id="@id/ag6" android:background="@color/yf" android:paddingLeft="@dimen/aaq" android:paddingRight="@dimen/aaq" android:paddingBottom="30.0dip" android:focusable="true" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="46.0dip" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:transcriptMode="disabled" android:divider="@color/a7t" android:dividerHeight="@dimen/bq" android:footerDividersEnabled="false" />
+        </RelativeLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/afq" android:background="@drawable/aeq" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/aan" android:layout_marginLeft="@dimen/aar" android:layout_marginRight="@dimen/aar" android:layout_alignParentBottom="true">
+            <ImageView android:background="@drawable/cc0" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </LinearLayout>
+    </RelativeLayout>
+    <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyWishFooter android:id="@id/aga" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.tencent.mm.ui.KeyboardLinearLayout>

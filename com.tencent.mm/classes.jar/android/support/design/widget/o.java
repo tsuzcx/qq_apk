@@ -8,15 +8,15 @@ import java.util.ArrayList;
 
 public final class o
 {
-  final ArrayList<a> tH = new ArrayList();
-  a tI = null;
-  ValueAnimator tJ = null;
-  private final Animator.AnimatorListener tK = new AnimatorListenerAdapter()
+  final ArrayList<a> tO = new ArrayList();
+  a tP = null;
+  ValueAnimator tQ = null;
+  private final Animator.AnimatorListener tR = new AnimatorListenerAdapter()
   {
     public final void onAnimationEnd(Animator paramAnonymousAnimator)
     {
-      if (o.this.tJ == paramAnonymousAnimator) {
-        o.this.tJ = null;
+      if (o.this.tQ == paramAnonymousAnimator) {
+        o.this.tQ = null;
       }
     }
   };
@@ -24,18 +24,18 @@ public final class o
   public final void a(int[] paramArrayOfInt, ValueAnimator paramValueAnimator)
   {
     paramArrayOfInt = new a(paramArrayOfInt, paramValueAnimator);
-    paramValueAnimator.addListener(this.tK);
-    this.tH.add(paramArrayOfInt);
+    paramValueAnimator.addListener(this.tR);
+    this.tO.add(paramArrayOfInt);
   }
   
   static final class a
   {
     final ValueAnimator animator;
-    final int[] tM;
+    final int[] tT;
     
     a(int[] paramArrayOfInt, ValueAnimator paramValueAnimator)
     {
-      this.tM = paramArrayOfInt;
+      this.tT = paramArrayOfInt;
       this.animator = paramValueAnimator;
     }
   }

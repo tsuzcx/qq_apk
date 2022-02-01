@@ -6,77 +6,77 @@ public final class b
   extends com.tencent.mm.bw.a
 {
   public String apkMd5;
-  public int cSM;
-  public String cSN;
-  public int cSO;
-  public String cSP;
-  public String cSQ;
-  public boolean cSR;
-  public int cSS;
-  public boolean cST;
+  public int autoAddAccount;
+  public int channelId;
+  public String dji;
+  public String djj;
+  public boolean djk;
+  public boolean djl;
+  public String profileDeviceType;
+  public int updateMode;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(944);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.apkMd5 == null)
       {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: apkMd5");
+        paramVarArgs = new g.a.a.b("Not all required fields were included: apkMd5");
         AppMethodBeat.o(944);
         throw paramVarArgs;
       }
       if (this.apkMd5 != null) {
-        paramVarArgs.d(1, this.apkMd5);
+        paramVarArgs.e(1, this.apkMd5);
       }
-      paramVarArgs.lK(2, this.cSM);
-      if (this.cSN != null) {
-        paramVarArgs.d(3, this.cSN);
+      paramVarArgs.aM(2, this.channelId);
+      if (this.profileDeviceType != null) {
+        paramVarArgs.e(3, this.profileDeviceType);
       }
-      paramVarArgs.lK(4, this.cSO);
-      if (this.cSP != null) {
-        paramVarArgs.d(5, this.cSP);
+      paramVarArgs.aM(4, this.updateMode);
+      if (this.dji != null) {
+        paramVarArgs.e(5, this.dji);
       }
-      if (this.cSQ != null) {
-        paramVarArgs.d(6, this.cSQ);
+      if (this.djj != null) {
+        paramVarArgs.e(6, this.djj);
       }
-      paramVarArgs.bC(7, this.cSR);
-      paramVarArgs.lK(8, this.cSS);
-      paramVarArgs.bC(9, this.cST);
+      paramVarArgs.cc(7, this.djk);
+      paramVarArgs.aM(8, this.autoAddAccount);
+      paramVarArgs.cc(9, this.djl);
       AppMethodBeat.o(944);
       return 0;
     }
     if (paramInt == 1) {
       if (this.apkMd5 == null) {
-        break label654;
+        break label685;
       }
     }
-    label654:
-    for (paramInt = f.a.a.a.e(1, this.apkMd5) + 0;; paramInt = 0)
+    label685:
+    for (paramInt = g.a.a.b.b.a.f(1, this.apkMd5) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.a.lH(2, this.cSM);
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.channelId);
       paramInt = i;
-      if (this.cSN != null) {
-        paramInt = i + f.a.a.a.e(3, this.cSN);
+      if (this.profileDeviceType != null) {
+        paramInt = i + g.a.a.b.b.a.f(3, this.profileDeviceType);
       }
-      i = paramInt + f.a.a.a.lH(4, this.cSO);
+      i = paramInt + g.a.a.b.b.a.bu(4, this.updateMode);
       paramInt = i;
-      if (this.cSP != null) {
-        paramInt = i + f.a.a.a.e(5, this.cSP);
+      if (this.dji != null) {
+        paramInt = i + g.a.a.b.b.a.f(5, this.dji);
       }
       i = paramInt;
-      if (this.cSQ != null) {
-        i = paramInt + f.a.a.a.e(6, this.cSQ);
+      if (this.djj != null) {
+        i = paramInt + g.a.a.b.b.a.f(6, this.djj);
       }
-      paramInt = f.a.a.a.amz(7);
-      int j = f.a.a.a.lH(8, this.cSS);
-      int k = f.a.a.a.amz(9);
+      paramInt = g.a.a.b.b.a.fS(7);
+      int j = g.a.a.b.b.a.bu(8, this.autoAddAccount);
+      int k = g.a.a.b.b.a.fS(9);
       AppMethodBeat.o(944);
-      return i + paramInt + j + k;
+      return i + (paramInt + 1) + j + (k + 1);
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs);; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs))
         {
           if (paramInt <= 0)
@@ -84,12 +84,12 @@ public final class b
             if (this.apkMd5 != null) {
               break;
             }
-            paramVarArgs = new f.a.a.b("Not all required fields were included: apkMd5");
+            paramVarArgs = new g.a.a.b("Not all required fields were included: apkMd5");
             AppMethodBeat.o(944);
             throw paramVarArgs;
           }
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(944);
@@ -97,7 +97,7 @@ public final class b
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         b localb = (b)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -105,39 +105,39 @@ public final class b
           AppMethodBeat.o(944);
           return -1;
         case 1: 
-          localb.apkMd5 = locala.gCd();
+          localb.apkMd5 = locala.UbS.readString();
           AppMethodBeat.o(944);
           return 0;
         case 2: 
-          localb.cSM = locala.gCc();
+          localb.channelId = locala.UbS.zi();
           AppMethodBeat.o(944);
           return 0;
         case 3: 
-          localb.cSN = locala.gCd();
+          localb.profileDeviceType = locala.UbS.readString();
           AppMethodBeat.o(944);
           return 0;
         case 4: 
-          localb.cSO = locala.gCc();
+          localb.updateMode = locala.UbS.zi();
           AppMethodBeat.o(944);
           return 0;
         case 5: 
-          localb.cSP = locala.gCd();
+          localb.dji = locala.UbS.readString();
           AppMethodBeat.o(944);
           return 0;
         case 6: 
-          localb.cSQ = locala.gCd();
+          localb.djj = locala.UbS.readString();
           AppMethodBeat.o(944);
           return 0;
         case 7: 
-          localb.cSR = locala.gCe();
+          localb.djk = locala.UbS.yZ();
           AppMethodBeat.o(944);
           return 0;
         case 8: 
-          localb.cSS = locala.gCc();
+          localb.autoAddAccount = locala.UbS.zi();
           AppMethodBeat.o(944);
           return 0;
         }
-        localb.cST = locala.gCe();
+        localb.djl = locala.UbS.yZ();
         AppMethodBeat.o(944);
         return 0;
       }
@@ -148,7 +148,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.d.b
  * JD-Core Version:    0.7.0.1
  */

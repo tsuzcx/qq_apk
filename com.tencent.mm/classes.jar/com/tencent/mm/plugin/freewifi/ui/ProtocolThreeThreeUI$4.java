@@ -15,8 +15,8 @@ final class ProtocolThreeThreeUI$4
   {
     AppMethodBeat.i(25211);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/freewifi/ui/ProtocolThreeThreeUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/freewifi/ui/ProtocolThreeThreeUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     a.a(this, "com/tencent/mm/plugin/freewifi/ui/ProtocolThreeThreeUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(25211);
   }

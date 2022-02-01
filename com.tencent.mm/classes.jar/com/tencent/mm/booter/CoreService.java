@@ -15,7 +15,7 @@ import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
 import com.jg.JgMethodChecked;
-import com.tencent.e.i;
+import com.tencent.f.i;
 import com.tencent.mars.Mars;
 import com.tencent.mars.comm.Alarm;
 import com.tencent.mars.comm.PlatformComm;
@@ -26,191 +26,200 @@ import com.tencent.mars.magicbox.IPxxLogic;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.mars.stn.StnLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.rg;
+import com.tencent.mm.g.a.sc;
 import com.tencent.mm.kernel.j;
 import com.tencent.mm.kernel.l;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.network.ab;
-import com.tencent.mm.network.ac;
 import com.tencent.mm.network.ad;
-import com.tencent.mm.network.ad.b;
+import com.tencent.mm.network.ae;
 import com.tencent.mm.network.af;
-import com.tencent.mm.network.aj;
-import com.tencent.mm.network.m;
-import com.tencent.mm.network.p;
-import com.tencent.mm.network.t;
-import com.tencent.mm.network.t.14;
-import com.tencent.mm.network.z;
+import com.tencent.mm.network.af.b;
+import com.tencent.mm.network.ag;
+import com.tencent.mm.network.ah;
+import com.tencent.mm.network.al;
+import com.tencent.mm.network.o;
+import com.tencent.mm.network.r;
+import com.tencent.mm.network.v;
+import com.tencent.mm.network.v.14;
 import com.tencent.mm.platformtools.q;
 import com.tencent.mm.plugin.report.e;
 import com.tencent.mm.plugin.zero.PluginZero;
 import com.tencent.mm.plugin.zero.PluginZero.a;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ai.b;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bp;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MAlarmHandler;
+import com.tencent.mm.sdk.platformtools.MAlarmHandler.IBumper;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.SyncTask;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.service.ProcessService.MMProcessService;
 import java.util.ArrayList;
 
 public class CoreService
   extends Service
-  implements PlatformComm.IReportCrash, PlatformComm.IResetProcess, ad.b, m
+  implements PlatformComm.IReportCrash, PlatformComm.IResetProcess, af.b, o
 {
-  private static b fFT = null;
-  private t fFR;
-  private f fFS;
-  private boolean fFU;
-  private a fFV;
-  private final ai.b fFW;
-  private int fFX;
-  private int fFY;
-  private long fFZ;
-  private long fGa;
-  private long fGb;
-  private WakerLock fGc;
-  private q fGd;
-  private aw fGe;
+  private static b gld = null;
+  private final MAlarmHandler.IBumper bumper;
+  private v glb;
+  private f glc;
+  private boolean gle;
+  private CoreService.a glf;
+  private int glg;
+  private int glh;
+  private long gli;
+  private long glj;
+  private long glk;
+  private WakerLock gll;
+  private q glm;
+  private MTimerHandler gln;
   
   public CoreService()
   {
     AppMethodBeat.i(131845);
-    this.fFS = new f();
-    this.fFU = true;
-    this.fFV = null;
-    this.fFW = new ai.b()
+    this.glc = new f();
+    this.gle = true;
+    this.glf = null;
+    this.bumper = new MAlarmHandler.IBumper()
     {
       public final void cancel()
       {
         AppMethodBeat.i(131838);
-        MMReceivers.AlarmReceiver.bN(CoreService.this.getApplicationContext());
+        MMReceivers.AlarmReceiver.ci(CoreService.this.getApplicationContext());
         AppMethodBeat.o(131838);
       }
       
       public final void prepare()
       {
         AppMethodBeat.i(131837);
-        MMReceivers.AlarmReceiver.bM(CoreService.this.getApplicationContext());
+        MMReceivers.AlarmReceiver.ch(CoreService.this.getApplicationContext());
         AppMethodBeat.o(131837);
       }
     };
-    this.fFX = -1;
-    this.fFY = -1;
-    this.fFZ = 0L;
-    this.fGa = 0L;
-    this.fGb = 0L;
-    this.fGc = null;
-    this.fGd = new q();
-    this.fGe = new aw(new aw.a()
+    this.glg = -1;
+    this.glh = -1;
+    this.gli = 0L;
+    this.glj = 0L;
+    this.glk = 0L;
+    this.gll = null;
+    this.glm = new q();
+    this.gln = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(193537);
+        AppMethodBeat.i(196977);
         q localq = CoreService.a(CoreService.this);
         int i;
-        if (bu.aO(localq.iQh) < localq.iQf)
+        if (Util.ticksToNow(localq.jNd) < localq.jNb)
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.FrequncyLimiter", "frequency limited, last=" + localq.iQh + ", cur=" + bu.HQ() + ", retries=" + localq.iQi);
-          if (localq.iQi <= 0)
+          Log.i("MicroMsg.FrequncyLimiter", "frequency limited, last=" + localq.jNd + ", cur=" + Util.currentTicks() + ", retries=" + localq.jNe);
+          if (localq.jNe <= 0)
           {
             i = 0;
             if (i != 0) {
-              break label249;
+              break label246;
             }
-            com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.CoreService", "setNetworkAvailable checker frequency limited");
+            Log.e("MicroMsg.CoreService", "setNetworkAvailable checker frequency limited");
           }
         }
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "setNetworkAvailable finish lockCount:%d delayCount:%d delayDur:%d", new Object[] { Long.valueOf(CoreService.c(CoreService.this)), Long.valueOf(CoreService.d(CoreService.this)), Long.valueOf(bu.fpO() - CoreService.e(CoreService.this)) });
+          Log.i("MicroMsg.CoreService", "setNetworkAvailable finish lockCount:%d delayCount:%d delayDur:%d", new Object[] { Long.valueOf(CoreService.c(CoreService.this)), Long.valueOf(CoreService.d(CoreService.this)), Long.valueOf(Util.nowMilliSecond() - CoreService.e(CoreService.this)) });
           CoreService.f(CoreService.this);
           CoreService.g(CoreService.this);
           CoreService.h(CoreService.this);
-          new aw(new aw.a()
+          new MTimerHandler(new MTimerHandler.CallBack()
           {
             public final boolean onTimerExpired()
             {
-              AppMethodBeat.i(193536);
+              AppMethodBeat.i(196976);
               CoreService.i(CoreService.this).unLock();
-              AppMethodBeat.o(193536);
+              AppMethodBeat.o(196976);
               return false;
             }
-          }, false).ay(500L, 500L);
-          AppMethodBeat.o(193537);
+          }, false).startTimer(500L);
+          AppMethodBeat.o(196977);
           return true;
-          for (localq.iQi -= 1;; localq.iQi = localq.iQg)
+          for (localq.jNe -= 1;; localq.jNe = localq.jNc)
           {
-            localq.iQh = bu.HQ();
+            localq.jNd = Util.currentTicks();
             i = 1;
             break;
           }
-          label249:
-          boolean bool1 = CoreService.b(CoreService.this).iHF.aFm();
-          boolean bool2 = ad.aPK().aPm();
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "setNetworkAvailable  deal with Sync Check isSessionKeyNull:%b, isLogin:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-          if ((bool1) && (!bool2) && (g.a(1, 0, null, CoreService.b(CoreService.this).iHF.mR(1), bu.fpO())))
+          label246:
+          boolean bool1 = CoreService.b(CoreService.this).jEj.aZb();
+          boolean bool2 = af.bkl().bjN();
+          Log.i("MicroMsg.CoreService", "setNetworkAvailable  deal with Sync Check isSessionKeyNull:%b, isLogin:%b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+          if ((bool1) && (!bool2) && (g.a(1, 0, null, CoreService.b(CoreService.this).jEj.qe(1), Util.nowMilliSecond())))
           {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "setNetworkAvailable deal with notify sync in push");
-            AppMethodBeat.o(193537);
+            Log.i("MicroMsg.CoreService", "setNetworkAvailable deal with notify sync in push");
+            AppMethodBeat.o(196977);
             return true;
           }
-          CoreService.WE();
+          CoreService.aks();
         }
       }
     }, false);
     AppMethodBeat.o(131845);
   }
   
-  public static void WE()
+  public static void a(b paramb)
+  {
+    gld = paramb;
+  }
+  
+  public static void aks()
   {
     AppMethodBeat.i(131854);
-    Intent localIntent = new Intent(ad.getContext(), NotifyReceiver.class);
+    Intent localIntent = new Intent(af.getContext(), NotifyReceiver.class);
     localIntent.putExtra("notify_option_type", 1);
-    localIntent.putExtra("notify_uin", ad.aPK().iHF.getUin());
-    long l = WG();
+    localIntent.putExtra("notify_uin", af.bkl().jEj.getUin());
+    long l = aku();
     localIntent.putExtra("notfiy_sync_num", l);
     try
     {
-      ad.getContext().sendBroadcast(localIntent);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "sendBorastToNotifyReceiver syncNum:%s", new Object[] { Long.valueOf(l) });
-      if (bu.lX(com.tencent.mm.plugin.expt.h.d.ctr().b("clicfg_android_receive_msg_use_mmservice_switch", "0", false, true), "1"))
+      af.getContext().sendBroadcast(localIntent);
+      Log.i("MicroMsg.CoreService", "sendBorastToNotifyReceiver syncNum:%s", new Object[] { Long.valueOf(l) });
+      if (Util.isEqual(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_android_receive_msg_use_mmservice_switch", "0", false, true), "1"))
       {
-        localIntent.setClass(ad.getContext(), NotifyReceiver.NotifyReceiverService.class);
-        localIntent.putExtra("notfiy_recv_time", bu.fpO());
-        com.tencent.mm.service.c.a(localIntent, "mm", true, new Intent(ak.getContext(), ProcessService.MMProcessService.class));
-        e.ywz.idkeyStat(1042L, 62L, 1L, false);
+        localIntent.setClass(af.getContext(), NotifyReceiver.NotifyReceiverService.class);
+        localIntent.putExtra("notfiy_recv_time", Util.nowMilliSecond());
+        com.tencent.mm.service.c.a(localIntent, "mm", true, new Intent(MMApplicationContext.getContext(), ProcessService.MMProcessService.class));
+        e.Cxv.idkeyStat(1042L, 62L, 1L, false);
       }
       AppMethodBeat.o(131854);
       return;
     }
     catch (Exception localException)
     {
-      com.tencent.mm.sdk.platformtools.ae.f("MicroMsg.CoreService", "checker frequency limited hasDestroyed %s", new Object[] { localException.toString() });
+      Log.f("MicroMsg.CoreService", "checker frequency limited hasDestroyed %s", new Object[] { localException.toString() });
       AppMethodBeat.o(131854);
     }
   }
   
-  private void WF()
+  private void akt()
   {
     AppMethodBeat.i(131855);
-    com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.CoreService", "[COMPLETE EXIT]");
-    ad.aPL().m(3, 10000, "");
+    Log.w("MicroMsg.CoreService", "[COMPLETE EXIT]");
+    af.bkm().m(3, 10000, "");
     Mars.onDestroy();
     try
     {
-      MMReceivers.AlarmReceiver.bP(getApplicationContext());
-      MMReceivers.AlarmReceiver.bN(getApplicationContext());
+      MMReceivers.AlarmReceiver.ck(getApplicationContext());
+      MMReceivers.AlarmReceiver.ci(getApplicationContext());
       Alarm.resetAlarm(getApplicationContext());
-      com.tencent.mm.sdk.platformtools.ae.appenderClose();
+      Log.appenderClose();
       com.tencent.mm.hellhoundlib.b.a locala = com.tencent.mm.hellhoundlib.b.c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
       Object localObject = new Object();
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahE(), "com/tencent/mm/booter/CoreService", "doExit", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-      Process.killProcess(((Integer)locala.mt(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/booter/CoreService", "doExit", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      Process.killProcess(((Integer)locala.pG(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/booter/CoreService", "doExit", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
       AppMethodBeat.o(131855);
       return;
@@ -219,65 +228,60 @@ public class CoreService
     {
       for (;;)
       {
-        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.CoreService", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.CoreService", localException, "", new Object[0]);
       }
     }
   }
   
-  private static long WG()
+  private static long aku()
   {
     AppMethodBeat.i(131858);
-    ay localay = ay.aRW("msg_receive_number");
-    long l = localay.getLong("send_num", 0L) + 1L;
-    localay.edit().putLong("send_num", l);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("msg_receive_number");
+    long l = localMultiProcessMMKV.getLong("send_num", 0L) + 1L;
+    localMultiProcessMMKV.edit().putLong("send_num", l);
     AppMethodBeat.o(131858);
     return l;
   }
   
-  public static void WH()
+  public static void akv()
   {
-    AppMethodBeat.i(193539);
-    ay localay = ay.aRW("msg_receive_number");
-    long l1 = localay.getLong("recv_num", 0L);
-    long l2 = localay.getLong("send_num", 0L);
+    AppMethodBeat.i(196979);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("msg_receive_number");
+    long l1 = localMultiProcessMMKV.getLong("recv_num", 0L);
+    long l2 = localMultiProcessMMKV.getLong("send_num", 0L);
     long l3 = l1 - l2;
     if (l3 > 0L)
     {
-      localay.edit().putLong("send_num", 1L + l1);
-      e.ywz.f(19779, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) });
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "checkSyncNum() why?????? diffValue:%s recvNum:%s sendNum:%s", new Object[] { Long.valueOf(l3), Long.valueOf(l1), Long.valueOf(l2) });
-      AppMethodBeat.o(193539);
+      localMultiProcessMMKV.edit().putLong("send_num", 1L + l1);
+      e.Cxv.a(19779, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3) });
+      Log.i("MicroMsg.CoreService", "checkSyncNum() why?????? diffValue:%s recvNum:%s sendNum:%s", new Object[] { Long.valueOf(l3), Long.valueOf(l1), Long.valueOf(l2) });
+      AppMethodBeat.o(196979);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "checkSyncNum() no problem");
-    AppMethodBeat.o(193539);
+    Log.i("MicroMsg.CoreService", "checkSyncNum() no problem");
+    AppMethodBeat.o(196979);
   }
   
-  public static void a(b paramb)
+  private static IDKey cp(int paramInt1, int paramInt2)
   {
-    fFT = paramb;
-  }
-  
-  private static IDKey cn(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(193538);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "idkeyPushSetupTimeReport %s %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    AppMethodBeat.i(196978);
+    Log.i("MicroMsg.CoreService", "idkeyPushSetupTimeReport %s %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     IDKey localIDKey = new IDKey();
     localIDKey.SetID(1391);
     localIDKey.SetKey(paramInt1);
     localIDKey.SetValue(paramInt2);
-    AppMethodBeat.o(193538);
+    AppMethodBeat.o(196978);
     return localIDKey;
   }
   
-  public static long qS(long paramLong)
+  public static long yK(long paramLong)
   {
     AppMethodBeat.i(131859);
-    ay localay = ay.aRW("msg_receive_number");
-    long l = paramLong - localay.getLong("recv_num", 0L);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("msg_receive_number");
+    long l = paramLong - localMultiProcessMMKV.getLong("recv_num", 0L);
     if (l > 0L)
     {
-      localay.edit().putLong("recv_num", paramLong);
+      localMultiProcessMMKV.edit().putLong("recv_num", paramLong);
       AppMethodBeat.o(131859);
       return 1L;
     }
@@ -285,65 +289,65 @@ public class CoreService
     return l;
   }
   
-  public final void cx(boolean paramBoolean)
+  public final void df(boolean paramBoolean)
   {
     AppMethodBeat.i(131853);
     if (!paramBoolean)
     {
-      com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.CoreService", "[NETWORK LOST]");
-      ad.aPG().iJo = false;
-      ad.aPH().qK(0);
-      if (this.fFU)
+      Log.w("MicroMsg.CoreService", "[NETWORK LOST]");
+      af.bkh().jFS = false;
+      af.bki().uC(0);
+      if (this.gle)
       {
-        ad.aPK().aPf();
-        f localf = this.fFS;
-        localf.fGr = null;
-        localf.fGt = "";
-        localf.fGs = "";
-        localf.fGu = -1;
+        af.bkl().bjx();
+        f localf = this.glc;
+        localf.glA = null;
+        localf.glC = "";
+        localf.glB = "";
+        localf.glD = -1;
       }
-      this.fFU = false;
+      this.gle = false;
       AppMethodBeat.o(131853);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.CoreService", "[NETWORK CONNECTED]");
-    ad.aPG().iJo = true;
-    paramBoolean = this.fFS.WO();
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "lastConnected %s, isNetWorkChange %s", new Object[] { Boolean.valueOf(this.fFU), Boolean.valueOf(paramBoolean) });
-    if ((this.fFU) && (!paramBoolean))
+    Log.w("MicroMsg.CoreService", "[NETWORK CONNECTED]");
+    af.bkh().jFS = true;
+    paramBoolean = this.glc.akC();
+    Log.i("MicroMsg.CoreService", "lastConnected %s, isNetWorkChange %s", new Object[] { Boolean.valueOf(this.gle), Boolean.valueOf(paramBoolean) });
+    if ((this.gle) && (!paramBoolean))
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "network not change or can't get network info");
+      Log.i("MicroMsg.CoreService", "network not change or can't get network info");
       AppMethodBeat.o(131853);
       return;
     }
     if (paramBoolean) {
-      ad.aPK().aPf();
+      af.bkl().bjx();
     }
-    this.fFU = true;
-    ad.aPH().qK(6);
-    if (this.fGc == null) {
-      this.fGc = new WakerLock(getApplicationContext(), "MicroMsg.CoreService");
+    this.gle = true;
+    af.bki().uC(6);
+    if (this.gll == null) {
+      this.gll = new WakerLock(getApplicationContext(), "MicroMsg.CoreService");
     }
-    if (!this.fGc.isLocking())
+    if (!this.gll.isLocking())
     {
-      this.fGc.lock(6000L, "CoreService.setNetworkAvailable");
-      this.fFZ += 1L;
+      this.gll.lock(6000L, "CoreService.setNetworkAvailable");
+      this.gli += 1L;
     }
-    if (0L == this.fGb) {
-      this.fGa = bu.fpO();
+    if (0L == this.glk) {
+      this.glj = Util.nowMilliSecond();
     }
-    this.fGb += 1L;
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "setNetworkAvailable start lockCount:%d delayCount:%d delayDur:%d", new Object[] { Long.valueOf(this.fFZ), Long.valueOf(this.fGb), Long.valueOf(bu.fpO() - this.fGa) });
-    this.fGe.ay(3000L, 3000L);
+    this.glk += 1L;
+    Log.i("MicroMsg.CoreService", "setNetworkAvailable start lockCount:%d delayCount:%d delayDur:%d", new Object[] { Long.valueOf(this.gli), Long.valueOf(this.glk), Long.valueOf(Util.nowMilliSecond() - this.glj) });
+    this.gln.startTimer(3000L);
     AppMethodBeat.o(131853);
   }
   
   public final boolean f(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(131852);
-    if (l.co(this))
+    if (l.cK(this))
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "fully exited, no need to notify worker");
+      Log.i("MicroMsg.CoreService", "fully exited, no need to notify worker");
       AppMethodBeat.o(131852);
       return false;
     }
@@ -352,38 +356,38 @@ public class CoreService
     }
     for (;;)
     {
-      boolean bool1 = ad.aPD().getBoolean("is_in_notify_mode", false);
-      boolean bool2 = this.fFR.iHF.aFm();
-      boolean bool3 = ad.aPK().aPm();
-      if ((bool1) && (bool2) && (!bool3) && (g.a(2, paramInt, paramArrayOfByte, this.fFR.iHF.mR(1), bu.fpO())))
+      boolean bool1 = af.bke().getBoolean("is_in_notify_mode", false);
+      boolean bool2 = this.glb.jEj.aZb();
+      boolean bool3 = af.bkl().bjN();
+      if ((bool1) && (bool2) && (!bool3) && (g.a(2, paramInt, paramArrayOfByte, this.glb.jEj.qe(1), Util.nowMilliSecond())))
       {
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "deal with notify sync in push");
+        Log.i("MicroMsg.CoreService", "deal with notify sync in push");
         AppMethodBeat.o(131852);
         return true;
       }
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "deal with notify sync to mm by broast, isLogin:%b, isMMProcessExist:%b, isInNotifyMode:%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
+      Log.i("MicroMsg.CoreService", "deal with notify sync to mm by broast, isLogin:%b, isMMProcessExist:%b, isInNotifyMode:%b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool1) });
       Intent localIntent = new Intent(this, NotifyReceiver.class);
       localIntent.putExtra("notify_option_type", 2);
-      localIntent.putExtra("notify_uin", this.fFR.iHF.getUin());
+      localIntent.putExtra("notify_uin", this.glb.jEj.getUin());
       localIntent.putExtra("notify_respType", paramInt);
       localIntent.putExtra("notify_respBuf", paramArrayOfByte);
-      localIntent.putExtra("notify_skey", this.fFR.iHF.mR(1));
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "notify broadcast:" + localIntent.getAction() + ", type=" + paramInt);
+      localIntent.putExtra("notify_skey", this.glb.jEj.qe(1));
+      Log.i("MicroMsg.CoreService", "notify broadcast:" + localIntent.getAction() + ", type=" + paramInt);
       try
       {
-        long l = WG();
+        long l = aku();
         localIntent.putExtra("notfiy_sync_num", l);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "notify broadcast: dknot recvTime:%d uin:%d type:%d buf:%d syncNum:%s", new Object[] { Long.valueOf(localIntent.getLongExtra("notfiy_recv_time", 0L)), Integer.valueOf(localIntent.getIntExtra("notify_uin", 0)), Integer.valueOf(localIntent.getIntExtra("notify_respType", 0)), Integer.valueOf(bu.n(localIntent.getByteArrayExtra("notify_respBuf"), new byte[0]).length), Long.valueOf(l) });
-        localIntent.putExtra("notfiy_recv_time", bu.fpO());
+        Log.i("MicroMsg.CoreService", "notify broadcast: dknot recvTime:%d uin:%d type:%d buf:%d syncNum:%s", new Object[] { Long.valueOf(localIntent.getLongExtra("notfiy_recv_time", 0L)), Integer.valueOf(localIntent.getIntExtra("notify_uin", 0)), Integer.valueOf(localIntent.getIntExtra("notify_respType", 0)), Integer.valueOf(Util.nullAs(localIntent.getByteArrayExtra("notify_respBuf"), new byte[0]).length), Long.valueOf(l) });
+        localIntent.putExtra("notfiy_recv_time", Util.nowMilliSecond());
         sendBroadcast(localIntent);
-        e.ywz.idkeyStat(1042L, 60L, 1L, false);
-        com.tencent.mm.ap.a.y(paramInt, l);
-        if (bu.lX(com.tencent.mm.plugin.expt.h.d.ctr().b("clicfg_android_receive_msg_use_mmservice_switch", "0", false, true), "1"))
+        e.Cxv.idkeyStat(1042L, 60L, 1L, false);
+        com.tencent.mm.ap.a.A(paramInt, l);
+        if (Util.isEqual(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_android_receive_msg_use_mmservice_switch", "0", false, true), "1"))
         {
           localIntent.setClass(this, NotifyReceiver.NotifyReceiverService.class);
-          localIntent.putExtra("notfiy_recv_time", bu.fpO());
-          com.tencent.mm.service.c.a(localIntent, "mm", true, new Intent(ak.getContext(), ProcessService.MMProcessService.class));
-          e.ywz.idkeyStat(1042L, 62L, 1L, false);
+          localIntent.putExtra("notfiy_recv_time", Util.nowMilliSecond());
+          com.tencent.mm.service.c.a(localIntent, "mm", true, new Intent(MMApplicationContext.getContext(), ProcessService.MMProcessService.class));
+          e.Cxv.idkeyStat(1042L, 62L, 1L, false);
         }
         AppMethodBeat.o(131852);
         return true;
@@ -392,7 +396,7 @@ public class CoreService
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.CoreService", "dknot sendBroadcast  failed:%s", new Object[] { bu.o(paramArrayOfByte) });
+          Log.e("MicroMsg.CoreService", "dknot sendBroadcast  failed:%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
         }
       }
     }
@@ -402,17 +406,17 @@ public class CoreService
   {
     AppMethodBeat.i(131850);
     int i = Process.myPid();
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CoreService", "onBind~~~ lastpid:%d  pid:%d threadID:" + Thread.currentThread(), new Object[] { Integer.valueOf(this.fFY), Integer.valueOf(i) });
-    if (i != this.fFY)
+    Log.d("MicroMsg.CoreService", "onBind~~~ lastpid:%d  pid:%d threadID:" + Thread.currentThread(), new Object[] { Integer.valueOf(this.glh), Integer.valueOf(i) });
+    if (i != this.glh)
     {
-      this.fFY = i;
-      e.ywz.idkeyStat(99L, 147L, 1L, false);
+      this.glh = i;
+      e.Cxv.idkeyStat(99L, 147L, 1L, false);
       if ((paramIntent != null) && ("auto".equals(paramIntent.getStringExtra("START_TYPE")))) {
-        e.ywz.idkeyStat(99L, 146L, 1L, false);
+        e.Cxv.idkeyStat(99L, 146L, 1L, false);
       }
-      i = (int)(SystemClock.elapsedRealtime() - j.ajX());
+      i = (int)(SystemClock.elapsedRealtime() - j.aAn());
       paramIntent = new ArrayList();
-      paramIntent.add(cn(5, i));
+      paramIntent.add(cp(5, i));
       if (i > 1000L) {
         break label216;
       }
@@ -420,19 +424,19 @@ public class CoreService
     }
     for (;;)
     {
-      paramIntent.add(cn(i, 1));
-      paramIntent.add(cn(0, 1));
-      e.ywz.b(paramIntent, false);
-      com.tencent.e.h.MqF.r(new Runnable()
+      paramIntent.add(cp(i, 1));
+      paramIntent.add(cp(0, 1));
+      e.Cxv.b(paramIntent, false);
+      com.tencent.f.h.RTc.o(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(193535);
-          CoreService.WI();
-          AppMethodBeat.o(193535);
+          AppMethodBeat.i(196975);
+          CoreService.akw();
+          AppMethodBeat.o(196975);
         }
       }, 3000L);
-      paramIntent = this.fFR;
+      paramIntent = this.glb;
       AppMethodBeat.o(131850);
       return paramIntent;
       label216:
@@ -481,14 +485,14 @@ public class CoreService
   {
     Object localObject5 = null;
     AppMethodBeat.i(131846);
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CoreService", "onCreate~~~threadID:" + Thread.currentThread());
+    Log.d("MicroMsg.CoreService", "onCreate~~~threadID:" + Thread.currentThread());
     super.onCreate();
     try
     {
-      this.fFV = ((a)Class.forName("com.tencent.mm.platformtools.BroadcastHelper").newInstance());
-      com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CoreService", "broadcastRegisterHelper = %s", new Object[] { this.fFV });
-      this.fFV.registerBroadcasts();
-      if ((com.tencent.mm.compatible.util.d.lB(26)) && (Build.VERSION.SDK_INT < 24) && (!com.tencent.mm.compatible.util.g.abt()))
+      this.glf = ((CoreService.a)Class.forName("com.tencent.mm.platformtools.BroadcastHelper").newInstance());
+      Log.d("MicroMsg.CoreService", "broadcastRegisterHelper = %s", new Object[] { this.glf });
+      this.glf.registerBroadcasts();
+      if ((com.tencent.mm.compatible.util.d.oE(26)) && (Build.VERSION.SDK_INT < 24) && (!com.tencent.mm.compatible.util.g.isMIUI()))
       {
         if (Build.VERSION.SDK_INT < 18) {
           startForeground(-1213, new Notification());
@@ -496,52 +500,52 @@ public class CoreService
       }
       else
       {
-        localObject1 = new aq(Looper.getMainLooper());
-        Mars.init(ak.getContext(), (aq)localObject1);
-        StnLogic.setCallBack(new aj());
-        IPxxLogic.setCallBack(new p());
-        com.tencent.mm.jni.a.a.aik();
-        com.tencent.mm.sdk.b.a.IvT.c(new com.tencent.mm.sdk.b.c() {});
-        ad.aPE();
-        ai.a(this.fFW);
+        localObject1 = new MMHandler(Looper.getMainLooper());
+        Mars.init(MMApplicationContext.getContext(), (MMHandler)localObject1);
+        StnLogic.setCallBack(new al());
+        IPxxLogic.setCallBack(new r());
+        com.tencent.mm.jni.a.a.ayA();
+        EventCenter.instance.addListener(new IListener() {});
+        af.bkf();
+        MAlarmHandler.initAlarmBumper(this.bumper);
         if (PlatformComm.resetprocessimp == null) {
           PlatformComm.resetprocessimp = this;
         }
         if (PlatformComm.reportCrashImp == null) {
           PlatformComm.reportCrashImp = this;
         }
-        ad.a((aq)localObject1);
-        ad.setContext(getApplicationContext());
-        ad.a(new com.tencent.mm.network.ae());
-        ad.a(new af());
-        ad.a(this);
-        ad.a(new z());
-        this.fFR = ad.aPK();
-        if (this.fFR != null) {
+        af.a((MMHandler)localObject1);
+        af.setContext(getApplicationContext());
+        af.a(new ag());
+        af.a(new ah());
+        af.a(this);
+        af.a(new ab());
+        this.glb = af.bkl();
+        if (this.glb != null) {
           break label774;
         }
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "autoAuth is null and new one");
-        this.fFR = new t(ad.aPI());
-        ad.g(this.fFR);
+        Log.i("MicroMsg.CoreService", "autoAuth is null and new one");
+        this.glb = new v(af.bkj());
+        af.g(this.glb);
         Mars.onCreate(true);
-        if (ad.aPL() != null) {
+        if (af.bkm() != null) {
           break label792;
         }
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "NetTaskAdapter is null and new one");
-        ad.a(new ac());
-        if (ad.aPM() == null)
+        Log.i("MicroMsg.CoreService", "NetTaskAdapter is null and new one");
+        af.a(new ae());
+        if (af.bkn() == null)
         {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "NetNotifyAdapter is null and new one");
-          ad.a(new ab());
-          ad.aPM().iIV = this;
+          Log.i("MicroMsg.CoreService", "NetNotifyAdapter is null and new one");
+          af.a(new ad());
+          af.bkn().jFz = this;
         }
-        localObject4 = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).fHC;
+        localObject4 = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).gmN;
         localObject1 = localObject4;
         if (localObject4 == null)
         {
-          ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).fHC = d.bL(getApplicationContext());
-          localObject1 = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).fHC;
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "summerauths init debug here[%s]", new Object[] { localObject1 });
+          ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).gmN = d.cg(getApplicationContext());
+          localObject1 = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).gmN;
+          Log.i("MicroMsg.CoreService", "summerauths init debug here[%s]", new Object[] { localObject1 });
         }
         if (localObject1 != null)
         {
@@ -549,11 +553,11 @@ public class CoreService
           str1 = ((d)localObject1).getString(".com.tencent.mm.debug.server.ports.http");
           localObject6 = ((d)localObject1).getString(".com.tencent.mm.debug.server.host.socket");
           String str2 = ((d)localObject1).getString(".com.tencent.mm.debug.server.ports.socket");
-          this.fFR.e((String)localObject4, str1, (String)localObject6, str2);
+          this.glb.d((String)localObject4, str1, (String)localObject6, str2);
           localObject4 = ((d)localObject1).getString(".com.tencent.mm.debug.server.wallet.host");
           str1 = ((d)localObject1).getString(".com.tencent.mm.debug.server.wallet.ip");
-          localObject6 = this.fFR;
-          if ((!bu.isNullOrNil((String)localObject4)) && (!bu.V(new String[0]))) {
+          localObject6 = this.glb;
+          if ((!Util.isNullOrNil((String)localObject4)) && (!Util.isNullOrNil(new String[0]))) {
             break label809;
           }
         }
@@ -567,9 +571,9 @@ public class CoreService
         localObject1 = ((String)localObject4).split("@");
         localObject4 = localObject1[0];
         localObject1 = localObject1[1];
-        this.fFR.setNewDnsDebugHost((String)localObject4, (String)localObject1);
-        MMReceivers.AlarmReceiver.bP(getApplicationContext());
-        MMReceivers.AlarmReceiver.bO(getApplicationContext());
+        this.glb.setNewDnsDebugHost((String)localObject4, (String)localObject1);
+        MMReceivers.AlarmReceiver.ck(getApplicationContext());
+        MMReceivers.AlarmReceiver.cj(getApplicationContext());
         localObject1 = (ConnectivityManager)getSystemService("connectivity");
       }
     }
@@ -590,43 +594,43 @@ public class CoreService
             break label920;
           }
           localObject1 = "null";
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.CoreService", "networkInfo.state: %s", new Object[] { localObject1 });
-          ad.aPG().iJo = false;
-          ad.aPH().qK(0);
-          ((PluginZero)com.tencent.mm.kernel.g.ad(PluginZero.class)).LGp.a(this);
-          ar.o(new Runnable()
+          Log.e("MicroMsg.CoreService", "networkInfo.state: %s", new Object[] { localObject1 });
+          af.bkh().jFS = false;
+          af.bki().uC(0);
+          ((PluginZero)com.tencent.mm.kernel.g.ah(PluginZero.class)).UtT.a(this);
+          MMHandlerThread.postToMainThreadDelayed(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(131840);
               if (Build.VERSION.SDK_INT > 23) {
-                com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "KeepAliveService.scheduleKeepAliveJob() flag:%s", new Object[] { Boolean.valueOf(KeepAliveService.WN()) });
+                Log.i("MicroMsg.CoreService", "KeepAliveService.scheduleKeepAliveJob() flag:%s", new Object[] { Boolean.valueOf(KeepAliveService.akB()) });
               }
               AppMethodBeat.o(131840);
             }
           }, 1000L);
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "CoreService OnCreate ");
+          Log.i("MicroMsg.CoreService", "CoreService OnCreate ");
           AppMethodBeat.o(131846);
           return;
           localException1 = localException1;
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.CoreService", "onCreate Class.forName(com.tencent.mm.platformtools.BroadcastHelper) Exception = %s ", new Object[] { localException1.getMessage() });
+          Log.e("MicroMsg.CoreService", "onCreate Class.forName(com.tencent.mm.platformtools.BroadcastHelper) Exception = %s ", new Object[] { localException1.getMessage() });
           continue;
-          if (getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.abv()).getBoolean("set_service", false))
+          if (getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.aps()).getBoolean("set_service", false))
           {
             startForeground(-1213, new Notification());
-            startService(new Intent(this, CoreService.InnerService.class));
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "set service for push.");
+            startService(new Intent(this, InnerService.class));
+            Log.i("MicroMsg.CoreService", "set service for push.");
             continue;
             label774:
-            com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.CoreService", "autoAuth is not null and reset");
-            this.fFR.reset();
+            Log.w("MicroMsg.CoreService", "autoAuth is not null and reset");
+            this.glb.reset();
             continue;
             label792:
-            com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.CoreService", "NetTaskAdapter is not null and reset");
-            ad.aPL().reset();
+            Log.w("MicroMsg.CoreService", "NetTaskAdapter is not null and reset");
+            af.bkm().reset();
             continue;
             label809:
-            new t.14((t)localObject6, (String)localObject4, str1).b(((t)localObject6).handler);
+            new v.14((v)localObject6, (String)localObject4, str1).exec(((v)localObject6).handler);
             continue;
             label833:
             localObject4 = localException1.getString(".com.tencent.mm.debug.server.host.newdns");
@@ -646,16 +650,16 @@ public class CoreService
       {
         for (;;)
         {
-          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.CoreService", localException2, "", new Object[0]);
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.CoreService", "getActiveNetworkInfo failed. %s", new Object[] { localException2.getMessage() });
+          Log.printErrStackTrace("MicroMsg.CoreService", localException2, "", new Object[0]);
+          Log.e("MicroMsg.CoreService", "getActiveNetworkInfo failed. %s", new Object[] { localException2.getMessage() });
           Object localObject3 = localObject5;
           continue;
           label920:
           localObject3 = ((NetworkInfo)localObject3).getState();
           continue;
           label928:
-          ad.aPG().iJo = true;
-          ad.aPH().qK(6);
+          af.bkh().jFS = true;
+          af.bki().uC(6);
         }
       }
     }
@@ -664,14 +668,14 @@ public class CoreService
   public void onDestroy()
   {
     AppMethodBeat.i(131848);
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "onDestroy~~~ threadID:" + Thread.currentThread());
+    Log.i("MicroMsg.CoreService", "onDestroy~~~ threadID:" + Thread.currentThread());
     try
     {
-      ((PluginZero)com.tencent.mm.kernel.g.ad(PluginZero.class)).LGp.b(this);
-      com.tencent.mm.jni.a.a.ail();
+      ((PluginZero)com.tencent.mm.kernel.g.ah(PluginZero.class)).UtT.b(this);
+      com.tencent.mm.jni.a.a.ayB();
       super.onDestroy();
-      WF();
-      if (this.fFV == null) {}
+      akt();
+      if (this.glf == null) {}
     }
     catch (Exception localException1)
     {
@@ -679,16 +683,16 @@ public class CoreService
       {
         try
         {
-          this.fFV.unRegisterBroadcasts();
+          this.glf.unRegisterBroadcasts();
           AppMethodBeat.o(131848);
           return;
         }
         catch (Exception localException2)
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.CoreService", "onDestroy unRegisterBroadcasts() Exception = %s ", new Object[] { localException2.getMessage() });
+          Log.e("MicroMsg.CoreService", "onDestroy unRegisterBroadcasts() Exception = %s ", new Object[] { localException2.getMessage() });
         }
         localException1 = localException1;
-        com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.CoreService", "onDestroy onDestroy() mCoreServiceLifecycleCallbacks Exception: %s", new Object[] { localException1.getMessage() });
+        Log.e("MicroMsg.CoreService", "onDestroy onDestroy() mCoreServiceLifecycleCallbacks Exception: %s", new Object[] { localException1.getMessage() });
       }
       AppMethodBeat.o(131848);
     }
@@ -697,7 +701,7 @@ public class CoreService
   public void onRebind(Intent paramIntent)
   {
     AppMethodBeat.i(131851);
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CoreService", "onRebind~~~ threadID:" + Thread.currentThread());
+    Log.d("MicroMsg.CoreService", "onRebind~~~ threadID:" + Thread.currentThread());
     super.onRebind(paramIntent);
     AppMethodBeat.o(131851);
   }
@@ -706,13 +710,13 @@ public class CoreService
   {
     AppMethodBeat.i(131847);
     int i = Process.myPid();
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CoreService", "onStartCommand lastpid:%d  pid:%d flags:%d startId:%d", new Object[] { Integer.valueOf(this.fFX), Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (i != this.fFX)
+    Log.i("MicroMsg.CoreService", "onStartCommand lastpid:%d  pid:%d flags:%d startId:%d", new Object[] { Integer.valueOf(this.glg), Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (i != this.glg)
     {
-      this.fFX = i;
-      e.ywz.idkeyStat(99L, 141L, 1L, false);
+      this.glg = i;
+      e.Cxv.idkeyStat(99L, 141L, 1L, false);
       if ((paramIntent != null) && ("auto".equals(paramIntent.getStringExtra("START_TYPE")))) {
-        e.ywz.idkeyStat(99L, 140L, 1L, false);
+        e.Cxv.idkeyStat(99L, 140L, 1L, false);
       }
     }
     AppMethodBeat.o(131847);
@@ -722,9 +726,9 @@ public class CoreService
   public boolean onUnbind(Intent paramIntent)
   {
     AppMethodBeat.i(131849);
-    com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.CoreService", "onUnbind~~~ threadID:" + Thread.currentThread());
-    ad.aPG().iJn = null;
-    ad.aPN().iIP = null;
+    Log.d("MicroMsg.CoreService", "onUnbind~~~ threadID:" + Thread.currentThread());
+    af.bkh().jFR = null;
+    af.bko().jFt = null;
     boolean bool = super.onUnbind(paramIntent);
     AppMethodBeat.o(131849);
     return bool;
@@ -733,12 +737,12 @@ public class CoreService
   public void reportIdkey()
   {
     AppMethodBeat.i(131857);
-    ay localay = ay.aRW("alarm_crash");
-    long l = localay.getLong("report_time", 0L);
-    if (ch.aDa() - l > 86400000L)
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("alarm_crash");
+    long l = localMultiProcessMMKV.getLong("report_time", 0L);
+    if (cl.aWy() - l > 86400000L)
     {
-      localay.edit().putLong("report_time", ch.aDa());
-      e.ywz.idkeyStat(1204L, 0L, 1L, false);
+      localMultiProcessMMKV.edit().putLong("report_time", cl.aWy());
+      e.Cxv.idkeyStat(1204L, 0L, 1L, false);
     }
     AppMethodBeat.o(131857);
   }
@@ -746,26 +750,56 @@ public class CoreService
   public void restartProcess()
   {
     AppMethodBeat.i(131856);
-    com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.CoreService", "restartProcess");
-    WF();
+    Log.w("MicroMsg.CoreService", "restartProcess");
+    akt();
     AppMethodBeat.o(131856);
   }
   
-  public static abstract interface a
+  public static class InnerService
+    extends Service
   {
-    public abstract void registerBroadcasts();
+    public IBinder onBind(Intent paramIntent)
+    {
+      return null;
+    }
     
-    public abstract void unRegisterBroadcasts();
+    public void onCreate()
+    {
+      AppMethodBeat.i(131843);
+      super.onCreate();
+      try
+      {
+        startForeground(-1213, new Notification());
+        stopSelf();
+        AppMethodBeat.o(131843);
+        return;
+      }
+      catch (NullPointerException localNullPointerException)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.CoreService", "set service for push exception:%s.", new Object[] { localNullPointerException });
+        }
+      }
+    }
+    
+    public void onDestroy()
+    {
+      AppMethodBeat.i(131844);
+      stopForeground(true);
+      super.onDestroy();
+      AppMethodBeat.o(131844);
+    }
   }
   
   public static abstract interface b
   {
-    public abstract void br(Context paramContext);
+    public abstract void bL(Context paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.CoreService
  * JD-Core Version:    0.7.0.1
  */

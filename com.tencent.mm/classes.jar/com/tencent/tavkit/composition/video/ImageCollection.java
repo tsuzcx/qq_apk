@@ -13,24 +13,24 @@ public class ImageCollection
   
   public ImageCollection()
   {
-    AppMethodBeat.i(200934);
+    AppMethodBeat.i(197604);
     this.videoChannelImages = new ArrayList();
     this.overlayImages = new ArrayList();
-    AppMethodBeat.o(200934);
+    AppMethodBeat.o(197604);
   }
   
   public void addChannelImage(CIImage paramCIImage, TAVVideoCompositionTrack paramTAVVideoCompositionTrack)
   {
-    AppMethodBeat.i(200935);
+    AppMethodBeat.i(197605);
     this.videoChannelImages.add(new TrackImagePair(paramCIImage, paramTAVVideoCompositionTrack));
-    AppMethodBeat.o(200935);
+    AppMethodBeat.o(197605);
   }
   
   public void addOverlayImage(CIImage paramCIImage, TAVVideoCompositionTrack paramTAVVideoCompositionTrack)
   {
-    AppMethodBeat.i(200936);
+    AppMethodBeat.i(197606);
     this.overlayImages.add(new TrackImagePair(paramCIImage, paramTAVVideoCompositionTrack));
-    AppMethodBeat.o(200936);
+    AppMethodBeat.o(197606);
   }
   
   public List<TrackImagePair> getOverlayImages()
@@ -45,9 +45,9 @@ public class ImageCollection
   
   public String toString()
   {
-    AppMethodBeat.i(200937);
+    AppMethodBeat.i(197607);
     String str = "ImageCollection{videoChannelImages=" + this.videoChannelImages + ", overlayImages=" + this.overlayImages + '}';
-    AppMethodBeat.o(200937);
+    AppMethodBeat.o(197607);
     return str;
   }
   
@@ -75,7 +75,7 @@ public class ImageCollection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tavkit.composition.video.ImageCollection
  * JD-Core Version:    0.7.0.1
  */

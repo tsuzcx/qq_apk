@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory />
-    <CheckBoxPreference android:key="room_msg_show_username" android:layout="@layout/aop" android:title="@string/eqt" />
-    <com.tencent.mm.chatroom.ui.preference.SignaturePreference android:key="room_name" android:layout="@layout/aop" android:title="@string/equ" />
-    <PreferenceCategory />
-    <CheckBoxPreference android:key="room_msg_notify" android:layout="@layout/aop" android:title="@string/eqr" />
-    <CheckBoxPreference android:key="room_show_msg_count" android:layout="@layout/aop" android:title="@string/eqy" />
-    <PreferenceCategory />
-    <Preference android:key="room_set_chatting_background" android:layout="@layout/aop" android:title="@string/es9" />
-    <PreferenceCategory />
-    <Preference android:key="room_clear_chatting_history" android:layout="@layout/aop" android:title="@string/ep8" />
+    <CheckBoxPreference android:key="contact_is_mute" android:title="@string/g86" />
+    <CheckBoxPreference android:key="contact_info_subscribe_bizinfo" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bh4" />
+    <Preference android:layout="@layout/xv" android:title="@string/b_x" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="contact_info_locate" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bck" />
+    <Preference android:key="contact_info_template_recv" android:layout="@layout/b8j" android:title="@string/bh6" />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_add_shortcut_btn" android:layout="@layout/b8j" android:title="@string/b9p" />
+    <Preference android:key="contact_info_clear_msg" android:layout="@layout/b8j" android:title="@string/b_6" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_subscribe_msg" android:layout="@layout/b8j" android:title="@string/bh5" />
 </PreferenceScreen>

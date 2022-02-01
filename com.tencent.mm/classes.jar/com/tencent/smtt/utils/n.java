@@ -325,7 +325,7 @@ public class n
   
   private File i()
   {
-    AppMethodBeat.i(192970);
+    AppMethodBeat.i(188554);
     for (;;)
     {
       try
@@ -340,7 +340,7 @@ public class n
           }
           else
           {
-            AppMethodBeat.o(192970);
+            AppMethodBeat.o(188554);
             return null;
           }
         }
@@ -348,7 +348,7 @@ public class n
         if (!localFile.exists())
         {
           TbsLog.e("TbsCommonConfig", "Get file(" + localFile.getCanonicalPath() + ") failed!");
-          AppMethodBeat.o(192970);
+          AppMethodBeat.o(188554);
           return null;
         }
         localStringWriter = new StringWriter();
@@ -358,7 +358,7 @@ public class n
         try
         {
           TbsLog.w("TbsCommonConfig", "pathc:" + localFile.getCanonicalPath());
-          AppMethodBeat.o(192970);
+          AppMethodBeat.o(188554);
           return localFile;
         }
         catch (Throwable localThrowable2)
@@ -427,7 +427,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.utils.n
  * JD-Core Version:    0.7.0.1
  */

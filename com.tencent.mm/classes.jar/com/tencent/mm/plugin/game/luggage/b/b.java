@@ -6,26 +6,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.o;
 import com.tencent.mm.plugin.downloader.model.o.a;
 import com.tencent.mm.plugin.downloader_app.a.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class b
-  extends bq
+  extends br
 {
-  public final void a(Context paramContext, String paramString, final bq.a parama)
+  public final void a(Context paramContext, String paramString, final br.a parama)
   {
     AppMethodBeat.i(83052);
     try
     {
       paramString = new JSONObject(paramString);
-      o.a(paramContext, a.ar(paramString), new o.a()
+      o.a(paramContext, a.aK(paramString), new o.a()
       {
-        public final void f(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
+        public final void i(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
         {
           AppMethodBeat.i(83051);
-          parama.f(paramAnonymousString, paramAnonymousJSONObject);
+          parama.i(paramAnonymousString, paramAnonymousJSONObject);
           AppMethodBeat.o(83051);
         }
       });
@@ -34,14 +34,14 @@ public class b
     }
     catch (JSONException paramContext)
     {
-      parama.f("fail", null);
+      parama.i("fail", null);
       AppMethodBeat.o(83052);
     }
   }
   
   public final void b(b.a parama) {}
   
-  public final int ced()
+  public final int dTs()
   {
     return 2;
   }

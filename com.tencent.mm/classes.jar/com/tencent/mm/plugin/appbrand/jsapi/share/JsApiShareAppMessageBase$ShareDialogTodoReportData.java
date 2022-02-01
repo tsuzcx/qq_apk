@@ -9,11 +9,11 @@ class JsApiShareAppMessageBase$ShareDialogTodoReportData
   implements Parcelable
 {
   public static final Parcelable.Creator<ShareDialogTodoReportData> CREATOR;
-  public String hDU;
-  public String llJ;
-  public int llK;
-  public int llL;
-  public int llM;
+  public String ixZ;
+  public int mrA;
+  public int mrB;
+  public String mry;
+  public int mrz;
   public String username;
   
   static
@@ -26,23 +26,23 @@ class JsApiShareAppMessageBase$ShareDialogTodoReportData
   protected JsApiShareAppMessageBase$ShareDialogTodoReportData(Parcel paramParcel)
   {
     AppMethodBeat.i(184722);
-    this.llJ = paramParcel.readString();
+    this.mry = paramParcel.readString();
     this.username = paramParcel.readString();
-    this.hDU = paramParcel.readString();
-    this.llK = paramParcel.readInt();
-    this.llL = paramParcel.readInt();
-    this.llM = paramParcel.readInt();
+    this.ixZ = paramParcel.readString();
+    this.mrz = paramParcel.readInt();
+    this.mrA = paramParcel.readInt();
+    this.mrB = paramParcel.readInt();
     AppMethodBeat.o(184722);
   }
   
   public JsApiShareAppMessageBase$ShareDialogTodoReportData(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.llJ = paramString1;
+    this.mry = paramString1;
     this.username = paramString2;
-    this.hDU = paramString3;
-    this.llK = paramInt1;
-    this.llL = paramInt2;
-    this.llM = paramInt3;
+    this.ixZ = paramString3;
+    this.mrz = paramInt1;
+    this.mrA = paramInt2;
+    this.mrB = paramInt3;
   }
   
   public int describeContents()
@@ -53,18 +53,18 @@ class JsApiShareAppMessageBase$ShareDialogTodoReportData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(184721);
-    paramParcel.writeString(this.llJ);
+    paramParcel.writeString(this.mry);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.hDU);
-    paramParcel.writeInt(this.llK);
-    paramParcel.writeInt(this.llL);
-    paramParcel.writeInt(this.llM);
+    paramParcel.writeString(this.ixZ);
+    paramParcel.writeInt(this.mrz);
+    paramParcel.writeInt(this.mrA);
+    paramParcel.writeInt(this.mrB);
     AppMethodBeat.o(184721);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.share.JsApiShareAppMessageBase.ShareDialogTodoReportData
  * JD-Core Version:    0.7.0.1
  */

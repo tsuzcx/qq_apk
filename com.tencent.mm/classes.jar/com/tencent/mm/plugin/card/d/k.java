@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.card.d;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.tv;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.va;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -11,12 +11,12 @@ import org.json.JSONObject;
 
 public final class k
 {
-  public static LinkedList<tv> z(String paramString1, int paramInt, String paramString2)
+  public static LinkedList<va> G(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(113810);
     if (TextUtils.isEmpty(paramString1))
     {
-      ae.e("MicroMsg.CardTpInfoItemParser", "parseCardTpInfoItemArray jsonContent is null");
+      Log.e("MicroMsg.CardTpInfoItemParser", "parseCardTpInfoItemArray jsonContent is null");
       AppMethodBeat.o(113810);
       return null;
     }
@@ -29,7 +29,7 @@ public final class k
         JSONArray localJSONArray = new JSONArray(paramString1);
         if (localJSONArray.length() == 0)
         {
-          ae.e("MicroMsg.CardTpInfoItemParser", "parseCardTpInfoItemArray cardItemListJson is null");
+          Log.e("MicroMsg.CardTpInfoItemParser", "parseCardTpInfoItemArray cardItemListJson is null");
           AppMethodBeat.o(113810);
           return null;
         }
@@ -52,26 +52,26 @@ public final class k
         try
         {
           paramString1 = new JSONObject(localJSONArray.optString(i));
-          tv localtv = new tv();
+          va localva = new va();
           if (paramInt == 26)
           {
             str = "cardId";
-            localtv.oEo = paramString1.optString(str);
-            localtv.code = paramString1.optString("code");
-            localtv.GkK = paramString1.optString("openCardParams");
-            localtv.dwb = paramString2;
-            localLinkedList.add(localtv);
+            localva.pRX = paramString1.optString(str);
+            localva.code = paramString1.optString("code");
+            localva.Lfm = paramString1.optString("openCardParams");
+            localva.dNI = paramString2;
+            localLinkedList.add(localva);
           }
         }
         catch (JSONException paramString1)
         {
-          ae.printErrStackTrace("MicroMsg.CardTpInfoItemParser", paramString1, "protect itemJSON for AppBrand", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.CardTpInfoItemParser", paramString1, "protect itemJSON for AppBrand", new Object[0]);
         }
         String str = "card_id";
       }
       catch (JSONException paramString1)
       {
-        ae.printErrStackTrace("MicroMsg.CardTpInfoItemParser", paramString1, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.CardTpInfoItemParser", paramString1, "", new Object[0]);
         AppMethodBeat.o(113810);
         return null;
       }
@@ -88,7 +88,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.card.d.k
  * JD-Core Version:    0.7.0.1
  */

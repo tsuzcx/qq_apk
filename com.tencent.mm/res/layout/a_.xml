@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.AlertDialogLayout android:gravity="start|center|top" android:orientation="vertical" android:id="@id/ea9" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/aa" />
-    <FrameLayout android:id="@id/b3e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
-        <View android:layout_gravity="top" android:id="@id/f7i" android:background="?fi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-        <android.support.v4.widget.NestedScrollView android:id="@id/f7j" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <android.widget.Space android:id="@id/g6j" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/md" />
-                <TextView android:id="@android:id/message" android:paddingLeft="?id" android:paddingRight="?id" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ut" />
-                <android.widget.Space android:id="@id/g6i" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/md" />
-            </LinearLayout>
-        </android.support.v4.widget.NestedScrollView>
-        <View android:layout_gravity="bottom" android:id="@id/f7h" android:background="?fi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-    </FrameLayout>
-    <FrameLayout android:id="@id/b7p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="48.0dip">
-        <FrameLayout android:id="@id/b7o" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </FrameLayout>
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/a9" />
-</android.support.v7.widget.AlertDialogLayout>
+    <LinearLayout android:orientation="vertical" android:background="@drawable/n" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/a2x" android:layout_gravity="left" android:id="@id/aa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:text="@string/edm" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/uj" android:gravity="left" android:layout_gravity="left" android:id="@id/a_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/ed5" />
+        <Button android:textSize="17.0dip" android:textStyle="bold" android:layout_gravity="center_horizontal" android:id="@id/dt1" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginTop="56.0dip" android:layout_marginBottom="64.0dip" android:text="@string/f1r" style="@style/p1" />
+    </LinearLayout>
+</LinearLayout>

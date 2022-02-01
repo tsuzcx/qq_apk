@@ -1,20 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j5"
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/arw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/k4" style="@style/tv"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:padding="@dimen/e4" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ix">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ImageView android:id="@id/buu" android:contentDescription="@string/ge" style="@style/iv" />
-                    <ImageView android:layout_gravity="center" android:id="@id/bv0" android:background="@null" android:visibility="gone" android:src="@drawable/ar4" android:scaleType="centerInside" style="@style/iv" />
-                </FrameLayout>
-                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dz">
-                    <TextView android:ellipsize="end" android:id="@id/bwa" android:text="{title}" android:maxLines="2" style="@style/j2" />
-                </LinearLayout>
-            </LinearLayout>
-            <include layout="@layout/a2x" />
-            <include layout="@layout/a2w" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/be9" android:paddingLeft="9.0dip" android:paddingRight="9.0dip" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/bo" android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxEms="12" android:singleLine="true" android:layout_alignParentLeft="true" style="@style/mi" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
+            <TextView android:textColor="@color/bm" android:ellipsize="end" android:id="@id/br_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:maxEms="8" android:singleLine="true" />
+            <ImageView android:id="@id/ek" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/bn" android:id="@android:id/summary" android:singleLine="true" style="@style/ml" />
         </LinearLayout>
-        <include layout="@layout/a2u" />
-    </LinearLayout>
-</FrameLayout>
+    </RelativeLayout>
+</LinearLayout>

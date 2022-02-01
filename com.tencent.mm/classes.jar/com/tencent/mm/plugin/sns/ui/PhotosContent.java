@@ -15,25 +15,25 @@ import java.util.ArrayList;
 public class PhotosContent
   extends MMFrameLayout
 {
-  public ArrayList<TagImageView> AlR;
-  private float AlS;
-  private int ciB;
+  public ArrayList<TagImageView> EuD;
+  private float EuE;
+  private int cuv;
   
   public PhotosContent(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(98153);
-    this.AlR = new ArrayList();
-    this.ciB = 120;
+    this.EuD = new ArrayList();
+    this.cuv = 120;
     AppMethodBeat.o(98153);
   }
   
-  public final TagImageView RH(int paramInt)
+  public final TagImageView ZD(int paramInt)
   {
     AppMethodBeat.i(98152);
-    if (paramInt < this.AlR.size())
+    if (paramInt < this.EuD.size())
     {
-      TagImageView localTagImageView = (TagImageView)this.AlR.get(paramInt);
+      TagImageView localTagImageView = (TagImageView)this.EuD.get(paramInt);
       AppMethodBeat.o(98152);
       return localTagImageView;
     }
@@ -44,14 +44,14 @@ public class PhotosContent
   public final void a(TagImageView paramTagImageView)
   {
     AppMethodBeat.i(98150);
-    this.AlR.add(paramTagImageView);
+    this.EuD.add(paramTagImageView);
     AppMethodBeat.o(98150);
   }
   
-  public final void eeo()
+  public final void fgF()
   {
     AppMethodBeat.i(98149);
-    this.AlR.clear();
+    this.EuD.clear();
     AppMethodBeat.o(98149);
   }
   
@@ -70,34 +70,34 @@ public class PhotosContent
       AppMethodBeat.o(98151);
       return;
     }
-    this.AlS = getResources().getDisplayMetrics().density;
-    this.ciB = ((int)(this.ciB * this.AlS));
-    if (paramInt < this.ciB) {}
+    this.EuE = getResources().getDisplayMetrics().density;
+    this.cuv = ((int)(this.cuv * this.EuE));
+    if (paramInt < this.cuv) {}
     Object localObject1;
     for (;;)
     {
       i = 0;
-      while (i < this.AlR.size())
+      while (i < this.EuD.size())
       {
         localObject1 = getChildAt(i);
         Object localObject2 = new ViewGroup.MarginLayoutParams(((View)localObject1).getLayoutParams());
         ((ViewGroup.MarginLayoutParams)localObject2).width = paramInt;
         ((ViewGroup.MarginLayoutParams)localObject2).height = paramInt;
-        ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = ((int)(i % 3 * (paramInt + this.AlS * 3.0F)));
-        ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ((int)(i / 3 * (paramInt + this.AlS * 3.0F)));
+        ((ViewGroup.MarginLayoutParams)localObject2).leftMargin = ((int)(i % 3 * (paramInt + this.EuE * 3.0F)));
+        ((ViewGroup.MarginLayoutParams)localObject2).topMargin = ((int)(i / 3 * (paramInt + this.EuE * 3.0F)));
         localObject2 = new FrameLayout.LayoutParams((ViewGroup.MarginLayoutParams)localObject2);
         ((FrameLayout.LayoutParams)localObject2).gravity = 51;
         ((View)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
         i += 1;
       }
-      paramInt = this.ciB;
+      paramInt = this.cuv;
     }
-    int i = this.AlR.size() / 3;
+    int i = this.EuD.size() / 3;
     if (i > 0)
     {
       localObject1 = (ViewGroup.MarginLayoutParams)getLayoutParams();
       float f1 = paramInt * i;
-      float f2 = this.AlS;
+      float f2 = this.EuE;
       ((ViewGroup.MarginLayoutParams)localObject1).height = ((int)((i - 1) * (f2 * 3.0F) + f1));
       setLayoutParams((ViewGroup.LayoutParams)localObject1);
     }
@@ -106,7 +106,7 @@ public class PhotosContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.PhotosContent
  * JD-Core Version:    0.7.0.1
  */

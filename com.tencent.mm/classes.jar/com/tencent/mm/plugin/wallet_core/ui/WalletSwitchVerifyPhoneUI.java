@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.text.SpannableString;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.wallet_core.c.h;
 import com.tencent.mm.plugin.wallet_core.c.y;
 import com.tencent.mm.plugin.wallet_core.model.Authen;
@@ -17,11 +17,11 @@ import com.tencent.mm.plugin.wallet_core.model.x;
 import com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemGroupView;
 import com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemGroupView.a;
 import com.tencent.mm.plugin.wallet_core.ui.view.SwitchPhoneItemView;
-import com.tencent.mm.protocal.protobuf.aby;
-import com.tencent.mm.protocal.protobuf.axm;
-import com.tencent.mm.protocal.protobuf.ik;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.aea;
+import com.tencent.mm.protocal.protobuf.biw;
+import com.tencent.mm.protocal.protobuf.ix;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.d;
 import com.tencent.mm.wallet_core.d.g;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
@@ -33,71 +33,71 @@ import java.util.List;
 public class WalletSwitchVerifyPhoneUI
   extends WalletBaseUI
 {
-  private SwitchPhoneItemGroupView DAV;
-  private List<ik> DAW;
-  public boolean DAX = false;
+  private SwitchPhoneItemGroupView Ikh;
+  private List<ix> Iki;
+  public boolean Ikj = false;
   
-  private void eHb()
+  private void fOl()
   {
     AppMethodBeat.i(71244);
-    ae.i("MicroMsg.WalletSwitchVerifyPhoneUI", "directToNext()");
+    Log.i("MicroMsg.WalletSwitchVerifyPhoneUI", "directToNext()");
     Authen localAuthen = (Authen)getInput().getParcelable("key_authen");
     Bankcard localBankcard = (Bankcard)getInput().getParcelable("key_bankcard");
     if ((localAuthen == null) || (localBankcard == null))
     {
-      ae.w("MicroMsg.WalletSwitchVerifyPhoneUI", "authen or bankcard is null");
+      Log.w("MicroMsg.WalletSwitchVerifyPhoneUI", "authen or bankcard is null");
       AppMethodBeat.o(71244);
       return;
     }
-    ElementQuery localElementQuery = t.eJn().aFJ(localBankcard.field_bankcardType);
+    ElementQuery localElementQuery = t.fQQ().aVi(localBankcard.field_bankcardType);
     getInput().putParcelable("elemt_query", localElementQuery);
-    localAuthen.dlT = localBankcard.field_bankcardType;
-    localAuthen.wRt = localBankcard.field_bindSerial;
-    localBankcard.field_bankPhone = localElementQuery.DnW;
+    localAuthen.dDj = localBankcard.field_bankcardType;
+    localAuthen.ANo = localBankcard.field_bindSerial;
+    localBankcard.field_bankPhone = localElementQuery.HXo;
     getInput().putBoolean("key_balance_change_phone_need_confirm_phone", true);
     getInput().putBoolean("key_is_changing_balance_phone_num", true);
     getInput().putInt("key_err_code", 418);
-    com.tencent.mm.wallet_core.a.k(this, getInput());
+    com.tencent.mm.wallet_core.a.l(this, getInput());
     AppMethodBeat.o(71244);
   }
   
   public int getLayoutId()
   {
-    return 2131496034;
+    return 2131497014;
   }
   
   public void initView()
   {
     AppMethodBeat.i(71241);
-    this.DAV = ((SwitchPhoneItemGroupView)findViewById(2131303217));
-    this.DAV.setOnItemSelectListener(new SwitchPhoneItemGroupView.a()
+    this.Ikh = ((SwitchPhoneItemGroupView)findViewById(2131305885));
+    this.Ikh.setOnItemSelectListener(new SwitchPhoneItemGroupView.a()
     {
-      public final void fJ(View paramAnonymousView)
+      public final void gb(View paramAnonymousView)
       {
         AppMethodBeat.i(71237);
         if (paramAnonymousView.getTag() != null)
         {
           int i = ((Integer)paramAnonymousView.getTag()).intValue();
-          ae.d("MicroMsg.WalletSwitchVerifyPhoneUI", "index: %d", new Object[] { Integer.valueOf(i) });
+          Log.d("MicroMsg.WalletSwitchVerifyPhoneUI", "index: %d", new Object[] { Integer.valueOf(i) });
           if (i == -1)
           {
-            ae.i("MicroMsg.WalletSwitchVerifyPhoneUI", "do bind new card");
+            Log.i("MicroMsg.WalletSwitchVerifyPhoneUI", "do bind new card");
             WalletSwitchVerifyPhoneUI.a(WalletSwitchVerifyPhoneUI.this);
             AppMethodBeat.o(71237);
             return;
           }
           if (i == -2)
           {
-            ae.i("MicroMsg.WalletSwitchVerifyPhoneUI", "do verify idcard tail");
+            Log.i("MicroMsg.WalletSwitchVerifyPhoneUI", "do verify idcard tail");
             WalletSwitchVerifyPhoneUI.this.getInput().putBoolean("key_forward_to_id_verify", true);
-            com.tencent.mm.wallet_core.a.k(WalletSwitchVerifyPhoneUI.this, WalletSwitchVerifyPhoneUI.this.getInput());
+            com.tencent.mm.wallet_core.a.l(WalletSwitchVerifyPhoneUI.this, WalletSwitchVerifyPhoneUI.this.getInput());
             AppMethodBeat.o(71237);
             return;
           }
-          paramAnonymousView = (ik)WalletSwitchVerifyPhoneUI.b(WalletSwitchVerifyPhoneUI.this).get(i);
+          paramAnonymousView = (ix)WalletSwitchVerifyPhoneUI.b(WalletSwitchVerifyPhoneUI.this).get(i);
           WalletSwitchVerifyPhoneUI.this.getInput().putBoolean("key_balance_change_phone_need_confirm_phone", false);
           WalletSwitchVerifyPhoneUI.this.getInput().putBoolean("key_forward_to_id_verify", false);
-          ae.i("MicroMsg.WalletSwitchVerifyPhoneUI", "select wx phone: %s", new Object[] { Boolean.valueOf(paramAnonymousView.FTI.equals("wx")) });
+          Log.i("MicroMsg.WalletSwitchVerifyPhoneUI", "select wx phone: %s", new Object[] { Boolean.valueOf(paramAnonymousView.KNr.equals("wx")) });
           WalletSwitchVerifyPhoneUI.this.getNetController().r(new Object[] { paramAnonymousView });
         }
         AppMethodBeat.o(71237);
@@ -114,26 +114,26 @@ public class WalletSwitchVerifyPhoneUI
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(71240);
-    overridePendingTransition(2130772108, 2130771986);
+    overridePendingTransition(2130772132, 2130771986);
     super.onCreate(paramBundle);
-    setMMTitle(getString(2131765887));
+    setMMTitle(getString(2131768340));
     initView();
-    this.DAX = getInput().getBoolean("key_block_bind_new_card", false);
-    if (!this.DAX)
+    this.Ikj = getInput().getBoolean("key_block_bind_new_card", false);
+    if (!this.Ikj)
     {
       paramBundle = new SwitchPhoneItemView(getContext());
       paramBundle.setTag(Integer.valueOf(-1));
-      paramBundle.a(getString(2131765883), null);
-      this.DAV.a(paramBundle, -1);
+      paramBundle.a(getString(2131768336), null);
+      this.Ikh.a(paramBundle, -1);
     }
-    if ((getProcess() != null) && (getProcess().cSH().equals("PayProcess")) && (getInput().getInt("key_can_verify_tail", 0) == 1))
+    if ((getProcess() != null) && (getProcess().dKC().equals("PayProcess")) && (getInput().getInt("key_can_verify_tail", 0) == 1))
     {
-      ae.i("MicroMsg.WalletSwitchVerifyPhoneUI", "show verify id card item");
-      paramBundle = getString(2131765292);
-      SwitchPhoneItemView localSwitchPhoneItemView = new SwitchPhoneItemView(getContext(), 2131496032);
+      Log.i("MicroMsg.WalletSwitchVerifyPhoneUI", "show verify id card item");
+      paramBundle = getString(2131767735);
+      SwitchPhoneItemView localSwitchPhoneItemView = new SwitchPhoneItemView(getContext(), 2131497012);
       localSwitchPhoneItemView.setTag(Integer.valueOf(-2));
       localSwitchPhoneItemView.a(paramBundle, null);
-      this.DAV.a(localSwitchPhoneItemView, -1);
+      this.Ikh.a(localSwitchPhoneItemView, -1);
     }
     addSceneEndListener(1667);
     addSceneEndListener(461);
@@ -152,53 +152,53 @@ public class WalletSwitchVerifyPhoneUI
     AppMethodBeat.o(71242);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, final n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, final q paramq)
   {
     AppMethodBeat.i(71243);
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      if ((paramn instanceof h))
+      if ((paramq instanceof h))
       {
-        paramString = (h)paramn;
-        this.DAW = ((h)paramn).Dgm.GOH;
-        if (this.DAW != null) {
-          Collections.sort(this.DAW, new Comparator() {});
+        paramString = (h)paramq;
+        this.Iki = ((h)paramq).HPF.LSL;
+        if (this.Iki != null) {
+          Collections.sort(this.Iki, new Comparator() {});
         }
-        if (paramString.Dgm.GOI != null)
+        if (paramString.HPF.LSM != null)
         {
-          paramString = paramString.Dgm.GOI;
-          getInput().putString("key_true_name", paramString.DkG);
-          getInput().putString("key_cre_name", paramString.DkK);
-          getInput().putString("key_cre_type", paramString.DrN);
+          paramString = paramString.HPF.LSM;
+          getInput().putString("key_true_name", paramString.HTZ);
+          getInput().putString("key_cre_name", paramString.HUd);
+          getInput().putString("key_cre_type", paramString.IaZ);
         }
-        if ((this.DAW == null) || (this.DAW.isEmpty()))
+        if ((this.Iki == null) || (this.Iki.isEmpty()))
         {
-          ae.i("MicroMsg.WalletSwitchVerifyPhoneUI", "empty mobile info");
+          Log.i("MicroMsg.WalletSwitchVerifyPhoneUI", "empty mobile info");
           AppMethodBeat.o(71243);
           return true;
         }
-        paramInt1 = this.DAW.size() - 1;
+        paramInt1 = this.Iki.size() - 1;
         label172:
         if (paramInt1 >= 0)
         {
-          paramn = (ik)this.DAW.get(paramInt1);
-          if ((bu.isNullOrNil(paramn.FTI)) || (!paramn.FTI.equals("cft"))) {
+          paramq = (ix)this.Iki.get(paramInt1);
+          if ((Util.isNullOrNil(paramq.KNr)) || (!paramq.KNr.equals("cft"))) {
             break label484;
           }
           SwitchPhoneItemView localSwitchPhoneItemView = new SwitchPhoneItemView(getContext());
-          if ((bu.isNullOrNil(paramn.FTJ)) || (!paramn.FTJ.equals("1"))) {
+          if ((Util.isNullOrNil(paramq.KNs)) || (!paramq.KNs.equals("1"))) {
             break label347;
           }
-          paramString = getString(2131765886);
-          paramString = getString(2131765884, new Object[] { paramn.uVs, paramString, paramn.FTK });
-          if (!this.DAX) {
+          paramString = getString(2131768339);
+          paramString = getString(2131768337, new Object[] { paramq.ynT, paramString, paramq.KNt });
+          if (!this.Ikj) {
             break label358;
           }
           paramString = new SpannableString(paramString);
           label310:
           localSwitchPhoneItemView.setTag(Integer.valueOf(paramInt1));
-          localSwitchPhoneItemView.a(paramn.DgJ, paramString);
-          this.DAV.a(localSwitchPhoneItemView, 0);
+          localSwitchPhoneItemView.a(paramq.HQc, paramString);
+          this.Ikh.a(localSwitchPhoneItemView, 0);
         }
         for (;;)
         {
@@ -207,22 +207,22 @@ public class WalletSwitchVerifyPhoneUI
           break label172;
           break;
           label347:
-          paramString = getString(2131765885);
+          paramString = getString(2131768338);
           break label262;
           label358:
-          String str1 = getString(2131765889);
+          String str1 = getString(2131768342);
           l locall = new l(this);
           String str2 = paramString + "，";
-          locall.mColor = getResources().getColor(2131100027);
+          locall.mColor = getResources().getColor(2131100053);
           paramString = new SpannableString(str2 + str1);
           paramString.setSpan(locall, str2.length(), str2.length() + str1.length(), 33);
-          locall.Dxw = new l.a()
+          locall.IgH = new l.a()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(71239);
-              ae.d("MicroMsg.WalletSwitchVerifyPhoneUI", "span click");
-              WalletSwitchVerifyPhoneUI.a(WalletSwitchVerifyPhoneUI.this, paramn);
+              Log.d("MicroMsg.WalletSwitchVerifyPhoneUI", "span click");
+              WalletSwitchVerifyPhoneUI.a(WalletSwitchVerifyPhoneUI.this, paramq);
               AppMethodBeat.o(71239);
             }
           };
@@ -230,12 +230,12 @@ public class WalletSwitchVerifyPhoneUI
           label484:
           paramString = new SwitchPhoneItemView(getContext());
           paramString.setTag(Integer.valueOf(paramInt1));
-          paramString.a(paramn.DgJ, getString(2131765890));
-          this.DAV.a(paramString, 0);
+          paramString.a(paramq.HQc, getString(2131768343));
+          this.Ikh.a(paramString, 0);
         }
       }
-      if ((paramn instanceof y)) {
-        eHb();
+      if ((paramq instanceof y)) {
+        fOl();
       }
     }
     AppMethodBeat.o(71243);
@@ -250,7 +250,7 @@ public class WalletSwitchVerifyPhoneUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletSwitchVerifyPhoneUI
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import org.json.JSONObject;
 public final class ab
   extends m
 {
-  public String DgT;
+  public String HQm;
   
   public ab(String paramString1, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5)
   {
@@ -68,13 +68,13 @@ public final class ab
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69949);
-    this.DgT = paramJSONObject.optString("usertoken", "");
+    this.HQm = paramJSONObject.optString("usertoken", "");
     AppMethodBeat.o(69949);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.ab
  * JD-Core Version:    0.7.0.1
  */

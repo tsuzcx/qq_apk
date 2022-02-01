@@ -12,8 +12,8 @@ import java.util.NoSuchElementException;
 public abstract class CustomTabsService
   extends Service
 {
-  private final Map<IBinder, IBinder.DeathRecipient> gy = new a();
-  private e.a gz = new e.a()
+  private final Map<IBinder, IBinder.DeathRecipient> gA = new a();
+  private e.a gB = new e.a()
   {
     public final boolean a(d paramAnonymousd)
     {
@@ -24,14 +24,14 @@ public abstract class CustomTabsService
         {
           public final void binderDied()
           {
-            CustomTabsService.this.a(this.gB);
+            CustomTabsService.this.a(this.gD);
           }
         };
         synchronized (CustomTabsService.a(CustomTabsService.this))
         {
           paramAnonymousd.asBinder().linkToDeath(local1, 0);
           CustomTabsService.a(CustomTabsService.this).put(paramAnonymousd.asBinder(), local1);
-          boolean bool = CustomTabsService.this.aJ();
+          boolean bool = CustomTabsService.this.aL();
           return bool;
         }
         return false;
@@ -39,49 +39,49 @@ public abstract class CustomTabsService
       catch (RemoteException paramAnonymousd) {}
     }
     
-    public final boolean aI()
+    public final boolean aK()
     {
-      return CustomTabsService.this.aI();
+      return CustomTabsService.this.aK();
     }
     
-    public final Bundle aL()
+    public final Bundle aN()
     {
-      return CustomTabsService.this.aL();
+      return CustomTabsService.this.aN();
     }
     
     public final boolean b(d paramAnonymousd)
     {
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousd);
-      return localCustomTabsService.aK();
+      return localCustomTabsService.aM();
     }
     
     public final boolean c(d paramAnonymousd)
     {
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousd);
-      return localCustomTabsService.aM();
+      return localCustomTabsService.aO();
     }
     
     public final boolean d(d paramAnonymousd)
     {
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousd);
-      return localCustomTabsService.aN();
+      return localCustomTabsService.aP();
     }
     
     public final int e(d paramAnonymousd)
     {
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousd);
-      return localCustomTabsService.aO();
+      return localCustomTabsService.aQ();
     }
     
     public final boolean f(d paramAnonymousd)
     {
       CustomTabsService localCustomTabsService = CustomTabsService.this;
       new c(paramAnonymousd);
-      return localCustomTabsService.aP();
+      return localCustomTabsService.aR();
     }
   };
   
@@ -89,11 +89,11 @@ public abstract class CustomTabsService
   {
     try
     {
-      synchronized (this.gy)
+      synchronized (this.gA)
       {
-        paramc = paramc.aQ();
-        paramc.unlinkToDeath((IBinder.DeathRecipient)this.gy.get(paramc), 0);
-        this.gy.remove(paramc);
+        paramc = paramc.aS();
+        paramc.unlinkToDeath((IBinder.DeathRecipient)this.gA.get(paramc), 0);
+        this.gA.remove(paramc);
         return true;
       }
       return false;
@@ -101,25 +101,25 @@ public abstract class CustomTabsService
     catch (NoSuchElementException paramc) {}
   }
   
-  protected abstract boolean aI();
-  
-  protected abstract boolean aJ();
-  
   protected abstract boolean aK();
   
-  protected abstract Bundle aL();
+  protected abstract boolean aL();
   
   protected abstract boolean aM();
   
-  protected abstract boolean aN();
+  protected abstract Bundle aN();
   
-  protected abstract int aO();
+  protected abstract boolean aO();
   
   protected abstract boolean aP();
+  
+  protected abstract int aQ();
+  
+  protected abstract boolean aR();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     android.support.customtabs.CustomTabsService
  * JD-Core Version:    0.7.0.1
  */

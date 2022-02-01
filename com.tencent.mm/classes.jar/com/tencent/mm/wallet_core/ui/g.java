@@ -6,102 +6,103 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.yn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.wallet_core.c.s;
+import com.tencent.mm.g.a.zs;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.a;
 import com.tencent.mm.wallet_core.e.a.b;
 
 public final class g
 {
-  private static String kwn = null;
-  private static int qgL = 0;
-  private static int qgz = 0;
+  private static String lAr = null;
+  private static int rxH = 0;
+  private static int rxv = 0;
   
-  public static void a(WalletBaseUI paramWalletBaseUI, int paramInt1, int paramInt2, final String paramString, final n paramn, boolean paramBoolean)
+  public static void a(WalletBaseUI paramWalletBaseUI, int paramInt1, int paramInt2, final String paramString, final com.tencent.mm.ak.q paramq, boolean paramBoolean)
   {
     AppMethodBeat.i(73058);
     String str = paramString;
-    if (bu.isNullOrNil(paramString)) {
-      str = paramWalletBaseUI.getString(2131765901);
+    if (Util.isNullOrNil(paramString)) {
+      str = paramWalletBaseUI.getString(2131768354);
     }
     boolean bool = true;
-    if ((paramn instanceof s)) {
-      bool = ((s)paramn).isBlock();
+    if ((paramq instanceof com.tencent.mm.wallet_core.c.s)) {
+      bool = ((com.tencent.mm.wallet_core.c.s)paramq).isBlock();
     }
-    if ((paramn instanceof com.tencent.mm.wallet_core.c.p)) {
-      bool = ((com.tencent.mm.wallet_core.c.p)paramn).isBlock();
+    if ((paramq instanceof com.tencent.mm.wallet_core.c.p)) {
+      bool = ((com.tencent.mm.wallet_core.c.p)paramq).isBlock();
     }
     label556:
+    label688:
     for (;;)
     {
-      ae.i("MicroMsg.WalletDispatcher", "dispatch errType:%d errCode %s ,errMsg: %s, isBlock %s scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str, Boolean.valueOf(bool), paramn });
+      Log.i("MicroMsg.WalletDispatcher", "dispatch errType:%d errCode %s ,errMsg: %s, isBlock %s scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str, Boolean.valueOf(bool), paramq });
       Bundle localBundle;
-      if ((!(paramn instanceof com.tencent.mm.wallet_core.tenpay.model.q)) && (!(paramn instanceof b)))
+      if ((!(paramq instanceof com.tencent.mm.wallet_core.tenpay.model.q)) && (!(paramq instanceof b)))
       {
-        if (!(paramn instanceof s)) {
+        if (!(paramq instanceof com.tencent.mm.wallet_core.c.s)) {
           break label556;
         }
-        paramString = (s)paramn;
+        paramString = (com.tencent.mm.wallet_core.c.s)paramq;
         if (!paramString.isPayEnd()) {
           break label456;
         }
-        ae.d("MicroMsg.WalletDispatcher", "order pay end!!!");
+        Log.d("MicroMsg.WalletDispatcher", "order pay end!!!");
         localBundle = paramWalletBaseUI.getInput();
         localBundle.putInt("intent_pay_end_errcode", paramInt2);
         localBundle.putString("intent_pay_app_url", paramString.getReturnUrl());
         localBundle.putString("intent_wap_pay_jump_url", paramString.getWappayJumpUrl());
         localBundle.putBoolean("intent_pay_end", true);
-        com.tencent.mm.wallet_core.a.l(paramWalletBaseUI, localBundle);
-        if ((!bool) || (!com.tencent.mm.wallet_core.d.h.a(paramWalletBaseUI, paramn, paramInt1, paramInt2, str)) || (paramString.callbackUIWhenWalletError())) {
-          break label697;
+        a.m(paramWalletBaseUI, localBundle);
+        if ((!bool) || (!com.tencent.mm.wallet_core.d.h.a(paramWalletBaseUI, paramq, paramInt1, paramInt2, str)) || (paramString.callbackUIWhenWalletError())) {
+          break label706;
         }
       }
       label305:
-      label691:
-      label697:
+      label700:
+      label706:
       for (int i = 0;; i = 1)
       {
         if (i != 0) {
-          if (((paramWalletBaseUI.getProcess() == null) || (!paramWalletBaseUI.getNetController().onSceneEnd(paramInt1, paramInt2, str, paramn))) && (!paramWalletBaseUI.onSceneEnd(paramInt1, paramInt2, str, (s)paramn)) && (bool))
+          if (((paramWalletBaseUI.getProcess() == null) || (!paramWalletBaseUI.getNetController().onSceneEnd(paramInt1, paramInt2, str, paramq))) && (!paramWalletBaseUI.onSceneEnd(paramInt1, paramInt2, str, (com.tencent.mm.wallet_core.c.s)paramq)) && (bool))
           {
             if ((paramInt1 != 0) || (paramInt2 != 0))
             {
-              qgL = paramInt1;
-              qgz = paramInt2;
-              kwn = str;
-              ae.d("MicroMsg.WalletDispatcher", "wallet base consume this response in the end!");
+              rxH = paramInt1;
+              rxv = paramInt2;
+              lAr = str;
+              Log.d("MicroMsg.WalletDispatcher", "wallet base consume this response in the end!");
             }
           }
           else
           {
             if (!paramBoolean) {
-              break label691;
+              break label700;
             }
-            ae.d("MicroMsg.WalletDispatcher", "scenes & forcescenes isEmpty! %s", new Object[] { Boolean.valueOf(bool) });
-            if (qgz == 0) {
-              break label679;
+            Log.d("MicroMsg.WalletDispatcher", "scenes & forcescenes isEmpty! %s", new Object[] { Boolean.valueOf(bool) });
+            if (rxv == 0) {
+              break label688;
             }
-            ae.e("MicroMsg.WalletDispatcher", "showAlert! mErrCode : " + qgz);
-            if (!(paramn instanceof s)) {
+            Log.e("MicroMsg.WalletDispatcher", "showAlert! mErrCode : " + rxv);
+            if (!(paramq instanceof com.tencent.mm.wallet_core.c.s)) {
               break label638;
             }
-            paramString = ((s)paramn).getErrDetailUrl();
-            if (bu.isNullOrNil(paramString)) {
+            paramString = ((com.tencent.mm.wallet_core.c.s)paramq).getErrDetailUrl();
+            if (Util.isNullOrNil(paramString)) {
               break label638;
             }
-            ae.i("MicroMsg.WalletDispatcher", "error_detail_url is not null ");
-            com.tencent.mm.ui.base.h.a(paramWalletBaseUI.getContext(), kwn, null, paramWalletBaseUI.getResources().getString(2131765249), paramWalletBaseUI.getResources().getString(2131755835), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+            Log.i("MicroMsg.WalletDispatcher", "error_detail_url is not null ");
+            com.tencent.mm.ui.base.h.a(paramWalletBaseUI.getContext(), lAr, null, paramWalletBaseUI.getResources().getString(2131767692), paramWalletBaseUI.getResources().getString(2131755921), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
             {
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(73056);
-                g.c(this.LWS);
+                g.c(this.RvI);
                 paramAnonymousDialogInterface = new Intent();
                 paramAnonymousDialogInterface.putExtra("rawUrl", paramString);
-                f.an(this.LWS.getContext(), paramAnonymousDialogInterface);
-                f.aha(3);
+                f.aA(this.RvI.getContext(), paramAnonymousDialogInterface);
+                f.aqm(3);
                 AppMethodBeat.o(73056);
               }
             }, new DialogInterface.OnClickListener()
@@ -109,12 +110,12 @@ public final class g
               public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(73057);
-                g.c(this.LWS);
+                g.c(this.RvI);
                 AppMethodBeat.o(73057);
               }
             });
             clearErr();
-            f.aha(4);
+            f.aqm(4);
           }
         }
         label456:
@@ -126,47 +127,47 @@ public final class g
           }
           AppMethodBeat.o(73058);
           return;
-          if ((!(paramn instanceof com.tencent.mm.wallet_core.tenpay.model.p)) || (!((com.tencent.mm.wallet_core.tenpay.model.p)paramn).checkPaySuccess())) {
+          if ((!(paramq instanceof com.tencent.mm.wallet_core.tenpay.model.p)) || (!((com.tencent.mm.wallet_core.tenpay.model.p)paramq).checkPaySuccess())) {
             break;
           }
-          ae.i("MicroMsg.WalletDispatcher", "delay order pay end");
+          Log.i("MicroMsg.WalletDispatcher", "delay order pay end");
           localBundle = paramWalletBaseUI.getInput();
           localBundle.putInt("intent_pay_end_errcode", paramInt2);
           localBundle.putString("intent_pay_app_url", paramString.getReturnUrl());
           localBundle.putString("intent_wap_pay_jump_url", paramString.getWappayJumpUrl());
           localBundle.putBoolean("intent_pay_end", true);
-          com.tencent.mm.wallet_core.a.l(paramWalletBaseUI, localBundle);
+          a.m(paramWalletBaseUI, localBundle);
           break;
-          ae.d("MicroMsg.WalletDispatcher", "wallet this response havn't error!");
+          Log.d("MicroMsg.WalletDispatcher", "wallet this response havn't error!");
           break label305;
-          ae.d("MicroMsg.WalletDispatcher", "wallet base consume this response before subclass!");
+          Log.d("MicroMsg.WalletDispatcher", "wallet base consume this response before subclass!");
           break label305;
-          if (((paramWalletBaseUI.getProcess() != null) && (paramWalletBaseUI.getNetController().onSceneEnd(paramInt1, paramInt2, str, paramn))) || (paramWalletBaseUI.onSceneEnd(paramInt1, paramInt2, str, paramn)) || (!bool)) {
+          if (((paramWalletBaseUI.getProcess() != null) && (paramWalletBaseUI.getNetController().onSceneEnd(paramInt1, paramInt2, str, paramq))) || (paramWalletBaseUI.onSceneEnd(paramInt1, paramInt2, str, paramq)) || (!bool)) {
             break label305;
           }
           if ((paramInt1 != 0) || (paramInt2 != 0))
           {
-            qgL = paramInt1;
-            qgz = paramInt2;
-            kwn = str;
-            ae.d("MicroMsg.WalletDispatcher", "wallet base consume this response in the end!");
+            rxH = paramInt1;
+            rxv = paramInt2;
+            lAr = str;
+            Log.d("MicroMsg.WalletDispatcher", "wallet base consume this response in the end!");
             break label305;
           }
-          ae.d("MicroMsg.WalletDispatcher", "wallet other scene this response havn't error!");
+          Log.d("MicroMsg.WalletDispatcher", "wallet other scene this response havn't error!");
           break label305;
         }
-        ae.i("MicroMsg.WalletDispatcher", "error_detail_url is null ");
-        com.tencent.mm.ui.base.h.a(paramWalletBaseUI.getContext(), kwn, null, false, new DialogInterface.OnClickListener()
+        Log.i("MicroMsg.WalletDispatcher", "error_detail_url is null ");
+        com.tencent.mm.ui.base.h.a(paramWalletBaseUI.getContext(), lAr, null, paramWalletBaseUI.getResources().getString(2131767406), false, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(73055);
-            g.c(this.LWS);
-            if ((paramn != null) && (paramn.getReqResp() != null))
+            g.c(this.RvI);
+            if ((paramq != null) && (paramq.getReqResp() != null))
             {
-              paramAnonymousDialogInterface = new yn();
-              paramAnonymousDialogInterface.dNQ.uri = paramn.getReqResp().getUri();
-              com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousDialogInterface);
+              paramAnonymousDialogInterface = new zs();
+              paramAnonymousDialogInterface.efL.uri = paramq.getReqResp().getUri();
+              EventCenter.instance.publish(paramAnonymousDialogInterface);
             }
             AppMethodBeat.o(73055);
           }
@@ -184,14 +185,14 @@ public final class g
   
   public static void clearErr()
   {
-    qgL = 0;
-    qgz = 0;
-    kwn = null;
+    rxH = 0;
+    rxv = 0;
+    lAr = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.g
  * JD-Core Version:    0.7.0.1
  */

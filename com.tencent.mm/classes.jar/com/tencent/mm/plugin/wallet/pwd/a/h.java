@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dqf;
-import com.tencent.mm.protocal.protobuf.dqg;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ekb;
+import com.tencent.mm.protocal.protobuf.ekc;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public dqg Dcv;
-  public h.a Dcw;
-  private f callback;
-  private final b rr;
+  public ekc HIj;
+  public h.a HIk;
+  private i callback;
+  private final d rr;
   
   public h(int paramInt)
   {
     AppMethodBeat.i(182519);
-    b.a locala = new b.a();
-    dqf localdqf = new dqf();
-    localdqf.HWT = paramInt;
-    locala.hQF = localdqf;
-    locala.hQG = new dqg();
+    d.a locala = new d.a();
+    ekb localekb = new ekb();
+    localekb.NiZ = paramInt;
+    locala.iLN = localekb;
+    locala.iLO = new ekc();
     locala.uri = "/cgi-bin/mmpay-bin/transferphonegetswitch";
     locala.funcId = 1813;
-    this.rr = locala.aDS();
+    this.rr = locala.aXF();
     AppMethodBeat.o(182519);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(69545);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(69545);
     return i;
   }
@@ -50,12 +50,12 @@ public final class h
     return 1813;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69546);
-    ae.w("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.w("MicroMsg.mobileRemit.NetSceneMobileRemitGetSwitch", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.Dcv = ((dqg)((b)paramq).hQE.hQJ);
+      this.HIj = ((ekc)((d)params).iLL.iLR);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(69546);

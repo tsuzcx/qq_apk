@@ -10,15 +10,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class HeaderContainer
   extends FrameLayout
 {
-  private i Jsb;
-  private ac Jsc;
-  private Rect nbc;
+  private Rect FTJ;
+  private j OCr;
+  private ad OCs;
   
   public HeaderContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33167);
-    this.nbc = new Rect();
+    this.FTJ = new Rect();
     init(paramContext);
     AppMethodBeat.o(33167);
   }
@@ -27,7 +27,7 @@ public class HeaderContainer
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33168);
-    this.nbc = new Rect();
+    this.FTJ = new Rect();
     init(paramContext);
     AppMethodBeat.o(33168);
   }
@@ -35,22 +35,22 @@ public class HeaderContainer
   private void init(Context paramContext)
   {
     AppMethodBeat.i(33171);
-    this.Jsc = new ac(paramContext);
-    this.Jsc.setHeaderContainer(this);
-    this.Jsc.setId(2131302489);
+    this.OCs = new ad(paramContext);
+    this.OCs.setHeaderContainer(this);
+    this.OCs.setId(2131304915);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
-    addView(this.Jsc, paramContext);
+    addView(this.OCs, paramContext);
     AppMethodBeat.o(33171);
   }
   
   public Rect getBackUpFooterRect()
   {
-    return this.nbc;
+    return this.FTJ;
   }
   
-  public ac getHeaderView()
+  public ad getHeaderView()
   {
-    return this.Jsc;
+    return this.OCs;
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -60,19 +60,19 @@ public class HeaderContainer
     AppMethodBeat.o(33170);
   }
   
-  public void setAnimController(i parami)
+  public void setAnimController(j paramj)
   {
     AppMethodBeat.i(33169);
-    this.Jsb = parami;
-    if ((this.Jsc != null) && (this.Jsb != null)) {
-      this.Jsb.a(this.Jsc);
+    this.OCr = paramj;
+    if ((this.OCs != null) && (this.OCr != null)) {
+      this.OCr.a(this.OCs);
     }
     AppMethodBeat.o(33169);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.HeaderContainer
  * JD-Core Version:    0.7.0.1
  */

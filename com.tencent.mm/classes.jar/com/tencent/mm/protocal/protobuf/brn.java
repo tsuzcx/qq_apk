@@ -5,179 +5,95 @@ import com.tencent.mm.bw.b;
 import java.util.LinkedList;
 
 public final class brn
-  extends cvw
+  extends dpc
 {
-  public String Hej;
-  public String Hel;
-  public String Hem;
-  public b Hen;
-  public String Hep;
-  public String cVJ;
-  public String dwb;
-  public String signature;
-  public String url;
+  public String KDA;
+  public b LYR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82442);
+    AppMethodBeat.i(152579);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse != null)
       {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs.ni(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.url != null) {
-        paramVarArgs.d(2, this.url);
+      if (this.LYR != null) {
+        paramVarArgs.c(2, this.LYR);
       }
-      if (this.dwb != null) {
-        paramVarArgs.d(3, this.dwb);
+      if (this.KDA != null) {
+        paramVarArgs.e(3, this.KDA);
       }
-      if (this.Hej != null) {
-        paramVarArgs.d(4, this.Hej);
-      }
-      if (this.cVJ != null) {
-        paramVarArgs.d(5, this.cVJ);
-      }
-      if (this.Hel != null) {
-        paramVarArgs.d(6, this.Hel);
-      }
-      if (this.signature != null) {
-        paramVarArgs.d(7, this.signature);
-      }
-      if (this.Hem != null) {
-        paramVarArgs.d(8, this.Hem);
-      }
-      if (this.Hen != null) {
-        paramVarArgs.c(9, this.Hen);
-      }
-      if (this.Hep != null) {
-        paramVarArgs.d(10, this.Hep);
-      }
-      AppMethodBeat.o(82442);
+      AppMethodBeat.o(152579);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label862;
+      if (this.BaseResponse == null) {
+        break label430;
       }
     }
-    label862:
-    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label430:
+    for (int i = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.url != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.url);
+      if (this.LYR != null) {
+        paramInt = i + g.a.a.b.b.a.b(2, this.LYR);
       }
       i = paramInt;
-      if (this.dwb != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.dwb);
+      if (this.KDA != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.KDA);
       }
-      paramInt = i;
-      if (this.Hej != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.Hej);
-      }
-      i = paramInt;
-      if (this.cVJ != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.cVJ);
-      }
-      paramInt = i;
-      if (this.Hel != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.Hel);
-      }
-      i = paramInt;
-      if (this.signature != null) {
-        i = paramInt + f.a.a.b.b.a.e(7, this.signature);
-      }
-      paramInt = i;
-      if (this.Hem != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.Hem);
-      }
-      i = paramInt;
-      if (this.Hen != null) {
-        i = paramInt + f.a.a.b.b.a.b(9, this.Hen);
-      }
-      paramInt = i;
-      if (this.Hep != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.Hep);
-      }
-      AppMethodBeat.o(82442);
-      return paramInt;
+      AppMethodBeat.o(152579);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(82442);
+        AppMethodBeat.o(152579);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         brn localbrn = (brn)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(82442);
+          AppMethodBeat.o(152579);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbrn.BaseRequest = ((jc)localObject1);
+            localObject1 = new BaseResponse();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localbrn.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(82442);
+          AppMethodBeat.o(152579);
           return 0;
         case 2: 
-          localbrn.url = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(82442);
-          return 0;
-        case 3: 
-          localbrn.dwb = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(82442);
-          return 0;
-        case 4: 
-          localbrn.Hej = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(82442);
-          return 0;
-        case 5: 
-          localbrn.cVJ = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(82442);
-          return 0;
-        case 6: 
-          localbrn.Hel = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(82442);
-          return 0;
-        case 7: 
-          localbrn.signature = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(82442);
-          return 0;
-        case 8: 
-          localbrn.Hem = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(82442);
-          return 0;
-        case 9: 
-          localbrn.Hen = ((f.a.a.a.a)localObject1).OmT.gCk();
-          AppMethodBeat.o(82442);
+          localbrn.LYR = ((g.a.a.a.a)localObject1).UbS.hPo();
+          AppMethodBeat.o(152579);
           return 0;
         }
-        localbrn.Hep = ((f.a.a.a.a)localObject1).OmT.readString();
-        AppMethodBeat.o(82442);
+        localbrn.KDA = ((g.a.a.a.a)localObject1).UbS.readString();
+        AppMethodBeat.o(152579);
         return 0;
       }
-      AppMethodBeat.o(82442);
+      AppMethodBeat.o(152579);
       return -1;
     }
   }

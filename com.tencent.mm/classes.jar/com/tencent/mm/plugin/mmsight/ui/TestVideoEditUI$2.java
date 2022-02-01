@@ -3,25 +3,25 @@ package com.tencent.mm.plugin.mmsight.ui;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.s;
+import com.tencent.mm.api.u;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 final class TestVideoEditUI$2
-  implements s
+  implements u
 {
   TestVideoEditUI$2(TestVideoEditUI paramTestVideoEditUI) {}
   
   public final void a(Bitmap paramBitmap, boolean paramBoolean)
   {
     AppMethodBeat.i(94746);
-    ae.i("MicroMsg.TestVideoEditUI", "[onSuccess] w:%s h:%s", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
-    String str = b.ass() + String.format("%s%d.%s", new Object[] { "wx_photo_edit_", Long.valueOf(System.currentTimeMillis()), "png" });
+    Log.i("MicroMsg.TestVideoEditUI", "[onSuccess] w:%s h:%s", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
+    String str = b.aKS() + String.format("%s%d.%s", new Object[] { "wx_photo_edit_", Long.valueOf(System.currentTimeMillis()), "png" });
     try
     {
-      h.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, str, true);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, str, true);
       AppMethodBeat.o(94746);
       return;
     }

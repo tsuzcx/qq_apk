@@ -1,110 +1,103 @@
 package com.tencent.mm.plugin.facedetectaction.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.an.f;
-import com.tencent.mm.i.c;
-import com.tencent.mm.i.d;
-import com.tencent.mm.i.g.a;
-import com.tencent.mm.plugin.facedetect.e.a.b;
-import com.tencent.mm.plugin.facedetect.model.p;
-import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.pointers.PByteArray;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
-import java.io.ByteArrayOutputStream;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
 {
   int orientation;
-  String rxF;
-  float rxG;
-  int rxK;
-  int rxL;
-  a rxQ;
-  byte[] rxR;
+  String personId;
+  float sXC;
+  int sXF;
+  int sXG;
+  e.a sXM;
+  byte[] sXN;
+  public String sXO;
+  long sXP;
   
   public e(String paramString, float paramFloat, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(104227);
-    this.rxF = paramString;
-    this.rxG = paramFloat;
+    this.sXO = "";
+    this.sXP = System.currentTimeMillis();
+    this.personId = paramString;
+    this.sXC = paramFloat;
     this.orientation = paramInt1;
-    this.rxK = paramInt2;
-    this.rxL = paramInt3;
-    ae.i("MicroMsg.FaceCheckVideoRecordMgr", "create FaceCheckVideoRecordMgr, reductionRatio: %s, orientation: %s, cameraFrameWidth: %s, cameraFrameHeight: %s", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.sXF = paramInt2;
+    this.sXG = paramInt3;
+    Log.i("MicroMsg.FaceCheckVideoRecordMgr", "create FaceCheckVideoRecordMgr, reductionRatio: %s, orientation: %s, cameraFrameWidth: %s, cameraFrameHeight: %s", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     AppMethodBeat.o(104227);
   }
   
   /* Error */
-  static void Z(String paramString1, String paramString2, String paramString3)
+  static void ae(String paramString1, String paramString2, String paramString3)
   {
     // Byte code:
-    //   0: ldc 77
-    //   2: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 79	com/tencent/mm/vfs/k
+    //   0: ldc 86
+    //   2: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 88	com/tencent/mm/vfs/o
     //   8: dup
     //   9: aload_1
-    //   10: invokespecial 82	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 91	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
     //   13: astore_1
-    //   14: new 79	com/tencent/mm/vfs/k
+    //   14: new 88	com/tencent/mm/vfs/o
     //   17: dup
     //   18: aload_2
-    //   19: invokespecial 82	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   19: invokespecial 91	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
     //   22: astore_2
     //   23: aload_1
-    //   24: invokevirtual 86	com/tencent/mm/vfs/k:exists	()Z
+    //   24: invokevirtual 95	com/tencent/mm/vfs/o:exists	()Z
     //   27: ifeq +275 -> 302
     //   30: aload_1
-    //   31: invokevirtual 89	com/tencent/mm/vfs/k:isFile	()Z
+    //   31: invokevirtual 98	com/tencent/mm/vfs/o:isFile	()Z
     //   34: ifeq +268 -> 302
     //   37: aload_2
-    //   38: invokevirtual 93	com/tencent/mm/vfs/k:fTg	()Lcom/tencent/mm/vfs/k;
-    //   41: invokevirtual 86	com/tencent/mm/vfs/k:exists	()Z
+    //   38: invokevirtual 102	com/tencent/mm/vfs/o:heq	()Lcom/tencent/mm/vfs/o;
+    //   41: invokevirtual 95	com/tencent/mm/vfs/o:exists	()Z
     //   44: ifne +11 -> 55
     //   47: aload_2
-    //   48: invokevirtual 93	com/tencent/mm/vfs/k:fTg	()Lcom/tencent/mm/vfs/k;
-    //   51: invokevirtual 96	com/tencent/mm/vfs/k:mkdirs	()Z
+    //   48: invokevirtual 102	com/tencent/mm/vfs/o:heq	()Lcom/tencent/mm/vfs/o;
+    //   51: invokevirtual 105	com/tencent/mm/vfs/o:mkdirs	()Z
     //   54: pop
     //   55: aload_2
-    //   56: invokevirtual 99	com/tencent/mm/vfs/k:createNewFile	()Z
+    //   56: invokevirtual 108	com/tencent/mm/vfs/o:createNewFile	()Z
     //   59: pop
     //   60: aload_1
-    //   61: invokestatic 105	com/tencent/mm/vfs/o:ai	(Lcom/tencent/mm/vfs/k;)Ljava/io/InputStream;
+    //   61: invokestatic 114	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
     //   64: astore_1
     //   65: aload_2
-    //   66: invokestatic 109	com/tencent/mm/vfs/o:aj	(Lcom/tencent/mm/vfs/k;)Ljava/io/OutputStream;
+    //   66: invokestatic 118	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
     //   69: astore_2
-    //   70: new 111	javax/crypto/spec/SecretKeySpec
+    //   70: new 120	javax/crypto/spec/SecretKeySpec
     //   73: dup
-    //   74: new 111	javax/crypto/spec/SecretKeySpec
+    //   74: new 120	javax/crypto/spec/SecretKeySpec
     //   77: dup
     //   78: aload_0
-    //   79: ldc 113
-    //   81: invokevirtual 119	java/lang/String:getBytes	(Ljava/lang/String;)[B
-    //   84: ldc 121
-    //   86: invokespecial 124	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
-    //   89: invokeinterface 130 1 0
-    //   94: ldc 121
-    //   96: invokespecial 124	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   79: ldc 122
+    //   81: invokevirtual 128	java/lang/String:getBytes	(Ljava/lang/String;)[B
+    //   84: ldc 130
+    //   86: invokespecial 133	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   89: invokeinterface 139 1 0
+    //   94: ldc 130
+    //   96: invokespecial 133	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   99: astore 4
-    //   101: ldc 132
-    //   103: invokestatic 138	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
+    //   101: ldc 141
+    //   103: invokestatic 147	javax/crypto/Cipher:getInstance	(Ljava/lang/String;)Ljavax/crypto/Cipher;
     //   106: astore 5
     //   108: aload 5
     //   110: iconst_1
     //   111: aload 4
-    //   113: new 140	javax/crypto/spec/IvParameterSpec
+    //   113: new 149	javax/crypto/spec/IvParameterSpec
     //   116: dup
     //   117: aload_0
-    //   118: invokevirtual 142	java/lang/String:getBytes	()[B
-    //   121: invokespecial 145	javax/crypto/spec/IvParameterSpec:<init>	([B)V
-    //   124: invokevirtual 149	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
-    //   127: new 151	javax/crypto/CipherInputStream
+    //   118: invokevirtual 151	java/lang/String:getBytes	()[B
+    //   121: invokespecial 154	javax/crypto/spec/IvParameterSpec:<init>	([B)V
+    //   124: invokevirtual 158	javax/crypto/Cipher:init	(ILjava/security/Key;Ljava/security/spec/AlgorithmParameterSpec;)V
+    //   127: new 160	javax/crypto/CipherInputStream
     //   130: dup
     //   131: aload_1
     //   132: aload 5
-    //   134: invokespecial 154	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
+    //   134: invokespecial 163	javax/crypto/CipherInputStream:<init>	(Ljava/io/InputStream;Ljavax/crypto/Cipher;)V
     //   137: astore_0
     //   138: aload_2
     //   139: astore 5
@@ -123,7 +116,7 @@ public final class e
     //   161: astore 7
     //   163: aload_0
     //   164: aload 4
-    //   166: invokevirtual 158	javax/crypto/CipherInputStream:read	([B)I
+    //   166: invokevirtual 167	javax/crypto/CipherInputStream:read	([B)I
     //   169: istore_3
     //   170: iload_3
     //   171: iconst_m1
@@ -138,7 +131,7 @@ public final class e
     //   185: aload 4
     //   187: iconst_0
     //   188: iload_3
-    //   189: invokevirtual 164	java/io/OutputStream:write	([BII)V
+    //   189: invokevirtual 173	java/io/OutputStream:write	([BII)V
     //   192: aload_2
     //   193: astore 5
     //   195: aload_1
@@ -146,7 +139,7 @@ public final class e
     //   198: aload_0
     //   199: astore 7
     //   201: aload_2
-    //   202: invokevirtual 167	java/io/OutputStream:flush	()V
+    //   202: invokevirtual 176	java/io/OutputStream:flush	()V
     //   205: goto -51 -> 154
     //   208: astore 4
     //   210: aload_2
@@ -155,8 +148,8 @@ public final class e
     //   214: astore 6
     //   216: aload_0
     //   217: astore 7
-    //   219: ldc 77
-    //   221: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   219: ldc 86
+    //   221: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   224: aload_2
     //   225: astore 5
     //   227: aload_1
@@ -173,34 +166,34 @@ public final class e
     //   243: aload_2
     //   244: ifnull +7 -> 251
     //   247: aload_2
-    //   248: invokevirtual 170	java/io/OutputStream:close	()V
+    //   248: invokevirtual 179	java/io/OutputStream:close	()V
     //   251: aload_1
     //   252: ifnull +7 -> 259
     //   255: aload_1
-    //   256: invokevirtual 171	javax/crypto/CipherInputStream:close	()V
+    //   256: invokevirtual 180	javax/crypto/CipherInputStream:close	()V
     //   259: aload 6
     //   261: ifnull +8 -> 269
     //   264: aload 6
-    //   266: invokevirtual 174	java/io/InputStream:close	()V
-    //   269: ldc 77
-    //   271: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   266: invokevirtual 183	java/io/InputStream:close	()V
+    //   269: ldc 86
+    //   271: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   274: aload_0
     //   275: athrow
     //   276: aload_2
     //   277: ifnull +7 -> 284
     //   280: aload_2
-    //   281: invokevirtual 170	java/io/OutputStream:close	()V
+    //   281: invokevirtual 179	java/io/OutputStream:close	()V
     //   284: aload_0
-    //   285: invokevirtual 171	javax/crypto/CipherInputStream:close	()V
+    //   285: invokevirtual 180	javax/crypto/CipherInputStream:close	()V
     //   288: aload_1
     //   289: ifnull +13 -> 302
     //   292: aload_1
-    //   293: invokevirtual 174	java/io/InputStream:close	()V
-    //   296: ldc 77
-    //   298: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   293: invokevirtual 183	java/io/InputStream:close	()V
+    //   296: ldc 86
+    //   298: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   301: return
-    //   302: ldc 77
-    //   304: invokestatic 71	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   302: ldc 86
+    //   304: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   307: return
     //   308: astore_0
     //   309: aconst_null
@@ -253,11 +246,11 @@ public final class e
     //   0	374	2	paramString3	String
     //   169	20	3	i	int
     //   99	87	4	localObject1	Object
-    //   208	26	4	localException1	Exception
+    //   208	26	4	localException1	java.lang.Exception
     //   323	19	4	localObject2	Object
-    //   347	1	4	localException2	Exception
-    //   358	1	4	localException3	Exception
-    //   367	1	4	localException4	Exception
+    //   347	1	4	localException2	java.lang.Exception
+    //   358	1	4	localException3	java.lang.Exception
+    //   367	1	4	localException4	java.lang.Exception
     //   106	135	5	localObject3	Object
     //   142	198	6	str1	String
     //   145	93	7	str2	String
@@ -280,78 +273,10 @@ public final class e
     //   65	70	358	java/lang/Exception
     //   70	138	367	java/lang/Exception
   }
-  
-  public static abstract interface a
-  {
-    public abstract void a(String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte);
-    
-    public abstract void onError();
-  }
-  
-  final class b
-    implements g.a
-  {
-    private String fileName;
-    private String rxF;
-    
-    private b(String paramString1, String paramString2)
-    {
-      this.rxF = paramString2;
-      this.fileName = paramString1;
-    }
-    
-    public final int a(String paramString, int paramInt, c paramc, d paramd, boolean paramBoolean)
-    {
-      AppMethodBeat.i(104226);
-      ae.i("MicroMsg.FaceCheckVideoRecordMgr", "hy: sceneResult.field_retCode == 0 cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
-      if ((paramd != null) && (paramd.field_retCode == 0))
-      {
-        ae.i("MicroMsg.FaceCheckVideoRecordMgr", "hy: upload video done. now upload");
-        paramString = e.this;
-        paramc = this.fileName;
-        String str = paramd.field_fileId;
-        paramd = paramd.field_aesKey;
-        if (paramString.rxQ != null) {
-          paramString.rxQ.a(paramc, str, paramd, paramString.rxR);
-        }
-      }
-      do
-      {
-        AppMethodBeat.o(104226);
-        return 0;
-        if (paramd != null)
-        {
-          ae.w("MicroMsg.FaceCheckVideoRecordMgr", "hy: upload video cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
-          o.deleteFile(this.fileName);
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(917L, 51L, 1L, false);
-          if (e.this.rxQ != null) {
-            e.this.rxQ.onError();
-          }
-          AppMethodBeat.o(104226);
-          return 0;
-        }
-      } while (paramInt == 0);
-      ae.w("MicroMsg.FaceCheckVideoRecordMgr", "hy: upload video start error!; cdntra cdnCallback clientid:%s startRet:%d proginfo:[%s] res:[%s]", new Object[] { paramString, Integer.valueOf(paramInt), paramc, paramd });
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(917L, 51L, 1L, false);
-      o.deleteFile(this.fileName);
-      if (e.this.rxQ != null) {
-        e.this.rxQ.onError();
-      }
-      AppMethodBeat.o(104226);
-      return 0;
-    }
-    
-    public final void a(String paramString, ByteArrayOutputStream paramByteArrayOutputStream) {}
-    
-    public final byte[] f(String paramString, byte[] paramArrayOfByte)
-    {
-      return new byte[0];
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public abstract interface b
 {
   public abstract void f(String paramString1, int paramInt1, int paramInt2, String paramString2);
   
-  public abstract void v(String paramString, long paramLong1, long paramLong2);
+  public abstract void w(String paramString, long paramLong1, long paramLong2);
   
   public static abstract class a
     extends Binder
@@ -20,6 +20,11 @@ public abstract interface b
     public a()
     {
       attachInterface(this, "com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
+    }
+    
+    public static b cxY()
+    {
+      return a.qmp;
     }
     
     public static b v(IBinder paramIBinder)
@@ -55,7 +60,7 @@ public abstract interface b
         return true;
       }
       paramParcel1.enforceInterface("com.tencent.mm.plugin.cdndownloader.aidl.ICDNDownloadServiceCallback");
-      v(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
+      w(paramParcel1.readString(), paramParcel1.readLong(), paramParcel1.readLong());
       paramParcel2.writeNoException();
       return true;
     }
@@ -63,6 +68,7 @@ public abstract interface b
     static final class a
       implements b
     {
+      public static b qmp;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -87,7 +93,11 @@ public abstract interface b
           localParcel1.writeInt(paramInt1);
           localParcel1.writeInt(paramInt2);
           localParcel1.writeString(paramString2);
-          this.mRemote.transact(1, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (b.a.cxY() != null))
+          {
+            b.a.cxY().f(paramString1, paramInt1, paramInt2, paramString2);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -99,7 +109,7 @@ public abstract interface b
         }
       }
       
-      public final void v(String paramString, long paramLong1, long paramLong2)
+      public final void w(String paramString, long paramLong1, long paramLong2)
       {
         AppMethodBeat.i(120705);
         Parcel localParcel1 = Parcel.obtain();
@@ -110,7 +120,11 @@ public abstract interface b
           localParcel1.writeString(paramString);
           localParcel1.writeLong(paramLong1);
           localParcel1.writeLong(paramLong2);
-          this.mRemote.transact(2, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.cxY() != null))
+          {
+            b.a.cxY().w(paramString, paramLong1, paramLong2);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -126,7 +140,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.a.b
  * JD-Core Version:    0.7.0.1
  */

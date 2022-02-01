@@ -8,17 +8,17 @@ import android.view.ViewGroup;
 import android.widget.AbsListView.LayoutParams;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class PowerSettingPreference
   extends Preference
 {
-  private an pSY;
-  private View vQX;
-  private ImageView xiY;
-  private ImageView xiZ;
-  private ImageView xja;
+  private ImageView BgV;
+  private ImageView BgW;
+  private ImageView BgX;
+  private as rjX;
+  private View zlc;
   
   public PowerSettingPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,22 +34,22 @@ public class PowerSettingPreference
   {
     AppMethodBeat.i(31903);
     super.onBindView(paramView);
-    if (this.pSY == null)
+    if (this.rjX == null)
     {
       AppMethodBeat.o(31903);
       return;
     }
-    if (this.xiY == null) {
-      this.xiY = ((ImageView)paramView.findViewById(2131298685));
+    if (this.BgV == null) {
+      this.BgV = ((ImageView)paramView.findViewById(2131299123));
     }
-    if (this.xiZ == null) {
-      this.xiZ = ((ImageView)paramView.findViewById(2131298683));
+    if (this.BgW == null) {
+      this.BgW = ((ImageView)paramView.findViewById(2131299121));
     }
-    if (this.xja == null) {
-      this.xja = ((ImageView)paramView.findViewById(2131298684));
+    if (this.BgX == null) {
+      this.BgX = ((ImageView)paramView.findViewById(2131299122));
     }
-    paramView = this.xiY;
-    if (this.pSY.adx()) {}
+    paramView = this.BgV;
+    if (this.rjX.arA()) {}
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
@@ -61,15 +61,15 @@ public class PowerSettingPreference
   public final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(31902);
-    if (this.vQX == null)
+    if (this.zlc == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
       localViewGroup.removeAllViews();
-      localViewGroup.addView(LayoutInflater.from(this.mContext).inflate(2131495144, null), new AbsListView.LayoutParams(-1, -2));
-      this.vQX = paramViewGroup;
+      localViewGroup.addView(LayoutInflater.from(this.mContext).inflate(2131495987, null), new AbsListView.LayoutParams(-1, -2));
+      this.zlc = paramViewGroup;
     }
-    paramViewGroup = this.vQX;
+    paramViewGroup = this.zlc;
     AppMethodBeat.o(31902);
     return paramViewGroup;
   }

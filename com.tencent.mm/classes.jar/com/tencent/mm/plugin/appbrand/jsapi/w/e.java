@@ -1,81 +1,59 @@
 package com.tencent.mm.plugin.appbrand.jsapi.w;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.plugin.appbrand.utils.ad;
-import com.tencent.mm.plugin.appbrand.utils.ad.a;
-import com.tencent.mm.plugin.appbrand.utils.ad.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public final class e
-  extends y
+public class e
+  extends d
 {
-  public static final int CTRL_INDEX = 472;
-  public static final String NAME = "enableDeviceOrientationChangeListening";
-  private boolean lkO;
-  protected ad lkP;
-  private ad.b lkQ;
+  private static final int CTRL_INDEX = 64;
+  private static final String NAME = "reportIDKey";
   
-  public e()
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(137634);
-    this.lkO = false;
-    this.lkQ = new ad.b()
+    AppMethodBeat.i(107802);
+    paramJSONObject = paramJSONObject.optJSONArray("dataArray");
+    if (paramJSONObject == null)
     {
-      public final void a(ad.a paramAnonymousa1, final ad.a paramAnonymousa2)
-      {
-        AppMethodBeat.i(137633);
-        ae.i("MicroMsg.JsApiEnableDeviceOrientation", "OrientationListener lastOrientation:" + paramAnonymousa1.name() + "; newOrientation:" + paramAnonymousa2.name());
-        ar.o(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(137632);
-            h.c(paramAnonymousa2);
-            AppMethodBeat.o(137632);
-          }
-        }, 500L);
-        AppMethodBeat.o(137633);
-      }
-    };
-    AppMethodBeat.o(137634);
-  }
-  
-  public final String a(c paramc, JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(137635);
-    if (paramJSONObject.optBoolean("enable", false))
-    {
-      h.z(paramc);
-      if (!this.lkO)
-      {
-        this.lkP = new ad(paramc.getContext(), this.lkQ);
-        this.lkP.enable();
-        this.lkO = true;
-      }
+      paramf.i(paramInt, h("fail", null));
+      AppMethodBeat.o(107802);
+      return;
     }
+    int i = 0;
     for (;;)
     {
-      paramc = e("ok", null);
-      AppMethodBeat.o(137635);
-      return paramc;
-      h.A(paramc);
-      if (this.lkO)
-      {
-        this.lkP.disable();
-        this.lkP = null;
-        this.lkO = false;
+      if (i < paramJSONObject.length()) {
+        try
+        {
+          JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
+          int j = localJSONObject.optInt("id");
+          int k = localJSONObject.optInt("key");
+          int m = localJSONObject.optInt("value");
+          h.CyF.idkeyStat(j, k, m, false);
+          i += 1;
+        }
+        catch (Exception localException)
+        {
+          for (;;)
+          {
+            Log.e("MicroMsg.JsApiReportIDKey", "parse json failed : %s", new Object[] { localException.getMessage() });
+          }
+        }
       }
     }
+    paramf.i(paramInt, h("ok", null));
+    AppMethodBeat.o(107802);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.w.e
  * JD-Core Version:    0.7.0.1
  */

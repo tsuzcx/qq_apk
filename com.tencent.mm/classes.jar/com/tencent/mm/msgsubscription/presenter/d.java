@@ -7,27 +7,27 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
 import com.tencent.mm.msgsubscription.util.c;
-import d.g.a.b;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/presenter/WxaSubscribeMsgSettingPagePresenter;", "Lcom/tencent/mm/msgsubscription/presenter/BaseSubscribeMsgSettingPagePresenter;", "()V", "activity", "Landroid/app/Activity;", "changed", "", "subscribeMsgSettingData", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "dispatchLoadDataResult", "", "l", "Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingPagePresenter$LoadDataListener;", "getCheckBoxState", "item", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "loadData", "bizUsername", "", "onActivityCreated", "onFinish", "onSubscribeMsgItemCheckBoxChanged", "itemChanged", "check", "onSubscribeSwitchChanged", "on", "Companion", "plugin-comm_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/presenter/WxaSubscribeMsgSettingPagePresenter;", "Lcom/tencent/mm/msgsubscription/presenter/BaseSubscribeMsgSettingPagePresenter;", "()V", "activity", "Landroid/app/Activity;", "changed", "", "subscribeMsgSettingData", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "dispatchLoadDataResult", "", "l", "Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingPagePresenter$LoadDataListener;", "getCheckBoxState", "item", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "loadData", "bizUsername", "", "onActivityCreated", "onFinish", "onSubscribeMsgItemCheckBoxChanged", "itemChanged", "check", "onSubscribeMsgItemInfoClick", "view", "Landroid/view/View;", "onSubscribeSwitchChanged", "on", "Companion", "plugin-comm_release"})
 public final class d
   extends a
 {
-  public static final a iDU;
+  public static final d.a jAl;
   private Activity activity;
-  private boolean bGk;
-  private SubscribeMsgSettingData iDT;
+  private boolean bGB;
+  private SubscribeMsgSettingData jAk;
   
   static
   {
     AppMethodBeat.i(149587);
-    iDU = new a((byte)0);
+    jAl = new d.a((byte)0);
     AppMethodBeat.o(149587);
   }
   
@@ -48,21 +48,21 @@ public final class d
   {
     AppMethodBeat.i(149584);
     p.h(paramSubscribeMsgTmpItem, "itemChanged");
-    this.bGk = true;
-    Object localObject = this.iDT;
+    this.bGB = true;
+    Object localObject = this.jAk;
     if (localObject == null) {
-      p.gkB();
+      p.hyc();
     }
-    localObject = ((SubscribeMsgSettingData)localObject).hMc.iterator();
+    localObject = ((SubscribeMsgSettingData)localObject).iHf.iterator();
     while (((Iterator)localObject).hasNext())
     {
       SubscribeMsgTmpItem localSubscribeMsgTmpItem = (SubscribeMsgTmpItem)((Iterator)localObject).next();
-      if (TextUtils.equals((CharSequence)paramSubscribeMsgTmpItem.hDH, (CharSequence)localSubscribeMsgTmpItem.hDH))
+      if (TextUtils.equals((CharSequence)paramSubscribeMsgTmpItem.ixM, (CharSequence)localSubscribeMsgTmpItem.ixM))
       {
         if (paramBoolean) {}
         for (int i = 1;; i = 0)
         {
-          localSubscribeMsgTmpItem.iDl = i;
+          localSubscribeMsgTmpItem.jyB = i;
           AppMethodBeat.o(149584);
           return;
         }
@@ -78,17 +78,17 @@ public final class d
     p.h(parama, "l");
     Object localObject = this.activity;
     if (localObject == null) {
-      p.bdF("activity");
+      p.btv("activity");
     }
-    this.iDT = ((SubscribeMsgSettingData)((Activity)localObject).getIntent().getParcelableExtra("key_biz_data"));
-    if (this.iDT == null)
+    this.jAk = ((SubscribeMsgSettingData)((Activity)localObject).getIntent().getParcelableExtra("key_biz_data"));
+    if (this.jAk == null)
     {
-      localObject = c.iGY;
+      localObject = c.jDh;
       c.c(paramString, (b)new b(this, parama));
       AppMethodBeat.o(149581);
       return;
     }
-    a(parama, this.iDT);
+    a(parama, this.jAk);
     AppMethodBeat.o(149581);
   }
   
@@ -96,7 +96,7 @@ public final class d
   {
     AppMethodBeat.i(149586);
     p.h(paramSubscribeMsgTmpItem, "item");
-    if (paramSubscribeMsgTmpItem.iDl == 1)
+    if (paramSubscribeMsgTmpItem.jyB == 1)
     {
       AppMethodBeat.o(149586);
       return true;
@@ -105,12 +105,12 @@ public final class d
     return false;
   }
   
-  public final void eL(boolean paramBoolean)
+  public final void fC(boolean paramBoolean)
   {
-    this.bGk = true;
-    SubscribeMsgSettingData localSubscribeMsgSettingData = this.iDT;
+    this.bGB = true;
+    SubscribeMsgSettingData localSubscribeMsgSettingData = this.jAk;
     if (localSubscribeMsgSettingData != null) {
-      localSubscribeMsgSettingData.hVq = paramBoolean;
+      localSubscribeMsgSettingData.iQD = paramBoolean;
     }
   }
   
@@ -127,22 +127,19 @@ public final class d
   {
     AppMethodBeat.i(149585);
     p.h(paramActivity, "activity");
-    if ((this.bGk) && (this.iDT != null))
+    if ((this.bGB) && (this.jAk != null))
     {
       Intent localIntent = new Intent();
-      localIntent.putExtra("key_biz_data", (Parcelable)this.iDT);
+      localIntent.putExtra("key_biz_data", (Parcelable)this.jAk);
       paramActivity.setResult(-1, localIntent);
     }
     AppMethodBeat.o(149585);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/presenter/WxaSubscribeMsgSettingPagePresenter$Companion;", "", "()V", "TAG", "", "plugin-comm_release"})
-  public static final class a {}
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "invoke"})
   static final class b
     extends q
-    implements b<SubscribeMsgSettingData, z>
+    implements b<SubscribeMsgSettingData, x>
   {
     b(d paramd, b.a parama)
     {
@@ -152,7 +149,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.msgsubscription.presenter.d
  * JD-Core Version:    0.7.0.1
  */

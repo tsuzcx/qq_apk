@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
-  public static final String[] hGX;
-  private e db;
+  public static final String[] iBh;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(44450);
-    hGX = new String[] { j.getCreateSQLs(a.info, "AppBrandIdentifierInfo") };
+    iBh = new String[] { MAutoStorage.getCreateSQLs(a.info, "AppBrandIdentifierInfo") };
     AppMethodBeat.o(44450);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "AppBrandIdentifierInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "AppBrandIdentifierInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final String My(String paramString)
+  public final String VH(String paramString)
   {
     AppMethodBeat.i(44448);
     Cursor localCursor = this.db.query("AppBrandIdentifierInfo", new String[] { "appId" }, "username=?", new String[] { paramString }, null, null, null);
@@ -36,13 +36,13 @@ public class b
       if (localCursor != null) {
         localCursor.close();
       }
-      ae.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "queryAppId: appId = [%s], userName = [%s]", new Object[] { str, paramString });
+      Log.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "queryAppId: appId = [%s], userName = [%s]", new Object[] { str, paramString });
       AppMethodBeat.o(44448);
       return str;
     }
   }
   
-  public final String Mz(String paramString)
+  public final String VI(String paramString)
   {
     AppMethodBeat.i(44449);
     Cursor localCursor = this.db.query("AppBrandIdentifierInfo", new String[] { "username" }, "appId=?", new String[] { paramString }, null, null, null);
@@ -52,17 +52,17 @@ public class b
       if (localCursor != null) {
         localCursor.close();
       }
-      ae.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "queryAppId: appId = [%s], userName = [%s]", new Object[] { paramString, str });
+      Log.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "queryAppId: appId = [%s], userName = [%s]", new Object[] { paramString, str });
       AppMethodBeat.o(44449);
       return str;
     }
   }
   
-  public final boolean ck(String paramString1, String paramString2)
+  public final boolean cy(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44447);
-    ae.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "addIdentifierInfo: appId = [%s], userName = [%s]", new Object[] { paramString1, paramString2 });
-    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
+    Log.i("MicroMsg.AppBrand.AppBrandIdentifierInfoStorage", "addIdentifierInfo: appId = [%s], userName = [%s]", new Object[] { paramString1, paramString2 });
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(44447);
       return false;
@@ -77,7 +77,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.b
  * JD-Core Version:    0.7.0.1
  */

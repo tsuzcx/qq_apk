@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/mb"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/b2v" android:background="@raw/default_avatar" android:layout_width="40.0dip" android:layout_height="40.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="8.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:id="@id/elo" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/lw" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <TextView android:textSize="15.0dip" android:textColor="@color/by" android:id="@id/elk" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cli" android:drawableLeft="@drawable/ape" android:drawablePadding="4.0dip" />
-        <TextView android:textSize="15.0dip" android:textColor="@color/sr" android:id="@id/elm" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/clk" />
-        <TextView android:id="@id/elj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/clm" style="@style/ly" />
-        <ImageView android:gravity="center" android:id="@id/elr" android:padding="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a36" />
-    </LinearLayout>
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="bottom|center" android:id="@id/aja" android:layout_width="65.0dip" android:layout_height="65.0dip" android:src="@raw/emoji_add_capture" android:contentDescription="@string/brb" app:layout_constraintBottom_toTopOf="@id/c0l" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" app:layout_constraintVertical_chainStyle="g8_" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:id="@id/c0l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/brb" app:layout_constraintBottom_toTopOf="@id/c0k" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toBottomOf="@id/aja" />
+    <TextView android:textSize="12.0dip" android:textColor="@color/l4" android:id="@id/c0k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/brs" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toBottomOf="@id/c0l" />
+</android.support.constraint.ConstraintLayout>

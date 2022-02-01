@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/amv" android:paddingTop="@dimen/i_" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/can" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:layout_marginRight="@dimen/jn" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/cao" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jn" android:singleLine="true" android:layout_weight="1.0" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:ellipsize="end" android:id="@id/cap" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    <com.tencent.mm.ui.widget.MMProcessBar android:layout_gravity="center_horizontal" android:id="@id/ebm" android:background="@drawable/ady" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="64.0dip" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_gravity="center_horizontal" android:id="@id/fzs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip" android:text="@string/cq4" />
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/h5v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="64.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/icons_filled_refresh" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="@string/dbc" />
     </LinearLayout>
-</LinearLayout>
+</FrameLayout>

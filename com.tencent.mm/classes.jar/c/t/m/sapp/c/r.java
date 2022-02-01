@@ -10,11 +10,11 @@ public class r
   
   public r(String paramString)
   {
-    AppMethodBeat.i(210814);
+    AppMethodBeat.i(223062);
     this.a = "WriterAndReader";
     this.b = null;
     this.b = new File(paramString);
-    AppMethodBeat.o(210814);
+    AppMethodBeat.o(223062);
   }
   
   /* Error */
@@ -298,7 +298,7 @@ public class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     c.t.m.sapp.c.r
  * JD-Core Version:    0.7.0.1
  */

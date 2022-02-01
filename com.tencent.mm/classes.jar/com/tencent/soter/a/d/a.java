@@ -12,47 +12,39 @@ import junit.framework.Assert;
 @Deprecated
 public final class a
 {
-  public CancellationSignal ItQ;
+  public CancellationSignal NHn;
   
   public a()
   {
     AppMethodBeat.i(21);
-    this.ItQ = null;
+    this.NHn = null;
     if (Build.VERSION.SDK_INT >= 16) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      fZu();
+      hlF();
       AppMethodBeat.o(21);
       return;
     }
   }
   
   @SuppressLint({"NewApi"})
-  public final void fZu()
-  {
-    AppMethodBeat.i(23);
-    this.ItQ = new CancellationSignal();
-    AppMethodBeat.o(23);
-  }
-  
-  @SuppressLint({"NewApi"})
-  public final boolean zH(final boolean paramBoolean)
+  public final boolean DR(final boolean paramBoolean)
   {
     AppMethodBeat.i(22);
     d.v("Soter.SoterFingerprintCanceller", "soter: publishing cancellation. should publish: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (!this.ItQ.isCanceled())
+    if (!this.NHn.isCanceled())
     {
       if (Build.VERSION.SDK_INT < 23) {
-        g.fZG().ad(new Runnable()
+        g.hlR().aj(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(18);
             d.v("Soter.SoterFingerprintCanceller", "soter: enter worker thread. perform cancel", new Object[0]);
-            a.this.ItQ.cancel();
+            a.this.NHn.cancel();
             if (paramBoolean) {
-              f.fZD().fZF();
+              f.hlO().hlQ();
             }
             AppMethodBeat.o(18);
           }
@@ -62,22 +54,22 @@ public final class a
       {
         AppMethodBeat.o(22);
         return true;
-        g.fZG().ad(new Runnable()
+        g.hlR().aj(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(19);
-            a.this.ItQ.cancel();
+            a.this.NHn.cancel();
             AppMethodBeat.o(19);
           }
         });
-        g.fZG().p(new Runnable()
+        g.hlR().m(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(20);
             d.w("Soter.SoterFingerprintCanceller", "hy: waiting for %s ms not callback to system callback. cancel manually", new Object[] { Long.valueOf(350L) });
-            f.fZD().fZF();
+            f.hlO().hlQ();
             AppMethodBeat.o(20);
           }
         }, 350L);
@@ -87,10 +79,18 @@ public final class a
     AppMethodBeat.o(22);
     return false;
   }
+  
+  @SuppressLint({"NewApi"})
+  public final void hlF()
+  {
+    AppMethodBeat.i(23);
+    this.NHn = new CancellationSignal();
+    AppMethodBeat.o(23);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.soter.a.d.a
  * JD-Core Version:    0.7.0.1
  */

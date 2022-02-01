@@ -237,17 +237,17 @@ public final class MultiContextNodeJS
   
   public final void nativeDispatch()
   {
-    AppMethodBeat.i(196747);
+    AppMethodBeat.i(194293);
     this.mv8.getV8().nativeDispatch();
-    AppMethodBeat.o(196747);
+    AppMethodBeat.o(194293);
   }
   
   public final void nativeMessageLoop()
   {
-    AppMethodBeat.i(196746);
+    AppMethodBeat.i(194292);
     this.mv8.getV8().checkThread();
     this.mv8.getV8().nativeMessageLoop();
-    AppMethodBeat.o(196746);
+    AppMethodBeat.o(194292);
   }
   
   public final void release()

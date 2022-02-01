@@ -9,8 +9,8 @@ public class Profession
   implements Parcelable
 {
   public static final Parcelable.Creator<Profession> CREATOR;
-  public String DkE;
-  public int DkF;
+  public String HTX;
+  public int HTY;
   
   static
   {
@@ -22,15 +22,15 @@ public class Profession
   protected Profession(Parcel paramParcel)
   {
     AppMethodBeat.i(70161);
-    this.DkE = paramParcel.readString();
-    this.DkF = paramParcel.readInt();
+    this.HTX = paramParcel.readString();
+    this.HTY = paramParcel.readInt();
     AppMethodBeat.o(70161);
   }
   
   public Profession(String paramString, int paramInt)
   {
-    this.DkE = paramString;
-    this.DkF = paramInt;
+    this.HTX = paramString;
+    this.HTY = paramInt;
   }
   
   public int describeContents()
@@ -41,14 +41,14 @@ public class Profession
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70162);
-    paramParcel.writeString(this.DkE);
-    paramParcel.writeInt(this.DkF);
+    paramParcel.writeString(this.HTX);
+    paramParcel.writeInt(this.HTY);
     AppMethodBeat.o(70162);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.model.Profession
  * JD-Core Version:    0.7.0.1
  */

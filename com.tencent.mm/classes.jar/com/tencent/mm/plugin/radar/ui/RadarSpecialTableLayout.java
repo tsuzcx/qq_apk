@@ -4,13 +4,13 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.widget.TableLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "Landroid/widget/TableLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "specialLayoutFlag", "", "layout", "", "l", "", "t", "r", "b", "flag", "onLayout", "changed", "plugin-radar_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/ui/RadarSpecialTableLayout;", "Landroid/widget/TableLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "specialLayoutFlag", "", "layout", "", "l", "", "t", "r", "b", "flag", "onLayout", "changed", "plugin-radar_release"})
 public final class RadarSpecialTableLayout
   extends TableLayout
 {
-  private boolean xAg;
+  private boolean BAh;
   
   public RadarSpecialTableLayout(Context paramContext)
   {
@@ -26,10 +26,10 @@ public final class RadarSpecialTableLayout
     AppMethodBeat.o(138661);
   }
   
-  public final void H(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final void I(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(138659);
-    this.xAg = true;
+    this.BAh = true;
     super.layout(paramInt1, paramInt2, paramInt3, paramInt4);
     AppMethodBeat.o(138659);
   }
@@ -39,14 +39,14 @@ public final class RadarSpecialTableLayout
     AppMethodBeat.i(138660);
     int j;
     int i;
-    if ((!this.xAg) && (paramInt2 < 0))
+    if ((!this.BAh) && (paramInt2 < 0))
     {
       j = paramInt4 - paramInt2;
       i = 1;
     }
     for (;;)
     {
-      this.xAg = false;
+      this.BAh = false;
       if (i == 0)
       {
         super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);

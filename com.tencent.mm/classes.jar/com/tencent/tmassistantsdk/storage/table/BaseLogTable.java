@@ -154,7 +154,7 @@ public abstract class BaseLogTable
     //   228: ldc 176
     //   230: iconst_0
     //   231: anewarray 4	java/lang/Object
-    //   234: invokestatic 182	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   234: invokestatic 182	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   237: aload 8
     //   239: astore 5
     //   241: aload 6
@@ -259,7 +259,7 @@ public abstract class BaseLogTable
     //   63: ldc 176
     //   65: iconst_0
     //   66: anewarray 4	java/lang/Object
-    //   69: invokestatic 182	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   69: invokestatic 182	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   72: aload_2
     //   73: invokevirtual 213	android/database/sqlite/SQLiteDatabase:endTransaction	()V
     //   76: iconst_0
@@ -312,7 +312,7 @@ public abstract class BaseLogTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.storage.table.BaseLogTable
  * JD-Core Version:    0.7.0.1
  */

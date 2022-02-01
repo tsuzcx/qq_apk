@@ -1,71 +1,61 @@
 package com.tencent.mm.plugin.webview.k;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.q;
-import d.g.a.m;
-import d.g.b.p;
-import d.l;
-import d.z;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
+import java.io.File;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"forEachIndexed", "", "Lcom/tencent/mm/json/JSONArray;", "block", "Lkotlin/Function2;", "", "htmlEncode", "", "kotlin.jvm.PlatformType", "map", "", "T", "toJsString", "webview-sdk_release"})
 public final class a
 {
-  public static final void a(com.tencent.mm.ab.f paramf, m<? super Integer, ? super com.tencent.mm.ab.f, z> paramm)
+  private static void Y(o paramo)
   {
-    AppMethodBeat.i(214221);
-    p.h(paramf, "$this$forEachIndexed");
-    p.h(paramm, "block");
-    int i = 0;
-    int j = paramf.length();
-    while (i < j)
+    AppMethodBeat.i(175882);
+    if (paramo == null)
     {
-      paramm.p(Integer.valueOf(i), paramf);
-      i += 1;
+      AppMethodBeat.o(175882);
+      return;
     }
-    AppMethodBeat.o(214221);
-  }
-  
-  public static final String aLc(String paramString)
-  {
-    AppMethodBeat.i(82770);
-    p.h(paramString, "$this$toJsString");
-    paramString = "'" + org.apache.commons.b.f.bfo(paramString) + '\'';
-    AppMethodBeat.o(82770);
-    return paramString;
-  }
-  
-  public static final <T> List<T> b(com.tencent.mm.ab.f paramf, m<? super Integer, ? super com.tencent.mm.ab.f, ? extends T> paramm)
-  {
-    AppMethodBeat.i(82768);
-    p.h(paramf, "$this$map");
-    p.h(paramm, "block");
-    LinkedList localLinkedList = new LinkedList();
-    int i = 0;
-    int j = paramf.length();
-    while (i < j)
+    if (paramo.isDirectory())
     {
-      localLinkedList.add(paramm.p(Integer.valueOf(i), paramf));
-      i += 1;
+      o[] arrayOfo = paramo.het();
+      int j = arrayOfo.length;
+      int i = 0;
+      while (i < j)
+      {
+        Y(arrayOfo[i]);
+        i += 1;
+      }
     }
-    paramf = (List)localLinkedList;
-    AppMethodBeat.o(82768);
-    return paramf;
+    Log.i("MicroMsg.ABI64WebViewCompat", "delete isSuccessDelete: %s fileName: %s", new Object[] { Boolean.valueOf(paramo.delete()), aa.z(paramo.her()) });
+    AppMethodBeat.o(175882);
   }
   
-  public static final String htmlEncode(String paramString)
+  public static boolean ic(Context paramContext)
   {
-    AppMethodBeat.i(82769);
-    p.h(paramString, "$this$htmlEncode");
-    paramString = q.encode(paramString, "UTF-8");
-    AppMethodBeat.o(82769);
-    return paramString;
+    AppMethodBeat.i(82364);
+    try
+    {
+      Y(new o(paramContext.getFilesDir().getParent() + "/app_webview/GPUCache"));
+      Y(new o(paramContext.getFilesDir().getParent() + "/app_x5webview/GPUCache"));
+      paramContext.getSharedPreferences("WebViewChromiumPrefs", 0).edit().clear().apply();
+      AppMethodBeat.o(82364);
+      return true;
+    }
+    catch (Throwable paramContext)
+    {
+      Log.printErrStackTrace("MicroMsg.ABI64WebViewCompat", paramContext, "", new Object[0]);
+      AppMethodBeat.o(82364);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.k.a
  * JD-Core Version:    0.7.0.1
  */

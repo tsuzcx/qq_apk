@@ -3,7 +3,9 @@ package com.tencent.mm.audio.c;
 import android.media.AudioTrack;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.b.e;
+import com.tencent.mm.compatible.deviceinfo.ae;
 import com.tencent.mm.compatible.deviceinfo.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
@@ -18,26 +20,26 @@ public final class a
     if (paramBoolean)
     {
       j = 3;
-      if ((com.tencent.mm.plugin.audio.c.a.bHy().bHt()) || (com.tencent.mm.plugin.audio.c.a.bHz())) {
+      if ((com.tencent.mm.plugin.audio.c.a.cea().cdW()) || (com.tencent.mm.plugin.audio.c.a.ceb())) {
         j = 3;
       }
       i = j;
-      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYn)
+      if (ae.gKu.gDA)
       {
-        com.tencent.mm.compatible.deviceinfo.ae.geN.dump();
-        if ((!paramBoolean) || (com.tencent.mm.compatible.deviceinfo.ae.geN.fYQ < 0)) {
+        ae.gKu.dump();
+        if ((!paramBoolean) || (ae.gKu.gEh < 0)) {
           break label239;
         }
-        i = com.tencent.mm.compatible.deviceinfo.ae.geN.fYQ;
+        i = ae.gKu.gEh;
       }
       j = AudioTrack.getMinBufferSize(paramInt1, paramInt2, 2);
-      com.tencent.mm.sdk.platformtools.ae.i("AudioDeviceFactory", "speakerOn: %b, type: %d, sampleRate: %d, channelConfig: %d, PlayBufSize: %d, bufTimes: %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(j), Integer.valueOf(paramInt3) });
+      Log.i("AudioDeviceFactory", "speakerOn: %b, type: %d, sampleRate: %d, channelConfig: %d, PlayBufSize: %d, bufTimes: %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(j), Integer.valueOf(paramInt3) });
       locale = new e(i, paramInt1, paramInt2, paramInt3 * j);
       if (locale.getState() != 0) {
         break label277;
       }
       locale.release();
-      com.tencent.mm.sdk.platformtools.ae.i("AudioDeviceFactory", "reconstruct AudioTrack");
+      Log.i("AudioDeviceFactory", "reconstruct AudioTrack");
       if (i != 0) {
         break label271;
       }
@@ -49,7 +51,7 @@ public final class a
     label277:
     for (;;)
     {
-      com.tencent.mm.sdk.platformtools.ae.i("AudioDeviceFactory", "AudioTrack state: " + locale.getState());
+      Log.i("AudioDeviceFactory", "AudioTrack state: " + locale.getState());
       AppMethodBeat.o(130010);
       return locale;
       j = 0;
@@ -60,10 +62,10 @@ public final class a
         break label73;
       }
       i = j;
-      if (com.tencent.mm.compatible.deviceinfo.ae.geN.fYR < 0) {
+      if (ae.gKu.gEi < 0) {
         break label73;
       }
-      i = com.tencent.mm.compatible.deviceinfo.ae.geN.fYR;
+      i = ae.gKu.gEi;
       break label73;
       i = 0;
       break label183;

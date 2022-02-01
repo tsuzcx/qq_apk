@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk;
 
 public final class q$a
 {
-  public static q Fca;
+  public static q JSZ;
 }
 
 

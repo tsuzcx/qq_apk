@@ -3,94 +3,97 @@ package com.tencent.mm.storage.emotion;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bw.a;
-import com.tencent.mm.emoji.a.c.c.a;
-import com.tencent.mm.protocal.protobuf.cso;
-import com.tencent.mm.protocal.protobuf.csu;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.a.b;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.emoji.b.c.c.a;
+import com.tencent.mm.protocal.protobuf.dkt;
+import com.tencent.mm.protocal.protobuf.dld;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import kotlin.a.j;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/storage/emotion/EmojiSuggestCacheStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/emoji/model/search/EmojiSuggestCacheInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "cacheMap", "Lcom/tencent/mm/memory/cache/DefaultResource;", "", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "clear", "", "dump", "get", "desc", "getInfoFromDb", "set", "info", "Companion", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/storage/emotion/EmojiSuggestCacheStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/emoji/model/search/EmojiSuggestCacheInfo;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "cacheMap", "Lcom/tencent/mm/memory/cache/DefaultResource;", "", "getDb", "()Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "clear", "", "dump", "get", "desc", "getInfoFromDb", "set", "info", "Companion", "plugin-emojisdk_release"})
 public final class g
-  extends com.tencent.mm.sdk.e.j<com.tencent.mm.emoji.a.c.c>
+  extends MAutoStorage<com.tencent.mm.emoji.b.c.c>
 {
-  private static final String[] Bll;
-  public static final String JiO = "EmojiSuggestCacheInfo";
-  public static final a JiP;
+  private static final String[] Fwb;
+  public static final String OsG = "EmojiSuggestCacheInfo";
+  public static final a OsH;
   private static final String TAG = "MicroMsg.EmojiSuggestCacheStorage";
-  public final e db;
-  public final com.tencent.mm.memory.a.c<String, com.tencent.mm.emoji.a.c.c> iQC;
+  public final ISQLiteDatabase db;
+  public final com.tencent.mm.memory.a.c<String, com.tencent.mm.emoji.b.c.c> jNx;
   
   static
   {
-    AppMethodBeat.i(188630);
-    JiP = new a((byte)0);
-    JiO = "EmojiSuggestCacheInfo";
-    c.a locala = com.tencent.mm.emoji.a.c.c.goG;
-    Bll = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(com.tencent.mm.emoji.a.c.c.access$getInfo$cp(), JiO) };
+    AppMethodBeat.i(200101);
+    OsH = new a((byte)0);
+    OsG = "EmojiSuggestCacheInfo";
+    c.a locala = com.tencent.mm.emoji.b.c.c.gZz;
+    Fwb = new String[] { MAutoStorage.getCreateSQLs(com.tencent.mm.emoji.b.c.c.access$getInfo$cp(), OsG) };
     TAG = "MicroMsg.EmojiSuggestCacheStorage";
-    AppMethodBeat.o(188630);
+    AppMethodBeat.o(200101);
   }
   
-  public g(e parame)
+  public g(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, com.tencent.mm.emoji.a.c.c.access$getInfo$cp(), "EmojiSuggestCacheInfo", null);
-    AppMethodBeat.i(188629);
-    this.db = parame;
-    this.iQC = new com.tencent.mm.memory.a.c(100);
-    AppMethodBeat.o(188629);
+    super(paramISQLiteDatabase, com.tencent.mm.emoji.b.c.c.access$getInfo$cp(), "EmojiSuggestCacheInfo", null);
+    AppMethodBeat.i(200100);
+    this.db = paramISQLiteDatabase;
+    this.jNx = new com.tencent.mm.memory.a.c(100);
+    AppMethodBeat.o(200100);
   }
   
-  private com.tencent.mm.emoji.a.c.c aWr(String paramString)
+  private com.tencent.mm.emoji.b.c.c blq(String paramString)
   {
-    AppMethodBeat.i(188627);
+    AppMethodBeat.i(200098);
     p.h(paramString, "desc");
-    com.tencent.mm.emoji.a.c.c localc = new com.tencent.mm.emoji.a.c.c();
+    com.tencent.mm.emoji.b.c.c localc = new com.tencent.mm.emoji.b.c.c();
     localc.field_desc = paramString;
-    super.get((com.tencent.mm.sdk.e.c)localc, new String[] { getPrimaryKey() });
+    super.get((IAutoDBItem)localc, new String[] { getPrimaryKey() });
     if (localc.isValid())
     {
-      AppMethodBeat.o(188627);
+      AppMethodBeat.o(200098);
       return localc;
     }
-    AppMethodBeat.o(188627);
+    AppMethodBeat.o(200098);
     return null;
   }
   
-  public final void a(com.tencent.mm.emoji.a.c.c paramc)
+  public final void a(com.tencent.mm.emoji.b.c.c paramc)
   {
-    AppMethodBeat.i(188626);
+    AppMethodBeat.i(200097);
     p.h(paramc, "info");
-    this.iQC.put(paramc.field_desc, paramc);
-    super.replace((com.tencent.mm.sdk.e.c)paramc);
-    AppMethodBeat.o(188626);
+    this.jNx.put(paramc.field_desc, paramc);
+    super.replace((IAutoDBItem)paramc);
+    AppMethodBeat.o(200097);
   }
   
-  public final com.tencent.mm.emoji.a.c.c aWq(String paramString)
+  public final com.tencent.mm.emoji.b.c.c blp(String paramString)
   {
-    AppMethodBeat.i(188625);
+    AppMethodBeat.i(200096);
     p.h(paramString, "desc");
-    com.tencent.mm.emoji.a.c.c localc = (com.tencent.mm.emoji.a.c.c)this.iQC.get(paramString);
+    com.tencent.mm.emoji.b.c.c localc = (com.tencent.mm.emoji.b.c.c)this.jNx.get(paramString);
     if (localc != null)
     {
-      AppMethodBeat.o(188625);
+      AppMethodBeat.o(200096);
       return localc;
     }
-    paramString = aWr(paramString);
+    paramString = blq(paramString);
     if (paramString != null) {
-      this.iQC.put(paramString.field_desc, paramString);
+      this.jNx.put(paramString.field_desc, paramString);
     }
-    AppMethodBeat.o(188625);
+    AppMethodBeat.o(200096);
     return paramString;
   }
   
   public final void dump()
   {
-    AppMethodBeat.i(188628);
-    Cursor localCursor = this.db.a("select * from " + JiO, null, 2);
+    AppMethodBeat.i(200099);
+    Cursor localCursor = this.db.rawQuery("select * from " + OsG, null, 2);
     int i;
     if (localCursor != null)
     {
@@ -99,26 +102,26 @@ public final class g
       {
         if (localCursor.moveToNext())
         {
-          Object localObject2 = new com.tencent.mm.emoji.a.c.c();
-          ((com.tencent.mm.emoji.a.c.c)localObject2).convertFrom(localCursor);
-          Object localObject1 = new csu();
+          Object localObject2 = new com.tencent.mm.emoji.b.c.c();
+          ((com.tencent.mm.emoji.b.c.c)localObject2).convertFrom(localCursor);
+          Object localObject1 = new dld();
           Object localObject3 = (a)localObject1;
-          byte[] arrayOfByte = ((com.tencent.mm.emoji.a.c.c)localObject2).field_content;
+          byte[] arrayOfByte = ((com.tencent.mm.emoji.b.c.c)localObject2).field_content;
           try
           {
             ((a)localObject3).parseFrom(arrayOfByte);
             localObject3 = TAG;
-            localObject2 = new StringBuilder("dump: ").append(i).append(": ").append(((com.tencent.mm.emoji.a.c.c)localObject2).field_desc).append(", ").append(((com.tencent.mm.emoji.a.c.c)localObject2).field_updateTime).append("; ");
-            localObject1 = ((csu)localObject1).GQM;
+            localObject2 = new StringBuilder("dump: ").append(i).append(": ").append(((com.tencent.mm.emoji.b.c.c)localObject2).field_desc).append(", ").append(((com.tencent.mm.emoji.b.c.c)localObject2).field_updateTime).append("; ");
+            localObject1 = ((dld)localObject1).LVc;
             p.g(localObject1, "rsp.Emoji");
-            ae.i((String)localObject3, d.a.j.a((Iterable)localObject1, null, null, null, 0, null, (b)b.JiQ, 31));
+            Log.i((String)localObject3, j.a((Iterable)localObject1, null, null, null, 0, null, (b)b.OsI, 31));
             i += 1;
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              ae.l("safeParser", "", new Object[] { localException });
+              Log.printDebugStack("safeParser", "", new Object[] { localException });
             }
           }
         }
@@ -127,28 +130,28 @@ public final class g
     }
     for (;;)
     {
-      ae.i(TAG, "dump done: count ".concat(String.valueOf(i)));
-      AppMethodBeat.o(188628);
+      Log.i(TAG, "dump done: count ".concat(String.valueOf(i)));
+      AppMethodBeat.o(200099);
       return;
       i = 0;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/storage/emotion/EmojiSuggestCacheStorage$Companion;", "", "()V", "SqlCreate", "", "", "kotlin.jvm.PlatformType", "getSqlCreate", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TAG", "Table", "getTable", "()Ljava/lang/String;", "plugin-emojisdk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/storage/emotion/EmojiSuggestCacheStorage$Companion;", "", "()V", "SqlCreate", "", "", "kotlin.jvm.PlatformType", "getSqlCreate", "()[Ljava/lang/String;", "[Ljava/lang/String;", "TAG", "Table", "getTable", "()Ljava/lang/String;", "plugin-emojisdk_release"})
   public static final class a {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/RecommendEmoji;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/RecommendEmoji;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
-    implements b<cso, String>
+    implements b<dkt, String>
   {
-    public static final b JiQ;
+    public static final b OsI;
     
     static
     {
-      AppMethodBeat.i(188624);
-      JiQ = new b();
-      AppMethodBeat.o(188624);
+      AppMethodBeat.i(200095);
+      OsI = new b();
+      AppMethodBeat.o(200095);
     }
     
     b()
@@ -159,7 +162,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.g
  * JD-Core Version:    0.7.0.1
  */

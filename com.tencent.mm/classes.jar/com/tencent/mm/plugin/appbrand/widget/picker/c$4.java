@@ -15,11 +15,11 @@ final class c$4
   {
     AppMethodBeat.i(138044);
     Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/widget/picker/AppBrandPickerBottomPanelBase$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-    localObject = this.nql;
-    if (c.e(this.nql) == null) {}
-    for (paramView = null;; paramView = c.e(this.nql).currentValue())
+    ((b)localObject).bm(paramView);
+    a.b("com/tencent/mm/plugin/appbrand/widget/picker/AppBrandPickerBottomPanelBase$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+    localObject = this.ozS;
+    if (c.e(this.ozS) == null) {}
+    for (paramView = null;; paramView = c.e(this.ozS).currentValue())
     {
       c.a((c)localObject, true, paramView);
       a.a(this, "com/tencent/mm/plugin/appbrand/widget/picker/AppBrandPickerBottomPanelBase$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -30,7 +30,7 @@ final class c$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.c.4
  * JD-Core Version:    0.7.0.1
  */

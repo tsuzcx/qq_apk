@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public final class a
 {
-  static void cs(View paramView)
+  static void ch(View paramView)
   {
     if (paramView == null) {}
     for (;;)
@@ -244,7 +244,7 @@ public final class a
                                     i = 0;
                                     while (i < j)
                                     {
-                                      cs(paramView.getChildAt(i));
+                                      ch(paramView.getChildAt(i));
                                       i += 1;
                                     }
                                     try
@@ -309,7 +309,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.matrix.resource.a
  * JD-Core Version:    0.7.0.1
  */

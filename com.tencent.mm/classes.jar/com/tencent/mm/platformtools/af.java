@@ -12,11 +12,12 @@ import android.os.Debug;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.q.c;
-import com.tencent.mm.plugin.q.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.k;
+import com.tencent.mm.plugin.p.c;
+import com.tencent.mm.plugin.p.d;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.ui.e;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimeZone;
@@ -27,14 +28,35 @@ import java.util.regex.Pattern;
 public final class af
 {
   private static final TimeZone GMT;
-  private static final long[] iSV;
+  private static final long[] VIRBRATOR_PATTERN;
   
   static
   {
     AppMethodBeat.i(20749);
-    iSV = new long[] { 300L, 200L, 300L, 200L };
+    VIRBRATOR_PATTERN = new long[] { 300L, 200L, 300L, 200L };
     GMT = TimeZone.getTimeZone("GMT");
     AppMethodBeat.o(20749);
+  }
+  
+  @Deprecated
+  public static long Fk(String paramString)
+  {
+    AppMethodBeat.i(20743);
+    if (paramString == null) {}
+    try
+    {
+      AppMethodBeat.o(20743);
+      return -1L;
+    }
+    catch (NumberFormatException paramString)
+    {
+      long l;
+      AppMethodBeat.o(20743);
+    }
+    l = Long.parseLong(paramString);
+    AppMethodBeat.o(20743);
+    return l;
+    return -1L;
   }
   
   public static boolean a(Context paramContext, View paramView)
@@ -67,44 +89,13 @@ public final class af
     {
       for (;;)
       {
-        ae.e("MicroMsg.Util", "hide VKB(View) exception %s", new Object[] { paramContext });
+        Log.e("MicroMsg.Util", "hide VKB(View) exception %s", new Object[] { paramContext });
         boolean bool = false;
       }
     }
   }
   
-  public static long aRi()
-  {
-    AppMethodBeat.i(20721);
-    long l = System.currentTimeMillis() / 1000L;
-    AppMethodBeat.o(20721);
-    return l;
-  }
-  
-  public static void aRj()
-  {
-    AppMethodBeat.i(20732);
-    ae.w("MicroMsg.Util", "memory usage: h=%s/%s, e=%s/%s, n=%s/%s", new Object[] { sL(Debug.getGlobalAllocSize()), sL(Debug.getGlobalAllocSize() + Debug.getGlobalFreedSize()), sL(Debug.getGlobalExternalAllocSize()), sL(Debug.getGlobalExternalAllocSize() + Debug.getGlobalExternalFreedSize()), sL(Debug.getNativeHeapAllocatedSize()), sL(Debug.getNativeHeapSize()) });
-    AppMethodBeat.o(20732);
-  }
-  
-  public static af.a aRk()
-  {
-    AppMethodBeat.i(20745);
-    af.a locala = new af.a();
-    AppMethodBeat.o(20745);
-    return locala;
-  }
-  
-  public static String bI(String paramString1, String paramString2)
-  {
-    if (paramString1 == null) {
-      return paramString2;
-    }
-    return paramString1;
-  }
-  
-  public static List<String> bJ(String paramString1, String paramString2)
+  public static List<String> bS(String paramString1, String paramString2)
   {
     AppMethodBeat.i(20746);
     String str = null;
@@ -131,7 +122,22 @@ public final class af
     return str;
   }
   
-  public static int cd(Object paramObject)
+  public static void blM()
+  {
+    AppMethodBeat.i(20732);
+    Log.w("MicroMsg.Util", "memory usage: h=%s/%s, e=%s/%s, n=%s/%s", new Object[] { getSizeKB(Debug.getGlobalAllocSize()), getSizeKB(Debug.getGlobalAllocSize() + Debug.getGlobalFreedSize()), getSizeKB(Debug.getGlobalExternalAllocSize()), getSizeKB(Debug.getGlobalExternalAllocSize() + Debug.getGlobalExternalFreedSize()), getSizeKB(Debug.getNativeHeapAllocatedSize()), getSizeKB(Debug.getNativeHeapSize()) });
+    AppMethodBeat.o(20732);
+  }
+  
+  public static a blN()
+  {
+    AppMethodBeat.i(20745);
+    a locala = new a();
+    AppMethodBeat.o(20745);
+    return locala;
+  }
+  
+  public static int cm(Object paramObject)
   {
     AppMethodBeat.i(20740);
     if (paramObject == null)
@@ -156,29 +162,16 @@ public final class af
     return 0;
   }
   
-  public static long d(Long paramLong)
-  {
-    AppMethodBeat.i(20738);
-    if (paramLong == null)
-    {
-      AppMethodBeat.o(20738);
-      return 0L;
-    }
-    long l = paramLong.longValue();
-    AppMethodBeat.o(20738);
-    return l;
-  }
-  
-  public static boolean df(Context paramContext)
+  public static boolean dA(Context paramContext)
   {
     AppMethodBeat.i(20747);
-    if (d.drw() != null) {
-      d.drw().dru();
+    if (d.elq() != null) {
+      d.elq().elo();
     }
-    if ((k.cSO & 0x1) != 0)
+    if ((ChannelUtil.updateMode & 0x1) != 0)
     {
-      ae.e("MicroMsg.Util", "package has set external update mode");
-      Object localObject = Uri.parse(k.IwH);
+      Log.e("MicroMsg.Util", "package has set external update mode");
+      Object localObject = Uri.parse(ChannelUtil.marketURL);
       Intent localIntent = new Intent("android.intent.action.VIEW", (Uri)localObject).addFlags(268435456);
       int i;
       if ((localObject != null) && (localIntent != null))
@@ -187,17 +180,17 @@ public final class af
         {
           i = 1;
           if (i != 0) {
-            break label194;
+            break label193;
           }
         }
       }
       else
       {
-        ae.e("MicroMsg.Util", "parse market uri failed, jump to weixin.qq.com");
-        localObject = new Intent("android.intent.action.VIEW", Uri.parse("http://weixin.qq.com")).addFlags(268435456);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+        Log.e("MicroMsg.Util", "parse market uri failed, jump to weixin.qq.com");
+        localObject = new Intent("android.intent.action.VIEW", Uri.parse(e.OyP)).addFlags(268435456);
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
       for (;;)
@@ -206,18 +199,18 @@ public final class af
         return true;
         i = 0;
         break;
-        label194:
-        ae.i("MicroMsg.Util", "parse market uri ok");
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+        label193:
+        Log.i("MicroMsg.Util", "parse market uri ok");
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+        com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/platformtools/Util", "checkUpdate", "(Landroid/content/Context;Ljava/lang/Runnable;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
-    ak.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", System.currentTimeMillis() / 1000L).commit();
-    if (d.drw() != null)
+    MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", System.currentTimeMillis() / 1000L).commit();
+    if (d.elq() != null)
     {
-      paramContext = d.drw().c(paramContext, new DialogInterface.OnCancelListener()
+      paramContext = d.elq().c(paramContext, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
       });
@@ -232,14 +225,12 @@ public final class af
     return true;
   }
   
-  public static boolean dw(int paramInt1, int paramInt2)
+  public static String formatSecToMin(int paramInt)
   {
-    return paramInt2 > paramInt1 * 2.0D;
-  }
-  
-  public static boolean dx(int paramInt1, int paramInt2)
-  {
-    return paramInt1 > paramInt2 * 2.0D;
+    AppMethodBeat.i(20722);
+    String str = String.format("%d:%02d", new Object[] { Long.valueOf(paramInt / 60L), Long.valueOf(paramInt % 60L) });
+    AppMethodBeat.o(20722);
+    return str;
   }
   
   @Deprecated
@@ -260,97 +251,13 @@ public final class af
     }
     catch (NumberFormatException paramString)
     {
-      ae.printErrStackTrace("MicroMsg.Util", paramString, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.Util", paramString, "", new Object[0]);
       AppMethodBeat.o(20742);
     }
     return paramInt;
   }
   
-  public static int i(Integer paramInteger)
-  {
-    AppMethodBeat.i(20737);
-    if (paramInteger == null)
-    {
-      AppMethodBeat.o(20737);
-      return 0;
-    }
-    int i = paramInteger.intValue();
-    AppMethodBeat.o(20737);
-    return i;
-  }
-  
-  public static boolean isNullOrNil(String paramString)
-  {
-    AppMethodBeat.i(20741);
-    if ((paramString == null) || (paramString.length() <= 0))
-    {
-      AppMethodBeat.o(20741);
-      return true;
-    }
-    AppMethodBeat.o(20741);
-    return false;
-  }
-  
-  public static List<String> j(String[] paramArrayOfString)
-  {
-    AppMethodBeat.i(20719);
-    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
-    {
-      AppMethodBeat.o(20719);
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    while (i < paramArrayOfString.length)
-    {
-      localArrayList.add(paramArrayOfString[i]);
-      i += 1;
-    }
-    AppMethodBeat.o(20719);
-    return localArrayList;
-  }
-  
-  public static String nullAsNil(String paramString)
-  {
-    String str = paramString;
-    if (paramString == null) {
-      str = "";
-    }
-    return str;
-  }
-  
-  public static long rZ(long paramLong)
-  {
-    AppMethodBeat.i(20724);
-    long l = System.currentTimeMillis() / 1000L;
-    AppMethodBeat.o(20724);
-    return l - paramLong;
-  }
-  
-  public static String rb(int paramInt)
-  {
-    AppMethodBeat.i(20722);
-    String str = String.format("%d:%02d", new Object[] { Long.valueOf(paramInt / 60L), Long.valueOf(paramInt % 60L) });
-    AppMethodBeat.o(20722);
-    return str;
-  }
-  
-  public static boolean rc(int paramInt)
-  {
-    AppMethodBeat.i(20731);
-    long l1 = paramInt * 1000L;
-    long l2 = l1 - System.currentTimeMillis();
-    ae.d("MicroMsg.Util", "time " + l1 + "  systime " + System.currentTimeMillis() + " diff " + l2);
-    if (l2 < 0L)
-    {
-      AppMethodBeat.o(20731);
-      return true;
-    }
-    AppMethodBeat.o(20731);
-    return false;
-  }
-  
-  public static String sL(long paramLong)
+  public static String getSizeKB(long paramLong)
   {
     AppMethodBeat.i(20720);
     float f;
@@ -373,30 +280,126 @@ public final class af
     return str;
   }
   
-  @Deprecated
-  public static long wW(String paramString)
+  public static int i(Integer paramInteger)
   {
-    AppMethodBeat.i(20743);
-    if (paramString == null) {}
-    try
+    AppMethodBeat.i(20737);
+    if (paramInteger == null)
     {
-      AppMethodBeat.o(20743);
-      return -1L;
+      AppMethodBeat.o(20737);
+      return 0;
     }
-    catch (NumberFormatException paramString)
+    int i = paramInteger.intValue();
+    AppMethodBeat.o(20737);
+    return i;
+  }
+  
+  public static boolean isLongHorizontal(int paramInt1, int paramInt2)
+  {
+    return paramInt1 > paramInt2 * 2.0D;
+  }
+  
+  public static boolean isLongVertical(int paramInt1, int paramInt2)
+  {
+    return paramInt2 > paramInt1 * 2.0D;
+  }
+  
+  public static boolean isNullOrNil(String paramString)
+  {
+    AppMethodBeat.i(20741);
+    if ((paramString == null) || (paramString.length() <= 0))
     {
-      long l;
-      AppMethodBeat.o(20743);
+      AppMethodBeat.o(20741);
+      return true;
     }
-    l = Long.parseLong(paramString);
-    AppMethodBeat.o(20743);
-    return l;
-    return -1L;
+    AppMethodBeat.o(20741);
+    return false;
+  }
+  
+  public static List<String> k(String[] paramArrayOfString)
+  {
+    AppMethodBeat.i(20719);
+    if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
+    {
+      AppMethodBeat.o(20719);
+      return null;
+    }
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < paramArrayOfString.length)
+    {
+      localArrayList.add(paramArrayOfString[i]);
+      i += 1;
+    }
+    AppMethodBeat.o(20719);
+    return localArrayList;
+  }
+  
+  public static String nullAs(String paramString1, String paramString2)
+  {
+    if (paramString1 == null) {
+      return paramString2;
+    }
+    return paramString1;
+  }
+  
+  public static String nullAsNil(String paramString)
+  {
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
+    }
+    return str;
+  }
+  
+  public static boolean uT(int paramInt)
+  {
+    AppMethodBeat.i(20731);
+    long l1 = paramInt * 1000L;
+    long l2 = l1 - System.currentTimeMillis();
+    Log.d("MicroMsg.Util", "time " + l1 + "  systime " + System.currentTimeMillis() + " diff " + l2);
+    if (l2 < 0L)
+    {
+      AppMethodBeat.o(20731);
+      return true;
+    }
+    AppMethodBeat.o(20731);
+    return false;
+  }
+  
+  public static final class a
+  {
+    public final String toString()
+    {
+      AppMethodBeat.i(20716);
+      Object localObject = new Throwable().getStackTrace();
+      if ((localObject == null) || (localObject.length < 4))
+      {
+        AppMethodBeat.o(20716);
+        return "";
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      int i = 3;
+      while (i < localObject.length)
+      {
+        if (localObject[i].getClassName().contains("com.tencent.mm"))
+        {
+          localStringBuilder.append("[");
+          localStringBuilder.append(localObject[i].getClassName().substring(15));
+          localStringBuilder.append(":");
+          localStringBuilder.append(localObject[i].getMethodName());
+          localStringBuilder.append("(" + localObject[i].getLineNumber() + ")]");
+        }
+        i += 1;
+      }
+      localObject = localStringBuilder.toString();
+      AppMethodBeat.o(20716);
+      return localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.af
  * JD-Core Version:    0.7.0.1
  */

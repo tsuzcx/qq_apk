@@ -10,10 +10,10 @@ public class CreExtInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<CreExtInfo> CREATOR;
-  public int Dno;
-  public int Dnp;
-  public int Dnq;
-  public int Dnr;
+  public int HWG;
+  public int HWH;
+  public int HWI;
+  public int HWJ;
   
   static
   {
@@ -27,23 +27,23 @@ public class CreExtInfo
   protected CreExtInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70247);
-    this.Dno = paramParcel.readInt();
-    this.Dnp = paramParcel.readInt();
-    this.Dnq = paramParcel.readInt();
-    this.Dnr = paramParcel.readInt();
+    this.HWG = paramParcel.readInt();
+    this.HWH = paramParcel.readInt();
+    this.HWI = paramParcel.readInt();
+    this.HWJ = paramParcel.readInt();
     AppMethodBeat.o(70247);
   }
   
-  public static CreExtInfo bd(JSONObject paramJSONObject)
+  public static CreExtInfo bD(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70249);
     if (paramJSONObject != null)
     {
       CreExtInfo localCreExtInfo = new CreExtInfo();
-      localCreExtInfo.Dno = paramJSONObject.optInt("need_creid_renewal", 0);
-      localCreExtInfo.Dnp = paramJSONObject.optInt("need_birth_date", 0);
-      localCreExtInfo.Dnq = paramJSONObject.optInt("need_cre_expire_date", 0);
-      localCreExtInfo.Dnr = paramJSONObject.optInt("need_show_cre_type", 0);
+      localCreExtInfo.HWG = paramJSONObject.optInt("need_creid_renewal", 0);
+      localCreExtInfo.HWH = paramJSONObject.optInt("need_birth_date", 0);
+      localCreExtInfo.HWI = paramJSONObject.optInt("need_cre_expire_date", 0);
+      localCreExtInfo.HWJ = paramJSONObject.optInt("need_show_cre_type", 0);
       AppMethodBeat.o(70249);
       return localCreExtInfo;
     }
@@ -59,16 +59,16 @@ public class CreExtInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70248);
-    paramParcel.writeInt(this.Dno);
-    paramParcel.writeInt(this.Dnp);
-    paramParcel.writeInt(this.Dnq);
-    paramParcel.writeInt(this.Dnr);
+    paramParcel.writeInt(this.HWG);
+    paramParcel.writeInt(this.HWH);
+    paramParcel.writeInt(this.HWI);
+    paramParcel.writeInt(this.HWJ);
     AppMethodBeat.o(70248);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.CreExtInfo
  * JD-Core Version:    0.7.0.1
  */

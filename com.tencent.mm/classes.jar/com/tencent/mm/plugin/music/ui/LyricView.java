@@ -1,53 +1,57 @@
 package com.tencent.mm.plugin.music.ui;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint.Align;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.GestureDetector;
-import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.music.model.b.a;
-import com.tencent.mm.plugin.music.model.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.music.model.e;
+import com.tencent.mm.plugin.music.model.e.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.ArrayList;
 
 public class LyricView
   extends View
 {
-  public static int wCA;
-  public static int wCz;
-  private float gpg;
-  private float gph;
-  private long hLA;
+  private static int AmU;
+  private static int AmV;
+  private TextPaint AmN;
+  private TextPaint AmO;
+  private Paint.Align AmP;
+  private boolean AmQ;
+  private int AmR;
+  private int AmS;
+  private int AmT;
+  private int AmW;
+  private boolean AmX;
+  private boolean AmY;
+  private int AmZ;
+  private e Amv;
+  private int[] Ana;
+  private int[] Anb;
+  private float dep;
+  private float gZZ;
+  private float haa;
   private int height;
-  private GestureDetector iNw;
-  private int uOo;
-  private int wCB;
-  private boolean wCC;
-  private boolean wCD;
-  private int wCE;
-  private com.tencent.mm.plugin.music.model.b wCo;
-  private TextPaint wCu;
-  private TextPaint wCv;
-  private int wCw;
-  private int wCx;
-  private int wCy;
+  private long iGC;
+  private GestureDetector jKk;
+  private int mode;
+  private int paddingBottom;
+  private int paddingTop;
+  private int textSize;
   private int width;
+  private int ygL;
   
   static
   {
     AppMethodBeat.i(63192);
-    wCz = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 16);
-    wCA = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 10);
+    AmU = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 16);
+    AmV = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 10);
     AppMethodBeat.o(63192);
   }
   
@@ -55,9 +59,17 @@ public class LyricView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(63184);
-    this.wCy = -1;
-    this.wCB = (wCz + wCA);
-    this.uOo = this.wCB;
+    this.mode = 1;
+    this.AmP = Paint.Align.CENTER;
+    this.AmQ = false;
+    this.paddingTop = 0;
+    this.textSize = AmU;
+    this.paddingBottom = AmV;
+    this.AmT = -1;
+    this.AmW = (this.paddingTop + this.textSize + this.paddingBottom);
+    this.ygL = this.AmW;
+    this.Ana = new int[2];
+    this.Anb = new int[2];
     initView();
     AppMethodBeat.o(63184);
   }
@@ -66,38 +78,99 @@ public class LyricView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(63185);
-    this.wCy = -1;
-    this.wCB = (wCz + wCA);
-    this.uOo = this.wCB;
+    this.mode = 1;
+    this.AmP = Paint.Align.CENTER;
+    this.AmQ = false;
+    this.paddingTop = 0;
+    this.textSize = AmU;
+    this.paddingBottom = AmV;
+    this.AmT = -1;
+    this.AmW = (this.paddingTop + this.textSize + this.paddingBottom);
+    this.ygL = this.AmW;
+    this.Ana = new int[2];
+    this.Anb = new int[2];
     initView();
     AppMethodBeat.o(63185);
+  }
+  
+  private static float h(MotionEvent paramMotionEvent, int paramInt)
+  {
+    AppMethodBeat.i(219876);
+    paramInt = paramMotionEvent.findPointerIndex(paramInt);
+    if (paramInt < 0)
+    {
+      AppMethodBeat.o(219876);
+      return -1.0F;
+    }
+    float f = paramMotionEvent.getY(paramInt);
+    AppMethodBeat.o(219876);
+    return f;
   }
   
   private void initView()
   {
     AppMethodBeat.i(63186);
-    this.wCu = new TextPaint();
-    this.wCu.setTextSize(wCz);
-    this.wCu.setColor(-1);
-    this.wCu.setAntiAlias(true);
-    this.wCu.setTextAlign(Paint.Align.CENTER);
-    this.wCv = new TextPaint();
-    this.wCv.setTextSize(wCz);
-    this.wCv.setColor(-1);
-    this.wCv.setAlpha(127);
-    this.wCv.setAntiAlias(true);
-    this.wCv.setTextAlign(Paint.Align.CENTER);
-    this.iNw = new GestureDetector(getContext(), new a((byte)0));
+    setNestedScrollingEnabled(true);
+    this.AmN = new TextPaint();
+    this.AmN.setTextSize(this.textSize);
+    this.AmN.setColor(-1);
+    this.AmN.setAntiAlias(true);
+    this.AmN.setTextAlign(this.AmP);
+    this.AmO = new TextPaint();
+    this.AmO.setTextSize(this.textSize);
+    this.AmO.setColor(-1);
+    this.AmO.setAlpha(127);
+    this.AmO.setAntiAlias(true);
+    this.AmO.setTextAlign(this.AmP);
+    this.jKk = new GestureDetector(getContext(), new LyricView.a(this, (byte)0));
+    this.jKk.setIsLongpressEnabled(false);
     AppMethodBeat.o(63186);
+  }
+  
+  public final void a(Paint.Align paramAlign, int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(219873);
+    this.AmQ = true;
+    this.AmP = paramAlign;
+    this.AmN.setTextAlign(paramAlign);
+    this.AmN.setFakeBoldText(false);
+    this.AmO.setTextAlign(paramAlign);
+    this.AmN.setFakeBoldText(false);
+    this.paddingTop = paramInt2;
+    this.textSize = paramInt1;
+    this.paddingBottom = paramInt3;
+    this.AmW = (paramInt2 + paramInt1 + paramInt3);
+    this.ygL = this.AmW;
+    this.AmN.setTextSize(paramInt1);
+    this.AmO.setTextSize(paramInt1);
+    AppMethodBeat.o(219873);
+  }
+  
+  public float getTextSize()
+  {
+    AppMethodBeat.i(219875);
+    float f = (int)this.AmN.getTextSize();
+    AppMethodBeat.o(219875);
+    return f;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(63188);
     super.onDraw(paramCanvas);
-    if (this.wCo == null)
+    int j;
+    if ((this.Amv == null) || (this.Amv.Akn.size() <= 2))
     {
-      ae.v("MicroMsg.Music.LyricView", "lyricObj is null");
+      Log.d("MicroMsg.Music.LyricView", "lyricObj is null | no lyric");
+      j = this.height;
+      i = j;
+      if (j > 300) {
+        i = this.AmW;
+      }
+      j = i / 2 + this.paddingTop - (int)(this.AmN.descent() + this.AmN.ascent()) / 2;
+      if ((j < i) && (j > 0)) {
+        paramCanvas.drawText("", 0.0F, j, this.AmN);
+      }
       AppMethodBeat.o(63188);
       return;
     }
@@ -106,49 +179,94 @@ public class LyricView
       this.height = getMeasuredHeight();
       this.width = getMeasuredWidth();
     }
-    if (this.wCy < 0)
+    if (this.AmT < 0)
     {
       AppMethodBeat.o(63188);
       return;
     }
-    int i = this.uOo;
-    if ((this.wCo == null) || (this.wCo.wAq.size() <= this.wCy)) {
-      if (this.wCC) {
-        if (this.uOo == 0) {
-          break label401;
+    if (Paint.Align.LEFT == this.AmP)
+    {
+      i = this.ygL;
+      if ((this.Amv == null) || (this.Amv.Akn.size() <= this.AmT)) {
+        if (this.AmX) {
+          if (this.ygL == 0) {
+            break label960;
+          }
         }
       }
     }
-    label401:
-    for (i = 1;; i = 0)
+    label960:
+    for (int i = 1;; i = 0)
     {
       if (i != 0)
       {
-        this.uOo = ((int)(this.uOo * 0.9F));
+        this.ygL = ((int)(this.ygL * 0.9F));
         invalidate();
       }
       AppMethodBeat.o(63188);
       return;
-      int j = this.height / 2 - i;
-      if ((j < this.height) && (j > 0) && (this.wCo.LT(this.wCy) != null)) {
-        paramCanvas.drawText(this.wCo.LT(this.wCy).content, this.width / 2, j, this.wCu);
+      this.AmW = (this.paddingTop + this.textSize + this.paddingBottom);
+      if (this.AmQ)
+      {
+        if ((this.Amv == null) || (this.Amv.Akn.size() <= this.AmT)) {
+          break;
+        }
+        i = this.height / 2 + this.paddingTop - (int)(this.AmN.descent() + this.AmN.ascent()) / 2;
+        if ((i >= this.height) || (i <= 0) || (this.Amv.SQ(this.AmT) == null) || (this.Amv.SQ(this.AmT).isEmpty())) {
+          break;
+        }
+        paramCanvas.drawText(this.Amv.SQ(this.AmT).content, 0.0F, i, this.AmN);
+        break;
       }
-      i = this.wCy - 1;
+      j = this.height / 2;
+      j = this.paddingTop + (j - i);
+      if ((j < this.height) && (j > 0) && (this.Amv.SQ(this.AmT) != null) && (!this.Amv.SQ(this.AmT).isEmpty())) {
+        paramCanvas.drawText(this.Amv.SQ(this.AmT).content, 0.0F, j, this.AmN);
+      }
+      i = this.AmT - 1;
       int k;
       while (i >= 0)
       {
-        k = j - (this.wCy - i) * (wCz + wCA);
-        if ((k > 0) && (k < this.height) && (this.wCo.LT(i) != null)) {
-          paramCanvas.drawText(this.wCo.LT(i).content, this.width / 2, k, this.wCv);
+        k = j - (this.AmT - i) * this.AmW;
+        if ((k > 0) && (k < this.height) && (this.Amv.SQ(i) != null) && (!this.Amv.SQ(i).isEmpty())) {
+          paramCanvas.drawText(this.Amv.SQ(i).content, 0.0F, k, this.AmO);
         }
         i -= 1;
       }
-      i = this.wCy + 1;
-      while (i < this.wCo.wAq.size())
+      i = this.AmT + 1;
+      while (i < this.Amv.Akn.size())
       {
-        k = (i - this.wCy) * (wCz + wCA) + j;
-        if ((k < this.height) && (k > 0) && (this.wCo.LT(i) != null)) {
-          paramCanvas.drawText(this.wCo.LT(i).content, this.width / 2, k, this.wCv);
+        k = (i - this.AmT) * this.AmW + j;
+        if ((k < this.height) && (k > 0) && (this.Amv.SQ(i) != null) && (!this.Amv.SQ(i).isEmpty())) {
+          paramCanvas.drawText(this.Amv.SQ(i).content, 0.0F, k, this.AmO);
+        }
+        i += 1;
+      }
+      break;
+      i = this.ygL;
+      if ((this.Amv == null) || (this.Amv.Akn.size() <= this.AmT)) {
+        break;
+      }
+      j = this.height / 2;
+      j = this.paddingTop + (j - i);
+      if ((j < this.height) && (j > 0) && (this.Amv.SQ(this.AmT) != null)) {
+        paramCanvas.drawText(this.Amv.SQ(this.AmT).content, this.width / 2, j, this.AmN);
+      }
+      i = this.AmT - 1;
+      while (i >= 0)
+      {
+        k = j - (this.AmT - i) * this.AmW;
+        if ((k > 0) && (k < this.height) && (this.Amv.SQ(i) != null)) {
+          paramCanvas.drawText(this.Amv.SQ(i).content, this.width / 2, k, this.AmO);
+        }
+        i -= 1;
+      }
+      i = this.AmT + 1;
+      while (i < this.Amv.Akn.size())
+      {
+        k = (i - this.AmT) * this.AmW + j;
+        if ((k < this.height) && (k > 0) && (this.Amv.SQ(i) != null)) {
+          paramCanvas.drawText(this.Amv.SQ(i).content, this.width / 2, k, this.AmO);
         }
         i += 1;
       }
@@ -168,10 +286,11 @@ public class LyricView
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(63190);
-    GestureDetector localGestureDetector = this.iNw;
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.ahE(), "com/tencent/mm/plugin/music/ui/LyricView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.mt(0)), "com/tencent/mm/plugin/music/ui/LyricView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    GestureDetector localGestureDetector = this.jKk;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.axQ(), "com/tencent/mm/plugin/music/ui/LyricView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.pG(0)), "com/tencent/mm/plugin/music/ui/LyricView", "onTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    int k = paramMotionEvent.getPointerId(0);
     switch (paramMotionEvent.getAction())
     {
     }
@@ -179,65 +298,89 @@ public class LyricView
     {
       AppMethodBeat.o(63190);
       return true;
-      this.gph = paramMotionEvent.getY();
-      this.gpg = paramMotionEvent.getX();
-      this.wCE = this.uOo;
-      this.wCD = true;
-      this.wCC = false;
-      continue;
-      int k = (int)(paramMotionEvent.getX() - this.gpg);
-      int m = (int)(paramMotionEvent.getY() - this.gph);
-      int i = this.wCE - m;
-      if (i > 0)
+      this.haa = paramMotionEvent.getY();
+      this.gZZ = paramMotionEvent.getX();
+      this.AmZ = this.ygL;
+      this.AmY = true;
+      this.AmX = false;
+      this.dep = h(paramMotionEvent, k);
+      if (this.dep == -1.0F)
       {
-        if (i > this.wCx) {}
-        for (j = this.wCx;; j = i)
+        AppMethodBeat.o(63190);
+        return false;
+      }
+      if (2 == this.mode)
+      {
+        startNestedScroll(2);
+        continue;
+        int m = (int)(paramMotionEvent.getX() - this.gZZ);
+        int n = (int)(paramMotionEvent.getY() - this.haa);
+        int i = this.AmZ - n;
+        float f1;
+        if (i > 0)
         {
-          this.uOo = j;
-          invalidate();
-          ae.d("MicroMsg.Music.LyricView", "xDistance: %d yDisntance: %d tempYOffset: %d baseYOffset: %d", new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i), Integer.valueOf(this.wCE) });
+          if (i > this.AmS) {}
+          for (j = this.AmS;; j = i)
+          {
+            this.ygL = j;
+            invalidate();
+            Log.d("MicroMsg.Music.LyricView", "xDistance: %d yDisntance: %d tempYOffset: %d baseYOffset: %d", new Object[] { Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i), Integer.valueOf(this.AmZ) });
+            if (2 != this.mode) {
+              break;
+            }
+            f1 = h(paramMotionEvent, k);
+            if (f1 != -1.0F) {
+              break label394;
+            }
+            AppMethodBeat.o(63190);
+            return false;
+          }
+        }
+        if (i < -this.AmR) {}
+        for (int j = -this.AmR;; j = i)
+        {
+          this.ygL = j;
           break;
         }
+        label394:
+        float f2 = this.dep;
+        dispatchNestedPreScroll(0, 0, this.Ana, this.Anb);
+        dispatchNestedScroll(0, (int)(f1 - f2), 0, 0, null);
+        continue;
+        this.AmY = false;
       }
-      if (i < -this.wCw) {}
-      for (int j = -this.wCw;; j = i)
-      {
-        this.uOo = j;
-        break;
-      }
-      this.wCD = false;
     }
   }
   
   public void setCurrentTime(long paramLong)
   {
     AppMethodBeat.i(63183);
-    if (this.hLA != paramLong)
+    if (this.iGC != paramLong)
     {
-      this.hLA = paramLong;
-      if ((this.wCo == null) || (this.wCo.wAq.size() == 0))
+      this.iGC = paramLong;
+      if ((this.Amv == null) || (this.Amv.Akn.size() == 0))
       {
         AppMethodBeat.o(63183);
         return;
       }
       int j = -1;
       int i = 0;
-      while ((i < this.wCo.wAq.size()) && (this.wCo.LT(i).timestamp < paramLong))
+      while ((i < this.Amv.Akn.size()) && (this.Amv.SQ(i).timestamp < paramLong))
       {
-        if (!this.wCo.LT(i).wAw) {
+        if (!this.Amv.SQ(i).Akt) {
           j = i;
         }
         i += 1;
       }
-      if ((!this.wCD) && (j != this.wCy))
+      if ((!this.AmY) && (j != this.AmT))
       {
-        this.wCy = j;
-        this.wCw = ((wCz + wCA) * this.wCy);
-        this.wCx = ((wCz + wCA) * (this.wCo.wAq.size() - this.wCy - 1));
-        if (this.uOo == 0) {
-          this.uOo = (-this.wCB);
+        this.AmT = j;
+        this.AmR = (this.AmW * this.AmT);
+        this.AmS = (this.AmW * (this.Amv.Akn.size() - this.AmT - 1));
+        if (this.ygL == 0) {
+          this.ygL = (-this.AmW);
         }
-        this.wCC = true;
+        this.AmX = true;
         invalidate();
       }
     }
@@ -247,87 +390,45 @@ public class LyricView
   public void setLyricColor(int paramInt)
   {
     AppMethodBeat.i(63187);
-    this.wCu.setColor(paramInt);
-    this.wCu.setAlpha(255);
-    this.wCv.setColor(paramInt);
-    this.wCv.setAlpha(127);
+    this.AmN.setColor(paramInt);
+    this.AmN.setAlpha(255);
+    this.AmO.setColor(paramInt);
+    this.AmO.setAlpha(127);
     AppMethodBeat.o(63187);
   }
   
-  public void setLyricObj(com.tencent.mm.plugin.music.model.b paramb)
+  public void setLyricObj(e parame)
   {
     AppMethodBeat.i(63182);
-    this.wCo = paramb;
+    this.Amv = parame;
     invalidate();
     AppMethodBeat.o(63182);
   }
   
-  final class a
-    extends GestureDetector.SimpleOnGestureListener
+  public void setMode(int paramInt)
   {
-    private a() {}
-    
-    public final boolean onContextClick(MotionEvent paramMotionEvent)
+    boolean bool = true;
+    this.mode = paramInt;
+    if (1 == paramInt) {}
+    for (;;)
     {
-      AppMethodBeat.i(220702);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
-      boolean bool = super.onContextClick(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(220702);
-      return bool;
+      this.AmQ = bool;
+      return;
+      bool = false;
     }
-    
-    public final boolean onDoubleTap(MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(220701);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
-      boolean bool = super.onDoubleTap(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(220701);
-      return bool;
-    }
-    
-    public final void onLongPress(MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(63181);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
-      paramMotionEvent = LyricView.a(LyricView.this, paramMotionEvent.getX(), paramMotionEvent.getY());
-      if (!bu.isNullOrNil(paramMotionEvent))
-      {
-        f.dwv().setPrimaryClip(ClipData.newPlainText("MicroMsg.Music", paramMotionEvent));
-        Toast.makeText(LyricView.this.getContext(), LyricView.this.getContext().getString(2131761463, new Object[] { paramMotionEvent }), 0).show();
-      }
-      for (;;)
-      {
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(63181);
-        return;
-        ae.i("MicroMsg.Music.LyricView", "onLongPress not found sentence");
-      }
-    }
-    
-    public final boolean onSingleTapUp(MotionEvent paramMotionEvent)
-    {
-      AppMethodBeat.i(220700);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
-      boolean bool = super.onSingleTapUp(paramMotionEvent);
-      com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/music/ui/LyricView$LongClickGestureDetector", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-      AppMethodBeat.o(220700);
-      return bool;
-    }
+  }
+  
+  public void setTextSize(float paramFloat)
+  {
+    AppMethodBeat.i(219874);
+    this.AmN.setTextSize(paramFloat);
+    this.AmO.setTextSize(paramFloat);
+    AppMethodBeat.o(219874);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.LyricView
  * JD-Core Version:    0.7.0.1
  */

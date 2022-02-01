@@ -9,7 +9,7 @@ public class TPDLProxyInitParam
 {
   private String appVer = "";
   private String cacheDir = "";
-  private String configDir = "";
+  private String configStr = "";
   private String dataDir = "";
   private String guid = "";
   private int platform = 0;
@@ -24,17 +24,17 @@ public class TPDLProxyInitParam
   public TPDLProxyInitParam(int paramInt, String paramString1, String paramString2, String paramString3)
   {
     this(paramInt, paramString1, paramString2);
-    AppMethodBeat.i(207220);
+    AppMethodBeat.i(209881);
     if (!TextUtils.isEmpty(paramString3)) {
       this.dataDir = paramString3;
     }
-    AppMethodBeat.o(207220);
+    AppMethodBeat.o(209881);
   }
   
   public TPDLProxyInitParam(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
     this(paramInt, paramString1, paramString2, paramString4);
-    AppMethodBeat.i(207221);
+    AppMethodBeat.i(209882);
     if (!TextUtils.isEmpty(paramString3)) {
       this.cacheDir = paramString3;
     }
@@ -42,9 +42,9 @@ public class TPDLProxyInitParam
       this.dataDir = paramString4;
     }
     if (!TextUtils.isEmpty(paramString5)) {
-      this.configDir = paramString5;
+      this.configStr = paramString5;
     }
-    AppMethodBeat.o(207221);
+    AppMethodBeat.o(209882);
   }
   
   public String getAppVer()
@@ -57,9 +57,9 @@ public class TPDLProxyInitParam
     return this.cacheDir;
   }
   
-  public String getConfigDir()
+  public String getConfigStr()
   {
-    return this.configDir;
+    return this.configStr;
   }
   
   public String getDataDir()
@@ -79,7 +79,7 @@ public class TPDLProxyInitParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDLProxyInitParam
  * JD-Core Version:    0.7.0.1
  */

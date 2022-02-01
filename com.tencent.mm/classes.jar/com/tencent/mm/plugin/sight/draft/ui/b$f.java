@@ -6,12 +6,12 @@ import java.util.List;
 
 final class b$f
 {
-  List<b.e> zjP;
+  List<b.e> DoF;
   
   private b$f()
   {
     AppMethodBeat.i(28674);
-    this.zjP = new LinkedList();
+    this.DoF = new LinkedList();
     AppMethodBeat.o(28674);
   }
 }

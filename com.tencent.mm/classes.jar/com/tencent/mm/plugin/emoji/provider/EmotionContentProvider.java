@@ -7,18 +7,17 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.i;
+import com.tencent.mm.emoji.b.j;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
 import com.tencent.mm.plugin.emoji.model.k;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.storage.ba;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.bf;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.c;
@@ -33,18 +32,18 @@ import java.util.ArrayList;
 public class EmotionContentProvider
   extends ContentProvider
 {
-  private static final UriMatcher pMX;
+  private static final UriMatcher rdr;
   
   static
   {
     AppMethodBeat.i(108743);
     UriMatcher localUriMatcher = new UriMatcher(-1);
-    pMX = localUriMatcher;
-    localUriMatcher.addURI("com.tencent.mm.storage.provider.emotion", "EmojiGroupInfo", 1);
-    pMX.addURI("com.tencent.mm.storage.provider.emotion", "userinfo", 2);
-    pMX.addURI("com.tencent.mm.storage.provider.emotion", "GetEmotionListCache", 3);
-    pMX.addURI("com.tencent.mm.storage.provider.emotion", "EmojiInfo", 4);
-    pMX.addURI("com.tencent.mm.storage.provider.emotion", "EmojiInfoDesc", 5);
+    rdr = localUriMatcher;
+    localUriMatcher.addURI(com.tencent.mm.api.g.AUTHORITY, "EmojiGroupInfo", 1);
+    rdr.addURI(com.tencent.mm.api.g.AUTHORITY, "userinfo", 2);
+    rdr.addURI(com.tencent.mm.api.g.AUTHORITY, "GetEmotionListCache", 3);
+    rdr.addURI(com.tencent.mm.api.g.AUTHORITY, "EmojiInfo", 4);
+    rdr.addURI(com.tencent.mm.api.g.AUTHORITY, "EmojiInfoDesc", 5);
     AppMethodBeat.o(108743);
   }
   
@@ -55,45 +54,45 @@ public class EmotionContentProvider
     boolean bool1 = true;
     boolean bool2 = false;
     AppMethodBeat.i(108742);
-    ae.d("MicroMsg.EmotionContentProvider", "[call] method:%s", new Object[] { paramString1 });
-    if ((!g.ajS().gED) || (!g.ajP().aiZ()))
+    Log.d("MicroMsg.EmotionContentProvider", "[call] method:%s", new Object[] { paramString1 });
+    if ((!com.tencent.mm.kernel.g.aAi().hrr) || (!com.tencent.mm.kernel.g.aAf().azp()))
     {
-      ae.i("MicroMsg.EmotionContentProvider", "[call] method:%s, but kernel or account not init.", new Object[] { paramString1 });
+      Log.i("MicroMsg.EmotionContentProvider", "[call] method:%s, but kernel or account not init.", new Object[] { paramString1 });
       AppMethodBeat.o(108742);
       return null;
     }
     if (paramString1.equals("getAccPath"))
     {
       paramString1 = new Bundle();
-      paramString1.putString("path", g.ajR().gDT);
+      paramString1.putString("path", com.tencent.mm.kernel.g.aAh().hqG);
       AppMethodBeat.o(108742);
       return paramString1;
     }
     if (paramString1.equals("getEmojiKey"))
     {
       paramString1 = new Bundle();
-      paramString1.putString("key", com.tencent.mm.emoji.decode.a.aeE().aeF());
+      paramString1.putString("key", com.tencent.mm.emoji.decode.a.aum().aun());
       AppMethodBeat.o(108742);
       return paramString1;
     }
     if (paramString1.equals("ConfigStorage.getBoolean"))
     {
       paramString1 = new Bundle();
-      paramString1.putBoolean("key", ((Boolean)g.ajR().ajA().get(paramBundle.getInt("key"), Boolean.FALSE)).booleanValue());
+      paramString1.putBoolean("key", ((Boolean)com.tencent.mm.kernel.g.aAh().azQ().get(paramBundle.getInt("key"), Boolean.FALSE)).booleanValue());
       AppMethodBeat.o(108742);
       return paramString1;
     }
     if (paramString1.equals("ConfigStorage.getString"))
     {
       paramString1 = new Bundle();
-      paramString1.putString("key", (String)g.ajR().ajA().get(paramBundle.getInt("key"), ""));
+      paramString1.putString("key", (String)com.tencent.mm.kernel.g.aAh().azQ().get(paramBundle.getInt("key"), ""));
       AppMethodBeat.o(108742);
       return paramString1;
     }
     if (paramString1.equals("getAllCustomEmoji"))
     {
       paramString1 = new Bundle(EmojiInfo.class.getClassLoader());
-      paramString1.putParcelableArrayList("data", k.getEmojiStorageMgr().Jgi.dj(false));
+      paramString1.putParcelableArrayList("data", k.getEmojiStorageMgr().Oqb.dT(false));
       AppMethodBeat.o(108742);
       return paramString1;
     }
@@ -104,12 +103,12 @@ public class EmotionContentProvider
         paramBundle.setClassLoader(EmojiInfo.class.getClassLoader());
         paramString1 = (EmojiInfo)paramBundle.getParcelable("emoji");
         paramString2 = new Bundle(EmojiInfo.class.getClassLoader());
-        paramString2.putParcelable("data", ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().p(paramString1));
+        paramString2.putParcelable("data", ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().p(paramString1));
         AppMethodBeat.o(108742);
         return paramString2;
       }
       if (paramBundle == null) {
-        ae.e("MicroMsg.EmotionContentProvider", "[getRandomEmoji] extras:%s", new Object[] { Boolean.valueOf(bool1) });
+        Log.e("MicroMsg.EmotionContentProvider", "[getRandomEmoji] extras:%s", new Object[] { Boolean.valueOf(bool1) });
       }
     }
     label1540:
@@ -124,7 +123,7 @@ public class EmotionContentProvider
         if (paramString1.equals("getCurLangDesc"))
         {
           paramString1 = new Bundle();
-          paramString1.putString("data", k.getEmojiDescMgr().acm(paramString2));
+          paramString1.putString("data", k.getEmojiDescMgr().amp(paramString2));
           AppMethodBeat.o(108742);
           return paramString1;
         }
@@ -137,7 +136,7 @@ public class EmotionContentProvider
             bool2 = paramBundle.getBoolean("onlySuccess");
           }
           paramString1 = new Bundle();
-          paramString1.putInt("data", k.getEmojiStorageMgr().JfU.aP(bool1, bool2));
+          paramString1.putInt("data", k.getEmojiStorageMgr().OpN.aZ(bool1, bool2));
           AppMethodBeat.o(108742);
           return paramString1;
         }
@@ -148,14 +147,14 @@ public class EmotionContentProvider
             bool1 = paramBundle.getBoolean("onlySuccess");
           }
           paramString1 = new Bundle();
-          paramString1.putInt("data", k.getEmojiStorageMgr().JfU.wY(bool1));
+          paramString1.putInt("data", k.getEmojiStorageMgr().OpN.AM(bool1));
           AppMethodBeat.o(108742);
           return paramString1;
         }
         if (paramString1.equals("countProductId"))
         {
           paramString1 = new Bundle();
-          paramString1.putInt("data", k.getEmojiStorageMgr().JfU.aWf(paramString2));
+          paramString1.putInt("data", k.getEmojiStorageMgr().OpN.bld(paramString2));
           AppMethodBeat.o(108742);
           return paramString1;
         }
@@ -163,24 +162,24 @@ public class EmotionContentProvider
         {
           paramString1 = new Bundle();
           paramString2 = k.getEmojiStorageMgr();
-          if ((be.dQf == -1) || (be.Jgj)) {
-            be.dQf = paramString2.JfV.fwV();
+          if ((bj.eii == -1) || (bj.Oqc)) {
+            bj.eii = paramString2.OpO.gEH();
           }
-          paramString1.putInt("data", be.dQf);
+          paramString1.putInt("data", bj.eii);
           AppMethodBeat.o(108742);
           return paramString1;
         }
         if (paramString1.equals("getEmojiListByGroupId"))
         {
           paramString1 = new Bundle(EmojiInfo.class.getClassLoader());
-          paramString1.putParcelableArrayList("data", (ArrayList)((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().acl(paramString2));
+          paramString1.putParcelableArrayList("data", (ArrayList)((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().amo(paramString2));
           AppMethodBeat.o(108742);
           return paramString1;
         }
         if (paramString1.equals("getDesignerInfo"))
         {
           paramString1 = new Bundle();
-          paramString2 = be.fvc().JfY.aWu(paramString2);
+          paramString2 = bj.gCJ().OpR.blt(paramString2);
           if (paramString2 != null) {
             paramString1.putByteArray("buffer", paramString2.field_content);
           }
@@ -190,7 +189,7 @@ public class EmotionContentProvider
         if (paramString1.equals("getEmojiGroupInfoList"))
         {
           paramString1 = new Bundle(EmojiGroupInfo.class.getClassLoader());
-          paramString1.putParcelableArrayList("data", k.getEmojiStorageMgr().Jgi.afb());
+          paramString1.putParcelableArrayList("data", k.getEmojiStorageMgr().Oqb.auP());
           AppMethodBeat.o(108742);
           return paramString1;
         }
@@ -202,7 +201,7 @@ public class EmotionContentProvider
             int i = paramBundle.getInt("key_group");
             int j = paramBundle.getInt("key_type");
             int k = paramBundle.getInt("key_size");
-            paramString1 = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().l(paramString1, i, j, k);
+            paramString1 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().l(paramString1, i, j, k);
             paramString2 = new Bundle();
             paramString2.putParcelable("key_emoji_info", paramString1);
             AppMethodBeat.o(108742);
@@ -215,7 +214,7 @@ public class EmotionContentProvider
           {
             paramBundle.setClassLoader(EmojiInfo.class.getClassLoader());
             paramString1 = (EmojiInfo)paramBundle.get("key_emoji_info");
-            ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().updateEmojiInfo(paramString1);
+            ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().updateEmojiInfo(paramString1);
           }
         }
         else
@@ -223,14 +222,14 @@ public class EmotionContentProvider
           if (paramString1.equals("isEnableHEVCDecode"))
           {
             paramString1 = new Bundle();
-            paramString1.putBoolean("key_data", ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().chR());
+            paramString1.putBoolean("key_data", ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cFP());
             AppMethodBeat.o(108742);
             return paramString1;
           }
           if (paramString1.equals("isEnableHevcUpload"))
           {
             paramString1 = new Bundle();
-            paramString1.putBoolean("key_data", ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().afq());
+            paramString1.putBoolean("key_data", ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().ave());
             AppMethodBeat.o(108742);
             return paramString1;
           }
@@ -240,7 +239,7 @@ public class EmotionContentProvider
             {
               paramString1 = paramBundle.getString("key_md5");
               paramString2 = new Bundle();
-              paramString2.putParcelable("key_emoji_info", ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().acj(paramString1));
+              paramString2.putParcelable("key_emoji_info", ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().amm(paramString1));
               AppMethodBeat.o(108742);
               return paramString2;
             }
@@ -249,8 +248,8 @@ public class EmotionContentProvider
           {
             if (paramBundle != null)
             {
-              paramString1 = (am.a)paramBundle.get("key_config_key");
-              paramString1 = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().c(paramString1, null);
+              paramString1 = (ar.a)paramBundle.get("key_config_key");
+              paramString1 = ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().c(paramString1, null);
               paramString2 = new Bundle();
               paramString2.putSerializable("key_config_value", (Serializable)paramString1);
               AppMethodBeat.o(108742);
@@ -261,9 +260,9 @@ public class EmotionContentProvider
           {
             if (paramBundle != null)
             {
-              paramString1 = (am.a)paramBundle.get("key_config_key");
+              paramString1 = (ar.a)paramBundle.get("key_config_key");
               paramString2 = paramBundle.get("key_config_value");
-              ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().d(paramString1, paramString2);
+              ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().d(paramString1, paramString2);
             }
           }
           else if (paramString1.equals("checkGifFile"))
@@ -272,7 +271,7 @@ public class EmotionContentProvider
             {
               paramString1 = new Bundle();
               paramString2 = paramBundle.getString("key_path");
-              paramString1.putBoolean("key_data", ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().acv(paramString2));
+              paramString1.putBoolean("key_data", ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().amz(paramString2));
               AppMethodBeat.o(108742);
               return paramString1;
             }
@@ -284,7 +283,7 @@ public class EmotionContentProvider
               paramString1 = new Bundle();
               try
               {
-                paramString1.putParcelableArrayList("key_data", ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().chL());
+                paramString1.putParcelableArrayList("key_data", ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cFJ());
                 AppMethodBeat.o(108742);
                 return paramString1;
               }
@@ -292,14 +291,14 @@ public class EmotionContentProvider
               {
                 for (;;)
                 {
-                  ae.printErrStackTrace("MicroMsg.EmotionContentProvider", paramString2, "", new Object[0]);
+                  Log.printErrStackTrace("MicroMsg.EmotionContentProvider", paramString2, "", new Object[0]);
                 }
               }
             }
             if (paramString1.equals("deleteLoadingCaptureEmoji"))
             {
-              if (!bu.isNullOrNil(paramString2)) {
-                ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().acw(paramString2);
+              if (!Util.isNullOrNil(paramString2)) {
+                ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().amB(paramString2);
               }
             }
             else if (paramString1.equals("showCaptureEmojiInPanel"))
@@ -308,7 +307,7 @@ public class EmotionContentProvider
               {
                 paramBundle.setClassLoader(EmojiInfo.class.getClassLoader());
                 paramString1 = (EmojiInfo)paramBundle.getParcelable("emojiInfo");
-                ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().t(paramString1);
+                ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().t(paramString1);
               }
             }
             else
@@ -319,7 +318,7 @@ public class EmotionContentProvider
               if (paramBundle != null)
               {
                 paramString1 = paramBundle.getString("key_md5");
-                ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().acx(paramString1);
+                ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().amC(paramString1);
               }
             }
           }
@@ -328,20 +327,20 @@ public class EmotionContentProvider
       if (paramString1.equals("getCaptureEmoji"))
       {
         paramString1 = new Bundle();
-        paramString1.putParcelableArrayList("key_data", i.aeX().dk(false));
+        paramString1.putParcelableArrayList("key_data", j.auL().dU(false));
         AppMethodBeat.o(108742);
         return paramString1;
       }
       if (paramString1.equals("getSmileyPanelInfoList"))
       {
         paramString1 = new Bundle();
-        paramString1.putParcelableArrayList("smiley_panel_info", ((PluginEmoji)g.ad(PluginEmoji.class)).getEmojiMgr().chM());
+        paramString1.putParcelableArrayList("smiley_panel_info", ((PluginEmoji)com.tencent.mm.kernel.g.ah(PluginEmoji.class)).getEmojiMgr().cFK());
         AppMethodBeat.o(108742);
         return paramString1;
       }
     } while (!paramString1.equals("getPanelConfigName"));
     paramString1 = new Bundle();
-    paramString1.putString("key_data", ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().chP());
+    paramString1.putString("key_data", ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().cFN());
     AppMethodBeat.o(108742);
     return paramString1;
   }
@@ -349,19 +348,19 @@ public class EmotionContentProvider
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(108740);
-    if ((!g.ajS().gED) || (!g.ajP().aiZ()))
+    if ((!com.tencent.mm.kernel.g.aAi().hrr) || (!com.tencent.mm.kernel.g.aAf().azp()))
     {
-      ae.i("MicroMsg.EmotionContentProvider", "[delete] kernel or account not init.");
+      Log.i("MicroMsg.EmotionContentProvider", "[delete] kernel or account not init.");
       AppMethodBeat.o(108740);
       return 0;
     }
-    switch (pMX.match(paramUri))
+    switch (rdr.match(paramUri))
     {
     default: 
       AppMethodBeat.o(108740);
       return 0;
     }
-    int i = g.ajR().gDX.delete("GetEmotionListCache", paramString, paramArrayOfString);
+    int i = com.tencent.mm.kernel.g.aAh().hqK.delete("GetEmotionListCache", paramString, paramArrayOfString);
     AppMethodBeat.o(108740);
     return i;
   }
@@ -374,19 +373,19 @@ public class EmotionContentProvider
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
     AppMethodBeat.i(108739);
-    if ((!g.ajS().gED) || (!g.ajP().aiZ()))
+    if ((!com.tencent.mm.kernel.g.aAi().hrr) || (!com.tencent.mm.kernel.g.aAf().azp()))
     {
-      ae.i("MicroMsg.EmotionContentProvider", "[insert] kernel or account not init.");
+      Log.i("MicroMsg.EmotionContentProvider", "[insert] kernel or account not init.");
       AppMethodBeat.o(108739);
       return paramUri;
     }
-    switch (pMX.match(paramUri))
+    switch (rdr.match(paramUri))
     {
     default: 
       AppMethodBeat.o(108739);
       return paramUri;
     }
-    paramUri = Uri.withAppendedPath(paramUri, String.valueOf(g.ajR().gDX.a("GetEmotionListCache", r.info.IBM, paramContentValues)));
+    paramUri = Uri.withAppendedPath(paramUri, String.valueOf(com.tencent.mm.kernel.g.aAh().hqK.insert("GetEmotionListCache", r.info.primaryKey, paramContentValues)));
     AppMethodBeat.o(108739);
     return paramUri;
   }
@@ -394,7 +393,7 @@ public class EmotionContentProvider
   public boolean onCreate()
   {
     AppMethodBeat.i(108737);
-    ae.i("MicroMsg.EmotionContentProvider", "[onCreate]");
+    Log.i("MicroMsg.EmotionContentProvider", "[onCreate]");
     AppMethodBeat.o(108737);
     return true;
   }
@@ -402,33 +401,33 @@ public class EmotionContentProvider
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
     AppMethodBeat.i(108738);
-    if ((!g.ajS().gED) || (!g.ajP().aiZ()))
+    if ((!com.tencent.mm.kernel.g.aAi().hrr) || (!com.tencent.mm.kernel.g.aAf().azp()))
     {
-      ae.i("MicroMsg.EmotionContentProvider", "[query] kernel or account not init.");
+      Log.i("MicroMsg.EmotionContentProvider", "[query] kernel or account not init.");
       AppMethodBeat.o(108738);
       return null;
     }
-    ae.i("MicroMsg.EmotionContentProvider", "[query] path:%s selection:%s", new Object[] { paramUri.getPath(), paramString1 });
-    switch (pMX.match(paramUri))
+    Log.i("MicroMsg.EmotionContentProvider", "[query] path:%s selection:%s", new Object[] { paramUri.getPath(), paramString1 });
+    switch (rdr.match(paramUri))
     {
     case 2: 
     default: 
       AppMethodBeat.o(108738);
       return null;
     case 1: 
-      paramUri = g.ajR().gDX.a(paramString1, paramArrayOfString2, 2);
+      paramUri = com.tencent.mm.kernel.g.aAh().hqK.rawQuery(paramString1, paramArrayOfString2, 2);
       AppMethodBeat.o(108738);
       return paramUri;
     case 3: 
-      paramUri = g.ajR().gDX.a(paramString1, paramArrayOfString2, 2);
+      paramUri = com.tencent.mm.kernel.g.aAh().hqK.rawQuery(paramString1, paramArrayOfString2, 2);
       AppMethodBeat.o(108738);
       return paramUri;
     case 4: 
-      paramUri = g.ajR().gDX.a(paramString1, paramArrayOfString2, 2);
+      paramUri = com.tencent.mm.kernel.g.aAh().hqK.rawQuery(paramString1, paramArrayOfString2, 2);
       AppMethodBeat.o(108738);
       return paramUri;
     }
-    paramUri = g.ajR().gDX.a(paramString1, paramArrayOfString2, 2);
+    paramUri = com.tencent.mm.kernel.g.aAh().hqK.rawQuery(paramString1, paramArrayOfString2, 2);
     AppMethodBeat.o(108738);
     return paramUri;
   }
@@ -436,30 +435,30 @@ public class EmotionContentProvider
   public int update(Uri paramUri, ContentValues paramContentValues, String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(108741);
-    if ((!g.ajS().gED) || (!g.ajP().aiZ()))
+    if ((!com.tencent.mm.kernel.g.aAi().hrr) || (!com.tencent.mm.kernel.g.aAf().azp()))
     {
-      ae.i("MicroMsg.EmotionContentProvider", "[update] kernel or account not init.");
+      Log.i("MicroMsg.EmotionContentProvider", "[update] kernel or account not init.");
       AppMethodBeat.o(108741);
       return -1;
     }
-    switch (pMX.match(paramUri))
+    switch (rdr.match(paramUri))
     {
     default: 
       AppMethodBeat.o(108741);
       return -1;
     case 2: 
-      g.ajR().ajA().set(((Integer)paramContentValues.get("type")).intValue(), paramContentValues.get("value"));
+      com.tencent.mm.kernel.g.aAh().azQ().set(((Integer)paramContentValues.get("type")).intValue(), paramContentValues.get("value"));
       AppMethodBeat.o(108741);
       return 0;
     }
-    int i = g.ajR().gDX.update("EmojiGroupInfo", paramContentValues, paramString, paramArrayOfString);
+    int i = com.tencent.mm.kernel.g.aAh().hqK.update("EmojiGroupInfo", paramContentValues, paramString, paramArrayOfString);
     AppMethodBeat.o(108741);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.provider.EmotionContentProvider
  * JD-Core Version:    0.7.0.1
  */

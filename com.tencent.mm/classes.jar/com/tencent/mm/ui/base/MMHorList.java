@@ -24,40 +24,40 @@ import java.util.Queue;
 public class MMHorList
   extends AdapterView<ListAdapter>
 {
-  private a JGf;
-  private int JGg;
-  private int JGh;
-  private int JGi;
-  private int JGj;
-  private Queue<View> JGk;
-  private boolean JGl;
-  private boolean JGm;
-  protected Scroller JGn;
-  private GestureDetector JGo;
-  private AdapterView.OnItemSelectedListener JGp;
-  private AdapterView.OnItemClickListener JGq;
-  private ListAdapter JGr;
-  private Runnable JGs;
-  private boolean JGt;
-  private boolean JGu;
-  private int JGv;
-  private int JGw;
-  private boolean JGx;
-  private DataSetObserver JGy;
-  private GestureDetector.OnGestureListener JGz;
+  private boolean AmY;
+  protected Scroller Ays;
+  private a OQX;
+  private int OQY;
+  private int OQZ;
+  private int ORa;
+  private int ORb;
+  private Queue<View> ORc;
+  private boolean ORd;
+  private boolean ORe;
+  private GestureDetector ORf;
+  private AdapterView.OnItemSelectedListener ORg;
+  private AdapterView.OnItemClickListener ORh;
+  private ListAdapter ORi;
+  private Runnable ORj;
+  private boolean ORk;
+  private boolean ORl;
+  private int ORm;
+  private int ORn;
+  private boolean ORo;
+  private DataSetObserver ORp;
+  private GestureDetector.OnGestureListener ORq;
   private int offset;
-  private int oxl;
-  private boolean wCD;
+  private int pKP;
   
   public MMHorList(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142011);
-    this.JGj = 536870912;
-    this.JGk = new LinkedList();
-    this.JGl = false;
-    this.JGm = false;
-    this.JGs = new Runnable()
+    this.ORb = 536870912;
+    this.ORc = new LinkedList();
+    this.ORd = false;
+    this.ORe = false;
+    this.ORj = new Runnable()
     {
       public final void run()
       {
@@ -66,13 +66,13 @@ public class MMHorList
         AppMethodBeat.o(142002);
       }
     };
-    this.JGt = false;
-    this.JGu = false;
-    this.JGv = 0;
-    this.JGw = 0;
-    this.wCD = false;
-    this.JGx = false;
-    this.JGy = new DataSetObserver()
+    this.ORk = false;
+    this.ORl = false;
+    this.ORm = 0;
+    this.ORn = 0;
+    this.AmY = false;
+    this.ORo = false;
+    this.ORp = new DataSetObserver()
     {
       public final void onChanged()
       {
@@ -92,36 +92,36 @@ public class MMHorList
         AppMethodBeat.o(142004);
       }
     };
-    this.JGz = new GestureDetector.SimpleOnGestureListener()
+    this.ORq = new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(193722);
+        AppMethodBeat.i(205236);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(193722);
+        AppMethodBeat.o(205236);
         return bool;
       }
       
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(193721);
+        AppMethodBeat.i(205235);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
         boolean bool = super.onDoubleTap(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(193721);
+        AppMethodBeat.o(205235);
         return bool;
       }
       
       public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(142005);
-        boolean bool = MMHorList.this.fCt();
+        boolean bool = MMHorList.this.gKr();
         AppMethodBeat.o(142005);
         return bool;
       }
@@ -129,20 +129,20 @@ public class MMHorList
       public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(142006);
-        boolean bool = MMHorList.this.bP(paramAnonymousFloat1);
+        boolean bool = MMHorList.this.cr(paramAnonymousFloat1);
         AppMethodBeat.o(142006);
         return bool;
       }
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(193720);
+        AppMethodBeat.i(205234);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(193720);
+        AppMethodBeat.o(205234);
       }
       
       public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
@@ -186,13 +186,13 @@ public class MMHorList
       
       public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(193719);
+        AppMethodBeat.i(205233);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
         boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(193719);
+        AppMethodBeat.o(205233);
         return bool;
       }
     };
@@ -204,11 +204,11 @@ public class MMHorList
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142010);
-    this.JGj = 536870912;
-    this.JGk = new LinkedList();
-    this.JGl = false;
-    this.JGm = false;
-    this.JGs = new Runnable()
+    this.ORb = 536870912;
+    this.ORc = new LinkedList();
+    this.ORd = false;
+    this.ORe = false;
+    this.ORj = new Runnable()
     {
       public final void run()
       {
@@ -217,13 +217,13 @@ public class MMHorList
         AppMethodBeat.o(142002);
       }
     };
-    this.JGt = false;
-    this.JGu = false;
-    this.JGv = 0;
-    this.JGw = 0;
-    this.wCD = false;
-    this.JGx = false;
-    this.JGy = new DataSetObserver()
+    this.ORk = false;
+    this.ORl = false;
+    this.ORm = 0;
+    this.ORn = 0;
+    this.AmY = false;
+    this.ORo = false;
+    this.ORp = new DataSetObserver()
     {
       public final void onChanged()
       {
@@ -243,36 +243,36 @@ public class MMHorList
         AppMethodBeat.o(142004);
       }
     };
-    this.JGz = new GestureDetector.SimpleOnGestureListener()
+    this.ORq = new GestureDetector.SimpleOnGestureListener()
     {
       public final boolean onContextClick(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(193722);
+        AppMethodBeat.i(205236);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
         boolean bool = super.onContextClick(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onContextClick", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(193722);
+        AppMethodBeat.o(205236);
         return bool;
       }
       
       public final boolean onDoubleTap(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(193721);
+        AppMethodBeat.i(205235);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
         boolean bool = super.onDoubleTap(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onDoubleTap", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(193721);
+        AppMethodBeat.o(205235);
         return bool;
       }
       
       public final boolean onDown(MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(142005);
-        boolean bool = MMHorList.this.fCt();
+        boolean bool = MMHorList.this.gKr();
         AppMethodBeat.o(142005);
         return bool;
       }
@@ -280,20 +280,20 @@ public class MMHorList
       public final boolean onFling(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
       {
         AppMethodBeat.i(142006);
-        boolean bool = MMHorList.this.bP(paramAnonymousFloat1);
+        boolean bool = MMHorList.this.cr(paramAnonymousFloat1);
         AppMethodBeat.o(142006);
         return bool;
       }
       
       public final void onLongPress(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(193720);
+        AppMethodBeat.i(205234);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
         super.onLongPress(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-        AppMethodBeat.o(193720);
+        AppMethodBeat.o(205234);
       }
       
       public final boolean onScroll(MotionEvent paramAnonymousMotionEvent1, MotionEvent paramAnonymousMotionEvent2, float paramAnonymousFloat1, float paramAnonymousFloat2)
@@ -337,13 +337,13 @@ public class MMHorList
       
       public final boolean onSingleTapUp(MotionEvent paramAnonymousMotionEvent)
       {
-        AppMethodBeat.i(193719);
+        AppMethodBeat.i(205233);
         b localb = new b();
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
+        localb.bm(paramAnonymousMotionEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
         boolean bool = super.onSingleTapUp(paramAnonymousMotionEvent);
         com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/MMHorList$3", "android/view/GestureDetector$SimpleOnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(193719);
+        AppMethodBeat.o(205233);
         return bool;
       }
     };
@@ -351,10 +351,10 @@ public class MMHorList
     AppMethodBeat.o(142010);
   }
   
-  private void aB(View paramView, int paramInt)
+  private void aG(View paramView, int paramInt)
   {
     AppMethodBeat.i(142015);
-    this.JGm = true;
+    this.ORe = true;
     ViewGroup.LayoutParams localLayoutParams2 = paramView.getLayoutParams();
     ViewGroup.LayoutParams localLayoutParams1 = localLayoutParams2;
     if (localLayoutParams2 == null) {
@@ -368,8 +368,8 @@ public class MMHorList
   private int getChildViewTotalWidth()
   {
     AppMethodBeat.i(142013);
-    int i = this.JGr.getCount();
-    int j = this.JGv;
+    int i = this.ORi.getCount();
+    int j = this.ORm;
     AppMethodBeat.o(142013);
     return i * j;
   }
@@ -377,15 +377,15 @@ public class MMHorList
   private void init()
   {
     AppMethodBeat.i(142009);
-    this.JGn = new Scroller(getContext());
-    this.JGg = -1;
-    this.JGh = 0;
+    this.Ays = new Scroller(getContext());
+    this.OQY = -1;
+    this.OQZ = 0;
     this.offset = 0;
-    this.oxl = 0;
-    this.JGi = 0;
-    this.JGl = false;
-    this.JGj = 536870912;
-    this.JGo = new GestureDetector(getContext(), this.JGz);
+    this.pKP = 0;
+    this.ORa = 0;
+    this.ORd = false;
+    this.ORb = 536870912;
+    this.ORf = new GestureDetector(getContext(), this.ORq);
     AppMethodBeat.o(142009);
   }
   
@@ -398,20 +398,20 @@ public class MMHorList
     AppMethodBeat.o(142021);
   }
   
-  public final void acQ(int paramInt)
+  public final void alA(int paramInt)
   {
     AppMethodBeat.i(142019);
-    this.JGn.forceFinished(true);
-    this.JGn.startScroll(this.oxl, 0, paramInt - this.oxl, 0);
-    this.JGx = true;
+    this.Ays.forceFinished(true);
+    this.Ays.startScroll(this.pKP, 0, paramInt - this.pKP, 0);
+    this.ORo = true;
     requestLayout();
     AppMethodBeat.o(142019);
   }
   
-  protected final boolean bP(float paramFloat)
+  protected final boolean cr(float paramFloat)
   {
     AppMethodBeat.i(142020);
-    this.JGn.fling(this.JGi, 0, (int)-paramFloat, 0, 0, this.JGj, 0, 0);
+    this.Ays.fling(this.ORa, 0, (int)-paramFloat, 0, 0, this.ORb, 0, 0);
     requestLayout();
     AppMethodBeat.o(142020);
     return true;
@@ -420,15 +420,15 @@ public class MMHorList
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(142017);
-    GestureDetector localGestureDetector = this.JGo;
-    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bc(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.ahE(), "com/tencent/mm/ui/base/MMHorList", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
-    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.mt(0)), "com/tencent/mm/ui/base/MMHorList", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    GestureDetector localGestureDetector = this.ORf;
+    com.tencent.mm.hellhoundlib.b.a locala = new com.tencent.mm.hellhoundlib.b.a().bl(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, locala.axQ(), "com/tencent/mm/ui/base/MMHorList", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
+    boolean bool = com.tencent.mm.hellhoundlib.a.a.a(localGestureDetector, localGestureDetector.onTouchEvent((MotionEvent)locala.pG(0)), "com/tencent/mm/ui/base/MMHorList", "dispatchTouchEvent", "(Landroid/view/MotionEvent;)Z", "android/view/GestureDetector_EXEC_", "onTouchEvent", "(Landroid/view/MotionEvent;)Z");
     if (paramMotionEvent.getAction() == 0)
     {
-      this.wCD = true;
-      if (this.JGf != null) {
-        this.JGf.erH();
+      this.AmY = true;
+      if (this.OQX != null) {
+        this.OQX.fuk();
       }
     }
     while ((paramMotionEvent.getAction() != 3) && (paramMotionEvent.getAction() != 1))
@@ -436,65 +436,65 @@ public class MMHorList
       AppMethodBeat.o(142017);
       return bool;
     }
-    if (this.JGu)
+    if (this.ORl)
     {
       if (getChildViewTotalWidth() <= getWidth()) {
         break label253;
       }
-      if (this.oxl >= 0) {
+      if (this.pKP >= 0) {
         break label205;
       }
-      this.JGn.forceFinished(true);
-      this.JGn.startScroll(this.oxl, 0, 0 - this.oxl, 0);
+      this.Ays.forceFinished(true);
+      this.Ays.startScroll(this.pKP, 0, 0 - this.pKP, 0);
       requestLayout();
     }
     for (;;)
     {
-      this.wCD = false;
-      if (this.JGf == null) {
+      this.AmY = false;
+      if (this.OQX == null) {
         break;
       }
-      this.JGf.eaW();
+      this.OQX.fdM();
       break;
       label205:
-      if (this.oxl > this.JGj)
+      if (this.pKP > this.ORb)
       {
-        this.JGn.forceFinished(true);
-        this.JGn.startScroll(this.oxl, 0, this.JGj - this.oxl, 0);
+        this.Ays.forceFinished(true);
+        this.Ays.startScroll(this.pKP, 0, this.ORb - this.pKP, 0);
         requestLayout();
         continue;
         label253:
-        if (this.oxl != this.JGw * -1)
+        if (this.pKP != this.ORn * -1)
         {
-          this.JGn.forceFinished(true);
-          this.JGn.startScroll(this.oxl, 0, 0 - this.oxl, 0);
+          this.Ays.forceFinished(true);
+          this.Ays.startScroll(this.pKP, 0, 0 - this.pKP, 0);
           requestLayout();
         }
       }
     }
   }
   
-  protected final boolean fCt()
+  protected final boolean gKr()
   {
     AppMethodBeat.i(142018);
-    this.JGn.forceFinished(true);
+    this.Ays.forceFinished(true);
     AppMethodBeat.o(142018);
     return true;
   }
   
   public ListAdapter getAdapter()
   {
-    return this.JGr;
+    return this.ORi;
   }
   
   public int getCurrentPosition()
   {
-    return this.oxl;
+    return this.pKP;
   }
   
   public boolean getIsTouching()
   {
-    return this.wCD;
+    return this.AmY;
   }
   
   public View getSelectedView()
@@ -506,86 +506,86 @@ public class MMHorList
   {
     AppMethodBeat.i(142014);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (this.JGr == null)
+    if (this.ORi == null)
     {
       AppMethodBeat.o(142014);
       return;
     }
-    this.JGm = true;
-    if (this.JGl)
+    this.ORe = true;
+    if (this.ORd)
     {
-      paramInt1 = this.oxl;
+      paramInt1 = this.pKP;
       init();
       removeAllViewsInLayout();
-      this.JGi = paramInt1;
-      if (this.JGt)
+      this.ORa = paramInt1;
+      if (this.ORk)
       {
-        this.JGw = Math.max(0, (getWidth() - getChildViewTotalWidth()) / 2);
-        this.offset = this.JGw;
+        this.ORn = Math.max(0, (getWidth() - getChildViewTotalWidth()) / 2);
+        this.offset = this.ORn;
       }
-      this.JGl = false;
+      this.ORd = false;
     }
-    if (this.JGn.computeScrollOffset()) {
-      this.JGi = this.JGn.getCurrX();
+    if (this.Ays.computeScrollOffset()) {
+      this.ORa = this.Ays.getCurrX();
     }
-    if (this.JGu) {
+    if (this.ORl) {
       if (getChildViewTotalWidth() > getWidth())
       {
-        if (this.JGi < getWidth() * -1)
+        if (this.ORa < getWidth() * -1)
         {
-          this.JGi = (getWidth() * -1 + 1);
-          this.JGn.forceFinished(true);
+          this.ORa = (getWidth() * -1 + 1);
+          this.Ays.forceFinished(true);
         }
-        if (this.JGi > this.JGj + getWidth())
+        if (this.ORa > this.ORb + getWidth())
         {
-          this.JGi = (this.JGj + getWidth() - 1);
-          this.JGn.forceFinished(true);
+          this.ORa = (this.ORb + getWidth() - 1);
+          this.Ays.forceFinished(true);
         }
       }
     }
     for (;;)
     {
-      paramInt2 = this.oxl - this.JGi;
+      paramInt2 = this.pKP - this.ORa;
       localView = getChildAt(0);
       while ((localView != null) && (localView.getRight() + paramInt2 <= 0))
       {
         this.offset += localView.getMeasuredWidth();
-        this.JGk.offer(localView);
+        this.ORc.offer(localView);
         removeViewInLayout(localView);
-        this.JGg += 1;
+        this.OQY += 1;
         localView = getChildAt(0);
-        this.JGm = true;
+        this.ORe = true;
       }
-      if (this.JGi < getWidth() * -1 + this.JGw)
+      if (this.ORa < getWidth() * -1 + this.ORn)
       {
-        this.JGi = (getWidth() * -1 + this.JGw + 1);
-        this.JGn.forceFinished(true);
+        this.ORa = (getWidth() * -1 + this.ORn + 1);
+        this.Ays.forceFinished(true);
       }
-      if (this.JGi > getWidth() - this.JGw)
+      if (this.ORa > getWidth() - this.ORn)
       {
-        this.JGi = (getWidth() - this.JGw - 1);
-        this.JGn.forceFinished(true);
+        this.ORa = (getWidth() - this.ORn - 1);
+        this.Ays.forceFinished(true);
         continue;
-        if (this.JGi < 0)
+        if (this.ORa < 0)
         {
-          this.JGi = 0;
-          this.JGn.forceFinished(true);
+          this.ORa = 0;
+          this.Ays.forceFinished(true);
         }
-        if (this.JGi > this.JGj)
+        if (this.ORa > this.ORb)
         {
-          this.JGi = this.JGj;
-          this.JGn.forceFinished(true);
+          this.ORa = this.ORb;
+          this.Ays.forceFinished(true);
         }
       }
     }
     View localView = getChildAt(getChildCount() - 1);
     while ((localView != null) && (localView.getLeft() + paramInt2 >= getWidth()))
     {
-      this.JGk.offer(localView);
+      this.ORc.offer(localView);
       removeViewInLayout(localView);
-      this.JGh -= 1;
+      this.OQZ -= 1;
       localView = getChildAt(getChildCount() - 1);
-      this.JGm = true;
+      this.ORe = true;
     }
     localView = getChildAt(getChildCount() - 1);
     if (localView != null) {
@@ -593,15 +593,15 @@ public class MMHorList
     }
     for (;;)
     {
-      if ((paramInt1 + paramInt2 < getWidth()) && (this.JGh < this.JGr.getCount()))
+      if ((paramInt1 + paramInt2 < getWidth()) && (this.OQZ < this.ORi.getCount()))
       {
-        localView = this.JGr.getView(this.JGh, (View)this.JGk.poll(), this);
-        aB(localView, -1);
+        localView = this.ORi.getView(this.OQZ, (View)this.ORc.poll(), this);
+        aG(localView, -1);
         paramInt1 = localView.getMeasuredWidth() + paramInt1;
-        if (this.JGh == this.JGr.getCount() - 1) {
-          this.JGj = (this.oxl + paramInt1 - getWidth());
+        if (this.OQZ == this.ORi.getCount() - 1) {
+          this.ORb = (this.pKP + paramInt1 - getWidth());
         }
-        this.JGh += 1;
+        this.OQZ += 1;
       }
       else
       {
@@ -611,18 +611,18 @@ public class MMHorList
         }
         for (;;)
         {
-          if ((paramInt1 + paramInt2 > 0) && (this.JGg >= 0))
+          if ((paramInt1 + paramInt2 > 0) && (this.OQY >= 0))
           {
-            localView = this.JGr.getView(this.JGg, (View)this.JGk.poll(), this);
-            aB(localView, 0);
+            localView = this.ORi.getView(this.OQY, (View)this.ORc.poll(), this);
+            aG(localView, 0);
             paramInt3 = localView.getMeasuredWidth();
-            this.JGg -= 1;
+            this.OQY -= 1;
             this.offset -= localView.getMeasuredWidth();
             paramInt1 -= paramInt3;
           }
           else
           {
-            if ((getChildCount() > 0) && (this.JGm))
+            if ((getChildCount() > 0) && (this.ORe))
             {
               this.offset += paramInt2;
               paramInt2 = this.offset;
@@ -636,17 +636,17 @@ public class MMHorList
                 paramInt1 += 1;
               }
             }
-            this.oxl = this.JGi;
-            if (!this.JGn.isFinished())
+            this.pKP = this.ORa;
+            if (!this.Ays.isFinished())
             {
-              post(this.JGs);
+              post(this.ORj);
               AppMethodBeat.o(142014);
               return;
             }
-            if ((this.JGf != null) && (this.JGx))
+            if ((this.OQX != null) && (this.ORo))
             {
-              this.JGf.bEo();
-              this.JGx = false;
+              this.OQX.efW();
+              this.ORo = false;
             }
             AppMethodBeat.o(142014);
             return;
@@ -661,7 +661,7 @@ public class MMHorList
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142016);
-    if ((this.JGr != null) && (this.JGr.getCount() > 0))
+    if ((this.ORi != null) && (this.ORi.getCount() > 0))
     {
       View localView = getChildAt(0);
       if (localView != null)
@@ -683,58 +683,58 @@ public class MMHorList
   public void setAdapter(ListAdapter paramListAdapter)
   {
     AppMethodBeat.i(142012);
-    if (this.JGr == null) {
-      paramListAdapter.registerDataSetObserver(this.JGy);
+    if (this.ORi == null) {
+      paramListAdapter.registerDataSetObserver(this.ORp);
     }
-    this.JGr = paramListAdapter;
+    this.ORi = paramListAdapter;
     reset();
     AppMethodBeat.o(142012);
   }
   
   public void setCenterInParent(boolean paramBoolean)
   {
-    this.JGt = paramBoolean;
+    this.ORk = paramBoolean;
   }
   
   public void setHorListLitener(a parama)
   {
-    this.JGf = parama;
+    this.OQX = parama;
   }
   
   public void setItemWidth(int paramInt)
   {
-    this.JGv = paramInt;
+    this.ORm = paramInt;
   }
   
   public void setOnItemClickListener(AdapterView.OnItemClickListener paramOnItemClickListener)
   {
-    this.JGq = paramOnItemClickListener;
+    this.ORh = paramOnItemClickListener;
   }
   
   public void setOnItemSelectedListener(AdapterView.OnItemSelectedListener paramOnItemSelectedListener)
   {
-    this.JGp = paramOnItemSelectedListener;
+    this.ORg = paramOnItemSelectedListener;
   }
   
   public void setOverScrollEnabled(boolean paramBoolean)
   {
-    this.JGu = paramBoolean;
+    this.ORl = paramBoolean;
   }
   
   public void setSelection(int paramInt) {}
   
   public static abstract interface a
   {
-    public abstract void bEo();
+    public abstract void efW();
     
-    public abstract void eaW();
+    public abstract void fdM();
     
-    public abstract void erH();
+    public abstract void fuk();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMHorList
  * JD-Core Version:    0.7.0.1
  */

@@ -14,14 +14,14 @@ final class f$10
   public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
     AppMethodBeat.i(49874);
-    this.ngR.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.ngS.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.oqE.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.oqF.setAlpha(((Float)paramValueAnimator.getAnimatedValue()).floatValue());
     AppMethodBeat.o(49874);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.f.10
  * JD-Core Version:    0.7.0.1
  */

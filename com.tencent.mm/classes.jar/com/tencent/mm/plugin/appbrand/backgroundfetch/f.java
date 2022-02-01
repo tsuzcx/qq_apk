@@ -2,43 +2,43 @@ package com.tencent.mm.plugin.appbrand.backgroundfetch;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.k;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class f
   extends k
 {
-  static final c.a hGW;
+  static final IAutoDBItem.MAutoDBInfo iBg;
   
   static
   {
     AppMethodBeat.i(44739);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "username";
-    locala.IBN.put("username", "TEXT");
+    localMAutoDBInfo.columns[0] = "username";
+    localMAutoDBInfo.colsMap.put("username", "TEXT");
     localStringBuilder.append(" username TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "token";
-    locala.IBN.put("token", "TEXT");
+    localMAutoDBInfo.columns[1] = "token";
+    localMAutoDBInfo.colsMap.put("token", "TEXT");
     localStringBuilder.append(" token TEXT");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    hGW = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    iBg = localMAutoDBInfo;
     AppMethodBeat.o(44739);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return hGW;
+    return iBg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.f
  * JD-Core Version:    0.7.0.1
  */

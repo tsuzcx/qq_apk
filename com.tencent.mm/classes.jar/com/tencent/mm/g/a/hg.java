@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class hg
-  extends b
+  extends IEvent
 {
-  public a duI;
+  public a dLJ;
   
   public hg()
   {
@@ -15,25 +15,23 @@ public final class hg
   
   private hg(byte paramByte)
   {
-    AppMethodBeat.i(136974);
-    this.duI = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(168878);
+    this.dLJ = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(136974);
+    AppMethodBeat.o(168878);
   }
   
   public static final class a
   {
-    public String appId;
-    public String dpI;
-    public String duJ;
-    public int duK;
-    public String duL;
+    public int dLK;
+    public long id;
+    public long localId;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.hg
  * JD-Core Version:    0.7.0.1
  */

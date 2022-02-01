@@ -3,10 +3,22 @@ package com.tencent.mm.plugin.appbrand.jsapi.audio;
 public abstract class a
   implements d, Runnable
 {
-  private long kzj = 0L;
-  private long kzk = 0L;
+  private long lDC = 0L;
+  private long lDD = 0L;
   
-  public void BK()
+  public final void bEy()
+  {
+    this.lDC = System.currentTimeMillis();
+    YC();
+  }
+  
+  public final void bjm()
+  {
+    this.lDC = System.currentTimeMillis();
+    b.Z(this);
+  }
+  
+  public void callback()
   {
     String str = getClass().getName();
     if (str.contains("$"))
@@ -14,32 +26,20 @@ public abstract class a
       str.substring(str.lastIndexOf("$") + 1);
       System.currentTimeMillis();
       System.currentTimeMillis();
-      this.kzk = 0L;
-      this.kzj = 0L;
+      this.lDD = 0L;
+      this.lDC = 0L;
     }
-  }
-  
-  public final void aPa()
-  {
-    this.kzj = System.currentTimeMillis();
-    b.U(this);
-  }
-  
-  public final void bjk()
-  {
-    this.kzj = System.currentTimeMillis();
-    Ov();
   }
   
   public void run()
   {
-    this.kzk = System.currentTimeMillis();
-    Ov();
+    this.lDD = System.currentTimeMillis();
+    YC();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.audio.a
  * JD-Core Version:    0.7.0.1
  */

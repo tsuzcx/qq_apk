@@ -1,0 +1,24 @@
+package com.tencent.mm.plugin.secdata;
+
+import com.tencent.mm.bw.a;
+import com.tencent.mm.kernel.b.d;
+
+public abstract interface g
+  extends d
+{
+  public abstract <T extends a> void getWithClear(int paramInt, String paramString, Class<T> paramClass, i<T> parami);
+  
+  public abstract <T extends a> void getWithoutClear(int paramInt, String paramString, Class<T> paramClass, i<T> parami);
+  
+  public abstract <T extends a> T getWithoutClearSync(int paramInt, String paramString, Class<T> paramClass);
+  
+  public abstract boolean removeFromStorageSync(int paramInt, String paramString);
+  
+  public abstract <T extends a> void updateWithSave(int paramInt, String paramString, T paramT, i<T> parami);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.secdata.g
+ * JD-Core Version:    0.7.0.1
+ */

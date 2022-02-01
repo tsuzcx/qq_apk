@@ -3,65 +3,65 @@ package com.tencent.mm.app;
 import android.os.HandlerThread;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.vending.h.h;
 
 public final class q
 {
-  private static q cUN;
-  HandlerThread cUO;
-  com.tencent.mm.vending.h.d cUP;
-  aq handler;
+  private static q dlh;
+  HandlerThread dli;
+  MMHandler handler;
+  com.tencent.mm.vending.h.d mScheduler;
   
   private q(String paramString)
   {
     AppMethodBeat.i(19444);
-    this.cUO = new HandlerThread(paramString, 10);
-    this.cUO.start();
-    this.handler = new aq(this.cUO.getLooper());
-    this.cUP = new h(com.tencent.mm.cm.d.c(this.handler), paramString);
+    this.dli = new HandlerThread(paramString, 10);
+    this.dli.start();
+    this.handler = new MMHandler(this.dli.getLooper());
+    this.mScheduler = new h(com.tencent.mm.co.d.b(this.handler), paramString);
     AppMethodBeat.o(19444);
   }
   
-  public static q Mg()
+  public static q Ws()
   {
     AppMethodBeat.i(19443);
-    if (cUN == null) {
-      cUN = new q("initThread");
+    if (dlh == null) {
+      dlh = new q("initThread");
     }
-    q localq = cUN;
+    q localq = dlh;
     AppMethodBeat.o(19443);
     return localq;
   }
   
-  public final void Mh()
+  public final void setHighPriority()
   {
     AppMethodBeat.i(19445);
-    if ((this.cUO == null) || (!this.cUO.isAlive()))
+    if ((this.dli == null) || (!this.dli.isAlive()))
     {
-      ae.e("MicroMsg.InitThreadController", "setHighPriority failed thread is dead");
+      Log.e("MicroMsg.InitThreadController", "setHighPriority failed thread is dead");
       AppMethodBeat.o(19445);
       return;
     }
-    int i = this.cUO.getThreadId();
+    int i = this.dli.getThreadId();
     try
     {
       if (-8 == Process.getThreadPriority(i))
       {
-        ae.w("MicroMsg.InitThreadController", "setHighPriority No Need.");
+        Log.w("MicroMsg.InitThreadController", "setHighPriority No Need.");
         AppMethodBeat.o(19445);
         return;
       }
       Process.setThreadPriority(i, -8);
-      ae.i("MicroMsg.InitThreadController", "InitThreadController:%d setHighPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
+      Log.i("MicroMsg.InitThreadController", "InitThreadController:%d setHighPriority to %d", new Object[] { Integer.valueOf(i), Integer.valueOf(Process.getThreadPriority(i)) });
       AppMethodBeat.o(19445);
       return;
     }
     catch (Exception localException)
     {
-      ae.w("MicroMsg.InitThreadController", "thread:%d setHighPriority failed", new Object[] { Integer.valueOf(i) });
-      ae.printErrStackTrace("MicroMsg.InitThreadController", localException, "", new Object[0]);
+      Log.w("MicroMsg.InitThreadController", "thread:%d setHighPriority failed", new Object[] { Integer.valueOf(i) });
+      Log.printErrStackTrace("MicroMsg.InitThreadController", localException, "", new Object[0]);
       AppMethodBeat.o(19445);
     }
   }

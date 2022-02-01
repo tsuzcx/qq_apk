@@ -1,110 +1,110 @@
 package com.tencent.mm.plugin.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fi;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.fq;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class j
-  extends fi
+  extends fq
   implements c
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(140937);
-    c.a locala = new c.a();
-    locala.IBL = new Field[18];
-    locala.columns = new String[19];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[18];
+    localMAutoDBInfo.columns = new String[19];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "localId";
-    locala.IBN.put("localId", "INTEGER PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "localId";
+    localMAutoDBInfo.colsMap.put("localId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" localId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "localId";
-    locala.columns[1] = "recordLocalId";
-    locala.IBN.put("recordLocalId", "INTEGER");
+    localMAutoDBInfo.primaryKey = "localId";
+    localMAutoDBInfo.columns[1] = "recordLocalId";
+    localMAutoDBInfo.colsMap.put("recordLocalId", "INTEGER");
     localStringBuilder.append(" recordLocalId INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "toUser";
-    locala.IBN.put("toUser", "TEXT default '' ");
+    localMAutoDBInfo.columns[2] = "toUser";
+    localMAutoDBInfo.colsMap.put("toUser", "TEXT default '' ");
     localStringBuilder.append(" toUser TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[3] = "dataId";
-    locala.IBN.put("dataId", "TEXT");
+    localMAutoDBInfo.columns[3] = "dataId";
+    localMAutoDBInfo.colsMap.put("dataId", "TEXT");
     localStringBuilder.append(" dataId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "mediaId";
-    locala.IBN.put("mediaId", "TEXT");
+    localMAutoDBInfo.columns[4] = "mediaId";
+    localMAutoDBInfo.colsMap.put("mediaId", "TEXT");
     localStringBuilder.append(" mediaId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "path";
-    locala.IBN.put("path", "TEXT");
+    localMAutoDBInfo.columns[5] = "path";
+    localMAutoDBInfo.colsMap.put("path", "TEXT");
     localStringBuilder.append(" path TEXT");
     localStringBuilder.append(", ");
-    locala.columns[6] = "cdnUrl";
-    locala.IBN.put("cdnUrl", "TEXT");
+    localMAutoDBInfo.columns[6] = "cdnUrl";
+    localMAutoDBInfo.colsMap.put("cdnUrl", "TEXT");
     localStringBuilder.append(" cdnUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[7] = "cdnKey";
-    locala.IBN.put("cdnKey", "TEXT");
+    localMAutoDBInfo.columns[7] = "cdnKey";
+    localMAutoDBInfo.colsMap.put("cdnKey", "TEXT");
     localStringBuilder.append(" cdnKey TEXT");
     localStringBuilder.append(", ");
-    locala.columns[8] = "totalLen";
-    locala.IBN.put("totalLen", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[8] = "totalLen";
+    localMAutoDBInfo.colsMap.put("totalLen", "INTEGER default '0' ");
     localStringBuilder.append(" totalLen INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[9] = "isThumb";
-    locala.IBN.put("isThumb", "INTEGER default 'false' ");
+    localMAutoDBInfo.columns[9] = "isThumb";
+    localMAutoDBInfo.colsMap.put("isThumb", "INTEGER default 'false' ");
     localStringBuilder.append(" isThumb INTEGER default 'false' ");
     localStringBuilder.append(", ");
-    locala.columns[10] = "offset";
-    locala.IBN.put("offset", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[10] = "offset";
+    localMAutoDBInfo.colsMap.put("offset", "INTEGER default '0' ");
     localStringBuilder.append(" offset INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[11] = "type";
-    locala.IBN.put("type", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[11] = "type";
+    localMAutoDBInfo.colsMap.put("type", "INTEGER default '0' ");
     localStringBuilder.append(" type INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[12] = "fileType";
-    locala.IBN.put("fileType", "INTEGER default '5' ");
+    localMAutoDBInfo.columns[12] = "fileType";
+    localMAutoDBInfo.colsMap.put("fileType", "INTEGER default '5' ");
     localStringBuilder.append(" fileType INTEGER default '5' ");
     localStringBuilder.append(", ");
-    locala.columns[13] = "status";
-    locala.IBN.put("status", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[13] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER default '0' ");
     localStringBuilder.append(" status INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[14] = "errCode";
-    locala.IBN.put("errCode", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[14] = "errCode";
+    localMAutoDBInfo.colsMap.put("errCode", "INTEGER default '0' ");
     localStringBuilder.append(" errCode INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[15] = "tpaeskey";
-    locala.IBN.put("tpaeskey", "TEXT");
+    localMAutoDBInfo.columns[15] = "tpaeskey";
+    localMAutoDBInfo.colsMap.put("tpaeskey", "TEXT");
     localStringBuilder.append(" tpaeskey TEXT");
     localStringBuilder.append(", ");
-    locala.columns[16] = "tpauthkey";
-    locala.IBN.put("tpauthkey", "TEXT");
+    localMAutoDBInfo.columns[16] = "tpauthkey";
+    localMAutoDBInfo.colsMap.put("tpauthkey", "TEXT");
     localStringBuilder.append(" tpauthkey TEXT");
     localStringBuilder.append(", ");
-    locala.columns[17] = "tpdataurl";
-    locala.IBN.put("tpdataurl", "TEXT");
+    localMAutoDBInfo.columns[17] = "tpdataurl";
+    localMAutoDBInfo.colsMap.put("tpdataurl", "TEXT");
     localStringBuilder.append(" tpdataurl TEXT");
-    locala.columns[18] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[18] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(140937);
   }
   
-  public final int dHw()
-  {
-    return this.field_localId;
-  }
-  
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
+  }
+  
+  public final int getKey()
+  {
+    return this.field_localId;
   }
   
   public final String toString()
@@ -133,7 +133,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.record.a.j
  * JD-Core Version:    0.7.0.1
  */

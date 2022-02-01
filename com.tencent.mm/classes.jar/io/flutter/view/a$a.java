@@ -9,10 +9,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(9824);
-    NeD = new a("ACCESSIBLE_NAVIGATION", 0, 1);
-    NeE = new a("INVERT_COLORS", 1, 2);
-    NeF = new a("DISABLE_ANIMATIONS", 2, 4);
-    NeG = new a[] { NeD, NeE, NeF };
+    SUm = new a("ACCESSIBLE_NAVIGATION", 0, 1);
+    SUn = new a("INVERT_COLORS", 1, 2);
+    SUo = new a("DISABLE_ANIMATIONS", 2, 4);
+    SUp = new a[] { SUm, SUn, SUo };
     AppMethodBeat.o(9824);
   }
   

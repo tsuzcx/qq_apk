@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.m;
-import d.g.b.p;
-import d.l;
 import java.util.Map;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/phonenumber/DefaultPhoneNumberLogic$verifyPhoneNumber$1", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberVerifyCodeDialog$OnVerifyCallback;", "onVerifyCallback", "", "isSuccess", "", "result", "", "", "luggage-wechat-full-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/phonenumber/DefaultPhoneNumberLogic$verifyPhoneNumber$1", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberVerifyCodeDialog$OnVerifyCallback;", "onVerifyCallback", "", "isSuccess", "", "result", "", "", "luggage-wechat-full-sdk_release"})
 public final class i$d
   implements aa.b
 {
@@ -14,10 +14,10 @@ public final class i$d
   
   public final void a(boolean paramBoolean, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(220996);
+    AppMethodBeat.i(230136);
     p.h(paramMap, "result");
-    this.mor.p(Boolean.valueOf(paramBoolean), paramMap);
-    AppMethodBeat.o(220996);
+    this.nzd.invoke(Boolean.valueOf(paramBoolean), paramMap);
+    AppMethodBeat.o(230136);
   }
 }
 

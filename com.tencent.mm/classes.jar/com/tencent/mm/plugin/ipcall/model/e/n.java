@@ -1,60 +1,61 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.model.v;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cny;
-import com.tencent.mm.protocal.protobuf.cnz;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dfs;
+import com.tencent.mm.protocal.protobuf.dft;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class n
-  extends com.tencent.mm.ak.n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private b rr;
-  public cny uZo;
-  private cnz uZp;
+  private i callback;
+  private d rr;
+  public dfs yrO;
+  private dft yrP;
   
   public n(int paramInt1, long paramLong1, long paramLong2, int paramInt2)
   {
     AppMethodBeat.i(25490);
     this.rr = null;
-    this.uZo = null;
-    this.uZp = null;
+    this.yrO = null;
+    this.yrP = null;
     this.callback = null;
-    b.a locala = new b.a();
-    locala.hQF = new cny();
-    locala.hQG = new cnz();
+    d.a locala = new d.a();
+    locala.iLN = new dfs();
+    locala.iLO = new dft();
     locala.funcId = 723;
     locala.uri = "/cgi-bin/micromsg-bin/pstnshutdown";
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
+    this.rr = locala.aXF();
     long l = System.currentTimeMillis();
-    this.uZo = ((cny)this.rr.hQD.hQJ);
-    this.uZo.uvG = v.aAC();
-    this.uZo.Gxq = paramInt1;
-    this.uZo.Gxr = paramLong1;
-    this.uZo.Hzz = paramLong2;
-    this.uZo.nJb = paramInt2;
-    this.uZo.Hzw = l;
-    ae.i("MicroMsg.NetSceneIPCallShutDown", "roomId: %d, roomKey: %d, callSeq: %d, status: %d, timestamp: %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt2), Long.valueOf(l) });
+    this.yrO = ((dfs)this.rr.iLK.iLR);
+    this.yrO.xNH = z.aTY();
+    this.yrO.LsZ = paramInt1;
+    this.yrO.Lta = paramLong1;
+    this.yrO.MKi = paramLong2;
+    this.yrO.oTW = paramInt2;
+    this.yrO.MKf = l;
+    Log.i("MicroMsg.NetSceneIPCallShutDown", "roomId: %d, roomKey: %d, callSeq: %d, status: %d, timestamp: %d", new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Integer.valueOf(paramInt2), Long.valueOf(l) });
     AppMethodBeat.o(25490);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(25491);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(25491);
     return i;
   }
@@ -64,11 +65,11 @@ public final class n
     return 723;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(25492);
-    ae.i("MicroMsg.NetSceneIPCallShutDown", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.uZp = ((cnz)((b)paramq).hQE.hQJ);
+    Log.i("MicroMsg.NetSceneIPCallShutDown", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.yrP = ((dft)((d)params).iLL.iLR);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
@@ -77,7 +78,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.e.n
  * JD-Core Version:    0.7.0.1
  */

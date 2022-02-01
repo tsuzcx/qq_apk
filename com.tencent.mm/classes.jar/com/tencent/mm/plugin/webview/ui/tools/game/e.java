@@ -4,9 +4,9 @@ import java.util.Map;
 
 public abstract interface e
 {
-  public abstract Map<Integer, Object> dai();
+  public abstract Map<Integer, Object> dTR();
   
-  public abstract Map<Integer, Object> daj();
+  public abstract Map<Integer, Object> dTS();
 }
 
 

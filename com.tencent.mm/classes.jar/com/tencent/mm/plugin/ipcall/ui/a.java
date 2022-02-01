@@ -5,34 +5,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a
 {
   String countryCode;
-  String ihe;
-  String ihf;
-  private int vam;
+  String jbZ;
+  String jca;
+  private int ysM;
   
   public a(String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    this.ihe = paramString1;
+    this.jbZ = paramString1;
     this.countryCode = paramString2;
-    this.vam = paramInt;
-    this.ihf = paramString3;
+    this.ysM = paramInt;
+    this.jca = paramString3;
   }
   
-  public final int dhi()
+  public final int ebc()
   {
     AppMethodBeat.i(25567);
-    if (this.vam == 0)
+    if (this.ysM == 0)
     {
       AppMethodBeat.o(25567);
       return 0;
     }
-    String[] arrayOfString = IPCallCountryCodeScrollbar.vcu;
+    String[] arrayOfString = IPCallCountryCodeScrollbar.yuU;
     int j = arrayOfString.length;
     int i = 0;
     while (i < j)
     {
-      if (arrayOfString[i].equals(String.valueOf((char)this.vam)))
+      if (arrayOfString[i].equals(String.valueOf((char)this.ysM)))
       {
-        i = this.vam;
+        i = this.ysM;
         AppMethodBeat.o(25567);
         return i;
       }
@@ -45,7 +45,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.a
  * JD-Core Version:    0.7.0.1
  */

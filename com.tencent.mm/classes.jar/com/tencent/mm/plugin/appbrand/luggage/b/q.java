@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.appbrand.luggage.b;
 
 import com.tencent.mm.plugin.appbrand.jsapi.base.g;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 import org.json.JSONObject;
 
 public final class q
   implements g
 {
-  public final e c(c paramc, JSONObject paramJSONObject)
+  public final h c(f paramf, JSONObject paramJSONObject)
   {
-    if ((paramc instanceof e)) {
-      return (e)paramc;
+    if ((paramf instanceof h)) {
+      return (h)paramf;
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.q
  * JD-Core Version:    0.7.0.1
  */

@@ -4,65 +4,64 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ak
-  extends bq
+  extends br
 {
-  public final void a(Context paramContext, String paramString, bq.a parama)
+  public final void a(Context paramContext, String paramString, br.a parama)
   {
     AppMethodBeat.i(78586);
     try
     {
       paramString = new JSONObject(paramString);
       paramString = paramString.optString("username");
-      if (bu.isNullOrNil(paramString))
+      if (Util.isNullOrNil(paramString))
       {
-        parama.f("param_err", null);
+        parama.i("param_err", null);
         AppMethodBeat.o(78586);
         return;
       }
     }
     catch (JSONException paramContext)
     {
-      ae.e("MicroMsg.JsApiOpenBizChat", "parase json fail");
-      parama.f("fail", null);
+      Log.e("MicroMsg.JsApiOpenBizChat", "parase json fail");
+      parama.i("fail", null);
       AppMethodBeat.o(78586);
       return;
     }
-    Object localObject = ((l)g.ab(l.class)).azF().BH(paramString);
-    if ((localObject == null) || (!((an)localObject).fug()))
+    Object localObject = ((l)g.af(l.class)).aSN().Kn(paramString);
+    if ((localObject == null) || (!((as)localObject).gBM()))
     {
-      parama.f("not biz username", null);
+      parama.i("not biz username", null);
       AppMethodBeat.o(78586);
       return;
     }
-    if (!c.lO(((aw)localObject).field_type))
+    if (!com.tencent.mm.contact.c.oR(((ax)localObject).field_type))
     {
-      parama.f("open_biz_chat", null);
+      parama.i("open_biz_chat", null);
       AppMethodBeat.o(78586);
       return;
     }
     localObject = new Intent();
     ((Intent)localObject).putExtra("Chat_User", paramString);
     ((Intent)localObject).putExtra("finish_direct", true);
-    d.f(paramContext, ".ui.chatting.ChattingUI", (Intent)localObject);
-    parama.f(null, null);
+    com.tencent.mm.br.c.f(paramContext, ".ui.chatting.ChattingUI", (Intent)localObject);
+    parama.i(null, null);
     AppMethodBeat.o(78586);
   }
   
   public final void b(b.a parama) {}
   
-  public final int ced()
+  public final int dTs()
   {
     return 1;
   }

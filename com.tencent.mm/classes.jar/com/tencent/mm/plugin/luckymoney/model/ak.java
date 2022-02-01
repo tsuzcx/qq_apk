@@ -1,129 +1,118 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.ArrayList;
+import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.net.URLEncoder;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class ak
-  extends am
+  extends ai
 {
-  public String vCf;
-  public s vCw;
-  public List<String> vCx;
-  public String vCy;
-  public String vCz;
+  public int egZ;
+  public int eha;
+  public long eht;
+  public int qwe;
+  public String yQE;
+  public RealnameGuideHelper yRu;
+  public String yVb;
+  public i yVq;
+  public String yWL;
+  public String yWM;
+  public int yWN;
+  public String yWO;
+  public int yWP;
+  public String yWQ;
+  public String yWR;
+  public int yWS;
+  public q yWT;
   
-  public ak(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3)
+  public ak(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(65293);
-    this.vCz = null;
+    AppMethodBeat.i(65279);
+    this.yWT = null;
+    this.yQE = paramString1;
     HashMap localHashMap = new HashMap();
-    localHashMap.put("limit", String.valueOf(paramInt1));
-    localHashMap.put("offset", String.valueOf(paramInt2));
-    localHashMap.put("type", String.valueOf(paramInt3));
-    localHashMap.put("year", paramString1);
-    localHashMap.put("ver", paramString2);
-    localHashMap.put("processContent", paramString3);
+    localHashMap.put("sendId", paramString1);
+    if (!Util.isNullOrNil(paramString2)) {
+      localHashMap.put("nativeUrl", URLEncoder.encode(paramString2));
+    }
+    localHashMap.put("way", String.valueOf(paramInt));
+    localHashMap.put("channelId", "2");
+    localHashMap.put("package", paramString3);
+    localHashMap.put("sessionUserName", paramString4);
     setRequestData(localHashMap);
-    AppMethodBeat.o(65293);
+    AppMethodBeat.o(65279);
   }
   
-  public final String cbJ()
+  public final int czE()
   {
-    return "/cgi-bin/mmpay-bin/qrylistwxhb";
-  }
-  
-  public final boolean dlq()
-  {
-    return (this.vCw == null) || (this.vCw.vAt == 1);
-  }
-  
-  public final int getType()
-  {
-    return 1514;
+    return 1;
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(65294);
+    AppMethodBeat.i(65280);
+    this.yWL = paramJSONObject.optString("spidName");
+    this.egZ = paramJSONObject.optInt("hbStatus");
+    this.eha = paramJSONObject.optInt("receiveStatus");
+    this.yVb = paramJSONObject.optString("statusMess");
+    this.yWM = paramJSONObject.optString("hintMess");
+    this.eht = paramJSONObject.optLong("amount");
+    this.yWN = paramJSONObject.optInt("recNum");
+    this.qwe = paramJSONObject.optInt("totalNum");
+    this.yVq = new i();
+    paramString = paramJSONObject.optJSONObject("atomicFunc");
+    if (paramString != null)
+    {
+      this.yVq.gGn = paramString.optInt("enable");
+      this.yVq.yUH = paramString.optString("fissionContent");
+      this.yVq.yUG = paramString.optString("fissionUrl");
+    }
+    this.yWP = paramJSONObject.optInt("focusFlag");
+    this.yWQ = paramJSONObject.optString("focusWording");
+    this.yWR = paramJSONObject.optString("focusAppidUserName");
+    this.yWS = paramJSONObject.optInt("isFocus");
+    this.yWO = paramJSONObject.optString("smallHbButtonMess");
     try
     {
-      paramString = new s();
-      paramString.vBm = paramJSONObject.optInt("recTotalNum");
-      paramString.vBn = paramJSONObject.optLong("recTotalAmount");
-      paramString.vBo = paramJSONObject.optInt("sendTotalNum");
-      paramString.vBp = paramJSONObject.optLong("sendTotalAmount");
-      paramString.vAt = paramJSONObject.optInt("isContinue");
-      paramString.vBq = paramJSONObject.optInt("gameCount");
-      JSONArray localJSONArray = paramJSONObject.optJSONArray("record");
-      LinkedList localLinkedList = new LinkedList();
-      if (localJSONArray != null)
+      this.yWT = ac.aY(paramJSONObject);
+      this.yWT.yVe = paramJSONObject.optString("spidLogo");
+      this.yWT.yVd = paramJSONObject.optString("spidName");
+      this.yWT.yPK = paramJSONObject.optString("spidWishing");
+      if ((paramInt == 0) && (paramJSONObject.has("real_name_info")))
       {
-        paramInt = 0;
-        while (paramInt < localJSONArray.length())
+        Object localObject = paramJSONObject.optJSONObject("real_name_info");
+        if (localObject != null)
         {
-          JSONObject localJSONObject = localJSONArray.getJSONObject(paramInt);
-          t localt = new t();
-          localt.vBr = localJSONObject.optString("sendName");
-          localt.vAk = localJSONObject.optString("sendHeadImg");
-          localt.vBs = localJSONObject.optLong("receiveAmount");
-          localt.vBt = localJSONObject.optString("receiveTime");
-          localt.dPc = localJSONObject.optInt("hbType");
-          localt.vBu = localJSONObject.optString("sendTitle");
-          localt.vBv = localJSONObject.optString("sendTime");
-          localt.vAp = localJSONObject.optLong("totalAmount");
-          localt.vBw = localJSONObject.optLong("totalNum");
-          localt.vAn = localJSONObject.optLong("recNum");
-          localt.status = localJSONObject.optInt("status");
-          localt.vBx = localJSONObject.optInt("thxCount");
-          localt.vAq = localJSONObject.optString("receiveId");
-          localt.vwq = localJSONObject.optString("sendId");
-          localt.vAB = localJSONObject.optInt("hbKind");
-          localLinkedList.add(localt);
-          paramInt += 1;
+          paramString = ((JSONObject)localObject).optString("guide_flag");
+          paramJSONObject = ((JSONObject)localObject).optString("guide_wording");
+          String str1 = ((JSONObject)localObject).optString("left_button_wording");
+          String str2 = ((JSONObject)localObject).optString("right_button_wording");
+          localObject = ((JSONObject)localObject).optString("upload_credit_url");
+          this.yRu = new RealnameGuideHelper();
+          this.yRu.b(paramString, paramJSONObject, str1, str2, (String)localObject, 1005);
         }
       }
-      paramString.vAC = localLinkedList;
-      this.vCw = paramString;
-      this.vCx = new ArrayList();
-      paramString = paramJSONObject.optString("years");
-      if (!bu.isNullOrNil(paramString))
-      {
-        paramString = paramString.split("\\|");
-        if (paramString != null)
-        {
-          paramInt = 0;
-          while (paramInt < paramString.length)
-          {
-            this.vCx.add(paramString[paramInt]);
-            paramInt += 1;
-          }
-        }
-      }
-      this.vCy = paramJSONObject.optString("recordYear");
-      this.vCz = paramJSONObject.optString("clickedUrl");
-      this.vCf = paramJSONObject.optString("processContent");
-      AppMethodBeat.o(65294);
+      AppMethodBeat.o(65280);
       return;
     }
     catch (JSONException paramString)
     {
-      ae.printErrStackTrace("MicroMsg.NetSceneLuckyMoneyNormalBase", paramString, "", new Object[0]);
-      AppMethodBeat.o(65294);
+      for (;;)
+      {
+        Log.w("MicroMsg.NetSceneLuckyMoneyBusiBase", "parse luckyMoneyDetail fail: " + paramString.getLocalizedMessage());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.model.ak
  * JD-Core Version:    0.7.0.1
  */

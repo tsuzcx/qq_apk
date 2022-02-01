@@ -1,50 +1,50 @@
 package com.tencent.mm.sticker.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bdr;
-import com.tencent.mm.protocal.protobuf.bds;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bpf;
+import com.tencent.mm.protocal.protobuf.bpg;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/sticker/net/NetSceneGetLensInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/GetLensInfoResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-sticker_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/sticker/net/NetSceneGetLensInfo;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "()V", "TAG", "", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/GetLensInfoResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "plugin-sticker_release"})
 public final class a
-  extends n
-  implements k
+  extends q
+  implements m
 {
   private final String TAG;
-  private f callback;
-  public final b rr;
+  private i callback;
+  public final d rr;
   
   public a()
   {
     AppMethodBeat.i(105976);
     this.TAG = "MicroMsg.NetSceneGetLensInfo";
-    Object localObject = new bdr();
-    ((bdr)localObject).GwI = "com.tencent.xin.lens.lens_test1";
-    b.a locala = new b.a();
+    Object localObject = new bpf();
+    ((bpf)localObject).Lso = "com.tencent.xin.lens.lens_test1";
+    d.a locala = new d.a();
     locala.c((com.tencent.mm.bw.a)localObject);
-    locala.d((com.tencent.mm.bw.a)new bds());
-    locala.DN("/cgi-bin/micromsg-bin/getlensinfo");
-    locala.oS(3903);
-    localObject = locala.aDS();
+    locala.d((com.tencent.mm.bw.a)new bpg());
+    locala.MB("/cgi-bin/micromsg-bin/getlensinfo");
+    locala.sG(3903);
+    localObject = locala.aXF();
     p.g(localObject, "builder.buildInstance()");
-    this.rr = ((b)localObject);
+    this.rr = ((d)localObject);
     AppMethodBeat.o(105976);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(105974);
-    this.callback = paramf;
-    int i = dispatch(parame, (q)this.rr, (k)this);
+    this.callback = parami;
+    int i = dispatch(paramg, (s)this.rr, (m)this);
     AppMethodBeat.o(105974);
     return i;
   }
@@ -54,14 +54,14 @@ public final class a
     return 3903;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(105975);
-    ae.i(this.TAG, "onGYNetEnd: " + paramInt2 + ", " + paramInt3);
-    paramq = this.callback;
-    if (paramq != null)
+    Log.i(this.TAG, "onGYNetEnd: " + paramInt2 + ", " + paramInt3);
+    params = this.callback;
+    if (params != null)
     {
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
       AppMethodBeat.o(105975);
       return;
     }

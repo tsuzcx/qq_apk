@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.expt.d.h.b.a;
 
 import com.eclipsesource.v8.V8Array;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.List;
 import org.apache.commons.b.g;
@@ -10,82 +10,75 @@ import org.apache.commons.b.g;
 public final class b
   extends com.tencent.mm.plugin.expt.d.h.b.a
 {
-  public b(String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
-  
   public final Object b(V8Array paramV8Array)
   {
-    AppMethodBeat.i(195941);
-    if ((paramV8Array == null) || (paramV8Array.length() < 2))
+    AppMethodBeat.i(220364);
+    if ((paramV8Array == null) || (paramV8Array.length() <= 0))
     {
-      AppMethodBeat.o(195941);
+      AppMethodBeat.o(220364);
       return null;
     }
-    Object localObject1 = paramV8Array.getString(0);
-    paramV8Array = paramV8Array.getString(1);
-    ae.d("EdgeComputingJsApiBase", "[EdgeComputingJsApiReadDBData]] logic, dbPath : " + (String)localObject1 + ", sql : " + paramV8Array);
-    if ((g.ef((String)localObject1)) || (g.ef(paramV8Array)))
+    paramV8Array = paramV8Array.getString(0);
+    Log.d("EdgeComputingJsApiBase", "[EdgeComputingJsApiReadEdgeDBData]] logic, sql : ".concat(String.valueOf(paramV8Array)));
+    if (g.eP(paramV8Array))
     {
-      AppMethodBeat.o(195941);
+      AppMethodBeat.o(220364);
       return null;
     }
-    Object localObject2 = com.tencent.mm.plugin.expt.d.a.cow();
-    if ((g.ef((String)localObject1)) || (g.ef(paramV8Array))) {}
-    for (paramV8Array = null; (paramV8Array == null) || (paramV8Array.size() <= 0); paramV8Array = ((com.tencent.mm.plugin.expt.d.a)localObject2).qXn.fU((String)localObject1, paramV8Array))
+    paramV8Array = com.tencent.mm.plugin.expt.d.a.cMI().aok(paramV8Array);
+    if ((paramV8Array == null) || (paramV8Array.size() <= 0))
     {
-      AppMethodBeat.o(195941);
+      AppMethodBeat.o(220364);
       return null;
     }
-    localObject2 = new StringBuilder();
+    StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator1 = paramV8Array.iterator();
     while (localIterator1.hasNext())
     {
       List localList = (List)localIterator1.next();
       if ((localList != null) && (localList.size() > 0))
       {
-        if (((StringBuilder)localObject2).length() > 0) {
-          ((StringBuilder)localObject2).append(";");
+        if (localStringBuilder.length() > 0) {
+          localStringBuilder.append(";");
         }
         Iterator localIterator2 = localList.iterator();
         int i = 0;
         while (localIterator2.hasNext())
         {
-          localObject1 = (String)localIterator2.next();
-          paramV8Array = (V8Array)localObject1;
-          if (localObject1 == null) {
+          Object localObject = (String)localIterator2.next();
+          paramV8Array = (V8Array)localObject;
+          if (localObject == null) {
             paramV8Array = "";
           }
-          localObject1 = paramV8Array;
-          if (g.eo(paramV8Array, ",")) {
-            localObject1 = g.bu(paramV8Array, ",", "\\#");
+          localObject = paramV8Array;
+          if (g.eH(paramV8Array, ",")) {
+            localObject = g.bC(paramV8Array, ",", "\\#");
           }
-          paramV8Array = (V8Array)localObject1;
-          if (g.eo((String)localObject1, ";")) {
-            paramV8Array = g.bu((String)localObject1, ";", "\\$");
+          paramV8Array = (V8Array)localObject;
+          if (g.eH((String)localObject, ";")) {
+            paramV8Array = g.bC((String)localObject, ";", "\\$");
           }
-          ((StringBuilder)localObject2).append(paramV8Array);
+          localStringBuilder.append(paramV8Array);
           if (i < localList.size() - 1) {
-            ((StringBuilder)localObject2).append(",");
+            localStringBuilder.append(",");
           }
           i += 1;
         }
       }
     }
-    paramV8Array = ((StringBuilder)localObject2).toString();
-    AppMethodBeat.o(195941);
+    paramV8Array = localStringBuilder.toString();
+    AppMethodBeat.o(220364);
     return paramV8Array;
   }
   
-  public final String coO()
+  public final String cNb()
   {
-    return "read_db_data";
+    return "read_edge_db_data";
   }
   
   public final int getType()
   {
-    return 2;
+    return 5;
   }
 }
 

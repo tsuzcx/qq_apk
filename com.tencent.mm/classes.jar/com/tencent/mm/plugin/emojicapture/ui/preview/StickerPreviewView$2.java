@@ -4,9 +4,9 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 final class StickerPreviewView$2
   implements View.OnClickListener
 {
@@ -16,12 +16,12 @@ final class StickerPreviewView$2
   {
     AppMethodBeat.i(909);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-    paramView = new android.support.design.widget.a(this.crf);
-    localObject = new StickerPreviewChangeMode(this.crf);
-    ((StickerPreviewChangeMode)localObject).setBackgroundResource(2131232016);
-    ((StickerPreviewChangeMode)localObject).setOnModeSelected((d.g.a.b)new StickerPreviewView.2.1(this, paramView));
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+    paramView = new android.support.design.widget.a(this.$context);
+    localObject = new StickerPreviewChangeMode(this.$context);
+    ((StickerPreviewChangeMode)localObject).setBackgroundResource(2131232107);
+    ((StickerPreviewChangeMode)localObject).setOnModeSelected((kotlin.g.a.b)new StickerPreviewView.2.1(this, paramView));
     paramView.setContentView((View)localObject);
     paramView.show();
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -30,7 +30,7 @@ final class StickerPreviewView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.preview.StickerPreviewView.2
  * JD-Core Version:    0.7.0.1
  */

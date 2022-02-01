@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.appbrand.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.l;
+import kotlin.g.a.a;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
 final class AppBrandUserInfoAuthorizeUI$i
   implements DialogInterface.OnClickListener
 {
@@ -15,7 +15,7 @@ final class AppBrandUserInfoAuthorizeUI$i
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(180672);
-    this.mKZ.invoke();
+    this.nYk.invoke();
     AppMethodBeat.o(180672);
   }
 }

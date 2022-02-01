@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.gallery.picker.view;
 import android.content.Context;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ar;
-import d.l;
+import com.tencent.mm.ui.au;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
 final class ImageCropUI$k
   implements Runnable
 {
@@ -14,14 +14,14 @@ final class ImageCropUI$k
   
   public final void run()
   {
-    AppMethodBeat.i(186228);
-    this.swo.setPadding(0, 0, 0, ar.en((Context)this.tUM.getContext()));
-    AppMethodBeat.o(186228);
+    AppMethodBeat.i(257794);
+    this.uXn.setPadding(0, 0, 0, au.aD((Context)this.xlY.getContext()));
+    AppMethodBeat.o(257794);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.view.ImageCropUI.k
  * JD-Core Version:    0.7.0.1
  */

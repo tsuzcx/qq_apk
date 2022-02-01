@@ -1,75 +1,93 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.widget.ImageView;
+import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.finder.loader.i;
-import com.tencent.mm.plugin.finder.loader.i.a;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.r;
-import com.tencent.mm.plugin.finder.view.FinderFoldedScrollLayout.b;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.ui.ao;
-import com.tencent.mm.view.recyclerview.e;
-import d.a.j;
-import d.g.b.p;
-import d.l;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.g.a.if;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.report.k;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.view.recyclerview.h;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderImageFoldedConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFoldedConvert;", "controller", "Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;", "(Lcom/tencent/mm/plugin/finder/view/FinderFoldedScrollLayout$FoldedController;)V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedNoMreFooterConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/FeedFooterNoMoreData;", "tabType", "", "(I)V", "getLayoutId", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "plugin-finder_release"})
 public final class ac
-  extends y
+  extends com.tencent.mm.view.recyclerview.e<com.tencent.mm.plugin.finder.model.e>
 {
-  public ac(FinderFoldedScrollLayout.b paramb)
+  private final int dLS;
+  
+  public ac(int paramInt)
   {
-    super(paramb);
-    AppMethodBeat.i(201865);
-    AppMethodBeat.o(201865);
+    this.dLS = paramInt;
   }
   
-  public final void a(e parame, BaseFinderFeed paramBaseFinderFeed, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  public final void a(RecyclerView paramRecyclerView, h paramh, int paramInt)
   {
-    AppMethodBeat.i(201863);
-    p.h(parame, "holder");
-    p.h(paramBaseFinderFeed, "item");
-    super.a(parame, paramBaseFinderFeed, paramInt1, paramInt2, paramBoolean, paramList);
-    paramList = (ImageView)parame.GD(2131302222);
-    if (paramBaseFinderFeed.feedObject.getMediaList().size() > 1)
+    AppMethodBeat.i(243080);
+    p.h(paramRecyclerView, "recyclerView");
+    p.h(paramh, "holder");
+    AppMethodBeat.o(243080);
+  }
+  
+  public final int getLayoutId()
+  {
+    return 2131494648;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class a
+    implements View.OnClickListener
+  {
+    a(h paramh) {}
+    
+    public final void onClick(View paramView)
     {
-      p.g(paramList, "mediaIcon");
-      paramList.setImageDrawable(ao.k(paramList.getContext(), 2131690348, a.n(paramList.getContext(), 2131099828)));
-      paramList.setVisibility(0);
-      paramList = (bvz)j.jl((List)paramBaseFinderFeed.feedObject.getMediaList());
-      paramBaseFinderFeed = (ImageView)parame.GD(2131305798);
-      parame = i.srW;
-      parame = i.cEn();
-      paramList = new com.tencent.mm.plugin.finder.loader.g(paramList, r.sJv);
-      i locali = i.srW;
-      paramList = parame.a(paramList, i.a(i.a.srX));
-      parame = com.tencent.mm.plugin.finder.storage.b.sHP;
-      if (((Number)com.tencent.mm.plugin.finder.storage.b.cJT().value()).intValue() <= 0) {
-        break label245;
+      AppMethodBeat.i(243078);
+      Object localObject = new b();
+      ((b)localObject).bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/convert/FinderFeedNoMreFooterConvert$onBindViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+      paramView = FinderReporterUIC.wzC;
+      paramView = this.qhp.getContext();
+      p.g(paramView, "holder.context");
+      paramView = FinderReporterUIC.a.fH(paramView);
+      if (paramView != null)
+      {
+        paramView = paramView.dIx();
+        if (paramView != null)
+        {
+          localObject = k.vfA;
+          k.e(paramView);
+        }
       }
+      paramView = new if();
+      paramView.dMQ.dLS = 4;
+      EventCenter.instance.publish((IEvent)paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/convert/FinderFeedNoMreFooterConvert$onBindViewHolder$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(243078);
     }
-    label245:
-    for (parame = new com.tencent.mm.loader.e.d(null, new com.tencent.mm.loader.e.b.g(paramBaseFinderFeed), 1);; parame = null)
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class b
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    b(h paramh)
     {
-      parame = paramList.a((com.tencent.mm.loader.f.d)parame);
-      p.g(paramBaseFinderFeed, "thumbIv");
-      parame.c(paramBaseFinderFeed);
-      AppMethodBeat.o(201863);
-      return;
-      p.g(paramList, "mediaIcon");
-      paramList.setVisibility(8);
-      break;
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.ac
  * JD-Core Version:    0.7.0.1
  */

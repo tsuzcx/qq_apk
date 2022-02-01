@@ -7,7 +7,7 @@ import com.tencent.kinda.gen.KCountPickerView;
 import com.tencent.kinda.gen.KCountPickerViewOnSelectCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.picker.c;
-import com.tencent.mm.ui.widget.picker.c.a;
+import com.tencent.mm.ui.widget.picker.c.b;
 
 public class KindaCountPickerViewImpl
   extends MMKView
@@ -27,7 +27,7 @@ public class KindaCountPickerViewImpl
     int i = 0;
     while (i < this.mTimesArray.length)
     {
-      this.mTimesArray[i] = this.mContext.getString(2131765220, new Object[] { String.valueOf(i) });
+      this.mTimesArray[i] = this.mContext.getString(2131767663, new Object[] { String.valueOf(i) });
       i += 1;
     }
     this.mSelectCreCountIndex = 0;
@@ -35,7 +35,7 @@ public class KindaCountPickerViewImpl
     this.mEditText.setInputType(0);
     this.mEditText.setFocusable(false);
     this.mEditText.setBackground(null);
-    this.mEditText.setHint(2131765099);
+    this.mEditText.setHint(2131767542);
     this.mEditText.setPadding(0, 0, 0, 0);
     this.mEditText.setTextSize(16.0F);
     paramContext = this.mEditText;
@@ -68,7 +68,7 @@ public class KindaCountPickerViewImpl
   {
     AppMethodBeat.i(18898);
     this.mSelectCreCountIndex = paramInt;
-    String str = this.mContext.getString(2131765220, new Object[] { String.valueOf(paramInt) });
+    String str = this.mContext.getString(2131767663, new Object[] { String.valueOf(paramInt) });
     this.mEditText.setText(str);
     AppMethodBeat.o(18898);
   }
@@ -79,14 +79,14 @@ public class KindaCountPickerViewImpl
     if (paramBoolean)
     {
       final c localc = new c(this.mContext, this.mTimesArray);
-      localc.Lxq = new c.a()
+      localc.QTc = new c.b()
       {
         public void onResult(boolean paramAnonymousBoolean, Object paramAnonymousObject1, Object paramAnonymousObject2)
         {
           AppMethodBeat.i(18896);
           if (paramAnonymousBoolean)
           {
-            KindaCountPickerViewImpl.access$002(KindaCountPickerViewImpl.this, localc.fRg());
+            KindaCountPickerViewImpl.access$002(KindaCountPickerViewImpl.this, localc.hci());
             KindaCountPickerViewImpl.this.mEditText.setText(paramAnonymousObject1.toString());
             KindaCountPickerViewImpl.this.mCountPickerCallback.onSelect(String.valueOf(KindaCountPickerViewImpl.this.mSelectCreCountIndex));
           }
@@ -94,7 +94,7 @@ public class KindaCountPickerViewImpl
           AppMethodBeat.o(18896);
         }
       };
-      localc.agm(this.mSelectCreCountIndex);
+      localc.app(this.mSelectCreCountIndex);
       localc.show();
     }
     AppMethodBeat.o(18899);
@@ -109,7 +109,7 @@ public class KindaCountPickerViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaCountPickerViewImpl
  * JD-Core Version:    0.7.0.1
  */

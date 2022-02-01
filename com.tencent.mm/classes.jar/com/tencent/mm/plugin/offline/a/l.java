@@ -1,36 +1,36 @@
 package com.tencent.mm.plugin.offline.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.network.q;
+import com.tencent.mm.network.s;
 import org.json.JSONObject;
 
 public final class l
   extends h
 {
-  public String wNc;
+  public String AII;
   
   public final int getTenpayCgicmd()
   {
     return 78;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66305);
-    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
+    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
     AppMethodBeat.o(66305);
   }
   
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66304);
-    this.wNc = paramJSONObject.optString("barcode");
+    this.AII = paramJSONObject.optString("barcode");
     AppMethodBeat.o(66304);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.l
  * JD-Core Version:    0.7.0.1
  */

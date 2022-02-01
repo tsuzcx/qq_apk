@@ -1,22 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j5"
+<LinearLayout android:orientation="vertical" style="@style/o_"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:padding="@dimen/e4" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ix">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ImageView android:id="@id/buu" android:contentDescription="@string/ge" style="@style/iv" />
-                    <ImageView android:layout_gravity="center" android:id="@id/buy" android:visibility="gone" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" android:src="@raw/shortvideo_play_btn" android:contentDescription="@string/ge" />
-                </FrameLayout>
-                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dz">
-                    <TextView android:id="@id/bwa" android:text="{title}" style="@style/j2" />
-                    <TextView android:id="@id/bue" android:visibility="gone" android:layout_marginTop="@dimen/e9" android:text="{desc}" style="@style/iz" />
-                    <TextView android:id="@id/bvo" android:visibility="gone" android:layout_marginTop="@dimen/e9" android:text="{source}" style="@style/iz" />
-                </LinearLayout>
-            </LinearLayout>
-            <include layout="@layout/a2x" />
-            <include layout="@layout/a2w" />
-        </LinearLayout>
-        <include layout="@layout/a2u" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/ifp" android:background="@drawable/k7" android:padding="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/ifo" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/bwe" android:layout_weight="1.0" />
     </LinearLayout>
-</FrameLayout>
+    <include layout="@layout/a2r" />
+</LinearLayout>

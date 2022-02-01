@@ -5,77 +5,87 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class chy
   extends com.tencent.mm.bw.a
 {
-  public float bottom;
-  public float left;
-  public float right;
-  public float top;
+  public String AesKey;
+  public String Md5;
+  public String Url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91570);
+    AppMethodBeat.i(104817);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.y(1, this.top);
-      paramVarArgs.y(2, this.bottom);
-      paramVarArgs.y(3, this.left);
-      paramVarArgs.y(4, this.right);
-      AppMethodBeat.o(91570);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.amE(1);
-      int i = f.a.a.b.b.a.amE(2);
-      int j = f.a.a.b.b.a.amE(3);
-      int k = f.a.a.b.b.a.amE(4);
-      AppMethodBeat.o(91570);
-      return paramInt + 0 + i + j + k;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.Url != null) {
+        paramVarArgs.e(1, this.Url);
       }
-      AppMethodBeat.o(91570);
+      if (this.AesKey != null) {
+        paramVarArgs.e(2, this.AesKey);
+      }
+      if (this.Md5 != null) {
+        paramVarArgs.e(3, this.Md5);
+      }
+      AppMethodBeat.o(104817);
       return 0;
     }
-    if (paramInt == 3)
+    if (paramInt == 1) {
+      if (this.Url == null) {
+        break label334;
+      }
+    }
+    label334:
+    for (int i = g.a.a.b.b.a.f(1, this.Url) + 0;; i = 0)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      chy localchy = (chy)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = i;
+      if (this.AesKey != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.AesKey);
+      }
+      i = paramInt;
+      if (this.Md5 != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.Md5);
+      }
+      AppMethodBeat.o(104817);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(91570);
-        return -1;
-      case 1: 
-        localchy.top = Float.intBitsToFloat(locala.OmT.gwb());
-        AppMethodBeat.o(91570);
-        return 0;
-      case 2: 
-        localchy.bottom = Float.intBitsToFloat(locala.OmT.gwb());
-        AppMethodBeat.o(91570);
-        return 0;
-      case 3: 
-        localchy.left = Float.intBitsToFloat(locala.OmT.gwb());
-        AppMethodBeat.o(91570);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
+        }
+        AppMethodBeat.o(104817);
         return 0;
       }
-      localchy.right = Float.intBitsToFloat(locala.OmT.gwb());
-      AppMethodBeat.o(91570);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        chy localchy = (chy)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(104817);
+          return -1;
+        case 1: 
+          localchy.Url = locala.UbS.readString();
+          AppMethodBeat.o(104817);
+          return 0;
+        case 2: 
+          localchy.AesKey = locala.UbS.readString();
+          AppMethodBeat.o(104817);
+          return 0;
+        }
+        localchy.Md5 = locala.UbS.readString();
+        AppMethodBeat.o(104817);
+        return 0;
+      }
+      AppMethodBeat.o(104817);
+      return -1;
     }
-    AppMethodBeat.o(91570);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.chy
  * JD-Core Version:    0.7.0.1
  */

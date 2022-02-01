@@ -14,17 +14,17 @@ import java.util.Set;
 
 public final class d
 {
-  private static d IV;
+  private static d Je;
   private static final Object mLock = new Object();
-  final Context IR;
-  final HashMap<BroadcastReceiver, ArrayList<b>> IS = new HashMap();
-  private final HashMap<String, ArrayList<b>> IT = new HashMap();
-  final ArrayList<a> IU = new ArrayList();
+  final HashMap<BroadcastReceiver, ArrayList<b>> Jb = new HashMap();
+  private final HashMap<String, ArrayList<b>> Jc = new HashMap();
+  final ArrayList<a> Jd = new ArrayList();
+  final Context mAppContext;
   private final Handler mHandler;
   
   private d(Context paramContext)
   {
-    this.IR = paramContext;
+    this.mAppContext = paramContext;
     this.mHandler = new Handler(paramContext.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
@@ -38,27 +38,27 @@ public final class d
         paramAnonymousMessage = d.this;
         for (;;)
         {
-          synchronized (paramAnonymousMessage.IS)
+          synchronized (paramAnonymousMessage.Jb)
           {
-            i = paramAnonymousMessage.IU.size();
+            i = paramAnonymousMessage.Jd.size();
             if (i <= 0) {
               return;
             }
           }
           d.a[] arrayOfa = new d.a[i];
-          paramAnonymousMessage.IU.toArray(arrayOfa);
-          paramAnonymousMessage.IU.clear();
+          paramAnonymousMessage.Jd.toArray(arrayOfa);
+          paramAnonymousMessage.Jd.clear();
           int i = 0;
           while (i < arrayOfa.length)
           {
             ??? = arrayOfa[i];
-            int k = ???.IX.size();
+            int k = ???.Jg.size();
             int j = 0;
             while (j < k)
             {
-              d.b localb = (d.b)???.IX.get(j);
-              if (!localb.IZ) {
-                localb.receiver.onReceive(paramAnonymousMessage.IR, ???.intent);
+              d.b localb = (d.b)???.Jg.get(j);
+              if (!localb.Ji) {
+                localb.receiver.onReceive(paramAnonymousMessage.mAppContext, ???.intent);
               }
               j += 1;
             }
@@ -69,41 +69,41 @@ public final class d
     };
   }
   
-  public static d V(Context paramContext)
+  public static d W(Context paramContext)
   {
     synchronized (mLock)
     {
-      if (IV == null) {
-        IV = new d(paramContext.getApplicationContext());
+      if (Je == null) {
+        Je = new d(paramContext.getApplicationContext());
       }
-      paramContext = IV;
+      paramContext = Je;
       return paramContext;
     }
   }
   
   public final void a(BroadcastReceiver paramBroadcastReceiver, IntentFilter paramIntentFilter)
   {
-    synchronized (this.IS)
+    synchronized (this.Jb)
     {
       b localb = new b(paramIntentFilter, paramBroadcastReceiver);
-      Object localObject2 = (ArrayList)this.IS.get(paramBroadcastReceiver);
+      Object localObject2 = (ArrayList)this.Jb.get(paramBroadcastReceiver);
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
         localObject1 = new ArrayList(1);
-        this.IS.put(paramBroadcastReceiver, localObject1);
+        this.Jb.put(paramBroadcastReceiver, localObject1);
       }
       ((ArrayList)localObject1).add(localb);
       int i = 0;
       while (i < paramIntentFilter.countActions())
       {
         localObject2 = paramIntentFilter.getAction(i);
-        localObject1 = (ArrayList)this.IT.get(localObject2);
+        localObject1 = (ArrayList)this.Jc.get(localObject2);
         paramBroadcastReceiver = (BroadcastReceiver)localObject1;
         if (localObject1 == null)
         {
           paramBroadcastReceiver = new ArrayList(1);
-          this.IT.put(localObject2, paramBroadcastReceiver);
+          this.Jc.put(localObject2, paramBroadcastReceiver);
         }
         paramBroadcastReceiver.add(localb);
         i += 1;
@@ -116,10 +116,10 @@ public final class d
   {
     for (;;)
     {
-      synchronized (this.IS)
+      synchronized (this.Jb)
       {
         String str1 = paramIntent.getAction();
-        String str2 = paramIntent.resolveTypeIfNeeded(this.IR.getContentResolver());
+        String str2 = paramIntent.resolveTypeIfNeeded(this.mAppContext.getContentResolver());
         Uri localUri = paramIntent.getData();
         String str3 = paramIntent.getScheme();
         Set localSet = paramIntent.getCategories();
@@ -130,7 +130,7 @@ public final class d
         if (i != 0) {
           new StringBuilder("Resolving type ").append(str2).append(" scheme ").append(str3).append(" of intent ").append(paramIntent);
         }
-        ArrayList localArrayList2 = (ArrayList)this.IT.get(paramIntent.getAction());
+        ArrayList localArrayList2 = (ArrayList)this.Jc.get(paramIntent.getAction());
         if (localArrayList2 == null) {
           break label361;
         }
@@ -145,7 +145,7 @@ public final class d
           if (i != 0) {
             new StringBuilder("Matching against filter ").append(localb.filter);
           }
-          if (localb.IY)
+          if (localb.Jh)
           {
             if (i == 0) {
               break label369;
@@ -164,7 +164,7 @@ public final class d
           }
           localArrayList1 = new ArrayList();
           localArrayList1.add(localb);
-          localb.IY = true;
+          localb.Jh = true;
         }
       }
       if (localArrayList1 != null)
@@ -172,10 +172,10 @@ public final class d
         i = 0;
         while (i < localArrayList1.size())
         {
-          ((b)localArrayList1.get(i)).IY = false;
+          ((b)localArrayList1.get(i)).Jh = false;
           i += 1;
         }
-        this.IU.add(new a(paramIntent, localArrayList1));
+        this.Jd.add(new a(paramIntent, localArrayList1));
         if (!this.mHandler.hasMessages(1)) {
           this.mHandler.sendEmptyMessage(1);
         }
@@ -206,9 +206,9 @@ public final class d
       int i;
       int j;
       int k;
-      synchronized (this.IS)
+      synchronized (this.Jb)
       {
-        ArrayList localArrayList1 = (ArrayList)this.IS.remove(paramBroadcastReceiver);
+        ArrayList localArrayList1 = (ArrayList)this.Jb.remove(paramBroadcastReceiver);
         if (localArrayList1 == null) {
           return;
         }
@@ -216,13 +216,13 @@ public final class d
         if (i >= 0)
         {
           b localb1 = (b)localArrayList1.get(i);
-          localb1.IZ = true;
+          localb1.Ji = true;
           j = 0;
           if (j >= localb1.filter.countActions()) {
             break label203;
           }
           String str = localb1.filter.getAction(j);
-          ArrayList localArrayList2 = (ArrayList)this.IT.get(str);
+          ArrayList localArrayList2 = (ArrayList)this.Jc.get(str);
           if (localArrayList2 == null) {
             break label196;
           }
@@ -232,7 +232,7 @@ public final class d
             b localb2 = (b)localArrayList2.get(k);
             if (localb2.receiver == paramBroadcastReceiver)
             {
-              localb2.IZ = true;
+              localb2.Ji = true;
               localArrayList2.remove(k);
             }
           }
@@ -241,7 +241,7 @@ public final class d
             if (localArrayList2.size() > 0) {
               break label196;
             }
-            this.IT.remove(str);
+            this.Jc.remove(str);
             break label196;
           }
         }
@@ -262,20 +262,20 @@ public final class d
   
   static final class a
   {
-    final ArrayList<d.b> IX;
+    final ArrayList<d.b> Jg;
     final Intent intent;
     
     a(Intent paramIntent, ArrayList<d.b> paramArrayList)
     {
       this.intent = paramIntent;
-      this.IX = paramArrayList;
+      this.Jg = paramArrayList;
     }
   }
   
   static final class b
   {
-    boolean IY;
-    boolean IZ;
+    boolean Jh;
+    boolean Ji;
     final IntentFilter filter;
     final BroadcastReceiver receiver;
     
@@ -292,7 +292,7 @@ public final class d
       localStringBuilder.append(this.receiver);
       localStringBuilder.append(" filter=");
       localStringBuilder.append(this.filter);
-      if (this.IZ) {
+      if (this.Ji) {
         localStringBuilder.append(" DEAD");
       }
       localStringBuilder.append("}");
@@ -302,7 +302,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.content.d
  * JD-Core Version:    0.7.0.1
  */

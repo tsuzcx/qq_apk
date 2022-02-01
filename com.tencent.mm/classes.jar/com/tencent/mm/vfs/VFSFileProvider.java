@@ -20,18 +20,18 @@ public class VFSFileProvider
   extends ContentProvider
 {
   private static final String[] COLUMNS;
-  private static final Pattern LHK;
-  private String IP;
+  private static final Pattern RdL;
+  private String IZ;
   
   static
   {
     AppMethodBeat.i(13316);
     COLUMNS = new String[] { "_display_name", "_size" };
-    LHK = Pattern.compile("/");
+    RdL = Pattern.compile("/");
     AppMethodBeat.o(13316);
   }
   
-  private static Uri A(Uri paramUri)
+  private static Uri y(Uri paramUri)
   {
     AppMethodBeat.i(13308);
     Object localObject = paramUri.getPath();
@@ -44,7 +44,7 @@ public class VFSFileProvider
     if (((String)localObject).startsWith("/")) {
       paramUri = ((String)localObject).substring(1);
     }
-    String[] arrayOfString = LHK.split(paramUri, 3);
+    String[] arrayOfString = RdL.split(paramUri, 3);
     if (arrayOfString.length < 2)
     {
       AppMethodBeat.o(13308);
@@ -94,21 +94,21 @@ public class VFSFileProvider
       AppMethodBeat.o(13309);
       throw paramContext;
     }
-    this.IP = paramProviderInfo.authority;
+    this.IZ = paramProviderInfo.authority;
     AppMethodBeat.o(13309);
   }
   
   public int delete(Uri paramUri, String paramString, String[] paramArrayOfString)
   {
     AppMethodBeat.i(13313);
-    paramString = A(paramUri);
+    paramString = y(paramUri);
     if (paramString == null)
     {
       paramUri = new IllegalArgumentException("No mapping found for ".concat(String.valueOf(paramUri)));
       AppMethodBeat.o(13313);
       throw paramUri;
     }
-    if (new k(paramString).delete())
+    if (new o(paramString).delete())
     {
       AppMethodBeat.o(13313);
       return 1;
@@ -120,7 +120,7 @@ public class VFSFileProvider
   public String getType(Uri paramUri)
   {
     AppMethodBeat.i(13311);
-    Uri localUri = A(paramUri);
+    Uri localUri = y(paramUri);
     if (localUri == null)
     {
       paramUri = new IllegalArgumentException("No mapping found for ".concat(String.valueOf(paramUri)));
@@ -138,7 +138,7 @@ public class VFSFileProvider
         return paramUri;
       }
     }
-    paramUri = new k(localUri);
+    paramUri = new o(localUri);
     int i = paramUri.getName().lastIndexOf('.');
     if (i >= 0)
     {
@@ -170,26 +170,19 @@ public class VFSFileProvider
   public ParcelFileDescriptor openFile(Uri paramUri, String paramString)
   {
     AppMethodBeat.i(13315);
-    Object localObject = A(paramUri);
+    Object localObject = y(paramUri);
     if (localObject == null)
     {
       paramUri = new FileNotFoundException("File not found: ".concat(String.valueOf(paramUri)));
       AppMethodBeat.o(13315);
       throw paramUri;
     }
-    localObject = e.fSU().a((Uri)localObject, null);
-    if (((e.e)localObject).valid()) {
-      try
-      {
-        paramUri = ((e.e)localObject).LGE.mA(((e.e)localObject).path, paramString);
-        AppMethodBeat.o(13315);
-        return paramUri;
-      }
-      catch (FileNotFoundException paramUri)
-      {
-        AppMethodBeat.o(13315);
-        throw paramUri;
-      }
+    localObject = g.hRR().a((Uri)localObject, null);
+    if (((g.e)localObject).valid())
+    {
+      paramUri = ((g.e)localObject).Rcl.nr(((g.e)localObject).path, paramString);
+      AppMethodBeat.o(13315);
+      return paramUri;
     }
     paramUri = new FileNotFoundException("File not found: ".concat(String.valueOf(paramUri)));
     AppMethodBeat.o(13315);
@@ -199,14 +192,14 @@ public class VFSFileProvider
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
     AppMethodBeat.i(13310);
-    paramString1 = A(paramUri);
+    paramString1 = y(paramUri);
     if (paramString1 == null)
     {
       paramUri = new IllegalArgumentException("No mapping found for ".concat(String.valueOf(paramUri)));
       AppMethodBeat.o(13310);
       throw paramUri;
     }
-    paramString1 = new k(paramString1);
+    paramString1 = new o(paramString1);
     paramUri = paramArrayOfString1;
     if (paramArrayOfString1 == null) {
       paramUri = COLUMNS;
@@ -259,7 +252,7 @@ public class VFSFileProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.VFSFileProvider
  * JD-Core Version:    0.7.0.1
  */

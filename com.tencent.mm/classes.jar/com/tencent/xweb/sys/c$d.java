@@ -7,18 +7,18 @@ import com.tencent.xweb.o;
 public final class c$d
   extends o
 {
-  public JsPromptResult MQV;
+  public JsPromptResult SDZ;
   
   public c$d(JsPromptResult paramJsPromptResult)
   {
-    this.MQV = paramJsPromptResult;
+    this.SDZ = paramJsPromptResult;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(153663);
-    if (this.MQV != null) {
-      this.MQV.cancel();
+    if (this.SDZ != null) {
+      this.SDZ.cancel();
     }
     AppMethodBeat.o(153663);
   }
@@ -26,8 +26,8 @@ public final class c$d
   public final void confirm()
   {
     AppMethodBeat.i(153662);
-    if (this.MQV != null) {
-      this.MQV.confirm();
+    if (this.SDZ != null) {
+      this.SDZ.confirm();
     }
     AppMethodBeat.o(153662);
   }
@@ -36,7 +36,7 @@ public final class c$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.sys.c.d
  * JD-Core Version:    0.7.0.1
  */

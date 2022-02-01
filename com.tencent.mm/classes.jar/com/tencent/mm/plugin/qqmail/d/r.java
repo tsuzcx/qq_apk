@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class r
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public b gRX;
+  private i callback;
+  public d hJu;
   
   public r(String paramString)
   {
-    AppMethodBeat.i(217952);
-    b.a locala = new b.a();
+    AppMethodBeat.i(198606);
+    d.a locala = new d.a();
     locala.funcId = getType();
     w localw = new w();
-    localw.xsb = paramString;
-    locala.hQF = localw;
-    locala.hQG = new x();
+    localw.Bsf = paramString;
+    locala.iLN = localw;
+    locala.iLO = new x();
     locala.uri = "/cgi-bin/micromsg-bin/preparebindxmail";
-    ae.i("MicroMsg.NetScenePrepareBindXmail", "bindQQMail %s", new Object[] { paramString });
-    this.gRX = locala.aDS();
-    AppMethodBeat.o(217952);
+    Log.i("MicroMsg.NetScenePrepareBindXmail", "bindQQMail %s", new Object[] { paramString });
+    this.hJu = locala.aXF();
+    AppMethodBeat.o(198606);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(217953);
-    this.callback = paramf;
-    int i = dispatch(parame, this.gRX, this);
-    AppMethodBeat.o(217953);
+    AppMethodBeat.i(198607);
+    this.callback = parami;
+    int i = dispatch(paramg, this.hJu, this);
+    AppMethodBeat.o(198607);
     return i;
   }
   
@@ -46,11 +46,11 @@ public final class r
     return 3848;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(217954);
+    AppMethodBeat.i(198608);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(217954);
+    AppMethodBeat.o(198608);
   }
 }
 

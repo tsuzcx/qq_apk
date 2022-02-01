@@ -5,7 +5,7 @@ import com.google.android.exoplayer2.Format;
 import com.google.android.exoplayer2.h.u.a;
 import com.google.android.exoplayer2.i.x;
 import com.google.android.exoplayer2.o;
-import com.google.android.exoplayer2.source.q;
+import com.google.android.exoplayer2.source.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.BufferedReader;
 import java.io.InputStream;
@@ -24,8 +24,8 @@ public final class d
 {
   private static final Pattern bzA;
   private static final Pattern bzB;
-  private static final Pattern bzg;
-  private static final Pattern bzh;
+  private static final Pattern bzC;
+  private static final Pattern bzD;
   private static final Pattern bzi;
   private static final Pattern bzj;
   private static final Pattern bzk;
@@ -48,35 +48,35 @@ public final class d
   static
   {
     AppMethodBeat.i(62903);
-    bzg = Pattern.compile("AVERAGE-BANDWIDTH=(\\d+)\\b");
-    bzh = Pattern.compile("[^-]BANDWIDTH=(\\d+)\\b");
-    bzi = Pattern.compile("CODECS=\"(.+?)\"");
-    bzj = Pattern.compile("RESOLUTION=(\\d+x\\d+)");
-    bzk = Pattern.compile("#EXT-X-TARGETDURATION:(\\d+)\\b");
-    bzl = Pattern.compile("#EXT-X-VERSION:(\\d+)\\b");
-    bzm = Pattern.compile("#EXT-X-PLAYLIST-TYPE:(.+)\\b");
-    bzn = Pattern.compile("#EXT-X-MEDIA-SEQUENCE:(\\d+)\\b");
-    bzo = Pattern.compile("#EXTINF:([\\d\\.]+)\\b");
-    bzp = Pattern.compile("TIME-OFFSET=(-?[\\d\\.]+)\\b");
-    bzq = Pattern.compile("#EXT-X-BYTERANGE:(\\d+(?:@\\d+)?)\\b");
-    bzr = Pattern.compile("BYTERANGE=\"(\\d+(?:@\\d+)?)\\b\"");
-    bzs = Pattern.compile("METHOD=(NONE|AES-128)");
-    bzt = Pattern.compile("URI=\"(.+?)\"");
-    bzu = Pattern.compile("IV=([^,.*]+)");
-    bzv = Pattern.compile("TYPE=(AUDIO|VIDEO|SUBTITLES|CLOSED-CAPTIONS)");
-    bzw = Pattern.compile("LANGUAGE=\"(.+?)\"");
-    bzx = Pattern.compile("NAME=\"(.+?)\"");
-    bzy = Pattern.compile("INSTREAM-ID=\"((?:CC|SERVICE)\\d+)\"");
-    bzz = bj("AUTOSELECT");
-    bzA = bj("DEFAULT");
-    bzB = bj("FORCED");
+    bzi = Pattern.compile("AVERAGE-BANDWIDTH=(\\d+)\\b");
+    bzj = Pattern.compile("[^-]BANDWIDTH=(\\d+)\\b");
+    bzk = Pattern.compile("CODECS=\"(.+?)\"");
+    bzl = Pattern.compile("RESOLUTION=(\\d+x\\d+)");
+    bzm = Pattern.compile("#EXT-X-TARGETDURATION:(\\d+)\\b");
+    bzn = Pattern.compile("#EXT-X-VERSION:(\\d+)\\b");
+    bzo = Pattern.compile("#EXT-X-PLAYLIST-TYPE:(.+)\\b");
+    bzp = Pattern.compile("#EXT-X-MEDIA-SEQUENCE:(\\d+)\\b");
+    bzq = Pattern.compile("#EXTINF:([\\d\\.]+)\\b");
+    bzr = Pattern.compile("TIME-OFFSET=(-?[\\d\\.]+)\\b");
+    bzs = Pattern.compile("#EXT-X-BYTERANGE:(\\d+(?:@\\d+)?)\\b");
+    bzt = Pattern.compile("BYTERANGE=\"(\\d+(?:@\\d+)?)\\b\"");
+    bzu = Pattern.compile("METHOD=(NONE|AES-128)");
+    bzv = Pattern.compile("URI=\"(.+?)\"");
+    bzw = Pattern.compile("IV=([^,.*]+)");
+    bzx = Pattern.compile("TYPE=(AUDIO|VIDEO|SUBTITLES|CLOSED-CAPTIONS)");
+    bzy = Pattern.compile("LANGUAGE=\"(.+?)\"");
+    bzz = Pattern.compile("NAME=\"(.+?)\"");
+    bzA = Pattern.compile("INSTREAM-ID=\"((?:CC|SERVICE)\\d+)\"");
+    bzB = bj("AUTOSELECT");
+    bzC = bj("DEFAULT");
+    bzD = bj("FORCED");
     AppMethodBeat.o(62903);
   }
   
   private static int a(BufferedReader paramBufferedReader, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(62893);
-    while ((paramInt != -1) && (Character.isWhitespace(paramInt)) && ((paramBoolean) || (!x.fe(paramInt)))) {
+    while ((paramInt != -1) && (Character.isWhitespace(paramInt)) && ((paramBoolean) || (!x.fd(paramInt)))) {
       paramInt = paramBufferedReader.read();
     }
     AppMethodBeat.o(62893);
@@ -121,22 +121,22 @@ public final class d
       {
         String str2;
         String str3;
-        if (e((String)localObject3, bzA))
+        if (e((String)localObject3, bzC))
         {
           i = 1;
-          if (!e((String)localObject3, bzB)) {
+          if (!e((String)localObject3, bzD)) {
             break label301;
           }
           k = 2;
-          if (!e((String)localObject3, bzz)) {
+          if (!e((String)localObject3, bzB)) {
             break label307;
           }
           m = 4;
           k = k | i | m;
-          localObject4 = c((String)localObject3, bzt);
-          str1 = d((String)localObject3, bzx);
-          str2 = c((String)localObject3, bzw);
-          str3 = d((String)localObject3, bzv);
+          localObject4 = c((String)localObject3, bzv);
+          str1 = d((String)localObject3, bzz);
+          str2 = c((String)localObject3, bzy);
+          str3 = d((String)localObject3, bzx);
           i = -1;
           switch (str3.hashCode())
           {
@@ -184,7 +184,7 @@ public final class d
         continue;
         localArrayList3.add(new a.a((String)localObject4, Format.a(str1, "application/x-mpegURL", "text/vtt", k, str2)));
         continue;
-        localObject4 = d((String)localObject3, bzy);
+        localObject4 = d((String)localObject3, bzA);
         if (((String)localObject4).startsWith("CC")) {
           localObject3 = "application/cea-608";
         }
@@ -202,13 +202,13 @@ public final class d
       }
       else if (((String)localObject3).startsWith("#EXT-X-STREAM-INF"))
       {
-        k = a((String)localObject3, bzh);
-        localObject4 = c((String)localObject3, bzg);
+        k = a((String)localObject3, bzj);
+        localObject4 = c((String)localObject3, bzi);
         if (localObject4 != null) {
           k = Integer.parseInt((String)localObject4);
         }
-        localObject4 = c((String)localObject3, bzi);
-        str1 = c((String)localObject3, bzj);
+        localObject4 = c((String)localObject3, bzk);
+        str1 = c((String)localObject3, bzl);
         int n = j | ((String)localObject3).contains("CLOSED-CAPTIONS=NONE");
         if (str1 != null)
         {
@@ -258,7 +258,7 @@ public final class d
       if (!a(paramInputStream))
       {
         com.google.android.exoplayer2.d.b.e("ExoPlayer", "parse, not the #EXTM3U header, uri:%s, reader:%s", new Object[] { paramUri.toString(), paramInputStream.readLine() });
-        paramUri = new q("Input does not start with the #EXTM3U header.", paramUri);
+        paramUri = new s("Input does not start with the #EXTM3U header.", paramUri);
         AppMethodBeat.o(62891);
         throw paramUri;
       }
@@ -326,7 +326,7 @@ public final class d
       j = paramBufferedReader.read();
       i += 1;
     }
-    boolean bool = x.fe(a(paramBufferedReader, false, j));
+    boolean bool = x.fd(a(paramBufferedReader, false, j));
     AppMethodBeat.o(62892);
     return bool;
   }
@@ -381,7 +381,7 @@ public final class d
       if (!str3.startsWith("#EXT-X-PLAYLIST-TYPE")) {
         break label198;
       }
-      localObject1 = d(str3, bzm);
+      localObject1 = d(str3, bzo);
       if (!"VOD".equals(localObject1)) {
         break;
       }
@@ -398,14 +398,14 @@ public final class d
       label198:
       if (str3.startsWith("#EXT-X-START"))
       {
-        l4 = (b(str3, bzp) * 1000000.0D);
+        l4 = (b(str3, bzr) * 1000000.0D);
         l3 = l8;
         break;
       }
       if (str3.startsWith("#EXT-X-MAP"))
       {
-        localObject1 = d(str3, bzt);
-        localObject2 = c(str3, bzr);
+        localObject1 = d(str3, bzv);
+        localObject2 = c(str3, bzt);
         if (localObject2 == null) {
           break label948;
         }
@@ -430,35 +430,35 @@ public final class d
         break;
         if (str3.startsWith("#EXT-X-TARGETDURATION"))
         {
-          l5 = a(str3, bzk) * 1000000L;
+          l5 = a(str3, bzm) * 1000000L;
           l3 = l8;
           break;
         }
         if (str3.startsWith("#EXT-X-MEDIA-SEQUENCE"))
         {
-          n = a(str3, bzn);
+          n = a(str3, bzp);
           j = n;
           l3 = l8;
           break;
         }
         if (str3.startsWith("#EXT-X-VERSION"))
         {
-          k = a(str3, bzl);
+          k = a(str3, bzn);
           l3 = l8;
           break;
         }
         if (str3.startsWith("#EXTINF"))
         {
-          l3 = (b(str3, bzo) * 1000000.0D);
+          l3 = (b(str3, bzq) * 1000000.0D);
           break;
         }
         if (str3.startsWith("#EXT-X-KEY"))
         {
-          bool4 = "AES-128".equals(d(str3, bzs));
+          bool4 = "AES-128".equals(d(str3, bzu));
           if (bool4)
           {
-            str2 = d(str3, bzt);
-            str1 = c(str3, bzu);
+            str2 = d(str3, bzv);
+            str1 = c(str3, bzw);
             l3 = l8;
             break;
           }
@@ -469,7 +469,7 @@ public final class d
         }
         if (str3.startsWith("#EXT-X-BYTERANGE"))
         {
-          localObject1 = d(str3, bzq).split("@");
+          localObject1 = d(str3, bzs).split("@");
           l2 = Long.parseLong(localObject1[0]);
           if (localObject1.length <= 1) {
             break label945;
@@ -615,39 +615,39 @@ public final class d
   
   static final class a
   {
-    private final BufferedReader bzC;
-    private final Queue<String> bzD;
-    private String bzE;
+    private final BufferedReader bzE;
+    private final Queue<String> bzF;
+    private String bzG;
     
     public a(Queue<String> paramQueue, BufferedReader paramBufferedReader)
     {
-      this.bzD = paramQueue;
-      this.bzC = paramBufferedReader;
+      this.bzF = paramQueue;
+      this.bzE = paramBufferedReader;
     }
     
     public final boolean hasNext()
     {
       AppMethodBeat.i(62889);
-      if (this.bzE != null)
+      if (this.bzG != null)
       {
         AppMethodBeat.o(62889);
         return true;
       }
-      if (!this.bzD.isEmpty())
+      if (!this.bzF.isEmpty())
       {
-        this.bzE = ((String)this.bzD.poll());
+        this.bzG = ((String)this.bzF.poll());
         AppMethodBeat.o(62889);
         return true;
       }
       do
       {
-        String str = this.bzC.readLine();
-        this.bzE = str;
+        String str = this.bzE.readLine();
+        this.bzG = str;
         if (str == null) {
           break;
         }
-        this.bzE = this.bzE.trim();
-      } while (this.bzE.isEmpty());
+        this.bzG = this.bzG.trim();
+      } while (this.bzG.isEmpty());
       AppMethodBeat.o(62889);
       return true;
       AppMethodBeat.o(62889);
@@ -660,8 +660,8 @@ public final class d
       String str;
       if (hasNext())
       {
-        str = this.bzE;
-        this.bzE = null;
+        str = this.bzG;
+        this.bzG = null;
       }
       for (;;)
       {
@@ -674,7 +674,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.a.d
  * JD-Core Version:    0.7.0.1
  */

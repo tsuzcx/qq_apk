@@ -8,13 +8,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public abstract class GameCenterActivity
   extends GameBaseActivity
 {
-  protected int uxp = 0;
-  protected String uxq = null;
+  protected int xPp = 0;
+  protected String xPq = null;
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131101179));
+    setActionbarColor(getResources().getColor(2131101424));
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

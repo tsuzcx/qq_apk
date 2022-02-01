@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:background="@color/a_r" android:paddingTop="17.0dip" android:paddingBottom="17.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/bcs" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/km" android:id="@id/b__" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" android:layout_toRightOf="@id/aq8" android:layout_centerVertical="true" />
-    <FrameLayout android:id="@id/f51" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <ImageView android:layout_width="21.099976dip" android:layout_height="21.099976dip" android:src="@raw/subscribe_msg_info_ic" android:cropToPadding="true" />
+<RelativeLayout android:background="@color/ac_" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:appNs="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/du1" android:layout_width="@dimen/acd" android:layout_height="@dimen/acd" android:layout_centerHorizontal="true">
+        <ImageView android:layout_gravity="center" android:id="@id/dtx" android:layout_width="@dimen/aci" android:layout_height="@dimen/aci" />
+        <com.tencent.mm.plugin.voip.ui.MMCheckBox android:id="@id/dtl" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     </FrameLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/afz" android:ellipsize="end" android:id="@id/du3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/f6n" android:singleLine="true" android:layout_below="@id/du1" android:layout_centerHorizontal="true" />
 </RelativeLayout>

@@ -1,71 +1,36 @@
 package com.tencent.mm.plugin.finder.loader;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-import d.l;
+import com.tencent.mm.plugin.finder.storage.x;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/loader/FinderCoverImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderLoaderData;", "url", "", "(Ljava/lang/String;)V", "uniqueValue", "getDecodeKey", "getMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "getPath", "getThumbUrl", "getThumbUrlToken", "getUrl", "getUrlToken", "getUsername", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/loader/FinderBlurUrlImage;", "Lcom/tencent/mm/plugin/finder/loader/FinderUrlImage;", "blurUrl", "", "blurMediaType", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;", "(Ljava/lang/String;Lcom/tencent/mm/plugin/finder/storage/FinderMediaType;)V", "uniqueValue", "plugin-finder_release"})
 public final class e
-  implements k
+  extends p
 {
-  public final String srn;
-  private final String url;
+  private final String uIm;
+  private final x uIn;
   
-  public e(String paramString)
+  public e(String paramString, x paramx)
   {
-    AppMethodBeat.i(166310);
-    this.url = paramString;
-    this.srn = ("finder_cover_" + aj.ej(this.url));
-    AppMethodBeat.o(166310);
+    super(paramString, paramx);
+    AppMethodBeat.i(248212);
+    this.uIm = paramString;
+    this.uIn = paramx;
+    AppMethodBeat.o(248212);
   }
   
-  public final String aeM()
+  public final String auA()
   {
-    return this.srn;
-  }
-  
-  public final String all()
-  {
-    return this.url;
-  }
-  
-  public final com.tencent.mm.plugin.finder.storage.r cEj()
-  {
-    return com.tencent.mm.plugin.finder.storage.r.sJu;
-  }
-  
-  public final String cEk()
-  {
-    return "";
-  }
-  
-  public final String cEl()
-  {
-    return "";
-  }
-  
-  public final String cEm()
-  {
-    return "";
-  }
-  
-  public final String getPath()
-  {
-    AppMethodBeat.i(166309);
-    Object localObject = com.tencent.mm.plugin.finder.utils.r.sYn;
-    localObject = com.tencent.mm.plugin.finder.utils.r.a(this);
-    AppMethodBeat.o(166309);
-    return localObject;
-  }
-  
-  public final String getUrl()
-  {
-    return this.url;
+    AppMethodBeat.i(248211);
+    String str = this.uIn.detail + "_finder_blur_" + this.md5;
+    AppMethodBeat.o(248211);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.loader.e
  * JD-Core Version:    0.7.0.1
  */

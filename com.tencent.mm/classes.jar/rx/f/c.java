@@ -7,12 +7,12 @@ import rx.j;
 public final class c
   implements j
 {
-  final AtomicReference<a> OyY;
+  final AtomicReference<a> UoL;
   
   public c()
   {
     AppMethodBeat.i(90449);
-    this.OyY = new AtomicReference(new a(false, d.gEe()));
+    this.UoL = new AtomicReference(new a(false, d.hRm()));
     AppMethodBeat.o(90449);
   }
   
@@ -25,14 +25,14 @@ public final class c
       AppMethodBeat.o(90452);
       throw paramj;
     }
-    AtomicReference localAtomicReference = this.OyY;
+    AtomicReference localAtomicReference = this.UoL;
     a locala;
     do
     {
       locala = (a)localAtomicReference.get();
-      if (locala.OwA)
+      if (locala.Umo)
       {
-        paramj.gDs();
+        paramj.hQA();
         AppMethodBeat.o(90452);
         return;
       }
@@ -40,55 +40,55 @@ public final class c
     AppMethodBeat.o(90452);
   }
   
-  public final void gDs()
+  public final void hQA()
   {
     AppMethodBeat.i(90451);
-    AtomicReference localAtomicReference = this.OyY;
+    AtomicReference localAtomicReference = this.UoL;
     a locala;
     do
     {
       locala = (a)localAtomicReference.get();
-      if (locala.OwA)
+      if (locala.Umo)
       {
         AppMethodBeat.o(90451);
         return;
       }
-    } while (!localAtomicReference.compareAndSet(locala, locala.gEd()));
-    locala.OwQ.gDs();
+    } while (!localAtomicReference.compareAndSet(locala, locala.hRl()));
+    locala.UmE.hQA();
     AppMethodBeat.o(90451);
   }
   
-  public final boolean gDt()
+  public final boolean hQB()
   {
     AppMethodBeat.i(90450);
-    boolean bool = ((a)this.OyY.get()).OwA;
+    boolean bool = ((a)this.UoL.get()).Umo;
     AppMethodBeat.o(90450);
     return bool;
   }
   
   static final class a
   {
-    final boolean OwA;
-    final j OwQ;
+    final j UmE;
+    final boolean Umo;
     
     a(boolean paramBoolean, j paramj)
     {
-      this.OwA = paramBoolean;
-      this.OwQ = paramj;
+      this.Umo = paramBoolean;
+      this.UmE = paramj;
     }
     
     final a g(j paramj)
     {
       AppMethodBeat.i(90448);
-      paramj = new a(this.OwA, paramj);
+      paramj = new a(this.Umo, paramj);
       AppMethodBeat.o(90448);
       return paramj;
     }
     
-    final a gEd()
+    final a hRl()
     {
       AppMethodBeat.i(90447);
-      a locala = new a(true, this.OwQ);
+      a locala = new a(true, this.UmE);
       AppMethodBeat.o(90447);
       return locala;
     }

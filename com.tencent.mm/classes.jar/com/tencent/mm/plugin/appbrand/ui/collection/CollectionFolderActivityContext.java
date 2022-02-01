@@ -5,27 +5,25 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.k;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.appusage.af;
+import com.tencent.mm.plugin.appbrand.appusage.af.a;
 import com.tencent.mm.plugin.appbrand.appusage.ag;
-import com.tencent.mm.plugin.appbrand.appusage.ag.a;
-import com.tencent.mm.plugin.appbrand.appusage.ah;
-import com.tencent.mm.plugin.appbrand.report.h;
-import com.tencent.mm.plugin.appbrand.task.e;
-import com.tencent.mm.plugin.appbrand.task.f;
-import com.tencent.mm.plugin.appbrand.task.preload.d.a;
+import com.tencent.mm.plugin.appbrand.report.i;
+import com.tencent.mm.plugin.appbrand.service.z;
+import com.tencent.mm.plugin.appbrand.task.h;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherBlankPage;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandLauncherUI.Fragment;
 import com.tencent.mm.plugin.appbrand.ui.launcher.FolderActivityContextWithLifecycle;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 import com.tencent.mm.ui.MMActivity;
-import d.g.b.p;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionFolderActivityContext;", "Lcom/tencent/mm/plugin/appbrand/ui/launcher/FolderActivityContextWithLifecycle;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "TAG", "", "onActivityDidCreate", "", "intent", "Landroid/content/Intent;", "onActivityDidResume", "onActivityWillDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "showListPage", "showList", "", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/collection/CollectionFolderActivityContext;", "Lcom/tencent/mm/plugin/appbrand/ui/launcher/FolderActivityContextWithLifecycle;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "TAG", "", "onActivityDidCreate", "", "intent", "Landroid/content/Intent;", "onActivityDidResume", "onActivityWillDestroy", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "showListPage", "showList", "", "plugin-appbrand-integration_release"})
 public final class CollectionFolderActivityContext
   extends FolderActivityContextWithLifecycle
-  implements k.a
+  implements MStorage.IOnStorageChange
 {
   private final String TAG;
   
@@ -37,42 +35,31 @@ public final class CollectionFolderActivityContext
     AppMethodBeat.o(51263);
   }
   
-  public final void T(Intent paramIntent)
+  public final void S(Intent paramIntent)
   {
     AppMethodBeat.i(51260);
     View localView = getActivity().findViewById(16908290);
     if (localView != null) {
       localView.setBackgroundColor(-855310);
     }
-    hF(true);
+    iI(true);
     if (paramIntent != null)
     {
       int i = paramIntent.getIntExtra("extra_get_usage_reason", 7);
       int j = paramIntent.getIntExtra("extra_get_usage_prescene", 0);
-      paramIntent = ag.jTj;
-      ag.a.a(i, j, null, 4);
+      paramIntent = af.kVR;
+      af.a.a(i, j, null, 4);
       AppMethodBeat.o(51260);
       return;
     }
     AppMethodBeat.o(51260);
   }
   
-  public final void a(String paramString, m paramm)
-  {
-    AppMethodBeat.i(51258);
-    paramString = com.tencent.mm.kernel.g.ab(ah.class);
-    p.g(paramString, "MMKernel.service(IAppBra…ctionStorage::class.java)");
-    if (((ah)paramString).getCount() > 0) {
-      getActivity().runOnUiThread((Runnable)new a(this));
-    }
-    AppMethodBeat.o(51258);
-  }
-  
-  public final void hF(boolean paramBoolean)
+  public final void iI(boolean paramBoolean)
   {
     AppMethodBeat.i(51259);
     Object localObject1 = getActivity();
-    p.g(localObject1, "activity");
+    kotlin.g.b.p.g(localObject1, "activity");
     if (((MMActivity)localObject1).isFinishing())
     {
       AppMethodBeat.o(51259);
@@ -83,7 +70,7 @@ public final class CollectionFolderActivityContext
     for (localObject1 = AppBrandCollectionDisplayVerticalList.class;; localObject1 = AppBrandLauncherBlankPage.class)
     {
       localObject2 = getActivity();
-      p.g(localObject2, "activity");
+      kotlin.g.b.p.g(localObject2, "activity");
       if (!((Class)localObject1).isInstance(((MMActivity)localObject2).getSupportFragmentManager().findFragmentById(16908290))) {
         break;
       }
@@ -92,21 +79,21 @@ public final class CollectionFolderActivityContext
     }
     getActivity().removeAllOptionMenu();
     label131:
-    ah localah;
+    ag localag;
     label193:
     int i;
     if (paramBoolean)
     {
       getActivity().showActionbarLine();
       localObject1 = getActivity();
-      p.g(localObject1, "activity");
+      kotlin.g.b.p.g(localObject1, "activity");
       localObject2 = ((MMActivity)localObject1).getSupportFragmentManager().beginTransaction();
       if (!paramBoolean) {
-        break label347;
+        break label357;
       }
       localObject1 = (AppBrandLauncherUI.Fragment)new AppBrandCollectionDisplayVerticalList();
       ((k)localObject2).b(16908290, (Fragment)localObject1).commitAllowingStateLoss();
-      localah = (ah)com.tencent.mm.kernel.g.ab(ah.class);
+      localag = (ag)com.tencent.mm.kernel.g.af(ag.class);
       localObject1 = getActivity();
       if (localObject1 != null)
       {
@@ -128,7 +115,7 @@ public final class CollectionFolderActivityContext
         if (localObject2 != null)
         {
           i = ((Intent)localObject2).getIntExtra("extra_enter_scene", -1);
-          ae.i(this.TAG, "EnterScene = ".concat(String.valueOf(i)));
+          Log.i(this.TAG, "EnterScene = ".concat(String.valueOf(i)));
         }
       }
       switch (i)
@@ -137,7 +124,7 @@ public final class CollectionFolderActivityContext
       default: 
         label272:
         if (!paramBoolean) {
-          localah.add(this.TAG + ".WORKER", (k.a)this);
+          localag.add(this.TAG + ".WORKER", (MStorage.IOnStorageChange)this);
         }
         break;
       }
@@ -146,26 +133,26 @@ public final class CollectionFolderActivityContext
     {
       if (paramBoolean)
       {
-        f.a(e.mDe, d.a.mEe);
-        f.a(e.mDf, d.a.mEe);
+        h.bWb().a(com.tencent.mm.plugin.appbrand.task.g.nPD, z.nMC);
+        h.bWb().a(com.tencent.mm.plugin.appbrand.task.g.nPE, z.nMC);
       }
       AppMethodBeat.o(51259);
       return;
       getActivity().hideActionbarLine();
       break;
-      label347:
-      localObject1 = (AppBrandLauncherUI.Fragment)AppBrandLauncherBlankPage.er(getActivity().getString(2131755614), getActivity().getString(2131755362));
+      label357:
+      localObject1 = (AppBrandLauncherUI.Fragment)AppBrandLauncherBlankPage.eJ(getActivity().getString(2131755661), getActivity().getString(2131755399));
       break label131;
-      h.ap(i, (String)localObject1);
+      i.as(i, (String)localObject1);
       break label272;
-      localah.remove((k.a)this);
+      localag.remove((MStorage.IOnStorageChange)this);
     }
   }
   
   public final void onActivityDidResume()
   {
     AppMethodBeat.i(51261);
-    getActivity().setMMTitle(2131755614);
+    getActivity().setMMTitle(2131755661);
     AppMethodBeat.o(51261);
   }
   
@@ -173,11 +160,22 @@ public final class CollectionFolderActivityContext
   {
     AppMethodBeat.i(51262);
     super.onActivityWillDestroy();
-    ((ah)com.tencent.mm.kernel.g.ab(ah.class)).remove((k.a)this);
+    ((ag)com.tencent.mm.kernel.g.af(ag.class)).remove((MStorage.IOnStorageChange)this);
     AppMethodBeat.o(51262);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
+  {
+    AppMethodBeat.i(51258);
+    paramString = com.tencent.mm.kernel.g.af(ag.class);
+    kotlin.g.b.p.g(paramString, "MMKernel.service(IAppBra…ctionStorage::class.java)");
+    if (((ag)paramString).getCount() > 0) {
+      getActivity().runOnUiThread((Runnable)new a(this));
+    }
+    AppMethodBeat.o(51258);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -186,14 +184,14 @@ public final class CollectionFolderActivityContext
     public final void run()
     {
       AppMethodBeat.i(51257);
-      this.mNX.hF(true);
+      this.oaY.iI(true);
       AppMethodBeat.o(51257);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.CollectionFolderActivityContext
  * JD-Core Version:    0.7.0.1
  */

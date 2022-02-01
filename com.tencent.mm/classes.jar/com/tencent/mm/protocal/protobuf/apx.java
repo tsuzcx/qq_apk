@@ -5,62 +5,114 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class apx
   extends com.tencent.mm.bw.a
 {
-  public int GGY;
-  public String dyI;
+  public int LAB;
+  public int LBF;
+  public int LBG;
+  public int LBH;
+  public int LBI;
+  public int LBJ;
+  public int LBK;
+  public int LBL;
+  public int count;
+  public int jhQ;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(189379);
+    AppMethodBeat.i(168947);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.GGY);
-      if (this.dyI != null) {
-        paramVarArgs.d(2, this.dyI);
-      }
-      AppMethodBeat.o(189379);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.count);
+      paramVarArgs.aM(2, this.LBF);
+      paramVarArgs.aM(3, this.LBG);
+      paramVarArgs.aM(4, this.LBH);
+      paramVarArgs.aM(5, this.LBI);
+      paramVarArgs.aM(7, this.LAB);
+      paramVarArgs.aM(8, this.LBJ);
+      paramVarArgs.aM(9, this.jhQ);
+      paramVarArgs.aM(10, this.LBK);
+      paramVarArgs.aM(11, this.LBL);
+      AppMethodBeat.o(168947);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.GGY) + 0;
-      paramInt = i;
-      if (this.dyI != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.dyI);
-      }
-      AppMethodBeat.o(189379);
-      return paramInt;
+      paramInt = g.a.a.b.b.a.bu(1, this.count);
+      int i = g.a.a.b.b.a.bu(2, this.LBF);
+      int j = g.a.a.b.b.a.bu(3, this.LBG);
+      int k = g.a.a.b.b.a.bu(4, this.LBH);
+      int m = g.a.a.b.b.a.bu(5, this.LBI);
+      int n = g.a.a.b.b.a.bu(7, this.LAB);
+      int i1 = g.a.a.b.b.a.bu(8, this.LBJ);
+      int i2 = g.a.a.b.b.a.bu(9, this.jhQ);
+      int i3 = g.a.a.b.b.a.bu(10, this.LBK);
+      int i4 = g.a.a.b.b.a.bu(11, this.LBL);
+      AppMethodBeat.o(168947);
+      return paramInt + 0 + i + j + k + m + n + i1 + i2 + i3 + i4;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
-      AppMethodBeat.o(189379);
+      AppMethodBeat.o(168947);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       apx localapx = (apx)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
+      case 6: 
       default: 
-        AppMethodBeat.o(189379);
+        AppMethodBeat.o(168947);
         return -1;
       case 1: 
-        localapx.GGY = locala.OmT.zc();
-        AppMethodBeat.o(189379);
+        localapx.count = locala.UbS.zi();
+        AppMethodBeat.o(168947);
+        return 0;
+      case 2: 
+        localapx.LBF = locala.UbS.zi();
+        AppMethodBeat.o(168947);
+        return 0;
+      case 3: 
+        localapx.LBG = locala.UbS.zi();
+        AppMethodBeat.o(168947);
+        return 0;
+      case 4: 
+        localapx.LBH = locala.UbS.zi();
+        AppMethodBeat.o(168947);
+        return 0;
+      case 5: 
+        localapx.LBI = locala.UbS.zi();
+        AppMethodBeat.o(168947);
+        return 0;
+      case 7: 
+        localapx.LAB = locala.UbS.zi();
+        AppMethodBeat.o(168947);
+        return 0;
+      case 8: 
+        localapx.LBJ = locala.UbS.zi();
+        AppMethodBeat.o(168947);
+        return 0;
+      case 9: 
+        localapx.jhQ = locala.UbS.zi();
+        AppMethodBeat.o(168947);
+        return 0;
+      case 10: 
+        localapx.LBK = locala.UbS.zi();
+        AppMethodBeat.o(168947);
         return 0;
       }
-      localapx.dyI = locala.OmT.readString();
-      AppMethodBeat.o(189379);
+      localapx.LBL = locala.UbS.zi();
+      AppMethodBeat.o(168947);
       return 0;
     }
-    AppMethodBeat.o(189379);
+    AppMethodBeat.o(168947);
     return -1;
   }
 }

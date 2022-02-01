@@ -7,7 +7,7 @@ import android.graphics.drawable.Drawable;
 import android.support.v4.graphics.drawable.b;
 import android.support.v4.graphics.drawable.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class e
   implements b.h
@@ -43,12 +43,7 @@ public class e
     return null;
   }
   
-  public String BN()
-  {
-    return "RoundedBitmap";
-  }
-  
-  public Bitmap G(Bitmap paramBitmap)
+  public Bitmap J(Bitmap paramBitmap)
   {
     AppMethodBeat.i(176005);
     if ((paramBitmap.getWidth() <= 0) || (paramBitmap.getHeight() <= 0))
@@ -56,8 +51,8 @@ public class e
       AppMethodBeat.o(176005);
       return paramBitmap;
     }
-    Object localObject = d.a(ak.getResources(), paramBitmap);
-    ((b)localObject).ez();
+    Object localObject = d.a(MMApplicationContext.getResources(), paramBitmap);
+    ((b)localObject).eD();
     localObject = drawableToBitmap((Drawable)localObject);
     if (localObject != paramBitmap) {
       paramBitmap.recycle();
@@ -65,10 +60,15 @@ public class e
     AppMethodBeat.o(176005);
     return localObject;
   }
+  
+  public String Lb()
+  {
+    return "RoundedBitmap";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.e
  * JD-Core Version:    0.7.0.1
  */

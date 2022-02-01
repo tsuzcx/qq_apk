@@ -5,13 +5,13 @@ import java.util.Map;
 
 public class f
 {
-  public b khG;
-  public Map<String, a> khH;
+  public b llp;
+  public Map<String, a> llq;
   
   public String toString()
   {
     AppMethodBeat.i(159029);
-    String str = "UPnPMessage{headers=" + this.khG + ", bodes=" + this.khH + '}';
+    String str = "UPnPMessage{headers=" + this.llp + ", bodes=" + this.llq + '}';
     AppMethodBeat.o(159029);
     return str;
   }

@@ -1,6 +1,8 @@
 package com.tencent.mm.plugin.offline.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.q;
+import com.tencent.mm.network.s;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +16,7 @@ public final class j
     AppMethodBeat.i(66298);
     HashMap localHashMap = new HashMap();
     localHashMap.put("passwd", paramString);
-    localHashMap.put("device_id", com.tencent.mm.compatible.deviceinfo.q.aaH());
+    localHashMap.put("device_id", q.aoG());
     setRequestData(localHashMap);
     AppMethodBeat.o(66298);
   }
@@ -34,10 +36,10 @@ public final class j
     return "/cgi-bin/mmpay-bin/tenpay/offlineclose";
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66299);
-    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, paramq, paramArrayOfByte);
+    super.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, params, paramArrayOfByte);
     AppMethodBeat.o(66299);
   }
   
@@ -45,7 +47,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.j
  * JD-Core Version:    0.7.0.1
  */

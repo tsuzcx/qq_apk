@@ -1,57 +1,65 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bka;
-import com.tencent.mm.protocal.protobuf.bkb;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bty;
+import com.tencent.mm.protocal.protobuf.btz;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
+  public btz CXL;
+  private i callback;
+  private final d rr;
   
-  public final int doScene(e parame, f paramf)
+  public g()
   {
-    AppMethodBeat.i(73770);
-    this.callback = paramf;
-    paramf = new b.a();
-    paramf.hQF = new bka();
-    paramf.hQG = new bkb();
-    paramf.uri = "/cgi-bin/micromsg-bin/gettrustedfriends";
-    paramf.funcId = 869;
-    paramf.hQH = 0;
-    paramf.respCmdId = 0;
-    int i = dispatch(parame, paramf.aDS(), this);
-    AppMethodBeat.o(73770);
+    AppMethodBeat.i(256459);
+    d.a locala = new d.a();
+    locala.iLN = new bty();
+    locala.iLO = new btz();
+    locala.funcId = 2745;
+    locala.uri = "/cgi-bin/mmpay-bin/getreceiptassisstatus";
+    this.rr = locala.aXF();
+    AppMethodBeat.o(256459);
+  }
+  
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  {
+    AppMethodBeat.i(256460);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(256460);
     return i;
   }
   
   public final int getType()
   {
-    return 869;
+    return 2745;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(73769);
-    updateDispatchIdNew(paramInt1);
-    if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ae.e("MicroMsg.NetSceneGetTrustedFriends", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    AppMethodBeat.i(256461);
+    Log.w("MicroMsg.NetSceneGetReceipAssistStatus", "errType = %s errCode = %s errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 == 0) && (paramInt3 == 0)) {
+      this.CXL = ((btz)((d)params).iLL.iLR);
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(73769);
+    AppMethodBeat.o(256461);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.model.g
  * JD-Core Version:    0.7.0.1
  */

@@ -16,19 +16,19 @@ import com.tencent.mm.ui.contact.a.e.b;
 public final class e
   extends com.tencent.mm.ui.contact.a.e
 {
-  private a wuV;
+  private a zRS;
   
   public e(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(114718);
-    this.wuV = new a();
+    this.zRS = new a();
     AppMethodBeat.o(114718);
   }
   
-  public final com.tencent.mm.ui.contact.a.a.b aRR()
+  public final com.tencent.mm.ui.contact.a.a.b bmx()
   {
-    return this.wuV;
+    return this.zRS;
   }
   
   public final class a
@@ -42,13 +42,13 @@ public final class e
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(114716);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131494975, paramViewGroup, false);
+      paramContext = LayoutInflater.from(paramContext).inflate(2131495729, paramViewGroup, false);
       paramViewGroup = (com.tencent.mm.ui.contact.a.e.a)e.a(e.this);
-      paramViewGroup.fQl = ((ImageView)paramContext.findViewById(2131297008));
-      paramViewGroup.iYj = ((TextView)paramContext.findViewById(2131305948));
-      paramViewGroup.iFO = ((TextView)paramContext.findViewById(2131299008));
-      paramViewGroup.contentView = paramContext.findViewById(2131304518);
-      paramViewGroup.iYl = ((CheckBox)paramContext.findViewById(2131304502));
+      paramViewGroup.gvv = ((ImageView)paramContext.findViewById(2131297134));
+      paramViewGroup.jVO = ((TextView)paramContext.findViewById(2131309249));
+      paramViewGroup.jBR = ((TextView)paramContext.findViewById(2131299510));
+      paramViewGroup.contentView = paramContext.findViewById(2131307533);
+      paramViewGroup.jVQ = ((CheckBox)paramContext.findViewById(2131307508));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(114716);
       return paramContext;
@@ -61,43 +61,43 @@ public final class e
       parama = (com.tencent.mm.ui.contact.a.e)parama1;
       if ((parama.username != null) && (parama.username.length() > 0))
       {
-        com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.fQl, parama.username);
-        n.a(parama.iYg, paramContext.iYj);
-        if (!e.this.KJj) {
+        com.tencent.mm.pluginsdk.ui.a.b.c(paramContext.gvv, parama.username);
+        n.a(parama.jVL, paramContext.jVO);
+        if (!e.this.PWh) {
           break label167;
         }
         if (!paramBoolean1) {
           break label121;
         }
-        paramContext.iYl.setChecked(true);
-        paramContext.iYl.setEnabled(false);
-        paramContext.iYl.setBackgroundResource(2131689939);
+        paramContext.jVQ.setChecked(true);
+        paramContext.jVQ.setEnabled(false);
+        paramContext.jVQ.setBackgroundResource(2131689955);
       }
       for (;;)
       {
-        paramContext.iYl.setVisibility(0);
+        paramContext.jVQ.setVisibility(0);
         AppMethodBeat.o(114717);
         return;
-        paramContext.fQl.setImageResource(2131231875);
+        paramContext.gvv.setImageResource(2131231957);
         break;
         label121:
-        paramContext.iYl.setChecked(paramBoolean2);
-        paramContext.iYl.setEnabled(true);
+        paramContext.jVQ.setChecked(paramBoolean2);
+        paramContext.jVQ.setEnabled(true);
         if (paramBoolean2) {
-          paramContext.iYl.setBackgroundResource(2131689936);
+          paramContext.jVQ.setBackgroundResource(2131689951);
         } else {
-          paramContext.iYl.setBackgroundResource(2131231752);
+          paramContext.jVQ.setBackgroundResource(2131231828);
         }
       }
       label167:
-      paramContext.iYl.setVisibility(8);
+      paramContext.jVQ.setVisibility(8);
       AppMethodBeat.o(114717);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.e
  * JD-Core Version:    0.7.0.1
  */

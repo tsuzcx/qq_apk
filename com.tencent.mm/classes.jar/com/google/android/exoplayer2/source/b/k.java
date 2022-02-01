@@ -6,18 +6,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class k
 {
-  final SparseArray<u> byH;
+  final SparseArray<u> byJ;
   
   public k()
   {
     AppMethodBeat.i(62925);
-    this.byH = new SparseArray();
+    this.byJ = new SparseArray();
     AppMethodBeat.o(62925);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.source.b.k
  * JD-Core Version:    0.7.0.1
  */

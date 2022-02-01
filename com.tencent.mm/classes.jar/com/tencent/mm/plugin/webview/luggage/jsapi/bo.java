@@ -1,58 +1,42 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.os.Looper;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
-import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.g.9;
-import com.tencent.mm.plugin.webview.ui.tools.widget.input.WebViewInputFooter;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bp;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.webview.luggage.m;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class bo
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
-    int i = 0;
-    AppMethodBeat.i(78638);
-    ae.i("MicroMsg.JsApiShowSmileyPanel", "invokeInOwn");
-    Object localObject = (g)paramb.chg;
-    if (((g)localObject).Egx != null) {
-      if (Thread.currentThread().getId() != ((g)localObject).mHandler.getLooper().getThread().getId()) {
-        break label111;
-      }
-    }
-    label111:
-    for (i = ((g)localObject).Egx.eZz(); i > 0; i = ((Integer)new g.9((g)localObject, Integer.valueOf(0)).b(((g)localObject).mHandler)).intValue())
+    AppMethodBeat.i(78637);
+    Log.i("MicroMsg.JsApiShowOptionMenu", "invoke");
+    m localm = ((g)paramb.cta).gbC();
+    if (localm == null)
     {
-      localObject = new HashMap();
-      ((Map)localObject).put("height", Integer.valueOf(a.aA(((g)paramb.chg).mContext, i)));
-      paramb.e("", (Map)localObject);
-      AppMethodBeat.o(78638);
+      Log.i("MicroMsg.JsApiShowOptionMenu", "actionBar is null");
+      AppMethodBeat.o(78637);
       return;
     }
-    paramb.a("fail", null);
-    AppMethodBeat.o(78638);
+    localm.gbY();
+    paramb.c("", null);
+    AppMethodBeat.o(78637);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "showSmileyPanel";
+    return "showOptionMenu";
   }
 }
 

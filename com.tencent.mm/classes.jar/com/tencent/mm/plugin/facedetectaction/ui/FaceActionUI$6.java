@@ -5,7 +5,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.facedetectaction.b.d;
 
 final class FaceActionUI$6
   implements View.OnClickListener
@@ -14,15 +14,21 @@ final class FaceActionUI$6
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(104245);
+    AppMethodBeat.i(104244);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    ae.i("MicroMsg.FaceActionUI", "click mUploadFailedConfig");
-    FaceActionUI.m(this.rys);
-    this.rys.g("fail", FaceActionUI.n(this.rys), "", "");
-    a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(104245);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    if (FaceActionUI.n(this.sYw) == 3) {
+      this.sYw.g("fail", FaceActionUI.o(this.sYw), "", FaceActionUI.p(this.sYw));
+    }
+    for (;;)
+    {
+      this.sYw.finish();
+      a.a(this, "com/tencent/mm/plugin/facedetectaction/ui/FaceActionUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(104244);
+      return;
+      d.sXz.onBackPressed();
+    }
   }
 }
 

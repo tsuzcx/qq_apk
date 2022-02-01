@@ -1,33 +1,62 @@
 package com.tencent.mm.plugin.appbrand.p;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.a.a;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
-public enum b
-  implements c.a.a
+final class b
 {
-  static
+  private volatile int count;
+  private final LinkedList<Runnable> ngK;
+  
+  b()
   {
-    AppMethodBeat.i(209720);
-    mce = new b("INSTANCE");
-    mcf = new b[] { mce };
-    AppMethodBeat.o(209720);
+    AppMethodBeat.i(147340);
+    this.ngK = new LinkedList();
+    this.count = 2;
+    AppMethodBeat.o(147340);
   }
   
-  private b() {}
-  
-  public final com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c a(String paramString, Activity paramActivity, com.tencent.mm.plugin.appbrand.jsapi.c paramc)
+  public final void ad(Runnable paramRunnable)
   {
-    AppMethodBeat.i(209719);
-    paramString = new a(paramString, paramActivity, paramc);
-    AppMethodBeat.o(209719);
-    return paramString;
+    AppMethodBeat.i(147341);
+    Object localObject = null;
+    if (paramRunnable != null) {}
+    try
+    {
+      this.ngK.addLast(paramRunnable);
+      int i = this.count - 1;
+      this.count = i;
+      paramRunnable = localObject;
+      if (i <= 0)
+      {
+        paramRunnable = localObject;
+        if (this.ngK.size() > 0)
+        {
+          paramRunnable = new LinkedList();
+          paramRunnable.addAll(this.ngK);
+          this.ngK.clear();
+        }
+      }
+      if (paramRunnable != null)
+      {
+        paramRunnable = paramRunnable.iterator();
+        while (paramRunnable.hasNext()) {
+          ((Runnable)paramRunnable.next()).run();
+        }
+      }
+      AppMethodBeat.o(147341);
+    }
+    finally
+    {
+      AppMethodBeat.o(147341);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.p.b
  * JD-Core Version:    0.7.0.1
  */

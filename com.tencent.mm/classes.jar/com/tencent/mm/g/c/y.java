@@ -2,91 +2,41 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.LVBuffer;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class y
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS appInfo_status_Index ON AppInfo(status)" };
-  private static final int eEL = "status".hashCode();
-  private static final int eGD = "appId".hashCode();
-  private static final int eGR = "signature".hashCode();
-  private static final int eHp;
-  private static final int eIE = "appName".hashCode();
-  private static final int eIF = "appDiscription".hashCode();
-  private static final int eIG = "appIconUrl".hashCode();
-  private static final int eIH = "appStoreUrl".hashCode();
-  private static final int eII;
-  private static final int eIJ;
-  private static final int eIK = "modifyTime".hashCode();
-  private static final int eIL = "appName_en".hashCode();
-  private static final int eIM = "appName_tw".hashCode();
-  private static final int eIN = "appName_hk".hashCode();
-  private static final int eIO = "appDiscription_en".hashCode();
-  private static final int eIP = "appDiscription_tw".hashCode();
-  private static final int eIQ = "appType".hashCode();
-  private static final int eIR = "openId".hashCode();
-  private static final int eIS = "authFlag".hashCode();
-  private static final int eIT = "appInfoFlag".hashCode();
-  private static final int eIU = "lvbuff".hashCode();
-  private static final int eIV = "serviceAppType".hashCode();
-  private static final int eIW = "serviceAppInfoFlag".hashCode();
-  private static final int eIX = "serviceShowFlag".hashCode();
-  private static final int eIY = "appSupportContentType".hashCode();
-  private static final int eIZ = "svrAppSupportContentType".hashCode();
+  private static final int fjl;
+  private static final int fkR;
+  private static final int fkj = "appId".hashCode();
+  private static final int fkx;
+  private static final int fmA = "appSupportContentType".hashCode();
+  private static final int fmB = "svrAppSupportContentType".hashCode();
+  private static final int fmg = "appName".hashCode();
+  private static final int fmh = "appDiscription".hashCode();
+  private static final int fmi = "appIconUrl".hashCode();
+  private static final int fmj = "appStoreUrl".hashCode();
+  private static final int fmk;
+  private static final int fml;
+  private static final int fmm;
+  private static final int fmn;
+  private static final int fmo;
+  private static final int fmp;
+  private static final int fmq;
+  private static final int fmr;
+  private static final int fms;
+  private static final int fmt;
+  private static final int fmu;
+  private static final int fmv;
+  private static final int fmw;
+  private static final int fmx;
+  private static final int fmy;
+  private static final int fmz;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEI = true;
-  private boolean eGA = true;
-  private boolean eGm = true;
-  private boolean eHl = true;
-  private boolean eIA = true;
-  private boolean eIB = true;
-  private boolean eIC = true;
-  private boolean eID = true;
-  private boolean eIi = true;
-  private boolean eIj = true;
-  private boolean eIk = true;
-  private boolean eIl = true;
-  private boolean eIm = true;
-  private boolean eIn = true;
-  private boolean eIo = true;
-  private boolean eIp = true;
-  private boolean eIq = true;
-  private boolean eIr = true;
-  private boolean eIs = true;
-  private boolean eIt = true;
-  private boolean eIu = true;
-  private boolean eIv = true;
-  private boolean eIw = true;
-  private boolean eIx = true;
-  public boolean eIy = true;
-  private boolean eIz = true;
-  protected String eJa;
-  private String eJb;
-  public String eJc;
-  public int eJd;
-  public int eJe;
-  public String eJf;
-  public String eJg;
-  public String eJh;
-  public String eJi;
-  public String eJj;
-  public String eJk;
-  public int eJl;
-  public String eJm;
-  public String eJn;
-  public String eJo;
-  public String eJp;
-  private String eJq;
-  public int eJr;
-  private String eJs;
-  private int eJt;
-  public String eJu;
-  public String eJv;
-  public String eJw;
-  public int eJx;
   public String field_appDiscription;
   public String field_appDiscription_en;
   public String field_appDiscription_tw;
@@ -113,27 +63,195 @@ public abstract class y
   public String field_signature;
   public int field_status;
   public long field_svrAppSupportContentType;
+  private boolean fjS = true;
+  private boolean fji = true;
+  private boolean fkN = true;
+  private boolean fkg = true;
+  private boolean flK = true;
+  private boolean flL = true;
+  private boolean flM = true;
+  private boolean flN = true;
+  private boolean flO = true;
+  private boolean flP = true;
+  private boolean flQ = true;
+  private boolean flR = true;
+  private boolean flS = true;
+  private boolean flT = true;
+  private boolean flU = true;
+  private boolean flV = true;
+  private boolean flW = true;
+  private boolean flX = true;
+  private boolean flY = true;
+  private boolean flZ = true;
+  protected String fmC;
+  private String fmD;
+  public String fmE;
+  public int fmF;
+  public int fmG;
+  public String fmH;
+  public String fmI;
+  public String fmJ;
+  public String fmK;
+  public String fmL;
+  public String fmM;
+  public int fmN;
+  public String fmO;
+  public String fmP;
+  public String fmQ;
+  public String fmR;
+  private String fmS;
+  public int fmT;
+  private String fmU;
+  private int fmV;
+  public String fmW;
+  public String fmX;
+  public String fmY;
+  public int fmZ;
+  public boolean fma = true;
+  private boolean fmb = true;
+  private boolean fmc = true;
+  private boolean fmd = true;
+  private boolean fme = true;
+  private boolean fmf = true;
   
   static
   {
-    eHp = "appVersion".hashCode();
-    eII = "appWatermarkUrl".hashCode();
-    eIJ = "packageName".hashCode();
+    fkR = "appVersion".hashCode();
+    fmk = "appWatermarkUrl".hashCode();
+    fml = "packageName".hashCode();
+    fjl = "status".hashCode();
+    fkx = "signature".hashCode();
+    fmm = "modifyTime".hashCode();
+    fmn = "appName_en".hashCode();
+    fmo = "appName_tw".hashCode();
+    fmp = "appName_hk".hashCode();
+    fmq = "appDiscription_en".hashCode();
+    fmr = "appDiscription_tw".hashCode();
+    fms = "appType".hashCode();
+    fmt = "openId".hashCode();
+    fmu = "authFlag".hashCode();
+    fmv = "appInfoFlag".hashCode();
+    fmw = "lvbuff".hashCode();
+    fmx = "serviceAppType".hashCode();
+    fmy = "serviceAppInfoFlag".hashCode();
+    fmz = "serviceShowFlag".hashCode();
   }
   
-  public final String VE()
+  public final void BA(String paramString)
   {
-    return this.eJc;
+    this.fmY = paramString;
+    this.fma = true;
   }
   
-  public final String VF()
+  public final void Bk(String paramString)
   {
-    return this.eJh;
+    this.fmD = paramString;
+    this.fma = true;
   }
   
-  public final String VG()
+  public final void Bl(String paramString)
   {
-    return this.eJi;
+    this.fmE = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bm(String paramString)
+  {
+    this.fmH = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bn(String paramString)
+  {
+    this.fmI = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bo(String paramString)
+  {
+    this.fmJ = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bp(String paramString)
+  {
+    this.fmK = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bq(String paramString)
+  {
+    this.fmL = paramString;
+    this.fma = true;
+  }
+  
+  public final void Br(String paramString)
+  {
+    this.fmM = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bs(String paramString)
+  {
+    this.fmO = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bt(String paramString)
+  {
+    this.fmP = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bu(String paramString)
+  {
+    this.fmQ = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bv(String paramString)
+  {
+    this.fmR = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bw(String paramString)
+  {
+    this.fmS = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bx(String paramString)
+  {
+    this.fmU = paramString;
+    this.fma = true;
+  }
+  
+  public final void By(String paramString)
+  {
+    this.fmW = paramString;
+    this.fma = true;
+  }
+  
+  public final void Bz(String paramString)
+  {
+    this.fmX = paramString;
+    this.fma = true;
+  }
+  
+  public final String ajt()
+  {
+    return this.fmE;
+  }
+  
+  public final String aju()
+  {
+    return this.fmJ;
+  }
+  
+  public final String ajv()
+  {
+    return this.fmK;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -150,64 +268,64 @@ public abstract class y
         if (i < j)
         {
           int k = arrayOfString[i].hashCode();
-          if (eGD == k)
+          if (fkj == k)
           {
             this.field_appId = paramCursor.getString(i);
-            this.eGm = true;
+            this.fjS = true;
           }
           for (;;)
           {
             i += 1;
             break;
-            if (eIE == k) {
+            if (fmg == k) {
               this.field_appName = paramCursor.getString(i);
-            } else if (eIF == k) {
+            } else if (fmh == k) {
               this.field_appDiscription = paramCursor.getString(i);
-            } else if (eIG == k) {
+            } else if (fmi == k) {
               this.field_appIconUrl = paramCursor.getString(i);
-            } else if (eIH == k) {
+            } else if (fmj == k) {
               this.field_appStoreUrl = paramCursor.getString(i);
-            } else if (eHp == k) {
+            } else if (fkR == k) {
               this.field_appVersion = paramCursor.getInt(i);
-            } else if (eII == k) {
+            } else if (fmk == k) {
               this.field_appWatermarkUrl = paramCursor.getString(i);
-            } else if (eIJ == k) {
+            } else if (fml == k) {
               this.field_packageName = paramCursor.getString(i);
-            } else if (eEL == k) {
+            } else if (fjl == k) {
               this.field_status = paramCursor.getInt(i);
-            } else if (eGR == k) {
+            } else if (fkx == k) {
               this.field_signature = paramCursor.getString(i);
-            } else if (eIK == k) {
+            } else if (fmm == k) {
               this.field_modifyTime = paramCursor.getLong(i);
-            } else if (eIL == k) {
+            } else if (fmn == k) {
               this.field_appName_en = paramCursor.getString(i);
-            } else if (eIM == k) {
+            } else if (fmo == k) {
               this.field_appName_tw = paramCursor.getString(i);
-            } else if (eIN == k) {
+            } else if (fmp == k) {
               this.field_appName_hk = paramCursor.getString(i);
-            } else if (eIO == k) {
+            } else if (fmq == k) {
               this.field_appDiscription_en = paramCursor.getString(i);
-            } else if (eIP == k) {
+            } else if (fmr == k) {
               this.field_appDiscription_tw = paramCursor.getString(i);
-            } else if (eIQ == k) {
+            } else if (fms == k) {
               this.field_appType = paramCursor.getString(i);
-            } else if (eIR == k) {
+            } else if (fmt == k) {
               this.field_openId = paramCursor.getString(i);
-            } else if (eIS == k) {
+            } else if (fmu == k) {
               this.field_authFlag = paramCursor.getInt(i);
-            } else if (eIT == k) {
+            } else if (fmv == k) {
               this.field_appInfoFlag = paramCursor.getInt(i);
-            } else if (eIU == k) {
+            } else if (fmw == k) {
               this.field_lvbuff = paramCursor.getBlob(i);
-            } else if (eIV == k) {
+            } else if (fmx == k) {
               this.field_serviceAppType = paramCursor.getInt(i);
-            } else if (eIW == k) {
+            } else if (fmy == k) {
               this.field_serviceAppInfoFlag = paramCursor.getInt(i);
-            } else if (eIX == k) {
+            } else if (fmz == k) {
               this.field_serviceShowFlag = paramCursor.getInt(i);
-            } else if (eIY == k) {
+            } else if (fmA == k) {
               this.field_appSupportContentType = paramCursor.getLong(i);
-            } else if (eIZ == k) {
+            } else if (fmB == k) {
               this.field_svrAppSupportContentType = paramCursor.getLong(i);
             } else if (rowid_HASHCODE == k) {
               this.systemRowid = paramCursor.getLong(i);
@@ -218,190 +336,190 @@ public abstract class y
         {
           if ((this.field_lvbuff != null) && (this.field_lvbuff.length != 0))
           {
-            paramCursor = new ab();
-            i = paramCursor.cB(this.field_lvbuff);
+            paramCursor = new LVBuffer();
+            i = paramCursor.initParse(this.field_lvbuff);
             if (i != 0)
             {
-              ae.e("MicroMsg.SDK.BaseAppInfo", "parse LVBuffer error:".concat(String.valueOf(i)));
+              Log.e("MicroMsg.SDK.BaseAppInfo", "parse LVBuffer error:".concat(String.valueOf(i)));
               return;
             }
           }
         }
         catch (Exception paramCursor)
         {
-          ae.e("MicroMsg.SDK.BaseAppInfo", "get value failed");
+          Log.e("MicroMsg.SDK.BaseAppInfo", "get value failed");
           return;
         }
       }
-      this.eJa = paramCursor.getString();
-      this.eJb = paramCursor.getString();
-      this.eJc = paramCursor.getString();
-      this.eJd = paramCursor.getInt();
-      this.eJe = paramCursor.getInt();
-      this.eJf = paramCursor.getString();
-      this.eJg = paramCursor.getString();
-      this.eJh = paramCursor.getString();
-      this.eJi = paramCursor.getString();
-      if (!paramCursor.foc()) {
-        this.eJj = paramCursor.getString();
+      this.fmC = paramCursor.getString();
+      this.fmD = paramCursor.getString();
+      this.fmE = paramCursor.getString();
+      this.fmF = paramCursor.getInt();
+      this.fmG = paramCursor.getInt();
+      this.fmH = paramCursor.getString();
+      this.fmI = paramCursor.getString();
+      this.fmJ = paramCursor.getString();
+      this.fmK = paramCursor.getString();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmL = paramCursor.getString();
       }
-      if (!paramCursor.foc()) {
-        this.eJk = paramCursor.getString();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmM = paramCursor.getString();
       }
-      if (!paramCursor.foc()) {
-        this.eJl = paramCursor.getInt();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmN = paramCursor.getInt();
       }
-      if (!paramCursor.foc()) {
-        this.eJm = paramCursor.getString();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmO = paramCursor.getString();
       }
-      if (!paramCursor.foc()) {
-        this.eJn = paramCursor.getString();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmP = paramCursor.getString();
       }
-      if (!paramCursor.foc()) {
-        this.eJo = paramCursor.getString();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmQ = paramCursor.getString();
       }
-      if (!paramCursor.foc()) {
-        this.eJp = paramCursor.getString();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmR = paramCursor.getString();
       }
-      if (!paramCursor.foc()) {
-        this.eJq = paramCursor.getString();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmS = paramCursor.getString();
       }
-      if (!paramCursor.foc()) {
-        this.eJr = paramCursor.getInt();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmT = paramCursor.getInt();
       }
-      if (!paramCursor.foc()) {
-        this.eJs = paramCursor.getString();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmU = paramCursor.getString();
       }
-      if (!paramCursor.foc()) {
-        this.eJt = paramCursor.getInt();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmV = paramCursor.getInt();
       }
-      if (!paramCursor.foc()) {
-        this.eJu = paramCursor.getString();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmW = paramCursor.getString();
       }
-      if (!paramCursor.foc()) {
-        this.eJv = paramCursor.getString();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmX = paramCursor.getString();
       }
-      if (!paramCursor.foc()) {
-        this.eJw = paramCursor.getString();
+      if (!paramCursor.checkGetFinish()) {
+        this.fmY = paramCursor.getString();
       }
-    } while (paramCursor.foc());
-    this.eJx = paramCursor.getInt();
+    } while (paramCursor.checkGetFinish());
+    this.fmZ = paramCursor.getInt();
   }
   
   public ContentValues convertTo()
   {
     try
     {
-      if (this.eIy)
+      if (this.fma)
       {
-        localObject = new ab();
-        ((ab)localObject).fod();
-        ((ab)localObject).aRM(this.eJa);
-        ((ab)localObject).aRM(this.eJb);
-        ((ab)localObject).aRM(this.eJc);
-        ((ab)localObject).abc(this.eJd);
-        ((ab)localObject).abc(this.eJe);
-        ((ab)localObject).aRM(this.eJf);
-        ((ab)localObject).aRM(this.eJg);
-        ((ab)localObject).aRM(this.eJh);
-        ((ab)localObject).aRM(this.eJi);
-        ((ab)localObject).aRM(this.eJj);
-        ((ab)localObject).aRM(this.eJk);
-        ((ab)localObject).abc(this.eJl);
-        ((ab)localObject).aRM(this.eJm);
-        ((ab)localObject).aRM(this.eJn);
-        ((ab)localObject).aRM(this.eJo);
-        ((ab)localObject).aRM(this.eJp);
-        ((ab)localObject).aRM(this.eJq);
-        ((ab)localObject).abc(this.eJr);
-        ((ab)localObject).aRM(this.eJs);
-        ((ab)localObject).abc(this.eJt);
-        ((ab)localObject).aRM(this.eJu);
-        ((ab)localObject).aRM(this.eJv);
-        ((ab)localObject).aRM(this.eJw);
-        ((ab)localObject).abc(this.eJx);
-        this.field_lvbuff = ((ab)localObject).foe();
+        localObject = new LVBuffer();
+        ((LVBuffer)localObject).initBuild();
+        ((LVBuffer)localObject).putString(this.fmC);
+        ((LVBuffer)localObject).putString(this.fmD);
+        ((LVBuffer)localObject).putString(this.fmE);
+        ((LVBuffer)localObject).putInt(this.fmF);
+        ((LVBuffer)localObject).putInt(this.fmG);
+        ((LVBuffer)localObject).putString(this.fmH);
+        ((LVBuffer)localObject).putString(this.fmI);
+        ((LVBuffer)localObject).putString(this.fmJ);
+        ((LVBuffer)localObject).putString(this.fmK);
+        ((LVBuffer)localObject).putString(this.fmL);
+        ((LVBuffer)localObject).putString(this.fmM);
+        ((LVBuffer)localObject).putInt(this.fmN);
+        ((LVBuffer)localObject).putString(this.fmO);
+        ((LVBuffer)localObject).putString(this.fmP);
+        ((LVBuffer)localObject).putString(this.fmQ);
+        ((LVBuffer)localObject).putString(this.fmR);
+        ((LVBuffer)localObject).putString(this.fmS);
+        ((LVBuffer)localObject).putInt(this.fmT);
+        ((LVBuffer)localObject).putString(this.fmU);
+        ((LVBuffer)localObject).putInt(this.fmV);
+        ((LVBuffer)localObject).putString(this.fmW);
+        ((LVBuffer)localObject).putString(this.fmX);
+        ((LVBuffer)localObject).putString(this.fmY);
+        ((LVBuffer)localObject).putInt(this.fmZ);
+        this.field_lvbuff = ((LVBuffer)localObject).buildFinish();
       }
       Object localObject = new ContentValues();
       if (this.field_appId == null) {
         this.field_appId = "";
       }
-      if (this.eGm) {
+      if (this.fjS) {
         ((ContentValues)localObject).put("appId", this.field_appId);
       }
-      if (this.eIi) {
+      if (this.flK) {
         ((ContentValues)localObject).put("appName", this.field_appName);
       }
-      if (this.eIj) {
+      if (this.flL) {
         ((ContentValues)localObject).put("appDiscription", this.field_appDiscription);
       }
-      if (this.eIk) {
+      if (this.flM) {
         ((ContentValues)localObject).put("appIconUrl", this.field_appIconUrl);
       }
-      if (this.eIl) {
+      if (this.flN) {
         ((ContentValues)localObject).put("appStoreUrl", this.field_appStoreUrl);
       }
-      if (this.eHl) {
+      if (this.fkN) {
         ((ContentValues)localObject).put("appVersion", Integer.valueOf(this.field_appVersion));
       }
-      if (this.eIm) {
+      if (this.flO) {
         ((ContentValues)localObject).put("appWatermarkUrl", this.field_appWatermarkUrl);
       }
-      if (this.eIn) {
+      if (this.flP) {
         ((ContentValues)localObject).put("packageName", this.field_packageName);
       }
-      if (this.eEI) {
+      if (this.fji) {
         ((ContentValues)localObject).put("status", Integer.valueOf(this.field_status));
       }
-      if (this.eGA) {
+      if (this.fkg) {
         ((ContentValues)localObject).put("signature", this.field_signature);
       }
-      if (this.eIo) {
+      if (this.flQ) {
         ((ContentValues)localObject).put("modifyTime", Long.valueOf(this.field_modifyTime));
       }
-      if (this.eIp) {
+      if (this.flR) {
         ((ContentValues)localObject).put("appName_en", this.field_appName_en);
       }
-      if (this.eIq) {
+      if (this.flS) {
         ((ContentValues)localObject).put("appName_tw", this.field_appName_tw);
       }
-      if (this.eIr) {
+      if (this.flT) {
         ((ContentValues)localObject).put("appName_hk", this.field_appName_hk);
       }
-      if (this.eIs) {
+      if (this.flU) {
         ((ContentValues)localObject).put("appDiscription_en", this.field_appDiscription_en);
       }
-      if (this.eIt) {
+      if (this.flV) {
         ((ContentValues)localObject).put("appDiscription_tw", this.field_appDiscription_tw);
       }
-      if (this.eIu) {
+      if (this.flW) {
         ((ContentValues)localObject).put("appType", this.field_appType);
       }
-      if (this.eIv) {
+      if (this.flX) {
         ((ContentValues)localObject).put("openId", this.field_openId);
       }
-      if (this.eIw) {
+      if (this.flY) {
         ((ContentValues)localObject).put("authFlag", Integer.valueOf(this.field_authFlag));
       }
-      if (this.eIx) {
+      if (this.flZ) {
         ((ContentValues)localObject).put("appInfoFlag", Integer.valueOf(this.field_appInfoFlag));
       }
-      if (this.eIy) {
+      if (this.fma) {
         ((ContentValues)localObject).put("lvbuff", this.field_lvbuff);
       }
-      if (this.eIz) {
+      if (this.fmb) {
         ((ContentValues)localObject).put("serviceAppType", Integer.valueOf(this.field_serviceAppType));
       }
-      if (this.eIA) {
+      if (this.fmc) {
         ((ContentValues)localObject).put("serviceAppInfoFlag", Integer.valueOf(this.field_serviceAppInfoFlag));
       }
-      if (this.eIB) {
+      if (this.fmd) {
         ((ContentValues)localObject).put("serviceShowFlag", Integer.valueOf(this.field_serviceShowFlag));
       }
-      if (this.eIC) {
+      if (this.fme) {
         ((ContentValues)localObject).put("appSupportContentType", Long.valueOf(this.field_appSupportContentType));
       }
-      if (this.eID) {
+      if (this.fmf) {
         ((ContentValues)localObject).put("svrAppSupportContentType", Long.valueOf(this.field_svrAppSupportContentType));
       }
       if (this.systemRowid > 0L) {
@@ -413,134 +531,32 @@ public abstract class y
     {
       for (;;)
       {
-        ae.e("MicroMsg.SDK.BaseAppInfo", "get value failed, %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.SDK.BaseAppInfo", "get value failed, %s", new Object[] { localException.getMessage() });
       }
     }
   }
   
-  public final void jX(int paramInt)
+  public final void mZ(int paramInt)
   {
-    this.eJl = paramInt;
-    this.eIy = true;
+    this.fmN = paramInt;
+    this.fma = true;
   }
   
-  public final void jY(int paramInt)
+  public final void na(int paramInt)
   {
-    this.eJr = paramInt;
-    this.eIy = true;
+    this.fmT = paramInt;
+    this.fma = true;
   }
   
-  public final void jZ(int paramInt)
+  public final void nb(int paramInt)
   {
-    this.eJx = paramInt;
-    this.eIy = true;
-  }
-  
-  public final void sT(String paramString)
-  {
-    this.eJb = paramString;
-    this.eIy = true;
-  }
-  
-  public final void sU(String paramString)
-  {
-    this.eJc = paramString;
-    this.eIy = true;
-  }
-  
-  public final void sV(String paramString)
-  {
-    this.eJf = paramString;
-    this.eIy = true;
-  }
-  
-  public final void sW(String paramString)
-  {
-    this.eJg = paramString;
-    this.eIy = true;
-  }
-  
-  public final void sX(String paramString)
-  {
-    this.eJh = paramString;
-    this.eIy = true;
-  }
-  
-  public final void sY(String paramString)
-  {
-    this.eJi = paramString;
-    this.eIy = true;
-  }
-  
-  public final void sZ(String paramString)
-  {
-    this.eJj = paramString;
-    this.eIy = true;
-  }
-  
-  public final void ta(String paramString)
-  {
-    this.eJk = paramString;
-    this.eIy = true;
-  }
-  
-  public final void tb(String paramString)
-  {
-    this.eJm = paramString;
-    this.eIy = true;
-  }
-  
-  public final void tc(String paramString)
-  {
-    this.eJn = paramString;
-    this.eIy = true;
-  }
-  
-  public final void td(String paramString)
-  {
-    this.eJo = paramString;
-    this.eIy = true;
-  }
-  
-  public final void te(String paramString)
-  {
-    this.eJp = paramString;
-    this.eIy = true;
-  }
-  
-  public final void tf(String paramString)
-  {
-    this.eJq = paramString;
-    this.eIy = true;
-  }
-  
-  public final void tg(String paramString)
-  {
-    this.eJs = paramString;
-    this.eIy = true;
-  }
-  
-  public final void th(String paramString)
-  {
-    this.eJu = paramString;
-    this.eIy = true;
-  }
-  
-  public final void ti(String paramString)
-  {
-    this.eJv = paramString;
-    this.eIy = true;
-  }
-  
-  public final void tj(String paramString)
-  {
-    this.eJw = paramString;
-    this.eIy = true;
+    this.fmZ = paramInt;
+    this.fma = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.c.y
  * JD-Core Version:    0.7.0.1
  */

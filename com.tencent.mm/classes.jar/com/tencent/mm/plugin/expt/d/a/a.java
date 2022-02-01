@@ -1,10 +1,9 @@
 package com.tencent.mm.plugin.expt.d.a;
 
 import com.tencent.mm.plugin.expt.d.b;
-import com.tencent.mm.protocal.protobuf.aga;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mmkv.MMKV;
+import com.tencent.mm.protocal.protobuf.aih;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -13,20 +12,20 @@ import org.apache.commons.b.g;
 public abstract class a
   implements c
 {
-  private ay LD()
+  private MultiProcessMMKV VQ()
   {
     if (getType() == 2) {
-      return b.coC();
+      return b.cMO();
     }
     if (getType() == 1) {
-      return b.coB();
+      return b.cMN();
     }
     return null;
   }
   
-  private static String aec(String paramString)
+  private static String aom(String paramString)
   {
-    if (g.ef(paramString)) {
+    if (g.eP(paramString)) {
       return null;
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -38,82 +37,82 @@ public abstract class a
   public final void a(com.tencent.mm.plugin.expt.d.e.a parama)
   {
     if (parama == null) {}
-    ay localay;
+    MultiProcessMMKV localMultiProcessMMKV;
     String str;
     do
     {
       do
       {
         return;
-        localay = LD();
-      } while (localay == null);
-      str = aec(parama.qXW);
-    } while (g.ef(str));
-    ae.d("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] save key : ".concat(String.valueOf(str)));
-    Object localObject1 = localay.decodeBytes(str);
+        localMultiProcessMMKV = VQ();
+      } while (localMultiProcessMMKV == null);
+      str = aom(parama.syg);
+    } while (g.eP(str));
+    Log.d("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] save key : ".concat(String.valueOf(str)));
+    Object localObject1 = localMultiProcessMMKV.decodeBytes(str);
     Object localObject3;
     if ((localObject1 != null) && (localObject1.length > 0)) {
-      localObject3 = new aga();
+      localObject3 = new aih();
     }
     for (;;)
     {
       try
       {
-        ((aga)localObject3).parseFrom((byte[])localObject1);
-        localObject1 = com.tencent.mm.plugin.expt.d.e.c.a((aga)localObject3);
+        ((aih)localObject3).parseFrom((byte[])localObject1);
+        localObject1 = com.tencent.mm.plugin.expt.d.e.c.a((aih)localObject3);
         localObject3 = localObject1;
         if (localObject1 == null) {
           localObject3 = new ArrayList();
         }
         ((List)localObject3).add(parama);
-        parama = com.tencent.mm.plugin.expt.d.e.c.da((List)localObject3);
+        parama = com.tencent.mm.plugin.expt.d.e.c.jdMethod_do((List)localObject3);
         if (parama == null) {
           break;
         }
         try
         {
-          boolean bool = localay.encode(str, parama.toByteArray());
-          ae.d("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] save encode : " + str + ", mmkvEncode : " + bool);
+          boolean bool = localMultiProcessMMKV.encode(str, parama.toByteArray());
+          Log.d("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] save encode : " + str + ", mmkvEncode : " + bool);
           return;
         }
         catch (Exception parama)
         {
-          ae.e("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] save encode throw Exception : " + parama.getMessage());
+          Log.e("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] save encode throw Exception : " + parama.getMessage());
           return;
         }
         Object localObject2 = null;
       }
       catch (Exception localException)
       {
-        ae.e("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] save parseFrom : " + str + ", throw Exception : " + localException.getMessage());
+        Log.e("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] save parseFrom : " + str + ", throw Exception : " + localException.getMessage());
       }
     }
   }
   
-  public final List<com.tencent.mm.plugin.expt.d.e.a> aeb(String paramString)
+  public final List<com.tencent.mm.plugin.expt.d.e.a> aol(String paramString)
   {
-    if (g.ef(paramString)) {}
+    if (g.eP(paramString)) {}
     for (;;)
     {
       return null;
-      Object localObject = LD();
+      Object localObject = VQ();
       if (localObject == null) {
         continue;
       }
-      String str = aec(paramString);
-      if (g.ef(str)) {
+      String str = aom(paramString);
+      if (g.eP(str)) {
         continue;
       }
-      ae.i("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] read key : ".concat(String.valueOf(str)));
-      paramString = ((ay)localObject).decodeBytes(str);
+      Log.i("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] read key : ".concat(String.valueOf(str)));
+      paramString = ((MultiProcessMMKV)localObject).decodeBytes(str);
       if ((paramString == null) || (paramString.length <= 0)) {
         continue;
       }
-      localObject = new aga();
+      localObject = new aih();
       try
       {
-        ((aga)localObject).parseFrom(paramString);
-        paramString = com.tencent.mm.plugin.expt.d.e.c.a((aga)localObject);
+        ((aih)localObject).parseFrom(paramString);
+        paramString = com.tencent.mm.plugin.expt.d.e.c.a((aih)localObject);
         if (paramString == null) {
           continue;
         }
@@ -123,7 +122,7 @@ public abstract class a
       {
         for (;;)
         {
-          ae.e("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] read parseFrom : " + str + ", throw Exception : " + paramString.getMessage());
+          Log.e("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] read parseFrom : " + str + ", throw Exception : " + paramString.getMessage());
           paramString = null;
         }
       }
@@ -132,39 +131,39 @@ public abstract class a
   
   public final void clear(String paramString)
   {
-    if (g.ef(paramString)) {}
-    ay localay;
+    if (g.eP(paramString)) {}
+    MultiProcessMMKV localMultiProcessMMKV;
     do
     {
       do
       {
         return;
-        localay = LD();
-      } while (localay == null);
-      paramString = aec(paramString);
-    } while (g.ef(paramString));
-    ae.i("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] clear key : ".concat(String.valueOf(paramString)));
-    localay.removeValueForKey(paramString);
+        localMultiProcessMMKV = VQ();
+      } while (localMultiProcessMMKV == null);
+      paramString = aom(paramString);
+    } while (g.eP(paramString));
+    Log.i("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] clear key : ".concat(String.valueOf(paramString)));
+    localMultiProcessMMKV.removeValueForKey(paramString);
   }
   
   public final void clearAll()
   {
-    ay localay = LD();
-    if (localay == null) {}
+    MultiProcessMMKV localMultiProcessMMKV = VQ();
+    if (localMultiProcessMMKV == null) {}
     do
     {
       return;
-      ae.i("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] clearAll");
-      localay.clearAll();
-    } while (localay.IyS.totalSize() < 3145728L);
-    localay.IyS.trim();
+      Log.i("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] clearAll");
+      localMultiProcessMMKV.clearAll();
+    } while (localMultiProcessMMKV.totalSize() < 3145728L);
+    localMultiProcessMMKV.trim();
   }
   
   public final long size()
   {
     long l1 = 0L;
-    ay localay = LD();
-    if (localay == null) {
+    MultiProcessMMKV localMultiProcessMMKV = VQ();
+    if (localMultiProcessMMKV == null) {
       l2 = l1;
     }
     String[] arrayOfString;
@@ -177,7 +176,7 @@ public abstract class a
         do
         {
           return l2;
-          arrayOfString = localay.allKeys();
+          arrayOfString = localMultiProcessMMKV.allKeys();
           l2 = l1;
         } while (arrayOfString == null);
         l2 = l1;
@@ -187,14 +186,14 @@ public abstract class a
       l2 = l1;
     } while (i >= j);
     Object localObject3 = arrayOfString[i];
-    Object localObject1 = localay.decodeBytes((String)localObject3);
+    Object localObject1 = localMultiProcessMMKV.decodeBytes((String)localObject3);
     long l2 = l1;
-    aga localaga;
+    aih localaih;
     if (localObject1 != null)
     {
       l2 = l1;
       if (localObject1.length > 0) {
-        localaga = new aga();
+        localaih = new aih();
       }
     }
     label231:
@@ -202,8 +201,8 @@ public abstract class a
     {
       try
       {
-        localaga.parseFrom((byte[])localObject1);
-        localObject1 = com.tencent.mm.plugin.expt.d.e.c.a(localaga);
+        localaih.parseFrom((byte[])localObject1);
+        localObject1 = com.tencent.mm.plugin.expt.d.e.c.a(localaih);
         l2 = l1;
         if (localObject1 != null)
         {
@@ -222,7 +221,7 @@ public abstract class a
       }
       catch (Exception localException)
       {
-        ae.e("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] read parseFrom : " + (String)localObject3 + ", throw Exception : " + localException.getMessage());
+        Log.e("EdgeComputingDataCacheBase", "[EdgeComputingDataCacheBase] read parseFrom : " + (String)localObject3 + ", throw Exception : " + localException.getMessage());
         Object localObject2 = null;
         continue;
       }
@@ -234,7 +233,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.a.a
  * JD-Core Version:    0.7.0.1
  */

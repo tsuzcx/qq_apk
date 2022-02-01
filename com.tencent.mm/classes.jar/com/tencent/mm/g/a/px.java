@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class px
-  extends b
+  extends IEvent
 {
-  public a dFt;
+  public a dVZ;
+  public b dWa;
   
   public px()
   {
@@ -15,24 +17,31 @@ public final class px
   
   private px(byte paramByte)
   {
-    AppMethodBeat.i(91214);
-    this.dFt = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(117551);
+    this.dVZ = new a();
+    this.dWa = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(91214);
+    AppMethodBeat.o(117551);
   }
   
   public static final class a
   {
-    public String dEU;
-    public long dFq;
-    public String dFu;
-    public String username;
+    public Context context;
+    public String dWb;
+    public int opType = 0;
+  }
+  
+  public static final class b
+  {
+    public boolean dFE = false;
+    public String dWc;
+    public String thumbPath;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.px
  * JD-Core Version:    0.7.0.1
  */

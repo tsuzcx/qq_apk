@@ -1,3 +1,9 @@
+;if (this.setTimeout && this.clearTimeout && this.setInterval && this.clearInterval && this.NativeGlobal) {
+    this.NativeGlobal.setTimeout = this.setTimeout;
+    this.NativeGlobal.clearTimeout = this.clearTimeout;
+    this.NativeGlobal.setInterval = this.setInterval;
+    this.NativeGlobal.clearInterval = this.clearInterval;
+};
 
 var WeixinJSCoreAndroid = (function(global) {
     if (typeof global.WeixinJSCoreAndroid !== 'undefined') {
@@ -11,8 +17,8 @@ var WeixinJSCoreAndroid = (function(global) {
         return undefined;
     }
 
-    if (global.openInvokeHandlerJsBinding && NativeGlobal && NativeGlobal.invokeHandler) {
-        WeixinJSCore.invokeHandler = NativeGlobal.invokeHandler;
+    if (!global.disableNativeInvokeHandler && global.NativeGlobal && global.NativeGlobal.invokeHandler) {
+        WeixinJSCore.invokeHandler = global.NativeGlobal.invokeHandler;
     } else if (global.workerInvokeJsApi) {
         WeixinJSCore.invokeHandler = global.workerInvokeJsApi;
     }
@@ -21,7 +27,11 @@ var WeixinJSCoreAndroid = (function(global) {
     ret.invokeCallbackHandler = function(callbackId, data) {
         if (typeof WeixinJSBridge !== 'undefined') {
             if (typeof data === 'string') {
-                data = JSON.parse(data)
+                try {
+                    data = JSON.parse(data)
+                } catch (e) {
+                    console.e('hy: fail not compatible data' + data)
+                }
             }
 //            console.log('invokeCallbackHandler ' + JSON.stringify(data))
             WeixinJSBridge.invokeCallbackHandler(callbackId, data);
@@ -69,11 +79,11 @@ var WeixinJSCoreAndroid = (function(global) {
 })(this);
 
 // 直接注入的JsApi不支持多态，需要手动处理
-if (typeof WeixinWorker !== 'undefined') {
-    var createWorker = WeixinWorker.create;
-    var createWithParams = WeixinWorker.createWithParams;
+if (typeof this.WeixinWorker !== 'undefined') {
+    var createWorker = this.WeixinWorker.create;
+    var createWithParams = this.WeixinWorker.createWithParams;
     if (createWorker && createWithParams) {
-        WeixinWorker.create = function(path, params) {
+        this.WeixinWorker.create = function(path, params) {
             if (!params) {
                 return createWorker(path);
             } else {

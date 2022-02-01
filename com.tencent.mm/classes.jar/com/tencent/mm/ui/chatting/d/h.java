@@ -1,7 +1,7 @@
 package com.tencent.mm.ui.chatting.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.chatting.d.a.a;
 import com.tencent.mm.ui.chatting.d.a.a.a;
 import java.util.LinkedList;
@@ -9,16 +9,16 @@ import java.util.List;
 
 public final class h
 {
-  private static Class[] Kcr = { ab.class, v.class, c.class, an.class, bc.class, g.class, bb.class, al.class, az.class, s.class, e.class, aw.class, aj.class, bf.class, m.class, ac.class, x.class, o.class, be.class, at.class, ai.class, ba.class, b.class, au.class, ah.class, q.class, am.class, av.class, r.class, bd.class, ar.class, ak.class, t.class, d.class, w.class, ay.class, ap.class, aa.class, z.class, u.class, f.class, y.class, n.class, aq.class, u.class, i.class, j.class, ao.class, as.class };
-  private static List<a> Kcs;
+  private static Class[] PnN = { ad.class, x.class, c.class, aq.class, bf.class, g.class, be.class, ao.class, bc.class, t.class, e.class, az.class, al.class, bi.class, m.class, ae.class, z.class, bh.class, aw.class, ak.class, bd.class, b.class, ax.class, aj.class, r.class, o.class, ap.class, ay.class, s.class, bg.class, au.class, am.class, v.class, d.class, y.class, bb.class, as.class, ac.class, ab.class, w.class, f.class, aa.class, n.class, at.class, i.class, j.class, ar.class, av.class, q.class, u.class, an.class };
+  private static List<a> PnO;
   
   public static List<a> getComponents()
   {
     AppMethodBeat.i(35178);
-    if (Kcs == null)
+    if (PnO == null)
     {
-      Kcs = new LinkedList();
-      localObject = Kcr;
+      PnO = new LinkedList();
+      localObject = PnN;
       int j = localObject.length;
       int i = 0;
       if (i < j)
@@ -28,48 +28,48 @@ public final class h
         if (localClass.isAnnotationPresent(a.class))
         {
           locala = (a)localClass.getAnnotation(a.class);
-          if (locala.fJv() == a.a.class) {
-            Kcs.add(new a(localClass, localClass));
+          if (locala.gRF() == a.a.class) {
+            PnO.add(new a(localClass, localClass));
           }
         }
         for (;;)
         {
           i += 1;
           break;
-          Kcs.add(new a(locala.fJv(), localClass));
+          PnO.add(new a(locala.gRF(), localClass));
           continue;
-          Kcs.add(new a(localClass, localClass));
+          PnO.add(new a(localClass, localClass));
         }
       }
     }
-    Object localObject = Kcs;
+    Object localObject = PnO;
     AppMethodBeat.o(35178);
     return localObject;
   }
   
   public static final class a
   {
-    public Class<? extends ad> Kct;
-    public Class<? extends ad> aWK;
+    public Class<? extends af> PnP;
+    public Class<? extends af> aWC;
     
-    public a(Class<? extends ad> paramClass1, Class<? extends ad> paramClass2)
+    public a(Class<? extends af> paramClass1, Class<? extends af> paramClass2)
     {
-      this.aWK = paramClass1;
-      this.Kct = paramClass2;
+      this.aWC = paramClass1;
+      this.PnP = paramClass2;
     }
     
-    public final ad fHn()
+    public final af gPt()
     {
       AppMethodBeat.i(35177);
       try
       {
-        ad localad = (ad)this.Kct.newInstance();
+        af localaf = (af)this.PnP.newInstance();
         AppMethodBeat.o(35177);
-        return localad;
+        return localaf;
       }
       catch (InstantiationException localInstantiationException)
       {
-        ae.printErrStackTrace("ChattingComponentFactory", localInstantiationException, "", new Object[0]);
+        Log.printErrStackTrace("ChattingComponentFactory", localInstantiationException, "", new Object[0]);
         AppMethodBeat.o(35177);
         return null;
       }
@@ -77,7 +77,7 @@ public final class h
       {
         for (;;)
         {
-          ae.printErrStackTrace("ChattingComponentFactory", localIllegalAccessException, "", new Object[0]);
+          Log.printErrStackTrace("ChattingComponentFactory", localIllegalAccessException, "", new Object[0]);
         }
       }
     }
@@ -85,7 +85,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.h
  * JD-Core Version:    0.7.0.1
  */

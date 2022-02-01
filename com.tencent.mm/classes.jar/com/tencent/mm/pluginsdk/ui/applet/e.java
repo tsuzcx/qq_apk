@@ -3,18 +3,18 @@ package com.tencent.mm.pluginsdk.ui.applet;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.d.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageDecodeListener;", "Lcom/tencent/mm/modelimage/loader/listener/IImageDecodeListener;", "()V", "scene", "", "(I)V", "contentType", "", "decodeEnd", "", "decodeStart", "from", "id", "readFileEnd", "readFileStart", "url", "canReport", "", "onDecodeEnd", "", "bitmap", "Landroid/graphics/Bitmap;", "onDecodeStart", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onReadLocalFileEnd", "inputStream", "Ljava/io/InputStream;", "onReadLocalFileStart", "Companion", "plugin-biz_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageDecodeListener;", "Lcom/tencent/mm/modelimage/loader/listener/IImageDecodeListener;", "()V", "scene", "", "(I)V", "contentType", "", "decodeEnd", "", "decodeStart", "from", "id", "readFileEnd", "readFileStart", "url", "canReport", "", "onDecodeEnd", "", "bitmap", "Landroid/graphics/Bitmap;", "onDecodeStart", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onReadLocalFileEnd", "inputStream", "Ljava/io/InputStream;", "onReadLocalFileStart", "Companion", "plugin-biz_release"})
 public final class e
   implements com.tencent.mm.av.a.c.a
 {
-  public static final e.a FnC;
-  private long FnA;
-  private long FnB;
-  private long Fny;
-  private long Fnz;
+  public static final e.a Kes;
+  private long Keo;
+  private long Kep;
+  private long Keq;
+  private long Ker;
   private String contentType;
   private int from;
   private String id;
@@ -24,7 +24,7 @@ public final class e
   static
   {
     AppMethodBeat.i(124838);
-    FnC = new e.a((byte)0);
+    Kes = new e.a((byte)0);
     AppMethodBeat.o(124838);
   }
   
@@ -44,13 +44,13 @@ public final class e
     AppMethodBeat.o(124837);
   }
   
-  private final boolean ffX()
+  private final boolean gpg()
   {
     AppMethodBeat.i(124836);
     if (this.from == 2)
     {
-      g localg = g.FnF;
-      if (g.Zu(this.scene))
+      g localg = g.Kev;
+      if (g.aif(this.scene))
       {
         AppMethodBeat.o(124836);
         return true;
@@ -60,37 +60,22 @@ public final class e
     return false;
   }
   
-  public final void Gn(String paramString)
-  {
-    AppMethodBeat.i(124832);
-    this.url = paramString;
-    this.Fny = System.currentTimeMillis();
-    Object localObject = g.FnF;
-    if (g.Zv(this.scene))
-    {
-      ae.v("MicroMsg.BizImageDecodeListener", "alvinluo onReadLocalFileStart id: %s, %d", new Object[] { this.id, Long.valueOf(System.currentTimeMillis()) });
-      localObject = com.tencent.mm.pluginsdk.model.a.Fdw;
-      com.tencent.mm.pluginsdk.model.a.cJ(5, paramString);
-    }
-    AppMethodBeat.o(124832);
-  }
-  
-  public final void K(Bitmap paramBitmap)
+  public final void N(Bitmap paramBitmap)
   {
     boolean bool2 = true;
     AppMethodBeat.i(124835);
-    this.FnB = System.currentTimeMillis();
-    Object localObject = g.FnF;
-    if (g.Zv(this.scene))
+    this.Ker = System.currentTimeMillis();
+    Object localObject = g.Kev;
+    if (g.aig(this.scene))
     {
-      localObject = com.tencent.mm.pluginsdk.model.a.Fdw;
-      com.tencent.mm.pluginsdk.model.a.cK(6, this.url);
+      localObject = com.tencent.mm.pluginsdk.model.a.JUl;
+      com.tencent.mm.pluginsdk.model.a.de(6, this.url);
     }
-    if (ffX())
+    if (gpg())
     {
       String str = this.id;
-      long l1 = this.FnB;
-      long l2 = this.FnA;
+      long l1 = this.Ker;
+      long l2 = this.Keq;
       if (paramBitmap != null) {
         break label211;
       }
@@ -100,7 +85,7 @@ public final class e
       }
       localObject = Boolean.valueOf(paramBitmap.isRecycled());
       label87:
-      ae.d("MicroMsg.BizImageDecodeListener", "alvinluo BizImage onDecodeEnd id: %s, decode cost: %d ms, bitmap == null: %b, recycled: %s", new Object[] { str, Long.valueOf(l1 - l2), Boolean.valueOf(bool1), localObject });
+      Log.d("MicroMsg.BizImageDecodeListener", "alvinluo BizImage onDecodeEnd id: %s, decode cost: %d ms, bitmap == null: %b, recycled: %s", new Object[] { str, Long.valueOf(l1 - l2), Boolean.valueOf(bool1), localObject });
       if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
         break label222;
       }
@@ -110,15 +95,15 @@ public final class e
     label222:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramBitmap = f.FnD;
-      f.cF(this.contentType, bool1);
-      paramBitmap = f.FnD;
-      f.bR(this.contentType, this.FnB - this.FnA);
-      paramBitmap = g.FnF;
-      if ((g.aOi(this.contentType)) && (!bool1))
+      paramBitmap = f.Ket;
+      f.da(this.contentType, bool1);
+      paramBitmap = f.Ket;
+      f.bS(this.contentType, this.Ker - this.Keq);
+      paramBitmap = g.Kev;
+      if ((g.beK(this.contentType)) && (!bool1))
       {
-        paramBitmap = f.FnD;
-        f.aJ(this.url, 2, this.scene);
+        paramBitmap = f.Ket;
+        f.aL(this.url, 2, this.scene);
       }
       AppMethodBeat.o(124835);
       return;
@@ -127,6 +112,21 @@ public final class e
       localObject = null;
       break label87;
     }
+  }
+  
+  public final void OZ(String paramString)
+  {
+    AppMethodBeat.i(124832);
+    this.url = paramString;
+    this.Keo = System.currentTimeMillis();
+    Object localObject = g.Kev;
+    if (g.aig(this.scene))
+    {
+      Log.v("MicroMsg.BizImageDecodeListener", "alvinluo onReadLocalFileStart id: %s, %d", new Object[] { this.id, Long.valueOf(System.currentTimeMillis()) });
+      localObject = com.tencent.mm.pluginsdk.model.a.JUl;
+      com.tencent.mm.pluginsdk.model.a.dd(5, paramString);
+    }
+    AppMethodBeat.o(124832);
   }
   
   public final void a(String paramString, b paramb)
@@ -145,19 +145,19 @@ public final class e
     for (int i = paramb.from;; i = -1)
     {
       this.from = i;
-      this.FnA = System.currentTimeMillis();
-      paramb = g.FnF;
-      if (g.Zv(this.scene))
+      this.Keq = System.currentTimeMillis();
+      paramb = g.Kev;
+      if (g.aig(this.scene))
       {
-        ae.v("MicroMsg.BizImageDecodeListener", "alvinluo onDecodeStart id: %s, %d", new Object[] { this.id, Long.valueOf(System.currentTimeMillis()) });
-        paramb = com.tencent.mm.pluginsdk.model.a.Fdw;
-        com.tencent.mm.pluginsdk.model.a.cJ(6, paramString);
+        Log.v("MicroMsg.BizImageDecodeListener", "alvinluo onDecodeStart id: %s, %d", new Object[] { this.id, Long.valueOf(System.currentTimeMillis()) });
+        paramb = com.tencent.mm.pluginsdk.model.a.JUl;
+        com.tencent.mm.pluginsdk.model.a.dd(6, paramString);
       }
-      if (ffX())
+      if (gpg())
       {
-        ae.d("MicroMsg.BizImageDecodeListener", "alvinluo BizImage onDecodeStart id: %s, contentType: %s, url: %s", new Object[] { this.id, this.contentType, paramString });
-        paramString = f.FnD;
-        f.aOf(this.contentType);
+        Log.d("MicroMsg.BizImageDecodeListener", "alvinluo BizImage onDecodeStart id: %s, contentType: %s, url: %s", new Object[] { this.id, this.contentType, paramString });
+        paramString = f.Ket;
+        f.beH(this.contentType);
       }
       AppMethodBeat.o(124834);
       return;
@@ -166,16 +166,16 @@ public final class e
     }
   }
   
-  public final void aJw()
+  public final void bdx()
   {
     AppMethodBeat.i(124833);
-    this.Fnz = System.currentTimeMillis();
-    Object localObject = g.FnF;
-    if (g.Zv(this.scene))
+    this.Kep = System.currentTimeMillis();
+    Object localObject = g.Kev;
+    if (g.aig(this.scene))
     {
-      ae.v("MicroMsg.BizImageDecodeListener", "alvinluo onReadLocalFileEnd id: %s, %d", new Object[] { this.id, Long.valueOf(System.currentTimeMillis()) });
-      localObject = com.tencent.mm.pluginsdk.model.a.Fdw;
-      com.tencent.mm.pluginsdk.model.a.cK(5, this.url);
+      Log.v("MicroMsg.BizImageDecodeListener", "alvinluo onReadLocalFileEnd id: %s, %d", new Object[] { this.id, Long.valueOf(System.currentTimeMillis()) });
+      localObject = com.tencent.mm.pluginsdk.model.a.JUl;
+      com.tencent.mm.pluginsdk.model.a.de(5, this.url);
     }
     AppMethodBeat.o(124833);
   }

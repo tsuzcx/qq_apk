@@ -7,32 +7,32 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.api.ab;
+import com.tencent.mm.api.ab.a.a;
+import com.tencent.mm.api.ab.b;
+import com.tencent.mm.api.ab.c;
 import com.tencent.mm.api.e;
-import com.tencent.mm.api.g;
-import com.tencent.mm.api.i;
-import com.tencent.mm.api.w;
-import com.tencent.mm.api.y;
-import com.tencent.mm.api.y.a.a;
-import com.tencent.mm.api.y.b;
-import com.tencent.mm.api.y.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.api.h;
+import com.tencent.mm.api.j;
+import com.tencent.mm.api.z;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 public class TestVideoEditUI
   extends MMActivity
-  implements i
+  implements j
 {
-  private y wjw;
+  private ab zDV;
   
   public int getLayoutId()
   {
-    return 2131495752;
+    return 2131496673;
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(94749);
-    if (!this.wjw.Kc()) {
+    if (!this.zDV.Ul()) {
       finish();
     }
     AppMethodBeat.o(94749);
@@ -43,35 +43,35 @@ public class TestVideoEditUI
     AppMethodBeat.i(94747);
     super.onCreate(paramBundle);
     fullScreenNoTitleBar(true);
-    paramBundle = (FrameLayout)findViewById(2131298739);
-    this.wjw = y.cSw.Kf();
-    Object localObject = this.wjw;
-    y.a.a locala = new y.a.a();
-    locala.cSy = false;
-    locala.cSB = true;
-    locala.cSC = new Rect(0, 0, 1080, 1080);
-    locala.cSx = y.c.cSD;
-    ((y)localObject).a(locala.Lv());
-    localObject = this.wjw.bh(getContext());
+    paramBundle = (FrameLayout)findViewById(2131299180);
+    this.zDV = ab.diQ.Uo();
+    Object localObject = this.zDV;
+    ab.a.a locala = new ab.a.a();
+    locala.diS = false;
+    locala.diW = true;
+    locala.diX = new Rect(0, 0, 1080, 1080);
+    locala.diR = ab.c.diY;
+    ((ab)localObject).a(locala.VJ());
+    localObject = this.zDV.bB(getContext());
     ((e)localObject).setActionBarCallback(this);
     paramBundle.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    ((e)localObject).setSelectedFeatureListener(new w()
+    ((e)localObject).setSelectedFeatureListener(new z()
     {
-      public final void a(g paramAnonymousg)
+      public final void a(h paramAnonymoush)
       {
         AppMethodBeat.i(94743);
-        ae.i("MicroMsg.TestVideoEditUI", "[onSelectedFeature] features:%s", new Object[] { paramAnonymousg.name() });
+        Log.i("MicroMsg.TestVideoEditUI", "[onSelectedFeature] features:%s", new Object[] { paramAnonymoush.name() });
         AppMethodBeat.o(94743);
       }
       
-      public final void a(g paramAnonymousg, int paramAnonymousInt, Object paramAnonymousObject)
+      public final void a(h paramAnonymoush, int paramAnonymousInt, Object paramAnonymousObject)
       {
         AppMethodBeat.i(169420);
-        ae.i("MicroMsg.TestVideoEditUI", "[onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymousg.name(), Integer.valueOf(paramAnonymousInt) });
+        Log.i("MicroMsg.TestVideoEditUI", "[onSelectedDetailFeature] features:%s index:%s", new Object[] { paramAnonymoush.name(), Integer.valueOf(paramAnonymousInt) });
         AppMethodBeat.o(169420);
       }
       
-      public final void bY(boolean paramAnonymousBoolean)
+      public final void cH(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(94745);
         if (paramAnonymousBoolean)
@@ -91,7 +91,7 @@ public class TestVideoEditUI
   {
     AppMethodBeat.i(94748);
     super.onDestroy();
-    this.wjw.onDestroy();
+    this.zDV.onDestroy();
     AppMethodBeat.o(94748);
   }
   
@@ -105,7 +105,7 @@ public class TestVideoEditUI
   public final void onFinish()
   {
     AppMethodBeat.i(94751);
-    this.wjw.a(new TestVideoEditUI.2(this));
+    this.zDV.a(new TestVideoEditUI.2(this));
     AppMethodBeat.o(94751);
   }
   
@@ -124,7 +124,7 @@ public class TestVideoEditUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.TestVideoEditUI
  * JD-Core Version:    0.7.0.1
  */

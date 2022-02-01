@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.finder.view.whatnews;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
 final class FinderWhatsNewView$b
   extends q
-  implements a<z>
+  implements a<x>
 {
-  public static final b tkj;
+  public static final b wtL;
   
   static
   {
     AppMethodBeat.i(168555);
-    tkj = new b();
+    wtL = new b();
     AppMethodBeat.o(168555);
   }
   

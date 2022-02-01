@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.performance;
 
 import android.app.ActivityManager;
+import android.app.ActivityManager.MemoryInfo;
 import android.app.Application;
 import android.content.Context;
+import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Process;
-import android.text.TextUtils;
-import com.tencent.e.d.e;
-import com.tencent.e.d.f;
-import com.tencent.e.g.b;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.content.res.Configuration;
+import android.support.v4.app.v;
+import com.tencent.f.d.e;
+import com.tencent.f.d.f;
+import com.tencent.f.g.b;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.AppForegroundDelegate;
 import com.tencent.mm.app.o;
@@ -18,243 +20,280 @@ import com.tencent.mm.app.p;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.plugin.battery.BackgroundActivationsListener;
+import com.tencent.mm.plugin.expansions.a.b;
 import com.tencent.mm.plugin.expt.PluginExpt;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.performance.b.a.k;
-import com.tencent.mm.plugin.performance.c.e;
-import com.tencent.mm.plugin.performance.diagnostic.memory.MemoryHookLogic;
-import com.tencent.mm.plugin.performance.diagnostic.memory.MemoryHookLogic.MemoryHookReporter;
-import com.tencent.mm.plugin.performance.diagnostic.pthread.PthreadHookLogic;
-import com.tencent.mm.plugin.performance.diagnostic.pthread.PthreadHookLogic.PthreadHookReporter;
+import com.tencent.mm.plugin.performance.c.a.k;
 import com.tencent.mm.plugin.performance.elf.AbstractProcessChecker;
 import com.tencent.mm.plugin.performance.elf.MainProcessChecker;
+import com.tencent.mm.plugin.performance.jectl.JeVersion;
+import com.tencent.mm.plugin.performance.watchdogs.ThreadWatchDog;
 import com.tencent.mm.plugin.report.PluginReport;
-import com.tencent.mm.sdk.a.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.plugin.report.e;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
+import com.tencent.tinker.entry.ApplicationLifeCycle;
+import com.tencent.wxperf.fd.FDDumpBridge;
 import com.tencent.wxperf.jni.HookManager;
-import com.tencent.wxperf.jni.HookManager.a;
 import com.tencent.wxperf.jni.memory.MemoryHook;
 import com.tencent.wxperf.jni.pthread.PthreadHook;
-import java.util.Arrays;
 import java.util.Set;
 
 public class PluginPerformance
   extends f
-  implements o, com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.performance.a.d
+  implements o, com.tencent.mm.kernel.api.c, com.tencent.mm.plugin.performance.a.d, ApplicationLifeCycle
 {
-  private com.tencent.mm.plugin.performance.b.a wVT;
-  a wVU;
+  private static final String TAG = "MicroMsg.PluginPerformance";
+  a mForegroundKilledDetector;
+  private com.tencent.mm.plugin.performance.c.a threadPoolProfiler;
   
   public PluginPerformance()
   {
     AppMethodBeat.i(184687);
-    this.wVT = new com.tencent.mm.plugin.performance.b.a();
+    this.threadPoolProfiler = new com.tencent.mm.plugin.performance.c.a();
     AppMethodBeat.o(184687);
+  }
+  
+  private void dryRunBackgroundActivationForTest(Context paramContext) {}
+  
+  private static boolean isNotificationListenerEnabled(Context paramContext)
+  {
+    AppMethodBeat.i(201013);
+    try
+    {
+      boolean bool = v.Q(paramContext).contains(paramContext.getPackageName());
+      AppMethodBeat.o(201013);
+      return bool;
+    }
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(201013);
+    }
+    return false;
+  }
+  
+  private void setupBackgroundActivationsListener(Context paramContext)
+  {
+    AppMethodBeat.i(201010);
+    if (!WeChatEnvironment.hasDebugger())
+    {
+      AppMethodBeat.o(201010);
+      return;
+    }
+    isNotificationListenerEnabled(paramContext);
+    AppMethodBeat.o(201010);
   }
   
   private void setupBitmapDecodeCanary(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(124904);
-    MMBitmapFactory.setDecodeCanary(new PluginPerformance.2(this, paramg));
+    MMBitmapFactory.setDecodeCanary(new PluginPerformance.3(this, paramg));
     AppMethodBeat.o(124904);
   }
   
   private void setupMemoryWatchDog()
   {
-    AppMethodBeat.i(215406);
-    com.tencent.mm.plugin.performance.c.c localc = com.tencent.mm.plugin.performance.c.c.dCq();
-    localc.wZK = localc.aJm.getMemoryClass();
-    localc.wZL = localc.aJm.getLargeMemoryClass();
-    ((Application)ak.getContext()).registerActivityLifecycleCallbacks(localc);
-    i locali = h.MqF;
-    if (localc.cCq) {}
+    AppMethodBeat.i(201006);
+    com.tencent.mm.plugin.performance.watchdogs.c localc = com.tencent.mm.plugin.performance.watchdogs.c.eCH();
+    localc.AXb = localc.aJf.getMemoryClass();
+    localc.AXc = localc.aJf.getLargeMemoryClass();
+    ((Application)MMApplicationContext.getContext()).registerActivityLifecycleCallbacks(localc);
+    localc.AXl = System.currentTimeMillis();
+    i locali = h.RTc;
+    if (localc.cPB) {}
     double d;
     for (long l = 300000L;; l = 1800000L)
     {
-      locali.r(localc, l);
+      locali.a(localc, l, "MicroMsg.MemoryWatchDog");
       d = Math.random();
-      if (d < 1.0D / ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qPI, 100000)) {
+      if (d < 1.0D / ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.smT, 100000)) {
         break;
       }
-      ae.i("MicroMsg.PluginPerformance", "NOT report memory info after boot (%s)", new Object[] { Double.valueOf(d) });
-      AppMethodBeat.o(215406);
+      Log.i("MicroMsg.PluginPerformance", "NOT report memory info after boot (%s)", new Object[] { Double.valueOf(d) });
+      AppMethodBeat.o(201006);
       return;
     }
-    ae.i("MicroMsg.PluginPerformance", "will repot memory info after boot (%s)", new Object[] { Double.valueOf(d) });
-    com.tencent.mm.kernel.g.ajS().a(new com.tencent.mm.kernel.api.g()
+    Log.i("MicroMsg.PluginPerformance", "will repot memory info after boot (%s)", new Object[] { Double.valueOf(d) });
+    com.tencent.mm.kernel.g.aAi().a(new com.tencent.mm.kernel.api.g()
     {
-      public final void ML()
+      public final void WY()
       {
-        AppMethodBeat.i(215402);
-        h.MqF.r(new Runnable()
+        AppMethodBeat.i(200999);
+        h.RTc.o(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(124897);
-            com.tencent.mm.plugin.performance.c.b.a(com.tencent.mm.plugin.performance.c.c.dCq().P(true, 0), c.dBN().toArray());
+            com.tencent.mm.plugin.performance.watchdogs.c.a locala1 = com.tencent.mm.plugin.performance.watchdogs.c.eCH().S(true, 0);
+            Object[] arrayOfObject = c.eBB().toArray();
+            StringBuilder localStringBuilder = new StringBuilder();
+            int i;
+            if ((locala1.AXH != null) && (locala1.AXH.length > 0))
+            {
+              localStringBuilder.append("allProcess:");
+              com.tencent.mm.plugin.performance.watchdogs.c.a[] arrayOfa = locala1.AXH;
+              j = arrayOfa.length;
+              i = 0;
+              while (i < j)
+              {
+                com.tencent.mm.plugin.performance.watchdogs.c.a locala2 = arrayOfa[i];
+                localStringBuilder.append(locala2.pid).append("-").append(locala2.processName).append("-pss:").append(locala2.AXF).append(";");
+                i += 1;
+              }
+            }
+            int j = -1;
+            if (arrayOfObject != null)
+            {
+              int k = arrayOfObject.length;
+              j = k;
+              if (k > 0)
+              {
+                localStringBuilder.append("loaded so:");
+                int m = arrayOfObject.length;
+                i = 0;
+                for (;;)
+                {
+                  j = k;
+                  if (i >= m) {
+                    break;
+                  }
+                  localStringBuilder.append(arrayOfObject[i]).append(";");
+                  i += 1;
+                }
+              }
+            }
+            com.tencent.mm.plugin.performance.watchdogs.b.a(32, locala1.AXx - locala1.AXy, locala1.AXv, locala1.AXq, locala1.AXF, locala1.AXG, localStringBuilder.toString(), j, -2L, -2L, -1L, locala1.AXE.totalMem);
             AppMethodBeat.o(124897);
           }
         }, 10000L);
-        com.tencent.mm.kernel.g.ajS().b(this);
-        AppMethodBeat.o(215402);
+        com.tencent.mm.kernel.g.aAi().b(this);
+        AppMethodBeat.o(200999);
       }
       
-      public final void ch(boolean paramAnonymousBoolean) {}
+      public final void cQ(boolean paramAnonymousBoolean) {}
     });
-    AppMethodBeat.o(215406);
+    AppMethodBeat.o(201006);
   }
   
   private void setupWxperf()
   {
-    AppMethodBeat.i(215407);
-    Object localObject3 = (MemoryHookLogic)com.tencent.mm.plugin.performance.a.a.wWa.aR(MemoryHookLogic.class);
-    Object localObject1;
-    Object localObject4;
-    boolean bool1;
-    int i;
-    int j;
-    double d;
-    boolean bool2;
-    boolean bool3;
-    if (MemoryHookLogic.dBU())
+    AppMethodBeat.i(201007);
+    com.tencent.mm.plugin.expansions.a.a(new a.b()
     {
-      localObject1 = null;
-      if (MemoryHookLogic.dBS())
+      public final void a(com.tencent.mm.toolkit.frontia.a.c.a paramAnonymousa)
       {
-        localObject4 = MemoryHookLogic.wWe.decodeString("MH_KEY_HOOK_SO_STRING", "");
-        localObject1 = MemoryHookLogic.wWe.decodeString("MH_KEY_IGNORE_SO_STRING", "");
-        bool1 = MemoryHookLogic.wWe.decodeBool("MH_KEY_ENABLE_STACKTRACE_BOOLEAN", false);
-        i = MemoryHookLogic.wWe.decodeInt("MH_KEY_MIN_TRACE_SIZE_INT", 0);
-        j = MemoryHookLogic.wWe.decodeInt("MH_KEY_MAX_TRACE_SIZE_INT", 0);
-        d = MemoryHookLogic.wWe.aRZ("MH_KEY_SAMPLING_DOUBLE");
-        bool2 = MemoryHookLogic.wWe.decodeBool("MH_KEY_EXTREME_BOOLEAN", false);
-        bool3 = MemoryHookLogic.wWe.decodeBool("MH_KEY_ENABLE_MMAP_BOOLEAN", false);
-        ae.i(MemoryHookLogic.TAG, "hook:%s, ignore:%s, enableStacktrace:%s, min:%d, max:%d, sampling:%f, extreme:%s, mmap:%s", new Object[] { localObject4, localObject1, Boolean.valueOf(bool1), Integer.valueOf(i), Integer.valueOf(j), Double.valueOf(d), Boolean.valueOf(bool2), Boolean.valueOf(bool3) });
-        if (TextUtils.isEmpty((CharSequence)localObject4))
-        {
-          ae.e(MemoryHookLogic.TAG, "ERROR(MemoryHook): hook regex is blank");
-          localObject1 = null;
-        }
-      }
-      else if (localObject1 != null)
-      {
-        ((MemoryHookLogic)localObject3).dBT();
-        MemoryHookLogic.MemoryHookReporter.install();
-        ae.i(MemoryHookLogic.TAG, "register Reporter");
-      }
-    }
-    for (Object localObject2 = localObject1;; localObject2 = null) {
-      for (;;)
-      {
-        com.tencent.mm.plugin.performance.a.a.wWa.aR(PthreadHookLogic.class);
-        ae.i(PthreadHookLogic.TAG, "configurePthreadHook");
-        localObject3 = null;
-        if (PthreadHookLogic.dBU())
-        {
-          localObject1 = null;
-          if (PthreadHookLogic.dBS())
-          {
-            localObject4 = PthreadHookLogic.wWe.decodeString("PH_KEY_HOOK_SO_STRING", "");
-            localObject1 = PthreadHookLogic.wWe.decodeString("PH_KEY_IGNORE_SO_STRING", "");
-            localObject3 = PthreadHookLogic.wWe.decodeString("PH_KEY_HOOK_THREAD_STRING", "");
-            localObject4 = ((String)localObject4).split(";");
-            if (localObject1 != null) {
-              break label693;
-            }
-            localObject1 = new String[0];
-            label333:
-            if (localObject3 != null) {
-              break label706;
-            }
-            localObject3 = new String[1];
-            localObject3[0] = ".*";
-            ae.i(PthreadHookLogic.TAG, "hookRegex = %s", new Object[] { Arrays.toString((Object[])localObject4) });
-            ae.i(PthreadHookLogic.TAG, "ignoreRegex = %s", new Object[] { Arrays.toString((Object[])localObject1) });
-            ae.i(PthreadHookLogic.TAG, "threadRegex = %s", new Object[] { Arrays.toString((Object[])localObject3) });
-            localObject1 = PthreadHook.MLM.ai((String[])localObject4).aj((String[])localObject1).ak((String[])localObject3);
-          }
-          localObject3 = localObject1;
-          if (localObject1 != null)
-          {
-            PthreadHookLogic.PthreadHookReporter.install();
-            localObject3 = localObject1;
-          }
-        }
+        AppMethodBeat.i(201000);
+        Object localObject = (com.tencent.mm.plugin.performance.diagnostic.b.b)com.tencent.mm.plugin.performance.a.a.ASb.aT(com.tencent.mm.plugin.performance.diagnostic.b.b.class);
+        paramAnonymousa = (com.tencent.mm.plugin.performance.diagnostic.c.b)com.tencent.mm.plugin.performance.a.a.ASb.aT(com.tencent.mm.plugin.performance.diagnostic.c.b.class);
+        localObject = (MemoryHook)((com.tencent.mm.plugin.performance.diagnostic.b.b)localObject).eBJ();
+        paramAnonymousa = (PthreadHook)paramAnonymousa.eBJ();
         try
         {
-          ae.i("MicroMsg.PluginPerformance", "memoryHook = %s, pthreadHook = %s, eglHook = %s", new Object[] { localObject2, localObject3, "eglHook" });
-          HookManager.MLy.a((com.tencent.wxperf.jni.a)localObject2).a((com.tencent.wxperf.jni.a)localObject3).geJ();
-          com.tencent.mm.sdk.a.b.b((c.a)com.tencent.mm.plugin.performance.a.a.wWa.aR(PthreadHookLogic.class));
-          AppMethodBeat.o(215407);
-          return;
-          localObject2 = localObject1;
-          if (!bool2)
-          {
-            localObject2 = localObject1;
-            if (!((String)localObject1).endsWith(";")) {
-              localObject2 = (String)localObject1 + ";";
-            }
-            localObject2 = (String)localObject2 + ".*libutils\\.so$;.*libcutils\\.so$;.*libskia\\.so$;.*libbinder.*\\.so$;.*libhwbinder\\.so$;.*libicuuc\\.so$;.*libicui18n\\.so$;.*libart.*\\.so$;.*libandroidfw\\.so$;.*libandroid_runtime\\.so$;.*libjavacore\\.so$;.*libopenjdk.*\\.so$;.*libmemfence\\.so$";
+          Log.i("MicroMsg.PluginPerformance", "memoryHook = %s, pthreadHook = %s, eglHook = %s", new Object[] { localObject, paramAnonymousa, "eglHookStub" });
+          HookManager.Syn.a((com.tencent.wxperf.jni.a)localObject).a(paramAnonymousa).hrZ();
+          if (MMApplicationContext.isMainProcess()) {
+            JeVersion.eCv();
           }
-          localObject1 = ((String)localObject4).split(";");
-          localObject2 = ((String)localObject2).split(";");
-          localObject1 = MemoryHook.MLE.ag((String[])localObject1).ah((String[])localObject2);
-          ((MemoryHook)localObject1).MLK = bool1;
-          ((MemoryHook)localObject1).MLH = i;
-          ((MemoryHook)localObject1).MLI = j;
-          localObject1 = ((MemoryHook)localObject1).F(d);
-          ((MemoryHook)localObject1).MLL = bool3;
-          com.tencent.mm.plugin.report.service.g.yxI.f(18261, new Object[] { ak.getProcessName(), Integer.valueOf(Process.myPid()), Integer.valueOf(0) });
-          break;
-          label693:
-          localObject1 = ((String)localObject1).split(";");
-          break label333;
-          label706:
-          localObject3 = ((String)localObject3).split(";");
+          AppMethodBeat.o(201000);
+          return;
         }
-        catch (HookManager.a locala)
+        catch (Throwable paramAnonymousa)
         {
           for (;;)
           {
-            ae.printErrStackTrace("MicroMsg.PluginPerformance", locala, "Hook error", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.PluginPerformance", paramAnonymousa, "Hook error", new Object[0]);
           }
         }
       }
+    });
+    AppMethodBeat.o(201007);
+  }
+  
+  private void startBackgroundActivationsListener(Context paramContext)
+  {
+    AppMethodBeat.i(201011);
+    if (!WeChatEnvironment.hasDebugger())
+    {
+      AppMethodBeat.o(201011);
+      return;
+    }
+    if (!isNotificationListenerEnabled(paramContext))
+    {
+      AppMethodBeat.o(201011);
+      return;
+    }
+    try
+    {
+      paramContext.startService(new Intent(paramContext, BackgroundActivationsListener.class));
+      AppMethodBeat.o(201011);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(201011);
+    }
+  }
+  
+  private void stopBackgroundActivationsListener(Context paramContext)
+  {
+    AppMethodBeat.i(201012);
+    if (!WeChatEnvironment.hasDebugger())
+    {
+      AppMethodBeat.o(201012);
+      return;
+    }
+    if (!isNotificationListenerEnabled(paramContext))
+    {
+      AppMethodBeat.o(201012);
+      return;
+    }
+    try
+    {
+      paramContext.stopService(new Intent(paramContext, BackgroundActivationsListener.class));
+      AppMethodBeat.o(201012);
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      AppMethodBeat.o(201012);
     }
   }
   
   public void configure(com.tencent.mm.kernel.b.g arg1)
   {
     AppMethodBeat.i(124902);
-    com.tencent.mm.ci.c.Jme = new b.1();
-    com.tencent.mm.plugin.performance.a.a.wWa.a(new MemoryHookLogic());
-    com.tencent.mm.plugin.performance.a.a.wWa.a(new com.tencent.mm.plugin.performance.diagnostic.b());
-    com.tencent.mm.plugin.performance.a.a.wWa.a(new com.tencent.mm.plugin.performance.diagnostic.a.c());
-    com.tencent.mm.plugin.performance.a.a.wWa.a(new PthreadHookLogic());
-    com.tencent.mm.plugin.performance.b.a locala = this.wVT;
-    boolean bool = ???.akL();
-    ae.i("ThreadPool.Profiler", "[open] isProcessMain=".concat(String.valueOf(bool)));
-    if ((com.tencent.mm.plugin.performance.b.a.cFS) && (bool))
+    com.tencent.mm.ci.c.OvX = new b.1();
+    com.tencent.mm.plugin.performance.a.a.ASb.a(com.tencent.mm.plugin.performance.diagnostic.c.ATi);
+    com.tencent.mm.plugin.performance.a.a.ASb.a(new com.tencent.mm.plugin.performance.diagnostic.b.b());
+    com.tencent.mm.plugin.performance.a.a.ASb.a(new com.tencent.mm.plugin.performance.diagnostic.a.c());
+    com.tencent.mm.plugin.performance.a.a.ASb.a(new com.tencent.mm.plugin.performance.diagnostic.c.b());
+    com.tencent.mm.plugin.performance.diagnostic.b.alive();
+    com.tencent.mm.plugin.performance.c.a locala = this.threadPoolProfiler;
+    boolean bool = ???.aBb();
+    Log.i("ThreadPool.Profiler", "[open] isProcessMain=".concat(String.valueOf(bool)));
+    if ((com.tencent.mm.plugin.performance.c.a.cWq) && (bool))
     {
-      ??? = new aq("reportStatistics");
+      ??? = new MMHandler("reportStatistics");
       ???.postDelayed((Runnable)new a.k(locala, ???), 1800000L);
-      AppForegroundDelegate.cTA.a((o)locala);
-      locala.wYt.ay(600000L, 600000L);
+      AppForegroundDelegate.djR.a((o)locala);
+      locala.AVs.startTimer(600000L, 600000L);
     }
-    AppForegroundDelegate localAppForegroundDelegate = AppForegroundDelegate.cTA;
+    AppForegroundDelegate localAppForegroundDelegate = AppForegroundDelegate.djR;
     p localp = (p)locala;
-    synchronized (localAppForegroundDelegate.cTE)
+    synchronized (localAppForegroundDelegate.djX)
     {
-      localAppForegroundDelegate.cTE.add(localp);
-      com.tencent.e.d.Mqt = (d.e)locala.wYm;
-      com.tencent.e.d.Mqu = (d.f)locala.wYk;
-      com.tencent.e.a.Mqa = (g.b)locala.wYl;
+      localAppForegroundDelegate.djX.add(localp);
+      com.tencent.f.d.RSQ = (d.e)locala.AVl;
+      com.tencent.f.d.RSR = (d.f)locala.AVj;
+      com.tencent.f.a.RSx = (g.b)locala.AVk;
       AppMethodBeat.o(124902);
       return;
     }
@@ -273,51 +312,75 @@ public class PluginPerformance
   {
     AppMethodBeat.i(124903);
     Object localObject;
-    if (ak.foA()) {
-      localObject = com.tencent.mm.plugin.performance.elf.b.wXR;
+    if (MMApplicationContext.isPushProcess()) {
+      localObject = com.tencent.mm.plugin.performance.elf.b.AUL;
     }
-    i locali;
     try
     {
-      ((com.tencent.mm.plugin.performance.elf.b)localObject).cNF = com.tencent.mm.plugin.performance.elf.b.bn(((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzn, 0) / 10000.0F);
-      com.tencent.mm.plugin.performance.elf.b.wXL = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzq, 1200000L);
-      ae.i("MicroMsg.ProcessElf", "[call] isEnable:%b CHECK_TIME:%s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.performance.elf.b)localObject).cNF), Long.valueOf(com.tencent.mm.plugin.performance.elf.b.dCc()) });
-      if (((com.tencent.mm.plugin.performance.elf.b)localObject).cNF)
+      ((com.tencent.mm.plugin.performance.elf.b)localObject).ded = com.tencent.mm.plugin.performance.elf.b.bF(((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rRv, 0) / 10000.0F);
+      com.tencent.mm.plugin.performance.elf.b.AUF = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rRy, 1200000L);
+      Log.i("MicroMsg.ProcessElf", "[call] isEnable:%b CHECK_TIME:%s", new Object[] { Boolean.valueOf(((com.tencent.mm.plugin.performance.elf.b)localObject).ded), Long.valueOf(com.tencent.mm.plugin.performance.elf.b.eCr()) });
+      if (((com.tencent.mm.plugin.performance.elf.b)localObject).ded)
       {
-        com.tencent.mm.plugin.performance.elf.b.wXi.removeCallbacks(com.tencent.mm.plugin.performance.elf.b.wXT);
-        com.tencent.mm.plugin.performance.elf.b.wXi.postDelayed(com.tencent.mm.plugin.performance.elf.b.wXT, com.tencent.mm.plugin.performance.elf.b.dCc());
+        com.tencent.mm.plugin.performance.elf.b.AUg.removeCallbacks(com.tencent.mm.plugin.performance.elf.b.AUN);
+        com.tencent.mm.plugin.performance.elf.b.AUg.postDelayed(com.tencent.mm.plugin.performance.elf.b.AUN, com.tencent.mm.plugin.performance.elf.b.eCr());
       }
       localObject = new IntentFilter();
       ((IntentFilter)localObject).addAction("ACTION_ELF_CHECK_RESPONSE");
       ((IntentFilter)localObject).addAction("com.tencent.mm.MMUIModeManager");
-      ak.getContext().registerReceiver(com.tencent.mm.plugin.performance.elf.b.wXS, (IntentFilter)localObject);
+      MMApplicationContext.getContext().registerReceiver(com.tencent.mm.plugin.performance.elf.b.AUM, (IntentFilter)localObject);
       paramg.ca.registerActivityLifecycleCallbacks(new com.tencent.mm.ad.a());
       setupMemoryWatchDog();
-      paramg.ca.registerActivityLifecycleCallbacks(new e());
-      localObject = com.tencent.mm.plugin.performance.c.a.dCo();
-      h.MqF.r((Runnable)localObject, 1800000L);
-      localObject = com.tencent.mm.plugin.performance.c.d.dCu();
-      if (!ak.coh())
+      paramg.ca.registerActivityLifecycleCallbacks(new ThreadWatchDog());
+      localObject = com.tencent.mm.plugin.performance.watchdogs.a.eCE();
+      try
       {
-        ae.e("MicroMsg.ProcessWatchDog", "NOT main process");
+        ((com.tencent.mm.plugin.performance.watchdogs.a)localObject).AWe = FDDumpBridge.getFDLimit();
+        Log.i("MicroMsg.FDWatchDog", "FdLimit = %s", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.performance.watchdogs.a)localObject).AWe) });
+        i = 230;
+        if (((com.tencent.mm.plugin.performance.watchdogs.a)localObject).AWe > 1024) {
+          break label542;
+        }
+        i = 231;
+        e.Cxv.idkeyStat(1031L, i, 1L, false);
+      }
+      catch (Throwable localThrowable)
+      {
+        for (;;)
+        {
+          int i;
+          int j;
+          Log.printErrStackTrace("MicroMsg.FDWatchDog", localThrowable, "get resource limit err", new Object[0]);
+          e.Cxv.idkeyStat(1031L, 251L, 1L, false);
+        }
+        locali = h.RTc;
+        if (!((com.tencent.mm.plugin.performance.watchdogs.d)localObject).cQp) {
+          break label647;
+        }
+      }
+      h.RTc.o((Runnable)localObject, 1800000L);
+      localObject = com.tencent.mm.plugin.performance.watchdogs.d.eCN();
+      if (!MMApplicationContext.isMainProcess())
+      {
+        Log.e("MicroMsg.ProcessWatchDog", "NOT main process");
         setupWxperf();
         setupBitmapDecodeCanary(paramg);
-        this.wVU = a.avB(paramg.mProcessName);
-        localObject = this.wVU;
-        ((a)localObject).mState = ((a)localObject).cCf.decodeInt("state", 0);
-        ae.d("MicroMsg.ForegroundKilledDetect", "%s: CHECK LAST STATE = %s", new Object[] { ((a)localObject).mProcessName, Integer.toBinaryString(((a)localObject).mState) });
-        if ((((a)localObject).dBI()) && (((a)localObject).dBJ()) && (!((a)localObject).dBK()))
+        this.mForegroundKilledDetector = a.aJO(paramg.mProcessName);
+        localObject = this.mForegroundKilledDetector;
+        ((a)localObject).mState = ((a)localObject).cQe.decodeInt("state", 0);
+        Log.d("MicroMsg.ForegroundKilledDetect", "%s: CHECK LAST STATE = %s", new Object[] { ((a)localObject).mProcessName, Integer.toBinaryString(((a)localObject).mState) });
+        if ((((a)localObject).eBw()) && (((a)localObject).eBx()) && (!((a)localObject).eBy()))
         {
-          ae.e("MicroMsg.ForegroundKilledDetect", "%s: LAST STATE ERROR: %s", new Object[] { ((a)localObject).mProcessName, Integer.toBinaryString(((a)localObject).mState) });
-          com.tencent.mm.kernel.g.ajS().a(new a.1((a)localObject));
+          Log.e("MicroMsg.ForegroundKilledDetect", "%s: LAST STATE ERROR: %s", new Object[] { ((a)localObject).mProcessName, Integer.toBinaryString(((a)localObject).mState) });
+          com.tencent.mm.kernel.g.aAi().a(new a.1((a)localObject));
         }
-        ((a)localObject).Ne(1);
-        ((a)localObject).Ne(2);
-        ((a)localObject).Ne(4);
-        ((a)localObject).dBL();
-        this.wVU.onAppForeground("boot");
-        paramg.ca.registerActivityLifecycleCallbacks(this.wVU);
-        com.tencent.mm.sdk.a.b.b(this.wVU);
+        ((a)localObject).Uo(1);
+        ((a)localObject).Uo(2);
+        ((a)localObject).Uo(4);
+        ((a)localObject).eBz();
+        this.mForegroundKilledDetector.onAppForeground("boot");
+        paramg.ca.registerActivityLifecycleCallbacks(this.mForegroundKilledDetector);
+        CrashReportFactory.addCrashReportExtraMessageGetter(this.mForegroundKilledDetector);
         AppMethodBeat.o(124903);
         return;
       }
@@ -326,23 +389,36 @@ public class PluginPerformance
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.ProcessElf", localException, "", new Object[0]);
-        com.tencent.mm.plugin.performance.elf.b.wXL = 1200000L;
-        ((com.tencent.mm.plugin.performance.elf.b)localObject).cNF = com.tencent.mm.plugin.performance.elf.b.DEBUG;
+        Log.printErrStackTrace("MicroMsg.ProcessElf", localException, "", new Object[0]);
+        com.tencent.mm.plugin.performance.elf.b.AUF = 1200000L;
+        ((com.tencent.mm.plugin.performance.elf.b)localObject).ded = com.tencent.mm.plugin.performance.elf.b.DEBUG;
+        continue;
+        label542:
+        if (((com.tencent.mm.plugin.performance.watchdogs.a)localObject).AWe <= 2048)
+        {
+          i = 232;
+        }
+        else
+        {
+          j = ((com.tencent.mm.plugin.performance.watchdogs.a)localObject).AWe;
+          if (j <= 4096) {
+            i = 233;
+          }
+        }
       }
-      locali = h.MqF;
-      if (!((com.tencent.mm.plugin.performance.c.d)localObject).cCq) {}
     }
+    i locali;
+    label647:
     for (long l = 300000L;; l = 1800000L)
     {
-      locali.r((Runnable)localObject, l);
+      locali.o((Runnable)localObject, l);
       break;
     }
   }
   
-  public com.tencent.mm.plugin.performance.b.a getThreadPoolProfiler()
+  public com.tencent.mm.plugin.performance.c.a getThreadPoolProfiler()
   {
-    return this.wVT;
+    return this.threadPoolProfiler;
   }
   
   public void installed()
@@ -355,25 +431,25 @@ public class PluginPerformance
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(124905);
-    if (ak.coh())
+    if (MMApplicationContext.isMainProcess())
     {
-      com.tencent.mm.kernel.g.ajU().n(new Runnable()
+      com.tencent.mm.kernel.g.aAk().postToWorkerDelayed(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(215405);
-          ((MainProcessChecker)com.tencent.mm.plugin.performance.elf.a.aS(MainProcessChecker.class)).start();
-          AppMethodBeat.o(215405);
+          AppMethodBeat.i(201003);
+          ((MainProcessChecker)com.tencent.mm.plugin.performance.elf.a.aU(MainProcessChecker.class)).start();
+          AppMethodBeat.o(201003);
         }
       }, 2000L);
-      if ((!j.IS_FLAVOR_PURPLE) && (!j.IS_FLAVOR_RED) && (!com.tencent.mm.protocal.d.FFK) && (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qJk, 0) != 1)) {
+      if ((!BuildInfo.IS_FLAVOR_PURPLE) && (!BuildInfo.IS_FLAVOR_RED) && (!com.tencent.mm.protocal.d.KyR) && (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.seL, 0) != 1)) {
         break label82;
       }
     }
     label82:
     for (boolean bool = true;; bool = false)
     {
-      AppForegroundDelegate.cTD = bool;
+      AppForegroundDelegate.djW = bool;
       AppMethodBeat.o(124905);
       return;
     }
@@ -384,25 +460,69 @@ public class PluginPerformance
   public void onAppBackground(String paramString)
   {
     AppMethodBeat.i(124907);
-    com.tencent.mm.plugin.performance.elf.a.aS(MainProcessChecker.class).bV(false);
-    com.tencent.mm.plugin.performance.c.c.dCq().cCq = false;
-    com.tencent.mm.plugin.performance.c.d.dCu().cCq = false;
-    if (this.wVU != null) {
-      this.wVU.onAppBackground(paramString);
+    com.tencent.mm.plugin.performance.elf.a.aU(MainProcessChecker.class).cy(false);
+    com.tencent.mm.plugin.performance.watchdogs.c.eCH().cy(false);
+    com.tencent.mm.plugin.performance.watchdogs.d.eCN().cQp = false;
+    if (this.mForegroundKilledDetector != null) {
+      this.mForegroundKilledDetector.onAppBackground(paramString);
     }
+    startBackgroundActivationsListener(MMApplicationContext.getContext());
     AppMethodBeat.o(124907);
   }
   
   public void onAppForeground(String paramString)
   {
     AppMethodBeat.i(124906);
-    com.tencent.mm.plugin.performance.elf.a.aS(MainProcessChecker.class).bV(true);
-    com.tencent.mm.plugin.performance.c.c.dCq().cCq = true;
-    com.tencent.mm.plugin.performance.c.d.dCu().cCq = true;
-    if (this.wVU != null) {
-      this.wVU.onAppForeground(paramString);
+    com.tencent.mm.plugin.performance.elf.a.aU(MainProcessChecker.class).cy(true);
+    com.tencent.mm.plugin.performance.watchdogs.c.eCH().cy(true);
+    com.tencent.mm.plugin.performance.watchdogs.d.eCN().cQp = true;
+    if (this.mForegroundKilledDetector != null) {
+      this.mForegroundKilledDetector.onAppForeground(paramString);
     }
+    stopBackgroundActivationsListener(MMApplicationContext.getContext());
     AppMethodBeat.o(124906);
+  }
+  
+  public void onBaseContextAttached(Context paramContext) {}
+  
+  public void onConfigurationChanged(Configuration paramConfiguration) {}
+  
+  public void onCreate() {}
+  
+  public void onLowMemory()
+  {
+    AppMethodBeat.i(201008);
+    h.RTc.aX(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(201004);
+        Log.e("MicroMsg.PluginPerformance", "onLowMemory -> dump memory");
+        Log.i("MicroMsg.PluginPerformance", "[onLowMemory] %s", new Object[] { com.tencent.mm.plugin.performance.watchdogs.c.eCH().S(true, 0) });
+        AppMethodBeat.o(201004);
+      }
+    });
+    AppMethodBeat.o(201008);
+  }
+  
+  public void onTerminate() {}
+  
+  public void onTrimMemory(final int paramInt)
+  {
+    AppMethodBeat.i(201009);
+    if (paramInt <= 15) {
+      h.RTc.aX(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(201005);
+          Log.e("MicroMsg.PluginPerformance", "onTrimMemory level:%d -> dump memory", new Object[] { Integer.valueOf(paramInt) });
+          Log.i("MicroMsg.PluginPerformance", "[onTrimMemory] %s", new Object[] { com.tencent.mm.plugin.performance.watchdogs.c.eCH().S(true, 0) });
+          AppMethodBeat.o(201005);
+        }
+      });
+    }
+    AppMethodBeat.o(201009);
   }
   
   public String toString()
@@ -412,7 +532,7 @@ public class PluginPerformance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.PluginPerformance
  * JD-Core Version:    0.7.0.1
  */

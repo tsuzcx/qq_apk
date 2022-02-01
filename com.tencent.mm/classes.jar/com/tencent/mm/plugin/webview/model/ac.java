@@ -1,94 +1,96 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cym;
-import com.tencent.mm.protocal.protobuf.cyn;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.webview.k.b;
+import com.tencent.mm.protocal.protobuf.drh;
+import com.tencent.mm.protocal.protobuf.dri;
 import java.util.LinkedList;
 
 public final class ac
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  final LinkedList<String> Elb;
-  private f gCo;
-  private final com.tencent.mm.ak.b rr;
+  final LinkedList<String> IXZ;
+  private i heq;
+  private final d rr;
   private long startTime;
   
   public ac(int paramInt, String paramString1, String paramString2, String paramString3, LinkedList<String> paramLinkedList, String paramString4)
   {
-    AppMethodBeat.i(198118);
+    AppMethodBeat.i(210978);
     this.startTime = 0L;
-    this.Elb = new LinkedList();
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cym();
-    ((b.a)localObject).hQG = new cyn();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/sdk_oauth_authorize_confirm";
-    ((b.a)localObject).funcId = 1346;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (cym)this.rr.hQD.hQJ;
-    ((cym)localObject).HqJ = paramInt;
-    ((cym)localObject).dwb = paramString1;
-    ((cym)localObject).HqK = paramLinkedList;
-    ((cym)localObject).state = paramString2;
-    ((cym)localObject).HIF = paramString4;
-    ((cym)localObject).HIE = paramString3;
+    this.IXZ = new LinkedList();
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new drh();
+    ((d.a)localObject).iLO = new dri();
+    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/sdk_oauth_authorize_confirm";
+    ((d.a)localObject).funcId = 1346;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (drh)this.rr.iLK.iLR;
+    ((drh)localObject).Mzq = paramInt;
+    ((drh)localObject).dNI = paramString1;
+    ((drh)localObject).Mzr = paramLinkedList;
+    ((drh)localObject).state = paramString2;
+    ((drh)localObject).MTR = paramString4;
+    ((drh)localObject).MTQ = paramString3;
     if (paramLinkedList != null) {
-      this.Elb.addAll(paramLinkedList);
+      this.IXZ.addAll(paramLinkedList);
     }
-    AppMethodBeat.o(198118);
+    AppMethodBeat.o(210978);
   }
   
   public ac(String paramString1, String paramString2, String paramString3, LinkedList<String> paramLinkedList, int paramInt, String paramString4)
   {
-    AppMethodBeat.i(198119);
+    AppMethodBeat.i(210979);
     this.startTime = 0L;
-    this.Elb = new LinkedList();
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cym();
-    ((b.a)localObject).hQG = new cyn();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/sdk_oauth_authorize_confirm";
-    ((b.a)localObject).funcId = 1346;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (cym)this.rr.hQD.hQJ;
-    ((cym)localObject).HqJ = 1;
-    ((cym)localObject).dwb = paramString1;
-    ((cym)localObject).HqK = paramLinkedList;
-    ((cym)localObject).state = paramString2;
-    ((cym)localObject).HIE = paramString3;
-    ((cym)localObject).GuE = paramInt;
-    ((cym)localObject).HIF = paramString4;
+    this.IXZ = new LinkedList();
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new drh();
+    ((d.a)localObject).iLO = new dri();
+    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/sdk_oauth_authorize_confirm";
+    ((d.a)localObject).funcId = 1346;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (drh)this.rr.iLK.iLR;
+    ((drh)localObject).Mzq = 1;
+    ((drh)localObject).dNI = paramString1;
+    ((drh)localObject).Mzr = paramLinkedList;
+    ((drh)localObject).state = paramString2;
+    ((drh)localObject).MTQ = paramString3;
+    ((drh)localObject).Lqj = paramInt;
+    ((drh)localObject).MTR = paramString4;
     this.startTime = System.currentTimeMillis();
     if (paramLinkedList != null) {
-      this.Elb.addAll(paramLinkedList);
+      this.IXZ.addAll(paramLinkedList);
     }
-    AppMethodBeat.o(198119);
+    AppMethodBeat.o(210979);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(78933);
     this.startTime = System.currentTimeMillis();
-    this.gCo = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.heq = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(78933);
     return i;
   }
   
-  public final cyn eTN()
+  public final dri gcA()
   {
-    return (cyn)this.rr.hQE.hQJ;
+    return (dri)this.rr.iLL.iLR;
   }
   
   public final int getType()
@@ -96,11 +98,11 @@ public final class ac
     return 1346;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(78932);
-    this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    com.tencent.mm.plugin.webview.j.b.ELt.aG(4, (int)(System.currentTimeMillis() - this.startTime), paramInt3);
+    this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    b.JBk.aO(4, (int)(System.currentTimeMillis() - this.startTime), paramInt3);
     AppMethodBeat.o(78932);
   }
 }

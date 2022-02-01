@@ -13,7 +13,7 @@ public class l
 {
   public static void a(Context paramContext)
   {
-    AppMethodBeat.i(210746);
+    AppMethodBeat.i(222994);
     for (;;)
     {
       int i;
@@ -27,7 +27,7 @@ public class l
         {
           paramContext = e.b();
           paramContext.a("DMK", "ods:ok");
-          AppMethodBeat.o(210746);
+          AppMethodBeat.o(222994);
           return;
         }
         boolean bool1 = paramContext.setReadable(true);
@@ -67,7 +67,7 @@ public class l
       catch (Throwable paramContext)
       {
         e.b().a("DMK", "exp:" + paramContext.toString());
-        AppMethodBeat.o(210746);
+        AppMethodBeat.o(222994);
         return;
       }
       i += 1;
@@ -76,7 +76,7 @@ public class l
   
   public static boolean a(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(210744);
+    AppMethodBeat.i(222992);
     try
     {
       paramContext = ((ActivityManager)paramContext.getSystemService("activity")).getRunningAppProcesses().iterator();
@@ -85,21 +85,21 @@ public class l
         int i = ((ActivityManager.RunningAppProcessInfo)paramContext.next()).pid;
         if (i == paramInt)
         {
-          AppMethodBeat.o(210744);
+          AppMethodBeat.o(222992);
           return true;
         }
       }
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(210744);
+      AppMethodBeat.o(222992);
     }
     return false;
   }
   
   public static boolean a(List<a> paramList1, List<a> paramList2)
   {
-    AppMethodBeat.i(210749);
+    AppMethodBeat.i(222997);
     paramList1 = paramList1.iterator();
     boolean bool = true;
     label212:
@@ -131,7 +131,7 @@ public class l
         }
         bool = false;
         break;
-        AppMethodBeat.o(210749);
+        AppMethodBeat.o(222997);
         return bool;
       }
     }
@@ -139,7 +139,7 @@ public class l
   
   public static int b(Context paramContext)
   {
-    AppMethodBeat.i(210742);
+    AppMethodBeat.i(222990);
     List localList = q.e(q.a(paramContext, "__SP_Tencent_Loc_COMP_INFO__sapp_", ""));
     int i = e(paramContext);
     if (i <= 3) {
@@ -154,33 +154,33 @@ public class l
         {
           if (i <= 3)
           {
-            AppMethodBeat.o(210742);
+            AppMethodBeat.o(222990);
             return 2;
           }
-          AppMethodBeat.o(210742);
+          AppMethodBeat.o(222990);
           return 3;
         }
         if (i <= 3)
         {
-          AppMethodBeat.o(210742);
+          AppMethodBeat.o(222990);
           return 6;
         }
-        AppMethodBeat.o(210742);
+        AppMethodBeat.o(222990);
         return 5;
       }
-      AppMethodBeat.o(210742);
+      AppMethodBeat.o(222990);
       return 1;
     }
-    AppMethodBeat.o(210742);
+    AppMethodBeat.o(222990);
     return 0;
   }
   
   public static boolean c(Context paramContext)
   {
-    AppMethodBeat.i(210747);
+    AppMethodBeat.i(222995);
     if (!q.a(paramContext, "__SP_UPDATE_TencentLoc_COMP_SDK_VER__sapp_", "").equals(h.a))
     {
-      AppMethodBeat.o(210747);
+      AppMethodBeat.o(222995);
       return false;
     }
     String str = q.a(paramContext, "__SP_UPDATE_TencentLoc_COMP_INFO__sapp_", "");
@@ -199,7 +199,7 @@ public class l
         localObject1 = q.e(str);
         if ((!str.equals("preference_default_sapp")) && (!((List)localObject1).isEmpty()) && (a((List)localObject2, (List)localObject1)))
         {
-          AppMethodBeat.o(210747);
+          AppMethodBeat.o(222995);
           return false;
         }
         localObject3 = new byte[2048];
@@ -243,7 +243,7 @@ public class l
             }
           }
           ((List)localObject1).clear();
-          AppMethodBeat.o(210747);
+          AppMethodBeat.o(222995);
           return false;
         }
         if (((List)localObject2).size() == ((List)localObject1).size())
@@ -261,14 +261,14 @@ public class l
           str = q.a((List)localObject1);
           q.b(paramContext, "__SP_Tencent_Loc_COMP_INFO__sapp_", str);
           e.a(paramContext).a("DBC", str);
-          AppMethodBeat.o(210747);
+          AppMethodBeat.o(222995);
           return true;
         }
-        AppMethodBeat.o(210747);
+        AppMethodBeat.o(222995);
         return false;
-        AppMethodBeat.o(210747);
+        AppMethodBeat.o(222995);
         return false;
-        AppMethodBeat.o(210747);
+        AppMethodBeat.o(222995);
         return false;
       }
       i = 0;
@@ -277,7 +277,7 @@ public class l
   
   public static boolean d(Context paramContext)
   {
-    AppMethodBeat.i(210748);
+    AppMethodBeat.i(222996);
     String str1 = q.d(paramContext);
     if (!q.a(str1)) {
       j.a("clear private dir failed");
@@ -326,7 +326,7 @@ public class l
             }
           }
         }
-        AppMethodBeat.o(210748);
+        AppMethodBeat.o(222996);
         return false;
       }
       if (((ArrayList)localObject2).size() == ((List)localObject1).size())
@@ -342,10 +342,10 @@ public class l
           new File(str1, "tmp_asset__sapp" + ((a)localObject3).c).renameTo((File)localObject4);
         }
         q.b(paramContext, "__SP_Tencent_Loc_COMP_INFO__sapp_", q.a((List)localObject1));
-        AppMethodBeat.o(210748);
+        AppMethodBeat.o(222996);
         return true;
       }
-      AppMethodBeat.o(210748);
+      AppMethodBeat.o(222996);
       return false;
       label539:
       i = 0;
@@ -358,11 +358,11 @@ public class l
   {
     int j = 1;
     int i = 1;
-    AppMethodBeat.i(210743);
+    AppMethodBeat.i(222991);
     Object localObject = q.a(paramContext, "__pro_dex_load_info___sapp", "default");
     if (((String)localObject).equals("default"))
     {
-      AppMethodBeat.o(210743);
+      AppMethodBeat.o(222991);
       return 1;
     }
     try
@@ -403,13 +403,13 @@ public class l
       }
       if (k != 0)
       {
-        AppMethodBeat.o(210743);
+        AppMethodBeat.o(222991);
         return 3;
       }
     }
     catch (Exception paramContext)
     {
-      AppMethodBeat.o(210743);
+      AppMethodBeat.o(222991);
     }
     return 4;
   }
@@ -417,11 +417,11 @@ public class l
   public static void f(Context paramContext)
   {
     int m = 0;
-    AppMethodBeat.i(210745);
+    AppMethodBeat.i(222993);
     String str = q.e(paramContext);
     if (str == null)
     {
-      AppMethodBeat.o(210745);
+      AppMethodBeat.o(222993);
       return;
     }
     int n = q.g();
@@ -429,7 +429,7 @@ public class l
     if (((String)localObject1).equals("default"))
     {
       q.b(paramContext, "__pro_dex_load_info___sapp", n + "&" + str + "#");
-      AppMethodBeat.o(210745);
+      AppMethodBeat.o(222993);
       return;
     }
     label363:
@@ -483,12 +483,12 @@ public class l
           localObject1 = ((StringBuilder)localObject1).append("&").append(str);
           localObject1 = "#";
           q.b(paramContext, "__pro_dex_load_info___sapp", (String)localObject1);
-          AppMethodBeat.o(210745);
+          AppMethodBeat.o(222993);
         }
       }
       catch (Exception paramContext)
       {
-        AppMethodBeat.o(210745);
+        AppMethodBeat.o(222993);
         return;
       }
     }
@@ -496,7 +496,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     c.t.m.sapp.c.l
  * JD-Core Version:    0.7.0.1
  */

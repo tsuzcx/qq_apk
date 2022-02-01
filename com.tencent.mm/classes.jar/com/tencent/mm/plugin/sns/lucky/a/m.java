@@ -2,19 +2,17 @@ package com.tencent.mm.plugin.sns.lucky.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.model.v;
-import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.plugin.sns.model.al;
-import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.plugin.sns.storage.q;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.model.an;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.bol;
-import com.tencent.mm.protocal.protobuf.bzi;
-import com.tencent.mm.protocal.protobuf.dgq;
-import com.tencent.mm.protocal.protobuf.dhi;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.cbd;
+import com.tencent.mm.protocal.protobuf.cnc;
+import com.tencent.mm.protocal.protobuf.dzx;
+import com.tencent.mm.protocal.protobuf.ear;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,51 +20,51 @@ import java.util.List;
 
 public final class m
 {
-  private static final ThreadLocal<HashMap<String, Long>> zvP;
+  private static final ThreadLocal<HashMap<String, Long>> DGc;
   
   static
   {
     AppMethodBeat.i(95195);
-    zvP = new ThreadLocal();
+    DGc = new ThreadLocal();
     AppMethodBeat.o(95195);
   }
   
-  public static boolean a(p paramp, SnsObject paramSnsObject)
+  public static boolean a(SnsInfo paramSnsInfo, SnsObject paramSnsObject)
   {
     AppMethodBeat.i(95191);
-    if (paramp == null)
+    if (paramSnsInfo == null)
     {
       AppMethodBeat.o(95191);
       return true;
     }
-    bzi localbzi = paramp.ech();
-    if (paramp.field_type != 21)
+    cnc localcnc = paramSnsInfo.getPostInfo();
+    if (paramSnsInfo.getTypeFlag() != 21)
     {
       AppMethodBeat.o(95191);
       return true;
     }
-    if (localbzi.dPd == 1)
+    if (localcnc.egZ == 1)
     {
       AppMethodBeat.o(95191);
       return true;
     }
-    if (v.aAC().equals(paramp.field_userName))
+    if (com.tencent.mm.model.z.aTY().equals(paramSnsInfo.getUserName()))
     {
       AppMethodBeat.o(95191);
       return true;
     }
     if (paramSnsObject.SnsRedEnvelops != null)
     {
-      paramSnsObject = paramSnsObject.SnsRedEnvelops.HOu;
+      paramSnsObject = paramSnsObject.SnsRedEnvelops.Naf;
       if ((paramSnsObject == null) || (paramSnsObject.size() == 0))
       {
         AppMethodBeat.o(95191);
         return false;
       }
-      paramp = v.aAC();
+      paramSnsInfo = com.tencent.mm.model.z.aTY();
       paramSnsObject = paramSnsObject.iterator();
       while (paramSnsObject.hasNext()) {
-        if (paramp.equals(((dgq)paramSnsObject.next()).Username))
+        if (paramSnsInfo.equals(((dzx)paramSnsObject.next()).Username))
         {
           AppMethodBeat.o(95191);
           return true;
@@ -77,27 +75,27 @@ public final class m
     return false;
   }
   
-  public static boolean azK(String paramString)
+  public static boolean aOH(String paramString)
   {
     AppMethodBeat.i(95189);
-    paramString = ah.dXE().aBr(paramString);
-    boolean bool = a(paramString, al.v(paramString));
+    paramString = aj.faO().aQm(paramString);
+    boolean bool = a(paramString, an.C(paramString));
     AppMethodBeat.o(95189);
     return bool;
   }
   
-  public static long b(p paramp, SnsObject paramSnsObject)
+  public static long b(SnsInfo paramSnsInfo, SnsObject paramSnsObject)
   {
     long l = 0L;
     AppMethodBeat.i(95194);
-    if (paramp == null)
+    if (paramSnsInfo == null)
     {
       AppMethodBeat.o(95194);
       return 0L;
     }
     Object localObject1 = paramSnsObject;
     if (paramSnsObject == null) {
-      localObject1 = al.v(paramp);
+      localObject1 = an.C(paramSnsInfo);
     }
     if (localObject1 == null)
     {
@@ -110,20 +108,20 @@ public final class m
       AppMethodBeat.o(95194);
       return 0L;
     }
-    Object localObject2 = paramSnsObject.HOu;
+    Object localObject2 = paramSnsObject.Naf;
     if (localObject2 == null)
     {
       AppMethodBeat.o(95194);
       return 0L;
     }
-    paramSnsObject = paramp.AdI;
-    if (bu.isNullOrNil(paramSnsObject)) {}
-    for (paramp = g.getMessageDigest(paramp.field_content) + g.getMessageDigest(paramp.field_attrBuf);; paramp = paramSnsObject)
+    paramSnsObject = paramSnsInfo.contentByteMd5;
+    if (Util.isNullOrNil(paramSnsObject)) {}
+    for (paramSnsInfo = g.getMessageDigest(paramSnsInfo.field_content) + g.getMessageDigest(paramSnsInfo.field_attrBuf);; paramSnsInfo = paramSnsObject)
     {
-      localObject1 = (HashMap)zvP.get();
-      if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramp)))
+      localObject1 = (HashMap)DGc.get();
+      if ((localObject1 != null) && (((HashMap)localObject1).containsKey(paramSnsInfo)))
       {
-        l = ((Long)((HashMap)localObject1).get(paramp)).longValue();
+        l = ((Long)((HashMap)localObject1).get(paramSnsInfo)).longValue();
         AppMethodBeat.o(95194);
         return l;
       }
@@ -132,18 +130,18 @@ public final class m
       {
         if (paramSnsObject.hasNext())
         {
-          dgq localdgq = (dgq)paramSnsObject.next();
-          localObject2 = new bol();
+          dzx localdzx = (dzx)paramSnsObject.next();
+          localObject2 = new cbd();
           try
           {
-            ((bol)localObject2).parseFrom(z.a(localdgq.HNn));
-            l += ((bol)localObject2).dPq;
+            ((cbd)localObject2).parseFrom(com.tencent.mm.platformtools.z.a(localdzx.MYW));
+            l += ((cbd)localObject2).eht;
           }
           catch (Exception localException)
           {
             for (;;)
             {
-              ae.e("MicrMsg.SnsLuckyUtil", localException.getMessage() + "hbBuffer is error");
+              Log.e("MicrMsg.SnsLuckyUtil", localException.getMessage() + "hbBuffer is error");
             }
           }
         }
@@ -152,57 +150,57 @@ public final class m
       if (localObject1 == null) {
         paramSnsObject = new HashMap();
       }
-      paramSnsObject.put(paramp, Long.valueOf(l));
-      zvP.set(paramSnsObject);
+      paramSnsObject.put(paramSnsInfo, Long.valueOf(l));
+      DGc.set(paramSnsObject);
       AppMethodBeat.o(95194);
       return l;
     }
   }
   
-  public static boolean p(p paramp)
+  public static boolean w(SnsInfo paramSnsInfo)
   {
     AppMethodBeat.i(95190);
-    boolean bool = a(paramp, al.v(paramp));
+    boolean bool = a(paramSnsInfo, an.C(paramSnsInfo));
     AppMethodBeat.o(95190);
     return bool;
   }
   
-  public static int q(p paramp)
+  public static int x(SnsInfo paramSnsInfo)
   {
     AppMethodBeat.i(95192);
-    if (paramp == null)
+    if (paramSnsInfo == null)
     {
       AppMethodBeat.o(95192);
       return 0;
     }
-    paramp = al.v(paramp);
-    if (paramp == null)
+    paramSnsInfo = an.C(paramSnsInfo);
+    if (paramSnsInfo == null)
     {
       AppMethodBeat.o(95192);
       return 0;
     }
-    paramp = paramp.SnsRedEnvelops;
-    if ((paramp == null) || (paramp.HOu.size() == 0))
+    paramSnsInfo = paramSnsInfo.SnsRedEnvelops;
+    if ((paramSnsInfo == null) || (paramSnsInfo.Naf.size() == 0))
     {
       AppMethodBeat.o(95192);
       return 0;
     }
-    int i = paramp.HOu.size();
+    int i = paramSnsInfo.Naf.size();
     AppMethodBeat.o(95192);
     return i;
   }
   
-  public static long r(p paramp)
+  public static long y(SnsInfo paramSnsInfo)
   {
     AppMethodBeat.i(95193);
-    long l = b(paramp, null);
+    long l = b(paramSnsInfo, null);
     AppMethodBeat.o(95193);
     return l;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.lucky.a.m
  * JD-Core Version:    0.7.0.1
  */

@@ -4,63 +4,66 @@ import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
 import android.util.Pair;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.fts.a.a.e;
 import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.d;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.a.j;
 import com.tencent.mm.plugin.fts.a.n;
 import com.tencent.mm.plugin.fts.ui.b.c;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import java.util.Iterator;
 import java.util.List;
 
 public final class r
   extends b
 {
-  private a tMN;
+  private a xdN;
   
   public r(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112120);
-    this.tMN = new a();
+    this.xdN = new a();
     AppMethodBeat.o(112120);
   }
   
-  private Pair<String, String> Y(an paraman)
+  private Pair<String, String> Y(as paramas)
   {
     AppMethodBeat.i(112122);
     com.tencent.mm.openim.a.b localb = new com.tencent.mm.openim.a.b();
-    localb.Jd(paraman.eRy);
+    localb.Sa(paramas.fvb);
     int i = 0;
-    while (i < localb.iKp.size())
+    while (i < localb.jGV.size())
     {
-      com.tencent.mm.openim.a.b.a locala = (com.tencent.mm.openim.a.b.a)localb.iKp.get(i);
-      Iterator localIterator = locala.iKq.iterator();
+      com.tencent.mm.openim.a.b.a locala = (com.tencent.mm.openim.a.b.a)localb.jGV.get(i);
+      Iterator localIterator = locala.jGW.iterator();
       while (localIterator.hasNext())
       {
-        String str = ((com.tencent.mm.openim.a.b.b)localIterator.next()).Je(paraman.field_openImAppid);
-        if (!bu.isNullOrNil(str))
+        String str = ((com.tencent.mm.openim.a.b.b)localIterator.next()).Sb(paramas.field_openImAppid);
+        if (!Util.isNullOrNil(str))
         {
-          String[] arrayOfString = this.tFe.tFE;
+          String[] arrayOfString = this.wWd.wWD;
           int k = arrayOfString.length;
           int j = 0;
           while (j < k)
           {
             if (str.contains(arrayOfString[j]))
             {
-              paraman = new Pair(locala.title, str);
+              paramas = new Pair(locala.title, str);
               AppMethodBeat.o(112122);
-              return paraman;
+              return paramas;
             }
             j += 1;
           }
@@ -76,8 +79,8 @@ public final class r
   {
     AppMethodBeat.i(112121);
     super.a(paramContext, parama, paramVarArgs);
-    this.username = this.kno.tEY;
-    this.contact = ((l)g.ab(l.class)).azF().BH(this.username);
+    this.username = this.lqW.wVX;
+    this.contact = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(this.username);
     paramVarArgs = null;
     parama = null;
     int j = 0;
@@ -86,9 +89,9 @@ public final class r
     boolean bool1 = false;
     boolean bool2 = false;
     boolean bool5 = false;
-    String str1 = com.tencent.mm.plugin.fts.a.d.ahd(this.username);
+    String str1 = d.arL(this.username);
     int i;
-    switch (this.kno.tEX)
+    switch (this.lqW.wVW)
     {
     default: 
       i = 0;
@@ -96,18 +99,18 @@ public final class r
       bool3 = bool4;
       if (j != 0)
       {
-        this.ofE = k.d(paramContext, str1, com.tencent.mm.cb.a.ax(paramContext, 2131165517));
-        this.ofE = com.tencent.mm.plugin.fts.a.f.a(e.a(this.ofE, this.tFe, bool3, bool2, com.tencent.mm.plugin.fts.ui.b.a.tIQ, b.c.tIX)).tFv;
+        this.pqB = com.tencent.mm.pluginsdk.ui.span.l.d(paramContext, str1, com.tencent.mm.cb.a.aG(paramContext, 2131165535));
+        this.pqB = com.tencent.mm.plugin.fts.a.f.a(e.a(this.pqB, this.wWd, bool3, bool2, com.tencent.mm.plugin.fts.ui.b.a.wZP, b.c.wZW)).wWu;
         if (i != 0)
         {
-          this.ofF = k.d(paramContext, parama, com.tencent.mm.cb.a.ax(paramContext, 2131165517));
-          this.ofF = com.tencent.mm.plugin.fts.a.f.a(e.a(this.ofF, this.tFe, bool3, bool2, com.tencent.mm.plugin.fts.ui.b.a.tIQ, b.c.tIZ)).tFv;
-          this.ofF = TextUtils.concat(new CharSequence[] { paramVarArgs, this.ofF });
+          this.pqC = com.tencent.mm.pluginsdk.ui.span.l.d(paramContext, parama, com.tencent.mm.cb.a.aG(paramContext, 2131165535));
+          this.pqC = com.tencent.mm.plugin.fts.a.f.a(e.a(this.pqC, this.wWd, bool3, bool2, com.tencent.mm.plugin.fts.ui.b.a.wZP, b.c.wZY)).wWu;
+          this.pqC = TextUtils.concat(new CharSequence[] { paramVarArgs, this.pqC });
         }
-        if (!an.aUq(this.contact.field_username)) {
+        if (!as.bjp(this.contact.field_username)) {
           break label961;
         }
-        this.tLt = ((com.tencent.mm.openim.a.a)g.ab(com.tencent.mm.openim.a.a.class)).bC(this.contact.field_openImAppid, this.contact.field_descWordingId);
+        this.xcu = ((com.tencent.mm.openim.a.a)g.af(com.tencent.mm.openim.a.a.class)).bN(this.contact.field_openImAppid, this.contact.field_descWordingId);
         AppMethodBeat.o(112121);
       }
       break;
@@ -126,29 +129,29 @@ public final class r
       bool3 = true;
       bool2 = bool1;
       parama = this.contact.field_nickname;
-      paramVarArgs = paramContext.getString(2131762930);
+      paramVarArgs = paramContext.getString(2131765066);
       i = 1;
       break;
-      parama = this.contact.eRo;
-      paramVarArgs = paramContext.getString(2131762925);
+      parama = this.contact.fuR;
+      paramVarArgs = paramContext.getString(2131765061);
       i = 1;
       bool3 = bool4;
       bool2 = bool5;
       break;
-      paramVarArgs = this.contact.VI();
+      paramVarArgs = this.contact.ajx();
       parama = paramVarArgs;
-      if (bu.isNullOrNil(paramVarArgs)) {
+      if (Util.isNullOrNil(paramVarArgs)) {
         parama = this.contact.field_username;
       }
-      paramVarArgs = paramContext.getString(2131762935);
+      paramVarArgs = paramContext.getString(2131765071);
       i = 1;
       bool3 = bool4;
       bool2 = bool5;
       break;
-      parama = this.kno.content;
+      parama = this.lqW.content;
       String[] arrayOfString;
       int k;
-      if (!bu.isNullOrNil(parama))
+      if (!Util.isNullOrNil(parama))
       {
         arrayOfString = parama.split("​");
         k = arrayOfString.length;
@@ -157,35 +160,35 @@ public final class r
         if (i < k)
         {
           paramVarArgs = arrayOfString[i];
-          if (paramVarArgs.startsWith(this.tFe.tFC)) {
+          if (paramVarArgs.startsWith(this.wWd.wWB)) {
             parama = paramVarArgs;
           }
         }
       }
       for (;;)
       {
-        paramVarArgs = paramContext.getString(2131762929);
+        paramVarArgs = paramContext.getString(2131765065);
         i = 1;
         bool3 = bool4;
         bool2 = bool5;
         break;
         i += 1;
         break label549;
-        parama = this.kno.content;
-        paramVarArgs = paramContext.getString(2131762931);
+        parama = this.lqW.content;
+        paramVarArgs = paramContext.getString(2131765067);
         i = 1;
         bool3 = bool4;
         bool2 = bool5;
         break;
-        parama = this.kno.content;
-        paramVarArgs = paramContext.getString(2131762924);
+        parama = this.lqW.content;
+        paramVarArgs = paramContext.getString(2131765060);
         i = 1;
         bool3 = bool4;
         bool2 = bool5;
         break;
-        parama = ((n)g.ad(n.class)).getFTSMainDB().ali(this.contact.field_contactLabelIds);
+        parama = ((n)g.ah(n.class)).getFTSMainDB().aym(this.contact.field_contactLabelIds);
         paramVarArgs = new StringBuffer();
-        arrayOfString = this.tFe.tFE;
+        arrayOfString = this.wWd.wWD;
         k = arrayOfString.length;
         i = 0;
         while (i < k)
@@ -195,7 +198,7 @@ public final class r
           while (localIterator.hasNext())
           {
             String str3 = (String)localIterator.next();
-            if (com.tencent.mm.plugin.fts.a.d.alm(str3).contains(str2))
+            if (d.ayq(str3).contains(str2))
             {
               paramVarArgs.append(str3);
               paramVarArgs.append(",");
@@ -207,7 +210,7 @@ public final class r
         if (paramVarArgs.length() == 0) {}
         for (parama = "";; parama = paramVarArgs.substring(0, paramVarArgs.length() - 1))
         {
-          paramVarArgs = paramContext.getString(2131762934);
+          paramVarArgs = paramContext.getString(2131765070);
           i = 1;
           bool3 = bool4;
           bool2 = bool5;
@@ -229,10 +232,10 @@ public final class r
         bool3 = bool4;
         bool2 = bool5;
         break;
-        this.ofE = k.d(paramContext, str1, com.tencent.mm.cb.a.ax(paramContext, 2131165517));
+        this.pqB = com.tencent.mm.pluginsdk.ui.span.l.d(paramContext, str1, com.tencent.mm.cb.a.aG(paramContext, 2131165535));
         break label265;
         label961:
-        this.tLt = "";
+        this.xcu = "";
         AppMethodBeat.o(112121);
         return;
       }
@@ -242,15 +245,15 @@ public final class r
     }
   }
   
-  public final a.b agQ()
+  public final a.b axc()
   {
-    return this.tMN;
+    return this.xdN;
   }
   
-  public final String bhD()
+  public final String bCR()
   {
     AppMethodBeat.i(112123);
-    if ((this.contact != null) && (an.aUq(this.contact.field_username)))
+    if ((this.contact != null) && (as.bjp(this.contact.field_username)))
     {
       String str = "openim:" + this.contact.field_openImAppid;
       AppMethodBeat.o(112123);
@@ -268,21 +271,33 @@ public final class r
       super();
     }
     
-    public final boolean a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)
+    public final boolean a(Context paramContext, View paramView, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)
     {
-      AppMethodBeat.i(112119);
+      AppMethodBeat.i(235406);
       paramVarArgs = (r)paramVarArgs;
-      a(r.this.tFe.tFC, paramVarArgs.kno);
-      com.tencent.mm.br.d.f(paramContext, ".ui.chatting.ChattingUI", new Intent().putExtra("Chat_User", paramVarArgs.username).putExtra("finish_direct", true));
-      ((com.tencent.mm.plugin.comm.a.b)g.ab(com.tencent.mm.plugin.comm.a.b.class)).cQ(paramVarArgs.username, 2);
-      AppMethodBeat.o(112119);
+      if ((ab.Jx(paramVarArgs.username)) && (!WeChatBrands.Business.Entries.HomeNotifyMessage.checkAvailable(paramView.getContext())))
+      {
+        AppMethodBeat.o(235406);
+        return true;
+      }
+      if (((as.bjp(paramVarArgs.username)) || (ab.Iy(paramVarArgs.username))) && (!WeChatBrands.Business.Entries.GlobalWeCom.checkAvailable(paramView.getContext())))
+      {
+        AppMethodBeat.o(235406);
+        return true;
+      }
+      a(r.this.wWd.wWB, paramVarArgs.lqW);
+      paramView = new Intent().putExtra("Chat_User", paramVarArgs.username).putExtra("finish_direct", true);
+      paramView.putExtra("chat_from_scene", 5);
+      c.f(paramContext, ".ui.chatting.ChattingUI", paramView);
+      ((com.tencent.mm.plugin.comm.a.b)g.af(com.tencent.mm.plugin.comm.a.b.class)).cV(paramVarArgs.username, 2);
+      AppMethodBeat.o(235406);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.r
  * JD-Core Version:    0.7.0.1
  */

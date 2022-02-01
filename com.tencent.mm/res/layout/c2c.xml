@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/e9u" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/j24" android:background="@drawable/aza" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/h9z" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:paddingBottom="@dimen/cs" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/aej" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginLeft="20.0dip" android:src="@raw/icons_filled_back2" android:rotation="270.0" app:iconColor="@color/BW_100_Alpha_0_8" />
+</RelativeLayout>

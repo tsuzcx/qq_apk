@@ -1,163 +1,81 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class aip
   extends com.tencent.mm.bw.a
 {
-  public boolean BUO;
-  public LinkedList<Integer> Gyo;
-  public boolean Gyp;
-  public String Gyq;
-  public int Gyr;
-  public long duration;
-  public int hYi;
-  public int nLC;
-  public boolean xLA;
-  public boolean xOq;
-  public boolean xOr;
-  public String xOs;
-  public String xOt;
-  
-  public aip()
-  {
-    AppMethodBeat.i(75026);
-    this.Gyo = new LinkedList();
-    AppMethodBeat.o(75026);
-  }
+  public int centerX;
+  public int centerY;
+  public float mat;
+  public float scale;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(75027);
+    AppMethodBeat.i(201294);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aZ(1, this.duration);
-      paramVarArgs.e(2, 2, this.Gyo);
-      paramVarArgs.aS(3, this.hYi);
-      paramVarArgs.bC(4, this.Gyp);
-      paramVarArgs.bC(5, this.BUO);
-      paramVarArgs.bC(6, this.xOq);
-      paramVarArgs.bC(7, this.xOr);
-      if (this.xOs != null) {
-        paramVarArgs.d(8, this.xOs);
-      }
-      if (this.xOt != null) {
-        paramVarArgs.d(9, this.xOt);
-      }
-      if (this.Gyq != null) {
-        paramVarArgs.d(10, this.Gyq);
-      }
-      paramVarArgs.bC(11, this.xLA);
-      paramVarArgs.aS(12, this.Gyr);
-      paramVarArgs.aS(13, this.nLC);
-      AppMethodBeat.o(75027);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.centerX);
+      paramVarArgs.aM(2, this.centerY);
+      paramVarArgs.E(3, this.scale);
+      paramVarArgs.E(4, this.mat);
+      AppMethodBeat.o(201294);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.p(1, this.duration) + 0 + f.a.a.a.c(2, 2, this.Gyo) + f.a.a.b.b.a.bz(3, this.hYi) + f.a.a.b.b.a.amF(4) + f.a.a.b.b.a.amF(5) + f.a.a.b.b.a.amF(6) + f.a.a.b.b.a.amF(7);
-      paramInt = i;
-      if (this.xOs != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.xOs);
-      }
-      i = paramInt;
-      if (this.xOt != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.xOt);
-      }
-      paramInt = i;
-      if (this.Gyq != null) {
-        paramInt = i + f.a.a.b.b.a.e(10, this.Gyq);
-      }
-      i = f.a.a.b.b.a.amF(11);
-      int j = f.a.a.b.b.a.bz(12, this.Gyr);
-      int k = f.a.a.b.b.a.bz(13, this.nLC);
-      AppMethodBeat.o(75027);
-      return paramInt + i + j + k;
+      paramInt = g.a.a.b.b.a.bu(1, this.centerX);
+      int i = g.a.a.b.b.a.bu(2, this.centerY);
+      int j = g.a.a.b.b.a.fS(3);
+      int k = g.a.a.b.b.a.fS(4);
+      AppMethodBeat.o(201294);
+      return paramInt + 0 + i + (j + 4) + (k + 4);
     }
     if (paramInt == 2)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.Gyo.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
-      AppMethodBeat.o(75027);
+      AppMethodBeat.o(201294);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       aip localaip = (aip)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(75027);
+        AppMethodBeat.o(201294);
         return -1;
       case 1: 
-        localaip.duration = locala.OmT.zd();
-        AppMethodBeat.o(75027);
+        localaip.centerX = locala.UbS.zi();
+        AppMethodBeat.o(201294);
         return 0;
       case 2: 
-        localaip.Gyo.add(Integer.valueOf(locala.OmT.zc()));
-        AppMethodBeat.o(75027);
+        localaip.centerY = locala.UbS.zi();
+        AppMethodBeat.o(201294);
         return 0;
       case 3: 
-        localaip.hYi = locala.OmT.zc();
-        AppMethodBeat.o(75027);
-        return 0;
-      case 4: 
-        localaip.Gyp = locala.OmT.gvY();
-        AppMethodBeat.o(75027);
-        return 0;
-      case 5: 
-        localaip.BUO = locala.OmT.gvY();
-        AppMethodBeat.o(75027);
-        return 0;
-      case 6: 
-        localaip.xOq = locala.OmT.gvY();
-        AppMethodBeat.o(75027);
-        return 0;
-      case 7: 
-        localaip.xOr = locala.OmT.gvY();
-        AppMethodBeat.o(75027);
-        return 0;
-      case 8: 
-        localaip.xOs = locala.OmT.readString();
-        AppMethodBeat.o(75027);
-        return 0;
-      case 9: 
-        localaip.xOt = locala.OmT.readString();
-        AppMethodBeat.o(75027);
-        return 0;
-      case 10: 
-        localaip.Gyq = locala.OmT.readString();
-        AppMethodBeat.o(75027);
-        return 0;
-      case 11: 
-        localaip.xLA = locala.OmT.gvY();
-        AppMethodBeat.o(75027);
-        return 0;
-      case 12: 
-        localaip.Gyr = locala.OmT.zc();
-        AppMethodBeat.o(75027);
+        localaip.scale = Float.intBitsToFloat(locala.UbS.zm());
+        AppMethodBeat.o(201294);
         return 0;
       }
-      localaip.nLC = locala.OmT.zc();
-      AppMethodBeat.o(75027);
+      localaip.mat = Float.intBitsToFloat(locala.UbS.zm());
+      AppMethodBeat.o(201294);
       return 0;
     }
-    AppMethodBeat.o(75027);
+    AppMethodBeat.o(201294);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aip
  * JD-Core Version:    0.7.0.1
  */

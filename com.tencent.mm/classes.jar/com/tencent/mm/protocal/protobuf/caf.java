@@ -5,87 +5,99 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class caf
   extends com.tencent.mm.bw.a
 {
-  public String FNj;
-  public String GnM;
-  public String nIJ;
+  public String desc;
+  public String icon;
+  public String title;
+  public String url;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(101825);
+    AppMethodBeat.i(91516);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FNj != null) {
-        paramVarArgs.d(1, this.FNj);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.title != null) {
+        paramVarArgs.e(1, this.title);
       }
-      if (this.nIJ != null) {
-        paramVarArgs.d(2, this.nIJ);
+      if (this.desc != null) {
+        paramVarArgs.e(2, this.desc);
       }
-      if (this.GnM != null) {
-        paramVarArgs.d(3, this.GnM);
+      if (this.icon != null) {
+        paramVarArgs.e(3, this.icon);
       }
-      AppMethodBeat.o(101825);
+      if (this.url != null) {
+        paramVarArgs.e(4, this.url);
+      }
+      AppMethodBeat.o(91516);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FNj == null) {
-        break label334;
+      if (this.title == null) {
+        break label394;
       }
     }
-    label334:
-    for (int i = f.a.a.b.b.a.e(1, this.FNj) + 0;; i = 0)
+    label394:
+    for (int i = g.a.a.b.b.a.f(1, this.title) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.nIJ != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.nIJ);
+      if (this.desc != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.desc);
       }
       i = paramInt;
-      if (this.GnM != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.GnM);
+      if (this.icon != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.icon);
       }
-      AppMethodBeat.o(101825);
-      return i;
+      paramInt = i;
+      if (this.url != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.url);
+      }
+      AppMethodBeat.o(91516);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(101825);
+        AppMethodBeat.o(91516);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         caf localcaf = (caf)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(101825);
+          AppMethodBeat.o(91516);
           return -1;
         case 1: 
-          localcaf.FNj = locala.OmT.readString();
-          AppMethodBeat.o(101825);
+          localcaf.title = locala.UbS.readString();
+          AppMethodBeat.o(91516);
           return 0;
         case 2: 
-          localcaf.nIJ = locala.OmT.readString();
-          AppMethodBeat.o(101825);
+          localcaf.desc = locala.UbS.readString();
+          AppMethodBeat.o(91516);
+          return 0;
+        case 3: 
+          localcaf.icon = locala.UbS.readString();
+          AppMethodBeat.o(91516);
           return 0;
         }
-        localcaf.GnM = locala.OmT.readString();
-        AppMethodBeat.o(101825);
+        localcaf.url = locala.UbS.readString();
+        AppMethodBeat.o(91516);
         return 0;
       }
-      AppMethodBeat.o(101825);
+      AppMethodBeat.o(91516);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.caf
  * JD-Core Version:    0.7.0.1
  */

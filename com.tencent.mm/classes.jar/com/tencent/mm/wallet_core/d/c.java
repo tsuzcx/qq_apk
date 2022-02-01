@@ -1,17 +1,17 @@
 package com.tencent.mm.wallet_core.d;
 
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class c<T extends d>
-  implements f
+  implements i
 {
-  public f LVH;
-  T LVI;
+  public i Rux;
+  T Ruy;
   public int rtType;
   
   protected abstract void a(d paramd);
@@ -20,30 +20,30 @@ public abstract class c<T extends d>
   
   public final void b(d paramd)
   {
-    ae.i("MicroMsg.IDelayQueryOrder", "doScene rtType %s", new Object[] { Integer.valueOf(this.rtType) });
-    g.ajS();
-    g.ajQ().gDv.a(this.rtType, this);
+    Log.i("MicroMsg.IDelayQueryOrder", "doScene rtType %s", new Object[] { Integer.valueOf(this.rtType) });
+    g.aAi();
+    g.aAg().hqi.a(this.rtType, this);
     a(paramd);
   }
   
-  public final void efC()
+  public final void fib()
   {
-    ae.i("MicroMsg.IDelayQueryOrder", "onDestory rtType %s", new Object[] { Integer.valueOf(this.rtType) });
-    g.ajS();
-    g.ajQ().gDv.b(this.rtType, this);
+    Log.i("MicroMsg.IDelayQueryOrder", "onDestory rtType %s", new Object[] { Integer.valueOf(this.rtType) });
+    g.aAi();
+    g.aAg().hqi.b(this.rtType, this);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    ae.d("MicroMsg.IDelayQueryOrder", "errType: %d, errCode: %d, errMsg: %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
-    if (((paramn instanceof d)) && (!a(paramInt1, paramInt2, (d)paramn)) && (this.LVH != null) && (this.LVI != null) && ((this.LVI instanceof n))) {
-      this.LVH.onSceneEnd(paramInt1, paramInt2, paramString, (n)this.LVI);
+    Log.d("MicroMsg.IDelayQueryOrder", "errType: %d, errCode: %d, errMsg: %s scene %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramq });
+    if (((paramq instanceof d)) && (!a(paramInt1, paramInt2, (d)paramq)) && (this.Rux != null) && (this.Ruy != null) && ((this.Ruy instanceof q))) {
+      this.Rux.onSceneEnd(paramInt1, paramInt2, paramString, (q)this.Ruy);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.d.c
  * JD-Core Version:    0.7.0.1
  */

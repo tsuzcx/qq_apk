@@ -6,69 +6,104 @@ import com.tencent.mm.plugin.report.a;
 public final class be
   extends a
 {
-  private long dQB;
-  private String dTr = "";
-  private String dYc = "";
+  private long ejA;
+  private String erH = "";
+  private String erU = "";
+  private String erV = "";
+  private long erW;
+  private long erX;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(184163);
+    AppMethodBeat.i(208857);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dYc);
+    ((StringBuffer)localObject).append(this.erU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQB);
+    ((StringBuffer)localObject).append(this.erV);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTr);
+    ((StringBuffer)localObject).append(this.erH);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erW);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ejA);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erX);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(184163);
+    aMq((String)localObject);
+    AppMethodBeat.o(208857);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(184164);
+    AppMethodBeat.i(208858);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Username:").append(this.dYc);
+    ((StringBuffer)localObject).append("Sessionid:").append(this.erU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Action:").append(this.dQB);
+    ((StringBuffer)localObject).append("Contextid:").append(this.erV);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
+    ((StringBuffer)localObject).append("ClickTabContextId:").append(this.erH);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Scene:").append(this.erW);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("Action:").append(this.ejA);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("HasWording:").append(this.erX);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(184164);
+    AppMethodBeat.o(208858);
     return localObject;
   }
   
-  public final be fd(long paramLong)
+  public final be dr(long paramLong)
   {
-    this.dQB = paramLong;
+    this.erW = paramLong;
+    return this;
+  }
+  
+  public final be ds(long paramLong)
+  {
+    this.ejA = paramLong;
+    return this;
+  }
+  
+  public final be dt(long paramLong)
+  {
+    this.erX = paramLong;
     return this;
   }
   
   public final int getId()
   {
-    return 19431;
+    return 19995;
   }
   
-  public final be jI(String paramString)
+  public final be jc(String paramString)
   {
-    AppMethodBeat.i(184161);
-    this.dYc = t("Username", paramString, true);
-    AppMethodBeat.o(184161);
+    AppMethodBeat.i(208854);
+    this.erU = x("Sessionid", paramString, true);
+    AppMethodBeat.o(208854);
     return this;
   }
   
-  public final be jJ(String paramString)
+  public final be jd(String paramString)
   {
-    AppMethodBeat.i(184162);
-    this.dTr = t("SessionId", paramString, true);
-    AppMethodBeat.o(184162);
+    AppMethodBeat.i(208855);
+    this.erV = x("Contextid", paramString, true);
+    AppMethodBeat.o(208855);
+    return this;
+  }
+  
+  public final be je(String paramString)
+  {
+    AppMethodBeat.i(208856);
+    this.erH = x("ClickTabContextId", paramString, true);
+    AppMethodBeat.o(208856);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.g.b.a.be
  * JD-Core Version:    0.7.0.1
  */

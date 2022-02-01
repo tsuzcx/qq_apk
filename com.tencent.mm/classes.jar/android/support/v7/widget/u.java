@@ -2,7 +2,7 @@ package android.support.v7.widget;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.x;
+import android.support.v4.view.y;
 import android.support.v7.view.menu.h.a;
 import android.support.v7.view.menu.o.a;
 import android.view.Menu;
@@ -18,7 +18,7 @@ public abstract interface u
   
   public abstract void a(Menu paramMenu, o.a parama);
   
-  public abstract x c(int paramInt, long paramLong);
+  public abstract y c(int paramInt, long paramLong);
   
   public abstract void collapseActionView();
   
@@ -44,15 +44,15 @@ public abstract interface u
   
   public abstract boolean hideOverflowMenu();
   
-  public abstract boolean is();
+  public abstract boolean iB();
+  
+  public abstract boolean iC();
+  
+  public abstract void iD();
   
   public abstract boolean isOverflowMenuShowing();
   
-  public abstract boolean it();
-  
-  public abstract void iu();
-  
-  public abstract ViewGroup jt();
+  public abstract ViewGroup jC();
   
   public abstract void setBackgroundDrawable(Drawable paramDrawable);
   
@@ -71,6 +71,8 @@ public abstract interface u
   public abstract void setLogo(Drawable paramDrawable);
   
   public abstract void setNavigationContentDescription(int paramInt);
+  
+  public abstract void setTitle(CharSequence paramCharSequence);
   
   public abstract void setVisibility(int paramInt);
   

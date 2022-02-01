@@ -9,14 +9,14 @@ import java.util.List;
 public final class c<_Target extends a>
   implements a, b<_Target>
 {
-  private List<WeakReference<_Target>> LEv;
-  private boolean LEw;
+  private List<WeakReference<_Target>> QZO;
+  private boolean QZP;
   
   public c()
   {
     AppMethodBeat.i(74908);
-    this.LEv = new ArrayList();
-    this.LEw = true;
+    this.QZO = new ArrayList();
+    this.QZP = true;
     AppMethodBeat.o(74908);
   }
   
@@ -27,12 +27,12 @@ public final class c<_Target extends a>
       try
       {
         AppMethodBeat.i(74910);
-        if (!this.LEw)
+        if (!this.QZP)
         {
           AppMethodBeat.o(74910);
           return;
         }
-        Iterator localIterator = this.LEv.iterator();
+        Iterator localIterator = this.QZO.iterator();
         if (localIterator.hasNext())
         {
           a locala = (a)((WeakReference)localIterator.next()).get();
@@ -42,10 +42,10 @@ public final class c<_Target extends a>
           locala.dead();
           continue;
         }
-        this.LEv.clear();
+        this.QZO.clear();
       }
       finally {}
-      this.LEw = false;
+      this.QZP = false;
       AppMethodBeat.o(74910);
     }
   }
@@ -59,7 +59,7 @@ public final class c<_Target extends a>
     //   2: ldc 67
     //   4: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 32	com/tencent/mm/vending/e/c:LEw	Z
+    //   8: getfield 32	com/tencent/mm/vending/e/c:QZP	Z
     //   11: ifne +21 -> 32
     //   14: aload_1
     //   15: invokestatic 73	junit/framework/Assert:assertNotNull	(Ljava/lang/Object;)V
@@ -71,7 +71,7 @@ public final class c<_Target extends a>
     //   30: monitorexit
     //   31: return
     //   32: aload_0
-    //   33: getfield 30	com/tencent/mm/vending/e/c:LEv	Ljava/util/List;
+    //   33: getfield 30	com/tencent/mm/vending/e/c:QZO	Ljava/util/List;
     //   36: new 56	java/lang/ref/WeakReference
     //   39: dup
     //   40: aload_1

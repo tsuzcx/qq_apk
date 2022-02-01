@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.ipcall.model.e.g;
 
 public final class b
 {
-  private static b uZV;
-  private g uZW;
+  private static b ysv;
+  private g ysw;
   
-  public static b dha()
+  public static b eaU()
   {
     AppMethodBeat.i(25513);
-    if (uZV == null) {
-      uZV = new b();
+    if (ysv == null) {
+      ysv = new b();
     }
-    b localb = uZV;
+    b localb = ysv;
     AppMethodBeat.o(25513);
     return localb;
   }
   
-  public final void nP(boolean paramBoolean)
+  public final void qy(boolean paramBoolean)
   {
     AppMethodBeat.i(25514);
-    bc.ajj().a(this.uZW);
-    this.uZW = null;
+    bg.azz().a(this.ysw);
+    this.ysw = null;
     if (paramBoolean) {}
-    for (this.uZW = new g(1);; this.uZW = new g(0))
+    for (this.ysw = new g(1);; this.ysw = new g(0))
     {
-      bc.ajj().a(this.uZW, 0);
+      bg.azz().a(this.ysw, 0);
       AppMethodBeat.o(25514);
       return;
     }

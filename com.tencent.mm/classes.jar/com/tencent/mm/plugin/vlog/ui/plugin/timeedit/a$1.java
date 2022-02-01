@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.vlog.ui.plugin.timeedit;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
 final class a$1
   extends q
-  implements b<Boolean, z>
+  implements b<Boolean, x>
 {
-  public static final 1 CjH;
+  public static final 1 GMI;
   
   static
   {
-    AppMethodBeat.i(192120);
-    CjH = new 1();
-    AppMethodBeat.o(192120);
+    AppMethodBeat.i(191848);
+    GMI = new 1();
+    AppMethodBeat.o(191848);
   }
   
   a$1()

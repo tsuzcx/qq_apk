@@ -5,7 +5,7 @@ import android.text.TextUtils;
 import com.tencent.kinda.gen.KQRCodeView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.by.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class KindaQRCodeViewImpl
   extends BaseKindaCodeView
@@ -16,7 +16,7 @@ public class KindaQRCodeViewImpl
     AppMethodBeat.i(18937);
     if (TextUtils.isEmpty(paramString))
     {
-      ae.e("base_MMKView", "kinda getBitmap mQRcode == null");
+      Log.e("base_MMKView", "kinda getBitmap mQRcode == null");
       AppMethodBeat.o(18937);
       return null;
     }
@@ -27,7 +27,7 @@ public class KindaQRCodeViewImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaQRCodeViewImpl
  * JD-Core Version:    0.7.0.1
  */

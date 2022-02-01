@@ -12,9 +12,9 @@ public class FinderMediaExtra
     AppMethodBeat.i(169006);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.text != null) {
-        paramVarArgs.d(1, this.text);
+        paramVarArgs.e(1, this.text);
       }
       AppMethodBeat.o(169006);
       return 0;
@@ -25,16 +25,16 @@ public class FinderMediaExtra
       }
     }
     label213:
-    for (paramInt = f.a.a.b.b.a.e(1, this.text) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.text) + 0;; paramInt = 0)
     {
       AppMethodBeat.o(169006);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(169006);
@@ -42,7 +42,7 @@ public class FinderMediaExtra
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         FinderMediaExtra localFinderMediaExtra = (FinderMediaExtra)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -50,7 +50,7 @@ public class FinderMediaExtra
           AppMethodBeat.o(169006);
           return -1;
         }
-        localFinderMediaExtra.text = locala.OmT.readString();
+        localFinderMediaExtra.text = locala.UbS.readString();
         AppMethodBeat.o(169006);
         return 0;
       }

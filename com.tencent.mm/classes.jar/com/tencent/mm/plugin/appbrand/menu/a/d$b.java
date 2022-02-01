@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.menu.a;
 
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
@@ -14,27 +14,27 @@ import java.util.List;
 public final class d$b
   extends RecyclerView.a<a>
 {
-  private final List<String> lYf;
-  private final d.a lYg;
+  private final List<String> nfL;
+  private final d.a nfM;
   
   public d$b(List<String> paramList, d.a parama)
   {
     AppMethodBeat.i(134923);
-    this.lYf = new ArrayList(paramList);
-    this.lYg = parama;
+    this.nfL = new ArrayList(paramList);
+    this.nfM = parama;
     AppMethodBeat.o(134923);
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(134924);
-    int i = this.lYf.size();
+    int i = this.nfL.size();
     AppMethodBeat.o(134924);
     return i;
   }
   
   public final class a
-    extends RecyclerView.w
+    extends RecyclerView.v
   {
     public TextView titleTv;
     
@@ -46,7 +46,7 @@ public final class d$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.menu.a.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/d" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center_vertical" android:id="@android:id/progress" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:gravity="left" android:layout_gravity="center_vertical" android:id="@android:id/title" android:text="@string/ezo" style="@style/le" />
-</LinearLayout>
+<RelativeLayout android:layout_gravity="center_vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ewi" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="96.0dip" android:src="@raw/icons_filled_time" android:scaleType="centerCrop" android:layout_centerHorizontal="true" app:iconColor="@color/Blue" />
+    <TextView android:textSize="22.0dip" android:textStyle="bold" android:textColor="@color/a2x" android:id="@id/ewk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="" android:layout_below="@id/ewi" android:layout_centerHorizontal="true" />
+    <View android:id="@id/ewj" android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="24.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="24.0dip" android:layout_below="@id/ewk" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ewh" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="24.0dip" android:layout_below="@id/ewj" android:layout_centerHorizontal="true" />
+    <Button android:id="@id/ewg" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginBottom="130.0dip" android:text="@string/ab6" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/qs" />
+</RelativeLayout>

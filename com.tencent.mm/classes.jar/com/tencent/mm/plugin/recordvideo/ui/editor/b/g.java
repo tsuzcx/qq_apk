@@ -7,133 +7,137 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PorterDuff.Mode;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/StoryFrameRetriever;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameRetriever;", "retrieverData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/RetrieverData;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/RetrieverData;)V", "bitmap", "Landroid/graphics/Bitmap;", "blurBgBitmap", "canvas", "Landroid/graphics/Canvas;", "centerCropScale", "", "drawer", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFrameDrawer;", "drawingMatrix", "Landroid/graphics/Matrix;", "finalBitmap", "finalCanvas", "finalMatrix", "paint", "Landroid/graphics/Paint;", "retrieverTransform", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/RetrieverTransform;", "blurBgEnable", "", "calcCenterCropScale", "drawingWidth", "drawingHeight", "videoWidth", "", "videoHeight", "calcCenterCropScale2", "calcfinalScale", "drawWidth", "drawHeight", "destroy", "", "requestBlurBgFrame", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameInfo;", "requestNextFrame", "start", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/StoryFrameRetriever;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameRetriever;", "retrieverData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/RetrieverData;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/RetrieverData;)V", "bitmap", "Landroid/graphics/Bitmap;", "blurBgBitmap", "canvas", "Landroid/graphics/Canvas;", "centerCropScale", "", "drawer", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFrameDrawer;", "drawingMatrix", "Landroid/graphics/Matrix;", "finalBitmap", "finalCanvas", "finalMatrix", "paint", "Landroid/graphics/Paint;", "retrieverTransform", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/RetrieverTransform;", "blurBgEnable", "", "calcCenterCropScale", "drawingWidth", "drawingHeight", "videoWidth", "", "videoHeight", "calcCenterCropScale2", "calcfinalScale", "drawWidth", "drawHeight", "destroy", "", "requestBlurBgFrame", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/retriever/FrameInfo;", "requestNextFrame", "start", "Companion", "plugin-recordvideo_release"})
 public final class g
   implements b
 {
-  public static final g.a yfN;
-  private final Canvas aTq;
+  public static final g.a CgL;
+  private Bitmap CgG;
+  private Canvas CgH;
+  private final Matrix CgI;
+  private e CgJ;
+  private final d CgK;
+  private final Canvas aTi;
   private final Bitmap bitmap;
-  public Bitmap hqG;
-  private final com.tencent.mm.plugin.recordvideo.ui.editor.b pYC;
+  private final Matrix finalMatrix;
+  public Bitmap ikc;
   private final Paint paint;
-  private Bitmap yfH;
-  private Canvas yfI;
-  private final Matrix yfJ;
-  private final Matrix yfK;
-  private e yfL;
-  private final d yfM;
+  private final com.tencent.mm.plugin.recordvideo.ui.editor.b rpA;
   
   static
   {
-    AppMethodBeat.i(207080);
-    yfN = new g.a((byte)0);
-    AppMethodBeat.o(207080);
+    AppMethodBeat.i(237921);
+    CgL = new g.a((byte)0);
+    AppMethodBeat.o(237921);
   }
   
   public g(d paramd)
   {
-    AppMethodBeat.i(207079);
-    this.yfM = paramd;
+    AppMethodBeat.i(237920);
+    this.CgK = paramd;
     this.paint = new Paint();
-    this.yfJ = new Matrix();
-    this.pYC = new com.tencent.mm.plugin.recordvideo.ui.editor.b(this.yfM.pYz);
-    this.yfK = new Matrix();
-    this.yfL = new e();
-    ae.i("MicroMsg.StoryFrameRetriever", "create StoryFrameRetriever, " + this.yfM);
+    this.finalMatrix = new Matrix();
+    this.rpA = new com.tencent.mm.plugin.recordvideo.ui.editor.b(this.CgK.rpx);
+    this.CgI = new Matrix();
+    this.CgJ = new e();
+    Log.i("MicroMsg.StoryFrameRetriever", "create StoryFrameRetriever, " + this.CgK);
     this.paint.setAntiAlias(true);
     this.paint.setFilterBitmap(true);
-    int m = this.yfM.width;
-    int k = this.yfM.height;
+    int m = this.CgK.width;
+    int k = this.CgK.height;
     int i;
     Object localObject;
     float[] arrayOfFloat;
     int j;
     label243:
     float f1;
-    switch (this.yfM.dHi)
+    switch (this.CgK.dYT)
     {
     default: 
-      if (this.yfM.videoWidth > this.yfM.videoHeight)
+      if (this.CgK.videoWidth > this.CgK.videoHeight)
       {
         i = 1;
-        paramd = this.yfL;
-        localObject = this.yfM.xKR;
-        arrayOfFloat = this.yfM.xKS;
+        paramd = this.CgJ;
+        localObject = this.CgK.BKV;
+        arrayOfFloat = this.CgK.BKW;
         p.h(localObject, "drawingRect");
-        paramd.xKR = ((float[])localObject);
+        paramd.BKV = ((float[])localObject);
         if ((arrayOfFloat != null) && (arrayOfFloat.length == 4)) {
-          break label820;
+          break label829;
         }
         j = 0;
         if (j != 0)
         {
           if (arrayOfFloat == null) {
-            p.gkB();
+            p.hyc();
           }
-          paramd.xKS = arrayOfFloat;
+          paramd.BKW = arrayOfFloat;
           f1 = arrayOfFloat[1];
-          ae.i("MicroMsg.RetrieverTransform", "topOffset :".concat(String.valueOf(f1)));
-          paramd.yfE.postTranslate(0.0F, -f1);
+          Log.i("MicroMsg.RetrieverTransform", "topOffset :".concat(String.valueOf(f1)));
+          paramd.CgD.postTranslate(0.0F, -f1);
         }
-        if (!dLy()) {
-          break label952;
+        if (!eMw()) {
+          break label961;
         }
-        paramd = Bitmap.createBitmap(this.yfM.width, this.yfM.height, Bitmap.Config.ARGB_8888);
+        paramd = Bitmap.createBitmap(this.CgK.width, this.CgK.height, Bitmap.Config.ARGB_8888);
         p.g(paramd, "Bitmap.createBitmap(retr… Bitmap.Config.ARGB_8888)");
         this.bitmap = paramd;
-        f1 = a(this.yfM.width, this.yfM.height, this.yfM.xKR[2], this.yfM.xKR[3]);
-        ae.i("MicroMsg.StoryFrameRetriever", "scale:".concat(String.valueOf(f1)));
-        this.yfK.postScale(f1, f1);
-        if ((this.yfM.yfC) && (i != 0) && ((this.yfM.dHi == 90) || (this.yfM.dHi == 270) || (this.yfM.dHi == 180)))
+        f1 = a(this.CgK.width, this.CgK.height, this.CgK.BKV[2], this.CgK.BKV[3]);
+        Log.i("MicroMsg.StoryFrameRetriever", "scale:".concat(String.valueOf(f1)));
+        this.CgI.postScale(f1, f1);
+        if ((this.CgK.CgB) && (i != 0) && ((this.CgK.dYT == 90) || (this.CgK.dYT == 270) || (this.CgK.dYT == 180)))
         {
-          this.yfH = Bitmap.createBitmap(this.yfM.height, this.yfM.width, Bitmap.Config.ARGB_8888);
-          this.yfI = new Canvas(this.yfH);
-          f1 = 360.0F - this.yfM.dHi;
-          this.yfJ.postRotate(f1);
-          if (f1 != 90.0F) {
-            break label868;
+          this.CgG = Bitmap.createBitmap(this.CgK.height, this.CgK.width, Bitmap.Config.ARGB_8888);
+          paramd = this.CgG;
+          if (paramd == null) {
+            p.hyc();
           }
-          paramd = this.yfJ;
-          localObject = this.yfI;
+          this.CgH = new Canvas(paramd);
+          f1 = 360.0F - this.CgK.dYT;
+          this.finalMatrix.postRotate(f1);
+          if (f1 != 90.0F) {
+            break label877;
+          }
+          paramd = this.finalMatrix;
+          localObject = this.CgH;
           if (localObject == null) {
-            p.gkB();
+            p.hyc();
           }
           paramd.postTranslate(((Canvas)localObject).getWidth(), 0.0F);
         }
-        label543:
-        paramd = h.d(this.yfM.xKW, this.yfM.height, this.yfM.width, true);
+        label552:
+        paramd = BitmapUtil.extractThumbNail(this.CgK.BLa, this.CgK.height, this.CgK.width, true);
         if (paramd != null)
         {
-          f1 = this.yfM.width / paramd.getWidth();
-          float f2 = this.yfM.height / paramd.getHeight();
+          f1 = this.CgK.width / paramd.getWidth();
+          float f2 = this.CgK.height / paramd.getHeight();
           if ((f1 == 1.0F) && (f2 == 1.0F)) {
-            break label944;
+            break label953;
           }
           float f3 = Math.max(f1, f2);
-          paramd = h.b(paramd, 0.0F, f3, f3);
+          paramd = BitmapUtil.rotateAndScale(paramd, 0.0F, f3, f3);
           p.g(paramd, "scaledBitmap");
           k = paramd.getWidth();
           i = paramd.getHeight();
           if (f1 >= f2) {
-            break label910;
+            break label919;
           }
-          m = (paramd.getWidth() - this.yfM.width) / 2;
-          k = m + this.yfM.width;
+          m = (paramd.getWidth() - this.CgK.width) / 2;
+          k = m + this.CgK.width;
           j = 0;
-          label688:
-          this.hqG = Bitmap.createBitmap(paramd, m, j, k, i);
-          label704:
-          if ((this.yfM.yfC) && (this.yfM.dHi != 0)) {
-            this.hqG = h.a(this.hqG, 360.0F - this.yfM.dHi);
+          label697:
+          this.ikc = Bitmap.createBitmap(paramd, m, j, k, i);
+          label713:
+          if ((this.CgK.CgB) && (this.CgK.dYT != 0)) {
+            this.ikc = BitmapUtil.rotate(this.ikc, 360.0F - this.CgK.dYT);
           }
         }
       }
@@ -141,12 +145,12 @@ public final class g
     }
     for (;;)
     {
-      this.aTq = new Canvas(this.bitmap);
-      AppMethodBeat.o(207079);
+      this.aTi = new Canvas(this.bitmap);
+      AppMethodBeat.o(237920);
       return;
-      k = this.yfM.width;
-      m = this.yfM.height;
-      if (this.yfM.videoHeight > this.yfM.videoWidth)
+      k = this.CgK.width;
+      m = this.CgK.height;
+      if (this.CgK.videoHeight > this.CgK.videoWidth)
       {
         i = 1;
         break;
@@ -155,7 +159,7 @@ public final class g
       break;
       i = 0;
       break;
-      label820:
+      label829:
       if ((arrayOfFloat[0] == 0.0F) && (arrayOfFloat[1] == 0.0F) && (arrayOfFloat[2] == 0.0F) && (arrayOfFloat[3] == 0.0F))
       {
         j = 0;
@@ -163,71 +167,75 @@ public final class g
       }
       j = 1;
       break label243;
-      label868:
+      label877:
       if (f1 != 270.0F) {
-        break label543;
+        break label552;
       }
-      paramd = this.yfJ;
-      localObject = this.yfI;
+      paramd = this.finalMatrix;
+      localObject = this.CgH;
       if (localObject == null) {
-        p.gkB();
+        p.hyc();
       }
       paramd.postTranslate(0.0F, ((Canvas)localObject).getHeight());
-      break label543;
-      label910:
-      j = (paramd.getHeight() - this.yfM.height) / 2;
-      i = this.yfM.height + j;
+      break label552;
+      label919:
+      j = (paramd.getHeight() - this.CgK.height) / 2;
+      i = this.CgK.height + j;
       m = 0;
-      break label688;
-      label944:
-      this.hqG = paramd;
-      break label704;
-      label952:
-      if (this.yfM.yfC)
+      break label697;
+      label953:
+      this.ikc = paramd;
+      break label713;
+      label961:
+      if (this.CgK.CgB)
       {
         paramd = Bitmap.createBitmap(m, k, Bitmap.Config.ARGB_8888);
         p.g(paramd, "Bitmap.createBitmap(real… Bitmap.Config.ARGB_8888)");
         this.bitmap = paramd;
-        if ((this.yfM.dHi == 90) || (this.yfM.dHi == 270) || (this.yfM.dHi == 180))
+        if ((this.CgK.dYT == 90) || (this.CgK.dYT == 270) || (this.CgK.dYT == 180))
         {
-          this.yfH = Bitmap.createBitmap(this.yfM.width, this.yfM.height, Bitmap.Config.ARGB_8888);
-          this.yfI = new Canvas(this.yfH);
-          f1 = 360.0F - this.yfM.dHi;
-          this.yfJ.postRotate(f1);
-          if (f1 != 90.0F) {
-            break label1175;
+          this.CgG = Bitmap.createBitmap(this.CgK.width, this.CgK.height, Bitmap.Config.ARGB_8888);
+          paramd = this.CgG;
+          if (paramd == null) {
+            p.hyc();
           }
-          paramd = this.yfJ;
-          localObject = this.yfI;
+          this.CgH = new Canvas(paramd);
+          f1 = 360.0F - this.CgK.dYT;
+          this.finalMatrix.postRotate(f1);
+          if (f1 != 90.0F) {
+            break label1193;
+          }
+          paramd = this.finalMatrix;
+          localObject = this.CgH;
           if (localObject == null) {
-            p.gkB();
+            p.hyc();
           }
           paramd.postTranslate(((Canvas)localObject).getWidth(), 0.0F);
         }
         for (;;)
         {
-          f1 = a(m, k, this.yfM.xKR[2], this.yfM.xKR[3]);
-          ae.i("MicroMsg.StoryFrameRetriever", "scale:".concat(String.valueOf(f1)));
-          this.yfK.postScale(f1, f1);
+          f1 = a(m, k, this.CgK.BKV[2], this.CgK.BKV[3]);
+          Log.i("MicroMsg.StoryFrameRetriever", "scale:".concat(String.valueOf(f1)));
+          this.CgI.postScale(f1, f1);
           break;
           if (f1 == 270.0F)
           {
-            paramd = this.yfJ;
-            localObject = this.yfI;
+            paramd = this.finalMatrix;
+            localObject = this.CgH;
             if (localObject == null) {
-              p.gkB();
+              p.hyc();
             }
             paramd.postTranslate(0.0F, ((Canvas)localObject).getHeight());
           }
         }
       }
-      label1175:
-      paramd = Bitmap.createBitmap(Math.min(this.yfM.width, this.yfM.height), Math.max(this.yfM.width, this.yfM.height), Bitmap.Config.ARGB_8888);
+      label1193:
+      paramd = Bitmap.createBitmap(Math.min(this.CgK.width, this.CgK.height), Math.max(this.CgK.width, this.CgK.height), Bitmap.Config.ARGB_8888);
       p.g(paramd, "Bitmap.createBitmap(Math… Bitmap.Config.ARGB_8888)");
       this.bitmap = paramd;
-      f1 = a(Math.min(this.yfM.width, this.yfM.height), Math.max(this.yfM.width, this.yfM.height), this.yfM.xKR[2], this.yfM.xKR[3]);
-      ae.i("MicroMsg.StoryFrameRetriever", "scale:".concat(String.valueOf(f1)));
-      this.yfK.postScale(f1, f1);
+      f1 = a(Math.min(this.CgK.width, this.CgK.height), Math.max(this.CgK.width, this.CgK.height), this.CgK.BKV[2], this.CgK.BKV[3]);
+      Log.i("MicroMsg.StoryFrameRetriever", "scale:".concat(String.valueOf(f1)));
+      this.CgI.postScale(f1, f1);
     }
   }
   
@@ -254,61 +262,61 @@ public final class g
     return 1.0F;
   }
   
-  public final a cls()
+  public final a cJu()
   {
-    AppMethodBeat.i(207076);
-    if (this.yfM.pYz.size() == 0)
+    AppMethodBeat.i(237917);
+    if (this.CgK.rpx.size() == 0)
     {
-      AppMethodBeat.o(207076);
+      AppMethodBeat.o(237917);
       return null;
     }
-    int i = this.aTq.save();
-    this.aTq.drawColor(0, PorterDuff.Mode.MULTIPLY);
-    this.aTq.concat(this.yfK);
-    Object localObject = this.yfL;
-    Canvas localCanvas = this.aTq;
+    int i = this.aTi.save();
+    this.aTi.drawColor(0, PorterDuff.Mode.MULTIPLY);
+    this.aTi.concat(this.CgI);
+    Object localObject = this.CgJ;
+    Canvas localCanvas = this.aTi;
     p.h(localCanvas, "canvas");
-    ((e)localObject).yfD = localCanvas.save();
-    localCanvas.concat(((e)localObject).yfE);
+    ((e)localObject).CgC = localCanvas.save();
+    localCanvas.concat(((e)localObject).CgD);
     try
     {
-      l = this.pYC.a(this.aTq, this.paint);
-      localObject = this.yfL;
-      localCanvas = this.aTq;
+      l = this.rpA.a(this.aTi, this.paint);
+      localObject = this.CgJ;
+      localCanvas = this.aTi;
       p.h(localCanvas, "canvas");
-      if (((e)localObject).yfD <= 0)
+      if (((e)localObject).CgC <= 0)
       {
-        ae.w("MicroMsg.RetrieverTransform", "canvas restore saveCount: " + ((e)localObject).yfD);
+        Log.w("MicroMsg.RetrieverTransform", "canvas restore saveCount: " + ((e)localObject).CgC);
         if (i > 0) {
           break label340;
         }
-        ae.w("MicroMsg.StoryFrameRetriever", "canvas restore saveCount: ".concat(String.valueOf(i)));
-        if ((this.yfI == null) || (this.yfH == null)) {
+        Log.w("MicroMsg.StoryFrameRetriever", "canvas restore saveCount: ".concat(String.valueOf(i)));
+        if ((this.CgH == null) || (this.CgG == null)) {
           break label351;
         }
-        localObject = this.yfI;
+        localObject = this.CgH;
         if (localObject != null) {
           ((Canvas)localObject).drawColor(0, PorterDuff.Mode.MULTIPLY);
         }
-        localObject = this.yfI;
+        localObject = this.CgH;
         if (localObject != null) {
           ((Canvas)localObject).save();
         }
-        localObject = this.yfI;
+        localObject = this.CgH;
         if (localObject == null) {
-          p.gkB();
+          p.hyc();
         }
-        ((Canvas)localObject).drawBitmap(this.bitmap, this.yfJ, null);
-        localObject = this.yfI;
+        ((Canvas)localObject).drawBitmap(this.bitmap, this.finalMatrix, null);
+        localObject = this.CgH;
         if (localObject != null) {
           ((Canvas)localObject).restore();
         }
-        localObject = this.yfH;
+        localObject = this.CgG;
         if (localObject == null) {
-          p.gkB();
+          p.hyc();
         }
         localObject = new a((Bitmap)localObject, l);
-        AppMethodBeat.o(207076);
+        AppMethodBeat.o(237917);
         return localObject;
       }
     }
@@ -319,72 +327,72 @@ public final class g
       {
         l = 9223372036854775807L;
         continue;
-        localCanvas.restoreToCount(localException.yfD);
+        localCanvas.restoreToCount(localException.CgC);
         continue;
         label340:
-        this.aTq.restoreToCount(i);
+        this.aTi.restoreToCount(i);
       }
       label351:
       a locala = new a(this.bitmap, l);
-      AppMethodBeat.o(207076);
+      AppMethodBeat.o(237917);
       return locala;
     }
   }
   
-  public final boolean dLy()
-  {
-    AppMethodBeat.i(207075);
-    if (((CharSequence)this.yfM.xKW).length() > 0) {}
-    for (int i = 1; (i != 0) && (o.fB(this.yfM.xKW)); i = 0)
-    {
-      AppMethodBeat.o(207075);
-      return true;
-    }
-    AppMethodBeat.o(207075);
-    return false;
-  }
-  
   public final void destroy()
   {
-    AppMethodBeat.i(207078);
+    AppMethodBeat.i(237919);
     try
     {
-      Iterator localIterator = ((Iterable)this.yfM.pYz).iterator();
+      Iterator localIterator = ((Iterable)this.CgK.rpx).iterator();
       while (localIterator.hasNext()) {
         ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a)localIterator.next()).destroy();
       }
-      AppMethodBeat.o(207078);
+      AppMethodBeat.o(237919);
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.StoryFrameRetriever", (Throwable)localException, "destroy error", new Object[0]);
-      AppMethodBeat.o(207078);
+      Log.printErrStackTrace("MicroMsg.StoryFrameRetriever", (Throwable)localException, "destroy error", new Object[0]);
+      AppMethodBeat.o(237919);
       return;
     }
   }
   
+  public final boolean eMw()
+  {
+    AppMethodBeat.i(237916);
+    if (((CharSequence)this.CgK.BLa).length() > 0) {}
+    for (int i = 1; (i != 0) && (s.YS(this.CgK.BLa)); i = 0)
+    {
+      AppMethodBeat.o(237916);
+      return true;
+    }
+    AppMethodBeat.o(237916);
+    return false;
+  }
+  
   public final void start()
   {
-    AppMethodBeat.i(207077);
+    AppMethodBeat.i(237918);
     try
     {
-      Iterator localIterator = ((Iterable)this.yfM.pYz).iterator();
+      Iterator localIterator = ((Iterable)this.CgK.rpx).iterator();
       while (localIterator.hasNext()) {
         ((com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a)localIterator.next()).init();
       }
-      AppMethodBeat.o(207077);
+      AppMethodBeat.o(237918);
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.StoryFrameRetriever", (Throwable)localException, "start error", new Object[0]);
-      AppMethodBeat.o(207077);
+      Log.printErrStackTrace("MicroMsg.StoryFrameRetriever", (Throwable)localException, "start error", new Object[0]);
+      AppMethodBeat.o(237918);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.b.g
  * JD-Core Version:    0.7.0.1
  */

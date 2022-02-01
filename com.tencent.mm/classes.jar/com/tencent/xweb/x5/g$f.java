@@ -7,23 +7,23 @@ import com.tencent.xweb.j;
 public final class g$f
   implements j
 {
-  HttpAuthHandler MSa;
+  HttpAuthHandler SFg;
   
   public g$f(HttpAuthHandler paramHttpAuthHandler)
   {
-    this.MSa = paramHttpAuthHandler;
+    this.SFg = paramHttpAuthHandler;
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(207531);
-    this.MSa.cancel();
-    AppMethodBeat.o(207531);
+    AppMethodBeat.i(207189);
+    this.SFg.cancel();
+    AppMethodBeat.o(207189);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.x5.g.f
  * JD-Core Version:    0.7.0.1
  */

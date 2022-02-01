@@ -296,7 +296,7 @@ public final class MarkerOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.MarkerOptions
  * JD-Core Version:    0.7.0.1
  */

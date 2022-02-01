@@ -21,42 +21,42 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.model.v;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.o;
-import com.tencent.mm.ui.chatting.viewitems.bk;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.chatting.viewitems.bq;
 
 public final class r
 {
-  public static b JWm;
+  public static b PhA;
   
   static
   {
     AppMethodBeat.i(34577);
-    JWm = new b();
+    PhA = new b();
     AppMethodBeat.o(34577);
   }
   
-  public static void dY(View paramView)
+  public static void dQ(View paramView)
   {
     AppMethodBeat.i(34574);
-    Object localObject = JWm;
+    Object localObject = PhA;
     if ((paramView == null) || (localObject == null))
     {
-      ae.w("MicroMsg.OnHoverCompatibleHelper", "view or callback is null.");
+      Log.w("MicroMsg.OnHoverCompatibleHelper", "view or callback is null.");
       AppMethodBeat.o(34574);
       return;
     }
     if (Build.VERSION.SDK_INT >= 14)
     {
-      ah localah = ah.fGf();
-      if ((Build.VERSION.SDK_INT >= 14) && (localah.JYI == null)) {
-        localah.JYI = new ah.a((ah.b)localObject);
+      ah localah = ah.gOj();
+      if ((Build.VERSION.SDK_INT >= 14) && (localah.PjV == null)) {
+        localah.PjV = new ah.a((ah.b)localObject);
       }
-      localObject = localah.JYI;
+      localObject = localah.PjV;
       if ((localObject != null) && (Build.VERSION.SDK_INT >= 14) && ((localObject instanceof View.OnHoverListener))) {
         paramView.setOnHoverListener((View.OnHoverListener)localObject);
       }
@@ -69,15 +69,15 @@ public final class r
     AppMethodBeat.i(34575);
     try
     {
-      if (JWm != null) {
-        b.a(JWm);
+      if (PhA != null) {
+        b.a(PhA);
       }
       AppMethodBeat.o(34575);
       return;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.ChattingItemAvatarOnHoverHelper", "exception in dismiss, %s", new Object[] { localException.getMessage() });
+      Log.e("MicroMsg.ChattingItemAvatarOnHoverHelper", "exception in dismiss, %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(34575);
     }
   }
@@ -102,10 +102,6 @@ public final class r
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(34565);
-      b localb = new b();
-      localb.bd(paramView);
-      localb.bd(paramMotionEvent);
-      a.b("com/tencent/mm/ui/chatting/ChattingItemAvatarOnHoverHelper$ChangeViewBgOnTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
       int i = paramMotionEvent.getAction();
       if ((paramView instanceof ImageView))
       {
@@ -113,19 +109,18 @@ public final class r
         if (paramView != null)
         {
           if (i != 0) {
-            break label110;
+            break label59;
           }
           paramView.setColorFilter(this.mColor, PorterDuff.Mode.MULTIPLY);
         }
       }
       for (;;)
       {
-        a.a(false, this, "com/tencent/mm/ui/chatting/ChattingItemAvatarOnHoverHelper$ChangeViewBgOnTouchListener", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(34565);
         return false;
         paramView = paramView.getBackground();
         break;
-        label110:
+        label59:
         if ((i == 3) || (i == 1)) {
           paramView.clearColorFilter();
         }
@@ -136,47 +131,42 @@ public final class r
   public static final class b
     implements View.OnClickListener, View.OnTouchListener, ah.b
   {
-    private o JWn;
-    private View JWo;
-    private View JWp;
-    private int JWq;
-    private int JWr;
-    private int JWs;
-    private boolean JWt;
-    private r.a JWu;
-    private View.OnTouchListener JWv;
-    private int JWw;
-    private aw.a JWx;
-    private View azA;
-    private aw cji;
+    private int Bgx;
+    private p PhB;
+    private View PhC;
+    private View PhD;
+    private int PhE;
+    private int PhF;
+    private int PhG;
+    private boolean PhH;
+    private r.a PhI;
+    private View.OnTouchListener PhJ;
+    private int PhK;
+    private MTimerHandler.CallBack PhL;
+    private View azy;
+    private MTimerHandler cve;
     private View mContentView;
-    private int mKJ;
     private int mMargin;
-    private int xiC;
+    private int mStatusBarHeight;
     
     public b()
     {
       AppMethodBeat.i(34568);
-      this.JWu = new r.a();
-      this.JWv = new View.OnTouchListener()
+      this.PhI = new r.a();
+      this.PhJ = new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(34566);
-          b localb = new b();
-          localb.bd(paramAnonymousView);
-          localb.bd(paramAnonymousMotionEvent);
-          a.b("com/tencent/mm/ui/chatting/ChattingItemAvatarOnHoverHelper$OnHoverMotionEventCallback$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
           if (r.b.b(r.b.this) != null) {
             r.b.b(r.b.this).onTouch(r.b.c(r.b.this), paramAnonymousMotionEvent);
           }
-          a.a(false, this, "com/tencent/mm/ui/chatting/ChattingItemAvatarOnHoverHelper$OnHoverMotionEventCallback$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(34566);
           return false;
         }
       };
-      this.JWw = 300;
-      this.JWx = new aw.a()
+      this.PhK = 300;
+      this.PhL = new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
@@ -194,27 +184,27 @@ public final class r
     private void dismiss()
     {
       AppMethodBeat.i(34569);
-      if (this.JWn != null) {
-        this.JWn.dismiss();
+      if (this.PhB != null) {
+        this.PhB.dismiss();
       }
       AppMethodBeat.o(34569);
     }
     
-    public final boolean f(View paramView, MotionEvent paramMotionEvent)
+    public final boolean g(View paramView, MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(34570);
       Object localObject1 = paramView.getTag();
-      if ((localObject1 == null) || (!(localObject1 instanceof bk)))
+      if ((localObject1 == null) || (!(localObject1 instanceof bq)))
       {
-        ae.i("MicroMsg.ChattingItemAvatarOnHoverHelper", "The Tag of the View is not a instance of ItemDataTag or is null.");
+        Log.i("MicroMsg.ChattingItemAvatarOnHoverHelper", "The Tag of the View is not a instance of ItemDataTag or is null.");
         AppMethodBeat.o(34570);
         return false;
       }
-      localObject1 = (bk)paramView.getTag();
-      Object localObject2 = ((bk)localObject1).userName;
-      Object localObject3 = v.aAC();
-      if ((bu.isNullOrNil((String)localObject3)) || (((String)localObject3).equals(localObject2))) {
-        ae.v("MicroMsg.ChattingItemAvatarOnHoverHelper", "Can't talk to self and self username can't be null.");
+      localObject1 = (bq)paramView.getTag();
+      Object localObject2 = ((bq)localObject1).userName;
+      Object localObject3 = z.aTY();
+      if ((Util.isNullOrNil((String)localObject3)) || (((String)localObject3).equals(localObject2))) {
+        Log.v("MicroMsg.ChattingItemAvatarOnHoverHelper", "Can't talk to self and self username can't be null.");
       }
       for (int i = 0; i == 0; i = 1)
       {
@@ -222,38 +212,38 @@ public final class r
         return false;
       }
       localObject2 = paramView.getContext();
-      if (this.JWn == null)
+      if (this.PhB == null)
       {
         localObject3 = ((Context)localObject2).getResources();
-        float f = ((Resources)localObject3).getDimension(2131165505);
-        this.JWq = ((int)(((Resources)localObject3).getDimension(2131165187) * 2.0F + f));
-        this.mContentView = View.inflate((Context)localObject2, 2131493412, null);
-        this.JWo = this.mContentView.findViewById(2131306309);
-        this.JWp = this.mContentView.findViewById(2131296967);
-        this.JWp.setOnClickListener(this);
-        this.JWo.setOnClickListener(this);
-        this.JWp.setOnTouchListener(this.JWv);
-        this.JWo.setOnTouchListener(this.JWv);
-        this.JWn = new o(this.mContentView, -2, this.JWq, false);
-        this.JWn.setOutsideTouchable(true);
+        float f = ((Resources)localObject3).getDimension(2131165523);
+        this.PhE = ((int)(((Resources)localObject3).getDimension(2131165190) * 2.0F + f));
+        this.mContentView = View.inflate((Context)localObject2, 2131493507, null);
+        this.PhC = this.mContentView.findViewById(2131309722);
+        this.PhD = this.mContentView.findViewById(2131297082);
+        this.PhD.setOnClickListener(this);
+        this.PhC.setOnClickListener(this);
+        this.PhD.setOnTouchListener(this.PhJ);
+        this.PhC.setOnTouchListener(this.PhJ);
+        this.PhB = new p(this.mContentView, -2, this.PhE, false);
+        this.PhB.setOutsideTouchable(true);
         localObject3 = new Rect();
         if ((localObject2 instanceof Activity)) {
           ((Activity)localObject2).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject3);
         }
-        this.mKJ = ((Rect)localObject3).top;
+        this.mStatusBarHeight = ((Rect)localObject3).top;
         localObject3 = ((Context)localObject2).getResources().getDisplayMetrics();
         if (((DisplayMetrics)localObject3).widthPixels > ((DisplayMetrics)localObject3).heightPixels)
         {
-          this.xiC = ((Context)localObject2).getResources().getDimensionPixelSize(2131165251);
-          this.JWn.setBackgroundDrawable(new ColorDrawable(16777215));
+          this.Bgx = ((Context)localObject2).getResources().getDimensionPixelSize(2131165255);
+          this.PhB.setBackgroundDrawable(new ColorDrawable(16777215));
           this.mMargin = 0;
-          this.cji = new aw(Looper.getMainLooper(), this.JWx, false);
-          ae.i("MicroMsg.ChattingItemAvatarOnHoverHelper", "Create a new PopupWindow.");
+          this.cve = new MTimerHandler(Looper.getMainLooper(), this.PhL, false);
+          Log.i("MicroMsg.ChattingItemAvatarOnHoverHelper", "Create a new PopupWindow.");
         }
       }
       else
       {
-        localObject2 = this.JWn;
+        localObject2 = this.PhB;
         switch (paramMotionEvent.getAction())
         {
         }
@@ -264,41 +254,39 @@ public final class r
         {
           AppMethodBeat.o(34570);
           return true;
-          this.xiC = ((Context)localObject2).getResources().getDimensionPixelSize(2131165252);
+          this.Bgx = ((Context)localObject2).getResources().getDimensionPixelSize(2131165256);
           break;
-          this.JWt = false;
-          this.azA = null;
+          this.PhH = false;
+          this.azy = null;
         }
-        this.azA = paramView;
+        this.azy = paramView;
         paramView.setOnTouchListener(this);
-        if (((o)localObject2).isShowing()) {
-          ((o)localObject2).dismiss();
+        if (((p)localObject2).isShowing()) {
+          ((p)localObject2).dismiss();
         }
-      } while (this.JWt);
-      this.JWp.setTag(localObject1);
-      this.JWo.setTag(localObject1);
-      this.JWp.setVisibility(0);
-      this.JWo.setVisibility(8);
+      } while (this.PhH);
+      this.PhD.setTag(localObject1);
+      this.PhC.setTag(localObject1);
+      this.PhD.setVisibility(0);
+      this.PhC.setVisibility(8);
       paramMotionEvent = new int[2];
       paramView.getLocationInWindow(paramMotionEvent);
       i = paramMotionEvent[1];
       paramView.getWidth();
       int j = paramView.getHeight();
-      this.JWs = this.mMargin;
-      if (i > this.mKJ + this.xiC + this.JWq) {
-        this.JWs = (-j - this.JWq - this.mMargin);
+      this.PhG = this.mMargin;
+      if (i > this.mStatusBarHeight + this.Bgx + this.PhE) {
+        this.PhG = (-j - this.PhE - this.mMargin);
       }
-      this.JWr = 0;
-      if (this.JWs >= 0) {
-        this.mContentView.setBackgroundResource(2131231657);
+      this.PhF = 0;
+      if (this.PhG >= 0) {
+        this.mContentView.setBackgroundResource(2131231723);
       }
       for (;;)
       {
-        paramView = this.cji;
-        long l = this.JWw;
-        paramView.ay(l, l);
+        this.cve.startTimer(this.PhK);
         break;
-        this.mContentView.setBackgroundResource(2131231658);
+        this.mContentView.setBackgroundResource(2131231724);
       }
     }
     
@@ -306,11 +294,11 @@ public final class r
     {
       AppMethodBeat.i(34572);
       Object localObject = new b();
-      ((b)localObject).bd(paramView);
-      a.b("com/tencent/mm/ui/chatting/ChattingItemAvatarOnHoverHelper$OnHoverMotionEventCallback", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-      localObject = (bk)paramView.getTag();
-      if (paramView == this.JWp) {
-        r.w(paramView.getContext(), ((bk)localObject).userName, 3);
+      ((b)localObject).bm(paramView);
+      a.b("com/tencent/mm/ui/chatting/ChattingItemAvatarOnHoverHelper$OnHoverMotionEventCallback", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+      localObject = (bq)paramView.getTag();
+      if (paramView == this.PhD) {
+        r.v(paramView.getContext(), ((bq)localObject).userName, 3);
       }
       for (;;)
       {
@@ -318,26 +306,21 @@ public final class r
         a.a(this, "com/tencent/mm/ui/chatting/ChattingItemAvatarOnHoverHelper$OnHoverMotionEventCallback", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(34572);
         return;
-        r.w(paramView.getContext(), ((bk)localObject).userName, 2);
+        r.v(paramView.getContext(), ((bq)localObject).userName, 2);
       }
     }
     
     public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
     {
       AppMethodBeat.i(34571);
-      b localb = new b();
-      localb.bd(paramView);
-      localb.bd(paramMotionEvent);
-      a.b("com/tencent/mm/ui/chatting/ChattingItemAvatarOnHoverHelper$OnHoverMotionEventCallback", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
       switch (paramMotionEvent.getAction())
       {
       }
       for (;;)
       {
-        a.a(false, this, "com/tencent/mm/ui/chatting/ChattingItemAvatarOnHoverHelper$OnHoverMotionEventCallback", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(34571);
         return false;
-        this.JWt = true;
+        this.PhH = true;
         dismiss();
       }
     }
@@ -345,7 +328,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.r
  * JD-Core Version:    0.7.0.1
  */

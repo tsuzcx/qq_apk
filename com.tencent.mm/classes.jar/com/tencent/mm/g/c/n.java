@@ -2,19 +2,19 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class n
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGD = "appId".hashCode();
-  private static final int eGY = "username".hashCode();
+  private static final int fkj = "appId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGV = true;
-  private boolean eGm = true;
+  private static final int username_HASHCODE = "username".hashCode();
+  private boolean __hadSetusername = true;
   public String field_appId;
   public String field_username;
+  private boolean fjS = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,7 +29,7 @@ public abstract class n
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGY != k) {
+      if (username_HASHCODE != k) {
         break label60;
       }
       this.field_username = paramCursor.getString(i);
@@ -40,7 +40,7 @@ public abstract class n
       break label20;
       break;
       label60:
-      if (eGD == k) {
+      if (fkj == k) {
         this.field_appId = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -51,10 +51,10 @@ public abstract class n
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGV) {
+    if (this.__hadSetusername) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eGm) {
+    if (this.fjS) {
       localContentValues.put("appId", this.field_appId);
     }
     if (this.systemRowid > 0L) {
@@ -65,7 +65,7 @@ public abstract class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.n
  * JD-Core Version:    0.7.0.1
  */

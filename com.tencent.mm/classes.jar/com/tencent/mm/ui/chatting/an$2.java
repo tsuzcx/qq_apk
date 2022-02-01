@@ -1,26 +1,41 @@
 package com.tencent.mm.ui.chatting;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MenuItem;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.ui.base.o.c;
 
 final class an$2
-  implements DialogInterface.OnClickListener
+  implements o.c
 {
-  an$2(Context paramContext, com.tencent.mm.storage.an paraman, List paramList, boolean paramBoolean) {}
+  an$2(Context paramContext) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void a(TextView paramTextView, MenuItem paramMenuItem)
   {
-    AppMethodBeat.i(34920);
-    an.c(this.val$context, this.fVb, this.JZl, this.JZm);
-    AppMethodBeat.o(34920);
+    AppMethodBeat.i(34897);
+    if (paramTextView != null)
+    {
+      bg.aVF();
+      as localas = com.tencent.mm.model.c.aSN().Kn(paramMenuItem.getTitle());
+      if ((localas == null) || ((int)localas.gMZ <= 0))
+      {
+        paramTextView.setText(paramMenuItem.getTitle());
+        AppMethodBeat.o(34897);
+        return;
+      }
+      paramTextView.setText(l.b(this.val$context, localas.arI(), paramTextView.getTextSize()));
+    }
+    AppMethodBeat.o(34897);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.an.2
  * JD-Core Version:    0.7.0.1
  */

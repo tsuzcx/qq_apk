@@ -2,7 +2,7 @@ package com.tencent.mm.av.a.c;
 
 public abstract interface p
 {
-  public abstract boolean Gm(String paramString);
+  public abstract boolean OY(String paramString);
 }
 
 

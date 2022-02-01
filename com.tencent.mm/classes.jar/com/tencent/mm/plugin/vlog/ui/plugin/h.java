@@ -1,23 +1,49 @@
 package com.tencent.mm.plugin.vlog.ui.plugin;
 
-import android.support.v7.widget.RecyclerView.w;
 import android.view.View;
-import com.tencent.mm.plugin.vlog.model.effect.e;
-import d.g.b.p;
-import d.l;
+import android.widget.ImageView;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.loader.a.b;
+import com.tencent.mm.plugin.vlog.model.effect.d;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicPanelViewHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "onBind", "", "item", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "plugin-vlog_release"})
-public abstract class h
-  extends RecyclerView.w
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicEffectItemViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicPanelViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "icon", "Landroid/widget/ImageView;", "getIcon", "()Landroid/widget/ImageView;", "onBind", "", "item", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "plugin-vlog_release"})
+public final class h
+  extends j
 {
+  private final ImageView kc;
+  
   public h(View paramView)
   {
     super(paramView);
+    AppMethodBeat.i(191281);
+    paramView = paramView.findViewById(2131302832);
+    p.g(paramView, "itemView.findViewById(R.id.item_magic_panel_icon)");
+    this.kc = ((ImageView)paramView);
+    AppMethodBeat.o(191281);
   }
   
-  public void a(e parame)
+  public final void a(com.tencent.mm.plugin.vlog.model.effect.e parame)
   {
+    AppMethodBeat.i(191280);
     p.h(parame, "item");
+    if (!(parame instanceof d)) {
+      parame = null;
+    }
+    for (;;)
+    {
+      parame = (d)parame;
+      if (parame != null)
+      {
+        com.tencent.mm.loader.e locale = com.tencent.mm.loader.e.hXU;
+        com.tencent.mm.loader.e.aJs().He(parame.GAm.icon).c(this.kc);
+        AppMethodBeat.o(191280);
+        return;
+      }
+      AppMethodBeat.o(191280);
+      return;
+    }
   }
 }
 

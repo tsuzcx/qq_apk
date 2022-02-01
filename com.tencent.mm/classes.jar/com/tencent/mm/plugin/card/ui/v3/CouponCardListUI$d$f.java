@@ -4,25 +4,25 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.u;
-import com.tencent.mm.pluginsdk.ui.span.i;
-import d.l;
+import com.tencent.mm.pluginsdk.ui.span.j;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$CouponCardConverter$onBindViewHolder$span$1", "Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickListener;", "onClick", "", "widget", "Landroid/view/View;", "hrefInfo", "Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;", "plugin-card_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/card/ui/v3/CouponCardListUI$CouponCardConverter$onBindViewHolder$span$1", "Lcom/tencent/mm/pluginsdk/ui/span/MMSpanClickListener;", "onClick", "", "widget", "Landroid/view/View;", "hrefInfo", "Lcom/tencent/mm/pluginsdk/ui/applet/HrefInfo;", "plugin-card_release"})
 public final class CouponCardListUI$d$f
-  extends i
+  extends j
 {
   CouponCardListUI$d$f(View.OnClickListener paramOnClickListener) {}
   
   public final void a(View paramView, u paramu)
   {
-    AppMethodBeat.i(218489);
-    this.oSi.onClick(paramView);
-    AppMethodBeat.o(218489);
+    AppMethodBeat.i(201496);
+    this.qfW.onClick(paramView);
+    AppMethodBeat.o(201496);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.v3.CouponCardListUI.d.f
  * JD-Core Version:    0.7.0.1
  */

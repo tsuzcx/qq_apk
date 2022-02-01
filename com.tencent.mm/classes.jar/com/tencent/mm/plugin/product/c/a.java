@@ -5,30 +5,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends com.tencent.mm.bw.a
 {
+  public String AZI;
   public String IconUrl;
   public String Name;
-  public String hFS;
-  public int nJA;
-  public String xcg;
+  public String iAc;
+  public int oUv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(91264);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.Name != null) {
-        paramVarArgs.d(1, this.Name);
+        paramVarArgs.e(1, this.Name);
       }
-      if (this.xcg != null) {
-        paramVarArgs.d(2, this.xcg);
+      if (this.AZI != null) {
+        paramVarArgs.e(2, this.AZI);
       }
-      paramVarArgs.aS(3, this.nJA);
-      if (this.hFS != null) {
-        paramVarArgs.d(4, this.hFS);
+      paramVarArgs.aM(3, this.oUv);
+      if (this.iAc != null) {
+        paramVarArgs.e(4, this.iAc);
       }
       if (this.IconUrl != null) {
-        paramVarArgs.d(5, this.IconUrl);
+        paramVarArgs.e(5, this.IconUrl);
       }
       AppMethodBeat.o(91264);
       return 0;
@@ -39,29 +39,29 @@ public final class a
       }
     }
     label438:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Name) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.Name) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.xcg != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.xcg);
+      if (this.AZI != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.AZI);
       }
-      i += f.a.a.b.b.a.bz(3, this.nJA);
+      i += g.a.a.b.b.a.bu(3, this.oUv);
       paramInt = i;
-      if (this.hFS != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.hFS);
+      if (this.iAc != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.iAc);
       }
       i = paramInt;
       if (this.IconUrl != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.IconUrl);
+        i = paramInt + g.a.a.b.b.a.f(5, this.IconUrl);
       }
       AppMethodBeat.o(91264);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(91264);
@@ -69,7 +69,7 @@ public final class a
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         a locala1 = (a)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -77,23 +77,23 @@ public final class a
           AppMethodBeat.o(91264);
           return -1;
         case 1: 
-          locala1.Name = locala.OmT.readString();
+          locala1.Name = locala.UbS.readString();
           AppMethodBeat.o(91264);
           return 0;
         case 2: 
-          locala1.xcg = locala.OmT.readString();
+          locala1.AZI = locala.UbS.readString();
           AppMethodBeat.o(91264);
           return 0;
         case 3: 
-          locala1.nJA = locala.OmT.zc();
+          locala1.oUv = locala.UbS.zi();
           AppMethodBeat.o(91264);
           return 0;
         case 4: 
-          locala1.hFS = locala.OmT.readString();
+          locala1.iAc = locala.UbS.readString();
           AppMethodBeat.o(91264);
           return 0;
         }
-        locala1.IconUrl = locala.OmT.readString();
+        locala1.IconUrl = locala.UbS.readString();
         AppMethodBeat.o(91264);
         return 0;
       }
@@ -104,7 +104,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.c.a
  * JD-Core Version:    0.7.0.1
  */

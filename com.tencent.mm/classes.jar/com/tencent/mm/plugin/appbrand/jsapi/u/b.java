@@ -1,18 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.u;
 
-import com.tencent.mm.plugin.appbrand.jsapi.h;
+import kotlin.l;
 
-public final class b
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/IReferrerPolicyContainer;", "", "referrerPolicy", "Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "getReferrerPolicy", "()Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;", "setReferrerPolicy", "(Lcom/tencent/mm/plugin/appbrand/jsapi/referrer/ReferrerPolicy;)V", "luggage-commons_release"})
+public abstract interface b
 {
-  public String data;
-  public h ljw;
-  public com.tencent.mm.plugin.appbrand.jsapi.b ljx;
-  public String path;
-  public long startTime;
+  public abstract c getReferrerPolicy();
+  
+  public abstract void setReferrerPolicy(c paramc);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.u.b
  * JD-Core Version:    0.7.0.1
  */

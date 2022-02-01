@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j5"
+<LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:padding="@dimen/e4" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ix">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <ImageView android:src="@raw/app_attach_file_icon_voice" style="@style/iv" />
-                <TextView android:layout_gravity="center_vertical" android:id="@id/bwa" android:layout_marginLeft="@dimen/dz" android:text="{title}" style="@style/j2" />
-            </LinearLayout>
-            <include layout="@layout/a2x" />
-            <include layout="@layout/a2w" />
-        </LinearLayout>
-        <include layout="@layout/a2u" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/c0e" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" style="@style/rj">
+        <TextView android:id="@id/c25" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mo" />
     </LinearLayout>
-</FrameLayout>
+</LinearLayout>

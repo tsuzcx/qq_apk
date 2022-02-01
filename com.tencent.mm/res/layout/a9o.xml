@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:layout_gravity="center" android:id="@id/bdm" android:background="@color/FG_4" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/fu" android:gravity="center" android:layout_gravity="center" android:id="@id/g7q" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="60.0dip" android:text="@string/ez6" android:lineSpacingExtra="@dimen/j3" />
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:id="@id/h9h" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:id="@id/d0a" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toTopOf="g8m" style="@style/fo" />
+</android.support.constraint.ConstraintLayout>

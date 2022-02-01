@@ -5,63 +5,68 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class dy
   extends com.tencent.mm.bw.a
 {
-  public int FOv;
-  public int FOw;
+  public boolean KHU;
+  public String KHV;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125708);
+    AppMethodBeat.i(123538);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.FOv);
-      paramVarArgs.aS(2, this.FOw);
-      AppMethodBeat.o(125708);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.cc(1, this.KHU);
+      if (this.KHV != null) {
+        paramVarArgs.e(2, this.KHV);
+      }
+      AppMethodBeat.o(123538);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.FOv);
-      int i = f.a.a.b.b.a.bz(2, this.FOw);
-      AppMethodBeat.o(125708);
-      return paramInt + 0 + i;
+      int i = g.a.a.b.b.a.fS(1) + 1 + 0;
+      paramInt = i;
+      if (this.KHV != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.KHV);
+      }
+      AppMethodBeat.o(123538);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
-      AppMethodBeat.o(125708);
+      AppMethodBeat.o(123538);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       dy localdy = (dy)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(125708);
+        AppMethodBeat.o(123538);
         return -1;
       case 1: 
-        localdy.FOv = locala.OmT.zc();
-        AppMethodBeat.o(125708);
+        localdy.KHU = locala.UbS.yZ();
+        AppMethodBeat.o(123538);
         return 0;
       }
-      localdy.FOw = locala.OmT.zc();
-      AppMethodBeat.o(125708);
+      localdy.KHV = locala.UbS.readString();
+      AppMethodBeat.o(123538);
       return 0;
     }
-    AppMethodBeat.o(125708);
+    AppMethodBeat.o(123538);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dy
  * JD-Core Version:    0.7.0.1
  */

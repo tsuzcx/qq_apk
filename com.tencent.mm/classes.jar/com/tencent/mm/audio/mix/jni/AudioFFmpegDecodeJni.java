@@ -1,12 +1,12 @@
 package com.tencent.mm.audio.mix.jni;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.d.l;
+import com.tencent.mm.audio.mix.d.m;
 
 public class AudioFFmpegDecodeJni
 {
-  protected long deQ = 0L;
-  protected long deR = 0L;
+  protected long dwa = 0L;
+  protected long dwb = 0L;
   
   static
   {
@@ -15,7 +15,7 @@ public class AudioFFmpegDecodeJni
     AppMethodBeat.o(136832);
   }
   
-  public static native int decode(int paramInt1, int paramInt2, int paramInt3, String paramString, l paraml);
+  public static native int decode(int paramInt1, int paramInt2, int paramInt3, String paramString, m paramm);
   
   public native int clearResample(String paramString, Object paramObject);
   
@@ -25,7 +25,7 @@ public class AudioFFmpegDecodeJni
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.jni.AudioFFmpegDecodeJni
  * JD-Core Version:    0.7.0.1
  */

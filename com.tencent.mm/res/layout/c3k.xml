@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="@dimen/ie" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginRight="0.0dip" android:minWidth="@dimen/ie" android:minHeight="120.0dip" style="@style/sa">
+        <TextView android:textSize="@dimen/l" android:textStyle="bold" android:textColor="@color/a2x" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cn" android:text="@string/dwk" android:singleLine="true" android:layout_centerVertical="true" android:lineSpacingMultiplier="1.6" />
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/uj" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginTop="@dimen/ct" android:layout_marginRight="@dimen/ci" android:text="@string/dwj" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/iri" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ce" android:layout_marginTop="@dimen/ce" android:layout_marginRight="@dimen/cn" android:src="@drawable/cp6" android:scaleType="centerCrop" />
+        <Button android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/irn" android:layout_width="wrap_content" android:layout_marginTop="@dimen/cn" android:layout_marginBottom="@dimen/cr" android:text="@string/w0" style="@style/p3" />
+    </LinearLayout>
+</LinearLayout>

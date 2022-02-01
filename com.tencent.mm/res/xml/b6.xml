@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<host-apdu-service android:description="@string/uo" android:requireDeviceUnlock="true" android:apduServiceBanner="@drawable/icon"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <aid-group android:description="@string/uo" android:category="payment">
-        <aid-filter android:name="F123456789" />
-    </aid-group>
-</host-apdu-service>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.preference.HeadImgNewPreference android:key="settings_avatar" android:layout="@layout/b8j" android:title="@string/ci3" />
+    <Preference android:key="settings_nickname" android:layout="@layout/b8j" android:title="@string/d30" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_sex" android:layout="@layout/b8j" android:title="@string/gts" />
+    <Preference android:key="settings_district" android:layout="@layout/b8j" android:title="@string/cli" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_signature" android:layout="@layout/b8j" android:title="@string/d_0" />
+</PreferenceScreen>

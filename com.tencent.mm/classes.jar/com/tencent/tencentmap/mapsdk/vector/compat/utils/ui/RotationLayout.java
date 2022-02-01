@@ -28,11 +28,11 @@ public class RotationLayout
   
   public void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(217572);
+    AppMethodBeat.i(199495);
     if (this.a == 0)
     {
       super.dispatchDraw(paramCanvas);
-      AppMethodBeat.o(217572);
+      AppMethodBeat.o(199495);
       return;
     }
     if (this.a == 1)
@@ -44,7 +44,7 @@ public class RotationLayout
     for (;;)
     {
       super.dispatchDraw(paramCanvas);
-      AppMethodBeat.o(217572);
+      AppMethodBeat.o(199495);
       return;
       if (this.a == 2)
       {
@@ -61,16 +61,16 @@ public class RotationLayout
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(217571);
+    AppMethodBeat.i(199494);
     if ((this.a == 1) || (this.a == 3))
     {
       super.onMeasure(paramInt1, paramInt2);
       setMeasuredDimension(getMeasuredHeight(), getMeasuredWidth());
-      AppMethodBeat.o(217571);
+      AppMethodBeat.o(199494);
       return;
     }
     super.onMeasure(paramInt1, paramInt2);
-    AppMethodBeat.o(217571);
+    AppMethodBeat.o(199494);
   }
   
   public void setViewRotation(int paramInt)
@@ -80,7 +80,7 @@ public class RotationLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.vector.compat.utils.ui.RotationLayout
  * JD-Core Version:    0.7.0.1
  */

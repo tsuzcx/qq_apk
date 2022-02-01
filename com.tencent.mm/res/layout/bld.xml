@@ -1,12 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/adl" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
-        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/h4v" android:layout_width="20.0dip" android:layout_height="20.0dip" />
-        <TextView android:textSize="@dimen/q" android:textColor="@color/y4" android:id="@id/h4x" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="" android:layout_weight="1.0" />
-        <RadioButton android:id="@id/h52" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/nu" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <RelativeLayout android:orientation="vertical" android:id="@id/gup" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/afp" android:gravity="center_horizontal" android:id="@id/guo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/iq7" android:layout_centerVertical="true" />
+            <View android:id="@id/guq" android:background="@color/afv" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <RelativeLayout android:orientation="vertical" android:id="@id/gut" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/aeq" android:gravity="center_horizontal" android:id="@id/gus" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/iq8" android:layout_centerVertical="true" />
+            <View android:id="@id/guu" android:background="@color/afv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="3.0dip" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
     </LinearLayout>
-    <TextView android:textSize="@dimen/b_" android:textColor="@color/rx" android:id="@id/h4y" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="4.0dip" android:text="" />
-    <com.tencent.mm.plugin.wallet_core.ui.view.FavourLayout android:orientation="vertical" android:id="@id/h50" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="4.0dip" />
-    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginTop="16.0dip" />
+    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="@dimen/bo" />
+    <RelativeLayout android:id="@id/gv7" android:layout_width="fill_parent" android:layout_height="400.0dip">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:id="@id/gun" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ipt" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.ListViewInScrollView android:id="@id/gur" android:background="@null" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/axy" android:transcriptMode="disabled" android:cacheColorHint="@android:color/transparent" android:divider="@color/a7t" android:dividerHeight="@dimen/bq" android:headerDividersEnabled="true" style="@style/rj" />
+        <com.tencent.mm.ui.ListViewInScrollView android:id="@id/guv" android:background="@null" android:focusable="true" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/axy" android:transcriptMode="disabled" android:cacheColorHint="@android:color/transparent" android:divider="@color/a7t" android:dividerHeight="@dimen/bq" android:headerDividersEnabled="true" style="@style/rj" />
+    </RelativeLayout>
 </LinearLayout>

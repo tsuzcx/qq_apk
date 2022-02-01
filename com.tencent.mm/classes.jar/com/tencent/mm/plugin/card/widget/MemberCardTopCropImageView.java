@@ -14,25 +14,25 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class MemberCardTopCropImageView
   extends ImageView
 {
   public int itemPadding;
-  public int kl;
-  public int oXj;
-  private float oXk;
-  private Path oXl;
-  private RectF oXm;
+  public int kn;
+  public int qmd;
+  private float qme;
+  private Path qmf;
+  private RectF qmg;
   private float radius;
   
   public MemberCardTopCropImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(113915);
-    this.oXj = -1;
-    this.kl = -1;
+    this.qmd = -1;
+    this.kn = -1;
     this.itemPadding = -1;
     init();
     AppMethodBeat.o(113915);
@@ -42,8 +42,8 @@ public class MemberCardTopCropImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(113916);
-    this.oXj = -1;
-    this.kl = -1;
+    this.qmd = -1;
+    this.kn = -1;
     this.itemPadding = -1;
     init();
     AppMethodBeat.o(113916);
@@ -53,25 +53,25 @@ public class MemberCardTopCropImageView
   {
     AppMethodBeat.i(113918);
     setScaleType(ImageView.ScaleType.MATRIX);
-    this.kl = a.ax(ak.getContext(), 2131165971);
-    this.itemPadding = (a.ax(ak.getContext(), 2131165500) * 2);
+    this.kn = a.aG(MMApplicationContext.getContext(), 2131166003);
+    this.itemPadding = (a.aG(MMApplicationContext.getContext(), 2131165518) * 2);
     AppMethodBeat.o(113918);
   }
   
   public float getShowScale()
   {
-    return this.oXk;
+    return this.qme;
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(113920);
-    if ((this.oXm != null) && (this.oXl != null))
+    if ((this.qmg != null) && (this.qmf != null))
     {
-      this.oXm.right = getWidth();
-      this.oXm.bottom = getHeight();
-      this.oXl.addRoundRect(this.oXm, this.radius, this.radius, Path.Direction.CW);
-      paramCanvas.clipPath(this.oXl);
+      this.qmg.right = getWidth();
+      this.qmg.bottom = getHeight();
+      this.qmf.addRoundRect(this.qmg, this.radius, this.radius, Path.Direction.CW);
+      paramCanvas.clipPath(this.qmf);
     }
     super.onDraw(paramCanvas);
     AppMethodBeat.o(113920);
@@ -90,13 +90,13 @@ public class MemberCardTopCropImageView
     Matrix localMatrix = getImageMatrix();
     int i = getDrawable().getIntrinsicWidth();
     int j = getDrawable().getIntrinsicHeight();
-    this.oXj = (getContext().getResources().getDisplayMetrics().widthPixels - this.itemPadding);
-    int k = this.oXj;
-    int m = this.kl;
+    this.qmd = (getContext().getResources().getDisplayMetrics().widthPixels - this.itemPadding);
+    int k = this.qmd;
+    int m = this.kn;
     if (i * m > j * k) {}
-    for (this.oXk = (m / j);; this.oXk = (k / i))
+    for (this.qme = (m / j);; this.qme = (k / i))
     {
-      localMatrix.setScale(this.oXk, this.oXk);
+      localMatrix.setScale(this.qme, this.qme);
       setImageMatrix(localMatrix);
       bool = super.setFrame(paramInt1, paramInt2, paramInt3, paramInt4);
       AppMethodBeat.o(113919);
@@ -110,15 +110,15 @@ public class MemberCardTopCropImageView
     this.radius = paramFloat;
     if (paramFloat > 0.0F)
     {
-      this.oXl = new Path();
-      this.oXm = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
+      this.qmf = new Path();
+      this.qmg = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
     }
     AppMethodBeat.o(113917);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.card.widget.MemberCardTopCropImageView
  * JD-Core Version:    0.7.0.1
  */

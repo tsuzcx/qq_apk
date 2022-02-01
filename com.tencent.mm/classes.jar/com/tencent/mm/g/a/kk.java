@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.protocal.b.a.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class kk
-  extends b
+  extends IEvent
 {
-  public a dyu;
+  public a dPw;
   
   public kk()
   {
@@ -15,25 +17,24 @@ public final class kk
   
   private kk(byte paramByte)
   {
-    AppMethodBeat.i(140988);
-    this.dyu = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(123714);
+    this.dPw = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(140988);
+    AppMethodBeat.o(123714);
   }
   
   public static final class a
   {
-    public Boolean dyv;
-    public int dyw;
-    public Boolean dyx;
-    public String imagePath;
-    public String toUser;
+    public b dPx;
+    public DialogInterface.OnClickListener dPy;
+    public DialogInterface.OnClickListener dPz;
+    public int type = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.kk
  * JD-Core Version:    0.7.0.1
  */

@@ -2,56 +2,51 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
 import android.content.Context;
 import android.view.View;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.brandservice.ui.timeline.b;
-import com.tencent.mm.ui.widget.MMNeat7extView;
+import com.tencent.mm.plugin.brandservice.ui.b.d;
 
 public final class am
-  extends w
+  extends a
 {
-  public View iFF;
-  public MMNeat7extView oip;
-  public ImageView okW;
-  public View olI;
-  public View oli;
-  public View olj;
-  public TextView omf;
-  public ImageView omh;
-  public ImageView omi;
-  public MMNeat7extView omj;
+  public ProgressBar progressBar;
+  public View puO;
+  public LinearLayout pyc;
+  public TextView pyd;
+  public TextView pye;
+  public LinearLayout pyf;
+  public TextView pyg;
   
-  public final View a(Context paramContext, b paramb)
+  public final View cU(Context paramContext)
   {
-    AppMethodBeat.i(6071);
-    super.b(paramContext, paramb);
-    if (this.oiV != null)
+    AppMethodBeat.i(194973);
+    if (this.puO != null)
     {
-      paramContext = this.oiV;
-      AppMethodBeat.o(6071);
+      paramContext = this.puO;
+      AppMethodBeat.o(194973);
       return paramContext;
     }
-    this.oiV = View.inflate(paramContext, 2131493231, null);
-    bPJ();
-    this.oip = ((MMNeat7extView)this.oiV.findViewById(2131305948));
-    this.omf = ((TextView)this.oiV.findViewById(2131303288));
-    this.okW = ((ImageView)this.oiV.findViewById(2131297219));
-    this.olI = this.oiV.findViewById(2131298114);
-    this.iFF = this.oiV.findViewById(2131306012);
-    this.omj = ((MMNeat7extView)this.oiV.findViewById(2131305938));
-    this.oli = this.oiV.findViewById(2131297350);
-    this.olj = this.oiV.findViewById(2131304857);
-    this.omh = ((ImageView)this.oiV.findViewById(2131303284));
-    this.omi = ((ImageView)this.oiV.findViewById(2131298824));
-    paramContext = this.oiV;
-    AppMethodBeat.o(6071);
+    this.puO = View.inflate(paramContext, 2131493263, null);
+    this.pyc = ((LinearLayout)this.puO.findViewById(2131297537));
+    this.pyd = ((TextView)this.puO.findViewById(2131297578));
+    this.pyf = ((LinearLayout)this.puO.findViewById(2131297572));
+    this.pyg = ((TextView)this.puO.findViewById(2131297573));
+    this.progressBar = ((ProgressBar)this.puO.findViewById(2131297576));
+    this.pye = ((TextView)this.puO.findViewById(2131297577));
+    paramContext = d.pMy;
+    d.i(this.pyd);
+    paramContext = d.pMy;
+    d.i(this.pye);
+    paramContext = this.puO;
+    AppMethodBeat.o(194973);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.am
  * JD-Core Version:    0.7.0.1
  */

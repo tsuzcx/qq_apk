@@ -9,89 +9,89 @@ import android.view.View;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarBlinkWrapper;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/BaseBlinkingCapsuleBarPart;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarBlinkingPart$BlinkHandler;", "mButton", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandOptionButton;", "(Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandOptionButton;)V", "mAnimator", "Landroid/animation/Animator;", "applyDescription", "", "description", "", "applyLogo", "logo", "Landroid/graphics/drawable/Drawable;", "applyStatus", "status", "", "blink", "clearAnimation", "destroy", "dismiss", "getContext", "Landroid/content/Context;", "pauseAnimation", "resumeAnimation", "scheduleToUiThread", "runnable", "Ljava/lang/Runnable;", "setDescription", "resId", "setLogo", "drawable", "setStatus", "luggage-wxa-app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarBlinkWrapper;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/BaseBlinkingCapsuleBarPart;", "Lcom/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarBlinkingPart$BlinkHandler;", "mButton", "Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandOptionButton;", "(Lcom/tencent/mm/plugin/appbrand/widget/actionbar/AppBrandOptionButton;)V", "mAnimator", "Landroid/animation/Animator;", "applyDescription", "", "description", "", "applyLogo", "logo", "Landroid/graphics/drawable/Drawable;", "applyStatus", "status", "", "blink", "clearAnimation", "destroy", "dismiss", "getContext", "Landroid/content/Context;", "pauseAnimation", "resumeAnimation", "scheduleToUiThread", "runnable", "Ljava/lang/Runnable;", "setDescription", "resId", "setLogo", "drawable", "setStatus", "luggage-wxa-app_release"})
 public final class h
   extends f
   implements i.a
 {
-  private Animator EZ;
-  private final AppBrandOptionButton mkY;
+  private Animator Fj;
+  private final AppBrandOptionButton nvw;
   
   public h(AppBrandOptionButton paramAppBrandOptionButton)
   {
-    AppMethodBeat.i(208113);
-    this.mkY = paramAppBrandOptionButton;
-    AppMethodBeat.o(208113);
+    AppMethodBeat.i(219729);
+    this.nvw = paramAppBrandOptionButton;
+    AppMethodBeat.o(219729);
   }
   
-  protected final void A(CharSequence paramCharSequence) {}
+  protected final void E(CharSequence paramCharSequence) {}
   
-  protected final void K(Runnable paramRunnable)
+  protected final void P(Runnable paramRunnable)
   {
-    AppMethodBeat.i(208112);
-    this.mkY.post(paramRunnable);
-    AppMethodBeat.o(208112);
+    AppMethodBeat.i(219728);
+    this.nvw.post(paramRunnable);
+    AppMethodBeat.o(219728);
   }
   
-  public final void bwr()
+  public final void bSA()
   {
-    AppMethodBeat.i(208107);
-    Animator localAnimator = this.EZ;
-    if (localAnimator != null)
-    {
-      localAnimator.resume();
-      AppMethodBeat.o(208107);
-      return;
-    }
-    AppMethodBeat.o(208107);
-  }
-  
-  public final void bws()
-  {
-    AppMethodBeat.i(208108);
-    Animator localAnimator = this.EZ;
+    AppMethodBeat.i(219724);
+    Animator localAnimator = this.Fj;
     if (localAnimator != null)
     {
       localAnimator.pause();
-      AppMethodBeat.o(208108);
+      AppMethodBeat.o(219724);
       return;
     }
-    AppMethodBeat.o(208108);
+    AppMethodBeat.o(219724);
+  }
+  
+  public final void bSz()
+  {
+    AppMethodBeat.i(219723);
+    Animator localAnimator = this.Fj;
+    if (localAnimator != null)
+    {
+      localAnimator.resume();
+      AppMethodBeat.o(219723);
+      return;
+    }
+    AppMethodBeat.o(219723);
   }
   
   public final void clearAnimation()
   {
-    AppMethodBeat.i(208111);
-    Object localObject = this.EZ;
+    AppMethodBeat.i(219727);
+    Object localObject = this.Fj;
     if (localObject != null) {
       ((Animator)localObject).cancel();
     }
-    localObject = this.mkY.getButtonImage();
+    localObject = this.nvw.getButtonImage();
     if (localObject != null)
     {
       ((ImageView)localObject).clearAnimation();
-      AppMethodBeat.o(208111);
+      AppMethodBeat.o(219727);
       return;
     }
-    AppMethodBeat.o(208111);
+    AppMethodBeat.o(219727);
   }
   
   public final void dismiss()
   {
-    AppMethodBeat.i(208106);
+    AppMethodBeat.i(219722);
     y(null);
-    AppMethodBeat.o(208106);
+    AppMethodBeat.o(219722);
   }
   
   protected final Context getContext()
   {
-    AppMethodBeat.i(208110);
-    Context localContext = this.mkY.getContext();
+    AppMethodBeat.i(219726);
+    Context localContext = this.nvw.getContext();
     p.g(localContext, "mButton.context");
-    AppMethodBeat.o(208110);
+    AppMethodBeat.o(219726);
     return localContext;
   }
   
@@ -101,30 +101,26 @@ public final class h
   
   public final void setLogo(Drawable paramDrawable)
   {
-    AppMethodBeat.i(208105);
+    AppMethodBeat.i(219721);
     y(paramDrawable);
-    AppMethodBeat.o(208105);
+    AppMethodBeat.o(219721);
   }
   
   public final void setStatus(int paramInt) {}
   
-  protected final void va(int paramInt) {}
-  
-  public final void vb(int paramInt) {}
-  
   protected final void y(final Drawable paramDrawable)
   {
-    AppMethodBeat.i(208109);
-    AppBrandOptionButton localAppBrandOptionButton = this.mkY;
+    AppMethodBeat.i(219725);
+    AppBrandOptionButton localAppBrandOptionButton = this.nvw;
     clearAnimation();
     if (paramDrawable == null)
     {
       localAppBrandOptionButton.reset();
-      AppMethodBeat.o(208109);
+      AppMethodBeat.o(219725);
       return;
     }
     localAppBrandOptionButton.getButtonImage().setImageDrawable(paramDrawable);
-    Animator localAnimator = cM((View)localAppBrandOptionButton.getButtonImage());
+    Animator localAnimator = cF((View)localAppBrandOptionButton.getButtonImage());
     if (!(localAnimator instanceof ValueAnimator)) {}
     for (Object localObject = null;; localObject = localAnimator)
     {
@@ -133,13 +129,17 @@ public final class h
         ((ValueAnimator)localObject).addUpdateListener((ValueAnimator.AnimatorUpdateListener)new a(localAppBrandOptionButton, paramDrawable));
       }
       localAnimator.start();
-      this.EZ = localAnimator;
-      AppMethodBeat.o(208109);
+      this.Fj = localAnimator;
+      AppMethodBeat.o(219725);
       return;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarBlinkWrapper$applyLogo$1$1"})
+  protected final void yS(int paramInt) {}
+  
+  public final void yT(int paramInt) {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/appbrand/page/capsulebar/CapsuleBarBlinkWrapper$applyLogo$1$1"})
   static final class a
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -147,15 +147,15 @@ public final class h
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(208104);
-      this.mkZ.getButtonImage().setImageDrawable(paramDrawable);
-      AppMethodBeat.o(208104);
+      AppMethodBeat.i(219720);
+      this.nvx.getButtonImage().setImageDrawable(paramDrawable);
+      AppMethodBeat.o(219720);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.capsulebar.h
  * JD-Core Version:    0.7.0.1
  */

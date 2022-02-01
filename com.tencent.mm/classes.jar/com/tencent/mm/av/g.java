@@ -3,179 +3,187 @@ package com.tencent.mm.av;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import java.util.Map;
 
 public final class g
 {
-  public long dCd;
-  public int dEu = -2;
-  public long doE;
-  int doj;
-  public int fms = 0;
-  public int hPI;
-  public String icA = "";
-  int icB = 1;
-  private boolean icC;
-  private boolean icD;
-  private boolean icE;
-  private boolean icF;
-  private boolean icG;
-  private boolean icH;
-  private boolean icI;
-  private boolean icJ;
-  private boolean icK;
-  private boolean icL;
-  private boolean icM;
-  private boolean icN;
-  private boolean icO;
-  private boolean icP;
-  private boolean icQ;
-  private boolean icR;
-  private boolean icS;
-  private boolean icT;
-  private boolean icU;
-  private boolean icV;
-  private boolean icW;
-  public String ico = "";
-  public String icp = "";
-  public String icq = "";
-  public int icr;
-  public int ics;
-  public String ict = "";
-  int icu = 0;
-  private String icv = "";
-  public int icw;
-  public long icx;
-  int icy;
-  public int icz = 0;
+  public int cSx = -2;
+  public long dTS;
+  public int fQW = 0;
+  public int iKP;
+  private boolean iXA;
+  private boolean iXB;
+  private boolean iXC;
+  private boolean iXD;
+  private boolean iXE;
+  private boolean iXF;
+  private boolean iXG;
+  private boolean iXH;
+  private boolean iXI;
+  private boolean iXJ;
+  private boolean iXK;
+  private boolean iXL;
+  private boolean iXM;
+  private boolean iXN;
+  private boolean iXO;
+  private boolean iXP;
+  private boolean iXQ;
+  private boolean iXR;
+  private boolean iXS;
+  private boolean iXT;
+  private boolean iXU;
+  public String iXm = "";
+  public String iXn = "";
+  public String iXo = "";
+  public int iXp;
+  public int iXq;
+  public String iXr = "";
+  int iXs = 0;
+  private String iXt = "";
+  public int iXu;
+  public long iXv;
+  int iXw;
+  public int iXx = 0;
+  public String iXy = "";
+  int iXz = 1;
+  public long localId;
   public int offset;
+  int source;
   public int status;
   
-  public final void FE(String paramString)
+  public final void Aw(long paramLong)
   {
-    this.icv = paramString;
-    this.icS = true;
+    this.iXv = paramLong;
+    this.iXI = true;
   }
   
-  public final void FF(String paramString)
+  public final void Op(String paramString)
   {
-    this.ico = paramString;
-    this.icG = true;
+    this.iXt = paramString;
+    this.iXQ = true;
   }
   
-  public final void FG(String paramString)
+  public final void Oq(String paramString)
   {
-    this.icp = paramString;
-    this.icH = true;
+    this.iXm = paramString;
+    this.iXE = true;
   }
   
-  public final void FH(String paramString)
+  public final void Or(String paramString)
   {
-    this.icq = paramString;
-    this.icI = true;
+    this.iXn = paramString;
+    this.iXF = true;
   }
   
-  public final void FI(String paramString)
+  public final void Os(String paramString)
+  {
+    this.iXo = paramString;
+    this.iXG = true;
+  }
+  
+  public final void Ot(String paramString)
   {
     AppMethodBeat.i(150551);
-    if (((this.icA == null) && (paramString != null)) || ((this.icA != null) && (!this.icA.equals(paramString)))) {
-      this.icP = true;
+    if (((this.iXy == null) && (paramString != null)) || ((this.iXy != null) && (!this.iXy.equals(paramString)))) {
+      this.iXN = true;
     }
-    this.icA = paramString;
+    this.iXy = paramString;
     AppMethodBeat.o(150551);
   }
   
-  public final void FJ(String paramString)
+  public final void Ou(String paramString)
   {
-    this.ict = paramString;
-    this.icV = true;
+    this.iXr = paramString;
+    this.iXT = true;
   }
   
-  public final boolean aIA()
+  public final int bcq()
   {
-    return (this.hPI != 0) && (this.hPI == this.offset);
+    return this.iKP;
   }
   
-  public final boolean aIB()
+  public final String bcr()
   {
-    return this.icz > 0;
+    return this.iXm;
   }
   
-  public final void aIC()
+  public final String bcs()
   {
-    this.fms = 1;
-    this.icQ = true;
+    return this.iXn;
   }
   
-  public final void aID()
+  public final String bct()
   {
-    this.icC = false;
-    this.icD = false;
-    this.icE = false;
-    this.icF = false;
-    this.icG = false;
-    this.icH = false;
-    this.icI = false;
-    this.icJ = false;
-    this.icK = false;
-    this.icL = false;
-    this.icM = false;
-    this.icN = false;
-    this.icO = false;
-    this.icP = false;
-    this.icQ = false;
-    this.icR = false;
-    this.icS = false;
-    this.icT = false;
-    this.icU = false;
-    this.icV = false;
-    this.icW = false;
+    return this.iXo;
   }
   
-  public final int aIw()
+  public final boolean bcu()
   {
-    return this.hPI;
+    return (this.iKP != 0) && (this.iKP == this.offset);
   }
   
-  public final String aIx()
+  public final boolean bcv()
   {
-    return this.ico;
+    return this.iXx > 0;
   }
   
-  public final String aIy()
+  public final void bcw()
   {
-    return this.icp;
+    this.fQW = 1;
+    this.iXO = true;
   }
   
-  public final String aIz()
+  public final void bcx()
   {
-    return this.icq;
+    this.iXA = false;
+    this.iXB = false;
+    this.iXC = false;
+    this.iXD = false;
+    this.iXE = false;
+    this.iXF = false;
+    this.iXG = false;
+    this.iXH = false;
+    this.iXI = false;
+    this.iXJ = false;
+    this.iXK = false;
+    this.iXL = false;
+    this.iXM = false;
+    this.iXN = false;
+    this.iXO = false;
+    this.iXP = false;
+    this.iXQ = false;
+    this.iXR = false;
+    this.iXS = false;
+    this.iXT = false;
+    this.iXU = false;
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(150552);
-    this.doE = paramCursor.getInt(0);
-    this.dCd = paramCursor.getLong(1);
+    this.localId = paramCursor.getInt(0);
+    this.dTS = paramCursor.getLong(1);
     this.offset = paramCursor.getInt(2);
-    this.hPI = paramCursor.getInt(3);
-    this.ico = paramCursor.getString(4);
-    this.icq = paramCursor.getString(5);
-    this.icw = paramCursor.getInt(6);
-    this.icx = paramCursor.getInt(7);
+    this.iKP = paramCursor.getInt(3);
+    this.iXm = paramCursor.getString(4);
+    this.iXo = paramCursor.getString(5);
+    this.iXu = paramCursor.getInt(6);
+    this.iXv = paramCursor.getInt(7);
     this.status = paramCursor.getInt(8);
-    this.icy = paramCursor.getInt(9);
-    this.icz = paramCursor.getInt(10);
-    this.doj = paramCursor.getInt(11);
-    this.icA = paramCursor.getString(12);
-    this.fms = paramCursor.getInt(14);
-    this.icB = paramCursor.getInt(15);
-    this.icv = paramCursor.getString(16);
-    this.icr = paramCursor.getInt(17);
-    this.icp = paramCursor.getString(18);
-    this.ics = paramCursor.getInt(19);
-    this.ict = paramCursor.getString(20);
-    this.icu = paramCursor.getInt(21);
+    this.iXw = paramCursor.getInt(9);
+    this.iXx = paramCursor.getInt(10);
+    this.source = paramCursor.getInt(11);
+    this.iXy = paramCursor.getString(12);
+    this.fQW = paramCursor.getInt(14);
+    this.iXz = paramCursor.getInt(15);
+    this.iXt = paramCursor.getString(16);
+    this.iXp = paramCursor.getInt(17);
+    this.iXn = paramCursor.getString(18);
+    this.iXq = paramCursor.getInt(19);
+    this.iXr = paramCursor.getString(20);
+    this.iXs = paramCursor.getInt(21);
     AppMethodBeat.o(150552);
   }
   
@@ -183,147 +191,130 @@ public final class g
   {
     AppMethodBeat.i(150553);
     ContentValues localContentValues = new ContentValues();
-    if (this.icC) {
-      localContentValues.put("id", Long.valueOf(this.doE));
+    if (this.iXA) {
+      localContentValues.put("id", Long.valueOf(this.localId));
     }
-    if (this.icD) {
-      localContentValues.put("msgSvrId", Long.valueOf(this.dCd));
+    if (this.iXB) {
+      localContentValues.put("msgSvrId", Long.valueOf(this.dTS));
     }
-    if (this.icE) {
+    if (this.iXC) {
       localContentValues.put("offset", Integer.valueOf(this.offset));
     }
-    if (this.icF) {
-      localContentValues.put("totalLen", Integer.valueOf(this.hPI));
+    if (this.iXD) {
+      localContentValues.put("totalLen", Integer.valueOf(this.iKP));
     }
-    if (this.icG) {
-      localContentValues.put("bigImgPath", this.ico);
+    if (this.iXE) {
+      localContentValues.put("bigImgPath", this.iXm);
     }
-    if (this.icH) {
-      localContentValues.put("midImgPath", this.icp);
+    if (this.iXF) {
+      localContentValues.put("midImgPath", this.iXn);
     }
-    if (this.icI) {
-      localContentValues.put("thumbImgPath", this.icq);
+    if (this.iXG) {
+      localContentValues.put("thumbImgPath", this.iXo);
     }
-    if (this.icJ) {
-      localContentValues.put("createtime", Integer.valueOf(this.icw));
+    if (this.iXH) {
+      localContentValues.put("createtime", Integer.valueOf(this.iXu));
     }
-    if (this.icK) {
-      localContentValues.put("msglocalid", Long.valueOf(this.icx));
+    if (this.iXI) {
+      localContentValues.put("msglocalid", Long.valueOf(this.iXv));
     }
-    if (this.icL) {
+    if (this.iXJ) {
       localContentValues.put("status", Integer.valueOf(this.status));
     }
-    if (this.icM) {
-      localContentValues.put("nettimes", Integer.valueOf(this.icy));
+    if (this.iXK) {
+      localContentValues.put("nettimes", Integer.valueOf(this.iXw));
     }
-    if (this.icN) {
-      localContentValues.put("reserved1", Integer.valueOf(this.icz));
+    if (this.iXL) {
+      localContentValues.put("reserved1", Integer.valueOf(this.iXx));
     }
-    if (this.icO) {
-      localContentValues.put("reserved2", Integer.valueOf(this.doj));
+    if (this.iXM) {
+      localContentValues.put("reserved2", Integer.valueOf(this.source));
     }
-    if (this.icP) {
-      localContentValues.put("reserved3", this.icA);
+    if (this.iXN) {
+      localContentValues.put("reserved3", this.iXy);
     }
-    if (this.icQ) {
-      localContentValues.put("hashdthumb", Integer.valueOf(this.fms));
+    if (this.iXO) {
+      localContentValues.put("hashdthumb", Integer.valueOf(this.fQW));
     }
-    if (this.icR) {
-      if (this.offset >= this.hPI) {
-        break label436;
+    if (this.iXP) {
+      if (this.offset >= this.iKP) {
+        break label437;
       }
     }
-    label436:
+    label437:
     for (int i = 0;; i = 1)
     {
       localContentValues.put("iscomplete", Integer.valueOf(i));
-      if (this.icS) {
-        localContentValues.put("origImgMD5", this.icv);
+      if (this.iXQ) {
+        localContentValues.put("origImgMD5", this.iXt);
       }
-      if (this.icT) {
-        localContentValues.put("compressType", Integer.valueOf(this.icr));
+      if (this.iXR) {
+        localContentValues.put("compressType", Integer.valueOf(this.iXp));
       }
-      if (this.icU) {
-        localContentValues.put("forwardType", Integer.valueOf(this.ics));
+      if (this.iXS) {
+        localContentValues.put("forwardType", Integer.valueOf(this.iXq));
       }
-      if (this.icV) {
-        localContentValues.put("hevcPath", this.ict);
+      if (this.iXT) {
+        localContentValues.put("hevcPath", this.iXr);
       }
-      if (this.icW) {
-        localContentValues.put("sendImgType", Integer.valueOf(this.icu));
+      if (this.iXU) {
+        localContentValues.put("sendImgType", Integer.valueOf(this.iXs));
       }
       AppMethodBeat.o(150553);
       return localContentValues;
     }
   }
   
+  public final String getAesKey()
+  {
+    AppMethodBeat.i(223574);
+    Object localObject = XmlParser.parseXml(this.iXy, "msg", null);
+    if (localObject != null)
+    {
+      localObject = (String)((Map)localObject).get(".msg.img.$aeskey");
+      AppMethodBeat.o(223574);
+      return localObject;
+    }
+    AppMethodBeat.o(223574);
+    return null;
+  }
+  
+  public final String getFileId()
+  {
+    AppMethodBeat.i(223573);
+    int i = this.iXp;
+    Object localObject = XmlParser.parseXml(this.iXy, "msg", null);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(223573);
+      return null;
+    }
+    if (i != 1)
+    {
+      localObject = (String)((Map)localObject).get(".msg.img.$cdnmidimgurl");
+      AppMethodBeat.o(223573);
+      return localObject;
+    }
+    localObject = (String)((Map)localObject).get(".msg.img.$cdnbigimgurl");
+    AppMethodBeat.o(223573);
+    return localObject;
+  }
+  
   public final long getLocalId()
   {
-    return this.doE;
-  }
-  
-  public final void pp(int paramInt)
-  {
-    this.icy = paramInt;
-    this.icM = true;
-  }
-  
-  public final void pq(int paramInt)
-  {
-    this.hPI = paramInt;
-    this.icF = true;
-  }
-  
-  public final void pr(int paramInt)
-  {
-    this.icz = paramInt;
-    this.icN = true;
-  }
-  
-  public final void ps(int paramInt)
-  {
-    this.ics = paramInt;
-    this.icU = true;
-  }
-  
-  public final void pt(int paramInt)
-  {
-    this.icu = paramInt;
-    this.icW = true;
-  }
-  
-  public final void pu(int paramInt)
-  {
-    if (this.icB != paramInt) {
-      this.icR = true;
-    }
-    this.icB = paramInt;
-  }
-  
-  public final void pv(int paramInt)
-  {
-    this.icr = paramInt;
-    this.icT = true;
-  }
-  
-  public final void qM(long paramLong)
-  {
-    if (this.dCd != paramLong) {
-      this.icD = true;
-    }
-    this.dCd = paramLong;
+    return this.localId;
   }
   
   public final void setCreateTime(int paramInt)
   {
-    this.icw = paramInt;
-    this.icJ = true;
+    this.iXu = paramInt;
+    this.iXH = true;
   }
   
   public final void setLocalId(long paramLong)
   {
-    this.doE = paramLong;
-    this.icC = true;
+    this.localId = paramLong;
+    this.iXA = true;
   }
   
   public final void setOffset(int paramInt)
@@ -331,14 +322,14 @@ public final class g
     int i = 0;
     AppMethodBeat.i(150550);
     if (this.offset != paramInt) {
-      this.icE = true;
+      this.iXC = true;
     }
     this.offset = paramInt;
-    ae.e("MicroMsg.Imgfo", "set offset : %d  id:%d total:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.icx), Integer.valueOf(this.hPI) });
-    if (paramInt < this.hPI) {}
+    Log.e("MicroMsg.Imgfo", "set offset : %d  id:%d total:%d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.iXv), Integer.valueOf(this.iKP) });
+    if (paramInt < this.iKP) {}
     for (paramInt = i;; paramInt = 1)
     {
-      pu(paramInt);
+      tj(paramInt);
       AppMethodBeat.o(150550);
       return;
     }
@@ -346,25 +337,71 @@ public final class g
   
   public final void setSource(int paramInt)
   {
-    this.doj = paramInt;
-    this.icO = true;
+    this.source = paramInt;
+    this.iXM = true;
   }
   
   public final void setStatus(int paramInt)
   {
     this.status = paramInt;
-    this.icL = true;
+    this.iXJ = true;
   }
   
-  public final void sq(long paramLong)
+  public final void te(int paramInt)
   {
-    this.icx = paramLong;
-    this.icK = true;
+    this.iXw = paramInt;
+    this.iXK = true;
+  }
+  
+  public final void tf(int paramInt)
+  {
+    this.iKP = paramInt;
+    this.iXD = true;
+  }
+  
+  public final void tg(int paramInt)
+  {
+    this.iXx = paramInt;
+    this.iXL = true;
+  }
+  
+  public final void th(int paramInt)
+  {
+    this.iXq = paramInt;
+    this.iXS = true;
+  }
+  
+  public final void ti(int paramInt)
+  {
+    this.iXs = paramInt;
+    this.iXU = true;
+  }
+  
+  public final void tj(int paramInt)
+  {
+    if (this.iXz != paramInt) {
+      this.iXP = true;
+    }
+    this.iXz = paramInt;
+  }
+  
+  public final void tk(int paramInt)
+  {
+    this.iXp = paramInt;
+    this.iXR = true;
+  }
+  
+  public final void yF(long paramLong)
+  {
+    if (this.dTS != paramLong) {
+      this.iXB = true;
+    }
+    this.dTS = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,76 +1,76 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.afs;
-import com.tencent.mm.protocal.protobuf.aft;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ahz;
+import com.tencent.mm.protocal.protobuf.aia;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class l
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private afs Dgr;
-  public aft Dgs;
-  private boolean Dgt;
-  private f callback;
-  private b gRX;
+  private ahz HPK;
+  public aia HPL;
+  private boolean HPM;
+  private i callback;
+  private d hJu;
   
   public l(String paramString, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(69911);
-    this.Dgt = paramBoolean;
-    b.a locala = new b.a();
-    locala.hQF = new afs();
-    locala.hQG = new aft();
+    this.HPM = paramBoolean;
+    d.a locala = new d.a();
+    locala.iLN = new ahz();
+    locala.iLO = new aia();
     if (paramBoolean) {
       locala.funcId = 1859;
     }
     for (locala.uri = "/cgi-bin/mmpay-bin/mktdrawf2flottery";; locala.uri = "/cgi-bin/mmpay-bin/mktdrawlottery")
     {
-      locala.hQH = 0;
+      locala.iLP = 0;
       locala.respCmdId = 0;
-      this.gRX = locala.aDS();
-      this.Dgr = ((afs)this.gRX.hQD.hQJ);
-      this.Dgr.Gwa = paramString;
-      this.Dgr.Gwb = paramInt;
-      ae.i("MicroMsg.NetSceneMktDrawLottery", "NetSceneMktDrawLottery, drawLotteryParams: %s, drawLotteryType: %s, isF2f: %s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+      this.hJu = locala.aXF();
+      this.HPK = ((ahz)this.hJu.iLK.iLR);
+      this.HPK.LrG = paramString;
+      this.HPK.LrH = paramInt;
+      Log.i("MicroMsg.NetSceneMktDrawLottery", "NetSceneMktDrawLottery, drawLotteryParams: %s, drawLotteryType: %s, isF2f: %s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
       AppMethodBeat.o(69911);
       return;
       locala.funcId = 2547;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(69912);
-    this.callback = paramf;
-    int i = dispatch(parame, this.gRX, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.hJu, this);
     AppMethodBeat.o(69912);
     return i;
   }
   
   public final int getType()
   {
-    if (this.Dgt) {
+    if (this.HPM) {
       return 1859;
     }
     return 2547;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69913);
-    ae.i("MicroMsg.NetSceneMktDrawLottery", "onGYNetEnd netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.Dgs = ((aft)((b)paramq).hQE.hQJ);
+    Log.i("MicroMsg.NetSceneMktDrawLottery", "onGYNetEnd netId: %s, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.HPL = ((aia)((d)params).iLL.iLR);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

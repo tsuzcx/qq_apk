@@ -40,7 +40,7 @@ public class zzzi
     AppMethodBeat.i(40354);
     try
     {
-      Class localClass = Class.forName("com.google.protobuf.Extension");
+      Class localClass = Class.forName("com.google.a.n");
       AppMethodBeat.o(40354);
       return localClass;
     }
@@ -61,7 +61,7 @@ public class zzzi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.internal.measurement.zzzi
  * JD-Core Version:    0.7.0.1
  */

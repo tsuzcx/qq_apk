@@ -2,22 +2,25 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class gn
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGD = "appId".hashCode();
-  private static final int eGY = "username".hashCode();
-  private static final int eIR = "openId".hashCode();
+  private static final int fkX = "size".hashCode();
+  private static final int fyj = "state".hashCode();
+  private static final int gaA = "top".hashCode();
+  private static final int gaB = "bottom".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGV = true;
-  private boolean eGm = true;
-  private boolean eIv = true;
-  public String field_appId;
-  public String field_openId;
-  public String field_username;
+  public long field_bottom;
+  public int field_size;
+  public int field_state;
+  public long field_top;
+  private boolean fkV = true;
+  private boolean fxx = true;
+  private boolean gay = true;
+  private boolean gaz = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,23 +35,32 @@ public abstract class gn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eIR != k) {
-        break label65;
+      if (gaA != k) {
+        break label60;
       }
-      this.field_openId = paramCursor.getString(i);
-      this.eIv = true;
+      this.field_top = paramCursor.getLong(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eGD == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (eGY == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (rowid_HASHCODE == k) {
+      label60:
+      if (gaB == k)
+      {
+        this.field_bottom = paramCursor.getLong(i);
+        this.gaz = true;
+      }
+      else if (fkX == k)
+      {
+        this.field_size = paramCursor.getInt(i);
+      }
+      else if (fyj == k)
+      {
+        this.field_state = paramCursor.getInt(i);
+      }
+      else if (rowid_HASHCODE == k)
+      {
         this.systemRowid = paramCursor.getLong(i);
       }
     }
@@ -57,14 +69,17 @@ public abstract class gn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eIv) {
-      localContentValues.put("openId", this.field_openId);
+    if (this.gay) {
+      localContentValues.put("top", Long.valueOf(this.field_top));
     }
-    if (this.eGm) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.gaz) {
+      localContentValues.put("bottom", Long.valueOf(this.field_bottom));
     }
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
+    if (this.fkV) {
+      localContentValues.put("size", Integer.valueOf(this.field_size));
+    }
+    if (this.fxx) {
+      localContentValues.put("state", Integer.valueOf(this.field_state));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -74,7 +89,7 @@ public abstract class gn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.gn
  * JD-Core Version:    0.7.0.1
  */

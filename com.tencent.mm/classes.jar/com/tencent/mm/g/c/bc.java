@@ -2,22 +2,19 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class bc
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGD = "appId".hashCode();
-  private static final int eHo = "versionType".hashCode();
-  private static final int eSz = "extJson".hashCode();
+  private static final int fjf = "msgId".hashCode();
+  private static final int fwc = "transferId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGm = true;
-  private boolean eHk = true;
-  private boolean eSy = true;
-  public String field_appId;
-  public String field_extJson;
-  public int field_versionType;
+  public long field_msgId;
+  public String field_transferId;
+  private boolean fjb = true;
+  private boolean fwb = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,21 +29,20 @@ public abstract class bc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGD != k) {
-        break label60;
+      if (fjf != k) {
+        break label65;
       }
-      this.field_appId = paramCursor.getString(i);
+      this.field_msgId = paramCursor.getLong(i);
+      this.fjb = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (eHo == k) {
-        this.field_versionType = paramCursor.getInt(i);
-      } else if (eSz == k) {
-        this.field_extJson = paramCursor.getString(i);
+      label65:
+      if (fwc == k) {
+        this.field_transferId = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -56,14 +52,11 @@ public abstract class bc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGm) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.fjb) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.eHk) {
-      localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
-    }
-    if (this.eSy) {
-      localContentValues.put("extJson", this.field_extJson);
+    if (this.fwb) {
+      localContentValues.put("transferId", this.field_transferId);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -73,7 +66,7 @@ public abstract class bc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.bc
  * JD-Core Version:    0.7.0.1
  */

@@ -20,24 +20,24 @@ public class AudioMix<InputParameters extends AudioMixInputParameters>
   
   public InputParameters getInputParametersWithTrackID(int paramInt)
   {
-    AppMethodBeat.i(214518);
+    AppMethodBeat.i(217850);
     Iterator localIterator = this.inputParameters.iterator();
     while (localIterator.hasNext())
     {
       AudioMixInputParameters localAudioMixInputParameters = (AudioMixInputParameters)localIterator.next();
       if (localAudioMixInputParameters.getTrackID() == paramInt)
       {
-        AppMethodBeat.o(214518);
+        AppMethodBeat.o(217850);
         return localAudioMixInputParameters;
       }
     }
-    AppMethodBeat.o(214518);
+    AppMethodBeat.o(217850);
     return null;
   }
   
   public void release()
   {
-    AppMethodBeat.i(214519);
+    AppMethodBeat.i(217851);
     Iterator localIterator = this.inputParameters.iterator();
     while (localIterator.hasNext())
     {
@@ -46,20 +46,20 @@ public class AudioMix<InputParameters extends AudioMixInputParameters>
         localAudioMixInputParameters.getAudioTapProcessor().release();
       }
     }
-    AppMethodBeat.o(214519);
+    AppMethodBeat.o(217851);
   }
   
   public String toString()
   {
-    AppMethodBeat.i(214520);
+    AppMethodBeat.i(217852);
     String str = "AudioMix{inputParameters=" + this.inputParameters + '}';
-    AppMethodBeat.o(214520);
+    AppMethodBeat.o(217852);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.core.AudioMix
  * JD-Core Version:    0.7.0.1
  */

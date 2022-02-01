@@ -16,17 +16,17 @@ public class EmotionCell
     AppMethodBeat.i(104772);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.CellTitle != null) {
-        paramVarArgs.d(1, this.CellTitle);
+        paramVarArgs.e(1, this.CellTitle);
       }
-      paramVarArgs.aS(2, this.ReqType);
-      paramVarArgs.aS(3, this.Position);
+      paramVarArgs.aM(2, this.ReqType);
+      paramVarArgs.aM(3, this.Position);
       if (this.IconUrl != null) {
-        paramVarArgs.d(4, this.IconUrl);
+        paramVarArgs.e(4, this.IconUrl);
       }
       if (this.TagUrl != null) {
-        paramVarArgs.d(5, this.TagUrl);
+        paramVarArgs.e(5, this.TagUrl);
       }
       AppMethodBeat.o(104772);
       return 0;
@@ -37,25 +37,25 @@ public class EmotionCell
       }
     }
     label422:
-    for (paramInt = f.a.a.b.b.a.e(1, this.CellTitle) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.CellTitle) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.ReqType) + f.a.a.b.b.a.bz(3, this.Position);
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.ReqType) + g.a.a.b.b.a.bu(3, this.Position);
       paramInt = i;
       if (this.IconUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.IconUrl);
+        paramInt = i + g.a.a.b.b.a.f(4, this.IconUrl);
       }
       i = paramInt;
       if (this.TagUrl != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.TagUrl);
+        i = paramInt + g.a.a.b.b.a.f(5, this.TagUrl);
       }
       AppMethodBeat.o(104772);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(104772);
@@ -63,7 +63,7 @@ public class EmotionCell
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         EmotionCell localEmotionCell = (EmotionCell)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -71,23 +71,23 @@ public class EmotionCell
           AppMethodBeat.o(104772);
           return -1;
         case 1: 
-          localEmotionCell.CellTitle = locala.OmT.readString();
+          localEmotionCell.CellTitle = locala.UbS.readString();
           AppMethodBeat.o(104772);
           return 0;
         case 2: 
-          localEmotionCell.ReqType = locala.OmT.zc();
+          localEmotionCell.ReqType = locala.UbS.zi();
           AppMethodBeat.o(104772);
           return 0;
         case 3: 
-          localEmotionCell.Position = locala.OmT.zc();
+          localEmotionCell.Position = locala.UbS.zi();
           AppMethodBeat.o(104772);
           return 0;
         case 4: 
-          localEmotionCell.IconUrl = locala.OmT.readString();
+          localEmotionCell.IconUrl = locala.UbS.readString();
           AppMethodBeat.o(104772);
           return 0;
         }
-        localEmotionCell.TagUrl = locala.OmT.readString();
+        localEmotionCell.TagUrl = locala.UbS.readString();
         AppMethodBeat.o(104772);
         return 0;
       }

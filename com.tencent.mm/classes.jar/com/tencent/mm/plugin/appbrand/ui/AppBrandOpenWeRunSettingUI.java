@@ -3,239 +3,181 @@ package com.tencent.mm.plugin.appbrand.ui;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.al.ag;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.al.f;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.au.a;
-import com.tencent.mm.model.au.b;
-import com.tencent.mm.model.au.b.a;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ay.a;
+import com.tencent.mm.model.ay.b;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.pluginsdk.model.o;
+import com.tencent.mm.pluginsdk.model.p;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
-import com.tencent.mm.ui.tools.t;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.ui.tools.u;
 
 public class AppBrandOpenWeRunSettingUI
   extends MMActivity
-  implements com.tencent.mm.ak.f
+  implements i
 {
-  private an contact = null;
-  private ImageView fTj;
-  private TextView fWX;
-  private TextView jeW;
-  private TextView mHr;
-  p mHs;
+  private as contact = null;
+  private TextView gCd;
+  private ImageView gyr;
+  private TextView kcZ;
+  private TextView nUp;
+  com.tencent.mm.ui.base.q nUq;
   private TextView titleTv;
   
   private void updateStatus()
   {
     AppMethodBeat.i(48670);
-    a.b.c(this.fTj, this.contact.field_username);
-    this.jeW.setText(this.contact.adG());
-    if (com.tencent.mm.contact.c.lO(this.contact.field_type))
+    a.b.c(this.gyr, this.contact.field_username);
+    this.kcZ.setText(this.contact.arJ());
+    if (com.tencent.mm.contact.c.oR(this.contact.field_type))
     {
-      this.fWX.setTextColor(t.kJ(getContext()));
-      this.fWX.setText(2131763360);
-      this.fWX.setCompoundDrawablesWithIntrinsicBounds(2131234178, 0, 0, 0);
-      this.mHr.setText(2131763360);
-      this.mHr.setClickable(false);
+      this.gCd.setTextColor(u.kF(getContext()));
+      this.gCd.setText(2131765542);
+      this.gCd.setCompoundDrawablesWithIntrinsicBounds(2131235049, 0, 0, 0);
+      this.nUp.setText(2131765542);
+      this.nUp.setClickable(false);
       AppMethodBeat.o(48670);
       return;
     }
-    this.fWX.setTextColor(t.kK(getContext()));
-    this.fWX.setText(2131763368);
-    this.fWX.setCompoundDrawablesWithIntrinsicBounds(2131234177, 0, 0, 0);
-    this.mHr.setText(2131763358);
-    this.mHr.setClickable(true);
+    this.gCd.setTextColor(u.kG(getContext()));
+    this.gCd.setText(2131765550);
+    this.gCd.setCompoundDrawablesWithIntrinsicBounds(2131235048, 0, 0, 0);
+    this.nUp.setText(2131765540);
+    this.nUp.setClickable(true);
     AppMethodBeat.o(48670);
   }
   
   public int getLayoutId()
   {
-    return 2131493015;
+    return 2131493054;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(48669);
     super.onCreate(paramBundle);
-    setMMTitle(getString(2131755535));
-    this.fTj = ((ImageView)findViewById(2131303026));
-    this.jeW = ((TextView)findViewById(2131303027));
-    this.fWX = ((TextView)findViewById(2131303029));
-    this.titleTv = ((TextView)findViewById(2131303031));
-    this.mHr = ((TextView)findViewById(2131303028));
-    this.mHr.setOnClickListener(new View.OnClickListener()
+    setMMTitle(getString(2131755576));
+    this.gyr = ((ImageView)findViewById(2131305629));
+    this.kcZ = ((TextView)findViewById(2131305630));
+    this.gCd = ((TextView)findViewById(2131305632));
+    this.titleTv = ((TextView)findViewById(2131305634));
+    this.nUp = ((TextView)findViewById(2131305631));
+    this.nUp.setOnClickListener(new AppBrandOpenWeRunSettingUI.1(this));
+    setBackBtn(new AppBrandOpenWeRunSettingUI.2(this));
+    paramBundle = Util.nullAsNil(getIntent().getStringExtra("OpenWeRunSettingName"));
+    this.contact = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn("gh_43f2581f6fd6");
+    if ((this.contact == null) || ((int)this.contact.gMZ == 0))
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(48665);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandOpenWeRunSettingUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-        com.tencent.mm.plugin.sport.a.c.md(13);
-        paramAnonymousView = AppBrandOpenWeRunSettingUI.this;
-        paramAnonymousView.getString(2131755906);
-        paramAnonymousView.mHs = h.b(paramAnonymousView, paramAnonymousView.getString(2131763362), true, null);
-        paramAnonymousView.mHs.show();
-        com.tencent.mm.kernel.g.ajQ().gDv.a(30, paramAnonymousView);
-        paramAnonymousView = new LinkedList();
-        paramAnonymousView.add("gh_43f2581f6fd6");
-        localObject = new LinkedList();
-        ((LinkedList)localObject).add(Integer.valueOf(1));
-        paramAnonymousView = new o(paramAnonymousView, (List)localObject, "", "");
-        com.tencent.mm.kernel.g.ajQ().gDv.a(paramAnonymousView, 0);
-        a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandOpenWeRunSettingUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(48665);
-      }
-    });
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(48666);
-        AppBrandOpenWeRunSettingUI.this.finish();
-        AppMethodBeat.o(48666);
-        return true;
-      }
-    });
-    paramBundle = bu.nullAsNil(getIntent().getStringExtra("OpenWeRunSettingName"));
-    this.contact = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH("gh_43f2581f6fd6");
-    if ((this.contact == null) || ((int)this.contact.ght == 0))
-    {
-      getString(2131755906);
-      this.mHs = h.b(this, getString(2131755936), true, null);
-      this.mHs.show();
-      au.a.hIG.a("gh_43f2581f6fd6", "", new au.b.a()
-      {
-        public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(48667);
-          ae.i("MicroMsg.AppBrandOpenWeRunSettingUI", "getContactCallBack, suc = %b,user %s", new Object[] { Boolean.valueOf(paramAnonymousBoolean), paramAnonymousString });
-          AppBrandOpenWeRunSettingUI.a(AppBrandOpenWeRunSettingUI.this, ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH("gh_43f2581f6fd6"));
-          AppBrandOpenWeRunSettingUI.a(AppBrandOpenWeRunSettingUI.this);
-          AppBrandOpenWeRunSettingUI.b(AppBrandOpenWeRunSettingUI.this).dismiss();
-          AppMethodBeat.o(48667);
-        }
-      });
+      getString(2131755998);
+      this.nUq = h.a(this, getString(2131756029), true, null);
+      this.nUq.show();
+      ay.a.iDq.a("gh_43f2581f6fd6", "", new AppBrandOpenWeRunSettingUI.3(this));
     }
-    this.titleTv.setText(getString(2131755537, new Object[] { paramBundle }));
+    this.titleTv.setText(getString(2131755578, new Object[] { paramBundle }));
     updateStatus();
     AppMethodBeat.o(48669);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(48671);
-    if ((paramn instanceof o))
+    if ((paramq instanceof p))
     {
-      com.tencent.mm.kernel.g.ajQ().gDv.b(30, this);
+      com.tencent.mm.kernel.g.aAg().hqi.b(30, this);
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
         break label122;
       }
-      ae.e("MicroMsg.AppBrandOpenWeRunSettingUI", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-      if ((paramInt1 == 4) && (paramInt2 == -24) && (!bu.isNullOrNil(paramString))) {
-        Toast.makeText(ak.getContext(), paramString, 1).show();
+      Log.e("MicroMsg.AppBrandOpenWeRunSettingUI", "errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      if ((paramInt1 == 4) && (paramInt2 == -24) && (!Util.isNullOrNil(paramString))) {
+        Toast.makeText(MMApplicationContext.getContext(), paramString, 1).show();
       }
       setResult(1);
     }
     label122:
-    an localan;
+    as localas;
     for (;;)
     {
-      if (this.mHs != null) {
-        this.mHs.dismiss();
+      if (this.nUq != null) {
+        this.nUq.dismiss();
       }
       updateStatus();
       AppMethodBeat.o(48671);
       return;
-      paramn = ((o)paramn).fdt();
-      ae.i("MicroMsg.AppBrandOpenWeRunSettingUI", "bind fitness contact %s success", new Object[] { paramn });
-      this.contact = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH("gh_43f2581f6fd6");
-      localan = this.contact;
-      if ((localan != null) && (!bu.isNullOrNil(paramn))) {
+      paramq = ((p)paramq).gmD();
+      Log.i("MicroMsg.AppBrandOpenWeRunSettingUI", "bind fitness contact %s success", new Object[] { paramq });
+      this.contact = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn("gh_43f2581f6fd6");
+      localas = this.contact;
+      if ((localas != null) && (!Util.isNullOrNil(paramq))) {
         break;
       }
-      ae.e("MicroMsg.AppBrandOpenWeRunSettingUI", "respUsername == " + paramn + ", contact = " + localan);
-      paramString = ag.aGp().Ef(this.contact.field_username);
-      ag.aGp().g(paramString);
-      com.tencent.mm.kernel.g.ajR().ajA().set(327825, Boolean.TRUE);
+      Log.e("MicroMsg.AppBrandOpenWeRunSettingUI", "respUsername == " + paramq + ", contact = " + localas);
+      paramString = ag.bah().MT(this.contact.field_username);
+      ag.bah().h(paramString);
+      com.tencent.mm.kernel.g.aAh().azQ().set(327825, Boolean.TRUE);
       setResult(-1);
-      ar.o(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(48668);
-          AppBrandOpenWeRunSettingUI.this.finish();
-          AppMethodBeat.o(48668);
-        }
-      }, 1500L);
+      MMHandlerThread.postToMainThreadDelayed(new AppBrandOpenWeRunSettingUI.4(this), 1500L);
     }
-    if (x.Am(localan.field_username))
+    if (ab.IR(localas.field_username))
     {
-      String str = bu.nullAsNil(localan.field_username);
-      paramString = com.tencent.mm.al.g.eX(str);
+      String str = Util.nullAsNil(localas.field_username);
+      paramString = com.tencent.mm.al.g.fJ(str);
       if (paramString != null) {
-        paramString.field_username = paramn;
+        paramString.field_username = paramq;
       }
-      ag.aGp().delete(str);
-      localan.tu(str);
+      ag.bah().delete(str);
+      localas.BK(str);
     }
     for (;;)
     {
-      localan.setUsername(paramn);
-      if ((int)localan.ght == 0) {
-        ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().ao(localan);
+      localas.setUsername(paramq);
+      if ((int)localas.gMZ == 0) {
+        ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().aq(localas);
       }
-      if ((int)localan.ght <= 0)
+      if ((int)localas.gMZ <= 0)
       {
-        ae.e("MicroMsg.AppBrandOpenWeRunSettingUI", "addContact : insert contact failed");
+        Log.e("MicroMsg.AppBrandOpenWeRunSettingUI", "addContact : insert contact failed");
         break;
       }
-      x.B(localan);
-      paramn = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(localan.field_username);
+      ab.B(localas);
+      paramq = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(localas.field_username);
       if (paramString != null)
       {
-        ag.aGp().f(paramString);
+        ag.bah().g(paramString);
         break;
       }
-      paramString = com.tencent.mm.al.g.eX(paramn.field_username);
-      if ((paramString == null) || (paramString.Kp()))
+      paramString = com.tencent.mm.al.g.fJ(paramq.field_username);
+      if ((paramString == null) || (paramString.Uz()))
       {
-        ae.d("MicroMsg.AppBrandOpenWeRunSettingUI", "shouldUpdate");
-        au.a.hIG.aJ(paramn.field_username, "");
-        com.tencent.mm.aj.c.Dv(paramn.field_username);
+        Log.d("MicroMsg.AppBrandOpenWeRunSettingUI", "shouldUpdate");
+        ay.a.iDq.aL(paramq.field_username, "");
+        com.tencent.mm.aj.c.Mf(paramq.field_username);
         break;
       }
-      if (!paramn.fuk()) {
+      if (!paramq.gBQ()) {
         break;
       }
-      ae.d("MicroMsg.AppBrandOpenWeRunSettingUI", "update contact, last check time=%d", new Object[] { Integer.valueOf(paramn.eRm) });
-      au.a.hIG.aJ(paramn.field_username, "");
-      com.tencent.mm.aj.c.Dv(paramn.field_username);
+      Log.d("MicroMsg.AppBrandOpenWeRunSettingUI", "update contact, last check time=%d", new Object[] { Integer.valueOf(paramq.fuP) });
+      ay.a.iDq.aL(paramq.field_username, "");
+      com.tencent.mm.aj.c.Mf(paramq.field_username);
       break;
       paramString = null;
     }

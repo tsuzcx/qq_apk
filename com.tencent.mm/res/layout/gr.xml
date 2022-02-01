@@ -1,22 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/xo" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/t6" android:background="@drawable/bpv" android:layout_width="160.0dip" android:layout_height="160.0dip" android:minWidth="160.0dip" android:minHeight="160.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout style="@style/qp">
-        <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/h3" android:layout_marginRight="@dimen/ha">
-            <ImageView android:id="@id/vc" android:layout_width="wrap_content" android:layout_height="@dimen/hc" android:src="@drawable/b5t" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/hj" android:layout_marginRight="@dimen/ha">
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a74" />
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a75" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/ha" android:layout_marginRight="@dimen/ha">
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:id="@id/vk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TENCENT/Tingjiliu" />
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:id="@id/vl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/d" android:text="Tingjiliu" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/h" android:layout_marginTop="@dimen/ha" android:layout_marginRight="@dimen/h">
-            <Button android:id="@id/vf" android:layout_width="fill_parent" android:text="@string/a73" style="@style/o6" />
-            <Button android:id="@id/vd" android:layout_width="fill_parent" android:layout_marginTop="@dimen/h" android:text="@string/a6v" style="@style/o9" />
-        </LinearLayout>
-        <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
-    </LinearLayout>
-</ScrollView>
+    <TextView android:textSize="17.0sp" android:textColor="@color/ag2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ni" />
+    <TextView android:textSize="14.0sp" android:textColor="#ffededed" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:text="@string/nh" />
+    <ProgressBar android:layout_width="36.0dip" android:layout_height="8.0dip" android:layout_marginTop="20.0dip" android:max="100" android:progress="0" style="@style/v" />
+</LinearLayout>

@@ -1,21 +1,20 @@
 package com.tencent.mm.plugin.music.b;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aj;
-
-public final class e
+public abstract interface e
 {
-  public static String duJ()
-  {
-    AppMethodBeat.i(137015);
-    String str = "audio" + aj.ej(new StringBuilder().append(System.nanoTime()).toString());
-    AppMethodBeat.o(137015);
-    return str;
-  }
+  public abstract void aGS(String paramString);
+  
+  public abstract void arD(String paramString);
+  
+  public abstract void gY(String paramString);
+  
+  public abstract void onError(String paramString);
+  
+  public abstract void onStart(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.b.e
  * JD-Core Version:    0.7.0.1
  */

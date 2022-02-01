@@ -6,9 +6,9 @@ import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.webview.luggage.FavUrlTask;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.h.d;
-import com.tencent.mm.ui.base.l;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.ui.base.h.e;
+import com.tencent.mm.ui.base.m;
 
 public final class d
   extends a
@@ -18,12 +18,12 @@ public final class d
     super(9);
   }
   
-  public final void a(Context paramContext, final com.tencent.mm.plugin.webview.luggage.g paramg)
+  public final void a(Context paramContext, final g paramg)
   {
     AppMethodBeat.i(78687);
-    h.a(paramContext, paramContext.getString(2131755709), null, null, paramContext.getString(2131755707), new h.d()
+    com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131755780), null, null, paramContext.getString(2131755778), new h.e()
     {
-      public final void cv(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void cy(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(78685);
         switch (paramAnonymousInt2)
@@ -37,25 +37,25 @@ public final class d
           localBundle.putLong("fav_local_id", paramg.mParams.getLong("fav_local_id", -1L));
           FavUrlTask localFavUrlTask = new FavUrlTask();
           localFavUrlTask.actionType = 4;
-          localFavUrlTask.dyY = localBundle;
+          localFavUrlTask.dQL = localBundle;
           AppBrandMainProcessService.b(localFavUrlTask);
           if (localFavUrlTask.result) {
-            paramg.ge(true);
+            paramg.hb(true);
           }
         }
       }
     });
-    com.tencent.mm.plugin.report.service.g.yxI.dD(982, 3);
+    com.tencent.mm.plugin.report.service.h.CyF.dN(982, 3);
     AppMethodBeat.o(78687);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
+  public final void a(Context paramContext, g paramg, m paramm)
   {
     AppMethodBeat.i(78686);
     boolean bool1 = paramg.mParams.getBoolean("is_favorite_item", false);
     boolean bool2 = paramg.mParams.getBoolean("key_detail_can_delete", true);
     if ((bool1) && (bool2)) {
-      paraml.a(9, paramContext.getString(2131755707), 2131689802);
+      paramm.b(9, paramContext.getString(2131755778), 2131689814);
     }
     AppMethodBeat.o(78686);
   }

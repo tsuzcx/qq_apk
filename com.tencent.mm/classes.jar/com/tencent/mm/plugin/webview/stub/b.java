@@ -7,11 +7,6 @@ import com.tencent.mm.protocal.c;
 public class b
   extends f.a
 {
-  public final boolean WE(int paramInt)
-  {
-    return false;
-  }
-  
   public final boolean a(d paramd)
   {
     return false;
@@ -22,49 +17,54 @@ public class b
     return false;
   }
   
-  public final void aA(Bundle paramBundle) {}
+  public final void aL(Bundle paramBundle) {}
   
-  public final void aHa(String paramString) {}
+  public final void aM(Bundle paramBundle) {}
   
-  public final void az(Bundle paramBundle) {}
+  public final void aWP(String paramString) {}
+  
+  public final boolean afl(int paramInt)
+  {
+    return false;
+  }
   
   public final void e(String paramString1, String paramString2, int paramInt1, int paramInt2) {}
   
-  public final void ePd() {}
-  
-  public final String ePe()
+  public String ePp()
   {
     return null;
   }
   
-  public final String ePf()
+  public boolean f(int paramInt, Bundle paramBundle)
+  {
+    return false;
+  }
+  
+  public final void fWV() {}
+  
+  public final String fWW()
   {
     return null;
   }
   
-  public final int ePg()
+  public final String fWX()
+  {
+    return null;
+  }
+  
+  public final int fWY()
   {
     return 0;
   }
   
-  public final void ePh() {}
+  public final void fWZ() {}
   
-  public final Bundle eU(String paramString1, String paramString2)
+  public final Bundle fl(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(213829);
-    paramString1 = c.aPx(null);
-    AppMethodBeat.o(213829);
+    AppMethodBeat.i(224509);
+    paramString1 = c.bga(null);
+    AppMethodBeat.o(224509);
     return paramString1;
-  }
-  
-  public String eaf()
-  {
-    return null;
-  }
-  
-  public boolean g(int paramInt, Bundle paramBundle)
-  {
-    return false;
   }
   
   public String getCurrentUrl()
@@ -72,22 +72,22 @@ public class b
     return null;
   }
   
-  public Bundle k(int paramInt, Bundle paramBundle)
+  public Bundle j(int paramInt, Bundle paramBundle)
   {
     return null;
   }
   
-  public final void kG(String paramString1, String paramString2) {}
+  public final void lA(String paramString1, String paramString2) {}
   
-  public final void kH(String paramString1, String paramString2) {}
+  public final void lz(String paramString1, String paramString2) {}
   
-  public final void u(int paramInt, Bundle paramBundle) {}
+  public final void t(int paramInt, Bundle paramBundle) {}
   
-  public final void uW(boolean paramBoolean) {}
+  public final void yL(boolean paramBoolean) {}
   
-  public final void uX(boolean paramBoolean) {}
+  public final void yM(boolean paramBoolean) {}
   
-  public final void uY(boolean paramBoolean) {}
+  public final void yN(boolean paramBoolean) {}
 }
 
 

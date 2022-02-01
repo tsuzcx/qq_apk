@@ -1,33 +1,12 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.annotation.SuppressLint;
-import android.content.Context;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
+import kotlin.l;
 
-@SuppressLint({"ViewConstructor"})
-final class e
-  extends k
-{
-  public e(Context paramContext, AppBrandRuntime paramAppBrandRuntime, WxaAttributes.WxaVersionInfo paramWxaVersionInfo)
-  {
-    super(paramContext, paramAppBrandRuntime, paramWxaVersionInfo);
-  }
-  
-  protected final void bzZ()
-  {
-    AppMethodBeat.i(223084);
-    super.bzZ();
-    b(getContext().getString(2131755293), a.n(getContext(), 2131099726), "white", a.n(getContext(), 2131101179));
-    setBackgroundResource(2131099726);
-    AppMethodBeat.o(223084);
-  }
-}
+@l(hxD={1, 1, 16})
+public final class e {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="@dimen/jm">
-        <TextView android:id="@id/gzv" style="@style/z3" />
-        <TextView android:id="@id/gzd" style="@style/z1" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/efb" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="+" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:textColor="@color/y4" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/egv" android:layout_width="50.0dip" android:layout_marginLeft="0.0dip" android:maxLength="4" android:layout_weight="0.0" style="@style/yy" />
-        <com.tenpay.android.wechat.TenpaySecureEditText android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/gwo" android:layout_marginLeft="2.0dip" style="@style/yy" />
-        <com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView android:id="@id/gxf" android:src="@drawable/axy" style="@style/yz" />
-    </LinearLayout>
-</merge>
+    <ScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0" android:overScrollMode="never">
+        <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:layout_gravity="center_horizontal" android:id="@id/gpd" android:focusable="false" android:layout_width="50.0dip" android:layout_height="50.0dip" android:layout_marginTop="33.0dip" android:src="@drawable/bca" android:scaleType="centerCrop" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" android:contentDescription="@string/a4u" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:layout_gravity="center_horizontal" android:id="@id/gpg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="" android:layout_below="@id/gpd" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="24.0dip" android:textColor="@color/a2x" android:gravity="center" android:id="@id/gpe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="48.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="48.0dip" android:text="" android:layout_below="@id/gpg" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:id="@id/gpj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:text="@string/fs0" android:layout_below="@id/gpe" android:layout_centerHorizontal="true" android:alpha="0.4" />
+            <com.tencent.mm.ui.base.MMGridView android:id="@id/gpf" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:horizontalSpacing="10.0dip" android:verticalSpacing="8.0dip" android:stretchMode="columnWidth" android:numColumns="3" android:layout_below="@id/gpj" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff4a90e2" android:layout_gravity="center_horizontal" android:id="@id/gph" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/fs1" android:layout_below="@id/gpf" android:layout_centerHorizontal="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:gravity="bottom" android:id="@id/gpi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:text="" android:layout_below="@id/gph" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:alpha="0.36" />
+        </RelativeLayout>
+    </ScrollView>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c21" />
+</LinearLayout>

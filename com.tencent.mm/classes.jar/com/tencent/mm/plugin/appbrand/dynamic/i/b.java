@@ -2,20 +2,18 @@ package com.tencent.mm.plugin.appbrand.dynamic.i;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.h;
-import com.tencent.mm.plugin.report.service.g;
 import java.util.ArrayList;
 
 public final class b
 {
-  private static a klA;
-  private static a klB;
+  private static a lpl;
+  private static a lpm;
   
   static
   {
     AppMethodBeat.i(121457);
-    klA = new a((byte)0);
-    klB = new a((byte)0);
+    lpl = new a((byte)0);
+    lpm = new a((byte)0);
     AppMethodBeat.o(121457);
   }
   
@@ -23,9 +21,9 @@ public final class b
   {
     AppMethodBeat.i(121456);
     int i = parama.count;
-    long l1 = parama.clS;
-    long l2 = parama.klC;
-    long l3 = parama.klD;
+    long l1 = parama.cxN;
+    long l2 = parama.lpn;
+    long l3 = parama.lpo;
     if ((l1 <= 0L) || (l2 <= 0L) || (i <= 0) || (l3 <= 0L))
     {
       AppMethodBeat.o(121456);
@@ -52,7 +50,7 @@ public final class b
     localIDKey.SetKey(paramInt4);
     localIDKey.SetValue(l3);
     parama.add(localIDKey);
-    g.yxI.b(parama, false);
+    com.tencent.mm.plugin.report.service.h.CyF.b(parama, false);
     AppMethodBeat.o(121456);
   }
   
@@ -60,22 +58,22 @@ public final class b
   {
     try
     {
-      parama.clS += paramLong / 1000L;
-      parama.klC += paramInt;
-      parama.klD += paramLong / paramInt;
+      parama.cxN += paramLong / 1000L;
+      parama.lpn += paramInt;
+      parama.lpo += paramLong / paramInt;
       parama.count += 1;
       return;
     }
     finally {}
   }
   
-  public static void bgZ()
+  public static void bCs()
   {
     AppMethodBeat.i(121455);
-    a(5, 6, 7, 8, klB);
-    a(0, 1, 2, 3, klA);
-    klB.reset();
-    klA.reset();
+    a(5, 6, 7, 8, lpm);
+    a(0, 1, 2, 3, lpl);
+    lpm.reset();
+    lpl.reset();
     AppMethodBeat.o(121455);
   }
   
@@ -87,30 +85,30 @@ public final class b
       AppMethodBeat.o(121454);
       return;
     }
-    switch (h.aiE())
+    switch (com.tencent.mm.ab.h.ayU())
     {
     default: 
-      a(klA, paramLong, paramInt);
+      a(lpl, paramLong, paramInt);
       AppMethodBeat.o(121454);
       return;
     }
-    a(klB, paramLong, paramInt);
+    a(lpm, paramLong, paramInt);
     AppMethodBeat.o(121454);
   }
   
   static final class a
   {
-    volatile long clS;
     volatile int count;
-    volatile long klC;
-    volatile long klD;
+    volatile long cxN;
+    volatile long lpn;
+    volatile long lpo;
     
     final void reset()
     {
       try
       {
-        this.clS = 0L;
-        this.klC = 0L;
+        this.cxN = 0L;
+        this.lpn = 0L;
         this.count = 0;
         return;
       }
@@ -124,7 +122,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.i.b
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.tools.SynchronizedVideoPlayTextureView;
 import com.tencent.mm.pluginsdk.ui.tools.SynchronizedVideoPlayTextureView.1;
-import com.tencent.mm.sdk.g.b;
+import com.tencent.mm.sdk.thread.ThreadPool;
 
 public class TopStoryVideoPlayTextureView
   extends SynchronizedVideoPlayTextureView
@@ -39,13 +39,13 @@ public class TopStoryVideoPlayTextureView
   public final void stop()
   {
     AppMethodBeat.i(126156);
-    b.c(new SynchronizedVideoPlayTextureView.1(this), "player-stop");
+    ThreadPool.post(new SynchronizedVideoPlayTextureView.1(this), "player-stop");
     AppMethodBeat.o(126156);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.video.TopStoryVideoPlayTextureView
  * JD-Core Version:    0.7.0.1
  */

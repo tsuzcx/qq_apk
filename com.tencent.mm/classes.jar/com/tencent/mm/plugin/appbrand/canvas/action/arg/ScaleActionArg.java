@@ -11,8 +11,8 @@ public class ScaleActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<ScaleActionArg> CREATOR;
-  public float jWE;
-  public float jWF;
+  public float kZA;
+  public float kZB;
   
   static
   {
@@ -52,7 +52,7 @@ public class ScaleActionArg
       return false;
     }
     paramObject = (ScaleActionArg)paramObject;
-    if ((Float.compare(paramObject.jWE, this.jWE) == 0) && (Float.compare(paramObject.jWF, this.jWF) == 0))
+    if ((Float.compare(paramObject.kZA, this.kZA) == 0) && (Float.compare(paramObject.kZB, this.kZB) == 0))
     {
       AppMethodBeat.o(145120);
       return true;
@@ -61,21 +61,21 @@ public class ScaleActionArg
     return false;
   }
   
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145118);
-    super.h(paramParcel);
-    this.jWE = paramParcel.readFloat();
-    this.jWF = paramParcel.readFloat();
-    AppMethodBeat.o(145118);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145121);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jWE), Float.valueOf(this.jWF) });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.kZA), Float.valueOf(this.kZB) });
     AppMethodBeat.o(145121);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145118);
+    super.i(paramParcel);
+    this.kZA = paramParcel.readFloat();
+    this.kZB = paramParcel.readFloat();
+    AppMethodBeat.o(145118);
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -83,8 +83,8 @@ public class ScaleActionArg
     AppMethodBeat.i(145119);
     super.parse(paramJSONObject);
     paramJSONObject = paramJSONObject.optJSONArray("data");
-    this.jWE = ((float)paramJSONObject.optDouble(0));
-    this.jWF = ((float)paramJSONObject.optDouble(1));
+    this.kZA = ((float)paramJSONObject.optDouble(0));
+    this.kZB = ((float)paramJSONObject.optDouble(1));
     AppMethodBeat.o(145119);
   }
   
@@ -92,14 +92,14 @@ public class ScaleActionArg
   {
     AppMethodBeat.i(145122);
     super.writeToParcel(paramParcel, paramInt);
-    paramParcel.writeFloat(this.jWE);
-    paramParcel.writeFloat(this.jWF);
+    paramParcel.writeFloat(this.kZA);
+    paramParcel.writeFloat(this.kZB);
     AppMethodBeat.o(145122);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.ScaleActionArg
  * JD-Core Version:    0.7.0.1
  */

@@ -3,64 +3,64 @@ package com.tencent.mm.plugin.expansions;
 import android.util.Pair;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 final class c
 {
-  static final ArrayList<IDKey> qvX;
-  static final List<Pair<String, Object>> qvY;
+  static final ArrayList<IDKey> rNE;
+  static final List<Pair<String, Object>> rNF;
   
   static
   {
     AppMethodBeat.i(152978);
-    qvX = new ArrayList();
-    qvY = new ArrayList();
+    rNE = new ArrayList();
+    rNF = new ArrayList();
     AppMethodBeat.o(152978);
   }
   
-  public static void cok()
+  public static void cMv()
   {
     AppMethodBeat.i(152974);
-    com.tencent.mm.kernel.g.ajS().a(new com.tencent.mm.kernel.api.g()
+    com.tencent.mm.kernel.g.aAi().a(new com.tencent.mm.kernel.api.g()
     {
-      public final void ML()
+      public final void WY()
       {
         AppMethodBeat.i(152973);
-        com.tencent.mm.kernel.g.ajS().b(this);
+        com.tencent.mm.kernel.g.aAi().b(this);
         c.access$000();
         AppMethodBeat.o(152973);
       }
       
-      public final void ch(boolean paramAnonymousBoolean) {}
+      public final void cQ(boolean paramAnonymousBoolean) {}
     });
     AppMethodBeat.o(152974);
   }
   
-  public static void col()
+  public static void cMw()
   {
     AppMethodBeat.i(152976);
-    Iterator localIterator = qvY.iterator();
+    Iterator localIterator = rNF.iterator();
     while (localIterator.hasNext())
     {
       Pair localPair = (Pair)localIterator.next();
       if ((localPair.second instanceof String)) {
-        ae.i((String)localPair.first, "pending log: " + localPair.second);
+        Log.i((String)localPair.first, "pending log: " + localPair.second);
       }
       if ((localPair.second instanceof Throwable)) {
-        ae.printErrStackTrace((String)localPair.first, (Throwable)localPair.second, "pending exception", new Object[0]);
+        Log.printErrStackTrace((String)localPair.first, (Throwable)localPair.second, "pending exception", new Object[0]);
       }
     }
-    qvY.clear();
+    rNF.clear();
     AppMethodBeat.o(152976);
   }
   
-  public static void fQ(String paramString1, String paramString2)
+  public static void gj(String paramString1, String paramString2)
   {
     AppMethodBeat.i(152975);
-    qvY.add(new Pair(paramString1, paramString2));
+    rNF.add(new Pair(paramString1, paramString2));
     AppMethodBeat.o(152975);
   }
 }

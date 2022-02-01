@@ -9,37 +9,37 @@ public class GetOnLineInfoInfoResult
   implements Parcelable
 {
   public static final Parcelable.Creator<GetOnLineInfoInfoResult> CREATOR;
-  public int ioG;
-  public int ioL;
-  public boolean kRc;
+  public int jjN;
+  public int jjS;
+  public boolean kDf;
   
   static
   {
-    AppMethodBeat.i(224403);
+    AppMethodBeat.i(194340);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(224403);
+    AppMethodBeat.o(194340);
   }
   
   public GetOnLineInfoInfoResult()
   {
-    this.ioG = -1;
-    this.ioL = 0;
-    this.kRc = false;
+    this.jjN = -1;
+    this.jjS = 0;
+    this.kDf = false;
   }
   
   protected GetOnLineInfoInfoResult(Parcel paramParcel)
   {
-    AppMethodBeat.i(224402);
-    this.ioG = -1;
-    this.ioL = 0;
-    this.kRc = false;
-    this.ioG = paramParcel.readInt();
-    this.ioL = paramParcel.readInt();
+    AppMethodBeat.i(194338);
+    this.jjN = -1;
+    this.jjS = 0;
+    this.kDf = false;
+    this.jjN = paramParcel.readInt();
+    this.jjS = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {
       bool = true;
     }
-    this.kRc = bool;
-    AppMethodBeat.o(224402);
+    this.kDf = bool;
+    AppMethodBeat.o(194338);
   }
   
   public int describeContents()
@@ -47,23 +47,31 @@ public class GetOnLineInfoInfoResult
     return 0;
   }
   
+  public String toString()
+  {
+    AppMethodBeat.i(194339);
+    String str = "GetOnLineInfoInfoResult{iconType=" + this.jjN + ", clientVersion=" + this.jjS + ", isWXOnline=" + this.kDf + '}';
+    AppMethodBeat.o(194339);
+    return str;
+  }
+  
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(224401);
-    paramParcel.writeInt(this.ioG);
-    paramParcel.writeInt(this.ioL);
-    if (this.kRc) {}
+    AppMethodBeat.i(194337);
+    paramParcel.writeInt(this.jjN);
+    paramParcel.writeInt(this.jjS);
+    if (this.kDf) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      AppMethodBeat.o(224401);
+      AppMethodBeat.o(194337);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.GetOnLineInfoInfoResult
  * JD-Core Version:    0.7.0.1
  */

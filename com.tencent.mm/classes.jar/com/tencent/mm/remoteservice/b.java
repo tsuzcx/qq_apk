@@ -34,6 +34,21 @@ public abstract interface b
       return new a(paramIBinder);
     }
     
+    public static b getDefaultImpl()
+    {
+      return a.NCx;
+    }
+    
+    public static boolean setDefaultImpl(b paramb)
+    {
+      if ((a.NCx == null) && (paramb != null))
+      {
+        a.NCx = paramb;
+        return true;
+      }
+      return false;
+    }
+    
     public IBinder asBinder()
     {
       return this;
@@ -81,6 +96,7 @@ public abstract interface b
     static final class a
       implements b
     {
+      public static b NCx;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -109,12 +125,10 @@ public abstract interface b
             {
               localParcel1.writeInt(1);
               paramBundle.writeToParcel(localParcel1, 0);
-              break label142;
+              break label177;
               localParcel1.writeInt(i);
-              this.mRemote.transact(1, localParcel1, localParcel2, 0);
-              localParcel2.readException();
-              if (localParcel2.readInt() != 0) {
-                paramBundle.readFromParcel(localParcel2);
+              if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (b.a.getDefaultImpl() != null)) {
+                b.a.getDefaultImpl().onCallback(paramString, paramBundle, paramBoolean);
               }
             }
             else
@@ -128,12 +142,20 @@ public abstract interface b
             localParcel1.recycle();
             AppMethodBeat.o(152739);
           }
-          label142:
-          while (!paramBoolean)
+          label177:
+          do
           {
             i = 0;
             break;
-          }
+            localParcel2.readException();
+            if (localParcel2.readInt() != 0) {
+              paramBundle.readFromParcel(localParcel2);
+            }
+            localParcel2.recycle();
+            localParcel1.recycle();
+            AppMethodBeat.o(152739);
+            return;
+          } while (!paramBoolean);
         }
       }
     }
@@ -141,7 +163,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.remoteservice.b
  * JD-Core Version:    0.7.0.1
  */

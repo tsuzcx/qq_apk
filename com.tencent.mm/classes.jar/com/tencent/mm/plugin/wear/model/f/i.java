@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wear.model.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.protobuf.eeu;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.ezc;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -12,18 +12,18 @@ import java.util.LinkedList;
 public final class i
   extends c
 {
-  private ArrayList<Integer> DPs;
-  private boolean Io;
+  private boolean Iy;
+  private ArrayList<Integer> IyI;
   
   public i()
   {
-    this.Io = true;
+    this.Iy = true;
   }
   
   public i(ArrayList<Integer> paramArrayList)
   {
-    this.DPs = paramArrayList;
-    this.Io = false;
+    this.IyI = paramArrayList;
+    this.Iy = false;
   }
   
   public final String getName()
@@ -34,16 +34,16 @@ public final class i
   protected final void send()
   {
     AppMethodBeat.i(30129);
-    ae.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.DPs });
-    eeu localeeu = new eeu();
-    if (this.DPs != null) {
-      localeeu.IiZ.addAll(this.DPs);
+    Log.i("MicroMsg.WearCancelNotificationTask", "Id List=%s", new Object[] { this.IyI });
+    ezc localezc = new ezc();
+    if (this.IyI != null) {
+      localezc.NvD.addAll(this.IyI);
     }
-    localeeu.Ija = this.Io;
+    localezc.NvE = this.Iy;
     try
     {
-      a.eOh();
-      r.a(20004, localeeu.toByteArray(), false);
+      a.fVQ();
+      r.a(20004, localezc.toByteArray(), false);
       AppMethodBeat.o(30129);
       return;
     }
@@ -55,7 +55,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.f.i
  * JD-Core Version:    0.7.0.1
  */

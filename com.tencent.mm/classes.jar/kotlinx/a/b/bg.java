@@ -1,49 +1,49 @@
 package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.j;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.v;
 import java.util.ArrayList;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.aa;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
 import kotlinx.a.c;
 import kotlinx.a.c.a;
 import kotlinx.a.d.b;
 import kotlinx.a.f;
 import kotlinx.a.h;
 import kotlinx.a.n;
-import kotlinx.a.t;
+import kotlinx.a.z;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/TaggedDecoder;", "Tag", "Lkotlinx/serialization/Decoder;", "Lkotlinx/serialization/CompositeDecoder;", "()V", "context", "Lkotlinx/serialization/modules/SerialModule;", "getContext", "()Lkotlinx/serialization/modules/SerialModule;", "currentTag", "getCurrentTag", "()Ljava/lang/Object;", "currentTagOrNull", "getCurrentTagOrNull", "flag", "", "tagStack", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "updateMode", "Lkotlinx/serialization/UpdateMode;", "getUpdateMode", "()Lkotlinx/serialization/UpdateMode;", "beginStructure", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "typeParams", "", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/SerialDescriptor;[Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/CompositeDecoder;", "copyTagsTo", "", "other", "decodeBoolean", "decodeBooleanElement", "index", "", "decodeByte", "", "decodeByteElement", "decodeChar", "", "decodeCharElement", "decodeDouble", "", "decodeDoubleElement", "decodeEnum", "enumDescriptor", "decodeFloat", "", "decodeFloatElement", "decodeInt", "decodeIntElement", "decodeLong", "", "decodeLongElement", "decodeNotNullMark", "decodeNull", "", "decodeNullableSerializableElement", "T", "", "deserializer", "Lkotlinx/serialization/DeserializationStrategy;", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;", "decodeSerializableElement", "decodeShort", "", "decodeShortElement", "decodeString", "", "decodeStringElement", "decodeTaggedBoolean", "tag", "(Ljava/lang/Object;)Z", "decodeTaggedByte", "(Ljava/lang/Object;)B", "decodeTaggedChar", "(Ljava/lang/Object;)C", "decodeTaggedDouble", "(Ljava/lang/Object;)D", "decodeTaggedEnum", "enumDescription", "(Ljava/lang/Object;Lkotlinx/serialization/SerialDescriptor;)I", "decodeTaggedFloat", "(Ljava/lang/Object;)F", "decodeTaggedInt", "(Ljava/lang/Object;)I", "decodeTaggedLong", "(Ljava/lang/Object;)J", "decodeTaggedNotNullMark", "decodeTaggedNull", "(Ljava/lang/Object;)Ljava/lang/Void;", "decodeTaggedShort", "(Ljava/lang/Object;)S", "decodeTaggedString", "(Ljava/lang/Object;)Ljava/lang/String;", "decodeTaggedUnit", "(Ljava/lang/Object;)V", "decodeTaggedValue", "(Ljava/lang/Object;)Ljava/lang/Object;", "decodeUnit", "decodeUnitElement", "endStructure", "popTag", "pushTag", "name", "tagBlock", "E", "block", "Lkotlin/Function0;", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "updateNullableSerializableElement", "old", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;", "updateSerializableElement", "getTag", "(Lkotlinx/serialization/SerialDescriptor;I)Ljava/lang/Object;", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/TaggedDecoder;", "Tag", "Lkotlinx/serialization/Decoder;", "Lkotlinx/serialization/CompositeDecoder;", "()V", "context", "Lkotlinx/serialization/modules/SerialModule;", "getContext", "()Lkotlinx/serialization/modules/SerialModule;", "currentTag", "getCurrentTag", "()Ljava/lang/Object;", "currentTagOrNull", "getCurrentTagOrNull", "flag", "", "tagStack", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "updateMode", "Lkotlinx/serialization/UpdateMode;", "getUpdateMode", "()Lkotlinx/serialization/UpdateMode;", "beginStructure", "descriptor", "Lkotlinx/serialization/SerialDescriptor;", "typeParams", "", "Lkotlinx/serialization/KSerializer;", "(Lkotlinx/serialization/SerialDescriptor;[Lkotlinx/serialization/KSerializer;)Lkotlinx/serialization/CompositeDecoder;", "copyTagsTo", "", "other", "decodeBoolean", "decodeBooleanElement", "index", "", "decodeByte", "", "decodeByteElement", "decodeChar", "", "decodeCharElement", "decodeDouble", "", "decodeDoubleElement", "decodeEnum", "enumDescriptor", "decodeFloat", "", "decodeFloatElement", "decodeInt", "decodeIntElement", "decodeLong", "", "decodeLongElement", "decodeNotNullMark", "decodeNull", "", "decodeNullableSerializableElement", "T", "", "deserializer", "Lkotlinx/serialization/DeserializationStrategy;", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;)Ljava/lang/Object;", "decodeSerializableElement", "decodeShort", "", "decodeShortElement", "decodeString", "", "decodeStringElement", "decodeTaggedBoolean", "tag", "(Ljava/lang/Object;)Z", "decodeTaggedByte", "(Ljava/lang/Object;)B", "decodeTaggedChar", "(Ljava/lang/Object;)C", "decodeTaggedDouble", "(Ljava/lang/Object;)D", "decodeTaggedEnum", "enumDescription", "(Ljava/lang/Object;Lkotlinx/serialization/SerialDescriptor;)I", "decodeTaggedFloat", "(Ljava/lang/Object;)F", "decodeTaggedInt", "(Ljava/lang/Object;)I", "decodeTaggedLong", "(Ljava/lang/Object;)J", "decodeTaggedNotNullMark", "decodeTaggedNull", "(Ljava/lang/Object;)Ljava/lang/Void;", "decodeTaggedShort", "(Ljava/lang/Object;)S", "decodeTaggedString", "(Ljava/lang/Object;)Ljava/lang/String;", "decodeTaggedUnit", "(Ljava/lang/Object;)V", "decodeTaggedValue", "(Ljava/lang/Object;)Ljava/lang/Object;", "decodeUnit", "decodeUnitElement", "endStructure", "popTag", "pushTag", "name", "tagBlock", "E", "block", "Lkotlin/Function0;", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "updateNullableSerializableElement", "old", "(Lkotlinx/serialization/SerialDescriptor;ILkotlinx/serialization/DeserializationStrategy;Ljava/lang/Object;)Ljava/lang/Object;", "updateSerializableElement", "getTag", "(Lkotlinx/serialization/SerialDescriptor;I)Ljava/lang/Object;", "kotlinx-serialization-runtime"})
 public abstract class bg<Tag>
   implements kotlinx.a.a, c
 {
-  private boolean JBn;
-  private final kotlinx.a.z Oji = kotlinx.a.z.Ojg;
-  private final ArrayList<Tag> Okb = new ArrayList();
+  private final ArrayList<Tag> TYW = new ArrayList();
+  private final z TYe = z.TYc;
+  private boolean hga;
   
-  private final <E> E c(Tag paramTag, d.g.a.a<? extends E> parama)
+  private final <E> E c(Tag paramTag, kotlin.g.a.a<? extends E> parama)
   {
-    gu(paramTag);
+    gz(paramTag);
     paramTag = parama.invoke();
-    if (!this.JBn) {
-      gBD();
+    if (!this.hga) {
+      hOK();
     }
-    this.JBn = false;
+    this.hga = false;
     return paramTag;
   }
   
-  private Object gBB()
+  private Object hOI()
   {
-    throw ((Throwable)new t(d.g.b.z.bp(getClass()) + " can't retrieve untyped values", (byte)0));
+    throw ((Throwable)new kotlinx.a.t(aa.bp(getClass()) + " can't retrieve untyped values", (byte)0));
   }
   
-  private Tag gBD()
+  private Tag hOK()
   {
-    Object localObject = this.Okb.remove(j.jj((List)this.Okb));
-    this.JBn = true;
+    Object localObject = this.TYW.remove(j.kq((List)this.TYW));
+    this.hga = true;
     return localObject;
   }
   
@@ -63,28 +63,28 @@ public abstract class bg<Tag>
   {
     p.h(paramn, "descriptor");
     p.h(paramf, "deserializer");
-    return c(l(paramn, paramInt), (d.g.a.a)new b(this, paramf));
+    return c(l(paramn, paramInt), (kotlin.g.a.a)new b(this, paramf));
   }
   
   public final <T> T a(n paramn, int paramInt, final f<T> paramf, final T paramT)
   {
     p.h(paramn, "descriptor");
     p.h(paramf, "deserializer");
-    return c(l(paramn, paramInt), (d.g.a.a)new d(this, paramf, paramT));
+    return c(l(paramn, paramInt), (kotlin.g.a.a)new d(this, paramf, paramT));
   }
   
   public final <T> T a(n paramn, final f<T> paramf)
   {
     p.h(paramn, "descriptor");
     p.h(paramf, "deserializer");
-    return c(l(paramn, 5), (d.g.a.a)new a(this, paramf));
+    return c(l(paramn, 5), (kotlin.g.a.a)new a(this, paramf));
   }
   
   public final <T> T a(n paramn, final f<T> paramf, final T paramT)
   {
     p.h(paramn, "descriptor");
     p.h(paramf, "deserializer");
-    return c(l(paramn, 5), (d.g.a.a)new c(this, paramf, paramT));
+    return c(l(paramn, 5), (kotlin.g.a.a)new c(this, paramf, paramT));
   }
   
   public kotlinx.a.a a(n paramn, h<?>... paramVarArgs)
@@ -102,13 +102,13 @@ public abstract class bg<Tag>
   public final boolean a(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gl(l(paramn, paramInt));
+    return gq(l(paramn, paramInt));
   }
   
   public final byte b(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gm(l(paramn, paramInt));
+    return gr(l(paramn, paramInt));
   }
   
   public final <T> T b(f<T> paramf)
@@ -120,212 +120,212 @@ public abstract class bg<Tag>
   public final char c(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gs(l(paramn, paramInt));
+    return gx(l(paramn, paramInt));
   }
   
   public final short d(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gn(l(paramn, paramInt));
+    return gs(l(paramn, paramInt));
   }
   
   public final int e(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return go(l(paramn, paramInt));
+    return gt(l(paramn, paramInt));
   }
   
   public final long f(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gp(l(paramn, paramInt));
+    return gu(l(paramn, paramInt));
   }
   
   public final float g(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gq(l(paramn, paramInt));
+    return gv(l(paramn, paramInt));
   }
   
-  protected final Tag gBC()
-  {
-    return j.jo((List)this.Okb);
-  }
-  
-  public b gBd()
-  {
-    return (b)kotlinx.a.d.a.OlL;
-  }
-  
-  public kotlinx.a.z gBe()
-  {
-    return this.Oji;
-  }
-  
-  public final boolean gBf()
-  {
-    return gk(j.jn((List)this.Okb));
-  }
-  
-  public final Void gBg()
-  {
-    return null;
-  }
-  
-  public final boolean gBh()
-  {
-    return gl(gBD());
-  }
-  
-  public final byte gBi()
-  {
-    return gm(gBD());
-  }
-  
-  public final short gBj()
-  {
-    return gn(gBD());
-  }
-  
-  public final char gBk()
-  {
-    return gs(gBD());
-  }
-  
-  public final int gBl()
-  {
-    return go(gBD());
-  }
-  
-  public final long gBm()
-  {
-    return gp(gBD());
-  }
-  
-  public final float gBn()
-  {
-    return gq(gBD());
-  }
-  
-  public final double gBo()
-  {
-    return gr(gBD());
-  }
-  
-  public final String gBp()
-  {
-    return gt(gBD());
-  }
-  
-  public boolean gk(Tag paramTag)
+  public boolean gp(Tag paramTag)
   {
     return true;
   }
   
-  public boolean gl(Tag paramTag)
+  public boolean gq(Tag paramTag)
   {
-    paramTag = gBB();
+    paramTag = hOI();
     if (paramTag == null) {
-      throw new v("null cannot be cast to non-null type kotlin.Boolean");
+      throw new kotlin.t("null cannot be cast to non-null type kotlin.Boolean");
     }
     return ((Boolean)paramTag).booleanValue();
   }
   
-  public byte gm(Tag paramTag)
+  public byte gr(Tag paramTag)
   {
-    paramTag = gBB();
+    paramTag = hOI();
     if (paramTag == null) {
-      throw new v("null cannot be cast to non-null type kotlin.Byte");
+      throw new kotlin.t("null cannot be cast to non-null type kotlin.Byte");
     }
     return ((Byte)paramTag).byteValue();
   }
   
-  public short gn(Tag paramTag)
+  public short gs(Tag paramTag)
   {
-    paramTag = gBB();
+    paramTag = hOI();
     if (paramTag == null) {
-      throw new v("null cannot be cast to non-null type kotlin.Short");
+      throw new kotlin.t("null cannot be cast to non-null type kotlin.Short");
     }
     return ((Short)paramTag).shortValue();
   }
   
-  public int go(Tag paramTag)
+  public int gt(Tag paramTag)
   {
-    paramTag = gBB();
+    paramTag = hOI();
     if (paramTag == null) {
-      throw new v("null cannot be cast to non-null type kotlin.Int");
+      throw new kotlin.t("null cannot be cast to non-null type kotlin.Int");
     }
     return ((Integer)paramTag).intValue();
   }
   
-  public long gp(Tag paramTag)
+  public long gu(Tag paramTag)
   {
-    paramTag = gBB();
+    paramTag = hOI();
     if (paramTag == null) {
-      throw new v("null cannot be cast to non-null type kotlin.Long");
+      throw new kotlin.t("null cannot be cast to non-null type kotlin.Long");
     }
     return ((Long)paramTag).longValue();
   }
   
-  public float gq(Tag paramTag)
+  public float gv(Tag paramTag)
   {
-    paramTag = gBB();
+    paramTag = hOI();
     if (paramTag == null) {
-      throw new v("null cannot be cast to non-null type kotlin.Float");
+      throw new kotlin.t("null cannot be cast to non-null type kotlin.Float");
     }
     return ((Float)paramTag).floatValue();
   }
   
-  public double gr(Tag paramTag)
+  public double gw(Tag paramTag)
   {
-    paramTag = gBB();
+    paramTag = hOI();
     if (paramTag == null) {
-      throw new v("null cannot be cast to non-null type kotlin.Double");
+      throw new kotlin.t("null cannot be cast to non-null type kotlin.Double");
     }
     return ((Double)paramTag).doubleValue();
   }
   
-  public char gs(Tag paramTag)
+  public char gx(Tag paramTag)
   {
-    paramTag = gBB();
+    paramTag = hOI();
     if (paramTag == null) {
-      throw new v("null cannot be cast to non-null type kotlin.Char");
+      throw new kotlin.t("null cannot be cast to non-null type kotlin.Char");
     }
     return ((Character)paramTag).charValue();
   }
   
-  public String gt(Tag paramTag)
+  public String gy(Tag paramTag)
   {
-    paramTag = gBB();
+    paramTag = hOI();
     if (paramTag == null) {
-      throw new v("null cannot be cast to non-null type kotlin.String");
+      throw new kotlin.t("null cannot be cast to non-null type kotlin.String");
     }
     return (String)paramTag;
   }
   
-  protected final void gu(Tag paramTag)
+  protected final void gz(Tag paramTag)
   {
-    this.Okb.add(paramTag);
+    this.TYW.add(paramTag);
   }
   
   public final double h(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gr(l(paramn, paramInt));
+    return gw(l(paramn, paramInt));
+  }
+  
+  protected final Tag hOJ()
+  {
+    return j.kv((List)this.TYW);
+  }
+  
+  public b hOk()
+  {
+    return (b)kotlinx.a.d.a.UaI;
+  }
+  
+  public z hOl()
+  {
+    return this.TYe;
+  }
+  
+  public final boolean hOm()
+  {
+    return gp(j.ku((List)this.TYW));
+  }
+  
+  public final Void hOn()
+  {
+    return null;
+  }
+  
+  public final boolean hOo()
+  {
+    return gq(hOK());
+  }
+  
+  public final byte hOp()
+  {
+    return gr(hOK());
+  }
+  
+  public final short hOq()
+  {
+    return gs(hOK());
+  }
+  
+  public final char hOr()
+  {
+    return gx(hOK());
+  }
+  
+  public final int hOs()
+  {
+    return gt(hOK());
+  }
+  
+  public final long hOt()
+  {
+    return gu(hOK());
+  }
+  
+  public final float hOu()
+  {
+    return gv(hOK());
+  }
+  
+  public final double hOv()
+  {
+    return gw(hOK());
+  }
+  
+  public final String hOw()
+  {
+    return gy(hOK());
   }
   
   public final String i(n paramn, int paramInt)
   {
     p.h(paramn, "descriptor");
-    return gt(l(paramn, paramInt));
+    return gy(l(paramn, paramInt));
   }
   
   protected abstract Tag l(n paramn, int paramInt);
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "T", "", "Tag", "invoke", "()Ljava/lang/Object;"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "T", "", "Tag", "invoke", "()Ljava/lang/Object;"})
   static final class a
     extends q
-    implements d.g.a.a<T>
+    implements kotlin.g.a.a<T>
   {
     a(bg parambg, f paramf)
     {
@@ -334,17 +334,17 @@ public abstract class bg<Tag>
     
     public final T invoke()
     {
-      AppMethodBeat.i(199680);
-      Object localObject = this.Okc.b(paramf);
-      AppMethodBeat.o(199680);
+      AppMethodBeat.i(225452);
+      Object localObject = this.TYX.b(paramf);
+      AppMethodBeat.o(225452);
       return localObject;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "T", "Tag", "invoke", "()Ljava/lang/Object;"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "T", "Tag", "invoke", "()Ljava/lang/Object;"})
   static final class b
     extends q
-    implements d.g.a.a<T>
+    implements kotlin.g.a.a<T>
   {
     b(bg parambg, f paramf)
     {
@@ -353,17 +353,17 @@ public abstract class bg<Tag>
     
     public final T invoke()
     {
-      AppMethodBeat.i(199830);
-      Object localObject = this.Okc.a(paramf);
-      AppMethodBeat.o(199830);
+      AppMethodBeat.i(225602);
+      Object localObject = this.TYX.a(paramf);
+      AppMethodBeat.o(225602);
       return localObject;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "T", "", "Tag", "invoke", "()Ljava/lang/Object;"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "T", "", "Tag", "invoke", "()Ljava/lang/Object;"})
   static final class c
     extends q
-    implements d.g.a.a<T>
+    implements kotlin.g.a.a<T>
   {
     c(bg parambg, f paramf, Object paramObject)
     {
@@ -372,21 +372,21 @@ public abstract class bg<Tag>
     
     public final T invoke()
     {
-      AppMethodBeat.i(199740);
-      Object localObject1 = this.Okc;
+      AppMethodBeat.i(225512);
+      Object localObject1 = this.TYX;
       f localf = paramf;
       Object localObject2 = paramT;
       p.h(localf, "deserializer");
       localObject1 = c.a.b((c)localObject1, localf, localObject2);
-      AppMethodBeat.o(199740);
+      AppMethodBeat.o(225512);
       return localObject1;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "T", "Tag", "invoke", "()Ljava/lang/Object;"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "T", "Tag", "invoke", "()Ljava/lang/Object;"})
   static final class d
     extends q
-    implements d.g.a.a<T>
+    implements kotlin.g.a.a<T>
   {
     d(bg parambg, f paramf, Object paramObject)
     {
@@ -395,16 +395,16 @@ public abstract class bg<Tag>
     
     public final T invoke()
     {
-      AppMethodBeat.i(199638);
-      Object localObject = this.Okc.a(paramf, paramT);
-      AppMethodBeat.o(199638);
+      AppMethodBeat.i(225410);
+      Object localObject = this.TYX.a(paramf, paramT);
+      AppMethodBeat.o(225410);
       return localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlinx.a.b.bg
  * JD-Core Version:    0.7.0.1
  */

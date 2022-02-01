@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMActivity;
 
 final class i$7
@@ -20,29 +20,29 @@ final class i$7
   {
     AppMethodBeat.i(97815);
     Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/BaseTimeLine$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).ahF());
-    g.ajS();
-    if (!((Boolean)g.ajR().ajA().get(7490, Boolean.TRUE)).booleanValue())
+    ((b)localObject).bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/sns/ui/BaseTimeLine$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).axR());
+    g.aAi();
+    if (!((Boolean)g.aAh().azQ().get(7490, Boolean.TRUE)).booleanValue())
     {
       paramView = new Intent();
-      paramView.setClass(i.c(this.AgE), SnsCommentUI.class);
+      paramView.setClass(i.c(this.Epa), SnsCommentUI.class);
       paramView.putExtra("sns_comment_type", 1);
-      ((MMActivity)i.c(this.AgE)).startActivityForResult(paramView, 9);
+      ((MMActivity)i.c(this.Epa)).startActivityForResult(paramView, 9);
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/sns/ui/BaseTimeLine$6", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
       AppMethodBeat.o(97815);
       return true;
-      paramView = i.c(this.AgE);
-      localObject = new Intent().setClass(i.c(this.AgE), SnsLongMsgUI.class);
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/sns/ui/BaseTimeLine$6", "onLongClick", "(Landroid/view/View;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+      paramView = i.c(this.Epa);
+      localObject = new Intent().setClass(i.c(this.Epa), SnsLongMsgUI.class);
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/sns/ui/BaseTimeLine$6", "onLongClick", "(Landroid/view/View;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/sns/ui/BaseTimeLine$6", "onLongClick", "(Landroid/view/View;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      g.ajS();
-      g.ajR().ajA().set(7490, Boolean.FALSE);
+      g.aAi();
+      g.aAh().azQ().set(7490, Boolean.FALSE);
     }
   }
 }

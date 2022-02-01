@@ -5,47 +5,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class m
   extends com.tencent.mm.bw.a
 {
-  public String CZb;
+  public String ANo;
+  public String HEP;
   public int selected;
-  public String wRt;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(91298);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.CZb != null) {
-        paramVarArgs.d(1, this.CZb);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.HEP != null) {
+        paramVarArgs.e(1, this.HEP);
       }
-      paramVarArgs.aS(2, this.selected);
-      if (this.wRt != null) {
-        paramVarArgs.d(3, this.wRt);
+      paramVarArgs.aM(2, this.selected);
+      if (this.ANo != null) {
+        paramVarArgs.e(3, this.ANo);
       }
       AppMethodBeat.o(91298);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.CZb == null) {
+      if (this.HEP == null) {
         break label318;
       }
     }
     label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.CZb) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.HEP) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.selected);
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.selected);
       paramInt = i;
-      if (this.wRt != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.wRt);
+      if (this.ANo != null) {
+        paramInt = i + g.a.a.b.b.a.f(3, this.ANo);
       }
       AppMethodBeat.o(91298);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(91298);
@@ -53,7 +53,7 @@ public final class m
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         m localm = (m)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -61,15 +61,15 @@ public final class m
           AppMethodBeat.o(91298);
           return -1;
         case 1: 
-          localm.CZb = locala.OmT.readString();
+          localm.HEP = locala.UbS.readString();
           AppMethodBeat.o(91298);
           return 0;
         case 2: 
-          localm.selected = locala.OmT.zc();
+          localm.selected = locala.UbS.zi();
           AppMethodBeat.o(91298);
           return 0;
         }
-        localm.wRt = locala.OmT.readString();
+        localm.ANo = locala.UbS.readString();
         AppMethodBeat.o(91298);
         return 0;
       }
@@ -80,7 +80,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.m
  * JD-Core Version:    0.7.0.1
  */

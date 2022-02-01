@@ -16,16 +16,16 @@ public class TPThreadUtil
   
   static
   {
-    AppMethodBeat.i(197450);
+    AppMethodBeat.i(189846);
     THREAD_POOL_EXECUTOR = Executors.newCachedThreadPool();
     mScheduler = null;
     mMainThreadHandler = null;
-    AppMethodBeat.o(197450);
+    AppMethodBeat.o(189846);
   }
   
   private static void getMainThreadHandler()
   {
-    AppMethodBeat.i(197444);
+    AppMethodBeat.i(189840);
     if (mMainThreadHandler == null) {
       try
       {
@@ -42,20 +42,20 @@ public class TPThreadUtil
         }
         mMainThreadHandler = null;
         Object localObject1 = new IllegalStateException("cannot get thread looper");
-        AppMethodBeat.o(197444);
+        AppMethodBeat.o(189840);
         throw ((Throwable)localObject1);
       }
       finally
       {
-        AppMethodBeat.o(197444);
+        AppMethodBeat.o(189840);
       }
     }
-    AppMethodBeat.o(197444);
+    AppMethodBeat.o(189840);
   }
   
   public static ScheduledExecutorService getScheduledExecutorServiceInstance()
   {
-    AppMethodBeat.i(197443);
+    AppMethodBeat.i(189839);
     if (mScheduler == null) {}
     try
     {
@@ -63,48 +63,48 @@ public class TPThreadUtil
         mScheduler = Executors.newScheduledThreadPool(4);
       }
       ScheduledExecutorService localScheduledExecutorService = mScheduler;
-      AppMethodBeat.o(197443);
+      AppMethodBeat.o(189839);
       return localScheduledExecutorService;
     }
     finally
     {
-      AppMethodBeat.o(197443);
+      AppMethodBeat.o(189839);
     }
   }
   
   public static void postDelayRunnableOnMainThread(Runnable paramRunnable, long paramLong)
   {
-    AppMethodBeat.i(197447);
+    AppMethodBeat.i(189843);
     getMainThreadHandler();
     if (mMainThreadHandler != null) {
       mMainThreadHandler.postDelayed(paramRunnable, paramLong);
     }
-    AppMethodBeat.o(197447);
+    AppMethodBeat.o(189843);
   }
   
   public static void postRunnableOnMainThread(Runnable paramRunnable)
   {
-    AppMethodBeat.i(197446);
+    AppMethodBeat.i(189842);
     getMainThreadHandler();
     if (mMainThreadHandler != null) {
       mMainThreadHandler.post(paramRunnable);
     }
-    AppMethodBeat.o(197446);
+    AppMethodBeat.o(189842);
   }
   
   public static void postRunnableOnMainThreadFront(Runnable paramRunnable)
   {
-    AppMethodBeat.i(197445);
+    AppMethodBeat.i(189841);
     getMainThreadHandler();
     if (mMainThreadHandler != null) {
       mMainThreadHandler.postAtFrontOfQueue(paramRunnable);
     }
-    AppMethodBeat.o(197445);
+    AppMethodBeat.o(189841);
   }
   
   public static void sendMessage(Handler paramHandler, int paramInt1, int paramInt2, int paramInt3, Object paramObject)
   {
-    AppMethodBeat.i(197448);
+    AppMethodBeat.i(189844);
     if (paramHandler != null)
     {
       Message localMessage = Message.obtain();
@@ -114,12 +114,12 @@ public class TPThreadUtil
       localMessage.obj = paramObject;
       paramHandler.sendMessage(localMessage);
     }
-    AppMethodBeat.o(197448);
+    AppMethodBeat.o(189844);
   }
   
   public static void sendMessageDelay(Handler paramHandler, int paramInt1, int paramInt2, int paramInt3, Object paramObject, long paramLong)
   {
-    AppMethodBeat.i(197449);
+    AppMethodBeat.i(189845);
     if (paramHandler != null)
     {
       Message localMessage = Message.obtain();
@@ -129,7 +129,7 @@ public class TPThreadUtil
       localMessage.obj = paramObject;
       paramHandler.sendMessageDelayed(localMessage, paramLong);
     }
-    AppMethodBeat.o(197449);
+    AppMethodBeat.o(189845);
   }
   
   static class EventHandler
@@ -145,7 +145,7 @@ public class TPThreadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPThreadUtil
  * JD-Core Version:    0.7.0.1
  */

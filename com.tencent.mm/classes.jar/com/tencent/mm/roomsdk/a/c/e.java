@@ -1,87 +1,95 @@
 package com.tencent.mm.roomsdk.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
 {
-  private int IqB;
-  protected com.tencent.mm.roomsdk.a.b.a Iqp;
-  protected com.tencent.mm.roomsdk.a.b.a Iqq;
-  protected com.tencent.mm.roomsdk.a.b.a Iqr;
-  private f ghB;
+  protected com.tencent.mm.roomsdk.a.b.a NDM;
+  protected com.tencent.mm.roomsdk.a.b.a NDN;
+  protected com.tencent.mm.roomsdk.a.b.a NDO;
+  private int NDY;
+  private i gNh;
   
-  public e()
+  private e(int paramInt)
   {
-    AppMethodBeat.i(152787);
-    this.ghB = new f()
+    AppMethodBeat.i(223905);
+    this.gNh = new i()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
       {
         AppMethodBeat.i(152786);
-        if ((paramAnonymousn instanceof com.tencent.mm.roomsdk.a.a)) {
-          ((com.tencent.mm.roomsdk.a.a)paramAnonymousn).a(e.this.Iqr);
+        if ((paramAnonymousq instanceof com.tencent.mm.roomsdk.a.a)) {
+          ((com.tencent.mm.roomsdk.a.a)paramAnonymousq).a(e.this.NDO);
         }
-        if (e.this.Iqr != null) {
-          e.this.Iqr.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.Iqr);
+        if (e.this.NDO != null) {
+          e.this.NDO.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.NDO);
         }
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          if (e.this.Iqp != null)
+          if (e.this.NDM != null)
           {
-            e.this.Iqp.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.Iqp);
+            e.this.NDM.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.NDM);
             AppMethodBeat.o(152786);
           }
         }
-        else if (e.this.Iqq != null) {
-          e.this.Iqq.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.Iqq);
+        else if (e.this.NDN != null) {
+          e.this.NDN.a(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, e.this.NDN);
         }
         AppMethodBeat.o(152786);
       }
     };
-    this.IqB = 700;
-    AppMethodBeat.o(152787);
+    this.NDY = 700;
+    AppMethodBeat.o(223905);
+  }
+  
+  public static e gvQ()
+  {
+    AppMethodBeat.i(223904);
+    e locale = new e(700);
+    AppMethodBeat.o(223904);
+    return locale;
   }
   
   public final void dead()
   {
     AppMethodBeat.i(152789);
-    ae.i("MicroMsg.RoomWatchCallbackFactory", "dead");
-    g.ajS();
-    g.ajQ().gDv.b(this.IqB, this.ghB);
+    Log.i("MicroMsg.RoomWatchCallbackFactory", "dead");
+    g.aAi();
+    g.aAg().hqi.b(this.NDY, this.gNh);
     AppMethodBeat.o(152789);
   }
   
   public final e e(com.tencent.mm.roomsdk.a.b.a parama)
   {
-    this.Iqp = parama;
+    this.NDM = parama;
     return this;
   }
   
   public final e f(com.tencent.mm.roomsdk.a.b.a parama)
   {
-    this.Iqq = parama;
+    this.NDN = parama;
     return this;
   }
   
-  public final e fme()
+  public final e gvR()
   {
     AppMethodBeat.i(152788);
-    ae.i("MicroMsg.RoomWatchCallbackFactory", "alive");
-    g.ajS();
-    g.ajQ().gDv.a(this.IqB, this.ghB);
+    Log.i("MicroMsg.RoomWatchCallbackFactory", "alive");
+    g.aAi();
+    g.aAg().hqi.a(this.NDY, this.gNh);
     AppMethodBeat.o(152788);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.roomsdk.a.c.e
  * JD-Core Version:    0.7.0.1
  */

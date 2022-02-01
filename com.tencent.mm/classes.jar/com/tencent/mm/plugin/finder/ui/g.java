@@ -1,359 +1,399 @@
 package com.tencent.mm.plugin.finder.ui;
 
-import android.support.v7.widget.RecyclerView;
-import android.view.View;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.convert.k;
-import com.tencent.mm.plugin.finder.convert.n;
-import com.tencent.mm.plugin.finder.convert.u;
-import com.tencent.mm.plugin.finder.convert.w;
-import com.tencent.mm.plugin.finder.feed.a.a;
-import com.tencent.mm.plugin.finder.feed.a.b;
-import com.tencent.mm.plugin.finder.feed.i.a;
-import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
-import com.tencent.mm.plugin.finder.feed.u.a;
-import com.tencent.mm.plugin.finder.feed.u.b;
-import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.o;
-import com.tencent.mm.plugin.finder.model.r;
-import com.tencent.mm.plugin.finder.model.t;
-import com.tencent.mm.plugin.finder.report.f;
-import com.tencent.mm.plugin.finder.video.i;
-import com.tencent.mm.plugin.finder.view.FinderLikeDrawer;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.TouchMediaPreviewLayout;
-import com.tencent.mm.view.RefreshLoadMoreLayout;
-import com.tencent.mm.view.recyclerview.c;
-import d.g.b.p;
-import d.l;
-import d.z;
-import java.util.List;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.cgi.am;
+import com.tencent.mm.plugin.finder.cgi.bu;
+import com.tencent.mm.plugin.finder.live.model.cgi.s;
+import com.tencent.mm.plugin.finder.live.model.cgi.s.a;
+import com.tencent.mm.plugin.finder.utils.m;
+import com.tencent.mm.pluginsdk.permission.b;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.aqb;
+import com.tencent.mm.protocal.protobuf.awe;
+import com.tencent.mm.protocal.protobuf.awt;
+import com.tencent.mm.protocal.protobuf.axk;
+import com.tencent.mm.protocal.protobuf.axq;
+import com.tencent.mm.protocal.protobuf.bed;
+import com.tencent.mm.protocal.protobuf.bel;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.base.u;
+import java.util.LinkedList;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/ShareRelPresenter;", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedDetailRelUIContract$Presenter;", "scene", "", "context", "Lcom/tencent/mm/ui/MMActivity;", "safeMode", "", "tabType", "(ILcom/tencent/mm/ui/MMActivity;ZI)V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "contactUninterestListener", "Lcom/tencent/mm/plugin/finder/view/ContactUninterestEventListener;", "onBindMoreConvert", "Lkotlin/Function1;", "Landroid/view/View;", "", "getOnBindMoreConvert", "()Lkotlin/jvm/functions/Function1;", "setOnBindMoreConvert", "(Lkotlin/jvm/functions/Function1;)V", "getTabType", "()I", "buildItemCoverts", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "checkExposeCommentStrategy", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "consumeBackPressed", "onAttach", "model", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "callback", "Lcom/tencent/mm/plugin/finder/feed/FinderLoaderFeedUIContract$ViewCallback;", "onDetach", "onLoadMoreEnd", "onRefreshEnd", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderLivePostHelper;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "context", "Landroid/app/Activity;", "(Landroid/app/Activity;)V", "TAG", "", "livePrepareResp", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLivePrepareResponse;", "noticeInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "getNoticeInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;", "setNoticeInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveNoticeInfo;)V", "onLivePrepareEnd", "Lkotlin/Function0;", "", "getOnLivePrepareEnd", "()Lkotlin/jvm/functions/Function0;", "setOnLivePrepareEnd", "(Lkotlin/jvm/functions/Function0;)V", "prepareResp", "Lcom/tencent/mm/protocal/protobuf/FinderUserPrepareResponse;", "requestId", "", "selectedItemId", "", "getSelectedItemId", "()I", "setSelectedItemId", "(I)V", "checkLivePermission", "resp", "continueLive", "finderObjectInfo", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "destroy", "globalEnable", "", "globalFlag", "gotoFaceVerify", "verifyUrl", "gotoLive", "gotoLiveInternal", "liveVerify", "onActivityResult", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onRequestPermissionsResult", "permissions", "", "grantResults", "", "(I[Ljava/lang/String;[I)V", "onSceneEnd", "errType", "errCode", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "prepareLive", "privateEnable", "privateFlag", "resetPrepateFlag", "setPrepareResp", "showErrPage", "type", "Companion", "plugin-finder_release"})
 public final class g
-  extends i.a
+  implements i
 {
-  private String TAG;
-  final int dvm;
-  d.g.a.b<? super View, z> sTG;
-  private com.tencent.mm.plugin.finder.view.b sfq;
+  public static final a vKX;
+  public final String TAG;
+  public final Activity dKq;
+  public int ks;
+  public bed udb;
+  public awt ufj;
+  private long ulj;
+  public aqb vKV;
+  public kotlin.g.a.a<x> vKW;
   
-  public g(int paramInt1, MMActivity paramMMActivity, boolean paramBoolean, int paramInt2)
+  static
   {
-    super(paramInt1, paramMMActivity, paramBoolean, (byte)0);
-    AppMethodBeat.i(204919);
-    this.dvm = paramInt2;
-    this.TAG = "Finder.FinderShareFeedDetailUI";
-    AppMethodBeat.o(204919);
+    AppMethodBeat.i(252484);
+    vKX = new a((byte)0);
+    AppMethodBeat.o(252484);
   }
   
-  public final void a(BaseFinderFeedLoader paramBaseFinderFeedLoader, u.b paramb)
+  public g(Activity paramActivity)
   {
-    AppMethodBeat.i(204914);
-    p.h(paramBaseFinderFeedLoader, "model");
-    p.h(paramb, "callback");
-    super.a(paramBaseFinderFeedLoader, paramb);
-    paramBaseFinderFeedLoader = this.scw;
-    if (paramBaseFinderFeedLoader != null)
+    AppMethodBeat.i(252483);
+    this.dKq = paramActivity;
+    this.TAG = "Finder.LivePostHelper";
+    this.ks = -1;
+    AppMethodBeat.o(252483);
+  }
+  
+  private final void Lr(int paramInt)
+  {
+    AppMethodBeat.i(252481);
+    Log.i(this.TAG, "showErrPage type:".concat(String.valueOf(paramInt)));
+    Intent localIntent = new Intent();
+    localIntent.putExtra("LIVE_HELP_TYPE", paramInt);
+    localIntent.setClass((Context)this.dKq, FinderLivePostHelperUI.class);
+    this.dKq.startActivityForResult(localIntent, 10001);
+    AppMethodBeat.o(252481);
+  }
+  
+  public final void a(bed parambed)
+  {
+    AppMethodBeat.i(252476);
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("setPrepareResp wxaShopInfo appId:");
+    if (parambed != null)
     {
-      this.sfq = new com.tencent.mm.plugin.finder.view.b(paramBaseFinderFeedLoader);
-      paramBaseFinderFeedLoader = this.sfq;
-      if (paramBaseFinderFeedLoader != null) {
-        paramBaseFinderFeedLoader.alive();
-      }
+      localObject = parambed.wxaShopInfo;
+      if (localObject == null) {}
     }
-    paramb.scj.getRecyclerView().post((Runnable)new b(this));
-    AppMethodBeat.o(204914);
-  }
-  
-  public final void cCo()
-  {
-    AppMethodBeat.i(204916);
-    f localf = f.syc;
-    f.ah(this.dvm, false);
-    AppMethodBeat.o(204916);
-  }
-  
-  public final void cCp()
-  {
-    AppMethodBeat.i(204917);
-    f localf = f.syc;
-    f.ah(this.dvm, false);
-    AppMethodBeat.o(204917);
-  }
-  
-  public final c cCq()
-  {
-    AppMethodBeat.i(204913);
-    c localc = (c)new a(this);
-    AppMethodBeat.o(204913);
-    return localc;
-  }
-  
-  public final boolean cNc()
-  {
-    AppMethodBeat.i(204918);
-    Object localObject = this.scd;
-    if (localObject != null)
+    for (Object localObject = ((bel)localObject).appId;; localObject = null)
     {
-      localObject = ((a.b)localObject).cCx();
-      if ((localObject != null) && (((com.tencent.mm.plugin.finder.view.e)localObject).cPI()))
-      {
-        ((com.tencent.mm.plugin.finder.view.e)localObject).cPH();
-        AppMethodBeat.o(204918);
-        return true;
-      }
-    }
-    localObject = this.scd;
-    if (localObject != null)
-    {
-      localObject = ((a.b)localObject).scn;
-      if ((localObject != null) && (((TouchMediaPreviewLayout)localObject).LqB))
-      {
-        ((TouchMediaPreviewLayout)localObject).fQg();
-        AppMethodBeat.o(204918);
-        return true;
-      }
-    }
-    localObject = this.scd;
-    if (localObject != null)
-    {
-      localObject = ((a.b)localObject).cCy();
-      if ((localObject != null) && (((FinderLikeDrawer)localObject).cPI()))
-      {
-        ((FinderLikeDrawer)localObject).cPH();
-        AppMethodBeat.o(204918);
-        return true;
-      }
-    }
-    localObject = this.scd;
-    if (localObject != null)
-    {
-      localObject = ((a.b)localObject).cCv();
-      if ((localObject != null) && (((FinderLikeDrawer)localObject).cPI()))
-      {
-        ((FinderLikeDrawer)localObject).cPH();
-        AppMethodBeat.o(204918);
-        return true;
-      }
-    }
-    AppMethodBeat.o(204918);
-    return false;
-  }
-  
-  public final String getTAG()
-  {
-    return this.TAG;
-  }
-  
-  public final void onDetach()
-  {
-    AppMethodBeat.i(204915);
-    super.onDetach();
-    com.tencent.mm.plugin.finder.view.b localb = this.sfq;
-    if (localb != null)
-    {
-      localb.dead();
-      AppMethodBeat.o(204915);
+      Log.i(str, (String)localObject + ',');
+      this.udb = parambed;
+      AppMethodBeat.o(252476);
       return;
     }
-    AppMethodBeat.o(204915);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/ShareRelPresenter$buildItemCoverts$1", "Lcom/tencent/mm/view/recyclerview/ItemConvertFactory;", "getItemConvert", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "type", "", "plugin-finder_release"})
-  public static final class a
-    implements c
+  public final void b(aqb paramaqb)
   {
-    public final com.tencent.mm.view.recyclerview.b<?> AX(int paramInt)
+    AppMethodBeat.i(252478);
+    Object localObject = com.tencent.mm.kernel.g.aAh();
+    p.g(localObject, "MMKernel.storage()");
+    localObject = ((e)localObject).azQ().get(ar.a.Oki, Boolean.FALSE);
+    if (localObject == null)
     {
-      AppMethodBeat.i(204911);
-      switch (paramInt)
-      {
-      default: 
-        localb = (com.tencent.mm.view.recyclerview.b)new g(this, (com.tencent.mm.plugin.finder.feed.h)this.sTH, this.sTH.rUX);
-        AppMethodBeat.o(204911);
-        return localb;
-      case 4: 
-      case 3002: 
-        localb = (com.tencent.mm.view.recyclerview.b)new a(this, this.sTH.rWB, (com.tencent.mm.plugin.finder.feed.h)this.sTH, this.sTH.rUX);
-        AppMethodBeat.o(204911);
-        return localb;
-      case 2: 
-      case 3001: 
-        localb = (com.tencent.mm.view.recyclerview.b)new b(this, (com.tencent.mm.plugin.finder.feed.h)this.sTH, this.sTH.rUX);
-        AppMethodBeat.o(204911);
-        return localb;
-      case 7: 
-        localb = (com.tencent.mm.view.recyclerview.b)new c(this, (com.tencent.mm.plugin.finder.feed.h)this.sTH, this.sTH.rUX);
-        AppMethodBeat.o(204911);
-        return localb;
-      case 8: 
-        localb = (com.tencent.mm.view.recyclerview.b)new d(this, this.sTH.rWB, (com.tencent.mm.plugin.finder.feed.h)this.sTH, this.sTH.rUX);
-        AppMethodBeat.o(204911);
-        return localb;
-      case 1: 
-        localb = (com.tencent.mm.view.recyclerview.b)new e(this, (com.tencent.mm.plugin.finder.feed.h)this.sTH, this.sTH.rUX);
-        AppMethodBeat.o(204911);
-        return localb;
-      }
-      com.tencent.mm.view.recyclerview.b localb = (com.tencent.mm.view.recyclerview.b)new g.a.f(this);
-      AppMethodBeat.o(204911);
-      return localb;
+      paramaqb = new kotlin.t("null cannot be cast to non-null type kotlin.Boolean");
+      AppMethodBeat.o(252478);
+      throw paramaqb;
     }
-    
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/ShareRelPresenter$buildItemCoverts$1$getItemConvert$1", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedVideoConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedVideo;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class a
-      extends w
+    boolean bool = ((Boolean)localObject).booleanValue();
+    Log.i(this.TAG, "gotoLive isVerify:".concat(String.valueOf(bool)));
+    if (bool)
     {
-      a(i parami, com.tencent.mm.plugin.finder.feed.h paramh, boolean paramBoolean)
-      {
-        super(paramBoolean, bool, 0, 8);
+      c(paramaqb);
+      AppMethodBeat.o(252478);
+      return;
+    }
+    Log.i(this.TAG, "liveVerify");
+    com.tencent.mm.kernel.g.azz().a(5231, (i)this);
+    paramaqb = new bu().d((Context)this.dKq, this.dKq.getResources().getString(2131760677), 1000L);
+    com.tencent.mm.kernel.g.azz().b((q)paramaqb);
+    AppMethodBeat.o(252478);
+  }
+  
+  public final void c(aqb paramaqb)
+  {
+    AppMethodBeat.i(252480);
+    Log.i(this.TAG, "checkLivePermission resp".concat(String.valueOf(paramaqb)));
+    boolean bool = b.a(this.dKq, "android.permission.CAMERA", 16, "", "");
+    Log.i(this.TAG, "check camera:".concat(String.valueOf(bool)));
+    if (!bool)
+    {
+      Log.i(this.TAG, "check camera stack:" + Util.getStack());
+      AppMethodBeat.o(252480);
+      return;
+    }
+    bool = b.a(this.dKq, "android.permission.RECORD_AUDIO", 80, "", "");
+    Log.i(this.TAG, "check micro:".concat(String.valueOf(bool)));
+    if (!bool)
+    {
+      Log.i(this.TAG, "check micro:" + Util.getStack());
+      AppMethodBeat.o(252480);
+      return;
+    }
+    Object localObject1 = m.vVH;
+    localObject1 = this.udb;
+    int i;
+    label221:
+    Object localObject2;
+    label251:
+    Object localObject3;
+    label313:
+    label353:
+    Context localContext;
+    label422:
+    awt localawt;
+    if (localObject1 != null)
+    {
+      i = ((bed)localObject1).LNW;
+      localObject1 = this.udb;
+      if (localObject1 == null) {
+        break label494;
       }
-      
-      private void a(com.tencent.mm.view.recyclerview.e parame, t paramt, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+      localObject1 = ((bed)localObject1).wxaShopInfo;
+      if (localObject1 == null) {
+        break label494;
+      }
+      localObject1 = ((bel)localObject1).appId;
+      localObject2 = this.udb;
+      if (localObject2 == null) {
+        break label500;
+      }
+      localObject2 = ((bed)localObject2).wxaShopInfo;
+      if (localObject2 == null) {
+        break label500;
+      }
+      localObject2 = ((bel)localObject2).LOg;
+      bool = m.z(i, (String)localObject1, (String)localObject2);
+      localObject2 = this.TAG;
+      localObject3 = new StringBuilder("bindShop:").append(bool).append(", full_tag_info:");
+      if (paramaqb == null) {
+        break label506;
+      }
+      localObject1 = paramaqb.LBV;
+      if (localObject1 == null) {
+        break label506;
+      }
+      localObject1 = Integer.valueOf(((LinkedList)localObject1).size());
+      localObject3 = ((StringBuilder)localObject3).append(localObject1).append(",visibility_file_list size:");
+      if (paramaqb == null) {
+        break label512;
+      }
+      localObject1 = paramaqb.LBX;
+      if (localObject1 == null) {
+        break label512;
+      }
+      localObject1 = Integer.valueOf(((LinkedList)localObject1).size());
+      Log.i((String)localObject2, localObject1);
+      localObject1 = com.tencent.mm.plugin.finder.utils.a.vUU;
+      localContext = (Context)this.dKq;
+      if (paramaqb != null)
       {
-        AppMethodBeat.i(204891);
-        p.h(parame, "holder");
-        p.h(paramt, "item");
-        super.a(parame, (BaseFinderFeed)paramt, paramInt1, paramInt2, paramBoolean, paramList);
-        g.d(parame, this.rUX);
-        parame = parame.GD(2131307449);
-        if (parame != null)
+        localObject1 = paramaqb.LBU;
+        if (localObject1 != null)
         {
-          parame.setVisibility(8);
-          AppMethodBeat.o(204891);
-          return;
+          localObject2 = ((FinderObject)localObject1).liveInfo;
+          localObject1 = localObject2;
+          if (localObject2 != null) {
+            break label422;
+          }
         }
-        AppMethodBeat.o(204891);
+      }
+      localObject1 = new awe();
+      localawt = this.ufj;
+      if (paramaqb == null) {
+        break label518;
+      }
+      localObject2 = paramaqb.LBV;
+      label438:
+      if (paramaqb == null) {
+        break label524;
+      }
+      localObject3 = paramaqb.LBW;
+      label448:
+      if (paramaqb == null) {
+        break label530;
       }
     }
-    
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/ShareRelPresenter$buildItemCoverts$1$getItemConvert$2", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class b
-      extends k
+    label512:
+    label518:
+    label524:
+    label530:
+    for (paramaqb = paramaqb.LBX;; paramaqb = null)
     {
-      b(com.tencent.mm.plugin.finder.feed.h paramh, boolean paramBoolean)
-      {
-        super(bool, 0, 4);
-      }
-      
-      private void a(com.tencent.mm.view.recyclerview.e parame, o paramo, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(204894);
-        p.h(parame, "holder");
-        p.h(paramo, "item");
-        super.a(parame, (BaseFinderFeed)paramo, paramInt1, paramInt2, paramBoolean, paramList);
-        g.d(parame, this.rUX);
-        parame = parame.GD(2131307449);
-        if (parame != null)
-        {
-          parame.setVisibility(8);
-          AppMethodBeat.o(204894);
-          return;
-        }
-        AppMethodBeat.o(204894);
-      }
-    }
-    
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/ShareRelPresenter$buildItemCoverts$1$getItemConvert$3", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedTextCardConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class c
-      extends u
-    {
-      c(com.tencent.mm.plugin.finder.feed.h paramh, boolean paramBoolean)
-      {
-        super(bool, 0, 4);
-      }
-      
-      public final void a(com.tencent.mm.view.recyclerview.e parame, o paramo, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(204897);
-        p.h(parame, "holder");
-        p.h(paramo, "item");
-        super.a(parame, paramo, paramInt1, paramInt2, paramBoolean, paramList);
-        g.d(parame, this.rUX);
-        AppMethodBeat.o(204897);
-      }
-    }
-    
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/ShareRelPresenter$buildItemCoverts$1$getItemConvert$4", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedMixConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedMix;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class d
-      extends n
-    {
-      d(i parami, com.tencent.mm.plugin.finder.feed.h paramh, boolean paramBoolean)
-      {
-        super(paramBoolean, bool, 0, 8);
-      }
-      
-      private void a(com.tencent.mm.view.recyclerview.e parame, com.tencent.mm.plugin.finder.model.q paramq, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(204900);
-        p.h(parame, "holder");
-        p.h(paramq, "item");
-        super.a(parame, (BaseFinderFeed)paramq, paramInt1, paramInt2, paramBoolean, paramList);
-        g.d(parame, this.rUX);
-        AppMethodBeat.o(204900);
-      }
-    }
-    
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/ShareRelPresenter$buildItemCoverts$1$getItemConvert$5", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedPlainTextConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedPlainText;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class e
-      extends com.tencent.mm.plugin.finder.convert.q
-    {
-      e(com.tencent.mm.plugin.finder.feed.h paramh, boolean paramBoolean)
-      {
-        super(bool, 0, 4);
-      }
-      
-      private void a(com.tencent.mm.view.recyclerview.e parame, r paramr, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(204903);
-        p.h(parame, "holder");
-        p.h(paramr, "item");
-        super.a(parame, (BaseFinderFeed)paramr, paramInt1, paramInt2, paramBoolean, paramList);
-        g.d(parame, this.rUX);
-        AppMethodBeat.o(204903);
-      }
-    }
-    
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/ShareRelPresenter$buildItemCoverts$1$getItemConvert$7", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageConvert;", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "position", "", "type", "isHotPatch", "", "payloads", "", "", "plugin-finder_release"})
-    public static final class g
-      extends k
-    {
-      g(com.tencent.mm.plugin.finder.feed.h paramh, boolean paramBoolean)
-      {
-        super(bool, 0, 4);
-      }
-      
-      private void a(com.tencent.mm.view.recyclerview.e parame, o paramo, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
-      {
-        AppMethodBeat.i(204908);
-        p.h(parame, "holder");
-        p.h(paramo, "item");
-        super.a(parame, (BaseFinderFeed)paramo, paramInt1, paramInt2, paramBoolean, paramList);
-        g.d(parame, this.rUX);
-        AppMethodBeat.o(204908);
-      }
+      com.tencent.mm.plugin.finder.utils.a.a(localContext, 0L, "", (awe)localObject1, bool, localawt, null, (LinkedList)localObject2, (axk)localObject3, null, null, paramaqb, 3216);
+      AppMethodBeat.o(252480);
+      return;
+      i = 0;
+      break;
+      label494:
+      localObject1 = null;
+      break label221;
+      label500:
+      localObject2 = null;
+      break label251;
+      label506:
+      localObject1 = null;
+      break label313;
+      localObject1 = null;
+      break label353;
+      localObject2 = null;
+      break label438;
+      localObject3 = null;
+      break label448;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
-  static final class b
-    implements Runnable
+  public final void dzD()
   {
-    b(g paramg) {}
-    
-    public final void run()
+    AppMethodBeat.i(252477);
+    Log.i(this.TAG, "prepareLive");
+    this.ulj = System.currentTimeMillis();
+    this.ks = -1;
+    am localam = am.tuw;
+    new s(am.cXY(), z.aUg(), this.ulj, (s.a)new b(this), (byte)0).aYI();
+    AppMethodBeat.o(252477);
+  }
+  
+  public final void dzE()
+  {
+    this.ulj = 0L;
+    this.ks = -1;
+    this.vKV = null;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  {
+    AppMethodBeat.i(252479);
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder("scene:");
+    if (paramq != null) {}
+    for (Integer localInteger = Integer.valueOf(paramq.getType());; localInteger = null)
     {
-      AppMethodBeat.i(204912);
-      f localf = f.syc;
-      f.Fk(this.sTH.dvm);
-      AppMethodBeat.o(204912);
+      Log.i(str, localInteger + " result errCode:" + paramInt2 + ",errMsg:" + paramString + ",errType:" + paramInt1);
+      if (!(paramq instanceof bu)) {
+        break label442;
+      }
+      com.tencent.mm.kernel.g.azz().b(5231, (i)this);
+      if (((paramInt1 != 0) || (paramInt2 != 0)) && (paramInt2 != -200008)) {
+        break label355;
+      }
+      paramString = ((bu)paramq).cYK();
+      Log.i(this.TAG, "prepareLive,is verify:" + paramString.sPX);
+      if (paramString.sPX) {
+        break label340;
+      }
+      if (Util.isNullOrNil(paramString.HIt)) {
+        break;
+      }
+      paramq = paramString.HIt;
+      paramString = paramq;
+      if (paramq == null) {
+        paramString = "";
+      }
+      Log.i(this.TAG, "gotoFaceVerify ".concat(String.valueOf(paramString)));
+      paramq = new Intent();
+      paramq.putExtra("LIVE_HELP_TYPE", 1);
+      paramq.putExtra("FACE_VERIFY_URL", paramString);
+      paramq.setClass((Context)this.dKq, FinderLivePostHelperUI.class);
+      this.dKq.startActivityForResult(paramq, 10000);
+      AppMethodBeat.o(252479);
+      return;
+    }
+    u.makeText((Context)this.dKq, (CharSequence)this.dKq.getResources().getString(2131760130), 0).show();
+    Log.e(this.TAG, "prepareLive,realnameUrl is empty:" + paramString.HIt);
+    AppMethodBeat.o(252479);
+    return;
+    label340:
+    c(this.vKV);
+    AppMethodBeat.o(252479);
+    return;
+    switch (paramInt2)
+    {
+    case -200017: 
+    case -200016: 
+    case -200015: 
+    case -200014: 
+    case -200013: 
+    default: 
+      u.makeText((Context)this.dKq, (CharSequence)this.dKq.getResources().getString(2131759916), 0).show();
+      AppMethodBeat.o(252479);
+      return;
+    case -200009: 
+      u.makeText((Context)this.dKq, (CharSequence)this.dKq.getResources().getString(2131759875), 0).show();
+      AppMethodBeat.o(252479);
+      return;
+    case -200010: 
+      u.makeText((Context)this.dKq, (CharSequence)this.dKq.getResources().getString(2131759871), 0).show();
+      AppMethodBeat.o(252479);
+      return;
+    case -200011: 
+      label355:
+      Lr(3);
+      label442:
+      AppMethodBeat.o(252479);
+      return;
+    }
+    Lr(2);
+    AppMethodBeat.o(252479);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderLivePostHelper$Companion;", "", "()V", "ENTER_LIVE_FACE_VERIFY", "", "ENTER_LIVE_FORBIDEEN", "PREPARE_TIME_OUT", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderLivePostHelper$prepareLive$1", "Lcom/tencent/mm/plugin/finder/live/model/cgi/CgiFinderLivePrepare$CallBack;", "onCgiBack", "", "errType", "", "errCode", "errMsg", "", "reqId", "", "resp", "Lcom/tencent/mm/protocal/protobuf/FinderCreateLivePrepareResponse;", "plugin-finder_release"})
+  public static final class b
+    implements s.a
+  {
+    public final void a(int paramInt1, int paramInt2, String paramString, long paramLong, aqb paramaqb)
+    {
+      AppMethodBeat.i(252475);
+      p.h(paramaqb, "resp");
+      if (g.b(this.vKY) == paramLong)
+      {
+        if ((paramInt1 == 0) && (paramInt2 == 0))
+        {
+          g.a(this.vKY, paramaqb);
+          this.vKY.ufj = paramaqb.live_notice_info;
+          paramString = this.vKY.vKW;
+          if (paramString != null)
+          {
+            paramString.invoke();
+            AppMethodBeat.o(252475);
+            return;
+          }
+          AppMethodBeat.o(252475);
+          return;
+        }
+        this.vKY.ufj = null;
+        paramString = this.vKY.vKW;
+        if (paramString != null)
+        {
+          paramString.invoke();
+          AppMethodBeat.o(252475);
+          return;
+        }
+        AppMethodBeat.o(252475);
+        return;
+      }
+      Log.i(g.c(this.vKY), "result errCode:" + paramInt2 + ",errMsg:" + paramString + ",errType:" + paramInt1 + ",requestId:" + g.b(this.vKY) + ",scene.requestId:" + paramLong);
+      AppMethodBeat.o(252475);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.g
  * JD-Core Version:    0.7.0.1
  */

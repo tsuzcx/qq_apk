@@ -7,10 +7,10 @@ import com.eclipsesource.v8.ScriptPartObject;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.v8.m.b;
 import com.tencent.mm.appbrand.v8.m.c;
-import com.tencent.mm.plugin.appbrand.jsruntime.i;
-import com.tencent.mm.plugin.appbrand.jsruntime.v;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.m.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -21,29 +21,13 @@ import junit.framework.Assert;
 
 public final class s
 {
-  private static final LinkedList<String> mTW;
+  private static final LinkedList<String> ogX;
   
   static
   {
     AppMethodBeat.i(135375);
-    mTW = new LinkedList();
+    ogX = new LinkedList();
     AppMethodBeat.o(135375);
-  }
-  
-  public static void VO(String paramString)
-  {
-    AppMethodBeat.i(135370);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(135370);
-      return;
-    }
-    synchronized (mTW)
-    {
-      mTW.add(paramString);
-      AppMethodBeat.o(135370);
-      return;
-    }
   }
   
   public static void a(i parami, String paramString, a parama)
@@ -57,19 +41,19 @@ public final class s
   public static void a(i parami, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, final a parama)
   {
     AppMethodBeat.i(135373);
-    ae.i("MicroMsg.JsValidationInjector", "hy: injecting file %s", new Object[] { paramString1 });
+    Log.i("MicroMsg.JsValidationInjector", "hy: injecting file %s", new Object[] { paramString1 });
     final long l = System.currentTimeMillis();
-    if (bu.isNullOrNil(paramString4))
+    if (Util.isNullOrNil(paramString4))
     {
-      ae.e("MicroMsg.JsValidationInjector", "hy: empty script!");
+      Log.e("MicroMsg.JsValidationInjector", "hy: empty script!");
       if (parama != null) {
-        parama.cV("isNullOrNil script");
+        parama.du("isNullOrNil script");
       }
       AppMethodBeat.o(135373);
       return;
     }
     paramString4 = paramString4 + String.format("\n;(function(){return %d;})();", new Object[] { Integer.valueOf(11111) });
-    String str = paramString4 + bu.nullAsNil(paramString5);
+    String str = paramString4 + Util.nullAsNil(paramString5);
     paramString5 = null;
     paramString4 = paramString5;
     if (paramString1 != null) {
@@ -80,7 +64,7 @@ public final class s
       if (paramString1.length() > 0) {
         paramString4 = new URL(paramString1);
       }
-      paramString5 = (v)parami.P(v.class);
+      paramString5 = (v)parami.R(v.class);
       if (paramString5 != null)
       {
         paramString5.a(paramString4, paramString2, paramString3, paramInt, str, new m.b()
@@ -101,12 +85,12 @@ public final class s
     }
     catch (MalformedURLException parami)
     {
-      ae.e("MicroMsg.JsValidationInjector", "hy: MalformedURLException");
-      parama.cV("MalformedURLException");
+      Log.e("MicroMsg.JsValidationInjector", "hy: MalformedURLException");
+      parama.du("MalformedURLException");
       AppMethodBeat.o(135373);
       return;
     }
-    if ((bu.isNullOrNil(paramString2)) || (bu.isNullOrNil(paramString3)))
+    if ((Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString3)))
     {
       parami.a(paramString4, str, new ValueCallback() {});
       AppMethodBeat.o(135373);
@@ -118,20 +102,20 @@ public final class s
   
   public static void a(i parami, URL paramURL, String paramString, a parama)
   {
-    AppMethodBeat.i(207988);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(219592);
+    if (Util.isNullOrNil(paramString))
     {
       if (parama != null) {
-        parama.cV("isNullOrNil script");
+        parama.du("isNullOrNil script");
       }
-      AppMethodBeat.o(207988);
+      AppMethodBeat.o(219592);
       return;
     }
     for (;;)
     {
-      synchronized (mTW)
+      synchronized (ogX)
       {
-        Iterator localIterator = mTW.iterator();
+        Iterator localIterator = ogX.iterator();
         if (!localIterator.hasNext()) {
           break label164;
         }
@@ -141,18 +125,18 @@ public final class s
         i = 0;
         ??? = paramString;
         if (i != 0) {
-          ??? = paramString + bCo();
+          ??? = paramString + bZs();
         }
         paramString = new ValueCallback() {};
         if (paramURL == null)
         {
           parami.evaluateJavascript((String)???, paramString);
-          AppMethodBeat.o(207988);
+          AppMethodBeat.o(219592);
           return;
         }
       }
       parami.a(paramURL, (String)???, paramString);
-      AppMethodBeat.o(207988);
+      AppMethodBeat.o(219592);
       return;
       label164:
       int i = 1;
@@ -164,7 +148,7 @@ public final class s
     AppMethodBeat.i(176788);
     if ((paramArrayList == null) || (paramArrayList.size() == 0))
     {
-      ae.e("MicroMsg.JsValidationInjector", "empty script list, abort");
+      Log.e("MicroMsg.JsValidationInjector", "empty script list, abort");
       AppMethodBeat.o(176788);
       return;
     }
@@ -181,18 +165,18 @@ public final class s
       str2 = localScriptPartObject.wxaPkgPath;
       str1 = localScriptPartObject.wxaFileName;
       localObject = localScriptPartObject.wxaPkgKeyFilePath;
-      ae.i("MicroMsg.JsValidationInjector", " contain wxa pkg: %s, file: %s", new Object[] { str2, str1 });
+      Log.i("MicroMsg.JsValidationInjector", " contain wxa pkg: %s, file: %s", new Object[] { str2, str1 });
     }
     label345:
     for (;;)
     {
       break;
       final long l = System.currentTimeMillis();
-      if ((bu.isNullOrNil(str2)) || (bu.isNullOrNil(str1)) || (bu.isNullOrNil((String)localObject)))
+      if ((Util.isNullOrNil(str2)) || (Util.isNullOrNil(str1)) || (Util.isNullOrNil((String)localObject)))
       {
-        ae.e("MicroMsg.JsValidationInjector", "empty wxa path or file path or key path!");
+        Log.e("MicroMsg.JsValidationInjector", "empty wxa path or file path or key path!");
         if (parama != null) {
-          parama.cV("isNullOrNil empty path");
+          parama.du("isNullOrNil empty path");
         }
         AppMethodBeat.o(176788);
         return;
@@ -211,7 +195,7 @@ public final class s
         paramString1.type = 1;
         paramString1.content = String.format(Locale.US, "\n;(function(){return %d;})();", new Object[] { Integer.valueOf(11111) });
         paramArrayList.add(paramString1);
-        paramString1 = (v)parami.P(v.class);
+        paramString1 = (v)parami.R(v.class);
         if (paramString1 == null)
         {
           Assert.fail("Only addonV8 supports wxa script");
@@ -221,8 +205,8 @@ public final class s
       }
       catch (MalformedURLException parami)
       {
-        ae.e("MicroMsg.JsValidationInjector", "MalformedURLException");
-        parama.cV("MalformedURLException");
+        Log.e("MicroMsg.JsValidationInjector", "MalformedURLException");
+        parama.du("MalformedURLException");
         AppMethodBeat.o(176788);
         return;
       }
@@ -232,7 +216,7 @@ public final class s
             public final void a(String paramAnonymousString, m.c paramAnonymousc)
             {
               AppMethodBeat.i(176787);
-              s.a(this.mTZ, parama, paramAnonymousString, l);
+              s.a(this.oha, parama, paramAnonymousString, l);
               if ((parama instanceof s.b)) {
                 ((s.b)parama).a(paramAnonymousc);
               }
@@ -247,7 +231,23 @@ public final class s
     }
   }
   
-  public static String bCo()
+  public static void afK(String paramString)
+  {
+    AppMethodBeat.i(135370);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(135370);
+      return;
+    }
+    synchronized (ogX)
+    {
+      ogX.add(paramString);
+      AppMethodBeat.o(135370);
+      return;
+    }
+  }
+  
+  public static String bZs()
   {
     AppMethodBeat.i(135371);
     String str = String.format(Locale.ENGLISH, "\n;(function(){return %d;})();", new Object[] { Integer.valueOf(11111) });
@@ -257,7 +257,7 @@ public final class s
   
   public static abstract interface a
   {
-    public abstract void cV(String paramString);
+    public abstract void du(String paramString);
     
     public abstract void onSuccess(String paramString);
   }
@@ -270,7 +270,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.s
  * JD-Core Version:    0.7.0.1
  */

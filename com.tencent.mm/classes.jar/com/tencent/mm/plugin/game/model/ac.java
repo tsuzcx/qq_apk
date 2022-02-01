@@ -3,48 +3,48 @@ package com.tencent.mm.plugin.game.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.game.api.e;
-import com.tencent.mm.plugin.game.d.ao;
-import com.tencent.mm.plugin.game.d.ap;
-import com.tencent.mm.plugin.game.d.aq;
-import com.tencent.mm.plugin.game.d.ar;
-import com.tencent.mm.plugin.game.d.as;
-import com.tencent.mm.plugin.game.d.aw;
-import com.tencent.mm.plugin.game.d.bo;
-import com.tencent.mm.plugin.game.d.cl;
-import com.tencent.mm.plugin.game.d.eg;
-import com.tencent.mm.plugin.game.f.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.game.e.d;
+import com.tencent.mm.plugin.game.protobuf.ap;
+import com.tencent.mm.plugin.game.protobuf.aq;
+import com.tencent.mm.plugin.game.protobuf.ar;
+import com.tencent.mm.plugin.game.protobuf.as;
+import com.tencent.mm.plugin.game.protobuf.at;
+import com.tencent.mm.plugin.game.protobuf.ax;
+import com.tencent.mm.plugin.game.protobuf.bo;
+import com.tencent.mm.plugin.game.protobuf.cl;
+import com.tencent.mm.plugin.game.protobuf.eg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.io.IOException;
 
 public final class ac
   extends x
 {
-  private bo uoN;
-  public cl uoO;
-  public a uoP;
-  public ar uoQ;
-  public eg uoR;
-  public aw uoS;
+  private bo xHg;
+  public cl xHh;
+  public a xHi;
+  public as xHj;
+  public eg xHk;
+  public ax xHl;
   
   public ac(bo parambo)
   {
     AppMethodBeat.i(41537);
     if (parambo == null)
     {
-      this.uoN = new bo();
+      this.xHg = new bo();
       AppMethodBeat.o(41537);
       return;
     }
-    this.uoN = parambo;
-    nh(true);
+    this.xHg = parambo;
+    pN(true);
     AppMethodBeat.o(41537);
   }
   
   public ac(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(41538);
-    this.uoN = new bo();
+    this.xHg = new bo();
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
     {
       AppMethodBeat.o(41538);
@@ -52,8 +52,8 @@ public final class ac
     }
     try
     {
-      this.uoN.parseFrom(paramArrayOfByte);
-      nh(false);
+      this.xHg.parseFrom(paramArrayOfByte);
+      pN(false);
       AppMethodBeat.o(41538);
       return;
     }
@@ -61,77 +61,77 @@ public final class ac
     {
       for (;;)
       {
-        ae.e("MicroMsg.GamePBDataIndex4", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
+        Log.e("MicroMsg.GamePBDataIndex4", "Parsing Failed: %s", new Object[] { paramArrayOfByte.getMessage() });
       }
     }
   }
   
-  private void dci()
+  private void dVP()
   {
     AppMethodBeat.i(41541);
-    if (this.uoN == null)
+    if (this.xHg == null)
     {
       AppMethodBeat.o(41541);
       return;
     }
-    this.uoO = this.uoN.utK;
-    if ((this.uoN.utH != null) && (this.uoN.utH.uqg != null))
+    this.xHh = this.xHg.xLM;
+    if ((this.xHg.xLJ != null) && (this.xHg.xLJ.xIz != null))
     {
-      this.uoP = new a();
-      this.uoP.uoT = a(this.uoN.utH.uqg);
-      if (this.uoP.uoT != null)
+      this.xHi = new a();
+      this.xHi.xHm = a(this.xHg.xLJ.xIz);
+      if (this.xHi.xHm != null)
       {
-        this.uoP.uoT.ulD = this.uoN.utH.Desc;
-        this.uoP.uoT.scene = 10;
-        this.uoP.uoT.dGL = 1002;
-        this.uoP.uoT.position = 1;
+        this.xHi.xHm.xDV = this.xHg.xLJ.Desc;
+        this.xHi.xHm.scene = 10;
+        this.xHi.xHm.dYu = 1002;
+        this.xHi.xHm.position = 1;
       }
-      this.uoP.uoU = this.uoN.utH.usk;
-      this.uoP.uoV = this.uoN.utH.usj;
-      this.uoP.desc = this.uoN.utH.Desc;
-      this.uoP.uoW = this.uoN.utJ;
+      this.xHi.xHn = this.xHg.xLJ.xKC;
+      this.xHi.xHo = this.xHg.xLJ.xKB;
+      this.xHi.desc = this.xHg.xLJ.Desc;
+      this.xHi.xHp = this.xHg.xLL;
     }
-    this.uoQ = this.uoN.utI;
-    this.uoR = this.uoN.utL;
-    this.uoS = this.uoN.utM;
+    this.xHj = this.xHg.xLK;
+    this.xHk = this.xHg.xLN;
+    this.xHl = this.xHg.xLO;
     AppMethodBeat.o(41541);
   }
   
-  private void nh(boolean paramBoolean)
+  private void pN(boolean paramBoolean)
   {
     AppMethodBeat.i(41539);
-    dci();
-    ni(paramBoolean);
+    dVP();
+    pO(paramBoolean);
     AppMethodBeat.o(41539);
   }
   
-  private void ni(boolean paramBoolean)
+  private void pO(boolean paramBoolean)
   {
     AppMethodBeat.i(41540);
-    if ((this.uoN == null) || (!paramBoolean))
+    if ((this.xHg == null) || (!paramBoolean))
     {
       AppMethodBeat.o(41540);
       return;
     }
-    if ((this.uoN.utH != null) && (this.uoN.utH.uqg != null)) {
-      d.c(a(this.uoN.utH.uqg));
+    if ((this.xHg.xLJ != null) && (this.xHg.xLJ.xIz != null)) {
+      d.c(a(this.xHg.xLJ.xIz));
     }
-    ((e)g.ab(e.class)).cZj().init(ak.getContext());
+    ((e)g.af(e.class)).dSI().init(MMApplicationContext.getContext());
     AppMethodBeat.o(41540);
   }
   
   public static final class a
   {
     public String desc;
-    public c uoT;
-    public ap uoU;
-    public aq uoV;
-    public as uoW;
+    public c xHm;
+    public aq xHn;
+    public ar xHo;
+    public at xHp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.ac
  * JD-Core Version:    0.7.0.1
  */

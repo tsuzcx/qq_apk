@@ -8,53 +8,53 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.e;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import java.util.Iterator;
 import java.util.List;
 
 public final class b
 {
-  MMActivity fNT;
-  public ProgressBar gqv;
-  public a tOo;
-  public boolean tOp;
-  public FTSVoiceInputLayoutImpl tOq;
-  public TextView tOr;
-  long tOs;
-  long tOt;
-  long tOu;
-  private FTSVoiceInputLayoutImpl.a tOv;
-  Toast tOw;
-  private VoiceInputLayout.a tOx;
+  MMActivity gte;
+  public ProgressBar hbv;
+  public a xfn;
+  public boolean xfo;
+  public FTSVoiceInputLayoutImpl xfp;
+  public TextView xfq;
+  long xfr;
+  long xfs;
+  long xft;
+  private FTSVoiceInputLayoutImpl.a xfu;
+  Toast xfv;
+  private VoiceInputLayout.a xfw;
   
   public b(Context paramContext, FTSVoiceInputLayoutImpl paramFTSVoiceInputLayoutImpl, TextView paramTextView, ProgressBar paramProgressBar)
   {
     AppMethodBeat.i(112303);
-    this.tOp = false;
-    this.tOv = new FTSVoiceInputLayoutImpl.a()
+    this.xfo = false;
+    this.xfu = new FTSVoiceInputLayoutImpl.a()
     {
-      String tOy = "";
-      String tOz = "";
+      String xfx = "";
+      String xfy = "";
       
-      private void cWK()
+      private void dPU()
       {
         AppMethodBeat.i(112299);
-        cWL();
-        b.this.tOr.setText(this.tOy);
-        b.this.gqv.setVisibility(0);
-        b.this.tOo.alK(this.tOy);
+        dPV();
+        b.this.xfq.setText(this.xfx);
+        b.this.hbv.setVisibility(0);
+        b.this.xfn.ayO(this.xfx);
         AppMethodBeat.o(112299);
       }
       
-      private void cWL()
+      private void dPV()
       {
         AppMethodBeat.i(112300);
-        if (this.tOy.length() > 0) {
-          this.tOy = this.tOy.replaceAll("。", " ").replaceAll("\\.", " ").replaceAll("，", " ").replaceAll(",", " ").trim();
+        if (this.xfx.length() > 0) {
+          this.xfx = this.xfx.replaceAll("。", " ").replaceAll("\\.", " ").replaceAll("，", " ").replaceAll(",", " ").trim();
         }
         AppMethodBeat.o(112300);
       }
@@ -62,46 +62,46 @@ public final class b
       private void report()
       {
         AppMethodBeat.i(112301);
-        b.this.tOu = System.currentTimeMillis();
+        b.this.xft = System.currentTimeMillis();
         b localb = b.this;
         long l1;
-        if (b.this.tOt > 0L)
+        if (b.this.xfs > 0L)
         {
-          l1 = b.this.tOt;
-          localb.tOt = l1;
-          if (!bu.isNullOrNil(this.tOy)) {
+          l1 = b.this.xfs;
+          localb.xfs = l1;
+          if (!Util.isNullOrNil(this.xfx)) {
             break label219;
           }
         }
         label219:
         for (int i = 2;; i = 1)
         {
-          l1 = b.this.tOt - b.this.tOs;
-          long l2 = b.this.tOu - b.this.tOs;
-          g.yxI.f(16346, new Object[] { Integer.valueOf(i), Long.valueOf(e.tEn), Long.valueOf(l1), Long.valueOf(l2) });
-          ae.i("MicroMsg.FTSVoiceInputHelper", "16346 actionType:%s, searchId:%s, voiceTime:%s, tranTime:%s", new Object[] { Integer.valueOf(i), Long.valueOf(e.tEn), Long.valueOf(l1), Long.valueOf(l2) });
-          b.this.tOs = 0L;
-          b.this.tOt = 0L;
-          b.this.tOu = 0L;
+          l1 = b.this.xfs - b.this.xfr;
+          long l2 = b.this.xft - b.this.xfr;
+          h.CyF.a(16346, new Object[] { Integer.valueOf(i), Long.valueOf(e.wVm), Long.valueOf(l1), Long.valueOf(l2) });
+          Log.i("MicroMsg.FTSVoiceInputHelper", "16346 actionType:%s, searchId:%s, voiceTime:%s, tranTime:%s", new Object[] { Integer.valueOf(i), Long.valueOf(e.wVm), Long.valueOf(l1), Long.valueOf(l2) });
+          b.this.xfr = 0L;
+          b.this.xfs = 0L;
+          b.this.xft = 0L;
           AppMethodBeat.o(112301);
           return;
-          l1 = b.this.tOu;
+          l1 = b.this.xft;
           break;
         }
       }
       
-      public final void Hx(int paramAnonymousInt)
+      public final void Nx(int paramAnonymousInt)
       {
         AppMethodBeat.i(112298);
-        b.this.tOp = false;
+        b.this.xfo = false;
         report();
         if (paramAnonymousInt == 12)
         {
-          b.this.tOo.b(false, true, this.tOy);
+          b.this.xfn.c(false, true, this.xfx);
           AppMethodBeat.o(112298);
           return;
         }
-        b.this.tOo.b(false, false, this.tOy);
+        b.this.xfn.c(false, false, this.xfx);
         AppMethodBeat.o(112298);
       }
       
@@ -110,139 +110,139 @@ public final class b
         AppMethodBeat.i(112297);
         if ((paramAnonymousArrayOfString != null) && (paramAnonymousArrayOfString.length > 0) && (paramAnonymousArrayOfString[0].length() > 0))
         {
-          this.tOy = paramAnonymousArrayOfString[0];
-          ae.d("MicroMsg.FTSVoiceInputHelper", "onDetected text content: " + this.tOy);
-          cWK();
+          this.xfx = paramAnonymousArrayOfString[0];
+          Log.d("MicroMsg.FTSVoiceInputHelper", "onDetected text content: " + this.xfx);
+          dPU();
         }
         if ((paramAnonymousList != null) && (!paramAnonymousList.isEmpty()) && (paramAnonymousList.iterator().hasNext()))
         {
-          this.tOz = ((String)paramAnonymousList.iterator().next());
-          ae.d("MicroMsg.FTSVoiceInputHelper", "set voiceId:%s", new Object[] { this.tOz });
+          this.xfy = ((String)paramAnonymousList.iterator().next());
+          Log.d("MicroMsg.FTSVoiceInputHelper", "set voiceId:%s", new Object[] { this.xfy });
         }
         AppMethodBeat.o(112297);
       }
       
-      public final void cWD()
+      public final void dPN()
       {
         AppMethodBeat.i(112290);
-        this.tOy = "";
-        this.tOz = "";
-        ae.d("MicroMsg.FTSVoiceInputHelper", "onDetectStart");
-        g.yxI.f(15490, new Object[] { Integer.valueOf(3), Long.valueOf(e.tEn), Integer.valueOf(1) });
-        ae.d("MicroMsg.FTSVoiceInputHelper", "15490 type:3, sessionId:%s, voicever:%s", new Object[] { Long.valueOf(e.tEn), Integer.valueOf(1) });
-        b.this.tOp = true;
-        b.this.tOo.cWn();
+        this.xfx = "";
+        this.xfy = "";
+        Log.d("MicroMsg.FTSVoiceInputHelper", "onDetectStart");
+        h.CyF.a(15490, new Object[] { Integer.valueOf(3), Long.valueOf(e.wVm), Integer.valueOf(1) });
+        Log.d("MicroMsg.FTSVoiceInputHelper", "15490 type:3, sessionId:%s, voicever:%s", new Object[] { Long.valueOf(e.wVm), Integer.valueOf(1) });
+        b.this.xfo = true;
+        b.this.xfn.dPy();
         AppMethodBeat.o(112290);
       }
       
-      public final void cWE()
+      public final void dPO()
       {
         AppMethodBeat.i(112291);
-        b.this.tOt = System.currentTimeMillis();
-        if ((b.this.tOp) && (!bu.isNullOrNil(this.tOy))) {
-          b.this.cWC();
+        b.this.xfs = System.currentTimeMillis();
+        if ((b.this.xfo) && (!Util.isNullOrNil(this.xfx))) {
+          b.this.dPM();
         }
         AppMethodBeat.o(112291);
       }
       
-      public final void cWF()
+      public final void dPP()
       {
         AppMethodBeat.i(112292);
-        b.this.tOs = System.currentTimeMillis();
+        b.this.xfr = System.currentTimeMillis();
         AppMethodBeat.o(112292);
       }
       
-      public final void cWG()
+      public final void dPQ()
       {
         AppMethodBeat.i(112293);
-        ae.d("MicroMsg.FTSVoiceInputHelper", "onDetectStop");
+        Log.d("MicroMsg.FTSVoiceInputHelper", "onDetectStop");
         AppMethodBeat.o(112293);
       }
       
-      public final void cWH()
+      public final void dPR()
       {
         AppMethodBeat.i(112294);
-        ae.d("MicroMsg.FTSVoiceInputHelper", "onDetectCancel");
+        Log.d("MicroMsg.FTSVoiceInputHelper", "onDetectCancel");
         AppMethodBeat.o(112294);
       }
       
-      public final void cWI()
+      public final void dPS()
       {
         AppMethodBeat.i(112295);
-        ae.d("MicroMsg.FTSVoiceInputHelper", "onStateReset");
+        Log.d("MicroMsg.FTSVoiceInputHelper", "onStateReset");
         AppMethodBeat.o(112295);
       }
       
-      public final void cWJ()
+      public final void dPT()
       {
         AppMethodBeat.i(112296);
-        ae.d("MicroMsg.FTSVoiceInputHelper", "onDetectFinish");
+        Log.d("MicroMsg.FTSVoiceInputHelper", "onDetectFinish");
         report();
-        b.this.tOp = false;
-        cWK();
-        b.this.tOo.alL(this.tOy);
-        this.tOy = "";
-        this.tOz = "";
+        b.this.xfo = false;
+        dPU();
+        b.this.xfn.ayP(this.xfx);
+        this.xfx = "";
+        this.xfy = "";
         AppMethodBeat.o(112296);
       }
     };
-    this.tOx = new VoiceInputLayout.a()
+    this.xfw = new VoiceInputLayout.a()
     {
-      public final void cWM()
+      public final void dPW()
       {
         AppMethodBeat.i(112302);
         b localb = b.this;
-        if (localb.tOw != null) {
-          localb.tOw.cancel();
+        if (localb.xfv != null) {
+          localb.xfv.cancel();
         }
-        localb.tOw = Toast.makeText(localb.fNT, localb.fNT.getResources().getString(2131759725), 0);
-        localb.tOw.setGravity(17, 0, 0);
-        localb.tOw.show();
-        b.this.tOo.b(true, false, "");
+        localb.xfv = Toast.makeText(localb.gte, localb.gte.getResources().getString(2131761046), 0);
+        localb.xfv.setGravity(17, 0, 0);
+        localb.xfv.show();
+        b.this.xfn.c(true, false, "");
         AppMethodBeat.o(112302);
       }
     };
-    this.fNT = ((MMActivity)paramContext);
-    this.tOq = paramFTSVoiceInputLayoutImpl;
-    this.tOr = paramTextView;
-    this.gqv = paramProgressBar;
-    this.tOq.setFTSVoiceDetectListener(this.tOv);
-    this.tOq.setLongClickLisnter(this.tOx);
+    this.gte = ((MMActivity)paramContext);
+    this.xfp = paramFTSVoiceInputLayoutImpl;
+    this.xfq = paramTextView;
+    this.hbv = paramProgressBar;
+    this.xfp.setFTSVoiceDetectListener(this.xfu);
+    this.xfp.setLongClickLisnter(this.xfw);
     AppMethodBeat.o(112303);
   }
   
-  public final void cWC()
+  public final void dPM()
   {
     AppMethodBeat.i(112304);
-    this.tOq.setVisibility(8);
+    this.xfp.setVisibility(8);
     AppMethodBeat.o(112304);
   }
   
   public final void show()
   {
     AppMethodBeat.i(112305);
-    if (!ad.fom().equals("zh_CN"))
+    if (!LocaleUtil.getApplicationLanguage().equals("zh_CN"))
     {
       AppMethodBeat.o(112305);
       return;
     }
-    this.tOq.setAlpha(0.0F);
-    this.tOq.animate().alpha(1.0F).setDuration(500L).start();
-    this.tOq.setVisibility(0);
-    this.gqv.setVisibility(8);
-    this.tOr.setText("");
+    this.xfp.setAlpha(0.0F);
+    this.xfp.animate().alpha(1.0F).setDuration(500L).start();
+    this.xfp.setVisibility(0);
+    this.hbv.setVisibility(8);
+    this.xfq.setText("");
     AppMethodBeat.o(112305);
   }
   
   public static abstract interface a
   {
-    public abstract void alK(String paramString);
+    public abstract void ayO(String paramString);
     
-    public abstract void alL(String paramString);
+    public abstract void ayP(String paramString);
     
-    public abstract void b(boolean paramBoolean1, boolean paramBoolean2, String paramString);
+    public abstract void c(boolean paramBoolean1, boolean paramBoolean2, String paramString);
     
-    public abstract void cWn();
+    public abstract void dPy();
   }
 }
 

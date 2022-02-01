@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceSmallCategory android:key="settings_tag_name_category" />
-    <Preference android:key="settings_tag_name" android:layout="@layout/aop" android:title="@string/fq2" />
-    <PreferenceTitleCategory android:key="outside" android:title="@string/fq4" />
-    <PreferenceTitleCategory android:key="black" android:title="@string/fq3" />
-    <PreferenceTitleCategory android:key="group" android:title="@string/fpz" />
-    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
-    <PreferenceSmallCategory android:key="delete_tag_name_category" />
-    <Preference android:key="delete_tag_name" android:layout="@layout/ajc" android:title="@string/f2p" />
-    <PreferenceSmallCategory />
+    <com.tencent.mm.plugin.voiceprint.ui.VoiceHeaderPreference android:key="settings_voiceprint_header" />
+    <PreferenceCategory />
+    <PreferenceCategory />
+    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="settings_voiceprint_title" android:summary="@string/gwj" android:title="@string/gwi" />
+    <SummaryBelowPreference android:key="settings_voiceprint_create" android:summary="@string/gwg" android:title="@string/gwf" />
+    <Preference android:key="settings_voiceprint_reset" android:layout="@layout/b8j" android:title="@string/gwh" />
+    <Preference android:key="settings_voiceprint_unlock" android:layout="@layout/b8j" android:title="@string/gwk" />
+    <PreferenceCategory />
 </PreferenceScreen>

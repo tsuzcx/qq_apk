@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/boi" android:background="@color/mt" android:layout_width="fill_parent" android:layout_height="@dimen/cj"
+<RelativeLayout android:orientation="horizontal" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bok" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:baselineAligned="false" android:weightSum="1.0">
-        <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <ImageView android:id="@id/bol" android:layout_marginLeft="@dimen/d9" style="@style/i2" />
-        </RelativeLayout>
-        <RelativeLayout android:layout_width="wrap_content" android:layout_marginRight="@dimen/d7" style="@style/ia">
-            <RelativeLayout android:paddingLeft="@dimen/d9" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_toLeftOf="@id/boh" android:layout_centerVertical="true">
-                <View android:id="@id/bom" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentBottom="true" />
-                <TextView android:id="@id/bon" android:layout_toLeftOf="@id/bnx" android:layout_alignLeft="@id/bom" android:layout_centerInParent="true" style="@style/ib" />
-                <TextView android:id="@id/bnx" android:text="" android:layout_above="@id/bom" android:layout_alignRight="@id/bom" style="@style/if" />
-            </RelativeLayout>
-            <ImageView android:id="@id/boh" android:layout_marginLeft="5.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/i3" />
-        </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/eai" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ior" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/g" android:minWidth="68.0dip" android:text="@string/iad" android:singleLine="true" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/gfw" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/kb" android:singleLine="true" />
     </LinearLayout>
-    <View android:id="@id/boj" android:background="@color/mu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+    <com.tenpay.android.wechat.TenpaySecureEditText android:gravity="center_vertical" android:id="@id/dpf" android:background="@null" android:paddingRight="32.0dip" android:layout_height="fill_parent" android:minHeight="48.0dip" android:singleLine="true" android:layout_toRightOf="@id/eai" style="@style/nn" />
+    <ImageView android:id="@id/dy5" android:background="@null" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="wrap_content" android:src="@drawable/bk3" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
 </RelativeLayout>

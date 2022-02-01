@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 
 public abstract interface n
 {
-  public abstract Bitmap Gp(String paramString);
+  public abstract Bitmap Pb(String paramString);
   
-  public abstract Bitmap ab(byte[] paramArrayOfByte);
+  public abstract Bitmap aq(byte[] paramArrayOfByte);
 }
 
 

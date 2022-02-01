@@ -1,88 +1,60 @@
 package com.tencent.mm.xeffect;
 
+import android.graphics.Rect;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
 
-@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/xeffect/PAGLayoutInfo;", "", "translateX", "", "translateY", "scale", "", "rotate", "(IIFF)V", "getRotate", "()F", "setRotate", "(F)V", "getScale", "setScale", "getTranslateX", "()I", "setTranslateX", "(I)V", "getTranslateY", "setTranslateY", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "", "renderlib_release"})
 public final class b
 {
-  float kVl;
-  float scale;
-  int translateX;
-  int translateY;
+  public boolean HmG;
+  public boolean RxG;
+  public boolean RxH;
+  public final Rect RxI;
+  public final Rect RxJ;
+  public int dYT;
+  public int height;
+  public int ijt;
+  public float scale;
+  public int textureId;
+  public int translateX;
+  public int translateY;
+  public int width;
   
-  public b()
+  public b(int paramInt1, int paramInt2, int paramInt3)
   {
-    this(0, 0, 0.0F, 15);
+    this(paramInt1, paramInt2, paramInt3, false, 0);
   }
   
-  public b(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
+  public b(int paramInt1, int paramInt2, int paramInt3, byte paramByte)
   {
-    this.translateX = paramInt1;
-    this.translateY = paramInt2;
-    this.scale = paramFloat1;
-    this.kVl = paramFloat2;
+    this(paramInt1, paramInt2, paramInt3, false, 0);
   }
   
-  public final boolean equals(Object paramObject)
+  public b(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4)
   {
-    AppMethodBeat.i(217070);
-    if (this != paramObject)
-    {
-      if (!(paramObject instanceof b)) {
-        break label101;
-      }
-      paramObject = (b)paramObject;
-      if (this.translateX != paramObject.translateX) {
-        break label91;
-      }
-      i = 1;
-      if (i == 0) {
-        break label101;
-      }
-      if (this.translateY != paramObject.translateY) {
-        break label96;
-      }
-    }
-    label91:
-    label96:
-    for (int i = 1;; i = 0)
-    {
-      if ((i == 0) || (Float.compare(this.scale, paramObject.scale) != 0) || (Float.compare(this.kVl, paramObject.kVl) != 0)) {
-        break label101;
-      }
-      AppMethodBeat.o(217070);
-      return true;
-      i = 0;
-      break;
-    }
-    label101:
-    AppMethodBeat.o(217070);
-    return false;
-  }
-  
-  public final int hashCode()
-  {
-    AppMethodBeat.i(217069);
-    int i = this.translateX;
-    int j = this.translateY;
-    int k = Float.floatToIntBits(this.scale);
-    int m = Float.floatToIntBits(this.kVl);
-    AppMethodBeat.o(217069);
-    return ((i * 31 + j) * 31 + k) * 31 + m;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(217068);
-    String str = "PAGLayoutInfo(translateX=" + this.translateX + ", translateY=" + this.translateY + ", scale=" + this.scale + ", rotate=" + this.kVl + ")";
-    AppMethodBeat.o(217068);
-    return str;
+    AppMethodBeat.i(236751);
+    this.HmG = false;
+    this.dYT = 0;
+    this.RxG = false;
+    this.RxH = true;
+    this.RxI = new Rect();
+    this.RxJ = new Rect();
+    this.ijt = 0;
+    this.scale = 1.0F;
+    this.translateX = 0;
+    this.translateY = 0;
+    this.textureId = paramInt1;
+    this.width = paramInt2;
+    this.height = paramInt3;
+    this.HmG = paramBoolean;
+    this.dYT = paramInt4;
+    this.RxI.right = paramInt2;
+    this.RxI.bottom = paramInt3;
+    AppMethodBeat.o(236751);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.xeffect.b
  * JD-Core Version:    0.7.0.1
  */

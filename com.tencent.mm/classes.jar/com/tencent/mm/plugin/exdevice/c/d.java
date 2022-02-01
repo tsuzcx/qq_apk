@@ -1,60 +1,60 @@
 package com.tencent.mm.plugin.exdevice.c;
 
 import com.tencent.mm.bw.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 
 public abstract class d
   extends c
 {
-  protected a qgE = null;
-  private short qgF = -1;
-  private short qgG = -1;
+  protected a rxA = null;
+  private short rxB = -1;
+  private short rxC = -1;
   
   public d(long paramLong, int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    ae.i("MicroMsg.exdevice.ExDeviceCmdBaseReqResp", "onDeviceRequest deviceId = " + paramLong + " seq = " + paramInt1 + " cmdId = " + paramInt2);
-    this.nZd = paramLong;
-    this.qgF = ((short)paramInt2);
-    this.qgG = ((short)paramInt1);
-    bd(paramArrayOfByte);
+    Log.i("MicroMsg.exdevice.ExDeviceCmdBaseReqResp", "onDeviceRequest deviceId = " + paramLong + " seq = " + paramInt1 + " cmdId = " + paramInt2);
+    this.pkb = paramLong;
+    this.rxB = ((short)paramInt2);
+    this.rxC = ((short)paramInt1);
+    bu(paramArrayOfByte);
   }
   
-  protected abstract a bd(byte[] paramArrayOfByte);
+  protected abstract a bu(byte[] paramArrayOfByte);
   
-  public final short cme()
+  public final short cKg()
   {
-    return this.qgF;
+    return this.rxB;
   }
   
-  public final short cmf()
+  public final short cKh()
   {
-    return this.qgG;
+    return this.rxC;
   }
   
-  public final byte[] cmg()
+  public final byte[] cKi()
   {
     try
     {
-      byte[] arrayOfByte = this.qgD.toByteArray();
+      byte[] arrayOfByte = this.rxz.toByteArray();
       return arrayOfByte;
     }
     catch (IOException localIOException)
     {
-      ae.e("MicroMsg.exdevice.ExDeviceCmdBaseReqResp", "mResp.toByteArray() Failed!!! %s", new Object[] { localIOException.getMessage() });
-      ae.printErrStackTrace("MicroMsg.exdevice.ExDeviceCmdBaseReqResp", localIOException, "", new Object[0]);
+      Log.e("MicroMsg.exdevice.ExDeviceCmdBaseReqResp", "mResp.toByteArray() Failed!!! %s", new Object[] { localIOException.getMessage() });
+      Log.printErrStackTrace("MicroMsg.exdevice.ExDeviceCmdBaseReqResp", localIOException, "", new Object[0]);
     }
     return null;
   }
   
-  public final a cmh()
+  public final a cKj()
   {
-    return this.qgE;
+    return this.rxA;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.d
  * JD-Core Version:    0.7.0.1
  */

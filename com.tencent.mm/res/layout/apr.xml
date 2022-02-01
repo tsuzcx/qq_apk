@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingTop="@dimen/jn" android:paddingBottom="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:background="@drawable/asu" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/gam" android:visibility="gone" android:layout_width="@dimen/eb" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/lw" />
-    <TextView android:id="@id/ewy" android:visibility="gone" android:drawableLeft="@raw/card_photoicon" android:drawablePadding="@dimen/js" android:layout_toRightOf="@id/gam" style="@style/lz" />
-    <TextView android:textColor="@color/to" android:gravity="center|left" android:id="@id/cy3" android:visibility="gone" android:layout_marginTop="@dimen/jn" android:layout_toRightOf="@id/gam" android:layout_below="@id/ewy" style="@style/lz" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/b9w" android:paddingTop="@dimen/ir" android:paddingBottom="@dimen/ir" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/de5" android:padding="2.0dip" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip" android:layout_marginRight="4.0dip" android:scaleType="fitXY" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/de6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:ellipsize="end" android:id="@id/de4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/game_more_icon" android:scaleType="fitCenter" />
+    </LinearLayout>
+</LinearLayout>

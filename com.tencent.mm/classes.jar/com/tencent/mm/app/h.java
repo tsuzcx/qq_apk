@@ -7,7 +7,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  public static int bn(Context paramContext)
+  public static int bH(Context paramContext)
   {
     AppMethodBeat.i(125019);
     if (paramContext == null)
@@ -28,7 +28,7 @@ public final class h
     return 0;
   }
   
-  public static int bo(Context paramContext)
+  public static int bI(Context paramContext)
   {
     AppMethodBeat.i(125020);
     if (paramContext == null)

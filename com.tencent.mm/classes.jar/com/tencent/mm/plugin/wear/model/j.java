@@ -2,20 +2,20 @@ package com.tencent.mm.plugin.wear.model;
 
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public final class j
 {
-  aq lVY;
+  MMHandler ndA;
   
   public j()
   {
     AppMethodBeat.i(30036);
-    if (com.tencent.mm.compatible.util.d.lC(18))
+    if (com.tencent.mm.compatible.util.d.oF(18))
     {
-      this.lVY = new a("WearWorker_worker_thread");
-      ae.i("MicroMsg.Wear.WearWorker", "start worker");
+      this.ndA = new a("WearWorker_worker_thread");
+      Log.i("MicroMsg.Wear.WearWorker", "start worker");
     }
     AppMethodBeat.o(30036);
   }
@@ -23,16 +23,16 @@ public final class j
   public final void a(com.tencent.mm.plugin.wear.model.f.d paramd)
   {
     AppMethodBeat.i(30037);
-    if (this.lVY != null)
+    if (this.ndA != null)
     {
-      paramd = this.lVY.obtainMessage(0, paramd);
-      this.lVY.sendMessage(paramd);
+      paramd = this.ndA.obtainMessage(0, paramd);
+      this.ndA.sendMessage(paramd);
     }
     AppMethodBeat.o(30037);
   }
   
   final class a
-    extends aq
+    extends MMHandler
   {
     public a(String paramString)
     {
@@ -52,7 +52,7 @@ public final class j
         }
         catch (Exception localException)
         {
-          ae.printErrStackTrace("MicroMsg.Wear.WearWorker", localException.getCause(), "run task %s occur exception", new Object[] { paramMessage.getName() });
+          Log.printErrStackTrace("MicroMsg.Wear.WearWorker", localException.getCause(), "run task %s occur exception", new Object[] { paramMessage.getName() });
         }
       }
       AppMethodBeat.o(30035);

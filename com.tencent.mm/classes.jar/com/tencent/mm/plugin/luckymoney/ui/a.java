@@ -12,21 +12,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends e
 {
-  a vGq;
+  a zbp;
   
   public a(Context paramContext)
   {
-    super(paramContext, 2131820861);
+    super(paramContext, 2131820868);
     AppMethodBeat.i(65412);
-    gK();
+    gR();
     AppMethodBeat.o(65412);
   }
   
   public final void onBackPressed()
   {
     AppMethodBeat.i(65414);
-    if (this.vGq != null) {
-      this.vGq.dlZ();
+    if (this.zbp != null) {
+      this.zbp.efU();
     }
     AppMethodBeat.o(65414);
   }
@@ -45,12 +45,12 @@ public final class a
   
   static abstract interface a
   {
-    public abstract void dlZ();
+    public abstract void efU();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.a
  * JD-Core Version:    0.7.0.1
  */

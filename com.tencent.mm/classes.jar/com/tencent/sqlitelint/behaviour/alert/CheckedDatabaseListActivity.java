@@ -24,8 +24,8 @@ public class CheckedDatabaseListActivity
   private void initView()
   {
     AppMethodBeat.i(52899);
-    setTitle(getString(2131757344));
-    this.mListView = ((ListView)findViewById(2131301443));
+    setTitle(getString(2131757561));
+    this.mListView = ((ListView)findViewById(2131303226));
     this.mListAdapter = new CheckedDatabaseListActivity.CheckedDatabaseListAdapter(this);
     this.mListView.setAdapter(this.mListAdapter);
     this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -45,9 +45,9 @@ public class CheckedDatabaseListActivity
         paramAnonymousAdapterView.setClass(CheckedDatabaseListActivity.this, CheckResultActivity.class);
         paramAnonymousAdapterView.putExtra("db_label", paramAnonymousView);
         paramAnonymousView = CheckedDatabaseListActivity.this;
-        paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousAdapterView);
-        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.ahE(), "com/tencent/sqlitelint/behaviour/alert/CheckedDatabaseListActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.mt(0));
+        paramAnonymousAdapterView = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousAdapterView);
+        com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, paramAnonymousAdapterView.axQ(), "com/tencent/sqlitelint/behaviour/alert/CheckedDatabaseListActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramAnonymousView.startActivity((Intent)paramAnonymousAdapterView.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/sqlitelint/behaviour/alert/CheckedDatabaseListActivity$1", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(52890);
       }
@@ -66,7 +66,7 @@ public class CheckedDatabaseListActivity
   
   protected int getLayoutId()
   {
-    return 2131492931;
+    return 2131492953;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -94,7 +94,7 @@ public class CheckedDatabaseListActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.sqlitelint.behaviour.alert.CheckedDatabaseListActivity
  * JD-Core Version:    0.7.0.1
  */

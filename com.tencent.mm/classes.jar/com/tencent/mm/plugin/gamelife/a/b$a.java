@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.gamelife.a;
 
 public abstract interface b$a
 {
-  public abstract void R(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void U(boolean paramBoolean1, boolean paramBoolean2);
 }
 
 

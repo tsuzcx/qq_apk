@@ -5,11 +5,11 @@ import android.animation.TypeEvaluator;
 final class c
   implements TypeEvaluator<float[]>
 {
-  private float[] AP;
+  private float[] AV;
   
   c(float[] paramArrayOfFloat)
   {
-    this.AP = paramArrayOfFloat;
+    this.AV = paramArrayOfFloat;
   }
 }
 

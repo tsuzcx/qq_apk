@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/iat" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/al6" android:src="@drawable/bur" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <TextView android:textSize="@dimen/hp" android:textColor="@color/aaa" android:id="@id/iav" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ala" android:text="@string/hif" android:layout_centerHorizontal="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/iar" android:background="@drawable/axk" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/al5" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:paddingStart="@dimen/hs" android:paddingEnd="@dimen/hs">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/iaq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" android:contentDescription="@string/hic" />
+        <TextView android:textSize="@dimen/i_" android:textColor="@color/aaj" android:id="@id/ias" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hic" />
+    </LinearLayout>
+</merge>

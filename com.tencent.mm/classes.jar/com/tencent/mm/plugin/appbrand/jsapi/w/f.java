@@ -1,101 +1,140 @@
 package com.tencent.mm.plugin.appbrand.jsapi.w;
 
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.file.i.a;
-import com.tencent.mm.plugin.appbrand.utils.o;
-import com.tencent.mm.plugin.appbrand.utils.o.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
+import com.tencent.mm.plugin.appbrand.config.l;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.report.a;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
+import com.tencent.mm.plugin.appbrand.report.quality.b;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.regex.Pattern;
+import org.apache.commons.b.g;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public final class f
-  extends a
+public class f
+  extends d
 {
-  public static final int CTRL_INDEX = 488;
-  public static final String NAME = "enableGyroscope";
+  public static final int CTRL_INDEX = 63;
+  public static final String NAME = "reportKeyValue";
   
-  public final void a(final c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(137638);
-    final l locall = new l("enableGyroscope");
-    paramJSONObject = locall.a(paramc, paramJSONObject, new b(paramc)
+    AppMethodBeat.i(46750);
+    JSONArray localJSONArray = paramJSONObject.optJSONArray("dataArray");
+    if (localJSONArray == null)
     {
-      public final void onDestroy()
-      {
-        AppMethodBeat.i(137636);
-        h.b(paramc.getAppId(), this);
-        locall.a(this);
-        AppMethodBeat.o(137636);
-      }
-    }, "JsApi#SensorGyroscope" + paramc.hashCode(), new ArrayList(Arrays.asList(new Integer[] { Integer.valueOf(4) })));
-    paramc.h(paramInt, n(paramJSONObject.errMsg, paramJSONObject.values));
-    AppMethodBeat.o(137638);
-  }
-  
-  static abstract class b
-    extends l.a
-    implements SensorEventListener
-  {
-    private o lkA;
-    private boolean lkE;
-    f.a lkV = new f.a();
-    
-    b(final c paramc)
+      paramf.i(paramInt, h("fail:invalid data", null));
+      AppMethodBeat.o(46750);
+      return;
+    }
+    int m = paramJSONObject.optInt("version", -1);
+    l locall = (l)paramf.av(l.class);
+    if (locall == null)
     {
-      this.lkV.h(paramc);
-      this.lkA = new o(i.llc.bne(), new o.a()
+      Log.e("MicroMsg.JsApiReportKeyValue", "config is Null!");
+      paramf.i(paramInt, h("fail:interrupted", null));
+      AppMethodBeat.o(46750);
+      return;
+    }
+    int i = 0;
+    if (i < localJSONArray.length()) {}
+    for (;;)
+    {
+      int n;
+      int j;
+      JSONObject localJSONObject;
+      try
       {
-        public final boolean j(Object... paramAnonymousVarArgs)
+        paramJSONObject = localJSONArray.getJSONObject(i);
+        n = paramJSONObject.optInt("key");
+        paramJSONObject = paramJSONObject.optString("value");
+        if (n > 0)
         {
-          AppMethodBeat.i(137637);
-          paramAnonymousVarArgs = (float[])paramAnonymousVarArgs[0];
-          HashMap localHashMap = new HashMap();
-          localHashMap.put("x", Float.valueOf(paramAnonymousVarArgs[0]));
-          localHashMap.put("y", Float.valueOf(paramAnonymousVarArgs[1]));
-          localHashMap.put("z", Float.valueOf(paramAnonymousVarArgs[2]));
-          f.b.this.lkV.I(localHashMap);
-          boolean bool = k.a.llj.a(f.b.this.lkV, paramc);
-          AppMethodBeat.o(137637);
-          return bool;
+          boolean bool = Util.isNullOrNil(paramJSONObject);
+          if (!bool)
+          {
+            Object localObject = paramJSONObject;
+            if (n == 15496) {}
+            try
+            {
+              localObject = paramJSONObject.split(Pattern.quote(","));
+              int k = 0;
+              j = 0;
+              if (j < 4)
+              {
+                int i1 = new int[] { 17, 11, 9, 2 }[j];
+                String str = localObject[i1];
+                if (Util.nullAsNil(str).length() <= 1024) {
+                  break label698;
+                }
+                localObject[i1] = str.substring(0, 1024);
+                k = 1;
+                break label698;
+              }
+              if (k == 0) {
+                break label695;
+              }
+              localObject = g.a((Object[])localObject, ",");
+              paramJSONObject = (JSONObject)localObject;
+              localObject = paramJSONObject;
+            }
+            catch (Exception localException)
+            {
+              Log.e("MicroMsg.JsApiReportKeyValue", "modify 15496 too large string-fields, e=%s", new Object[] { localException });
+              localJSONObject = paramJSONObject;
+              continue;
+            }
+            if (m < 2) {
+              break label486;
+            }
+            paramJSONObject = b.aeU(paramf.getAppId());
+            if (paramJSONObject != null) {
+              break label358;
+            }
+            paramf.i(paramInt, h("fail NULL QualitySystem instance", null));
+            AppMethodBeat.o(46750);
+            return;
+          }
         }
-      });
-    }
-    
-    public final void bng()
-    {
-      this.lkE = true;
-    }
-    
-    public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
-    
-    public void onSensorChanged(SensorEvent paramSensorEvent)
-    {
-      if (this.lkE) {}
-      while (paramSensorEvent.sensor.getType() != 4) {
-        return;
       }
-      paramSensorEvent = paramSensorEvent.values;
-      if ((paramSensorEvent == null) || (paramSensorEvent.length < 3))
+      catch (Exception paramJSONObject)
       {
-        ae.w("MicroMsg.JsApiEnableGyroscope", "deviceMotion sensor callback data invalidate.");
-        return;
+        Log.e("MicroMsg.JsApiReportKeyValue", "AppBrandComponent parse report value failed : %s", new Object[] { paramJSONObject.getMessage() });
       }
-      ae.v("MicroMsg.JsApiEnableGyroscope", "try to do frequency limit action(%s).", new Object[] { Boolean.valueOf(this.lkA.l(new Object[] { paramSensorEvent })) });
+      for (;;)
+      {
+        i += 1;
+        break;
+        label358:
+        Log.i("MicroMsg.JsApiReportKeyValue", "report kv_%d{appId='%s',pkgVersion=%d,pkgDebugType=%d,value='%s'}", new Object[] { Integer.valueOf(n), paramf.getAppId(), Integer.valueOf(locall.leE.pkgVersion), Integer.valueOf(locall.leE.kNW + 1), localJSONObject });
+        a.nFX.a(n, new Object[] { paramJSONObject.kEY, paramJSONObject.appId, Integer.valueOf(paramJSONObject.nLk), Integer.valueOf(paramJSONObject.nJE), Integer.valueOf(paramJSONObject.apptype), localJSONObject });
+        continue;
+        label486:
+        Log.i("MicroMsg.JsApiReportKeyValue", "report kv_%d{appId='%s',pkgVersion=%d,pkgDebugType=%d,value='%s'}", new Object[] { Integer.valueOf(n), paramf.getAppId(), Integer.valueOf(locall.leE.pkgVersion), Integer.valueOf(locall.leE.kNW + 1), localJSONObject });
+        if (n == 15496) {
+          h.CyF.a(n, new Object[] { paramf.getAppId(), Integer.valueOf(locall.leE.pkgVersion), Integer.valueOf(locall.leE.kNW + 1), localJSONObject });
+        } else {
+          a.nFX.a(n, new Object[] { paramf.getAppId(), Integer.valueOf(locall.leE.pkgVersion), Integer.valueOf(locall.leE.kNW + 1), localJSONObject });
+        }
+      }
+      paramf.i(paramInt, h("ok", null));
+      AppMethodBeat.o(46750);
+      return;
+      label695:
+      continue;
+      label698:
+      j += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.w.f
  * JD-Core Version:    0.7.0.1
  */

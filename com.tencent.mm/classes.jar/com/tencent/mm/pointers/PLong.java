@@ -2,6 +2,7 @@ package com.tencent.mm.pointers;
 
 public class PLong
 {
+  private byte _hellAccFlag_;
   public long value;
   
   public PLong() {}

@@ -3,69 +3,71 @@ package com.tencent.mm.plugin.appbrand.jsapi.base;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.coverview.CoverViewContainer;
-import com.tencent.mm.plugin.appbrand.jsapi.e.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.h.a;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public abstract class c<CONTEXT extends com.tencent.mm.plugin.appbrand.jsapi.e>
-  extends e<com.tencent.mm.plugin.appbrand.jsapi.c>
+public abstract class c<CONTEXT extends h>
+  extends e<f>
 {
-  private void c(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  private void c(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    if ((!paramc.aXO()) && (!paramc.isRunning()))
+    if ((!paramf.bsV()) && (!paramf.isRunning()))
     {
-      paramc.h(paramInt, "fail:interrupted");
+      paramf.i(paramInt, "fail:interrupted");
       return;
     }
-    com.tencent.mm.plugin.appbrand.jsapi.e locale = d(paramc, paramJSONObject);
-    if (locale == null)
+    h localh = d(paramf, paramJSONObject);
+    if (localh == null)
     {
-      ae.w("MicroMsg.BaseRemoveViewJsApi", "invoke JsApi(%s) failed, component view is null", new Object[] { getName() });
-      paramc.h(paramInt, e("fail:ComponentView is null.", null));
+      Log.w("MicroMsg.BaseRemoveViewJsApi", "invoke JsApi(%s) failed, component view is null", new Object[] { getName() });
+      paramf.i(paramInt, h("fail:ComponentView is null.", null));
       return;
     }
-    if (locale.aYC() == null)
+    if (localh.getCustomViewContainer() == null)
     {
-      ae.w("MicroMsg.BaseRemoveViewJsApi", "fail, component custom view container is null");
-      paramc.h(paramInt, e("fail:remove view failed", null));
+      Log.w("MicroMsg.BaseRemoveViewJsApi", "fail, component custom view container is null");
+      paramf.i(paramInt, h("fail:remove view failed", null));
       return;
     }
     for (;;)
     {
       try
       {
-        int i = A(paramJSONObject);
+        int i = H(paramJSONObject);
         boolean bool3 = paramJSONObject.optBoolean("independent", false);
-        View localView = locale.fF(bool3).getViewById(i);
+        View localView = localh.gA(bool3).getViewById(i);
         if (((localView instanceof CoverViewContainer)) && (paramJSONObject.has("draggable")) && (paramJSONObject.optBoolean("draggable", false))) {
-          CoverViewContainer.tf(i);
+          CoverViewContainer.xb(i);
         }
-        if (!locale.fF(bool3).sH(i)) {
+        if (!localh.gA(bool3).wD(i)) {
           break label351;
         }
-        boolean bool2 = locale.fF(bool3).sJ(i);
+        boolean bool2 = localh.gA(bool3).wF(i);
         bool1 = bool2;
         if (bool2) {
-          bool1 = b(locale, i, localView, paramJSONObject);
+          bool1 = b(localh, i, localView, paramJSONObject);
         }
         if (bool1) {
-          locale.fF(bool3).sG(i);
+          localh.gA(bool3).wC(i);
         }
-        ae.i("MicroMsg.BaseRemoveViewJsApi", "remove view(parentId : %s, viewId : %s, r : %s)", new Object[] { Integer.valueOf(paramJSONObject.optInt("parentId", 0)), Integer.valueOf(i), Boolean.valueOf(bool1) });
+        Log.i("MicroMsg.BaseRemoveViewJsApi", "remove view(parentId : %s, viewId : %s, r : %s)", new Object[] { Integer.valueOf(paramJSONObject.optInt("parentId", 0)), Integer.valueOf(i), Boolean.valueOf(bool1) });
         if (bool1)
         {
           paramJSONObject = "ok";
-          paramc.h(paramInt, e(paramJSONObject, null));
+          paramf.i(paramInt, h(paramJSONObject, null));
           return;
         }
       }
       catch (JSONException paramJSONObject)
       {
-        ae.e("MicroMsg.BaseRemoveViewJsApi", "get viewId error. exception : %s", new Object[] { paramJSONObject });
-        paramc.h(paramInt, e("fail:view id do not exist", null));
+        Log.e("MicroMsg.BaseRemoveViewJsApi", "get viewId error. exception : %s", new Object[] { paramJSONObject });
+        paramf.i(paramInt, h("fail:view id do not exist", null));
         return;
       }
       paramJSONObject = "fail";
@@ -75,24 +77,30 @@ public abstract class c<CONTEXT extends com.tencent.mm.plugin.appbrand.jsapi.e>
     }
   }
   
-  private static com.tencent.mm.plugin.appbrand.jsapi.e d(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
+  private static h d(f paramf, JSONObject paramJSONObject)
   {
-    return ((g)paramc.K(g.class)).c(paramc, paramJSONObject);
+    g localg = (g)paramf.M(g.class);
+    if (localg == null)
+    {
+      Log.e("MicroMsg.BaseRemoveViewJsApi", "getComponentView NULL IComponentConverter");
+      return null;
+    }
+    return localg.c(paramf, paramJSONObject);
   }
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, final JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, final JSONObject paramJSONObject, final int paramInt)
   {
-    if (ar.isMainThread())
+    if (MMHandlerThread.isMainThread())
     {
-      c(paramc, paramJSONObject, paramInt);
+      c(paramf, paramJSONObject, paramInt);
       return;
     }
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(140653);
-        c.a(c.this, paramc, paramJSONObject, paramInt);
+        c.a(c.this, paramf, paramJSONObject, paramInt);
         AppMethodBeat.o(140653);
       }
     });
@@ -105,7 +113,7 @@ public abstract class c<CONTEXT extends com.tencent.mm.plugin.appbrand.jsapi.e>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.base.c
  * JD-Core Version:    0.7.0.1
  */

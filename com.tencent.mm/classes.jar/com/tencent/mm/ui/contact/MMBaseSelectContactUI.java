@@ -26,139 +26,257 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView.c;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView.d;
 import com.tencent.mm.pluginsdk.ui.MultiSelectContactView.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.AlphabetScrollBar;
 import com.tencent.mm.ui.base.MMTagPanel;
 import com.tencent.mm.ui.base.MMTagPanel.a;
 import com.tencent.mm.ui.base.VerticalScrollBar.a;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.base.u;
 import com.tencent.mm.ui.contact.a.a.b;
 import com.tencent.mm.ui.tools.d;
-import com.tencent.mm.ui.tools.r;
-import com.tencent.mm.ui.tools.r.b;
+import com.tencent.mm.ui.tools.s;
+import com.tencent.mm.ui.tools.s.b;
 import java.util.ArrayList;
 import java.util.List;
 
+@com.tencent.mm.kernel.i
 public abstract class MMBaseSelectContactUI
   extends MMActivity
-  implements AdapterView.OnItemClickListener, MultiSelectContactView.c, MultiSelectContactView.d, MultiSelectContactView.e, VerticalScrollBar.a, n, r.b
+  implements AdapterView.OnItemClickListener, MultiSelectContactView.c, MultiSelectContactView.d, MultiSelectContactView.e, VerticalScrollBar.a, n, s.b
 {
-  private View KHn;
-  private AlphabetScrollBar KJl;
-  private q KJm;
-  public o KJn;
-  private View KJo;
-  private com.tencent.mm.ui.base.o KJp;
-  private View KJq;
-  private View KJr;
-  private View KJs;
-  private TextView KJt;
-  public LabelContainerView KJu;
-  private TextView KJv;
-  private MMTagPanel KJw;
-  private boolean KJx = true;
-  private List<String> KJy = new ArrayList();
-  protected r fUI;
-  protected int scene;
-  public MultiSelectContactView vUs;
-  protected ListView xuY;
-  private View zjN;
+  private View Bnt;
+  protected ListView Bvb;
+  private View PUm;
+  private AlphabetScrollBar PWj;
+  private q PWk;
+  public o PWl;
+  private View PWm;
+  private com.tencent.mm.ui.base.p PWn;
+  private View PWo;
+  private View PWp;
+  private View PWq;
+  private TextView PWr;
+  public LabelContainerView PWs;
+  private TextView PWt;
+  private MMTagPanel PWu;
+  private boolean PWv = true;
+  private List<String> PWw = new ArrayList();
+  boolean PWx = false;
+  protected s gzP;
+  public int scene;
+  public MultiSelectContactView zoy;
   
-  private void fMA()
+  private void Cq(final boolean paramBoolean)
   {
-    boolean bool;
-    if (this.fUI != null)
+    if (!this.PWx)
     {
-      bool = this.fUI.fOw();
-      if ((!bool) || (!bu.isNullOrNil(fMz()))) {
-        break label102;
+      if (this.PWk == null) {
+        this.PWk = bmC();
       }
-      if ((this.KJy == null) || (this.KJy.size() <= 0)) {
-        break label92;
-      }
-      this.KJu.setVisibility(0);
-      this.KJw.a(null, this.KJy);
-    }
-    label92:
-    label102:
-    while (this.KJu == null)
-    {
+      this.Bvb.setAdapter(this.PWk);
       return;
-      if (this.vUs != null)
+    }
+    com.tencent.f.h.RTc.bqo("InitAdaperAsync_SelectUI");
+    com.tencent.f.h.RTc.b(new Runnable()
+    {
+      public final void run()
       {
-        bool = this.vUs.hasFocus();
-        break;
+        int i = 1;
+        AppMethodBeat.i(219808);
+        if (paramBoolean) {}
+        for (;;)
+        {
+          Log.i("MicroMsg.MMBaseSelectContactUI", "createInitAdapterAnsync start, fromInit:%d", new Object[] { Integer.valueOf(i) });
+          try
+          {
+            if (MMBaseSelectContactUI.m(MMBaseSelectContactUI.this) == null) {
+              MMBaseSelectContactUI.a(MMBaseSelectContactUI.this, MMBaseSelectContactUI.this.bmC());
+            }
+            if (MMBaseSelectContactUI.this.Bvb != null) {
+              MMBaseSelectContactUI.this.Bvb.post(new Runnable()
+              {
+                public final void run()
+                {
+                  AppMethodBeat.i(219806);
+                  if ((MMBaseSelectContactUI.this.Bvb != null) && (MMBaseSelectContactUI.m(MMBaseSelectContactUI.this) != null)) {
+                    MMBaseSelectContactUI.this.Bvb.setAdapter(MMBaseSelectContactUI.m(MMBaseSelectContactUI.this));
+                  }
+                  AppMethodBeat.o(219806);
+                }
+              });
+            }
+          }
+          catch (Exception localException)
+          {
+            for (;;)
+            {
+              Log.printErrStackTrace("MicroMsg.MMBaseSelectContactUI", localException, "createInitAdapterAnsync exception", new Object[0]);
+            }
+          }
+          com.tencent.f.h.RTc.aV(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(219807);
+              if (MMBaseSelectContactUI.m(MMBaseSelectContactUI.this) != null) {
+                MMBaseSelectContactUI.m(MMBaseSelectContactUI.this).notifyDataSetChanged();
+              }
+              AppMethodBeat.o(219807);
+            }
+          });
+          AppMethodBeat.o(219808);
+          return;
+          i = 0;
+        }
       }
-      bool = false;
-      break;
-      this.KJu.setVisibility(8);
-      return;
-    }
-    this.KJu.setVisibility(8);
+    }, "InitAdaperAsync_SelectUI");
   }
   
-  private void fMB()
+  private String gUT()
   {
-    ae.i("MicroMsg.MMBaseSelectContactUI", "setInitStatus");
-    a(this.xuY, 0);
-    this.xuY.setAdapter(this.KJm);
-    this.KJm.notifyDataSetChanged();
-    if ((aRU()) && (this.KJl != null)) {
-      this.KJl.setVisibility(0);
+    if (this.gzP != null) {
+      return this.gzP.getSearchContent();
     }
-    this.KJs.setVisibility(8);
-  }
-  
-  private String fMz()
-  {
-    if (this.fUI != null) {
-      return this.fUI.getSearchContent();
-    }
-    if (this.vUs != null) {
-      return this.vUs.getSearchContent();
+    if (this.zoy != null) {
+      return this.zoy.getSearchContent();
     }
     return "";
   }
   
-  public final boolean JO(String paramString)
+  private void gUU()
+  {
+    boolean bool;
+    if (this.gzP != null)
+    {
+      bool = this.gzP.gXp();
+      if ((!bool) || (!Util.isNullOrNil(gUT()))) {
+        break label102;
+      }
+      if ((this.PWw == null) || (this.PWw.size() <= 0)) {
+        break label92;
+      }
+      this.PWs.setVisibility(0);
+      this.PWu.a(null, this.PWw);
+    }
+    label92:
+    label102:
+    while (this.PWs == null)
+    {
+      return;
+      if (this.zoy != null)
+      {
+        bool = this.zoy.hasFocus();
+        break;
+      }
+      bool = false;
+      break;
+      this.PWs.setVisibility(8);
+      return;
+    }
+    this.PWs.setVisibility(8);
+  }
+  
+  private void gUV()
+  {
+    Log.i("MicroMsg.MMBaseSelectContactUI", "setInitStatus");
+    a(this.Bvb, 0);
+    if (this.PWk != null)
+    {
+      this.Bvb.setAdapter(this.PWk);
+      this.PWk.notifyDataSetChanged();
+    }
+    for (;;)
+    {
+      if ((bmA()) && (this.PWj != null)) {
+        this.PWj.setVisibility(0);
+      }
+      this.PWq.setVisibility(8);
+      return;
+      Cq(false);
+    }
+  }
+  
+  public final void DP(String paramString)
+  {
+    ListAdapter localListAdapter2 = this.Bvb.getAdapter();
+    ListAdapter localListAdapter1 = localListAdapter2;
+    if ((localListAdapter2 instanceof HeaderViewListAdapter)) {
+      localListAdapter1 = ((HeaderViewListAdapter)localListAdapter2).getWrappedAdapter();
+    }
+    int i;
+    if ((localListAdapter1 == this.PWk) && (this.PWk != null)) {
+      i = this.PWk.bnr(paramString);
+    }
+    for (;;)
+    {
+      if (i == 0) {
+        this.Bvb.setSelection(0);
+      }
+      do
+      {
+        return;
+        if (localListAdapter1 != this.PWl) {
+          break label189;
+        }
+        i = this.PWl.bnr(paramString);
+        break;
+        if (i <= 0) {
+          break label165;
+        }
+        if (bmz())
+        {
+          this.Bvb.setSelection(i);
+          return;
+        }
+      } while (this.zoy == null);
+      this.Bvb.setSelectionFromTop(i, this.zoy.getMeasuredHeight());
+      Log.i("MicroMsg.MMBaseSelectContactUI", "Select head selectPosition=%d | header=%s | y=%d", new Object[] { Integer.valueOf(i), paramString, Integer.valueOf(this.zoy.getMeasuredHeight()) });
+      return;
+      label165:
+      Log.i("MicroMsg.MMBaseSelectContactUI", "Select unkown head selectPosition=%d | header=%s", new Object[] { Integer.valueOf(i), paramString });
+      return;
+      label189:
+      i = 0;
+    }
+  }
+  
+  public void M(View paramView, int paramInt) {}
+  
+  public final boolean SN(String paramString)
   {
     return false;
   }
   
-  public final void JP(String paramString)
+  public final void SO(String paramString)
   {
-    ae.i("MicroMsg.MMBaseSelectContactUI", "onSearchChange: searchText=%s", new Object[] { paramString });
-    if (doz())
+    Log.i("MicroMsg.MMBaseSelectContactUI", "onSearchChange: searchText=%s", new Object[] { paramString });
+    if (eim())
     {
-      if (this.fUI != null) {
-        this.fUI.fOx();
+      if (this.gzP != null) {
+        this.gzP.gXq();
       }
-      fMA();
+      gUU();
     }
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
-      this.KJn.b(paramString, dmI());
+      this.PWl.b(paramString, egI());
       return;
     }
-    this.KJn.clearData();
-    this.KJn.notifyDataSetChanged();
-    fMB();
+    this.PWl.clearData();
+    this.PWl.notifyDataSetChanged();
+    gUV();
   }
   
-  public void Q(int paramInt, String paramString) {}
-  
-  protected void Zm()
-  {
-    this.scene = getIntent().getIntExtra("scene", 0);
-  }
+  public void T(int paramInt, String paramString) {}
   
   protected void a(ListView paramListView, int paramInt) {}
   
@@ -167,65 +285,14 @@ public abstract class MMBaseSelectContactUI
     return false;
   }
   
-  public final void aNW(String paramString)
+  protected void aDT(String paramString)
   {
-    ae.i("MicroMsg.MMBaseSelectContactUI", "onSearchTextChange: text=%s", new Object[] { paramString });
-    if (doz()) {
-      fMA();
-    }
-    if (this.KJn != null)
-    {
-      if (!bu.isNullOrNil(paramString)) {
-        this.KJn.b(paramString, dmI());
-      }
-    }
-    else {
-      return;
-    }
-    this.KJn.clearData();
-    this.KJn.notifyDataSetChanged();
-    fMB();
+    Log.i("MicroMsg.MMBaseSelectContactUI", "select label=%s", new Object[] { paramString });
   }
   
-  protected abstract boolean aRT();
-  
-  protected abstract boolean aRU();
-  
-  protected abstract String aRV();
-  
-  protected abstract q aRW();
-  
-  protected abstract o aRX();
-  
-  public final void aSL()
+  protected void amZ()
   {
-    fMB();
-    if (doz()) {
-      fMA();
-    }
-    if (aRT())
-    {
-      this.KJo.setVisibility(0);
-      this.KJq.setBackgroundColor(getResources().getColor(2131099679));
-      this.KHn.setVisibility(8);
-      this.KJq.setVisibility(0);
-    }
-  }
-  
-  public final void aSM() {}
-  
-  public final void aSN()
-  {
-    if (this.KHn != null) {
-      this.KHn.setVisibility(0);
-    }
-  }
-  
-  public final void aSO() {}
-  
-  protected void aqy(String paramString)
-  {
-    ae.i("MicroMsg.MMBaseSelectContactUI", "select label=%s", new Object[] { paramString });
+    this.scene = getIntent().getIntExtra("scene", 0);
   }
   
   public boolean b(com.tencent.mm.ui.contact.a.a parama)
@@ -233,90 +300,150 @@ public abstract class MMBaseSelectContactUI
     return false;
   }
   
-  public int[] dmI()
+  public final void bey(String paramString)
+  {
+    Log.i("MicroMsg.MMBaseSelectContactUI", "onSearchTextChange: text=%s", new Object[] { paramString });
+    if (eim()) {
+      gUU();
+    }
+    if (this.PWl != null)
+    {
+      if (!Util.isNullOrNil(paramString)) {
+        this.PWl.b(paramString, egI());
+      }
+    }
+    else {
+      return;
+    }
+    this.PWl.clearData();
+    this.PWl.notifyDataSetChanged();
+    gUV();
+  }
+  
+  protected abstract boolean bmA();
+  
+  protected abstract String bmB();
+  
+  protected abstract q bmC();
+  
+  protected abstract o bmD();
+  
+  protected abstract boolean bmz();
+  
+  public final void bnA()
+  {
+    if (this.PUm != null) {
+      this.PUm.setVisibility(0);
+    }
+  }
+  
+  public final void bnB() {}
+  
+  public final void bny()
+  {
+    gUV();
+    if (eim()) {
+      gUU();
+    }
+    if (bmz())
+    {
+      this.PWm.setVisibility(0);
+      this.PWo.setBackgroundColor(getResources().getColor(2131099689));
+      this.PUm.setVisibility(8);
+      this.PWo.setVisibility(0);
+    }
+  }
+  
+  public final void bnz() {}
+  
+  public int[] egI()
   {
     return new int[] { 131072, 131075, 131081 };
   }
   
-  public void dmJ()
+  public void egJ()
   {
     hideVKB();
     finish();
   }
   
-  protected boolean doz()
+  protected boolean eim()
   {
     return false;
   }
   
-  public final void fMC()
+  public p gUP()
   {
-    if ((this.fUI != null) && (!bu.isNullOrNil(this.fUI.getSearchContent())))
+    if (getContentLV().getHeaderViewsCount() > 0)
     {
-      r localr = this.fUI;
-      if (localr.Lhj != null) {
-        localr.Lhj.yN(true);
+      if ((getContentLV().getAdapter() instanceof HeaderViewListAdapter))
+      {
+        HeaderViewListAdapter localHeaderViewListAdapter = (HeaderViewListAdapter)getContentLV().getAdapter();
+        if ((localHeaderViewListAdapter.getWrappedAdapter() instanceof p)) {
+          return (p)localHeaderViewListAdapter.getWrappedAdapter();
+        }
       }
+      return null;
     }
-    if ((this.vUs != null) && (!bu.isNullOrNil(this.vUs.getSearchContent()))) {
-      this.vUs.getInputText().setText("");
+    if ((getContentLV().getAdapter() instanceof p)) {
+      return (p)getContentLV().getAdapter();
+    }
+    return null;
+  }
+  
+  public q gUQ()
+  {
+    return this.PWk;
+  }
+  
+  public final void gUR()
+  {
+    if (this.PWm != null)
+    {
+      this.PWm.setVisibility(0);
+      this.PWo.setBackgroundColor(getResources().getColor(2131099689));
     }
   }
   
-  protected final void fMD()
+  public final void gUS()
   {
-    if (this.fUI != null) {
-      if (this.fUI.fOw()) {
-        this.fUI.clearFocus();
+    if (this.PWm != null)
+    {
+      this.PWm.setVisibility(8);
+      this.PWo.setBackgroundColor(getResources().getColor(2131101424));
+    }
+  }
+  
+  public final void gUW()
+  {
+    if ((this.gzP != null) && (!Util.isNullOrNil(this.gzP.getSearchContent())))
+    {
+      s locals = this.gzP;
+      if (locals.Qwh != null) {
+        locals.Qwh.CH(true);
       }
     }
-    while ((this.vUs == null) || (!this.vUs.hasFocus())) {
+    if ((this.zoy != null) && (!Util.isNullOrNil(this.zoy.getSearchContent()))) {
+      this.zoy.getInputText().setText("");
+    }
+  }
+  
+  protected final void gUX()
+  {
+    if (this.gzP != null) {
+      if (this.gzP.gXp()) {
+        this.gzP.clearFocus();
+      }
+    }
+    while ((this.zoy == null) || (!this.zoy.hasFocus())) {
       return;
     }
-    this.vUs.clearFocus();
+    this.zoy.clearFocus();
   }
   
-  public boolean fME()
+  public boolean gUY()
   {
-    return this.KJn != null;
-  }
-  
-  public final p fMv()
-  {
-    if (getContentLV().getHeaderViewsCount() > 0) {
-      return (p)((HeaderViewListAdapter)getContentLV().getAdapter()).getWrappedAdapter();
-    }
-    return (p)getContentLV().getAdapter();
-  }
-  
-  public q fMw()
-  {
-    return this.KJm;
-  }
-  
-  public final void fMx()
-  {
-    if (this.KJo != null)
-    {
-      this.KJo.setVisibility(0);
-      this.KJq.setBackgroundColor(getResources().getColor(2131099679));
-    }
-  }
-  
-  public final void fMy()
-  {
-    if (this.KJo != null)
-    {
-      this.KJo.setVisibility(8);
-      this.KJq.setBackgroundColor(getResources().getColor(2131101179));
-    }
-  }
-  
-  public final void ffK()
-  {
-    if (doz()) {
-      fMA();
-    }
+    return this.PWl != null;
   }
   
   public Activity getActivity()
@@ -326,74 +453,76 @@ public abstract class MMBaseSelectContactUI
   
   public ListView getContentLV()
   {
-    return this.xuY;
+    return this.Bvb;
   }
   
   public int getLayoutId()
   {
-    return 2131494899;
+    return 2131495637;
+  }
+  
+  public final void goT()
+  {
+    if (eim()) {
+      gUU();
+    }
   }
   
   public void initView()
   {
-    setMMTitle(aRV());
-    this.KJo = findViewById(2131306016);
-    this.KHn = findViewById(2131306014);
-    this.xuY = ((ListView)findViewById(2131304508));
-    this.KJm = aRW();
-    this.KJn = aRX();
-    this.zjN = findViewById(2131304671);
-    if (fME())
+    setMMTitle(bmB());
+    this.PWm = findViewById(2131309327);
+    this.PUm = findViewById(2131309324);
+    this.Bvb = ((ListView)findViewById(2131307514));
+    Cq(true);
+    this.PWl = bmD();
+    this.Bnt = findViewById(2131307726);
+    if (gUY())
     {
-      this.KJs = findViewById(2131302885);
-      this.KJt = ((TextView)findViewById(2131302884));
-      this.KJs.setOnTouchListener(new View.OnTouchListener()
+      this.PWq = findViewById(2131305462);
+      this.PWr = ((TextView)findViewById(2131305461));
+      this.PWq.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(102851);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          localb.bd(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/MMBaseSelectContactUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
           MMBaseSelectContactUI.a(MMBaseSelectContactUI.this);
-          MMBaseSelectContactUI.this.fMC();
-          MMBaseSelectContactUI.this.fMD();
-          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/ui/contact/MMBaseSelectContactUI$1", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
+          MMBaseSelectContactUI.this.gUW();
+          MMBaseSelectContactUI.this.gUX();
           AppMethodBeat.o(102851);
           return false;
         }
       });
-      this.vUs = ((MultiSelectContactView)findViewById(2131298676));
-      this.vUs.measure(View.MeasureSpec.makeMeasureSpec(getResources().getDisplayMetrics().widthPixels, -2147483648), View.MeasureSpec.makeMeasureSpec(getResources().getDisplayMetrics().heightPixels, -2147483648));
-      this.vUs.setOnSearchTextChangeListener(this);
-      this.vUs.setOnSearchTextFouceChangeListener(this);
-      this.vUs.setOnContactDeselectListener(this);
-      this.KJr = LayoutInflater.from(this).inflate(2131493600, null);
-      this.KJq = this.KJr.findViewById(2131300701);
-      this.xuY.addHeaderView(this.KJr);
-      if (!aRT()) {
-        break label576;
+      this.zoy = ((MultiSelectContactView)findViewById(2131299114));
+      this.zoy.measure(View.MeasureSpec.makeMeasureSpec(getResources().getDisplayMetrics().widthPixels, -2147483648), View.MeasureSpec.makeMeasureSpec(getResources().getDisplayMetrics().heightPixels, -2147483648));
+      this.zoy.setOnSearchTextChangeListener(this);
+      this.zoy.setOnSearchTextFouceChangeListener(this);
+      this.zoy.setOnContactDeselectListener(this);
+      this.PWp = LayoutInflater.from(this).inflate(2131493717, null);
+      this.PWo = this.PWp.findViewById(2131302272);
+      this.Bvb.addHeaderView(this.PWp);
+      if (!bmz()) {
+        break label562;
       }
       hideActionbarLine();
-      if (this.vUs != null) {
-        this.vUs.setVisibility(8);
+      if (this.zoy != null) {
+        this.zoy.setVisibility(8);
       }
-      this.KJo.setVisibility(0);
-      this.KJq.setBackgroundColor(getResources().getColor(2131099679));
-      this.KHn.setVisibility(8);
-      this.fUI = new r((byte)0);
-      this.fUI.Lhk = this;
-      this.KJo.setOnClickListener(new View.OnClickListener()
+      this.PWm.setVisibility(0);
+      this.PWo.setBackgroundColor(getResources().getColor(2131099689));
+      this.PUm.setVisibility(8);
+      this.gzP = new s((byte)0);
+      this.gzP.Qwi = this;
+      this.PWm.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(102852);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/MMBaseSelectContactUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          ae.d("MicroMsg.MMBaseSelectContactUI", "dancy test topSearchView onClick!!");
-          MMBaseSelectContactUI.b(MMBaseSelectContactUI.this).yP(true);
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/MMBaseSelectContactUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          Log.d("MicroMsg.MMBaseSelectContactUI", "dancy test topSearchView onClick!!");
+          MMBaseSelectContactUI.b(MMBaseSelectContactUI.this).CK(true);
           MMBaseSelectContactUI.c(MMBaseSelectContactUI.this).setVisibility(8);
           MMBaseSelectContactUI.d(MMBaseSelectContactUI.this).setVisibility(0);
           MMBaseSelectContactUI.e(MMBaseSelectContactUI.this).setVisibility(8);
@@ -401,20 +530,15 @@ public abstract class MMBaseSelectContactUI
           AppMethodBeat.o(102852);
         }
       });
-      this.KHn.setOnTouchListener(new View.OnTouchListener()
+      this.PUm.setOnTouchListener(new View.OnTouchListener()
       {
         public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
           AppMethodBeat.i(102853);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          localb.bd(paramAnonymousMotionEvent);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/MMBaseSelectContactUI$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
-          MMBaseSelectContactUI.b(MMBaseSelectContactUI.this).fOV();
+          MMBaseSelectContactUI.b(MMBaseSelectContactUI.this).gXP();
           MMBaseSelectContactUI.c(MMBaseSelectContactUI.this).setVisibility(0);
           MMBaseSelectContactUI.d(MMBaseSelectContactUI.this).setVisibility(8);
           MMBaseSelectContactUI.e(MMBaseSelectContactUI.this).setVisibility(0);
-          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/ui/contact/MMBaseSelectContactUI$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(102853);
           return true;
         }
@@ -422,31 +546,30 @@ public abstract class MMBaseSelectContactUI
     }
     for (;;)
     {
-      a(this.xuY, 0);
-      this.xuY.setAdapter(this.KJm);
+      a(this.Bvb, 0);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(102854);
-          MMBaseSelectContactUI.this.dmJ();
+          MMBaseSelectContactUI.this.egJ();
           AppMethodBeat.o(102854);
           return true;
         }
       });
-      if (this.KJn != null) {
-        this.KJn.a(new o.a()
+      if (this.PWl != null) {
+        this.PWl.a(new o.a()
         {
-          public final void y(String paramAnonymousString, int paramAnonymousInt, boolean paramAnonymousBoolean)
+          public final void B(String paramAnonymousString, int paramAnonymousInt, boolean paramAnonymousBoolean)
           {
             AppMethodBeat.i(102855);
-            ae.i("MicroMsg.MMBaseSelectContactUI", "Callback SearchEnd Count=%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+            Log.i("MicroMsg.MMBaseSelectContactUI", "Callback SearchEnd Count=%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
             if (MMBaseSelectContactUI.d(MMBaseSelectContactUI.this) != null) {
               MMBaseSelectContactUI.d(MMBaseSelectContactUI.this).setVisibility(8);
             }
             if ((paramAnonymousBoolean) && (paramAnonymousInt == 0))
             {
-              if (!bu.isNullOrNil(paramAnonymousString))
+              if (!Util.isNullOrNil(paramAnonymousString))
               {
                 MMBaseSelectContactUI.f(MMBaseSelectContactUI.this);
                 AppMethodBeat.o(102855);
@@ -461,14 +584,14 @@ public abstract class MMBaseSelectContactUI
           }
         });
       }
-      this.xuY.setOnScrollListener(new AbsListView.OnScrollListener()
+      this.Bvb.setOnScrollListener(new AbsListView.OnScrollListener()
       {
         public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
         {
           AppMethodBeat.i(102857);
-          if ((!MMBaseSelectContactUI.this.aRT()) && (MMBaseSelectContactUI.h(MMBaseSelectContactUI.this) != null))
+          if ((!MMBaseSelectContactUI.this.bmz()) && (MMBaseSelectContactUI.h(MMBaseSelectContactUI.this) != null))
           {
-            paramAnonymousAbsListView = MMBaseSelectContactUI.this.xuY.getChildAt(MMBaseSelectContactUI.this.xuY.getFirstVisiblePosition());
+            paramAnonymousAbsListView = MMBaseSelectContactUI.this.Bvb.getChildAt(MMBaseSelectContactUI.this.Bvb.getFirstVisiblePosition());
             if ((paramAnonymousAbsListView == null) || (paramAnonymousAbsListView.getTop() != 0)) {
               break label80;
             }
@@ -481,15 +604,15 @@ public abstract class MMBaseSelectContactUI
             label80:
             MMBaseSelectContactUI.i(MMBaseSelectContactUI.this).setVisibility(0);
           }
-          com.tencent.mm.kernel.g.ajS();
-          if (!bu.o((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(12296, null)))
+          g.aAi();
+          if (!Util.nullAsFalse((Boolean)g.aAh().azQ().get(12296, null)))
           {
-            com.tencent.mm.kernel.g.ajS();
-            com.tencent.mm.kernel.g.ajR().ajA().set(12296, Boolean.TRUE);
+            g.aAi();
+            g.aAh().azQ().set(12296, Boolean.TRUE);
             if (MMBaseSelectContactUI.j(MMBaseSelectContactUI.this) != null) {
               MMBaseSelectContactUI.j(MMBaseSelectContactUI.this).dismiss();
             }
-            MMBaseSelectContactUI.a(MMBaseSelectContactUI.this, t.a(MMBaseSelectContactUI.this, MMBaseSelectContactUI.this.getString(2131761076), 4000L));
+            MMBaseSelectContactUI.a(MMBaseSelectContactUI.this, u.a(MMBaseSelectContactUI.this, MMBaseSelectContactUI.this.getString(2131762862), 4000L));
           }
           AppMethodBeat.o(102857);
         }
@@ -500,29 +623,29 @@ public abstract class MMBaseSelectContactUI
           if (paramAnonymousInt != 0)
           {
             MMBaseSelectContactUI.this.hideVKB();
-            MMBaseSelectContactUI.this.fMD();
+            MMBaseSelectContactUI.this.gUX();
           }
           AppMethodBeat.o(102856);
         }
       });
-      this.xuY.setOnItemClickListener(this);
-      if (aRU())
+      this.Bvb.setOnItemClickListener(this);
+      if (bmA())
       {
-        this.KJl = ((AlphabetScrollBar)findViewById(2131304510));
-        this.KJl.setVisibility(0);
-        this.KJl.setOnScrollBarTouchListener(this);
+        this.PWj = ((AlphabetScrollBar)findViewById(2131307516));
+        this.PWj.setVisibility(0);
+        this.PWj.setOnScrollBarTouchListener(this);
       }
-      if (doz())
+      if (eim())
       {
-        this.KJu = ((LabelContainerView)findViewById(2131304507));
-        this.KJv = ((TextView)this.KJu.findViewById(16908310));
-        this.KJv.setText(2131762979);
-        this.KJw = ((MMTagPanel)this.KJu.findViewById(2131298672));
-        this.KJw.setTagSelectedBG(2131234298);
-        this.KJw.setTagSelectedTextColorRes(2131100711);
-        this.KJu.setOnLabelContainerListener(new LabelContainerView.a()
+        this.PWs = ((LabelContainerView)findViewById(2131307513));
+        this.PWt = ((TextView)this.PWs.findViewById(16908310));
+        this.PWt.setText(2131765116);
+        this.PWu = ((MMTagPanel)this.PWs.findViewById(2131299109));
+        this.PWu.setTagSelectedBG(2131235181);
+        this.PWu.setTagSelectedTextColorRes(2131100904);
+        this.PWs.setOnLabelContainerListener(new LabelContainerView.a()
         {
-          public final void ckg()
+          public final void cIi()
           {
             AppMethodBeat.i(102858);
             if (MMBaseSelectContactUI.h(MMBaseSelectContactUI.this) != null) {
@@ -531,85 +654,85 @@ public abstract class MMBaseSelectContactUI
             if (MMBaseSelectContactUI.b(MMBaseSelectContactUI.this) != null)
             {
               MMBaseSelectContactUI.b(MMBaseSelectContactUI.this).clearFocus();
-              MMBaseSelectContactUI.b(MMBaseSelectContactUI.this).fOV();
+              MMBaseSelectContactUI.b(MMBaseSelectContactUI.this).gXP();
             }
-            MMBaseSelectContactUI.this.KJu.requestFocus();
-            MMBaseSelectContactUI.this.KJu.setVisibility(8);
+            MMBaseSelectContactUI.this.PWs.requestFocus();
+            MMBaseSelectContactUI.this.PWs.setVisibility(8);
             AppMethodBeat.o(102858);
           }
           
-          public final void ckh()
+          public final void cIj()
           {
             AppMethodBeat.i(102859);
             MMBaseSelectContactUI.this.hideVKB();
             AppMethodBeat.o(102859);
           }
         });
-        this.KJw.setCallBack(new MMTagPanel.a()
+        this.PWu.setCallBack(new MMTagPanel.a()
         {
-          public final void D(boolean paramAnonymousBoolean, int paramAnonymousInt) {}
+          public final void E(boolean paramAnonymousBoolean, int paramAnonymousInt) {}
           
-          public final void acT(String paramAnonymousString) {}
+          public final void anb(String paramAnonymousString) {}
           
-          public final void acU(String paramAnonymousString)
+          public final void anc(String paramAnonymousString)
           {
             AppMethodBeat.i(102860);
-            MMBaseSelectContactUI.this.aqy(paramAnonymousString);
+            MMBaseSelectContactUI.this.aDT(paramAnonymousString);
             AppMethodBeat.o(102860);
           }
           
-          public final void acV(String paramAnonymousString) {}
+          public final void and(String paramAnonymousString) {}
           
-          public final void acW(String paramAnonymousString) {}
+          public final void ane(String paramAnonymousString) {}
           
-          public final void acX(String paramAnonymousString) {}
+          public final void anf(String paramAnonymousString) {}
           
-          public final void cki() {}
+          public final void cIk() {}
         });
       }
       return;
-      label576:
-      if (this.KJo != null)
+      label562:
+      if (this.PWm != null)
       {
-        this.KJo.setVisibility(8);
-        this.KJq.setBackgroundColor(getResources().getColor(2131101179));
+        this.PWm.setVisibility(8);
+        this.PWo.setBackgroundColor(getResources().getColor(2131101424));
       }
-      if (this.KHn != null) {
-        this.KHn.setVisibility(8);
+      if (this.PUm != null) {
+        this.PUm.setVisibility(8);
       }
-      this.vUs.setVisibility(0);
+      this.zoy.setVisibility(0);
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    ae.i("MicroMsg.MMBaseSelectContactUI", "onCreate!");
-    if (!com.tencent.mm.kernel.g.ajM())
+    Log.i("MicroMsg.MMBaseSelectContactUI", "onCreate!");
+    if (!g.aAc())
     {
-      ae.e("MicroMsg.MMBaseSelectContactUI", "onCreate acc not ready finish");
-      ae.fop();
+      Log.e("MicroMsg.MMBaseSelectContactUI", "onCreate acc not ready finish");
+      Log.appenderFlushSync();
       finish();
       return;
     }
-    Zm();
-    ae.i("MicroMsg.MMBaseSelectContactUI", "initData done!");
+    amZ();
+    Log.i("MicroMsg.MMBaseSelectContactUI", "initData done!");
     initView();
-    ae.i("MicroMsg.MMBaseSelectContactUI", "initView done!");
+    Log.i("MicroMsg.MMBaseSelectContactUI", "initView done!");
   }
   
   public boolean onCreateOptionsMenu(Menu paramMenu)
   {
-    if (aRT())
+    if (bmz())
     {
-      this.fUI.a(this, paramMenu);
+      this.gzP.a(this, paramMenu);
       if (paramMenu != null)
       {
         int i = 0;
         while (i < paramMenu.size())
         {
           MenuItem localMenuItem = paramMenu.getItem(i);
-          if (localMenuItem.getItemId() == 2131302248) {
+          if (localMenuItem.getItemId() == 2131304628) {
             localMenuItem.setVisible(false);
           }
           i += 1;
@@ -623,67 +746,67 @@ public abstract class MMBaseSelectContactUI
   public void onDestroy()
   {
     super.onDestroy();
-    if (this.KJl != null) {
-      this.KJl.JLP = null;
+    if (this.PWj != null) {
+      this.PWj.OWL = null;
     }
-    if (this.KJm != null) {
-      this.KJm.finish();
+    if (this.PWk != null) {
+      this.PWk.finish();
     }
-    if (this.KJn != null) {
-      this.KJn.finish();
+    if (this.PWl != null) {
+      this.PWl.finish();
     }
-    if (this.KJp != null) {
-      this.KJp.dismiss();
+    if (this.PWn != null) {
+      this.PWn.dismiss();
     }
   }
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bd(paramAdapterView);
-    localb.bd(paramView);
-    localb.mu(paramInt);
-    localb.rl(paramLong);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/MMBaseSelectContactUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+    Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAdapterView);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).pH(paramInt);
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).zo(paramLong);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/contact/MMBaseSelectContactUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
     int i = paramInt - getContentLV().getHeaderViewsCount();
     int j;
     if (i >= 0)
     {
-      paramAdapterView = fMv().aeW(i);
-      paramView = paramAdapterView.aRR();
+      paramAdapterView = gUP().anH(i);
+      localObject = paramAdapterView.bmx();
       getContext();
-      paramView.aRS();
-      if (paramAdapterView.gxU)
+      ((a.b)localObject).bmy();
+      if (paramAdapterView.hkH)
       {
-        i = paramAdapterView.tGR;
-        j = paramAdapterView.tGS;
-        if (!paramAdapterView.cVC()) {
-          break label312;
+        i = paramAdapterView.wXQ;
+        j = paramAdapterView.wXR;
+        if (!paramAdapterView.dOL()) {
+          break label313;
         }
         i = 15;
         j = 0;
-        switch (paramAdapterView.tGR)
+        switch (paramAdapterView.wXQ)
         {
         }
       }
     }
     for (;;)
     {
-      if (paramAdapterView.KNd) {
+      if (paramAdapterView.Qad) {
         j = 1;
       }
-      if (paramAdapterView.oOD == 5) {
+      if (paramAdapterView.qcr == 5) {
         j = 7;
       }
-      paramAdapterView = String.format("%s,%d,%d,%d,%d", new Object[] { paramAdapterView.query, Integer.valueOf(paramAdapterView.scene), Integer.valueOf(j), Integer.valueOf(paramAdapterView.tGM), Integer.valueOf(i) });
-      ae.v("MicroMsg.SelectContactReportLogic", "reportClick: %s", new Object[] { paramAdapterView });
-      com.tencent.mm.plugin.report.service.g.yxI.kvStat(13234, paramAdapterView);
-      if (!fMv().aeX(paramInt)) {
-        rj(paramInt);
+      paramAdapterView = String.format("%s,%d,%d,%d,%d", new Object[] { paramAdapterView.query, Integer.valueOf(paramAdapterView.scene), Integer.valueOf(j), Integer.valueOf(paramAdapterView.wXL), Integer.valueOf(i) });
+      Log.v("MicroMsg.SelectContactReportLogic", "reportClick: %s", new Object[] { paramAdapterView });
+      com.tencent.mm.plugin.report.service.h.CyF.kvStat(13234, paramAdapterView);
+      if (!gUP().anI(paramInt)) {
+        M(paramView, paramInt);
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/contact/MMBaseSelectContactUI", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       return;
-      label312:
+      label313:
       if (i == 131072) {
         switch (j)
         {
@@ -783,7 +906,7 @@ public abstract class MMBaseSelectContactUI
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     if (paramKeyEvent.getKeyCode() == 4) {
-      dmJ();
+      egJ();
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
@@ -791,16 +914,16 @@ public abstract class MMBaseSelectContactUI
   public void onPause()
   {
     super.onPause();
-    if (this.KJp != null) {
-      this.KJp.dismiss();
+    if (this.PWn != null) {
+      this.PWn.dismiss();
     }
   }
   
   public boolean onPrepareOptionsMenu(Menu paramMenu)
   {
-    if (aRT())
+    if (bmz())
     {
-      this.fUI.a(this, paramMenu);
+      this.gzP.a(this, paramMenu);
       return super.onPrepareOptionsMenu(paramMenu);
     }
     return super.onPrepareOptionsMenu(paramMenu);
@@ -809,17 +932,17 @@ public abstract class MMBaseSelectContactUI
   public void onResume()
   {
     super.onResume();
-    if ((doz()) && (this.KJx))
+    if ((eim()) && (this.PWv))
     {
-      this.KJx = false;
-      com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+      this.PWv = false;
+      g.aAk().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(102862);
-          MMBaseSelectContactUI.a(MMBaseSelectContactUI.this, com.tencent.mm.plugin.label.a.a.dig().dib());
+          MMBaseSelectContactUI.a(MMBaseSelectContactUI.this, com.tencent.mm.plugin.label.a.a.ecg().ecb());
           MMBaseSelectContactUI.k(MMBaseSelectContactUI.this);
-          ar.f(new Runnable()
+          MMHandlerThread.postToMainThread(new Runnable()
           {
             public final void run()
             {
@@ -847,56 +970,10 @@ public abstract class MMBaseSelectContactUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  public void rj(int paramInt) {}
-  
-  public final void vy(String paramString)
-  {
-    ListAdapter localListAdapter2 = this.xuY.getAdapter();
-    ListAdapter localListAdapter1 = localListAdapter2;
-    if ((localListAdapter2 instanceof HeaderViewListAdapter)) {
-      localListAdapter1 = ((HeaderViewListAdapter)localListAdapter2).getWrappedAdapter();
-    }
-    int i;
-    if (localListAdapter1 == this.KJm) {
-      i = this.KJm.aYn(paramString);
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        this.xuY.setSelection(0);
-      }
-      do
-      {
-        return;
-        if (localListAdapter1 != this.KJn) {
-          break label182;
-        }
-        i = this.KJn.aYn(paramString);
-        break;
-        if (i <= 0) {
-          break label158;
-        }
-        if (aRT())
-        {
-          this.xuY.setSelection(i);
-          return;
-        }
-      } while (this.vUs == null);
-      this.xuY.setSelectionFromTop(i, this.vUs.getMeasuredHeight());
-      ae.i("MicroMsg.MMBaseSelectContactUI", "Select head selectPosition=%d | header=%s | y=%d", new Object[] { Integer.valueOf(i), paramString, Integer.valueOf(this.vUs.getMeasuredHeight()) });
-      return;
-      label158:
-      ae.i("MicroMsg.MMBaseSelectContactUI", "Select unkown head selectPosition=%d | header=%s", new Object[] { Integer.valueOf(i), paramString });
-      return;
-      label182:
-      i = 0;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.contact.MMBaseSelectContactUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.tmassistantsdk.network;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.TMOpenSDKAuthorizedInfo;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.ActionButton;
 import com.tencent.tmassistantsdk.openSDK.opensdktomsdk.data.AuthorizedResult;
@@ -105,7 +105,7 @@ public class GetAuthorizedHttpRequest
       catch (JSONException paramJSONObject)
       {
         this.mGetAuthorizedListener.onGetAuthorizedRequestFinished(null, 704);
-        ae.printErrStackTrace("GetAuthorizedHttpRequest", paramJSONObject, "", new Object[0]);
+        Log.printErrStackTrace("GetAuthorizedHttpRequest", paramJSONObject, "", new Object[0]);
         AppMethodBeat.o(102078);
         return;
       }
@@ -132,7 +132,7 @@ public class GetAuthorizedHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.network.GetAuthorizedHttpRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public final class j
     {
       paramView = (LinearLayout)paramView;
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-      int i = paramContext.getResources().getDimensionPixelOffset(2131165842);
+      int i = paramContext.getResources().getDimensionPixelOffset(2131165868);
       if (localLayoutParams != null)
       {
         localLayoutParams.rightMargin = i;
@@ -32,7 +32,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recommend.j
  * JD-Core Version:    0.7.0.1
  */

@@ -31,15 +31,15 @@ public class l
   
   public boolean canOpenFile(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(192888);
+    AppMethodBeat.i(188479);
     paramContext = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "canOpenFile", new Class[] { Context.class, String.class }, new Object[] { paramContext, paramString });
     if ((paramContext instanceof Boolean))
     {
       boolean bool = ((Boolean)paramContext).booleanValue();
-      AppMethodBeat.o(192888);
+      AppMethodBeat.o(188479);
       return bool;
     }
-    AppMethodBeat.o(192888);
+    AppMethodBeat.o(188479);
     return false;
   }
   
@@ -51,78 +51,78 @@ public class l
   
   public void closeFileReader()
   {
-    AppMethodBeat.i(192889);
+    AppMethodBeat.i(188480);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "closeFileReader", new Class[0], new Object[0]);
-    AppMethodBeat.o(192889);
+    AppMethodBeat.o(188480);
   }
   
   public void closeMiniQB() {}
   
   public void createCacheWebView(Context paramContext)
   {
-    AppMethodBeat.i(192896);
+    AppMethodBeat.i(188487);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createCacheWebView", new Class[] { Context.class }, new Object[] { paramContext });
-    AppMethodBeat.o(192896);
+    AppMethodBeat.o(188487);
   }
   
   public IX5DateSorter createDateSorter(Context paramContext)
   {
-    AppMethodBeat.i(192878);
+    AppMethodBeat.i(188469);
     paramContext = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createDateSorter", new Class[] { Context.class }, new Object[] { paramContext });
     if (paramContext == null)
     {
-      AppMethodBeat.o(192878);
+      AppMethodBeat.o(188469);
       return null;
     }
     paramContext = (IX5DateSorter)paramContext;
-    AppMethodBeat.o(192878);
+    AppMethodBeat.o(188469);
     return paramContext;
   }
   
   public IX5WebChromeClient createDefaultX5WebChromeClient()
   {
-    AppMethodBeat.i(192874);
+    AppMethodBeat.i(188465);
     if (this.a == null)
     {
-      AppMethodBeat.o(192874);
+      AppMethodBeat.o(188465);
       return null;
     }
     Object localObject = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createDefaultX5WebChromeClient", new Class[0], new Object[0]);
     if (localObject == null)
     {
-      AppMethodBeat.o(192874);
+      AppMethodBeat.o(188465);
       return null;
     }
     localObject = (IX5WebChromeClient)localObject;
-    AppMethodBeat.o(192874);
+    AppMethodBeat.o(188465);
     return localObject;
   }
   
   public IX5WebViewClientExtension createDefaultX5WebChromeClientExtension()
   {
-    AppMethodBeat.i(192876);
+    AppMethodBeat.i(188467);
     Object localObject = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createDefaultX5WebChromeClientExtension", new Class[0], new Object[0]);
     if (localObject == null)
     {
-      AppMethodBeat.o(192876);
+      AppMethodBeat.o(188467);
       return null;
     }
     localObject = (IX5WebViewClientExtension)localObject;
-    AppMethodBeat.o(192876);
+    AppMethodBeat.o(188467);
     return localObject;
   }
   
   public IX5WebViewClient createDefaultX5WebViewClient()
   {
-    AppMethodBeat.i(192875);
+    AppMethodBeat.i(188466);
     Object localObject = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createDefaultX5WebViewClient", new Class[0], new Object[0]);
     if (localObject == null)
     {
-      AppMethodBeat.o(192875);
+      AppMethodBeat.o(188466);
       return null;
     }
     localObject = (IX5WebViewClient)localObject;
-    AppMethodBeat.o(192875);
+    AppMethodBeat.o(188466);
     return localObject;
   }
   
@@ -133,16 +133,16 @@ public class l
   
   public boolean createMiniQBShortCut(Context paramContext, String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    AppMethodBeat.i(192890);
+    AppMethodBeat.i(188481);
     TbsLog.e("X5CoreMessyImpl", "qbsdk createMiniQBShortCut");
     paramContext = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createMiniQBShortCut", new Class[] { Context.class, String.class, String.class, Bitmap.class }, new Object[] { paramContext, paramString1, paramString2, paramBitmap });
     TbsLog.e("X5CoreMessyImpl", "qbsdk after createMiniQBShortCut ret: ".concat(String.valueOf(paramContext)));
     if (paramContext != null)
     {
-      AppMethodBeat.o(192890);
+      AppMethodBeat.o(188481);
       return true;
     }
-    AppMethodBeat.o(192890);
+    AppMethodBeat.o(188481);
     return false;
   }
   
@@ -154,31 +154,31 @@ public class l
   
   public void fileInfoDetect(Context paramContext, String paramString, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(192899);
+    AppMethodBeat.i(188490);
     try
     {
       this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "fileInfoDetect", new Class[] { Context.class, String.class, ValueCallback.class }, new Object[] { paramContext, paramString, paramValueCallback });
-      AppMethodBeat.o(192899);
+      AppMethodBeat.o(188490);
       return;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(192899);
+      AppMethodBeat.o(188490);
     }
   }
   
   public Bundle getAdWebViewInfoFromX5Core()
   {
-    AppMethodBeat.i(192880);
+    AppMethodBeat.i(188471);
     Bundle localBundle = (Bundle)this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getAdWebViewInfoFromX5Core", new Class[0], new Object[0]);
-    AppMethodBeat.o(192880);
+    AppMethodBeat.o(188471);
     return localBundle;
   }
   
   public String getCrashExtraMessage()
   {
     String str = null;
-    AppMethodBeat.i(192881);
+    AppMethodBeat.i(188472);
     Object localObject1 = this.a;
     Object localObject2 = Boolean.TYPE;
     Boolean localBoolean = Boolean.TRUE;
@@ -194,10 +194,10 @@ public class l
     }
     if (str == null)
     {
-      AppMethodBeat.o(192881);
+      AppMethodBeat.o(188472);
       return "X5 core get nothing...";
     }
-    AppMethodBeat.o(192881);
+    AppMethodBeat.o(188472);
     return str;
   }
   
@@ -208,15 +208,15 @@ public class l
   
   public String getDefaultUserAgent(Context paramContext)
   {
-    AppMethodBeat.i(192879);
+    AppMethodBeat.i(188470);
     paramContext = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getDefaultUserAgent", new Class[] { Context.class }, new Object[] { paramContext });
     if ((paramContext instanceof String))
     {
       paramContext = (String)paramContext;
-      AppMethodBeat.o(192879);
+      AppMethodBeat.o(188470);
       return paramContext;
     }
-    AppMethodBeat.o(192879);
+    AppMethodBeat.o(188470);
     return null;
   }
   
@@ -227,29 +227,29 @@ public class l
   
   public String getGUID()
   {
-    AppMethodBeat.i(192895);
+    AppMethodBeat.i(188486);
     Object localObject = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getGUID", new Class[0], new Object[0]);
     if ((localObject != null) && ((localObject instanceof String)))
     {
       localObject = (String)localObject;
-      AppMethodBeat.o(192895);
+      AppMethodBeat.o(188486);
       return localObject;
     }
-    AppMethodBeat.o(192895);
+    AppMethodBeat.o(188486);
     return null;
   }
   
   public String getMiniQBVersion()
   {
-    AppMethodBeat.i(192893);
+    AppMethodBeat.i(188484);
     Object localObject = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getMiniQBVersion", new Class[0], new Object[0]);
     if (localObject == null)
     {
-      AppMethodBeat.o(192893);
+      AppMethodBeat.o(188484);
       return null;
     }
     localObject = (String)localObject;
-    AppMethodBeat.o(192893);
+    AppMethodBeat.o(188484);
     return localObject;
   }
   
@@ -265,21 +265,21 @@ public class l
   
   public boolean installLocalQbApk(Context paramContext, String paramString1, String paramString2, Bundle paramBundle)
   {
-    AppMethodBeat.i(192892);
+    AppMethodBeat.i(188483);
     paramContext = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "installLocalQbApk", new Class[] { Context.class, String.class, String.class, Bundle.class }, new Object[] { paramContext, paramString1, paramString2, paramBundle });
     if (paramContext == null)
     {
-      AppMethodBeat.o(192892);
+      AppMethodBeat.o(188483);
       return false;
     }
     boolean bool = ((Boolean)paramContext).booleanValue();
-    AppMethodBeat.o(192892);
+    AppMethodBeat.o(188483);
     return bool;
   }
   
   public boolean isMiniQBShortCutExist(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(192891);
+    AppMethodBeat.i(188482);
     paramString = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "isMiniQBShortCutExist", new Class[] { Context.class, String.class }, new Object[] { paramContext, paramString });
     if (paramString != null)
     {
@@ -293,9 +293,9 @@ public class l
     for (;;)
     {
       boolean bool = paramContext.booleanValue();
-      AppMethodBeat.o(192891);
+      AppMethodBeat.o(188482);
       return bool;
-      AppMethodBeat.o(192891);
+      AppMethodBeat.o(188482);
       return false;
     }
   }
@@ -307,93 +307,93 @@ public class l
   
   public String mimeTypeMapGetExtensionFromMimeType(String paramString)
   {
-    AppMethodBeat.i(192886);
+    AppMethodBeat.i(188477);
     paramString = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "mimeTypeMapGetMimeTypeFromExtension", new Class[] { String.class }, new Object[] { paramString });
     if (paramString == null)
     {
-      AppMethodBeat.o(192886);
+      AppMethodBeat.o(188477);
       return null;
     }
     paramString = (String)paramString;
-    AppMethodBeat.o(192886);
+    AppMethodBeat.o(188477);
     return paramString;
   }
   
   public String mimeTypeMapGetFileExtensionFromUrl(String paramString)
   {
-    AppMethodBeat.i(192882);
+    AppMethodBeat.i(188473);
     paramString = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "mimeTypeMapGetFileExtensionFromUrl", new Class[] { String.class }, new Object[] { paramString });
     if (paramString == null)
     {
-      AppMethodBeat.o(192882);
+      AppMethodBeat.o(188473);
       return null;
     }
     paramString = (String)paramString;
-    AppMethodBeat.o(192882);
+    AppMethodBeat.o(188473);
     return paramString;
   }
   
   public String mimeTypeMapGetMimeTypeFromExtension(String paramString)
   {
-    AppMethodBeat.i(192884);
+    AppMethodBeat.i(188475);
     paramString = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "mimeTypeMapGetMimeTypeFromExtension", new Class[] { String.class }, new Object[] { paramString });
     if (paramString == null)
     {
-      AppMethodBeat.o(192884);
+      AppMethodBeat.o(188475);
       return null;
     }
     paramString = (String)paramString;
-    AppMethodBeat.o(192884);
+    AppMethodBeat.o(188475);
     return paramString;
   }
   
   public boolean mimeTypeMapHasExtension(String paramString)
   {
-    AppMethodBeat.i(192885);
+    AppMethodBeat.i(188476);
     paramString = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "mimeTypeMapHasExtension", new Class[] { String.class }, new Object[] { paramString });
     if (paramString == null)
     {
-      AppMethodBeat.o(192885);
+      AppMethodBeat.o(188476);
       return false;
     }
     boolean bool = ((Boolean)paramString).booleanValue();
-    AppMethodBeat.o(192885);
+    AppMethodBeat.o(188476);
     return bool;
   }
   
   public boolean mimeTypeMapHasMimeType(String paramString)
   {
-    AppMethodBeat.i(192883);
+    AppMethodBeat.i(188474);
     paramString = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "mimeTypeMapHasMimeType", new Class[] { String.class }, new Object[] { paramString });
     if (paramString == null)
     {
-      AppMethodBeat.o(192883);
+      AppMethodBeat.o(188474);
       return false;
     }
     boolean bool = ((Boolean)paramString).booleanValue();
-    AppMethodBeat.o(192883);
+    AppMethodBeat.o(188474);
     return bool;
   }
   
   public Uri[] parseFileChooserResult(int paramInt, Intent paramIntent)
   {
-    AppMethodBeat.i(192877);
+    AppMethodBeat.i(188468);
     paramIntent = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "parseFileChooserResult", new Class[] { Integer.TYPE, Intent.class }, new Object[] { Integer.valueOf(paramInt), paramIntent });
     if (paramIntent == null)
     {
-      AppMethodBeat.o(192877);
+      AppMethodBeat.o(188468);
       return null;
     }
     paramIntent = (Uri[])paramIntent;
-    AppMethodBeat.o(192877);
+    AppMethodBeat.o(188468);
     return paramIntent;
   }
   
   public void prefetchResource(Context paramContext, String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(192898);
+    AppMethodBeat.i(188489);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "prefetchResource", new Class[] { Context.class, String.class, Map.class }, new Object[] { paramContext, paramString, paramMap });
-    AppMethodBeat.o(192898);
+    AppMethodBeat.o(188489);
   }
   
   public void pvUploadNotifybyUI() {}
@@ -410,32 +410,32 @@ public class l
   
   public void setTbsInitPerformanceData(int paramInt, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(192894);
+    AppMethodBeat.i(188485);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "setTbsInitPerformanceData", new Class[] { Integer.TYPE, Map.class }, new Object[] { Integer.valueOf(paramInt), paramMap });
-    AppMethodBeat.o(192894);
+    AppMethodBeat.o(188485);
   }
   
   public void setWebContentsDebuggingEnabled(boolean paramBoolean)
   {
-    AppMethodBeat.i(192873);
+    AppMethodBeat.i(188464);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "webview_setWebContentsDebuggingEnabled", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(192873);
+    AppMethodBeat.o(188464);
   }
   
   public void setWebCoreLogWrite2FileFlag(boolean paramBoolean, String paramString) {}
   
   public void setWebViewPoolSize(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(192897);
+    AppMethodBeat.i(188488);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "setWebViewPoolSize", new Class[] { Context.class, Integer.TYPE }, new Object[] { paramContext, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(192897);
+    AppMethodBeat.o(188488);
   }
   
   public void setX5RenderPerformDebug(boolean paramBoolean) {}
   
   public int startMiniQB(Context paramContext, String paramString, Map<String, String> paramMap, ValueCallback<String> paramValueCallback)
   {
-    AppMethodBeat.i(192887);
+    AppMethodBeat.i(188478);
     Object localObject = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "startMiniQB", new Class[] { Context.class, String.class, Map.class, ValueCallback.class }, new Object[] { paramContext, paramString, paramMap, paramValueCallback });
     paramValueCallback = localObject;
     if (localObject == null) {
@@ -447,11 +447,11 @@ public class l
     }
     if (paramMap == null)
     {
-      AppMethodBeat.o(192887);
+      AppMethodBeat.o(188478);
       return -3;
     }
     int i = ((Integer)paramMap).intValue();
-    AppMethodBeat.o(192887);
+    AppMethodBeat.o(188478);
     return i;
   }
   
@@ -470,7 +470,7 @@ public class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.b.l
  * JD-Core Version:    0.7.0.1
  */

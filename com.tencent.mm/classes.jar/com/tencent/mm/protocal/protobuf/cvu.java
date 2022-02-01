@@ -5,77 +5,82 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class cvu
   extends com.tencent.mm.bw.a
 {
-  public int FPk;
-  public int Scene;
-  public String Url;
+  public String nickName;
+  public int status;
+  public String userName;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(6427);
+    AppMethodBeat.i(152636);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Url != null) {
-        paramVarArgs.d(1, this.Url);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.userName != null) {
+        paramVarArgs.e(1, this.userName);
       }
-      paramVarArgs.aS(2, this.FPk);
-      paramVarArgs.aS(3, this.Scene);
-      AppMethodBeat.o(6427);
+      paramVarArgs.aM(2, this.status);
+      if (this.nickName != null) {
+        paramVarArgs.e(3, this.nickName);
+      }
+      AppMethodBeat.o(152636);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Url == null) {
-        break label315;
+      if (this.userName == null) {
+        break label318;
       }
     }
-    label315:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Url) + 0;; paramInt = 0)
+    label318:
+    for (paramInt = g.a.a.b.b.a.f(1, this.userName) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.FPk);
-      int j = f.a.a.b.b.a.bz(3, this.Scene);
-      AppMethodBeat.o(6427);
-      return paramInt + i + j;
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.status);
+      paramInt = i;
+      if (this.nickName != null) {
+        paramInt = i + g.a.a.b.b.a.f(3, this.nickName);
+      }
+      AppMethodBeat.o(152636);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(6427);
+        AppMethodBeat.o(152636);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         cvu localcvu = (cvu)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(6427);
+          AppMethodBeat.o(152636);
           return -1;
         case 1: 
-          localcvu.Url = locala.OmT.readString();
-          AppMethodBeat.o(6427);
+          localcvu.userName = locala.UbS.readString();
+          AppMethodBeat.o(152636);
           return 0;
         case 2: 
-          localcvu.FPk = locala.OmT.zc();
-          AppMethodBeat.o(6427);
+          localcvu.status = locala.UbS.zi();
+          AppMethodBeat.o(152636);
           return 0;
         }
-        localcvu.Scene = locala.OmT.zc();
-        AppMethodBeat.o(6427);
+        localcvu.nickName = locala.UbS.readString();
+        AppMethodBeat.o(152636);
         return 0;
       }
-      AppMethodBeat.o(6427);
+      AppMethodBeat.o(152636);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cvu
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import android.graphics.YuvImage;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.qbar.WxQbarNative;
 import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
@@ -19,66 +19,66 @@ import java.util.concurrent.Executors;
 
 public final class b
 {
-  public static float yBl;
-  private static b yBr;
-  public volatile boolean gff;
-  public Rect hpa;
-  public Map yBm;
-  public Object yBn;
-  public Object yBo;
-  public Rect yBq;
-  public ExecutorService yBs;
-  public long yBt;
-  public a yBu;
-  public boolean yBv;
-  public int yBw;
+  public static float CDN;
+  private static b CDS;
+  public Object CCt;
+  public Map CDO;
+  public Object CDP;
+  public Rect CDR;
+  public ExecutorService CDT;
+  public long CDU;
+  public a CDV;
+  public boolean CDW;
+  public int CDX;
+  public volatile boolean gKM;
+  public Rect iiw;
   
   static
   {
     AppMethodBeat.i(118326);
-    yBr = new b();
-    yBl = 1.15F;
+    CDS = new b();
+    CDN = 1.15F;
     AppMethodBeat.o(118326);
   }
   
   public b()
   {
     AppMethodBeat.i(118323);
-    this.yBm = new HashMap();
-    this.yBn = new Object();
-    this.yBo = new Object();
-    this.yBs = Executors.newSingleThreadExecutor();
-    this.yBq = new Rect();
-    this.hpa = new Rect();
+    this.CDO = new HashMap();
+    this.CCt = new Object();
+    this.CDP = new Object();
+    this.CDT = Executors.newSingleThreadExecutor();
+    this.CDR = new Rect();
+    this.iiw = new Rect();
     AppMethodBeat.o(118323);
   }
   
-  public static b dOd()
+  public static b ePG()
   {
-    return yBr;
+    return CDS;
   }
   
   public final void release()
   {
     AppMethodBeat.i(118324);
-    ae.i("MicroMsg.BankCardDetectQueue", "release");
-    long l = this.yBt;
-    synchronized (this.yBn)
+    Log.i("MicroMsg.BankCardDetectQueue", "release");
+    long l = this.CDU;
+    synchronized (this.CCt)
     {
-      if (this.yBt == l)
+      if (this.CDU == l)
       {
-        this.yBt = 0L;
-        this.yBw = 0;
-        this.yBu = null;
-        this.yBm.clear();
+        this.CDU = 0L;
+        this.CDX = 0;
+        this.CDV = null;
+        this.CDO.clear();
       }
     }
-    synchronized (this.yBo)
+    synchronized (this.CDP)
     {
-      if (this.gff) {
+      if (this.gKM) {
         WxQbarNative.focusedEngineRelease();
       }
-      this.gff = false;
+      this.gKM = false;
       AppMethodBeat.o(118324);
       return;
       localObject2 = finally;
@@ -91,20 +91,20 @@ public final class b
   {
     public abstract void a(long paramLong, Bundle paramBundle);
     
-    public abstract void af(long paramLong1, long paramLong2);
+    public abstract void aj(long paramLong1, long paramLong2);
   }
   
   public final class b
     implements Runnable
   {
-    private long dmK;
-    private int rql;
-    private byte[] yBx;
-    private Point yBy;
+    private byte[] CDY;
+    private Point CDZ;
+    private long dDZ;
+    private int sRI;
     
     public b(long paramLong)
     {
-      this.dmK = paramLong;
+      this.dDZ = paramLong;
     }
     
     public final void run()
@@ -114,16 +114,16 @@ public final class b
       synchronized (b.a(b.this))
       {
         b.a(b.this, true);
-        if (this.dmK == b.b(b.this)) {
+        if (this.dDZ == b.b(b.this)) {
           if (!b.c(b.this).isEmpty())
           {
             localObject2 = (byte[])b.c(b.this).get("param_preview_data");
-            this.yBx = Arrays.copyOf((byte[])localObject2, localObject2.length);
-            this.yBy = new Point((Point)b.c(b.this).get("param_camera_resolution"));
-            this.rql = ((Integer)b.c(b.this).get("param_camera_rotation")).intValue();
+            this.CDY = Arrays.copyOf((byte[])localObject2, localObject2.length);
+            this.CDZ = new Point((Point)b.c(b.this).get("param_camera_resolution"));
+            this.sRI = ((Integer)b.c(b.this).get("param_camera_rotation")).intValue();
             b.c(b.this).clear();
             if (b.d(b.this) != null) {
-              b.d(b.this).af(b.b(b.this), 10L);
+              b.d(b.this).aj(b.b(b.this), 10L);
             }
           }
         }
@@ -131,9 +131,9 @@ public final class b
       synchronized (b.e(b.this))
       {
         localObject2 = new byte[b.f(b.this).width() * b.f(b.this).height() * 3 / 2];
-        int i = WxQbarNative.QIPUtilYUVCrop((byte[])localObject2, this.yBx, this.yBy.x, this.yBy.y, b.f(b.this).left, b.f(b.this).top, b.f(b.this).width(), b.f(b.this).height());
+        int i = WxQbarNative.QIPUtilYUVCrop((byte[])localObject2, this.CDY, this.CDZ.x, this.CDZ.y, b.f(b.this).left, b.f(b.this).top, b.f(b.this).width(), b.f(b.this).height());
         b.g(b.this);
-        ae.i("MicroMsg.BankCardDetectQueue", "yuv crop ret %d", new Object[] { Integer.valueOf(i) });
+        Log.i("MicroMsg.BankCardDetectQueue", "yuv crop ret %d", new Object[] { Integer.valueOf(i) });
         if (i == 0)
         {
           boolean bool;
@@ -141,34 +141,34 @@ public final class b
           if (WxQbarNative.focusedEngineProcess((byte[])localObject2) == 1)
           {
             bool = true;
-            ae.d("MicroMsg.BankCardDetectQueue", "isBest %s", new Object[] { Boolean.valueOf(bool) });
+            Log.d("MicroMsg.BankCardDetectQueue", "isBest %s", new Object[] { Boolean.valueOf(bool) });
             if (!bool) {
               break label630;
             }
-            localObject2 = new YuvImage(this.yBx, 17, this.yBy.x, this.yBy.y, null);
+            localObject2 = new YuvImage(this.CDY, 17, this.CDZ.x, this.CDZ.y, null);
             localObject5 = new ByteArrayOutputStream();
             ((YuvImage)localObject2).compressToJpeg(b.f(b.this), 80, (OutputStream)localObject5);
-            if (this.rql % 180 == 0) {
+            if (this.sRI % 180 == 0) {
               break label612;
             }
           }
           label612:
           for (float f = 448.0F / b.f(b.this).height();; f = 448.0F / b.f(b.this).width())
           {
-            localObject2 = h.b(h.cu(((ByteArrayOutputStream)localObject5).toByteArray()), this.rql, f, f);
+            localObject2 = BitmapUtil.rotateAndScale(BitmapUtil.decodeByteArray(((ByteArrayOutputStream)localObject5).toByteArray()), this.sRI, f, f);
             if (localObject2 == null) {
               break label630;
             }
             localObject5 = new Bundle();
             ((Bundle)localObject5).putParcelable("param_card_bitmap", (Parcelable)localObject2);
             if (b.d(b.this) != null) {
-              b.d(b.this).a(this.dmK, (Bundle)localObject5);
+              b.d(b.this).a(this.dDZ, (Bundle)localObject5);
             }
             b.a(b.this, false);
             AppMethodBeat.o(118322);
             return;
             if (b.d(b.this) != null) {
-              b.d(b.this).af(b.b(b.this), 0L);
+              b.d(b.this).aj(b.b(b.this), 0L);
             }
             b.a(b.this, false);
             AppMethodBeat.o(118322);

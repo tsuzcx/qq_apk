@@ -1,13 +1,39 @@
 package android.support.transition;
 
+import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroupOverlay;
 
-abstract interface z
-  extends af
+final class z
+  implements aa
 {
-  public abstract void add(View paramView);
+  private final ViewGroupOverlay Dt;
   
-  public abstract void remove(View paramView);
+  z(ViewGroup paramViewGroup)
+  {
+    this.Dt = paramViewGroup.getOverlay();
+  }
+  
+  public final void add(Drawable paramDrawable)
+  {
+    this.Dt.add(paramDrawable);
+  }
+  
+  public final void add(View paramView)
+  {
+    this.Dt.add(paramView);
+  }
+  
+  public final void remove(Drawable paramDrawable)
+  {
+    this.Dt.remove(paramDrawable);
+  }
+  
+  public final void remove(View paramView)
+  {
+    this.Dt.remove(paramView);
+  }
 }
 
 

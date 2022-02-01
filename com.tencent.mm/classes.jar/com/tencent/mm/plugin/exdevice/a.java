@@ -7,22 +7,22 @@ import com.tencent.mm.pluginsdk.n;
 public final class a
   implements n
 {
-  public static m qgs;
-  private static l qgt;
+  public static m rxo;
+  private static l rxp;
   
   public final void a(l paraml)
   {
-    qgt = paraml;
+    rxp = paraml;
   }
   
   public final void a(m paramm)
   {
-    qgs = paramm;
+    rxo = paramm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.a
  * JD-Core Version:    0.7.0.1
  */

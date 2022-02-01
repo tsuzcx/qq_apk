@@ -9,48 +9,48 @@ import android.graphics.Paint.Style;
 import android.graphics.Path;
 import android.graphics.PointF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
   ValueAnimator animator;
   float progress;
-  a wjQ;
-  a wjR;
-  boolean wjS;
-  public a wjT;
-  PointF wjU;
-  PointF wjV;
-  PointF wjW;
-  PointF wjX;
-  PointF wjY;
-  PointF wjZ;
-  float wka;
-  float wkb;
-  float wkc;
-  float wkd;
-  Path wke;
-  private Paint wkf;
+  float zEA;
+  float zEB;
+  float zEC;
+  Path zED;
+  private Paint zEE;
+  a zEp;
+  a zEq;
+  boolean zEr;
+  public a zEs;
+  PointF zEt;
+  PointF zEu;
+  PointF zEv;
+  PointF zEw;
+  PointF zEx;
+  PointF zEy;
+  float zEz;
   
   public b(a parama1, a parama2, a parama)
   {
     AppMethodBeat.i(94797);
     this.progress = 0.0F;
-    this.wjS = false;
-    this.wka = 0.0F;
-    this.wkb = 0.0F;
-    this.wkc = 0.0F;
-    this.wkd = 0.0F;
-    this.wkf = null;
-    this.wjQ = parama1;
-    this.wjR = parama2;
-    this.wjT = parama;
-    this.wkb = (MMSightProgressBar.qui * 2.0F);
-    this.wkc = (-MMSightProgressBar.qui * 0.5F);
-    this.wke = new Path();
-    this.wkf = new Paint();
-    this.wkf.setAntiAlias(true);
-    this.wkf.setStyle(Paint.Style.FILL);
+    this.zEr = false;
+    this.zEz = 0.0F;
+    this.zEA = 0.0F;
+    this.zEB = 0.0F;
+    this.zEC = 0.0F;
+    this.zEE = null;
+    this.zEp = parama1;
+    this.zEq = parama2;
+    this.zEs = parama;
+    this.zEA = (MMSightProgressBar.rLp * 2.0F);
+    this.zEB = (-MMSightProgressBar.rLp * 0.5F);
+    this.zED = new Path();
+    this.zEE = new Paint();
+    this.zEE.setAntiAlias(true);
+    this.zEE.setStyle(Paint.Style.FILL);
     AppMethodBeat.o(94797);
   }
   
@@ -58,12 +58,12 @@ public final class b
   {
     public abstract void a(a parama);
     
-    public abstract void drl();
+    public abstract void elf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.progressbar.b
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,9 @@ import com.tencent.mm.plugin.sight.decode.a.b;
 import com.tencent.mm.plugin.sight.decode.a.b.e;
 import com.tencent.mm.plugin.sight.decode.a.b.f;
 import com.tencent.mm.plugin.sight.decode.a.b.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.ui.base.MMTextureView;
 import java.lang.ref.WeakReference;
 
@@ -27,13 +28,13 @@ public class SightPlayTextureView
   extends MMTextureView
   implements com.tencent.mm.plugin.sight.decode.a.a
 {
+  private int DnE;
+  private b Dnr;
+  private int Dnt;
+  private boolean Dny;
   private Surface mSurface;
   private int videoHeight;
   private int videoWidth;
-  private b ziA;
-  private int ziC;
-  private boolean ziH;
-  private int ziN;
   
   public SightPlayTextureView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -44,33 +45,33 @@ public class SightPlayTextureView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(28650);
-    this.ziH = false;
+    this.Dny = false;
     setOpaque(false);
-    this.ziA = new b(this);
+    this.Dnr = new b(this);
     setSurfaceTextureListener(new TextureView.SurfaceTextureListener()
     {
       public final void onSurfaceTextureAvailable(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(28643);
-        ae.i("MicroMsg.SightPlayTextureView", "on surface texture available, width %d height %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        Log.i("MicroMsg.SightPlayTextureView", "on surface texture available, width %d height %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         SightPlayTextureView.a locala = new SightPlayTextureView.a((byte)0);
-        locala.ziP = SightPlayTextureView.e(SightPlayTextureView.this);
-        o.i(locala, 0L);
+        locala.DnG = SightPlayTextureView.e(SightPlayTextureView.this);
+        o.g(locala, 0L);
         SightPlayTextureView.a(SightPlayTextureView.this, new Surface(paramAnonymousSurfaceTexture));
         SightPlayTextureView.d(SightPlayTextureView.this).j(SightPlayTextureView.e(SightPlayTextureView.this));
-        SightPlayTextureView.this.fDh();
+        SightPlayTextureView.this.gLi();
         AppMethodBeat.o(28643);
       }
       
       public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramAnonymousSurfaceTexture)
       {
         AppMethodBeat.i(28642);
-        ae.i("MicroMsg.SightPlayTextureView", "on surface texture destroyed");
+        Log.i("MicroMsg.SightPlayTextureView", "on surface texture destroyed");
         SightPlayTextureView.d(SightPlayTextureView.this).j(null);
         SightPlayTextureView.d(SightPlayTextureView.this).clear();
         paramAnonymousSurfaceTexture = new SightPlayTextureView.a((byte)0);
-        paramAnonymousSurfaceTexture.ziP = SightPlayTextureView.e(SightPlayTextureView.this);
-        o.i(paramAnonymousSurfaceTexture, 0L);
+        paramAnonymousSurfaceTexture.DnG = SightPlayTextureView.e(SightPlayTextureView.this);
+        o.g(paramAnonymousSurfaceTexture, 0L);
         SightPlayTextureView.a(SightPlayTextureView.this, null);
         AppMethodBeat.o(28642);
         return false;
@@ -79,7 +80,7 @@ public class SightPlayTextureView
       public final void onSurfaceTextureSizeChanged(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(28641);
-        ae.i("MicroMsg.SightPlayTextureView", "on surface texture size changed, width " + paramAnonymousInt1 + " height " + paramAnonymousInt2);
+        Log.i("MicroMsg.SightPlayTextureView", "on surface texture size changed, width " + paramAnonymousInt1 + " height " + paramAnonymousInt2);
         AppMethodBeat.o(28641);
       }
       
@@ -92,21 +93,21 @@ public class SightPlayTextureView
   {
     AppMethodBeat.i(28657);
     final ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-    if (localLayoutParams.height != (int)(this.ziC * paramDouble))
+    if (localLayoutParams.height != (int)(this.Dnt * paramDouble))
     {
-      localLayoutParams.width = this.ziC;
-      localLayoutParams.height = ((int)(this.ziC * paramDouble));
-      if ((this.ziH) && (localLayoutParams.height < com.tencent.mm.cb.a.fromDPToPix(getContext(), 50))) {
+      localLayoutParams.width = this.Dnt;
+      localLayoutParams.height = ((int)(this.Dnt * paramDouble));
+      if ((this.Dny) && (localLayoutParams.height < com.tencent.mm.cb.a.fromDPToPix(getContext(), 50))) {
         localLayoutParams.height = com.tencent.mm.cb.a.fromDPToPix(getContext(), 50);
       }
-      ae.i("MicroMsg.SightPlayTextureView", "params width %d height %d", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
-      if (ar.isMainThread())
+      Log.i("MicroMsg.SightPlayTextureView", "params width %d height %d", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
+      if (MMHandlerThread.isMainThread())
       {
         setLayoutParams(localLayoutParams);
         AppMethodBeat.o(28657);
         return;
       }
-      ar.f(new Runnable()
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
@@ -122,24 +123,24 @@ public class SightPlayTextureView
   public final void clear()
   {
     AppMethodBeat.i(28651);
-    this.ziA.clear();
+    this.Dnr.clear();
     AppMethodBeat.o(28651);
-  }
-  
-  public final void dTx()
-  {
-    AppMethodBeat.i(28659);
-    Bitmap localBitmap1 = b.b(getContext(), 2131233476, this.ziC, 320, 240);
-    Bitmap localBitmap2 = b.b(getContext(), this.ziN, this.ziC, 320, 240);
-    SightVideoJNI.drawSurfaceThumb(this.mSurface, localBitmap1, localBitmap2);
-    AppMethodBeat.o(28659);
   }
   
   public final void e(String paramString, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(169764);
-    this.ziA.bL(paramString, paramBoolean);
+    this.Dnr.cd(paramString, paramBoolean);
     AppMethodBeat.o(169764);
+  }
+  
+  public final void eVw()
+  {
+    AppMethodBeat.i(28659);
+    Bitmap localBitmap1 = b.a(getContext(), 2131234279, this.Dnt, 320, 240);
+    Bitmap localBitmap2 = b.a(getContext(), this.DnE, this.Dnt, 320, 240);
+    SightVideoJNI.drawSurfaceThumb(this.mSurface, localBitmap1, localBitmap2);
+    AppMethodBeat.o(28659);
   }
   
   public Object getTagObject()
@@ -160,24 +161,24 @@ public class SightPlayTextureView
   
   public String getVideoPath()
   {
-    return this.ziA.cvr;
+    return this.Dnr.cJp;
   }
   
-  public final void hy(int paramInt1, int paramInt2)
+  public final void im(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(28663);
     final ViewGroup.LayoutParams localLayoutParams = getLayoutParams();
-    this.ziC = paramInt1;
-    localLayoutParams.width = this.ziC;
-    localLayoutParams.height = (this.ziC * paramInt2 / paramInt1);
-    ae.i("MicroMsg.SightPlayTextureView", "params width %d height %d", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
-    if (ar.isMainThread())
+    this.Dnt = paramInt1;
+    localLayoutParams.width = this.Dnt;
+    localLayoutParams.height = (this.Dnt * paramInt2 / paramInt1);
+    Log.i("MicroMsg.SightPlayTextureView", "params width %d height %d", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
+    if (MMHandlerThread.isMainThread())
     {
       setLayoutParams(localLayoutParams);
       AppMethodBeat.o(28663);
       return;
     }
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
@@ -192,9 +193,9 @@ public class SightPlayTextureView
   public void onAttachedToWindow()
   {
     AppMethodBeat.i(28655);
-    ae.d("MicroMsg.SightPlayTextureView", "#0x%x on attached from window", new Object[] { Integer.valueOf(hashCode()) });
+    Log.d("MicroMsg.SightPlayTextureView", "#0x%x on attached from window", new Object[] { Integer.valueOf(hashCode()) });
     super.onAttachedToWindow();
-    com.tencent.mm.sdk.b.a.IvT.c(this.ziA.dTC());
+    EventCenter.instance.addListener(this.Dnr.eVB());
     AppMethodBeat.o(28655);
   }
   
@@ -202,21 +203,21 @@ public class SightPlayTextureView
   {
     AppMethodBeat.i(28654);
     super.onDetachedFromWindow();
-    ae.i("MicroMsg.SightPlayTextureView", "#0x%x clear, on deattached to window", new Object[] { Integer.valueOf(hashCode()) });
-    this.ziA.clear();
-    com.tencent.mm.sdk.b.a.IvT.d(this.ziA.dTC());
+    Log.i("MicroMsg.SightPlayTextureView", "#0x%x clear, on deattached to window", new Object[] { Integer.valueOf(hashCode()) });
+    this.Dnr.clear();
+    EventCenter.instance.removeListener(this.Dnr.eVB());
     AppMethodBeat.o(28654);
   }
   
   public void setCanPlay(boolean paramBoolean)
   {
-    this.ziA.zhV = paramBoolean;
+    this.Dnr.DmM = paramBoolean;
   }
   
   public void setDrawableWidth(int paramInt)
   {
     AppMethodBeat.i(28656);
-    this.ziC = paramInt;
+    this.Dnt = paramInt;
     y(0.75D);
     AppMethodBeat.o(28656);
   }
@@ -225,37 +226,37 @@ public class SightPlayTextureView
   
   public void setIsWhatsNew(boolean paramBoolean)
   {
-    this.ziA.zia = paramBoolean;
+    this.Dnr.DmR = paramBoolean;
   }
   
   public void setMaskID(int paramInt)
   {
-    this.ziN = paramInt;
+    this.DnE = paramInt;
   }
   
   public void setOnCompletionListener(b.e parame)
   {
-    this.ziA.zii = parame;
+    this.Dnr.DmZ = parame;
   }
   
   public void setOnDecodeDurationListener(b.f paramf)
   {
-    AppMethodBeat.i(186627);
-    this.ziA.setOnDecodeDurationListener(paramf);
-    AppMethodBeat.o(186627);
+    AppMethodBeat.i(232059);
+    this.Dnr.setOnDecodeDurationListener(paramf);
+    AppMethodBeat.o(232059);
   }
   
   public void setOnSightCompletionAction(b.g paramg) {}
   
   public void setPosition(int paramInt)
   {
-    this.ziA.position = paramInt;
+    this.Dnr.position = paramInt;
   }
   
   public void setSightInfoView(TextView paramTextView)
   {
     AppMethodBeat.i(28665);
-    this.ziA.setSightInfoView(paramTextView);
+    this.Dnr.setSightInfoView(paramTextView);
     AppMethodBeat.o(28665);
   }
   
@@ -269,7 +270,7 @@ public class SightPlayTextureView
   public void setThumbBgView(View paramView)
   {
     AppMethodBeat.i(28664);
-    this.ziA.setThumbBgView(paramView);
+    this.Dnr.setThumbBgView(paramView);
     AppMethodBeat.o(28664);
   }
   
@@ -286,12 +287,12 @@ public class SightPlayTextureView
       }
       bool2 = true;
       label21:
-      ae.d("MicroMsg.SightPlayTextureView", "thumb is null? %B, surface is null? %B", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+      Log.d("MicroMsg.SightPlayTextureView", "thumb is null? %B, surface is null? %B", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
       if (paramBitmap == null) {
         break label205;
       }
-      ae.d("MicroMsg.SightPlayTextureView", "thumb size [%d, %d]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
-      if (this.ziH) {
+      Log.d("MicroMsg.SightPlayTextureView", "thumb size [%d, %d]", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()) });
+      if (this.Dny) {
         if (paramBitmap.getWidth() < paramBitmap.getHeight()) {
           break label189;
         }
@@ -299,12 +300,12 @@ public class SightPlayTextureView
     }
     label184:
     label189:
-    for (this.ziC = com.tencent.mm.cb.a.fromDPToPix(getContext(), 150);; this.ziC = com.tencent.mm.cb.a.fromDPToPix(getContext(), 85))
+    for (this.Dnt = com.tencent.mm.cb.a.fromDPToPix(getContext(), 150);; this.Dnt = com.tencent.mm.cb.a.fromDPToPix(getContext(), 85))
     {
-      Bitmap localBitmap = b.b(getContext(), this.ziN, this.ziC, paramBitmap.getWidth(), paramBitmap.getHeight());
+      Bitmap localBitmap = b.a(getContext(), this.DnE, this.Dnt, paramBitmap.getWidth(), paramBitmap.getHeight());
       y(paramBitmap.getHeight() / paramBitmap.getWidth());
-      this.ziA.zhE = localBitmap;
-      this.ziA.ah(paramBitmap);
+      this.Dnr.Dmv = localBitmap;
+      this.Dnr.as(paramBitmap);
       AppMethodBeat.o(28658);
       return;
       bool1 = false;
@@ -313,90 +314,72 @@ public class SightPlayTextureView
       break label21;
     }
     label205:
-    this.ziA.ah(null);
+    this.Dnr.as(null);
     AppMethodBeat.o(28658);
-  }
-  
-  static final class a
-    implements Runnable
-  {
-    Surface ziP = null;
-    
-    public final void run()
-    {
-      AppMethodBeat.i(28646);
-      if (this.ziP == null)
-      {
-        AppMethodBeat.o(28646);
-        return;
-      }
-      this.ziP.release();
-      AppMethodBeat.o(28646);
-    }
   }
   
   static final class b
     extends b
   {
-    private WeakReference<SightPlayTextureView> ziQ;
+    private WeakReference<SightPlayTextureView> DnH;
     
     public b(SightPlayTextureView paramSightPlayTextureView)
     {
       super(paramSightPlayTextureView);
       AppMethodBeat.i(28648);
-      this.ziQ = new WeakReference(paramSightPlayTextureView);
+      this.DnH = new WeakReference(paramSightPlayTextureView);
       AppMethodBeat.o(28648);
     }
     
-    public final void ai(Bitmap paramBitmap) {}
+    public final void at(Bitmap paramBitmap) {}
     
-    public final int dTy()
+    public final int eVx()
     {
-      return 2130772136;
+      return 2130772160;
     }
     
-    public final void eb(int paramInt1, int paramInt2)
+    public final void eo(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(28649);
-      if (this.ziQ.get() == null)
+      if (this.DnH.get() == null)
       {
-        ae.e("MicroMsg.SightPlayTextureView", "onGetVideoSizeEnd, textureView is null, do clear");
+        Log.e("MicroMsg.SightPlayTextureView", "onGetVideoSizeEnd, textureView is null, do clear");
         clear();
         AppMethodBeat.o(28649);
         return;
       }
-      SightPlayTextureView.a((SightPlayTextureView)this.ziQ.get(), paramInt1);
-      SightPlayTextureView.b((SightPlayTextureView)this.ziQ.get(), paramInt2);
-      ae.d("MicroMsg.SightPlayTextureView", "on get video size %d*%d, needAutoResizeChatting: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(SightPlayTextureView.a((SightPlayTextureView)this.ziQ.get())) });
-      final ViewGroup.LayoutParams localLayoutParams = ((SightPlayTextureView)this.ziQ.get()).getLayoutParams();
-      if ((SightPlayTextureView.a((SightPlayTextureView)this.ziQ.get())) && (paramInt1 > 0) && (paramInt2 > 0))
+      SightPlayTextureView.a((SightPlayTextureView)this.DnH.get(), paramInt1);
+      SightPlayTextureView.b((SightPlayTextureView)this.DnH.get(), paramInt2);
+      Log.d("MicroMsg.SightPlayTextureView", "on get video size %d*%d, needAutoResizeChatting: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(SightPlayTextureView.a((SightPlayTextureView)this.DnH.get())) });
+      final ViewGroup.LayoutParams localLayoutParams = ((SightPlayTextureView)this.DnH.get()).getLayoutParams();
+      if ((SightPlayTextureView.a((SightPlayTextureView)this.DnH.get())) && (paramInt1 > 0) && (paramInt2 > 0))
       {
         if (paramInt1 >= paramInt2) {
-          SightPlayTextureView.c((SightPlayTextureView)this.ziQ.get(), com.tencent.mm.cb.a.fromDPToPix(((SightPlayTextureView)this.ziQ.get()).getContext(), 150));
+          SightPlayTextureView.c((SightPlayTextureView)this.DnH.get(), com.tencent.mm.cb.a.fromDPToPix(((SightPlayTextureView)this.DnH.get()).getContext(), 150));
         }
       }
-      else if (localLayoutParams.height != SightPlayTextureView.b((SightPlayTextureView)this.ziQ.get()) * paramInt2 / paramInt1)
+      else if (localLayoutParams.height != SightPlayTextureView.b((SightPlayTextureView)this.DnH.get()) * paramInt2 / paramInt1)
       {
-        localLayoutParams.width = SightPlayTextureView.b((SightPlayTextureView)this.ziQ.get());
-        localLayoutParams.height = (SightPlayTextureView.b((SightPlayTextureView)this.ziQ.get()) * paramInt2 / paramInt1);
-        if ((SightPlayTextureView.a((SightPlayTextureView)this.ziQ.get())) && (localLayoutParams.height < com.tencent.mm.cb.a.fromDPToPix(((SightPlayTextureView)this.ziQ.get()).getContext(), 50))) {
-          localLayoutParams.height = com.tencent.mm.cb.a.fromDPToPix(((SightPlayTextureView)this.ziQ.get()).getContext(), 50);
+        localLayoutParams.width = SightPlayTextureView.b((SightPlayTextureView)this.DnH.get());
+        localLayoutParams.height = (SightPlayTextureView.b((SightPlayTextureView)this.DnH.get()) * paramInt2 / paramInt1);
+        if ((SightPlayTextureView.a((SightPlayTextureView)this.DnH.get())) && (localLayoutParams.height < com.tencent.mm.cb.a.fromDPToPix(((SightPlayTextureView)this.DnH.get()).getContext(), 50))) {
+          localLayoutParams.height = com.tencent.mm.cb.a.fromDPToPix(((SightPlayTextureView)this.DnH.get()).getContext(), 50);
         }
-        ae.i("MicroMsg.SightPlayTextureView", "params width %d height %d", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
-        if (!ar.isMainThread()) {
+        Log.i("MicroMsg.SightPlayTextureView", "params width %d height %d", new Object[] { Integer.valueOf(localLayoutParams.width), Integer.valueOf(localLayoutParams.height) });
+        if (!MMHandlerThread.isMainThread()) {
           break label450;
         }
-        ((SightPlayTextureView)this.ziQ.get()).setLayoutParams(localLayoutParams);
+        ((SightPlayTextureView)this.DnH.get()).setLayoutParams(localLayoutParams);
       }
       for (;;)
       {
-        this.zhE = b.b(((SightPlayTextureView)this.ziQ.get()).getContext(), SightPlayTextureView.c((SightPlayTextureView)this.ziQ.get()), SightPlayTextureView.b((SightPlayTextureView)this.ziQ.get()), paramInt1, paramInt2);
+        this.Dmv = b.a(((SightPlayTextureView)this.DnH.get()).getContext(), SightPlayTextureView.c((SightPlayTextureView)this.DnH.get()), SightPlayTextureView.b((SightPlayTextureView)this.DnH.get()), paramInt1, paramInt2);
         AppMethodBeat.o(28649);
         return;
-        SightPlayTextureView.c((SightPlayTextureView)this.ziQ.get(), com.tencent.mm.cb.a.fromDPToPix(((SightPlayTextureView)this.ziQ.get()).getContext(), 85));
+        SightPlayTextureView.c((SightPlayTextureView)this.DnH.get(), com.tencent.mm.cb.a.fromDPToPix(((SightPlayTextureView)this.DnH.get()).getContext(), 85));
         break;
         label450:
-        ar.f(new Runnable()
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
@@ -411,7 +394,7 @@ public class SightPlayTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.sight.decode.ui.SightPlayTextureView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,138 +1,152 @@
 package com.tencent.mm.app;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.util.Log;
+import android.content.ContextWrapper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.content.res.Resources;
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.fcm.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.splash.b;
-import com.tencent.mm.splash.c;
-import com.tencent.mm.splash.f;
-import com.tencent.mm.splash.m;
-import com.tencent.mm.splash.n;
-import com.tencent.mm.xlog.app.XLogSetup;
-import com.tencent.tinker.entry.ApplicationLike;
-import java.util.ArrayList;
+import com.tencent.mm.model.cr;
+import com.tencent.mm.sdk.platformtools.WeChatBrands;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.AvailabilityAlertSupplier;
+import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.d.a;
 
 public final class ai
 {
-  public static com.tencent.mm.kernel.b.h cWl;
+  static volatile boolean dmI;
   
-  private static void MG()
+  private static void bP(final Context paramContext)
   {
-    AppMethodBeat.i(160060);
-    com.tencent.mm.splash.h.a(new c()
+    AppMethodBeat.i(231409);
+    final WeChatBrands.Business.AvailabilityAlertSupplier local4 = new WeChatBrands.Business.AvailabilityAlertSupplier()
     {
-      public final void a(Throwable paramAnonymousThrowable, String paramAnonymousString)
-      {
-        AppMethodBeat.i(160029);
-        ae.printErrStackTrace("WxSplash.WeChatSplash", paramAnonymousThrowable, paramAnonymousString, new Object[0]);
-        String str = paramAnonymousString;
-        if (paramAnonymousString == null) {
-          str = "";
-        }
-        paramAnonymousThrowable = str + "  " + Log.getStackTraceString(paramAnonymousThrowable);
-        com.tencent.mm.splash.h.frq().IFK.add(paramAnonymousThrowable);
-        AppMethodBeat.o(160029);
-      }
+      d dmJ;
       
-      public final void b(String paramAnonymousString1, String paramAnonymousString2, Object... paramAnonymousVarArgs)
+      public final void showDialog(Context paramAnonymousContext)
       {
-        AppMethodBeat.i(160030);
-        ae.i(paramAnonymousString1, paramAnonymousString2, paramAnonymousVarArgs);
-        AppMethodBeat.o(160030);
-      }
-      
-      public final void r(Activity paramAnonymousActivity)
-      {
-        AppMethodBeat.i(160028);
-        if ((ai.cWl != null) && (ai.cWl.akL()))
+        AppMethodBeat.i(231404);
+        if ((this.dmJ != null) && (this.dmJ.isShowing()))
         {
-          paramAnonymousActivity = paramAnonymousActivity.getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.abv());
-          if (paramAnonymousActivity.getBoolean("first_launch_weixin", true))
+          Context localContext = this.dmJ.getContext();
+          if ((localContext != null) && ((localContext == paramAnonymousContext) || (((localContext instanceof ContextWrapper)) && (((ContextWrapper)localContext).getBaseContext() == paramAnonymousContext))))
           {
-            paramAnonymousActivity.edit().putBoolean("first_launch_weixin", false).commit();
-            XLogSetup.realSetupXlog();
+            AppMethodBeat.o(231404);
+            return;
           }
         }
-        AppMethodBeat.o(160028);
+        this.dmJ = new d.a(paramAnonymousContext).bon(getTilte()).boo(getBody()).bou(getPositiveBtnText()).c(getOnPositiveClickListener()).bov(getNegativeBtnText()).Dk(true).Dl(false).d(getOnNegativeClickListener()).f(new DialogInterface.OnCancelListener()
+        {
+          public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
+          {
+            AppMethodBeat.i(231403);
+            ai.4.this.getOnDismissListener().onClick(paramAnonymous2DialogInterface, -2);
+            ai.4.this.dmJ = null;
+            AppMethodBeat.o(231403);
+          }
+        }).a(new DialogInterface.OnDismissListener()
+        {
+          public final void onDismiss(DialogInterface paramAnonymous2DialogInterface)
+          {
+            AppMethodBeat.i(231402);
+            ai.4.this.getOnDismissListener().onClick(paramAnonymous2DialogInterface, -2);
+            ai.4.this.dmJ = null;
+            AppMethodBeat.o(231402);
+          }
+        }).hbn();
+        this.dmJ.show();
+        AppMethodBeat.o(231404);
       }
-    });
-    com.tencent.mm.splash.h.a(new b()
+    };
+    Object localObject2 = cr.aWF();
+    String str1 = cr.aWG();
+    String str2 = cr.aWH();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = paramContext.getString(2131756897);
+    }
+    localObject2 = local4.setTilte((String)localObject1);
+    if (str1 == null) {}
+    for (localObject1 = paramContext.getString(2131756894);; localObject1 = str1)
     {
-      public final boolean bw(Context paramAnonymousContext)
+      ((WeChatBrands.Business.AvailabilityAlertSupplier)localObject2).setBody((String)localObject1).setPositiveBtnText(paramContext.getString(2131756896)).setOnPositiveClickListener(new DialogInterface.OnClickListener()
       {
-        AppMethodBeat.i(160072);
-        boolean bool = com.tencent.mm.f.a.bH(paramAnonymousContext);
-        AppMethodBeat.o(160072);
-        return bool;
-      }
-      
-      public final boolean bx(Context paramAnonymousContext)
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(231406);
+          if (this.dmL.getCallback() != null) {
+            this.dmL.getCallback().accept(Integer.valueOf(1));
+          }
+          AppMethodBeat.o(231406);
+        }
+      }).setOnDismissListener(new DialogInterface.OnClickListener()
       {
-        AppMethodBeat.i(160073);
-        boolean bool = com.tencent.mm.f.a.bx(paramAnonymousContext);
-        AppMethodBeat.o(160073);
-        return bool;
+        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+        {
+          AppMethodBeat.i(231405);
+          if (this.dmL.getCallback() != null) {
+            this.dmL.getCallback().accept(Integer.valueOf(-1));
+          }
+          AppMethodBeat.o(231405);
+        }
+      });
+      if (!TextUtils.isEmpty(str2)) {
+        local4.setNegativeBtnText(paramContext.getString(2131756895)).setOnNegativeClickListener(new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+          {
+            AppMethodBeat.i(231407);
+            paramAnonymousDialogInterface = new Intent();
+            paramAnonymousDialogInterface.putExtra("rawUrl", this.dmM);
+            com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramAnonymousDialogInterface);
+            if (local4.getCallback() != null) {
+              local4.getCallback().accept(Integer.valueOf(0));
+            }
+            AppMethodBeat.o(231407);
+          }
+        });
       }
-      
-      public final void by(Context paramAnonymousContext)
-      {
-        AppMethodBeat.i(160074);
-        com.tencent.mm.f.a.by(paramAnonymousContext);
-        AppMethodBeat.o(160074);
-      }
-    });
-    com.tencent.mm.splash.h.a(new f()
-    {
-      public final void MH()
-      {
-        AppMethodBeat.i(160085);
-        com.tencent.mm.blink.a.MH();
-        AppMethodBeat.o(160085);
-      }
-      
-      public final void MI()
-      {
-        AppMethodBeat.i(160087);
-        com.tencent.mm.blink.a.kL(1);
-        AppMethodBeat.o(160087);
-      }
-      
-      public final void fA(String paramAnonymousString)
-      {
-        AppMethodBeat.i(160086);
-        com.tencent.mm.blink.a.fA(paramAnonymousString);
-        AppMethodBeat.o(160086);
-      }
-    });
-    AppMethodBeat.o(160060);
-  }
-  
-  public static void a(com.tencent.mm.kernel.b.h paramh, String paramString)
-  {
-    AppMethodBeat.i(160061);
-    cWl = paramh;
-    MG();
-    if (paramString == null)
-    {
-      ae.i("WxSplash.WeChatSplash", "splash callback class is null, return.");
-      AppMethodBeat.o(160061);
+      WeChatBrands.updateBizRestrictAlertSupplier(local4);
+      AppMethodBeat.o(231409);
       return;
     }
-    com.tencent.mm.blink.a.t(paramh.gGL.getApplicationStartMillisTime(), paramh.gGL.getApplicationStartElapsedTime());
-    com.tencent.mm.splash.h.aTr(ak.fou());
-    com.tencent.mm.splash.h.bb(WeChatSplashActivity.class);
-    com.tencent.mm.splash.h.bc(WeChatSplashFallbackActivity.class);
-    if (d.f(paramh)) {
-      com.tencent.mm.splash.h.aTq("com.google.firebase.provider.FirebaseInitProvider");
+  }
+  
+  public static void init(Context paramContext)
+  {
+    AppMethodBeat.i(231408);
+    if (!dmI) {
+      try
+      {
+        if (!dmI)
+        {
+          cr.aWI();
+          com.tencent.mm.ui.e.a.b(new android.arch.a.c.a() {});
+          com.tencent.mm.ui.e.a.c(new android.arch.a.c.a() {});
+          bP(paramContext);
+          cr.F(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(231401);
+              ai.bQ(this.val$context);
+              AppMethodBeat.o(231401);
+            }
+          });
+          dmI = true;
+        }
+        return;
+      }
+      finally
+      {
+        AppMethodBeat.o(231408);
+      }
     }
-    m.a(paramh.ca, paramh.mProcessName, paramString);
-    AppMethodBeat.o(160061);
+    AppMethodBeat.o(231408);
   }
 }
 

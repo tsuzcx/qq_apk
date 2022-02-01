@@ -3,20 +3,20 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="false">
         <shape android:shape="rectangle">
-            <corners android:radius="@dimen/x" />
-            <solid android:color="@color/a_r" />
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/afz" />
         </shape>
     </item>
     <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <corners android:radius="@dimen/x" />
-            <solid android:color="@color/gc" />
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/gp" />
         </shape>
     </item>
     <item>
         <shape android:shape="rectangle">
-            <corners android:radius="@dimen/x" />
-            <solid android:color="@color/gb" />
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/go" />
         </shape>
     </item>
 </selector>

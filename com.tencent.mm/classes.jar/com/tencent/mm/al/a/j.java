@@ -4,27 +4,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public enum j
 {
-  public final int hVd;
+  public final int iQq;
   
   static
   {
-    AppMethodBeat.i(188903);
-    hUZ = new j("BIZ_CHAT_TYPE_UNKNOWN", 0, -1);
-    hVa = new j("BIZ_CHAT_TYPE_GROUP", 1, 1);
-    hVb = new j("BIZ_CHAT_TYPE_SINGLE", 2, 2);
-    hVc = new j("BIZ_CHAT_TYPE_APP", 3, 3);
-    hVe = new j[] { hUZ, hVa, hVb, hVc };
-    AppMethodBeat.o(188903);
+    AppMethodBeat.i(212201);
+    iQm = new j("BIZ_CHAT_TYPE_UNKNOWN", 0, -1);
+    iQn = new j("BIZ_CHAT_TYPE_GROUP", 1, 1);
+    iQo = new j("BIZ_CHAT_TYPE_SINGLE", 2, 2);
+    iQp = new j("BIZ_CHAT_TYPE_APP", 3, 3);
+    iQr = new j[] { iQm, iQn, iQo, iQp };
+    AppMethodBeat.o(212201);
   }
   
   private j(int paramInt)
   {
-    this.hVd = paramInt;
+    this.iQq = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.al.a.j
  * JD-Core Version:    0.7.0.1
  */

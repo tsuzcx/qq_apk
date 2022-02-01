@@ -15,18 +15,18 @@ import java.util.List;
 final class t
   implements r
 {
-  RemoteViews HH;
-  RemoteViews HI;
-  RemoteViews HJ;
-  int HM;
-  final s.c Ic;
-  final List<Bundle> Ie = new ArrayList();
+  RemoteViews HR;
+  RemoteViews HS;
+  RemoteViews HT;
+  int HW;
+  final s.c In;
+  final List<Bundle> Io = new ArrayList();
   final Notification.Builder mBuilder;
   final Bundle mExtras = new Bundle();
   
   t(s.c paramc)
   {
-    this.Ic = paramc;
+    this.In = paramc;
     Object localObject1;
     Object localObject2;
     label149:
@@ -36,8 +36,8 @@ final class t
     if (Build.VERSION.SDK_INT >= 26)
     {
       this.mBuilder = new Notification.Builder(paramc.mContext, paramc.mChannelId);
-      localObject1 = paramc.HN;
-      localObject2 = this.mBuilder.setWhen(((Notification)localObject1).when).setSmallIcon(((Notification)localObject1).icon, ((Notification)localObject1).iconLevel).setContent(((Notification)localObject1).contentView).setTicker(((Notification)localObject1).tickerText, paramc.Hn).setVibrate(((Notification)localObject1).vibrate).setLights(((Notification)localObject1).ledARGB, ((Notification)localObject1).ledOnMS, ((Notification)localObject1).ledOffMS);
+      localObject1 = paramc.HX;
+      localObject2 = this.mBuilder.setWhen(((Notification)localObject1).when).setSmallIcon(((Notification)localObject1).icon, ((Notification)localObject1).iconLevel).setContent(((Notification)localObject1).contentView).setTicker(((Notification)localObject1).tickerText, paramc.Hx).setVibrate(((Notification)localObject1).vibrate).setLights(((Notification)localObject1).ledARGB, ((Notification)localObject1).ledOnMS, ((Notification)localObject1).ledOffMS);
       if ((((Notification)localObject1).flags & 0x2) == 0) {
         break label415;
       }
@@ -52,8 +52,8 @@ final class t
         break label425;
       }
       bool = true;
-      localObject2 = ((Notification.Builder)localObject2).setAutoCancel(bool).setDefaults(((Notification)localObject1).defaults).setContentTitle(paramc.Hj).setContentText(paramc.Hk).setContentInfo(paramc.Hp).setContentIntent(paramc.Hl).setDeleteIntent(((Notification)localObject1).deleteIntent);
-      localPendingIntent = paramc.Hm;
+      localObject2 = ((Notification.Builder)localObject2).setAutoCancel(bool).setDefaults(((Notification)localObject1).defaults).setContentTitle(paramc.Ht).setContentText(paramc.Hu).setContentInfo(paramc.Hz).setContentIntent(paramc.Hv).setDeleteIntent(((Notification)localObject1).deleteIntent);
+      localPendingIntent = paramc.Hw;
       if ((((Notification)localObject1).flags & 0x80) == 0) {
         break label430;
       }
@@ -64,15 +64,15 @@ final class t
     label430:
     for (boolean bool = true;; bool = false)
     {
-      ((Notification.Builder)localObject2).setFullScreenIntent(localPendingIntent, bool).setLargeIcon(paramc.Ho).setNumber(paramc.Hq).setProgress(paramc.Hw, paramc.Hx, paramc.Hy);
+      ((Notification.Builder)localObject2).setFullScreenIntent(localPendingIntent, bool).setLargeIcon(paramc.Hy).setNumber(paramc.HA).setProgress(paramc.HG, paramc.HH, paramc.HI);
       if (Build.VERSION.SDK_INT < 21) {
         this.mBuilder.setSound(((Notification)localObject1).sound, ((Notification)localObject1).audioStreamType);
       }
       if (Build.VERSION.SDK_INT < 16) {
         break label555;
       }
-      this.mBuilder.setSubText(paramc.Hu).setUsesChronometer(paramc.Hs).setPriority(paramc.mPriority);
-      localObject2 = paramc.Hh.iterator();
+      this.mBuilder.setSubText(paramc.HE).setUsesChronometer(paramc.HC).setPriority(paramc.mPriority);
+      localObject2 = paramc.Hr.iterator();
       while (((Iterator)localObject2).hasNext()) {
         b((s.a)((Iterator)localObject2).next());
       }
@@ -90,13 +90,13 @@ final class t
     }
     if (Build.VERSION.SDK_INT < 20)
     {
-      if (paramc.HC) {
+      if (paramc.HM) {
         this.mExtras.putBoolean("android.support.localOnly", true);
       }
-      if (paramc.Hz != null)
+      if (paramc.HJ != null)
       {
-        this.mExtras.putString("android.support.groupKey", paramc.Hz);
-        if (!paramc.HA) {
+        this.mExtras.putString("android.support.groupKey", paramc.HJ);
+        if (!paramc.HK) {
           break label777;
         }
         this.mExtras.putBoolean("android.support.isGroupSummary", true);
@@ -104,29 +104,29 @@ final class t
     }
     for (;;)
     {
-      if (paramc.HB != null) {
-        this.mExtras.putString("android.support.sortKey", paramc.HB);
+      if (paramc.HL != null) {
+        this.mExtras.putString("android.support.sortKey", paramc.HL);
       }
-      this.HH = paramc.HH;
-      this.HI = paramc.HI;
+      this.HR = paramc.HR;
+      this.HS = paramc.HS;
       label555:
       if (Build.VERSION.SDK_INT >= 19)
       {
-        this.mBuilder.setShowWhen(paramc.Hr);
-        if ((Build.VERSION.SDK_INT < 21) && (paramc.HO != null) && (!paramc.HO.isEmpty())) {
-          this.mExtras.putStringArray("android.people", (String[])paramc.HO.toArray(new String[paramc.HO.size()]));
+        this.mBuilder.setShowWhen(paramc.HB);
+        if ((Build.VERSION.SDK_INT < 21) && (paramc.HY != null) && (!paramc.HY.isEmpty())) {
+          this.mExtras.putStringArray("android.people", (String[])paramc.HY.toArray(new String[paramc.HY.size()]));
         }
       }
       if (Build.VERSION.SDK_INT >= 20)
       {
-        this.mBuilder.setLocalOnly(paramc.HC).setGroup(paramc.Hz).setGroupSummary(paramc.HA).setSortKey(paramc.HB);
-        this.HM = paramc.HM;
+        this.mBuilder.setLocalOnly(paramc.HM).setGroup(paramc.HJ).setGroupSummary(paramc.HK).setSortKey(paramc.HL);
+        this.HW = paramc.HW;
       }
       if (Build.VERSION.SDK_INT < 21) {
         break label921;
       }
-      this.mBuilder.setCategory(paramc.HF).setColor(paramc.mColor).setVisibility(paramc.mVisibility).setPublicVersion(paramc.HG).setSound(((Notification)localObject1).sound, ((Notification)localObject1).audioAttributes);
-      localObject1 = paramc.HO.iterator();
+      this.mBuilder.setCategory(paramc.HP).setColor(paramc.mColor).setVisibility(paramc.mVisibility).setPublicVersion(paramc.HQ).setSound(((Notification)localObject1).sound, ((Notification)localObject1).audioAttributes);
+      localObject1 = paramc.HY.iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (String)((Iterator)localObject1).next();
@@ -135,8 +135,8 @@ final class t
       label777:
       this.mExtras.putBoolean("android.support.useSideChannel", true);
     }
-    this.HJ = paramc.HJ;
-    if (paramc.Hi.size() > 0)
+    this.HT = paramc.HT;
+    if (paramc.Hs.size() > 0)
     {
       localObject1 = paramc.getExtras().getBundle("android.car.EXTENSIONS");
       if (localObject1 != null) {
@@ -150,9 +150,9 @@ final class t
     {
       localObject2 = new Bundle();
       int i = 0;
-      while (i < paramc.Hi.size())
+      while (i < paramc.Hs.size())
       {
-        ((Bundle)localObject2).putBundle(Integer.toString(i), u.c((s.a)paramc.Hi.get(i)));
+        ((Bundle)localObject2).putBundle(Integer.toString(i), u.c((s.a)paramc.Hs.get(i)));
         i += 1;
       }
       ((Bundle)localObject1).putBundle("invisible_actions", (Bundle)localObject2);
@@ -160,22 +160,22 @@ final class t
       this.mExtras.putBundle("android.car.EXTENSIONS", (Bundle)localObject1);
       if (Build.VERSION.SDK_INT >= 24)
       {
-        this.mBuilder.setExtras(paramc.mExtras).setRemoteInputHistory(paramc.Hv);
-        if (paramc.HH != null) {
-          this.mBuilder.setCustomContentView(paramc.HH);
+        this.mBuilder.setExtras(paramc.mExtras).setRemoteInputHistory(paramc.HF);
+        if (paramc.HR != null) {
+          this.mBuilder.setCustomContentView(paramc.HR);
         }
-        if (paramc.HI != null) {
-          this.mBuilder.setCustomBigContentView(paramc.HI);
+        if (paramc.HS != null) {
+          this.mBuilder.setCustomBigContentView(paramc.HS);
         }
-        if (paramc.HJ != null) {
-          this.mBuilder.setCustomHeadsUpContentView(paramc.HJ);
+        if (paramc.HT != null) {
+          this.mBuilder.setCustomHeadsUpContentView(paramc.HT);
         }
       }
       if (Build.VERSION.SDK_INT >= 26)
       {
-        this.mBuilder.setBadgeIconType(paramc.HK).setShortcutId(paramc.HL).setTimeoutAfter(paramc.mTimeout).setGroupAlertBehavior(paramc.HM);
-        if (paramc.HE) {
-          this.mBuilder.setColorized(paramc.HD);
+        this.mBuilder.setBadgeIconType(paramc.HU).setShortcutId(paramc.HV).setTimeoutAfter(paramc.mTimeout).setGroupAlertBehavior(paramc.HW);
+        if (paramc.HO) {
+          this.mBuilder.setColorized(paramc.HN);
         }
         if (!TextUtils.isEmpty(paramc.mChannelId)) {
           this.mBuilder.setSound(null).setDefaults(0).setLights(0, 0, 0).setVibrate(null);
@@ -198,9 +198,9 @@ final class t
     if (Build.VERSION.SDK_INT >= 20)
     {
       localBuilder = new Notification.Action.Builder(parama.icon, parama.title, parama.actionIntent);
-      if (parama.GX != null)
+      if (parama.Hh != null)
       {
-        localObject = x.b(parama.GX);
+        localObject = x.b(parama.Hh);
         j = localObject.length;
         i = 0;
         while (i < j)
@@ -212,15 +212,15 @@ final class t
       if (parama.mExtras != null)
       {
         localObject = new Bundle(parama.mExtras);
-        ((Bundle)localObject).putBoolean("android.support.allowGeneratedReplies", parama.GZ);
+        ((Bundle)localObject).putBoolean("android.support.allowGeneratedReplies", parama.Hj);
         if (Build.VERSION.SDK_INT >= 24) {
-          localBuilder.setAllowGeneratedReplies(parama.GZ);
+          localBuilder.setAllowGeneratedReplies(parama.Hj);
         }
-        ((Bundle)localObject).putInt("android.support.action.semanticAction", parama.Hb);
+        ((Bundle)localObject).putInt("android.support.action.semanticAction", parama.Hl);
         if (Build.VERSION.SDK_INT >= 28) {
-          localBuilder.setSemanticAction(parama.Hb);
+          localBuilder.setSemanticAction(parama.Hl);
         }
-        ((Bundle)localObject).putBoolean("android.support.action.showsUserInterface", parama.Ha);
+        ((Bundle)localObject).putBoolean("android.support.action.showsUserInterface", parama.Hk);
         localBuilder.addExtras((Bundle)localObject);
         this.mBuilder.addAction(localBuilder.build());
       }
@@ -235,10 +235,10 @@ final class t
         Object localObject = new Bundle();
       }
     }
-    this.Ie.add(u.a(this.mBuilder, parama));
+    this.Io.add(u.a(this.mBuilder, parama));
   }
   
-  public final Notification.Builder en()
+  public final Notification.Builder er()
   {
     return this.mBuilder;
   }

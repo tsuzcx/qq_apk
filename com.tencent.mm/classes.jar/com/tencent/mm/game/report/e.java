@@ -2,100 +2,101 @@ package com.tencent.mm.game.report;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
+import com.tencent.mm.ak.aa;
+import com.tencent.mm.ak.aa.a;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.game.report.c.c;
 import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 final class e
 {
-  private static String guA;
-  private static String guB;
-  private static LinkedList<com.tencent.mm.game.report.api.b> guy;
-  private static boolean guz;
+  private static LinkedList<com.tencent.mm.game.report.api.b> hhn;
+  private static boolean hho;
+  private static String hhp;
+  private static String hhq;
   
   static
   {
     AppMethodBeat.i(108259);
-    guy = new LinkedList();
-    guA = "log_id";
-    guB = "log_ext";
+    hhn = new LinkedList();
+    hhp = "log_id";
+    hhq = "log_ext";
     AppMethodBeat.o(108259);
   }
   
   public static void a(com.tencent.mm.game.report.api.b paramb)
   {
     AppMethodBeat.i(108255);
-    if (ak.cpe())
+    if (MMApplicationContext.isMMProcess())
     {
       b(paramb);
       AppMethodBeat.o(108255);
       return;
     }
     Bundle localBundle = new Bundle();
-    localBundle.putInt(guA, paramb.guD);
-    localBundle.putString(guB, paramb.guE);
-    h.a("com.tencent.mm", localBundle, a.class, null);
+    localBundle.putInt(hhp, paramb.hhs);
+    localBundle.putString(hhq, paramb.hht);
+    h.a(MainProcessIPCService.dkO, localBundle, a.class, null);
     AppMethodBeat.o(108255);
   }
   
-  private static void agS()
+  private static void axe()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(108257);
-        if (guz)
+        if (hho)
         {
-          ae.i("MicroMsg.ReportService", "tryDoScene isBusy");
+          Log.i("MicroMsg.ReportService", "tryDoScene isBusy");
           AppMethodBeat.o(108257);
           return;
         }
-        if (bu.ht(guy))
+        if (Util.isNullOrNil(hhn))
         {
-          ae.i("MicroMsg.ReportService", "waitingList is null");
+          Log.i("MicroMsg.ReportService", "waitingList is null");
           AppMethodBeat.o(108257);
           continue;
         }
-        localb = (com.tencent.mm.game.report.api.b)guy.remove(0);
+        localb = (com.tencent.mm.game.report.api.b)hhn.remove(0);
       }
       finally {}
       com.tencent.mm.game.report.api.b localb;
       if (localb != null)
       {
-        guz = true;
-        b.a locala = new b.a();
+        hho = true;
+        d.a locala = new d.a();
         locala.uri = "/cgi-bin/micromsg-bin/gamereportkv";
         locala.funcId = 427;
-        locala.hQH = 0;
+        locala.iLP = 0;
         locala.respCmdId = 0;
         c localc = new c();
-        localc.gvo = com.tencent.mm.protocal.d.FFC;
-        localc.gvp = com.tencent.mm.protocal.d.FFB;
-        localc.gvq = com.tencent.mm.protocal.d.FFE;
-        localc.gvr = com.tencent.mm.protocal.d.FFF;
-        localc.gvs = ad.fom();
-        localc.gvt = localb.guD;
-        localc.gvu = localb.guE;
-        locala.hQF = localc;
-        locala.hQG = new com.tencent.mm.game.report.c.d();
-        x.a(locala.aDS(), new x.a()
+        localc.hid = com.tencent.mm.protocal.d.KyJ;
+        localc.hie = com.tencent.mm.protocal.d.KyI;
+        localc.hif = com.tencent.mm.protocal.d.KyL;
+        localc.hig = com.tencent.mm.protocal.d.KyM;
+        localc.hih = LocaleUtil.getApplicationLanguage();
+        localc.hii = localb.hhs;
+        localc.hij = localb.hht;
+        locala.iLN = localc;
+        locala.iLO = new com.tencent.mm.game.report.c.d();
+        aa.a(locala.aXF(), new aa.a()
         {
-          public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
+          public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.d paramAnonymousd, q paramAnonymousq)
           {
             AppMethodBeat.i(108253);
-            ae.i("MicroMsg.ReportService", "tryDoScene, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-            e.JG();
+            Log.i("MicroMsg.ReportService", "tryDoScene, errType = %d, errCode = %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+            e.TT();
             e.access$100();
             AppMethodBeat.o(108253);
             return 0;
@@ -105,7 +106,7 @@ final class e
       }
       else
       {
-        agS();
+        axe();
         AppMethodBeat.o(108257);
       }
     }
@@ -118,9 +119,9 @@ final class e
       try
       {
         AppMethodBeat.i(108256);
-        if ((!g.ajP().aiZ()) || (a.aiT()))
+        if ((!g.aAf().azp()) || (a.azj()))
         {
-          ae.w("MicroMsg.ReportService", "report, account not ready");
+          Log.w("MicroMsg.ReportService", "report, account not ready");
           AppMethodBeat.o(108256);
           return;
         }
@@ -129,10 +130,10 @@ final class e
           AppMethodBeat.o(108256);
           continue;
         }
-        guy.add(paramb);
+        hhn.add(paramb);
       }
       finally {}
-      agS();
+      axe();
       AppMethodBeat.o(108256);
     }
   }

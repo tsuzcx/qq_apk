@@ -4,21 +4,23 @@ public abstract interface f
 {
   public abstract void a(Preference paramPreference, int paramInt);
   
-  public abstract Preference aXe(String paramString);
-  
-  public abstract boolean aXf(String paramString);
-  
-  public abstract int aXg(String paramString);
-  
   public abstract void addPreferencesFromResource(int paramInt);
   
-  public abstract void b(Preference paramPreference);
+  public abstract Preference bmg(String paramString);
+  
+  public abstract boolean bmh(String paramString);
+  
+  public abstract boolean bmi(String paramString);
+  
+  public abstract int bmj(String paramString);
   
   public abstract void c(Preference paramPreference);
   
-  public abstract CheckBoxPreference cT(String paramString, boolean paramBoolean);
+  public abstract void d(Preference paramPreference);
   
-  public abstract boolean d(Preference paramPreference);
+  public abstract CheckBoxPreference jdMethod_do(String paramString, boolean paramBoolean);
+  
+  public abstract boolean e(Preference paramPreference);
   
   public abstract int indexOf(String paramString);
   

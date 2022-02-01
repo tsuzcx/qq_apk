@@ -1,50 +1,63 @@
 package com.tencent.mm.videocomposition.b;
 
+import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.tavkit.composition.video.TAVVideoMixEffect;
-import com.tencent.tavkit.composition.video.TAVVideoMixEffect.Filter;
-import d.l;
+import com.tencent.tav.decoder.logger.Logger;
+import java.util.Arrays;
 
-@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/render/CompositionMixEffect;", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect;", "filter", "Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect;", "(Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect;)V", "createFilter", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect$Filter;", "effectId", "", "getFilter", "renderContext", "Landroid/opengl/EGLContext;", "setFrameRenderCallback", "", "callback", "Lkotlin/Function0;", "updateRenderSize", "width", "", "height", "Companion", "video_composition_release"})
-public final class c
-  implements TAVVideoMixEffect
+final class c
 {
-  public static final a LKf;
-  private final a LKe;
+  private final int[] pNames;
+  private final int[] params;
   
-  static
+  c()
   {
-    AppMethodBeat.i(195040);
-    LKf = new a((byte)0);
-    AppMethodBeat.o(195040);
+    AppMethodBeat.i(216711);
+    this.pNames = new int[] { 32777, 32777, 34877, 32969, 32968, 32971, 32970 };
+    this.params = new int[7];
+    AppMethodBeat.o(216711);
   }
   
-  public c(a parama)
+  final void cache()
   {
-    AppMethodBeat.i(195039);
-    this.LKe = parama;
-    AppMethodBeat.o(195039);
+    try
+    {
+      AppMethodBeat.i(216712);
+      int i = 0;
+      while (i < this.pNames.length)
+      {
+        GLES20.glGetIntegerv(this.pNames[i], this.params, i);
+        i += 1;
+      }
+      AppMethodBeat.o(216712);
+      return;
+    }
+    finally {}
   }
   
-  public final TAVVideoMixEffect.Filter createFilter()
+  final void restore()
   {
-    return (TAVVideoMixEffect.Filter)this.LKe;
+    try
+    {
+      AppMethodBeat.i(216713);
+      Logger.v("GLBlendStateCache", "restore: params = " + Arrays.toString(this.params));
+      GLES20.glEnable(3042);
+      GLES20.glBlendEquation(this.params[0]);
+      GLES20.glBlendEquationSeparate(this.params[1], this.params[2]);
+      GLES20.glBlendFuncSeparate(this.params[3], this.params[4], this.params[5], this.params[6]);
+      AppMethodBeat.o(216713);
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
-  
-  public final String effectId()
-  {
-    AppMethodBeat.i(195038);
-    String str = "CompositionMixEffect_" + hashCode();
-    AppMethodBeat.o(195038);
-    return str;
-  }
-  
-  @l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/render/CompositionMixEffect$Companion;", "", "()V", "TAG", "", "video_composition_release"})
-  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.videocomposition.b.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,32 @@
 package com.tencent.mm.plugin.wallet.balance.model.lqt;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.protocal.protobuf.zl;
-import com.tencent.mm.protocal.protobuf.zm;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.protocal.protobuf.abb;
+import com.tencent.mm.protocal.protobuf.abc;
 
 public final class f
-  extends a<zm>
+  extends c<abc>
 {
   public f(String paramString, int paramInt)
   {
     AppMethodBeat.i(68403);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new zl();
-    ((b.a)localObject).hQG = new zm();
-    ((b.a)localObject).funcId = 1386;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/closefundaccount";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).aDS();
-    zl localzl = (zl)((b)localObject).hQD.hQJ;
-    localzl.Gro = paramString;
-    localzl.uIM = paramInt;
-    localzl.CPZ = ae.eFT();
-    c((b)localObject);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new abb();
+    ((d.a)localObject).iLO = new abc();
+    ((d.a)localObject).funcId = 1386;
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/closefundaccount";
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    localObject = ((d.a)localObject).aXF();
+    abb localabb = (abb)((d)localObject).iLK.iLR;
+    localabb.Lmm = paramString;
+    localabb.yba = paramInt;
+    localabb.HuS = ag.fNb();
+    c((d)localObject);
     AppMethodBeat.o(68403);
   }
 }

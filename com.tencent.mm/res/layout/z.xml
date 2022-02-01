@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:flowlayout="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/ea2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-    <ListView android:id="@id/fa_" android:paddingBottom="60.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ea2" style="@style/n3" />
-    <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/b1m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ea2" />
-    <ImageView android:id="@id/feo" android:background="@drawable/bhf" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/b1m" />
-    <com.tencent.mm.ui.base.AlphabetScrollBar android:id="@id/fab" android:visibility="gone" android:layout_width="@dimen/b" android:layout_height="fill_parent" android:layout_below="@id/b1m" android:layout_alignParentRight="true" />
-    <com.tencent.mm.ui.contact.LabelContainerView android:orientation="vertical" android:id="@id/fa9" android:background="@color/c" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/d" android:paddingRight="@dimen/i_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/b1m">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <include layout="@layout/b37" />
-            <com.tencent.mm.ui.base.MMTagPanel android:id="@id/b1i" android:paddingTop="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" flowlayout:horizontalSpacing="@dimen/jn" flowlayout:verticalSpacing="@dimen/d" />
-        </LinearLayout>
-    </com.tencent.mm.ui.contact.LabelContainerView>
-    <LinearLayout android:gravity="center_horizontal" android:id="@id/e4e" android:background="@color/c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/b1m">
-        <TextView android:id="@id/e4d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/a7" />
+<com.tencent.mm.plugin.finder.view.FinderFeedBubbleTipsLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/aab" />
+        <include android:visibility="gone" layout="@layout/akk" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include layout="@layout/aal" />
+            <include layout="@layout/aao" />
+        </FrameLayout>
+        <include layout="@layout/aag" />
+        <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/aaq" />
+        <FrameLayout android:id="@id/cm5" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/ab0" />
+        </FrameLayout>
+        <include layout="@layout/ab9" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ViewStub android:id="@id/d7j" android:layout="@layout/a8o" android:inflatedId="@id/d7i" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </FrameLayout>
+        <include android:visibility="gone" layout="@layout/aam" />
+        <com.tencent.mm.plugin.finder.view.FinderFeedLiveNoticeView android:id="@id/cly" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/cb" android:layout_marginStart="@dimen/cb" android:layout_marginEnd="@dimen/cb" />
+        <include android:id="@id/d8w" android:visibility="gone" layout="@layout/aa0" />
     </LinearLayout>
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/y0" android:gravity="center_vertical" android:id="@id/fa8" android:background="@color/a" android:padding="@dimen/i_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawableRight="@raw/list_deletetext_icon" android:drawablePadding="@dimen/i_" android:layout_below="@id/b1m" />
-    <LinearLayout android:gravity="center_vertical" android:background="@color/d" android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_alignParentBottom="true">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gcm" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <CheckBox android:layout_gravity="center_vertical" android:id="@id/gcl" android:background="@drawable/a2r" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="@dimen/ap" android:layout_height="@dimen/an" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" />
-            <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ap" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/al" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/ar" />
-    </LinearLayout>
-</RelativeLayout>
+    <ViewStub android:layout_gravity="end|bottom|center" android:id="@id/d38" android:layout="@layout/ajo" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <ViewStub android:layout_gravity="end|bottom|center" android:id="@id/d1i" android:layout="@layout/aio" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</com.tencent.mm.plugin.finder.view.FinderFeedBubbleTipsLayout>

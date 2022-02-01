@@ -1,10 +1,10 @@
 package com.tencent.mm.live.ui;
 
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
 final class LiveUIB$b
   extends q
   implements a

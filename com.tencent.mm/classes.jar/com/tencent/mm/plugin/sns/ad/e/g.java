@@ -1,95 +1,138 @@
 package com.tencent.mm.plugin.sns.ad.e;
 
+import android.os.CountDownTimer;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.d;
-import com.tencent.mm.protocal.protobuf.bte;
-import com.tencent.mm.protocal.protobuf.btf;
-import com.tencent.mm.protocal.protobuf.by;
-import com.tencent.mm.protocal.protobuf.bz;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public final class g
-  extends n
-  implements k
+public class g
 {
-  public f callback;
-  public List<btf> mMj;
-  private b rr;
+  protected final long DsM;
+  final int DsN;
+  public b DsO;
+  public a DsP;
+  protected final long mStartTime;
   
-  public g(List<btf> paramList)
+  public g(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(94982);
-    Object localObject = new b.a();
-    this.mMj = paramList;
-    ((b.a)localObject).hQF = new by();
-    ((b.a)localObject).hQG = new bz();
-    ((b.a)localObject).uri = "/cgi-bin/mmux-bin/adlog";
-    ((b.a)localObject).funcId = 1802;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (by)this.rr.hQD.hQJ;
-    bte localbte = new bte();
-    localbte.gvo = d.FFC;
-    localbte.gvp = d.FFB;
-    localbte.gvq = d.FFE;
-    localbte.gvr = d.FFF;
-    localbte.gvs = ad.fom();
-    localbte.GKM = ((int)(System.currentTimeMillis() / 1000L));
-    ((by)localObject).FMV = localbte;
-    while (i < paramList.size())
+    this(paramLong1, paramLong2, (byte)0);
+  }
+  
+  private g(long paramLong1, long paramLong2, byte paramByte)
+  {
+    this.mStartTime = paramLong1;
+    this.DsM = paramLong2;
+    this.DsN = 1000;
+  }
+  
+  public final void a(a parama)
+  {
+    AppMethodBeat.i(201928);
+    if (isValid())
     {
-      ((by)localObject).FMW.add(paramList.get(i));
-      i += 1;
+      if ((this.DsO != null) && (!this.DsO.mFinished))
+      {
+        this.DsO.cancel();
+        this.DsO = null;
+      }
+      this.DsP = parama;
+      l = eWP();
+      if (l < this.mStartTime) {
+        break label100;
+      }
     }
-    ae.i("MicroMsg.NetSceneAdLog", "report count: " + ((by)localObject).FMW.size());
-    AppMethodBeat.o(94982);
-  }
-  
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
-  {
-    AppMethodBeat.i(94983);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(94983);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 1802;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(94984);
-    ae.d("MicroMsg.NetSceneAdLog", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
-    if ((paramInt2 == 0) && (paramInt3 == 0))
+    label100:
+    for (long l = this.DsM - l;; l = -1L)
     {
-      paramInt1 = ((bz)((b)paramq).hQE.hQJ).FMX;
-      com.tencent.mm.kernel.g.ajS();
-      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IMP, Integer.valueOf(paramInt1));
+      if (l > 0L)
+      {
+        this.DsO = new b(this, l);
+        this.DsO.start();
+      }
+      AppMethodBeat.o(201928);
+      return;
     }
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(94984);
+  }
+  
+  protected long eWP()
+  {
+    AppMethodBeat.i(201927);
+    long l = System.currentTimeMillis();
+    AppMethodBeat.o(201927);
+    return l;
+  }
+  
+  protected boolean isValid()
+  {
+    AppMethodBeat.i(201926);
+    if ((eWP() <= this.DsM) && (this.DsM > this.mStartTime) && (this.mStartTime >= 0L))
+    {
+      AppMethodBeat.o(201926);
+      return true;
+    }
+    AppMethodBeat.o(201926);
+    return false;
+  }
+  
+  final void onTick(long paramLong)
+  {
+    AppMethodBeat.i(201929);
+    Log.d("SnsAd.CountDownTimer", "the millisUntilFinished is ".concat(String.valueOf(paramLong)));
+    a locala = this.DsP;
+    if (locala != null) {
+      locala.IO(paramLong);
+    }
+    AppMethodBeat.o(201929);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void IO(long paramLong);
+  }
+  
+  public static final class b
+    extends CountDownTimer
+  {
+    g DsQ;
+    boolean mFinished = false;
+    
+    private b(long paramLong1, long paramLong2)
+    {
+      super(paramLong2);
+    }
+    
+    b(g paramg, long paramLong)
+    {
+      this(paramLong, paramg.DsN);
+      AppMethodBeat.i(201923);
+      this.DsQ = paramg;
+      AppMethodBeat.o(201923);
+    }
+    
+    public final void onFinish()
+    {
+      AppMethodBeat.i(201925);
+      this.mFinished = true;
+      g localg = this.DsQ;
+      if (localg != null) {
+        localg.onTick(0L);
+      }
+      AppMethodBeat.o(201925);
+    }
+    
+    public final void onTick(long paramLong)
+    {
+      AppMethodBeat.i(201924);
+      g localg = this.DsQ;
+      if (localg != null) {
+        localg.onTick(paramLong);
+      }
+      AppMethodBeat.o(201924);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.e.g
  * JD-Core Version:    0.7.0.1
  */

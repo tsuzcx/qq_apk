@@ -1,29 +1,29 @@
 package com.tencent.mm.kernel;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.network.b.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.network.d.a;
+import com.tencent.mm.network.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class b$8
-  implements b.a
+  implements d.a
 {
   public b$8(b paramb) {}
   
-  public final e ajn()
+  public final g azD()
   {
     AppMethodBeat.i(132054);
     try
     {
-      e locale = b.a(this.gDz).hRo;
+      g localg = b.a(this.hqm).iMw;
       AppMethodBeat.o(132054);
-      return locale;
+      return localg;
     }
     catch (Throwable localThrowable)
     {
-      ae.e("MMKernel.CoreNetwork", "%s", new Object[] { bu.o(localThrowable) });
+      Log.e("MMKernel.CoreNetwork", "%s", new Object[] { Util.stackTraceToString(localThrowable) });
       AppMethodBeat.o(132054);
     }
     return null;
@@ -31,7 +31,7 @@ public final class b$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.kernel.b.8
  * JD-Core Version:    0.7.0.1
  */

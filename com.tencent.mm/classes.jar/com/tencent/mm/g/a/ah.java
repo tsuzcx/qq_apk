@@ -1,9 +1,9 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ah
-  extends b
+  extends IEvent
 {
   public ah()
   {
@@ -12,13 +12,13 @@ public final class ah
   
   private ah(byte paramByte)
   {
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.ah
  * JD-Core Version:    0.7.0.1
  */

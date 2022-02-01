@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,14 +10,14 @@ import org.json.JSONObject;
 public final class ac
   extends m
 {
-  public String DgU;
-  public JSONObject kuc;
+  public String HQn;
+  public JSONObject lxS;
   
   public ac(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, String paramString5, String paramString6, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(69950);
-    this.DgU = "";
-    this.DgU = paramString1;
+    this.HQn = "";
+    this.HQn = paramString1;
     HashMap localHashMap = new HashMap();
     localHashMap.put("activity_id", paramString1);
     localHashMap.put("award_id", paramString2);
@@ -56,14 +56,14 @@ public final class ac
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69951);
-    ae.i("MicroMsg.NetSceneTenpayQueryBindPayaward", "errcode %s errmsg %s json %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
-    this.kuc = paramJSONObject;
+    Log.i("MicroMsg.NetSceneTenpayQueryBindPayaward", "errcode %s errmsg %s json %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
+    this.lxS = paramJSONObject;
     AppMethodBeat.o(69951);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.ac
  * JD-Core Version:    0.7.0.1
  */

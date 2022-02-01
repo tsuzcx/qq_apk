@@ -12,6 +12,7 @@ public class TXLiteAVCode
   public static final int ERR_CLOUD_MIX_TRANSCODING_REQUEST_TIME_OUT = -3322;
   public static final int ERR_CLOUD_MIX_TRANSCODING_SERVER_FAILED = -3324;
   public static final int ERR_CONNECT_OTHER_ROOM_AS_AUDIENCE = -3330;
+  public static final int ERR_CUSTOM_STREAM_INVALID = -4002;
   public static final int ERR_ENTER_ROOM_PARAM_NULL = -3316;
   public static final int ERR_FILE_NOT_FOUND = -2303;
   public static final int ERR_GET_RTMP_ACC_URL_FAIL = -2302;
@@ -22,6 +23,7 @@ public class TXLiteAVCode
   public static final int ERR_MIC_SET_PARAM_FAIL = -1318;
   public static final int ERR_MIC_START_FAIL = -1302;
   public static final int ERR_MIC_STOP_FAIL = -1320;
+  public static final int ERR_MIX_PARAM_INVALID = -4004;
   public static final int ERR_NULL = 0;
   public static final int ERR_PIXEL_FORMAT_UNSUPPORTED = -1327;
   public static final int ERR_PLAY_LIVE_STREAM_NET_DISCONNECT = -2301;
@@ -29,6 +31,8 @@ public class TXLiteAVCode
   public static final int ERR_PLAY_LIVE_STREAM_SWITCH_FAIL = -2307;
   public static final int ERR_PUBLISH_CDN_STREAM_REQUEST_TIME_OUT = -3321;
   public static final int ERR_PUBLISH_CDN_STREAM_SERVER_FAILED = -3323;
+  public static final int ERR_REQUEST_ACC_BY_HOST_IP = -4005;
+  public static final int ERR_REQUEST_QUERY_CONFIG_TIMEOUT = -4001;
   public static final int ERR_ROOM_CONNECT_FAIL = -3304;
   public static final int ERR_ROOM_ENTER_FAIL = -3301;
   public static final int ERR_ROOM_HEARTBEAT_FAIL = -3302;
@@ -175,10 +179,12 @@ public class TXLiteAVCode
   public static final int ERR_SPEAKER_STOP_FAIL = -1323;
   public static final int ERR_UNSUPPORTED_RESOLUTION = -1305;
   public static final int ERR_UNSUPPORTED_SAMPLERATE = -1306;
+  public static final int ERR_USER_DEFINE_RECORD_ID_INVALID = -4003;
   public static final int ERR_USER_ID_INVALID = -3319;
   public static final int ERR_USER_SIG_INVALID = -3320;
   public static final int ERR_VIDEO_ENCODE_FAIL = -1303;
   public static final int ERR_VOD_DECRYPT_FAIL = -2305;
+  public static final int EVT_AUDIO_DEVICE_ROUTE_CHANGED = 2030;
   public static final int EVT_AUDIO_JITTER_STATE_FIRST_LOADING = 2023;
   public static final int EVT_AUDIO_JITTER_STATE_FIRST_PLAY = 2026;
   public static final int EVT_AUDIO_JITTER_STATE_LOADING = 2024;
@@ -196,6 +202,7 @@ public class TXLiteAVCode
   public static final int EVT_LOCAL_RECORD_RESULT = 1029;
   public static final int EVT_MIC_RELEASE_SUCC = 2029;
   public static final int EVT_MIC_START_SUCC = 2027;
+  public static final int EVT_PLAY_GET_FLVSESSIONKEY = 2031;
   public static final int EVT_PLAY_GET_MESSAGE = 2012;
   public static final int EVT_PLAY_GET_METADATA = 2028;
   public static final int EVT_PLAY_LIVE_STREAM_BEGIN = 2002;
@@ -239,11 +246,15 @@ public class TXLiteAVCode
   public static final int EVT_VOD_PLAY_TCP_CONNECT_SUCC = 2016;
   public static final int WARNING_AUDIO_FRAME_DECODE_FAIL = 2102;
   public static final int WARNING_AUDIO_RECORDING_WRITE_FAIL = 7001;
+  public static final int WARNING_CAMERA_DEVICE_EMPTY = 1111;
   public static final int WARNING_HW_DECODER_START_FAIL = 2106;
   public static final int WARNING_HW_ENCODER_START_FAIL = 1103;
   public static final int WARNING_IGNORE_UPSTREAM_FOR_AUDIENCE = 6001;
   public static final int WARNING_INSUFFICIENT_CAPTURE_FPS = 1108;
   public static final int WARNING_LIVE_STREAM_SERVER_RECONNECT = 2103;
+  public static final int WARNING_MICROPHONE_DEVICE_ABNORMAL = 1204;
+  public static final int WARNING_MICROPHONE_DEVICE_EMPTY = 1201;
+  public static final int WARNING_MICROPHONE_NOT_AUTHORIZED = 1203;
   public static final int WARNING_NET_BUSY = 1101;
   public static final int WARNING_NO_STEAM_SOURCE_FAIL = 3010;
   public static final int WARNING_PLAY_LIVE_STREAM_INFO_CONNECT_FAIL = 3009;
@@ -261,6 +272,8 @@ public class TXLiteAVCode
   public static final int WARNING_RTMP_SEVER_CONN_FAIL = 3002;
   public static final int WARNING_RTMP_SHAKE_FAIL = 3003;
   public static final int WARNING_RTMP_WRITE_FAIL = 3006;
+  public static final int WARNING_SPEAKER_DEVICE_ABNORMAL = 1205;
+  public static final int WARNING_SPEAKER_DEVICE_EMPTY = 1202;
   public static final int WARNING_START_CAPTURE_IGNORED = 4000;
   public static final int WARNING_SW_DECODER_START_FAIL = 2109;
   public static final int WARNING_SW_ENCODER_START_FAIL = 1109;

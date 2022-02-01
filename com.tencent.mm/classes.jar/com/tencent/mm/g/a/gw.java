@@ -1,13 +1,17 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class gw
-  extends b
+  extends IEvent
 {
-  public a dtY;
-  public b dtZ;
+  public a dKR;
+  public b dKS;
   
   public gw()
   {
@@ -16,30 +20,39 @@ public final class gw
   
   private gw(byte paramByte)
   {
-    AppMethodBeat.i(106599);
-    this.dtY = new a();
-    this.dtZ = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(127403);
+    this.dKR = new a();
+    this.dKS = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(106599);
+    AppMethodBeat.o(127403);
   }
   
   public static final class a
   {
-    public String dua;
+    public Context context;
+    public long dFW;
+    public aml dKT;
+    public ImageView dKU;
+    public int dKV;
+    public boolean dKW = false;
+    public boolean dKX = false;
+    public boolean dKY = true;
+    public int height;
+    public int maxWidth;
+    public int opType = -1;
+    public int width;
   }
   
   public static final class b
   {
-    public int dnb = 0;
-    public int dnc = 0;
-    public int dnd = 0;
-    public int dne = 0;
+    public Bitmap dKZ;
+    public int ret = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.gw
  * JD-Core Version:    0.7.0.1
  */

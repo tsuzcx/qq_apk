@@ -3,9 +3,9 @@ package com.tencent.soter.a.d;
 @Deprecated
 public abstract interface b
 {
-  public abstract void eiY();
+  public abstract void fly();
   
-  public abstract void eiZ();
+  public abstract void flz();
   
   public abstract void onAuthenticationCancelled();
   
@@ -17,7 +17,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.soter.a.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="@string/ezm" />
-    <CheckPreference android:key="settings_half_year_not_chat" android:layout="@layout/aop" android:title="@string/f6j" />
-    <CheckPreference android:key="settings_has_not_same_chatroom" android:layout="@layout/aop" android:title="@string/f6m" />
-    <CheckPreference android:key="settings_half_year_not_response" android:layout="@layout/aop" android:title="@string/f6k" />
-    <PreferenceCategory />
-    <PreferenceCategory />
-    <TextButtonPreference android:key="settings_next_step" android:title="@string/fc4" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceSmallCategory android:key="settings_notification_top" />
+    <PreferenceTitleCategory android:key="settings_notification_title" android:title="@string/grz" />
+    <CheckBoxPreference android:key="settings_new_msg_notification" android:persistent="false" android:title="@string/grr" />
+    <CheckBoxPreference android:key="settings_new_voip_msg_notification" android:persistent="false" android:title="@string/grv" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android1:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_show_detail" android:persistent="false" android:summary="@string/gny" android:title="@string/grs" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_sound" android:persistent="false" android:title="@string/gul" />
+    <Preference android:dependency="settings_sound" android:key="settings_notification_ringtone" android:persistent="false" android:title="@string/gs3" />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_shake" android:layout="@layout/b_v" android:persistent="false" android:title="@string/gtt" />
+    <PreferenceTitleCategory android:key="settings_notification_sound_shake" android:title="@string/gs6" />
+    <SummaryBelowPreference android:key="settings_notification_sound_and_shake" android:summary="@string/gs4" android:title="@string/gs5" />
+    <SummaryBelowPreference android:key="settings_voip_sound_and_shake" android:summary="@string/gwr" android:title="@string/gws" />
+    <SummaryBelowPreference android:key="settings_special_scene_notification_sound_and_shake" android:summary="@string/gun" android:title="@string/guo" />
+    <PreferenceSmallCategory />
+    <PreferenceTitleCategory android:title="@string/gw5" />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_sns_notify" android:key="settings_sns_notify" android:summary="@string/guc" android:title="@string/gub" />
+    <CheckBoxPreference android:key="settings_notification_finder" android:summary="@string/gs0" android:title="@string/gs1" />
 </PreferenceScreen>

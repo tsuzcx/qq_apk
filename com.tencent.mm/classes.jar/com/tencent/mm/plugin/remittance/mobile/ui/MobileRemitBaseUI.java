@@ -5,22 +5,22 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public abstract class MobileRemitBaseUI
   extends WalletBaseUI
 {
-  protected a ylp = a.ylq;
+  protected a Cmp = a.Cmq;
   
-  protected final void dMv()
+  protected final void eNv()
   {
     Object localObject = new Intent();
-    ((Intent)localObject).setComponent(new ComponentName(ak.getPackageName(), "com.tencent.mm.ui.LauncherUI"));
+    ((Intent)localObject).setComponent(new ComponentName(MMApplicationContext.getPackageName(), "com.tencent.mm.ui.LauncherUI"));
     ((Intent)localObject).addFlags(67108864);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitBaseUI", "finishMobileRemitProcess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitBaseUI", "finishMobileRemitProcess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/mobile/ui/MobileRemitBaseUI", "finishMobileRemitProcess", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
   }
   
@@ -42,13 +42,13 @@ public abstract class MobileRemitBaseUI
   public void onPause()
   {
     super.onPause();
-    this.ylp = a.yls;
+    this.Cmp = a.Cms;
   }
   
   public void onResume()
   {
     super.onResume();
-    this.ylp = a.ylr;
+    this.Cmp = a.Cmr;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -62,10 +62,10 @@ public abstract class MobileRemitBaseUI
     static
     {
       AppMethodBeat.i(67680);
-      ylq = new a("ACTIVITY_INIT", 0);
-      ylr = new a("ACTIVITY_RESUME", 1);
-      yls = new a("ACTIVITY_PAUSE", 2);
-      ylt = new a[] { ylq, ylr, yls };
+      Cmq = new a("ACTIVITY_INIT", 0);
+      Cmr = new a("ACTIVITY_RESUME", 1);
+      Cms = new a("ACTIVITY_PAUSE", 2);
+      Cmt = new a[] { Cmq, Cmr, Cms };
       AppMethodBeat.o(67680);
     }
     
@@ -74,7 +74,7 @@ public abstract class MobileRemitBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.mobile.ui.MobileRemitBaseUI
  * JD-Core Version:    0.7.0.1
  */

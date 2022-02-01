@@ -1,66 +1,60 @@
 package com.tencent.mm.plugin.websearch.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.efq;
-import com.tencent.mm.protocal.protobuf.efr;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cyz;
+import com.tencent.mm.protocal.protobuf.cza;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class t
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public int dDY;
-  public String dyb;
-  public b rr;
-  private long szi;
+  public cza IDB;
+  private i callback;
+  private d iUB;
   
-  public t(String paramString1, String paramString2, int paramInt)
+  public t(cyz paramcyz)
   {
-    AppMethodBeat.i(117624);
-    this.dDY = paramInt;
-    this.szi = System.currentTimeMillis();
-    Object localObject = new b.a();
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).uri = "/cgi-bin/mmsearch-bin/searchwebquery";
-    ((b.a)localObject).hQF = new efq();
-    ((b.a)localObject).hQG = new efr();
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (efq)this.rr.hQD.hQJ;
-    ((efq)localObject).Ijs = paramString2;
-    ((efq)localObject).dyb = paramString1;
-    this.dyb = paramString1;
-    AppMethodBeat.o(117624);
+    AppMethodBeat.i(117617);
+    paramcyz.MlQ = ai.clJ();
+    paramcyz.MlR = ai.fYd();
+    this.IDB = new cza();
+    d.a locala = new d.a();
+    locala.funcId = 1417;
+    locala.uri = "/cgi-bin/mmsearch-bin/parduspresearch";
+    locala.iLN = paramcyz;
+    locala.iLO = this.IDB;
+    this.iUB = locala.aXF();
+    AppMethodBeat.o(117617);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(117625);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(117625);
+    AppMethodBeat.i(117618);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
+    AppMethodBeat.o(117618);
     return i;
   }
   
   public final int getType()
   {
-    return 2975;
+    return 1417;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(117626);
-    ae.i("MicroMsg.WebSearch.NetSceneSearchWebQuery", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.szi) });
+    AppMethodBeat.i(117619);
+    Log.i("MicroMsg.FTS.NetScenePardusPreSearch", "netId %d errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(117626);
+    AppMethodBeat.o(117619);
   }
 }
 

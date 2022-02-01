@@ -2,39 +2,39 @@ package com.tencent.mm.chatroom.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cwy;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.dps;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(217139);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "GroupBindApp") };
+    AppMethodBeat.i(194053);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "GroupBindApp") };
     INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS GroupBindAppUserNameIndex ON GroupBindApp ( chatRoomName )" };
-    AppMethodBeat.o(217139);
+    AppMethodBeat.o(194053);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "GroupBindApp", INDEX_CREATE);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "GroupBindApp", INDEX_CREATE);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final cwy vj(String paramString)
+  public final dps DA(String paramString)
   {
-    AppMethodBeat.i(217138);
+    AppMethodBeat.i(194052);
     paramString = this.db.query("GroupBindApp", null, "chatRoomName =?", new String[] { paramString }, null, null, null);
     if (paramString == null)
     {
-      AppMethodBeat.o(217138);
+      AppMethodBeat.o(194052);
       return null;
     }
     try
@@ -45,12 +45,12 @@ public final class b
         locala.convertFrom(paramString);
         if ((locala.field_BindAppData != null) && (locala.field_BindAppData.length <= 0))
         {
-          ae.i("MicroMsg.GroupBindAppStorage", "BindAppData is null");
+          Log.i("MicroMsg.GroupBindAppStorage", "BindAppData is null");
           return null;
         }
-        cwy localcwy = new cwy();
-        localcwy.parseFrom(locala.field_BindAppData);
-        return localcwy;
+        dps localdps = new dps();
+        localdps.parseFrom(locala.field_BindAppData);
+        return localdps;
       }
       paramString.close();
     }
@@ -58,22 +58,22 @@ public final class b
     {
       for (;;)
       {
-        ae.i("MicroMsg.GroupBindAppStorage", localException.getMessage());
+        Log.i("MicroMsg.GroupBindAppStorage", localException.getMessage());
         paramString.close();
       }
     }
     finally
     {
       paramString.close();
-      AppMethodBeat.o(217138);
+      AppMethodBeat.o(194052);
     }
-    AppMethodBeat.o(217138);
+    AppMethodBeat.o(194052);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.storage.b
  * JD-Core Version:    0.7.0.1
  */

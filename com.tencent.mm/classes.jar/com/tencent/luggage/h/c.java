@@ -2,21 +2,20 @@ package com.tencent.luggage.h;
 
 import android.webkit.URLUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
-import d.n.n;
+import kotlin.g.b.p;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"optStringStrictly", "", "Lorg/json/JSONObject;", "name", "startsWithIgnoreCase", "", "prefix", "protocol", "startsWithIgnoreCaseAndBlank", "luggage-commons_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"removeUiRunnable", "", "task", "Ljava/lang/Runnable;", "uiThread", "block", "Lkotlin/Function0;", "delay", "", "isNotNull", "", "", "isNull", "optStringStrictly", "", "Lorg/json/JSONObject;", "name", "startsWithIgnoreCase", "prefix", "protocol", "startsWithIgnoreCaseAndBlank", "toArrayList", "Ljava/util/ArrayList;", "T", "Lkotlin/collections/ArrayList;", "", "([Ljava/lang/Object;)Ljava/util/ArrayList;", "luggage-commons_release"})
 public final class c
 {
   public static final boolean a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(201127);
+    AppMethodBeat.i(221357);
     p.h(paramString1, "$this$startsWithIgnoreCase");
     p.h(paramString2, "prefix");
-    if (n.aD((CharSequence)paramString2))
+    if (n.aL((CharSequence)paramString2))
     {
-      AppMethodBeat.o(201127);
+      AppMethodBeat.o(221357);
       return false;
     }
     String str = paramString1;
@@ -30,8 +29,8 @@ public final class c
     }
     for (;;)
     {
-      paramBoolean = k.C(str, paramString2);
-      AppMethodBeat.o(201127);
+      paramBoolean = l.C(str, paramString2);
+      AppMethodBeat.o(221357);
       return paramBoolean;
       label73:
       str = paramString1;

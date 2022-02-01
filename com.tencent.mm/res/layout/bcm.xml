@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/a6q" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/h8x" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <RelativeLayout android:gravity="center_horizontal" android:layout_gravity="bottom" android:id="@id/bed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="42.0dip" android:layout_marginBottom="14.0dip" />
+        <RelativeLayout android:layout_gravity="bottom|center" android:orientation="horizontal" android:id="@id/b5r" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <RelativeLayout android:layout_width="@dimen/ac9" android:layout_height="@dimen/ac9" android:layout_centerVertical="true" android:layout_marginStart="@dimen/cl">
+                <RelativeLayout android:id="@id/fk2" android:background="@drawable/ajp" android:layout_width="@dimen/aci" android:layout_height="@dimen/aci" android:layout_centerVertical="true">
+                    <ImageView android:id="@id/fjt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:contentDescription="@string/f6k" />
+                </RelativeLayout>
+            </RelativeLayout>
+            <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/dn4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

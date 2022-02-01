@@ -1,89 +1,9 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.app.Activity;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.b;
-import com.tencent.mm.bb.t;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.x;
-import com.tencent.mm.plugin.messenger.a.e;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.chatting.AppBrandServiceChattingUI.AppBrandServiceChattingFmUI;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.neattextview.textview.view.NeatTextView;
-import java.lang.ref.WeakReference;
-
-final class aw
-  implements au.a
-{
-  public final void b(c.a parama, int paramInt, com.tencent.mm.ui.chatting.e.a parama1, bv parambv)
-  {
-    AppMethodBeat.i(37381);
-    String str = parama1.getTalkerUserName();
-    parama = (au.b)parama;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("conv_talker_username", str);
-    if ((parama1.Kkd instanceof AppBrandServiceChattingUI.AppBrandServiceChattingFmUI))
-    {
-      paramInt = 10;
-      localBundle.putInt("scene", paramInt);
-      localBundle.putLong("msg_id", parambv.field_msgId);
-      localBundle.putLong("msg_sever_id", parambv.field_msgSvrId);
-      localBundle.putString("send_msg_username", parambv.field_talker);
-      localBundle.putString("local_session", parama1.Kki);
-      parambv = ((e)g.ab(e.class)).b(parambv.field_content, localBundle, new WeakReference(parama1.Kkd.getContext()), new WeakReference(parama.KCe));
-      if ((parambv != null) && (parambv.length() != 0)) {
-        break label337;
-      }
-      parama.uan.setVisibility(8);
-      label173:
-      parambv = t.aKt().GD(str);
-      bc.aCg();
-      paramInt = ((Integer)c.ajA().get(12311, Integer.valueOf(-2))).intValue();
-      if (((parambv == null) || (parambv.ilF == -2)) && ((parambv != null) || (paramInt == -2))) {
-        break label357;
-      }
-      parama.KCe.setTextColor(parama1.Kkd.getContext().getResources().getColor(2131100151));
-      parama.KCe.setBackground(parama1.Kkd.getContext().getResources().getDrawable(2131231583));
-    }
-    for (;;)
-    {
-      parama.KCe.setOnClickListener(new aw.1(this));
-      parama.KCe.invalidate();
-      AppMethodBeat.o(37381);
-      return;
-      if (parama1.fJC())
-      {
-        paramInt = 2;
-        break;
-      }
-      if (x.Ao(str))
-      {
-        paramInt = 7;
-        break;
-      }
-      paramInt = 1;
-      break;
-      label337:
-      parama.uan.setVisibility(0);
-      parama.KCe.aq(parambv);
-      break label173;
-      label357:
-      parama.KCe.setTextColor(parama1.Kkd.getContext().getResources().getColor(2131099735));
-      parama.KCe.setBackground(parama1.Kkd.getContext().getResources().getDrawable(2131231582));
-    }
-  }
-}
+public final class aw {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.aw
  * JD-Core Version:    0.7.0.1
  */

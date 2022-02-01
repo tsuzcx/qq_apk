@@ -2,32 +2,32 @@ package com.tencent.kinda.framework.app;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.nio.charset.Charset;
 
 public class KindaConfigCacheStg
-  extends j<KindaConfigCacheItem>
+  extends MAutoStorage<KindaConfigCacheItem>
 {
   public static final String SAVE_CHARSET = "ISO-8859-1";
   public static final String[] SQL_CREATE;
   public static final String TABLE_NAME = "KindaConfigCache";
   public static final String TAG = "MicroMsg.KindaConfigCacheStg";
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(18410);
-    SQL_CREATE = new String[] { j.getCreateSQLs(KindaConfigCacheItem.info, "KindaConfigCache") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(KindaConfigCacheItem.info, "KindaConfigCache") };
     AppMethodBeat.o(18410);
   }
   
-  public KindaConfigCacheStg(e parame)
+  public KindaConfigCacheStg(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, KindaConfigCacheItem.info, "KindaConfigCache", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, KindaConfigCacheItem.info, "KindaConfigCache", null);
+    this.db = paramISQLiteDatabase;
   }
   
   private KindaConfigCacheItem getImpl(String paramString)
@@ -65,7 +65,7 @@ public class KindaConfigCacheStg
       return null;
       try
       {
-        paramInt = bu.getInt(paramString, 0);
+        paramInt = Util.getInt(paramString, 0);
         AppMethodBeat.o(18394);
         return Integer.valueOf(paramInt);
       }
@@ -74,9 +74,9 @@ public class KindaConfigCacheStg
         long l;
         float f;
         double d;
-        ae.e("MicroMsg.KindaConfigCacheStg", "exception:%s", new Object[] { "" });
+        Log.e("MicroMsg.KindaConfigCacheStg", "exception:%s", new Object[] { "" });
       }
-      l = bu.getLong(paramString, 0L);
+      l = Util.getLong(paramString, 0L);
       AppMethodBeat.o(18394);
       return Long.valueOf(l);
       AppMethodBeat.o(18394);
@@ -84,10 +84,10 @@ public class KindaConfigCacheStg
       paramString = Boolean.valueOf(paramString);
       AppMethodBeat.o(18394);
       return paramString;
-      f = bu.getFloat(paramString, 0.0F);
+      f = Util.getFloat(paramString, 0.0F);
       AppMethodBeat.o(18394);
       return Float.valueOf(f);
-      d = bu.getDouble(paramString, 0.0D);
+      d = Util.getDouble(paramString, 0.0D);
       AppMethodBeat.o(18394);
       return Double.valueOf(d);
       paramString = paramString.getBytes();
@@ -258,7 +258,7 @@ public class KindaConfigCacheStg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaConfigCacheStg
  * JD-Core Version:    0.7.0.1
  */

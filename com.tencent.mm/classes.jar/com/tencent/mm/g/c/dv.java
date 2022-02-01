@@ -2,69 +2,41 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class dv
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS lbsverifymessage_unread_index ON LBSVerifyMessage(status)", "CREATE INDEX IF NOT EXISTS lbsverifymessage_createtimeIndex ON LBSVerifyMessage(createtime)" };
-  private static final int eEL;
-  private static final int eFV;
-  private static final int eGk;
-  private static final int eGl = "ticket".hashCode();
-  private static final int eJG = "flag".hashCode();
-  private static final int eKy;
-  private static final int eMP;
-  private static final int eUB = "svrid".hashCode();
-  private static final int fgF;
-  private static final int fiH;
-  private static final int fiI;
-  private static final int fiJ;
-  private static final int fiK;
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int content_HASHCODE;
+  private static final int fAj = "svrId".hashCode();
+  private static final int fMN;
+  private static final int fMO = "descUrl".hashCode();
+  private static final int fne;
+  private static final int fof;
+  private static final int fqF = "isRead".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int type_HASHCODE;
-  private boolean __hadSettype = true;
-  private boolean eEI = true;
-  private boolean eFy = true;
-  private boolean eGi = true;
-  private boolean eGj = true;
-  private boolean eJE = true;
-  private boolean eKj = true;
-  private boolean eMB = true;
-  private boolean eTP = true;
-  private boolean fgu = true;
-  private boolean fiD = true;
-  private boolean fiE = true;
-  private boolean fiF = true;
-  private boolean fiG = true;
+  private boolean __hadSetcontent = true;
+  private boolean fAg = true;
+  private boolean fML = true;
+  private boolean fMM = true;
   public String field_content;
-  public long field_createtime;
-  public int field_flag;
-  public String field_imgpath;
-  public int field_isSend;
-  public String field_sayhicontent;
-  public String field_sayhiencryptuser;
-  public String field_sayhiuser;
-  public int field_scene;
-  public int field_status;
-  public long field_svrid;
-  public String field_talker;
-  public String field_ticket;
-  public int field_type;
+  public String field_descUrl;
+  public short field_isRead;
+  public int field_msgType;
+  public long field_pushTime;
+  public long field_svrId;
+  public String field_title;
+  private boolean fnQ = true;
+  private boolean fnb = true;
+  private boolean fqr = true;
   
   static
   {
-    eEL = "status".hashCode();
-    type_HASHCODE = "type".hashCode();
-    eGk = "scene".hashCode();
-    fgF = "createtime".hashCode();
-    eMP = "talker".hashCode();
-    eFV = "content".hashCode();
-    fiH = "sayhiuser".hashCode();
-    fiI = "sayhicontent".hashCode();
-    fiJ = "imgpath".hashCode();
-    eKy = "isSend".hashCode();
-    fiK = "sayhiencryptuser".hashCode();
+    fne = "title".hashCode();
+    content_HASHCODE = "content".hashCode();
+    fMN = "pushTime".hashCode();
+    fof = "msgType".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -80,11 +52,11 @@ public abstract class dv
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eUB != k) {
+      if (fAj != k) {
         break label65;
       }
-      this.field_svrid = paramCursor.getLong(i);
-      this.eTP = true;
+      this.field_svrId = paramCursor.getLong(i);
+      this.fAg = true;
     }
     for (;;)
     {
@@ -92,32 +64,18 @@ public abstract class dv
       break label20;
       break;
       label65:
-      if (eEL == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (eGk == k) {
-        this.field_scene = paramCursor.getInt(i);
-      } else if (fgF == k) {
-        this.field_createtime = paramCursor.getLong(i);
-      } else if (eMP == k) {
-        this.field_talker = paramCursor.getString(i);
-      } else if (eFV == k) {
+      if (fqF == k) {
+        this.field_isRead = paramCursor.getShort(i);
+      } else if (fne == k) {
+        this.field_title = paramCursor.getString(i);
+      } else if (content_HASHCODE == k) {
         this.field_content = paramCursor.getString(i);
-      } else if (fiH == k) {
-        this.field_sayhiuser = paramCursor.getString(i);
-      } else if (fiI == k) {
-        this.field_sayhicontent = paramCursor.getString(i);
-      } else if (fiJ == k) {
-        this.field_imgpath = paramCursor.getString(i);
-      } else if (eKy == k) {
-        this.field_isSend = paramCursor.getInt(i);
-      } else if (fiK == k) {
-        this.field_sayhiencryptuser = paramCursor.getString(i);
-      } else if (eGl == k) {
-        this.field_ticket = paramCursor.getString(i);
-      } else if (eJG == k) {
-        this.field_flag = paramCursor.getInt(i);
+      } else if (fMN == k) {
+        this.field_pushTime = paramCursor.getLong(i);
+      } else if (fof == k) {
+        this.field_msgType = paramCursor.getInt(i);
+      } else if (fMO == k) {
+        this.field_descUrl = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -127,47 +85,26 @@ public abstract class dv
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eTP) {
-      localContentValues.put("svrid", Long.valueOf(this.field_svrid));
+    if (this.fAg) {
+      localContentValues.put("svrId", Long.valueOf(this.field_svrId));
     }
-    if (this.eEI) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
+    if (this.fqr) {
+      localContentValues.put("isRead", Short.valueOf(this.field_isRead));
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
+    if (this.fnb) {
+      localContentValues.put("title", this.field_title);
     }
-    if (this.eGi) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
-    }
-    if (this.fgu) {
-      localContentValues.put("createtime", Long.valueOf(this.field_createtime));
-    }
-    if (this.eMB) {
-      localContentValues.put("talker", this.field_talker);
-    }
-    if (this.eFy) {
+    if (this.__hadSetcontent) {
       localContentValues.put("content", this.field_content);
     }
-    if (this.fiD) {
-      localContentValues.put("sayhiuser", this.field_sayhiuser);
+    if (this.fML) {
+      localContentValues.put("pushTime", Long.valueOf(this.field_pushTime));
     }
-    if (this.fiE) {
-      localContentValues.put("sayhicontent", this.field_sayhicontent);
+    if (this.fnQ) {
+      localContentValues.put("msgType", Integer.valueOf(this.field_msgType));
     }
-    if (this.fiF) {
-      localContentValues.put("imgpath", this.field_imgpath);
-    }
-    if (this.eKj) {
-      localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
-    }
-    if (this.fiG) {
-      localContentValues.put("sayhiencryptuser", this.field_sayhiencryptuser);
-    }
-    if (this.eGj) {
-      localContentValues.put("ticket", this.field_ticket);
-    }
-    if (this.eJE) {
-      localContentValues.put("flag", Integer.valueOf(this.field_flag));
+    if (this.fMM) {
+      localContentValues.put("descUrl", this.field_descUrl);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -177,7 +114,7 @@ public abstract class dv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.dv
  * JD-Core Version:    0.7.0.1
  */

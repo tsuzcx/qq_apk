@@ -1,16 +1,18 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.protocal.protobuf.eaf;
-import com.tencent.mm.protocal.protobuf.eag;
-import com.tencent.mm.protocal.protobuf.eal;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.plugin.voip.b.e;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.eum;
+import com.tencent.mm.protocal.protobuf.eun;
+import com.tencent.mm.protocal.protobuf.eus;
 
 public final class i
-  extends n<eaf, eag>
+  extends n<eum, eun>
 {
   String TAG;
   
@@ -18,35 +20,35 @@ public final class i
   {
     AppMethodBeat.i(115244);
     this.TAG = "MicroMsg.NetSceneVoipShutDown";
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new eaf();
-    ((b.a)localObject).hQG = new eag();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipshutdown";
-    ((b.a)localObject).funcId = 173;
-    ((b.a)localObject).hQH = 66;
-    ((b.a)localObject).respCmdId = 1000000066;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (eaf)this.rr.hQD.hQJ;
-    ((eaf)localObject).Gxq = paramInt;
-    ((eaf)localObject).Gxr = paramLong;
-    eal localeal = new eal();
-    cxn localcxn = new cxn();
-    localcxn.aQV(paramString);
-    localeal.HUm = localcxn;
-    ((eaf)localObject).Iek = localeal;
-    ((eaf)localObject).Idp = System.currentTimeMillis();
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new eum();
+    ((d.a)localObject).iLO = new eun();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/voipshutdown";
+    ((d.a)localObject).funcId = 173;
+    ((d.a)localObject).iLP = 66;
+    ((d.a)localObject).respCmdId = 1000000066;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (eum)this.rr.iLK.iLR;
+    ((eum)localObject).LsZ = paramInt;
+    ((eum)localObject).Lta = paramLong;
+    eus localeus = new eus();
+    dqi localdqi = new dqi();
+    localdqi.bhy(paramString);
+    localeus.NgE = localdqi;
+    ((eum)localObject).NqI = localeus;
+    ((eum)localObject).NpN = System.currentTimeMillis();
     AppMethodBeat.o(115244);
   }
   
-  public final com.tencent.mm.ak.f eBL()
+  public final com.tencent.mm.ak.i fIF()
   {
     AppMethodBeat.i(115245);
-    com.tencent.mm.ak.f local1 = new com.tencent.mm.ak.f()
+    com.tencent.mm.ak.i local1 = new com.tencent.mm.ak.i()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.n paramAnonymousn)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
       {
         AppMethodBeat.i(115243);
-        com.tencent.mm.plugin.voip.b.f.Logd(i.this.TAG, "onSceneEnd type:" + paramAnonymousn.getType() + " errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2);
+        e.Logd(i.this.TAG, "onSceneEnd type:" + paramAnonymousq.getType() + " errType:" + paramAnonymousInt1 + " errCode:" + paramAnonymousInt2);
         AppMethodBeat.o(115243);
       }
     };

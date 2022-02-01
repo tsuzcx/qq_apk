@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a_r" style="@style/qp"
+<LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/d3m" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ListView android:gravity="center" android:id="@android:id/list" android:background="@color/a7c" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@drawable/afj" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
-    </com.tencent.mm.ui.base.MMPullDownView>
-    <include android:visibility="gone" layout="@layout/yi" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/gby" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <NumberPicker android:id="@id/fjl" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
+        <NumberPicker android:id="@id/bkr" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
+        <NumberPicker android:id="@id/jsl" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="1.0dip" android:layout_marginEnd="1.0dip" />
+    </LinearLayout>
+    <CalendarView android:id="@id/ahz" android:focusable="true" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="245.0dip" android:layout_height="280.0dip" android:layout_marginLeft="44.0dip" android:layout_weight="1.0" android:layout_marginStart="44.0dip" />
 </LinearLayout>

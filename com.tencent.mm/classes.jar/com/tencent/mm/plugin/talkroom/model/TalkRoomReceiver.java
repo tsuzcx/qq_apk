@@ -7,10 +7,10 @@ import android.content.Intent;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ai;
-import com.tencent.mm.sdk.platformtools.ai.b;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MAlarmHandler;
+import com.tencent.mm.sdk.platformtools.MAlarmHandler.IBumper;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class TalkRoomReceiver
   extends BroadcastReceiver
@@ -19,17 +19,17 @@ public class TalkRoomReceiver
   {
     AppMethodBeat.i(29475);
     long l = SystemClock.elapsedRealtime();
-    ae.w("MicroMsg.TalkRoomReceiver", "reset bumper, interval:%d, now:%d", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
+    Log.w("MicroMsg.TalkRoomReceiver", "reset bumper, interval:%d, now:%d", new Object[] { Long.valueOf(paramLong), Long.valueOf(l) });
     a.set(paramContext, 107, 2, l + paramLong, new Intent(paramContext, TalkRoomReceiver.class).putExtra("MMBoot_Bump", true), 268435456);
     AppMethodBeat.o(29475);
   }
   
-  public static void bM(Context paramContext)
+  public static void ch(Context paramContext)
   {
     long l1 = 30000L;
     AppMethodBeat.i(29474);
-    long l2 = ai.jdMethod_for();
-    ae.d("MicroMsg.TalkRoomReceiver", "bumper comes, next=".concat(String.valueOf(l2)));
+    long l2 = MAlarmHandler.fire();
+    Log.d("MicroMsg.TalkRoomReceiver", "bumper comes, next=".concat(String.valueOf(l2)));
     if (l2 > 600000L)
     {
       AppMethodBeat.o(29474);
@@ -45,7 +45,7 @@ public class TalkRoomReceiver
     }
   }
   
-  public static void bN(Context paramContext)
+  public static void ci(Context paramContext)
   {
     AppMethodBeat.i(29476);
     PendingIntent localPendingIntent = a.b(paramContext, 107, new Intent(paramContext, TalkRoomReceiver.class).putExtra("MMBoot_Bump", true));
@@ -60,19 +60,19 @@ public class TalkRoomReceiver
   protected static void init()
   {
     AppMethodBeat.i(29472);
-    ai.a(new ai.b()
+    MAlarmHandler.initAlarmBumper(new MAlarmHandler.IBumper()
     {
       public final void cancel()
       {
         AppMethodBeat.i(29471);
-        TalkRoomReceiver.bN(ak.getContext());
+        TalkRoomReceiver.ci(MMApplicationContext.getContext());
         AppMethodBeat.o(29471);
       }
       
       public final void prepare()
       {
         AppMethodBeat.i(29470);
-        TalkRoomReceiver.bM(ak.getContext());
+        TalkRoomReceiver.ch(MMApplicationContext.getContext());
         AppMethodBeat.o(29470);
       }
     });
@@ -82,14 +82,14 @@ public class TalkRoomReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(29473);
-    ae.i("MicroMsg.TalkRoomReceiver", "[ALARM NOTIFICATION] bump:".concat(String.valueOf(paramIntent.getBooleanExtra("MMBoot_Bump", false))));
-    bM(paramContext);
+    Log.i("MicroMsg.TalkRoomReceiver", "[ALARM NOTIFICATION] bump:".concat(String.valueOf(paramIntent.getBooleanExtra("MMBoot_Bump", false))));
+    ch(paramContext);
     AppMethodBeat.o(29473);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.TalkRoomReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "D", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "alive", "", "dead", "fetch", "request", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "fetchInit", "fetchLoadMore", "fetchRefresh", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "D", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "setTAG", "(Ljava/lang/String;)V", "alive", "", "dead", "fetch", "request", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "fetchInit", "fetchLoadMore", "fetchPreload", "fetchRefresh", "Companion", "plugin-finder_release"})
 public abstract class g<D extends i>
 {
   public static final a Companion = new a((byte)0);
@@ -24,12 +24,12 @@ public abstract class g<D extends i>
   
   public void alive()
   {
-    ae.i(getTAG(), "alive.");
+    Log.i(getTAG(), "alive.");
   }
   
   public void dead()
   {
-    ae.i(getTAG(), "dead.");
+    Log.i(getTAG(), "dead.");
   }
   
   public void fetch(Object paramObject, f<D> paramf)
@@ -40,6 +40,11 @@ public abstract class g<D extends i>
   public abstract void fetchInit(f<D> paramf);
   
   public abstract void fetchLoadMore(f<D> paramf);
+  
+  public void fetchPreload(f<D> paramf)
+  {
+    p.h(paramf, "callback");
+  }
   
   public abstract void fetchRefresh(f<D> paramf);
   
@@ -54,7 +59,7 @@ public abstract class g<D extends i>
     this.TAG = paramString;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch$Companion;", "", "()V", "DEBUG", "", "getDEBUG", "()Z", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch$Companion;", "", "()V", "DEBUG", "", "getDEBUG", "()Z", "plugin-finder_release"})
   public static final class a {}
 }
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="center_vertical" android:id="@id/aqp" android:background="@drawable/oc" android:paddingLeft="@dimen/hu" android:paddingTop="@dimen/cy" android:paddingRight="@dimen/cz" android:paddingBottom="@dimen/cy" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/cn7" android:layout_width="@dimen/d1" android:layout_height="@dimen/d1" android:layout_marginLeft="@dimen/hu" android:src="@drawable/bht" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/s3" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="left" android:id="@id/dy8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/h" android:text="@string/ge" android:layout_toRightOf="@id/cn7" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/djz" android:background="@drawable/b0o" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dk0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@raw/wu" android:layout_centerInParent="true" app:iconColor="@color/ac_" />
+    </FrameLayout>
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/ag2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/hyl" />
 </LinearLayout>

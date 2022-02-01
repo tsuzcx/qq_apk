@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView android:id="@id/g0p" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/g0o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="40.0dip" android:src="@raw/icons_filled_close2" android:layout_marginStart="24.0dip" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.vlog.ui.widget.MultiEditCropLayout android:id="@id/fne" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/ggu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+        <com.tencent.mm.plugin.vlog.ui.widget.MultiEditCropOperationLayout android:id="@id/big" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.vlog.ui.plugin.timeedit.TimeEditorItemContainer android:id="@id/j4q" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <FrameLayout android:id="@id/gb9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorInputView android:id="@id/ar2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.vlog.ui.widget.PagInputView android:id="@id/bxi" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <FrameLayout android:id="@id/bxv" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

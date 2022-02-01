@@ -8,13 +8,13 @@ import android.graphics.Paint.Style;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.ui.at;
 
 public class TextViewWithBottomLine
   extends AppCompatTextView
 {
   private Paint mPaint;
-  private boolean ukt;
+  private boolean xCM;
   
   public TextViewWithBottomLine(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,7 +37,7 @@ public class TextViewWithBottomLine
     AppMethodBeat.i(41181);
     this.mPaint = new Paint();
     this.mPaint.setStyle(Paint.Style.FILL);
-    this.mPaint.setColor(getResources().getColor(2131100711));
+    this.mPaint.setColor(getResources().getColor(2131100904));
     AppMethodBeat.o(41181);
   }
   
@@ -45,8 +45,8 @@ public class TextViewWithBottomLine
   {
     AppMethodBeat.i(41182);
     super.onDraw(paramCanvas);
-    if (this.ukt) {
-      paramCanvas.drawRoundRect(0.0F, getHeight() - aq.fromDPToPix(getContext(), 2), getWidth(), getHeight(), aq.fromDPToPix(getContext(), 1), aq.fromDPToPix(getContext(), 1), this.mPaint);
+    if (this.xCM) {
+      paramCanvas.drawRoundRect(0.0F, getHeight() - at.fromDPToPix(getContext(), 2), getWidth(), getHeight(), at.fromDPToPix(getContext(), 1), at.fromDPToPix(getContext(), 1), this.mPaint);
     }
     AppMethodBeat.o(41182);
   }
@@ -54,22 +54,22 @@ public class TextViewWithBottomLine
   public void setSelected(boolean paramBoolean)
   {
     AppMethodBeat.i(41183);
-    this.ukt = paramBoolean;
+    this.xCM = paramBoolean;
     if (paramBoolean) {
-      setTextColor(getResources().getColor(2131100711));
+      setTextColor(getResources().getColor(2131100904));
     }
     for (;;)
     {
       invalidate();
       AppMethodBeat.o(41183);
       return;
-      setTextColor(getResources().getColor(2131100212));
+      setTextColor(getResources().getColor(2131100245));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.TextViewWithBottomLine
  * JD-Core Version:    0.7.0.1
  */

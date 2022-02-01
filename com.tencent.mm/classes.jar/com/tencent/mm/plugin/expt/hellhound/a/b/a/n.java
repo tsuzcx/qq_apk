@@ -3,48 +3,48 @@ package com.tencent.mm.plugin.expt.hellhound.a.b.a;
 import android.app.Activity;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.expt.hellhound.a.a.e;
+import com.tencent.mm.plugin.expt.hellhound.a.a.f;
 import com.tencent.mm.plugin.expt.hellhound.core.a.a.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 
 final class n
   implements o
 {
   WeakReference<Activity> mActivityRef;
-  private a rcV;
-  private final e rch;
-  private final p rcj;
-  com.tencent.mm.plugin.expt.hellhound.a.a.a rcz;
+  private final f sCN;
+  private final p sCP;
+  private a sDC;
+  com.tencent.mm.plugin.expt.hellhound.a.a.a sDg;
   
   n()
   {
-    AppMethodBeat.i(196090);
-    this.rch = new e()
+    AppMethodBeat.i(220520);
+    this.sCN = new f()
     {
       public final void a(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
-        AppMethodBeat.i(196088);
+        AppMethodBeat.i(220518);
         if (n.this.mActivityRef == null)
         {
-          AppMethodBeat.o(196088);
+          AppMethodBeat.o(220518);
           return;
         }
         Activity localActivity = (Activity)n.this.mActivityRef.get();
         if ((localActivity == null) || (localActivity.isFinishing()) || (localActivity.isDestroyed()))
         {
-          ae.m("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, onScroll, is NULL or finishing", new Object[0]);
-          AppMethodBeat.o(196088);
+          Log.printInfoStack("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, onScroll, is NULL or finishing", new Object[0]);
+          AppMethodBeat.o(220518);
           return;
         }
-        n.this.rcz.a(localActivity, paramAnonymousViewGroup, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
-        AppMethodBeat.o(196088);
+        n.this.sDg.a(localActivity, paramAnonymousViewGroup, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousInt3);
+        AppMethodBeat.o(220518);
       }
       
-      public final void l(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
+      public final void k(ViewGroup paramAnonymousViewGroup, int paramAnonymousInt)
       {
-        AppMethodBeat.i(196087);
-        com.tencent.mm.plugin.expt.hellhound.a.a.a locala = n.this.rcz;
+        AppMethodBeat.i(220517);
+        com.tencent.mm.plugin.expt.hellhound.a.a.a locala = n.this.sDg;
         switch (paramAnonymousInt)
         {
         default: 
@@ -52,8 +52,8 @@ final class n
         }
         for (;;)
         {
-          locala.h(paramAnonymousViewGroup, paramAnonymousInt);
-          AppMethodBeat.o(196087);
+          locala.g(paramAnonymousViewGroup, paramAnonymousInt);
+          AppMethodBeat.o(220517);
           return;
           paramAnonymousInt = 0;
           continue;
@@ -63,89 +63,89 @@ final class n
         }
       }
     };
-    this.rcj = new p()
+    this.sCP = new p()
     {
-      public final void kZ(boolean paramAnonymousBoolean)
+      public final void md(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(196089);
-        if (n.this.rcz != null) {
-          n.this.rcz.kY(paramAnonymousBoolean);
+        AppMethodBeat.i(220519);
+        if (n.this.sDg != null) {
+          n.this.sDg.mc(paramAnonymousBoolean);
         }
-        AppMethodBeat.o(196089);
+        AppMethodBeat.o(220519);
       }
     };
-    this.rcV = new a();
-    this.rcz = new com.tencent.mm.plugin.expt.hellhound.a.a.a(3, "18260", "1003");
-    AppMethodBeat.o(196090);
+    this.sDC = new a();
+    this.sDg = new com.tencent.mm.plugin.expt.hellhound.a.a.a(3, "18260", "1003");
+    AppMethodBeat.o(220520);
   }
   
   final void a(int paramInt, String paramString, Activity paramActivity)
   {
-    AppMethodBeat.i(196091);
-    if ((!com.tencent.mm.plugin.expt.hellhound.a.coV()) || (!com.tencent.mm.plugin.expt.hellhound.a.coY())) {}
+    AppMethodBeat.i(220521);
+    if ((!com.tencent.mm.plugin.expt.hellhound.a.cNo()) || (!com.tencent.mm.plugin.expt.hellhound.a.cNr())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      ae.e("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, monitor, dontNeedMonitorFinder true !!");
-      AppMethodBeat.o(196091);
+      Log.e("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, monitor, dontNeedMonitorFinder true !!");
+      AppMethodBeat.o(220521);
       return;
     }
-    ae.i("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
+    Log.i("HABBYGE-MALI.FinderTopicMonitor", "FinderTopicMonitor, monitor: %d, %s", new Object[] { Integer.valueOf(paramInt), paramString });
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(196091);
+      AppMethodBeat.o(220521);
       return;
       this.mActivityRef = new WeakReference(paramActivity);
-      c.cpq().l(712, paramString);
-      AppMethodBeat.o(196091);
+      c.cNJ().m(712, paramString);
+      AppMethodBeat.o(220521);
       return;
-      c.cpq().l(713, paramString);
-      AppMethodBeat.o(196091);
+      c.cNJ().m(713, paramString);
+      AppMethodBeat.o(220521);
       return;
-      c.cpq().l(714, paramString);
-      AppMethodBeat.o(196091);
+      c.cNJ().m(714, paramString);
+      AppMethodBeat.o(220521);
       return;
-      c.cpq().l(715, paramString);
+      c.cNJ().m(715, paramString);
     }
-  }
-  
-  public final void cqe()
-  {
-    AppMethodBeat.i(196093);
-    this.rcV.cqe();
-    this.rcz.a(1, null);
-    AppMethodBeat.o(196093);
-  }
-  
-  public final void cqn()
-  {
-    AppMethodBeat.i(196092);
-    if (this.mActivityRef != null) {
-      this.rcz.a(0, (Activity)this.mActivityRef.get());
-    }
-    this.rcV.a(this.rch, this.rcj);
-    AppMethodBeat.o(196092);
   }
   
   public final void free()
   {
-    AppMethodBeat.i(196094);
-    this.rcz.a(2, null);
+    AppMethodBeat.i(220524);
+    this.sDg.a(2, null);
     if (this.mActivityRef != null)
     {
       this.mActivityRef.clear();
       this.mActivityRef = null;
     }
-    AppMethodBeat.o(196094);
+    AppMethodBeat.o(220524);
   }
   
   public final void report()
   {
-    AppMethodBeat.i(196095);
-    this.rcz.a(3, null);
-    AppMethodBeat.o(196095);
+    AppMethodBeat.i(220525);
+    this.sDg.a(3, null);
+    AppMethodBeat.o(220525);
+  }
+  
+  public final void startMonitor()
+  {
+    AppMethodBeat.i(220522);
+    if (this.mActivityRef != null) {
+      this.sDg.a(0, (Activity)this.mActivityRef.get());
+    }
+    this.sDC.a(this.sCN, this.sCP);
+    AppMethodBeat.o(220522);
+  }
+  
+  public final void stopMonitor()
+  {
+    AppMethodBeat.i(220523);
+    this.sDC.stopMonitor();
+    this.sDg.a(1, null);
+    AppMethodBeat.o(220523);
   }
 }
 

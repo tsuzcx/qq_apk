@@ -1,8 +1,8 @@
 package com.tencent.mm.aa.a;
 
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 
-public abstract interface c$a<T extends n>
+public abstract interface c$a<T extends q>
 {
   public abstract void a(int paramInt1, int paramInt2, String paramString, T paramT);
 }

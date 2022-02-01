@@ -6,37 +6,47 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
-import junit.framework.Assert;
 
 public abstract class MMWizardActivity
   extends MMActivity
 {
-  protected static final Map<String, Intent> JxE = new HashMap();
+  protected static final Map<String, Intent> OHY = new HashMap();
   
-  public static void al(Context paramContext, Intent paramIntent)
+  public static void ay(Context paramContext, Intent paramIntent)
   {
-    ae.i("MicroMsg.MMWizardActivity", "startWizardActivity()");
-    Assert.assertTrue("startWizardActivity: Param context should be a Activity :" + paramContext.toString(), paramContext instanceof Activity);
-    String str2 = paramIntent.getStringExtra("WizardRootClass");
-    String str1 = paramIntent.getStringExtra("WizardTransactionId");
-    Intent localIntent = ((Activity)paramContext).getIntent();
-    if ((bu.isNullOrNil(str2)) && (localIntent != null))
+    Log.i("MicroMsg.MMWizardActivity", "startWizardActivity()");
+    String str3 = paramIntent.getStringExtra("WizardRootClass");
+    String str4 = paramIntent.getStringExtra("WizardTransactionId");
+    if ((paramContext instanceof Activity)) {}
+    for (Intent localIntent = ((Activity)paramContext).getIntent();; localIntent = null)
     {
-      str2 = localIntent.getStringExtra("WizardRootClass");
-      str1 = localIntent.getStringExtra("WizardTransactionId");
-      if (localIntent.getComponent() != null) {
-        ae.i("MicroMsg.MMWizardActivity", "start wizard, callerIntent class=%s", new Object[] { localIntent.getComponent().getClassName() });
+      String str1 = str4;
+      String str2 = str3;
+      if (Util.isNullOrNil(str3))
+      {
+        str1 = str4;
+        str2 = str3;
+        if (localIntent != null)
+        {
+          str3 = localIntent.getStringExtra("WizardRootClass");
+          str4 = localIntent.getStringExtra("WizardTransactionId");
+          str1 = str4;
+          str2 = str3;
+          if (localIntent.getComponent() != null)
+          {
+            Log.i("MicroMsg.MMWizardActivity", "start wizard, callerIntent class=%s", new Object[] { localIntent.getComponent().getClassName() });
+            str2 = str3;
+            str1 = str4;
+          }
+        }
       }
-    }
-    for (;;)
-    {
-      ae.i("MicroMsg.MMWizardActivity", "start wizard, root=%s", new Object[] { str2 });
-      if (!bu.isNullOrNil(str2)) {
+      Log.i("MicroMsg.MMWizardActivity", "start wizard, root=%s", new Object[] { str2 });
+      if (!Util.isNullOrNil(str2)) {
         paramIntent.putExtra("WizardRootClass", str2);
       }
       if (str1 != null) {
@@ -45,9 +55,12 @@ public abstract class MMWizardActivity
       if (paramIntent.getExtras() == null) {
         paramIntent.putExtras(new Bundle());
       }
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/ui/MMWizardActivity", "startWizardActivity", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mt(0));
+      if (!(paramContext instanceof Activity)) {
+        paramIntent.addFlags(268435456);
+      }
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.axQ(), "com/tencent/mm/ui/MMWizardActivity", "startWizardActivity", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/ui/MMWizardActivity", "startWizardActivity", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       return;
     }
@@ -57,36 +70,36 @@ public abstract class MMWizardActivity
   {
     try
     {
-      String str = "trans." + bu.HQ() + "." + paramIntent2.hashCode();
-      JxE.put(str, paramIntent2);
+      String str = "trans." + Util.currentTicks() + "." + paramIntent2.hashCode();
+      OHY.put(str, paramIntent2);
       paramIntent1.putExtra("WizardTransactionId", str);
       paramIntent2 = ((Activity)paramContext).getIntent();
       if (paramIntent2 != null) {
         paramIntent2.putExtra("WizardTransactionId", str);
       }
-      al(paramContext, paramIntent1);
+      ay(paramContext, paramIntent1);
       return;
     }
     catch (Exception paramContext)
     {
-      ae.e("MicroMsg.MMWizardActivity", "%s", new Object[] { bu.o(paramContext) });
+      Log.e("MicroMsg.MMWizardActivity", "%s", new Object[] { Util.stackTraceToString(paramContext) });
     }
   }
   
-  public final void acs(int paramInt)
+  public final void ala(int paramInt)
   {
-    ae.i("MicroMsg.MMWizardActivity", "finishWizard()");
+    Log.i("MicroMsg.MMWizardActivity", "finishWizard()");
     exit(paramInt);
   }
   
   protected final void cancel()
   {
-    ae.i("MicroMsg.MMWizardActivity", "cancel()");
+    Log.i("MicroMsg.MMWizardActivity", "cancel()");
     String str = getIntent().getStringExtra("WizardTransactionId");
-    Intent localIntent = (Intent)JxE.get(str);
-    JxE.remove(str);
+    Intent localIntent = (Intent)OHY.get(str);
+    OHY.remove(str);
     if (localIntent != null) {
-      ae.d("MicroMsg.MMWizardActivity", "canceled exit for transaction=" + str + ", intent=" + localIntent);
+      Log.d("MicroMsg.MMWizardActivity", "canceled exit for transaction=" + str + ", intent=" + localIntent);
     }
   }
   
@@ -94,32 +107,32 @@ public abstract class MMWizardActivity
   {
     String str = getIntent().getStringExtra("WizardRootClass");
     Object localObject1 = getIntent().getStringExtra("WizardTransactionId");
-    ae.i("MicroMsg.MMWizardActivity", "exit resultCode:%d, rootClass:%s, transaction:%s", new Object[] { Integer.valueOf(paramInt), str, localObject1 });
-    Object localObject2 = (Intent)JxE.get(localObject1);
-    JxE.remove(localObject1);
+    Log.i("MicroMsg.MMWizardActivity", "exit resultCode:%d, rootClass:%s, transaction:%s", new Object[] { Integer.valueOf(paramInt), str, localObject1 });
+    Object localObject2 = (Intent)OHY.get(localObject1);
+    OHY.remove(localObject1);
     localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new Intent();
     }
     localObject2 = str;
-    if (bu.isNullOrNil(str))
+    if (Util.isNullOrNil(str))
     {
       localObject2 = str;
       if (((Intent)localObject1).getComponent() != null)
       {
         localObject2 = ((Intent)localObject1).getComponent().getClassName();
-        ae.i("MicroMsg.MMWizardActivity", "exit component rootClass %s", new Object[] { localObject2 });
+        Log.i("MicroMsg.MMWizardActivity", "exit component rootClass %s", new Object[] { localObject2 });
       }
     }
-    if (!bu.isNullOrNil((String)localObject2)) {}
+    if (!Util.isNullOrNil((String)localObject2)) {}
     try
     {
       ((Intent)localObject1).putExtra("wizard_activity_result_code", paramInt);
       ((Intent)localObject1).setClassName(this, (String)localObject2);
       ((Intent)localObject1).addFlags(67108864);
-      localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-      com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/ui/MMWizardActivity", "exit", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
+      localObject1 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject1);
+      com.tencent.mm.hellhoundlib.a.a.a(this, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/ui/MMWizardActivity", "exit", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MMWizardActivity", "exit", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       label218:
       super.finish();
@@ -134,11 +147,11 @@ public abstract class MMWizardActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    ae.i("MicroMsg.MMWizardActivity", "onCreate()");
-    if (z.l(getIntent().getExtras(), "WizardRootKillSelf"))
+    Log.i("MicroMsg.MMWizardActivity", "onCreate()");
+    if (IntentUtil.getBoolean(getIntent().getExtras(), "WizardRootKillSelf", false))
     {
       super.finish();
-      ae.i("MicroMsg.MMWizardActivity", "finish wizard, root=" + getComponentName().getClassName());
+      Log.i("MicroMsg.MMWizardActivity", "finish wizard, root=" + getComponentName().getClassName());
       exit(getIntent().getExtras().getInt("wizard_activity_result_code"));
     }
   }

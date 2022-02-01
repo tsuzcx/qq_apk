@@ -10,60 +10,60 @@ import android.util.AttributeSet;
 public class MaterialCardView
   extends CardView
 {
-  private final a hV;
+  private final a hX;
   
   public MaterialCardView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130969295);
+    this(paramContext, paramAttributeSet, 2130969364);
   }
   
   public MaterialCardView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    paramContext = f.a(paramContext, paramAttributeSet, a.a.MaterialCardView, paramInt, 2131821658, new int[0]);
-    this.hV = new a(this);
-    paramAttributeSet = this.hV;
+    paramContext = f.a(paramContext, paramAttributeSet, a.a.MaterialCardView, paramInt, 2131821706, new int[0]);
+    this.hX = new a(this);
+    paramAttributeSet = this.hX;
     paramAttributeSet.strokeColor = paramContext.getColor(0, -1);
     paramAttributeSet.strokeWidth = paramContext.getDimensionPixelSize(1, 0);
-    paramAttributeSet.ba();
     paramAttributeSet.bc();
+    paramAttributeSet.be();
     paramContext.recycle();
   }
   
   public int getStrokeColor()
   {
-    return this.hV.strokeColor;
+    return this.hX.strokeColor;
   }
   
   public int getStrokeWidth()
   {
-    return this.hV.strokeWidth;
+    return this.hX.strokeWidth;
   }
   
   public void setRadius(float paramFloat)
   {
     super.setRadius(paramFloat);
-    this.hV.ba();
+    this.hX.bc();
   }
   
   public void setStrokeColor(int paramInt)
   {
-    a locala = this.hV;
+    a locala = this.hX;
     locala.strokeColor = paramInt;
-    locala.ba();
+    locala.bc();
   }
   
   public void setStrokeWidth(int paramInt)
   {
-    a locala = this.hV;
+    a locala = this.hX;
     locala.strokeWidth = paramInt;
-    locala.ba();
     locala.bc();
+    locala.be();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.card.MaterialCardView
  * JD-Core Version:    0.7.0.1
  */

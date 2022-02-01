@@ -6,37 +6,42 @@ import com.tencent.mm.plugin.report.a;
 public final class he
   extends a
 {
-  public long dWW = 0L;
-  public long etr = 0L;
+  public long eLv = 0L;
+  public String eLw = "";
+  public long eLx = 0L;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(91241);
+    AppMethodBeat.i(149924);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dWW);
+    ((StringBuffer)localObject).append(this.eLv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etr);
+    ((StringBuffer)localObject).append(this.eLw);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eLx);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(91241);
+    aMq((String)localObject);
+    AppMethodBeat.o(149924);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(91242);
+    AppMethodBeat.i(149925);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("clickScene:").append(this.dWW);
+    ((StringBuffer)localObject).append("SendScene:").append(this.eLv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("switchWay:").append(this.etr);
+    ((StringBuffer)localObject).append("emoticonMd5:").append(this.eLw);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("hasTxt:").append(this.eLx);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(91242);
+    AppMethodBeat.o(149925);
     return localObject;
   }
   
   public final int getId()
   {
-    return 17573;
+    return 16872;
   }
 }
 

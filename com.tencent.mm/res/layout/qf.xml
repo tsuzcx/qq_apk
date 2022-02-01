@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.emoji.view.EmojiStatusView android:layout_gravity="center" android:id="@id/ie7" android:background="@drawable/smiley_item_bg2" android:layout_width="@dimen/a3e" android:layout_height="@dimen/a3e" android:scaleType="centerInside" android:layout_marginStart="@dimen/bt" android:layout_marginEnd="@dimen/bt"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

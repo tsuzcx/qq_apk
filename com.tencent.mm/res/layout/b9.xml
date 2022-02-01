@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.v7.widget.Toolbar android:id="@id/gcw" android:background="#ff009688" android:layout_width="fill_parent" android:layout_height="@dimen/lf" app:logo="@null" app:navigationIcon="@drawable/bal" app:titleTextColor="#ffffffff" />
-    <FrameLayout android:id="@id/b3b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:padding="@dimen/cb" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/br" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/cb" android:hint="errCode:" android:inputType="numberSigned" />
+    <com.tencent.mm.ui.widget.MMEditText android:id="@id/bs" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:layout_marginTop="@dimen/cb" android:text="" android:hint="errMsg:" />
+    <Button android:layout_gravity="center_horizontal" android:id="@id/g3k" android:layout_width="180.0dip" android:layout_height="48.0dip" android:layout_marginTop="@dimen/cb" android:text="@string/x_" style="@style/ou" />
 </LinearLayout>

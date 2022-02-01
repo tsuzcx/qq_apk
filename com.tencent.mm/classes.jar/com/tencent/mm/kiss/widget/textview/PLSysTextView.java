@@ -6,8 +6,8 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class PLSysTextView
   extends SysTextView
@@ -27,7 +27,7 @@ public class PLSysTextView
     AppMethodBeat.i(141021);
     super.onConfigurationChanged(paramConfiguration);
     if (getLayoutWrapper() != null) {
-      getLayoutWrapper().gHR = false;
+      getLayoutWrapper().huF = false;
     }
     AppMethodBeat.o(141021);
   }
@@ -54,10 +54,10 @@ public class PLSysTextView
   public void setText(CharSequence paramCharSequence, TextView.BufferType paramBufferType)
   {
     AppMethodBeat.i(141018);
-    if (bu.ah(paramCharSequence))
+    if (Util.isNullOrNil(paramCharSequence))
     {
       if (h.DEBUG) {
-        ae.d("MicroMsg.PLSysTextView", "set null text");
+        Log.d("MicroMsg.PLSysTextView", "set null text");
       }
       AppMethodBeat.o(141018);
       return;
@@ -66,17 +66,17 @@ public class PLSysTextView
     if (h.DEBUG) {
       l = System.currentTimeMillis();
     }
-    if ((getLayoutWrapper() != null) && (getLayoutWrapper().gHR)) {
-      c.gHq.a(getConfig(), getLayoutWrapper());
+    if ((getLayoutWrapper() != null) && (getLayoutWrapper().huF)) {
+      c.hue.a(getConfig(), getLayoutWrapper());
     }
-    paramBufferType = c.gHq.a(getConfig(), paramCharSequence);
+    paramBufferType = c.hue.a(getConfig(), paramCharSequence);
     if (paramBufferType != null) {
       setTextLayout(paramBufferType);
     }
     for (boolean bool = true;; bool = false)
     {
       if (h.DEBUG) {
-        ae.d("MicroMsg.PLSysTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s", new Object[] { Double.valueOf((System.currentTimeMillis() - l) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence });
+        Log.d("MicroMsg.PLSysTextView", "setText used %fms, hitCache: %b, hashCode: %d, text: %s", new Object[] { Double.valueOf((System.currentTimeMillis() - l) / 1000000.0D), Boolean.valueOf(bool), Integer.valueOf(hashCode()), paramCharSequence });
       }
       AppMethodBeat.o(141018);
       return;
@@ -86,7 +86,7 @@ public class PLSysTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.PLSysTextView
  * JD-Core Version:    0.7.0.1
  */

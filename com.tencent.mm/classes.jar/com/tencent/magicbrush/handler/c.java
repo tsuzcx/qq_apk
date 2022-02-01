@@ -7,37 +7,43 @@ import java.util.concurrent.Callable;
 public final class c
   implements a
 {
-  private a cyI;
+  private a cMP;
   
   public c(a parama)
   {
-    this.cyI = parama;
+    this.cMP = parama;
   }
   
-  public final boolean Cw()
+  public final boolean LO()
   {
     AppMethodBeat.i(139999);
-    boolean bool = this.cyI.Cw();
+    boolean bool = this.cMP.LO();
     AppMethodBeat.o(139999);
     return bool;
   }
   
-  public final String Cx()
+  public final String LP()
   {
     AppMethodBeat.i(185066);
-    String str = this.cyI.Cx();
+    String str = this.cMP.LP();
     AppMethodBeat.o(185066);
     return str;
   }
   
   public final void a(Runnable paramRunnable, boolean paramBoolean)
   {
-    AppMethodBeat.i(213312);
-    this.cyI.a(paramRunnable, paramBoolean);
-    AppMethodBeat.o(213312);
+    AppMethodBeat.i(206808);
+    if (this.cMP.LO())
+    {
+      paramRunnable.run();
+      AppMethodBeat.o(206808);
+      return;
+    }
+    this.cMP.a(paramRunnable, paramBoolean);
+    AppMethodBeat.o(206808);
   }
   
-  public final <T> T b(Callable<T> paramCallable)
+  public final <T> T c(Callable<T> paramCallable)
   {
     AppMethodBeat.i(140000);
     paramCallable = new e(paramCallable);
@@ -49,42 +55,42 @@ public final class c
   
   public final boolean doInnerLoopTask()
   {
-    AppMethodBeat.i(213314);
-    boolean bool = this.cyI.doInnerLoopTask();
-    AppMethodBeat.o(213314);
+    AppMethodBeat.i(206810);
+    boolean bool = this.cMP.doInnerLoopTask();
+    AppMethodBeat.o(206810);
     return bool;
   }
   
   public final void p(Runnable paramRunnable)
   {
     AppMethodBeat.i(140001);
-    if (this.cyI.Cw())
+    if (this.cMP.LO())
     {
       paramRunnable.run();
       AppMethodBeat.o(140001);
       return;
     }
-    this.cyI.a(paramRunnable, false);
+    this.cMP.a(paramRunnable, false);
     AppMethodBeat.o(140001);
   }
   
   public final void post(Runnable paramRunnable)
   {
-    AppMethodBeat.i(224178);
+    AppMethodBeat.i(258581);
     a(paramRunnable, false);
-    AppMethodBeat.o(224178);
+    AppMethodBeat.o(258581);
   }
   
   public final void resumeLoopTasks()
   {
-    AppMethodBeat.i(213313);
-    this.cyI.resumeLoopTasks();
-    AppMethodBeat.o(213313);
+    AppMethodBeat.i(206809);
+    this.cMP.resumeLoopTasks();
+    AppMethodBeat.o(206809);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.handler.c
  * JD-Core Version:    0.7.0.1
  */

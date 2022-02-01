@@ -1,47 +1,31 @@
 package com.tencent.thumbplayer.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
+import java.util.HashMap;
+import java.util.Map;
 
-public class f
+public final class f<K, V>
 {
-  private static volatile f.a Mzr;
-  public static ExecutorService THREAD_POOL_EXECUTOR;
-  private static volatile ScheduledExecutorService mScheduler;
+  public Map<K, V> map;
   
-  static
+  public f()
   {
-    AppMethodBeat.i(194860);
-    THREAD_POOL_EXECUTOR = Executors.newCachedThreadPool();
-    mScheduler = null;
-    Mzr = null;
-    AppMethodBeat.o(194860);
+    AppMethodBeat.i(189634);
+    this.map = new HashMap();
+    AppMethodBeat.o(189634);
   }
   
-  public static ScheduledExecutorService getScheduledExecutorServiceInstance()
+  public final f<K, V> S(K paramK, V paramV)
   {
-    AppMethodBeat.i(194859);
-    if (mScheduler == null) {}
-    try
-    {
-      if (mScheduler == null) {
-        mScheduler = Executors.newScheduledThreadPool(4);
-      }
-      ScheduledExecutorService localScheduledExecutorService = mScheduler;
-      AppMethodBeat.o(194859);
-      return localScheduledExecutorService;
-    }
-    finally
-    {
-      AppMethodBeat.o(194859);
-    }
+    AppMethodBeat.i(189635);
+    this.map.put(paramK, paramV);
+    AppMethodBeat.o(189635);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.f
  * JD-Core Version:    0.7.0.1
  */

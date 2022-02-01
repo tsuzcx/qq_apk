@@ -2,12 +2,13 @@ package com.tencent.mm.loader.e.b;
 
 import android.graphics.Bitmap;
 import android.widget.ImageView;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.loader.h.a.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class c
   extends f<ImageView>
 {
-  boolean hhu = true;
+  boolean iao = true;
   
   public c(g<ImageView> paramg)
   {
@@ -17,33 +18,33 @@ public class c
   public c(g<ImageView> paramg, boolean paramBoolean)
   {
     super(paramg);
-    this.hhu = paramBoolean;
+    this.iao = paramBoolean;
   }
   
   public final void a(g<?> paramg, com.tencent.mm.loader.f<?, ?> paramf)
   {
     if (paramg == null) {
-      ae.w("MicroMsg.Loader.ImageViewShowTarget", "[ViewShowTarget] should show default view or options is null.");
+      Log.w("MicroMsg.Loader.ImageViewShowTarget", "[ViewShowTarget] should show default view or options is null.");
     }
     do
     {
       return;
       paramg = (ImageView)paramg.getView();
-    } while ((paramg == null) || (!this.hhu));
+    } while ((paramg == null) || (!this.iao));
     int i;
-    if ((paramf.hfv > 0) || (paramf.hfx != null)) {
+    if ((paramf.hYp > 0) || (paramf.hYr != null)) {
       i = 1;
     }
     while (i != 0) {
-      if (paramf.hfv == 0)
+      if (paramf.hYp == 0)
       {
-        paramg.setImageDrawable(paramf.hfx);
+        paramg.setImageDrawable(paramf.hYr);
         return;
         i = 0;
       }
       else
       {
-        paramg.setImageResource(paramf.hfv);
+        paramg.setImageResource(paramf.hYp);
         return;
       }
     }
@@ -52,25 +53,31 @@ public class c
   
   protected boolean a(Bitmap paramBitmap, g<?> paramg)
   {
-    paramg = (ImageView)paramg.getView();
-    if (paramg != null)
+    ImageView localImageView = (ImageView)paramg.getView();
+    paramg = paramg.iaG.value();
+    if (localImageView != null)
     {
-      ae.d("MicroMsg.Loader.ImageViewShowTarget", "onResourceReadyUI imageView %s resource %s", new Object[] { paramg, paramBitmap });
-      paramg.setImageBitmap(paramBitmap);
-      return true;
+      localImageView.setImageMatrix(null);
+      if ((paramg instanceof com.tencent.mm.loader.h.a.d)) {
+        localImageView.addOnLayoutChangeListener(new c.1(this, paramg, localImageView));
+      }
+      localImageView.setImageBitmap(paramBitmap);
     }
-    ae.e("MicroMsg.Loader.ImageViewShowTarget", "[onResourceReadyUI]  imageView is null");
-    return true;
+    for (;;)
+    {
+      return true;
+      Log.e("MicroMsg.Loader.ImageViewShowTarget", "[onResourceReadyUI]  imageView is null");
+    }
   }
   
-  public final int arw()
+  public final int aJV()
   {
-    return this.hhv.hhK;
+    return this.ias.iaH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.loader.e.b.c
  * JD-Core Version:    0.7.0.1
  */

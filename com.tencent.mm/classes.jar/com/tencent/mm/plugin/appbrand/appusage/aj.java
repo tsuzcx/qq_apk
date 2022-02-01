@@ -1,16 +1,17 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.mm.ipcinvoker.k;
-import com.tencent.mm.ipcinvoker.type.IPCBoolean;
-import d.l;
+import com.tencent.mm.ipcinvoker.type.IPCInteger;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/IsCall;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/appusage/AppIdentity;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/LimitCountCall;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "Lcom/tencent/mm/ipcinvoker/type/IPCInteger;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
 final class aj
-  implements k<AppIdentity, IPCBoolean>
+  implements k<IPCVoid, IPCInteger>
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.aj
  * JD-Core Version:    0.7.0.1
  */

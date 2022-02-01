@@ -6,12 +6,12 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderFollowListUIC;
 import com.tencent.mm.ui.component.UIComponent;
-import d.a.ak;
-import d.l;
 import java.util.HashMap;
 import java.util.Set;
+import kotlin.a.ak;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderFollowListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderFollowListUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "TAG", "", "getCommentScene", "", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "plugin-finder_release"})
 public final class FinderFollowListUI
   extends MMFinderUI
 {
@@ -25,9 +25,18 @@ public final class FinderFollowListUI
     AppMethodBeat.o(167282);
   }
   
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(252370);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(252370);
+  }
+  
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204581);
+    AppMethodBeat.i(252369);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -38,20 +47,20 @@ public final class FinderFollowListUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204581);
+    AppMethodBeat.o(252369);
     return localView1;
   }
   
-  public final int cCL()
+  public final int getCommentScene()
   {
     return 12;
   }
   
-  public final Set<Class<? extends UIComponent>> cEg()
+  public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(204580);
+    AppMethodBeat.i(252368);
     Set localSet = ak.setOf(FinderFollowListUIC.class);
-    AppMethodBeat.o(204580);
+    AppMethodBeat.o(252368);
     return localSet;
   }
   
@@ -63,7 +72,7 @@ public final class FinderFollowListUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderFollowListUI
  * JD-Core Version:    0.7.0.1
  */

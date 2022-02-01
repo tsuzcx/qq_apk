@@ -6,24 +6,24 @@ import com.tencent.mm.plugin.appbrand.AppBrandRuntime.b;
 public final class i
   extends AppBrandRuntime.b
 {
-  public boolean bWM = false;
+  public boolean chu = false;
   
-  public final void BJ()
+  public final void KY()
   {
-    AppMethodBeat.i(222076);
-    super.BJ();
-    this.bWM = true;
-    AppMethodBeat.o(222076);
+    AppMethodBeat.i(226278);
+    super.KY();
+    this.chu = true;
+    AppMethodBeat.o(226278);
   }
   
   public final void prepare()
   {
-    this.bWM = false;
+    this.chu = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.i
  * JD-Core Version:    0.7.0.1
  */

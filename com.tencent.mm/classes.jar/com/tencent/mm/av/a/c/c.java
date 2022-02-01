@@ -4,7 +4,7 @@ import com.tencent.mm.av.a.d.b;
 
 public abstract interface c
 {
-  public abstract b Gj(String paramString);
+  public abstract b OV(String paramString);
 }
 
 

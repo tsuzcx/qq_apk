@@ -23,18 +23,18 @@ import java.util.zip.ZipOutputStream;
 
 final class b
 {
-  private static Method zA;
+  private static Method zG;
   
   static
   {
     try
     {
-      zA = SharedPreferences.Editor.class.getMethod("apply", new Class[0]);
+      zG = SharedPreferences.Editor.class.getMethod("apply", new Class[0]);
       return;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      zA = null;
+      zG = null;
     }
   }
   
@@ -81,10 +81,10 @@ final class b
       paramContext.putLong("timestamp", l2);
       paramContext.putLong("crc", l1);
       paramContext.putInt("dex.number", i + 1);
-      if (zA != null) {}
+      if (zG != null) {}
       try
       {
-        zA.invoke(paramContext, new Object[0]);
+        zG.invoke(paramContext, new Object[0]);
         paramContext = paramApplicationInfo;
       }
       catch (InvocationTargetException paramFile)
@@ -238,16 +238,16 @@ final class b
         bool = l(localFile);
         StringBuilder localStringBuilder = new StringBuilder("Extraction ");
         if (!bool) {
-          break label376;
+          break label386;
         }
         str1 = "success";
         localStringBuilder.append(str1).append(" - length ").append(localFile.getAbsolutePath()).append(": ").append(localFile.length());
         if (bool) {
-          break label373;
+          break label383;
         }
         localFile.delete();
         if (!localFile.exists()) {
-          break label373;
+          break label383;
         }
         new StringBuilder("Failed to delete corrupted secondary dex '").append(localFile.getPath()).append("'");
       }
@@ -267,7 +267,7 @@ final class b
     {
       public final boolean accept(File paramAnonymousFile)
       {
-        return !paramAnonymousFile.getName().startsWith(this.zB);
+        return !paramAnonymousFile.getName().startsWith(this.zH);
       }
     });
     if (paramString == null)
@@ -341,7 +341,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.multidex.b
  * JD-Core Version:    0.7.0.1
  */

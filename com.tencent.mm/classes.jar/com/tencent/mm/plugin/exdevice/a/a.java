@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.exdevice.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x;
-import com.tencent.mm.ak.x.a;
-import com.tencent.mm.protocal.protobuf.blx;
-import com.tencent.mm.protocal.protobuf.bly;
+import com.tencent.mm.ak.aa;
+import com.tencent.mm.ak.aa.a;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.protocal.protobuf.byi;
+import com.tencent.mm.protocal.protobuf.byj;
 
 public final class a
   implements b
@@ -14,20 +16,20 @@ public final class a
   public final void a(final b.a parama)
   {
     AppMethodBeat.i(169753);
-    com.tencent.mm.ak.b.a locala = new com.tencent.mm.ak.b.a();
-    locala.hQF = new blx();
-    locala.hQG = new bly();
+    d.a locala = new d.a();
+    locala.iLN = new byi();
+    locala.iLO = new byj();
     locala.uri = "/cgi-bin/mmoc-bin/hardware/getwerunuserstate";
     locala.funcId = 1926;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    x.a(locala.aDS(), new x.a()
+    aa.a(locala.aXF(), new aa.a()
     {
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb, n paramAnonymousn)
+      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd, q paramAnonymousq)
       {
         boolean bool2 = true;
         AppMethodBeat.i(169752);
-        if (paramAnonymousn.getType() != 1926)
+        if (paramAnonymousq.getType() != 1926)
         {
           AppMethodBeat.o(169752);
           return 0;
@@ -35,8 +37,8 @@ public final class a
         boolean bool1;
         if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
         {
-          paramAnonymousString = (bly)paramAnonymousb.hQE.hQJ;
-          if ((paramAnonymousString != null) && (paramAnonymousString.GZb)) {
+          paramAnonymousString = (byj)paramAnonymousd.iLL.iLR;
+          if ((paramAnonymousString != null) && (paramAnonymousString.MdT)) {
             bool1 = true;
           }
         }

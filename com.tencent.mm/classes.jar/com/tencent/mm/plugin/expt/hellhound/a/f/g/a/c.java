@@ -4,10 +4,10 @@ import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.f.c.l;
 import com.tencent.mm.plugin.expt.hellhound.a.f.c.m;
-import com.tencent.mm.protocal.protobuf.bou;
-import com.tencent.mm.protocal.protobuf.cie;
-import com.tencent.mm.protocal.protobuf.dch;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.cbm;
+import com.tencent.mm.protocal.protobuf.cyl;
+import com.tencent.mm.protocal.protobuf.dvl;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -15,86 +15,86 @@ import java.util.Map;
 
 public final class c
 {
-  boolean rhA;
-  public String rhB;
-  public int rhC;
-  public final Map<String, List<Pair<String, String>>> rhy;
-  public final com.tencent.mm.hellhoundlib.a.c rhz;
+  public final Map<String, List<Pair<String, String>>> sIU;
+  public final com.tencent.mm.hellhoundlib.a.c sIV;
+  boolean sIW;
+  public String sIX;
+  public int sIY;
   
   public c()
   {
     AppMethodBeat.i(122288);
-    this.rhy = new HashMap();
-    this.rhz = new a((byte)0);
-    this.rhA = false;
-    this.rhB = null;
-    this.rhC = 0;
+    this.sIU = new HashMap();
+    this.sIV = new a((byte)0);
+    this.sIW = false;
+    this.sIX = null;
+    this.sIY = 0;
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(Pair.create("finish", "()V"));
     localArrayList.add(Pair.create("dealContentView", "(Landroid/view/View;)V"));
     localArrayList.add(Pair.create("onKeyDown", "(ILandroid/view/KeyEvent;)Z"));
-    this.rhy.put("com/tencent/mm/plugin/voip/ui/VideoActivity", localArrayList);
+    this.sIU.put("com/tencent/mm/plugin/voip/ui/VideoActivity", localArrayList);
     AppMethodBeat.o(122288);
   }
   
-  private static void b(cie paramcie, long paramLong)
+  public static void Dy(long paramLong)
+  {
+    AppMethodBeat.i(184392);
+    Log.i("HABBYGE-MALI.VoipFloatSession", "onVoipSessionExit");
+    Dz(paramLong);
+    dvl localdvl = l.cQD();
+    if (localdvl == null)
+    {
+      AppMethodBeat.o(184392);
+      return;
+    }
+    if (localdvl.MWw) {
+      b(localdvl.MWs, paramLong);
+    }
+    AppMethodBeat.o(184392);
+  }
+  
+  private static void Dz(long paramLong)
+  {
+    AppMethodBeat.i(122290);
+    cyl localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQo();
+    if (localcyl == null)
+    {
+      Log.e("HABBYGE-MALI.VoipFloatSession", "_exitVoipSession, 不是合法session !!!");
+      AppMethodBeat.o(122290);
+      return;
+    }
+    Log.i("HABBYGE-MALI.VoipFloatSession", "_exitVoipSession, curSession: %s", new Object[] { localcyl.sessionId });
+    com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO().a(localcyl, paramLong);
+    AppMethodBeat.o(122290);
+  }
+  
+  private static void b(cyl paramcyl, long paramLong)
   {
     AppMethodBeat.i(122291);
-    String str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.afC(paramcie.sessionId);
+    String str = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.aqn(paramcyl.sessionId);
     if (str == null)
     {
       AppMethodBeat.o(122291);
       return;
     }
-    cie localcie = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.a(paramcie, str + "_" + paramLong, paramLong);
-    paramcie = com.tencent.mm.plugin.expt.hellhound.core.b.aes(paramcie.sessionId);
-    if (paramcie != null)
+    cyl localcyl = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.a(paramcyl, str + "_" + paramLong, paramLong);
+    paramcyl = com.tencent.mm.plugin.expt.hellhound.core.b.aoF(paramcyl.sessionId);
+    if (paramcyl != null)
     {
-      ae.i("HABBYGE-MALI.VoipFloatSession", "restoreLastSesssion, curPage: %s, %s", new Object[] { paramcie.duQ, paramcie.dAa });
-      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcie, paramcie.duQ, paramcie.aHQ, paramLong);
+      Log.i("HABBYGE-MALI.VoipFloatSession", "restoreLastSesssion, curPage: %s, %s", new Object[] { paramcyl.dMl, paramcyl.dRM });
+      com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a(localcyl, paramcyl.dMl, paramcyl.aHK, paramLong);
     }
-    str = m.crj();
-    paramcie = str;
+    str = m.cPR();
+    paramcyl = str;
     if (str == null) {
-      paramcie = "";
+      paramcyl = "";
     }
-    localcie.sCx = paramcie;
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(localcie);
-    com.tencent.mm.plugin.expt.hellhound.a.f.b.crg();
-    com.tencent.mm.plugin.expt.hellhound.a.f.b.e(localcie);
+    localcyl.kvy = paramcyl;
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.c.l(localcyl);
+    com.tencent.mm.plugin.expt.hellhound.a.f.b.cPO();
+    com.tencent.mm.plugin.expt.hellhound.a.f.b.e(localcyl);
     AppMethodBeat.o(122291);
-  }
-  
-  public static void vu(long paramLong)
-  {
-    AppMethodBeat.i(184392);
-    ae.i("HABBYGE-MALI.VoipFloatSession", "onVoipSessionExit");
-    vv(paramLong);
-    dch localdch = l.crV();
-    if (localdch == null)
-    {
-      AppMethodBeat.o(184392);
-      return;
-    }
-    if (localdch.HKN) {
-      b(localdch.HKJ, paramLong);
-    }
-    AppMethodBeat.o(184392);
-  }
-  
-  private static void vv(long paramLong)
-  {
-    AppMethodBeat.i(122290);
-    cie localcie = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crG();
-    if (localcie == null)
-    {
-      ae.e("HABBYGE-MALI.VoipFloatSession", "_exitVoipSession, 不是合法session !!!");
-      AppMethodBeat.o(122290);
-      return;
-    }
-    ae.i("HABBYGE-MALI.VoipFloatSession", "_exitVoipSession, curSession: %s", new Object[] { localcie.sessionId });
-    com.tencent.mm.plugin.expt.hellhound.a.f.b.crg().a(localcie, paramLong);
-    AppMethodBeat.o(122290);
   }
   
   final class a
@@ -109,15 +109,15 @@ public final class c
       AppMethodBeat.i(184391);
       if (paramObject != null)
       {
-        c.this.rhB = paramObject.getClass().getCanonicalName();
-        c.this.rhC = paramObject.hashCode();
+        c.this.sIX = paramObject.getClass().getCanonicalName();
+        c.this.sIY = paramObject.hashCode();
       }
       if (("finish".equals(paramString2)) && ("()V".equals(paramString3)))
       {
-        if (!c.this.rhA)
+        if (!c.this.sIW)
         {
-          c.this.rhA = true;
-          com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cpq().l(217, Long.valueOf(System.currentTimeMillis()));
+          c.this.sIW = true;
+          com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(217, Long.valueOf(System.currentTimeMillis()));
           AppMethodBeat.o(184391);
         }
       }
@@ -125,8 +125,8 @@ public final class c
       {
         if (("dealContentView".equals(paramString2)) && ("(Landroid/view/View;)V".equals(paramString3)))
         {
-          c.this.rhA = false;
-          com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cpq().l(219, Long.valueOf(System.currentTimeMillis()));
+          c.this.sIW = false;
+          com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(219, Long.valueOf(System.currentTimeMillis()));
           AppMethodBeat.o(184391);
           return;
         }
@@ -146,7 +146,7 @@ public final class c
               return;
             }
           }
-          com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cpq().l(218, Long.valueOf(System.currentTimeMillis()));
+          com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(218, Long.valueOf(System.currentTimeMillis()));
         }
       }
       AppMethodBeat.o(184391);

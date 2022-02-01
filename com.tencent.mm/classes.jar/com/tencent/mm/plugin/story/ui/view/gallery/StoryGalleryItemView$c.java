@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.story.ui.view.gallery;
 
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
 final class StoryGalleryItemView$c
   extends q
-  implements b<Integer, z>
+  implements b<Integer, x>
 {
   StoryGalleryItemView$c(b paramb)
   {

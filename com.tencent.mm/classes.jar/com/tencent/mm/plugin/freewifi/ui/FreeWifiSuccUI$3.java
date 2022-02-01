@@ -14,11 +14,11 @@ final class FreeWifiSuccUI$3
     AppMethodBeat.i(25147);
     if (paramBoolean)
     {
-      FreeWifiSuccUI.a(this.tBQ, true);
+      FreeWifiSuccUI.a(this.wSR, true);
       AppMethodBeat.o(25147);
       return;
     }
-    FreeWifiSuccUI.a(this.tBQ, false);
+    FreeWifiSuccUI.a(this.wSR, false);
     AppMethodBeat.o(25147);
   }
 }

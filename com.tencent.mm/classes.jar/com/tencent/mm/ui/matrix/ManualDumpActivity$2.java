@@ -1,15 +1,12 @@
 package com.tencent.mm.ui.matrix;
 
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.view.View;
 import android.view.View.OnLongClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.ClipboardHelper;
 import com.tencent.mm.ui.base.h;
 
 final class ManualDumpActivity$2
@@ -21,10 +18,10 @@ final class ManualDumpActivity$2
   {
     AppMethodBeat.i(38864);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/ui/matrix/ManualDumpActivity$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
-    ((ClipboardManager)ak.getContext().getSystemService("clipboard")).setPrimaryClip(ClipData.newPlainText(null, ManualDumpActivity.a(this.KXO).getText().toString()));
-    h.cm(this.KXO, this.KXO.getString(2131755702));
+    localb.bm(paramView);
+    a.b("com/tencent/mm/ui/matrix/ManualDumpActivity$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+    ClipboardHelper.setText(ManualDumpActivity.a(this.QmI).getText().toString());
+    h.cD(this.QmI, this.QmI.getString(2131755773));
     a.a(true, this, "com/tencent/mm/ui/matrix/ManualDumpActivity$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
     AppMethodBeat.o(38864);
     return true;

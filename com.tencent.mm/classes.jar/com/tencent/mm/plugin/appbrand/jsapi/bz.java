@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import com.tencent.mm.plugin.appbrand.page.ad;
+import com.tencent.mm.plugin.appbrand.page.ac;
 
 public final class bz
-  extends a<ad>
+  extends d<ac>
 {
-  public static final int CTRL_INDEX = 66;
-  public static final String NAME = "reportSubmitForm";
+  public static final int CTRL_INDEX = 0;
+  public static final String NAME = "openLink";
 }
 
 

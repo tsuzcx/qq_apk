@@ -2,52 +2,52 @@ package com.tencent.mm.plugin.webview.model;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.protocal.protobuf.yb;
-import com.tencent.mm.protocal.protobuf.yc;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.zp;
+import com.tencent.mm.protocal.protobuf.zq;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public final class j
 {
-  private final int DXC = 0;
-  private final int DXD = 1;
-  private final int DXE = 2;
-  public LinkedList<String> EkM = null;
-  public boolean nSj = false;
+  private final int IJt = 0;
+  private final int IJu = 1;
+  private final int IJv = 2;
+  public LinkedList<String> IXK = null;
+  public boolean pcZ = false;
   
-  public final int g(final LinkedList<String> paramLinkedList, String paramString)
+  public final int h(final LinkedList<String> paramLinkedList, String paramString)
   {
     AppMethodBeat.i(78869);
     try
     {
       final int[] arrayOfInt = new int[1];
       arrayOfInt[0] = 2;
-      b.a locala = new b.a();
-      locala.hQF = new yb();
-      locala.hQG = new yc();
+      d.a locala = new d.a();
+      locala.iLN = new zp();
+      locala.iLO = new zq();
       locala.uri = "/cgi-bin/micromsg-bin/checktextlanguage";
       locala.funcId = 528;
-      locala.hQH = 0;
+      locala.iLP = 0;
       locala.respCmdId = 0;
-      yb localyb = (yb)locala.aDS().hQD.hQJ;
-      localyb.GpZ = paramLinkedList;
-      localyb.Gqa = paramString;
+      zp localzp = (zp)locala.aXF().iLK.iLR;
+      localzp.LkR = paramLinkedList;
+      localzp.LkS = paramString;
       paramLinkedList = new CountDownLatch(1);
       new Bundle();
-      IPCRunCgi.a(locala.aDS(), new IPCRunCgi.a()
+      IPCRunCgi.a(locala.aXF(), new IPCRunCgi.a()
       {
-        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb)
+        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd)
         {
           AppMethodBeat.i(78868);
-          ae.i("MicroMsg.NetSceneCheckTextLanguage", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+          Log.i("MicroMsg.NetSceneCheckTextLanguage", "onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
           arrayOfInt[0] = 2;
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
           {
@@ -55,8 +55,8 @@ public final class j
             AppMethodBeat.o(78868);
             return;
           }
-          paramAnonymousString = (yc)paramAnonymousb.hQE.hQJ;
-          if (paramAnonymousString.Gqc == 1) {
+          paramAnonymousString = (zq)paramAnonymousd.iLL.iLR;
+          if (paramAnonymousString.LkU == 1) {
             arrayOfInt[0] = 0;
           }
           for (;;)
@@ -64,7 +64,7 @@ public final class j
             paramLinkedList.countDown();
             AppMethodBeat.o(78868);
             return;
-            if (paramAnonymousString.Gqc == 2) {
+            if (paramAnonymousString.LkU == 2) {
               arrayOfInt[0] = 1;
             }
           }
@@ -73,7 +73,7 @@ public final class j
       try
       {
         paramLinkedList.await(1000L, TimeUnit.MILLISECONDS);
-        ae.i("MicroMsg.NetSceneCheckTextLanguage", "CheckTextLanguage end");
+        Log.i("MicroMsg.NetSceneCheckTextLanguage", "CheckTextLanguage end");
         int i = arrayOfInt[0];
         AppMethodBeat.o(78869);
         return i;
@@ -82,15 +82,15 @@ public final class j
       {
         for (;;)
         {
-          ae.w("MicroMsg.NetSceneCheckTextLanguage", paramLinkedList.getMessage());
-          ae.printErrStackTrace("MicroMsg.NetSceneCheckTextLanguage", paramLinkedList, "", new Object[0]);
+          Log.w("MicroMsg.NetSceneCheckTextLanguage", paramLinkedList.getMessage());
+          Log.printErrStackTrace("MicroMsg.NetSceneCheckTextLanguage", paramLinkedList, "", new Object[0]);
         }
       }
       return 2;
     }
     catch (Exception paramLinkedList)
     {
-      ae.e("MicroMsg.NetSceneCheckTextLanguage", "CheckTextLanguage failed");
+      Log.e("MicroMsg.NetSceneCheckTextLanguage", "CheckTextLanguage failed");
       AppMethodBeat.o(78869);
     }
   }

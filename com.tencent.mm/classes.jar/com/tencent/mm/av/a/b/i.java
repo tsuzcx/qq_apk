@@ -5,7 +5,7 @@ import com.tencent.mm.av.a.c.l;
 public final class i
   implements l
 {
-  public final void sw(long paramLong) {}
+  public final void AC(long paramLong) {}
 }
 
 

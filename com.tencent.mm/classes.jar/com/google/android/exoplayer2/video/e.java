@@ -25,7 +25,7 @@ public abstract interface e
   
   public static final class a
   {
-    final e bID;
+    final e bIT;
     final Handler handler;
     
     public a(Handler paramHandler, e parame)
@@ -35,7 +35,7 @@ public abstract interface e
       for (paramHandler = (Handler)a.checkNotNull(paramHandler);; paramHandler = null)
       {
         this.handler = paramHandler;
-        this.bID = parame;
+        this.bIT = parame;
         AppMethodBeat.o(93316);
         return;
       }
@@ -44,13 +44,13 @@ public abstract interface e
     public final void b(final int paramInt1, final int paramInt2, final int paramInt3, final float paramFloat)
     {
       AppMethodBeat.i(93318);
-      if (this.bID != null) {
+      if (this.bIT != null) {
         this.handler.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(93313);
-            e.a.this.bID.a(paramInt1, paramInt2, paramInt3, paramFloat);
+            e.a.this.bIT.a(paramInt1, paramInt2, paramInt3, paramFloat);
             AppMethodBeat.o(93313);
           }
         });
@@ -61,13 +61,13 @@ public abstract interface e
     public final void d(final Surface paramSurface)
     {
       AppMethodBeat.i(93319);
-      if (this.bID != null) {
+      if (this.bIT != null) {
         this.handler.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(93314);
-            e.a.this.bID.c(paramSurface);
+            e.a.this.bIT.c(paramSurface);
             AppMethodBeat.o(93314);
           }
         });
@@ -78,13 +78,13 @@ public abstract interface e
     public final void e(final d paramd)
     {
       AppMethodBeat.i(93320);
-      if (this.bID != null) {
+      if (this.bIT != null) {
         this.handler.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(93315);
-            e.a.this.bID.b(paramd);
+            e.a.this.bIT.b(paramd);
             AppMethodBeat.o(93315);
           }
         });
@@ -92,16 +92,16 @@ public abstract interface e
       AppMethodBeat.o(93320);
     }
     
-    public final void l(final int paramInt, final long paramLong)
+    public final void m(final int paramInt, final long paramLong)
     {
       AppMethodBeat.i(93317);
-      if (this.bID != null) {
+      if (this.bIT != null) {
         this.handler.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(93312);
-            e.a.this.bID.h(paramInt, paramLong);
+            e.a.this.bIT.h(paramInt, paramLong);
             AppMethodBeat.o(93312);
           }
         });
@@ -112,7 +112,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.video.e
  * JD-Core Version:    0.7.0.1
  */

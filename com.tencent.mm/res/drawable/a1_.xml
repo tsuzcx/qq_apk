@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:drawable="@drawable/bnp" />
-    <item android:state_pressed="true" android:drawable="@drawable/bnp" />
-    <item android:state_selected="true" android:drawable="@drawable/bnp" />
-    <item android:drawable="@drawable/bno" />
-</selector>
+    <gradient android:startColor="@color/BW_BG_20" android:endColor="@color/ac_" android:angle="90.0" />
+</shape>

@@ -10,7 +10,7 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.f.b;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMBaseActivity;
 import com.tencent.mm.ui.widget.a.d.a;
 
@@ -18,14 +18,14 @@ import com.tencent.mm.ui.widget.a.d.a;
 public class FileDownloadConfirmUI
   extends MMBaseActivity
 {
-  private com.tencent.mm.ui.widget.a.d iNf = null;
+  private com.tencent.mm.ui.widget.a.d jzT = null;
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(89126);
     super.onCreate(paramBundle);
-    setContentView(2131493834);
-    if (com.tencent.mm.compatible.util.d.lA(21)) {
+    setContentView(2131493988);
+    if (com.tencent.mm.compatible.util.d.oD(21)) {
       getWindow().setStatusBarColor(0);
     }
     final long l = getIntent().getLongExtra("extra_download_id", -1L);
@@ -34,8 +34,8 @@ public class FileDownloadConfirmUI
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(89124);
-        f.cdA().ui(l);
-        ae.i("MicroMsg.FileDownloadConfirmUI", "Remove task: %d", new Object[] { Long.valueOf(l) });
+        f.cBv().Cn(l);
+        Log.i("MicroMsg.FileDownloadConfirmUI", "Remove task: %d", new Object[] { Long.valueOf(l) });
         AppMethodBeat.o(89124);
       }
     };
@@ -53,28 +53,28 @@ public class FileDownloadConfirmUI
       }
     };
     d.a locala = new d.a(this);
-    locala.aZh("");
-    locala.afR(2131759048);
-    locala.afU(2131755939).c(paramBundle);
-    locala.afV(2131755831).d((DialogInterface.OnClickListener)localObject);
+    locala.bon("");
+    locala.aoS(2131759376);
+    locala.aoV(2131756033).c(paramBundle);
+    locala.aoW(2131755917).d((DialogInterface.OnClickListener)localObject);
     locala.a(local3);
-    this.iNf = locala.fQv();
-    this.iNf.show();
-    paramBundle = com.tencent.mm.plugin.downloader.model.d.ur(l);
+    this.jzT = locala.hbn();
+    this.jzT.show();
+    paramBundle = com.tencent.mm.plugin.downloader.model.d.Cw(l);
     if (paramBundle != null)
     {
       localObject = new b();
       ((b)localObject).k(paramBundle);
       com.tencent.mm.plugin.downloader.f.a.a(19, (b)localObject);
     }
-    ae.i("MicroMsg.FileDownloadConfirmUI", "Confirm Dialog");
+    Log.i("MicroMsg.FileDownloadConfirmUI", "Confirm Dialog");
     AppMethodBeat.o(89126);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(89127);
-    ae.i("MicroMsg.FileDownloadConfirmUI", "onNewIntent");
+    Log.i("MicroMsg.FileDownloadConfirmUI", "onNewIntent");
     AppMethodBeat.o(89127);
   }
   
@@ -82,7 +82,7 @@ public class FileDownloadConfirmUI
   {
     AppMethodBeat.i(89128);
     super.onStop();
-    this.iNf.dismiss();
+    this.jzT.dismiss();
     AppMethodBeat.o(89128);
   }
   
@@ -94,7 +94,7 @@ public class FileDownloadConfirmUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.ui.FileDownloadConfirmUI
  * JD-Core Version:    0.7.0.1
  */

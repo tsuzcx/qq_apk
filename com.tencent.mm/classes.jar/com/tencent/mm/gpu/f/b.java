@@ -9,18 +9,18 @@ import java.io.InputStreamReader;
 
 public final class b
 {
-  public static int ahl()
+  public static int axx()
   {
-    AppMethodBeat.i(209682);
+    AppMethodBeat.i(186214);
     try
     {
       int i = Integer.parseInt(new BufferedReader(new InputStreamReader(new FileInputStream(new File("/proc/self/oom_score")))).readLine());
-      AppMethodBeat.o(209682);
+      AppMethodBeat.o(186214);
       return i;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      AppMethodBeat.o(209682);
+      AppMethodBeat.o(186214);
       return -4398;
     }
     catch (IOException localIOException)
@@ -32,7 +32,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.gpu.f.b
  * JD-Core Version:    0.7.0.1
  */

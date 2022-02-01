@@ -5,75 +5,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class cwm
   extends com.tencent.mm.bw.a
 {
-  public String Hxp;
-  public int gvx;
-  public String uqf;
+  public String jHa;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117905);
+    AppMethodBeat.i(152652);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Hxp != null) {
-        paramVarArgs.d(1, this.Hxp);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.jHa != null) {
+        paramVarArgs.e(1, this.jHa);
       }
-      paramVarArgs.aS(2, this.gvx);
-      if (this.uqf != null) {
-        paramVarArgs.d(3, this.uqf);
-      }
-      AppMethodBeat.o(117905);
+      AppMethodBeat.o(152652);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Hxp == null) {
-        break label318;
+      if (this.jHa == null) {
+        break label213;
       }
     }
-    label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Hxp) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = g.a.a.b.b.a.f(1, this.jHa) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.gvx);
-      paramInt = i;
-      if (this.uqf != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.uqf);
-      }
-      AppMethodBeat.o(117905);
+      AppMethodBeat.o(152652);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(117905);
+        AppMethodBeat.o(152652);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         cwm localcwm = (cwm)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(117905);
+          AppMethodBeat.o(152652);
           return -1;
-        case 1: 
-          localcwm.Hxp = locala.OmT.readString();
-          AppMethodBeat.o(117905);
-          return 0;
-        case 2: 
-          localcwm.gvx = locala.OmT.zc();
-          AppMethodBeat.o(117905);
-          return 0;
         }
-        localcwm.uqf = locala.OmT.readString();
-        AppMethodBeat.o(117905);
+        localcwm.jHa = locala.UbS.readString();
+        AppMethodBeat.o(152652);
         return 0;
       }
-      AppMethodBeat.o(117905);
+      AppMethodBeat.o(152652);
       return -1;
     }
   }

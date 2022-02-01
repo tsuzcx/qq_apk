@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/b4" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<android.support.v7.widget.ActionBarContainer android:gravity="top" android:id="@id/c_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:touchscreenBlocksFocus="true" style="@style/lo"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/Link" android:ellipsize="end" android:id="@id/ed" android:padding="@dimen/hk" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-    <View android:id="@id/ec" android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/hu" android:layout_marginRight="@dimen/hu" />
-</LinearLayout>
+    <android.support.v7.widget.Toolbar android:id="@id/c7" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?a3h" />
+    <android.support.v7.widget.ActionBarContextView android:theme="?a5" android:id="@id/cn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?am" />
+</android.support.v7.widget.ActionBarContainer>

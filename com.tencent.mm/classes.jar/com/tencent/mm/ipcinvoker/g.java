@@ -7,11 +7,11 @@ import junit.framework.Assert;
 
 public final class g
 {
-  private static String gAl;
+  private static String hna;
   public static Context sContext;
   
   /* Error */
-  private static String C(Context paramContext, int paramInt)
+  private static String F(Context paramContext, int paramInt)
   {
     // Byte code:
     //   0: ldc 13
@@ -200,13 +200,25 @@ public final class g
     //   162	175	288	java/lang/Exception
   }
   
-  public static String ahM()
+  public static boolean Fp(String paramString)
+  {
+    AppMethodBeat.i(158732);
+    if ((paramString != null) && (paramString.equals(axZ())))
+    {
+      AppMethodBeat.o(158732);
+      return true;
+    }
+    AppMethodBeat.o(158732);
+    return false;
+  }
+  
+  public static String axZ()
   {
     AppMethodBeat.i(158733);
-    if ((gAl == null) || (gAl.length() == 0)) {
-      gAl = C(sContext, Process.myPid());
+    if ((hna == null) || (hna.length() == 0)) {
+      hna = F(sContext, Process.myPid());
     }
-    String str = gAl;
+    String str = hna;
     AppMethodBeat.o(158733);
     return str;
   }
@@ -219,22 +231,10 @@ public final class g
     AppMethodBeat.o(158731);
     return localContext;
   }
-  
-  public static boolean xd(String paramString)
-  {
-    AppMethodBeat.i(158732);
-    if ((paramString != null) && (paramString.equals(ahM())))
-    {
-      AppMethodBeat.o(158732);
-      return true;
-    }
-    AppMethodBeat.o(158732);
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.g
  * JD-Core Version:    0.7.0.1
  */

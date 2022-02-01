@@ -16,8 +16,8 @@ import com.tencent.mm.ae.a.a;
 public class MMVerticalTextView
   extends View
 {
-  Rect JJd;
-  private TextPaint ayp;
+  Rect OTT;
+  private TextPaint ayn;
   private int direction;
   private String mText;
   
@@ -25,12 +25,12 @@ public class MMVerticalTextView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142251);
-    this.JJd = new Rect();
-    this.ayp = new TextPaint();
-    this.ayp.setAntiAlias(true);
-    this.ayp.setTextSize(15.0F);
-    this.ayp.setColor(-16777216);
-    this.ayp.setTextAlign(Paint.Align.CENTER);
+    this.OTT = new Rect();
+    this.ayn = new TextPaint();
+    this.ayn.setAntiAlias(true);
+    this.ayn.setTextSize(15.0F);
+    this.ayn.setColor(-16777216);
+    this.ayn.setTextAlign(Paint.Align.CENTER);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.verticaltextview);
     int i = paramAttributeSet.getResourceId(1, 0);
     if (i != 0) {
@@ -38,12 +38,12 @@ public class MMVerticalTextView
     }
     i = paramAttributeSet.getDimensionPixelOffset(4, 15);
     if (i > 0) {
-      this.ayp.setTextSize(i);
+      this.ayn.setTextSize(i);
     }
-    this.ayp.setColor(paramAttributeSet.getColor(3, -16777216));
+    this.ayn.setColor(paramAttributeSet.getColor(3, -16777216));
     this.direction = paramAttributeSet.getInt(0, 0);
     boolean bool = paramAttributeSet.getBoolean(2, false);
-    this.ayp.setFakeBoldText(bool);
+    this.ayn.setFakeBoldText(bool);
     paramAttributeSet.recycle();
     requestLayout();
     invalidate();
@@ -59,16 +59,16 @@ public class MMVerticalTextView
     int j;
     if (this.direction == 0)
     {
-      j = (getWidth() >> 1) - (this.JJd.height() >> 1);
+      j = (getWidth() >> 1) - (this.OTT.height() >> 1);
       localPath.moveTo(j, 0.0F);
       localPath.lineTo(j, i);
     }
     for (;;)
     {
-      paramCanvas.drawTextOnPath(this.mText, localPath, 0.0F, 0.0F, this.ayp);
+      paramCanvas.drawTextOnPath(this.mText, localPath, 0.0F, 0.0F, this.ayn);
       AppMethodBeat.o(142256);
       return;
-      j = (getWidth() >> 1) + (this.JJd.height() >> 1);
+      j = (getWidth() >> 1) + (this.OTT.height() >> 1);
       localPath.moveTo(j, i);
       localPath.lineTo(j, 0.0F);
     }
@@ -77,7 +77,7 @@ public class MMVerticalTextView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(142255);
-    this.ayp.getTextBounds(this.mText, 0, this.mText.length(), this.JJd);
+    this.ayn.getTextBounds(this.mText, 0, this.mText.length(), this.OTT);
     int j = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     if (j == 1073741824) {}
@@ -92,13 +92,13 @@ public class MMVerticalTextView
         setMeasuredDimension(paramInt1, paramInt2);
         AppMethodBeat.o(142255);
         return;
-        i = this.JJd.height();
+        i = this.OTT.height();
         if (j != -2147483648) {
           break label138;
         }
         paramInt1 = Math.min(i, paramInt1);
         break;
-        i = (int)Math.ceil(this.ayp.measureText(this.mText));
+        i = (int)Math.ceil(this.ayn.measureText(this.mText));
         if (j == -2147483648) {
           paramInt2 = Math.min(i, paramInt2);
         } else {
@@ -108,6 +108,13 @@ public class MMVerticalTextView
       label138:
       paramInt1 = i;
     }
+  }
+  
+  public void setMediumBold(boolean paramBoolean)
+  {
+    AppMethodBeat.i(205252);
+    this.ayn.setFakeBoldText(paramBoolean);
+    AppMethodBeat.o(205252);
   }
   
   public void setText(String paramString)
@@ -122,7 +129,7 @@ public class MMVerticalTextView
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(142254);
-    this.ayp.setColor(paramInt);
+    this.ayn.setColor(paramInt);
     invalidate();
     AppMethodBeat.o(142254);
   }
@@ -130,7 +137,7 @@ public class MMVerticalTextView
   public void setTextSize(int paramInt)
   {
     AppMethodBeat.i(142253);
-    this.ayp.setTextSize(paramInt);
+    this.ayn.setTextSize(paramInt);
     requestLayout();
     invalidate();
     AppMethodBeat.o(142253);
@@ -138,7 +145,7 @@ public class MMVerticalTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMVerticalTextView
  * JD-Core Version:    0.7.0.1
  */

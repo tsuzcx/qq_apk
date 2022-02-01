@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape>
-            <solid android:color="@color/a8" />
-            <corners android:bottomLeftRadius="8.0dip" android:bottomRightRadius="8.0dip" />
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <solid android:color="@color/BW_100_Alpha_0_1" />
-            <corners android:bottomLeftRadius="8.0dip" android:bottomRightRadius="8.0dip" />
-        </shape>
-    </item>
+    <item android:state_focused="true" android:drawable="@drawable/bi0" />
+    <item android:state_pressed="true" android:drawable="@drawable/bi0" />
+    <item android:state_selected="true" android:drawable="@drawable/bi0" />
+    <item android:drawable="@drawable/bhz" />
 </selector>

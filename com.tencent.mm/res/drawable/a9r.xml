@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/actionbar_icon_dark_clear" />
-    <item android:drawable="@raw/actionbar_icon_dark_clear" />
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:topLeftRadius="@dimen/lq" android:topRightRadius="@dimen/lq" />
+            <solid android:color="@color/BW_0_Alpha_0_1" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:topLeftRadius="@dimen/lq" android:topRightRadius="@dimen/lq" />
+            <solid android:color="@color/BW_97" />
+        </shape>
+    </item>
 </selector>

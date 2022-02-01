@@ -2,17 +2,17 @@ package com.tencent.mm.ipcinvoker.wx_extension;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class PluginIPC$a
   implements a
 {
-  static final a gAO;
+  static final a hnD;
   
   static
   {
     AppMethodBeat.i(146421);
-    gAO = new a();
+    hnD = new a();
     AppMethodBeat.o(146421);
   }
   
@@ -26,28 +26,28 @@ final class PluginIPC$a
     {
       AppMethodBeat.o(146420);
       return;
-      ae.v(paramString1, paramString2, paramVarArgs);
+      Log.v(paramString1, paramString2, paramVarArgs);
       AppMethodBeat.o(146420);
       return;
-      ae.d(paramString1, paramString2, paramVarArgs);
+      Log.d(paramString1, paramString2, paramVarArgs);
       AppMethodBeat.o(146420);
       return;
-      ae.i(paramString1, paramString2, paramVarArgs);
+      Log.i(paramString1, paramString2, paramVarArgs);
       AppMethodBeat.o(146420);
       return;
-      ae.w(paramString1, paramString2, paramVarArgs);
+      Log.w(paramString1, paramString2, paramVarArgs);
       AppMethodBeat.o(146420);
       return;
-      ae.e(paramString1, paramString2, paramVarArgs);
+      Log.e(paramString1, paramString2, paramVarArgs);
       AppMethodBeat.o(146420);
       return;
-      ae.e(paramString1, paramString2, paramVarArgs);
+      Log.e(paramString1, paramString2, paramVarArgs);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.PluginIPC.a
  * JD-Core Version:    0.7.0.1
  */

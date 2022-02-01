@@ -1,66 +1,66 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/ABAVideoInfo;", "", "path", "", "videoStart", "", "videoEnd", "(Ljava/lang/String;JJ)V", "getPath", "()Ljava/lang/String;", "getVideoEnd", "()J", "getVideoStart", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/ABAVideoInfo;", "", "path", "", "videoStart", "", "videoEnd", "(Ljava/lang/String;JJ)V", "getPath", "()Ljava/lang/String;", "getVideoEnd", "()J", "getVideoStart", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-vlog_release"})
 public final class b
 {
-  final long BWo;
-  final long BWp;
+  final long GwX;
+  final long GwY;
   final String path;
   
   public b(String paramString, long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(191140);
+    AppMethodBeat.i(190476);
     this.path = paramString;
-    this.BWo = paramLong1;
-    this.BWp = paramLong2;
-    AppMethodBeat.o(191140);
+    this.GwX = paramLong1;
+    this.GwY = paramLong2;
+    AppMethodBeat.o(190476);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(191143);
+    AppMethodBeat.i(190479);
     if (this != paramObject)
     {
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((!p.i(this.path, paramObject.path)) || (this.BWo != paramObject.BWo) || (this.BWp != paramObject.BWp)) {}
+        if ((!p.j(this.path, paramObject.path)) || (this.GwX != paramObject.GwX) || (this.GwY != paramObject.GwY)) {}
       }
     }
     else
     {
-      AppMethodBeat.o(191143);
+      AppMethodBeat.o(190479);
       return true;
     }
-    AppMethodBeat.o(191143);
+    AppMethodBeat.o(190479);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(191142);
+    AppMethodBeat.i(190478);
     String str = this.path;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
-      long l = this.BWo;
+      long l = this.GwX;
       int j = (int)(l ^ l >>> 32);
-      l = this.BWp;
+      l = this.GwY;
       int k = (int)(l ^ l >>> 32);
-      AppMethodBeat.o(191142);
+      AppMethodBeat.o(190478);
       return (i * 31 + j) * 31 + k;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(191141);
-    String str = "ABAVideoInfo(path=" + this.path + ", videoStart=" + this.BWo + ", videoEnd=" + this.BWp + ")";
-    AppMethodBeat.o(191141);
+    AppMethodBeat.i(190477);
+    String str = "ABAVideoInfo(path=" + this.path + ", videoStart=" + this.GwX + ", videoEnd=" + this.GwY + ")";
+    AppMethodBeat.o(190477);
     return str;
   }
 }

@@ -1,58 +1,31 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.a.a;
-import d.d.a.b;
-import d.d.d;
-import d.d.e;
-import d.d.f;
-import d.d.f.c;
-import d.g.b.p;
-import d.z;
+import kotlin.l;
+import kotlin.x;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"delay", "Lkotlinx/coroutines/Delay;", "Lkotlin/coroutines/CoroutineContext;", "getDelay", "(Lkotlin/coroutines/CoroutineContext;)Lkotlinx/coroutines/Delay;", "", "timeMillis", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
-public final class at
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/Delay;", "", "delay", "", "time", "", "(JLkotlin/coroutines/Continuation;)Ljava/lang/Object;", "invokeOnTimeout", "Lkotlinx/coroutines/DisposableHandle;", "timeMillis", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "scheduleResumeAfterDelay", "continuation", "Lkotlinx/coroutines/CancellableContinuation;", "kotlinx-coroutines-core"})
+public abstract interface at
 {
-  public static final Object a(long paramLong, d<? super z> paramd)
-  {
-    AppMethodBeat.i(118246);
-    if (paramLong <= 0L)
-    {
-      paramd = z.Nhr;
-      AppMethodBeat.o(118246);
-      return paramd;
-    }
-    Object localObject = new l(b.d(paramd));
-    k localk = (k)localObject;
-    c(localk.gkg()).a(paramLong, localk);
-    localObject = ((l)localObject).getResult();
-    if (localObject == a.Nif) {
-      p.h(paramd, "frame");
-    }
-    AppMethodBeat.o(118246);
-    return localObject;
-  }
+  public abstract void a(long paramLong, k<? super x> paramk);
   
-  private static as c(f paramf)
+  public abstract bc d(long paramLong, Runnable paramRunnable);
+  
+  @l(hxD={1, 1, 16})
+  public static final class a
   {
-    AppMethodBeat.i(118247);
-    Object localObject = paramf.get((f.c)e.NhY);
-    paramf = (f)localObject;
-    if (!(localObject instanceof as)) {
-      paramf = null;
+    public static bc e(long paramLong, Runnable paramRunnable)
+    {
+      AppMethodBeat.i(192329);
+      paramRunnable = aq.hMR().d(paramLong, paramRunnable);
+      AppMethodBeat.o(192329);
+      return paramRunnable;
     }
-    localObject = (as)paramf;
-    paramf = (f)localObject;
-    if (localObject == null) {
-      paramf = ap.gzM();
-    }
-    AppMethodBeat.o(118247);
-    return paramf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.at
  * JD-Core Version:    0.7.0.1
  */

@@ -2,19 +2,22 @@ package com.tencent.mm.plugin.appbrand.jsapi.bio.face;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.luggage.h.e.c;
+import com.tencent.luggage.h.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.plugin.appbrand.jsapi.nfc.c;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class a
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<h>
+  extends d<k>
 {
-  protected abstract boolean bjK();
+  protected abstract boolean bFa();
   
-  protected abstract String bjL();
+  protected abstract String bFb();
   
-  protected boolean bjM()
+  protected boolean bFc()
   {
     return true;
   }

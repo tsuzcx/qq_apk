@@ -21,51 +21,51 @@ import com.tencent.mm.plugin.appbrand.utils.a;
 import com.tencent.mm.plugin.appbrand.utils.a.a;
 import com.tencent.mm.plugin.appbrand.utils.ac;
 import com.tencent.mm.plugin.appbrand.utils.q;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class c
   extends FrameLayout
 {
   private boolean isAnimating;
-  TextView lEx;
-  private com.tencent.mm.plugin.appbrand.jsapi.p.c nqa;
-  private FrameLayout nqb;
-  View nqc;
-  View nqd;
-  View nqe;
-  private a nqf;
-  private boolean nqg;
-  private View nqh;
-  View nqi;
-  private b nqj;
-  private q nqk;
+  TextView mMg;
+  private com.tencent.mm.plugin.appbrand.jsapi.r.c ozH;
+  private FrameLayout ozI;
+  View ozJ;
+  View ozK;
+  View ozL;
+  private a ozM;
+  private boolean ozN;
+  private View ozO;
+  View ozP;
+  private b ozQ;
+  private q ozR;
   
   public c(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(138049);
-    this.nqk = null;
+    this.ozR = null;
     setClickable(true);
     setLongClickable(true);
     paramContext = new FrameLayout.LayoutParams(-1, -2);
     paramContext.gravity = 80;
-    this.nqh = LayoutInflater.from(getContext()).inflate(2131493021, this, false);
-    this.nqb = ((FrameLayout)this.nqh.findViewById(2131296792));
-    this.nqi = this.nqh.findViewById(2131296790);
-    this.nqd = this.nqh.findViewById(2131303266);
-    this.nqe = this.nqd.findViewById(2131306423);
-    bGe();
-    this.nqd.findViewById(2131297573).setOnClickListener(new c.4(this));
-    this.nqd.findViewById(2131297572).setOnClickListener(new c.5(this));
-    this.nqd.setOnClickListener(new c.6(this));
-    View localView = this.nqh.findViewById(2131296792);
+    this.ozO = LayoutInflater.from(getContext()).inflate(2131493060, this, false);
+    this.ozI = ((FrameLayout)this.ozO.findViewById(2131296874));
+    this.ozP = this.ozO.findViewById(2131296872);
+    this.ozK = this.ozO.findViewById(2131305938);
+    this.ozL = this.ozK.findViewById(2131309854);
+    ccu();
+    this.ozK.findViewById(2131297812).setOnClickListener(new c.4(this));
+    this.ozK.findViewById(2131297811).setOnClickListener(new c.5(this));
+    this.ozK.setOnClickListener(new c.6(this));
+    View localView = this.ozO.findViewById(2131296874);
     localView.setOnClickListener(new c.7(this));
     localView.setBackgroundColor(b.n(localView.getContext(), 2131099653));
-    addView(this.nqh, paramContext);
-    this.lEx = ((TextView)findViewById(2131296789));
-    this.lEx.setClickable(true);
-    this.nqc = findViewById(2131296788);
+    addView(this.ozO, paramContext);
+    this.mMg = ((TextView)findViewById(2131296871));
+    this.mMg.setClickable(true);
+    this.ozJ = findViewById(2131296870);
     addOnLayoutChangeListener(new View.OnLayoutChangeListener()
     {
       public final void onLayoutChange(View paramAnonymousView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4, int paramAnonymousInt5, int paramAnonymousInt6, int paramAnonymousInt7, int paramAnonymousInt8)
@@ -79,108 +79,108 @@ public class c
     AppMethodBeat.o(138049);
   }
   
-  private boolean aoA()
-  {
-    AppMethodBeat.i(197285);
-    if (ac.mUv == bGf().bxC())
-    {
-      AppMethodBeat.o(197285);
-      return true;
-    }
-    AppMethodBeat.o(197285);
-    return false;
-  }
-  
   private void b(boolean paramBoolean, Object paramObject)
   {
     AppMethodBeat.i(138048);
-    if ((!this.nqg) && (this.nqf != null))
+    if ((!this.ozN) && (this.ozM != null))
     {
-      this.nqg = true;
-      this.nqf.a(paramBoolean, paramObject);
-      this.nqg = false;
+      this.ozN = true;
+      this.ozM.a(paramBoolean, paramObject);
+      this.ozN = false;
     }
     AppMethodBeat.o(138048);
   }
   
-  private void bGc()
+  private void ccs()
   {
-    this.nqf = null;
-    this.nqj = null;
+    this.ozM = null;
+    this.ozQ = null;
   }
   
-  private void bGd()
+  private void cct()
   {
-    AppMethodBeat.i(197283);
-    if (aoA()) {}
-    for (int i = 0;; i = getContext().getResources().getDimensionPixelSize(2131165292))
+    AppMethodBeat.i(193735);
+    if (isLandscape()) {}
+    for (int i = 0;; i = getContext().getResources().getDimensionPixelSize(2131165299))
     {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.nqi.getLayoutParams();
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.ozP.getLayoutParams();
       localLayoutParams.height = i;
-      this.nqi.setLayoutParams(localLayoutParams);
-      AppMethodBeat.o(197283);
+      this.ozP.setLayoutParams(localLayoutParams);
+      AppMethodBeat.o(193735);
       return;
     }
   }
   
-  private void bGe()
+  private void ccu()
   {
-    AppMethodBeat.i(197284);
+    AppMethodBeat.i(193736);
     int k;
     int j;
-    if (aoA())
+    if (isLandscape())
     {
-      k = getContext().getResources().getDimensionPixelSize(2131165289);
-      j = getContext().getResources().getDimensionPixelSize(2131165289);
+      k = getContext().getResources().getDimensionPixelSize(2131165296);
+      j = getContext().getResources().getDimensionPixelSize(2131165296);
     }
-    for (int i = getContext().getResources().getDimensionPixelSize(2131166683);; i = getContext().getResources().getDimensionPixelSize(2131166684))
+    for (int i = getContext().getResources().getDimensionPixelSize(2131166803);; i = getContext().getResources().getDimensionPixelSize(2131166804))
     {
-      ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.nqe.getLayoutParams();
+      ConstraintLayout.LayoutParams localLayoutParams = (ConstraintLayout.LayoutParams)this.ozL.getLayoutParams();
       localLayoutParams.topMargin = k;
       localLayoutParams.bottomMargin = j;
-      this.nqe.setLayoutParams(localLayoutParams);
-      this.nqd.setLayoutParams(new LinearLayout.LayoutParams(-1, i));
-      AppMethodBeat.o(197284);
+      this.ozL.setLayoutParams(localLayoutParams);
+      this.ozK.setLayoutParams(new LinearLayout.LayoutParams(-1, i));
+      AppMethodBeat.o(193736);
       return;
-      k = getContext().getResources().getDimensionPixelSize(2131165296);
-      j = getContext().getResources().getDimensionPixelSize(2131165294);
+      k = getContext().getResources().getDimensionPixelSize(2131165306);
+      j = getContext().getResources().getDimensionPixelSize(2131165303);
     }
   }
   
-  private q bGf()
+  private q ccv()
   {
-    AppMethodBeat.i(197287);
-    if (this.nqk == null)
+    AppMethodBeat.i(193739);
+    if (this.ozR == null)
     {
-      ae.w("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "requireOrientationGetter, orientationGetter is null, use AndroidOrientationGetter as fallback");
-      localObject = a.mTz;
-      this.nqk = a.a.b(null);
+      Log.w("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "requireOrientationGetter, orientationGetter is null, use AndroidOrientationGetter as fallback");
+      localObject = a.ogC;
+      this.ozR = a.a.b(null);
     }
-    Object localObject = this.nqk;
-    AppMethodBeat.o(197287);
+    Object localObject = this.ozR;
+    AppMethodBeat.o(193739);
     return localObject;
   }
   
-  protected final void cP(Object paramObject)
+  private boolean isLandscape()
+  {
+    AppMethodBeat.i(193737);
+    if (ac.ohw == ccv().bTN())
+    {
+      AppMethodBeat.o(193737);
+      return true;
+    }
+    AppMethodBeat.o(193737);
+    return false;
+  }
+  
+  protected final void cY(Object paramObject)
   {
     AppMethodBeat.i(138059);
-    if (this.nqj != null) {
-      this.nqj.cy(paramObject);
+    if (this.ozQ != null) {
+      this.ozQ.cH(paramObject);
     }
     AppMethodBeat.o(138059);
   }
   
   @SuppressLint({"WrongCall"})
-  protected final void ez(int paramInt1, int paramInt2)
+  protected final void eM(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(138054);
     super.onMeasure(paramInt1, paramInt2);
     AppMethodBeat.o(138054);
   }
   
-  public com.tencent.mm.plugin.appbrand.jsapi.p.c getPicker()
+  public com.tencent.mm.plugin.appbrand.jsapi.r.c getPicker()
   {
-    return this.nqa;
+    return this.ozH;
   }
   
   public void hide()
@@ -192,19 +192,19 @@ public class c
       return;
     }
     b(false, null);
-    if (this.nqa != null)
+    if (this.ozH != null)
     {
-      this.nqa.onHide(this);
+      this.ozH.onHide(this);
       this.isAnimating = true;
-      Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772084);
-      this.nqh.startAnimation(localAnimation);
-      startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771993));
+      Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130772105);
+      this.ozO.startAnimation(localAnimation);
+      startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771998));
       localAnimation.setAnimationListener(new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation)
         {
           AppMethodBeat.i(138042);
-          c.this.setBackgroundResource(2131101053);
+          c.this.setBackgroundResource(2131101287);
           c.this.clearAnimation();
           c.b(c.this);
           c.this.requestLayout();
@@ -224,7 +224,7 @@ public class c
   {
     AppMethodBeat.i(138058);
     super.onDetachedFromWindow();
-    bGc();
+    ccs();
     removeAllViews();
     AppMethodBeat.o(138058);
   }
@@ -241,35 +241,35 @@ public class c
   public void setHeader(String paramString)
   {
     AppMethodBeat.i(138056);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      bGd();
-      this.nqi.setVisibility(0);
-      this.lEx.setText("");
-      this.nqc.setVisibility(8);
-      this.lEx.setVisibility(8);
+      cct();
+      this.ozP.setVisibility(0);
+      this.mMg.setText("");
+      this.ozJ.setVisibility(8);
+      this.mMg.setVisibility(8);
       AppMethodBeat.o(138056);
       return;
     }
     String str;
     if ("设置时间".equals(paramString)) {
-      str = getContext().getString(2131755574);
+      str = getContext().getString(2131755617);
     }
     for (;;)
     {
-      this.nqi.setVisibility(8);
-      this.nqc.setVisibility(0);
-      this.lEx.setVisibility(0);
-      this.lEx.setText(str);
+      this.ozP.setVisibility(8);
+      this.ozJ.setVisibility(0);
+      this.mMg.setVisibility(0);
+      this.mMg.setText(str);
       AppMethodBeat.o(138056);
       return;
       if ("设置地区".equals(paramString))
       {
-        str = getContext().getString(2131755573);
+        str = getContext().getString(2131755616);
       }
       else if ("设置日期".equals(paramString))
       {
-        str = getContext().getString(2131755572);
+        str = getContext().getString(2131755615);
       }
       else
       {
@@ -283,42 +283,42 @@ public class c
   
   public void setOnResultListener(a parama)
   {
-    this.nqf = parama;
+    this.ozM = parama;
   }
   
   public void setOnValueUpdateListener(b paramb)
   {
-    this.nqj = paramb;
+    this.ozQ = paramb;
   }
   
   public void setOrientationGetter(q paramq)
   {
-    AppMethodBeat.i(197286);
-    ae.d("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "setOrientationGetter, orientationGetter is " + paramq.getName());
-    this.nqk = paramq;
-    AppMethodBeat.o(197286);
+    AppMethodBeat.i(193738);
+    Log.d("MicroMsg.AppBrand.AppBrandPickerBottomPanelBase", "setOrientationGetter, orientationGetter is " + paramq.getName());
+    this.ozR = paramq;
+    AppMethodBeat.o(193738);
   }
   
-  protected void setPickerImpl(com.tencent.mm.plugin.appbrand.jsapi.p.c paramc)
+  protected void setPickerImpl(com.tencent.mm.plugin.appbrand.jsapi.r.c paramc)
   {
     AppMethodBeat.i(138050);
-    if (this.nqa != null) {
-      this.nqa.onDetach(this);
+    if (this.ozH != null) {
+      this.ozH.onDetach(this);
     }
-    this.nqa = paramc;
-    if (this.nqa != null) {
-      this.nqa.onAttach(this);
+    this.ozH = paramc;
+    if (this.ozH != null) {
+      this.ozH.onAttach(this);
     }
-    if ((this.nqb == null) || (this.nqa == null) || (this.nqa.getView() == null))
+    if ((this.ozI == null) || (this.ozH == null) || (this.ozH.getView() == null))
     {
       AppMethodBeat.o(138050);
       return;
     }
-    this.nqb.removeAllViews();
-    bGc();
+    this.ozI.removeAllViews();
+    ccs();
     paramc = new FrameLayout.LayoutParams(-1, -1);
     paramc.gravity = 17;
-    this.nqb.addView(this.nqa.getView(), paramc);
+    this.ozI.addView(this.ozH.getView(), paramc);
     AppMethodBeat.o(138050);
   }
   
@@ -343,25 +343,25 @@ public class c
       AppMethodBeat.o(138051);
       return;
     }
-    if (this.nqa == null)
+    if (this.ozH == null)
     {
       setVisibility(8);
       AppMethodBeat.o(138051);
       return;
     }
-    this.nqa.onShow(this);
+    this.ozH.onShow(this);
     clearAnimation();
     setVisibility(0);
     this.isAnimating = true;
-    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130771994);
-    this.nqh.startAnimation(localAnimation);
-    startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771992));
+    Animation localAnimation = AnimationUtils.loadAnimation(getContext(), 2130771999);
+    this.ozO.startAnimation(localAnimation);
+    startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771997));
     localAnimation.setAnimationListener(new Animation.AnimationListener()
     {
       public final void onAnimationEnd(Animation paramAnonymousAnimation)
       {
         AppMethodBeat.i(138041);
-        c.this.setBackgroundResource(2131100736);
+        c.this.setBackgroundResource(2131100930);
         c.a(c.this);
         AppMethodBeat.o(138041);
       }
@@ -380,12 +380,12 @@ public class c
   
   public static abstract interface b<T>
   {
-    public abstract void cy(T paramT);
+    public abstract void cH(T paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.picker.c
  * JD-Core Version:    0.7.0.1
  */

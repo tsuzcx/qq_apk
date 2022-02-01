@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.appbrand.phonenumber;
 
 import android.content.Intent;
-import com.tencent.luggage.h.e.b;
+import com.tencent.luggage.h.f.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.m;
-import d.l;
+import kotlin.g.a.m;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "resultCode", "", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "resultCode", "", "data", "Landroid/content/Intent;", "kotlin.jvm.PlatformType", "onResult"})
 final class i$b
-  implements e.b
+  implements f.b
 {
   i$b(m paramm) {}
   
   public final void a(int paramInt, Intent paramIntent)
   {
     AppMethodBeat.i(148043);
-    this.mor.p(Integer.valueOf(paramInt), paramIntent);
+    this.nzd.invoke(Integer.valueOf(paramInt), paramIntent);
     AppMethodBeat.o(148043);
   }
 }

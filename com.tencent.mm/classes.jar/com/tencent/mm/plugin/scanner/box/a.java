@@ -1,23 +1,36 @@
 package com.tencent.mm.plugin.scanner.box;
 
-import d.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.box.c.b;
+import com.tencent.mm.plugin.box.webview.d;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogBackgroundViewModel;", "", "getBackgroundTransY", "", "getMarkViewHeight", "getMarkViewTransY", "setBackgroundTransY", "", "translationY", "setMarkViewTransY", "plugin-scan_release"})
-public abstract interface a
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/BaseBoxWebViewJSApi;", "Lcom/tencent/mm/plugin/box/webview/BoxWebViewJSApi;", "uiComponent", "Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;", "(Lcom/tencent/mm/plugin/box/ui/IBoxHomeUIComponent;)V", "Companion", "plugin-scan_release"})
+public class a
+  extends d
 {
-  public abstract float getBackgroundTransY();
+  public static final a CCm;
   
-  public abstract float getMarkViewHeight();
+  static
+  {
+    AppMethodBeat.i(240240);
+    CCm = new a((byte)0);
+    AppMethodBeat.o(240240);
+  }
   
-  public abstract float getMarkViewTransY();
+  public a(b paramb)
+  {
+    super(paramb);
+    AppMethodBeat.i(240239);
+    AppMethodBeat.o(240239);
+  }
   
-  public abstract void setBackgroundTransY(float paramFloat);
-  
-  public abstract void setMarkViewTransY(float paramFloat);
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/BaseBoxWebViewJSApi$Companion;", "", "()V", "TAG", "", "plugin-scan_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.box.a
  * JD-Core Version:    0.7.0.1
  */

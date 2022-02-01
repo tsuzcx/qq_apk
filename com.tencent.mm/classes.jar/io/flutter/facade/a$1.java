@@ -10,13 +10,13 @@ import io.flutter.view.FlutterView;
 final class a$1
   extends FlutterView
 {
-  private final b<String> NcL;
+  private final b<String> SRW;
   
   a$1(Context paramContext, FlutterNativeView paramFlutterNativeView)
   {
     super(paramContext, null, paramFlutterNativeView);
     AppMethodBeat.i(159068);
-    this.NcL = new b(this, "flutter/lifecycle", p.Ndi);
+    this.SRW = new b(this, "flutter/lifecycle", p.SSt);
     AppMethodBeat.o(159068);
   }
   
@@ -31,13 +31,13 @@ final class a$1
   public final void onPostResume()
   {
     AppMethodBeat.i(159070);
-    this.NcL.eI("AppLifecycleState.resumed");
+    this.SRW.eN("AppLifecycleState.resumed");
     AppMethodBeat.o(159070);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.facade.a.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.facedetectaction.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expansions.a;
 import com.tencent.mm.plugin.facedetect.PluginFace;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.youtu.ytcommon.YTCommonExInterface;
 import com.tencent.youtu.ytfacetrack.YTFaceTrack;
 import com.tencent.youtu.ytposedetect.YTPoseDetectInterface;
@@ -12,9 +12,9 @@ import com.tencent.youtu.ytposedetect.YTPoseDetectInterface.PoseDetectOnFrame;
 
 public final class b
 {
-  a rxA;
-  int rxy;
-  public YTPoseDetectInterface.PoseDetectOnFrame rxz = null;
+  int liveType;
+  public YTPoseDetectInterface.PoseDetectOnFrame sXw = null;
+  a sXx;
   int status = -1;
   
   static
@@ -31,7 +31,7 @@ public final class b
     AppMethodBeat.i(104208);
     try
     {
-      ae.i("MicroMsg.FaceCheckActionEngine", "release");
+      Log.i("MicroMsg.FaceCheckActionEngine", "release");
       if (PluginFace.isEnabled())
       {
         YTPoseDetectInterface.releaseModel();
@@ -42,7 +42,7 @@ public final class b
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.FaceCheckActionEngine", localException, "release error", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.FaceCheckActionEngine", localException, "release error", new Object[0]);
       AppMethodBeat.o(104208);
     }
   }
@@ -52,11 +52,10 @@ public final class b
     AppMethodBeat.i(104207);
     if (PluginFace.isEnabled())
     {
-      a.adR("YTCommon");
-      a.adR("YTFaceTrack");
-      a.adR("YTFaceTrackPro");
-      a.adR("YTNextCV");
-      a.adR("YTPoseDetect");
+      a.aoa("YTCommon");
+      a.aoa("YTFaceTrackPro2");
+      a.aoa("YTNextCV");
+      a.aoa("YTPoseDetect");
     }
     AppMethodBeat.o(104207);
   }
@@ -68,7 +67,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.b.b
  * JD-Core Version:    0.7.0.1
  */

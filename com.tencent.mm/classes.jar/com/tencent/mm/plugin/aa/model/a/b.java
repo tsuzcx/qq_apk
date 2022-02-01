@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.aa.model.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] iWL;
-  private e db;
+  private static final String[] jTH;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(63422);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "AAPayRecord") };
-    iWL = new String[] { "*", "rowid" };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "AAPayRecord") };
+    jTH = new String[] { "*", "rowid" };
     AppMethodBeat.o(63422);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "AAPayRecord", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "AAPayRecord", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final a JE(String paramString)
+  public final a SC(String paramString)
   {
     AppMethodBeat.i(63421);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(63421);
       return null;
     }
-    paramString = this.db.a("AAPayRecord", iWL, "payMsgId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.query("AAPayRecord", jTH, "payMsgId=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -53,7 +53,7 @@ public final class b
     {
       for (;;)
       {
-        ae.e("MicroMsg.AAPayRecordStorage", "getByPayMsgId error: %s", new Object[] { localException.getMessage() });
+        Log.e("MicroMsg.AAPayRecordStorage", "getByPayMsgId error: %s", new Object[] { localException.getMessage() });
         if (paramString != null) {
           paramString.close();
         }
@@ -73,7 +73,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.a.b
  * JD-Core Version:    0.7.0.1
  */

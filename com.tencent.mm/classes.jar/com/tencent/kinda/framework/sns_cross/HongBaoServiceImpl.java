@@ -12,14 +12,14 @@ public class HongBaoServiceImpl
   {
     AppMethodBeat.i(18708);
     ITransmitKvData localITransmitKvData = super.generateSnsUseCaseData();
-    localITransmitKvData.putString("cashier_desc", this.mBean.getContext().getResources().getString(2131760973));
+    localITransmitKvData.putString("cashier_desc", this.mBean.getContext().getResources().getString(2131762747));
     AppMethodBeat.o(18708);
     return localITransmitKvData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.HongBaoServiceImpl
  * JD-Core Version:    0.7.0.1
  */

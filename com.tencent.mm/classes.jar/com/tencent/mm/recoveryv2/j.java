@@ -30,16 +30,16 @@ public abstract interface j
   public static abstract class a
     implements j
   {
-    protected h InW;
-    protected final Handler IoD;
-    protected final AtomicReference<b> IoE;
-    protected final SparseArray<List<d>> IoF;
-    protected a IoG;
-    protected long IoH;
-    protected RecoveryCrash IoI;
-    protected RecoveryCrash IoJ;
+    protected h NBu;
+    protected final AtomicReference<b> NCb;
+    protected final SparseArray<List<d>> NCc;
+    protected a NCd;
+    protected long NCe;
+    protected RecoveryCrash NCf;
+    protected RecoveryCrash NCg;
     protected final Context mContext;
     protected final String mVersionName;
+    protected final Handler sCt;
     
     public a(Context paramContext)
     {
@@ -49,38 +49,51 @@ public abstract interface j
     private a(Context paramContext, byte paramByte)
     {
       this.mContext = paramContext;
-      this.IoD = new Handler(Looper.getMainLooper());
-      this.mVersionName = l.ic(this.mContext);
-      this.InW = null;
-      this.IoE = new AtomicReference(new b.c().a(null));
-      this.IoF = new SparseArray(2);
-      this.IoF.put(1, new ArrayList());
-      this.IoF.put(2, new ArrayList());
-      this.IoJ = RecoveryCrash.hQ(this.mContext);
+      this.sCt = new Handler(Looper.getMainLooper());
+      this.mVersionName = l.iV(this.mContext);
+      this.NBu = null;
+      this.NCb = new AtomicReference(new b.c().a(null));
+      this.NCc = new SparseArray(2);
+      this.NCc.put(1, new ArrayList());
+      this.NCc.put(2, new ArrayList());
+      this.NCg = RecoveryCrash.iJ(this.mContext);
     }
     
     public a(a parama)
     {
-      this.IoG = parama;
+      this.NCd = parama;
       this.mContext = parama.mContext;
-      this.IoD = parama.IoD;
+      this.sCt = parama.sCt;
       this.mVersionName = parama.mVersionName;
-      this.IoJ = parama.IoJ;
-      this.InW = parama.InW;
-      this.IoE = parama.IoE;
-      this.IoF = parama.IoF;
+      this.NCg = parama.NCg;
+      this.NBu = parama.NBu;
+      this.NCb = parama.NCb;
+      this.NCc = parama.NCc;
     }
     
-    protected final void aaD(int paramInt)
+    protected final void Au(boolean paramBoolean)
+    {
+      if (paramBoolean)
+      {
+        this.NCf.save();
+        return;
+      }
+      RecoveryCrash localRecoveryCrash = this.NCf;
+      c localc = localRecoveryCrash.NBA;
+      localc.NBz.gL("crash_count", localc.NBC).guG();
+      localRecoveryCrash.NBz.mK("crash_version", localRecoveryCrash.NBy).bT("crash_time", localRecoveryCrash.NBx).guG();
+    }
+    
+    protected final void ajs(int paramInt)
     {
       a.a.log(4, "MicroMsg.recovery.trigger", "recovery event, level = ".concat(String.valueOf(paramInt)));
-      Iterator localIterator = ((List)this.IoF.get(paramInt)).iterator();
+      Iterator localIterator = ((List)this.NCc.get(paramInt)).iterator();
       while (localIterator.hasNext())
       {
         d locald = (d)localIterator.next();
         try
         {
-          locald.aaB(paramInt);
+          locald.ajq(paramInt);
         }
         catch (Throwable localThrowable)
         {
@@ -91,38 +104,38 @@ public abstract interface j
     
     public void begin()
     {
-      this.IoH = System.currentTimeMillis();
+      this.NCe = System.currentTimeMillis();
     }
     
-    protected final void fkQ()
+    protected final void guB()
     {
-      if (this.InW == null)
+      if (this.NBu == null)
       {
-        this.InW = h.hT(this.mContext);
-        ((b)this.IoE.get()).a(this.InW);
+        this.NBu = h.iM(this.mContext);
+        ((b)this.NCb.get()).a(this.NBu);
       }
-      if (this.IoJ == null) {
-        this.IoJ = RecoveryCrash.hQ(this.mContext);
+      if (this.NCg == null) {
+        this.NCg = RecoveryCrash.iJ(this.mContext);
       }
-      this.IoJ.fkQ();
-      if (this.IoI == null)
+      this.NCg.guB();
+      if (this.NCf == null)
       {
-        Object localObject = this.IoJ;
+        Object localObject = this.NCg;
         Context localContext = ((RecoveryCrash)localObject).mContext;
-        long l = ((RecoveryCrash)localObject).InZ;
-        String str = ((RecoveryCrash)localObject).Ioa;
-        g localg = ((RecoveryCrash)localObject).Iob;
-        localObject = ((RecoveryCrash)localObject).Ioc;
-        this.IoI = new RecoveryCrash(localContext, l, str, localg, new c(((c)localObject).Ioe, ((c)localObject).Iob));
+        long l = ((RecoveryCrash)localObject).NBx;
+        String str = ((RecoveryCrash)localObject).NBy;
+        g localg = ((RecoveryCrash)localObject).NBz;
+        localObject = ((RecoveryCrash)localObject).NBA;
+        this.NCf = new RecoveryCrash(localContext, l, str, localg, new c(((c)localObject).NBC, ((c)localObject).NBz));
       }
     }
     
-    protected boolean fle()
+    protected boolean guP()
     {
       a.a.log(4, "MicroMsg.recovery.trigger", "onLaunchRecovery");
       try
       {
-        ((b)this.IoE.get()).a(this.mContext, this.IoI);
+        ((b)this.NCb.get()).a(this.mContext, this.NCf);
         return true;
       }
       catch (Throwable localThrowable)
@@ -132,18 +145,18 @@ public abstract interface j
       return false;
     }
     
-    protected final void flf()
+    protected final void guQ()
     {
-      RecoveryCrash localRecoveryCrash = this.IoI;
-      c localc = localRecoveryCrash.Ioc;
-      localc.Ioe += 1;
-      localRecoveryCrash.Ioa = this.mVersionName;
-      localRecoveryCrash.InZ = this.IoH;
+      RecoveryCrash localRecoveryCrash = this.NCf;
+      c localc = localRecoveryCrash.NBA;
+      localc.NBC += 1;
+      localRecoveryCrash.NBy = this.mVersionName;
+      localRecoveryCrash.NBx = this.NCe;
     }
     
-    protected final void flg()
+    protected final void guR()
     {
-      this.IoI.fkR();
+      this.NCf.guC();
     }
     
     protected final void onTerminate()
@@ -151,125 +164,112 @@ public abstract interface j
       a.a.log(4, "MicroMsg.recovery.trigger", "#onTerminate");
       try
       {
-        ((b)this.IoE.get()).b(this.mContext, this.IoI);
+        ((b)this.NCb.get()).b(this.mContext, this.NCf);
         return;
       }
       catch (Throwable localThrowable) {}
-    }
-    
-    protected final void wu(boolean paramBoolean)
-    {
-      if (paramBoolean)
-      {
-        this.IoI.save();
-        return;
-      }
-      RecoveryCrash localRecoveryCrash = this.IoI;
-      c localc = localRecoveryCrash.Ioc;
-      localc.Iob.gn("crash_count", localc.Ioe).fkV();
-      localRecoveryCrash.Iob.lM("crash_version", localRecoveryCrash.Ioa).bS("crash_time", localRecoveryCrash.InZ).fkV();
     }
   }
   
   public static final class b
     extends j.a
   {
-    final long IoK;
-    j.d IoL;
-    j.e IoM;
+    final long NCh;
+    j.d NCi;
+    j.e NCj;
     
     public b(Context paramContext)
     {
       super();
-      AppMethodBeat.i(195351);
-      this.IoK = System.currentTimeMillis();
-      AppMethodBeat.o(195351);
+      AppMethodBeat.i(193839);
+      this.NCh = System.currentTimeMillis();
+      AppMethodBeat.o(193839);
     }
     
-    private j.e flh()
+    private j.e guS()
     {
-      AppMethodBeat.i(195354);
-      if (this.IoL == null) {}
-      for (Object localObject = this;; localObject = this.IoL)
+      AppMethodBeat.i(193842);
+      if (this.NCi == null) {}
+      for (Object localObject = this;; localObject = this.NCi)
       {
         localObject = new j.e((j.a)localObject);
-        j.e.a locala = j.e.a.ca(this.mContext, "signal_acc");
-        localObject = ((j.e)localObject).Dl(this.IoK).a(locala);
-        AppMethodBeat.o(195354);
+        j.e.a locala = j.e.a.cu(this.mContext, "signal_acc");
+        localObject = ((j.e)localObject).MB(this.NCh).a(locala);
+        AppMethodBeat.o(193842);
         return localObject;
       }
     }
     
-    public final void aaE(int paramInt)
+    public final void ajt(int paramInt)
     {
-      AppMethodBeat.i(195353);
+      AppMethodBeat.i(193841);
       try
       {
-        if (this.IoM == null) {
-          this.IoM = flh();
+        if (this.NCj == null) {
+          this.NCj = guS();
         }
-        this.IoM.aaF(paramInt);
+        this.NCj.aju(paramInt);
         return;
       }
       finally
       {
-        AppMethodBeat.o(195353);
+        AppMethodBeat.o(193841);
       }
     }
     
     public final void begin()
     {
-      AppMethodBeat.i(195352);
+      AppMethodBeat.i(193840);
       super.begin();
       try
       {
-        if ((this.IoL == null) && (this.IoM == null))
+        if ((this.NCi == null) && (this.NCj == null))
         {
-          this.IoL = new j.c(this)
+          this.NCi = new j.c(this)
           {
             public final void finish()
             {
-              AppMethodBeat.i(195350);
+              AppMethodBeat.i(193838);
               a.a.log(4, "MicroMsg.recovery.combination", "safePoint finish, switch to signal handler");
-              if (j.b.this.IoM == null) {
-                j.b.this.IoM = j.b.a(j.b.this);
+              if (j.b.this.NCj == null) {
+                j.b.this.NCj = j.b.a(j.b.this);
               }
               super.finish();
-              AppMethodBeat.o(195350);
+              AppMethodBeat.o(193838);
             }
           };
-          if (this.IoL != null) {
-            this.IoL.begin();
+          if (this.NCi != null) {
+            this.NCi.begin();
           }
           return;
         }
-        if (this.IoM == null) {
-          this.IoM = flh();
+        if (this.NCj == null) {
+          this.NCj = guS();
         }
-        if (this.IoM != null) {
-          this.IoM.begin();
+        if (this.NCj != null) {
+          this.NCj.begin();
         }
         return;
       }
       finally
       {
-        AppMethodBeat.o(195352);
+        AppMethodBeat.o(193840);
       }
     }
     
     public final void finish()
     {
-      AppMethodBeat.i(195355);
+      AppMethodBeat.i(193843);
       try
       {
-        if (this.IoL != null) {
-          this.IoL.finish();
+        if (this.NCi != null) {
+          this.NCi.finish();
         }
         return;
       }
       finally
       {
-        AppMethodBeat.o(195355);
+        AppMethodBeat.o(193843);
       }
     }
   }
@@ -285,16 +285,16 @@ public abstract interface j
     @SuppressLint({"MissingSuperCall"})
     public final void begin()
     {
-      AppMethodBeat.i(195358);
-      int i = this.IoJ.Ioc.Ioe;
+      AppMethodBeat.i(193846);
+      int i = this.NCg.NBA.NBC;
       if (i <= 0)
       {
         a.a.log(4, "MicroMsg.recovery.safePointLazy", "no need check, crash count = ".concat(String.valueOf(i)));
-        this.IoP.set(true);
-        fli();
+        this.NCm.set(true);
+        guT();
         Callable local1 = new Callable() {};
         Executors.newCachedThreadPool().submit(local1);
-        AppMethodBeat.o(195358);
+        AppMethodBeat.o(193846);
         return;
       }
       super.begin();
@@ -315,166 +315,166 @@ public abstract interface j
           return true;
         }
       };
-      AppMethodBeat.o(195358);
+      AppMethodBeat.o(193846);
     }
   }
   
   public static class d
     extends j.a
   {
-    protected final AtomicBoolean IoP;
-    protected final AtomicBoolean IoQ;
+    protected final AtomicBoolean NCm;
+    protected final AtomicBoolean NCn;
     
     public d(j.a parama)
     {
       super();
-      AppMethodBeat.i(195360);
-      this.IoP = new AtomicBoolean();
-      this.IoQ = new AtomicBoolean();
-      AppMethodBeat.o(195360);
+      AppMethodBeat.i(193848);
+      this.NCm = new AtomicBoolean();
+      this.NCn = new AtomicBoolean();
+      AppMethodBeat.o(193848);
     }
     
     public void begin()
     {
-      AppMethodBeat.i(195361);
+      AppMethodBeat.i(193849);
       super.begin();
-      fkQ();
-      long l1 = this.IoH - this.IoJ.InZ;
+      guB();
+      long l1 = this.NCe - this.NCg.NBx;
       a.a.log(4, "MicroMsg.recovery.safePoint", "recovery interval = ".concat(String.valueOf(l1)));
-      long l2 = this.InW.Ioq;
+      long l2 = this.NBu.NBO;
       if ((l2 > 0L) && (l1 < l2))
       {
         a.a.log(4, "MicroMsg.recovery.safePoint", "too fast, skip and do nothing, min = ".concat(String.valueOf(l2)));
-        AppMethodBeat.o(195361);
+        AppMethodBeat.o(193849);
         return;
       }
-      this.IoP.set(true);
-      if ((!TextUtils.isEmpty(this.IoJ.Ioa)) && (!this.IoJ.Ioa.equals(this.mVersionName)))
+      this.NCm.set(true);
+      if ((!TextUtils.isEmpty(this.NCg.NBy)) && (!this.NCg.NBy.equals(this.mVersionName)))
       {
         a.a.log(4, "MicroMsg.recovery.safePoint", "version code mismatch, skip");
-        flg();
+        guR();
       }
-      if (l1 >= this.InW.Ioo)
+      if (l1 >= this.NBu.NBM)
       {
         a.a.log(4, "MicroMsg.recovery.safePoint", "over interval, skip");
-        flg();
+        guR();
       }
-      int i = this.IoI.Ioc.Ioe;
+      int i = this.NCf.NBA.NBC;
       a.a.log(4, "MicroMsg.recovery.safePoint", "recovery crashCount = ".concat(String.valueOf(i)));
-      if (i >= this.InW.Iom)
+      if (i >= this.NBu.NBK)
       {
-        if (!fle())
+        if (!guP())
         {
           a.a.log(5, "MicroMsg.recovery.safePoint", "launch recovery fail");
-          wu(true);
-          AppMethodBeat.o(195361);
+          Au(true);
+          AppMethodBeat.o(193849);
           return;
         }
-        if (i < this.InW.Ion)
+        if (i < this.NBu.NBL)
         {
-          aaD(1);
-          flf();
+          ajs(1);
+          guQ();
         }
         for (;;)
         {
-          wu(true);
+          Au(true);
           onTerminate();
-          AppMethodBeat.o(195361);
+          AppMethodBeat.o(193849);
           return;
-          aaD(2);
-          flg();
+          ajs(2);
+          guR();
         }
       }
-      fli();
-      flf();
-      wu(false);
-      flj();
-      AppMethodBeat.o(195361);
+      guT();
+      guQ();
+      Au(false);
+      guU();
+      AppMethodBeat.o(193849);
     }
     
     public void finish()
     {
-      AppMethodBeat.i(195362);
+      AppMethodBeat.i(193850);
       a.a.log(4, "MicroMsg.recovery.safePoint", "#finish");
-      if (this.IoP.get())
+      if (this.NCm.get())
       {
         a.a.log(4, "MicroMsg.recovery.safePoint", "clear crash point");
-        fkQ();
-        flg();
-        wu(true);
+        guB();
+        guR();
+        Au(true);
       }
-      AppMethodBeat.o(195362);
+      AppMethodBeat.o(193850);
     }
     
-    protected final boolean fle()
+    protected final boolean guP()
     {
-      AppMethodBeat.i(195363);
-      boolean bool = super.fle();
+      AppMethodBeat.i(193851);
+      boolean bool = super.guP();
       if (bool)
       {
-        i locali = i.hX(this.mContext);
-        locali.IoA = false;
-        locali.Ioe = this.IoI.Ioc.Ioe;
-        locali.Iow = true;
+        i locali = i.iQ(this.mContext);
+        locali.NBY = false;
+        locali.NBC = this.NCf.NBA.NBC;
+        locali.NBU = true;
         locali.mFrom = 1;
-        locali.fld();
+        locali.guO();
       }
-      AppMethodBeat.o(195363);
+      AppMethodBeat.o(193851);
       return bool;
     }
     
-    protected final void fli()
+    protected final void guT()
     {
-      AppMethodBeat.i(195364);
+      AppMethodBeat.i(193852);
       a.a.log(4, "MicroMsg.recovery.safePoint", "onLaunchNormal");
-      if ((this.IoI != null) && (this.IoI.Ioc.Ioe > 0))
+      if ((this.NCf != null) && (this.NCf.NBA.NBC > 0))
       {
-        i locali = i.hX(this.mContext);
-        locali.IoA = false;
-        locali.Ioe = this.IoI.Ioc.Ioe;
-        locali.Iow = false;
+        i locali = i.iQ(this.mContext);
+        locali.NBY = false;
+        locali.NBC = this.NCf.NBA.NBC;
+        locali.NBU = false;
         locali.mFrom = 1;
-        locali.fld();
+        locali.guO();
       }
-      AppMethodBeat.o(195364);
+      AppMethodBeat.o(193852);
     }
     
-    protected final void flj()
+    protected final void guU()
     {
-      AppMethodBeat.i(195365);
-      this.IoD.postDelayed(new Runnable()
+      AppMethodBeat.i(193853);
+      this.sCt.postDelayed(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(195359);
-          if (j.d.this.IoQ.get())
+          AppMethodBeat.i(193847);
+          if (j.d.this.NCn.get())
           {
             a.a.log(4, "MicroMsg.recovery.safePoint", "auto clear task has been canceled, skip");
-            AppMethodBeat.o(195359);
+            AppMethodBeat.o(193847);
             return;
           }
           a.a.log(4, "MicroMsg.recovery.safePoint", "auto clear point");
           j.d.this.finish();
-          AppMethodBeat.o(195359);
+          AppMethodBeat.o(193847);
         }
-      }, this.InW.Ior);
-      AppMethodBeat.o(195365);
+      }, this.NBu.NBP);
+      AppMethodBeat.o(193853);
     }
     
-    protected final void flk()
+    protected final void guV()
     {
-      AppMethodBeat.i(195366);
-      this.IoQ.set(true);
-      AppMethodBeat.o(195366);
+      AppMethodBeat.i(193854);
+      this.NCn.set(true);
+      AppMethodBeat.o(193854);
     }
   }
   
   public static final class e
     extends j.a
   {
-    protected long IoC = 0L;
-    protected long IoK = 0L;
-    protected a IoS;
+    protected long NCa = 0L;
+    protected long NCh = 0L;
+    protected a NCp;
     protected int mFrom = 2;
     
     public e(Context paramContext)
@@ -487,7 +487,7 @@ public abstract interface j
       super();
     }
     
-    private static int aw(long paramLong1, long paramLong2)
+    private static int aD(long paramLong1, long paramLong2)
     {
       if (paramLong1 >= paramLong2) {
         return 0;
@@ -504,155 +504,155 @@ public abstract interface j
       return 100;
     }
     
-    private void fli()
+    private void guT()
     {
-      AppMethodBeat.i(195375);
+      AppMethodBeat.i(193863);
       a.a.log(4, "MicroMsg.recovery.signalHandler", "onLaunchNormal");
-      if (this.IoI.Ioc.Ioe > 0)
+      if (this.NCf.NBA.NBC > 0)
       {
-        i locali = i.hX(this.mContext);
-        locali.IoA = false;
-        locali.Ioe = this.IoI.Ioc.Ioe;
-        locali.Iow = false;
+        i locali = i.iQ(this.mContext);
+        locali.NBY = false;
+        locali.NBC = this.NCf.NBA.NBC;
+        locali.NBU = false;
         locali.mFrom = this.mFrom;
-        locali.IoC = Math.max(this.IoC, 0L);
+        locali.NCa = Math.max(this.NCa, 0L);
         locali.save();
       }
-      AppMethodBeat.o(195375);
+      AppMethodBeat.o(193863);
     }
     
-    public final e Dl(long paramLong)
+    public final e MB(long paramLong)
     {
-      this.IoK = paramLong;
+      this.NCh = paramLong;
       return this;
     }
     
     public final e a(a parama)
     {
-      this.IoS = parama;
+      this.NCp = parama;
       return this;
     }
     
-    public final void aaF(int paramInt)
+    public final void aju(int paramInt)
     {
-      AppMethodBeat.i(195372);
+      AppMethodBeat.i(193860);
       super.begin();
-      fkQ();
+      guB();
       a.a.log(4, "MicroMsg.recovery.signalHandler", "#begin");
       this.mFrom = paramInt;
-      if (this.IoK > 0L) {
-        this.IoC = (this.IoH - this.IoK);
+      if (this.NCh > 0L) {
+        this.NCa = (this.NCe - this.NCh);
       }
-      long l1 = this.IoH - this.IoJ.InZ;
+      long l1 = this.NCe - this.NCg.NBx;
       a.a.log(4, "MicroMsg.recovery.signalHandler", "recovery interval = ".concat(String.valueOf(l1)));
-      long l2 = this.InW.Ioq;
+      long l2 = this.NBu.NBO;
       if ((l2 > 0L) && (l1 < l2))
       {
         a.a.log(4, "MicroMsg.recovery.signalHandler", "too fast, skip and do nothing, min = ".concat(String.valueOf(l2)));
-        AppMethodBeat.o(195372);
+        AppMethodBeat.o(193860);
         return;
       }
-      if ((this.IoG instanceof j.d)) {
-        ((j.d)this.IoG).flk();
+      if ((this.NCd instanceof j.d)) {
+        ((j.d)this.NCd).guV();
       }
-      if ((!TextUtils.isEmpty(this.IoJ.Ioa)) && (!this.IoJ.Ioa.equals(this.mVersionName)))
+      if ((!TextUtils.isEmpty(this.NCg.NBy)) && (!this.NCg.NBy.equals(this.mVersionName)))
       {
         a.a.log(4, "MicroMsg.recovery.signalHandler", "version code mismatch, skip");
-        flg();
+        guR();
       }
-      if (l1 < this.InW.Ioo)
+      if (l1 < this.NBu.NBM)
       {
         a.a.log(4, "MicroMsg.recovery.signalHandler", "within interval, inc");
-        flf();
+        guQ();
       }
       for (;;)
       {
-        paramInt = this.IoI.Ioc.Ioe;
+        paramInt = this.NCf.NBA.NBC;
         a.a.log(4, "MicroMsg.recovery.signalHandler", "recovery crashCount = ".concat(String.valueOf(paramInt)));
-        if (paramInt < this.InW.Iom) {
+        if (paramInt < this.NBu.NBK) {
           break label403;
         }
-        if (fle()) {
+        if (guP()) {
           break;
         }
         a.a.log(5, "MicroMsg.recovery.signalHandler", "launch recovery fail");
-        wu(true);
-        AppMethodBeat.o(195372);
+        Au(true);
+        AppMethodBeat.o(193860);
         return;
-        l2 = this.InW.Iop;
-        if ((l1 < l2) && (this.IoS != null))
+        l2 = this.NBu.NBN;
+        if ((l1 < l2) && (this.NCp != null))
         {
           a.a.log(4, "MicroMsg.recovery.signalHandler", "within signal interval");
-          paramInt = aw(l1, l2);
-          if (this.IoS.aaH(paramInt))
+          paramInt = aD(l1, l2);
+          if (this.NCp.ajw(paramInt))
           {
             a.a.log(4, "MicroMsg.recovery.signalHandler", "acc meet, inc");
-            flf();
+            guQ();
           }
-          this.IoS.save();
+          this.NCp.save();
         }
         else
         {
           a.a.log(4, "MicroMsg.recovery.signalHandler", "over signal interval, clear point");
-          flg();
-          flf();
+          guR();
+          guQ();
         }
       }
-      if (paramInt < this.InW.Ion) {
-        aaD(1);
+      if (paramInt < this.NBu.NBL) {
+        ajs(1);
       }
       for (;;)
       {
-        wu(true);
+        Au(true);
         onTerminate();
-        AppMethodBeat.o(195372);
+        AppMethodBeat.o(193860);
         return;
-        aaD(2);
-        flg();
+        ajs(2);
+        guR();
       }
       label403:
-      wu(true);
-      fli();
-      AppMethodBeat.o(195372);
+      Au(true);
+      guT();
+      AppMethodBeat.o(193860);
     }
     
     @SuppressLint({"MissingSuperCall"})
     public final void begin()
     {
-      AppMethodBeat.i(195371);
-      aaF(2);
-      AppMethodBeat.o(195371);
+      AppMethodBeat.i(193859);
+      aju(2);
+      AppMethodBeat.o(193859);
     }
     
     public final void finish()
     {
-      AppMethodBeat.i(195373);
+      AppMethodBeat.i(193861);
       a.a.log(4, "MicroMsg.recovery.signalHandler", "#finish");
-      AppMethodBeat.o(195373);
+      AppMethodBeat.o(193861);
     }
     
-    protected final boolean fle()
+    protected final boolean guP()
     {
-      AppMethodBeat.i(195374);
-      boolean bool = super.fle();
+      AppMethodBeat.i(193862);
+      boolean bool = super.guP();
       if (bool)
       {
-        i locali = i.hX(this.mContext);
-        locali.IoA = false;
-        locali.Ioe = this.IoI.Ioc.Ioe;
-        locali.Iow = true;
+        i locali = i.iQ(this.mContext);
+        locali.NBY = false;
+        locali.NBC = this.NCf.NBA.NBC;
+        locali.NBU = true;
         locali.mFrom = this.mFrom;
-        locali.IoC = Math.max(this.IoC, 0L);
+        locali.NCa = Math.max(this.NCa, 0L);
         locali.save();
       }
-      AppMethodBeat.o(195374);
+      AppMethodBeat.o(193862);
       return bool;
     }
     
     static final class a
     {
-      int IoT;
-      g Ios;
+      g NBQ;
+      int NCq;
       final String mName;
       
       private a(String paramString)
@@ -660,60 +660,60 @@ public abstract interface j
         this.mName = paramString;
       }
       
-      private a aaG(int paramInt)
+      private a ajv(int paramInt)
       {
-        this.IoT += paramInt;
+        this.NCq += paramInt;
         return this;
       }
       
-      public static a ca(Context paramContext, String paramString)
+      public static a cu(Context paramContext, String paramString)
       {
-        AppMethodBeat.i(195367);
-        paramContext = new a(paramString).hY(paramContext);
-        AppMethodBeat.o(195367);
+        AppMethodBeat.i(193855);
+        paramContext = new a(paramString).iR(paramContext);
+        AppMethodBeat.o(193855);
         return paramContext;
       }
       
-      private boolean fll()
+      private boolean guW()
       {
         boolean bool = false;
-        if (this.IoT >= 100)
+        if (this.NCq >= 100)
         {
-          this.IoT = 0;
+          this.NCq = 0;
           bool = true;
         }
         return bool;
       }
       
-      private a hY(Context paramContext)
+      private a iR(Context paramContext)
       {
-        AppMethodBeat.i(195368);
-        this.Ios = new g.b(paramContext, this.mName).fkY();
-        this.IoT = this.Ios.getInt("acc_total", 0);
-        AppMethodBeat.o(195368);
+        AppMethodBeat.i(193856);
+        this.NBQ = new g.b(paramContext, this.mName).guJ();
+        this.NCq = this.NBQ.getInt("acc_total", 0);
+        AppMethodBeat.o(193856);
         return this;
       }
       
-      public final boolean aaH(int paramInt)
+      public final boolean ajw(int paramInt)
       {
-        AppMethodBeat.i(195369);
-        boolean bool = aaG(paramInt).fll();
-        AppMethodBeat.o(195369);
+        AppMethodBeat.i(193857);
+        boolean bool = ajv(paramInt).guW();
+        AppMethodBeat.o(193857);
         return bool;
       }
       
       public final void save()
       {
-        AppMethodBeat.i(195370);
-        this.Ios.gn("acc_total", this.IoT).fkU();
-        AppMethodBeat.o(195370);
+        AppMethodBeat.i(193858);
+        this.NBQ.gL("acc_total", this.NCq).guF();
+        AppMethodBeat.o(193858);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.recoveryv2.j
  * JD-Core Version:    0.7.0.1
  */

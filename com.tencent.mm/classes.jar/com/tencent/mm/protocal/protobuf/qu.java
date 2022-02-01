@@ -1,104 +1,153 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
 
 public final class qu
   extends com.tencent.mm.bw.a
 {
-  public String GeU;
-  public String GeV;
-  public String IconUrl;
+  public int Doa;
+  public int KXC;
+  public int KXD;
+  public int KXE;
+  public String KXF;
+  public int KXG;
+  public int KXH;
+  public int KXI;
+  public String KXJ;
+  public String dNI;
+  public String qHp;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117844);
+    AppMethodBeat.i(117838);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.IconUrl == null)
-      {
-        paramVarArgs = new b("Not all required fields were included: IconUrl");
-        AppMethodBeat.o(117844);
-        throw paramVarArgs;
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.dNI != null) {
+        paramVarArgs.e(1, this.dNI);
       }
-      if (this.IconUrl != null) {
-        paramVarArgs.d(1, this.IconUrl);
+      paramVarArgs.aM(2, this.KXC);
+      paramVarArgs.aM(3, this.KXD);
+      if (this.qHp != null) {
+        paramVarArgs.e(4, this.qHp);
       }
-      if (this.GeU != null) {
-        paramVarArgs.d(2, this.GeU);
+      paramVarArgs.aM(5, this.KXE);
+      if (this.KXF != null) {
+        paramVarArgs.e(6, this.KXF);
       }
-      if (this.GeV != null) {
-        paramVarArgs.d(3, this.GeV);
+      paramVarArgs.aM(7, this.KXG);
+      paramVarArgs.aM(8, this.KXH);
+      paramVarArgs.aM(9, this.KXI);
+      if (this.KXJ != null) {
+        paramVarArgs.e(10, this.KXJ);
       }
-      AppMethodBeat.o(117844);
+      paramVarArgs.aM(15, this.Doa);
+      AppMethodBeat.o(117838);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.IconUrl == null) {
-        break label382;
+      if (this.dNI == null) {
+        break label726;
       }
     }
-    label382:
-    for (int i = f.a.a.b.b.a.e(1, this.IconUrl) + 0;; i = 0)
+    label726:
+    for (paramInt = g.a.a.b.b.a.f(1, this.dNI) + 0;; paramInt = 0)
     {
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.KXC) + g.a.a.b.b.a.bu(3, this.KXD);
       paramInt = i;
-      if (this.GeU != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.GeU);
+      if (this.qHp != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.qHp);
       }
-      i = paramInt;
-      if (this.GeV != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.GeV);
+      i = paramInt + g.a.a.b.b.a.bu(5, this.KXE);
+      paramInt = i;
+      if (this.KXF != null) {
+        paramInt = i + g.a.a.b.b.a.f(6, this.KXF);
       }
-      AppMethodBeat.o(117844);
-      return i;
+      i = paramInt + g.a.a.b.b.a.bu(7, this.KXG) + g.a.a.b.b.a.bu(8, this.KXH) + g.a.a.b.b.a.bu(9, this.KXI);
+      paramInt = i;
+      if (this.KXJ != null) {
+        paramInt = i + g.a.a.b.b.a.f(10, this.KXJ);
+      }
+      i = g.a.a.b.b.a.bu(15, this.Doa);
+      AppMethodBeat.o(117838);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        if (this.IconUrl == null)
-        {
-          paramVarArgs = new b("Not all required fields were included: IconUrl");
-          AppMethodBeat.o(117844);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(117844);
+        AppMethodBeat.o(117838);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         qu localqu = (qu)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
+        case 11: 
+        case 12: 
+        case 13: 
+        case 14: 
         default: 
-          AppMethodBeat.o(117844);
+          AppMethodBeat.o(117838);
           return -1;
         case 1: 
-          localqu.IconUrl = locala.OmT.readString();
-          AppMethodBeat.o(117844);
+          localqu.dNI = locala.UbS.readString();
+          AppMethodBeat.o(117838);
           return 0;
         case 2: 
-          localqu.GeU = locala.OmT.readString();
-          AppMethodBeat.o(117844);
+          localqu.KXC = locala.UbS.zi();
+          AppMethodBeat.o(117838);
+          return 0;
+        case 3: 
+          localqu.KXD = locala.UbS.zi();
+          AppMethodBeat.o(117838);
+          return 0;
+        case 4: 
+          localqu.qHp = locala.UbS.readString();
+          AppMethodBeat.o(117838);
+          return 0;
+        case 5: 
+          localqu.KXE = locala.UbS.zi();
+          AppMethodBeat.o(117838);
+          return 0;
+        case 6: 
+          localqu.KXF = locala.UbS.readString();
+          AppMethodBeat.o(117838);
+          return 0;
+        case 7: 
+          localqu.KXG = locala.UbS.zi();
+          AppMethodBeat.o(117838);
+          return 0;
+        case 8: 
+          localqu.KXH = locala.UbS.zi();
+          AppMethodBeat.o(117838);
+          return 0;
+        case 9: 
+          localqu.KXI = locala.UbS.zi();
+          AppMethodBeat.o(117838);
+          return 0;
+        case 10: 
+          localqu.KXJ = locala.UbS.readString();
+          AppMethodBeat.o(117838);
           return 0;
         }
-        localqu.GeV = locala.OmT.readString();
-        AppMethodBeat.o(117844);
+        localqu.Doa = locala.UbS.zi();
+        AppMethodBeat.o(117838);
         return 0;
       }
-      AppMethodBeat.o(117844);
+      AppMethodBeat.o(117838);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.qu
  * JD-Core Version:    0.7.0.1
  */

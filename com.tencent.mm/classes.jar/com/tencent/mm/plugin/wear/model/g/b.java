@@ -1,70 +1,72 @@
 package com.tencent.mm.plugin.wear.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.e.b;
-import com.tencent.mm.ak.e.c;
-import com.tencent.mm.g.a.zk;
-import com.tencent.mm.g.a.zk.b;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.h;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
+import com.tencent.mm.ak.h.c;
+import com.tencent.mm.g.a.aar;
+import com.tencent.mm.g.a.aar.b;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import java.util.LinkedHashMap;
 
 public final class b
-  implements e
+  implements h
 {
-  public final e.b b(e.a parama)
+  public final h.b b(h.a parama)
   {
     AppMethodBeat.i(30138);
-    ??? = parama.gte;
-    bc.aCg();
-    if (bu.isNullOrNil((String)c.ajA().get(2, "")))
+    ??? = parama.heO;
+    bg.aVF();
+    if (Util.isNullOrNil((String)c.azQ().get(2, "")))
     {
       AppMethodBeat.o(30138);
       return null;
     }
-    parama = z.a(((cv)???).FNG);
-    Object localObject2 = z.a(((cv)???).FNH);
-    if ((bu.isNullOrNil(parama)) || (bu.isNullOrNil((String)localObject2)))
+    parama = z.a(((de)???).KHl);
+    Object localObject2 = z.a(((de)???).KHm);
+    if ((Util.isNullOrNil(parama)) || (Util.isNullOrNil((String)localObject2)))
     {
-      ae.e("MicroMsg.YoExtension", "neither from-user nor to-user can be empty");
+      Log.e("MicroMsg.YoExtension", "neither from-user nor to-user can be empty");
       AppMethodBeat.o(30138);
       return null;
     }
-    Object localObject3 = z.a(((cv)???).FNI);
-    ae.i("MicroMsg.YoExtension", "from  " + parama + "content " + (String)localObject3);
-    localObject2 = com.tencent.mm.plugin.wear.model.a.eOf();
-    synchronized (((a)localObject2).DPt)
+    Object localObject3 = z.a(((de)???).KHn);
+    Log.i("MicroMsg.YoExtension", "from  " + parama + "content " + (String)localObject3);
+    localObject2 = com.tencent.mm.plugin.wear.model.a.fVO();
+    synchronized (((a)localObject2).IyJ)
     {
-      zk localzk = a.aGO(parama);
-      if ((!((a)localObject2).DPt.containsKey(parama)) && (localzk.dPC.dPD != 1))
+      aar localaar = a.aWq(parama);
+      if ((!((a)localObject2).IyJ.containsKey(parama)) && (localaar.ehF.ehG != 1))
       {
-        ae.i("MicroMsg.wear.WearYoLogic", "Can add Yo Message %s", new Object[] { parama });
+        Log.i("MicroMsg.wear.WearYoLogic", "Can add Yo Message %s", new Object[] { parama });
         localObject3 = new a.a((a)localObject2, parama, (String)localObject3);
-        ((a)localObject2).DPt.put(parama, localObject3);
-        com.tencent.mm.plugin.wear.model.a.eOf().eOy();
+        ((a)localObject2).IyJ.put(parama, localObject3);
+        com.tencent.mm.plugin.wear.model.a.fVO().fWh();
         AppMethodBeat.o(30138);
         return null;
       }
-      ae.i("MicroMsg.wear.WearYoLogic", "Can not add Yo Message %s", new Object[] { parama });
-      localObject2 = new zk();
-      ((zk)localObject2).dPB.dlO = 2;
-      ((zk)localObject2).dPB.username = parama;
-      com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject2);
+      Log.i("MicroMsg.wear.WearYoLogic", "Can not add Yo Message %s", new Object[] { parama });
+      localObject2 = new aar();
+      ((aar)localObject2).ehE.dDe = 2;
+      ((aar)localObject2).ehE.username = parama;
+      EventCenter.instance.publish((IEvent)localObject2);
     }
   }
   
-  public final void b(e.c paramc) {}
+  public final void b(h.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.g.b
  * JD-Core Version:    0.7.0.1
  */

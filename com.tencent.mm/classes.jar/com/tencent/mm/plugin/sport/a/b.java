@@ -9,21 +9,21 @@ public abstract interface b
 {
   public abstract void b(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, String paramString3);
   
-  public abstract void ejF();
+  public abstract void fmf();
   
-  public abstract boolean ejG();
+  public abstract boolean fmg();
   
-  public abstract void ejH();
+  public abstract void fmh();
   
-  public abstract void ejI();
+  public abstract void fmi();
   
-  public abstract boolean gv(Context paramContext);
+  public abstract boolean hg(Context paramContext);
   
-  public abstract void h(Activity paramActivity, String paramString);
+  public abstract void l(Activity paramActivity, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.a.b
  * JD-Core Version:    0.7.0.1
  */

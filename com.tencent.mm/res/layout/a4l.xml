@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:gravity="center_horizontal" android:id="@id/e4c" android:background="@color/c" android:paddingTop="@dimen/hg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/s2" />
-        <ListView android:id="@id/d2o" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/n3" />
-        <com.tencent.mm.ui.base.sortview.SortViewScrollBar android:layout_gravity="center|right" android:id="@id/fqn" android:layout_width="@dimen/b" android:layout_height="fill_parent" />
-    </FrameLayout>
-</LinearLayout>
+    <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/gy2" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:id="@id/ep_" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_centerInParent="true" style="@style/a71" />
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/FG_1" android:id="@id/g00" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cl" android:layout_marginRight="@dimen/cl" android:text="@string/c0r" android:layout_centerInParent="true" />
+</RelativeLayout>

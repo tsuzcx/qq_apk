@@ -29,7 +29,7 @@ public class PAGText
   
   public PAGText()
   {
-    AppMethodBeat.i(216963);
+    AppMethodBeat.i(236934);
     this.applyFill = true;
     this.applyStroke = false;
     this.baselineShift = 0.0F;
@@ -49,12 +49,12 @@ public class PAGText
     this.justification = 0;
     this.leading = 0.0F;
     this.tracking = 0.0F;
-    AppMethodBeat.o(216963);
+    AppMethodBeat.o(236934);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     org.libpag.PAGText
  * JD-Core Version:    0.7.0.1
  */

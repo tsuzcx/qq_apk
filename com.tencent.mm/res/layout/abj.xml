@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/cbq" android:layout_width="fill_parent" android:layout_height="56.0dip" android:layout_alignParentTop="true">
-        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="31.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
-            <com.tencent.mm.plugin.game.media.TextViewWithBottomLine android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/fc" android:id="@id/cdj" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/ctb" />
-            <com.tencent.mm.plugin.game.media.TextViewWithBottomLine android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/fc" android:id="@id/cd2" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:text="@string/cse" />
-        </LinearLayout>
-        <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:id="@id/cbm" android:layout_width="wrap_content" android:layout_height="31.0dip" android:layout_marginRight="16.0dip" android:text="@string/crf" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-        <View android:background="#0d000000" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-    <android.support.v4.view.ViewPager android:id="@id/cep" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/cbq" />
-</RelativeLayout>
+<com.tencent.mm.view.TouchableLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b21" app:refreshLayout="@layout/c3_">
+            <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/bcf" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </android.support.design.widget.CoordinatorLayout>
+    <TextView android:layout_gravity="center_horizontal" android:id="@id/c35" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c8" style="@style/zy" />
+</com.tencent.mm.view.TouchableLayout>

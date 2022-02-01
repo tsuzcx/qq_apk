@@ -30,6 +30,7 @@ public class TXCDRApi
   static final int NETWORK_TYPE_4G = 2;
   static final int NETWORK_TYPE_UNKNOWN = 255;
   static final int NETWORK_TYPE_WIFI = 1;
+  private static final String TAG = "TXCDRApi";
   private static String g_simulate_idfa;
   static boolean initRpt;
   private static String mAppName;
@@ -125,9 +126,18 @@ public class TXCDRApi
     }
     Object localObject = (ConnectivityManager)paramContext.getSystemService("connectivity");
     paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-    localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
-    if (localObject == null)
+    try
     {
+      localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
+      if (localObject == null)
+      {
+        AppMethodBeat.o(14632);
+        return 255;
+      }
+    }
+    catch (Exception paramContext)
+    {
+      TXCLog.e("TXCDRApi", "getActiveNetworkInfo exception:", paramContext);
       AppMethodBeat.o(14632);
       return 255;
     }
@@ -138,30 +148,26 @@ public class TXCDRApi
     }
     if (((NetworkInfo)localObject).getType() == 0)
     {
-      switch (paramContext.getNetworkType())
+      try
       {
-      default: 
+        int i = paramContext.getNetworkType();
+        switch (i)
+        {
+        default: 
+          AppMethodBeat.o(14632);
+          return 2;
+        }
+      }
+      catch (Exception paramContext)
+      {
+        TXCLog.e("TXCDRApi", "TXCDRApi: get network type fail, exception occurred.", paramContext);
         AppMethodBeat.o(14632);
         return 2;
-      case 1: 
-      case 2: 
-      case 4: 
-      case 7: 
-      case 11: 
-        AppMethodBeat.o(14632);
-        return 4;
-      case 3: 
-      case 5: 
-      case 6: 
-      case 8: 
-      case 9: 
-      case 10: 
-      case 12: 
-      case 14: 
-      case 15: 
-        AppMethodBeat.o(14632);
-        return 3;
       }
+      AppMethodBeat.o(14632);
+      return 4;
+      AppMethodBeat.o(14632);
+      return 3;
       AppMethodBeat.o(14632);
       return 2;
     }
@@ -203,6 +209,7 @@ public class TXCDRApi
     {
       for (;;)
       {
+        TXCLog.e("TXCDRApi", "get package name failed.", paramContext);
         paramContext = str;
       }
     }
@@ -373,6 +380,7 @@ public class TXCDRApi
     }
     catch (Exception paramContext)
     {
+      TXCLog.e("TXCDRApi", "init crash report failed.", paramContext);
       AppMethodBeat.o(14635);
     }
   }
@@ -452,6 +460,7 @@ public class TXCDRApi
     {
       for (;;)
       {
+        TXCLog.e("TXCDRApi", "string2Md5 failed.", paramString);
         paramString = str;
       }
     }
@@ -534,7 +543,7 @@ public class TXCDRApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.basic.datareport.TXCDRApi
  * JD-Core Version:    0.7.0.1
  */

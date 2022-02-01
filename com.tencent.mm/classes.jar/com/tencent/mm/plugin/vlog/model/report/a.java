@@ -3,176 +3,74 @@ package com.tencent.mm.plugin.vlog.model.report;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.c;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.q;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.vlog.model.MultiMediaVideoChecker;
 import com.tencent.mm.plugin.vlog.model.MultiMediaVideoChecker.a;
-import com.tencent.mm.plugin.vlog.model.v;
-import com.tencent.mm.plugin.vlog.model.w;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.vfs.o;
-import com.tencent.mm.videocomposition.b;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.vlog.model.ac;
+import com.tencent.mm.plugin.vlog.model.ad;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.vfs.s;
+import com.tencent.mm.videocomposition.d;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/model/report/MultiMediaIDKeyStat;", "", "()V", "DATA_ID", "", "ERR_ID", "HighFpsLimit", "", "HighResolutionLimit", "MuxStateResumeFromPrevious", "MuxStateStart", "MuxStateUnknown", "TAG", "", "muxReportMMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "finishMux", "", "path", "cost", "hasOriginSound", "", "hasMusic", "markGetFrameThumbFailed", "markGetFrameThumbNull", "markMuxTrackCount", "count", "videoAndImage", "muxErrCode", "code", "pathListHashKey", "pathList", "", "report", "key", "reportCompositionInfo", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "reportEditItem", "itemList", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "reportMuxResult", "background", "success", "retryCount", "startMux", "outputPath", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/report/MultiMediaIDKeyStat;", "", "()V", "DATA_ID", "", "ERR_ID", "HighFpsLimit", "", "HighResolutionLimit", "MuxStateResumeFromPrevious", "MuxStateStart", "MuxStateUnknown", "TAG", "", "muxReportMMKV", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "finishMux", "", "path", "cost", "hasOriginSound", "", "hasMusic", "isHevcHard", "isHevcSoft", "markGetCompositionLabelCost", "markGetCompositionLabelFail", "markGetCompositionLabelSucc", "markGetFrameThumbFailed", "markGetFrameThumbNull", "markMuxTrackCount", "count", "videoAndImage", "markSelectNonYuv420Video", "markStartGetCompositionLabel", "muxErrCode", "code", "pathListHashKey", "pathList", "", "report", "key", "reportCompositionInfo", "composition", "Lcom/tencent/mm/plugin/vlog/model/VLogComposition;", "reportEditItem", "itemList", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "reportMuxResult", "background", "success", "retryCount", "softEncode", "startMux", "outputPath", "plugin-vlog_release"})
 public final class a
 {
-  private static final ay BZj;
-  private static final int BZk = 0;
-  private static final int BZl = 1;
-  private static final int BZm = 2;
-  public static final a BZn;
+  private static final MultiProcessMMKV GAW;
+  private static final int GAX = 0;
+  private static final int GAY = 1;
+  private static final int GAZ = 2;
+  public static final a GBa;
   
   static
   {
-    AppMethodBeat.i(191349);
-    BZn = new a();
-    BZj = ay.aRW("MultiMediaIDKeyStatMuxMark");
-    BZl = 1;
-    BZm = 2;
-    AppMethodBeat.o(191349);
+    AppMethodBeat.i(190814);
+    GBa = new a();
+    GAW = MultiProcessMMKV.getMMKV("MultiMediaIDKeyStatMuxMark");
+    GAY = 1;
+    GAZ = 2;
+    AppMethodBeat.o(190814);
   }
   
-  public static void Ui(int paramInt)
+  public static void KS(long paramLong)
   {
-    AppMethodBeat.i(191344);
-    ae.i("MicroMsg.MultiMediaIDKeyStat", "muxErrCode:".concat(String.valueOf(paramInt)));
-    switch (paramInt)
-    {
-    default: 
-      g.yxI.n(1372L, 16L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -10: 
-      g.yxI.n(1372L, 5L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -11: 
-      g.yxI.n(1372L, 6L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -14: 
-      g.yxI.n(1372L, 8L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -15: 
-      g.yxI.n(1372L, 9L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -101: 
-      g.yxI.n(1372L, 30L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -102: 
-      g.yxI.n(1372L, 31L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -103: 
-      g.yxI.n(1372L, 32L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -104: 
-      g.yxI.n(1372L, 33L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -110: 
-      g.yxI.n(1372L, 34L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -111: 
-      g.yxI.n(1372L, 35L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -112: 
-      g.yxI.n(1372L, 36L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -113: 
-      g.yxI.n(1372L, 37L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -121: 
-      g.yxI.n(1372L, 38L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -122: 
-      g.yxI.n(1372L, 39L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    case -123: 
-      g.yxI.n(1372L, 40L, 1L);
-      AppMethodBeat.o(191344);
-      return;
-    }
-    g.yxI.n(1372L, 41L, 1L);
-    AppMethodBeat.o(191344);
+    AppMethodBeat.i(190811);
+    h.CyF.n(1371L, 121L, paramLong);
+    h.CyF.n(1371L, 122L, 1L);
+    AppMethodBeat.o(190811);
   }
   
-  public static void aN(int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(191341);
-    ae.i("MicroMsg.MultiMediaIDKeyStat", "markMuxTrackCount, count:" + paramInt + ", videoAndImage:" + paramBoolean);
-    if (paramBoolean) {
-      g.yxI.n(1371L, 2L, 1L);
-    }
-    if (paramInt <= 1)
-    {
-      g.yxI.n(1371L, 3L, 1L);
-      AppMethodBeat.o(191341);
-      return;
-    }
-    if (2 > paramInt) {
-      if (4 <= paramInt) {
-        break label129;
-      }
-    }
-    label129:
-    while (5 < paramInt)
-    {
-      g.yxI.n(1371L, 6L, 1L);
-      AppMethodBeat.o(191341);
-      return;
-      if (3 < paramInt) {
-        break;
-      }
-      g.yxI.n(1371L, 4L, 1L);
-      AppMethodBeat.o(191341);
-      return;
-    }
-    g.yxI.n(1371L, 5L, 1L);
-    AppMethodBeat.o(191341);
-  }
-  
-  public static void b(v paramv)
+  public static void a(ac paramac)
   {
     int k = 1;
-    AppMethodBeat.i(191347);
-    p.h(paramv, "composition");
-    Object localObject = (Iterable)paramv.BXJ;
+    AppMethodBeat.i(190807);
+    p.h(paramac, "composition");
+    Object localObject = (Iterable)paramac.Gzn;
     int i;
     boolean bool;
     if ((!(localObject instanceof Collection)) || (!((Collection)localObject).isEmpty()))
     {
       localObject = ((Iterable)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        if (((w)((Iterator)localObject).next()).evS())
+        if (((ad)((Iterator)localObject).next()).fBG())
         {
           i = 1;
-          bool = paramv.BXL;
-          paramv = (Iterable)paramv.BXJ;
-          if (((paramv instanceof Collection)) && (((Collection)paramv).isEmpty())) {
+          bool = paramac.Gzp;
+          paramac = (Iterable)paramac.Gzn;
+          if (((paramac instanceof Collection)) && (((Collection)paramac).isEmpty())) {
             break label228;
           }
-          paramv = paramv.iterator();
+          paramac = paramac.iterator();
           label126:
-          if (!paramv.hasNext()) {
+          if (!paramac.hasNext()) {
             break label228;
           }
-          if (((w)paramv.next()).BXV.lqb == 1.0F) {
+          if (((ad)paramac.next()).GzA.mwH == 1.0F) {
             break label223;
           }
           j = 1;
@@ -189,15 +87,15 @@ public final class a
     for (int j = k;; j = 0)
     {
       if (i != 0) {
-        g.yxI.A(1371L, 106L);
+        h.CyF.F(1371L, 106L);
       }
       if (bool) {
-        g.yxI.A(1371L, 107L);
+        h.CyF.F(1371L, 107L);
       }
       if (j != 0) {
-        g.yxI.A(1371L, 114L);
+        h.CyF.F(1371L, 114L);
       }
-      AppMethodBeat.o(191347);
+      AppMethodBeat.o(190807);
       return;
       i = 0;
       break;
@@ -207,237 +105,455 @@ public final class a
     }
   }
   
-  public static void b(String paramString, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
+  public static void a(String paramString, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    AppMethodBeat.i(191343);
+    AppMethodBeat.i(190803);
     p.h(paramString, "path");
-    ae.i("MicroMsg.MultiMediaIDKeyStat", "finishMux:" + paramString + ", cost:" + paramLong + ", hasOriginSound:" + paramBoolean1 + ", hasMusic:" + paramBoolean2);
+    Log.i("MicroMsg.MultiMediaIDKeyStat", "finishMux:" + paramString + ", cost:" + paramLong + ", hasOriginSound:" + paramBoolean1 + ", hasMusic:" + paramBoolean2 + ", isHevcHard:" + paramBoolean3 + ", isHevcSoft:" + paramBoolean4);
     int i = 0;
-    if (!o.fB(paramString))
+    if (!s.YS(paramString))
     {
-      ae.i("MicroMsg.MultiMediaIDKeyStat", "finish mux file not exist path:".concat(String.valueOf(paramString)));
-      g.yxI.n(1372L, 18L, 1L);
+      Log.i("MicroMsg.MultiMediaIDKeyStat", "finish mux file not exist path:".concat(String.valueOf(paramString)));
+      h.CyF.n(1372L, 18L, 1L);
       i = 1;
     }
-    MultiMediaVideoChecker.a locala = MultiMediaVideoChecker.BXt.aED(paramString);
+    MultiMediaVideoChecker.a locala = MultiMediaVideoChecker.GyY.aTV(paramString);
     int j;
-    if ((locala == null) || (locala.width <= 0) || (locala.height <= 0) || (locala.cwp <= 0.0F)) {
+    if ((locala == null) || (locala.width <= 0) || (locala.height <= 0) || (locala.cKu <= 0.0F)) {
       if (locala == null)
       {
-        ae.i("MicroMsg.MultiMediaIDKeyStat", "finish mux cannot get videoInfo path:".concat(String.valueOf(paramString)));
-        g.yxI.n(1372L, 19L, 1L);
+        Log.i("MicroMsg.MultiMediaIDKeyStat", "finish mux cannot get videoInfo path:".concat(String.valueOf(paramString)));
+        h.CyF.n(1372L, 19L, 1L);
         j = 0;
-        label183:
-        if (BZj.getInt(paramString, BZk) == BZm)
+        label196:
+        if (GAW.getInt(paramString, GAX) == GAZ)
         {
           if (j == 0) {
-            break label1364;
+            break label1464;
           }
-          ae.i("MicroMsg.MultiMediaIDKeyStat", "finishMux error is resume from previous");
-          g.yxI.n(1371L, 101L, 1L);
+          Log.i("MicroMsg.MultiMediaIDKeyStat", "finishMux error is resume from previous");
+          h.CyF.n(1371L, 101L, 1L);
         }
       }
     }
     for (;;)
     {
-      BZj.remove(paramString);
-      AppMethodBeat.o(191343);
+      GAW.remove(paramString);
+      AppMethodBeat.o(190803);
       return;
       if ((locala.width <= 0) || (locala.height <= 0))
       {
-        ae.i("MicroMsg.MultiMediaIDKeyStat", "finish mux cannot get videoInfo width/height path:".concat(String.valueOf(paramString)));
-        g.yxI.n(1372L, 20L, 1L);
+        Log.i("MicroMsg.MultiMediaIDKeyStat", "finish mux cannot get videoInfo width/height path:".concat(String.valueOf(paramString)));
+        h.CyF.n(1372L, 20L, 1L);
         break;
       }
-      if (locala.cwp > 0.0F) {
+      if (locala.cKu > 0.0F) {
         break;
       }
-      ae.i("MicroMsg.MultiMediaIDKeyStat", "finish mux cannot get videoInfo fps path:".concat(String.valueOf(paramString)));
-      g.yxI.n(1372L, 21L, 1L);
+      Log.i("MicroMsg.MultiMediaIDKeyStat", "finish mux cannot get videoInfo fps path:".concat(String.valueOf(paramString)));
+      h.CyF.n(1372L, 21L, 1L);
       break;
-      g.yxI.n(1371L, 1L, 1L);
-      g.yxI.n(1371L, 62L, paramLong);
-      g.yxI.n(1371L, 63L, 1L);
-      g.yxI.n(1371L, 16L, locala.cwp);
-      g.yxI.n(1371L, 17L, 1L);
-      label418:
+      h.CyF.n(1371L, 1L, 1L);
+      if (paramBoolean4) {
+        h.CyF.n(1371L, 129L, 1L);
+      }
+      if (paramBoolean3) {
+        h.CyF.n(1371L, 130L, 1L);
+      }
+      label423:
+      label476:
       long l;
-      if ((paramBoolean1) && (!paramBoolean2))
+      if ((!paramBoolean3) && (!paramBoolean4))
       {
-        g.yxI.n(1371L, 20L, 1L);
-        ae.i("MicroMsg.MultiMediaIDKeyStat", "finish mux video duration:" + locala.duration);
+        h.CyF.n(1371L, 62L, paramLong);
+        h.CyF.n(1371L, 63L, 1L);
+        h.CyF.n(1371L, 16L, locala.cKu);
+        h.CyF.n(1371L, 17L, 1L);
+        if ((!paramBoolean1) || (paramBoolean2)) {
+          break label679;
+        }
+        h.CyF.n(1371L, 20L, 1L);
+        Log.i("MicroMsg.MultiMediaIDKeyStat", "finish mux video duration:" + locala.duration);
         l = locala.duration / 1000L;
         if (0L <= l) {
-          break label744;
+          break label844;
         }
-        label462:
+        label520:
         if (11L <= l) {
-          break label858;
+          break label958;
         }
-        label471:
+        label529:
         if (21L <= l) {
-          break label972;
+          break label1072;
         }
-        label480:
+        label538:
         if (31L <= l) {
-          break label1086;
+          break label1186;
         }
-        label489:
+        label547:
         if (41L <= l) {
-          break label1200;
+          break label1300;
         }
-        label498:
+        label556:
         j = i;
         if (51L > l) {
-          break label183;
+          break label196;
         }
         j = i;
         if (60L < l) {
-          break label183;
+          break label196;
         }
         if ((paramBoolean1) || (paramBoolean2)) {
-          break label1314;
+          break label1414;
         }
-        g.yxI.n(1371L, 34L, 1L);
+        h.CyF.n(1371L, 34L, 1L);
       }
       for (;;)
       {
-        g.yxI.n(1371L, 86L, paramLong);
-        g.yxI.n(1371L, 87L, 1L);
+        h.CyF.n(1371L, 86L, paramLong);
+        h.CyF.n(1371L, 87L, 1L);
         j = i;
         break;
+        if (paramBoolean3)
+        {
+          h.CyF.n(1371L, 132L, paramLong);
+          break label423;
+        }
+        if (!paramBoolean4) {
+          break label423;
+        }
+        h.CyF.n(1371L, 135L, paramLong);
+        break label423;
+        label679:
         if ((!paramBoolean1) && (!paramBoolean2))
         {
-          g.yxI.n(1371L, 21L, 1L);
-          g.yxI.n(1371L, 36L, locala.duration);
-          g.yxI.n(1371L, 37L, 1L);
-          break label418;
+          h.CyF.n(1371L, 21L, 1L);
+          h.CyF.n(1371L, 36L, locala.duration);
+          h.CyF.n(1371L, 37L, 1L);
+          break label476;
         }
         if ((paramBoolean1) && (paramBoolean2))
         {
-          g.yxI.n(1371L, 22L, 1L);
-          g.yxI.n(1371L, 47L, locala.duration);
-          g.yxI.n(1371L, 48L, 1L);
-          break label418;
+          h.CyF.n(1371L, 22L, 1L);
+          h.CyF.n(1371L, 47L, locala.duration);
+          h.CyF.n(1371L, 48L, 1L);
+          break label476;
         }
         if ((paramBoolean1) || (!paramBoolean2)) {
-          break label418;
+          break label476;
         }
-        g.yxI.n(1371L, 23L, 1L);
-        g.yxI.n(1371L, 58L, locala.duration);
-        g.yxI.n(1371L, 59L, 1L);
-        break label418;
-        label744:
+        h.CyF.n(1371L, 23L, 1L);
+        h.CyF.n(1371L, 58L, locala.duration);
+        h.CyF.n(1371L, 59L, 1L);
+        break label476;
+        label844:
         if (10L < l) {
-          break label462;
+          break label520;
         }
         if ((!paramBoolean1) && (!paramBoolean2)) {
-          g.yxI.n(1371L, 29L, 1L);
+          h.CyF.n(1371L, 29L, 1L);
         }
         for (;;)
         {
-          g.yxI.n(1371L, 66L, paramLong);
-          g.yxI.n(1371L, 67L, 1L);
+          h.CyF.n(1371L, 66L, paramLong);
+          h.CyF.n(1371L, 67L, 1L);
           j = i;
           break;
           if ((paramBoolean1) && (paramBoolean2)) {
-            g.yxI.n(1371L, 40L, 1L);
+            h.CyF.n(1371L, 40L, 1L);
           } else if ((!paramBoolean1) && (paramBoolean2)) {
-            g.yxI.n(1371L, 51L, 1L);
+            h.CyF.n(1371L, 51L, 1L);
           }
         }
-        label858:
+        label958:
         if (20L < l) {
-          break label471;
+          break label529;
         }
         if ((!paramBoolean1) && (!paramBoolean2)) {
-          g.yxI.n(1371L, 30L, 1L);
+          h.CyF.n(1371L, 30L, 1L);
         }
         for (;;)
         {
-          g.yxI.n(1371L, 70L, paramLong);
-          g.yxI.n(1371L, 71L, 1L);
+          h.CyF.n(1371L, 70L, paramLong);
+          h.CyF.n(1371L, 71L, 1L);
           j = i;
           break;
           if ((paramBoolean1) && (paramBoolean2)) {
-            g.yxI.n(1371L, 41L, 1L);
+            h.CyF.n(1371L, 41L, 1L);
           } else if ((!paramBoolean1) && (paramBoolean2)) {
-            g.yxI.n(1371L, 52L, 1L);
+            h.CyF.n(1371L, 52L, 1L);
           }
         }
-        label972:
+        label1072:
         if (30L < l) {
-          break label480;
+          break label538;
         }
         if ((!paramBoolean1) && (!paramBoolean2)) {
-          g.yxI.n(1371L, 31L, 1L);
+          h.CyF.n(1371L, 31L, 1L);
         }
         for (;;)
         {
-          g.yxI.n(1371L, 74L, paramLong);
-          g.yxI.n(1371L, 75L, 1L);
+          h.CyF.n(1371L, 74L, paramLong);
+          h.CyF.n(1371L, 75L, 1L);
           j = i;
           break;
           if ((paramBoolean1) && (paramBoolean2)) {
-            g.yxI.n(1371L, 42L, 1L);
+            h.CyF.n(1371L, 42L, 1L);
           } else if ((!paramBoolean1) && (paramBoolean2)) {
-            g.yxI.n(1371L, 53L, 1L);
+            h.CyF.n(1371L, 53L, 1L);
           }
         }
-        label1086:
+        label1186:
         if (40L < l) {
-          break label489;
+          break label547;
         }
         if ((!paramBoolean1) && (!paramBoolean2)) {
-          g.yxI.n(1371L, 32L, 1L);
+          h.CyF.n(1371L, 32L, 1L);
         }
         for (;;)
         {
-          g.yxI.n(1371L, 78L, paramLong);
-          g.yxI.n(1371L, 79L, 1L);
+          h.CyF.n(1371L, 78L, paramLong);
+          h.CyF.n(1371L, 79L, 1L);
           j = i;
           break;
           if ((paramBoolean1) && (paramBoolean2)) {
-            g.yxI.n(1371L, 43L, 1L);
+            h.CyF.n(1371L, 43L, 1L);
           } else if ((!paramBoolean1) && (paramBoolean2)) {
-            g.yxI.n(1371L, 54L, 1L);
+            h.CyF.n(1371L, 54L, 1L);
           }
         }
-        label1200:
+        label1300:
         if (50L < l) {
-          break label498;
+          break label556;
         }
         if ((!paramBoolean1) && (!paramBoolean2)) {
-          g.yxI.n(1371L, 33L, 1L);
+          h.CyF.n(1371L, 33L, 1L);
         }
         for (;;)
         {
-          g.yxI.n(1371L, 82L, paramLong);
-          g.yxI.n(1371L, 83L, 1L);
+          h.CyF.n(1371L, 82L, paramLong);
+          h.CyF.n(1371L, 83L, 1L);
           j = i;
           break;
           if ((paramBoolean1) && (paramBoolean2)) {
-            g.yxI.n(1371L, 44L, 1L);
+            h.CyF.n(1371L, 44L, 1L);
           } else if ((!paramBoolean1) && (paramBoolean2)) {
-            g.yxI.n(1371L, 55L, 1L);
+            h.CyF.n(1371L, 55L, 1L);
           }
         }
-        label1314:
+        label1414:
         if ((paramBoolean1) && (paramBoolean2)) {
-          g.yxI.n(1371L, 45L, 1L);
+          h.CyF.n(1371L, 45L, 1L);
         } else if ((!paramBoolean1) && (paramBoolean2)) {
-          g.yxI.n(1371L, 56L, 1L);
+          h.CyF.n(1371L, 56L, 1L);
         }
       }
-      label1364:
-      ae.i("MicroMsg.MultiMediaIDKeyStat", "finishMux success is resume from previous");
-      g.yxI.n(1371L, 100L, 1L);
+      label1464:
+      Log.i("MicroMsg.MultiMediaIDKeyStat", "finishMux success is resume from previous");
+      h.CyF.n(1371L, 100L, 1L);
     }
   }
   
-  public static void e(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public static void acB(int paramInt)
   {
-    AppMethodBeat.i(191345);
+    AppMethodBeat.i(190804);
+    Log.i("MicroMsg.MultiMediaIDKeyStat", "muxErrCode:".concat(String.valueOf(paramInt)));
+    switch (paramInt)
+    {
+    default: 
+      h.CyF.n(1372L, 16L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -10: 
+      h.CyF.n(1372L, 5L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -11: 
+      h.CyF.n(1372L, 6L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -14: 
+      h.CyF.n(1372L, 8L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -15: 
+      h.CyF.n(1372L, 9L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -101: 
+      h.CyF.n(1372L, 30L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -102: 
+      h.CyF.n(1372L, 31L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -103: 
+      h.CyF.n(1372L, 32L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -104: 
+      h.CyF.n(1372L, 33L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -110: 
+      h.CyF.n(1372L, 34L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -111: 
+      h.CyF.n(1372L, 35L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -112: 
+      h.CyF.n(1372L, 36L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -113: 
+      h.CyF.n(1372L, 37L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -121: 
+      h.CyF.n(1372L, 38L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -122: 
+      h.CyF.n(1372L, 39L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    case -123: 
+      h.CyF.n(1372L, 40L, 1L);
+      AppMethodBeat.o(190804);
+      return;
+    }
+    h.CyF.n(1372L, 41L, 1L);
+    AppMethodBeat.o(190804);
+  }
+  
+  public static void bd(int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(190801);
+    Log.i("MicroMsg.MultiMediaIDKeyStat", "markMuxTrackCount, count:" + paramInt + ", videoAndImage:" + paramBoolean);
+    if (paramBoolean) {
+      h.CyF.n(1371L, 2L, 1L);
+    }
+    if (paramInt <= 1)
+    {
+      h.CyF.n(1371L, 3L, 1L);
+      AppMethodBeat.o(190801);
+      return;
+    }
+    if (2 > paramInt) {
+      if (4 <= paramInt) {
+        break label135;
+      }
+    }
+    label135:
+    while (5 < paramInt)
+    {
+      h.CyF.n(1371L, 6L, 1L);
+      AppMethodBeat.o(190801);
+      return;
+      if (3 < paramInt) {
+        break;
+      }
+      h.CyF.n(1371L, 4L, 1L);
+      AppMethodBeat.o(190801);
+      return;
+    }
+    h.CyF.n(1371L, 5L, 1L);
+    AppMethodBeat.o(190801);
+  }
+  
+  public static void c(List<String> paramList, String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(190802);
+    p.h(paramList, "pathList");
+    p.h(paramString, "outputPath");
+    Log.i("MicroMsg.MultiMediaIDKeyStat", "startMux, pathList:" + paramList + ", outputPath:" + paramString + ", softEncode:" + paramBoolean);
+    int i;
+    if (!((Collection)paramList).isEmpty())
+    {
+      i = 1;
+      if (i == 0) {
+        break label648;
+      }
+      if (GAW.getInt(paramString, GAX) != GAY) {
+        break label330;
+      }
+      Log.i("MicroMsg.MultiMediaIDKeyStat", "check mux may be resume from previous error");
+      GAW.putInt(paramString, GAZ);
+      h.CyF.n(1371L, 99L, 1L);
+      label128:
+      h.CyF.n(1371L, 0L, 1L);
+      if (paramBoolean) {
+        h.CyF.n(1371L, 139L, 1L);
+      }
+      h.CyF.n(1371L, 8L, paramList.size());
+      h.CyF.n(1371L, 9L, 1L);
+      paramList = ((Iterable)paramList).iterator();
+    }
+    for (;;)
+    {
+      if (!paramList.hasNext()) {
+        break label648;
+      }
+      paramString = (String)paramList.next();
+      if (!s.YS(paramString)) {
+        h.CyF.n(1372L, 1L, 0L);
+      }
+      MultiMediaVideoChecker.a locala = MultiMediaVideoChecker.GyY.aTV(paramString);
+      Log.i("MicroMsg.MultiMediaIDKeyStat", "startMux, videoInfo:".concat(String.valueOf(locala)));
+      if ((locala == null) || (locala.width <= 0) || (locala.height <= 0) || (locala.cKu <= 0.0F))
+      {
+        if (locala == null)
+        {
+          Log.i("MicroMsg.MultiMediaIDKeyStat", "cannot get videoInfo path:".concat(String.valueOf(paramString)));
+          h.CyF.n(1372L, 0L, 1L);
+          continue;
+          i = 0;
+          break;
+          label330:
+          GAW.putInt(paramString, GAY);
+          break label128;
+        }
+        if ((locala.width <= 0) || (locala.height <= 0))
+        {
+          Log.i("MicroMsg.MultiMediaIDKeyStat", "cannot get video width/height path:".concat(String.valueOf(paramString)));
+          h.CyF.n(1372L, 2L, 1L);
+          continue;
+        }
+        if (locala.cKu > 0.0F) {
+          continue;
+        }
+        Log.i("MicroMsg.MultiMediaIDKeyStat", "cannot get video fps path:".concat(String.valueOf(paramString)));
+        h.CyF.n(1372L, 3L, 1L);
+        continue;
+      }
+      if (locala.zzJ)
+      {
+        Log.i("MicroMsg.MultiMediaIDKeyStat", "video is h265 path:".concat(String.valueOf(paramString)));
+        h.CyF.n(1371L, 25L, 1L);
+      }
+      if ((locala.width >= 2000) || (locala.height >= 2000))
+      {
+        Log.i("MicroMsg.MultiMediaIDKeyStat", "video high resolution:[" + locala.width + ", " + locala.height + "], path:" + paramString);
+        h.CyF.n(1371L, 26L, 1L);
+      }
+      if (locala.cKu >= 40.0F)
+      {
+        Log.i("MicroMsg.MultiMediaIDKeyStat", "video high fps:" + locala.cKu + ", path:" + paramString);
+        h.CyF.n(1371L, 27L, 1L);
+      }
+      h.CyF.n(1371L, 12L, locala.cKu);
+      h.CyF.n(1371L, 13L, 1L);
+    }
+    label648:
+    AppMethodBeat.o(190802);
+  }
+  
+  public static void c(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
+  {
+    AppMethodBeat.i(190805);
     if (!paramBoolean1) {
       if (paramBoolean2) {
         paramInt = 90;
@@ -445,8 +561,8 @@ public final class a
     }
     for (;;)
     {
-      g.yxI.n(1371L, paramInt, 1L);
-      AppMethodBeat.o(191345);
+      h.CyF.n(1371L, paramInt, 1L);
+      AppMethodBeat.o(190805);
       return;
       paramInt = 91;
       continue;
@@ -454,7 +570,9 @@ public final class a
       {
       default: 
         if (paramBoolean2) {
-          paramInt = 96;
+          if (paramBoolean3) {
+            paramInt = 143;
+          }
         }
         break;
       case 1: 
@@ -467,23 +585,65 @@ public final class a
       case 2: 
         if (paramBoolean2)
         {
-          paramInt = 94;
+          if (paramBoolean3) {
+            paramInt = 141;
+          } else {
+            paramInt = 94;
+          }
+        }
+        else if (paramBoolean3)
+        {
+          paramInt = 142;
         }
         else
         {
           paramInt = 95;
           continue;
-          paramInt = 97;
+          paramInt = 96;
+          continue;
+          if (paramBoolean3) {
+            paramInt = 144;
+          } else {
+            paramInt = 97;
+          }
         }
         break;
       }
     }
   }
   
-  public static void gN(List<? extends com.tencent.mm.plugin.recordvideo.ui.editor.item.a> paramList)
+  public static void fCh()
+  {
+    AppMethodBeat.i(190808);
+    h.CyF.n(1371L, 117L, 1L);
+    AppMethodBeat.o(190808);
+  }
+  
+  public static void fCi()
+  {
+    AppMethodBeat.i(190809);
+    h.CyF.n(1371L, 118L, 1L);
+    AppMethodBeat.o(190809);
+  }
+  
+  public static void fCj()
+  {
+    AppMethodBeat.i(190810);
+    h.CyF.n(1371L, 119L, 1L);
+    AppMethodBeat.o(190810);
+  }
+  
+  public static void fCk()
+  {
+    AppMethodBeat.i(190813);
+    h.CyF.n(1371L, 127L, 1L);
+    AppMethodBeat.o(190813);
+  }
+  
+  public static void hQ(List<? extends com.tencent.mm.plugin.recordvideo.ui.editor.item.a> paramList)
   {
     int k = 1;
-    AppMethodBeat.i(191346);
+    AppMethodBeat.i(190806);
     p.h(paramList, "itemList");
     Object localObject = (Iterable)paramList;
     int i;
@@ -507,7 +667,7 @@ public final class a
           if (!(localObject instanceof q)) {
             break label220;
           }
-          if (((CharSequence)((q)localObject).ydG).length() <= 0) {
+          if (((CharSequence)((q)localObject).CeI).length() <= 0) {
             break label215;
           }
           j = 1;
@@ -530,12 +690,12 @@ public final class a
     for (int j = k;; j = 0)
     {
       if (i != 0) {
-        g.yxI.A(1371L, 104L);
+        h.CyF.F(1371L, 104L);
       }
       if (j != 0) {
-        g.yxI.A(1371L, 105L);
+        h.CyF.F(1371L, 105L);
       }
-      AppMethodBeat.o(191346);
+      AppMethodBeat.o(190806);
       return;
       i = 0;
       break;
@@ -547,100 +707,16 @@ public final class a
     }
   }
   
-  public static void q(List<String> paramList, String paramString)
-  {
-    AppMethodBeat.i(191342);
-    p.h(paramList, "pathList");
-    p.h(paramString, "outputPath");
-    ae.i("MicroMsg.MultiMediaIDKeyStat", "startMux, pathList:" + paramList + ", outputPath:" + paramString);
-    int i;
-    if (!((Collection)paramList).isEmpty())
-    {
-      i = 1;
-      if (i == 0) {
-        break label603;
-      }
-      if (BZj.getInt(paramString, BZk) != BZl) {
-        break label296;
-      }
-      ae.i("MicroMsg.MultiMediaIDKeyStat", "check mux may be resume from previous error");
-      BZj.putInt(paramString, BZm);
-      g.yxI.n(1371L, 99L, 1L);
-      label118:
-      g.yxI.n(1371L, 0L, 1L);
-      g.yxI.n(1371L, 8L, paramList.size());
-      g.yxI.n(1371L, 9L, 1L);
-      paramList = ((Iterable)paramList).iterator();
-    }
-    for (;;)
-    {
-      if (!paramList.hasNext()) {
-        break label603;
-      }
-      paramString = (String)paramList.next();
-      if (!o.fB(paramString)) {
-        g.yxI.n(1372L, 1L, 0L);
-      }
-      MultiMediaVideoChecker.a locala = MultiMediaVideoChecker.BXt.aED(paramString);
-      ae.i("MicroMsg.MultiMediaIDKeyStat", "startMux, videoInfo:".concat(String.valueOf(locala)));
-      if ((locala == null) || (locala.width <= 0) || (locala.height <= 0) || (locala.cwp <= 0.0F))
-      {
-        if (locala == null)
-        {
-          ae.i("MicroMsg.MultiMediaIDKeyStat", "cannot get videoInfo path:".concat(String.valueOf(paramString)));
-          g.yxI.n(1372L, 0L, 1L);
-          continue;
-          i = 0;
-          break;
-          label296:
-          BZj.putInt(paramString, BZl);
-          break label118;
-        }
-        if ((locala.width <= 0) || (locala.height <= 0))
-        {
-          ae.i("MicroMsg.MultiMediaIDKeyStat", "cannot get video width/height path:".concat(String.valueOf(paramString)));
-          g.yxI.n(1372L, 2L, 1L);
-          continue;
-        }
-        if (locala.cwp > 0.0F) {
-          continue;
-        }
-        ae.i("MicroMsg.MultiMediaIDKeyStat", "cannot get video fps path:".concat(String.valueOf(paramString)));
-        g.yxI.n(1372L, 3L, 1L);
-        continue;
-      }
-      if (locala.wfj)
-      {
-        ae.i("MicroMsg.MultiMediaIDKeyStat", "video is h265 path:".concat(String.valueOf(paramString)));
-        g.yxI.n(1371L, 25L, 1L);
-      }
-      if ((locala.width >= 2000) || (locala.height >= 2000))
-      {
-        ae.i("MicroMsg.MultiMediaIDKeyStat", "video high resolution:[" + locala.width + ", " + locala.height + "], path:" + paramString);
-        g.yxI.n(1371L, 26L, 1L);
-      }
-      if (locala.cwp >= 40.0F)
-      {
-        ae.i("MicroMsg.MultiMediaIDKeyStat", "video high fps:" + locala.cwp + ", path:" + paramString);
-        g.yxI.n(1371L, 27L, 1L);
-      }
-      g.yxI.n(1371L, 12L, locala.cwp);
-      g.yxI.n(1371L, 13L, 1L);
-    }
-    label603:
-    AppMethodBeat.o(191342);
-  }
-  
   public static void report(long paramLong)
   {
-    AppMethodBeat.i(191348);
-    g.yxI.A(1371L, paramLong);
-    AppMethodBeat.o(191348);
+    AppMethodBeat.i(190812);
+    h.CyF.F(1371L, paramLong);
+    AppMethodBeat.o(190812);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.report.a
  * JD-Core Version:    0.7.0.1
  */

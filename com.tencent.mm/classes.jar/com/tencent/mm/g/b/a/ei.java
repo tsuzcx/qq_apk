@@ -6,96 +6,89 @@ import com.tencent.mm.plugin.report.a;
 public final class ei
   extends a
 {
-  public long dQX;
-  public long dTO;
-  private String eeu = "";
-  public long eiW;
-  public long ejt;
-  private String eju = "";
-  private String ejv = "";
-  public long ejw;
+  private long eCE;
+  private long eCF;
+  private String els = "";
+  private long enl;
+  private long ery;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(184776);
+    AppMethodBeat.i(184186);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eeu);
+    ((StringBuffer)localObject).append(this.els);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTO);
+    ((StringBuffer)localObject).append(this.eCE);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejt);
+    ((StringBuffer)localObject).append(this.enl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eiW);
+    ((StringBuffer)localObject).append(this.eCF);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejw);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eju);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ejv);
+    ((StringBuffer)localObject).append(this.ery);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(184776);
+    aMq((String)localObject);
+    AppMethodBeat.o(184186);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(184777);
+    AppMethodBeat.i(184187);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("roomid:").append(this.eeu);
+    ((StringBuffer)localObject).append("sessionid:").append(this.els);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("role:").append(this.dTO);
+    ((StringBuffer)localObject).append("MessageType:").append(this.eCE);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("exit:").append(this.ejt);
+    ((StringBuffer)localObject).append("ActionType:").append(this.enl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("msgType:").append(this.eiW);
+    ((StringBuffer)localObject).append("IsFloat:").append(this.eCF);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("action:").append(this.dQX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("openHelp:").append(this.ejw);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("todoid:").append(this.eju);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("appusername:").append(this.ejv);
+    ((StringBuffer)localObject).append("CommentScene:").append(this.ery);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(184777);
+    AppMethodBeat.o(184187);
     return localObject;
+  }
+  
+  public final ei afA()
+  {
+    this.eCF = 0L;
+    return this;
+  }
+  
+  public final ei afy()
+  {
+    this.eCE = 2L;
+    return this;
+  }
+  
+  public final ei afz()
+  {
+    this.enl = 1L;
+    return this;
   }
   
   public final int getId()
   {
-    return 19442;
+    return 19251;
   }
   
-  public final ei nW(String paramString)
+  public final ei lS(long paramLong)
   {
-    AppMethodBeat.i(184775);
-    this.eeu = t("roomid", paramString, true);
-    AppMethodBeat.o(184775);
+    this.ery = paramLong;
     return this;
   }
   
-  public final ei nX(String paramString)
+  public final ei qV(String paramString)
   {
-    AppMethodBeat.i(217089);
-    this.eju = t("todoid", paramString, true);
-    AppMethodBeat.o(217089);
-    return this;
-  }
-  
-  public final ei nY(String paramString)
-  {
-    AppMethodBeat.i(217090);
-    this.ejv = t("appusername", paramString, true);
-    AppMethodBeat.o(217090);
+    AppMethodBeat.i(184185);
+    this.els = x("sessionid", paramString, true);
+    AppMethodBeat.o(184185);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ei
  * JD-Core Version:    0.7.0.1
  */

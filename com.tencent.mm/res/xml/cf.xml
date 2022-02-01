@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="settings_username" android:layout="@layout/b8j" android:title="@string/gw_" />
+    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:key="settings_mobile" android:layout="@layout/b8j" android:title="@string/gqf" />
+    <com.tencent.mm.ui.base.preference.PluginTextPreference android:key="settings_about_vusertitle" />
+    <com.tencent.mm.plugin.setting.ui.setting.SelfVuserPreference android:key="settings_about_vuserinfo" />
+    <Preference android:key="settings_about_vuser_about" android:layout="@layout/b8j" android:title="@string/bhk" />
     <PreferenceSmallCategory />
+    <Preference android:key="settings_independent_password" android:layout="@layout/b8j" android:title="@string/gpa" />
+    <com.tencent.mm.ui.base.preference.IconPreference android:key="settings_voiceprint_title" android:layout="@layout/b8j" android:title="@string/gwe" />
+    <com.tencent.mm.ui.base.preference.IconPreference android:key="settings_fingerprint_title" android:layout="@layout/b8j" android:title="@string/gp4" />
+    <com.tencent.mm.ui.base.preference.IconPreference android:key="settings_facedect_title" android:layout="@layout/b8j" android:title="@string/c5q" />
     <PreferenceSmallCategory />
-    <CheckBoxPreference android:defaultValue="true" android:key="settings_voip_sound" android:persistent="false" android:title="@string/fao" />
-    <CheckBoxPreference android:defaultValue="true" android:key="settings_voip_shake" android:persistent="false" android:title="@string/f_w" />
+    <Preference android:key="settings_trust_friend" android:layout="@layout/b8j" android:title="@string/gvk" />
+    <Preference android:key="settings_manage_login_device" android:layout="@layout/b8j" android:title="@string/gq4" />
+    <com.tencent.mm.ui.base.preference.IconPreference android:key="settings_more_safe" android:title="@string/gr7" />
     <PreferenceSmallCategory />
+    <SummaryBelowPreference android:key="settings_security_center" android:summary="@string/gtm" android:title="@string/gtl" />
 </PreferenceScreen>

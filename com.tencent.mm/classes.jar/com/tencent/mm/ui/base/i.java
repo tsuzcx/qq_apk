@@ -3,7 +3,7 @@ package com.tencent.mm.ui.base;
 import android.app.Dialog;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.widget.a.c;
 
 public class i
@@ -25,14 +25,14 @@ public class i
         AppMethodBeat.i(141873);
         try
         {
-          ae.i("MicroMsg.MMDialog", "run on hijack runnable");
+          Log.i("MicroMsg.MMDialog", "run on hijack runnable");
           i.this.mHijackDismissAction.run();
           AppMethodBeat.o(141873);
           return;
         }
         catch (Exception localException)
         {
-          ae.e("MicroMsg.MMDialog", "protect : " + localException.getMessage());
+          Log.e("MicroMsg.MMDialog", "protect : " + localException.getMessage());
           AppMethodBeat.o(141873);
         }
       }
@@ -52,14 +52,14 @@ public class i
         AppMethodBeat.i(141873);
         try
         {
-          ae.i("MicroMsg.MMDialog", "run on hijack runnable");
+          Log.i("MicroMsg.MMDialog", "run on hijack runnable");
           i.this.mHijackDismissAction.run();
           AppMethodBeat.o(141873);
           return;
         }
         catch (Exception localException)
         {
-          ae.e("MicroMsg.MMDialog", "protect : " + localException.getMessage());
+          Log.e("MicroMsg.MMDialog", "protect : " + localException.getMessage());
           AppMethodBeat.o(141873);
         }
       }
@@ -118,14 +118,14 @@ public class i
     //   84: astore_1
     //   85: ldc 10
     //   87: ldc 96
-    //   89: invokestatic 102	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: invokestatic 102	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   92: ldc 54
     //   94: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   97: return
     //   98: astore_1
     //   99: ldc 10
     //   101: ldc 104
-    //   103: invokestatic 102	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   103: invokestatic 102	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   106: ldc 54
     //   108: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   111: return
@@ -166,7 +166,7 @@ public class i
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.MMDialog", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.MMDialog", localException, "", new Object[0]);
       }
     }
   }
@@ -187,7 +187,7 @@ public class i
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.MMDialog", localException, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.MMDialog", localException, "", new Object[0]);
       AppMethodBeat.o(141877);
     }
   }

@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(111452);
-    tXG = new b("CREATE", 0);
-    tXH = new b("SKIP", 1);
-    tXI = new b[] { tXG, tXH };
+    xoP = new b("CREATE", 0);
+    xoQ = new b("SKIP", 1);
+    xoR = new b[] { xoP, xoQ };
     AppMethodBeat.o(111452);
   }
   
@@ -17,7 +17,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.AlbumPreviewUI.b
  * JD-Core Version:    0.7.0.1
  */

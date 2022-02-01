@@ -6,20 +6,20 @@ import com.tencent.mm.aj.d;
 import com.tencent.mm.aj.i;
 import com.tencent.mm.aj.j;
 import com.tencent.mm.aj.p;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.api.c;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.protocal.protobuf.mw;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.protocal.protobuf.no;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.List;
@@ -29,36 +29,36 @@ import org.json.JSONObject;
 
 public final class a
 {
-  private static String hSu = "";
-  private static long hSv = 0L;
+  private static String iND = "";
+  private static long iNE = 0L;
   
-  public static void DW(String paramString)
+  public static void MK(String paramString)
   {
     AppMethodBeat.i(123976);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(123976);
       return;
     }
-    paramString = ag.aGp().Ef(paramString);
+    paramString = ag.bah().MT(paramString);
     paramString.field_attrSyncVersion = null;
     paramString.field_incrementUpdateTime = 0L;
-    ag.aGp().g(paramString);
+    ag.bah().h(paramString);
     AppMethodBeat.o(123976);
   }
   
-  public static void DX(String paramString)
+  public static void ML(String paramString)
   {
     AppMethodBeat.i(123977);
-    hSu = paramString;
-    hSv = System.currentTimeMillis();
+    iND = paramString;
+    iNE = System.currentTimeMillis();
     AppMethodBeat.o(123977);
   }
   
-  public static boolean DY(String paramString)
+  public static boolean MM(String paramString)
   {
     AppMethodBeat.i(123978);
-    if ((bu.lX(hSu, paramString)) && (System.currentTimeMillis() - hSv < 1000L))
+    if ((Util.isEqual(iND, paramString)) && (System.currentTimeMillis() - iNE < 1000L))
     {
       AppMethodBeat.o(123978);
       return true;
@@ -67,44 +67,44 @@ public final class a
     return false;
   }
   
-  public static boolean a(an paraman, c paramc, List<mw> paramList)
+  public static boolean a(as paramas, c paramc, List<no> paramList)
   {
     AppMethodBeat.i(123982);
-    if ((paraman == null) || (paramList == null) || (paramList.size() == 0))
+    if ((paramas == null) || (paramList == null) || (paramList.size() == 0))
     {
-      ae.e("MicroMsg.BizAttrRenovator", "updateBizAttributes failed.");
+      Log.e("MicroMsg.BizAttrRenovator", "updateBizAttributes failed.");
       AppMethodBeat.o(123982);
       return false;
     }
-    String str1 = paraman.field_username;
-    if (!paraman.fug())
+    String str1 = paramas.field_username;
+    if (!paramas.gBM())
     {
-      ae.w("MicroMsg.BizAttrRenovator", "updateBizAttributes failed, contact is not a biz contact.(username : %s)", new Object[] { str1 });
+      Log.w("MicroMsg.BizAttrRenovator", "updateBizAttributes failed, contact is not a biz contact.(username : %s)", new Object[] { str1 });
       AppMethodBeat.o(123982);
       return false;
     }
     c localc = paramc;
     if (paramc == null) {
-      localc = ag.aGp().Ef(str1);
+      localc = ag.bah().MT(str1);
     }
     if (localc == null)
     {
-      ae.i("MicroMsg.BizAttrRenovator", "BizInfo is null.(username : %s)", new Object[] { str1 });
+      Log.i("MicroMsg.BizAttrRenovator", "BizInfo is null.(username : %s)", new Object[] { str1 });
       AppMethodBeat.o(123982);
       return false;
     }
-    i locali = p.aEN().DL(str1);
+    i locali = p.aYB().Mx(str1);
     long l1;
     int i;
     int k;
-    mw localmw;
+    no localno;
     try
     {
-      if (bu.isNullOrNil(localc.field_extInfo)) {}
+      if (Util.isNullOrNil(localc.field_extInfo)) {}
       for (paramc = new JSONObject();; paramc = new JSONObject(localc.field_extInfo))
       {
         l1 = -1L;
-        l2 = paraman.field_type;
+        l2 = paramas.field_type;
         i = 0;
         paramList = paramList.iterator();
         k = 0;
@@ -113,11 +113,11 @@ public final class a
           if (!paramList.hasNext()) {
             break label735;
           }
-          localmw = (mw)paramList.next();
-          if (localmw != null) {
+          localno = (no)paramList.next();
+          if (localno != null) {
             break;
           }
-          ae.w("MicroMsg.BizAttrRenovator", "keyValue is null.");
+          Log.w("MicroMsg.BizAttrRenovator", "keyValue is null.");
         }
       }
     }
@@ -126,16 +126,16 @@ public final class a
       String str2;
       for (;;)
       {
-        ae.e("MicroMsg.BizAttrRenovator", "create Json object from extInfo error. %s.", new Object[] { paramc });
+        Log.e("MicroMsg.BizAttrRenovator", "create Json object from extInfo error. %s.", new Object[] { paramc });
         paramc = new JSONObject();
         continue;
-        str2 = localmw.uuW;
-        ae.i("MicroMsg.BizAttrRenovator", "[BizAttr] UpdateInfoList key = %s, value = %s", new Object[] { str2, localmw.yxn });
-        String str3 = localmw.yxn;
+        str2 = localno.xMX;
+        Log.i("MicroMsg.BizAttrRenovator", "[BizAttr] UpdateInfoList key = %s, value = %s", new Object[] { str2, localno.Cyk });
+        String str3 = localno.Cyk;
         if (!"UserName".equals(str2))
         {
           if ("NickName".equals(str2)) {
-            paraman.to(str3);
+            paramas.setNickname(str3);
           }
         }
         else
@@ -143,9 +143,9 @@ public final class a
           label312:
           j = 1;
           label315:
-          if ((j == 0) && (!a(paramc, str2, localmw.yxn, str1)))
+          if ((j == 0) && (!a(paramc, str2, localno.Cyk, str1)))
           {
-            str3 = localmw.yxn;
+            str3 = localno.Cyk;
             if (!"BrandInfo".equals(str2)) {
               break label502;
             }
@@ -163,32 +163,32 @@ public final class a
           break;
           if ("Alias".equals(str2))
           {
-            paraman.tl(str3);
+            paramas.BC(str3);
             break label312;
           }
           if ("PYInitial".equals(str2))
           {
-            paraman.tp(str3);
+            paramas.BF(str3);
             break label312;
           }
           if ("QuanPin".equals(str2))
           {
-            paraman.tq(str3);
+            paramas.BG(str3);
             break label312;
           }
           if ("VerifyFlag".equals(str2))
           {
-            paraman.kd(bu.getInt(str3, paraman.field_verifyFlag));
+            paramas.nf(Util.getInt(str3, paramas.field_verifyFlag));
             break label312;
           }
           if ("VerifyInfo".equals(str2))
           {
-            paraman.tK(str3);
+            paramas.Ca(str3);
             break label312;
           }
           if ("Signature".equals(str2))
           {
-            paraman.tF(str3);
+            paramas.BV(str3);
             break label312;
           }
           j = 0;
@@ -201,7 +201,7 @@ public final class a
           }
           if ("BrandFlag".equals(str2))
           {
-            localc.field_brandFlag = bu.getInt(str3, localc.field_brandFlag);
+            localc.field_brandFlag = Util.getInt(str3, localc.field_brandFlag);
             break label360;
           }
           if ("Appid".equals(str2))
@@ -217,10 +217,10 @@ public final class a
           j = 0;
         }
         label595:
-        str3 = localmw.yxn;
+        str3 = localno.Cyk;
         if ("BigHeadImgUrl".equals(str2)) {
           if (locali != null) {
-            locali.hPQ = str3;
+            locali.iKX = str3;
           }
         }
         label625:
@@ -237,7 +237,7 @@ public final class a
             if (locali == null) {
               break label625;
             }
-            locali.hPP = str3;
+            locali.iKW = str3;
             break label625;
           }
         }
@@ -245,14 +245,14 @@ public final class a
         if (!"BitMask".equals(str2)) {
           break;
         }
-        l1 = bu.getLong(localmw.yxn, l1);
+        l1 = Util.getLong(localno.Cyk, l1);
         i += 1;
       }
       if (!"BitVal".equals(str2)) {
         break label984;
       }
     }
-    long l2 = bu.getLong(localmw.yxn, l2);
+    long l2 = Util.getLong(localno.Cyk, l2);
     i += 1;
     label984:
     for (;;)
@@ -261,24 +261,24 @@ public final class a
       label735:
       if (i == 0)
       {
-        ae.i("MicroMsg.BizAttrRenovator", "None attribute has been updated.");
+        Log.i("MicroMsg.BizAttrRenovator", "None attribute has been updated.");
         AppMethodBeat.o(123982);
         return false;
       }
       localc.field_extInfo = paramc.toString();
       if ((locali != null) && (k != 0))
       {
-        p.aEN().b(locali);
-        p.aEA();
-        com.tencent.mm.aj.e.L(str1, false);
-        p.aEA();
-        com.tencent.mm.aj.e.L(str1, true);
-        p.aEP().Dw(str1);
-        paramc = ag.aGz();
-        if (!bu.isNullOrNil(str1))
+        p.aYB().b(locali);
+        p.aYn();
+        com.tencent.mm.aj.e.N(str1, false);
+        p.aYn();
+        com.tencent.mm.aj.e.N(str1, true);
+        p.aYD().Mg(str1);
+        paramc = ag.bas();
+        if (!Util.isNullOrNil(str1))
         {
-          ae.d("MicroMsg.BrandLogic", "remove cache by brandKey : %s", new Object[] { str1 });
-          paramc = (WeakReference)paramc.hTw.remove(str1);
+          Log.d("MicroMsg.BrandLogic", "remove cache by brandKey : %s", new Object[] { str1 });
+          paramc = (WeakReference)paramc.iOK.remove(str1);
           if (paramc != null)
           {
             paramc = (Bitmap)paramc.get();
@@ -288,13 +288,13 @@ public final class a
           }
         }
       }
-      paraman.setType(paraman.field_type | (int)(l1 & l2));
-      i = ((l)g.ab(l.class)).azF().c(str1, paraman);
-      ag.aGp().g(localc);
+      paramas.setType(paramas.field_type | (int)(l1 & l2));
+      i = ((l)g.af(l.class)).aSN().c(str1, paramas);
+      ag.bah().h(localc);
       if (i == 1) {
-        ((l)g.ab(l.class)).azF().b(4, (n)((l)g.ab(l.class)).azF(), str1);
+        ((l)g.af(l.class)).aSN().doNotify(4, (MStorageEx)((l)g.af(l.class)).aSN(), str1);
       }
-      ae.i("MicroMsg.BizAttrRenovator", "Update bizInfo attributes successfully.");
+      Log.i("MicroMsg.BizAttrRenovator", "Update bizInfo attributes successfully.");
       AppMethodBeat.o(123982);
       return true;
     }
@@ -302,7 +302,7 @@ public final class a
   
   private static boolean a(JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(188868);
+    AppMethodBeat.i(212159);
     try
     {
       if ("IsShowHeadImgInMsg".equals(paramString1)) {
@@ -310,7 +310,7 @@ public final class a
       }
       for (;;)
       {
-        AppMethodBeat.o(188868);
+        AppMethodBeat.o(212159);
         return true;
         if (!"IsHideInputToolbarInMsg".equals(paramString1)) {
           break;
@@ -322,19 +322,19 @@ public final class a
     {
       for (;;)
       {
-        ae.e("MicroMsg.BizAttrRenovator", "updateExtInfoAttrs failed, key(%s) value(%s), exception : %s.", new Object[] { paramString1, paramString2, paramJSONObject });
+        Log.e("MicroMsg.BizAttrRenovator", "updateExtInfoAttrs failed, key(%s) value(%s), exception : %s.", new Object[] { paramString1, paramString2, paramJSONObject });
         continue;
         if (!"IsAgreeProtocol".equals(paramString1)) {
           if ("InteractiveMode".equals(paramString1)) {
-            paramJSONObject.put(paramString1, bu.getInt(paramString2, paramJSONObject.optInt(paramString1)));
+            paramJSONObject.put(paramString1, Util.getInt(paramString2, paramJSONObject.optInt(paramString1)));
           } else if ("CanReceiveSpeexVoice".equals(paramString1)) {
             paramJSONObject.put(paramString1, paramString2);
           } else if ("ConnectorMsgType".equals(paramString1)) {
-            paramJSONObject.put(paramString1, bu.getInt(paramString2, paramJSONObject.optInt(paramString1)));
+            paramJSONObject.put(paramString1, Util.getInt(paramString2, paramJSONObject.optInt(paramString1)));
           } else if ("ReportLocationType".equals(paramString1)) {
-            paramJSONObject.put(paramString1, bu.getInt(paramString2, paramJSONObject.optInt(paramString1)));
+            paramJSONObject.put(paramString1, Util.getInt(paramString2, paramJSONObject.optInt(paramString1)));
           } else if ("AudioPlayType".equals(paramString1)) {
-            paramJSONObject.put(paramString1, bu.getInt(paramString2, paramJSONObject.optInt(paramString1)));
+            paramJSONObject.put(paramString1, Util.getInt(paramString2, paramJSONObject.optInt(paramString1)));
           } else if ("IsShowMember".equals(paramString1)) {
             paramJSONObject.put(paramString1, paramString2);
           } else if ("ConferenceContactExpireTime".equals(paramString1)) {
@@ -344,14 +344,14 @@ public final class a
               paramJSONObject.put(paramString1, paramString2);
             } else if (!"IsSubscribeStat".equals(paramString1)) {
               if ("ScanQRCodeType".equals(paramString1)) {
-                paramJSONObject.put(paramString1, bu.getInt(paramString2, paramJSONObject.optInt(paramString1)));
+                paramJSONObject.put(paramString1, Util.getInt(paramString2, paramJSONObject.optInt(paramString1)));
               } else if ("ServiceType".equals(paramString1)) {
-                paramJSONObject.put(paramString1, bu.getInt(paramString2, paramJSONObject.optInt(paramString1)));
+                paramJSONObject.put(paramString1, Util.getInt(paramString2, paramJSONObject.optInt(paramString1)));
               } else if (!"NeedShowUserAddrObtaining".equals(paramString1)) {
                 if ("SupportEmoticonLinkPrefix".equals(paramString1)) {
                   paramJSONObject.put(paramString1, paramString2);
                 } else if ("FunctionFlag".equals(paramString1)) {
-                  paramJSONObject.put(paramString1, bu.getInt(paramString2, paramJSONObject.optInt(paramString1)));
+                  paramJSONObject.put(paramString1, Util.getInt(paramString2, paramJSONObject.optInt(paramString1)));
                 } else if ("NotifyManage".equals(paramString1)) {
                   paramJSONObject.put(paramString1, paramString2);
                 } else if ("ServicePhone".equals(paramString1)) {
@@ -371,8 +371,8 @@ public final class a
                   {
                     if (paramString3.equals("gh_f0a92aa7146c"))
                     {
-                      ae.i("MicroMsg.BizAttrRenovator", "username.equals(ContactStorageLogic.SPUSER_WXPAY_COLLECTION),dont update MMBizMenu.");
-                      AppMethodBeat.o(188868);
+                      Log.i("MicroMsg.BizAttrRenovator", "username.equals(ContactStorageLogic.SPUSER_WXPAY_COLLECTION),dont update MMBizMenu.");
+                      AppMethodBeat.o(212159);
                       return true;
                     }
                     paramJSONObject.put(paramString1, paramString2);
@@ -429,21 +429,21 @@ public final class a
           }
         }
       }
-      AppMethodBeat.o(188868);
+      AppMethodBeat.o(212159);
     }
     return false;
   }
   
-  public static boolean aFH()
+  public static boolean aZz()
   {
     AppMethodBeat.i(123980);
-    Object localObject = g.ajR().ajA().get(am.a.IMM, null);
+    Object localObject = g.aAh().azQ().get(ar.a.NUP, null);
     if ((localObject == null) || (!(localObject instanceof Integer))) {
-      ae.i("MicroMsg.BizAttrRenovator", "openFlag is null.");
+      Log.i("MicroMsg.BizAttrRenovator", "openFlag is null.");
     }
     for (int i = 1;; i = ((Integer)localObject).intValue())
     {
-      ae.i("MicroMsg.BizAttrRenovator", "openFlag is %d.", new Object[] { Integer.valueOf(i) });
+      Log.i("MicroMsg.BizAttrRenovator", "openFlag is %d.", new Object[] { Integer.valueOf(i) });
       if (i != 1) {
         break;
       }
@@ -454,30 +454,30 @@ public final class a
     return false;
   }
   
-  static boolean d(c paramc)
+  static boolean e(c paramc)
   {
     AppMethodBeat.i(123979);
     if (paramc == null)
     {
-      ae.i("MicroMsg.BizAttrRenovator", "BizInfo is null.");
+      Log.i("MicroMsg.BizAttrRenovator", "BizInfo is null.");
       AppMethodBeat.o(123979);
       return false;
     }
-    if (!aFH())
+    if (!aZz())
     {
       AppMethodBeat.o(123979);
       return false;
     }
-    int j = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getInt("MMBizAttrSyncFreq", -1);
+    int j = ((com.tencent.mm.plugin.zero.b.a)g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getInt("MMBizAttrSyncFreq", -1);
     int i = j;
     if (j == -1)
     {
-      ae.i("MicroMsg.BizAttrRenovator", "MMBizAttrSyncFreq is null.");
+      Log.i("MicroMsg.BizAttrRenovator", "MMBizAttrSyncFreq is null.");
       i = 3600;
     }
     long l1 = System.currentTimeMillis();
     long l2 = paramc.field_incrementUpdateTime;
-    ae.i("MicroMsg.BizAttrRenovator", "currentMS(%d), lastUpdateTime(%d), freq(%d), version(%s).", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), paramc.field_attrSyncVersion });
+    Log.i("MicroMsg.BizAttrRenovator", "currentMS(%d), lastUpdateTime(%d), freq(%d), version(%s).", new Object[] { Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(i), paramc.field_attrSyncVersion });
     if (l1 - l2 >= i * 1000L)
     {
       AppMethodBeat.o(123979);
@@ -487,43 +487,43 @@ public final class a
     return false;
   }
   
-  public final boolean DZ(final String paramString)
+  public final boolean MN(final String paramString)
   {
     AppMethodBeat.i(123981);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.i("MicroMsg.BizAttrRenovator", "try2UpdateBizAttributes failed, username is null or nil.");
+      Log.i("MicroMsg.BizAttrRenovator", "try2UpdateBizAttributes failed, username is null or nil.");
       AppMethodBeat.o(123981);
       return false;
     }
-    if (DY(paramString))
+    if (MM(paramString))
     {
-      ae.i("MicroMsg.BizAttrRenovator", "try2UpdateBizAttributes failed, username is just delete.");
+      Log.i("MicroMsg.BizAttrRenovator", "try2UpdateBizAttributes failed, username is just delete.");
       AppMethodBeat.o(123981);
       return false;
     }
-    ae.d("MicroMsg.BizAttrRenovator", "try2UpdateBizAttributes");
-    c localc = ag.aGp().Ef(paramString);
-    if (!d(localc))
+    Log.d("MicroMsg.BizAttrRenovator", "try2UpdateBizAttributes");
+    c localc = ag.bah().MT(paramString);
+    if (!e(localc))
     {
-      ae.i("MicroMsg.BizAttrRenovator", "do not need to update biz attrs now.");
+      Log.i("MicroMsg.BizAttrRenovator", "do not need to update biz attrs now.");
       AppMethodBeat.o(123981);
       return false;
     }
     if (paramString.equals("gh_f0a92aa7146c"))
     {
-      ae.i("MicroMsg.BizAttrRenovator", "username == ContactStorageLogic.SPUSER_WXPAY_COLLECTION，go NetScene Plugin");
-      g.ajQ().gDv.a(new aa(new aa.a() {}), 0);
+      Log.i("MicroMsg.BizAttrRenovator", "username == ContactStorageLogic.SPUSER_WXPAY_COLLECTION，go NetScene Plugin");
+      g.aAg().hqi.a(new aa(new aa.a() {}), 0);
     }
     final WeakReference localWeakReference = new WeakReference(null);
-    g.ajQ().gDv.a(new u(paramString, localc.field_attrSyncVersion, new u.a() {}), 0);
+    g.aAg().hqi.a(new u(paramString, localc.field_attrSyncVersion, new u.a() {}), 0);
     AppMethodBeat.o(123981);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.al.a
  * JD-Core Version:    0.7.0.1
  */

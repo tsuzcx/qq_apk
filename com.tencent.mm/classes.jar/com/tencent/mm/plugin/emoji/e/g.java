@@ -7,22 +7,22 @@ import com.tencent.mm.plugin.emoji.g.e;
 
 public final class g
 {
-  public c pJj;
-  public e pJk;
-  public a pJl;
+  public c qZE;
+  public e qZF;
+  public a qZG;
   
   public g()
   {
     AppMethodBeat.i(108504);
-    this.pJj = new c();
-    this.pJk = new e();
-    this.pJl = new a();
+    this.qZE = new c();
+    this.qZF = new e();
+    this.qZG = new a();
     AppMethodBeat.o(108504);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.g
  * JD-Core Version:    0.7.0.1
  */

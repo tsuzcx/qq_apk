@@ -8,12 +8,12 @@ import java.util.List;
 final class c
   implements d
 {
-  private final List<com.google.android.exoplayer2.f.a> bAD;
+  private final List<com.google.android.exoplayer2.f.a> bAF;
   
   public c(List<com.google.android.exoplayer2.f.a> paramList)
   {
     AppMethodBeat.i(92888);
-    this.bAD = Collections.unmodifiableList(paramList);
+    this.bAF = Collections.unmodifiableList(paramList);
     AppMethodBeat.o(92888);
   }
   
@@ -30,7 +30,7 @@ final class c
     AppMethodBeat.i(92890);
     if (paramLong >= 0L)
     {
-      localList = this.bAD;
+      localList = this.bAF;
       AppMethodBeat.o(92890);
       return localList;
     }
@@ -39,7 +39,7 @@ final class c
     return localList;
   }
   
-  public final long eI(int paramInt)
+  public final long eH(int paramInt)
   {
     AppMethodBeat.i(92889);
     if (paramInt == 0) {}
@@ -51,14 +51,14 @@ final class c
     }
   }
   
-  public final int vV()
+  public final int wa()
   {
     return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.c
  * JD-Core Version:    0.7.0.1
  */

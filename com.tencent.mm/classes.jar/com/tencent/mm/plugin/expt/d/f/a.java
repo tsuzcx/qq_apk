@@ -1,106 +1,108 @@
 package com.tencent.mm.plugin.expt.d.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  private static Boolean qYi;
-  public static Boolean qYj;
+  private static Boolean syu;
+  public static Boolean syv;
   
   public static void e(String paramString, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(195926);
+    AppMethodBeat.i(220348);
     if (paramLong <= 10L) {
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1409L, 8L, 1L, false);
+      h.CyF.idkeyStat(1409L, 8L, 1L, false);
     }
     for (;;)
     {
-      ae.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statStorageCostTime configID : %s, costTime : %d, dataSzie : %d", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-      AppMethodBeat.o(195926);
+      Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statStorageCostTime configID : %s, costTime : %d, dataSzie : %d", new Object[] { paramString, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      AppMethodBeat.o(220348);
       return;
       if (paramLong <= 100L)
       {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1409L, 9L, 1L, false);
+        h.CyF.idkeyStat(1409L, 9L, 1L, false);
       }
       else if (paramLong <= 1000L)
       {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1409L, 10L, 1L, false);
+        h.CyF.idkeyStat(1409L, 10L, 1L, false);
       }
       else
       {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1409L, 11L, 1L, false);
-        if (qYj == null)
+        h.CyF.idkeyStat(1409L, 11L, 1L, false);
+        if (syv == null)
         {
-          qYj = Boolean.valueOf(((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qPv, false));
-          ae.i("EdgeComputingMonitor", "[EdgeComputingMonitor] statStorageCostTime sIsMonitorPerformance : " + qYj);
+          syv = Boolean.valueOf(((b)g.af(b.class)).a(b.a.smE, false));
+          Log.i("EdgeComputingMonitor", "[EdgeComputingMonitor] statStorageCostTime sIsMonitorPerformance : " + syv);
         }
-        if (qYj.booleanValue()) {
-          com.tencent.mm.plugin.report.service.g.yxI.f(20176, new Object[] { paramString, Integer.valueOf(2), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+        if (syv.booleanValue()) {
+          h.CyF.a(20176, new Object[] { paramString, Integer.valueOf(2), Long.valueOf(paramLong), Integer.valueOf(paramInt) });
         }
       }
     }
   }
   
-  public static void kR(boolean paramBoolean)
+  public static void k(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(195927);
+    AppMethodBeat.i(220347);
+    if (syu == null)
+    {
+      syu = Boolean.valueOf(((b)g.af(b.class)).a(b.a.smD, false));
+      Log.i("EdgeComputingMonitor", "[EdgeComputingMonitor] monitorProcess sIsMonitorProcess : " + syu);
+    }
+    if (syu.booleanValue()) {
+      h.CyF.a(20177, new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    }
+    AppMethodBeat.o(220347);
+  }
+  
+  public static void lT(boolean paramBoolean)
+  {
+    AppMethodBeat.i(220349);
     if (paramBoolean) {
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1409L, 20L, 1L, false);
+      h.CyF.idkeyStat(1409L, 20L, 1L, false);
     }
     for (;;)
     {
-      ae.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statScriptConfigParseError success : ".concat(String.valueOf(paramBoolean)));
-      AppMethodBeat.o(195927);
+      Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statScriptConfigParseError success : ".concat(String.valueOf(paramBoolean)));
+      AppMethodBeat.o(220349);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1409L, 21L, 1L, false);
+      h.CyF.idkeyStat(1409L, 21L, 1L, false);
     }
   }
   
-  public static void kS(boolean paramBoolean)
+  public static void lU(boolean paramBoolean)
   {
-    AppMethodBeat.i(195928);
+    AppMethodBeat.i(220350);
     if (paramBoolean) {
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1409L, 22L, 1L, false);
+      h.CyF.idkeyStat(1409L, 22L, 1L, false);
     }
     for (;;)
     {
-      ae.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statSqlConfigParseError success : ".concat(String.valueOf(paramBoolean)));
-      AppMethodBeat.o(195928);
+      Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statSqlConfigParseError success : ".concat(String.valueOf(paramBoolean)));
+      AppMethodBeat.o(220350);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1409L, 23L, 1L, false);
+      h.CyF.idkeyStat(1409L, 23L, 1L, false);
     }
   }
   
-  public static void kT(boolean paramBoolean)
+  public static void lV(boolean paramBoolean)
   {
-    AppMethodBeat.i(195929);
+    AppMethodBeat.i(220351);
     if (paramBoolean) {
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1409L, 24L, 1L, false);
+      h.CyF.idkeyStat(1409L, 24L, 1L, false);
     }
     for (;;)
     {
-      ae.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statV8ScriptEngineInitError success : ".concat(String.valueOf(paramBoolean)));
-      AppMethodBeat.o(195929);
+      Log.d("EdgeComputingMonitor", "[EdgeComputingMonitor] statV8ScriptEngineInitError success : ".concat(String.valueOf(paramBoolean)));
+      AppMethodBeat.o(220351);
       return;
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1409L, 25L, 1L, false);
+      h.CyF.idkeyStat(1409L, 25L, 1L, false);
     }
-  }
-  
-  public static void l(String paramString, int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(195925);
-    if (qYi == null)
-    {
-      qYi = Boolean.valueOf(((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qPu, false));
-      ae.i("EdgeComputingMonitor", "[EdgeComputingMonitor] monitorProcess sIsMonitorProcess : " + qYi);
-    }
-    if (qYi.booleanValue()) {
-      com.tencent.mm.plugin.report.service.g.yxI.f(20177, new Object[] { paramString, Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-    }
-    AppMethodBeat.o(195925);
   }
 }
 

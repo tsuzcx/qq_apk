@@ -5,12 +5,12 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.i.d;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.o;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class WebViewJSSDKUpFileItem
   extends WebViewJSSDKFileItem
 {
   public static final Parcelable.Creator<WebViewJSSDKUpFileItem> CREATOR;
-  public String EfF;
+  public String ISo;
   public int fileType = -1;
   
   static
@@ -41,38 +41,38 @@ public class WebViewJSSDKUpFileItem
     super.d(paramd);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(this.fileType);
-    localArrayList.add(this.EfF);
+    localArrayList.add(this.ISo);
     localArrayList.add(paramd.field_fileId);
     localArrayList.add(paramd.field_aesKey);
     localArrayList.add(paramd.field_fileLength);
-    Context localContext = ak.getContext();
-    if (az.isWifi(localContext)) {
+    Context localContext = MMApplicationContext.getContext();
+    if (NetStatusUtil.isWifi(localContext)) {
       localArrayList.add("1");
     }
     for (;;)
     {
-      ae.d("MicroMsg.WebViewJSSDKVoiceItem", "fileType=%d, initUrl=%s, field_fileId=%s", new Object[] { Integer.valueOf(this.fileType), this.EfF, paramd.field_fileId });
-      paramd = g.yxI;
-      g.m(12018, localArrayList);
-      paramd = this.jXT;
-      if (!bu.isNullOrNil(paramd))
+      Log.d("MicroMsg.WebViewJSSDKVoiceItem", "fileType=%d, initUrl=%s, field_fileId=%s", new Object[] { Integer.valueOf(this.fileType), this.ISo, paramd.field_fileId });
+      paramd = h.CyF;
+      h.r(12018, localArrayList);
+      paramd = this.laR;
+      if (!Util.isNullOrNil(paramd))
       {
-        paramd = new k(paramd);
+        paramd = new o(paramd);
         if (paramd.exists()) {
           paramd.delete();
         }
       }
       AppMethodBeat.o(79018);
       return;
-      if (az.is3G(localContext)) {
+      if (NetStatusUtil.is3G(localContext)) {
         localArrayList.add("4");
-      } else if (az.is4G(localContext)) {
+      } else if (NetStatusUtil.is4G(localContext)) {
         localArrayList.add("5");
-      } else if (az.is5G(localContext)) {
+      } else if (NetStatusUtil.is5G(localContext)) {
         localArrayList.add("6");
-      } else if (az.is2G(localContext)) {
+      } else if (NetStatusUtil.is2G(localContext)) {
         localArrayList.add("3");
-      } else if (az.isWap(localContext)) {
+      } else if (NetStatusUtil.isWap(localContext)) {
         localArrayList.add("2");
       } else {
         localArrayList.add("0");
@@ -85,29 +85,29 @@ public class WebViewJSSDKUpFileItem
     return 0;
   }
   
-  public final WebViewJSSDKFileItem eUd()
+  public final WebViewJSSDKFileItem gWS()
   {
     AppMethodBeat.i(79017);
-    this.dsN = ax.aIT(this.jXT);
+    this.dJX = ay.aYY(this.laR);
     AppMethodBeat.o(79017);
     return this;
   }
   
-  public final String eUf()
-  {
-    return "file";
-  }
-  
-  public final String fwN()
+  public final String getFileType()
   {
     return "nomal";
+  }
+  
+  public final String hdY()
+  {
+    return "file";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.WebViewJSSDKUpFileItem
  * JD-Core Version:    0.7.0.1
  */

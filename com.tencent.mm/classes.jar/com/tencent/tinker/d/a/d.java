@@ -5,7 +5,7 @@ import java.nio.ByteOrder;
 public final class d
   extends c
 {
-  private final ByteOrder MEJ;
+  private final ByteOrder SkH;
   private final byte[] buffer;
   private final int byteCount;
   private final int offset;
@@ -16,7 +16,7 @@ public final class d
     this.buffer = paramArrayOfByte;
     this.offset = 0;
     this.byteCount = paramInt;
-    this.MEJ = paramByteOrder;
+    this.SkH = paramByteOrder;
   }
   
   public static c a(byte[] paramArrayOfByte, int paramInt, ByteOrder paramByteOrder)
@@ -24,7 +24,7 @@ public final class d
     return new d(paramArrayOfByte, paramInt, paramByteOrder);
   }
   
-  public final void gdd()
+  public final void hpl()
   {
     this.position += 4;
   }
@@ -36,7 +36,7 @@ public final class d
     int k;
     int j;
     int m;
-    if (this.MEJ == ByteOrder.BIG_ENDIAN)
+    if (this.SkH == ByteOrder.BIG_ENDIAN)
     {
       k = i + 1;
       i = arrayOfByte[i];
@@ -61,7 +61,7 @@ public final class d
     byte[] arrayOfByte = this.buffer;
     int i = this.offset + this.position;
     int j;
-    if (this.MEJ == ByteOrder.BIG_ENDIAN) {
+    if (this.SkH == ByteOrder.BIG_ENDIAN) {
       j = arrayOfByte[i];
     }
     for (short s = (short)(arrayOfByte[(i + 1)] & 0xFF | j << 8);; s = (short)(arrayOfByte[i] & 0xFF | j << 8))
@@ -79,7 +79,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.d.a.d
  * JD-Core Version:    0.7.0.1
  */

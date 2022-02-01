@@ -3,90 +3,98 @@ package com.tencent.mm.plugin.voip.model;
 import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.c.a;
-import com.tencent.mm.plugin.voip.b.d;
+import com.tencent.mm.compatible.util.f;
 import com.tencent.mm.plugin.voip.video.render.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
+import java.nio.ByteOrder;
 
 public final class n
 {
-  public static int Ctj = 0;
-  public static int Ctk = 0;
-  public static int pcL = 3;
-  l Cpd;
-  volatile c CsS;
-  private long CsT;
-  private long CsU;
-  private int CsV;
-  private int CsW;
-  private long CsX;
-  private int CsY;
-  private int CsZ;
-  final Object Cta;
-  public boolean Ctb;
-  public boolean Ctc;
-  public int Ctd;
-  private int Cte;
-  private long Ctf;
-  public aq Ctg;
-  long Cth;
-  private int Cti;
-  n.a Ctl;
-  private ByteBuffer Ctm;
-  volatile com.tencent.mm.audio.b.c pcI;
-  public int pcM;
-  int pcN;
-  private int pcO;
-  public int pcQ;
-  private int pcS;
-  private long pcT;
-  private c.a pcW;
+  public static int GTO = 60;
+  public static int GWS;
+  public static int GWT;
+  public static int qrK = 3;
+  l GSZ;
+  volatile c GWB;
+  private long GWC;
+  private long GWD;
+  private int GWE;
+  private int GWF;
+  private long GWG;
+  private int GWH;
+  private int GWI;
+  final Object GWJ;
+  public boolean GWK;
+  public boolean GWL;
+  public int GWM;
+  private int GWN;
+  private long GWO;
+  public MMHandler GWP;
+  long GWQ;
+  private int GWR;
+  a GWU;
+  private ByteBuffer GWV;
+  volatile com.tencent.mm.audio.b.c qrH;
+  public int qrL;
+  int qrM;
+  private int qrN;
+  public int qrP;
+  private int qrR;
+  private long qrS;
+  private c.a qrW;
+  
+  static
+  {
+    GWS = 0;
+    GWT = 0;
+  }
   
   public n(l paraml)
   {
     AppMethodBeat.i(114946);
-    this.CsS = null;
-    this.pcI = null;
-    this.pcM = 1;
-    this.Cpd = null;
-    this.pcN = 92;
-    this.CsT = 0L;
-    this.CsU = 0L;
-    this.CsV = 1;
-    this.CsW = 0;
-    this.pcO = 1;
-    this.CsX = 0L;
-    this.CsY = 0;
-    this.CsZ = 0;
-    this.Cta = new Object();
-    this.pcQ = 0;
-    this.Ctb = false;
-    this.Ctc = false;
-    this.Ctd = 0;
-    this.pcS = 1;
-    this.Cte = 1;
-    this.pcT = 0L;
-    this.Ctf = 0L;
-    this.Cth = 0L;
-    this.Cti = 0;
-    this.pcW = new c.a()
+    this.GWB = null;
+    this.qrH = null;
+    this.qrL = 1;
+    this.GSZ = null;
+    this.qrM = 92;
+    this.GWC = 0L;
+    this.GWD = 0L;
+    this.GWE = 1;
+    this.GWF = 0;
+    this.qrN = 1;
+    this.GWG = 0L;
+    this.GWH = 0;
+    this.GWI = 0;
+    this.GWJ = new Object();
+    this.qrP = 0;
+    this.GWK = false;
+    this.GWL = false;
+    this.GWM = 0;
+    this.qrR = 1;
+    this.GWN = 1;
+    this.qrS = 0L;
+    this.GWO = 0L;
+    this.GWQ = 0L;
+    this.GWR = 0;
+    this.qrW = new c.a()
     {
-      public final void ch(int paramAnonymousInt1, int paramAnonymousInt2) {}
+      public final void cj(int paramAnonymousInt1, int paramAnonymousInt2) {}
       
-      public final void u(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
+      public final void w(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
       {
         AppMethodBeat.i(114941);
         for (;;)
         {
           synchronized (n.n(n.this))
           {
-            if (com.tencent.mm.plugin.audio.c.a.bHy().audioManager.isMusicActive()) {
-              com.tencent.mm.audio.c.b.a.ia(1);
+            if (com.tencent.mm.plugin.audio.c.a.cea().audioManager.isMusicActive()) {
+              com.tencent.mm.audio.c.b.a.ju(1);
             }
             com.tencent.mm.audio.c.b.a.e(paramAnonymousInt, paramAnonymousArrayOfByte);
-            if ((n.this.pcM != 2) || (n.a(n.this) == null))
+            if ((n.this.qrL != 2) || (n.a(n.this) == null))
             {
               AppMethodBeat.o(114941);
               return;
@@ -99,12 +107,12 @@ public final class n
               if (n.f(n.this) <= 10) {
                 n.b(n.this, 92);
               }
-              int i = n.a(n.this).eyz();
+              int i = n.a(n.this).fFq();
               n.b(n.this, (i + 24 + n.f(n.this) * 3) / 4);
               if (n.g(n.this) != 1) {
                 break label422;
               }
-              n.c(n.this, n.a(n.this).eyw());
+              n.c(n.this, n.a(n.this).fFn());
               if (n.h(n.this) >= n.f(n.this)) {
                 n.c(n.this, n.h(n.this) - n.f(n.this));
               }
@@ -115,17 +123,17 @@ public final class n
               }
               n.k(n.this);
               n.c(n.this, System.currentTimeMillis());
-              com.tencent.mm.plugin.voip.b.f.Logi("MicroMsg.Voip.VoipDeviceHandler", "amyfwang,first record");
+              com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip.VoipDeviceHandler", "amyfwang,first record");
               if (n.m(n.this) == null) {
                 continue;
               }
-              n.this.Cpd.Csj.Cxm = n.m(n.this).PN();
-              n.this.Cpd.Csj.recordCallback(paramAnonymousArrayOfByte, paramAnonymousInt, n.f(n.this));
-              n.Ctk += 1;
+              n.this.GSZ.GVV.Hba = n.m(n.this).aah();
+              n.this.GSZ.GVV.recordCallback(paramAnonymousArrayOfByte, paramAnonymousInt, n.f(n.this));
+              n.GWT += 1;
             }
           }
           long l1 = System.currentTimeMillis();
-          n.a(n.this, (int)(l1 - n.e(n.this) - n.Ctk * 20));
+          n.a(n.this, (int)(l1 - n.e(n.this) - n.GWT * 20));
           n.a(n.this, l1);
           continue;
           label422:
@@ -135,102 +143,102 @@ public final class n
           l1 = System.currentTimeMillis();
           long l2 = l1 - n.l(n.this);
           if (l2 > 1000L) {
-            com.tencent.mm.plugin.voip.b.f.Logi("MicroMsg.Voip.VoipDeviceHandler", "amyfwang,error,record deltaTime:".concat(String.valueOf(l2)));
+            com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip.VoipDeviceHandler", "amyfwang,error,record deltaTime:".concat(String.valueOf(l2)));
           }
           n.c(n.this, l1);
         }
       }
     };
-    this.Cpd = paraml;
-    if ((this.Ctg == null) || (this.Ctg.isQuit())) {
-      this.Ctg = new aq("VoipDeviceHandler_stopDev");
+    this.GSZ = paraml;
+    if ((this.GWP == null) || (this.GWP.isQuit())) {
+      this.GWP = new MMHandler("VoipDeviceHandler_stopDev");
     }
     AppMethodBeat.o(114946);
   }
   
-  private void eAa()
+  private void fGQ()
   {
     AppMethodBeat.i(114951);
-    ae.i("MicroMsg.Voip.VoipDeviceHandler", "steve: StopHWEnc!!!");
-    this.Cpd.Csj.peH = false;
-    this.Ctb = false;
-    this.Ctc = false;
+    Log.i("MicroMsg.Voip.VoipDeviceHandler", "steve: StopHWEnc!!!");
+    this.GSZ.GVV.qtK = false;
+    this.GWK = false;
+    this.GWL = false;
     AppMethodBeat.o(114951);
   }
   
   public final int b(ByteBuffer paramByteBuffer, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(210044);
-    if (this.pcM != 2)
+    AppMethodBeat.i(235611);
+    if (this.qrL != 2)
     {
-      AppMethodBeat.o(210044);
+      AppMethodBeat.o(235611);
       return 0;
     }
-    if (!this.Cpd.ezL())
+    if (!this.GSZ.fGz())
     {
-      AppMethodBeat.o(210044);
+      AppMethodBeat.o(235611);
       return 0;
     }
-    Object localObject = this.Cpd.Csj;
-    ((v2protocal)localObject).Cyr += 1;
-    if (this.Ctc)
+    Object localObject = this.GSZ.GVV;
+    ((v2protocal)localObject).Hcg += 1;
+    if (this.GWL)
     {
-      eAa();
-      if (this.Cpd.Csw) {
-        this.Cpd.UM(1);
+      fGQ();
+      if (this.GSZ.GWi) {
+        this.GSZ.adg(1);
       }
-      this.Cpd.b(8, true, false, true);
-      localObject = t.Cvc;
-      t.eAR();
+      this.GSZ.c(8, true, false, true);
+      localObject = t.GYO;
+      t.fHI();
     }
-    boolean bool2 = this.Ctb;
+    boolean bool2 = this.GWK;
     boolean bool1;
     label280:
     label305:
     long l;
-    if ((this.Cpd.Csj.peH) && (this.Cpd.Csj.CyK != null))
+    if ((this.GSZ.GVV.qtK) && (this.GSZ.GVV.Hcz != null))
     {
-      this.Cpd.Csj.CyK.DoQosSvrCtrl();
-      bool1 = this.Cpd.Csj.CyK.ENCODING.equalsIgnoreCase("video/avc");
-      if ((this.Cpd.Csj.CyK.ENCODING.equalsIgnoreCase("video/hevc")) || ((bool1) && (1 == (this.Cpd.Csj.CyK.CpR.cRsvd1 & 0x1)) && (this.Cpd.Csj.CyK.CpR.cResolution >= 6)))
+      this.GSZ.GVV.Hcz.DoQosSvrCtrl();
+      bool1 = this.GSZ.GVV.Hcz.ENCODING.equalsIgnoreCase("video/avc");
+      if ((this.GSZ.GVV.Hcz.ENCODING.equalsIgnoreCase("video/hevc")) || ((bool1) && (1 == (this.GSZ.GVV.Hcz.GTN.cRsvd1 & 0x1)) && (this.GSZ.GVV.Hcz.GTN.cResolution >= 6)))
       {
-        this.Ctb = true;
-        if (this.Cpd.Csj.CyK != null)
+        this.GWK = true;
+        if (this.GSZ.GVV.Hcz != null)
         {
-          localObject = d.CCN;
-          if (this.Ctb) {
+          localObject = com.tencent.mm.plugin.voip.b.c.HgQ;
+          if (this.GWK) {
             break label546;
           }
           bool1 = true;
-          d.tH(bool1);
+          com.tencent.mm.plugin.voip.b.c.xr(bool1);
         }
-        if ((!bool2) || (this.Ctb)) {
+        if ((!bool2) || (this.GWK)) {
           break label552;
         }
-        localObject = t.Cvc;
-        t.eAR();
+        localObject = t.GYO;
+        t.fHI();
         l = System.currentTimeMillis();
-        ae.d("MicroMsg.Voip.VoipDeviceHandler", "steve: put video capture in, time:" + l + ", len:" + paramInt1 + ", cnt:" + this.Cpd.Csj.Cyr + ", mIsHWEncEnable:" + this.Cpd.Csj.peH + ", mIsHWEncUsing:" + this.Ctb);
-        if ((!this.Ctb) || (this.Cpd.Csj.CyK == null)) {
+        Log.d("MicroMsg.Voip.VoipDeviceHandler", "steve: put video capture in, time:" + l + ", len:" + paramInt1 + ", cnt:" + this.GSZ.GVV.Hcg + ", mIsHWEncEnable:" + this.GSZ.GVV.qtK + ", mIsHWEncUsing:" + this.GWK);
+        if ((!this.GWK) || (this.GSZ.GVV.Hcz == null)) {
           break label708;
         }
-        if (1 != this.Ctd >> 8)
+        if (1 != this.GWM >> 8)
         {
-          this.Ctd |= 0x100;
-          this.Cpd.Csk.setHWDecMode(this.Ctd);
+          this.GWM |= 0x100;
+          this.GSZ.GVW.setHWDecMode(this.GWM);
         }
-        if (this.Cpd.Csj.CyK == null) {
+        if (this.GSZ.GVV.Hcz == null) {
           break label856;
         }
-        l = bu.HQ();
+        l = Util.currentTicks();
         if (paramInt5 != 1) {
           break label588;
         }
-        paramInt1 = this.Cpd.Csj.CyK.a(paramByteBuffer, paramInt3, paramInt4, paramInt2, false);
+        paramInt1 = this.GSZ.GVV.Hcz.a(paramByteBuffer, paramInt3, paramInt4, paramInt2, false);
         label498:
-        paramByteBuffer = i.CJN;
-        i.aJ(2, bu.aO(l));
-        this.Ctm = null;
+        paramByteBuffer = i.HnR;
+        i.aO(2, Util.ticksToNow(l));
+        this.GWV = null;
         if (paramInt1 < 0) {
           break label623;
         }
@@ -239,21 +247,21 @@ public final class n
     }
     for (;;)
     {
-      AppMethodBeat.o(210044);
+      AppMethodBeat.o(235611);
       return paramInt1;
-      this.Ctb = false;
+      this.GWK = false;
       break;
-      this.Ctb = false;
+      this.GWK = false;
       break;
       label546:
       bool1 = false;
       break label280;
       label552:
-      if ((bool2) || (!this.Ctb) || (this.Cpd.Csj.CyK == null)) {
+      if ((bool2) || (!this.GWK) || (this.GSZ.GVV.Hcz == null)) {
         break label305;
       }
-      localObject = t.Cvc;
-      t.eAQ();
+      localObject = t.GYO;
+      t.fHH();
       break label305;
       label588:
       if (paramInt5 == 2)
@@ -261,41 +269,41 @@ public final class n
         paramInt1 = 0;
         break label498;
       }
-      paramInt1 = this.Cpd.Csj.CyK.a(paramByteBuffer, paramInt3, paramInt4, paramInt2, true);
+      paramInt1 = this.GSZ.GVV.Hcz.a(paramByteBuffer, paramInt3, paramInt4, paramInt2, true);
       break label498;
       label623:
-      ae.i("MicroMsg.Voip.VoipDeviceHandler", "StopHWEnc!! hw encoder error: " + paramInt1 + "old:" + this.Cpd.Csw);
-      if (this.Cpd.Csw) {
-        this.Cpd.UM(1);
+      Log.i("MicroMsg.Voip.VoipDeviceHandler", "StopHWEnc!! hw encoder error: " + paramInt1 + "old:" + this.GSZ.GWi);
+      if (this.GSZ.GWi) {
+        this.GSZ.adg(1);
       }
-      eAa();
-      paramByteBuffer = t.Cvc;
-      t.eAR();
-      this.Cpd.b(8, true, false, true);
+      fGQ();
+      paramByteBuffer = t.GYO;
+      t.fHI();
+      this.GSZ.c(8, true, false, true);
       paramInt1 = 0;
       continue;
       label708:
-      if (this.Ctd >> 8 != 0)
+      if (this.GWM >> 8 != 0)
       {
-        this.Ctd &= 0xFFFFFEFF;
-        this.Cpd.Csk.setHWDecMode(this.Ctd);
+        this.GWM &= 0xFFFFFEFF;
+        this.GSZ.GVW.setHWDecMode(this.GWM);
       }
-      l = bu.HQ();
+      l = Util.currentTicks();
       if (paramInt5 == 2)
       {
-        if ((this.Ctm == null) || (this.Ctm.capacity() < paramByteBuffer.capacity())) {
-          this.Ctm = ByteBuffer.allocateDirect(paramByteBuffer.capacity());
+        if ((this.GWV == null) || (this.GWV.capacity() < paramByteBuffer.capacity())) {
+          this.GWV = ByteBuffer.allocateDirect(paramByteBuffer.capacity());
         }
-        this.Ctm.clear();
+        this.GWV.clear();
         paramByteBuffer.clear();
-        this.Ctm.put(paramByteBuffer).rewind();
-        paramByteBuffer = this.Ctm;
+        this.GWV.put(paramByteBuffer).rewind();
+        paramByteBuffer = this.GWV;
       }
       for (;;)
       {
-        paramInt1 = this.Cpd.Csj.videoEncodeToSend2(paramByteBuffer, paramInt1, paramInt3, paramInt4, paramInt2);
-        paramByteBuffer = i.CJN;
-        i.aJ(1, bu.aO(l));
+        paramInt1 = this.GSZ.GVV.videoEncodeToSend2(paramByteBuffer, paramInt1, paramInt3, paramInt4, paramInt2);
+        paramByteBuffer = i.HnR;
+        i.aO(1, Util.ticksToNow(l));
         break;
       }
       label856:
@@ -306,70 +314,73 @@ public final class n
   public final int b(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(114952);
-    if (this.pcM != 2)
+    if (this.qrL != 2)
     {
       AppMethodBeat.o(114952);
       return 0;
     }
-    if (!this.Cpd.ezL())
+    if (!this.GSZ.fGz())
     {
       AppMethodBeat.o(114952);
       return 0;
     }
-    Object localObject = this.Cpd.Csj;
-    ((v2protocal)localObject).Cyr += 1;
-    if (this.Ctc)
+    if (paramArrayOfByte.length < paramInt3 * paramInt4 * 3 / 2) {
+      Log.e("MicroMsg.Voip.VoipDeviceHandler", "buffer length = %d, w = %d, h = %d\n", new Object[] { Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    }
+    Object localObject = this.GSZ.GVV;
+    ((v2protocal)localObject).Hcg += 1;
+    if (this.GWL)
     {
-      eAa();
-      if (this.Cpd.Csw) {
-        this.Cpd.UM(1);
+      fGQ();
+      if (this.GSZ.GWi) {
+        this.GSZ.adg(1);
       }
-      this.Cpd.b(8, true, false, true);
-      localObject = t.Cvc;
-      t.eAR();
+      this.GSZ.c(8, true, false, true);
+      localObject = t.GYO;
+      t.fHI();
     }
-    boolean bool1 = this.Ctb;
-    label272:
+    boolean bool1 = this.GWK;
+    label322:
     long l1;
     int i;
     long l2;
-    if ((this.Cpd.Csj.peH) && (this.Cpd.Csj.CyK != null))
+    if ((this.GSZ.GVV.qtK) && (this.GSZ.GVV.Hcz != null))
     {
-      this.Cpd.Csj.CyK.DoQosSvrCtrl();
-      boolean bool2 = this.Cpd.Csj.CyK.ENCODING.equalsIgnoreCase("video/avc");
-      if ((this.Cpd.Csj.CyK.ENCODING.equalsIgnoreCase("video/hevc")) || ((bool2) && (1 == (this.Cpd.Csj.CyK.CpR.cRsvd1 & 0x1)) && (this.Cpd.Csj.CyK.CpR.cResolution >= 6)))
+      this.GSZ.GVV.Hcz.DoQosSvrCtrl();
+      boolean bool2 = this.GSZ.GVV.Hcz.ENCODING.equalsIgnoreCase("video/avc");
+      if ((this.GSZ.GVV.Hcz.ENCODING.equalsIgnoreCase("video/hevc")) || ((bool2) && (1 == (this.GSZ.GVV.Hcz.GTN.cRsvd1 & 0x1)) && (this.GSZ.GVV.Hcz.GTN.cResolution >= 6)))
       {
-        this.Ctb = true;
-        if ((!bool1) || (this.Ctb)) {
-          break label545;
+        this.GWK = true;
+        if ((!bool1) || (this.GWK)) {
+          break label595;
         }
-        localObject = t.Cvc;
-        t.eAR();
+        localObject = t.GYO;
+        t.fHI();
         l1 = System.currentTimeMillis();
-        ae.d("MicroMsg.Voip.VoipDeviceHandler", "steve: put video capture in, time:" + l1 + ", len:" + paramInt1 + ", cnt:" + this.Cpd.Csj.Cyr + ", mIsHWEncEnable:" + this.Cpd.Csj.peH + ", mIsHWEncUsing:" + this.Ctb);
+        Log.d("MicroMsg.Voip.VoipDeviceHandler", "steve: put video capture in, time:" + l1 + ", len:" + paramInt1 + ", cnt:" + this.GSZ.GVV.Hcg + ", mIsHWEncEnable:" + this.GSZ.GVV.qtK + ", mIsHWEncUsing:" + this.GWK);
         i = 0;
-        if ((!this.Ctb) || (this.Cpd.Csj.CyK == null)) {
-          break label683;
+        if ((!this.GWK) || (this.GSZ.GVV.Hcz == null)) {
+          break label733;
         }
-        if (1 != this.Ctd >> 8)
+        if (1 != this.GWM >> 8)
         {
-          this.Ctd |= 0x100;
-          this.Cpd.Csk.setHWDecMode(this.Ctd);
+          this.GWM |= 0x100;
+          this.GSZ.GVW.setHWDecMode(this.GWM);
         }
         paramInt1 = i;
-        if (this.Cpd.Csj.CyK != null)
+        if (this.GSZ.GVV.Hcz != null)
         {
-          if ((this.Cpd.Csj.CyK.CpR.cSkipFlag != 0) && (this.Cti <= 10)) {
-            break label667;
+          if ((this.GSZ.GVV.Hcz.GTN.cSkipFlag != 0) && (this.GWR <= 10)) {
+            break label717;
           }
-          this.Cti = 0;
+          this.GWR = 0;
           l1 = System.currentTimeMillis();
-          paramInt1 = this.Cpd.Csj.CyK.b(paramArrayOfByte, paramInt3, paramInt4, paramInt2);
+          paramInt1 = this.GSZ.GVV.Hcz.b(paramArrayOfByte, paramInt3, paramInt4, paramInt2);
           l2 = System.currentTimeMillis();
-          paramArrayOfByte = i.CJN;
-          i.aJ(2, l2 - l1);
+          paramArrayOfByte = i.HnR;
+          i.aO(2, l2 - l1);
           if (paramInt1 < 0) {
-            break label581;
+            break label631;
           }
           paramInt1 = 1;
         }
@@ -379,52 +390,52 @@ public final class n
     {
       AppMethodBeat.o(114952);
       return paramInt1;
-      this.Ctb = false;
+      this.GWK = false;
       break;
-      this.Ctb = false;
+      this.GWK = false;
       break;
-      label545:
-      if ((bool1) || (!this.Ctb) || (this.Cpd.Csj.CyK == null)) {
-        break label272;
+      label595:
+      if ((bool1) || (!this.GWK) || (this.GSZ.GVV.Hcz == null)) {
+        break label322;
       }
-      localObject = t.Cvc;
-      t.eAQ();
-      break label272;
-      label581:
-      ae.i("MicroMsg.Voip.VoipDeviceHandler", "StopHWEnc!! hw encoder error: " + paramInt1 + "old:" + this.Cpd.Csw);
-      if (this.Cpd.Csw) {
-        this.Cpd.UM(1);
+      localObject = t.GYO;
+      t.fHH();
+      break label322;
+      label631:
+      Log.i("MicroMsg.Voip.VoipDeviceHandler", "StopHWEnc!! hw encoder error: " + paramInt1 + "old:" + this.GSZ.GWi);
+      if (this.GSZ.GWi) {
+        this.GSZ.adg(1);
       }
-      eAa();
-      paramArrayOfByte = t.Cvc;
-      t.eAR();
-      this.Cpd.b(8, true, false, true);
+      fGQ();
+      paramArrayOfByte = t.GYO;
+      t.fHI();
+      this.GSZ.c(8, true, false, true);
       paramInt1 = i;
       continue;
-      label667:
-      this.Cti += 1;
+      label717:
+      this.GWR += 1;
       paramInt1 = i;
       continue;
-      label683:
-      if (this.Ctd >> 8 != 0)
+      label733:
+      if (this.GWM >> 8 != 0)
       {
-        this.Ctd &= 0xFFFFFEFF;
-        this.Cpd.Csk.setHWDecMode(this.Ctd);
+        this.GWM &= 0xFFFFFEFF;
+        this.GSZ.GVW.setHWDecMode(this.GWM);
       }
       l1 = System.currentTimeMillis();
-      paramInt1 = this.Cpd.Csj.videoEncodeToSend(paramArrayOfByte, paramInt1, paramInt3, paramInt4, paramInt2);
+      paramInt1 = this.GSZ.GVV.videoEncodeToSend(paramArrayOfByte, paramInt1, paramInt3, paramInt4, paramInt2);
       l2 = System.currentTimeMillis();
-      paramArrayOfByte = i.CJN;
-      i.aJ(1, l2 - l1);
+      paramArrayOfByte = i.HnR;
+      i.aO(1, l2 - l1);
     }
   }
   
-  public final int eyB()
+  public final int fFs()
   {
     AppMethodBeat.i(114947);
-    if ((this.CsS != null) && (this.Cpd.Csj.CyH.CtD == 1))
+    if ((this.GWB != null) && (this.GSZ.GVV.Hcw.GXm == 1))
     {
-      int i = this.CsS.eyB();
+      int i = this.GWB.fFs();
       AppMethodBeat.o(114947);
       return i;
     }
@@ -432,15 +443,15 @@ public final class n
     return 0;
   }
   
-  public final int ezX()
+  public final int fGN()
   {
-    if ((this.pcI != null) && (this.Cpd.Csj.CyH.CtD == 1)) {
-      return this.pcI.dhN;
+    if ((this.qrH != null) && (this.GSZ.GVV.Hcw.GXm == 1)) {
+      return this.qrH.dyZ;
     }
     return 0;
   }
   
-  public final void ezY()
+  public final void fGO()
   {
     int j = 0;
     for (;;)
@@ -448,62 +459,62 @@ public final class n
       try
       {
         AppMethodBeat.i(114948);
-        ae.i("MicroMsg.Voip.VoipDeviceHandler", "stopDev, recorder: %s", new Object[] { this.pcI });
-        if (this.pcM == pcL)
+        Log.i("MicroMsg.Voip.VoipDeviceHandler", "stopDev, recorder: %s", new Object[] { this.qrH });
+        if (this.qrL == qrK)
         {
-          com.tencent.mm.plugin.voip.b.f.Loge("MicroMsg.Voip.VoipDeviceHandler", "devcie stoped already.");
-          ezZ();
+          com.tencent.mm.plugin.voip.b.e.Loge("MicroMsg.Voip.VoipDeviceHandler", "devcie stoped already.");
+          fGP();
           AppMethodBeat.o(114948);
           return;
         }
-        com.tencent.mm.plugin.voip.b.f.Logi("MicroMsg.Voip.VoipDeviceHandler", "stop device..");
-        this.pcM = pcL;
-        if (this.Ctl != null)
+        com.tencent.mm.plugin.voip.b.e.Logi("MicroMsg.Voip.VoipDeviceHandler", "stop device..");
+        this.qrL = qrK;
+        if (this.GWU != null)
         {
-          com.tencent.mm.plugin.voip.b.f.Logd("MicroMsg.Voip.VoipDeviceHandler", "stop videodecode thread..");
-          this.Ctl.Ctp = true;
-          this.Ctl.cancel();
-          this.Ctl = null;
+          com.tencent.mm.plugin.voip.b.e.Logd("MicroMsg.Voip.VoipDeviceHandler", "stop videodecode thread..");
+          this.GWU.GWY = true;
+          this.GWU.cancel();
+          this.GWU = null;
         }
-        this.pcO = 1;
-        this.CsY = 0;
-        this.pcS = 1;
-        this.Cte = 1;
-        this.pcT = 0L;
-        this.Ctf = 0L;
-        this.pcN = 92;
-        this.CsT = 0L;
-        this.CsU = 0L;
-        this.CsV = 1;
-        this.CsW = 0;
-        this.pcQ = 0;
-        this.Cpd.Csj.CwY = ezX();
-        this.Cpd.Csj.CwZ = eyB();
-        v2protocal localv2protocal = this.Cpd.Csj;
-        if ((this.pcI != null) && (this.Cpd.Csj.CyH.CtD == 1))
+        this.qrN = 1;
+        this.GWH = 0;
+        this.qrR = 1;
+        this.GWN = 1;
+        this.qrS = 0L;
+        this.GWO = 0L;
+        this.qrM = 92;
+        this.GWC = 0L;
+        this.GWD = 0L;
+        this.GWE = 1;
+        this.GWF = 0;
+        this.qrP = 0;
+        this.GSZ.GVV.HaM = fGN();
+        this.GSZ.GVV.HaN = fFs();
+        v2protocal localv2protocal = this.GSZ.GVV;
+        if ((this.qrH != null) && (this.GSZ.GVV.Hcw.GXm == 1))
         {
-          i = this.pcI.PR();
-          localv2protocal.Cxc = i;
-          localv2protocal = this.Cpd.Csj;
-          if ((this.CsS == null) || (this.Cpd.Csj.CyH.CtD != 1)) {
+          i = this.qrH.aal();
+          localv2protocal.HaQ = i;
+          localv2protocal = this.GSZ.GVV;
+          if ((this.GWB == null) || (this.GSZ.GVV.Hcw.GXm != 1)) {
             break label419;
           }
-          c localc = this.CsS;
-          ae.d("MicroMsg.Voip.AudioPlayer", "AudioPlayer  mAudioPlayNum:" + localc.CpJ);
-          i = localc.CpJ;
-          localv2protocal.Cxd = i;
-          localv2protocal = this.Cpd.Csj;
+          c localc = this.GWB;
+          Log.d("MicroMsg.Voip.AudioPlayer", "AudioPlayer  mAudioPlayNum:" + localc.GTF);
+          i = localc.GTF;
+          localv2protocal.HaR = i;
+          localv2protocal = this.GSZ.GVV;
           i = j;
-          if (this.CsS != null)
+          if (this.GWB != null)
           {
             i = j;
-            if (this.Cpd.Csj.CyH.CtD == 1) {
-              i = this.CsS.aNQ();
+            if (this.GSZ.GVV.Hcw.GXm == 1) {
+              i = this.GWB.bhV();
             }
           }
           float f = com.tencent.mm.plugin.audio.c.a.getStreamMaxVolume(i);
-          localv2protocal.Cxk = ((int)(com.tencent.mm.plugin.audio.c.a.getStreamVolume(i) / f * 100.0F));
-          ezZ();
+          localv2protocal.HaY = ((int)(com.tencent.mm.plugin.audio.c.a.getStreamVolume(i) / f * 100.0F));
+          fGP();
           AppMethodBeat.o(114948);
           continue;
         }
@@ -516,40 +527,40 @@ public final class n
     }
   }
   
-  public final void ezZ()
+  public final void fGP()
   {
     AppMethodBeat.i(114949);
-    ae.m("MicroMsg.Voip.VoipDeviceHandler", "forceCleanRecord, recorder %s", new Object[] { this.pcI });
-    if (this.Ctg != null) {
-      synchronized (this.Cta)
+    Log.printInfoStack("MicroMsg.Voip.VoipDeviceHandler", "forceCleanRecord, recorder %s", new Object[] { this.qrH });
+    if (this.GWP != null) {
+      synchronized (this.GWJ)
       {
-        if ((this.CsS != null) || (this.pcI != null))
+        if ((this.GWB != null) || (this.qrH != null))
         {
-          ae.i("MicroMsg.Voip.VoipDeviceHandler", "forceCleanRecord process post runnable");
-          if (this.Ctg != null)
+          Log.i("MicroMsg.Voip.VoipDeviceHandler", "forceCleanRecord process post runnable");
+          if (this.GWP != null)
           {
-            this.Ctg.removeCallbacksAndMessages(null);
-            this.Ctg.post(new Runnable()
+            this.GWP.removeCallbacksAndMessages(null);
+            this.GWP.post(new Runnable()
             {
               public final void run()
               {
                 AppMethodBeat.i(114944);
-                ae.i("MicroMsg.Voip.VoipDeviceHandler", "forceCleanRecord process post success and wait running");
+                Log.i("MicroMsg.Voip.VoipDeviceHandler", "forceCleanRecord process post success and wait running");
                 if (n.a(n.this) != null)
                 {
-                  n.a(n.this).eyA();
-                  n.a(n.this).eyx();
+                  n.a(n.this).fFr();
+                  n.a(n.this).fFo();
                   n.s(n.this);
-                  ae.i("MicroMsg.Voip.VoipDeviceHandler", "finish stopRecord and release player");
+                  Log.i("MicroMsg.Voip.VoipDeviceHandler", "finish stopRecord and release player");
                 }
-                ae.i("MicroMsg.Voip.VoipDeviceHandler", "do stopRecord");
+                Log.i("MicroMsg.Voip.VoipDeviceHandler", "do stopRecord");
                 if (n.m(n.this) != null)
                 {
-                  n.m(n.this).PF();
+                  n.m(n.this).ZZ();
                   n.t(n.this);
-                  ae.i("MicroMsg.Voip.VoipDeviceHandler", "finish stopRecord and release recorder");
+                  Log.i("MicroMsg.Voip.VoipDeviceHandler", "finish stopRecord and release recorder");
                 }
-                ae.i("MicroMsg.Voip.VoipDeviceHandler", "forceCleanRecord process post success and quitSafely");
+                Log.i("MicroMsg.Voip.VoipDeviceHandler", "forceCleanRecord process post success and quitSafely");
                 AppMethodBeat.o(114944);
               }
             });
@@ -559,8 +570,181 @@ public final class n
         return;
       }
     }
-    ae.i("MicroMsg.Voip.VoipDeviceHandler", "forceCleanRecord failed but mDevHandler is null");
+    Log.i("MicroMsg.Voip.VoipDeviceHandler", "forceCleanRecord failed but mDevHandler is null");
     AppMethodBeat.o(114949);
+  }
+  
+  final class a
+    extends com.tencent.f.i.b
+  {
+    boolean GWX = false;
+    boolean GWY = false;
+    byte[] GWZ = null;
+    ByteBuffer GXa = null;
+    int GXb = 0;
+    
+    a() {}
+    
+    public final String getKey()
+    {
+      return "stop_video_decode_runnable";
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(114945);
+      if ((n.this.qrL == 2) && (!this.GWY))
+      {
+        long l1 = System.currentTimeMillis();
+        int i;
+        int j;
+        boolean bool1;
+        boolean bool2;
+        Object localObject1;
+        if (n.this.GSZ.fGA())
+        {
+          if (this.GXa == null)
+          {
+            this.GXa = ByteBuffer.allocateDirect((n.this.GSZ.GVV.defaultWidth + 64) * (n.this.GSZ.GVV.defaultHeight + 64) * 4).order(ByteOrder.nativeOrder());
+            this.GXa.position(0);
+            this.GWZ = new byte[this.GXa.remaining()];
+            Log.i("MicroMsg.Voip.VoipDeviceHandler", "init remoteImageByteBuffer, defaultWidth:%s, defaultHeight:%s", new Object[] { Integer.valueOf(n.this.GSZ.GVV.defaultWidth), Integer.valueOf(n.this.GSZ.GVV.defaultHeight) });
+          }
+          i = 0;
+          if (this.GXa != null)
+          {
+            this.GXa.clear();
+            i = n.this.GSZ.GVV.videoDecodeBB(this.GXa);
+          }
+          if (i == 1)
+          {
+            this.GXb += 1;
+            i = n.this.GSZ.GVV.field_remoteImgWidth;
+            j = n.this.GSZ.GVV.field_remoteImgHeight;
+            if ((i != 0) || (j >= 3)) {
+              break label564;
+            }
+            bool1 = true;
+            if (this.GXb % 200 == 10) {
+              Log.i("MicroMsg.Voip.VoipDeviceHandler", "steve: dec statistics: total:%d, soft:%d, size:%dx%d, HW:%b", new Object[] { Integer.valueOf(this.GXb), Integer.valueOf(n.this.GSZ.GVV.Hck), Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool1) });
+            }
+            bool2 = false;
+            if (!bool1) {
+              break label607;
+            }
+            if (!this.GWX)
+            {
+              localObject1 = n.this;
+              ((n)localObject1).GWM |= 0x1;
+              n.this.GSZ.GVW.setHWDecMode(n.this.GWM);
+              bool2 = true;
+              Log.i("MicroMsg.Voip.VoipDeviceHandler", "steve: change to HW dec, restart decoder!");
+              localObject1 = t.GYO;
+              t.fHF();
+            }
+            if (v2protocal.HcA == null) {}
+          }
+        }
+        for (;;)
+        {
+          try
+          {
+            for (;;)
+            {
+              i = n.this.GSZ.GVV.field_remoteImgLength;
+              Log.d("MicroMsg.Voip.VoipDeviceHandler", "steve:video decode successfully!..len=".concat(String.valueOf(i)));
+              j = n.this.GSZ.GVV.field_remoteImgHeight;
+              localObject1 = new byte[i];
+              System.arraycopy(this.GXa.array(), this.GXa.arrayOffset(), localObject1, 0, i);
+              v2protocal.HcA.f((byte[])localObject1, j, bool2);
+              long l2 = System.currentTimeMillis();
+              Log.d("MicroMsg.Voip.VoipDeviceHandler", "steve: fill in AvcDecoder take time = " + (l2 - l1) + ", startTime = " + l1);
+              this.GWX = bool1;
+              try
+              {
+                Thread.sleep(10L);
+              }
+              catch (InterruptedException localInterruptedException)
+              {
+                Log.printErrStackTrace("MicroMsg.Voip.VoipDeviceHandler", localInterruptedException, "", new Object[0]);
+              }
+            }
+            break;
+            label564:
+            bool1 = false;
+          }
+          catch (Exception localException)
+          {
+            Log.e("EncodeDecode", "interrupted while waiting");
+            Log.e("MicroMsg.Voip.VoipDeviceHandler", " error:" + localException.toString());
+            continue;
+          }
+          label607:
+          Object localObject2;
+          if (this.GWX)
+          {
+            localObject2 = n.this;
+            ((n)localObject2).GWM &= 0xFFFFFFFE;
+            if (v2protocal.HcA != null) {
+              v2protocal.HcA.zLw = false;
+            }
+            n.this.GSZ.GVW.setHWDecMode(n.this.GWM);
+            Log.i("MicroMsg.Voip.VoipDeviceHandler", "steve: change to SW dec");
+            localObject2 = t.GYO;
+            t.fHG();
+          }
+          int k = n.this.GSZ.GVV.field_remoteImgLength;
+          if ((k > 0) && (n.this.GSZ.GVW != null))
+          {
+            localObject2 = n.this.GSZ.GVV;
+            ((v2protocal)localObject2).Hck += 1;
+            int m = i * j * 3 / 2;
+            System.arraycopy(this.GXa.array(), this.GXa.arrayOffset(), this.GWZ, 0, m);
+            n.this.GSZ.GVW.e(i, j, this.GWZ);
+            if (n.this.GSZ.GVV.Hck % 100 == 0)
+            {
+              localObject2 = new byte[5];
+              m = i * 33 + 33;
+              int n = i * 34 - 34;
+              int i1 = i * j / 2 + i / 2;
+              int i2 = (j - 34) * i + 33;
+              int i3 = (j - 34) * i + i - 34;
+              if ((this.GWZ != null) && (i3 < this.GWZ.length))
+              {
+                localObject2[0] = this.GWZ[m];
+                localObject2[1] = this.GWZ[n];
+                localObject2[2] = this.GWZ[i1];
+                localObject2[3] = this.GWZ[i2];
+                localObject2[4] = this.GWZ[i3];
+                Log.i("MicroMsg.Voip.VoipDeviceHandler", "steve: SW dec to render: cnt:%d, size:%dx%d, outlen:%d, samples:%d,%d,%d,%d,%d", new Object[] { Integer.valueOf(n.this.GSZ.GVV.Hck), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Byte.valueOf(localObject2[0]), Byte.valueOf(localObject2[1]), Byte.valueOf(localObject2[2]), Byte.valueOf(localObject2[3]), Byte.valueOf(localObject2[4]) });
+                Log.i("MicroMsg.Voip.VoipDeviceHandler", "steve: first 5 samples:%d,%d,%d,%d,%d", new Object[] { Byte.valueOf(this.GWZ[0]), Byte.valueOf(this.GWZ[1]), Byte.valueOf(this.GWZ[2]), Byte.valueOf(this.GWZ[3]), Byte.valueOf(this.GWZ[4]) });
+                j = 0;
+                i = 0;
+                while (i < 5)
+                {
+                  k = j;
+                  if (localObject2[i] == 0) {
+                    k = j + 1;
+                  }
+                  i += 1;
+                  j = k;
+                }
+                if (j >= 5)
+                {
+                  localObject2 = t.GYO;
+                  t.fHN();
+                }
+              }
+              else
+              {
+                Log.i("MicroMsg.Voip.VoipDeviceHandler", "steve: dec null pointer or out of memory! size:%dx%d, idx:%d,%d,%d,%d,%d, len:%d ", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(this.GWZ.length) });
+              }
+            }
+          }
+        }
+      }
+      AppMethodBeat.o(114945);
+    }
   }
 }
 

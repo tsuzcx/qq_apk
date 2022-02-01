@@ -5,32 +5,32 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.o;
 
 final class r
   implements s
 {
   private int height;
-  private String rEQ;
+  private String tev;
   private String url;
   private int width;
   
   public r(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(27813);
-    this.rEQ = paramString1;
+    this.tev = paramString1;
     this.url = paramString2;
     this.width = paramInt1;
     this.height = paramInt2;
     paramString1 = new StringBuilder();
-    bc.aCg();
-    paramString1 = new k(c.aAa() + "web/");
+    bg.aVF();
+    paramString1 = new o(c.aTi() + "web/");
     if (!paramString1.exists()) {
       paramString1.mkdirs();
     }
@@ -45,7 +45,7 @@ final class r
     //   3: invokestatic 23	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
     //   7: astore_3
-    //   8: getstatic 83	com/tencent/mm/platformtools/s$a:iQl	Lcom/tencent/mm/platformtools/s$a;
+    //   8: getstatic 83	com/tencent/mm/platformtools/s$a:jNh	Lcom/tencent/mm/platformtools/s$a;
     //   11: aload_2
     //   12: if_acmpne +143 -> 155
     //   15: aload_1
@@ -59,7 +59,7 @@ final class r
     //   27: aload_0
     //   28: getfield 27	com/tencent/mm/plugin/record/b/r:url	Ljava/lang/String;
     //   31: aastore
-    //   32: invokestatic 93	com/tencent/mm/sdk/platformtools/ae:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   32: invokestatic 93	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   35: aload_1
     //   36: astore_2
     //   37: aload_1
@@ -82,27 +82,27 @@ final class r
     //   64: aload_0
     //   65: getfield 31	com/tencent/mm/plugin/record/b/r:height	I
     //   68: iconst_1
-    //   69: invokestatic 99	com/tencent/mm/sdk/platformtools/h:b	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   69: invokestatic 99	com/tencent/mm/sdk/platformtools/BitmapUtil:getCenterCropBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
     //   72: astore_2
     //   73: aload_2
     //   74: astore_3
-    //   75: new 42	com/tencent/mm/vfs/k
+    //   75: new 42	com/tencent/mm/vfs/o
     //   78: dup
     //   79: aload_0
-    //   80: invokevirtual 102	com/tencent/mm/plugin/record/b/r:aQV	()Ljava/lang/String;
-    //   83: invokespecial 60	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   80: invokevirtual 102	com/tencent/mm/plugin/record/b/r:blA	()Ljava/lang/String;
+    //   83: invokespecial 60	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
     //   86: astore 5
     //   88: aload_2
     //   89: astore_3
     //   90: aload 5
-    //   92: invokevirtual 105	com/tencent/mm/vfs/k:createNewFile	()Z
+    //   92: invokevirtual 105	com/tencent/mm/vfs/o:createNewFile	()Z
     //   95: pop
     //   96: aconst_null
     //   97: astore 4
     //   99: aconst_null
     //   100: astore_1
     //   101: aload 5
-    //   103: invokestatic 111	com/tencent/mm/vfs/o:aj	(Lcom/tencent/mm/vfs/k;)Ljava/io/OutputStream;
+    //   103: invokestatic 111	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
     //   106: astore 5
     //   108: aload 5
     //   110: astore_1
@@ -142,7 +142,7 @@ final class r
     //   170: ldc 133
     //   172: iconst_0
     //   173: anewarray 4	java/lang/Object
-    //   176: invokestatic 137	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   176: invokestatic 137	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   179: aload_2
     //   180: astore_3
     //   181: aload_1
@@ -160,7 +160,7 @@ final class r
     //   200: ldc 133
     //   202: iconst_0
     //   203: anewarray 4	java/lang/Object
-    //   206: invokestatic 137	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   206: invokestatic 137	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   209: goto -54 -> 155
     //   212: astore_1
     //   213: aload 4
@@ -209,61 +209,61 @@ final class r
   
   public final void a(s.a parama, String paramString) {}
   
-  public final s.b aQU()
-  {
-    return null;
-  }
+  public final void ad(String paramString, boolean paramBoolean) {}
   
-  public final String aQV()
+  public final String blA()
   {
     AppMethodBeat.i(27814);
     Object localObject = new StringBuilder();
-    bc.aCg();
-    localObject = c.aAa() + "web/" + g.getMessageDigest(this.url.getBytes());
+    bg.aVF();
+    localObject = c.aTi() + "web/" + g.getMessageDigest(this.url.getBytes());
     AppMethodBeat.o(27814);
     return localObject;
   }
   
-  public final String aQW()
+  public final String blB()
   {
     return this.url;
   }
   
-  public final String aQX()
+  public final String blC()
   {
-    return this.rEQ;
+    return this.tev;
   }
   
-  public final boolean aQY()
+  public final boolean blD()
   {
     return true;
   }
   
-  public final boolean aQZ()
+  public final boolean blE()
   {
     return false;
   }
   
-  public final Bitmap aRa()
+  public final Bitmap blF()
   {
     AppMethodBeat.i(27815);
-    Bitmap localBitmap = BitmapFactory.decodeResource(ak.getContext().getResources(), 2131233478);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), 2131234281);
     AppMethodBeat.o(27815);
     return localBitmap;
   }
   
-  public final void aRb() {}
+  public final void blG() {}
   
-  public final void aa(String paramString, boolean paramBoolean) {}
+  public final s.b blz()
+  {
+    return null;
+  }
   
   public final String getCacheKey()
   {
-    return this.rEQ;
+    return this.tev;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.record.b.r
  * JD-Core Version:    0.7.0.1
  */

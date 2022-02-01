@@ -1,32 +1,38 @@
 package com.tencent.mm.audio.mix.f;
 
-import com.tencent.mm.g.a.w;
+import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public abstract interface b
+public final class b
+  extends f
 {
-  public abstract void b(w paramw);
-  
-  public abstract void c(w paramw);
-  
-  public abstract void d(w paramw);
-  
-  public abstract void e(w paramw);
-  
-  public abstract void f(w paramw);
-  
-  public abstract void g(w paramw);
-  
-  public abstract void h(w paramw);
-  
-  public abstract void i(w paramw);
-  
-  public abstract void j(w paramw);
-  
-  public abstract void k(w paramw);
+  protected final byte[] H(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(136835);
+    int j = 0;
+    while (j < paramInt2)
+    {
+      int i = 1;
+      int k = 0;
+      if (k < paramInt1)
+      {
+        if (k == 0) {}
+        for (i = this.dwL[k][j];; i = (int)((i + this.dwL[k][j]) / Math.sqrt(2.0D)))
+        {
+          k += 1;
+          break;
+        }
+      }
+      this.dwO[j] = jf(i);
+      j += 1;
+    }
+    byte[] arrayOfByte = ci(paramInt3, paramInt2);
+    AppMethodBeat.o(136835);
+    return arrayOfByte;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.f.b
  * JD-Core Version:    0.7.0.1
  */

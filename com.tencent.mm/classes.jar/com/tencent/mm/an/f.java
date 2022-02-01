@@ -2,46 +2,45 @@ package com.tencent.mm.an;
 
 import android.os.Looper;
 import android.os.Message;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.c;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.app.o.a;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.u;
-import com.tencent.mm.protocal.protobuf.rz;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.y;
+import com.tencent.mm.protocal.protobuf.tc;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.vfs.o;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class f
-  implements az
+  implements bd
 {
-  private c hXA;
-  private long hXB;
-  private aq hXC;
-  private com.tencent.mm.ak.f hXD;
-  private a hXy;
-  private b hXz;
+  private com.tencent.mm.ak.i iSA;
+  private a iSv;
+  private b iSw;
+  private com.tencent.mm.ak.f iSx;
+  private long iSy;
+  private MMHandler iSz;
   
   public f()
   {
     AppMethodBeat.i(150435);
-    this.hXy = null;
-    this.hXz = null;
-    this.hXB = 0L;
-    this.hXC = new aq(Looper.getMainLooper())
+    this.iSv = null;
+    this.iSw = null;
+    this.iSy = 0L;
+    this.iSz = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -57,35 +56,35 @@ public class f
           return;
         }
         int i = paramAnonymousMessage.arg1;
-        ae.i("MicroMsg.SubCoreCdnTransport", "try get dns again scene[%d] lastGetDnsErrorTime[%d]  diff[%d]", new Object[] { Integer.valueOf(i), Long.valueOf(f.a(f.this)), Long.valueOf(bu.DD(f.a(f.this))) });
-        com.tencent.mm.kernel.g.ajj().a(new d(i), 0);
+        Log.i("MicroMsg.SubCoreCdnTransport", "try get dns again scene[%d] lastGetDnsErrorTime[%d]  diff[%d]", new Object[] { Integer.valueOf(i), Long.valueOf(f.a(f.this)), Long.valueOf(Util.milliSecondsToNow(f.a(f.this))) });
+        g.azz().a(new d(i), 0);
         AppMethodBeat.o(150433);
       }
     };
-    this.hXD = new com.tencent.mm.ak.f()
+    this.iSA = new com.tencent.mm.ak.i()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
       {
         AppMethodBeat.i(150434);
-        if (!(paramAnonymousn instanceof d))
+        if (!(paramAnonymousq instanceof d))
         {
-          ae.w("MicroMsg.SubCoreCdnTransport", "get cdn dns on scene end but is not [NetSceneGetCdnDns]");
+          Log.w("MicroMsg.SubCoreCdnTransport", "get cdn dns on scene end but is not [NetSceneGetCdnDns]");
           AppMethodBeat.o(150434);
           return;
         }
-        ae.i("MicroMsg.SubCoreCdnTransport", "%d get cdn dns on scene end errType[%d] errCode[%d] errMsg[%s] lastGetDnsErrorTime[%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Long.valueOf(f.a(f.this)) });
+        Log.i("MicroMsg.SubCoreCdnTransport", "%d get cdn dns on scene end errType[%d] errCode[%d] errMsg[%s] lastGetDnsErrorTime[%d]", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString, Long.valueOf(f.a(f.this)) });
         if ("doScene failed".equals(paramAnonymousString))
         {
-          ae.d("MicroMsg.SubCoreCdnTransport", "%d get cdn dns cache do nothing.", new Object[] { Integer.valueOf(hashCode()) });
+          Log.d("MicroMsg.SubCoreCdnTransport", "%d get cdn dns cache do nothing.", new Object[] { Integer.valueOf(hashCode()) });
           AppMethodBeat.o(150434);
           return;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(546L, paramAnonymousInt1 + 10, 1L, true);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(546L, paramAnonymousInt1 + 10, 1L, true);
         if (paramAnonymousInt1 == 0)
         {
           if (f.a(f.this) > 0L)
           {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(546L, 52L, 1L, true);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(546L, 52L, 1L, true);
             f.a(f.this, 0L);
           }
           AppMethodBeat.o(150434);
@@ -95,16 +94,16 @@ public class f
         {
           if (f.a(f.this) == 0L)
           {
-            paramAnonymousInt1 = ((d)paramAnonymousn).scene;
-            f.a(f.this, bu.fpO());
+            paramAnonymousInt1 = ((d)paramAnonymousq).scene;
+            f.a(f.this, Util.nowMilliSecond());
             f.b(f.this).removeMessages(1);
             f.b(f.this).sendMessageDelayed(f.b(f.this).obtainMessage(1, paramAnonymousInt1, 0), 30000L);
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(546L, 50L, 1L, true);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(546L, 50L, 1L, true);
             AppMethodBeat.o(150434);
             return;
           }
           f.a(f.this, 0L);
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(546L, 51L, 1L, true);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(546L, 51L, 1L, true);
           AppMethodBeat.o(150434);
           return;
         }
@@ -114,12 +113,12 @@ public class f
     AppMethodBeat.o(150435);
   }
   
-  public static f aGW()
+  public static f baN()
   {
     try
     {
       AppMethodBeat.i(150436);
-      f localf = (f)u.ap(f.class);
+      f localf = (f)y.at(f.class);
       AppMethodBeat.o(150436);
       return localf;
     }
@@ -130,33 +129,33 @@ public class f
     }
   }
   
-  public static String aGX()
+  public static String baO()
   {
     AppMethodBeat.i(150437);
-    com.tencent.mm.kernel.g.ajP().aiU();
-    String str = com.tencent.mm.kernel.g.ajR().cachePath + "cdndnsinfo/";
+    g.aAf().azk();
+    String str = g.aAh().cachePath + "cdndnsinfo/";
     AppMethodBeat.o(150437);
     return str;
   }
   
-  public static c aGY()
+  public static com.tencent.mm.ak.f baP()
   {
     AppMethodBeat.i(150438);
-    c localc = aGW().hXA;
+    com.tencent.mm.ak.f localf = baN().iSx;
     AppMethodBeat.o(150438);
-    return localc;
+    return localf;
   }
   
-  public static b aGZ()
+  public static b baQ()
   {
     AppMethodBeat.i(150440);
-    if (aGW().hXz == null) {}
+    if (baN().iSw == null) {}
     try
     {
-      if (aGW().hXz == null) {
-        aGW().hXz = new b();
+      if (baN().iSw == null) {
+        baN().iSw = new b();
       }
-      b localb = aGW().hXz;
+      b localb = baN().iSw;
       AppMethodBeat.o(150440);
       return localb;
     }
@@ -167,77 +166,77 @@ public class f
   }
   
   /* Error */
-  public static a aHa()
+  public static a baR()
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc 127
+    //   3: ldc 129
     //   5: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: invokestatic 116	com/tencent/mm/an/f:aGW	()Lcom/tencent/mm/an/f;
-    //   11: getfield 39	com/tencent/mm/an/f:hXy	Lcom/tencent/mm/an/a;
+    //   8: invokestatic 118	com/tencent/mm/an/f:baN	()Lcom/tencent/mm/an/f;
+    //   11: getfield 39	com/tencent/mm/an/f:iSv	Lcom/tencent/mm/an/a;
     //   14: ifnonnull +35 -> 49
-    //   17: invokestatic 84	com/tencent/mm/kernel/g:ajP	()Lcom/tencent/mm/kernel/a;
+    //   17: invokestatic 86	com/tencent/mm/kernel/g:aAf	()Lcom/tencent/mm/kernel/a;
     //   20: pop
-    //   21: invokestatic 131	com/tencent/mm/kernel/a:aiY	()Z
+    //   21: invokestatic 133	com/tencent/mm/kernel/a:azo	()Z
     //   24: ifeq +42 -> 66
-    //   27: invokestatic 116	com/tencent/mm/an/f:aGW	()Lcom/tencent/mm/an/f;
-    //   30: new 133	com/tencent/mm/an/a
+    //   27: invokestatic 118	com/tencent/mm/an/f:baN	()Lcom/tencent/mm/an/f;
+    //   30: new 135	com/tencent/mm/an/a
     //   33: dup
-    //   34: invokestatic 96	com/tencent/mm/kernel/g:ajR	()Lcom/tencent/mm/kernel/e;
-    //   37: getfield 102	com/tencent/mm/kernel/e:cachePath	Ljava/lang/String;
-    //   40: invokestatic 135	com/tencent/mm/an/f:aGZ	()Lcom/tencent/mm/an/b;
-    //   43: invokespecial 138	com/tencent/mm/an/a:<init>	(Ljava/lang/String;Lcom/tencent/mm/i/b$a;)V
-    //   46: putfield 39	com/tencent/mm/an/f:hXy	Lcom/tencent/mm/an/a;
-    //   49: invokestatic 116	com/tencent/mm/an/f:aGW	()Lcom/tencent/mm/an/f;
-    //   52: getfield 39	com/tencent/mm/an/f:hXy	Lcom/tencent/mm/an/a;
+    //   34: invokestatic 98	com/tencent/mm/kernel/g:aAh	()Lcom/tencent/mm/kernel/e;
+    //   37: getfield 104	com/tencent/mm/kernel/e:cachePath	Ljava/lang/String;
+    //   40: invokestatic 137	com/tencent/mm/an/f:baQ	()Lcom/tencent/mm/an/b;
+    //   43: invokespecial 140	com/tencent/mm/an/a:<init>	(Ljava/lang/String;Lcom/tencent/mm/i/b$a;)V
+    //   46: putfield 39	com/tencent/mm/an/f:iSv	Lcom/tencent/mm/an/a;
+    //   49: invokestatic 118	com/tencent/mm/an/f:baN	()Lcom/tencent/mm/an/f;
+    //   52: getfield 39	com/tencent/mm/an/f:iSv	Lcom/tencent/mm/an/a;
     //   55: astore_0
-    //   56: ldc 127
+    //   56: ldc 129
     //   58: invokestatic 62	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   61: ldc 2
     //   63: monitorexit
     //   64: aload_0
     //   65: areturn
-    //   66: new 91	java/lang/StringBuilder
+    //   66: new 93	java/lang/StringBuilder
     //   69: dup
-    //   70: ldc 140
-    //   72: invokespecial 143	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   75: new 145	java/util/Random
+    //   70: ldc 142
+    //   72: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   75: new 147	java/util/Random
     //   78: dup
-    //   79: invokespecial 146	java/util/Random:<init>	()V
-    //   82: invokevirtual 150	java/util/Random:nextLong	()J
-    //   85: invokevirtual 153	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   88: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   91: invokevirtual 159	java/lang/String:getBytes	()[B
-    //   94: invokestatic 165	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
+    //   79: invokespecial 148	java/util/Random:<init>	()V
+    //   82: invokevirtual 152	java/util/Random:nextLong	()J
+    //   85: invokevirtual 155	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   88: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   91: invokevirtual 161	java/lang/String:getBytes	()[B
+    //   94: invokestatic 167	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
     //   97: astore_0
-    //   98: new 91	java/lang/StringBuilder
+    //   98: new 93	java/lang/StringBuilder
     //   101: dup
-    //   102: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   105: getstatic 170	com/tencent/mm/storage/am:IKh	Ljava/lang/String;
-    //   108: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   102: invokespecial 94	java/lang/StringBuilder:<init>	()V
+    //   105: getstatic 172	com/tencent/mm/storage/ar:NSe	Ljava/lang/String;
+    //   108: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   111: aload_0
-    //   112: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: ldc 172
-    //   117: invokevirtual 106	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   120: invokevirtual 111	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: ldc 174
+    //   117: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   120: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   123: astore_0
-    //   124: ldc 174
-    //   126: ldc 176
+    //   124: ldc 176
+    //   126: ldc 178
     //   128: iconst_1
     //   129: anewarray 4	java/lang/Object
     //   132: dup
     //   133: iconst_0
     //   134: aload_0
     //   135: aastore
-    //   136: invokestatic 182	com/tencent/mm/sdk/platformtools/ae:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   139: invokestatic 116	com/tencent/mm/an/f:aGW	()Lcom/tencent/mm/an/f;
-    //   142: new 133	com/tencent/mm/an/a
+    //   136: invokestatic 184	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   139: invokestatic 118	com/tencent/mm/an/f:baN	()Lcom/tencent/mm/an/f;
+    //   142: new 135	com/tencent/mm/an/a
     //   145: dup
     //   146: aload_0
-    //   147: invokestatic 135	com/tencent/mm/an/f:aGZ	()Lcom/tencent/mm/an/b;
-    //   150: invokespecial 138	com/tencent/mm/an/a:<init>	(Ljava/lang/String;Lcom/tencent/mm/i/b$a;)V
-    //   153: putfield 39	com/tencent/mm/an/f:hXy	Lcom/tencent/mm/an/a;
+    //   147: invokestatic 137	com/tencent/mm/an/f:baQ	()Lcom/tencent/mm/an/b;
+    //   150: invokespecial 140	com/tencent/mm/an/a:<init>	(Ljava/lang/String;Lcom/tencent/mm/i/b$a;)V
+    //   153: putfield 39	com/tencent/mm/an/f:iSv	Lcom/tencent/mm/an/a;
     //   156: goto -107 -> 49
     //   159: astore_0
     //   160: ldc 2
@@ -266,32 +265,32 @@ public class f
   {
     AppMethodBeat.i(150439);
     onAccountRelease();
-    com.tencent.mm.kernel.g.ajP().aiU();
-    if (aGW().hXz == null)
+    g.aAf().azk();
+    if (baN().iSw == null)
     {
-      aGW().hXz = new b();
-      ae.i("MicroMsg.SubCoreCdnTransport", "summersafecdn onAccountPostReset new CdnTransportService hash[%s]", new Object[] { Integer.valueOf(aGW().hXz.hashCode()) });
+      baN().iSw = new b();
+      Log.i("MicroMsg.SubCoreCdnTransport", "summersafecdn onAccountPostReset new CdnTransportService hash[%s]", new Object[] { Integer.valueOf(baN().iSw.hashCode()) });
     }
-    k localk = new k(aGX());
-    if (!localk.exists()) {
-      localk.mkdirs();
+    o localo = new o(baO());
+    if (!localo.exists()) {
+      localo.mkdirs();
     }
-    this.hXA = new c()
+    this.iSx = new com.tencent.mm.ak.f()
     {
-      public final void a(rz paramAnonymousrz1, rz paramAnonymousrz2, rz paramAnonymousrz3)
+      public final void a(tc paramAnonymoustc1, tc paramAnonymoustc2, tc paramAnonymoustc3)
       {
         AppMethodBeat.i(150432);
-        ae.d("MicroMsg.SubCoreCdnTransport", "cdntra infoUpdate dns info " + paramAnonymousrz1.toString() + " getCore().engine:" + f.aHa());
-        if (f.aHa() != null)
+        Log.d("MicroMsg.SubCoreCdnTransport", "cdntra infoUpdate dns info " + paramAnonymoustc1.toString() + " getCore().engine:" + f.baR());
+        if (f.baR() != null)
         {
-          f.aHa().a(paramAnonymousrz1, paramAnonymousrz2, paramAnonymousrz3, null, null, null);
-          h.MqF.f(new Runnable()
+          f.baR().a(paramAnonymoustc1, paramAnonymoustc2, paramAnonymoustc3, null, null, null);
+          com.tencent.f.h.RTc.b(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(150430);
-              if (f.aGZ() != null) {
-                f.aGZ().eN(false);
+              if (f.baQ() != null) {
+                f.baQ().fD(false);
               }
               AppMethodBeat.o(150430);
             }
@@ -308,63 +307,63 @@ public class f
         AppMethodBeat.o(150432);
       }
     };
-    com.tencent.mm.kernel.g.ajj().a(379, this.hXD);
-    ae.i("MicroMsg.SubCoreCdnTransport", "onAccountPostReset, tryToGetCdnDns");
-    pf(1);
+    g.azz().a(379, this.iSA);
+    Log.i("MicroMsg.SubCoreCdnTransport", "onAccountPostReset, tryToGetCdnDns");
+    sU(1);
     AppMethodBeat.o(150439);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(150442);
-    this.hXA = null;
+    this.iSx = null;
     Object localObject;
-    if (this.hXy != null)
+    if (this.iSv != null)
     {
-      localObject = this.hXy;
+      localObject = this.iSv;
       CdnLogic.UnInitialize();
-      ((a)localObject).hWp = null;
-      ((a)localObject).hWq = null;
-      ((a)localObject).hWk = null;
-      this.hXy = null;
+      ((a)localObject).iRn = null;
+      ((a)localObject).iRo = null;
+      ((a)localObject).iRi = null;
+      this.iSv = null;
     }
-    if (this.hXz != null)
+    if (this.iSw != null)
     {
-      localObject = this.hXz;
-      if (((b)localObject).hWy != null) {
-        ((b)localObject).hWy.clear();
+      localObject = this.iSw;
+      if (((b)localObject).iRw != null) {
+        ((b)localObject).iRw.clear();
       }
-      if (com.tencent.mm.kernel.g.ajP().aiZ()) {
-        com.tencent.mm.kernel.g.ajR().ajA().b((n.b)localObject);
+      if (g.aAf().azp()) {
+        g.aAh().azQ().remove((MStorageEx.IOnStorageChange)localObject);
       }
-      ((b)localObject).hWt.removeCallbacksAndMessages(null);
-      com.tencent.mm.kernel.g.ajQ().b(((b)localObject).hWv);
-      com.tencent.mm.kernel.g.ajQ().gDv.b(379, (com.tencent.mm.ak.f)localObject);
-      com.tencent.mm.sdk.b.a.IvT.d(((b)localObject).hWu);
+      ((b)localObject).iRr.removeCallbacksAndMessages(null);
+      g.aAg().b(((b)localObject).iRt);
+      g.aAg().hqi.b(379, (com.tencent.mm.ak.i)localObject);
+      EventCenter.instance.removeListener(((b)localObject).iRs);
       ((b)localObject).appForegroundListener.dead();
-      ((b)localObject).hWx.stopTimer();
-      this.hXz = null;
+      ((b)localObject).iRv.stopTimer();
+      this.iSw = null;
     }
-    this.hXB = 0L;
-    this.hXC.removeCallbacksAndMessages(null);
-    com.tencent.mm.kernel.g.ajj().b(379, this.hXD);
+    this.iSy = 0L;
+    this.iSz.removeCallbacksAndMessages(null);
+    g.azz().b(379, this.iSA);
     AppMethodBeat.o(150442);
   }
   
   public void onSdcardMount(boolean paramBoolean) {}
   
-  public final void pf(int paramInt)
+  public final void sU(int paramInt)
   {
     AppMethodBeat.i(150443);
-    this.hXB = 0L;
-    this.hXC.removeMessages(1);
-    com.tencent.mm.kernel.g.ajj().a(new d(paramInt), 0);
+    this.iSy = 0L;
+    this.iSz.removeMessages(1);
+    g.azz().a(new d(paramInt), 0);
     AppMethodBeat.o(150443);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.an.f
  * JD-Core Version:    0.7.0.1
  */

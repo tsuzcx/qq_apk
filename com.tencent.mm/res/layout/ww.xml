@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/d13" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ga1" android:focusable="false" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/d" android:minWidth="68.0dip" android:text="@string/gki" android:singleLine="true" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/egk" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/ju" android:singleLine="true" />
-    </LinearLayout>
-    <com.tenpay.android.wechat.TenpaySecureEditText android:gravity="center_vertical" android:id="@id/cji" android:background="@null" android:paddingRight="32.0dip" android:layout_height="fill_parent" android:minHeight="48.0dip" android:singleLine="true" android:layout_toRightOf="@id/d13" style="@style/n1" />
-    <ImageView android:id="@id/cqp" android:background="@null" android:visibility="gone" android:layout_width="24.0dip" android:layout_height="wrap_content" android:src="@drawable/axy" android:scaleType="center" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-</RelativeLayout>
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/a7b" app:layout_constraintDimensionRatio="366:205" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" style="@style/fh" />
+    <android.support.constraint.Barrier android:id="@id/a78" android:layout_width="wrap_content" android:layout_height="wrap_content" app:barrierDirection="is_" app:constraint_referenced_ids="biz_slot_show_desc_tv,biz_slot_title_neat_tv,biz_slot_pic_cnt_icon,biz_slot_pic_cnt" />
+    <include layout="@layout/wv" />
+    <ImageView android:id="@id/biz_slot_pic_cnt_icon" android:background="@raw/biz_time_line_pic_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/g" app:layout_constraintBottom_toBottomOf="@id/biz_slot_pic_cnt" app:layout_constraintRight_toLeftOf="@id/biz_slot_pic_cnt" app:layout_constraintTop_toTopOf="@id/biz_slot_pic_cnt" />
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/ag2" android:id="@id/biz_slot_pic_cnt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" android:layout_marginBottom="@dimen/k5" app:layout_constraintBottom_toBottomOf="@id/a7b" app:layout_constraintRight_toRightOf="@id/a7b" />
+</android.support.constraint.ConstraintLayout>

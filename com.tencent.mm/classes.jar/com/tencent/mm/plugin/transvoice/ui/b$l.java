@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.transvoice.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "onDismiss"})
 final class b$l
   implements DialogInterface.OnDismissListener
 {
-  public static final l BVF;
+  public static final l Gwl;
   
   static
   {
     AppMethodBeat.i(102572);
-    BVF = new l();
+    Gwl = new l();
     AppMethodBeat.o(102572);
   }
   

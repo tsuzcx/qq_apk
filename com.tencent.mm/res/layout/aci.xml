@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a7c" android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="128.0dip" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/fi" android:textStyle="bold" android:textColor="@color/km" android:ellipsize="end" android:id="@id/g3t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_centerInParent="true" />
-        <TextView android:textSize="@dimen/g9" android:textColor="@android:color/white" android:gravity="center" android:id="@id/g3s" android:background="@drawable/afs" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginLeft="3.0dip" android:layout_marginTop="8.0dip" android:minWidth="18.0dip" android:text="1" android:layout_toRightOf="@id/g3t" />
-    </RelativeLayout>
-    <View android:id="@id/g3r" android:background="@color/y4" android:layout_width="70.0dip" android:layout_height="2.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="@dimen/bu" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/hfw" android:layout_width="@dimen/bu" android:layout_height="@dimen/bu" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb">
+        <TextView android:textSize="@dimen/k6" android:textColor="@color/fm" android:ellipsize="end" android:id="@id/hg3" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:text="{nickname}" android:maxLines="1" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hfv" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/bt" />
+    </LinearLayout>
+</LinearLayout>

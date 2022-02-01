@@ -10,18 +10,18 @@ import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kz;
-import com.tencent.mm.g.a.kz.b;
+import com.tencent.mm.g.a.lp;
+import com.tencent.mm.g.a.lp.b;
 import com.tencent.mm.opensdk.modelmsg.WXAppExtendObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUIProcessTask;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUIProcessTask.a;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 
 class JsApiLaunchApplicationForNative$LaunchApplicationTask
@@ -29,11 +29,11 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
 {
   public static final Parcelable.Creator<LaunchApplicationTask> CREATOR;
   public String appId;
-  public int dmr;
-  public Bundle doz;
+  public int dDG;
+  public Bundle dFP;
   public String extInfo;
-  public Runnable kuv;
-  public String kvR;
+  public Runnable lyv;
+  public String lzV;
   public boolean success;
   
   static
@@ -51,7 +51,7 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
   private JsApiLaunchApplicationForNative$LaunchApplicationTask(Parcel paramParcel)
   {
     AppMethodBeat.i(45845);
-    e(paramParcel);
+    f(paramParcel);
     AppMethodBeat.o(45845);
   }
   
@@ -63,16 +63,16 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
       public final void u(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
       {
         AppMethodBeat.i(45839);
-        ae.i("MicroMsg.JsApiLaunchApplicationForNative", "onLaunchAppCallback(launchRet : %s, launchSuccess : %s)", new Object[] { Boolean.valueOf(paramAnonymousBoolean1), Boolean.valueOf(paramAnonymousBoolean2) });
+        Log.i("MicroMsg.JsApiLaunchApplicationForNative", "onLaunchAppCallback(launchRet : %s, launchSuccess : %s)", new Object[] { Boolean.valueOf(paramAnonymousBoolean1), Boolean.valueOf(paramAnonymousBoolean2) });
         if (paramAnonymousBoolean1)
         {
           JsApiLaunchApplicationForNative.LaunchApplicationTask.this.success = true;
-          parama.biu();
+          parama.bDH();
           AppMethodBeat.o(45839);
           return;
         }
         JsApiLaunchApplicationForNative.LaunchApplicationTask.this.success = false;
-        parama.biu();
+        parama.bDH();
         AppMethodBeat.o(45839);
       }
     });
@@ -81,26 +81,26 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
     parama = new WXMediaMessage(parama);
     parama.sdkVer = 637928960;
     parama.messageExt = this.extInfo;
-    Object localObject = new kz();
-    ((kz)localObject).dzg.dve = parama;
-    ((kz)localObject).dzg.appId = this.appId;
-    ((kz)localObject).dzg.dmr = this.dmr;
-    ((kz)localObject).dzg.context = paramContext;
-    ((kz)localObject).dzg.doz = this.doz;
-    ((kz)localObject).dzg.dzi = locala;
-    a.IvT.l((b)localObject);
-    boolean bool1 = ((kz)localObject).dzh.dzj;
+    Object localObject = new lp();
+    ((lp)localObject).dQT.dCE = parama;
+    ((lp)localObject).dQT.appId = this.appId;
+    ((lp)localObject).dQT.dDG = this.dDG;
+    ((lp)localObject).dQT.context = paramContext;
+    ((lp)localObject).dQT.dFP = this.dFP;
+    ((lp)localObject).dQT.dQV = locala;
+    EventCenter.instance.publish((IEvent)localObject);
+    boolean bool1 = ((lp)localObject).dQU.dQW;
     boolean bool2 = bool1;
     if (!bool1)
     {
-      if ((bu.isNullOrNil(this.appId)) || (bu.isNullOrNil(this.kvR))) {
+      if ((Util.isNullOrNil(this.appId)) || (Util.isNullOrNil(this.lzV))) {
         break label379;
       }
-      parama = this.appId + "://" + this.kvR;
+      parama = this.appId + "://" + this.lzV;
       localObject = new Intent("android.intent.action.VIEW", Uri.parse(parama));
-      ae.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication by opensdk failed, try to launch by scheme(%s).", new Object[] { parama });
+      Log.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication by opensdk failed, try to launch by scheme(%s).", new Object[] { parama });
       ((Intent)localObject).addFlags(268435456);
-      parama = bu.ac(paramContext, (Intent)localObject);
+      parama = Util.queryIntentActivities(paramContext, (Intent)localObject);
       if ((parama == null) || (parama.isEmpty())) {
         break label392;
       }
@@ -108,53 +108,53 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
         break label370;
       }
       parama = h.b((ResolveInfo)parama.get(0));
-      if (bu.nullAsNil(ak.getPackageName()).equals(parama)) {
+      if (Util.nullAsNil(MMApplicationContext.getPackageName()).equals(parama)) {
         break label392;
       }
-      locala.hRI = false;
-      locala.kvU = false;
-      locala.kvV = false;
-      locala.dzj = false;
-      bool1 = h.a(paramContext, (Intent)localObject, null, locala, this.doz);
+      locala.iMQ = false;
+      locala.lzY = false;
+      locala.lzZ = false;
+      locala.dQW = false;
+      bool1 = h.a(paramContext, (Intent)localObject, null, locala, this.dFP);
     }
     label392:
     for (;;)
     {
       for (bool2 = bool1;; bool2 = bool1)
       {
-        locala.gm(bool2);
+        locala.hj(bool2);
         AppMethodBeat.o(45841);
         return;
         label370:
         parama = ((Intent)localObject).getPackage();
         break;
         label379:
-        ae.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication nil appId or parameter.");
+        Log.i("MicroMsg.JsApiLaunchApplicationForNative", "launchApplication nil appId or parameter.");
       }
     }
   }
   
-  public final void aOY()
+  public final void bjk()
   {
     AppMethodBeat.i(45842);
-    ae.i("MicroMsg.JsApiLaunchApplicationForNative", "runInClientProcess");
-    if (this.kuv != null)
+    Log.i("MicroMsg.JsApiLaunchApplicationForNative", "runInClientProcess");
+    if (this.lyv != null)
     {
-      ae.i("MicroMsg.JsApiLaunchApplicationForNative", "runInClientProcess asyncCallback != null");
-      this.kuv.run();
+      Log.i("MicroMsg.JsApiLaunchApplicationForNative", "runInClientProcess asyncCallback != null");
+      this.lyv.run();
     }
     AppMethodBeat.o(45842);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     boolean bool = true;
     AppMethodBeat.i(45843);
-    this.dmr = paramParcel.readInt();
+    this.dDG = paramParcel.readInt();
     this.appId = paramParcel.readString();
-    this.kvR = paramParcel.readString();
+    this.lzV = paramParcel.readString();
     this.extInfo = paramParcel.readString();
-    this.doz = paramParcel.readBundle();
+    this.dFP = paramParcel.readBundle();
     if (paramParcel.readByte() == 1) {}
     for (;;)
     {
@@ -168,11 +168,11 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(45844);
-    paramParcel.writeInt(this.dmr);
+    paramParcel.writeInt(this.dDG);
     paramParcel.writeString(this.appId);
-    paramParcel.writeString(this.kvR);
+    paramParcel.writeString(this.lzV);
     paramParcel.writeString(this.extInfo);
-    paramParcel.writeBundle(this.doz);
+    paramParcel.writeBundle(this.dFP);
     if (this.success) {}
     for (paramInt = 1;; paramInt = 0)
     {
@@ -184,7 +184,7 @@ class JsApiLaunchApplicationForNative$LaunchApplicationTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.appdownload.JsApiLaunchApplicationForNative.LaunchApplicationTask
  * JD-Core Version:    0.7.0.1
  */

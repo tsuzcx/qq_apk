@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<network-security-config>
-    <base-config cleartextTrafficPermitted="true" />
-</network-security-config>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="live_demo" android:layout="@layout/b8j" android:title="@string/efu" />
+    <PreferenceSmallCategory />
+    <Preference android:key="mlvb_live_room" android:layout="@layout/b8j" android:title="@string/f0s" />
+    <PreferenceSmallCategory />
+    <Preference android:key="source_camera" android:layout="@layout/b8j" android:title="@string/hdf" />
+    <PreferenceSmallCategory />
+    <Preference android:key="source_screen" android:layout="@layout/b8j" android:title="@string/hdg" />
+    <PreferenceSmallCategory />
+    <Preference android:key="live_view" android:layout="@layout/b8j" android:title="@string/ek4" />
+    <PreferenceSmallCategory />
+</PreferenceScreen>

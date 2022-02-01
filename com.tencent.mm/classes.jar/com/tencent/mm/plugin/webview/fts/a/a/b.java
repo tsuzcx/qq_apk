@@ -2,64 +2,67 @@ package com.tencent.mm.plugin.webview.fts.a.a;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.x.a;
-import com.tencent.mm.g.b.a.kc;
+import com.tencent.mm.ak.aa.a;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.b.a.oc;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelappbrand.i;
 import com.tencent.mm.modelappbrand.j;
-import com.tencent.mm.protocal.protobuf.bme;
-import com.tencent.mm.protocal.protobuf.egw;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.byv;
+import com.tencent.mm.protocal.protobuf.fbm;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.storage.c;
 import java.util.List;
 import java.util.Map;
 
 public final class b
 {
-  private static final b Eda;
-  private a Edb;
+  private static final b IPA;
+  private a IPB;
   
   static
   {
     AppMethodBeat.i(77984);
-    Eda = new b();
+    IPA = new b();
     AppMethodBeat.o(77984);
   }
   
   public static boolean a(c paramc)
   {
     AppMethodBeat.i(77982);
-    if ("1".equals(paramc.fsy().get("canPreloadWidget")))
+    if ("1".equals(paramc.gzz().get("canPreloadWidget")))
     {
       AppMethodBeat.o(77982);
       return true;
     }
-    ae.i("WidgetPkgPreDownloadMgr", "abtest close preDownload");
+    Log.i("WidgetPkgPreDownloadMgr", "abtest close preDownload");
     AppMethodBeat.o(77982);
     return false;
   }
   
-  public static b eRS()
+  public static b gaE()
   {
-    return Eda;
+    return IPA;
   }
   
   static final class a
     implements Runnable
   {
-    List<egw> list;
-    boolean lsK;
-    aq mHandler;
-    int rss = 0;
+    boolean ifP;
+    List<fbm> list;
+    MMHandler mHandler;
+    int sTB = 0;
     
-    public a(List<egw> paramList)
+    public a(List<fbm> paramList)
     {
       this.list = paramList;
     }
     
-    private void eRT()
+    private void gaF()
     {
       AppMethodBeat.i(77980);
       this.mHandler.postDelayed(this, 500L);
@@ -71,56 +74,56 @@ public final class b
       AppMethodBeat.i(77979);
       try
       {
-        int i = this.rss + 1;
-        this.rss = i;
+        int i = this.sTB + 1;
+        this.sTB = i;
         if (i > this.list.size())
         {
-          ae.i("WidgetPkgPreDownloadMgr", "download over, index %d", new Object[] { Integer.valueOf(this.rss) });
+          Log.i("WidgetPkgPreDownloadMgr", "download over, index %d", new Object[] { Integer.valueOf(this.sTB) });
           this.list = null;
           Thread.currentThread().interrupt();
           this.mHandler = null;
           AppMethodBeat.o(77979);
           return;
         }
-        final egw localegw = (egw)this.list.get(this.rss - 1);
-        ae.i("WidgetPkgPreDownloadMgr", "try to download pkg appid %s, md5 %s", new Object[] { localegw.dwb, localegw.IkI });
-        if (localegw != null)
+        final fbm localfbm = (fbm)this.list.get(this.sTB - 1);
+        Log.i("WidgetPkgPreDownloadMgr", "try to download pkg appid %s, md5 %s", new Object[] { localfbm.dNI, localfbm.NxJ });
+        if (localfbm != null)
         {
-          if ((TextUtils.isEmpty(localegw.dwb)) || (TextUtils.isEmpty(localegw.IkI)) || (TextUtils.isEmpty(localegw.xsG)))
+          if ((TextUtils.isEmpty(localfbm.dNI)) || (TextUtils.isEmpty(localfbm.NxJ)) || (TextUtils.isEmpty(localfbm.BsJ)))
           {
-            ae.e("WidgetPkgPreDownloadMgr", "invalid appinfo");
-            eRT();
+            Log.e("WidgetPkgPreDownloadMgr", "invalid appinfo");
+            gaF();
             AppMethodBeat.o(77979);
             return;
           }
-          ((i)com.tencent.mm.kernel.g.ab(i.class)).a(localegw.dwb, localegw.Gdm, localegw.IkI, localegw.xsG);
-          if (((i)com.tencent.mm.kernel.g.ab(i.class)).aj(localegw.dwb, localegw.Gdm))
+          ((i)g.af(i.class)).a(localfbm.dNI, localfbm.KXD, localfbm.NxJ, localfbm.BsJ);
+          if (((i)g.af(i.class)).an(localfbm.dNI, localfbm.KXD))
           {
-            ae.i("WidgetPkgPreDownloadMgr", "pkg exist,run next");
-            eRT();
+            Log.i("WidgetPkgPreDownloadMgr", "pkg exist,run next");
+            gaF();
             AppMethodBeat.o(77979);
             return;
           }
-          ae.i("WidgetPkgPreDownloadMgr", "pkg not exist,starting download");
-          com.tencent.mm.plugin.report.service.g.yxI.dD(918, 1);
+          Log.i("WidgetPkgPreDownloadMgr", "pkg not exist,starting download");
+          h.CyF.dN(918, 1);
           final long l = System.currentTimeMillis();
-          ((i)com.tencent.mm.kernel.g.ab(i.class)).a(localegw.dwb, localegw.Gdm, localegw.xsG, new j()
+          ((i)g.af(i.class)).a(localfbm.dNI, localfbm.KXD, localfbm.BsJ, new j()
           {
             public final void b(boolean paramAnonymousBoolean, long paramAnonymousLong)
             {
               AppMethodBeat.i(77978);
-              ae.i("WidgetPkgPreDownloadMgr", "down succ %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-              kc localkc;
+              Log.i("WidgetPkgPreDownloadMgr", "down succ %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+              oc localoc;
               if (paramAnonymousBoolean)
               {
-                com.tencent.mm.plugin.report.service.g.yxI.dD(918, 2);
+                h.CyF.dN(918, 2);
                 b.a.a(b.a.this);
-                localkc = new kc();
-                localkc.dTT = localkc.t("appid", localegw.dwb, true);
-                localkc.eEs = localegw.Gdm;
-                localkc.eCq = localkc.t("downloadUrl", localegw.xsG, true);
-                localkc.eEt = localkc.t("pkgMd5", localegw.IkI, true);
-                localkc.eEw = System.currentTimeMillis();
+                localoc = new oc();
+                localoc.enR = localoc.x("appid", localfbm.dNI, true);
+                localoc.exo = localfbm.KXD;
+                localoc.fgP = localoc.x("downloadUrl", localfbm.BsJ, true);
+                localoc.fiT = localoc.x("pkgMd5", localfbm.NxJ, true);
+                localoc.fiW = System.currentTimeMillis();
                 if (!paramAnonymousBoolean) {
                   break label192;
                 }
@@ -128,13 +131,13 @@ public final class b
               label192:
               for (long l = 1L;; l = 0L)
               {
-                localkc.eEu = l;
-                localkc.eEv = (System.currentTimeMillis() - l);
-                localkc.eEx = paramAnonymousLong;
-                localkc.aLH();
+                localoc.fiU = l;
+                localoc.fiV = (System.currentTimeMillis() - l);
+                localoc.fiX = paramAnonymousLong;
+                localoc.bfK();
                 AppMethodBeat.o(77978);
                 return;
-                com.tencent.mm.plugin.report.service.g.yxI.dD(918, 3);
+                h.CyF.dN(918, 3);
                 break;
               }
             }
@@ -145,7 +148,7 @@ public final class b
       }
       catch (Exception localException)
       {
-        ae.printErrStackTrace("WidgetPkgPreDownloadMgr", localException, "", new Object[0]);
+        Log.printErrStackTrace("WidgetPkgPreDownloadMgr", localException, "", new Object[0]);
         AppMethodBeat.o(77979);
       }
     }
@@ -153,7 +156,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.fts.a.a.b
  * JD-Core Version:    0.7.0.1
  */

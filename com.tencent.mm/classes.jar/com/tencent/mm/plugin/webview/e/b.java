@@ -1,79 +1,195 @@
 package com.tencent.mm.plugin.webview.e;
 
-import com.tencent.luggage.h.c;
+import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.f;
-import d.g;
-import d.g.a.a;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/permission/GetA8KeyReasonManager;", "", "()V", "TAG", "", "forceGetA8keyPaths", "", "getForceGetA8keyPaths", "()Ljava/util/List;", "forceGetA8keyPaths$delegate", "Lkotlin/Lazy;", "hasForceGetA8keyList", "Ljava/util/LinkedList;", "shouldForceGetA8key", "", "url", "webview-sdk_release"})
 public final class b
 {
-  private static final LinkedList<String> EoB;
-  private static final f EoC;
-  public static final b EoD;
-  private static final String TAG = "MicroMsg.GetA8KeyReasonManager";
-  
-  static
+  private static String bxh(String paramString)
   {
-    AppMethodBeat.i(214173);
-    EoD = new b();
-    TAG = "MicroMsg.GetA8KeyReasonManager";
-    EoB = new LinkedList();
-    EoC = g.O((a)a.EoE);
-    AppMethodBeat.o(214173);
+    AppMethodBeat.i(79103);
+    if (!com.tencent.mm.plugin.webview.luggage.c.b.afC(paramString))
+    {
+      AppMethodBeat.o(79103);
+      return null;
+    }
+    Object localObject1 = paramString;
+    localObject2 = paramString;
+    try
+    {
+      Object localObject3 = new URI(paramString);
+      localObject1 = paramString;
+      localObject2 = paramString;
+      String str3 = Util.nullAsNil(((URI)localObject3).getScheme()).toLowerCase();
+      localObject1 = paramString;
+      localObject2 = paramString;
+      String str4 = Util.nullAsNil(((URI)localObject3).getHost()).toLowerCase();
+      localObject1 = paramString;
+      localObject2 = paramString;
+      boolean bool = Util.isNullOrNil(str4);
+      if (bool)
+      {
+        AppMethodBeat.o(79103);
+        return null;
+      }
+      localObject1 = paramString;
+      localObject2 = paramString;
+      int i;
+      String str1;
+      if (((URI)localObject3).getPort() == -1)
+      {
+        localObject1 = paramString;
+        localObject2 = paramString;
+        if (str3.equalsIgnoreCase("http"))
+        {
+          i = 80;
+          localObject1 = paramString;
+          localObject2 = paramString;
+          if (!Util.isNullOrNil(((URI)localObject3).getQuery())) {
+            break label326;
+          }
+          str1 = "";
+          label144:
+          localObject1 = paramString;
+          localObject2 = paramString;
+          if (!Util.isNullOrNil(((URI)localObject3).getFragment())) {
+            break label356;
+          }
+        }
+      }
+      for (String str2 = "";; str2 = "#" + ((URI)localObject3).getFragment())
+      {
+        localObject1 = paramString;
+        localObject2 = paramString;
+        localObject3 = Util.nullAsNil(((URI)localObject3).getPath());
+        localObject1 = paramString;
+        localObject2 = paramString;
+        str1 = str3 + "://" + str4 + ":" + i + "/" + (String)localObject3 + str1 + str2;
+        paramString = str1;
+        localObject1 = str1;
+        localObject2 = str1;
+        if (str1.endsWith("/"))
+        {
+          localObject1 = str1;
+          localObject2 = str1;
+          paramString = str1 + "/";
+        }
+        localObject1 = paramString;
+        localObject2 = paramString;
+        paramString = bxi(paramString);
+        AppMethodBeat.o(79103);
+        return paramString;
+        i = 443;
+        break;
+        localObject1 = paramString;
+        localObject2 = paramString;
+        i = ((URI)localObject3).getPort();
+        break;
+        label326:
+        localObject1 = paramString;
+        localObject2 = paramString;
+        str1 = "?" + ((URI)localObject3).getQuery();
+        break label144;
+        label356:
+        localObject1 = paramString;
+        localObject2 = paramString;
+      }
+      return localObject2;
+    }
+    catch (URISyntaxException paramString)
+    {
+      Log.e("MicroMsg.WebViewCacheUtils", "getFormattedHttpURL URISyntaxException : %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(79103);
+      return localObject1;
+    }
+    catch (Exception paramString)
+    {
+      Log.e("MicroMsg.WebViewCacheUtils", "getFormattedHttpURL normal : %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(79103);
+    }
   }
   
-  public static final boolean aJv(String paramString)
+  private static String bxi(String paramString)
   {
-    AppMethodBeat.i(214172);
-    p.h(paramString, "url");
-    if (EoB.contains(paramString))
-    {
-      AppMethodBeat.o(214172);
-      return true;
+    AppMethodBeat.i(79104);
+    Uri localUri = Uri.parse(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localUri.getScheme()).append("://");
+    localStringBuilder.append(localUri.getHost()).append(":").append(localUri.getPort());
+    if (Util.isNullOrNil(localUri.getPathSegments())) {
+      localStringBuilder.append("/");
     }
-    Iterator localIterator = ((Iterable)EoC.getValue()).iterator();
-    while (localIterator.hasNext())
+    for (;;)
     {
-      String str = (String)localIterator.next();
-      ae.i(TAG, "force geta8key path = %s", new Object[] { str });
-      if (c.a(paramString, str, false))
+      if (!Util.isNullOrNil(localUri.getQuery())) {
+        localStringBuilder.append("?").append(localUri.getQuery());
+      }
+      if (!Util.isNullOrNil(localUri.getFragment())) {
+        localStringBuilder.append("#").append(localUri.getFragment());
+      }
+      if (paramString.endsWith("/")) {
+        localStringBuilder.append("/");
+      }
+      paramString = localStringBuilder.toString();
+      AppMethodBeat.o(79104);
+      return paramString;
+      Iterator localIterator = localUri.getPathSegments().iterator();
+      while (localIterator.hasNext())
       {
-        EoB.add(paramString);
-        AppMethodBeat.o(214172);
-        return true;
+        String str = (String)localIterator.next();
+        localStringBuilder.append("/").append(str);
       }
     }
-    AppMethodBeat.o(214172);
-    return false;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "", "invoke"})
-  static final class a
-    extends q
-    implements a<List<? extends String>>
+  public static String bxj(String paramString)
   {
-    public static final a EoE;
-    
-    static
+    AppMethodBeat.i(79105);
+    paramString = bxh(paramString);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.i(214171);
-      EoE = new a();
-      AppMethodBeat.o(214171);
+      AppMethodBeat.o(79105);
+      return null;
     }
-    
-    a()
+    paramString = Uri.parse(paramString).getHost();
+    AppMethodBeat.o(79105);
+    return paramString;
+  }
+  
+  public static String bxk(String paramString)
+  {
+    AppMethodBeat.i(79106);
+    Object localObject1 = bxh(paramString);
+    if (Util.isNullOrNil((String)localObject1))
     {
-      super();
+      Log.e("MicroMsg.WebViewCacheUtils", "evaluateResURLWithScheme, original url is invalid = %s", new Object[] { paramString });
+      AppMethodBeat.o(79106);
+      return null;
     }
+    Object localObject2 = Uri.parse((String)localObject1);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(((Uri)localObject2).getScheme()).append("://").append(((Uri)localObject2).getHost()).append(":").append(((Uri)localObject2).getPort());
+    if (!Util.isNullOrNil(((Uri)localObject2).getPathSegments()))
+    {
+      localObject2 = ((Uri)localObject2).getPathSegments().iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        String str = (String)((Iterator)localObject2).next();
+        ((StringBuilder)localObject1).append("/").append(Util.nullAsNil(str));
+      }
+    }
+    if (paramString.endsWith("/")) {
+      ((StringBuilder)localObject1).append("/");
+    }
+    paramString = ((StringBuilder)localObject1).toString();
+    AppMethodBeat.o(79106);
+    return paramString;
   }
 }
 

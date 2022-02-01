@@ -1,83 +1,84 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.adi;
-import com.tencent.mm.protocal.protobuf.jh;
-import com.tencent.mm.protocal.protobuf.ji;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.q.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.afl;
+import com.tencent.mm.protocal.protobuf.jw;
+import com.tencent.mm.protocal.protobuf.jx;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class ah
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private LinkedList<Integer> rBG;
-  private int rBH;
-  private final com.tencent.mm.ak.b rr;
+  private i callback;
+  private final d rr;
+  private LinkedList<Integer> tbl;
+  private int tbm;
   
   public ah(LinkedList<Integer> paramLinkedList)
   {
     AppMethodBeat.i(103459);
     this.callback = null;
-    this.rBH = 0;
-    b.a locala = new b.a();
-    locala.hQF = new jh();
-    locala.hQG = new ji();
+    this.tbm = 0;
+    d.a locala = new d.a();
+    locala.iLN = new jw();
+    locala.iLO = new jx();
     locala.uri = "/cgi-bin/micromsg-bin/batchdelfavitem";
     locala.funcId = 403;
-    locala.hQH = 194;
+    locala.iLP = 194;
     locala.respCmdId = 1000000194;
-    this.rr = locala.aDS();
-    this.rBG = paramLinkedList;
+    this.rr = locala.aXF();
+    this.tbl = paramLinkedList;
     AppMethodBeat.o(103459);
   }
   
-  private boolean cwW()
+  private boolean cVa()
   {
     AppMethodBeat.i(103460);
-    if ((this.rBG != null) && (this.rBH < this.rBG.size())) {}
+    if ((this.tbl != null) && (this.tbm < this.tbl.size())) {}
     for (boolean bool = true;; bool = false)
     {
-      ae.i("MicroMsg.NetSceneBatchDelFavItem", "check need continue, indexOK %B", new Object[] { Boolean.valueOf(bool) });
+      Log.i("MicroMsg.NetSceneBatchDelFavItem", "check need continue, indexOK %B", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(103460);
       return bool;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(103461);
-    if ((this.rBG == null) || (this.rBG.isEmpty()) || (this.rBH >= this.rBG.size()))
+    if ((this.tbl == null) || (this.tbl.isEmpty()) || (this.tbm >= this.tbl.size()))
     {
-      ae.e("MicroMsg.NetSceneBatchDelFavItem", "klem doScene idList null, begIndex %d", new Object[] { Integer.valueOf(this.rBH) });
+      Log.e("MicroMsg.NetSceneBatchDelFavItem", "klem doScene idList null, begIndex %d", new Object[] { Integer.valueOf(this.tbm) });
       AppMethodBeat.o(103461);
       return -1;
     }
-    this.callback = paramf;
-    ae.i("MicroMsg.NetSceneBatchDelFavItem", "ashutest::do netscene size %d, begIndex %d, total %s", new Object[] { Integer.valueOf(this.rBG.size()), Integer.valueOf(this.rBH), this.rBG });
-    paramf = (jh)this.rr.hQD.hQJ;
-    paramf.FUE.clear();
-    int j = this.rBH;
+    this.callback = parami;
+    Log.i("MicroMsg.NetSceneBatchDelFavItem", "ashutest::do netscene size %d, begIndex %d, total %s", new Object[] { Integer.valueOf(this.tbl.size()), Integer.valueOf(this.tbm), this.tbl });
+    parami = (jw)this.rr.iLK.iLR;
+    parami.KOn.clear();
+    int j = this.tbm;
     int i = 0;
-    if (j < this.rBG.size())
+    if (j < this.tbl.size())
     {
-      int k = ((Integer)this.rBG.get(j)).intValue();
+      int k = ((Integer)this.tbl.get(j)).intValue();
       if (k <= 0) {
         break label270;
       }
-      paramf.FUE.add(Integer.valueOf(k));
+      parami.KOn.add(Integer.valueOf(k));
       i += 1;
     }
     label270:
@@ -88,10 +89,10 @@ public final class ah
         j += 1;
         break;
       }
-      this.rBH = (j + 1);
-      paramf.nID = paramf.FUE.size();
-      ae.i("MicroMsg.NetSceneBatchDelFavItem", "ashutest::do netscene checkd size %d, %s", new Object[] { Integer.valueOf(paramf.nID), paramf.FUE });
-      i = dispatch(parame, this.rr, this);
+      this.tbm = (j + 1);
+      parami.oTz = parami.KOn.size();
+      Log.i("MicroMsg.NetSceneBatchDelFavItem", "ashutest::do netscene checkd size %d, %s", new Object[] { Integer.valueOf(parami.oTz), parami.KOn });
+      i = dispatch(paramg, this.rr, this);
       AppMethodBeat.o(103461);
       return i;
     }
@@ -102,13 +103,13 @@ public final class ah
     return 403;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103462);
-    ae.i("MicroMsg.NetSceneBatchDelFavItem", "netId %d errType %d errCode %d begIndex %d idListSize %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.rBH), Integer.valueOf(this.rBG.size()), paramString });
+    Log.i("MicroMsg.NetSceneBatchDelFavItem", "netId %d errType %d errCode %d begIndex %d idListSize %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.tbm), Integer.valueOf(this.tbl.size()), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      if (cwW())
+      if (cVa())
       {
         doScene(dispatcher(), this.callback);
         AppMethodBeat.o(103462);
@@ -118,11 +119,11 @@ public final class ah
       AppMethodBeat.o(103462);
       return;
     }
-    paramq = ((ji)((com.tencent.mm.ak.b)paramq).hQE.hQJ).nIE;
-    if ((paramq == null) || (paramq.size() == 0))
+    params = ((jx)((d)params).iLL.iLR).oTA;
+    if ((params == null) || (params.size() == 0))
     {
-      ae.e("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet resp list null");
-      if (cwW())
+      Log.e("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet resp list null");
+      if (cVa())
       {
         doScene(dispatcher(), this.callback);
         AppMethodBeat.o(103462);
@@ -133,24 +134,24 @@ public final class ah
       return;
     }
     paramArrayOfByte = new ArrayList();
-    ae.i("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet respList size:%d", new Object[] { Integer.valueOf(paramq.size()) });
+    Log.i("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet respList size:%d", new Object[] { Integer.valueOf(params.size()) });
     paramInt1 = 0;
-    if (paramInt1 < paramq.size())
+    if (paramInt1 < params.size())
     {
-      adi localadi = (adi)paramq.get(paramInt1);
-      if (localadi.Ret < 0) {
-        ae.w("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet favId:%d, delete failed", new Object[] { Integer.valueOf(localadi.FNu) });
+      afl localafl = (afl)params.get(paramInt1);
+      if (localafl.Ret < 0) {
+        Log.w("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet favId:%d, delete failed", new Object[] { Integer.valueOf(localafl.KGZ) });
       }
       for (;;)
       {
         paramInt1 += 1;
         break;
-        paramArrayOfByte.add(Integer.valueOf(localadi.FNu));
-        ae.i("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet favId:%d deleted", new Object[] { Integer.valueOf(localadi.FNu) });
+        paramArrayOfByte.add(Integer.valueOf(localafl.KGZ));
+        Log.i("MicroMsg.NetSceneBatchDelFavItem", "klem onGYNet favId:%d deleted", new Object[] { Integer.valueOf(localafl.KGZ) });
       }
     }
-    b.jdMethod_do(paramArrayOfByte);
-    if (cwW())
+    b.dC(paramArrayOfByte);
+    if (cVa())
     {
       doScene(dispatcher(), this.callback);
       AppMethodBeat.o(103462);
@@ -165,9 +166,9 @@ public final class ah
     return 10;
   }
   
-  public final n.b securityVerificationChecked(q paramq)
+  public final q.b securityVerificationChecked(s params)
   {
-    return n.b.hRi;
+    return q.b.iMq;
   }
 }
 

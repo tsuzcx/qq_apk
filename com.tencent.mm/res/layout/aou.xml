@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:textColor="@color/y4" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="@dimen/he"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/bf_" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_marginLeft="@dimen/g_" android:layout_marginRight="@dimen/g_"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/h5" android:textStyle="bold" android:textColor="@color/t0" android:id="@id/hsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/hsh" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="fitXY" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/h5" android:textColor="@color/t0" android:ellipsize="end" android:id="@id/hsi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/gi" android:layout_marginRight="@dimen/g_" android:singleLine="true" android:layout_toLeftOf="@id/hsh" android:layout_toRightOf="@id/hsg" android:layout_centerVertical="true" />
+</RelativeLayout>

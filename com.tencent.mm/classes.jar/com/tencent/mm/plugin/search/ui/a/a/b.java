@@ -2,152 +2,175 @@ package com.tencent.mm.plugin.search.ui.a.a;
 
 import android.content.Context;
 import android.content.Intent;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.c;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.fts.a.a.h;
 import com.tencent.mm.plugin.fts.ui.FTSConvMessageUI;
 import com.tencent.mm.plugin.fts.ui.FTSConvTalkerMessageUI;
 import com.tencent.mm.plugin.fts.ui.a.p;
 import com.tencent.mm.plugin.gamelife.a.e;
 import com.tencent.mm.plugin.gamelife.a.f;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.Business.Entries;
+import com.tencent.mm.storage.as;
 
 public final class b
   implements com.tencent.mm.plugin.fts.a.d.a.b
 {
-  public final boolean a(Context paramContext, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)
+  public final boolean a(Context paramContext, View paramView, com.tencent.mm.plugin.fts.a.d.a.a paramVarArgs)
   {
-    AppMethodBeat.i(28081);
+    AppMethodBeat.i(232057);
     com.tencent.mm.plugin.fts.ui.a.m localm = (com.tencent.mm.plugin.fts.ui.a.m)paramVarArgs;
-    if (localm.tMw == 0)
+    if ((as.bjp(localm.username)) || (ab.Iy(localm.username)))
     {
-      paramVarArgs = new Intent(paramContext, FTSConvMessageUI.class).putExtra("Search_Scene", localm.lox).putExtra("key_conv", localm.username).putExtra("key_query", localm.tFe.tFC).putExtra("key_count", 1);
-      paramVarArgs = new com.tencent.mm.hellhoundlib.b.a().bc(paramVarArgs);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramVarArgs.ahE(), "com/tencent/mm/plugin/search/ui/item/handler/FTSMessageDataItemClickHandler", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/fts/api/ui/item/FTSDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramVarArgs.mt(0));
+      if (!WeChatBrands.Business.Entries.GlobalWeCom.checkAvailable(paramView.getContext()))
+      {
+        AppMethodBeat.o(232057);
+        return true;
+      }
+    }
+    else if (ab.IT(localm.username))
+    {
+      if (!WeChatBrands.Business.Entries.SessionOa.checkAvailable(paramView.getContext()))
+      {
+        AppMethodBeat.o(232057);
+        return true;
+      }
+    }
+    else if ((ab.JD(localm.username)) && (!WeChatBrands.Business.Entries.SessionOa.checkAvailable(paramView.getContext())))
+    {
+      AppMethodBeat.o(232057);
+      return true;
+    }
+    if (localm.xdw == 0)
+    {
+      paramView = new Intent(paramContext, FTSConvMessageUI.class).putExtra("Search_Scene", localm.mve).putExtra("key_conv", localm.username).putExtra("key_query", localm.wWd.wWB).putExtra("key_count", 1);
+      paramView = new com.tencent.mm.hellhoundlib.b.a().bl(paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramView.axQ(), "com/tencent/mm/plugin/search/ui/item/handler/FTSMessageDataItemClickHandler", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/fts/api/ui/item/FTSDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramView.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/search/ui/item/handler/FTSMessageDataItemClickHandler", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/fts/api/ui/item/FTSDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     for (;;)
     {
-      AppMethodBeat.o(28081);
+      AppMethodBeat.o(232057);
       return true;
-      Object localObject;
-      if (localm.tMw == 1)
+      if (localm.xdw == 1)
       {
-        if (com.tencent.mm.al.g.Es(localm.username))
+        if (com.tencent.mm.al.g.Ng(localm.username))
         {
-          paramVarArgs = new Intent().putExtra("Contact_User", localm.username);
-          com.tencent.mm.plugin.search.a.iUz.c(paramVarArgs, paramContext);
+          paramView = new Intent().putExtra("Contact_User", localm.username);
+          com.tencent.mm.plugin.search.a.jRt.c(paramView, paramContext);
         }
-        else if (com.tencent.mm.al.g.vz(localm.username))
+        else if (com.tencent.mm.al.g.DQ(localm.username))
         {
-          paramVarArgs = new Intent();
-          paramVarArgs.putExtra("Contact_User", localm.username);
-          paramVarArgs.addFlags(67108864);
-          paramVarArgs.putExtra("biz_chat_from_scene", 5);
-          d.f(paramContext, ".ui.bizchat.BizChatConversationUI", paramVarArgs);
+          paramView = new Intent();
+          paramView.putExtra("Contact_User", localm.username);
+          paramView.addFlags(67108864);
+          paramView.putExtra("biz_chat_from_scene", 5);
+          com.tencent.mm.br.c.f(paramContext, ".ui.bizchat.BizChatConversationUI", paramView);
         }
         else
         {
-          if (com.tencent.mm.al.g.Et(localm.username))
+          if (com.tencent.mm.al.g.Nh(localm.username))
           {
-            paramVarArgs = com.tencent.mm.al.g.eX(localm.username);
-            if (paramVarArgs == null) {}
-            for (paramVarArgs = null;; paramVarArgs = paramVarArgs.Kz())
+            paramView = com.tencent.mm.al.g.fJ(localm.username);
+            if (paramView == null) {}
+            for (paramView = null;; paramView = paramView.UJ())
             {
-              localObject = paramVarArgs;
-              if (paramVarArgs == null) {
-                localObject = "";
+              paramVarArgs = paramView;
+              if (paramView == null) {
+                paramVarArgs = "";
               }
-              paramVarArgs = new Intent();
-              paramVarArgs.putExtra("rawUrl", (String)localObject);
-              paramVarArgs.putExtra("useJs", true);
-              paramVarArgs.putExtra("srcUsername", localm.username);
-              paramVarArgs.putExtra("bizofstartfrom", "enterpriseHomeSubBrand");
-              paramVarArgs.addFlags(67108864);
-              d.b(paramContext, "webview", ".ui.tools.WebViewUI", paramVarArgs);
+              paramView = new Intent();
+              paramView.putExtra("rawUrl", paramVarArgs);
+              paramView.putExtra("useJs", true);
+              paramView.putExtra("srcUsername", localm.username);
+              paramView.putExtra("bizofstartfrom", "enterpriseHomeSubBrand");
+              paramView.addFlags(67108864);
+              com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramView);
               break;
             }
           }
-          if (x.AW(localm.username))
+          if (ab.JB(localm.username))
           {
-            paramVarArgs = bu.U(localm.tFe.tFE);
-            localObject = new Intent();
-            ((Intent)localObject).putExtra("Chat_User", localm.kno.talker);
-            ((Intent)localObject).putExtra("finish_direct", true);
-            ((Intent)localObject).putExtra("from_global_search", true);
-            ((Intent)localObject).putExtra("msg_local_id", localm.kno.tGf);
-            ((Intent)localObject).putExtra("highlight_keyword_list", paramVarArgs);
-            d.f(paramContext, ".ui.chatting.AppBrandServiceChattingUI", (Intent)localObject);
+            paramView = Util.stringsToList(localm.wWd.wWD);
+            paramVarArgs = new Intent();
+            paramVarArgs.putExtra("Chat_User", localm.lqW.talker);
+            paramVarArgs.putExtra("finish_direct", true);
+            paramVarArgs.putExtra("from_global_search", true);
+            paramVarArgs.putExtra("msg_local_id", localm.lqW.wXe);
+            paramVarArgs.putExtra("highlight_keyword_list", paramView);
+            com.tencent.mm.br.c.f(paramContext, ".ui.chatting.AppBrandServiceChattingUI", paramVarArgs);
           }
-          else if (an.aUv(localm.username))
+          else if (as.bju(localm.username))
           {
-            paramVarArgs = ((f)com.tencent.mm.kernel.g.ab(f.class)).anD(localm.username);
-            paramVarArgs = new Intent().putExtra("Chat_User", localm.username).putExtra("Chat_Self", paramVarArgs.getSelfUsername()).putExtra("finish_direct", true);
-            com.tencent.mm.plugin.search.a.iUz.d(paramVarArgs, paramContext);
+            paramView = ((f)com.tencent.mm.kernel.g.af(f.class)).aAW(localm.username);
+            paramView = new Intent().putExtra("Chat_User", localm.username).putExtra("Chat_Self", paramView.getSelfUsername()).putExtra("finish_direct", true);
+            paramView.putExtra("chat_from_scene", 5);
+            com.tencent.mm.plugin.search.a.jRt.d(paramView, paramContext);
           }
           else
           {
-            paramVarArgs = bu.U(localm.tFe.tFE);
-            paramVarArgs = new Intent().putExtra("Chat_User", localm.username).putExtra("finish_direct", true).putExtra("from_global_search", true).putExtra("msg_local_id", localm.kno.tGf).putExtra("highlight_keyword_list", paramVarArgs);
-            com.tencent.mm.plugin.search.a.iUz.d(paramVarArgs, paramContext);
+            paramView = Util.stringsToList(localm.wWd.wWD);
+            paramView = new Intent().putExtra("Chat_User", localm.username).putExtra("finish_direct", true).putExtra("from_global_search", true).putExtra("msg_local_id", localm.lqW.wXe).putExtra("highlight_keyword_list", paramView);
+            paramView.putExtra("chat_from_scene", 5);
+            com.tencent.mm.plugin.search.a.jRt.d(paramView, paramContext);
           }
         }
       }
-      else if (com.tencent.mm.al.g.vz(localm.username))
+      else if (com.tencent.mm.al.g.DQ(localm.username))
       {
-        paramVarArgs = new Intent();
-        paramVarArgs.putExtra("Contact_User", localm.username);
-        paramVarArgs.addFlags(67108864);
-        paramVarArgs.putExtra("biz_chat_from_scene", 5);
-        d.f(paramContext, ".ui.bizchat.BizChatConversationUI", paramVarArgs);
+        paramView = new Intent();
+        paramView.putExtra("Contact_User", localm.username);
+        paramView.addFlags(67108864);
+        paramView.putExtra("biz_chat_from_scene", 5);
+        com.tencent.mm.br.c.f(paramContext, ".ui.bizchat.BizChatConversationUI", paramView);
       }
       else
       {
-        if (com.tencent.mm.al.g.Et(localm.username))
+        if (com.tencent.mm.al.g.Nh(localm.username))
         {
-          paramVarArgs = com.tencent.mm.al.g.eX(localm.username);
-          if (paramVarArgs == null) {}
-          for (paramVarArgs = null;; paramVarArgs = paramVarArgs.Kz())
+          paramView = com.tencent.mm.al.g.fJ(localm.username);
+          if (paramView == null) {}
+          for (paramView = null;; paramView = paramView.UJ())
           {
-            localObject = paramVarArgs;
-            if (paramVarArgs == null) {
-              localObject = "";
+            paramVarArgs = paramView;
+            if (paramView == null) {
+              paramVarArgs = "";
             }
-            paramVarArgs = new Intent();
-            paramVarArgs.putExtra("rawUrl", (String)localObject);
-            paramVarArgs.putExtra("useJs", true);
-            paramVarArgs.putExtra("srcUsername", localm.username);
-            paramVarArgs.putExtra("bizofstartfrom", "enterpriseHomeSubBrand");
-            paramVarArgs.addFlags(67108864);
-            d.b(paramContext, "webview", ".ui.tools.WebViewUI", paramVarArgs);
+            paramView = new Intent();
+            paramView.putExtra("rawUrl", paramVarArgs);
+            paramView.putExtra("useJs", true);
+            paramView.putExtra("srcUsername", localm.username);
+            paramView.putExtra("bizofstartfrom", "enterpriseHomeSubBrand");
+            paramView.addFlags(67108864);
+            com.tencent.mm.br.c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramView);
             break;
           }
         }
-        if (an.aUv(localm.username))
+        if (as.bju(localm.username))
         {
-          paramVarArgs = ((f)com.tencent.mm.kernel.g.ab(f.class)).anD(localm.username);
-          paramVarArgs = new Intent().putExtra("Chat_User", localm.username).putExtra("Chat_Self", paramVarArgs.getSelfUsername()).putExtra("finish_direct", true);
-          com.tencent.mm.plugin.search.a.iUz.d(paramVarArgs, paramContext);
+          paramView = ((f)com.tencent.mm.kernel.g.af(f.class)).aAW(localm.username);
+          paramView = new Intent().putExtra("Chat_User", localm.username).putExtra("Chat_Self", paramView.getSelfUsername()).putExtra("finish_direct", true);
+          paramView.putExtra("chat_from_scene", 5);
+          com.tencent.mm.plugin.search.a.jRt.d(paramView, paramContext);
         }
         else if ((localm instanceof p))
         {
-          paramVarArgs = (p)localm;
-          paramVarArgs = new Intent(paramContext, FTSConvTalkerMessageUI.class).putExtra("Search_Scene", paramVarArgs.lox).putExtra("key_talker_query", paramVarArgs.tLO.tFe.tFC).putExtra("key_talker", paramVarArgs.tLO.tEY).putExtra("key_conv", paramVarArgs.username).putExtra("key_query", paramVarArgs.tFe.tFC).putExtra("detail_type", paramVarArgs.dmr);
-          paramVarArgs = new com.tencent.mm.hellhoundlib.b.a().bc(paramVarArgs);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramVarArgs.ahE(), "com/tencent/mm/plugin/search/ui/item/handler/FTSMessageDataItemClickHandler", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/fts/api/ui/item/FTSDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)paramVarArgs.mt(0));
+          paramView = (p)localm;
+          paramView = new Intent(paramContext, FTSConvTalkerMessageUI.class).putExtra("Search_Scene", paramView.mve).putExtra("key_talker_query", paramView.xcP.wWd.wWB).putExtra("key_talker", paramView.xcP.wVX).putExtra("key_conv", paramView.username).putExtra("key_query", paramView.wWd.wWB).putExtra("detail_type", paramView.dDG);
+          paramView = new com.tencent.mm.hellhoundlib.b.a().bl(paramView);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramView.axQ(), "com/tencent/mm/plugin/search/ui/item/handler/FTSMessageDataItemClickHandler", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/fts/api/ui/item/FTSDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)paramView.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/search/ui/item/handler/FTSMessageDataItemClickHandler", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/fts/api/ui/item/FTSDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         else
         {
-          paramVarArgs = new Intent(paramContext, FTSConvMessageUI.class).putExtra("Search_Scene", localm.lox).putExtra("key_conv", localm.username).putExtra("key_query", localm.tFe.tFC).putExtra("key_count", localm.tMw);
-          paramVarArgs = new com.tencent.mm.hellhoundlib.b.a().bc(paramVarArgs);
-          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramVarArgs.ahE(), "com/tencent/mm/plugin/search/ui/item/handler/FTSMessageDataItemClickHandler", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/fts/api/ui/item/FTSDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramContext.startActivity((Intent)paramVarArgs.mt(0));
+          paramView = new Intent(paramContext, FTSConvMessageUI.class).putExtra("Search_Scene", localm.mve).putExtra("key_conv", localm.username).putExtra("key_query", localm.wWd.wWB).putExtra("key_count", localm.xdw);
+          paramView = new com.tencent.mm.hellhoundlib.b.a().bl(paramView);
+          com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramView.axQ(), "com/tencent/mm/plugin/search/ui/item/handler/FTSMessageDataItemClickHandler", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/fts/api/ui/item/FTSDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramContext.startActivity((Intent)paramView.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/search/ui/item/handler/FTSMessageDataItemClickHandler", "onItemClick", "(Landroid/content/Context;Landroid/view/View;Lcom/tencent/mm/plugin/fts/api/ui/item/FTSDataItem;[Ljava/lang/Object;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
       }
@@ -156,7 +179,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.search.ui.a.a.b
  * JD-Core Version:    0.7.0.1
  */

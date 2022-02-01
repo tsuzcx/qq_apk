@@ -4,13 +4,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aj.c;
 import com.tencent.mm.aj.d;
 import com.tencent.mm.aj.p;
-import com.tencent.mm.model.au.b.a;
+import com.tencent.mm.model.ay.b.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class QrRewardSelectMoneyUI$6
-  implements au.b.a
+  implements ay.b.a
 {
   QrRewardSelectMoneyUI$6(QrRewardSelectMoneyUI paramQrRewardSelectMoneyUI, long paramLong) {}
   
@@ -19,17 +19,17 @@ final class QrRewardSelectMoneyUI$6
     AppMethodBeat.i(63996);
     if (paramBoolean)
     {
-      ae.v("MicroMsg.QrRewardSelectMoneyUI", "getContact suc; cost=" + (bu.fpO() - this.pjT) + " ms");
-      c.al(paramString, 3);
-      p.aEP().Dw(paramString);
+      Log.v("MicroMsg.QrRewardSelectMoneyUI", "getContact suc; cost=" + (Util.nowMilliSecond() - this.qze) + " ms");
+      c.ap(paramString, 3);
+      p.aYD().Mg(paramString);
     }
     for (;;)
     {
-      a.b.a(QrRewardSelectMoneyUI.c(this.pjQ), paramString, 0.03F, false);
-      QrRewardSelectMoneyUI.k(this.pjQ, paramString);
+      a.b.a(QrRewardSelectMoneyUI.c(this.qzb), paramString, 0.03F, false);
+      QrRewardSelectMoneyUI.k(this.qzb, paramString);
       AppMethodBeat.o(63996);
       return;
-      ae.w("MicroMsg.QrRewardSelectMoneyUI", "getContact failed");
+      Log.w("MicroMsg.QrRewardSelectMoneyUI", "getContact failed");
     }
   }
 }

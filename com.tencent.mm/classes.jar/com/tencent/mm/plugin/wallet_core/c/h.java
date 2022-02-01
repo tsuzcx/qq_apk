@@ -1,47 +1,49 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.axl;
-import com.tencent.mm.protocal.protobuf.axm;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.biv;
+import com.tencent.mm.protocal.protobuf.biw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wallet_core.ui.f;
 
 public final class h
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public axm Dgm;
-  private com.tencent.mm.ak.f callback;
-  private b rr;
+  public biw HPF;
+  private i callback;
+  private d rr;
   
   public h(String paramString)
   {
     AppMethodBeat.i(69902);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new axl();
-    ((b.a)localObject).hQG = new axm();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/tenpay/getbanpaymobileinfo";
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).routeInfo = com.tencent.mm.wallet_core.ui.f.bas(paramString);
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (axl)this.rr.hQD.hQJ;
-    ae.d("MicroMsg.NetSceneGetBanpayMobileInfo", "req_key: %s", new Object[] { paramString });
-    ((axl)localObject).dwj = paramString;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new biv();
+    ((d.a)localObject).iLO = new biw();
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/tenpay/getbanpaymobileinfo";
+    ((d.a)localObject).funcId = getType();
+    ((d.a)localObject).routeInfo = f.bpA(paramString);
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (biv)this.rr.iLK.iLR;
+    Log.d("MicroMsg.NetSceneGetBanpayMobileInfo", "req_key: %s", new Object[] { paramString });
+    ((biv)localObject).dNQ = paramString;
     AppMethodBeat.o(69902);
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(69903);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(69903);
     return i;
   }
@@ -51,11 +53,11 @@ public final class h
     return 1667;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(69904);
-    ae.i("MicroMsg.NetSceneGetBanpayMobileInfo", "NetSceneGetBanpayMobileInfo, netId: %s, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.Dgm = ((axm)this.rr.hQE.hQJ);
+    Log.i("MicroMsg.NetSceneGetBanpayMobileInfo", "NetSceneGetBanpayMobileInfo, netId: %s, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.HPF = ((biw)this.rr.iLL.iLR);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

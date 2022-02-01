@@ -6,39 +6,39 @@ import com.tencent.mm.ui.widget.picker.d.e;
 
 public final class a
 {
-  private com.tencent.mm.ui.widget.picker.c.a LwV;
+  private com.tencent.mm.ui.widget.picker.c.a QSH;
   
   public a(Context paramContext, e parame)
   {
-    AppMethodBeat.i(200554);
-    this.LwV = new com.tencent.mm.ui.widget.picker.c.a(1);
-    this.LwV.context = paramContext;
-    this.LwV.LyJ = parame;
-    AppMethodBeat.o(200554);
+    AppMethodBeat.i(198512);
+    this.QSH = new com.tencent.mm.ui.widget.picker.c.a(1);
+    this.QSH.context = paramContext;
+    this.QSH.QUz = parame;
+    AppMethodBeat.o(198512);
   }
   
   public final void a(com.tencent.mm.ui.widget.picker.g.a parama)
   {
-    AppMethodBeat.i(200555);
-    parama.b(this.LwV);
-    AppMethodBeat.o(200555);
+    AppMethodBeat.i(198513);
+    parama.b(this.QSH);
+    AppMethodBeat.o(198513);
   }
   
-  public final a agq(int paramInt)
+  public final a apt(int paramInt)
   {
-    this.LwV.iNG = paramInt;
+    this.QSH.jKu = paramInt;
     return this;
   }
   
-  public final a agr(int paramInt)
+  public final a apu(int paramInt)
   {
-    this.LwV.option = paramInt;
+    this.QSH.option = paramInt;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.b.a
  * JD-Core Version:    0.7.0.1
  */

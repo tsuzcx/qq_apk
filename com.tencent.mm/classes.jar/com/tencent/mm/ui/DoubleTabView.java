@@ -7,6 +7,7 @@ import android.graphics.Bitmap.Config;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
@@ -15,32 +16,49 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class DoubleTabView
   extends RelativeLayout
 {
-  private MMTabView Jqm;
-  private MMTabView Jqn;
-  private String Jqo;
-  private String Jqp;
-  private DoubleTabView.a Jqq;
+  private MMTabView OAq;
+  MMTabView OAr;
+  private MMTabView OAs;
+  private String OAt;
+  private String OAu;
+  private String OAv;
+  private a OAw;
   private Matrix mMatrix;
-  private int pVJ;
-  private int pVK;
-  private Bitmap pVL;
-  private LinearLayout pVM;
-  private ImageView pVN;
-  protected View.OnClickListener pVR;
+  private int rmI;
+  private int rmJ;
+  private Bitmap rmK;
+  private LinearLayout rmL;
+  private ImageView rmM;
+  protected View.OnClickListener rmQ;
   
   public DoubleTabView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(141285);
-    this.pVK = 0;
+    this.rmJ = 0;
     this.mMatrix = new Matrix();
-    this.pVR = new DoubleTabView.1(this);
+    this.rmQ = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(141284);
+        b localb = new b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/DoubleTabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        int i = ((Integer)paramAnonymousView.getTag()).intValue();
+        if (DoubleTabView.a(DoubleTabView.this) != null) {
+          DoubleTabView.a(DoubleTabView.this).onTabClick(i);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/DoubleTabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(141284);
+      }
+    };
     init();
     AppMethodBeat.o(141285);
   }
@@ -49,123 +67,138 @@ public class DoubleTabView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(141286);
-    this.pVK = 0;
+    this.rmJ = 0;
     this.mMatrix = new Matrix();
-    this.pVR = new DoubleTabView.1(this);
+    this.rmQ = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(141284);
+        b localb = new b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/DoubleTabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        int i = ((Integer)paramAnonymousView.getTag()).intValue();
+        if (DoubleTabView.a(DoubleTabView.this) != null) {
+          DoubleTabView.a(DoubleTabView.this).onTabClick(i);
+        }
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/DoubleTabView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(141284);
+      }
+    };
     init();
     AppMethodBeat.o(141286);
   }
   
-  private MMTabView Cs(int paramInt)
+  private MMTabView Gd(int paramInt)
   {
     AppMethodBeat.i(141295);
     MMTabView localMMTabView = new MMTabView(getContext(), paramInt);
     localMMTabView.setTag(Integer.valueOf(paramInt));
-    localMMTabView.setOnClickListener(this.pVR);
+    localMMTabView.setOnClickListener(this.rmQ);
     AppMethodBeat.o(141295);
     return localMMTabView;
   }
   
-  private void ckk()
+  private void cIm()
   {
     AppMethodBeat.i(141289);
-    this.pVM = new LinearLayout(getContext());
-    this.pVM.setBackgroundResource(2131101179);
-    this.pVM.setId(2131299184);
-    this.pVM.setOrientation(0);
+    this.rmL = new LinearLayout(getContext());
+    this.rmL.setBackgroundResource(2131101424);
+    this.rmL.setId(2131299735);
+    this.rmL.setOrientation(0);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
-    addView(this.pVM, localLayoutParams);
+    addView(this.rmL, localLayoutParams);
     AppMethodBeat.o(141289);
   }
   
-  private void ckl()
+  private void cIn()
   {
     AppMethodBeat.i(141290);
-    this.pVN = new ImageView(getContext());
-    this.pVN.setImageMatrix(this.mMatrix);
-    this.pVN.setScaleType(ImageView.ScaleType.MATRIX);
-    this.pVN.setId(2131299185);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, a.fromDPToPix(getContext(), 3));
-    localLayoutParams.addRule(8, 2131299184);
-    addView(this.pVN, localLayoutParams);
+    this.rmM = new ImageView(getContext());
+    this.rmM.setImageMatrix(this.mMatrix);
+    this.rmM.setScaleType(ImageView.ScaleType.MATRIX);
+    this.rmM.setId(2131299736);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, com.tencent.mm.cb.a.fromDPToPix(getContext(), 3));
+    localLayoutParams.addRule(8, 2131299735);
+    addView(this.rmM, localLayoutParams);
     AppMethodBeat.o(141290);
   }
   
-  private void fzA()
-  {
-    AppMethodBeat.i(141294);
-    this.Jqn = Cs(1);
-    this.Jqn.setText(this.Jqp);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131166928));
-    localLayoutParams.weight = 1.0F;
-    this.pVM.addView(this.Jqn, localLayoutParams);
-    AppMethodBeat.o(141294);
-  }
-  
-  private void fzz()
+  private void gHn()
   {
     AppMethodBeat.i(141293);
-    this.Jqm = Cs(0);
-    this.Jqm.setText(this.Jqo);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131166928));
+    this.OAq = Gd(0);
+    this.OAq.setText(this.OAt);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131167063));
     localLayoutParams.weight = 1.0F;
-    this.pVM.addView(this.Jqm, localLayoutParams);
+    this.rmL.addView(this.OAq, localLayoutParams);
     AppMethodBeat.o(141293);
+  }
+  
+  private void gHo()
+  {
+    AppMethodBeat.i(141294);
+    this.OAr = Gd(1);
+    this.OAr.setText(this.OAu);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, getResources().getDimensionPixelSize(2131167063));
+    localLayoutParams.weight = 1.0F;
+    this.rmL.addView(this.OAr, localLayoutParams);
+    AppMethodBeat.o(141294);
   }
   
   private void init()
   {
     AppMethodBeat.i(141288);
-    ckk();
-    ckl();
-    fzz();
-    fzA();
+    cIm();
+    cIn();
+    gHn();
+    gHo();
     AppMethodBeat.o(141288);
   }
   
   public int getCurentIndex()
   {
-    return this.pVK;
-  }
-  
-  public final void o(int paramInt, float paramFloat)
-  {
-    AppMethodBeat.i(141296);
-    this.mMatrix.setTranslate(this.pVJ * (paramInt + paramFloat), 0.0F);
-    this.pVN.setImageMatrix(this.mMatrix);
-    AppMethodBeat.o(141296);
+    return this.rmJ;
   }
   
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(141287);
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    this.pVJ = ((paramInt3 - paramInt1) / 2);
-    paramInt2 = this.pVJ;
-    if ((this.pVL == null) || (this.pVL.getWidth() != paramInt2)) {
-      if (this.pVL != null) {
+    this.rmI = ((paramInt3 - paramInt1) / 2);
+    paramInt2 = this.rmI;
+    if ((this.rmK == null) || (this.rmK.getWidth() != paramInt2)) {
+      if (this.rmK != null) {
         break label159;
       }
     }
     label159:
-    for (paramInt1 = -1;; paramInt1 = this.pVL.getWidth())
+    for (paramInt1 = -1;; paramInt1 = this.rmK.getWidth())
     {
-      ae.w("MicroMsg.DoubleTabView", "sharp width changed, from %d to %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      this.pVL = Bitmap.createBitmap(paramInt2, a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
-      new Canvas(this.pVL).drawColor(getResources().getColor(2131101171));
-      o(this.pVK, 0.0F);
-      this.pVN.setImageBitmap(this.pVL);
-      setTo(this.pVK);
+      Log.w("MicroMsg.DoubleTabView", "sharp width changed, from %d to %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      this.rmK = Bitmap.createBitmap(paramInt2, com.tencent.mm.cb.a.fromDPToPix(getContext(), 3), Bitmap.Config.ARGB_8888);
+      new Canvas(this.rmK).drawColor(getResources().getColor(2131101414));
+      p(this.rmJ, 0.0F);
+      this.rmM.setImageBitmap(this.rmK);
+      setTo(this.rmJ);
       AppMethodBeat.o(141287);
       return;
     }
   }
   
+  public final void p(int paramInt, float paramFloat)
+  {
+    AppMethodBeat.i(141296);
+    this.mMatrix.setTranslate(this.rmI * (paramInt + paramFloat), 0.0F);
+    this.rmM.setImageMatrix(this.mMatrix);
+    AppMethodBeat.o(141296);
+  }
+  
   public void setFirstTabString(String paramString)
   {
     AppMethodBeat.i(141291);
-    this.Jqo = paramString;
-    this.Jqm.setText(paramString);
+    this.OAt = paramString;
+    this.OAq.setText(paramString);
     requestLayout();
     AppMethodBeat.o(141291);
   }
@@ -173,22 +206,22 @@ public class DoubleTabView
   public void setFirstTabUnReadCount(String paramString)
   {
     AppMethodBeat.i(141298);
-    if (this.Jqm != null) {
-      this.Jqm.setUnread(paramString);
+    if (this.OAq != null) {
+      this.OAq.setUnread(paramString);
     }
     AppMethodBeat.o(141298);
   }
   
-  public void setOnTabClickListener(DoubleTabView.a parama)
+  public void setOnTabClickListener(a parama)
   {
-    this.Jqq = parama;
+    this.OAw = parama;
   }
   
   public void setSecondTabString(String paramString)
   {
     AppMethodBeat.i(141292);
-    this.Jqp = paramString;
-    this.Jqn.setText(paramString);
+    this.OAu = paramString;
+    this.OAr.setText(paramString);
     requestLayout();
     AppMethodBeat.o(141292);
   }
@@ -196,44 +229,49 @@ public class DoubleTabView
   public void setSecondTabUnReadCount(String paramString)
   {
     AppMethodBeat.i(141299);
-    if (this.Jqn != null) {
-      this.Jqn.setUnread(paramString);
+    if (this.OAr != null) {
+      this.OAr.setUnread(paramString);
     }
     AppMethodBeat.o(141299);
+  }
+  
+  public void setThirdTabString(String paramString)
+  {
+    AppMethodBeat.i(205108);
+    this.OAv = paramString;
+    this.OAs.setText(paramString);
+    requestLayout();
+    AppMethodBeat.o(205108);
   }
   
   public void setTo(int paramInt)
   {
     AppMethodBeat.i(141297);
-    this.pVK = paramInt;
-    MMTabView localMMTabView = this.Jqm;
-    if (this.pVK == 0)
+    this.rmJ = paramInt;
+    MMTabView localMMTabView = this.OAq;
+    if (this.rmJ == 0)
     {
-      paramInt = getResources().getColor(2131101171);
+      paramInt = getResources().getColor(2131101414);
       localMMTabView.setTextColor(paramInt);
-      localMMTabView = this.Jqn;
-      if (this.pVK != 1) {
+      localMMTabView = this.OAr;
+      if (this.rmJ != 1) {
         break label90;
       }
     }
     label90:
-    for (paramInt = getResources().getColor(2131101171);; paramInt = getContext().getResources().getColor(2131099732))
+    for (paramInt = getResources().getColor(2131101414);; paramInt = getContext().getResources().getColor(2131099746))
     {
       localMMTabView.setTextColor(paramInt);
       AppMethodBeat.o(141297);
       return;
-      paramInt = getContext().getResources().getColor(2131099732);
+      paramInt = getContext().getResources().getColor(2131099746);
       break;
     }
   }
   
-  public final void xi(boolean paramBoolean)
+  public static abstract interface a
   {
-    AppMethodBeat.i(141300);
-    if (this.Jqn != null) {
-      this.Jqn.xv(paramBoolean);
-    }
-    AppMethodBeat.o(141300);
+    public abstract void onTabClick(int paramInt);
   }
 }
 

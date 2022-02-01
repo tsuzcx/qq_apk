@@ -3,33 +3,34 @@ package com.tencent.mm.plugin.appbrand.jsapi.finder;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.finder.cgi.at;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.plugin.finder.cgi.bt;
 import com.tencent.mm.protocal.protobuf.FinderContact;
-import com.tencent.mm.protocal.protobuf.apf;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.auc;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import org.json.JSONObject;
 
 public final class JsApiGetFinderAccount
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<r>
+  extends d<s>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "getFinderAccount";
   
   static class GetFinderAccountTask
     extends MainProcessTask
-    implements f
+    implements i
   {
     public static final Parcelable.Creator<GetFinderAccountTask> CREATOR;
-    private r jFj;
-    private String kQL;
-    private int kmu;
+    private s kGT;
+    private String lVP;
+    private int lqe;
     
     static
     {
@@ -41,73 +42,73 @@ public final class JsApiGetFinderAccount
     public GetFinderAccountTask(Parcel paramParcel)
     {
       AppMethodBeat.i(163947);
-      e(paramParcel);
+      f(paramParcel);
       AppMethodBeat.o(163947);
     }
     
-    public GetFinderAccountTask(r paramr, int paramInt)
+    public GetFinderAccountTask(s params, int paramInt)
     {
-      this.jFj = paramr;
-      this.kmu = paramInt;
+      this.kGT = params;
+      this.lqe = paramInt;
     }
     
-    public final void aOX()
+    public final void bjj()
     {
       AppMethodBeat.i(163949);
-      at localat = new at();
-      g.ajj().a(localat.getType(), this);
-      g.ajj().a(localat, 0);
+      bt localbt = new bt();
+      g.azz().a(localbt.getType(), this);
+      g.azz().a(localbt, 0);
       AppMethodBeat.o(163949);
     }
     
-    public final void aOY()
+    public final void bjk()
     {
       AppMethodBeat.i(163948);
-      ae.i("MicroMsg.Finder.JsApiGetFinderAccount", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.jFj.getAppId(), this.kQL, Integer.valueOf(this.kmu), Boolean.valueOf(this.jFj.isRunning()) });
-      this.jFj.h(this.kmu, this.kQL);
-      bix();
+      Log.i("MicroMsg.Finder.JsApiGetFinderAccount", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.kGT.getAppId(), this.lVP, Integer.valueOf(this.lqe), Boolean.valueOf(this.kGT.isRunning()) });
+      this.kGT.i(this.lqe, this.lVP);
+      bDK();
       AppMethodBeat.o(163948);
     }
     
-    public final void e(Parcel paramParcel)
+    public final void f(Parcel paramParcel)
     {
       AppMethodBeat.i(163950);
-      this.kQL = paramParcel.readString();
+      this.lVP = paramParcel.readString();
       AppMethodBeat.o(163950);
     }
     
-    public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+    public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
     {
       AppMethodBeat.i(163952);
-      g.ajj().b(3930, this);
+      g.azz().b(3930, this);
       JSONObject localJSONObject = new JSONObject();
       if ((paramInt1 == 0) && (paramInt2 == 0)) {}
       for (;;)
       {
         try
         {
-          paramString = ((at)paramn).rRP;
-          if (!paramString.GGr.isEmpty())
+          paramString = ((bt)paramq).tvE;
+          if (!paramString.LEN.isEmpty())
           {
-            a.a((FinderContact)paramString.GGr.get(0), localJSONObject);
-            this.kQL = a.a("", 0, localJSONObject);
-            biG();
+            a.a((FinderContact)paramString.LEN.get(0), localJSONObject);
+            this.lVP = a.a("", 0, localJSONObject);
+            bDU();
             AppMethodBeat.o(163952);
             return;
           }
-          this.kQL = a.a("not contact", -1, localJSONObject);
+          this.lVP = a.a("not contact", -1, localJSONObject);
           continue;
         }
         catch (Exception paramString)
         {
-          ae.printErrStackTrace("MicroMsg.Finder.JsApiGetFinderAccount", paramString, "GetFinderAccountTask runInMainProcess", new Object[0]);
-          this.kQL = a.a(paramString.getMessage(), -1, localJSONObject);
+          Log.printErrStackTrace("MicroMsg.Finder.JsApiGetFinderAccount", paramString, "GetFinderAccountTask runInMainProcess", new Object[0]);
+          this.lVP = a.a(paramString.getMessage(), -1, localJSONObject);
           continue;
         }
         if (paramInt1 == 4) {
-          this.kQL = a.a(paramString, paramInt2, localJSONObject);
+          this.lVP = a.a(paramString, paramInt2, localJSONObject);
         } else {
-          this.kQL = a.a(paramString, -1, localJSONObject);
+          this.lVP = a.a(paramString, -1, localJSONObject);
         }
       }
     }
@@ -115,7 +116,7 @@ public final class JsApiGetFinderAccount
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(163951);
-      paramParcel.writeString(this.kQL);
+      paramParcel.writeString(this.lVP);
       AppMethodBeat.o(163951);
     }
   }

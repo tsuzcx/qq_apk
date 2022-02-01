@@ -19,9 +19,9 @@ import java.util.List;
 public abstract interface b
   extends IInterface
 {
-  public abstract void I(boolean paramBoolean);
+  public abstract void H(boolean paramBoolean);
   
-  public abstract void J(boolean paramBoolean);
+  public abstract void I(boolean paramBoolean);
   
   public abstract void a(int paramInt1, int paramInt2, String paramString);
   
@@ -49,23 +49,23 @@ public abstract interface b
   
   public abstract void b(a parama);
   
-  public abstract boolean eP();
+  public abstract boolean eS();
   
-  public abstract PendingIntent eQ();
+  public abstract PendingIntent eT();
   
-  public abstract ParcelableVolumeInfo eR();
+  public abstract ParcelableVolumeInfo eU();
   
-  public abstract MediaMetadataCompat eS();
+  public abstract MediaMetadataCompat eV();
   
-  public abstract PlaybackStateCompat eT();
+  public abstract PlaybackStateCompat eW();
   
-  public abstract boolean eU();
+  public abstract boolean eX();
   
-  public abstract boolean eV();
+  public abstract boolean eY();
   
-  public abstract int eW();
+  public abstract int eZ();
   
-  public abstract void eX();
+  public abstract void fa();
   
   public abstract void fastForward();
   
@@ -195,7 +195,7 @@ public abstract interface b
         return true;
       case 5: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        bool1 = eP();
+        bool1 = eS();
         paramParcel2.writeNoException();
         paramInt1 = i;
         if (bool1) {
@@ -217,7 +217,7 @@ public abstract interface b
         return true;
       case 8: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = eQ();
+        paramParcel1 = eT();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -235,7 +235,7 @@ public abstract interface b
         return true;
       case 10: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = eR();
+        paramParcel1 = eU();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -257,7 +257,7 @@ public abstract interface b
         return true;
       case 27: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = eS();
+        paramParcel1 = eV();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -269,7 +269,7 @@ public abstract interface b
         return true;
       case 28: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramParcel1 = eT();
+        paramParcel1 = eW();
         paramParcel2.writeNoException();
         if (paramParcel1 != null)
         {
@@ -317,7 +317,7 @@ public abstract interface b
         return true;
       case 45: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        bool1 = eU();
+        bool1 = eX();
         paramParcel2.writeNoException();
         paramInt1 = j;
         if (bool1) {
@@ -333,7 +333,7 @@ public abstract interface b
         return true;
       case 38: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        bool1 = eV();
+        bool1 = eY();
         paramParcel2.writeNoException();
         paramInt1 = k;
         if (bool1) {
@@ -343,7 +343,7 @@ public abstract interface b
         return true;
       case 47: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        paramInt1 = eW();
+        paramInt1 = eZ();
         paramParcel2.writeNoException();
         paramParcel2.writeInt(paramInt1);
         return true;
@@ -485,7 +485,7 @@ public abstract interface b
         return true;
       case 21: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaSession");
-        eX();
+        fa();
         paramParcel2.writeNoException();
         return true;
       case 22: 
@@ -534,7 +534,7 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {
           bool1 = true;
         }
-        I(bool1);
+        H(bool1);
         paramParcel2.writeNoException();
         return true;
       case 39: 
@@ -548,7 +548,7 @@ public abstract interface b
         if (paramParcel1.readInt() != 0) {
           bool1 = true;
         }
-        J(bool1);
+        I(bool1);
         paramParcel2.writeNoException();
         return true;
       case 48: 
@@ -583,7 +583,7 @@ public abstract interface b
         this.mRemote = paramIBinder;
       }
       
-      public final void I(boolean paramBoolean)
+      public final void H(boolean paramBoolean)
       {
         int i = 0;
         Parcel localParcel1 = Parcel.obtain();
@@ -606,7 +606,7 @@ public abstract interface b
         }
       }
       
-      public final void J(boolean paramBoolean)
+      public final void I(boolean paramBoolean)
       {
         int i = 0;
         Parcel localParcel1 = Parcel.obtain();
@@ -1181,7 +1181,7 @@ public abstract interface b
         //   25	48	62	finally
       }
       
-      public final boolean eP()
+      public final boolean eS()
       {
         boolean bool = false;
         Parcel localParcel1 = Parcel.obtain();
@@ -1205,7 +1205,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final PendingIntent eQ()
+      public final PendingIntent eT()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1262,7 +1262,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final ParcelableVolumeInfo eR()
+      public final ParcelableVolumeInfo eU()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1319,7 +1319,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final MediaMetadataCompat eS()
+      public final MediaMetadataCompat eV()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1376,7 +1376,7 @@ public abstract interface b
       }
       
       /* Error */
-      public final PlaybackStateCompat eT()
+      public final PlaybackStateCompat eW()
       {
         // Byte code:
         //   0: invokestatic 27	android/os/Parcel:obtain	()Landroid/os/Parcel;
@@ -1432,7 +1432,7 @@ public abstract interface b
         //   8	53	68	finally
       }
       
-      public final boolean eU()
+      public final boolean eX()
       {
         boolean bool = false;
         Parcel localParcel1 = Parcel.obtain();
@@ -1455,7 +1455,7 @@ public abstract interface b
         }
       }
       
-      public final boolean eV()
+      public final boolean eY()
       {
         boolean bool = false;
         Parcel localParcel1 = Parcel.obtain();
@@ -1478,7 +1478,7 @@ public abstract interface b
         }
       }
       
-      public final int eW()
+      public final int eZ()
       {
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
@@ -1497,7 +1497,7 @@ public abstract interface b
         }
       }
       
-      public final void eX()
+      public final void fa()
       {
         Parcel localParcel1 = Parcel.obtain();
         Parcel localParcel2 = Parcel.obtain();
@@ -2322,7 +2322,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.media.session.b
  * JD-Core Version:    0.7.0.1
  */

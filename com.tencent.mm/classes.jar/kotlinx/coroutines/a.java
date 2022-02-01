@@ -1,150 +1,120 @@
 package kotlinx.coroutines;
 
-import d.d.a.b;
-import d.d.d;
-import d.d.f;
-import d.d.f.c;
-import d.l;
-import d.z;
-import kotlinx.coroutines.internal.x;
+import kotlin.Result;
+import kotlin.ResultKt;
+import kotlin.d.a.b;
+import kotlin.d.d;
+import kotlin.d.f;
+import kotlin.d.f.c;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
+import kotlinx.coroutines.internal.y;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/AbstractCoroutine;", "T", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/Job;", "Lkotlin/coroutines/Continuation;", "Lkotlinx/coroutines/CoroutineScope;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "context", "context$annotations", "()V", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "coroutineContext", "getCoroutineContext", "isActive", "()Z", "afterResume", "", "state", "", "cancellationExceptionMessage", "", "handleOnCompletionException", "exception", "", "handleOnCompletionException$kotlinx_coroutines_core", "initParentJob", "initParentJob$kotlinx_coroutines_core", "nameString", "nameString$kotlinx_coroutines_core", "onCancelled", "cause", "handled", "onCompleted", "value", "(Ljava/lang/Object;)V", "onCompletionInternal", "onStart", "onStartInternal", "onStartInternal$kotlinx_coroutines_core", "resumeWith", "result", "Lkotlin/Result;", "start", "R", "Lkotlinx/coroutines/CoroutineStart;", "receiver", "block", "Lkotlin/Function2;", "Lkotlin/ExtensionFunctionType;", "(Lkotlinx/coroutines/CoroutineStart;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)V", "Lkotlin/Function1;", "(Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function1;)V", "kotlinx-coroutines-core"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/AbstractCoroutine;", "T", "Lkotlinx/coroutines/JobSupport;", "Lkotlinx/coroutines/Job;", "Lkotlin/coroutines/Continuation;", "Lkotlinx/coroutines/CoroutineScope;", "parentContext", "Lkotlin/coroutines/CoroutineContext;", "active", "", "(Lkotlin/coroutines/CoroutineContext;Z)V", "context", "context$annotations", "()V", "getContext", "()Lkotlin/coroutines/CoroutineContext;", "coroutineContext", "getCoroutineContext", "isActive", "()Z", "afterResume", "", "state", "", "cancellationExceptionMessage", "", "handleOnCompletionException", "exception", "", "handleOnCompletionException$kotlinx_coroutines_core", "initParentJob", "initParentJob$kotlinx_coroutines_core", "nameString", "nameString$kotlinx_coroutines_core", "onCancelled", "cause", "handled", "onCompleted", "value", "(Ljava/lang/Object;)V", "onCompletionInternal", "onStart", "onStartInternal", "onStartInternal$kotlinx_coroutines_core", "resumeWith", "result", "Lkotlin/Result;", "start", "R", "Lkotlinx/coroutines/CoroutineStart;", "receiver", "block", "Lkotlin/Function2;", "Lkotlin/ExtensionFunctionType;", "(Lkotlinx/coroutines/CoroutineStart;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;)V", "Lkotlin/Function1;", "(Lkotlinx/coroutines/CoroutineStart;Lkotlin/jvm/functions/Function1;)V", "kotlinx-coroutines-core"})
 public abstract class a<T>
-  extends bv
-  implements d<T>, ah, br
+  extends ca
+  implements d<T>, ai, bu
 {
-  protected final f OeA;
-  final f Oez;
+  private final f TTt;
+  protected final f TTu;
   
   public a(f paramf, boolean paramBoolean)
   {
     super(paramBoolean);
-    this.OeA = paramf;
-    this.Oez = this.OeA.plus((f)this);
+    this.TTu = paramf;
+    this.TTt = this.TTu.plus((f)this);
   }
   
-  public final <R> void a(aj paramaj, R paramR, d.g.a.m<? super R, ? super d<? super T>, ? extends Object> paramm)
+  public final <R> void a(ak paramak, R paramR, kotlin.g.a.m<? super R, ? super d<? super T>, ? extends Object> paramm)
   {
-    gzh();
+    hMl();
     d locald = (d)this;
-    switch (ak.gpL[paramaj.ordinal()])
+    switch (al.haE[paramak.ordinal()])
     {
     default: 
-      throw new d.m();
+      throw new kotlin.m();
     case 1: 
       kotlinx.coroutines.a.a.b(paramm, paramR, locald);
     }
     do
     {
       return;
-      d.g.b.p.h(paramm, "$this$startCoroutine");
-      d.g.b.p.h(locald, "completion");
-      paramaj = b.d(b.a(paramm, paramR, locald));
-      paramR = z.Nhr;
-      paramm = d.p.Nhh;
-      paramaj.eQ(d.p.eO(paramR));
+      p.h(paramm, "$this$startCoroutine");
+      p.h(locald, "completion");
+      paramak = b.e(b.a(paramm, paramR, locald));
+      paramR = x.SXb;
+      paramm = Result.Companion;
+      paramak.resumeWith(Result.constructor-impl(paramR));
       return;
-      d.g.b.p.h(locald, "completion");
+      p.h(locald, "completion");
       Object localObject;
       try
       {
-        paramaj = locald.gkg();
-        localObject = x.a(paramaj, null);
+        paramak = locald.getContext();
+        localObject = y.a(paramak, null);
         if (paramm == null) {
           try
           {
-            throw new d.v("null cannot be cast to non-null type (R, kotlin.coroutines.Continuation<T>) -> kotlin.Any?");
+            throw new t("null cannot be cast to non-null type (R, kotlin.coroutines.Continuation<T>) -> kotlin.Any?");
           }
           finally
           {
-            x.b(paramaj, localObject);
+            y.b(paramak, localObject);
           }
         }
-        paramR = ((d.g.a.m)d.g.b.ae.p(paramm, 2)).p(paramR, locald);
+        paramR = ((kotlin.g.a.m)kotlin.g.b.af.r(paramm, 2)).invoke(paramR, locald);
       }
-      catch (Throwable paramaj)
+      catch (Throwable paramak)
       {
-        paramR = d.p.Nhh;
-        locald.eQ(d.p.eO(d.q.p(paramaj)));
+        paramR = Result.Companion;
+        locald.resumeWith(Result.constructor-impl(ResultKt.createFailure(paramak)));
         return;
       }
-      x.b(paramaj, localObject);
-    } while (paramR == d.d.a.a.Nif);
-    paramaj = d.p.Nhh;
-    locald.eQ(d.p.eO(paramR));
+      y.b(paramak, localObject);
+    } while (paramR == kotlin.d.a.a.SXO);
+    paramak = Result.Companion;
+    locald.resumeWith(Result.constructor-impl(paramR));
   }
   
-  public final void eQ(Object paramObject)
+  protected void fM(Object paramObject)
   {
-    paramObject = fU(v.fM(paramObject));
-    if (paramObject == bw.Oge) {
-      return;
-    }
-    fI(paramObject);
+    fS(paramObject);
   }
   
-  protected void fI(Object paramObject)
+  public final f getContext()
   {
-    fO(paramObject);
+    return this.TTt;
   }
   
-  public final f gkg()
+  public final f hMk()
   {
-    return this.Oez;
+    return this.TTt;
   }
   
-  public final f gzg()
+  public final void hMl()
   {
-    return this.Oez;
+    b((bu)this.TTu.get((f.c)bu.TUO));
   }
   
-  public final void gzh()
-  {
-    Object localObject = (br)this.OeA.get((f.c)br.OfS);
-    int i;
-    if (am.gzF())
-    {
-      if ((q)this._parentHandle == null) {}
-      for (i = 1; i == 0; i = 0) {
-        throw ((Throwable)new AssertionError());
-      }
-    }
-    if (localObject == null) {
-      this._parentHandle = ((q)cb.Ogk);
-    }
-    for (;;)
-    {
-      return;
-      ((br)localObject).start();
-      localObject = ((br)localObject).a((s)this);
-      this._parentHandle = localObject;
-      if (!(gAg() instanceof bm)) {}
-      for (i = 1; i != 0; i = 0)
-      {
-        ((q)localObject).dispose();
-        this._parentHandle = ((q)cb.Ogk);
-        return;
-      }
-    }
-  }
-  
-  public final void gzi()
+  public final void hMm()
   {
     onStart();
   }
   
-  protected final String gzj()
+  protected final String hMn()
   {
     return getClass().getSimpleName() + " was cancelled";
   }
   
-  public final String gzk()
+  public String hMo()
   {
-    String str = ab.a(this.Oez);
+    String str = ac.a(this.TTt);
     if (str == null) {
-      return super.gzk();
+      return super.hMo();
     }
-    return "\"" + str + "\":" + super.gzk();
+    return "\"" + str + "\":" + super.hMo();
   }
   
   public final boolean isActive()
@@ -154,14 +124,23 @@ public abstract class a<T>
   
   protected void onStart() {}
   
-  public final void v(Throwable paramThrowable)
+  public final void resumeWith(Object paramObject)
   {
-    ae.b(this.Oez, paramThrowable);
+    paramObject = fZ(w.fQ(paramObject));
+    if (paramObject == cb.TVb) {
+      return;
+    }
+    fM(paramObject);
+  }
+  
+  public final void x(Throwable paramThrowable)
+  {
+    af.b(this.TTt, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.a
  * JD-Core Version:    0.7.0.1
  */

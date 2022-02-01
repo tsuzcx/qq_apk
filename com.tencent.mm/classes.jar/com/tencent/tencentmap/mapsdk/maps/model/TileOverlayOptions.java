@@ -77,9 +77,9 @@ public final class TileOverlayOptions
   
   public final String toString()
   {
-    AppMethodBeat.i(209870);
+    AppMethodBeat.i(193616);
     String str = "{mDiskCacheDir='" + this.mDiskCacheDir + '\'' + ", mVersionInfo='" + this.mVersionInfo + '\'' + ", mZIndex=" + this.mZIndex + ", mBetterQuality=" + this.mBetterQuality + ", mMaxMemoryCacheSize=" + this.mMaxMemoryCacheSize + '}';
-    AppMethodBeat.o(209870);
+    AppMethodBeat.o(193616);
     return str;
   }
   
@@ -97,7 +97,7 @@ public final class TileOverlayOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.TileOverlayOptions
  * JD-Core Version:    0.7.0.1
  */

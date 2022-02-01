@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/fhz" android:background="@drawable/d_" android:paddingLeft="@dimen/h" android:paddingRight="@dimen/h" android:layout_width="120.0dip" android:layout_height="wrap_content" android:minHeight="120.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/ekf" android:padding="7.5dip" android:layout_width="41.0dip" android:layout_height="41.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/da" />
-    <ImageView android:id="@id/cw_" android:layout_width="41.0dip" android:layout_height="41.0dip" />
-    <TextView android:textSize="13.0dip" android:textColor="@color/a_u" android:gravity="center" android:id="@id/gam" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/h" android:layout_marginTop="@dimen/o" android:layout_marginRight="@dimen/h" android:layout_marginBottom="18.0dip" android:maxLines="1" />
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:id="@id/gbx" android:background="@color/f" android:layout_width="fill_parent" android:layout_height="112.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <Button android:textSize="@dimen/afy" android:id="@id/ae9" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/eta" android:layout_marginStart="8.0dip" app:layout_constraintBottom_toBottomOf="@id/j7a" app:layout_constraintStart_toEndOf="@id/j7a" app:layout_constraintTop_toTopOf="@id/j7a" style="@style/ov" />
+    <View android:id="@id/j7a" android:background="@color/ac_" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="32.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+    <Button android:textSize="@dimen/afy" android:id="@id/ae8" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/et_" android:layout_marginEnd="8.0dip" app:layout_constraintBottom_toBottomOf="@id/j7a" app:layout_constraintEnd_toStartOf="@id/j7a" app:layout_constraintTop_toTopOf="@id/j7a" style="@style/p3" />
+</android.support.constraint.ConstraintLayout>

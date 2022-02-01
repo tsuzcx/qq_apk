@@ -10,12 +10,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static int cd(Context paramContext)
+  public static int cy(Context paramContext)
   {
     AppMethodBeat.i(155863);
     TypedValue localTypedValue = new TypedValue();
     int i;
-    if (paramContext.getTheme().resolveAttribute(2130968600, localTypedValue, true))
+    if (paramContext.getTheme().resolveAttribute(2130968601, localTypedValue, true))
     {
       i = TypedValue.complexToDimensionPixelSize(localTypedValue.data, paramContext.getResources().getDisplayMetrics());
       AppMethodBeat.o(155863);
@@ -49,7 +49,7 @@ public final class a
       AppMethodBeat.o(155862);
       return i;
     }
-    int i = cd(paramActivity);
+    int i = cy(paramActivity);
     AppMethodBeat.o(155862);
     return i;
   }

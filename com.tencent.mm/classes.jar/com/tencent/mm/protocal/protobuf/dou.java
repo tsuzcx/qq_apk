@@ -5,167 +5,145 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class dou
   extends com.tencent.mm.bw.a
 {
-  public int DTy;
-  public int DUs;
-  public int DUt;
-  public int DUu;
-  public long HVF;
-  public int HVG;
-  public long HVH;
-  public String dEM;
-  public int eQZ;
-  public String extInfo;
-  public int iqb;
-  public long irN;
-  public String msgId;
-  public String text;
-  public int type;
+  public String LiG;
+  public String MRZ;
+  public long MSa;
+  public int MSb;
+  public int MSc;
+  public int MSd;
+  public int MSe;
+  public int MSf;
+  public int MSg;
+  public float MSh;
+  public float MSi;
+  public float MSj;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(153002);
+    AppMethodBeat.i(87875);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.msgId != null) {
-        paramVarArgs.d(1, this.msgId);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.LiG != null) {
+        paramVarArgs.e(1, this.LiG);
       }
-      paramVarArgs.aS(2, this.DUs);
-      paramVarArgs.aS(3, this.DUt);
-      paramVarArgs.aZ(4, this.irN);
-      paramVarArgs.aS(5, this.DTy);
-      paramVarArgs.aS(6, this.type);
-      if (this.text != null) {
-        paramVarArgs.d(7, this.text);
+      if (this.MRZ != null) {
+        paramVarArgs.e(2, this.MRZ);
       }
-      if (this.dEM != null) {
-        paramVarArgs.d(8, this.dEM);
-      }
-      paramVarArgs.aZ(9, this.HVF);
-      paramVarArgs.aS(10, this.DUu);
-      paramVarArgs.aS(11, this.HVG);
-      paramVarArgs.aZ(12, this.HVH);
-      paramVarArgs.aS(13, this.eQZ);
-      paramVarArgs.aS(14, this.iqb);
-      if (this.extInfo != null) {
-        paramVarArgs.d(15, this.extInfo);
-      }
-      AppMethodBeat.o(153002);
+      paramVarArgs.bb(3, this.MSa);
+      paramVarArgs.aM(4, this.MSb);
+      paramVarArgs.aM(5, this.MSc);
+      paramVarArgs.aM(6, this.MSd);
+      paramVarArgs.aM(7, this.MSe);
+      paramVarArgs.aM(8, this.MSf);
+      paramVarArgs.aM(9, this.MSg);
+      paramVarArgs.E(10, this.MSh);
+      paramVarArgs.E(11, this.MSi);
+      paramVarArgs.E(12, this.MSj);
+      AppMethodBeat.o(87875);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.msgId == null) {
-        break label882;
+      if (this.LiG == null) {
+        break label751;
       }
     }
-    label882:
-    for (paramInt = f.a.a.b.b.a.e(1, this.msgId) + 0;; paramInt = 0)
+    label751:
+    for (paramInt = g.a.a.b.b.a.f(1, this.LiG) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.DUs) + f.a.a.b.b.a.bz(3, this.DUt) + f.a.a.b.b.a.p(4, this.irN) + f.a.a.b.b.a.bz(5, this.DTy) + f.a.a.b.b.a.bz(6, this.type);
-      paramInt = i;
-      if (this.text != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.text);
+      int i = paramInt;
+      if (this.MRZ != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.MRZ);
       }
-      i = paramInt;
-      if (this.dEM != null) {
-        i = paramInt + f.a.a.b.b.a.e(8, this.dEM);
-      }
-      i = i + f.a.a.b.b.a.p(9, this.HVF) + f.a.a.b.b.a.bz(10, this.DUu) + f.a.a.b.b.a.bz(11, this.HVG) + f.a.a.b.b.a.p(12, this.HVH) + f.a.a.b.b.a.bz(13, this.eQZ) + f.a.a.b.b.a.bz(14, this.iqb);
-      paramInt = i;
-      if (this.extInfo != null) {
-        paramInt = i + f.a.a.b.b.a.e(15, this.extInfo);
-      }
-      AppMethodBeat.o(153002);
-      return paramInt;
+      paramInt = g.a.a.b.b.a.r(3, this.MSa);
+      int j = g.a.a.b.b.a.bu(4, this.MSb);
+      int k = g.a.a.b.b.a.bu(5, this.MSc);
+      int m = g.a.a.b.b.a.bu(6, this.MSd);
+      int n = g.a.a.b.b.a.bu(7, this.MSe);
+      int i1 = g.a.a.b.b.a.bu(8, this.MSf);
+      int i2 = g.a.a.b.b.a.bu(9, this.MSg);
+      int i3 = g.a.a.b.b.a.fS(10);
+      int i4 = g.a.a.b.b.a.fS(11);
+      int i5 = g.a.a.b.b.a.fS(12);
+      AppMethodBeat.o(87875);
+      return i + paramInt + j + k + m + n + i1 + i2 + (i3 + 4) + (i4 + 4) + (i5 + 4);
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(153002);
+        AppMethodBeat.o(87875);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         dou localdou = (dou)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(153002);
+          AppMethodBeat.o(87875);
           return -1;
         case 1: 
-          localdou.msgId = locala.OmT.readString();
-          AppMethodBeat.o(153002);
+          localdou.LiG = locala.UbS.readString();
+          AppMethodBeat.o(87875);
           return 0;
         case 2: 
-          localdou.DUs = locala.OmT.zc();
-          AppMethodBeat.o(153002);
+          localdou.MRZ = locala.UbS.readString();
+          AppMethodBeat.o(87875);
           return 0;
         case 3: 
-          localdou.DUt = locala.OmT.zc();
-          AppMethodBeat.o(153002);
+          localdou.MSa = locala.UbS.zl();
+          AppMethodBeat.o(87875);
           return 0;
         case 4: 
-          localdou.irN = locala.OmT.zd();
-          AppMethodBeat.o(153002);
+          localdou.MSb = locala.UbS.zi();
+          AppMethodBeat.o(87875);
           return 0;
         case 5: 
-          localdou.DTy = locala.OmT.zc();
-          AppMethodBeat.o(153002);
+          localdou.MSc = locala.UbS.zi();
+          AppMethodBeat.o(87875);
           return 0;
         case 6: 
-          localdou.type = locala.OmT.zc();
-          AppMethodBeat.o(153002);
+          localdou.MSd = locala.UbS.zi();
+          AppMethodBeat.o(87875);
           return 0;
         case 7: 
-          localdou.text = locala.OmT.readString();
-          AppMethodBeat.o(153002);
+          localdou.MSe = locala.UbS.zi();
+          AppMethodBeat.o(87875);
           return 0;
         case 8: 
-          localdou.dEM = locala.OmT.readString();
-          AppMethodBeat.o(153002);
+          localdou.MSf = locala.UbS.zi();
+          AppMethodBeat.o(87875);
           return 0;
         case 9: 
-          localdou.HVF = locala.OmT.zd();
-          AppMethodBeat.o(153002);
+          localdou.MSg = locala.UbS.zi();
+          AppMethodBeat.o(87875);
           return 0;
         case 10: 
-          localdou.DUu = locala.OmT.zc();
-          AppMethodBeat.o(153002);
+          localdou.MSh = Float.intBitsToFloat(locala.UbS.zm());
+          AppMethodBeat.o(87875);
           return 0;
         case 11: 
-          localdou.HVG = locala.OmT.zc();
-          AppMethodBeat.o(153002);
-          return 0;
-        case 12: 
-          localdou.HVH = locala.OmT.zd();
-          AppMethodBeat.o(153002);
-          return 0;
-        case 13: 
-          localdou.eQZ = locala.OmT.zc();
-          AppMethodBeat.o(153002);
-          return 0;
-        case 14: 
-          localdou.iqb = locala.OmT.zc();
-          AppMethodBeat.o(153002);
+          localdou.MSi = Float.intBitsToFloat(locala.UbS.zm());
+          AppMethodBeat.o(87875);
           return 0;
         }
-        localdou.extInfo = locala.OmT.readString();
-        AppMethodBeat.o(153002);
+        localdou.MSj = Float.intBitsToFloat(locala.UbS.zm());
+        AppMethodBeat.o(87875);
         return 0;
       }
-      AppMethodBeat.o(153002);
+      AppMethodBeat.o(87875);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dou
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class s
 {
   public String appId;
-  public int ioG;
+  public int jjN;
   
   public s(String paramString, int paramInt)
   {
     this.appId = paramString;
-    this.ioG = paramInt;
+    this.jjN = paramInt;
   }
   
   public final boolean equals(Object paramObject)
@@ -27,7 +27,7 @@ final class s
       return false;
     }
     paramObject = (s)paramObject;
-    if ((paramObject.appId.equals(this.appId)) && (paramObject.ioG == this.ioG))
+    if ((paramObject.appId.equals(this.appId)) && (paramObject.jjN == this.jjN))
     {
       AppMethodBeat.o(151791);
       return true;
@@ -39,14 +39,14 @@ final class s
   public final String toString()
   {
     AppMethodBeat.i(151792);
-    String str = this.appId + this.ioG;
+    String str = this.appId + this.jjN;
     AppMethodBeat.o(151792);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.s
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class io
-  extends b
+  extends IEvent
 {
-  public a dwf;
-  public b dwg;
+  public a dNh;
+  public b dNi;
   
   public io()
   {
@@ -16,31 +17,27 @@ public final class io
   
   private io(byte paramByte)
   {
-    AppMethodBeat.i(91206);
-    this.dwf = new a();
-    this.dwg = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(19811);
+    this.dNh = new a();
+    this.dNi = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(91206);
+    AppMethodBeat.o(19811);
   }
   
   public static final class a
   {
-    public boolean dwh = false;
-    public int dwi = 0;
-    public String dwj;
+    public Intent intent;
   }
   
   public static final class b
   {
-    public boolean drc = false;
-    public String dwk;
-    public String dwl;
+    public int dIZ = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.io
  * JD-Core Version:    0.7.0.1
  */

@@ -1,97 +1,81 @@
 package com.tencent.mm.bb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import java.util.LinkedList;
 
 public final class i
-  implements f
+  extends com.tencent.mm.bw.a
 {
+  public LinkedList<h> jgW;
+  
   public i()
   {
-    AppMethodBeat.i(150802);
-    g.ajQ().gDv.a(159, this);
-    g.ajQ().gDv.a(160, this);
-    l locall = new l(5);
-    g.ajQ().gDv.a(locall, 0);
-    AppMethodBeat.o(150802);
+    AppMethodBeat.i(150800);
+    this.jgW = new LinkedList();
+    AppMethodBeat.o(150800);
   }
   
-  private static void aKm()
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(150805);
-    g.ajR().ajA().set(81939, Long.valueOf(bu.fpO()));
-    AppMethodBeat.o(150805);
-  }
-  
-  private void release()
-  {
-    AppMethodBeat.i(150803);
-    g.ajQ().gDv.b(159, this);
-    g.ajQ().gDv.b(160, this);
-    AppMethodBeat.o(150803);
-  }
-  
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
-  {
-    AppMethodBeat.i(150804);
-    if ((!(paramn instanceof com.tencent.mm.ak.p)) || (((com.tencent.mm.ak.p)paramn).aFc() != 5))
+    AppMethodBeat.i(150801);
+    if (paramInt == 0)
     {
-      ae.d("MicroMsg.LangPackageUpdater", "another scene");
-      AppMethodBeat.o(150804);
-      return;
+      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.jgW);
+      AppMethodBeat.o(150801);
+      return 0;
     }
-    int i = paramn.getType();
-    if (i == 159)
+    if (paramInt == 1)
     {
-      if ((paramInt1 == 0) && (paramInt2 == 0))
+      paramInt = g.a.a.a.c(1, 8, this.jgW);
+      AppMethodBeat.o(150801);
+      return paramInt + 0;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.jgW.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      AppMethodBeat.o(150801);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+      i locali = (i)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
-        aKm();
-        paramString = t.aKs().pU(5);
-        if ((paramString == null) || (paramString.length == 0))
-        {
-          ae.i("MicroMsg.LangPackageUpdater", "error no pkg found.");
-          release();
-          AppMethodBeat.o(150804);
-          return;
-        }
-        paramString = paramString[0];
-        ae.i("MicroMsg.LangPackageUpdater", "dkregcode Pkg id:" + paramString.id + " version:" + paramString.version + " status:" + paramString.status + " type:" + paramString.duK);
-        if (5 != paramString.status)
-        {
-          release();
-          AppMethodBeat.o(150804);
-          return;
-        }
-        paramString = new k(paramString.id, 5);
-        g.ajQ().gDv.a(paramString, 0);
-        AppMethodBeat.o(150804);
-        return;
+      default: 
+        AppMethodBeat.o(150801);
+        return -1;
       }
-      release();
-      AppMethodBeat.o(150804);
-      return;
-    }
-    if (i == 160)
-    {
-      if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        aKm();
+      paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new h();
+        localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((h)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+        locali.jgW.add(localObject1);
+        paramInt += 1;
       }
-      release();
+      AppMethodBeat.o(150801);
+      return 0;
     }
-    AppMethodBeat.o(150804);
+    AppMethodBeat.o(150801);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.bb.i
  * JD-Core Version:    0.7.0.1
  */

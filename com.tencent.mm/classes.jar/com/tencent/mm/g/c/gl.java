@@ -2,19 +2,36 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class gl
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int fxa = "tableHash".hashCode();
-  private static final int fxb = "tableSQLMD5".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS snsreport_kv_logtime ON SnsReportKv(logtime)" };
+  private static final int fkp;
+  private static final int gao = "logtime".hashCode();
+  private static final int gaq;
+  private static final int gar;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  public int field_tableHash;
-  public String field_tableSQLMD5;
-  private boolean fwY = true;
-  private boolean fwZ = true;
+  private static final int value_HASHCODE;
+  private boolean __hadSetvalue = true;
+  public int field_errorcount;
+  public int field_logsize;
+  public long field_logtime;
+  public int field_offset;
+  public byte[] field_value;
+  private boolean fjY = true;
+  private boolean gal = true;
+  private boolean gam = true;
+  private boolean gan = true;
+  
+  static
+  {
+    fkp = "offset".hashCode();
+    gaq = "logsize".hashCode();
+    gar = "errorcount".hashCode();
+    value_HASHCODE = "value".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,20 +46,25 @@ public abstract class gl
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fxa != k) {
-        break label65;
+      if (gao != k) {
+        break label60;
       }
-      this.field_tableHash = paramCursor.getInt(i);
-      this.fwY = true;
+      this.field_logtime = paramCursor.getLong(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (fxb == k) {
-        this.field_tableSQLMD5 = paramCursor.getString(i);
+      label60:
+      if (fkp == k) {
+        this.field_offset = paramCursor.getInt(i);
+      } else if (gaq == k) {
+        this.field_logsize = paramCursor.getInt(i);
+      } else if (gar == k) {
+        this.field_errorcount = paramCursor.getInt(i);
+      } else if (value_HASHCODE == k) {
+        this.field_value = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +74,20 @@ public abstract class gl
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fwY) {
-      localContentValues.put("tableHash", Integer.valueOf(this.field_tableHash));
+    if (this.gal) {
+      localContentValues.put("logtime", Long.valueOf(this.field_logtime));
     }
-    if (this.fwZ) {
-      localContentValues.put("tableSQLMD5", this.field_tableSQLMD5);
+    if (this.fjY) {
+      localContentValues.put("offset", Integer.valueOf(this.field_offset));
+    }
+    if (this.gam) {
+      localContentValues.put("logsize", Integer.valueOf(this.field_logsize));
+    }
+    if (this.gan) {
+      localContentValues.put("errorcount", Integer.valueOf(this.field_errorcount));
+    }
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -66,7 +97,7 @@ public abstract class gl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.gl
  * JD-Core Version:    0.7.0.1
  */

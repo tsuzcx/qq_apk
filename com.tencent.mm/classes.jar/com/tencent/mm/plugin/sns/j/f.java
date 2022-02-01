@@ -1,23 +1,67 @@
 package com.tencent.mm.plugin.sns.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ae;
 
 public final class f
+  extends com.tencent.mm.bw.a
 {
-  public static void q(int paramInt1, String paramString, int paramInt2)
+  public int DRS;
+  public long DRU;
+  
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125685);
-    paramString = String.format("%s,%s,%s,%s", new Object[] { Integer.valueOf(paramInt1), paramString, Integer.valueOf(paramInt2), Long.valueOf(System.currentTimeMillis()) });
-    ae.i("MicroMsg.SNS.SnsReportLogic", "snsRedDotAction 16172 report %s", new Object[] { paramString });
-    e.ywz.kvStat(16172, paramString);
-    AppMethodBeat.o(125685);
+    AppMethodBeat.i(96157);
+    if (paramInt == 0)
+    {
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bb(1, this.DRU);
+      paramVarArgs.aM(2, this.DRS);
+      AppMethodBeat.o(96157);
+      return 0;
+    }
+    if (paramInt == 1)
+    {
+      paramInt = g.a.a.b.b.a.r(1, this.DRU);
+      int i = g.a.a.b.b.a.bu(2, this.DRS);
+      AppMethodBeat.o(96157);
+      return paramInt + 0 + i;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      AppMethodBeat.o(96157);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      f localf = (f)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(96157);
+        return -1;
+      case 1: 
+        localf.DRU = locala.UbS.zl();
+        AppMethodBeat.o(96157);
+        return 0;
+      }
+      localf.DRS = locala.UbS.zi();
+      AppMethodBeat.o(96157);
+      return 0;
+    }
+    AppMethodBeat.o(96157);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.j.f
  * JD-Core Version:    0.7.0.1
  */

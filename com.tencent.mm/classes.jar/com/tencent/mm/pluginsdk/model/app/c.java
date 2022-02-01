@@ -2,104 +2,104 @@ package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.h;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
   extends h
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(151651);
-    c.a locala = new c.a();
-    locala.IBL = new Field[20];
-    locala.columns = new String[21];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[20];
+    localMAutoDBInfo.columns = new String[21];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appId";
-    locala.IBN.put("appId", "TEXT");
+    localMAutoDBInfo.columns[0] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "sdkVer";
-    locala.IBN.put("sdkVer", "LONG");
+    localMAutoDBInfo.columns[1] = "sdkVer";
+    localMAutoDBInfo.colsMap.put("sdkVer", "LONG");
     localStringBuilder.append(" sdkVer LONG");
     localStringBuilder.append(", ");
-    locala.columns[2] = "mediaSvrId";
-    locala.IBN.put("mediaSvrId", "TEXT");
+    localMAutoDBInfo.columns[2] = "mediaSvrId";
+    localMAutoDBInfo.colsMap.put("mediaSvrId", "TEXT");
     localStringBuilder.append(" mediaSvrId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "mediaId";
-    locala.IBN.put("mediaId", "TEXT");
+    localMAutoDBInfo.columns[3] = "mediaId";
+    localMAutoDBInfo.colsMap.put("mediaId", "TEXT");
     localStringBuilder.append(" mediaId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "clientAppDataId";
-    locala.IBN.put("clientAppDataId", "TEXT");
+    localMAutoDBInfo.columns[4] = "clientAppDataId";
+    localMAutoDBInfo.colsMap.put("clientAppDataId", "TEXT");
     localStringBuilder.append(" clientAppDataId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "type";
-    locala.IBN.put("type", "LONG");
+    localMAutoDBInfo.columns[5] = "type";
+    localMAutoDBInfo.colsMap.put("type", "LONG");
     localStringBuilder.append(" type LONG");
     localStringBuilder.append(", ");
-    locala.columns[6] = "totalLen";
-    locala.IBN.put("totalLen", "LONG");
+    localMAutoDBInfo.columns[6] = "totalLen";
+    localMAutoDBInfo.colsMap.put("totalLen", "LONG");
     localStringBuilder.append(" totalLen LONG");
     localStringBuilder.append(", ");
-    locala.columns[7] = "offset";
-    locala.IBN.put("offset", "LONG");
+    localMAutoDBInfo.columns[7] = "offset";
+    localMAutoDBInfo.colsMap.put("offset", "LONG");
     localStringBuilder.append(" offset LONG");
     localStringBuilder.append(", ");
-    locala.columns[8] = "status";
-    locala.IBN.put("status", "LONG");
+    localMAutoDBInfo.columns[8] = "status";
+    localMAutoDBInfo.colsMap.put("status", "LONG");
     localStringBuilder.append(" status LONG");
     localStringBuilder.append(", ");
-    locala.columns[9] = "isUpload";
-    locala.IBN.put("isUpload", "INTEGER");
+    localMAutoDBInfo.columns[9] = "isUpload";
+    localMAutoDBInfo.colsMap.put("isUpload", "INTEGER");
     localStringBuilder.append(" isUpload INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[10] = "createTime";
-    locala.IBN.put("createTime", "LONG");
+    localMAutoDBInfo.columns[10] = "createTime";
+    localMAutoDBInfo.colsMap.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[11] = "lastModifyTime";
-    locala.IBN.put("lastModifyTime", "LONG");
+    localMAutoDBInfo.columns[11] = "lastModifyTime";
+    localMAutoDBInfo.colsMap.put("lastModifyTime", "LONG");
     localStringBuilder.append(" lastModifyTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[12] = "fileFullPath";
-    locala.IBN.put("fileFullPath", "TEXT");
+    localMAutoDBInfo.columns[12] = "fileFullPath";
+    localMAutoDBInfo.colsMap.put("fileFullPath", "TEXT");
     localStringBuilder.append(" fileFullPath TEXT");
     localStringBuilder.append(", ");
-    locala.columns[13] = "fullXml";
-    locala.IBN.put("fullXml", "TEXT");
+    localMAutoDBInfo.columns[13] = "fullXml";
+    localMAutoDBInfo.colsMap.put("fullXml", "TEXT");
     localStringBuilder.append(" fullXml TEXT");
     localStringBuilder.append(", ");
-    locala.columns[14] = "msgInfoId";
-    locala.IBN.put("msgInfoId", "LONG");
+    localMAutoDBInfo.columns[14] = "msgInfoId";
+    localMAutoDBInfo.colsMap.put("msgInfoId", "LONG");
     localStringBuilder.append(" msgInfoId LONG");
     localStringBuilder.append(", ");
-    locala.columns[15] = "netTimes";
-    locala.IBN.put("netTimes", "LONG");
+    localMAutoDBInfo.columns[15] = "netTimes";
+    localMAutoDBInfo.colsMap.put("netTimes", "LONG");
     localStringBuilder.append(" netTimes LONG");
     localStringBuilder.append(", ");
-    locala.columns[16] = "isUseCdn";
-    locala.IBN.put("isUseCdn", "INTEGER");
+    localMAutoDBInfo.columns[16] = "isUseCdn";
+    localMAutoDBInfo.colsMap.put("isUseCdn", "INTEGER");
     localStringBuilder.append(" isUseCdn INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[17] = "signature";
-    locala.IBN.put("signature", "TEXT");
+    localMAutoDBInfo.columns[17] = "signature";
+    localMAutoDBInfo.colsMap.put("signature", "TEXT");
     localStringBuilder.append(" signature TEXT");
     localStringBuilder.append(", ");
-    locala.columns[18] = "fakeAeskey";
-    locala.IBN.put("fakeAeskey", "TEXT");
+    localMAutoDBInfo.columns[18] = "fakeAeskey";
+    localMAutoDBInfo.colsMap.put("fakeAeskey", "TEXT");
     localStringBuilder.append(" fakeAeskey TEXT");
     localStringBuilder.append(", ");
-    locala.columns[19] = "fakeSignature";
-    locala.IBN.put("fakeSignature", "TEXT");
+    localMAutoDBInfo.columns[19] = "fakeSignature";
+    localMAutoDBInfo.colsMap.put("fakeSignature", "TEXT");
     localStringBuilder.append(" fakeSignature TEXT");
-    locala.columns[20] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[20] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(151651);
   }
   
@@ -108,7 +108,7 @@ public final class c
     this.field_netTimes = 0L;
   }
   
-  public final boolean cZe()
+  public final boolean deQ()
   {
     if (this.field_totalLen <= 0L) {}
     while (this.field_offset != this.field_totalLen) {
@@ -117,7 +117,7 @@ public final class c
     return true;
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

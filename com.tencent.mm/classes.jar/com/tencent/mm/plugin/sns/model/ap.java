@@ -1,80 +1,101 @@
 package com.tencent.mm.plugin.sns.model;
 
-import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
-public final class ap
+public final class ap<K, O>
 {
-  private static final Map<String, String> zCD;
+  Map<K, ap<K, O>.b<O>> DMl;
+  private a DMm;
+  private int maxSize;
   
-  static
+  public ap(int paramInt, a parama)
   {
-    AppMethodBeat.i(95922);
-    zCD = new HashMap();
-    AppMethodBeat.o(95922);
+    AppMethodBeat.i(95892);
+    this.DMl = null;
+    this.DMm = null;
+    this.maxSize = paramInt;
+    this.DMl = new HashMap();
+    this.DMm = parama;
+    AppMethodBeat.o(95892);
   }
   
-  public static String jv(String paramString1, String paramString2)
+  public final void fbt()
   {
-    AppMethodBeat.i(95920);
-    if ((paramString1 == null) || (paramString2 == null))
+    AppMethodBeat.i(95893);
+    int i;
+    if (this.DMl.size() > this.maxSize)
     {
-      AppMethodBeat.o(95920);
-      return "";
-    }
-    boolean bool = Looper.getMainLooper().equals(Looper.myLooper());
-    if ((bool) && (zCD.containsKey(paramString1 + paramString2)))
-    {
-      str = (String)zCD.get(paramString1 + paramString2);
-      if (!bu.isNullOrNil(str))
+      Object localObject1 = new ArrayList(this.DMl.entrySet());
+      Collections.sort((List)localObject1, new Comparator() {});
+      i = this.DMl.size() - this.maxSize;
+      if (i <= 0)
       {
-        AppMethodBeat.o(95920);
-        return str;
+        AppMethodBeat.o(95893);
+        return;
+      }
+      localObject1 = ((ArrayList)localObject1).iterator();
+      if (((Iterator)localObject1).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject1).next();
+        Object localObject2 = localEntry.getKey();
+        if (!this.DMm.dQ(localObject2)) {
+          break label164;
+        }
+        Log.d("MicroMsg.SnsLRUMap", " remove targetKey: " + localEntry.getKey());
+        i -= 1;
       }
     }
-    String str = g.getMessageDigest(paramString2.getBytes());
-    StringBuffer localStringBuffer = new StringBuffer(paramString1);
-    if (str.length() > 0)
+    label164:
+    for (;;)
     {
-      localStringBuffer.append(str.charAt(0));
-      localStringBuffer.append("/");
+      if (i <= 0)
+      {
+        AppMethodBeat.o(95893);
+        return;
+      }
+      break;
     }
-    if (str.length() >= 2)
-    {
-      localStringBuffer.append(str.charAt(1));
-      localStringBuffer.append("/");
-    }
-    if (bool) {
-      zCD.put(paramString1 + paramString2, localStringBuffer.toString());
-    }
-    paramString1 = localStringBuffer.toString();
-    AppMethodBeat.o(95920);
-    return paramString1;
   }
   
-  public static void release()
+  public static abstract interface a
   {
-    try
+    public abstract boolean dQ(Object paramObject);
+  }
+  
+  public final class b<OO>
+  {
+    public Long DMo;
+    public OO obj;
+    
+    public b()
     {
-      AppMethodBeat.i(95921);
-      zCD.clear();
-      AppMethodBeat.o(95921);
-      return;
+      AppMethodBeat.i(95890);
+      Object localObject;
+      this.obj = localObject;
+      fbu();
+      AppMethodBeat.o(95890);
     }
-    finally
+    
+    public final void fbu()
     {
-      localObject = finally;
-      throw localObject;
+      AppMethodBeat.i(95891);
+      this.DMo = Long.valueOf(System.currentTimeMillis());
+      AppMethodBeat.o(95891);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ap
  * JD-Core Version:    0.7.0.1
  */

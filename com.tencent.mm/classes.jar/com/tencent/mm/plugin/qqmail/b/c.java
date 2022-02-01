@@ -10,24 +10,24 @@ public final class c
   
   static
   {
-    AppMethodBeat.i(217923);
-    USER_AGENT = "weixin/" + d.hjv + "/0x" + Integer.toHexString(d.FFH);
-    AppMethodBeat.o(217923);
+    AppMethodBeat.i(198577);
+    USER_AGENT = "weixin/" + d.ics + "/0x" + Integer.toHexString(d.KyO);
+    AppMethodBeat.o(198577);
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, a.a parama)
   {
-    AppMethodBeat.i(217922);
+    AppMethodBeat.i(198576);
     paramString1 = new b(paramString1, paramString2, parama);
     paramString2 = new Bundle();
     paramString2.putString("param_cookie", paramString3);
-    paramString1.x(new Bundle[] { paramString2 });
-    AppMethodBeat.o(217922);
+    paramString1.y(new Bundle[] { paramString2 });
+    AppMethodBeat.o(198576);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.b.c
  * JD-Core Version:    0.7.0.1
  */

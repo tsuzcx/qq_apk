@@ -2,23 +2,60 @@ package com.tencent.tinker.loader;
 
 import android.annotation.SuppressLint;
 import com.tencent.tinker.anno.Keep;
-import dalvik.system.BaseDexClassLoader;
+import dalvik.system.PathClassLoader;
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 @SuppressLint({"NewApi"})
 @Keep
 public final class TinkerClassLoader
-  extends BaseDexClassLoader
+  extends PathClassLoader
 {
   private final ClassLoader mOriginAppClassLoader;
   
   TinkerClassLoader(String paramString1, File paramFile, String paramString2, ClassLoader paramClassLoader)
   {
-    super(paramString1, paramFile, paramString2, ClassLoader.getSystemClassLoader());
+    super("", paramString2, ClassLoader.getSystemClassLoader());
     this.mOriginAppClassLoader = paramClassLoader;
+    injectDexPath(this, paramString1, paramFile);
+  }
+  
+  private static void injectDexPath(ClassLoader paramClassLoader, String paramString, File paramFile)
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        ArrayList localArrayList = new ArrayList(16);
+        paramString = paramString.split(":");
+        int j = paramString.length;
+        i = 0;
+        if (i < j)
+        {
+          String str = paramString[i];
+          if (!str.isEmpty()) {
+            localArrayList.add(new File(str));
+          }
+        }
+        else
+        {
+          if (!localArrayList.isEmpty()) {
+            SystemClassLoaderAdder.injectDexesInternal(paramClassLoader, localArrayList, paramFile);
+          }
+          return;
+        }
+      }
+      catch (Throwable paramClassLoader)
+      {
+        throw new TinkerRuntimeException("Fail to create TinkerClassLoader.", paramClassLoader);
+      }
+      i += 1;
+    }
   }
   
   protected final Class<?> findClass(String paramString)

@@ -1,5 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/er" android:layout_width="300.0dip" android:layout_height="88.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ProgressBar android:id="@id/fzm" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_centerInParent="true" style="@style/a4r" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/dcd" android:background="@drawable/aja" android:layout_width="fill_parent" android:layout_height="@dimen/adi" android:layout_alignParentTop="true" android:paddingStart="@dimen/ada" android:paddingEnd="@dimen/ada">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/c6j" android:layout_width="@dimen/adn" android:layout_height="@dimen/adn" android:src="@raw/mp_video_fullscreen_back" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/ipm" android:layout_width="fill_parent" android:layout_height="fill_parent" android:maxLines="1" android:layout_marginStart="@dimen/adg" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/flv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/ada">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/fll" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/mp_video_fullscreen_back" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:layout_gravity="center_vertical" android:id="@id/flm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:maxLines="1" />
+        </LinearLayout>
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
+        <ImageView android:layout_gravity="center" android:id="@id/aqa" android:visibility="gone" android:layout_width="@dimen/ad5" android:layout_height="@dimen/ad5" android:src="@raw/mp_video_play_btn_play" />
+    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h8v" android:background="@drawable/aj_" android:layout_width="fill_parent" android:layout_height="@dimen/ad_" android:layout_alignParentBottom="true" android:paddingEnd="@dimen/ada">
+        <ImageView android:gravity="center_vertical" android:id="@id/gcc" android:layout_width="@dimen/adn" android:layout_height="@dimen/adn" android:src="@raw/icons_filled_play" android:scaleType="fitCenter" android:layout_marginStart="@dimen/ad8" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gcv" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginStart="@dimen/ad8">
+            <TextView android:textSize="@dimen/add" android:textColor="@color/ag2" android:id="@id/gce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+            <FrameLayout android:gravity="center_vertical" android:id="@id/gd1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <ImageView android:id="@id/gcw" android:background="#33ffffff" style="@style/qy" />
+                <ImageView android:id="@id/gcy" android:background="#80ffffff" style="@style/qy" />
+                <ImageView android:id="@id/gcx" android:background="@color/am" style="@style/qy" />
+                <RelativeLayout android:id="@id/gcq" style="@style/qy" />
+                <ImageView android:id="@id/gd0" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/k" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/ir" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/media_player_control_btn" />
+            </FrameLayout>
+            <TextView android:textSize="@dimen/add" android:textColor="@color/ag2" android:id="@id/gck" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" />
+        </LinearLayout>
+        <ImageView android:gravity="center_vertical" android:id="@id/fqr" android:layout_width="@dimen/adn" android:layout_height="@dimen/adn" android:src="@raw/mp_video_mute_btn_off" android:scaleType="fitCenter" android:layout_marginStart="@dimen/ad8" />
+        <FrameLayout android:id="@id/i3h" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="24.0dip" android:layout_marginStart="@dimen/ad8">
+            <TextView android:textSize="@dimen/adk" android:textColor="@color/ag5" android:gravity="center" android:id="@id/i3i" android:background="@drawable/j9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/h5g" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="24.0dip" android:layout_marginStart="@dimen/ad8">
+            <TextView android:textSize="@dimen/adk" android:textColor="@color/ag5" android:gravity="center" android:id="@id/h5h" android:background="@drawable/j9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+        <ImageView android:gravity="center_vertical" android:id="@id/dbs" android:layout_width="@dimen/adn" android:layout_height="@dimen/adn" android:src="@raw/mp_video_fullscreen_btn" android:scaleType="fitCenter" android:layout_marginStart="@dimen/ad8" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/h5f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="60.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/i3g" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="60.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
 </RelativeLayout>

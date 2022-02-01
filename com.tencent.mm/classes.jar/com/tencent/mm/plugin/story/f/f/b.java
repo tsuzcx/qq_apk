@@ -1,39 +1,43 @@
 package com.tencent.mm.plugin.story.f.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.uy;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.g.a.vx;
 import com.tencent.mm.plugin.story.api.l.a;
 import com.tencent.mm.plugin.story.f.j;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.f.k;
 import com.tencent.mm.plugin.story.i.f;
 import com.tencent.mm.plugin.story.i.g;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.g.b.q;
-import d.v;
-import d.z;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import kotlin.g.a.a;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.t;
+import kotlin.x;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/sync/SingleUserStateFetcher;", "Lcom/tencent/mm/plugin/story/api/IStoryStateFetcher;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "username", "", "(Ljava/lang/String;)V", "extInfo", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "hasStory", "", "hasUnread", "isInBlackList", "listener", "Lcom/tencent/mm/plugin/story/api/IStoryStateFetcher$ChatRoomStateListener;", "snsPermissionNotifyListener", "com/tencent/mm/plugin/story/model/sync/SingleUserStateFetcher$snsPermissionNotifyListener$1", "Lcom/tencent/mm/plugin/story/model/sync/SingleUserStateFetcher$snsPermissionNotifyListener$1;", "checkStoryUnread", "destroy", "", "notifyListener", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "pause", "registerNotifyListener", "resume", "start", "Companion", "plugin-story_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/sync/SingleUserStateFetcher;", "Lcom/tencent/mm/plugin/story/api/IStoryStateFetcher;", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "username", "", "(Ljava/lang/String;)V", "extInfo", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "hasStory", "", "hasUnread", "isInBlackList", "listener", "Lcom/tencent/mm/plugin/story/api/IStoryStateFetcher$ChatRoomStateListener;", "snsPermissionNotifyListener", "com/tencent/mm/plugin/story/model/sync/SingleUserStateFetcher$snsPermissionNotifyListener$1", "Lcom/tencent/mm/plugin/story/model/sync/SingleUserStateFetcher$snsPermissionNotifyListener$1;", "checkStoryUnread", "destroy", "", "notifyListener", "onNotifyChange", "event", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "pause", "registerNotifyListener", "resume", "start", "Companion", "plugin-story_release"})
 public final class b
-  implements com.tencent.mm.plugin.story.api.l, k.a
+  implements com.tencent.mm.plugin.story.api.l, MStorage.IOnStorageChange
 {
-  public static final b.a Bff;
+  public static final a FpW;
   private static final String TAG = "MicroMsg.SingleUserStateFetcher";
-  private l.a Bfa;
-  private f Bfb;
-  private boolean Bfc;
-  private boolean Bfd;
-  private final c Bfe;
+  private boolean BdH;
+  private l.a FpR;
+  private f FpS;
+  private boolean FpT;
+  private boolean FpU;
+  private final c FpV;
   private final String username;
-  private boolean xga;
   
   static
   {
     AppMethodBeat.i(119041);
-    Bff = new b.a((byte)0);
+    FpW = new a((byte)0);
     TAG = "MicroMsg.SingleUserStateFetcher";
     AppMethodBeat.o(119041);
   }
@@ -42,64 +46,73 @@ public final class b
   {
     AppMethodBeat.i(119040);
     this.username = paramString;
-    this.Bfe = new c(this);
+    this.FpV = new c(this);
     AppMethodBeat.o(119040);
   }
   
-  private final void dWZ()
+  private final void fai()
   {
     AppMethodBeat.i(119039);
-    ae.i(TAG, "notifyListener: " + this.xga + ' ' + this.Bfc);
-    com.tencent.mm.ac.c.h((d.g.a.a)new b(this));
+    Log.i(TAG, "notifyListener: " + this.BdH + ' ' + this.FpT);
+    d.h((a)new b(this));
     AppMethodBeat.o(119039);
   }
   
   public final void a(l.a parama)
   {
-    this.Bfa = parama;
+    this.FpR = parama;
   }
   
-  public final void a(String paramString, m paramm)
+  public final void destroy()
+  {
+    AppMethodBeat.i(119037);
+    j.b localb = j.Fmy;
+    j.b.fod().remove((MStorage.IOnStorageChange)this);
+    EventCenter.instance.removeListener((IListener)this.FpV);
+    AppMethodBeat.o(119037);
+  }
+  
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
   {
     AppMethodBeat.i(119038);
-    if (this.Bfd)
+    if (this.FpU)
     {
       AppMethodBeat.o(119038);
       return;
     }
-    if ((paramString != null) && (paramm != null) && ((paramm.obj instanceof f)))
+    if ((paramString != null) && (paramMStorageEventData != null) && ((paramMStorageEventData.obj instanceof f)))
     {
-      paramm = paramm.obj;
-      if (paramm == null)
+      paramMStorageEventData = paramMStorageEventData.obj;
+      if (paramMStorageEventData == null)
       {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.story.storage.StoryExtInfo");
+        paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.story.storage.StoryExtInfo");
         AppMethodBeat.o(119038);
         throw paramString;
       }
-      paramm = (f)paramm;
-      if ((p.i(this.username, paramm.getUserName()) ^ true))
+      paramMStorageEventData = (f)paramMStorageEventData;
+      if ((p.j(this.username, paramMStorageEventData.getUserName()) ^ true))
       {
         AppMethodBeat.o(119038);
         return;
       }
-      if ((p.i(paramString, "notify_story_read")) || (p.i(paramString, "notify_story_unread")) || (p.i(paramString, "notify_story_invalid")) || (p.i(paramString, "notify_story_valid")))
+      if ((p.j(paramString, "notify_story_read")) || (p.j(paramString, "notify_story_unread")) || (p.j(paramString, "notify_story_invalid")) || (p.j(paramString, "notify_story_valid")))
       {
-        ae.i(TAG, "update user " + paramm.getUserName() + ' ' + paramm.field_syncId + ' ' + paramString);
-        if (this.Bfc != paramm.epa()) {}
+        Log.i(TAG, "update user " + paramMStorageEventData.getUserName() + ' ' + paramMStorageEventData.field_syncId + ' ' + paramString);
+        if (this.FpT != paramMStorageEventData.frA()) {}
         for (int i = 1;; i = 0)
         {
-          this.Bfb = paramm;
-          this.xga = paramm.isValid();
-          this.Bfc = paramm.epa();
-          dWZ();
+          this.FpS = paramMStorageEventData;
+          this.BdH = paramMStorageEventData.isValid();
+          this.FpT = paramMStorageEventData.frA();
+          fai();
           if (i == 0) {
             break;
           }
-          paramString = this.Bfa;
+          paramString = this.FpR;
           if (paramString == null) {
             break;
           }
-          paramString.ca(this.username, this.Bfc);
+          paramString.cs(this.username, this.FpT);
           AppMethodBeat.o(119038);
           return;
         }
@@ -108,28 +121,19 @@ public final class b
     AppMethodBeat.o(119038);
   }
   
-  public final void destroy()
-  {
-    AppMethodBeat.i(119037);
-    j.b localb = j.BbE;
-    j.b.elC().remove((k.a)this);
-    com.tencent.mm.sdk.b.a.IvT.d((com.tencent.mm.sdk.b.c)this.Bfe);
-    AppMethodBeat.o(119037);
-  }
-  
   public final void pause() {}
   
   public final void resume()
   {
     AppMethodBeat.i(119036);
-    Object localObject = this.Bfb;
+    Object localObject = this.FpS;
     if (localObject != null)
     {
-      if ((this.xga) && (!((f)localObject).isValid()))
+      if ((this.BdH) && (!((f)localObject).isValid()))
       {
-        ae.i(TAG, "LogStory: expired " + this.username);
-        localObject = k.BbN;
-        k.aCU(this.username);
+        Log.i(TAG, "LogStory: expired " + this.username);
+        localObject = k.FmH;
+        k.aRQ(this.username);
       }
       AppMethodBeat.o(119036);
       return;
@@ -140,17 +144,20 @@ public final class b
   public final void start()
   {
     AppMethodBeat.i(119035);
-    com.tencent.mm.ac.c.b("SingleUserStateFetcher_start", (d.g.a.a)new d(this));
-    j.b localb = j.BbE;
-    j.b.elC().add((k.a)this);
-    com.tencent.mm.sdk.b.a.IvT.c((com.tencent.mm.sdk.b.c)this.Bfe);
+    d.b("SingleUserStateFetcher_start", (a)new d(this));
+    j.b localb = j.Fmy;
+    j.b.fod().add((MStorage.IOnStorageChange)this);
+    EventCenter.instance.addListener((IListener)this.FpV);
     AppMethodBeat.o(119035);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/sync/SingleUserStateFetcher$Companion;", "", "()V", "TAG", "", "plugin-story_release"})
+  public static final class a {}
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class b
     extends q
-    implements d.g.a.a<z>
+    implements a<x>
   {
     b(b paramb)
     {
@@ -158,15 +165,15 @@ public final class b
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/story/model/sync/SingleUserStateFetcher$snsPermissionNotifyListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/SnsPermissionNotifyEvent;", "callback", "", "event", "plugin-story_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/story/model/sync/SingleUserStateFetcher$snsPermissionNotifyListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/SnsPermissionNotifyEvent;", "callback", "", "event", "plugin-story_release"})
   public static final class c
-    extends com.tencent.mm.sdk.b.c<uy>
+    extends IListener<vx>
   {}
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class d
     extends q
-    implements d.g.a.a<z>
+    implements a<x>
   {
     d(b paramb)
     {
@@ -176,7 +183,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.f.b
  * JD-Core Version:    0.7.0.1
  */

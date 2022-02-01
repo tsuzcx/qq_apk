@@ -1,81 +1,47 @@
 package com.tencent.mm.audio.mix.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.h.b;
 
 public final class a
+  extends f
 {
-  public static boolean I(int paramInt1, int paramInt2, int paramInt3)
+  protected final byte[] H(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(136884);
-    if (!hM(paramInt1))
+    AppMethodBeat.i(136834);
+    int j = 0;
+    if (j < paramInt2)
     {
-      AppMethodBeat.o(136884);
-      return false;
+      int k = 0;
+      float f2 = 0.0F;
+      float f3;
+      for (float f1 = 0.0F; k < paramInt1; f1 = f3 + f1)
+      {
+        f2 = (float)(f2 + Math.pow(this.dwL[k][j], 2.0D) * Math.signum(this.dwL[k][j]));
+        f3 = Math.abs(this.dwL[k][j]);
+        k += 1;
+      }
+      if (f1 == 0.0F)
+      {
+        k = 0;
+        label111:
+        localObject = this.dwO;
+        if (f1 != 0.0F) {
+          break label154;
+        }
+      }
+      label154:
+      for (int i = 0;; i = jf(k))
+      {
+        localObject[j] = i;
+        j += 1;
+        break;
+        k = (int)(f2 / f1);
+        break label111;
+      }
     }
-    if (!hN(paramInt2))
-    {
-      AppMethodBeat.o(136884);
-      return false;
-    }
-    if (!hO(paramInt3))
-    {
-      AppMethodBeat.o(136884);
-      return false;
-    }
-    AppMethodBeat.o(136884);
-    return true;
-  }
-  
-  private static boolean hM(int paramInt)
-  {
-    AppMethodBeat.i(136885);
-    if (paramInt <= 0)
-    {
-      b.e("MicroMsg.Mix.AudioMixConfig", "sampleRate is illegal! %d", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(136885);
-      return false;
-    }
-    if (paramInt == 44100)
-    {
-      AppMethodBeat.o(136885);
-      return true;
-    }
-    AppMethodBeat.o(136885);
-    return false;
-  }
-  
-  private static boolean hN(int paramInt)
-  {
-    AppMethodBeat.i(136886);
-    if (paramInt <= 0)
-    {
-      b.e("MicroMsg.Mix.AudioMixConfig", "channels is illegal, %d", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(136886);
-      return false;
-    }
-    if (paramInt == 2)
-    {
-      AppMethodBeat.o(136886);
-      return true;
-    }
-    AppMethodBeat.o(136886);
-    return false;
-  }
-  
-  private static boolean hO(int paramInt)
-  {
-    AppMethodBeat.i(136887);
-    if (paramInt <= 0) {
-      b.e("MicroMsg.Mix.AudioMixConfig", "encode is illegal, %d", new Object[] { Integer.valueOf(paramInt) });
-    }
-    if (paramInt == 2)
-    {
-      AppMethodBeat.o(136887);
-      return true;
-    }
-    AppMethodBeat.o(136887);
-    return false;
+    Object localObject = ci(paramInt3, paramInt2);
+    AppMethodBeat.o(136834);
+    return localObject;
   }
 }
 

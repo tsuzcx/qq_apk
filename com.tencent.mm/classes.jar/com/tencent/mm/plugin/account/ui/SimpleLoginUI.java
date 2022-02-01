@@ -26,21 +26,24 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.bq.a;
+import com.tencent.mm.compatible.util.f;
+import com.tencent.mm.model.bu;
+import com.tencent.mm.model.bu.a;
 import com.tencent.mm.plugin.account.model.c.1;
 import com.tencent.mm.plugin.account.model.c.a;
 import com.tencent.mm.pluginsdk.l;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.pluginsdk.model.app.i;
 import com.tencent.mm.pluginsdk.model.app.y.1;
 import com.tencent.mm.pluginsdk.model.app.y.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.k;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo;
+import com.tencent.mm.sdk.platformtools.WeChatBrands.AppInfo.WhichApp;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.applet.SecurityImage;
 import com.tencent.mm.ui.applet.SecurityImage.a;
@@ -52,33 +55,33 @@ import java.util.LinkedList;
 
 public class SimpleLoginUI
   extends MMWizardActivity
-  implements com.tencent.mm.ak.f
+  implements com.tencent.mm.ak.i
 {
-  private TextWatcher awu;
-  private String dLz;
-  private ProgressDialog fOC;
-  private SecurityImage jfm;
-  private String jlr;
-  private com.tencent.mm.sdk.b.c jmB;
-  private String jnP;
-  private ResizeLayout jnT;
-  private f jnl;
-  private String jnp;
-  private MMClearEditText joF;
-  private MMClearEditText joG;
-  private MMFormInputView joH;
-  private MMFormInputView joI;
-  private Button joJ;
-  private MMKeyboardUperView joM;
+  private TextWatcher aws;
+  private String edo;
+  private ProgressDialog gtM;
+  private SecurityImage kdp;
+  private String kjv;
+  private IListener kkK;
+  private String klX;
+  private g klt;
+  private String klx;
+  private MMClearEditText kmP;
+  private MMClearEditText kmQ;
+  private MMFormInputView kmR;
+  private MMFormInputView kmS;
+  private Button kmT;
+  private MMKeyboardUperView kmW;
+  private ResizeLayout kmb;
   
   public SimpleLoginUI()
   {
     AppMethodBeat.i(128778);
-    this.fOC = null;
-    this.jfm = null;
-    this.jnl = new f();
-    this.dLz = "";
-    this.awu = new TextWatcher()
+    this.gtM = null;
+    this.kdp = null;
+    this.klt = new g();
+    this.edo = "";
+    this.aws = new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable)
       {
@@ -91,51 +94,51 @@ public class SimpleLoginUI
       
       public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
     };
-    this.jmB = new SimpleLoginUI.12(this);
+    this.kkK = new SimpleLoginUI.12(this);
     AppMethodBeat.o(128778);
   }
   
-  private void aSz()
+  private void bnm()
   {
     AppMethodBeat.i(128784);
     boolean bool = getIntent().getBooleanExtra("key_auto_login_wizard_exit", false);
     if (!bool) {
       cancel();
     }
-    acs(1);
+    ala(1);
     if (bool) {
       exit(1);
     }
     AppMethodBeat.o(128784);
   }
   
-  private void aUs()
+  private void bpf()
   {
     AppMethodBeat.i(128785);
-    this.jnl.account = this.joF.getText().toString().trim();
-    this.jnl.jfn = this.joG.getText().toString();
-    if (this.jnl.account.equals(""))
+    this.klt.account = this.kmP.getText().toString().trim();
+    this.klt.kdq = this.kmQ.getText().toString();
+    if (this.klt.account.equals(""))
     {
-      com.tencent.mm.ui.base.h.l(this, 2131764665, 2131760766);
+      com.tencent.mm.ui.base.h.n(this, 2131767037, 2131762516);
       AppMethodBeat.o(128785);
       return;
     }
-    if (this.jnl.jfn.equals(""))
+    if (this.klt.kdq.equals(""))
     {
-      com.tencent.mm.ui.base.h.l(this, 2131764658, 2131760766);
+      com.tencent.mm.ui.base.h.n(this, 2131767029, 2131762516);
       AppMethodBeat.o(128785);
       return;
     }
     hideVKB();
-    final com.tencent.mm.modelsimple.t localt = new com.tencent.mm.modelsimple.t(this.jnl.account, this.jnl.jfn, this.jlr, 0);
-    com.tencent.mm.kernel.g.ajj().a(localt, 0);
-    getString(2131755906);
-    this.fOC = com.tencent.mm.ui.base.h.b(this, getString(2131760781), true, new DialogInterface.OnCancelListener()
+    final com.tencent.mm.modelsimple.t localt = new com.tencent.mm.modelsimple.t(this.klt.account, this.klt.kdq, this.kjv, 0);
+    com.tencent.mm.kernel.g.azz().a(localt, 0);
+    getString(2131755998);
+    this.gtM = com.tencent.mm.ui.base.h.a(this, getString(2131762532), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
         AppMethodBeat.i(128762);
-        com.tencent.mm.kernel.g.ajj().a(localt);
+        com.tencent.mm.kernel.g.azz().a(localt);
         AppMethodBeat.o(128762);
       }
     });
@@ -144,171 +147,168 @@ public class SimpleLoginUI
   
   public int getLayoutId()
   {
-    return 2131494602;
+    return 2131495313;
   }
   
   public void initView()
   {
     AppMethodBeat.i(128783);
-    this.joH = ((MMFormInputView)findViewById(2131301558));
-    this.joI = ((MMFormInputView)findViewById(2131301577));
-    this.joF = ((MMClearEditText)this.joH.getContentEditText());
-    this.joF.setFocusableInTouchMode(false);
-    this.joF.setOnTouchListener(new View.OnTouchListener()
+    this.kmR = ((MMFormInputView)findViewById(2131303776));
+    TextView localTextView = (TextView)findViewById(2131303812);
+    if (WeChatBrands.AppInfo.current().isMainland())
     {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(128771);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/SimpleLoginUI$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
-        SimpleLoginUI.c(SimpleLoginUI.this).setFocusableInTouchMode(true);
-        boolean bool = SimpleLoginUI.c(SimpleLoginUI.this).getDefaultOnTouchListener().onTouch(paramAnonymousView, paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/account/ui/SimpleLoginUI$4", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(128771);
-        return bool;
-      }
-    });
-    this.joG = ((MMClearEditText)this.joI.getContentEditText());
-    this.joG.setFocusableInTouchMode(false);
-    this.joG.setOnTouchListener(new View.OnTouchListener()
+      this.kmR.setHint(2131762484);
+      localTextView.setText(2131762504);
+    }
+    for (;;)
     {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      this.kmS = ((MMFormInputView)findViewById(2131303805));
+      this.kmP = ((MMClearEditText)this.kmR.getContentEditText());
+      this.kmP.setFocusableInTouchMode(false);
+      this.kmP.setOnTouchListener(new View.OnTouchListener()
       {
-        AppMethodBeat.i(128772);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/SimpleLoginUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
-        SimpleLoginUI.d(SimpleLoginUI.this).setFocusableInTouchMode(true);
-        SimpleLoginUI.c(SimpleLoginUI.this).setFocusableInTouchMode(false);
-        boolean bool = SimpleLoginUI.d(SimpleLoginUI.this).getDefaultOnTouchListener().onTouch(paramAnonymousView, paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/account/ui/SimpleLoginUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(128772);
-        return bool;
-      }
-    });
-    com.tencent.mm.ui.tools.b.c.d(this.joG).afD(16).a(null);
-    this.joJ = ((Button)findViewById(2131301562));
-    this.joJ.setEnabled(false);
-    this.joF.addTextChangedListener(this.awu);
-    this.joG.addTextChangedListener(this.awu);
-    this.joG.setOnEditorActionListener(new TextView.OnEditorActionListener()
-    {
-      public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
-      {
-        AppMethodBeat.i(128773);
-        if ((paramAnonymousInt == 6) || (paramAnonymousInt == 5))
+        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
         {
-          SimpleLoginUI.b(SimpleLoginUI.this);
+          AppMethodBeat.i(128771);
+          SimpleLoginUI.c(SimpleLoginUI.this).setFocusableInTouchMode(true);
+          boolean bool = SimpleLoginUI.c(SimpleLoginUI.this).getDefaultOnTouchListener().onTouch(paramAnonymousView, paramAnonymousMotionEvent);
+          AppMethodBeat.o(128771);
+          return bool;
+        }
+      });
+      this.kmQ = ((MMClearEditText)this.kmS.getContentEditText());
+      this.kmQ.setFocusableInTouchMode(false);
+      this.kmQ.setOnTouchListener(new View.OnTouchListener()
+      {
+        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        {
+          AppMethodBeat.i(128772);
+          SimpleLoginUI.d(SimpleLoginUI.this).setFocusableInTouchMode(true);
+          SimpleLoginUI.c(SimpleLoginUI.this).setFocusableInTouchMode(false);
+          boolean bool = SimpleLoginUI.d(SimpleLoginUI.this).getDefaultOnTouchListener().onTouch(paramAnonymousView, paramAnonymousMotionEvent);
+          AppMethodBeat.o(128772);
+          return bool;
+        }
+      });
+      com.tencent.mm.ui.tools.b.c.f(this.kmQ).aoq(16).a(null);
+      this.kmT = ((Button)findViewById(2131303784));
+      this.kmT.setEnabled(false);
+      this.kmP.addTextChangedListener(this.aws);
+      this.kmQ.addTextChangedListener(this.aws);
+      this.kmQ.setOnEditorActionListener(new TextView.OnEditorActionListener()
+      {
+        public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
+        {
+          AppMethodBeat.i(128773);
+          if ((paramAnonymousInt == 6) || (paramAnonymousInt == 5))
+          {
+            SimpleLoginUI.b(SimpleLoginUI.this);
+            AppMethodBeat.o(128773);
+            return true;
+          }
           AppMethodBeat.o(128773);
-          return true;
+          return false;
         }
-        AppMethodBeat.o(128773);
-        return false;
-      }
-    });
-    this.joG.setOnKeyListener(new View.OnKeyListener()
-    {
-      public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
+      });
+      this.kmQ.setOnKeyListener(new View.OnKeyListener()
       {
-        AppMethodBeat.i(128774);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        localb.mu(paramAnonymousInt);
-        localb.bd(paramAnonymousKeyEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/SimpleLoginUI$7", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
-        if ((66 == paramAnonymousInt) && (paramAnonymousKeyEvent.getAction() == 0))
+        public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
         {
-          SimpleLoginUI.b(SimpleLoginUI.this);
-          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/account/ui/SimpleLoginUI$7", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
+          AppMethodBeat.i(128774);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bm(paramAnonymousView);
+          localb.pH(paramAnonymousInt);
+          localb.bm(paramAnonymousKeyEvent);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/SimpleLoginUI$7", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
+          if ((66 == paramAnonymousInt) && (paramAnonymousKeyEvent.getAction() == 0))
+          {
+            SimpleLoginUI.b(SimpleLoginUI.this);
+            com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/account/ui/SimpleLoginUI$7", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
+            AppMethodBeat.o(128774);
+            return true;
+          }
+          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/account/ui/SimpleLoginUI$7", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
           AppMethodBeat.o(128774);
+          return false;
+        }
+      });
+      this.kmb = ((ResizeLayout)findViewById(2131307029));
+      this.kmW = ((MMKeyboardUperView)findViewById(2131307332));
+      this.kmb.setOnSizeChanged(new ResizeLayout.a()
+      {
+        public final void bpj()
+        {
+          AppMethodBeat.i(128776);
+          SimpleLoginUI.e(SimpleLoginUI.this).post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(128775);
+              SimpleLoginUI.e(SimpleLoginUI.this).fullScroll(130);
+              AppMethodBeat.o(128775);
+            }
+          });
+          AppMethodBeat.o(128776);
+        }
+      });
+      this.kmW.setOnTouchListener(new View.OnTouchListener()
+      {
+        public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+        {
+          AppMethodBeat.i(128777);
+          SimpleLoginUI.this.hideVKB();
+          AppMethodBeat.o(128777);
+          return false;
+        }
+      });
+      findViewById(2131303791).setVisibility(8);
+      setMMTitle(2131762540);
+      setBackBtn(new MenuItem.OnMenuItemClickListener()
+      {
+        public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+        {
+          AppMethodBeat.i(128759);
+          SimpleLoginUI.f(SimpleLoginUI.this);
+          AppMethodBeat.o(128759);
           return true;
         }
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/account/ui/SimpleLoginUI$7", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z");
-        AppMethodBeat.o(128774);
-        return false;
-      }
-    });
-    this.jnT = ((ResizeLayout)findViewById(2131304133));
-    this.joM = ((MMKeyboardUperView)findViewById(2131304370));
-    this.jnT.setOnSizeChanged(new ResizeLayout.a()
-    {
-      public final void aUw()
+      });
+      this.kjv = getIntent().getStringExtra("auth_ticket");
+      if (!Util.isNullOrNil(this.kjv))
       {
-        AppMethodBeat.i(128776);
-        SimpleLoginUI.e(SimpleLoginUI.this).post(new Runnable()
+        this.kmP.setText(Util.nullAsNil(g.bpk()));
+        this.kmQ.setText(Util.nullAsNil(g.bpl()));
+        new MMHandler().postDelayed(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(128775);
-            SimpleLoginUI.e(SimpleLoginUI.this).fullScroll(130);
-            AppMethodBeat.o(128775);
+            AppMethodBeat.i(128760);
+            SimpleLoginUI.b(SimpleLoginUI.this);
+            AppMethodBeat.o(128760);
           }
-        });
-        AppMethodBeat.o(128776);
+        }, 500L);
       }
-    });
-    this.joM.setOnTouchListener(new View.OnTouchListener()
-    {
-      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(128777);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/SimpleLoginUI$9", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
-        SimpleLoginUI.this.hideVKB();
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/account/ui/SimpleLoginUI$9", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-        AppMethodBeat.o(128777);
-        return false;
+      if (ChannelUtil.shouldShowGprsAlert) {
+        com.tencent.mm.plugin.account.a.a.jRu.t(this);
       }
-    });
-    findViewById(2131301569).setVisibility(8);
-    setMMTitle(2131760787);
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
+      this.kmT.setOnClickListener(new View.OnClickListener()
       {
-        AppMethodBeat.i(128759);
-        SimpleLoginUI.f(SimpleLoginUI.this);
-        AppMethodBeat.o(128759);
-        return true;
-      }
-    });
-    this.jlr = getIntent().getStringExtra("auth_ticket");
-    if (!bu.isNullOrNil(this.jlr))
-    {
-      this.joF.setText(bu.nullAsNil(f.aUx()));
-      this.joG.setText(bu.nullAsNil(f.aUy()));
-      new aq().postDelayed(new Runnable()
-      {
-        public final void run()
+        public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(128760);
+          AppMethodBeat.i(128761);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/SimpleLoginUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           SimpleLoginUI.b(SimpleLoginUI.this);
-          AppMethodBeat.o(128760);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/SimpleLoginUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(128761);
         }
-      }, 500L);
+      });
+      AppMethodBeat.o(128783);
+      return;
+      this.kmR.setHint(2131762485);
+      localTextView.setText(2131762505);
     }
-    if (k.IwK) {
-      com.tencent.mm.plugin.account.a.a.iUA.t(this);
-    }
-    this.joJ.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(128761);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/SimpleLoginUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        SimpleLoginUI.b(SimpleLoginUI.this);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/SimpleLoginUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(128761);
-      }
-    });
-    AppMethodBeat.o(128783);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -321,25 +321,25 @@ public class SimpleLoginUI
     if (paramIntent == null)
     {
       bool = true;
-      ae.d("MicroMsg.SimpleLoginUI", "onActivityResult, requestCode:%d, resultCode:%d, data==null:%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+      Log.d("MicroMsg.SimpleLoginUI", "onActivityResult, requestCode:%d, resultCode:%d, data==null:%b", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
       if ((paramInt2 != -1) || (paramInt1 != 1024) || (paramIntent == null)) {
         break label178;
       }
       str = paramIntent.getStringExtra("VoiceLoginAuthPwd");
       paramInt2 = paramIntent.getIntExtra("KVoiceHelpCode", 0);
-      bool = bu.isNullOrNil(str);
-      if (!bu.isNullOrNil(str)) {
+      bool = Util.isNullOrNil(str);
+      if (!Util.isNullOrNil(str)) {
         break label169;
       }
     }
     label169:
     for (paramInt1 = i;; paramInt1 = str.length())
     {
-      ae.d("MicroMsg.SimpleLoginUI", "onActivityResult, do voiceprint auth, authPwd is null:%b, authPwd.len:%d, lastErrCode:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      Log.d("MicroMsg.SimpleLoginUI", "onActivityResult, do voiceprint auth, authPwd is null:%b, authPwd.len:%d, lastErrCode:%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       if (paramInt2 != -217) {
         break label178;
       }
-      aUs();
+      bpf();
       AppMethodBeat.o(128789);
       return;
       bool = false;
@@ -353,23 +353,23 @@ public class SimpleLoginUI
   {
     AppMethodBeat.i(128779);
     super.onCreate(paramBundle);
-    paramBundle = getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.abv());
+    paramBundle = getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.aps());
     if (paramBundle.getBoolean("first_launch_weixin", true))
     {
       paramBundle.edit().putBoolean("first_launch_weixin", false).commit();
       XLogSetup.realSetupXlog();
     }
-    setMMTitle(2131755822);
-    if (com.tencent.mm.plugin.account.a.a.iUA != null) {
-      com.tencent.mm.plugin.account.a.a.iUA.MP();
+    setMMTitle(2131755908);
+    if (com.tencent.mm.plugin.account.a.a.jRu != null) {
+      com.tencent.mm.plugin.account.a.a.jRu.Xc();
     }
     initView();
-    com.tencent.mm.kernel.g.ajj().a(701, this);
-    com.tencent.mm.kernel.g.ajj().a(252, this);
-    if (!com.tencent.mm.pluginsdk.permission.b.aQ(this))
+    com.tencent.mm.kernel.g.azz().a(701, this);
+    com.tencent.mm.kernel.g.azz().a(252, this);
+    if (!com.tencent.mm.pluginsdk.permission.b.aW(this))
     {
       new Intent().addFlags(67108864);
-      com.tencent.mm.plugin.account.a.a.iUz.p(new Intent(), this);
+      com.tencent.mm.plugin.account.a.a.jRt.o(new Intent(), this);
     }
     AppMethodBeat.o(128779);
   }
@@ -377,8 +377,8 @@ public class SimpleLoginUI
   public void onDestroy()
   {
     AppMethodBeat.i(128781);
-    com.tencent.mm.kernel.g.ajj().b(701, this);
-    com.tencent.mm.kernel.g.ajj().b(252, this);
+    com.tencent.mm.kernel.g.azz().b(701, this);
+    com.tencent.mm.kernel.g.azz().b(252, this);
     super.onDestroy();
     AppMethodBeat.o(128781);
   }
@@ -388,7 +388,7 @@ public class SimpleLoginUI
     AppMethodBeat.i(128786);
     if (paramInt == 4)
     {
-      aSz();
+      bnm();
       AppMethodBeat.o(128786);
       return true;
     }
@@ -401,16 +401,16 @@ public class SimpleLoginUI
   {
     AppMethodBeat.i(128782);
     super.onNewIntent(paramIntent);
-    this.jlr = paramIntent.getStringExtra("auth_ticket");
+    this.kjv = paramIntent.getStringExtra("auth_ticket");
     paramIntent = getIntent().getExtras();
     if (paramIntent != null) {
-      this.jlr = paramIntent.getString("auth_ticket");
+      this.kjv = paramIntent.getString("auth_ticket");
     }
-    if (!bu.isNullOrNil(this.jlr))
+    if (!Util.isNullOrNil(this.kjv))
     {
-      this.joF.setText(bu.nullAsNil(f.aUx()));
-      this.joG.setText(bu.nullAsNil(f.aUy()));
-      new aq().postDelayed(new Runnable()
+      this.kmP.setText(Util.nullAsNil(g.bpk()));
+      this.kmQ.setText(Util.nullAsNil(g.bpl()));
+      new MMHandler().postDelayed(new Runnable()
       {
         public final void run()
         {
@@ -426,65 +426,65 @@ public class SimpleLoginUI
   public void onPause()
   {
     AppMethodBeat.i(128787);
-    if (this.fOC != null)
+    if (this.gtM != null)
     {
-      this.fOC.dismiss();
-      this.fOC = null;
+      this.gtM.dismiss();
+      this.gtM = null;
     }
     super.onPause();
-    com.tencent.mm.sdk.b.a.IvT.d(this.jmB);
+    EventCenter.instance.removeListener(this.kkK);
     AppMethodBeat.o(128787);
   }
   
   public void onResume()
   {
     AppMethodBeat.i(128780);
-    com.tencent.mm.sdk.b.a.IvT.c(this.jmB);
+    EventCenter.instance.addListener(this.kkK);
     super.onResume();
     AppMethodBeat.o(128780);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(128788);
-    ae.i("MicroMsg.SimpleLoginUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    ae.d("MicroMsg.SimpleLoginUI", "Scene Type " + paramn.getType());
-    if (this.fOC != null)
+    Log.i("MicroMsg.SimpleLoginUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    Log.d("MicroMsg.SimpleLoginUI", "Scene Type " + paramq.getType());
+    if (this.gtM != null)
     {
-      this.fOC.dismiss();
-      this.fOC = null;
+      this.gtM.dismiss();
+      this.gtM = null;
     }
-    this.dLz = ((com.tencent.mm.modelsimple.t)paramn).aLh();
+    this.edo = ((com.tencent.mm.modelsimple.t)paramq).bfk();
     int i;
-    if ((paramn.getType() == 252) || (paramn.getType() == 701))
+    if ((paramq.getType() == 252) || (paramq.getType() == 701))
     {
-      this.jnl.joz = ((com.tencent.mm.modelsimple.t)paramn).getSecCodeType();
-      this.jnl.jfp = ((com.tencent.mm.modelsimple.t)paramn).aLi();
-      this.jnl.jfo = ((com.tencent.mm.modelsimple.t)paramn).aLj();
-      this.jnl.jfq = ((com.tencent.mm.modelsimple.t)paramn).aLk();
+      this.klt.kmJ = ((com.tencent.mm.modelsimple.t)paramq).getSecCodeType();
+      this.klt.kds = ((com.tencent.mm.modelsimple.t)paramq).bfl();
+      this.klt.kdr = ((com.tencent.mm.modelsimple.t)paramq).bfm();
+      this.klt.kdt = ((com.tencent.mm.modelsimple.t)paramq).bfn();
       if (paramInt2 == -205)
       {
-        this.jlr = ((com.tencent.mm.modelsimple.t)paramn).aHO();
-        this.jnP = ((com.tencent.mm.modelsimple.t)paramn).aLm();
-        this.jnp = ((com.tencent.mm.modelsimple.t)paramn).aLp();
+        this.kjv = ((com.tencent.mm.modelsimple.t)paramq).bbH();
+        this.klX = ((com.tencent.mm.modelsimple.t)paramq).bfp();
+        this.klx = ((com.tencent.mm.modelsimple.t)paramq).bfs();
       }
       if ((paramInt1 == 4) && ((paramInt2 == -16) || (paramInt2 == -17)))
       {
         i = 1;
-        com.tencent.mm.kernel.g.ajj().a(new bq(new bq.a()
+        com.tencent.mm.kernel.g.azz().a(new bu(new bu.a()
         {
-          public final void a(com.tencent.mm.network.e paramAnonymouse)
+          public final void a(com.tencent.mm.network.g paramAnonymousg)
           {
             AppMethodBeat.i(128766);
-            if (paramAnonymouse == null)
+            if (paramAnonymousg == null)
             {
               AppMethodBeat.o(128766);
               return;
             }
-            paramAnonymouse = paramAnonymouse.aFs();
-            com.tencent.mm.kernel.g.ajP();
+            paramAnonymousg = paramAnonymousg.aZh();
+            com.tencent.mm.kernel.g.aAf();
             int i = com.tencent.mm.kernel.a.getUin();
-            paramAnonymouse.a(new byte[0], new byte[0], new byte[0], i);
+            paramAnonymousg.a(new byte[0], new byte[0], new byte[0], i);
             AppMethodBeat.o(128766);
           }
         }), 0);
@@ -495,29 +495,29 @@ public class SimpleLoginUI
       if ((i != 0) || ((paramInt1 == 0) && (paramInt2 == 0)))
       {
         com.tencent.mm.kernel.a.unhold();
-        com.tencent.mm.platformtools.t.cW(this);
-        com.tencent.mm.platformtools.y.Jv(this.jnl.account);
+        com.tencent.mm.platformtools.t.dr(this);
+        com.tencent.mm.platformtools.y.St(this.klt.account);
         paramString = new com.tencent.mm.plugin.account.model.c(getContext(), new c.a()
         {
-          public final void aUb()
+          public final void boN()
           {
             String str = null;
             AppMethodBeat.i(128768);
             com.tencent.mm.pluginsdk.model.app.y localy = new com.tencent.mm.pluginsdk.model.app.y(SimpleLoginUI.this, new y.a()
             {
-              public final void aVl()
+              public final void onFinished()
               {
                 AppMethodBeat.i(128767);
                 SimpleLoginUI.j(SimpleLoginUI.this);
                 AppMethodBeat.o(128767);
               }
             });
-            Object localObject1 = ak.fox();
+            Object localObject1 = MMApplicationContext.getDefaultPreference();
             if (localObject1 != null)
             {
               localObject1 = ((SharedPreferences)localObject1).getString("key_app_ids_registion_while_not_login", "");
-              if (bu.isNullOrNil((String)localObject1)) {
-                ae.i("MicroMsg.AppUtil", "no saved appids while not login");
+              if (Util.isNullOrNil((String)localObject1)) {
+                Log.i("MicroMsg.AppUtil", "no saved appids while not login");
               }
             }
             else
@@ -541,7 +541,7 @@ public class SimpleLoginUI
               while (((Iterator)localObject1).hasNext())
               {
                 str = (String)((Iterator)localObject1).next();
-                localg = com.tencent.mm.pluginsdk.model.app.h.m(str, false, false);
+                localg = com.tencent.mm.pluginsdk.model.app.h.o(str, false, false);
                 if ((localg == null) || (localg.field_status == 0)) {
                   ((LinkedList)localObject2).add(str);
                 }
@@ -558,7 +558,7 @@ public class SimpleLoginUI
               {
                 localg = localObject2[i];
                 k = j;
-                if (!bu.isNullOrNil(localg))
+                if (!Util.isNullOrNil(localg))
                 {
                   ((LinkedList)localObject1).add(localg);
                   k = j + 1;
@@ -572,64 +572,64 @@ public class SimpleLoginUI
             label251:
             if ((localObject2 == null) || (((LinkedList)localObject2).isEmpty()))
             {
-              ae.i("MicroMsg.LoadAppInfoAfterLogin", "no saved appids, just callback");
-              com.tencent.mm.pluginsdk.model.app.q.fdP();
-              if (localy.FfD != null) {
-                localy.FfD.aVl();
+              Log.i("MicroMsg.LoadAppInfoAfterLogin", "no saved appids, just callback");
+              com.tencent.mm.pluginsdk.model.app.q.gna();
+              if (localy.JWu != null) {
+                localy.JWu.onFinished();
               }
               AppMethodBeat.o(128768);
               return;
             }
-            ae.i("MicroMsg.LoadAppInfoAfterLogin", "now do batch get appinfos, appid liSst size is :%d", new Object[] { Integer.valueOf(((LinkedList)localObject2).size()) });
-            com.tencent.mm.plugin.s.a.dBj().a(7, localy);
-            com.tencent.mm.plugin.s.a.dBf().bk((LinkedList)localObject2);
+            Log.i("MicroMsg.LoadAppInfoAfterLogin", "now do batch get appinfos, appid liSst size is :%d", new Object[] { Integer.valueOf(((LinkedList)localObject2).size()) });
+            com.tencent.mm.plugin.r.a.eAV().a(7, localy);
+            com.tencent.mm.plugin.r.a.eAR().bF((LinkedList)localObject2);
             if ((localy.mContext != null) && (!((Activity)localy.mContext).isFinishing()))
             {
               localObject1 = localy.mContext;
-              localy.mContext.getString(2131755906);
-              localy.tipDialog = com.tencent.mm.ui.base.h.b((Context)localObject1, localy.mContext.getString(2131755936), true, new y.1(localy));
+              localy.mContext.getString(2131755998);
+              localy.tipDialog = com.tencent.mm.ui.base.h.a((Context)localObject1, localy.mContext.getString(2131756029), true, new y.1(localy));
               AppMethodBeat.o(128768);
               return;
             }
-            if (localy.FfD != null) {
-              localy.FfD.aVl();
+            if (localy.JWu != null) {
+              localy.JWu.onFinished();
             }
-            ae.e("MicroMsg.LoadAppInfoAfterLogin", "dz[loadAppInfo:catch the null window for progress bar");
+            Log.e("MicroMsg.LoadAppInfoAfterLogin", "dz[loadAppInfo:catch the null window for progress bar");
             AppMethodBeat.o(128768);
           }
         });
-        paramString.dpw = com.tencent.mm.plugin.account.a.a.iUA.a(paramString);
-        if (paramString.dpw == null)
+        paramString.dGJ = com.tencent.mm.plugin.account.a.a.jRu.a(paramString);
+        if (paramString.dGJ == null)
         {
-          if (paramString.jkm != null) {
-            paramString.jkm.aUb();
+          if (paramString.kio != null) {
+            paramString.kio.boN();
           }
           AppMethodBeat.o(128788);
           return;
         }
-        if (paramString.dpw.getType() == 139) {
-          com.tencent.mm.kernel.g.ajj().a(139, paramString);
+        if (paramString.dGJ.getType() == 139) {
+          com.tencent.mm.kernel.g.azz().a(139, paramString);
         }
         for (;;)
         {
-          com.tencent.mm.kernel.g.ajj().a(paramString.dpw, 0);
-          paramn = paramString.context;
-          paramString.context.getString(2131755906);
-          paramString.tipDialog = com.tencent.mm.ui.base.h.b(paramn, paramString.context.getString(2131755805), true, new c.1(paramString));
+          com.tencent.mm.kernel.g.azz().a(paramString.dGJ, 0);
+          paramq = paramString.context;
+          paramString.context.getString(2131755998);
+          paramString.tipDialog = com.tencent.mm.ui.base.h.a(paramq, paramString.context.getString(2131755887), true, new c.1(paramString));
           AppMethodBeat.o(128788);
           return;
-          if (paramString.dpw.getType() == 138) {
-            com.tencent.mm.kernel.g.ajj().a(138, paramString);
+          if (paramString.dGJ.getType() == 138) {
+            com.tencent.mm.kernel.g.azz().a(138, paramString);
           }
         }
       }
       if (paramInt2 == -217)
       {
-        com.tencent.mm.platformtools.y.a(this, com.tencent.mm.platformtools.e.a((com.tencent.mm.modelsimple.t)paramn), paramInt2);
+        com.tencent.mm.platformtools.y.a(this, com.tencent.mm.platformtools.e.a((com.tencent.mm.modelsimple.t)paramq), paramInt2);
         AppMethodBeat.o(128788);
         return;
       }
-      if (com.tencent.mm.plugin.account.a.a.iUA.a(getContext(), paramInt1, paramInt2, paramString)) {
+      if (com.tencent.mm.plugin.account.a.a.jRu.a(getContext(), paramInt1, paramInt2, paramString)) {
         i = 1;
       }
       while (i != 0)
@@ -643,51 +643,51 @@ public class SimpleLoginUI
           i = 0;
           break;
         case -1: 
-          if (com.tencent.mm.kernel.g.ajj().aFd() == 5)
+          if (com.tencent.mm.kernel.g.azz().aYS() == 5)
           {
-            com.tencent.mm.ui.base.h.l(this, 2131761537, 2131761536);
+            com.tencent.mm.ui.base.h.n(this, 2131763503, 2131763502);
             i = 1;
           }
           break;
         case -30: 
         case -4: 
         case -3: 
-          com.tencent.mm.ui.base.h.l(this, 2131758459, 2131760766);
+          com.tencent.mm.ui.base.h.n(this, 2131758757, 2131762516);
           i = 1;
           break;
         case -9: 
-          com.tencent.mm.ui.base.h.l(this, 2131760765, 2131760766);
+          com.tencent.mm.ui.base.h.n(this, 2131762515, 2131762516);
           i = 1;
           break;
         case -72: 
-          com.tencent.mm.ui.base.h.l(getContext(), 2131762374, 2131755906);
+          com.tencent.mm.ui.base.h.n(getContext(), 2131764440, 2131755998);
           i = 1;
           break;
         case -75: 
-          com.tencent.mm.platformtools.y.de(getContext());
+          com.tencent.mm.platformtools.y.dz(getContext());
           i = 1;
           break;
         case -311: 
         case -310: 
         case -6: 
-          if (this.jfm == null) {
-            this.jfm = SecurityImage.a.a(getContext(), this.jnl.joz, this.jnl.jfo, this.jnl.jfp, this.jnl.jfq, new DialogInterface.OnClickListener()
+          if (this.kdp == null) {
+            this.kdp = SecurityImage.a.a(getContext(), this.klt.kmJ, this.klt.kdr, this.klt.kds, this.klt.kdt, new DialogInterface.OnClickListener()
             {
               public final void onClick(final DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
               {
                 AppMethodBeat.i(128764);
-                ae.d("MicroMsg.SimpleLoginUI", "imgSid:" + SimpleLoginUI.g(SimpleLoginUI.this).jfp + " img len" + SimpleLoginUI.g(SimpleLoginUI.this).jfo.length + " " + com.tencent.mm.compatible.util.f.abr());
-                paramAnonymousDialogInterface = new com.tencent.mm.modelsimple.t(SimpleLoginUI.g(SimpleLoginUI.this).account, SimpleLoginUI.g(SimpleLoginUI.this).jfn, SimpleLoginUI.g(SimpleLoginUI.this).joz, SimpleLoginUI.h(SimpleLoginUI.this).getSecImgCode(), SimpleLoginUI.h(SimpleLoginUI.this).getSecImgSid(), SimpleLoginUI.h(SimpleLoginUI.this).getSecImgEncryptKey(), 0, "", false, false);
-                com.tencent.mm.kernel.g.ajj().a(paramAnonymousDialogInterface, 0);
+                Log.d("MicroMsg.SimpleLoginUI", "imgSid:" + SimpleLoginUI.g(SimpleLoginUI.this).kds + " img len" + SimpleLoginUI.g(SimpleLoginUI.this).kdr.length + " " + f.apq());
+                paramAnonymousDialogInterface = new com.tencent.mm.modelsimple.t(SimpleLoginUI.g(SimpleLoginUI.this).account, SimpleLoginUI.g(SimpleLoginUI.this).kdq, SimpleLoginUI.g(SimpleLoginUI.this).kmJ, SimpleLoginUI.h(SimpleLoginUI.this).getSecImgCode(), SimpleLoginUI.h(SimpleLoginUI.this).getSecImgSid(), SimpleLoginUI.h(SimpleLoginUI.this).getSecImgEncryptKey(), 0, "", false, false);
+                com.tencent.mm.kernel.g.azz().a(paramAnonymousDialogInterface, 0);
                 SimpleLoginUI localSimpleLoginUI1 = SimpleLoginUI.this;
                 SimpleLoginUI localSimpleLoginUI2 = SimpleLoginUI.this;
-                SimpleLoginUI.this.getString(2131755906);
-                SimpleLoginUI.a(localSimpleLoginUI1, com.tencent.mm.ui.base.h.b(localSimpleLoginUI2, SimpleLoginUI.this.getString(2131760781), true, new DialogInterface.OnCancelListener()
+                SimpleLoginUI.this.getString(2131755998);
+                SimpleLoginUI.a(localSimpleLoginUI1, com.tencent.mm.ui.base.h.a(localSimpleLoginUI2, SimpleLoginUI.this.getString(2131762532), true, new DialogInterface.OnCancelListener()
                 {
                   public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
                   {
                     AppMethodBeat.i(128763);
-                    com.tencent.mm.kernel.g.ajj().a(paramAnonymousDialogInterface);
+                    com.tencent.mm.kernel.g.azz().a(paramAnonymousDialogInterface);
                     AppMethodBeat.o(128763);
                   }
                 }));
@@ -701,19 +701,20 @@ public class SimpleLoginUI
                 SimpleLoginUI.i(SimpleLoginUI.this);
                 AppMethodBeat.o(128765);
               }
-            }, this.jnl);
+            }, this.klt);
           }
           for (;;)
           {
             i = 1;
             break;
-            ae.d("MicroMsg.SimpleLoginUI", "imgSid:" + this.jnl.jfp + " img len" + this.jnl.jfo.length + " " + com.tencent.mm.compatible.util.f.abr());
-            this.jfm.b(this.jnl.joz, this.jnl.jfo, this.jnl.jfp, this.jnl.jfq);
+            Log.d("MicroMsg.SimpleLoginUI", "imgSid:" + this.klt.kds + " img len" + this.klt.kdr.length + " " + f.apq());
+            this.kdp.b(this.klt.kmJ, this.klt.kdr, this.klt.kds, this.klt.kdt);
           }
+        case -2023: 
         case -100: 
           com.tencent.mm.kernel.a.hold();
-          com.tencent.mm.kernel.g.ajP();
-          com.tencent.mm.ui.base.h.a(this, com.tencent.mm.kernel.a.aiH(), getString(2131755906), new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
+          com.tencent.mm.kernel.g.aAf();
+          com.tencent.mm.ui.base.h.a(this, com.tencent.mm.kernel.a.ayX(), getString(2131755998), new DialogInterface.OnClickListener()new DialogInterface.OnCancelListener
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           }, new DialogInterface.OnCancelListener()
@@ -723,19 +724,19 @@ public class SimpleLoginUI
           i = 1;
           break;
         case -205: 
-          ae.i("MicroMsg.SimpleLoginUI", "summerphone MM_ERR_QQ_OK_NEED_MOBILE authTicket[%s], closeShowStyle[%s]", new Object[] { bu.aSM(this.jlr), this.jnp });
-          f.a(this.jnl);
-          paramn = new Intent();
-          paramn.putExtra("auth_ticket", this.jlr);
-          paramn.putExtra("binded_mobile", this.jnP);
-          paramn.putExtra("close_safe_device_style", this.jnp);
-          paramn.putExtra("from_source", 3);
-          com.tencent.mm.plugin.account.a.a.iUz.g(this, paramn);
+          Log.i("MicroMsg.SimpleLoginUI", "summerphone MM_ERR_QQ_OK_NEED_MOBILE authTicket[%s], closeShowStyle[%s]", new Object[] { Util.secPrint(this.kjv), this.klx });
+          g.a(this.klt);
+          paramq = new Intent();
+          paramq.putExtra("auth_ticket", this.kjv);
+          paramq.putExtra("binded_mobile", this.klX);
+          paramq.putExtra("close_safe_device_style", this.klx);
+          paramq.putExtra("from_source", 3);
+          com.tencent.mm.plugin.account.a.a.jRt.g(this, paramq);
           i = 1;
           break;
         case -140: 
-          if (!bu.isNullOrNil(this.dLz)) {
-            com.tencent.mm.platformtools.y.n(this, paramString, this.dLz);
+          if (!Util.isNullOrNil(this.edo)) {
+            com.tencent.mm.platformtools.y.m(this, paramString, this.edo);
           }
           i = 1;
           break;
@@ -744,13 +745,13 @@ public class SimpleLoginUI
           i = 1;
         }
       }
-      paramString = com.tencent.mm.h.a.uU(paramString);
+      paramString = com.tencent.mm.h.a.Dk(paramString);
       if ((paramString != null) && (paramString.a(this, null, null)))
       {
         AppMethodBeat.o(128788);
         return;
       }
-      Toast.makeText(this, getString(2131759490, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
+      Toast.makeText(this, getString(2131760805, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }), 0).show();
       AppMethodBeat.o(128788);
       return;
       i = 0;
@@ -765,7 +766,7 @@ public class SimpleLoginUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.SimpleLoginUI
  * JD-Core Version:    0.7.0.1
  */

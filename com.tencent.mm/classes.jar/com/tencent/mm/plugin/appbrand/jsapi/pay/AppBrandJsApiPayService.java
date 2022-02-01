@@ -8,24 +8,24 @@ import android.os.Looper;
 import android.os.ResultReceiver;
 import android.text.TextUtils;
 import com.tencent.luggage.a.e;
-import com.tencent.luggage.h.e.b;
+import com.tencent.luggage.h.f.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.g;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.app.j;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
 import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import d.g.a.b;
-import d.z;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import kotlin.g.a.b;
+import kotlin.x;
 import org.json.JSONObject;
 
 public enum AppBrandJsApiPayService
@@ -34,9 +34,9 @@ public enum AppBrandJsApiPayService
   static
   {
     AppMethodBeat.i(46710);
-    lgh = new AppBrandJsApiPayService("INSTANCE");
-    lgi = new AppBrandJsApiPayService[] { lgh };
-    g.LA("com.tencent.mm.plugin.wxpaysdk.PluginWxPaySdk");
+    mlD = new AppBrandJsApiPayService("INSTANCE");
+    mlE = new AppBrandJsApiPayService[] { mlD };
+    j.UJ("com.tencent.mm.plugin.wxpaysdk.PluginWxPaySdk");
     AppMethodBeat.o(46710);
   }
   
@@ -46,10 +46,10 @@ public enum AppBrandJsApiPayService
   {
     AppMethodBeat.i(174861);
     paramAppBrandStatObject = new WalletJsapiData(paramJSONObject);
-    paramAppBrandStatObject.dpc = 16;
+    paramAppBrandStatObject.payChannel = 16;
     paramJSONObject = new MMActivity.a()
     {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(174855);
         if (paramAnonymousInt1 != (AppBrandJsApiPayService.this.hashCode() & 0xFFFF))
@@ -93,7 +93,7 @@ public enum AppBrandJsApiPayService
     paramb.putExtra("nonceStr", paramAppBrandStatObject.nonceStr);
     paramb.putExtra("packageExt", paramAppBrandStatObject.packageExt);
     paramb.putExtra("signtype", paramAppBrandStatObject.signType);
-    paramb.putExtra("paySignature", paramAppBrandStatObject.dDF);
+    paramb.putExtra("paySignature", paramAppBrandStatObject.dVt);
     paramb.putExtra("key_static_from_scene", 100004);
     paramb.putExtra("url", paramAppBrandStatObject.url);
     AppBrandJsApiPayUtils.a(paramActivity, new b() {});
@@ -105,7 +105,7 @@ public enum AppBrandJsApiPayService
     AppMethodBeat.i(174860);
     AppBrandJsApiPayUtils.a(paramActivity, new b()
     {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(46700);
         if (paramAnonymousInt1 != (AppBrandJsApiPayService.this.hashCode() & 0xFFFF))
@@ -130,74 +130,74 @@ public enum AppBrandJsApiPayService
     AppMethodBeat.o(174860);
   }
   
-  public final boolean startPay(Activity paramActivity, final h paramh, final AppBrandStatObject paramAppBrandStatObject, final JSONObject paramJSONObject, final a.b paramb, PString paramPString)
+  public final boolean startPay(Activity paramActivity, final k paramk, final AppBrandStatObject paramAppBrandStatObject, final JSONObject paramJSONObject, final a.b paramb, PString paramPString)
   {
     AppMethodBeat.i(174858);
     final WalletJsapiData localWalletJsapiData = new WalletJsapiData(paramJSONObject);
     if (paramAppBrandStatObject != null)
     {
-      localWalletJsapiData.dpc = WalletJsapiData.jv(paramAppBrandStatObject.scene, paramAppBrandStatObject.dLd);
-      localWalletJsapiData.FEB = WalletJsapiData.ju(paramAppBrandStatObject.scene, paramAppBrandStatObject.dLd);
+      localWalletJsapiData.payChannel = WalletJsapiData.kH(paramAppBrandStatObject.scene, paramAppBrandStatObject.ecS);
+      localWalletJsapiData.KxG = WalletJsapiData.kG(paramAppBrandStatObject.scene, paramAppBrandStatObject.ecS);
     }
-    localWalletJsapiData.dDH = 46;
+    localWalletJsapiData.dVv = 46;
     paramAppBrandStatObject = paramJSONObject.optString("adUxInfo");
-    localWalletJsapiData.FEJ = paramAppBrandStatObject;
-    com.tencent.mm.plugin.t.a.t("AppBrandRuntime", "requestPayment", paramAppBrandStatObject, "data");
+    localWalletJsapiData.KxO = paramAppBrandStatObject;
+    com.tencent.mm.plugin.s.a.x("AppBrandRuntime", "requestPayment", paramAppBrandStatObject, "data");
     paramPString.value = localWalletJsapiData.packageExt;
-    if (com.tencent.mm.plugin.appbrand.jsapi.nfc.a.a.c.u(paramh)) {}
-    for (paramAppBrandStatObject = (com.tencent.mm.plugin.appbrand.jsapi.nfc.c)e.K(com.tencent.mm.plugin.appbrand.jsapi.nfc.c.class);; paramAppBrandStatObject = null)
+    if (com.tencent.mm.plugin.appbrand.jsapi.nfc.rw.logic.c.u(paramk)) {}
+    for (paramAppBrandStatObject = (com.tencent.mm.plugin.appbrand.jsapi.nfc.c)e.M(com.tencent.mm.plugin.appbrand.jsapi.nfc.c.class);; paramAppBrandStatObject = null)
     {
       int i = hashCode();
       paramJSONObject = new Object()
       {
-        AppBrandJsApiPayService.1WxPayActivityResultAdapter lgx;
+        AppBrandJsApiPayService.1WxPayActivityResultAdapter mlT;
         
         final void a(int paramAnonymousInt, Intent paramAnonymousIntent, AppBrandJsApiPayService.PayResultCallbackReason paramAnonymousPayResultCallbackReason)
         {
-          AppMethodBeat.i(222646);
-          paramAnonymousIntent = new AppBrandJsApiPayService.1WxPayActivityResultAdapter(this.lgn, paramAnonymousInt, paramAnonymousIntent, paramAnonymousPayResultCallbackReason);
-          if ((this.lgx == null) || (this.lgx.a(paramAnonymousIntent)))
+          AppMethodBeat.i(226955);
+          paramAnonymousIntent = new AppBrandJsApiPayService.1WxPayActivityResultAdapter(this.mlJ, paramAnonymousInt, paramAnonymousIntent, paramAnonymousPayResultCallbackReason);
+          if ((this.mlT == null) || (this.mlT.a(paramAnonymousIntent)))
           {
-            this.lgx = paramAnonymousIntent;
-            if ((AppBrandJsApiPayService.1WxPayActivityResultAdapter.b(this.lgx) == AppBrandJsApiPayService.PayResultCallbackReason.lgz) && ((paramb instanceof a.c)))
+            this.mlT = paramAnonymousIntent;
+            if ((AppBrandJsApiPayService.1WxPayActivityResultAdapter.b(this.mlT) == AppBrandJsApiPayService.PayResultCallbackReason.mlV) && ((paramb instanceof a.c)))
             {
-              paramAnonymousIntent = this.lgx.bmL();
-              ((a.c)paramb).b(paramAnonymousIntent.result, paramAnonymousIntent.lgw, paramAnonymousIntent.values);
+              paramAnonymousIntent = this.mlT.bIk();
+              ((a.c)paramb).b(paramAnonymousIntent.result, paramAnonymousIntent.mlS, paramAnonymousIntent.values);
             }
           }
-          AppMethodBeat.o(222646);
+          AppMethodBeat.o(226955);
         }
       };
-      localWalletJsapiData.FEL = new ResultReceiver(paramJSONObject)
+      localWalletJsapiData.KxQ = new ResultReceiver(paramJSONObject)
       {
-        private final AppBrandJsApiPayService.1WxPayResultDispatcher lgt;
+        private final AppBrandJsApiPayService.1WxPayResultDispatcher mlP;
         
         protected void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(180264);
           paramAnonymousBundle.setClassLoader(WalletJsapiData.class.getClassLoader());
-          this.lgt.a(paramAnonymousInt, new Intent().putExtras(paramAnonymousBundle), AppBrandJsApiPayService.PayResultCallbackReason.lgz);
+          this.mlP.a(paramAnonymousInt, new Intent().putExtras(paramAnonymousBundle), AppBrandJsApiPayService.PayResultCallbackReason.mlV);
           AppMethodBeat.o(180264);
         }
       };
       if (paramAppBrandStatObject != null) {
-        paramAppBrandStatObject.bmm();
+        paramAppBrandStatObject.bHL();
       }
-      boolean bool = AppBrandJsApiPayUtils.a(paramActivity, new b()new e.b {}, new e.b()
+      boolean bool = AppBrandJsApiPayUtils.a(paramActivity, new b()new f.b {}, new f.b()
       {
         public final void a(int paramAnonymousInt, Intent paramAnonymousIntent)
         {
-          AppMethodBeat.i(222647);
-          paramJSONObject.a(paramAnonymousInt, paramAnonymousIntent, AppBrandJsApiPayService.PayResultCallbackReason.lgA);
+          AppMethodBeat.i(226956);
+          paramJSONObject.a(paramAnonymousInt, paramAnonymousIntent, AppBrandJsApiPayService.PayResultCallbackReason.mlW);
           paramAnonymousIntent = paramJSONObject;
-          if (paramAnonymousIntent.kFI != null) {
-            paramAnonymousIntent.kFI.bml();
+          if (paramAnonymousIntent.lKj != null) {
+            paramAnonymousIntent.lKj.bHK();
           }
-          AppBrandJsApiPayService.1WxPayCallbackResult local1WxPayCallbackResult = ((AppBrandJsApiPayService.1WxPayActivityResultAdapter)Objects.requireNonNull(paramAnonymousIntent.lgx)).bmL();
-          if (paramAnonymousIntent.lgl != null) {
-            paramAnonymousIntent.lgl.a(local1WxPayCallbackResult.result, local1WxPayCallbackResult.lgw, local1WxPayCallbackResult.values);
+          AppBrandJsApiPayService.1WxPayCallbackResult local1WxPayCallbackResult = ((AppBrandJsApiPayService.1WxPayActivityResultAdapter)Objects.requireNonNull(paramAnonymousIntent.mlT)).bIk();
+          if (paramAnonymousIntent.mlH != null) {
+            paramAnonymousIntent.mlH.a(local1WxPayCallbackResult.result, local1WxPayCallbackResult.mlS, local1WxPayCallbackResult.values);
           }
-          AppMethodBeat.o(222647);
+          AppMethodBeat.o(226956);
         }
       });
       AppMethodBeat.o(174858);
@@ -218,13 +218,13 @@ public enum AppBrandJsApiPayService
     paramJSONObject = new WalletJsapiData(paramJSONObject);
     if (paramAppBrandStatObject != null)
     {
-      paramJSONObject.dpc = WalletJsapiData.jv(paramAppBrandStatObject.scene, paramAppBrandStatObject.dLd);
-      paramJSONObject.FEB = WalletJsapiData.ju(paramAppBrandStatObject.scene, paramAppBrandStatObject.dLd);
+      paramJSONObject.payChannel = WalletJsapiData.kH(paramAppBrandStatObject.scene, paramAppBrandStatObject.ecS);
+      paramJSONObject.KxG = WalletJsapiData.kG(paramAppBrandStatObject.scene, paramAppBrandStatObject.ecS);
     }
-    paramJSONObject.dDH = 46;
+    paramJSONObject.dVv = 46;
     boolean bool = AppBrandJsApiPayUtils.a(paramActivity, new b()
     {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(46698);
         if (paramAnonymousInt1 != (AppBrandJsApiPayService.this.hashCode() & 0xFFFF))
@@ -235,8 +235,8 @@ public enum AppBrandJsApiPayService
         if (paramAnonymousInt2 == -1)
         {
           HashMap localHashMap = new HashMap();
-          String str = bu.bI(paramAnonymousIntent.getStringExtra("token"), "");
-          paramAnonymousIntent = bu.bI(paramAnonymousIntent.getStringExtra("bind_serial"), "");
+          String str = Util.nullAs(paramAnonymousIntent.getStringExtra("token"), "");
+          paramAnonymousIntent = Util.nullAs(paramAnonymousIntent.getStringExtra("bind_serial"), "");
           localHashMap.put("token", str);
           localHashMap.put("bindSerial", paramAnonymousIntent);
           if (paramb != null) {
@@ -260,7 +260,7 @@ public enum AppBrandJsApiPayService
     AppMethodBeat.i(174862);
     paramAppBrandStatObject = new MMActivity.a()
     {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(174857);
         if (paramAnonymousInt1 != (AppBrandJsApiPayService.this.hashCode() & 0xFFFF))
@@ -272,11 +272,11 @@ public enum AppBrandJsApiPayService
         {
           String str = "";
           if (paramAnonymousIntent != null) {
-            str = bu.bI(paramAnonymousIntent.getStringExtra("token"), "");
+            str = Util.nullAs(paramAnonymousIntent.getStringExtra("token"), "");
           }
           if (!TextUtils.isEmpty(str))
           {
-            ae.i("MicroMsg.AppBrandJsApiPayService", "checkPwdToken is valid, verifyWCPayPassword:ok");
+            Log.i("MicroMsg.AppBrandJsApiPayService", "checkPwdToken is valid, verifyWCPayPassword:ok");
             if (paramd != null)
             {
               paramd.p(true, str);
@@ -285,7 +285,7 @@ public enum AppBrandJsApiPayService
           }
           else
           {
-            ae.i("MicroMsg.AppBrandJsApiPayService", "checkPwdToken is empty, verifyWCPayPassword:fail");
+            Log.i("MicroMsg.AppBrandJsApiPayService", "checkPwdToken is empty, verifyWCPayPassword:fail");
             if (paramd != null) {
               paramd.p(false, null);
             }
@@ -306,7 +306,7 @@ public enum AppBrandJsApiPayService
     paramd.putExtra("nonceStr", paramJSONObject.nonceStr);
     paramd.putExtra("packageExt", paramJSONObject.packageExt);
     paramd.putExtra("signtype", paramJSONObject.signType);
-    paramd.putExtra("paySignature", paramJSONObject.dDF);
+    paramd.putExtra("paySignature", paramJSONObject.dVt);
     paramd.putExtra("url", paramJSONObject.url);
     paramd.putExtra("scene", 1);
     AppBrandJsApiPayUtils.a(paramActivity, new b() {});
@@ -317,11 +317,11 @@ public enum AppBrandJsApiPayService
   {
     static
     {
-      AppMethodBeat.i(222650);
-      lgz = new PayResultCallbackReason("SuccessAheadCallback", 0);
-      lgA = new PayResultCallbackReason("ActivityResult", 1);
-      lgB = new PayResultCallbackReason[] { lgz, lgA };
-      AppMethodBeat.o(222650);
+      AppMethodBeat.i(226959);
+      mlV = new PayResultCallbackReason("SuccessAheadCallback", 0);
+      mlW = new PayResultCallbackReason("ActivityResult", 1);
+      mlX = new PayResultCallbackReason[] { mlV, mlW };
+      AppMethodBeat.o(226959);
     }
     
     private PayResultCallbackReason() {}

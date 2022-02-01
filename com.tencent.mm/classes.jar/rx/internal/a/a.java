@@ -10,18 +10,18 @@ import rx.e.b;
 public final class a<T>
   extends b<T, T>
 {
-  static final e OuC;
-  final b<T> OuA;
-  private boolean OuB;
+  static final e Ukq;
+  final b<T> Uko;
+  private boolean Ukp;
   
   static
   {
     AppMethodBeat.i(90244);
-    OuC = new e()
+    Ukq = new e()
     {
-      public final void gC(Object paramAnonymousObject) {}
+      public final void gL(Object paramAnonymousObject) {}
       
-      public final void gDo() {}
+      public final void hQw() {}
       
       public final void onError(Throwable paramAnonymousThrowable) {}
     };
@@ -32,33 +32,33 @@ public final class a<T>
   {
     super(new a(paramb));
     AppMethodBeat.i(90239);
-    this.OuA = paramb;
+    this.Uko = paramb;
     AppMethodBeat.o(90239);
   }
   
-  private void gD(Object paramObject)
+  private void gM(Object paramObject)
   {
     AppMethodBeat.i(90240);
-    synchronized (this.OuA.OuE)
+    synchronized (this.Uko.Uks)
     {
-      this.OuA.OuG.add(paramObject);
-      if ((this.OuA.get() != null) && (!this.OuA.OuF))
+      this.Uko.Uku.add(paramObject);
+      if ((this.Uko.get() != null) && (!this.Uko.Ukt))
       {
-        this.OuB = true;
-        this.OuA.OuF = true;
+        this.Ukp = true;
+        this.Uko.Ukt = true;
       }
-      if (this.OuB)
+      if (this.Ukp)
       {
-        paramObject = this.OuA.OuG.poll();
+        paramObject = this.Uko.Uku.poll();
         if (paramObject != null) {
-          c.a((e)this.OuA.get(), paramObject);
+          c.a((e)this.Uko.get(), paramObject);
         }
       }
     }
     AppMethodBeat.o(90240);
   }
   
-  public static <T> a<T> gDw()
+  public static <T> a<T> hQE()
   {
     AppMethodBeat.i(90238);
     a locala = new a(new b());
@@ -66,70 +66,70 @@ public final class a<T>
     return locala;
   }
   
-  public final void gC(T paramT)
+  public final void gL(T paramT)
   {
     AppMethodBeat.i(90243);
-    if (this.OuB)
+    if (this.Ukp)
     {
-      ((e)this.OuA.get()).gC(paramT);
+      ((e)this.Uko.get()).gL(paramT);
       AppMethodBeat.o(90243);
       return;
     }
-    gD(c.gE(paramT));
+    gM(c.gN(paramT));
     AppMethodBeat.o(90243);
   }
   
-  public final void gDo()
+  public final void hQw()
   {
     AppMethodBeat.i(90241);
-    if (this.OuB)
+    if (this.Ukp)
     {
-      ((e)this.OuA.get()).gDo();
+      ((e)this.Uko.get()).hQw();
       AppMethodBeat.o(90241);
       return;
     }
-    gD(c.gDz());
+    gM(c.hQH());
     AppMethodBeat.o(90241);
   }
   
   public final void onError(Throwable paramThrowable)
   {
     AppMethodBeat.i(90242);
-    if (this.OuB)
+    if (this.Ukp)
     {
-      ((e)this.OuA.get()).onError(paramThrowable);
+      ((e)this.Uko.get()).onError(paramThrowable);
       AppMethodBeat.o(90242);
       return;
     }
-    gD(c.N(paramThrowable));
+    gM(c.P(paramThrowable));
     AppMethodBeat.o(90242);
   }
   
   static final class a<T>
     implements d.a<T>
   {
-    final a.b<T> OuA;
+    final a.b<T> Uko;
     
     public a(a.b<T> paramb)
     {
-      this.OuA = paramb;
+      this.Uko = paramb;
     }
   }
   
   static final class b<T>
     extends AtomicReference<e<? super T>>
   {
-    final Object OuE;
-    boolean OuF;
-    final ConcurrentLinkedQueue<Object> OuG;
-    final c<T> OuH;
+    final Object Uks;
+    boolean Ukt;
+    final ConcurrentLinkedQueue<Object> Uku;
+    final c<T> Ukv;
     
     b()
     {
       AppMethodBeat.i(90235);
-      this.OuE = new Object();
-      this.OuG = new ConcurrentLinkedQueue();
-      this.OuH = c.gDy();
+      this.Uks = new Object();
+      this.Uku = new ConcurrentLinkedQueue();
+      this.Ukv = c.hQG();
       AppMethodBeat.o(90235);
     }
   }

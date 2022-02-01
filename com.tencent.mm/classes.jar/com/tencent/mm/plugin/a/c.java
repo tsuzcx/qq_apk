@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.RandomAccessFile;
@@ -10,18 +10,18 @@ import java.util.Arrays;
 
 public final class c
 {
-  public static long B(byte[] paramArrayOfByte, int paramInt)
+  public static long D(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(133855);
     byte[] arrayOfByte = new byte[8];
     Arrays.fill(arrayOfByte, (byte)0);
     System.arraycopy(paramArrayOfByte, paramInt, arrayOfByte, 4, 4);
-    long l = an(arrayOfByte);
+    long l = aE(arrayOfByte);
     AppMethodBeat.o(133855);
     return l;
   }
   
-  public static boolean Jz(String paramString)
+  public static boolean Sx(String paramString)
   {
     AppMethodBeat.i(133852);
     if (isNullOrNil(paramString))
@@ -33,7 +33,7 @@ public final class c
     String str = null;
     try
     {
-      paramString = o.openRead(paramString);
+      paramString = s.openRead(paramString);
       str = paramString;
       localObject = paramString;
       byte[] arrayOfByte = new byte[8];
@@ -53,7 +53,7 @@ public final class c
         {
           for (;;)
           {
-            ae.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
           }
         }
       }
@@ -65,7 +65,7 @@ public final class c
       int j = readInt(arrayOfByte, 4);
       str = paramString;
       localObject = paramString;
-      int k = a.bkO;
+      int k = a.bkJ;
       if ((j == k) && (i > 0))
       {
         if (paramString != null) {}
@@ -79,7 +79,7 @@ public final class c
         {
           for (;;)
           {
-            ae.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
           }
         }
       }
@@ -94,7 +94,7 @@ public final class c
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
         }
       }
       try
@@ -107,14 +107,14 @@ public final class c
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.AtomUtil", localIOException, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.AtomUtil", localIOException, "", new Object[0]);
         }
       }
     }
     catch (Exception paramString)
     {
       localObject = str;
-      ae.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
       if (str != null) {}
       try
       {
@@ -126,7 +126,7 @@ public final class c
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.AtomUtil", paramString, "", new Object[0]);
         }
       }
     }
@@ -153,7 +153,7 @@ public final class c
           if (k != paramInt) {
             continue;
           }
-          localObject1 = i.d(j, k, paramRandomAccessFile.getFilePointer() - i);
+          localObject1 = i.f(j, k, paramRandomAccessFile.getFilePointer() - i);
         }
       }
       catch (Exception paramRandomAccessFile)
@@ -161,14 +161,14 @@ public final class c
         int i;
         int j;
         int k;
-        ae.printErrStackTrace("MicroMsg.AtomUtil", paramRandomAccessFile, "", new Object[0]);
-        ae.e("MicroMsg.AtomUtil", "find Atom error: " + paramRandomAccessFile.toString());
+        Log.printErrStackTrace("MicroMsg.AtomUtil", paramRandomAccessFile, "", new Object[0]);
+        Log.e("MicroMsg.AtomUtil", "find Atom error: " + paramRandomAccessFile.toString());
         Object localObject1 = localObject2;
         continue;
       }
       AppMethodBeat.o(133856);
       return localObject1;
-      if ((k == a.blp) || (k == a.blt))
+      if ((k == a.blk) || (k == a.blo))
       {
         i = paramRandomAccessFile.read(paramArrayOfByte);
       }
@@ -194,7 +194,7 @@ public final class c
     l += paramRandomAccessFile.skipBytes((int)paramLong);
     if (l != paramLong)
     {
-      ae.w("MicroMsg.AtomUtil", "can not skip.skip: " + paramLong + " trueSkip : " + l);
+      Log.w("MicroMsg.AtomUtil", "can not skip.skip: " + paramLong + " trueSkip : " + l);
       AppMethodBeat.o(133857);
       return false;
     }
@@ -202,9 +202,62 @@ public final class c
     return true;
   }
   
-  public static long an(byte[] paramArrayOfByte)
+  public static long aE(byte[] paramArrayOfByte)
   {
     return (paramArrayOfByte[0] & 0xFF) << 56 | (paramArrayOfByte[1] & 0xFF) << 48 | (paramArrayOfByte[2] & 0xFF) << 40 | (paramArrayOfByte[3] & 0xFF) << 32 | (paramArrayOfByte[4] & 0xFF) << 24 | (paramArrayOfByte[5] & 0xFF) << 16 | (paramArrayOfByte[6] & 0xFF) << 8 | paramArrayOfByte[7] & 0xFF;
+  }
+  
+  public static a b(RandomAccessFile paramRandomAccessFile, byte[] paramArrayOfByte, int paramInt)
+  {
+    AppMethodBeat.i(208733);
+    try
+    {
+      j = paramRandomAccessFile.read(paramArrayOfByte);
+      i = j;
+    }
+    catch (Exception paramRandomAccessFile)
+    {
+      for (;;)
+      {
+        int m;
+        Log.printErrStackTrace("MicroMsg.AtomUtil", paramRandomAccessFile, "", new Object[0]);
+        Log.e("MicroMsg.AtomUtil", "find Atom error: " + paramRandomAccessFile.toString());
+        paramRandomAccessFile = null;
+        continue;
+        int k = j + i;
+        int j = i;
+        int i = k;
+      }
+    }
+    if (j >= 8)
+    {
+      if ((4194304L > 0L) && (4194304L <= i))
+      {
+        AppMethodBeat.o(208733);
+        return null;
+      }
+      k = readInt(paramArrayOfByte, 0);
+      m = readInt(paramArrayOfByte, 4);
+      if (m != paramInt) {}
+    }
+    for (paramRandomAccessFile = i.f(k, m, paramRandomAccessFile.getFilePointer() - j);; paramRandomAccessFile = null)
+    {
+      AppMethodBeat.o(208733);
+      return paramRandomAccessFile;
+      if ((m == a.blk) || (m == a.blo))
+      {
+        k = paramRandomAccessFile.read(paramArrayOfByte);
+        j = i;
+        i = k;
+        break;
+      }
+      if (a(paramRandomAccessFile, k - 8))
+      {
+        j = i + (k - 8);
+        i = paramRandomAccessFile.read(paramArrayOfByte);
+        break;
+      }
+    }
   }
   
   public static int bJ(String paramString)
@@ -244,7 +297,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,60 +1,61 @@
 package com.tencent.mm.plugin.facedetectaction.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bbu;
-import com.tencent.mm.protocal.protobuf.bbv;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.bng;
+import com.tencent.mm.protocal.protobuf.bnh;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Arrays;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private com.tencent.mm.ak.b rr;
-  private bbu rxk;
-  public bbv rxl;
+  private i callback;
+  private d rr;
+  private bng sXh;
+  public bnh sXi;
   
   public b(String paramString1, String paramString2, float paramFloat, String paramString3, String paramString4, int paramInt, String paramString5, String paramString6, byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    AppMethodBeat.i(188646);
-    b.a locala = new b.a();
-    locala.hQF = new bbu();
-    locala.hQG = new bbv();
+    AppMethodBeat.i(186388);
+    d.a locala = new d.a();
+    locala.iLN = new bng();
+    locala.iLO = new bnh();
     locala.funcId = 2726;
     locala.uri = "/cgi-bin/mmpay-bin/getfacecheckresult";
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    this.rxk = ((bbu)this.rr.hQD.hQJ);
-    this.rxk.person_id = paramString1;
-    this.rxk.action_data = paramString2;
-    this.rxk.GRK = ((int)paramFloat);
-    this.rxk.GRL = paramString3;
-    this.rxk.FXr = paramString4;
-    this.rxk.scene = paramInt;
-    this.rxk.GoW = paramString5;
-    this.rxk.pqK = paramString6;
-    this.rxk.GQF = ((com.tencent.mm.pluginsdk.wallet.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.pluginsdk.wallet.b.class)).drq();
-    this.rxk.GRM = com.tencent.mm.bw.b.cm(paramArrayOfByte);
-    this.rxk.GRN = paramBoolean;
-    ae.i("MicroMsg.NetSceneGetFaceCheckResult", "create GetFaceCheckResult, personId: %s, actionData: %s, reductionRatio: %s, videoFileid: %s, scene: %s, takeMessage: %s, packageName: %s，hash: %s", new Object[] { paramString1, paramString2, Float.valueOf(paramFloat), paramString3, Integer.valueOf(paramInt), paramString5, paramString6, Arrays.toString(paramArrayOfByte) });
-    AppMethodBeat.o(188646);
+    this.rr = locala.aXF();
+    this.sXh = ((bng)this.rr.iLK.iLR);
+    this.sXh.person_id = paramString1;
+    this.sXh.action_data = paramString2;
+    this.sXh.LVP = ((int)paramFloat);
+    this.sXh.LVQ = paramString3;
+    this.sXh.KRe = paramString4;
+    this.sXh.scene = paramInt;
+    this.sXh.LjH = paramString5;
+    this.sXh.qGp = paramString6;
+    this.sXh.LUV = ((com.tencent.mm.pluginsdk.wallet.b)com.tencent.mm.kernel.g.af(com.tencent.mm.pluginsdk.wallet.b.class)).elk();
+    this.sXh.LVR = com.tencent.mm.bw.b.cD(paramArrayOfByte);
+    this.sXh.LVS = paramBoolean;
+    Log.i("MicroMsg.NetSceneGetFaceCheckResult", "create GetFaceCheckResult, personId: %s, actionData: %s, reductionRatio: %s, videoFileid: %s, scene: %s, takeMessage: %s, packageName: %s，hash: %s", new Object[] { paramString1, paramString2, Float.valueOf(paramFloat), paramString3, Integer.valueOf(paramInt), paramString5, paramString6, Arrays.toString(paramArrayOfByte) });
+    AppMethodBeat.o(186388);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(104199);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(104199);
     return i;
   }
@@ -64,16 +65,16 @@ public final class b
     return 2726;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(104200);
-    ae.i("MicroMsg.NetSceneGetFaceCheckResult", "onGYNetEnd, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramArrayOfByte = com.tencent.mm.plugin.report.service.g.yxI;
+    Log.i("MicroMsg.NetSceneGetFaceCheckResult", "onGYNetEnd, errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramArrayOfByte = h.CyF;
     if (paramInt3 == 0) {}
     for (long l = 54L;; l = 55L)
     {
       paramArrayOfByte.idkeyStat(917L, l, 1L, false);
-      this.rxl = ((bbv)((com.tencent.mm.ak.b)paramq).hQE.hQJ);
+      this.sXi = ((bnh)((d)params).iLL.iLR);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(104200);
       return;

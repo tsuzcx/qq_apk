@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.priority.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.plugin.priority.PluginPriority;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.bv;
 import com.tencent.wcdb.database.SQLiteStatement;
 
 public final class d
   extends a
 {
-  private String xaG;
+  private String AYi;
   
   public d(String paramString)
   {
-    this.xaG = paramString;
+    this.AYi = paramString;
   }
   
   public final String getName()
@@ -27,30 +27,30 @@ public final class d
   public final void run()
   {
     AppMethodBeat.i(87871);
-    if (com.tencent.mm.contact.c.lO(((l)g.ab(l.class)).azF().BH(this.xaG).field_type))
+    if (com.tencent.mm.contact.c.oR(((l)g.af(l.class)).aSN().Kn(this.AYi).field_type))
     {
-      ae.i("MicroMsg.Priority.PriorityDeleteContactTask", "%s is Contact", new Object[] { this.xaG });
+      Log.i("MicroMsg.Priority.PriorityDeleteContactTask", "%s is Contact", new Object[] { this.AYi });
       AppMethodBeat.o(87871);
       return;
     }
-    Object localObject = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgAutoDownloadImgStorage();
-    String str1 = this.xaG;
-    ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).xbf.bindString(1, str1);
-    ae.i("MicroMsg.Priority.C2CMsgAutoDownloadImgStorage", "delete %d img %s", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.priority.model.a.c.c)localObject).xbe.executeUpdateDelete()), str1 });
-    ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().avN(this.xaG);
-    localObject = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage();
-    str1 = this.xaG;
-    ((com.tencent.mm.plugin.priority.model.a.b.c)localObject).xbf.bindString(1, str1);
-    ae.i("MicroMsg.Priority.C2CMsgAutoDownloadFileStorage", "delete %d file %s", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.priority.model.a.b.c)localObject).xbe.executeUpdateDelete()), str1 });
-    ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgFileUsageStorage().avN(this.xaG);
-    localObject = ((PluginPriority)g.ad(PluginPriority.class)).getC2CChatUsageResultStorage();
-    str1 = this.xaG;
+    Object localObject = ((PluginPriority)g.ah(PluginPriority.class)).getC2CMsgAutoDownloadImgStorage();
+    String str1 = this.AYi;
+    ((com.tencent.mm.plugin.priority.model.a.c.c)localObject).AYH.bindString(1, str1);
+    Log.i("MicroMsg.Priority.C2CMsgAutoDownloadImgStorage", "delete %d img %s", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.priority.model.a.c.c)localObject).AYG.executeUpdateDelete()), str1 });
+    ((PluginPriority)g.ah(PluginPriority.class)).getC2CMsgImgUsageStorage().aKf(this.AYi);
+    localObject = ((PluginPriority)g.ah(PluginPriority.class)).getC2CMsgAutoDownloadFileStorage();
+    str1 = this.AYi;
+    ((com.tencent.mm.plugin.priority.model.a.b.c)localObject).AYH.bindString(1, str1);
+    Log.i("MicroMsg.Priority.C2CMsgAutoDownloadFileStorage", "delete %d file %s", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.priority.model.a.b.c)localObject).AYG.executeUpdateDelete()), str1 });
+    ((PluginPriority)g.ah(PluginPriority.class)).getC2CMsgFileUsageStorage().aKf(this.AYi);
+    localObject = ((PluginPriority)g.ah(PluginPriority.class)).getC2CChatUsageResultStorage();
+    str1 = this.AYi;
     String str2 = String.format("DELETE FROM %s WHERE chat = ?", new Object[] { "C2CChatUsageResult" });
-    ((com.tencent.mm.plugin.priority.model.a.a.b)localObject).xao.execSQL(str2, new String[] { str1 });
-    localObject = ((PluginPriority)g.ad(PluginPriority.class)).getC2CChatUsageStorage();
-    str1 = this.xaG;
+    ((com.tencent.mm.plugin.priority.model.a.a.b)localObject).AXQ.execSQL(str2, new String[] { str1 });
+    localObject = ((PluginPriority)g.ah(PluginPriority.class)).getC2CChatUsageStorage();
+    str1 = this.AYi;
     str2 = String.format("DELETE FROM %s WHERE chat = ?", new Object[] { "C2CChatUsage" });
-    ((com.tencent.mm.plugin.priority.model.a.a.c)localObject).xao.execSQL(str2, new String[] { str1 });
+    ((com.tencent.mm.plugin.priority.model.a.a.c)localObject).AXQ.execSQL(str2, new String[] { str1 });
     AppMethodBeat.o(87871);
   }
 }

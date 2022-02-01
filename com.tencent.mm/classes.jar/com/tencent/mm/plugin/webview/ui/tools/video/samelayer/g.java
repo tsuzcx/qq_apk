@@ -7,22 +7,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   implements com.tencent.luggage.xweb_ext.extendplugin.a.c
 {
-  private static g EIe;
+  private static g JxT;
   
-  public static g eYW()
+  public static g gie()
   {
-    AppMethodBeat.i(199117);
-    if (EIe == null) {
-      EIe = new g();
+    AppMethodBeat.i(212059);
+    if (JxT == null) {
+      JxT = new g();
     }
-    g localg = EIe;
-    AppMethodBeat.o(199117);
+    g localg = JxT;
+    AppMethodBeat.o(212059);
     return localg;
   }
   
-  public final b dD(String paramString)
+  public final b dW(String paramString)
   {
-    AppMethodBeat.i(199118);
+    AppMethodBeat.i(212060);
     int i = -1;
     switch (paramString.hashCode())
     {
@@ -32,7 +32,7 @@ public final class g
       switch (i)
       {
       default: 
-        AppMethodBeat.o(199118);
+        AppMethodBeat.o(212060);
         return null;
         if (paramString.equals("video")) {
           i = 0;
@@ -42,20 +42,20 @@ public final class g
     }
     paramString = new l();
     Object localObject = new j();
-    ((j)localObject).EIi = paramString;
-    paramString.EIr = ((j)localObject);
-    paramString.cva = ((com.tencent.luggage.xweb_ext.extendplugin.component.video.b.c)new i());
-    localObject = paramString.cva;
+    ((j)localObject).JxX = paramString;
+    paramString.Jyg = ((j)localObject);
+    paramString.cIY = ((com.tencent.luggage.xweb_ext.extendplugin.component.video.b.c)new i());
+    localObject = paramString.cIY;
     if (localObject != null) {
-      ((com.tencent.luggage.xweb_ext.extendplugin.component.video.b.c)localObject).a((c.a)new l.q(paramString));
+      ((com.tencent.luggage.xweb_ext.extendplugin.component.video.b.c)localObject).a((c.a)new l.r(paramString));
     }
-    AppMethodBeat.o(199118);
+    AppMethodBeat.o(212060);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.video.samelayer.g
  * JD-Core Version:    0.7.0.1
  */

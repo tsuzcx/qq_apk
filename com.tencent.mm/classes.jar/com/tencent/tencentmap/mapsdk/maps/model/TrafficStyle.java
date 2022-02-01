@@ -17,7 +17,7 @@ public class TrafficStyle
   
   public TrafficStyle()
   {
-    AppMethodBeat.i(209871);
+    AppMethodBeat.i(193617);
     this.mWidth = 3;
     this.mStrokeWidth = 0;
     this.mSmoothColor = -16722688;
@@ -28,7 +28,7 @@ public class TrafficStyle
     this.mSlowStrokeColor = this.mSlowColor;
     this.mCongestedStrokeColor = this.mCongestedColor;
     this.mSeriousCongestedStrokeColor = this.mSeriousCongestedColor;
-    AppMethodBeat.o(209871);
+    AppMethodBeat.o(193617);
   }
   
   public TrafficStyle setCongestedColor(int paramInt)
@@ -93,9 +93,9 @@ public class TrafficStyle
   
   public String toString()
   {
-    AppMethodBeat.i(209872);
+    AppMethodBeat.i(193618);
     String str = "TrafficStyle{mWidth=" + this.mWidth + ", mStrokeWidth=" + this.mStrokeWidth + ", mSmoothColor=" + this.mSmoothColor + ", mSlowColor=" + this.mSlowColor + ", mCongestedColor=" + this.mCongestedColor + ", mSeriousCongestedColor=" + this.mSeriousCongestedColor + ", mSmoothStrokeColor=" + this.mSmoothStrokeColor + ", mSlowStrokeColor=" + this.mSlowStrokeColor + ", mCongestedStrokeColor=" + this.mCongestedStrokeColor + ", mSeriousCongestedStrokeColor=" + this.mSeriousCongestedStrokeColor + '}';
-    AppMethodBeat.o(209872);
+    AppMethodBeat.o(193618);
     return str;
   }
 }

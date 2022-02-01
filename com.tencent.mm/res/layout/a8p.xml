@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" style="@style/ld">
-        <ImageView android:src="@drawable/arr" style="@style/js" />
-        <TextView android:text="即将连接Wi-Fi" style="@style/ju" />
-        <TextView android:id="@id/c7p" android:text="本Wi-Fi由星巴克提供" style="@style/jt" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip">
-        <Button android:textSize="14.0dip" android:textColor="@color/Brand" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/c7q" android:background="@drawable/vi" android:layout_width="136.0dip" android:layout_height="30.0dip" android:layout_marginBottom="60.0dip" android:minHeight="@dimen/i5" android:text="确认" />
-        <LinearLayout android:gravity="center" style="@style/mz">
-            <TextView android:text="@string/clb" style="@style/k7" />
-            <Button android:id="@id/c7r" android:layout_height="20.0dip" android:text="@string/cle" style="@style/k6" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:layout_marginTop="0.0dip" style="@style/mz">
-        <TextView android:textSize="10.0dip" android:text="@string/cld" style="@style/k7" />
-    </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="28.0dip" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/wh" android:paddingLeft="@dimen/ct" android:paddingRight="@dimen/ct" android:layout_width="wrap_content" android:layout_height="@dimen/cj"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/h_" android:textColor="@color/FG_0" android:id="@id/cf7" android:paddingRight="@dimen/bt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cmk" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:clickable="false" android:layout_width="10.0dip" android:layout_height="@dimen/cc" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/BW_70" />
 </LinearLayout>

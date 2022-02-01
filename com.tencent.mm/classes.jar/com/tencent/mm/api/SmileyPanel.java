@@ -16,7 +16,7 @@ public abstract class SmileyPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.api.SmileyPanel
  * JD-Core Version:    0.7.0.1
  */

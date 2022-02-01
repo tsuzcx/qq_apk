@@ -1,158 +1,113 @@
 package com.google.android.exoplayer2.source;
 
-import android.os.Handler;
-import com.google.android.exoplayer2.Format;
-import com.google.android.exoplayer2.h.j;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.io.IOException;
+import android.util.Pair;
+import com.google.android.exoplayer2.w;
+import com.google.android.exoplayer2.w.a;
+import com.google.android.exoplayer2.w.b;
 
-public abstract interface a
+abstract class a
+  extends w
 {
-  public abstract void a(int paramInt, Format paramFormat, long paramLong);
+  private final int bva;
   
-  public abstract void a(j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void a(j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, IOException paramIOException, boolean paramBoolean);
-  
-  public abstract void b(j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void c(j paramj, int paramInt, Format paramFormat, long paramLong1, long paramLong2, long paramLong3);
-  
-  public abstract void vf();
-  
-  public static final class a
+  public a(int paramInt)
   {
-    public final a bvg;
-    private final long bvh;
-    public final Handler handler;
-    
-    public a(Handler paramHandler, a parama)
-    {
-      this(paramHandler, parama, (byte)0);
-    }
-    
-    private a(Handler paramHandler, a parama, byte paramByte)
-    {
-      AppMethodBeat.i(211644);
-      if (parama != null) {}
-      for (paramHandler = (Handler)com.google.android.exoplayer2.i.a.checkNotNull(paramHandler);; paramHandler = null)
-      {
-        this.handler = paramHandler;
-        this.bvg = parama;
-        this.bvh = 0L;
-        AppMethodBeat.o(211644);
-        return;
-      }
-    }
-    
-    public final void a(final j paramj, final int paramInt1, final int paramInt2, final Format paramFormat, final int paramInt3, final Object paramObject, final long paramLong1, long paramLong2, final long paramLong3)
-    {
-      AppMethodBeat.i(92568);
-      if (this.bvg != null) {
-        this.handler.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(92560);
-            a.a.this.bvg.a(paramj, paramInt2, paramFormat, a.a.a(a.a.this, paramLong1), a.a.a(a.a.this, paramLong3), this.bvq);
-            AppMethodBeat.o(92560);
-          }
-        });
-      }
-      AppMethodBeat.o(92568);
-    }
-    
-    public final void a(final j paramj, final int paramInt1, final int paramInt2, final Format paramFormat, final int paramInt3, final Object paramObject, final long paramLong1, long paramLong2, final long paramLong3, long paramLong4, final long paramLong5)
-    {
-      AppMethodBeat.i(92570);
-      if (this.bvg != null) {
-        this.handler.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(92561);
-            a.a.this.bvg.b(paramj, paramInt2, paramFormat, a.a.a(a.a.this, paramLong1), a.a.a(a.a.this, paramLong3), paramLong5);
-            AppMethodBeat.o(92561);
-          }
-        });
-      }
-      AppMethodBeat.o(92570);
-    }
-    
-    public final void a(final j paramj, final int paramInt1, final int paramInt2, final Format paramFormat, final int paramInt3, final Object paramObject, final long paramLong1, long paramLong2, final long paramLong3, long paramLong4, final long paramLong5, IOException paramIOException, final boolean paramBoolean)
-    {
-      AppMethodBeat.i(92574);
-      if (this.bvg != null) {
-        this.handler.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(92563);
-            a.a.this.bvg.a(paramj, paramInt2, paramFormat, a.a.a(a.a.this, paramLong1), a.a.a(a.a.this, paramLong3), paramLong5, paramBoolean, this.bvt, this.bvu, this.bvv);
-            AppMethodBeat.o(92563);
-          }
-        });
-      }
-      AppMethodBeat.o(92574);
-    }
-    
-    public final void a(j paramj, long paramLong1, long paramLong2, long paramLong3)
-    {
-      AppMethodBeat.i(211645);
-      a(paramj, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, paramLong1, paramLong2, paramLong3);
-      AppMethodBeat.o(211645);
-    }
-    
-    public final void a(j paramj, long paramLong1, long paramLong2, long paramLong3, IOException paramIOException, boolean paramBoolean)
-    {
-      AppMethodBeat.i(211647);
-      a(paramj, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, paramLong1, paramLong2, paramLong3, paramIOException, paramBoolean);
-      AppMethodBeat.o(211647);
-    }
-    
-    public final void b(final j paramj, final int paramInt1, final int paramInt2, final Format paramFormat, final int paramInt3, final Object paramObject, final long paramLong1, long paramLong2, final long paramLong3, long paramLong4, final long paramLong5)
-    {
-      AppMethodBeat.i(92572);
-      if (this.bvg != null) {
-        this.handler.post(new Runnable()
-        {
-          public final void run()
-          {
-            AppMethodBeat.i(92562);
-            a.a.this.bvg.c(paramj, paramInt2, paramFormat, a.a.a(a.a.this, paramLong1), a.a.a(a.a.this, paramLong3), paramLong5);
-            AppMethodBeat.o(92562);
-          }
-        });
-      }
-      AppMethodBeat.o(92572);
-    }
-    
-    public final void b(j paramj, long paramLong1, long paramLong2, long paramLong3)
-    {
-      AppMethodBeat.i(211646);
-      b(paramj, 4, -1, null, 0, null, -9223372036854775807L, -9223372036854775807L, paramLong1, paramLong2, paramLong3);
-      AppMethodBeat.o(211646);
-    }
-    
-    public final void vg()
-    {
-      AppMethodBeat.i(92576);
-      this.handler.post(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(92565);
-          a.a.this.bvg.vf();
-          AppMethodBeat.o(92565);
-        }
-      });
-      AppMethodBeat.o(92576);
-    }
+    this.bva = paramInt;
   }
+  
+  public final w.a a(int paramInt, w.a parama, boolean paramBoolean)
+  {
+    int i = ev(paramInt);
+    int j = ey(i);
+    int k = ex(i);
+    vk().a(paramInt - k, parama, paramBoolean);
+    parama.bdi = (j + parama.bdi);
+    if (paramBoolean) {
+      parama.bcT = Pair.create(ez(i), parama.bcT);
+    }
+    return parama;
+  }
+  
+  public final w.b a(int paramInt, w.b paramb, boolean paramBoolean, long paramLong)
+  {
+    int j = ew(paramInt);
+    int i = ey(j);
+    j = ex(j);
+    vk().a(paramInt - i, paramb, paramBoolean, paramLong);
+    paramb.bey += j;
+    paramb.bez += j;
+    return paramb;
+  }
+  
+  public final int aZ(int paramInt1, int paramInt2)
+  {
+    int j = 0;
+    int k = ew(paramInt1);
+    int m = ey(k);
+    w localw = vk();
+    int i;
+    if (paramInt2 == 2)
+    {
+      i = 0;
+      paramInt1 = localw.aZ(paramInt1 - m, i);
+      if (paramInt1 == -1) {
+        break label59;
+      }
+      paramInt1 = m + paramInt1;
+    }
+    label59:
+    do
+    {
+      return paramInt1;
+      i = paramInt2;
+      break;
+      paramInt1 = k + 1;
+      if (paramInt1 < this.bva) {
+        return ey(paramInt1);
+      }
+      paramInt1 = j;
+    } while (paramInt2 == 2);
+    return -1;
+  }
+  
+  public final int ae(Object paramObject)
+  {
+    if (!(paramObject instanceof Pair)) {}
+    int i;
+    int j;
+    do
+    {
+      Object localObject;
+      do
+      {
+        return -1;
+        localObject = (Pair)paramObject;
+        paramObject = ((Pair)localObject).first;
+        localObject = ((Pair)localObject).second;
+        i = ag(paramObject);
+      } while (i == -1);
+      j = vk().ae(localObject);
+    } while (j == -1);
+    return ex(i) + j;
+  }
+  
+  protected abstract int ag(Object paramObject);
+  
+  protected abstract int ev(int paramInt);
+  
+  protected abstract int ew(int paramInt);
+  
+  protected abstract int ex(int paramInt);
+  
+  protected abstract int ey(int paramInt);
+  
+  protected abstract Object ez(int paramInt);
+  
+  protected abstract w vk();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.source.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.wecall.talkroom.model;
 
 import android.text.TextUtils;
-import com.google.b.a.e;
+import com.google.a.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.pb.a.a.a;
-import com.tencent.pb.common.b.a.a.a.aw;
-import com.tencent.pb.common.b.a.a.a.ay;
 import com.tencent.pb.common.b.a.a.a.az;
-import com.tencent.pb.common.b.a.a.a.u;
+import com.tencent.pb.common.b.a.a.a.bb;
+import com.tencent.pb.common.b.a.a.a.bc;
+import com.tencent.pb.common.b.a.a.a.v;
 import com.tencent.pb.common.c.b;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
@@ -24,91 +24,91 @@ import java.util.concurrent.ConcurrentHashMap;
 public class TalkRoom
   extends MultiTalkGroup
 {
-  a.aw MIm;
-  Map<String, d> MIn;
+  a.az Suh;
+  Map<String, d> Sui;
   
-  public TalkRoom(String paramString, Integer paramInteger, a.aw paramaw)
+  public TalkRoom(String paramString, Integer paramInteger, a.az paramaz)
   {
-    AppMethodBeat.i(208323);
-    this.MIn = new ConcurrentHashMap();
+    AppMethodBeat.i(199666);
+    this.Sui = new ConcurrentHashMap();
     c(paramString, paramInteger);
-    b(paramaw);
-    AppMethodBeat.o(208323);
+    b(paramaz);
+    AppMethodBeat.o(199666);
   }
   
-  private static void FF(long paramLong)
+  private static void OM(long paramLong)
   {
     AppMethodBeat.i(62570);
     b.d("tagorewang:TalkRoom", new Object[] { "setRoomKey: ", Long.valueOf(paramLong) });
     AppMethodBeat.o(62570);
   }
   
-  private static a.u a(a.aw paramaw)
+  private static a.v a(a.az paramaz)
   {
-    AppMethodBeat.i(208324);
-    if (paramaw != null) {}
+    AppMethodBeat.i(199667);
+    if (paramaz != null) {}
     try
     {
-      byte[] arrayOfByte = paramaw.Mfr;
+      byte[] arrayOfByte = paramaz.RFJ;
       if (arrayOfByte == null)
       {
-        AppMethodBeat.o(208324);
+        AppMethodBeat.o(199667);
         return null;
       }
-      paramaw = paramaw.Mfr;
-      paramaw = (a.u)e.a(new a.u(), paramaw, paramaw.length);
-      AppMethodBeat.o(208324);
-      return paramaw;
+      paramaz = paramaz.RFJ;
+      paramaz = (a.v)e.a(new a.v(), paramaz, paramaz.length);
+      AppMethodBeat.o(199667);
+      return paramaz;
     }
-    catch (Exception paramaw)
+    catch (Exception paramaz)
     {
-      b.w("tagorewang:TalkRoom", new Object[] { "toPlayItemInfo err: ", paramaw });
-      AppMethodBeat.o(208324);
+      b.w("tagorewang:TalkRoom", new Object[] { "toPlayItemInfo err: ", paramaz });
+      AppMethodBeat.o(199667);
     }
     return null;
   }
   
-  public static TalkRoom a(TalkRoom paramTalkRoom, String paramString1, String paramString2, Integer paramInteger, int paramInt, long paramLong, a.aw paramaw, a.ay[] paramArrayOfay, a.az[] paramArrayOfaz)
+  public static TalkRoom a(TalkRoom paramTalkRoom, String paramString1, String paramString2, Integer paramInteger, int paramInt, long paramLong, a.az paramaz, a.bb[] paramArrayOfbb, a.bc[] paramArrayOfbc)
   {
-    AppMethodBeat.i(208322);
+    AppMethodBeat.i(199665);
     if (paramTalkRoom == null)
     {
       b.w("tagorewang:TalkRoom:update", new Object[] { "updateAll null" });
-      AppMethodBeat.o(208322);
+      AppMethodBeat.o(199665);
       return null;
     }
     b.d("tagorewang:TalkRoom:update", new Object[] { "updateAll groupId: ", paramString1, " tmpId: ", paramString2 });
     paramTalkRoom.c(paramString1, paramInteger);
-    paramTalkRoom.bbA(paramString2);
+    paramTalkRoom.bre(paramString2);
     setRoomId(paramInt);
-    FF(paramLong);
-    paramTalkRoom.b(paramaw);
-    if (paramArrayOfay == null)
+    OM(paramLong);
+    paramTalkRoom.b(paramaz);
+    if (paramArrayOfbb == null)
     {
       paramInt = 0;
-      if (paramArrayOfaz != null) {
+      if (paramArrayOfbc != null) {
         break label139;
       }
     }
     label139:
-    for (int i = 0;; i = paramArrayOfaz.length)
+    for (int i = 0;; i = paramArrayOfbc.length)
     {
       if ((paramInt != 0) || (i != 0)) {
         break label147;
       }
       b.w("tagorewang:TalkRoom:update", new Object[] { "updateAll null VoiceGroupMem or VoiceGroupUsrProfile array." });
-      AppMethodBeat.o(208322);
+      AppMethodBeat.o(199665);
       return paramTalkRoom;
-      paramInt = paramArrayOfay.length;
+      paramInt = paramArrayOfbb.length;
       break;
     }
     label147:
-    paramString2 = new HashSet(paramTalkRoom.MIn.keySet());
-    paramString2.remove(a.fXK());
+    paramString2 = new HashSet(paramTalkRoom.Sui.keySet());
+    paramString2.remove(a.hjq());
     i = 0;
     while (i != paramInt)
     {
-      paramInteger = paramArrayOfay[i];
+      paramInteger = paramArrayOfbb[i];
       if (paramInteger == null)
       {
         b.w("tagorewang:TalkRoom:update", new Object[] { "null member info, index: ", Integer.valueOf(i) });
@@ -116,7 +116,7 @@ public class TalkRoom
       }
       else
       {
-        paramString1 = paramTalkRoom.bbB(paramInteger.duC);
+        paramString1 = paramTalkRoom.brf(paramInteger.dLN);
         if (paramString1 == null)
         {
           b.d("tagorewang:TalkRoom:update", new Object[] { "add new member" });
@@ -125,7 +125,7 @@ public class TalkRoom
         }
         for (;;)
         {
-          paramString2.remove(paramString1.gdY());
+          paramString2.remove(paramString1.hra());
           break;
           paramString1.a(paramInteger);
         }
@@ -136,33 +136,33 @@ public class TalkRoom
     {
       paramInteger = (String)paramString1.next();
       b.d("tagorewang:TalkRoom:update", new Object[] { "keyset", paramInteger });
-      b.d("tagorewang:TalkRoom", new Object[] { "remove", paramTalkRoom.MIn.remove(paramInteger) });
+      b.d("tagorewang:TalkRoom", new Object[] { "remove", paramTalkRoom.Sui.remove(paramInteger) });
     }
     if (paramString2.size() > 0) {
       b.w("tagorewang:TalkRoom:update", new Object[] { "updateAll not update uuid keyset.size(): ", Integer.valueOf(paramString2.size()) });
     }
     b.d("tagorewang:TalkRoom:update", new Object[] { "did updateAll" });
-    AppMethodBeat.o(208322);
+    AppMethodBeat.o(199665);
     return paramTalkRoom;
   }
   
-  public static TalkRoom a(String paramString1, String paramString2, Integer paramInteger, int paramInt, long paramLong, a.aw paramaw, a.ay[] paramArrayOfay, a.az[] paramArrayOfaz)
+  public static TalkRoom a(String paramString1, String paramString2, Integer paramInteger, int paramInt, long paramLong, a.az paramaz, a.bb[] paramArrayOfbb, a.bc[] paramArrayOfbc)
   {
-    AppMethodBeat.i(208321);
+    AppMethodBeat.i(199664);
     b.d("tagorewang:TalkRoom:create", new Object[] { "create groupId: ", paramString1, " tmpId: ", paramString2 });
-    paramInteger = new TalkRoom(paramString1, paramInteger, paramaw);
-    paramInteger.bbA(paramString2);
+    paramInteger = new TalkRoom(paramString1, paramInteger, paramaz);
+    paramInteger.bre(paramString2);
     setRoomId(paramInt);
-    FF(paramLong);
-    if (paramArrayOfay == null)
+    OM(paramLong);
+    if (paramArrayOfbb == null)
     {
       paramInt = 0;
-      if (paramArrayOfaz != null) {
+      if (paramArrayOfbc != null) {
         break label130;
       }
     }
     label130:
-    for (int i = 0;; i = paramArrayOfaz.length)
+    for (int i = 0;; i = paramArrayOfbc.length)
     {
       int j = 0;
       for (;;)
@@ -170,14 +170,14 @@ public class TalkRoom
         if (j == paramInt) {
           break label223;
         }
-        paramString2 = paramArrayOfay[j];
+        paramString2 = paramArrayOfbb[j];
         if (paramString2 != null) {
           break;
         }
         b.w("tagorewang:TalkRoom:create", new Object[] { "null member info, index: ", Integer.valueOf(j) });
         j += 1;
       }
-      paramInt = paramArrayOfay.length;
+      paramInt = paramArrayOfbb.length;
       break;
     }
     int k = 0;
@@ -186,8 +186,8 @@ public class TalkRoom
       paramString1 = null;
       if (k != i)
       {
-        paramString1 = paramArrayOfaz[k];
-        if ((paramString1 != null) && (paramString1.FHN == paramString2.FHN)) {
+        paramString1 = paramArrayOfbc[k];
+        if ((paramString1 != null) && (paramString1.KBb == paramString2.KBb)) {
           b.d("tagorewang:TalkRoom:create", new Object[] { "member info: ", paramString2, " profile: ", paramString1 });
         }
       }
@@ -200,58 +200,58 @@ public class TalkRoom
     }
     label223:
     b.d("tagorewang:TalkRoom:create", new Object[] { "did create" });
-    AppMethodBeat.o(208321);
+    AppMethodBeat.o(199664);
     return paramInteger;
   }
   
-  private void b(a.aw paramaw)
+  private void b(a.az paramaz)
   {
-    AppMethodBeat.i(208325);
-    if (paramaw == null)
+    AppMethodBeat.i(199668);
+    if (paramaz == null)
     {
-      AppMethodBeat.o(208325);
+      AppMethodBeat.o(199668);
       return;
     }
     try
     {
-      this.wmA = paramaw.Mfy;
-      this.MgH = paramaw.Mfx;
-      a.u localu1;
-      a.u localu2;
-      if ((this.MIm != null) && (paramaw.dui != 0))
+      this.zHE = paramaz.RFQ;
+      this.RGZ = paramaz.RFP;
+      a.v localv1;
+      a.v localv2;
+      if ((this.Suh != null) && (paramaz.dLt != 0))
       {
-        localu1 = a(paramaw);
-        localu2 = a(this.MIm);
-        if (localu1 != null) {
+        localv1 = a(paramaz);
+        localv2 = a(this.Suh);
+        if (localv1 != null) {
           break label84;
         }
       }
-      for (paramaw.Mfr = this.MIm.Mfr;; paramaw.Mfr = this.MIm.Mfr)
+      for (paramaz.RFJ = this.Suh.RFJ;; paramaz.RFJ = this.Suh.RFJ)
       {
         label84:
         do
         {
-          this.MIm = paramaw;
-          AppMethodBeat.o(208325);
+          this.Suh = paramaz;
+          AppMethodBeat.o(199668);
           return;
-        } while ((localu1.MdY != 0) && (localu1.MdY == localu2.MdY));
-        b.w("tagorewang:TalkRoom", new Object[] { "setRoomInfo bad id: ", Integer.valueOf(localu2.MdY), " -> ", Integer.valueOf(localu1.MdY) });
+        } while ((localv1.REo != 0) && (localv1.REo == localv2.REo));
+        b.w("tagorewang:TalkRoom", new Object[] { "setRoomInfo bad id: ", Integer.valueOf(localv2.REo), " -> ", Integer.valueOf(localv1.REo) });
       }
       return;
     }
     catch (Exception localException)
     {
       b.w("tagorewang:TalkRoom", new Object[] { "setRoomInfo assert failed: ", localException });
-      this.MIm = paramaw;
-      AppMethodBeat.o(208325);
+      this.Suh = paramaz;
+      AppMethodBeat.o(199668);
     }
   }
   
-  private void bbA(String paramString)
+  private void bre(String paramString)
   {
     AppMethodBeat.i(62565);
-    if (j.bbQ(paramString)) {
-      this.MgG = paramString;
+    if (j.bru(paramString)) {
+      this.RGY = paramString;
     }
     AppMethodBeat.o(62565);
   }
@@ -264,52 +264,52 @@ public class TalkRoom
       AppMethodBeat.o(62566);
       return;
     }
-    if (j.bbQ(paramString)) {
-      this.MgG = paramString;
+    if (j.bru(paramString)) {
+      this.RGY = paramString;
     }
     for (;;)
     {
       if (paramInteger != null) {
-        this.Mcu = paramInteger.intValue();
+        this.RCJ = paramInteger.intValue();
       }
       AppMethodBeat.o(62566);
       return;
-      this.wmz = paramString;
+      this.zHD = paramString;
     }
   }
   
-  public static long eBe()
+  public static long fHV()
   {
     AppMethodBeat.i(62569);
-    long l = j.geB();
+    long l = j.hrB();
     AppMethodBeat.o(62569);
     return l;
   }
   
-  public static boolean gdJ()
+  public static boolean hqL()
   {
     return false;
   }
   
-  public static int gdL()
+  public static int hqN()
   {
     AppMethodBeat.i(62567);
-    int i = j.geA();
+    int i = j.hrA();
     AppMethodBeat.o(62567);
     return i;
   }
   
-  private String gdM()
+  private String hqO()
   {
     AppMethodBeat.i(62572);
     Object localObject1;
-    if ((this.MIm == null) || (TextUtils.isEmpty(this.MIm.name)))
+    if ((this.Suh == null) || (TextUtils.isEmpty(this.Suh.name)))
     {
-      localObject1 = new ArrayList(this.MIn.values());
-      Object localObject2 = a.fXK();
-      ((List)localObject1).remove(this.MIn.get(localObject2));
-      localObject1 = ja((List)localObject1);
-      b.i("tagorewang:TalkRoom", new Object[] { "getOtherMembers size: ", Integer.valueOf(((List)localObject1).size()), " all size: ", Integer.valueOf(this.MIn.size()) });
+      localObject1 = new ArrayList(this.Sui.values());
+      Object localObject2 = a.hjq();
+      ((List)localObject1).remove(this.Sui.get(localObject2));
+      localObject1 = kh((List)localObject1);
+      b.i("tagorewang:TalkRoom", new Object[] { "getOtherMembers size: ", Integer.valueOf(((List)localObject1).size()), " all size: ", Integer.valueOf(this.Sui.size()) });
       localObject2 = new StringBuilder();
       if (localObject1 != null)
       {
@@ -345,18 +345,18 @@ public class TalkRoom
         return localObject1;
       }
     }
-    if ((this.MIm != null) && (!TextUtils.isEmpty(this.MIm.name)))
+    if ((this.Suh != null) && (!TextUtils.isEmpty(this.Suh.name)))
     {
-      localObject1 = this.MIm.name;
+      localObject1 = this.Suh.name;
       AppMethodBeat.o(62572);
       return localObject1;
     }
-    b.w("tagorewang:TalkRoom", new Object[] { "updateRoomNameIfEmpty still empty, groupId: ", this.wmz, " tmpId: ", this.MgG });
+    b.w("tagorewang:TalkRoom", new Object[] { "updateRoomNameIfEmpty still empty, groupId: ", this.zHD, " tmpId: ", this.RGY });
     AppMethodBeat.o(62572);
     return null;
   }
   
-  private static List<d> ja(List<d> paramList)
+  private static List<d> kh(List<d> paramList)
   {
     AppMethodBeat.i(62577);
     if (paramList.isEmpty())
@@ -379,34 +379,34 @@ public class TalkRoom
   public final void a(d paramd)
   {
     AppMethodBeat.i(62574);
-    this.MIn.put(paramd.gdY(), paramd);
+    this.Sui.put(paramd.hra(), paramd);
     AppMethodBeat.o(62574);
   }
   
-  public final d bbB(String paramString)
+  public final d brf(String paramString)
   {
     AppMethodBeat.i(62578);
-    paramString = (d)this.MIn.get(paramString);
+    paramString = (d)this.Sui.get(paramString);
     AppMethodBeat.o(62578);
     return paramString;
   }
   
-  public final int gdK()
+  public final int hqM()
   {
-    if (this.Mcu == 0) {
+    if (this.RCJ == 0) {
       return 0;
     }
-    return this.Mcu;
+    return this.RCJ;
   }
   
-  public final List<d> gdN()
+  public final List<d> hqP()
   {
     AppMethodBeat.i(62575);
-    List localList = ja(new ArrayList(this.MIn.values()));
-    d locald = gdP();
+    List localList = kh(new ArrayList(this.Sui.values()));
+    d locald = hqR();
     localList.remove(locald);
     localList.add(0, locald);
-    locald = (d)this.MIn.get(Integer.valueOf(90100));
+    locald = (d)this.Sui.get(Integer.valueOf(90100));
     if (locald != null)
     {
       localList.remove(locald);
@@ -416,53 +416,53 @@ public class TalkRoom
     return localList;
   }
   
-  public final List<d> gdO()
+  public final List<d> hqQ()
   {
     AppMethodBeat.i(62576);
-    ArrayList localArrayList = new ArrayList(this.MIn.values());
+    ArrayList localArrayList = new ArrayList(this.Sui.values());
     AppMethodBeat.o(62576);
     return localArrayList;
   }
   
-  public final d gdP()
+  public final d hqR()
   {
     AppMethodBeat.i(62579);
-    d locald = (d)this.MIn.get(a.fXK());
+    d locald = (d)this.Sui.get(a.hjq());
     AppMethodBeat.o(62579);
     return locald;
   }
   
-  public final List<a.ay> gdQ()
+  public final List<a.bb> hqS()
   {
     AppMethodBeat.i(62580);
-    List localList = gdR();
+    List localList = hqT();
     AppMethodBeat.o(62580);
     return localList;
   }
   
-  public final List<a.ay> gdR()
+  public final List<a.bb> hqT()
   {
     AppMethodBeat.i(62581);
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.MIn.entrySet().iterator();
+    Iterator localIterator = this.Sui.entrySet().iterator();
     while (localIterator.hasNext()) {
-      localArrayList.add(((d)((Map.Entry)localIterator.next()).getValue()).MIu);
+      localArrayList.add(((d)((Map.Entry)localIterator.next()).getValue()).Sup);
     }
     AppMethodBeat.o(62581);
     return localArrayList;
   }
   
-  public final MultiTalkGroup gdS()
+  public final MultiTalkGroup hqU()
   {
     AppMethodBeat.i(62583);
     MultiTalkGroup localMultiTalkGroup = new MultiTalkGroup();
-    localMultiTalkGroup.wmz = this.wmz;
-    localMultiTalkGroup.MgG = this.MgG;
-    localMultiTalkGroup.Mcu = this.Mcu;
-    localMultiTalkGroup.wmA = this.wmA;
-    localMultiTalkGroup.MgH = this.MgH;
+    localMultiTalkGroup.zHD = this.zHD;
+    localMultiTalkGroup.RGY = this.RGY;
+    localMultiTalkGroup.RCJ = this.RCJ;
+    localMultiTalkGroup.zHE = this.zHE;
+    localMultiTalkGroup.RGZ = this.RGZ;
     ArrayList localArrayList = new ArrayList();
-    Object localObject = gdO();
+    Object localObject = hqQ();
     if (((List)localObject).size() > 0)
     {
       Iterator localIterator = ((List)localObject).iterator();
@@ -472,28 +472,28 @@ public class TalkRoom
         if (locald != null)
         {
           MultiTalkGroupMember localMultiTalkGroupMember = new MultiTalkGroupMember();
-          localMultiTalkGroupMember.MgJ = locald.gdY();
-          if (locald.MIu != null)
+          localMultiTalkGroupMember.RHb = locald.hra();
+          if (locald.Sup != null)
           {
-            localObject = locald.MIu.MfZ;
+            localObject = locald.Sup.RGr;
             label148:
-            localMultiTalkGroupMember.MgK = ((String)localObject);
-            if (locald.MIu == null) {
+            localMultiTalkGroupMember.RHc = ((String)localObject);
+            if (locald.Sup == null) {
               break label241;
             }
-            i = locald.MIu.reason;
+            i = locald.Sup.bDZ;
             label171:
-            localMultiTalkGroupMember.reason = i;
+            localMultiTalkGroupMember.bDZ = i;
             localMultiTalkGroupMember.status = locald.getState();
-            if ((locald.MIu == null) || (locald.MIu.MfN == 0)) {
+            if ((locald.Sup == null) || (locald.Sup.RGf == 0)) {
               break label246;
             }
           }
           label241:
           label246:
-          for (int i = locald.MIu.MfN;; i = 0)
+          for (int i = locald.Sup.RGf;; i = 0)
           {
-            localMultiTalkGroupMember.MfN = i;
+            localMultiTalkGroupMember.RGf = i;
             localArrayList.add(localMultiTalkGroupMember);
             break;
             localObject = "";
@@ -504,7 +504,7 @@ public class TalkRoom
         }
       }
     }
-    localMultiTalkGroup.MgI = localArrayList;
+    localMultiTalkGroup.RHa = localArrayList;
     AppMethodBeat.o(62583);
     return localMultiTalkGroup;
   }
@@ -517,14 +517,14 @@ public class TalkRoom
     {
       try
       {
-        localStringBuilder1.append("groupId: ").append(this.wmz);
-        localStringBuilder1.append(" tmpId: ").append(this.MgG);
-        localStringBuilder1.append(" routeId: ").append(this.Mcu);
+        localStringBuilder1.append("groupId: ").append(this.zHD);
+        localStringBuilder1.append(" tmpId: ").append(this.RGY);
+        localStringBuilder1.append(" routeId: ").append(this.RCJ);
         StringBuilder localStringBuilder2 = localStringBuilder1.append(" room name: ");
-        if ((this.MIm != null) && (!TextUtils.isEmpty(this.MIm.name))) {
+        if ((this.Suh != null) && (!TextUtils.isEmpty(this.Suh.name))) {
           continue;
         }
-        str = gdM();
+        str = hqO();
         localStringBuilder2.append(str);
       }
       catch (Exception localException)
@@ -536,13 +536,13 @@ public class TalkRoom
       str = localStringBuilder1.toString();
       AppMethodBeat.o(62582);
       return str;
-      str = this.MIm.name;
+      str = this.Suh.name;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.TalkRoom
  * JD-Core Version:    0.7.0.1
  */

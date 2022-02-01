@@ -1,20 +1,15 @@
 package com.tencent.mm.model;
 
-@Deprecated
+import com.tencent.mm.kernel.c.a;
+
 public abstract interface au
+  extends a
 {
-  public static abstract interface c
-  {
-    public abstract String A(int paramInt, boolean paramBoolean);
-    
-    public abstract void aBR();
-    
-    public abstract String ou(int paramInt);
-    
-    public abstract String ov(int paramInt);
-    
-    public abstract boolean ow(int paramInt);
-  }
+  public abstract void A(String paramString, long paramLong);
+  
+  public abstract void Ab(long paramLong);
+  
+  public abstract void aVn();
 }
 
 

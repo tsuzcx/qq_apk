@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.a;
 
 public abstract interface a
 {
-  public abstract void aNZ(String paramString);
+  public abstract void beB(String paramString);
 }
 
 

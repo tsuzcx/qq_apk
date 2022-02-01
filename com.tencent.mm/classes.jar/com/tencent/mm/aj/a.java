@@ -8,21 +8,21 @@ import com.tencent.mm.memory.a.c;
 
 public final class a
 {
-  f<String, Bitmap> hOQ;
+  f<String, Bitmap> iJX;
   
   public a(int paramInt)
   {
     AppMethodBeat.i(150193);
-    this.hOQ = new c(paramInt);
+    this.iJX = new c(paramInt);
     AppMethodBeat.o(150193);
   }
   
   public final void c(String paramString, Bitmap paramBitmap)
   {
     AppMethodBeat.i(150194);
-    if (this.hOQ != null)
+    if (this.iJX != null)
     {
-      this.hOQ.q(paramString, paramBitmap);
+      this.iJX.x(paramString, paramBitmap);
       AppMethodBeat.o(150194);
       return;
     }
@@ -32,7 +32,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.aj.a
  * JD-Core Version:    0.7.0.1
  */

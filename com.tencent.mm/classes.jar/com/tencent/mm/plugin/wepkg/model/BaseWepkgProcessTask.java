@@ -6,12 +6,12 @@ import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 public abstract class BaseWepkgProcessTask
   extends MainProcessTask
 {
-  public boolean EWZ = false;
+  public boolean JMQ = false;
   public boolean result = false;
   
   public abstract void a(Parcel paramParcel, int paramInt);
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     boolean bool2 = true;
     if (paramParcel.readByte() != 0)
@@ -25,15 +25,15 @@ public abstract class BaseWepkgProcessTask
     label41:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.EWZ = bool1;
-      n(paramParcel);
+      this.JMQ = bool1;
+      p(paramParcel);
       return;
       bool1 = false;
       break;
     }
   }
   
-  public abstract void n(Parcel paramParcel);
+  public abstract void p(Parcel paramParcel);
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
@@ -42,7 +42,7 @@ public abstract class BaseWepkgProcessTask
     {
       i = 1;
       paramParcel.writeByte((byte)i);
-      if (!this.EWZ) {
+      if (!this.JMQ) {
         break label46;
       }
     }

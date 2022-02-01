@@ -8,49 +8,49 @@ import java.util.Set;
 
 public final class b
 {
+  private long Cxq;
+  private HashMap<Integer, Long> Cxr;
   private int mID;
   private long mInterval;
-  private long ywu;
-  private HashMap<Integer, Long> ywv;
   
   public b()
   {
     AppMethodBeat.i(125118);
-    this.ywv = new HashMap();
+    this.Cxr = new HashMap();
     this.mID = 463;
     this.mInterval = 300000L;
     AppMethodBeat.o(125118);
   }
   
-  private void as(int paramInt, long paramLong)
+  private void az(int paramInt, long paramLong)
   {
     AppMethodBeat.i(125120);
-    Long localLong = (Long)this.ywv.get(Integer.valueOf(paramInt));
+    Long localLong = (Long)this.Cxr.get(Integer.valueOf(paramInt));
     long l = paramLong;
     if (localLong != null) {
       l = paramLong + localLong.longValue();
     }
-    this.ywv.put(Integer.valueOf(paramInt), Long.valueOf(l));
+    this.Cxr.put(Integer.valueOf(paramInt), Long.valueOf(l));
     AppMethodBeat.o(125120);
   }
   
-  public final void k(int paramInt1, int paramInt2, long paramLong)
+  public final void l(int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(125119);
     try
     {
-      as(paramInt1, paramLong);
-      as(paramInt2, 1L);
+      az(paramInt1, paramLong);
+      az(paramInt2, 1L);
       paramLong = System.currentTimeMillis();
-      if (paramLong - this.ywu > this.mInterval)
+      if (paramLong - this.Cxq > this.mInterval)
       {
-        Iterator localIterator = this.ywv.entrySet().iterator();
+        Iterator localIterator = this.Cxr.entrySet().iterator();
         while (localIterator.hasNext())
         {
           Map.Entry localEntry = (Map.Entry)localIterator.next();
-          e.ywz.idkeyStat(this.mID, ((Integer)localEntry.getKey()).intValue(), ((Long)localEntry.getValue()).longValue(), false);
+          e.Cxv.idkeyStat(this.mID, ((Integer)localEntry.getKey()).intValue(), ((Long)localEntry.getValue()).longValue(), false);
         }
-        this.ywu = paramLong;
+        this.Cxq = paramLong;
       }
     }
     finally

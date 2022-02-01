@@ -1,21 +1,16 @@
 package com.tencent.mm.ui.g.a;
 
-public final class b
-  extends Throwable
+import android.widget.ImageView;
+
+public abstract interface b
 {
-  private String KWk;
-  private int mErrorCode;
+  public abstract void c(ImageView paramImageView, String paramString);
   
-  public b(String paramString1, int paramInt, String paramString2)
-  {
-    super(paramString1);
-    this.mErrorCode = paramInt;
-    this.KWk = paramString2;
-  }
+  public abstract void d(ImageView paramImageView, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.g.a.b
  * JD-Core Version:    0.7.0.1
  */

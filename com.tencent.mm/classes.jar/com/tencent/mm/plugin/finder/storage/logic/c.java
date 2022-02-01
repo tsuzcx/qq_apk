@@ -1,421 +1,443 @@
 package com.tencent.mm.plugin.finder.storage.logic;
 
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.loader.m;
-import com.tencent.mm.plugin.finder.preload.MediaPreloadCore;
-import com.tencent.mm.plugin.finder.preload.MediaPreloadCore.a;
-import com.tencent.mm.plugin.finder.preload.MediaPreloadCore.b;
-import com.tencent.mm.plugin.finder.preload.model.a.a;
-import com.tencent.mm.plugin.finder.preload.model.a.b;
-import com.tencent.mm.plugin.finder.storage.b;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
-import d.a.j;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.finder.api.b;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.model.aa;
+import com.tencent.mm.plugin.finder.model.ab;
+import com.tencent.mm.plugin.finder.model.ac;
+import com.tencent.mm.plugin.finder.model.ad;
+import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.model.n;
+import com.tencent.mm.plugin.finder.model.u;
+import com.tencent.mm.plugin.finder.model.w;
+import com.tencent.mm.plugin.finder.report.k;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.FinderItem.a;
+import com.tencent.mm.plugin.finder.storage.data.e;
+import com.tencent.mm.plugin.finder.storage.data.e.a;
+import com.tencent.mm.plugin.finder.storage.data.l.a;
+import com.tencent.mm.plugin.finder.storage.data.r;
+import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.protocal.protobuf.FinderContact;
+import com.tencent.mm.protocal.protobuf.FinderMedia;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.aop;
+import com.tencent.mm.protocal.protobuf.aoq;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.protocal.protobuf.bei;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.protocal.protobuf.cng;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
+import kotlin.f;
+import kotlin.g.a.a;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderMediaCacheLogic;", "", "()V", "TAG", "", "THREAD_TAG", "isOpenMultiBitRateDownload", "", "lock", "mediaCacheStorage", "Lcom/tencent/mm/plugin/finder/storage/FinderMediaCacheStorage;", "memoryCache", "Ljava/util/HashMap;", "Lcom/tencent/mm/plugin/finder/model/FinderMediaCache;", "checkFileFormat", "", "mediaId", "fileFormat", "deleteAll", "deleteBelowFileFormat", "originalMediaId", "findBestVideoToPlay", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "media", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "query", "isCheckFileExit", "queryByOriginalMediaId", "", "replace", "cache", "store", "url", "codingFormat", "", "cacheSize", "", "totalSize", "state", "duration", "urlToken", "decodeKey", "syncMemoryCacheToDB", "updateMoovReady", "updateMoovReadyMemory", "updatePlayed", "hasPlayed", "updateProgress", "updateProgressMemory", "plugin-finder_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderFeedLogic;", "", "()V", "Companion", "plugin-finder_release"})
 public final class c
 {
-  private static final Object lock;
-  public static final com.tencent.mm.plugin.finder.storage.q rOl;
-  private static final HashMap<String, com.tencent.mm.plugin.finder.model.z> sLs;
-  public static final c sLt;
-  private static final boolean suq;
+  private static final String TAG = "Finder.FinderFeedLogic";
+  private static final f vGM;
+  public static final a vGN;
   
   static
   {
-    AppMethodBeat.i(167109);
-    sLt = new c();
-    rOl = ((PluginFinder)g.ad(PluginFinder.class)).getMediaCacheStorage();
-    lock = new Object();
-    sLs = new HashMap();
-    b localb = b.sHP;
-    suq = b.cIB();
-    AppMethodBeat.o(167109);
+    AppMethodBeat.i(167103);
+    vGN = new a((byte)0);
+    TAG = "Finder.FinderFeedLogic";
+    vGM = kotlin.g.ah((a)b.vGO);
+    AppMethodBeat.o(167103);
   }
   
-  public static com.tencent.mm.plugin.finder.model.z a(String paramString, long paramLong1, long paramLong2, int paramInt)
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/logic/FinderFeedLogic$Companion;", "", "()V", "CARE_MEDIA_TYPE", "", "", "getCARE_MEDIA_TYPE", "()Ljava/util/List;", "CARE_MEDIA_TYPE$delegate", "Lkotlin/Lazy;", "TAG", "", "deleteFeed", "", "objectId", "", "deleteFeedByLocalId", "localId", "deleteGroupFeed", "", "deleteMegaVideoFeed", "getBySenderLocal", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "getLocalSenderFeedBeforeTime", "Ljava/util/LinkedList;", "username", "startTime", "endTime", "handleFeedList", "feedList", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "sourceType", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "handleMegaVideoFeedList", "megaVideoList", "isLocalSenderFeedExists", "replaceSenderFeed", "feedObject", "saveCache", "list", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "isNeedClear", "saveToDb", "finderObj", "transformFinderMediaToLocal", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "mediaType", "feedMedia", "Lcom/tencent/mm/protocal/protobuf/FinderMedia;", "transformFinderObjectToTimeLineData", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "finderObject", "updateFeedCommentCount", "count", "feed", "plugin-finder_release"})
+  public static final class a
   {
-    AppMethodBeat.i(204454);
-    p.h(paramString, "mediaId");
-    paramString = bi(paramString, false);
-    paramString.field_cacheSize = paramLong1;
-    paramString.field_totalSize = paramLong2;
-    paramString.field_state = paramInt;
-    if (!paramString.field_moovReady)
+    public static boolean FR(long paramLong)
     {
-      MediaPreloadCore.a locala = MediaPreloadCore.stL;
-      if (MediaPreloadCore.a.a(paramString).stM) {
-        paramString.field_moovReady = true;
-      }
-    }
-    AppMethodBeat.o(204454);
-    return paramString;
-  }
-  
-  public static boolean a(String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, long paramLong1, long paramLong2, int paramInt2, int paramInt3, String paramString5, String paramString6)
-  {
-    AppMethodBeat.i(224305);
-    p.h(paramString1, "mediaId");
-    p.h(paramString2, "originalMediaId");
-    p.h(paramString3, "url");
-    p.h(paramString4, "fileFormat");
-    com.tencent.mm.plugin.finder.model.z localz = new com.tencent.mm.plugin.finder.model.z();
-    localz.field_mediaId = paramString1;
-    localz.field_originMediaId = paramString2;
-    localz.field_url = paramString3;
-    localz.field_reqFormat = paramInt1;
-    localz.field_cacheSize = paramLong1;
-    localz.field_totalSize = paramLong2;
-    localz.field_fileFormat = paramString4;
-    localz.field_state = paramInt2;
-    localz.field_duration = paramInt3;
-    localz.field_urlToken = paramString5;
-    localz.field_decodeKey = paramString6;
-    boolean bool = d(localz);
-    AppMethodBeat.o(224305);
-    return bool;
-  }
-  
-  public static boolean aTi()
-  {
-    boolean bool = true;
-    AppMethodBeat.i(204462);
-    int i = rOl.db.delete(rOl.getTableName(), "rowid >= ?", new String[] { "0" });
-    ae.i("Finder.MediaCacheLogic", "[deleteAll] ret=".concat(String.valueOf(i)));
-    synchronized (lock)
-    {
-      sLs.clear();
-      if (i >= 0)
+      AppMethodBeat.i(167096);
+      if (((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getFeedStorage().Fz(paramLong) != null)
       {
-        AppMethodBeat.o(204462);
-        return bool;
+        AppMethodBeat.o(167096);
+        return true;
       }
-      bool = false;
+      AppMethodBeat.o(167096);
+      return false;
     }
-  }
-  
-  public static List<com.tencent.mm.plugin.finder.model.z> ajB(String paramString)
-  {
-    AppMethodBeat.i(204460);
-    p.h(paramString, "originalMediaId");
-    long l = System.currentTimeMillis();
-    Object localObject1 = rOl;
-    p.h(paramString, "originMediaId");
-    LinkedList localLinkedList = new LinkedList();
-    Object localObject2 = "select *, rowid from FinderMediaCacheInfoV2  where originMediaId = '" + paramString + "' ";
-    localObject1 = ((com.tencent.mm.plugin.finder.storage.q)localObject1).db.rawQuery((String)localObject2, null);
-    if (localObject1 != null)
+    
+    public static FinderItem FS(long paramLong)
     {
-      ((Cursor)localObject1).moveToFirst();
-      while (!((Cursor)localObject1).isAfterLast())
-      {
-        localObject2 = new com.tencent.mm.plugin.finder.model.z();
-        ((com.tencent.mm.plugin.finder.model.z)localObject2).convertFrom((Cursor)localObject1);
-        localLinkedList.add(localObject2);
-        ((Cursor)localObject1).moveToNext();
-      }
-      ((Cursor)localObject1).close();
+      AppMethodBeat.i(167097);
+      Log.d(c.access$getTAG$cp(), "get feed local id %s", new Object[] { Long.valueOf(paramLong) });
+      FinderItem localFinderItem = ((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getFeedStorage().Fz(paramLong);
+      AppMethodBeat.o(167097);
+      return localFinderItem;
     }
-    ae.i("Finder.MediaCacheLogic", "[queryByOriginalMediaId] cost=" + (System.currentTimeMillis() - l) + "ms originalMediaId=" + paramString + " size=" + localLinkedList.size());
-    paramString = (List)localLinkedList;
-    AppMethodBeat.o(204460);
-    return paramString;
-  }
-  
-  public static void ajz(String paramString)
-  {
-    AppMethodBeat.i(204456);
-    p.h(paramString, "mediaId");
-    com.tencent.mm.ac.c.c("FinderMediaCacheUpdateThread", (d.g.a.a)new b(paramString));
-    AppMethodBeat.o(204456);
-  }
-  
-  public static m b(bvz parambvz)
-  {
-    AppMethodBeat.i(204464);
-    p.h(parambvz, "media");
-    Object localObject2 = parambvz.mediaId;
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = "";
-    }
-    localObject2 = ((Iterable)j.a((Iterable)ajB((String)localObject1), (Comparator)new a())).iterator();
-    do
+    
+    public static boolean FT(long paramLong)
     {
-      if (!((Iterator)localObject2).hasNext()) {
-        break;
-      }
-      localObject1 = ((Iterator)localObject2).next();
-    } while (!((com.tencent.mm.plugin.finder.model.z)localObject1).cEK());
-    for (;;)
-    {
-      localObject1 = (com.tencent.mm.plugin.finder.model.z)localObject1;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject2 = com.tencent.mm.plugin.finder.preload.model.a.sut;
-      parambvz = new m(parambvz, a.a.aiD(((com.tencent.mm.plugin.finder.model.z)localObject1).field_fileFormat), ((com.tencent.mm.plugin.finder.model.z)localObject1).field_reqFormat, null, 8);
-      AppMethodBeat.o(204464);
-      return parambvz;
-      localObject1 = null;
-    }
-    parambvz = ((a.b)j.jl(((PluginFinder)g.ad(PluginFinder.class)).getMediaPreloadModel().a(parambvz, false))).suv;
-    AppMethodBeat.o(204464);
-    return parambvz;
-  }
-  
-  public static com.tencent.mm.plugin.finder.model.z bi(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(204458);
-    p.h(paramString, "mediaId");
-    if (((CharSequence)paramString).length() == 0) {}
-    com.tencent.mm.plugin.finder.model.z localz;
-    for (int i = 1; i != 0; i = 0)
-    {
-      localz = new com.tencent.mm.plugin.finder.model.z();
-      localz.field_mediaId = paramString;
-      AppMethodBeat.o(204458);
-      return localz;
-    }
-    synchronized (lock)
-    {
-      localz = (com.tencent.mm.plugin.finder.model.z)sLs.get(paramString);
-      if (localz == null) {
-        localz = rOl.ajq(paramString);
-      }
-    }
-    for (;;)
-    {
-      synchronized (lock)
-      {
-        ((Map)sLs).put(paramString, localz);
-        d.z localz1 = d.z.Nhr;
-        p.g(localz, "synchronized(lock) { mem…        dbCache\n        }");
-        if (paramBoolean)
-        {
-          if (((CharSequence)localz.getFilePath()).length() <= 0) {
-            break label257;
-          }
-          i = 1;
-          if ((i != 0) && (!o.fB(localz.getFilePath())))
-          {
-            localz.reset();
-            localz.field_state = -2;
-            d(localz);
-            ae.i("Finder.MediaCacheLogic", "[query] mediaId=" + paramString + " not found file. state=" + localz.field_state + " filePath=" + localz.getFilePath());
-          }
-        }
-        AppMethodBeat.o(204458);
-        return localz;
-        paramString = finally;
-        AppMethodBeat.o(204458);
-        throw paramString;
-      }
-      label257:
-      i = 0;
-    }
-  }
-  
-  public static boolean d(com.tencent.mm.plugin.finder.model.z paramz)
-  {
-    AppMethodBeat.i(204453);
-    p.h(paramz, "cache");
-    paramz.field_updateTime = ch.aDc();
-    ??? = rOl;
-    Object localObject2 = paramz.field_mediaId;
-    p.g(localObject2, "cache.field_mediaId");
-    p.h(localObject2, "mediaId");
-    localObject2 = "select *, rowid from FinderMediaCacheInfoV2  where mediaId = '" + (String)localObject2 + "' ";
-    ??? = ((com.tencent.mm.plugin.finder.storage.q)???).db.rawQuery((String)localObject2, null);
-    p.g(???, "cursor");
-    boolean bool1;
-    if (((Cursor)???).getCount() > 0) {
-      bool1 = true;
-    }
-    for (;;)
-    {
-      ((Cursor)???).close();
-      boolean bool2;
-      if (bool1) {
-        bool2 = rOl.c(paramz);
-      }
-      synchronized (lock)
-      {
-        localObject2 = (Map)sLs;
-        String str1 = paramz.field_mediaId;
-        p.g(str1, "cache.field_mediaId");
-        com.tencent.mm.plugin.finder.storage.q localq = rOl;
-        String str2 = paramz.field_mediaId;
-        p.g(str2, "cache.field_mediaId");
-        ((Map)localObject2).put(str1, localq.ajq(str2));
-        localObject2 = d.z.Nhr;
-        ae.i("Finder.MediaCacheLogic", "replaced[" + bool2 + "] isExist=" + bool1 + ' ' + paramz);
-        AppMethodBeat.o(204453);
-        return bool2;
-        bool1 = false;
-        continue;
-        bool2 = rOl.b(paramz);
-      }
-    }
-  }
-  
-  public static boolean dy(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(204457);
-    p.h(paramString, "mediaId");
-    com.tencent.mm.plugin.finder.storage.q localq = rOl;
-    com.tencent.mm.plugin.finder.model.z localz = bi(paramString, false);
-    Object localObject;
-    if (!localz.field_moovReady)
-    {
-      localObject = MediaPreloadCore.stL;
-      if (MediaPreloadCore.a.a(localz).stM) {
-        localz.field_moovReady = true;
-      }
-      ae.i("Finder.MediaCacheLogic", "update moov ready " + localz.field_mediaId + " moovReady:" + localz.field_moovReady + " audio:" + localz.field_audioBitrate + " video:" + localz.field_videoBitrate + " frameRate:" + localz.field_frameRate);
-    }
-    localz.field_cacheSize = 0L;
-    localz.field_totalSize = 0L;
-    localz.field_state = paramInt;
-    if (paramInt >= 2)
-    {
-      localObject = (CharSequence)localz.field_fileFormat;
-      if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
-        break label327;
-      }
-      i = 1;
-      if (i == 0)
-      {
-        localObject = (CharSequence)localz.field_originMediaId;
-        if ((localObject != null) && (((CharSequence)localObject).length() != 0)) {
-          break label332;
-        }
-      }
-    }
-    label327:
-    label332:
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
-      {
-        localObject = localz.field_originMediaId;
-        p.g(localObject, "this.field_originMediaId");
-        String str = localz.field_fileFormat;
-        p.g(str, "this.field_fileFormat");
-        gv((String)localObject, str);
-      }
-      if (ae.getLogLevel() <= 1) {
-        ae.d("Finder.MediaCacheLogic", "[updateProgress] mediaId=" + paramString + " cacheSize=0 totalSize=0 state=" + paramInt + " moovReady=" + localz.field_moovReady);
-      }
-      boolean bool = localq.c(localz);
-      AppMethodBeat.o(204457);
+      AppMethodBeat.i(167098);
+      boolean bool = ((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getFeedStorage().FA(paramLong);
+      Log.i(c.access$getTAG$cp(), "delete feed " + paramLong + " success " + bool);
+      AppMethodBeat.o(167098);
       return bool;
-      i = 0;
-      break;
     }
-  }
-  
-  public static com.tencent.mm.plugin.finder.model.z gu(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(204455);
-    p.h(paramString1, "mediaId");
-    p.h(paramString2, "fileFormat");
-    paramString1 = bi(paramString1, false);
-    paramString1.field_moovReady = true;
-    if ((p.i(paramString1.field_fileFormat, paramString2) ^ true)) {
-      paramString1.field_fileFormat = paramString2;
-    }
-    AppMethodBeat.o(204455);
-    return paramString1;
-  }
-  
-  private static void gv(String paramString1, String arg1)
-  {
-    AppMethodBeat.i(204463);
-    if (((CharSequence)paramString1).length() == 0) {}
-    for (int i = 1; i != 0; i = 0)
+    
+    public static void FU(long paramLong)
     {
-      ae.w("Finder.MediaCacheLogic", "[deleteBelowFileFormat] originalMediaId is Empty.");
-      AppMethodBeat.o(204463);
-      return;
+      AppMethodBeat.i(252066);
+      Object localObject = e.vFX;
+      e.a.FE(paramLong);
+      localObject = com.tencent.mm.plugin.finder.storage.data.l.vGw;
+      l.a.FP(paramLong);
+      AppMethodBeat.o(252066);
     }
-    Object localObject2 = (Iterable)ajB(paramString1);
-    Object localObject1 = (Collection)new ArrayList();
-    localObject2 = ((Iterable)localObject2).iterator();
-    label156:
-    while (((Iterator)localObject2).hasNext())
+    
+    public static boolean FV(long paramLong)
     {
-      Object localObject3 = ((Iterator)localObject2).next();
-      Object localObject4 = (com.tencent.mm.plugin.finder.model.z)localObject3;
-      if (p.i(((com.tencent.mm.plugin.finder.model.z)localObject4).field_originMediaId, paramString1))
-      {
-        localObject4 = ((com.tencent.mm.plugin.finder.model.z)localObject4).field_fileFormat;
-        p.g(localObject4, "it.field_fileFormat");
-        if (???.compareTo((String)localObject4) >= 0) {}
-      }
-      for (i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label156;
-        }
-        ((Collection)localObject1).add(localObject3);
-        break;
-      }
+      AppMethodBeat.i(167099);
+      boolean bool = com.tencent.mm.plugin.finder.storage.l.a(((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getFeedStorage(), paramLong);
+      Log.i(c.access$getTAG$cp(), "Finder.PostLog delete feed localId " + paramLong + " success " + bool);
+      AppMethodBeat.o(167099);
+      return true;
     }
-    localObject1 = ((Iterable)localObject1).iterator();
-    for (;;)
+    
+    public static List<FinderItem> a(List<? extends FinderObject> paramList, int paramInt, bbn parambbn)
     {
-      if (((Iterator)localObject1).hasNext())
+      AppMethodBeat.i(252060);
+      p.h(paramList, "feedList");
+      int i = 0;
+      ArrayList localArrayList = new ArrayList();
+      Object localObject1 = (Iterable)paramList;
+      Collection localCollection = (Collection)new ArrayList(kotlin.a.j.a((Iterable)localObject1, 10));
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject2 = (com.tencent.mm.plugin.finder.model.z)((Iterator)localObject1).next();
-        if (!rOl.delete(((com.tencent.mm.plugin.finder.model.z)localObject2).systemRowid)) {}
-      }
-      else
-      {
-        synchronized (lock)
+        FinderObject localFinderObject = (FinderObject)((Iterator)localObject1).next();
+        Object localObject2 = FinderItem.Companion;
+        localObject2 = FinderItem.a.a(localFinderObject, paramInt);
+        Object localObject3 = n.uNU;
+        n.d((FinderItem)localObject2);
+        localObject3 = e.vFX;
+        e.a.n((FinderItem)localObject2);
+        i += 1;
+        Object localObject4;
+        if (((FinderItem)localObject2).getMegaVideo() != null)
         {
-          sLs.remove(((com.tencent.mm.plugin.finder.model.z)localObject2).field_mediaId);
-          ae.i("Finder.MediaCacheLogic", "[deleteBelowFileFormat] originalMediaId=" + paramString1 + " fileFormat=" + ((com.tencent.mm.plugin.finder.model.z)localObject2).field_fileFormat + " systemRowid" + ((com.tencent.mm.plugin.finder.model.z)localObject2).systemRowid);
+          localObject3 = c.vGN;
+          localObject3 = kotlin.a.j.listOf(((FinderItem)localObject2).getFeedObject());
+          localObject4 = new bbn();
+          ((bbn)localObject4).tCE = 45;
+          b((List)localObject3, (bbn)localObject4);
         }
+        if (parambbn != null)
+        {
+          localObject3 = ((FinderItem)localObject2).getFeedObject().sessionBuffer;
+          if (localObject3 != null)
+          {
+            localObject4 = k.vfA;
+            k.e(((FinderItem)localObject2).getId(), parambbn.tCE, (String)localObject3);
+          }
+          localObject3 = e.vFX;
+          e.a.k(parambbn.tCE, paramList);
+        }
+        localObject3 = ((FinderItem)localObject2).getFeedObject().contact;
+        if (localObject3 != null)
+        {
+          localObject4 = com.tencent.mm.plugin.finder.api.c.tsp;
+          com.tencent.mm.plugin.finder.api.c.a.b((FinderContact)localObject3);
+        }
+        Log.i(c.access$getTAG$cp(), "insert item index id:" + localFinderObject.nickname + " obj=" + localFinderObject.id + " sourceType " + paramInt + ' ');
+        localCollection.add(localObject2);
+      }
+      localArrayList.addAll((Collection)localCollection);
+      Log.i(c.access$getTAG$cp(), "[insertFeedList] insert count=" + paramList.size() + " successfulCount=" + i + " sourceType=" + paramInt);
+      paramList = (List)localArrayList;
+      AppMethodBeat.o(252060);
+      return paramList;
+    }
+    
+    public static void a(List<? extends bo> paramList, int paramInt, String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(252063);
+      p.h(paramList, "list");
+      p.h(paramString, "username");
+      if (!paramBoolean)
+      {
+        AppMethodBeat.o(252063);
+        return;
+      }
+      Object localObject1 = y.vXH;
+      int j = y.LJ(paramInt);
+      if (((CharSequence)paramString).length() > 0)
+      {
+        i = 1;
+        if ((i == 0) || (!(p.j(paramString, z.aUg()) ^ true)) || (j != 1)) {
+          break label193;
+        }
+      }
+      label193:
+      for (int i = 3;; i = j)
+      {
+        localObject1 = new LinkedList();
+        paramList = ((Iterable)paramList).iterator();
+        for (;;)
+        {
+          if (paramList.hasNext())
+          {
+            Object localObject2 = (bo)paramList.next();
+            if ((localObject2 instanceof BaseFinderFeed))
+            {
+              localObject2 = ((BaseFinderFeed)localObject2).feedObject.getFeedObject();
+              ((LinkedList)localObject1).add(new r(0, ((FinderObject)localObject2).id, (FinderObject)localObject2, paramInt));
+              continue;
+              i = 0;
+              break;
+            }
+          }
+        }
+        paramList = com.tencent.mm.plugin.finder.storage.data.l.vGw;
+        l.a.a(i, paramString, (LinkedList)localObject1);
+        AppMethodBeat.o(252063);
+        return;
+      }
+    }
+    
+    public static LinkedList<FinderItem> af(String paramString, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(252065);
+      p.h(paramString, "username");
+      paramString = ((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getFeedStorage().af(paramString, paramInt1, paramInt2);
+      AppMethodBeat.o(252065);
+      return paramString;
+    }
+    
+    public static cjl b(FinderMedia paramFinderMedia)
+    {
+      AppMethodBeat.i(252068);
+      p.h(paramFinderMedia, "feedMedia");
+      paramFinderMedia = com.tencent.mm.plugin.finder.storage.data.j.a(paramFinderMedia);
+      AppMethodBeat.o(252068);
+      return paramFinderMedia;
+    }
+    
+    public static void b(List<? extends FinderObject> paramList, bbn parambbn)
+    {
+      AppMethodBeat.i(252062);
+      p.h(paramList, "megaVideoList");
+      Iterator localIterator = ((Iterable)paramList).iterator();
+      Object localObject2;
+      Object localObject1;
+      label103:
+      Object localObject3;
+      if (localIterator.hasNext())
+      {
+        localObject2 = (FinderObject)localIterator.next();
+        localObject1 = e.vFX;
+        e.a.j((FinderObject)localObject2);
+        localObject1 = ((FinderObject)localObject2).attachmentList;
+        Object localObject4;
+        if (localObject1 != null)
+        {
+          localObject1 = ((aoq)localObject1).LAM;
+          if (localObject1 != null)
+          {
+            localObject1 = (aop)kotlin.a.j.kt((List)localObject1);
+            if (localObject1 != null)
+            {
+              localObject1 = ((aop)localObject1).LAL;
+              if (localObject1 != null)
+              {
+                localObject1 = ((bei)localObject1).LIA;
+                if ((parambbn != null) && (localObject1 != null))
+                {
+                  localObject3 = ((cng)localObject1).sessionBuffer;
+                  if (localObject3 != null)
+                  {
+                    localObject4 = k.vfA;
+                    k.d(((cng)localObject1).id, parambbn.tCE, (String)localObject3);
+                  }
+                }
+                localObject4 = c.access$getTAG$cp();
+                StringBuilder localStringBuilder = new StringBuilder("handleFeedList: insert mega video item index id:");
+                localObject2 = ((FinderObject)localObject2).contact;
+                if (localObject2 != null)
+                {
+                  localObject3 = ((FinderContact)localObject2).nickname;
+                  localObject2 = localObject3;
+                  if (localObject3 != null) {}
+                }
+                else
+                {
+                  localObject2 = "";
+                }
+                localObject2 = localStringBuilder.append((String)localObject2).append(" obj=");
+                if (localObject1 == null) {
+                  break label244;
+                }
+              }
+            }
+          }
+        }
+        label244:
+        for (localObject1 = Long.valueOf(((cng)localObject1).id);; localObject1 = "")
+        {
+          Log.i((String)localObject4, localObject1 + ' ');
+          break;
+          localObject1 = null;
+          break label103;
+        }
+      }
+      if (parambbn != null)
+      {
+        localObject1 = e.vFX;
+        int i = parambbn.tCE;
+        parambbn = (Iterable)paramList;
+        localObject2 = (Collection)new ArrayList(kotlin.a.j.a(parambbn, 10));
+        localObject3 = parambbn.iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          parambbn = ((FinderObject)((Iterator)localObject3).next()).attachmentList;
+          if (parambbn != null)
+          {
+            parambbn = parambbn.LAM;
+            if (parambbn != null)
+            {
+              parambbn = (aop)kotlin.a.j.kt((List)parambbn);
+              if (parambbn != null)
+              {
+                parambbn = parambbn.LAL;
+                if (parambbn != null)
+                {
+                  localObject1 = parambbn.LIA;
+                  parambbn = (bbn)localObject1;
+                  if (localObject1 != null) {
+                    break label375;
+                  }
+                }
+              }
+            }
+          }
+          parambbn = new cng();
+          label375:
+          ((Collection)localObject2).add(parambbn);
+        }
+        e.a.l(i, (List)localObject2);
+      }
+      Log.i(c.access$getTAG$cp(), "[handleFeedList] insert mega video count=" + paramList.size());
+      AppMethodBeat.o(252062);
+    }
+    
+    public static List<Integer> dyN()
+    {
+      AppMethodBeat.i(167092);
+      Object localObject = c.dyM();
+      a locala = c.vGN;
+      localObject = (List)((f)localObject).getValue();
+      AppMethodBeat.o(167092);
+      return localObject;
+    }
+    
+    public static void q(FinderItem paramFinderItem)
+    {
+      AppMethodBeat.i(252067);
+      p.h(paramFinderItem, "finderObj");
+      LinkedList localLinkedList = new LinkedList();
+      localLinkedList.addAll((Collection)paramFinderItem.getClipListExt());
+      paramFinderItem.setClipListExt(localLinkedList);
+      r(paramFinderItem);
+      AppMethodBeat.o(252067);
+    }
+    
+    public static boolean r(FinderItem paramFinderItem)
+    {
+      AppMethodBeat.i(167100);
+      p.h(paramFinderItem, "feedObject");
+      long l2 = paramFinderItem.field_id;
+      long l3 = paramFinderItem.getLocalId();
+      com.tencent.mm.plugin.finder.storage.l locall = ((PluginFinder)com.tencent.mm.kernel.g.ah(PluginFinder.class)).getFeedStorage();
+      long l1 = -1L;
+      boolean bool;
+      if (FR(l3)) {
+        bool = locall.b(l3, paramFinderItem);
+      }
+      for (;;)
+      {
+        if (bool) {
+          l1 = paramFinderItem.getLocalId();
+        }
+        Log.i(c.access$getTAG$cp(), "replace feedSucc %s, rowId %d", new Object[] { Boolean.valueOf(bool), Long.valueOf(l1) });
+        AppMethodBeat.o(167100);
+        return bool;
+        if (l2 != 0L) {
+          bool = locall.a(l2, paramFinderItem);
+        } else {
+          bool = false;
+        }
+      }
+    }
+    
+    public static BaseFinderFeed s(FinderItem paramFinderItem)
+    {
+      Object localObject = null;
+      AppMethodBeat.i(167102);
+      p.h(paramFinderItem, "finderObject");
+      BaseFinderFeed localBaseFinderFeed;
+      switch (paramFinderItem.getMediaType())
+      {
+      case 3: 
+      case 5: 
+      case 6: 
+      default: 
+        localBaseFinderFeed = (BaseFinderFeed)new ab(paramFinderItem);
+      }
+      for (;;)
+      {
+        FinderContact localFinderContact = paramFinderItem.getFeedObject().contact;
+        paramFinderItem = localObject;
+        if (localFinderContact != null) {
+          paramFinderItem = b.a(localFinderContact, null);
+        }
+        localBaseFinderFeed.contact = paramFinderItem;
+        AppMethodBeat.o(167102);
+        return localBaseFinderFeed;
+        localBaseFinderFeed = (BaseFinderFeed)new u(paramFinderItem);
+        continue;
+        localBaseFinderFeed = (BaseFinderFeed)new ac(paramFinderItem);
+        continue;
+        localBaseFinderFeed = (BaseFinderFeed)new ad(paramFinderItem);
+        continue;
+        localBaseFinderFeed = (BaseFinderFeed)new aa(paramFinderItem);
+        continue;
+        localBaseFinderFeed = (BaseFinderFeed)new ab(paramFinderItem);
+        continue;
+        localBaseFinderFeed = (BaseFinderFeed)new w(paramFinderItem);
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
-  public static final class a<T>
-    implements Comparator<T>
-  {
-    public final int compare(T paramT1, T paramT2)
-    {
-      AppMethodBeat.i(204451);
-      int i = d.b.a.a((Comparable)Integer.valueOf(((com.tencent.mm.plugin.finder.model.z)paramT1).field_fileFormat.hashCode()), (Comparable)Integer.valueOf(((com.tencent.mm.plugin.finder.model.z)paramT2).field_fileFormat.hashCode()));
-      AppMethodBeat.o(204451);
-      return i;
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "", "invoke"})
   static final class b
-    extends d.g.b.q
-    implements d.g.a.a<d.z>
+    extends q
+    implements a<List<? extends Integer>>
   {
-    b(String paramString)
+    public static final b vGO;
+    
+    static
+    {
+      AppMethodBeat.i(167090);
+      vGO = new b();
+      AppMethodBeat.o(167090);
+    }
+    
+    b()
     {
       super();
     }
@@ -423,7 +445,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.logic.c
  * JD-Core Version:    0.7.0.1
  */

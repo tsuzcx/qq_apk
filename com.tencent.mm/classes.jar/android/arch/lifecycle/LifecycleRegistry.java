@@ -29,7 +29,7 @@ public class LifecycleRegistry
     this.cB = Lifecycle.State.INITIALIZED;
   }
   
-  private boolean U()
+  private boolean X()
   {
     if (this.cA.mSize == 0) {
       return true;
@@ -39,7 +39,7 @@ public class LifecycleRegistry
     return (localState1 == localState2) && (this.cB == localState2);
   }
   
-  private void V()
+  private void Y()
   {
     this.cG.remove(this.cG.size() - 1);
   }
@@ -97,7 +97,7 @@ public class LifecycleRegistry
   
   private void a(LifecycleOwner paramLifecycleOwner)
   {
-    b.d locald = this.cA.S();
+    b.d locald = this.cA.V();
     while ((locald.hasNext()) && (!this.cF))
     {
       Map.Entry localEntry = (Map.Entry)locald.next();
@@ -106,7 +106,7 @@ public class LifecycleRegistry
       {
         b(localObserverWithState.cB);
         localObserverWithState.a(paramLifecycleOwner, c(localObserverWithState.cB));
-        V();
+        Y();
       }
     }
   }
@@ -160,7 +160,7 @@ public class LifecycleRegistry
           {
             b(b((Lifecycle.Event)localObject));
             localObserverWithState.a(paramLifecycleOwner, (Lifecycle.Event)localObject);
-            V();
+            Y();
             break;
             localObject = Lifecycle.Event.ON_STOP;
             continue;
@@ -195,7 +195,7 @@ public class LifecycleRegistry
     if (localLifecycleOwner == null) {
       return;
     }
-    while (!U())
+    while (!X())
     {
       this.cF = false;
       if (this.cB.compareTo(((ObserverWithState)this.cA.bQ.getValue()).cB) < 0) {
@@ -239,7 +239,7 @@ public class LifecycleRegistry
       {
         b(localObserverWithState.cB);
         localObserverWithState.a(localLifecycleOwner, c(localObserverWithState.cB));
-        V();
+        Y();
         localState = a(paramLifecycleObserver);
       }
     }

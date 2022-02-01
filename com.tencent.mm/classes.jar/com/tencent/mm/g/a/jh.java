@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class jh
-  extends b
+  extends IEvent
 {
-  public a dxi;
+  public a dOa;
   
   public jh()
   {
@@ -15,16 +15,16 @@ public final class jh
   
   private jh(byte paramByte)
   {
-    AppMethodBeat.i(149864);
-    this.dxi = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(149862);
+    this.dOa = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(149864);
+    AppMethodBeat.o(149862);
   }
   
   public static final class a
   {
-    public String url;
+    public String appId;
   }
 }
 

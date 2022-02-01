@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.protocal.protobuf.TimeLineObject;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class kf
-  extends b
+  extends IEvent
 {
-  public kf.a dyi;
+  public a dPf;
+  public b dPg;
   
   public kf()
   {
@@ -15,16 +17,27 @@ public final class kf
   
   private kf(byte paramByte)
   {
-    AppMethodBeat.i(149867);
-    this.dyi = new kf.a();
-    this.IvZ = false;
+    AppMethodBeat.i(125621);
+    this.dPf = new a();
+    this.dPg = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(149867);
+    AppMethodBeat.o(125621);
+  }
+  
+  public static final class a
+  {
+    public String dHp;
+  }
+  
+  public static final class b
+  {
+    public TimeLineObject dPh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.kf
  * JD-Core Version:    0.7.0.1
  */

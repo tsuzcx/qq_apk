@@ -7,26 +7,24 @@ import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
-import com.tencent.mm.plugin.sns.ad.f.j;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.y;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
-public abstract class FloatCompHelperWithLifecycle<INFO extends y, COMP extends m>
+public abstract class FloatCompHelperWithLifecycle<INFO extends z, COMP extends com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m>
   implements LifecycleObserver
 {
+  protected INFO DtZ;
+  protected COMP Dua;
+  protected ViewGroup Dub;
   protected Context mContext;
-  protected INFO znN;
-  protected COMP znO;
-  protected ViewGroup znP;
   
   protected FloatCompHelperWithLifecycle(INFO paramINFO, ViewGroup paramViewGroup)
   {
-    this.znN = paramINFO;
-    this.znP = paramViewGroup;
+    this.DtZ = paramINFO;
+    this.Dub = paramViewGroup;
     if (paramViewGroup != null) {}
-    for (paramINFO = paramViewGroup.getContext();; paramINFO = ak.getContext())
+    for (paramINFO = paramViewGroup.getContext();; paramINFO = MMApplicationContext.getContext())
     {
       this.mContext = paramINFO;
       return;
@@ -35,40 +33,35 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends y, COMP extends 
   
   protected abstract COMP a(Context paramContext, INFO paramINFO, ViewGroup paramViewGroup);
   
-  public final COMP dUQ()
-  {
-    return this.znO;
-  }
-  
   @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
   public final void doCreate(LifecycleOwner paramLifecycleOwner)
   {
     try
     {
-      paramLifecycleOwner = this.znN;
-      Object localObject = this.znP;
+      paramLifecycleOwner = this.DtZ;
+      Object localObject = this.Dub;
       if ((paramLifecycleOwner != null) && (localObject != null))
       {
-        this.znO = a(((ViewGroup)localObject).getContext(), paramLifecycleOwner, (ViewGroup)localObject);
-        paramLifecycleOwner = this.znP;
-        localObject = this.znO;
+        this.Dua = a(((ViewGroup)localObject).getContext(), paramLifecycleOwner, (ViewGroup)localObject);
+        paramLifecycleOwner = this.Dub;
+        localObject = this.Dua;
         if ((paramLifecycleOwner != null) && (localObject != null))
         {
-          localObject = ((m)localObject).getView();
+          localObject = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.m)localObject).getView();
           if (localObject != null)
           {
-            eL((View)localObject);
-            j.a(paramLifecycleOwner, (View)localObject, paramLifecycleOwner.getChildCount() - 1);
+            eX((View)localObject);
+            com.tencent.mm.plugin.sns.ad.i.m.a(paramLifecycleOwner, (View)localObject, paramLifecycleOwner.getChildCount() - 1);
           }
         }
         else
         {
-          ae.w("FloatCompHelperWithLifecycle", "the comp is null, please check config!!!!");
+          Log.w("FloatCompHelperWithLifecycle", "the comp is null, please check config!!!!");
         }
       }
       else
       {
-        ae.w("FloatCompHelperWithLifecycle", "the info or container is null, please check input param");
+        Log.w("FloatCompHelperWithLifecycle", "the info or container is null, please check input param");
       }
       return;
     }
@@ -80,8 +73,8 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends y, COMP extends 
   {
     try
     {
-      if (this.znO != null) {
-        this.znO.dUM();
+      if (this.Dua != null) {
+        this.Dua.eXd();
       }
       return;
     }
@@ -93,8 +86,8 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends y, COMP extends 
   {
     try
     {
-      if (this.znO != null) {
-        this.znO.dUL();
+      if (this.Dua != null) {
+        this.Dua.eXa();
       }
       return;
     }
@@ -106,19 +99,24 @@ public abstract class FloatCompHelperWithLifecycle<INFO extends y, COMP extends 
   {
     try
     {
-      if (this.znO != null) {
-        this.znO.dUK();
+      if (this.Dua != null) {
+        this.Dua.eWZ();
       }
       return;
     }
     catch (Throwable paramLifecycleOwner) {}
   }
   
-  protected void eL(View paramView) {}
+  protected void eX(View paramView) {}
+  
+  public final COMP eXj()
+  {
+    return this.Dua;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.landingpage.helper.floatpage.FloatCompHelperWithLifecycle
  * JD-Core Version:    0.7.0.1
  */

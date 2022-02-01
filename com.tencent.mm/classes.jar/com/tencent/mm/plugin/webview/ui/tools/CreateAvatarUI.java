@@ -29,79 +29,51 @@ import android.widget.TextView;
 import android.widget.TextView.OnEditorActionListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aj.e;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.gallery.picker.view.ImageCropUI;
-import com.tencent.mm.plugin.image.d;
-import com.tencent.mm.plugin.webview.j.c.b;
-import com.tencent.mm.plugin.webview.model.i;
-import com.tencent.mm.protocal.protobuf.bhp;
-import com.tencent.mm.protocal.protobuf.cd;
-import com.tencent.mm.protocal.protobuf.cdx;
-import com.tencent.mm.protocal.protobuf.cf;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.webview.k.c.b;
+import com.tencent.mm.plugin.webview.model.k;
+import com.tencent.mm.pluginsdk.ui.tools.s;
+import com.tencent.mm.protocal.protobuf.btn;
+import com.tencent.mm.protocal.protobuf.cm;
+import com.tencent.mm.protocal.protobuf.co;
+import com.tencent.mm.protocal.protobuf.cue;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.h;
+import com.tencent.mm.vfs.o;
 import java.io.ByteArrayOutputStream;
 
 public class CreateAvatarUI
   extends MMActivity
-  implements f, com.tencent.mm.ui.tools.b.c.a
+  implements com.tencent.mm.ak.i, com.tencent.mm.ui.tools.b.c.a
 {
-  private InputMethodManager EqG;
-  private EditText EqH;
-  private String EqI;
-  private boolean EqJ = true;
-  private boolean EqK = false;
-  private volatile com.tencent.mm.plugin.webview.j.c EqL;
-  private String EqM;
-  private boolean EqN = false;
-  private long EqO = 0L;
-  private long EqP = 0L;
+  private InputMethodManager JdP;
+  private EditText JdQ;
+  private String JdR;
+  private boolean JdS = true;
+  private boolean JdT = false;
+  private volatile com.tencent.mm.plugin.webview.k.c JdU;
+  private String JdV;
+  private boolean JdW = false;
+  private long JdX = 0L;
+  private long JdY = 0L;
   private String appId;
-  private com.tencent.mm.ui.base.p fSP;
   private String fileId;
+  private com.tencent.mm.ui.base.q gxX;
   
-  private boolean Xu(int paramInt)
-  {
-    AppMethodBeat.i(79571);
-    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 7) || (paramInt == 8))
-    {
-      ae.e("MicroMsg.CreateAvatarUI", "isNetworkAvailable false, errType = ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(79571);
-      return false;
-    }
-    if (!az.isConnected(this))
-    {
-      ae.e("MicroMsg.CreateAvatarUI", "isNetworkAvailable false, not connected");
-      AppMethodBeat.o(79571);
-      return false;
-    }
-    AppMethodBeat.o(79571);
-    return true;
-  }
-  
-  private void aW(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(79569);
-    ae.i("MicroMsg.CreateAvatarUI", "doAddAvatar appid: %s", new Object[] { paramString1 });
-    bzQ();
-    paramString1 = new i(paramString1, paramString2, paramString3);
-    g.ajj().a(paramString1, 0);
-    this.EqO = System.currentTimeMillis();
-    AppMethodBeat.o(79569);
-  }
-  
-  private static byte[] au(Bitmap paramBitmap)
+  private static byte[] aH(Bitmap paramBitmap)
   {
     AppMethodBeat.i(79566);
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    com.tencent.mm.sdk.platformtools.h.a(paramBitmap, Bitmap.CompressFormat.JPEG, 85, localByteArrayOutputStream);
+    BitmapUtil.compress(paramBitmap, Bitmap.CompressFormat.JPEG, 85, localByteArrayOutputStream);
     paramBitmap = localByteArrayOutputStream.toByteArray();
     try
     {
@@ -113,21 +85,40 @@ public class CreateAvatarUI
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.CreateAvatarUI", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.CreateAvatarUI", localException, "", new Object[0]);
       }
     }
   }
   
-  private void bzQ()
+  private boolean agc(int paramInt)
+  {
+    AppMethodBeat.i(79571);
+    if ((paramInt == 1) || (paramInt == 2) || (paramInt == 7) || (paramInt == 8))
+    {
+      Log.e("MicroMsg.CreateAvatarUI", "isNetworkAvailable false, errType = ".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(79571);
+      return false;
+    }
+    if (!NetStatusUtil.isConnected(this))
+    {
+      Log.e("MicroMsg.CreateAvatarUI", "isNetworkAvailable false, not connected");
+      AppMethodBeat.o(79571);
+      return false;
+    }
+    AppMethodBeat.o(79571);
+    return true;
+  }
+  
+  private void bWL()
   {
     AppMethodBeat.i(79572);
-    if ((this.fSP != null) && (!this.fSP.isShowing()))
+    if ((this.gxX != null) && (!this.gxX.isShowing()))
     {
-      this.fSP.show();
+      this.gxX.show();
       AppMethodBeat.o(79572);
       return;
     }
-    this.fSP = com.tencent.mm.ui.base.h.b(this, getString(2131757962), true, new DialogInterface.OnCancelListener()
+    this.gxX = h.a(this, getString(2131758211), true, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface)
       {
@@ -140,7 +131,7 @@ public class CreateAvatarUI
         }
         catch (Exception paramAnonymousDialogInterface)
         {
-          ae.e("MicroMsg.CreateAvatarUI", "showProgressDlg onCancel exp: %s ", new Object[] { paramAnonymousDialogInterface.getLocalizedMessage() });
+          Log.e("MicroMsg.CreateAvatarUI", "showProgressDlg onCancel exp: %s ", new Object[] { paramAnonymousDialogInterface.getLocalizedMessage() });
           AppMethodBeat.o(79550);
         }
       }
@@ -148,70 +139,74 @@ public class CreateAvatarUI
     AppMethodBeat.o(79572);
   }
   
-  private void eVx()
+  private void bg(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(79569);
+    Log.i("MicroMsg.CreateAvatarUI", "doAddAvatar appid: %s", new Object[] { paramString1 });
+    bWL();
+    paramString1 = new com.tencent.mm.plugin.webview.model.i(paramString1, paramString2, paramString3);
+    g.azz().a(paramString1, 0);
+    this.JdX = System.currentTimeMillis();
+    AppMethodBeat.o(79569);
+  }
+  
+  private void gep()
   {
     AppMethodBeat.i(79573);
-    if (this.fSP == null)
+    if (this.gxX == null)
     {
       AppMethodBeat.o(79573);
       return;
     }
-    this.fSP.dismiss();
+    this.gxX.dismiss();
     AppMethodBeat.o(79573);
   }
   
-  public final void Ky(String paramString)
+  public final void Tw(String paramString)
   {
     AppMethodBeat.i(79563);
-    this.EqN = true;
-    if ((this.EqK) || (this.EqL == null) || (this.EqJ))
+    this.JdW = true;
+    if ((this.JdT) || (this.JdU == null) || (this.JdS))
     {
       if ((this.fileId == null) || (this.fileId.isEmpty()))
       {
-        Object localObject = com.tencent.mm.sdk.platformtools.h.b(com.tencent.mm.sdk.platformtools.h.aaZ(2131690013), 500, 500, false);
+        Object localObject = BitmapUtil.getCenterCropBitmap(BitmapUtil.getBitmapNative(2131690042), 500, 500, false);
         String str = this.appId;
-        localObject = au((Bitmap)localObject);
-        ae.i("MicroMsg.CreateAvatarUI", "doAddAvatar appid: %s", new Object[] { str });
-        bzQ();
-        paramString = new i(str, paramString, (byte[])localObject);
-        g.ajj().a(paramString, 0);
-        this.EqO = System.currentTimeMillis();
+        localObject = aH((Bitmap)localObject);
+        Log.i("MicroMsg.CreateAvatarUI", "doAddAvatar appid: %s", new Object[] { str });
+        bWL();
+        paramString = new com.tencent.mm.plugin.webview.model.i(str, paramString, (byte[])localObject);
+        g.azz().a(paramString, 0);
+        this.JdX = System.currentTimeMillis();
         AppMethodBeat.o(79563);
         return;
       }
-      aW(this.appId, paramString, this.fileId);
+      bg(this.appId, paramString, this.fileId);
       AppMethodBeat.o(79563);
       return;
     }
-    if (this.EqL.ELy == c.b.ELC)
+    if (this.JdU.JBp == c.b.JBt)
     {
-      aW(this.appId, paramString, this.EqM);
+      bg(this.appId, paramString, this.JdV);
       AppMethodBeat.o(79563);
       return;
     }
-    if (this.EqL.ELy == c.b.ELD)
+    if (this.JdU.JBp == c.b.JBu)
     {
-      bzQ();
-      this.EqL.ln(this.EqI, this.appId);
+      bWL();
+      this.JdU.mm(this.JdR, this.appId);
       AppMethodBeat.o(79563);
       return;
     }
-    bzQ();
+    bWL();
     AppMethodBeat.o(79563);
   }
   
-  public final void aUT()
+  public final void Tx(String paramString)
   {
-    AppMethodBeat.i(164020);
-    com.tencent.mm.ui.base.h.l(this, 2131763296, 2131763299);
-    AppMethodBeat.o(164020);
-  }
-  
-  public final void cW(String paramString)
-  {
-    AppMethodBeat.i(164021);
-    com.tencent.mm.ui.base.h.l(this, 2131763297, 2131763299);
-    AppMethodBeat.o(164021);
+    AppMethodBeat.i(211039);
+    h.n(this, 2131765471, 2131765474);
+    AppMethodBeat.o(211039);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -246,7 +241,7 @@ public class CreateAvatarUI
             {
               i = j;
               if (paramMotionEvent.getY() < n + m) {
-                this.EqH.setCursorVisible(true);
+                this.JdQ.setCursorVisible(true);
               }
             }
           }
@@ -258,11 +253,11 @@ public class CreateAvatarUI
       }
       if (i != 0)
       {
-        this.EqG = ((InputMethodManager)getSystemService("input_method"));
-        if (this.EqG != null)
+        this.JdP = ((InputMethodManager)getSystemService("input_method"));
+        if (this.JdP != null)
         {
-          this.EqG.hideSoftInputFromWindow(localView.getWindowToken(), 0);
-          this.EqH.setCursorVisible(false);
+          this.JdP.hideSoftInputFromWindow(localView.getWindowToken(), 0);
+          this.JdQ.setCursorVisible(false);
           getWindow().getDecorView().requestFocus();
         }
       }
@@ -279,18 +274,25 @@ public class CreateAvatarUI
     return false;
   }
   
+  public final void dv(String paramString)
+  {
+    AppMethodBeat.i(164021);
+    h.n(this, 2131765472, 2131765474);
+    AppMethodBeat.o(164021);
+  }
+  
   public int getLayoutId()
   {
-    return 2131493672;
+    return 2131493803;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(79567);
-    ae.i("MicroMsg.CreateAvatarUI", "onAcvityResult requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.i("MicroMsg.CreateAvatarUI", "onAcvityResult requestCode:%d, resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if (paramInt2 != -1)
     {
-      ae.e("MicroMsg.CreateAvatarUI", "Get image from album failed");
+      Log.e("MicroMsg.CreateAvatarUI", "Get image from album failed");
       AppMethodBeat.o(79567);
       return;
     }
@@ -309,11 +311,11 @@ public class CreateAvatarUI
       Intent localIntent = new Intent(this, ImageCropUI.class);
       localIntent.putExtra("CropImageMode", 1);
       localIntent.putExtra("CropImage_Filter", true);
-      com.tencent.mm.aj.p.aEA();
-      localIntent.putExtra("CropImage_OutputPath", e.K(v.aAC() + ".crop", true));
+      com.tencent.mm.aj.p.aYn();
+      localIntent.putExtra("CropImage_OutputPath", e.M(z.aTY() + ".crop", true));
       localIntent.putExtra("CropImage_ImgPath", null);
       localIntent.putExtra("CropImage_from_scene", 3);
-      com.tencent.mm.ui.tools.a.b(this, paramIntent, localIntent, d.azQ(), 5, null);
+      com.tencent.mm.ui.tools.a.b(this, paramIntent, localIntent, com.tencent.mm.plugin.image.d.aSY(), 5, null);
       AppMethodBeat.o(79567);
       return;
       if (paramIntent == null)
@@ -324,23 +326,23 @@ public class CreateAvatarUI
       paramIntent = paramIntent.getStringExtra("CropImage_OutputPath");
       if (paramIntent == null)
       {
-        ae.e("MicroMsg.CreateAvatarUI", "crop picture failed");
+        Log.e("MicroMsg.CreateAvatarUI", "crop picture failed");
         AppMethodBeat.o(79567);
         return;
       }
-      ae.i("MicroMsg.CreateAvatarUI", "onActivityResult(CROP_PICTURE_FOR_AVATAR)  file:%s, size:%d", new Object[] { paramIntent, Long.valueOf(new com.tencent.mm.vfs.k(paramIntent).length()) });
-      this.EqI = paramIntent;
-      this.EqN = false;
-      this.EqJ = false;
-      this.EqK = false;
-      ((ImageView)findViewById(2131297014)).setImageBitmap(MMBitmapFactory.decodeFile(paramIntent));
-      if (this.EqL == null)
+      Log.i("MicroMsg.CreateAvatarUI", "onActivityResult(CROP_PICTURE_FOR_AVATAR)  file:%s, size:%d", new Object[] { paramIntent, Long.valueOf(new o(paramIntent).length()) });
+      this.JdR = paramIntent;
+      this.JdW = false;
+      this.JdS = false;
+      this.JdT = false;
+      ((ImageView)findViewById(2131297141)).setImageBitmap(MMBitmapFactory.decodeFile(paramIntent));
+      if (this.JdU == null)
       {
-        this.EqL = new com.tencent.mm.plugin.webview.j.c();
-        this.EqL.ELx.observe(this, new Observer() {});
+        this.JdU = new com.tencent.mm.plugin.webview.k.c();
+        this.JdU.JBo.observe(this, new Observer() {});
       }
-      this.EqM = null;
-      this.EqL.ln(this.EqI, this.appId);
+      this.JdV = null;
+      this.JdU.mm(this.JdR, this.appId);
     }
   }
   
@@ -348,9 +350,9 @@ public class CreateAvatarUI
   {
     AppMethodBeat.i(79559);
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131101179));
+    setActionbarColor(getResources().getColor(2131101424));
     hideActionbarLine();
-    setMMTitle(getString(2131757963));
+    setMMTitle(getString(2131758212));
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -363,8 +365,8 @@ public class CreateAvatarUI
     });
     this.appId = getIntent().getStringExtra("0");
     this.fileId = getIntent().getStringExtra("default_fileid");
-    this.EqH = ((EditText)findViewById(2131302866));
-    this.EqH.setOnEditorActionListener(new TextView.OnEditorActionListener()
+    this.JdQ = ((EditText)findViewById(2131305439));
+    this.JdQ.setOnEditorActionListener(new TextView.OnEditorActionListener()
     {
       public final boolean onEditorAction(TextView paramAnonymousTextView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
@@ -383,16 +385,16 @@ public class CreateAvatarUI
         return false;
       }
     });
-    this.EqH.setOnKeyListener(new View.OnKeyListener()
+    this.JdQ.setOnKeyListener(new View.OnKeyListener()
     {
       public final boolean onKey(View paramAnonymousView, int paramAnonymousInt, KeyEvent paramAnonymousKeyEvent)
       {
         AppMethodBeat.i(79552);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        localb.mu(paramAnonymousInt);
-        localb.bd(paramAnonymousKeyEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        localb.pH(paramAnonymousInt);
+        localb.bm(paramAnonymousKeyEvent);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$3", "android/view/View$OnKeyListener", "onKey", "(Landroid/view/View;ILandroid/view/KeyEvent;)Z", this, localb.axR());
         if (paramAnonymousInt == 4)
         {
           CreateAvatarUI.a(CreateAvatarUI.this, (InputMethodManager)CreateAvatarUI.this.getSystemService("input_method"));
@@ -408,8 +410,8 @@ public class CreateAvatarUI
         return false;
       }
     });
-    this.EqH.setHintTextColor(getResources().getColor(2131100490));
-    this.EqH.addTextChangedListener(new TextWatcher()
+    this.JdQ.setHintTextColor(getResources().getColor(2131100594));
+    this.JdQ.addTextChangedListener(new TextWatcher()
     {
       public final void afterTextChanged(Editable paramAnonymousEditable) {}
       
@@ -420,95 +422,90 @@ public class CreateAvatarUI
         AppMethodBeat.i(79553);
         if (!CreateAvatarUI.b(CreateAvatarUI.this).getText().toString().equals(""))
         {
-          CreateAvatarUI.this.findViewById(2131298853).setEnabled(true);
+          CreateAvatarUI.this.findViewById(2131299319).setEnabled(true);
           AppMethodBeat.o(79553);
           return;
         }
-        CreateAvatarUI.this.findViewById(2131298853).setEnabled(false);
+        CreateAvatarUI.this.findViewById(2131299319).setEnabled(false);
         AppMethodBeat.o(79553);
       }
     });
-    this.EqH.setOnTouchListener(new View.OnTouchListener()
+    this.JdQ.setOnTouchListener(new View.OnTouchListener()
     {
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(79554);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
         if (paramAnonymousMotionEvent.getAction() == 0) {
           CreateAvatarUI.b(CreateAvatarUI.this).setCursorVisible(true);
         }
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$5", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(79554);
         return false;
       }
     });
-    findViewById(2131298268).setOnClickListener(new View.OnClickListener()
+    findViewById(2131298654).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(79555);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        com.tencent.mm.pluginsdk.ui.tools.q.o(CreateAvatarUI.this, 4);
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        s.o(CreateAvatarUI.this, 4);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(79555);
       }
     });
-    findViewById(2131303927).setOnClickListener(new View.OnClickListener()
+    findViewById(2131306776).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(79556);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         CreateAvatarUI.a(CreateAvatarUI.this, CreateAvatarUI.c(CreateAvatarUI.this));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(79556);
       }
     });
-    findViewById(2131303932).setOnClickListener(new View.OnClickListener()
+    findViewById(2131306781).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(79557);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         CreateAvatarUI.a(CreateAvatarUI.this, CreateAvatarUI.c(CreateAvatarUI.this));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(79557);
       }
     });
-    findViewById(2131298853).setOnClickListener(new View.OnClickListener()
+    findViewById(2131299319).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(79558);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
         paramAnonymousView = CreateAvatarUI.b(CreateAvatarUI.this).getText().toString();
-        localObject = com.tencent.mm.n.b.acu();
-        if ((!bu.isNullOrNil((String)localObject)) && (paramAnonymousView.matches(".*[" + (String)localObject + "].*")))
+        localObject = com.tencent.mm.n.c.aqt();
+        if ((!Util.isNullOrNil((String)localObject)) && (paramAnonymousView.matches(".*[" + (String)localObject + "].*")))
         {
-          com.tencent.mm.ui.base.h.c(CreateAvatarUI.this.getContext(), CreateAvatarUI.this.getString(2131760350, new Object[] { localObject }), CreateAvatarUI.this.getString(2131755906), true);
+          h.c(CreateAvatarUI.this.getContext(), CreateAvatarUI.this.getString(2131761795, new Object[] { localObject }), CreateAvatarUI.this.getString(2131755998), true);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(79558);
           return;
         }
-        com.tencent.mm.ui.tools.b.c.d(CreateAvatarUI.b(CreateAvatarUI.this)).kj(1, 32).a(CreateAvatarUI.this);
+        com.tencent.mm.ui.tools.b.c.f(CreateAvatarUI.b(CreateAvatarUI.this)).lv(1, 32).a(CreateAvatarUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/CreateAvatarUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(79558);
       }
     });
     paramBundle = getIntent();
     if ((paramBundle != null) && (paramBundle.getBooleanExtra("extra_call_by_appbrand", false))) {
-      com.tencent.mm.plugin.webview.j.b.ELt.cH(4, "");
+      com.tencent.mm.plugin.webview.k.b.JBk.da(4, "");
     }
     AppMethodBeat.o(79559);
   }
@@ -517,8 +514,8 @@ public class CreateAvatarUI
   {
     AppMethodBeat.i(79562);
     super.onDestroy();
-    if (this.fSP != null) {
-      this.fSP.dismiss();
+    if (this.gxX != null) {
+      this.gxX.dismiss();
     }
     AppMethodBeat.o(79562);
   }
@@ -527,9 +524,9 @@ public class CreateAvatarUI
   {
     AppMethodBeat.i(79561);
     super.onPause();
-    g.ajj().b(2500, this);
-    g.ajj().b(2785, this);
-    g.ajj().b(2667, this);
+    g.azz().b(2500, this);
+    g.azz().b(2785, this);
+    g.azz().b(2667, this);
     AppMethodBeat.o(79561);
   }
   
@@ -537,116 +534,116 @@ public class CreateAvatarUI
   {
     AppMethodBeat.i(79560);
     super.onResume();
-    g.ajj().a(2500, this);
-    g.ajj().a(2785, this);
-    g.ajj().a(2667, this);
+    g.azz().a(2500, this);
+    g.azz().a(2785, this);
+    g.azz().a(2667, this);
     AppMethodBeat.o(79560);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(79570);
-    if ((paramn instanceof i))
+    if ((paramq instanceof com.tencent.mm.plugin.webview.model.i))
     {
-      ae.i("MicroMsg.CreateAvatarUI", "onAddAvatarEnd errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      eVx();
+      Log.i("MicroMsg.CreateAvatarUI", "onAddAvatarEnd errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      gep();
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = ((cf)((i)paramn).rr.hQE.hQJ).FNe;
-        paramn = new Intent();
-        paramn.putExtra("id", paramString.id);
-        paramn.putExtra("nickname", paramString.nickname);
-        paramn.putExtra("avatarurl", paramString.kDl);
-        setResult(-1, paramn);
+        paramString = ((co)((com.tencent.mm.plugin.webview.model.i)paramq).rr.iLL.iLR).KGJ;
+        paramq = new Intent();
+        paramq.putExtra("id", paramString.id);
+        paramq.putExtra("nickname", paramString.nickname);
+        paramq.putExtra("avatarurl", paramString.lHM);
+        setResult(-1, paramq);
         finish();
       }
       for (;;)
       {
-        com.tencent.mm.plugin.webview.j.b.ELt.aG(6, (int)(System.currentTimeMillis() - this.EqO), paramInt2);
+        com.tencent.mm.plugin.webview.k.b.JBk.aO(6, (int)(System.currentTimeMillis() - this.JdX), paramInt2);
         AppMethodBeat.o(79570);
         return;
-        if (!Xu(paramInt1)) {
-          com.tencent.mm.ui.base.h.c(this, getString(2131766179), getString(2131757955), true);
+        if (!agc(paramInt1)) {
+          h.c(this, getString(2131768655), getString(2131758204), true);
         } else {
-          com.tencent.mm.ui.base.h.c(this, paramString, getString(2131757955), true);
+          h.c(this, paramString, getString(2131758204), true);
         }
       }
     }
-    if ((paramn instanceof com.tencent.mm.plugin.webview.model.p))
+    if ((paramq instanceof com.tencent.mm.plugin.webview.model.p))
     {
-      ae.i("MicroMsg.CreateAvatarUI", "onGetRandomAvatarEnd errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      Log.i("MicroMsg.CreateAvatarUI", "onGetRandomAvatarEnd errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (bhp)((com.tencent.mm.plugin.webview.model.p)paramn).rr.hQE.hQJ;
-        paramn = new com.tencent.mm.av.a.a.c.a();
-        paramn.igv = 2131690013;
-        paramn.igC = getResources().getDimension(2131166775);
-        paramn.hhW = true;
-        com.tencent.mm.av.q.aJb().a(paramString.kDl, (ImageView)findViewById(2131297014), paramn.aJu());
-        this.EqH.setText(paramString.nickname);
-        this.EqK = true;
-        this.EqJ = false;
+        paramString = (btn)((com.tencent.mm.plugin.webview.model.p)paramq).rr.iLL.iLR;
+        paramq = new com.tencent.mm.av.a.a.c.a();
+        paramq.jbq = 2131690042;
+        paramq.jbx = getResources().getDimension(2131166898);
+        paramq.iaT = true;
+        com.tencent.mm.av.q.bcV().a(paramString.lHM, (ImageView)findViewById(2131297141), paramq.bdv());
+        this.JdQ.setText(paramString.nickname);
+        this.JdT = true;
+        this.JdS = false;
         this.fileId = paramString.fileid;
-        if (!this.EqH.getText().toString().equals("")) {
-          findViewById(2131298853).setEnabled(true);
+        if (!this.JdQ.getText().toString().equals("")) {
+          findViewById(2131299319).setEnabled(true);
         }
       }
       for (;;)
       {
-        com.tencent.mm.plugin.webview.j.b.ELt.aG(5, (int)(System.currentTimeMillis() - this.EqP), paramInt2);
+        com.tencent.mm.plugin.webview.k.b.JBk.aO(5, (int)(System.currentTimeMillis() - this.JdY), paramInt2);
         AppMethodBeat.o(79570);
         return;
-        findViewById(2131298853).setEnabled(false);
+        findViewById(2131299319).setEnabled(false);
         continue;
-        if (!Xu(paramInt1)) {
-          com.tencent.mm.ui.base.h.c(this, getString(2131766179), getString(2131757957), true);
+        if (!agc(paramInt1)) {
+          h.c(this, getString(2131768655), getString(2131758206), true);
         } else {
-          com.tencent.mm.ui.base.h.c(this, paramString, getString(2131757957), true);
+          h.c(this, paramString, getString(2131758206), true);
         }
       }
     }
-    if ((paramn instanceof com.tencent.mm.plugin.webview.model.k))
+    if ((paramq instanceof k))
     {
-      ae.i("MicroMsg.CreateAvatarUI", "onGetCreateAvatarEnd errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      if (this.EqL == null)
+      Log.i("MicroMsg.CreateAvatarUI", "onGetCreateAvatarEnd errType:%d errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      if (this.JdU == null)
       {
-        ae.e("MicroMsg.CreateAvatarUI", "uploadEngine == null, multi-Thread Error, thread name = " + Thread.currentThread().getName());
+        Log.e("MicroMsg.CreateAvatarUI", "uploadEngine == null, multi-Thread Error, thread name = " + Thread.currentThread().getName());
         AppMethodBeat.o(79570);
         return;
       }
-      com.tencent.mm.plugin.webview.j.c localc = this.EqL;
-      String str = ((com.tencent.mm.plugin.webview.model.k)paramn).rJY;
-      if (!str.equals(localc.lmo)) {
-        ae.i("MicroMsg.VestImgUploadEngine", "currentPath=%s,callbackPath=%s, path updated after onSceneEnd", new Object[] { localc.lmo, str });
+      com.tencent.mm.plugin.webview.k.c localc = this.JdU;
+      String str = ((k)paramq).tjJ;
+      if (!str.equals(localc.msl)) {
+        Log.i("MicroMsg.VestImgUploadEngine", "currentPath=%s,callbackPath=%s, path updated after onSceneEnd", new Object[] { localc.msl, str });
       }
-      while (this.EqN)
+      while (this.JdW)
       {
-        eVx();
-        if (this.EqL.ELy != c.b.ELC)
+        gep();
+        if (this.JdU.JBp != c.b.JBt)
         {
-          eVx();
-          if (!Xu(paramInt1))
+          gep();
+          if (!agc(paramInt1))
           {
-            eVx();
-            com.tencent.mm.ui.base.h.c(this, getString(2131766179), getString(2131757955), true);
+            gep();
+            h.c(this, getString(2131768655), getString(2131758204), true);
             AppMethodBeat.o(79570);
             return;
             if ((paramInt1 == 0) && (paramInt2 == 0))
             {
-              localc.ELy = c.b.ELC;
-              paramn = (cd)((com.tencent.mm.plugin.webview.model.k)paramn).rr.hQE.hQJ;
-              localc.ELx.postValue(paramn.fileid);
-              ae.i("MicroMsg.VestImgUploadEngine", "file id create success: %s", new Object[] { paramn.fileid });
+              localc.JBp = c.b.JBt;
+              paramq = (cm)((k)paramq).rr.iLL.iLR;
+              localc.JBo.postValue(paramq.fileid);
+              Log.i("MicroMsg.VestImgUploadEngine", "file id create success: %s", new Object[] { paramq.fileid });
             }
             else
             {
-              localc.ELy = c.b.ELD;
-              ae.i("MicroMsg.VestImgUploadEngine", "file id create failed: errType = %s, errCode = %s, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+              localc.JBp = c.b.JBu;
+              Log.i("MicroMsg.VestImgUploadEngine", "file id create failed: errType = %s, errCode = %s, errMsg = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
             }
           }
           else
           {
-            com.tencent.mm.ui.base.h.c(this, paramString, getString(2131757955), true);
+            h.c(this, paramString, getString(2131758204), true);
           }
         }
       }
@@ -662,7 +659,7 @@ public class CreateAvatarUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.CreateAvatarUI
  * JD-Core Version:    0.7.0.1
  */

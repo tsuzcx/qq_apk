@@ -6,7 +6,7 @@ public final class BuildConfig
   public static final String BUILD_TYPE = "release";
   public static final boolean DEBUG = false;
   public static final String FLAVOR = "";
-  public static final String VERSION = "c074ade02b6179ccfd3ca3f546f56c32ea0aa828";
+  public static final String VERSION = "8fda81f789ab1498974995e0c7217754d2c2749e";
   public static final int VERSION_CODE = 1;
   public static final String VERSION_NAME = "1.0";
 }

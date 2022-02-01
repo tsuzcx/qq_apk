@@ -1,408 +1,415 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import android.content.Context;
-import android.os.SystemClock;
+import android.graphics.SurfaceTexture;
+import android.os.HandlerThread;
+import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.audio.b.c.a;
-import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.cd;
-import com.tencent.pb.talkroom.sdk.d;
+import com.tencent.mm.media.k.c.b;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.multitalk.b.t;
+import com.tencent.mm.plugin.multitalk.b.u;
+import com.tencent.mm.plugin.voip.video.OpenGlRender;
+import com.tencent.mm.plugin.voip.video.camera.a.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.pb.talkroom.sdk.g;
+import kotlin.g.a.a;
+import kotlin.l;
 
-public class m
-  implements f
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager;", "Lcom/tencent/mm/plugin/voip/video/camera/common/ICaptureRenderListener;", "()V", "captureRender", "Lcom/tencent/mm/plugin/multitalk/model/MultitalkCaptureRenderer;", "eGLEnvironment", "Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "getEGLEnvironment", "()Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;", "setEGLEnvironment", "(Lcom/tencent/mm/media/util/GLEnvironmentUtil$EGLEnvironment;)V", "eglHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "getEglHandler", "()Lcom/tencent/mm/sdk/platformtools/MMHandler;", "setEglHandler", "(Lcom/tencent/mm/sdk/platformtools/MMHandler;)V", "eglThread", "Landroid/os/HandlerThread;", "getEglThread", "()Landroid/os/HandlerThread;", "setEglThread", "(Landroid/os/HandlerThread;)V", "externalTexture", "Lcom/tencent/mm/media/globject/GLTextureObject;", "getExternalTexture", "()Lcom/tencent/mm/media/globject/GLTextureObject;", "setExternalTexture", "(Lcom/tencent/mm/media/globject/GLTextureObject;)V", "frameTransObj", "Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$FrameTrans;", "getFrameTransObj", "()Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$FrameTrans;", "setFrameTransObj", "(Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$FrameTrans;)V", "lastFrameTick", "", "nativeDrawerObj", "Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$FrameObj;", "getNativeDrawerObj", "()Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$FrameObj;", "setNativeDrawerObj", "(Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$FrameObj;)V", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "getSurfaceTexture", "()Landroid/graphics/SurfaceTexture;", "setSurfaceTexture", "(Landroid/graphics/SurfaceTexture;)V", "uiCallback", "Lcom/tencent/mm/plugin/multitalk/model/IMultiTalkUICallback;", "getUiCallback", "()Lcom/tencent/mm/plugin/multitalk/model/IMultiTalkUICallback;", "setUiCallback", "(Lcom/tencent/mm/plugin/multitalk/model/IMultiTalkUICallback;)V", "addUiCallback", "", "checkCreate", "initCallback", "Lkotlin/Function0;", "createContext", "exchangeCapture", "isCameraOpen", "", "onCameraError", "onCameraPreviewApply", "width", "", "height", "onDrawerReady", "pBuffer", "", "w", "h", "MediaFmt", "mirror", "angle", "onFrameDataReady", "", "lBufferSize", "cameraFrameFormat", "rotate", "dblSampleTime", "", "onTimeTick", "queue", "callback", "release", "removeUiCallback", "startCapture", "startCaptureRenderer", "stopCaptureRender", "Companion", "FrameObj", "FrameTrans", "plugin-multitalk_release"})
+public final class m
+  implements b
 {
-  private c.a diC;
-  private com.tencent.mm.audio.b.c pcI;
-  public d wqE;
-  private l wqF;
-  private com.tencent.pb.talkroom.sdk.c wqG;
-  private com.tencent.pb.talkroom.sdk.b wqH;
-  private com.tencent.mm.plugin.voip.model.b wqI;
+  public static final m.a zLW;
+  HandlerThread hDq;
+  MMHandler hDr;
+  c.b ilw;
+  SurfaceTexture surfaceTexture;
+  com.tencent.mm.media.g.d zLQ;
+  public e zLR;
+  public long zLS;
+  public x zLT;
+  private c zLU;
+  private m.b zLV;
+  
+  static
+  {
+    AppMethodBeat.i(239619);
+    zLW = new m.a((byte)0);
+    AppMethodBeat.o(239619);
+  }
   
   public m()
   {
-    AppMethodBeat.i(114437);
-    this.diC = new c.a()
+    AppMethodBeat.i(239618);
+    this.zLU = new c();
+    this.zLV = new m.b((byte)0);
+    AppMethodBeat.o(239618);
+  }
+  
+  private void k(a<kotlin.x> parama)
+  {
+    AppMethodBeat.i(239610);
+    kotlin.g.b.p.h(parama, "callback");
+    Object localObject = this.hDq;
+    if (localObject != null)
     {
-      public final void ch(int paramAnonymousInt1, int paramAnonymousInt2)
+      if (((HandlerThread)localObject).isAlive() == true)
       {
-        AppMethodBeat.i(114435);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "OnPcmRecListener onRecError %d %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
-        z.dtK();
-        o.dtu();
-        AppMethodBeat.o(114435);
-      }
-      
-      public final void u(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(114434);
-        if (paramAnonymousInt <= 0)
+        localObject = this.hDr;
+        if (localObject != null)
         {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.MT.MultiTalkEngine", "pcm data len <= 0");
-          AppMethodBeat.o(114434);
+          ((MMHandler)localObject).post((Runnable)new n(parama));
+          AppMethodBeat.o(239610);
+        }
+      }
+    }
+    else
+    {
+      AppMethodBeat.o(239610);
+      return;
+    }
+    AppMethodBeat.o(239610);
+  }
+  
+  private final void sz()
+  {
+    Boolean localBoolean = null;
+    AppMethodBeat.i(239616);
+    this.zLT = new x();
+    Object localObject1 = this.zLT;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject2 = (b)this;
+      q localq = ac.eom();
+      kotlin.g.b.p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+      ((x)localObject1).a((b)localObject2, localq.enP());
+    }
+    localObject1 = this.zLT;
+    if (localObject1 != null) {
+      ((x)localObject1).mSurfaceTexture = this.surfaceTexture;
+    }
+    localObject1 = this.zLT;
+    if (localObject1 != null) {
+      ((x)localObject1).eob();
+    }
+    localObject1 = this.zLT;
+    if (localObject1 != null) {}
+    for (localObject1 = Boolean.valueOf(((x)localObject1).zNU);; localObject1 = null)
+    {
+      localObject2 = this.zLT;
+      if (localObject2 != null) {
+        localBoolean = ((x)localObject2).zNV;
+      }
+      Log.i("MicroMsg.MultiTalkCameraManager", "captureRender.mIsCurrentFaceCamera=%b captureRender.mIsCameraRemote180=%b", new Object[] { localObject1, localBoolean });
+      AppMethodBeat.o(239616);
+      return;
+    }
+  }
+  
+  public final void a(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    AppMethodBeat.i(239615);
+    Object localObject1 = ac.eom();
+    kotlin.g.b.p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
+    if (!((q)localObject1).ent())
+    {
+      release();
+      AppMethodBeat.o(239615);
+      return;
+    }
+    if (paramArrayOfByte == null)
+    {
+      AppMethodBeat.o(239615);
+      return;
+    }
+    if (this.zLT == null)
+    {
+      AppMethodBeat.o(239615);
+      return;
+    }
+    localObject1 = this.zLT;
+    if (localObject1 != null) {}
+    for (localObject1 = ((x)localObject1).zNV; localObject1 == null; localObject1 = null)
+    {
+      AppMethodBeat.o(239615);
+      return;
+    }
+    if (this.zLU.zLY == null)
+    {
+      this.zLU.w = paramInt1;
+      this.zLU.h = paramInt2;
+      this.zLU.zLY = new int[this.zLU.w * this.zLU.h];
+    }
+    localObject1 = ac.eom();
+    kotlin.g.b.p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
+    if (!((q)localObject1).eno()) {
+      ac.eom().aF(3, ac.eom().zMz);
+    }
+    localObject1 = ac.eom();
+    kotlin.g.b.p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
+    boolean bool = ((q)localObject1).ens();
+    localObject1 = ac.eom();
+    kotlin.g.b.p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
+    if (!((q)localObject1).eno()) {
+      ac.eom().aF(3, ac.eom().zMz);
+    }
+    long l2 = System.currentTimeMillis();
+    localObject1 = ac.eom();
+    kotlin.g.b.p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
+    Object localObject2 = this.zLT;
+    if (localObject2 == null) {
+      kotlin.g.b.p.hyc();
+    }
+    ((q)localObject1).rL(((x)localObject2).zNU);
+    localObject1 = this.zLT;
+    if (localObject1 == null) {
+      kotlin.g.b.p.hyc();
+    }
+    int j;
+    int k;
+    if (((x)localObject1).zNU)
+    {
+      j = OpenGlRender.FLAG_Mirror;
+      localObject1 = this.zLT;
+      if (localObject1 == null) {
+        kotlin.g.b.p.hyc();
+      }
+      if (!kotlin.g.b.p.j(((x)localObject1).zNV, Boolean.TRUE)) {
+        break label460;
+      }
+      k = OpenGlRender.FLAG_Angle270;
+    }
+    label460:
+    int i;
+    for (;;)
+    {
+      if (bool)
+      {
+        localObject1 = com.tencent.mm.plugin.multitalk.b.p.zHS;
+        localObject1 = com.tencent.mm.plugin.multitalk.b.p.a(paramArrayOfByte, (int)paramLong, this.zLU.w, this.zLU.h, paramInt3 + paramInt4 & 0x1F, this.zLU.zLY);
+        if ((((u)localObject1).ret < 0) || (this.zLU.zLY == null) || (((u)localObject1).zKK == 0) || (((u)localObject1).zKL == 0))
+        {
+          Log.e("MicroMsg.MultiTalkCameraManager", "ilink mv ret: %d", new Object[] { Integer.valueOf(((u)localObject1).ret) });
+          AppMethodBeat.o(239615);
+          return;
+          j = 0;
+          break;
+          k = OpenGlRender.FLAG_Angle90;
+          continue;
+        }
+        i = ((u)localObject1).zKK;
+        m = ((u)localObject1).zKL;
+        localObject1 = com.tencent.mm.plugin.multitalk.b.p.zHS.elQ();
+        kotlin.g.b.p.g(localObject1, "ILinkService.INSTANCE.videoMgr");
+        if (!((t)localObject1).isStarted())
+        {
+          AppMethodBeat.o(239615);
           return;
         }
-        if (m.f(m.this) != null) {
-          m.f(m.this).af(paramAnonymousArrayOfByte, paramAnonymousInt);
+        paramLong = System.currentTimeMillis();
+        paramInt2 = com.tencent.mm.plugin.multitalk.b.p.zHS.g(paramArrayOfByte, paramInt1, paramInt2, paramInt3 + paramInt4);
+        paramInt1 = m;
+        paramInt3 = i;
+        l1 = System.currentTimeMillis();
+        long l3 = l1 - l2;
+        if (l3 > 30L) {
+          Log.d("MicroMsg.MultiTalkCameraManager", "steve: trans size:%dx%d, total: %d, trans: %d, enc: %d", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt1), Long.valueOf(l3), Long.valueOf(paramLong - l2), Long.valueOf(l1 - paramLong) });
         }
-        AppMethodBeat.o(114434);
+        if (paramInt2 <= 0) {
+          Log.v("MicroMsg.MultiTalkCameraManager", "send ret = %d", new Object[] { Integer.valueOf(paramInt2) });
+        }
+        if (this.zLU.zLY != null)
+        {
+          paramArrayOfByte = ac.eom();
+          kotlin.g.b.p.g(paramArrayOfByte, "SubCoreMultiTalk.getMultiTalkManager()");
+          paramArrayOfByte = paramArrayOfByte.enz();
+          localObject1 = z.aTY();
+          kotlin.g.b.p.g(localObject1, "ConfigStorageLogic.getUsernameFromUserInfo()");
+          localObject2 = this.zLU.zLY;
+          if (localObject2 == null) {
+            kotlin.g.b.p.hyc();
+          }
+          paramArrayOfByte.a((String)localObject1, (int[])localObject2, paramInt3, paramInt1, j, k);
+        }
+        this.zLS = Util.currentTicks();
+        AppMethodBeat.o(239615);
+        return;
       }
-    };
-    this.wqI = new com.tencent.mm.plugin.voip.model.b()
+    }
+    localObject1 = ac.eol();
+    kotlin.g.b.p.g(localObject1, "SubCoreMultiTalk.getMultiEngine()");
+    localObject1 = ((o)localObject1).emG().b(paramArrayOfByte, (int)paramLong, this.zLU.w, this.zLU.h, paramInt3 + paramInt4 & 0x1F, this.zLU.zLY);
+    if ((((g)localObject1).ret < 0) || (this.zLU.zLY == null) || (((g)localObject1).zKK == 0) || (((g)localObject1).zKL == 0))
     {
-      public final int O(byte[] paramAnonymousArrayOfByte, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(114436);
-        if (m.g(m.this) != null) {}
-        for (paramAnonymousInt = m.g(m.this).ae(paramAnonymousArrayOfByte, paramAnonymousInt);; paramAnonymousInt = 0)
-        {
-          if (paramAnonymousInt < 0)
-          {
-            AppMethodBeat.o(114436);
-            return -1;
-          }
-          AppMethodBeat.o(114436);
-          return 0;
-        }
-      }
-    };
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "init multiTalk engine");
-    Context localContext = ak.getContext();
-    com.tencent.wecall.talkroom.model.e locale = com.tencent.wecall.talkroom.model.e.gea();
-    com.tencent.wecall.talkroom.model.e.lx(localContext);
-    this.wqE = locale;
-    this.wqE.fXN();
-    this.wqF = new l();
-    int i = bu.o((Integer)g.ajR().gDO.get(1));
-    this.wqE.a(z.dtK(), new com.tencent.pb.talkroom.sdk.e()
-    {
-      public final boolean E(int paramAnonymousInt, String paramAnonymousString1, String paramAnonymousString2)
-      {
-        AppMethodBeat.i(114420);
-        m.D(paramAnonymousInt, paramAnonymousString1, paramAnonymousString2);
-        AppMethodBeat.o(114420);
-        return false;
-      }
-      
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, com.tencent.pb.talkroom.sdk.b paramAnonymousb)
-      {
-        AppMethodBeat.i(114426);
-        m.a(m.this, paramAnonymousb);
-        paramAnonymousInt1 = m.c(m.this).a(m.b(m.this), paramAnonymousInt1, paramAnonymousInt2);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "isSpeakerOn=%b isHandsFree=%b", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.audio.c.a.isSpeakerphoneOn()), Boolean.valueOf(z.dtK().leL) });
-        if ((com.tencent.mm.plugin.audio.c.a.isSpeakerphoneOn() != z.dtK().leL) && (z.dtK().cbt()) && (z.dtK().wrl != null)) {
-          z.dtK().wrl.oK(z.dtK().leL);
-        }
-        AppMethodBeat.o(114426);
-        return paramAnonymousInt1;
-      }
-      
-      public final int a(int paramAnonymousInt1, int paramAnonymousInt2, com.tencent.pb.talkroom.sdk.c paramAnonymousc)
-      {
-        AppMethodBeat.i(114427);
-        m.a(m.this, paramAnonymousc);
-        m.a(m.this, new com.tencent.mm.audio.b.c(paramAnonymousInt1, 1, 7));
-        m.d(m.this).hQ(paramAnonymousInt2);
-        m.d(m.this).cv(true);
-        m.d(m.this).PM();
-        m.d(m.this).dhY = -19;
-        m.d(m.this).t(1, false);
-        m.d(m.this).cu(true);
-        m.d(m.this).dij = m.e(m.this);
-        if (m.d(m.this).PO())
-        {
-          AppMethodBeat.o(114427);
-          return 1;
-        }
-        AppMethodBeat.o(114427);
-        return -1;
-      }
-      
-      public final int aao()
-      {
-        AppMethodBeat.i(114423);
-        int i = com.tencent.mm.compatible.deviceinfo.m.aao();
-        AppMethodBeat.o(114423);
-        return i;
-      }
-      
-      public final boolean d(int paramAnonymousInt1, int paramAnonymousInt2, byte[] paramAnonymousArrayOfByte)
-      {
-        AppMethodBeat.i(114421);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "sendMultiTalkReq " + paramAnonymousInt1 + " cmdid " + paramAnonymousInt2);
-        paramAnonymousArrayOfByte = new v(paramAnonymousInt1, paramAnonymousInt2, paramAnonymousArrayOfByte);
-        g.ajj().a(paramAnonymousArrayOfByte, 0);
-        AppMethodBeat.o(114421);
-        return false;
-      }
-      
-      public final int dsA()
-      {
-        AppMethodBeat.i(114431);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "getMultiTalkRecordReadNum");
-        if (m.d(m.this) != null)
-        {
-          int i = m.d(m.this).PR();
-          AppMethodBeat.o(114431);
-          return i;
-        }
-        AppMethodBeat.o(114431);
-        return -2;
-      }
-      
-      public final int dsB()
-      {
-        AppMethodBeat.i(114432);
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.MT.MultiTalkEngine", "getAudioRecorderErrorCode");
-        if (m.d(m.this) != null)
-        {
-          int i = m.d(m.this).dhN;
-          AppMethodBeat.o(114432);
-          return i;
-        }
-        AppMethodBeat.o(114432);
-        return 0;
-      }
-      
-      public final int dsC()
-      {
-        AppMethodBeat.i(114433);
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.MT.MultiTalkEngine", "getAudioPlayerErrorCode");
-        if ((m.c(m.this) != null) && (z.dtK().wrl != null))
-        {
-          com.tencent.mm.plugin.voip.model.c localc = z.dtK().wrl.wlY;
-          if (localc != null)
-          {
-            int i = localc.eyB();
-            AppMethodBeat.o(114433);
-            return i;
-          }
-          AppMethodBeat.o(114433);
-          return 0;
-        }
-        AppMethodBeat.o(114433);
-        return 0;
-      }
-      
-      public final boolean dsu()
-      {
-        AppMethodBeat.i(114422);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "loadVoipCodecLib cpuFlag:".concat(String.valueOf(com.tencent.mm.compatible.deviceinfo.m.aao())));
-        m.class.getClassLoader();
-        j.vN("voipMain");
-        AppMethodBeat.o(114422);
-        return true;
-      }
-      
-      public final int dsv()
-      {
-        AppMethodBeat.i(190759);
-        int i = 2;
-        if (k.asz("video/avc")) {
-          i = 10;
-        }
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "CodecList[%d]", new Object[] { Integer.valueOf(i) });
-        AppMethodBeat.o(190759);
-        return i;
-      }
-      
-      public final int dsw()
-      {
-        AppMethodBeat.i(114424);
-        String str = g.ajR().ajB().fwI();
-        com.tencent.mm.compatible.deviceinfo.ae.vE(str);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "MTSDK audioAdapter startRecord setMultiTalkAppCmd info: ".concat(String.valueOf(str)));
-        m.a(m.this);
-        AppMethodBeat.o(114424);
-        return 0;
-      }
-      
-      public final boolean dsx()
-      {
-        AppMethodBeat.i(114428);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "stopMultiTalkPlayer");
-        l locall = m.c(m.this);
-        synchronized (locall.pcY)
-        {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkAudioPlayer", "stopPlay, isStart: %s %s", new Object[] { Boolean.valueOf(locall.isStart), Integer.valueOf(locall.hashCode()) });
-          if (locall.isStart)
-          {
-            com.tencent.mm.plugin.voip.model.c localc = locall.pcA;
-            if (localc != null)
-            {
-              locall.pda.gfF = SystemClock.elapsedRealtime();
-              localc.eyA();
-              com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkAudioPlayer", "stopPlaying cost: " + locall.pda.abs());
-              localc.eyx();
-              locall.isStart = false;
-              locall.pcA = null;
-            }
-            if (z.dtK().wrl != null) {
-              z.dtK().wrl.drG();
-            }
-          }
-          AppMethodBeat.o(114428);
-          return true;
-        }
-      }
-      
-      public final boolean dsy()
-      {
-        AppMethodBeat.i(114429);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "stopMultiTalkRecord");
-        try
-        {
-          if (m.d(m.this) != null)
-          {
-            m.d(m.this).dij = null;
-            m.d(m.this).PF();
-          }
-          m.a(m.this, null);
-          AppMethodBeat.o(114429);
-          return true;
-        }
-        catch (Exception localException)
-        {
-          com.tencent.mm.sdk.platformtools.ae.w("MicroMsg.MT.MultiTalkEngine", "stopMultiTalkPlayer :".concat(String.valueOf(localException)));
-          AppMethodBeat.o(114429);
-        }
-        return false;
-      }
-      
-      public final int dsz()
-      {
-        int j = 0;
-        AppMethodBeat.i(114430);
-        com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "getMultiTalkPlayVolume");
-        int i = j;
-        if (m.c(m.this) != null)
-        {
-          i = j;
-          if (z.dtK().wrl != null)
-          {
-            com.tencent.mm.plugin.voip.model.c localc = z.dtK().wrl.wlY;
-            i = j;
-            if (localc != null) {
-              i = localc.aNQ();
-            }
-          }
-        }
-        float f = com.tencent.mm.plugin.audio.c.a.getStreamMaxVolume(i);
-        i = (int)(com.tencent.mm.plugin.audio.c.a.getStreamVolume(i) / f * 100.0F);
-        AppMethodBeat.o(114430);
-        return i;
-      }
-      
-      public final boolean oT(boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(114425);
-        com.tencent.mm.sdk.platformtools.ae.m("MicroMsg.MT.MultiTalkEngine", "setMultiTalkSpeaker %b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
-        if (z.dtK().wrl != null) {
-          z.dtK().wrl.oK(paramAnonymousBoolean);
-        }
-        AppMethodBeat.o(114425);
-        return true;
-      }
-    });
-    this.wqE.cW(i, com.tencent.mm.model.v.aAC());
-    g.ajj().a(1918, this);
-    g.ajj().a(1919, this);
-    g.ajj().a(1927, this);
-    g.ajj().a(1928, this);
-    g.ajj().a(1929, this);
-    g.ajj().a(1931, this);
-    g.ajj().a(1932, this);
-    g.ajj().a(1933, this);
-    g.ajj().a(1935, this);
-    g.ajj().a(1937, this);
-    g.ajj().a(1938, this);
-    g.ajj().a(1939, this);
-    AppMethodBeat.o(114437);
-  }
-  
-  public final d dst()
-  {
-    return this.wqE;
-  }
-  
-  public final void oQ(boolean paramBoolean)
-  {
-    AppMethodBeat.i(114439);
-    com.tencent.mm.sdk.platformtools.ae.m("MicroMsg.MT.MultiTalkEngine", "setEngineHeadsetPlugged, %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    byte[] arrayOfByte = new byte[1];
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      arrayOfByte[0] = ((byte)i);
-      this.wqE.setAppCmd(425, arrayOfByte, 1);
-      if (!paramBoolean) {
-        break;
-      }
-      if (com.tencent.mm.plugin.audio.c.a.bHt()) {
-        this.wqE.setAppCmd(441, arrayOfByte, 1);
-      }
-      if (!com.tencent.mm.plugin.audio.c.a.bHz()) {
-        break label143;
-      }
-      this.wqE.setAppCmd(442, arrayOfByte, 1);
-      AppMethodBeat.o(114439);
+      Log.e("MicroMsg.MultiTalkCameraManager", "mv ret: %d", new Object[] { Integer.valueOf(((g)localObject1).ret) });
+      AppMethodBeat.o(239615);
       return;
     }
-    this.wqE.setAppCmd(441, arrayOfByte, 1);
-    this.wqE.setAppCmd(442, arrayOfByte, 1);
-    label143:
-    AppMethodBeat.o(114439);
+    int m = ((g)localObject1).zKK;
+    int n = ((g)localObject1).zKL;
+    long l1 = System.currentTimeMillis();
+    if (j == OpenGlRender.FLAG_Mirror)
+    {
+      i = 257;
+      label884:
+      localObject1 = ac.eom();
+      kotlin.g.b.p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
+      if (!((q)localObject1).enO()) {
+        break label982;
+      }
+      if (j != OpenGlRender.FLAG_Mirror) {
+        break label976;
+      }
+      i = 259;
+    }
+    label976:
+    label982:
+    for (;;)
+    {
+      localObject1 = ac.eom();
+      kotlin.g.b.p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
+      paramInt2 = ((q)localObject1).enx().b(paramArrayOfByte, paramLong, paramInt1, paramInt2, paramInt3 + paramInt4, i);
+      paramLong = l1;
+      paramInt1 = n;
+      paramInt3 = m;
+      break;
+      i = 1;
+      break label884;
+      i = 3;
+    }
   }
   
-  public final void oR(boolean paramBoolean)
+  public final void cza()
   {
-    AppMethodBeat.i(190760);
-    com.tencent.mm.sdk.platformtools.ae.l("MicroMsg.MT.MultiTalkEngine", "setEngineSpeakerOn, %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    byte[] arrayOfByte = new byte[1];
-    if (paramBoolean)
+    AppMethodBeat.i(239613);
+    e locale = this.zLR;
+    if (locale != null)
     {
-      arrayOfByte[0] = 1;
-      this.wqE.setAppCmd(401, arrayOfByte, 1);
-      AppMethodBeat.o(190760);
+      locale.emy();
+      AppMethodBeat.o(239613);
       return;
     }
-    arrayOfByte[0] = 0;
-    this.wqE.setAppCmd(402, arrayOfByte, 1);
-    AppMethodBeat.o(190760);
+    AppMethodBeat.o(239613);
   }
   
-  public final void oS(boolean paramBoolean)
+  public final void emE()
   {
-    AppMethodBeat.i(190761);
-    com.tencent.mm.sdk.platformtools.ae.l("MicroMsg.MT.MultiTalkEngine", "setEngineMicOn, %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    byte[] arrayOfByte = new byte[1];
-    if (paramBoolean)
+    AppMethodBeat.i(239609);
+    if ((this.zLT != null) && (!emo())) {
+      sz();
+    }
+    AppMethodBeat.o(239609);
+  }
+  
+  public final void emF()
+  {
+    AppMethodBeat.i(239612);
+    final a locala = (a)new h(this);
+    this.hDq = com.tencent.f.c.d.hz("MultiTalkCameraManager_Thread" + hashCode(), 5);
+    Object localObject = this.hDq;
+    if (localObject != null) {
+      ((HandlerThread)localObject).start();
+    }
+    localObject = this.hDq;
+    if (localObject != null) {}
+    for (localObject = ((HandlerThread)localObject).getLooper();; localObject = null)
     {
-      arrayOfByte[0] = 1;
-      this.wqE.setAppCmd(413, arrayOfByte, 1);
-      AppMethodBeat.o(190761);
+      this.hDr = new MMHandler((Looper)localObject);
+      k((a)new d(this, locala));
+      AppMethodBeat.o(239612);
       return;
     }
-    arrayOfByte[0] = 0;
-    this.wqE.setAppCmd(412, arrayOfByte, 1);
-    AppMethodBeat.o(190761);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final boolean emo()
   {
-    AppMethodBeat.i(114438);
-    paramString = (v)paramn;
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.MT.MultiTalkEngine", "onSceneEnd errtype " + paramInt1 + " errCode " + paramInt2 + " cmdid " + paramString.mCmdId);
-    this.wqE.d(paramInt2, paramString.qgy, paramString.mCmdId, paramString.dNz);
-    AppMethodBeat.o(114438);
+    AppMethodBeat.i(239617);
+    if (this.zLT == null)
+    {
+      AppMethodBeat.o(239617);
+      return false;
+    }
+    if ((this.zLS != 0L) && (Util.ticksToNow(this.zLS) > 1000L))
+    {
+      Log.i("MicroMsg.MultiTalkCameraManager", "current camera is open but has no video ");
+      AppMethodBeat.o(239617);
+      return false;
+    }
+    AppMethodBeat.o(239617);
+    return true;
+  }
+  
+  public final void fs(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(239614);
+    Log.i("MicroMsg.MultiTalkCameraManager", "camera preview size applye is " + paramInt1 + " and " + paramInt2);
+    AppMethodBeat.o(239614);
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(239611);
+    this.zLS = 0L;
+    k((a)new g(this));
+    AppMethodBeat.o(239611);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$FrameTrans;", "", "()V", "h", "", "getH", "()I", "setH", "(I)V", "outImg", "", "getOutImg", "()[I", "setOutImg", "([I)V", "w", "getW", "setW", "plugin-multitalk_release"})
+  public static final class c
+  {
+    int h;
+    int w;
+    int[] zLY;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class d
+    extends kotlin.g.b.q
+    implements a<kotlin.x>
+  {
+    d(m paramm, a parama)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/plugin/multitalk/model/MultiTalkCameraManager$createContext$1$2"})
+  static final class e
+    implements Runnable
+  {
+    e(m paramm, a parama) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(239603);
+      this.zMb.invoke();
+      AppMethodBeat.o(239603);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class g
+    extends kotlin.g.b.q
+    implements a<kotlin.x>
+  {
+    g(m paramm)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class h
+    extends kotlin.g.b.q
+    implements a<kotlin.x>
+  {
+    h(m paramm)
+    {
+      super();
+    }
   }
 }
 

@@ -7,24 +7,24 @@ import com.tencent.xweb.o;
 public final class g$h
   extends o
 {
-  public JsPromptResult MSc;
+  public JsPromptResult SFi;
   
   public g$h(JsPromptResult paramJsPromptResult)
   {
-    this.MSc = paramJsPromptResult;
+    this.SFi = paramJsPromptResult;
   }
   
   public final void cancel()
   {
     AppMethodBeat.i(153857);
-    this.MSc.cancel();
+    this.SFi.cancel();
     AppMethodBeat.o(153857);
   }
   
   public final void confirm()
   {
     AppMethodBeat.i(153856);
-    this.MSc.confirm();
+    this.SFi.confirm();
     AppMethodBeat.o(153856);
   }
   
@@ -32,7 +32,7 @@ public final class g$h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.x5.g.h
  * JD-Core Version:    0.7.0.1
  */

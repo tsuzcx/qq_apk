@@ -3,76 +3,67 @@ package com.tencent.mm.plugin.game.luggage.b;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.luggage.d.b;
-import com.tencent.luggage.d.b.a;
-import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.plugin.game.luggage.f.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.MMActivity.a;
-import java.util.HashMap;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.downloader_app.api.a.c;
+import com.tencent.mm.plugin.downloader_app.api.c;
+import com.tencent.mm.plugin.game.luggage.g.i;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import org.json.JSONObject;
 
 public class t
-  extends bq<g>
+  extends br<i>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
-  
-  public final void b(final b<g>.a paramb)
+  public final void a(Context paramContext, String paramString, final br.a parama)
   {
-    AppMethodBeat.i(83081);
-    ae.i("MicroMsg.JsApiOpenGameRegion", "invoke");
-    final MMActivity localMMActivity = (MMActivity)((g)paramb.chg).mContext;
-    localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
+    AppMethodBeat.i(83076);
+    try
     {
-      public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      paramString = new JSONObject(paramString);
+      if (paramString != null)
       {
-        AppMethodBeat.i(83080);
-        if (paramAnonymousInt1 == (t.this.hashCode() & 0xFFFF))
+        paramString = paramString.optString("appId");
+        Intent localIntent = new Intent();
+        localIntent.putExtra("appId", paramString);
+        localIntent.putExtra("view_task", true);
+        localIntent.addFlags(268435456);
+        ((c)g.af(c.class)).a(paramContext, localIntent, new a.c()
         {
-          if (paramAnonymousInt2 != -1) {
-            break label96;
+          public final void bEx()
+          {
+            AppMethodBeat.i(83075);
+            parama.i(null, null);
+            AppMethodBeat.o(83075);
           }
-          if (paramAnonymousIntent == null) {
-            break label83;
-          }
-          paramAnonymousIntent = bu.bI(paramAnonymousIntent.getStringExtra("gameRegionName"), "");
-          HashMap localHashMap = new HashMap();
-          localHashMap.put("gameRegionName", paramAnonymousIntent);
-          paramb.e("", localHashMap);
-        }
-        for (;;)
-        {
-          localMMActivity.mmSetOnActivityResultCallback(null);
-          AppMethodBeat.o(83080);
-          return;
-          label83:
-          paramb.a("fail", null);
-          continue;
-          label96:
-          if (paramAnonymousInt2 == 1) {
-            paramb.a("fail", null);
-          } else {
-            paramb.a("cancel", null);
-          }
-        }
+        });
+        AppMethodBeat.o(83076);
+        return;
       }
-    });
-    d.a(localMMActivity, "game", ".ui.GameRegionSelectUI", null, hashCode() & 0xFFFF, false);
-    AppMethodBeat.o(83081);
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.JsApiJumpDownloaderWidget", paramString, "", new Object[0]);
+        paramString = null;
+        continue;
+        paramString = "";
+      }
+    }
   }
   
-  public final int ced()
+  public final void b(b<i>.a paramb) {}
+  
+  public final int dTs()
   {
-    return 0;
+    return 2;
   }
   
   public final String name()
   {
-    return "openGameRegion";
+    return "jumpDownloaderWidget";
   }
 }
 

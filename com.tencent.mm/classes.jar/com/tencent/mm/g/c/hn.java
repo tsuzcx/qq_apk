@@ -2,94 +2,41 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class hn
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS WxaAttributesTableAppIdIndex ON WxaAttributesTable(appId)" };
-  private static final int eGD;
-  private static final int eGR;
-  private static final int eGX = "usernameHash".hashCode();
-  private static final int eGY = "username".hashCode();
-  private static final int eMk;
-  private static final int eMy;
-  private static final int eNp = "reserved".hashCode();
-  private static final int fDX;
-  private static final int fDY;
-  private static final int fDZ;
-  private static final int fEa;
-  private static final int fEb;
-  private static final int fEc;
-  private static final int fEd;
-  private static final int fEe;
-  private static final int fEf;
-  private static final int fEg;
-  private static final int fEh = "syncTimeSecond".hashCode();
-  private static final int fEi = "syncVersion".hashCode();
-  private static final int fEj = "bizMenu".hashCode();
-  private static final int fkN;
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int fJb = "expireTime".hashCode();
+  private static final int fJf;
+  private static final int fPE = "timeStamp".hashCode();
+  private static final int fkX = "size".hashCode();
+  private static final int fkj = "appId".hashCode();
+  private static final int ghq = "appIdKey".hashCode();
+  private static final int ghr = "localFile".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGA = true;
-  private boolean eGU = true;
-  private boolean eGV = true;
-  private boolean eGm = true;
-  private boolean eLW = true;
-  private boolean eMu = true;
-  private boolean eNh = true;
-  private boolean fDK = true;
-  private boolean fDL = true;
-  private boolean fDM = true;
-  private boolean fDN = true;
-  private boolean fDO = true;
-  private boolean fDP = true;
-  private boolean fDQ = true;
-  private boolean fDR = true;
-  private boolean fDS = true;
-  private boolean fDT = true;
-  private boolean fDU = true;
-  private boolean fDV = true;
-  private boolean fDW = true;
+  private static final int value_HASHCODE = "value".hashCode();
+  private boolean __hadSetvalue = true;
+  private boolean fIP = true;
+  private boolean fIT = true;
+  private boolean fPy = true;
   public String field_appId;
-  public String field_appInfo;
-  public int field_appOpt;
-  public String field_bigHeadURL;
-  public String field_bindWxaInfo;
-  public String field_bizMenu;
-  public String field_brandIconURL;
-  public String field_dynamicInfo;
-  public String field_nickname;
-  public String field_passThroughInfo;
-  public String field_registerSource;
-  public String field_reserved;
-  public String field_roundedSquareIconURL;
-  public String field_shortNickname;
-  public String field_signature;
-  public String field_smallHeadURL;
-  public long field_syncTimeSecond;
-  public String field_syncVersion;
-  public String field_username;
-  public int field_usernameHash;
-  public String field_versionInfo;
-  private boolean fkI = true;
+  public String field_appIdKey;
+  public long field_expireTime;
+  public String field_localFile;
+  public long field_size;
+  public long field_timeStamp;
+  public String field_value;
+  public String field_weight;
+  private boolean fjS = true;
+  private boolean fkV = true;
+  private boolean gho = true;
+  private boolean ghp = true;
   
   static
   {
-    eGD = "appId".hashCode();
-    eMy = "nickname".hashCode();
-    fDX = "shortNickname".hashCode();
-    eMk = "brandIconURL".hashCode();
-    fDY = "roundedSquareIconURL".hashCode();
-    fDZ = "bigHeadURL".hashCode();
-    fEa = "smallHeadURL".hashCode();
-    eGR = "signature".hashCode();
-    fEb = "appOpt".hashCode();
-    fEc = "registerSource".hashCode();
-    fEd = "appInfo".hashCode();
-    fkN = "versionInfo".hashCode();
-    fEe = "passThroughInfo".hashCode();
-    fEf = "bindWxaInfo".hashCode();
-    fEg = "dynamicInfo".hashCode();
+    fJf = "weight".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -105,59 +52,48 @@ public abstract class hn
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGX != k) {
-        break label65;
+      if (fkj != k) {
+        break label60;
       }
-      this.field_usernameHash = paramCursor.getInt(i);
-      this.eGU = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (eGY == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (eGD == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (eMy == k) {
-        this.field_nickname = paramCursor.getString(i);
-      } else if (fDX == k) {
-        this.field_shortNickname = paramCursor.getString(i);
-      } else if (eMk == k) {
-        this.field_brandIconURL = paramCursor.getString(i);
-      } else if (fDY == k) {
-        this.field_roundedSquareIconURL = paramCursor.getString(i);
-      } else if (fDZ == k) {
-        this.field_bigHeadURL = paramCursor.getString(i);
-      } else if (fEa == k) {
-        this.field_smallHeadURL = paramCursor.getString(i);
-      } else if (eGR == k) {
-        this.field_signature = paramCursor.getString(i);
-      } else if (fEb == k) {
-        this.field_appOpt = paramCursor.getInt(i);
-      } else if (fEc == k) {
-        this.field_registerSource = paramCursor.getString(i);
-      } else if (fEd == k) {
-        this.field_appInfo = paramCursor.getString(i);
-      } else if (fkN == k) {
-        this.field_versionInfo = paramCursor.getString(i);
-      } else if (fEe == k) {
-        this.field_passThroughInfo = paramCursor.getString(i);
-      } else if (fEf == k) {
-        this.field_bindWxaInfo = paramCursor.getString(i);
-      } else if (fEg == k) {
-        this.field_dynamicInfo = paramCursor.getString(i);
-      } else if (eNp == k) {
-        this.field_reserved = paramCursor.getString(i);
-      } else if (fEh == k) {
-        this.field_syncTimeSecond = paramCursor.getLong(i);
-      } else if (fEi == k) {
-        this.field_syncVersion = paramCursor.getString(i);
-      } else if (fEj == k) {
-        this.field_bizMenu = paramCursor.getString(i);
-      } else if (rowid_HASHCODE == k) {
+      label60:
+      if (ghq == k)
+      {
+        this.field_appIdKey = paramCursor.getString(i);
+        this.gho = true;
+      }
+      else if (value_HASHCODE == k)
+      {
+        this.field_value = paramCursor.getString(i);
+      }
+      else if (fJf == k)
+      {
+        this.field_weight = paramCursor.getString(i);
+      }
+      else if (fJb == k)
+      {
+        this.field_expireTime = paramCursor.getLong(i);
+      }
+      else if (fPE == k)
+      {
+        this.field_timeStamp = paramCursor.getLong(i);
+      }
+      else if (fkX == k)
+      {
+        this.field_size = paramCursor.getLong(i);
+      }
+      else if (ghr == k)
+      {
+        this.field_localFile = paramCursor.getString(i);
+      }
+      else if (rowid_HASHCODE == k)
+      {
         this.systemRowid = paramCursor.getLong(i);
       }
     }
@@ -166,68 +102,29 @@ public abstract class hn
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGU) {
-      localContentValues.put("usernameHash", Integer.valueOf(this.field_usernameHash));
-    }
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
-    }
-    if (this.eGm) {
+    if (this.fjS) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eMu) {
-      localContentValues.put("nickname", this.field_nickname);
+    if (this.gho) {
+      localContentValues.put("appIdKey", this.field_appIdKey);
     }
-    if (this.fDK) {
-      localContentValues.put("shortNickname", this.field_shortNickname);
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
-    if (this.eLW) {
-      localContentValues.put("brandIconURL", this.field_brandIconURL);
+    if (this.fIT) {
+      localContentValues.put("weight", this.field_weight);
     }
-    if (this.fDL) {
-      localContentValues.put("roundedSquareIconURL", this.field_roundedSquareIconURL);
+    if (this.fIP) {
+      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
     }
-    if (this.fDM) {
-      localContentValues.put("bigHeadURL", this.field_bigHeadURL);
+    if (this.fPy) {
+      localContentValues.put("timeStamp", Long.valueOf(this.field_timeStamp));
     }
-    if (this.fDN) {
-      localContentValues.put("smallHeadURL", this.field_smallHeadURL);
+    if (this.fkV) {
+      localContentValues.put("size", Long.valueOf(this.field_size));
     }
-    if (this.eGA) {
-      localContentValues.put("signature", this.field_signature);
-    }
-    if (this.fDO) {
-      localContentValues.put("appOpt", Integer.valueOf(this.field_appOpt));
-    }
-    if (this.fDP) {
-      localContentValues.put("registerSource", this.field_registerSource);
-    }
-    if (this.fDQ) {
-      localContentValues.put("appInfo", this.field_appInfo);
-    }
-    if (this.fkI) {
-      localContentValues.put("versionInfo", this.field_versionInfo);
-    }
-    if (this.fDR) {
-      localContentValues.put("passThroughInfo", this.field_passThroughInfo);
-    }
-    if (this.fDS) {
-      localContentValues.put("bindWxaInfo", this.field_bindWxaInfo);
-    }
-    if (this.fDT) {
-      localContentValues.put("dynamicInfo", this.field_dynamicInfo);
-    }
-    if (this.eNh) {
-      localContentValues.put("reserved", this.field_reserved);
-    }
-    if (this.fDU) {
-      localContentValues.put("syncTimeSecond", Long.valueOf(this.field_syncTimeSecond));
-    }
-    if (this.fDV) {
-      localContentValues.put("syncVersion", this.field_syncVersion);
-    }
-    if (this.fDW) {
-      localContentValues.put("bizMenu", this.field_bizMenu);
+    if (this.ghp) {
+      localContentValues.put("localFile", this.field_localFile);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -237,7 +134,7 @@ public abstract class hn
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.hn
  * JD-Core Version:    0.7.0.1
  */

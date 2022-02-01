@@ -12,42 +12,42 @@ import com.tencent.toybrick.g.b.d;
 public final class c
   extends g<c, a>
 {
-  public static final int MFn = 2131495269;
-  private Drawable MFA;
-  private b.b<c> MFB;
-  private b.d<c> MFC;
-  private boolean MFD;
-  private b<Boolean, c> MFE;
-  private b<Boolean, c> MFF;
-  private Drawable MFo;
-  private b.b<c> MFp;
-  private CharSequence xkf;
+  public static final int Sno = 2131496119;
+  private CharSequence Bic;
+  private Drawable SnB;
+  private b.b<c> SnC;
+  private b.d<c> SnD;
+  private boolean SnE;
+  private b<Boolean, c> SnF;
+  private b<Boolean, c> SnG;
+  private Drawable Snp;
+  private b.b<c> Snq;
   
   public final int getLayoutResource()
   {
-    return MFn;
+    return Sno;
   }
   
   public final class a
     extends d.a
   {
-    ImageView MFH;
-    ImageView MFI;
-    ImageView MFJ;
-    TextView MFK;
-    View MFL;
-    ImageView zTB;
+    ImageView EbJ;
+    ImageView SnI;
+    ImageView SnJ;
+    ImageView SnK;
+    TextView SnL;
+    View SnM;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(159942);
-      this.MFH = ((ImageView)paramView.findViewById(2131300959));
-      this.MFK = ((TextView)paramView.findViewById(2131304182));
-      this.MFI = ((ImageView)paramView.findViewById(2131304190));
-      this.MFL = paramView.findViewById(2131304191);
-      this.zTB = ((ImageView)paramView.findViewById(2131304172));
-      this.MFJ = ((ImageView)paramView.findViewById(2131304181));
+      this.SnI = ((ImageView)paramView.findViewById(2131302595));
+      this.SnL = ((TextView)paramView.findViewById(2131307091));
+      this.SnJ = ((ImageView)paramView.findViewById(2131307102));
+      this.SnM = paramView.findViewById(2131307104);
+      this.EbJ = ((ImageView)paramView.findViewById(2131307076));
+      this.SnK = ((ImageView)paramView.findViewById(2131307090));
       AppMethodBeat.o(159942);
     }
   }

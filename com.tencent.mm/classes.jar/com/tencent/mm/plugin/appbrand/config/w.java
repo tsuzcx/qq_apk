@@ -1,217 +1,110 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.content.ContentValues;
-import android.database.Cursor;
+import android.text.TextUtils;
 import android.util.Pair;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.g.a.nx;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appcache.bh;
-import com.tencent.mm.protocal.protobuf.eic;
-import com.tencent.mm.protocal.protobuf.ek;
-import com.tencent.mm.sdk.e.f;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.co.f;
+import com.tencent.mm.co.g;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.service.q;
+import com.tencent.mm.plugin.appbrand.service.q.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vending.c.a;
+import com.tencent.mm.vending.g.b;
+import com.tencent.mm.vending.g.e;
 import java.util.List;
-import org.json.JSONObject;
 
-public class w
-  extends u
+public final class w
+  implements q
 {
-  public w(com.tencent.mm.sdk.e.e parame)
+  public final WxaAttributes Xk(String paramString)
   {
-    super(parame, "WxaAttributesTable", WxaAttributes.INDEX_CREATE);
-    AppMethodBeat.i(44905);
-    Cursor localCursor;
-    if (beO())
+    AppMethodBeat.i(44876);
+    paramString = n.buC().d(paramString, new String[0]);
+    AppMethodBeat.o(44876);
+    return paramString;
+  }
+  
+  public final WxaAttributes Xl(String paramString)
+  {
+    AppMethodBeat.i(44877);
+    paramString = n.buC().e(paramString, new String[0]);
+    AppMethodBeat.o(44877);
+    return paramString;
+  }
+  
+  public final String Xm(String paramString)
+  {
+    AppMethodBeat.i(226472);
+    if (TextUtils.isEmpty(paramString))
     {
-      parame = (f)parame;
-      if (!g.ajR().ajA().getBoolean(am.a.IQq, false))
-      {
-        ae.i("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "before fix");
-        localCursor = parame.a("select appInfo from WxaAttributesTable", null, 2);
-        if ((localCursor == null) || (localCursor.isClosed()))
-        {
-          ae.e("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "try fix but db not working");
-          AppMethodBeat.o(44905);
-          return;
-        }
-        if (!localCursor.moveToFirst()) {
-          break label367;
-        }
-        Object localObject1 = new LinkedList();
-        Object localObject2 = localCursor.getString(0);
-        if (!bu.isNullOrNil((String)localObject2)) {}
-        for (;;)
-        {
-          try
-          {
-            localObject3 = new JSONObject((String)localObject2);
-            localObject2 = ((JSONObject)localObject3).optString("Appid");
-            localObject3 = ((JSONObject)localObject3).optString("RoundedSquareIconUrl");
-            if (!bu.isNullOrNil((String)localObject2))
-            {
-              boolean bool = bu.isNullOrNil((String)localObject3);
-              if (!bool) {
-                continue;
-              }
-            }
-          }
-          catch (Exception localException)
-          {
-            Object localObject3;
-            long l;
-            ContentValues localContentValues;
-            continue;
-            parame.sW(l);
-            ae.i("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "fix done");
-          }
-          if (localCursor.moveToNext()) {
-            break;
-          }
-          localCursor.close();
-          l = parame.yi(Thread.currentThread().getId());
-          localObject1 = ((List)localObject1).iterator();
-          if (!((Iterator)localObject1).hasNext()) {
-            continue;
-          }
-          localObject2 = (Pair)((Iterator)localObject1).next();
-          parame.update("WxaAttributesTable", (ContentValues)((Pair)localObject2).second, "appId=?", new String[] { (String)((Pair)localObject2).first });
-          continue;
-          localContentValues = new ContentValues(1);
-          localContentValues.put("roundedSquareIconURL", (String)localObject3);
-          ((List)localObject1).add(Pair.create(localObject2, localContentValues));
-        }
-      }
+      AppMethodBeat.o(226472);
+      return "";
     }
-    for (;;)
+    paramString = y.Xw(paramString);
+    AppMethodBeat.o(226472);
+    return paramString;
+  }
+  
+  public final e<WxaAttributes> Xn(final String paramString)
+  {
+    AppMethodBeat.i(44879);
+    paramString = g.ey(paramString).b(new a() {});
+    AppMethodBeat.o(44879);
+    return paramString;
+  }
+  
+  public final void a(String paramString, final q.a parama)
+  {
+    AppMethodBeat.i(44878);
+    aa.a(paramString, false, new aa.b() {});
+    AppMethodBeat.o(44878);
+  }
+  
+  public final void b(final String paramString, final q.a parama)
+  {
+    AppMethodBeat.i(226473);
+    h.RTc.aX(new Runnable()
     {
-      if (!localCursor.isClosed()) {
-        localCursor.close();
+      public final void run()
+      {
+        AppMethodBeat.i(226468);
+        Pair localPair = aa.a(paramString, false, null, null);
+        if (parama != null) {
+          parama.b((WxaAttributes)localPair.first);
+        }
+        AppMethodBeat.o(226468);
       }
-      g.ajR().ajA().set(am.a.IQq, Boolean.TRUE);
-      AppMethodBeat.o(44905);
+    });
+    AppMethodBeat.o(226473);
+  }
+  
+  public final void bq(List<String> paramList)
+  {
+    AppMethodBeat.i(44881);
+    if (Util.isNullOrNil(paramList))
+    {
+      AppMethodBeat.o(44881);
       return;
-      label367:
-      ae.i("MicroMsg.AppBrand.WxaAttributeDesktopURLFix", "no contacts available");
     }
+    Log.i("MicroMsg.AppBrand.WxaAttrExportService", "batchSync list %s", new Object[] { Util.listToString(paramList, ", ") });
+    aa.a(paramList, o.a.leZ, null);
+    AppMethodBeat.o(44881);
   }
   
-  protected final boolean a(final WxaAttributes paramWxaAttributes, final eic parameic)
+  public final void c(String paramString, final q.a parama)
   {
-    AppMethodBeat.i(44908);
-    boolean bool = super.a(paramWxaAttributes, parameic);
-    if ((bool) && ("WxaAppInfo".equals(parameic.uuW)))
-    {
-      paramWxaAttributes = paramWxaAttributes.field_appId;
-      parameic = parameic.yxn;
-      h.MqF.f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(44904);
-          try
-          {
-            ek localek = r.x(new JSONObject(parameic));
-            p.b(paramWxaAttributes, localek.FOG);
-            AppMethodBeat.o(44904);
-            return;
-          }
-          catch (Exception localException)
-          {
-            AppMethodBeat.o(44904);
-          }
-        }
-      }, "MicroMsg.WxaAttrStorageWCTHREAD_TAG_POST_FLUSH_ATTRS");
-    }
-    AppMethodBeat.o(44908);
-    return bool;
-  }
-  
-  public final boolean a(String paramString, final b paramb, List<eic> paramList)
-  {
-    AppMethodBeat.i(44906);
-    if (!g.ajP().gDk)
-    {
-      ae.e("MicroMsg.WxaAttrStorageWC", "flushAttrs username[%s], account().isInitializedNotifyAllDone()==FALSE", new Object[] { paramString });
-      AppMethodBeat.o(44906);
-      return false;
-    }
-    boolean bool = super.a(paramString, paramb, paramList);
-    paramb = super.d(paramString, new String[] { "appId", "versionInfo", "nickname", "bigHeadURL", "smallHeadURL" });
-    if (paramb == null)
-    {
-      ae.e("MicroMsg.WxaAttrStorageWC", "flushAttrs, get NULL record with username[%s]", new Object[] { paramString });
-      AppMethodBeat.o(44906);
-      return bool;
-    }
-    paramString = paramb.beV();
-    if ((paramString != null) && (paramString.cmz == 0))
-    {
-      paramString = j.aZu();
-      if (paramString != null) {
-        paramString.a(paramb.field_appId, paramb.beV());
-      }
-    }
-    if (bool) {
-      h.MqF.f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(44903);
-          try
-          {
-            w.f(paramb);
-            AppMethodBeat.o(44903);
-            return;
-          }
-          catch (Exception localException)
-          {
-            ae.printErrStackTrace("MicroMsg.WxaAttrStorageWC", localException, "flushContactInMainDB", new Object[0]);
-            AppMethodBeat.o(44903);
-          }
-        }
-      }, "MicroMsg.WxaAttrStorageWCTHREAD_TAG_POST_FLUSH_ATTRS");
-    }
-    AppMethodBeat.o(44906);
-    return bool;
-  }
-  
-  public void add(k.a parama)
-  {
-    AppMethodBeat.i(222228);
-    super.add("MicroMsg.WxaAttrStorageWC.WORKER", parama);
-    AppMethodBeat.o(222228);
-  }
-  
-  protected final boolean j(String paramString, int paramInt, boolean paramBoolean)
-  {
-    AppMethodBeat.i(44907);
-    paramBoolean = super.j(paramString, paramInt, paramBoolean);
-    if (paramBoolean)
-    {
-      WxaAttributes localWxaAttributes = d(paramString, new String[] { "appOpt" });
-      nx localnx = new nx();
-      localnx.dCN.dkZ = paramString;
-      localnx.dCN.dCO = localWxaAttributes.field_appOpt;
-      com.tencent.mm.sdk.b.a.IvT.l(localnx);
-    }
-    AppMethodBeat.o(44907);
-    return paramBoolean;
+    AppMethodBeat.i(44880);
+    aa.a(paramString, true, new aa.b() {});
+    AppMethodBeat.o(44880);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.w
  * JD-Core Version:    0.7.0.1
  */

@@ -10,12 +10,8 @@ import com.tencent.wework.api.util.SessionProvider;
 public abstract class WWBaseMessage
   extends BaseMessage
 {
-  public String MLo;
   public String appId;
-  public String appName;
-  public String kbi;
-  public int sdkVer;
-  public String transaction;
+  public String leq;
   
   public boolean checkArgs()
   {
@@ -26,12 +22,13 @@ public abstract class WWBaseMessage
   {
     this.transaction = paramBundle.getString("_wwapi_basereq_transaction");
     this.appId = paramBundle.getString("_wwapi_basereq_openid");
-    this.kbi = paramBundle.getString("_wwapi_basereq_agentid");
+    this.leq = paramBundle.getString("_wwapi_basereq_agentid");
     this.appName = paramBundle.getString("_wwapi_basereq_appname");
-    this.MLo = paramBundle.getString("_wwapi_basereq_appbundle");
+    this.Sxp = paramBundle.getString("_wwapi_basereq_appbundle");
     this.sdkVer = paramBundle.getInt("_wwobject_sdkVer", 0);
-    if ((MLn != null) && (TextUtils.isEmpty(this.vuG))) {
-      this.vuG = MLn.geG();
+    this.Sxq = paramBundle.getString("_wwobject_sdkVername");
+    if ((Sxr != null) && (TextUtils.isEmpty(this.yOQ))) {
+      this.yOQ = Sxr.hrF();
     }
   }
   
@@ -41,15 +38,16 @@ public abstract class WWBaseMessage
     this.transaction = str;
     paramBundle.putString("_wwapi_basereq_transaction", str);
     paramBundle.putString("_wwapi_basereq_openid", this.appId);
-    paramBundle.putString("_wwapi_basereq_agentid", this.kbi);
+    paramBundle.putString("_wwapi_basereq_agentid", this.leq);
     try
     {
       paramBundle.putString("_wwapi_basereq_appbundle", this.mContext.getPackageName());
       paramBundle.putString("_wwapi_basereq_appname", this.mContext.getString(this.mContext.getApplicationInfo().labelRes));
       label75:
-      paramBundle.putInt("_wwobject_sdkVer", 2);
-      if ((MLn != null) && (TextUtils.isEmpty(this.vuG))) {
-        this.vuG = MLn.geG();
+      paramBundle.putInt("_wwobject_sdkVer", 4);
+      paramBundle.putString("_wwobject_sdkVername", "2.0.11.21");
+      if ((Sxr != null) && (TextUtils.isEmpty(this.yOQ))) {
+        this.yOQ = Sxr.hrF();
       }
       return;
     }

@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class c
-  extends b
+  extends IEvent
 {
-  public a dkE;
+  public a dBO;
   
   public c()
   {
@@ -16,8 +16,8 @@ public final class c
   private c(byte paramByte)
   {
     AppMethodBeat.i(131787);
-    this.dkE = new a();
-    this.IvZ = true;
+    this.dBO = new a();
+    this.order = true;
     this.callback = null;
     AppMethodBeat.o(131787);
   }

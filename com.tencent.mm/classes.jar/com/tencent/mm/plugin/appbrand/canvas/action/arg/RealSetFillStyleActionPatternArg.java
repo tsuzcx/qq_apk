@@ -10,11 +10,11 @@ import android.graphics.Shader.TileMode;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.d;
 import com.tencent.mm.plugin.appbrand.canvas.e;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Objects;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -23,7 +23,7 @@ public class RealSetFillStyleActionPatternArg
   extends RealSetFillStyleActionArg
 {
   public static final Parcelable.Creator<RealSetFillStyleActionPatternArg> CREATOR;
-  public String jWK;
+  public String kZG;
   public String path;
   
   static
@@ -43,22 +43,22 @@ public class RealSetFillStyleActionPatternArg
   public final boolean a(d paramd, Canvas paramCanvas)
   {
     AppMethodBeat.i(145064);
-    if (bu.isNullOrNil(this.path))
+    if (Util.isNullOrNil(this.path))
     {
       AppMethodBeat.o(145064);
       return false;
     }
-    paramCanvas = paramd.jWq;
-    paramd = paramd.jWv.a(paramd, this.path);
+    paramCanvas = paramd.kZm;
+    paramd = paramd.kZr.a(paramd, this.path);
     Object localObject;
     int j;
     int k;
     int i;
     if ((paramd != null) && (!paramd.isRecycled()))
     {
-      localObject = this.jWK;
-      j = g.vO(paramd.getWidth());
-      k = g.vO(paramd.getHeight());
+      localObject = this.kZG;
+      j = g.zD(paramd.getWidth());
+      k = g.zD(paramd.getHeight());
       i = -1;
       switch (((String)localObject).hashCode())
       {
@@ -139,7 +139,7 @@ public class RealSetFillStyleActionPatternArg
       return false;
     }
     paramObject = (RealSetFillStyleActionPatternArg)paramObject;
-    if ((Objects.equals(this.path, paramObject.path)) && (Objects.equals(this.jWK, paramObject.jWK)))
+    if ((Objects.equals(this.path, paramObject.path)) && (Objects.equals(this.kZG, paramObject.kZG)))
     {
       AppMethodBeat.o(145065);
       return true;
@@ -153,25 +153,25 @@ public class RealSetFillStyleActionPatternArg
     AppMethodBeat.i(145069);
     super.f(paramJSONArray);
     this.path = paramJSONArray.optString(1);
-    this.jWK = paramJSONArray.optString(2);
+    this.kZG = paramJSONArray.optString(2);
     AppMethodBeat.o(145069);
-  }
-  
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145067);
-    super.h(paramParcel);
-    this.path = paramParcel.readString();
-    this.jWK = paramParcel.readString();
-    AppMethodBeat.o(145067);
   }
   
   public int hashCode()
   {
     AppMethodBeat.i(145066);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.path, this.jWK });
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.path, this.kZG });
     AppMethodBeat.o(145066);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145067);
+    super.i(paramParcel);
+    this.path = paramParcel.readString();
+    this.kZG = paramParcel.readString();
+    AppMethodBeat.o(145067);
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -186,13 +186,13 @@ public class RealSetFillStyleActionPatternArg
     AppMethodBeat.i(145068);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.path);
-    paramParcel.writeString(this.jWK);
+    paramParcel.writeString(this.kZG);
     AppMethodBeat.o(145068);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.RealSetFillStyleActionPatternArg
  * JD-Core Version:    0.7.0.1
  */

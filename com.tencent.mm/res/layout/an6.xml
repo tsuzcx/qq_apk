@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:id="@id/gl5" android:background="@color/a_r" android:padding="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/q" android:textColor="@color/fg" android:gravity="center" android:id="@id/cwm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dp1" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" style="@style/ya" />
-    <TextView android:textSize="@dimen/q" android:textColor="@color/fg" android:gravity="center" android:id="@id/cwl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="700ms" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" style="@style/ya" />
-    <SeekBar android:id="@id/g8m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:max="100" android:progress="100" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="@id/cwm" style="@style/o2" />
-</android.support.constraint.ConstraintLayout>
+<RelativeLayout android:background="@color/rs" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:id="@id/hee" style="@style/oo">
+        <ImageView android:layout_gravity="center_vertical" android:background="@raw/mm_select_create_chatroom" android:layout_width="@dimen/e1" android:layout_height="@dimen/e1" android:layout_marginRight="@dimen/cb" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:background="@drawable/b9w" android:paddingLeft="@dimen/k_" android:paddingRight="@dimen/cb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ghk" style="@style/mp" />
+            <TextView android:textColor="@color/l4" android:id="@id/bn6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:text="{desc}" android:singleLine="true" style="@style/mo" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

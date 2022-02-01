@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item>
-        <shape>
-            <solid android:color="@color/FG_3" />
-        </shape>
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@drawable/bb2" />
+    <item android:state_selected="true" android:drawable="@drawable/bb2" />
+    <item android:drawable="@color/ac_" />
+</selector>

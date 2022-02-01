@@ -2,52 +2,55 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 
 import android.annotation.TargetApi;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 @TargetApi(18)
 public final class c
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+  extends d
 {
   private static final int CTRL_INDEX = 180;
   private static final String NAME = "createBLEConnection";
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(144497);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.md(25);
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.pl(25);
     if (paramJSONObject == null)
     {
-      ae.e("MicroMsg.JsApiCreateBLEConnection", "createBLEConnection data is null, err");
+      Log.e("MicroMsg.JsApiCreateBLEConnection", "createBLEConnection data is null, err");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10013));
-      paramc.h(paramInt, n("fail:invalid data", paramJSONObject));
+      paramf.i(paramInt, n("fail:invalid data", paramJSONObject));
       AppMethodBeat.o(144497);
       return;
     }
-    final String str1 = paramc.getAppId();
-    ae.i("MicroMsg.JsApiCreateBLEConnection", "appId:%s createBLEConnection data %s", new Object[] { str1, paramJSONObject.toString() });
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b localb = com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.Qb(paramc.getAppId());
+    final String str1 = paramf.getAppId();
+    Log.i("MicroMsg.JsApiCreateBLEConnection", "appId:%s createBLEConnection data %s", new Object[] { str1, paramJSONObject.toString() });
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b localb = a.ZC(paramf.getAppId());
     if (localb == null)
     {
-      ae.e("MicroMsg.JsApiCreateBLEConnection", "bleWorker is null, may not open ble");
+      Log.e("MicroMsg.JsApiCreateBLEConnection", "bleWorker is null, may not open ble");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10000));
-      paramc.h(paramInt, n("fail:not init", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(27, 30);
+      paramf.i(paramInt, n("fail:not init", paramJSONObject));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dY(27, 30);
       AppMethodBeat.o(144497);
       return;
     }
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bki())
+    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bFE())
     {
-      ae.e("MicroMsg.JsApiCreateBLEConnection", "bleWorker is disable, may not open ble");
+      Log.e("MicroMsg.JsApiCreateBLEConnection", "bleWorker is disable, may not open ble");
       paramJSONObject = new HashMap();
       paramJSONObject.put("errCode", Integer.valueOf(10001));
-      paramc.h(paramInt, n("fail:not available", paramJSONObject));
-      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dN(27, 32);
+      paramf.i(paramInt, n("fail:not available", paramJSONObject));
+      com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.dY(27, 32);
       AppMethodBeat.o(144497);
       return;
     }
@@ -61,34 +64,34 @@ public final class c
     String str3 = paramJSONObject.optString("connectionPriority", null);
     paramJSONObject = paramJSONObject.optString("deviceId");
     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a.b localb1 = new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a.b(paramJSONObject);
-    localb1.aXD = bool1;
-    localb1.kHG = bool2;
-    localb1.kHI = bool3;
-    localb1.kIA = l1;
-    localb1.kIg = bool4;
-    localb1.kIh = str2;
-    localb1.kIi = l2;
-    localb1.kIj = str3;
+    localb1.aXs = bool1;
+    localb1.lMh = bool2;
+    localb1.lMj = bool3;
+    localb1.lNf = l1;
+    localb1.lMK = bool4;
+    localb1.lML = str2;
+    localb1.lMM = l2;
+    localb1.lMN = str3;
     localb.a(paramJSONObject, localb1, new com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.b()
     {
       public final void a(j paramAnonymousj)
       {
         AppMethodBeat.i(144496);
-        ae.i("MicroMsg.JsApiCreateBLEConnection", "appId:%s createBLEConnection result:%s", new Object[] { str1, paramAnonymousj });
+        Log.i("MicroMsg.JsApiCreateBLEConnection", "appId:%s createBLEConnection result:%s", new Object[] { str1, paramAnonymousj });
         switch (paramAnonymousj.errCode)
         {
         default: 
           HashMap localHashMap = new HashMap();
           localHashMap.put("errCode", Integer.valueOf(paramAnonymousj.errCode));
-          paramc.h(paramInt, c.this.n(paramAnonymousj.errMsg, localHashMap));
-          com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.md(27);
+          paramf.i(paramInt, c.this.n(paramAnonymousj.errMsg, localHashMap));
+          com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.pl(27);
           AppMethodBeat.o(144496);
           return;
         }
         paramAnonymousj = new HashMap();
         paramAnonymousj.put("errCode", Integer.valueOf(0));
-        paramc.h(paramInt, c.this.n("ok", paramAnonymousj));
-        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.md(26);
+        paramf.i(paramInt, c.this.n("ok", paramAnonymousj));
+        com.tencent.mm.plugin.appbrand.jsapi.bluetooth.c.pl(26);
         AppMethodBeat.o(144496);
       }
     });
@@ -97,7 +100,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.a.c
  * JD-Core Version:    0.7.0.1
  */

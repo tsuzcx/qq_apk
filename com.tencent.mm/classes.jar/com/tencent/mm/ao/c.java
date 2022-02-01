@@ -2,27 +2,23 @@ package com.tencent.mm.ao;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.ao;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storagebase.h;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.bv;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class c
-  extends ao
+  extends com.tencent.mm.model.as
 {
   public final String getTag()
   {
     return "MicroMsg.DataTransfer.BlackListConvDataTransfer";
   }
   
-  public final boolean os(int paramInt)
+  public final boolean rT(int paramInt)
   {
     return (paramInt != 0) && (paramInt < 620757033);
   }
@@ -30,22 +26,22 @@ public final class c
   public final void transfer(int paramInt)
   {
     AppMethodBeat.i(20478);
-    ae.d("MicroMsg.DataTransfer.BlackListConvDataTransfer", "the previous version is %d", new Object[] { Integer.valueOf(paramInt) });
+    Log.d("MicroMsg.DataTransfer.BlackListConvDataTransfer", "the previous version is %d", new Object[] { Integer.valueOf(paramInt) });
     if ((paramInt != 0) && (paramInt < 620757033))
     {
-      g.yxI.dD(336, 13);
+      com.tencent.mm.plugin.report.service.h.CyF.dN(336, 13);
       Object localObject1 = new LinkedList();
-      bc.aCg();
-      Object localObject2 = com.tencent.mm.model.c.azF().e("@black.android", "", null);
+      bg.aVF();
+      Object localObject2 = com.tencent.mm.model.c.aSN().e("@black.android", "", null);
       Object localObject3;
       if (localObject2 != null)
       {
         ((Cursor)localObject2).moveToFirst();
         while (!((Cursor)localObject2).isAfterLast())
         {
-          localObject3 = new an();
-          ((an)localObject3).convertFrom((Cursor)localObject2);
-          ((List)localObject1).add(((aw)localObject3).field_username);
+          localObject3 = new com.tencent.mm.storage.as();
+          ((com.tencent.mm.storage.as)localObject3).convertFrom((Cursor)localObject2);
+          ((List)localObject1).add(((ax)localObject3).field_username);
           ((Cursor)localObject2).moveToNext();
         }
         ((Cursor)localObject2).close();
@@ -62,8 +58,8 @@ public final class c
           ((StringBuilder)localObject2).append(" or username = '").append((String)localObject3).append("'");
         }
         localObject1 = ((StringBuilder)localObject2).toString();
-        ae.d("MicroMsg.DataTransfer.BlackListConvDataTransfer", "update sql: %s", new Object[] { localObject1 });
-        bc.aCg();
+        Log.d("MicroMsg.DataTransfer.BlackListConvDataTransfer", "update sql: %s", new Object[] { localObject1 });
+        bg.aVF();
         com.tencent.mm.model.c.getDataDB().execSQL("rconversation", (String)localObject1);
       }
     }
@@ -72,7 +68,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ao.c
  * JD-Core Version:    0.7.0.1
  */

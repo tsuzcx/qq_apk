@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<android.support.constraint.ConstraintLayout android:id="@id/hxz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cd">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:src="@raw/icons_filled_error" app:iconColor="@color/Yellow" />
-        <TextView android:textSize="@dimen/gy" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/i6q" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:layout_marginStart="@dimen/c8" android:layout_marginEnd="@dimen/c8" />
-        <TextView android:textSize="@dimen/q" android:textColor="@color/y4" android:gravity="center_horizontal" android:id="@id/i6p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c_" android:layout_marginStart="@dimen/c_" android:layout_marginEnd="@dimen/c_" />
-    </LinearLayout>
-    <Button android:layout_gravity="bottom|center" android:id="@id/i0n" android:layout_marginBottom="@dimen/bv" android:text="@string/hah" style="@style/od" />
-</FrameLayout>
+    <com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView android:id="@id/hy0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="4.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" />
+    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/hy1" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="12.0dip" />
+    <ImageView android:id="@id/hy3" android:layout_width="fill_parent" android:layout_height="0.0dip" android:scaleType="centerCrop" app:layout_constraintBottom_toTopOf="@id/hy1" app:layout_constraintHeight_default="i3y" app:layout_constraintTop_toTopOf="g8m" />
+    <ImageView android:id="@id/hy2" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:src="@raw/shortvideo_play_btn" app:layout_constraintBottom_toBottomOf="@id/hy3" app:layout_constraintEnd_toEndOf="@id/hy3" app:layout_constraintStart_toStartOf="@id/hy3" app:layout_constraintTop_toTopOf="@id/hy3" />
+</android.support.constraint.ConstraintLayout>

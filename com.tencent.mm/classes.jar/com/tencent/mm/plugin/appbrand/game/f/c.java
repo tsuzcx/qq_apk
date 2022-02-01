@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.appbrand.game.f;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.f.b;
-import com.tencent.mm.plugin.appbrand.jsapi.f.d;
-import com.tencent.mm.plugin.appbrand.p;
-import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.page.u;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.jsapi.i.b;
+import com.tencent.mm.plugin.appbrand.jsapi.i.d;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.page.w;
+import com.tencent.mm.plugin.appbrand.page.x;
+import com.tencent.mm.plugin.appbrand.q;
 
 @SuppressLint({"ViewConstructor"})
 public final class c
-  extends u
+  extends x
 {
-  public c(Context paramContext, p paramp)
+  public c(Context paramContext, q paramq)
   {
-    super(paramContext, paramp, new a((byte)0));
+    super(paramContext, paramq, new a((byte)0));
     AppMethodBeat.i(45176);
     AppMethodBeat.o(45176);
   }
@@ -24,11 +24,11 @@ public final class c
   static final class a
     extends com.tencent.luggage.game.page.f
   {
-    public final z a(t paramt)
+    public final ac a(w paramw)
     {
       AppMethodBeat.i(174729);
-      paramt = new d();
-      paramt.a(new f.d()
+      paramw = new d();
+      paramw.a(new i.d()
       {
         public final void onForeground()
         {
@@ -37,7 +37,7 @@ public final class c
           AppMethodBeat.o(45173);
         }
       });
-      paramt.a(new f.b()
+      paramw.a(new i.b()
       {
         public final void onBackground()
         {
@@ -47,13 +47,13 @@ public final class c
         }
       });
       AppMethodBeat.o(174729);
-      return paramt;
+      return paramw;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.f.c
  * JD-Core Version:    0.7.0.1
  */

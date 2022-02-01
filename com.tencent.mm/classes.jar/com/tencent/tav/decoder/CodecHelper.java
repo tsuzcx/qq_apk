@@ -23,14 +23,14 @@ public class CodecHelper
   
   static
   {
-    AppMethodBeat.i(214810);
+    AppMethodBeat.i(218143);
     TAG = CodecHelper.class.getSimpleName();
-    AppMethodBeat.o(214810);
+    AppMethodBeat.o(218143);
   }
   
   public static boolean checkAudioOutSupported(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    AppMethodBeat.i(214807);
+    AppMethodBeat.i(218140);
     Object localObject1 = encoderCodecInfo(paramString);
     if (((List)localObject1).size() > 0) {
       localObject1 = ((List)localObject1).iterator();
@@ -66,13 +66,13 @@ public class CodecHelper
         if ((!bool) || (i == 0) || (j == 0)) {
           break label173;
         }
-        AppMethodBeat.o(214807);
+        AppMethodBeat.o(218140);
         return true;
         i = 0;
         break;
         j += 1;
         break label100;
-        AppMethodBeat.o(214807);
+        AppMethodBeat.o(218140);
         return false;
       }
     }
@@ -80,7 +80,7 @@ public class CodecHelper
   
   public static boolean checkVideoOutSupported(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString)
   {
-    AppMethodBeat.i(214806);
+    AppMethodBeat.i(218139);
     Object localObject = encoderCodecInfo(paramString);
     if (((List)localObject).size() > 0)
     {
@@ -93,44 +93,44 @@ public class CodecHelper
         boolean bool3 = localVideoCapabilities.isSizeSupported(paramInt1, paramInt2);
         if ((bool1) && (bool2) && (bool3))
         {
-          AppMethodBeat.o(214806);
+          AppMethodBeat.o(218139);
           return true;
         }
       }
     }
-    AppMethodBeat.o(214806);
+    AppMethodBeat.o(218139);
     return false;
   }
   
   public static int clampHeight(MediaCodecInfo paramMediaCodecInfo, String paramString, int paramInt)
   {
-    AppMethodBeat.i(214805);
+    AppMethodBeat.i(218138);
     if ((Build.VERSION.SDK_INT < 21) || (paramMediaCodecInfo == null))
     {
-      AppMethodBeat.o(214805);
+      AppMethodBeat.o(218138);
       return paramInt;
     }
     paramInt = ((Integer)paramMediaCodecInfo.getCapabilitiesForType(paramString).getVideoCapabilities().getSupportedHeights().clamp(Integer.valueOf(paramInt))).intValue();
-    AppMethodBeat.o(214805);
+    AppMethodBeat.o(218138);
     return paramInt;
   }
   
   public static int clampWidth(MediaCodecInfo paramMediaCodecInfo, String paramString, int paramInt)
   {
-    AppMethodBeat.i(214804);
+    AppMethodBeat.i(218137);
     if ((Build.VERSION.SDK_INT < 21) || (paramMediaCodecInfo == null))
     {
-      AppMethodBeat.o(214804);
+      AppMethodBeat.o(218137);
       return paramInt;
     }
     paramInt = ((Integer)paramMediaCodecInfo.getCapabilitiesForType(paramString).getVideoCapabilities().getSupportedWidths().clamp(Integer.valueOf(paramInt))).intValue();
-    AppMethodBeat.o(214804);
+    AppMethodBeat.o(218137);
     return paramInt;
   }
   
   public static CGSize correctSupportSize(CGSize paramCGSize, String paramString)
   {
-    AppMethodBeat.i(214798);
+    AppMethodBeat.i(218131);
     int i2 = (int)paramCGSize.width;
     int i1 = (int)paramCGSize.height;
     int m = MediaCodecList.getCodecCount();
@@ -197,7 +197,7 @@ public class CodecHelper
         }
         Logger.i(TAG, "correctSupportSize return: target = [" + k + ", " + m + "]");
         paramCGSize = new CGSize(k, m);
-        AppMethodBeat.o(214798);
+        AppMethodBeat.o(218131);
         return paramCGSize;
       }
     }
@@ -205,7 +205,7 @@ public class CodecHelper
   
   private static List<MediaCodecInfo> decoderCodecInfo(String paramString)
   {
-    AppMethodBeat.i(214799);
+    AppMethodBeat.i(218132);
     int k = MediaCodecList.getCodecCount();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
@@ -237,13 +237,13 @@ public class CodecHelper
         j += 1;
       }
     }
-    AppMethodBeat.o(214799);
+    AppMethodBeat.o(218132);
     return localArrayList;
   }
   
   private static List<MediaCodecInfo> encoderCodecInfo(String paramString)
   {
-    AppMethodBeat.i(214800);
+    AppMethodBeat.i(218133);
     int k = MediaCodecList.getCodecCount();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
@@ -275,61 +275,61 @@ public class CodecHelper
         j += 1;
       }
     }
-    AppMethodBeat.o(214800);
+    AppMethodBeat.o(218133);
     return localArrayList;
   }
   
   private static int getHeightAlignment(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
-    AppMethodBeat.i(214802);
+    AppMethodBeat.i(218135);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (paramMediaCodecInfo != null)
       {
         int i = paramMediaCodecInfo.getCapabilitiesForType(paramString).getVideoCapabilities().getHeightAlignment();
-        AppMethodBeat.o(214802);
+        AppMethodBeat.o(218135);
         return i;
       }
-      AppMethodBeat.o(214802);
+      AppMethodBeat.o(218135);
       return 16;
     }
-    AppMethodBeat.o(214802);
+    AppMethodBeat.o(218135);
     return 16;
   }
   
   private static int getWidthAlignment(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
-    AppMethodBeat.i(214801);
+    AppMethodBeat.i(218134);
     if (Build.VERSION.SDK_INT >= 21)
     {
       if (paramMediaCodecInfo != null)
       {
         int i = paramMediaCodecInfo.getCapabilitiesForType(paramString).getVideoCapabilities().getWidthAlignment();
-        AppMethodBeat.o(214801);
+        AppMethodBeat.o(218134);
         return i;
       }
-      AppMethodBeat.o(214801);
+      AppMethodBeat.o(218134);
       return 16;
     }
-    AppMethodBeat.o(214801);
+    AppMethodBeat.o(218134);
     return 16;
   }
   
   private static boolean isSupported(MediaCodecInfo paramMediaCodecInfo, String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(214803);
+    AppMethodBeat.i(218136);
     if ((Build.VERSION.SDK_INT >= 21) && (paramMediaCodecInfo != null) && (paramMediaCodecInfo.getCapabilitiesForType(paramString).getVideoCapabilities().isSizeSupported(paramInt1, paramInt2)))
     {
-      AppMethodBeat.o(214803);
+      AppMethodBeat.o(218136);
       return true;
     }
-    AppMethodBeat.o(214803);
+    AppMethodBeat.o(218136);
     return false;
   }
   
   public static MediaCodecInfo selectCodec(String paramString)
   {
-    AppMethodBeat.i(214809);
+    AppMethodBeat.i(218142);
     int k = MediaCodecList.getCodecCount();
     int i = 0;
     while (i < k)
@@ -343,7 +343,7 @@ public class CodecHelper
         {
           if (arrayOfString[j].equalsIgnoreCase(paramString))
           {
-            AppMethodBeat.o(214809);
+            AppMethodBeat.o(218142);
             return localMediaCodecInfo;
           }
           j += 1;
@@ -351,13 +351,13 @@ public class CodecHelper
       }
       i += 1;
     }
-    AppMethodBeat.o(214809);
+    AppMethodBeat.o(218142);
     return null;
   }
   
   public static void selectProfileAndLevel(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(214808);
+    AppMethodBeat.i(218141);
     Object localObject = selectCodec("video/avc");
     int k;
     int j;
@@ -405,7 +405,7 @@ public class CodecHelper
           paramMediaFormat.setInteger("level", n);
           Logger.i(TAG, String.format("selectProfileAndLevel: 0x%x, 0x%x", new Object[] { Integer.valueOf(m), Integer.valueOf(n) }));
         }
-        AppMethodBeat.o(214808);
+        AppMethodBeat.o(218141);
         return;
       }
     }
@@ -413,7 +413,7 @@ public class CodecHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tav.decoder.CodecHelper
  * JD-Core Version:    0.7.0.1
  */

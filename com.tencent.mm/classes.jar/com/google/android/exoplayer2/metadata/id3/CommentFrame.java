@@ -52,7 +52,7 @@ public final class CommentFrame
       return false;
     }
     paramObject = (CommentFrame)paramObject;
-    if ((x.i(this.description, paramObject.description)) && (x.i(this.language, paramObject.language)) && (x.i(this.text, paramObject.text)))
+    if ((x.j(this.description, paramObject.description)) && (x.j(this.language, paramObject.language)) && (x.j(this.text, paramObject.text)))
     {
       AppMethodBeat.o(92422);
       return true;
@@ -97,7 +97,7 @@ public final class CommentFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.CommentFrame
  * JD-Core Version:    0.7.0.1
  */

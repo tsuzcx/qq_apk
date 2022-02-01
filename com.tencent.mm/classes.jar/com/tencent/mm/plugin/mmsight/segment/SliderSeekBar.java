@@ -14,41 +14,41 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.cb.a;
 
 public class SliderSeekBar
   extends View
 {
+  private View.OnTouchListener aZa;
   private Paint borderPaint;
-  private int borderWidth;
   private int padding;
-  private View.OnTouchListener tOH;
-  private boolean weA;
-  private Drawable weB;
-  private Drawable weC;
-  private int weD;
-  private float weE;
-  private int weF;
-  private float weG;
-  private int weH;
-  private Paint weI;
-  private float weJ;
-  private Paint weK;
-  private Paint weL;
-  private int weM;
-  private float weN;
-  private float weO;
-  private float weP;
-  private int weQ;
-  private Rect weR;
-  private Rect weS;
-  private boolean weT;
-  private a weu;
-  private boolean wev;
-  boolean wew;
-  private int wex;
-  private int wey;
-  private boolean wez;
+  private int rc;
+  protected float zxA;
+  private int zxB;
+  private float zxC;
+  private int zxD;
+  private Paint zxE;
+  private float zxF;
+  private Paint zxG;
+  private Paint zxH;
+  private int zxI;
+  private float zxJ;
+  private float zxK;
+  private float zxL;
+  protected int zxM;
+  private Rect zxN;
+  private Rect zxO;
+  protected boolean zxP;
+  private boolean zxr;
+  boolean zxs;
+  private int zxt;
+  private int zxu;
+  private boolean zxv;
+  private boolean zxw;
+  protected Drawable zxx;
+  protected Drawable zxy;
+  protected int zxz;
+  private a zzA;
   
   public SliderSeekBar(Context paramContext)
   {
@@ -65,35 +65,30 @@ public class SliderSeekBar
   public SliderSeekBar(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(189022);
-    this.wev = false;
-    this.wew = false;
-    this.wez = false;
-    this.weA = false;
-    this.weG = -1.0F;
-    this.weO = -1.0F;
-    this.weP = -1.0F;
+    AppMethodBeat.i(187064);
+    this.zxr = false;
+    this.zxs = false;
+    this.zxv = false;
+    this.zxw = false;
+    this.zxC = -1.0F;
+    this.zxK = -1.0F;
+    this.zxL = -1.0F;
     this.padding = 0;
-    this.weT = true;
-    this.tOH = new View.OnTouchListener()
+    this.zxP = true;
+    this.aZa = new View.OnTouchListener()
     {
-      float cNQ;
-      float cNR;
-      int weY = -1;
-      int weZ = -1;
-      int wfa;
-      int wfb;
+      float deo;
+      float dep;
+      int zxQ = -1;
+      int zxR = -1;
+      int zxS;
+      int zxT;
       
       public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
       {
         AppMethodBeat.i(94445);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        localb.bd(paramAnonymousMotionEvent);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
-        if (!SliderSeekBar.h(SliderSeekBar.this))
+        if (!SliderSeekBar.e(SliderSeekBar.this))
         {
-          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(94445);
           return false;
         }
@@ -102,177 +97,137 @@ public class SliderSeekBar
         {
         case 4: 
         default: 
-          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(94445);
           return false;
         case 2: 
           if ((!SliderSeekBar.a(SliderSeekBar.this, true)) && (!SliderSeekBar.a(SliderSeekBar.this, false)))
           {
-            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(94445);
             return false;
           }
-          if (SliderSeekBar.i(SliderSeekBar.this))
+          if (SliderSeekBar.f(SliderSeekBar.this))
           {
-            com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(94445);
             return true;
           }
-          this.wfb = 0;
+          this.zxT = 0;
           bool = false;
-          if (this.wfb < paramAnonymousMotionEvent.getPointerCount())
+          if (this.zxT < paramAnonymousMotionEvent.getPointerCount())
           {
-            this.wfa = paramAnonymousMotionEvent.getPointerId(this.wfb);
-            if ((this.wfa == this.weY) || (this.wfa == this.weZ))
+            this.zxS = paramAnonymousMotionEvent.getPointerId(this.zxT);
+            if ((this.zxS == this.zxQ) || (this.zxS == this.zxR))
             {
               paramAnonymousView = SliderSeekBar.this;
-              if (this.wfa != this.weY) {
-                break label392;
+              if (this.zxS != this.zxQ) {
+                break label301;
               }
               bool = true;
-              bool = paramAnonymousView.b(bool, paramAnonymousMotionEvent.getX(this.wfb));
-              if ((SliderSeekBar.j(SliderSeekBar.this)) && (bool) && (!SliderSeekBar.k(SliderSeekBar.this))) {
+              bool = paramAnonymousView.b(bool, paramAnonymousMotionEvent.getX(this.zxT));
+              if ((SliderSeekBar.g(SliderSeekBar.this)) && (bool) && (!SliderSeekBar.h(SliderSeekBar.this))) {
                 SliderSeekBar.this.performHapticFeedback(0, 2);
               }
               SliderSeekBar.b(SliderSeekBar.this, bool);
-              if (SliderSeekBar.l(SliderSeekBar.this) != null)
+              if (SliderSeekBar.i(SliderSeekBar.this) != null)
               {
-                paramAnonymousView = SliderSeekBar.l(SliderSeekBar.this);
-                if (this.wfa != this.weY) {
-                  break label397;
+                paramAnonymousView = SliderSeekBar.i(SliderSeekBar.this);
+                if (this.zxS != this.zxQ) {
+                  break label306;
                 }
               }
             }
             for (bool = true;; bool = false)
             {
-              paramAnonymousView.oA(bool);
+              paramAnonymousView.rj(bool);
               bool = true;
-              this.wfb += 1;
+              this.zxT += 1;
               break;
               bool = false;
-              break label282;
+              break label191;
             }
           }
-          com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(94445);
           return bool;
         case 1: 
         case 3: 
         case 6: 
-          label282:
-          this.wfa = paramAnonymousMotionEvent.getPointerId(paramAnonymousMotionEvent.getActionIndex());
-          label392:
-          label397:
-          if ((this.wfa != this.weY) && (this.wfa != this.weZ))
+          label191:
+          this.zxS = paramAnonymousMotionEvent.getPointerId(paramAnonymousMotionEvent.getActionIndex());
+          label301:
+          label306:
+          if ((this.zxS != this.zxQ) && (this.zxS != this.zxR))
           {
-            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(94445);
             return false;
           }
-          if (SliderSeekBar.l(SliderSeekBar.this) != null) {
-            SliderSeekBar.l(SliderSeekBar.this).dqI();
+          if (SliderSeekBar.i(SliderSeekBar.this) != null) {
+            SliderSeekBar.i(SliderSeekBar.this).ekz();
           }
           paramAnonymousView = SliderSeekBar.this;
-          if (this.wfa == this.weY)
+          if (this.zxS == this.zxQ)
           {
             bool = true;
             SliderSeekBar.a(paramAnonymousView, bool, false);
-            if (this.wfa != this.weY) {
-              break label572;
+            if (this.zxS != this.zxQ) {
+              break label442;
             }
-            this.weY = -1;
+            this.zxQ = -1;
           }
           for (;;)
           {
             SliderSeekBar.b(SliderSeekBar.this, false);
-            com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(94445);
             return true;
             bool = false;
             break;
-            label572:
-            this.weZ = -1;
+            label442:
+            this.zxR = -1;
           }
         }
-        this.wfb = paramAnonymousMotionEvent.getActionIndex();
-        this.wfa = paramAnonymousMotionEvent.getPointerId(this.wfb);
-        this.cNQ = paramAnonymousMotionEvent.getX(this.wfb);
-        this.cNR = paramAnonymousMotionEvent.getY(this.wfb);
-        if (SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.f(SliderSeekBar.this), this.cNQ, this.cNR))
+        this.zxT = paramAnonymousMotionEvent.getActionIndex();
+        this.zxS = paramAnonymousMotionEvent.getPointerId(this.zxT);
+        this.deo = paramAnonymousMotionEvent.getX(this.zxT);
+        this.dep = paramAnonymousMotionEvent.getY(this.zxT);
+        if (SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.this.zxx, this.deo, this.dep))
         {
           if (SliderSeekBar.a(SliderSeekBar.this, true))
           {
-            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(94445);
             return false;
           }
-          if (SliderSeekBar.l(SliderSeekBar.this) != null) {
-            SliderSeekBar.l(SliderSeekBar.this).dqH();
+          if (SliderSeekBar.i(SliderSeekBar.this) != null) {
+            SliderSeekBar.i(SliderSeekBar.this).eky();
           }
-          this.weY = this.wfa;
-          SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.f(SliderSeekBar.this).getBounds().left);
+          this.zxQ = this.zxS;
+          SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.this.zxx.getBounds().left);
           SliderSeekBar.a(SliderSeekBar.this, true, true);
-          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(94445);
           return true;
         }
-        if (SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.g(SliderSeekBar.this), this.cNQ, this.cNR))
+        if (SliderSeekBar.a(SliderSeekBar.this, SliderSeekBar.this.zxy, this.deo, this.dep))
         {
           if (SliderSeekBar.a(SliderSeekBar.this, false))
           {
-            com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
             AppMethodBeat.o(94445);
             return false;
           }
-          if (SliderSeekBar.l(SliderSeekBar.this) != null) {
-            SliderSeekBar.l(SliderSeekBar.this).dqH();
+          if (SliderSeekBar.i(SliderSeekBar.this) != null) {
+            SliderSeekBar.i(SliderSeekBar.this).eky();
           }
-          this.weZ = this.wfa;
-          SliderSeekBar.b(SliderSeekBar.this, SliderSeekBar.g(SliderSeekBar.this).getBounds().right);
+          this.zxR = this.zxS;
+          SliderSeekBar.b(SliderSeekBar.this, SliderSeekBar.this.zxy.getBounds().right);
           SliderSeekBar.a(SliderSeekBar.this, false, true);
-          com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
           AppMethodBeat.o(94445);
           return true;
         }
-        com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/mmsight/segment/SliderSeekBar$2", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
         AppMethodBeat.o(94445);
         return false;
       }
     };
-    this.weD = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
-    this.weE = (this.weD * 0.5F);
-    this.weQ = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
-    this.weB = new b(com.tencent.mm.cb.a.l(getContext(), 2131691359), com.tencent.mm.cb.a.l(getContext(), 2131691358));
-    this.weC = new b(com.tencent.mm.cb.a.l(getContext(), 2131691359), com.tencent.mm.cb.a.l(getContext(), 2131691358));
-    this.weT = true;
-    postInvalidate();
-    this.weF = com.tencent.mm.cb.a.fromDPToPix(getContext(), 1);
-    this.weH = com.tencent.mm.cb.a.ax(getContext(), 2131166956);
-    this.weG = -1.0F;
-    this.weI = new Paint();
-    this.weI.setColor(com.tencent.mm.cb.a.n(getContext(), 2131099684));
-    this.weI.setAlpha(102);
-    this.weK = new Paint();
-    this.weK.setColor(com.tencent.mm.cb.a.n(getContext(), 2131099654));
-    this.weK.setAlpha(102);
-    this.borderPaint = new Paint();
-    this.borderPaint.setColor(com.tencent.mm.cb.a.n(getContext(), 2131099684));
-    this.borderPaint.setStyle(Paint.Style.STROKE);
-    this.borderWidth = fU(getContext());
-    this.borderPaint.setStrokeWidth(this.borderWidth);
-    this.weJ = (this.borderWidth * 0.5F);
-    this.weL = new Paint();
-    this.weL.setColor(com.tencent.mm.cb.a.n(getContext(), 2131099684));
-    this.weL.setStyle(Paint.Style.STROKE);
-    this.weM = fU(getContext());
-    this.weN = (this.weM * 0.5F);
-    this.weL.setStrokeWidth(this.weM);
-    this.weL.setAlpha(178);
-    setOnTouchListener(this.tOH);
-    AppMethodBeat.o(189022);
+    init();
+    AppMethodBeat.o(187064);
   }
   
-  private static int fU(Context paramContext)
+  private static int gz(Context paramContext)
   {
     AppMethodBeat.i(94450);
     int i = Math.round(TypedValue.applyDimension(1, 1.5F, paramContext.getResources().getDisplayMetrics()));
@@ -280,112 +235,122 @@ public class SliderSeekBar
     return i;
   }
   
-  private boolean oB(boolean paramBoolean)
+  private boolean re(boolean paramBoolean)
   {
     AppMethodBeat.i(94453);
     if (paramBoolean)
     {
-      paramBoolean = b.a((b)this.weB);
+      paramBoolean = b.a((b)this.zxx);
       AppMethodBeat.o(94453);
       return paramBoolean;
     }
-    paramBoolean = b.a((b)this.weC);
+    paramBoolean = b.a((b)this.zxy);
     AppMethodBeat.o(94453);
     return paramBoolean;
   }
   
-  public final void aj(final int paramInt1, final int paramInt2, final int paramInt3)
+  public final void ao(final int paramInt1, final int paramInt2, final int paramInt3)
   {
-    AppMethodBeat.i(189023);
+    AppMethodBeat.i(187066);
     post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(94444);
-        if (paramInt1 <= SliderSeekBar.a(SliderSeekBar.this) * 2)
+        if (paramInt1 <= SliderSeekBar.this.zxz * 2)
         {
           IllegalStateException localIllegalStateException = new IllegalStateException("MaxExtent can not less than sliderWidth * 2");
           AppMethodBeat.o(94444);
           throw localIllegalStateException;
         }
-        SliderSeekBar.b(SliderSeekBar.this);
+        SliderSeekBar.a(SliderSeekBar.this);
         SliderSeekBar.a(SliderSeekBar.this, paramInt3);
         SliderSeekBar.b(SliderSeekBar.this, Math.min(paramInt1, SliderSeekBar.this.getWidth() - paramInt3 * 2));
         SliderSeekBar.c(SliderSeekBar.this, Math.max(paramInt2, 0));
-        SliderSeekBar.c(SliderSeekBar.this);
-        if ((SliderSeekBar.d(SliderSeekBar.this) == null) && (SliderSeekBar.e(SliderSeekBar.this) == null))
+        SliderSeekBar.b(SliderSeekBar.this);
+        if ((SliderSeekBar.c(SliderSeekBar.this) == null) && (SliderSeekBar.d(SliderSeekBar.this) == null))
         {
-          SliderSeekBar.a(SliderSeekBar.this, new Rect(SliderSeekBar.f(SliderSeekBar.this).getBounds().left, SliderSeekBar.f(SliderSeekBar.this).getBounds().top, SliderSeekBar.f(SliderSeekBar.this).getBounds().right, SliderSeekBar.f(SliderSeekBar.this).getBounds().bottom));
-          SliderSeekBar.b(SliderSeekBar.this, new Rect(SliderSeekBar.g(SliderSeekBar.this).getBounds().left, SliderSeekBar.g(SliderSeekBar.this).getBounds().top, SliderSeekBar.g(SliderSeekBar.this).getBounds().right, SliderSeekBar.g(SliderSeekBar.this).getBounds().bottom));
+          SliderSeekBar.a(SliderSeekBar.this, new Rect(SliderSeekBar.this.zxx.getBounds().left, SliderSeekBar.this.zxx.getBounds().top, SliderSeekBar.this.zxx.getBounds().right, SliderSeekBar.this.zxx.getBounds().bottom));
+          SliderSeekBar.b(SliderSeekBar.this, new Rect(SliderSeekBar.this.zxy.getBounds().left, SliderSeekBar.this.zxy.getBounds().top, SliderSeekBar.this.zxy.getBounds().right, SliderSeekBar.this.zxy.getBounds().bottom));
         }
         SliderSeekBar.this.invalidate();
         AppMethodBeat.o(94444);
       }
     });
-    AppMethodBeat.o(189023);
+    AppMethodBeat.o(187066);
   }
   
   public final boolean b(boolean paramBoolean, float paramFloat)
   {
-    AppMethodBeat.i(189025);
-    if ((!this.wev) || (this.weB == null) || (this.weC == null) || (this.weB.getBounds().width() <= 0) || (this.weC.getBounds().width() <= 0))
+    AppMethodBeat.i(187069);
+    if ((!this.zxr) || (this.zxx == null) || (this.zxy == null) || (this.zxx.getBounds().width() <= 0) || (this.zxy.getBounds().width() <= 0))
     {
-      AppMethodBeat.o(189025);
+      AppMethodBeat.o(187069);
       return false;
     }
     float f2;
     float f1;
     boolean bool;
-    label134:
+    label132:
     Rect localRect;
     if (paramBoolean)
     {
-      f2 = this.weC.getBounds().left - this.wey;
-      f1 = Math.max(this.padding, this.weC.getBounds().left - this.wex);
+      f2 = this.zxy.getBounds().left - this.zxu;
+      f1 = Math.max(this.padding, this.zxy.getBounds().left - this.zxt);
       paramFloat = Math.max(f1, Math.min(paramFloat, f2));
       if ((paramFloat != f1) && (paramFloat != f2)) {
-        break label237;
+        break label234;
       }
       bool = true;
       if (!paramBoolean) {
-        break label243;
+        break label240;
       }
-      localRect = this.weB.getBounds();
-      localRect.offsetTo((int)Math.ceil(paramFloat - this.weD), 0);
-      this.weB.setBounds(localRect);
+      localRect = this.zxx.getBounds();
+      localRect.offsetTo((int)Math.ceil(paramFloat - this.zxz), 0);
+      this.zxx.setBounds(localRect);
     }
     for (;;)
     {
       postInvalidate();
-      AppMethodBeat.o(189025);
+      AppMethodBeat.o(187069);
       return bool;
-      f1 = this.weB.getBounds().right + this.wey;
-      f2 = Math.min(getWidth() - this.padding, this.weB.getBounds().right + this.wex);
+      f1 = this.zxx.getBounds().right + this.zxu;
+      f2 = Math.min(getWidth() - this.padding, this.zxx.getBounds().right + this.zxt);
       break;
-      label237:
+      label234:
       bool = false;
-      break label134;
-      label243:
-      localRect = this.weC.getBounds();
+      break label132;
+      label240:
+      localRect = this.zxy.getBounds();
       localRect.offsetTo((int)Math.floor(paramFloat), 0);
-      this.weC.setBounds(localRect);
+      this.zxy.setBounds(localRect);
     }
   }
   
-  public final void dqJ()
+  public final void ekA()
   {
-    this.wew = true;
+    this.zxs = true;
   }
   
-  public final void dqK()
+  public final void ekB()
   {
-    this.wew = false;
+    this.zxs = false;
+  }
+  
+  public void ekC()
+  {
+    AppMethodBeat.i(187070);
+    this.zxx = new b(a.l(getContext(), 2131691693), a.l(getContext(), 2131691692));
+    this.zxy = new b(a.l(getContext(), 2131691693), a.l(getContext(), 2131691692));
+    this.zxP = true;
+    postInvalidate();
+    AppMethodBeat.o(187070);
   }
   
   public int getLeftSliderBound()
   {
     AppMethodBeat.i(94454);
-    int i = this.weB.getBounds().right;
+    int i = this.zxx.getBounds().right;
     AppMethodBeat.o(94454);
     return i;
   }
@@ -393,110 +358,155 @@ public class SliderSeekBar
   public int getRightSliderBound()
   {
     AppMethodBeat.i(94455);
-    int i = this.weC.getBounds().left;
+    int i = this.zxy.getBounds().left;
     AppMethodBeat.o(94455);
     return i;
+  }
+  
+  protected void init()
+  {
+    AppMethodBeat.i(187065);
+    this.zxz = a.fromDPToPix(getContext(), 8);
+    this.zxA = (this.zxz * 0.5F);
+    this.zxM = a.fromDPToPix(getContext(), 8);
+    ekC();
+    this.zxB = a.fromDPToPix(getContext(), 1);
+    this.zxD = a.aG(getContext(), 2131167091);
+    this.zxC = -1.0F;
+    this.zxE = new Paint();
+    this.zxE.setColor(a.n(getContext(), 2131099694));
+    this.zxE.setAlpha(102);
+    this.zxG = new Paint();
+    this.zxG.setColor(a.n(getContext(), 2131099654));
+    this.zxG.setAlpha(102);
+    this.borderPaint = new Paint();
+    this.borderPaint.setColor(a.n(getContext(), 2131099694));
+    this.borderPaint.setStyle(Paint.Style.STROKE);
+    this.rc = gz(getContext());
+    this.borderPaint.setStrokeWidth(this.rc);
+    this.zxF = (this.rc * 0.5F);
+    this.zxH = new Paint();
+    this.zxH.setColor(a.n(getContext(), 2131099694));
+    this.zxH.setStyle(Paint.Style.STROKE);
+    this.zxI = gz(getContext());
+    this.zxJ = (this.zxI * 0.5F);
+    this.zxH.setStrokeWidth(this.zxI);
+    this.zxH.setAlpha(178);
+    setOnTouchListener(this.aZa);
+    AppMethodBeat.o(187065);
   }
   
   protected void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(94451);
-    if (this.weG > 0.0F)
+    if (this.zxC > 0.0F)
     {
-      float f = getWidth() * this.weG;
-      paramCanvas.drawRect(f - this.weF * 0.5F, 0.0F, this.weF * 0.5F + f, getHeight(), this.weI);
+      float f = getWidth() * this.zxC;
+      paramCanvas.drawRect(f - this.zxB * 0.5F, 0.0F, this.zxB * 0.5F + f, getHeight(), this.zxE);
     }
-    if (!this.wev)
+    if (!this.zxr)
     {
       AppMethodBeat.o(94451);
       return;
     }
-    int i = this.weB.getBounds().centerX();
-    int j = this.weC.getBounds().centerX();
-    if (((oB(true)) || (oB(false))) && (this.weT)) {
-      paramCanvas.drawRect(this.padding + this.weN, this.weN, getWidth() - this.padding - this.weN, getBottom() - this.weN, this.weL);
+    int i = this.zxx.getBounds().centerX();
+    int j = this.zxy.getBounds().centerX();
+    if (((re(true)) || (re(false))) && (this.zxP)) {
+      paramCanvas.drawRect(this.padding + this.zxJ, this.zxJ, getWidth() - this.padding - this.zxJ, getBottom() - this.zxJ, this.zxH);
     }
-    if (this.weB.getBounds().left > 0) {
-      paramCanvas.drawRect(0.0F, 0.0F, i, getHeight(), this.weK);
+    if (this.zxx.getBounds().left > 0) {
+      paramCanvas.drawRect(0.0F, 0.0F, i, getHeight(), this.zxG);
     }
-    if (this.weC.getBounds().right < getWidth()) {
-      paramCanvas.drawRect(j, 0.0F, getWidth(), getHeight(), this.weK);
+    if (this.zxy.getBounds().right < getWidth()) {
+      paramCanvas.drawRect(j, 0.0F, getWidth(), getHeight(), this.zxG);
     }
-    if (this.weT)
+    if (this.zxP)
     {
-      paramCanvas.drawLine(i, this.weJ, j, this.weJ, this.borderPaint);
-      paramCanvas.drawLine(i, getHeight() - this.weJ, j, getHeight() - this.weJ, this.borderPaint);
+      paramCanvas.drawLine(i, this.zxF, j, this.zxF, this.borderPaint);
+      paramCanvas.drawLine(i, getHeight() - this.zxF, j, getHeight() - this.zxF, this.borderPaint);
     }
-    this.weB.draw(paramCanvas);
-    this.weC.draw(paramCanvas);
+    this.zxx.draw(paramCanvas);
+    this.zxy.draw(paramCanvas);
     AppMethodBeat.o(94451);
   }
   
   public final void reset()
   {
     AppMethodBeat.i(94456);
-    if ((this.weR != null) && (this.weS != null))
+    if ((this.zxN != null) && (this.zxO != null))
     {
-      Rect localRect1 = new Rect(this.weR.left, this.weR.top, this.weR.right, this.weR.bottom);
-      Rect localRect2 = new Rect(this.weS.left, this.weS.top, this.weS.right, this.weS.bottom);
-      this.weB.setBounds(localRect1);
-      this.weC.setBounds(localRect2);
-      this.weG = 0.0F;
+      Rect localRect1 = new Rect(this.zxN.left, this.zxN.top, this.zxN.right, this.zxN.bottom);
+      Rect localRect2 = new Rect(this.zxO.left, this.zxO.top, this.zxO.right, this.zxO.bottom);
+      this.zxx.setBounds(localRect1);
+      this.zxy.setBounds(localRect2);
+      this.zxC = 0.0F;
       postInvalidate();
     }
     AppMethodBeat.o(94456);
   }
   
+  public void setCursorColor(int paramInt)
+  {
+    AppMethodBeat.i(187068);
+    this.zxE.setColor(paramInt);
+    AppMethodBeat.o(187068);
+  }
+  
   public void setCursorPos(float paramFloat)
   {
     AppMethodBeat.i(94452);
-    if (!this.wev)
+    if (!this.zxr)
     {
       AppMethodBeat.o(94452);
       return;
     }
-    this.weG = paramFloat;
+    this.zxC = paramFloat;
     invalidate();
     AppMethodBeat.o(94452);
   }
   
+  public void setCursorWidth(int paramInt)
+  {
+    this.zxB = paramInt;
+  }
+  
   public void setEnableHapticAtEdge(boolean paramBoolean)
   {
-    this.weA = paramBoolean;
+    this.zxw = paramBoolean;
   }
   
   public void setMaskColor(int paramInt)
   {
-    AppMethodBeat.i(189024);
-    this.weK.setColor(paramInt);
-    AppMethodBeat.o(189024);
+    AppMethodBeat.i(187067);
+    this.zxG.setColor(paramInt);
+    AppMethodBeat.o(187067);
   }
   
   public void setOnSliderTouchListener(a parama)
   {
-    this.weu = parama;
+    this.zzA = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void dqH();
+    public abstract void eky();
     
-    public abstract void dqI();
+    public abstract void ekz();
     
-    public abstract void oA(boolean paramBoolean);
+    public abstract void rj(boolean paramBoolean);
   }
   
-  final class b
+  public final class b
     extends Drawable
   {
     boolean isPressed = false;
-    private Drawable wfc;
-    private Drawable wfd;
+    private Drawable zxV;
+    private Drawable zxW;
     
     public b(Drawable paramDrawable1, Drawable paramDrawable2)
     {
-      this.wfc = paramDrawable1;
-      this.wfd = paramDrawable2;
+      this.zxV = paramDrawable1;
+      this.zxW = paramDrawable2;
       this.isPressed = false;
     }
     
@@ -504,7 +514,7 @@ public class SliderSeekBar
     {
       AppMethodBeat.i(94446);
       if (this.isPressed) {}
-      for (Drawable localDrawable = this.wfc;; localDrawable = this.wfd)
+      for (Drawable localDrawable = this.zxV;; localDrawable = this.zxW)
       {
         if (!getBounds().equals(localDrawable.getBounds())) {
           localDrawable.setBounds(getBounds());
@@ -523,23 +533,23 @@ public class SliderSeekBar
     public final void setAlpha(int paramInt)
     {
       AppMethodBeat.i(94447);
-      this.wfc.setAlpha(paramInt);
-      this.wfd.setAlpha(paramInt);
+      this.zxV.setAlpha(paramInt);
+      this.zxW.setAlpha(paramInt);
       AppMethodBeat.o(94447);
     }
     
     public final void setColorFilter(ColorFilter paramColorFilter)
     {
       AppMethodBeat.i(94448);
-      this.wfc.setColorFilter(paramColorFilter);
-      this.wfd.setColorFilter(paramColorFilter);
+      this.zxV.setColorFilter(paramColorFilter);
+      this.zxW.setColorFilter(paramColorFilter);
       AppMethodBeat.o(94448);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.segment.SliderSeekBar
  * JD-Core Version:    0.7.0.1
  */

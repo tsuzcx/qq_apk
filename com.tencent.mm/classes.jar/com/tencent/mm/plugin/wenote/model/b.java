@@ -1,69 +1,70 @@
 package com.tencent.mm.plugin.wenote.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.q.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.akl;
-import com.tencent.mm.protocal.protobuf.akr;
-import com.tencent.mm.protocal.protobuf.aks;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.amz;
+import com.tencent.mm.protocal.protobuf.anf;
+import com.tencent.mm.protocal.protobuf.ang;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public int EQQ;
-  private String EQR;
-  private akl EQS;
-  private LinkedList<akl> EQT;
-  public int EQU;
-  private f callback;
-  private final com.tencent.mm.ak.b rr;
+  public int JGC;
+  private String JGD;
+  private amz JGE;
+  private LinkedList<amz> JGF;
+  public int JGG;
+  private i callback;
+  private final d rr;
   
-  public b(int paramInt1, int paramInt2, String paramString, LinkedList<akl> paramLinkedList, akl paramakl)
+  public b(int paramInt1, int paramInt2, String paramString, LinkedList<amz> paramLinkedList, amz paramamz)
   {
     AppMethodBeat.i(30287);
     this.callback = null;
-    this.EQQ = 1;
-    this.EQR = "";
-    this.EQS = null;
-    this.EQT = new LinkedList();
-    this.EQU = 0;
-    this.EQT = paramLinkedList;
-    this.EQS = paramakl;
-    this.EQR = paramString;
-    this.EQQ = paramInt2;
-    this.EQU = paramInt1;
-    paramString = new b.a();
-    paramString.hQF = new akr();
-    paramString.hQG = new aks();
+    this.JGC = 1;
+    this.JGD = "";
+    this.JGE = null;
+    this.JGF = new LinkedList();
+    this.JGG = 0;
+    this.JGF = paramLinkedList;
+    this.JGE = paramamz;
+    this.JGD = paramString;
+    this.JGC = paramInt2;
+    this.JGG = paramInt1;
+    paramString = new d.a();
+    paramString.iLN = new anf();
+    paramString.iLO = new ang();
     paramString.uri = "/cgi-bin/micromsg-bin/favsecurity ";
     paramString.funcId = 921;
-    paramString.hQH = 0;
+    paramString.iLP = 0;
     paramString.respCmdId = 0;
-    this.rr = paramString.aDS();
+    this.rr = paramString.aXF();
     AppMethodBeat.o(30287);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(30288);
-    akr localakr = (akr)this.rr.hQD.hQJ;
-    localakr.gvx = this.EQQ;
-    localakr.GCk = this.EQS;
-    localakr.GCj = this.EQT;
-    localakr.FZl = this.EQR;
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    anf localanf = (anf)this.rr.iLK.iLR;
+    localanf.him = this.JGC;
+    localanf.Lyg = this.JGE;
+    localanf.Lyf = this.JGF;
+    localanf.KTg = this.JGD;
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(30288);
     return i;
   }
@@ -73,47 +74,47 @@ public final class b
     return 921;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30289);
-    ae.i("MicroMsg.NetSceneCheckNoteSecurity", "netId %d errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (aks)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
+    Log.i("MicroMsg.NetSceneCheckNoteSecurity", "netId %d errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    params = (ang)((d)params).iLL.iLR;
     if (paramInt2 != 0)
     {
-      ae.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,errType:%d,fail", new Object[] { Integer.valueOf(paramInt2) });
+      Log.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,errType:%d,fail", new Object[] { Integer.valueOf(paramInt2) });
       this.callback.onSceneEnd(paramInt2, -1, paramString, this);
       AppMethodBeat.o(30289);
       return;
     }
-    if ((paramq == null) || (paramq.getBaseResponse() == null))
+    if ((params == null) || (params.getBaseResponse() == null))
     {
-      ae.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,response == null,ok");
+      Log.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,response == null,ok");
       this.callback.onSceneEnd(paramInt2, 0, paramString, this);
       AppMethodBeat.o(30289);
       return;
     }
-    if (paramq.getBaseResponse().Ret != 0)
+    if (params.getBaseResponse().Ret != 0)
     {
-      ae.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,baseresponse.ret != 0,ok");
+      Log.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,baseresponse.ret != 0,ok");
       this.callback.onSceneEnd(paramInt2, 0, paramString, this);
       AppMethodBeat.o(30289);
       return;
     }
-    if (paramq.GCl > 0)
+    if (params.Lyh > 0)
     {
-      ae.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,SecurityResult > 0,fail");
+      Log.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,SecurityResult > 0,fail");
       this.callback.onSceneEnd(paramInt2, -1, paramString, this);
       AppMethodBeat.o(30289);
       return;
     }
-    ae.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,SecurityResult = 0,fail");
+    Log.i("MicroMsg.NetSceneCheckNoteSecurity", "NetSceneCheckNoteSecurity,SecurityResult = 0,fail");
     this.callback.onSceneEnd(paramInt2, 0, paramString, this);
     AppMethodBeat.o(30289);
   }
   
-  public final n.b securityVerificationChecked(q paramq)
+  public final q.b securityVerificationChecked(s params)
   {
-    return n.b.hRi;
+    return q.b.iMq;
   }
 }
 

@@ -1,67 +1,66 @@
 package com.tencent.mm.plugin.profile.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dlz;
-import com.tencent.mm.protocal.protobuf.dma;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.efm;
+import com.tencent.mm.protocal.protobuf.efn;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public b rr;
+  private i callback;
+  public com.tencent.mm.ak.d rr;
   
   public d(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(6384);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new dlz();
-    ((b.a)localObject).hQG = new dma();
-    ((b.a)localObject).uri = "/cgi-bin/mmocbiz-bin/switchbrand";
-    ((b.a)localObject).funcId = 1394;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (dlz)this.rr.hQD.hQJ;
-    ((dlz)localObject).FZx = paramString;
-    ((dlz)localObject).lXh = paramBoolean;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new efm();
+    ((d.a)localObject).iLO = new efn();
+    ((d.a)localObject).uri = "/cgi-bin/mmocbiz-bin/switchbrand";
+    ((d.a)localObject).funcId = 1394;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (efm)this.rr.iLK.iLR;
+    ((efm)localObject).KTt = paramString;
+    ((efm)localObject).neT = paramBoolean;
     AppMethodBeat.o(6384);
   }
   
-  public final dma dDH()
-  {
-    if ((this.rr != null) && (this.rr.hQE.hQJ != null)) {
-      return (dma)this.rr.hQE.hQJ;
-    }
-    return null;
-  }
-  
-  public final dlz dDI()
-  {
-    if ((this.rr != null) && (this.rr.hQD.hQJ != null)) {
-      return (dlz)this.rr.hQD.hQJ;
-    }
-    return null;
-  }
-  
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(6386);
-    this.callback = paramf;
-    ae.i("MicroMsg.brandservice.NetSceneSwitchBrand", "do scene");
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    Log.i("MicroMsg.brandservice.NetSceneSwitchBrand", "do scene");
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(6386);
     return i;
+  }
+  
+  public final efn eDY()
+  {
+    if ((this.rr != null) && (this.rr.iLL.iLR != null)) {
+      return (efn)this.rr.iLL.iLR;
+    }
+    return null;
+  }
+  
+  public final efm eDZ()
+  {
+    if ((this.rr != null) && (this.rr.iLK.iLR != null)) {
+      return (efm)this.rr.iLK.iLR;
+    }
+    return null;
   }
   
   public final int getType()
@@ -69,10 +68,10 @@ public final class d
     return 1394;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(6385);
-    ae.d("MicroMsg.brandservice.NetSceneSwitchBrand", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.d("MicroMsg.brandservice.NetSceneSwitchBrand", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

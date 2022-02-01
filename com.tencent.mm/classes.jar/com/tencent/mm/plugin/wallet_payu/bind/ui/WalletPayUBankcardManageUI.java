@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wallet_payu.bind.ui;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.wallet.bind.ui.WalletBankcardManageUI;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_payu.bind.model.c;
@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.wallet_payu.bind.model.d;
 public class WalletPayUBankcardManageUI
   extends WalletBankcardManageUI
 {
-  public final void d(Bankcard paramBankcard)
+  public final void e(Bankcard paramBankcard)
   {
     AppMethodBeat.i(71999);
     Bundle localBundle = new Bundle();
@@ -22,15 +22,15 @@ public class WalletPayUBankcardManageUI
     AppMethodBeat.o(71999);
   }
   
-  public final com.tencent.mm.plugin.wallet.bind.ui.a eGP()
+  public final com.tencent.mm.plugin.wallet.bind.ui.a fNZ()
   {
     AppMethodBeat.i(71998);
-    a locala = new a(this, this.CXu);
+    a locala = new a(this, this.HDi);
     AppMethodBeat.o(71998);
     return locala;
   }
   
-  public final void eGQ()
+  public final void fOa()
   {
     AppMethodBeat.i(71996);
     com.tencent.mm.wallet_core.a.a(this, c.class, null);
@@ -44,12 +44,12 @@ public class WalletPayUBankcardManageUI
     AppMethodBeat.o(71994);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(71997);
-    if ((paramn instanceof com.tencent.mm.plugin.wallet_core.c.b.a))
+    if ((paramq instanceof com.tencent.mm.plugin.wallet_core.c.b.a))
     {
-      eGR();
+      fOb();
       AppMethodBeat.o(71997);
       return true;
     }
@@ -63,7 +63,7 @@ public class WalletPayUBankcardManageUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  public final void ui(boolean paramBoolean)
+  public final void xT(boolean paramBoolean)
   {
     AppMethodBeat.i(71995);
     if (paramBoolean)
@@ -78,7 +78,7 @@ public class WalletPayUBankcardManageUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.bind.ui.WalletPayUBankcardManageUI
  * JD-Core Version:    0.7.0.1
  */

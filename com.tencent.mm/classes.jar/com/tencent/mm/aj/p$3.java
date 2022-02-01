@@ -4,30 +4,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.storage.ao;
 
 final class p$3
-  implements aw.a
+  implements MTimerHandler.CallBack
 {
   p$3(p paramp) {}
   
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(150318);
-    if ((!g.ajP().aiZ()) || (p.aEA() == null))
+    if ((!g.aAf().azp()) || (p.aYn() == null))
     {
-      ae.w("MicroMsg.SubCoreAvatar", "upAssetsHandler onTimerExpired acc:%b astg:%s ", new Object[] { Boolean.valueOf(g.ajP().aiZ()), p.aEA() });
+      Log.w("MicroMsg.SubCoreAvatar", "upAssetsHandler onTimerExpired acc:%b astg:%s ", new Object[] { Boolean.valueOf(g.aAf().azp()), p.aYn() });
       AppMethodBeat.o(150318);
       return false;
     }
-    if (((Boolean)g.ajR().ajA().get(90113, Boolean.FALSE)).booleanValue())
+    if (((Boolean)g.aAh().azQ().get(90113, Boolean.FALSE)).booleanValue())
     {
-      p.aER();
-      p.aEQ();
+      p.aYF();
+      p.aYE();
     }
-    g.ajR().ajA().set(90113, Boolean.FALSE);
+    g.aAh().azQ().set(90113, Boolean.FALSE);
     AppMethodBeat.o(150318);
     return false;
   }

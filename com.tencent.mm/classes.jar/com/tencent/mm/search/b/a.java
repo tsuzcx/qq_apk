@@ -3,19 +3,19 @@ package com.tencent.mm.search.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.chat.j;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/search/logic/SimilarEmojiListenerInstance;", "", "()V", "listener", "Lcom/tencent/mm/search/logic/SosSimilarEmojiPanelClickListener;", "create", "", "emojiCallback", "Lcom/tencent/mm/pluginsdk/ui/chat/SmileyPanelCallback;", "destroy", "getInstance", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/search/logic/SimilarEmojiListenerInstance;", "", "()V", "listener", "Lcom/tencent/mm/search/logic/SosSimilarEmojiPanelClickListener;", "create", "", "emojiCallback", "Lcom/tencent/mm/pluginsdk/ui/chat/SmileyPanelCallback;", "destroy", "getInstance", "plugin-emojisdk_release"})
 public final class a
 {
-  private static c ICx;
-  public static final a ICy;
+  private static c NJr;
+  public static final a NJs;
   
   static
   {
     AppMethodBeat.i(105835);
-    ICy = new a();
+    NJs = new a();
     AppMethodBeat.o(105835);
   }
   
@@ -23,30 +23,30 @@ public final class a
   {
     AppMethodBeat.i(105834);
     p.h(paramj, "emojiCallback");
-    ICx = null;
-    c localc = new c(ChatFooterPanel.FkK);
-    ICx = localc;
-    localc.gpJ = paramj;
+    NJr = null;
+    c localc = new c(ChatFooterPanel.KbC);
+    NJr = localc;
+    localc.haC = paramj;
     AppMethodBeat.o(105834);
   }
   
   public static void destroy()
   {
-    c localc = ICx;
+    c localc = NJr;
     if (localc != null) {
-      localc.gpJ = null;
+      localc.haC = null;
     }
-    ICx = null;
+    NJr = null;
   }
   
-  public static c fqv()
+  public static c gxq()
   {
-    return ICx;
+    return NJr;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.search.b.a
  * JD-Core Version:    0.7.0.1
  */

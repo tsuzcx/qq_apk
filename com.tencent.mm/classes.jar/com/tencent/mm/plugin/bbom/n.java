@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.bbom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.mo;
-import com.tencent.mm.model.au.b.a;
+import com.tencent.mm.g.a.nf;
+import com.tencent.mm.model.ay.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.y;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.storage.ac;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.storage.ah;
 
 public final class n
-  implements y<cv>
+  implements y<de>
 {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.bbom.n
  * JD-Core Version:    0.7.0.1
  */

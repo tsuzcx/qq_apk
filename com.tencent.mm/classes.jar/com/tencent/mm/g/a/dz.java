@@ -1,15 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import org.json.JSONArray;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class dz
-  extends b
+  extends IEvent
 {
-  public a dpY;
-  public b dpZ;
+  public a dHd;
   
   public dz()
   {
@@ -18,29 +15,21 @@ public final class dz
   
   private dz(byte paramByte)
   {
-    AppMethodBeat.i(115986);
-    this.dpY = new a();
-    this.dpZ = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(115983);
+    this.dHd = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(115986);
+    AppMethodBeat.o(115983);
   }
   
   public static final class a
   {
-    public Context context;
-    public String dpI;
-  }
-  
-  public static final class b
-  {
-    public boolean dpK;
-    public JSONArray dpX;
+    public boolean dHe = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.dz
  * JD-Core Version:    0.7.0.1
  */

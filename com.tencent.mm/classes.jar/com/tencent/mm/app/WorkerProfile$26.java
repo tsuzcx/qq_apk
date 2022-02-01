@@ -9,18 +9,18 @@ import java.util.Map;
 final class WorkerProfile$26
   implements c.a
 {
-  final Map<String, Integer> cXd;
+  final Map<String, Integer> dnE;
   final Map<String, Integer> map;
   
   WorkerProfile$26(Context paramContext)
   {
     AppMethodBeat.i(19579);
     this.map = new HashMap();
-    this.cXd = new HashMap();
+    this.dnE = new HashMap();
     AppMethodBeat.o(19579);
   }
   
-  public final String fI(String paramString)
+  public final String gu(String paramString)
   {
     AppMethodBeat.i(19580);
     if (this.map.containsKey(paramString))
@@ -33,12 +33,12 @@ final class WorkerProfile$26
     return null;
   }
   
-  public final String fJ(String paramString)
+  public final String gv(String paramString)
   {
     AppMethodBeat.i(19581);
-    if (this.cXd.containsKey(paramString))
+    if (this.dnE.containsKey(paramString))
     {
-      paramString = this.val$context.getString(((Integer)this.cXd.get(paramString)).intValue());
+      paramString = this.val$context.getString(((Integer)this.dnE.get(paramString)).intValue());
       AppMethodBeat.o(19581);
       return paramString;
     }
@@ -48,7 +48,7 @@ final class WorkerProfile$26
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.app.WorkerProfile.26
  * JD-Core Version:    0.7.0.1
  */

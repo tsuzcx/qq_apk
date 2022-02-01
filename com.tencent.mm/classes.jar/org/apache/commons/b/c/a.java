@@ -5,8 +5,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   implements Cloneable
 {
-  private String Osm;
-  protected char[] aZW;
+  private String Uhk;
+  protected char[] aZS;
   protected int size;
   
   public a()
@@ -21,41 +21,41 @@ public final class a
     if (paramInt <= 0) {
       i = 32;
     }
-    this.aZW = new char[i];
+    this.aZS = new char[i];
     AppMethodBeat.o(40757);
   }
   
-  private a amJ(int paramInt)
+  private a awl(int paramInt)
   {
     AppMethodBeat.i(40759);
-    if (paramInt > this.aZW.length)
+    if (paramInt > this.aZS.length)
     {
-      char[] arrayOfChar = this.aZW;
-      this.aZW = new char[paramInt * 2];
-      System.arraycopy(arrayOfChar, 0, this.aZW, 0, this.size);
+      char[] arrayOfChar = this.aZS;
+      this.aZS = new char[paramInt * 2];
+      System.arraycopy(arrayOfChar, 0, this.aZS, 0, this.size);
     }
     AppMethodBeat.o(40759);
     return this;
   }
   
-  private a gCM()
+  private a hPQ()
   {
     AppMethodBeat.i(40760);
-    if (this.Osm == null)
+    if (this.Uhk == null)
     {
       AppMethodBeat.o(40760);
       return this;
     }
-    a locala = bfy(this.Osm);
+    a locala = bvo(this.Uhk);
     AppMethodBeat.o(40760);
     return locala;
   }
   
-  public final a L(char paramChar)
+  public final a J(char paramChar)
   {
     AppMethodBeat.i(40763);
-    amJ(this.size + 1);
-    char[] arrayOfChar = this.aZW;
+    awl(this.size + 1);
+    char[] arrayOfChar = this.aZS;
     int i = this.size;
     this.size = (i + 1);
     arrayOfChar[i] = paramChar;
@@ -63,12 +63,12 @@ public final class a
     return this;
   }
   
-  public final a bfy(String paramString)
+  public final a bvo(String paramString)
   {
     AppMethodBeat.i(40762);
     if (paramString == null)
     {
-      paramString = gCM();
+      paramString = hPQ();
       AppMethodBeat.o(40762);
       return paramString;
     }
@@ -76,8 +76,8 @@ public final class a
     if (i > 0)
     {
       int j = this.size;
-      amJ(j + i);
-      paramString.getChars(0, i, this.aZW, j);
+      awl(j + i);
+      paramString.getChars(0, i, this.aZS, j);
       this.size = (i + this.size);
     }
     AppMethodBeat.o(40762);
@@ -88,8 +88,8 @@ public final class a
   {
     AppMethodBeat.i(40765);
     a locala = (a)super.clone();
-    locala.aZW = new char[this.aZW.length];
-    System.arraycopy(this.aZW, 0, locala.aZW, 0, this.aZW.length);
+    locala.aZS = new char[this.aZS.length];
+    System.arraycopy(this.aZS, 0, locala.aZS, 0, this.aZS.length);
     AppMethodBeat.o(40765);
     return locala;
   }
@@ -108,8 +108,8 @@ public final class a
     {
       return false;
     }
-    paramObject = this.aZW;
-    Object localObject = ((a)localObject).aZW;
+    paramObject = this.aZS;
+    Object localObject = ((a)localObject).aZS;
     int i = this.size - 1;
     for (;;)
     {
@@ -125,21 +125,21 @@ public final class a
     return true;
   }
   
-  public final a gA(Object paramObject)
+  public final a gF(Object paramObject)
   {
     AppMethodBeat.i(40761);
     if (paramObject == null)
     {
-      paramObject = gCM();
+      paramObject = hPQ();
       AppMethodBeat.o(40761);
       return paramObject;
     }
-    paramObject = bfy(paramObject.toString());
+    paramObject = bvo(paramObject.toString());
     AppMethodBeat.o(40761);
     return paramObject;
   }
   
-  public final a gCL()
+  public final a hPP()
   {
     AppMethodBeat.i(40758);
     if (this.size > 0) {
@@ -151,12 +151,12 @@ public final class a
       return this;
       if (this.size < 0)
       {
-        amJ(0);
+        awl(0);
         int i = this.size;
         this.size = 0;
         while (i < 0)
         {
-          this.aZW[i] = '\000';
+          this.aZS[i] = '\000';
           i += 1;
         }
       }
@@ -165,7 +165,7 @@ public final class a
   
   public final int hashCode()
   {
-    char[] arrayOfChar = this.aZW;
+    char[] arrayOfChar = this.aZS;
     int j = 0;
     int i = this.size - 1;
     while (i >= 0)
@@ -176,6 +176,11 @@ public final class a
     return j;
   }
   
+  public final boolean isEmpty()
+  {
+    return this.size == 0;
+  }
+  
   public final int length()
   {
     return this.size;
@@ -184,14 +189,14 @@ public final class a
   public final String toString()
   {
     AppMethodBeat.i(40764);
-    String str = new String(this.aZW, 0, this.size);
+    String str = new String(this.aZS, 0, this.size);
     AppMethodBeat.o(40764);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     org.apache.commons.b.c.a
  * JD-Core Version:    0.7.0.1
  */

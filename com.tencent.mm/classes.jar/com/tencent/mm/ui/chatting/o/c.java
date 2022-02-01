@@ -12,10 +12,10 @@ import com.tencent.mm.plugin.messenger.d.b;
 import com.tencent.mm.plugin.messenger.d.b.b;
 import com.tencent.mm.plugin.messenger.foundation.a.c.b;
 import com.tencent.mm.plugin.messenger.foundation.a.c.c;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.neattextview.textview.view.NeatTextView;
 import java.lang.ref.WeakReference;
 import java.util.LinkedList;
@@ -31,7 +31,7 @@ public final class c
   
   public final CharSequence b(final Map<String, String> paramMap, final String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(187650);
+    AppMethodBeat.i(233526);
     String str1 = (String)paramMap.get(paramString + ".title");
     final String str2 = (String)paramMap.get(paramString + ".username");
     final String str3 = (String)paramMap.get(paramString + ".appid");
@@ -43,68 +43,68 @@ public final class c
     {
       public final void onClickImp(final View paramAnonymousView)
       {
-        AppMethodBeat.i(187647);
+        AppMethodBeat.i(233523);
         paramAnonymousView = (Context)paramWeakReference.get();
         if (paramAnonymousView == null)
         {
-          AppMethodBeat.o(187647);
+          AppMethodBeat.o(233523);
           return;
         }
         final com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e(paramAnonymousView, 1, true);
-        locale.i(bu.x(paramAnonymousView.getString(2131766871), new Object[] { str4, paramString }), 17, com.tencent.mm.cb.a.fromDPToPix(paramAnonymousView, 14));
-        locale.LfS = new n.d()
+        locale.j(Util.safeFormatString(paramAnonymousView.getString(2131757247), new Object[] { str4, paramString }), 17, com.tencent.mm.cb.a.fromDPToPix(paramAnonymousView, 14));
+        locale.HLX = new o.f()
         {
-          public final void onCreateMMMenu(l paramAnonymous2l)
+          public final void onCreateMMMenu(m paramAnonymous2m)
           {
-            AppMethodBeat.i(187645);
-            paramAnonymous2l.d(100, paramAnonymousView.getResources().getString(2131762609));
-            paramAnonymous2l.d(101, bu.x(paramAnonymousView.getResources().getString(2131766869), new Object[] { c.1.this.jLB }));
-            AppMethodBeat.o(187645);
+            AppMethodBeat.i(233521);
+            paramAnonymous2m.d(100, paramAnonymousView.getResources().getString(2131764691));
+            paramAnonymous2m.d(101, Util.safeFormatString(paramAnonymousView.getResources().getString(2131757246), new Object[] { c.1.this.kNB }));
+            AppMethodBeat.o(233521);
           }
         };
-        locale.LfT = new n.e()
+        locale.HLY = new o.g()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
-            AppMethodBeat.i(187646);
-            locale.bqD();
+            AppMethodBeat.i(233522);
+            locale.bMo();
             switch (paramAnonymous2MenuItem.getItemId())
             {
             }
             for (;;)
             {
-              AppMethodBeat.o(187646);
+              AppMethodBeat.o(233522);
               return;
               paramAnonymous2MenuItem = c.this;
-              Object localObject1 = c.1.this.fOj;
+              Object localObject1 = c.1.this.gtu;
               Object localObject2 = new LinkedList();
               ((LinkedList)localObject2).add(localObject1);
               paramAnonymous2MenuItem.a(-1L, (LinkedList)localObject2, 0);
-              AppMethodBeat.o(187646);
+              AppMethodBeat.o(233522);
               return;
               paramAnonymous2MenuItem = c.this;
               localObject1 = paramAnonymousView;
               localObject2 = c.1.this.val$appId;
-              String str1 = c.1.this.jLB;
-              String str2 = c.1.this.KtJ;
+              String str1 = c.1.this.kNB;
+              String str2 = c.1.this.PFZ;
               com.tencent.mm.ui.widget.a.e locale = new com.tencent.mm.ui.widget.a.e((Context)localObject1, 1, true);
-              locale.i(bu.x(((Context)localObject1).getString(2131766866, new Object[] { str1 }), new Object[0]), 17, com.tencent.mm.cb.a.fromDPToPix((Context)localObject1, 14));
-              locale.LfS = new c.2(paramAnonymous2MenuItem, (Context)localObject1);
-              locale.LfT = new c.3(paramAnonymous2MenuItem, (String)localObject2, str2, (Context)localObject1, locale);
-              locale.cPF();
+              locale.j(Util.safeFormatString(((Context)localObject1).getString(2131757243, new Object[] { str1 }), new Object[0]), 17, com.tencent.mm.cb.a.fromDPToPix((Context)localObject1, 14));
+              locale.HLX = new c.2(paramAnonymous2MenuItem, (Context)localObject1);
+              locale.HLY = new c.3(paramAnonymous2MenuItem, (String)localObject2, str2, (Context)localObject1, locale);
+              locale.dGm();
             }
           }
         };
-        locale.cPF();
-        ((com.tencent.mm.plugin.messenger.a.e)g.ab(com.tencent.mm.plugin.messenger.a.e.class)).a("link_revoke_unbindapp", paramMap, paramBundle);
-        AppMethodBeat.o(187647);
+        locale.dGm();
+        ((com.tencent.mm.plugin.messenger.a.e)g.af(com.tencent.mm.plugin.messenger.a.e.class)).a("link_revoke_unbindapp", paramMap, paramBundle);
+        AppMethodBeat.o(233523);
       }
     }, 0, str1.length(), 33);
-    AppMethodBeat.o(187650);
+    AppMethodBeat.o(233526);
     return localSpannableString;
   }
   
-  public final String dpe()
+  public final String eiT()
   {
     return "link_revoke_unbindapp";
   }

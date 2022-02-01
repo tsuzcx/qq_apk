@@ -9,19 +9,19 @@ import android.view.MotionEvent;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.messenger.foundation.a.a.n;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.cg;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.cn;
 import org.xwalk.core.Log;
 
 public class ProfileDescribeView
   extends ProfileItemView
 {
-  public TextView FlO;
-  public TextView FlP;
+  public TextView KcG;
+  public TextView KcH;
   
   public ProfileDescribeView(Context paramContext)
   {
@@ -38,61 +38,66 @@ public class ProfileDescribeView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final boolean dEA()
+  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
+  {
+    return false;
+  }
+  
+  public final boolean eEV()
   {
     AppMethodBeat.i(31211);
-    if (this.FlP != null)
+    if (this.KcH != null)
     {
-      localObject1 = this.FlP.getLayoutParams();
-      ((ViewGroup.LayoutParams)localObject1).width = com.tencent.mm.cb.a.ax(getContext(), 2131165370);
-      this.FlP.setLayoutParams((ViewGroup.LayoutParams)localObject1);
+      localObject1 = this.KcH.getLayoutParams();
+      ((ViewGroup.LayoutParams)localObject1).width = com.tencent.mm.cb.a.aG(getContext(), 2131165381);
+      this.KcH.setLayoutParams((ViewGroup.LayoutParams)localObject1);
     }
-    if (this.pSY == null)
+    if (this.rjX == null)
     {
       setVisibility(8);
       AppMethodBeat.o(31211);
       return false;
     }
-    Object localObject2 = this.pSY.eRo;
+    Object localObject2 = this.rjX.fuR;
     int i;
-    if (!bu.isNullOrNil(this.pSY.eRp)) {
+    if (!Util.isNullOrNil(this.rjX.fuS)) {
       i = 1;
     }
-    while (com.tencent.mm.contact.c.lO(this.pSY.field_type)) {
-      if ((!bu.isNullOrNil((String)localObject2)) && (i != 0))
+    while (com.tencent.mm.contact.c.oR(this.rjX.field_type)) {
+      if ((!Util.isNullOrNil((String)localObject2)) && (i != 0))
       {
-        Drawable localDrawable = getContext().getResources().getDrawable(2131689872);
+        Drawable localDrawable = getContext().getResources().getDrawable(2131689887);
         localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
         localObject1 = new com.tencent.mm.ui.widget.a(localDrawable);
-        ((com.tencent.mm.ui.widget.a)localObject1).LmE = ((int)((localDrawable.getIntrinsicHeight() - this.FlO.getTextSize()) / 2.0F));
+        ((com.tencent.mm.ui.widget.a)localObject1).QBM = ((int)((localDrawable.getIntrinsicHeight() - this.KcG.getTextSize()) / 2.0F));
         localObject2 = new SpannableString("  ".concat(String.valueOf(localObject2)));
         ((SpannableString)localObject2).setSpan(localObject1, 0, 1, 33);
-        this.FlO.setText(k.b(getContext(), (CharSequence)localObject2, this.FlO.getTextSize()));
+        this.KcG.setText(l.b(getContext(), (CharSequence)localObject2, this.KcG.getTextSize()));
         AppMethodBeat.o(31211);
         return true;
         i = 0;
       }
       else
       {
-        if ((!bu.isNullOrNil((String)localObject2)) && (i == 0))
+        if ((!Util.isNullOrNil((String)localObject2)) && (i == 0))
         {
-          this.FlO.setText(k.b(getContext(), bu.nullAsNil((String)localObject2), this.FlO.getTextSize()));
+          this.KcG.setText(l.b(getContext(), Util.nullAsNil((String)localObject2), this.KcG.getTextSize()));
           AppMethodBeat.o(31211);
           return true;
         }
-        if ((bu.isNullOrNil((String)localObject2)) && (i != 0))
+        if ((Util.isNullOrNil((String)localObject2)) && (i != 0))
         {
-          localObject2 = getContext().getResources().getDrawable(2131689872);
+          localObject2 = getContext().getResources().getDrawable(2131689887);
           ((Drawable)localObject2).setBounds(0, 0, ((Drawable)localObject2).getIntrinsicWidth(), ((Drawable)localObject2).getIntrinsicHeight());
           localObject1 = new com.tencent.mm.ui.widget.a((Drawable)localObject2);
-          ((com.tencent.mm.ui.widget.a)localObject1).LmE = ((int)((((Drawable)localObject2).getIntrinsicHeight() - this.FlO.getTextSize()) / 2.0F));
-          localObject2 = new SpannableString("  " + getContext().getString(2131757793));
+          ((com.tencent.mm.ui.widget.a)localObject1).QBM = ((int)((((Drawable)localObject2).getIntrinsicHeight() - this.KcG.getTextSize()) / 2.0F));
+          localObject2 = new SpannableString("  " + getContext().getString(2131758033));
           ((SpannableString)localObject2).setSpan(localObject1, 0, 1, 33);
-          this.FlO.setText(k.b(getContext(), (CharSequence)localObject2, this.FlO.getTextSize()));
+          this.KcG.setText(l.b(getContext(), (CharSequence)localObject2, this.KcG.getTextSize()));
           AppMethodBeat.o(31211);
           return true;
         }
-        if ((bu.isNullOrNil((String)localObject2)) && (i == 0))
+        if ((Util.isNullOrNil((String)localObject2)) && (i == 0))
         {
           Log.i("MicroMsg.ProfileDescribeView", "ProfileDescribeView gone,isContact");
           setVisibility(8);
@@ -106,25 +111,25 @@ public class ProfileDescribeView
       }
     }
     Object localObject1 = null;
-    localObject2 = this.pSY.field_encryptUsername;
-    if (!bu.isNullOrNil((String)localObject2))
+    localObject2 = this.rjX.field_encryptUsername;
+    if (!Util.isNullOrNil((String)localObject2))
     {
-      bc.aCg();
-      localObject1 = com.tencent.mm.model.c.azG().arE((String)localObject2);
+      bg.aVF();
+      localObject1 = com.tencent.mm.model.c.aSO().aEZ((String)localObject2);
     }
     localObject2 = localObject1;
     if (localObject1 != null)
     {
       localObject2 = localObject1;
-      if (((cg)localObject1).systemRowid < 0L)
+      if (((cn)localObject1).systemRowid < 0L)
       {
-        bc.aCg();
-        localObject2 = com.tencent.mm.model.c.azG().arE(this.pSY.field_username);
+        bg.aVF();
+        localObject2 = com.tencent.mm.model.c.aSO().aEZ(this.rjX.field_username);
       }
     }
-    if ((localObject2 != null) && (!bu.isNullOrNil(((cg)localObject2).field_conDescription)))
+    if ((localObject2 != null) && (!Util.isNullOrNil(((cn)localObject2).field_conDescription)))
     {
-      this.FlO.setText(k.b(getContext(), bu.nullAsNil(((cg)localObject2).field_conDescription), this.FlO.getTextSize()));
+      this.KcG.setText(l.b(getContext(), Util.nullAsNil(((cn)localObject2).field_conDescription), this.KcG.getTextSize()));
       AppMethodBeat.o(31211);
       return true;
     }
@@ -134,21 +139,16 @@ public class ProfileDescribeView
     return false;
   }
   
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    return false;
-  }
-  
   public int getLayout()
   {
-    return 2131495134;
+    return 2131495977;
   }
   
   public final void init()
   {
     AppMethodBeat.i(31210);
-    this.FlO = ((TextView)findViewById(2131298609));
-    this.FlP = ((TextView)findViewById(2131298610));
+    this.KcG = ((TextView)findViewById(2131299046));
+    this.KcH = ((TextView)findViewById(2131299047));
     setClickable(true);
     AppMethodBeat.o(31210);
   }
@@ -160,7 +160,7 @@ public class ProfileDescribeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.ProfileDescribeView
  * JD-Core Version:    0.7.0.1
  */

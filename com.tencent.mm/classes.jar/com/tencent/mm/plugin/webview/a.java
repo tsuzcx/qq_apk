@@ -2,18 +2,19 @@ package com.tencent.mm.plugin.webview;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import java.util.regex.Pattern;
 
 public final class a
 {
-  public static final Pattern DXw;
-  public static final String DXx;
+  public static final Pattern IJn;
+  public static final String IJo;
   
   static
   {
     AppMethodBeat.i(77805);
-    DXw = Pattern.compile("(http|https)://mp.weixin.qq.com.*");
-    DXx = b.asj() + "vproxy";
+    IJn = Pattern.compile("(http|https)://" + WeChatHosts.domainString(2131761726) + ".*");
+    IJo = b.aKJ() + "vproxy";
     AppMethodBeat.o(77805);
   }
 }

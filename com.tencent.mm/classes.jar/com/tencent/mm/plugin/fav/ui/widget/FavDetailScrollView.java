@@ -8,7 +8,7 @@ import com.tencent.mm.ui.widget.MMLoadScrollView;
 public class FavDetailScrollView
   extends MMLoadScrollView
 {
-  private a rMF;
+  private a tmr;
   
   public FavDetailScrollView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -24,33 +24,33 @@ public class FavDetailScrollView
   {
     AppMethodBeat.i(107511);
     super.onScrollChanged(paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((getScrollY() == 0) && (this.rMF != null))
+    if ((getScrollY() == 0) && (this.tmr != null))
     {
-      this.rMF.cyp();
+      this.tmr.cWt();
       AppMethodBeat.o(107511);
       return;
     }
-    if (this.rMF != null) {
-      this.rMF.cyo();
+    if (this.tmr != null) {
+      this.tmr.cWs();
     }
     AppMethodBeat.o(107511);
   }
   
   public void setOnScrollChangeListener(a parama)
   {
-    this.rMF = parama;
+    this.tmr = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void cyo();
+    public abstract void cWs();
     
-    public abstract void cyp();
+    public abstract void cWt();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.ui.widget.FavDetailScrollView
  * JD-Core Version:    0.7.0.1
  */

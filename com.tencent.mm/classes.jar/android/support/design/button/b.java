@@ -14,24 +14,24 @@ import android.os.Build.VERSION;
 
 final class b
 {
-  static final boolean hD;
-  final MaterialButton hE;
-  int hF;
-  PorterDuff.Mode hG;
-  ColorStateList hH;
-  ColorStateList hI;
+  static final boolean hF;
+  final MaterialButton hG;
+  int hH;
+  PorterDuff.Mode hI;
   ColorStateList hJ;
-  final Paint hK = new Paint(1);
-  final Rect hL = new Rect();
-  final RectF hM = new RectF();
-  GradientDrawable hN;
-  Drawable hO;
+  ColorStateList hK;
+  ColorStateList hL;
+  final Paint hM = new Paint(1);
+  final Rect hN = new Rect();
+  final RectF hO = new RectF();
   GradientDrawable hP;
   Drawable hQ;
   GradientDrawable hR;
-  GradientDrawable hS;
+  Drawable hS;
   GradientDrawable hT;
-  boolean hU = false;
+  GradientDrawable hU;
+  GradientDrawable hV;
+  boolean hW = false;
   int insetBottom;
   int insetLeft;
   int insetRight;
@@ -43,14 +43,14 @@ final class b
     if (Build.VERSION.SDK_INT >= 21) {}
     for (boolean bool = true;; bool = false)
     {
-      hD = bool;
+      hF = bool;
       return;
     }
   }
   
   public b(MaterialButton paramMaterialButton)
   {
-    this.hE = paramMaterialButton;
+    this.hG = paramMaterialButton;
   }
   
   final InsetDrawable a(Drawable paramDrawable)
@@ -58,49 +58,49 @@ final class b
     return new InsetDrawable(paramDrawable, this.insetLeft, this.insetTop, this.insetRight, this.insetBottom);
   }
   
-  final void aX()
+  final void aZ()
   {
-    if (this.hR != null)
+    if (this.hT != null)
     {
-      android.support.v4.graphics.drawable.a.a(this.hR, this.hH);
-      if (this.hG != null) {
-        android.support.v4.graphics.drawable.a.a(this.hR, this.hG);
+      android.support.v4.graphics.drawable.a.a(this.hT, this.hJ);
+      if (this.hI != null) {
+        android.support.v4.graphics.drawable.a.a(this.hT, this.hI);
       }
     }
   }
   
   @TargetApi(21)
-  final Drawable aY()
+  final Drawable ba()
   {
-    this.hR = new GradientDrawable();
-    this.hR.setCornerRadius(this.hF + 1.0E-005F);
-    this.hR.setColor(-1);
-    aX();
-    this.hS = new GradientDrawable();
-    this.hS.setCornerRadius(this.hF + 1.0E-005F);
-    this.hS.setColor(0);
-    this.hS.setStroke(this.strokeWidth, this.hI);
-    InsetDrawable localInsetDrawable = a(new LayerDrawable(new Drawable[] { this.hR, this.hS }));
     this.hT = new GradientDrawable();
-    this.hT.setCornerRadius(this.hF + 1.0E-005F);
+    this.hT.setCornerRadius(this.hH + 1.0E-005F);
     this.hT.setColor(-1);
-    return new a(android.support.design.e.a.b(this.hJ), localInsetDrawable, this.hT);
+    aZ();
+    this.hU = new GradientDrawable();
+    this.hU.setCornerRadius(this.hH + 1.0E-005F);
+    this.hU.setColor(0);
+    this.hU.setStroke(this.strokeWidth, this.hK);
+    InsetDrawable localInsetDrawable = a(new LayerDrawable(new Drawable[] { this.hT, this.hU }));
+    this.hV = new GradientDrawable();
+    this.hV.setCornerRadius(this.hH + 1.0E-005F);
+    this.hV.setColor(-1);
+    return new a(android.support.design.e.a.b(this.hL), localInsetDrawable, this.hV);
   }
   
-  final void aZ()
+  final void bb()
   {
-    if ((hD) && (this.hS != null)) {
-      this.hE.setInternalBackground(aY());
+    if ((hF) && (this.hU != null)) {
+      this.hG.setInternalBackground(ba());
     }
-    while (hD) {
+    while (hF) {
       return;
     }
-    this.hE.invalidate();
+    this.hG.invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.button.b
  * JD-Core Version:    0.7.0.1
  */

@@ -10,49 +10,49 @@ import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
 import com.tencent.mm.plugin.fts.ui.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class k
   extends a
 {
   public String header;
-  private b tMp;
-  private a tMq;
+  private b xdp;
+  private a xdq;
   
   public k(int paramInt)
   {
     super(0, paramInt);
     AppMethodBeat.i(112091);
-    this.tMp = new b();
-    this.tMq = new a();
+    this.xdp = new b();
+    this.xdq = new a();
     AppMethodBeat.o(112091);
   }
   
   public void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112092);
-    this.header = bu.bI(n.Hu(this.pSr), "");
-    ae.i("MicroMsg.FTS.FTSHeaderDataItem", "fillingDataItem: header=%s", new Object[] { this.header });
+    this.header = Util.nullAs(n.Nu(this.rjr), "");
+    Log.i("MicroMsg.FTS.FTSHeaderDataItem", "fillingDataItem: header=%s", new Object[] { this.header });
     AppMethodBeat.o(112092);
   }
   
-  public a.b agQ()
+  public a.b axc()
   {
-    return this.tMp;
+    return this.xdp;
   }
   
-  public a.a cWo()
+  public a.a dPz()
   {
-    return this.tMq;
+    return this.xdq;
   }
   
   public final class a
     extends a.a
   {
     public View contentView;
-    public TextView pbr;
-    public View tLJ;
+    public TextView qqq;
+    public View xcK;
     
     public a()
     {
@@ -71,11 +71,11 @@ public class k
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(112089);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131494203, paramViewGroup, false);
-      paramViewGroup = (k.a)k.this.cWo();
-      paramViewGroup.pbr = ((TextView)paramContext.findViewById(2131300734));
-      paramViewGroup.tLJ = paramContext.findViewById(2131303131);
-      paramViewGroup.contentView = paramContext.findViewById(2131304428);
+      paramContext = LayoutInflater.from(paramContext).inflate(2131494756, paramViewGroup, false);
+      paramViewGroup = (k.a)k.this.dPz();
+      paramViewGroup.qqq = ((TextView)paramContext.findViewById(2131302315));
+      paramViewGroup.xcK = paramContext.findViewById(2131305768);
+      paramViewGroup.contentView = paramContext.findViewById(2131307399);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112089);
       return paramContext;
@@ -85,20 +85,20 @@ public class k
     {
       AppMethodBeat.i(112090);
       paramContext = (k.a)parama;
-      n.a(k.this.header, paramContext.pbr);
+      n.b(k.this.header, paramContext.qqq);
       if (k.this.position == 0) {
-        paramContext.tLJ.setVisibility(8);
+        paramContext.xcK.setVisibility(8);
       }
       for (;;)
       {
-        n.r(paramContext.contentView, k.this.tGL);
+        n.s(paramContext.contentView, k.this.wXK);
         AppMethodBeat.o(112090);
         return;
-        paramContext.tLJ.setVisibility(0);
+        paramContext.xcK.setVisibility(0);
       }
     }
     
-    public final boolean a(Context paramContext, a paramVarArgs)
+    public final boolean a(Context paramContext, View paramView, a paramVarArgs)
     {
       return false;
     }
@@ -106,7 +106,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.k
  * JD-Core Version:    0.7.0.1
  */

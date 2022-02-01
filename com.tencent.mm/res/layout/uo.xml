@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/com" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/cb" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MultiTouchImageView android:gravity="center" android:layout_gravity="center" android:id="@id/co4" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+    <com.tencent.mm.ui.gridviewheaders.GridHeadersGridView android:scrollbarStyle="outsideOverlay" android:id="@id/b38" android:clipToPadding="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/cn" android:cacheColorHint="#00000000" android:horizontalSpacing="1.0dip" android:verticalSpacing="1.0dip" android:stretchMode="columnWidth" android:columnWidth="100.0dip" android:numColumns="auto_fit" android:animateLayoutChanges="true" />
+    <RelativeLayout android:background="@color/bj" android:layout_width="fill_parent" android:layout_height="@dimen/cn" android:layout_alignParentBottom="true">
+        <Button android:id="@id/blh" android:layout_marginLeft="@dimen/ct" android:layout_marginRight="@dimen/ct" android:text="@string/bla" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/p0" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/m0" android:layout_width="@dimen/cq" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/ct" android:layout_marginRight="@dimen/ct">
+            <CheckBox android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ly" android:background="@drawable/ahx" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_centerVertical="true" />
+            <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/lx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:text="@string/gu" android:maxLines="1" android:layout_centerVertical="true" />
+        </LinearLayout>
+        <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center" android:id="@id/bmg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:layout_toLeftOf="@id/blh" android:layout_toRightOf="@id/m0" android:layout_centerVertical="true" />
+        <View android:id="@id/lz" android:layout_width="@dimen/cs" android:layout_height="fill_parent" />
+    </RelativeLayout>
+</RelativeLayout>

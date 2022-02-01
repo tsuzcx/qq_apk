@@ -3,58 +3,58 @@ package com.tencent.mm.bd;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.plugin.x.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bf;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.sdk.platformtools.n;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.plugin.w.a;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.FilePathGenerator;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 
 public final class c
 {
-  private static c imW;
-  private bf imX = null;
+  private static c jie;
+  private QueueWorkerThread jif = null;
   
-  public static String GF(String paramString)
+  public static String Pr(String paramString)
   {
     AppMethodBeat.i(90695);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(90695);
       return null;
     }
-    paramString = n.d(a.dLR(), "remark_", g.getMessageDigest((paramString + "ZnVjaw==").getBytes()), ".png", 1);
+    paramString = FilePathGenerator.genPath(a.eMT(), "remark_", g.getMessageDigest((paramString + "ZnVjaw==").getBytes()), ".png", 1);
     AppMethodBeat.o(90695);
     return paramString;
   }
   
-  public static boolean GG(String paramString)
+  public static boolean Ps(String paramString)
   {
     AppMethodBeat.i(90696);
-    String str = GF(paramString);
-    ae.d("MicroMsg.RemarkImageStorage", "remove remark image: %s, path:%s", new Object[] { paramString, str });
-    boolean bool = new k(str).exists();
+    String str = Pr(paramString);
+    Log.d("MicroMsg.RemarkImageStorage", "remove remark image: %s, path:%s", new Object[] { paramString, str });
+    boolean bool = new o(str).exists();
     AppMethodBeat.o(90696);
     return bool;
   }
   
-  public static boolean GH(String paramString)
+  public static boolean Pt(String paramString)
   {
     AppMethodBeat.i(90697);
-    String str = GF(paramString);
-    ae.d("MicroMsg.RemarkImageStorage", "remove remark image: %s, path:%s", new Object[] { paramString, str });
-    boolean bool = o.deleteFile(str);
+    String str = Pr(paramString);
+    Log.d("MicroMsg.RemarkImageStorage", "remove remark image: %s, path:%s", new Object[] { paramString, str });
+    boolean bool = s.deleteFile(str);
     AppMethodBeat.o(90697);
     return bool;
   }
   
-  public static Bitmap GI(String paramString)
+  public static Bitmap Pu(String paramString)
   {
     int j = 0;
     AppMethodBeat.i(90698);
-    paramString = h.aO(GF(paramString), 0, 0);
+    paramString = BitmapUtil.getBitmapNative(Pr(paramString), 0, 0);
     int i = j;
     if (paramString != null)
     {
@@ -72,38 +72,33 @@ public final class c
     return null;
   }
   
-  public static c aKw()
+  public static c bez()
   {
     AppMethodBeat.i(90694);
-    if (imW == null) {
-      imW = new c();
+    if (jie == null) {
+      jie = new c();
     }
-    c localc = imW;
+    c localc = jie;
     AppMethodBeat.o(90694);
     return localc;
   }
   
-  public final void a(String paramString1, String paramString2, a parama)
+  public final void a(String paramString1, String paramString2, c.a parama)
   {
     AppMethodBeat.i(90699);
-    if ((!bu.isNullOrNil(paramString2)) && (!GG(paramString1)))
+    if ((!Util.isNullOrNil(paramString2)) && (!Ps(paramString1)))
     {
-      if ((this.imX == null) || (this.imX.fpj())) {
-        this.imX = new bf(1, "download-remark-img", 1);
+      if ((this.jif == null) || (this.jif.isDead())) {
+        this.jif = new QueueWorkerThread(1, "download-remark-img", 1);
       }
-      this.imX.c(new c.b(this, paramString1, paramString2, parama));
+      this.jif.add(new c.b(this, paramString1, paramString2, parama));
     }
     AppMethodBeat.o(90699);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void eS(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.bd.c
  * JD-Core Version:    0.7.0.1
  */

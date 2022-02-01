@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="20.0dip" />
-            <solid android:color="@color/a56" />
-        </shape>
-    </item>
     <item>
-        <shape android:shape="rectangle">
-            <corners android:radius="20.0dip" />
-            <solid android:color="@color/a55" />
+        <shape>
+            <solid android:color="@color/a7t" />
         </shape>
     </item>
-</selector>
+    <item android:top="1.0px" android:bottom="1.0px">
+        <shape>
+            <solid android:color="@color/afz" />
+        </shape>
+    </item>
+</layer-list>

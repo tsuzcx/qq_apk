@@ -10,6 +10,8 @@ public class BaseEvent
   
   public static native void onForeground(boolean paramBoolean);
   
+  public static native void onInitConfigBeforeOnCreate(int paramInt);
+  
   public static native void onNetworkChange();
   
   public static native void onSingalCrash(int paramInt);

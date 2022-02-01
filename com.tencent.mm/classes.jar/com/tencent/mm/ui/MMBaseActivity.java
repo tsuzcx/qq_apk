@@ -8,9 +8,9 @@ import android.view.LayoutInflater;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.b;
+import com.tencent.mm.sdk.platformtools.AndroidOSafety;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 @com.tencent.mm.ui.base.a(3)
 public class MMBaseActivity
@@ -29,9 +29,9 @@ public class MMBaseActivity
   public Resources getResources()
   {
     AppMethodBeat.i(141354);
-    if ((getAssets() != null) && (ak.getResources() != null))
+    if ((getAssets() != null) && (MMApplicationContext.getResources() != null))
     {
-      localResources = ak.getResources();
+      localResources = MMApplicationContext.getResources();
       AppMethodBeat.o(141354);
       return localResources;
     }
@@ -46,7 +46,7 @@ public class MMBaseActivity
     Object localObject = super.getSystemService(paramString);
     if ((getAssets() != null) && ("layout_inflater".equals(paramString)))
     {
-      paramString = z.b((LayoutInflater)localObject);
+      paramString = aa.b((LayoutInflater)localObject);
       AppMethodBeat.o(141355);
       return paramString;
     }
@@ -76,7 +76,7 @@ public class MMBaseActivity
     }
     catch (Throwable localThrowable)
     {
-      ae.e("MicroMsg.MMBaseActivity", localThrowable.getMessage());
+      Log.e("MicroMsg.MMBaseActivity", localThrowable.getMessage());
       WindowManager localWindowManager = super.getWindowManager();
       AppMethodBeat.o(141366);
       return localWindowManager;
@@ -115,13 +115,13 @@ public class MMBaseActivity
   public void setRequestedOrientation(int paramInt)
   {
     AppMethodBeat.i(141359);
-    if (!b.p(this, paramInt))
+    if (!AndroidOSafety.safety(this, paramInt))
     {
-      ae.e("MicroMsg.MMBaseActivity", "AndroidOSafety.safety false ignore setRequestedOrientation %s for activity %s", new Object[] { Integer.valueOf(paramInt), this });
+      Log.e("MicroMsg.MMBaseActivity", "AndroidOSafety.safety false ignore setRequestedOrientation %s for activity %s", new Object[] { Integer.valueOf(paramInt), this });
       AppMethodBeat.o(141359);
       return;
     }
-    ae.d("MicroMsg.MMBaseActivity", "setRequestedOrientation %s, %s", new Object[] { this, Integer.valueOf(paramInt) });
+    Log.d("MicroMsg.MMBaseActivity", "setRequestedOrientation %s, %s", new Object[] { this, Integer.valueOf(paramInt) });
     try
     {
       super.setRequestedOrientation(paramInt);
@@ -130,7 +130,7 @@ public class MMBaseActivity
     }
     catch (Throwable localThrowable)
     {
-      ae.printErrStackTrace("MicroMsg.MMBaseActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.MMBaseActivity", localThrowable, "AndroidOSafety.safety uncaught", new Object[0]);
       AppMethodBeat.o(141359);
     }
   }
@@ -189,7 +189,7 @@ public class MMBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.MMBaseActivity
  * JD-Core Version:    0.7.0.1
  */

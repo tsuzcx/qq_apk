@@ -21,7 +21,7 @@ public class PreferenceSmallCategory
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159994);
-    setLayoutResource(2131494857);
+    setLayoutResource(2131495593);
     AppMethodBeat.o(159994);
   }
 }

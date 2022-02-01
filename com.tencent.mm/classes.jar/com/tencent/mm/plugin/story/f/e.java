@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.story.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.djn;
-import d.l;
+import com.tencent.mm.protocal.protobuf.eda;
 import java.util.HashMap;
 import java.util.Vector;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/StoryAsyncQueueMgr;", "", "path", "", "(Ljava/lang/String;)V", "downLoadingScenes", "Ljava/util/HashMap;", "", "downLoadingSize", "getDownLoadingSize", "()I", "postLocks", "Ljava/util/Vector;", "queue", "Lcom/tencent/mm/protocal/protobuf/StoryAsyncQueue;", "releactionUploadScene", "selfName", "uploadLocks", "addDelItem", "", "snsId", "", "addDownLoadingId", "", "mediaId", "sceneKey", "addPostId", "mLocalId", "addUploadId", "checkNotDel", "checkQueue", "checkQueueImp", "checkSendComment", "commentList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/StoryCommentToSend;", "fileToList", "getSceneHashCodeByUploadId", "uploadId", "getSelfName", "isDownloading", "isInSnsObj", "list", "Lcom/tencent/mm/protocal/protobuf/StoryCommentInfo;", "content", "createTime", "isPosting", "listToFile", "releationUploadScene", "uplocalid", "hashCode", "removeDelItem", "removeDelItemImp", "removeDownLoadingS", "removePostId", "removeReleationUploadScene", "uploadid", "removeUploadId", "setSelfName", "Companion", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryAsyncQueueMgr;", "", "path", "", "(Ljava/lang/String;)V", "downLoadingScenes", "Ljava/util/HashMap;", "", "downLoadingSize", "getDownLoadingSize", "()I", "postLocks", "Ljava/util/Vector;", "queue", "Lcom/tencent/mm/protocal/protobuf/StoryAsyncQueue;", "releactionUploadScene", "selfName", "uploadLocks", "addDelItem", "", "snsId", "", "addDownLoadingId", "", "mediaId", "sceneKey", "addPostId", "mLocalId", "addUploadId", "checkNotDel", "checkQueue", "checkQueueImp", "checkSendComment", "commentList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/StoryCommentToSend;", "fileToList", "getSceneHashCodeByUploadId", "uploadId", "getSelfName", "isDownloading", "isInSnsObj", "list", "Lcom/tencent/mm/protocal/protobuf/StoryCommentInfo;", "content", "createTime", "isPosting", "listToFile", "releationUploadScene", "uplocalid", "hashCode", "removeDelItem", "removeDelItemImp", "removeDownLoadingS", "removePostId", "removeReleationUploadScene", "uploadid", "removeUploadId", "setSelfName", "Companion", "plugin-story_release"})
 public final class e
 {
-  private static final int BaZ = 21600;
-  private static final String Bba = "_AD_TAG_";
-  public static final a Bbb;
   private static final String FILE_NAME = "storyAsyncQueue.data";
+  private static final int FlT = 21600;
+  private static final String FlU = "_AD_TAG_";
+  public static final a FlV;
   private static final String TAG = "MicroMsg.StoryAsyncQueueMgr";
-  private djn BaU;
-  private final Vector<Integer> BaV;
-  private final HashMap<String, Integer> BaW;
-  private final Vector<Integer> BaX;
-  private final HashMap<Integer, Integer> BaY;
-  private String fHO;
+  private eda FlO;
+  private final Vector<Integer> FlP;
+  private final HashMap<String, Integer> FlQ;
+  private final Vector<Integer> FlR;
+  private final HashMap<Integer, Integer> FlS;
+  private String gna;
   private final String path;
   
   static
   {
     AppMethodBeat.i(118651);
-    Bbb = new a((byte)0);
+    FlV = new a((byte)0);
     TAG = "MicroMsg.StoryAsyncQueueMgr";
     FILE_NAME = "storyAsyncQueue.data";
-    BaZ = 21600;
-    Bba = "_AD_TAG_";
+    FlT = 21600;
+    FlU = "_AD_TAG_";
     AppMethodBeat.o(118651);
   }
   
@@ -37,21 +37,21 @@ public final class e
   {
     AppMethodBeat.i(118650);
     this.path = paramString;
-    this.fHO = "";
-    this.BaV = new Vector();
-    this.BaW = new HashMap();
-    this.BaX = new Vector();
-    this.BaY = new HashMap();
-    if (!dXg()) {
-      this.BaU = new djn();
+    this.gna = "";
+    this.FlP = new Vector();
+    this.FlQ = new HashMap();
+    this.FlR = new Vector();
+    this.FlS = new HashMap();
+    if (!fap()) {
+      this.FlO = new eda();
     }
-    this.BaV.clear();
-    this.BaW.clear();
+    this.FlP.clear();
+    this.FlQ.clear();
     AppMethodBeat.o(118650);
   }
   
   /* Error */
-  private final boolean dXg()
+  private final boolean fap()
   {
     // Byte code:
     //   0: aload_0
@@ -62,7 +62,7 @@ public final class e
     //   8: getfield 134	com/tencent/mm/plugin/story/f/e:path	Ljava/lang/String;
     //   11: iconst_0
     //   12: iconst_m1
-    //   13: invokestatic 173	com/tencent/mm/vfs/o:bb	(Ljava/lang/String;II)[B
+    //   13: invokestatic 173	com/tencent/mm/vfs/s:aW	(Ljava/lang/String;II)[B
     //   16: astore_2
     //   17: aload_2
     //   18: ifnonnull +14 -> 32
@@ -74,18 +74,18 @@ public final class e
     //   29: monitorexit
     //   30: iload_1
     //   31: ireturn
-    //   32: new 157	com/tencent/mm/protocal/protobuf/djn
+    //   32: new 157	com/tencent/mm/protocal/protobuf/eda
     //   35: dup
-    //   36: invokespecial 158	com/tencent/mm/protocal/protobuf/djn:<init>	()V
+    //   36: invokespecial 158	com/tencent/mm/protocal/protobuf/eda:<init>	()V
     //   39: aload_2
-    //   40: invokevirtual 177	com/tencent/mm/protocal/protobuf/djn:parseFrom	([B)Lcom/tencent/mm/bw/a;
+    //   40: invokevirtual 177	com/tencent/mm/protocal/protobuf/eda:parseFrom	([B)Lcom/tencent/mm/bw/a;
     //   43: astore_2
     //   44: aload_2
     //   45: ifnonnull +55 -> 100
-    //   48: new 179	d/v
+    //   48: new 179	kotlin/t
     //   51: dup
     //   52: ldc 181
-    //   54: invokespecial 183	d/v:<init>	(Ljava/lang/String;)V
+    //   54: invokespecial 183	kotlin/t:<init>	(Ljava/lang/String;)V
     //   57: astore_2
     //   58: ldc 167
     //   60: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -98,10 +98,10 @@ public final class e
     //   73: ldc 135
     //   75: iconst_0
     //   76: anewarray 4	java/lang/Object
-    //   79: invokestatic 191	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   79: invokestatic 191	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   82: aload_0
     //   83: getfield 134	com/tencent/mm/plugin/story/f/e:path	Ljava/lang/String;
-    //   86: invokestatic 195	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
+    //   86: invokestatic 195	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
     //   89: pop
     //   90: ldc 167
     //   92: invokestatic 121	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -110,8 +110,8 @@ public final class e
     //   97: goto -69 -> 28
     //   100: aload_0
     //   101: aload_2
-    //   102: checkcast 157	com/tencent/mm/protocal/protobuf/djn
-    //   105: putfield 160	com/tencent/mm/plugin/story/f/e:BaU	Lcom/tencent/mm/protocal/protobuf/djn;
+    //   102: checkcast 157	com/tencent/mm/protocal/protobuf/eda
+    //   105: putfield 160	com/tencent/mm/plugin/story/f/e:FlO	Lcom/tencent/mm/protocal/protobuf/eda;
     //   108: iconst_1
     //   109: istore_1
     //   110: ldc 167
@@ -143,12 +143,12 @@ public final class e
     //   110	115	118	finally
   }
   
-  public final boolean Qy(int paramInt)
+  public final boolean Yv(int paramInt)
   {
     try
     {
       AppMethodBeat.i(118649);
-      this.BaV.remove(Integer.valueOf(paramInt));
+      this.FlP.remove(Integer.valueOf(paramInt));
       AppMethodBeat.o(118649);
       return true;
     }
@@ -159,12 +159,12 @@ public final class e
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/StoryAsyncQueueMgr$Companion;", "", "()V", "AD_CMD_TAG", "", "getAD_CMD_TAG", "()Ljava/lang/String;", "EXPIRES", "", "FILE_NAME", "getFILE_NAME", "TAG", "getTAG", "fromAcitonToCommentInfo", "Lcom/tencent/mm/protocal/protobuf/StoryCommentInfo;", "isAdCmd", "", "clientId", "plugin-story_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/StoryAsyncQueueMgr$Companion;", "", "()V", "AD_CMD_TAG", "", "getAD_CMD_TAG", "()Ljava/lang/String;", "EXPIRES", "", "FILE_NAME", "getFILE_NAME", "TAG", "getTAG", "fromAcitonToCommentInfo", "Lcom/tencent/mm/protocal/protobuf/StoryCommentInfo;", "isAdCmd", "", "clientId", "plugin-story_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.e
  * JD-Core Version:    0.7.0.1
  */

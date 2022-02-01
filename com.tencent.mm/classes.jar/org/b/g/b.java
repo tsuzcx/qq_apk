@@ -8,7 +8,7 @@ import java.util.Set;
 
 public final class b
 {
-  public static <K, V> String J(Map<K, V> paramMap)
+  public static <K, V> String M(Map<K, V> paramMap)
   {
     AppMethodBeat.i(40574);
     if (paramMap == null)

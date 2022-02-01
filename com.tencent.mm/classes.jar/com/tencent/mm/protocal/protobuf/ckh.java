@@ -1,114 +1,95 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 import java.util.LinkedList;
 
 public final class ckh
-  extends cwj
+  extends com.tencent.mm.bw.a
 {
-  public dms GWk;
+  public int KQy;
+  public SKBuiltinBuffer_t MpF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72546);
+    AppMethodBeat.i(232379);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.MpF == null)
       {
-        paramVarArgs = new b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(72546);
+        paramVarArgs = new b("Not all required fields were included: NotifyData");
+        AppMethodBeat.o(232379);
         throw paramVarArgs;
       }
-      if (this.BaseResponse != null)
+      if (this.MpF != null)
       {
-        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+        paramVarArgs.ni(1, this.MpF.computeSize());
+        this.MpF.writeFields(paramVarArgs);
       }
-      if (this.GWk != null)
-      {
-        paramVarArgs.lJ(2, this.GWk.computeSize());
-        this.GWk.writeFields(paramVarArgs);
-      }
-      AppMethodBeat.o(72546);
+      paramVarArgs.aM(2, this.KQy);
+      AppMethodBeat.o(232379);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label514;
+      if (this.MpF == null) {
+        break label402;
       }
     }
-    label514:
-    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label402:
+    for (paramInt = g.a.a.a.nh(1, this.MpF.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.GWk != null) {
-        i = paramInt + f.a.a.a.lI(2, this.GWk.computeSize());
-      }
-      AppMethodBeat.o(72546);
-      return i;
+      int i = g.a.a.b.b.a.bu(2, this.KQy);
+      AppMethodBeat.o(232379);
+      return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        if (this.BaseResponse == null)
+        if (this.MpF == null)
         {
-          paramVarArgs = new b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(72546);
+          paramVarArgs = new b("Not all required fields were included: NotifyData");
+          AppMethodBeat.o(232379);
           throw paramVarArgs;
         }
-        AppMethodBeat.o(72546);
+        AppMethodBeat.o(232379);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         ckh localckh = (ckh)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
-        Object localObject2;
-        boolean bool;
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(72546);
+          AppMethodBeat.o(232379);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
-            localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localckh.BaseResponse = ((BaseResponse)localObject1);
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new SKBuiltinBuffer_t();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localckh.MpF = ((SKBuiltinBuffer_t)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(72546);
+          AppMethodBeat.o(232379);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-        i = paramVarArgs.size();
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localObject2 = (byte[])paramVarArgs.get(paramInt);
-          localObject1 = new dms();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (bool = true; bool; bool = ((dms)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-          localckh.GWk = ((dms)localObject1);
-          paramInt += 1;
-        }
-        AppMethodBeat.o(72546);
+        localckh.KQy = ((g.a.a.a.a)localObject1).UbS.zi();
+        AppMethodBeat.o(232379);
         return 0;
       }
-      AppMethodBeat.o(72546);
+      AppMethodBeat.o(232379);
       return -1;
     }
   }

@@ -1,62 +1,71 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cqc;
-import com.tencent.mm.protocal.protobuf.cqd;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.xb;
+import com.tencent.mm.protocal.protobuf.xc;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private com.tencent.mm.ak.b rr;
+  private i callback;
+  private d rr;
   
-  public b(String paramString)
+  public b(String paramString1, String paramString2, boolean paramBoolean)
   {
-    AppMethodBeat.i(97133);
-    b.a locala = new b.a();
-    locala.hQF = new cqc();
-    locala.hQG = new cqd();
-    locala.uri = "/cgi-bin/mmoc-bin/adplayinfo/query_ad_redpkt_state";
-    locala.funcId = 2944;
-    this.rr = locala.aDS();
-    ((cqc)this.rr.hQD.hQJ).HBV = paramString;
-    AppMethodBeat.o(97133);
+    AppMethodBeat.i(97129);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new xb();
+    ((d.a)localObject).iLO = new xc();
+    ((d.a)localObject).uri = "/cgi-bin/mmoc-bin/adplayinfo/channelpkginfo";
+    ((d.a)localObject).funcId = 1210;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (xb)this.rr.iLK.iLR;
+    ((xb)localObject).Lih = paramString2;
+    ((xb)localObject).KFI = paramString1;
+    ((xb)localObject).Lii = ChannelUtil.isGPVersion();
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      ((xb)localObject).Lij = i;
+      AppMethodBeat.o(97129);
+      return;
+    }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(97136);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(97136);
+    AppMethodBeat.i(97132);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(97132);
     return i;
   }
   
   public final int getType()
   {
-    AppMethodBeat.i(97135);
+    AppMethodBeat.i(97131);
     int i = this.rr.getType();
-    AppMethodBeat.o(97135);
+    AppMethodBeat.o(97131);
     return i;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(97134);
-    ae.i("NetSceneAdGetHbCoverState", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
+    AppMethodBeat.i(97130);
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
-    AppMethodBeat.o(97134);
+    AppMethodBeat.o(97130);
   }
 }
 

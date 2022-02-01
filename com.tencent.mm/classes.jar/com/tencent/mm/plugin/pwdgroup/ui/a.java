@@ -14,67 +14,67 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.pwdgroup.b.a;
-import com.tencent.mm.protocal.protobuf.ajs;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.amg;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.LinkedList;
 
 public final class a
   extends BaseAdapter
 {
+  private Animation Bpi;
+  private Animation Bpj;
+  private HashMap<String, Boolean> Bpk;
   private Context mContext;
-  private LinkedList<ajs> pUe;
-  private Animation vdD;
-  private Animation xoW;
-  private Animation xoX;
-  private HashMap<String, Boolean> xoY;
+  private LinkedList<amg> rld;
+  private Animation ywd;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(27672);
-    this.pUe = new LinkedList();
-    this.xoY = new HashMap();
+    this.rld = new LinkedList();
+    this.Bpk = new HashMap();
     this.mContext = paramContext;
-    this.vdD = AnimationUtils.loadAnimation(this.mContext, 2130771981);
-    this.xoX = AnimationUtils.loadAnimation(this.mContext, 2130771981);
-    this.xoW = AnimationUtils.loadAnimation(this.mContext, 2130771982);
-    this.vdD.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.xoX.setInterpolator(new AccelerateInterpolator());
-    this.xoW.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.vdD.setDuration(300L);
-    this.xoX.setDuration(1000L);
-    this.xoW.setDuration(1000L);
+    this.ywd = AnimationUtils.loadAnimation(this.mContext, 2130771981);
+    this.Bpj = AnimationUtils.loadAnimation(this.mContext, 2130771981);
+    this.Bpi = AnimationUtils.loadAnimation(this.mContext, 2130771982);
+    this.ywd.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.Bpj.setInterpolator(new AccelerateInterpolator());
+    this.Bpi.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.ywd.setDuration(300L);
+    this.Bpj.setDuration(1000L);
+    this.Bpi.setDuration(1000L);
     AppMethodBeat.o(27672);
   }
   
-  private static String a(ajs paramajs)
+  private static String a(amg paramamg)
   {
     AppMethodBeat.i(27677);
-    if (paramajs == null)
+    if (paramamg == null)
     {
       AppMethodBeat.o(27677);
       return "";
     }
-    if (bu.isNullOrNil(paramajs.nIJ))
+    if (Util.isNullOrNil(paramamg.UserName))
     {
-      paramajs = paramajs.Gzj;
+      paramamg = paramamg.LuX;
       AppMethodBeat.o(27677);
-      return paramajs;
+      return paramamg;
     }
-    paramajs = paramajs.nIJ;
+    paramamg = paramamg.UserName;
     AppMethodBeat.o(27677);
-    return paramajs;
+    return paramamg;
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(27674);
-    if (this.pUe == null)
+    if (this.rld == null)
     {
       AppMethodBeat.o(27674);
       return 1;
     }
-    int i = this.pUe.size();
+    int i = this.rld.size();
     AppMethodBeat.o(27674);
     return i + 1;
   }
@@ -82,17 +82,17 @@ public final class a
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(27675);
-    if (this.pUe == null)
+    if (this.rld == null)
     {
       AppMethodBeat.o(27675);
       return null;
     }
-    if (paramInt >= this.pUe.size())
+    if (paramInt >= this.rld.size())
     {
       AppMethodBeat.o(27675);
       return null;
     }
-    Object localObject = this.pUe.get(paramInt);
+    Object localObject = this.rld.get(paramInt);
     AppMethodBeat.o(27675);
     return localObject;
   }
@@ -108,39 +108,39 @@ public final class a
     Object localObject;
     if ((paramView == null) || (paramView.getTag() == null))
     {
-      paramView = LayoutInflater.from(this.mContext).inflate(2131493936, null);
+      paramView = LayoutInflater.from(this.mContext).inflate(2131494104, null);
       paramViewGroup = new a(paramView);
       paramView.setTag(paramViewGroup);
-      localObject = (ajs)getItem(paramInt);
+      localObject = (amg)getItem(paramInt);
       if (localObject != null)
       {
-        if (!bu.isNullOrNil(((ajs)localObject).nJO)) {
+        if (!Util.isNullOrNil(((amg)localObject).oUJ)) {
           break label260;
         }
-        paramViewGroup.gqi.setText(((ajs)localObject).nIJ);
+        paramViewGroup.hbb.setText(((amg)localObject).UserName);
         label84:
-        if (bu.isNullOrNil(((ajs)localObject).nIJ)) {
+        if (Util.isNullOrNil(((amg)localObject).UserName)) {
           break label275;
         }
-        b.a.c(paramViewGroup.ka, ((ajs)localObject).nIJ);
+        b.a.c(paramViewGroup.kc, ((amg)localObject).UserName);
       }
     }
     for (;;)
     {
-      localObject = a((ajs)localObject);
+      localObject = a((amg)localObject);
       paramView.clearAnimation();
-      if ((this.xoY.containsKey(localObject)) && (!((Boolean)this.xoY.get(localObject)).booleanValue()))
+      if ((this.Bpk.containsKey(localObject)) && (!((Boolean)this.Bpk.get(localObject)).booleanValue()))
       {
-        paramView.startAnimation(this.vdD);
-        this.xoY.put(localObject, Boolean.TRUE);
+        paramView.startAnimation(this.ywd);
+        this.Bpk.put(localObject, Boolean.TRUE);
       }
       if (paramInt + 1 == getCount())
       {
-        paramViewGroup.gqi.setText("");
-        paramViewGroup.ka.setImageResource(2131230836);
+        paramViewGroup.hbb.setText("");
+        paramViewGroup.kc.setImageResource(2131230848);
         if (paramView != null)
         {
-          this.xoX.setAnimationListener(new Animation.AnimationListener()
+          this.Bpj.setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymousAnimation)
             {
@@ -153,7 +153,7 @@ public final class a
             
             public final void onAnimationStart(Animation paramAnonymousAnimation) {}
           });
-          this.xoW.setAnimationListener(new Animation.AnimationListener()
+          this.Bpi.setAnimationListener(new Animation.AnimationListener()
           {
             public final void onAnimationEnd(Animation paramAnonymousAnimation)
             {
@@ -166,7 +166,7 @@ public final class a
             
             public final void onAnimationStart(Animation paramAnonymousAnimation) {}
           });
-          paramView.startAnimation(this.xoX);
+          paramView.startAnimation(this.Bpj);
         }
       }
       AppMethodBeat.o(27676);
@@ -174,26 +174,26 @@ public final class a
       paramViewGroup = (a)paramView.getTag();
       break;
       label260:
-      paramViewGroup.gqi.setText(((ajs)localObject).nJO);
+      paramViewGroup.hbb.setText(((amg)localObject).oUJ);
       break label84;
       label275:
-      b.a.c(paramViewGroup.ka, ((ajs)localObject).Gzj);
+      b.a.c(paramViewGroup.kc, ((amg)localObject).LuX);
     }
   }
   
-  public final void setData(LinkedList<ajs> paramLinkedList)
+  public final void setData(LinkedList<amg> paramLinkedList)
   {
     AppMethodBeat.i(27673);
-    this.pUe = paramLinkedList;
-    if ((this.pUe != null) && (this.pUe.size() > 0))
+    this.rld = paramLinkedList;
+    if ((this.rld != null) && (this.rld.size() > 0))
     {
-      int j = this.pUe.size();
+      int j = this.rld.size();
       int i = 0;
       while (i < j)
       {
-        paramLinkedList = a((ajs)this.pUe.get(i));
-        if (!this.xoY.containsKey(paramLinkedList)) {
-          this.xoY.put(paramLinkedList, Boolean.FALSE);
+        paramLinkedList = a((amg)this.rld.get(i));
+        if (!this.Bpk.containsKey(paramLinkedList)) {
+          this.Bpk.put(paramLinkedList, Boolean.FALSE);
         }
         i += 1;
       }
@@ -204,21 +204,21 @@ public final class a
   
   final class a
   {
-    TextView gqi;
-    ImageView ka;
+    TextView hbb;
+    ImageView kc;
     
     public a(View paramView)
     {
       AppMethodBeat.i(27671);
-      this.ka = ((ImageView)paramView.findViewById(2131299742));
-      this.gqi = ((TextView)paramView.findViewById(2131299751));
+      this.kc = ((ImageView)paramView.findViewById(2131300408));
+      this.hbb = ((TextView)paramView.findViewById(2131300417));
       AppMethodBeat.o(27671);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.pwdgroup.ui.a
  * JD-Core Version:    0.7.0.1
  */

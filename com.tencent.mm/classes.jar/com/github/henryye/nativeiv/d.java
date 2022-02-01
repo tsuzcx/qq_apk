@@ -9,26 +9,26 @@ import java.util.concurrent.TimeUnit;
 
  enum d
 {
-  private static int baH;
-  ExecutorService baI;
-  ExecutorService baJ;
+  private static int baD;
+  ExecutorService baE;
+  ExecutorService baF;
   
   static
   {
     AppMethodBeat.i(127348);
-    baG = new d("INSTANCE");
-    baK = new d[] { baG };
-    baH = Runtime.getRuntime().availableProcessors() + 1;
+    baC = new d("INSTANCE");
+    baG = new d[] { baC };
+    baD = Runtime.getRuntime().availableProcessors() + 1;
     AppMethodBeat.o(127348);
   }
   
   private d()
   {
     AppMethodBeat.i(127347);
-    this.baI = null;
-    this.baJ = null;
-    int i = Math.max(baH, 5);
-    this.baI = new ThreadPoolExecutor(1, Math.max(i / 2, 4), 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
+    this.baE = null;
+    this.baF = null;
+    int i = Math.max(baD, 5);
+    this.baE = new ThreadPoolExecutor(1, Math.max(i / 2, 4), 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
     {
       public final Thread newThread(Runnable paramAnonymousRunnable)
       {
@@ -38,7 +38,7 @@ import java.util.concurrent.TimeUnit;
         return paramAnonymousRunnable;
       }
     });
-    this.baJ = new ThreadPoolExecutor(i - 1, i, 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
+    this.baF = new ThreadPoolExecutor(i - 1, i, 500L, TimeUnit.MILLISECONDS, new LinkedBlockingQueue(), new ThreadFactory()
     {
       public final Thread newThread(Runnable paramAnonymousRunnable)
       {
@@ -53,7 +53,7 @@ import java.util.concurrent.TimeUnit;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.d
  * JD-Core Version:    0.7.0.1
  */

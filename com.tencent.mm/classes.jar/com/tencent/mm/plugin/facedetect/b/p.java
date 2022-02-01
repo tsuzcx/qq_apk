@@ -1,64 +1,60 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.o;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.m;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.r;
+import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.protobuf.bpj;
-import com.tencent.mm.protocal.protobuf.ccw;
-import com.tencent.mm.protocal.protobuf.ccx;
-import com.tencent.mm.protocal.protobuf.px;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.ccb;
+import com.tencent.mm.protocal.protobuf.ctb;
+import com.tencent.mm.protocal.protobuf.ctc;
+import com.tencent.mm.protocal.protobuf.qy;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public abstract class p
-  extends o
-  implements k
+  extends r
+  implements com.tencent.mm.network.m
 {
-  static String roy = null;
-  protected f callback = null;
+  static String sQc = null;
+  protected i callback = null;
   
-  protected static String aHN()
+  public static void arz(String paramString)
   {
-    return roy;
+    sQc = paramString;
   }
   
-  public static void agP(String paramString)
+  protected static String bbG()
   {
-    roy = paramString;
+    return sQc;
   }
   
-  public final void a(final int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void a(final int paramInt1, int paramInt2, String paramString, s params)
   {
-    ae.i("MicroMsg.NetSceneFaceRsaBase", "hy: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    Log.i("MicroMsg.NetSceneFaceRsaBase", "hy: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 4) && (paramInt2 == -102))
     {
-      paramInt1 = paramq.getReqObj().getRsaInfo().ver;
-      ae.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
-      g.ajU().aw(new Runnable()
+      paramInt1 = params.getReqObj().getRsaInfo().ver;
+      Log.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth auth MM_ERR_CERT_EXPIRED  getcert now  old ver:%d", new Object[] { Integer.valueOf(paramInt1) });
+      com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(103619);
-          new m().doScene(p.a(p.this), new f()
+          new com.tencent.mm.modelsimple.m().doScene(p.a(p.this), new i()
           {
-            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
+            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, q paramAnonymous2q)
             {
               AppMethodBeat.i(103618);
-              ae.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2n.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
+              Log.d("MicroMsg.NetSceneFaceRsaBase", "hy: summerauth dkcert getcert type:%d ret [%d,%d]", new Object[] { Integer.valueOf(paramAnonymous2q.getType()), Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2) });
               if ((paramAnonymous2Int1 != 0) || (paramAnonymous2Int2 != 0))
               {
-                ae.e("MicroMsg.NetSceneFaceRsaBase", "hy: do scene err in rsa when get cert. clear ticket");
-                p.cuh();
-                p.this.agO(p.aHN());
+                Log.e("MicroMsg.NetSceneFaceRsaBase", "hy: do scene err in rsa when get cert. clear ticket");
+                p.cSQ();
+                p.this.ary(p.bbG());
                 p.this.callback.onSceneEnd(paramAnonymous2Int1, paramAnonymous2Int2, "", p.this);
                 AppMethodBeat.o(103618);
                 return;
@@ -72,71 +68,71 @@ public abstract class p
       });
       return;
     }
-    c(paramInt1, paramInt2, paramString, paramq);
+    c(paramInt1, paramInt2, paramString, params);
   }
   
-  public final void aFa()
+  public final void aYP()
   {
     if (this.callback != null) {
       this.callback.onSceneEnd(3, -1, "", this);
     }
   }
   
-  public final f aFb()
+  public final i aYQ()
   {
     return this.callback;
   }
   
-  abstract void agO(String paramString);
+  abstract void ary(String paramString);
   
-  public final px b(q paramq)
+  public final qy b(s params)
   {
-    paramq = f(paramq);
-    if (paramq != null) {
-      return paramq.FWy;
+    params = f(params);
+    if (params != null) {
+      return params.KQk;
     }
     return null;
   }
   
-  public final ccw c(q paramq)
+  public final ctb c(s params)
   {
-    paramq = f(paramq);
-    if (paramq != null) {
-      return paramq.FWz;
+    params = f(params);
+    if (params != null) {
+      return params.KQl;
     }
     return null;
   }
   
-  abstract void c(int paramInt1, int paramInt2, String paramString, q paramq);
+  abstract void c(int paramInt1, int paramInt2, String paramString, s params);
   
-  public final bpj d(q paramq)
+  public final ccb d(s params)
   {
-    paramq = f(paramq);
-    if (paramq != null) {
-      return paramq.FWx;
+    params = f(params);
+    if (params != null) {
+      return params.KQj;
     }
     return null;
   }
   
-  public int doScene(e parame, f paramf)
+  public int doScene(com.tencent.mm.network.g paramg, i parami)
   {
-    this.callback = paramf;
-    if (!bu.isNullOrNil(roy))
+    this.callback = parami;
+    if (!Util.isNullOrNil(sQc))
     {
-      ae.i("MicroMsg.NetSceneFaceRsaBase", "hy: has ticket: %s", new Object[] { roy });
-      agO(roy);
-      return f(parame);
+      Log.i("MicroMsg.NetSceneFaceRsaBase", "hy: has ticket: %s", new Object[] { sQc });
+      ary(sQc);
+      return f(paramg);
     }
     return getType();
   }
   
-  abstract int f(e parame);
+  abstract int f(com.tencent.mm.network.g paramg);
   
-  protected abstract ccx f(q paramq);
+  protected abstract ctc f(s params);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.p
  * JD-Core Version:    0.7.0.1
  */

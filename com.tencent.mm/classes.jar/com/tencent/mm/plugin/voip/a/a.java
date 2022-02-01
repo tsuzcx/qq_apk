@@ -5,35 +5,42 @@ import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.ball.c.b;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.model.BallInfo.a;
 import com.tencent.mm.plugin.ball.model.BallReportInfo;
+import com.tencent.mm.plugin.voip.c;
 import com.tencent.mm.plugin.voip.model.l;
 import com.tencent.mm.plugin.voip.model.u;
 import com.tencent.mm.plugin.voip.model.v;
 import com.tencent.mm.plugin.voip.model.v2protocal;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.at;
 
 public final class a
   extends com.tencent.mm.plugin.ball.service.a
 {
-  private long CoU;
+  private long hCC;
   
   private a()
   {
     AppMethodBeat.i(184042);
-    this.CoU = 0L;
-    ac(9, "VOIPFloatBall");
-    bLD().nLC = 10;
-    if (com.tencent.mm.plugin.voip.c.eys() != null) {
-      bLD().dyc = String.valueOf(com.tencent.mm.plugin.voip.c.eys().Cvg.Cpd.Csj.uXg);
+    this.hCC = 0L;
+    G(9, "VOIPFloatBall");
+    ciw().hDa = 10;
+    if (c.fFg() != null) {
+      ciw().dPJ = String.valueOf(c.fFg().GYS.GSZ.GVV.ypH);
     }
-    bLz();
+    cit();
     AppMethodBeat.o(184042);
+  }
+  
+  public static a fFk()
+  {
+    return a.GST;
   }
   
   public final void a(final int paramInt, final boolean paramBoolean, final View paramView)
@@ -41,23 +48,23 @@ public final class a
     AppMethodBeat.i(184043);
     if ((paramView != null) && ((paramInt == 4) || (paramInt == 8)))
     {
-      if (bLw())
+      if (ciq())
       {
-        if (this.nLK.vd != paramView)
+        if (this.oWE.vk != paramView)
         {
-          ae.i("MicroMsg.VoipFloatBallHelper", "addVoipView, has ball, but view is different, state:%s, view:%s, ballInfo.customView:%s", new Object[] { Integer.valueOf(paramInt), paramView, this.nLK.vd });
-          this.nLK.nLu = true;
-          this.nLK.vd = paramView;
-          this.nLK.nLv = false;
-          this.nLK.nLt = true;
-          aP(paramInt, paramBoolean);
-          aQ(paramInt, paramBoolean);
-          aR(paramInt, paramBoolean);
-          bLy();
+          Log.i("MicroMsg.VoipFloatBallHelper", "addVoipView, has ball, but view is different, state:%s, view:%s, ballInfo.customView:%s", new Object[] { Integer.valueOf(paramInt), paramView, this.oWE.vk });
+          this.oWE.oWr = true;
+          this.oWE.vk = paramView;
+          this.oWE.nno = false;
+          this.oWE.oWq = true;
+          bh(paramInt, paramBoolean);
+          bi(paramInt, paramBoolean);
+          bj(paramInt, paramBoolean);
+          cis();
           AppMethodBeat.o(184043);
           return;
         }
-        ae.i("MicroMsg.VoipFloatBallHelper", "addVoipView, has ball, state:%s, view:%s", new Object[] { Integer.valueOf(paramInt), paramView });
+        Log.i("MicroMsg.VoipFloatBallHelper", "addVoipView, has ball, state:%s, view:%s", new Object[] { Integer.valueOf(paramInt), paramView });
         AppMethodBeat.o(184043);
         return;
       }
@@ -66,38 +73,38 @@ public final class a
         public final void run()
         {
           AppMethodBeat.i(184040);
-          ae.i("MicroMsg.VoipFloatBallHelper", "addVoipView, no ball, state:%s, view:%s", new Object[] { Integer.valueOf(paramInt), paramView });
-          a.this.nLK.nLu = true;
-          a.this.nLK.nLv = false;
-          a.this.nLK.vd = paramView;
-          a.this.nLK.fLk = com.tencent.mm.plugin.voip.c.eys().Cvk;
-          a.this.nLK.nLt = true;
-          if (!com.tencent.mm.plugin.voip.c.eys().Cvk) {
-            com.tencent.mm.plugin.voip.c.eys().Cvk = true;
+          Log.i("MicroMsg.VoipFloatBallHelper", "addVoipView, no ball, state:%s, view:%s", new Object[] { Integer.valueOf(paramInt), paramView });
+          a.this.oWE.oWr = true;
+          a.this.oWE.nno = false;
+          a.this.oWE.vk = paramView;
+          a.this.oWE.gqx = c.fFg().GYW;
+          a.this.oWE.oWq = true;
+          if (!c.fFg().GYW) {
+            c.fFg().GYW = true;
           }
           a locala = a.this;
           int i = paramInt;
           boolean bool = paramBoolean;
-          BallReportInfo localBallReportInfo = locala.bLD();
+          BallReportInfo localBallReportInfo = locala.ciw();
           if (bool)
           {
             str = "3";
-            localBallReportInfo.nLD = str;
-            localBallReportInfo = locala.bLD();
+            localBallReportInfo.oWy = str;
+            localBallReportInfo = locala.ciw();
             if (!bool) {
               break label256;
             }
           }
           label256:
-          for (String str = null;; str = String.valueOf(com.tencent.mm.plugin.voip.c.eys().Cvg.Cpd.Csj.uXg))
+          for (String str = null;; str = String.valueOf(c.fFg().GYS.GSZ.GVV.ypH))
           {
-            localBallReportInfo.hSG = str;
-            locala.bLD().nLA = 2;
-            locala.bLz();
-            a.this.aP(paramInt, paramBoolean);
-            a.this.aQ(paramInt, paramBoolean);
-            a.this.aR(paramInt, paramBoolean);
-            a.this.bLy();
+            localBallReportInfo.iNV = str;
+            locala.ciw().hCZ = 2;
+            locala.cit();
+            a.this.bh(paramInt, paramBoolean);
+            a.this.bi(paramInt, paramBoolean);
+            a.this.bj(paramInt, paramBoolean);
+            a.this.cis();
             AppMethodBeat.o(184040);
             return;
             if (i == 4)
@@ -110,137 +117,155 @@ public final class a
           }
         }
       };
-      long l = 200L + this.CoU - bu.fpO();
+      long l = 200L + this.hCC - Util.nowMilliSecond();
       if (l <= 0L)
       {
         paramView.run();
         AppMethodBeat.o(184043);
         return;
       }
-      ae.i("MicroMsg.VoipFloatBallHelper", "addVoipView, no ball, add delayed:%s", new Object[] { Long.valueOf(l) });
-      ar.o(paramView, l);
+      Log.i("MicroMsg.VoipFloatBallHelper", "addVoipView, no ball, add delayed:%s", new Object[] { Long.valueOf(l) });
+      MMHandlerThread.postToMainThreadDelayed(paramView, l);
     }
     AppMethodBeat.o(184043);
   }
   
-  final void aP(int paramInt, boolean paramBoolean)
+  public final void b(FrameLayout paramFrameLayout)
+  {
+    AppMethodBeat.i(235473);
+    if (ciq())
+    {
+      Log.i("MicroMsg.VoipFloatBallHelper", "removeVoipView, has ball, view:%s", new Object[] { paramFrameLayout });
+      this.hCC = Util.nowMilliSecond();
+      cir();
+      AppMethodBeat.o(235473);
+      return;
+    }
+    Log.i("MicroMsg.VoipFloatBallHelper", "removeVoipView, no ball, view:%s", new Object[] { paramFrameLayout });
+    AppMethodBeat.o(235473);
+  }
+  
+  final void bh(int paramInt, boolean paramBoolean)
   {
     if (!paramBoolean) {
-      this.nLK.state = paramInt;
+      this.oWE.state = paramInt;
     }
     do
     {
       return;
       if (paramInt == 4)
       {
-        this.nLK.state = 512;
+        this.oWE.state = 512;
         return;
       }
     } while (paramInt != 8);
-    this.nLK.state = 1024;
+    this.oWE.state = 1024;
   }
   
-  final void aQ(int paramInt, boolean paramBoolean)
+  final void bi(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(209912);
-    if (this.nLK.nLq == null) {
-      this.nLK.nLq = new Point();
+    AppMethodBeat.i(235474);
+    if (this.oWE.oWm == null) {
+      this.oWE.oWm = new Point();
     }
-    int i = aq.ay(ak.getContext(), 2131165303);
-    if (paramInt == 8)
-    {
-      this.nLK.nLq.x = (aq.ay(ak.getContext(), 2131167090) + i * 2);
-      this.nLK.nLq.y = (aq.ay(ak.getContext(), 2131167090) + i * 2);
+    int i = at.aH(MMApplicationContext.getContext(), 2131165314);
+    if (paramInt == 8) {
+      if (!paramBoolean)
+      {
+        this.oWE.oWm.x = (at.aH(MMApplicationContext.getContext(), 2131166443) + i * 2);
+        this.oWE.oWm.y = (at.aH(MMApplicationContext.getContext(), 2131166443) + i * 2);
+      }
     }
     for (;;)
     {
-      ae.v("MicroMsg.VoipFloatBallHelper", "setVoipViewSize %s, margin: %d", new Object[] { this.nLK.nLq, Integer.valueOf(i) });
-      AppMethodBeat.o(209912);
+      Log.v("MicroMsg.VoipFloatBallHelper", "setVoipViewSize %s, margin: %d", new Object[] { this.oWE.oWm, Integer.valueOf(i) });
+      AppMethodBeat.o(235474);
       return;
+      this.oWE.oWm.x = at.aH(MMApplicationContext.getContext(), 2131166445);
+      this.oWE.oWm.y = at.aH(MMApplicationContext.getContext(), 2131166444);
+      continue;
       if (paramInt == 4) {
         if (!paramBoolean)
         {
-          this.nLK.nLq.x = (aq.ay(ak.getContext(), 2131166356) + i * 2);
-          this.nLK.nLq.y = (aq.ay(ak.getContext(), 2131166354) + i * 2);
+          this.oWE.oWm.x = (at.aH(MMApplicationContext.getContext(), 2131166448) + i * 2);
+          this.oWE.oWm.y = (at.aH(MMApplicationContext.getContext(), 2131166446) + i * 2);
         }
         else
         {
-          this.nLK.nLq.x = aq.ay(ak.getContext(), 2131167092);
-          this.nLK.nLq.y = aq.ay(ak.getContext(), 2131167091);
+          this.oWE.oWm.x = at.aH(MMApplicationContext.getContext(), 2131166445);
+          this.oWE.oWm.y = at.aH(MMApplicationContext.getContext(), 2131166444);
         }
       }
     }
   }
   
-  final void aR(int paramInt, boolean paramBoolean)
+  final void bj(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(209913);
-    if (((paramBoolean) || (paramInt == 4)) && (this.nLK.nLx == null)) {
-      this.nLK.nLx = new BallInfo.a();
+    AppMethodBeat.i(235475);
+    if (((paramBoolean) || (paramInt == 4)) && (this.oWE.oWt == null)) {
+      this.oWE.oWt = new BallInfo.a();
     }
     int i;
     int j;
     int k;
     if (paramBoolean)
     {
-      i = aq.ay(ak.getContext(), 2131165303) * 2 + aq.ay(ak.getContext(), 2131167090);
-      j = aq.ay(ak.getContext(), 2131167092);
-      k = aq.ay(ak.getContext(), 2131167091);
-      this.nLK.nLx.nLy = new Point(i, i);
-      this.nLK.nLx.nLz = new Point(j, k);
-      ae.d("MicroMsg.VoipFloatBallHelper", "setAnimationInfo isMultiTalk: %b, state: %d, startSize: %d, endWidth: %d, endHeight: %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
-      AppMethodBeat.o(209913);
+      at.aH(MMApplicationContext.getContext(), 2131165314);
+      i = at.aH(MMApplicationContext.getContext(), 2131166445);
+      j = at.aH(MMApplicationContext.getContext(), 2131166445);
+      k = at.aH(MMApplicationContext.getContext(), 2131166444);
+      this.oWE.oWt.oWv = new Point(i, k);
+      this.oWE.oWt.oWw = new Point(j, k);
+      Log.d("MicroMsg.VoipFloatBallHelper", "setAnimationInfo isMultiTalk: %b, state: %d, startSize: %d, endWidth: %d, endHeight: %d", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+      AppMethodBeat.o(235475);
       return;
     }
     if (paramInt == 4)
     {
-      i = aq.ay(ak.getContext(), 2131165303);
-      j = aq.ay(ak.getContext(), 2131166356);
-      k = aq.ay(ak.getContext(), 2131166354);
-      int m = aq.ay(ak.getContext(), 2131166352);
-      int n = aq.ay(ak.getContext(), 2131166350);
-      this.nLK.nLx.nLy = new Point(j + i * 2, k + i * 2);
-      this.nLK.nLx.nLz = new Point(m + i * 2, i * 2 + n);
-      ae.d("MicroMsg.VoipFloatBallHelper", "setAnimationInfo isMultiTalk: %b, state: %d, startSize: %s, endSize: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), this.nLK.nLx.nLy, this.nLK.nLx.nLz });
-      AppMethodBeat.o(209913);
+      i = at.aH(MMApplicationContext.getContext(), 2131165314);
+      j = at.aH(MMApplicationContext.getContext(), 2131166448);
+      k = at.aH(MMApplicationContext.getContext(), 2131166446);
+      int m = at.aH(MMApplicationContext.getContext(), 2131166441);
+      int n = at.aH(MMApplicationContext.getContext(), 2131166439);
+      this.oWE.oWt.oWv = new Point(j + i * 2, k + i * 2);
+      this.oWE.oWt.oWw = new Point(m + i * 2, i * 2 + n);
+      Log.d("MicroMsg.VoipFloatBallHelper", "setAnimationInfo isMultiTalk: %b, state: %d, startSize: %s, endSize: %s", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), this.oWE.oWt.oWv, this.oWE.oWt.oWw });
+      AppMethodBeat.o(235475);
       return;
     }
-    this.nLK.nLx = null;
-    AppMethodBeat.o(209913);
+    this.oWE.oWt = null;
+    AppMethodBeat.o(235475);
   }
   
-  public final void d(FrameLayout paramFrameLayout)
+  public final void fFl()
   {
-    AppMethodBeat.i(209911);
-    if (bLw())
+    AppMethodBeat.i(235477);
+    Log.i("MicroMsg.VoipFloatBallHelper", "switchVoipVoice");
+    this.oWE.state = 8;
+    ((b)g.af(b.class)).u(this.oWE);
+    AppMethodBeat.o(235477);
+  }
+  
+  public final void wR(boolean paramBoolean)
+  {
+    AppMethodBeat.i(235476);
+    Log.i("MicroMsg.VoipFloatBallHelper", "updateHideWhenAppBackground %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (this.oWE != null)
     {
-      ae.i("MicroMsg.VoipFloatBallHelper", "removeVoipView, has ball, view:%s", new Object[] { paramFrameLayout });
-      this.CoU = bu.fpO();
-      bLx();
-      AppMethodBeat.o(209911);
-      return;
+      this.oWE.oWu = paramBoolean;
+      cit();
     }
-    ae.i("MicroMsg.VoipFloatBallHelper", "removeVoipView, no ball, view:%s", new Object[] { paramFrameLayout });
-    AppMethodBeat.o(209911);
-  }
-  
-  public final void eyv()
-  {
-    AppMethodBeat.i(209914);
-    ae.i("MicroMsg.VoipFloatBallHelper", "switchVoipVoice");
-    this.nLK.state = 8;
-    ((com.tencent.mm.plugin.ball.c.c)g.ab(com.tencent.mm.plugin.ball.c.c.class)).v(this.nLK);
-    AppMethodBeat.o(209914);
+    AppMethodBeat.o(235476);
   }
   
   public static final class a
   {
-    public static a CoX;
+    public static a GST;
     
     static
     {
       AppMethodBeat.i(184041);
-      CoX = new a((byte)0);
+      GST = new a((byte)0);
       AppMethodBeat.o(184041);
     }
   }

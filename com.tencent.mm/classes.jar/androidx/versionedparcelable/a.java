@@ -38,7 +38,7 @@ public abstract class a
   {
     try
     {
-      i(paramT.getClass()).getDeclaredMethod("write", new Class[] { paramT.getClass(), a.class }).invoke(null, new Object[] { paramT, parama });
+      j(paramT.getClass()).getDeclaredMethod("write", new Class[] { paramT.getClass(), a.class }).invoke(null, new Object[] { paramT, parama });
       return;
     }
     catch (IllegalAccessException paramT)
@@ -66,7 +66,7 @@ public abstract class a
   {
     try
     {
-      Class localClass = i(paramc.getClass());
+      Class localClass = j(paramc.getClass());
       writeString(localClass.getName());
       return;
     }
@@ -76,20 +76,20 @@ public abstract class a
     }
   }
   
-  private static Class i(Class<? extends c> paramClass)
+  private static Class j(Class<? extends c> paramClass)
   {
     return Class.forName(String.format("%s.%sParcelizer", new Object[] { paramClass.getPackage().getName(), paramClass.getSimpleName() }), false, paramClass.getClassLoader());
   }
   
-  public final void L(String paramString)
+  public final void M(String paramString)
   {
-    dj(7);
+    dd(7);
     writeString(paramString);
   }
   
-  public final String M(String paramString)
+  public final String N(String paramString)
   {
-    if (!di(7)) {
+    if (!dc(7)) {
       return paramString;
     }
     return readString();
@@ -97,29 +97,29 @@ public abstract class a
   
   public final <T extends Parcelable> T a(T paramT, int paramInt)
   {
-    if (!di(paramInt)) {
+    if (!dc(paramInt)) {
       return paramT;
     }
-    return nx();
+    return nz();
   }
   
   protected abstract void a(Parcelable paramParcelable);
   
   public final void a(c paramc)
   {
-    dj(1);
+    dd(1);
     b(paramc);
   }
   
-  public final void aS(int paramInt1, int paramInt2)
+  public final void aM(int paramInt1, int paramInt2)
   {
-    dj(paramInt2);
+    dd(paramInt2);
     writeInt(paramInt1);
   }
   
-  public final int aT(int paramInt1, int paramInt2)
+  public final int aN(int paramInt1, int paramInt2)
   {
-    if (!di(paramInt2)) {
+    if (!dc(paramInt2)) {
       return paramInt1;
     }
     return readInt();
@@ -133,53 +133,53 @@ public abstract class a
       return;
     }
     c(paramc);
-    a locala = nv();
+    a locala = nx();
     a(paramc, locala);
-    locala.nu();
+    locala.nw();
   }
   
   public final <T extends c> T d(T paramT)
   {
-    if (!di(1)) {
+    if (!dc(1)) {
       return paramT;
     }
-    return ny();
+    return nA();
   }
   
-  protected abstract boolean di(int paramInt);
+  protected abstract boolean dc(int paramInt);
   
-  protected abstract void dj(int paramInt);
+  protected abstract void dd(int paramInt);
   
   public final void i(byte[] paramArrayOfByte)
   {
-    dj(2);
+    dd(2);
     writeByteArray(paramArrayOfByte);
   }
   
   public final byte[] j(byte[] paramArrayOfByte)
   {
-    if (!di(2)) {
+    if (!dc(2)) {
       return paramArrayOfByte;
     }
-    return nw();
+    return ny();
   }
   
-  protected abstract void nu();
-  
-  protected abstract a nv();
-  
-  protected abstract byte[] nw();
-  
-  protected abstract <T extends Parcelable> T nx();
-  
-  protected final <T extends c> T ny()
+  protected final <T extends c> T nA()
   {
     String str = readString();
     if (str == null) {
       return null;
     }
-    return a(str, nv());
+    return a(str, nx());
   }
+  
+  protected abstract void nw();
+  
+  protected abstract a nx();
+  
+  protected abstract byte[] ny();
+  
+  protected abstract <T extends Parcelable> T nz();
   
   protected abstract int readInt();
   
@@ -191,7 +191,7 @@ public abstract class a
   
   public final void writeParcelable(Parcelable paramParcelable, int paramInt)
   {
-    dj(paramInt);
+    dd(paramInt);
     a(paramParcelable);
   }
   
@@ -199,7 +199,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     androidx.versionedparcelable.a
  * JD-Core Version:    0.7.0.1
  */

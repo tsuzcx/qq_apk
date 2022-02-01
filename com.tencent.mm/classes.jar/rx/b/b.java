@@ -2,7 +2,7 @@ package rx.b;
 
 public abstract interface b<T>
 {
-  public abstract void cr(T paramT);
+  public abstract void cA(T paramT);
 }
 
 

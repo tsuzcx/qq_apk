@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.hp.tinker;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.tinker.loader.shareutil.SharePatchInfo;
 import java.io.File;
 import java.util.List;
@@ -20,7 +20,7 @@ public final class f
   {
     AppMethodBeat.i(117493);
     super.a(paramFile, paramSharePatchInfo, paramString);
-    com.tencent.mm.plugin.hp.b.b.dfd();
+    com.tencent.mm.plugin.hp.b.b.dYX();
     AppMethodBeat.o(117493);
   }
   
@@ -28,7 +28,7 @@ public final class f
   {
     AppMethodBeat.i(117492);
     super.a(paramFile1, paramFile2, paramString, paramInt);
-    com.tencent.mm.plugin.hp.b.b.IQ(paramInt);
+    com.tencent.mm.plugin.hp.b.b.OT(paramInt);
     AppMethodBeat.o(117492);
   }
   
@@ -36,7 +36,7 @@ public final class f
   {
     AppMethodBeat.i(117488);
     super.a(paramFile, paramThrowable);
-    com.tencent.mm.plugin.hp.b.b.j(paramThrowable);
+    com.tencent.mm.plugin.hp.b.b.k(paramThrowable);
     AppMethodBeat.o(117488);
   }
   
@@ -44,7 +44,7 @@ public final class f
   {
     AppMethodBeat.i(117487);
     super.a(paramFile, paramList, paramThrowable);
-    com.tencent.mm.plugin.hp.b.b.k(paramThrowable);
+    com.tencent.mm.plugin.hp.b.b.l(paramThrowable);
     AppMethodBeat.o(117487);
   }
   
@@ -52,17 +52,17 @@ public final class f
   {
     AppMethodBeat.i(117491);
     super.a(paramFile, paramBoolean, paramLong);
-    ae.i("Tinker.TinkerPatchReporter", "onPatchResult start");
-    com.tencent.mm.plugin.hp.b.b.w(paramLong, paramBoolean);
-    ae.fop();
+    Log.i("Tinker.TinkerPatchReporter", "onPatchResult start");
+    com.tencent.mm.plugin.hp.b.b.C(paramLong, paramBoolean);
+    Log.appenderFlushSync();
     AppMethodBeat.o(117491);
   }
   
-  public final void ax(Intent paramIntent)
+  public final void aE(Intent paramIntent)
   {
     AppMethodBeat.i(117486);
-    super.ax(paramIntent);
-    com.tencent.mm.plugin.hp.b.b.aw(paramIntent);
+    super.aE(paramIntent);
+    com.tencent.mm.plugin.hp.b.b.aD(paramIntent);
     AppMethodBeat.o(117486);
   }
   
@@ -70,7 +70,7 @@ public final class f
   {
     AppMethodBeat.i(117489);
     super.b(paramFile, paramString1, paramString2);
-    com.tencent.mm.plugin.hp.b.b.dfc();
+    com.tencent.mm.plugin.hp.b.b.dYW();
     AppMethodBeat.o(117489);
   }
   
@@ -78,13 +78,13 @@ public final class f
   {
     AppMethodBeat.i(117490);
     super.e(paramFile, paramInt);
-    com.tencent.mm.plugin.hp.b.b.IP(paramInt);
+    com.tencent.mm.plugin.hp.b.b.OS(paramInt);
     AppMethodBeat.o(117490);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.tinker.f
  * JD-Core Version:    0.7.0.1
  */

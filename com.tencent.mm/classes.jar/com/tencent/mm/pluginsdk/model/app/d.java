@@ -1,42 +1,42 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class d
-  extends j<c>
+  extends MAutoStorage<c>
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  e db;
+  ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(151657);
-    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "appattach") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "appattach") };
     INDEX_CREATE = new String[] { "DROP INDEX IF EXISTS statusIndex", "CREATE INDEX IF NOT EXISTS msgInfoIdIndex ON appattach ( msgInfoId )", "CREATE INDEX IF NOT EXISTS appattach_statusIndex ON appattach ( status )" };
     AppMethodBeat.o(151657);
   }
   
-  public d(e parame)
+  public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, c.info, "appattach", INDEX_CREATE);
-    this.db = parame;
+    super(paramISQLiteDatabase, c.info, "appattach", INDEX_CREATE);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final void CY(long paramLong)
+  public final void Mo(long paramLong)
   {
     AppMethodBeat.i(151652);
-    String str = " update appattach set status = 198 , lastModifyTime = " + bu.aRi() + " where rowid = " + paramLong;
+    String str = " update appattach set status = 198 , lastModifyTime = " + Util.nowSecond() + " where rowid = " + paramLong;
     this.db.execSQL("appattach", str);
     doNotify();
     AppMethodBeat.o(151652);
   }
   
-  public final c CZ(long paramLong)
+  public final c Mp(long paramLong)
   {
     AppMethodBeat.i(151655);
     c localc = new c();
@@ -54,12 +54,12 @@ public final class d
   {
     AppMethodBeat.i(151654);
     boolean bool = super.update(paramc, paramVarArgs);
-    ae.d("MicroMsg.AppAttachInfoStorage", "update AppAttachInfo field_mediaId %s field_mediaSvrId %s ret %s %s", new Object[] { paramc.field_mediaId, paramc.field_mediaSvrId, Boolean.valueOf(bool), "" });
+    Log.d("MicroMsg.AppAttachInfoStorage", "update AppAttachInfo field_mediaId %s field_mediaSvrId %s ret %s %s", new Object[] { paramc.field_mediaId, paramc.field_mediaSvrId, Boolean.valueOf(bool), "" });
     AppMethodBeat.o(151654);
     return bool;
   }
   
-  public final c aMZ(String paramString)
+  public final c bdx(String paramString)
   {
     AppMethodBeat.i(151653);
     c localc = new c();
@@ -80,7 +80,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.d
  * JD-Core Version:    0.7.0.1
  */

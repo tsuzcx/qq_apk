@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/a_c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="3.0" android:minHeight="@dimen/h_"
+<RelativeLayout android:id="@id/f6s" android:padding="@dimen/g_" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ToggleButton android:id="@id/f3j" android:textOn="@string/er_" android:textOff="@string/er_" android:drawableTop="@drawable/lg" style="@style/g9" />
-    <ToggleButton android:id="@id/f3i" android:textOn="@string/eqs" android:textOff="@string/eqs" android:drawableTop="@drawable/lg" style="@style/g9" />
-    <ToggleButton android:id="@id/f3q" android:textOn="@string/erw" android:textOff="@string/erw" android:drawableTop="@drawable/lg" style="@style/g9" />
-</LinearLayout>
+    <ImageView android:id="@id/dg3" android:layout_width="@dimen/gp" android:layout_height="@dimen/gp" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+    <com.tencent.mm.plugin.game.ui.GameDownloadView android:id="@id/dfc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/t0" android:ellipsize="end" android:id="@id/dhv" android:paddingLeft="@dimen/gi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toRightOf="@id/dg3" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/sy" android:ellipsize="end" android:id="@id/ddn" android:paddingLeft="@dimen/gi" android:paddingRight="@dimen/gi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:layout_toLeftOf="@id/dfc" android:layout_toRightOf="@id/dhv" android:layout_centerVertical="true" />
+</RelativeLayout>

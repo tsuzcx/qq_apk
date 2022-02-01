@@ -3,14 +3,14 @@ package com.tencent.tinker.a.b.a;
 public final class h
   extends a
 {
-  public short[] MBq;
+  public short[] Shs;
   
   public h(int paramInt)
   {
     if (paramInt < 0) {
       throw new IllegalArgumentException("initSize < 0");
     }
-    this.MBq = new short[paramInt];
+    this.Shs = new short[paramInt];
   }
   
   public final void a(short paramShort1, short paramShort2, short paramShort3)
@@ -28,15 +28,15 @@ public final class h
   
   public final void c(short paramShort)
   {
-    int i = this.aoY;
-    if (this.MBq.length - i <= 0)
+    int i = this.apk;
+    if (this.Shs.length - i <= 0)
     {
-      short[] arrayOfShort = new short[this.MBq.length + (this.MBq.length >> 1)];
-      System.arraycopy(this.MBq, 0, arrayOfShort, 0, i);
-      this.MBq = arrayOfShort;
+      short[] arrayOfShort = new short[this.Shs.length + (this.Shs.length >> 1)];
+      System.arraycopy(this.Shs, 0, arrayOfShort, 0, i);
+      this.Shs = arrayOfShort;
     }
-    this.MBq[this.aoY] = paramShort;
-    gcQ();
+    this.Shs[this.apk] = paramShort;
+    hoY();
   }
   
   public final void writeInt(int paramInt)
@@ -47,7 +47,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.b.a.h
  * JD-Core Version:    0.7.0.1
  */

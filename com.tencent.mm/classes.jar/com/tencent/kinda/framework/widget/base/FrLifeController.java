@@ -7,10 +7,11 @@ import android.support.v4.app.g.c;
 import android.support.v4.app.k;
 import com.tencent.kinda.framework.app.MainFragment;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.service.p;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.service.r;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.SwipeBackLayout;
+import com.tencent.mm.wallet_core.ui.f;
 import java.util.List;
 import java.util.Stack;
 
@@ -43,7 +44,7 @@ public class FrLifeController
       {
         AppMethodBeat.i(178767);
         android.support.v4.app.g localg = FrLifeController.this.activity.getSupportFragmentManager();
-        ae.i("MicroMsg.FragmentController", "onBackstackChanged: %s, fragments: %s", new Object[] { Integer.valueOf(localg.getBackStackEntryCount()), localg.getFragments() });
+        Log.i("MicroMsg.FragmentController", "onBackstackChanged: %s, fragments: %s", new Object[] { Integer.valueOf(localg.getBackStackEntryCount()), localg.getFragments() });
         AppMethodBeat.o(178767);
       }
     });
@@ -60,7 +61,7 @@ public class FrLifeController
       return;
     }
     int i = this.mFragmentBackStack.size();
-    ae.i("MicroMsg.FragmentController", "checkSwipeBackLayout %s %s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.activity.getFragmentManager().getBackStackEntryCount()) });
+    Log.i("MicroMsg.FragmentController", "checkSwipeBackLayout %s %s", new Object[] { Integer.valueOf(i), Integer.valueOf(this.activity.getFragmentManager().getBackStackEntryCount()) });
     if (i > 1)
     {
       this.activity.getSwipeBackLayout().setEnableGesture(false);
@@ -107,7 +108,7 @@ public class FrLifeController
     AppMethodBeat.i(18783);
     if (paramBaseFragment == null)
     {
-      ae.e("MicroMsg.FragmentController", bu.o(new Throwable("Watch a null fragment!!")));
+      Log.e("MicroMsg.FragmentController", Util.stackTraceToString(new Throwable("Watch a null fragment!!")));
       AppMethodBeat.o(18783);
       return;
     }
@@ -119,7 +120,7 @@ public class FrLifeController
         BaseFragment localBaseFragment = paramBaseFragment.getCoveredFragment();
         if ((localBaseFragment != null) && (localBaseFragment.equals(FrLifeController.access$100(FrLifeController.this, -1))))
         {
-          ae.i("MicroMsg.FragmentController", "From onDestroyView, active covered fragment: ".concat(String.valueOf(localBaseFragment)));
+          Log.i("MicroMsg.FragmentController", "From onDestroyView, active covered fragment: ".concat(String.valueOf(localBaseFragment)));
           localBaseFragment.willActive();
         }
         AppMethodBeat.o(178769);
@@ -134,13 +135,13 @@ public class FrLifeController
         AppMethodBeat.i(178768);
         if (!paramBaseFragment.isActive())
         {
-          ae.i("MicroMsg.FragmentController", "From onResume, Active create view fragment: " + paramBaseFragment);
+          Log.i("MicroMsg.FragmentController", "From onResume, Active create view fragment: " + paramBaseFragment);
           paramBaseFragment.willActive();
         }
         paramAnonymousBundle = FrLifeController.access$100(FrLifeController.this, -2);
         if ((paramAnonymousBundle != null) && ((paramBaseFragment instanceof MainFragment)) && (paramAnonymousBundle.isActive()))
         {
-          ae.i("MicroMsg.FragmentController", "From onCreateView, DeActive covered fragment: " + paramBaseFragment);
+          Log.i("MicroMsg.FragmentController", "From onCreateView, DeActive covered fragment: " + paramBaseFragment);
           paramAnonymousBundle.willDeActive();
           paramBaseFragment.recordCoveredFragment(paramAnonymousBundle);
         }
@@ -157,13 +158,13 @@ public class FrLifeController
     k localk2 = this.activity.getSupportFragmentManager().beginTransaction();
     k localk1 = localk2;
     if ((paramBaseFragment instanceof MainFragment)) {
-      localk1 = localk2.u(2130772144, 2130772141);
+      localk1 = localk2.u(2130772169, 2130772166);
     }
-    localk1.a(2131300236, paramBaseFragment);
+    localk1.a(2131301712, paramBaseFragment);
     watchLife(paramBaseFragment);
     this.mFragmentBackStack.add(paramBaseFragment);
     localk1.commitAllowingStateLoss();
-    ae.i("MicroMsg.FragmentController", "fragment [" + paramBaseFragment + "] has add! current fragmentCount: " + this.fragmentCount);
+    Log.i("MicroMsg.FragmentController", "fragment [" + paramBaseFragment + "] has add! current fragmentCount: " + this.fragmentCount);
     AppMethodBeat.o(18785);
     return true;
   }
@@ -191,7 +192,7 @@ public class FrLifeController
   public int getFragmentListSize()
   {
     AppMethodBeat.i(18790);
-    ae.i("MicroMsg.FragmentController", "getFragmentListSize: %d", new Object[] { Integer.valueOf(this.fragmentCount) });
+    Log.i("MicroMsg.FragmentController", "getFragmentListSize: %d", new Object[] { Integer.valueOf(this.fragmentCount) });
     int i = this.fragmentCount;
     AppMethodBeat.o(18790);
     return i;
@@ -200,7 +201,7 @@ public class FrLifeController
   public boolean hasOpenH5OrTinyApp()
   {
     AppMethodBeat.i(18794);
-    ae.i("MicroMsg.FragmentController", "hasOpenH5OrTinyApp, webviewCount: %d, tinyappCount: %d", new Object[] { Integer.valueOf(this.webviewCount), Integer.valueOf(this.tinyappCount) });
+    Log.i("MicroMsg.FragmentController", "hasOpenH5OrTinyApp, webviewCount: %d, tinyappCount: %d", new Object[] { Integer.valueOf(this.webviewCount), Integer.valueOf(this.tinyappCount) });
     if ((this.webviewCount > 0) || (this.tinyappCount > 0))
     {
       AppMethodBeat.o(18794);
@@ -212,19 +213,19 @@ public class FrLifeController
   
   public void onActivityDestroy()
   {
-    AppMethodBeat.i(193167);
+    AppMethodBeat.i(214459);
     this.mFragmentBackStack.clear();
-    AppMethodBeat.o(193167);
+    AppMethodBeat.o(214459);
   }
   
   public boolean popFragment()
   {
     AppMethodBeat.i(18786);
-    ae.i("MicroMsg.FragmentController", "popFragment, fragmentCount: %d, isStateSaved: %b", new Object[] { Integer.valueOf(this.fragmentCount), Boolean.valueOf(this.activity.getSupportFragmentManager().isStateSaved()) });
+    Log.i("MicroMsg.FragmentController", "popFragment, fragmentCount: %d, isStateSaved: %b", new Object[] { Integer.valueOf(this.fragmentCount), Boolean.valueOf(this.activity.getSupportFragmentManager().isStateSaved()) });
     if ((this.fragmentCount > 1) && (!this.activity.getSupportFragmentManager().isStateSaved()))
     {
       removeModal((BaseFragment)this.mFragmentBackStack.peek());
-      ae.i("MicroMsg.FragmentController", "popFragment to remove, fragmentCount: %d", new Object[] { Integer.valueOf(this.fragmentCount) });
+      Log.i("MicroMsg.FragmentController", "popFragment to remove, fragmentCount: %d", new Object[] { Integer.valueOf(this.fragmentCount) });
       if (this.fragmentCount > 0)
       {
         AppMethodBeat.o(18786);
@@ -233,7 +234,7 @@ public class FrLifeController
       AppMethodBeat.o(18786);
       return false;
     }
-    ae.i("MicroMsg.FragmentController", "NO popFragment before return, fragmentCount: %d", new Object[] { Integer.valueOf(this.fragmentCount) });
+    Log.i("MicroMsg.FragmentController", "NO popFragment before return, fragmentCount: %d", new Object[] { Integer.valueOf(this.fragmentCount) });
     AppMethodBeat.o(18786);
     return false;
   }
@@ -274,13 +275,13 @@ public class FrLifeController
       k localk2 = this.activity.getSupportFragmentManager().beginTransaction();
       k localk1 = localk2;
       if ((paramBaseFragment instanceof MainFragment)) {
-        localk1 = localk2.u(2130772144, 2130772145);
+        localk1 = localk2.u(2130772169, 2130772170);
       }
       localk1.a(paramBaseFragment);
       localk1.commitAllowingStateLoss();
       this.mFragmentBackStack.remove(paramBaseFragment);
     }
-    ae.i("MicroMsg.FragmentController", "removeModal [%s] before return, fragmentCount: %d", new Object[] { paramBaseFragment, Integer.valueOf(this.fragmentCount) });
+    Log.i("MicroMsg.FragmentController", "removeModal [%s] before return, fragmentCount: %d", new Object[] { paramBaseFragment, Integer.valueOf(this.fragmentCount) });
     if (this.fragmentCount > 0)
     {
       AppMethodBeat.o(18787);
@@ -302,29 +303,42 @@ public class FrLifeController
     String str2 = paramBundle.getString("intent_tinyapp_path", "");
     String str3 = paramBundle.getString("intent_tinyapp_version", "");
     int i = paramBundle.getInt("intent_tinyapp_type", 0);
-    paramBundle = new com.tencent.mm.plugin.appbrand.api.f();
+    int j = paramBundle.getInt("intent_tinyapp_scene", 0);
+    paramMainFragment.isTinyApp = true;
+    paramMainFragment.tinyAppUserName = str1;
+    paramMainFragment.initPagePlatformDelegate();
+    paramBundle = new com.tencent.mm.plugin.appbrand.api.g();
     paramBundle.username = str1;
-    paramBundle.jFL = bu.bI(str2, "");
-    paramBundle.scene = 1034;
-    if (i == 0) {}
-    for (paramBundle.hSZ = 0;; paramBundle.hSZ = 2)
+    paramBundle.kHw = Util.nullAs(str2, "");
+    if (j == 0)
     {
-      i = bu.getInt(str3, 0);
+      paramBundle.scene = 1034;
+      if (i != 0) {
+        break label214;
+      }
+    }
+    label214:
+    for (paramBundle.iOo = 0;; paramBundle.iOo = 2)
+    {
+      i = Util.getInt(str3, 0);
       if (i > 0) {
         paramBundle.version = i;
       }
-      paramBundle.jFR = 3;
-      ((p)com.tencent.mm.kernel.g.ab(p.class)).a(this.activity, paramBundle);
+      paramBundle.kHC = 3;
+      ((r)com.tencent.mm.kernel.g.af(r.class)).a(this.activity, paramBundle);
       this.tinyAppFragment = paramMainFragment;
       this.tinyappCount += 1;
       if (this.fragmentCount != 0) {
-        break;
+        break label222;
       }
-      ae.i("MicroMsg.FragmentController", "only tinyApp,dont need TinyCallback");
+      Log.i("MicroMsg.FragmentController", "only tinyApp,dont need TinyCallback");
       this.needTinyCallback = false;
       AppMethodBeat.o(18792);
       return;
+      paramBundle.scene = j;
+      break;
     }
+    label222:
     this.needTinyCallback = true;
     AppMethodBeat.o(18792);
   }
@@ -333,7 +347,7 @@ public class FrLifeController
   {
     AppMethodBeat.i(18791);
     paramBundle = paramBundle.getString("intent_webview_url", "");
-    com.tencent.mm.wallet_core.ui.f.a(this.activity, paramBundle, false, 2);
+    f.a(this.activity, paramBundle, true, 2);
     this.webViewFragment = paramMainFragment;
     this.webviewCount += 1;
     AppMethodBeat.o(18791);
@@ -352,7 +366,7 @@ public class FrLifeController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.FrLifeController
  * JD-Core Version:    0.7.0.1
  */

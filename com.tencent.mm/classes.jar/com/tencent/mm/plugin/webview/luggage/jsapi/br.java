@@ -1,59 +1,80 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
-import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
-import com.tencent.mm.game.report.api.GameWebPerformanceInfo;
-import com.tencent.mm.plugin.webview.e.c;
-import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.u;
-import com.tencent.mm.sdk.platformtools.bu;
-import org.json.JSONException;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
+import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
+import com.tencent.mm.plugin.webview.luggage.ipc.JsApiMMTask;
+import com.tencent.mm.plugin.webview.luggage.ipc.d;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMActivity;
 import org.json.JSONObject;
 
-public abstract class br<T extends g>
-  extends bq<T>
+public abstract class br<T extends com.tencent.luggage.d.a>
+  extends com.tencent.luggage.d.b<T>
 {
-  public final void a(b<T>.a paramb)
+  public abstract void a(Context paramContext, String paramString, a parama);
+  
+  public void a(final com.tencent.luggage.d.b<T>.a paramb)
   {
-    JSONObject localJSONObject = paramb.chh.cgn;
-    String str = ((g)paramb.chg).getUrl();
-    Object localObject1 = ((g)paramb.chg).eSU();
-    if (localObject1 != null) {}
-    label160:
-    Object localObject2;
-    for (localObject1 = ((c)localObject1).aJe(str);; localObject2 = null)
+    Object localObject;
+    if (dTs() == 1)
     {
-      if (bu.isNullOrNil((String)localObject1)) {
-        localObject1 = str;
-      }
-      for (;;)
-      {
-        GameWebPerformanceInfo localGameWebPerformanceInfo = GameWebPerformanceInfo.wP(((g)paramb.chg).bRn());
-        if (localGameWebPerformanceInfo != null) {
-          localGameWebPerformanceInfo.guM = 1;
-        }
-        try
-        {
-          localJSONObject.put("currentUrl", str);
-          localJSONObject.put("shareUrl", localObject1);
-          if (((g)paramb.chg).EgL != null) {
-            localJSONObject.put("preVerifyAppId", ((g)paramb.chg).EgL.getAppId());
-          }
-          if (getClass().getName().equals(ba.class.getName()))
-          {
-            localJSONObject.put("sendAppMessageScene", ba.eTA());
-            ba.eTB();
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          break label160;
-        }
-        super.a(paramb);
-        return;
-      }
+      localObject = new JsApiMMTask();
+      ((JsApiMMTask)localObject).IVw = paramb;
+      ((JsApiMMTask)localObject).IVx = getClass().getName();
+      ((JsApiMMTask)localObject).lEA = paramb.ctb.csi.toString();
+      ((JsApiMMTask)localObject).bDJ();
+      AppBrandMainProcessService.a((MainProcessTask)localObject);
+      return;
     }
+    if (dTs() == 2)
+    {
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("jsapi_name", getClass().getName());
+      ((Bundle)localObject).putString("data", paramb.ctb.csi.toString());
+      com.tencent.mm.plugin.webview.luggage.ipc.b.a((MMActivity)((com.tencent.luggage.d.a)paramb.cta).getContext(), (Bundle)localObject, d.class, new com.tencent.mm.plugin.webview.luggage.ipc.a()
+      {
+        public final void v(Bundle paramAnonymousBundle)
+        {
+          AppMethodBeat.i(78641);
+          String str = paramAnonymousBundle.getString("err_msg");
+          paramAnonymousBundle = paramAnonymousBundle.getString("data");
+          if (!Util.isNullOrNil(str))
+          {
+            paramb.c(str, null);
+            AppMethodBeat.o(78641);
+            return;
+          }
+          try
+          {
+            paramAnonymousBundle = new JSONObject(paramAnonymousBundle);
+            paramb.c("", paramAnonymousBundle);
+            AppMethodBeat.o(78641);
+            return;
+          }
+          catch (Exception paramAnonymousBundle)
+          {
+            paramb.c("", null);
+            AppMethodBeat.o(78641);
+          }
+        }
+      });
+      return;
+    }
+    b(paramb);
+  }
+  
+  public abstract void b(com.tencent.luggage.d.b<T>.a paramb);
+  
+  public abstract int dTs();
+  
+  public static abstract class a
+  {
+    public abstract void i(String paramString, JSONObject paramJSONObject);
   }
 }
 

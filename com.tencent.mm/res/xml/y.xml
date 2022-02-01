@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.profile.ui.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/u0" />
-    <PreferenceSmallCategory />
-    <Preference android:key="contact_info_plugin_view" android:layout="@layout/aop" android:title="@string/b6c" />
-    <Preference android:key="contact_info_plugin_outsize" android:layout="@layout/aop" android:title="@string/b64" />
-    <Preference android:key="contact_info_plugin_black" android:layout="@layout/aop" android:title="@string/b63" />
-    <PreferenceSmallCategory />
-    <Preference android:key="contact_info_plugin_install" android:layout="@layout/ag2" android:title="@string/f9r" />
-    <Preference android:key="contact_info_plugin_uninstall" android:layout="@layout/ajc" android:title="@string/f9x" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bi_" />
+    <PreferenceSmallCategory android:key="contact_info_facebookapp_cat" />
+    <Preference android:key="contact_info_facebookapp_listfriend" android:layout="@layout/b8j" android:title="@string/bav" />
+    <Preference android:key="contact_info_facebookapp_account" android:layout="@layout/b8j" android:title="@string/bas" />
+    <Preference android:key="contact_info_facebookapp_addr" android:layout="@layout/b8j" android:title="@string/dxo" />
+    <PreferenceSmallCategory android:key="contact_info_facebookapp_cat2" />
+    <Preference android:key="contact_info_facebookapp_install" android:layout="@layout/aw2" android:title="@string/gsq" />
+    <Preference android:key="contact_info_facebookapp_uninstall" android:layout="@layout/b2o" android:title="@string/gsv" />
     <PreferenceCategory />
 </PreferenceScreen>

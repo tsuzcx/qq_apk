@@ -3,9 +3,9 @@ package com.tencent.mm.plugin.appbrand.ui;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class ShortCutPermissionDetailUI
   extends WebViewUI
@@ -32,13 +32,13 @@ public class ShortCutPermissionDetailUI
   {
     AppMethodBeat.i(21151);
     super.onStop();
-    ae.i("MicroMsg.ShortCutPermissionDetailUI", "onStop");
+    Log.i("MicroMsg.ShortCutPermissionDetailUI", "onStop");
     Intent localIntent = getIntent();
     if (localIntent != null)
     {
       String str = localIntent.getStringExtra("extra_app_id");
       int i = localIntent.getIntExtra("extra_permission_and_jump_status", 0);
-      g.yxI.f(15786, new Object[] { Long.valueOf(System.currentTimeMillis() - this.mStartTime), Integer.valueOf(i), Integer.valueOf(0), str });
+      h.CyF.a(15786, new Object[] { Long.valueOf(System.currentTimeMillis() - this.mStartTime), Integer.valueOf(i), Integer.valueOf(0), str });
     }
     this.mStartTime = 0L;
     AppMethodBeat.o(21151);

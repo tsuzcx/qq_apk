@@ -2,8 +2,8 @@ package com.tencent.pb.common.b;
 
 import android.text.TextUtils;
 import android.widget.Toast;
-import com.tencent.pb.common.b.a.a.a.v;
 import com.tencent.pb.common.b.a.a.a.w;
+import com.tencent.pb.common.b.a.a.a.x;
 import com.tencent.pb.common.c.b;
 import com.tencent.wecall.talkroom.model.h;
 import java.util.Iterator;
@@ -11,27 +11,27 @@ import java.util.LinkedList;
 
 public class f
 {
-  private static f McD = null;
-  private int McE = 0;
-  private LinkedList<a> McF = null;
-  public com.tencent.pb.talkroom.sdk.e McG = null;
-  private boolean McH = false;
-  private boolean McI = true;
+  private static f RCS = null;
+  private int RCT = 0;
+  private LinkedList<a> RCU = null;
+  public com.tencent.pb.talkroom.sdk.e RCV = null;
+  private boolean RCW = false;
+  private boolean RCX = true;
   
   private int a(a arg1, c paramc, String paramString, int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
     Object localObject = null;
-    int i = fXt();
+    int i = hiY();
     for (;;)
     {
       try
       {
         if ((paramArrayOfByte.length >= 200) && (paramArrayOfByte != null) && (paramArrayOfByte.length >= paramArrayOfByte.length)) {}
-        localv = new a.v();
-        localv.EN = paramInt1;
-        localv.Men = i;
-        localv.userName = com.tencent.pb.a.a.a.fXK();
-        localv.Mde = paramInt2;
+        localw = new a.w();
+        localw.EX = paramInt1;
+        localw.REE = i;
+        localw.userName = com.tencent.pb.a.a.a.hjq();
+        localw.RDt = paramInt2;
         if (paramArrayOfByte != null) {
           continue;
         }
@@ -40,7 +40,7 @@ public class f
       }
       catch (Exception paramArrayOfByte)
       {
-        a.v localv;
+        a.w localw;
         b.w("NetError", new Object[] { "newTaskHelper addTask body null" });
         paramArrayOfByte = null;
         continue;
@@ -51,33 +51,33 @@ public class f
         return -1;
         localObject = new a((byte)0);
         ((a)localObject).mTaskId = i;
-        ((a)localObject).McK = ???;
-        ((a)localObject).McL = paramc;
-        ((a)localObject).McJ = paramString;
+        ((a)localObject).RCZ = ???;
+        ((a)localObject).RDa = paramc;
+        ((a)localObject).RCY = paramString;
       }
       if (paramArrayOfByte != null) {
         continue;
       }
       b.w("NETCMD", new Object[] { "cmd:" + paramInt1 + "|body is null" });
       return -1;
-      localObject = new a.w();
-      ((a.w)localObject).Mep = localv;
-      ((a.w)localObject).body = paramArrayOfByte;
-      paramArrayOfByte = com.google.b.a.e.b((com.google.b.a.e)localObject);
+      localObject = new a.x();
+      ((a.x)localObject).REH = localw;
+      ((a.x)localObject).body = paramArrayOfByte;
+      paramArrayOfByte = com.google.a.a.e.b((com.google.a.a.e)localObject);
     }
     for (;;)
     {
-      synchronized (this.McF)
+      synchronized (this.RCU)
       {
-        this.McF.add(localObject);
+        this.RCU.add(localObject);
         paramInt2 = 1933;
         switch (paramInt1)
         {
         default: 
           paramInt1 = paramInt2;
-          b.d("NETCMD", new Object[] { "CLTSEND|", Integer.valueOf(i), Integer.valueOf(paramInt1), paramString, com.tencent.pb.a.a.a.fXK() });
-          if (this.McG != null) {
-            this.McG.d(i, paramInt1, paramArrayOfByte);
+          b.d("NETCMD", new Object[] { "CLTSEND|", Integer.valueOf(i), Integer.valueOf(paramInt1), paramString, com.tencent.pb.a.a.a.hjq() });
+          if (this.RCV != null) {
+            this.RCV.d(i, paramInt1, paramArrayOfByte);
           }
           return i;
         }
@@ -106,11 +106,11 @@ public class f
     }
   }
   
-  private static a.w cM(byte[] paramArrayOfByte)
+  private static a.x cP(byte[] paramArrayOfByte)
   {
     try
     {
-      paramArrayOfByte = (a.w)com.google.b.a.e.a(new a.w(), paramArrayOfByte, paramArrayOfByte.length);
+      paramArrayOfByte = (a.x)com.google.a.a.e.a(new a.x(), paramArrayOfByte, paramArrayOfByte.length);
       return paramArrayOfByte;
     }
     catch (Exception paramArrayOfByte)
@@ -120,56 +120,56 @@ public class f
     return null;
   }
   
-  public static int cN(byte[] paramArrayOfByte)
+  public static int cQ(byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte == null)
     {
       b.w("NETCMD", new Object[] { "CLTNOT onNotify1 data == null ", Integer.valueOf(0) });
-      h.ajb(-1601);
-      if ((!TextUtils.isEmpty(com.tencent.wecall.talkroom.model.a.gdH().uwq)) || (!TextUtils.isEmpty(com.tencent.wecall.talkroom.model.a.gdH().MIM))) {
-        com.tencent.wecall.talkroom.model.a.gdH().MJd.af(new String[] { "notify", "datanull" });
+      h.asK(-1601);
+      if ((!TextUtils.isEmpty(com.tencent.wecall.talkroom.model.a.hqJ().xOr)) || (!TextUtils.isEmpty(com.tencent.wecall.talkroom.model.a.hqJ().SuH))) {
+        com.tencent.wecall.talkroom.model.a.hqJ().SuY.ag(new String[] { "notify", "datanull" });
       }
       for (;;)
       {
         return -1;
-        h.a(com.tencent.wecall.talkroom.model.a.gdH().vdk, com.tencent.wecall.talkroom.model.a.gdH().CCU, new String[] { "notify", "datanull" });
+        h.a(com.tencent.wecall.talkroom.model.a.hqJ().yvK, com.tencent.wecall.talkroom.model.a.hqJ().HgX, new String[] { "notify", "datanull" });
       }
     }
     b.d("NETCMD", new Object[] { "CLTNOT onNotify data len=", Integer.valueOf(paramArrayOfByte.length) });
-    return com.tencent.wecall.talkroom.model.a.gdH().cX(paramArrayOfByte);
+    return com.tencent.wecall.talkroom.model.a.hqJ().dc(paramArrayOfByte);
   }
   
-  private int fXt()
+  private int hiY()
   {
-    synchronized (this.McF)
+    synchronized (this.RCU)
     {
-      this.McE += 1;
-      int i = this.McE;
+      this.RCT += 1;
+      int i = this.RCT;
       return i;
     }
   }
   
-  public static f fXu()
+  public static f hiZ()
   {
-    if (McD == null) {}
+    if (RCS == null) {}
     try
     {
-      if (McD == null) {
-        McD = new f();
+      if (RCS == null) {
+        RCS = new f();
       }
-      return McD;
+      return RCS;
     }
     finally {}
   }
   
   final int a(a parama, c paramc, int paramInt1, String paramString, byte[] paramArrayOfByte, int paramInt2)
   {
-    if (!this.McI)
+    if (!this.RCX)
     {
       b.w("NETCMD", new Object[] { "doSendTask mIsInitSucc is false" });
       return -1;
     }
-    if (this.McH == true)
+    if (this.RCW == true)
     {
       b.w("NETCMD", new Object[] { "doSendTask fail: isRefreshing, cmd=" + paramInt1 + ", cmdTag=" + paramString });
       return -1;
@@ -186,11 +186,11 @@ public class f
     return -1;
   }
   
-  public final int a(a parama, String paramString, com.google.b.a.e parame)
+  public final int a(a parama, String paramString, com.google.a.a.e parame)
   {
     try
     {
-      int i = a(parama, null, 31, paramString, com.google.b.a.e.b(parame), 0);
+      int i = a(parama, null, 31, paramString, com.google.a.a.e.b(parame), 0);
       return i;
     }
     catch (Exception parama)
@@ -205,29 +205,29 @@ public class f
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 136	com/tencent/pb/common/b/f$a:McL	Lcom/tencent/pb/common/b/c;
+    //   1: getfield 136	com/tencent/pb/common/b/f$a:RDa	Lcom/tencent/pb/common/b/c;
     //   4: ifnull +14 -> 18
     //   7: aload_1
-    //   8: getfield 136	com/tencent/pb/common/b/f$a:McL	Lcom/tencent/pb/common/b/c;
+    //   8: getfield 136	com/tencent/pb/common/b/f$a:RDa	Lcom/tencent/pb/common/b/c;
     //   11: iload_2
     //   12: aload_3
     //   13: invokeinterface 256 3 0
     //   18: aload_1
-    //   19: getfield 132	com/tencent/pb/common/b/f$a:McK	Lcom/tencent/pb/common/b/a;
+    //   19: getfield 132	com/tencent/pb/common/b/f$a:RCZ	Lcom/tencent/pb/common/b/a;
     //   22: ifnull +17 -> 39
     //   25: aload_1
-    //   26: getfield 132	com/tencent/pb/common/b/f$a:McK	Lcom/tencent/pb/common/b/a;
+    //   26: getfield 132	com/tencent/pb/common/b/f$a:RCZ	Lcom/tencent/pb/common/b/a;
     //   29: aload_1
-    //   30: getfield 139	com/tencent/pb/common/b/f$a:McJ	Ljava/lang/String;
+    //   30: getfield 139	com/tencent/pb/common/b/f$a:RCY	Ljava/lang/String;
     //   33: iload_2
     //   34: invokeinterface 262 3 0
     //   39: aload_0
-    //   40: getfield 31	com/tencent/pb/common/b/f:McF	Ljava/util/LinkedList;
+    //   40: getfield 31	com/tencent/pb/common/b/f:RCU	Ljava/util/LinkedList;
     //   43: astore_3
     //   44: aload_3
     //   45: monitorenter
     //   46: aload_0
-    //   47: getfield 31	com/tencent/pb/common/b/f:McF	Ljava/util/LinkedList;
+    //   47: getfield 31	com/tencent/pb/common/b/f:RCU	Ljava/util/LinkedList;
     //   50: aload_1
     //   51: invokevirtual 265	java/util/LinkedList:remove	(Ljava/lang/Object;)Z
     //   54: pop
@@ -267,13 +267,13 @@ public class f
     //   85	87	84	finally
   }
   
-  public final a ahg(int paramInt)
+  public final a aqt(int paramInt)
   {
     for (;;)
     {
-      synchronized (this.McF)
+      synchronized (this.RCU)
       {
-        Iterator localIterator = this.McF.iterator();
+        Iterator localIterator = this.RCU.iterator();
         if (localIterator.hasNext())
         {
           a locala = (a)localIterator.next();
@@ -289,32 +289,32 @@ public class f
   
   public final int u(int paramInt, byte[] paramArrayOfByte)
   {
-    a locala = ahg(paramInt);
+    a locala = aqt(paramInt);
     if ((locala == null) && (-1000 != paramInt))
     {
       b.w("NETCMD", new Object[] { "buf2Resp fail: taskId:" + paramInt + " not found" });
-      com.tencent.pb.common.c.e.S(20007, 3, "-1202");
+      com.tencent.pb.common.c.e.U(20007, 3, "-1202");
       return 1;
     }
-    paramArrayOfByte = cM(paramArrayOfByte);
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.Mep == null))
+    paramArrayOfByte = cP(paramArrayOfByte);
+    if ((paramArrayOfByte == null) || (paramArrayOfByte.REH == null))
     {
       if (paramArrayOfByte == null) {}
-      for (paramArrayOfByte = " pack is null ";; paramArrayOfByte = " head is " + paramArrayOfByte.Mep)
+      for (paramArrayOfByte = " pack is null ";; paramArrayOfByte = " head is " + paramArrayOfByte.REH)
       {
         b.w("NETCMD", new Object[] { " pack.head: ", paramArrayOfByte });
         a(locala, -3, null);
         return -1;
       }
     }
-    int i = paramArrayOfByte.Mep.ret;
-    int j = paramArrayOfByte.Mep.Meo;
-    String str = paramArrayOfByte.Mep.userName;
-    if (com.tencent.pb.common.a.a.MbU) {
-      Toast.makeText(com.tencent.pb.common.c.c.CDp, "retCode: " + i + " debugCode: " + j, 0).show();
+    int i = paramArrayOfByte.REH.ret;
+    int j = paramArrayOfByte.REH.REG;
+    String str = paramArrayOfByte.REH.userName;
+    if (com.tencent.pb.common.a.a.RCj) {
+      Toast.makeText(com.tencent.pb.common.c.c.Hhs, "retCode: " + i + " debugCode: " + j, 0).show();
     }
     if ((i != 0) && (locala != null)) {
-      b.w("NETCMD", new Object[] { "CLTRCV", Integer.valueOf(paramInt), locala.McJ, Integer.valueOf(i), str, Integer.valueOf(j) });
+      b.w("NETCMD", new Object[] { "CLTRCV", Integer.valueOf(paramInt), locala.RCY, Integer.valueOf(i), str, Integer.valueOf(j) });
     }
     for (;;)
     {
@@ -325,7 +325,7 @@ public class f
       a(locala, i, paramArrayOfByte);
       return 0;
       if (locala != null) {
-        b.d("NETCMD", new Object[] { "CLTRCV", Integer.valueOf(paramInt), locala.McJ, Integer.valueOf(i), str, Integer.valueOf(j) });
+        b.d("NETCMD", new Object[] { "CLTRCV", Integer.valueOf(paramInt), locala.RCY, Integer.valueOf(i), str, Integer.valueOf(j) });
       }
     }
     a(locala, i, null);
@@ -334,9 +334,9 @@ public class f
   
   public final class a
   {
-    public String McJ;
-    a McK;
-    c McL;
+    public String RCY;
+    a RCZ;
+    c RDa;
     int mTaskId;
     
     private a() {}
@@ -344,7 +344,7 @@ public class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.pb.common.b.f
  * JD-Core Version:    0.7.0.1
  */

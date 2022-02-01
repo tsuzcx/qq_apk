@@ -5,72 +5,72 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class j
 {
-  public String czp = "normal";
-  public boolean czq;
-  public a czr;
+  public String cNw = "normal";
+  public boolean cNx;
+  public a cNy;
   public float fontSize;
+  public Typeface sB = null;
   public float strokeWidth;
-  public Typeface sx = null;
   
   j(String paramString, a parama)
   {
-    this.czp = paramString;
+    this.cNw = paramString;
     this.fontSize = 20.0F;
-    this.czq = false;
+    this.cNx = false;
     this.strokeWidth = 0.0F;
-    this.czr = parama;
+    this.cNy = parama;
   }
   
   public final String toString()
   {
     AppMethodBeat.i(140053);
-    String str = "MBFontStyle[" + this.czp + "][" + this.fontSize + "][" + this.strokeWidth + "]";
+    String str = "MBFontStyle[" + this.cNw + "][" + this.fontSize + "][" + this.strokeWidth + "]";
     AppMethodBeat.o(140053);
     return str;
   }
   
   public static enum a
   {
-    int czw;
+    int cND;
     
     static
     {
       AppMethodBeat.i(140052);
-      czs = new a("NORMAL", 0, 0);
-      czt = new a("BOLD", 1, 1);
-      czu = new a("ITALIC", 2, 2);
-      czv = new a("BOLD_ITALIC", 3, 3);
-      czx = new a[] { czs, czt, czu, czv };
+      cNz = new a("NORMAL", 0, 0);
+      cNA = new a("BOLD", 1, 1);
+      cNB = new a("ITALIC", 2, 2);
+      cNC = new a("BOLD_ITALIC", 3, 3);
+      cNE = new a[] { cNz, cNA, cNB, cNC };
       AppMethodBeat.o(140052);
     }
     
     private a(int paramInt)
     {
-      this.czw = paramInt;
+      this.cND = paramInt;
     }
     
     public static a j(boolean paramBoolean1, boolean paramBoolean2)
     {
       if ((paramBoolean1) && (paramBoolean2)) {
-        return czv;
+        return cNC;
       }
       if (paramBoolean1) {
-        return czu;
+        return cNB;
       }
       if (paramBoolean2) {
-        return czt;
+        return cNA;
       }
-      return czs;
+      return cNz;
     }
     
     public final boolean isBold()
     {
-      return (this == czt) || (this == czv);
+      return (this == cNA) || (this == cNC);
     }
     
     public final boolean isItalic()
     {
-      return (this == czu) || (this == czv);
+      return (this == cNB) || (this == cNC);
     }
   }
 }

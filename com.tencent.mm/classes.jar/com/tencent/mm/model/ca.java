@@ -1,76 +1,131 @@
 package com.tencent.mm.model;
 
+import android.database.Cursor;
+import android.database.MergeCursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.storage.bv;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public final class ca
-  extends com.tencent.mm.bw.a
 {
-  public LinkedList<bz> hKS;
+  private ISQLiteDatabase db;
+  private bv iFD;
   
-  public ca()
+  public ca(ISQLiteDatabase paramISQLiteDatabase, bv parambv)
   {
-    AppMethodBeat.i(143731);
-    this.hKS = new LinkedList();
-    AppMethodBeat.o(143731);
+    this.db = paramISQLiteDatabase;
+    this.iFD = parambv;
   }
   
-  public final int op(int paramInt, Object... paramVarArgs)
+  private static String a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
   {
-    AppMethodBeat.i(143732);
-    if (paramInt == 0)
+    AppMethodBeat.i(20390);
+    StringBuffer localStringBuffer = new StringBuffer();
+    localStringBuffer.append(" and (username in (");
+    localStringBuffer.append("select chatroomname from chatroom where ");
+    if ((paramArrayList2 != null) && (paramArrayList2.size() != 0))
     {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.hKS);
-      AppMethodBeat.o(143732);
-      return 0;
+      paramArrayList2 = paramArrayList2.iterator();
+      while (paramArrayList2.hasNext())
+      {
+        String str = (String)paramArrayList2.next();
+        localStringBuffer.append("chatroomname != '" + str + "' and ");
+      }
     }
-    if (paramInt == 1)
+    localStringBuffer.append("(memberlist like '%" + paramString + "%'");
+    paramString = paramArrayList1.iterator();
+    while (paramString.hasNext())
     {
-      paramInt = f.a.a.a.c(1, 8, this.hKS);
-      AppMethodBeat.o(143732);
-      return paramInt + 0;
+      paramArrayList1 = (String)paramString.next();
+      localStringBuffer.append(" or memberlist like '%" + paramArrayList1 + "%'");
     }
-    if (paramInt == 2)
+    if ((paramArrayList3 != null) && (paramArrayList3.size() != 0))
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.hKS.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+      paramString = paramArrayList3.iterator();
+      while (paramString.hasNext())
+      {
+        paramArrayList1 = (String)paramString.next();
+        localStringBuffer.append(" or chatroomname = '" + paramArrayList1 + "'");
+      }
+    }
+    localStringBuffer.append(")))");
+    paramString = localStringBuffer.toString();
+    AppMethodBeat.o(20390);
+    return paramString;
+  }
+  
+  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
+  {
+    AppMethodBeat.i(20386);
+    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
+    AppMethodBeat.o(20386);
+    return paramString1;
+  }
+  
+  public final Cursor a(String paramString1, String paramString2, List<String> paramList, boolean paramBoolean)
+  {
+    AppMethodBeat.i(20385);
+    paramString1 = a(paramString1, paramString2, paramList, paramBoolean, 1, null);
+    AppMethodBeat.o(20385);
+    return paramString1;
+  }
+  
+  public final Cursor a(String paramString1, String paramString2, List<String> paramList1, boolean paramBoolean, int paramInt, List<String> paramList2)
+  {
+    AppMethodBeat.i(20388);
+    Object localObject = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact ";
+    if (paramInt == 2) {
+      localObject = "select 2, *,rowid from rcontact ";
+    }
+    paramString2 = (String)localObject + this.iFD.f(paramString2, null, paramList1) + this.iFD.bjR(paramString1) + this.iFD.aZD();
+    Log.v("Micro.SimpleSearchConversationModel", paramString2);
+    paramString2 = this.db.rawQuery(paramString2, null);
+    ArrayList localArrayList;
+    if (paramBoolean)
+    {
+      localObject = new ArrayList();
+      localArrayList = new ArrayList();
+      while (paramString2.moveToNext())
+      {
+        String str = paramString2.getString(paramString2.getColumnIndex("username"));
+        if (!ab.Eq(str)) {
+          ((ArrayList)localObject).add(str);
+        } else {
+          localArrayList.add(str);
         }
       }
-      AppMethodBeat.o(143732);
-      return 0;
+      if ((paramList2 != null) && (paramList2.size() != 0)) {
+        ((ArrayList)localObject).addAll(paramList2);
+      }
+      if (((ArrayList)localObject).size() == 0) {}
     }
-    if (paramInt == 3)
+    for (paramString1 = new MergeCursor(new Cursor[] { paramString2, a(paramString1, (ArrayList)localObject, localArrayList, null, paramList1) });; paramString1 = paramString2)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      ca localca = (ca)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
-      {
-      default: 
-        AppMethodBeat.o(143732);
-        return -1;
-      }
-      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new bz();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((bz)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localca.hKS.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(143732);
-      return 0;
+      AppMethodBeat.o(20388);
+      return paramString1;
     }
-    AppMethodBeat.o(143732);
-    return -1;
+  }
+  
+  public final Cursor a(String paramString, ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, List<String> paramList)
+  {
+    AppMethodBeat.i(20389);
+    paramString = "select  username, alias, conRemark, domainList, nickname, pyInitial, quanPin, showHead, type, weiboFlag, weiboNickname, conRemarkPYFull, conRemarkPYShort, lvbuff, verifyFlag, encryptUsername, chatroomFlag, deleteFlag, contactLabelIds, descWordingId, openImAppid, sourceExtInfo, rowid from rcontact " + this.iFD.f("@all.contact.android", "", paramList) + a(paramString, paramArrayList1, paramArrayList2, paramArrayList3) + this.iFD.aZD();
+    Log.v("Micro.SimpleSearchConversationModel", "roomsSql ".concat(String.valueOf(paramString)));
+    paramString = this.db.rawQuery(paramString, null);
+    AppMethodBeat.o(20389);
+    return paramString;
+  }
+  
+  public final Cursor b(String paramString1, String paramString2, List<String> paramList1, List<String> paramList2)
+  {
+    AppMethodBeat.i(20387);
+    paramString1 = a(paramString1, paramString2, paramList1, true, 2, paramList2);
+    AppMethodBeat.o(20387);
+    return paramString1;
   }
 }
 

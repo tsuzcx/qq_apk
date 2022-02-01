@@ -8,7 +8,8 @@ import android.content.SharedPreferences.Editor;
 import android.os.Debug.MemoryInfo;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.xweb.xwalk.a.l;
+import com.tencent.xweb.xwalk.a.g;
+import com.tencent.xweb.xwalk.a.m;
 import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -20,13 +21,13 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class f
 {
-  public static final String[] MMc = { "ppt", "pptx", "xls", "xlsx", "doc", "docx", "pdf" };
-  public static String MMd = "open_x5_from_scene";
+  public static final String[] SyR = { "ppt", "pptx", "xls", "xlsx", "doc", "docx", "pdf" };
+  public static String SyS = "open_x5_from_scene";
   
   public static a a(String paramString, a parama, boolean paramBoolean, Intent paramIntent)
   {
     AppMethodBeat.i(156735);
-    d(paramIntent, 40);
+    h(paramIntent, 40);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       Log.e("XFilesReaderHelper", "getReaderType fileExt is empty");
@@ -35,99 +36,95 @@ public final class f
     }
     String str = paramString.toLowerCase();
     paramString = parama;
-    if (parama == a.MMe)
+    if (parama == a.SyT)
     {
-      if (y.gfo() == null) {
+      if (y.hsF() == null) {
         break label173;
       }
-      paramString = y.gfo().bcC(str);
+      paramString = y.hsF().bsl(str);
       Log.i("XFilesReaderHelper", "getReaderType force type: " + paramString.toString());
-      d(paramIntent, 41);
+      h(paramIntent, 41);
     }
     for (;;)
     {
       parama = paramString;
-      if (paramString == a.MMe)
+      if (paramString == a.SyT)
       {
-        parama = b.bcm(str);
+        parama = b.brT(str);
         Log.i("XFilesReaderHelper", "getReaderType cmd type: " + parama.toString());
-        d(paramIntent, 42);
+        h(paramIntent, 42);
       }
-      if ((parama != a.MMg) && (parama != a.MMe)) {
+      if ((parama != a.SyV) && (parama != a.SyT)) {
         break;
       }
       Log.i("XFilesReaderHelper", "getReaderType use x5");
-      paramString = a.MMg;
+      paramString = a.SyV;
       AppMethodBeat.o(156735);
       return paramString;
       label173:
       Log.e("XFilesReaderHelper", "getReaderType WebDebugCfg is null, skip force");
       paramString = parama;
     }
-    if (y.gfo() != null) {}
-    for (boolean bool = y.gfo().gfq();; bool = false)
+    if (y.hsF() != null) {}
+    for (boolean bool = y.hsF().hsH();; bool = false)
     {
-      if ((!bool) && (e.bco(str)))
+      if ((!bool) && (e.brV(str)))
       {
         Log.i("XFilesReaderHelper", "getReaderType recent crashed, use x5");
-        d(paramIntent, 43);
-        paramString = a.MMg;
+        h(paramIntent, 43);
+        paramString = a.SyV;
         AppMethodBeat.o(156735);
         return paramString;
       }
-      paramString = bcp(str);
-      if (!(paramString instanceof l))
+      paramString = brX(str);
+      if (!(paramString instanceof m))
       {
         Log.i("XFilesReaderHelper", str + " is not supported, use x5");
-        d(paramIntent, 47);
-        paramString = a.MMg;
+        h(paramIntent, 47);
+        paramString = a.SyV;
         AppMethodBeat.o(156735);
         return paramString;
       }
-      paramString = (l)paramString;
-      if (paramString.MUN < 0)
+      paramString = (m)paramString;
+      int i = paramString.hvk();
+      int j = paramString.atb(0);
+      if ((i <= 0) || (i < j))
       {
-        Log.i("XFilesReaderHelper", "getReaderType invalid version, try again");
-        paramString.ghM();
-      }
-      int i = paramString.ajs(0);
-      if ((paramString.MUN < 0) || (paramString.MUN < i))
-      {
-        if (ai.gfR())
+        if (ai.htj())
         {
           Log.i("XFilesReaderHelper", "getReaderType forbid download code, use x5");
-          d(paramIntent, 44);
-          paramString = a.MMg;
+          h(paramIntent, 44);
+          paramString = a.SyV;
           AppMethodBeat.o(156735);
           return paramString;
         }
-        if (!b.geW())
+        if (!b.hsm())
         {
-          Log.i("XFilesReaderHelper", "getReaderType plugin version: " + paramString.MUN + ", require: " + i + ", canDownloadWhenNotInstall: false, use x5");
-          if (paramString.MUN < 0) {}
+          Log.i("XFilesReaderHelper", "getReaderType plugin version: " + i + ", require: " + j + ", canDownloadWhenNotInstall: false, use x5");
+          if (i <= 0) {}
           for (i = 45;; i = 46)
           {
-            d(paramIntent, i);
-            paramString = a.MMg;
+            h(paramIntent, i);
+            paramString = a.SyV;
             AppMethodBeat.o(156735);
             return paramString;
           }
         }
-        Log.i("XFilesReaderHelper", "getReaderType plugin version: " + paramString.MUN + ", require: " + i + ", canDownloadWhenNotInstall: true, use xweb");
-        paramString = a.MMf;
+        Log.i("XFilesReaderHelper", "getReaderType plugin version: " + i + ", require: " + j + ", canDownloadWhenNotInstall: true, use xweb");
+        paramString = a.SyU;
         AppMethodBeat.o(156735);
         return paramString;
       }
-      if (paramString.dw(str, paramBoolean))
+      if (paramString.dS(str, paramBoolean))
       {
         Log.i("XFilesReaderHelper", "getReaderType plugin support, use xweb");
-        paramString = a.MMf;
+        paramString = a.SyU;
         AppMethodBeat.o(156735);
         return paramString;
       }
       Log.i("XFilesReaderHelper", "getReaderType plugin not support, use x5");
-      d(paramIntent, 47);
-      paramString = a.MMg;
+      h(paramIntent, 47);
+      paramString = a.SyV;
       AppMethodBeat.o(156735);
       return paramString;
     }
@@ -160,7 +157,7 @@ public final class f
       paramString2 = paramString2.substring(0, Math.min(paramString2.length(), 1000)).replace(',', ' ').replace(':', ' ');
       paramString1 = paramInt + "," + paramString1 + "," + (String)localObject + "," + paramString2;
       Log.d("XFilesReaderHelper", "reportException kv key:17565, val:".concat(String.valueOf(paramString1)));
-      com.tencent.xweb.util.g.dc(17565, paramString1);
+      com.tencent.xweb.util.h.dz(17565, paramString1);
       AppMethodBeat.o(156744);
       return;
     }
@@ -168,6 +165,83 @@ public final class f
     {
       Log.e("XFilesReaderHelper", "reportException error: ", paramString1);
       AppMethodBeat.o(156744);
+    }
+  }
+  
+  public static void aZ(String paramString, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(156743);
+    if ((paramString == null) || (paramString.isEmpty()))
+    {
+      Log.e("XFilesReaderHelper", "reportXWebErrorCode param is null");
+      AppMethodBeat.o(156743);
+      return;
+    }
+    if (paramInt2 == 0)
+    {
+      AppMethodBeat.o(156743);
+      return;
+    }
+    String str = paramString.toLowerCase();
+    paramString = brY(str);
+    if (paramString == null)
+    {
+      Log.d("XFilesReaderHelper", "reportXWebErrorCode skip ".concat(String.valueOf(str)));
+      AppMethodBeat.o(156743);
+      return;
+    }
+    str = paramInt1 + "," + str + "," + paramInt2 + ",xweb";
+    Log.d("XFilesReaderHelper", "reportXWebErrorCode kv key:17566, val:".concat(String.valueOf(str)));
+    com.tencent.xweb.util.h.dz(17566, str);
+    if (paramString.SyX) {}
+    for (paramInt1 = 13;; paramInt1 = 12)
+    {
+      Log.d("XFilesReaderHelper", "reportXWebErrorCode first idkey id:" + paramString.syl + ", key:" + paramInt1);
+      com.tencent.xweb.util.h.s(paramString.syl, paramInt1, 1L);
+      switch (paramInt2)
+      {
+      default: 
+        Log.e("XFilesReaderHelper", "reportXWebErrorCode idkey unknown ret: ".concat(String.valueOf(paramInt2)));
+        AppMethodBeat.o(156743);
+        return;
+      }
+    }
+    paramInt1 = 151;
+    for (;;)
+    {
+      Log.d("XFilesReaderHelper", "reportXWebErrorCode second idkey id:" + paramString.syl + ", key:" + paramInt1);
+      com.tencent.xweb.util.h.s(paramString.syl, paramInt1, 1L);
+      AppMethodBeat.o(156743);
+      return;
+      paramInt1 = 152;
+      continue;
+      paramInt1 = 153;
+      continue;
+      paramInt1 = 154;
+      continue;
+      paramInt1 = 155;
+      continue;
+      paramInt1 = 156;
+      continue;
+      paramInt1 = 157;
+      continue;
+      paramInt1 = 158;
+      continue;
+      paramInt1 = 159;
+      continue;
+      paramInt1 = 160;
+      continue;
+      paramInt1 = 161;
+      continue;
+      paramInt1 = 162;
+      continue;
+      paramInt1 = 163;
+      continue;
+      paramInt1 = 164;
+      continue;
+      paramInt1 = 165;
+      continue;
+      paramInt1 = 166;
     }
   }
   
@@ -181,7 +255,7 @@ public final class f
       return;
     }
     paramString = paramString.toLowerCase();
-    b localb = bcq(paramString);
+    b localb = brY(paramString);
     if (localb == null)
     {
       Log.d("XFilesReaderHelper", "reportX5ErrorCode skip ".concat(String.valueOf(paramString)));
@@ -194,20 +268,20 @@ public final class f
       {
         paramString = "-1," + paramString + "," + paramInt1 + ",x5init";
         Log.d("XFilesReaderHelper", "reportX5ErrorCode kv key:17566, val:".concat(String.valueOf(paramString)));
-        com.tencent.xweb.util.g.dc(17566, paramString);
+        com.tencent.xweb.util.h.dz(17566, paramString);
       }
     }
     else if ((paramBoolean) || (paramInt1 == -102))
     {
-      if (!localb.MMi) {
+      if (!localb.SyX) {
         break label310;
       }
       paramInt1 = 15;
       label154:
-      Log.d("XFilesReaderHelper", "reportX5ErrorCode idkey id:" + localb.qYb + ", key:" + paramInt1);
-      com.tencent.xweb.util.g.t(localb.qYb, paramInt1, 1L);
+      Log.d("XFilesReaderHelper", "reportX5ErrorCode idkey id:" + localb.syl + ", key:" + paramInt1);
+      com.tencent.xweb.util.h.s(localb.syl, paramInt1, 1L);
       if (paramInt2 == 49) {
-        if (!localb.MMi) {
+        if (!localb.SyX) {
           break label316;
         }
       }
@@ -216,8 +290,8 @@ public final class f
     label316:
     for (paramInt1 = 39;; paramInt1 = 38)
     {
-      Log.d("XFilesReaderHelper", "reportX5ErrorCode XWeb and X5 All failed id:" + localb.qYb + ", key:" + paramInt1);
-      com.tencent.xweb.util.g.t(localb.qYb, paramInt1, 1L);
+      Log.d("XFilesReaderHelper", "reportX5ErrorCode XWeb and X5 All failed id:" + localb.syl + ", key:" + paramInt1);
+      com.tencent.xweb.util.h.s(localb.syl, paramInt1, 1L);
       AppMethodBeat.o(156742);
       return;
       paramString = "-1," + paramString + "," + paramInt1 + ",x5";
@@ -227,7 +301,35 @@ public final class f
     }
   }
   
-  public static com.tencent.xweb.xwalk.a.f bcp(String paramString)
+  private static boolean brW(String paramString)
+  {
+    AppMethodBeat.i(219002);
+    c localc1 = c.SyY;
+    if (y.hsF() != null)
+    {
+      localc1 = y.hsF().bsm(paramString);
+      Log.i("XFilesReaderHelper", "getUseOfficeReader force = " + localc1.toString());
+    }
+    for (;;)
+    {
+      c localc2 = localc1;
+      if (localc1 == c.SyY)
+      {
+        localc2 = b.brR(paramString);
+        Log.i("XFilesReaderHelper", "getUseOfficeReader cmd = " + localc2.toString());
+      }
+      if (localc2 != c.SyZ) {
+        break;
+      }
+      AppMethodBeat.o(219002);
+      return true;
+      Log.e("XFilesReaderHelper", "getUseOfficeReader WebDebugCfg is null, skip force");
+    }
+    AppMethodBeat.o(219002);
+    return false;
+  }
+  
+  public static g brX(String paramString)
   {
     AppMethodBeat.i(156736);
     if (paramString == null)
@@ -237,25 +339,43 @@ public final class f
     }
     if ((paramString.equalsIgnoreCase("ppt")) || (paramString.equalsIgnoreCase("pptx")))
     {
-      paramString = com.tencent.xweb.xwalk.a.g.bcp("XFilesPPTReader");
+      if (brW(paramString))
+      {
+        paramString = com.tencent.xweb.xwalk.a.h.brX("XFilesOfficeReader");
+        AppMethodBeat.o(156736);
+        return paramString;
+      }
+      paramString = com.tencent.xweb.xwalk.a.h.brX("XFilesPPTReader");
       AppMethodBeat.o(156736);
       return paramString;
     }
     if (paramString.equalsIgnoreCase("pdf"))
     {
-      paramString = com.tencent.xweb.xwalk.a.g.bcp("XFilesPDFReader");
+      paramString = com.tencent.xweb.xwalk.a.h.brX("XFilesPDFReader");
       AppMethodBeat.o(156736);
       return paramString;
     }
     if ((paramString.equalsIgnoreCase("doc")) || (paramString.equalsIgnoreCase("docx")))
     {
-      paramString = com.tencent.xweb.xwalk.a.g.bcp("XFilesWordReader");
+      if (brW(paramString))
+      {
+        paramString = com.tencent.xweb.xwalk.a.h.brX("XFilesOfficeReader");
+        AppMethodBeat.o(156736);
+        return paramString;
+      }
+      paramString = com.tencent.xweb.xwalk.a.h.brX("XFilesWordReader");
       AppMethodBeat.o(156736);
       return paramString;
     }
     if ((paramString.equalsIgnoreCase("xls")) || (paramString.equalsIgnoreCase("xlsx")))
     {
-      paramString = com.tencent.xweb.xwalk.a.g.bcp("XFilesExcelReader");
+      if (brW(paramString))
+      {
+        paramString = com.tencent.xweb.xwalk.a.h.brX("XFilesOfficeReader");
+        AppMethodBeat.o(156736);
+        return paramString;
+      }
+      paramString = com.tencent.xweb.xwalk.a.h.brX("XFilesExcelReader");
       AppMethodBeat.o(156736);
       return paramString;
     }
@@ -263,7 +383,7 @@ public final class f
     return null;
   }
   
-  private static b bcq(String paramString)
+  private static b brY(String paramString)
   {
     AppMethodBeat.i(156738);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -318,135 +438,58 @@ public final class f
     return null;
   }
   
-  public static void bcr(String paramString)
+  public static void brZ(String paramString)
   {
-    AppMethodBeat.i(217364);
-    hr(paramString, 74);
-    AppMethodBeat.o(217364);
+    AppMethodBeat.i(219004);
+    hN(paramString, 74);
+    AppMethodBeat.o(219004);
   }
   
-  public static void bcs(String paramString)
+  public static void bsa(String paramString)
   {
-    AppMethodBeat.i(217365);
-    hr(paramString, 75);
-    AppMethodBeat.o(217365);
+    AppMethodBeat.i(219005);
+    hN(paramString, 75);
+    AppMethodBeat.o(219005);
   }
   
-  public static void bct(String paramString)
+  public static void bsb(String paramString)
   {
-    AppMethodBeat.i(217366);
-    hr(paramString, 76);
-    AppMethodBeat.o(217366);
+    AppMethodBeat.i(219006);
+    hN(paramString, 76);
+    AppMethodBeat.o(219006);
   }
   
-  public static void bcu(String paramString)
+  public static void bsc(String paramString)
   {
-    AppMethodBeat.i(217367);
-    hr(paramString, 77);
-    AppMethodBeat.o(217367);
+    AppMethodBeat.i(219007);
+    hN(paramString, 77);
+    AppMethodBeat.o(219007);
   }
   
-  public static void bcv(String paramString)
+  public static void bsd(String paramString)
   {
-    AppMethodBeat.i(217368);
-    hr(paramString, 78);
-    AppMethodBeat.o(217368);
+    AppMethodBeat.i(219008);
+    hN(paramString, 78);
+    AppMethodBeat.o(219008);
   }
   
-  public static void bcw(String paramString)
+  public static void bse(String paramString)
   {
-    AppMethodBeat.i(217369);
-    hr(paramString, 80);
-    AppMethodBeat.o(217369);
+    AppMethodBeat.i(219009);
+    hN(paramString, 80);
+    AppMethodBeat.o(219009);
   }
   
-  public static void be(String paramString, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(156743);
-    if ((paramString == null) || (paramString.isEmpty()))
-    {
-      Log.e("XFilesReaderHelper", "reportXWebErrorCode param is null");
-      AppMethodBeat.o(156743);
-      return;
-    }
-    if (paramInt2 == 0)
-    {
-      AppMethodBeat.o(156743);
-      return;
-    }
-    String str = paramString.toLowerCase();
-    paramString = bcq(str);
-    if (paramString == null)
-    {
-      Log.d("XFilesReaderHelper", "reportXWebErrorCode skip ".concat(String.valueOf(str)));
-      AppMethodBeat.o(156743);
-      return;
-    }
-    str = paramInt1 + "," + str + "," + paramInt2 + ",xweb";
-    Log.d("XFilesReaderHelper", "reportXWebErrorCode kv key:17566, val:".concat(String.valueOf(str)));
-    com.tencent.xweb.util.g.dc(17566, str);
-    if (paramString.MMi) {}
-    for (paramInt1 = 13;; paramInt1 = 12)
-    {
-      Log.d("XFilesReaderHelper", "reportXWebErrorCode first idkey id:" + paramString.qYb + ", key:" + paramInt1);
-      com.tencent.xweb.util.g.t(paramString.qYb, paramInt1, 1L);
-      switch (paramInt2)
-      {
-      default: 
-        Log.e("XFilesReaderHelper", "reportXWebErrorCode idkey unknown ret: ".concat(String.valueOf(paramInt2)));
-        AppMethodBeat.o(156743);
-        return;
-      }
-    }
-    paramInt1 = 151;
-    for (;;)
-    {
-      Log.d("XFilesReaderHelper", "reportXWebErrorCode second idkey id:" + paramString.qYb + ", key:" + paramInt1);
-      com.tencent.xweb.util.g.t(paramString.qYb, paramInt1, 1L);
-      AppMethodBeat.o(156743);
-      return;
-      paramInt1 = 152;
-      continue;
-      paramInt1 = 153;
-      continue;
-      paramInt1 = 154;
-      continue;
-      paramInt1 = 155;
-      continue;
-      paramInt1 = 156;
-      continue;
-      paramInt1 = 157;
-      continue;
-      paramInt1 = 158;
-      continue;
-      paramInt1 = 159;
-      continue;
-      paramInt1 = 160;
-      continue;
-      paramInt1 = 161;
-      continue;
-      paramInt1 = 162;
-      continue;
-      paramInt1 = 163;
-      continue;
-      paramInt1 = 164;
-      continue;
-      paramInt1 = 165;
-      continue;
-      paramInt1 = 166;
-    }
-  }
-  
-  private static void d(Intent paramIntent, int paramInt)
+  private static void h(Intent paramIntent, int paramInt)
   {
     AppMethodBeat.i(156737);
     if (paramIntent != null) {
-      paramIntent.putExtra(MMd, paramInt);
+      paramIntent.putExtra(SyS, paramInt);
     }
     AppMethodBeat.o(156737);
   }
   
-  public static void hq(String paramString, int paramInt)
+  public static void hM(String paramString, int paramInt)
   {
     AppMethodBeat.i(156740);
     if ((paramString == null) || (paramString.isEmpty()))
@@ -456,7 +499,7 @@ public final class f
       return;
     }
     String str = paramString.toLowerCase();
-    paramString = bcq(str);
+    paramString = brY(str);
     if (paramString == null)
     {
       Log.d("XFilesReaderHelper", "reportReadByX5Scene idkey skip ".concat(String.valueOf(str)));
@@ -465,65 +508,65 @@ public final class f
     }
     str = str + "," + paramInt;
     Log.d("XFilesReaderHelper", "reportReadByX5Scene kv key:17563, val:".concat(String.valueOf(str)));
-    com.tencent.xweb.util.g.dc(17563, str);
-    Log.d("XFilesReaderHelper", "reportReadByX5Scene idkey id:" + paramString.qYb + ", key:" + paramInt);
-    com.tencent.xweb.util.g.t(paramString.qYb, paramInt, 1L);
+    com.tencent.xweb.util.h.dz(17563, str);
+    Log.d("XFilesReaderHelper", "reportReadByX5Scene idkey id:" + paramString.syl + ", key:" + paramInt);
+    com.tencent.xweb.util.h.s(paramString.syl, paramInt, 1L);
     AppMethodBeat.o(156740);
   }
   
-  private static void hr(String paramString, int paramInt)
+  private static void hN(String paramString, int paramInt)
   {
-    AppMethodBeat.i(217363);
+    AppMethodBeat.i(219003);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       Log.e("XFilesReaderHelper", "reportIDKeyByFileExt param is null");
-      AppMethodBeat.o(217363);
+      AppMethodBeat.o(219003);
       return;
     }
     paramString = paramString.toLowerCase();
-    b localb = bcq(paramString);
+    b localb = brY(paramString);
     if (localb == null)
     {
       Log.d("XFilesReaderHelper", "reportIDKeyByFileExt skip ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(217363);
+      AppMethodBeat.o(219003);
       return;
     }
-    Log.d("XFilesReaderHelper", "reportIDKeyByFileExt id:" + localb.qYb + ", key:" + paramInt);
-    com.tencent.xweb.util.g.t(localb.qYb, paramInt, 1L);
-    AppMethodBeat.o(217363);
+    Log.d("XFilesReaderHelper", "reportIDKeyByFileExt id:" + localb.syl + ", key:" + paramInt);
+    com.tencent.xweb.util.h.s(localb.syl, paramInt, 1L);
+    AppMethodBeat.o(219003);
   }
   
-  public static void hs(String paramString, int paramInt)
+  public static void hO(String paramString, int paramInt)
   {
-    AppMethodBeat.i(217370);
+    AppMethodBeat.i(219010);
     if ((paramString == null) || (paramString.isEmpty()))
     {
       Log.e("XFilesReaderHelper", "reportDownloadErrorCode param is null");
-      AppMethodBeat.o(217370);
+      AppMethodBeat.o(219010);
       return;
     }
     paramString = paramString.toLowerCase();
-    b localb = bcq(paramString);
+    b localb = brY(paramString);
     if (localb == null)
     {
       Log.d("XFilesReaderHelper", "reportDownloadErrorCode skip ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(217370);
+      AppMethodBeat.o(219010);
       return;
     }
     switch (paramInt)
     {
     default: 
       Log.e("XFilesReaderHelper", "reportDownloadErrorCode idkey unknown ret: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(217370);
+      AppMethodBeat.o(219010);
       return;
     case 0: 
       paramInt = 79;
     }
     for (;;)
     {
-      Log.d("XFilesReaderHelper", "reportDownloadErrorCode idkey id:" + localb.qYb + ", key:" + paramInt);
-      com.tencent.xweb.util.g.t(localb.qYb, paramInt, 1L);
-      AppMethodBeat.o(217370);
+      Log.d("XFilesReaderHelper", "reportDownloadErrorCode idkey id:" + localb.syl + ", key:" + paramInt);
+      com.tencent.xweb.util.h.s(localb.syl, paramInt, 1L);
+      AppMethodBeat.o(219010);
       return;
       paramInt = 81;
       continue;
@@ -545,7 +588,7 @@ public final class f
     }
   }
   
-  public static long lC(Context paramContext)
+  public static long lB(Context paramContext)
   {
     AppMethodBeat.i(156745);
     if (paramContext == null)
@@ -572,7 +615,7 @@ public final class f
     return l;
   }
   
-  public static void nd(String paramString1, String paramString2)
+  public static void nX(String paramString1, String paramString2)
   {
     AppMethodBeat.i(156739);
     if ((paramString1 == null) || (paramString1.isEmpty()) || (paramString2 == null) || (paramString2.isEmpty()))
@@ -599,8 +642,8 @@ public final class f
     {
       paramString1 = paramString1 + "," + l1;
       Log.d("XFilesReaderHelper", "reportFileSize kv key:17562, val:".concat(String.valueOf(paramString1)));
-      com.tencent.xweb.util.g.dc(17562, paramString1);
-      paramString1 = bcq(paramString2);
+      com.tencent.xweb.util.h.dz(17562, paramString1);
+      paramString1 = brY(paramString2);
       if (paramString1 != null) {
         break;
       }
@@ -610,36 +653,36 @@ public final class f
     }
     if (l1 <= 10L)
     {
-      if (paramString1.MMi) {}
+      if (paramString1.SyX) {}
       for (i = 24;; i = 20)
       {
-        Log.d("XFilesReaderHelper", "reportFileSize idkey id:" + paramString1.qYb + ", key:" + i);
-        com.tencent.xweb.util.g.t(paramString1.qYb, i, 1L);
+        Log.d("XFilesReaderHelper", "reportFileSize idkey id:" + paramString1.syl + ", key:" + i);
+        com.tencent.xweb.util.h.s(paramString1.syl, i, 1L);
         AppMethodBeat.o(156739);
         return;
       }
     }
     if (l1 <= 20L)
     {
-      if (paramString1.MMi) {}
+      if (paramString1.SyX) {}
       for (i = 25;; i = 21) {
         break;
       }
     }
     if (l1 <= 50L)
     {
-      if (paramString1.MMi) {}
+      if (paramString1.SyX) {}
       for (i = 26;; i = 22) {
         break;
       }
     }
-    if (paramString1.MMi) {}
+    if (paramString1.SyX) {}
     for (int i = 27;; i = 23) {
       break;
     }
   }
   
-  public static void ne(String paramString1, String paramString2)
+  public static void nY(String paramString1, String paramString2)
   {
     int m = 1;
     AppMethodBeat.i(156741);
@@ -650,7 +693,7 @@ public final class f
       return;
     }
     Object localObject2 = paramString1.toLowerCase();
-    Object localObject1 = bcq((String)localObject2);
+    Object localObject1 = brY((String)localObject2);
     if (localObject1 == null)
     {
       Log.d("XFilesReaderHelper", "reportPVUV skip " + (String)localObject2 + ", " + paramString2);
@@ -661,11 +704,11 @@ public final class f
     int j;
     label137:
     int k;
-    if (a.MMf.name().equalsIgnoreCase(paramString2)) {
-      if (((b)localObject1).MMi)
+    if (a.SyU.name().equalsIgnoreCase(paramString2)) {
+      if (((b)localObject1).SyX)
       {
         i = 1;
-        if (!((b)localObject1).MMi) {
+        if (!((b)localObject1).SyX) {
           break label375;
         }
         j = 3;
@@ -687,13 +730,13 @@ public final class f
             break label623;
           }
           k = m;
-          Log.d("XFilesReaderHelper", "reportPV id:" + ((b)localObject1).qYb + ", key:" + j);
-          com.tencent.xweb.util.g.t(((b)localObject1).qYb, j, 1L);
+          Log.d("XFilesReaderHelper", "reportPV id:" + ((b)localObject1).syl + ", key:" + j);
+          com.tencent.xweb.util.h.s(((b)localObject1).syl, j, 1L);
           if (k == 0) {
             continue;
           }
-          Log.d("XFilesReaderHelper", "reportUV id:" + ((b)localObject1).qYb + ", key:" + i);
-          com.tencent.xweb.util.g.t(((b)localObject1).qYb, i, 1L);
+          Log.d("XFilesReaderHelper", "reportUV id:" + ((b)localObject1).syl + ", key:" + i);
+          com.tencent.xweb.util.h.s(((b)localObject1).syl, i, 1L);
           localObject1 = ((SharedPreferences)localObject2).edit();
           if (localObject1 == null) {
             continue;
@@ -707,12 +750,12 @@ public final class f
           label375:
           j = 2;
           break label137;
-          if (a.MMg.name().equalsIgnoreCase(paramString2))
+          if (a.SyV.name().equalsIgnoreCase(paramString2))
           {
-            if (((b)localObject1).MMi)
+            if (((b)localObject1).SyX)
             {
               i = 5;
-              if (((b)localObject1).MMi)
+              if (((b)localObject1).SyX)
               {
                 j = 7;
                 k = i;
@@ -730,10 +773,10 @@ public final class f
           }
           if ("QQBROWSER".equalsIgnoreCase(paramString2))
           {
-            if (((b)localObject1).MMi)
+            if (((b)localObject1).SyX)
             {
               i = 17;
-              if (((b)localObject1).MMi)
+              if (((b)localObject1).SyX)
               {
                 j = 19;
                 k = i;
@@ -751,10 +794,10 @@ public final class f
           }
           if ("THIRDAPP".equalsIgnoreCase(paramString2))
           {
-            if (((b)localObject1).MMi)
+            if (((b)localObject1).SyX)
             {
               i = 9;
-              if (((b)localObject1).MMi)
+              if (((b)localObject1).SyX)
               {
                 j = 11;
                 k = i;
@@ -797,10 +840,10 @@ public final class f
     static
     {
       AppMethodBeat.i(156734);
-      MMe = new a("NONE", 0);
-      MMf = new a("XWEB", 1);
-      MMg = new a("X5", 2);
-      MMh = new a[] { MMe, MMf, MMg };
+      SyT = new a("NONE", 0);
+      SyU = new a("XWEB", 1);
+      SyV = new a("X5", 2);
+      SyW = new a[] { SyT, SyU, SyV };
       AppMethodBeat.o(156734);
     }
     
@@ -809,19 +852,34 @@ public final class f
   
   static final class b
   {
-    boolean MMi;
-    int qYb;
+    boolean SyX;
+    int syl;
     
     public b(int paramInt, boolean paramBoolean)
     {
-      this.qYb = paramInt;
-      this.MMi = paramBoolean;
+      this.syl = paramInt;
+      this.SyX = paramBoolean;
     }
+  }
+  
+  public static enum c
+  {
+    static
+    {
+      AppMethodBeat.i(219001);
+      SyY = new c("none", 0);
+      SyZ = new c("yes", 1);
+      Sza = new c("no", 2);
+      Szb = new c[] { SyY, SyZ, Sza };
+      AppMethodBeat.o(219001);
+    }
+    
+    private c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.f
  * JD-Core Version:    0.7.0.1
  */

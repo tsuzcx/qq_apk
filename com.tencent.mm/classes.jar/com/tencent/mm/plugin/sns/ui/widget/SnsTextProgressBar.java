@@ -13,12 +13,12 @@ import com.tencent.mm.plugin.sns.i.a;
 public class SnsTextProgressBar
   extends ProgressBar
 {
-  private String AVp;
-  private int Hx;
+  private String FfU;
+  private int HH;
+  private int mAk;
   private Context mContext;
   private Paint mPaint;
   private String mText;
-  private int mTextSize;
   
   public SnsTextProgressBar(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -41,7 +41,7 @@ public class SnsTextProgressBar
   private void setText(int paramInt)
   {
     AppMethodBeat.i(100569);
-    this.Hx = paramInt;
+    this.HH = paramInt;
     this.mText = (String.valueOf(paramInt) + "%");
     AppMethodBeat.o(100569);
   }
@@ -68,10 +68,10 @@ public class SnsTextProgressBar
     //   27: iconst_1
     //   28: invokevirtual 105	android/graphics/Paint:setAntiAlias	(Z)V
     //   31: aload_0
-    //   32: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:AVp	Ljava/lang/String;
+    //   32: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:FfU	Ljava/lang/String;
     //   35: ifnull +13 -> 48
     //   38: aload_0
-    //   39: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:AVp	Ljava/lang/String;
+    //   39: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:FfU	Ljava/lang/String;
     //   42: invokevirtual 111	java/lang/String:length	()I
     //   45: ifgt +118 -> 163
     //   48: aload_0
@@ -87,7 +87,7 @@ public class SnsTextProgressBar
     //   71: aload_0
     //   72: getfield 101	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:mPaint	Landroid/graphics/Paint;
     //   75: aload_0
-    //   76: getfield 127	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:mTextSize	I
+    //   76: getfield 127	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:mAk	I
     //   79: i2f
     //   80: invokevirtual 130	android/graphics/Paint:setTextSize	(F)V
     //   83: new 132	android/graphics/Rect
@@ -136,7 +136,7 @@ public class SnsTextProgressBar
     //   161: monitorexit
     //   162: return
     //   163: aload_0
-    //   164: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:AVp	Ljava/lang/String;
+    //   164: getfield 107	com/tencent/mm/plugin/sns/ui/widget/SnsTextProgressBar:FfU	Ljava/lang/String;
     //   167: invokestatic 161	android/graphics/Color:parseColor	(Ljava/lang/String;)I
     //   170: istore 4
     //   172: goto -110 -> 62
@@ -163,7 +163,7 @@ public class SnsTextProgressBar
   
   public void setPaintColor(String paramString)
   {
-    this.AVp = paramString;
+    this.FfU = paramString;
   }
   
   public void setProgress(int paramInt)
@@ -177,13 +177,13 @@ public class SnsTextProgressBar
   public void setTextSize(int paramInt)
   {
     AppMethodBeat.i(100568);
-    this.mTextSize = a.fromDPToPix(this.mContext, paramInt);
+    this.mAk = a.fromDPToPix(this.mContext, paramInt);
     AppMethodBeat.o(100568);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.SnsTextProgressBar
  * JD-Core Version:    0.7.0.1
  */

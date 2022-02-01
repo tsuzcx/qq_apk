@@ -2,69 +2,58 @@ package com.tencent.mm.plugin.wepkg.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
-  private static b EWb;
+  private static b JLU;
   public static final String[] SQL_CREATE;
   private static final Object lock;
-  private com.tencent.mm.sdk.e.e jKa;
+  private ISQLiteDatabase kLX;
   
   static
   {
     AppMethodBeat.i(110561);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.hGW, "WePkgDiffPackage") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.iBg, "WePkgDiffPackage") };
     lock = new Object();
     AppMethodBeat.o(110561);
   }
   
-  private b(com.tencent.mm.sdk.e.e parame)
+  private b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.hGW, "WePkgDiffPackage", a.INDEX_CREATE);
-    this.jKa = parame;
+    super(paramISQLiteDatabase, a.iBg, "WePkgDiffPackage", a.INDEX_CREATE);
+    this.kLX = paramISQLiteDatabase;
   }
   
-  private boolean beO()
+  private boolean bAh()
   {
-    return this.jKa != null;
+    return this.kLX != null;
   }
   
-  public static b fbx()
+  public static b gkD()
   {
     AppMethodBeat.i(110558);
-    if (EWb == null) {}
+    if (JLU == null) {}
     synchronized (lock)
     {
-      if ((EWb == null) || (!EWb.beO())) {
-        EWb = new b(g.ajR().gDX);
+      if ((JLU == null) || (!JLU.bAh())) {
+        JLU = new b(g.aAh().hqK);
       }
-      ??? = EWb;
+      ??? = JLU;
       AppMethodBeat.o(110558);
       return ???;
     }
   }
   
-  public final boolean Dc(String paramString)
-  {
-    AppMethodBeat.i(110560);
-    if ((!beO()) || (bu.isNullOrNil(paramString)))
-    {
-      AppMethodBeat.o(110560);
-      return false;
-    }
-    boolean bool = execSQL("WePkgDiffPackage", String.format("delete from %s where %s=%s", new Object[] { "WePkgDiffPackage", "pkgId", "'" + paramString + "'" }));
-    AppMethodBeat.o(110560);
-    return bool;
-  }
-  
-  public final a aLR(String paramString)
+  public final a bcj(String paramString)
   {
     AppMethodBeat.i(110559);
-    if ((!beO()) || (bu.isNullOrNil(paramString)))
+    if ((!bAh()) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(110559);
       return null;
@@ -87,10 +76,23 @@ public final class b
     AppMethodBeat.o(110559);
     return null;
   }
+  
+  public final boolean gC(String paramString)
+  {
+    AppMethodBeat.i(110560);
+    if ((!bAh()) || (Util.isNullOrNil(paramString)))
+    {
+      AppMethodBeat.o(110560);
+      return false;
+    }
+    boolean bool = execSQL("WePkgDiffPackage", String.format("delete from %s where %s=%s", new Object[] { "WePkgDiffPackage", "pkgId", "'" + paramString + "'" }));
+    AppMethodBeat.o(110560);
+    return bool;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.b.b
  * JD-Core Version:    0.7.0.1
  */

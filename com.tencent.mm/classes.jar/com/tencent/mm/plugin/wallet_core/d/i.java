@@ -3,36 +3,36 @@ package com.tencent.mm.plugin.wallet_core.d;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.ag;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class i
-  extends j<ag>
+  extends MAutoStorage<ag>
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(70623);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ag.info, "WalletPrefInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ag.info, "WalletPrefInfo") };
     AppMethodBeat.o(70623);
   }
   
-  public i(e parame)
+  public i(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, ag.info, "WalletPrefInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, ag.info, "WalletPrefInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final ag aGc(String paramString)
+  public final ag aVD(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(70621);
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
-      Cursor localCursor = this.db.a("select * from WalletPrefInfo where pref_key=?", new String[] { paramString }, 2);
+      Cursor localCursor = this.db.rawQuery("select * from WalletPrefInfo where pref_key=?", new String[] { paramString }, 2);
       if (localCursor == null)
       {
         AppMethodBeat.o(70621);
@@ -52,10 +52,10 @@ public final class i
     return null;
   }
   
-  public final boolean aGd(String paramString)
+  public final boolean aVE(String paramString)
   {
     AppMethodBeat.i(70622);
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
       paramString = "delete from WalletPrefInfo where pref_key='" + paramString + "'";
       boolean bool = this.db.execSQL("WalletPrefInfo", paramString);
@@ -68,7 +68,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.i
  * JD-Core Version:    0.7.0.1
  */

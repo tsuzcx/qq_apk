@@ -1,66 +1,78 @@
 package com.tencent.mm.plugin.multitalk.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitalk.model.o;
-import com.tencent.mm.protocal.protobuf.aas;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.pb.common.b.a.a.a.ap;
+import com.tencent.mm.plugin.multitalk.model.q;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.pb.common.b.a.a.a.as;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroup;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public final class d
 {
-  o wmg = null;
-  MultiTalkGroup wmh = null;
+  q zHj;
+  MultiTalkGroup zHk;
+  Map<String, Long> zHl;
   
-  public d(o paramo)
+  public d(q paramq)
   {
-    this.wmg = paramo;
+    AppMethodBeat.i(239006);
+    this.zHj = null;
+    this.zHk = null;
+    this.zHl = new ConcurrentHashMap();
+    this.zHj = paramq;
+    AppMethodBeat.o(239006);
   }
   
   static MultiTalkGroup a(k paramk)
   {
-    AppMethodBeat.i(190434);
+    AppMethodBeat.i(239007);
     MultiTalkGroup localMultiTalkGroup = new MultiTalkGroup();
-    localMultiTalkGroup.MgG = paramk.wmx;
-    localMultiTalkGroup.wmA = paramk.wmz;
-    localMultiTalkGroup.MgH = paramk.wmC;
-    localMultiTalkGroup.wmz = paramk.wmz;
-    paramk = paramk.wmB;
-    if ((paramk != null) && (paramk.size() > 0))
+    localMultiTalkGroup.RGY = paramk.zHB;
+    localMultiTalkGroup.zHE = paramk.zHD;
+    if (paramk.zHG == null) {}
+    for (Object localObject = "";; localObject = paramk.zHG)
     {
+      localMultiTalkGroup.RGZ = ((String)localObject);
+      localMultiTalkGroup.zHD = paramk.zHD;
+      paramk = paramk.zHF;
+      if ((paramk == null) || (paramk.size() <= 0)) {
+        break;
+      }
       paramk = paramk.iterator();
       while (paramk.hasNext())
       {
-        j localj = (j)paramk.next();
+        localObject = (j)paramk.next();
         MultiTalkGroupMember localMultiTalkGroupMember = new MultiTalkGroupMember();
-        localMultiTalkGroupMember.MgJ = localj.fIQ;
-        localMultiTalkGroupMember.MgK = localj.wmt;
-        localMultiTalkGroupMember.reason = localj.wmu;
+        localMultiTalkGroupMember.RHb = ((j)localObject).goe;
+        localMultiTalkGroupMember.RHc = ((j)localObject).zHx;
+        localMultiTalkGroupMember.bDZ = ((j)localObject).zHy;
         localMultiTalkGroupMember.status = 20;
-        if (localj.mStatus == 1) {
+        if (((j)localObject).mStatus == 1) {
           localMultiTalkGroupMember.status = 10;
         }
-        if ((localj.mStatus == 2) || (localj.mStatus == 3)) {
+        if ((((j)localObject).mStatus == 2) || (((j)localObject).mStatus == 3)) {
           localMultiTalkGroupMember.status = 1;
         }
-        localMultiTalkGroupMember.MfN = ((int)localj.wmv);
-        localMultiTalkGroup.MgI.add(localMultiTalkGroupMember);
+        localMultiTalkGroupMember.RGf = ((int)((j)localObject).zHz);
+        localMultiTalkGroup.RHa.add(localMultiTalkGroupMember);
       }
     }
-    AppMethodBeat.o(190434);
+    AppMethodBeat.o(239007);
     return localMultiTalkGroup;
   }
   
-  public final void a(k paramk, LinkedList<aas> paramLinkedList)
+  public final void a(k paramk, LinkedList<acq> paramLinkedList)
   {
-    AppMethodBeat.i(190439);
-    if (this.wmg != null)
+    AppMethodBeat.i(239012);
+    if (this.zHj != null)
     {
       final ArrayList localArrayList = new ArrayList();
       if ((paramLinkedList != null) && (paramLinkedList.size() > 0))
@@ -68,85 +80,86 @@ public final class d
         paramLinkedList = paramLinkedList.iterator();
         while (paramLinkedList.hasNext())
         {
-          aas localaas = (aas)paramLinkedList.next();
-          String str = paramk.KX(localaas.Gsd);
+          acq localacq = (acq)paramLinkedList.next();
+          String str = paramk.QX(localacq.Lnt);
           if (str == null)
           {
-            ae.i("MicroMsg.Multitalk.ILink2MtCallBack", "onVideoGroupMemberChange: mid:%d NOT exist!!!", new Object[] { Integer.valueOf(localaas.Gsd) });
+            Log.i("MicroMsg.Multitalk.ILink2MtCallBack", "onVideoGroupMemberChange: mid:%d NOT exist!!!", new Object[] { Integer.valueOf(localacq.Lnt) });
           }
           else
           {
-            a.ap localap = new a.ap();
-            localap.pcE = localaas.Gsd;
-            localap.FHN = localaas.Gsd;
-            localap.MeT = 1;
-            if ((localaas.Gse & 0x2) != 0) {
-              localap.MeT = 3;
+            a.as localas = new a.as();
+            localas.qrD = localacq.Lnt;
+            localas.KBb = localacq.Lnt;
+            localas.videoStatus = 1;
+            if ((localacq.Lnu & 0x2) != 0) {
+              localas.videoStatus = 3;
             }
-            localap.duC = str;
-            localap.MeU = 100;
-            if ((localaas.Gse & 0x4) != 0) {
-              if ((localaas.Gse & 0x8) != 0) {
-                localap.MeU = 102;
+            localas.dLN = str;
+            localas.RFm = 100;
+            if ((localacq.Lnu & 0x4) != 0) {
+              if ((localacq.Lnu & 0x8) != 0) {
+                localas.RFm = 102;
               }
             }
             for (;;)
             {
-              localArrayList.add(localap);
+              localArrayList.add(localas);
+              paramk.hf(localacq.Lnt, localas.RFm);
               break;
-              localap.MeU = 101;
+              localas.RFm = 101;
               continue;
-              localap.MeU = 103;
+              localas.RFm = 103;
             }
           }
         }
       }
-      ar.f(new Runnable()
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(190433);
-          if (d.this.wmg != null)
+          AppMethodBeat.i(238997);
+          if (d.this.zHj != null)
           {
-            ae.i("MicroMsg.Multitalk.ILink2MtCallBack", "onVideoGroupMemberChange:%s", new Object[] { localArrayList });
-            d.this.wmg.eE(localArrayList);
+            Log.i("MicroMsg.Multitalk.ILink2MtCallBack", "onVideoGroupMemberChange:%s", new Object[] { localArrayList });
+            d.this.zHj.fz(localArrayList);
           }
-          AppMethodBeat.o(190433);
+          AppMethodBeat.o(238997);
         }
       });
     }
-    AppMethodBeat.o(190439);
+    AppMethodBeat.o(239012);
   }
   
   public final void b(final k paramk)
   {
-    AppMethodBeat.i(190435);
-    ar.f(new Runnable()
+    AppMethodBeat.i(239008);
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(190426);
-        if (d.this.wmg != null)
+        AppMethodBeat.i(238996);
+        if (d.this.zHj != null)
         {
           MultiTalkGroup localMultiTalkGroup = d.a(paramk);
-          d.this.wmg.d(localMultiTalkGroup);
+          d.this.zHj.d(localMultiTalkGroup);
         }
-        AppMethodBeat.o(190426);
+        AppMethodBeat.o(238996);
       }
     });
-    AppMethodBeat.o(190435);
+    AppMethodBeat.o(239008);
   }
   
-  public final void bv(final int paramInt, final String paramString)
+  public final void bH(final int paramInt, final String paramString)
   {
-    AppMethodBeat.i(190436);
-    ar.f(new Runnable()
+    AppMethodBeat.i(239009);
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(190430);
+        AppMethodBeat.i(239001);
         int i;
-        if (d.this.wmg != null)
+        if (d.this.zHj != null)
         {
           int j = paramInt;
           i = j;
@@ -158,8 +171,9 @@ public final class d
         }
         for (;;)
         {
-          d.this.wmg.m(i, paramString);
-          AppMethodBeat.o(190430);
+          Log.i("MicroMsg.Multitalk.ILink2MtCallBack", "onErr errorcode:%d, errType:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+          d.this.zHj.n(i, paramString);
+          AppMethodBeat.o(239001);
           return;
           i = -100;
           continue;
@@ -183,47 +197,47 @@ public final class d
         }
       }
     });
-    AppMethodBeat.o(190436);
+    AppMethodBeat.o(239009);
   }
   
   public final void c(final k paramk)
   {
-    AppMethodBeat.i(190437);
-    ar.f(new Runnable()
+    AppMethodBeat.i(239010);
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(190431);
-        if (d.this.wmg != null)
+        AppMethodBeat.i(239004);
+        if (d.this.zHj != null)
         {
-          ae.i("MicroMsg.Multitalk.ILink2MtCallBack", "onEnterMultiTalk");
+          Log.i("MicroMsg.Multitalk.ILink2MtCallBack", "onEnterMultiTalk");
           MultiTalkGroup localMultiTalkGroup = d.a(paramk);
-          d.this.wmg.e(localMultiTalkGroup);
+          d.this.zHj.e(localMultiTalkGroup);
         }
-        AppMethodBeat.o(190431);
+        AppMethodBeat.o(239004);
       }
     });
-    AppMethodBeat.o(190437);
+    AppMethodBeat.o(239010);
   }
   
   public final void d(final k paramk)
   {
-    AppMethodBeat.i(190438);
-    ar.f(new Runnable()
+    AppMethodBeat.i(239011);
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(190432);
-        if (d.this.wmg != null)
+        AppMethodBeat.i(239005);
+        if (d.this.zHj != null)
         {
-          ae.i("MicroMsg.Multitalk.ILink2MtCallBack", "onInviteOrAcceptTimeout");
+          Log.i("MicroMsg.Multitalk.ILink2MtCallBack", "onInviteOrAcceptTimeout");
           MultiTalkGroup localMultiTalkGroup = d.a(paramk);
-          d.this.wmg.c(localMultiTalkGroup);
+          d.this.zHj.c(localMultiTalkGroup);
         }
-        AppMethodBeat.o(190432);
+        AppMethodBeat.o(239005);
       }
     });
-    AppMethodBeat.o(190438);
+    AppMethodBeat.o(239011);
   }
 }
 

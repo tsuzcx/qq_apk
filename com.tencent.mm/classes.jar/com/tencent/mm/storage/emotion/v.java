@@ -6,8 +6,8 @@ import org.json.JSONObject;
 
 public final class v
 {
-  public int JiY;
-  public long hiI;
+  public int OsQ;
+  public long hwQ;
   public String key;
   
   public final JSONObject toJson()
@@ -17,8 +17,8 @@ public final class v
     try
     {
       localJSONObject.put("key", this.key);
-      localJSONObject.put("use_count", this.JiY);
-      localJSONObject.put("last_time", this.hiI);
+      localJSONObject.put("use_count", this.OsQ);
+      localJSONObject.put("last_time", this.hwQ);
       AppMethodBeat.o(105153);
       return localJSONObject;
     }

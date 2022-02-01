@@ -19,8 +19,8 @@ import com.tencent.mm.plugin.wallet_core.ui.d.a;
 import com.tencent.mm.plugin.wallet_core.ui.e;
 import com.tencent.mm.plugin.wallet_core.ui.s;
 import com.tencent.mm.plugin.wallet_core.ui.s.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.ui.f;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import java.util.List;
@@ -29,10 +29,10 @@ import java.util.Map;
 public class b
   extends s
 {
-  private b DKN;
-  private int DKO = 0;
-  private boolean DKP = false;
-  private a DKQ;
+  private b Iud;
+  private int Iue = 0;
+  private boolean Iuf = false;
+  private a Iug;
   
   public b(Context paramContext)
   {
@@ -47,7 +47,7 @@ public class b
       AppMethodBeat.o(72140);
       return null;
     }
-    Object localObject4 = e.DtH.a(paramOrders);
+    Object localObject4 = e.IcT.a(paramOrders);
     Object localObject1;
     Object localObject2;
     label153:
@@ -64,42 +64,42 @@ public class b
         if (paramBankcard != null)
         {
           localObject1 = paramFavorPayInfo;
-          if (!paramBankcard.field_bankcardType.equals(paramFavorPayInfo.Dos))
+          if (!paramBankcard.field_bankcardType.equals(paramFavorPayInfo.HXK))
           {
-            localObject1 = ((d)localObject4).cn(paramFavorPayInfo.Doq, false);
-            localObject2 = (d.a)((d)localObject4).cm((String)localObject1, true).get(paramBankcard.field_bankcardType);
-            if ((localObject2 == null) || (((d.a)localObject2).DtF == null) || (bu.isNullOrNil(((d.a)localObject2).DtF.CYV))) {
+            localObject1 = ((d)localObject4).cG(paramFavorPayInfo.HXI, false);
+            localObject2 = (d.a)((d)localObject4).cF((String)localObject1, true).get(paramBankcard.field_bankcardType);
+            if ((localObject2 == null) || (((d.a)localObject2).IcR == null) || (Util.isNullOrNil(((d.a)localObject2).IcR.HEJ))) {
               break label485;
             }
-            paramFavorPayInfo.Doq = ((d.a)localObject2).DtF.CYV;
+            paramFavorPayInfo.HXI = ((d.a)localObject2).IcR.HEJ;
             localObject1 = paramFavorPayInfo;
           }
         }
-        paramFavorPayInfo = ((d)localObject4).eKU();
+        paramFavorPayInfo = ((d)localObject4).fSz();
         localObject2 = localObject1;
         localObject1 = paramFavorPayInfo;
-        paramFavorPayInfo = (Orders.Commodity)paramOrders.DpP.get(0);
+        paramFavorPayInfo = (Orders.Commodity)paramOrders.HZd.get(0);
         localObject3 = new StringBuilder();
-        if (!bu.isNullOrNil(paramFavorPayInfo.wSf)) {
+        if (!Util.isNullOrNil(paramFavorPayInfo.AOa)) {
           break label547;
         }
         paramFavorPayInfo = "";
-        str2 = paramFavorPayInfo + ((Orders.Commodity)paramOrders.DpP.get(0)).desc;
+        str2 = paramFavorPayInfo + ((Orders.Commodity)paramOrders.HZd.get(0)).desc;
         str1 = null;
         localObject3 = null;
         paramFavorPayInfo = null;
-        d = paramOrders.dmz;
+        d = paramOrders.dDO;
         if ((localObject4 == null) || (localObject2 == null)) {
           break label648;
         }
-        localObject4 = ((d)localObject4).aGi(((FavorPayInfo)localObject2).Doq);
-        if ((localObject4 == null) || (((j)localObject4).CYW <= 0.0D)) {
+        localObject4 = ((d)localObject4).aVJ(((FavorPayInfo)localObject2).HXI);
+        if ((localObject4 == null) || (((j)localObject4).HEK <= 0.0D)) {
           break label574;
         }
-        d = ((j)localObject4).CYE;
-        localObject3 = f.d(paramOrders.dmz, paramOrders.wSq);
-        localObject1 = f.d(((j)localObject4).CYE, paramOrders.wSq);
-        paramFavorPayInfo = paramContext.getString(2131765686, new Object[] { f.C(((j)localObject4).CYW) });
+        d = ((j)localObject4).HEs;
+        localObject3 = f.d(paramOrders.dDO, paramOrders.AOl);
+        localObject1 = f.d(((j)localObject4).HEs, paramOrders.AOl);
+        paramFavorPayInfo = paramContext.getString(2131768139, new Object[] { f.formatMoney2f(((j)localObject4).HEK) });
         bool = true;
       }
     }
@@ -111,62 +111,62 @@ public class b
         str1 = "";
         label337:
         localObject4 = new b(paramContext);
-        ((b)localObject4).DAc = paramBankcard;
+        ((b)localObject4).Ijo = paramBankcard;
         ((b)localObject4).a(paramContext, paramOrders, (FavorPayInfo)localObject2, paramBankcard);
-        ((b)localObject4).b(paramOnCancelListener);
+        ((b)localObject4).c(paramOnCancelListener);
         ((b)localObject4).setOnCancelListener(paramOnCancelListener);
         ((b)localObject4).setCancelable(true);
-        ((b)localObject4).aGq(str2);
+        ((b)localObject4).aVR(str2);
         ((b)localObject4).d((String)localObject1, d);
-        ((b)localObject4).aGs((String)localObject3);
+        ((b)localObject4).aVT((String)localObject3);
         ((b)localObject4).a(str1, paramOnClickListener, bool);
         if (TextUtils.isEmpty(paramFavorPayInfo)) {
           break label635;
         }
-        ((b)localObject4).DzN.setVisibility(0);
-        ((b)localObject4).DzN.setText(paramFavorPayInfo);
+        ((b)localObject4).IiZ.setVisibility(0);
+        ((b)localObject4).IiZ.setText(paramFavorPayInfo);
       }
       for (;;)
       {
-        ((b)localObject4).DKP = paramBoolean;
-        ((s)localObject4).DzO.setEncrType(-10);
-        ((b)localObject4).DKN = paramb;
+        ((b)localObject4).Iuf = paramBoolean;
+        ((s)localObject4).Ija.setEncrType(-10);
+        ((b)localObject4).Iud = paramb;
         ((b)localObject4).show();
         com.tencent.mm.ui.base.h.a(paramContext, (Dialog)localObject4);
         AppMethodBeat.o(72140);
         return localObject4;
         label485:
-        paramFavorPayInfo.Doq = ((String)localObject1);
+        paramFavorPayInfo.HXI = ((String)localObject1);
         localObject1 = paramFavorPayInfo;
         break;
         localObject1 = paramFavorPayInfo;
-        if (paramOrders.DpQ == null) {
+        if (paramOrders.HZe == null) {
           break;
         }
-        localObject1 = ((d)localObject4).aGl(((d)localObject4).aGm(paramOrders.DpQ.CYF));
+        localObject1 = ((d)localObject4).aVM(((d)localObject4).aVN(paramOrders.HZe.HEt));
         break;
-        ae.d("MicroMsg.WalletPayUPwdDialog", "getFavorLogicHelper null");
+        Log.d("MicroMsg.WalletPayUPwdDialog", "getFavorLogicHelper null");
         localObject1 = null;
         localObject2 = paramFavorPayInfo;
         break label153;
         label547:
-        paramFavorPayInfo = paramFavorPayInfo.wSf + "\n";
+        paramFavorPayInfo = paramFavorPayInfo.AOa + "\n";
         break label189;
         label574:
         if ((localObject1 != null) && (((List)localObject1).size() > 0))
         {
-          paramFavorPayInfo = paramContext.getString(2131765742);
+          paramFavorPayInfo = paramContext.getString(2131768195);
           bool = true;
           localObject1 = str1;
           break label329;
         }
-        localObject1 = f.d(paramOrders.dmz, paramOrders.wSq);
+        localObject1 = f.d(paramOrders.dDO, paramOrders.AOl);
         bool = false;
         break label329;
         str1 = paramBankcard.field_desc;
         break label337;
         label635:
-        ((b)localObject4).DzN.setVisibility(8);
+        ((b)localObject4).IiZ.setVisibility(8);
       }
       label648:
       bool = false;
@@ -174,82 +174,82 @@ public class b
     }
   }
   
-  public final void aN(Context paramContext)
+  public final void bh(Context paramContext)
   {
-    AppMethodBeat.i(190247);
-    gS(paramContext);
-    super.gT(paramContext);
-    if (this.DAd != null) {
-      this.DAd.setVisibility(8);
+    AppMethodBeat.i(258007);
+    hO(paramContext);
+    super.hP(paramContext);
+    if (this.Ijp != null) {
+      this.Ijp.setVisibility(8);
     }
-    AppMethodBeat.o(190247);
+    AppMethodBeat.o(258007);
   }
   
-  public final void eLz()
+  public final void fTe()
   {
     AppMethodBeat.i(72141);
-    if (this.DzZ != null) {
-      this.DzZ.onClick(this, 0);
+    if (this.Ijl != null) {
+      this.Ijl.onClick(this, 0);
     }
     dismiss();
-    if (this.DKN != null)
+    if (this.Iud != null)
     {
-      if (this.DKP)
+      if (this.Iuf)
       {
-        if (this.DKO == 0)
+        if (this.Iue == 0)
         {
           Context localContext = getContext();
-          Object localObject = new a(this.DzO.getText(), this.DAc, this.Dar, this.DAa, this.XL, this.DAv, this.DKN);
+          Object localObject = new a(this.Ija.getText(), this.Ijo, this.HGf, this.Ijm, this.XY, this.IjH, this.Iud);
           b local1;
           if ((!(localContext instanceof Activity)) || (!((Activity)localContext).isFinishing()))
           {
             local1 = new b(localContext)
             {
-              public final int cvT()
+              public final int fTi()
               {
                 AppMethodBeat.i(72137);
                 int j = 3;
                 int i = j;
-                if (this.DKR.DKT != null)
+                if (this.Iuh.Iuj != null)
                 {
                   i = j;
-                  if (this.DKR.DKT.field_bankcardClientType == 1)
+                  if (this.Iuh.Iuj.field_bankcardClientType == 1)
                   {
-                    ae.d("MicroMsg.WalletPayUPwdDialog", "hy: the bankcard can be assembled to BankcardPayU");
-                    i = new com.tencent.mm.plugin.wallet_core.model.a.b(this.DKR.DKT).Dtr;
+                    Log.d("MicroMsg.WalletPayUPwdDialog", "hy: the bankcard can be assembled to BankcardPayU");
+                    i = new com.tencent.mm.plugin.wallet_core.model.a.b(this.Iuh.Iuj).IcC;
                   }
                 }
                 if (i == 4)
                 {
-                  ae.d("MicroMsg.WalletPayUPwdDialog", "hy: is 4 digits cvv");
+                  Log.d("MicroMsg.WalletPayUPwdDialog", "hy: is 4 digits cvv");
                   AppMethodBeat.o(72137);
-                  return 2131495068;
+                  return 2131495905;
                 }
                 AppMethodBeat.o(72137);
-                return 2131495069;
+                return 2131495906;
               }
             };
-            local1.DKO = 1;
-            local1.DKP = true;
-            local1.DKQ = ((a)localObject);
-            if (local1.DKQ != null)
+            local1.Iue = 1;
+            local1.Iuf = true;
+            local1.Iug = ((a)localObject);
+            if (local1.Iug != null)
             {
-              local1.b(local1.DKQ.DKX);
-              local1.setOnCancelListener(local1.DKQ.DKX);
+              local1.c(local1.Iug.Iun);
+              local1.setOnCancelListener(local1.Iug.Iun);
               local1.setCancelable(true);
-              if (local1.DKQ.DKT != null) {
+              if (local1.Iug.Iuj != null) {
                 break label248;
               }
             }
           }
           label248:
-          for (localObject = "";; localObject = local1.DKQ.DKT.field_desc)
+          for (localObject = "";; localObject = local1.Iug.Iuj.field_desc)
           {
             local1.d((String)localObject, 0.0D);
-            local1.uE(false);
-            local1.a(local1.DKQ.DAv);
-            local1.DKN = local1.DKQ.DKW;
-            local1.DzO.setEncrType(30);
+            local1.ys(false);
+            local1.a(local1.Iug.IjH);
+            local1.Iud = local1.Iug.Ium;
+            local1.Ija.setEncrType(30);
             local1.show();
             com.tencent.mm.ui.base.h.a(localContext, local1);
             AppMethodBeat.o(72141);
@@ -258,47 +258,47 @@ public class b
             return;
           }
         }
-        if (this.DKO == 1)
+        if (this.Iue == 1)
         {
-          this.DKN.a(this.DKQ.DKS, this.DzO.getText(), this.DKQ.DKU);
+          this.Iud.a(this.Iug.Iui, this.Ija.getText(), this.Iug.Iuk);
           AppMethodBeat.o(72141);
           return;
         }
-        ae.e("MicroMsg.WalletPayUPwdDialog", "hy: error dialog state");
+        Log.e("MicroMsg.WalletPayUPwdDialog", "hy: error dialog state");
         AppMethodBeat.o(72141);
         return;
       }
-      this.DKN.a(this.DzO.getText(), "", this.Dar);
+      this.Iud.a(this.Ija.getText(), "", this.HGf);
     }
     AppMethodBeat.o(72141);
   }
   
-  public final void gT(Context paramContext)
+  public final void hP(Context paramContext)
   {
-    AppMethodBeat.i(224238);
-    super.gT(paramContext);
-    AppMethodBeat.o(224238);
+    AppMethodBeat.i(258351);
+    super.hP(paramContext);
+    AppMethodBeat.o(258351);
   }
   
   final class a
   {
-    public s.a DAv;
-    public String DKS;
-    public Bankcard DKT;
-    public FavorPayInfo DKU;
-    public boolean DKV;
-    public b.b DKW;
-    public DialogInterface.OnCancelListener DKX;
+    public s.a IjH;
+    public String Iui;
+    public Bankcard Iuj;
+    public FavorPayInfo Iuk;
+    public boolean Iul;
+    public b.b Ium;
+    public DialogInterface.OnCancelListener Iun;
     
     public a(String paramString, Bankcard paramBankcard, FavorPayInfo paramFavorPayInfo, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener, s.a parama, b.b paramb)
     {
-      this.DKS = paramString;
-      this.DKT = paramBankcard;
-      this.DKU = paramFavorPayInfo;
-      this.DKV = paramBoolean;
-      this.DKX = paramOnCancelListener;
-      this.DAv = parama;
-      this.DKW = paramb;
+      this.Iui = paramString;
+      this.Iuj = paramBankcard;
+      this.Iuk = paramFavorPayInfo;
+      this.Iul = paramBoolean;
+      this.Iun = paramOnCancelListener;
+      this.IjH = parama;
+      this.Ium = paramb;
     }
   }
   
@@ -309,7 +309,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.pay.ui.b
  * JD-Core Version:    0.7.0.1
  */

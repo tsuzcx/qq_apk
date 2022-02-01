@@ -6,14 +6,14 @@ import android.widget.TextView;
 
 final class d
 {
-  public TextView BBX;
-  public View BBY;
-  public TextView fSj;
-  public ImageView fWT;
+  public TextView FMJ;
+  public View FMK;
+  public ImageView gBZ;
+  public TextView gxs;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.openapi.d
  * JD-Core Version:    0.7.0.1
  */

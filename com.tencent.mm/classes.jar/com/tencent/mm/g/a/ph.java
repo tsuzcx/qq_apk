@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ph
-  extends b
+  extends IEvent
 {
-  public a dEs;
-  public b dEt;
+  public a dVp;
+  public b dVq;
   
   public ph()
   {
@@ -16,22 +17,22 @@ public final class ph
   
   private ph(byte paramByte)
   {
-    AppMethodBeat.i(149879);
-    this.dEs = new a();
-    this.dEt = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(91210);
+    this.dVp = new a();
+    this.dVq = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(149879);
+    AppMethodBeat.o(91210);
   }
   
   public static final class a
   {
-    public int dEu = 0;
-    public String dEv;
-    public int dzG = 10;
-    public String label;
-    public double lat = -1.0D;
-    public double lng = -1.0D;
+    public int channel;
+    public Context context;
+    public int scene;
+    public String source;
+    public int sourceType = 0;
+    public String url;
   }
   
   public static final class b
@@ -41,7 +42,7 @@ public final class ph
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.ph
  * JD-Core Version:    0.7.0.1
  */

@@ -14,36 +14,36 @@ public final class j
   extends com.google.android.exoplayer2.a
   implements Handler.Callback
 {
-  private final a bAj;
-  private final g bAk;
-  private int bAl;
-  private Format bAm;
-  private e bAn;
-  private h bAo;
-  private i bAp;
-  private i bAq;
-  private int bAr;
-  private boolean btK;
-  private boolean btL;
-  private final k btk;
-  private final Handler buh;
+  private final a bAl;
+  private final g bAm;
+  private int bAn;
+  private Format bAo;
+  private e bAp;
+  private h bAq;
+  private i bAr;
+  private i bAs;
+  private int bAt;
+  private boolean btF;
+  private boolean btG;
+  private final k btf;
+  private final Handler bub;
   
   public j(a parama, Looper paramLooper)
   {
-    this(parama, paramLooper, g.bAh);
+    this(parama, paramLooper, g.bAj);
   }
   
   private j(a parama, Looper paramLooper, g paramg)
   {
     super(3);
     AppMethodBeat.i(92825);
-    this.bAj = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
+    this.bAl = ((a)com.google.android.exoplayer2.i.a.checkNotNull(parama));
     if (paramLooper == null) {}
     for (parama = null;; parama = new Handler(paramLooper, this))
     {
-      this.buh = parama;
-      this.bAk = paramg;
-      this.btk = new k();
+      this.bub = parama;
+      this.bAm = paramg;
+      this.btf = new k();
       AppMethodBeat.o(92825);
       return;
     }
@@ -52,58 +52,19 @@ public final class j
   private void releaseDecoder()
   {
     AppMethodBeat.i(92832);
-    vW();
-    this.bAn.release();
-    this.bAn = null;
-    this.bAl = 0;
+    wb();
+    this.bAp.release();
+    this.bAp = null;
+    this.bAn = 0;
     AppMethodBeat.o(92832);
-  }
-  
-  private void vW()
-  {
-    AppMethodBeat.i(92831);
-    this.bAo = null;
-    this.bAr = -1;
-    if (this.bAp != null)
-    {
-      this.bAp.release();
-      this.bAp = null;
-    }
-    if (this.bAq != null)
-    {
-      this.bAq.release();
-      this.bAq = null;
-    }
-    AppMethodBeat.o(92831);
-  }
-  
-  private void vX()
-  {
-    AppMethodBeat.i(92833);
-    releaseDecoder();
-    this.bAn = this.bAk.k(this.bAm);
-    AppMethodBeat.o(92833);
-  }
-  
-  private long vY()
-  {
-    AppMethodBeat.i(92834);
-    if ((this.bAr == -1) || (this.bAr >= this.bAp.vV()))
-    {
-      AppMethodBeat.o(92834);
-      return 9223372036854775807L;
-    }
-    long l = this.bAp.eI(this.bAr);
-    AppMethodBeat.o(92834);
-    return l;
   }
   
   private void w(List<a> paramList)
   {
     AppMethodBeat.i(92835);
-    if (this.buh != null)
+    if (this.bub != null)
     {
-      this.buh.obtainMessage(0, paramList).sendToTarget();
+      this.bub.obtainMessage(0, paramList).sendToTarget();
       AppMethodBeat.o(92835);
       return;
     }
@@ -111,10 +72,49 @@ public final class j
     AppMethodBeat.o(92835);
   }
   
+  private void wb()
+  {
+    AppMethodBeat.i(92831);
+    this.bAq = null;
+    this.bAt = -1;
+    if (this.bAr != null)
+    {
+      this.bAr.release();
+      this.bAr = null;
+    }
+    if (this.bAs != null)
+    {
+      this.bAs.release();
+      this.bAs = null;
+    }
+    AppMethodBeat.o(92831);
+  }
+  
+  private void wc()
+  {
+    AppMethodBeat.i(92833);
+    releaseDecoder();
+    this.bAp = this.bAm.k(this.bAo);
+    AppMethodBeat.o(92833);
+  }
+  
+  private long wd()
+  {
+    AppMethodBeat.i(92834);
+    if ((this.bAt == -1) || (this.bAt >= this.bAr.wa()))
+    {
+      AppMethodBeat.o(92834);
+      return 9223372036854775807L;
+    }
+    long l = this.bAr.eH(this.bAt);
+    AppMethodBeat.o(92834);
+    return l;
+  }
+  
   private void x(List<a> paramList)
   {
     AppMethodBeat.i(92837);
-    this.bAj.s(paramList);
+    this.bAl.s(paramList);
     AppMethodBeat.o(92837);
   }
   
@@ -122,42 +122,42 @@ public final class j
   {
     AppMethodBeat.i(92828);
     w(Collections.emptyList());
-    this.btK = false;
-    this.btL = false;
-    if (this.bAl != 0)
+    this.btF = false;
+    this.btG = false;
+    if (this.bAn != 0)
     {
-      vX();
+      wc();
       AppMethodBeat.o(92828);
       return;
     }
-    vW();
-    this.bAn.flush();
+    wb();
+    this.bAp.flush();
     AppMethodBeat.o(92828);
   }
   
   public final void a(Format[] paramArrayOfFormat, long paramLong)
   {
     AppMethodBeat.i(92827);
-    this.bAm = paramArrayOfFormat[0];
-    if (this.bAn != null)
+    this.bAo = paramArrayOfFormat[0];
+    if (this.bAp != null)
     {
-      this.bAl = 1;
+      this.bAn = 1;
       AppMethodBeat.o(92827);
       return;
     }
-    this.bAn = this.bAk.k(this.bAm);
+    this.bAp = this.bAm.k(this.bAo);
     AppMethodBeat.o(92827);
   }
   
   public final int b(Format paramFormat)
   {
     AppMethodBeat.i(92826);
-    if (this.bAk.g(paramFormat))
+    if (this.bAm.g(paramFormat))
     {
       AppMethodBeat.o(92826);
       return 4;
     }
-    if (com.google.android.exoplayer2.i.j.bz(paramFormat.bdt))
+    if (com.google.android.exoplayer2.i.j.bz(paramFormat.bdq))
     {
       AppMethodBeat.o(92826);
       return 1;
@@ -169,18 +169,18 @@ public final class j
   public final void e(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(92829);
-    if (this.btL)
+    if (this.btG)
     {
       AppMethodBeat.o(92829);
       return;
     }
-    if (this.bAq == null) {
-      this.bAn.ah(paramLong1);
+    if (this.bAs == null) {
+      this.bAp.ah(paramLong1);
     }
     Object localObject;
     try
     {
-      this.bAq = ((i)this.bAn.ub());
+      this.bAs = ((i)this.bAp.ug());
       if (this.state != 2)
       {
         AppMethodBeat.o(92829);
@@ -193,32 +193,32 @@ public final class j
       AppMethodBeat.o(92829);
       throw ((Throwable)localObject);
     }
-    if (this.bAp != null)
+    if (this.bAr != null)
     {
-      paramLong2 = vY();
+      paramLong2 = wd();
       for (i = 0; paramLong2 <= paramLong1; i = 1)
       {
-        this.bAr += 1;
-        paramLong2 = vY();
+        this.bAt += 1;
+        paramLong2 = wd();
       }
     }
     int i = 0;
     int j = i;
-    if (this.bAq != null)
+    if (this.bAs != null)
     {
-      if (!this.bAq.tY()) {
+      if (!this.bAs.ud()) {
         break label239;
       }
       j = i;
       if (i == 0)
       {
         j = i;
-        if (vY() == 9223372036854775807L)
+        if (wd() == 9223372036854775807L)
         {
-          if (this.bAl != 2) {
+          if (this.bAn != 2) {
             break label223;
           }
-          vX();
+          wc();
           j = i;
         }
       }
@@ -226,70 +226,70 @@ public final class j
     for (;;)
     {
       if (j != 0) {
-        w(this.bAp.aj(paramLong1));
+        w(this.bAr.aj(paramLong1));
       }
-      if (this.bAl != 2) {
+      if (this.bAn != 2) {
         break;
       }
       AppMethodBeat.o(92829);
       return;
       label223:
-      vW();
-      this.btL = true;
+      wb();
+      this.btG = true;
       j = i;
       continue;
       label239:
       j = i;
-      if (this.bAq.timeUs <= paramLong1)
+      if (this.bAs.timeUs <= paramLong1)
       {
-        if (this.bAp != null) {
-          this.bAp.release();
+        if (this.bAr != null) {
+          this.bAr.release();
         }
-        this.bAp = this.bAq;
-        this.bAq = null;
-        this.bAr = this.bAp.ai(paramLong1);
+        this.bAr = this.bAs;
+        this.bAs = null;
+        this.bAt = this.bAr.ai(paramLong1);
         j = 1;
       }
     }
     try
     {
-      i = a(this.btk, this.bAo, false);
+      i = a(this.btf, this.bAq, false);
       if (i == -4) {
-        if (this.bAo.tY())
+        if (this.bAq.ud())
         {
-          this.btK = true;
-          this.bAn.af(this.bAo);
-          this.bAo = null;
+          this.btF = true;
+          this.bAp.af(this.bAq);
+          this.bAq = null;
         }
       }
       com.google.android.exoplayer2.e locale;
       while (i != -3) {
         for (;;)
         {
-          if (this.btK) {
+          if (this.btF) {
             break label508;
           }
-          if (this.bAo == null)
+          if (this.bAq == null)
           {
-            this.bAo = ((h)this.bAn.ua());
-            localObject = this.bAo;
+            this.bAq = ((h)this.bAp.uf());
+            localObject = this.bAq;
             if (localObject == null)
             {
               AppMethodBeat.o(92829);
               return;
             }
           }
-          if (this.bAl != 1) {
+          if (this.bAn != 1) {
             break;
           }
-          this.bAo.flags = 4;
-          this.bAn.af(this.bAo);
-          this.bAo = null;
-          this.bAl = 2;
+          this.bAq.flags = 4;
+          this.bAp.af(this.bAq);
+          this.bAq = null;
+          this.bAn = 2;
           AppMethodBeat.o(92829);
           return;
-          this.bAo.bdF = this.btk.bdI.bdF;
-          this.bAo.ud();
+          this.bAq.bdC = this.btf.bdF.bdC;
+          this.bAq.ui();
         }
       }
     }
@@ -325,18 +325,18 @@ public final class j
     return true;
   }
   
-  public final void sZ()
+  public final boolean tB()
+  {
+    return this.btG;
+  }
+  
+  public final void te()
   {
     AppMethodBeat.i(92830);
-    this.bAm = null;
+    this.bAo = null;
     w(Collections.emptyList());
     releaseDecoder();
     AppMethodBeat.o(92830);
-  }
-  
-  public final boolean tw()
-  {
-    return this.btL;
   }
   
   public static abstract interface a
@@ -346,7 +346,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.j
  * JD-Core Version:    0.7.0.1
  */

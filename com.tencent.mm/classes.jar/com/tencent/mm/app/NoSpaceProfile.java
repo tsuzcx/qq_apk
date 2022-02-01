@@ -3,18 +3,18 @@ package com.tencent.mm.app;
 import android.content.res.Configuration;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.loader.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class NoSpaceProfile
   extends d
 {
-  public static final String cUu;
+  public static final String dkO;
   
   static
   {
     AppMethodBeat.i(19462);
-    cUu = ak.getPackageName() + ":nospace";
+    dkO = MMApplicationContext.getPackageName() + ":nospace";
     AppMethodBeat.o(19462);
   }
   
@@ -23,14 +23,14 @@ public class NoSpaceProfile
   public final void onCreate()
   {
     AppMethodBeat.i(19461);
-    ad.initLanguage(ak.getContext());
-    ab.Mv();
+    LocaleUtil.initLanguage(MMApplicationContext.getContext());
+    ab.WH();
     AppMethodBeat.o(19461);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.NoSpaceProfile
  * JD-Core Version:    0.7.0.1
  */

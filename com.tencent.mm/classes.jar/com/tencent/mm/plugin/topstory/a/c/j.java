@@ -1,95 +1,95 @@
 package com.tencent.mm.plugin.topstory.a.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.doq;
-import com.tencent.mm.protocal.protobuf.dor;
-import com.tencent.mm.protocal.protobuf.dpa;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.eim;
+import com.tencent.mm.protocal.protobuf.ein;
+import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class j
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public dpa BIY;
-  private f callback;
-  public b rr;
-  private long szi;
+  public eiw GjH;
+  private i callback;
+  public d rr;
+  private long uOV;
   
-  public j(dpa paramdpa, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5)
+  public j(eiw parameiw, String paramString1, int paramInt1, String paramString2, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5)
   {
     AppMethodBeat.i(88489);
-    this.szi = System.currentTimeMillis();
-    this.BIY = paramdpa;
-    paramdpa = new b.a();
-    paramdpa.funcId = getType();
-    paramdpa.uri = "/cgi-bin/mmsearch-bin/topstorypluginsetcomment";
-    paramdpa.hQF = new doq();
-    paramdpa.hQG = new dor();
-    this.rr = paramdpa.aDS();
-    paramdpa = (doq)this.rr.hQD.hQJ;
-    paramdpa.Hvr = paramString1;
-    paramdpa.HVx = "";
-    paramdpa.gvx = paramInt1;
-    paramdpa.Hvt = paramString2;
-    paramdpa.hFS = "";
-    paramdpa.Scene = paramInt2;
-    paramdpa.HkY = paramString3;
-    paramdpa.FQm = paramInt3;
-    paramdpa.oxM = paramString4;
-    paramdpa.HGj = paramString5;
-    paramdpa.ucK = 1;
-    ae.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "TopStoryPluginSetCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { paramdpa.Hvr, paramdpa.HVx, Integer.valueOf(paramdpa.gvx), paramdpa.Hvt, paramdpa.hFS, Integer.valueOf(paramdpa.Scene), paramdpa.HkY, Integer.valueOf(paramdpa.FQm), paramdpa.oxM, paramdpa.HGj });
+    this.uOV = System.currentTimeMillis();
+    this.GjH = parameiw;
+    parameiw = new d.a();
+    parameiw.funcId = getType();
+    parameiw.uri = "/cgi-bin/mmsearch-bin/topstorypluginsetcomment";
+    parameiw.iLN = new eim();
+    parameiw.iLO = new ein();
+    this.rr = parameiw.aXF();
+    parameiw = (eim)this.rr.iLK.iLR;
+    parameiw.MEq = paramString1;
+    parameiw.NhH = "";
+    parameiw.him = paramInt1;
+    parameiw.Mba = paramString2;
+    parameiw.iAc = "";
+    parameiw.Scene = paramInt2;
+    parameiw.Mbb = paramString3;
+    parameiw.KJS = paramInt3;
+    parameiw.pLq = paramString4;
+    parameiw.MRt = paramString5;
+    parameiw.xub = 1;
+    Log.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "TopStoryPluginSetCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { parameiw.MEq, parameiw.NhH, Integer.valueOf(parameiw.him), parameiw.Mba, parameiw.iAc, Integer.valueOf(parameiw.Scene), parameiw.Mbb, Integer.valueOf(parameiw.KJS), parameiw.pLq, parameiw.MRt });
     AppMethodBeat.o(88489);
   }
   
   public j(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(88488);
-    this.szi = System.currentTimeMillis();
-    Object localObject = new b.a();
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).uri = "/cgi-bin/mmsearch-bin/topstorypluginsetcomment";
-    ((b.a)localObject).hQF = new doq();
-    ((b.a)localObject).hQG = new dor();
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (doq)this.rr.hQD.hQJ;
-    ((doq)localObject).Hvr = paramJSONObject.optString("docId", "");
-    ((doq)localObject).HVx = paramJSONObject.optString("commentId", "");
-    ((doq)localObject).gvx = paramJSONObject.optInt("opType", 0);
-    ((doq)localObject).Hvt = paramJSONObject.optString("requestId", "");
-    ((doq)localObject).hFS = paramJSONObject.optString("content", "");
-    ((doq)localObject).Scene = paramJSONObject.optInt("scene", 0);
-    ((doq)localObject).HkY = paramJSONObject.optString("searchId", "");
-    ((doq)localObject).FQm = paramJSONObject.optInt("subScene", 0);
-    ((doq)localObject).oxM = paramJSONObject.optString("vid", "");
-    ((doq)localObject).HGj = paramJSONObject.optString("byPass", "");
-    ((doq)localObject).ucK = 0;
-    ae.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "TopStoryPluginSetCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((doq)localObject).Hvr, ((doq)localObject).HVx, Integer.valueOf(((doq)localObject).gvx), ((doq)localObject).Hvt, ((doq)localObject).hFS, Integer.valueOf(((doq)localObject).Scene), ((doq)localObject).HkY, Integer.valueOf(((doq)localObject).FQm), ((doq)localObject).oxM, ((doq)localObject).HGj });
+    this.uOV = System.currentTimeMillis();
+    Object localObject = new d.a();
+    ((d.a)localObject).funcId = getType();
+    ((d.a)localObject).uri = "/cgi-bin/mmsearch-bin/topstorypluginsetcomment";
+    ((d.a)localObject).iLN = new eim();
+    ((d.a)localObject).iLO = new ein();
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (eim)this.rr.iLK.iLR;
+    ((eim)localObject).MEq = paramJSONObject.optString("docId", "");
+    ((eim)localObject).NhH = paramJSONObject.optString("commentId", "");
+    ((eim)localObject).him = paramJSONObject.optInt("opType", 0);
+    ((eim)localObject).Mba = paramJSONObject.optString("requestId", "");
+    ((eim)localObject).iAc = paramJSONObject.optString("content", "");
+    ((eim)localObject).Scene = paramJSONObject.optInt("scene", 0);
+    ((eim)localObject).Mbb = paramJSONObject.optString("searchId", "");
+    ((eim)localObject).KJS = paramJSONObject.optInt("subScene", 0);
+    ((eim)localObject).pLq = paramJSONObject.optString("vid", "");
+    ((eim)localObject).MRt = paramJSONObject.optString("byPass", "");
+    ((eim)localObject).xub = 0;
+    Log.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "TopStoryPluginSetCommentRequest %s, %s, %s, %s, %s, %s, %s, %s, %s, %s", new Object[] { ((eim)localObject).MEq, ((eim)localObject).NhH, Integer.valueOf(((eim)localObject).him), ((eim)localObject).Mba, ((eim)localObject).iAc, Integer.valueOf(((eim)localObject).Scene), ((eim)localObject).Mbb, Integer.valueOf(((eim)localObject).KJS), ((eim)localObject).pLq, ((eim)localObject).MRt });
     AppMethodBeat.o(88488);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(88490);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(88490);
     return i;
   }
   
-  public final dor esG()
+  public final ein fye()
   {
-    return (dor)this.rr.hQE.hQJ;
+    return (ein)this.rr.iLL.iLR;
   }
   
   public final int getType()
@@ -97,10 +97,10 @@ public final class j
     return 2802;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88491);
-    ae.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.szi) });
+    Log.i("MicroMsg.TopStory.NetSceneTopStorySetComment", "netId %d | errType %d | errCode %d | errMsg %s useTime %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, Long.valueOf(System.currentTimeMillis() - this.uOV) });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(88491);
   }

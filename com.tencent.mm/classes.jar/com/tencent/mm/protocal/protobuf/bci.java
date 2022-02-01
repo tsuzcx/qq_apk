@@ -1,117 +1,122 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class bci
-  extends cvw
+  extends com.tencent.mm.bw.a
 {
-  public String GSe;
-  public String GSf;
-  public String ikm;
+  public String authIconUrl;
+  public String nickname;
+  public String uNR;
+  public String username;
+  public String wDX;
+  public int wDY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125730);
+    AppMethodBeat.i(196093);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.username != null) {
+        paramVarArgs.e(1, this.username);
       }
-      if (this.ikm != null) {
-        paramVarArgs.d(2, this.ikm);
+      if (this.nickname != null) {
+        paramVarArgs.e(2, this.nickname);
       }
-      if (this.GSe != null) {
-        paramVarArgs.d(3, this.GSe);
+      if (this.uNR != null) {
+        paramVarArgs.e(3, this.uNR);
       }
-      if (this.GSf != null) {
-        paramVarArgs.d(4, this.GSf);
+      if (this.wDX != null) {
+        paramVarArgs.e(4, this.wDX);
       }
-      AppMethodBeat.o(125730);
+      paramVarArgs.aM(5, this.wDY);
+      if (this.authIconUrl != null) {
+        paramVarArgs.e(6, this.authIconUrl);
+      }
+      AppMethodBeat.o(196093);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label490;
+      if (this.username == null) {
+        break label502;
       }
     }
-    label490:
-    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label502:
+    for (int i = g.a.a.b.b.a.f(1, this.username) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.ikm != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.ikm);
+      if (this.nickname != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.nickname);
       }
       i = paramInt;
-      if (this.GSe != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.GSe);
+      if (this.uNR != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.uNR);
       }
       paramInt = i;
-      if (this.GSf != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.GSf);
+      if (this.wDX != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.wDX);
       }
-      AppMethodBeat.o(125730);
+      i = paramInt + g.a.a.b.b.a.bu(5, this.wDY);
+      paramInt = i;
+      if (this.authIconUrl != null) {
+        paramInt = i + g.a.a.b.b.a.f(6, this.authIconUrl);
+      }
+      AppMethodBeat.o(196093);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(125730);
+        AppMethodBeat.o(196093);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         bci localbci = (bci)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(125730);
+          AppMethodBeat.o(196093);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbci.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(125730);
+          localbci.username = locala.UbS.readString();
+          AppMethodBeat.o(196093);
           return 0;
         case 2: 
-          localbci.ikm = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(125730);
+          localbci.nickname = locala.UbS.readString();
+          AppMethodBeat.o(196093);
           return 0;
         case 3: 
-          localbci.GSe = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(125730);
+          localbci.uNR = locala.UbS.readString();
+          AppMethodBeat.o(196093);
+          return 0;
+        case 4: 
+          localbci.wDX = locala.UbS.readString();
+          AppMethodBeat.o(196093);
+          return 0;
+        case 5: 
+          localbci.wDY = locala.UbS.zi();
+          AppMethodBeat.o(196093);
           return 0;
         }
-        localbci.GSf = ((f.a.a.a.a)localObject1).OmT.readString();
-        AppMethodBeat.o(125730);
+        localbci.authIconUrl = locala.UbS.readString();
+        AppMethodBeat.o(196093);
         return 0;
       }
-      AppMethodBeat.o(125730);
+      AppMethodBeat.o(196093);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bci
  * JD-Core Version:    0.7.0.1
  */

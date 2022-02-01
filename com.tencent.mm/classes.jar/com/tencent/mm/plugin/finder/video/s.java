@@ -1,84 +1,42 @@
 package com.tencent.mm.plugin.finder.video;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.videocomposition.c;
-import d.a.j;
-import d.g.a.a;
-import d.g.a.m;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.plugin.finder.storage.FeedData;
+import com.tencent.mm.protocal.protobuf.cjl;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/ThumbFetcherWrapper;", "Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "start", "", "thumbFetcher", "destroyCallback", "Lkotlin/Function0;", "", "(JLcom/tencent/mm/videocomposition/ITrackThumbFetcher;Lkotlin/jvm/functions/Function0;)V", "getDestroyCallback", "()Lkotlin/jvm/functions/Function0;", "getStart", "()J", "getThumbFetcher", "()Lcom/tencent/mm/videocomposition/ITrackThumbFetcher;", "cancel", "callback", "Lkotlin/Function2;", "Landroid/graphics/Bitmap;", "Lcom/tencent/mm/videocomposition/ThumbCallback;", "time", "destroy", "requestFrames", "times", "", "setSize", "width", "", "height", "plugin-finder_release"})
-public final class s
-  implements c
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/MediaInfo;", "", "downloadUrl", "", "path", "mediaId", "localFinderMedia", "Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "video", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "feedData", "Lcom/tencent/mm/plugin/finder/storage/FeedData;", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;Lcom/tencent/mm/plugin/finder/storage/FeedData;)V", "getDownloadUrl", "()Ljava/lang/String;", "getFeedData", "()Lcom/tencent/mm/plugin/finder/storage/FeedData;", "getLocalFinderMedia", "()Lcom/tencent/mm/protocal/protobuf/LocalFinderMedia;", "getMediaId", "getPath", "getVideo", "()Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "toString", "plugin-finder_release"})
+public class s
 {
-  private final c sQw;
-  final long start;
-  private final a<z> tbB;
+  final String downloadUrl;
+  public final String mediaId;
+  public final String path;
+  public final com.tencent.mm.plugin.finder.loader.s tHN;
+  final cjl wgl;
+  public final FeedData wgm;
   
-  public s(long paramLong, c paramc, a<z> parama)
+  public s(String paramString1, String paramString2, String paramString3, cjl paramcjl, com.tencent.mm.plugin.finder.loader.s params, FeedData paramFeedData)
   {
-    AppMethodBeat.i(205513);
-    this.start = paramLong;
-    this.sQw = paramc;
-    this.tbB = parama;
-    AppMethodBeat.o(205513);
+    AppMethodBeat.i(254405);
+    this.downloadUrl = paramString1;
+    this.path = paramString2;
+    this.mediaId = paramString3;
+    this.wgl = paramcjl;
+    this.tHN = params;
+    this.wgm = paramFeedData;
+    AppMethodBeat.o(254405);
   }
   
-  public final void b(List<Long> paramList, final m<? super Long, ? super Bitmap, z> paramm)
+  public String toString()
   {
-    AppMethodBeat.i(205510);
-    p.h(paramList, "times");
-    p.h(paramm, "callback");
-    c localc = this.sQw;
-    Object localObject = (Iterable)paramList;
-    paramList = (Collection)new ArrayList(j.a((Iterable)localObject, 10));
-    localObject = ((Iterable)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      paramList.add(Long.valueOf(((Number)((Iterator)localObject).next()).longValue() + this.start));
-    }
-    localc.b((List)paramList, (m)new a(this, paramm));
-    AppMethodBeat.o(205510);
-  }
-  
-  public final void c(m<? super Long, ? super Bitmap, z> paramm)
-  {
-    AppMethodBeat.i(205511);
-    p.h(paramm, "callback");
-    this.sQw.c(paramm);
-    AppMethodBeat.o(205511);
-  }
-  
-  public final void destroy()
-  {
-    AppMethodBeat.i(205512);
-    this.sQw.destroy();
-    this.tbB.invoke();
-    AppMethodBeat.o(205512);
-  }
-  
-  public final void setSize(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(205509);
-    this.sQw.setSize(paramInt1, paramInt2);
-    AppMethodBeat.o(205509);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "time", "", "bitmap", "Landroid/graphics/Bitmap;", "invoke"})
-  static final class a
-    extends q
-    implements m<Long, Bitmap, z>
-  {
-    a(s params, m paramm)
+    AppMethodBeat.i(254404);
+    Object localObject = new StringBuilder(" downloadUrl='").append(this.downloadUrl).append("', path='").append(this.path).append("', mediaId='").append(this.mediaId).append("' localFinderMedia is null? ");
+    if (this.wgl == null) {}
+    for (boolean bool = true;; bool = false)
     {
-      super();
+      localObject = bool + ' ';
+      AppMethodBeat.o(254404);
+      return localObject;
     }
   }
 }

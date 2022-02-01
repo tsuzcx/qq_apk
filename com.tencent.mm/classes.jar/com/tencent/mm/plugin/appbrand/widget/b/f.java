@@ -9,21 +9,21 @@ class f
   extends ImageView
   implements com.tencent.mm.plugin.appbrand.jsapi.base.f
 {
-  private boolean lSK;
+  private boolean nak;
   
   public f(Context paramContext)
   {
     super(paramContext);
   }
   
-  public boolean bjI()
+  public boolean bEY()
   {
-    return this.lSK;
+    return this.nak;
   }
   
   public void setInterceptEvent(boolean paramBoolean)
   {
-    this.lSK = paramBoolean;
+    this.nak = paramBoolean;
   }
 }
 

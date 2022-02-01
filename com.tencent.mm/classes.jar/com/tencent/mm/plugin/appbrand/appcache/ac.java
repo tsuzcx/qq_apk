@@ -4,13 +4,13 @@ import android.database.Cursor;
 import android.os.StatFs;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.hw;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.config.v;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.g.b.a.lr;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.config.y;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.vfs.s;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -18,49 +18,49 @@ import java.util.Locale;
 
 public final class ac
 {
-  private static final byte[] jJL = new byte[0];
+  private static final byte[] kLI = new byte[0];
   
   public static b a(long paramLong, a parama)
   {
     AppMethodBeat.i(44310);
     if (paramLong <= 0L)
     {
-      parama = b.jJN;
+      parama = b.kLK;
       AppMethodBeat.o(44310);
       return parama;
     }
-    Object localObject1 = new StatFs(az.baY());
+    Object localObject1 = new StatFs(az.bwm());
     int i = ((StatFs)localObject1).getAvailableBlocks();
     long l = ((StatFs)localObject1).getBlockSize() * i;
     if ((l < 0L) || (l > paramLong))
     {
-      parama = b.jJN;
+      parama = b.kLK;
       AppMethodBeat.o(44310);
       return parama;
     }
-    localObject1 = (ai)j.T(ai.class);
+    localObject1 = (ai)n.W(ai.class);
     if (localObject1 == null)
     {
-      ae.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, lruStorage NULL", new Object[] { Long.valueOf(paramLong) });
-      parama = b.jJP;
+      Log.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, lruStorage NULL", new Object[] { Long.valueOf(paramLong) });
+      parama = b.kLM;
       AppMethodBeat.o(44310);
       return parama;
     }
     Object localObject4 = String.format(Locale.US, " %s, %s ASC", new Object[] { "hit", "hitTimeMS" });
     Object localObject3 = new LinkedList();
-    synchronized (jJL)
+    synchronized (kLI)
     {
-      localObject4 = ((ai)localObject1).db.a("PkgUsageLRURecord", new String[] { "appId", "type" }, null, null, null, null, (String)localObject4, 2);
+      localObject4 = ((ai)localObject1).db.query("PkgUsageLRURecord", new String[] { "appId", "type" }, null, null, null, null, (String)localObject4, 2);
       if (localObject4 == null)
       {
-        parama = b.jJP;
+        parama = b.kLM;
         AppMethodBeat.o(44310);
         return parama;
       }
       if (!((Cursor)localObject4).moveToFirst())
       {
         ((Cursor)localObject4).close();
-        parama = b.jJP;
+        parama = b.kLM;
         AppMethodBeat.o(44310);
         return parama;
       }
@@ -78,7 +78,7 @@ public final class ac
       {
         for (;;)
         {
-          ae.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy, read from cursor e = %s", new Object[] { localException });
+          Log.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy, read from cursor e = %s", new Object[] { localException });
           ((Cursor)localObject4).close();
         }
         parama = finally;
@@ -90,11 +90,11 @@ public final class ac
         ((Cursor)localObject4).close();
         AppMethodBeat.o(44310);
       }
-      ??? = j.aZu();
+      ??? = n.buL();
       if (??? == null)
       {
-        ae.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, pkgStorage NULL", new Object[] { Long.valueOf(paramLong) });
-        parama = b.jJP;
+        Log.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimBy %d, pkgStorage NULL", new Object[] { Long.valueOf(paramLong) });
+        parama = b.kLM;
         AppMethodBeat.o(44310);
         return parama;
       }
@@ -106,29 +106,29 @@ public final class ac
     while (((Iterator)localObject3).hasNext())
     {
       localObject4 = (Pair)((Iterator)localObject3).next();
-      Iterator localIterator = ((bh)???).a((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue(), bh.a.jLP, new String[] { "pkgPath" }).iterator();
+      Iterator localIterator = ((bh)???).a((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue(), bh.a.kNQ, new String[] { "pkgPath" }).iterator();
       while (localIterator.hasNext())
       {
         bd localbd = (bd)localIterator.next();
-        l = o.aZR(localbd.field_pkgPath) + l;
-        o.deleteFile(localbd.field_pkgPath);
+        l = s.boW(localbd.field_pkgPath) + l;
+        s.deleteFile(localbd.field_pkgPath);
         i += 1;
-        ((ai)localObject1).aM((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue());
+        ((ai)localObject1).aS((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue());
         a(parama);
         if (l >= paramLong)
         {
-          parama = new hw();
-          parama.euV = 3L;
-          parama.euX = i;
-          parama.euT = 1L;
-          parama.aLH();
-          parama = b.jJO;
+          parama = new lr();
+          parama.eZr = 3L;
+          parama.eZt = i;
+          parama.eZp = 1L;
+          parama.bfK();
+          parama = b.kLL;
           AppMethodBeat.o(44310);
           return parama;
         }
       }
     }
-    parama = b.jJP;
+    parama = b.kLM;
     AppMethodBeat.o(44310);
     return parama;
   }
@@ -136,7 +136,7 @@ public final class ac
   private static void a(a parama)
   {
     AppMethodBeat.i(44311);
-    if ((parama != null) && (parama.aWa()))
+    if ((parama != null) && (parama.bqX()))
     {
       parama = new InterruptedException();
       AppMethodBeat.o(44311);
@@ -145,74 +145,56 @@ public final class ac
     AppMethodBeat.o(44311);
   }
   
-  public static void aL(String arg0, int paramInt)
+  public static void aR(String arg0, int paramInt)
   {
     AppMethodBeat.i(44308);
-    if (bu.isNullOrNil(???))
+    if (Util.isNullOrNil(???))
     {
       AppMethodBeat.o(44308);
       return;
     }
-    String str = v.Om(???);
-    if (bu.isNullOrNil(str))
+    String str = y.Xw(???);
+    if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(44308);
       return;
     }
-    ai localai = (ai)j.T(ai.class);
+    ai localai = (ai)n.W(ai.class);
     if (localai == null)
     {
       AppMethodBeat.o(44308);
       return;
     }
-    synchronized (jJL)
+    synchronized (kLI)
     {
       ah localah = new ah();
       localah.field_appId = str;
       localah.field_type = paramInt;
-      if (localai.get(localah, ah.jHZ))
+      if (localai.get(localah, ah.kJX))
       {
         localah.field_hit += 1;
-        localah.field_hitTimeMS = bu.fpO();
-        localai.update(localah, ah.jHZ);
+        localah.field_hitTimeMS = Util.nowMilliSecond();
+        localai.update(localah, ah.kJX);
         AppMethodBeat.o(44308);
         return;
       }
       localah.field_hit = 1;
-      localah.field_hitTimeMS = bu.fpO();
+      localah.field_hitTimeMS = Util.nowMilliSecond();
       localai.insert(localah);
-    }
-  }
-  
-  public static b sQ(long paramLong)
-  {
-    AppMethodBeat.i(44309);
-    try
-    {
-      b localb1 = a(paramLong, a.jJM);
-      AppMethodBeat.o(44309);
-      return localb1;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      ae.e("MicroMsg.AppBrand.PkgPruneLRULogic", "trimOffSize with dummy check, get interrupted, e = %s", new Object[] { localInterruptedException });
-      b localb2 = b.jJP;
-      AppMethodBeat.o(44309);
-      return localb2;
     }
   }
   
   public static abstract interface a
   {
-    public static final a jJM = new a()
+    public static final a kLJ = new a()
     {
-      public final boolean aWa()
+      public final boolean bqX()
       {
         return false;
       }
     };
     
-    public abstract boolean aWa();
+    public abstract boolean bqX();
   }
   
   public static enum b
@@ -220,10 +202,10 @@ public final class ac
     static
     {
       AppMethodBeat.i(44307);
-      jJN = new b("NO_NEED", 0);
-      jJO = new b("TRIMMED", 1);
-      jJP = new b("TRIM_FAIL", 2);
-      jJQ = new b[] { jJN, jJO, jJP };
+      kLK = new b("NO_NEED", 0);
+      kLL = new b("TRIMMED", 1);
+      kLM = new b("TRIM_FAIL", 2);
+      kLN = new b[] { kLK, kLL, kLM };
       AppMethodBeat.o(44307);
     }
     
@@ -232,7 +214,7 @@ public final class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ac
  * JD-Core Version:    0.7.0.1
  */

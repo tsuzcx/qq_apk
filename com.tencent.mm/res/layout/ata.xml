@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/f40" android:paddingLeft="10.0dip" android:paddingTop="15.0dip" android:paddingRight="10.0dip" android:paddingBottom="15.0dip" android:layout_width="fill_parent" android:layout_height="87.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:background="@drawable/a4k" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.base.WxImageView android:id="@id/dng" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_margin="8.0dip" android:layout_centerVertical="true" />
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="16.0dip" android:layout_toStartOf="@id/dss" android:layout_toEndOf="@id/dng">
-            <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:id="@id/dmk" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/dvw" />
-            <TextView android:textSize="14.0dip" android:textColor="@color/cd" android:id="@id/dmj" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/dpe" />
-        </LinearLayout>
-        <com.tencent.mm.ui.base.WxImageView android:id="@id/dss" android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_centerVertical="true" android:layout_marginEnd="16.0dip" android:layout_alignParentEnd="true" />
-    </RelativeLayout>
-</RelativeLayout>
+<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="g8m">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="@dimen/h" android:layout_height="@dimen/h" android:src="@raw/ic_chat_list_empty" />
+        <TextView android:textSize="@dimen/aja" android:textStyle="bold" android:textColor="@color/uj" android:gravity="center" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:text="@string/dti" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -7,9 +7,9 @@ import com.tencent.mm.vending.j.d;
 public final class k
   implements b<j>
 {
-  protected j iVL;
-  public final b iVM;
-  public final a iVN;
+  protected j jSF;
+  public final b jSG;
+  public final a jSH;
   
   public k()
   {
@@ -21,15 +21,15 @@ public final class k
   private k(j paramj)
   {
     AppMethodBeat.i(63362);
-    this.iVM = new b();
-    this.iVN = new a();
-    this.iVL = paramj;
+    this.jSG = new b();
+    this.jSH = new a();
+    this.jSF = paramj;
     AppMethodBeat.o(63362);
   }
   
-  public final j aRH()
+  public final j bmm()
   {
-    return this.iVL;
+    return this.jSF;
   }
   
   public final class a
@@ -37,7 +37,7 @@ public final class k
   {
     public a() {}
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
     }
@@ -48,7 +48,7 @@ public final class k
   {
     public b() {}
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
     }
@@ -56,7 +56,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.k
  * JD-Core Version:    0.7.0.1
  */

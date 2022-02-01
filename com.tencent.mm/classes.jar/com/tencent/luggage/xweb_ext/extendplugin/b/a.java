@@ -6,7 +6,7 @@ import android.view.MotionEvent;
 import com.tencent.luggage.xweb_ext.extendplugin.a.b;
 import com.tencent.luggage.xweb_ext.extendplugin.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,19 +14,19 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class a
   implements c
 {
-  private com.tencent.luggage.xweb_ext.extendplugin.a.c cwa;
-  private Map<String, b> cwb;
-  private com.tencent.luggage.xweb_ext.extendplugin.c cwc;
+  private com.tencent.luggage.xweb_ext.extendplugin.a.c cJZ;
+  private Map<String, b> cKa;
+  private com.tencent.luggage.xweb_ext.extendplugin.c cKb;
   
   public a()
   {
     AppMethodBeat.i(139354);
-    this.cwb = new ConcurrentHashMap();
+    this.cKa = new ConcurrentHashMap();
     AppMethodBeat.o(139354);
   }
   
   /* Error */
-  private b c(String paramString1, int paramInt, String paramString2)
+  private b f(String paramString1, int paramInt, String paramString2)
   {
     // Byte code:
     //   0: aload_0
@@ -34,7 +34,7 @@ public final class a
     //   2: ldc 36
     //   4: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 29	com/tencent/luggage/xweb_ext/extendplugin/b/a:cwb	Ljava/util/Map;
+    //   8: getfield 29	com/tencent/luggage/xweb_ext/extendplugin/b/a:cKa	Ljava/util/Map;
     //   11: aload_3
     //   12: invokeinterface 42 2 0
     //   17: checkcast 44	com/tencent/luggage/xweb_ext/extendplugin/a/b
@@ -52,14 +52,14 @@ public final class a
     //   42: iconst_0
     //   43: aload_3
     //   44: aastore
-    //   45: invokestatic 56	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   45: invokestatic 56	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   48: aload 5
     //   50: astore 4
     //   52: aload_0
-    //   53: getfield 58	com/tencent/luggage/xweb_ext/extendplugin/b/a:cwa	Lcom/tencent/luggage/xweb_ext/extendplugin/a/c;
+    //   53: getfield 58	com/tencent/luggage/xweb_ext/extendplugin/b/a:cJZ	Lcom/tencent/luggage/xweb_ext/extendplugin/a/c;
     //   56: ifnull +85 -> 141
     //   59: aload_0
-    //   60: getfield 58	com/tencent/luggage/xweb_ext/extendplugin/b/a:cwa	Lcom/tencent/luggage/xweb_ext/extendplugin/a/c;
+    //   60: getfield 58	com/tencent/luggage/xweb_ext/extendplugin/b/a:cJZ	Lcom/tencent/luggage/xweb_ext/extendplugin/a/c;
     //   63: aload_1
     //   64: invokeinterface 64 2 0
     //   69: astore 4
@@ -80,7 +80,7 @@ public final class a
     //   94: invokevirtual 70	java/lang/Object:hashCode	()I
     //   97: invokestatic 76	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   100: aastore
-    //   101: invokestatic 79	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   101: invokestatic 79	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   104: aload 4
     //   106: iload_2
     //   107: invokeinterface 82 2 0
@@ -91,7 +91,7 @@ public final class a
     //   122: aload_0
     //   123: invokeinterface 90 2 0
     //   128: aload_0
-    //   129: getfield 29	com/tencent/luggage/xweb_ext/extendplugin/b/a:cwb	Ljava/util/Map;
+    //   129: getfield 29	com/tencent/luggage/xweb_ext/extendplugin/b/a:cKa	Ljava/util/Map;
     //   132: aload_3
     //   133: aload 4
     //   135: invokeinterface 94 3 0
@@ -111,7 +111,7 @@ public final class a
     //   162: iconst_0
     //   163: aload_3
     //   164: aastore
-    //   165: invokestatic 56	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   165: invokestatic 56	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   168: goto -27 -> 141
     //   171: astore_1
     //   172: aload_0
@@ -144,26 +144,26 @@ public final class a
     return str;
   }
   
-  public final com.tencent.luggage.xweb_ext.extendplugin.c GR()
+  public final com.tencent.luggage.xweb_ext.extendplugin.c QK()
   {
-    return this.cwc;
+    return this.cKb;
   }
   
   public final String a(String paramString, int paramInt, com.tencent.luggage.xweb_ext.extendplugin.a parama)
   {
     AppMethodBeat.i(139356);
     String str = d.o(paramString, paramInt);
-    ae.i(getLogTag(), "handleJsApi, key:%s, jsapi:%s", new Object[] { str, parama.FK() });
-    paramString = c(paramString, paramInt, str);
+    Log.i(getLogTag(), "handleJsApi, key:%s, jsapi:%s", new Object[] { str, parama.Pt() });
+    paramString = f(paramString, paramInt, str);
     if (paramString == null)
     {
-      ae.w(getLogTag(), "handleJsApi, key:%s, handler is null", new Object[] { str });
+      Log.w(getLogTag(), "handleJsApi, key:%s, handler is null", new Object[] { str });
       AppMethodBeat.o(139356);
       return "";
     }
     if (paramString.g(parama))
     {
-      if (parama.FI())
+      if (parama.Pr())
       {
         paramString = paramString.h(parama);
         AppMethodBeat.o(139356);
@@ -173,9 +173,9 @@ public final class a
       AppMethodBeat.o(139356);
       return "";
     }
-    if (parama.FI())
+    if (parama.Pr())
     {
-      paramString = parama.dw("ok");
+      paramString = parama.dP("ok");
       AppMethodBeat.o(139356);
       return paramString;
     }
@@ -185,27 +185,27 @@ public final class a
   
   public final void a(com.tencent.luggage.xweb_ext.extendplugin.a.c paramc)
   {
-    this.cwa = paramc;
+    this.cJZ = paramc;
   }
   
   public final void a(com.tencent.luggage.xweb_ext.extendplugin.c paramc)
   {
-    this.cwc = paramc;
+    this.cKb = paramc;
   }
   
   public final void onPluginDestroy(String paramString, int paramInt)
   {
     AppMethodBeat.i(139358);
     String str = d.o(paramString, paramInt);
-    ae.i(getLogTag(), "onPluginDestroy, key:%s", new Object[] { str });
-    paramString = c(paramString, paramInt, str);
+    Log.i(getLogTag(), "onPluginDestroy, key:%s", new Object[] { str });
+    paramString = f(paramString, paramInt, str);
     if (paramString == null)
     {
-      ae.w(getLogTag(), "onPluginDestroy, key:%s, handler is null", new Object[] { str });
+      Log.w(getLogTag(), "onPluginDestroy, key:%s, handler is null", new Object[] { str });
       AppMethodBeat.o(139358);
       return;
     }
-    paramString.Gh();
+    paramString.PQ();
     AppMethodBeat.o(139358);
   }
   
@@ -213,15 +213,15 @@ public final class a
   {
     AppMethodBeat.i(139357);
     String str = d.o(paramString, paramInt);
-    ae.i(getLogTag(), "onPluginReady, key:%s", new Object[] { str });
-    paramString = c(paramString, paramInt, str);
+    Log.i(getLogTag(), "onPluginReady, key:%s", new Object[] { str });
+    paramString = f(paramString, paramInt, str);
     if (paramString == null)
     {
-      ae.w(getLogTag(), "onPluginReady, key:%s, handler is null", new Object[] { str });
+      Log.w(getLogTag(), "onPluginReady, key:%s, handler is null", new Object[] { str });
       AppMethodBeat.o(139357);
       return;
     }
-    ae.i(getLogTag(), "onPluginReady, key:%s, handler is ready", new Object[] { str });
+    Log.i(getLogTag(), "onPluginReady, key:%s, handler is ready", new Object[] { str });
     paramString.e(paramSurfaceTexture);
     AppMethodBeat.o(139357);
   }
@@ -230,11 +230,11 @@ public final class a
   {
     AppMethodBeat.i(178851);
     String str = d.o(paramString, paramInt);
-    ae.v(getLogTag(), "onPluginScreenshotTaken, key:%s", new Object[] { str });
-    paramString = c(paramString, paramInt, str);
+    Log.v(getLogTag(), "onPluginScreenshotTaken, key:%s", new Object[] { str });
+    paramString = f(paramString, paramInt, str);
     if (paramString == null)
     {
-      ae.w(getLogTag(), "onPluginScreenshotTaken, key:%s, handler is null", new Object[] { str });
+      Log.w(getLogTag(), "onPluginScreenshotTaken, key:%s, handler is null", new Object[] { str });
       AppMethodBeat.o(178851);
       return;
     }
@@ -246,15 +246,15 @@ public final class a
   {
     AppMethodBeat.i(139359);
     String str = d.o(paramString, paramInt);
-    ae.v(getLogTag(), "onPluginTouch, key:%s", new Object[] { str });
-    paramString = c(paramString, paramInt, str);
+    Log.v(getLogTag(), "onPluginTouch, key:%s", new Object[] { str });
+    paramString = f(paramString, paramInt, str);
     if (paramString == null)
     {
-      ae.w(getLogTag(), "onPluginTouch, key:%s, handler is null", new Object[] { str });
+      Log.w(getLogTag(), "onPluginTouch, key:%s, handler is null", new Object[] { str });
       AppMethodBeat.o(139359);
       return;
     }
-    paramString.l(paramMotionEvent);
+    paramString.o(paramMotionEvent);
     AppMethodBeat.o(139359);
   }
   
@@ -262,11 +262,11 @@ public final class a
   {
     try
     {
-      AppMethodBeat.i(220542);
+      AppMethodBeat.i(215748);
       paramString = d.o(paramString, paramInt);
-      ae.i(getLogTag(), "removePlugin, key:%s", new Object[] { paramString });
-      this.cwb.remove(paramString);
-      AppMethodBeat.o(220542);
+      Log.i(getLogTag(), "removePlugin, key:%s", new Object[] { paramString });
+      this.cKa.remove(paramString);
+      AppMethodBeat.o(215748);
       return;
     }
     finally
@@ -278,7 +278,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.b.a
  * JD-Core Version:    0.7.0.1
  */

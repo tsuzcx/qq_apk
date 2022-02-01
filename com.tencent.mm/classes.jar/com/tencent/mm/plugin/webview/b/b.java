@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.webview.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.HashMap;
@@ -15,22 +15,22 @@ import org.json.JSONArray;
 
 public final class b
 {
-  private static long EaT = 2592000L;
-  private static b EaU;
-  private c EaV;
-  private Map<String, Long> EaW;
-  private long EaX;
+  private static long INf = 2592000L;
+  private static b INg;
+  private c INh;
+  private Map<String, Long> INi;
+  private long INj;
   
   public b()
   {
     AppMethodBeat.i(77829);
-    this.EaW = new HashMap();
-    this.EaX = 0L;
+    this.INi = new HashMap();
+    this.INj = 0L;
     AppMethodBeat.o(77829);
   }
   
   /* Error */
-  public static String aHS(String paramString)
+  public static String aXS(String paramString)
   {
     // Byte code:
     //   0: aconst_null
@@ -38,7 +38,7 @@ public final class b
     //   3: ldc 52
     //   5: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: invokestatic 58	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   9: invokestatic 58	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   12: ifeq +10 -> 22
     //   15: ldc 52
     //   17: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -49,19 +49,19 @@ public final class b
     //   26: new 66	java/lang/StringBuilder
     //   29: dup
     //   30: invokespecial 67	java/lang/StringBuilder:<init>	()V
-    //   33: invokestatic 73	com/tencent/mm/plugin/webview/b/c:eRG	()Ljava/lang/String;
+    //   33: invokestatic 73	com/tencent/mm/plugin/webview/b/c:gao	()Ljava/lang/String;
     //   36: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   39: aload_0
     //   40: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   43: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   46: astore_0
-    //   47: new 82	com/tencent/mm/vfs/k
+    //   47: new 82	com/tencent/mm/vfs/o
     //   50: dup
     //   51: aload_0
-    //   52: invokespecial 85	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   52: invokespecial 85	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
     //   55: astore 4
     //   57: aload 4
-    //   59: invokevirtual 89	com/tencent/mm/vfs/k:exists	()Z
+    //   59: invokevirtual 89	com/tencent/mm/vfs/o:exists	()Z
     //   62: istore_3
     //   63: iload_3
     //   64: ifne +10 -> 74
@@ -70,10 +70,10 @@ public final class b
     //   72: aconst_null
     //   73: areturn
     //   74: aload 4
-    //   76: invokestatic 95	com/tencent/mm/vfs/o:ai	(Lcom/tencent/mm/vfs/k;)Ljava/io/InputStream;
+    //   76: invokestatic 95	com/tencent/mm/vfs/s:ao	(Lcom/tencent/mm/vfs/o;)Ljava/io/InputStream;
     //   79: astore_0
     //   80: aload 4
-    //   82: invokevirtual 98	com/tencent/mm/vfs/k:length	()J
+    //   82: invokevirtual 98	com/tencent/mm/vfs/o:length	()J
     //   85: l2i
     //   86: newarray byte
     //   88: astore 4
@@ -101,7 +101,7 @@ public final class b
     //   130: lsub
     //   131: invokestatic 122	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   134: aastore
-    //   135: invokestatic 127	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   135: invokestatic 127	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   138: ldc 52
     //   140: invokestatic 43	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   143: aload 4
@@ -118,7 +118,7 @@ public final class b
     //   163: invokevirtual 133	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   166: invokevirtual 77	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   169: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   172: invokestatic 137	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   172: invokestatic 137	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   175: aload 5
     //   177: astore 4
     //   179: goto -71 -> 108
@@ -144,21 +144,21 @@ public final class b
     //   80	108	186	java/lang/Exception
   }
   
-  private long aHU(String paramString)
+  private long aXU(String paramString)
   {
     AppMethodBeat.i(77840);
-    if (this.EaW.containsKey(paramString))
+    if (this.INi.containsKey(paramString))
     {
-      l = ((Long)this.EaW.get(paramString)).longValue();
+      l = ((Long)this.INi.get(paramString)).longValue();
       AppMethodBeat.o(77840);
       return l;
     }
-    long l = eRF().aHU(paramString);
+    long l = gan().aXU(paramString);
     AppMethodBeat.o(77840);
     return l;
   }
   
-  private static long bw(String paramString, long paramLong)
+  private static long bx(String paramString, long paramLong)
   {
     AppMethodBeat.i(77841);
     if (paramString.equals("wx62d9035fd4fd2059"))
@@ -170,29 +170,29 @@ public final class b
     return paramLong - 10485760L;
   }
   
-  public static b eRE()
+  public static b gam()
   {
     AppMethodBeat.i(77830);
-    if (EaU == null) {
-      EaU = new b();
+    if (INg == null) {
+      INg = new b();
     }
-    b localb = EaU;
+    b localb = INg;
     AppMethodBeat.o(77830);
     return localb;
   }
   
-  public static boolean kO(String paramString1, String paramString2)
+  public static boolean lL(String paramString1, String paramString2)
   {
     bool = false;
     AppMethodBeat.i(77833);
-    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(77833);
       return false;
     }
-    ae.d("MicroMsg.WebViewDataCenter", "PageCache cache_size:%d, cache_content:%s", new Object[] { Integer.valueOf(paramString2.getBytes().length), paramString2 });
-    String str = c.eRG() + paramString1;
-    paramString1 = new k(c.eRG());
+    Log.d("MicroMsg.WebViewDataCenter", "PageCache cache_size:%d, cache_content:%s", new Object[] { Integer.valueOf(paramString2.getBytes().length), paramString2 });
+    String str = c.gao() + paramString1;
+    paramString1 = new o(c.gao());
     if ((!paramString1.exists()) || (!paramString1.isDirectory())) {
       paramString1.mkdirs();
     }
@@ -202,7 +202,7 @@ public final class b
     {
       byte[] arrayOfByte = paramString2.getBytes();
       paramString1 = localObject;
-      paramString2 = o.db(str, false);
+      paramString2 = s.dw(str, false);
       paramString1 = paramString2;
       paramString2.write(arrayOfByte);
       bool = true;
@@ -216,7 +216,7 @@ public final class b
         AppMethodBeat.o(77833);
         return bool;
         paramString2 = paramString2;
-        ae.e("MicroMsg.WebViewDataCenter", "savePageCache: " + paramString2.getMessage());
+        Log.e("MicroMsg.WebViewDataCenter", "savePageCache: " + paramString2.getMessage());
       }
       catch (IOException paramString1)
       {
@@ -226,7 +226,7 @@ public final class b
     if (paramString1 == null) {}
   }
   
-  public static long kP(String paramString1, String paramString2)
+  public static long lM(String paramString1, String paramString2)
   {
     AppMethodBeat.i(77836);
     long l = paramString1.getBytes().length + paramString2.getBytes().length;
@@ -237,7 +237,7 @@ public final class b
   public final boolean a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean)
   {
     AppMethodBeat.i(77832);
-    paramBoolean = a(paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean, kP(paramString2, paramString3), "");
+    paramBoolean = a(paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean, lM(paramString2, paramString3), "");
     AppMethodBeat.o(77832);
     return paramBoolean;
   }
@@ -245,17 +245,17 @@ public final class b
   public final boolean a(String paramString1, String paramString2, final String paramString3, final String paramString4, final String paramString5, boolean paramBoolean, long paramLong, final String paramString6)
   {
     AppMethodBeat.i(77835);
-    long l1 = eRF().kR(paramString1, paramString2);
+    long l1 = gan().lO(paramString1, paramString2);
     long l2 = paramLong - l1;
-    final long l3 = aHU(paramString1) + l2;
-    final long l4 = bw(paramString1, l3);
-    ae.i("MicroMsg.WebViewDataCenter", "prevSize = %d, valueSize = %d, diffSize = %d, newAppSize = %d, expireSize = %d", new Object[] { Long.valueOf(l1), Long.valueOf(paramLong), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4) });
+    final long l3 = aXU(paramString1) + l2;
+    final long l4 = bx(paramString1, l3);
+    Log.i("MicroMsg.WebViewDataCenter", "prevSize = %d, valueSize = %d, diffSize = %d, newAppSize = %d, expireSize = %d", new Object[] { Long.valueOf(l1), Long.valueOf(paramLong), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4) });
     if ((l4 > 0L) && (!paramBoolean))
     {
       AppMethodBeat.o(77835);
       return false;
     }
-    com.tencent.mm.plugin.webview.a.a.ad(new Runnable()
+    com.tencent.mm.plugin.webview.a.a.aj(new Runnable()
     {
       public final void run()
       {
@@ -265,13 +265,13 @@ public final class b
         String str;
         if (l4 > 0L)
         {
-          l = b.this.eRF().by(l3, l4);
+          l = b.this.gan().bz(l3, l4);
           b.a(b.this).put(l3, Long.valueOf(paramString3 - l));
-          if (!bu.isNullOrNil(paramString4)) {
+          if (!Util.isNullOrNil(paramString4)) {
             break label191;
           }
-          b.this.eRF().a(l3, paramString5, "", bu.bI(paramString6, "1"), b.aHV(this.Ebb), this.cZx);
-          localc = b.this.eRF();
+          b.this.gan().a(l3, paramString5, "", Util.nullAs(paramString6, "1"), b.aXV(this.INn), this.val$fileName);
+          localc = b.this.gan();
           str = l3;
           if (b.a(b.this).get(l3) != null) {
             break label234;
@@ -281,13 +281,13 @@ public final class b
         label234:
         for (long l = 0L;; l = ((Long)b.a(b.this).get(l3)).longValue())
         {
-          localc.bx(str, l);
+          localc.by(str, l);
           b.b(b.this);
           AppMethodBeat.o(77828);
           return;
           b.a(b.this).put(l3, Long.valueOf(paramString3));
           break;
-          b.this.eRF().a(l3, paramString5, paramString4, bu.bI(paramString6, "1"), b.aHV(this.Ebb), "");
+          b.this.gan().a(l3, paramString5, paramString4, Util.nullAs(paramString6, "1"), b.aXV(this.INn), "");
           break label109;
         }
       }
@@ -296,37 +296,37 @@ public final class b
     return true;
   }
   
-  public final void aHT(String paramString)
+  public final void aXT(String paramString)
   {
     AppMethodBeat.i(77839);
-    eRF().aHT(paramString);
+    gan().aXT(paramString);
     AppMethodBeat.o(77839);
   }
   
   public final void b(String paramString, JSONArray paramJSONArray)
   {
     AppMethodBeat.i(77838);
-    eRF().b(paramString, paramJSONArray);
+    gan().b(paramString, paramJSONArray);
     AppMethodBeat.o(77838);
   }
   
-  public final c eRF()
+  public final c gan()
   {
     AppMethodBeat.i(77831);
-    if (this.EaV == null)
+    if (this.INh == null)
     {
-      g.ajS();
-      this.EaV = new c(g.ajR().gDX);
+      g.aAi();
+      this.INh = new c(g.aAh().hqK);
     }
-    c localc = this.EaV;
+    c localc = this.INh;
     AppMethodBeat.o(77831);
     return localc;
   }
   
-  public final a kQ(String paramString1, String paramString2)
+  public final a lN(String paramString1, String paramString2)
   {
     AppMethodBeat.i(77837);
-    paramString1 = eRF().kQ(paramString1, paramString2);
+    paramString1 = gan().lN(paramString1, paramString2);
     AppMethodBeat.o(77837);
     return paramString1;
   }

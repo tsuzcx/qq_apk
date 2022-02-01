@@ -2,19 +2,15 @@ package com.tencent.mm.plugin.gamelife.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.gamelife.PluginGameLife;
 import com.tencent.mm.plugin.gamelife.c.d;
 import com.tencent.mm.plugin.gamelife.c.e;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bq.a;
-import d.a.j;
-import d.g.a.m;
-import d.g.b.p;
-import d.g.b.q;
-import d.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bv.a;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -25,60 +21,66 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import kotlin.a.ae;
+import kotlin.a.j;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.x;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactService;", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContactService;", "()V", "cache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContact;", "contactExtension", "com/tencent/mm/plugin/gamelife/contact/GameLifeContactService$contactExtension$1", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactService$contactExtension$1;", "addOnStorageChange", "", "storageChange", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "checkContactExpired", "username", "deleteCache", "getContact", "callback", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContactService$ContactCallback;", "usernameList", "", "getContactExtension", "Lcom/tencent/mm/storage/IContactStorage$IContactExtension;", "getContactExtension$plugin_gamelife_release", "getContactFromLocal", "", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "result", "remain", "getContactFromServer", "isBlackListAssociateWithWAGame", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContactService$BlackListAssociateCallback;", "removeCacheInWX", "removeOnStorageChange", "setBlackListAssociateWithWAGame", "setBlack", "", "isAssociate", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContactService$BlackListSetCallback;", "updateCache", "contact", "Companion", "plugin-gamelife_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactService;", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContactService;", "()V", "cache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContact;", "contactExtension", "com/tencent/mm/plugin/gamelife/contact/GameLifeContactService$contactExtension$1", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactService$contactExtension$1;", "addOnStorageChange", "", "storageChange", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "checkContactExpired", "username", "deleteCache", "getContact", "callback", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContactService$ContactCallback;", "usernameList", "", "getContactExtension", "Lcom/tencent/mm/storage/IContactStorage$IContactExtension;", "getContactExtension$plugin_gamelife_release", "getContactFromLocal", "", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "result", "remain", "getContactFromServer", "isBlackListAssociateWithWAGame", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContactService$BlackListAssociateCallback;", "removeCacheInWX", "removeOnStorageChange", "setBlackListAssociateWithWAGame", "setBlack", "", "isAssociate", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContactService$BlackListSetCallback;", "updateCache", "contact", "Companion", "plugin-gamelife_release"})
 public final class b
   implements com.tencent.mm.plugin.gamelife.a.b
 {
-  public static final a uJq;
+  public static final b.a ybH;
   private final ConcurrentHashMap<String, a> cache;
-  public final c uJp;
+  public final c ybG;
   
   static
   {
-    AppMethodBeat.i(212081);
-    uJq = new a((byte)0);
-    AppMethodBeat.o(212081);
+    AppMethodBeat.i(241321);
+    ybH = new b.a((byte)0);
+    AppMethodBeat.o(241321);
   }
   
   public b()
   {
-    AppMethodBeat.i(212080);
+    AppMethodBeat.i(241320);
     this.cache = new ConcurrentHashMap();
-    this.uJp = new c(this);
-    AppMethodBeat.o(212080);
+    this.ybG = new c(this);
+    AppMethodBeat.o(241320);
   }
   
   private final void a(a parama)
   {
-    AppMethodBeat.i(212078);
+    AppMethodBeat.i(241318);
     String str = parama.getUsername();
     ((Map)this.cache).put(str, parama);
-    anF(str);
-    AppMethodBeat.o(212078);
+    aAY(str);
+    AppMethodBeat.o(241318);
   }
   
-  private static void anF(String paramString)
+  private static void aAY(String paramString)
   {
-    AppMethodBeat.i(212079);
-    com.tencent.mm.kernel.c.a locala = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    AppMethodBeat.i(241319);
+    com.tencent.mm.kernel.c.a locala = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     p.g(locala, "MMKernel.service(IMessengerStorage::class.java)");
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).azF().alb(paramString);
-    AppMethodBeat.o(212079);
+    ((com.tencent.mm.plugin.messenger.foundation.a.l)locala).aSN().ayf(paramString);
+    AppMethodBeat.o(241319);
   }
   
   private final void b(final List<String> paramList, final com.tencent.mm.plugin.gamelife.a.b.c paramc)
   {
-    AppMethodBeat.i(212073);
+    AppMethodBeat.i(241313);
     final HashMap localHashMap = new HashMap();
-    new d(new LinkedList((Collection)paramList)).aET().j((com.tencent.mm.vending.c.a)new f(this, localHashMap, paramList, paramc));
-    AppMethodBeat.o(212073);
+    new d(new LinkedList((Collection)paramList)).aYI().j((com.tencent.mm.vending.c.a)new f(this, localHashMap, paramList, paramc));
+    AppMethodBeat.o(241313);
   }
   
-  private final void c(List<String> paramList, m<? super Map<String, a>, ? super List<String>, z> paramm)
+  private final void c(List<String> paramList, m<? super Map<String, a>, ? super List<String>, x> paramm)
   {
-    AppMethodBeat.i(212071);
-    Map localMap = ((PluginGameLife)g.ad(PluginGameLife.class)).getContactStorage().ek(paramList);
+    AppMethodBeat.i(241311);
+    Map localMap = ((PluginGameLife)g.ah(PluginGameLife.class)).getContactStorage().fd(paramList);
     Object localObject1 = ((Iterable)localMap.values()).iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
@@ -86,7 +88,7 @@ public final class b
       localObject2 = (a)((Iterator)localObject1).next();
       String str = ((a)localObject2).getUsername();
       ((Map)this.cache).put(str, localObject2);
-      anF(str);
+      aAY(str);
     }
     localObject1 = (Iterable)paramList;
     paramList = (Collection)new ArrayList();
@@ -98,13 +100,13 @@ public final class b
         paramList.add(localObject2);
       }
     }
-    paramm.p(localMap, (List)paramList);
-    AppMethodBeat.o(212071);
+    paramm.invoke(localMap, (List)paramList);
+    AppMethodBeat.o(241311);
   }
   
-  public final void a(String paramString, final com.tencent.mm.plugin.gamelife.a.b.a parama)
+  public final void a(String paramString, com.tencent.mm.plugin.gamelife.a.b.a parama)
   {
-    AppMethodBeat.i(212076);
+    AppMethodBeat.i(241316);
     p.h(paramString, "username");
     p.h(parama, "callback");
     if (((CharSequence)paramString).length() == 0) {}
@@ -112,52 +114,52 @@ public final class b
     {
       if (i != 0)
       {
-        com.tencent.mm.sdk.platformtools.ae.e("GameLife.ContactService", "isBlackListAssociateWithWAGame username null!");
-        parama.R(false, false);
+        Log.e("GameLife.ContactService", "isBlackListAssociateWithWAGame username null!");
+        parama.U(false, false);
       }
-      com.tencent.mm.sdk.platformtools.ae.i("GameLife.ContactService", "isBlackListAssociateWithWAGame username:%s", new Object[] { paramString });
-      new com.tencent.mm.plugin.gamelife.c.a(paramString).aET().j((com.tencent.mm.vending.c.a)new g(paramString, parama));
-      AppMethodBeat.o(212076);
+      Log.i("GameLife.ContactService", "isBlackListAssociateWithWAGame username:%s", new Object[] { paramString });
+      new com.tencent.mm.plugin.gamelife.c.a(paramString).aYI().j((com.tencent.mm.vending.c.a)new b.g(paramString, parama));
+      AppMethodBeat.o(241316);
       return;
     }
   }
   
   public final void a(String paramString, com.tencent.mm.plugin.gamelife.a.b.c paramc)
   {
-    AppMethodBeat.i(212068);
+    AppMethodBeat.i(241308);
     p.h(paramString, "username");
     p.h(paramc, "callback");
     a(j.mutableListOf(new String[] { paramString }), paramc);
-    AppMethodBeat.o(212068);
+    AppMethodBeat.o(241308);
   }
   
   public final void a(String paramString, boolean paramBoolean1, boolean paramBoolean2, com.tencent.mm.plugin.gamelife.a.b.b paramb)
   {
-    AppMethodBeat.i(212077);
+    AppMethodBeat.i(241317);
     CharSequence localCharSequence = (CharSequence)paramString;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("GameLife.ContactService", "setBlackListAssociateWithWAGame username null!");
-      paramb.nd(false);
-      AppMethodBeat.o(212077);
+      Log.e("GameLife.ContactService", "setBlackListAssociateWithWAGame username null!");
+      paramb.mM(false);
+      AppMethodBeat.o(241317);
       return;
     }
-    com.tencent.mm.sdk.platformtools.ae.i("GameLife.ContactService", "setBlackListAssociateWithWAGame username:%s,setBlack:%b,isAssociate:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
-    new e(paramString, paramBoolean1, paramBoolean2).aET().j((com.tencent.mm.vending.c.a)new h(paramb));
-    AppMethodBeat.o(212077);
+    Log.i("GameLife.ContactService", "setBlackListAssociateWithWAGame username:%s,setBlack:%b,isAssociate:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2) });
+    new e(paramString, paramBoolean1, paramBoolean2).aYI().j((com.tencent.mm.vending.c.a)new h(paramb));
+    AppMethodBeat.o(241317);
   }
   
   public final void a(List<String> paramList, final com.tencent.mm.plugin.gamelife.a.b.c paramc)
   {
-    AppMethodBeat.i(212067);
+    AppMethodBeat.i(241307);
     p.h(paramc, "callback");
     Object localObject = (Collection)paramList;
     if ((localObject == null) || (((Collection)localObject).isEmpty())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      paramc.ah(d.a.ae.emptyMap());
-      AppMethodBeat.o(212067);
+      paramc.aj(ae.emptyMap());
+      AppMethodBeat.o(241307);
       return;
     }
     paramc = (com.tencent.mm.plugin.gamelife.a.b.c)new e(paramList, paramc);
@@ -191,161 +193,158 @@ public final class b
     }
     if (localLinkedList.isEmpty())
     {
-      paramc.ah((Map)localObject);
-      AppMethodBeat.o(212067);
+      paramc.aj((Map)localObject);
+      AppMethodBeat.o(241307);
       return;
     }
     c((List)localLinkedList, (m)new d(this, (HashMap)localObject, paramc));
-    AppMethodBeat.o(212067);
+    AppMethodBeat.o(241307);
   }
   
-  public final a anE(String paramString)
+  public final void aAS(String paramString)
   {
-    AppMethodBeat.i(212069);
+    AppMethodBeat.i(241312);
     Object localObject = (CharSequence)paramString;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(212069);
+      Log.e("GameLife.ContactService", "checkContactExpired userName empty");
+      AppMethodBeat.o(241312);
+      return;
+    }
+    localObject = aAX(paramString);
+    if (localObject == null)
+    {
+      Log.e("GameLife.ContactService", "checkContactExpired contact null username:%s", new Object[] { paramString });
+      AppMethodBeat.o(241312);
+      return;
+    }
+    long l = cl.aWA() - ((a)localObject).field_updateTime;
+    Log.d("GameLife.ContactService", "syncTime diff:%d,contact.field_updateTime:%d", new Object[] { Long.valueOf(l), Long.valueOf(((a)localObject).field_updateTime) });
+    if (l >= 86400000L)
+    {
+      Log.i("GameLife.ContactService", "[checkContactExpired] diff:" + l + " limit:86400000 username:" + paramString);
+      b(j.listOf(paramString), (com.tencent.mm.plugin.gamelife.a.b.c)b.ybI);
+    }
+    AppMethodBeat.o(241312);
+  }
+  
+  public final a aAX(String paramString)
+  {
+    AppMethodBeat.i(241309);
+    Object localObject = (CharSequence)paramString;
+    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(241309);
       return null;
     }
     localObject = (a)this.cache.get(paramString);
     if (localObject != null)
     {
-      AppMethodBeat.o(212069);
+      AppMethodBeat.o(241309);
       return localObject;
     }
-    paramString = ((PluginGameLife)g.ad(PluginGameLife.class)).getContactStorage().anG(paramString);
+    paramString = ((PluginGameLife)g.ah(PluginGameLife.class)).getContactStorage().aAZ(paramString);
     if (paramString != null)
     {
       a(paramString);
-      AppMethodBeat.o(212069);
+      AppMethodBeat.o(241309);
       return paramString;
     }
-    AppMethodBeat.o(212069);
+    AppMethodBeat.o(241309);
     return null;
   }
   
-  public final void anz(String paramString)
+  public final void l(MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(212072);
-    Object localObject = (CharSequence)paramString;
-    if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    AppMethodBeat.i(241315);
+    if (paramIOnStorageChange != null)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("GameLife.ContactService", "checkContactExpired userName empty");
-      AppMethodBeat.o(212072);
+      ((PluginGameLife)g.ah(PluginGameLife.class)).getContactStorage().remove(paramIOnStorageChange);
+      AppMethodBeat.o(241315);
       return;
     }
-    localObject = anE(paramString);
-    if (localObject == null)
-    {
-      com.tencent.mm.sdk.platformtools.ae.e("GameLife.ContactService", "checkContactExpired contact null username:%s", new Object[] { paramString });
-      AppMethodBeat.o(212072);
-      return;
-    }
-    long l = ch.aDc() - ((a)localObject).field_updateTime;
-    com.tencent.mm.sdk.platformtools.ae.d("GameLife.ContactService", "syncTime diff:%d,contact.field_updateTime:%d", new Object[] { Long.valueOf(l), Long.valueOf(((a)localObject).field_updateTime) });
-    if (l >= 86400000L)
-    {
-      com.tencent.mm.sdk.platformtools.ae.i("GameLife.ContactService", "[checkContactExpired] diff:" + l + " limit:86400000 username:" + paramString);
-      b(j.listOf(paramString), (com.tencent.mm.plugin.gamelife.a.b.c)b.uJr);
-    }
-    AppMethodBeat.o(212072);
+    AppMethodBeat.o(241315);
   }
   
-  public final void l(k.a parama)
+  public final void m(MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(212075);
-    if (parama != null)
+    AppMethodBeat.i(241314);
+    if (paramIOnStorageChange != null)
     {
-      ((PluginGameLife)g.ad(PluginGameLife.class)).getContactStorage().remove(parama);
-      AppMethodBeat.o(212075);
+      ((PluginGameLife)g.ah(PluginGameLife.class)).getContactStorage().add(paramIOnStorageChange);
+      AppMethodBeat.o(241314);
       return;
     }
-    AppMethodBeat.o(212075);
+    AppMethodBeat.o(241314);
   }
   
-  public final void m(k.a parama)
-  {
-    AppMethodBeat.i(212074);
-    if (parama != null)
-    {
-      ((PluginGameLife)g.ad(PluginGameLife.class)).getContactStorage().add(parama);
-      AppMethodBeat.o(212074);
-      return;
-    }
-    AppMethodBeat.o(212074);
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContactService$Companion;", "", "()V", "CONTACT_EXPIRE_TIME", "", "TAG", "", "plugin-gamelife_release"})
-  public static final class a {}
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContact;", "", "onDone"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContact;", "", "onDone"})
   static final class b
     implements com.tencent.mm.plugin.gamelife.a.b.c
   {
-    public static final b uJr;
+    public static final b ybI;
     
     static
     {
-      AppMethodBeat.i(212058);
-      uJr = new b();
-      AppMethodBeat.o(212058);
+      AppMethodBeat.i(241298);
+      ybI = new b();
+      AppMethodBeat.o(241298);
     }
     
-    public final void ah(Map<String, com.tencent.mm.plugin.gamelife.a.a> paramMap) {}
+    public final void aj(Map<String, com.tencent.mm.plugin.gamelife.a.a> paramMap) {}
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/gamelife/contact/GameLifeContactService$contactExtension$1", "Lcom/tencent/mm/storage/IContactStorage$IContactExtension;", "get", "Lcom/tencent/mm/storage/Contact;", "username", "", "onPreInsertContact", "", "stg", "Lcom/tencent/mm/storage/IContactStorage;", "contact", "replace", "", "isUpdate", "", "plugin-gamelife_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/gamelife/contact/GameLifeContactService$contactExtension$1", "Lcom/tencent/mm/storage/IContactStorage$IContactExtension;", "get", "Lcom/tencent/mm/storage/Contact;", "username", "", "onPreInsertContact", "", "stg", "Lcom/tencent/mm/storage/IContactStorage;", "contact", "replace", "", "isUpdate", "", "plugin-gamelife_release"})
   public static final class c
-    implements bq.a
+    implements bv.a
   {
-    public final an BH(String paramString)
+    public final as Kn(String paramString)
     {
-      AppMethodBeat.i(212060);
+      AppMethodBeat.i(241300);
       Object localObject = (CharSequence)paramString;
       if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
-      for (int i = 1; (i != 0) || (!an.aUv(paramString)); i = 0)
+      for (int i = 1; (i != 0) || (!as.bju(paramString)); i = 0)
       {
-        AppMethodBeat.o(212060);
+        AppMethodBeat.o(241300);
         return null;
       }
-      localObject = ((com.tencent.mm.plugin.gamelife.a.f)g.ab(com.tencent.mm.plugin.gamelife.a.f.class)).ajf(paramString);
-      localObject = this.uJs.anE((String)localObject);
+      localObject = ((com.tencent.mm.plugin.gamelife.a.f)g.af(com.tencent.mm.plugin.gamelife.a.f.class)).avi(paramString);
+      localObject = this.ybJ.aAX((String)localObject);
       if (localObject != null) {}
-      for (localObject = ((a)localObject).ddm();; localObject = new an())
+      for (localObject = ((a)localObject).dWW();; localObject = new as())
       {
-        ((an)localObject).setUsername(paramString);
-        AppMethodBeat.o(212060);
+        ((as)localObject).setUsername(paramString);
+        AppMethodBeat.o(241300);
         return localObject;
       }
     }
     
-    public final void a(bq parambq, an paraman) {}
+    public final void a(bv parambv, as paramas) {}
     
-    public final int b(an paraman, boolean paramBoolean)
+    public final int b(as paramas, boolean paramBoolean)
     {
-      AppMethodBeat.i(212059);
-      if (paraman == null)
+      AppMethodBeat.i(241299);
+      if (paramas == null)
       {
-        AppMethodBeat.o(212059);
+        AppMethodBeat.o(241299);
         return -1;
       }
-      if (!an.aUv(paraman.getUsername()))
+      if (!as.bju(paramas.getUsername()))
       {
-        AppMethodBeat.o(212059);
+        AppMethodBeat.o(241299);
         return -1;
       }
-      AppMethodBeat.o(212059);
+      AppMethodBeat.o(241299);
       return 1;
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "resultMap", "", "", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContact;", "remain", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "resultMap", "", "", "Lcom/tencent/mm/plugin/gamelife/contact/GameLifeContact;", "remain", "", "invoke"})
   static final class d
     extends q
-    implements m<Map<String, ? extends a>, List<? extends String>, z>
+    implements m<Map<String, ? extends a>, List<? extends String>, x>
   {
     d(b paramb, HashMap paramHashMap, com.tencent.mm.plugin.gamelife.a.b.c paramc)
     {
@@ -353,16 +352,16 @@ public final class b
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContact;", "", "onDone"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "result", "", "", "kotlin.jvm.PlatformType", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifeContact;", "", "onDone"})
   static final class e
     implements com.tencent.mm.plugin.gamelife.a.b.c
   {
     e(List paramList, com.tencent.mm.plugin.gamelife.a.b.c paramc) {}
     
-    public final void ah(Map<String, com.tencent.mm.plugin.gamelife.a.a> paramMap)
+    public final void aj(Map<String, com.tencent.mm.plugin.gamelife.a.a> paramMap)
     {
-      AppMethodBeat.i(212063);
-      StringBuilder localStringBuilder1 = new StringBuilder("[getContact] usernameList=").append(this.jNj).append(" result=");
+      AppMethodBeat.i(241303);
+      StringBuilder localStringBuilder1 = new StringBuilder("[getContact] usernameList=").append(this.kPr).append(" result=");
       p.g(paramMap, "result");
       Collection localCollection = (Collection)new ArrayList(paramMap.size());
       Iterator localIterator = paramMap.entrySet().iterator();
@@ -372,29 +371,22 @@ public final class b
         StringBuilder localStringBuilder2 = new StringBuilder().append((String)((Map.Entry)localObject).getKey()).append('=');
         localObject = ((Map.Entry)localObject).getValue();
         p.g(localObject, "it.value");
-        localCollection.add(((com.tencent.mm.plugin.gamelife.a.a)localObject).VK());
+        localCollection.add(((com.tencent.mm.plugin.gamelife.a.a)localObject).getNickname());
       }
-      com.tencent.mm.sdk.platformtools.ae.i("GameLife.ContactService", (List)localCollection);
-      paramc.ah(paramMap);
-      AppMethodBeat.o(212063);
+      Log.i("GameLife.ContactService", (List)localCollection);
+      paramc.aj(paramMap);
+      AppMethodBeat.o(241303);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatUserInfoResponse;", "kotlin.jvm.PlatformType", "call"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "result", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatUserInfoResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class f<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     f(b paramb, HashMap paramHashMap, List paramList, com.tencent.mm.plugin.gamelife.a.b.c paramc) {}
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetBlackListResponse;", "kotlin.jvm.PlatformType", "call"})
-  static final class g<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
-  {
-    g(String paramString, com.tencent.mm.plugin.gamelife.a.b.a parama) {}
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/plugin/gamelife/autogen/SetBlackListResponse;", "kotlin.jvm.PlatformType", "call", "(Lcom/tencent/mm/modelbase/Cgi$CgiBack;)Lkotlin/Unit;"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "result", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/plugin/gamelife/autogen/SetBlackListResponse;", "kotlin.jvm.PlatformType", "call", "(Lcom/tencent/mm/modelbase/Cgi$CgiBack;)Lkotlin/Unit;"})
   static final class h<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
@@ -403,7 +395,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,19 @@ import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aa;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.KeyBoardUtil;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 @Deprecated
 public final class i
-  extends aa
+  extends KeyBoardUtil
 {
-  public static final void A(Context paramContext, int paramInt)
+  public static final void C(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(155904);
-    int j = aa.aG(paramContext, 0);
-    int i = aa.iM(paramContext);
+    int j = KeyBoardUtil.getMinPanelHeightPx(paramContext);
+    int i = KeyBoardUtil.getMaxPanelHeightPx(paramContext);
     if (paramInt < j) {
       paramInt = j;
     }
@@ -32,23 +32,23 @@ public final class i
       }
       for (;;)
       {
-        aF(paramContext, paramInt);
-        ay.aRW(ak.fow()).putInt("com.tencent.mm.compatible.util.keybord.height", paramInt);
+        saveKeyBordHeightPx(paramContext, paramInt);
+        MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).putInt("com.tencent.mm.compatible.util.keybord.height", paramInt);
         AppMethodBeat.o(155904);
         return;
       }
     }
   }
   
-  public static final int abw()
+  public static final int apt()
   {
-    return Ixe;
+    return CONTENT_HEIGHT;
   }
   
-  public static final int abx()
+  public static final int apu()
   {
     AppMethodBeat.i(155905);
-    int i = ay.aRW(ak.fow()).getInt("com.tencent.mm.compatible.util.keybord.height", 0);
+    int i = MultiProcessMMKV.getMMKV(MMApplicationContext.getDefaultPreferencePath()).getInt("com.tencent.mm.compatible.util.keybord.height", 0);
     AppMethodBeat.o(155905);
     return i;
   }
@@ -66,13 +66,13 @@ public final class i
     paramActivity.getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
     int i = localRect.top;
     int j = a.u(paramActivity);
-    Ixe = paramActivity.getResources().getDisplayMetrics().heightPixels - j - i;
+    CONTENT_HEIGHT = paramActivity.getResources().getDisplayMetrics().heightPixels - j - i;
     AppMethodBeat.o(155903);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.compatible.util.i
  * JD-Core Version:    0.7.0.1
  */

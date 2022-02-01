@@ -1,8 +1,8 @@
 package com.tencent.mm.as;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ca;
 import java.util.List;
 
 final class b$1
@@ -10,11 +10,11 @@ final class b$1
 {
   b$1(b paramb) {}
   
-  public final void b(int paramInt, List<bv> paramList)
+  public final void b(int paramInt, List<ca> paramList)
   {
-    AppMethodBeat.i(186357);
-    ae.w("MicroMsg.GetChatroomMsgFetcher", "[onFinish] ret:" + paramInt + " addSize:" + paramList.size());
-    AppMethodBeat.o(186357);
+    AppMethodBeat.i(231540);
+    Log.w("MicroMsg.GetChatroomMsgFetcher", "[onFinish] ret:" + paramInt + " addSize:" + paramList.size());
+    AppMethodBeat.o(231540);
   }
 }
 

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 
 public class u
   extends com.tencent.mm.bw.a
 {
-  public String dmx;
-  public String dog;
-  public String fXp;
+  public String dDM;
+  public String dFv;
+  public String gCv;
   public int msgType;
-  public int phB;
-  public String phC;
-  public double phz;
+  public double qwJ;
+  public int qwL;
+  public String qwM;
   public int scene;
   public int status;
   public String type;
@@ -23,90 +23,90 @@ public class u
     AppMethodBeat.i(91250);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.username == null)
       {
         paramVarArgs = new b("Not all required fields were included: username");
         AppMethodBeat.o(91250);
         throw paramVarArgs;
       }
-      if (this.dmx == null)
+      if (this.dDM == null)
       {
         paramVarArgs = new b("Not all required fields were included: transactionId");
         AppMethodBeat.o(91250);
         throw paramVarArgs;
       }
-      if (this.dog == null)
+      if (this.dFv == null)
       {
         paramVarArgs = new b("Not all required fields were included: feeType");
         AppMethodBeat.o(91250);
         throw paramVarArgs;
       }
       if (this.username != null) {
-        paramVarArgs.d(1, this.username);
+        paramVarArgs.e(1, this.username);
       }
-      if (this.dmx != null) {
-        paramVarArgs.d(2, this.dmx);
+      if (this.dDM != null) {
+        paramVarArgs.e(2, this.dDM);
       }
-      paramVarArgs.e(3, this.phz);
-      if (this.dog != null) {
-        paramVarArgs.d(4, this.dog);
+      paramVarArgs.e(3, this.qwJ);
+      if (this.dFv != null) {
+        paramVarArgs.e(4, this.dFv);
       }
-      paramVarArgs.aS(5, this.phB);
-      paramVarArgs.aS(6, this.scene);
-      paramVarArgs.aS(7, this.status);
-      if (this.fXp != null) {
-        paramVarArgs.d(8, this.fXp);
+      paramVarArgs.aM(5, this.qwL);
+      paramVarArgs.aM(6, this.scene);
+      paramVarArgs.aM(7, this.status);
+      if (this.gCv != null) {
+        paramVarArgs.e(8, this.gCv);
       }
-      if (this.phC != null) {
-        paramVarArgs.d(9, this.phC);
+      if (this.qwM != null) {
+        paramVarArgs.e(9, this.qwM);
       }
-      paramVarArgs.aS(10, this.msgType);
+      paramVarArgs.aM(10, this.msgType);
       if (this.type != null) {
-        paramVarArgs.d(11, this.type);
+        paramVarArgs.e(11, this.type);
       }
       AppMethodBeat.o(91250);
       return 0;
     }
     if (paramInt == 1) {
       if (this.username == null) {
-        break label885;
+        break label889;
       }
     }
-    label885:
-    for (paramInt = f.a.a.b.b.a.e(1, this.username) + 0;; paramInt = 0)
+    label889:
+    for (paramInt = g.a.a.b.b.a.f(1, this.username) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.dmx != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.dmx);
+      if (this.dDM != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.dDM);
       }
-      i += f.a.a.b.b.a.amD(3);
+      i += g.a.a.b.b.a.fS(3) + 8;
       paramInt = i;
-      if (this.dog != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.dog);
+      if (this.dFv != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.dFv);
       }
-      i = paramInt + f.a.a.b.b.a.bz(5, this.phB) + f.a.a.b.b.a.bz(6, this.scene) + f.a.a.b.b.a.bz(7, this.status);
+      i = paramInt + g.a.a.b.b.a.bu(5, this.qwL) + g.a.a.b.b.a.bu(6, this.scene) + g.a.a.b.b.a.bu(7, this.status);
       paramInt = i;
-      if (this.fXp != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.fXp);
+      if (this.gCv != null) {
+        paramInt = i + g.a.a.b.b.a.f(8, this.gCv);
       }
       i = paramInt;
-      if (this.phC != null) {
-        i = paramInt + f.a.a.b.b.a.e(9, this.phC);
+      if (this.qwM != null) {
+        i = paramInt + g.a.a.b.b.a.f(9, this.qwM);
       }
-      i += f.a.a.b.b.a.bz(10, this.msgType);
+      i += g.a.a.b.b.a.bu(10, this.msgType);
       paramInt = i;
       if (this.type != null) {
-        paramInt = i + f.a.a.b.b.a.e(11, this.type);
+        paramInt = i + g.a.a.b.b.a.f(11, this.type);
       }
       AppMethodBeat.o(91250);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         if (this.username == null)
@@ -115,13 +115,13 @@ public class u
           AppMethodBeat.o(91250);
           throw paramVarArgs;
         }
-        if (this.dmx == null)
+        if (this.dDM == null)
         {
           paramVarArgs = new b("Not all required fields were included: transactionId");
           AppMethodBeat.o(91250);
           throw paramVarArgs;
         }
-        if (this.dog == null)
+        if (this.dFv == null)
         {
           paramVarArgs = new b("Not all required fields were included: feeType");
           AppMethodBeat.o(91250);
@@ -132,7 +132,7 @@ public class u
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         u localu = (u)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -140,47 +140,47 @@ public class u
           AppMethodBeat.o(91250);
           return -1;
         case 1: 
-          localu.username = locala.OmT.readString();
+          localu.username = locala.UbS.readString();
           AppMethodBeat.o(91250);
           return 0;
         case 2: 
-          localu.dmx = locala.OmT.readString();
+          localu.dDM = locala.UbS.readString();
           AppMethodBeat.o(91250);
           return 0;
         case 3: 
-          localu.phz = Double.longBitsToDouble(locala.OmT.gwc());
+          localu.qwJ = Double.longBitsToDouble(locala.UbS.zn());
           AppMethodBeat.o(91250);
           return 0;
         case 4: 
-          localu.dog = locala.OmT.readString();
+          localu.dFv = locala.UbS.readString();
           AppMethodBeat.o(91250);
           return 0;
         case 5: 
-          localu.phB = locala.OmT.zc();
+          localu.qwL = locala.UbS.zi();
           AppMethodBeat.o(91250);
           return 0;
         case 6: 
-          localu.scene = locala.OmT.zc();
+          localu.scene = locala.UbS.zi();
           AppMethodBeat.o(91250);
           return 0;
         case 7: 
-          localu.status = locala.OmT.zc();
+          localu.status = locala.UbS.zi();
           AppMethodBeat.o(91250);
           return 0;
         case 8: 
-          localu.fXp = locala.OmT.readString();
+          localu.gCv = locala.UbS.readString();
           AppMethodBeat.o(91250);
           return 0;
         case 9: 
-          localu.phC = locala.OmT.readString();
+          localu.qwM = locala.UbS.readString();
           AppMethodBeat.o(91250);
           return 0;
         case 10: 
-          localu.msgType = locala.OmT.zc();
+          localu.msgType = locala.UbS.zi();
           AppMethodBeat.o(91250);
           return 0;
         }
-        localu.type = locala.OmT.readString();
+        localu.type = locala.UbS.readString();
         AppMethodBeat.o(91250);
         return 0;
       }
@@ -191,7 +191,7 @@ public class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.u
  * JD-Core Version:    0.7.0.1
  */

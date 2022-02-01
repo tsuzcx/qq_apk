@@ -15,7 +15,7 @@ class u
   
   public String a(Context paramContext)
   {
-    AppMethodBeat.i(192940);
+    AppMethodBeat.i(188414);
     if (this.a != null)
     {
       Object localObject = this.a.newInstance("com.tencent.tbs.utils.TbsVideoUtilsProxy", new Class[0], new Object[0]);
@@ -25,18 +25,18 @@ class u
         if (paramContext != null)
         {
           paramContext = String.valueOf(paramContext);
-          AppMethodBeat.o(192940);
+          AppMethodBeat.o(188414);
           return paramContext;
         }
       }
     }
-    AppMethodBeat.o(192940);
+    AppMethodBeat.o(188414);
     return "";
   }
   
   public void a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(192939);
+    AppMethodBeat.i(188413);
     if (this.a != null)
     {
       Object localObject = this.a.newInstance("com.tencent.tbs.utils.TbsVideoUtilsProxy", new Class[0], new Object[0]);
@@ -44,12 +44,12 @@ class u
         this.a.invokeMethod(localObject, "com.tencent.tbs.utils.TbsVideoUtilsProxy", "deleteVideoCache", new Class[] { Context.class, String.class }, new Object[] { paramContext, paramString });
       }
     }
-    AppMethodBeat.o(192939);
+    AppMethodBeat.o(188413);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.u
  * JD-Core Version:    0.7.0.1
  */

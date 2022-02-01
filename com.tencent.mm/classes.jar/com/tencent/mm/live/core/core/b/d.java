@@ -1,100 +1,45 @@
 package com.tencent.mm.live.core.core.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.trtc.TRTCCloudDef.TRTCParams;
-import d.g.b.p;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/model/LiveRoomModel;", "", "trtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "liveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "jumpInfo", "Lcom/tencent/mm/live/core/core/model/LiveJumpInfo;", "(Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;Lcom/tencent/mm/live/core/core/model/LiveJumpInfo;)V", "getJumpInfo", "()Lcom/tencent/mm/live/core/core/model/LiveJumpInfo;", "setJumpInfo", "(Lcom/tencent/mm/live/core/core/model/LiveJumpInfo;)V", "getLiveRoomInfo", "()Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "setLiveRoomInfo", "(Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;)V", "renderModel", "Lcom/tencent/mm/live/core/core/model/LiveRenderModel;", "getRenderModel", "()Lcom/tencent/mm/live/core/core/model/LiveRenderModel;", "getTrtcParams", "()Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "setTrtcParams", "(Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;)V", "component1", "component2", "component3", "copy", "equals", "", "other", "hashCode", "", "toString", "", "Companion", "plugin-core_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/core/model/LiveRenderModel;", "", "useCamera2", "", "defaultFrontCamera", "useCPUCrop", "resolution", "", "frontMirror", "(ZZZIZ)V", "getDefaultFrontCamera", "()Z", "setDefaultFrontCamera", "(Z)V", "getFrontMirror", "setFrontMirror", "getResolution", "()I", "setResolution", "(I)V", "getUseCPUCrop", "setUseCPUCrop", "getUseCamera2", "setUseCamera2", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "", "plugin-core_release"})
 public final class d
 {
-  private static final TRTCCloudDef.TRTCParams gKo;
-  private static final c gKp;
-  public static final a gKq;
-  public final b gKk;
-  public TRTCCloudDef.TRTCParams gKl;
-  public c gKm;
-  public a gKn;
-  
-  static
-  {
-    AppMethodBeat.i(196832);
-    gKq = new a((byte)0);
-    gKo = new TRTCCloudDef.TRTCParams(1400188366, "852082", "eJwtzE0LgkAUheH-creF3pnG8SK0iGhnEOiiwE01U1w-YlBTI-rvibo8zwvnC2mceJ2tIQLpIaynzca*Wn7wxBRIJLmUxhRX59hAJBSiINpoPRc7OK4tRBoVIc7WcjWKCEhK0oFYtOHneFvcM99w5ueZX6hdyQntb6XrkiqPV314HK7qlL9TbM-hof9ctvD7AxQcMac_", 12081, "", "");
-    gKp = new c("test", 12081L, null, 0, null, 0L, 0L, 124);
-    AppMethodBeat.o(196832);
-  }
-  
-  public d(TRTCCloudDef.TRTCParams paramTRTCParams, c paramc, a parama)
-  {
-    AppMethodBeat.i(196831);
-    this.gKl = paramTRTCParams;
-    this.gKm = paramc;
-    this.gKn = parama;
-    this.gKk = new b((byte)0);
-    this.gKk.gKe = false;
-    this.gKk.gKc = false;
-    AppMethodBeat.o(196831);
-  }
+  public boolean hzg = false;
+  public boolean hzh = true;
+  public boolean hzi = false;
+  public int hzj = 1080;
+  public boolean hzk = true;
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(196834);
     if (this != paramObject)
     {
       if ((paramObject instanceof d))
       {
         paramObject = (d)paramObject;
-        if ((!p.i(this.gKl, paramObject.gKl)) || (!p.i(this.gKm, paramObject.gKm)) || (!p.i(this.gKn, paramObject.gKn))) {}
+        if ((this.hzg != paramObject.hzg) || (this.hzh != paramObject.hzh) || (this.hzi != paramObject.hzi) || (this.hzj != paramObject.hzj) || (this.hzk != paramObject.hzk)) {}
       }
     }
-    else
-    {
-      AppMethodBeat.o(196834);
+    else {
       return true;
     }
-    AppMethodBeat.o(196834);
     return false;
   }
   
   public final int hashCode()
   {
-    int k = 0;
-    AppMethodBeat.i(196833);
-    Object localObject = this.gKl;
-    int i;
-    if (localObject != null)
-    {
-      i = localObject.hashCode();
-      localObject = this.gKm;
-      if (localObject == null) {
-        break label80;
-      }
-    }
-    label80:
-    for (int j = localObject.hashCode();; j = 0)
-    {
-      localObject = this.gKn;
-      if (localObject != null) {
-        k = localObject.hashCode();
-      }
-      AppMethodBeat.o(196833);
-      return (j + i * 31) * 31 + k;
-      i = 0;
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(196830);
-    String str = "LiveRoomModel(liveRoomInfo=" + this.gKm + ", trtcParams=(sdkAppId:" + this.gKl.sdkAppId + ",uid:" + this.gKl.userId + ",roomId:" + this.gKl.roomId + "))";
-    AppMethodBeat.o(196830);
+    AppMethodBeat.i(196454);
+    String str = "LiveRenderModel(useCamera2=" + this.hzg + ", defaultFrontCamera=" + this.hzh + ", useCPUCrop=" + this.hzi + ", resolution=" + this.hzj + ", frontMirror=" + this.hzk + ")";
+    AppMethodBeat.o(196454);
     return str;
   }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/core/model/LiveRoomModel$Companion;", "", "()V", "testLiveRoomInfo", "Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "getTestLiveRoomInfo", "()Lcom/tencent/mm/live/core/core/model/LiveRoomInfo;", "testTrtcParams", "Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "getTestTrtcParams", "()Lcom/tencent/trtc/TRTCCloudDef$TRTCParams;", "plugin-core_release"})
-  public static final class a {}
 }
 
 

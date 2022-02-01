@@ -1,283 +1,231 @@
 package com.tencent.mm.model;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.e;
-import com.tencent.mm.kernel.api.a;
-import com.tencent.mm.kernel.api.f;
-import com.tencent.mm.kernel.api.h;
-import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storagebase.h.b;
-import java.util.Collection;
-import java.util.HashMap;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
+import com.tencent.mm.az.a.a;
+import com.tencent.mm.az.d;
+import com.tencent.mm.az.e;
+import com.tencent.mm.az.f;
+import com.tencent.mm.g.c.bb;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.messenger.foundation.a.p;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.ca;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
+import java.util.Map;
 
-public class u
-  implements a, com.tencent.mm.kernel.api.c, f, h, com.tencent.mm.kernel.b.c
+public final class u
 {
-  private static ConcurrentHashMap<String, u> hHQ;
-  private volatile a hHM;
-  private volatile Class<? extends az> hHN;
-  private volatile az hHO;
-  private volatile boolean hHP;
-  
-  static
+  public static boolean HQ(String paramString)
   {
-    AppMethodBeat.i(42788);
-    hHQ = new ConcurrentHashMap();
-    AppMethodBeat.o(42788);
-  }
-  
-  public u(a parama)
-  {
-    this.hHP = false;
-    this.hHM = parama;
-  }
-  
-  public u(Class<? extends az> paramClass)
-  {
-    AppMethodBeat.i(42773);
-    this.hHP = false;
-    this.hHN = paramClass;
-    a(this.hHN.getName(), this);
-    AppMethodBeat.o(42773);
-  }
-  
-  public static u a(String paramString, u paramu)
-  {
-    AppMethodBeat.i(42777);
-    u localu = (u)hHQ.putIfAbsent(paramString, paramu);
-    if (localu == null) {
-      com.tencent.mm.kernel.a.c.ake().bt(paramu);
-    }
-    for (;;)
+    AppMethodBeat.i(184632);
+    if (Util.isNullOrNil(paramString))
     {
-      ae.i("MicroMsg.CompatSubCore", "registerCompatSubCoreWithNameIfAbsent %s, %s %s", new Object[] { paramString, paramu, bu.fpN() });
-      AppMethodBeat.o(42777);
-      return paramu;
-      paramu = localu;
+      AppMethodBeat.o(184632);
+      return false;
     }
-  }
-  
-  public static void aAA()
-  {
-    AppMethodBeat.i(42779);
-    Iterator localIterator = hHQ.values().iterator();
-    while (localIterator.hasNext()) {
-      ((u)localIterator.next()).reset();
-    }
-    AppMethodBeat.o(42779);
-  }
-  
-  public static <T extends az> T ap(Class<T> paramClass)
-  {
-    AppMethodBeat.i(42781);
-    u localu2 = zJ(paramClass.getName());
-    u localu1 = localu2;
-    if (localu2 == null)
+    paramString = Util.stringsToList(paramString.split(","));
+    if (paramString == null)
     {
-      localu1 = new u(paramClass);
-      a(paramClass.getName(), localu1);
+      AppMethodBeat.o(184632);
+      return false;
     }
-    paramClass = localu1.aAz();
-    AppMethodBeat.o(42781);
-    return paramClass;
+    paramString = paramString.iterator();
+    do
+    {
+      if (!paramString.hasNext()) {
+        break;
+      }
+    } while (ab.Iu((String)paramString.next()));
+    for (boolean bool = false;; bool = true)
+    {
+      AppMethodBeat.o(184632);
+      return bool;
+    }
   }
   
-  private az createSubCore()
+  public static boolean HR(String paramString)
   {
-    AppMethodBeat.i(42776);
-    try
+    AppMethodBeat.i(101740);
+    if ((ab.Iu(paramString)) || (as.bjp(paramString)))
     {
-      ae.i("MicroMsg.CompatSubCore", "createSubCore(), %s %s", new Object[] { this.hHN, this.hHM });
-      if (this.hHM != null)
+      AppMethodBeat.o(101740);
+      return true;
+    }
+    AppMethodBeat.o(101740);
+    return false;
+  }
+  
+  public static void a(String paramString1, List<String> paramList, String paramString2, boolean paramBoolean, String paramString3)
+  {
+    AppMethodBeat.i(101737);
+    a(paramString1, paramList, paramString2, paramBoolean, paramString3, 2);
+    AppMethodBeat.o(101737);
+  }
+  
+  public static void a(String paramString1, List<String> paramList, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
+  {
+    AppMethodBeat.i(101738);
+    ca localca = new ca();
+    localca.Cy(paramString1);
+    localca.setType(10000);
+    localca.setCreateTime(System.currentTimeMillis());
+    localca.setStatus(4);
+    localca.nv(paramInt);
+    paramString1 = new StringBuffer();
+    if (paramList != null)
+    {
+      String str1 = z.aTY();
+      String str2 = MMApplicationContext.getContext().getString(2131757307);
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        localaz = this.hHM.createSubCore();
-        AppMethodBeat.o(42776);
-        return localaz;
+        String str3 = (String)paramList.next();
+        if (!str3.equals(str1))
+        {
+          as localas = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(str3);
+          if ((localas != null) && ((int)localas.gMZ != 0))
+          {
+            if (paramBoolean) {
+              paramString1.append("<a href=\"" + paramString3 + str3 + "\">" + o(localas) + "</a>" + str2);
+            } else {
+              paramString1.append(o(localas) + str2);
+            }
+          }
+          else if (paramBoolean) {
+            paramString1.append("<a href=\"" + paramString3 + str3 + "\">" + str3 + "</a>" + str2);
+          } else {
+            paramString1.append(str3 + str2);
+          }
+        }
       }
-      az localaz = (az)this.hHN.newInstance();
-      AppMethodBeat.o(42776);
-      return localaz;
-    }
-    catch (InstantiationException localInstantiationException)
-    {
-      ae.printErrStackTrace("MicroMsg.CompatSubCore", localInstantiationException, "", new Object[0]);
-      IllegalAccessError localIllegalAccessError1 = new IllegalAccessError(localInstantiationException.getMessage());
-      AppMethodBeat.o(42776);
-      throw localIllegalAccessError1;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      ae.printErrStackTrace("MicroMsg.CompatSubCore", localIllegalAccessException, "", new Object[0]);
-      IllegalAccessError localIllegalAccessError2 = new IllegalAccessError(localIllegalAccessException.getMessage());
-      AppMethodBeat.o(42776);
-      throw localIllegalAccessError2;
-    }
-  }
-  
-  public static void oo(int paramInt)
-  {
-    AppMethodBeat.i(42780);
-    Iterator localIterator = hHQ.values().iterator();
-    while (localIterator.hasNext())
-    {
-      az localaz = ((u)localIterator.next()).aAz();
-      if (localaz != null) {
-        localaz.clearPluginData(paramInt);
+      if (paramString1.length() > 0) {
+        paramString1.deleteCharAt(paramString1.lastIndexOf(str2));
       }
     }
-    AppMethodBeat.o(42780);
+    localca.setContent(paramString2.replace("%s", paramString1));
+    ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aC(localca);
+    AppMethodBeat.o(101738);
   }
   
-  private void reset()
+  public static List<Boolean> am(List<String> paramList)
   {
-    try
+    AppMethodBeat.i(101736);
+    if (paramList == null)
     {
-      this.hHO = null;
-      this.hHP = false;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public static u zJ(String paramString)
-  {
-    AppMethodBeat.i(42778);
-    u localu = (u)hHQ.get(paramString);
-    if (localu == null) {
-      ae.i("MicroMsg.CompatSubCore", "compatSubCore is null by name %s", new Object[] { paramString });
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(42778);
-      return localu;
-      com.tencent.mm.kernel.a.c.ake().bs(localu);
-    }
-  }
-  
-  public final void a(az paramaz)
-  {
-    AppMethodBeat.i(42775);
-    try
-    {
-      this.hHO = paramaz;
-      if ((this.hHN == null) && (this.hHO != null)) {
-        this.hHN = this.hHO.getClass();
-      }
-      return;
-    }
-    finally
-    {
-      AppMethodBeat.o(42775);
-    }
-  }
-  
-  public final az aAz()
-  {
-    try
-    {
-      AppMethodBeat.i(42774);
-      if (this.hHO == null) {
-        a(createSubCore());
-      }
-      az localaz = this.hHO;
-      AppMethodBeat.o(42774);
-      return localaz;
-    }
-    finally {}
-  }
-  
-  public final void ajZ()
-  {
-    AppMethodBeat.i(42785);
-    az localaz = aAz();
-    if (localaz == null)
-    {
-      AppMethodBeat.o(42785);
-      return;
-    }
-    if (!this.hHP)
-    {
-      AppMethodBeat.o(42785);
-      return;
-    }
-    localaz.onSdcardMount(e.abo());
-    AppMethodBeat.o(42785);
-  }
-  
-  public final void aka()
-  {
-    AppMethodBeat.i(42786);
-    aAz();
-    AppMethodBeat.o(42786);
-  }
-  
-  public HashMap<Integer, h.b> collectDatabaseFactory()
-  {
-    AppMethodBeat.i(42782);
-    Object localObject = aAz();
-    if (localObject == null)
-    {
-      AppMethodBeat.o(42782);
+      AppMethodBeat.o(101736);
       return null;
     }
-    localObject = ((az)localObject).getBaseDBFactories();
-    AppMethodBeat.o(42782);
-    return localObject;
-  }
-  
-  public void onAccountInitialized(e.c paramc)
-  {
-    AppMethodBeat.i(42783);
-    az localaz = aAz();
-    if (localaz == null)
+    ArrayList localArrayList = new ArrayList(paramList.size());
+    paramList = paramList.iterator();
+    String str;
+    boolean bool2;
+    long l2;
+    long l1;
+    while (paramList.hasNext())
     {
-      AppMethodBeat.o(42783);
-      return;
+      str = (String)paramList.next();
+      if (!ab.Eq(str))
+      {
+        bool1 = false;
+        localArrayList.add(Boolean.valueOf(bool1));
+      }
+      else
+      {
+        bool2 = false;
+        boolean bool3 = false;
+        long l3 = 0L;
+        Object localObject = ((l)com.tencent.mm.kernel.g.af(l.class)).aST().bjY(str);
+        l2 = l3;
+        if (localObject != null)
+        {
+          l1 = l3;
+          bool1 = bool3;
+          if (((bb)localObject).field_lastSeq != 0L)
+          {
+            l1 = l3;
+            bool1 = bool3;
+            if (((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aK(str, ((bb)localObject).field_lastSeq).field_msgId == 0L)
+            {
+              l1 = ((bb)localObject).field_lastSeq;
+              bool1 = true;
+            }
+          }
+          l2 = l1;
+          bool2 = bool1;
+          if (((bb)localObject).field_firstUnDeliverSeq != 0L)
+          {
+            ((az)localObject).yD(0L);
+            ((az)localObject).yC(0L);
+            ((l)com.tencent.mm.kernel.g.af(l.class)).aST().a((az)localObject, str);
+            Log.i("MicroMsg.ChatroomLogic", "summerbadcr deleteConv chatroomId update conv");
+            bool2 = bool1;
+            l2 = l1;
+          }
+        }
+        if (bool2) {
+          break label399;
+        }
+        localObject = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aES(str);
+        if ((localObject == null) || (((eo)localObject).field_msgId == 0L)) {
+          break label399;
+        }
+      }
     }
-    localaz.onAccountPostReset(paramc.gEo);
-    this.hHP = true;
-    AppMethodBeat.o(42783);
-  }
-  
-  public void onAccountRelease()
-  {
-    AppMethodBeat.i(42784);
-    az localaz = aAz();
-    if (localaz == null)
+    label399:
+    for (boolean bool1 = true;; bool1 = bool2)
     {
-      AppMethodBeat.o(42784);
-      return;
+      l1 = l2;
+      if (l2 == 0L) {
+        l1 = ((l)com.tencent.mm.kernel.g.af(l.class)).eiy().aER(str);
+      }
+      if (l1 != 0L) {
+        ((l)com.tencent.mm.kernel.g.af(l.class)).aTq().aG(str, l1);
+      }
+      Log.i("MicroMsg.ChatroomLogic", "summerbadcr deleteConv chatroomId[%s], needClear[%b], lastMsgSeq[%d]", new Object[] { str, Boolean.valueOf(bool1), Long.valueOf(l1) });
+      break;
+      AppMethodBeat.o(101736);
+      return localArrayList;
     }
-    localaz.onAccountRelease();
-    AppMethodBeat.o(42784);
   }
   
-  public String toString()
+  private static String o(as paramas)
   {
-    AppMethodBeat.i(42787);
-    String str = super.toString() + " " + this.hHN + " " + this.hHM + " " + this.hHO;
-    AppMethodBeat.o(42787);
-    return str;
-  }
-  
-  public void xK(String paramString) {}
-  
-  public static abstract interface a
-  {
-    public abstract az createSubCore();
+    AppMethodBeat.i(101739);
+    if (com.tencent.mm.openim.room.a.a.N(paramas))
+    {
+      String str = com.tencent.mm.openim.room.a.a.O(paramas);
+      if (str != null)
+      {
+        paramas = paramas.arJ() + str;
+        AppMethodBeat.o(101739);
+        return paramas;
+      }
+      paramas = paramas.arJ();
+      AppMethodBeat.o(101739);
+      return paramas;
+    }
+    paramas = paramas.arJ();
+    AppMethodBeat.o(101739);
+    return paramas;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.u
  * JD-Core Version:    0.7.0.1
  */

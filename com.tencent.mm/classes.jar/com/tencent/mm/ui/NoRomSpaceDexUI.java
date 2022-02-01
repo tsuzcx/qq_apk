@@ -6,6 +6,7 @@ import android.app.PendingIntent.CanceledException;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Process;
 import android.widget.Button;
@@ -14,28 +15,36 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.hellhoundlib.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class NoRomSpaceDexUI
   extends HellActivity
   implements DialogInterface.OnClickListener
 {
-  PendingIntent JzE;
+  PendingIntent OKa;
+  
+  public Resources getResources()
+  {
+    AppMethodBeat.i(232702);
+    Resources localResources = MMApplicationContext.getResources();
+    AppMethodBeat.o(232702);
+    return localResources;
+  }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(33679);
-    if (this.JzE != null) {}
+    if (this.OKa != null) {}
     try
     {
-      this.JzE.send();
+      this.OKa.send();
       label19:
       finish();
       paramDialogInterface = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
       Object localObject = new Object();
-      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramDialogInterface.ahE(), "com/tencent/mm/ui/NoRomSpaceDexUI", "onClick", "(Landroid/content/DialogInterface;I)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-      Process.killProcess(((Integer)paramDialogInterface.mt(0)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(localObject, paramDialogInterface.axQ(), "com/tencent/mm/ui/NoRomSpaceDexUI", "onClick", "(Landroid/content/DialogInterface;I)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+      Process.killProcess(((Integer)paramDialogInterface.pG(0)).intValue());
       com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/ui/NoRomSpaceDexUI", "onClick", "(Landroid/content/DialogInterface;I)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
       AppMethodBeat.o(33679);
       return;
@@ -50,11 +59,11 @@ public class NoRomSpaceDexUI
   {
     AppMethodBeat.i(33678);
     super.onCreate(paramBundle);
-    ad.initLanguage(ak.getContext());
-    setContentView(2131495023);
+    LocaleUtil.initLanguage(MMApplicationContext.getContext());
+    setContentView(2131495855);
     Object localObject = getIntent();
-    this.JzE = ((PendingIntent)((Intent)localObject).getParcelableExtra("action"));
-    paramBundle = new o(this);
+    this.OKa = ((PendingIntent)((Intent)localObject).getParcelableExtra("action"));
+    paramBundle = new p(this);
     if (((Intent)localObject).hasExtra("title"))
     {
       paramBundle.setTitle(((Intent)localObject).getStringExtra("title"));
@@ -71,25 +80,25 @@ public class NoRomSpaceDexUI
     for (;;)
     {
       paramBundle.setCancelable(false);
-      paramBundle.fAK();
+      paramBundle.gIC();
       paramBundle.show();
       AppMethodBeat.o(33678);
       return;
-      paramBundle.setTitle(((Intent)localObject).getIntExtra("titleRes", 2131757340));
+      paramBundle.setTitle(((Intent)localObject).getIntExtra("titleRes", 2131757557));
       break;
       label141:
-      int i = ((Intent)localObject).getIntExtra("messageRes", 2131757337);
-      paramBundle.Ivm.setVisibility(0);
-      paramBundle.Ivd.setVisibility(0);
-      paramBundle.Ivd.setText(i);
+      int i = ((Intent)localObject).getIntExtra("messageRes", 2131757556);
+      paramBundle.NIK.setVisibility(0);
+      paramBundle.NIC.setVisibility(0);
+      paramBundle.NIC.setText(i);
       break label88;
       label177:
-      localObject = getString(((Intent)localObject).getIntExtra("buttonRes", 2131757337));
-      if (paramBundle.Dim != null)
+      localObject = getString(((Intent)localObject).getIntExtra("buttonRes", 2131757554));
+      if (paramBundle.HRF != null)
       {
-        paramBundle.Dim.setVisibility(0);
-        paramBundle.Dim.setText((CharSequence)localObject);
-        paramBundle.Dim.setOnClickListener(new o.1(paramBundle, this));
+        paramBundle.HRF.setVisibility(0);
+        paramBundle.HRF.setText((CharSequence)localObject);
+        paramBundle.HRF.setOnClickListener(new p.1(paramBundle, this));
       }
     }
   }

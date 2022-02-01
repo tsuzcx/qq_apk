@@ -4,8 +4,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.a.ag;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class BakOldUSBReceiver
   extends BroadcastReceiver
@@ -18,31 +20,31 @@ public class BakOldUSBReceiver
       String str = paramIntent.getAction();
       if ("MMBakchatServiceStart".equalsIgnoreCase(str))
       {
-        d.bf(new Intent().setClassName(paramContext, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService").putExtra("url", paramIntent.getStringExtra("url")));
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.BakOldUSBReceiver", "START_ACTION onReceive start end");
+        c.startService(new Intent().setClassName(paramContext, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService").putExtra("url", paramIntent.getStringExtra("url")));
+        Log.d("MicroMsg.BakOldUSBReceiver", "START_ACTION onReceive start end");
         AppMethodBeat.o(21811);
         return;
       }
       if ("MMBakchatServiceStop".equalsIgnoreCase(str))
       {
-        paramIntent = new com.tencent.mm.g.a.ae();
-        paramIntent.dlP.dlQ = paramContext;
-        a.IvT.l(paramIntent);
-        com.tencent.mm.sdk.platformtools.ae.d("MicroMsg.BakOldUSBReceiver", "STOP_ACTION onReceive stop end");
+        paramIntent = new ag();
+        paramIntent.dDf.dDg = paramContext;
+        EventCenter.instance.publish(paramIntent);
+        Log.d("MicroMsg.BakOldUSBReceiver", "STOP_ACTION onReceive stop end");
       }
       AppMethodBeat.o(21811);
       return;
     }
     catch (Exception paramContext)
     {
-      com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.BakOldUSBReceiver", paramContext, "onReceive:", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.BakOldUSBReceiver", paramContext, "onReceive:", new Object[0]);
       AppMethodBeat.o(21811);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBReceiver
  * JD-Core Version:    0.7.0.1
  */

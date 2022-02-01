@@ -1,41 +1,68 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ci;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import d.l;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.e;
+import junit.framework.Assert;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderWxMentionStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/autogen/table/BaseFinderMention;", "db", "Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;", "(Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;)V", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderMessageStorage;", "Lcom/tencent/mm/storage/AbstractMessageStorage;", "storage", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;", "(Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;)V", "recognizeTableByTalker", "", "talker", "Companion", "plugin-finder_release"})
 public final class y
-  extends j<ci>
+  extends e
 {
-  private static final String[] INDEX_CREATE;
-  private static final String[] SQL_CREATE;
-  public static final y.a sKd;
+  public static final y.a vEE;
   
   static
   {
-    AppMethodBeat.i(204317);
-    sKd = new y.a((byte)0);
-    Object localObject = new StringBuilder("CREATE INDEX IF NOT EXISTS ");
-    ac.a locala = ac.sKj;
-    INDEX_CREATE = new String[] { ac.cLx() + " ON " + ci.fbd + " ( id, flag, type, userVersion)", "CREATE INDEX IF NOT EXISTS Finder_Mention_Id_Create_Time ON " + ci.fbc + "(createTime, id)", "CREATE INDEX IF NOT EXISTS Finder_Mention_Type ON " + ci.fbd + "(type)", "CREATE INDEX IF NOT EXISTS Finder_Object_Id ON " + ci.fbd + "(objectId)", "CREATE INDEX IF NOT EXISTS Finder_Comment_Id ON " + ci.fbd + "(commentId)" };
-    localObject = ac.sKj;
-    SQL_CREATE = new String[] { j.getCreateSQLs(ac.access$getInfo$cp(), ci.fbd) };
-    AppMethodBeat.o(204317);
+    AppMethodBeat.i(251811);
+    vEE = new y.a((byte)0);
+    AppMethodBeat.o(251811);
   }
   
-  public y(e parame)
+  public y(i parami)
   {
-    super(parame, ac.access$getInfo$cp(), ci.fbd, INDEX_CREATE);
-    AppMethodBeat.i(204316);
-    AppMethodBeat.o(204316);
+    super(parami);
+    AppMethodBeat.i(251810);
+    e(getDB(), "findermessage006");
+    a(new i.b(512, "findermessage006", i.b.a(4000001L, 4500000L, 108000001L, 208000000L)));
+    AppMethodBeat.o(251810);
+  }
+  
+  public final String avu(String paramString)
+  {
+    AppMethodBeat.i(251809);
+    int i;
+    if (paramString != null) {
+      if (((CharSequence)paramString).length() > 0)
+      {
+        i = 1;
+        if (i != 1) {
+          break label54;
+        }
+      }
+    }
+    label54:
+    for (boolean bool = true;; bool = false)
+    {
+      Assert.assertTrue(bool);
+      if (!as.avl(paramString)) {
+        break label59;
+      }
+      AppMethodBeat.o(251809);
+      return "findermessage006";
+      i = 0;
+      break;
+    }
+    label59:
+    AppMethodBeat.o(251809);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.y
  * JD-Core Version:    0.7.0.1
  */

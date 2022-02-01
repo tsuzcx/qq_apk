@@ -12,50 +12,50 @@ import java.util.List;
 
 public class h
 {
-  public static h MKx;
+  public static h Sws;
   static final String TAG;
-  int CMB;
-  public int CMC;
-  private String CMH;
-  int CMo;
-  int CMr;
-  int CMv;
-  long CMw;
-  public int CwV;
-  public int CwY;
-  public int CwZ;
-  public int Cxc;
-  public int Cxk;
-  long MKA;
-  long MKB;
-  int MKC;
-  public int MKD;
-  int MKE;
-  long MKF;
-  private int MKG;
-  private int MKH;
-  private String MKI;
-  private int MKJ;
-  private StringBuffer MKK;
-  private long MKL;
-  long MKM;
-  long MKN;
-  public int MKy;
-  int MKz;
-  public String McZ;
+  public int HaK;
+  public int HaM;
+  public int HaN;
+  public int HaQ;
+  public int HaY;
+  int Hre;
+  int Hrh;
+  int Hrl;
+  long Hrm;
+  int Hrr;
+  public int Hrs;
+  private String Hrx;
+  public String RDo;
+  long SwA;
+  private int SwB;
+  private int SwC;
+  private String SwD;
+  private int SwE;
+  private StringBuffer SwF;
+  private long SwG;
+  long SwH;
+  long SwI;
+  public int Swt;
+  int Swu;
+  long Swv;
+  long Sww;
+  int Swx;
+  public int Swy;
+  int Swz;
   private String deviceModel;
   public String groupId;
   public int netType;
-  public int pcE;
+  public int qrD;
   public int roomId;
-  public long uXg;
-  long uYs;
-  int uYt;
+  public long ypH;
+  long yqS;
+  int yqT;
   
   static
   {
     AppMethodBeat.i(62655);
-    MKx = new h();
+    Sws = new h();
     TAG = h.class.getCanonicalName();
     AppMethodBeat.o(62655);
   }
@@ -64,38 +64,38 @@ public class h
   {
     AppMethodBeat.i(62634);
     this.groupId = "";
-    this.McZ = "";
-    this.CwV = 1;
+    this.RDo = "";
+    this.HaK = 1;
     this.roomId = 0;
-    this.uXg = 0L;
-    this.pcE = -1;
-    this.CMo = 0;
-    this.CMv = 0;
-    this.CMr = 0;
-    this.uYt = 0;
-    this.MKy = 0;
-    this.MKz = 0;
-    this.MKA = 0L;
-    this.MKB = 0L;
-    this.MKC = 0;
-    this.MKD = 0;
-    this.MKE = 0;
-    this.MKF = 0L;
-    this.CMw = 0L;
-    this.uYs = 0L;
-    this.CMB = 0;
-    this.CMC = 0;
+    this.ypH = 0L;
+    this.qrD = -1;
+    this.Hre = 0;
+    this.Hrl = 0;
+    this.Hrh = 0;
+    this.yqT = 0;
+    this.Swt = 0;
+    this.Swu = 0;
+    this.Swv = 0L;
+    this.Sww = 0L;
+    this.Swx = 0;
+    this.Swy = 0;
+    this.Swz = 0;
+    this.SwA = 0L;
+    this.Hrm = 0L;
+    this.yqS = 0L;
+    this.Hrr = 0;
+    this.Hrs = 0;
     this.netType = -1;
-    this.MKH = -1;
-    this.CMH = "";
-    this.MKK = new StringBuffer();
-    this.Cxk = -1;
-    this.Cxc = 0;
-    this.CwY = 0;
-    this.CwZ = 0;
-    this.MKL = 0L;
-    this.MKM = 0L;
-    this.MKN = 0L;
+    this.SwC = -1;
+    this.Hrx = "";
+    this.SwF = new StringBuffer();
+    this.HaY = -1;
+    this.HaQ = 0;
+    this.HaM = 0;
+    this.HaN = 0;
+    this.SwG = 0L;
+    this.SwH = 0L;
+    this.SwI = 0L;
     AppMethodBeat.o(62634);
   }
   
@@ -105,11 +105,11 @@ public class h
     h localh = new h();
     localh.groupId = "";
     localh.roomId = paramInt;
-    localh.uXg = paramLong;
-    localh.McZ = "";
-    localh.af(paramVarArgs);
-    bbM(localh.geu());
-    e.fXJ();
+    localh.ypH = paramLong;
+    localh.RDo = "";
+    localh.ag(paramVarArgs);
+    brq(localh.hru());
+    e.hjp();
     AppMethodBeat.o(62639);
   }
   
@@ -130,9 +130,9 @@ public class h
     }
     localh.groupId = str;
     localh.roomId = paramInt;
-    localh.uXg = paramLong;
-    localh.af(paramVarArgs);
-    bbM(localh.geu());
+    localh.ypH = paramLong;
+    localh.ag(paramVarArgs);
+    brq(localh.hru());
     AppMethodBeat.o(62637);
   }
   
@@ -153,91 +153,91 @@ public class h
     }
     localh.groupId = str;
     localh.roomId = paramInt;
-    localh.uXg = paramLong;
+    localh.ypH = paramLong;
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
-    localh.McZ = paramString1;
-    localh.af(paramVarArgs);
-    bbM(localh.geu());
-    e.fXJ();
+    localh.RDo = paramString1;
+    localh.ag(paramVarArgs);
+    brq(localh.hru());
+    e.hjp();
     AppMethodBeat.o(62638);
   }
   
-  public static void ajb(int paramInt)
+  public static void asK(int paramInt)
   {
     AppMethodBeat.i(62645);
     b.d(TAG, new Object[] { "sendNetSceneStat", Integer.valueOf(paramInt) });
-    e.S(527, 3, String.valueOf(paramInt));
+    e.U(527, 3, String.valueOf(paramInt));
     AppMethodBeat.o(62645);
   }
   
-  public static void ajc(int paramInt)
+  public static void asL(int paramInt)
   {
     AppMethodBeat.i(62646);
     b.d(TAG, new Object[] { "sendDeviceStat", Integer.valueOf(paramInt) });
-    e.S(528, 3, String.valueOf(paramInt));
+    e.U(528, 3, String.valueOf(paramInt));
     AppMethodBeat.o(62646);
   }
   
-  public static void ajd(int paramInt)
+  public static void asM(int paramInt)
   {
     AppMethodBeat.i(62647);
     b.d(TAG, new Object[] { "sendtalkRoomDialStat", Integer.valueOf(paramInt) });
-    e.S(530, 3, String.valueOf(paramInt));
+    e.U(530, 3, String.valueOf(paramInt));
     AppMethodBeat.o(62647);
   }
   
-  public static void aje(int paramInt)
+  public static void asN(int paramInt)
   {
     AppMethodBeat.i(62649);
     b.d(TAG, new Object[] { "sendEngineStat", Integer.valueOf(paramInt) });
-    e.S(529, 3, String.valueOf(paramInt));
+    e.U(529, 3, String.valueOf(paramInt));
     AppMethodBeat.o(62649);
   }
   
-  public static void bbM(String paramString)
+  public static void brq(String paramString)
   {
     AppMethodBeat.i(62650);
     b.d(TAG, new Object[] { "sendSummaryNetScene", paramString });
-    e.S(532, 3, paramString);
+    e.U(532, 3, paramString);
     AppMethodBeat.o(62650);
   }
   
-  public static void bbN(String paramString)
+  public static void brr(String paramString)
   {
     AppMethodBeat.i(62651);
     b.d(TAG, new Object[] { "sendEngineRecv", paramString });
-    e.S(533, 3, paramString);
+    e.U(533, 3, paramString);
     AppMethodBeat.o(62651);
   }
   
-  public static void bbO(String paramString)
+  public static void brs(String paramString)
   {
     AppMethodBeat.i(62652);
     b.d(TAG, new Object[] { "sendEngineSend", paramString });
-    e.S(534, 3, paramString);
+    e.U(534, 3, paramString);
     AppMethodBeat.o(62652);
   }
   
-  public static void bbP(String paramString)
+  public static void brt(String paramString)
   {
     AppMethodBeat.i(62653);
     b.d(TAG, new Object[] { "sendChannelStat", paramString });
-    e.S(535, 3, paramString);
+    e.U(535, 3, paramString);
     AppMethodBeat.o(62653);
   }
   
-  public static void gez()
+  public static void hrz()
   {
     AppMethodBeat.i(62648);
     b.d(TAG, new Object[] { "sendTalkRoomOnDialStat", Integer.valueOf(-5001) });
-    e.S(531, 3, "-5001");
+    e.U(531, 3, "-5001");
     AppMethodBeat.o(62648);
   }
   
-  public final void af(String... paramVarArgs)
+  public final void ag(String... paramVarArgs)
   {
     int i = 0;
     AppMethodBeat.i(62640);
@@ -246,134 +246,134 @@ public class h
       AppMethodBeat.o(62640);
       return;
     }
-    if (this.MKK.length() > 900)
+    if (this.SwF.length() > 900)
     {
-      this.MKK.setLength(0);
-      this.MKK.append("overmaxsize");
+      this.SwF.setLength(0);
+      this.SwF.append("overmaxsize");
     }
-    if (this.MKK.length() != 0) {
-      this.MKK.append("-");
+    if (this.SwF.length() != 0) {
+      this.SwF.append("-");
     }
     int j = paramVarArgs.length;
     while (i < j)
     {
       String str = paramVarArgs[i];
-      this.MKK.append(str);
-      this.MKK.append("|");
+      this.SwF.append(str);
+      this.SwF.append("|");
       i += 1;
     }
     AppMethodBeat.o(62640);
   }
   
-  public final void ajf(int paramInt)
+  public final void asO(int paramInt)
   {
     AppMethodBeat.i(62654);
     b.d(TAG, new Object[] { "stopStatus", Integer.valueOf(paramInt) });
-    this.CMo = paramInt;
+    this.Hre = paramInt;
     AppMethodBeat.o(62654);
   }
   
-  public final String geu()
+  public final String hru()
   {
     AppMethodBeat.i(62636);
     b.d(TAG, new Object[] { "collectInfo" });
-    this.MKI = Build.MANUFACTURER;
+    this.SwD = Build.MANUFACTURER;
     this.deviceModel = Build.MODEL;
-    this.MKJ = Build.VERSION.SDK_INT;
-    this.CMH = Build.VERSION.RELEASE;
-    this.netType = k.ly(com.tencent.pb.common.c.c.CDp);
-    this.MKG = -1;
-    this.MKH = -1;
+    this.SwE = Build.VERSION.SDK_INT;
+    this.Hrx = Build.VERSION.RELEASE;
+    this.netType = k.lx(com.tencent.pb.common.c.c.Hhs);
+    this.SwB = -1;
+    this.SwC = -1;
     Object localObject = new ArrayList();
     ((List)localObject).add(this.groupId);
-    ((List)localObject).add(this.McZ);
-    ((List)localObject).add(Integer.valueOf(this.CwV));
+    ((List)localObject).add(this.RDo);
+    ((List)localObject).add(Integer.valueOf(this.HaK));
     ((List)localObject).add(Integer.valueOf(this.roomId));
-    ((List)localObject).add(Long.valueOf(this.uXg));
-    ((List)localObject).add(Integer.valueOf(this.pcE));
-    ((List)localObject).add(Integer.valueOf(this.CMo));
-    ((List)localObject).add(Integer.valueOf(this.CMv));
-    ((List)localObject).add(Integer.valueOf(this.CMr));
-    ((List)localObject).add(Integer.valueOf(this.uYt));
-    ((List)localObject).add(Integer.valueOf(this.MKy));
-    ((List)localObject).add(Integer.valueOf(this.MKz));
-    ((List)localObject).add(Long.valueOf(this.MKA));
-    ((List)localObject).add(Long.valueOf(this.MKB));
-    ((List)localObject).add(Integer.valueOf(this.MKC));
-    ((List)localObject).add(Integer.valueOf(this.MKD));
-    ((List)localObject).add(Integer.valueOf(this.MKE));
-    ((List)localObject).add(Long.valueOf(this.MKF));
-    ((List)localObject).add(Long.valueOf(this.CMw));
-    ((List)localObject).add(Long.valueOf(this.uYs));
-    ((List)localObject).add(Integer.valueOf(this.CMB));
-    ((List)localObject).add(Integer.valueOf(this.CMC));
+    ((List)localObject).add(Long.valueOf(this.ypH));
+    ((List)localObject).add(Integer.valueOf(this.qrD));
+    ((List)localObject).add(Integer.valueOf(this.Hre));
+    ((List)localObject).add(Integer.valueOf(this.Hrl));
+    ((List)localObject).add(Integer.valueOf(this.Hrh));
+    ((List)localObject).add(Integer.valueOf(this.yqT));
+    ((List)localObject).add(Integer.valueOf(this.Swt));
+    ((List)localObject).add(Integer.valueOf(this.Swu));
+    ((List)localObject).add(Long.valueOf(this.Swv));
+    ((List)localObject).add(Long.valueOf(this.Sww));
+    ((List)localObject).add(Integer.valueOf(this.Swx));
+    ((List)localObject).add(Integer.valueOf(this.Swy));
+    ((List)localObject).add(Integer.valueOf(this.Swz));
+    ((List)localObject).add(Long.valueOf(this.SwA));
+    ((List)localObject).add(Long.valueOf(this.Hrm));
+    ((List)localObject).add(Long.valueOf(this.yqS));
+    ((List)localObject).add(Integer.valueOf(this.Hrr));
+    ((List)localObject).add(Integer.valueOf(this.Hrs));
     ((List)localObject).add(Integer.valueOf(this.netType));
-    ((List)localObject).add(Integer.valueOf(this.MKG));
-    ((List)localObject).add(Integer.valueOf(this.MKH));
-    ((List)localObject).add(this.MKI);
+    ((List)localObject).add(Integer.valueOf(this.SwB));
+    ((List)localObject).add(Integer.valueOf(this.SwC));
+    ((List)localObject).add(this.SwD);
     ((List)localObject).add(this.deviceModel);
-    ((List)localObject).add(Integer.valueOf(this.MKJ));
-    ((List)localObject).add(this.CMH);
-    ((List)localObject).add(Integer.valueOf(c.gdW().bbG(this.groupId)));
-    ((List)localObject).add(this.MKK.toString());
-    ((List)localObject).add(Integer.valueOf(this.Cxk));
-    ((List)localObject).add(Integer.valueOf(this.Cxc));
-    ((List)localObject).add(Integer.valueOf(this.CwY));
-    ((List)localObject).add(Integer.valueOf(this.CwZ));
+    ((List)localObject).add(Integer.valueOf(this.SwE));
+    ((List)localObject).add(this.Hrx);
+    ((List)localObject).add(Integer.valueOf(c.hqY().brk(this.groupId)));
+    ((List)localObject).add(this.SwF.toString());
+    ((List)localObject).add(Integer.valueOf(this.HaY));
+    ((List)localObject).add(Integer.valueOf(this.HaQ));
+    ((List)localObject).add(Integer.valueOf(this.HaM));
+    ((List)localObject).add(Integer.valueOf(this.HaN));
     localObject = f.a((Iterable)localObject, ",", "_");
-    b.d(TAG, new Object[] { "logBuf: ", this.MKK.toString() });
+    b.d(TAG, new Object[] { "logBuf: ", this.SwF.toString() });
     b.d(TAG, new Object[] { "statresult", localObject });
     AppMethodBeat.o(62636);
     return localObject;
   }
   
-  public final void gev()
+  public final void hrv()
   {
     AppMethodBeat.i(62641);
-    this.MKL = System.currentTimeMillis();
-    b.d(TAG, new Object[] { "beginCreateOrEnter", Long.valueOf(this.MKL) });
+    this.SwG = System.currentTimeMillis();
+    b.d(TAG, new Object[] { "beginCreateOrEnter", Long.valueOf(this.SwG) });
     AppMethodBeat.o(62641);
   }
   
-  public final void gew()
+  public final void hrw()
   {
     AppMethodBeat.i(62642);
-    b.d(TAG, new Object[] { "endCancelCreate", Long.valueOf(System.currentTimeMillis() - this.MKL), Long.valueOf(this.MKA) });
-    if (this.MKA > 0L)
+    b.d(TAG, new Object[] { "endCancelCreate", Long.valueOf(System.currentTimeMillis() - this.SwG), Long.valueOf(this.Swv) });
+    if (this.Swv > 0L)
     {
       AppMethodBeat.o(62642);
       return;
     }
-    this.CMv = 1;
-    if (this.MKL == 0L)
+    this.Hrl = 1;
+    if (this.SwG == 0L)
     {
-      this.CMw = 0L;
+      this.Hrm = 0L;
       AppMethodBeat.o(62642);
       return;
     }
-    this.CMw = (System.currentTimeMillis() - this.MKL);
+    this.Hrm = (System.currentTimeMillis() - this.SwG);
     AppMethodBeat.o(62642);
   }
   
-  public final void gex()
+  public final void hrx()
   {
     AppMethodBeat.i(62643);
     b.w(TAG, new Object[] { "beginCreateOrNotify" });
-    this.MKM = System.currentTimeMillis();
+    this.SwH = System.currentTimeMillis();
     AppMethodBeat.o(62643);
   }
   
-  public final void gey()
+  public final void hry()
   {
     AppMethodBeat.i(62644);
-    b.d(TAG, new Object[] { "endAnswerTime", Long.valueOf(this.MKN) });
-    if (this.MKN == 0L)
+    b.d(TAG, new Object[] { "endAnswerTime", Long.valueOf(this.SwI) });
+    if (this.SwI == 0L)
     {
-      this.uYs = 0L;
+      this.yqS = 0L;
       AppMethodBeat.o(62644);
       return;
     }
-    this.uYs = (System.currentTimeMillis() - this.MKN);
+    this.yqS = (System.currentTimeMillis() - this.SwI);
     AppMethodBeat.o(62644);
   }
   
@@ -381,49 +381,49 @@ public class h
   {
     AppMethodBeat.i(62635);
     b.d(TAG, new Object[] { "reset" });
-    this.MKN = 0L;
-    this.MKM = 0L;
-    this.MKL = 0L;
+    this.SwI = 0L;
+    this.SwH = 0L;
+    this.SwG = 0L;
     this.groupId = "";
-    this.McZ = "";
-    this.CwV = 1;
+    this.RDo = "";
+    this.HaK = 1;
     this.roomId = 0;
-    this.uXg = 0L;
-    this.pcE = -1;
-    this.CMo = 0;
-    this.CMv = 0;
-    this.CMr = 0;
-    this.uYt = 0;
-    this.MKy = 0;
-    this.MKz = 0;
-    this.MKA = 0L;
-    this.MKB = 0L;
-    this.MKC = 0;
-    this.MKD = 0;
-    this.MKE = 0;
-    this.MKF = 0L;
-    this.CMw = 0L;
-    this.uYs = 0L;
-    this.CMB = 0;
-    this.CMC = 0;
+    this.ypH = 0L;
+    this.qrD = -1;
+    this.Hre = 0;
+    this.Hrl = 0;
+    this.Hrh = 0;
+    this.yqT = 0;
+    this.Swt = 0;
+    this.Swu = 0;
+    this.Swv = 0L;
+    this.Sww = 0L;
+    this.Swx = 0;
+    this.Swy = 0;
+    this.Swz = 0;
+    this.SwA = 0L;
+    this.Hrm = 0L;
+    this.yqS = 0L;
+    this.Hrr = 0;
+    this.Hrs = 0;
     this.netType = -1;
-    this.MKG = 0;
-    this.MKH = 0;
-    this.MKI = "";
+    this.SwB = 0;
+    this.SwC = 0;
+    this.SwD = "";
     this.deviceModel = "";
-    this.MKJ = -1;
-    this.CMH = "";
-    this.MKK.setLength(0);
-    this.Cxk = -1;
-    this.Cxc = 0;
-    this.CwY = 0;
-    this.CwZ = 0;
+    this.SwE = -1;
+    this.Hrx = "";
+    this.SwF.setLength(0);
+    this.HaY = -1;
+    this.HaQ = 0;
+    this.HaM = 0;
+    this.HaN = 0;
     AppMethodBeat.o(62635);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.wecall.talkroom.model.h
  * JD-Core Version:    0.7.0.1
  */

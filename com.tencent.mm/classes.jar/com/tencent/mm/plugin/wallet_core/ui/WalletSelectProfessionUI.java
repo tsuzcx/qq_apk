@@ -7,8 +7,8 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.Profession;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceTitleCategory;
@@ -30,12 +30,12 @@ public class WalletSelectProfessionUI
   {
     AppMethodBeat.i(71230);
     super.onCreate(paramBundle);
-    setMMTitle(2131765862);
+    setMMTitle(2131768315);
     this.screen = getPreferenceScreen();
     paramBundle = new PreferenceTitleCategory(getContext());
-    paramBundle.setTitle(getString(2131765861));
+    paramBundle.setTitle(getString(2131768314));
     paramBundle.setKey("title_category");
-    this.screen.b(paramBundle);
+    this.screen.c(paramBundle);
     paramBundle = getIntent().getParcelableArrayExtra("key_profession_list");
     int i;
     if ((paramBundle != null) && (paramBundle.length > 0))
@@ -57,12 +57,12 @@ public class WalletSelectProfessionUI
       while (i < k)
       {
         Object localObject = paramBundle[i];
-        if ((localObject != null) && (!bu.isNullOrNil(localObject.DkE)))
+        if ((localObject != null) && (!Util.isNullOrNil(localObject.HTX)))
         {
           Preference localPreference = new Preference(getContext());
-          localPreference.setTitle(localObject.DkE);
+          localPreference.setTitle(localObject.HTX);
           localPreference.setKey("index_".concat(String.valueOf(j)));
-          this.screen.b(localPreference);
+          this.screen.c(localPreference);
         }
         j += 1;
         i += 1;
@@ -91,7 +91,7 @@ public class WalletSelectProfessionUI
       if (paramf.length != 2) {
         break label81;
       }
-      int i = bu.getInt(paramf[1], 0);
+      int i = Util.getInt(paramf[1], 0);
       paramf = this.mProfessions[i];
       paramPreference = new Intent();
       paramPreference.putExtra("key_select_profession", paramf);
@@ -103,7 +103,7 @@ public class WalletSelectProfessionUI
       AppMethodBeat.o(71231);
       return true;
       label81:
-      ae.w("MicroMsg.WalletSelectProfessionUI", "error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
+      Log.w("MicroMsg.WalletSelectProfessionUI", "error key: %s, %s", new Object[] { paramPreference.mKey, paramPreference.getTitle() });
       setResult(0);
     }
   }
@@ -116,7 +116,7 @@ public class WalletSelectProfessionUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.WalletSelectProfessionUI
  * JD-Core Version:    0.7.0.1
  */

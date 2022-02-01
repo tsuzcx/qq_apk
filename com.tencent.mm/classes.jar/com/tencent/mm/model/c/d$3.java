@@ -5,36 +5,36 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 import com.tencent.mm.storage.c;
 import java.util.Map;
 
 final class d$3
-  implements k.a
+  implements MStorage.IOnStorageChange
 {
   d$3(d paramd) {}
   
-  public final void a(String paramString, m paramm)
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
   {
     AppMethodBeat.i(153126);
     if ((paramString != null) && (paramString.length() > 0) && ("event_updated".equals(paramString)))
     {
-      paramString = d.aDI().xi("100205");
+      paramString = d.aXu().Fu("100205");
       if (paramString.isValid())
       {
-        paramString = paramString.fsy();
-        int i = bu.getInt((String)paramString.get("main_thread_watch_enable"), 65535);
-        int j = bu.getInt((String)paramString.get("main_thread_watch_timeout"), 5000);
-        int k = bu.getInt((String)paramString.get("main_thread_watch_log_loop"), 0);
-        int m = bu.getInt((String)paramString.get("main_thread_watch_report"), 0);
-        ak.getContext().getSharedPreferences("system_config_prefs", g.abv()).edit().putInt("main_thread_watch_enable", i).putInt("main_thread_watch_timeout", j).putInt("main_thread_watch_log_loop", k).putInt("main_thread_watch_report", m).commit();
-        ae.i("MicroMsg.SubCoreNewABTest", "summeranr MM_MAIN_THREAD_WATCH enable[%d] timeout[%d], loop[%d] report[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
+        paramString = paramString.gzz();
+        int i = Util.getInt((String)paramString.get("main_thread_watch_enable"), 65535);
+        int j = Util.getInt((String)paramString.get("main_thread_watch_timeout"), 5000);
+        int k = Util.getInt((String)paramString.get("main_thread_watch_log_loop"), 0);
+        int m = Util.getInt((String)paramString.get("main_thread_watch_report"), 0);
+        MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", g.aps()).edit().putInt("main_thread_watch_enable", i).putInt("main_thread_watch_timeout", j).putInt("main_thread_watch_log_loop", k).putInt("main_thread_watch_report", m).commit();
+        Log.i("MicroMsg.SubCoreNewABTest", "summeranr MM_MAIN_THREAD_WATCH enable[%d] timeout[%d], loop[%d] report[%d]", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m) });
       }
-      d.aDK();
+      d.aXw();
     }
     AppMethodBeat.o(153126);
   }

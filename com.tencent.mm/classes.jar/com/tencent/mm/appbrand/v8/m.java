@@ -1,7 +1,6 @@
 package com.tencent.mm.appbrand.v8;
 
 import android.text.TextUtils;
-import com.eclipsesource.v8.ExecuteDetails;
 import com.eclipsesource.v8.JavaCallback;
 import com.eclipsesource.v8.JavaVoidCallback;
 import com.eclipsesource.v8.V8Array;
@@ -9,8 +8,8 @@ import com.eclipsesource.v8.V8Context;
 import com.eclipsesource.v8.V8Object;
 import com.eclipsesource.v8.V8Value;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsruntime.h;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.m.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -25,48 +24,48 @@ import java.util.concurrent.TimeUnit;
 
 public final class m
 {
-  public final e cYr;
-  public final IJSRuntime cZl;
-  public final d cZm;
-  final LinkedList<o> cZn;
-  private final FutureTask<V8Context> cZo;
-  V8Object cZp;
-  private final HashMap<String, V8Object> cZq;
+  public final e doV;
+  public final IJSRuntime dpQ;
+  public final d dpR;
+  final LinkedList<o> dpS;
+  private final FutureTask<V8Context> dpT;
+  V8Object dpU;
+  private final HashMap<String, V8Object> dpV;
   
   m(IJSRuntime paramIJSRuntime, e parame, final a parama)
   {
     AppMethodBeat.i(144056);
-    this.cZn = new LinkedList();
-    this.cZp = null;
-    this.cZq = new HashMap();
-    this.cZl = paramIJSRuntime;
-    this.cZo = new FutureTask(new Callable() {});
-    paramIJSRuntime.r(this.cZo);
+    this.dpS = new LinkedList();
+    this.dpU = null;
+    this.dpV = new HashMap();
+    this.dpQ = paramIJSRuntime;
+    this.dpT = new FutureTask(new Callable() {});
+    paramIJSRuntime.r(this.dpT);
     paramIJSRuntime = parame;
     if (parame == null) {
       paramIJSRuntime = new u();
     }
-    this.cYr = paramIJSRuntime;
-    this.cZm = new j(this);
-    this.cZl.b(new Runnable()
+    this.doV = paramIJSRuntime;
+    this.dpR = new j(this);
+    this.dpQ.s(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(144048);
-        if (m.this.Ny() != null) {}
+        if (m.this.XJ() != null) {}
         try
         {
-          V8Object localV8Object = m.this.Ny().getGlobalObject();
-          m.this.cZp = localV8Object.getObject("console");
-          m.this.cZn.add(new q().a(m.this));
-          m.this.cZn.add(new t().a(m.this));
-          m.this.cZn.add(new s().a(m.this));
-          ae.d("MicroMsg.J2V8.V8ContextEngine", "hy: config is %s", new Object[] { m.this.cZl.Nf() });
-          if (m.this.cYr.supportBufferStoreBindTo())
+          V8Object localV8Object = m.this.XJ().getGlobalObject();
+          m.this.dpU = localV8Object.getObject("console");
+          m.this.dpS.add(new q().a(m.this));
+          m.this.dpS.add(new t().a(m.this));
+          m.this.dpS.add(new s().a(m.this));
+          Log.d("MicroMsg.J2V8.V8ContextEngine", "hy: config is %s", new Object[] { m.this.dpQ.Xr() });
+          if (m.this.doV.supportBufferStoreBindTo())
           {
-            ae.i("MicroMsg.J2V8.V8ContextEngine", "[v8] [dl: ] [nativebuffer] use NativeBufferJNI");
-            m.this.cYr.bufferStoreBindTo(m.this.cZl.getIsolatePtr(), m.this.Nz());
-            m.this.cZn.add(new r(m.this.cZm).a(m.this));
+            Log.i("MicroMsg.J2V8.V8ContextEngine", "[v8] [dl: ] [nativebuffer] use NativeBufferJNI");
+            m.this.doV.bufferStoreBindTo(m.this.dpQ.getIsolatePtr(), m.this.XK());
+            m.this.dpS.add(new r(m.this.dpR).a(m.this));
             AppMethodBeat.o(144048);
             return;
           }
@@ -75,28 +74,23 @@ public final class m
         {
           for (;;)
           {
-            ae.e("MicroMsg.J2V8.V8ContextEngine", "get OriginConsole ex: %s", new Object[] { localThrowable.getMessage() });
+            Log.e("MicroMsg.J2V8.V8ContextEngine", "get OriginConsole ex: %s", new Object[] { localThrowable.getMessage() });
             continue;
-            ae.i("MicroMsg.J2V8.V8ContextEngine", "[v8] [dl: ] [nativebuffer] use V8DirectApi");
-            m.this.cZn.add(new p(m.this.cYr).a(m.this));
+            Log.i("MicroMsg.J2V8.V8ContextEngine", "[v8] [dl: ] [nativebuffer] use V8DirectApi");
+            m.this.dpS.add(new p(m.this.doV).a(m.this));
           }
         }
       }
-    }, false);
+    });
     AppMethodBeat.o(144056);
   }
   
-  public final IJSRuntime Nx()
-  {
-    return this.cZl;
-  }
-  
-  public final V8Context Ny()
+  public final V8Context XJ()
   {
     AppMethodBeat.i(144058);
     try
     {
-      V8Context localV8Context = (V8Context)this.cZo.get(10L, TimeUnit.SECONDS);
+      V8Context localV8Context = (V8Context)this.dpT.get(10L, TimeUnit.SECONDS);
       AppMethodBeat.o(144058);
       return localV8Context;
     }
@@ -104,16 +98,16 @@ public final class m
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.J2V8.V8ContextEngine", localException, "getV8Context failed", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.J2V8.V8ContextEngine", localException, "getV8Context failed", new Object[0]);
         Object localObject = null;
       }
     }
   }
   
-  public final long Nz()
+  public final long XK()
   {
     AppMethodBeat.i(144059);
-    long l = Ny().getPtr();
+    long l = XJ().getPtr();
     AppMethodBeat.o(144059);
     return l;
   }
@@ -121,7 +115,7 @@ public final class m
   public final void a(int paramInt, h paramh)
   {
     AppMethodBeat.i(144066);
-    this.cZl.a(paramInt, paramh);
+    this.dpQ.a(paramInt, paramh);
     AppMethodBeat.o(144066);
   }
   
@@ -133,7 +127,7 @@ public final class m
       AppMethodBeat.o(144065);
       return;
     }
-    this.cZl.r(new Runnable()
+    this.dpQ.r(new Runnable()
     {
       public final void run()
       {
@@ -156,14 +150,14 @@ public final class m
           }
           localObject1 = ((Class)localObject1).getSuperclass();
         }
-        localObject1 = localm.Ny().newV8Object();
+        localObject1 = localm.XJ().newV8Object();
         localObject3 = ((List)localObject3).iterator();
         while (((Iterator)localObject3).hasNext())
         {
           localObject4 = (Method)((Iterator)localObject3).next();
           ((V8Object)localObject1).registerJavaMethod(localObject2, ((Method)localObject4).getName(), ((Method)localObject4).getName(), ((Method)localObject4).getParameterTypes());
         }
-        localm.Ny().add(str, (V8Value)localObject1);
+        localm.XJ().add(str, (V8Value)localObject1);
         ((V8Object)localObject1).release();
         AppMethodBeat.o(144044);
       }
@@ -174,7 +168,7 @@ public final class m
   public final void a(final String paramString, final b paramb)
   {
     AppMethodBeat.i(144061);
-    this.cZl.r(new Runnable()
+    this.dpQ.r(new Runnable()
     {
       public final void run()
       {
@@ -184,7 +178,7 @@ public final class m
         {
           m.c localc = new m.c();
           m.c.b(localc);
-          Object localObject = m.this.Ny().executeScript(paramString, localc);
+          Object localObject = m.this.XJ().executeScript(paramString, localc);
           m.c.c(localc);
           m.b localb = paramb;
           if (localObject == null) {}
@@ -196,7 +190,7 @@ public final class m
             str = localObject.toString();
           }
         }
-        m.this.Ny().executeVoidScript(paramString, null);
+        m.this.XJ().executeVoidScript(paramString, null);
         AppMethodBeat.o(144050);
       }
     });
@@ -206,18 +200,18 @@ public final class m
   public final void a(final String paramString1, final String paramString2, final b paramb)
   {
     AppMethodBeat.i(144062);
-    this.cZl.r(new Runnable()
+    this.dpQ.r(new Runnable()
     {
       public final void run()
       {
         String str = null;
         AppMethodBeat.i(144051);
-        ae.d("MicroMsg.J2V8.V8ContextEngine", "eval with script(%s)", new Object[] { paramString1 });
+        Log.d("MicroMsg.J2V8.V8ContextEngine", "eval with script(%s)", new Object[] { paramString1 });
         if (paramb != null)
         {
           m.c localc = new m.c();
           m.c.b(localc);
-          Object localObject = m.this.Ny().executeScript(paramString2, paramString1, 0, localc);
+          Object localObject = m.this.XJ().executeScript(paramString2, paramString1, 0, localc);
           m.c.c(localc);
           m.b localb = paramb;
           if (localObject == null) {}
@@ -229,7 +223,7 @@ public final class m
             str = localObject.toString();
           }
         }
-        m.this.Ny().executeVoidScript(paramString2, paramString1, 0, null);
+        m.this.XJ().executeVoidScript(paramString2, paramString1, 0, null);
         AppMethodBeat.o(144051);
       }
     });
@@ -239,18 +233,18 @@ public final class m
   public final void a(final String paramString1, final String paramString2, final b paramb, final String paramString3, final String paramString4, final int paramInt)
   {
     AppMethodBeat.i(144063);
-    this.cZl.r(new Runnable()
+    this.dpQ.r(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(144052);
-        ae.d("MicroMsg.J2V8.V8ContextEngine", "eval script(%s) with code cache", new Object[] { paramString1 });
+        Log.d("MicroMsg.J2V8.V8ContextEngine", "eval script(%s) with code cache", new Object[] { paramString1 });
         if (paramb != null)
         {
           m.c localc = new m.c();
-          localc.cZI = paramInt;
+          localc.dqm = paramInt;
           m.c.b(localc);
-          Object localObject = m.this.Ny().executeScript(paramString2, paramString1, 0, paramString3, paramString4, paramInt, localc);
+          Object localObject = m.this.XJ().executeScript(paramString2, paramString1, 0, paramString3, paramString4, paramInt, localc);
           m.c.c(localc);
           m.b localb = paramb;
           if (localObject == null) {}
@@ -261,7 +255,7 @@ public final class m
             return;
           }
         }
-        m.this.Ny().executeVoidScript(paramString2, paramString1, 0, paramString3, paramString4, paramInt, null);
+        m.this.XJ().executeVoidScript(paramString2, paramString1, 0, paramString3, paramString4, paramInt, null);
         AppMethodBeat.o(144052);
       }
     });
@@ -271,18 +265,18 @@ public final class m
   public final void destroy()
   {
     AppMethodBeat.i(144067);
-    this.cZl.s(new Runnable()
+    this.dpQ.t(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(144045);
-        ae.i("MicroMsg.J2V8.V8ContextEngine", "destroy");
-        Object localObject = m.this.cZn.iterator();
+        Log.i("MicroMsg.J2V8.V8ContextEngine", "destroy");
+        Object localObject = m.this.dpS.iterator();
         while (((Iterator)localObject).hasNext()) {
           ((o)((Iterator)localObject).next()).cleanup();
         }
-        m.this.cZn.clear();
-        localObject = m.this.Ny();
+        m.this.dpS.clear();
+        localObject = m.this.XJ();
         if (localObject != null) {
           try
           {
@@ -292,7 +286,7 @@ public final class m
           }
           catch (Exception localException)
           {
-            ae.e("MicroMsg.J2V8.V8ContextEngine", "destroy :%s", new Object[] { localException });
+            Log.e("MicroMsg.J2V8.V8ContextEngine", "destroy :%s", new Object[] { localException });
           }
         }
         AppMethodBeat.o(144045);
@@ -303,36 +297,28 @@ public final class m
   
   public final V8Object getGlobalObject()
   {
-    AppMethodBeat.i(194170);
-    V8Object localV8Object = Ny().getGlobalObject();
-    AppMethodBeat.o(194170);
+    AppMethodBeat.i(216890);
+    V8Object localV8Object = XJ().getGlobalObject();
+    AppMethodBeat.o(216890);
     return localV8Object;
   }
   
   public final V8Array newV8Array()
   {
-    AppMethodBeat.i(194171);
-    V8Array localV8Array = Ny().newV8Array();
-    AppMethodBeat.o(194171);
+    AppMethodBeat.i(216891);
+    V8Array localV8Array = XJ().newV8Array();
+    AppMethodBeat.o(216891);
     return localV8Array;
   }
   
   public static abstract interface a
   {
-    public abstract V8Context Nm();
+    public abstract V8Context Xy();
   }
   
   public static abstract interface b
   {
     public abstract void a(String paramString, m.c paramc);
-  }
-  
-  public static final class c
-    extends ExecuteDetails
-  {
-    public long cZG;
-    public long cZH;
-    public int cZI;
   }
 }
 

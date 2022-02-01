@@ -5,8 +5,8 @@ import android.graphics.BitmapFactory.Options;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -19,15 +19,15 @@ public final class a
     {
       if ((paramc != null) && (paramc.width > 0) && (paramc.width > 0))
       {
-        paramc = h.aL(paramInt1, paramc.width, paramc.height);
+        paramc = BitmapUtil.getBitmapNative(paramInt1, paramc.width, paramc.height);
         AppMethodBeat.o(130448);
         return paramc;
       }
-      paramc = h.aaZ(paramInt1);
+      paramc = BitmapUtil.getBitmapNative(paramInt1);
       AppMethodBeat.o(130448);
       return paramc;
     }
-    paramc = h.aL(paramInt1, paramInt2, paramInt3);
+    paramc = BitmapUtil.getBitmapNative(paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(130448);
     return paramc;
   }
@@ -37,28 +37,28 @@ public final class a
     AppMethodBeat.i(130445);
     if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
       if ((paramc != null) && (paramc.width > 0) && (paramc.width > 0)) {
-        paramc = h.a(paramInputStream, 0.0F, paramc.width, paramc.height);
+        paramc = BitmapUtil.decodeStream(paramInputStream, 0.0F, paramc.width, paramc.height);
       }
     }
     for (;;)
     {
       paramInputStream = paramc;
       if (paramBoolean1) {
-        paramInputStream = h.a(paramc, paramInt1, paramInt2, false, true);
+        paramInputStream = BitmapUtil.extractThumbNail(paramc, paramInt1, paramInt2, false, true);
       }
       paramc = paramInputStream;
       if (paramFloat > 0.0F) {
-        paramc = h.b(paramInputStream, paramFloat);
+        paramc = BitmapUtil.setAlpha(paramInputStream, paramFloat);
       }
       paramInputStream = paramc;
       if (paramBoolean2) {
-        paramInputStream = h.aD(paramc);
+        paramInputStream = BitmapUtil.setGrayscale(paramc);
       }
       AppMethodBeat.o(130445);
       return paramInputStream;
-      paramc = h.decodeStream(paramInputStream);
+      paramc = BitmapUtil.decodeStream(paramInputStream);
       continue;
-      paramc = h.a(paramInputStream, 0.0F, paramInt1, paramInt2);
+      paramc = BitmapUtil.decodeStream(paramInputStream, 0.0F, paramInt1, paramInt2);
     }
   }
   
@@ -69,15 +69,15 @@ public final class a
     {
       if ((paramc != null) && (paramc.width > 0) && (paramc.width > 0))
       {
-        paramc = h.aO(paramString, paramc.width, paramc.height);
+        paramc = BitmapUtil.getBitmapNative(paramString, paramc.width, paramc.height);
         AppMethodBeat.o(130443);
         return paramc;
       }
-      paramc = h.aRC(paramString);
+      paramc = BitmapUtil.getBitmapNative(paramString);
       AppMethodBeat.o(130443);
       return paramc;
     }
-    paramc = h.d(paramString, paramInt2, paramInt1, false);
+    paramc = BitmapUtil.extractThumbNail(paramString, paramInt2, paramInt1, false);
     AppMethodBeat.o(130443);
     return paramc;
   }
@@ -87,41 +87,41 @@ public final class a
     AppMethodBeat.i(130446);
     if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
       if ((paramc != null) && (paramc.width > 0) && (paramc.width > 0)) {
-        paramc = h.decodeByteArray(paramArrayOfByte, paramc.width, paramc.height);
+        paramc = BitmapUtil.decodeByteArray(paramArrayOfByte, paramc.width, paramc.height);
       }
     }
     for (;;)
     {
       if (paramBoolean1) {
-        paramc = h.a(h.decodeByteArray(paramArrayOfByte, paramInt1, paramInt2), paramInt1, paramInt2, false, true);
+        paramc = BitmapUtil.extractThumbNail(BitmapUtil.decodeByteArray(paramArrayOfByte, paramInt1, paramInt2), paramInt1, paramInt2, false, true);
       }
       paramArrayOfByte = paramc;
       if (paramFloat > 0.0F) {
-        paramArrayOfByte = h.b(paramc, paramFloat);
+        paramArrayOfByte = BitmapUtil.setAlpha(paramc, paramFloat);
       }
       paramc = paramArrayOfByte;
       if (paramBoolean2) {
-        paramc = h.aD(paramArrayOfByte);
+        paramc = BitmapUtil.setGrayscale(paramArrayOfByte);
       }
       AppMethodBeat.o(130446);
       return paramc;
-      paramc = h.cu(paramArrayOfByte);
+      paramc = BitmapUtil.decodeByteArray(paramArrayOfByte);
       continue;
-      paramc = h.decodeByteArray(paramArrayOfByte, paramInt1, paramInt2);
+      paramc = BitmapUtil.decodeByteArray(paramArrayOfByte, paramInt1, paramInt2);
     }
   }
   
   public static Bitmap b(c paramc, String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130444);
-    BitmapFactory.Options localOptions = h.aRz(paramString);
+    BitmapFactory.Options localOptions = BitmapUtil.getImageOptions(paramString);
     if ((localOptions != null) && ((localOptions.outWidth >= localOptions.outHeight * 2) || (localOptions.outWidth * 2 <= localOptions.outHeight)))
     {
       if ((paramInt1 <= 0) || (paramInt2 <= 0))
       {
         if ((paramc != null) && (paramc.width > 0) && (paramc.width > 0))
         {
-          paramc = h.d(paramString, paramc.height, paramc.width, true);
+          paramc = BitmapUtil.extractThumbNail(paramString, paramc.height, paramc.width, true);
           AppMethodBeat.o(130444);
           return paramc;
         }
@@ -132,19 +132,19 @@ public final class a
         }
         for (;;)
         {
-          paramc = h.d(paramString, paramInt1, paramInt2, true);
+          paramc = BitmapUtil.extractThumbNail(paramString, paramInt1, paramInt2, true);
           AppMethodBeat.o(130444);
           return paramc;
-          ae.w("MicroMsg.imageloader.ImageLoaderUtils", "crop bitmap cant not un set width or height");
+          Log.w("MicroMsg.imageloader.ImageLoaderUtils", "crop bitmap cant not un set width or height");
           paramInt1 = 0;
           paramInt2 = 0;
         }
       }
-      paramc = h.d(paramString, paramInt2, paramInt1, true);
+      paramc = BitmapUtil.extractThumbNail(paramString, paramInt2, paramInt1, true);
       AppMethodBeat.o(130444);
       return paramc;
     }
-    paramc = h.d(paramString, paramInt2, paramInt1, false);
+    paramc = BitmapUtil.extractThumbNail(paramString, paramInt2, paramInt1, false);
     AppMethodBeat.o(130444);
     return paramc;
   }
@@ -157,20 +157,20 @@ public final class a
     {
       if ((paramc.width > 0) && (paramc.width > 0))
       {
-        paramc = h.aQ(paramString, paramc.width, paramc.height);
+        paramc = BitmapUtil.extractThumbNailAssets(paramString, paramc.width, paramc.height);
         AppMethodBeat.o(130447);
         return paramc;
       }
-      paramc = h.aQ(paramString, 0, 0);
+      paramc = BitmapUtil.extractThumbNailAssets(paramString, 0, 0);
       AppMethodBeat.o(130447);
       return paramc;
     }
     catch (IOException paramc)
     {
-      ae.e("MicroMsg.imageloader.ImageLoaderUtils", "get bitmap from assert failed. :%s", new Object[] { paramc.toString() });
+      Log.e("MicroMsg.imageloader.ImageLoaderUtils", "get bitmap from assert failed. :%s", new Object[] { paramc.toString() });
       AppMethodBeat.o(130447);
     }
-    paramc = h.aQ(paramString, paramInt1, paramInt2);
+    paramc = BitmapUtil.extractThumbNailAssets(paramString, paramInt1, paramInt2);
     AppMethodBeat.o(130447);
     return paramc;
     return null;
@@ -178,7 +178,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.av.a.g.a
  * JD-Core Version:    0.7.0.1
  */

@@ -16,19 +16,19 @@ import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.sns.ad.e.f;
 import com.tencent.mm.plugin.sns.data.i;
 import com.tencent.mm.plugin.sns.data.k;
 import com.tencent.mm.plugin.sns.model.AdLandingPagesProxy;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.af;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.ah;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.b;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.p;
 import com.tencent.mm.pluginsdk.model.app.al;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -40,153 +40,153 @@ import java.util.concurrent.ConcurrentHashMap;
 public final class l
   extends q
 {
-  private static a zUH;
-  private static Runnable zUL;
-  private b zUI;
-  private String zUJ;
-  private boolean zUK;
+  private static a EcP;
+  private static Runnable EcT;
+  private b EcQ;
+  private String EcR;
+  private boolean EcS;
   
   static
   {
-    AppMethodBeat.i(219471);
-    zUL = new Runnable()
+    AppMethodBeat.i(202925);
+    EcT = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(219449);
+        AppMethodBeat.i(202903);
         l.access$200();
-        AppMethodBeat.o(219449);
+        AppMethodBeat.o(202903);
       }
     };
-    AppMethodBeat.o(219471);
+    AppMethodBeat.o(202925);
   }
   
   public l(Context paramContext, b paramb, ViewGroup paramViewGroup)
   {
     super(paramContext, paramb, paramViewGroup);
-    AppMethodBeat.i(219456);
-    this.zUI = paramb;
+    AppMethodBeat.i(202910);
+    this.EcQ = paramb;
     paramViewGroup = "";
     paramContext = paramViewGroup;
     if (paramb != null)
     {
-      if (paramb.zPT != null) {
-        paramViewGroup = paramb.zPT.getStringExtra("target_app_id");
+      if (paramb.DXR != null) {
+        paramViewGroup = paramb.DXR.getStringExtra("target_app_id");
       }
       paramContext = paramViewGroup;
       if (TextUtils.isEmpty(paramViewGroup)) {
-        paramContext = paramb.Lw;
+        paramContext = paramb.LG;
       }
     }
-    this.zUJ = paramContext;
-    this.zUK = aBd(this.zUJ);
-    if (eas() == 3) {
-      I(4, 1, "");
+    this.EcR = paramContext;
+    this.EcS = aPX(this.EcR);
+    if (fdg() == 3) {
+      H(4, 1, "");
     }
     for (;;)
     {
-      I(1, 0, "");
-      AppMethodBeat.o(219456);
+      H(1, 0, "");
+      AppMethodBeat.o(202910);
       return;
-      I(4, 0, "");
+      H(4, 0, "");
     }
   }
   
-  private void I(int paramInt1, int paramInt2, String paramString)
+  private void H(int paramInt1, int paramInt2, String paramString)
   {
-    AppMethodBeat.i(219465);
+    AppMethodBeat.i(202919);
     try
     {
-      a(eaD(), paramInt1, String.valueOf(paramInt2), paramString);
-      AppMethodBeat.o(219465);
+      a(fds(), paramInt1, String.valueOf(paramInt2), paramString);
+      AppMethodBeat.o(202919);
       return;
     }
     catch (Throwable paramString)
     {
-      ae.e("MicroMsg.AdLandingPageAppMarketBtnComp", "report19790 exp:" + paramString.toString());
-      AppMethodBeat.o(219465);
+      Log.e("MicroMsg.AdLandingPageAppMarketBtnComp", "report19790 exp:" + paramString.toString());
+      AppMethodBeat.o(202919);
     }
   }
   
-  static void a(af paramaf, int paramInt, String paramString1, String paramString2)
+  static void a(ah paramah, int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(219468);
+    AppMethodBeat.i(202922);
     try
     {
-      String str1 = bu.nullAsNil(paramaf.getSnsId());
-      String str2 = i.azd(paramaf.dGD);
-      paramaf = bu.nullAsNil(paramaf.zsJ);
-      g.yxI.f(19790, new Object[] { str1, str2, paramaf, Integer.valueOf(paramInt), paramString1, paramString2 });
-      ae.d("MicroMsg.AdLandingPageAppMarketBtnComp", "report19790 snsId=" + str1 + ", uxInfo=" + str2 + ", adExtInfo =" + paramaf + ", actType =" + paramInt + ", actValue = " + paramString1 + ", extInfo = " + paramString2);
-      AppMethodBeat.o(219468);
+      String str1 = Util.nullAsNil(paramah.getSnsId());
+      String str2 = i.aNZ(paramah.uxInfo);
+      paramah = Util.nullAsNil(paramah.adExtInfo);
+      h.CyF.a(19790, new Object[] { str1, str2, paramah, Integer.valueOf(paramInt), paramString1, paramString2 });
+      Log.d("MicroMsg.AdLandingPageAppMarketBtnComp", "report19790 snsId=" + str1 + ", uxInfo=" + str2 + ", adExtInfo =" + paramah + ", actType =" + paramInt + ", actValue = " + paramString1 + ", extInfo = " + paramString2);
+      AppMethodBeat.o(202922);
       return;
     }
-    catch (Exception paramaf)
+    catch (Exception paramah)
     {
-      ae.e("MicroMsg.AdLandingPageAppMarketBtnComp", "report19790 exp:" + paramaf.toString());
-      AppMethodBeat.o(219468);
+      Log.e("MicroMsg.AdLandingPageAppMarketBtnComp", "report19790 exp:" + paramah.toString());
+      AppMethodBeat.o(202922);
     }
   }
   
-  private static boolean aBd(String paramString)
+  private static boolean aPX(String paramString)
   {
-    AppMethodBeat.i(219460);
+    AppMethodBeat.i(202914);
     try
     {
       boolean bool = AdLandingPagesProxy.getInstance().isPkgInstalled(paramString);
-      AppMethodBeat.o(219460);
+      AppMethodBeat.o(202914);
       return bool;
     }
     catch (Throwable paramString)
     {
-      ae.w("MicroMsg.AdLandingPageAppMarketBtnComp", "isApkInstalled occur something wrong!");
-      AppMethodBeat.o(219460);
+      Log.w("MicroMsg.AdLandingPageAppMarketBtnComp", "isApkInstalled occur something wrong!");
+      AppMethodBeat.o(202914);
     }
     return false;
   }
   
-  private int eas()
+  private int fdg()
   {
-    AppMethodBeat.i(219461);
+    AppMethodBeat.i(202915);
     try
     {
-      int i = z.getIntExtra(this.zUI.zPT, "market_priority", 1);
-      AppMethodBeat.o(219461);
+      int i = IntentUtil.getIntExtra(this.EcQ.DXR, "market_priority", 1);
+      AppMethodBeat.o(202915);
       return i;
     }
     catch (Throwable localThrowable)
     {
-      ae.e("MicroMsg.AdLandingPageAppMarketBtnComp", "getMarketPriority has something wrong");
-      AppMethodBeat.o(219461);
+      Log.e("MicroMsg.AdLandingPageAppMarketBtnComp", "getMarketPriority has something wrong");
+      AppMethodBeat.o(202915);
     }
     return 0;
   }
   
-  private static void eat()
+  private static void fdh()
   {
     try
     {
-      AppMethodBeat.i(219466);
+      AppMethodBeat.i(202920);
       try
       {
-        if (zUH == null)
+        if (EcP == null)
         {
-          zUH = new a((byte)0);
+          EcP = new a((byte)0);
           IntentFilter localIntentFilter = new IntentFilter();
           localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
           localIntentFilter.addAction("android.intent.action.PACKAGE_REMOVED");
           localIntentFilter.addDataScheme("package");
-          ak.getContext().registerReceiver(zUH, localIntentFilter);
-          ae.i("MicroMsg.AdLandingPageAppMarketBtnComp", "the broadcast receiver register");
+          MMApplicationContext.getContext().registerReceiver(EcP, localIntentFilter);
+          Log.i("MicroMsg.AdLandingPageAppMarketBtnComp", "the broadcast receiver register");
         }
-        AppMethodBeat.o(219466);
+        AppMethodBeat.o(202920);
       }
       catch (Throwable localThrowable)
       {
         for (;;)
         {
-          ae.w("MicroMsg.AdLandingPageAppMarketBtnComp", "register broadcast receiver failed");
-          AppMethodBeat.o(219466);
+          Log.w("MicroMsg.AdLandingPageAppMarketBtnComp", "register broadcast receiver failed");
+          AppMethodBeat.o(202920);
         }
       }
       return;
@@ -194,27 +194,27 @@ public final class l
     finally {}
   }
   
-  private static void eau()
+  private static void fdi()
   {
     try
     {
-      AppMethodBeat.i(219467);
+      AppMethodBeat.i(202921);
       try
       {
-        if (zUH != null)
+        if (EcP != null)
         {
-          ak.getContext().unregisterReceiver(zUH);
-          zUH = null;
-          ae.i("MicroMsg.AdLandingPageAppMarketBtnComp", "the broadcast receiver unregister");
+          MMApplicationContext.getContext().unregisterReceiver(EcP);
+          EcP = null;
+          Log.i("MicroMsg.AdLandingPageAppMarketBtnComp", "the broadcast receiver unregister");
         }
-        AppMethodBeat.o(219467);
+        AppMethodBeat.o(202921);
       }
       catch (Throwable localThrowable)
       {
         for (;;)
         {
-          ae.w("MicroMsg.AdLandingPageAppMarketBtnComp", "unregister broadcast receiver failed");
-          AppMethodBeat.o(219467);
+          Log.w("MicroMsg.AdLandingPageAppMarketBtnComp", "unregister broadcast receiver failed");
+          AppMethodBeat.o(202921);
         }
       }
       return;
@@ -222,59 +222,105 @@ public final class l
     finally {}
   }
   
-  private static String jG(String paramString1, String paramString2)
+  private static String kt(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(219464);
-    if (bu.isNullOrNil(paramString1))
+    AppMethodBeat.i(202918);
+    if (Util.isNullOrNil(paramString1))
     {
-      AppMethodBeat.o(219464);
+      AppMethodBeat.o(202918);
       return paramString2;
     }
     if (paramString1.matches("#[0-9A-Fa-f]{6}([0-9A-Fa-f]{2})?"))
     {
-      AppMethodBeat.o(219464);
+      AppMethodBeat.o(202918);
       return paramString1;
     }
-    AppMethodBeat.o(219464);
+    AppMethodBeat.o(202918);
     return paramString2;
   }
   
-  public final void dUI()
+  protected final void eWS()
   {
-    AppMethodBeat.i(219458);
-    super.dUI();
-    AppMethodBeat.o(219458);
-  }
-  
-  protected final void dUJ()
-  {
-    AppMethodBeat.i(219459);
+    AppMethodBeat.i(202911);
+    String str1;
+    if (this.EcS)
+    {
+      Context localContext = this.context;
+      try
+      {
+        localObject = Util.nullAs(this.EcR, "");
+        str1 = Util.nullAs(this.EcQ.appPageUrl, "");
+        String str2 = Util.nullAs(this.EcQ.DXA, "");
+        String str3 = Util.nullAs(this.EcQ.dNI, "");
+        ah localah = fds();
+        k.a(localContext, str3, (String)localObject, str2, str1, localah.uxInfo, localah.adExtInfo, localah.getSnsId(), 1, 2);
+        AppMethodBeat.o(202911);
+        return;
+      }
+      catch (Throwable localThrowable1)
+      {
+        AppMethodBeat.o(202911);
+        return;
+      }
+    }
+    Intent localIntent = this.EcQ.DXR;
+    Object localObject = this.context;
     try
     {
-      super.dUJ();
+      if (!(localObject instanceof Activity)) {
+        localIntent.addFlags(268435456);
+      }
+      str1 = Util.nullAs(IntentUtil.getStringExtra(localIntent, "market_app_name"), "");
+      ap.a((Context)localObject, localIntent.getPackage(), "", localIntent, str1, new al()
+      {
+        public final void v(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
+        {
+          AppMethodBeat.i(202902);
+          if (paramAnonymousBoolean1) {
+            k.jZ(l.a(l.this), l.b(l.this).appPageUrl);
+          }
+          AppMethodBeat.o(202902);
+        }
+      }, 2);
+      AppMethodBeat.o(202911);
+      return;
+    }
+    catch (Throwable localThrowable2)
+    {
+      H(2, 1, "");
+      AppMethodBeat.o(202911);
+    }
+  }
+  
+  protected final void eWT()
+  {
+    AppMethodBeat.i(202913);
+    try
+    {
+      super.eWT();
       Object localObject1 = new HashMap();
-      ((Map)localObject1).put("fontNormalColor", jG(this.zUI.zPM, "#FFFFFF"));
-      ((Map)localObject1).put("fontDisableColor", jG(this.zUI.zPN, "#4CFFFFFF"));
-      ((Map)localObject1).put("fontPressedColor", jG(this.zUI.zPO, "#99FFFFFF"));
-      ((Map)localObject1).put("NormalColor", jG(this.zUI.zPG, "#1AAD19"));
-      ((Map)localObject1).put("PressedColor", jG(this.zUI.zPI, "#179B16"));
-      ((Map)localObject1).put("DisableColor", jG(this.zUI.zPH, "#661AAD19"));
-      ((Map)localObject1).put("borderNormalColor", jG(this.zUI.zPJ, "#179E16"));
-      ((Map)localObject1).put("borderPressedColor", jG(this.zUI.zPL, "#158E14"));
-      ((Map)localObject1).put("borderDisableColor", jG(this.zUI.zPK, "#00179E16"));
+      ((Map)localObject1).put("fontNormalColor", kt(this.EcQ.DXK, "#FFFFFF"));
+      ((Map)localObject1).put("fontDisableColor", kt(this.EcQ.DXL, "#4CFFFFFF"));
+      ((Map)localObject1).put("fontPressedColor", kt(this.EcQ.DXM, "#99FFFFFF"));
+      ((Map)localObject1).put("NormalColor", kt(this.EcQ.DXE, "#1AAD19"));
+      ((Map)localObject1).put("PressedColor", kt(this.EcQ.DXG, "#179B16"));
+      ((Map)localObject1).put("DisableColor", kt(this.EcQ.DXF, "#661AAD19"));
+      ((Map)localObject1).put("borderNormalColor", kt(this.EcQ.DXH, "#179E16"));
+      ((Map)localObject1).put("borderPressedColor", kt(this.EcQ.DXJ, "#158E14"));
+      ((Map)localObject1).put("borderDisableColor", kt(this.EcQ.DXI, "#00179E16"));
       int j = Color.parseColor((String)((Map)localObject1).get("fontNormalColor"));
       int k = Color.parseColor((String)((Map)localObject1).get("fontDisableColor"));
       int m = Color.parseColor((String)((Map)localObject1).get("fontPressedColor"));
       int n = Color.parseColor((String)((Map)localObject1).get("NormalColor"));
       int i1 = Color.parseColor((String)((Map)localObject1).get("PressedColor"));
       int i2 = Color.parseColor((String)((Map)localObject1).get("DisableColor"));
-      int i3 = (int)eaI().zQv;
+      int i3 = (int)fdx().DYu;
       int i4 = Color.parseColor((String)((Map)localObject1).get("borderNormalColor"));
       int i5 = Color.parseColor((String)((Map)localObject1).get("borderPressedColor"));
       int i6 = Color.parseColor((String)((Map)localObject1).get("borderDisableColor"));
-      int i = this.context.getResources().getDimensionPixelSize(2131165207);
-      if (eaI().tm > 0.0F) {
-        i = (int)eaI().tm;
+      int i = this.context.getResources().getDimensionPixelSize(2131165210);
+      if (fdx().tt > 0.0F) {
+        i = (int)fdx().tt;
       }
       localObject1 = new GradientDrawable();
       ((GradientDrawable)localObject1).setShape(0);
@@ -295,166 +341,122 @@ public final class l
       localStateListDrawable.addState(new int[] { -16842910 }, (Drawable)localObject1);
       localStateListDrawable.addState(new int[] { 16842919 }, (Drawable)localObject2);
       localStateListDrawable.addState(new int[] { 16842910 }, localGradientDrawable);
-      this.zVi.setBackground(localStateListDrawable);
+      this.Edp.setBackground(localStateListDrawable);
       localObject1 = new int[] { -16842910 };
-      localObject2 = new int[] { 16842910 };
-      this.zVi.setTextColor(new ColorStateList(new int[][] { localObject1, { 16842919 }, localObject2 }, new int[] { k, m, j }));
-      if (this.zUI.fontSize > 0.0F) {
-        this.zVi.setTextSize(0, this.zUI.fontSize);
+      localObject2 = new int[] { 16842919 };
+      this.Edp.setTextColor(new ColorStateList(new int[][] { localObject1, localObject2, { 16842910 } }, new int[] { k, m, j }));
+      if (this.EcQ.fontSize > 0.0F) {
+        this.Edp.setTextSize(0, this.EcQ.fontSize);
       }
-      if ((this.zUK) && (this.zVi != null)) {
-        this.zVi.setText(2131763753);
+      if ((this.EcS) && (this.Edp != null))
+      {
+        this.Edp.setText(2131765951);
+        f.a(this.context, fdx(), this.Edp);
       }
-      AppMethodBeat.o(219459);
+      AppMethodBeat.o(202913);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ae.w("MicroMsg.AdLandingPageAppMarketBtnComp", "fill item data occur something wrong!");
-      AppMethodBeat.o(219459);
+      Log.w("MicroMsg.AdLandingPageAppMarketBtnComp", "fill item data occur something wrong!");
+      AppMethodBeat.o(202913);
     }
   }
   
-  public final void dUK()
+  public final void eWZ()
   {
-    AppMethodBeat.i(219462);
-    super.dUK();
+    AppMethodBeat.i(202916);
+    super.eWZ();
     try
     {
-      ae.i("MicroMsg.AdLandingPageAppMarketBtnComp", "viewWillAppear is called");
-      ar.ay(zUL);
-      eat();
+      Log.i("MicroMsg.AdLandingPageAppMarketBtnComp", "viewWillAppear is called");
+      MMHandlerThread.removeRunnable(EcT);
+      fdh();
       a locala;
-      if (zUH != null)
+      if (EcP != null)
       {
-        locala = zUH;
-        if (TextUtils.isEmpty(this.zUJ))
+        locala = EcP;
+        if (TextUtils.isEmpty(this.EcR))
         {
-          ae.w("MicroMsg.AdLandingPageAppMarketBtnComp", "the btn comp is null or target apk pkg is empty");
-          AppMethodBeat.o(219462);
+          Log.w("MicroMsg.AdLandingPageAppMarketBtnComp", "the btn comp is null or target apk pkg is empty");
+          AppMethodBeat.o(202916);
           return;
         }
       }
-      AppMethodBeat.o(219462);
+      AppMethodBeat.o(202916);
     }
     catch (Throwable localThrowable1)
     {
       try
       {
-        locala.eav();
+        locala.fdj();
         locala.c(this);
-        AppMethodBeat.o(219462);
+        AppMethodBeat.o(202916);
         return;
       }
       catch (Throwable localThrowable2)
       {
-        ae.w("MicroMsg.AdLandingPageAppMarketBtnComp", "add market btn has some error");
+        Log.w("MicroMsg.AdLandingPageAppMarketBtnComp", "add market btn has some error");
       }
       localThrowable1 = localThrowable1;
-      ae.e("MicroMsg.AdLandingPageAppMarketBtnComp", "processor registerPkgReceiver error");
-      AppMethodBeat.o(219462);
+      Log.e("MicroMsg.AdLandingPageAppMarketBtnComp", "processor registerPkgReceiver error");
+      AppMethodBeat.o(202916);
       return;
     }
   }
   
-  public final void dUM()
+  public final void eXd()
   {
-    AppMethodBeat.i(219463);
-    super.dUM();
+    AppMethodBeat.i(202917);
+    super.eXd();
     try
     {
-      ae.i("MicroMsg.AdLandingPageAppMarketBtnComp", "viewWillDestroy is called");
-      ar.ay(zUL);
-      ar.o(zUL, 300000L);
-      AppMethodBeat.o(219463);
+      Log.i("MicroMsg.AdLandingPageAppMarketBtnComp", "viewWillDestroy is called");
+      MMHandlerThread.removeRunnable(EcT);
+      MMHandlerThread.postToMainThreadDelayed(EcT, 300000L);
+      AppMethodBeat.o(202917);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ae.e("MicroMsg.AdLandingPageAppMarketBtnComp", "remove mProcessorForUnregisterPkgReceiver error");
-      AppMethodBeat.o(219463);
+      Log.e("MicroMsg.AdLandingPageAppMarketBtnComp", "remove mProcessorForUnregisterPkgReceiver error");
+      AppMethodBeat.o(202917);
     }
   }
   
-  protected final void ear()
+  public final void eXe()
   {
-    AppMethodBeat.i(219457);
-    String str1;
-    if (this.zUK)
-    {
-      Context localContext = this.context;
-      try
-      {
-        localObject = bu.bI(this.zUJ, "");
-        str1 = bu.bI(this.zUI.zMz, "");
-        String str2 = bu.bI(this.zUI.zPC, "");
-        String str3 = bu.bI(this.zUI.dwb, "");
-        af localaf = eaD();
-        k.a(localContext, str3, (String)localObject, str2, str1, localaf.dGD, localaf.zsJ, localaf.getSnsId(), 1, 2);
-        AppMethodBeat.o(219457);
-        return;
-      }
-      catch (Throwable localThrowable1)
-      {
-        AppMethodBeat.o(219457);
-        return;
-      }
-    }
-    Intent localIntent = this.zUI.zPT;
-    Object localObject = this.context;
-    try
-    {
-      if (!(localObject instanceof Activity)) {
-        localIntent.addFlags(268435456);
-      }
-      str1 = bu.bI(z.getStringExtra(localIntent, "market_app_name"), "");
-      an.a((Context)localObject, localIntent.getPackage(), "", localIntent, str1, new al()
-      {
-        public final void v(boolean paramAnonymousBoolean1, boolean paramAnonymousBoolean2)
-        {
-          AppMethodBeat.i(219448);
-          if (paramAnonymousBoolean1) {
-            k.jn(l.a(l.this), l.b(l.this).zMz);
-          }
-          AppMethodBeat.o(219448);
-        }
-      }, 2);
-      AppMethodBeat.o(219457);
-      return;
-    }
-    catch (Throwable localThrowable2)
-    {
-      I(2, 1, "");
-      AppMethodBeat.o(219457);
-    }
+    AppMethodBeat.i(202912);
+    super.eXe();
+    AppMethodBeat.o(202912);
   }
   
   static final class a
     extends BroadcastReceiver
   {
-    final List<WeakReference<l>> zUN;
-    final Map<String, af> zUO;
+    final List<WeakReference<l>> EcV;
+    final Map<String, ah> EcW;
     
     private a()
     {
-      AppMethodBeat.i(219450);
-      this.zUN = new LinkedList();
-      this.zUO = new ConcurrentHashMap();
-      AppMethodBeat.o(219450);
+      AppMethodBeat.i(202904);
+      this.EcV = new LinkedList();
+      this.EcW = new ConcurrentHashMap();
+      AppMethodBeat.o(202904);
     }
     
-    private static String aM(Intent paramIntent)
+    private static String aW(Intent paramIntent)
     {
-      AppMethodBeat.i(219455);
+      AppMethodBeat.i(202909);
       try
       {
         paramIntent = paramIntent.getData().getSchemeSpecificPart();
-        AppMethodBeat.o(219455);
+        AppMethodBeat.o(202909);
         return paramIntent;
       }
       catch (Throwable paramIntent)
       {
-        AppMethodBeat.o(219455);
+        AppMethodBeat.o(202909);
       }
       return "";
     }
@@ -465,8 +467,8 @@ public final class l
       {
         try
         {
-          AppMethodBeat.i(219454);
-          Iterator localIterator = this.zUN.iterator();
+          AppMethodBeat.i(202908);
+          Iterator localIterator = this.EcV.iterator();
           if (!localIterator.hasNext()) {
             break;
           }
@@ -487,7 +489,7 @@ public final class l
         }
         finally {}
       }
-      AppMethodBeat.o(219454);
+      AppMethodBeat.o(202908);
     }
     
     /* Error */
@@ -499,7 +501,7 @@ public final class l
       //   2: ldc 111
       //   4: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 29	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/l$a:zUN	Ljava/util/List;
+      //   8: getfield 29	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/l$a:EcV	Ljava/util/List;
       //   11: invokeinterface 68 1 0
       //   16: astore_2
       //   17: aload_2
@@ -513,7 +515,7 @@ public final class l
       //   39: if_acmpne -22 -> 17
       //   42: ldc 113
       //   44: ldc 115
-      //   46: invokestatic 121	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+      //   46: invokestatic 121	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
       //   49: ldc 111
       //   51: invokestatic 37	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   54: aload_0
@@ -525,16 +527,16 @@ public final class l
       //   62: invokespecial 124	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
       //   65: astore_2
       //   66: aload_0
-      //   67: getfield 29	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/l$a:zUN	Ljava/util/List;
+      //   67: getfield 29	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/l$a:EcV	Ljava/util/List;
       //   70: aload_2
       //   71: invokeinterface 127 2 0
       //   76: pop
       //   77: aload_0
-      //   78: getfield 34	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/l$a:zUO	Ljava/util/Map;
+      //   78: getfield 34	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/l$a:EcW	Ljava/util/Map;
       //   81: aload_1
       //   82: invokestatic 86	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/l:a	(Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/l;)Ljava/lang/String;
       //   85: aload_1
-      //   86: invokevirtual 131	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/l:eaD	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/af;
+      //   86: invokevirtual 131	com/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/component/l:fds	()Lcom/tencent/mm/plugin/sns/storage/AdLandingPagesStorage/AdLandingPageComponent/ah;
       //   89: invokeinterface 137 3 0
       //   94: pop
       //   95: ldc 111
@@ -557,12 +559,12 @@ public final class l
       //   57	100	103	finally
     }
     
-    final void eav()
+    final void fdj()
     {
       try
       {
-        AppMethodBeat.i(219452);
-        Iterator localIterator = this.zUN.iterator();
+        AppMethodBeat.i(202906);
+        Iterator localIterator = this.EcV.iterator();
         while (localIterator.hasNext())
         {
           WeakReference localWeakReference = (WeakReference)localIterator.next();
@@ -570,14 +572,14 @@ public final class l
             localIterator.remove();
           }
         }
-        AppMethodBeat.o(219452);
+        AppMethodBeat.o(202906);
       }
       finally {}
     }
     
     public final void onReceive(Context paramContext, Intent paramIntent)
     {
-      AppMethodBeat.i(219453);
+      AppMethodBeat.i(202907);
       String str;
       if (paramIntent != null)
       {
@@ -587,52 +589,52 @@ public final class l
           if (!"android.intent.action.PACKAGE_ADDED".equals(str)) {
             break label108;
           }
-          paramIntent = aM(paramIntent);
+          paramIntent = aW(paramIntent);
           if (!TextUtils.isEmpty(paramIntent))
           {
-            e(paramIntent, true, paramContext.getString(2131763753));
+            e(paramIntent, true, paramContext.getString(2131765951));
             try
             {
-              paramContext = (af)this.zUO.get(paramIntent);
+              paramContext = (ah)this.EcW.get(paramIntent);
               if (paramContext != null) {
                 l.a(paramContext, 3, "0", "");
               }
-              AppMethodBeat.o(219453);
+              AppMethodBeat.o(202907);
               return;
             }
             catch (Throwable paramContext)
             {
-              ae.e("MicroMsg.AdLandingPageAppMarketBtnComp", "report error?");
+              Log.e("MicroMsg.AdLandingPageAppMarketBtnComp", "report error?");
             }
           }
-          AppMethodBeat.o(219453);
+          AppMethodBeat.o(202907);
           return;
         }
         catch (Throwable paramContext)
         {
-          ae.e("MicroMsg.AdLandingPageAppMarketBtnComp", "there is a exception in receiver");
+          Log.e("MicroMsg.AdLandingPageAppMarketBtnComp", "there is a exception in receiver");
         }
       }
       else
       {
-        AppMethodBeat.o(219453);
+        AppMethodBeat.o(202907);
         return;
       }
       label108:
       if ("android.intent.action.PACKAGE_REMOVED".equals(str))
       {
-        paramContext = aM(paramIntent);
+        paramContext = aW(paramIntent);
         if (!TextUtils.isEmpty(paramContext)) {
           e(paramContext, false, "");
         }
       }
-      AppMethodBeat.o(219453);
+      AppMethodBeat.o(202907);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.l
  * JD-Core Version:    0.7.0.1
  */

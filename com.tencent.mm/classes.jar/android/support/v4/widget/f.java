@@ -16,29 +16,29 @@ public abstract class f
   extends BaseAdapter
   implements g.a, Filterable
 {
-  protected boolean Ta = false;
-  protected boolean Tb = true;
-  protected Cursor Tc = null;
-  protected int Td;
-  protected a Te;
-  protected DataSetObserver Tf;
-  protected g Tg;
-  protected FilterQueryProvider Th;
+  protected boolean Tm = false;
+  protected boolean Tn = true;
+  protected Cursor To = null;
+  protected int Tp;
+  protected a Tq;
+  protected DataSetObserver Tr;
+  protected g Ts;
+  protected FilterQueryProvider Tt;
   protected Context mContext;
   
   public f(Context paramContext)
   {
     this.mContext = paramContext;
-    this.Td = -1;
-    this.Te = new a();
-    this.Tf = new b();
+    this.Tp = -1;
+    this.Tq = new a();
+    this.Tr = new b();
   }
   
   public abstract void a(View paramView, Cursor paramCursor);
   
   public void changeCursor(Cursor paramCursor)
   {
-    if (paramCursor == this.Tc) {
+    if (paramCursor == this.To) {
       paramCursor = null;
     }
     for (;;)
@@ -47,34 +47,34 @@ public abstract class f
         paramCursor.close();
       }
       return;
-      Cursor localCursor = this.Tc;
+      Cursor localCursor = this.To;
       if (localCursor != null)
       {
-        if (this.Te != null) {
-          localCursor.unregisterContentObserver(this.Te);
+        if (this.Tq != null) {
+          localCursor.unregisterContentObserver(this.Tq);
         }
-        if (this.Tf != null) {
-          localCursor.unregisterDataSetObserver(this.Tf);
+        if (this.Tr != null) {
+          localCursor.unregisterDataSetObserver(this.Tr);
         }
       }
-      this.Tc = paramCursor;
+      this.To = paramCursor;
       if (paramCursor != null)
       {
-        if (this.Te != null) {
-          paramCursor.registerContentObserver(this.Te);
+        if (this.Tq != null) {
+          paramCursor.registerContentObserver(this.Tq);
         }
-        if (this.Tf != null) {
-          paramCursor.registerDataSetObserver(this.Tf);
+        if (this.Tr != null) {
+          paramCursor.registerDataSetObserver(this.Tr);
         }
-        this.Td = paramCursor.getColumnIndexOrThrow("_id");
-        this.Ta = true;
+        this.Tp = paramCursor.getColumnIndexOrThrow("_id");
+        this.Tm = true;
         notifyDataSetChanged();
         paramCursor = localCursor;
       }
       else
       {
-        this.Td = -1;
-        this.Ta = false;
+        this.Tp = -1;
+        this.Tm = false;
         notifyDataSetInvalidated();
         paramCursor = localCursor;
       }
@@ -91,27 +91,27 @@ public abstract class f
   
   public int getCount()
   {
-    if ((this.Ta) && (this.Tc != null)) {
-      return this.Tc.getCount();
+    if ((this.Tm) && (this.To != null)) {
+      return this.To.getCount();
     }
     return 0;
   }
   
   public final Cursor getCursor()
   {
-    return this.Tc;
+    return this.To;
   }
   
   public View getDropDownView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.Ta)
+    if (this.Tm)
     {
-      this.Tc.moveToPosition(paramInt);
+      this.To.moveToPosition(paramInt);
       View localView = paramView;
       if (paramView == null) {
-        localView = newDropDownView(this.mContext, this.Tc, paramViewGroup);
+        localView = newDropDownView(this.mContext, this.To, paramViewGroup);
       }
-      a(localView, this.Tc);
+      a(localView, this.To);
       return localView;
     }
     return null;
@@ -119,18 +119,18 @@ public abstract class f
   
   public Filter getFilter()
   {
-    if (this.Tg == null) {
-      this.Tg = new g(this);
+    if (this.Ts == null) {
+      this.Ts = new g(this);
     }
-    return this.Tg;
+    return this.Ts;
   }
   
   public Object getItem(int paramInt)
   {
-    if ((this.Ta) && (this.Tc != null))
+    if ((this.Tm) && (this.To != null))
     {
-      this.Tc.moveToPosition(paramInt);
-      return this.Tc;
+      this.To.moveToPosition(paramInt);
+      return this.To;
     }
     return null;
   }
@@ -139,14 +139,14 @@ public abstract class f
   {
     long l2 = 0L;
     long l1 = l2;
-    if (this.Ta)
+    if (this.Tm)
     {
       l1 = l2;
-      if (this.Tc != null)
+      if (this.To != null)
       {
         l1 = l2;
-        if (this.Tc.moveToPosition(paramInt)) {
-          l1 = this.Tc.getLong(this.Td);
+        if (this.To.moveToPosition(paramInt)) {
+          l1 = this.To.getLong(this.Tp);
         }
       }
     }
@@ -155,17 +155,17 @@ public abstract class f
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (!this.Ta) {
+    if (!this.Tm) {
       throw new IllegalStateException("this should only be called when the cursor is valid");
     }
-    if (!this.Tc.moveToPosition(paramInt)) {
+    if (!this.To.moveToPosition(paramInt)) {
       throw new IllegalStateException("couldn't move cursor to position ".concat(String.valueOf(paramInt)));
     }
     View localView = paramView;
     if (paramView == null) {
-      localView = newView(this.mContext, this.Tc, paramViewGroup);
+      localView = newView(this.mContext, this.To, paramViewGroup);
     }
-    a(localView, this.Tc);
+    a(localView, this.To);
     return localView;
   }
   
@@ -183,17 +183,17 @@ public abstract class f
   
   protected final void onContentChanged()
   {
-    if ((this.Tb) && (this.Tc != null) && (!this.Tc.isClosed())) {
-      this.Ta = this.Tc.requery();
+    if ((this.Tn) && (this.To != null) && (!this.To.isClosed())) {
+      this.Tm = this.To.requery();
     }
   }
   
   public Cursor runQueryOnBackgroundThread(CharSequence paramCharSequence)
   {
-    if (this.Th != null) {
-      return this.Th.runQuery(paramCharSequence);
+    if (this.Tt != null) {
+      return this.Tt.runQuery(paramCharSequence);
     }
-    return this.Tc;
+    return this.To;
   }
   
   final class a
@@ -222,20 +222,20 @@ public abstract class f
     
     public final void onChanged()
     {
-      f.this.Ta = true;
+      f.this.Tm = true;
       f.this.notifyDataSetChanged();
     }
     
     public final void onInvalidated()
     {
-      f.this.Ta = false;
+      f.this.Tm = false;
       f.this.notifyDataSetInvalidated();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.widget.f
  * JD-Core Version:    0.7.0.1
  */

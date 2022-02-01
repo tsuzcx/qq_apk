@@ -2,79 +2,84 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class cy
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEF = "msgId".hashCode();
-  private static final int eFO;
-  private static final int eFh = "rawXML".hashCode();
-  private static final int eGD;
-  private static final int eKz;
-  private static final int eMY;
-  private static final int feG = "mergerId".hashCode();
-  private static final int feH = "gameMsgId".hashCode();
-  private static final int feI;
-  private static final int feJ;
-  private static final int feK;
-  private static final int feL;
-  private static final int feM;
-  private static final int feN = "receiveTime".hashCode();
-  private static final int feO = "showType".hashCode();
-  private static final int feP = "interactiveMergeId".hashCode();
-  private static final int feQ = "hasMergedCount".hashCode();
-  private static final int feR = "redDotExpireTime".hashCode();
+  private static final int fjf = "msgId".hashCode();
+  private static final int fkj;
+  private static final int flH;
+  private static final int fnd = "xml".hashCode();
+  private static final int fne;
+  private static final int fnf;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEB = true;
-  private boolean eFd = true;
-  private boolean eFr = true;
-  private boolean eGm = true;
-  private boolean eKk = true;
-  private boolean eMK = true;
-  private boolean feA = true;
-  private boolean feB = true;
-  private boolean feC = true;
-  private boolean feD = true;
-  private boolean feE = true;
-  private boolean feF = true;
-  private boolean feu = true;
-  private boolean fev = true;
-  private boolean few = true;
-  private boolean fex = true;
-  private boolean fey = true;
-  private boolean fez = true;
+  private static final int type_HASHCODE;
+  private boolean __hadSettype = true;
   public String field_appId;
-  public long field_createTime;
-  public long field_expireTime;
-  public String field_gameMsgId;
-  public int field_hasMergedCount;
-  public String field_interactiveMergeId;
-  public boolean field_isHidden;
-  public boolean field_isRead;
-  public String field_label;
-  public String field_mergerId;
+  public String field_description;
   public long field_msgId;
-  public int field_msgType;
-  public String field_rawXML;
-  public long field_receiveTime;
-  public long field_redDotExpireTime;
-  public boolean field_showInMsgList;
-  public int field_showType;
-  public String field_weight;
+  public String field_source;
+  public String field_title;
+  public int field_type;
+  public String field_xml;
+  private boolean fjS = true;
+  private boolean fjb = true;
+  private boolean flC = true;
+  private boolean fna = true;
+  private boolean fnb = true;
+  private boolean fnc = true;
   
   static
   {
-    eKz = "msgType".hashCode();
-    eFO = "createTime".hashCode();
-    feI = "expireTime".hashCode();
-    eGD = "appId".hashCode();
-    feJ = "showInMsgList".hashCode();
-    eMY = "isRead".hashCode();
-    feK = "label".hashCode();
-    feL = "isHidden".hashCode();
-    feM = "weight".hashCode();
+    fkj = "appId".hashCode();
+    fne = "title".hashCode();
+    fnf = "description".hashCode();
+    flH = "source".hashCode();
+    type_HASHCODE = "type".hashCode();
+  }
+  
+  public static IAutoDBItem.MAutoDBInfo ajs()
+  {
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[7];
+    localMAutoDBInfo.columns = new String[8];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "msgId";
+    localMAutoDBInfo.colsMap.put("msgId", "LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(" msgId LONG default '0'  PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.primaryKey = "msgId";
+    localMAutoDBInfo.columns[1] = "xml";
+    localMAutoDBInfo.colsMap.put("xml", "TEXT");
+    localStringBuilder.append(" xml TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT");
+    localStringBuilder.append(" appId TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "title";
+    localMAutoDBInfo.colsMap.put("title", "TEXT");
+    localStringBuilder.append(" title TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "description";
+    localMAutoDBInfo.colsMap.put("description", "TEXT");
+    localStringBuilder.append(" description TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "source";
+    localMAutoDBInfo.colsMap.put("source", "TEXT");
+    localStringBuilder.append(" source TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "type";
+    localMAutoDBInfo.colsMap.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localMAutoDBInfo.columns[7] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -83,18 +88,18 @@ public abstract class cy
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eEF != k) {
+      if (fjf != k) {
         break label65;
       }
       this.field_msgId = paramCursor.getLong(i);
-      this.eEB = true;
+      this.fjb = true;
     }
     for (;;)
     {
@@ -102,84 +107,20 @@ public abstract class cy
       break label20;
       break;
       label65:
-      if (feG == k)
-      {
-        this.field_mergerId = paramCursor.getString(i);
-      }
-      else if (feH == k)
-      {
-        this.field_gameMsgId = paramCursor.getString(i);
-      }
-      else if (eKz == k)
-      {
-        this.field_msgType = paramCursor.getInt(i);
-      }
-      else if (eFO == k)
-      {
-        this.field_createTime = paramCursor.getLong(i);
-      }
-      else if (feI == k)
-      {
-        this.field_expireTime = paramCursor.getLong(i);
-      }
-      else if (eGD == k)
-      {
+      if (fnd == k) {
+        this.field_xml = paramCursor.getString(i);
+      } else if (fkj == k) {
         this.field_appId = paramCursor.getString(i);
-      }
-      else
-      {
-        boolean bool;
-        if (feJ == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_showInMsgList = bool;
-            break;
-          }
-        }
-        if (eMY == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_isRead = bool;
-            break;
-          }
-        }
-        if (feK == k)
-        {
-          this.field_label = paramCursor.getString(i);
-        }
-        else
-        {
-          if (feL == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_isHidden = bool;
-              break;
-            }
-          }
-          if (feM == k) {
-            this.field_weight = paramCursor.getString(i);
-          } else if (eFh == k) {
-            this.field_rawXML = paramCursor.getString(i);
-          } else if (feN == k) {
-            this.field_receiveTime = paramCursor.getLong(i);
-          } else if (feO == k) {
-            this.field_showType = paramCursor.getInt(i);
-          } else if (feP == k) {
-            this.field_interactiveMergeId = paramCursor.getString(i);
-          } else if (feQ == k) {
-            this.field_hasMergedCount = paramCursor.getInt(i);
-          } else if (feR == k) {
-            this.field_redDotExpireTime = paramCursor.getLong(i);
-          } else if (rowid_HASHCODE == k) {
-            this.systemRowid = paramCursor.getLong(i);
-          }
-        }
+      } else if (fne == k) {
+        this.field_title = paramCursor.getString(i);
+      } else if (fnf == k) {
+        this.field_description = paramCursor.getString(i);
+      } else if (flH == k) {
+        this.field_source = paramCursor.getString(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -187,71 +128,26 @@ public abstract class cy
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eEB) {
+    if (this.fjb) {
       localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.feu) {
-      localContentValues.put("mergerId", this.field_mergerId);
+    if (this.fna) {
+      localContentValues.put("xml", this.field_xml);
     }
-    if (this.fev) {
-      localContentValues.put("gameMsgId", this.field_gameMsgId);
-    }
-    if (this.eKk) {
-      localContentValues.put("msgType", Integer.valueOf(this.field_msgType));
-    }
-    if (this.eFr) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
-    }
-    if (this.few) {
-      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
-    }
-    if (this.eGm) {
+    if (this.fjS) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.fex) {
-      localContentValues.put("showInMsgList", Boolean.valueOf(this.field_showInMsgList));
+    if (this.fnb) {
+      localContentValues.put("title", this.field_title);
     }
-    if (this.eMK) {
-      localContentValues.put("isRead", Boolean.valueOf(this.field_isRead));
+    if (this.fnc) {
+      localContentValues.put("description", this.field_description);
     }
-    if (this.field_label == null) {
-      this.field_label = "";
+    if (this.flC) {
+      localContentValues.put("source", this.field_source);
     }
-    if (this.fey) {
-      localContentValues.put("label", this.field_label);
-    }
-    if (this.fez) {
-      localContentValues.put("isHidden", Boolean.valueOf(this.field_isHidden));
-    }
-    if (this.field_weight == null) {
-      this.field_weight = "";
-    }
-    if (this.feA) {
-      localContentValues.put("weight", this.field_weight);
-    }
-    if (this.field_rawXML == null) {
-      this.field_rawXML = "";
-    }
-    if (this.eFd) {
-      localContentValues.put("rawXML", this.field_rawXML);
-    }
-    if (this.feB) {
-      localContentValues.put("receiveTime", Long.valueOf(this.field_receiveTime));
-    }
-    if (this.feC) {
-      localContentValues.put("showType", Integer.valueOf(this.field_showType));
-    }
-    if (this.field_interactiveMergeId == null) {
-      this.field_interactiveMergeId = "";
-    }
-    if (this.feD) {
-      localContentValues.put("interactiveMergeId", this.field_interactiveMergeId);
-    }
-    if (this.feE) {
-      localContentValues.put("hasMergedCount", Integer.valueOf(this.field_hasMergedCount));
-    }
-    if (this.feF) {
-      localContentValues.put("redDotExpireTime", Long.valueOf(this.field_redDotExpireTime));
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

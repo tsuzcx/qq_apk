@@ -4,47 +4,47 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import com.tencent.mm.plugin.gallery.model.c;
 import com.tencent.mm.plugin.gallery.model.e;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 
 final class f
 {
-  private int afo = -1;
-  private d tZd;
+  private int afB = -1;
+  private d xqr;
   
   public f(d paramd)
   {
-    this.tZd = paramd;
+    this.xqr = paramd;
   }
   
-  private void HR(int paramInt)
+  private void NU(int paramInt)
   {
     AppMethodBeat.i(111557);
-    d locald = this.tZd;
-    if ((locald.tWe == null) || (locald.tWe.size() <= paramInt) || (paramInt < 0))
+    d locald = this.xqr;
+    if ((locald.xno == null) || (locald.xno.size() <= paramInt) || (paramInt < 0))
     {
       AppMethodBeat.o(111557);
       return;
     }
-    long l = ((GalleryItem.MediaItem)locald.tWe.get(paramInt)).tRM;
-    String str3 = ((GalleryItem.MediaItem)locald.tWe.get(paramInt)).ruE;
-    String str2 = ((GalleryItem.MediaItem)locald.tWe.get(paramInt)).tRJ;
+    long l = ((GalleryItem.MediaItem)locald.xno.get(paramInt)).xiZ;
+    String str3 = ((GalleryItem.MediaItem)locald.xno.get(paramInt)).sUB;
+    String str2 = ((GalleryItem.MediaItem)locald.xno.get(paramInt)).xiW;
     String str1 = str3;
-    if (bu.isNullOrNil(str3)) {
+    if (Util.isNullOrNil(str3)) {
       str1 = str2;
     }
-    e.cXq().a(str1, ((GalleryItem.MediaItem)locald.tWe.get(paramInt)).getType(), str2, l, ((GalleryItem.MediaItem)locald.tWe.get(paramInt)).tRN);
+    e.dQJ().a(str1, ((GalleryItem.MediaItem)locald.xno.get(paramInt)).getType(), str2, l, ((GalleryItem.MediaItem)locald.xno.get(paramInt)).xja);
     AppMethodBeat.o(111557);
   }
   
   public final void onPageSelected(int paramInt)
   {
     AppMethodBeat.i(111558);
-    if (this.afo == -1)
+    if (this.afB == -1)
     {
       int i = 0;
       if (i == 0) {
-        HR(paramInt);
+        NU(paramInt);
       }
       for (;;)
       {
@@ -54,31 +54,31 @@ final class f
           break label111;
         }
         if (paramInt + i <= paramInt + 3) {
-          HR(paramInt + i);
+          NU(paramInt + i);
         }
         if (paramInt - i >= Math.max(paramInt - 3, 0)) {
-          HR(paramInt - i);
+          NU(paramInt - i);
         }
       }
     }
-    if (this.afo > paramInt) {
-      HR(Math.max(paramInt - 3, 0));
+    if (this.afB > paramInt) {
+      NU(Math.max(paramInt - 3, 0));
     }
     for (;;)
     {
       label111:
-      this.afo = paramInt;
+      this.afB = paramInt;
       AppMethodBeat.o(111558);
       return;
-      if (this.afo < paramInt) {
-        HR(paramInt + 3);
+      if (this.afB < paramInt) {
+        NU(paramInt + 3);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.ui.f
  * JD-Core Version:    0.7.0.1
  */

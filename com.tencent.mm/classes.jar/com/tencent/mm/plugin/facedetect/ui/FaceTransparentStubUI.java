@@ -4,11 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.rl;
-import com.tencent.mm.g.a.rl.b;
+import com.tencent.mm.g.a.sh;
+import com.tencent.mm.g.a.sh.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 @com.tencent.mm.ui.base.a(3)
@@ -24,7 +25,7 @@ public class FaceTransparentStubUI
   {
     AppMethodBeat.i(104034);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ae.i("MicroMsg.FaceTransparentStubUI", "hy: on activity result in FaceTransparentStubUI");
+    Log.i("MicroMsg.FaceTransparentStubUI", "hy: on activity result in FaceTransparentStubUI");
     setResult(paramInt2, paramIntent);
     finish();
     AppMethodBeat.o(104034);
@@ -38,24 +39,24 @@ public class FaceTransparentStubUI
     Object localObject = getIntent().getBundleExtra("KEY_EXTRAS");
     if (!((Bundle)localObject).containsKey("k_user_name"))
     {
-      g.ajP();
-      if (com.tencent.mm.kernel.a.aiY()) {
-        ((Bundle)localObject).putString("k_user_name", v.aAF());
+      g.aAf();
+      if (com.tencent.mm.kernel.a.azo()) {
+        ((Bundle)localObject).putString("k_user_name", z.aUb());
       }
     }
-    paramBundle = new rl();
-    paramBundle.dHk.context = this;
-    paramBundle.dHk.dHe = i;
-    paramBundle.dHk.extras = ((Bundle)localObject);
-    com.tencent.mm.sdk.b.a.IvT.l(paramBundle);
-    ae.i("MicroMsg.FaceTransparentStubUI", "hy: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.dHl.dHb) });
-    if (!paramBundle.dHl.dHb)
+    paramBundle = new sh();
+    paramBundle.dYV.context = this;
+    paramBundle.dYV.dYQ = i;
+    paramBundle.dYV.extras = ((Bundle)localObject);
+    EventCenter.instance.publish(paramBundle);
+    Log.i("MicroMsg.FaceTransparentStubUI", "hy: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.dYW.dYN) });
+    if (!paramBundle.dYW.dYN)
     {
-      if (paramBundle.dHl.extras == null) {
+      if (paramBundle.dYW.extras == null) {
         break label181;
       }
       localObject = new Intent();
-      ((Intent)localObject).putExtras(paramBundle.dHl.extras);
+      ((Intent)localObject).putExtras(paramBundle.dYW.extras);
       setResult(1, (Intent)localObject);
     }
     for (;;)

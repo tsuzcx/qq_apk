@@ -3,72 +3,72 @@ package com.tencent.mm.plugin.wallet_core.model;
 import android.database.Cursor;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gv;
+import com.tencent.mm.g.c.hg;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallNews;
 import com.tencent.mm.plugin.wallet_core.model.mall.a;
 import com.tencent.mm.plugin.wallet_core.model.mall.b;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Map;
 import org.json.JSONArray;
 
 public final class z
-  extends gv
+  extends hg
 {
-  public static c.a info;
-  public ArrayList<MallFunction> vPk;
-  private ArrayList<MallNews> vPl;
-  private ArrayList<a> vPm;
-  public SparseArray<String> vPn;
+  public static IAutoDBItem.MAutoDBInfo info;
+  public ArrayList<MallFunction> zjo;
+  private ArrayList<MallNews> zjp;
+  private ArrayList<a> zjq;
+  public SparseArray<String> zjr;
   
   static
   {
     AppMethodBeat.i(70418);
-    c.a locala = new c.a();
-    locala.IBL = new Field[6];
-    locala.columns = new String[7];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[6];
+    localMAutoDBInfo.columns = new String[7];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "wallet_region";
-    locala.IBN.put("wallet_region", "INTEGER PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "wallet_region";
+    localMAutoDBInfo.colsMap.put("wallet_region", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" wallet_region INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "wallet_region";
-    locala.columns[1] = "function_list";
-    locala.IBN.put("function_list", "TEXT");
+    localMAutoDBInfo.primaryKey = "wallet_region";
+    localMAutoDBInfo.columns[1] = "function_list";
+    localMAutoDBInfo.colsMap.put("function_list", "TEXT");
     localStringBuilder.append(" function_list TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "new_list";
-    locala.IBN.put("new_list", "TEXT");
+    localMAutoDBInfo.columns[2] = "new_list";
+    localMAutoDBInfo.colsMap.put("new_list", "TEXT");
     localStringBuilder.append(" new_list TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "banner_list";
-    locala.IBN.put("banner_list", "TEXT");
+    localMAutoDBInfo.columns[3] = "banner_list";
+    localMAutoDBInfo.colsMap.put("banner_list", "TEXT");
     localStringBuilder.append(" banner_list TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "type_name_list";
-    locala.IBN.put("type_name_list", "TEXT");
+    localMAutoDBInfo.columns[4] = "type_name_list";
+    localMAutoDBInfo.colsMap.put("type_name_list", "TEXT");
     localStringBuilder.append(" type_name_list TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "isShowSetting";
-    locala.IBN.put("isShowSetting", "INTEGER");
+    localMAutoDBInfo.columns[5] = "isShowSetting";
+    localMAutoDBInfo.colsMap.put("isShowSetting", "INTEGER");
     localStringBuilder.append(" isShowSetting INTEGER");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[6] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(70418);
   }
   
   public z()
   {
     AppMethodBeat.i(70416);
-    this.vPk = new ArrayList();
-    this.vPl = new ArrayList();
-    this.vPm = new ArrayList();
-    this.vPn = new SparseArray();
+    this.zjo = new ArrayList();
+    this.zjp = new ArrayList();
+    this.zjq = new ArrayList();
+    this.zjr = new SparseArray();
     AppMethodBeat.o(70416);
   }
   
@@ -82,16 +82,16 @@ public final class z
     paramCursor = this.field_type_name_list;
     try
     {
-      if (!bu.isNullOrNil(str3)) {
-        this.vPk = b.M(new JSONArray(str3));
+      if (!Util.isNullOrNil(str3)) {
+        this.zjo = b.R(new JSONArray(str3));
       }
     }
     catch (Exception localException2)
     {
       try
       {
-        if (!bu.isNullOrNil(str2)) {
-          this.vPl = b.J(new JSONArray(str2));
+        if (!Util.isNullOrNil(str2)) {
+          this.zjp = b.O(new JSONArray(str2));
         }
       }
       catch (Exception localException2)
@@ -100,51 +100,51 @@ public final class z
         {
           for (;;)
           {
-            if (!bu.isNullOrNil(str1)) {
-              this.vPm = b.K(new JSONArray(str1));
+            if (!Util.isNullOrNil(str1)) {
+              this.zjq = b.P(new JSONArray(str1));
             }
             try
             {
-              if (!bu.isNullOrNil(paramCursor)) {
-                this.vPn = b.L(new JSONArray(paramCursor));
+              if (!Util.isNullOrNil(paramCursor)) {
+                this.zjr = b.Q(new JSONArray(paramCursor));
               }
               AppMethodBeat.o(70417);
               return;
             }
             catch (Exception paramCursor)
             {
-              this.vPn = null;
-              ae.printErrStackTrace("MicroMsg.WalletFunciontListInfo", paramCursor, "", new Object[0]);
+              this.zjr = null;
+              Log.printErrStackTrace("MicroMsg.WalletFunciontListInfo", paramCursor, "", new Object[0]);
               AppMethodBeat.o(70417);
             }
             localException3 = localException3;
-            ae.printErrStackTrace("MicroMsg.WalletFunciontListInfo", localException3, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.WalletFunciontListInfo", localException3, "", new Object[0]);
             continue;
             localException2 = localException2;
-            this.vPl = null;
-            ae.printErrStackTrace("MicroMsg.WalletFunciontListInfo", localException2, "", new Object[0]);
+            this.zjp = null;
+            Log.printErrStackTrace("MicroMsg.WalletFunciontListInfo", localException2, "", new Object[0]);
           }
         }
         catch (Exception localException1)
         {
           for (;;)
           {
-            this.vPm = null;
-            ae.printErrStackTrace("MicroMsg.WalletFunciontListInfo", localException1, "", new Object[0]);
+            this.zjq = null;
+            Log.printErrStackTrace("MicroMsg.WalletFunciontListInfo", localException1, "", new Object[0]);
           }
         }
       }
     }
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.z
  * JD-Core Version:    0.7.0.1
  */

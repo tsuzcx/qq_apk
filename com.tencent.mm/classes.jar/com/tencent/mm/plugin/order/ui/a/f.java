@@ -12,29 +12,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.order.c.a;
 import com.tencent.mm.plugin.order.c.a.a;
 import com.tencent.mm.plugin.wallet_core.utils.g;
-import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class f
   extends Preference
 {
-  private View.OnClickListener gON;
+  private int AQA;
+  private int AQB;
+  private int AQC;
+  private View.OnClickListener hEZ;
   private boolean mClickable;
   private String mContent;
   private View mView;
-  private int wUE;
-  private int wUF;
-  private int wUG;
   
   public f(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66815);
     this.mView = null;
-    this.wUE = 2147483647;
-    this.wUF = -1;
-    this.wUG = -1;
-    setLayoutResource(2131494709);
+    this.AQA = 2147483647;
+    this.AQB = -1;
+    this.AQC = -1;
+    setLayoutResource(2131495438);
     AppMethodBeat.o(66815);
   }
   
@@ -42,23 +42,23 @@ public final class f
   {
     this.mContent = paramString;
     this.mClickable = true;
-    this.wUF = paramInt1;
-    this.wUG = paramInt2;
-    this.gON = paramOnClickListener;
+    this.AQB = paramInt1;
+    this.AQC = paramInt2;
+    this.hEZ = paramOnClickListener;
   }
   
-  public final void avt(String paramString)
+  public final void aJG(String paramString)
   {
     AppMethodBeat.i(66818);
     try
     {
-      this.wUE = g.cp(paramString, true);
+      this.AQA = g.cI(paramString, true);
       AppMethodBeat.o(66818);
       return;
     }
     catch (Exception paramString)
     {
-      this.wUE = 2147483647;
+      this.AQA = 2147483647;
       AppMethodBeat.o(66818);
     }
   }
@@ -79,19 +79,19 @@ public final class f
   {
     AppMethodBeat.i(66817);
     super.onBindView(paramView);
-    Object localObject = (TextView)paramView.findViewById(2131302033);
-    paramView = (TextView)paramView.findViewById(2131302032);
+    Object localObject = (TextView)paramView.findViewById(2131304372);
+    paramView = (TextView)paramView.findViewById(2131304371);
     ((TextView)localObject).setText(getTitle());
-    if (this.wUE != 2147483647) {
-      paramView.setTextColor(this.wUE);
+    if (this.AQA != 2147483647) {
+      paramView.setTextColor(this.AQA);
     }
     if (this.mClickable)
     {
-      if ((this.wUF >= 0) && (this.wUG > 0))
+      if ((this.AQB >= 0) && (this.AQC > 0))
       {
         localObject = new a(this.mContext);
         SpannableString localSpannableString = new SpannableString(this.mContent);
-        ((a)localObject).wUX = new a.a()
+        ((a)localObject).AQT = new a.a()
         {
           public final void onClick(View paramAnonymousView)
           {
@@ -103,19 +103,19 @@ public final class f
           }
         };
         paramView.setMovementMethod(LinkMovementMethod.getInstance());
-        localSpannableString.setSpan(localObject, this.wUF, this.wUG, 33);
+        localSpannableString.setSpan(localObject, this.AQB, this.AQC, 33);
         paramView.setText(localSpannableString);
         AppMethodBeat.o(66817);
         return;
       }
-      paramView.setTextColor(this.mContext.getResources().getColor(2131100607));
-      paramView.setOnClickListener(this.gON);
-      paramView.setText(k.b(this.mContext, this.mContent, paramView.getTextSize()));
+      paramView.setTextColor(this.mContext.getResources().getColor(2131100775));
+      paramView.setOnClickListener(this.hEZ);
+      paramView.setText(l.b(this.mContext, this.mContent, paramView.getTextSize()));
       AppMethodBeat.o(66817);
       return;
     }
     paramView.setOnClickListener(null);
-    paramView.setText(k.b(this.mContext, this.mContent, paramView.getTextSize()));
+    paramView.setText(l.b(this.mContext, this.mContent, paramView.getTextSize()));
     AppMethodBeat.o(66817);
   }
   
@@ -127,7 +127,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.f
  * JD-Core Version:    0.7.0.1
  */

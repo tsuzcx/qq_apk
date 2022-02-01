@@ -2,23 +2,23 @@ package com.tencent.mm.at;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ab;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.cc;
+import com.tencent.mm.model.af;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.cg;
 import com.tencent.mm.pluginsdk.i;
 import com.tencent.mm.pluginsdk.j;
 import com.tencent.mm.pluginsdk.ui.applet.p;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class d
-  implements az
+  implements bd
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private b ibG;
-  private ab ibH;
+  private b iWE;
+  private af iWF;
   
   static
   {
@@ -35,11 +35,11 @@ public class d
     AppMethodBeat.o(20537);
   }
   
-  private static d aIr()
+  private static d bcl()
   {
     AppMethodBeat.i(20534);
-    bc.aCa();
-    com.tencent.mm.plugin.subapp.a locala = (com.tencent.mm.plugin.subapp.a)cc.Ca("plugin.subapp");
+    bg.aVz();
+    com.tencent.mm.plugin.subapp.a locala = (com.tencent.mm.plugin.subapp.a)cg.KG("plugin.subapp");
     d locald;
     if (locala == null)
     {
@@ -55,22 +55,22 @@ public class d
     {
       AppMethodBeat.o(20534);
       return locald;
-      locald = (d)locala.aDN(d.class.getName());
+      locald = (d)locala.aSI(d.class.getName());
       break;
     }
   }
   
-  public static b aIs()
+  public static b bcm()
   {
     AppMethodBeat.i(20535);
-    g.ajP().aiU();
-    if (aIr().ibG == null)
+    g.aAf().azk();
+    if (bcl().iWE == null)
     {
-      localObject = aIr();
-      bc.aCg();
-      ((d)localObject).ibG = new b(com.tencent.mm.model.c.getDataDB());
+      localObject = bcl();
+      bg.aVF();
+      ((d)localObject).iWE = new b(com.tencent.mm.model.c.getDataDB());
     }
-    Object localObject = aIr().ibG;
+    Object localObject = bcl().iWE;
     AppMethodBeat.o(20535);
     return localObject;
   }
@@ -85,11 +85,11 @@ public class d
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(20536);
-    if (this.ibH == null) {
-      this.ibH = new ab(new c());
+    if (this.iWF == null) {
+      this.iWF = new af(new c());
     }
-    com.tencent.mm.model.au.a.hIG = this.ibH;
-    ae.i("SubCoreGetContact", "summergetcontac onAccountPostReset setGetContact[%s]", new Object[] { this.ibH });
+    com.tencent.mm.model.ay.a.iDq = this.iWF;
+    Log.i("SubCoreGetContact", "summergetcontac onAccountPostReset setGetContact[%s]", new Object[] { this.iWF });
     g.b(i.class, new com.tencent.mm.pluginsdk.ui.applet.c());
     g.b(j.class, new p());
     AppMethodBeat.o(20536);
@@ -101,7 +101,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.at.d
  * JD-Core Version:    0.7.0.1
  */

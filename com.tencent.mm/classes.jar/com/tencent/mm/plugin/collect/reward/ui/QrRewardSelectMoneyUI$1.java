@@ -17,13 +17,13 @@ final class QrRewardSelectMoneyUI$1
   {
     AppMethodBeat.i(63990);
     b localb = new b();
-    localb.bd(paramAdapterView);
-    localb.bd(paramView);
-    localb.mu(paramInt);
-    localb.rl(paramLong);
-    a.b("com/tencent/mm/plugin/collect/reward/ui/QrRewardSelectMoneyUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+    localb.bm(paramAdapterView);
+    localb.bm(paramView);
+    localb.pH(paramInt);
+    localb.zo(paramLong);
+    a.b("com/tencent/mm/plugin/collect/reward/ui/QrRewardSelectMoneyUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
     paramInt = ((Integer)paramAdapterView.getAdapter().getItem(paramInt)).intValue();
-    QrRewardSelectMoneyUI.a(this.pjQ, paramInt, 1);
+    QrRewardSelectMoneyUI.a(this.qzb, paramInt, 1);
     a.a(this, "com/tencent/mm/plugin/collect/reward/ui/QrRewardSelectMoneyUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
     AppMethodBeat.o(63990);
   }

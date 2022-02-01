@@ -14,7 +14,7 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
-import com.tencent.luggage.h.i;
+import com.tencent.luggage.h.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.page.capsulebar.e;
@@ -22,46 +22,46 @@ import com.tencent.mm.plugin.appbrand.platform.window.c;
 import com.tencent.mm.plugin.appbrand.platform.window.c.c;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandOptionButton;
 import com.tencent.mm.plugin.appbrand.widget.actionbar.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 @SuppressLint({"ViewConstructor"})
 public final class f
   extends FrameLayout
 {
-  private AppBrandRuntime jFc;
-  private FrameLayout jFd;
-  private LinearLayout jFe;
-  public a jFf;
-  private a jFg;
+  private AppBrandRuntime kGM;
+  private FrameLayout kGN;
+  private LinearLayout kGO;
+  public a kGP;
+  private a kGQ;
   
   public f(Context paramContext, AppBrandRuntime paramAppBrandRuntime)
   {
     super(paramContext);
     AppMethodBeat.i(134634);
-    this.jFc = paramAppBrandRuntime;
-    if (i.cre.isDarkMode())
+    this.kGM = paramAppBrandRuntime;
+    if (j.cDv.isDarkMode())
     {
       setBackgroundColor(-16777216);
       setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
-      this.jFd = new FrameLayout(paramContext);
-      addView(this.jFd, new ViewGroup.LayoutParams(-1, -1));
-      this.jFe = new LinearLayout(paramContext);
-      this.jFe.setOrientation(1);
-      addView(this.jFe, new ViewGroup.LayoutParams(-1, -2));
-      if ((this.jFe.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
+      this.kGN = new FrameLayout(paramContext);
+      addView(this.kGN, new ViewGroup.LayoutParams(-1, -1));
+      this.kGO = new LinearLayout(paramContext);
+      this.kGO.setOrientation(1);
+      addView(this.kGO, new ViewGroup.LayoutParams(-1, -2));
+      if ((this.kGO.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))
       {
         paramContext = paramAppBrandRuntime.getWindowAndroid().getStatusBar();
-        paramAppBrandRuntime = (ViewGroup.MarginLayoutParams)this.jFe.getLayoutParams();
         if (paramContext != null) {
-          break label169;
+          break label185;
         }
       }
     }
-    label169:
+    label185:
     for (int i = 0;; i = paramContext.height)
     {
-      paramAppBrandRuntime.topMargin = i;
+      ((ViewGroup.MarginLayoutParams)this.kGO.getLayoutParams()).topMargin = i;
+      Log.i("MicroMsg.AppBrandRuntimeAdViewContainer[AppBrandSplashAd]", "fakeActionBarLayout topMargin=%d", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(134634);
       return;
       setBackgroundColor(-1);
@@ -69,12 +69,12 @@ public final class f
     }
   }
   
-  private void Lr(String paramString)
+  private void UA(String paramString)
   {
     AppMethodBeat.i(134647);
     setVisibility(8);
-    if (this.jFg != null) {
-      this.jFg.Ls(paramString);
+    if (this.kGQ != null) {
+      this.kGQ.UB(paramString);
     }
     AppMethodBeat.o(134647);
   }
@@ -89,11 +89,11 @@ public final class f
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(207745);
+          AppMethodBeat.i(219296);
           if (paramRunnable != null) {
             paramRunnable.run();
           }
-          AppMethodBeat.o(207745);
+          AppMethodBeat.o(219296);
         }
       });
       paramView.setDuration(300L).setInterpolator(new DecelerateInterpolator());
@@ -105,19 +105,19 @@ public final class f
     AppMethodBeat.o(134648);
   }
   
-  private void k(boolean paramBoolean, final String paramString)
+  private void l(boolean paramBoolean, final String paramString)
   {
     AppMethodBeat.i(134646);
-    ae.i("MicroMsg.AppBrandRuntimeAdViewContainer[AppBrandSplashAd]", "hideOnMainThread, animation:%s, source:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
+    Log.i("MicroMsg.AppBrandRuntimeAdViewContainer[AppBrandSplashAd]", "hideOnMainThread, animation:%s, source:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
     AppBrandOptionButton localAppBrandOptionButton;
     int k;
     int i;
     if (paramBoolean)
     {
       localAppBrandOptionButton = null;
-      if ((this.jFc != null) && (this.jFc.jzJ != null))
+      if ((this.kGM != null) && (this.kGM.kAx != null))
       {
-        localAppBrandOptionButton = this.jFc.jzJ.aYp();
+        localAppBrandOptionButton = this.kGM.kAx.btD();
         if (localAppBrandOptionButton == null) {
           break label194;
         }
@@ -145,16 +145,16 @@ public final class f
         });
         AppMethodBeat.o(134646);
         return;
-        if (this.jFf == null) {
+        if (this.kGP == null) {
           break;
         }
-        localAppBrandOptionButton = this.jFf.aYp();
+        localAppBrandOptionButton = this.kGP.btD();
         break;
       }
-      Lr(paramString);
+      UA(paramString);
       AppMethodBeat.o(134646);
       return;
-      Lr(paramString);
+      UA(paramString);
       AppMethodBeat.o(134646);
       return;
       label194:
@@ -162,30 +162,30 @@ public final class f
     }
   }
   
-  public final void aYx()
+  public final void btL()
   {
     AppMethodBeat.i(134635);
-    this.jFe.removeAllViews();
-    this.jFf = new a(getContext());
-    this.jFe.addView(this.jFf.getActionView());
-    this.jFf.setFullscreenMode(true);
-    this.jFf.fC(false);
-    this.jFf.fD(false);
-    this.jFf.fE(false);
-    this.jFf.setBackgroundColor(0);
+    this.kGO.removeAllViews();
+    this.kGP = new a(getContext());
+    this.kGO.addView(this.kGP.getActionView());
+    this.kGP.setFullscreenMode(true);
+    this.kGP.gx(false);
+    this.kGP.gy(false);
+    this.kGP.gz(false);
+    this.kGP.setBackgroundColor(0);
     AppMethodBeat.o(134635);
   }
   
-  public final void aYy()
+  public final void btM()
   {
     AppMethodBeat.i(134641);
-    if (this.jFf != null) {
-      this.jFf.fE(true);
+    if (this.kGP != null) {
+      this.kGP.gz(true);
     }
     AppMethodBeat.o(134641);
   }
   
-  public final void aYz()
+  public final void btN()
   {
     AppMethodBeat.i(134644);
     setVisibility(0);
@@ -195,19 +195,19 @@ public final class f
   
   public final ViewGroup getContentContainer()
   {
-    return this.jFd;
+    return this.kGN;
   }
   
-  public final void j(final boolean paramBoolean, final String paramString)
+  public final void k(final boolean paramBoolean, final String paramString)
   {
     AppMethodBeat.i(134645);
-    if (ar.isMainThread())
+    if (MMHandlerThread.isMainThread())
     {
-      k(paramBoolean, paramString);
+      l(paramBoolean, paramString);
       AppMethodBeat.o(134645);
       return;
     }
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
@@ -222,8 +222,8 @@ public final class f
   public final void setActionBarFullscreenMode(boolean paramBoolean)
   {
     AppMethodBeat.i(134636);
-    if (this.jFf != null) {
-      this.jFf.setFullscreenMode(paramBoolean);
+    if (this.kGP != null) {
+      this.kGP.setFullscreenMode(paramBoolean);
     }
     AppMethodBeat.o(134636);
   }
@@ -231,8 +231,8 @@ public final class f
   public final void setBackButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(134637);
-    if (this.jFf != null) {
-      this.jFf.setBackButtonClickListener(paramOnClickListener);
+    if (this.kGP != null) {
+      this.kGP.setBackButtonClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(134637);
   }
@@ -240,8 +240,8 @@ public final class f
   public final void setCloseButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(134639);
-    if (this.jFf != null) {
-      this.jFf.setCloseButtonClickListener(paramOnClickListener);
+    if (this.kGP != null) {
+      this.kGP.setCloseButtonClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(134639);
   }
@@ -249,22 +249,22 @@ public final class f
   public final void setForegroundStyle(boolean paramBoolean)
   {
     AppMethodBeat.i(134642);
-    if (this.jFf != null) {
-      this.jFf.jED.setForegroundStyle(paramBoolean);
+    if (this.kGP != null) {
+      this.kGP.kGn.setForegroundStyle(paramBoolean);
     }
     AppMethodBeat.o(134642);
   }
   
   public final void setOnHideListener(a parama)
   {
-    this.jFg = parama;
+    this.kGQ = parama;
   }
   
   public final void setOptionButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(134638);
-    if (this.jFf != null) {
-      this.jFf.jED.setOptionButtonClickListener(paramOnClickListener);
+    if (this.kGP != null) {
+      this.kGP.kGn.setOptionButtonClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(134638);
   }
@@ -272,20 +272,20 @@ public final class f
   public final void setTitle(String paramString)
   {
     AppMethodBeat.i(134640);
-    if (this.jFf != null) {
-      this.jFf.setMainTitle(paramString);
+    if (this.kGP != null) {
+      this.kGP.setMainTitle(paramString);
     }
     AppMethodBeat.o(134640);
   }
   
   public static abstract interface a
   {
-    public abstract void Ls(String paramString);
+    public abstract void UB(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.f
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ import com.tencent.mm.gpu.d.b;
 import com.tencent.mm.gpu.d.c.3;
 import com.tencent.mm.gpu.d.d;
 import com.tencent.mm.openglapihook.OpenGLHook.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.wxperf.jni.egl.EglHook.OnChangeListener;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,30 +20,30 @@ import java.util.List;
 public final class a
   implements OpenGLHook.a, EglHook.OnChangeListener
 {
-  private long gwo = 0L;
+  private long hjc = 0L;
   
   public final void a(com.tencent.mm.openglapihook.a parama)
   {
-    AppMethodBeat.i(209621);
-    if (parama.iKd != 1285)
+    AppMethodBeat.i(186153);
+    if (parama.jGJ != 1285)
     {
-      AppMethodBeat.o(209621);
+      AppMethodBeat.o(186153);
       return;
     }
     long l = System.currentTimeMillis();
     int i;
     int j;
-    if (l - this.gwo > 300000L)
+    if (l - this.hjc > 300000L)
     {
-      this.gwo = l;
-      i = com.tencent.mm.gpu.e.c.wU(ak.getProcessName());
+      this.hjc = l;
+      i = com.tencent.mm.gpu.e.c.Fi(MMApplicationContext.getProcessName());
       if (i != -1)
       {
         j = PluginGpuRes.getCurrSpend();
         if (j > 0) {
           break label164;
         }
-        ae.e("Gpu.GpuResReport", "spend error, spend = ".concat(String.valueOf(j)));
+        Log.e("Gpu.GpuResReport", "spend error, spend = ".concat(String.valueOf(j)));
       }
     }
     for (;;)
@@ -52,17 +52,17 @@ public final class a
       {
         public final void run()
         {
-          AppMethodBeat.i(209620);
-          ay localay = ay.aRX("mmkv_gpu_service_key_single");
-          localay.putInt("glGetErrorOOM_is_die", 0);
-          localay.commit();
-          AppMethodBeat.o(209620);
+          AppMethodBeat.i(186152);
+          MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getSingleMMKV("mmkv_gpu_service_key_single");
+          localMultiProcessMMKV.putInt("glGetErrorOOM_is_die", 0);
+          localMultiProcessMMKV.commit();
+          AppMethodBeat.o(186152);
         }
       }, 180000L);
-      parama = ay.aRX("mmkv_gpu_service_key_single");
+      parama = MultiProcessMMKV.getSingleMMKV("mmkv_gpu_service_key_single");
       parama.putInt("glGetErrorOOM_is_die", 1);
       parama.commit();
-      i = com.tencent.mm.gpu.e.c.wU(ak.getProcessName());
+      i = com.tencent.mm.gpu.e.c.Fi(MMApplicationContext.getProcessName());
       if (i == -1) {
         break label371;
       }
@@ -70,8 +70,8 @@ public final class a
       if (j > 0) {
         break;
       }
-      ae.e("Gpu.GpuResReport", "spend error, spend = ".concat(String.valueOf(j)));
-      AppMethodBeat.o(209621);
+      Log.e("Gpu.GpuResReport", "spend error, spend = ".concat(String.valueOf(j)));
+      AppMethodBeat.o(186153);
       return;
       label164:
       com.tencent.mm.gpu.e.c.e(i, 136L, 1L);
@@ -82,64 +82,64 @@ public final class a
     if (j <= 30)
     {
       com.tencent.mm.gpu.e.c.e(i, 7L, 1L);
-      AppMethodBeat.o(209621);
+      AppMethodBeat.o(186153);
       return;
     }
     if (j <= 60)
     {
       com.tencent.mm.gpu.e.c.e(i, 16L, 1L);
-      AppMethodBeat.o(209621);
+      AppMethodBeat.o(186153);
       return;
     }
     if (j <= 90)
     {
       com.tencent.mm.gpu.e.c.e(i, 25L, 1L);
-      AppMethodBeat.o(209621);
+      AppMethodBeat.o(186153);
       return;
     }
     if (j <= 120)
     {
       com.tencent.mm.gpu.e.c.e(i, 34L, 1L);
-      AppMethodBeat.o(209621);
+      AppMethodBeat.o(186153);
       return;
     }
     if (j <= 150)
     {
       com.tencent.mm.gpu.e.c.e(i, 43L, 1L);
-      AppMethodBeat.o(209621);
+      AppMethodBeat.o(186153);
       return;
     }
     if (j <= 180)
     {
       com.tencent.mm.gpu.e.c.e(i, 52L, 1L);
-      AppMethodBeat.o(209621);
+      AppMethodBeat.o(186153);
       return;
     }
     if (j <= 240)
     {
       com.tencent.mm.gpu.e.c.e(i, 61L, 1L);
-      AppMethodBeat.o(209621);
+      AppMethodBeat.o(186153);
       return;
     }
     if (j <= 300)
     {
       com.tencent.mm.gpu.e.c.e(i, 70L, 1L);
-      AppMethodBeat.o(209621);
+      AppMethodBeat.o(186153);
       return;
     }
     com.tencent.mm.gpu.e.c.e(i, 79L, 1L);
     label371:
-    AppMethodBeat.o(209621);
+    AppMethodBeat.o(186153);
   }
   
   public final void b(com.tencent.mm.openglapihook.a parama)
   {
-    AppMethodBeat.i(209622);
-    parama = parama.iKc;
+    AppMethodBeat.i(186154);
+    parama = parama.jGI;
     if (parama.length == 0)
     {
-      ae.e("Gpu.OpenglHookListener", "onGlGenTextures, ids length = 0");
-      AppMethodBeat.o(209622);
+      Log.e("Gpu.OpenglHookListener", "onGlGenTextures, ids length = 0");
+      AppMethodBeat.o(186154);
       return;
     }
     long l = EGL14.eglGetCurrentContext().getNativeHandle();
@@ -151,18 +151,18 @@ public final class a
       localArrayList.add(new d(1, parama[i], l));
       i += 1;
     }
-    com.tencent.mm.gpu.d.c.ahb().W(localArrayList);
-    AppMethodBeat.o(209622);
+    com.tencent.mm.gpu.d.c.axn().ae(localArrayList);
+    AppMethodBeat.o(186154);
   }
   
   public final void c(com.tencent.mm.openglapihook.a parama)
   {
-    AppMethodBeat.i(209623);
-    parama = parama.iKc;
+    AppMethodBeat.i(186155);
+    parama = parama.jGI;
     if (parama.length == 0)
     {
-      ae.e("Gpu.OpenglHookListener", "onGlDeleteTextures, ids length = 0");
-      AppMethodBeat.o(209623);
+      Log.e("Gpu.OpenglHookListener", "onGlDeleteTextures, ids length = 0");
+      AppMethodBeat.o(186155);
       return;
     }
     long l = EGL14.eglGetCurrentContext().getNativeHandle();
@@ -174,18 +174,18 @@ public final class a
       localArrayList.add(new d(1, parama[i], l));
       i += 1;
     }
-    com.tencent.mm.gpu.d.c.ahb().X(localArrayList);
-    AppMethodBeat.o(209623);
+    com.tencent.mm.gpu.d.c.axn().af(localArrayList);
+    AppMethodBeat.o(186155);
   }
   
   public final void d(com.tencent.mm.openglapihook.a parama)
   {
-    AppMethodBeat.i(209624);
-    parama = parama.iKc;
+    AppMethodBeat.i(186156);
+    parama = parama.jGI;
     if (parama.length == 0)
     {
-      ae.e("Gpu.OpenglHookListener", "onGlGenBuffers, ids length = 0");
-      AppMethodBeat.o(209624);
+      Log.e("Gpu.OpenglHookListener", "onGlGenBuffers, ids length = 0");
+      AppMethodBeat.o(186156);
       return;
     }
     long l = EGL14.eglGetCurrentContext().getNativeHandle();
@@ -197,18 +197,18 @@ public final class a
       localArrayList.add(new d(2, parama[i], l));
       i += 1;
     }
-    com.tencent.mm.gpu.d.c.ahb().W(localArrayList);
-    AppMethodBeat.o(209624);
+    com.tencent.mm.gpu.d.c.axn().ae(localArrayList);
+    AppMethodBeat.o(186156);
   }
   
   public final void e(com.tencent.mm.openglapihook.a parama)
   {
-    AppMethodBeat.i(209625);
-    parama = parama.iKc;
+    AppMethodBeat.i(186157);
+    parama = parama.jGI;
     if (parama.length == 0)
     {
-      ae.e("Gpu.OpenglHookListener", "onGlDeleteBuffers, ids length = 0");
-      AppMethodBeat.o(209625);
+      Log.e("Gpu.OpenglHookListener", "onGlDeleteBuffers, ids length = 0");
+      AppMethodBeat.o(186157);
       return;
     }
     long l = EGL14.eglGetCurrentContext().getNativeHandle();
@@ -220,18 +220,18 @@ public final class a
       localArrayList.add(new d(2, parama[i], l));
       i += 1;
     }
-    com.tencent.mm.gpu.d.c.ahb().X(localArrayList);
-    AppMethodBeat.o(209625);
+    com.tencent.mm.gpu.d.c.axn().af(localArrayList);
+    AppMethodBeat.o(186157);
   }
   
   public final void f(com.tencent.mm.openglapihook.a parama)
   {
-    AppMethodBeat.i(209626);
-    parama = parama.iKc;
+    AppMethodBeat.i(186158);
+    parama = parama.jGI;
     if (parama.length == 0)
     {
-      ae.e("Gpu.OpenglHookListener", "onGlGenFramebuffers, ids length = 0");
-      AppMethodBeat.o(209626);
+      Log.e("Gpu.OpenglHookListener", "onGlGenFramebuffers, ids length = 0");
+      AppMethodBeat.o(186158);
       return;
     }
     long l = EGL14.eglGetCurrentContext().getNativeHandle();
@@ -243,18 +243,18 @@ public final class a
       localArrayList.add(new d(3, parama[i], l));
       i += 1;
     }
-    com.tencent.mm.gpu.d.c.ahb().W(localArrayList);
-    AppMethodBeat.o(209626);
+    com.tencent.mm.gpu.d.c.axn().ae(localArrayList);
+    AppMethodBeat.o(186158);
   }
   
   public final void g(com.tencent.mm.openglapihook.a parama)
   {
-    AppMethodBeat.i(209627);
-    parama = parama.iKc;
+    AppMethodBeat.i(186159);
+    parama = parama.jGI;
     if (parama.length == 0)
     {
-      ae.e("Gpu.OpenglHookListener", "onGlDeleteFramebuffers, ids length = 0");
-      AppMethodBeat.o(209627);
+      Log.e("Gpu.OpenglHookListener", "onGlDeleteFramebuffers, ids length = 0");
+      AppMethodBeat.o(186159);
       return;
     }
     long l = EGL14.eglGetCurrentContext().getNativeHandle();
@@ -266,18 +266,18 @@ public final class a
       localArrayList.add(new d(3, parama[i], l));
       i += 1;
     }
-    com.tencent.mm.gpu.d.c.ahb().X(localArrayList);
-    AppMethodBeat.o(209627);
+    com.tencent.mm.gpu.d.c.axn().af(localArrayList);
+    AppMethodBeat.o(186159);
   }
   
   public final void h(com.tencent.mm.openglapihook.a parama)
   {
-    AppMethodBeat.i(209628);
-    parama = parama.iKc;
+    AppMethodBeat.i(186160);
+    parama = parama.jGI;
     if (parama.length == 0)
     {
-      ae.e("Gpu.OpenglHookListener", "onGlGenRenderbuffers, ids length = 0");
-      AppMethodBeat.o(209628);
+      Log.e("Gpu.OpenglHookListener", "onGlGenRenderbuffers, ids length = 0");
+      AppMethodBeat.o(186160);
       return;
     }
     long l = EGL14.eglGetCurrentContext().getNativeHandle();
@@ -289,18 +289,18 @@ public final class a
       localArrayList.add(new d(4, parama[i], l));
       i += 1;
     }
-    com.tencent.mm.gpu.d.c.ahb().W(localArrayList);
-    AppMethodBeat.o(209628);
+    com.tencent.mm.gpu.d.c.axn().ae(localArrayList);
+    AppMethodBeat.o(186160);
   }
   
   public final void i(com.tencent.mm.openglapihook.a parama)
   {
-    AppMethodBeat.i(209629);
-    parama = parama.iKc;
+    AppMethodBeat.i(186161);
+    parama = parama.jGI;
     if (parama.length == 0)
     {
-      ae.e("Gpu.OpenglHookListener", "onGlDeleteRenderbuffers, ids length = 0");
-      AppMethodBeat.o(209629);
+      Log.e("Gpu.OpenglHookListener", "onGlDeleteRenderbuffers, ids length = 0");
+      AppMethodBeat.o(186161);
       return;
     }
     long l = EGL14.eglGetCurrentContext().getNativeHandle();
@@ -312,85 +312,85 @@ public final class a
       localArrayList.add(new d(4, parama[i], l));
       i += 1;
     }
-    com.tencent.mm.gpu.d.c.ahb().X(localArrayList);
-    AppMethodBeat.o(209629);
+    com.tencent.mm.gpu.d.c.axn().af(localArrayList);
+    AppMethodBeat.o(186161);
   }
   
   public final void onCreateEglContext(com.tencent.wxperf.jni.egl.a parama)
   {
-    AppMethodBeat.i(209630);
-    if (PluginGpuRes.gwd)
+    AppMethodBeat.i(186162);
+    if (PluginGpuRes.hiS)
     {
-      ay.aRX("mmkv_gpu_service_key_single").putBoolean("eglCreateContext_status", true);
-      ae.e("Gpu.OpenglHookListener", "onCreateEglContext needCheckMMKV, put KEY_EGL_CREATE_CONTEXT_STATUS == true");
+      MultiProcessMMKV.getSingleMMKV("mmkv_gpu_service_key_single").putBoolean("eglCreateContext_status", true);
+      Log.e("Gpu.OpenglHookListener", "onCreateEglContext needCheckMMKV, put KEY_EGL_CREATE_CONTEXT_STATUS == true");
     }
-    ae.e("Gpu.OpenglHookListener", "onCreateEglContext " + parama.MLD);
-    com.tencent.mm.gpu.e.c.e(com.tencent.mm.gpu.e.c.wU(ak.getProcessName()), 178L, 1L);
-    com.tencent.mm.gpu.d.a.agZ().a(new b(17, parama.MLD));
-    AppMethodBeat.o(209630);
+    Log.e("Gpu.OpenglHookListener", "onCreateEglContext " + parama.Syr);
+    com.tencent.mm.gpu.e.c.e(com.tencent.mm.gpu.e.c.Fi(MMApplicationContext.getProcessName()), 178L, 1L);
+    com.tencent.mm.gpu.d.a.axl().a(new b(17, parama.Syr));
+    AppMethodBeat.o(186162);
   }
   
   public final void onCreateEglWindowSurface(com.tencent.wxperf.jni.egl.a parama)
   {
-    AppMethodBeat.i(209632);
-    if (PluginGpuRes.gwd)
+    AppMethodBeat.i(186164);
+    if (PluginGpuRes.hiS)
     {
-      ay.aRX("mmkv_gpu_service_key_single").putBoolean("eglCreateSurface_status", true);
-      ae.e("Gpu.OpenglHookListener", "onCreatePbufferSurface needCheckMMKV, put KEY_EGL_CREATE_SURFACE_STATUS == true");
+      MultiProcessMMKV.getSingleMMKV("mmkv_gpu_service_key_single").putBoolean("eglCreateSurface_status", true);
+      Log.e("Gpu.OpenglHookListener", "onCreatePbufferSurface needCheckMMKV, put KEY_EGL_CREATE_SURFACE_STATUS == true");
     }
-    ae.e("Gpu.OpenglHookListener", "onCreateEglWindowSurface " + parama.MLD);
-    com.tencent.mm.gpu.e.c.e(com.tencent.mm.gpu.e.c.wU(ak.getProcessName()), 180L, 1L);
-    com.tencent.mm.gpu.d.a.agZ().a(new b(18, parama.MLD));
-    AppMethodBeat.o(209632);
+    Log.e("Gpu.OpenglHookListener", "onCreateEglWindowSurface " + parama.Syr);
+    com.tencent.mm.gpu.e.c.e(com.tencent.mm.gpu.e.c.Fi(MMApplicationContext.getProcessName()), 180L, 1L);
+    com.tencent.mm.gpu.d.a.axl().a(new b(18, parama.Syr));
+    AppMethodBeat.o(186164);
   }
   
   public final void onCreatePbufferSurface(com.tencent.wxperf.jni.egl.a parama)
   {
-    AppMethodBeat.i(209633);
-    if (PluginGpuRes.gwd)
+    AppMethodBeat.i(186165);
+    if (PluginGpuRes.hiS)
     {
-      ay.aRX("mmkv_gpu_service_key_single").putBoolean("eglCreateSurface_status", true);
-      ae.e("Gpu.OpenglHookListener", "onCreatePbufferSurface needCheckMMKV, put KEY_EGL_CREATE_SURFACE_STATUS == true");
+      MultiProcessMMKV.getSingleMMKV("mmkv_gpu_service_key_single").putBoolean("eglCreateSurface_status", true);
+      Log.e("Gpu.OpenglHookListener", "onCreatePbufferSurface needCheckMMKV, put KEY_EGL_CREATE_SURFACE_STATUS == true");
     }
-    ae.e("Gpu.OpenglHookListener", "onCreatePbufferSurface = " + parama.MLD);
-    com.tencent.mm.gpu.e.c.e(com.tencent.mm.gpu.e.c.wU(ak.getProcessName()), 181L, 1L);
-    com.tencent.mm.gpu.d.a.agZ().a(new b(18, parama.MLD));
-    AppMethodBeat.o(209633);
+    Log.e("Gpu.OpenglHookListener", "onCreatePbufferSurface = " + parama.Syr);
+    com.tencent.mm.gpu.e.c.e(com.tencent.mm.gpu.e.c.Fi(MMApplicationContext.getProcessName()), 181L, 1L);
+    com.tencent.mm.gpu.d.a.axl().a(new b(18, parama.Syr));
+    AppMethodBeat.o(186165);
   }
   
   public final void onDeleteEglContext(long paramLong)
   {
-    AppMethodBeat.i(209631);
-    if (PluginGpuRes.gwd)
+    AppMethodBeat.i(186163);
+    if (PluginGpuRes.hiS)
     {
-      ay.aRX("mmkv_gpu_service_key_single").putBoolean("eglDestroyContext_status", true);
-      ae.e("Gpu.OpenglHookListener", "onDeleteEglContext needCheckMMKV, put KEY_EGL_CREATE_CONTEXT_STATUS == true");
+      MultiProcessMMKV.getSingleMMKV("mmkv_gpu_service_key_single").putBoolean("eglDestroyContext_status", true);
+      Log.e("Gpu.OpenglHookListener", "onDeleteEglContext needCheckMMKV, put KEY_EGL_CREATE_CONTEXT_STATUS == true");
     }
-    ae.e("Gpu.OpenglHookListener", "onDeleteEglContext ".concat(String.valueOf(paramLong)));
-    com.tencent.mm.gpu.e.c.e(com.tencent.mm.gpu.e.c.wU(ak.getProcessName()), 179L, 1L);
-    com.tencent.mm.gpu.d.a.agZ().b(new b(17, paramLong));
-    com.tencent.mm.gpu.d.c localc = com.tencent.mm.gpu.d.c.ahb();
-    localc.gws.post(new c.3(localc, paramLong));
-    AppMethodBeat.o(209631);
+    Log.e("Gpu.OpenglHookListener", "onDeleteEglContext ".concat(String.valueOf(paramLong)));
+    com.tencent.mm.gpu.e.c.e(com.tencent.mm.gpu.e.c.Fi(MMApplicationContext.getProcessName()), 179L, 1L);
+    com.tencent.mm.gpu.d.a.axl().b(new b(17, paramLong));
+    com.tencent.mm.gpu.d.c localc = com.tencent.mm.gpu.d.c.axn();
+    localc.hjg.post(new c.3(localc, paramLong));
+    AppMethodBeat.o(186163);
   }
   
   public final void onDeleteEglSurface(long paramLong)
   {
-    AppMethodBeat.i(209634);
-    if (PluginGpuRes.gwd)
+    AppMethodBeat.i(186166);
+    if (PluginGpuRes.hiS)
     {
-      ay.aRX("mmkv_gpu_service_key_single").putBoolean("eglDestroySurface_status", true);
-      ae.e("Gpu.OpenglHookListener", "onDeleteEglSurface needCheckMMKV, put KEY_EGL_DESTROY_SURFACE_STATUS == true");
+      MultiProcessMMKV.getSingleMMKV("mmkv_gpu_service_key_single").putBoolean("eglDestroySurface_status", true);
+      Log.e("Gpu.OpenglHookListener", "onDeleteEglSurface needCheckMMKV, put KEY_EGL_DESTROY_SURFACE_STATUS == true");
     }
-    ae.e("Gpu.OpenglHookListener", "onDeleteEglSurface = ".concat(String.valueOf(paramLong)));
-    com.tencent.mm.gpu.e.c.e(com.tencent.mm.gpu.e.c.wU(ak.getProcessName()), 182L, 1L);
-    com.tencent.mm.gpu.d.a.agZ().b(new b(18, paramLong));
-    AppMethodBeat.o(209634);
+    Log.e("Gpu.OpenglHookListener", "onDeleteEglSurface = ".concat(String.valueOf(paramLong)));
+    com.tencent.mm.gpu.e.c.e(com.tencent.mm.gpu.e.c.Fi(MMApplicationContext.getProcessName()), 182L, 1L);
+    com.tencent.mm.gpu.d.a.axl().b(new b(18, paramLong));
+    AppMethodBeat.o(186166);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.gpu.c.a
  * JD-Core Version:    0.7.0.1
  */

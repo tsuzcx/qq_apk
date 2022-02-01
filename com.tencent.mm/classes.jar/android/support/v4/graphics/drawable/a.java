@@ -15,10 +15,10 @@ import org.xmlpull.v1.XmlPullParser;
 
 public final class a
 {
-  private static Method JZ;
-  private static boolean Ka;
-  private static Method Kb;
-  private static boolean Kc;
+  private static Method Kj;
+  private static boolean Kk;
+  private static Method Kl;
+  private static boolean Km;
   
   public static void a(Drawable paramDrawable, float paramFloat1, float paramFloat2)
   {
@@ -96,23 +96,23 @@ public final class a
     if (Build.VERSION.SDK_INT >= 23) {
       return paramDrawable.setLayoutDirection(paramInt);
     }
-    if ((Build.VERSION.SDK_INT < 17) || (!Ka)) {}
+    if ((Build.VERSION.SDK_INT < 17) || (!Kk)) {}
     try
     {
       Method localMethod = Drawable.class.getDeclaredMethod("setLayoutDirection", new Class[] { Integer.TYPE });
-      JZ = localMethod;
+      Kj = localMethod;
       localMethod.setAccessible(true);
       label55:
-      Ka = true;
-      if (JZ != null) {
+      Kk = true;
+      if (Kj != null) {
         try
         {
-          JZ.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
+          Kj.invoke(paramDrawable, new Object[] { Integer.valueOf(paramInt) });
           return true;
         }
         catch (Exception paramDrawable)
         {
-          JZ = null;
+          Kj = null;
         }
       }
       return false;
@@ -161,7 +161,7 @@ public final class a
       }
       else if ((paramDrawable instanceof f))
       {
-        paramDrawable = ((f)paramDrawable).eB();
+        paramDrawable = ((f)paramDrawable).eF();
       }
       else
       {
@@ -209,7 +209,7 @@ public final class a
   {
     Drawable localDrawable = paramDrawable;
     if ((paramDrawable instanceof f)) {
-      localDrawable = ((f)paramDrawable).eB();
+      localDrawable = ((f)paramDrawable).eF();
     }
     return localDrawable;
   }
@@ -219,23 +219,23 @@ public final class a
     if (Build.VERSION.SDK_INT >= 23) {
       return paramDrawable.getLayoutDirection();
     }
-    if ((Build.VERSION.SDK_INT < 17) || (!Kc)) {}
+    if ((Build.VERSION.SDK_INT < 17) || (!Km)) {}
     try
     {
       Method localMethod = Drawable.class.getDeclaredMethod("getLayoutDirection", new Class[0]);
-      Kb = localMethod;
+      Kl = localMethod;
       localMethod.setAccessible(true);
       label48:
-      Kc = true;
-      if (Kb != null) {
+      Km = true;
+      if (Kl != null) {
         try
         {
-          int i = ((Integer)Kb.invoke(paramDrawable, new Object[0])).intValue();
+          int i = ((Integer)Kl.invoke(paramDrawable, new Object[0])).intValue();
           return i;
         }
         catch (Exception paramDrawable)
         {
-          Kb = null;
+          Kl = null;
         }
       }
       return 0;

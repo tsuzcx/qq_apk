@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="77.0dip"
+<RelativeLayout android:orientation="horizontal" android:id="@id/e3n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginEnd="@dimen/bz"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bei" android:layout_width="16.0dip" android:layout_height="8.0dip" android:src="@raw/top_story_popupwindow_down" android:layout_alignParentTop="true" />
-    <RelativeLayout android:id="@id/ax5" android:background="@drawable/af1" android:layout_width="336.0dip" android:layout_height="61.0dip" android:layout_below="@id/bei" android:layout_centerHorizontal="true">
-        <CheckBox android:textColor="#ff949494" android:id="@id/apj" android:padding="0.0dip" android:focusable="false" android:clickable="false" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="32.0dip" android:checked="true" android:drawablePadding="0.0dip" android:layout_centerVertical="true" style="@style/lj" />
-        <TextView android:textSize="15.0dip" android:textColor="#ffaeaeae" android:id="@id/g_i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/g3t" android:layout_toRightOf="@id/apj" android:layout_centerVertical="true" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/asv" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/g_i">
-            <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:id="@id/g_j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="@string/g3u" />
-            <ImageView android:layout_width="7.0dip" android:layout_height="13.0dip" android:layout_marginLeft="9.0dip" android:src="@raw/top_story_arrow_right_white" />
-        </LinearLayout>
-    </RelativeLayout>
-    <ImageView android:id="@id/gio" android:layout_width="16.0dip" android:layout_height="8.0dip" android:src="@raw/top_story_popupwindow_up" android:layout_below="@id/ax5" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/b8f" android:background="@drawable/akp" android:paddingLeft="@dimen/c5" android:paddingTop="2.0dip" android:paddingRight="@dimen/c5" android:paddingBottom="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <TextView android:textSize="@dimen/h_" android:textStyle="bold" android:textColor="@color/afz" android:id="@id/b8g" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="人重呆hjhfkjfshkfhkjfksjfkjlk坤哥辊fksjaflkjkfsjafklasjflkdsjslkfjaljf框架fslajflksfdslajf辊" android:singleLine="false" />
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/BW_100_Alpha_0_5" android:ellipsize="end" android:id="@id/j38" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="人重呆fskfjksdhfjshfak哈哈哈哈只哈哈哈哈哈哈唑" android:singleLine="true" />
+    </LinearLayout>
+    <View android:id="@id/bs7" android:background="@color/BW_100_Alpha_0_1" android:layout_width="wrap_content" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_marginBottom="@dimen/cc" android:layout_alignBottom="@id/b8f" android:layout_alignStart="@id/b8f" android:layout_alignEnd="@id/b8f" />
 </RelativeLayout>

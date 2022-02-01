@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.game.media.preview.GameVideoView android:id="@id/goc" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/g8s" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.game.media.FixAspectRatioImageView android:id="@id/gm1" android:background="#ff333333" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitCenter" android:layout_centerInParent="true" app:fix_ratio="0.5625" />
-    <ProgressBar android:layout_gravity="center" android:id="@id/gms" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a4q" />
+<RelativeLayout android:id="@id/cq5" android:layout_width="122.0dip" android:layout_height="72.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <org.libpag.PAGView android:id="@id/cq3" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/ag2" android:id="@id/cq4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cst" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
 </RelativeLayout>

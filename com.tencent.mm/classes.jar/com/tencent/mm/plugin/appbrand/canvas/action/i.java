@@ -4,12 +4,12 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.appbrand.canvas.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.a.a.a;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.BaseDrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawActionArg;
 import com.tencent.mm.plugin.appbrand.canvas.action.arg.DrawTextActionArg;
-import com.tencent.mm.plugin.appbrand.y.g;
 import org.json.JSONArray;
 
 public final class i
@@ -18,12 +18,12 @@ public final class i
   private static boolean a(com.tencent.mm.plugin.appbrand.canvas.d paramd, Canvas paramCanvas, String paramString, float paramFloat1, float paramFloat2, float paramFloat3)
   {
     AppMethodBeat.i(144885);
-    Paint.FontMetrics localFontMetrics = paramd.jWp.getFontMetrics();
+    Paint.FontMetrics localFontMetrics = paramd.kZl.getFontMetrics();
     float f;
-    if (paramd.jWp.jXm == a.a.jXt)
+    if (paramd.kZl.laj == a.a.laq)
     {
       f = paramFloat2 + Math.abs(localFontMetrics.ascent);
-      paramd = paramd.jWp;
+      paramd = paramd.kZl;
       paramFloat2 = paramd.measureText(paramString);
       if ((paramFloat3 <= 0.0F) || (paramFloat3 >= paramFloat2)) {
         break label189;
@@ -39,13 +39,13 @@ public final class i
     {
       AppMethodBeat.o(144885);
       return true;
-      if (paramd.jWp.jXm == a.a.jXv)
+      if (paramd.kZl.laj == a.a.las)
       {
         f = paramFloat2 + Math.abs((-localFontMetrics.ascent + localFontMetrics.descent) / 2.0F - localFontMetrics.descent);
         break;
       }
       f = paramFloat2;
-      if (paramd.jWp.jXm != a.a.jXu) {
+      if (paramd.kZl.laj != a.a.lar) {
         break;
       }
       f = paramFloat2 - Math.abs(localFontMetrics.descent);
@@ -82,7 +82,7 @@ public final class i
     return bool;
   }
   
-  public final BaseDrawActionArg bdS()
+  public final BaseDrawActionArg bzj()
   {
     AppMethodBeat.i(144883);
     DrawTextActionArg localDrawTextActionArg = new DrawTextActionArg();
@@ -97,7 +97,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.i
  * JD-Core Version:    0.7.0.1
  */

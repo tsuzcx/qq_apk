@@ -1,3 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|right" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/radio_on" app:iconColor="@color/Brand_100"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />
+<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/be3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginRight="30.0dip">
+        <ImageView android:layout_gravity="center_horizontal" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="80.0dip" android:layout_marginBottom="30.0dip" android:src="@drawable/beb" />
+        <TextView android:textSize="@dimen/fd" android:textColor="@color/a2x" android:id="@id/f68" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" />
+        <TextView android:textSize="@dimen/fd" android:textColor="@color/sx" android:id="@id/hfp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" />
+        <TextView android:textSize="@dimen/fn" android:textColor="@color/sx" android:id="@id/hfg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:lineSpacingExtra="4.0dip" />
+    </LinearLayout>
+</LinearLayout>

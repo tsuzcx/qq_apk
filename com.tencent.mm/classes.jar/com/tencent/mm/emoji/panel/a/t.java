@@ -1,59 +1,57 @@
 package com.tencent.mm.emoji.panel.a;
 
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.b.ac;
-import com.tencent.mm.emoji.a.b.h;
-import com.tencent.mm.emoji.view.EmojiStatusView;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.emoji.b.b.ac;
+import com.tencent.mm.emoji.b.b.h;
+import java.util.Iterator;
+import kotlin.a.ab;
+import kotlin.g.b.p;
+import kotlin.k.j;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/adapter/SimilarEmojiHeadViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "itemView", "Landroid/view/View;", "showTip", "", "onClick", "Lcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;", "(Landroid/view/View;ZLcom/tencent/mm/emoji/panel/adapter/IEmojiPanelClickListener;)V", "icon", "Lcom/tencent/mm/emoji/view/EmojiStatusView;", "getIcon", "()Lcom/tencent/mm/emoji/view/EmojiStatusView;", "getShowTip", "()Z", "setShowTip", "(Z)V", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/panel/adapter/SearchEmojiLoadingViewHolder;", "Lcom/tencent/mm/emoji/panel/adapter/PanelViewHolder;", "Lcom/tencent/mm/emoji/model/panel/EmojiItem;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "onBind", "", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "plugin-emojisdk_release"})
 public final class t
   extends q<h>
 {
-  private final EmojiStatusView gqs;
-  public boolean gqt;
-  
-  public t(View paramView, boolean paramBoolean, n paramn)
+  public t(View paramView)
   {
-    super(paramView, paramn);
-    AppMethodBeat.i(105684);
-    this.gqt = paramBoolean;
-    paramView = paramView.findViewById(2131296943);
-    p.g(paramView, "itemView.findViewById(R.id.art_emoji_icon_iv)");
-    this.gqs = ((EmojiStatusView)paramView);
-    AppMethodBeat.o(105684);
+    super(paramView, null);
+    AppMethodBeat.i(199975);
+    AppMethodBeat.o(199975);
   }
   
   public final void a(ac paramac)
   {
-    AppMethodBeat.i(105683);
+    AppMethodBeat.i(199974);
     p.h(paramac, "item");
     super.a(paramac);
-    paramac = this.auu.findViewById(2131296305);
-    p.g(paramac, "itemView.findViewById<View>(R.id.about_divider)");
-    if (this.gqt) {}
-    for (int i = 0;; i = 8)
+    paramac = this.aus;
+    if (paramac == null)
     {
-      paramac.setVisibility(i);
-      if (this.gqs.getEmojiInfo() != null) {
-        break;
-      }
-      paramac = (h)this.gqo;
-      if (paramac == null) {
-        break;
-      }
-      this.gqs.setEmojiInfo(paramac.glt);
-      AppMethodBeat.o(105683);
-      return;
+      paramac = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(199974);
+      throw paramac;
     }
-    AppMethodBeat.o(105683);
+    paramac = ((Iterable)j.mY(0, ((ViewGroup)paramac).getChildCount())).iterator();
+    while (paramac.hasNext())
+    {
+      int i = ((ab)paramac).nextInt();
+      View localView = ((ViewGroup)this.aus).getChildAt(i);
+      p.g(localView, "itemView.getChildAt(it)");
+      localView.setVisibility(8);
+    }
+    paramac = this.aus.findViewById(2131303688);
+    p.g(paramac, "itemView.findViewById<Pr…sBar>(R.id.load_progress)");
+    ((ProgressBar)paramac).setVisibility(0);
+    AppMethodBeat.o(199974);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.t
  * JD-Core Version:    0.7.0.1
  */

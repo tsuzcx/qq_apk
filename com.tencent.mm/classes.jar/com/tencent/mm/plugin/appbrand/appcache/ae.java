@@ -8,21 +8,21 @@ import java.util.Set;
 
 public final class ae
 {
-  private static final Set<b> jJT;
+  private static final Set<b> kLQ;
   
   static
   {
     AppMethodBeat.i(90557);
-    jJT = new HashSet();
+    kLQ = new HashSet();
     AppMethodBeat.o(90557);
   }
   
   public static void a(b paramb)
   {
     AppMethodBeat.i(90555);
-    synchronized (jJT)
+    synchronized (kLQ)
     {
-      jJT.add(paramb);
+      kLQ.add(paramb);
       AppMethodBeat.o(90555);
       return;
     }
@@ -34,9 +34,9 @@ public final class ae
     for (;;)
     {
       int i;
-      synchronized (jJT)
+      synchronized (kLQ)
       {
-        Object[] arrayOfObject = jJT.toArray();
+        Object[] arrayOfObject = kLQ.toArray();
         int j = arrayOfObject.length;
         i = 0;
         if (i >= j) {
@@ -59,25 +59,25 @@ public final class ae
   {
     public abstract void a(m paramm);
     
-    public abstract void aZS();
+    public abstract void bvj();
     
-    public abstract void aZT();
+    public abstract void bvk();
     
-    public abstract void aZU();
+    public abstract void bvl();
     
-    public abstract void aZV();
+    public abstract void bvm();
     
-    public abstract void aZW();
+    public abstract void bvn();
     
-    public abstract void aZX();
+    public abstract void bvo();
     
-    public abstract void aZY();
+    public abstract void bvp();
     
-    public abstract void fI(boolean paramBoolean);
+    public abstract void gE(boolean paramBoolean);
     
-    public abstract void fJ(boolean paramBoolean);
+    public abstract void gF(boolean paramBoolean);
     
-    public abstract void rU(int paramInt);
+    public abstract void vQ(int paramInt);
   }
   
   public static abstract interface b
@@ -87,7 +87,7 @@ public final class ae
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ae
  * JD-Core Version:    0.7.0.1
  */

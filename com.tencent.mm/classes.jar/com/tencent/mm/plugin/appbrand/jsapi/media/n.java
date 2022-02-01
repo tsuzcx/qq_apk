@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.appbrand.jsapi.media;
 import android.content.Context;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.f.b;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.system.AndroidMediaUtil;
 
 public final class n
   extends a
@@ -14,40 +14,40 @@ public final class n
   public static final int CTRL_INDEX = 217;
   public static final String NAME = "saveImageToPhotosAlbum";
   
-  final String QA(String paramString)
+  final boolean aaa(String paramString)
+  {
+    AppMethodBeat.i(139881);
+    boolean bool = Util.nullAsNil(paramString).toLowerCase().contains("image");
+    AppMethodBeat.o(139881);
+    return bool;
+  }
+  
+  final String aab(String paramString)
   {
     AppMethodBeat.i(139882);
-    paramString = b.arS(paramString);
+    paramString = AndroidMediaUtil.getExportImagePath(paramString);
     AppMethodBeat.o(139882);
     return paramString;
   }
   
-  final void QB(String paramString)
+  final void aac(String paramString)
   {
     AppMethodBeat.i(139883);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(139880);
-        Toast.makeText(ak.getContext(), ak.getContext().getString(2131757969, new Object[] { b.fjf() }), 1).show();
+        Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131758218, new Object[] { AndroidMediaUtil.getToastSysCameraPath() }), 1).show();
         AppMethodBeat.o(139880);
       }
     });
     AppMethodBeat.o(139883);
   }
-  
-  final boolean Qz(String paramString)
-  {
-    AppMethodBeat.i(139881);
-    boolean bool = bu.nullAsNil(paramString).toLowerCase().contains("image");
-    AppMethodBeat.o(139881);
-    return bool;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.n
  * JD-Core Version:    0.7.0.1
  */

@@ -19,29 +19,29 @@ final class WalletPasswordSettingUI$10
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(190154);
+    AppMethodBeat.i(214091);
     super.onBindView(paramView);
-    if (this.JOj != null) {
+    if (this.OZp != null) {
       paramView.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(190153);
+          AppMethodBeat.i(214090);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/wallet/pwd/ui/WalletPasswordSettingUI$18$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          WalletPasswordSettingUI.10.this.JOj.dDy();
+          localb.bm(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/wallet/pwd/ui/WalletPasswordSettingUI$18$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          WalletPasswordSettingUI.10.this.OZp.a(null);
           a.a(this, "com/tencent/mm/plugin/wallet/pwd/ui/WalletPasswordSettingUI$18$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(190153);
+          AppMethodBeat.o(214090);
         }
       });
     }
-    AppMethodBeat.o(190154);
+    AppMethodBeat.o(214091);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletPasswordSettingUI.10
  * JD-Core Version:    0.7.0.1
  */

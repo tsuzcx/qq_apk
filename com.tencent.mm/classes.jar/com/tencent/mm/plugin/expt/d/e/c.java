@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.expt.d.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.d.e.a.b;
-import com.tencent.mm.protocal.protobuf.afz;
-import com.tencent.mm.protocal.protobuf.aga;
-import com.tencent.mm.protocal.protobuf.agb;
-import com.tencent.mm.protocal.protobuf.agc;
-import com.tencent.mm.protocal.protobuf.agd;
-import com.tencent.mm.protocal.protobuf.age;
-import com.tencent.mm.protocal.protobuf.agf;
+import com.tencent.mm.protocal.protobuf.aig;
+import com.tencent.mm.protocal.protobuf.aih;
+import com.tencent.mm.protocal.protobuf.aii;
+import com.tencent.mm.protocal.protobuf.aij;
+import com.tencent.mm.protocal.protobuf.aik;
+import com.tencent.mm.protocal.protobuf.ail;
+import com.tencent.mm.protocal.protobuf.aim;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -19,140 +19,143 @@ import java.util.Map;
 
 public final class c
 {
-  public static List<a> a(aga paramaga)
+  public static List<a> a(aih paramaih)
   {
-    AppMethodBeat.i(195920);
-    if (paramaga.Gwj.size() <= 0)
+    AppMethodBeat.i(220342);
+    if (paramaih.LrP.size() <= 0)
     {
-      AppMethodBeat.o(195920);
+      AppMethodBeat.o(220342);
       return null;
     }
     ArrayList localArrayList = new ArrayList();
-    paramaga = paramaga.Gwj.iterator();
-    while (paramaga.hasNext())
+    paramaih = paramaih.LrP.iterator();
+    while (paramaih.hasNext())
     {
-      afz localafz = (afz)paramaga.next();
+      aig localaig = (aig)paramaih.next();
       a locala = new a();
-      locala.qXX = localafz.qXX;
-      locala.data = localafz.data;
-      locala.qXW = localafz.qXW;
+      locala.syh = localaig.syh;
+      locala.data = localaig.data;
+      locala.syg = localaig.syg;
       localArrayList.add(locala);
     }
-    AppMethodBeat.o(195920);
+    AppMethodBeat.o(220342);
     return localArrayList;
   }
   
-  public static Map<String, b> a(agd paramagd)
+  public static Map<String, b> a(aik paramaik)
   {
-    AppMethodBeat.i(195917);
-    if (paramagd.Gwl.size() <= 0)
+    AppMethodBeat.i(220339);
+    if (paramaik.LrR.size() <= 0)
     {
-      AppMethodBeat.o(195917);
+      AppMethodBeat.o(220339);
       return null;
     }
     HashMap localHashMap = new HashMap();
-    paramagd = paramagd.Gwl.iterator();
-    while (paramagd.hasNext())
+    paramaik = paramaik.LrR.iterator();
+    while (paramaik.hasNext())
     {
-      Object localObject = (agc)paramagd.next();
+      Object localObject = (aij)paramaik.next();
       b localb = new b();
-      localb.qXW = ((agc)localObject).qXW;
-      localb.qXZ = ((agc)localObject).qXZ;
-      localb.qYa = ((agc)localObject).qYa;
-      localb.qYb = ((agc)localObject).qYb;
-      localb.qYd = ((agc)localObject).qYd;
-      localb.qYe = ((agc)localObject).qYe;
-      localb.qYf = ((agc)localObject).qYf;
-      localb.qYg = ((agc)localObject).qYg;
-      localb.script = ((agc)localObject).script;
-      localb.qYc = new ArrayList();
-      localObject = ((agc)localObject).Gwk.iterator();
+      localb.syg = ((aij)localObject).syg;
+      localb.syj = ((aij)localObject).syj;
+      localb.syk = ((aij)localObject).syk;
+      localb.syl = ((aij)localObject).syl;
+      localb.syn = ((aij)localObject).syn;
+      localb.syo = ((aij)localObject).syo;
+      localb.syp = ((aij)localObject).syp;
+      localb.syq = ((aij)localObject).syq;
+      localb.script = ((aij)localObject).script;
+      localb.sys = ((aij)localObject).sys;
+      localb.sym = new ArrayList();
+      localObject = ((aij)localObject).LrQ.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        agb localagb = (agb)((Iterator)localObject).next();
+        aii localaii = (aii)((Iterator)localObject).next();
         com.tencent.mm.plugin.expt.d.e.a.a locala = new com.tencent.mm.plugin.expt.d.e.a.a();
-        locala.index = localagb.index;
-        locala.name = localagb.name;
-        locala.type = localagb.type;
-        localb.qYc.add(locala);
+        locala.index = localaii.index;
+        locala.name = localaii.name;
+        locala.type = localaii.type;
+        localb.sym.add(locala);
       }
-      localHashMap.put(localb.qXW, localb);
+      localHashMap.put(localb.syg, localb);
     }
-    AppMethodBeat.o(195917);
+    AppMethodBeat.o(220339);
     return localHashMap;
   }
   
-  public static Map<String, com.tencent.mm.plugin.expt.d.e.a.c> a(agf paramagf)
+  public static Map<String, com.tencent.mm.plugin.expt.d.e.a.c> a(aim paramaim)
   {
-    AppMethodBeat.i(195919);
-    if (paramagf.Gwm.size() <= 0)
+    AppMethodBeat.i(220341);
+    if (paramaim.LrS.size() <= 0)
     {
-      AppMethodBeat.o(195919);
+      AppMethodBeat.o(220341);
       return null;
     }
     HashMap localHashMap = new HashMap();
-    paramagf = paramagf.Gwm.iterator();
-    while (paramagf.hasNext())
+    paramaim = paramaim.LrS.iterator();
+    while (paramaim.hasNext())
     {
-      age localage = (age)paramagf.next();
+      ail localail = (ail)paramaim.next();
       com.tencent.mm.plugin.expt.d.e.a.c localc = new com.tencent.mm.plugin.expt.d.e.a.c();
-      localc.qXW = localage.qXW;
-      localc.qYb = localage.qYb;
-      localc.sql = localage.sql;
-      localc.dbPath = localage.dbPath;
-      localc.qYh = localage.qYh;
-      localHashMap.put(localc.qXW, localc);
+      localc.syg = localail.syg;
+      localc.syl = localail.syl;
+      localc.sql = localail.sql;
+      localc.syt = localail.syt;
+      localc.dbPath = localail.dbPath;
+      localc.syr = localail.syr;
+      localHashMap.put(localc.syg, localc);
     }
-    AppMethodBeat.o(195919);
+    AppMethodBeat.o(220341);
     return localHashMap;
   }
   
-  public static agf ab(Map<String, com.tencent.mm.plugin.expt.d.e.a.c> paramMap)
+  public static aim ae(Map<String, com.tencent.mm.plugin.expt.d.e.a.c> paramMap)
   {
-    AppMethodBeat.i(195918);
+    AppMethodBeat.i(220340);
     if ((paramMap == null) || (paramMap.size() <= 0))
     {
-      AppMethodBeat.o(195918);
+      AppMethodBeat.o(220340);
       return null;
     }
-    agf localagf = new agf();
+    aim localaim = new aim();
     paramMap = paramMap.values().iterator();
     while (paramMap.hasNext())
     {
       com.tencent.mm.plugin.expt.d.e.a.c localc = (com.tencent.mm.plugin.expt.d.e.a.c)paramMap.next();
-      age localage = new age();
-      localage.qXW = localc.qXW;
-      localage.qYb = localc.qYb;
-      localage.sql = localc.sql;
-      localage.dbPath = localc.dbPath;
-      localage.qYh = localc.qYh;
-      localagf.Gwm.add(localage);
+      ail localail = new ail();
+      localail.syg = localc.syg;
+      localail.syl = localc.syl;
+      localail.sql = localc.sql;
+      localail.syt = localc.syt;
+      localail.dbPath = localc.dbPath;
+      localail.syr = localc.syr;
+      localaim.LrS.add(localail);
     }
-    AppMethodBeat.o(195918);
-    return localagf;
+    AppMethodBeat.o(220340);
+    return localaim;
   }
   
-  public static aga da(List<a> paramList)
+  public static aih jdMethod_do(List<a> paramList)
   {
-    AppMethodBeat.i(195921);
+    AppMethodBeat.i(220343);
     if ((paramList == null) || (paramList.size() <= 0))
     {
-      AppMethodBeat.o(195921);
+      AppMethodBeat.o(220343);
       return null;
     }
-    aga localaga = new aga();
+    aih localaih = new aih();
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
       a locala = (a)paramList.next();
-      afz localafz = new afz();
-      localafz.qXX = locala.qXX;
-      localafz.data = locala.data;
-      localafz.qXW = locala.qXW;
-      localaga.Gwj.add(localafz);
+      aig localaig = new aig();
+      localaig.syh = locala.syh;
+      localaig.data = locala.data;
+      localaig.syg = locala.syg;
+      localaih.LrP.add(localaig);
     }
-    AppMethodBeat.o(195921);
-    return localaga;
+    AppMethodBeat.o(220343);
+    return localaih;
   }
 }
 

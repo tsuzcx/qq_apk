@@ -14,10 +14,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class HeadImgPreference
   extends Preference
 {
-  private Bitmap Fyu;
+  private Bitmap Kpt;
   private int height;
-  private ImageView ka;
-  private View.OnClickListener wme;
+  private ImageView kc;
+  private View.OnClickListener zHh;
   
   public HeadImgPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,7 +29,7 @@ public final class HeadImgPreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(31853);
     this.height = -1;
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(31853);
   }
   
@@ -37,18 +37,18 @@ public final class HeadImgPreference
   {
     AppMethodBeat.i(31855);
     super.onBindView(paramView);
-    if (this.ka == null) {
-      this.ka = ((ImageView)paramView.findViewById(2131300940));
+    if (this.kc == null) {
+      this.kc = ((ImageView)paramView.findViewById(2131302570));
     }
-    if (this.wme != null) {
-      this.ka.setOnClickListener(this.wme);
+    if (this.zHh != null) {
+      this.kc.setOnClickListener(this.zHh);
     }
-    if (this.Fyu != null)
+    if (this.Kpt != null)
     {
-      this.ka.setImageBitmap(this.Fyu);
-      this.Fyu = null;
+      this.kc.setImageBitmap(this.Kpt);
+      this.Kpt = null;
     }
-    paramView = (LinearLayout)paramView.findViewById(2131302326);
+    paramView = (LinearLayout)paramView.findViewById(2131304721);
     if (this.height != -1) {
       paramView.setMinimumHeight(this.height);
     }
@@ -59,10 +59,10 @@ public final class HeadImgPreference
   {
     AppMethodBeat.i(31854);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131494828, localViewGroup);
-    this.ka = ((ImageView)paramViewGroup.findViewById(2131300940));
+    View.inflate(this.mContext, 2131495563, localViewGroup);
+    this.kc = ((ImageView)paramViewGroup.findViewById(2131302570));
     AppMethodBeat.o(31854);
     return paramViewGroup;
   }

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.mmsight.model;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.y;
-import com.tencent.mm.api.y.b;
+import com.tencent.mm.api.ab;
+import com.tencent.mm.api.ab.b;
 import com.tencent.mm.av.i;
 import com.tencent.mm.av.q;
 import com.tencent.mm.kernel.g;
@@ -12,34 +12,34 @@ import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.remoteservice.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.storage.cd;
+import com.tencent.mm.remoteservice.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.ck;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 
 public class CaptureMMProxy
   extends com.tencent.mm.remoteservice.a
 {
-  private static CaptureMMProxy vYY;
-  private static String vYZ = "";
+  private static CaptureMMProxy zta;
+  private static String ztb = "";
   
-  public CaptureMMProxy(com.tencent.mm.remoteservice.d paramd)
+  public CaptureMMProxy(d paramd)
   {
     super(paramd);
   }
   
   public static void createProxy(CaptureMMProxy paramCaptureMMProxy)
   {
-    vYY = paramCaptureMMProxy;
+    zta = paramCaptureMMProxy;
   }
   
   public static CaptureMMProxy getInstance()
   {
-    return vYY;
+    return zta;
   }
   
   public boolean checkUseMMVideoPlayer()
@@ -48,7 +48,7 @@ public class CaptureMMProxy
     Object localObject = REMOTE_CALL("checkUseMMVideoPlayerInMM", new Object[0]);
     if (localObject != null)
     {
-      ae.i("MicroMsg.CaptureMMProxy", "checkUseMMVideoPlayer[%b]", new Object[] { localObject });
+      Log.i("MicroMsg.CaptureMMProxy", "checkUseMMVideoPlayer[%b]", new Object[] { localObject });
       boolean bool = ((Boolean)localObject).booleanValue();
       AppMethodBeat.o(89331);
       return bool;
@@ -57,14 +57,14 @@ public class CaptureMMProxy
     return true;
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public boolean checkUseMMVideoPlayerInMM()
   {
     AppMethodBeat.i(89338);
-    ae.d("MicroMsg.CaptureMMProxy", "checkUseMMVideoPlayerInMM() called");
-    com.tencent.mm.modelcontrol.d.aHh();
-    boolean bool = com.tencent.mm.modelcontrol.d.aHt();
-    ae.d("MicroMsg.CaptureMMProxy", "checkUseMMVideoPlayerInMM() returned: ".concat(String.valueOf(bool)));
+    Log.d("MicroMsg.CaptureMMProxy", "checkUseMMVideoPlayerInMM() called");
+    com.tencent.mm.modelcontrol.e.baZ();
+    boolean bool = com.tencent.mm.modelcontrol.e.bbm();
+    Log.d("MicroMsg.CaptureMMProxy", "checkUseMMVideoPlayerInMM() returned: ".concat(String.valueOf(bool)));
     AppMethodBeat.o(89338);
     return bool;
   }
@@ -76,21 +76,21 @@ public class CaptureMMProxy
     AppMethodBeat.o(89332);
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public void clearArtistCacheInMM()
   {
     AppMethodBeat.i(89335);
-    ae.d("MicroMsg.CaptureMMProxy", "clearArtistCacheInMM() called");
-    y.cSw.Kf().Ke();
+    Log.d("MicroMsg.CaptureMMProxy", "clearArtistCacheInMM() called");
+    ab.diQ.Uo().Un();
     AppMethodBeat.o(89335);
   }
   
-  public Object get(am.a parama, Object paramObject)
+  public Object get(ar.a parama, Object paramObject)
   {
     AppMethodBeat.i(89322);
-    ae.i("MicroMsg.CaptureMMProxy", "get %s %s", new Object[] { parama, paramObject });
+    Log.i("MicroMsg.CaptureMMProxy", "get %s %s", new Object[] { parama, paramObject });
     Object localObject = REMOTE_CALL("getConfigStorage", new Object[] { parama, paramObject });
-    ae.i("MicroMsg.CaptureMMProxy", "get %s %s and get val %s", new Object[] { parama, paramObject, localObject });
+    Log.i("MicroMsg.CaptureMMProxy", "get %s %s and get val %s", new Object[] { parama, paramObject, localObject });
     if (localObject == null)
     {
       AppMethodBeat.o(89322);
@@ -104,13 +104,13 @@ public class CaptureMMProxy
   {
     AppMethodBeat.i(89320);
     String str = (String)REMOTE_CALL("getAccVideoPathInMM", new Object[0]);
-    ae.i("MicroMsg.CaptureMMProxy", "getAccVideoPathInMM " + str + " accVideoPath: " + vYZ);
-    if (!bu.isNullOrNil(str)) {
-      vYZ = str;
+    Log.i("MicroMsg.CaptureMMProxy", "getAccVideoPathInMM " + str + " accVideoPath: " + ztb);
+    if (!Util.isNullOrNil(str)) {
+      ztb = str;
     }
-    if (!bu.isNullOrNil(vYZ))
+    if (!Util.isNullOrNil(ztb))
     {
-      str = vYZ;
+      str = ztb;
       AppMethodBeat.o(89320);
       return str;
     }
@@ -118,41 +118,41 @@ public class CaptureMMProxy
     return str;
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public String getAccVideoPathInMM()
   {
     AppMethodBeat.i(89339);
-    ae.d("MicroMsg.CaptureMMProxy", "getAccVideoPathInMM");
-    o.aNg();
+    Log.d("MicroMsg.CaptureMMProxy", "getAccVideoPathInMM");
+    o.bhi();
     String str = o.getAccVideoPath();
     AppMethodBeat.o(89339);
     return str;
   }
   
-  public boolean getBoolean(am.a parama, boolean paramBoolean)
+  public boolean getBoolean(ar.a parama, boolean paramBoolean)
   {
     AppMethodBeat.i(89324);
-    ae.i("MicroMsg.CaptureMMProxy", "getBoolean %s %s", new Object[] { parama, Boolean.valueOf(paramBoolean) });
+    Log.i("MicroMsg.CaptureMMProxy", "getBoolean %s %s", new Object[] { parama, Boolean.valueOf(paramBoolean) });
     Object localObject = REMOTE_CALL("getConfigStorage", new Object[] { parama, Boolean.valueOf(paramBoolean) });
-    ae.i("MicroMsg.CaptureMMProxy", "getBoolean %s %s and get val %s", new Object[] { parama, Boolean.valueOf(paramBoolean), localObject });
+    Log.i("MicroMsg.CaptureMMProxy", "getBoolean %s %s and get val %s", new Object[] { parama, Boolean.valueOf(paramBoolean), localObject });
     if (localObject == null)
     {
       AppMethodBeat.o(89324);
       return paramBoolean;
     }
-    paramBoolean = bu.getBoolean(localObject.toString(), paramBoolean);
+    paramBoolean = Util.getBoolean(localObject.toString(), paramBoolean);
     AppMethodBeat.o(89324);
     return paramBoolean;
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public Object getConfigStorage(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(89341);
-    am.a locala = ((am.a[])am.a.class.getEnumConstants())[paramInt];
-    ae.i("MicroMsg.CaptureMMProxy", "getConfigStorage, %s %s", new Object[] { locala, paramObject });
-    g.ajS();
-    paramObject = g.ajR().ajA().get(locala, paramObject);
+    ar.a locala = ((ar.a[])ar.a.class.getEnumConstants())[paramInt];
+    Log.i("MicroMsg.CaptureMMProxy", "getConfigStorage, %s %s", new Object[] { locala, paramObject });
+    g.aAi();
+    paramObject = g.aAh().azQ().get(locala, paramObject);
     AppMethodBeat.o(89341);
     return paramObject;
   }
@@ -161,17 +161,17 @@ public class CaptureMMProxy
   {
     AppMethodBeat.i(89328);
     String str = (String)REMOTE_CALL("getDeviceInfoConfigInMM", new Object[0]);
-    ae.i("MicroMsg.CaptureMMProxy", "getDeviceInfoConfig return: %s", new Object[] { str });
+    Log.i("MicroMsg.CaptureMMProxy", "getDeviceInfoConfig return: %s", new Object[] { str });
     AppMethodBeat.o(89328);
     return str;
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public String getDeviceInfoConfigInMM()
   {
     AppMethodBeat.i(89343);
-    g.ajS();
-    String str = g.ajR().ajB().fwI();
+    g.aAi();
+    String str = g.aAh().azR().gEu();
     AppMethodBeat.o(89343);
     return str;
   }
@@ -180,16 +180,16 @@ public class CaptureMMProxy
   {
     AppMethodBeat.i(89329);
     String str = (String)REMOTE_CALL("getDynamicConfigInMM", new Object[] { paramString });
-    ae.i("MicroMsg.CaptureMMProxy", "getDynamicConfig, key: %s, value: %s", new Object[] { paramString, str });
+    Log.i("MicroMsg.CaptureMMProxy", "getDynamicConfig, key: %s, value: %s", new Object[] { paramString, str });
     AppMethodBeat.o(89329);
     return str;
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public String getDynamicConfigInMM(String paramString)
   {
     AppMethodBeat.i(89344);
-    paramString = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue(paramString);
+    paramString = ((com.tencent.mm.plugin.zero.b.a)g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue(paramString);
     AppMethodBeat.o(89344);
     return paramString;
   }
@@ -198,35 +198,35 @@ public class CaptureMMProxy
   {
     AppMethodBeat.i(89327);
     Object localObject = (Parcelable)REMOTE_CALL("getGameVideoTransParaInMM", new Object[] { Integer.valueOf(paramInt) });
-    ae.d("MicroMsg.CaptureMMProxy", "getGameVideoTransPara() returned: ".concat(String.valueOf(localObject)));
+    Log.d("MicroMsg.CaptureMMProxy", "getGameVideoTransPara() returned: ".concat(String.valueOf(localObject)));
     localObject = (VideoTransPara)localObject;
     AppMethodBeat.o(89327);
     return localObject;
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public VideoTransPara getGameVideoTransParaInMM(int paramInt)
   {
     AppMethodBeat.i(89337);
-    ae.d("MicroMsg.CaptureMMProxy", "getGameVideoTransParaInMM() called");
-    VideoTransPara localVideoTransPara = com.tencent.mm.modelcontrol.d.aHh().pg(paramInt);
-    ae.d("MicroMsg.CaptureMMProxy", "getVideoTransParaInMM() returned: ".concat(String.valueOf(localVideoTransPara)));
+    Log.d("MicroMsg.CaptureMMProxy", "getGameVideoTransParaInMM() called");
+    VideoTransPara localVideoTransPara = com.tencent.mm.modelcontrol.e.baZ().sV(paramInt);
+    Log.d("MicroMsg.CaptureMMProxy", "getVideoTransParaInMM() returned: ".concat(String.valueOf(localVideoTransPara)));
     AppMethodBeat.o(89337);
     return localVideoTransPara;
   }
   
-  public int getInt(am.a parama, int paramInt)
+  public int getInt(ar.a parama, int paramInt)
   {
     AppMethodBeat.i(89323);
-    ae.i("MicroMsg.CaptureMMProxy", "getInt %s %s", new Object[] { parama, Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.CaptureMMProxy", "getInt %s %s", new Object[] { parama, Integer.valueOf(paramInt) });
     Object localObject = REMOTE_CALL("getConfigStorage", new Object[] { parama, Integer.valueOf(paramInt) });
-    ae.i("MicroMsg.CaptureMMProxy", "getInt %s %s and get val %s", new Object[] { parama, Integer.valueOf(paramInt), localObject });
+    Log.i("MicroMsg.CaptureMMProxy", "getInt %s %s and get val %s", new Object[] { parama, Integer.valueOf(paramInt), localObject });
     if (localObject == null)
     {
       AppMethodBeat.o(89323);
       return paramInt;
     }
-    paramInt = bu.getInt(localObject.toString(), paramInt);
+    paramInt = Util.getInt(localObject.toString(), paramInt);
     AppMethodBeat.o(89323);
     return paramInt;
   }
@@ -235,19 +235,19 @@ public class CaptureMMProxy
   {
     AppMethodBeat.i(89326);
     Object localObject = (Parcelable)REMOTE_CALL("getSnsAlbumVideoTransParaInMM", new Object[0]);
-    ae.d("MicroMsg.CaptureMMProxy", "getSnsAlbumVideoTransPara() returned: ".concat(String.valueOf(localObject)));
+    Log.d("MicroMsg.CaptureMMProxy", "getSnsAlbumVideoTransPara() returned: ".concat(String.valueOf(localObject)));
     localObject = (VideoTransPara)localObject;
     AppMethodBeat.o(89326);
     return localObject;
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public VideoTransPara getSnsAlbumVideoTransParaInMM()
   {
     AppMethodBeat.i(89336);
-    ae.d("MicroMsg.CaptureMMProxy", "getSnsAlbumVideoTransParaInMM() called");
-    VideoTransPara localVideoTransPara = com.tencent.mm.modelcontrol.d.aHh().aHk();
-    ae.d("MicroMsg.CaptureMMProxy", "getVideoTransParaInMM() returned: ".concat(String.valueOf(localVideoTransPara)));
+    Log.d("MicroMsg.CaptureMMProxy", "getSnsAlbumVideoTransParaInMM() called");
+    VideoTransPara localVideoTransPara = com.tencent.mm.modelcontrol.e.baZ().bbc();
+    Log.d("MicroMsg.CaptureMMProxy", "getVideoTransParaInMM() returned: ".concat(String.valueOf(localVideoTransPara)));
     AppMethodBeat.o(89336);
     return localVideoTransPara;
   }
@@ -256,17 +256,17 @@ public class CaptureMMProxy
   {
     AppMethodBeat.i(89321);
     paramString = (String)REMOTE_CALL("getSubCoreImageFullPathInMM", new Object[] { paramString });
-    ae.i("MicroMsg.CaptureMMProxy", "getSubCoreImageFullPath ".concat(String.valueOf(paramString)));
+    Log.i("MicroMsg.CaptureMMProxy", "getSubCoreImageFullPath ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(89321);
     return paramString;
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public String getSubCoreImageFullPathInMM(String paramString)
   {
     AppMethodBeat.i(89340);
-    ae.d("MicroMsg.CaptureMMProxy", "getSubCoreImageFullPathInMM, %s", new Object[] { paramString });
-    paramString = q.aIX().getFullPath(paramString);
+    Log.d("MicroMsg.CaptureMMProxy", "getSubCoreImageFullPathInMM, %s", new Object[] { paramString });
+    paramString = q.bcR().getFullPath(paramString);
     AppMethodBeat.o(89340);
     return paramString;
   }
@@ -275,16 +275,16 @@ public class CaptureMMProxy
   {
     AppMethodBeat.i(89330);
     byte[] arrayOfByte = (byte[])REMOTE_CALL("getWeixinMetaDataInMM", new Object[0]);
-    ae.i("MicroMsg.CaptureMMProxy", "getWeixinMeta result: %s", new Object[] { arrayOfByte });
+    Log.i("MicroMsg.CaptureMMProxy", "getWeixinMeta result: %s", new Object[] { arrayOfByte });
     AppMethodBeat.o(89330);
     return arrayOfByte;
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public byte[] getWeixinMetaDataInMM()
   {
     AppMethodBeat.i(89345);
-    byte[] arrayOfByte = com.tencent.mm.modelcontrol.d.aHh().getWeixinMeta();
+    byte[] arrayOfByte = com.tencent.mm.modelcontrol.e.baZ().getWeixinMeta();
     AppMethodBeat.o(89345);
     return arrayOfByte;
   }
@@ -308,10 +308,10 @@ public class CaptureMMProxy
         {
           localBundle.putParcelable(String.valueOf(i), (Parcelable)paramVarArgs[i]);
         }
-        else if ((paramVarArgs[i] instanceof am.a))
+        else if ((paramVarArgs[i] instanceof ar.a))
         {
-          ae.i("MicroMsg.CaptureMMProxy", "objectsToBundle: %s", new Object[] { Integer.valueOf(((am.a)paramVarArgs[i]).ordinal()) });
-          localBundle.putInt(String.valueOf(i), ((am.a)paramVarArgs[i]).ordinal());
+          Log.i("MicroMsg.CaptureMMProxy", "objectsToBundle: %s", new Object[] { Integer.valueOf(((ar.a)paramVarArgs[i]).ordinal()) });
+          localBundle.putInt(String.valueOf(i), ((ar.a)paramVarArgs[i]).ordinal());
         }
         else
         {
@@ -326,7 +326,7 @@ public class CaptureMMProxy
   public void onCallback(String paramString, Bundle paramBundle, boolean paramBoolean)
   {
     AppMethodBeat.i(89347);
-    ae.i("MicroMsg.CaptureMMProxy", "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
+    Log.i("MicroMsg.CaptureMMProxy", "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
     Object localObject2 = null;
     for (;;)
     {
@@ -348,7 +348,7 @@ public class CaptureMMProxy
       }
       catch (Exception paramString)
       {
-        ae.e("MicroMsg.CaptureMMProxy", "exception:%s", new Object[] { bu.o(paramString) });
+        Log.e("MicroMsg.CaptureMMProxy", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
         AppMethodBeat.o(89347);
         return;
       }
@@ -364,7 +364,7 @@ public class CaptureMMProxy
             return;
           }
           if ("getConfigStorage".equals(paramString)) {
-            ae.i("MicroMsg.CaptureMMProxy", "put result as Serializable: %s", new Object[] { (Serializable)localObject2 });
+            Log.i("MicroMsg.CaptureMMProxy", "put result as Serializable: %s", new Object[] { (Serializable)localObject2 });
           }
           paramBundle.putSerializable("result_key", (Serializable)localObject2);
         }
@@ -382,30 +382,30 @@ public class CaptureMMProxy
         }
         else
         {
-          localObject2 = f.class;
+          localObject2 = com.tencent.mm.remoteservice.f.class;
         }
       }
     }
   }
   
-  public boolean set(am.a parama, Object paramObject)
+  public boolean set(ar.a parama, Object paramObject)
   {
     AppMethodBeat.i(89325);
     Boolean localBoolean = (Boolean)REMOTE_CALL("setConfigStorage", new Object[] { parama, paramObject });
-    ae.d("MicroMsg.CaptureMMProxy", "setConfigStorage, %s %s", new Object[] { parama, paramObject });
+    Log.d("MicroMsg.CaptureMMProxy", "setConfigStorage, %s %s", new Object[] { parama, paramObject });
     boolean bool = localBoolean.booleanValue();
     AppMethodBeat.o(89325);
     return bool;
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public boolean setConfigStorage(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(89342);
-    am.a locala = ((am.a[])am.a.class.getEnumConstants())[paramInt];
-    ae.i("MicroMsg.CaptureMMProxy", "setConfigStorage, %s %s", new Object[] { locala, paramObject });
-    g.ajS();
-    g.ajR().ajA().set(locala, paramObject);
+    ar.a locala = ((ar.a[])ar.a.class.getEnumConstants())[paramInt];
+    Log.i("MicroMsg.CaptureMMProxy", "setConfigStorage, %s %s", new Object[] { locala, paramObject });
+    g.aAi();
+    g.aAh().azQ().set(locala, paramObject);
     AppMethodBeat.o(89342);
     return true;
   }
@@ -416,7 +416,7 @@ public class CaptureMMProxy
     Object localObject = REMOTE_CALL("useMediaRecordNewInMM", new Object[0]);
     if (localObject != null)
     {
-      ae.i("MicroMsg.CaptureMMProxy", "useMediaRecordNewInMM[%b]", new Object[] { localObject });
+      Log.i("MicroMsg.CaptureMMProxy", "useMediaRecordNewInMM[%b]", new Object[] { localObject });
       boolean bool = ((Boolean)localObject).booleanValue();
       AppMethodBeat.o(89333);
       return bool;
@@ -425,19 +425,19 @@ public class CaptureMMProxy
     return true;
   }
   
-  @f
+  @com.tencent.mm.remoteservice.f
   public Boolean useMediaRecordNewInMM()
   {
     AppMethodBeat.i(89334);
-    ae.d("MicroMsg.CaptureMMProxy", "useMediaRecordNewInMM() called");
-    boolean bool = ((b)g.ab(b.class)).a(b.a.qFA, true);
+    Log.d("MicroMsg.CaptureMMProxy", "useMediaRecordNewInMM() called");
+    boolean bool = ((b)g.af(b.class)).a(b.a.rYM, true);
     AppMethodBeat.o(89334);
     return Boolean.valueOf(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.CaptureMMProxy
  * JD-Core Version:    0.7.0.1
  */

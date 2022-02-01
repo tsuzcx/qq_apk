@@ -16,7 +16,7 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import e.a.a.f;
 import java.io.IOException;
@@ -25,9 +25,9 @@ import java.io.IOException;
 public class WalletSuccPageAwardLuckyMoneyDialog
   extends MMActivity
 {
-  private f DEJ;
-  private ViewGroup vMe;
-  private ImageView yFt;
+  private ImageView CPf;
+  private f InV;
+  private ViewGroup zhm;
   
   public int getForceOrientation()
   {
@@ -36,7 +36,7 @@ public class WalletSuccPageAwardLuckyMoneyDialog
   
   public int getLayoutId()
   {
-    return 2131496030;
+    return 2131497010;
   }
   
   public void onCreate(final Bundle paramBundle)
@@ -46,35 +46,35 @@ public class WalletSuccPageAwardLuckyMoneyDialog
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
     }
-    if (d.lA(19)) {
+    if (d.oD(19)) {
       getWindow().setFlags(67108864, 67108864);
     }
     paramBundle = getIntent().getByteArrayExtra("key_layer_info");
     if (paramBundle == null)
     {
-      ae.e("MicroMsg.WalletSuccPageAwardLuckyMoneyDialog", "WalletSuccPageAwardLuckyMoneyDialog onCreate error! cannot get layerInfoBytes!");
+      Log.e("MicroMsg.WalletSuccPageAwardLuckyMoneyDialog", "WalletSuccPageAwardLuckyMoneyDialog onCreate error! cannot get layerInfoBytes!");
       finish();
     }
-    this.DEJ = new f();
+    this.InV = new f();
     try
     {
-      this.DEJ.parseFrom(paramBundle);
-      this.vMe = ((ViewGroup)findViewById(2131298761));
-      this.yFt = ((ImageView)findViewById(2131298364));
-      this.yFt.setOnClickListener(new View.OnClickListener()
+      this.InV.parseFrom(paramBundle);
+      this.zhm = ((ViewGroup)findViewById(2131299205));
+      this.CPf = ((ImageView)findViewById(2131298770));
+      this.CPf.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(71549);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/view/WalletSuccPageAwardLuckyMoneyDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/view/WalletSuccPageAwardLuckyMoneyDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           WalletSuccPageAwardLuckyMoneyDialog.this.finish();
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/WalletSuccPageAwardLuckyMoneyDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(71549);
         }
       });
-      paramBundle = this.vMe;
+      paramBundle = this.zhm;
       Animation.AnimationListener local2 = new Animation.AnimationListener()
       {
         public final void onAnimationEnd(Animation paramAnonymousAnimation) {}
@@ -114,7 +114,7 @@ public class WalletSuccPageAwardLuckyMoneyDialog
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.WalletSuccPageAwardLuckyMoneyDialog", paramBundle, "parse layer info byte error! %s", new Object[] { paramBundle.getMessage() });
+        Log.printErrStackTrace("MicroMsg.WalletSuccPageAwardLuckyMoneyDialog", paramBundle, "parse layer info byte error! %s", new Object[] { paramBundle.getMessage() });
         finish();
       }
     }
@@ -128,7 +128,7 @@ public class WalletSuccPageAwardLuckyMoneyDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.WalletSuccPageAwardLuckyMoneyDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -3,10 +3,11 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 import android.text.TextUtils;
 import com.tencent.luggage.h.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.y.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.plugin.appbrand.ac.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.s;
 import java.nio.ByteBuffer;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -15,69 +16,86 @@ import java.util.List;
 public class o
   extends j
 {
-  private final String jPH;
-  public final String jPI;
-  public final String jPJ;
-  public volatile long jPL;
-  public final LuggageLocalFileObjectManager jQe;
-  public String jQf;
+  private volatile boolean kSM;
+  public final LuggageLocalFileObjectManager kSN;
+  public String kSO;
+  private final String kSp;
+  public final String kSq;
+  public final String kSr;
+  public volatile long kSt;
   
   public o(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(134338);
-    this.jQf = "tmp";
-    this.jPL = -1L;
-    this.jPJ = w.B(new com.tencent.mm.vfs.k(paramString1).fTh());
-    this.jPH = paramString2;
-    this.jPI = paramString3;
-    this.jQe = new LuggageLocalFileObjectManager(this.jPJ, this.jPH, this.jPI);
+    this.kSM = false;
+    this.kSO = "tmp";
+    this.kSt = -1L;
+    this.kSr = aa.z(new com.tencent.mm.vfs.o(paramString1).her());
+    this.kSp = paramString2;
+    this.kSq = paramString3;
+    this.kSN = new LuggageLocalFileObjectManager(this.kSr, this.kSp, this.kSq);
     AppMethodBeat.o(134338);
   }
   
-  public final boolean LZ(String paramString)
-  {
-    AppMethodBeat.i(134339);
-    boolean bool = bu.nullAsNil(paramString).startsWith(this.jPI);
-    AppMethodBeat.o(134339);
-    return bool;
-  }
-  
-  public final m MO(String paramString)
+  public final m VX(String paramString)
   {
     AppMethodBeat.i(134353);
-    paramString = m.jPQ;
+    paramString = m.kSy;
     AppMethodBeat.o(134353);
     return paramString;
   }
   
-  public final com.tencent.mm.vfs.k MP(String paramString)
+  public final com.tencent.mm.vfs.o VY(String paramString)
   {
     AppMethodBeat.i(175577);
-    paramString = this.jQe.Nc(paramString);
+    paramString = this.kSN.Wl(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(175577);
       return null;
     }
-    paramString = new com.tencent.mm.vfs.k(paramString.hLr);
+    paramString = new com.tencent.mm.vfs.o(paramString.iGf);
     AppMethodBeat.o(175577);
     return paramString;
   }
   
-  public final com.tencent.mm.vfs.k MR(String paramString)
+  public final boolean Vi(String paramString)
+  {
+    AppMethodBeat.i(134339);
+    boolean bool = Util.nullAsNil(paramString).startsWith(this.kSq);
+    AppMethodBeat.o(134339);
+    return bool;
+  }
+  
+  public final m Vj(String paramString)
+  {
+    AppMethodBeat.i(134340);
+    paramString = this.kSN.Wl(paramString);
+    if ((paramString == null) || (!s.YS(paramString.iGf)))
+    {
+      paramString = m.kSA;
+      AppMethodBeat.o(134340);
+      return paramString;
+    }
+    paramString = m.kSu;
+    AppMethodBeat.o(134340);
+    return paramString;
+  }
+  
+  public final com.tencent.mm.vfs.o Wa(String paramString)
   {
     AppMethodBeat.i(134348);
-    com.tencent.mm.vfs.o.aZI(this.jPJ);
-    paramString = new com.tencent.mm.vfs.k(this.jPJ + "/" + paramString);
+    s.boN(this.kSr);
+    paramString = new com.tencent.mm.vfs.o(this.kSr + "/" + paramString);
     AppMethodBeat.o(134348);
     return paramString;
   }
   
-  public final boolean MS(String paramString)
+  public final boolean Wb(String paramString)
   {
     AppMethodBeat.i(134352);
-    paramString = this.jQe.Nc(paramString);
-    if ((paramString != null) && (paramString.jPs))
+    paramString = this.kSN.Wl(paramString);
+    if ((paramString != null) && (paramString.kSa))
     {
       AppMethodBeat.o(134352);
       return true;
@@ -86,60 +104,45 @@ public class o
     return false;
   }
   
-  public final String MY(String paramString)
+  public final String Wh(String paramString)
   {
     AppMethodBeat.i(134346);
-    paramString = this.jQe.Nc(paramString);
+    paramString = this.kSN.Wl(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(134346);
       return null;
     }
-    paramString = paramString.hLr;
+    paramString = paramString.iGf;
     AppMethodBeat.o(134346);
-    return paramString;
-  }
-  
-  public final m Ma(String paramString)
-  {
-    AppMethodBeat.i(134340);
-    paramString = this.jQe.Nc(paramString);
-    if ((paramString == null) || (!com.tencent.mm.vfs.o.fB(paramString.hLr)))
-    {
-      paramString = m.jPS;
-      AppMethodBeat.o(134340);
-      return paramString;
-    }
-    paramString = m.jPM;
-    AppMethodBeat.o(134340);
     return paramString;
   }
   
   public final m a(i<String> parami)
   {
-    parami.value = this.jPJ;
-    return m.jPM;
+    parami.value = this.kSr;
+    return m.kSu;
   }
   
-  public final m a(com.tencent.mm.vfs.k paramk, String paramString, i<String> parami)
+  public final m a(com.tencent.mm.vfs.o paramo, String paramString, i<String> parami)
   {
     long l1 = 0L;
     AppMethodBeat.i(175579);
-    if ((paramk == null) || (!paramk.exists()))
+    if ((paramo == null) || (!paramo.exists()))
     {
-      paramk = m.jPN;
+      paramo = m.kSv;
       AppMethodBeat.o(175579);
-      return paramk;
+      return paramo;
     }
     if ((!TextUtils.isEmpty(paramString)) || (parami == null))
     {
-      paramk = m.jQc;
+      paramo = m.kSK;
       AppMethodBeat.o(175579);
-      return paramk;
+      return paramo;
     }
-    if (this.jPL > 0L)
+    if (this.kSt > 0L)
     {
-      paramString = this.jQe.bci();
+      paramString = this.kSN.bxx();
       long l2 = l1;
       if (paramString != null)
       {
@@ -149,12 +152,12 @@ public class o
       }
       else
       {
-        if (l2 + paramk.length() <= this.jPL) {
+        if (l2 + paramo.length() <= this.kSt) {
           break label151;
         }
-        paramk = m.jQb;
+        paramo = m.kSJ;
         AppMethodBeat.o(175579);
-        return paramk;
+        return paramo;
       }
       int j = paramString.length;
       int i = 0;
@@ -169,58 +172,64 @@ public class o
       }
     }
     label151:
-    paramString = this.jQe.Nb(paramk.getName());
+    paramString = this.kSN.Wk(paramo.getName());
     if (paramString != null)
     {
-      if (paramString.jPs)
+      if (paramString.kSa)
       {
-        parami.value = paramString.dsN;
-        paramk = m.jPM;
+        parami.value = paramString.dJX;
+        paramo = m.kSu;
         AppMethodBeat.o(175579);
-        return paramk;
+        return paramo;
       }
-      parami.value = this.jQe.a(paramString).dsN;
-      paramk = m.jPM;
+      parami.value = this.kSN.a(paramString).dJX;
+      paramo = m.kSu;
       AppMethodBeat.o(175579);
-      return paramk;
+      return paramo;
     }
-    paramk = this.jQe.j(w.B(paramk.fTh()), null, false);
-    parami.value = this.jQe.a(paramk).dsN;
-    paramk = m.jPM;
+    paramo = this.kSN.j(aa.z(paramo.her()), null, false);
+    parami.value = this.kSN.a(paramo).dJX;
+    paramo = m.kSu;
     AppMethodBeat.o(175579);
-    return paramk;
+    return paramo;
   }
   
-  public final m a(com.tencent.mm.vfs.k paramk, String paramString, boolean paramBoolean, i<String> parami)
+  public final m a(com.tencent.mm.vfs.o paramo, String paramString, boolean paramBoolean, i<String> parami)
   {
     AppMethodBeat.i(175578);
-    ae.i("MicroMsg.Luggage.FlattenFileSystem", "createTempFileFrom src[%s] suffix[%s] deleteSrc[%b]", new Object[] { paramk, paramString, Boolean.valueOf(paramBoolean) });
-    paramk = this.jQe.j(w.B(paramk.fTh()), paramString, paramBoolean);
-    if (paramk == null)
+    Log.i("MicroMsg.Luggage.FlattenFileSystem", "createTempFileFrom src[%s] suffix[%s] deleteSrc[%b] released[%b]", new Object[] { paramo, paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(this.kSM) });
+    if (this.kSM)
     {
-      paramk = m.jPN;
+      paramo = m.kSw;
       AppMethodBeat.o(175578);
-      return paramk;
+      return paramo;
     }
-    parami.value = paramk.dsN;
-    paramk = m.jPM;
+    paramo = this.kSN.j(aa.z(paramo.her()), paramString, paramBoolean);
+    if (paramo == null)
+    {
+      paramo = m.kSv;
+      AppMethodBeat.o(175578);
+      return paramo;
+    }
+    parami.value = paramo.dJX;
+    paramo = m.kSu;
     AppMethodBeat.o(175578);
-    return paramk;
+    return paramo;
   }
   
   public final m a(String paramString, long paramLong1, long paramLong2, i<ByteBuffer> parami)
   {
     AppMethodBeat.i(175575);
-    paramString = this.jQe.Nc(paramString);
-    if ((paramString == null) || (!com.tencent.mm.vfs.o.fB(paramString.hLr)))
+    paramString = this.kSN.Wl(paramString);
+    if ((paramString == null) || (!s.YS(paramString.iGf)))
     {
-      paramString = m.jPS;
+      paramString = m.kSA;
       AppMethodBeat.o(175575);
       return paramString;
     }
-    paramString = new com.tencent.mm.vfs.k(paramString.hLr);
+    paramString = new com.tencent.mm.vfs.o(paramString.iGf);
     m localm = g(paramLong1, paramLong2, paramString.length());
-    if (localm != m.jPM)
+    if (localm != m.kSu)
     {
       AppMethodBeat.o(175575);
       return localm;
@@ -230,35 +239,8 @@ public class o
       l = paramString.length() - paramLong1;
     }
     parami.value = n.a(paramString, paramLong1, l);
-    paramString = m.jPM;
+    paramString = m.kSu;
     AppMethodBeat.o(175575);
-    return paramString;
-  }
-  
-  public final m a(String paramString, FileStructStat paramFileStructStat)
-  {
-    AppMethodBeat.i(134342);
-    paramString = this.jQe.Nc(paramString);
-    if ((paramString == null) || (!com.tencent.mm.vfs.o.fB(paramString.hLr)))
-    {
-      paramString = m.jPS;
-      AppMethodBeat.o(134342);
-      return paramString;
-    }
-    if (paramFileStructStat == null)
-    {
-      paramString = m.jPN;
-      AppMethodBeat.o(134342);
-      return paramString;
-    }
-    if (FileStat.b(paramString.hLr, paramFileStructStat) == 0)
-    {
-      paramString = m.jPM;
-      AppMethodBeat.o(134342);
-      return paramString;
-    }
-    paramString = m.jPN;
-    AppMethodBeat.o(134342);
     return paramString;
   }
   
@@ -266,27 +248,54 @@ public class o
   {
     AppMethodBeat.i(134343);
     Object localObject = new LinkedList();
-    b.c((List)localObject, this.jQe.bch());
-    b.c((List)localObject, this.jQe.bcj());
+    b.c((List)localObject, this.kSN.bxw());
+    b.c((List)localObject, this.kSN.bxy());
     paramString = new LinkedList();
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       y localy = (y)((Iterator)localObject).next();
       k localk = new k();
-      localk.fileName = localy.dsN;
+      localk.fileName = localy.dJX;
       paramString.add(localk);
     }
     parami.value = paramString;
-    paramString = m.jPM;
+    paramString = m.kSu;
     AppMethodBeat.o(134343);
     return paramString;
   }
   
-  public final com.tencent.mm.vfs.k ae(String paramString, boolean paramBoolean)
+  public final m a(String paramString, FileStructStat paramFileStructStat)
+  {
+    AppMethodBeat.i(134342);
+    paramString = this.kSN.Wl(paramString);
+    if ((paramString == null) || (!s.YS(paramString.iGf)))
+    {
+      paramString = m.kSA;
+      AppMethodBeat.o(134342);
+      return paramString;
+    }
+    if (paramFileStructStat == null)
+    {
+      paramString = m.kSv;
+      AppMethodBeat.o(134342);
+      return paramString;
+    }
+    if (FileStat.b(paramString.iGf, paramFileStructStat) == 0)
+    {
+      paramString = m.kSu;
+      AppMethodBeat.o(134342);
+      return paramString;
+    }
+    paramString = m.kSv;
+    AppMethodBeat.o(134342);
+    return paramString;
+  }
+  
+  public final com.tencent.mm.vfs.o ag(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(175576);
-    paramString = MP(paramString);
+    paramString = VY(paramString);
     AppMethodBeat.o(175576);
     return paramString;
   }
@@ -294,44 +303,52 @@ public class o
   public final m b(String paramString, i<ByteBuffer> parami)
   {
     AppMethodBeat.i(134341);
-    paramString = this.jQe.Nc(paramString);
-    if ((paramString == null) || (!com.tencent.mm.vfs.o.fB(paramString.hLr)))
+    paramString = this.kSN.Wl(paramString);
+    if ((paramString == null) || (!s.YS(paramString.iGf)))
     {
-      paramString = m.jPS;
+      paramString = m.kSA;
       AppMethodBeat.o(134341);
       return paramString;
     }
-    parami.value = n.t(new com.tencent.mm.vfs.k(paramString.hLr));
-    paramString = m.jPM;
+    parami.value = n.s(new com.tencent.mm.vfs.o(paramString.iGf));
+    paramString = m.kSu;
     AppMethodBeat.o(134341);
     return paramString;
   }
   
-  public final List<y> bcd()
+  public final List<y> bxs()
   {
     AppMethodBeat.i(134351);
-    List localList = this.jQe.bch();
+    List localList = this.kSN.bxw();
     AppMethodBeat.o(134351);
     return localList;
   }
   
   public final String getRootPath()
   {
-    return this.jPJ;
+    return this.kSr;
   }
   
   public final void initialize()
   {
     AppMethodBeat.i(134347);
-    if (!com.tencent.mm.vfs.o.aZI(this.jPJ)) {
-      ae.e("MicroMsg.Luggage.FlattenFileSystem", "Initialization Failed");
+    if (!s.boN(this.kSr)) {
+      Log.e("MicroMsg.Luggage.FlattenFileSystem", "Initialization Failed");
     }
     AppMethodBeat.o(134347);
+  }
+  
+  public final void release()
+  {
+    AppMethodBeat.i(196167);
+    super.release();
+    this.kSM = true;
+    AppMethodBeat.o(196167);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.o
  * JD-Core Version:    0.7.0.1
  */

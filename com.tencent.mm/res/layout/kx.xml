@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center" android:id="@id/an4" android:padding="15.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/a90" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ImageView android:id="@id/a91" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t9" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/t9">
+        <ImageView android:id="@id/a92" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ImageView android:id="@id/a93" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/t9" />
+    </LinearLayout>
 </LinearLayout>

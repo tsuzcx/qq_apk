@@ -6,35 +6,48 @@ import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.eggspring.a.a;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.n.n;
+import com.tencent.mm.plugin.game.luggage.h;
+import com.tencent.mm.plugin.game.luggage.h.a;
+import com.tencent.mm.plugin.game.luggage.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.vfs.s;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import kotlin.g.b.p;
+import kotlin.n.n;
 
 public class PluginEggSpring
   extends f
   implements c, a
 {
-  private static final String pFl;
-  public static final String pFm;
-  public static final String pFn;
-  public static final String pFo;
+  private static final String qUE;
+  public static final String qUF;
+  public static final String qUG;
+  private final Set<String> qUH;
   
   static
   {
     AppMethodBeat.i(108141);
-    pFl = com.tencent.mm.loader.j.b.atb();
+    qUE = com.tencent.mm.loader.j.b.aLB();
     StringBuilder localStringBuilder = new StringBuilder();
-    Object localObject = com.tencent.mm.plugin.eggspring.b.b.pFL;
+    Object localObject = com.tencent.mm.plugin.eggspring.c.b.qVd;
     localObject = new StringBuilder();
-    String str = com.tencent.mm.loader.j.b.asc();
+    String str = com.tencent.mm.loader.j.b.aKC();
     p.g(str, "CConstants.DATAROOT_PUBLIC_PATH()");
-    pFm = ((StringBuilder)localObject).append(n.h(str, "/data/user/0", "/data/data", false)).append("/emoji/").toString() + "egg_spring/";
-    pFn = pFm + "loading_lucky_bag";
-    pFo = pFm + "lucky_bag";
+    qUF = ((StringBuilder)localObject).append(n.j(str, "/data/user/0", "/data/data", false)).append("/emoji/").toString() + "egg_spring/";
+    qUG = qUF + "innerLuckyBag.wxam";
     AppMethodBeat.o(108141);
+  }
+  
+  public PluginEggSpring()
+  {
+    AppMethodBeat.i(194690);
+    this.qUH = new HashSet();
+    AppMethodBeat.o(194690);
   }
   
   /* Error */
@@ -45,95 +58,95 @@ public class PluginEggSpring
     //   1: astore 6
     //   3: iconst_1
     //   4: istore_3
-    //   5: ldc 104
-    //   7: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: invokestatic 110	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
-    //   13: invokevirtual 116	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   5: ldc 110
+    //   7: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   10: invokestatic 116	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   13: invokevirtual 122	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   16: astore 5
     //   18: aload 5
     //   20: aload_1
-    //   21: invokevirtual 122	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   21: invokevirtual 128	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   24: astore 7
-    //   26: new 124	com/tencent/mm/vfs/k
+    //   26: new 130	com/tencent/mm/vfs/o
     //   29: dup
     //   30: aload_2
-    //   31: invokespecial 127	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   31: invokespecial 133	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
     //   34: astore_1
     //   35: aload_1
-    //   36: invokevirtual 131	com/tencent/mm/vfs/k:exists	()Z
+    //   36: invokevirtual 137	com/tencent/mm/vfs/o:exists	()Z
     //   39: istore 4
     //   41: iload 4
     //   43: ifeq +19 -> 62
     //   46: aload 7
     //   48: ifnull +8 -> 56
     //   51: aload 7
-    //   53: invokevirtual 136	java/io/InputStream:close	()V
-    //   56: ldc 104
+    //   53: invokevirtual 142	java/io/InputStream:close	()V
+    //   56: ldc 110
     //   58: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   61: return
     //   62: aload_1
-    //   63: invokevirtual 140	com/tencent/mm/vfs/k:fTg	()Lcom/tencent/mm/vfs/k;
-    //   66: invokevirtual 143	com/tencent/mm/vfs/k:mkdirs	()Z
+    //   63: invokevirtual 146	com/tencent/mm/vfs/o:heq	()Lcom/tencent/mm/vfs/o;
+    //   66: invokevirtual 149	com/tencent/mm/vfs/o:mkdirs	()Z
     //   69: pop
     //   70: aload_1
-    //   71: invokestatic 149	com/tencent/mm/vfs/o:aj	(Lcom/tencent/mm/vfs/k;)Ljava/io/OutputStream;
+    //   71: invokestatic 155	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
     //   74: astore 8
     //   76: aload_0
     //   77: aload 7
     //   79: aload 8
-    //   81: invokespecial 153	com/tencent/mm/plugin/eggspring/PluginEggSpring:copyFile	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
+    //   81: invokespecial 159	com/tencent/mm/plugin/eggspring/PluginEggSpring:copyFile	(Ljava/io/InputStream;Ljava/io/OutputStream;)V
     //   84: iload_3
     //   85: istore 4
     //   87: aload 8
     //   89: ifnull +11 -> 100
     //   92: aload 8
-    //   94: invokevirtual 156	java/io/OutputStream:close	()V
+    //   94: invokevirtual 162	java/io/OutputStream:close	()V
     //   97: iload_3
     //   98: istore 4
     //   100: iload 4
     //   102: ifne +8 -> 110
     //   105: aload_2
-    //   106: invokestatic 160	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
+    //   106: invokestatic 166	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
     //   109: pop
-    //   110: ldc 162
-    //   112: ldc 164
+    //   110: ldc 168
+    //   112: ldc 170
     //   114: iconst_1
-    //   115: anewarray 166	java/lang/Object
+    //   115: anewarray 172	java/lang/Object
     //   118: dup
     //   119: iconst_0
     //   120: iload 4
-    //   122: invokestatic 172	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   122: invokestatic 178	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   125: aastore
-    //   126: invokestatic 177	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   126: invokestatic 183	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   129: aload 7
     //   131: ifnull +179 -> 310
     //   134: aload 7
-    //   136: invokevirtual 136	java/io/InputStream:close	()V
-    //   139: ldc 104
+    //   136: invokevirtual 142	java/io/InputStream:close	()V
+    //   139: ldc 110
     //   141: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   144: return
     //   145: astore_1
-    //   146: ldc 162
+    //   146: ldc 168
     //   148: aload_1
-    //   149: ldc 179
+    //   149: ldc 185
     //   151: iconst_0
-    //   152: anewarray 166	java/lang/Object
-    //   155: invokestatic 183	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   158: ldc 104
+    //   152: anewarray 172	java/lang/Object
+    //   155: invokestatic 189	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   158: ldc 110
     //   160: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   163: return
     //   164: astore_1
-    //   165: ldc 162
+    //   165: ldc 168
     //   167: aload_1
-    //   168: ldc 185
+    //   168: ldc 191
     //   170: iconst_0
-    //   171: anewarray 166	java/lang/Object
-    //   174: invokestatic 183	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   171: anewarray 172	java/lang/Object
+    //   174: invokestatic 189	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   177: iconst_0
     //   178: istore_3
     //   179: goto -95 -> 84
     //   182: astore 5
-    //   184: ldc 104
+    //   184: ldc 110
     //   186: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   189: aload 5
     //   191: athrow
@@ -143,28 +156,28 @@ public class PluginEggSpring
     //   198: aload 5
     //   200: ifnull +76 -> 276
     //   203: aload 8
-    //   205: invokevirtual 156	java/io/OutputStream:close	()V
-    //   208: ldc 104
+    //   205: invokevirtual 162	java/io/OutputStream:close	()V
+    //   208: ldc 110
     //   210: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   213: aload_1
     //   214: athrow
     //   215: astore_1
-    //   216: ldc 162
+    //   216: ldc 168
     //   218: aload_1
-    //   219: ldc 187
+    //   219: ldc 193
     //   221: iconst_0
-    //   222: anewarray 166	java/lang/Object
-    //   225: invokestatic 183	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   222: anewarray 172	java/lang/Object
+    //   225: invokestatic 189	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   228: iconst_0
     //   229: istore 4
     //   231: goto -131 -> 100
     //   234: astore 8
     //   236: aload 5
     //   238: aload 8
-    //   240: invokevirtual 191	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   240: invokevirtual 197	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   243: goto -35 -> 208
     //   246: astore_2
-    //   247: ldc 104
+    //   247: ldc 110
     //   249: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   252: aload_2
     //   253: athrow
@@ -174,13 +187,13 @@ public class PluginEggSpring
     //   260: aload_2
     //   261: ifnull +41 -> 302
     //   264: aload 7
-    //   266: invokevirtual 136	java/io/InputStream:close	()V
-    //   269: ldc 104
+    //   266: invokevirtual 142	java/io/InputStream:close	()V
+    //   269: ldc 110
     //   271: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   274: aload_1
     //   275: athrow
     //   276: aload 8
-    //   278: invokevirtual 156	java/io/OutputStream:close	()V
+    //   278: invokevirtual 162	java/io/OutputStream:close	()V
     //   281: goto -73 -> 208
     //   284: astore_1
     //   285: aload 6
@@ -189,12 +202,12 @@ public class PluginEggSpring
     //   291: astore 5
     //   293: aload_2
     //   294: aload 5
-    //   296: invokevirtual 191	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+    //   296: invokevirtual 197	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
     //   299: goto -30 -> 269
     //   302: aload 7
-    //   304: invokevirtual 136	java/io/InputStream:close	()V
+    //   304: invokevirtual 142	java/io/InputStream:close	()V
     //   307: goto -38 -> 269
-    //   310: ldc 104
+    //   310: ldc 110
     //   312: invokestatic 88	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   315: return
     //   316: astore_1
@@ -281,32 +294,43 @@ public class PluginEggSpring
   private void initDir()
   {
     AppMethodBeat.i(108137);
-    copyAsset("loading_lucky_bag", pFn);
-    copyAsset("lucky_bag", pFo);
+    copyAsset("innerLuckyBag.wxam", qUG);
     AppMethodBeat.o(108137);
+  }
+  
+  public void cleanPrefetch()
+  {
+    AppMethodBeat.i(194692);
+    Log.i("MicroMsg.PluginEggSpring", "cleanPrefetch: ");
+    Iterator localIterator = this.qUH.iterator();
+    while (localIterator.hasNext()) {
+      h.remove((String)localIterator.next());
+    }
+    this.qUH.clear();
+    AppMethodBeat.o(194692);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(108139);
-    ae.i("MicroMsg.PluginEggSpring", "execute");
+    Log.i("MicroMsg.PluginEggSpring", "execute");
     AppMethodBeat.o(108139);
   }
   
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(108135);
-    ae.i("MicroMsg.PluginEggSpring", "onAccountInitialized");
-    com.tencent.mm.sdk.g.b.c(new Runnable()
+    Log.i("MicroMsg.PluginEggSpring", "onAccountInitialized");
+    ThreadPool.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(108134);
-        if (1 == ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qNt, 0))
+        if (1 == ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.sko, 0))
         {
-          ae.i("MicroMsg.PluginEggSpring", "clear useless media.");
-          o.dd(PluginEggSpring.pFl, true);
-          o.dd(PluginEggSpring.pFm, true);
+          Log.i("MicroMsg.PluginEggSpring", "clear useless media.");
+          s.dy(PluginEggSpring.qUE, true);
+          s.dy(PluginEggSpring.qUF, true);
           AppMethodBeat.o(108134);
           return;
         }
@@ -320,13 +344,39 @@ public class PluginEggSpring
   public void onAccountRelease()
   {
     AppMethodBeat.i(108136);
-    ae.i("MicroMsg.PluginEggSpring", "onAccountRelease");
+    Log.i("MicroMsg.PluginEggSpring", "onAccountRelease");
     AppMethodBeat.o(108136);
+  }
+  
+  public void prefetch(String paramString)
+  {
+    AppMethodBeat.i(194691);
+    this.qUH.add(paramString);
+    if (h.azD(paramString) != null)
+    {
+      Log.i("MicroMsg.PluginEggSpring", "has prefetch %s", new Object[] { paramString });
+      AppMethodBeat.o(194691);
+      return;
+    }
+    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skr, 0);
+    Log.i("MicroMsg.PluginEggSpring", "prefetch %s: config %s", new Object[] { paramString, Integer.valueOf(i) });
+    if (i == 1) {
+      h.a(i.class, paramString, new h.a()
+      {
+        public final void callback()
+        {
+          AppMethodBeat.i(194689);
+          Log.i("MicroMsg.PluginEggSpring", "prefetch callback");
+          AppMethodBeat.o(194689);
+        }
+      });
+    }
+    AppMethodBeat.o(194691);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.PluginEggSpring
  * JD-Core Version:    0.7.0.1
  */

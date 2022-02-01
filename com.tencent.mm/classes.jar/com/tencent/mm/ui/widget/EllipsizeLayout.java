@@ -9,24 +9,24 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.widget.l.a;
+import com.tencent.mm.plugin.appbrand.widget.k.a;
 
 public class EllipsizeLayout
   extends LinearLayout
 {
-  private final boolean LmD;
+  private final boolean QBL;
   
   public EllipsizeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(200138);
-    this.LmD = paramContext.obtainStyledAttributes(paramAttributeSet, l.a.EllipsizeLayout).getBoolean(0, false);
-    AppMethodBeat.o(200138);
+    AppMethodBeat.i(204438);
+    this.QBL = paramContext.obtainStyledAttributes(paramAttributeSet, k.a.EllipsizeLayout).getBoolean(0, false);
+    AppMethodBeat.o(204438);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200139);
+    AppMethodBeat.i(204439);
     int j;
     int i;
     Object localObject1;
@@ -61,7 +61,7 @@ public class EllipsizeLayout
         if (localObject1 == null)
         {
           ((TextView)localObject2).setMaxWidth(2147483647);
-          if (!this.LmD) {
+          if (!this.QBL) {
             break label412;
           }
           ((LinearLayout.LayoutParams)((TextView)localObject2).getLayoutParams()).leftMargin = 0;
@@ -121,7 +121,7 @@ public class EllipsizeLayout
               k = i;
             }
           }
-          if ((this.LmD) && (localObject1.getMeasuredWidth() > 0)) {
+          if ((this.QBL) && (localObject1.getMeasuredWidth() > 0)) {
             if (j <= i1) {
               break label392;
             }
@@ -132,7 +132,7 @@ public class EllipsizeLayout
           ((LinearLayout.LayoutParams)localObject1.getLayoutParams()).leftMargin = i;
           localObject1.setMaxWidth(k - i);
           super.onMeasure(paramInt1, paramInt2);
-          AppMethodBeat.o(200139);
+          AppMethodBeat.o(204439);
           return;
           n = 0;
           break;
@@ -146,7 +146,7 @@ public class EllipsizeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.EllipsizeLayout
  * JD-Core Version:    0.7.0.1
  */

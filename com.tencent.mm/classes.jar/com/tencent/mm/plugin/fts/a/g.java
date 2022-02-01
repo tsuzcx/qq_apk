@@ -2,66 +2,66 @@ package com.tencent.mm.plugin.fts.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fts.a.b.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 
 public final class g
 {
-  public static HashMap<String, String> iQO;
-  public static final a tEA;
-  public static final a tEB;
-  public static final a tEC;
-  public static final a tED;
-  public static final a tEE;
-  public static final a tEF;
-  public static final a tEG;
-  public static final a tEH;
-  public static final a tEI;
-  public static final a tEJ;
-  public static final a tEK;
-  public static final a tEL;
-  public static final a tEM;
-  public static b tEN;
-  public static HashMap<String, String[]> tEO;
-  public static final a tEu;
-  public static final a tEv;
-  public static final a tEw;
-  public static final a tEx;
-  public static final a tEy;
-  public static final a tEz;
+  public static HashMap<String, String> jNI;
+  public static final a wVA;
+  public static final a wVB;
+  public static final a wVC;
+  public static final a wVD;
+  public static final a wVE;
+  public static final a wVF;
+  public static final a wVG;
+  public static final a wVH;
+  public static final a wVI;
+  public static final a wVJ;
+  public static final a wVK;
+  public static final a wVL;
+  public static b wVM;
+  public static HashMap<String, String[]> wVN;
+  public static final a wVt;
+  public static final a wVu;
+  public static final a wVv;
+  public static final a wVw;
+  public static final a wVx;
+  public static final a wVy;
+  public static final a wVz;
   
   static
   {
     AppMethodBeat.i(131669);
-    tEu = new a(19968, 40869);
-    tEv = new a(40870, 40907);
-    tEw = new a(13312, 19893);
-    tEx = new a(131072, 173782);
-    tEy = new a(173824, 177972);
-    tEz = new a(177984, 178205);
-    tEA = new a(12032, 12245);
-    tEB = new a(63744, 64217);
-    tEC = new a(194560, 195101);
-    tED = new a(59413, 59503);
-    tEE = new a(58368, 58856);
-    tEF = new a(58880, 59087);
-    tEG = new a(12736, 12771);
-    tEH = new a(12272, 12283);
-    tEI = new a(12549, 12576);
-    tEJ = new a(12704, 12730);
-    tEK = new a(65, 90);
-    tEL = new a(97, 122);
-    tEM = new a(48, 57);
-    tEN = new b();
-    iQO = new HashMap();
-    tEO = new HashMap();
+    wVt = new a(19968, 40869);
+    wVu = new a(40870, 40907);
+    wVv = new a(13312, 19893);
+    wVw = new a(131072, 173782);
+    wVx = new a(173824, 177972);
+    wVy = new a(177984, 178205);
+    wVz = new a(12032, 12245);
+    wVA = new a(63744, 64217);
+    wVB = new a(194560, 195101);
+    wVC = new a(59413, 59503);
+    wVD = new a(58368, 58856);
+    wVE = new a(58880, 59087);
+    wVF = new a(12736, 12771);
+    wVG = new a(12272, 12283);
+    wVH = new a(12549, 12576);
+    wVI = new a(12704, 12730);
+    wVJ = new a(65, 90);
+    wVK = new a(97, 122);
+    wVL = new a(48, 57);
+    wVM = new b();
+    jNI = new HashMap();
+    wVN = new HashMap();
     AppMethodBeat.o(131669);
   }
   
-  public static boolean A(char paramChar)
+  public static boolean B(char paramChar)
   {
     AppMethodBeat.i(131665);
-    if ((tEu.Hm(paramChar)) || (tEv.Hm(paramChar)) || (tEw.Hm(paramChar)) || (tEx.Hm(paramChar)) || (tEy.Hm(paramChar)) || (tEz.Hm(paramChar)))
+    if ((wVt.Nm(paramChar)) || (wVu.Nm(paramChar)) || (wVv.Nm(paramChar)) || (wVw.Nm(paramChar)) || (wVx.Nm(paramChar)) || (wVy.Nm(paramChar)))
     {
       AppMethodBeat.o(131665);
       return true;
@@ -70,10 +70,10 @@ public final class g
     return false;
   }
   
-  public static boolean B(char paramChar)
+  public static boolean C(char paramChar)
   {
     AppMethodBeat.i(131666);
-    if ((tEK.Hm(paramChar)) || (tEL.Hm(paramChar)))
+    if ((wVJ.Nm(paramChar)) || (wVK.Nm(paramChar)))
     {
       AppMethodBeat.o(131666);
       return true;
@@ -82,15 +82,15 @@ public final class g
     return false;
   }
   
-  public static boolean C(char paramChar)
+  public static boolean D(char paramChar)
   {
     AppMethodBeat.i(131667);
-    boolean bool = tEM.Hm(paramChar);
+    boolean bool = wVL.Nm(paramChar);
     AppMethodBeat.o(131667);
     return bool;
   }
   
-  public static final String als(String paramString)
+  public static final String ayw(String paramString)
   {
     AppMethodBeat.i(131668);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -100,10 +100,10 @@ public final class g
     if (i < j)
     {
       char c = paramString[i];
-      if (A(c))
+      if (B(c))
       {
-        String str = (String)iQO.get(String.valueOf(c));
-        if (!bu.isNullOrNil(str)) {
+        String str = (String)jNI.get(String.valueOf(c));
+        if (!Util.isNullOrNil(str)) {
           localStringBuffer.append(str);
         }
       }
@@ -122,23 +122,23 @@ public final class g
   public static final class a
   {
     int bottom;
-    int tEP;
+    int wVO;
     
     public a(int paramInt1, int paramInt2)
     {
       this.bottom = paramInt1;
-      this.tEP = paramInt2;
+      this.wVO = paramInt2;
     }
     
-    public final boolean Hm(int paramInt)
+    public final boolean Nm(int paramInt)
     {
-      return (paramInt >= this.bottom) && (paramInt <= this.tEP);
+      return (paramInt >= this.bottom) && (paramInt <= this.wVO);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.g
  * JD-Core Version:    0.7.0.1
  */

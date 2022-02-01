@@ -1,27 +1,30 @@
 package com.tencent.mm.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.j;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.az;
-import com.tencent.mm.g.a.dn;
-import com.tencent.mm.g.a.jj;
-import com.tencent.mm.g.a.ke;
+import com.tencent.mm.g.a.dq;
+import com.tencent.mm.g.a.jy;
+import com.tencent.mm.g.a.kt;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.plugin.i.a.o;
-import com.tencent.mm.plugin.i.a.t;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.plugin.i.a.aj;
+import com.tencent.mm.plugin.i.a.z;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.base.CustomViewPager;
 import com.tencent.mm.ui.contact.AddressUI.AddressUIFragment;
 import com.tencent.mm.ui.conversation.ConversationListView;
@@ -34,58 +37,58 @@ import java.util.Iterator;
 
 public class MainTabUI
 {
-  private static HashMap<String, Integer> JxQ;
-  MMFragmentActivity JrI;
-  aa JxF;
-  LauncherUI.d JxG;
-  boolean JxH;
-  private HashSet<m> JxI;
-  private int JxJ;
-  private int JxK;
-  a JxL;
-  com.tencent.mm.sdk.b.c JxM;
-  private boolean JxN;
-  com.tencent.mm.sdk.b.c JxO;
-  com.tencent.mm.sdk.b.c JxP;
-  public HashMap<Integer, MMFragment> JxR;
-  public int abZ;
-  private int aca;
-  private final long ius;
+  private static HashMap<String, Integer> OIk;
+  com.tencent.mm.plugin.taskbar.api.a FSw;
+  ab OHZ;
+  LauncherUI.d OIa;
+  boolean OIb;
+  private HashSet<n> OIc;
+  private int OId;
+  private int OIe;
+  a OIf;
+  IListener OIg;
+  private boolean OIh;
+  IListener OIi;
+  IListener OIj;
+  public HashMap<Integer, MMFragment> OIl;
+  public int acm;
+  private int acn;
+  private final long jpE;
   TabsAdapter mTabsAdapter;
   CustomViewPager mViewPager;
-  com.tencent.mm.plugin.appbrand.widget.header.a mZF;
+  MMFragmentActivity uLr;
   
   static
   {
     AppMethodBeat.i(33486);
     HashMap localHashMap = new HashMap();
-    JxQ = localHashMap;
+    OIk = localHashMap;
     localHashMap.put("tab_main", Integer.valueOf(0));
-    JxQ.put("tab_address", Integer.valueOf(1));
-    JxQ.put("tab_find_friend", Integer.valueOf(2));
-    JxQ.put("tab_settings", Integer.valueOf(3));
+    OIk.put("tab_address", Integer.valueOf(1));
+    OIk.put("tab_find_friend", Integer.valueOf(2));
+    OIk.put("tab_settings", Integer.valueOf(3));
     AppMethodBeat.o(33486);
   }
   
   public MainTabUI()
   {
     AppMethodBeat.i(33466);
-    this.ius = 180000L;
-    this.JxF = new aa();
-    this.JxI = new HashSet();
-    this.abZ = -1;
-    this.aca = -1;
-    this.JxJ = -1;
-    this.JxK = -1;
-    this.JxM = new com.tencent.mm.sdk.b.c() {};
-    this.JxN = true;
-    this.JxO = new com.tencent.mm.sdk.b.c() {};
-    this.JxP = new com.tencent.mm.sdk.b.c() {};
-    this.JxR = new HashMap();
+    this.jpE = 180000L;
+    this.OHZ = new ab();
+    this.OIc = new HashSet();
+    this.acm = -1;
+    this.acn = -1;
+    this.OId = -1;
+    this.OIe = -1;
+    this.OIg = new MainTabUI.1(this);
+    this.OIh = true;
+    this.OIi = new IListener() {};
+    this.OIj = new IListener() {};
+    this.OIl = new HashMap();
     AppMethodBeat.o(33466);
   }
   
-  private MMFragment acv(int paramInt)
+  private MMFragment ald(int paramInt)
   {
     AppMethodBeat.i(33478);
     MMFragment localMMFragment = null;
@@ -95,48 +98,48 @@ public class MainTabUI
     }
     for (;;)
     {
-      ae.v("MicroMsg.LauncherUI.MainTabUI", "createFragment index:%d", new Object[] { Integer.valueOf(paramInt) });
+      Log.i("MicroMsg.LauncherUI.MainTabUI", "createFragment index:%d", new Object[] { Integer.valueOf(paramInt) });
       if (localMMFragment != null) {
-        localMMFragment.setParent(this.JrI);
+        localMMFragment.setParent(this.uLr);
       }
       AppMethodBeat.o(33478);
       return localMMFragment;
       ((Bundle)localObject1).putInt(MainUI.class.getName(), 0);
-      localMMFragment = (MMFragment)Fragment.instantiate(this.JrI, MainUI.class.getName(), (Bundle)localObject1);
+      localMMFragment = (MMFragment)Fragment.instantiate(this.uLr, MainUI.class.getName(), (Bundle)localObject1);
       if ((localMMFragment instanceof MainUI))
       {
         localObject1 = (MainUI)localMMFragment;
-        Object localObject2 = this.JrI;
-        ((MainUI)localObject1).nbm = ((MMFragmentActivity)localObject2);
-        if (((MainUI)localObject1).KSA != null) {
-          ((MainUI)localObject1).KSA.setActivity((MMFragmentActivity)localObject2);
+        Object localObject2 = this.uLr;
+        ((MainUI)localObject1).Dpx = ((MMFragmentActivity)localObject2);
+        if (((MainUI)localObject1).QfG != null) {
+          ((MainUI)localObject1).QfG.setActivity((MMFragmentActivity)localObject2);
         }
         localObject1 = (MainUI)localMMFragment;
-        localObject2 = this.mZF;
-        ((MainUI)localObject1).KSH = ((com.tencent.mm.plugin.appbrand.widget.header.a)localObject2);
-        if (((MainUI)localObject1).KSA != null) {
-          ((MainUI)localObject1).KSA.setActionBarUpdateCallback((com.tencent.mm.plugin.appbrand.widget.header.a)localObject2);
+        localObject2 = this.FSw;
+        ((MainUI)localObject1).QfN = ((com.tencent.mm.plugin.taskbar.api.a)localObject2);
+        if (((MainUI)localObject1).QfG != null) {
+          ((MainUI)localObject1).QfG.setActionBarUpdateCallback((com.tencent.mm.plugin.taskbar.api.a)localObject2);
         }
       }
-      bc.getNotification().cz(true);
+      bg.getNotification().dh(true);
       continue;
       ((Bundle)localObject1).putInt(AddressUI.AddressUIFragment.class.getName(), 1);
       ((Bundle)localObject1).putBoolean("Need_Voice_Search", true);
       ((Bundle)localObject1).putBoolean("favour_include_biz", true);
-      localMMFragment = (MMFragment)Fragment.instantiate(this.JrI, AddressUI.AddressUIFragment.class.getName(), (Bundle)localObject1);
+      localMMFragment = (MMFragment)Fragment.instantiate(this.uLr, AddressUI.AddressUIFragment.class.getName(), (Bundle)localObject1);
       continue;
       ((Bundle)localObject1).putInt(FindMoreFriendsUI.class.getName(), 2);
-      localMMFragment = (MMFragment)Fragment.instantiate(this.JrI, FindMoreFriendsUI.class.getName(), (Bundle)localObject1);
+      localMMFragment = (MMFragment)Fragment.instantiate(this.uLr, FindMoreFriendsUI.class.getName(), (Bundle)localObject1);
       continue;
       ((Bundle)localObject1).putInt(MoreTabUI.class.getName(), 3);
-      localMMFragment = (MMFragment)Fragment.instantiate(this.JrI, MoreTabUI.class.getName(), (Bundle)localObject1);
+      localMMFragment = (MMFragment)Fragment.instantiate(this.uLr, MoreTabUI.class.getName(), (Bundle)localObject1);
     }
   }
   
-  private void fBe()
+  private void gIY()
   {
     AppMethodBeat.i(33470);
-    this.JxR.clear();
+    this.OIl.clear();
     if (this.mViewPager != null)
     {
       this.mViewPager.setCanSlide(false);
@@ -145,7 +148,110 @@ public class MainTabUI
     AppMethodBeat.o(33470);
   }
   
-  public final void aWU(String paramString)
+  public final void alb(int paramInt)
+  {
+    AppMethodBeat.i(33468);
+    MainUI localMainUI = (MainUI)this.OIl.get(Integer.valueOf(0));
+    if (localMainUI != null) {
+      localMainUI.alb(paramInt);
+    }
+    AppMethodBeat.o(33468);
+  }
+  
+  public final void alc(int paramInt)
+  {
+    AppMethodBeat.i(33474);
+    Log.i("MicroMsg.LauncherUI.MainTabUI", "deliverOnTabResume %s", new Object[] { Integer.valueOf(paramInt) });
+    MMFragment localMMFragment = alf(paramInt);
+    if (localMMFragment == null)
+    {
+      AppMethodBeat.o(33474);
+      return;
+    }
+    if ((localMMFragment instanceof n)) {
+      ((n)localMMFragment).gGH();
+    }
+    this.mTabsAdapter.mFragmentResumedFlags[paramInt] = true;
+    AppMethodBeat.o(33474);
+  }
+  
+  public final void ale(int paramInt)
+  {
+    AppMethodBeat.i(33479);
+    int i = this.acm;
+    if (this.mViewPager != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.i("MicroMsg.LauncherUI.MainTabUI", "change tab to %d, cur tab %d, has init tab %B, tab cache size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(this.OIl.size()) });
+      if ((this.mViewPager != null) && (paramInt >= 0) && ((this.mTabsAdapter == null) || (paramInt <= this.mTabsAdapter.getCount() - 1))) {
+        break;
+      }
+      AppMethodBeat.o(33479);
+      return;
+    }
+    if ((this.acm == paramInt) && (this.OIl.size() != 0))
+    {
+      AppMethodBeat.o(33479);
+      return;
+    }
+    i = this.acm;
+    this.acm = paramInt;
+    this.OHZ.alg(this.acm);
+    if (this.mViewPager != null)
+    {
+      if (i == -1)
+      {
+        this.mViewPager.setCurrentItemNotify(this.acm, false);
+        alc(this.acm);
+      }
+    }
+    else
+    {
+      if ((this.acm != 0) || (!com.tencent.matrix.a.cPA.cPB)) {
+        break label264;
+      }
+      bg.getNotification().dh(true);
+    }
+    for (;;)
+    {
+      if (this.acm != 0)
+      {
+        MMFragment localMMFragment = alf(0);
+        if ((localMMFragment instanceof MainUI)) {
+          ((MainUI)localMMFragment).gVY();
+        }
+      }
+      AppMethodBeat.o(33479);
+      return;
+      this.mViewPager.setCurrentItem(this.acm, false);
+      break;
+      label264:
+      bg.getNotification().dh(false);
+    }
+  }
+  
+  public final MMFragment alf(int paramInt)
+  {
+    AppMethodBeat.i(33480);
+    if (paramInt < 0)
+    {
+      AppMethodBeat.o(33480);
+      return null;
+    }
+    if (this.OIl.containsKey(Integer.valueOf(paramInt)))
+    {
+      localMMFragment = (MMFragment)this.OIl.get(Integer.valueOf(paramInt));
+      AppMethodBeat.o(33480);
+      return localMMFragment;
+    }
+    Log.i("MicroMsg.LauncherUI.MainTabUI", "create tab %d", new Object[] { Integer.valueOf(paramInt) });
+    MMFragment localMMFragment = ald(paramInt);
+    this.OIl.put(Integer.valueOf(paramInt), localMMFragment);
+    AppMethodBeat.o(33480);
+    return localMMFragment;
+  }
+  
+  public final void blU(String paramString)
   {
     AppMethodBeat.i(33477);
     if ((paramString == null) || (paramString.equals("")))
@@ -153,184 +259,82 @@ public class MainTabUI
       AppMethodBeat.o(33477);
       return;
     }
-    acw(((Integer)JxQ.get(paramString)).intValue());
+    ale(((Integer)OIk.get(paramString)).intValue());
     AppMethodBeat.o(33477);
   }
   
-  public final void act(int paramInt)
-  {
-    AppMethodBeat.i(33468);
-    MainUI localMainUI = (MainUI)this.JxR.get(Integer.valueOf(0));
-    if (localMainUI != null) {
-      localMainUI.act(paramInt);
-    }
-    AppMethodBeat.o(33468);
-  }
-  
-  public final void acu(int paramInt)
-  {
-    AppMethodBeat.i(33474);
-    MMFragment localMMFragment = acx(paramInt);
-    if (localMMFragment == null)
-    {
-      AppMethodBeat.o(33474);
-      return;
-    }
-    if ((localMMFragment instanceof m)) {
-      ((m)localMMFragment).fyT();
-    }
-    this.mTabsAdapter.mFragmentResumedFlags[paramInt] = true;
-    AppMethodBeat.o(33474);
-  }
-  
-  public final void acw(int paramInt)
-  {
-    AppMethodBeat.i(33479);
-    int i = this.abZ;
-    if (this.mViewPager != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ae.i("MicroMsg.LauncherUI.MainTabUI", "change tab to %d, cur tab %d, has init tab %B, tab cache size %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(this.JxR.size()) });
-      if ((this.mViewPager != null) && (paramInt >= 0) && ((this.mTabsAdapter == null) || (paramInt <= this.mTabsAdapter.getCount() - 1))) {
-        break;
-      }
-      AppMethodBeat.o(33479);
-      return;
-    }
-    if ((this.abZ == paramInt) && (this.JxR.size() != 0))
-    {
-      AppMethodBeat.o(33479);
-      return;
-    }
-    i = this.abZ;
-    this.abZ = paramInt;
-    this.JxF.acy(this.abZ);
-    if (this.mViewPager != null)
-    {
-      if (i == -1)
-      {
-        this.mViewPager.setCurrentItemNotify(this.abZ, false);
-        acu(this.abZ);
-      }
-    }
-    else
-    {
-      if ((this.abZ != 0) || (!com.tencent.matrix.a.cBz.cBB)) {
-        break label264;
-      }
-      bc.getNotification().cz(true);
-    }
-    for (;;)
-    {
-      if (this.abZ != 0)
-      {
-        MMFragment localMMFragment = acx(0);
-        if ((localMMFragment instanceof MainUI)) {
-          ((MainUI)localMMFragment).fNE();
-        }
-      }
-      AppMethodBeat.o(33479);
-      return;
-      this.mViewPager.setCurrentItem(this.abZ, false);
-      break;
-      label264:
-      bc.getNotification().cz(false);
-    }
-  }
-  
-  public final MMFragment acx(int paramInt)
-  {
-    AppMethodBeat.i(33480);
-    ae.d("MicroMsg.LauncherUI.MainTabUI", "get tab %d", new Object[] { Integer.valueOf(paramInt) });
-    if (paramInt < 0)
-    {
-      AppMethodBeat.o(33480);
-      return null;
-    }
-    if (this.JxR.containsKey(Integer.valueOf(paramInt)))
-    {
-      localMMFragment = (MMFragment)this.JxR.get(Integer.valueOf(paramInt));
-      AppMethodBeat.o(33480);
-      return localMMFragment;
-    }
-    MMFragment localMMFragment = acv(paramInt);
-    this.JxR.put(Integer.valueOf(paramInt), localMMFragment);
-    AppMethodBeat.o(33480);
-    return localMMFragment;
-  }
-  
-  public final void bRR()
+  public final void cpB()
   {
     AppMethodBeat.i(33469);
-    com.tencent.mm.sdk.b.a.IvT.d(this.JxM);
-    com.tencent.mm.sdk.b.a.IvT.d(this.JxO);
-    com.tencent.mm.sdk.b.a.IvT.d(this.JxP);
-    fBe();
+    EventCenter.instance.removeListener(this.OIg);
+    EventCenter.instance.removeListener(this.OIi);
+    EventCenter.instance.removeListener(this.OIj);
+    gIY();
     AppMethodBeat.o(33469);
   }
   
-  public final void fAe()
+  public final void gHX()
   {
     AppMethodBeat.i(33475);
-    MainUI localMainUI = (MainUI)this.JxR.get(Integer.valueOf(0));
-    ViewGroup localViewGroup = (ViewGroup)this.JrI.findViewById(2131301337);
+    MainUI localMainUI = (MainUI)this.OIl.get(Integer.valueOf(0));
+    ViewGroup localViewGroup = (ViewGroup)this.uLr.findViewById(2131303052);
     if (localViewGroup != null) {
       localViewGroup.setImportantForAccessibility(4);
     }
     if (localMainUI != null) {
       localMainUI.onHiddenChanged(true);
     }
-    j.a(this.JrI, 4, this.abZ, "prepareStartChatting");
-    fBf();
-    this.JxF.fBh();
+    k.a(this.uLr, 4, this.acm, "prepareStartChatting");
+    gIZ();
+    this.OHZ.gJb();
     AppMethodBeat.o(33475);
   }
   
-  public final void fAi()
-  {
-    AppMethodBeat.i(33471);
-    MainUI localMainUI = (MainUI)this.JxR.get(Integer.valueOf(0));
-    if (localMainUI != null)
-    {
-      localMainUI.fLW();
-      localMainUI.fNC();
-    }
-    AppMethodBeat.o(33471);
-  }
-  
-  public final MMFragment fBd()
+  public final MMFragment gIX()
   {
     AppMethodBeat.i(33467);
-    MMFragment localMMFragment = (MMFragment)this.JxR.get(Integer.valueOf(this.abZ));
+    MMFragment localMMFragment = (MMFragment)this.OIl.get(Integer.valueOf(this.acm));
     AppMethodBeat.o(33467);
     return localMMFragment;
   }
   
-  public final void fBf()
+  public final void gIZ()
   {
     AppMethodBeat.i(33472);
-    MainUI localMainUI = (MainUI)this.JxR.get(Integer.valueOf(0));
+    MainUI localMainUI = (MainUI)this.OIl.get(Integer.valueOf(0));
     if (localMainUI != null) {
-      localMainUI.fND();
+      localMainUI.gVX();
     }
     AppMethodBeat.o(33472);
   }
   
-  public final void fBg()
+  public final void gIb()
+  {
+    AppMethodBeat.i(33471);
+    MainUI localMainUI = (MainUI)this.OIl.get(Integer.valueOf(0));
+    if (localMainUI != null)
+    {
+      localMainUI.gUq();
+      localMainUI.gVW();
+    }
+    AppMethodBeat.o(33471);
+  }
+  
+  public final void gJa()
   {
     AppMethodBeat.i(33476);
-    if ((this.abZ == 0) && (com.tencent.mm.kernel.g.ajQ().gDv.foreground)) {
-      bc.getNotification().cz(true);
+    if ((this.acm == 0) && (g.aAg().hqi.foreground)) {
+      bg.getNotification().dh(true);
     }
     for (;;)
     {
-      Object localObject = (ViewGroup)this.JrI.findViewById(2131301337);
+      Object localObject = (ViewGroup)this.uLr.findViewById(2131303052);
       if (localObject != null) {
         ((ViewGroup)localObject).setImportantForAccessibility(1);
       }
-      fAi();
-      j.a(this.JrI, 3, this.abZ, "prepareCloseChatting");
-      localObject = (MainUI)this.JxR.get(Integer.valueOf(0));
+      gIb();
+      k.a(this.uLr, 3, this.acm, "prepareCloseChatting");
+      localObject = (MainUI)this.OIl.get(Integer.valueOf(0));
       if (localObject != null)
       {
         ((MainUI)localObject).getContentView();
@@ -339,50 +343,50 @@ public class MainTabUI
         }
         ((MainUI)localObject).onHiddenChanged(false);
       }
-      com.tencent.mm.plugin.report.service.h.yxY.qw(true);
+      com.tencent.mm.plugin.report.service.i.CyW.tN(true);
       AppMethodBeat.o(33476);
       return;
-      bc.getNotification().cz(false);
+      bg.getNotification().dh(false);
     }
   }
   
-  protected final void fBh()
+  protected final void gJb()
   {
     AppMethodBeat.i(33481);
-    this.JxF.fBh();
+    this.OHZ.gJb();
     AppMethodBeat.o(33481);
   }
   
-  protected final void fBi()
+  protected final void gJc()
   {
     AppMethodBeat.i(33482);
-    this.JxF.fBi();
+    this.OHZ.gJc();
     AppMethodBeat.o(33482);
   }
   
-  protected final void fBj()
+  protected final void gJd()
   {
     AppMethodBeat.i(33483);
-    this.JxF.fBj();
+    this.OHZ.gJd();
     AppMethodBeat.o(33483);
   }
   
-  public final void fBk()
+  public final void gJe()
   {
-    AppMethodBeat.i(187006);
-    aa localaa = this.JxF;
-    com.tencent.e.h.MqF.h(new aa.3(localaa), "setConversationTagUnread");
-    AppMethodBeat.o(187006);
+    AppMethodBeat.i(232646);
+    ab localab = this.OHZ;
+    com.tencent.f.h.RTc.d(new ab.3(localab), "setConversationTagUnread");
+    AppMethodBeat.o(232646);
   }
   
-  public final void fBl()
+  public final void gJf()
   {
     AppMethodBeat.i(33485);
-    this.JxR.get(Integer.valueOf(0));
+    this.OIl.get(Integer.valueOf(0));
     AppMethodBeat.o(33485);
   }
   
-  public final void jG(int paramInt1, int paramInt2)
+  public final void kP(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(33473);
     if (paramInt1 == paramInt2)
@@ -390,21 +394,28 @@ public class MainTabUI
       AppMethodBeat.o(33473);
       return;
     }
-    MMFragment localMMFragment = acx(paramInt1);
-    if ((localMMFragment != null) && ((localMMFragment instanceof m))) {
-      ((m)localMMFragment).fzR();
+    MMFragment localMMFragment = alf(paramInt1);
+    if ((localMMFragment != null) && ((localMMFragment instanceof n))) {
+      ((n)localMMFragment).gHF();
     }
-    localMMFragment = acx(paramInt2);
-    if ((localMMFragment != null) && ((localMMFragment instanceof m))) {
-      ((m)localMMFragment).fzQ();
+    localMMFragment = alf(paramInt2);
+    if ((localMMFragment != null) && ((localMMFragment instanceof n))) {
+      ((n)localMMFragment).gHE();
     }
-    j.a(this.JrI, 4, paramInt1, "deliverOnTabChange");
-    j.a(this.JrI, 3, paramInt2, "deliverOnTabChange");
+    k.a(this.uLr, 4, paramInt1, "deliverOnTabChange");
+    k.a(this.uLr, 3, paramInt2, "deliverOnTabChange");
     AppMethodBeat.o(33473);
   }
   
+  final void setCanSlide(boolean paramBoolean)
+  {
+    AppMethodBeat.i(232645);
+    this.mViewPager.setCanSlide(paramBoolean);
+    AppMethodBeat.o(232645);
+  }
+  
   public class TabsAdapter
-    extends android.support.v4.app.j
+    extends j
     implements ViewPager.OnPageChangeListener, c.a
   {
     private byte _hellAccFlag_;
@@ -433,7 +444,7 @@ public class MainTabUI
       Integer localInteger;
       if (paramInt2 == 0)
       {
-        localIterator = MainTabUI.fBm().values().iterator();
+        localIterator = MainTabUI.OIk.values().iterator();
         while (localIterator.hasNext())
         {
           localInteger = (Integer)localIterator.next();
@@ -446,7 +457,7 @@ public class MainTabUI
         AppMethodBeat.o(33460);
         return;
       }
-      Iterator localIterator = MainTabUI.fBm().values().iterator();
+      Iterator localIterator = MainTabUI.OIk.values().iterator();
       while (localIterator.hasNext())
       {
         localInteger = (Integer)localIterator.next();
@@ -461,11 +472,11 @@ public class MainTabUI
     {
       boolean bool = true;
       AppMethodBeat.i(33463);
-      ae.v("MicroMsg.LauncherUI.MainTabUI", "reportSwitch clickCount:%d, pos:%d", new Object[] { Integer.valueOf(this.clickCount), Integer.valueOf(paramInt) });
-      com.tencent.mm.plugin.report.service.h localh = com.tencent.mm.plugin.report.service.h.yxY;
+      Log.v("MicroMsg.LauncherUI.MainTabUI", "reportSwitch clickCount:%d, pos:%d", new Object[] { Integer.valueOf(this.clickCount), Integer.valueOf(paramInt) });
+      com.tencent.mm.plugin.report.service.i locali = com.tencent.mm.plugin.report.service.i.CyW;
       if (paramInt == 0)
       {
-        localh.qw(bool);
+        locali.tN(bool);
         if (this.clickCount <= 0) {
           break label168;
         }
@@ -481,27 +492,27 @@ public class MainTabUI
         return;
         bool = false;
         break;
-        com.tencent.mm.plugin.report.service.g.yxI.kvStat(10957, "1");
+        com.tencent.mm.plugin.report.service.h.CyF.kvStat(10957, "1");
         continue;
-        com.tencent.mm.plugin.report.service.g.yxI.kvStat(10957, "2");
+        com.tencent.mm.plugin.report.service.h.CyF.kvStat(10957, "2");
         continue;
-        com.tencent.mm.plugin.report.service.g.yxI.kvStat(10957, "3");
+        com.tencent.mm.plugin.report.service.h.CyF.kvStat(10957, "3");
         continue;
-        com.tencent.mm.plugin.report.service.g.yxI.kvStat(10957, "4");
+        com.tencent.mm.plugin.report.service.h.CyF.kvStat(10957, "4");
         continue;
         switch (paramInt)
         {
         default: 
           break;
         case 0: 
-          com.tencent.mm.plugin.report.service.g.yxI.kvStat(10957, "5");
+          com.tencent.mm.plugin.report.service.h.CyF.kvStat(10957, "5");
           break;
         case 1: 
-          com.tencent.mm.plugin.report.service.g.yxI.kvStat(10957, "6");
+          com.tencent.mm.plugin.report.service.h.CyF.kvStat(10957, "6");
           break;
         case 2: 
           label168:
-          com.tencent.mm.plugin.report.service.g.yxI.kvStat(10957, "7");
+          com.tencent.mm.plugin.report.service.h.CyF.kvStat(10957, "7");
         }
       }
     }
@@ -509,9 +520,9 @@ public class MainTabUI
     private void setFragmentLoadingIconVisibility(int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(33461);
-      if ((MainTabUI.this.acx(paramInt1) != null) && (MainTabUI.this.acx(paramInt1).getActivity() != null))
+      if ((MainTabUI.this.alf(paramInt1) != null) && (MainTabUI.this.alf(paramInt1).getActivity() != null))
       {
-        View localView = MainTabUI.this.acx(paramInt1).findViewById(2131301509);
+        View localView = MainTabUI.this.alf(paramInt1).findViewById(2131303712);
         if (localView != null) {
           localView.setVisibility(paramInt2);
         }
@@ -527,7 +538,7 @@ public class MainTabUI
     public Fragment getItem(int paramInt)
     {
       AppMethodBeat.i(33458);
-      MMFragment localMMFragment = MainTabUI.this.acx(paramInt);
+      MMFragment localMMFragment = MainTabUI.this.alf(paramInt);
       AppMethodBeat.o(33458);
       return localMMFragment;
     }
@@ -536,16 +547,16 @@ public class MainTabUI
     {
       AppMethodBeat.i(33464);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.mu(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/MainTabUI$TabsAdapter", "com/tencent/mm/ui/MainTabUI$TabsAdapterandroid/support/v4/view/ViewPager$OnPageChangeListener", "onPageScrollStateChanged", "(I)V", this, localb.ahF());
-      ae.d("MicroMsg.LauncherUI.MainTabUI", "onPageScrollStateChanged state %d", new Object[] { Integer.valueOf(paramInt) });
+      localb.pH(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/MainTabUI$TabsAdapter", "com/tencent/mm/ui/MainTabUI$TabsAdapterandroid/support/v4/view/ViewPager$OnPageChangeListener", "onPageScrollStateChanged", "(I)V", this, localb.axR());
+      Log.d("MicroMsg.LauncherUI.MainTabUI", "onPageScrollStateChanged state %d", new Object[] { Integer.valueOf(paramInt) });
       if ((paramInt == 0) && (this.addressFragment != null))
       {
-        this.addressFragment.yw(true);
+        this.addressFragment.Cl(true);
         this.addressFragment = null;
       }
-      if (MainTabUI.d(MainTabUI.this) != null) {
-        MainTabUI.d(MainTabUI.this).acj(paramInt);
+      if (MainTabUI.c(MainTabUI.this) != null) {
+        MainTabUI.c(MainTabUI.this).akQ(paramInt);
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MainTabUI$TabsAdapter", "com/tencent/mm/ui/MainTabUI$TabsAdapterandroid/support/v4/view/ViewPager$OnPageChangeListener", "onPageScrollStateChanged", "(I)V");
       AppMethodBeat.o(33464);
@@ -554,40 +565,40 @@ public class MainTabUI
     public void onPageScrolled(final int paramInt1, float paramFloat, int paramInt2)
     {
       AppMethodBeat.i(33459);
-      aa localaa = MainTabUI.c(MainTabUI.this);
-      if (localaa.JxU != null) {
-        localaa.JxU.o(paramInt1, paramFloat);
+      ab localab = MainTabUI.b(MainTabUI.this);
+      if (localab.OIo != null) {
+        localab.OIo.p(paramInt1, paramFloat);
       }
-      if (MainTabUI.d(MainTabUI.this) != null) {
-        MainTabUI.d(MainTabUI.this).v(paramInt1, paramFloat);
+      if (MainTabUI.c(MainTabUI.this) != null) {
+        MainTabUI.c(MainTabUI.this).z(paramInt1, paramFloat);
       }
       if (0.0F != paramFloat)
       {
         if (this.addressFragment == null) {
-          this.addressFragment = ((AddressUI.AddressUIFragment)MainTabUI.this.acx(1));
+          this.addressFragment = ((AddressUI.AddressUIFragment)MainTabUI.this.alf(1));
         }
-        this.addressFragment.yw(false);
+        this.addressFragment.Cl(false);
       }
       for (;;)
       {
         fixAndroidOProgressBarOutScreenFlashProblem(paramInt1, paramFloat, paramInt2);
         AppMethodBeat.o(33459);
         return;
-        ae.v("MicroMsg.LauncherUI.MainTabUI", "onPageScrolled, position = %d, mLastIndex = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(MainTabUI.e(MainTabUI.this)) });
-        if (-1 == MainTabUI.e(MainTabUI.this))
+        Log.v("MicroMsg.LauncherUI.MainTabUI", "onPageScrolled, position = %d, mLastIndex = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(MainTabUI.d(MainTabUI.this)) });
+        if (-1 == MainTabUI.d(MainTabUI.this))
         {
-          MainTabUI.this.jG(MainTabUI.e(MainTabUI.this), MainTabUI.f(MainTabUI.this));
-          MainTabUI.this.acu(paramInt1);
+          MainTabUI.this.kP(MainTabUI.d(MainTabUI.this), MainTabUI.e(MainTabUI.this));
+          MainTabUI.this.alc(paramInt1);
         }
         else
         {
-          ar.f(new Runnable()
+          MMHandlerThread.postToMainThread(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(33456);
-              MainTabUI.this.jG(MainTabUI.e(MainTabUI.this), MainTabUI.f(MainTabUI.this));
-              MainTabUI.this.acu(paramInt1);
+              MainTabUI.this.kP(MainTabUI.d(MainTabUI.this), MainTabUI.e(MainTabUI.this));
+              MainTabUI.this.alc(paramInt1);
               AppMethodBeat.o(33456);
             }
           });
@@ -598,13 +609,13 @@ public class MainTabUI
     public void onPageSelected(int paramInt)
     {
       AppMethodBeat.i(33462);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/MainTabUI$TabsAdapter", "com/tencent/mm/ui/MainTabUI$TabsAdapterandroid/support/v4/view/ViewPager$OnPageChangeListener", "onPageSelected", "(I)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-      ae.d("MicroMsg.LauncherUI.MainTabUI", "on page selected changed to %d", new Object[] { Integer.valueOf(paramInt) });
-      if (!com.tencent.mm.kernel.g.ajP().aiZ())
+      Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject1).pH(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/MainTabUI$TabsAdapter", "com/tencent/mm/ui/MainTabUI$TabsAdapterandroid/support/v4/view/ViewPager$OnPageChangeListener", "onPageSelected", "(I)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
+      Log.d("MicroMsg.LauncherUI.MainTabUI", "on page selected changed to %d", new Object[] { Integer.valueOf(paramInt) });
+      if (!g.aAf().azp())
       {
-        ae.i("MicroMsg.LauncherUI.MainTabUI", "on page position %d selected, but account not initialized.", new Object[] { Integer.valueOf(paramInt) });
+        Log.i("MicroMsg.LauncherUI.MainTabUI", "on page position %d selected, but account not initialized.", new Object[] { Integer.valueOf(paramInt) });
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MainTabUI$TabsAdapter", "com/tencent/mm/ui/MainTabUI$TabsAdapterandroid/support/v4/view/ViewPager$OnPageChangeListener", "onPageSelected", "(I)V");
         AppMethodBeat.o(33462);
         return;
@@ -613,51 +624,62 @@ public class MainTabUI
       {
       default: 
         reportSwitch(paramInt);
-        MainTabUI.a(MainTabUI.this, MainTabUI.f(MainTabUI.this));
+        MainTabUI.a(MainTabUI.this, MainTabUI.e(MainTabUI.this));
         MainTabUI.b(MainTabUI.this, paramInt);
-        MainTabUI.c(MainTabUI.this).acy(paramInt);
-        MainTabUI.g(MainTabUI.this).supportInvalidateOptionsMenu();
-        localObject = MainTabUI.this.acx(MainTabUI.f(MainTabUI.this));
-        if ((MainTabUI.e(MainTabUI.this) == 1) && (MainTabUI.f(MainTabUI.this) != 1))
+        MainTabUI.b(MainTabUI.this).alg(paramInt);
+        MainTabUI.f(MainTabUI.this).supportInvalidateOptionsMenu();
+        localObject1 = MainTabUI.this.alf(MainTabUI.e(MainTabUI.this));
+        if ((MainTabUI.d(MainTabUI.this) == 1) && (MainTabUI.e(MainTabUI.this) != 1))
         {
-          bc.aCg();
-          com.tencent.mm.model.c.ajA().set(340226, Long.valueOf(System.currentTimeMillis()));
+          bg.aVF();
+          com.tencent.mm.model.c.azQ().set(340226, Long.valueOf(System.currentTimeMillis()));
         }
-        if (MainTabUI.f(MainTabUI.this) == 1)
+        if (MainTabUI.e(MainTabUI.this) == 1)
         {
           long l = System.currentTimeMillis();
-          bc.aCg();
-          if (l - bu.a((Long)com.tencent.mm.model.c.ajA().get(340226, null), 0L) >= 180000L) {
-            ((AddressUI.AddressUIFragment)localObject).fLY();
+          bg.aVF();
+          if (l - Util.nullAs((Long)com.tencent.mm.model.c.azQ().get(340226, null), 0L) >= 180000L) {
+            ((AddressUI.AddressUIFragment)localObject1).gUs();
           }
         }
-        if (MainTabUI.f(MainTabUI.this) == 0) {
-          bc.getNotification().cz(true);
+        if (MainTabUI.e(MainTabUI.this) == 0) {
+          bg.getNotification().dh(true);
         }
         break;
       }
       for (;;)
       {
-        if ((localObject != null) && (com.tencent.matrix.b.HS()) && (((MMFragment)localObject).getActivity() != null))
+        Object localObject2;
+        if ((localObject1 != null) && (com.tencent.matrix.b.isInstalled()) && (((MMFragment)localObject1).getActivity() != null))
         {
-          String str = ((MMFragment)localObject).getActivity().getClass().getName();
-          com.tencent.matrix.a.cBz.dL(str + "#" + localObject.getClass().getSimpleName());
+          localObject2 = ((MMFragment)localObject1).getActivity().getClass().getName();
+          com.tencent.matrix.a.cPA.eg((String)localObject2 + "#" + localObject1.getClass().getSimpleName());
         }
-        if (MainTabUI.d(MainTabUI.this) != null) {
-          MainTabUI.d(MainTabUI.this).aci(MainTabUI.f(MainTabUI.this));
+        if (MainTabUI.c(MainTabUI.this) != null) {
+          MainTabUI.c(MainTabUI.this).akP(MainTabUI.e(MainTabUI.this));
         }
-        localObject = new ke();
-        ((ke)localObject).dyh.currentIndex = MainTabUI.f(MainTabUI.this);
-        com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
+        localObject1 = new kt();
+        ((kt)localObject1).dPO.currentIndex = MainTabUI.e(MainTabUI.this);
+        EventCenter.instance.publish((IEvent)localObject1);
+        if ((ao.gJN()) && (aw.b(aw.gWy(), MainTabUI.g(MainTabUI.this).getTaskId())) && (aw.a(aw.gWy(), MainTabUI.g(MainTabUI.this).getTaskId()) != 1))
+        {
+          localObject2 = new Intent(MainTabUI.g(MainTabUI.this), EmptyActivity.class);
+          localObject1 = MainTabUI.g(MainTabUI.this);
+          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject2);
+          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/ui/MainTabUI$TabsAdapter", "onPageSelected", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((MMFragmentActivity)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/ui/MainTabUI$TabsAdapter", "onPageSelected", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          Log.i("MicroMsg.LauncherUI.MainTabUI", "start empty activity");
+        }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MainTabUI$TabsAdapter", "com/tencent/mm/ui/MainTabUI$TabsAdapterandroid/support/v4/view/ViewPager$OnPageChangeListener", "onPageSelected", "(I)V");
         AppMethodBeat.o(33462);
         return;
-        com.tencent.mm.plugin.newtips.a.dxD().Mv(2);
-        ((t)com.tencent.mm.kernel.g.ad(t.class)).getRedDotManager().aih("Discovery");
+        com.tencent.mm.plugin.newtips.a.exl().TC(2);
+        ((aj)g.ah(aj.class)).getRedDotManager().asV("Discovery");
         break;
-        com.tencent.mm.plugin.newtips.a.dxD().Mv(1);
+        com.tencent.mm.plugin.newtips.a.exl().TC(1);
         break;
-        bc.getNotification().cz(false);
+        bg.getNotification().dh(false);
       }
     }
     
@@ -666,64 +688,81 @@ public class MainTabUI
       AppMethodBeat.i(33465);
       if (!MainTabUI.a(MainTabUI.this))
       {
-        ae.i("MicroMsg.LauncherUI.MainTabUI", "alvinluo now cannot change tab");
+        Log.i("MicroMsg.LauncherUI.MainTabUI", "alvinluo now cannot change tab");
         AppMethodBeat.o(33465);
         return;
       }
       Object localObject;
-      if (paramInt == MainTabUI.f(MainTabUI.this))
+      if (paramInt == MainTabUI.e(MainTabUI.this))
       {
-        ae.d("MicroMsg.LauncherUI.MainTabUI", "on click same index");
-        localObject = MainTabUI.this.acx(paramInt);
+        Log.d("MicroMsg.LauncherUI.MainTabUI", "on click same index");
+        localObject = MainTabUI.this.alf(paramInt);
         if ((localObject instanceof AbstractTabChildActivity.AbStractTabFragment)) {
-          ((AbstractTabChildActivity.AbStractTabFragment)localObject).fyM();
+          ((AbstractTabChildActivity.AbStractTabFragment)localObject).gGA();
         }
         AppMethodBeat.o(33465);
         return;
       }
       this.isTabClicked = true;
       this.clickCount += 1;
-      ae.v("MicroMsg.LauncherUI.MainTabUI", "onTabClick count:%d", new Object[] { Integer.valueOf(this.clickCount) });
+      Log.v("MicroMsg.LauncherUI.MainTabUI", "onTabClick count:%d", new Object[] { Integer.valueOf(this.clickCount) });
       this.mViewPager.setCurrentItem(paramInt, false);
       if (paramInt == 3)
       {
-        com.tencent.mm.y.c.ahI().cK(262145, 266241);
-        com.tencent.mm.y.c.ahI().cK(262156, 266241);
-        com.tencent.mm.y.c.ahI().cK(262147, 266241);
-        com.tencent.mm.y.c.ahI().cK(262149, 266241);
-        com.tencent.mm.y.c.ahI().cK(262152, 266241);
-        com.tencent.mm.y.c.ahI().b(am.a.IXJ, 266241);
-        com.tencent.mm.y.c.ahI().c(am.a.IWG, am.a.IWN);
-        boolean bool = com.tencent.mm.y.c.ahI().cJ(262156, 266241);
-        localObject = com.tencent.mm.plugin.report.service.g.yxI;
-        if (!bool) {
-          break label309;
+        com.tencent.mm.y.c.axV().cQ(262145, 266241);
+        com.tencent.mm.y.c.axV().cQ(262156, 266241);
+        com.tencent.mm.y.c.axV().cQ(262147, 266241);
+        com.tencent.mm.y.c.axV().cQ(262149, 266241);
+        com.tencent.mm.y.c.axV().cQ(262152, 266241);
+        com.tencent.mm.y.c.axV().b(ar.a.Ogg, 266241);
+        com.tencent.mm.y.c.axV().c(ar.a.OeY, ar.a.Off);
+        boolean bool1 = com.tencent.mm.y.c.axV().axS();
+        if (bool1) {
+          com.tencent.mm.y.c.axV().B(352280, false);
+        }
+        boolean bool2 = com.tencent.mm.y.c.axV().cP(262156, 266241);
+        localObject = com.tencent.mm.plugin.report.service.h.CyF;
+        if (!bool2) {
+          break label367;
+        }
+        paramInt = 1;
+        ((com.tencent.mm.plugin.report.service.h)localObject).a(14872, new Object[] { Integer.valueOf(6), Integer.valueOf(paramInt), "", "", Integer.valueOf(0) });
+        g.aAi();
+        g.aAh().azQ().set(ar.a.OeS, Boolean.FALSE);
+        localObject = (com.tencent.mm.plugin.textstatus.a.c)g.ah(com.tencent.mm.plugin.textstatus.a.c.class);
+        if (!bool1) {
+          break label372;
         }
       }
-      label309:
-      for (paramInt = 1;; paramInt = 0)
+      label367:
+      label372:
+      for (long l = 7L;; l = 8L)
       {
-        ((com.tencent.mm.plugin.report.service.g)localObject).f(14872, new Object[] { Integer.valueOf(6), Integer.valueOf(paramInt), "", "", Integer.valueOf(0) });
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IWA, Boolean.FALSE);
+        ((com.tencent.mm.plugin.textstatus.a.c)localObject).report22208(l, "");
         AppMethodBeat.o(33465);
         return;
+        paramInt = 0;
+        break;
       }
     }
   }
   
   public static abstract interface a
   {
-    public abstract void aci(int paramInt);
+    public abstract void akP(int paramInt);
     
-    public abstract void acj(int paramInt);
+    public abstract void akQ(int paramInt);
     
-    public abstract void v(int paramInt, float paramFloat);
+    public abstract void akq(int paramInt);
+    
+    public abstract void aws(int paramInt);
+    
+    public abstract void z(int paramInt, float paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.MainTabUI
  * JD-Core Version:    0.7.0.1
  */

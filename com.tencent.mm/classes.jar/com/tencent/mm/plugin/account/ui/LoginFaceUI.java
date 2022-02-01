@@ -9,54 +9,51 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.modelsimple.t;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
 
 public class LoginFaceUI
   extends LoginHistoryUI
 {
-  protected final void aUs()
+  protected final void bpf()
   {
     int j = -1;
     AppMethodBeat.i(128087);
-    super.aUs();
-    aUt();
-    final t localt = new t(this.jnU, this.jnq, "", 0);
+    super.bpf();
+    bpg();
+    final com.tencent.mm.modelsimple.t localt = new com.tencent.mm.modelsimple.t(this.kmc, this.kly, "", 0);
     int i;
     String str;
-    if (this.jnq == null)
+    if (this.kly == null)
     {
       i = -1;
-      str = bu.aSM(this.jnq);
-      if (this.jnl.jfn != null) {
+      str = Util.secPrint(this.kly);
+      if (this.klt.kdq != null) {
         break label162;
       }
     }
     for (;;)
     {
-      ae.d("MicroMsg.LoginFaceUI", "summerauth mAuthPwd len:%d content[%s] logindata.rawPsw len:%d content[%s]", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), bu.aSM(this.jnl.jfn) });
-      getString(2131755906);
-      this.fOC = h.b(this, getString(2131760781), true, new DialogInterface.OnCancelListener()
+      Log.d("MicroMsg.LoginFaceUI", "summerauth mAuthPwd len:%d content[%s] logindata.rawPsw len:%d content[%s]", new Object[] { Integer.valueOf(i), str, Integer.valueOf(j), Util.secPrint(this.klt.kdq) });
+      getString(2131755998);
+      this.gtM = h.a(this, getString(2131762532), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(128085);
-          g.ajj().a(localt);
-          LoginFaceUI.this.aUu();
+          com.tencent.mm.kernel.g.azz().a(localt);
+          LoginFaceUI.this.bph();
           AppMethodBeat.o(128085);
         }
       });
-      g.ajj().a(localt, 0);
+      com.tencent.mm.kernel.g.azz().a(localt, 0);
       AppMethodBeat.o(128087);
       return;
-      i = this.jnq.length();
+      i = this.kly.length();
       break;
       label162:
-      j = this.jnl.jfn.length();
+      j = this.klt.kdq.length();
     }
   }
   
@@ -64,18 +61,18 @@ public class LoginFaceUI
   {
     AppMethodBeat.i(128086);
     super.onCreate(paramBundle);
-    if (this.jod)
+    if (this.kmm)
     {
       AppMethodBeat.o(128086);
       return;
     }
-    this.jir = 4;
-    this.jnZ.setVisibility(0);
-    this.jnI.setVisibility(0);
-    findViewById(2131299659).setEnabled(false);
-    ((TextView)findViewById(2131299693)).setTextColor(getResources().getColorStateList(2131101185));
-    ((TextView)findViewById(2131299693)).setBackgroundResource(getResources().getColor(2131101053));
-    this.jnI.setOnClickListener(new LoginFaceUI.1(this));
+    this.loginType = 4;
+    this.kmi.setVisibility(0);
+    this.klQ.setVisibility(0);
+    findViewById(2131300310).setEnabled(false);
+    ((TextView)findViewById(2131300355)).setTextColor(getResources().getColorStateList(2131101430));
+    ((TextView)findViewById(2131300355)).setBackgroundResource(getResources().getColor(2131101287));
+    this.klQ.setOnClickListener(new LoginFaceUI.1(this));
     AppMethodBeat.o(128086);
   }
   
@@ -87,7 +84,7 @@ public class LoginFaceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.LoginFaceUI
  * JD-Core Version:    0.7.0.1
  */

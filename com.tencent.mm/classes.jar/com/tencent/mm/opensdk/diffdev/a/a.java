@@ -129,13 +129,13 @@ public class a
   {
     a()
     {
-      AppMethodBeat.i(194076);
-      AppMethodBeat.o(194076);
+      AppMethodBeat.i(190388);
+      AppMethodBeat.o(190388);
     }
     
     public void onAuthFinish(OAuthErrCode paramOAuthErrCode, String paramString)
     {
-      AppMethodBeat.i(194079);
+      AppMethodBeat.i(190391);
       Log.d("MicroMsg.SDK.ListenerWrapper", String.format("onAuthFinish, errCode = %s, authCode = %s", new Object[] { paramOAuthErrCode.toString(), paramString }));
       a.a(a.this, null);
       Object localObject = new ArrayList();
@@ -144,12 +144,12 @@ public class a
       while (((Iterator)localObject).hasNext()) {
         ((OAuthListener)((Iterator)localObject).next()).onAuthFinish(paramOAuthErrCode, paramString);
       }
-      AppMethodBeat.o(194079);
+      AppMethodBeat.o(190391);
     }
     
     public void onAuthGotQrcode(String paramString, byte[] paramArrayOfByte)
     {
-      AppMethodBeat.i(194077);
+      AppMethodBeat.i(190389);
       Log.d("MicroMsg.SDK.ListenerWrapper", "onAuthGotQrcode, qrcodeImgPath = ".concat(String.valueOf(paramString)));
       Object localObject = new ArrayList();
       ((ArrayList)localObject).addAll(a.a(a.this));
@@ -157,17 +157,17 @@ public class a
       while (((Iterator)localObject).hasNext()) {
         ((OAuthListener)((Iterator)localObject).next()).onAuthGotQrcode(paramString, paramArrayOfByte);
       }
-      AppMethodBeat.o(194077);
+      AppMethodBeat.o(190389);
     }
     
     public void onQrcodeScanned()
     {
-      AppMethodBeat.i(194078);
+      AppMethodBeat.i(190390);
       Log.d("MicroMsg.SDK.ListenerWrapper", "onQrcodeScanned");
       if (a.b(a.this) != null) {
         a.b(a.this).post(new a());
       }
-      AppMethodBeat.o(194078);
+      AppMethodBeat.o(190390);
     }
     
     class a
@@ -175,20 +175,20 @@ public class a
     {
       a()
       {
-        AppMethodBeat.i(194060);
-        AppMethodBeat.o(194060);
+        AppMethodBeat.i(190372);
+        AppMethodBeat.o(190372);
       }
       
       public void run()
       {
-        AppMethodBeat.i(194061);
+        AppMethodBeat.i(190373);
         Object localObject = new ArrayList();
         ((ArrayList)localObject).addAll(a.a(a.this));
         localObject = ((ArrayList)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
           ((OAuthListener)((Iterator)localObject).next()).onQrcodeScanned();
         }
-        AppMethodBeat.o(194061);
+        AppMethodBeat.o(190373);
       }
     }
   }

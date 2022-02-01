@@ -117,13 +117,13 @@ public class v2conference
   
   public int GetDecodeVideoData(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(188639);
+    AppMethodBeat.i(188582);
     if (1 == GetVideoData(paramArrayOfByte, paramInt))
     {
-      AppMethodBeat.o(188639);
+      AppMethodBeat.o(188582);
       return 1;
     }
-    AppMethodBeat.o(188639);
+    AppMethodBeat.o(188582);
     return 0;
   }
   
@@ -174,11 +174,9 @@ public class v2conference
   
   public native int Invite(byte[] paramArrayOfByte, int paramInt);
   
-  public native int JoinRoom(long paramLong, int paramInt1, int paramInt2);
+  public native int JoinRoom(byte[] paramArrayOfByte, int paramInt);
   
-  public native int JoinRoomWithGroupID(String paramString, int paramInt1, int paramInt2);
-  
-  public native int OnNetworkChange(int paramInt);
+  public native int OnNetworkChange(int paramInt, byte[] paramArrayOfByte);
   
   public native int PutExternalplayAudioData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
   
@@ -198,6 +196,10 @@ public class v2conference
   public native int SubscribeVideo(byte[] paramArrayOfByte, int paramInt);
   
   public native int SwitchAV(int paramInt1, int paramInt2, int paramInt3);
+  
+  public native int SwitchAudio(int paramInt);
+  
+  public native int SwitchVideo(int paramInt);
   
   public native int UnInit();
   

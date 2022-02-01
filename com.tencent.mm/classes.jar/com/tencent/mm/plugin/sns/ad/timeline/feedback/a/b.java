@@ -3,39 +3,40 @@ package com.tencent.mm.plugin.sns.ad.timeline.feedback.a;
 import android.view.View;
 import android.view.ViewParent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.ad.e.j;
-import com.tencent.mm.plugin.sns.ad.f.g.a;
+import com.tencent.mm.plugin.sns.ad.g.k;
+import com.tencent.mm.plugin.sns.ad.i.i.a;
 import com.tencent.mm.plugin.sns.data.i;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.plugin.sns.storage.a;
-import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.plugin.sns.storage.q;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.storage.ADInfo;
+import com.tencent.mm.plugin.sns.storage.ADXml;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.storage.n;
 import com.tencent.mm.plugin.sns.ui.AdFrameLayout;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abo;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public final class b
-  implements g.a
+  implements i.a
 {
+  private String DyA;
+  private String DyB;
+  private int DyC;
+  private int DyD;
+  private int DyE;
+  private Long DyF;
+  private int DyG;
+  private long Dyz;
   private int mScene;
-  private String zrA;
-  private int zrB;
-  private int zrC;
-  private int zrD;
-  private Long zrE;
-  private int zrF;
-  private long zry;
-  private String zrz;
   
-  public static g.a a(p paramp, boolean paramBoolean, View paramView, j paramj)
+  public static i.a a(SnsInfo paramSnsInfo, boolean paramBoolean, View paramView, k paramk)
   {
     int k = 2;
-    AppMethodBeat.i(219105);
-    if ((paramp == null) || (paramView == null))
+    AppMethodBeat.i(202183);
+    if ((paramSnsInfo == null) || (paramView == null))
     {
-      AppMethodBeat.o(219105);
+      AppMethodBeat.o(202183);
       return null;
     }
     int i;
@@ -45,55 +46,55 @@ public final class b
     {
       try
       {
-        boolean bool = paramp.Rt(32);
+        boolean bool = paramSnsInfo.isAd();
         if (!bool)
         {
-          AppMethodBeat.o(219105);
+          AppMethodBeat.o(202183);
           return null;
         }
-        if ((paramj != null) && (paramj.doj != 0))
+        if ((paramk != null) && (paramk.source != 0))
         {
           i = 1;
-          localObject1 = paramp.dVi();
-          localObject2 = paramp.dVj();
-          if ((paramp != null) && (localObject1 != null) && (localObject2 != null) && (paramView != null)) {
+          localObject1 = paramSnsInfo.getAdInfo();
+          localObject2 = paramSnsInfo.getAdXml();
+          if ((paramSnsInfo != null) && (localObject1 != null) && (localObject2 != null) && (paramView != null)) {
             break;
           }
-          AppMethodBeat.o(219105);
+          AppMethodBeat.o(202183);
           return null;
         }
       }
-      catch (Throwable paramp)
+      catch (Throwable paramSnsInfo)
       {
-        AppMethodBeat.o(219105);
+        AppMethodBeat.o(202183);
         return null;
       }
       i = 0;
     }
-    if (!paramp.Rt(32))
+    if (!paramSnsInfo.isAd())
     {
-      AppMethodBeat.o(219105);
+      AppMethodBeat.o(202183);
       return null;
     }
     b localb = new b();
-    localb.zry = paramp.field_snsId;
-    localb.zrz = i.azd(((a)localObject1).dGD);
+    localb.Dyz = paramSnsInfo.field_snsId;
+    localb.DyA = i.aNZ(((ADInfo)localObject1).uxInfo);
     int j;
     if (i != 0)
     {
       j = 2;
       localb.mScene = j;
-      localb.zrA = ((com.tencent.mm.plugin.sns.storage.b)localObject2).zsJ;
+      localb.DyB = ((ADXml)localObject2).adExtInfo;
       if (!paramBoolean) {
-        break label360;
+        break label356;
       }
       j = k;
-      label188:
-      localb.zrF = j;
+      label184:
+      localb.DyG = j;
       if (i == 0) {
-        break label366;
+        break label362;
       }
-      localObject1 = ar(paramView, 2131296556);
+      localObject1 = at(paramView, 2131296633);
     }
     for (;;)
     {
@@ -101,7 +102,7 @@ public final class b
       {
         localObject2 = new int[2];
         ((View)localObject1).getLocationOnScreen((int[])localObject2);
-        localb.zrB = localObject2[1];
+        localb.DyC = localObject2[1];
       }
       if (paramView != null)
       {
@@ -110,21 +111,21 @@ public final class b
         i = paramView.getWidth();
         j = paramView.getHeight();
         k = localObject1[0];
-        localb.zrC = (i / 2 + k);
-        localb.zrD = (localObject1[1] + j / 2);
+        localb.DyD = (i / 2 + k);
+        localb.DyE = (localObject1[1] + j / 2);
       }
-      if ((paramj != null) && (paramp.ebP() != null) && (paramp.ebP().HUG != null) && (paramp.ebP().HUG.Gtw == 15)) {
-        localb.zrE = Long.valueOf(paramj.zQ(localb.zry));
+      if ((paramk != null) && (paramSnsInfo.getTimeLine() != null) && (paramSnsInfo.getTimeLine().ContentObj != null) && (paramSnsInfo.getTimeLine().ContentObj.LoU == 15)) {
+        localb.DyF = Long.valueOf(paramk.IV(localb.Dyz));
       }
-      AppMethodBeat.o(219105);
+      AppMethodBeat.o(202183);
       return localb;
       j = 1;
       break;
-      label360:
+      label356:
       j = 1;
-      break label188;
-      label366:
-      localObject1 = ar(paramView, 2131304989);
+      break label184;
+      label362:
+      localObject1 = at(paramView, 2131308140);
       paramBoolean = localObject1 instanceof AdFrameLayout;
       if (!paramBoolean) {
         localObject1 = paramView;
@@ -132,25 +133,25 @@ public final class b
     }
   }
   
-  public static g.a a(String paramString, View paramView, j paramj)
+  public static i.a a(String paramString, View paramView, k paramk)
   {
-    AppMethodBeat.i(219104);
+    AppMethodBeat.i(202182);
     try
     {
-      paramString = a(ah.dXE().aBr(paramString), true, paramView, paramj);
-      AppMethodBeat.o(219104);
+      paramString = a(aj.faO().aQm(paramString), true, paramView, paramk);
+      AppMethodBeat.o(202182);
       return paramString;
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(219104);
+      AppMethodBeat.o(202182);
     }
     return null;
   }
   
-  private static View ar(View paramView, int paramInt)
+  private static View at(View paramView, int paramInt)
   {
-    AppMethodBeat.i(219109);
+    AppMethodBeat.i(202187);
     View localView = paramView;
     if (paramView != null) {}
     for (;;)
@@ -166,24 +167,42 @@ public final class b
       }
       else
       {
-        AppMethodBeat.o(219109);
+        AppMethodBeat.o(202187);
         return localView;
       }
     }
   }
   
-  private JSONObject dVn()
+  private String bie()
   {
-    AppMethodBeat.i(219106);
+    AppMethodBeat.i(202186);
+    try
+    {
+      Object localObject = eXR();
+      ((JSONObject)localObject).put("extInfo", eXS());
+      localObject = ((JSONObject)localObject).toString();
+      AppMethodBeat.o(202186);
+      return localObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      AppMethodBeat.o(202186);
+    }
+    return "{}";
+  }
+  
+  private JSONObject eXR()
+  {
+    AppMethodBeat.i(202184);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("snsid", String.valueOf(this.zry));
-      localJSONObject.put("uxinfo", bu.bI(this.zrz, ""));
+      localJSONObject.put("snsid", String.valueOf(this.Dyz));
+      localJSONObject.put("uxinfo", Util.nullAs(this.DyA, ""));
       localJSONObject.put("scene", this.mScene);
-      localJSONObject.put("adExtInfo", bu.bI(this.zrA, ""));
+      localJSONObject.put("adExtInfo", Util.nullAs(this.DyB, ""));
       label70:
-      AppMethodBeat.o(219106);
+      AppMethodBeat.o(202184);
       return localJSONObject;
     }
     catch (Throwable localThrowable)
@@ -192,71 +211,53 @@ public final class b
     }
   }
   
-  private JSONObject dVp()
+  private JSONObject eXS()
   {
-    AppMethodBeat.i(219107);
+    AppMethodBeat.i(202185);
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("adOffSetTop", this.zrB);
-      localJSONObject.put("clickPosX", this.zrC);
-      localJSONObject.put("clickPosY", this.zrD);
-      if (this.zrE != null) {
-        localJSONObject.put("videoPlayTime", this.zrE.longValue());
+      localJSONObject.put("adOffSetTop", this.DyC);
+      localJSONObject.put("clickPosX", this.DyD);
+      localJSONObject.put("clickPosY", this.DyE);
+      if (this.DyF != null) {
+        localJSONObject.put("videoPlayTime", this.DyF.longValue());
       }
-      localJSONObject.put("buttonType", this.zrF);
+      localJSONObject.put("buttonType", this.DyG);
     }
     catch (Throwable localThrowable)
     {
       label78:
       break label78;
     }
-    AppMethodBeat.o(219107);
+    AppMethodBeat.o(202185);
     return localJSONObject;
   }
   
-  private String dVq()
-  {
-    AppMethodBeat.i(219108);
-    try
-    {
-      Object localObject = dVn();
-      ((JSONObject)localObject).put("extInfo", dVp());
-      localObject = ((JSONObject)localObject).toString();
-      AppMethodBeat.o(219108);
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(219108);
-    }
-    return "{}";
-  }
-  
-  public final String dVo()
+  public final String eWH()
   {
     return "timeline_ad_feedback_and_sns_button_click";
   }
   
   public final String getContent()
   {
-    AppMethodBeat.i(219110);
+    AppMethodBeat.i(202188);
     try
     {
-      String str = dVq();
-      AppMethodBeat.o(219110);
+      String str = bie();
+      AppMethodBeat.o(202188);
       return str;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(219110);
+      AppMethodBeat.o(202188);
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ad.timeline.feedback.a.b
  * JD-Core Version:    0.7.0.1
  */

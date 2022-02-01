@@ -135,7 +135,7 @@ public final class i
   
   private com.tencent.tbs.one.impl.a.a<e<File>> a(TBSOneManager.Policy paramPolicy, d.a parama, final File paramFile, Bundle paramBundle)
   {
-    AppMethodBeat.i(192446);
+    AppMethodBeat.i(188032);
     final Context localContext = this.a;
     String str = this.b;
     Object localObject = null;
@@ -146,7 +146,7 @@ public final class i
     }
     for (;;)
     {
-      AppMethodBeat.o(192446);
+      AppMethodBeat.o(188032);
       return paramPolicy;
       paramPolicy = new com.tencent.tbs.one.impl.e.b.a(localContext, str, parama, paramFile, paramBundle);
       continue;
@@ -189,16 +189,16 @@ public final class i
   
   private boolean a(String paramString, TBSOneCallback paramTBSOneCallback)
   {
-    AppMethodBeat.i(192439);
+    AppMethodBeat.i(188025);
     if (this.o.contains(paramString))
     {
       if (paramTBSOneCallback != null) {
         paramTBSOneCallback.onError(501, "The component has disabled");
       }
-      AppMethodBeat.o(192439);
+      AppMethodBeat.o(188025);
       return false;
     }
-    AppMethodBeat.o(192439);
+    AppMethodBeat.o(188025);
     return true;
   }
   
@@ -249,12 +249,12 @@ public final class i
   
   public final com.tencent.tbs.one.impl.a.a<e<com.tencent.tbs.one.impl.common.d>> a(Bundle paramBundle, l<e<com.tencent.tbs.one.impl.common.d>> paraml)
   {
-    AppMethodBeat.i(192443);
+    AppMethodBeat.i(188029);
     TBSOneManager.Policy localPolicy = this.d;
     if (localPolicy == TBSOneManager.Policy.BUILTIN_ONLY)
     {
       paramBundle = super.a(paramBundle, paraml);
-      AppMethodBeat.o(192443);
+      AppMethodBeat.o(188029);
       return paramBundle;
     }
     Object localObject1 = this.b;
@@ -317,7 +317,7 @@ public final class i
         paramBundle = new d(paramBundle, localFile1);
         paramBundle.a(new l() {});
         paramBundle.a(paraml);
-        AppMethodBeat.o(192443);
+        AppMethodBeat.o(188029);
         return paramBundle;
         label341:
         i += 1;
@@ -362,12 +362,12 @@ public final class i
   
   public final com.tencent.tbs.one.impl.a.a<e<File>> a(Bundle paramBundle, d.a parama, l<e<File>> paraml)
   {
-    AppMethodBeat.i(192444);
+    AppMethodBeat.i(188030);
     TBSOneManager.Policy localPolicy = this.d;
     if (localPolicy == TBSOneManager.Policy.BUILTIN_ONLY)
     {
       paramBundle = super.a(paramBundle, parama, paraml);
-      AppMethodBeat.o(192444);
+      AppMethodBeat.o(188030);
       return paramBundle;
     }
     com.tencent.tbs.one.impl.a.f.a("[%s] Installing component %s, version: %d, policy: %s", new Object[] { this.b, parama.a, Integer.valueOf(parama.c), localPolicy });
@@ -381,7 +381,7 @@ public final class i
     {
       paramBundle = new c(parama, (com.tencent.tbs.one.impl.a.a)localObject, localFile);
       paramBundle.a(paraml);
-      AppMethodBeat.o(192444);
+      AppMethodBeat.o(188030);
       return paramBundle;
       if (localPolicy == TBSOneManager.Policy.LOCAL_ONLY) {
         localObject = a(TBSOneManager.Policy.LOCAL_ONLY, parama, localFile, paramBundle);
@@ -397,7 +397,7 @@ public final class i
   
   public final com.tencent.tbs.one.impl.a.a<e<com.tencent.tbs.one.impl.common.d>> a(TBSOneManager.Policy paramPolicy, int paramInt, final File paramFile, Bundle paramBundle)
   {
-    AppMethodBeat.i(192445);
+    AppMethodBeat.i(188031);
     final Context localContext = this.a;
     String str = this.b;
     Object localObject = null;
@@ -408,7 +408,7 @@ public final class i
     }
     for (;;)
     {
-      AppMethodBeat.o(192445);
+      AppMethodBeat.o(188031);
       return paramPolicy;
       paramPolicy = new com.tencent.tbs.one.impl.e.b.b(localContext, str, paramFile);
       continue;
@@ -464,11 +464,11 @@ public final class i
   
   public final void a(Bundle paramBundle, String paramString, TBSOneCallback<File> paramTBSOneCallback)
   {
-    AppMethodBeat.i(192442);
+    AppMethodBeat.i(188028);
     if (a(paramString, paramTBSOneCallback)) {
       super.a(paramBundle, paramString, paramTBSOneCallback);
     }
-    AppMethodBeat.o(192442);
+    AppMethodBeat.o(188028);
   }
   
   protected final void a(e<com.tencent.tbs.one.impl.common.d> parame)
@@ -483,12 +483,12 @@ public final class i
   
   public final void a(String paramString, Bundle paramBundle, TBSOneCallback<TBSOneComponent> paramTBSOneCallback)
   {
-    AppMethodBeat.i(192440);
+    AppMethodBeat.i(188026);
     f(paramString);
     if (a(paramString, paramTBSOneCallback)) {
       super.a(paramString, paramBundle, paramTBSOneCallback);
     }
-    AppMethodBeat.o(192440);
+    AppMethodBeat.o(188026);
   }
   
   public final void a(String paramString, Object paramObject)
@@ -583,12 +583,12 @@ public final class i
   
   public final void b(String paramString, Bundle paramBundle, TBSOneCallback<File> paramTBSOneCallback)
   {
-    AppMethodBeat.i(192441);
+    AppMethodBeat.i(188027);
     f(paramString);
     if (a(paramString, paramTBSOneCallback)) {
       super.b(paramString, paramBundle, paramTBSOneCallback);
     }
-    AppMethodBeat.o(192441);
+    AppMethodBeat.o(188027);
   }
   
   public final boolean b(String paramString)
@@ -826,7 +826,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.i
  * JD-Core Version:    0.7.0.1
  */

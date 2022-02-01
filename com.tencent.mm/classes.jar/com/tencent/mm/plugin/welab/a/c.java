@@ -9,28 +9,28 @@ import com.tencent.mm.plugin.welab.ui.WelabMainUI;
 public final class c
   implements com.tencent.mm.plugin.welab.a.a.c
 {
-  public final void af(Context paramContext, Intent paramIntent)
+  public final void at(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(146243);
     paramIntent.setClass(paramContext, WelabMainUI.class);
-    if ((fad()) || (fae())) {}
+    if ((gji()) || (gjj())) {}
     for (int i = 1;; i = 0)
     {
       paramIntent.putExtra("para_from_with_red_point", i);
-      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bc(paramIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.ahE(), "com/tencent/mm/plugin/welab/api/LabUIExporter", "startWelabUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramIntent.mt(0));
+      paramIntent = new com.tencent.mm.hellhoundlib.b.a().bl(paramIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramIntent.axQ(), "com/tencent/mm/plugin/welab/api/LabUIExporter", "startWelabUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramIntent.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/welab/api/LabUIExporter", "startWelabUI", "(Landroid/content/Context;Landroid/content/Intent;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(146243);
       return;
     }
   }
   
-  public final boolean fad()
+  public final boolean gji()
   {
     AppMethodBeat.i(146244);
-    b.fap();
-    if ((b.fas()) && (!fae()))
+    b.gju();
+    if ((b.gjx()) && (!gjj()))
     {
       AppMethodBeat.o(146244);
       return true;
@@ -39,14 +39,14 @@ public final class c
     return false;
   }
   
-  public final boolean fae()
+  public final boolean gjj()
   {
     AppMethodBeat.i(146245);
-    b.fap();
-    if (!b.fat())
+    b.gju();
+    if (!b.gjy())
     {
-      b.fap();
-      if (b.fas())
+      b.gju();
+      if (b.gjx())
       {
         AppMethodBeat.o(146245);
         return true;
@@ -56,10 +56,10 @@ public final class c
     return false;
   }
   
-  public final boolean faf()
+  public final boolean gjk()
   {
     AppMethodBeat.i(146246);
-    if (!fae())
+    if (!gjj())
     {
       AppMethodBeat.o(146246);
       return true;
@@ -70,7 +70,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.a.c
  * JD-Core Version:    0.7.0.1
  */

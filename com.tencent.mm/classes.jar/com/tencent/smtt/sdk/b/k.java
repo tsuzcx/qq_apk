@@ -18,42 +18,42 @@ public class k
   
   public void allow(String paramString)
   {
-    AppMethodBeat.i(192819);
+    AppMethodBeat.i(188458);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "geolocationPermissionsAllow", new Class[] { String.class }, new Object[] { paramString });
-    AppMethodBeat.o(192819);
+    AppMethodBeat.o(188458);
   }
   
   public void clear(String paramString)
   {
-    AppMethodBeat.i(192818);
+    AppMethodBeat.i(188457);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "geolocationPermissionsClear", new Class[] { String.class }, new Object[] { paramString });
-    AppMethodBeat.o(192818);
+    AppMethodBeat.o(188457);
   }
   
   public void clearAll()
   {
-    AppMethodBeat.i(192820);
+    AppMethodBeat.i(188459);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "geolocationPermissionsClearAll", null, new Object[0]);
-    AppMethodBeat.o(192820);
+    AppMethodBeat.o(188459);
   }
   
   public void getAllowed(String paramString, ValueCallback<Boolean> paramValueCallback)
   {
-    AppMethodBeat.i(192817);
+    AppMethodBeat.i(188456);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "geolocationPermissionsGetAllowed", new Class[] { String.class, ValueCallback.class }, new Object[] { paramString, paramValueCallback });
-    AppMethodBeat.o(192817);
+    AppMethodBeat.o(188456);
   }
   
   public void getOrigins(ValueCallback<Set<String>> paramValueCallback)
   {
-    AppMethodBeat.i(192816);
+    AppMethodBeat.i(188455);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "geolocationPermissionsGetOrigins", new Class[] { ValueCallback.class }, new Object[] { paramValueCallback });
-    AppMethodBeat.o(192816);
+    AppMethodBeat.o(188455);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.b.k
  * JD-Core Version:    0.7.0.1
  */

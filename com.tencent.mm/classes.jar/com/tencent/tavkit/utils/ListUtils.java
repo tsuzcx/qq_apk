@@ -9,9 +9,9 @@ public class ListUtils
 {
   public static <T> List<T> listWithObjects(T... paramVarArgs)
   {
-    AppMethodBeat.i(201003);
+    AppMethodBeat.i(197673);
     paramVarArgs = new ArrayList(Arrays.asList(paramVarArgs));
-    AppMethodBeat.o(201003);
+    AppMethodBeat.o(197673);
     return paramVarArgs;
   }
 }

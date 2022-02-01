@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/abu" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="15.0dip" android:textColor="@color/km" android:ellipsize="end" android:gravity="left" android:id="@id/gg_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="15.0dip" android:layout_marginRight="10.0dip" android:minWidth="190.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_weight="1.0" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/km" android:ellipsize="end" android:gravity="right" android:id="@id/gg9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginRight="20.0dip" android:minWidth="200.0dip" android:maxLines="1" android:includeFontPadding="false" android:layout_weight="1.0" />
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/bf7" android:paddingLeft="@dimen/ct" android:paddingTop="@dimen/ct" android:paddingRight="@dimen/ct" android:layout_width="360.0dip" android:layout_height="wrap_content">
+        <RelativeLayout android:orientation="horizontal" android:background="@drawable/ib" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/i_" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/a6w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/aiv" android:singleLine="true" android:layout_centerVertical="true" />
+            <Button android:enabled="false" android:id="@id/g3k" android:text="@string/x_" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/ow" />
+        </RelativeLayout>
+        <com.tencent.mm.ui.widget.happybubble.LabelsView android:id="@id/ih5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/ct" android:minHeight="25.0dip" app:labelBackground="@drawable/a9j" app:labelTextColor="@drawable/a9k" app:labelTextHeight="jr2" app:labelTextPaddingBottom="@dimen/k5" app:labelTextPaddingLeft="@dimen/r" app:labelTextPaddingRight="@dimen/r" app:labelTextPaddingTop="@dimen/k5" app:labelTextSize="@dimen/hc" app:labelTextWidth="jr2" app:lineMargin="@dimen/c5" app:selectType="k" app:wordMargin="@dimen/c5" />
+    </LinearLayout>
 </LinearLayout>

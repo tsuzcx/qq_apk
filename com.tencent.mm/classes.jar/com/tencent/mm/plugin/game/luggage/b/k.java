@@ -1,83 +1,82 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
-import com.tencent.luggage.d.a;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.plugin.webview.luggage.u;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.game.luggage.g.i;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.plugin.webview.ui.tools.game.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class k
-  extends bq<a>
+  extends br<i>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
-  
-  public final void b(final com.tencent.luggage.d.b<a>.a paramb)
+  public final void a(Context paramContext, String paramString, br.a parama)
   {
-    AppMethodBeat.i(83069);
-    ae.i("MicroMsg.JsApiGetGameData", "invokeInOwn");
-    Object localObject2 = paramb.chh.cgn;
-    if (localObject2 == null)
-    {
-      ae.e("MicroMsg.JsApiGetGameData", "data is null");
-      paramb.a("null_data", null);
-      AppMethodBeat.o(83069);
-      return;
-    }
-    Object localObject3 = (a)paramb.chg;
-    if ((localObject3 instanceof com.tencent.mm.plugin.game.luggage.f.g))
-    {
-      localObject1 = ((com.tencent.mm.plugin.game.luggage.f.g)localObject3).EgL.getAppId();
-      if (!bu.isNullOrNil((String)localObject1)) {
-        break label221;
-      }
-      localObject1 = Uri.parse(bu.nullAsNil(((com.tencent.mm.plugin.game.luggage.f.g)localObject3).bRn()));
-      if ((((Uri)localObject1).getHost() == null) || (!((Uri)localObject1).getHost().equals("game.weixin.qq.com")))
-      {
-        ae.i("MicroMsg.JsApiGetGameData", "appId is null");
-        paramb.a("appid_null", null);
-        AppMethodBeat.o(83069);
-        return;
-      }
-    }
-    Object localObject1 = "wx62d9035fd4fd2059";
-    label221:
-    for (;;)
-    {
-      localObject2 = ((JSONObject)localObject2).optString("key");
-      if (bu.isNullOrNil((String)localObject2))
-      {
-        ae.i("MicroMsg.JsApiGetGameData", "key is null");
-        paramb.a("null_key", null);
-        AppMethodBeat.o(83069);
-        return;
-      }
-      localObject3 = new Bundle();
-      ((Bundle)localObject3).putString("appId", (String)localObject1);
-      ((Bundle)localObject3).putString("key", (String)localObject2);
-      h.a("com.tencent.mm", (Parcelable)localObject3, a.class, new d() {});
-      AppMethodBeat.o(83069);
-      return;
-    }
+    AppMethodBeat.i(83066);
+    AppMethodBeat.o(83066);
   }
   
-  public final int ced()
+  public final void b(final com.tencent.luggage.d.b<i>.a paramb)
+  {
+    AppMethodBeat.i(180134);
+    Log.i("MicroMsg.JsApiGetGameCommInfo", "invoke");
+    Object localObject = paramb.ctb.csi;
+    if (localObject == null)
+    {
+      Log.e("MicroMsg.JsApiGetGameCommInfo", "data is null");
+      paramb.c("null_data", null);
+      AppMethodBeat.o(180134);
+      return;
+    }
+    int i = ((JSONObject)localObject).optInt("cmd", 0);
+    localObject = ((JSONObject)localObject).optString("param");
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("cmd", i);
+    localBundle.putString("param", (String)localObject);
+    JSONObject localJSONObject = new JSONObject();
+    if (i == 10008) {
+      try
+      {
+        localJSONObject.put("page_start_time", ((i)paramb.cta).xyM.JqU);
+        paramb.c("", localJSONObject);
+        AppMethodBeat.o(180134);
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        paramb.c("", null);
+        AppMethodBeat.o(180134);
+        return;
+      }
+    }
+    if (i == 10009)
+    {
+      ((i)paramb.cta).xyN = Util.getLong(localJSONException, System.currentTimeMillis());
+      paramb.c("", null);
+      AppMethodBeat.o(180134);
+      return;
+    }
+    h.a(MainProcessIPCService.dkO, localBundle, a.class, new d() {});
+    AppMethodBeat.o(180134);
+  }
+  
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "getGameData";
+    return "getGameCommInfo";
   }
   
   static class a

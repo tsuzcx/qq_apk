@@ -4,7 +4,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public class ExchangeEmotionPackRequest
-  extends cvw
+  extends dop
 {
   public int IsAutomatic;
   public String ProductID;
@@ -16,20 +16,20 @@ public class ExchangeEmotionPackRequest
     AppMethodBeat.i(104782);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        paramVarArgs.ni(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
       if (this.ProductID != null) {
-        paramVarArgs.d(2, this.ProductID);
+        paramVarArgs.e(2, this.ProductID);
       }
       if (this.SeriesID != null) {
-        paramVarArgs.d(3, this.SeriesID);
+        paramVarArgs.e(3, this.SeriesID);
       }
-      paramVarArgs.aS(4, this.IsAutomatic);
-      paramVarArgs.aS(5, this.Scene);
+      paramVarArgs.aM(4, this.IsAutomatic);
+      paramVarArgs.aM(5, this.Scene);
       AppMethodBeat.o(104782);
       return 0;
     }
@@ -39,26 +39,26 @@ public class ExchangeEmotionPackRequest
       }
     }
     label522:
-    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    for (int i = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
       if (this.ProductID != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.ProductID);
+        paramInt = i + g.a.a.b.b.a.f(2, this.ProductID);
       }
       i = paramInt;
       if (this.SeriesID != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.SeriesID);
+        i = paramInt + g.a.a.b.b.a.f(3, this.SeriesID);
       }
-      paramInt = f.a.a.b.b.a.bz(4, this.IsAutomatic);
-      int j = f.a.a.b.b.a.bz(5, this.Scene);
+      paramInt = g.a.a.b.b.a.bu(4, this.IsAutomatic);
+      int j = g.a.a.b.b.a.bu(5, this.Scene);
       AppMethodBeat.o(104782);
       return i + paramInt + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(104782);
@@ -66,7 +66,7 @@ public class ExchangeEmotionPackRequest
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         ExchangeEmotionPackRequest localExchangeEmotionPackRequest = (ExchangeEmotionPackRequest)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -75,34 +75,34 @@ public class ExchangeEmotionPackRequest
           AppMethodBeat.o(104782);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localExchangeEmotionPackRequest.BaseRequest = ((jc)localObject1);
+            localObject1 = new jr();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localExchangeEmotionPackRequest.BaseRequest = ((jr)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(104782);
           return 0;
         case 2: 
-          localExchangeEmotionPackRequest.ProductID = ((f.a.a.a.a)localObject1).OmT.readString();
+          localExchangeEmotionPackRequest.ProductID = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(104782);
           return 0;
         case 3: 
-          localExchangeEmotionPackRequest.SeriesID = ((f.a.a.a.a)localObject1).OmT.readString();
+          localExchangeEmotionPackRequest.SeriesID = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(104782);
           return 0;
         case 4: 
-          localExchangeEmotionPackRequest.IsAutomatic = ((f.a.a.a.a)localObject1).OmT.zc();
+          localExchangeEmotionPackRequest.IsAutomatic = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(104782);
           return 0;
         }
-        localExchangeEmotionPackRequest.Scene = ((f.a.a.a.a)localObject1).OmT.zc();
+        localExchangeEmotionPackRequest.Scene = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(104782);
         return 0;
       }
@@ -113,7 +113,7 @@ public class ExchangeEmotionPackRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ExchangeEmotionPackRequest
  * JD-Core Version:    0.7.0.1
  */

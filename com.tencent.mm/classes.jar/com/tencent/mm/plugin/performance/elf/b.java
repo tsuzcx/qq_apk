@@ -10,39 +10,39 @@ import android.os.Looper;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.Random;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class b
 {
+  public static long AUF;
+  public static final b AUL;
+  public static final b AUM;
+  public static final Runnable AUN;
+  public static final MMHandler AUg;
   public static boolean DEBUG;
-  public static long wXL;
-  public static final b wXR;
-  public static final b wXS;
-  public static final Runnable wXT;
-  public static final aq wXi;
-  public boolean cNF = false;
+  public boolean ded = false;
   
   static
   {
     AppMethodBeat.i(125000);
-    wXL = 1200000L;
-    wXR = new b();
-    wXi = new aq(Looper.getMainLooper());
-    wXS = new b((byte)0);
-    wXT = new a((byte)0);
+    AUF = 1200000L;
+    AUL = new b();
+    AUg = new MMHandler(Looper.getMainLooper());
+    AUM = new b((byte)0);
+    AUN = new a((byte)0);
     DEBUG = false;
     AppMethodBeat.o(125000);
   }
   
-  public static boolean bn(float paramFloat)
+  public static boolean bF(float paramFloat)
   {
     AppMethodBeat.i(124999);
-    Object localObject1 = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qzt, "");
+    Object localObject1 = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rRB, "");
     int i;
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
@@ -57,7 +57,7 @@ public final class b
           String str2 = ((JSONObject)localObject2).getString("device-model");
           int j = ((JSONObject)localObject2).getInt("sdk-version");
           localObject2 = Build.BRAND + " " + Build.MODEL;
-          ae.i("MicroMsg.ProcessElf", "[checkHardOpen] name:%s model:%s version:%s | %s %s ", new Object[] { str1, str2, Integer.valueOf(j), localObject2, Integer.valueOf(Build.VERSION.SDK_INT) });
+          Log.i("MicroMsg.ProcessElf", "[checkHardOpen] name:%s model:%s version:%s | %s %s ", new Object[] { str1, str2, Integer.valueOf(j), localObject2, Integer.valueOf(Build.VERSION.SDK_INT) });
           if ((j <= Build.VERSION.SDK_INT) && (((String)localObject2).contains(str1)))
           {
             bool = ((String)localObject2).contains(str2);
@@ -73,7 +73,7 @@ public final class b
       }
       catch (Exception localException)
       {
-        ae.printErrStackTrace("MicroMsg.ProcessElf", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ProcessElf", localException, "", new Object[0]);
       }
       if (10000.0F * paramFloat <= i) {
         break label298;
@@ -82,20 +82,20 @@ public final class b
     label298:
     for (boolean bool = true;; bool = false)
     {
-      ae.i("MicroMsg.ProcessElf", "[checkHardOpen] rand:%s test:%s isEnable:%s", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(i), Boolean.valueOf(bool) });
+      Log.i("MicroMsg.ProcessElf", "[checkHardOpen] rand:%s test:%s isEnable:%s", new Object[] { Float.valueOf(paramFloat), Integer.valueOf(i), Boolean.valueOf(bool) });
       AppMethodBeat.o(124999);
       return bool;
-      ae.i("MicroMsg.ProcessElf", "[checkHardOpen] json is Empty! just pass!");
+      Log.i("MicroMsg.ProcessElf", "[checkHardOpen] json is Empty! just pass!");
       break;
     }
   }
   
-  public static long dCc()
+  public static long eCr()
   {
     if (DEBUG) {
       return 8000L;
     }
-    return wXL;
+    return AUF;
   }
   
   static final class a
@@ -104,13 +104,13 @@ public final class b
     public final void run()
     {
       AppMethodBeat.i(124996);
-      ae.i("MicroMsg.ProcessElf", "send check broadcast!");
+      Log.i("MicroMsg.ProcessElf", "send check broadcast!");
       ElfCheckRequest localElfCheckRequest = new ElfCheckRequest();
-      localElfCheckRequest.cJR = b.dCc();
+      localElfCheckRequest.dap = b.eCr();
       Intent localIntent = new Intent("ACTION_ELF_CHECK");
       localIntent.putExtra("MicroMsg.ElfCheckRequest", localElfCheckRequest);
-      ak.getContext().sendBroadcast(localIntent);
-      b.dCh().postDelayed(this, b.dCc());
+      MMApplicationContext.getContext().sendBroadcast(localIntent);
+      b.AUg.postDelayed(this, b.eCr());
       AppMethodBeat.o(124996);
     }
   }
@@ -118,7 +118,7 @@ public final class b
   static final class b
     extends BroadcastReceiver
   {
-    public final void onReceive(Context paramContext, Intent paramIntent)
+    public final void onReceive(final Context paramContext, Intent paramIntent)
     {
       AppMethodBeat.i(124998);
       if ("ACTION_ELF_CHECK_RESPONSE".equals(paramIntent.getAction()))
@@ -126,29 +126,39 @@ public final class b
         paramIntent = (ElfCheckResponse)paramIntent.getParcelableExtra("MicroMsg.ElfCheckResponse");
         if (paramIntent == null)
         {
-          ae.i("MicroMsg.ProcessElf", "[onReceive] response is null!");
+          Log.i("MicroMsg.ProcessElf", "[onReceive] response is null!");
           AppMethodBeat.o(124998);
           return;
         }
-        if (!paramIntent.cNF) {
-          b.dCh().removeCallbacksAndMessages(null);
+        if (!paramIntent.ded) {
+          b.AUg.removeCallbacksAndMessages(null);
         }
-        aq localaq = b.dCh();
-        if ((paramIntent.cNF) && (paramIntent.wXp) && (paramIntent.wXq)) {
-          localaq.postDelayed(new ElfCheckResponse.1(paramIntent, paramContext), paramIntent.wXt);
+        MMHandler localMMHandler = b.AUg;
+        if ((paramIntent.ded) && (paramIntent.AUn) && (paramIntent.AUo)) {
+          localMMHandler.postDelayed(new ElfCheckResponse.1(paramIntent, paramContext), paramIntent.AUr);
         }
         for (boolean bool = true;; bool = false)
         {
-          ae.i("MicroMsg.ProcessElf", "[onReceive] %s, isEnable:%s, CHECK_TIME:%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramIntent.cNF), Long.valueOf(b.dCc()) });
+          Log.i("MicroMsg.ProcessElf", "[onReceive] %s, isEnable:%s, CHECK_TIME:%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramIntent.ded), Long.valueOf(b.eCr()) });
           AppMethodBeat.o(124998);
           return;
-          ae.w("MicroMsg.ElfCheckResponse", "can't call process[%s]", new Object[] { paramIntent.processName });
+          Log.w("MicroMsg.ElfCheckResponse", "can't call process[%s]", new Object[] { paramIntent.processName });
         }
       }
       if ("com.tencent.mm.MMUIModeManager".equals(paramIntent.getAction()))
       {
-        ae.i("MicroMsg.ProcessElf", "restart mm for uimode change!");
-        new Handler(Looper.getMainLooper()).postDelayed(new b.b.1(this, paramContext), 500L);
+        Log.i("MicroMsg.ProcessElf", "restart mm for uimode change!");
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(124997);
+            Intent localIntent = new Intent(paramContext, ElfCallUpReceiver.class);
+            localIntent.setAction(ElfCallUpReceiver.class.getName());
+            paramContext.sendBroadcast(localIntent);
+            AppMethodBeat.o(124997);
+          }
+        }, 500L);
       }
       AppMethodBeat.o(124998);
     }
@@ -156,7 +166,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.elf.b
  * JD-Core Version:    0.7.0.1
  */

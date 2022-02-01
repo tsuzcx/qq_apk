@@ -19,7 +19,7 @@ public class NavigationMenuView
   public NavigationMenuView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    setLayoutManager(new LinearLayoutManager(1));
+    setLayoutManager(new LinearLayoutManager(1, false));
   }
   
   public final void a(h paramh) {}
@@ -31,7 +31,7 @@ public class NavigationMenuView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.internal.NavigationMenuView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,42 +6,52 @@ import com.tencent.mm.plugin.report.a;
 public final class hh
   extends a
 {
-  public long etA = 0L;
-  public long etB = 0L;
+  public long eLA = 0L;
+  public long eLy;
+  public long eLz;
+  public long ejW;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(91245);
+    AppMethodBeat.i(88783);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.etA);
+    ((StringBuffer)localObject).append(this.ejW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etB);
+    ((StringBuffer)localObject).append(this.eLy);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eLz);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eLA);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(91245);
+    aMq((String)localObject);
+    AppMethodBeat.o(88783);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(91246);
+    AppMethodBeat.i(88784);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ReportScene:").append(this.etA);
+    ((StringBuffer)localObject).append("action:").append(this.ejW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ResetScece:").append(this.etB);
+    ((StringBuffer)localObject).append("msgid:").append(this.eLy);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("msgType:").append(this.eLz);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("appMsgType:").append(this.eLA);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(91246);
+    AppMethodBeat.o(88784);
     return localObject;
   }
   
   public final int getId()
   {
-    return 15522;
+    return 18754;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.b.a.hh
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ public final class JsApiNavigateToDevMiniProgram
   private static final int CTRL_INDEX = 351;
   private static final String NAME = "navigateToDevMiniProgram";
   
-  protected final c bkP()
+  protected final c bGm()
   {
-    return l.kZX;
+    return m.mfl;
   }
   
   static final class DevPkgInfo
@@ -23,9 +23,9 @@ public final class JsApiNavigateToDevMiniProgram
   {
     public static final Parcelable.Creator<DevPkgInfo> CREATOR;
     String appId;
-    String dKY;
-    String dKZ;
-    String kZJ;
+    String ecN;
+    String ecO;
+    String meX;
     
     static
     {
@@ -40,9 +40,9 @@ public final class JsApiNavigateToDevMiniProgram
     {
       AppMethodBeat.i(46625);
       this.appId = paramParcel.readString();
-      this.dKY = paramParcel.readString();
-      this.dKZ = paramParcel.readString();
-      this.kZJ = paramParcel.readString();
+      this.ecN = paramParcel.readString();
+      this.ecO = paramParcel.readString();
+      this.meX = paramParcel.readString();
       AppMethodBeat.o(46625);
     }
     
@@ -51,13 +51,21 @@ public final class JsApiNavigateToDevMiniProgram
       return 0;
     }
     
+    public final String toString()
+    {
+      AppMethodBeat.i(226909);
+      String str = "DevPkgInfo{appId='" + this.appId + '\'' + ", downloadURL='" + this.ecN + '\'' + ", checkSumMd5='" + this.ecO + '\'' + ", extoptions='" + this.meX + '\'' + '}';
+      AppMethodBeat.o(226909);
+      return str;
+    }
+    
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(46624);
       paramParcel.writeString(this.appId);
-      paramParcel.writeString(this.dKY);
-      paramParcel.writeString(this.dKZ);
-      paramParcel.writeString(this.kZJ);
+      paramParcel.writeString(this.ecN);
+      paramParcel.writeString(this.ecO);
+      paramParcel.writeString(this.meX);
       AppMethodBeat.o(46624);
     }
   }
@@ -68,7 +76,7 @@ public final class JsApiNavigateToDevMiniProgram
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.JsApiNavigateToDevMiniProgram
  * JD-Core Version:    0.7.0.1
  */

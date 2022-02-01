@@ -8,22 +8,22 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView;
-import com.tencent.mm.plugin.sns.ui.aq;
+import com.tencent.mm.plugin.sns.ui.at;
 import com.tencent.mm.plugin.sns.ui.b.b.b.a;
 import com.tencent.mm.plugin.sns.ui.c.a.a;
 import com.tencent.mm.plugin.sns.ui.c.a.c;
 import com.tencent.mm.plugin.sns.ui.widget.SnsAdTimelineVideoView;
 import com.tencent.mm.pluginsdk.ui.tools.VideoSightView;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 public final class f
   extends b
 {
-  private ValueAnimator AKb;
-  private ValueAnimator AKc;
-  c AKn;
-  private AnimatorSet yLH;
+  private AnimatorSet CPA;
+  private ValueAnimator EUa;
+  private ValueAnimator EUb;
+  c EUm;
   
   public f(MMActivity paramMMActivity, a parama)
   {
@@ -31,9 +31,9 @@ public final class f
     try
     {
       this.activity = paramMMActivity;
-      this.AKn = ((c)parama);
-      this.AKb = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.AKb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.EUm = ((c)parama);
+      this.EUa = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      this.EUa.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -41,60 +41,60 @@ public final class f
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
           if (f != 1.0F)
           {
-            f.this.AKn.Apn.setScaleX(f);
-            f.this.AKn.Apn.setScaleY(f);
-            f.this.AKn.Apn.setAlpha(f);
+            f.this.EUm.ExX.setScaleX(f);
+            f.this.EUm.ExX.setScaleY(f);
+            f.this.EUm.ExX.setAlpha(f);
           }
           AppMethodBeat.o(99918);
         }
       });
-      this.AKb.setDuration(400L);
-      this.AKb.addListener(new AnimatorListenerAdapter()
+      this.EUa.setDuration(400L);
+      this.EUa.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationStart(Animator paramAnonymousAnimator) {}
       });
-      this.AKc = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.AKc.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.EUb = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
+      this.EUb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
           AppMethodBeat.i(179331);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          f.this.AKn.tgh.setAlpha(f);
-          f.this.AKn.ALc.setAlpha(f);
+          f.this.EUm.wnX.setAlpha(f);
+          f.this.EUm.EVh.setAlpha(f);
           AppMethodBeat.o(179331);
         }
       });
-      this.AKc.setDuration(100L);
-      this.yLH = new AnimatorSet();
-      this.yLH.playTogether(new Animator[] { this.AKb, this.AKc });
-      this.yLH.addListener(new AnimatorListenerAdapter()
+      this.EUb.setDuration(100L);
+      this.CPA = new AnimatorSet();
+      this.CPA.playTogether(new Animator[] { this.EUa, this.EUb });
+      this.CPA.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(179333);
-          ae.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation end");
-          f.this.AKn.Apn.setScaleX(1.0F);
-          f.this.AKn.Apn.setScaleY(1.0F);
-          f.this.AKn.Apn.setAlpha(1.0F);
-          f.this.AKn.tgh.setAlpha(1.0F);
-          f.this.AKn.ALc.setAlpha(1.0F);
-          if (f.this.AJZ != null) {
-            f.this.AJZ.onAnimationEnd();
+          Log.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation end");
+          f.this.EUm.ExX.setScaleX(1.0F);
+          f.this.EUm.ExX.setScaleY(1.0F);
+          f.this.EUm.ExX.setAlpha(1.0F);
+          f.this.EUm.wnX.setAlpha(1.0F);
+          f.this.EUm.EVh.setAlpha(1.0F);
+          if (f.this.ETY != null) {
+            f.this.ETY.onAnimationEnd();
           }
-          if (f.this.AKn.AKJ.AnP)
+          if (f.this.EUm.EUK.EwA)
           {
-            if (f.this.AKn.AKJ.AnI.getVisibility() == 0)
+            if (f.this.EUm.EUK.Ewt.getVisibility() == 0)
             {
-              f.this.AKn.AKJ.AnI.aE(0, false);
-              ae.i("MicroMsg.FullCardAdDetailClickAnimation", "seek newVideoView to 0");
+              f.this.EUm.EUK.Ewt.aT(0, false);
+              Log.i("MicroMsg.FullCardAdDetailClickAnimation", "seek newVideoView to 0");
               AppMethodBeat.o(179333);
             }
           }
-          else if (f.this.AKn.AKJ.AnH.getVisibility() == 0)
+          else if (f.this.EUm.EUK.Ews.getVisibility() == 0)
           {
-            f.this.AKn.AKJ.AnH.ziA.clear();
-            ae.i("MicroMsg.FullCardAdDetailClickAnimation", "seek sightView to 0");
+            f.this.EUm.EUK.Ews.Dnr.clear();
+            Log.i("MicroMsg.FullCardAdDetailClickAnimation", "seek sightView to 0");
           }
           AppMethodBeat.o(179333);
         }
@@ -102,7 +102,7 @@ public final class f
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
           AppMethodBeat.i(179332);
-          ae.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation start");
+          Log.i("MicroMsg.FullCardAdDetailClickAnimation", "onAnimation start");
           AppMethodBeat.o(179332);
         }
       });
@@ -111,25 +111,25 @@ public final class f
     }
     catch (Throwable paramMMActivity)
     {
-      ae.e("MicroMsg.FullCardAdDetailClickAnimation", "init exp=" + paramMMActivity.toString());
+      Log.e("MicroMsg.FullCardAdDetailClickAnimation", "init exp=" + paramMMActivity.toString());
       AppMethodBeat.o(99922);
     }
   }
   
-  public final void AR(long paramLong)
+  public final void JW(long paramLong)
   {
     AppMethodBeat.i(99923);
-    if ((this.yLH != null) && (!this.yLH.isStarted()))
+    if ((this.CPA != null) && (!this.CPA.isStarted()))
     {
-      this.yLH.setStartDelay(paramLong);
-      this.yLH.start();
+      this.CPA.setStartDelay(paramLong);
+      this.CPA.start();
     }
     AppMethodBeat.o(99923);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.a.f
  * JD-Core Version:    0.7.0.1
  */

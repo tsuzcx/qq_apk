@@ -27,7 +27,7 @@ public final class ad
     AppMethodBeat.o(151415);
   }
   
-  private static long A(byte[] paramArrayOfByte, int paramInt)
+  private static long C(byte[] paramArrayOfByte, int paramInt)
   {
     long l = 0L;
     int i = paramInt;
@@ -54,12 +54,12 @@ public final class ad
       long l1;
       try
       {
-        l3 = A(paramArrayOfByte, 0);
-        l2 = A(paramArrayOfByte, 4);
-        l4 = A(this.key, 0);
-        l5 = A(this.key, 4);
-        l6 = A(this.key, 8);
-        l7 = A(this.key, 12);
+        l3 = C(paramArrayOfByte, 0);
+        l2 = C(paramArrayOfByte, 4);
+        l4 = C(this.key, 0);
+        l5 = C(this.key, 4);
+        l6 = C(this.key, 8);
+        l7 = C(this.key, 12);
         l1 = 0L;
       }
       catch (IOException paramArrayOfByte)
@@ -217,7 +217,7 @@ public final class ad
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.platformtools.ad
  * JD-Core Version:    0.7.0.1
  */

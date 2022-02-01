@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.protocal.protobuf.czl;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ym
-  extends b
+  extends IEvent
 {
+  public a eeL;
+  
   public ym()
   {
     this((byte)0);
@@ -12,8 +16,16 @@ public final class ym
   
   private ym(byte paramByte)
   {
-    this.IvZ = false;
+    AppMethodBeat.i(134107);
+    this.eeL = new a();
+    this.order = false;
     this.callback = null;
+    AppMethodBeat.o(134107);
+  }
+  
+  public static final class a
+  {
+    public czl eeM;
   }
 }
 

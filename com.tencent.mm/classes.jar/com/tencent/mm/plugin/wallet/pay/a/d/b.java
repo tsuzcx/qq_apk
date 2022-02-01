@@ -1,83 +1,83 @@
 package com.tencent.mm.plugin.wallet.pay.a.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet.a.s;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.Orders;
 import com.tencent.mm.plugin.wallet_core.model.an;
 import com.tencent.mm.plugin.wallet_core.model.v;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 import org.json.JSONObject;
 
 public class b
   extends g
 {
-  private boolean Dag;
-  private boolean Dah;
+  private boolean HFU;
+  private boolean HFV;
   
   public b(v paramv, Orders paramOrders)
   {
     super(paramv, paramOrders);
     AppMethodBeat.i(69284);
-    this.Dag = false;
-    eHe();
+    this.HFU = false;
+    fOo();
     AppMethodBeat.o(69284);
   }
   
-  private void eHe()
+  private void fOo()
   {
     AppMethodBeat.i(69285);
-    this.Dag = false;
-    s.eGW();
-    if ((s.eGX().DsE != null) && (this.Dai.xDC != null))
+    this.HFU = false;
+    s.fOg();
+    if ((s.fOh().IbQ != null) && (this.HFW.BDB != null))
     {
-      String str = this.Dai.dlT;
-      s.eGW();
-      if (str.equals(s.eGX().DsE.field_bankcardType))
+      String str = this.HFW.dDj;
+      s.fOg();
+      if (str.equals(s.fOh().IbQ.field_bankcardType))
       {
-        if ((this.Dai.xDC.dDH != 31) && (this.Dai.xDC.dDH != 32) && (this.Dai.xDC.dDH != 33) && (this.Dai.xDC.dDH != 42) && (this.Dai.xDC.dDH != 37) && (this.Dai.xDC.dDH != 56)) {
+        if ((this.HFW.BDB.dVv != 31) && (this.HFW.BDB.dVv != 32) && (this.HFW.BDB.dVv != 33) && (this.HFW.BDB.dVv != 42) && (this.HFW.BDB.dVv != 37) && (this.HFW.BDB.dVv != 56)) {
           break label193;
         }
-        this.Dag = true;
+        this.HFU = true;
       }
     }
     for (;;)
     {
-      ae.i("MicroMsg.NetSceneTenpayPayVertify", "isLqtSns: %s, isLqtTs: %s", new Object[] { Boolean.valueOf(this.Dag), Boolean.valueOf(this.Dah) });
+      Log.i("MicroMsg.NetSceneTenpayPayVertify", "isLqtSns: %s, isLqtTs: %s", new Object[] { Boolean.valueOf(this.HFU), Boolean.valueOf(this.HFV) });
       AppMethodBeat.o(69285);
       return;
       label193:
-      this.Dah = true;
+      this.HFV = true;
     }
   }
   
-  protected void aY(Map<String, String> paramMap)
+  protected void aX(Map<String, String> paramMap)
   {
     AppMethodBeat.i(69286);
-    eHe();
-    if ((this.Dag) || (this.Dah)) {
-      paramMap.put("busi_scene", this.Dai.dlT);
+    fOo();
+    if ((this.HFU) || (this.HFV)) {
+      paramMap.put("busi_scene", this.HFW.dDj);
     }
     AppMethodBeat.o(69286);
   }
   
-  public int doScene(e parame, f paramf)
+  public int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(69289);
-    if (this.Dag) {
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(663L, 26L, 1L, false);
+    if (this.HFU) {
+      h.CyF.idkeyStat(663L, 26L, 1L, false);
     }
     for (;;)
     {
-      int i = super.doScene(parame, paramf);
+      int i = super.doScene(paramg, parami);
       AppMethodBeat.o(69289);
       return i;
-      if (this.Dah) {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(663L, 22L, 1L, false);
+      if (this.HFV) {
+        h.CyF.idkeyStat(663L, 22L, 1L, false);
       }
     }
   }
@@ -85,13 +85,13 @@ public class b
   public int getFuncId()
   {
     AppMethodBeat.i(69287);
-    eHe();
-    if (this.Dag)
+    fOo();
+    if (this.HFU)
     {
       AppMethodBeat.o(69287);
       return 1281;
     }
-    if (this.Dah)
+    if (this.HFV)
     {
       AppMethodBeat.o(69287);
       return 1305;
@@ -108,13 +108,13 @@ public class b
   public String getUri()
   {
     AppMethodBeat.i(69288);
-    eHe();
-    if (this.Dag)
+    fOo();
+    if (this.HFU)
     {
       AppMethodBeat.o(69288);
       return "/cgi-bin/mmpay-bin/tenpay/snslqtpaybindverify";
     }
-    if (this.Dah)
+    if (this.HFV)
     {
       AppMethodBeat.o(69288);
       return "/cgi-bin/mmpay-bin/tenpay/lqtpaybindverify";
@@ -129,14 +129,14 @@ public class b
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     if (paramInt != 0)
     {
-      if (this.Dag)
+      if (this.HFU)
       {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(663L, 27L, 1L, false);
+        h.CyF.idkeyStat(663L, 27L, 1L, false);
         AppMethodBeat.o(69290);
         return;
       }
-      if (this.Dah) {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(663L, 23L, 1L, false);
+      if (this.HFV) {
+        h.CyF.idkeyStat(663L, 23L, 1L, false);
       }
     }
     AppMethodBeat.o(69290);
@@ -144,7 +144,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a.d.b
  * JD-Core Version:    0.7.0.1
  */

@@ -19,21 +19,7 @@ class DeviceAuthMethodHandler
   static
   {
     AppMethodBeat.i(7784);
-    CREATOR = new Parcelable.Creator()
-    {
-      public final DeviceAuthMethodHandler createFromParcel(Parcel paramAnonymousParcel)
-      {
-        AppMethodBeat.i(7773);
-        paramAnonymousParcel = new DeviceAuthMethodHandler(paramAnonymousParcel);
-        AppMethodBeat.o(7773);
-        return paramAnonymousParcel;
-      }
-      
-      public final DeviceAuthMethodHandler[] newArray(int paramAnonymousInt)
-      {
-        return new DeviceAuthMethodHandler[paramAnonymousInt];
-      }
-    };
+    CREATOR = new DeviceAuthMethodHandler.1();
     AppMethodBeat.o(7784);
   }
   
@@ -131,7 +117,7 @@ class DeviceAuthMethodHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.login.DeviceAuthMethodHandler
  * JD-Core Version:    0.7.0.1
  */

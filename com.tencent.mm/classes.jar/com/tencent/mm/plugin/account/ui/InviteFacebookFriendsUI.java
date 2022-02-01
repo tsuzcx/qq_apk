@@ -11,7 +11,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -21,38 +20,36 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ba.i;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.ba.i.a;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.account.friend.a.ad;
 import com.tencent.mm.plugin.account.friend.a.p;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.plugin.account.model.k;
+import com.tencent.mm.plugin.messenger.foundation.a.a.j;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.g.a.c.a;
-import com.tencent.mm.ui.r.a;
-import com.tencent.mm.ui.tools.r.b;
+import com.tencent.mm.ui.h.a.c.a;
+import com.tencent.mm.ui.s.a;
+import com.tencent.mm.ui.tools.s.b;
 import java.util.ArrayList;
 import java.util.List;
 
 public class InviteFacebookFriendsUI
   extends MMActivity
-  implements f
+  implements com.tencent.mm.ak.i
 {
-  private ProgressDialog fOC = null;
-  private ListView jfb;
-  private View jfd;
-  String jff;
-  a jmY;
+  private ProgressDialog gtM = null;
+  private ListView kde;
+  private View kdg;
+  String kdi;
+  a klh;
   private final int recommendType = 5;
   
-  private void bS(String paramString1, String paramString2)
+  private void cb(String paramString1, String paramString2)
   {
     AppMethodBeat.i(128048);
     com.tencent.mm.ui.base.h.a(this, paramString2, paramString1, new InviteFacebookFriendsUI.2(this), null);
@@ -61,87 +58,87 @@ public class InviteFacebookFriendsUI
   
   public int getLayoutId()
   {
-    return 2131493996;
+    return 2131494166;
   }
   
   public void initView()
   {
     AppMethodBeat.i(128047);
-    this.jfb = ((ListView)findViewById(2131302352));
-    Object localObject1 = (TextView)findViewById(2131299468);
-    ((TextView)localObject1).setText(2131758789);
-    Object localObject2 = new com.tencent.mm.ui.tools.r((byte)0);
-    ((com.tencent.mm.ui.tools.r)localObject2).Lhk = new r.b()
+    this.kde = ((ListView)findViewById(2131304749));
+    Object localObject1 = (TextView)findViewById(2131300096);
+    ((TextView)localObject1).setText(2131759110);
+    Object localObject2 = new com.tencent.mm.ui.tools.s((byte)0);
+    ((com.tencent.mm.ui.tools.s)localObject2).Qwi = new s.b()
     {
-      public final boolean JO(String paramAnonymousString)
+      public final boolean SN(String paramAnonymousString)
       {
         return false;
       }
       
-      public final void JP(String paramAnonymousString)
+      public final void SO(String paramAnonymousString)
       {
         AppMethodBeat.i(128021);
-        InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this, bu.aSk(paramAnonymousString));
+        InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this, Util.escapeSqlValue(paramAnonymousString));
         paramAnonymousString = InviteFacebookFriendsUI.this;
-        if (paramAnonymousString.jmY != null)
+        if (paramAnonymousString.klh != null)
         {
-          InviteFacebookFriendsUI.a locala = paramAnonymousString.jmY;
-          locala.jeI = bu.aSk(paramAnonymousString.jff.trim());
-          locala.dhl();
-          locala.ZD();
+          InviteFacebookFriendsUI.a locala = paramAnonymousString.klh;
+          locala.kcL = Util.escapeSqlValue(paramAnonymousString.kdi.trim());
+          locala.ebf();
+          locala.anp();
         }
         AppMethodBeat.o(128021);
       }
       
-      public final void aSL() {}
+      public final void bnA() {}
       
-      public final void aSM() {}
+      public final void bnB() {}
       
-      public final void aSN() {}
+      public final void bny() {}
       
-      public final void aSO() {}
+      public final void bnz() {}
     };
-    addSearchMenu(true, (com.tencent.mm.ui.tools.r)localObject2);
-    this.jmY = new a(this, new r.a()
+    addSearchMenu(true, (com.tencent.mm.ui.tools.s)localObject2);
+    this.klh = new a(this, new s.a()
     {
-      public final void aSR()
+      public final void bnE()
       {
         AppMethodBeat.i(128023);
-        if (v.aBi())
+        if (z.aUF())
         {
           if (InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this).getCount() == 0)
           {
-            this.jmJ.setVisibility(0);
+            this.kkS.setVisibility(0);
             AppMethodBeat.o(128023);
             return;
           }
-          this.jmJ.setVisibility(8);
+          this.kkS.setVisibility(8);
         }
         AppMethodBeat.o(128023);
       }
     });
-    this.jfb.setAdapter(this.jmY);
-    this.jfd = findViewById(2131302353);
-    this.jfb.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.kde.setAdapter(this.klh);
+    this.kdg = findViewById(2131304750);
+    this.kde.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(128024);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousAdapterView);
-        localb.bd(paramAnonymousView);
-        localb.mu(paramAnonymousInt);
-        localb.rl(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/InviteFacebookFriendsUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-        if (InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this).aUr().length >= 50)
+        localb.bm(paramAnonymousAdapterView);
+        localb.bm(paramAnonymousView);
+        localb.pH(paramAnonymousInt);
+        localb.zo(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/InviteFacebookFriendsUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+        if (InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this).bpe().length >= 50)
         {
-          com.tencent.mm.ui.base.h.l(InviteFacebookFriendsUI.this, 2131758795, 2131755906);
+          com.tencent.mm.ui.base.h.n(InviteFacebookFriendsUI.this, 2131759116, 2131755998);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/InviteFacebookFriendsUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(128024);
           return;
         }
-        InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this).rv(paramAnonymousInt - InviteFacebookFriendsUI.b(InviteFacebookFriendsUI.this).getHeaderViewsCount());
-        if (InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this).aUr().length > 0) {
+        InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this).vl(paramAnonymousInt - InviteFacebookFriendsUI.b(InviteFacebookFriendsUI.this).getHeaderViewsCount());
+        if (InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this).bpe().length > 0) {
           InviteFacebookFriendsUI.this.showOptionMenu(true);
         }
         for (;;)
@@ -153,19 +150,26 @@ public class InviteFacebookFriendsUI
         }
       }
     });
-    ae.d("MicroMsg.InviteFacebookFriendsUI", "isBindForFacebookApp:" + v.aBi());
-    if (v.aBi())
+    Log.d("MicroMsg.InviteFacebookFriendsUI", "isBindForFacebookApp:" + z.aUF());
+    if (z.aUF())
     {
-      this.jfb.setVisibility(0);
-      this.jfd.setVisibility(8);
-      long l = bu.i((Long)com.tencent.mm.kernel.g.ajR().ajA().get(65831, null));
-      localObject1 = bu.nullAsNil((String)com.tencent.mm.kernel.g.ajR().ajA().get(65830, null));
-      if ((bu.DD(l) > 86400000L) && (((String)localObject1).length() > 0))
+      this.kde.setVisibility(0);
+      this.kdg.setVisibility(8);
+      long l = Util.nullAsNil((Long)com.tencent.mm.kernel.g.aAh().azQ().get(65831, null));
+      localObject1 = Util.nullAsNil((String)com.tencent.mm.kernel.g.aAh().azQ().get(65830, null));
+      if ((Util.milliSecondsToNow(l) > 86400000L) && (((String)localObject1).length() > 0))
       {
-        localObject2 = new com.tencent.mm.ui.g.a.c(getString(2131758773));
-        ((com.tencent.mm.ui.g.a.c)localObject2).aYB((String)localObject1);
-        new com.tencent.mm.plugin.account.model.j((com.tencent.mm.ui.g.a.c)localObject2, new com.tencent.mm.plugin.account.model.k()
+        localObject2 = new com.tencent.mm.ui.h.a.c(getString(2131759094));
+        ((com.tencent.mm.ui.h.a.c)localObject2).bnE((String)localObject1);
+        new k((com.tencent.mm.ui.h.a.c)localObject2, new com.tencent.mm.plugin.account.model.l()
         {
+          public final void E(Bundle paramAnonymousBundle)
+          {
+            AppMethodBeat.i(128025);
+            super.E(paramAnonymousBundle);
+            AppMethodBeat.o(128025);
+          }
+          
           public final void onError(int paramAnonymousInt, String paramAnonymousString)
           {
             AppMethodBeat.i(128026);
@@ -175,57 +179,33 @@ public class InviteFacebookFriendsUI
             }
             AppMethodBeat.o(128026);
           }
-          
-          public final void y(Bundle paramAnonymousBundle)
-          {
-            AppMethodBeat.i(128025);
-            super.y(paramAnonymousBundle);
-            AppMethodBeat.o(128025);
-          }
-        }).aSJ();
+        }).bnw();
       }
       localObject1 = new ad();
-      ((ad)localObject1).aTB();
-      localObject2 = new aw(new InviteFacebookFriendsUI.6(this, (ad)localObject1), false);
-      if (bu.o((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(65829, null)) <= 0) {
-        break label441;
+      ((ad)localObject1).bon();
+      localObject2 = new MTimerHandler(new InviteFacebookFriendsUI.6(this, (ad)localObject1), false);
+      if (Util.nullAsNil((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(65829, null)) <= 0) {
+        break label439;
       }
-      com.tencent.mm.kernel.g.ajR().ajA().set(65829, Integer.valueOf(1));
-      com.tencent.mm.kernel.g.ajj().a((n)localObject1, 0);
+      com.tencent.mm.kernel.g.aAh().azQ().set(65829, Integer.valueOf(1));
+      com.tencent.mm.kernel.g.azz().a((com.tencent.mm.ak.q)localObject1, 0);
     }
     for (;;)
     {
       AppCompatActivity localAppCompatActivity = getContext();
-      getString(2131755906);
-      this.fOC = com.tencent.mm.ui.base.h.b(localAppCompatActivity, getString(2131762072), true, new InviteFacebookFriendsUI.7(this, (aw)localObject2, (ad)localObject1));
+      getString(2131755998);
+      this.gtM = com.tencent.mm.ui.base.h.a(localAppCompatActivity, getString(2131764090), true, new InviteFacebookFriendsUI.7(this, (MTimerHandler)localObject2, (ad)localObject1));
       setBackBtn(new InviteFacebookFriendsUI.8(this));
-      setToTop(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(128030);
-          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/ui/InviteFacebookFriendsUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-          paramAnonymousView = InviteFacebookFriendsUI.b(InviteFacebookFriendsUI.this);
-          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
-          localObject = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahE(), "com/tencent/mm/plugin/account/ui/InviteFacebookFriendsUI$8", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-          BackwardSupportUtil.c.b((ListView)paramAnonymousView.mt(0));
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/account/ui/InviteFacebookFriendsUI$8", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/ui/InviteFacebookFriendsUI$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(128030);
-        }
-      });
-      addTextOptionMenu(0, getString(2131758793), new MenuItem.OnMenuItemClickListener()
+      setToTop(new InviteFacebookFriendsUI.9(this));
+      addTextOptionMenu(0, getString(2131759114), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(128037);
-          com.tencent.mm.ui.g.a.c localc = new com.tencent.mm.ui.g.a.c(InviteFacebookFriendsUI.this.getString(2131758773));
+          com.tencent.mm.ui.h.a.c localc = new com.tencent.mm.ui.h.a.c(InviteFacebookFriendsUI.this.getString(2131759094));
           Bundle localBundle = new Bundle();
-          localBundle.putString("message", InviteFacebookFriendsUI.this.getString(2131758792));
-          final long[] arrayOfLong = InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this).aUr();
+          localBundle.putString("message", InviteFacebookFriendsUI.this.getString(2131759113));
+          final long[] arrayOfLong = InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this).bpe();
           paramAnonymousMenuItem = Long.toString(arrayOfLong[0]);
           int i = 1;
           while (i < arrayOfLong.length)
@@ -237,34 +217,13 @@ public class InviteFacebookFriendsUI
           localBundle.putString("to", paramAnonymousMenuItem);
           localc.a(InviteFacebookFriendsUI.this, "apprequests", localBundle, new c.a()
           {
-            public final void a(com.tencent.mm.ui.g.a.b paramAnonymous2b)
-            {
-              AppMethodBeat.i(128034);
-              ae.e("MicroMsg.InviteFacebookFriendsUI", "fbinvite error");
-              AppMethodBeat.o(128034);
-            }
-            
-            public final void a(com.tencent.mm.ui.g.a.e paramAnonymous2e)
-            {
-              AppMethodBeat.i(128033);
-              ae.e("MicroMsg.InviteFacebookFriendsUI", "fbinvite error");
-              AppMethodBeat.o(128033);
-            }
-            
-            public final void onCancel()
-            {
-              AppMethodBeat.i(128036);
-              ae.e("MicroMsg.InviteFacebookFriendsUI", "fbinvite cancle");
-              AppMethodBeat.o(128036);
-            }
-            
-            public final void y(Bundle paramAnonymous2Bundle)
+            public final void E(Bundle paramAnonymous2Bundle)
             {
               AppMethodBeat.i(128035);
-              ae.i("MicroMsg.InviteFacebookFriendsUI", "fbinvite oncomplete");
+              Log.i("MicroMsg.InviteFacebookFriendsUI", "fbinvite oncomplete");
               paramAnonymous2Bundle = new ArrayList();
               paramAnonymous2Bundle.add(new i.a(33, Integer.toString(arrayOfLong.length)));
-              ((l)com.tencent.mm.kernel.g.ab(l.class)).azE().d(new i(paramAnonymous2Bundle));
+              ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSM().d(new com.tencent.mm.ba.i(paramAnonymous2Bundle));
               paramAnonymous2Bundle = arrayOfLong;
               int j = paramAnonymous2Bundle.length;
               int i = 0;
@@ -273,17 +232,17 @@ public class InviteFacebookFriendsUI
                 long l = paramAnonymous2Bundle[i];
                 p localp = new p();
                 localp.username = Long.toString(l);
-                localp.jgM = 5;
-                localp.cRP = ((int)bu.aRi());
+                localp.keQ = 5;
+                localp.dii = ((int)Util.nowSecond());
                 com.tencent.mm.plugin.account.a.getInviteFriendOpenStg().b(localp);
                 i += 1;
               }
-              com.tencent.mm.ui.base.h.a(InviteFacebookFriendsUI.this, 2131758794, 2131755906, 2131755939, 2131755831, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+              com.tencent.mm.ui.base.h.a(InviteFacebookFriendsUI.this, 2131759115, 2131755998, 2131756033, 2131755917, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
               {
                 public final void onClick(DialogInterface paramAnonymous3DialogInterface, int paramAnonymous3Int)
                 {
                   AppMethodBeat.i(128031);
-                  InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this).ZD();
+                  InviteFacebookFriendsUI.a(InviteFacebookFriendsUI.this).anp();
                   AppMethodBeat.o(128031);
                 }
               }, new DialogInterface.OnClickListener()
@@ -297,6 +256,27 @@ public class InviteFacebookFriendsUI
               });
               AppMethodBeat.o(128035);
             }
+            
+            public final void a(com.tencent.mm.ui.h.a.b paramAnonymous2b)
+            {
+              AppMethodBeat.i(128034);
+              Log.e("MicroMsg.InviteFacebookFriendsUI", "fbinvite error");
+              AppMethodBeat.o(128034);
+            }
+            
+            public final void a(com.tencent.mm.ui.h.a.e paramAnonymous2e)
+            {
+              AppMethodBeat.i(128033);
+              Log.e("MicroMsg.InviteFacebookFriendsUI", "fbinvite error");
+              AppMethodBeat.o(128033);
+            }
+            
+            public final void onCancel()
+            {
+              AppMethodBeat.i(128036);
+              Log.e("MicroMsg.InviteFacebookFriendsUI", "fbinvite cancle");
+              AppMethodBeat.o(128036);
+            }
           });
           AppMethodBeat.o(128037);
           return true;
@@ -305,8 +285,8 @@ public class InviteFacebookFriendsUI
       showOptionMenu(false);
       AppMethodBeat.o(128047);
       return;
-      label441:
-      ((aw)localObject2).ay(5000L, 5000L);
+      label439:
+      ((MTimerHandler)localObject2).startTimer(5000L);
     }
   }
   
@@ -314,8 +294,8 @@ public class InviteFacebookFriendsUI
   {
     AppMethodBeat.i(128045);
     super.onCreate(paramBundle);
-    setMMTitle(2131758796);
-    com.tencent.mm.kernel.g.ajj().a(32, this);
+    setMMTitle(2131759117);
+    com.tencent.mm.kernel.g.azz().a(32, this);
     initView();
     AppMethodBeat.o(128045);
   }
@@ -323,43 +303,43 @@ public class InviteFacebookFriendsUI
   public void onDestroy()
   {
     AppMethodBeat.i(128046);
-    com.tencent.mm.kernel.g.ajj().b(32, this);
-    this.jmY.dhl();
+    com.tencent.mm.kernel.g.azz().b(32, this);
+    this.klh.ebf();
     super.onDestroy();
     AppMethodBeat.o(128046);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(128049);
-    ae.i("MicroMsg.InviteFacebookFriendsUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (paramn.getType() != 32)
+    Log.i("MicroMsg.InviteFacebookFriendsUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (paramq.getType() != 32)
     {
       AppMethodBeat.o(128049);
       return;
     }
-    if (this.fOC != null)
+    if (this.gtM != null)
     {
-      this.fOC.dismiss();
-      this.fOC = null;
+      this.gtM.dismiss();
+      this.gtM = null;
     }
     if ((paramInt1 == 4) && (paramInt2 == -68))
     {
-      paramn = paramString;
-      if (bu.isNullOrNil(paramString)) {
-        paramn = "error";
+      paramq = paramString;
+      if (Util.isNullOrNil(paramString)) {
+        paramq = "error";
       }
-      bS(getString(2131755906), paramn);
+      cb(getString(2131755998), paramq);
       AppMethodBeat.o(128049);
       return;
     }
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      this.jmY.a(null, null);
+      this.klh.onNotifyChange(null, null);
       AppMethodBeat.o(128049);
       return;
     }
-    Toast.makeText(this, 2131761250, 0).show();
+    Toast.makeText(this, 2131763076, 0).show();
     AppMethodBeat.o(128049);
   }
   
@@ -370,13 +350,13 @@ public class InviteFacebookFriendsUI
   }
   
   public static final class a
-    extends com.tencent.mm.ui.r<com.tencent.mm.plugin.account.friend.a.g>
+    extends com.tencent.mm.ui.s<com.tencent.mm.plugin.account.friend.a.g>
   {
-    String jeI;
-    private boolean[] jiB;
-    private int[] pq;
+    String kcL;
+    private boolean[] kgD;
+    private int[] pt;
     
-    public a(Context paramContext, r.a parama)
+    public a(Context paramContext, s.a parama)
     {
       super(new com.tencent.mm.plugin.account.friend.a.g());
       AppMethodBeat.i(128038);
@@ -384,11 +364,11 @@ public class InviteFacebookFriendsUI
       AppMethodBeat.o(128038);
     }
     
-    public final void ZD()
+    public final void anp()
     {
       AppMethodBeat.i(128042);
       com.tencent.mm.plugin.account.friend.a.h localh = com.tencent.mm.plugin.account.a.getFacebookFrdStg();
-      String str = this.jeI;
+      String str = this.kcL;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" where facebookfriend.status = 102 ");
       if ((str != null) && (str.length() > 0))
@@ -398,24 +378,24 @@ public class InviteFacebookFriendsUI
         localStringBuilder.append("facebookfriend.nickname like '%" + str + "%' or ");
         localStringBuilder.append("facebookfriend.username like '%" + str + "%' ) ");
       }
-      setCursor(localh.hKK.a("select facebookfriend.fbid,facebookfriend.fbname,facebookfriend.fbimgkey,facebookfriend.status,facebookfriend.username,facebookfriend.nickname,facebookfriend.nicknamepyinitial,facebookfriend.nicknamequanpin,facebookfriend.sex,facebookfriend.personalcard,facebookfriend.province,facebookfriend.city,facebookfriend.signature,facebookfriend.alias,facebookfriend.type,facebookfriend.email from facebookfriend  " + localStringBuilder.toString() + " order by  case when status = 100 then 0  when status = 102 then 3  when status = 101 then 1 else 2 end  , nicknamepyinitial", null, 0));
-      this.pq = new int[getCount()];
-      this.jiB = new boolean[getCount()];
+      setCursor(localh.iFy.rawQuery("select facebookfriend.fbid,facebookfriend.fbname,facebookfriend.fbimgkey,facebookfriend.status,facebookfriend.username,facebookfriend.nickname,facebookfriend.nicknamepyinitial,facebookfriend.nicknamequanpin,facebookfriend.sex,facebookfriend.personalcard,facebookfriend.province,facebookfriend.city,facebookfriend.signature,facebookfriend.alias,facebookfriend.type,facebookfriend.email from facebookfriend  " + localStringBuilder.toString() + " order by  case when status = 100 then 0  when status = 102 then 3  when status = 101 then 1 else 2 end  , nicknamepyinitial", null));
+      this.pt = new int[getCount()];
+      this.kgD = new boolean[getCount()];
       super.notifyDataSetChanged();
       AppMethodBeat.o(128042);
     }
     
-    public final void ZE()
+    public final void anq()
     {
       AppMethodBeat.i(128043);
-      ZD();
+      anp();
       AppMethodBeat.o(128043);
     }
     
-    public final long[] aUr()
+    public final long[] bpe()
     {
       AppMethodBeat.i(128040);
-      Object localObject = this.jiB;
+      Object localObject = this.kgD;
       int m = localObject.length;
       int i = 0;
       int k;
@@ -432,10 +412,10 @@ public class InviteFacebookFriendsUI
       j = 0;
       if (j < getCount())
       {
-        if (this.jiB[j] == 0) {
+        if (this.kgD[j] == 0) {
           break label108;
         }
-        localObject[i] = ((com.tencent.mm.plugin.account.friend.a.g)getItem(j)).eQX;
+        localObject[i] = ((com.tencent.mm.plugin.account.friend.a.g)getItem(j)).fuC;
         i += 1;
       }
       label108:
@@ -456,24 +436,24 @@ public class InviteFacebookFriendsUI
       if (paramView == null)
       {
         paramViewGroup = new a();
-        paramView = View.inflate(this.context, 2131493930, null);
-        paramViewGroup.fTj = ((ImageView)paramView.findViewById(2131298722));
-        paramViewGroup.jeP = ((TextView)paramView.findViewById(2131303561));
-        paramViewGroup.jiE = ((TextView)paramView.findViewById(2131301064));
-        paramViewGroup.jiF = ((CheckBox)paramView.findViewById(2131301078));
+        paramView = View.inflate(this.context, 2131494098, null);
+        paramViewGroup.gyr = ((ImageView)paramView.findViewById(2131299160));
+        paramViewGroup.kcS = ((TextView)paramView.findViewById(2131306336));
+        paramViewGroup.kgG = ((TextView)paramView.findViewById(2131302718));
+        paramViewGroup.kgH = ((CheckBox)paramView.findViewById(2131302732));
         paramView.setTag(paramViewGroup);
-        paramViewGroup.jeP.setText(com.tencent.mm.pluginsdk.ui.span.k.b(this.context, localg.aTh(), paramViewGroup.jeP.getTextSize()));
-        localBitmap = com.tencent.mm.aj.c.Do(localg.eQX);
+        paramViewGroup.kcS.setText(com.tencent.mm.pluginsdk.ui.span.l.b(this.context, localg.bnT(), paramViewGroup.kcS.getTextSize()));
+        localBitmap = com.tencent.mm.aj.c.LY(localg.fuC);
         if (localBitmap != null) {
           break label221;
         }
-        paramViewGroup.fTj.setImageDrawable(com.tencent.mm.cb.a.l(this.context, 2131690013));
+        paramViewGroup.gyr.setImageDrawable(com.tencent.mm.cb.a.l(this.context, 2131690042));
         label165:
-        paramViewGroup.jiF.setChecked(this.jiB[paramInt]);
-        if (!com.tencent.mm.plugin.account.a.getInviteFriendOpenStg().Kh(Long.toString(localg.eQX))) {
+        paramViewGroup.kgH.setChecked(this.kgD[paramInt]);
+        if (!com.tencent.mm.plugin.account.a.getInviteFriendOpenStg().Tf(Long.toString(localg.fuC))) {
           break label233;
         }
-        paramViewGroup.jiE.setVisibility(0);
+        paramViewGroup.kgG.setVisibility(0);
       }
       for (;;)
       {
@@ -482,22 +462,22 @@ public class InviteFacebookFriendsUI
         paramViewGroup = (a)paramView.getTag();
         break;
         label221:
-        paramViewGroup.fTj.setImageBitmap(localBitmap);
+        paramViewGroup.gyr.setImageBitmap(localBitmap);
         break label165;
         label233:
-        paramViewGroup.jiE.setVisibility(8);
+        paramViewGroup.kgG.setVisibility(8);
       }
     }
     
-    public final void rv(int paramInt)
+    public final void vl(int paramInt)
     {
       AppMethodBeat.i(128041);
-      if ((paramInt < 0) || (paramInt >= this.jiB.length))
+      if ((paramInt < 0) || (paramInt >= this.kgD.length))
       {
         AppMethodBeat.o(128041);
         return;
       }
-      boolean[] arrayOfBoolean = this.jiB;
+      boolean[] arrayOfBoolean = this.kgD;
       if (arrayOfBoolean[paramInt] == 0) {}
       for (int i = 1;; i = 0)
       {
@@ -510,16 +490,16 @@ public class InviteFacebookFriendsUI
     
     public static final class a
     {
-      ImageView fTj;
-      TextView jeP;
-      TextView jiE;
-      CheckBox jiF;
+      ImageView gyr;
+      TextView kcS;
+      TextView kgG;
+      CheckBox kgH;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.InviteFacebookFriendsUI
  * JD-Core Version:    0.7.0.1
  */

@@ -7,15 +7,15 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.patmsg.a.c;
 import com.tencent.mm.plugin.patmsg.a.c.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class AvatarPatImageView
   extends AppCompatImageView
   implements c
 {
-  private View.OnClickListener wVA;
-  public a wVB;
-  private c.a wVz;
+  private c.a ARs;
+  private View.OnClickListener ARt;
+  public a ARu;
   
   public AvatarPatImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,104 +25,104 @@ public class AvatarPatImageView
   public AvatarPatImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(220352);
-    this.wVB = new a();
-    this.wVB.wVG = this;
-    AppMethodBeat.o(220352);
+    AppMethodBeat.i(206974);
+    this.ARu = new a();
+    this.ARu.ARz = this;
+    AppMethodBeat.o(206974);
   }
   
   public c.a getDoubleClickListener()
   {
-    return this.wVz;
+    return this.ARs;
   }
   
   public View.OnClickListener getOnClickListener()
   {
-    return this.wVA;
+    return this.ARt;
   }
   
   public int getTagScene()
   {
-    AppMethodBeat.i(220358);
-    if (getTag(2131308174) == null)
+    AppMethodBeat.i(206980);
+    if (getTag(2131305796) == null)
     {
-      AppMethodBeat.o(220358);
+      AppMethodBeat.o(206980);
       return 0;
     }
-    int i = ((Integer)getTag(2131308174)).intValue();
-    AppMethodBeat.o(220358);
+    int i = ((Integer)getTag(2131305796)).intValue();
+    AppMethodBeat.o(206980);
     return i;
   }
   
   public String getTagTalker()
   {
-    AppMethodBeat.i(220356);
-    if (getTag(2131308175) == null)
+    AppMethodBeat.i(206978);
+    if (getTag(2131305797) == null)
     {
-      AppMethodBeat.o(220356);
+      AppMethodBeat.o(206978);
       return "";
     }
-    String str = (String)getTag(2131308175);
-    AppMethodBeat.o(220356);
+    String str = (String)getTag(2131305797);
+    AppMethodBeat.o(206978);
     return str;
   }
   
   public String getTagUsername()
   {
-    AppMethodBeat.i(220354);
-    String str = (String)getTag(2131308176);
-    AppMethodBeat.o(220354);
+    AppMethodBeat.i(206976);
+    String str = (String)getTag(2131305798);
+    AppMethodBeat.o(206976);
     return str;
   }
   
   protected void onDetachedFromWindow()
   {
-    AppMethodBeat.i(220360);
+    AppMethodBeat.i(206982);
     super.onDetachedFromWindow();
-    this.wVB.dBF();
-    AppMethodBeat.o(220360);
+    this.ARu.eBq();
+    AppMethodBeat.o(206982);
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    AppMethodBeat.i(220359);
-    this.wVA = paramOnClickListener;
-    super.setOnClickListener(this.wVB.wVI);
-    AppMethodBeat.o(220359);
+    AppMethodBeat.i(206981);
+    this.ARt = paramOnClickListener;
+    super.setOnClickListener(this.ARu.ARB);
+    AppMethodBeat.o(206981);
   }
   
   public void setOnDoubleClickListener(c.a parama)
   {
-    this.wVz = parama;
+    this.ARs = parama;
   }
   
   public void setTagScene(int paramInt)
   {
-    AppMethodBeat.i(220357);
-    setTag(2131308174, Integer.valueOf(paramInt));
-    AppMethodBeat.o(220357);
+    AppMethodBeat.i(206979);
+    setTag(2131305796, Integer.valueOf(paramInt));
+    AppMethodBeat.o(206979);
   }
   
   public void setTagTalker(String paramString)
   {
-    AppMethodBeat.i(220355);
-    setTag(2131308175, paramString);
-    AppMethodBeat.o(220355);
+    AppMethodBeat.i(206977);
+    setTag(2131305797, paramString);
+    AppMethodBeat.o(206977);
   }
   
   public void setTagUsername(String paramString)
   {
-    AppMethodBeat.i(220353);
-    if (!bu.nullAsNil(getTagUsername()).equals(paramString)) {
-      this.wVB.dBF();
+    AppMethodBeat.i(206975);
+    if (!Util.nullAsNil(getTagUsername()).equals(paramString)) {
+      this.ARu.eBq();
     }
-    setTag(2131308176, paramString);
-    AppMethodBeat.o(220353);
+    setTag(2131305798, paramString);
+    AppMethodBeat.o(206975);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.patmsg.ui.AvatarPatImageView
  * JD-Core Version:    0.7.0.1
  */

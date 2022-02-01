@@ -1,167 +1,78 @@
 package com.tencent.mm.plugin.appbrand.jsapi.j;
 
+import android.app.Activity;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.m.b;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
 import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.m.a.b;
-import com.tencent.mm.plugin.appbrand.m.a.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.jsapi.q;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
-import java.util.Map;
 import org.json.JSONObject;
 
 public final class a
-  extends b
+  extends d<s>
 {
-  public static final int CTRL_INDEX = 467;
-  public static final String NAME = "createLoadSubPackageTask";
+  private static final int CTRL_INDEX = 424;
+  private static final String NAME = "openRedPacket";
   
-  private static void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2)
+  public final boolean bEa()
   {
-    AppMethodBeat.i(221825);
-    a.a(paramc, paramString1, "fail", paramString2);
-    AppMethodBeat.o(221825);
-  }
-  
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, final JSONObject paramJSONObject, final String paramString)
-  {
-    AppMethodBeat.i(182227);
-    final h localh = (h)paramc;
-    paramc = paramc.getAppId();
-    paramJSONObject = paramJSONObject.optString("moduleName");
-    if (bu.isNullOrNil(paramJSONObject))
-    {
-      ae.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: null or nil moduleName");
-      a(localh, paramString, paramJSONObject);
-      AppMethodBeat.o(182227);
-      return;
-    }
-    Object localObject = localh.getRuntime();
-    if ((localObject == null) || (((AppBrandRuntime)localObject).isDestroyed()))
-    {
-      ae.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: runtime is not in valid state!");
-      a(localh, paramString, paramJSONObject);
-      AppMethodBeat.o(182227);
-      return;
-    }
-    localObject = ((AppBrandRuntime)localObject).jzR;
-    if (localObject == null)
-    {
-      ae.e("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: modularizingHelper null!");
-      a(localh, paramString, paramJSONObject);
-      AppMethodBeat.o(182227);
-      return;
-    }
-    if ((!((com.tencent.mm.plugin.appbrand.m.a)localObject).btM()) && (!paramJSONObject.equals("__APP__")))
-    {
-      ae.w("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: not support modularizing but still called JsApiCreateLoadSubPackageTask");
-      a(localh, paramString, paramJSONObject);
-      AppMethodBeat.o(182227);
-      return;
-    }
-    try
-    {
-      ((com.tencent.mm.plugin.appbrand.m.a)localObject).a(paramJSONObject, new a.b()new com.tencent.mm.plugin.appbrand.m.a.a
-      {
-        public final void a(a.d paramAnonymousd)
-        {
-          AppMethodBeat.i(139888);
-          ae.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: loadResult: %s, with appId[%s] moduleName[%s]", new Object[] { paramAnonymousd.toString(), paramc, paramJSONObject });
-          switch (a.3.lah[paramAnonymousd.ordinal()])
-          {
-          }
-          for (;;)
-          {
-            AppMethodBeat.o(139888);
-            return;
-            a.a.a(localh, paramString, "success", paramJSONObject);
-            AppMethodBeat.o(139888);
-            return;
-            a.a.a(localh, paramString, "fail", paramJSONObject);
-            AppMethodBeat.o(139888);
-            return;
-            ae.w("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: should not happen cancel!!");
-            a.a.a(localh, paramString, "fail", paramJSONObject);
-          }
-        }
-      }, new com.tencent.mm.plugin.appbrand.m.a.a()
-      {
-        public final void b(com.tencent.mm.plugin.appbrand.m.c paramAnonymousc)
-        {
-          AppMethodBeat.i(139889);
-          ae.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: module name: %s progress: %s", new Object[] { paramJSONObject, paramAnonymousc.toString() });
-          a.a.a(localh, paramString, "progressUpdate", paramJSONObject, paramAnonymousc.getProgress(), paramAnonymousc.bbi(), paramAnonymousc.bbj());
-          AppMethodBeat.o(139889);
-        }
-      });
-      AppMethodBeat.o(182227);
-      return;
-    }
-    catch (IllegalAccessError paramc)
-    {
-      ae.printErrStackTrace("MicroMsg.JsApiCreateLoadSubPackageTask", paramc, "loadModule(%s)", new Object[] { paramJSONObject });
-      a(localh, paramString, paramJSONObject);
-      AppMethodBeat.o(182227);
-    }
-  }
-  
-  public final String aOZ()
-  {
-    AppMethodBeat.i(139893);
-    Object localObject = new StringBuilder();
-    com.tencent.mm.plugin.appbrand.o.c.btQ();
-    localObject = com.tencent.mm.plugin.appbrand.o.c.btP();
-    AppMethodBeat.o(139893);
-    return localObject;
-  }
-  
-  public final String aeV()
-  {
-    return "loadTaskId";
+    return true;
   }
   
   public static final class a
-    extends p
+    extends q
   {
-    public static final int CTRL_INDEX = 468;
-    public static final String NAME = "onLoadSubPackageTaskStateChange";
-    
-    static void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2, String paramString3)
+    public a(p paramp, s params, ac paramac, JSONObject paramJSONObject, int paramInt)
     {
-      AppMethodBeat.i(139891);
-      a(paramc, paramString1, paramString2, paramString3, -1, -1L, -1L);
-      AppMethodBeat.o(139891);
+      super(params, paramac, paramJSONObject, paramInt);
     }
     
-    static void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong1, long paramLong2)
+    public final void C(Intent paramIntent)
     {
-      AppMethodBeat.i(139892);
-      ae.i("MicroMsg.JsApiCreateLoadSubPackageTask", "hy: formatEventCallback taskId: %s, state: %s, progress: %d, currentWritten: %d, totalWritten: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt), Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      AppMethodBeat.i(46389);
+      Log.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.onResult");
+      paramIntent = new HashMap();
+      paramIntent.put("errCode", Integer.valueOf(0));
+      J(paramIntent);
+      AppMethodBeat.o(46389);
+    }
+    
+    public final boolean a(Activity paramActivity, JSONObject paramJSONObject, int paramInt)
+    {
+      AppMethodBeat.i(174839);
+      String str = NY().getAppId();
+      paramJSONObject = paramJSONObject.optString("redPacketId", null);
+      if ((Util.isNullOrNil(str)) || (Util.isNullOrNil(paramJSONObject)))
+      {
+        Log.i("MicroMsg.JsApiOpenRedPacket", "GetLuckMoneyRequest.launch appId = [%s] sendId = [%s]", new Object[] { str, paramJSONObject });
+        AppMethodBeat.o(174839);
+        return false;
+      }
+      ((com.tencent.mm.plugin.luckymoney.appbrand.a)g.af(com.tencent.mm.plugin.luckymoney.appbrand.a.class)).a(paramActivity, paramJSONObject, str, paramInt);
+      AppMethodBeat.o(174839);
+      return true;
+    }
+    
+    public final void onError(int paramInt, String paramString)
+    {
+      AppMethodBeat.i(46390);
+      Log.i("MicroMsg.JsApiOpenRedPacket", "onError errCode: %d,errMsg: %s", new Object[] { Integer.valueOf(paramInt), paramString });
       HashMap localHashMap = new HashMap();
-      localHashMap.put("taskId", paramString1);
-      localHashMap.put("state", paramString2);
-      localHashMap.put("moduleName", paramString3);
-      if (paramInt >= 0) {
-        localHashMap.put("progress", Integer.valueOf(paramInt));
-      }
-      if (paramLong1 >= 0L) {
-        localHashMap.put("totalBytesWritten", Long.valueOf(paramLong1));
-      }
-      if (paramLong2 >= 0L) {
-        localHashMap.put("totalBytesExpectedToWrite", Long.valueOf(paramLong2));
-      }
-      paramString1 = new JSONObject(localHashMap).toString();
-      new a().g(paramc).PP(paramString1).bja();
-      AppMethodBeat.o(139892);
+      localHashMap.put("errCode", Integer.valueOf(paramInt));
+      o(paramString, localHashMap);
+      AppMethodBeat.o(46390);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.j.a
  * JD-Core Version:    0.7.0.1
  */

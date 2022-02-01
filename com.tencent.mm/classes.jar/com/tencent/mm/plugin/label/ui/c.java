@@ -8,22 +8,22 @@ import com.tencent.mm.ui.widget.MMTextView;
 
 public final class c
 {
-  MMTextView vjw;
-  TextView vjx;
-  LinearLayout vjy;
+  TextView yDA;
+  LinearLayout yDB;
+  MMTextView yDz;
   
   public c(View paramView)
   {
     AppMethodBeat.i(26323);
-    this.vjw = ((MMTextView)paramView.findViewById(2131301287));
-    this.vjx = ((TextView)paramView.findViewById(2131301286));
-    this.vjy = ((LinearLayout)paramView.findViewById(2131301285));
+    this.yDz = ((MMTextView)paramView.findViewById(2131302984));
+    this.yDA = ((TextView)paramView.findViewById(2131302983));
+    this.yDB = ((LinearLayout)paramView.findViewById(2131302982));
     AppMethodBeat.o(26323);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.label.ui.c
  * JD-Core Version:    0.7.0.1
  */

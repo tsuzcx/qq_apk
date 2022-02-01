@@ -1,34 +1,18 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.api.g;
-import com.tencent.mm.view.recyclerview.a;
-import d.l;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/FinderFollowData;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "contact", "Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "(Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;)V", "getContact", "()Lcom/tencent/mm/plugin/finder/api/LocalFinderContact;", "getItemId", "", "getItemType", "", "plugin-finder_release"})
-public final class u
-  implements a
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "feedObject", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "(Lcom/tencent/mm/plugin/finder/storage/FinderItem;)V", "plugin-finder_release"})
+public class u
+  extends BaseFinderFeed
 {
-  public final g contact;
-  
-  public u(g paramg)
+  public u(FinderItem paramFinderItem)
   {
-    AppMethodBeat.i(203439);
-    this.contact = paramg;
-    AppMethodBeat.o(203439);
-  }
-  
-  public final int bZz()
-  {
-    AppMethodBeat.i(203438);
-    int i = u.class.getName().hashCode();
-    AppMethodBeat.o(203438);
-    return i;
-  }
-  
-  public final long lP()
-  {
-    return 0L;
+    super(paramFinderItem);
+    AppMethodBeat.i(166384);
+    AppMethodBeat.o(166384);
   }
 }
 

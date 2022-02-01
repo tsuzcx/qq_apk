@@ -1,28 +1,28 @@
 package com.tencent.mm.plugin.appbrand.j;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appusage.y;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.appusage.x;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 final class a
-  implements k.a
+  implements MStorage.IOnStorageChange
 {
-  public final void a(String paramString, m paramm)
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
   {
     AppMethodBeat.i(45009);
-    if (j.aZs() == null)
+    if (n.buJ() == null)
     {
-      ae.w("MicroMsg.AppBrandSearchStorageChangeListener", "onNotifyChange by SysConfigStorage, but sLayoutStorage is null.");
+      Log.w("MicroMsg.AppBrandSearchStorageChangeListener", "onNotifyChange by SysConfigStorage, but sLayoutStorage is null.");
       AppMethodBeat.o(45009);
       return;
     }
-    switch (paramm.duP)
+    switch (paramMStorageEventData.eventId)
     {
     }
     for (;;)
@@ -32,42 +32,42 @@ final class a
       LinkedList localLinkedList = new LinkedList();
       if ("batch".equals(paramString))
       {
-        if ((paramm.obj != null) && ((paramm.obj instanceof List)))
+        if ((paramMStorageEventData.obj != null) && ((paramMStorageEventData.obj instanceof List)))
         {
-          paramString = ((List)paramm.obj).iterator();
+          paramString = ((List)paramMStorageEventData.obj).iterator();
           while (paramString.hasNext())
           {
-            paramm = (String)paramString.next();
-            localLinkedList.addAll(j.aZs().Np(paramm));
+            paramMStorageEventData = (String)paramString.next();
+            localLinkedList.addAll(n.buJ().Ww(paramMStorageEventData));
           }
         }
       }
       else
       {
-        localLinkedList.addAll(j.aZs().Np(paramm.obj.toString()));
+        localLinkedList.addAll(n.buJ().Ww(paramMStorageEventData.obj.toString()));
         if (!localLinkedList.isEmpty())
         {
-          j.aZs().doNotify("batch", 3, localLinkedList);
+          n.buJ().doNotify("batch", 3, localLinkedList);
           AppMethodBeat.o(45009);
           return;
           localLinkedList = new LinkedList();
           if ("batch".equals(paramString))
           {
-            if ((paramm.obj != null) && ((paramm.obj instanceof List)))
+            if ((paramMStorageEventData.obj != null) && ((paramMStorageEventData.obj instanceof List)))
             {
-              paramString = ((List)paramm.obj).iterator();
+              paramString = ((List)paramMStorageEventData.obj).iterator();
               while (paramString.hasNext())
               {
-                paramm = (String)paramString.next();
-                localLinkedList.addAll(j.aZs().Np(paramm));
+                paramMStorageEventData = (String)paramString.next();
+                localLinkedList.addAll(n.buJ().Ww(paramMStorageEventData));
               }
             }
           }
           else
           {
-            localLinkedList.addAll(j.aZs().Np(paramm.obj.toString()));
+            localLinkedList.addAll(n.buJ().Ww(paramMStorageEventData.obj.toString()));
             if (!localLinkedList.isEmpty()) {
-              j.aZs().doNotify("batch", 5, localLinkedList);
+              n.buJ().doNotify("batch", 5, localLinkedList);
             }
           }
         }
@@ -77,7 +77,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.j.a
  * JD-Core Version:    0.7.0.1
  */

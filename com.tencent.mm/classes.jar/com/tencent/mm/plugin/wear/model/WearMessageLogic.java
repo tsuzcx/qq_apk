@@ -6,34 +6,47 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.wear.model.e.p;
 import com.tencent.mm.plugin.wear.model.e.p.1;
-import com.tencent.mm.protocal.protobuf.efm;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.plugin.wear.model.e.q;
+import com.tencent.mm.protocal.protobuf.ezu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.WeChatPermissions;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 import java.util.LinkedList;
 
 public class WearMessageLogic
   extends BroadcastReceiver
 {
+  private static final String IxU;
+  
+  static
+  {
+    AppMethodBeat.i(232127);
+    IxU = WeChatPermissions.PERMISSION_WEAR_MESSAGE();
+    AppMethodBeat.o(232127);
+  }
+  
   public WearMessageLogic()
   {
     AppMethodBeat.i(30007);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("com.tencent.mm.wear.message");
-    ak.getContext().registerReceiver(this, localIntentFilter, "com.tencent.mm.wear.message", null);
+    MMApplicationContext.getContext().registerReceiver(this, localIntentFilter, IxU, null);
     AppMethodBeat.o(30007);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(30008);
-    ((com.tencent.mm.plugin.boots.a.c)g.ab(com.tencent.mm.plugin.boots.a.c.class)).eO(com.tencent.mm.plugin.boots.a.b.nZE, 1170);
+    ((com.tencent.mm.plugin.boots.a.c)g.af(com.tencent.mm.plugin.boots.a.c.class)).fb(com.tencent.mm.plugin.boots.a.b.pkC, 1170);
     if (paramIntent.getAction().equals("com.tencent.mm.wear.message"))
     {
       paramContext = paramIntent.getExtras();
@@ -41,35 +54,35 @@ public class WearMessageLogic
       if (i == 1)
       {
         paramIntent = new a((byte)0);
-        paramIntent.DOF = i;
-        paramIntent.inP = paramContext.getInt("key_funid");
-        paramIntent.dmM = paramContext.getInt("key_sessionid");
-        paramIntent.DOG = paramContext.getByteArray("key_data");
-        paramContext = a.eOg().WD(paramIntent.inP);
+        paramIntent.IxV = i;
+        paramIntent.jiX = paramContext.getInt("key_funid");
+        paramIntent.dEb = paramContext.getInt("key_sessionid");
+        paramIntent.IxW = paramContext.getByteArray("key_data");
+        paramContext = a.fVP().afj(paramIntent.jiX);
         if (paramContext != null) {}
-        for (boolean bool = paramContext.WC(paramIntent.inP); bool; bool = false)
+        for (boolean bool = paramContext.afi(paramIntent.jiX); bool; bool = false)
         {
-          ar.f(paramIntent);
+          MMHandlerThread.postToMainThread(paramIntent);
           AppMethodBeat.o(30008);
           return;
         }
-        com.tencent.mm.sdk.g.b.c(paramIntent, "WearHttpMessageTask_" + paramIntent.inP);
+        ThreadPool.post(paramIntent, "WearHttpMessageTask_" + paramIntent.jiX);
         AppMethodBeat.o(30008);
         return;
       }
       if (i == 2)
       {
         paramIntent = new b((byte)0);
-        paramIntent.DOF = i;
-        paramIntent.inP = paramContext.getInt("key_funid");
-        paramIntent.dmM = paramContext.getInt("key_sessionid");
-        paramIntent.DOG = paramContext.getByteArray("key_data");
-        a.eOe().a(paramIntent);
+        paramIntent.IxV = i;
+        paramIntent.jiX = paramContext.getInt("key_funid");
+        paramIntent.dEb = paramContext.getInt("key_sessionid");
+        paramIntent.IxW = paramContext.getByteArray("key_data");
+        a.fVN().a(paramIntent);
         AppMethodBeat.o(30008);
         return;
       }
       if (i == 3) {
-        a.eOe().a(new c((byte)0));
+        a.fVN().a(new c((byte)0));
       }
     }
     AppMethodBeat.o(30008);
@@ -78,20 +91,20 @@ public class WearMessageLogic
   final class a
     extends com.tencent.mm.plugin.wear.model.f.d
   {
-    public int DOF;
-    public byte[] DOG;
-    public int dmM;
-    public int inP;
+    public int IxV;
+    public byte[] IxW;
+    public int dEb;
+    public int jiX;
     
     private a() {}
     
     public final void execute()
     {
       AppMethodBeat.i(30003);
-      ae.i("MicroMsg.Wear.WearMessageLogic", "handle message %s", new Object[] { toString() });
-      com.tencent.mm.plugin.wear.model.e.a locala = a.eOg().WD(this.inP);
+      Log.i("MicroMsg.Wear.WearMessageLogic", "handle message %s", new Object[] { toString() });
+      com.tencent.mm.plugin.wear.model.e.a locala = a.fVP().afj(this.jiX);
       if (locala != null) {
-        locala.c(this.DOF, this.dmM, this.inP, this.DOG);
+        locala.c(this.IxV, this.dEb, this.jiX, this.IxW);
       }
       AppMethodBeat.o(30003);
     }
@@ -104,7 +117,7 @@ public class WearMessageLogic
     public final String toString()
     {
       AppMethodBeat.i(30004);
-      String str = String.format("connectType=%d funId=%d sessionId=%d", new Object[] { Integer.valueOf(this.DOF), Integer.valueOf(this.inP), Integer.valueOf(this.dmM) });
+      String str = String.format("connectType=%d funId=%d sessionId=%d", new Object[] { Integer.valueOf(this.IxV), Integer.valueOf(this.jiX), Integer.valueOf(this.dEb) });
       AppMethodBeat.o(30004);
       return str;
     }
@@ -113,98 +126,98 @@ public class WearMessageLogic
   final class b
     extends com.tencent.mm.plugin.wear.model.f.d
   {
-    public int DOF;
-    public byte[] DOG;
-    public int dmM;
-    public int inP;
+    public int IxV;
+    public byte[] IxW;
+    public int dEb;
+    public int jiX;
     
     private b() {}
     
     public final void execute()
     {
       AppMethodBeat.i(30005);
-      switch (this.inP)
+      switch (this.jiX)
       {
       }
       for (;;)
       {
         AppMethodBeat.o(30005);
         return;
-        p localp = a.eOd().DOu;
-        int i = this.dmM;
-        Object localObject = this.DOG;
-        if (localp.kft.contains(Integer.valueOf(i))) {
+        p localp = a.fVM().IxJ;
+        int i = this.dEb;
+        Object localObject = this.IxW;
+        if (localp.ljc.contains(Integer.valueOf(i))) {
           continue;
         }
-        efm localefm = new efm();
+        ezu localezu = new ezu();
         try
         {
-          localefm.parseFrom((byte[])localObject);
+          localezu.parseFrom((byte[])localObject);
           label82:
-          if (localp.DPm == i)
+          if (localp.IyC == i)
           {
-            if (localefm.Ijq)
+            if (localezu.NvU)
             {
-              ae.i("MicroMsg.Wear.VoiceToTextServer", "cancel session %d", new Object[] { Integer.valueOf(i) });
+              Log.i("MicroMsg.Wear.VoiceToTextServer", "cancel session %d", new Object[] { Integer.valueOf(i) });
               localp.reset();
               AppMethodBeat.o(30005);
               return;
             }
-            if (localefm.Ijp)
+            if (localezu.NvT)
             {
-              localp.a(i, localefm);
-              if (localp.DPk != null)
+              localp.a(i, localezu);
+              if (localp.IyA != null)
               {
-                localp.DPk.Rx();
-                localp.DPk = null;
-                ae.i("MicroMsg.Wear.VoiceToTextServer", "finish speex compress");
+                localp.IyA.abP();
+                localp.IyA = null;
+                Log.i("MicroMsg.Wear.VoiceToTextServer", "finish speex compress");
               }
-              if (localp.DPj != null)
+              if (localp.Iyz != null)
               {
-                localp.DPj.stop();
-                localp.DPj = null;
-                ae.i("MicroMsg.Wear.VoiceToTextServer", "finish voiceDetectAPI");
+                localp.Iyz.stop();
+                localp.Iyz = null;
+                Log.i("MicroMsg.Wear.VoiceToTextServer", "finish voiceDetectAPI");
               }
-              if (localp.DPi != null)
+              if (localp.Iyy != null)
               {
-                localp.DPi.iyX = true;
-                if (!localp.dPh) {
-                  bc.ajj().a(localp.DPi, 0);
+                localp.Iyy.jul = true;
+                if (!localp.ehd) {
+                  bg.azz().a(localp.Iyy, 0);
                 }
-                localp.DPi = null;
-                ae.i("MicroMsg.Wear.VoiceToTextServer", "finish netSceneVoiceToText");
+                localp.Iyy = null;
+                Log.i("MicroMsg.Wear.VoiceToTextServer", "finish netSceneVoiceToText");
               }
               AppMethodBeat.o(30005);
               return;
             }
-            localp.a(i, localefm);
+            localp.a(i, localezu);
             AppMethodBeat.o(30005);
             return;
           }
           localp.reset();
-          localp.DPm = i;
-          ae.i("MicroMsg.Wear.VoiceToTextServer", "startNewSession %s", new Object[] { Integer.valueOf(localp.DPm) });
-          o.deleteFile(p.DPh);
-          if (localp.DPk == null)
+          localp.IyC = i;
+          Log.i("MicroMsg.Wear.VoiceToTextServer", "startNewSession %s", new Object[] { Integer.valueOf(localp.IyC) });
+          s.deleteFile(p.Iyx);
+          if (localp.IyA == null)
           {
-            localp.DPk = new com.tencent.mm.audio.e.d();
-            localp.DPk.gI(p.DPh);
+            localp.IyA = new com.tencent.mm.audio.e.d();
+            localp.IyA.hz(p.Iyx);
           }
-          if (localp.DPj == null)
+          if (localp.Iyz == null)
           {
-            localp.DPj = new com.tencent.qqpinyin.voicerecoapi.c(1500000);
-            if (localp.DPj.fYh() != 0)
+            localp.Iyz = new com.tencent.qqpinyin.voicerecoapi.c(1500000);
+            if (localp.Iyz.hkt() != 0)
             {
-              localp.DPn = -2;
+              localp.IyD = -2;
               AppMethodBeat.o(30005);
               return;
             }
           }
-          localObject = localefm.HGP;
-          if (localp.DPi == null) {
-            ar.f(new p.1(localp, (String)localObject));
+          localObject = localezu.MRZ;
+          if (localp.Iyy == null) {
+            MMHandlerThread.postToMainThread(new p.1(localp, (String)localObject));
           }
-          localp.a(i, localefm);
+          localp.a(i, localezu);
         }
         catch (IOException localIOException)
         {
@@ -227,8 +240,8 @@ public class WearMessageLogic
     public final void execute()
     {
       AppMethodBeat.i(30006);
-      if (a.eOd().eOo() != null) {
-        a.eOd().eOo().eOq();
+      if (a.fVM().fVX() != null) {
+        a.fVM().fVX().fVZ();
       }
       AppMethodBeat.o(30006);
     }

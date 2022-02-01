@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center" android:orientation="vertical" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="120.0dip"
+<LinearLayout android:orientation="vertical" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:id="@id/d3o" android:visibility="gone" android:layout_width="@dimen/br" android:layout_height="@dimen/cb" style="@style/a5o" />
-    <TextView android:id="@id/f1f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fie" style="@style/le" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <com.tencent.mm.ui.base.MMPullDownView android:id="@id/fag" android:background="@color/j4" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <ListView android:id="@id/faf" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" style="@style/np" />
+        </com.tencent.mm.ui.base.MMPullDownView>
+        <ScrollView android:id="@id/fae" android:visibility="gone" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <ImageView android:layout_width="@dimen/hu" android:layout_height="@dimen/hu" android:layout_marginTop="@dimen/hi" android:src="@raw/mass_send_icon" />
+                <TextView android:gravity="center" android:layout_marginLeft="@dimen/jv" android:layout_marginTop="@dimen/hv" android:layout_marginRight="@dimen/jv" android:text="@string/ey_" android:lineSpacingExtra="4.0dip" style="@style/m0" />
+                <Button android:id="@id/fax" android:layout_marginLeft="@dimen/jv" android:layout_marginTop="@dimen/hw" android:layout_marginRight="@dimen/jv" android:text="@string/ey4" style="@style/ou" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:id="@id/faw" android:background="@drawable/b6d" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@id/fav" android:layout_margin="@dimen/k5" android:text="@string/ey4" style="@style/ow" />
+    </LinearLayout>
+</LinearLayout>

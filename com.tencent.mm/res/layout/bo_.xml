@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/FG_1" android:id="@id/ha1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c6" android:layout_marginBottom="@dimen/c6" android:text="@string/hgt" android:layout_marginStart="@dimen/c6" android:layout_marginEnd="@dimen/c6" />
-    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/ha1" android:layout_marginStart="@dimen/c6" android:layout_marginEnd="@dimen/c6" />
-</RelativeLayout>
+<FrameLayout android:id="@id/ha2" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/hae" android:background="#99000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:layout_gravity="center" android:text="@string/gd1" style="@style/ts" />
+    </FrameLayout>
+    <com.tencent.mm.plugin.scanner.ui.widget.ScanScrollTabView android:layout_gravity="bottom" android:id="@id/han" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:gravity="center" android:id="@id/hab" android:background="#b3000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/am" android:id="@id/had" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/gd0" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/k6" android:textColor="@color/BW_100_Alpha_0_5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:text="@string/gbi" android:layout_below="@id/had" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.scanner.ui.widget.ScanInfoMaskView android:id="@id/ha6" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.scanner.ui.component.ScanUITopOpButtonComponent android:id="@id/iso" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</FrameLayout>

@@ -2,54 +2,41 @@ package com.tencent.mm.plugin.emojicapture.ui.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.media.j.b.c;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureCropTopRenderProc;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiPreviewRenderProc;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "TAG", "", "externalRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "getInputRenderProc", "release", "", "setInputTexture", "texture", "plugin-emojicapture_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureCropTopRenderProc;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiPreviewRenderProc;", "textureWidth", "", "textureHeight", "drawWidth", "drawHeight", "renderOutputType", "scaleType", "(IIIIII)V", "TAG", "", "externalRenderProc", "Lcom/tencent/mm/media/render/proc/GLTextureRenderProc;", "getInputRenderProc", "release", "", "setInputTexture", "texture", "plugin-emojicapture_release"})
 public final class a
   extends j
 {
   private final String TAG;
-  private com.tencent.mm.media.j.b.a qeT;
+  private com.tencent.mm.media.j.b.a rvR;
   
   public a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     super(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
     AppMethodBeat.i(830);
     this.TAG = "MicroMsg.EmojiCaptureCropTopRenderProc";
-    this.qeT = ((com.tencent.mm.media.j.b.a)new c(paramInt1, paramInt2, this.outputWidth, this.outputHeight, 2, 2));
-    com.tencent.mm.media.j.b.a locala = this.qeT;
+    this.rvR = ((com.tencent.mm.media.j.b.a)new c(paramInt1, paramInt2, this.outputWidth, this.outputHeight, 2, 2));
+    com.tencent.mm.media.j.b.a locala = this.rvR;
     if (locala != null)
     {
-      locala.hqm = true;
+      locala.ijH = true;
       AppMethodBeat.o(830);
       return;
     }
     AppMethodBeat.o(830);
   }
   
-  public final com.tencent.mm.media.j.b.a clR()
+  public final com.tencent.mm.media.j.b.a cJT()
   {
-    return this.qeT;
-  }
-  
-  public final void nQ(int paramInt)
-  {
-    AppMethodBeat.i(828);
-    com.tencent.mm.media.j.b.a locala = this.qeT;
-    if (locala != null)
-    {
-      locala.nQ(paramInt);
-      AppMethodBeat.o(828);
-      return;
-    }
-    AppMethodBeat.o(828);
+    return this.rvR;
   }
   
   public final void release()
   {
     AppMethodBeat.i(829);
     super.release();
-    com.tencent.mm.media.j.b.a locala = this.qeT;
+    com.tencent.mm.media.j.b.a locala = this.rvR;
     if (locala != null)
     {
       locala.release();
@@ -58,10 +45,23 @@ public final class a
     }
     AppMethodBeat.o(829);
   }
+  
+  public final void rl(int paramInt)
+  {
+    AppMethodBeat.i(828);
+    com.tencent.mm.media.j.b.a locala = this.rvR;
+    if (locala != null)
+    {
+      locala.rl(paramInt);
+      AppMethodBeat.o(828);
+      return;
+    }
+    AppMethodBeat.o(828);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.gif.MMAnimateView android:layout_gravity="center_horizontal" android:id="@id/bsf" android:layout_width="173.0dip" android:layout_height="253.0dip" android:layout_marginTop="100.0dip" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:layout_gravity="center_horizontal" android:id="@id/bsg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="25.0dip" android:text="@string/by9" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="15.0dip" android:textColor="@color/o2" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/bsh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:text="@string/by_" />
-    <Button android:textSize="18.0dip" android:layout_gravity="center_horizontal" android:id="@id/bse" android:layout_width="fill_parent" android:layout_height="52.0dip" android:layout_marginLeft="27.0dip" android:layout_marginTop="53.0dip" android:layout_marginRight="27.0dip" android:text="@string/bwn" android:layout_centerHorizontal="true" style="@style/o6" />
-</merge>
+    <com.tencent.mm.plugin.emojicapture.ui.capture.CaptureContainer android:id="@id/aj9" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.mm.plugin.emojicapture.ui.editor.CaptureEditorContainer android:id="@id/bx2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

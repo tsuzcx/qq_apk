@@ -13,42 +13,24 @@ import com.tencent.mm.j.a.a.a;
 import com.tencent.mm.j.a.b;
 import com.tencent.mm.j.a.c;
 import com.tencent.mm.j.a.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import d.l;
 import java.util.HashMap;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeChattingCompatUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/chatting/IChattingCompat$IChattingActionListener;", "Lcom/tencent/mm/chatting/IChattingCompat$IChattingFragmentFinish;", "Lcom/tencent/mm/chatting/IChattingCompat$IChattingActivityController;", "()V", "chattingCompat", "Lcom/tencent/mm/chatting/IChattingCompat;", "getChattingCompat", "()Lcom/tencent/mm/chatting/IChattingCompat;", "setChattingCompat", "(Lcom/tencent/mm/chatting/IChattingCompat;)V", "dispatchKeyEvent", "", "event", "Landroid/view/KeyEvent;", "onChattingFinishBegin", "", "onChattingFinishEnd", "onChattingUIEnter", "onChattingUIExit", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "Companion", "plugin-gamelife_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeChattingCompatUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/chatting/IChattingCompat$IChattingActionListener;", "Lcom/tencent/mm/chatting/IChattingCompat$IChattingFragmentFinish;", "Lcom/tencent/mm/chatting/IChattingCompat$IChattingActivityController;", "()V", "chattingCompat", "Lcom/tencent/mm/chatting/IChattingCompat;", "getChattingCompat", "()Lcom/tencent/mm/chatting/IChattingCompat;", "setChattingCompat", "(Lcom/tencent/mm/chatting/IChattingCompat;)V", "dispatchKeyEvent", "", "event", "Landroid/view/KeyEvent;", "onChattingFinishBegin", "", "onChattingFinishEnd", "onChattingUIEnter", "onChattingUIExit", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "Companion", "plugin-gamelife_release"})
 public abstract class GameLifeChattingCompatUI
   extends MMActivity
   implements a.b, a.c, a.d
 {
-  public static final GameLifeChattingCompatUI.a uKf = new GameLifeChattingCompatUI.a((byte)0);
+  public static final a ycA = new a((byte)0);
   private HashMap _$_findViewCache;
-  a sTw;
+  a vQb;
   
-  public final void ZK()
+  public void _$_clearFindViewByIdCache()
   {
-    ae.i("GameLife.ChattingCompatUI", "[onChattingUIEnter] ...");
-  }
-  
-  public boolean ZL()
-  {
-    ae.i("GameLife.ChattingCompatUI", "[onChattingUIExit] ...");
-    return true;
-  }
-  
-  public final void ZM()
-  {
-    ae.i("GameLife.ChattingCompatUI", "[onChattingFinishBegin] ...");
-  }
-  
-  public final void ZN()
-  {
-    ae.i("GameLife.ChattingCompatUI", "[onChattingFinishEnd] ...");
-    a locala = this.sTw;
-    if (locala != null) {
-      locala.ZG();
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
     }
   }
   
@@ -67,9 +49,34 @@ public abstract class GameLifeChattingCompatUI
     return localView1;
   }
   
+  public final void anA()
+  {
+    Log.i("GameLife.ChattingCompatUI", "[onChattingFinishEnd] ...");
+    a locala = this.vQb;
+    if (locala != null) {
+      locala.ant();
+    }
+  }
+  
+  public final void anx()
+  {
+    Log.i("GameLife.ChattingCompatUI", "[onChattingUIEnter] ...");
+  }
+  
+  public final boolean any()
+  {
+    Log.i("GameLife.ChattingCompatUI", "[onChattingUIExit] ...");
+    return true;
+  }
+  
+  public final void anz()
+  {
+    Log.i("GameLife.ChattingCompatUI", "[onChattingFinishBegin] ...");
+  }
+  
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    a locala = this.sTw;
+    a locala = this.vQb;
     if ((locala != null) && (locala.dispatchKeyEvent(paramKeyEvent) == true)) {
       return true;
     }
@@ -78,27 +85,27 @@ public abstract class GameLifeChattingCompatUI
   
   public void onCreate(Bundle paramBundle)
   {
-    Object localObject = a.a.fXk;
+    Object localObject = a.a.gCq;
     if (localObject != null) {}
     for (localObject = ((a.a.a)localObject).a((MMActivity)this);; localObject = null)
     {
-      this.sTw = ((a)localObject);
-      localObject = this.sTw;
+      this.vQb = ((a)localObject);
+      localObject = this.vQb;
       if (localObject != null) {
         ((a)localObject).a((a.b)this);
       }
-      localObject = this.sTw;
+      localObject = this.vQb;
       if (localObject != null) {
         ((a)localObject).a((a.c)this);
       }
-      localObject = this.sTw;
+      localObject = this.vQb;
       if (localObject != null) {
-        ((a)localObject).ZH();
+        ((a)localObject).anu();
       }
       super.onCreate(paramBundle);
-      paramBundle = this.sTw;
+      paramBundle = this.vQb;
       if (paramBundle != null) {
-        paramBundle.ZI();
+        paramBundle.anv();
       }
       getWindow().setSoftInputMode(50);
       return;
@@ -108,11 +115,11 @@ public abstract class GameLifeChattingCompatUI
   public void onDestroy()
   {
     super.onDestroy();
-    a locala = this.sTw;
+    a locala = this.vQb;
     if (locala != null) {
       locala.b((a.b)this);
     }
-    locala = this.sTw;
+    locala = this.vQb;
     if (locala != null) {
       locala.onDestroy();
     }
@@ -121,7 +128,7 @@ public abstract class GameLifeChattingCompatUI
   public void onPause()
   {
     super.onPause();
-    a locala = this.sTw;
+    a locala = this.vQb;
     if (locala != null) {
       locala.onPause();
     }
@@ -130,7 +137,7 @@ public abstract class GameLifeChattingCompatUI
   public void onResume()
   {
     super.onResume();
-    a locala = this.sTw;
+    a locala = this.vQb;
     if (locala != null) {
       locala.onResume();
     }
@@ -141,10 +148,13 @@ public abstract class GameLifeChattingCompatUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeChattingCompatUI$Companion;", "", "()V", "TAG", "", "plugin-gamelife_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.ui.GameLifeChattingCompatUI
  * JD-Core Version:    0.7.0.1
  */

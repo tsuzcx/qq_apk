@@ -7,72 +7,78 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 
 public abstract class at
-  extends RecyclerView.k
+  extends RecyclerView.j
 {
-  RecyclerView anl;
-  private final RecyclerView.m asH = new RecyclerView.m()
+  private final RecyclerView.l asS = new RecyclerView.l()
   {
-    boolean awM = false;
+    boolean awK = false;
     
-    public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
+    public final void onScrollStateChanged(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
     {
-      if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
-        this.awM = true;
+      super.onScrollStateChanged(paramAnonymousRecyclerView, paramAnonymousInt);
+      if ((paramAnonymousInt == 0) && (this.awK))
+      {
+        this.awK = false;
+        at.this.mz();
       }
     }
     
-    public final void b(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
+    public final void onScrolled(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
     {
-      super.b(paramAnonymousRecyclerView, paramAnonymousInt);
-      if ((paramAnonymousInt == 0) && (this.awM))
-      {
-        this.awM = false;
-        at.this.mv();
+      if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
+        this.awK = true;
       }
     }
   };
-  private Scroller awL;
+  private Scroller awJ;
+  RecyclerView mRecyclerView;
   
-  public abstract int a(RecyclerView.i parami, int paramInt1, int paramInt2);
+  public abstract int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2);
   
-  public abstract View a(RecyclerView.i parami);
+  public abstract View a(RecyclerView.LayoutManager paramLayoutManager);
   
-  public abstract int[] a(RecyclerView.i parami, View paramView);
+  public abstract int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView);
   
-  public final boolean aB(int paramInt1, int paramInt2)
+  public int[] aC(int paramInt1, int paramInt2)
   {
-    RecyclerView.i locali = this.anl.getLayoutManager();
-    if (locali == null) {}
+    this.awJ.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
+    return new int[] { this.awJ.getFinalX(), this.awJ.getFinalY() };
+  }
+  
+  public final boolean av(int paramInt1, int paramInt2)
+  {
+    RecyclerView.LayoutManager localLayoutManager = this.mRecyclerView.getLayoutManager();
+    if (localLayoutManager == null) {}
     for (;;)
     {
       return false;
-      if (this.anl.getAdapter() != null)
+      if (this.mRecyclerView.getAdapter() != null)
       {
-        int i = this.anl.getMinFlingVelocity();
+        int i = this.mRecyclerView.getMinFlingVelocity();
         if ((Math.abs(paramInt2) > i) || (Math.abs(paramInt1) > i))
         {
-          if (!(locali instanceof RecyclerView.s.b)) {
+          if (!(localLayoutManager instanceof RecyclerView.r.b)) {
             paramInt1 = 0;
           }
           while (paramInt1 != 0)
           {
             return true;
-            RecyclerView.s locals = g(locali);
-            if (locals == null)
+            RecyclerView.r localr = g(localLayoutManager);
+            if (localr == null)
             {
               paramInt1 = 0;
             }
             else
             {
-              paramInt1 = a(locali, paramInt1, paramInt2);
+              paramInt1 = a(localLayoutManager, paramInt1, paramInt2);
               if (paramInt1 == -1)
               {
                 paramInt1 = 0;
               }
               else
               {
-                locals.atQ = paramInt1;
-                locali.a(locals);
+                localr.atO = paramInt1;
+                localLayoutManager.startSmoothScroll(localr);
                 paramInt1 = 1;
               }
             }
@@ -82,74 +88,68 @@ public abstract class at
     }
   }
   
-  public final int[] aI(int paramInt1, int paramInt2)
-  {
-    this.awL.fling(0, 0, paramInt1, paramInt2, -2147483648, 2147483647, -2147483648, 2147483647);
-    return new int[] { this.awL.getFinalX(), this.awL.getFinalY() };
-  }
-  
   @Deprecated
-  protected ae f(RecyclerView.i parami)
+  protected ae f(RecyclerView.LayoutManager paramLayoutManager)
   {
-    if (!(parami instanceof RecyclerView.s.b)) {
+    if (!(paramLayoutManager instanceof RecyclerView.r.b)) {
       return null;
     }
-    new ae(this.anl.getContext())
+    new ae(this.mRecyclerView.getContext())
     {
       protected final float a(DisplayMetrics paramAnonymousDisplayMetrics)
       {
         return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
       }
       
-      protected final void a(View paramAnonymousView, RecyclerView.t paramAnonymoust, RecyclerView.s.a paramAnonymousa)
+      protected final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
       {
-        if (at.this.anl == null) {}
+        if (at.this.mRecyclerView == null) {}
         int i;
         int j;
         int k;
         do
         {
           return;
-          paramAnonymousView = at.this.a(at.this.anl.getLayoutManager(), paramAnonymousView);
+          paramAnonymousView = at.this.a(at.this.mRecyclerView.getLayoutManager(), paramAnonymousView);
           i = paramAnonymousView[0];
           j = paramAnonymousView[1];
-          k = cd(Math.max(Math.abs(i), Math.abs(j)));
+          k = cc(Math.max(Math.abs(i), Math.abs(j)));
         } while (k <= 0);
-        paramAnonymousa.a(i, j, k, this.VD);
+        paramAnonymousa.a(i, j, k, this.VQ);
       }
     };
   }
   
-  protected RecyclerView.s g(RecyclerView.i parami)
+  public void f(RecyclerView paramRecyclerView)
   {
-    return f(parami);
-  }
-  
-  public void j(RecyclerView paramRecyclerView)
-  {
-    if (this.anl == paramRecyclerView) {}
+    if (this.mRecyclerView == paramRecyclerView) {}
     do
     {
       return;
-      if (this.anl != null)
+      if (this.mRecyclerView != null)
       {
-        this.anl.b(this.asH);
-        this.anl.setOnFlingListener(null);
+        this.mRecyclerView.b(this.asS);
+        this.mRecyclerView.setOnFlingListener(null);
       }
-      this.anl = paramRecyclerView;
-    } while (this.anl == null);
-    if (this.anl.getOnFlingListener() != null) {
+      this.mRecyclerView = paramRecyclerView;
+    } while (this.mRecyclerView == null);
+    if (this.mRecyclerView.getOnFlingListener() != null) {
       throw new IllegalStateException("An instance of OnFlingListener already set.");
     }
-    this.anl.a(this.asH);
-    this.anl.setOnFlingListener(this);
-    this.awL = new Scroller(this.anl.getContext(), new DecelerateInterpolator());
-    mv();
+    this.mRecyclerView.a(this.asS);
+    this.mRecyclerView.setOnFlingListener(this);
+    this.awJ = new Scroller(this.mRecyclerView.getContext(), new DecelerateInterpolator());
+    mz();
   }
   
-  final void mv()
+  protected RecyclerView.r g(RecyclerView.LayoutManager paramLayoutManager)
   {
-    if (this.anl == null) {}
+    return f(paramLayoutManager);
+  }
+  
+  final void mz()
+  {
+    if (this.mRecyclerView == null) {}
     Object localObject;
     do
     {
@@ -159,18 +159,18 @@ public abstract class at
         do
         {
           return;
-          localObject = this.anl.getLayoutManager();
+          localObject = this.mRecyclerView.getLayoutManager();
         } while (localObject == null);
-        localView = a((RecyclerView.i)localObject);
+        localView = a((RecyclerView.LayoutManager)localObject);
       } while (localView == null);
-      localObject = a((RecyclerView.i)localObject, localView);
+      localObject = a((RecyclerView.LayoutManager)localObject, localView);
     } while ((localObject[0] == 0) && (localObject[1] == 0));
-    this.anl.a(localObject[0], localObject[1], null);
+    this.mRecyclerView.a(localObject[0], localObject[1], null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.v7.widget.at
  * JD-Core Version:    0.7.0.1
  */

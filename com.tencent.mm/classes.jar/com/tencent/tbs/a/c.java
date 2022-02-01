@@ -9,14 +9,14 @@ public enum c
   static
   {
     AppMethodBeat.i(174266);
-    MpK = new c("VERBOSE", 0, 2);
-    MpJ = new c("DEBUG", 1, 3);
-    MpL = new c("INFO", 2, 4);
-    MpM = new c("WARN", 3, 5);
-    MpN = new c("ERROR", 4, 6);
-    MpO = new c("ALL", 5, -2147483648);
-    MpP = new c("NONE", 6, 2147483647);
-    MpQ = new c[] { MpK, MpJ, MpL, MpM, MpN, MpO, MpP };
+    RSh = new c("VERBOSE", 0, 2);
+    RSg = new c("DEBUG", 1, 3);
+    RSi = new c("INFO", 2, 4);
+    RSj = new c("WARN", 3, 5);
+    RSk = new c("ERROR", 4, 6);
+    RSl = new c("ALL", 5, -2147483648);
+    RSm = new c("NONE", 6, 2147483647);
+    RSn = new c[] { RSh, RSg, RSi, RSj, RSk, RSl, RSm };
     AppMethodBeat.o(174266);
   }
   
@@ -31,8 +31,8 @@ public enum c
     switch (1.a[paramc.ordinal()])
     {
     default: 
-      if (paramc.h < MpK.h) {
-        paramc = "V-" + (MpK.h - paramc.h);
+      if (paramc.h < RSh.h) {
+        paramc = "V-" + (RSh.h - paramc.h);
       }
       break;
     }
@@ -50,31 +50,31 @@ public enum c
       continue;
       paramc = "E";
       continue;
-      paramc = "E+" + (paramc.h - MpN.h);
+      paramc = "E+" + (paramc.h - RSk.h);
     }
   }
   
-  public static c ahA(int paramInt)
+  public static c aqN(int paramInt)
   {
     switch (paramInt)
     {
     default: 
-      return MpP;
+      return RSm;
     case 2: 
-      return MpK;
+      return RSh;
     case 3: 
-      return MpJ;
+      return RSg;
     case 4: 
-      return MpL;
+      return RSi;
     case 5: 
-      return MpM;
+      return RSj;
     }
-    return MpN;
+    return RSk;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tbs.a.c
  * JD-Core Version:    0.7.0.1
  */

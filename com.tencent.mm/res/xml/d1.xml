@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.wallet.pwd.ui.WalletBalancePrivacyMMHeaderPreference android:key="wallet_balance_privacy_header" android:layout="@layout/bhb" />
-    <com.tencent.mm.plugin.wallet.pwd.ui.WalletBalancePrivacyCheckBoxPreference android:key="wallet_banlance_privacy_cb" android:summary="@string/h13" android:title="@string/h12" />
-    <PreferenceCategory />
-</PreferenceScreen>
+<whilte-list>
+    <checker name="ExplainQueryPlanChecker">
+        <element>sqlite_master</element>
+        <element>select *,rowid from snsinfo where snsinfo.snsid = ?</element>
+        <element>select *,rowid from snsinfo where snsinfo.snsid = ? limit ?</element>
+    </checker>
+    <checker name="AvoidAutoIncrementChecker" />
+    <checker name="AvoidSelectAllChecker" />
+    <checker name="WithoutRowIdBetterChecker">
+        <element>AppBrandStarApp</element>
+    </checker>
+    <checker name="PreparedStatementBetterChecker" />
+    <checker name="RedundantIndexChecker" />
+</whilte-list>

@@ -1,80 +1,40 @@
 package com.tencent.mm.ui;
 
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.Canvas;
-import android.text.SpannableString;
-import android.view.LayoutInflater;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.ui.chatting.s;
+import com.tencent.mm.ui.chatting.viewitems.e.g;
 
 public final class ac
-  extends LinearLayout
-  implements i.a
+  implements View.OnClickListener
 {
-  private HeaderContainer Jyg;
-  private ImageView Jyh;
-  private ImageView fQl;
-  private TextView ojK;
-  private TextView yLk;
+  com.tencent.mm.ui.chatting.e.a OIz;
   
-  public ac(Context paramContext)
+  public ac(com.tencent.mm.ui.chatting.e.a parama)
   {
-    super(paramContext);
-    AppMethodBeat.i(33518);
-    ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131494944, this, true);
-    this.fQl = ((ImageView)findViewById(2131297008));
-    this.Jyh = ((ImageView)findViewById(2131303625));
-    this.ojK = ((TextView)findViewById(2131302860));
-    this.yLk = ((TextView)findViewById(2131306244));
-    AppMethodBeat.o(33518);
+    this.OIz = parama;
   }
   
-  public final TextView getNickNameTV()
+  public final void onClick(View paramView)
   {
-    return this.ojK;
-  }
-  
-  public final ImageView getQrCodeIv()
-  {
-    return this.Jyh;
-  }
-  
-  protected final void onDraw(Canvas paramCanvas)
-  {
-    AppMethodBeat.i(33519);
-    super.onDraw(paramCanvas);
-    AppMethodBeat.o(33519);
-  }
-  
-  public final void setAccountName(String paramString)
-  {
-    AppMethodBeat.i(33520);
-    if (this.yLk != null) {
-      this.yLk.setText(getResources().getString(2131755271, new Object[] { paramString }));
+    AppMethodBeat.i(33517);
+    b localb = new b();
+    localb.bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/MediaIconClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    if ((paramView.getTag() instanceof e.g))
+    {
+      s.gA(paramView);
+      this.OIz.cmy();
     }
-    AppMethodBeat.o(33520);
-  }
-  
-  public final void setHeaderContainer(HeaderContainer paramHeaderContainer)
-  {
-    this.Jyg = paramHeaderContainer;
-  }
-  
-  public final void setNickNameTV(SpannableString paramSpannableString)
-  {
-    AppMethodBeat.i(33521);
-    if (this.ojK != null) {
-      this.ojK.setText(paramSpannableString);
-    }
-    AppMethodBeat.o(33521);
+    com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/MediaIconClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(33517);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.ac
  * JD-Core Version:    0.7.0.1
  */

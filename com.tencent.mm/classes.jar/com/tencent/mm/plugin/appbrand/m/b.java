@@ -1,62 +1,29 @@
 package com.tencent.mm.plugin.appbrand.m;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.appbrand.v8.IJSRuntime;
+import com.tencent.mm.appbrand.v8.IJSRuntime.Config;
+import com.tencent.mm.appbrand.v8.f;
 
-final class b
+public final class b
+  extends c
 {
-  private volatile int count;
-  private final LinkedList<Runnable> lZe;
-  
-  b()
+  public b(IJSRuntime.Config paramConfig)
   {
-    AppMethodBeat.i(147340);
-    this.lZe = new LinkedList();
-    this.count = 2;
-    AppMethodBeat.o(147340);
+    super(paramConfig);
   }
   
-  public final void X(Runnable paramRunnable)
+  protected final IJSRuntime g(IJSRuntime.Config paramConfig)
   {
-    AppMethodBeat.i(147341);
-    Object localObject = null;
-    if (paramRunnable != null) {}
-    try
-    {
-      this.lZe.addLast(paramRunnable);
-      int i = this.count - 1;
-      this.count = i;
-      paramRunnable = localObject;
-      if (i <= 0)
-      {
-        paramRunnable = localObject;
-        if (this.lZe.size() > 0)
-        {
-          paramRunnable = new LinkedList();
-          paramRunnable.addAll(this.lZe);
-          this.lZe.clear();
-        }
-      }
-      if (paramRunnable != null)
-      {
-        paramRunnable = paramRunnable.iterator();
-        while (paramRunnable.hasNext()) {
-          ((Runnable)paramRunnable.next()).run();
-        }
-      }
-      AppMethodBeat.o(147341);
-    }
-    finally
-    {
-      AppMethodBeat.o(147341);
-    }
+    AppMethodBeat.i(144157);
+    paramConfig = f.d(paramConfig);
+    AppMethodBeat.o(144157);
+    return paramConfig;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.m.b
  * JD-Core Version:    0.7.0.1
  */

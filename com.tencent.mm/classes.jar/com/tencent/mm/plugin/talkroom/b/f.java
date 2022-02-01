@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.talkroom.b;
 
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.k;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
 
 public abstract class f
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public abstract String erF();
+  public abstract String fui();
   
-  public abstract int erG();
+  public abstract int fuj();
 }
 
 

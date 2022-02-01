@@ -1,38 +1,46 @@
 package com.tencent.mm.plugin.multitalk.model;
 
-import com.tencent.mm.plugin.multitalk.ui.widget.i;
+import com.tencent.mm.plugin.multitalk.ui.widget.o;
 
 public abstract interface e
 {
-  public abstract void a(t.a parama);
+  public abstract void a(v.a parama);
   
-  public abstract void a(i parami);
+  public abstract void a(o paramo);
   
-  public abstract void dgf();
+  public abstract void aFS(String paramString);
   
-  public abstract void dgg();
+  public abstract void aFT(String paramString);
   
-  public abstract void dor();
+  public abstract void dZZ();
   
-  public abstract boolean dsg();
+  public abstract void eaa();
   
-  public abstract void dsl();
+  public abstract void eie();
   
-  public abstract void dsm();
+  public abstract boolean emo();
   
-  public abstract void dsn();
+  public abstract void emt();
   
-  public abstract void dso();
+  public abstract void emu();
   
-  public abstract void gF(int paramInt1, int paramInt2);
+  public abstract void emv();
   
-  public abstract void oN(boolean paramBoolean);
+  public abstract void emw();
   
-  public abstract void oO(boolean paramBoolean);
+  public abstract void emx();
   
-  public abstract void oP(boolean paramBoolean);
+  public abstract void emy();
+  
+  public abstract void hh(int paramInt1, int paramInt2);
   
   public abstract void onError(int paramInt);
+  
+  public abstract void rv(boolean paramBoolean);
+  
+  public abstract void rw(boolean paramBoolean);
+  
+  public abstract void rx(boolean paramBoolean);
 }
 
 

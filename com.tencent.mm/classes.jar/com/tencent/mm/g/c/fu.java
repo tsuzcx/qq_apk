@@ -2,33 +2,54 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class fu
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eNW = "card_id".hashCode();
-  private static final int faa = "retryCount".hashCode();
-  private static final int flC;
-  private static final int fpt;
-  private static final int fuf = "state_flag".hashCode();
+  private static final int fMs = "score".hashCode();
+  private static final int fXn;
+  private static final int fXo;
+  private static final int fXp;
+  private static final int fXq;
+  private static final int fXr;
+  private static final int fXs;
+  private static final int fje = "chatroom".hashCode();
+  private static final int fnV;
+  private static final int fqf;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eND = true;
-  private boolean eZP = true;
-  public String field_card_id;
-  public int field_retryCount;
-  public long field_seq;
-  public int field_state_flag;
-  public long field_update_time;
-  private boolean flu = true;
-  private boolean fpo = true;
-  private boolean fue = true;
+  private boolean fMr = true;
+  private boolean fXh = true;
+  private boolean fXi = true;
+  private boolean fXj = true;
+  private boolean fXk = true;
+  private boolean fXl = true;
+  private boolean fXm = true;
+  public String field_chatroom;
+  public String field_daySec;
+  public int field_disRedDotCount;
+  public int field_enterCount;
+  public int field_isMute;
+  public String field_nickname;
+  public float field_score;
+  public int field_sendCount;
+  public long field_stayTime;
+  public int field_unReadCount;
+  private boolean fja = true;
+  private boolean fnG = true;
+  private boolean fqb = true;
   
   static
   {
-    flC = "update_time".hashCode();
-    fpt = "seq".hashCode();
+    fXn = "daySec".hashCode();
+    fqf = "nickname".hashCode();
+    fXo = "isMute".hashCode();
+    fnV = "unReadCount".hashCode();
+    fXp = "sendCount".hashCode();
+    fXq = "enterCount".hashCode();
+    fXr = "disRedDotCount".hashCode();
+    fXs = "stayTime".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -44,26 +65,35 @@ public abstract class fu
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eNW != k) {
-        break label65;
+      if (fje != k) {
+        break label60;
       }
-      this.field_card_id = paramCursor.getString(i);
-      this.eND = true;
+      this.field_chatroom = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (fuf == k) {
-        this.field_state_flag = paramCursor.getInt(i);
-      } else if (flC == k) {
-        this.field_update_time = paramCursor.getLong(i);
-      } else if (fpt == k) {
-        this.field_seq = paramCursor.getLong(i);
-      } else if (faa == k) {
-        this.field_retryCount = paramCursor.getInt(i);
+      label60:
+      if (fXn == k) {
+        this.field_daySec = paramCursor.getString(i);
+      } else if (fqf == k) {
+        this.field_nickname = paramCursor.getString(i);
+      } else if (fXo == k) {
+        this.field_isMute = paramCursor.getInt(i);
+      } else if (fnV == k) {
+        this.field_unReadCount = paramCursor.getInt(i);
+      } else if (fXp == k) {
+        this.field_sendCount = paramCursor.getInt(i);
+      } else if (fXq == k) {
+        this.field_enterCount = paramCursor.getInt(i);
+      } else if (fXr == k) {
+        this.field_disRedDotCount = paramCursor.getInt(i);
+      } else if (fXs == k) {
+        this.field_stayTime = paramCursor.getLong(i);
+      } else if (fMs == k) {
+        this.field_score = paramCursor.getFloat(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -73,20 +103,35 @@ public abstract class fu
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eND) {
-      localContentValues.put("card_id", this.field_card_id);
+    if (this.fja) {
+      localContentValues.put("chatroom", this.field_chatroom);
     }
-    if (this.fue) {
-      localContentValues.put("state_flag", Integer.valueOf(this.field_state_flag));
+    if (this.fXh) {
+      localContentValues.put("daySec", this.field_daySec);
     }
-    if (this.flu) {
-      localContentValues.put("update_time", Long.valueOf(this.field_update_time));
+    if (this.fqb) {
+      localContentValues.put("nickname", this.field_nickname);
     }
-    if (this.fpo) {
-      localContentValues.put("seq", Long.valueOf(this.field_seq));
+    if (this.fXi) {
+      localContentValues.put("isMute", Integer.valueOf(this.field_isMute));
     }
-    if (this.eZP) {
-      localContentValues.put("retryCount", Integer.valueOf(this.field_retryCount));
+    if (this.fnG) {
+      localContentValues.put("unReadCount", Integer.valueOf(this.field_unReadCount));
+    }
+    if (this.fXj) {
+      localContentValues.put("sendCount", Integer.valueOf(this.field_sendCount));
+    }
+    if (this.fXk) {
+      localContentValues.put("enterCount", Integer.valueOf(this.field_enterCount));
+    }
+    if (this.fXl) {
+      localContentValues.put("disRedDotCount", Integer.valueOf(this.field_disRedDotCount));
+    }
+    if (this.fXm) {
+      localContentValues.put("stayTime", Long.valueOf(this.field_stayTime));
+    }
+    if (this.fMr) {
+      localContentValues.put("score", Float.valueOf(this.field_score));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -96,7 +141,7 @@ public abstract class fu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.c.fu
  * JD-Core Version:    0.7.0.1
  */

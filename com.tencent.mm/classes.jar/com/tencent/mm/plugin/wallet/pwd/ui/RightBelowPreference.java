@@ -6,14 +6,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SummaryBelowPreference;
 
 public class RightBelowPreference
   extends SummaryBelowPreference
 {
-  private CharSequence DcU;
+  private CharSequence HII;
   
   public RightBelowPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,10 +25,10 @@ public class RightBelowPreference
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void O(CharSequence paramCharSequence)
+  public final void S(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(69585);
-    this.DcU = paramCharSequence;
+    this.HII = paramCharSequence;
     notifyChanged();
     AppMethodBeat.o(69585);
   }
@@ -37,10 +37,10 @@ public class RightBelowPreference
   {
     AppMethodBeat.i(69584);
     super.onBindView(paramView);
-    if (!bu.ah(this.DcU)) {
-      ((TextView)paramView.findViewById(2131304183)).setText(this.DcU);
+    if (!Util.isNullOrNil(this.HII)) {
+      ((TextView)paramView.findViewById(2131307092)).setText(this.HII);
     }
-    paramView.findViewById(2131304172).setVisibility(8);
+    paramView.findViewById(2131307076).setVisibility(8);
     AppMethodBeat.o(69584);
   }
   
@@ -48,7 +48,7 @@ public class RightBelowPreference
   {
     AppMethodBeat.i(69583);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ((ViewGroup)((ViewGroup)paramViewGroup.findViewById(2131298739)).findViewById(16908312)).addView((ViewGroup)View.inflate(this.mContext, 2131496013, null));
+    ((ViewGroup)((ViewGroup)paramViewGroup.findViewById(2131299180)).findViewById(16908312)).addView((ViewGroup)View.inflate(this.mContext, 2131496993, null));
     AppMethodBeat.o(69583);
     return paramViewGroup;
   }

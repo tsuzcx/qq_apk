@@ -18,15 +18,15 @@ import java.lang.reflect.Method;
 
 public final class x
 {
-  public static final Rect amD = new Rect();
-  private static Class<?> amE;
+  public static final Rect amQ = new Rect();
+  private static Class<?> amR;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 18) {}
     try
     {
-      amE = Class.forName("android.graphics.Insets");
+      amR = Class.forName("android.graphics.Insets");
       return;
     }
     catch (ClassNotFoundException localClassNotFoundException) {}
@@ -62,7 +62,7 @@ public final class x
   
   public static Rect r(Drawable paramDrawable)
   {
-    if (amE != null) {}
+    if (amR != null) {}
     for (;;)
     {
       Object localObject;
@@ -78,7 +78,7 @@ public final class x
           break label207;
         }
         localRect = new Rect();
-        Field[] arrayOfField = amE.getFields();
+        Field[] arrayOfField = amR.getFields();
         int k = arrayOfField.length;
         j = 0;
         paramDrawable = localRect;
@@ -113,7 +113,7 @@ public final class x
             localRect.left = paramDrawable.getInt(localObject);
             break label288;
             label207:
-            paramDrawable = amD;
+            paramDrawable = amQ;
             label211:
             return paramDrawable;
             localRect.top = paramDrawable.getInt(localObject);
@@ -143,7 +143,7 @@ public final class x
       if ((arrayOfInt != null) && (arrayOfInt.length != 0)) {
         break label52;
       }
-      paramDrawable.setState(av.jT);
+      paramDrawable.setState(av.jV);
     }
     for (;;)
     {
@@ -186,7 +186,7 @@ public final class x
       }
       if ((paramDrawable instanceof f))
       {
-        paramDrawable = ((f)paramDrawable).eB();
+        paramDrawable = ((f)paramDrawable).eF();
       }
       else if ((paramDrawable instanceof c))
       {

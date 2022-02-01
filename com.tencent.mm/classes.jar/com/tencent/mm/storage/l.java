@@ -2,44 +2,44 @@ package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.ac;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class l
   extends ac
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(32825);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "msgListDataId";
-    locala.IBN.put("msgListDataId", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "msgListDataId";
+    localMAutoDBInfo.colsMap.put("msgListDataId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" msgListDataId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "msgListDataId";
-    locala.columns[1] = "sessionName";
-    locala.IBN.put("sessionName", "TEXT default '' ");
+    localMAutoDBInfo.primaryKey = "msgListDataId";
+    localMAutoDBInfo.columns[1] = "sessionName";
+    localMAutoDBInfo.colsMap.put("sessionName", "TEXT default '' ");
     localStringBuilder.append(" sessionName TEXT default '' ");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(32825);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.l
  * JD-Core Version:    0.7.0.1
  */

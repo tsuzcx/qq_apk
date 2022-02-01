@@ -6,254 +6,252 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.x;
-import com.tencent.mm.n.e;
-import com.tencent.mm.n.g;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.n.h;
 import com.tencent.mm.plugin.profile.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.base.preference.f;
 
 public class ProfileSettingUI
   extends MMPreference
-  implements n.b
+  implements MStorageEx.IOnStorageChange
 {
-  private an pSY;
-  private b xki;
-  
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(186539);
-    if (((paramObject instanceof String)) && (this.pSY.field_username.equals((String)paramObject)))
-    {
-      bc.aCg();
-      this.pSY = com.tencent.mm.model.c.azF().BH((String)paramObject);
-      if (this.pSY != null)
-      {
-        this.xki.pSY = this.pSY;
-        initView();
-        getPreferenceScreen().notifyDataSetChanged();
-      }
-    }
-    AppMethodBeat.o(186539);
-  }
+  private b Bif;
+  private as rjX;
   
   public int getResourceId()
   {
-    return 2131951767;
+    return 2132017248;
   }
   
   public void initView()
   {
     int j = 0;
-    AppMethodBeat.i(186536);
-    Preference localPreference = getPreferenceScreen().aXe("setting_remark");
+    AppMethodBeat.i(231895);
+    Preference localPreference = getPreferenceScreen().bmg("setting_remark");
     label66:
     int i;
-    if (!x.AQ(this.pSY.field_username)) {
-      if (an.aUq(this.pSY.field_username))
+    if (!ab.Jv(this.rjX.field_username)) {
+      if (as.bjp(this.rjX.field_username))
       {
-        localPreference.setTitle(2131757927);
-        localPreference.setSummary(k.c(this, this.pSY.field_conRemark));
-        localPreference = getPreferenceScreen().aXe("setting_permission");
-        if ((com.tencent.mm.contact.c.lO(this.pSY.field_type)) || (!getIntent().getBooleanExtra("User_Verify", false))) {
+        localPreference.setTitle(2131758167);
+        localPreference.setSummary(l.c(this, this.rjX.field_conRemark));
+        localPreference = getPreferenceScreen().bmg("setting_permission");
+        if ((com.tencent.mm.contact.c.oR(this.rjX.field_type)) || (!getIntent().getBooleanExtra("User_Verify", false))) {
           break label479;
         }
         i = 1;
         label106:
         if (i == 0)
         {
-          if (an.aUq(this.pSY.field_username))
+          if (as.bjp(this.rjX.field_username))
           {
             i = j;
-            if (g.acL().getInt("SnsWxWorkPermissionEntrance", 0) == 1) {
+            if (h.aqJ().getInt("SnsWxWorkPermissionEntrance", 0) == 1) {
               i = 1;
             }
-            if ((i == 0) || (!an.aUq(this.pSY.field_username)) || (!"3552365301".equals(this.pSY.field_openImAppid))) {
+            if ((i == 0) || (!as.bjp(this.rjX.field_username)) || (!"3552365301".equals(this.rjX.field_openImAppid))) {
               break label493;
             }
           }
-          if ((x.AQ(this.pSY.field_username)) || (!com.tencent.mm.contact.c.lO(this.pSY.field_type))) {
+          if ((ab.Jv(this.rjX.field_username)) || (!com.tencent.mm.contact.c.oR(this.rjX.field_type))) {
             break label493;
           }
         }
-        if (!"3552365301".equals(this.pSY.field_openImAppid)) {
+        if (!"3552365301".equals(this.rjX.field_openImAppid)) {
           break label484;
         }
-        localPreference.setTitle(2131757748);
+        localPreference.setTitle(2131757985);
         label219:
-        localPreference = getPreferenceScreen().aXe("setting_send_card");
-        if ((!com.tencent.mm.contact.c.lO(this.pSY.field_type)) || (x.AQ(this.pSY.field_username))) {
+        localPreference = getPreferenceScreen().bmg("setting_send_card");
+        if ((!com.tencent.mm.contact.c.oR(this.rjX.field_type)) || (ab.Jv(this.rjX.field_username))) {
           break label526;
         }
-        i = 2131757812;
-        if (this.pSY.eQV != 1) {
+        i = 2131758052;
+        if (this.rjX.fuA != 1) {
           break label509;
         }
-        i = 2131757810;
+        i = 2131758050;
         label274:
         localPreference.setTitle(i);
         label279:
-        if ((com.tencent.mm.contact.c.lO(this.pSY.field_type)) && (!x.AQ(this.pSY.field_username))) {
+        if ((com.tencent.mm.contact.c.oR(this.rjX.field_type)) && (!ab.Jv(this.rjX.field_username))) {
           break label542;
         }
-        getPreferenceScreen().cT("setting_star", true);
+        getPreferenceScreen().jdMethod_do("setting_star", true);
         label318:
-        if (!x.AQ(this.pSY.field_username)) {
+        if (!ab.Jv(this.rjX.field_username)) {
           break label569;
         }
-        getPreferenceScreen().cT("setting_blacklist", true);
+        getPreferenceScreen().jdMethod_do("setting_blacklist", true);
       }
     }
     for (;;)
     {
-      if ((x.AQ(this.pSY.field_username)) || (!com.tencent.mm.contact.c.lO(this.pSY.field_type))) {
-        getPreferenceScreen().cT("setting_report", true);
+      if ((ab.Jv(this.rjX.field_username)) || (!com.tencent.mm.contact.c.oR(this.rjX.field_type))) {
+        getPreferenceScreen().jdMethod_do("setting_report", true);
       }
-      if (!com.tencent.mm.contact.c.lO(this.pSY.field_type)) {
-        getPreferenceScreen().cT("setting_shortcut", true);
+      if (!com.tencent.mm.contact.c.oR(this.rjX.field_type)) {
+        getPreferenceScreen().jdMethod_do("setting_shortcut", true);
       }
-      if ((!com.tencent.mm.contact.c.lO(this.pSY.field_type)) || (x.AQ(this.pSY.field_username))) {
-        getPreferenceScreen().cT("setting_delete", true);
+      if ((!com.tencent.mm.contact.c.oR(this.rjX.field_type)) || (ab.Jv(this.rjX.field_username))) {
+        getPreferenceScreen().jdMethod_do("setting_delete", true);
       }
-      AppMethodBeat.o(186536);
+      AppMethodBeat.o(231895);
       return;
-      localPreference.setTitle(2131757731);
+      localPreference.setTitle(2131757968);
       break;
-      getPreferenceScreen().cT("setting_remark", true);
+      getPreferenceScreen().jdMethod_do("setting_remark", true);
       break label66;
       label479:
       i = 0;
       break label106;
       label484:
-      localPreference.setTitle(2131761879);
+      localPreference.setTitle(2131763884);
       break label219;
       label493:
-      getPreferenceScreen().cT("setting_permission", true);
+      getPreferenceScreen().jdMethod_do("setting_permission", true);
       break label219;
       label509:
-      if (this.pSY.eQV != 2) {
+      if (this.rjX.fuA != 2) {
         break label274;
       }
-      i = 2131757811;
+      i = 2131758051;
       break label274;
       label526:
-      getPreferenceScreen().cT("setting_send_card", true);
+      getPreferenceScreen().jdMethod_do("setting_send_card", true);
       break label279;
       label542:
-      ((CheckBoxPreference)getPreferenceScreen().aXe("setting_star")).setChecked(this.pSY.adx());
+      ((CheckBoxPreference)getPreferenceScreen().bmg("setting_star")).setChecked(this.rjX.arA());
       break label318;
       label569:
-      ((CheckBoxPreference)getPreferenceScreen().aXe("setting_blacklist")).setChecked(this.pSY.adv());
+      ((CheckBoxPreference)getPreferenceScreen().bmg("setting_blacklist")).setChecked(this.rjX.ary());
     }
   }
   
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(186535);
+    AppMethodBeat.i(231894);
     super.onCreate(paramBundle);
-    paramBundle = bu.nullAsNil(getIntent().getStringExtra("Contact_User"));
-    if (bu.isNullOrNil(paramBundle))
+    paramBundle = Util.nullAsNil(getIntent().getStringExtra("Contact_User"));
+    if (Util.isNullOrNil(paramBundle))
     {
-      ae.e("MicroMsg.ProfileSettingUI", "username is null %s", new Object[] { paramBundle });
+      Log.e("MicroMsg.ProfileSettingUI", "username is null %s", new Object[] { paramBundle });
       finish();
-      AppMethodBeat.o(186535);
+      AppMethodBeat.o(231894);
       return;
     }
-    bc.aCg();
-    this.pSY = com.tencent.mm.model.c.azF().BH(paramBundle);
-    this.xki = new b(this, this.pSY);
-    setMMTitle(2131766376);
+    bg.aVF();
+    this.rjX = com.tencent.mm.model.c.aSN().Kn(paramBundle);
+    this.Bif = new b(this, this.rjX);
+    setMMTitle(2131764068);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(186534);
+        AppMethodBeat.i(231893);
         ProfileSettingUI.this.finish();
-        AppMethodBeat.o(186534);
+        AppMethodBeat.o(231893);
         return true;
       }
     });
     initView();
-    bc.aCg();
-    com.tencent.mm.model.c.azF().a(this);
-    AppMethodBeat.o(186535);
+    bg.aVF();
+    com.tencent.mm.model.c.aSN().add(this);
+    AppMethodBeat.o(231894);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(186537);
-    this.xki.destroy();
-    bc.aCg();
-    com.tencent.mm.model.c.azF().b(this);
+    AppMethodBeat.i(231896);
+    this.Bif.destroy();
+    bg.aVF();
+    com.tencent.mm.model.c.aSN().remove(this);
     super.onDestroy();
-    AppMethodBeat.o(186537);
+    AppMethodBeat.o(231896);
   }
   
-  public boolean onPreferenceTreeClick(f paramf, Preference paramPreference)
+  public void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
-    AppMethodBeat.i(186538);
+    AppMethodBeat.i(231898);
+    if (((paramObject instanceof String)) && (this.rjX.field_username.equals((String)paramObject)))
+    {
+      bg.aVF();
+      this.rjX = com.tencent.mm.model.c.aSN().Kn((String)paramObject);
+      if (this.rjX != null)
+      {
+        this.Bif.rjX = this.rjX;
+        initView();
+        getPreferenceScreen().notifyDataSetChanged();
+      }
+    }
+    AppMethodBeat.o(231898);
+  }
+  
+  public boolean onPreferenceTreeClick(com.tencent.mm.ui.base.preference.f paramf, Preference paramPreference)
+  {
+    AppMethodBeat.i(231897);
     paramf = paramPreference.mKey;
-    ae.i("MicroMsg.ProfileSettingUI", paramf + " item has been clicked!");
+    Log.i("MicroMsg.ProfileSettingUI", paramf + " item has been clicked!");
     if (paramf.equals("setting_remark"))
     {
-      this.xki.FN(1);
-      AppMethodBeat.o(186538);
+      this.Bif.Lc(1);
+      AppMethodBeat.o(231897);
       return true;
     }
     if (paramf.equals("setting_permission"))
     {
-      this.xki.FN(3);
-      AppMethodBeat.o(186538);
+      this.Bif.Lc(3);
+      AppMethodBeat.o(231897);
       return true;
     }
     if (paramf.equals("setting_send_card"))
     {
-      this.xki.FN(4);
-      AppMethodBeat.o(186538);
+      this.Bif.Lc(4);
+      AppMethodBeat.o(231897);
       return true;
     }
     if (paramf.equals("setting_shortcut"))
     {
-      this.xki.FN(7);
-      AppMethodBeat.o(186538);
+      this.Bif.Lc(7);
+      AppMethodBeat.o(231897);
       return true;
     }
     if (paramf.equals("setting_star"))
     {
-      this.xki.FN(2);
-      AppMethodBeat.o(186538);
+      this.Bif.Lc(2);
+      AppMethodBeat.o(231897);
       return true;
     }
     if (paramf.equals("setting_blacklist"))
     {
-      this.xki.FN(5);
-      AppMethodBeat.o(186538);
+      this.Bif.Lc(5);
+      AppMethodBeat.o(231897);
       return true;
     }
     if (paramf.equals("setting_report"))
     {
-      this.xki.FN(9);
-      AppMethodBeat.o(186538);
+      this.Bif.Lc(9);
+      AppMethodBeat.o(231897);
       return true;
     }
     if (paramf.equals("setting_delete"))
     {
-      this.xki.FN(6);
-      AppMethodBeat.o(186538);
+      this.Bif.Lc(6);
+      AppMethodBeat.o(231897);
       return true;
     }
-    AppMethodBeat.o(186538);
+    AppMethodBeat.o(231897);
     return false;
   }
   
@@ -265,7 +263,7 @@ public class ProfileSettingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.ProfileSettingUI
  * JD-Core Version:    0.7.0.1
  */

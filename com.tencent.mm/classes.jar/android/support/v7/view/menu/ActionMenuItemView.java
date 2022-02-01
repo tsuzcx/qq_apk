@@ -24,16 +24,16 @@ public class ActionMenuItemView
   extends AppCompatTextView
   implements p.a, ActionMenuView.a, View.OnClickListener
 {
-  private CharSequence Hd;
-  private Drawable Xj;
-  j aeI;
-  h.b aeJ;
-  private ab aeK;
-  b aeL;
-  private boolean aeM;
-  private boolean aeN;
-  private int aeO;
-  private int aeP;
+  private CharSequence Hn;
+  private Drawable Xw;
+  j aeV;
+  h.b aeW;
+  private ab aeX;
+  b aeY;
+  private boolean aeZ;
+  private boolean afa;
+  private int afb;
+  private int afc;
   private int mMinWidth;
   
   public ActionMenuItemView(Context paramContext, AttributeSet paramAttributeSet)
@@ -45,17 +45,17 @@ public class ActionMenuItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     Resources localResources = paramContext.getResources();
-    this.aeM = hB();
+    this.aeZ = hK();
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ActionMenuItemView, paramInt, 0);
     this.mMinWidth = paramContext.getDimensionPixelSize(0, 0);
     paramContext.recycle();
-    this.aeP = ((int)(localResources.getDisplayMetrics().density * 32.0F + 0.5F));
+    this.afc = ((int)(localResources.getDisplayMetrics().density * 32.0F + 0.5F));
     setOnClickListener(this);
-    this.aeO = -1;
+    this.afb = -1;
     setSaveEnabled(false);
   }
   
-  private boolean hB()
+  private boolean hK()
   {
     Configuration localConfiguration = getContext().getResources().getConfiguration();
     int i = localConfiguration.screenWidthDp;
@@ -63,24 +63,24 @@ public class ActionMenuItemView
     return (i >= 480) || ((i >= 640) && (j >= 480)) || (localConfiguration.orientation == 2);
   }
   
-  private void hC()
+  private void hL()
   {
     int k = 0;
     Object localObject2 = null;
     int i;
-    if (!TextUtils.isEmpty(this.Hd))
+    if (!TextUtils.isEmpty(this.Hn))
     {
       i = 1;
-      if (this.Xj != null)
+      if (this.Xw != null)
       {
         j = k;
-        if (!this.aeI.ii()) {
+        if (!this.aeV.is()) {
           break label54;
         }
-        if (!this.aeM)
+        if (!this.aeZ)
         {
           j = k;
-          if (!this.aeN) {
+          if (!this.afa) {
             break label54;
           }
         }
@@ -91,10 +91,10 @@ public class ActionMenuItemView
       if (i == 0) {
         break label141;
       }
-      localObject1 = this.Hd;
+      localObject1 = this.Hn;
       label68:
       setText((CharSequence)localObject1);
-      localObject1 = this.aeI.getContentDescription();
+      localObject1 = this.aeV.getContentDescription();
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         break label159;
       }
@@ -105,7 +105,7 @@ public class ActionMenuItemView
       label98:
       setContentDescription((CharSequence)localObject1);
       label104:
-      localObject1 = this.aeI.getTooltipText();
+      localObject1 = this.aeV.getTooltipText();
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         break label180;
       }
@@ -117,7 +117,7 @@ public class ActionMenuItemView
     label147:
     label159:
     label168:
-    for (Object localObject1 = localObject2;; localObject1 = this.aeI.getTitle())
+    for (Object localObject1 = localObject2;; localObject1 = this.aeV.getTitle())
     {
       bb.a(this, (CharSequence)localObject1);
       return;
@@ -125,7 +125,7 @@ public class ActionMenuItemView
       break;
       localObject1 = null;
       break label68;
-      localObject1 = this.aeI.getTitle();
+      localObject1 = this.aeV.getTitle();
       break label98;
       setContentDescription((CharSequence)localObject1);
       break label104;
@@ -136,7 +136,7 @@ public class ActionMenuItemView
   
   public final void a(j paramj)
   {
-    this.aeI = paramj;
+    this.aeV = paramj;
     setIcon(paramj.getIcon());
     setTitle(paramj.a(this));
     setId(paramj.getItemId());
@@ -145,29 +145,29 @@ public class ActionMenuItemView
     {
       setVisibility(i);
       setEnabled(paramj.isEnabled());
-      if ((paramj.hasSubMenu()) && (this.aeK == null)) {
-        this.aeK = new a();
+      if ((paramj.hasSubMenu()) && (this.aeX == null)) {
+        this.aeX = new a();
       }
       return;
     }
   }
   
-  public final boolean bA()
+  public final boolean bC()
   {
     return true;
   }
   
   public j getItemData()
   {
-    return this.aeI;
+    return this.aeV;
   }
   
-  public final boolean hD()
+  public final boolean hM()
   {
-    return (hasText()) && (this.aeI.getIcon() == null);
+    return (hasText()) && (this.aeV.getIcon() == null);
   }
   
-  public final boolean hE()
+  public final boolean hN()
   {
     return hasText();
   }
@@ -179,23 +179,23 @@ public class ActionMenuItemView
   
   public void onClick(View paramView)
   {
-    if (this.aeJ != null) {
-      this.aeJ.f(this.aeI);
+    if (this.aeW != null) {
+      this.aeW.f(this.aeV);
     }
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    this.aeM = hB();
-    hC();
+    this.aeZ = hK();
+    hL();
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
   {
     boolean bool = hasText();
-    if ((bool) && (this.aeO >= 0)) {
-      super.setPadding(this.aeO, getPaddingTop(), getPaddingRight(), getPaddingBottom());
+    if ((bool) && (this.afb >= 0)) {
+      super.setPadding(this.afb, getPaddingTop(), getPaddingRight(), getPaddingBottom());
     }
     super.onMeasure(paramInt1, paramInt2);
     int i = View.MeasureSpec.getMode(paramInt1);
@@ -207,8 +207,8 @@ public class ActionMenuItemView
       if ((i != 1073741824) && (this.mMinWidth > 0) && (j < paramInt1)) {
         super.onMeasure(View.MeasureSpec.makeMeasureSpec(paramInt1, 1073741824), paramInt2);
       }
-      if ((!bool) && (this.Xj != null)) {
-        super.setPadding((getMeasuredWidth() - this.Xj.getBounds().width()) / 2, getPaddingTop(), getPaddingRight(), getPaddingBottom());
+      if ((!bool) && (this.Xw != null)) {
+        super.setPadding((getMeasuredWidth() - this.Xw.getBounds().width()) / 2, getPaddingTop(), getPaddingRight(), getPaddingBottom());
       }
       return;
     }
@@ -221,7 +221,7 @@ public class ActionMenuItemView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.aeI.hasSubMenu()) && (this.aeK != null) && (this.aeK.onTouch(this, paramMotionEvent))) {
+    if ((this.aeV.hasSubMenu()) && (this.aeX != null) && (this.aeX.onTouch(this, paramMotionEvent))) {
       return true;
     }
     return super.onTouchEvent(paramMotionEvent);
@@ -233,18 +233,18 @@ public class ActionMenuItemView
   
   public void setExpandedFormat(boolean paramBoolean)
   {
-    if (this.aeN != paramBoolean)
+    if (this.afa != paramBoolean)
     {
-      this.aeN = paramBoolean;
-      if (this.aeI != null) {
-        this.aeI.aaD.hU();
+      this.afa = paramBoolean;
+      if (this.aeV != null) {
+        this.aeV.aaQ.ie();
       }
     }
   }
   
   public void setIcon(Drawable paramDrawable)
   {
-    this.Xj = paramDrawable;
+    this.Xw = paramDrawable;
     if (paramDrawable != null)
     {
       int m = paramDrawable.getIntrinsicWidth();
@@ -252,46 +252,46 @@ public class ActionMenuItemView
       int j = k;
       int i = m;
       float f;
-      if (m > this.aeP)
+      if (m > this.afc)
       {
-        f = this.aeP / m;
-        i = this.aeP;
+        f = this.afc / m;
+        i = this.afc;
         j = (int)(k * f);
       }
       m = j;
       k = i;
-      if (j > this.aeP)
+      if (j > this.afc)
       {
-        f = this.aeP / j;
-        m = this.aeP;
+        f = this.afc / j;
+        m = this.afc;
         k = (int)(i * f);
       }
       paramDrawable.setBounds(0, 0, k, m);
     }
     setCompoundDrawables(paramDrawable, null, null, null);
-    hC();
+    hL();
   }
   
   public void setItemInvoker(h.b paramb)
   {
-    this.aeJ = paramb;
+    this.aeW = paramb;
   }
   
   public void setPadding(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.aeO = paramInt1;
+    this.afb = paramInt1;
     super.setPadding(paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
   public void setPopupCallback(b paramb)
   {
-    this.aeL = paramb;
+    this.aeY = paramb;
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    this.Hd = paramCharSequence;
-    hC();
+    this.Hn = paramCharSequence;
+    hL();
   }
   
   final class a
@@ -302,24 +302,24 @@ public class ActionMenuItemView
       super();
     }
     
-    public final s hF()
+    public final s hO()
     {
-      if (ActionMenuItemView.this.aeL != null) {
-        return ActionMenuItemView.this.aeL.hF();
+      if (ActionMenuItemView.this.aeY != null) {
+        return ActionMenuItemView.this.aeY.hO();
       }
       return null;
     }
     
-    public final boolean hG()
+    public final boolean hP()
     {
       boolean bool2 = false;
       boolean bool1 = bool2;
-      if (ActionMenuItemView.this.aeJ != null)
+      if (ActionMenuItemView.this.aeW != null)
       {
         bool1 = bool2;
-        if (ActionMenuItemView.this.aeJ.f(ActionMenuItemView.this.aeI))
+        if (ActionMenuItemView.this.aeW.f(ActionMenuItemView.this.aeV))
         {
-          s locals = hF();
+          s locals = hO();
           bool1 = bool2;
           if (locals != null)
           {
@@ -336,7 +336,7 @@ public class ActionMenuItemView
   
   public static abstract class b
   {
-    public abstract s hF();
+    public abstract s hO();
   }
 }
 

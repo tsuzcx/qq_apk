@@ -2,107 +2,106 @@ package com.tencent.mm.booter;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.g.a.py;
-import com.tencent.mm.g.a.tc;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.g.a.ua;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.ar;
 import java.util.HashSet;
 import java.util.Locale;
 
 public final class z
 {
-  public static z fHE;
+  public static z gmQ;
   public o.a appForegroundListener;
-  public ai fHF;
-  public c fHG;
-  public c fHH;
-  public a fHI;
-  public int fHJ;
-  HashSet<Long> fHK;
-  HashSet<Long> fHL;
-  public long fHM;
-  public long fHN;
-  public String fHO;
-  public long fHP;
-  public int fHQ;
-  public int fHR;
-  private int fHS;
-  private int fHT;
+  public an gmR;
+  public IListener gmS;
+  public IListener gmT;
+  public a gmU;
+  public int gmV;
+  HashSet<Long> gmW;
+  HashSet<Long> gmX;
+  public long gmY;
+  public long gmZ;
+  public String gna;
+  public long gnb;
+  public int gnc;
+  public int gnd;
+  private int gne;
+  private int gnf;
   private boolean hasInit;
   
   static
   {
     AppMethodBeat.i(19915);
-    fHE = new z();
+    gmQ = new z();
     AppMethodBeat.o(19915);
   }
   
   private z()
   {
     AppMethodBeat.i(19913);
-    this.fHG = new c() {};
-    this.fHH = new c() {};
+    this.gmS = new IListener() {};
+    this.gmT = new z.2(this);
     this.appForegroundListener = new o.a()
     {
       public final void onAppBackground(String paramAnonymousString) {}
       
       public final void onAppForeground(String paramAnonymousString) {}
     };
-    this.fHJ = 0;
-    this.fHK = new HashSet();
-    this.fHL = new HashSet();
-    this.fHP = -1L;
-    this.fHQ = 20;
-    this.fHR = 24;
-    this.fHS = 30;
-    this.fHT = 10800;
+    this.gmV = 0;
+    this.gmW = new HashSet();
+    this.gmX = new HashSet();
+    this.gnb = -1L;
+    this.gnc = 20;
+    this.gnd = 24;
+    this.gne = 30;
+    this.gnf = 10800;
     this.hasInit = false;
-    this.fHF = new ai(am.IKh + "staytime.cfg");
+    this.gmR = new an(ar.NSe + "staytime.cfg");
     AppMethodBeat.o(19913);
   }
   
-  public final void uE(String paramString)
+  public final void CU(String paramString)
   {
     AppMethodBeat.i(19914);
-    a.IvT.d(this.fHG);
-    a.IvT.d(this.fHH);
+    EventCenter.instance.removeListener(this.gmS);
+    EventCenter.instance.removeListener(this.gmT);
     this.appForegroundListener.dead();
-    this.fHL.clear();
-    this.fHK.clear();
-    if ((paramString == null) || (this.fHI == null))
+    this.gmX.clear();
+    this.gmW.clear();
+    if ((paramString == null) || (this.gmU == null))
     {
-      if (this.fHI == null) {}
+      if (this.gmU == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ae.i("MicroMsg.StayTimeReport", "exitChattingUI chatUser or reprotingItem is null, chatUser:%s, reportingItem is null:%b", new Object[] { paramString, Boolean.valueOf(bool) });
+        Log.i("MicroMsg.StayTimeReport", "exitChattingUI chatUser or reprotingItem is null, chatUser:%s, reportingItem is null:%b", new Object[] { paramString, Boolean.valueOf(bool) });
         AppMethodBeat.o(19914);
         return;
       }
     }
-    if (!paramString.equals(this.fHI.fHV))
+    if (!paramString.equals(this.gmU.gnh))
     {
-      ae.i("MicroMsg.StayTimeReport", "exitChattingUI no startedUI: %s, start:", new Object[] { paramString, this.fHI.fHV });
+      Log.i("MicroMsg.StayTimeReport", "exitChattingUI no startedUI: %s, start:", new Object[] { paramString, this.gmU.gnh });
       AppMethodBeat.o(19914);
       return;
     }
-    paramString = this.fHI;
-    paramString.time += bu.aO(this.fHM) / 1000L;
-    paramString = (String)this.fHF.get(5, "");
-    this.fHF.set(5, paramString + this.fHI.toString());
+    paramString = this.gmU;
+    paramString.time += Util.ticksToNow(this.gmY) / 1000L;
+    paramString = (String)this.gmR.get(5, "");
+    this.gmR.set(5, paramString + this.gmU.toString());
     long l;
-    if (this.fHI != null)
+    if (this.gmU != null)
     {
-      l = this.fHF.getLong(4, 0L);
-      i = this.fHF.abw(6) + 1;
-      this.fHF.setInt(6, i);
-      ae.i("MicroMsg.StayTimeReport", "exitChattingUI, chatUser:%s, type:%d, stayTime:%d, stayWebTime:%d, chattingReportCnt:%d", new Object[] { this.fHI.fHV, Integer.valueOf(this.fHI.type), Long.valueOf(this.fHI.time), Integer.valueOf(this.fHI.fHY), Integer.valueOf(i) });
-      ae.i("MicroMsg.StayTimeReport", "exitChattingUI goBackHistoryStatus:%d, recnCnt:%d, sendCnt:%d", new Object[] { Integer.valueOf(this.fHI.fHZ), Integer.valueOf(this.fHI.fIa), Integer.valueOf(this.fHI.fIb) });
-      if ((bu.rZ(l) <= this.fHT) && (i <= this.fHS)) {
+      l = this.gmR.getLong(4, 0L);
+      i = this.gmR.ake(6) + 1;
+      this.gmR.setInt(6, i);
+      Log.i("MicroMsg.StayTimeReport", "exitChattingUI, chatUser:%s, type:%d, stayTime:%d, stayWebTime:%d, chattingReportCnt:%d", new Object[] { this.gmU.gnh, Integer.valueOf(this.gmU.type), Long.valueOf(this.gmU.time), Integer.valueOf(this.gmU.gnk), Integer.valueOf(i) });
+      Log.i("MicroMsg.StayTimeReport", "exitChattingUI goBackHistoryStatus:%d, recnCnt:%d, sendCnt:%d", new Object[] { Integer.valueOf(this.gmU.gnl), Integer.valueOf(this.gmU.gnm), Integer.valueOf(this.gmU.gnn) });
+      if ((Util.secondsToNow(l) <= this.gnf) && (i <= this.gne)) {
         break label516;
       }
     }
@@ -111,12 +110,12 @@ public final class z
     {
       if (i != 0)
       {
-        paramString = (String)this.fHF.get(5, "");
-        paramString = paramString + "," + l + "," + bu.aRi();
-        ae.i("MicroMsg.StayTimeReport", "report （13062） %d: %s", new Object[] { Integer.valueOf(13062), paramString });
-        g.yxI.kvStat(13062, paramString);
-        this.fHF.setInt(6, 0);
-        this.fHF.set(5, "");
+        paramString = (String)this.gmR.get(5, "");
+        paramString = paramString + "," + l + "," + Util.nowSecond();
+        Log.i("MicroMsg.StayTimeReport", "report （13062） %d: %s", new Object[] { Integer.valueOf(13062), paramString });
+        h.CyF.kvStat(13062, paramString);
+        this.gmR.setInt(6, 0);
+        this.gmR.set(5, "");
       }
       AppMethodBeat.o(19914);
       return;
@@ -125,15 +124,15 @@ public final class z
   
   public final class a
   {
-    public int dla;
+    public int dCm;
     public long enterTime;
-    public String fHV;
-    public int fHW;
-    public int fHX;
-    public int fHY;
-    public int fHZ = 0;
-    int fIa = 0;
-    int fIb = 0;
+    public String gnh;
+    public int gni;
+    public int gnj;
+    public int gnk;
+    public int gnl = 0;
+    int gnm = 0;
+    int gnn = 0;
     public long time;
     public int type;
     
@@ -142,7 +141,7 @@ public final class z
     public final String toString()
     {
       AppMethodBeat.i(19912);
-      String str = String.format(Locale.US, "%d#%d#%d#%d#%d#%d#%d#%s#%d#%d#%d|", new Object[] { Integer.valueOf(this.type), Long.valueOf(this.time), Integer.valueOf(this.fHW), Integer.valueOf(this.dla), Integer.valueOf(this.fHX), Long.valueOf(this.enterTime), Integer.valueOf(this.fHY), this.fHV, Integer.valueOf(this.fHZ), Integer.valueOf(this.fIa), Integer.valueOf(this.fIb) });
+      String str = String.format(Locale.US, "%d#%d#%d#%d#%d#%d#%d#%s#%d#%d#%d|", new Object[] { Integer.valueOf(this.type), Long.valueOf(this.time), Integer.valueOf(this.gni), Integer.valueOf(this.dCm), Integer.valueOf(this.gnj), Long.valueOf(this.enterTime), Integer.valueOf(this.gnk), this.gnh, Integer.valueOf(this.gnl), Integer.valueOf(this.gnm), Integer.valueOf(this.gnn) });
       AppMethodBeat.o(19912);
       return str;
     }
@@ -150,7 +149,7 @@ public final class z
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.booter.z
  * JD-Core Version:    0.7.0.1
  */

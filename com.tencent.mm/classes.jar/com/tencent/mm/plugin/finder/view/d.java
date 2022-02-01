@@ -29,44 +29,48 @@ import com.tencent.mm.ui.widget.a.b;
 public final class d
   implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private ViewTreeObserver afv;
-  public View kFh;
-  private Dialog lDY;
-  private BottomSheetBehavior lEb;
-  private boolean lEc;
-  private int lEd;
-  private boolean lEf;
-  private boolean lEg;
+  private ViewTreeObserver afI;
+  public View lJI;
   private Context mContext;
-  private View qI;
-  private boolean tds;
-  private boolean tdt;
+  private Dialog mLH;
+  private BottomSheetBehavior mLK;
+  private boolean mLL;
+  private int mLM;
+  private boolean mLO;
+  private boolean mLP;
+  private View qK;
+  private boolean wjM;
+  private boolean wjN;
+  private a wjO;
   
   public d(Context paramContext)
   {
     AppMethodBeat.i(178057);
-    this.lEc = false;
-    this.tdt = false;
-    this.lEf = false;
-    this.lEg = false;
+    this.mLL = false;
+    this.wjN = false;
+    this.mLO = false;
+    this.mLP = false;
+    this.wjO = null;
     this.mContext = paramContext;
     if ((this.mContext instanceof Activity)) {
-      this.qI = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
+      this.qK = ((ViewGroup)((Activity)this.mContext).getWindow().getDecorView()).findViewById(16908290);
     }
     paramContext = this.mContext;
-    if (this.lEg) {}
-    for (this.lDY = new b(paramContext);; this.lDY = new a(paramContext, 2131820788))
+    if (this.mLP) {}
+    for (this.mLH = new b(paramContext);; this.mLH = new a(paramContext, 2131820791))
     {
-      this.kFh = View.inflate(paramContext, 2131494069, null);
-      this.lEc = aoA();
-      this.lDY.setContentView(this.kFh);
-      this.lEb = BottomSheetBehavior.l((View)this.kFh.getParent());
-      this.lEb.setState(3);
-      this.lEb.oi = new BottomSheetBehavior.a()
+      this.lJI = View.inflate(paramContext, 2131494515, null);
+      this.mLL = isLandscape();
+      this.mLH.setContentView(this.lJI);
+      this.mLK = BottomSheetBehavior.l((View)this.lJI.getParent());
+      this.mLK.setState(3);
+      this.mLK.ok = new BottomSheetBehavior.a()
       {
-        public final void M(int paramAnonymousInt) {}
+        public final void f(View paramAnonymousView, int paramAnonymousInt) {}
+        
+        public final void m(View paramAnonymousView) {}
       };
-      this.lDY.setOnDismissListener(new DialogInterface.OnDismissListener()
+      this.mLH.setOnDismissListener(new DialogInterface.OnDismissListener()
       {
         public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
         {
@@ -82,24 +86,15 @@ public final class d
           if (!d.c(d.this)) {
             d.d(d.this);
           }
+          if (d.e(d.this) != null) {
+            d.e(d.this).onDismiss();
+          }
           AppMethodBeat.o(178056);
         }
       });
       AppMethodBeat.o(178057);
       return;
     }
-  }
-  
-  private boolean aoA()
-  {
-    AppMethodBeat.i(178064);
-    if (this.mContext.getResources().getConfiguration().orientation == 2)
-    {
-      AppMethodBeat.o(178064);
-      return true;
-    }
-    AppMethodBeat.o(178064);
-    return false;
   }
   
   @SuppressLint({"WrongConstant"})
@@ -114,10 +109,22 @@ public final class d
     return i;
   }
   
+  private boolean isLandscape()
+  {
+    AppMethodBeat.i(178064);
+    if (this.mContext.getResources().getConfiguration().orientation == 2)
+    {
+      AppMethodBeat.o(178064);
+      return true;
+    }
+    AppMethodBeat.o(178064);
+    return false;
+  }
+  
   private boolean isShowing()
   {
     AppMethodBeat.i(178063);
-    if ((this.lDY != null) && (this.lDY.isShowing()))
+    if ((this.mLH != null) && (this.mLH.isShowing()))
     {
       AppMethodBeat.o(178063);
       return true;
@@ -126,62 +133,67 @@ public final class d
     return false;
   }
   
-  public final d GC(int paramInt)
+  public final d Ml(int paramInt)
   {
-    AppMethodBeat.i(201350);
-    LinearLayout localLinearLayout = (LinearLayout)this.kFh.findViewById(2131297461);
-    LayoutInflater.from(this.kFh.getContext()).inflate(paramInt, localLinearLayout, true);
-    AppMethodBeat.o(201350);
+    AppMethodBeat.i(241821);
+    LinearLayout localLinearLayout = (LinearLayout)this.lJI.findViewById(2131297695);
+    LayoutInflater.from(this.lJI.getContext()).inflate(paramInt, localLinearLayout, true);
+    AppMethodBeat.o(241821);
     return this;
   }
   
-  public final void bqD()
+  public final void a(a parama)
+  {
+    this.wjO = parama;
+  }
+  
+  public final void bMo()
   {
     AppMethodBeat.i(178062);
-    if (this.lDY != null)
+    if (this.mLH != null)
     {
       if ((!(this.mContext instanceof Activity)) || ((this.mContext != null) && (!((Activity)this.mContext).isFinishing()) && (!((Activity)this.mContext).isDestroyed()))) {
-        this.lDY.dismiss();
+        this.mLH.dismiss();
       }
-      if (this.lEb != null) {
-        this.lEb.nZ = true;
+      if (this.mLK != null) {
+        this.mLK.ob = true;
       }
     }
     AppMethodBeat.o(178062);
   }
   
-  public final void cPF()
+  public final void dGm()
   {
     AppMethodBeat.i(178061);
-    this.lEc = aoA();
-    this.lEd = getRotation();
-    if (this.lDY != null)
+    this.mLL = isLandscape();
+    this.mLM = getRotation();
+    if (this.mLH != null)
     {
-      ((ViewGroup)this.kFh.getParent()).setVisibility(0);
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.kFh.getLayoutParams();
-      if ((this.lEc) && (this.qI != null))
+      ((ViewGroup)this.lJI.getParent()).setVisibility(0);
+      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.lJI.getLayoutParams();
+      if ((this.mLL) && (this.qK != null))
       {
         Rect localRect = new Rect();
-        this.qI.getWindowVisibleDisplayFrame(localRect);
+        this.qK.getWindowVisibleDisplayFrame(localRect);
         localLayoutParams.width = localRect.right;
       }
-      this.kFh.setLayoutParams(localLayoutParams);
+      this.lJI.setLayoutParams(localLayoutParams);
       if (Build.VERSION.SDK_INT >= 21) {
-        this.lDY.getWindow().addFlags(-2147483648);
+        this.mLH.getWindow().addFlags(-2147483648);
       }
-      if ((this.tds) && (Build.VERSION.SDK_INT >= 23) && (this.lDY != null))
+      if ((this.wjM) && (Build.VERSION.SDK_INT >= 23) && (this.mLH != null))
       {
-        this.lDY.getWindow().getDecorView().setSystemUiVisibility(9216);
-        this.lDY.getWindow().setStatusBarColor(0);
+        this.mLH.getWindow().getDecorView().setSystemUiVisibility(9216);
+        this.mLH.getWindow().setStatusBarColor(0);
       }
-      if (!this.lEf) {
+      if (!this.mLO) {
         break label308;
       }
-      this.lDY.getWindow().setFlags(8, 8);
-      this.lDY.getWindow().addFlags(131200);
-      this.lDY.getWindow().getDecorView().setSystemUiVisibility(6);
-      if (this.qI != null) {
-        if (this.afv != null) {
+      this.mLH.getWindow().setFlags(8, 8);
+      this.mLH.getWindow().addFlags(131200);
+      this.mLH.getWindow().getDecorView().setSystemUiVisibility(6);
+      if (this.qK != null) {
+        if (this.afI != null) {
           break label363;
         }
       }
@@ -190,22 +202,22 @@ public final class d
     label363:
     for (int i = 1;; i = 0)
     {
-      this.afv = this.qI.getViewTreeObserver();
+      this.afI = this.qK.getViewTreeObserver();
       if (i != 0) {
-        this.afv.addOnGlobalLayoutListener(this);
+        this.afI.addOnGlobalLayoutListener(this);
       }
       if (((this.mContext instanceof Activity)) && (!((Activity)this.mContext).isFinishing())) {
-        this.lDY.show();
+        this.mLH.show();
       }
-      if (this.lEb != null) {
-        this.lEb.nZ = false;
+      if (this.mLK != null) {
+        this.mLK.ob = false;
       }
       AppMethodBeat.o(178061);
       return;
-      this.lDY.getWindow().clearFlags(8);
-      this.lDY.getWindow().clearFlags(131072);
-      this.lDY.getWindow().clearFlags(128);
-      this.lDY.getWindow().getDecorView().setSystemUiVisibility(0);
+      this.mLH.getWindow().clearFlags(8);
+      this.mLH.getWindow().clearFlags(131072);
+      this.mLH.getWindow().clearFlags(128);
+      this.mLH.getWindow().getDecorView().setSystemUiVisibility(0);
       break;
     }
   }
@@ -215,23 +227,28 @@ public final class d
     AppMethodBeat.i(178058);
     if (isShowing())
     {
-      View localView = this.qI;
+      View localView = this.qK;
       if ((localView == null) || ((!localView.isShown()) && (localView.getVisibility() != 0)))
       {
-        bqD();
+        bMo();
         AppMethodBeat.o(178058);
         return;
       }
-      if ((isShowing()) && ((this.lEc != aoA()) || (this.lEd != getRotation()))) {
-        bqD();
+      if ((isShowing()) && ((this.mLL != isLandscape()) || (this.mLM != getRotation()))) {
+        bMo();
       }
     }
     AppMethodBeat.o(178058);
   }
+  
+  public static abstract interface a
+  {
+    public abstract void onDismiss();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.d
  * JD-Core Version:    0.7.0.1
  */

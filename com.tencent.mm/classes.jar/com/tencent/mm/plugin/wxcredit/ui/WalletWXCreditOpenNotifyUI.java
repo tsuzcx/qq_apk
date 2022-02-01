@@ -9,10 +9,10 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.f;
 
@@ -21,17 +21,17 @@ public class WalletWXCreditOpenNotifyUI
 {
   public int getLayoutId()
   {
-    return 2131496049;
+    return 2131497029;
   }
   
   public void initView()
   {
     int i = 0;
     AppMethodBeat.i(72386);
-    setMMTitle(2131766012);
+    setMMTitle(2131768465);
     showHomeBtn(false);
     enableBackMenu(false);
-    addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getString(2131755858), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -42,16 +42,16 @@ public class WalletWXCreditOpenNotifyUI
         return true;
       }
     });
-    ((TextView)findViewById(2131306845)).setText(f.D(getInput().getDouble("key_total_amount")));
-    Button localButton = (Button)findViewById(2131302852);
+    ((TextView)findViewById(2131310307)).setText(f.D(getInput().getDouble("key_total_amount")));
+    Button localButton = (Button)findViewById(2131305423);
     localButton.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(72384);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditOpenNotifyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wxcredit/ui/WalletWXCreditOpenNotifyUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         paramAnonymousView = new Bundle();
         paramAnonymousView.putParcelable("key_bankcard", WalletWXCreditOpenNotifyUI.this.getInput().getParcelable("key_bankcard"));
         com.tencent.mm.wallet_core.a.a(WalletWXCreditOpenNotifyUI.this, com.tencent.mm.plugin.wxcredit.b.class, paramAnonymousView);
@@ -73,13 +73,13 @@ public class WalletWXCreditOpenNotifyUI
   {
     AppMethodBeat.i(72385);
     super.onCreate(paramBundle);
-    g.ajS();
-    g.ajR().ajA().set(196658, Boolean.FALSE);
+    g.aAi();
+    g.aAh().azQ().set(196658, Boolean.FALSE);
     initView();
     AppMethodBeat.o(72385);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     return false;
   }
@@ -92,7 +92,7 @@ public class WalletWXCreditOpenNotifyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditOpenNotifyUI
  * JD-Core Version:    0.7.0.1
  */

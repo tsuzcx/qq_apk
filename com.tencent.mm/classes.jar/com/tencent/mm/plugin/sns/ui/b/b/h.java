@@ -7,131 +7,131 @@ import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.GLTextureView;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.GLTextureView.i;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.SphereImageView;
 import com.tencent.mm.plugin.sns.ui.item.BaseTimeLineItem.BaseViewHolder;
-import com.tencent.mm.plugin.sns.ui.item.k.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.sns.ui.item.n.a;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public final class h
-  extends b
+  extends a
 {
-  k.a AKD;
-  private ValueAnimator AKb;
-  private ValueAnimator AKc;
-  AnimatorSet yLH;
+  AnimatorSet CPA;
+  n.a EUE;
+  private ValueAnimator EUa;
+  private ValueAnimator EUb;
   
   public h(MMActivity paramMMActivity, BaseTimeLineItem.BaseViewHolder paramBaseViewHolder)
   {
-    AppMethodBeat.i(99989);
+    AppMethodBeat.i(99982);
     try
     {
       this.activity = paramMMActivity;
-      this.AKD = ((k.a)paramBaseViewHolder);
-      this.AKb = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.AKb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.EUE = ((n.a)paramBaseViewHolder);
+      this.EUa = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.EUa.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
-          AppMethodBeat.i(99984);
+          AppMethodBeat.i(99977);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          if (f != 1.0F)
+          if (f != 0.0F)
           {
-            h.this.AKD.Apn.setScaleX(f);
-            h.this.AKD.Apn.setScaleY(f);
-            h.this.AKD.Apn.setAlpha(f);
+            h.this.EUE.ExX.setScaleX(f);
+            h.this.EUE.ExX.setScaleY(f);
+            h.this.EUE.ExX.setAlpha(f);
           }
-          AppMethodBeat.o(99984);
+          AppMethodBeat.o(99977);
         }
       });
-      this.AKb.setDuration(400L);
-      this.AKb.addListener(new AnimatorListenerAdapter()
+      this.EUa.setDuration(400L);
+      this.EUa.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(99985);
-          if (h.this.AKD.guz)
+          AppMethodBeat.i(99978);
+          if (h.this.EUE.hho)
           {
-            ae.i("MicroMsg.SphereCardAdClickAnimation", "holder is busy");
-            paramAnonymousAnimator = h.this;
-            if (paramAnonymousAnimator.yLH != null) {
-              paramAnonymousAnimator.yLH.end();
+            Log.i("MicroMsg.SphereCardAdBackAnimation", "holder is busy");
+            paramAnonymousAnimator = h.this.CPA.getChildAnimations().iterator();
+            while (paramAnonymousAnimator.hasNext()) {
+              ((Animator)paramAnonymousAnimator.next()).cancel();
             }
-            AppMethodBeat.o(99985);
+            AppMethodBeat.o(99978);
             return;
           }
-          h.this.AKD.guz = true;
-          AppMethodBeat.o(99985);
+          h.this.EUE.hho = true;
+          h.this.EUE.wnX.setAlpha(0.0F);
+          h.this.EUE.EVh.setAlpha(0.0F);
+          AppMethodBeat.o(99978);
         }
       });
-      this.AKc = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
-      this.AKc.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.EUb = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+      this.EUb.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
-          AppMethodBeat.i(99986);
+          AppMethodBeat.i(99979);
           float f = ((Float)paramAnonymousValueAnimator.getAnimatedValue()).floatValue();
-          h.this.AKD.tgh.setAlpha(f);
-          h.this.AKD.ALc.setAlpha(f);
-          AppMethodBeat.o(99986);
+          h.this.EUE.wnX.setAlpha(f);
+          h.this.EUE.EVh.setAlpha(f);
+          AppMethodBeat.o(99979);
         }
       });
-      this.AKc.setDuration(100L);
-      this.yLH = new AnimatorSet();
-      this.yLH.playTogether(new Animator[] { this.AKb, this.AKc });
-      this.yLH.addListener(new AnimatorListenerAdapter()
+      this.EUb.setDuration(100L);
+      this.EUb.setStartDelay(300L);
+      this.CPA = new AnimatorSet();
+      this.CPA.playTogether(new Animator[] { this.EUa, this.EUb });
+      this.CPA.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(99988);
-          ae.i("MicroMsg.SphereCardAdClickAnimation", "onAnimation end");
-          h.this.AKD.Apn.setScaleX(1.0F);
-          h.this.AKD.Apn.setScaleY(1.0F);
-          h.this.AKD.Apn.setAlpha(1.0F);
-          h.this.AKD.tgh.setAlpha(1.0F);
-          h.this.AKD.ALc.setAlpha(1.0F);
-          if (h.this.AJZ != null) {
-            h.this.AJZ.onAnimationEnd();
+          AppMethodBeat.i(99981);
+          Log.i("MicroMsg.SphereCardAdBackAnimation", "onAnimation end");
+          h.this.EUE.ExX.setScaleX(1.0F);
+          h.this.EUE.ExX.setScaleY(1.0F);
+          h.this.EUE.ExX.setAlpha(1.0F);
+          h.this.EUE.wnX.setAlpha(1.0F);
+          h.this.EUE.EVh.setAlpha(1.0F);
+          if (h.this.ETY != null) {
+            h.this.ETY.onAnimationEnd();
           }
-          h.this.AKD.AOK.ebD();
-          h.this.AKD.AOK.AaM.requestRender();
-          h.this.AKD.guz = false;
-          AppMethodBeat.o(99988);
+          h.this.EUE.hho = false;
+          AppMethodBeat.o(99981);
         }
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          AppMethodBeat.i(99987);
-          ae.i("MicroMsg.SphereCardAdClickAnimation", "onAnimation start");
-          AppMethodBeat.o(99987);
+          AppMethodBeat.i(99980);
+          Log.i("MicroMsg.SphereCardAdBackAnimation", "onAnimation start");
+          AppMethodBeat.o(99980);
         }
       });
-      AppMethodBeat.o(99989);
+      AppMethodBeat.o(99982);
       return;
     }
     catch (Throwable paramMMActivity)
     {
-      ae.e("MicroMsg.SphereCardAdClickAnimation", "init exp=" + paramMMActivity.toString());
-      AppMethodBeat.o(99989);
+      Log.e("MicroMsg.SphereCardAdBackAnimation", "init exp=" + paramMMActivity.toString());
+      AppMethodBeat.o(99982);
     }
   }
   
-  public final void AR(long paramLong)
+  public final void JW(long paramLong)
   {
-    AppMethodBeat.i(99990);
-    if ((this.yLH != null) && (!this.yLH.isStarted()))
+    AppMethodBeat.i(99983);
+    if ((this.CPA != null) && (!this.CPA.isStarted()))
     {
-      this.yLH.setStartDelay(paramLong);
-      this.yLH.start();
+      this.CPA.setStartDelay(paramLong);
+      this.CPA.start();
     }
-    AppMethodBeat.o(99990);
+    AppMethodBeat.o(99983);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.b.b.h
  * JD-Core Version:    0.7.0.1
  */

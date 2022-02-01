@@ -6,33 +6,33 @@ import java.util.List;
 
 public abstract class a<T>
 {
-  protected List<WeakReference<T>> wMw = new ArrayList();
+  protected List<WeakReference<T>> AIc = new ArrayList();
   
-  public final void dD(T paramT)
+  public final void dM(T paramT)
   {
-    if (this.wMw != null) {
-      this.wMw = new ArrayList();
+    if (this.AIc != null) {
+      this.AIc = new ArrayList();
     }
-    this.wMw.add(new WeakReference(paramT));
+    this.AIc.add(new WeakReference(paramT));
   }
   
-  public final void dE(T paramT)
+  public final void dN(T paramT)
   {
-    if (this.wMw == null) {}
+    if (this.AIc == null) {}
     for (;;)
     {
       return;
       int i = 0;
-      while (i < this.wMw.size())
+      while (i < this.AIc.size())
       {
-        WeakReference localWeakReference = (WeakReference)this.wMw.get(i);
+        WeakReference localWeakReference = (WeakReference)this.AIc.get(i);
         if (localWeakReference != null)
         {
           Object localObject = localWeakReference.get();
           if ((localObject != null) && (localObject.equals(paramT)))
           {
             localWeakReference.clear();
-            this.wMw.remove(localWeakReference);
+            this.AIc.remove(localWeakReference);
           }
         }
         i += 1;

@@ -13,22 +13,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class VoiceSeekBar
   extends RelativeLayout
 {
-  protected ImageView Lzu;
-  protected float Lzv;
-  protected int Lzw;
+  protected ImageView QVk;
+  protected float QVl;
+  protected int QVm;
   protected View contentView;
-  protected ImageView lvR;
-  protected ImageView lvS;
+  protected ImageView mCM;
+  protected ImageView mCN;
   
   public VoiceSeekBar(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159692);
     this.contentView = null;
-    this.lvS = null;
-    this.Lzu = null;
-    this.Lzv = 0.0F;
-    this.Lzw = 0;
+    this.mCN = null;
+    this.QVk = null;
+    this.QVl = 0.0F;
+    this.QVm = 0;
     init();
     AppMethodBeat.o(159692);
   }
@@ -38,10 +38,10 @@ public class VoiceSeekBar
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159693);
     this.contentView = null;
-    this.lvS = null;
-    this.Lzu = null;
-    this.Lzv = 0.0F;
-    this.Lzw = 0;
+    this.mCN = null;
+    this.QVk = null;
+    this.QVl = 0.0F;
+    this.QVm = 0;
     init();
     AppMethodBeat.o(159693);
   }
@@ -49,20 +49,20 @@ public class VoiceSeekBar
   private void init()
   {
     AppMethodBeat.i(159694);
-    this.contentView = View.inflate(getContext(), 2131495872, this);
-    this.lvR = ((ImageView)this.contentView.findViewById(2131304488));
-    this.lvS = ((ImageView)this.contentView.findViewById(2131304487));
-    this.Lzu = ((ImageView)this.contentView.findViewById(2131304486));
-    this.lvS.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
+    this.contentView = View.inflate(getContext(), 2131496852, this);
+    this.mCM = ((ImageView)this.contentView.findViewById(2131307485));
+    this.mCN = ((ImageView)this.contentView.findViewById(2131307484));
+    this.QVk = ((ImageView)this.contentView.findViewById(2131307483));
+    this.mCN.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
     {
       public final boolean onPreDraw()
       {
         AppMethodBeat.i(159691);
-        VoiceSeekBar.this.lvS.getViewTreeObserver().removeOnPreDrawListener(this);
-        VoiceSeekBar.this.Lzw = VoiceSeekBar.this.lvS.getHeight();
-        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)VoiceSeekBar.this.lvR.getLayoutParams();
-        localLayoutParams.topMargin = ((int)((1.0F - VoiceSeekBar.this.Lzv) * VoiceSeekBar.this.Lzw));
-        VoiceSeekBar.this.lvR.setLayoutParams(localLayoutParams);
+        VoiceSeekBar.this.mCN.getViewTreeObserver().removeOnPreDrawListener(this);
+        VoiceSeekBar.this.QVm = VoiceSeekBar.this.mCN.getHeight();
+        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)VoiceSeekBar.this.mCM.getLayoutParams();
+        localLayoutParams.topMargin = ((int)((1.0F - VoiceSeekBar.this.QVl) * VoiceSeekBar.this.QVm));
+        VoiceSeekBar.this.mCM.setLayoutParams(localLayoutParams);
         VoiceSeekBar.this.requestLayout();
         AppMethodBeat.o(159691);
         return false;

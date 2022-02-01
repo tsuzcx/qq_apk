@@ -33,7 +33,7 @@ public final class a
   
   public a(Context paramContext, String paramString, d.a parama, File paramFile, Bundle paramBundle)
   {
-    AppMethodBeat.i(192449);
+    AppMethodBeat.i(188003);
     this.i = -1L;
     this.c = paramContext;
     this.d = paramString;
@@ -41,7 +41,7 @@ public final class a
     this.f = paramFile;
     this.j = paramBundle;
     this.g = com.tencent.tbs.one.impl.common.f.a(this.c, this.c, paramString, parama.a, parama.c);
-    AppMethodBeat.o(192449);
+    AppMethodBeat.o(188003);
   }
   
   public final void a()
@@ -187,7 +187,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.c.a
  * JD-Core Version:    0.7.0.1
  */

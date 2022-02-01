@@ -59,12 +59,12 @@ public abstract interface o
     
     public void alive()
     {
-      AppForegroundDelegate.cTA.a(this.wrapper);
+      AppForegroundDelegate.djR.a(this.wrapper);
     }
     
     public void dead()
     {
-      AppForegroundDelegate.cTA.b(this.wrapper);
+      AppForegroundDelegate.djR.b(this.wrapper);
     }
     
     Handler getHandler()

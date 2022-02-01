@@ -1,33 +1,66 @@
 package com.tencent.mm.plugin.finder.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.storage.u;
-import com.tencent.mm.protocal.protobuf.apx;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.finder.feed.model.internal.i;
+import com.tencent.mm.protocal.protobuf.awi;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/RVFeedUtil;", "", "()V", "genBaseLocalFeed", "Lcom/tencent/mm/plugin/finder/model/BaseLocalFeed;", "localType", "", "genLocalItem", "Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "wording", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderLotteryHistoryData;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "lotteryInfo", "Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "(Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;)V", "getLotteryInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderLiveLotteryInfo;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "", "getItemType", "plugin-finder_release"})
 public final class an
+  implements bo
 {
-  public static final an stA;
+  public final awi tWe;
   
-  static
+  public an(awi paramawi)
   {
-    AppMethodBeat.i(203483);
-    stA = new an();
-    AppMethodBeat.o(203483);
+    AppMethodBeat.i(248783);
+    this.tWe = paramawi;
+    AppMethodBeat.o(248783);
   }
   
-  public static b cEM()
+  public final int a(i parami)
   {
-    AppMethodBeat.i(203482);
-    p.h("", "wording");
-    Object localObject = new apx();
-    ((apx)localObject).GGY = 2001;
-    ((apx)localObject).dyI = "";
-    localObject = new b(new u((apx)localObject));
-    AppMethodBeat.o(203482);
-    return localObject;
+    AppMethodBeat.i(248782);
+    p.h(parami, "obj");
+    if (!(parami instanceof an)) {
+      parami = null;
+    }
+    for (;;)
+    {
+      parami = (an)parami;
+      if (parami != null)
+      {
+        if (p.j(parami.tWe.id, this.tWe.id))
+        {
+          AppMethodBeat.o(248782);
+          return 0;
+        }
+        if (this.tWe.iqg > parami.tWe.iqg)
+        {
+          AppMethodBeat.o(248782);
+          return 1;
+        }
+      }
+      AppMethodBeat.o(248782);
+      return -1;
+    }
+  }
+  
+  public final int cxn()
+  {
+    AppMethodBeat.i(248781);
+    int i = an.class.hashCode();
+    AppMethodBeat.o(248781);
+    return i;
+  }
+  
+  public final long lT()
+  {
+    AppMethodBeat.i(248780);
+    long l = hashCode();
+    AppMethodBeat.o(248780);
+    return l;
   }
 }
 

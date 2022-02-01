@@ -22,7 +22,7 @@ public final class c
       if (i >= paramArrayOfb1.length) {
         break label64;
       }
-      if ((paramArrayOfb1[i].JJ != paramArrayOfb2[i].JJ) || (paramArrayOfb1[i].JK.length != paramArrayOfb2[i].JK.length)) {
+      if ((paramArrayOfb1[i].JT != paramArrayOfb2[i].JT) || (paramArrayOfb1[i].JU.length != paramArrayOfb2[i].JU.length)) {
         break;
       }
       i += 1;
@@ -79,10 +79,10 @@ public final class c
     }
   }
   
-  public static Path u(String paramString)
+  public static Path x(String paramString)
   {
     Path localPath = new Path();
-    b[] arrayOfb = x(paramString);
+    b[] arrayOfb = y(paramString);
     if (arrayOfb != null) {
       try
       {
@@ -97,7 +97,7 @@ public final class c
     return null;
   }
   
-  public static b[] x(String paramString)
+  public static b[] y(String paramString)
   {
     if (paramString == null) {
       return null;
@@ -111,7 +111,7 @@ public final class c
       String str = paramString.substring(i, j).trim();
       if (str.length() > 0)
       {
-        float[] arrayOfFloat = y(str);
+        float[] arrayOfFloat = z(str);
         a(localArrayList, str.charAt(0), arrayOfFloat);
       }
       int k = j + 1;
@@ -124,7 +124,7 @@ public final class c
     return (b[])localArrayList.toArray(new b[localArrayList.size()]);
   }
   
-  private static float[] y(String paramString)
+  private static float[] z(String paramString)
   {
     if ((paramString.charAt(0) == 'z') || (paramString.charAt(0) == 'Z')) {
       return new float[0];
@@ -143,7 +143,7 @@ public final class c
         j = 0;
         if (k < i2)
         {
-          locala.JI = false;
+          locala.JS = false;
           i = 0;
           i1 = 0;
           m = 0;
@@ -156,22 +156,22 @@ public final class c
           if ((n == k) || (i != 0)) {
             break label289;
           }
-          locala.JI = true;
+          locala.JS = true;
           i = 0;
           m = 1;
           break label291;
           label172:
-          locala.JI = true;
+          locala.JS = true;
           i = 0;
           m = 1;
           break label291;
-          locala.JH = n;
-          m = locala.JH;
+          locala.JR = n;
+          m = locala.JR;
           if (k < m)
           {
             i = j + 1;
             arrayOfFloat[j] = Float.parseFloat(paramString.substring(k, m));
-            if (!locala.JI) {
+            if (!locala.JS) {
               break label331;
             }
             k = m;
@@ -220,25 +220,25 @@ public final class c
   
   static final class a
   {
-    int JH;
-    boolean JI;
+    int JR;
+    boolean JS;
   }
   
   public static final class b
   {
-    public char JJ;
-    public float[] JK;
+    public char JT;
+    public float[] JU;
     
     b(char paramChar, float[] paramArrayOfFloat)
     {
-      this.JJ = paramChar;
-      this.JK = paramArrayOfFloat;
+      this.JT = paramChar;
+      this.JU = paramArrayOfFloat;
     }
     
     b(b paramb)
     {
-      this.JJ = paramb.JJ;
-      this.JK = c.a(paramb.JK, paramb.JK.length);
+      this.JT = paramb.JT;
+      this.JU = c.a(paramb.JU, paramb.JU.length);
     }
     
     private static void a(Path paramPath, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6, double paramDouble7, double paramDouble8, double paramDouble9)
@@ -782,8 +782,8 @@ public final class c
       int i = 0;
       while (i < paramArrayOfb.length)
       {
-        a(paramPath, arrayOfFloat, c, paramArrayOfb[i].JJ, paramArrayOfb[i].JK);
-        c = paramArrayOfb[i].JJ;
+        a(paramPath, arrayOfFloat, c, paramArrayOfb[i].JT, paramArrayOfb[i].JU);
+        c = paramArrayOfb[i].JT;
         i += 1;
       }
     }
@@ -791,9 +791,9 @@ public final class c
     public final void a(b paramb1, b paramb2, float paramFloat)
     {
       int i = 0;
-      while (i < paramb1.JK.length)
+      while (i < paramb1.JU.length)
       {
-        this.JK[i] = (paramb1.JK[i] * (1.0F - paramFloat) + paramb2.JK[i] * paramFloat);
+        this.JU[i] = (paramb1.JU[i] * (1.0F - paramFloat) + paramb2.JU[i] * paramFloat);
         i += 1;
       }
     }

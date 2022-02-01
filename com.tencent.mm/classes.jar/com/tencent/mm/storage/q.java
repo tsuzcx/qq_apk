@@ -1,45 +1,85 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.storagebase.h;
+import kotlin.g.a.a;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/storage/BizCardReport;", "", "()V", "report20800Insert", "", "info", "Lcom/tencent/mm/storage/BizTimeLineInfo;", "arriveType", "", "pos", "useServerTime", "cardType", "style", "recID", "", "cardId", "", "expType", "extraData", "report20800Receive", "weight", "plugin-biz_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/storage/BizAdInfoStorage;", "Lcom/tencent/mm/sdk/storage/MAutoStorage;", "Lcom/tencent/mm/storage/BizAdInfo;", "db", "Lcom/tencent/mm/storagebase/SqliteDB;", "(Lcom/tencent/mm/storagebase/SqliteDB;)V", "totalCount", "", "getTotalCount", "()I", "deleteById", "", "id", "", "deleteTooOldData", "getTodayAdCardCount", "getTodayStartTime", "", "insertOrUpdate", "", "info", "Companion", "plugin-biz_release"})
 public final class q
+  extends MAutoStorage<p>
 {
-  public static final q IIu;
+  private static final String[] INDEX_CREATE;
+  public static final a NOP;
+  public static final String[] SQL_CREATE;
+  final h iFy;
   
   static
   {
-    AppMethodBeat.i(188820);
-    IIu = new q();
-    AppMethodBeat.o(188820);
+    AppMethodBeat.i(212477);
+    NOP = new a((byte)0);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(p.info, "BizAdInfo") };
+    INDEX_CREATE = new String[] { "CREATE  INDEX IF NOT EXISTS biz_exposeTime_index ON BizAdInfo ( exposeTime ) " };
+    AppMethodBeat.o(212477);
   }
   
-  public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, String paramString1, String paramString2, String paramString3)
+  public q(h paramh)
   {
-    AppMethodBeat.i(188818);
-    g.yxI.f(20800, new Object[] { Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Long.valueOf(paramLong), paramString1, paramString2, paramString3 });
-    AppMethodBeat.o(188818);
+    super((ISQLiteDatabase)paramh, p.info, "BizAdInfo", INDEX_CREATE);
+    AppMethodBeat.i(212476);
+    this.iFy = paramh;
+    AppMethodBeat.o(212476);
   }
   
-  public static void a(w paramw, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, long paramLong, String paramString1, String paramString2, String paramString3)
+  public final boolean a(p paramp)
   {
-    AppMethodBeat.i(188819);
-    p.h(paramw, "info");
-    if (!paramw.ftb())
+    AppMethodBeat.i(212474);
+    kotlin.g.b.p.h(paramp, "info");
+    if (get((IAutoDBItem)paramp, new String[0]))
     {
-      AppMethodBeat.o(188819);
-      return;
+      Log.i("MicroMsg.BizAdInfoStorage", "insertOrUpdate exist");
+      AppMethodBeat.o(212474);
+      return false;
     }
-    g.yxI.f(20800, new Object[] { Integer.valueOf(2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramw.fsZ()), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt5), Long.valueOf(paramLong), paramString1, paramString2, paramString3 });
-    AppMethodBeat.o(188819);
+    boolean bool = super.insertNotify((IAutoDBItem)paramp, false);
+    Log.i("MicroMsg.BizAdInfoStorage", "insertOrUpdate ret=".concat(String.valueOf(bool)));
+    d.i((a)new b(this));
+    AppMethodBeat.o(212474);
+    return bool;
+  }
+  
+  public final void biF(String paramString)
+  {
+    AppMethodBeat.i(212475);
+    p localp = new p();
+    localp.field_aId = paramString;
+    super.delete((IAutoDBItem)localp, false, new String[] { "aId" });
+    AppMethodBeat.o(212475);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/storage/BizAdInfoStorage$Companion;", "", "()V", "DELETE_DATA_COUNT", "", "INDEX_CREATE", "", "", "getINDEX_CREATE", "()[Ljava/lang/String;", "[Ljava/lang/String;", "MAX_DATA_COLUMN", "SQL_CREATE", "kotlin.jvm.PlatformType", "TABLE", "TAG", "plugin-biz_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class b
+    extends kotlin.g.b.q
+    implements a<x>
+  {
+    b(q paramq)
+    {
+      super();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.q
  * JD-Core Version:    0.7.0.1
  */

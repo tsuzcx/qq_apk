@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.media.encode.Mp3EncodeJni;
 import com.tencent.mm.plugin.appbrand.media.record.h;
 import com.tencent.mm.plugin.appbrand.media.record.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.OutputStream;
@@ -13,56 +13,56 @@ import java.io.OutputStream;
 public final class e
   extends c
 {
-  private int iqp = 2;
-  private byte[] lWK;
+  private int jlA = 2;
   private OutputStream mFileOutputStream;
   private String mFilePath = "";
+  private byte[] nem;
   
   public final boolean a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
   {
     paramBoolean = true;
     AppMethodBeat.i(146346);
-    if (this.lWG <= 0)
+    if (this.nei <= 0)
     {
-      ae.e("MicroMsg.Record.MP3AudioEncoder", "mMinBufferSize %d is invalid", new Object[] { Integer.valueOf(this.lWG) });
+      Log.e("MicroMsg.Record.MP3AudioEncoder", "mMinBufferSize %d is invalid", new Object[] { Integer.valueOf(this.nei) });
       AppMethodBeat.o(146346);
       return false;
     }
     if (this.mFileOutputStream == null)
     {
-      ae.e("MicroMsg.Record.MP3AudioEncoder", "mFileOutputStream is null");
+      Log.e("MicroMsg.Record.MP3AudioEncoder", "mFileOutputStream is null");
       AppMethodBeat.o(146346);
       return false;
     }
-    if (this.lWK == null)
+    if (this.nem == null)
     {
-      i = (int)(7200.0D + this.lWG * this.iqp * 1.25D);
-      ae.i("MicroMsg.Record.MP3AudioEncoder", "channelCnt:%d, mMinBufferSize:%d, size:%d, ", new Object[] { Integer.valueOf(this.iqp), Integer.valueOf(this.lWG), Integer.valueOf(i) });
-      this.lWK = new byte[i];
+      i = (int)(7200.0D + this.nei * this.jlA * 1.25D);
+      Log.i("MicroMsg.Record.MP3AudioEncoder", "channelCnt:%d, mMinBufferSize:%d, size:%d, ", new Object[] { Integer.valueOf(this.jlA), Integer.valueOf(this.nei), Integer.valueOf(i) });
+      this.nem = new byte[i];
     }
-    paramArrayOfByte = h.E(paramArrayOfByte, paramInt);
-    int i = Mp3EncodeJni.encode(paramArrayOfByte, paramArrayOfByte, paramInt / 2, this.lWK);
-    ae.d("MicroMsg.Record.MP3AudioEncoder", "len:%d, shorts.len:%d, encodedSize:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(i) });
+    paramArrayOfByte = h.G(paramArrayOfByte, paramInt);
+    int i = Mp3EncodeJni.encode(paramArrayOfByte, paramArrayOfByte, paramInt / 2, this.nem);
+    Log.d("MicroMsg.Record.MP3AudioEncoder", "len:%d, shorts.len:%d, encodedSize:%d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfByte.length), Integer.valueOf(i) });
     if (i > 0) {
-      ae.d("MicroMsg.Record.MP3AudioEncoder", "encodeSize:%d, len:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
+      Log.d("MicroMsg.Record.MP3AudioEncoder", "encodeSize:%d, len:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramInt) });
     }
     for (;;)
     {
       try
       {
-        this.mFileOutputStream.write(this.lWK, 0, i);
-        d(this.lWK, i, false);
+        this.mFileOutputStream.write(this.nem, 0, i);
+        d(this.nem, i, false);
         AppMethodBeat.o(146346);
         return paramBoolean;
       }
       catch (IOException paramArrayOfByte)
       {
-        ae.printErrStackTrace("MicroMsg.Record.MP3AudioEncoder", paramArrayOfByte, "encode write", new Object[0]);
-        j.uI(20);
+        Log.printErrStackTrace("MicroMsg.Record.MP3AudioEncoder", paramArrayOfByte, "encode write", new Object[0]);
+        j.yz(20);
         paramBoolean = false;
         continue;
       }
-      ae.e("MicroMsg.Record.MP3AudioEncoder", "Mp3EncodeJni encode fail, encodedSize:%d", new Object[] { Integer.valueOf(i) });
+      Log.e("MicroMsg.Record.MP3AudioEncoder", "Mp3EncodeJni encode fail, encodedSize:%d", new Object[] { Integer.valueOf(i) });
       paramBoolean = false;
     }
   }
@@ -70,7 +70,7 @@ public final class e
   public final void close()
   {
     AppMethodBeat.i(146348);
-    ae.i("MicroMsg.Record.MP3AudioEncoder", "close");
+    Log.i("MicroMsg.Record.MP3AudioEncoder", "close");
     Mp3EncodeJni.close();
     if (this.mFileOutputStream != null) {}
     try
@@ -84,8 +84,8 @@ public final class e
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Record.MP3AudioEncoder", localIOException, "close", new Object[0]);
-        j.uI(20);
+        Log.printErrStackTrace("MicroMsg.Record.MP3AudioEncoder", localIOException, "close", new Object[0]);
+        j.yz(20);
       }
     }
   }
@@ -93,31 +93,31 @@ public final class e
   public final void flush()
   {
     AppMethodBeat.i(146347);
-    ae.i("MicroMsg.Record.MP3AudioEncoder", "flush");
-    if ((this.mFileOutputStream == null) || (this.lWK == null))
+    Log.i("MicroMsg.Record.MP3AudioEncoder", "flush");
+    if ((this.mFileOutputStream == null) || (this.nem == null))
     {
-      ae.e("MicroMsg.Record.MP3AudioEncoder", "flush, mFileOutputStream or mMp3Buffer is null");
+      Log.e("MicroMsg.Record.MP3AudioEncoder", "flush, mFileOutputStream or mMp3Buffer is null");
       AppMethodBeat.o(146347);
       return;
     }
-    int i = Mp3EncodeJni.flush(this.lWK);
+    int i = Mp3EncodeJni.flush(this.nem);
     if (i > 0) {
       try
       {
-        this.mFileOutputStream.write(this.lWK, 0, i);
-        d(this.lWK, i, true);
+        this.mFileOutputStream.write(this.nem, 0, i);
+        d(this.nem, i, true);
         AppMethodBeat.o(146347);
         return;
       }
       catch (IOException localIOException)
       {
-        ae.printErrStackTrace("MicroMsg.Record.MP3AudioEncoder", localIOException, "flush write", new Object[0]);
-        j.uI(20);
+        Log.printErrStackTrace("MicroMsg.Record.MP3AudioEncoder", localIOException, "flush write", new Object[0]);
+        j.yz(20);
         AppMethodBeat.o(146347);
         return;
       }
     }
-    ae.e("MicroMsg.Record.MP3AudioEncoder", "flush fail, flushResult:%d", new Object[] { Integer.valueOf(i) });
+    Log.e("MicroMsg.Record.MP3AudioEncoder", "flush fail, flushResult:%d", new Object[] { Integer.valueOf(i) });
     AppMethodBeat.o(146347);
   }
   
@@ -125,21 +125,21 @@ public final class e
   {
     boolean bool = true;
     AppMethodBeat.i(146345);
-    ae.i("MicroMsg.Record.MP3AudioEncoder", "init, filePath:%s, sampleRate:%d, channelCount:%d, bitRate:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.i("MicroMsg.Record.MP3AudioEncoder", "init, filePath:%s, sampleRate:%d, channelCount:%d, bitRate:%d", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     this.mFilePath = paramString;
-    this.iqp = paramInt2;
+    this.jlA = paramInt2;
     paramInt1 = Mp3EncodeJni.init(paramInt1, paramInt2, paramInt1, paramInt3 / 1000, 5);
-    ae.i("MicroMsg.Record.MP3AudioEncoder", "Mp3EncodeJni.init ret :%d", new Object[] { Integer.valueOf(paramInt1) });
+    Log.i("MicroMsg.Record.MP3AudioEncoder", "Mp3EncodeJni.init ret :%d", new Object[] { Integer.valueOf(paramInt1) });
     if (paramInt1 == -1)
     {
-      j.uI(17);
+      j.yz(17);
       AppMethodBeat.o(146345);
       return false;
     }
-    ae.i("MicroMsg.Record.MP3AudioEncoder", "lame MPEG version:%d", new Object[] { Integer.valueOf(Mp3EncodeJni.getVersion()) });
+    Log.i("MicroMsg.Record.MP3AudioEncoder", "lame MPEG version:%d", new Object[] { Integer.valueOf(Mp3EncodeJni.getVersion()) });
     try
     {
-      this.mFileOutputStream = o.db(paramString, false);
+      this.mFileOutputStream = s.dw(paramString, false);
       AppMethodBeat.o(146345);
       return bool;
     }
@@ -147,8 +147,8 @@ public final class e
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Record.MP3AudioEncoder", paramString, "init", new Object[0]);
-        j.uI(18);
+        Log.printErrStackTrace("MicroMsg.Record.MP3AudioEncoder", paramString, "init", new Object[0]);
+        j.yz(18);
         bool = false;
       }
     }
@@ -156,7 +156,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.a.e
  * JD-Core Version:    0.7.0.1
  */

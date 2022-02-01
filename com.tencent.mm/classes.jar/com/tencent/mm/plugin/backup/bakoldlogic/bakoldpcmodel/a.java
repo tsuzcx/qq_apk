@@ -3,67 +3,68 @@ package com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.backup.b.d;
 
 public final class a
-  extends com.tencent.mm.plugin.backup.b.d
+  extends d
 {
-  private static a nGh;
-  private e nGi;
-  private c nGj;
-  private b nGk;
+  private static a oRe;
+  private e oRf;
+  private c oRg;
+  private b oRh;
   
-  public static a bKg()
+  public static a cgZ()
   {
     AppMethodBeat.i(21859);
-    if (nGh == null)
+    if (oRe == null)
     {
       locala = new a();
-      nGh = locala;
+      oRe = locala;
       a(locala);
     }
-    a locala = nGh;
+    a locala = oRe;
     AppMethodBeat.o(21859);
     return locala;
   }
   
-  public final void bHQ()
+  public final void ceH()
   {
-    nGh = null;
+    oRe = null;
   }
   
-  public final void bHW() {}
+  public final void ceN() {}
   
-  public final void bHX() {}
+  public final void ceO() {}
   
-  public final e bKh()
+  public final e cha()
   {
     AppMethodBeat.i(21861);
-    if (this.nGi == null) {
-      this.nGi = new e();
+    if (this.oRf == null) {
+      this.oRf = new e();
     }
-    e locale = this.nGi;
+    e locale = this.oRf;
     AppMethodBeat.o(21861);
     return locale;
   }
   
-  public final c bKi()
+  public final c chb()
   {
     AppMethodBeat.i(21862);
-    if (this.nGj == null) {
-      this.nGj = new c();
+    if (this.oRg == null) {
+      this.oRg = new c();
     }
-    c localc = this.nGj;
+    c localc = this.oRg;
     AppMethodBeat.o(21862);
     return localc;
   }
   
-  public final b bKj()
+  public final b chc()
   {
     AppMethodBeat.i(21863);
-    if (this.nGk == null) {
-      this.nGk = new b();
+    if (this.oRh == null) {
+      this.oRh = new b();
     }
-    b localb = this.nGk;
+    b localb = this.oRh;
     AppMethodBeat.o(21863);
     return localb;
   }
@@ -72,15 +73,15 @@ public final class a
   {
     AppMethodBeat.i(21860);
     paramVarArgs = (Context)paramVarArgs[0];
-    bKg().bKj().bKk();
+    cgZ().chc().chd();
     com.tencent.mm.plugin.backup.g.b.clear();
-    com.tencent.mm.br.d.bg(new Intent().setClassName(paramVarArgs, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService"));
+    com.tencent.mm.br.c.bs(new Intent().setClassName(paramVarArgs, "com.tencent.mm.plugin.backup.bakoldlogic.bakoldmodel.BakOldUSBService"));
     AppMethodBeat.o(21860);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.bakoldlogic.bakoldpcmodel.a
  * JD-Core Version:    0.7.0.1
  */

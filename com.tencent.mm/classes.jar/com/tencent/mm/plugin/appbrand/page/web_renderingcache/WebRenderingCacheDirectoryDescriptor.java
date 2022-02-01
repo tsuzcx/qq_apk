@@ -9,7 +9,7 @@ public class WebRenderingCacheDirectoryDescriptor
   implements Parcelable
 {
   public static final Parcelable.Creator<WebRenderingCacheDirectoryDescriptor> CREATOR;
-  public String mlP;
+  public String nwn;
   
   static
   {
@@ -23,7 +23,7 @@ public class WebRenderingCacheDirectoryDescriptor
   protected WebRenderingCacheDirectoryDescriptor(Parcel paramParcel)
   {
     AppMethodBeat.i(47976);
-    this.mlP = paramParcel.readString();
+    this.nwn = paramParcel.readString();
     AppMethodBeat.o(47976);
   }
   
@@ -35,13 +35,13 @@ public class WebRenderingCacheDirectoryDescriptor
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(47975);
-    paramParcel.writeString(this.mlP);
+    paramParcel.writeString(this.nwn);
     AppMethodBeat.o(47975);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.web_renderingcache.WebRenderingCacheDirectoryDescriptor
  * JD-Core Version:    0.7.0.1
  */

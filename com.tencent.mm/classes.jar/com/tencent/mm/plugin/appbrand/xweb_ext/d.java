@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.appbrand.xweb_ext;
 
 public final class d
 {
-  public static boolean nwF;
+  public static boolean oGJ;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.xweb_ext.d
  * JD-Core Version:    0.7.0.1
  */

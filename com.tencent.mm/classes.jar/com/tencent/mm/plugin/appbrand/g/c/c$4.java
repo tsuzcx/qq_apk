@@ -13,8 +13,8 @@ public final class c$4
   public final void a(e parame)
   {
     AppMethodBeat.i(158962);
-    if (this.khc != null) {
-      this.khc.a(parame);
+    if (this.lkL != null) {
+      this.lkL.a(parame);
     }
     AppMethodBeat.o(158962);
   }
@@ -22,16 +22,16 @@ public final class c$4
   public final void b(e parame)
   {
     AppMethodBeat.i(158961);
-    this.kha.kgW.remove(this.khb.khD);
-    if (this.khc != null) {
-      this.khc.b(parame);
+    this.lkJ.lkF.remove(this.lkK.llm);
+    if (this.lkL != null) {
+      this.lkL.b(parame);
     }
     AppMethodBeat.o(158961);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.c.c.4
  * JD-Core Version:    0.7.0.1
  */

@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public static final i Otm;
+  public static final i Uij;
   
   static
   {
     AppMethodBeat.i(40517);
-    Otm = new i("", "");
+    Uij = new i("", "");
     AppMethodBeat.o(40517);
   }
 }

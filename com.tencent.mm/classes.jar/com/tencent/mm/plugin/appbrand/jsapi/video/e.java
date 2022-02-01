@@ -7,11 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract interface e
 {
-  public abstract boolean aE(float paramFloat);
+  public abstract boolean aO(float paramFloat);
   
-  public abstract boolean bip();
-  
-  public abstract void bns();
+  public abstract void bIW();
   
   public abstract void c(boolean paramBoolean, String paramString, int paramInt);
   
@@ -29,15 +27,17 @@ public abstract interface e
   
   public abstract View getView();
   
-  public abstract boolean isPlaying();
+  public abstract boolean isLive();
   
-  public abstract boolean o(double paramDouble);
+  public abstract boolean isPlaying();
   
   public abstract void onUIDestroy();
   
   public abstract void onUIPause();
   
   public abstract void onUIResume();
+  
+  public abstract boolean p(double paramDouble);
   
   public abstract boolean pause();
   
@@ -63,35 +63,35 @@ public abstract interface e
   
   public static abstract interface a
   {
+    public abstract void KD();
+    
     public abstract void a(e.f paramf);
     
-    public abstract void blp();
+    public abstract void bGL();
     
-    public abstract boolean bnP();
+    public abstract void bIZ();
     
-    public abstract void bnQ();
+    public abstract void bJA();
     
-    public abstract void bnR();
+    public abstract void bJB();
     
-    public abstract boolean bnS();
+    public abstract void bJC();
     
-    public abstract void bnT();
+    public abstract boolean bJD();
     
-    public abstract boolean bnU();
+    public abstract boolean bJt();
     
-    public abstract boolean bnV();
+    public abstract void bJu();
     
-    public abstract void bnW();
+    public abstract void bJv();
     
-    public abstract void bnX();
+    public abstract boolean bJw();
     
-    public abstract void bnY();
+    public abstract boolean bJx();
     
-    public abstract void bnZ();
+    public abstract boolean bJy();
     
-    public abstract void bnv();
-    
-    public abstract boolean boa();
+    public abstract void bJz();
     
     public abstract void hide();
     
@@ -140,13 +140,13 @@ public abstract interface e
   
   public static abstract interface b
   {
-    public abstract void gS(boolean paramBoolean);
-    
     public abstract int getVideoTotalTime();
+    
+    public abstract void hP(boolean paramBoolean);
     
     public abstract void setVideoTotalTime(int paramInt);
     
-    public abstract void tx(int paramInt);
+    public abstract void xv(int paramInt);
   }
   
   public static abstract interface c
@@ -155,39 +155,17 @@ public abstract interface e
     
     public abstract void d(String paramString1, String paramString2, int paramInt1, int paramInt2);
     
-    public abstract void ds(String paramString1, String paramString2);
+    public abstract void dH(String paramString1, String paramString2);
     
-    public abstract void dt(String paramString1, String paramString2);
+    public abstract void dI(String paramString1, String paramString2);
     
-    public abstract void du(String paramString1, String paramString2);
+    public abstract void dJ(String paramString1, String paramString2);
     
-    public abstract void dv(String paramString1, String paramString2);
+    public abstract void dK(String paramString1, String paramString2);
     
-    public abstract void dw(String paramString1, String paramString2);
+    public abstract void dL(String paramString1, String paramString2);
     
-    public abstract void dx(String paramString1, String paramString2);
-  }
-  
-  public static abstract interface d
-  {
-    public abstract void aqS();
-    
-    public abstract void nP(int paramInt);
-  }
-  
-  public static abstract interface e
-  {
-    public abstract void onProgressChanged(int paramInt1, int paramInt2);
-  }
-  
-  public static abstract interface f
-  {
-    public abstract void onVisibilityChanged(boolean paramBoolean);
-  }
-  
-  public static abstract interface g
-  {
-    public abstract void gR(boolean paramBoolean);
+    public abstract void dM(String paramString1, String paramString2);
   }
   
   public static enum h
@@ -195,27 +173,20 @@ public abstract interface e
     static
     {
       AppMethodBeat.i(137806);
-      lqm = new h("DEFAULT", 0);
-      lqn = new h("FILL", 1);
-      lqo = new h("CONTAIN", 2);
-      lqp = new h("COVER", 3);
-      lqq = new h[] { lqm, lqn, lqo, lqp };
+      mwR = new h("DEFAULT", 0);
+      mwS = new h("FILL", 1);
+      mwT = new h("CONTAIN", 2);
+      mwU = new h("COVER", 3);
+      mwV = new h[] { mwR, mwS, mwT, mwU };
       AppMethodBeat.o(137806);
     }
     
     private h() {}
   }
-  
-  public static abstract interface i
-  {
-    public abstract int bnD();
-    
-    public abstract int bnE();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e
  * JD-Core Version:    0.7.0.1
  */

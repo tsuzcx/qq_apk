@@ -1,176 +1,99 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.res.Resources;
-import android.view.LayoutInflater;
-import android.view.MenuItem;
+import android.util.DisplayMetrics;
 import android.view.View;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.cb.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.live.a.a;
-import com.tencent.mm.live.api.LiveConfig;
-import com.tencent.mm.live.api.LiveConfig.a;
-import com.tencent.mm.live.d.f;
-import com.tencent.mm.plugin.comm.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.chatting.BaseChattingUIFragment;
-import com.tencent.mm.ui.widget.MMNeat7extView;
-import com.tencent.mm.ui.widget.MMTextView;
+import com.tencent.mm.plugin.i.a.aj;
+import com.tencent.mm.plugin.sns.ui.view.ImageIndicatorView;
+import com.tencent.mm.ui.ar;
+import com.tencent.mm.view.NinePatchCropImageView;
 
-public final class z$a
-  extends c
+final class z$a
+  extends c.a
 {
-  public final View a(LayoutInflater paramLayoutInflater, View paramView)
-  {
-    AppMethodBeat.i(187797);
-    Object localObject;
-    if (paramView != null)
-    {
-      localObject = paramView;
-      if (paramView.getTag() != null) {}
-    }
-    else
-    {
-      localObject = new ah(paramLayoutInflater, 2131496164);
-      ((View)localObject).setTag(new z.c((View)localObject, Boolean.TRUE));
-    }
-    AppMethodBeat.o(187797);
-    return localObject;
-  }
+  public ImageIndicatorView EpV;
+  public ImageView PKw;
+  public View detailLayout;
+  public ImageView finderAvatar;
+  public TextView finderDesc;
+  public ImageView finderIcon;
+  public TextView finderNickname;
+  public TextView finderText;
+  public ImageView finderThumb;
+  public ImageView tickIV;
+  public int width;
   
-  public final void a(c.a parama, int paramInt, final com.tencent.mm.ui.chatting.e.a parama1, bv parambv, String paramString)
+  public final a Q(View paramView, boolean paramBoolean)
   {
-    AppMethodBeat.i(187798);
-    String str;
-    if ((parama instanceof z.c))
+    AppMethodBeat.i(233734);
+    super.create(paramView);
+    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131298411);
+    Object localObject = paramView.getContext();
+    this.width = ((int)((((Context)localObject).getResources().getDisplayMetrics().widthPixels - ((Context)localObject).getResources().getDimension(2131165289)) / 2.0F));
+    localObject = (LinearLayout.LayoutParams)localLinearLayout.getLayoutParams();
+    ((LinearLayout.LayoutParams)localObject).width = this.width;
+    localLinearLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.finderAvatar = ((ImageView)paramView.findViewById(2131298472));
+    this.finderNickname = ((TextView)paramView.findViewById(2131298477));
+    this.finderThumb = ((ImageView)paramView.findViewById(2131298481));
+    this.finderDesc = ((TextView)paramView.findViewById(2131298473));
+    this.finderText = ((TextView)paramView.findViewById(2131298480));
+    this.finderIcon = ((ImageView)paramView.findViewById(2131298474));
+    this.PKw = ((ImageView)paramView.findViewById(2131298476));
+    this.EpV = ((ImageIndicatorView)paramView.findViewById(2131298475));
+    this.userTV = ((TextView)paramView.findViewById(2131298566));
+    this.detailLayout = paramView.findViewById(2131298394);
+    int i;
+    if (!((aj)g.ah(aj.class)).showFinderEntry())
     {
-      str = parambv.field_content;
-      if (str == null) {
-        break label200;
-      }
-    }
-    for (paramString = k.b.aB(str, parambv.field_reserved);; paramString = null)
-    {
-      if (paramString != null)
+      i = 1;
+      if (i == 0)
       {
-        ((z.c)parama).Kzl.aq(com.tencent.mm.pluginsdk.ui.span.k.c(ak.getContext(), paramString.getTitle()));
-        final long l = Long.parseLong(((com.tencent.mm.live.b.l)paramString.ao(com.tencent.mm.live.b.l.class)).gRV);
-        paramString = parama1.getTalkerUserName();
-        ((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).refreshLiveStatus(l, paramString, new a.a()
-        {
-          public final void c(long paramAnonymousLong, int paramAnonymousInt)
-          {
-            AppMethodBeat.i(187796);
-            if (l == paramAnonymousLong)
-            {
-              if (paramAnonymousInt == 1)
-              {
-                ((z.c)parama1).Kzm.setText(this.KuD.Kkd.getContext().getResources().getString(2131766792));
-                AppMethodBeat.o(187796);
-                return;
-              }
-              ((z.c)parama1).Kzm.setText(this.KuD.Kkd.getContext().getResources().getString(2131766793));
-            }
-            AppMethodBeat.o(187796);
-          }
-        });
+        this.checkBox = ((CheckBox)paramView.findViewById(2131298410));
+        this.maskView = paramView.findViewById(2131298508);
       }
-      parambv = new bk(parambv, parama1.fJC(), paramInt, null, '\000');
-      parama.olI.setTag(parambv);
-      parama.olI.setOnClickListener(d(parama1));
-      parama.olI.setOnTouchListener(((com.tencent.mm.ui.chatting.d.b.k)parama1.bh(com.tencent.mm.ui.chatting.d.b.k.class)).fGw());
-      parama.olI.setOnLongClickListener(c(parama1));
-      ae.i("MicroMsg.ChattingItemAppMsgShareLiveFrom", "filling");
-      AppMethodBeat.o(187798);
-      return;
-      label200:
-      ae.e("MicroMsg.ChattingItemAppMsgShareLiveFrom", "amessage, msgid:%s, user:%s", new Object[] { Long.valueOf(parambv.field_msgId), paramString });
+      if (!paramBoolean) {
+        break label350;
+      }
+      this.uploadingPB = ((ProgressBar)paramView.findViewById(2131309619));
+      this.tickIV = ((ImageView)paramView.findViewById(2131298556));
+      if ((this.finderThumb instanceof NinePatchCropImageView)) {
+        ((NinePatchCropImageView)this.finderThumb).setNinePatchId(2131231809);
+      }
     }
-  }
-  
-  public final boolean a(MenuItem paramMenuItem, com.tencent.mm.ui.chatting.e.a parama, bv parambv)
-  {
-    return false;
-  }
-  
-  public final boolean a(com.tencent.mm.ui.base.l paraml, View paramView, bv parambv)
-  {
-    AppMethodBeat.i(187799);
-    paramView.getTag();
-    AppMethodBeat.o(187799);
-    return true;
-  }
-  
-  public final boolean b(View paramView, com.tencent.mm.ui.chatting.e.a parama, bv parambv)
-  {
-    AppMethodBeat.i(187800);
-    ((b)g.ab(b.class)).aaK(parambv.field_talker);
-    paramView = parambv.field_content;
-    if (paramView != null) {}
-    for (paramView = k.b.aB(paramView, parambv.field_reserved);; paramView = null)
+    for (;;)
     {
-      if ((paramView != null) && (paramView.type == 60)) {
-        try
-        {
-          if ((((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).isAnchorLiving()) || (((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).isVisitorLiving()) || ((!com.tencent.mm.r.a.n(parama.Kkd.getContext(), true)) && (!com.tencent.mm.r.a.ch(parama.Kkd.getContext())) && (!com.tencent.mm.r.a.cf(parama.Kkd.getContext())) && (!com.tencent.mm.r.a.cj(parama.Kkd.getContext()))))
-          {
-            Object localObject = (com.tencent.mm.live.b.l)paramView.ao(com.tencent.mm.live.b.l.class);
-            long l = Long.parseLong(((com.tencent.mm.live.b.l)localObject).gRV);
-            paramView = ((com.tencent.mm.live.b.l)localObject).gJj;
-            localObject = ((com.tencent.mm.live.b.l)localObject).thumbUrl;
-            parambv = b(parama, parambv);
-            LiveConfig.a locala = new LiveConfig.a();
-            locala.gJg = LiveConfig.gJb;
-            locala.thumbUrl = ((String)localObject);
-            locala.gJi = parama.getTalkerUserName();
-            locala.gJh = l;
-            locala.gJj = paramView;
-            locala.fromScene = LiveConfig.gJe;
-            locala.gJl = parambv;
-            paramView = locala.alq();
-            ((com.tencent.mm.live.a)g.ad(com.tencent.mm.live.a.class)).liveEntranceJumper().b(parama.Kkd.getContext(), paramView);
-            f.aqn();
-          }
-          AppMethodBeat.o(187800);
-          return true;
-        }
-        catch (Exception paramView)
-        {
-          ae.w("MicroMsg.ChattingItemAppMsgShareLiveFrom", "jump to live fail: %s", new Object[] { paramView.getMessage() });
-        }
+      this.finderIcon.setImageDrawable(ar.m(this.finderIcon.getContext(), 2131690801, a.n(this.finderIcon.getContext(), 2131099792)));
+      AppMethodBeat.o(233734);
+      return this;
+      i = 0;
+      break;
+      label350:
+      if ((this.finderThumb instanceof NinePatchCropImageView)) {
+        ((NinePatchCropImageView)this.finderThumb).setNinePatchId(2131231692);
       }
-      AppMethodBeat.o(187800);
-      return false;
     }
   }
   
-  public final boolean br(int paramInt, boolean paramBoolean)
+  public final View getMainContainerView()
   {
-    return (!paramBoolean) && (paramInt == 855638065);
-  }
-  
-  final boolean fLA()
-  {
-    return false;
-  }
-  
-  protected final boolean fLC()
-  {
-    return false;
-  }
-  
-  public final boolean fLz()
-  {
-    return false;
+    return this.detailLayout;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.z.a
  * JD-Core Version:    0.7.0.1
  */

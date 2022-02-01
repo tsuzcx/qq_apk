@@ -3,69 +3,71 @@ package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.c.c.a;
-import com.tencent.mm.plugin.webview.c.d;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.d.n;
 import com.tencent.mm.plugin.webview.ui.tools.WebViewUI;
-import com.tencent.mm.plugin.webview.ui.tools.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
+import com.tencent.mm.plugin.webview.ui.tools.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiCurrentMpInfoShow;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiCurrentMpInfoShow;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class f
   extends a
 {
-  private static final int ECX = 346;
-  public static final f EHy;
+  private static final int CDJ = 346;
+  public static final f Jxf;
   private static final String TAG = "MicroMsg.JsApiCurrentMpInfoShow";
-  private static final String dLB = "currentMpInfoShow";
+  private static final String edq = "currentMpInfoShow";
   
   static
   {
     AppMethodBeat.i(175682);
-    EHy = new f();
+    Jxf = new f();
     TAG = "MicroMsg.JsApiCurrentMpInfoShow";
-    ECX = 346;
-    dLB = "currentMpInfoShow";
+    CDJ = 346;
+    edq = "currentMpInfoShow";
     AppMethodBeat.o(175682);
   }
   
-  public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, n paramn)
   {
-    AppMethodBeat.i(199394);
-    p.h(paramd, "env");
-    p.h(paraml, "msg");
-    Context localContext = paramd.context;
-    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).Ewa != null))
+    AppMethodBeat.i(210586);
+    p.h(paramf, "env");
+    p.h(paramn, "msg");
+    Context localContext = paramf.context;
+    if (((localContext instanceof WebViewUI)) && (((WebViewUI)localContext).ILE != null))
     {
       Bundle localBundle = new Bundle();
-      String str1 = (String)paraml.xqN.get("url");
-      String str2 = (String)paraml.xqN.get("brandName");
-      String str3 = (String)paraml.xqN.get("userName");
-      ae.d(TAG, dLB + " brandName=" + str2 + ", userName=" + str3);
-      if ((!bu.isNullOrNil(str2)) && (!bu.isNullOrNil(str3)))
+      String str1 = (String)paramn.params.get("url");
+      String str2 = (String)paramn.params.get("brandName");
+      String str3 = (String)paramn.params.get("userName");
+      Log.d(TAG, edq + " brandName=" + str2 + ", userName=" + str3);
+      if ((!Util.isNullOrNil(str2)) && (!Util.isNullOrNil(str3)))
       {
         localBundle.putString("key_brand_name", str2);
         localBundle.putString("key_brand_user_name", str3);
         localBundle.putString("key_url", str1);
       }
       localBundle.putBoolean("key_current_info_show", true);
-      ((WebViewUI)localContext).Ewa.aR(localBundle);
+      ((WebViewUI)localContext).ILE.bd(localBundle);
     }
-    paramd.DQe.i(paraml.Efy, paraml.lcx + ":ok", null);
-    AppMethodBeat.o(199394);
+    paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", null);
+    AppMethodBeat.o(210586);
     return true;
   }
   
-  public final int eSw()
+  public final int ePA()
   {
-    return ECX;
+    return CDJ;
   }
   
-  public final String eSx()
+  public final String ePz()
   {
-    return dLB;
+    return edq;
   }
 }
 

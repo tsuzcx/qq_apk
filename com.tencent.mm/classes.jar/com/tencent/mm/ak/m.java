@@ -1,53 +1,46 @@
 package com.tencent.mm.ak;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.l.d;
-import com.tencent.mm.protocal.l.e;
-import com.tencent.mm.protocal.t.a;
-import com.tencent.mm.protocal.t.b;
-
-public final class m
-  extends l
+public abstract interface m
 {
-  private final t.a hQY;
-  private final t.b hQZ;
+  public abstract boolean Qt();
   
-  public m()
+  public abstract void a(a parama);
+  
+  public abstract void a(b paramb);
+  
+  public abstract int aaq();
+  
+  public abstract void aar();
+  
+  public abstract long aas();
+  
+  public abstract int aat();
+  
+  public abstract boolean cancel();
+  
+  public abstract String getFileName();
+  
+  public abstract int getMaxAmplitude();
+  
+  public abstract boolean hx(String paramString);
+  
+  public abstract boolean isRecording();
+  
+  public abstract void reset();
+  
+  public static abstract interface a
   {
-    AppMethodBeat.i(132307);
-    this.hQY = new t.a();
-    this.hQZ = new t.b();
-    AppMethodBeat.o(132307);
+    public abstract void onError();
   }
   
-  public final int getOptions()
+  public static abstract interface b
   {
-    return 1;
-  }
-  
-  protected final l.d getReqObjImp()
-  {
-    return this.hQY;
-  }
-  
-  public final l.e getRespObj()
-  {
-    return this.hQZ;
-  }
-  
-  public final int getType()
-  {
-    return 381;
-  }
-  
-  public final String getUri()
-  {
-    return "/cgi-bin/micromsg-bin/getcert";
+    public abstract void aYN();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ak.m
  * JD-Core Version:    0.7.0.1
  */

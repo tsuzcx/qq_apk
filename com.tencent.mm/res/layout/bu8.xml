@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/hxl" android:layout_width="fill_parent" android:layout_height="@dimen/b3">
-        <TextView android:textSize="@dimen/a" android:textColor="@color/y3" android:gravity="center" android:layout_gravity="start|center" android:id="@id/hxk" android:background="@drawable/aed" android:layout_height="fill_parent" android:text="@string/bve" style="@style/o4" />
-    </FrameLayout>
-    <include android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/hxl" layout="@layout/ec" />
+    <HorizontalScrollView android:id="@id/er" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/es" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:adjustViewBounds="true" />
+        </RelativeLayout>
+    </HorizontalScrollView>
+    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/glr" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" style="@style/a61" />
 </RelativeLayout>

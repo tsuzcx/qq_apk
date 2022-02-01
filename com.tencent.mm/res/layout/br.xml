@@ -1,9 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:layout_gravity="center" android:id="@id/gam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/km" android:layout_gravity="center" android:id="@id/b3b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
-    <ImageView android:layout_gravity="center" android:id="@id/ed0" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="16.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:layout_gravity="center" android:id="@id/b__" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/Orange" android:layout_gravity="center" android:id="@id/g19" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" />
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/ib">
+        <Button android:id="@id/c72" android:layout_marginRight="10.0dip" android:text="select log" style="@style/p5" />
+        <Button android:id="@id/h3j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Req expt" />
+        <Button android:id="@id/c6y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Delete" />
+        <Button android:id="@id/c6z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Export" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="@dimen/ib">
+        <EditText android:id="@id/dyq" android:layout_width="100.0dip" android:layout_marginRight="10.0dip" android:hint="exptId" android:inputType="number" style="@style/mb" />
+        <Button android:id="@id/b_4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="confirm" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/is" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="exptId:" />
+            <TextView android:textSize="@dimen/is" android:id="@id/c70" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/is" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="groupId:" />
+            <TextView android:textSize="@dimen/is" android:id="@id/dlo" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/is" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="exptSeq:" />
+            <TextView android:textSize="@dimen/is" android:id="@id/c73" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/is" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="exptTime:" />
+            <TextView android:textSize="@dimen/is" android:id="@id/c74" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/is" android:id="@id/c6x" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </ScrollView>> </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="50.0dip">
+        <EditText android:id="@id/c75" android:layout_width="fill_parent" android:layout_margin="10.0dip" android:hint="xml" style="@style/mb" />
+        <Button android:id="@id/c76" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="10.0dip" android:text="confirmXMl" />
+    </LinearLayout>
+    <Button android:id="@id/h3a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/yg" />
 </LinearLayout>

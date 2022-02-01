@@ -1,233 +1,328 @@
 package com.tencent.mm.plugin.voip.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ab.i;
-import com.tencent.mm.compatible.deviceinfo.k;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
-import d.g.b.p;
-import d.l;
-import d.n.n;
-import java.util.Iterator;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/util/VoipRendererHelper;", "", "()V", "TAG", "", "checkPermissionByGpuInfo", "", "remoteInfo", "getXSettingVoipBeautyValue", "", "isAllowToUseFaceBeauty", "isNotAllowToUseFaceBeautyByGPUInfo", "isUseGpuCrop", "isUseGpuRgb2Yuv", "isUseNewVoipRenderer", "isXSettingAllowToCheckGpu", "plugin-voip_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/util/VoipRendererReport;", "", "()V", "addRendererViewInFullScreenWindowsTimes", "", "addRendererViewInFullScreenWindowsTimesInvite", "addRendererViewInMiniScreenWindowsTimes", "addRendererViewInMiniScreenWindowsTimesInvite", "changeToFullScreenCount", "", "changeToHWCount", "changeToMiniScreenCount", "changeToSWCount", "mCameraRenderFrameCount", "mServiceRenderFrameCount", "mYuvRenderFrameCount", "onDecModeChanged", "", "mode", "onFrameDrawCost", "cost", "type", "isFullScreen", "", "isFaceBeauty", "onRendererDrawPerFrameEndAfterAddView", "isInvite", "onRendererDrawPerFrameEndAfterAddViewAfterInit", "onRendererViewAdd", "times", "onWindowTypeChanged", "reportCameraRendererCostPerFrame", "reportRendererTypeChangeCount", "reportRendererWindowTypePercent", "reportServiceRendererCostPerFrame", "reportWhileFinish", "reportYUVRendererCostPerFrame", "Companion", "plugin-voip_release"})
 public final class h
 {
-  public static final h CCW;
+  public static final a Hhl;
+  public long Hha = -1L;
+  public long Hhb = -1L;
+  private int Hhc = -1;
+  private int Hhd = -1;
+  public long Hhe = -1L;
+  public long Hhf = -1L;
+  public long Hhg = -1L;
+  public long Hhh = -1L;
+  public int Hhi = -1;
+  public int Hhj = -1;
+  public int Hhk = -1;
   
   static
   {
-    AppMethodBeat.i(210419);
-    CCW = new h();
-    AppMethodBeat.o(210419);
+    AppMethodBeat.i(236091);
+    Hhl = new a((byte)0);
+    AppMethodBeat.o(236091);
   }
   
-  private static boolean aFe(String paramString)
+  public static final void adJ(int paramInt)
   {
-    boolean bool1 = true;
-    boolean bool2 = true;
-    AppMethodBeat.i(210418);
-    i locali = new i(paramString);
-    int i = locali.optInt("code");
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VoipRendererHelper", "gpu faceBeauty black list is ".concat(String.valueOf(paramString)));
-    paramString = b.CCB;
-    paramString = b.a.eCZ();
-    if (!bu.isNullOrNil(paramString)) {
+    AppMethodBeat.i(236093);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(236093);
+      return;
+      j localj = j.Hhp;
+      j.fKv();
+      AppMethodBeat.o(236093);
+      return;
+      localj = j.Hhp;
+      j.fKw();
+    }
+  }
+  
+  private final void fKn()
+  {
+    AppMethodBeat.i(236088);
+    this.Hha += 1L;
+    this.Hhb += 1L;
+    j localj;
+    if (this.Hha > 0L)
+    {
+      localj = j.Hhp;
+      j.Lm(this.Hha);
+    }
+    if (this.Hhb > 0L)
+    {
+      localj = j.Hhp;
+      j.Ln(this.Hhb);
+    }
+    this.Hha = -1L;
+    this.Hhb = -1L;
+    AppMethodBeat.o(236088);
+  }
+  
+  private final void fKo()
+  {
+    AppMethodBeat.i(236089);
+    this.Hhc += 1;
+    this.Hhd += 1;
+    int i = this.Hhc + this.Hhd;
+    if (i != 0)
+    {
+      j localj;
+      if (this.Hhc > 0)
+      {
+        localj = j.Hhp;
+        j.LG(this.Hhc * 100 / i);
+      }
+      if (this.Hhd > 0)
+      {
+        localj = j.Hhp;
+        j.LH(this.Hhd * 100 / i);
+      }
+    }
+    this.Hhc = -1;
+    this.Hhd = -1;
+    AppMethodBeat.o(236089);
+  }
+  
+  public static final void fKq()
+  {
+    AppMethodBeat.i(236092);
+    j localj = j.Hhp;
+    j.fKs();
+    AppMethodBeat.o(236092);
+  }
+  
+  public static final void xs(boolean paramBoolean)
+  {
+    AppMethodBeat.i(236094);
+    if (paramBoolean)
+    {
+      localj = j.Hhp;
+      j.fKy();
+      AppMethodBeat.o(236094);
+      return;
+    }
+    j localj = j.Hhp;
+    j.fKx();
+    AppMethodBeat.o(236094);
+  }
+  
+  public final void aO(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(236086);
+    j localj;
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        if (this.Hhg != -1L)
+        {
+          localj = j.Hhp;
+          j.LC(Util.ticksToNow(this.Hhg));
+          this.Hhg = -1L;
+          AppMethodBeat.o(236086);
+        }
+      }
+      else
+      {
+        if (this.Hhe != -1L)
+        {
+          localj = j.Hhp;
+          j.LC(Util.ticksToNow(this.Hhe));
+          this.Hhe = -1L;
+        }
+        AppMethodBeat.o(236086);
+      }
+    }
+    else if (paramBoolean2)
+    {
+      if (this.Hhh != -1L)
+      {
+        localj = j.Hhp;
+        j.LD(Util.ticksToNow(this.Hhh));
+        this.Hhh = -1L;
+        AppMethodBeat.o(236086);
+      }
+    }
+    else if (this.Hhf != -1L)
+    {
+      localj = j.Hhp;
+      j.LD(Util.ticksToNow(this.Hhf));
+      this.Hhf = -1L;
+    }
+    AppMethodBeat.o(236086);
+  }
+  
+  public final void aP(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(236087);
+    j localj;
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        if (this.Hhg != -1L)
+        {
+          localj = j.Hhp;
+          j.LA(Util.ticksToNow(this.Hhg));
+          this.Hhg = -1L;
+          AppMethodBeat.o(236087);
+        }
+      }
+      else
+      {
+        if (this.Hhe != -1L)
+        {
+          localj = j.Hhp;
+          j.Lq(Util.ticksToNow(this.Hhe));
+          this.Hhe = -1L;
+        }
+        AppMethodBeat.o(236087);
+      }
+    }
+    else if (paramBoolean2)
+    {
+      if (this.Hhh != -1L)
+      {
+        localj = j.Hhp;
+        j.LB(Util.ticksToNow(this.Hhh));
+        this.Hhh = -1L;
+        AppMethodBeat.o(236087);
+      }
+    }
+    else if (this.Hhf != -1L)
+    {
+      localj = j.Hhp;
+      j.Lr(Util.ticksToNow(this.Hhf));
+      this.Hhf = -1L;
+    }
+    AppMethodBeat.o(236087);
+  }
+  
+  public final void adI(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return;
+    case 0: 
+      this.Hhd += 1;
+      return;
+    }
+    this.Hhc += 1;
+  }
+  
+  public final void fKp()
+  {
+    AppMethodBeat.i(236090);
+    j localj = j.Hhp;
+    j.fKr();
+    fKn();
+    fKo();
+    AppMethodBeat.o(236090);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/util/VoipRendererReport$Companion;", "", "()V", "reportBatteryAverage", "", "data", "", "type", "", "reportCameraOnError", "reportFaceBeautyAlgoException", "reportFaceBeautyUse", "reportNewRendererInitSucc", "isCamera", "", "reportPboSizeInit", "width", "height", "reportRendererModeChanged", "isManual", "reportRendererUse", "plugin-voip_release"})
+  public static final class a
+  {
+    public static void aA(long paramLong1, long paramLong2)
+    {
+      AppMethodBeat.i(236082);
+      j localj = j.Hhp;
+      j.LE(paramLong1);
+      localj = j.Hhp;
+      j.LF(paramLong2);
+      AppMethodBeat.o(236082);
+    }
+    
+    public static void adK(int paramInt)
+    {
+      AppMethodBeat.i(236083);
+      switch (paramInt)
+      {
+      }
       for (;;)
       {
-        try
-        {
-          paramString = new i(paramString);
-          if (i == 0) {
-            continue;
-          }
-          if (i != paramString.optInt("code")) {
-            continue;
-          }
-          bool1 = bool2;
-          if (bool2)
-          {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VoipRendererHelper", "code is fit true cause code fit");
-            bool1 = bool2;
-          }
-        }
-        catch (Exception paramString)
-        {
-          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.VoipRendererHelper", (Throwable)paramString, "checkPermissionByGpuInfo error", new Object[0]);
-          bool1 = false;
-          continue;
-          bool2 = false;
-          continue;
-        }
-        AppMethodBeat.o(210418);
-        return bool1;
-        bool2 = false;
-        continue;
-        if ((!p.i(locali.optString("vendor"), paramString.optString("vendor"))) || (!p.i(locali.optString("name"), paramString.optString("name"))) || (!p.i(locali.optString("version"), paramString.optString("version")))) {
-          continue;
-        }
-        bool2 = bool1;
-        bool1 = bool2;
-        if (bool2)
-        {
-          com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VoipRendererHelper", "code is fit true cause name and vendor and version fit");
-          bool1 = bool2;
-        }
+        AppMethodBeat.o(236083);
+        return;
+        j localj = j.Hhp;
+        j.fKz();
+        AppMethodBeat.o(236083);
+        return;
+        localj = j.Hhp;
+        j.fKA();
+        AppMethodBeat.o(236083);
+        return;
+        localj = j.Hhp;
+        j.fKB();
       }
     }
-    AppMethodBeat.o(210418);
-    return false;
-  }
-  
-  public static final boolean eDn()
-  {
-    AppMethodBeat.i(210412);
-    if (j.IS_FLAVOR_RED)
+    
+    public static void adL(int paramInt)
     {
-      AppMethodBeat.o(210412);
-      return true;
-    }
-    boolean bool;
-    switch (com.tencent.mm.compatible.deviceinfo.ae.geX.gbR)
-    {
-    case 0: 
-    default: 
-      bool = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qDP, false);
-      AppMethodBeat.o(210412);
-      return bool;
-    case -1: 
-      bool = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qDP, false);
-      AppMethodBeat.o(210412);
-      return bool;
-    case 2: 
-      AppMethodBeat.o(210412);
-      return false;
-    }
-    AppMethodBeat.o(210412);
-    return true;
-  }
-  
-  public static boolean eDo()
-  {
-    AppMethodBeat.i(210413);
-    if (j.IS_FLAVOR_RED)
-    {
-      AppMethodBeat.o(210413);
-      return true;
-    }
-    switch (com.tencent.mm.compatible.deviceinfo.ae.geX.gbS)
-    {
-    default: 
-      if ((eDp()) || (((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qDU, false)))
+      AppMethodBeat.i(236084);
+      switch (paramInt)
       {
-        AppMethodBeat.o(210413);
-        return true;
       }
-      break;
-    case 2: 
-      AppMethodBeat.o(210413);
-      return false;
-    case 1: 
-      AppMethodBeat.o(210413);
-      return true;
-    }
-    AppMethodBeat.o(210413);
-    return false;
-  }
-  
-  public static boolean eDp()
-  {
-    AppMethodBeat.i(210414);
-    if (j.IS_FLAVOR_RED)
-    {
-      AppMethodBeat.o(210414);
-      return true;
-    }
-    switch (com.tencent.mm.compatible.deviceinfo.ae.geX.gbT)
-    {
-    default: 
-      boolean bool = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qDV, false);
-      AppMethodBeat.o(210414);
-      return bool;
-    case 2: 
-      AppMethodBeat.o(210414);
-      return false;
-    }
-    AppMethodBeat.o(210414);
-    return true;
-  }
-  
-  public static final int eDq()
-  {
-    AppMethodBeat.i(210415);
-    int i = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qDT, 1);
-    AppMethodBeat.o(210415);
-    return i;
-  }
-  
-  public static final boolean eDr()
-  {
-    AppMethodBeat.i(210416);
-    if ((((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qDS, false)) && (!eDs()))
-    {
-      b.a locala = b.CCB;
-      int i = b.a.eCY();
-      int j = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qDQ, 50);
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.VoipRendererHelper", "gpu info rating is " + i + " and remote limited is " + j);
-      if (i >= j)
+      for (;;)
       {
-        AppMethodBeat.o(210416);
-        return true;
+        AppMethodBeat.o(236084);
+        return;
+        j localj = j.Hhp;
+        j.fKC();
+        AppMethodBeat.o(236084);
+        return;
+        localj = j.Hhp;
+        j.fKD();
       }
     }
-    AppMethodBeat.o(210416);
-    return false;
-  }
-  
-  private static boolean eDs()
-  {
-    AppMethodBeat.i(210417);
-    Object localObject = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qDR, "");
-    p.g(localObject, "remoteRatingLimited");
-    localObject = ((Iterable)n.b((CharSequence)localObject, new char[] { ';' })).iterator();
-    boolean bool = false;
-    for (;;)
+    
+    public static void aj(long paramLong, int paramInt)
     {
-      if (((Iterator)localObject).hasNext())
+      AppMethodBeat.i(236085);
+      switch (paramInt)
       {
-        String str = (String)((Iterator)localObject).next();
-        if (bool)
-        {
-          AppMethodBeat.o(210417);
-          return true;
-        }
-        if (bu.isNullOrNil(str)) {
-          break label130;
-        }
-        try
-        {
-          bool = aFe(str);
-        }
-        catch (Exception localException)
-        {
-          com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.VoipRendererHelper", (Throwable)localException, "isNotAllowToUseFaceBeautyByGPUInfo error", new Object[0]);
-          bool = false;
-        }
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(236085);
+        return;
+        j localj = j.Hhp;
+        j.Lp(paramLong);
+        AppMethodBeat.o(236085);
+        return;
+        localj = j.Hhp;
+        j.Lo(paramLong);
       }
     }
-    label130:
-    for (;;)
+    
+    public static void xt(boolean paramBoolean)
     {
-      break;
-      AppMethodBeat.o(210417);
-      return bool;
+      AppMethodBeat.i(236081);
+      if (paramBoolean)
+      {
+        localj = j.Hhp;
+        j.fKt();
+        AppMethodBeat.o(236081);
+        return;
+      }
+      j localj = j.Hhp;
+      j.fKu();
+      AppMethodBeat.o(236081);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.b.h
  * JD-Core Version:    0.7.0.1
  */

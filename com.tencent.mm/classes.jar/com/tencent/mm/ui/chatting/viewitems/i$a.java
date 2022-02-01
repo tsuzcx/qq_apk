@@ -11,33 +11,38 @@ import com.tencent.mm.ui.widget.MMTextView;
 final class i$a
   extends c.a
 {
-  ImageView KvW;
-  MMTextView KxE;
-  View iBX;
+  ImageView PIn;
+  MMTextView PJU;
+  View jxm;
   
-  public final c.a E(View paramView, boolean paramBoolean)
+  public final c.a G(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(36886);
-    super.gs(paramView);
-    this.fVV = ((TextView)paramView.findViewById(2131298178));
-    this.yUp = ((TextView)paramView.findViewById(2131298185));
-    this.KxE = ((MMTextView)paramView.findViewById(2131298073));
-    this.iFD = ((CheckBox)paramView.findViewById(2131298068));
-    this.hcH = paramView.findViewById(2131298147);
-    this.iBX = paramView.findViewById(2131298071);
+    super.create(paramView);
+    this.timeTV = ((TextView)paramView.findViewById(2131298558));
+    this.userTV = ((TextView)paramView.findViewById(2131298566));
+    this.PJU = ((MMTextView)paramView.findViewById(2131298416));
+    this.checkBox = ((CheckBox)paramView.findViewById(2131298410));
+    this.maskView = paramView.findViewById(2131298508);
+    this.jxm = paramView.findViewById(2131298414);
     if (!paramBoolean)
     {
-      this.KvW = ((ImageView)paramView.findViewById(2131298176));
-      this.KuL = ((ImageView)paramView.findViewById(2131298174));
-      this.xvJ = ((ProgressBar)paramView.findViewById(2131306220));
+      this.PIn = ((ImageView)paramView.findViewById(2131298556));
+      this.stateIV = ((ImageView)paramView.findViewById(2131298554));
+      this.uploadingPB = ((ProgressBar)paramView.findViewById(2131309619));
     }
     AppMethodBeat.o(36886);
     return this;
   }
+  
+  public final View getMainContainerView()
+  {
+    return this.jxm;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.i.a
  * JD-Core Version:    0.7.0.1
  */

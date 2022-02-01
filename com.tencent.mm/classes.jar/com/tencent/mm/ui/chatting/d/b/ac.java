@@ -1,23 +1,27 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import android.view.MenuItem;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.chatting.d.ad;
-import com.tencent.mm.ui.chatting.viewitems.c;
-import java.util.List;
+import android.content.Intent;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import com.tencent.mm.modelmulti.i;
+import com.tencent.mm.ui.chatting.d.af;
 
 public abstract interface ac
-  extends ad
+  extends af
 {
-  public abstract void a(MenuItem paramMenuItem, c paramc);
+  public abstract void a(Button paramButton, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2);
   
-  public abstract boolean aXI(String paramString);
+  public abstract void amD(int paramInt);
   
-  public abstract int acI();
+  public abstract void bD(Intent paramIntent);
   
-  public abstract List<bv> fIB();
+  public abstract String bmM(String paramString);
   
-  public abstract boolean fIC();
+  public abstract void g(i parami);
+  
+  public abstract boolean gPG();
+  
+  public abstract boolean gQH();
 }
 
 

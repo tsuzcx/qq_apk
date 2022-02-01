@@ -2,23 +2,23 @@ package com.tencent.mm.pluginsdk.f;
 
 public final class d
 {
-  public a Fdc;
-  public String Fdd = "";
-  public String Fde = "";
-  public long Fdf = 0L;
-  public long Fdg = 0L;
+  public a JTT;
+  public String JTU = "";
+  public String JTV = "";
+  public long JTW = 0L;
   public long endTime;
   public int fileType;
-  public String hgD = "";
-  public String icp = "";
-  public long icx = -1L;
+  public String fullPath = "";
+  public String iXn = "";
+  public long iXv = -1L;
   public int scene;
   public long startTime;
   public String thumbPath = "";
+  public long totalFileSize = 0L;
   
   public static abstract interface a
   {
-    public abstract void J(int paramInt, String paramString);
+    public abstract void M(int paramInt, String paramString);
     
     public abstract void a(float paramFloat, long paramLong);
     
@@ -27,7 +27,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.f.d
  * JD-Core Version:    0.7.0.1
  */

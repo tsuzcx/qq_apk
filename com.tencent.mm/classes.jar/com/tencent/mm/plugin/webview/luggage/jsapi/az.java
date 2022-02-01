@@ -1,141 +1,92 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.luggage.d.s;
+import com.tencent.f.h;
+import com.tencent.f.i;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.a;
+import com.tencent.luggage.d.b;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.plugin.downloader.model.o;
-import com.tencent.mm.plugin.downloader.model.o.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.plugin.appbrand.ac.d;
+import com.tencent.mm.plugin.webview.h.e.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.xweb.WebResourceResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class az
-  extends bq<s>
+public class az<T extends a>
+  extends br<T>
 {
-  private void a(long paramLong, bq.a parama)
-  {
-    AppMethodBeat.i(78616);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ur(paramLong);
-    if ((locala != null) && (locala.field_fromDownloadApp))
-    {
-      locala.field_fromDownloadApp = false;
-      locala.field_showNotification = true;
-      com.tencent.mm.plugin.downloader.model.d.e(locala);
-    }
-    if (f.cdA().ul(paramLong)) {
-      parama.f(null, null);
-    }
-    for (;;)
-    {
-      com.tencent.mm.modelstat.d.d(10, "LuggageGameWebViewUI_resumeDownloadTask", hashCode());
-      AppMethodBeat.o(78616);
-      return;
-      parama.f("fail", null);
-    }
-  }
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
-  public final void a(Context paramContext, final String paramString, final bq.a parama)
+  public final void b(final b<T>.a paramb)
   {
-    AppMethodBeat.i(78615);
-    ae.i("MicroMsg.JsApiResumeDownloadTask", "invokeInMM");
-    final long l;
-    try
+    AppMethodBeat.i(210956);
+    h.RTc.aX(new Runnable()
     {
-      paramString = new JSONObject(paramString);
-      l = paramString.optLong("download_id");
-      if (l <= 0L)
+      public final void run()
       {
-        ae.e("MicroMsg.JsApiResumeDownloadTask", "fail, invalid downloadId = ".concat(String.valueOf(l)));
-        parama.f("invalid_downloadid", null);
-        AppMethodBeat.o(78615);
-        return;
-      }
-    }
-    catch (JSONException paramContext)
-    {
-      ae.e("MicroMsg.JsApiResumeDownloadTask", "paras data error: " + paramContext.getMessage());
-      parama.f("fail", null);
-      AppMethodBeat.o(78615);
-      return;
-    }
-    int i = paramString.optInt("scene", 1000);
-    int j = paramString.optInt("uiarea");
-    int k = paramString.optInt("notice_id");
-    int m = paramString.optInt("ssid");
-    int n = paramString.optInt("download_type", 1);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.ur(l);
-    locala.field_scene = i;
-    locala.field_uiarea = j;
-    locala.field_noticeId = k;
-    locala.field_ssid = m;
-    locala.field_downloadType = n;
-    com.tencent.mm.plugin.downloader.model.d.e(locala);
-    if (locala != null)
-    {
-      com.tencent.mm.plugin.downloader.f.b localb = new com.tencent.mm.plugin.downloader.f.b();
-      localb.k(locala);
-      localb.mxN = 0L;
-      com.tencent.mm.plugin.downloader.f.a.a(10, localb);
-    }
-    boolean bool1 = paramString.optBoolean("use_downloader_widget", false);
-    boolean bool2 = paramString.optBoolean("download_in_wifi", false);
-    if (bool1)
-    {
-      o.a(paramContext, l, bool2, new o.a()
-      {
-        public final void f(String paramAnonymousString, JSONObject paramAnonymousJSONObject)
+        AppMethodBeat.i(210955);
+        try
         {
-          AppMethodBeat.i(78614);
-          parama.f(paramAnonymousString, paramAnonymousJSONObject);
-          AppMethodBeat.o(78614);
+          String str = paramb.ctb.csi.optString("url");
+          if (Util.isNullOrNil(str))
+          {
+            paramb.c("fail", null);
+            AppMethodBeat.o(210955);
+            return;
+          }
+          Object localObject1 = new JSONObject();
+          Object localObject2 = new com.tencent.mm.plugin.wepkg.e();
+          if (((com.tencent.mm.plugin.wepkg.e)localObject2).m(str, true, false))
+          {
+            Log.i("MicroMsg.JsApiRequire", "has wepkg");
+            WebResourceResponse localWebResourceResponse = ((com.tencent.mm.plugin.wepkg.e)localObject2).p(null, str);
+            if (localWebResourceResponse != null)
+            {
+              str = d.convertStreamToString(localWebResourceResponse.mInputStream);
+              ((JSONObject)localObject1).put("header", localWebResourceResponse.mResponseHeaders);
+              ((JSONObject)localObject1).put("data", str);
+              paramb.c("", (JSONObject)localObject1);
+              ((com.tencent.mm.plugin.wepkg.e)localObject2).zE(true);
+              AppMethodBeat.o(210955);
+              return;
+            }
+          }
+          localObject1 = com.tencent.mm.plugin.webview.h.e.Q(str, null);
+          if (localObject1 != null)
+          {
+            localObject2 = new JSONObject();
+            ((JSONObject)localObject2).put("header", ((e.a)localObject1).njn);
+            ((JSONObject)localObject2).put("data", ((e.a)localObject1).data);
+            paramb.c("", (JSONObject)localObject2);
+            AppMethodBeat.o(210955);
+            return;
+          }
         }
-      });
-      com.tencent.mm.modelstat.d.d(10, "LuggageGameWebViewUI_resumeDownloadTask", hashCode());
-      AppMethodBeat.o(78615);
-      return;
-    }
-    if (com.tencent.mm.sdk.platformtools.az.isWifi(paramContext))
-    {
-      a(l, parama);
-      AppMethodBeat.o(78615);
-      return;
-    }
-    h.a(paramContext, paramContext.getString(2131766086), paramContext.getString(2131766087), paramContext.getString(2131766081), paramContext.getString(2131755691), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(78612);
-        az.a(az.this, l, this.puZ);
-        paramAnonymousDialogInterface.dismiss();
-        AppMethodBeat.o(78612);
+        catch (JSONException localJSONException)
+        {
+          paramb.c("fail", null);
+          AppMethodBeat.o(210955);
+          return;
+        }
+        paramb.c("fail", null);
+        AppMethodBeat.o(210955);
       }
-    }, new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(78613);
-        paramAnonymousDialogInterface.dismiss();
-        parama.f("fail_network_not_wifi", null);
-        AppMethodBeat.o(78613);
-      }
-    }, 2131101171);
-    AppMethodBeat.o(78615);
+    });
+    AppMethodBeat.o(210956);
   }
   
-  public final void b(com.tencent.luggage.d.b<s>.a paramb) {}
-  
-  public final int ced()
+  public final int dTs()
   {
-    return 2;
+    return 0;
   }
   
   public final String name()
   {
-    return "resumeDownloadTask";
+    return "require";
   }
 }
 

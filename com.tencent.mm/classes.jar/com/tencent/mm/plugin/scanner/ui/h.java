@@ -1,81 +1,100 @@
 package com.tencent.mm.plugin.scanner.ui;
 
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.modelsimple.l;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/ScanViewUtils;", "", "()V", "TAG", "", "decodeRoundBitmap", "Landroid/graphics/Bitmap;", "filePath", "fitBitmapBottom", "", "bitmap", "imageView", "Landroid/widget/ImageView;", "viewWidth", "", "viewHeight", "getRoundBitmap", "plugin-scan_release"})
 public final class h
+  implements i
 {
-  public static final h yKm;
+  MTimerHandler BiQ;
+  l CPb;
+  Context context;
+  String url;
+  com.tencent.mm.ui.base.q wSy;
   
-  static
+  public h(Context paramContext)
   {
-    AppMethodBeat.i(189642);
-    yKm = new h();
-    AppMethodBeat.o(189642);
-  }
-  
-  public static boolean a(Bitmap paramBitmap, ImageView paramImageView, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(189640);
-    p.h(paramImageView, "imageView");
-    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
+    AppMethodBeat.i(52017);
+    this.BiQ = new MTimerHandler(new MTimerHandler.CallBack()
     {
-      paramImageView.setImageBitmap(null);
-      AppMethodBeat.o(189640);
-      return false;
-    }
-    paramImageView.setImageBitmap(paramBitmap);
-    Matrix localMatrix1 = new Matrix();
-    paramImageView.setScaleType(ImageView.ScaleType.MATRIX);
-    Matrix localMatrix2 = paramImageView.getImageMatrix();
-    float f1 = 1.0F * paramInt1 / paramBitmap.getWidth();
-    float f2 = paramInt2 - paramBitmap.getHeight() * f1;
-    ae.d("MicroMsg.ScanViewUtils", "alvinluo fitBitmapBottom bitmap: %d, %d, scale: %f, translationY: %f, width: %d, height: %d", new Object[] { Integer.valueOf(paramBitmap.getWidth()), Integer.valueOf(paramBitmap.getHeight()), Float.valueOf(f1), Float.valueOf(f2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    localMatrix2.postScale(f1, f1);
-    localMatrix2.postTranslate(0.0F, f2);
-    localMatrix1.set(localMatrix2);
-    paramImageView.setImageMatrix(localMatrix1);
-    AppMethodBeat.o(189640);
-    return true;
-  }
-  
-  public static Bitmap ad(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(189641);
-    if (paramBitmap != null) {}
-    try
-    {
-      if (!paramBitmap.isRecycled())
+      public final boolean onTimerExpired()
       {
-        if (paramBitmap.getWidth() > paramBitmap.getHeight()) {}
-        for (double d = Math.floor(paramBitmap.getWidth() / 2.0D + 0.5D);; d = Math.floor(paramBitmap.getHeight() / 2.0D + 0.5D))
+        AppMethodBeat.i(52016);
+        h localh = h.this;
+        Context localContext = h.this.context;
+        h.this.context.getString(2131755998);
+        localh.wSy = com.tencent.mm.ui.base.h.a(localContext, h.this.context.getString(2131756029), true, new DialogInterface.OnCancelListener()
         {
-          paramBitmap = com.tencent.mm.sdk.platformtools.h.a(paramBitmap, false, (float)d);
-          AppMethodBeat.o(189641);
-          return paramBitmap;
-        }
+          public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
+          {
+            AppMethodBeat.i(52015);
+            g.azz().a(h.this.CPb);
+            h.this.wSy = null;
+            AppMethodBeat.o(52015);
+          }
+        });
+        AppMethodBeat.o(52016);
+        return false;
       }
-      AppMethodBeat.o(189641);
-      return paramBitmap;
+    }, false);
+    this.context = paramContext;
+    AppMethodBeat.o(52017);
+  }
+  
+  final void b(String paramString, int paramInt, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(52018);
+    Intent localIntent = new Intent();
+    localIntent.putExtra("rawUrl", paramString);
+    localIntent.putExtra("useJs", true);
+    localIntent.putExtra("vertical_scroll", true);
+    localIntent.putExtra("geta8key_session_id", paramInt);
+    localIntent.putExtra("geta8key_cookie", paramArrayOfByte);
+    com.tencent.mm.plugin.scanner.h.jRt.i(localIntent, this.context);
+    AppMethodBeat.o(52018);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
+  {
+    AppMethodBeat.i(52019);
+    this.BiQ.stopTimer();
+    if (this.wSy != null) {
+      this.wSy.dismiss();
     }
-    catch (Exception paramBitmap)
+    g.azz().b(233, this);
+    paramString = (l)paramq;
+    if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      ae.printErrStackTrace("MicroMsg.ScanViewUtils", (Throwable)paramBitmap, "alvinluo decodeRoundBitmap exception", new Object[0]);
-      AppMethodBeat.o(189641);
+      paramq = paramString.beQ();
+      if ((paramq == null) || (paramq.length() == 0))
+      {
+        b(this.url, paramString.beY(), paramString.bfa());
+        AppMethodBeat.o(52019);
+        return;
+      }
+      b(paramq, paramString.beY(), paramString.bfa());
+      AppMethodBeat.o(52019);
+      return;
     }
-    return null;
+    Log.e("MicroMsg.scanner.ViewMMURL", "getA8Key fail, errType = " + paramInt1 + ", errCode = " + paramInt2);
+    b(this.url, paramString.beY(), paramString.bfa());
+    AppMethodBeat.o(52019);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.h
  * JD-Core Version:    0.7.0.1
  */

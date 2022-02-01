@@ -13,7 +13,7 @@ class i
 {
   protected static Typeface a(Context paramContext, InputStream paramInputStream)
   {
-    paramContext = j.W(paramContext);
+    paramContext = j.X(paramContext);
     if (paramContext == null) {
       return null;
     }
@@ -95,7 +95,7 @@ class i
   
   public Typeface a(Context paramContext, Resources paramResources, int paramInt1, String paramString, int paramInt2)
   {
-    paramContext = j.W(paramContext);
+    paramContext = j.X(paramContext);
     if (paramContext == null) {
       return null;
     }
@@ -120,11 +120,11 @@ class i
   
   public Typeface a(Context paramContext, c.b paramb, Resources paramResources, int paramInt)
   {
-    paramb = (c.c)a(paramb.Jv, paramInt, new a() {});
+    paramb = (c.c)a(paramb.JE, paramInt, new a() {});
     if (paramb == null) {
       return null;
     }
-    return d.a(paramContext, paramResources, paramb.JA, paramb.mFileName, paramInt);
+    return d.a(paramContext, paramResources, paramb.JJ, paramb.mFileName, paramInt);
   }
   
   /* Error */

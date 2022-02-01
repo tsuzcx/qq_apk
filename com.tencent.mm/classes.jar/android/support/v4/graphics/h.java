@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 public final class h
   extends g
 {
-  protected final Method h(Class paramClass)
+  protected final Method i(Class paramClass)
   {
     paramClass = Typeface.class.getDeclaredMethod("createFromFamiliesWithDefault", new Class[] { Array.newInstance(paramClass, 1).getClass(), String.class, Integer.TYPE, Integer.TYPE });
     paramClass.setAccessible(true);
@@ -19,9 +19,9 @@ public final class h
   {
     try
     {
-      Object localObject = Array.newInstance(this.JR, 1);
+      Object localObject = Array.newInstance(this.Kb, 1);
       Array.set(localObject, 0, paramObject);
-      paramObject = (Typeface)this.JX.invoke(null, new Object[] { localObject, "sans-serif", Integer.valueOf(-1), Integer.valueOf(-1) });
+      paramObject = (Typeface)this.Kh.invoke(null, new Object[] { localObject, "sans-serif", Integer.valueOf(-1), Integer.valueOf(-1) });
       return paramObject;
     }
     catch (IllegalAccessException paramObject)

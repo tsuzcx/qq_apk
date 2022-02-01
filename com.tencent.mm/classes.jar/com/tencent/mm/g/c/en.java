@@ -2,55 +2,129 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.dob;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.io.IOException;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class en
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eMi = "extInfo".hashCode();
-  private static final int foD = "tipId".hashCode();
-  private static final int foE = "tipVersion".hashCode();
-  private static final int foF = "tipkey".hashCode();
-  private static final int foG = "tipType".hashCode();
-  private static final int foH = "isExit".hashCode();
-  private static final int foI = "hadRead".hashCode();
-  private static final int foJ = "isReject".hashCode();
-  private static final int foK = "beginShowTime".hashCode();
-  private static final int foL = "disappearTime".hashCode();
-  private static final int foM = "overdueTime".hashCode();
-  private static final int foN = "tipsShowInfo".hashCode();
-  private static final int foO = "pagestaytime".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS MMStoryInfo_id_Index ON MMStoryInfo(storyID)" };
+  private static final int attrBuf_HASHCODE;
+  private static final int content_HASHCODE;
+  private static final int createTime_HASHCODE;
+  private static final int fQI = "storyID".hashCode();
+  private static final int fQJ;
+  private static final int fQK = "itemStoryFlag".hashCode();
+  private static final int fQL = "readCount".hashCode();
+  private static final int fQM = "favoriteTime".hashCode();
+  private static final int localFlag_HASHCODE;
+  private static final int postBuf_HASHCODE;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eLU = true;
-  public long field_beginShowTime;
-  public long field_disappearTime;
-  public String field_extInfo;
-  public boolean field_hadRead;
-  public boolean field_isExit;
-  public boolean field_isReject;
-  public long field_overdueTime;
-  public long field_pagestaytime;
-  public int field_tipId;
-  public int field_tipType;
-  public int field_tipVersion;
-  public String field_tipkey;
-  public dob field_tipsShowInfo;
-  private boolean foA = true;
-  private boolean foB = true;
-  private boolean foC = true;
-  private boolean jdField_for = true;
-  private boolean fos = true;
-  private boolean fot = true;
-  private boolean fou = true;
-  private boolean fov = true;
-  private boolean fow = true;
-  private boolean fox = true;
-  private boolean foy = true;
-  private boolean foz = true;
+  private static final int sourceType_HASHCODE;
+  private static final int type_HASHCODE;
+  private static final int userName_HASHCODE = "userName".hashCode();
+  private boolean __hadSetattrBuf = true;
+  private boolean __hadSetcontent = true;
+  private boolean __hadSetcreateTime = true;
+  private boolean __hadSetlocalFlag = true;
+  private boolean __hadSetpostBuf = true;
+  private boolean __hadSetsourceType = true;
+  private boolean __hadSettype = true;
+  private boolean __hadSetuserName = true;
+  private boolean fQD = true;
+  private boolean fQE = true;
+  private boolean fQF = true;
+  private boolean fQG = true;
+  private boolean fQH = true;
+  public byte[] field_attrBuf;
+  public int field_commentListCount;
+  public byte[] field_content;
+  public int field_createTime;
+  public int field_favoriteTime;
+  public int field_itemStoryFlag;
+  public int field_localFlag;
+  public byte[] field_postBuf;
+  public int field_readCount;
+  public int field_sourceType;
+  public long field_storyID;
+  public int field_type;
+  public String field_userName;
+  
+  static
+  {
+    localFlag_HASHCODE = "localFlag".hashCode();
+    createTime_HASHCODE = "createTime".hashCode();
+    fQJ = "commentListCount".hashCode();
+    content_HASHCODE = "content".hashCode();
+    attrBuf_HASHCODE = "attrBuf".hashCode();
+    postBuf_HASHCODE = "postBuf".hashCode();
+    sourceType_HASHCODE = "sourceType".hashCode();
+    type_HASHCODE = "type".hashCode();
+  }
+  
+  public static IAutoDBItem.MAutoDBInfo ajs()
+  {
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[13];
+    localMAutoDBInfo.columns = new String[14];
+    StringBuilder localStringBuilder = new StringBuilder();
+    localMAutoDBInfo.columns[0] = "storyID";
+    localMAutoDBInfo.colsMap.put("storyID", "LONG");
+    localStringBuilder.append(" storyID LONG");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[1] = "userName";
+    localMAutoDBInfo.colsMap.put("userName", "TEXT");
+    localStringBuilder.append(" userName TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[2] = "localFlag";
+    localMAutoDBInfo.colsMap.put("localFlag", "INTEGER");
+    localStringBuilder.append(" localFlag INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "createTime";
+    localMAutoDBInfo.colsMap.put("createTime", "INTEGER");
+    localStringBuilder.append(" createTime INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "commentListCount";
+    localMAutoDBInfo.colsMap.put("commentListCount", "INTEGER");
+    localStringBuilder.append(" commentListCount INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[5] = "content";
+    localMAutoDBInfo.colsMap.put("content", "BLOB");
+    localStringBuilder.append(" content BLOB");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "attrBuf";
+    localMAutoDBInfo.colsMap.put("attrBuf", "BLOB");
+    localStringBuilder.append(" attrBuf BLOB");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[7] = "postBuf";
+    localMAutoDBInfo.colsMap.put("postBuf", "BLOB");
+    localStringBuilder.append(" postBuf BLOB");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[8] = "sourceType";
+    localMAutoDBInfo.colsMap.put("sourceType", "INTEGER");
+    localStringBuilder.append(" sourceType INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[9] = "type";
+    localMAutoDBInfo.colsMap.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[10] = "itemStoryFlag";
+    localMAutoDBInfo.colsMap.put("itemStoryFlag", "INTEGER");
+    localStringBuilder.append(" itemStoryFlag INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[11] = "readCount";
+    localMAutoDBInfo.colsMap.put("readCount", "INTEGER");
+    localStringBuilder.append(" readCount INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[12] = "favoriteTime";
+    localMAutoDBInfo.colsMap.put("favoriteTime", "INTEGER");
+    localStringBuilder.append(" favoriteTime INTEGER");
+    localMAutoDBInfo.columns[13] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -58,93 +132,50 @@ public abstract class en
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (foD != k) {
-        break label65;
+      if (fQI != k) {
+        break label60;
       }
-      this.field_tipId = paramCursor.getInt(i);
-      this.jdField_for = true;
+      this.field_storyID = paramCursor.getLong(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (foE == k)
-      {
-        this.field_tipVersion = paramCursor.getInt(i);
-      }
-      else if (foF == k)
-      {
-        this.field_tipkey = paramCursor.getString(i);
-      }
-      else if (foG == k)
-      {
-        this.field_tipType = paramCursor.getInt(i);
-      }
-      else
-      {
-        boolean bool;
-        if (foH == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_isExit = bool;
-            break;
-          }
-        }
-        if (foI == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_hadRead = bool;
-            break;
-          }
-        }
-        if (foJ == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_isReject = bool;
-            break;
-          }
-        }
-        if (foK == k) {
-          this.field_beginShowTime = paramCursor.getLong(i);
-        } else if (foL == k) {
-          this.field_disappearTime = paramCursor.getLong(i);
-        } else if (foM == k) {
-          this.field_overdueTime = paramCursor.getLong(i);
-        } else if (foN == k) {
-          try
-          {
-            byte[] arrayOfByte = paramCursor.getBlob(i);
-            if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
-              continue;
-            }
-            this.field_tipsShowInfo = ((dob)new dob().parseFrom(arrayOfByte));
-          }
-          catch (IOException localIOException)
-          {
-            ae.e("MicroMsg.SDK.BaseNewTipsInfo", localIOException.getMessage());
-          }
-        } else if (eMi == k) {
-          this.field_extInfo = paramCursor.getString(i);
-        } else if (foO == k) {
-          this.field_pagestaytime = paramCursor.getLong(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      label60:
+      if (userName_HASHCODE == k) {
+        this.field_userName = paramCursor.getString(i);
+      } else if (localFlag_HASHCODE == k) {
+        this.field_localFlag = paramCursor.getInt(i);
+      } else if (createTime_HASHCODE == k) {
+        this.field_createTime = paramCursor.getInt(i);
+      } else if (fQJ == k) {
+        this.field_commentListCount = paramCursor.getInt(i);
+      } else if (content_HASHCODE == k) {
+        this.field_content = paramCursor.getBlob(i);
+      } else if (attrBuf_HASHCODE == k) {
+        this.field_attrBuf = paramCursor.getBlob(i);
+      } else if (postBuf_HASHCODE == k) {
+        this.field_postBuf = paramCursor.getBlob(i);
+      } else if (sourceType_HASHCODE == k) {
+        this.field_sourceType = paramCursor.getInt(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (fQK == k) {
+        this.field_itemStoryFlag = paramCursor.getInt(i);
+      } else if (fQL == k) {
+        this.field_readCount = paramCursor.getInt(i);
+      } else if (fQM == k) {
+        this.field_favoriteTime = paramCursor.getInt(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -152,58 +183,49 @@ public abstract class en
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.jdField_for) {
-      localContentValues.put("tipId", Integer.valueOf(this.field_tipId));
+    if (this.fQD) {
+      localContentValues.put("storyID", Long.valueOf(this.field_storyID));
     }
-    if (this.fos) {
-      localContentValues.put("tipVersion", Integer.valueOf(this.field_tipVersion));
+    if (this.__hadSetuserName) {
+      localContentValues.put("userName", this.field_userName);
     }
-    if (this.fot) {
-      localContentValues.put("tipkey", this.field_tipkey);
+    if (this.__hadSetlocalFlag) {
+      localContentValues.put("localFlag", Integer.valueOf(this.field_localFlag));
     }
-    if (this.fou) {
-      localContentValues.put("tipType", Integer.valueOf(this.field_tipType));
+    if (this.__hadSetcreateTime) {
+      localContentValues.put("createTime", Integer.valueOf(this.field_createTime));
     }
-    if (this.fov) {
-      localContentValues.put("isExit", Boolean.valueOf(this.field_isExit));
+    if (this.fQE) {
+      localContentValues.put("commentListCount", Integer.valueOf(this.field_commentListCount));
     }
-    if (this.fow) {
-      localContentValues.put("hadRead", Boolean.valueOf(this.field_hadRead));
+    if (this.__hadSetcontent) {
+      localContentValues.put("content", this.field_content);
     }
-    if (this.fox) {
-      localContentValues.put("isReject", Boolean.valueOf(this.field_isReject));
+    if (this.__hadSetattrBuf) {
+      localContentValues.put("attrBuf", this.field_attrBuf);
     }
-    if (this.foy) {
-      localContentValues.put("beginShowTime", Long.valueOf(this.field_beginShowTime));
+    if (this.__hadSetpostBuf) {
+      localContentValues.put("postBuf", this.field_postBuf);
     }
-    if (this.foz) {
-      localContentValues.put("disappearTime", Long.valueOf(this.field_disappearTime));
+    if (this.__hadSetsourceType) {
+      localContentValues.put("sourceType", Integer.valueOf(this.field_sourceType));
     }
-    if (this.foA) {
-      localContentValues.put("overdueTime", Long.valueOf(this.field_overdueTime));
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if ((this.foB) && (this.field_tipsShowInfo != null)) {}
-    try
-    {
-      localContentValues.put("tipsShowInfo", this.field_tipsShowInfo.toByteArray());
-      if (this.eLU) {
-        localContentValues.put("extInfo", this.field_extInfo);
-      }
-      if (this.foC) {
-        localContentValues.put("pagestaytime", Long.valueOf(this.field_pagestaytime));
-      }
-      if (this.systemRowid > 0L) {
-        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-      }
-      return localContentValues;
+    if (this.fQF) {
+      localContentValues.put("itemStoryFlag", Integer.valueOf(this.field_itemStoryFlag));
     }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        ae.e("MicroMsg.SDK.BaseNewTipsInfo", localIOException.getMessage());
-      }
+    if (this.fQG) {
+      localContentValues.put("readCount", Integer.valueOf(this.field_readCount));
     }
+    if (this.fQH) {
+      localContentValues.put("favoriteTime", Integer.valueOf(this.field_favoriteTime));
+    }
+    if (this.systemRowid > 0L) {
+      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+    }
+    return localContentValues;
   }
 }
 

@@ -1,51 +1,52 @@
 package com.tencent.mm.plugin.sns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ga;
-import com.tencent.mm.g.a.ga.a;
-import com.tencent.mm.model.bq.a;
+import com.tencent.mm.g.a.gd;
+import com.tencent.mm.g.a.gd.a;
+import com.tencent.mm.model.bu.a;
 import com.tencent.mm.plugin.sns.b.b;
 import com.tencent.mm.plugin.sns.b.i.a;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.plugin.sns.model.ao.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.model.aq.a;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends com.tencent.mm.sdk.b.c<ga>
+  extends IListener<gd>
 {
   public c()
   {
     AppMethodBeat.i(160631);
-    this.__eventId = ga.class.getName().hashCode();
+    this.__eventId = gd.class.getName().hashCode();
     AppMethodBeat.o(160631);
   }
   
-  private boolean a(final ga paramga)
+  private boolean a(final gd paramgd)
   {
     AppMethodBeat.i(94887);
-    if (!(paramga instanceof ga))
+    if (!(paramgd instanceof gd))
     {
-      ae.f("MicroMsg.ExtStartSnsServerAndCallbackOnFpSetSizeEventListener", "mismatched event");
+      Log.f("MicroMsg.ExtStartSnsServerAndCallbackOnFpSetSizeEventListener", "mismatched event");
       AppMethodBeat.o(94887);
       return false;
     }
-    ao.a locala = ah.dXu();
-    locala.a(paramga.dsz.type, paramga.dsz.username, new i.a()
+    aq.a locala = aj.faE();
+    locala.a(paramgd.dJK.type, paramgd.dJK.username, new i.a()
     {
       public final void a(String paramAnonymousString1, String paramAnonymousString2, boolean paramAnonymousBoolean, int paramAnonymousInt, b paramAnonymousb) {}
       
       public final void a(String paramAnonymousString, boolean paramAnonymousBoolean, int paramAnonymousInt, b paramAnonymousb)
       {
         AppMethodBeat.i(94886);
-        if (paramga.dsz != null) {
-          paramga.dsz.dsD.a(null);
+        if (paramgd.dJK != null) {
+          paramgd.dJK.dJO.a(null);
         }
         AppMethodBeat.o(94886);
       }
       
       public final void b(String paramAnonymousString, boolean paramAnonymousBoolean, int paramAnonymousInt, b paramAnonymousb) {}
     });
-    locala.a(1, paramga.dsz.username, paramga.dsz.dsB, paramga.dsz.dsC);
+    locala.a(1, paramgd.dJK.username, paramgd.dJK.dJM, paramgd.dJK.dJN);
     AppMethodBeat.o(94887);
     return true;
   }

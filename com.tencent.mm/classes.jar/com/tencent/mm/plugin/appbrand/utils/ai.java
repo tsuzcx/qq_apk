@@ -11,73 +11,73 @@ import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.d;
-import com.tencent.mm.plugin.appbrand.jsapi.co;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.jsapi.df;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.plugin.appbrand.page.ac;
 import com.tencent.mm.plugin.appbrand.platform.window.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ai
 {
-  public static boolean dW(Context paramContext)
+  public static boolean et(Context paramContext)
   {
-    AppMethodBeat.i(207991);
+    AppMethodBeat.i(219595);
     DisplayMetrics localDisplayMetrics = paramContext.getResources().getDisplayMetrics();
     double d = Math.pow(localDisplayMetrics.widthPixels / localDisplayMetrics.xdpi, 2.0D);
     d = Math.sqrt(Math.pow(localDisplayMetrics.heightPixels / localDisplayMetrics.ydpi, 2.0D) + d);
     if (((paramContext.getResources().getConfiguration().screenLayout & 0xF) >= 3) && (d >= 7.0D))
     {
-      AppMethodBeat.o(207991);
+      AppMethodBeat.o(219595);
       return true;
     }
-    AppMethodBeat.o(207991);
+    AppMethodBeat.o(219595);
     return false;
   }
   
-  public static int[] f(h paramh)
+  public static int[] f(k paramk)
   {
     AppMethodBeat.i(135384);
-    paramh = g(paramh);
-    ae.v("Luggage.WXA.UIUtil", "getScreenSize: [x,y] = [%d,%d]", new Object[] { Integer.valueOf(paramh[0]), Integer.valueOf(paramh[1]) });
+    paramk = g(paramk);
+    Log.v("Luggage.WXA.UIUtil", "getScreenSize: [x,y] = [%d,%d]", new Object[] { Integer.valueOf(paramk[0]), Integer.valueOf(paramk[1]) });
     AppMethodBeat.o(135384);
-    return paramh;
+    return paramk;
   }
   
-  private static int[] g(h paramh)
+  private static int[] g(k paramk)
   {
-    AppMethodBeat.i(207990);
+    AppMethodBeat.i(219594);
     c localc;
-    if (paramh.getRuntime() != null)
+    if (paramk.getRuntime() != null)
     {
-      localc = paramh.getRuntime().getWindowAndroid();
+      localc = paramk.getRuntime().getWindowAndroid();
       if (localc == null) {
         break label74;
       }
-      ae.v("Luggage.WXA.UIUtil", "getScreenSizeInner: V_DM");
+      Log.v("Luggage.WXA.UIUtil", "getScreenSizeInner: V_DM");
     }
-    for (paramh = localc.getVDisplayMetrics();; paramh = paramh.getContext().getResources().getDisplayMetrics())
+    for (paramk = localc.getVDisplayMetrics();; paramk = paramk.getContext().getResources().getDisplayMetrics())
     {
-      int i = paramh.widthPixels;
-      int j = paramh.heightPixels;
-      AppMethodBeat.o(207990);
+      int i = paramk.widthPixels;
+      int j = paramk.heightPixels;
+      AppMethodBeat.o(219594);
       return new int[] { i, j };
       localc = null;
       break;
       label74:
-      ae.v("Luggage.WXA.UIUtil", "getScreenSizeInner: normal DM");
+      Log.v("Luggage.WXA.UIUtil", "getScreenSizeInner: normal DM");
     }
   }
   
   public static View m(d paramd)
   {
     AppMethodBeat.i(135382);
-    paramd = co.i(paramd);
+    paramd = df.i(paramd);
     if (paramd == null)
     {
       AppMethodBeat.o(135382);
       return null;
     }
-    paramd = paramd.mdY;
+    paramd = paramd.noq;
     AppMethodBeat.o(135382);
     return paramd;
   }
@@ -86,55 +86,55 @@ public final class ai
   {
     AppMethodBeat.i(135383);
     paramd = o(paramd);
-    ae.v("Luggage.WXA.UIUtil", "getWindowWidthHeight: [x,y] = [%d,%d]", new Object[] { Integer.valueOf(paramd[0]), Integer.valueOf(paramd[1]) });
+    Log.v("Luggage.WXA.UIUtil", "getWindowWidthHeight: [x,y] = [%d,%d]", new Object[] { Integer.valueOf(paramd[0]), Integer.valueOf(paramd[1]) });
     AppMethodBeat.o(135383);
     return paramd;
   }
   
   private static int[] o(d paramd)
   {
-    AppMethodBeat.i(207989);
+    AppMethodBeat.i(219593);
     View localView = m(paramd);
     int i;
     int j;
     if ((localView != null) && (localView.isLaidOut()))
     {
-      ae.i("Luggage.WXA.UIUtil", "getWindowWidthHeight Method: normal");
+      Log.i("Luggage.WXA.UIUtil", "getWindowWidthHeight Method: normal");
       i = localView.getWidth();
       j = localView.getHeight();
-      AppMethodBeat.o(207989);
+      AppMethodBeat.o(219593);
       return new int[] { i, j };
     }
     if ((paramd.getContext() instanceof Activity))
     {
-      ae.i("Luggage.WXA.UIUtil", "getWindowWidthHeight Method: DecorView");
+      Log.i("Luggage.WXA.UIUtil", "getWindowWidthHeight Method: DecorView");
       localView = ((Activity)paramd.getContext()).getWindow().getDecorView();
       Rect localRect = new Rect();
       localView.getWindowVisibleDisplayFrame(localRect);
       if (localRect.width() <= 0)
       {
-        ae.e("Luggage.WXA.UIUtil", "getWindowWidthHeight try Method(DecorView) but rect.width()<=0, use Method(Screen) instead");
+        Log.e("Luggage.WXA.UIUtil", "getWindowWidthHeight try Method(DecorView) but rect.width()<=0, use Method(Screen) instead");
         paramd = f(paramd);
-        AppMethodBeat.o(207989);
+        AppMethodBeat.o(219593);
         return paramd;
       }
       i = localRect.right;
       j = localRect.left;
       int k = localRect.bottom;
       int m = localRect.top;
-      int n = paramd.getContext().getResources().getDimensionPixelSize(2131165250);
-      AppMethodBeat.o(207989);
+      int n = paramd.getContext().getResources().getDimensionPixelSize(2131165254);
+      AppMethodBeat.o(219593);
       return new int[] { i - j, k - m - n };
     }
-    ae.i("Luggage.WXA.UIUtil", "getWindowWidthHeight Method: Screen");
+    Log.i("Luggage.WXA.UIUtil", "getWindowWidthHeight Method: Screen");
     paramd = f(paramd);
-    AppMethodBeat.o(207989);
+    AppMethodBeat.o(219593);
     return paramd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.ai
  * JD-Core Version:    0.7.0.1
  */

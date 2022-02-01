@@ -1,67 +1,102 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class bqt
-  extends com.tencent.mm.bw.a
+  extends dop
 {
-  public int Hee;
-  public String nIJ;
+  public int Ler;
+  public double latitude;
+  public double longitude;
+  public int offset;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32333);
+    AppMethodBeat.i(114032);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.nIJ != null) {
-        paramVarArgs.d(1, this.nIJ);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.ni(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.Hee);
-      AppMethodBeat.o(32333);
+      paramVarArgs.aM(2, this.offset);
+      paramVarArgs.aM(3, this.Ler);
+      paramVarArgs.e(4, this.latitude);
+      paramVarArgs.e(5, this.longitude);
+      AppMethodBeat.o(114032);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.nIJ == null) {
-        break label266;
+      if (this.BaseRequest == null) {
+        break label496;
       }
     }
-    label266:
-    for (paramInt = f.a.a.b.b.a.e(1, this.nIJ) + 0;; paramInt = 0)
+    label496:
+    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.bz(2, this.Hee);
-      AppMethodBeat.o(32333);
-      return paramInt + i;
+      int i = g.a.a.b.b.a.bu(2, this.offset);
+      int j = g.a.a.b.b.a.bu(3, this.Ler);
+      int k = g.a.a.b.b.a.fS(4);
+      int m = g.a.a.b.b.a.fS(5);
+      AppMethodBeat.o(114032);
+      return paramInt + i + j + (k + 8) + (m + 8);
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(32333);
+        AppMethodBeat.o(114032);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         bqt localbqt = (bqt)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(32333);
+          AppMethodBeat.o(114032);
           return -1;
         case 1: 
-          localbqt.nIJ = locala.OmT.readString();
-          AppMethodBeat.o(32333);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jr();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localbqt.BaseRequest = ((jr)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(114032);
+          return 0;
+        case 2: 
+          localbqt.offset = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(114032);
+          return 0;
+        case 3: 
+          localbqt.Ler = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(114032);
+          return 0;
+        case 4: 
+          localbqt.latitude = Double.longBitsToDouble(((g.a.a.a.a)localObject1).UbS.zn());
+          AppMethodBeat.o(114032);
           return 0;
         }
-        localbqt.Hee = locala.OmT.zc();
-        AppMethodBeat.o(32333);
+        localbqt.longitude = Double.longBitsToDouble(((g.a.a.a.a)localObject1).UbS.zn());
+        AppMethodBeat.o(114032);
         return 0;
       }
-      AppMethodBeat.o(32333);
+      AppMethodBeat.o(114032);
       return -1;
     }
   }

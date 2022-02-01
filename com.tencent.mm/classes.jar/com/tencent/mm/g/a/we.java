@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class we
-  extends b
+  extends IEvent
 {
+  public a ecn;
+  
   public we()
   {
     this((byte)0);
@@ -12,8 +15,16 @@ public final class we
   
   private we(byte paramByte)
   {
-    this.IvZ = false;
+    AppMethodBeat.i(94816);
+    this.ecn = new a();
+    this.order = false;
     this.callback = null;
+    AppMethodBeat.o(94816);
+  }
+  
+  public static final class a
+  {
+    public boolean eco;
   }
 }
 

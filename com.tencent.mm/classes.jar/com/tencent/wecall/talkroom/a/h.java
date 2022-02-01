@@ -1,9 +1,9 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.a.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.a.al;
-import com.tencent.pb.common.b.a.a.a.l;
+import com.tencent.pb.common.b.a.a.a.an;
+import com.tencent.pb.common.b.a.a.a.m;
 import com.tencent.pb.common.b.d;
 import com.tencent.pb.common.c.b;
 import com.tencent.wecall.talkroom.model.k;
@@ -13,44 +13,44 @@ public final class h
 {
   public String groupId;
   public int roomId;
-  public long uXg;
+  public long ypH;
   
   public h(String paramString, int paramInt1, long paramLong, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(175625);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "NetSceneRejectVoiceGroup" });
-    a.l locall = new a.l();
+    a.m localm = new a.m();
     for (;;)
     {
       try
       {
-        locall.groupId = paramString;
-        locall.Cuf = paramInt1;
-        locall.Cug = paramLong;
-        locall.pcE = paramInt2;
-        locall.Mdf = 2;
-        locall.netType = k.ly(com.tencent.pb.common.c.c.CDp);
+        localm.groupId = paramString;
+        localm.GXO = paramInt1;
+        localm.GXP = paramLong;
+        localm.qrD = paramInt2;
+        localm.RDu = 2;
+        localm.netType = k.lx(com.tencent.pb.common.c.c.Hhs);
         if (paramInt3 != 0) {
           continue;
         }
-        locall.Mdq = 0;
-        b.w(this.TAG2, new Object[] { "NetSceneRedirect redirect type:", Integer.valueOf(locall.Mdq) });
+        localm.RDG = 0;
+        b.w(this.TAG2, new Object[] { "NetSceneRedirect redirect type:", Integer.valueOf(localm.RDG) });
         this.mNetType = 3;
-        this.Mcu = com.tencent.wecall.talkroom.model.c.gdW().bbF(paramString);
+        this.RCJ = com.tencent.wecall.talkroom.model.c.hqY().brj(paramString);
       }
       catch (Exception paramString)
       {
         b.w(this.TAG2, new Object[] { "NetSceneRedirect constructor", paramString });
         continue;
       }
-      c(211, locall);
+      c(211, localm);
       AppMethodBeat.o(175625);
       return;
-      locall.Mdq = 1;
+      localm.RDG = 1;
     }
   }
   
-  public final Object cL(byte[] paramArrayOfByte)
+  public final Object cO(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62546);
     b.d("MicroMsg.Voip", new Object[] { this.TAG2, "data2Resp" });
@@ -59,7 +59,7 @@ public final class h
     {
       try
       {
-        paramArrayOfByte = (a.al)e.a(new a.al(), paramArrayOfByte, paramArrayOfByte.length);
+        paramArrayOfByte = (a.an)e.a(new a.an(), paramArrayOfByte, paramArrayOfByte.length);
         AppMethodBeat.o(62546);
         return paramArrayOfByte;
       }
@@ -73,19 +73,19 @@ public final class h
     }
   }
   
-  public final String fXq()
-  {
-    return "CsCmd.Cmd_V_CSVoiceRedirectReq";
-  }
-  
   public final int getType()
   {
     return 211;
   }
+  
+  public final String hiV()
+  {
+    return "CsCmd.Cmd_V_CSVoiceRedirectReq";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.h
  * JD-Core Version:    0.7.0.1
  */

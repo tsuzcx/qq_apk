@@ -75,7 +75,7 @@ public final class AccessTokenManager
     try
     {
       if (instance == null) {
-        instance = new AccessTokenManager(d.V(FacebookSdk.getApplicationContext()), new AccessTokenCache());
+        instance = new AccessTokenManager(d.W(FacebookSdk.getApplicationContext()), new AccessTokenCache());
       }
       AccessTokenManager localAccessTokenManager = instance;
       AppMethodBeat.o(16991);
@@ -428,7 +428,7 @@ public final class AccessTokenManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.AccessTokenManager
  * JD-Core Version:    0.7.0.1
  */

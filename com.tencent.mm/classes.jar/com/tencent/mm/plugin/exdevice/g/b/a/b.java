@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.exdevice.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dk;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.dq;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class b
-  extends dk
+  extends dq
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(23552);
-    c.a locala = new c.a();
-    locala.IBL = new Field[3];
-    locala.columns = new String[4];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[3];
+    localMAutoDBInfo.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appusername";
-    locala.IBN.put("appusername", "TEXT");
+    localMAutoDBInfo.columns[0] = "appusername";
+    localMAutoDBInfo.colsMap.put("appusername", "TEXT");
     localStringBuilder.append(" appusername TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "title";
-    locala.IBN.put("title", "TEXT");
+    localMAutoDBInfo.columns[1] = "title";
+    localMAutoDBInfo.colsMap.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "score";
-    locala.IBN.put("score", "INTEGER");
+    localMAutoDBInfo.columns[2] = "score";
+    localMAutoDBInfo.colsMap.put("score", "INTEGER");
     localStringBuilder.append(" score INTEGER");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[3] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(23552);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.a.b
  * JD-Core Version:    0.7.0.1
  */

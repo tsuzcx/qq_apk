@@ -6,13 +6,13 @@ public abstract interface g$a
 {
   public static final class a
   {
-    public int dHi;
-    public Camera gdk;
+    public int dYT;
+    public Camera gII;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.scanlib.a.g.a
  * JD-Core Version:    0.7.0.1
  */

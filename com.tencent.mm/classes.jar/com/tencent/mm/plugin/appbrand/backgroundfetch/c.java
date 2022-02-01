@@ -2,57 +2,57 @@ package com.tencent.mm.plugin.appbrand.backgroundfetch;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.g.c.j;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
   extends j
 {
-  public static c.a jUU;
-  static final String[] jUV;
+  public static IAutoDBItem.MAutoDBInfo kXQ;
+  static final String[] kXR;
   
   static
   {
     int i = 0;
     AppMethodBeat.i(44704);
-    jUV = new String[] { "username", "fetchType" };
-    Object localObject1 = new c.a();
-    ((c.a)localObject1).IBL = new Field[7];
-    ((c.a)localObject1).columns = new String[8];
+    kXR = new String[] { "username", "fetchType" };
+    Object localObject1 = new IAutoDBItem.MAutoDBInfo();
+    ((IAutoDBItem.MAutoDBInfo)localObject1).fields = new Field[7];
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns = new String[8];
     Object localObject2 = new StringBuilder();
-    ((c.a)localObject1).columns[0] = "username";
-    ((c.a)localObject1).IBN.put("username", "TEXT");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[0] = "username";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("username", "TEXT");
     ((StringBuilder)localObject2).append(" username TEXT");
     ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[1] = "fetchType";
-    ((c.a)localObject1).IBN.put("fetchType", "INTEGER");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[1] = "fetchType";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("fetchType", "INTEGER");
     ((StringBuilder)localObject2).append(" fetchType INTEGER");
     ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[2] = "updateTime";
-    ((c.a)localObject1).IBN.put("updateTime", "LONG");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[2] = "updateTime";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("updateTime", "LONG");
     ((StringBuilder)localObject2).append(" updateTime LONG");
     ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[3] = "path";
-    ((c.a)localObject1).IBN.put("path", "TEXT");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[3] = "path";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("path", "TEXT");
     ((StringBuilder)localObject2).append(" path TEXT");
     ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[4] = "query";
-    ((c.a)localObject1).IBN.put("query", "TEXT");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[4] = "query";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("query", "TEXT");
     ((StringBuilder)localObject2).append(" query TEXT");
     ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[5] = "scene";
-    ((c.a)localObject1).IBN.put("scene", "INTEGER");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[5] = "scene";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("scene", "INTEGER");
     ((StringBuilder)localObject2).append(" scene INTEGER");
     ((StringBuilder)localObject2).append(", ");
-    ((c.a)localObject1).columns[6] = "data";
-    ((c.a)localObject1).IBN.put("data", "TEXT");
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[6] = "data";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).colsMap.put("data", "TEXT");
     ((StringBuilder)localObject2).append(" data TEXT");
-    ((c.a)localObject1).columns[7] = "rowid";
-    ((c.a)localObject1).sql = ((StringBuilder)localObject2).toString();
-    jUU = (c.a)localObject1;
+    ((IAutoDBItem.MAutoDBInfo)localObject1).columns[7] = "rowid";
+    ((IAutoDBItem.MAutoDBInfo)localObject1).sql = ((StringBuilder)localObject2).toString();
+    kXQ = (IAutoDBItem.MAutoDBInfo)localObject1;
     localObject1 = " PRIMARY KEY ( ";
-    localObject2 = jUV;
+    localObject2 = kXR;
     int j = localObject2.length;
     while (i < j)
     {
@@ -63,19 +63,19 @@ public final class c
     localObject1 = ((String)localObject1).replaceFirst(",", "");
     localObject1 = (String)localObject1 + " )";
     localObject2 = new StringBuilder();
-    Object localObject3 = jUU;
-    ((c.a)localObject3).sql = (((c.a)localObject3).sql + "," + (String)localObject1);
+    Object localObject3 = kXQ;
+    ((IAutoDBItem.MAutoDBInfo)localObject3).sql = (((IAutoDBItem.MAutoDBInfo)localObject3).sql + "," + (String)localObject1);
     AppMethodBeat.o(44704);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return jUU;
+    return kXQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.c
  * JD-Core Version:    0.7.0.1
  */

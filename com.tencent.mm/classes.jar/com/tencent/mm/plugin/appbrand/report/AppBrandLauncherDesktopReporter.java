@@ -4,38 +4,38 @@ import android.arch.lifecycle.Lifecycle.Event;
 import android.arch.lifecycle.LifecycleObserver;
 import android.arch.lifecycle.OnLifecycleEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import d.l;
+import com.tencent.mm.plugin.report.service.h;
 import java.util.LinkedHashSet;
 import java.util.Set;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReporter;", "Landroid/arch/lifecycle/LifecycleObserver;", "()V", "enterUiTimestamp", "", "historyExposureItemIndexRecorder", "", "", "mSessionId", "onCreate", "", "onDestroy", "onResume", "onStop", "recordHistoryExposure", "indexStart", "indexEnd", "reportClickCollectionHeader", "reportClickEveryoneUsingHeader", "reportClickHistoryWxaItem", "appId", "", "listIndex", "reportClickLiveHeader", "showcaseType", "reportClickNearbyHeader", "reportClickOrderHeader", "reportEnterAppBrandDesktop", "reportHistoryWxaExposure", "count", "reportLeaveAppBrandDesktop", "stayDuration", "Companion", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReporter;", "Landroid/arch/lifecycle/LifecycleObserver;", "()V", "enterUiTimestamp", "", "historyExposureItemIndexRecorder", "", "", "mSessionId", "onCreate", "", "onDestroy", "onResume", "onStop", "recordHistoryExposure", "indexStart", "indexEnd", "reportClickCollectionHeader", "reportClickEveryoneUsingHeader", "reportClickHistoryWxaItem", "appId", "", "listIndex", "reportClickLiveHeader", "showcaseType", "reportClickNearbyHeader", "reportClickOrderHeader", "reportEnterAppBrandDesktop", "reportHistoryWxaExposure", "count", "reportLeaveAppBrandDesktop", "stayDuration", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandLauncherDesktopReporter
   implements LifecycleObserver
 {
-  public static final AppBrandLauncherDesktopReporter.a mwa;
+  public static final a nGY;
   public long mSessionId;
-  private long mvY;
-  public Set<Integer> mvZ;
+  private long nGW;
+  public Set<Integer> nGX;
   
   static
   {
     AppMethodBeat.i(180650);
-    mwa = new AppBrandLauncherDesktopReporter.a((byte)0);
+    nGY = new a((byte)0);
     AppMethodBeat.o(180650);
   }
   
   public AppBrandLauncherDesktopReporter()
   {
     AppMethodBeat.i(180649);
-    this.mvZ = ((Set)new LinkedHashSet());
+    this.nGX = ((Set)new LinkedHashSet());
     AppMethodBeat.o(180649);
   }
   
-  public final void bya()
+  public final void bUr()
   {
     AppMethodBeat.i(180645);
-    g.yxI.f(19468, new Object[] { Integer.valueOf(2), "", "", "", "", "", Long.valueOf(this.mSessionId) });
+    h.CyF.a(19468, new Object[] { Integer.valueOf(2), "", "", "", "", "", Long.valueOf(this.mSessionId) });
     AppMethodBeat.o(180645);
   }
   
@@ -44,7 +44,7 @@ public final class AppBrandLauncherDesktopReporter
   {
     AppMethodBeat.i(180646);
     this.mSessionId = System.currentTimeMillis();
-    g.yxI.f(19468, new Object[] { Integer.valueOf(1), "", "", "", "", "", Long.valueOf(this.mSessionId) });
+    h.CyF.a(19468, new Object[] { Integer.valueOf(1), "", "", "", "", "", Long.valueOf(this.mSessionId) });
     AppMethodBeat.o(180646);
   }
   
@@ -55,7 +55,7 @@ public final class AppBrandLauncherDesktopReporter
   public final void onResume()
   {
     AppMethodBeat.i(180648);
-    this.mvY = System.currentTimeMillis();
+    this.nGW = System.currentTimeMillis();
     AppMethodBeat.o(180648);
   }
   
@@ -64,17 +64,20 @@ public final class AppBrandLauncherDesktopReporter
   {
     AppMethodBeat.i(180647);
     long l1 = System.currentTimeMillis();
-    long l2 = this.mvY;
-    g.yxI.f(19468, new Object[] { Integer.valueOf(8), "", Long.valueOf(l1 - l2), "", "", Long.valueOf(this.mSessionId) });
-    int i = this.mvZ.size();
-    g.yxI.f(19468, new Object[] { Integer.valueOf(7), "", "", "", "", Integer.valueOf(i), Long.valueOf(this.mSessionId) });
-    this.mvZ.clear();
+    long l2 = this.nGW;
+    h.CyF.a(19468, new Object[] { Integer.valueOf(8), "", Long.valueOf(l1 - l2), "", "", Long.valueOf(this.mSessionId) });
+    int i = this.nGX.size();
+    h.CyF.a(19468, new Object[] { Integer.valueOf(7), "", "", "", "", Integer.valueOf(i), Long.valueOf(this.mSessionId) });
+    this.nGX.clear();
     AppMethodBeat.o(180647);
   }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReporter$Companion;", "", "()V", "ACTION_CLICK_COLLECTION_HEADER", "", "ACTION_CLICK_EVERYONE_USING_HEADER", "ACTION_CLICK_HISTORY_WXA_ITEM", "ACTION_CLICK_LIVE_HEADER", "ACTION_CLICK_NEARBY_HEADER", "ACTION_CLICK_ORDER_HEADER", "ACTION_ENTER_DESKTOP", "ACTION_REPORT_HISTORY_WXA_EXPOSURE", "ACTION_REPORT_LEAVE_APPBRAND_DESKTOP", "REPORT_ID", "plugin-appbrand-integration_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.AppBrandLauncherDesktopReporter
  * JD-Core Version:    0.7.0.1
  */

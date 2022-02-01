@@ -1,42 +1,59 @@
 package com.tencent.mm.audio.mix.d;
 
+import android.media.MediaDataSource;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qqmusic.mediaplayer.upstream.IDataSource;
 
 public final class g
-  implements ThreadFactory
+  extends MediaDataSource
 {
-  private final ThreadGroup deG;
-  private final AtomicInteger deH;
-  private final String deI;
+  private IDataSource dataSource;
   
-  public g()
+  public g(IDataSource paramIDataSource)
   {
-    AppMethodBeat.i(136822);
-    this.deH = new AtomicInteger(1);
-    this.deI = "audio_mix_thread#";
-    this.deG = new ThreadGroup("AUDIO_MIX_THREAD_POOL_GROUP");
-    AppMethodBeat.o(136822);
+    this.dataSource = paramIDataSource;
   }
   
-  public final Thread newThread(Runnable paramRunnable)
+  public final void close()
   {
-    AppMethodBeat.i(136823);
-    paramRunnable = new Thread(this.deG, paramRunnable, "audio_mix_thread#" + this.deH.getAndIncrement(), 0L);
-    if (paramRunnable.isDaemon()) {
-      paramRunnable.setDaemon(false);
+    AppMethodBeat.i(198109);
+    if (this.dataSource != null)
+    {
+      this.dataSource.close();
+      this.dataSource = null;
     }
-    if (paramRunnable.getPriority() != 5) {
-      paramRunnable.setPriority(5);
+    AppMethodBeat.o(198109);
+  }
+  
+  public final long getSize()
+  {
+    AppMethodBeat.i(198108);
+    if (this.dataSource != null)
+    {
+      long l = this.dataSource.getSize();
+      AppMethodBeat.o(198108);
+      return l;
     }
-    AppMethodBeat.o(136823);
-    return paramRunnable;
+    AppMethodBeat.o(198108);
+    return -1L;
+  }
+  
+  public final int readAt(long paramLong, byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(198107);
+    if (this.dataSource != null)
+    {
+      paramInt1 = this.dataSource.readAt(paramLong, paramArrayOfByte, paramInt1, paramInt2);
+      AppMethodBeat.o(198107);
+      return paramInt1;
+    }
+    AppMethodBeat.o(198107);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.d.g
  * JD-Core Version:    0.7.0.1
  */

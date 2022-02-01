@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.emojicapture.proxy;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.a.f.c;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "bOk", "", "text", "", "kotlin.jvm.PlatformType", "onDialogClick"})
 final class EmojiCaptureProxy$b
   implements f.c
 {
-  public static final b qaJ;
+  public static final b rrG;
   
   static
   {
     AppMethodBeat.i(383);
-    qaJ = new b();
+    rrG = new b();
     AppMethodBeat.o(383);
   }
   
-  public final void d(boolean paramBoolean, String paramString) {}
+  public final void e(boolean paramBoolean, String paramString) {}
 }
 
 

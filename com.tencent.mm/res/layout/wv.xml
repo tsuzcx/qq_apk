@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:textColor="@color/y4" android:id="@id/bme" android:paddingLeft="0.0dip" android:inputType="numberDecimal" android:imeOptions="actionNone" style="@style/hc" />
-    <TextView android:textSize="@dimen/b_" android:id="@id/bmf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="" />
-</LinearLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:orientation="vertical" android:id="@id/a7a" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/a7b" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="@id/a79" />
+    <View android:id="@id/a79" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/i1" app:layout_constraintBottom_toBottomOf="@id/a78" app:layout_constraintLeft_toLeftOf="g8m" />
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/ag2" android:id="@id/biz_slot_show_desc_tv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginBottom="@dimen/bt" app:layout_constraintBottom_toTopOf="@id/biz_slot_title_neat_tv" app:layout_constraintLeft_toLeftOf="g8m" app:layout_goneMarginBottom="@dimen/ct" />
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/is" android:textStyle="bold" android:textColor="@color/ag2" android:ellipsize="end" android:id="@id/biz_slot_title_neat_tv" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/cb" android:layout_marginBottom="@dimen/ct" android:maxLines="2" android:lineSpacingExtra="2.0dip" app:layout_constraintBottom_toBottomOf="@id/a7b" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" />
+</merge>

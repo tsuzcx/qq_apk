@@ -13,51 +13,51 @@ public class AudioTrackWrapper
   
   public AudioTrackWrapper(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(215187);
+    AppMethodBeat.i(218538);
     try
     {
       init(paramInt1, paramInt2);
-      AppMethodBeat.o(215187);
+      AppMethodBeat.o(218538);
       return;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(215187);
+      AppMethodBeat.o(218538);
     }
   }
   
   public AudioTrackWrapper(MediaFormat paramMediaFormat)
   {
-    AppMethodBeat.i(215186);
+    AppMethodBeat.i(218537);
     try
     {
       init(paramMediaFormat.getInteger("sample-rate"), paramMediaFormat.getInteger("channel-count"));
-      AppMethodBeat.o(215186);
+      AppMethodBeat.o(218537);
       return;
     }
     catch (Exception paramMediaFormat)
     {
-      AppMethodBeat.o(215186);
+      AppMethodBeat.o(218537);
     }
   }
   
   private void init(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(215193);
+    AppMethodBeat.i(218544);
     if (paramInt1 <= 0)
     {
-      AppMethodBeat.o(215193);
+      AppMethodBeat.o(218544);
       return;
     }
     AudioTrackConfig localAudioTrackConfig = new AudioTrackConfig(paramInt1, paramInt2);
-    new StringBuilder("init:--> ").append(this);
+    Logger.d("AudioTrackWrapper", "init:--> ".concat(String.valueOf(this)));
     try
     {
       this.mAudioTrack = new AudioTrack(localAudioTrackConfig.streamType, localAudioTrackConfig.sampleRateInHz, localAudioTrackConfig.channelConfig, localAudioTrackConfig.audioFormat, localAudioTrackConfig.bufferSizeInBytes, localAudioTrackConfig.mode);
       if (this.mAudioTrack != null) {
         this.mAudioTrack.play();
       }
-      AppMethodBeat.o(215193);
+      AppMethodBeat.o(218544);
       return;
     }
     catch (IllegalArgumentException localIllegalArgumentException)
@@ -76,10 +76,10 @@ public class AudioTrackWrapper
   
   public void flush()
   {
-    AppMethodBeat.i(215191);
+    AppMethodBeat.i(218542);
     if (!allow())
     {
-      AppMethodBeat.o(215191);
+      AppMethodBeat.o(218542);
       return;
     }
     try
@@ -87,82 +87,82 @@ public class AudioTrackWrapper
       if (this.mAudioTrack != null) {
         this.mAudioTrack.flush();
       }
-      AppMethodBeat.o(215191);
+      AppMethodBeat.o(218542);
       return;
     }
     catch (Exception localException)
     {
       Logger.e("AudioTrackWrapper", "flush: ", localException);
-      AppMethodBeat.o(215191);
+      AppMethodBeat.o(218542);
     }
   }
   
   public void parse()
   {
-    AppMethodBeat.i(215189);
+    AppMethodBeat.i(218540);
     if (!allow())
     {
-      AppMethodBeat.o(215189);
+      AppMethodBeat.o(218540);
       return;
     }
     if ((this.mAudioTrack != null) && (this.mAudioTrack.getPlayState() == 3)) {
       this.mAudioTrack.pause();
     }
-    AppMethodBeat.o(215189);
+    AppMethodBeat.o(218540);
   }
   
   public void release()
   {
-    AppMethodBeat.i(215192);
+    AppMethodBeat.i(218543);
     if (!allow())
     {
-      AppMethodBeat.o(215192);
+      AppMethodBeat.o(218543);
       return;
     }
     stop();
     this.mAudioTrack.release();
-    new StringBuilder("release:--> ").append(this);
-    AppMethodBeat.o(215192);
+    Logger.d("AudioTrackWrapper", "release:--> ".concat(String.valueOf(this)));
+    AppMethodBeat.o(218543);
   }
   
   public void setVolume(float paramFloat)
   {
-    AppMethodBeat.i(215194);
+    AppMethodBeat.i(218545);
     if (!allow())
     {
-      AppMethodBeat.o(215194);
+      AppMethodBeat.o(218545);
       return;
     }
     if (Build.VERSION.SDK_INT >= 21)
     {
       this.mAudioTrack.setVolume(paramFloat);
-      AppMethodBeat.o(215194);
+      AppMethodBeat.o(218545);
       return;
     }
     this.mAudioTrack.setStereoVolume(paramFloat, paramFloat);
-    AppMethodBeat.o(215194);
+    AppMethodBeat.o(218545);
   }
   
   public void stop()
   {
-    AppMethodBeat.i(215188);
+    AppMethodBeat.i(218539);
     if (!allow())
     {
-      AppMethodBeat.o(215188);
+      AppMethodBeat.o(218539);
       return;
     }
     if ((this.mAudioTrack.getState() == 3) || (this.mAudioTrack.getState() == 2)) {
       this.mAudioTrack.stop();
     }
-    AppMethodBeat.o(215188);
+    AppMethodBeat.o(218539);
   }
   
   public void writeData(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(215190);
+    AppMethodBeat.i(218541);
     if (!allow())
     {
-      AppMethodBeat.o(215190);
+      AppMethodBeat.o(218541);
       return;
     }
     if (this.mAudioTrack != null) {
@@ -172,12 +172,12 @@ public class AudioTrackWrapper
         if (this.mAudioTrack.getPlayState() != 3) {
           this.mAudioTrack.play();
         }
-        AppMethodBeat.o(215190);
+        AppMethodBeat.o(218541);
         return;
       }
       catch (Exception paramArrayOfByte) {}
     }
-    AppMethodBeat.o(215190);
+    AppMethodBeat.o(218541);
   }
   
   static class AudioTrackConfig
@@ -191,14 +191,14 @@ public class AudioTrackWrapper
     
     public AudioTrackConfig(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(215184);
+      AppMethodBeat.i(218535);
       this.streamType = 3;
       this.channelConfig = 12;
       this.audioFormat = 2;
       this.mode = 1;
       this.sampleRateInHz = getSampleRateInHz(paramInt1, paramInt2);
       this.bufferSizeInBytes = 8192;
-      AppMethodBeat.o(215184);
+      AppMethodBeat.o(218535);
     }
     
     private int getSampleRateInHz(int paramInt1, int paramInt2)
@@ -212,16 +212,16 @@ public class AudioTrackWrapper
     
     public String toString()
     {
-      AppMethodBeat.i(215185);
+      AppMethodBeat.i(218536);
       String str = "AudioTrackConfig{streamType=" + this.streamType + ", sampleRateInHz=" + this.sampleRateInHz + ", channelConfig=" + this.channelConfig + ", audioFormat=" + this.audioFormat + ", bufferSizeInBytes=" + this.bufferSizeInBytes + ", mode=" + this.mode + '}';
-      AppMethodBeat.o(215185);
+      AppMethodBeat.o(218536);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.player.AudioTrackWrapper
  * JD-Core Version:    0.7.0.1
  */

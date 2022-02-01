@@ -29,16 +29,16 @@ class ProxyCache
   
   private void checkReadSourceErrorsCount()
   {
-    AppMethodBeat.i(195161);
+    AppMethodBeat.i(223188);
     int i = this.readSourceErrorsCount.get();
     if (i > 0)
     {
       this.readSourceErrorsCount.set(0);
       ProxyCacheException localProxyCacheException = new ProxyCacheException("Error reading source " + i + " times");
-      AppMethodBeat.o(195161);
+      AppMethodBeat.o(223188);
       throw localProxyCacheException;
     }
-    AppMethodBeat.o(195161);
+    AppMethodBeat.o(223188);
   }
   
   private void closeSource()
@@ -83,15 +83,15 @@ class ProxyCache
   
   private void onSourceRead()
   {
-    AppMethodBeat.i(195166);
+    AppMethodBeat.i(223193);
     this.percentsAvailable = 100;
     onCachePercentsAvailableChanged(this.percentsAvailable);
-    AppMethodBeat.o(195166);
+    AppMethodBeat.o(223193);
   }
   
   private void readSource()
   {
-    AppMethodBeat.i(195165);
+    AppMethodBeat.i(223192);
     long l6 = -1L;
     long l2 = 0L;
     long l1 = l2;
@@ -135,7 +135,7 @@ class ProxyCache
     {
       closeSource();
       notifyNewCacheDataAvailable(l2, l5);
-      AppMethodBeat.o(195165);
+      AppMethodBeat.o(223192);
     }
     l1 = l3;
     l4 = l6;
@@ -166,7 +166,7 @@ class ProxyCache
     onSourceRead();
     closeSource();
     notifyNewCacheDataAvailable(l3, l6);
-    AppMethodBeat.o(195165);
+    AppMethodBeat.o(223192);
   }
   
   /* Error */
@@ -245,32 +245,32 @@ class ProxyCache
   
   private void tryComplete()
   {
-    AppMethodBeat.i(195167);
+    AppMethodBeat.i(223194);
     synchronized (this.stopLock)
     {
       if ((!isStopped()) && (this.cache.available() == this.source.length())) {
         this.cache.complete();
       }
-      AppMethodBeat.o(195167);
+      AppMethodBeat.o(223194);
       return;
     }
   }
   
   private void waitForSourceData()
   {
-    AppMethodBeat.i(195163);
+    AppMethodBeat.i(223190);
     synchronized (this.wc)
     {
       try
       {
         this.wc.wait(1000L);
-        AppMethodBeat.o(195163);
+        AppMethodBeat.o(223190);
         return;
       }
       catch (InterruptedException localInterruptedException)
       {
         ProxyCacheException localProxyCacheException = new ProxyCacheException("Waiting source data is interrupted!", localInterruptedException);
-        AppMethodBeat.o(195163);
+        AppMethodBeat.o(223190);
         throw localProxyCacheException;
       }
     }
@@ -279,7 +279,7 @@ class ProxyCache
   protected void onCacheAvailable(long paramLong1, long paramLong2)
   {
     int k = 1;
-    AppMethodBeat.i(195164);
+    AppMethodBeat.i(223191);
     int i;
     label26:
     int j;
@@ -305,7 +305,7 @@ class ProxyCache
         onCachePercentsAvailableChanged(i);
       }
       this.percentsAvailable = i;
-      AppMethodBeat.o(195164);
+      AppMethodBeat.o(223191);
       return;
       i = 0;
       break;
@@ -337,7 +337,7 @@ class ProxyCache
   
   public int read(byte[] paramArrayOfByte, long paramLong, int paramInt)
   {
-    AppMethodBeat.i(195160);
+    AppMethodBeat.i(223187);
     ProxyCacheUtils.assertBuffer(paramArrayOfByte, paramLong, paramInt);
     while ((!this.cache.isCompleted()) && (this.cache.available() < paramInt + paramLong) && (!this.stopped))
     {
@@ -351,13 +351,13 @@ class ProxyCache
       this.percentsAvailable = 100;
       onCachePercentsAvailableChanged(100);
     }
-    AppMethodBeat.o(195160);
+    AppMethodBeat.o(223187);
     return paramInt;
   }
   
   public void shutdown()
   {
-    AppMethodBeat.i(195162);
+    AppMethodBeat.i(223189);
     synchronized (this.stopLock)
     {
       Logger.debug("Shutdown proxy for " + this.source);
@@ -376,7 +376,7 @@ class ProxyCache
           onError(localProxyCacheException);
         }
       }
-      AppMethodBeat.o(195162);
+      AppMethodBeat.o(223189);
       return;
     }
   }
@@ -396,7 +396,7 @@ class ProxyCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.danikula.videocache.ProxyCache
  * JD-Core Version:    0.7.0.1
  */

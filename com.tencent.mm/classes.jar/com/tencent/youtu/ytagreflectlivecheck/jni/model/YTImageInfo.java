@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class YTImageInfo
 {
+  public String checksum;
   public ArrayList<Float> five_points;
   public String image;
   
@@ -14,6 +15,7 @@ public class YTImageInfo
   {
     AppMethodBeat.i(43382);
     this.image = new String(Base64.encode(paramYTActReflectImage.image, 2));
+    this.checksum = paramYTActReflectImage.checksum;
     this.five_points = new ArrayList();
     if (paramYTActReflectImage.xys != null)
     {
@@ -35,47 +37,47 @@ public class YTImageInfo
   private void createFileWithByte(String paramString, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: ldc 69
-    //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: new 71	java/io/File
+    //   0: ldc 73
+    //   2: invokestatic 22	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: new 75	java/io/File
     //   8: dup
     //   9: aload_1
-    //   10: invokespecial 74	java/io/File:<init>	(Ljava/lang/String;)V
+    //   10: invokespecial 78	java/io/File:<init>	(Ljava/lang/String;)V
     //   13: astore_1
     //   14: aload_1
-    //   15: invokevirtual 78	java/io/File:exists	()Z
+    //   15: invokevirtual 82	java/io/File:exists	()Z
     //   18: ifeq +8 -> 26
     //   21: aload_1
-    //   22: invokevirtual 81	java/io/File:delete	()Z
+    //   22: invokevirtual 85	java/io/File:delete	()Z
     //   25: pop
     //   26: aload_1
-    //   27: invokevirtual 84	java/io/File:createNewFile	()Z
+    //   27: invokevirtual 88	java/io/File:createNewFile	()Z
     //   30: pop
-    //   31: new 86	java/io/FileOutputStream
+    //   31: new 90	java/io/FileOutputStream
     //   34: dup
     //   35: aload_1
-    //   36: invokespecial 89	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   36: invokespecial 93	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   39: astore_3
-    //   40: new 91	java/io/BufferedOutputStream
+    //   40: new 95	java/io/BufferedOutputStream
     //   43: dup
     //   44: aload_3
-    //   45: invokespecial 94	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   45: invokespecial 98	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   48: astore_1
     //   49: aload_1
     //   50: aload_2
-    //   51: invokevirtual 97	java/io/BufferedOutputStream:write	([B)V
+    //   51: invokevirtual 101	java/io/BufferedOutputStream:write	([B)V
     //   54: aload_1
-    //   55: invokevirtual 100	java/io/BufferedOutputStream:flush	()V
+    //   55: invokevirtual 104	java/io/BufferedOutputStream:flush	()V
     //   58: aload_3
-    //   59: invokevirtual 103	java/io/FileOutputStream:close	()V
+    //   59: invokevirtual 107	java/io/FileOutputStream:close	()V
     //   62: aload_1
-    //   63: invokevirtual 104	java/io/BufferedOutputStream:close	()V
-    //   66: ldc 69
-    //   68: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   63: invokevirtual 108	java/io/BufferedOutputStream:close	()V
+    //   66: ldc 73
+    //   68: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: return
     //   72: astore_1
-    //   73: ldc 69
-    //   75: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: ldc 73
+    //   75: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   78: return
     //   79: astore_1
     //   80: aconst_null
@@ -85,17 +87,17 @@ public class YTImageInfo
     //   84: aload_3
     //   85: ifnull +7 -> 92
     //   88: aload_3
-    //   89: invokevirtual 103	java/io/FileOutputStream:close	()V
+    //   89: invokevirtual 107	java/io/FileOutputStream:close	()V
     //   92: aload_1
     //   93: ifnull +48 -> 141
     //   96: aload_1
-    //   97: invokevirtual 104	java/io/BufferedOutputStream:close	()V
-    //   100: ldc 69
-    //   102: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   97: invokevirtual 108	java/io/BufferedOutputStream:close	()V
+    //   100: ldc 73
+    //   102: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   105: return
     //   106: astore_1
-    //   107: ldc 69
-    //   109: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   107: ldc 73
+    //   109: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   112: return
     //   113: astore_1
     //   114: aconst_null
@@ -105,17 +107,17 @@ public class YTImageInfo
     //   118: aload_3
     //   119: ifnull +7 -> 126
     //   122: aload_3
-    //   123: invokevirtual 103	java/io/FileOutputStream:close	()V
+    //   123: invokevirtual 107	java/io/FileOutputStream:close	()V
     //   126: aload_2
     //   127: ifnull +7 -> 134
     //   130: aload_2
-    //   131: invokevirtual 104	java/io/BufferedOutputStream:close	()V
-    //   134: ldc 69
-    //   136: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   131: invokevirtual 108	java/io/BufferedOutputStream:close	()V
+    //   134: ldc 73
+    //   136: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   139: aload_1
     //   140: athrow
-    //   141: ldc 69
-    //   143: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   141: ldc 73
+    //   143: invokestatic 65	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: return
     //   147: astore_2
     //   148: goto -86 -> 62
@@ -171,7 +173,7 @@ public class YTImageInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.jni.model.YTImageInfo
  * JD-Core Version:    0.7.0.1
  */

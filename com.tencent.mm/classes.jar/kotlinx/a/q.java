@@ -1,167 +1,166 @@
 package kotlinx.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.ae;
-import d.a.e;
-import d.a.y;
-import d.g.a.b;
-import d.g.b.p;
-import d.l;
-import d.u;
-import d.v;
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import kotlin.a.ae;
+import kotlin.a.e;
+import kotlin.a.y;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/SerialDescriptorImpl;", "Lkotlinx/serialization/SerialDescriptor;", "serialName", "", "kind", "Lkotlinx/serialization/SerialKind;", "elementsCount", "", "builder", "Lkotlinx/serialization/SerialDescriptorBuilder;", "(Ljava/lang/String;Lkotlinx/serialization/SerialKind;ILkotlinx/serialization/SerialDescriptorBuilder;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "elementAnnotations", "", "[Ljava/util/List;", "elementDescriptors", "[Lkotlinx/serialization/SerialDescriptor;", "elementNames", "[Ljava/lang/String;", "elementOptionality", "", "getElementsCount", "()I", "isNullable", "", "()Z", "getKind", "()Lkotlinx/serialization/SerialKind;", "name2Index", "", "getSerialName", "()Ljava/lang/String;", "equals", "other", "", "getElementAnnotations", "index", "getElementDescriptor", "getElementIndex", "name", "getElementName", "hashCode", "isElementOptional", "toString", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/SerialDescriptorImpl;", "Lkotlinx/serialization/SerialDescriptor;", "serialName", "", "kind", "Lkotlinx/serialization/SerialKind;", "elementsCount", "", "builder", "Lkotlinx/serialization/SerialDescriptorBuilder;", "(Ljava/lang/String;Lkotlinx/serialization/SerialKind;ILkotlinx/serialization/SerialDescriptorBuilder;)V", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "elementAnnotations", "", "[Ljava/util/List;", "elementDescriptors", "[Lkotlinx/serialization/SerialDescriptor;", "elementNames", "[Ljava/lang/String;", "elementOptionality", "", "getElementsCount", "()I", "isNullable", "", "()Z", "getKind", "()Lkotlinx/serialization/SerialKind;", "name2Index", "", "getSerialName", "()Ljava/lang/String;", "equals", "other", "", "getElementAnnotations", "index", "getElementDescriptor", "getElementIndex", "name", "getElementName", "hashCode", "isElementOptional", "toString", "kotlinx-serialization-runtime"})
 final class q
   implements n
 {
-  private final List<Annotation> NsX;
-  private final boolean OiG;
-  private final String OiM;
-  final String[] OiO;
-  final n[] OiP;
-  private final List<Annotation>[] OiQ;
-  private final boolean[] OiR;
-  private final Map<String, Integer> OiS;
-  private final s OiT;
-  private final int OiU;
+  private final boolean TXC;
+  private final String TXI;
+  final String[] TXK;
+  final n[] TXL;
+  private final List<Annotation>[] TXM;
+  private final boolean[] TXN;
+  private final Map<String, Integer> TXO;
+  private final s TXP;
+  private final int TXQ;
+  private final List<Annotation> TiF;
   
   public q(String paramString, s params, int paramInt, o paramo)
   {
-    AppMethodBeat.i(199599);
-    this.OiM = paramString;
-    this.OiT = params;
-    this.OiU = paramInt;
-    this.OiG = paramo.OiG;
-    this.NsX = paramo.NsX;
-    paramString = ((Collection)paramo.OiH).toArray(new String[0]);
+    AppMethodBeat.i(225371);
+    this.TXI = paramString;
+    this.TXP = params;
+    this.TXQ = paramInt;
+    this.TXC = paramo.TXC;
+    this.TiF = paramo.TiF;
+    paramString = ((Collection)paramo.TXD).toArray(new String[0]);
     if (paramString == null)
     {
-      paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(199599);
+      paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
+      AppMethodBeat.o(225371);
       throw paramString;
     }
-    this.OiO = ((String[])paramString);
-    paramString = ((Collection)paramo.OiJ).toArray(new n[0]);
+    this.TXK = ((String[])paramString);
+    paramString = ((Collection)paramo.TXF).toArray(new n[0]);
     if (paramString == null)
     {
-      paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(199599);
+      paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
+      AppMethodBeat.o(225371);
       throw paramString;
     }
-    this.OiP = ((n[])paramString);
-    paramString = ((Collection)paramo.OiK).toArray(new List[0]);
+    this.TXL = ((n[])paramString);
+    paramString = ((Collection)paramo.TXG).toArray(new List[0]);
     if (paramString == null)
     {
-      paramString = new v("null cannot be cast to non-null type kotlin.Array<T>");
-      AppMethodBeat.o(199599);
+      paramString = new t("null cannot be cast to non-null type kotlin.Array<T>");
+      AppMethodBeat.o(225371);
       throw paramString;
     }
-    this.OiQ = ((List[])paramString);
-    this.OiR = d.a.j.p((Collection)paramo.OiL);
-    params = e.Y(this.OiO);
-    paramString = (Collection)new ArrayList(d.a.j.a(params, 10));
+    this.TXM = ((List[])paramString);
+    this.TXN = kotlin.a.j.s((Collection)paramo.TXH);
+    params = e.Z(this.TXK);
+    paramString = (Collection)new ArrayList(kotlin.a.j.a(params, 10));
     params = params.iterator();
     while (params.hasNext())
     {
       paramo = (y)params.next();
-      paramString.add(u.R(paramo.value, Integer.valueOf(paramo.index)));
+      paramString.add(kotlin.s.U(paramo.value, Integer.valueOf(paramo.index)));
     }
-    this.OiS = ae.A((Iterable)paramString);
-    AppMethodBeat.o(199599);
+    this.TXO = ae.E((Iterable)paramString);
+    AppMethodBeat.o(225371);
   }
   
-  public final String amt(int paramInt)
+  public final String awc(int paramInt)
   {
-    return this.OiO[paramInt];
+    return this.TXK[paramInt];
   }
   
-  public final n amu(int paramInt)
+  public final n awd(int paramInt)
   {
-    return this.OiP[paramInt];
+    return this.TXL[paramInt];
   }
   
-  public final int beQ(String paramString)
+  public final int buF(String paramString)
   {
-    AppMethodBeat.i(199595);
+    AppMethodBeat.i(225367);
     p.h(paramString, "name");
-    paramString = (Integer)this.OiS.get(paramString);
+    paramString = (Integer)this.TXO.get(paramString);
     if (paramString != null)
     {
       int i = paramString.intValue();
-      AppMethodBeat.o(199595);
+      AppMethodBeat.o(225367);
       return i;
     }
-    AppMethodBeat.o(199595);
+    AppMethodBeat.o(225367);
     return -3;
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(199596);
+    AppMethodBeat.i(225368);
     if ((q)this == paramObject)
     {
-      AppMethodBeat.o(199596);
+      AppMethodBeat.o(225368);
       return true;
     }
     if (!(paramObject instanceof n))
     {
-      AppMethodBeat.o(199596);
+      AppMethodBeat.o(225368);
       return false;
     }
-    if ((p.i(this.OiM, ((n)paramObject).gBs()) ^ true))
+    if ((p.j(this.TXI, ((n)paramObject).hOz()) ^ true))
     {
-      AppMethodBeat.o(199596);
+      AppMethodBeat.o(225368);
       return false;
     }
-    AppMethodBeat.o(199596);
+    AppMethodBeat.o(225368);
     return true;
   }
   
-  public final String gBs()
+  public final s hOA()
   {
-    return this.OiM;
+    return this.TXP;
   }
   
-  public final s gBt()
+  public final boolean hOB()
   {
-    return this.OiT;
+    return this.TXC;
   }
   
-  public final boolean gBu()
+  public final int hOC()
   {
-    return this.OiG;
+    return this.TXQ;
   }
   
-  public final int gBv()
+  public final String hOz()
   {
-    return this.OiU;
+    return this.TXI;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(199597);
-    int i = this.OiM.hashCode();
-    AppMethodBeat.o(199597);
+    AppMethodBeat.i(225369);
+    int i = this.TXI.hashCode();
+    AppMethodBeat.o(225369);
     return i;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(199598);
-    String str = d.a.j.a((Iterable)d.k.j.lv(0, this.OiU), (CharSequence)", ", (CharSequence)(this.OiM + '('), (CharSequence)")", 0, null, (b)new a(this), 24);
-    AppMethodBeat.o(199598);
+    AppMethodBeat.i(225370);
+    String str = kotlin.a.j.a((Iterable)kotlin.k.j.mY(0, this.TXQ), (CharSequence)", ", (CharSequence)(this.TXI + '('), (CharSequence)")", 0, null, (b)new a(this), 24);
+    AppMethodBeat.o(225370);
     return str;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
   static final class a
-    extends d.g.b.q
+    extends kotlin.g.b.q
     implements b<Integer, String>
   {
     a(q paramq)
@@ -172,7 +171,7 @@ final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlinx.a.q
  * JD-Core Version:    0.7.0.1
  */

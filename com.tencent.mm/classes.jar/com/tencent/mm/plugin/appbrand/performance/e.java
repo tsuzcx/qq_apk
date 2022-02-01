@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.appbrand.performance;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 import java.io.Closeable;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -11,23 +11,23 @@ import java.io.RandomAccessFile;
 public final class e
   implements Closeable
 {
-  private final int Mg;
-  private volatile RandomAccessFile mms;
-  private volatile RandomAccessFile mmt;
-  private boolean mmu;
-  private long mmv;
-  private long mmw;
-  private long mmx;
+  private final int Mq;
+  private volatile RandomAccessFile nwS;
+  private volatile RandomAccessFile nwT;
+  private boolean nwU;
+  private long nwV;
+  private long nwW;
+  private long nwX;
   
   public e(int paramInt)
   {
-    this.Mg = paramInt;
+    this.Mq = paramInt;
   }
   
-  public final double bwL()
+  public final double bSU()
   {
     AppMethodBeat.i(147594);
-    if (this.mmu)
+    if (this.nwU)
     {
       AppMethodBeat.o(147594);
       return 0.0D;
@@ -38,17 +38,17 @@ public final class e
     {
       try
       {
-        if (this.mmt == null)
+        if (this.nwT == null)
         {
           d2 = d3;
-          this.mmt = o.dg("/proc/" + this.Mg + "/stat", false);
+          this.nwT = s.dB("/proc/" + this.Mq + "/stat", false);
         }
         d2 = d3;
-        this.mmt.seek(0L);
+        this.nwT.seek(0L);
         d2 = d3;
-        Object localObject1 = this.mmt.readLine();
+        Object localObject1 = this.nwT.readLine();
         d2 = d3;
-        boolean bool = bu.isNullOrNil((String)localObject1);
+        boolean bool = Util.isNullOrNil((String)localObject1);
         if (bool)
         {
           AppMethodBeat.o(147594);
@@ -64,43 +64,43 @@ public final class e
           return 0.0D;
         }
         d2 = d3;
-        if (this.mms == null)
+        if (this.nwS == null)
         {
           d2 = d3;
-          this.mms = o.dg("/proc/stat", false);
+          this.nwS = s.dB("/proc/stat", false);
         }
         d2 = d3;
-        this.mms.seek(0L);
+        this.nwS.seek(0L);
         d2 = d3;
-        localObject2 = this.mms.readLine();
+        localObject2 = this.nwS.readLine();
         d2 = d3;
-        if (!bu.isNullOrNil((String)localObject2)) {
+        if (!Util.isNullOrNil((String)localObject2)) {
           continue;
         }
         l1 = 0L;
         d2 = d3;
-        l2 = bu.aSC(localObject1[13]);
+        l2 = Util.safeParseLong(localObject1[13]);
         d2 = d3;
-        l3 = bu.aSC(localObject1[14]);
+        l3 = Util.safeParseLong(localObject1[14]);
         d1 = d3;
         d2 = d3;
-        if (this.mmv != 0L)
+        if (this.nwV != 0L)
         {
           d2 = d3;
-          double d4 = (l2 - this.mmw) * 100L / (l1 - this.mmv);
+          double d4 = (l2 - this.nwW) * 100L / (l1 - this.nwV);
           d2 = d3;
-          d1 = (l3 - this.mmx) * 100L / (l1 - this.mmv);
+          d1 = (l3 - this.nwX) * 100L / (l1 - this.nwV);
           d2 = d3;
           d4 = Math.max(0.0D, d4);
           d2 = d3;
           d1 = Math.max(0.0D, d1) + d4;
         }
         d2 = d1;
-        this.mmv = l1;
+        this.nwV = l1;
         d2 = d1;
-        this.mmw = l2;
+        this.nwW = l2;
         d2 = d1;
-        this.mmx = l3;
+        this.nwX = l3;
       }
       catch (Exception localException)
       {
@@ -113,8 +113,8 @@ public final class e
         long l6;
         long l7;
         long l8;
-        ae.e(" MicroMsg.CpuSampler", "read pid stat file error: ".concat(String.valueOf(localException)));
-        this.mmu = true;
+        Log.e(" MicroMsg.CpuSampler", "read pid stat file error: ".concat(String.valueOf(localException)));
+        this.nwU = true;
         double d1 = d2;
         continue;
       }
@@ -130,21 +130,21 @@ public final class e
       else
       {
         d2 = d3;
-        l1 = bu.aSC(localObject2[2]);
+        l1 = Util.safeParseLong(localObject2[2]);
         d2 = d3;
-        l2 = bu.aSC(localObject2[3]);
+        l2 = Util.safeParseLong(localObject2[3]);
         d2 = d3;
-        l3 = bu.aSC(localObject2[4]);
+        l3 = Util.safeParseLong(localObject2[4]);
         d2 = d3;
-        l4 = bu.aSC(localObject2[5]);
+        l4 = Util.safeParseLong(localObject2[5]);
         d2 = d3;
-        l5 = bu.aSC(localObject2[6]);
+        l5 = Util.safeParseLong(localObject2[6]);
         d2 = d3;
-        l6 = bu.aSC(localObject2[7]);
+        l6 = Util.safeParseLong(localObject2[7]);
         d2 = d3;
-        l7 = bu.aSC(localObject2[8]);
+        l7 = Util.safeParseLong(localObject2[8]);
         d2 = d3;
-        l8 = bu.aSC(localObject2[9]);
+        l8 = Util.safeParseLong(localObject2[9]);
         l1 = l8 + (l1 + l2 + l3 + l4 + l5 + l6 + l7);
       }
     }
@@ -155,14 +155,14 @@ public final class e
     AppMethodBeat.i(147595);
     try
     {
-      if (this.mmt != null) {
-        this.mmt.close();
+      if (this.nwT != null) {
+        this.nwT.close();
       }
       try
       {
         label19:
-        if (this.mms != null) {
-          this.mms.close();
+        if (this.nwS != null) {
+          this.nwS.close();
         }
         AppMethodBeat.o(147595);
         return;
@@ -181,7 +181,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.performance.e
  * JD-Core Version:    0.7.0.1
  */

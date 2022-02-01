@@ -10,9 +10,9 @@ import android.os.Process;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.k;
-import com.tencent.mm.network.ad;
-import com.tencent.mm.network.ad.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.network.af;
+import com.tencent.mm.network.af.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 @k
 @JgClassChecked(author=20, fComment="checked", lastDate="20140819", reviewer=20, vComment={com.jg.EType.RECEIVERCHECK})
@@ -23,7 +23,7 @@ public class MMReceivers$ConnectionReceiver
   {
     AppMethodBeat.i(131890);
     new StringBuilder("onReceive process: ").append(Process.myPid());
-    ae.i("MicroMsg.ConnectionReceiver", "onReceive threadID: " + Thread.currentThread().getId());
+    Log.i("MicroMsg.ConnectionReceiver", "onReceive threadID: " + Thread.currentThread().getId());
     if (paramContext == null)
     {
       AppMethodBeat.o(131890);
@@ -31,12 +31,12 @@ public class MMReceivers$ConnectionReceiver
     }
     if (!b.c(paramContext, "connection", true))
     {
-      MMReceivers.AlarmReceiver.bP(paramContext);
-      ae.foo();
+      MMReceivers.AlarmReceiver.ck(paramContext);
+      Log.appenderFlush();
       AppMethodBeat.o(131890);
       return;
     }
-    if (ad.aPJ() == null)
+    if (af.bkk() == null)
     {
       AppMethodBeat.o(131890);
       return;
@@ -52,30 +52,30 @@ public class MMReceivers$ConnectionReceiver
     {
       for (;;)
       {
-        ae.e("MicroMsg.ConnectionReceiver", "getActiveNetworkInfo failed. exception: %s", new Object[] { paramIntent.getMessage() });
+        Log.e("MicroMsg.ConnectionReceiver", "getActiveNetworkInfo failed. exception: %s", new Object[] { paramIntent.getMessage() });
         continue;
         paramIntent = paramContext.getState();
       }
-      ae.i("MicroMsg.ConnectionReceiver", "NetworkAvailable: true");
-      paramIntent = ad.aPJ();
+      Log.i("MicroMsg.ConnectionReceiver", "NetworkAvailable: true");
+      paramIntent = af.bkk();
       paramContext.getTypeName();
       paramContext.getSubtypeName();
-      paramIntent.cx(true);
+      paramIntent.df(true);
       AppMethodBeat.o(131890);
     }
     if ((paramContext == null) || (paramContext.getState() != NetworkInfo.State.CONNECTED)) {
       if (paramContext == null)
       {
         paramIntent = "null";
-        ae.i("MicroMsg.ConnectionReceiver", "NetworkAvailable: false, state:%s", new Object[] { paramIntent });
-        paramIntent = ad.aPJ();
+        Log.i("MicroMsg.ConnectionReceiver", "NetworkAvailable: false, state:%s", new Object[] { paramIntent });
+        paramIntent = af.bkk();
         if (paramContext != null) {
           paramContext.getTypeName();
         }
         if (paramContext != null) {
           paramContext.getSubtypeName();
         }
-        paramIntent.cx(false);
+        paramIntent.df(false);
         AppMethodBeat.o(131890);
         return;
       }
@@ -84,7 +84,7 @@ public class MMReceivers$ConnectionReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.MMReceivers.ConnectionReceiver
  * JD-Core Version:    0.7.0.1
  */

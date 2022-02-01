@@ -1,258 +1,76 @@
 package com.tencent.mm.storage;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.l;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storagebase.g;
-import com.tencent.mm.storagebase.g.a;
-import com.tencent.mm.storagebase.h;
 import java.util.LinkedList;
-import java.util.List;
-import junit.framework.Assert;
 
 public final class cc
-  extends k
-  implements l, g.a
+  extends com.tencent.mm.bw.a
 {
-  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS role_info ( id TEXT PRIMARY KEY, name TEXT, status INT, text_reserved1 TEXT, text_reserved2 TEXT, text_reserved3 TEXT, text_reserved4 TEXT, int_reserved1 INT, int_reserved2 INT, int_reserved3 INT, int_reserved4 INT )" };
-  private e db = null;
+  public LinkedList<cd> Oru;
   
-  public cc(h paramh)
+  public cc()
   {
-    this.db = paramh;
+    AppMethodBeat.i(43274);
+    this.Oru = new LinkedList();
+    AppMethodBeat.o(43274);
   }
   
-  private void a(cb paramcb)
+  public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(117324);
-    paramcb.dEu = 135;
-    paramcb = paramcb.convertTo();
-    if ((paramcb.size() > 0) && (this.db.insert("role_info", "id", paramcb) != 0L)) {
-      doNotify();
-    }
-    AppMethodBeat.o(117324);
-  }
-  
-  private cb aVU(String paramString)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(117322);
-    if ((paramString != null) && (paramString.length() > 0)) {}
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(43275);
+    if (paramInt == 0)
     {
-      Assert.assertTrue(bool);
-      cb localcb = new cb();
-      Cursor localCursor = this.db.a("role_info", null, "name= ?", new String[] { paramString }, null, null, null, 2);
-      paramString = localObject;
-      if (localCursor.moveToFirst())
-      {
-        localcb.convertFrom(localCursor);
-        paramString = localcb;
-      }
-      localCursor.close();
-      AppMethodBeat.o(117322);
-      return paramString;
+      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.Oru);
+      AppMethodBeat.o(43275);
+      return 0;
     }
-  }
-  
-  private void b(cb paramcb)
-  {
-    AppMethodBeat.i(117329);
-    ContentValues localContentValues = paramcb.convertTo();
-    if (localContentValues.size() > 0)
+    if (paramInt == 1)
     {
-      int i = this.db.update("role_info", localContentValues, "name like ?", new String[] { paramcb.name });
-      ae.d("MicroMsg.RoleStorage", "update role info, name=" + paramcb.name + ", res:" + i);
-      if (i > 0) {
-        doNotify();
-      }
+      paramInt = g.a.a.a.c(1, 8, this.Oru);
+      AppMethodBeat.o(43275);
+      return paramInt + 0;
     }
-    AppMethodBeat.o(117329);
-  }
-  
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
-  public final cb arD(String paramString)
-  {
-    Object localObject = null;
-    AppMethodBeat.i(117321);
-    if ((paramString == null) || (paramString.length() <= 0))
+    if (paramInt == 2)
     {
-      AppMethodBeat.o(117321);
-      return null;
-    }
-    cb localcb = new cb();
-    Cursor localCursor = this.db.a("role_info", null, "name LIKE ?", new String[] { "%".concat(String.valueOf(paramString)) }, null, null, null, 2);
-    paramString = localObject;
-    if (localCursor.moveToFirst())
-    {
-      localcb.convertFrom(localCursor);
-      paramString = localcb;
-    }
-    localCursor.close();
-    AppMethodBeat.o(117321);
-    return paramString;
-  }
-  
-  public final void bz(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(117327);
-    if (bu.isNullOrNil(paramString))
-    {
-      ae.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
-      AppMethodBeat.o(117327);
-      return;
-    }
-    cb localcb = aVU(paramString);
-    if (localcb == null)
-    {
-      a(new cb(paramString, paramBoolean, 2));
-      ae.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(117327);
-      return;
-    }
-    localcb.setEnable(paramBoolean);
-    localcb.dEu = 4;
-    b(localcb);
-    AppMethodBeat.o(117327);
-  }
-  
-  public final void delete(String paramString)
-  {
-    AppMethodBeat.i(117330);
-    if (paramString.length() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      int i = this.db.delete("role_info", "name=?", new String[] { String.valueOf(paramString) });
-      ae.d("MicroMsg.RoleStorage", "delete name name :" + paramString + ", res:" + i);
-      if (i > 0) {
-        doNotify();
-      }
-      AppMethodBeat.o(117330);
-      return;
-    }
-  }
-  
-  public final List<cb> dpd()
-  {
-    AppMethodBeat.i(117323);
-    LinkedList localLinkedList = new LinkedList();
-    Cursor localCursor = this.db.a("role_info", null, "int_reserved1=1", null, null, null, null, 2);
-    while (localCursor.moveToNext())
-    {
-      cb localcb = new cb();
-      localcb.convertFrom(localCursor);
-      localLinkedList.add(localcb);
-    }
-    localCursor.close();
-    AppMethodBeat.o(117323);
-    return localLinkedList;
-  }
-  
-  public final void ev(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(117326);
-    if (bu.isNullOrNil(paramString))
-    {
-      ae.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
-      AppMethodBeat.o(117326);
-      return;
-    }
-    if (aVU(paramString) == null)
-    {
-      a(new cb(paramString, true, paramInt));
-      ae.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
-    }
-    AppMethodBeat.o(117326);
-  }
-  
-  public final String getTableName()
-  {
-    return "role_info";
-  }
-  
-  public final void h(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    int i = 2;
-    AppMethodBeat.i(117328);
-    if (bu.isNullOrNil(paramString))
-    {
-      ae.e("MicroMsg.RoleStorage", "insert role info failed: empty user");
-      AppMethodBeat.o(117328);
-      return;
-    }
-    cb localcb = aVU(paramString);
-    if (localcb == null)
-    {
-      a(new cb(paramString, paramBoolean1, 2));
-      ae.d("MicroMsg.RoleStorage", "insert new role, user=".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(117328);
-      return;
-    }
-    localcb.setEnable(paramBoolean1);
-    int j;
-    if (paramBoolean2)
-    {
-      j = localcb.status;
-      if (!paramBoolean2) {}
-    }
-    for (localcb.status = (i | j);; localcb.status &= 0xFFFFFFFD)
-    {
-      localcb.dEu = 4;
-      b(localcb);
-      AppMethodBeat.o(117328);
-      return;
-      i = 0;
-      break;
-    }
-  }
-  
-  public final boolean has(String paramString)
-  {
-    AppMethodBeat.i(117325);
-    cb localcb = aVU(paramString);
-    if (localcb != null)
-    {
-      if (localcb.JhJ == 4)
-      {
-        i = 1;
-        if (i == 0) {
-          if (localcb.JhJ != 5) {
-            break label55;
-          }
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.Oru.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
         }
       }
-      label55:
-      for (int i = 1;; i = 0)
-      {
-        if (i == 0) {
-          break label60;
-        }
-        AppMethodBeat.o(117325);
-        return true;
-        i = 0;
-        break;
-      }
+      AppMethodBeat.o(43275);
+      return 0;
     }
-    label60:
-    localcb = arD(new cb.a(paramString).aVT(""));
-    if ((localcb != null) && (paramString.equals(localcb.name)))
+    if (paramInt == 3)
     {
-      AppMethodBeat.o(117325);
-      return true;
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+      cc localcc = (cc)paramVarArgs[1];
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
+      {
+      default: 
+        AppMethodBeat.o(43275);
+        return -1;
+      }
+      paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new cd();
+        localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((cd)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+        localcc.Oru.add(localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(43275);
+      return 0;
     }
-    AppMethodBeat.o(117325);
-    return false;
+    AppMethodBeat.o(43275);
+    return -1;
   }
 }
 

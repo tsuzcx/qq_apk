@@ -1,57 +1,57 @@
 package com.tencent.kinda.framework.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kv;
-import com.tencent.mm.g.a.kv.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.g.a.ll;
+import com.tencent.mm.g.a.ll.a;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class KindaJSInvokeListener
-  extends c<kv>
+  extends IListener<ll>
 {
   private static final String TAG = "MicroMsg.KindaJSInvokeListener";
   
   public KindaJSInvokeListener()
   {
-    AppMethodBeat.i(193149);
-    this.__eventId = kv.class.getName().hashCode();
-    AppMethodBeat.o(193149);
+    AppMethodBeat.i(214440);
+    this.__eventId = ll.class.getName().hashCode();
+    AppMethodBeat.o(214440);
   }
   
-  private JSHandler createHandler(kv paramkv)
+  private JSHandler createHandler(ll paramll)
   {
-    AppMethodBeat.i(193151);
-    if (paramkv.dyW.dyZ.equals("phoneBindCardVerifySms"))
+    AppMethodBeat.i(214442);
+    if (paramll.dQJ.dQM.equals("phoneBindCardVerifySms"))
     {
-      paramkv = new PhoneBindCardVerifySmsJSHandler();
-      AppMethodBeat.o(193151);
-      return paramkv;
+      paramll = new PhoneBindCardVerifySmsJSHandler();
+      AppMethodBeat.o(214442);
+      return paramll;
     }
-    if (paramkv.dyW.dyZ.equals("requestQueryCashier"))
+    if (paramll.dQJ.dQM.equals("requestQueryCashier"))
     {
-      paramkv = new requestQueryCashierJsHandler();
-      AppMethodBeat.o(193151);
-      return paramkv;
+      paramll = new requestQueryCashierJsHandler();
+      AppMethodBeat.o(214442);
+      return paramll;
     }
-    AppMethodBeat.o(193151);
+    AppMethodBeat.o(214442);
     return null;
   }
   
-  public boolean callback(kv paramkv)
+  public boolean callback(ll paramll)
   {
-    AppMethodBeat.i(193150);
-    ae.i("MicroMsg.KindaJSInvokeListener", "handle jsapi callback: %s, %s", new Object[] { paramkv.dyW.dyZ, Integer.valueOf(paramkv.dyW.type) });
-    JSHandler localJSHandler = createHandler(paramkv);
+    AppMethodBeat.i(214441);
+    Log.i("MicroMsg.KindaJSInvokeListener", "handle jsapi callback: %s, %s", new Object[] { paramll.dQJ.dQM, Integer.valueOf(paramll.dQJ.type) });
+    JSHandler localJSHandler = createHandler(paramll);
     if (localJSHandler != null) {
-      localJSHandler.handle(paramkv);
+      localJSHandler.handle(paramll);
     }
-    AppMethodBeat.o(193150);
+    AppMethodBeat.o(214441);
     return false;
   }
   
   public static abstract interface JSHandler
   {
-    public abstract void handle(kv paramkv);
+    public abstract void handle(ll paramll);
     
     public abstract String handleJsApi();
     
@@ -60,7 +60,7 @@ public class KindaJSInvokeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.jsapi.KindaJSInvokeListener
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
   implements com.tencent.mm.pluginsdk.cmd.a
@@ -14,7 +14,7 @@ public final class a
     AppMethodBeat.i(27581);
     if ("//usenewprofile".equals(paramArrayOfString[0]))
     {
-      paramContext = ak.fox();
+      paramContext = MMApplicationContext.getDefaultPreference();
       if (paramArrayOfString.length <= 1)
       {
         paramContext.edit().putBoolean("use_new_profile", true).commit();
@@ -56,7 +56,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.newbizinfo.a.a
  * JD-Core Version:    0.7.0.1
  */

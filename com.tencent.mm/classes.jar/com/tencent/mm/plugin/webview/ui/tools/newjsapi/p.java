@@ -1,62 +1,63 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
+import android.os.Bundle;
+import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.c.c.a;
-import com.tencent.mm.plugin.webview.c.d;
-import com.tencent.mm.plugin.webview.g.f.a;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.f;
+import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequest;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiOnWebPageUrlExposed;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "WebPrefetchTask", "plugin-webview_release"})
 public final class p
   extends a
 {
-  private static final int ECX = 331;
-  public static final p EHU;
-  private static final String TAG = "MicroMsg.JsApiRequest";
-  private static final String dLB = "request";
+  public static final p JxA;
   
   static
   {
-    AppMethodBeat.i(175687);
-    EHU = new p();
-    TAG = "MicroMsg.JsApiRequest";
-    ECX = 331;
-    dLB = "request";
-    AppMethodBeat.o(175687);
+    AppMethodBeat.i(210631);
+    JxA = new p();
+    AppMethodBeat.o(210631);
   }
   
-  public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(f paramf, n paramn)
   {
-    AppMethodBeat.i(199442);
-    d.g.b.p.h(paramd, "env");
-    d.g.b.p.h(paraml, "msg");
-    boolean bool = com.tencent.mm.plugin.webview.g.f.a(paraml, (f.a)new a(paramd));
-    AppMethodBeat.o(199442);
-    return bool;
-  }
-  
-  public final int eSw()
-  {
-    return ECX;
-  }
-  
-  public final String eSx()
-  {
-    return dLB;
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "kotlin.jvm.PlatformType", "ret", "", "retValue", "", "", "", "callback"})
-  static final class a
-    implements f.a
-  {
-    a(d paramd) {}
-    
-    public final void a(com.tencent.mm.plugin.webview.c.l paraml, String paramString, Map<String, Object> paramMap)
+    AppMethodBeat.i(210630);
+    kotlin.g.b.p.h(paramf, "env");
+    kotlin.g.b.p.h(paramn, "msg");
+    String str = (String)paramn.params.get("urlList");
+    if (Util.isNullOrNil(str))
     {
-      AppMethodBeat.i(199441);
-      this.EDa.DQe.i(paraml.Efy, paramString, paramMap);
-      AppMethodBeat.o(199441);
+      com.tencent.e.f.h.hkS();
+      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail", null);
+      AppMethodBeat.o(210630);
+      return true;
     }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("urlList", str);
+    if (((Bundle)com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, (Parcelable)localBundle, p.a.class)).getBoolean("ret")) {
+      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", null);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(210630);
+      return true;
+      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail", null);
+    }
+  }
+  
+  public final int ePA()
+  {
+    return 373;
+  }
+  
+  public final String ePz()
+  {
+    return "onWebPageUrlExposed";
   }
 }
 

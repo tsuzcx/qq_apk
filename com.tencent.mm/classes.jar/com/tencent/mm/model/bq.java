@@ -1,91 +1,88 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class bq
-  extends n
-  implements k
 {
-  private long cBp;
-  private f callback;
-  private final a hKt;
-  private final String hKu;
+  private static final Queue<Integer> iEN;
+  public static final long[] iEO;
+  public static final int[] iEP;
+  public static final int[] iEQ;
+  public static final int[] iER;
+  public static final int[] iES;
+  private static bq iET;
+  public long[] iEU;
+  public long[] iEV;
   
-  public bq(a parama)
+  static
   {
-    this(parama, null);
+    AppMethodBeat.i(42979);
+    iEN = new ConcurrentLinkedQueue();
+    iEO = new long[] { 0L, 2000L, 5000L, 10000L, 30000L, 60000L, 180000L, 300000L, 600000L, 1800000L, 3600000L };
+    iEP = new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    iEQ = new int[] { 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40 };
+    iER = new int[] { 160, 161, 162, 163, 164, 165, 166, 167, 168, 169, 170 };
+    iES = new int[] { 190, 191, 192, 193, 194, 195, 196, 197, 198, 199, 200 };
+    AppMethodBeat.o(42979);
   }
   
-  public bq(a parama, String paramString)
+  private bq()
   {
-    AppMethodBeat.i(132255);
-    ae.i("MicroMsg.NetSceneLocalProxy", "init LocalProxy task:%s [%s] ", new Object[] { paramString, bu.fpN() });
-    this.hKt = parama;
-    this.hKu = paramString;
-    AppMethodBeat.o(132255);
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(132256);
-    prepareDispatcher(parame);
-    this.callback = paramf;
-    this.cBp = bu.HQ();
-    g.ajU().aw(new Runnable()
+    AppMethodBeat.i(42978);
+    Object localObject = (String)g.aAh().azQ().get(ar.a.OnB, "0,0,0,0,0,0,0,0,0,0,0,0");
+    this.iEU = new long[12];
+    localObject = ((String)localObject).split(",");
+    int i = 0;
+    if (localObject.length < 12) {}
+    for (int j = localObject.length;; j = 12)
     {
-      public final void run()
-      {
-        AppMethodBeat.i(132253);
-        bq.this.onGYNetEnd(0, 0, 0, null, null, null);
-        AppMethodBeat.o(132253);
+      if (i >= j) {
+        break label93;
       }
-      
-      public final String toString()
-      {
-        AppMethodBeat.i(132254);
-        String str = super.toString() + "|doScene";
-        AppMethodBeat.o(132254);
-        return str;
-      }
-    });
-    AppMethodBeat.o(132256);
-    return 0;
-  }
-  
-  public final int getType()
-  {
-    return 0;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(132257);
-    if (this.hKt != null)
-    {
-      ae.d("MicroMsg.NetSceneLocalProxy", "local proxy [%s] end, cost=%d", new Object[] { this.hKu, Long.valueOf(bu.aO(this.cBp)) });
-      this.hKt.a(super.dispatcher());
+      this.iEU[i] = Util.getLong(localObject[i], 0L);
+      i += 1;
+      break;
     }
-    this.callback.onSceneEnd(0, 0, null, this);
-    AppMethodBeat.o(132257);
+    label93:
+    localObject = (String)g.aAh().azQ().get(ar.a.OnC, "0,0,0,0,0,0,0,0,0,0,0,0");
+    this.iEV = new long[12];
+    localObject = ((String)localObject).split(",");
+    i = k;
+    if (localObject.length < 12) {}
+    for (j = localObject.length;; j = 12)
+    {
+      if (i >= j) {
+        break label175;
+      }
+      this.iEV[i] = Util.getLong(localObject[i], 0L);
+      i += 1;
+      break;
+    }
+    label175:
+    AppMethodBeat.o(42978);
   }
   
-  public static abstract interface a
+  public static bq aVU()
   {
-    public abstract void a(e parame);
+    AppMethodBeat.i(42977);
+    if (iET == null) {
+      iET = new bq();
+    }
+    bq localbq = iET;
+    AppMethodBeat.o(42977);
+    return localbq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.bq
  * JD-Core Version:    0.7.0.1
  */

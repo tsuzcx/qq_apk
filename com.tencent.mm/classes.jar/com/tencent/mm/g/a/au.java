@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.protocal.protobuf.sp;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class au
-  extends b
+  extends IEvent
 {
-  public a dmH;
+  public a dDQ;
   
   public au()
   {
@@ -16,17 +16,16 @@ public final class au
   
   private au(byte paramByte)
   {
-    AppMethodBeat.i(115969);
-    this.dmH = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(199082);
+    this.dDQ = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(115969);
+    AppMethodBeat.o(199082);
   }
   
   public static final class a
   {
-    public Activity activity;
-    public String dmI;
+    public sp dDR;
   }
 }
 

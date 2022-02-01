@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.shake.d.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class o
-  extends j<n>
+  extends MAutoStorage<n>
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(28349);
     INDEX_CREATE = new String[0];
-    SQL_CREATE = new String[] { j.getCreateSQLs(n.info, "shaketvhistory") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(n.info, "shaketvhistory") };
     AppMethodBeat.o(28349);
   }
   
-  public o(e parame)
+  public o(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, n.info, "shaketvhistory", SQL_CREATE);
-    this.db = parame;
+    super(paramISQLiteDatabase, n.info, "shaketvhistory", SQL_CREATE);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final Cursor dSQ()
+  public final Cursor eUR()
   {
     AppMethodBeat.i(28348);
     Object localObject = new StringBuilder();
@@ -39,7 +39,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.d.a.o
  * JD-Core Version:    0.7.0.1
  */

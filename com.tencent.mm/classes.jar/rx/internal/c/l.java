@@ -7,31 +7,31 @@ import rx.g.a;
 final class l
   implements a
 {
-  private final a OwZ;
-  private final g.a Oxa;
-  private final long tEQ;
+  private final a UmN;
+  private final g.a UmO;
+  private final long wVP;
   
   public l(a parama, g.a parama1, long paramLong)
   {
-    this.OwZ = parama;
-    this.Oxa = parama1;
-    this.tEQ = paramLong;
+    this.UmN = parama;
+    this.UmO = parama1;
+    this.wVP = paramLong;
   }
   
   public final void call()
   {
     AppMethodBeat.i(90400);
-    if (this.Oxa.gDt())
+    if (this.UmO.hQB())
     {
       AppMethodBeat.o(90400);
       return;
     }
-    long l = this.tEQ - this.Oxa.now();
+    long l = this.wVP - this.UmO.now();
     if (l > 0L) {}
     try
     {
       Thread.sleep(l);
-      if (this.Oxa.gDt())
+      if (this.UmO.hQB())
       {
         AppMethodBeat.o(90400);
         return;
@@ -44,7 +44,7 @@ final class l
       AppMethodBeat.o(90400);
       throw localRuntimeException;
     }
-    this.OwZ.call();
+    this.UmN.call();
     AppMethodBeat.o(90400);
   }
 }

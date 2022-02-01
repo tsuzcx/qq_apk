@@ -2,43 +2,43 @@ package com.tencent.mm.plugin.backup.b;
 
 public final class e
 {
-  public int nye = -100;
-  public int nyf;
-  public int nyg;
-  public int nyh;
-  public long nyi;
-  public long nyj;
-  public long nyk;
-  public long nyl;
-  public long nym;
-  public long nyn;
-  public long nyo;
-  public long nyp;
+  public int oJc = -100;
+  public int oJd;
+  public int oJe;
+  public int oJf;
+  public long oJg;
+  public long oJh;
+  public long oJi;
+  public long oJj;
+  public long oJk;
+  public long oJl;
+  public long oJm;
+  public long oJn;
   
-  public final void R(int paramInt1, int paramInt2, int paramInt3)
+  public final void S(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.nye = paramInt1;
-    this.nyf = paramInt2;
-    this.nyg = paramInt3;
+    this.oJc = paramInt1;
+    this.oJd = paramInt2;
+    this.oJe = paramInt3;
   }
   
   public final void a(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, long paramLong3, long paramLong4)
   {
-    this.nye = paramInt1;
-    this.nyf = paramInt2;
-    this.nyg = paramInt3;
-    this.nyi = paramLong1;
-    this.nyl = paramLong2;
-    this.nyj = paramLong3;
-    this.nyk = paramLong4;
+    this.oJc = paramInt1;
+    this.oJd = paramInt2;
+    this.oJe = paramInt3;
+    this.oJg = paramLong1;
+    this.oJj = paramLong2;
+    this.oJh = paramLong3;
+    this.oJi = paramLong4;
   }
   
-  public final int bIe()
+  public final int ceV()
   {
-    if (this.nyl == 0L) {
+    if (this.oJj == 0L) {
       return 1;
     }
-    double d = this.nyi * 100L / this.nyl;
+    double d = this.oJg * 100L / this.oJj;
     if (d <= 5.0D) {}
     for (d *= 4.0D;; d = (d - 5.0D) * 80.0D / 95.0D + 20.0D) {
       return (int)d;
@@ -47,7 +47,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.b.e
  * JD-Core Version:    0.7.0.1
  */

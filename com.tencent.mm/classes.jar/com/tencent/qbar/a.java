@@ -8,14 +8,14 @@ import java.util.List;
 
 public class a
 {
-  protected int MgS;
-  protected QbarNative MgT;
+  protected int RJt;
+  protected QbarNative RJu;
   
   public a()
   {
     AppMethodBeat.i(88393);
-    this.MgS = -1;
-    this.MgT = new QbarNative();
+    this.RJt = -1;
+    this.RJu = new QbarNative();
     AppMethodBeat.o(88393);
   }
   
@@ -35,24 +35,7 @@ public class a
     return str;
   }
   
-  public int H(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(88397);
-    try
-    {
-      if (this.MgS < 0) {
-        return -1;
-      }
-      paramInt1 = this.MgT.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.MgS);
-      return paramInt1;
-    }
-    finally
-    {
-      AppMethodBeat.o(88397);
-    }
-  }
-  
-  public final int J(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
+  public final int F(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
   {
     int k = 0;
     AppMethodBeat.i(88401);
@@ -62,7 +45,7 @@ public class a
       int j;
       try
       {
-        if (this.MgS < 0) {
+        if (this.RJt < 0) {
           return 0;
         }
         QbarNative.QBarCodeDetectInfo[] arrayOfQBarCodeDetectInfo = new QbarNative.QBarCodeDetectInfo[3];
@@ -77,7 +60,7 @@ public class a
         }
         paramList.clear();
         paramList1.clear();
-        this.MgT.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.MgS);
+        this.RJu.GetCodeDetectInfo(arrayOfQBarCodeDetectInfo, arrayOfQBarPoint, this.RJt);
         i = 0;
         j = k;
         if (i < 3)
@@ -113,16 +96,33 @@ public class a
     }
   }
   
+  public int S(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(88397);
+    try
+    {
+      if (this.RJt < 0) {
+        return -1;
+      }
+      paramInt1 = this.RJu.ScanImage(paramArrayOfByte, paramInt1, paramInt2, this.RJt);
+      return paramInt1;
+    }
+    finally
+    {
+      AppMethodBeat.o(88397);
+    }
+  }
+  
   public final int a(int paramInt, String paramString1, String paramString2, QbarNative.QbarAiModelParam paramQbarAiModelParam)
   {
     AppMethodBeat.i(88395);
     try
     {
-      if (this.MgS < 0) {
-        this.MgS = this.MgT.Init(1, paramInt, paramString1, paramString2, paramQbarAiModelParam);
+      if (this.RJt < 0) {
+        this.RJt = this.RJu.Init(1, paramInt, paramString1, paramString2, paramQbarAiModelParam);
       }
-      System.out.println("qbarId:" + this.MgS);
-      if (this.MgS < 0) {
+      System.out.println("qbarId:" + this.RJt);
+      if (this.RJt < 0) {
         return -1;
       }
       return 0;
@@ -133,7 +133,7 @@ public class a
     }
   }
   
-  public final List<a> fXQ()
+  public final List<a> hkc()
   {
     int j = 0;
     AppMethodBeat.i(88399);
@@ -142,7 +142,7 @@ public class a
       int i;
       try
       {
-        if (this.MgS < 0) {
+        if (this.RJt < 0) {
           return null;
         }
         QbarNative.QBarResultJNI[] arrayOfQBarResultJNI = new QbarNative.QBarResultJNI[3];
@@ -156,7 +156,7 @@ public class a
           i += 1;
           continue;
         }
-        this.MgT.GetResults(arrayOfQBarResultJNI, this.MgS);
+        this.RJu.GetResults(arrayOfQBarResultJNI, this.RJt);
         ArrayList localArrayList = new ArrayList();
         i = j;
         if (i < 3)
@@ -198,16 +198,16 @@ public class a
     }
   }
   
-  public final QbarNative.QBarZoomInfo fXR()
+  public final QbarNative.QBarZoomInfo hkd()
   {
     AppMethodBeat.i(88400);
     try
     {
-      if (this.MgS < 0) {
+      if (this.RJt < 0) {
         return null;
       }
       QbarNative.QBarZoomInfo localQBarZoomInfo = new QbarNative.QBarZoomInfo();
-      this.MgT.GetZoomInfo(localQBarZoomInfo, this.MgS);
+      this.RJu.GetZoomInfo(localQBarZoomInfo, this.RJt);
       return localQBarZoomInfo;
     }
     finally
@@ -221,10 +221,10 @@ public class a
     AppMethodBeat.i(88396);
     try
     {
-      if (this.MgS < 0) {
+      if (this.RJt < 0) {
         return -1;
       }
-      paramInt = this.MgT.SetReaders(paramArrayOfInt, paramInt, this.MgS);
+      paramInt = this.RJu.SetReaders(paramArrayOfInt, paramInt, this.RJt);
       return paramInt;
     }
     finally
@@ -238,11 +238,11 @@ public class a
     AppMethodBeat.i(88398);
     try
     {
-      if (this.MgS < 0) {
+      if (this.RJt < 0) {
         return 0;
       }
-      int i = this.MgT.Release(this.MgS);
-      this.MgS = -1;
+      int i = this.RJu.Release(this.RJt);
+      this.RJt = -1;
       return i;
     }
     finally
@@ -263,7 +263,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.qbar.a
  * JD-Core Version:    0.7.0.1
  */

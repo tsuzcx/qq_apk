@@ -2,63 +2,95 @@ package com.tencent.mm.wlogcat;
 
 import android.os.Handler;
 import android.os.HandlerThread;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.mars.xlog.Xlog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.wlogcat.b.a.3;
+import com.tencent.mm.protocal.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.wlogcat.a.a;
+import com.tencent.mm.wlogcat.b.b.3;
+import com.tencent.mm.wlogcat.b.c;
 import com.tencent.mm.xlog.app.XLogSetup;
 
 public class PluginLogcat
   extends f
-  implements com.tencent.mm.wlogcat.a.a
+  implements a
 {
   public void configure(com.tencent.mm.kernel.b.g paramg) {}
   
   public void dependency()
   {
-    AppMethodBeat.i(218625);
+    AppMethodBeat.i(224049);
     dependsOnRoot();
-    AppMethodBeat.o(218625);
+    AppMethodBeat.o(224049);
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
-    AppMethodBeat.i(218626);
-    paramg = com.tencent.mm.wlogcat.b.a.fWH();
-    if (ae.fon().getClass() != Xlog.class)
-    {
-      ae.e("MicroMsg.LogcatCatcher", "impl is not xlog!");
-      AppMethodBeat.o(218626);
-      return;
+    AppMethodBeat.i(224050);
+    paramg = c.hil();
+    if (Log.getImpl().getClass() != Xlog.class) {
+      Log.e("MicroMsg.StartupLogcatCatcher", "impl is not xlog!");
     }
-    ae.i("MicroMsg.LogcatCatcher", "Log.consoleLogOpen:" + XLogSetup.isLogcatOpen);
-    if (!XLogSetup.isLogcatOpen.booleanValue())
+    int i;
+    for (;;)
     {
-      int i = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qwg, 0);
-      ae.i("MicroMsg.LogcatCatcher", "is need work :".concat(String.valueOf(i)));
-      if (i != 0)
+      paramg = com.tencent.mm.wlogcat.b.b.hii();
+      if (Log.getImpl().getClass() == Xlog.class) {
+        break;
+      }
+      Log.e("MicroMsg.LogcatCatcher", "impl is not xlog!");
+      AppMethodBeat.o(224050);
+      return;
+      Log.i("MicroMsg.StartupLogcatCatcher", "Log.consoleLogOpen:" + XLogSetup.isLogcatOpen);
+      if (!XLogSetup.isLogcatOpen.booleanValue())
       {
-        paramg.LXP.start();
-        paramg.LXQ = new Handler(paramg.LXP.getLooper());
-        paramg.LXQ.post(new a.3(paramg));
+        i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rNP, 0);
+        Log.i("MicroMsg.StartupLogcatCatcher", "is need work :".concat(String.valueOf(i)));
+        if (i != 0) {
+          h.RTc.b(paramg.RwD, "LogcatCatcher");
+        }
       }
     }
-    AppMethodBeat.o(218626);
+    Log.i("MicroMsg.LogcatCatcher", "Log.consoleLogOpen:" + XLogSetup.isLogcatOpen);
+    if (!XLogSetup.isLogcatOpen.booleanValue())
+    {
+      i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rNO, 0);
+      Log.i("MicroMsg.LogcatCatcher", "work clicfg_logcat:%d", new Object[] { Integer.valueOf(i) });
+      if ((i == 1) && (!d.KyS))
+      {
+        int j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rNR, 0);
+        if ((!d.KyR) && (j == 0))
+        {
+          Log.i("MicroMsg.LogcatCatcher", "id alpha false");
+          AppMethodBeat.o(224050);
+          return;
+        }
+        Log.i("MicroMsg.LogcatCatcher", "is need work :".concat(String.valueOf(i)));
+        if (i != 0)
+        {
+          paramg.RwM.start();
+          paramg.RwN = new Handler(paramg.RwM.getLooper());
+          paramg.RwN.post(new b.3(paramg));
+        }
+      }
+    }
+    AppMethodBeat.o(224050);
   }
   
   public void installed()
   {
-    AppMethodBeat.i(218624);
-    alias(com.tencent.mm.wlogcat.a.a.class);
-    AppMethodBeat.o(218624);
+    AppMethodBeat.i(224048);
+    alias(a.class);
+    AppMethodBeat.o(224048);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wlogcat.PluginLogcat
  * JD-Core Version:    0.7.0.1
  */

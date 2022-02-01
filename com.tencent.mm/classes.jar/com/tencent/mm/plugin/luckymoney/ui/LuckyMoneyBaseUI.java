@@ -8,8 +8,8 @@ import android.support.v7.app.ActionBar;
 import android.view.KeyEvent;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.plugin.luckymoney.model.u;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.plugin.luckymoney.model.z;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.c.i;
@@ -24,38 +24,38 @@ public abstract class LuckyMoneyBaseUI
   implements i, f
 {
   private LinkedList<k> callbacks = new LinkedList();
-  public u vGY = null;
-  protected boolean vGZ = true;
+  public z zbX = null;
+  protected boolean zbY = true;
   
   public final void addSceneEndListener(int paramInt)
   {
-    this.vGY.addSceneEndListener(paramInt);
+    this.zbX.addSceneEndListener(paramInt);
   }
   
-  public final void dmd()
+  public final void doSceneProgress(q paramq)
+  {
+    this.zbX.doSceneProgress(paramq, true);
+  }
+  
+  public final void doSceneProgress(q paramq, boolean paramBoolean)
+  {
+    this.zbX.doSceneProgress(paramq, paramBoolean);
+  }
+  
+  public final void efZ()
   {
     if (getSupportActionBar() != null)
     {
       getSupportActionBar().show();
-      setActionbarColor(getResources().getColor(2131100568));
+      setActionbarColor(getResources().getColor(2131100736));
     }
   }
   
-  protected final void dme()
+  protected final void ega()
   {
     if (getSupportActionBar() != null) {
       getSupportActionBar().hide();
     }
-  }
-  
-  public final void doSceneProgress(n paramn)
-  {
-    this.vGY.doSceneProgress(paramn, true);
-  }
-  
-  public final void doSceneProgress(n paramn, boolean paramBoolean)
-  {
-    this.vGY.doSceneProgress(paramn, paramBoolean);
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -63,7 +63,7 @@ public abstract class LuckyMoneyBaseUI
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     paramIntent = ((List)this.callbacks.clone()).iterator();
     while (paramIntent.hasNext()) {
-      ((k)paramIntent.next()).fVO();
+      ((k)paramIntent.next()).hhl();
     }
   }
   
@@ -71,22 +71,27 @@ public abstract class LuckyMoneyBaseUI
   {
     fixStatusbar(true);
     super.onCreate(paramBundle);
-    this.vGY = new u(this, this);
-    this.vGY.addSceneEndListener(1554);
-    this.vGY.addSceneEndListener(1575);
-    this.vGY.addSceneEndListener(1668);
-    this.vGY.addSceneEndListener(1581);
-    this.vGY.addSceneEndListener(1685);
-    this.vGY.addSceneEndListener(1585);
-    this.vGY.addSceneEndListener(1514);
-    this.vGY.addSceneEndListener(1682);
-    this.vGY.addSceneEndListener(1612);
-    this.vGY.addSceneEndListener(1643);
-    this.vGY.addSceneEndListener(1558);
-    this.vGY.addSceneEndListener(2715);
-    setActionbarColor(getResources().getColor(2131100568));
-    if (this.vGZ) {
-      setActionbarElementColor(getResources().getColor(2131100576));
+    this.zbX = new z(this, this);
+    this.zbX.addSceneEndListener(1554);
+    this.zbX.addSceneEndListener(1575);
+    this.zbX.addSceneEndListener(1668);
+    this.zbX.addSceneEndListener(1581);
+    this.zbX.addSceneEndListener(1685);
+    this.zbX.addSceneEndListener(1585);
+    this.zbX.addSceneEndListener(1514);
+    this.zbX.addSceneEndListener(1682);
+    this.zbX.addSceneEndListener(1612);
+    this.zbX.addSceneEndListener(1643);
+    this.zbX.addSceneEndListener(1558);
+    this.zbX.addSceneEndListener(2715);
+    this.zbX.addSceneEndListener(4605);
+    this.zbX.addSceneEndListener(4915);
+    this.zbX.addSceneEndListener(4536);
+    this.zbX.addSceneEndListener(5148);
+    this.zbX.addSceneEndListener(4395);
+    setActionbarColor(getResources().getColor(2131100736));
+    if (this.zbY) {
+      setActionbarElementColor(getResources().getColor(2131100744));
     }
     getLayoutId();
     paramBundle = ((List)this.callbacks.clone()).iterator();
@@ -97,18 +102,23 @@ public abstract class LuckyMoneyBaseUI
   
   public void onDestroy()
   {
-    this.vGY.removeSceneEndListener(1554);
-    this.vGY.removeSceneEndListener(1575);
-    this.vGY.removeSceneEndListener(1668);
-    this.vGY.removeSceneEndListener(1581);
-    this.vGY.removeSceneEndListener(1685);
-    this.vGY.removeSceneEndListener(1585);
-    this.vGY.removeSceneEndListener(1514);
-    this.vGY.removeSceneEndListener(1682);
-    this.vGY.removeSceneEndListener(1612);
-    this.vGY.removeSceneEndListener(1643);
-    this.vGY.removeSceneEndListener(1558);
-    this.vGY.removeSceneEndListener(2715);
+    this.zbX.removeSceneEndListener(1554);
+    this.zbX.removeSceneEndListener(1575);
+    this.zbX.removeSceneEndListener(1668);
+    this.zbX.removeSceneEndListener(1581);
+    this.zbX.removeSceneEndListener(1685);
+    this.zbX.removeSceneEndListener(1585);
+    this.zbX.removeSceneEndListener(1514);
+    this.zbX.removeSceneEndListener(1682);
+    this.zbX.removeSceneEndListener(1612);
+    this.zbX.removeSceneEndListener(1643);
+    this.zbX.removeSceneEndListener(1558);
+    this.zbX.removeSceneEndListener(2715);
+    this.zbX.removeSceneEndListener(4605);
+    this.zbX.removeSceneEndListener(4915);
+    this.zbX.removeSceneEndListener(4536);
+    this.zbX.removeSceneEndListener(5148);
+    this.zbX.removeSceneEndListener(4395);
     Iterator localIterator = ((List)this.callbacks.clone()).iterator();
     while (localIterator.hasNext()) {
       ((k)localIterator.next()).onDestroy();
@@ -121,8 +131,8 @@ public abstract class LuckyMoneyBaseUI
   {
     if (paramInt == 4)
     {
-      if ((this.vGY != null) && (this.vGY.isProcessing())) {
-        this.vGY.forceCancel();
+      if ((this.zbX != null) && (this.zbX.isProcessing())) {
+        this.zbX.forceCancel();
       }
       if ((getContentView().getVisibility() == 8) || (getContentView().getVisibility() == 4)) {
         finish();
@@ -131,16 +141,16 @@ public abstract class LuckyMoneyBaseUI
     return super.onKeyUp(paramInt, paramKeyEvent);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn, boolean paramBoolean)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq, boolean paramBoolean)
   {
-    if ((!onSceneEnd(paramInt1, paramInt2, paramString, paramn)) && ((paramInt1 != 0) || (paramInt2 != 0)))
+    if ((!onSceneEnd(paramInt1, paramInt2, paramString, paramq)) && ((paramInt1 != 0) || (paramInt2 != 0)))
     {
-      h.cm(this, paramString);
+      h.cD(this, paramString);
       finish();
     }
   }
   
-  public abstract boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn);
+  public abstract boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq);
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
@@ -157,12 +167,12 @@ public abstract class LuckyMoneyBaseUI
   
   public final void removeSceneEndListener(int paramInt)
   {
-    this.vGY.removeSceneEndListener(paramInt);
+    this.zbX.removeSceneEndListener(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBaseUI
  * JD-Core Version:    0.7.0.1
  */

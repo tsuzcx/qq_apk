@@ -15,7 +15,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.product.b.c;
 import com.tencent.mm.plugin.product.c.h;
 import com.tencent.mm.plugin.product.c.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -23,24 +23,24 @@ import java.util.Map;
 public final class i
   extends BaseAdapter
 {
+  private c BaP;
+  LinkedList<m> BbA;
+  AdapterView.OnItemClickListener BbB;
   private Context mContext;
-  LinkedList<m> xdY;
-  AdapterView.OnItemClickListener xdZ;
-  private c xdn;
   
   public i(Context paramContext)
   {
     AppMethodBeat.i(67026);
     this.mContext = paramContext;
-    com.tencent.mm.plugin.product.a.a.dCJ();
-    this.xdn = com.tencent.mm.plugin.product.a.a.dCK();
+    com.tencent.mm.plugin.product.a.a.eDb();
+    this.BaP = com.tencent.mm.plugin.product.a.a.eDc();
     AppMethodBeat.o(67026);
   }
   
-  private m Ni(int paramInt)
+  private m Uv(int paramInt)
   {
     AppMethodBeat.i(67028);
-    m localm = (m)this.xdY.get(paramInt);
+    m localm = (m)this.BbA.get(paramInt);
     AppMethodBeat.o(67028);
     return localm;
   }
@@ -48,9 +48,9 @@ public final class i
   public final int getCount()
   {
     AppMethodBeat.i(67027);
-    if (this.xdY != null)
+    if (this.BbA != null)
     {
-      int i = this.xdY.size();
+      int i = this.BbA.size();
       AppMethodBeat.o(67027);
       return i;
     }
@@ -66,7 +66,7 @@ public final class i
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(67029);
-    m localm = Ni(paramInt);
+    m localm = Uv(paramInt);
     Object localObject2;
     Object localObject1;
     label163:
@@ -75,26 +75,26 @@ public final class i
     if ((paramView == null) || (paramView.getTag() == null))
     {
       paramViewGroup = new a();
-      paramView = View.inflate(this.mContext, 2131495127, null);
-      paramViewGroup.xea = ((TextView)paramView.findViewById(2131302108));
-      paramViewGroup.xeb = ((MaxGridView)paramView.findViewById(2131302106));
-      paramViewGroup.xec = new j(this.mContext);
+      paramView = View.inflate(this.mContext, 2131495970, null);
+      paramViewGroup.BbC = ((TextView)paramView.findViewById(2131304447));
+      paramViewGroup.BbD = ((MaxGridView)paramView.findViewById(2131304445));
+      paramViewGroup.BbE = new j(this.mContext);
       paramView.setTag(paramViewGroup);
-      paramViewGroup.xea.setText(localm.xcD);
-      paramViewGroup.xeb.setOnItemClickListener(this.xdZ);
-      localObject2 = paramViewGroup.xec;
-      localObject1 = this.xdn;
-      Object localObject3 = localm.xcC;
-      if (!((c)localObject1).xbH.containsKey(localObject3)) {
+      paramViewGroup.BbC.setText(localm.Baf);
+      paramViewGroup.BbD.setOnItemClickListener(this.BbB);
+      localObject2 = paramViewGroup.BbE;
+      localObject1 = this.BaP;
+      Object localObject3 = localm.Bae;
+      if (!((c)localObject1).AZj.containsKey(localObject3)) {
         break label303;
       }
-      localObject1 = (String)((c)localObject1).xbH.get(localObject3);
-      ((j)localObject2).xee = localm;
-      ((j)localObject2).xef = ((String)localObject1);
+      localObject1 = (String)((c)localObject1).AZj.get(localObject3);
+      ((j)localObject2).BbG = localm;
+      ((j)localObject2).BbH = ((String)localObject1);
       localObject1 = this.mContext;
-      localObject3 = localm.xcE;
+      localObject3 = localm.Bag;
       i = ((Context)localObject1).getResources().getDisplayMetrics().widthPixels - com.tencent.mm.cb.a.fromDPToPix((Context)localObject1, 16) * 2;
-      localObject2 = ((TextView)((LayoutInflater)((Context)localObject1).getSystemService("layout_inflater")).inflate(2131495126, null)).getPaint();
+      localObject2 = ((TextView)((LayoutInflater)((Context)localObject1).getSystemService("layout_inflater")).inflate(2131495969, null)).getPaint();
       f1 = 0.0F;
       localObject3 = ((LinkedList)localObject3).iterator();
       label247:
@@ -133,10 +133,10 @@ public final class i
       }
       for (localObject1 = new Pair(Integer.valueOf(paramInt), Integer.valueOf(localObject2[(paramInt - 1)]));; localObject1 = new Pair(Integer.valueOf(1), Integer.valueOf(i)))
       {
-        ae.d("MicroMsg.MallProductImageAdapter", localm.xcD + " numColumns = " + localObject1);
-        paramViewGroup.xeb.setColumnWidth(((Integer)((Pair)localObject1).second).intValue());
-        paramViewGroup.xec.notifyDataSetChanged();
-        paramViewGroup.xeb.setAdapter(paramViewGroup.xec);
+        Log.d("MicroMsg.MallProductImageAdapter", localm.Baf + " numColumns = " + localObject1);
+        paramViewGroup.BbD.setColumnWidth(((Integer)((Pair)localObject1).second).intValue());
+        paramViewGroup.BbE.notifyDataSetChanged();
+        paramViewGroup.BbD.setAdapter(paramViewGroup.BbE);
         AppMethodBeat.o(67029);
         return paramView;
         paramInt -= 1;
@@ -147,16 +147,16 @@ public final class i
   
   final class a
   {
-    public TextView xea = null;
-    public MaxGridView xeb = null;
-    public j xec = null;
+    public TextView BbC = null;
+    public MaxGridView BbD = null;
+    public j BbE = null;
     
     a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.i
  * JD-Core Version:    0.7.0.1
  */

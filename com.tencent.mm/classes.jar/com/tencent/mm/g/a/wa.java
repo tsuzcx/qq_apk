@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class wa
-  extends b
+  extends IEvent
 {
-  public a dLE;
+  public a ech;
   
   public wa()
   {
@@ -15,16 +15,16 @@ public final class wa
   
   private wa(byte paramByte)
   {
-    AppMethodBeat.i(19839);
-    this.dLE = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(125645);
+    this.ech = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19839);
+    AppMethodBeat.o(125645);
   }
   
   public static final class a
   {
-    public boolean dLF = true;
+    public long ecc = -1L;
   }
 }
 

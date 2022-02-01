@@ -12,7 +12,7 @@ public class b
   
   public static b a(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(192462);
+    AppMethodBeat.i(188268);
     b localb = null;
     if (paramJSONObject != null)
     {
@@ -22,7 +22,7 @@ public class b
       localb.c = paramJSONObject.optString("ext_params", "");
       localb.d = (1000L * paramJSONObject.optLong("expiration", 0L));
     }
-    AppMethodBeat.o(192462);
+    AppMethodBeat.o(188268);
     return localb;
   }
   
@@ -48,27 +48,27 @@ public class b
   
   public boolean e()
   {
-    AppMethodBeat.i(192464);
+    AppMethodBeat.i(188270);
     if (System.currentTimeMillis() > this.d)
     {
-      AppMethodBeat.o(192464);
+      AppMethodBeat.o(188270);
       return true;
     }
-    AppMethodBeat.o(192464);
+    AppMethodBeat.o(188270);
     return false;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(192463);
+    AppMethodBeat.i(188269);
     String str = "[id=" + this.a + ", cmd=" + this.b + ", extra='" + this.c + '\'' + ", expiration=" + a.a(this.d) + ']';
-    AppMethodBeat.o(192463);
+    AppMethodBeat.o(188269);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.b
  * JD-Core Version:    0.7.0.1
  */

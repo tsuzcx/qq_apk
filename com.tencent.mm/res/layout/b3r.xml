@@ -1,19 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/faj" android:background="@drawable/oc" android:paddingLeft="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/i9">
-        <CheckBox android:layout_gravity="center_vertical" android:id="@id/fa4" android:background="@drawable/a2r" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/ap" android:layout_height="@dimen/an" android:layout_marginRight="@dimen/c5" />
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/tm" android:layout_width="@dimen/at" android:layout_height="@dimen/at" android:layout_marginRight="@dimen/c5" />
-        <LinearLayout android:orientation="horizontal" android:background="@drawable/amv" android:paddingRight="@dimen/c5" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/js" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-                <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <com.tencent.mm.ui.base.EllipsizeTextView android:id="@id/gbv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{title}" android:singleLine="true" style="@style/m3" />
-                    <TextView android:id="@id/ga1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="{tip}" style="@style/m3" />
-                </LinearLayout>
-                <TextView android:textSize="@dimen/jv" android:id="@id/b_l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{desc}" android:singleLine="true" style="@style/m2" />
-            </LinearLayout>
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/e8d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/jn" android:maxEms="4" android:singleLine="true" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/fb3" android:background="@drawable/b6p" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:layout_marginLeft="@dimen/jn" android:layout_marginRight="@dimen/hd" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:id="@id/ezi" android:focusable="true" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="0.0dip" android:listSelector="@android:color/transparent" android:scrollingCache="false" android:transcriptMode="disabled" android:divider="@drawable/afb" android:dividerHeight="@dimen/bq" android:layout_weight="1.0" android:headerDividersEnabled="false" android:footerDividersEnabled="false" />
+        <com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyWishFooter android:id="@id/f05" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mm.ui.KeyboardLinearLayout>
+    <FrameLayout android:id="@id/f0w" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

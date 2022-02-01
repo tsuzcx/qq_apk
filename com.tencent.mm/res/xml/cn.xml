@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.voiceprint.ui.VoiceHeaderPreference android:key="settings_voiceprint_header" />
-    <PreferenceCategory />
-    <PreferenceCategory />
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="settings_voiceprint_title" android:summary="@string/fcj" android:title="@string/fci" />
-    <SummaryBelowPreference android:key="settings_voiceprint_create" android:summary="@string/fcg" android:title="@string/fcf" />
-    <Preference android:key="settings_voiceprint_reset" android:layout="@layout/aop" android:title="@string/fch" />
-    <Preference android:key="settings_voiceprint_unlock" android:layout="@layout/aop" android:title="@string/fck" />
-    <PreferenceCategory />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_specail_scene_sound" android:persistent="false" android:title="@string/gul" />
+    <CheckBoxPreference android:defaultValue="true" android:dependency="settings_new_msg_notification" android:key="settings_specail_scene_shake" android:layout="@layout/b_v" android:persistent="false" android:title="@string/gtt" />
+    <PreferenceSmallCategory />
+    <PreferenceSmallCategory />
+    <Preference android:key="room_openim_about" android:layout="@layout/b_7" android:title="@string/gum" />
 </PreferenceScreen>

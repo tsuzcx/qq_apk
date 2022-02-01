@@ -18,46 +18,47 @@ import android.view.animation.AccelerateInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.a.lk;
-import com.tencent.mm.g.a.zk;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.a.aar;
+import com.tencent.mm.g.a.ma;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.w;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.lang.reflect.Array;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class WearYoUI
   extends HellActivity
 {
-  private boolean DPA;
-  private Runnable DPB;
-  private BroadcastReceiver DPC;
-  private ImageView DPv;
-  private ImageView DPw;
-  private ImageView DPx;
-  private ObjectAnimator[][] DPy;
-  private c DPz;
-  private ImageView fQl;
-  private TextView fQm;
-  private c gIM;
-  private AtomicInteger mUr;
-  private Vibrator nQa;
+  private ImageView IyL;
+  private ImageView IyM;
+  private ImageView IyN;
+  private ObjectAnimator[][] IyO;
+  private IListener IyP;
+  private boolean IyQ;
+  private Runnable IyR;
+  private BroadcastReceiver IyS;
+  private ImageView gvv;
+  private TextView gvw;
+  private IListener hvF;
+  private AtomicInteger ohs;
+  private Vibrator paT;
   private String username;
   
   public WearYoUI()
   {
     AppMethodBeat.i(30146);
-    this.DPy = ((ObjectAnimator[][])Array.newInstance(ObjectAnimator.class, new int[] { 3, 3 }));
-    this.DPz = new c() {};
-    this.mUr = new AtomicInteger();
-    this.DPB = new Runnable()
+    this.IyO = ((ObjectAnimator[][])Array.newInstance(ObjectAnimator.class, new int[] { 3, 3 }));
+    this.IyP = new IListener() {};
+    this.ohs = new AtomicInteger();
+    this.IyR = new Runnable()
     {
       public final void run()
       {
@@ -71,7 +72,7 @@ public class WearYoUI
         AppMethodBeat.o(30141);
       }
     };
-    this.DPC = new BroadcastReceiver()
+    this.IyS = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
@@ -82,38 +83,38 @@ public class WearYoUI
         AppMethodBeat.o(30142);
       }
     };
-    this.gIM = new c() {};
+    this.hvF = new IListener() {};
     AppMethodBeat.o(30146);
   }
   
   private void a(int paramInt, ImageView paramImageView, long paramLong)
   {
     AppMethodBeat.i(30148);
-    this.DPy[paramInt][0] = ObjectAnimator.ofFloat(paramImageView, "scaleX", new float[] { 1.0F, 2.5F });
-    this.DPy[paramInt][0].setRepeatCount(-1);
-    this.DPy[paramInt][0].setStartDelay(paramLong);
-    this.DPy[paramInt][0].setDuration(3900L);
-    this.DPy[paramInt][0].start();
-    this.DPy[paramInt][1] = ObjectAnimator.ofFloat(paramImageView, "scaleY", new float[] { 1.0F, 2.5F });
-    this.DPy[paramInt][1].setRepeatCount(-1);
-    this.DPy[paramInt][1].setStartDelay(paramLong);
-    this.DPy[paramInt][1].setDuration(3900L);
-    this.DPy[paramInt][1].start();
-    this.DPy[paramInt][2] = ObjectAnimator.ofFloat(paramImageView, "alpha", new float[] { 1.0F, 0.0F });
-    this.DPy[paramInt][2].setRepeatCount(-1);
-    this.DPy[paramInt][2].setInterpolator(new AccelerateInterpolator());
-    this.DPy[paramInt][2].setStartDelay(paramLong);
-    this.DPy[paramInt][2].setDuration(3900L);
-    this.DPy[paramInt][2].start();
+    this.IyO[paramInt][0] = ObjectAnimator.ofFloat(paramImageView, "scaleX", new float[] { 1.0F, 2.5F });
+    this.IyO[paramInt][0].setRepeatCount(-1);
+    this.IyO[paramInt][0].setStartDelay(paramLong);
+    this.IyO[paramInt][0].setDuration(3900L);
+    this.IyO[paramInt][0].start();
+    this.IyO[paramInt][1] = ObjectAnimator.ofFloat(paramImageView, "scaleY", new float[] { 1.0F, 2.5F });
+    this.IyO[paramInt][1].setRepeatCount(-1);
+    this.IyO[paramInt][1].setStartDelay(paramLong);
+    this.IyO[paramInt][1].setDuration(3900L);
+    this.IyO[paramInt][1].start();
+    this.IyO[paramInt][2] = ObjectAnimator.ofFloat(paramImageView, "alpha", new float[] { 1.0F, 0.0F });
+    this.IyO[paramInt][2].setRepeatCount(-1);
+    this.IyO[paramInt][2].setInterpolator(new AccelerateInterpolator());
+    this.IyO[paramInt][2].setStartDelay(paramLong);
+    this.IyO[paramInt][2].setDuration(3900L);
+    this.IyO[paramInt][2].start();
     AppMethodBeat.o(30148);
   }
   
   public void onClickCheck(View paramView)
   {
     AppMethodBeat.i(30149);
-    ae.i("MicroMsg.Wear.WearYoUI", "onClickCheck %s", new Object[] { this.username });
+    Log.i("MicroMsg.Wear.WearYoUI", "onClickCheck %s", new Object[] { this.username });
     paramView = new com.tencent.mm.plugin.wear.model.d.b(this.username);
-    bc.ajj().a(paramView, 0);
+    bg.azz().a(paramView, 0);
     finish();
     AppMethodBeat.o(30149);
   }
@@ -121,7 +122,7 @@ public class WearYoUI
   public void onClickNoCheck(View paramView)
   {
     AppMethodBeat.i(30150);
-    ae.i("MicroMsg.Wear.WearYoUI", "onClickNoCheck %s", new Object[] { this.username });
+    Log.i("MicroMsg.Wear.WearYoUI", "onClickNoCheck %s", new Object[] { this.username });
     finish();
     AppMethodBeat.o(30150);
   }
@@ -131,46 +132,46 @@ public class WearYoUI
     AppMethodBeat.i(30147);
     super.onCreate(paramBundle);
     getWindow().addFlags(4718592);
-    setContentView(2131496070);
-    this.nQa = ((Vibrator)getSystemService("vibrator"));
+    setContentView(2131497051);
+    this.paT = ((Vibrator)getSystemService("vibrator"));
     this.username = getIntent().getStringExtra("key_talker");
-    this.fQl = ((ImageView)findViewById(2131297008));
-    this.fQm = ((TextView)findViewById(2131302867));
-    this.DPv = ((ImageView)findViewById(2131297018));
-    this.DPw = ((ImageView)findViewById(2131297019));
-    this.DPx = ((ImageView)findViewById(2131297020));
-    a.b.d(this.fQl, this.username);
-    this.fQm.setText(w.zP(this.username));
-    this.fQl.setOnClickListener(new View.OnClickListener()
+    this.gvv = ((ImageView)findViewById(2131297134));
+    this.gvw = ((TextView)findViewById(2131305440));
+    this.IyL = ((ImageView)findViewById(2131297147));
+    this.IyM = ((ImageView)findViewById(2131297148));
+    this.IyN = ((ImageView)findViewById(2131297149));
+    a.b.d(this.gvv, this.username);
+    this.gvw.setText(aa.getDisplayName(this.username));
+    this.gvv.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(30139);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wear/ui/WearYoUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-        com.tencent.mm.plugin.wear.model.a.eOf();
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wear/ui/WearYoUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+        com.tencent.mm.plugin.wear.model.a.fVO();
         paramAnonymousView = WearYoUI.a(WearYoUI.this);
-        ae.i("MicroMsg.wear.WearYoLogic", "click avatarIV %s", new Object[] { paramAnonymousView });
+        Log.i("MicroMsg.wear.WearYoLogic", "click avatarIV %s", new Object[] { paramAnonymousView });
         localObject = new Intent();
         ((Intent)localObject).putExtra("Main_User", paramAnonymousView);
         ((Intent)localObject).putExtra("From_fail_notify", true);
         ((Intent)localObject).addFlags(536870912);
         ((Intent)localObject).addFlags(67108864);
-        d.f(ak.getContext(), "com.tencent.mm.ui.LauncherUI", (Intent)localObject);
+        c.f(MMApplicationContext.getContext(), "com.tencent.mm.ui.LauncherUI", (Intent)localObject);
         WearYoUI.this.finish();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wear/ui/WearYoUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(30139);
       }
     });
-    com.tencent.mm.sdk.b.a.IvT.c(this.DPz);
-    com.tencent.mm.sdk.b.a.IvT.c(this.gIM);
-    a(0, this.DPv, 0L);
-    a(1, this.DPw, 1300L);
-    a(2, this.DPx, 2600L);
-    this.nQa.vibrate(200L);
-    registerReceiver(this.DPC, new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
-    overridePendingTransition(2130772020, 2130772021);
+    EventCenter.instance.addListener(this.IyP);
+    EventCenter.instance.addListener(this.hvF);
+    a(0, this.IyL, 0L);
+    a(1, this.IyM, 1300L);
+    a(2, this.IyN, 2600L);
+    this.paT.vibrate(200L);
+    registerReceiver(this.IyS, new IntentFilter("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
+    overridePendingTransition(2130772026, 2130772027);
     AppMethodBeat.o(30147);
   }
   
@@ -178,20 +179,20 @@ public class WearYoUI
   {
     AppMethodBeat.i(30151);
     int i = 0;
-    while (i < this.DPy.length)
+    while (i < this.IyO.length)
     {
       int j = 0;
-      while (j < this.DPy[i].length)
+      while (j < this.IyO[i].length)
       {
-        this.DPy[i][j].cancel();
+        this.IyO[i][j].cancel();
         j += 1;
       }
       i += 1;
     }
-    unregisterReceiver(this.DPC);
-    com.tencent.mm.sdk.b.a.IvT.d(this.gIM);
-    com.tencent.mm.sdk.b.a.IvT.d(this.DPz);
-    com.tencent.mm.plugin.wear.model.a.eOf().eOy();
+    unregisterReceiver(this.IyS);
+    EventCenter.instance.removeListener(this.hvF);
+    EventCenter.instance.removeListener(this.IyP);
+    com.tencent.mm.plugin.wear.model.a.fVO().fWh();
     super.onDestroy();
     AppMethodBeat.o(30151);
   }
@@ -205,11 +206,11 @@ public class WearYoUI
   final class a
     implements Animator.AnimatorListener
   {
-    private int kyd = 1;
+    private int lCq = 1;
     
     public a(int paramInt)
     {
-      this.kyd = paramInt;
+      this.lCq = paramInt;
     }
     
     public final void onAnimationCancel(Animator paramAnimator)
@@ -222,13 +223,13 @@ public class WearYoUI
     public final void onAnimationEnd(Animator paramAnimator)
     {
       AppMethodBeat.i(30144);
-      if (this.kyd == 2)
+      if (this.lCq == 2)
       {
-        ae.v("MicroMsg.Wear.WearYoUI", "onAnimationEnd count: %d", new Object[] { Integer.valueOf(WearYoUI.e(WearYoUI.this).get()) });
+        Log.v("MicroMsg.Wear.WearYoUI", "onAnimationEnd count: %d", new Object[] { Integer.valueOf(WearYoUI.e(WearYoUI.this).get()) });
         if (WearYoUI.e(WearYoUI.this).get() > 0)
         {
           WearYoUI.e(WearYoUI.this).decrementAndGet();
-          ar.o(WearYoUI.f(WearYoUI.this), 1000L);
+          MMHandlerThread.postToMainThreadDelayed(WearYoUI.f(WearYoUI.this), 1000L);
           AppMethodBeat.o(30144);
           return;
         }
@@ -237,7 +238,7 @@ public class WearYoUI
         AppMethodBeat.o(30144);
         return;
       }
-      if (this.kyd == 1)
+      if (this.lCq == 1)
       {
         WearYoUI.d(WearYoUI.this).animate().scaleX(1.0F);
         WearYoUI.d(WearYoUI.this).animate().scaleY(1.0F);
@@ -255,7 +256,7 @@ public class WearYoUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.ui.WearYoUI
  * JD-Core Version:    0.7.0.1
  */

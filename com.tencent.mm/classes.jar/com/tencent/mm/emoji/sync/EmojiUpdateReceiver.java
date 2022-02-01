@@ -4,23 +4,23 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.i;
-import com.tencent.mm.g.a.qp;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.emoji.b.j;
+import com.tencent.mm.g.a.rj;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class EmojiUpdateReceiver
   extends BroadcastReceiver
 {
   public static String ACTION = "com.tencent.mm.Emoji_Update";
-  public static String gsc = "type";
-  public static String gsd = "update_all_custom_emoji";
-  public static String gse = "update_download_custom_emoji";
-  public static String gsf = "update_store_emoji";
-  public static String gsg = "update_group_info";
-  public static String gsh = "update_capture_emoji";
-  public static String gsi = "update_emoji_download";
-  public static String gsj = "update_sticker_download";
+  public static String KEY_TYPE = "type";
+  public static String hdn = "update_all_custom_emoji";
+  public static String hdo = "update_download_custom_emoji";
+  public static String hdp = "update_store_emoji";
+  public static String hdq = "update_group_info";
+  public static String hdr = "update_capture_emoji";
+  public static String hds = "update_emoji_download";
+  public static String hdt = "update_sticker_download";
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
@@ -28,61 +28,61 @@ public class EmojiUpdateReceiver
     String str = paramIntent.getAction();
     if (ACTION.equals(str))
     {
-      paramContext = paramIntent.getStringExtra(gsc);
-      ae.i("MicroMsg.EmojiUpdateReceiver", "receive %s, %s", new Object[] { str, paramContext });
-      if (gsd.equals(paramContext))
+      paramContext = paramIntent.getStringExtra(KEY_TYPE);
+      Log.i("MicroMsg.EmojiUpdateReceiver", "receive %s, %s", new Object[] { str, paramContext });
+      if (hdn.equals(paramContext))
       {
-        i.aeX().dl(false);
-        a.IvT.l(new qp());
+        j.auL().dV(false);
+        EventCenter.instance.publish(new rj());
         AppMethodBeat.o(104486);
         return;
       }
-      if (gse.equals(paramContext))
+      if (hdo.equals(paramContext))
       {
-        i.aeX().dm(false);
-        a.IvT.l(new qp());
+        j.auL().dW(false);
+        EventCenter.instance.publish(new rj());
         AppMethodBeat.o(104486);
         return;
       }
-      if (gsf.equals(paramContext))
+      if (hdp.equals(paramContext))
       {
-        i.aeX().gmq = true;
-        a.IvT.l(new qp());
+        j.auL().gXh = true;
+        EventCenter.instance.publish(new rj());
         AppMethodBeat.o(104486);
         return;
       }
-      if (gsg.equals(paramContext))
+      if (hdq.equals(paramContext))
       {
-        i.aeX().dn(false);
-        a.IvT.l(new qp());
+        j.auL().dX(false);
+        EventCenter.instance.publish(new rj());
         AppMethodBeat.o(104486);
         return;
       }
-      if (gsh.equals(paramContext))
+      if (hdr.equals(paramContext))
       {
-        i.aeX().jdMethod_do(false);
-        a.IvT.l(new qp());
+        j.auL().dY(false);
+        EventCenter.instance.publish(new rj());
         AppMethodBeat.o(104486);
         return;
       }
       boolean bool;
-      if (gsi.equals(paramContext))
+      if (hds.equals(paramContext))
       {
         str = paramIntent.getStringExtra("md5");
         bool = paramIntent.getBooleanExtra("result", false);
-        ae.i("MicroMsg.EmojiUpdateReceiver", "onReceive: %s, %s, %s", new Object[] { paramContext, str, Boolean.valueOf(bool) });
-        paramContext = com.tencent.mm.emoji.loader.e.gkR;
+        Log.i("MicroMsg.EmojiUpdateReceiver", "onReceive: %s, %s, %s", new Object[] { paramContext, str, Boolean.valueOf(bool) });
+        paramContext = com.tencent.mm.emoji.loader.e.gVM;
         com.tencent.mm.emoji.loader.e.s(str, bool);
         AppMethodBeat.o(104486);
         return;
       }
-      if (gsj.equals(paramContext))
+      if (hdt.equals(paramContext))
       {
         paramContext = paramIntent.getStringExtra("task_key");
         bool = paramIntent.getBooleanExtra("result", false);
-        ae.i("MicroMsg.EmojiUpdateReceiver", "sticker download %s, %s", new Object[] { paramContext, Boolean.valueOf(bool) });
-        paramIntent = com.tencent.mm.sticker.loader.e.IGU;
-        com.tencent.mm.sticker.loader.e.cM(paramContext, bool);
+        Log.i("MicroMsg.EmojiUpdateReceiver", "sticker download %s, %s", new Object[] { paramContext, Boolean.valueOf(bool) });
+        paramIntent = com.tencent.mm.sticker.loader.e.NNN;
+        com.tencent.mm.sticker.loader.e.dh(paramContext, bool);
       }
     }
     AppMethodBeat.o(104486);
@@ -90,7 +90,7 @@ public class EmojiUpdateReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.sync.EmojiUpdateReceiver
  * JD-Core Version:    0.7.0.1
  */

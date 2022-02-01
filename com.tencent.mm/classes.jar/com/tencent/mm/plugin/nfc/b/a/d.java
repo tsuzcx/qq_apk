@@ -11,7 +11,7 @@ public abstract interface d
   
   public abstract boolean connect();
   
-  public abstract boolean dxP();
+  public abstract boolean exx();
   
   public abstract boolean isConnected();
 }

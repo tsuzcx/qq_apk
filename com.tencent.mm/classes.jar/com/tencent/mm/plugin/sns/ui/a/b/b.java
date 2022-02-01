@@ -1,53 +1,53 @@
 package com.tencent.mm.plugin.sns.ui.a.b;
 
 import android.content.Context;
-import com.tencent.mm.plugin.sns.storage.p;
-import com.tencent.mm.plugin.sns.ui.bh;
-import com.tencent.mm.plugin.sns.ui.bi;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.ui.bk;
+import com.tencent.mm.plugin.sns.ui.bl;
 
 public abstract class b
-  extends com.tencent.mm.vending.a.b<bi, p>
+  extends com.tencent.mm.vending.a.b<bl, SnsInfo>
 {
-  public b(p paramp)
+  public b(SnsInfo paramSnsInfo)
   {
-    super(paramp);
+    super(paramSnsInfo);
   }
   
-  public abstract String AQ(long paramLong);
+  public abstract String JV(long paramLong);
   
-  public abstract String F(long paramLong, String paramString);
+  public abstract String L(long paramLong, String paramString);
   
-  public abstract void a(Context paramContext, bh parambh, String paramString);
+  public abstract void a(Context paramContext, bk parambk, String paramString);
   
-  public abstract void aCm(String paramString);
+  public abstract void aRi(String paramString);
   
-  public abstract void aCn(String paramString);
+  public abstract void aRj(String paramString);
   
-  public abstract void aCo(String paramString);
+  public abstract void aRk(String paramString);
   
-  public abstract void aCp(String paramString);
+  public abstract void aRl(String paramString);
   
-  public abstract void aCq(String paramString);
+  public abstract void aRm(String paramString);
   
-  public abstract void ahx();
+  public abstract void axJ();
   
-  public abstract void ege();
+  public abstract void fiE();
   
-  public abstract String ehB();
+  public abstract String fkd();
   
-  public abstract String ehC();
+  public abstract String fke();
   
-  public abstract String ehD();
+  public abstract String fkf();
   
-  public abstract String ehE();
+  public abstract String fkg();
   
-  public abstract String ehF();
+  public abstract String fkh();
   
-  public abstract void sh(boolean paramBoolean);
+  public abstract void vD(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.a.b.b
  * JD-Core Version:    0.7.0.1
  */

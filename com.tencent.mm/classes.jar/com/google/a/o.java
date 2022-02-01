@@ -1,26 +1,9 @@
 package com.google.a;
 
-public class o
-  extends RuntimeException
-{
-  public o(String paramString)
-  {
-    super(paramString);
-  }
-  
-  public o(String paramString, Throwable paramThrowable)
-  {
-    super(paramString, paramThrowable);
-  }
-  
-  public o(Throwable paramThrowable)
-  {
-    super(paramThrowable);
-  }
-}
+public abstract class o<ContainingType extends aw, Type> {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.google.a.o
  * JD-Core Version:    0.7.0.1
  */

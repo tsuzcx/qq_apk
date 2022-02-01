@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/o8" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/gob" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <com.tencent.mm.plugin.fav.ui.widget.FavVideoView android:id="@id/goc" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-        <include layout="@layout/a2f" />
-    </RelativeLayout>
+    <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2TabView android:id="@id/c24" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.emoji.ui.v2.EmojiStoreV2ViewPager android:id="@id/c23" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0" />
 </LinearLayout>

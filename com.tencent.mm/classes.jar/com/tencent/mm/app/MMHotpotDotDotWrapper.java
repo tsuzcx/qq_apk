@@ -8,8 +8,8 @@ import com.tencent.mm.booter.aa;
 import com.tencent.mm.booter.d;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.sdk.platformtools.b;
-import com.tencent.mm.vfs.u;
+import com.tencent.mm.sdk.platformtools.AndroidOSafety;
+import com.tencent.mm.vfs.y;
 import com.tencent.tinker.entry.ApplicationLifeCycle;
 import com.tencent.tinker.entry.ApplicationLike;
 
@@ -25,86 +25,86 @@ public class MMHotpotDotDotWrapper
   
   public MMHotpotDotDotWrapper(ApplicationLike paramApplicationLike, String paramString)
   {
-    AppMethodBeat.i(224059);
+    AppMethodBeat.i(257904);
     this.mProcessInitTimestamp = System.currentTimeMillis();
     this.profile = null;
     this.mApp = paramApplicationLike.getApplication();
     this.mAppLike = paramApplicationLike;
     this.mCurrentProcessName = paramString;
-    AppMethodBeat.o(224059);
+    AppMethodBeat.o(257904);
   }
   
   public void onBaseContextAttached(Context paramContext)
   {
-    AppMethodBeat.i(224060);
-    b.a(paramContext.getApplicationInfo());
+    AppMethodBeat.i(257905);
+    AndroidOSafety.replaceTargetVersion(paramContext.getApplicationInfo());
     this.profile = new h(this.mCurrentProcessName, this.mApp, this.mAppLike);
-    this.profile.gGB.gGC = this.mProcessInitTimestamp;
-    u.g(this.profile);
+    this.profile.htp.htq = this.mProcessInitTimestamp;
+    y.f(this.profile);
     paramContext.getClassLoader();
-    j.vN("stlport_shared");
+    j.Ed("stlport_shared");
     paramContext.getClassLoader();
-    j.vN("c++_shared");
-    String str = com.tencent.mm.xlog.app.a.LYI;
+    j.Ed("c++_shared");
+    String str = com.tencent.mm.xlog.app.a.Rza;
     paramContext.getClassLoader();
-    j.vN(str);
-    this.profile.fHC = d.bL(this.profile.ca);
-    this.profile.fHC.ux("HOTPOT..");
-    com.tencent.e.g.a(this.profile.ca, new aa());
-    com.tencent.mm.splash.a.p(this.mApp);
-    com.tencent.mm.bu.a.a.fjN();
-    ai.a(this.profile, null);
-    AppMethodBeat.o(224060);
+    j.Ed(str);
+    this.profile.gmN = d.cg(this.profile.ca);
+    this.profile.gmN.CN("HOTPOT..");
+    com.tencent.f.g.a(this.profile.ca, new aa());
+    com.tencent.mm.splash.a.n(this.mApp);
+    com.tencent.mm.bu.a.a.gtp();
+    aj.a(this.profile, null);
+    AppMethodBeat.o(257905);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(224062);
+    AppMethodBeat.i(257907);
     if (this.profile != null) {
       this.profile.onConfigurationChanged(paramConfiguration);
     }
-    AppMethodBeat.o(224062);
+    AppMethodBeat.o(257907);
   }
   
   public void onCreate()
   {
-    AppMethodBeat.i(224061);
+    AppMethodBeat.i(257906);
     if (this.profile != null) {
       this.profile.onCreate();
     }
-    AppMethodBeat.o(224061);
+    AppMethodBeat.o(257906);
   }
   
   public void onLowMemory()
   {
-    AppMethodBeat.i(224063);
+    AppMethodBeat.i(257908);
     if (this.profile != null) {
       this.profile.onLowMemory();
     }
-    AppMethodBeat.o(224063);
+    AppMethodBeat.o(257908);
   }
   
   public void onTerminate()
   {
-    AppMethodBeat.i(224065);
+    AppMethodBeat.i(257910);
     if (this.profile != null) {
       this.profile.onTerminate();
     }
-    AppMethodBeat.o(224065);
+    AppMethodBeat.o(257910);
   }
   
   public void onTrimMemory(int paramInt)
   {
-    AppMethodBeat.i(224064);
+    AppMethodBeat.i(257909);
     if (this.profile != null) {
       this.profile.onTrimMemory(paramInt);
     }
-    AppMethodBeat.o(224064);
+    AppMethodBeat.o(257909);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.MMHotpotDotDotWrapper
  * JD-Core Version:    0.7.0.1
  */

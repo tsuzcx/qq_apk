@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class t
 {
-  public static final t bdS;
-  public final int bdT;
+  public static final t bdP;
+  public final int bdQ;
   
   static
   {
     AppMethodBeat.i(92514);
-    bdS = new t(0);
+    bdP = new t(0);
     AppMethodBeat.o(92514);
   }
   
   public t(int paramInt)
   {
-    this.bdT = paramInt;
+    this.bdQ = paramInt;
   }
   
   public final boolean equals(Object paramObject)
@@ -33,7 +33,7 @@ public final class t
       return false;
     }
     paramObject = (t)paramObject;
-    if (this.bdT == paramObject.bdT)
+    if (this.bdQ == paramObject.bdQ)
     {
       AppMethodBeat.o(92513);
       return true;
@@ -44,12 +44,12 @@ public final class t
   
   public final int hashCode()
   {
-    return this.bdT;
+    return this.bdQ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.t
  * JD-Core Version:    0.7.0.1
  */

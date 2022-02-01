@@ -1,20 +1,18 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.storage.br.b;
-
-@Deprecated
-public abstract interface as
+public abstract class as
 {
-  public abstract br.b MV();
+  public long iDp = 0L;
   
-  public abstract aj MW();
+  public abstract String getTag();
   
-  @Deprecated
-  public abstract at getNotification();
+  public abstract boolean rT(int paramInt);
+  
+  public abstract void transfer(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.as
  * JD-Core Version:    0.7.0.1
  */

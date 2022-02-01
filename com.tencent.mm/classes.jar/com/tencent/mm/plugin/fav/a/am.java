@@ -1,122 +1,122 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.akb;
-import com.tencent.mm.protocal.protobuf.caq;
-import com.tencent.mm.protocal.protobuf.car;
-import com.tencent.mm.protocal.protobuf.cas;
-import com.tencent.mm.protocal.protobuf.cat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.amp;
+import com.tencent.mm.protocal.protobuf.cps;
+import com.tencent.mm.protocal.protobuf.cpt;
+import com.tencent.mm.protocal.protobuf.cpu;
+import com.tencent.mm.protocal.protobuf.cpv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class am
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private com.tencent.mm.ak.f callback;
-  public int rBW;
-  public f rBX;
-  private LinkedList<cat> rBY;
-  private LinkedList<caq> rBZ;
-  public String rCa;
-  private final com.tencent.mm.ak.b rr;
+  private i callback;
+  private final d rr;
   private int scene;
+  public int tbB;
+  public f tbC;
+  private LinkedList<cpv> tbD;
+  private LinkedList<cps> tbE;
+  public String tbF;
   public int type;
   
   public am(int paramInt, f paramf)
   {
-    this(paramInt, paramf.field_modItem.rBZ, paramf.field_modItem.GBO, 1);
-    this.rBX = paramf;
+    this(paramInt, paramf.field_modItem.tbE, paramf.field_modItem.LxK, 1);
+    this.tbC = paramf;
   }
   
-  public am(int paramInt, LinkedList<caq> paramLinkedList, LinkedList<cat> paramLinkedList1)
+  public am(int paramInt, LinkedList<cps> paramLinkedList, LinkedList<cpv> paramLinkedList1)
   {
     this(paramInt, paramLinkedList, paramLinkedList1, 0);
   }
   
-  private am(int paramInt1, LinkedList<caq> paramLinkedList, LinkedList<cat> paramLinkedList1, int paramInt2)
+  private am(int paramInt1, LinkedList<cps> paramLinkedList, LinkedList<cpv> paramLinkedList1, int paramInt2)
   {
     AppMethodBeat.i(103483);
     this.callback = null;
-    b.a locala = new b.a();
-    locala.hQF = new car();
-    locala.hQG = new cas();
+    d.a locala = new d.a();
+    locala.iLN = new cpt();
+    locala.iLO = new cpu();
     locala.uri = "/cgi-bin/micromsg-bin/modfavitem";
     locala.funcId = 426;
-    locala.hQH = 216;
+    locala.iLP = 216;
     locala.respCmdId = 1000000216;
-    this.rr = locala.aDS();
-    this.rBY = paramLinkedList1;
-    this.rBZ = paramLinkedList;
-    this.rBW = paramInt1;
+    this.rr = locala.aXF();
+    this.tbD = paramLinkedList1;
+    this.tbE = paramLinkedList;
+    this.tbB = paramInt1;
     this.type = paramInt2;
     AppMethodBeat.o(103483);
   }
   
-  public am(int paramInt, LinkedList<caq> paramLinkedList, LinkedList<cat> paramLinkedList1, String paramString)
+  public am(int paramInt, LinkedList<cps> paramLinkedList, LinkedList<cpv> paramLinkedList1, String paramString)
   {
     this(paramInt, paramLinkedList, paramLinkedList1, 0);
-    this.rCa = paramString;
+    this.tbF = paramString;
   }
   
-  public am(int paramInt, LinkedList<caq> paramLinkedList, LinkedList<cat> paramLinkedList1, String paramString, byte paramByte)
+  public am(int paramInt, LinkedList<cps> paramLinkedList, LinkedList<cpv> paramLinkedList1, String paramString, byte paramByte)
   {
     this(paramInt, paramLinkedList, paramLinkedList1, 0);
-    this.rCa = paramString;
+    this.tbF = paramString;
     this.scene = 1;
   }
   
-  public final long cxa()
+  public final long cVe()
   {
-    if (this.rBX == null) {
+    if (this.tbC == null) {
       return -1L;
     }
-    return this.rBX.field_localId;
+    return this.tbC.field_localId;
   }
   
-  public final int cxb()
+  public final int cVf()
   {
-    if (this.rBX == null) {
+    if (this.tbC == null) {
       return -1;
     }
-    return this.rBX.field_type;
+    return this.tbC.field_type;
   }
   
-  public final int doScene(e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(103484);
-    if ((this.scene == 0) && ((this.rBZ == null) || (this.rBZ.size() == 0)))
+    if ((this.scene == 0) && ((this.tbE == null) || (this.tbE.size() == 0)))
     {
       AppMethodBeat.o(103484);
       return -1;
     }
-    car localcar = (car)this.rr.hQD.hQJ;
-    localcar.Hop = this.rBZ.size();
-    if (this.rBY != null) {
-      localcar.Hor = this.rBY.size();
+    cpt localcpt = (cpt)this.rr.iLK.iLR;
+    localcpt.MvK = this.tbE.size();
+    if (this.tbD != null) {
+      localcpt.MvM = this.tbD.size();
     }
-    for (localcar.FUY = this.rBY;; localcar.FUY = new LinkedList())
+    for (localcpt.KOH = this.tbD;; localcpt.KOH = new LinkedList())
     {
-      if (!bu.isNullOrNil(this.rCa)) {
-        localcar.Hos = this.rCa;
+      if (!Util.isNullOrNil(this.tbF)) {
+        localcpt.MvN = this.tbF;
       }
-      localcar.Hop = this.rBZ.size();
-      localcar.Hoq = this.rBZ;
-      localcar.FNu = this.rBW;
-      localcar.Scene = this.scene;
-      this.callback = paramf;
-      int i = dispatch(parame, this.rr, this);
+      localcpt.MvK = this.tbE.size();
+      localcpt.MvL = this.tbE;
+      localcpt.KGZ = this.tbB;
+      localcpt.Scene = this.scene;
+      this.callback = parami;
+      int i = dispatch(paramg, this.rr, this);
       AppMethodBeat.o(103484);
       return i;
-      localcar.Hor = 0;
+      localcpt.MvM = 0;
     }
   }
   
@@ -125,18 +125,18 @@ public final class am
     return 426;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(103485);
-    ae.d("MicroMsg.Fav.NetSceneModFavItem", "favId: " + this.rBW + ", netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    Log.d("MicroMsg.Fav.NetSceneModFavItem", "favId: " + this.tbB + ", netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    b.d(((af)g.ad(af.class)).getFavItemInfoStorage().vV(this.rBW));
+    b.d(((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DZ(this.tbB));
     AppMethodBeat.o(103485);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.am
  * JD-Core Version:    0.7.0.1
  */

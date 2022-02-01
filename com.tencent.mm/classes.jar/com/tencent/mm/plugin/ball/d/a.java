@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.ball.d;
 
 public abstract interface a
 {
-  public abstract void bhp();
+  public abstract void awJ();
   
   public abstract void onAnimationEnd();
 }

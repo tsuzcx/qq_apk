@@ -25,7 +25,7 @@ import android.support.design.circularreveal.c.d;
 import android.support.design.widget.CoordinatorLayout.d;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.k;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.util.Property;
 import android.view.View;
@@ -38,10 +38,10 @@ import java.util.List;
 public abstract class FabTransformationBehavior
   extends ExpandableTransformationBehavior
 {
-  private final Rect mA = new Rect();
-  private final RectF mB = new RectF();
-  private final RectF mC = new RectF();
-  private final int[] mD = new int[2];
+  private final Rect mC = new Rect();
+  private final RectF mD = new RectF();
+  private final RectF mE = new RectF();
+  private final int[] mF = new int[2];
   
   public FabTransformationBehavior() {}
   
@@ -52,18 +52,18 @@ public abstract class FabTransformationBehavior
   
   private static float a(a parama, i parami, float paramFloat)
   {
-    long l1 = parami.gW;
+    long l1 = parami.gY;
     long l2 = parami.duration;
-    parama = parama.mK.j("expansion");
-    long l3 = parama.gW;
+    parama = parama.mM.j("expansion");
+    long l3 = parama.gY;
     float f = (float)(parama.duration + l3 + 17L - l1) / (float)l2;
     return android.support.design.a.a.lerp(paramFloat, 0.0F, parami.getInterpolator().getInterpolation(f));
   }
   
   private float a(View paramView1, View paramView2, j paramj)
   {
-    RectF localRectF1 = this.mB;
-    RectF localRectF2 = this.mC;
+    RectF localRectF1 = this.mD;
+    RectF localRectF2 = this.mE;
     a(paramView1, localRectF1);
     a(paramView2, localRectF2);
     float f2 = 0.0F;
@@ -75,7 +75,7 @@ public abstract class FabTransformationBehavior
     }
     for (;;)
     {
-      return f1 + paramj.gY;
+      return f1 + paramj.ha;
       f1 = localRectF2.left - localRectF1.left;
       continue;
       f1 = localRectF2.centerX() - localRectF1.centerX();
@@ -98,7 +98,7 @@ public abstract class FabTransformationBehavior
   private void a(View paramView, RectF paramRectF)
   {
     paramRectF.set(0.0F, 0.0F, paramView.getWidth(), paramView.getHeight());
-    int[] arrayOfInt = this.mD;
+    int[] arrayOfInt = this.mF;
     paramView.getLocationInWindow(arrayOfInt);
     paramRectF.offsetTo(arrayOfInt[0], arrayOfInt[1]);
     paramRectF.offset((int)-paramView.getTranslationX(), (int)-paramView.getTranslationY());
@@ -106,8 +106,8 @@ public abstract class FabTransformationBehavior
   
   private float b(View paramView1, View paramView2, j paramj)
   {
-    RectF localRectF1 = this.mB;
-    RectF localRectF2 = this.mC;
+    RectF localRectF1 = this.mD;
+    RectF localRectF2 = this.mE;
     a(paramView1, localRectF1);
     a(paramView2, localRectF2);
     float f = 0.0F;
@@ -116,7 +116,7 @@ public abstract class FabTransformationBehavior
     }
     for (;;)
     {
-      return f + paramj.gZ;
+      return f + paramj.hb;
       f = localRectF2.top - localRectF1.top;
       continue;
       f = localRectF2.centerY() - localRectF1.centerY();
@@ -135,8 +135,8 @@ public abstract class FabTransformationBehavior
   
   public final void a(CoordinatorLayout.d paramd)
   {
-    if (paramd.qF == 0) {
-      paramd.qF = 80;
+    if (paramd.qH == 0) {
+      paramd.qH = 80;
     }
   }
   
@@ -182,27 +182,27 @@ public abstract class FabTransformationBehavior
     int i;
     if (Build.VERSION.SDK_INT >= 21)
     {
-      f1 = t.al(paramView2) - t.al(paramView1);
+      f1 = u.al(paramView2) - u.al(paramView1);
       if (paramBoolean1)
       {
         if (!paramBoolean2) {
           paramView2.setTranslationZ(-f1);
         }
         localObject1 = ObjectAnimator.ofFloat(paramView2, View.TRANSLATION_Z, new float[] { 0.0F });
-        locala.mK.j("elevation").a((Animator)localObject1);
+        locala.mM.j("elevation").a((Animator)localObject1);
         localArrayList1.add(localObject1);
       }
     }
     else
     {
-      RectF localRectF1 = this.mB;
-      f2 = a(paramView1, paramView2, locala.mL);
-      f1 = b(paramView1, paramView2, locala.mL);
+      RectF localRectF1 = this.mD;
+      f2 = a(paramView1, paramView2, locala.mN);
+      f1 = b(paramView1, paramView2, locala.mN);
       if ((f2 != 0.0F) && (f1 != 0.0F)) {
         break label1017;
       }
-      localObject2 = locala.mK.j("translationXLinear");
-      localObject1 = locala.mK.j("translationYLinear");
+      localObject2 = locala.mM.j("translationXLinear");
+      localObject1 = locala.mM.j("translationYLinear");
       if (!paramBoolean1) {
         break label1097;
       }
@@ -217,11 +217,11 @@ public abstract class FabTransformationBehavior
       f1 = -f1;
       f2 = a(locala, (i)localObject2, f2);
       f1 = a(locala, (i)localObject1, f1);
-      Object localObject5 = this.mA;
+      Object localObject5 = this.mC;
       paramView2.getWindowVisibleDisplayFrame((Rect)localObject5);
-      RectF localRectF2 = this.mB;
+      RectF localRectF2 = this.mD;
       localRectF2.set((Rect)localObject5);
-      localObject5 = this.mC;
+      localObject5 = this.mE;
       a(paramView2, (RectF)localObject5);
       ((RectF)localObject5).offset(f2, f1);
       ((RectF)localObject5).intersect(localRectF2);
@@ -238,23 +238,23 @@ public abstract class FabTransformationBehavior
       if ((paramView2 instanceof android.support.design.circularreveal.c))
       {
         localObject2 = (android.support.design.circularreveal.c)paramView2;
-        localObject1 = locala.mL;
-        localObject3 = this.mB;
-        localObject4 = this.mC;
+        localObject1 = locala.mN;
+        localObject3 = this.mD;
+        localObject4 = this.mE;
         a(paramView1, (RectF)localObject3);
         a(paramView2, (RectF)localObject4);
         ((RectF)localObject4).offset(-a(paramView1, paramView2, (j)localObject1), 0.0F);
         f2 = ((RectF)localObject3).centerX() - ((RectF)localObject4).left;
-        localObject1 = locala.mL;
-        localObject3 = this.mB;
-        localObject4 = this.mC;
+        localObject1 = locala.mN;
+        localObject3 = this.mD;
+        localObject4 = this.mE;
         a(paramView1, (RectF)localObject3);
         a(paramView2, (RectF)localObject4);
         ((RectF)localObject4).offset(0.0F, -b(paramView1, paramView2, (j)localObject1));
         f3 = ((RectF)localObject3).centerY() - ((RectF)localObject4).top;
-        ((FloatingActionButton)paramView1).b(this.mA);
-        f1 = this.mA.width() / 2.0F;
-        localObject3 = locala.mK.j("expansion");
+        ((FloatingActionButton)paramView1).b(this.mC);
+        f1 = this.mC.width() / 2.0F;
+        localObject3 = locala.mM.j("expansion");
         if (!paramBoolean1) {
           break label1284;
         }
@@ -270,12 +270,12 @@ public abstract class FabTransformationBehavior
         {
           public final void onAnimationEnd(Animator paramAnonymousAnimator)
           {
-            paramAnonymousAnimator = this.mI.getRevealInfo();
+            paramAnonymousAnimator = this.mK.getRevealInfo();
             paramAnonymousAnimator.radius = 3.4028235E+38F;
-            this.mI.setRevealInfo(paramAnonymousAnimator);
+            this.mK.setRevealInfo(paramAnonymousAnimator);
           }
         });
-        a(paramView2, ((i)localObject3).gW, (int)f2, (int)f3, f1, localArrayList1);
+        a(paramView2, ((i)localObject3).gY, (int)f2, (int)f3, f1, localArrayList1);
         label661:
         ((i)localObject3).a((Animator)localObject1);
         localArrayList1.add(localObject1);
@@ -284,7 +284,7 @@ public abstract class FabTransformationBehavior
       if ((paramView2 instanceof android.support.design.circularreveal.c))
       {
         localObject1 = (android.support.design.circularreveal.c)paramView2;
-        localObject2 = t.at(paramView1);
+        localObject2 = u.at(paramView1);
         if (localObject2 == null) {
           break label1432;
         }
@@ -296,15 +296,15 @@ public abstract class FabTransformationBehavior
         if (!paramBoolean2) {
           ((android.support.design.circularreveal.c)localObject1).setCircularRevealScrimColor(i);
         }
-        localObject1 = ObjectAnimator.ofInt(localObject1, c.c.jP, new int[] { 0xFFFFFF & i });
+        localObject1 = ObjectAnimator.ofInt(localObject1, c.c.jR, new int[] { 0xFFFFFF & i });
         label775:
-        ((ObjectAnimator)localObject1).setEvaluator(android.support.design.a.c.aR());
-        locala.mK.j("color").a((Animator)localObject1);
+        ((ObjectAnimator)localObject1).setEvaluator(android.support.design.a.c.aT());
+        locala.mM.j("color").a((Animator)localObject1);
         localArrayList1.add(localObject1);
       }
-      if (((paramView2 instanceof ViewGroup)) && ((!(paramView2 instanceof android.support.design.circularreveal.c)) || (android.support.design.circularreveal.b.jE != 0)))
+      if (((paramView2 instanceof ViewGroup)) && ((!(paramView2 instanceof android.support.design.circularreveal.c)) || (android.support.design.circularreveal.b.jG != 0)))
       {
-        localObject1 = paramView2.findViewById(2131302557);
+        localObject1 = paramView2.findViewById(2131304989);
         if (localObject1 == null) {
           break label1459;
         }
@@ -316,16 +316,16 @@ public abstract class FabTransformationBehavior
             break label1498;
           }
           if (!paramBoolean2) {
-            d.gO.set(localObject1, Float.valueOf(0.0F));
+            d.gQ.set(localObject1, Float.valueOf(0.0F));
           }
         }
       }
     }
     label1097:
     label1498:
-    for (Object localObject1 = ObjectAnimator.ofFloat(localObject1, d.gO, new float[] { 1.0F });; localObject1 = ObjectAnimator.ofFloat(localObject1, d.gO, new float[] { 0.0F }))
+    for (Object localObject1 = ObjectAnimator.ofFloat(localObject1, d.gQ, new float[] { 1.0F });; localObject1 = ObjectAnimator.ofFloat(localObject1, d.gQ, new float[] { 0.0F }))
     {
-      locala.mK.j("contentFade").a((Animator)localObject1);
+      locala.mM.j("contentFade").a((Animator)localObject1);
       localArrayList1.add(localObject1);
       localObject1 = new AnimatorSet();
       android.support.design.a.b.a((AnimatorSet)localObject1, localArrayList1);
@@ -363,12 +363,12 @@ public abstract class FabTransformationBehavior
       label1017:
       if (((paramBoolean1) && (f1 < 0.0F)) || ((!paramBoolean1) && (f1 > 0.0F)))
       {
-        localObject2 = locala.mK.j("translationXCurveUpwards");
-        localObject1 = locala.mK.j("translationYCurveUpwards");
+        localObject2 = locala.mM.j("translationXCurveUpwards");
+        localObject1 = locala.mM.j("translationYCurveUpwards");
         break label177;
       }
-      localObject2 = locala.mK.j("translationXCurveDownwards");
-      localObject1 = locala.mK.j("translationYCurveDownwards");
+      localObject2 = locala.mM.j("translationXCurveDownwards");
+      localObject1 = locala.mM.j("translationYCurveDownwards");
       break label177;
       localObject4 = ObjectAnimator.ofFloat(paramView2, View.TRANSLATION_X, new float[] { -f2 });
       localObject3 = ObjectAnimator.ofFloat(paramView2, View.TRANSLATION_Y, new float[] { -f1 });
@@ -385,7 +385,7 @@ public abstract class FabTransformationBehavior
           ((Drawable)localObject3).setAlpha(255);
         }
       }
-      for (localObject1 = ObjectAnimator.ofInt(localObject3, e.gP, new int[] { 0 });; localObject1 = ObjectAnimator.ofInt(localObject3, e.gP, new int[] { 255 }))
+      for (localObject1 = ObjectAnimator.ofInt(localObject3, e.gR, new int[] { 0 });; localObject1 = ObjectAnimator.ofInt(localObject3, e.gR, new int[] { 255 }))
       {
         ((ObjectAnimator)localObject1).addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
         {
@@ -394,18 +394,18 @@ public abstract class FabTransformationBehavior
             paramView2.invalidate();
           }
         });
-        locala.mK.j("iconFade").a((Animator)localObject1);
+        locala.mM.j("iconFade").a((Animator)localObject1);
         localArrayList1.add(localObject1);
         localArrayList2.add(new AnimatorListenerAdapter()
         {
           public final void onAnimationEnd(Animator paramAnonymousAnimator)
           {
-            this.mI.setCircularRevealOverlayDrawable(null);
+            this.mK.setCircularRevealOverlayDrawable(null);
           }
           
           public final void onAnimationStart(Animator paramAnonymousAnimator)
           {
-            this.mI.setCircularRevealOverlayDrawable(this.mJ);
+            this.mK.setCircularRevealOverlayDrawable(this.mL);
           }
         });
         break;
@@ -413,10 +413,10 @@ public abstract class FabTransformationBehavior
       break label605;
       f4 = ((android.support.design.circularreveal.c)localObject2).getRevealInfo().radius;
       localObject1 = android.support.design.circularreveal.a.a((android.support.design.circularreveal.c)localObject2, f2, f3, f1);
-      a(paramView2, ((i)localObject3).gW, (int)f2, (int)f3, f4, localArrayList1);
-      long l1 = ((i)localObject3).gW;
+      a(paramView2, ((i)localObject3).gY, (int)f2, (int)f3, f4, localArrayList1);
+      long l1 = ((i)localObject3).gY;
       long l2 = ((i)localObject3).duration;
-      long l3 = locala.mK.getTotalDuration();
+      long l3 = locala.mM.getTotalDuration();
       i = (int)f2;
       j = (int)f3;
       if ((Build.VERSION.SDK_INT >= 21) && (l1 + l2 < l3))
@@ -429,7 +429,7 @@ public abstract class FabTransformationBehavior
       break label661;
       i = 0;
       break label735;
-      localObject1 = ObjectAnimator.ofInt(localObject1, c.c.jP, new int[] { i });
+      localObject1 = ObjectAnimator.ofInt(localObject1, c.c.jR, new int[] { i });
       break label775;
       if (((paramView2 instanceof TransformationChildLayout)) || ((paramView2 instanceof TransformationChildCard)))
       {
@@ -451,13 +451,13 @@ public abstract class FabTransformationBehavior
   
   protected static final class a
   {
-    public h mK;
-    public j mL;
+    public h mM;
+    public j mN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.transformation.FabTransformationBehavior
  * JD-Core Version:    0.7.0.1
  */

@@ -12,29 +12,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.pluginsdk.l.f;
 import com.tencent.mm.ui.widget.MMPinProgressBtn;
+import com.tencent.mm.vfs.s;
 
 public final class o
   extends j
 {
-  public MMPinProgressBtn pzA;
-  public ImageView pzB;
-  private ImageView pzC;
-  public ImageView pzz;
+  public ImageView qOQ;
+  public MMPinProgressBtn qOR;
+  public ImageView qOS;
+  private ImageView qOT;
   
   public o(View paramView, com.tencent.mm.plugin.wenote.model.nativenote.manager.k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30883);
-    this.pzz = ((ImageView)paramView.findViewById(2131305196));
-    this.pzA = ((MMPinProgressBtn)paramView.findViewById(2131306379));
-    this.pzB = ((ImageView)paramView.findViewById(2131306398));
-    this.pzz.setImageResource(2131691166);
-    this.pzC = ((ImageView)paramView.findViewById(2131306355));
-    this.jnX.setVisibility(8);
-    this.pzb.setVisibility(8);
-    this.pzC.setVisibility(8);
-    this.pzf.setTag(this);
-    this.pzf.setOnClickListener(this.pzq);
+    this.qOQ = ((ImageView)paramView.findViewById(2131308392));
+    this.qOR = ((MMPinProgressBtn)paramView.findViewById(2131309808));
+    this.qOS = ((ImageView)paramView.findViewById(2131309829));
+    this.qOQ.setImageResource(2131691480);
+    this.qOT = ((ImageView)paramView.findViewById(2131309781));
+    this.kmg.setVisibility(8);
+    this.qOs.setVisibility(8);
+    this.qOT.setVisibility(8);
+    this.qOw.setTag(this);
+    this.qOw.setOnClickListener(this.qOH);
     AppMethodBeat.o(30883);
   }
   
@@ -42,14 +43,14 @@ public final class o
   {
     AppMethodBeat.i(30884);
     com.tencent.mm.plugin.wenote.model.a.k localk = (com.tencent.mm.plugin.wenote.model.a.k)paramc;
-    Object localObject3 = com.tencent.mm.plugin.wenote.c.c.abC(localk.thumbPath);
+    Object localObject3 = com.tencent.mm.plugin.wenote.c.c.alI(localk.thumbPath);
     Object localObject1 = localObject3;
     if (localObject3 == null)
     {
       localObject1 = localObject3;
-      if (com.tencent.mm.vfs.o.fB(localk.dCC))
+      if (s.YS(localk.dUs))
       {
-        localObject3 = e.ahE(localk.dCC);
+        localObject3 = e.asm(localk.dUs);
         localObject1 = localObject3;
         if (localObject3 == null) {}
       }
@@ -58,24 +59,24 @@ public final class o
     {
       try
       {
-        if (com.tencent.mm.vfs.o.fB(localk.thumbPath)) {
-          com.tencent.mm.vfs.o.deleteFile(localk.thumbPath);
+        if (s.YS(localk.thumbPath)) {
+          s.deleteFile(localk.thumbPath);
         }
         f.a((Bitmap)localObject3, Bitmap.CompressFormat.JPEG, localk.thumbPath, false);
         localObject1 = localObject3;
         if (localObject1 == null) {
           break label193;
         }
-        localObject3 = this.pzB.getLayoutParams();
+        localObject3 = this.qOS.getLayoutParams();
         ((ViewGroup.LayoutParams)localObject3).width = -1;
         ((ViewGroup.LayoutParams)localObject3).height = -1;
-        this.pzB.setLayoutParams((ViewGroup.LayoutParams)localObject3);
-        this.pzB.setImageBitmap(localObject1);
-        this.pzB.setBackground(null);
-        if (!paramc.pAq) {
+        this.qOS.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+        this.qOS.setImageBitmap(localObject1);
+        this.qOS.setBackground(null);
+        if (!paramc.qPH) {
           break label269;
         }
-        this.pzC.setVisibility(0);
+        this.qOT.setVisibility(0);
         super.a(paramc, paramInt1, paramInt2);
         AppMethodBeat.o(30884);
         return;
@@ -86,26 +87,26 @@ public final class o
       }
       continue;
       label193:
-      Object localObject2 = this.pzB.getResources().getDisplayMetrics();
+      Object localObject2 = this.qOS.getResources().getDisplayMetrics();
       float f = ((DisplayMetrics)localObject2).density;
-      localObject3 = this.pzB.getLayoutParams();
+      localObject3 = this.qOS.getLayoutParams();
       ((ViewGroup.LayoutParams)localObject3).width = (((DisplayMetrics)localObject2).widthPixels - (int)(f * 40.0F + 0.5F));
       ((ViewGroup.LayoutParams)localObject3).height = (((ViewGroup.LayoutParams)localObject3).width * 52 / 68);
-      this.pzB.setLayoutParams((ViewGroup.LayoutParams)localObject3);
+      this.qOS.setLayoutParams((ViewGroup.LayoutParams)localObject3);
       continue;
       label269:
-      this.pzC.setVisibility(8);
+      this.qOT.setVisibility(8);
     }
   }
   
-  public final int cfi()
+  public final int cCY()
   {
     return 6;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.o
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.wecall.talkroom.a;
 
-import com.google.b.a.e;
+import com.google.a.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.pb.common.b.a.a.a.ac;
+import com.tencent.pb.common.b.a.a.a.ad;
 import com.tencent.pb.common.b.a.a.a.f;
 import com.tencent.pb.common.b.d;
 import com.tencent.pb.common.c.b;
@@ -19,11 +19,11 @@ public final class f
     try
     {
       localf.groupId = paramString;
-      localf.Cuf = paramInt1;
-      localf.Cug = paramLong;
-      localf.reason = paramInt2;
+      localf.GXO = paramInt1;
+      localf.GXP = paramLong;
+      localf.bDZ = paramInt2;
       this.mNetType = 2;
-      this.Mcu = c.gdW().bbF(paramString);
+      this.RCJ = c.hqY().brj(paramString);
       c(143, localf);
       AppMethodBeat.o(62536);
       return;
@@ -37,7 +37,7 @@ public final class f
     }
   }
   
-  public final Object cL(byte[] paramArrayOfByte)
+  public final Object cO(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(62537);
     if (paramArrayOfByte != null) {}
@@ -45,7 +45,7 @@ public final class f
     {
       try
       {
-        paramArrayOfByte = (a.ac)e.a(new a.ac(), paramArrayOfByte, paramArrayOfByte.length);
+        paramArrayOfByte = (a.ad)e.a(new a.ad(), paramArrayOfByte, paramArrayOfByte.length);
         AppMethodBeat.o(62537);
         return paramArrayOfByte;
       }
@@ -59,19 +59,19 @@ public final class f
     }
   }
   
-  public final String fXq()
-  {
-    return "CsCmd.Cmd_V_CSExitVoiceRoomReq";
-  }
-  
   public final int getType()
   {
     return 203;
   }
+  
+  public final String hiV()
+  {
+    return "CsCmd.Cmd_V_CSExitVoiceRoomReq";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.wecall.talkroom.a.f
  * JD-Core Version:    0.7.0.1
  */

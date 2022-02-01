@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import com.tencent.mm.bw.b;
-import d.l;
+import com.tencent.mm.protocal.protobuf.bdr;
 import java.util.List;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "getErrCode", "()I", "getErrMsg", "()Ljava/lang/String;", "getErrType", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "incrementList", "", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "isNeedClear", "setNeedClear", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "pullType", "getPullType", "setPullType", "(I)V", "request", "getRequest", "()Ljava/lang/Object;", "setRequest", "(Ljava/lang/Object;)V", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "errType", "", "errCode", "errMsg", "", "(IILjava/lang/String;)V", "bgmInfo", "Lcom/tencent/mm/protocal/protobuf/FinderTopicBgmInfo;", "getBgmInfo", "()Lcom/tencent/mm/protocal/protobuf/FinderTopicBgmInfo;", "setBgmInfo", "(Lcom/tencent/mm/protocal/protobuf/FinderTopicBgmInfo;)V", "getErrCode", "()I", "getErrMsg", "()Ljava/lang/String;", "getErrType", "hasMore", "", "getHasMore", "()Z", "setHasMore", "(Z)V", "incrementList", "", "getIncrementList", "()Ljava/util/List;", "setIncrementList", "(Ljava/util/List;)V", "isNeedClear", "setNeedClear", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "getLastBuffer", "()Lcom/tencent/mm/protobuf/ByteString;", "setLastBuffer", "(Lcom/tencent/mm/protobuf/ByteString;)V", "pullType", "getPullType", "setPullType", "(I)V", "request", "getRequest", "()Ljava/lang/Object;", "setRequest", "(Ljava/lang/Object;)V", "plugin-finder_release"})
 public class IResponse<T extends i>
 {
+  private bdr bgmInfo;
   private final int errCode;
   private final String errMsg;
   private final int errType;
@@ -30,6 +32,11 @@ public class IResponse<T extends i>
     this.pullType = -1;
     this.hasMore = true;
     this.isNeedClear = true;
+  }
+  
+  public final bdr getBgmInfo()
+  {
+    return this.bgmInfo;
   }
   
   public final int getErrCode()
@@ -75,6 +82,11 @@ public class IResponse<T extends i>
   public final boolean isNeedClear()
   {
     return this.isNeedClear;
+  }
+  
+  public final void setBgmInfo(bdr parambdr)
+  {
+    this.bgmInfo = parambdr;
   }
   
   public final void setHasMore(boolean paramBoolean)

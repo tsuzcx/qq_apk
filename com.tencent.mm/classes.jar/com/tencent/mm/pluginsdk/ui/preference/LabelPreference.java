@@ -9,23 +9,23 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.plugin.label.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.cg;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.cn;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.ArrayList;
 
 public class LabelPreference
   extends Preference
 {
-  private TextView Fma;
-  public an pSY;
-  private View vQX;
-  private TextView xgT;
-  public cg xzF;
+  private TextView BeG;
+  public cn BzG;
+  private TextView KcS;
+  public as rjX;
+  private View zlc;
   
   public LabelPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -41,43 +41,43 @@ public class LabelPreference
   {
     AppMethodBeat.i(31857);
     super.onBindView(paramView);
-    if (this.pSY == null)
+    if (this.rjX == null)
     {
       paramView.setVisibility(8);
       AppMethodBeat.o(31857);
       return;
     }
     paramView.setVisibility(0);
-    if (this.xgT == null) {
-      this.xgT = ((TextView)paramView.findViewById(2131298619));
+    if (this.BeG == null) {
+      this.BeG = ((TextView)paramView.findViewById(2131299056));
     }
-    if (this.Fma == null) {
-      this.Fma = ((TextView)paramView.findViewById(2131298620));
+    if (this.KcS == null) {
+      this.KcS = ((TextView)paramView.findViewById(2131299057));
     }
-    if (this.Fma != null)
+    if (this.KcS != null)
     {
-      paramView = this.Fma.getLayoutParams();
-      paramView.width = com.tencent.mm.cb.a.ax(this.mContext, 2131165370);
-      this.Fma.setLayoutParams(paramView);
+      paramView = this.KcS.getLayoutParams();
+      paramView.width = com.tencent.mm.cb.a.aG(this.mContext, 2131165381);
+      this.KcS.setLayoutParams(paramView);
     }
-    this.xgT.setVisibility(0);
+    this.BeG.setVisibility(0);
     ArrayList localArrayList;
-    if (c.lO(this.pSY.field_type))
+    if (c.oR(this.rjX.field_type))
     {
-      paramView = this.pSY.field_contactLabelIds;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.dig().apq(paramView);
-      if ((!bu.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
-        this.xgT.setText(k.c(this.mContext, bu.m(localArrayList, this.mContext.getResources().getString(2131757526))));
+      paramView = this.rjX.field_contactLabelIds;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.ecg().aCJ(paramView);
+      if ((!Util.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
+        this.BeG.setText(l.c(this.mContext, Util.listToString(localArrayList, this.mContext.getResources().getString(2131757746))));
       }
       AppMethodBeat.o(31857);
       return;
     }
-    if (this.xzF != null)
+    if (this.BzG != null)
     {
-      paramView = this.xzF.field_contactLabels;
-      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.dig().app(paramView);
-      if ((!bu.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
-        this.xgT.setText(k.c(this.mContext, bu.m(localArrayList, this.mContext.getResources().getString(2131757526))));
+      paramView = this.BzG.field_contactLabels;
+      localArrayList = (ArrayList)com.tencent.mm.plugin.label.a.a.ecg().aCI(paramView);
+      if ((!Util.isNullOrNil(paramView)) && (localArrayList != null) && (localArrayList.size() > 0)) {
+        this.BeG.setText(l.c(this.mContext, Util.listToString(localArrayList, this.mContext.getResources().getString(2131757746))));
       }
     }
     AppMethodBeat.o(31857);
@@ -86,22 +86,22 @@ public class LabelPreference
   public final View onCreateView(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(31856);
-    if (this.vQX == null)
+    if (this.zlc == null)
     {
       paramViewGroup = super.onCreateView(paramViewGroup);
-      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+      ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
       localViewGroup.removeAllViews();
-      LayoutInflater.from(this.mContext).inflate(2131495138, localViewGroup);
-      this.vQX = paramViewGroup;
+      LayoutInflater.from(this.mContext).inflate(2131495981, localViewGroup);
+      this.zlc = paramViewGroup;
     }
-    paramViewGroup = this.vQX;
+    paramViewGroup = this.zlc;
     AppMethodBeat.o(31856);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.preference.LabelPreference
  * JD-Core Version:    0.7.0.1
  */

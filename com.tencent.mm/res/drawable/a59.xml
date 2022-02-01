@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true">
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/bq" />
-            <solid android:color="@color/Brand_90" />
-        </shape>
-    </item>
-    <item>
-        <shape android:shape="rectangle">
-            <corners android:radius="@dimen/bq" />
-            <solid android:color="@color/Brand" />
-        </shape>
-    </item>
-</selector>
+    <solid android:color="#33000000" />
+    <padding android:left="13.0dip" android:top="4.6999817dip" android:right="13.0dip" android:bottom="4.6999817dip" />
+    <corners android:radius="@dimen/a0" />
+    <stroke android:width="1.0dip" android:color="#ffffffff" />
+</shape>

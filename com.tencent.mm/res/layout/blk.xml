@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingRight="@dimen/eh" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.wallet_core.keyboard.WcPayKeyboard android:id="@id/h4u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</merge>
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/l4" android:ellipsize="end" android:id="@id/gx7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="180.0dip" android:singleLine="true" />
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/p7" android:ellipsize="end" android:gravity="right" android:id="@id/gx6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g" android:singleLine="true" android:layout_weight="1.0" />
+</LinearLayout>

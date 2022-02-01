@@ -1,60 +1,61 @@
 package com.tencent.mm.plugin.profile.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bmb;
-import com.tencent.mm.protocal.protobuf.bmc;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.protocal.protobuf.bys;
+import com.tencent.mm.protocal.protobuf.byt;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final com.tencent.mm.ak.b rr;
-  public String xfp;
+  public String BcV;
+  private i callback;
+  private final d rr;
   
   public b(String paramString1, String paramString2)
   {
     AppMethodBeat.i(26904);
-    this.xfp = paramString1;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bmb();
-    ((b.a)localObject).hQG = new bmc();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getwburl";
-    ((b.a)localObject).funcId = 205;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bmb)this.rr.hQD.hQJ;
-    ((bmb)localObject).nIJ = paramString2;
-    bc.aCg();
-    paramString2 = bu.nullAsNil((String)c.ajA().get(46, null));
-    ((bmb)localObject).FRA = new SKBuiltinBuffer_t().setBuffer(bu.aSx(paramString2));
-    bc.aCg();
-    String str = bu.nullAsNil((String)c.ajA().get(72, null));
-    ((bmb)localObject).GNw = new SKBuiltinBuffer_t().setBuffer(bu.aSx(str));
-    ae.d("MicroMsg.NetSceneGetWeiboURL", "dkwt get weibo url with id=" + paramString1 + ", a2=" + paramString2 + " , newa2:" + str);
+    this.BcV = paramString1;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bys();
+    ((d.a)localObject).iLO = new byt();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getwburl";
+    ((d.a)localObject).funcId = 205;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (bys)this.rr.iLK.iLR;
+    ((bys)localObject).UserName = paramString2;
+    bg.aVF();
+    paramString2 = Util.nullAsNil((String)c.azQ().get(46, null));
+    ((bys)localObject).KLh = new SKBuiltinBuffer_t().setBuffer(Util.decodeHexString(paramString2));
+    bg.aVF();
+    String str = Util.nullAsNil((String)c.azQ().get(72, null));
+    ((bys)localObject).LRA = new SKBuiltinBuffer_t().setBuffer(Util.decodeHexString(str));
+    Log.d("MicroMsg.NetSceneGetWeiboURL", "dkwt get weibo url with id=" + paramString1 + ", a2=" + paramString2 + " , newa2:" + str);
     AppMethodBeat.o(26904);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(26905);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(26905);
     return i;
   }
@@ -66,13 +67,13 @@ public final class b
   
   public final String getURL()
   {
-    return ((bmc)this.rr.hQE.hQJ).URL;
+    return ((byt)this.rr.iLL.iLR).URL;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(26906);
-    ae.d("MicroMsg.NetSceneGetWeiboURL", "dkwt onGYNetEnd:[%d,%d] get weibo url result:[%s] ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), getURL() });
+    Log.d("MicroMsg.NetSceneGetWeiboURL", "dkwt onGYNetEnd:[%d,%d] get weibo url result:[%s] ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), getURL() });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(26906);
   }

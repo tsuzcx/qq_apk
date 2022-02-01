@@ -10,22 +10,22 @@ import java.util.List;
 
 public class h
 {
-  public static String a = "6.7.3";
+  public static String a = "6.7.6";
   public static h b;
   public Context c;
   public List<a> d;
   
   public h(Context paramContext)
   {
-    AppMethodBeat.i(210721);
+    AppMethodBeat.i(222969);
     this.d = new ArrayList();
     this.c = paramContext;
-    AppMethodBeat.o(210721);
+    AppMethodBeat.o(222969);
   }
   
   public static h a(Context paramContext)
   {
-    AppMethodBeat.i(210722);
+    AppMethodBeat.i(222970);
     if (b == null) {}
     try
     {
@@ -33,29 +33,29 @@ public class h
         b = new h(paramContext);
       }
       paramContext = b;
-      AppMethodBeat.o(210722);
+      AppMethodBeat.o(222970);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(210722);
+      AppMethodBeat.o(222970);
     }
   }
   
   public List<a> a(String paramString)
   {
-    AppMethodBeat.i(210727);
+    AppMethodBeat.i(222975);
     paramString = q.e(q.a(this.c, paramString, ""));
     if (paramString.size() == 0) {
       e.a(this.c).a("DLC", "localComp parse error");
     }
-    AppMethodBeat.o(210727);
+    AppMethodBeat.o(222975);
     return paramString;
   }
   
   public boolean a()
   {
-    AppMethodBeat.i(210724);
+    AppMethodBeat.i(222972);
     c();
     String str1 = a;
     String str2 = q.a(this.c, "__Tencent_Cover_SDK_Version__sapp_", "");
@@ -67,23 +67,23 @@ public class h
       if (!l.d(this.c))
       {
         j.a("copy to private dir failed");
-        AppMethodBeat.o(210724);
+        AppMethodBeat.o(222972);
         return false;
       }
       q.b(this.c, "__Tencent_Cover_SDK_Version__sapp_", str1);
       q.b(this.c, "__pro_dex_load_info___sapp", "default");
       q.b(this.c, "__SP_UPDATE_TencentLoc_COMP_INFO__sapp_", "");
       q.a(this.c.getFilesDir().getAbsolutePath() + File.separator + "TencentLocation_sapp/UpCp");
-      AppMethodBeat.o(210724);
+      AppMethodBeat.o(222972);
       return true;
     }
-    AppMethodBeat.o(210724);
+    AppMethodBeat.o(222972);
     return false;
   }
   
   public boolean a(boolean paramBoolean, List<a> paramList, String paramString)
   {
-    AppMethodBeat.i(210725);
+    AppMethodBeat.i(222973);
     paramString = new File(this.c.getFilesDir(), paramString);
     paramString = q.a(this.c, paramString);
     Object localObject1;
@@ -94,7 +94,7 @@ public class h
       localObject2 = q.e((String)localObject1);
       if ((!((String)localObject1).equals("preference_default_sapp")) && (!((List)localObject2).isEmpty()) && (l.a(paramList, (List)localObject2)))
       {
-        AppMethodBeat.o(210725);
+        AppMethodBeat.o(222973);
         return false;
       }
       paramList = paramList.iterator();
@@ -127,7 +127,7 @@ public class h
         j.a("private dir files is empty");
         e.a(this.c).a("DLC", "localComp file error");
         bool = false;
-        AppMethodBeat.o(210725);
+        AppMethodBeat.o(222973);
         return bool;
       }
     }
@@ -135,7 +135,7 @@ public class h
   
   public DexClassLoader b()
   {
-    AppMethodBeat.i(210723);
+    AppMethodBeat.i(222971);
     a();
     if (l.b(this.c) == 6) {
       l.c(this.c);
@@ -145,13 +145,13 @@ public class h
     }
     Object localObject = a("__SP_Tencent_Loc_COMP_INFO__sapp_");
     localObject = b.a(this.c).a((List)localObject, q.b);
-    AppMethodBeat.o(210723);
+    AppMethodBeat.o(222971);
     return localObject;
   }
   
   public final void c()
   {
-    AppMethodBeat.i(210728);
+    AppMethodBeat.i(222976);
     File localFile = new File(this.c.getFilesDir(), q.b);
     if (!localFile.exists()) {
       localFile.mkdirs();
@@ -161,22 +161,22 @@ public class h
       localFile.mkdirs();
     }
     l.a(this.c);
-    AppMethodBeat.o(210728);
+    AppMethodBeat.o(222976);
   }
   
   public void d()
   {
-    AppMethodBeat.i(210726);
+    AppMethodBeat.i(222974);
     e.a(this.c).a("DCR", "goback");
     if (!l.d(this.c)) {
       e.a(this.c).a("DCR", "copy from asset failed");
     }
-    AppMethodBeat.o(210726);
+    AppMethodBeat.o(222974);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     c.t.m.sapp.c.h
  * JD-Core Version:    0.7.0.1
  */

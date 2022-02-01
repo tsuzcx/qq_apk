@@ -18,7 +18,7 @@ public abstract class ProfileTracker
   {
     Validate.sdkInitialized();
     this.receiver = new ProfileBroadcastReceiver(null);
-    this.broadcastManager = d.V(FacebookSdk.getApplicationContext());
+    this.broadcastManager = d.W(FacebookSdk.getApplicationContext());
     startTracking();
   }
   
@@ -74,7 +74,7 @@ public abstract class ProfileTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.ProfileTracker
  * JD-Core Version:    0.7.0.1
  */

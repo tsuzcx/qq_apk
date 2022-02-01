@@ -8,8 +8,8 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.o;
 import com.tencent.tmassistantsdk.channel.TMAssistantSDKChannel;
 import com.tencent.tmassistantsdk.channel.TMAssistantSDKChannelDataItem;
 import com.tencent.tmassistantsdk.downloadservice.NetworkMonitorReceiver;
@@ -99,7 +99,7 @@ public class TMQQDownloaderOpenSDK
   private boolean isFileExist(String paramString)
   {
     AppMethodBeat.i(102118);
-    if (new k(paramString).exists())
+    if (new o(paramString).exists())
     {
       AppMethodBeat.o(102118);
       return true;
@@ -207,7 +207,7 @@ public class TMQQDownloaderOpenSDK
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
-        ae.printErrStackTrace("QQDownloaderOpenSDK", localNameNotFoundException, "", new Object[0]);
+        Log.printErrStackTrace("QQDownloaderOpenSDK", localNameNotFoundException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102106);
@@ -520,7 +520,7 @@ public class TMQQDownloaderOpenSDK
     //   671: ldc 211
     //   673: iconst_0
     //   674: anewarray 254	java/lang/Object
-    //   677: invokestatic 260	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   677: invokestatic 260	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   680: aload_1
     //   681: astore 12
     //   683: aload 10
@@ -677,9 +677,9 @@ public class TMQQDownloaderOpenSDK
       if ((paramContext instanceof Application)) {
         ((Intent)localObject).addFlags(268435456);
       }
-      localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startQQDownloader", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+      localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startQQDownloader", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startQQDownloader", "(Landroid/content/Context;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     }
     AppMethodBeat.o(102107);
@@ -713,9 +713,9 @@ public class TMQQDownloaderOpenSDK
     if ((paramContext instanceof Application)) {
       paramTMQQDownloaderOpenSDKParam.addFlags(268435456);
     }
-    paramTMQQDownloaderOpenSDKParam = new com.tencent.mm.hellhoundlib.b.a().bc(paramTMQQDownloaderOpenSDKParam);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramTMQQDownloaderOpenSDKParam.ahE(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToAppDetail", "(Landroid/content/Context;Lcom/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDKParam;ZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramTMQQDownloaderOpenSDKParam.mt(0));
+    paramTMQQDownloaderOpenSDKParam = new com.tencent.mm.hellhoundlib.b.a().bl(paramTMQQDownloaderOpenSDKParam);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramTMQQDownloaderOpenSDKParam.axQ(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToAppDetail", "(Landroid/content/Context;Lcom/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDKParam;ZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramTMQQDownloaderOpenSDKParam.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToAppDetail", "(Landroid/content/Context;Lcom/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDKParam;ZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(102110);
   }
@@ -752,9 +752,9 @@ public class TMQQDownloaderOpenSDK
     if ((paramContext instanceof Application)) {
       paramTMQQDownloaderOpenSDKParam.addFlags(268435456);
     }
-    paramTMQQDownloaderOpenSDKParam = new com.tencent.mm.hellhoundlib.b.a().bc(paramTMQQDownloaderOpenSDKParam);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramTMQQDownloaderOpenSDKParam.ahE(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToAuthorized", "(Landroid/content/Context;Lcom/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDKParam;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramTMQQDownloaderOpenSDKParam.mt(0));
+    paramTMQQDownloaderOpenSDKParam = new com.tencent.mm.hellhoundlib.b.a().bl(paramTMQQDownloaderOpenSDKParam);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramTMQQDownloaderOpenSDKParam.axQ(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToAuthorized", "(Landroid/content/Context;Lcom/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDKParam;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramTMQQDownloaderOpenSDKParam.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToAuthorized", "(Landroid/content/Context;Lcom/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDKParam;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(102112);
   }
@@ -766,9 +766,9 @@ public class TMQQDownloaderOpenSDK
     if ((paramContext instanceof Application)) {
       paramString.addFlags(268435456);
     }
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToAuthorized", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString.mt(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.axQ(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToAuthorized", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToAuthorized", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(102113);
   }
@@ -806,9 +806,9 @@ public class TMQQDownloaderOpenSDK
     if ((paramContext instanceof Application)) {
       paramTMQQDownloaderOpenSDKParam.addFlags(268435456);
     }
-    paramTMQQDownloaderOpenSDKParam = new com.tencent.mm.hellhoundlib.b.a().bc(paramTMQQDownloaderOpenSDKParam);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramTMQQDownloaderOpenSDKParam.ahE(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToDownloadTaskList", "(Landroid/content/Context;Lcom/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDKParam;ZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramTMQQDownloaderOpenSDKParam.mt(0));
+    paramTMQQDownloaderOpenSDKParam = new com.tencent.mm.hellhoundlib.b.a().bl(paramTMQQDownloaderOpenSDKParam);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramTMQQDownloaderOpenSDKParam.axQ(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToDownloadTaskList", "(Landroid/content/Context;Lcom/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDKParam;ZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramTMQQDownloaderOpenSDKParam.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToDownloadTaskList", "(Landroid/content/Context;Lcom/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDKParam;ZZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(102108);
   }
@@ -836,16 +836,16 @@ public class TMQQDownloaderOpenSDK
     if ((paramContext instanceof Application)) {
       paramString.addFlags(268435456);
     }
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.ahE(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToWebView", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)paramString.mt(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramString.axQ(), "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToWebView", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)paramString.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/tmassistantsdk/openSDK/TMQQDownloaderOpenSDK", "startToWebView", "(Landroid/content/Context;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(102121);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.TMQQDownloaderOpenSDK
  * JD-Core Version:    0.7.0.1
  */

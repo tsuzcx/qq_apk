@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.wenote.model;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.gx;
-import com.tencent.mm.g.a.gx.a;
-import com.tencent.mm.g.a.gx.b;
+import com.tencent.mm.g.a.hb;
+import com.tencent.mm.g.a.hb.a;
+import com.tencent.mm.g.a.hb.b;
 import com.tencent.mm.plugin.fav.a.af;
 import com.tencent.mm.plugin.fav.a.x;
-import com.tencent.mm.protocal.protobuf.ajx;
-import com.tencent.mm.protocal.protobuf.akn;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.protocal.protobuf.anb;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -25,7 +25,30 @@ import java.util.regex.Pattern;
 
 public final class f
 {
-  public static void J(long paramLong, String paramString)
+  public static float AO(long paramLong)
+  {
+    float f1 = 1.0F;
+    AppMethodBeat.i(30299);
+    float f2 = (float)paramLong / 1000.0F;
+    if (f2 < 1.0F) {}
+    for (;;)
+    {
+      f1 = Math.round(f1);
+      AppMethodBeat.o(30299);
+      return f1;
+      f1 = f2;
+    }
+  }
+  
+  public static com.tencent.mm.plugin.fav.a.g HT(long paramLong)
+  {
+    AppMethodBeat.i(30304);
+    com.tencent.mm.plugin.fav.a.g localg = ((af)com.tencent.mm.kernel.g.ah(af.class)).getFavItemInfoStorage().DY(paramLong);
+    AppMethodBeat.o(30304);
+    return localg;
+  }
+  
+  public static void O(long paramLong, String paramString)
   {
     AppMethodBeat.i(30305);
     if (paramLong <= 0L)
@@ -33,72 +56,72 @@ public final class f
       AppMethodBeat.o(30305);
       return;
     }
-    gx localgx = new gx();
-    localgx.dub.type = 34;
-    localgx.dub.doH = paramLong;
-    a.IvT.l(localgx);
-    if (localgx.dub.doN == null)
+    hb localhb = new hb();
+    localhb.dLm.type = 34;
+    localhb.dLm.dFW = paramLong;
+    EventCenter.instance.publish(localhb);
+    if (localhb.dLm.dGb == null)
     {
       AppMethodBeat.o(30305);
       return;
     }
-    if ((localgx.dub.doN.oeJ == null) || (localgx.dub.doN.oeJ.size() <= 1))
+    if ((localhb.dLm.dGb.ppH == null) || (localhb.dLm.dGb.ppH.size() <= 1))
     {
       AppMethodBeat.o(30305);
       return;
     }
-    if (((ajx)localgx.dub.doN.oeJ.get(0)).GAC != null)
+    if (((aml)localhb.dLm.dGb.ppH.get(0)).Lwp != null)
     {
       AppMethodBeat.o(30305);
       return;
     }
-    ae.i("MicroMsg.WNNoteFavLogic", "Note: Htmlid is null,  do updateFavItemHtmlIdStorage");
-    if ((!bu.isNullOrNil(paramString)) && (o.fB(paramString))) {
+    Log.i("MicroMsg.WNNoteFavLogic", "Note: Htmlid is null,  do updateFavItemHtmlIdStorage");
+    if ((!Util.isNullOrNil(paramString)) && (s.YS(paramString))) {
       try
       {
-        paramString = o.aZT(paramString);
-        a(localgx.dub.doN, paramLong, paramString);
+        paramString = s.boY(paramString);
+        a(localhb.dLm.dGb, paramLong, paramString);
         AppMethodBeat.o(30305);
         return;
       }
       catch (Exception paramString)
       {
-        ae.e("MicroMsg.WNNoteFavLogic", "Note: FileNotFoundException :%s", new Object[] { paramString.getMessage() });
+        Log.e("MicroMsg.WNNoteFavLogic", "Note: FileNotFoundException :%s", new Object[] { paramString.getMessage() });
       }
     }
     AppMethodBeat.o(30305);
   }
   
-  public static String R(Context paramContext, int paramInt)
+  public static String W(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(30300);
-    gx localgx = new gx();
-    localgx.dub.type = 21;
-    localgx.dub.context = paramContext;
-    localgx.dub.duj = paramInt;
-    a.IvT.l(localgx);
-    paramContext = localgx.duc.path;
+    hb localhb = new hb();
+    localhb.dLm.type = 21;
+    localhb.dLm.context = paramContext;
+    localhb.dLm.dLu = paramInt;
+    EventCenter.instance.publish(localhb);
+    paramContext = localhb.dLn.path;
     AppMethodBeat.o(30300);
     return paramContext;
   }
   
-  public static String a(ajx paramajx)
+  public static String a(aml paramaml)
   {
     AppMethodBeat.i(30302);
-    gx localgx = new gx();
-    localgx.dub.type = 27;
-    localgx.dub.dud = paramajx;
-    a.IvT.l(localgx);
-    paramajx = localgx.duc.thumbPath;
+    hb localhb = new hb();
+    localhb.dLm.type = 27;
+    localhb.dLm.dLo = paramaml;
+    EventCenter.instance.publish(localhb);
+    paramaml = localhb.dLn.thumbPath;
     AppMethodBeat.o(30302);
-    return paramajx;
+    return paramaml;
   }
   
-  private static void a(akn paramakn, long paramLong, String paramString)
+  private static void a(anb paramanb, long paramLong, String paramString)
   {
     AppMethodBeat.i(30306);
     Object localObject1 = new ArrayList();
-    if ((bu.isNullOrNil(paramString)) || (paramString.length() == 0))
+    if ((Util.isNullOrNil(paramString)) || (paramString.length() == 0))
     {
       AppMethodBeat.o(30306);
       return;
@@ -128,79 +151,99 @@ public final class f
       }
     }
     paramString = new LinkedList();
-    Object localObject2 = paramakn.oeJ.iterator();
+    Object localObject2 = paramanb.ppH.iterator();
     int j = 0;
     int i = 0;
     while (((Iterator)localObject2).hasNext())
     {
-      ajx localajx = (ajx)((Iterator)localObject2).next();
+      aml localaml = (aml)((Iterator)localObject2).next();
       if (i == 0)
       {
-        localajx.aPZ("WeNoteHtmlFile");
-        paramString.add(localajx);
+        localaml.bgC("WeNoteHtmlFile");
+        paramString.add(localaml);
         i += 1;
       }
       else
       {
-        if (localajx.dataType == 1) {
-          localajx.aPZ("-1");
+        if (localaml.dataType == 1) {
+          localaml.bgC("-1");
         }
         for (;;)
         {
-          paramString.add(localajx);
+          paramString.add(localaml);
           break;
-          localajx.aPZ((String)((ArrayList)localObject1).get(j));
+          localaml.bgC((String)((ArrayList)localObject1).get(j));
           j += 1;
         }
       }
     }
-    localObject1 = new gx();
-    ((gx)localObject1).dub.type = 33;
-    ((gx)localObject1).dub.doN = paramakn;
-    ((gx)localObject1).dub.doN.oeJ = paramString;
-    ((gx)localObject1).dub.doH = paramLong;
-    a.IvT.l((b)localObject1);
+    localObject1 = new hb();
+    ((hb)localObject1).dLm.type = 33;
+    ((hb)localObject1).dLm.dGb = paramanb;
+    ((hb)localObject1).dLm.dGb.ppH = paramString;
+    ((hb)localObject1).dLm.dFW = paramLong;
+    EventCenter.instance.publish((IEvent)localObject1);
     AppMethodBeat.o(30306);
   }
   
-  public static void aM(ArrayList<String> paramArrayList)
+  public static String alR(String paramString)
+  {
+    AppMethodBeat.i(30301);
+    paramString = com.tencent.mm.b.g.getMessageDigest((paramString + 18 + System.currentTimeMillis()).getBytes());
+    AppMethodBeat.o(30301);
+    return paramString;
+  }
+  
+  public static String b(aml paramaml)
+  {
+    AppMethodBeat.i(30303);
+    hb localhb = new hb();
+    localhb.dLm.type = 27;
+    localhb.dLm.dLo = paramaml;
+    EventCenter.instance.publish(localhb);
+    paramaml = localhb.dLn.path;
+    AppMethodBeat.o(30303);
+    return paramaml;
+  }
+  
+  public static void be(ArrayList<String> paramArrayList)
   {
     int j = 0;
     AppMethodBeat.i(30307);
-    if (c.fau().EQZ == null)
+    if (c.gjz().JGL == null)
     {
-      ae.e("MicroMsg.WNNoteFavLogic", "sortNoteDataList, getWnNoteBase() is null");
+      Log.e("MicroMsg.WNNoteFavLogic", "sortNoteDataList, getWnNoteBase() is null");
       AppMethodBeat.o(30307);
       return;
     }
-    akn localakn = c.fau().EQZ.ERk;
+    anb localanb = c.gjz().JGL.JGW;
     Object localObject1 = new ArrayList();
     Object localObject2 = new HashMap();
-    if (localakn == null)
+    if (localanb == null)
     {
-      ae.e("MicroMsg.WNNoteFavLogic", "sortNoteDataList, protoItem is null");
+      Log.e("MicroMsg.WNNoteFavLogic", "sortNoteDataList, protoItem is null");
       AppMethodBeat.o(30307);
       return;
     }
-    Object localObject3 = localakn.oeJ.iterator();
+    Object localObject3 = localanb.ppH.iterator();
     while (((Iterator)localObject3).hasNext())
     {
-      ajx localajx = (ajx)((Iterator)localObject3).next();
-      if ((!bu.isNullOrNil(localajx.GAC)) && (!localajx.GAC.contains("WeNoteHtmlFile")) && (!localajx.GAC.contains("-1")))
+      aml localaml = (aml)((Iterator)localObject3).next();
+      if ((!Util.isNullOrNil(localaml.Lwp)) && (!localaml.Lwp.contains("WeNoteHtmlFile")) && (!localaml.Lwp.contains("-1")))
       {
-        ((List)localObject1).add(localajx.GAC);
-        ((HashMap)localObject2).put(localajx.GAC, localajx);
+        ((List)localObject1).add(localaml.Lwp);
+        ((HashMap)localObject2).put(localaml.Lwp, localaml);
       }
     }
     if ((paramArrayList.size() == ((List)localObject1).size()) && (((List)localObject1).containsAll(paramArrayList)) && (paramArrayList.containsAll((Collection)localObject1)))
     {
       i = 0;
       if (i >= ((List)localObject1).size()) {
-        break label471;
+        break label473;
       }
       if (((String)((List)localObject1).get(i)).trim().equals(((String)paramArrayList.get(i)).trim())) {}
     }
-    label471:
+    label473:
     for (int i = 1;; i = 0)
     {
       if (i != 0)
@@ -218,8 +261,8 @@ public final class f
             break;
           }
         }
-        localakn.bm((LinkedList)localObject1);
-        faw();
+        localanb.bH((LinkedList)localObject1);
+        gjB();
         ((HashMap)localObject2).clear();
       }
       AppMethodBeat.o(30307);
@@ -231,47 +274,27 @@ public final class f
         return;
       }
       paramArrayList = new ArrayList();
-      localObject2 = localakn.oeJ.iterator();
+      localObject2 = localanb.ppH.iterator();
       while (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (ajx)((Iterator)localObject2).next();
-        if (((List)localObject1).contains(((ajx)localObject3).GAC)) {
+        localObject3 = (aml)((Iterator)localObject2).next();
+        if (((List)localObject1).contains(((aml)localObject3).Lwp)) {
           paramArrayList.add(localObject3);
         }
       }
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
-        localObject1 = (ajx)paramArrayList.next();
-        localakn.oeJ.remove(localObject1);
+        localObject1 = (aml)paramArrayList.next();
+        localanb.ppH.remove(localObject1);
       }
-      faw();
+      gjB();
       AppMethodBeat.o(30307);
       return;
     }
   }
   
-  public static String abL(String paramString)
-  {
-    AppMethodBeat.i(30301);
-    paramString = com.tencent.mm.b.g.getMessageDigest((paramString + 18 + System.currentTimeMillis()).getBytes());
-    AppMethodBeat.o(30301);
-    return paramString;
-  }
-  
-  public static String b(ajx paramajx)
-  {
-    AppMethodBeat.i(30303);
-    gx localgx = new gx();
-    localgx.dub.type = 27;
-    localgx.dub.dud = paramajx;
-    a.IvT.l(localgx);
-    paramajx = localgx.duc.path;
-    AppMethodBeat.o(30303);
-    return paramajx;
-  }
-  
-  public static String ba(float paramFloat)
+  public static String getLengthStr(float paramFloat)
   {
     AppMethodBeat.i(30298);
     if (paramFloat < 1024.0F)
@@ -297,46 +320,23 @@ public final class f
     return str;
   }
   
-  private static void faw()
+  private static void gjB()
   {
     AppMethodBeat.i(30308);
-    gx localgx = new gx();
-    localgx.dub.type = 30;
-    if (c.fau().EQZ != null)
+    hb localhb = new hb();
+    localhb.dLm.type = 30;
+    if (c.gjz().JGL != null)
     {
-      localgx.dub.doN = c.fau().EQZ.ERk;
-      a.IvT.l(localgx);
-      c.fau().EQZ.aLy(localgx.duc.path);
+      localhb.dLm.dGb = c.gjz().JGL.JGW;
+      EventCenter.instance.publish(localhb);
+      c.gjz().JGL.bbO(localhb.dLn.path);
     }
     AppMethodBeat.o(30308);
-  }
-  
-  public static float sI(long paramLong)
-  {
-    float f1 = 1.0F;
-    AppMethodBeat.i(30299);
-    float f2 = (float)paramLong / 1000.0F;
-    if (f2 < 1.0F) {}
-    for (;;)
-    {
-      f1 = Math.round(f1);
-      AppMethodBeat.o(30299);
-      return f1;
-      f1 = f2;
-    }
-  }
-  
-  public static com.tencent.mm.plugin.fav.a.g zd(long paramLong)
-  {
-    AppMethodBeat.i(30304);
-    com.tencent.mm.plugin.fav.a.g localg = ((af)com.tencent.mm.kernel.g.ad(af.class)).getFavItemInfoStorage().vU(paramLong);
-    AppMethodBeat.o(30304);
-    return localg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.f
  * JD-Core Version:    0.7.0.1
  */

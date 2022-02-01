@@ -4,29 +4,29 @@ import com.tencent.mm.ay.c;
 
 public abstract interface d
 {
-  public abstract void a(a parama);
+  public abstract void a(d.a parama);
   
-  public abstract boolean aJZ();
+  public abstract void b(d.a parama);
   
-  public abstract boolean aKa();
+  public abstract boolean bec();
   
-  public abstract boolean aKb();
+  public abstract boolean bed();
   
-  public abstract void b(a parama);
+  public abstract boolean bee();
   
-  public abstract void duX();
+  public abstract void c(d.a parama);
   
-  public abstract boolean duY();
+  public abstract void esU();
   
-  public abstract c duZ();
+  public abstract boolean esV();
   
-  public abstract void dvl();
+  public abstract c esW();
   
-  public abstract int dvr();
+  public abstract void eth();
+  
+  public abstract int etn();
   
   public abstract int getDuration();
-  
-  public abstract boolean pR(int paramInt);
   
   public abstract void pause();
   
@@ -34,14 +34,11 @@ public abstract interface d
   
   public abstract void stopPlay();
   
-  public static abstract interface a
-  {
-    public abstract void fa(int paramInt1, int paramInt2);
-  }
+  public abstract boolean tG(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.a.d
  * JD-Core Version:    0.7.0.1
  */

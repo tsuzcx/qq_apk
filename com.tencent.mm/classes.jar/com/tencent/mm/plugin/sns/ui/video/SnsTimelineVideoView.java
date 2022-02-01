@@ -3,38 +3,38 @@ package com.tencent.mm.plugin.sns.ui.video;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sns.ui.OnlineVideoView;
-import com.tencent.mm.plugin.sns.ui.ak;
+import com.tencent.mm.plugin.sns.ui.an;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class SnsTimelineVideoView
   extends OnlineVideoView
 {
-  a ASq;
-  public c ASr;
-  public String ASs;
-  long ASt;
-  private View ASu;
-  public volatile boolean ASv;
-  public boolean ASw;
-  public volatile boolean ASx;
-  private SnsTimelineVideoView.b ASy;
+  a FcX;
+  public c FcY;
+  public String FcZ;
+  private View Fda;
+  public volatile boolean Fdb;
+  public boolean Fdc;
+  public volatile boolean Fdd;
+  private b Fde;
+  long vgi;
   
   public SnsTimelineVideoView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(100388);
-    this.ASq = a.ASB;
-    this.ASt = 0L;
-    this.ASv = false;
-    this.ASw = false;
-    this.ASx = false;
-    this.ASy = null;
+    this.FcX = a.Fdh;
+    this.vgi = 0L;
+    this.Fdb = false;
+    this.Fdc = false;
+    this.Fdd = false;
+    this.Fde = null;
     init();
     AppMethodBeat.o(100388);
   }
@@ -43,12 +43,12 @@ public class SnsTimelineVideoView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(100389);
-    this.ASq = a.ASB;
-    this.ASt = 0L;
-    this.ASv = false;
-    this.ASw = false;
-    this.ASx = false;
-    this.ASy = null;
+    this.FcX = a.Fdh;
+    this.vgi = 0L;
+    this.Fdb = false;
+    this.Fdc = false;
+    this.Fdd = false;
+    this.Fde = null;
     init();
     AppMethodBeat.o(100389);
   }
@@ -57,32 +57,50 @@ public class SnsTimelineVideoView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(100390);
-    this.ASq = a.ASB;
-    this.ASt = 0L;
-    this.ASv = false;
-    this.ASw = false;
-    this.ASx = false;
-    this.ASy = null;
+    this.FcX = a.Fdh;
+    this.vgi = 0L;
+    this.Fdb = false;
+    this.Fdc = false;
+    this.Fdd = false;
+    this.Fde = null;
     init();
     AppMethodBeat.o(100390);
   }
   
-  private void aCx(String paramString)
+  private void aRt(final String paramString)
   {
     AppMethodBeat.i(100401);
-    if ((this.ASy != null) && (!bu.isNullOrNil(paramString))) {
-      post(new SnsTimelineVideoView.2(this, paramString));
+    if ((this.Fde != null) && (!Util.isNullOrNil(paramString))) {
+      post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(100384);
+          try
+          {
+            SnsTimelineVideoView.a(SnsTimelineVideoView.this).Zl(paramString);
+            SnsTimelineVideoView.b(SnsTimelineVideoView.this);
+            AppMethodBeat.o(100384);
+            return;
+          }
+          catch (Exception localException)
+          {
+            Log.printErrStackTrace("MicroMsg.Sns.SnsOnlineVideoView", localException, "doUICallback", new Object[0]);
+            AppMethodBeat.o(100384);
+          }
+        }
+      });
     }
     AppMethodBeat.o(100401);
   }
   
-  private void ehP()
+  private void eYc()
   {
     AppMethodBeat.i(100399);
-    if (this.ASu != null)
+    if (this.Fda != null)
     {
-      this.ASu.setAlpha(0.0F);
-      ae.i("MicroMsg.Sns.SnsOnlineVideoView", "%s refreshPlayBtn gone", new Object[] { Integer.valueOf(hashCode()) });
+      this.Fda.setAlpha(0.0F);
+      Log.i("MicroMsg.Sns.SnsOnlineVideoView", "%s refreshPlayBtn gone", new Object[] { Integer.valueOf(hashCode()) });
     }
     AppMethodBeat.o(100399);
   }
@@ -90,68 +108,68 @@ public class SnsTimelineVideoView
   private void init()
   {
     AppMethodBeat.i(100391);
-    this.ASu = findViewById(2131306422);
+    this.Fda = findViewById(2131309853);
     AppMethodBeat.o(100391);
   }
   
-  public final boolean OG()
+  public final boolean YY()
   {
     AppMethodBeat.i(100397);
-    if ((this.oNV instanceof VideoPlayerTextureView))
+    if ((this.qbJ instanceof VideoPlayerTextureView))
     {
-      boolean bool = ((VideoPlayerTextureView)this.oNV).OG();
+      boolean bool = ((VideoPlayerTextureView)this.qbJ).YY();
       AppMethodBeat.o(100397);
       return bool;
     }
-    ae.e("MicroMsg.Sns.SnsOnlineVideoView", "videoview not VideoPlayerTextureView");
+    Log.e("MicroMsg.Sns.SnsOnlineVideoView", "videoview not VideoPlayerTextureView");
     AppMethodBeat.o(100397);
     return false;
   }
   
-  public final void edW()
+  public final void eYd()
   {
     AppMethodBeat.i(100398);
-    super.edW();
-    ae.i("MicroMsg.Sns.SnsOnlineVideoView", "%s resumePlay, setState PLAYING", new Object[] { Integer.valueOf(hashCode()) });
-    this.ASq = a.ASD;
-    this.ASt = System.currentTimeMillis();
-    ehP();
-    eY(true);
+    super.eYd();
+    Log.i("MicroMsg.Sns.SnsOnlineVideoView", "%s resumePlay, setState PLAYING", new Object[] { Integer.valueOf(hashCode()) });
+    this.FcX = a.Fdj;
+    this.vgi = System.currentTimeMillis();
+    eYc();
+    fO(true);
     AppMethodBeat.o(100398);
   }
   
-  public final void eim()
+  public final void fkN()
   {
     AppMethodBeat.i(100395);
-    if (this.AkZ != null) {
-      this.AkZ.een();
+    if (this.EtL != null) {
+      this.EtL.fgE();
     }
     AppMethodBeat.o(100395);
   }
   
-  public final void ein()
+  public final void fkO()
   {
     AppMethodBeat.i(100396);
-    rM(false);
-    ae.i("MicroMsg.Sns.SnsOnlineVideoView", "%s pausePlayWithoutChangePlayBtn, setState ATTACHING", new Object[] { Integer.valueOf(hashCode()) });
+    vi(false);
+    Log.i("MicroMsg.Sns.SnsOnlineVideoView", "%s pausePlayWithoutChangePlayBtn, setState ATTACHING", new Object[] { Integer.valueOf(hashCode()) });
     AppMethodBeat.o(100396);
   }
   
-  public final void eio()
+  public final void fkP()
   {
     AppMethodBeat.i(100400);
-    ae.i("MicroMsg.Sns.SnsOnlineVideoView", "%d onDestroyAsync", new Object[] { Integer.valueOf(hashCode()) });
-    aCx(this.ASs);
-    this.ASs = "";
-    this.ASv = true;
-    if (this.AkZ != null)
+    Log.i("MicroMsg.Sns.SnsOnlineVideoView", "%d onDestroyAsync", new Object[] { Integer.valueOf(hashCode()) });
+    aRt(this.FcZ);
+    this.FcZ = "";
+    this.Fdb = true;
+    if (this.EtL != null)
     {
-      this.AkZ.eef();
-      this.AkZ.clear();
-      this.AkZ = null;
+      this.EtL.fgw();
+      this.EtL.clear();
+      this.EtL = null;
     }
-    edK();
-    h.MqF.aO(new Runnable()
+    fgc();
+    h.RTc.aX(new Runnable()
     {
       public final void run()
       {
@@ -163,45 +181,45 @@ public class SnsTimelineVideoView
     AppMethodBeat.o(100400);
   }
   
-  public final void eip()
+  public final void fkQ()
   {
     AppMethodBeat.i(100402);
     try
     {
-      if (this.ASy != null)
+      if (this.Fde != null)
       {
-        this.ASy.PR(this.ASs);
-        this.ASy = null;
+        this.Fde.Zl(this.FcZ);
+        this.Fde = null;
       }
       AppMethodBeat.o(100402);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.Sns.SnsOnlineVideoView", localException, "doUICallback", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.Sns.SnsOnlineVideoView", localException, "doUICallback", new Object[0]);
       AppMethodBeat.o(100402);
     }
   }
   
-  public final void eiq()
+  public final void fkR()
   {
     AppMethodBeat.i(100404);
-    this.ASs = "";
+    this.FcZ = "";
     super.onDestroy();
-    this.ASv = false;
-    ae.i("MicroMsg.Sns.SnsOnlineVideoView", "%d onDestroyWithoutCallback succ", new Object[] { Integer.valueOf(hashCode()) });
+    this.Fdb = false;
+    Log.i("MicroMsg.Sns.SnsOnlineVideoView", "%d onDestroyWithoutCallback succ", new Object[] { Integer.valueOf(hashCode()) });
     AppMethodBeat.o(100404);
   }
   
   public final void onDestroy()
   {
     AppMethodBeat.i(100403);
-    aCx(this.ASs);
-    this.ASs = "";
+    aRt(this.FcZ);
+    this.FcZ = "";
     super.onDestroy();
-    this.ASv = false;
-    this.ASx = true;
-    ae.i("MicroMsg.Sns.SnsOnlineVideoView", "%d on destroy succ", new Object[] { Integer.valueOf(hashCode()) });
+    this.Fdb = false;
+    this.Fdd = true;
+    Log.i("MicroMsg.Sns.SnsOnlineVideoView", "%d on destroy succ", new Object[] { Integer.valueOf(hashCode()) });
     AppMethodBeat.o(100403);
   }
   
@@ -209,47 +227,47 @@ public class SnsTimelineVideoView
   {
     AppMethodBeat.i(100392);
     super.onDetachedFromWindow();
-    ae.i("MicroMsg.Sns.SnsOnlineVideoView", "%s onDetachedFromWindow, setState AVAILABLE, %s", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.ASw) });
-    this.ASq = a.ASB;
-    if (!this.ASw)
+    Log.i("MicroMsg.Sns.SnsOnlineVideoView", "%s onDetachedFromWindow, setState AVAILABLE, %s", new Object[] { Integer.valueOf(hashCode()), Boolean.valueOf(this.Fdc) });
+    this.FcX = a.Fdh;
+    if (!this.Fdc)
     {
-      eio();
+      fkP();
       AppMethodBeat.o(100392);
       return;
     }
-    this.ASw = false;
+    this.Fdc = false;
     AppMethodBeat.o(100392);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(100393);
-    ehP();
+    eYc();
     super.onResume();
     AppMethodBeat.o(100393);
   }
   
-  public final void rM(boolean paramBoolean)
-  {
-    AppMethodBeat.i(100394);
-    super.cyX();
-    ae.i("MicroMsg.Sns.SnsOnlineVideoView", "%s pausePlay, setState ATTACHING", new Object[] { Integer.valueOf(hashCode()) });
-    this.ASq = a.ASC;
-    if ((paramBoolean) && (this.ASu != null))
-    {
-      this.ASu.setAlpha(1.0F);
-      ae.i("MicroMsg.Sns.SnsOnlineVideoView", "%s refreshPlayBtn visible", new Object[] { Integer.valueOf(hashCode()) });
-    }
-    edK();
-    AppMethodBeat.o(100394);
-  }
-  
-  public void setUICallback(SnsTimelineVideoView.b paramb)
+  public void setUICallback(b paramb)
   {
     AppMethodBeat.i(100405);
-    ae.i("MicroMsg.Sns.SnsOnlineVideoView", "%s videoview setUICallback", new Object[] { Integer.valueOf(hashCode()) });
-    this.ASy = paramb;
+    Log.i("MicroMsg.Sns.SnsOnlineVideoView", "%s videoview setUICallback", new Object[] { Integer.valueOf(hashCode()) });
+    this.Fde = paramb;
     AppMethodBeat.o(100405);
+  }
+  
+  public final void vi(boolean paramBoolean)
+  {
+    AppMethodBeat.i(100394);
+    super.cXa();
+    Log.i("MicroMsg.Sns.SnsOnlineVideoView", "%s pausePlay, setState ATTACHING", new Object[] { Integer.valueOf(hashCode()) });
+    this.FcX = a.Fdi;
+    if ((paramBoolean) && (this.Fda != null))
+    {
+      this.Fda.setAlpha(1.0F);
+      Log.i("MicroMsg.Sns.SnsOnlineVideoView", "%s refreshPlayBtn visible", new Object[] { Integer.valueOf(hashCode()) });
+    }
+    fgc();
+    AppMethodBeat.o(100394);
   }
   
   static enum a
@@ -257,19 +275,24 @@ public class SnsTimelineVideoView
     static
     {
       AppMethodBeat.i(100387);
-      ASB = new a("AVAILABLE", 0);
-      ASC = new a("ATTACHING", 1);
-      ASD = new a("PLAYING", 2);
-      ASE = new a[] { ASB, ASC, ASD };
+      Fdh = new a("AVAILABLE", 0);
+      Fdi = new a("ATTACHING", 1);
+      Fdj = new a("PLAYING", 2);
+      Fdk = new a[] { Fdh, Fdi, Fdj };
       AppMethodBeat.o(100387);
     }
     
     private a() {}
   }
+  
+  public static abstract interface b
+  {
+    public abstract void Zl(String paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.video.SnsTimelineVideoView
  * JD-Core Version:    0.7.0.1
  */

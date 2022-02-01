@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.recordvideo.background;
 
-import d.g.a.a;
-import d.g.a.m;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.a;
+import kotlin.g.a.m;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "success", "", "<anonymous parameter 1>", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "success", "", "<anonymous parameter 1>", "", "invoke"})
 final class VideoMixer$d
   extends q
-  implements m<Boolean, String, z>
+  implements m<Boolean, String, x>
 {
   VideoMixer$d(a parama)
   {

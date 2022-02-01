@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:background="@color/rs" android:layout_width="fill_parent" android:layout_height="@dimen/jp"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/g3j" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</ScrollView>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:id="@id/hee" android:baselineAligned="false" style="@style/oo">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/x1" android:layout_width="@dimen/e1" android:layout_height="@dimen/e1" android:layout_marginRight="@dimen/js" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/k_" android:paddingRight="@dimen/cb" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <com.tencent.mm.ui.base.EllipsizeTextView android:id="@id/fzg" android:layout_width="0.0dip" android:maxWidth="140.0dip" android:layout_weight="1.0" style="@style/mp" />
+                    <TextView android:id="@id/in3" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{2017/03/09}" style="@style/mn" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/bg0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="3.0dip">
+                    <TextView android:gravity="center|left" android:id="@id/fn8" android:layout_width="fill_parent" android:singleLine="true" style="@style/mo" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <View android:id="@id/brt" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="72.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+</LinearLayout>

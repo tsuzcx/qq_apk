@@ -1,24 +1,11 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.ad;
-import java.util.concurrent.CopyOnWriteArraySet;
+import android.view.MenuItem;
 
 public abstract interface af
-  extends ad
+  extends com.tencent.mm.ui.chatting.d.af
 {
-  public abstract boolean fID();
-  
-  public abstract boolean fIE();
-  
-  public abstract boolean fIF();
-  
-  public abstract boolean fIG();
-  
-  public abstract CopyOnWriteArraySet<Long> fIH();
-  
-  public abstract int fII();
-  
-  public abstract void fIJ();
+  public abstract void h(MenuItem paramMenuItem);
 }
 
 

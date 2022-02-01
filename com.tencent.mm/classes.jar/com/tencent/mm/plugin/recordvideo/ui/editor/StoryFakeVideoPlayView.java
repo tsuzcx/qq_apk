@@ -5,38 +5,38 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.view.TextureView;
 import android.view.TextureView.SurfaceTextureListener;
-import com.tencent.e.i;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.b.e;
 import com.tencent.mm.plugin.recordvideo.background.b.c;
 import com.tencent.mm.plugin.recordvideo.background.b.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;", "Landroid/view/TextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "callback", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;", "getCallback", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;", "setCallback", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;)V", "canResume", "", "curImageList", "", "", "curPos", "glThread", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/GLThread;", "playStatus", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$STATUS;", "render", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImageVideoRender;", "surfaceAvailable", "task", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$VideoLoopTask;", "getCurPos", "init", "", "isPlaying", "pause", "play", "imageList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "resume", "stop", "Callback", "Companion", "STATUS", "VideoLoopTask", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;", "Landroid/view/TextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "callback", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;", "getCallback", "()Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;", "setCallback", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;)V", "canResume", "", "curImageList", "", "", "curPos", "glThread", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/GLThread;", "playStatus", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$STATUS;", "render", "Lcom/tencent/mm/plugin/recordvideo/background/image2video/StoryImageVideoRender;", "surfaceAvailable", "task", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$VideoLoopTask;", "getCurPos", "init", "", "isPlaying", "pause", "play", "imageList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "resume", "stop", "Callback", "Companion", "STATUS", "VideoLoopTask", "plugin-recordvideo_release"})
 public final class StoryFakeVideoPlayView
   extends TextureView
 {
+  public static final StoryFakeVideoPlayView.b Cen;
   public static final String TAG = "MicroMsg.Story.StoryFakeVideoPlayView";
-  public static final StoryFakeVideoPlayView.b ydl;
-  private int sOZ;
-  private com.tencent.mm.plugin.recordvideo.background.b.h xLo;
-  private c xLp;
-  public StoryFakeVideoPlayView.c ydf;
-  private boolean ydg;
-  private a ydh;
-  private d ydi;
-  boolean ydj;
-  private List<String> ydk;
+  private com.tencent.mm.plugin.recordvideo.background.b.h BLs;
+  private c BLt;
+  public StoryFakeVideoPlayView.c Ceh;
+  private boolean Cei;
+  private a Cej;
+  private d Cek;
+  boolean Cel;
+  private List<String> Cem;
+  private int uis;
   
   static
   {
     AppMethodBeat.i(76066);
-    ydl = new StoryFakeVideoPlayView.b((byte)0);
+    Cen = new StoryFakeVideoPlayView.b((byte)0);
     TAG = "MicroMsg.Story.StoryFakeVideoPlayView";
     AppMethodBeat.o(76066);
   }
@@ -45,7 +45,7 @@ public final class StoryFakeVideoPlayView
   {
     super(paramContext);
     AppMethodBeat.i(76063);
-    this.ydf = StoryFakeVideoPlayView.c.ydm;
+    this.Ceh = StoryFakeVideoPlayView.c.Ceo;
     init();
     AppMethodBeat.o(76063);
   }
@@ -54,7 +54,7 @@ public final class StoryFakeVideoPlayView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(76064);
-    this.ydf = StoryFakeVideoPlayView.c.ydm;
+    this.Ceh = StoryFakeVideoPlayView.c.Ceo;
     init();
     AppMethodBeat.o(76064);
   }
@@ -63,7 +63,7 @@ public final class StoryFakeVideoPlayView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(76065);
-    this.ydf = StoryFakeVideoPlayView.c.ydm;
+    this.Ceh = StoryFakeVideoPlayView.c.Ceo;
     init();
     AppMethodBeat.o(76065);
   }
@@ -71,21 +71,21 @@ public final class StoryFakeVideoPlayView
   private void init()
   {
     AppMethodBeat.i(76059);
-    this.xLo = new com.tencent.mm.plugin.recordvideo.background.b.h();
+    this.BLs = new com.tencent.mm.plugin.recordvideo.background.b.h();
     setSurfaceTextureListener((TextureView.SurfaceTextureListener)new e(this));
     AppMethodBeat.o(76059);
   }
   
-  public final void at(ArrayList<String> paramArrayList)
+  public final void aK(ArrayList<String> paramArrayList)
   {
     int j = 0;
     AppMethodBeat.i(76060);
     p.h(paramArrayList, "imageList");
-    ae.i(TAG, "play");
-    d locald = this.ydi;
+    Log.i(TAG, "play");
+    d locald = this.Cek;
     if (locald != null)
     {
-      List localList = this.ydk;
+      List localList = this.Cem;
       int k;
       int i;
       if (localList != null) {
@@ -95,7 +95,7 @@ public final class StoryFakeVideoPlayView
           if (k >= 0)
           {
             i = 0;
-            if (!bu.lX((String)paramArrayList.get(i), (String)localList.get(i))) {
+            if (!Util.isEqual((String)paramArrayList.get(i), (String)localList.get(i))) {
               i = j;
             }
           }
@@ -106,7 +106,7 @@ public final class StoryFakeVideoPlayView
         if ((i == 0) || (locald.stop)) {
           break label148;
         }
-        ae.i(TAG, "play same imagelist, do nothing");
+        Log.i(TAG, "play same imagelist, do nothing");
         AppMethodBeat.o(76060);
         return;
         if (i != k)
@@ -121,46 +121,46 @@ public final class StoryFakeVideoPlayView
       label148:
       locald.stop = true;
     }
-    this.ydk = ((List)paramArrayList);
-    this.ydi = new d(paramArrayList);
-    paramArrayList = com.tencent.e.h.MqF;
-    locald = this.ydi;
+    this.Cem = ((List)paramArrayList);
+    this.Cek = new d(paramArrayList);
+    paramArrayList = com.tencent.f.h.RTc;
+    locald = this.Cek;
     if (locald == null) {
-      p.gkB();
+      p.hyc();
     }
-    paramArrayList.aR((Runnable)locald);
+    paramArrayList.ba((Runnable)locald);
     AppMethodBeat.o(76060);
   }
   
   public final a getCallback()
   {
-    return this.ydh;
+    return this.Cej;
   }
   
   public final int getCurPos()
   {
-    return this.sOZ;
+    return this.uis;
   }
   
   public final void resume()
   {
     AppMethodBeat.i(76061);
-    ae.i(TAG, "resume");
-    this.ydf = StoryFakeVideoPlayView.c.ydn;
+    Log.i(TAG, "resume");
+    this.Ceh = StoryFakeVideoPlayView.c.Cep;
     AppMethodBeat.o(76061);
   }
   
   public final void setCallback(a parama)
   {
-    this.ydh = parama;
+    this.Cej = parama;
   }
   
   public final void stop()
   {
     AppMethodBeat.i(76062);
-    ae.i(TAG, "stop");
-    this.ydf = StoryFakeVideoPlayView.c.ydm;
-    d locald = this.ydi;
+    Log.i(TAG, "stop");
+    this.Ceh = StoryFakeVideoPlayView.c.Ceo;
+    d locald = this.Cek;
     if (locald != null)
     {
       locald.stop = true;
@@ -170,23 +170,23 @@ public final class StoryFakeVideoPlayView
     AppMethodBeat.o(76062);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;", "", "onPrepared", "", "plugin-recordvideo_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$Callback;", "", "onPrepared", "", "plugin-recordvideo_release"})
   public static abstract interface a
   {
-    public abstract void ta();
+    public abstract void tf();
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$VideoLoopTask;", "Lcom/tencent/threadpool/runnable/KeyRunnable;", "imageList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;Ljava/util/ArrayList;)V", "getImageList", "()Ljava/util/ArrayList;", "setImageList", "(Ljava/util/ArrayList;)V", "stop", "", "getStop", "()Z", "setStop", "(Z)V", "getKey", "run", "", "plugin-recordvideo_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$VideoLoopTask;", "Lcom/tencent/threadpool/runnable/KeyRunnable;", "imageList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "(Lcom/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView;Ljava/util/ArrayList;)V", "getImageList", "()Ljava/util/ArrayList;", "setImageList", "(Ljava/util/ArrayList;)V", "stop", "", "getStop", "()Z", "setStop", "(Z)V", "getKey", "run", "", "plugin-recordvideo_release"})
   public final class d
-    implements com.tencent.e.i.h
+    implements com.tencent.f.i.h
   {
+    private ArrayList<String> BLy;
     boolean stop;
-    private ArrayList<String> xLu;
     
     public d()
     {
       AppMethodBeat.i(76054);
-      this.xLu = localObject;
+      this.BLy = localObject;
       AppMethodBeat.o(76054);
     }
     
@@ -198,17 +198,17 @@ public final class StoryFakeVideoPlayView
     public final void run()
     {
       AppMethodBeat.i(76053);
-      StoryFakeVideoPlayView.a(StoryFakeVideoPlayView.this, StoryFakeVideoPlayView.c.ydn);
+      StoryFakeVideoPlayView.a(StoryFakeVideoPlayView.this, StoryFakeVideoPlayView.c.Cep);
       while (!StoryFakeVideoPlayView.b(StoryFakeVideoPlayView.this)) {
         Thread.sleep(100L);
       }
-      StoryFakeVideoPlayView.c(StoryFakeVideoPlayView.this).xMc.dIz();
-      StoryFakeVideoPlayView.c(StoryFakeVideoPlayView.this).fi((List)this.xLu);
+      StoryFakeVideoPlayView.c(StoryFakeVideoPlayView.this).BMi.eJm();
+      StoryFakeVideoPlayView.c(StoryFakeVideoPlayView.this).ge((List)this.BLy);
       if (this.stop)
       {
         AppMethodBeat.o(76053);
         return;
-        if (StoryFakeVideoPlayView.a(StoryFakeVideoPlayView.this) != StoryFakeVideoPlayView.c.ydo) {
+        if (StoryFakeVideoPlayView.a(StoryFakeVideoPlayView.this) != StoryFakeVideoPlayView.c.Ceq) {
           break label299;
         }
         StoryFakeVideoPlayView.e(StoryFakeVideoPlayView.this);
@@ -219,14 +219,14 @@ public final class StoryFakeVideoPlayView
         if (this.stop) {
           break label331;
         }
-        if ((StoryFakeVideoPlayView.a(StoryFakeVideoPlayView.this) != StoryFakeVideoPlayView.c.ydn) || (!StoryFakeVideoPlayView.b(StoryFakeVideoPlayView.this))) {
+        if ((StoryFakeVideoPlayView.a(StoryFakeVideoPlayView.this) != StoryFakeVideoPlayView.c.Cep) || (!StoryFakeVideoPlayView.b(StoryFakeVideoPlayView.this))) {
           break;
         }
-        localObject = e.xNf;
-        int i = e.dIF();
-        localObject = e.xNf;
+        localObject = e.BNm;
+        int i = e.eJs();
+        localObject = e.BNm;
         int k = i / e.getFrameRate();
-        StoryFakeVideoPlayView.d(StoryFakeVideoPlayView.this).an((Runnable)new b(this));
+        StoryFakeVideoPlayView.d(StoryFakeVideoPlayView.this).ax((Runnable)new b(this));
         int j;
         for (i = 0;; i = j)
         {
@@ -236,31 +236,31 @@ public final class StoryFakeVideoPlayView
           }
           localObject = StoryFakeVideoPlayView.this;
           long l = j;
-          e locale = e.xNf;
+          e locale = e.BNm;
           StoryFakeVideoPlayView.a((StoryFakeVideoPlayView)localObject, (int)(l * (1000L / e.getFrameRate())));
-          if (StoryFakeVideoPlayView.a(StoryFakeVideoPlayView.this) != StoryFakeVideoPlayView.c.ydn) {
+          if (StoryFakeVideoPlayView.a(StoryFakeVideoPlayView.this) != StoryFakeVideoPlayView.c.Cep) {
             break;
           }
           StoryFakeVideoPlayView.d(StoryFakeVideoPlayView.this).requestRender();
           if (StoryFakeVideoPlayView.this.getCallback() != null) {
-            StoryFakeVideoPlayView.d(StoryFakeVideoPlayView.this).an((Runnable)new a(this));
+            StoryFakeVideoPlayView.d(StoryFakeVideoPlayView.this).ax((Runnable)new a(this));
           }
-          localObject = e.xNf;
+          localObject = e.BNm;
           Thread.sleep(1000L / e.getFrameRate());
         }
         label299:
-        if ((StoryFakeVideoPlayView.a(StoryFakeVideoPlayView.this) != StoryFakeVideoPlayView.c.ydn) || (StoryFakeVideoPlayView.b(StoryFakeVideoPlayView.this))) {
+        if ((StoryFakeVideoPlayView.a(StoryFakeVideoPlayView.this) != StoryFakeVideoPlayView.c.Cep) || (StoryFakeVideoPlayView.b(StoryFakeVideoPlayView.this))) {
           break label331;
         }
         Thread.sleep(500L);
       }
       label331:
-      Object localObject = StoryFakeVideoPlayView.ydl;
-      ae.i(StoryFakeVideoPlayView.access$getTAG$cp(), "video play end");
+      Object localObject = StoryFakeVideoPlayView.Cen;
+      Log.i(StoryFakeVideoPlayView.access$getTAG$cp(), "video play end");
       AppMethodBeat.o(76053);
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$VideoLoopTask$run$2$1"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$VideoLoopTask$run$2$1"})
     static final class a
       implements Runnable
     {
@@ -269,16 +269,16 @@ public final class StoryFakeVideoPlayView
       public final void run()
       {
         AppMethodBeat.i(76051);
-        StoryFakeVideoPlayView.a locala = this.ydr.ydq.getCallback();
+        StoryFakeVideoPlayView.a locala = this.Cet.Ces.getCallback();
         if (locala != null) {
-          locala.ta();
+          locala.tf();
         }
-        this.ydr.ydq.setCallback(null);
+        this.Cet.Ces.setCallback(null);
         AppMethodBeat.o(76051);
       }
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
     static final class b
       implements Runnable
     {
@@ -287,38 +287,38 @@ public final class StoryFakeVideoPlayView
       public final void run()
       {
         AppMethodBeat.i(76052);
-        StoryFakeVideoPlayView.c(this.ydr.ydq).startTime = 0L;
+        StoryFakeVideoPlayView.c(this.Cet.Ces).startTime = 0L;
         AppMethodBeat.o(76052);
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$init$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-recordvideo_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/recordvideo/ui/editor/StoryFakeVideoPlayView$init$1", "Landroid/view/TextureView$SurfaceTextureListener;", "onSurfaceTextureAvailable", "", "surface", "Landroid/graphics/SurfaceTexture;", "width", "", "height", "onSurfaceTextureDestroyed", "", "onSurfaceTextureSizeChanged", "onSurfaceTextureUpdated", "plugin-recordvideo_release"})
   public static final class e
     implements TextureView.SurfaceTextureListener
   {
     public final void onSurfaceTextureAvailable(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(76058);
-      StoryFakeVideoPlayView.a(this.ydq, new c(paramSurfaceTexture, StoryFakeVideoPlayView.c(this.ydq)));
-      StoryFakeVideoPlayView.d(this.ydq).start();
-      StoryFakeVideoPlayView.d(this.ydq).dB(paramInt1, paramInt2);
-      paramSurfaceTexture = StoryFakeVideoPlayView.d(this.ydq);
-      e locale = e.xNf;
+      StoryFakeVideoPlayView.a(this.Ces, new c(paramSurfaceTexture, StoryFakeVideoPlayView.c(this.Ces)));
+      StoryFakeVideoPlayView.d(this.Ces).start();
+      StoryFakeVideoPlayView.d(this.Ces).dL(paramInt1, paramInt2);
+      paramSurfaceTexture = StoryFakeVideoPlayView.d(this.Ces);
+      e locale = e.BNm;
       paramSurfaceTexture.setFrameRate(e.getFrameRate());
-      StoryFakeVideoPlayView.a(this.ydq, true);
-      paramSurfaceTexture = StoryFakeVideoPlayView.ydl;
-      ae.i(StoryFakeVideoPlayView.access$getTAG$cp(), "onSurfaceTextureAvailable");
+      StoryFakeVideoPlayView.a(this.Ces, true);
+      paramSurfaceTexture = StoryFakeVideoPlayView.Cen;
+      Log.i(StoryFakeVideoPlayView.access$getTAG$cp(), "onSurfaceTextureAvailable");
       AppMethodBeat.o(76058);
     }
     
     public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
     {
       AppMethodBeat.i(76057);
-      paramSurfaceTexture = StoryFakeVideoPlayView.ydl;
-      ae.i(StoryFakeVideoPlayView.access$getTAG$cp(), "onSurfaceTextureDestroyed");
-      StoryFakeVideoPlayView.a(this.ydq, false);
-      StoryFakeVideoPlayView.d(this.ydq).stop();
+      paramSurfaceTexture = StoryFakeVideoPlayView.Cen;
+      Log.i(StoryFakeVideoPlayView.access$getTAG$cp(), "onSurfaceTextureDestroyed");
+      StoryFakeVideoPlayView.a(this.Ces, false);
+      StoryFakeVideoPlayView.d(this.Ces).stop();
       AppMethodBeat.o(76057);
       return true;
     }
@@ -326,23 +326,23 @@ public final class StoryFakeVideoPlayView
     public final void onSurfaceTextureSizeChanged(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
     {
       AppMethodBeat.i(76055);
-      paramSurfaceTexture = StoryFakeVideoPlayView.ydl;
-      ae.i(StoryFakeVideoPlayView.access$getTAG$cp(), "onSurfaceTextureSizeChanged");
+      paramSurfaceTexture = StoryFakeVideoPlayView.Cen;
+      Log.i(StoryFakeVideoPlayView.access$getTAG$cp(), "onSurfaceTextureSizeChanged");
       AppMethodBeat.o(76055);
     }
     
     public final void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture)
     {
       AppMethodBeat.i(76056);
-      paramSurfaceTexture = StoryFakeVideoPlayView.ydl;
-      ae.i(StoryFakeVideoPlayView.access$getTAG$cp(), "onSurfaceTextureUpdated");
+      paramSurfaceTexture = StoryFakeVideoPlayView.Cen;
+      Log.i(StoryFakeVideoPlayView.access$getTAG$cp(), "onSurfaceTextureUpdated");
       AppMethodBeat.o(76056);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.StoryFakeVideoPlayView
  * JD-Core Version:    0.7.0.1
  */

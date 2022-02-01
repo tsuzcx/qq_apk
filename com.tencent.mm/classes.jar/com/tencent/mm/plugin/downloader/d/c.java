@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.downloader.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.d.l;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -11,42 +11,42 @@ import java.util.Properties;
 
 public final class c
 {
-  private static final l prU;
-  Properties prV;
-  byte[] prW;
+  private static final l qHz;
+  Properties qHA;
+  byte[] qHB;
   
   static
   {
     AppMethodBeat.i(88868);
-    prU = new l(38650);
+    qHz = new l(38650);
     AppMethodBeat.o(88868);
   }
   
   public c()
   {
     AppMethodBeat.i(88863);
-    this.prV = new Properties();
+    this.qHA = new Properties();
     AppMethodBeat.o(88863);
   }
   
-  public final void I(byte[] paramArrayOfByte)
+  public final void W(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88865);
     if (paramArrayOfByte == null)
     {
-      ae.w("MicroMsg.Channel.GameComment", "decode, data is null");
+      Log.w("MicroMsg.Channel.GameComment", "decode, data is null");
       AppMethodBeat.o(88865);
       return;
     }
     ByteBuffer localByteBuffer = ByteBuffer.wrap(paramArrayOfByte);
     byte[] arrayOfByte = new byte[2];
     localByteBuffer.get(arrayOfByte);
-    if (!prU.equals(new l(arrayOfByte))) {
-      ae.e("MicroMsg.Channel.GameComment", "decode, unknow protocol");
+    if (!qHz.equals(new l(arrayOfByte))) {
+      Log.e("MicroMsg.Channel.GameComment", "decode, unknow protocol");
     }
     if (paramArrayOfByte.length - 2 <= 2)
     {
-      ae.e("MicroMsg.Channel.GameComment", "decode, data.length - headLength <= 2");
+      Log.e("MicroMsg.Channel.GameComment", "decode, data.length - headLength <= 2");
       AppMethodBeat.o(88865);
       return;
     }
@@ -55,7 +55,7 @@ public final class c
     int i = new l(arrayOfByte).value;
     if (paramArrayOfByte.length - 2 - 2 < i)
     {
-      ae.e("MicroMsg.Channel.GameComment", "decode, cooment content is empty");
+      Log.e("MicroMsg.Channel.GameComment", "decode, cooment content is empty");
       AppMethodBeat.o(88865);
       return;
     }
@@ -63,13 +63,13 @@ public final class c
     localByteBuffer.get(arrayOfByte);
     try
     {
-      this.prV.load(new InputStreamReader(new ByteArrayInputStream(arrayOfByte), "UTF-8"));
+      this.qHA.load(new InputStreamReader(new ByteArrayInputStream(arrayOfByte), "UTF-8"));
       label170:
       i = paramArrayOfByte.length - 2 - i - 2;
       if (i > 0)
       {
-        this.prW = new byte[i];
-        localByteBuffer.get(this.prW);
+        this.qHB = new byte[i];
+        localByteBuffer.get(this.qHB);
       }
       AppMethodBeat.o(88865);
       return;
@@ -83,9 +83,9 @@ public final class c
   public final String toString()
   {
     AppMethodBeat.i(88867);
-    StringBuilder localStringBuilder = new StringBuilder("GameComment [p=").append(this.prV).append(", otherData=");
-    if (this.prW == null) {}
-    for (String str = "";; str = new String(this.prW))
+    StringBuilder localStringBuilder = new StringBuilder("GameComment [p=").append(this.qHA).append(", otherData=");
+    if (this.qHB == null) {}
+    for (String str = "";; str = new String(this.qHB))
     {
       str = str + "]";
       AppMethodBeat.o(88867);
@@ -95,7 +95,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.c
  * JD-Core Version:    0.7.0.1
  */

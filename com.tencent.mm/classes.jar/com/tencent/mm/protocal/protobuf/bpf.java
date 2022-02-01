@@ -1,195 +1,106 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class bpf
-  extends com.tencent.mm.bw.a
+  extends dop
 {
-  public String FIx;
-  public int FZN;
-  public String GSy;
-  public long HcG;
-  public String HcI;
-  public int HcK;
-  public int HcL;
-  public String HcM;
-  public int mwj;
-  public int oEe;
-  public String oFF;
-  public String pqW;
-  public int state;
-  public String vvw;
-  public String yiv;
+  public String Lso;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(72506);
+    AppMethodBeat.i(104805);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GSy != null) {
-        paramVarArgs.d(1, this.GSy);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.Lso == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: LensId");
+        AppMethodBeat.o(104805);
+        throw paramVarArgs;
       }
-      if (this.FIx != null) {
-        paramVarArgs.d(2, this.FIx);
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.ni(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aZ(3, this.HcG);
-      paramVarArgs.aS(4, this.state);
-      paramVarArgs.aS(5, this.FZN);
-      paramVarArgs.aS(6, this.oEe);
-      paramVarArgs.aS(7, this.HcK);
-      paramVarArgs.aS(8, this.HcL);
-      if (this.HcM != null) {
-        paramVarArgs.d(9, this.HcM);
+      if (this.Lso != null) {
+        paramVarArgs.e(2, this.Lso);
       }
-      if (this.oFF != null) {
-        paramVarArgs.d(10, this.oFF);
-      }
-      if (this.vvw != null) {
-        paramVarArgs.d(11, this.vvw);
-      }
-      if (this.pqW != null) {
-        paramVarArgs.d(12, this.pqW);
-      }
-      if (this.yiv != null) {
-        paramVarArgs.d(13, this.yiv);
-      }
-      if (this.HcI != null) {
-        paramVarArgs.d(14, this.HcI);
-      }
-      paramVarArgs.aS(15, this.mwj);
-      AppMethodBeat.o(72506);
+      AppMethodBeat.o(104805);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.GSy == null) {
-        break label954;
+      if (this.BaseRequest == null) {
+        break label418;
       }
     }
-    label954:
-    for (paramInt = f.a.a.b.b.a.e(1, this.GSy) + 0;; paramInt = 0)
+    label418:
+    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.FIx != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.FIx);
+      if (this.Lso != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.Lso);
       }
-      i = i + f.a.a.b.b.a.p(3, this.HcG) + f.a.a.b.b.a.bz(4, this.state) + f.a.a.b.b.a.bz(5, this.FZN) + f.a.a.b.b.a.bz(6, this.oEe) + f.a.a.b.b.a.bz(7, this.HcK) + f.a.a.b.b.a.bz(8, this.HcL);
-      paramInt = i;
-      if (this.HcM != null) {
-        paramInt = i + f.a.a.b.b.a.e(9, this.HcM);
-      }
-      i = paramInt;
-      if (this.oFF != null) {
-        i = paramInt + f.a.a.b.b.a.e(10, this.oFF);
-      }
-      paramInt = i;
-      if (this.vvw != null) {
-        paramInt = i + f.a.a.b.b.a.e(11, this.vvw);
-      }
-      i = paramInt;
-      if (this.pqW != null) {
-        i = paramInt + f.a.a.b.b.a.e(12, this.pqW);
-      }
-      paramInt = i;
-      if (this.yiv != null) {
-        paramInt = i + f.a.a.b.b.a.e(13, this.yiv);
-      }
-      i = paramInt;
-      if (this.HcI != null) {
-        i = paramInt + f.a.a.b.b.a.e(14, this.HcI);
-      }
-      paramInt = f.a.a.b.b.a.bz(15, this.mwj);
-      AppMethodBeat.o(72506);
-      return i + paramInt;
+      AppMethodBeat.o(104805);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(72506);
+        if (this.Lso == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: LensId");
+          AppMethodBeat.o(104805);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(104805);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         bpf localbpf = (bpf)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(72506);
+          AppMethodBeat.o(104805);
           return -1;
         case 1: 
-          localbpf.GSy = locala.OmT.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 2: 
-          localbpf.FIx = locala.OmT.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 3: 
-          localbpf.HcG = locala.OmT.zd();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 4: 
-          localbpf.state = locala.OmT.zc();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 5: 
-          localbpf.FZN = locala.OmT.zc();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 6: 
-          localbpf.oEe = locala.OmT.zc();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 7: 
-          localbpf.HcK = locala.OmT.zc();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 8: 
-          localbpf.HcL = locala.OmT.zc();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 9: 
-          localbpf.HcM = locala.OmT.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 10: 
-          localbpf.oFF = locala.OmT.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 11: 
-          localbpf.vvw = locala.OmT.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 12: 
-          localbpf.pqW = locala.OmT.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 13: 
-          localbpf.yiv = locala.OmT.readString();
-          AppMethodBeat.o(72506);
-          return 0;
-        case 14: 
-          localbpf.HcI = locala.OmT.readString();
-          AppMethodBeat.o(72506);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jr();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localbpf.BaseRequest = ((jr)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(104805);
           return 0;
         }
-        localbpf.mwj = locala.OmT.zc();
-        AppMethodBeat.o(72506);
+        localbpf.Lso = ((g.a.a.a.a)localObject1).UbS.readString();
+        AppMethodBeat.o(104805);
         return 0;
       }
-      AppMethodBeat.o(72506);
+      AppMethodBeat.o(104805);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bpf
  * JD-Core Version:    0.7.0.1
  */

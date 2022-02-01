@@ -7,7 +7,7 @@ public final class a
 {
   private static final char[] HEX_DIGITS = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102 };
   
-  public static String B(byte[] paramArrayOfByte)
+  public static String getMD5String(byte[] paramArrayOfByte)
   {
     for (;;)
     {
@@ -43,7 +43,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.resource.a.a.a
  * JD-Core Version:    0.7.0.1
  */

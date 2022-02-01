@@ -106,7 +106,7 @@ public final class d
   }
   
   /* Error */
-  public static String ah(File paramFile)
+  public static String al(File paramFile)
   {
     // Byte code:
     //   0: ldc 49
@@ -124,64 +124,66 @@ public final class d
     //   24: invokespecial 34	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   27: astore_0
     //   28: aload_0
-    //   29: invokestatic 53	com/tencent/xweb/util/d:r	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   32: astore_1
-    //   33: aload_0
-    //   34: invokevirtual 46	java/io/FileInputStream:close	()V
-    //   37: aload_0
-    //   38: invokevirtual 46	java/io/FileInputStream:close	()V
-    //   41: ldc 49
-    //   43: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   46: aload_1
-    //   47: areturn
-    //   48: astore_0
-    //   49: aconst_null
-    //   50: astore_0
-    //   51: aload_0
-    //   52: ifnull +7 -> 59
-    //   55: aload_0
-    //   56: invokevirtual 46	java/io/FileInputStream:close	()V
-    //   59: ldc 49
-    //   61: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   64: aconst_null
-    //   65: areturn
-    //   66: astore_1
+    //   29: iconst_0
+    //   30: ldc 50
+    //   32: invokestatic 53	com/tencent/xweb/util/d:b	(Ljava/io/InputStream;II)Ljava/lang/String;
+    //   35: astore_1
+    //   36: aload_0
+    //   37: invokevirtual 46	java/io/FileInputStream:close	()V
+    //   40: aload_0
+    //   41: invokevirtual 46	java/io/FileInputStream:close	()V
+    //   44: ldc 49
+    //   46: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   49: aload_1
+    //   50: areturn
+    //   51: astore_0
+    //   52: aconst_null
+    //   53: astore_0
+    //   54: aload_0
+    //   55: ifnull +7 -> 62
+    //   58: aload_0
+    //   59: invokevirtual 46	java/io/FileInputStream:close	()V
+    //   62: ldc 49
+    //   64: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   67: aconst_null
-    //   68: astore_0
-    //   69: aload_0
-    //   70: ifnull +7 -> 77
-    //   73: aload_0
-    //   74: invokevirtual 46	java/io/FileInputStream:close	()V
-    //   77: ldc 49
-    //   79: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   82: aload_1
-    //   83: athrow
-    //   84: astore_0
-    //   85: goto -44 -> 41
-    //   88: astore_0
-    //   89: goto -30 -> 59
-    //   92: astore_0
-    //   93: goto -16 -> 77
-    //   96: astore_1
-    //   97: goto -28 -> 69
-    //   100: astore_1
-    //   101: goto -50 -> 51
+    //   68: areturn
+    //   69: astore_1
+    //   70: aconst_null
+    //   71: astore_0
+    //   72: aload_0
+    //   73: ifnull +7 -> 80
+    //   76: aload_0
+    //   77: invokevirtual 46	java/io/FileInputStream:close	()V
+    //   80: ldc 49
+    //   82: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   85: aload_1
+    //   86: athrow
+    //   87: astore_0
+    //   88: goto -44 -> 44
+    //   91: astore_0
+    //   92: goto -30 -> 62
+    //   95: astore_0
+    //   96: goto -16 -> 80
+    //   99: astore_1
+    //   100: goto -28 -> 72
+    //   103: astore_1
+    //   104: goto -50 -> 54
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	104	0	paramFile	File
-    //   32	15	1	str	String
-    //   66	17	1	localObject1	Object
-    //   96	1	1	localObject2	Object
-    //   100	1	1	localException	Exception
+    //   0	107	0	paramFile	File
+    //   35	15	1	str	String
+    //   69	17	1	localObject1	Object
+    //   99	1	1	localObject2	Object
+    //   103	1	1	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   19	28	48	java/lang/Exception
-    //   19	28	66	finally
-    //   37	41	84	java/io/IOException
-    //   55	59	88	java/io/IOException
-    //   73	77	92	java/io/IOException
-    //   28	37	96	finally
-    //   28	37	100	java/lang/Exception
+    //   19	28	51	java/lang/Exception
+    //   19	28	69	finally
+    //   40	44	87	java/io/IOException
+    //   58	62	91	java/io/IOException
+    //   76	80	95	java/io/IOException
+    //   28	40	99	finally
+    //   28	40	103	java/lang/Exception
   }
   
   private static String b(InputStream paramInputStream, int paramInt)
@@ -223,6 +225,57 @@ public final class d
     paramInputStream = localStringBuilder.toString();
     AppMethodBeat.o(157004);
     return paramInputStream;
+  }
+  
+  private static String b(InputStream paramInputStream, int paramInt1, int paramInt2)
+  {
+    paramInt2 = 0;
+    AppMethodBeat.i(219075);
+    try
+    {
+      long l = paramInputStream.skip(0L);
+      if (l < 0L)
+      {
+        AppMethodBeat.o(219075);
+        return null;
+      }
+      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
+      StringBuilder localStringBuilder = new StringBuilder(32);
+      byte[] arrayOfByte = new byte[102400];
+      paramInt1 = 0;
+      for (;;)
+      {
+        int i = paramInputStream.read(arrayOfByte);
+        if ((i == -1) || (paramInt1 >= 102400)) {
+          break;
+        }
+        if (paramInt1 + i <= 102400)
+        {
+          localMessageDigest.update(arrayOfByte, 0, i);
+          paramInt1 += i;
+        }
+        else
+        {
+          localMessageDigest.update(arrayOfByte, 0, 102400 - paramInt1);
+          paramInt1 = 102400;
+        }
+      }
+      paramInputStream = localMessageDigest.digest();
+      paramInt1 = paramInt2;
+      while (paramInt1 < paramInputStream.length)
+      {
+        localStringBuilder.append(Integer.toString((paramInputStream[paramInt1] & 0xFF) + 256, 16).substring(1));
+        paramInt1 += 1;
+      }
+      paramInputStream = localStringBuilder.toString();
+      AppMethodBeat.o(219075);
+      return paramInputStream;
+    }
+    catch (Exception paramInputStream)
+    {
+      AppMethodBeat.o(219075);
+    }
+    return null;
   }
   
   public static String getMD5(String paramString)
@@ -317,7 +370,7 @@ public final class d
     }
   }
   
-  public static boolean nn(String paramString1, String paramString2)
+  public static boolean oi(String paramString1, String paramString2)
   {
     AppMethodBeat.i(157007);
     paramString1 = getMD5(paramString1);
@@ -329,61 +382,10 @@ public final class d
     AppMethodBeat.o(157007);
     return false;
   }
-  
-  private static String r(InputStream paramInputStream)
-  {
-    int j = 0;
-    AppMethodBeat.i(157003);
-    try
-    {
-      long l = paramInputStream.skip(0L);
-      if (l < 0L)
-      {
-        AppMethodBeat.o(157003);
-        return null;
-      }
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      StringBuilder localStringBuilder = new StringBuilder(32);
-      byte[] arrayOfByte = new byte[102400];
-      int i = 0;
-      for (;;)
-      {
-        int k = paramInputStream.read(arrayOfByte);
-        if ((k == -1) || (i >= 102400)) {
-          break;
-        }
-        if (i + k <= 102400)
-        {
-          localMessageDigest.update(arrayOfByte, 0, k);
-          i += k;
-        }
-        else
-        {
-          localMessageDigest.update(arrayOfByte, 0, 102400 - i);
-          i = 102400;
-        }
-      }
-      paramInputStream = localMessageDigest.digest();
-      i = j;
-      while (i < paramInputStream.length)
-      {
-        localStringBuilder.append(Integer.toString((paramInputStream[i] & 0xFF) + 256, 16).substring(1));
-        i += 1;
-      }
-      paramInputStream = localStringBuilder.toString();
-      AppMethodBeat.o(157003);
-      return paramInputStream;
-    }
-    catch (Exception paramInputStream)
-    {
-      AppMethodBeat.o(157003);
-    }
-    return null;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.util.d
  * JD-Core Version:    0.7.0.1
  */

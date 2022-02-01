@@ -10,189 +10,189 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.ui.au;
 import com.tencent.mm.ui.widget.InsectRelativeLayout;
-import d.g.b.p;
-import d.l;
-import d.z;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/widget/PagInputView;", "Lcom/tencent/mm/ui/widget/InsectRelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "closeView", "Landroid/view/View;", "doneView", "inputView", "Landroid/widget/EditText;", "lastBottom", "showImeRunnable", "Ljava/lang/Runnable;", "textChangeCallback", "Lkotlin/Function1;", "", "", "Lcom/tencent/mm/plugin/vlog/ui/widget/ChangeTextCallback;", "getTextChangeCallback", "()Lkotlin/jvm/functions/Function1;", "setTextChangeCallback", "(Lkotlin/jvm/functions/Function1;)V", "waitKeyBoardShown", "cancel", "confirm", "getResult", "", "insectBottom", "bottom", "isShow", "setImeVisibility", "visible", "setShow", "show", "setup", "text", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/widget/PagInputView;", "Lcom/tencent/mm/ui/widget/InsectRelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "closeView", "Landroid/view/View;", "doneView", "inputView", "Landroid/widget/EditText;", "lastBottom", "showImeRunnable", "Ljava/lang/Runnable;", "textChangeCallback", "Lkotlin/Function1;", "", "", "Lcom/tencent/mm/plugin/vlog/ui/widget/ChangeTextCallback;", "getTextChangeCallback", "()Lkotlin/jvm/functions/Function1;", "setTextChangeCallback", "(Lkotlin/jvm/functions/Function1;)V", "waitKeyBoardShown", "cancel", "confirm", "getResult", "", "insectBottom", "bottom", "isShow", "setImeVisibility", "visible", "setShow", "show", "setup", "text", "plugin-vlog_release"})
 public final class PagInputView
   extends InsectRelativeLayout
 {
-  private final View Cmp;
-  private final View Cmq;
-  private final EditText Cmr;
-  private d.g.a.b<? super Boolean, z> Cms;
-  private int qdI;
-  private boolean qdJ;
-  private final Runnable qdL;
+  private final View GQo;
+  private final View GQp;
+  private final EditText GQq;
+  private kotlin.g.a.b<? super Boolean, x> GQr;
+  private int ruG;
+  private boolean ruH;
+  private final Runnable ruJ;
   
   public PagInputView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(192353);
-    AppMethodBeat.o(192353);
+    AppMethodBeat.i(192197);
+    AppMethodBeat.o(192197);
   }
   
   public PagInputView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(192352);
-    View.inflate(paramContext, 2131496450, (ViewGroup)this);
-    setBackgroundResource(2131100978);
-    paramContext = findViewById(2131308268);
+    AppMethodBeat.i(192196);
+    View.inflate(paramContext, 2131493891, (ViewGroup)this);
+    setBackgroundResource(2131101208);
+    paramContext = findViewById(2131299831);
     p.g(paramContext, "findViewById(R.id.edit_input_close)");
-    this.Cmp = paramContext;
-    paramContext = findViewById(2131308269);
+    this.GQo = paramContext;
+    paramContext = findViewById(2131299832);
     p.g(paramContext, "findViewById(R.id.edit_input_done)");
-    this.Cmq = paramContext;
-    paramContext = findViewById(2131308272);
+    this.GQp = paramContext;
+    paramContext = findViewById(2131299842);
     p.g(paramContext, "findViewById(R.id.edit_text_input)");
-    this.Cmr = ((EditText)paramContext);
-    this.Cmr.setOnFocusChangeListener((View.OnFocusChangeListener)new View.OnFocusChangeListener()
+    this.GQq = ((EditText)paramContext);
+    this.GQq.setOnFocusChangeListener((View.OnFocusChangeListener)new View.OnFocusChangeListener()
     {
       public final void onFocusChange(View paramAnonymousView, boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(192342);
-        PagInputView.a(this.Cmt, paramAnonymousBoolean);
-        AppMethodBeat.o(192342);
+        AppMethodBeat.i(192186);
+        PagInputView.a(this.GQs, paramAnonymousBoolean);
+        AppMethodBeat.o(192186);
       }
     });
-    this.Cmp.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.GQo.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(192343);
+        AppMethodBeat.i(192187);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/vlog/ui/widget/PagInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        PagInputView.a(this.Cmt);
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/vlog/ui/widget/PagInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        PagInputView.a(this.GQs);
         a.a(this, "com/tencent/mm/plugin/vlog/ui/widget/PagInputView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(192343);
+        AppMethodBeat.o(192187);
       }
     });
-    this.Cmq.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.GQp.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(192344);
+        AppMethodBeat.i(192188);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/vlog/ui/widget/PagInputView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        PagInputView.b(this.Cmt);
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/vlog/ui/widget/PagInputView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        PagInputView.b(this.GQs);
         a.a(this, "com/tencent/mm/plugin/vlog/ui/widget/PagInputView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(192344);
+        AppMethodBeat.o(192188);
       }
     });
     setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(192345);
+        AppMethodBeat.i(192189);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/vlog/ui/widget/PagInputView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        PagInputView.c(this.Cmt).requestFocus();
-        PagInputView.a(this.Cmt, true);
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/vlog/ui/widget/PagInputView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        PagInputView.c(this.GQs).requestFocus();
+        PagInputView.a(this.GQs, true);
         a.a(this, "com/tencent/mm/plugin/vlog/ui/widget/PagInputView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(192345);
+        AppMethodBeat.o(192189);
       }
     });
-    this.qdL = ((Runnable)new a(this));
-    AppMethodBeat.o(192352);
+    this.ruJ = ((Runnable)new a(this));
+    AppMethodBeat.o(192196);
   }
   
   private final void setImeVisibility(boolean paramBoolean)
   {
-    AppMethodBeat.i(192350);
+    AppMethodBeat.i(192194);
     if (paramBoolean)
     {
-      post(this.qdL);
-      AppMethodBeat.o(192350);
+      post(this.ruJ);
+      AppMethodBeat.o(192194);
       return;
     }
-    removeCallbacks(this.qdL);
+    removeCallbacks(this.ruJ);
     InputMethodManager localInputMethodManager = (InputMethodManager)getContext().getSystemService("input_method");
     if (localInputMethodManager != null)
     {
       localInputMethodManager.hideSoftInputFromWindow(getWindowToken(), 0);
-      AppMethodBeat.o(192350);
+      AppMethodBeat.o(192194);
       return;
     }
-    AppMethodBeat.o(192350);
+    AppMethodBeat.o(192194);
   }
   
-  public final boolean CK(int paramInt)
+  public final boolean Gv(int paramInt)
   {
-    AppMethodBeat.i(192351);
-    this.qdI = paramInt;
-    if (paramInt > ar.en(getContext())) {
+    AppMethodBeat.i(192195);
+    this.ruG = paramInt;
+    if (paramInt > au.aD(getContext())) {
       paramInt = 1;
     }
-    while (this.qdJ) {
+    while (this.ruH) {
       if (paramInt != 0)
       {
-        this.qdJ = false;
-        AppMethodBeat.o(192351);
+        this.ruH = false;
+        AppMethodBeat.o(192195);
         return false;
         paramInt = 0;
       }
       else
       {
-        AppMethodBeat.o(192351);
+        AppMethodBeat.o(192195);
         return true;
       }
     }
-    AppMethodBeat.o(192351);
+    AppMethodBeat.o(192195);
     return false;
   }
   
   public final String getResult()
   {
-    AppMethodBeat.i(192348);
-    String str = this.Cmr.getText().toString();
-    AppMethodBeat.o(192348);
+    AppMethodBeat.i(192192);
+    String str = this.GQq.getText().toString();
+    AppMethodBeat.o(192192);
     return str;
   }
   
-  public final d.g.a.b<Boolean, z> getTextChangeCallback()
+  public final kotlin.g.a.b<Boolean, x> getTextChangeCallback()
   {
-    return this.Cms;
+    return this.GQr;
   }
   
   public final void setShow(boolean paramBoolean)
   {
-    AppMethodBeat.i(192349);
+    AppMethodBeat.i(192193);
     if (paramBoolean)
     {
       setVisibility(0);
-      setPadding(0, 0, 0, this.qdI);
-      this.Cmr.requestFocus();
-      AppMethodBeat.o(192349);
+      setPadding(0, 0, 0, this.ruG);
+      this.GQq.requestFocus();
+      AppMethodBeat.o(192193);
       return;
     }
-    this.Cmr.clearFocus();
-    this.qdJ = true;
+    this.GQq.clearFocus();
+    this.ruH = true;
     setVisibility(8);
-    AppMethodBeat.o(192349);
+    AppMethodBeat.o(192193);
   }
   
-  public final void setTextChangeCallback(d.g.a.b<? super Boolean, z> paramb)
+  public final void setTextChangeCallback(kotlin.g.a.b<? super Boolean, x> paramb)
   {
-    this.Cms = paramb;
+    this.GQr = paramb;
   }
   
   public final void setup(String paramString)
   {
-    AppMethodBeat.i(192347);
+    AppMethodBeat.i(192191);
     p.h(paramString, "text");
-    this.Cmr.setText((CharSequence)paramString);
-    this.Cmr.setSelection(0, paramString.length());
-    AppMethodBeat.o(192347);
+    this.GQq.setText((CharSequence)paramString);
+    this.GQq.setSelection(0, paramString.length());
+    AppMethodBeat.o(192191);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class a
     implements Runnable
   {
@@ -200,21 +200,21 @@ public final class PagInputView
     
     public final void run()
     {
-      AppMethodBeat.i(192346);
-      InputMethodManager localInputMethodManager = (InputMethodManager)this.Cmt.getContext().getSystemService("input_method");
+      AppMethodBeat.i(192190);
+      InputMethodManager localInputMethodManager = (InputMethodManager)this.GQs.getContext().getSystemService("input_method");
       if (localInputMethodManager != null)
       {
-        localInputMethodManager.showSoftInput((View)PagInputView.c(this.Cmt), 0);
-        AppMethodBeat.o(192346);
+        localInputMethodManager.showSoftInput((View)PagInputView.c(this.GQs), 0);
+        AppMethodBeat.o(192190);
         return;
       }
-      AppMethodBeat.o(192346);
+      AppMethodBeat.o(192190);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.widget.PagInputView
  * JD-Core Version:    0.7.0.1
  */

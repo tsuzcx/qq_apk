@@ -2,19 +2,19 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class ac
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eJM = "sessionName".hashCode();
-  private static final int eJP = "msgListDataId".hashCode();
+  private static final int fno = "sessionName".hashCode();
+  private static final int fnr = "msgListDataId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eJJ = true;
-  private boolean eJO = true;
   public String field_msgListDataId;
   public String field_sessionName;
+  private boolean fnl = true;
+  private boolean fnq = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,11 +29,11 @@ public abstract class ac
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eJP != k) {
+      if (fnr != k) {
         break label65;
       }
       this.field_msgListDataId = paramCursor.getString(i);
-      this.eJO = true;
+      this.fnq = true;
     }
     for (;;)
     {
@@ -41,7 +41,7 @@ public abstract class ac
       break label20;
       break;
       label65:
-      if (eJM == k) {
+      if (fno == k) {
         this.field_sessionName = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -52,13 +52,13 @@ public abstract class ac
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eJO) {
+    if (this.fnq) {
       localContentValues.put("msgListDataId", this.field_msgListDataId);
     }
     if (this.field_sessionName == null) {
       this.field_sessionName = "";
     }
-    if (this.eJJ) {
+    if (this.fnl) {
       localContentValues.put("sessionName", this.field_sessionName);
     }
     if (this.systemRowid > 0L) {
@@ -69,7 +69,7 @@ public abstract class ac
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.ac
  * JD-Core Version:    0.7.0.1
  */

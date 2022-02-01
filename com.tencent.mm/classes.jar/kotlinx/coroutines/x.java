@@ -1,21 +1,18 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.l;
-import d.z;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/CompletedWithCancellation;", "", "result", "onCancellation", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "(Ljava/lang/Object;Lkotlin/jvm/functions/Function1;)V", "toString", "", "kotlinx-coroutines-core"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/CompletedIdempotentResult;", "", "idempotentResume", "result", "(Ljava/lang/Object;Ljava/lang/Object;)V", "toString", "", "kotlinx-coroutines-core"})
 final class x
 {
-  public final b<Throwable, z> OeU;
   public final Object result;
   
   public final String toString()
   {
-    AppMethodBeat.i(209250);
-    String str = "CompletedWithCancellation[" + this.result + ']';
-    AppMethodBeat.o(209250);
+    AppMethodBeat.i(118191);
+    String str = "CompletedIdempotentResult[" + this.result + ']';
+    AppMethodBeat.o(118191);
     return str;
   }
 }

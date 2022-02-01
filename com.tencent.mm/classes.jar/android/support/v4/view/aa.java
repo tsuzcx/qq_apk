@@ -1,8 +1,15 @@
 package android.support.v4.view;
 
-public abstract interface aa
+import android.view.View;
+
+public class aa
+  implements z
 {
-  public abstract void fA();
+  public void aI(View paramView) {}
+  
+  public void aJ(View paramView) {}
+  
+  public void aK(View paramView) {}
 }
 
 

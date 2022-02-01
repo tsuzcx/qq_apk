@@ -15,9 +15,9 @@ final class LoginByMobileSendSmsUI$7
   {
     AppMethodBeat.i(128063);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/account/ui/LoginByMobileSendSmsUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    LoginByMobileSendSmsUI.b(this.jny);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/account/ui/LoginByMobileSendSmsUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    LoginByMobileSendSmsUI.b(this.klG);
     a.a(this, "com/tencent/mm/plugin/account/ui/LoginByMobileSendSmsUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(128063);
   }

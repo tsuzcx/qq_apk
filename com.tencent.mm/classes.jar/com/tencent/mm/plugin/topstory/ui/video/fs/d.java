@@ -4,49 +4,49 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.topstory.ui.video.b;
 import com.tencent.mm.plugin.topstory.ui.video.e;
 import com.tencent.mm.plugin.topstory.ui.video.n;
-import com.tencent.mm.protocal.protobuf.dpa;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 
 public final class d
   extends e
 {
-  protected b BLL;
-  public boolean BNE = false;
+  protected b Gmr;
+  public boolean Gol = false;
   
   public d(b paramb)
   {
     super(paramb);
-    this.BLL = paramb;
+    this.Gmr = paramb;
   }
   
-  public final int TI(int paramInt)
+  public final int abY(int paramInt)
   {
     return 0;
   }
   
-  public final void o(final List<dpa> paramList, boolean paramBoolean)
+  public final void t(final List<eiw> paramList, boolean paramBoolean)
   {
     AppMethodBeat.i(126248);
-    super.o(paramList, paramBoolean);
-    ar.f(new Runnable()
+    super.t(paramList, paramBoolean);
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(126247);
-        Object localObject1 = d.a(d.this).ets();
-        int i = ((n)localObject1).euc();
-        ae.i("MicroMsg.TopStory.TopStoryFSVideoAdapter", "callbackToSuccess originSize: %d insertSize %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramList.size()) });
+        Object localObject1 = d.a(d.this).fyO();
+        int i = ((n)localObject1).fzy();
+        Log.i("MicroMsg.TopStory.TopStoryFSVideoAdapter", "callbackToSuccess originSize: %d insertSize %d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramList.size()) });
         List localList = paramList;
         try
         {
-          if (!bu.ht(localList)) {
-            ((n)localObject1).cPU().addAll(localList);
+          if (!Util.isNullOrNil(localList)) {
+            ((n)localObject1).GW().addAll(localList);
           }
           localObject1 = d.this;
-          ((d)localObject1).cj(i + ((d)localObject1).getHeadersCount());
+          ((d)localObject1).ci(i + ((d)localObject1).getHeadersCount());
           AppMethodBeat.o(126247);
           return;
         }

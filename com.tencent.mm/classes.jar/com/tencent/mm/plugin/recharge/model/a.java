@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.recharge.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class a
 {
-  public static final int[] xCW = { -1, -1 };
-  public static final int[] xCX = { -2, -2 };
-  public String kgf;
+  public static final int[] BCV = { -1, -1 };
+  public static final int[] BCW = { -2, -2 };
+  public String BCX;
+  public int[] BCY = BCV;
+  public String ljO;
   public String name;
   public int sourceType;
-  public String xCY;
-  public int[] xCZ = xCW;
   
   public a(String paramString1, String paramString2, int paramInt)
   {
@@ -23,19 +23,19 @@ public final class a
   
   public a(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    this.xCY = paramString1;
+    this.BCX = paramString1;
     this.name = paramString2;
-    this.kgf = paramString3;
+    this.ljO = paramString3;
     this.sourceType = paramInt;
   }
   
-  public static a aN(JSONObject paramJSONObject)
+  public static a bj(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(67090);
     String str1 = paramJSONObject.optString("name");
     String str2 = paramJSONObject.optString("record");
     paramJSONObject = paramJSONObject.optString("location");
-    if (!bu.isNullOrNil(str2))
+    if (!Util.isNullOrNil(str2))
     {
       paramJSONObject = new a(str2, str1, paramJSONObject, 2);
       AppMethodBeat.o(67090);
@@ -51,15 +51,15 @@ public final class a
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("record", bu.bI(this.xCY, ""));
-      localJSONObject.put("name", bu.bI(this.name, ""));
-      localJSONObject.put("location", bu.bI(this.kgf, ""));
+      localJSONObject.put("record", Util.nullAs(this.BCX, ""));
+      localJSONObject.put("name", Util.nullAs(this.name, ""));
+      localJSONObject.put("location", Util.nullAs(this.ljO, ""));
       AppMethodBeat.o(67089);
       return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
-      ae.printErrStackTrace("MicroMsg.MallInputRecord", localJSONException, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.MallInputRecord", localJSONException, "", new Object[0]);
       AppMethodBeat.o(67089);
     }
     return null;
@@ -67,7 +67,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.model.a
  * JD-Core Version:    0.7.0.1
  */

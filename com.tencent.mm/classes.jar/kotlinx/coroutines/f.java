@@ -1,45 +1,45 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.d;
-import d.g.a.m;
-import d.l;
-import d.z;
+import kotlin.d.d;
+import kotlin.g.a.m;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={"kotlinx/coroutines/BuildersKt__BuildersKt", "kotlinx/coroutines/BuildersKt__Builders_commonKt"})
+@l(hxD={1, 1, 16}, hxE={"kotlinx/coroutines/BuildersKt__BuildersKt", "kotlinx/coroutines/BuildersKt__Builders_commonKt"})
 public final class f
 {
-  public static final <T> aq<T> a(ah paramah, d.d.f paramf, aj paramaj, m<? super ah, ? super d<? super T>, ? extends Object> paramm)
+  public static final <T> ar<T> a(ai paramai, kotlin.d.f paramf, ak paramak, m<? super ai, ? super d<? super T>, ? extends Object> paramm)
   {
     AppMethodBeat.i(117962);
-    paramah = ab.a(paramah, paramf);
-    if (paramaj.gzE()) {}
-    for (paramah = (ar)new bx(paramah, paramm);; paramah = new ar(paramah, true))
+    paramai = ac.a(paramai, paramf);
+    if (paramak.hMJ()) {}
+    for (paramai = (as)new cc(paramai, paramm);; paramai = new as(paramai, true))
     {
-      paramah.a(paramaj, paramah, paramm);
-      paramah = (aq)paramah;
+      paramai.a(paramak, paramai, paramm);
+      paramai = (ar)paramai;
       AppMethodBeat.o(117962);
-      return paramah;
+      return paramai;
     }
   }
   
-  public static final br b(ah paramah, d.d.f paramf, aj paramaj, m<? super ah, ? super d<? super z>, ? extends Object> paramm)
+  public static final bu b(ai paramai, kotlin.d.f paramf, ak paramak, m<? super ai, ? super d<? super x>, ? extends Object> paramm)
   {
     AppMethodBeat.i(117963);
-    paramah = ab.a(paramah, paramf);
-    if (paramaj.gzE()) {}
-    for (paramah = (cg)new by(paramah, paramm);; paramah = new cg(paramah, true))
+    paramai = ac.a(paramai, paramf);
+    if (paramak.hMJ()) {}
+    for (paramai = (cl)new cd(paramai, paramm);; paramai = new cl(paramai, true))
     {
-      paramah.a(paramaj, paramah, paramm);
-      paramah = (br)paramah;
+      paramai.a(paramak, paramai, paramm);
+      paramai = (bu)paramai;
       AppMethodBeat.o(117963);
-      return paramah;
+      return paramai;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/b_" android:textColor="@color/rx" android:id="@id/dnp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="32.0dip" android:layout_marginBottom="5.0dip" android:text="{ddd}" />
-    <View android:background="@color/BW_0_Alpha_0_1" android:layout_width="fill_parent" android:layout_height="1.0px" />
+    <TextView android:textSize="@dimen/l" android:textColor="@color/a2x" android:id="@id/cfr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dww" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <CheckBox android:id="@id/d4u" android:clickable="true" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="@dimen/k5" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dbr" />
+    </LinearLayout>
 </LinearLayout>

@@ -3,9 +3,9 @@ package android.support.a;
 public final class d
   extends b<d>
 {
-  private e gh = null;
-  private float gi = 3.4028235E+38F;
-  private boolean gj = false;
+  private e gj = null;
+  private float gk = 3.4028235E+38F;
+  private boolean gl = false;
   
   public <K> d(K paramK, c<K> paramc)
   {
@@ -15,49 +15,49 @@ public final class d
   public <K> d(K paramK, c<K> paramc, byte paramByte)
   {
     super(paramK, paramc);
-    this.gh = new e(1.0F);
+    this.gj = new e(1.0F);
   }
   
   public final d a(e parame)
   {
-    this.gh = parame;
+    this.gj = parame;
     return this;
   }
   
-  public final e aH()
+  public final e aJ()
   {
-    return this.gh;
+    return this.gj;
   }
   
   final boolean e(long paramLong)
   {
-    if (this.gj)
+    if (this.gl)
     {
-      if (this.gi != 3.4028235E+38F)
+      if (this.gk != 3.4028235E+38F)
       {
-        this.gh.gr = this.gi;
-        this.gi = 3.4028235E+38F;
+        this.gj.gt = this.gk;
+        this.gk = 3.4028235E+38F;
       }
-      this.fX = ((float)this.gh.gr);
-      this.fW = 0.0F;
-      this.gj = false;
+      this.fZ = ((float)this.gj.gt);
+      this.fY = 0.0F;
+      this.gl = false;
       return true;
     }
     Object localObject;
-    if (this.gi != 3.4028235E+38F)
+    if (this.gk != 3.4028235E+38F)
     {
-      localObject = this.gh.a(this.fX, this.fW, paramLong / 2L);
-      this.gh.gr = this.gi;
-      this.gi = 3.4028235E+38F;
-      localObject = this.gh.a(((b.a)localObject).fX, ((b.a)localObject).fW, paramLong / 2L);
-      this.fX = ((b.a)localObject).fX;
-      this.fW = ((b.a)localObject).fW;
-      this.fX = Math.max(this.fX, this.gc);
-      this.fX = Math.min(this.fX, this.gb);
-      float f1 = this.fX;
-      float f2 = this.fW;
-      localObject = this.gh;
-      if ((Math.abs(f2) >= ((e)localObject).gn) || (Math.abs(f1 - (float)((e)localObject).gr) >= ((e)localObject).gm)) {
+      localObject = this.gj.a(this.fZ, this.fY, paramLong / 2L);
+      this.gj.gt = this.gk;
+      this.gk = 3.4028235E+38F;
+      localObject = this.gj.a(((b.a)localObject).fZ, ((b.a)localObject).fY, paramLong / 2L);
+      this.fZ = ((b.a)localObject).fZ;
+      this.fY = ((b.a)localObject).fY;
+      this.fZ = Math.max(this.fZ, this.ge);
+      this.fZ = Math.min(this.fZ, this.gd);
+      float f1 = this.fZ;
+      float f2 = this.fY;
+      localObject = this.gj;
+      if ((Math.abs(f2) >= ((e)localObject).gp) || (Math.abs(f1 - (float)((e)localObject).gt) >= ((e)localObject).go)) {
         break label306;
       }
     }
@@ -67,12 +67,12 @@ public final class d
       if (i == 0) {
         break label312;
       }
-      this.fX = ((float)this.gh.gr);
-      this.fW = 0.0F;
+      this.fZ = ((float)this.gj.gt);
+      this.fY = 0.0F;
       return true;
-      localObject = this.gh.a(this.fX, this.fW, paramLong);
-      this.fX = ((b.a)localObject).fX;
-      this.fW = ((b.a)localObject).fW;
+      localObject = this.gj.a(this.fZ, this.fY, paramLong);
+      this.fZ = ((b.a)localObject).fZ;
+      this.fY = ((b.a)localObject).fY;
       break;
     }
     label312:
@@ -81,25 +81,25 @@ public final class d
   
   public final void start()
   {
-    if (this.gh == null) {
+    if (this.gj == null) {
       throw new UnsupportedOperationException("Incomplete SpringAnimation: Either final position or a spring force needs to be set.");
     }
-    double d = (float)this.gh.gr;
-    if (d > this.gb) {
+    double d = (float)this.gj.gt;
+    if (d > this.gd) {
       throw new UnsupportedOperationException("Final position of the spring cannot be greater than the max value.");
     }
-    if (d < this.gc) {
+    if (d < this.ge) {
       throw new UnsupportedOperationException("Final position of the spring cannot be less than the min value.");
     }
-    e locale = this.gh;
-    locale.gm = Math.abs(this.gd * 0.75F);
-    locale.gn = (locale.gm * 62.5D);
+    e locale = this.gj;
+    locale.go = Math.abs(this.gf * 0.75F);
+    locale.gp = (locale.go * 62.5D);
     super.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     android.support.a.d
  * JD-Core Version:    0.7.0.1
  */

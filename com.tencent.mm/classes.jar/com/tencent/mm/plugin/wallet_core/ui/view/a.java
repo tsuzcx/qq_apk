@@ -16,10 +16,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h.b;
 import com.tencent.mm.ui.tools.b.c;
@@ -46,33 +46,33 @@ public final class a
       return null;
     }
     d.a locala = new d.a(paramContext);
-    locala.zf(false);
-    locala.zg(true);
-    locala.afV(2131755691).d(paramOnClickListener);
-    locala.aZh(paramString1);
-    paramString1 = View.inflate(paramContext, 2131495895, null);
-    paramOnClickListener = (EditText)paramString1.findViewById(2131299306);
-    if (!bu.isNullOrNil(paramString2)) {
-      paramOnClickListener.append(k.b(paramContext, paramString2, paramOnClickListener.getTextSize()));
+    locala.Dk(false);
+    locala.Dl(true);
+    locala.aoW(2131755761).d(paramOnClickListener);
+    locala.bon(paramString1);
+    paramString1 = View.inflate(paramContext, 2131496875, null);
+    paramOnClickListener = (EditText)paramString1.findViewById(2131299910);
+    if (!Util.isNullOrNil(paramString2)) {
+      paramOnClickListener.append(l.b(paramContext, paramString2, paramOnClickListener.getTextSize()));
     }
-    ((TextView)paramString1.findViewById(2131305896)).setVisibility(8);
-    if (!bu.isNullOrNil(paramString3)) {
+    ((TextView)paramString1.findViewById(2131309187)).setVisibility(8);
+    if (!Util.isNullOrNil(paramString3)) {
       paramOnClickListener.setHint(paramString3);
     }
-    locala.afU(2131755835).a(false, new DialogInterface.OnClickListener()
+    locala.aoV(2131755921).a(false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(71453);
         boolean bool = true;
-        if (this.DDm != null) {
-          bool = this.DDm.onFinish(paramOnClickListener.getText().toString().trim());
+        if (this.Imy != null) {
+          bool = this.Imy.onFinish(paramOnClickListener.getText().toString().trim());
         }
         if (bool)
         {
           paramAnonymousDialogInterface.dismiss();
           if ((paramContext instanceof MMActivity)) {
-            ar.f(new Runnable()
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
@@ -87,10 +87,10 @@ public final class a
       }
     });
     if (paramInt > 0) {
-      c.d(paramOnClickListener).afD(paramInt).a(null);
+      c.f(paramOnClickListener).aoq(paramInt).a(null);
     }
-    locala.hd(paramString1);
-    paramString2 = locala.fQv();
+    locala.hs(paramString1);
+    paramString2 = locala.hbn();
     paramString2.show();
     a(paramContext, paramString2);
     if ((paramContext instanceof MMActivity)) {
@@ -99,7 +99,7 @@ public final class a
         public final void run()
         {
           AppMethodBeat.i(71454);
-          if ((this.DDp) && (paramOnClickListener != null) && (com.tencent.mm.compatible.util.d.lA(28))) {
+          if ((this.ImB) && (paramOnClickListener != null) && (com.tencent.mm.compatible.util.d.oD(28))) {
             paramOnClickListener.requestFocus();
           }
           ((MMActivity)paramContext).showVKB();
@@ -128,36 +128,36 @@ public final class a
       return null;
     }
     final f.a locala = new f.a(paramContext);
-    locala.zi(true);
+    locala.Dq(true);
     locala.a(paramc);
-    locala.au(paramString1);
-    paramString1 = View.inflate(paramContext, 2131495896, null);
-    paramc = (EditText)paramString1.findViewById(2131299306);
-    if (!bu.isNullOrNil(paramString2)) {
-      paramc.append(k.b(paramContext, paramString2, paramc.getTextSize()));
+    locala.aC(paramString1);
+    paramString1 = View.inflate(paramContext, 2131496876, null);
+    paramc = (EditText)paramString1.findViewById(2131299910);
+    if (!Util.isNullOrNil(paramString2)) {
+      paramc.append(l.b(paramContext, paramString2, paramc.getTextSize()));
     }
-    if (!bu.isNullOrNil(paramString3)) {
+    if (!Util.isNullOrNil(paramString3)) {
       paramc.setHint(paramString3);
     }
-    paramString2 = (LinearLayout)paramString1.findViewById(2131296452);
-    paramString3 = (LinearLayout)paramString1.findViewById(2131296480);
-    final TextView localTextView1 = (TextView)paramString1.findViewById(2131302665);
-    final TextView localTextView2 = (TextView)paramString1.findViewById(2131296478);
-    TextView localTextView3 = (TextView)paramString1.findViewById(2131296481);
-    ((ImageView)paramString1.findViewById(2131296451)).getDrawable().setColorFilter(-15970418, PorterDuff.Mode.SRC_ATOP);
-    localTextView3.setText(ak.getContext().getString(2131762416));
+    paramString2 = (LinearLayout)paramString1.findViewById(2131296524);
+    paramString3 = (LinearLayout)paramString1.findViewById(2131296554);
+    final TextView localTextView1 = (TextView)paramString1.findViewById(2131305219);
+    final TextView localTextView2 = (TextView)paramString1.findViewById(2131296552);
+    TextView localTextView3 = (TextView)paramString1.findViewById(2131296555);
+    ((ImageView)paramString1.findViewById(2131296523)).getDrawable().setColorFilter(-15970418, PorterDuff.Mode.SRC_ATOP);
+    localTextView3.setText(MMApplicationContext.getContext().getString(2131764482));
     paramString2.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71455);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if (this.DDq != null) {
-          this.DDq.a(true, paramc.getText().toString().trim(), null, null, null);
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        if (this.ImC != null) {
+          this.ImC.a(true, paramc.getText().toString().trim(), null, null, null);
         }
-        a.a(paramContext, locala.jfl);
+        a.a(paramContext, locala.kdo);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(71455);
       }
@@ -169,14 +169,14 @@ public final class a
     }
     for (;;)
     {
-      locala.afY(2131755835).b(new f.c()
+      locala.apa(2131755921).b(new f.c()
       {
-        public final void d(boolean paramAnonymousBoolean, String paramAnonymousString)
+        public final void e(boolean paramAnonymousBoolean, String paramAnonymousString)
         {
           AppMethodBeat.i(71459);
           if ((this.val$context instanceof MMActivity)) {
             if (parama != null) {
-              if (!bu.isNullOrNil(localTextView1.getText().toString().trim())) {
+              if (!Util.isNullOrNil(localTextView1.getText().toString().trim())) {
                 break label119;
               }
             }
@@ -186,7 +186,7 @@ public final class a
           {
             parama.a(paramAnonymousBoolean, paramc.getText().toString().trim(), paramString4, paramString5, localTextView2.getText().toString().trim());
             if ((this.val$context instanceof MMActivity)) {
-              ar.f(new Runnable()
+              MMHandlerThread.postToMainThread(new Runnable()
               {
                 public final void run()
                 {
@@ -201,16 +201,16 @@ public final class a
           }
         }
       });
-      c.d(paramc).afD(20).a(null);
-      locala.hg(paramString1);
+      c.f(paramc).aoq(20).a(null);
+      locala.hu(paramString1);
       locala.show();
       if ((paramContext instanceof MMActivity)) {
-        locala.jfl.getContentView().post(new Runnable()
+        locala.kdo.getContentView().post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(71460);
-            if ((this.DDp) && (localTextView2 != null) && (com.tencent.mm.compatible.util.d.lA(28))) {
+            if ((this.ImB) && (localTextView2 != null) && (com.tencent.mm.compatible.util.d.oD(28))) {
               localTextView2.requestFocus();
             }
             ((MMActivity)paramContext).showVKB();
@@ -218,7 +218,7 @@ public final class a
           }
         });
       }
-      ar.f(new Runnable()
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
@@ -233,23 +233,23 @@ public final class a
       paramString3.setVisibility(0);
       localTextView1.setText(paramString4 + "  " + paramString5);
       localTextView2.setText(paramString6);
-      paramString1.findViewById(2131299540).setOnClickListener(new View.OnClickListener()
+      paramString1.findViewById(2131300188).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(71456);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          if (this.DDq != null) {
-            this.DDq.a(false, paramc.getText().toString().trim(), paramString4, paramString5, localTextView2.getText().toString().trim());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          if (this.ImC != null) {
+            this.ImC.a(false, paramc.getText().toString().trim(), paramString4, paramString5, localTextView2.getText().toString().trim());
           }
-          a.a(paramContext, locala.jfl);
+          a.a(paramContext, locala.kdo);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_core/ui/view/AlertWithMMEditText$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(71456);
         }
       });
-      paramString1.findViewById(2131298985).setOnClickListener(new a.5(paramString2, paramString3, localTextView1, localTextView2));
+      paramString1.findViewById(2131299479).setOnClickListener(new a.5(paramString2, paramString3, localTextView1, localTextView2));
     }
   }
   
@@ -269,7 +269,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.ui.view.a
  * JD-Core Version:    0.7.0.1
  */

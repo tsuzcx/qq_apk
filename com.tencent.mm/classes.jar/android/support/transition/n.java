@@ -5,12 +5,12 @@ import android.view.ViewGroup;
 
 public final class n
 {
-  ViewGroup By;
-  Runnable Bz;
+  ViewGroup BF;
+  Runnable BG;
   
-  static n F(View paramView)
+  static n G(View paramView)
   {
-    return (n)paramView.getTag(2131306066);
+    return (n)paramView.getTag(2131309395);
   }
 }
 

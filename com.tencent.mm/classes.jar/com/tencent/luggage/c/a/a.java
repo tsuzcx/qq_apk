@@ -9,11 +9,11 @@ public abstract interface a
 {
   public abstract void a(k paramk);
   
-  public abstract k av(Context paramContext);
+  public abstract k aE(Context paramContext);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.c.a.a
  * JD-Core Version:    0.7.0.1
  */

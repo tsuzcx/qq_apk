@@ -10,25 +10,25 @@ public class Utils
 {
   public static Bitmap flipYBitmap(Bitmap paramBitmap)
   {
-    AppMethodBeat.i(214296);
+    AppMethodBeat.i(217628);
     Matrix localMatrix = new Matrix();
     localMatrix.postScale(1.0F, -1.0F, paramBitmap.getWidth() / 2.0F, paramBitmap.getHeight() / 2.0F);
     paramBitmap = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), localMatrix, true);
-    AppMethodBeat.o(214296);
+    AppMethodBeat.o(217628);
     return paramBitmap;
   }
   
   public static String getPhoneName()
   {
-    AppMethodBeat.i(214297);
+    AppMethodBeat.i(217629);
     String str = Build.MANUFACTURER.toUpperCase() + " " + Build.MODEL;
     if (TextUtils.isEmpty(str))
     {
-      AppMethodBeat.o(214297);
+      AppMethodBeat.o(217629);
       return "";
     }
     str = str.replace(" ", "_").replace("+", "").replace("(t)", "");
-    AppMethodBeat.o(214297);
+    AppMethodBeat.o(217629);
     return str;
   }
 }

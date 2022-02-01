@@ -6,7 +6,7 @@ import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import android.widget.NumberPicker;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.ui.at;
 
 public class OptionPicker
   extends NumberPicker
@@ -14,8 +14,8 @@ public class OptionPicker
   private Context mContext;
   private int mMaxWidth;
   private int mMinWidth;
-  private String[] npT;
-  private int npU;
+  private String[] ozA;
+  private int ozB;
   
   public OptionPicker(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,11 +38,11 @@ public class OptionPicker
   private void init()
   {
     AppMethodBeat.i(159583);
-    this.mMinWidth = aq.fromDPToPix(this.mContext, 120);
-    this.npU = aq.fromDPToPix(this.mContext, 20);
-    f.a(this, getResources().getDrawable(2131233617));
+    this.mMinWidth = at.fromDPToPix(this.mContext, 120);
+    this.ozB = at.fromDPToPix(this.mContext, 20);
+    f.a(this, getResources().getDrawable(2131234426));
     setDescendantFocusability(393216);
-    f.b(this, this.mContext.getResources().getColor(2131100711));
+    f.b(this, this.mContext.getResources().getColor(2131100904));
     AppMethodBeat.o(159583);
   }
   
@@ -66,7 +66,7 @@ public class OptionPicker
       AppMethodBeat.o(159588);
       return;
     }
-    paramInt2 = getMeasuredWidth() + this.npU * 2;
+    paramInt2 = getMeasuredWidth() + this.ozB * 2;
     paramInt1 = paramInt2;
     if (this.mMaxWidth > 0) {
       if (this.mMaxWidth <= paramInt2) {
@@ -93,7 +93,7 @@ public class OptionPicker
   public final void setExtraPadding(int paramInt)
   {
     AppMethodBeat.i(159586);
-    this.npU = Math.max(paramInt, 0);
+    this.ozB = Math.max(paramInt, 0);
     AppMethodBeat.o(159586);
   }
   
@@ -115,7 +115,7 @@ public class OptionPicker
       AppMethodBeat.o(159584);
       return;
     }
-    this.npT = paramArrayOfString;
+    this.ozA = paramArrayOfString;
     setDisplayedValues(null);
     setMinValue(0);
     setMaxValue(Math.max(paramArrayOfString.length - 1, 0));
@@ -130,7 +130,7 @@ public class OptionPicker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.OptionPicker
  * JD-Core Version:    0.7.0.1
  */

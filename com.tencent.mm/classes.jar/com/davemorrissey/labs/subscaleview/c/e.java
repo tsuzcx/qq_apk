@@ -5,17 +5,17 @@ import android.graphics.Rect;
 
 public final class e
 {
-  public Rect aWW;
-  public boolean aWX;
-  public Rect aWY;
-  public Rect aWZ;
+  public Rect aWO;
+  public boolean aWP;
+  public Rect aWQ;
+  public Rect aWR;
   public Bitmap bitmap;
   public int sampleSize;
   public boolean visible;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.davemorrissey.labs.subscaleview.c.e
  * JD-Core Version:    0.7.0.1
  */

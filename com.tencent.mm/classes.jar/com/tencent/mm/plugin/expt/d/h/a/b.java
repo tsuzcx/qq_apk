@@ -5,11 +5,11 @@ import java.util.List;
 
 public abstract interface b
 {
-  public abstract List<String> W(String paramString1, String paramString2, String paramString3);
-  
   public abstract boolean a(a parama);
   
-  public abstract boolean aeh(String paramString);
+  public abstract List<String> ab(String paramString1, String paramString2, String paramString3);
+  
+  public abstract boolean aor(String paramString);
   
   public abstract void release();
 }

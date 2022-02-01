@@ -1,107 +1,55 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.a;
-import d.d.f;
-import d.d.f.b;
-import d.d.f.b.a;
-import d.d.f.c;
-import d.g.a.m;
-import d.l;
+import kotlin.a;
+import kotlin.d.f;
+import kotlin.d.f.c;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/CoroutineId;", "Lkotlinx/coroutines/ThreadContextElement;", "", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "id", "", "(J)V", "getId", "()J", "component1", "copy", "equals", "", "other", "", "hashCode", "", "restoreThreadContext", "", "context", "Lkotlin/coroutines/CoroutineContext;", "oldState", "toString", "updateThreadContext", "Key", "kotlinx-coroutines-core"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"CoroutineExceptionHandler", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handler", "Lkotlin/Function2;", "Lkotlin/coroutines/CoroutineContext;", "", "", "handleCoroutineException", "context", "exception", "handlerException", "originalException", "thrownException", "kotlinx-coroutines-core"})
 public final class af
-  extends a
-  implements ch<String>
 {
-  public static final a Ofb;
-  final long id;
-  
-  static
+  public static final Throwable b(Throwable paramThrowable1, Throwable paramThrowable2)
   {
-    AppMethodBeat.i(118241);
-    Ofb = new a((byte)0);
-    AppMethodBeat.o(118241);
-  }
-  
-  public af(long paramLong)
-  {
-    super((f.c)Ofb);
-    AppMethodBeat.i(118240);
-    this.id = paramLong;
-    AppMethodBeat.o(118240);
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    if (this != paramObject)
+    AppMethodBeat.i(118053);
+    if (paramThrowable1 == paramThrowable2)
     {
-      if ((paramObject instanceof af))
+      AppMethodBeat.o(118053);
+      return paramThrowable1;
+    }
+    paramThrowable2 = new RuntimeException("Exception while trying to handle coroutine exception", paramThrowable2);
+    a.a((Throwable)paramThrowable2, paramThrowable1);
+    paramThrowable1 = (Throwable)paramThrowable2;
+    AppMethodBeat.o(118053);
+    return paramThrowable1;
+  }
+  
+  public static final void b(f paramf, Throwable paramThrowable)
+  {
+    AppMethodBeat.i(192334);
+    try
+    {
+      CoroutineExceptionHandler localCoroutineExceptionHandler = (CoroutineExceptionHandler)paramf.get((f.c)CoroutineExceptionHandler.TTS);
+      if (localCoroutineExceptionHandler != null)
       {
-        paramObject = (af)paramObject;
-        if (this.id != paramObject.id) {}
+        localCoroutineExceptionHandler.handleException(paramf, paramThrowable);
+        AppMethodBeat.o(192334);
+        return;
       }
     }
-    else {
-      return true;
+    catch (Throwable localThrowable)
+    {
+      ae.a(paramf, b(paramThrowable, localThrowable));
+      AppMethodBeat.o(192334);
+      return;
     }
-    return false;
+    ae.a(paramf, paramThrowable);
+    AppMethodBeat.o(192334);
   }
-  
-  public final <R> R fold(R paramR, m<? super R, ? super f.b, ? extends R> paramm)
-  {
-    AppMethodBeat.i(118242);
-    paramR = f.b.a.a((f.b)this, paramR, paramm);
-    AppMethodBeat.o(118242);
-    return paramR;
-  }
-  
-  public final <E extends f.b> E get(f.c<E> paramc)
-  {
-    AppMethodBeat.i(118243);
-    paramc = f.b.a.a((f.b)this, paramc);
-    AppMethodBeat.o(118243);
-    return paramc;
-  }
-  
-  public final int hashCode()
-  {
-    long l = this.id;
-    return (int)(l ^ l >>> 32);
-  }
-  
-  public final f minusKey(f.c<?> paramc)
-  {
-    AppMethodBeat.i(118244);
-    paramc = f.b.a.b((f.b)this, paramc);
-    AppMethodBeat.o(118244);
-    return paramc;
-  }
-  
-  public final f plus(f paramf)
-  {
-    AppMethodBeat.i(118245);
-    paramf = f.b.a.a((f.b)this, paramf);
-    AppMethodBeat.o(118245);
-    return paramf;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(118237);
-    String str = "CoroutineId(" + this.id + ')';
-    AppMethodBeat.o(118237);
-    return str;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/CoroutineId$Key;", "Lkotlin/coroutines/CoroutineContext$Key;", "Lkotlinx/coroutines/CoroutineId;", "()V", "kotlinx-coroutines-core"})
-  public static final class a
-    implements f.c<af>
-  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.af
  * JD-Core Version:    0.7.0.1
  */

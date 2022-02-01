@@ -2,17 +2,17 @@ package com.tencent.mm.ui.chatting.j;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.modelsimple.w;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.ca;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -21,28 +21,36 @@ import java.util.Set;
 public final class a
   extends com.tencent.mm.az.a
 {
-  public String KrP;
-  public long KrQ = 0L;
+  public String PEb;
+  public long PEc = 0L;
+  public String PEd;
+  public int mType;
   
-  public a(Map<String, String> paramMap, bv parambv)
+  public a(Map<String, String> paramMap, ca paramca)
   {
-    super(paramMap, parambv);
+    super(paramMap, paramca);
   }
   
-  public final boolean aAs()
+  public final boolean aTA()
   {
     AppMethodBeat.i(36444);
     if (this.values == null)
     {
-      ae.e("MicroMsg.InvokeMessageNewXmlMsg", "[parseXml] values == null ");
+      Log.e("MicroMsg.InvokeMessageNewXmlMsg", "[parseXml] values == null ");
       AppMethodBeat.o(36444);
       return false;
     }
     if (this.values.containsKey(".sysmsg.invokeMessage.preContent")) {
-      this.KrP = ((String)this.values.get(".sysmsg.invokeMessage.preContent"));
+      this.PEb = ((String)this.values.get(".sysmsg.invokeMessage.preContent"));
+    }
+    if (this.values.containsKey(".sysmsg.invokeMessage.msgSource")) {
+      this.PEd = ((String)this.values.get(".sysmsg.invokeMessage.msgSource"));
     }
     if (this.values.containsKey(".sysmsg.invokeMessage.timestamp")) {
-      this.KrQ = bu.aSC((String)this.values.get(".sysmsg.invokeMessage.timestamp"));
+      this.PEc = Util.safeParseLong((String)this.values.get(".sysmsg.invokeMessage.timestamp"));
+    }
+    if (this.values.containsKey(".sysmsg.invokeMessage.type")) {
+      this.mType = Util.safeParseInt((String)this.values.get(".sysmsg.invokeMessage.type"));
     }
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = this.values.keySet().iterator();
@@ -60,33 +68,33 @@ public final class a
       }
       else
       {
-        if ((!str.startsWith(".sysmsg.invokeMessage.link.text")) || (bu.isNullOrNil((String)this.values.get(str)))) {
-          break label356;
+        if ((!str.startsWith(".sysmsg.invokeMessage.link.text")) || (Util.isNullOrNil((String)this.values.get(str)))) {
+          break label423;
         }
         str = (String)this.values.get(str);
         localStringBuilder.append(str);
-        this.ikJ.add(str);
+        this.jfI.add(str);
         i = str.length();
       }
     }
-    label356:
+    label423:
     for (;;)
     {
       break;
-      this.ikK.addFirst(Integer.valueOf(localStringBuilder.length() - i));
-      this.ikL.add(Integer.valueOf(localStringBuilder.length()));
-      this.ikH = localStringBuilder.toString();
-      if ((ch.aDb() - this.KrQ >= 300000L) && (!bu.isNullOrNil(this.KrP))) {
-        b.c(new Runnable()
+      this.jfJ.addFirst(Integer.valueOf(localStringBuilder.length() - i));
+      this.jfK.add(Integer.valueOf(localStringBuilder.length()));
+      this.jfG = localStringBuilder.toString();
+      if ((cl.aWz() - this.PEc >= 300000L) && (!Util.isNullOrNil(this.PEb))) {
+        ThreadPool.post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(36443);
-            a.this.dCi.setType(10002);
-            w.a(ak.getContext().getString(2131757292), "", a.this.dCi, "");
-            bc.aCg();
-            c.azI().a(a.this.dCi.field_msgId, a.this.dCi);
-            ae.i("MicroMsg.InvokeMessageNewXmlMsg", "checkExpired:%s", new Object[] { Long.valueOf(a.this.dCi.field_msgId) });
+            a.this.dTX.setType(10002);
+            w.a(MMApplicationContext.getContext().getString(2131757506), "", a.this.dTX, "");
+            bg.aVF();
+            c.aSQ().a(a.this.dTX.field_msgId, a.this.dTX);
+            Log.i("MicroMsg.InvokeMessageNewXmlMsg", "checkExpired:%s", new Object[] { Long.valueOf(a.this.dTX.field_msgId) });
             AppMethodBeat.o(36443);
           }
         }, "[checkExpired]");
@@ -98,7 +106,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.j.a
  * JD-Core Version:    0.7.0.1
  */

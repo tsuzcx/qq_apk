@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" android:drawable="@raw/tipsbar_icon_close_dark_pressed" />
+    <item android:drawable="@raw/tipsbar_icon_close_dark" />
+</selector>

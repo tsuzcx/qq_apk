@@ -1,6 +1,7 @@
 package com.tencent.tav.report;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tav.decoder.logger.Logger;
 
 public final class ExportReportSession
 {
@@ -17,61 +18,64 @@ public final class ExportReportSession
   
   private void commit()
   {
-    AppMethodBeat.i(215366);
+    AppMethodBeat.i(218719);
     if ((this.beginTimeMs == 0L) || (this.exportStartTimeNs == 0L))
     {
-      new StringBuilder("commit: 数据错误，beginTimeMs = ").append(this.beginTimeMs).append("， exportStartTimeNs = ").append(this.exportStartTimeNs);
-      AppMethodBeat.o(215366);
+      Logger.e("ExportReportSession", "commit: 数据错误，beginTimeMs = " + this.beginTimeMs + "， exportStartTimeNs = " + this.exportStartTimeNs);
+      AppMethodBeat.o(218719);
       return;
     }
     if (this.successCount >= 10) {
       doCommit();
     }
     reset();
-    AppMethodBeat.o(215366);
+    AppMethodBeat.o(218719);
   }
   
   private void doCommit() {}
   
   public final void onExportError()
   {
-    AppMethodBeat.i(215365);
+    AppMethodBeat.i(218718);
     this.success = false;
     commit();
-    AppMethodBeat.o(215365);
+    AppMethodBeat.o(218718);
   }
   
   public final void onExportStart(long paramLong)
   {
-    AppMethodBeat.i(215363);
+    AppMethodBeat.i(218716);
     this.exportStartTimeNs = paramLong;
     this.beginTimeMs = System.currentTimeMillis();
-    AppMethodBeat.o(215363);
+    AppMethodBeat.o(218716);
   }
   
   public final void onExportSuccess()
   {
-    AppMethodBeat.i(215364);
+    AppMethodBeat.i(218717);
     if (this.exportStartTimeNs <= 0L)
     {
-      new StringBuilder("onExportSuccess: 数据错误，exportStartTimeNs = ").append(this.exportStartTimeNs);
-      AppMethodBeat.o(215364);
+      Logger.e("ExportReportSession", "onExportSuccess: 数据错误，exportStartTimeNs = " + this.exportStartTimeNs);
+      AppMethodBeat.o(218717);
       return;
     }
     this.success = true;
     this.compositeTimeUs = ((System.nanoTime() - this.exportStartTimeNs) / 1000L);
     commit();
-    AppMethodBeat.o(215364);
+    AppMethodBeat.o(218717);
   }
   
   public final void reset()
   {
+    AppMethodBeat.i(218720);
+    Logger.d("ExportReportSession", "reset() called");
     this.compositeTimeUs = 0L;
     this.success = false;
     this.totalCostUs = 0L;
     this.successCount = 0;
     this.fileDurationUs = 0L;
     this.framePerSecond = 0L;
+    AppMethodBeat.o(218720);
   }
   
   public final void setFileDurationUs(long paramLong)
@@ -92,7 +96,7 @@ public final class ExportReportSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.report.ExportReportSession
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,35 @@
 package com.tencent.mm.pluginsdk.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wi;
-import com.tencent.mm.sdk.b.a;
+import com.tencent.mm.g.a.xi;
+import com.tencent.mm.sdk.event.EventCenter;
 
 public final class e
 {
-  public static wi aML(String paramString)
+  public static xi bdh(String paramString)
   {
     AppMethodBeat.i(151625);
-    wi localwi = new wi();
-    localwi.dLN.dsO = 1;
-    localwi.dLN.dLO = paramString;
-    a.IvT.l(localwi);
+    xi localxi = new xi();
+    localxi.edC.dJY = 1;
+    localxi.edC.edD = paramString;
+    EventCenter.instance.publish(localxi);
     AppMethodBeat.o(151625);
-    return localwi;
+    return localxi;
   }
   
-  public static void aMM(String paramString)
+  public static void bdi(String paramString)
   {
     AppMethodBeat.i(151626);
-    wi localwi = new wi();
-    localwi.dLN.dsO = 2;
-    localwi.dLN.dLO = paramString;
-    a.IvT.l(localwi);
+    xi localxi = new xi();
+    localxi.edC.dJY = 2;
+    localxi.edC.edD = paramString;
+    EventCenter.instance.publish(localxi);
     AppMethodBeat.o(151626);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.c.e
  * JD-Core Version:    0.7.0.1
  */

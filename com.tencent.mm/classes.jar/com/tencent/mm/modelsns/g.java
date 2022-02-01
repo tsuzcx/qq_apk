@@ -1,60 +1,40 @@
 package com.tencent.mm.modelsns;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.i.a.l;
+import com.tencent.mm.protocal.protobuf.col;
+import java.util.Map;
 
 public final class g
+  implements j
 {
-  private int index;
-  StringBuffer iqm;
-  StringBuffer iqn;
+  public col jlh;
   
   public g()
   {
-    AppMethodBeat.i(150969);
-    this.iqm = new StringBuffer();
-    this.iqn = new StringBuffer();
-    this.index = 0;
-    AppMethodBeat.o(150969);
+    AppMethodBeat.i(192727);
+    this.jlh = new col();
+    AppMethodBeat.o(192727);
   }
   
-  public final String RD()
+  public final String bfF()
   {
-    AppMethodBeat.i(150973);
-    this.index = 0;
-    this.iqm.append("--end--\n\n");
-    String str = this.iqm.toString();
-    AppMethodBeat.o(150973);
+    AppMethodBeat.i(192728);
+    String str = l.a(this.jlh);
+    AppMethodBeat.o(192728);
     return str;
   }
   
-  public final void l(String paramString, Object paramObject)
+  public final void j(String paramString, Map<String, String> paramMap)
   {
-    AppMethodBeat.i(150970);
-    this.iqm.append(this.index + " " + paramString + "->" + paramObject + "\n");
-    this.iqn.append(paramObject);
-    this.index += 1;
-    AppMethodBeat.o(150970);
-  }
-  
-  public final void m(String paramString, Object paramObject)
-  {
-    AppMethodBeat.i(150971);
-    this.iqm.append(paramString + "->" + paramObject + "\n");
-    this.iqn.append(paramObject);
-    AppMethodBeat.o(150971);
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(150972);
-    String str = this.iqn.toString();
-    AppMethodBeat.o(150972);
-    return str;
+    AppMethodBeat.i(192729);
+    this.jlh = l.y(paramString, paramMap);
+    AppMethodBeat.o(192729);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.modelsns.g
  * JD-Core Version:    0.7.0.1
  */

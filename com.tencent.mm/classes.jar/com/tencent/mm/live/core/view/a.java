@@ -1,15 +1,15 @@
 package com.tencent.mm.live.core.view;
 
-import d.g.a.m;
-import d.l;
+import kotlin.g.a.m;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16})
+@l(hxD={1, 1, 16})
 final class a
   implements b.a
 {
   a(m paramm)
   {
-    this.gOL = paramm;
+    this.hEX = paramm;
   }
 }
 

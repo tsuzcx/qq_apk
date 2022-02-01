@@ -6,6 +6,8 @@ import com.tencent.liteav.basic.util.TXCCommonUtil;
 import com.tencent.liteav.basic.util.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
+import java.io.PrintWriter;
+import java.io.StringWriter;
 
 public class TXCLog
 {
@@ -52,9 +54,9 @@ public class TXCLog
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(221387);
+    AppMethodBeat.i(222129);
     log(1, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(221387);
+    AppMethodBeat.o(222129);
   }
   
   public static void e(String paramString1, String paramString2)
@@ -64,11 +66,25 @@ public class TXCLog
     AppMethodBeat.o(14778);
   }
   
+  public static void e(String paramString1, String paramString2, Throwable paramThrowable)
+  {
+    AppMethodBeat.i(222133);
+    StringWriter localStringWriter = new StringWriter();
+    PrintWriter localPrintWriter = new PrintWriter(localStringWriter);
+    paramThrowable.printStackTrace(localPrintWriter);
+    for (paramThrowable = paramThrowable.getCause(); paramThrowable != null; paramThrowable = paramThrowable.getCause()) {
+      paramThrowable.printStackTrace(localPrintWriter);
+    }
+    localPrintWriter.close();
+    e(paramString1, paramString2 + "\n" + localStringWriter.toString());
+    AppMethodBeat.o(222133);
+  }
+  
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(221390);
+    AppMethodBeat.i(222132);
     log(4, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(221390);
+    AppMethodBeat.o(222132);
   }
   
   public static void i(String paramString1, String paramString2)
@@ -80,9 +96,9 @@ public class TXCLog
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(221388);
+    AppMethodBeat.i(222130);
     log(2, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(221388);
+    AppMethodBeat.o(222130);
   }
   
   public static boolean init()
@@ -248,9 +264,9 @@ public class TXCLog
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(221386);
+    AppMethodBeat.i(222128);
     log(0, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(221386);
+    AppMethodBeat.o(222128);
   }
   
   public static void w(String paramString1, String paramString2)
@@ -262,14 +278,14 @@ public class TXCLog
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    AppMethodBeat.i(221389);
+    AppMethodBeat.i(222131);
     log(3, paramString1, String.format(paramString2, paramVarArgs));
-    AppMethodBeat.o(221389);
+    AppMethodBeat.o(222131);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.basic.log.TXCLog
  * JD-Core Version:    0.7.0.1
  */

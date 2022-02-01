@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.appbrand.dynamic.k;
 
 public final class b
 {
-  public static int dK(int paramInt1, int paramInt2)
+  public static int dV(int paramInt1, int paramInt2)
   {
     int i = -2147483648;
     if (paramInt1 == 0) {
@@ -28,7 +28,7 @@ public final class b
     return 10100;
   }
   
-  public static int su(int paramInt)
+  public static int wq(int paramInt)
   {
     switch (paramInt)
     {
@@ -43,7 +43,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.k.b
  * JD-Core Version:    0.7.0.1
  */

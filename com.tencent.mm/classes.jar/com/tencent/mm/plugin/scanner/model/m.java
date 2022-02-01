@@ -1,96 +1,103 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bxn;
-import com.tencent.mm.protocal.protobuf.bxo;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ctm;
+import com.tencent.mm.protocal.protobuf.ctn;
+import com.tencent.mm.protocal.protobuf.ekt;
+import java.util.List;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/NetSceneScanConfigSync;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "type", "", "(I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "configType", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResp", "Lcom/tencent/mm/protocal/protobuf/MMBizScanConfSyncResp;", "getScanConfigType", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-scan_release"})
 public final class m
-  extends n
-  implements k
+  extends q
+  implements com.tencent.mm.network.m
 {
-  public static final a yCS;
-  private f callback;
-  final b rr;
-  int yCR;
+  public List<ekt> CFD;
+  public long CFE;
+  public float angle;
+  private i callback;
+  public int dEb;
+  public d rr;
   
-  static
+  public m(int paramInt1, int paramInt2, int paramInt3, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(52169);
-    yCS = new a((byte)0);
-    AppMethodBeat.o(52169);
+    AppMethodBeat.i(120856);
+    d.a locala = new d.a();
+    ctm localctm = new ctm();
+    localctm.Myo = paramInt2;
+    localctm.Myp = paramInt3;
+    localctm.Myt = paramString1;
+    localctm.Myu = paramString2;
+    localctm.Scene = paramInt1;
+    locala.iLN = localctm;
+    locala.iLO = new ctn();
+    locala.uri = "/cgi-bin/micromsg-bin/newocrtranslation";
+    locala.funcId = getType();
+    locala.iLP = 0;
+    locala.respCmdId = 0;
+    this.rr = locala.aXF();
+    this.dEb = paramInt2;
+    AppMethodBeat.o(120856);
   }
   
-  public m(int paramInt)
+  public m(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(52168);
-    this.yCR = paramInt;
-    Object localObject = new b.a();
-    ((b.a)localObject).c((a)new bxn());
-    ((b.a)localObject).d((a)new bxo());
-    ((b.a)localObject).DN("/cgi-bin/mmbiz-bin/usrmsg/mmbizscan_confsync");
-    ((b.a)localObject).oS(1812);
-    ((b.a)localObject).oU(0);
-    ((b.a)localObject).oV(0);
-    localObject = ((b.a)localObject).aDS();
-    p.g(localObject, "builder.buildInstance()");
-    this.rr = ((b)localObject);
-    localObject = this.rr.aEU();
-    if (localObject == null)
-    {
-      localObject = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.MMBizScanConfSyncReq");
-      AppMethodBeat.o(52168);
-      throw ((Throwable)localObject);
-    }
-    ((bxn)localObject).type = paramInt;
-    ae.i("MicroMsg.NetSceneScanConfigSync", "alvinluo scanConfigSync type: %d", new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(52168);
+    this(0, paramInt1, paramInt2, paramString1, paramString2);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(52167);
-    p.h(parame, "dispatcher");
-    p.h(paramf, "callback");
-    this.callback = paramf;
-    int i = dispatch(parame, (q)this.rr, (k)this);
-    AppMethodBeat.o(52167);
+    AppMethodBeat.i(120857);
+    this.callback = parami;
+    this.CFE = System.currentTimeMillis();
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(120857);
     return i;
+  }
+  
+  public final List<ekt> ePQ()
+  {
+    return this.CFD;
+  }
+  
+  public final String ePR()
+  {
+    return ((ctn)this.rr.iLL.iLR).Myx;
+  }
+  
+  public final long ePS()
+  {
+    return this.CFE;
+  }
+  
+  public final float getAngle()
+  {
+    return this.angle;
+  }
+  
+  public final int getSessionId()
+  {
+    return this.dEb;
   }
   
   public final int getType()
   {
-    return 1812;
+    return 294;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(52166);
-    ae.i("MicroMsg.NetSceneScanConfigSync", "alvinluo onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = this.callback;
-    if (paramq != null)
-    {
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(52166);
-      return;
-    }
-    AppMethodBeat.o(52166);
+    AppMethodBeat.i(120858);
+    this.angle = ((ctn)((d)params).iLL.iLR).Myv;
+    this.CFD = ((ctn)((d)params).iLL.iLR).LWt;
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(120858);
   }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/model/NetSceneScanConfigSync$Companion;", "", "()V", "CONFIG_SYNC_TYPE_FOCUS_ENGINE", "", "CONFIG_SYNC_TYPE_GUIDE", "TAG", "", "plugin-scan_release"})
-  public static final class a {}
 }
 
 

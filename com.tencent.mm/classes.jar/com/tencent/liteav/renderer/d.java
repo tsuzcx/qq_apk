@@ -64,6 +64,7 @@ public class d
     }
     catch (Exception localException)
     {
+      TXCLog.e("TXCTextureViewWrapper", "adjust video size failed.", localException);
       AppMethodBeat.o(16788);
     }
   }
@@ -135,6 +136,7 @@ public class d
     }
     catch (Exception localException)
     {
+      TXCLog.e("TXCTextureViewWrapper", "set render mode failed", localException);
       AppMethodBeat.o(16784);
     }
   }
@@ -267,6 +269,7 @@ public class d
     }
     catch (Exception localException)
     {
+      TXCLog.e("TXCTextureViewWrapper", "set render rotation failed.", localException);
       AppMethodBeat.o(16786);
     }
   }
@@ -356,7 +359,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.renderer.d
  * JD-Core Version:    0.7.0.1
  */

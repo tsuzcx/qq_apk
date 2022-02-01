@@ -1,9 +1,9 @@
 package com.tencent.liteav.beauty.b;
 
 import android.opengl.GLES20;
-import com.tencent.liteav.basic.d.h;
-import com.tencent.liteav.basic.d.k;
-import com.tencent.liteav.basic.d.l;
+import com.tencent.liteav.basic.c.h;
+import com.tencent.liteav.basic.c.k;
+import com.tencent.liteav.basic.c.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -43,14 +43,14 @@ public class t
   
   public void a(k paramk, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(221190);
+    AppMethodBeat.i(221438);
     paramk = l.a(paramk, paramBoolean1, paramBoolean2);
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(32).order(ByteOrder.nativeOrder());
     FloatBuffer localFloatBuffer = localByteBuffer.asFloatBuffer();
     localFloatBuffer.put(paramk);
     localFloatBuffer.flip();
     this.r = localByteBuffer;
-    AppMethodBeat.o(221190);
+    AppMethodBeat.o(221438);
   }
   
   public boolean b()
@@ -100,7 +100,7 @@ public class t
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.t
  * JD-Core Version:    0.7.0.1
  */

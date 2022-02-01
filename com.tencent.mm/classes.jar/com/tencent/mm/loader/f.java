@@ -7,169 +7,176 @@ import android.view.animation.Animation;
 import com.tencent.mm.loader.a.b<TT;TR;>;
 import com.tencent.mm.loader.e.b.e.a;
 import com.tencent.mm.loader.e.c.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.g.b.q;
-import d.g.b.y.f;
-import d.l;
-import d.o;
-import d.v;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.g.b.z.f;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/loader/Reaper;", "T", "R", "", "builder", "Lcom/tencent/mm/loader/builder/RequestBuilder;", "mImageLoaderConfiguration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "(Lcom/tencent/mm/loader/builder/RequestBuilder;Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;)V", "batchFetcher", "Lcom/tencent/mm/loader/common/IDataBatchFetcher;", "getBatchFetcher", "()Lcom/tencent/mm/loader/common/IDataBatchFetcher;", "setBatchFetcher", "(Lcom/tencent/mm/loader/common/IDataBatchFetcher;)V", "getBuilder", "()Lcom/tencent/mm/loader/builder/RequestBuilder;", "debugInfo", "", "getDebugInfo", "()Ljava/lang/String;", "setDebugInfo", "(Ljava/lang/String;)V", "defaultAnimation", "Landroid/view/animation/Animation;", "getDefaultAnimation", "()Landroid/view/animation/Animation;", "setDefaultAnimation", "(Landroid/view/animation/Animation;)V", "defaultBackgroundDrawable", "Landroid/graphics/drawable/Drawable;", "getDefaultBackgroundDrawable", "()Landroid/graphics/drawable/Drawable;", "setDefaultBackgroundDrawable", "(Landroid/graphics/drawable/Drawable;)V", "defaultBackgroundResId", "", "getDefaultBackgroundResId", "()I", "setDefaultBackgroundResId", "(I)V", "defaultDrawable", "getDefaultDrawable", "setDefaultDrawable", "defaultResId", "getDefaultResId", "setDefaultResId", "filenameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "getFilenameCreator", "()Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "setFilenameCreator", "(Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;)V", "holder", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "getHolder", "()Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "setHolder", "(Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;)V", "imageDownloadListener", "Lcom/tencent/mm/loader/listener/IImageDownloadListener;", "getImageDownloadListener", "()Lcom/tencent/mm/loader/listener/IImageDownloadListener;", "setImageDownloadListener", "(Lcom/tencent/mm/loader/listener/IImageDownloadListener;)V", "imageWorkTask", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "getImageWorkTask", "()Lcom/tencent/mm/loader/loader/LoaderCore;", "setImageWorkTask", "(Lcom/tencent/mm/loader/loader/LoaderCore;)V", "isShowDefaultBackground", "", "()Z", "isShowDefaultImage", "mDynamicTranscoder", "Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "getMDynamicTranscoder", "()Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "setMDynamicTranscoder", "(Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;)V", "mEmptyImageLoaderListener", "Lcom/tencent/mm/loader/impr/IDefaultImageLoaderListener;", "mHeadTranscoder", "getMHeadTranscoder", "setMHeadTranscoder", "mImageDiskCache", "Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "getMImageDiskCache", "()Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "setMImageDiskCache", "(Lcom/tencent/mm/loader/cache/disk/IDiskCache;)V", "mImageDownloader", "Lcom/tencent/mm/loader/common/IDataFetcher;", "getMImageDownloader", "()Lcom/tencent/mm/loader/common/IDataFetcher;", "setMImageDownloader", "(Lcom/tencent/mm/loader/common/IDataFetcher;)V", "mImageFileBrokenCallback", "Lcom/tencent/mm/loader/listener/IImageFileBrokenCallback;", "getMImageFileBrokenCallback", "()Lcom/tencent/mm/loader/listener/IImageFileBrokenCallback;", "setMImageFileBrokenCallback", "(Lcom/tencent/mm/loader/listener/IImageFileBrokenCallback;)V", "mImageLoadListener", "Lcom/tencent/mm/loader/listener/IImageLoadListener;", "getMImageLoadListener", "()Lcom/tencent/mm/loader/listener/IImageLoadListener;", "setMImageLoadListener", "(Lcom/tencent/mm/loader/listener/IImageLoadListener;)V", "mImageLoadReportCallback", "Lcom/tencent/mm/loader/listener/IImageLoaderReportListener;", "getMImageLoadReportCallback", "()Lcom/tencent/mm/loader/listener/IImageLoaderReportListener;", "setMImageLoadReportCallback", "(Lcom/tencent/mm/loader/listener/IImageLoaderReportListener;)V", "mImageLoaderAnimation", "Lcom/tencent/mm/loader/listener/IImageLoaderAnimation;", "getMImageLoaderAnimation", "()Lcom/tencent/mm/loader/listener/IImageLoaderAnimation;", "mImageLoaderListener", "Lcom/tencent/mm/loader/listener/IImageLoaderListener;", "getMImageLoaderListener", "()Lcom/tencent/mm/loader/listener/IImageLoaderListener;", "mImageLoaderOptions", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "getMImageLoaderOptions", "()Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "mImageMD5Checker", "Lcom/tencent/mm/loader/common/IImageMD5Check;", "getMImageMD5Checker", "()Lcom/tencent/mm/loader/common/IImageMD5Check;", "setMImageMD5Checker", "(Lcom/tencent/mm/loader/common/IImageMD5Check;)V", "mImageMemoryCache", "Lcom/tencent/mm/loader/cache/memory/IMemoryCache;", "getMImageMemoryCache", "()Lcom/tencent/mm/loader/cache/memory/IMemoryCache;", "setMImageMemoryCache", "(Lcom/tencent/mm/loader/cache/memory/IMemoryCache;)V", "mImageProducer", "Lcom/tencent/mm/loader/common/IImageResourceProducer;", "getMImageProducer", "()Lcom/tencent/mm/loader/common/IImageResourceProducer;", "setMImageProducer", "(Lcom/tencent/mm/loader/common/IImageResourceProducer;)V", "mImageRetryListener", "Lcom/tencent/mm/loader/common/IImageRetryDownload;", "getMImageRetryListener", "()Lcom/tencent/mm/loader/common/IImageRetryDownload;", "setMImageRetryListener", "(Lcom/tencent/mm/loader/common/IImageRetryDownload;)V", "onlyDownload", "getOnlyDownload", "setOnlyDownload", "(Z)V", "target", "Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "getTarget", "()Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "setTarget", "(Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;)V", "uriValue", "Lcom/tencent/mm/loader/model/data/DataItem;", "getUriValue", "()Lcom/tencent/mm/loader/model/data/DataItem;", "setUriValue", "(Lcom/tencent/mm/loader/model/data/DataItem;)V", "checkIfNeedInitExecutor", "", "doLoadImage", "task", "Lcom/tencent/mm/loader/task/LoadTask;", "download", "load", "request", "Companion", "libimageloader_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/loader/Reaper;", "T", "R", "", "builder", "Lcom/tencent/mm/loader/builder/RequestBuilder;", "mImageLoaderConfiguration", "Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;", "(Lcom/tencent/mm/loader/builder/RequestBuilder;Lcom/tencent/mm/loader/cfg/ILoaderConfiguration;)V", "batchFetcher", "Lcom/tencent/mm/loader/common/IDataBatchFetcher;", "getBatchFetcher", "()Lcom/tencent/mm/loader/common/IDataBatchFetcher;", "setBatchFetcher", "(Lcom/tencent/mm/loader/common/IDataBatchFetcher;)V", "getBuilder", "()Lcom/tencent/mm/loader/builder/RequestBuilder;", "debugInfo", "", "getDebugInfo", "()Ljava/lang/String;", "setDebugInfo", "(Ljava/lang/String;)V", "defaultAnimation", "Landroid/view/animation/Animation;", "getDefaultAnimation", "()Landroid/view/animation/Animation;", "setDefaultAnimation", "(Landroid/view/animation/Animation;)V", "defaultBackgroundDrawable", "Landroid/graphics/drawable/Drawable;", "getDefaultBackgroundDrawable", "()Landroid/graphics/drawable/Drawable;", "setDefaultBackgroundDrawable", "(Landroid/graphics/drawable/Drawable;)V", "defaultBackgroundResId", "", "getDefaultBackgroundResId", "()I", "setDefaultBackgroundResId", "(I)V", "defaultDrawable", "getDefaultDrawable", "setDefaultDrawable", "defaultResId", "getDefaultResId", "setDefaultResId", "filenameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "getFilenameCreator", "()Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "setFilenameCreator", "(Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;)V", "holder", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "getHolder", "()Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "setHolder", "(Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;)V", "imageDownloadListener", "Lcom/tencent/mm/loader/listener/IImageDownloadListener;", "getImageDownloadListener", "()Lcom/tencent/mm/loader/listener/IImageDownloadListener;", "setImageDownloadListener", "(Lcom/tencent/mm/loader/listener/IImageDownloadListener;)V", "imageWorkTask", "Lcom/tencent/mm/loader/loader/LoaderCore;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "getImageWorkTask", "()Lcom/tencent/mm/loader/loader/LoaderCore;", "setImageWorkTask", "(Lcom/tencent/mm/loader/loader/LoaderCore;)V", "isShowDefaultBackground", "", "()Z", "isShowDefaultImage", "mDynamicTranscoder", "Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "getMDynamicTranscoder", "()Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;", "setMDynamicTranscoder", "(Lcom/tencent/mm/loader/impr/transcoder/HeadResourceTranscoder;)V", "mEmptyImageLoaderListener", "Lcom/tencent/mm/loader/impr/IDefaultImageLoaderListener;", "mHeadTranscoder", "getMHeadTranscoder", "setMHeadTranscoder", "mImageDiskCache", "Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "getMImageDiskCache", "()Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "setMImageDiskCache", "(Lcom/tencent/mm/loader/cache/disk/IDiskCache;)V", "mImageDownloader", "Lcom/tencent/mm/loader/common/IDataFetcher;", "getMImageDownloader", "()Lcom/tencent/mm/loader/common/IDataFetcher;", "setMImageDownloader", "(Lcom/tencent/mm/loader/common/IDataFetcher;)V", "mImageFileBrokenCallback", "Lcom/tencent/mm/loader/listener/IImageFileBrokenCallback;", "getMImageFileBrokenCallback", "()Lcom/tencent/mm/loader/listener/IImageFileBrokenCallback;", "setMImageFileBrokenCallback", "(Lcom/tencent/mm/loader/listener/IImageFileBrokenCallback;)V", "mImageLoadListener", "Lcom/tencent/mm/loader/listener/IImageLoadListener;", "getMImageLoadListener", "()Lcom/tencent/mm/loader/listener/IImageLoadListener;", "setMImageLoadListener", "(Lcom/tencent/mm/loader/listener/IImageLoadListener;)V", "mImageLoadReportCallback", "Lcom/tencent/mm/loader/listener/IImageLoaderReportListener;", "getMImageLoadReportCallback", "()Lcom/tencent/mm/loader/listener/IImageLoaderReportListener;", "setMImageLoadReportCallback", "(Lcom/tencent/mm/loader/listener/IImageLoaderReportListener;)V", "mImageLoaderAnimation", "Lcom/tencent/mm/loader/listener/IImageLoaderAnimation;", "getMImageLoaderAnimation", "()Lcom/tencent/mm/loader/listener/IImageLoaderAnimation;", "mImageLoaderListener", "Lcom/tencent/mm/loader/listener/IImageLoaderListener;", "getMImageLoaderListener", "()Lcom/tencent/mm/loader/listener/IImageLoaderListener;", "mImageLoaderOptions", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "getMImageLoaderOptions", "()Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "mImageMD5Checker", "Lcom/tencent/mm/loader/common/IImageMD5Check;", "getMImageMD5Checker", "()Lcom/tencent/mm/loader/common/IImageMD5Check;", "setMImageMD5Checker", "(Lcom/tencent/mm/loader/common/IImageMD5Check;)V", "mImageMemoryCache", "Lcom/tencent/mm/loader/cache/memory/IMemoryCache;", "getMImageMemoryCache", "()Lcom/tencent/mm/loader/cache/memory/IMemoryCache;", "setMImageMemoryCache", "(Lcom/tencent/mm/loader/cache/memory/IMemoryCache;)V", "mImageProducer", "Lcom/tencent/mm/loader/common/IImageResourceProducer;", "getMImageProducer", "()Lcom/tencent/mm/loader/common/IImageResourceProducer;", "setMImageProducer", "(Lcom/tencent/mm/loader/common/IImageResourceProducer;)V", "mImageRetryListener", "Lcom/tencent/mm/loader/common/IImageRetryDownload;", "getMImageRetryListener", "()Lcom/tencent/mm/loader/common/IImageRetryDownload;", "setMImageRetryListener", "(Lcom/tencent/mm/loader/common/IImageRetryDownload;)V", "onlyDownload", "getOnlyDownload", "setOnlyDownload", "(Z)V", "target", "Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "getTarget", "()Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;", "setTarget", "(Lcom/tencent/mm/loader/impr/target/ResourceShowTarget;)V", "uriValue", "Lcom/tencent/mm/loader/model/data/DataItem;", "getUriValue", "()Lcom/tencent/mm/loader/model/data/DataItem;", "setUriValue", "(Lcom/tencent/mm/loader/model/data/DataItem;)V", "checkIfNeedInitExecutor", "", "doLoadImage", "task", "Lcom/tencent/mm/loader/task/LoadTask;", "download", "load", "request", "Companion", "libimageloader_release"})
 public final class f<T, R>
 {
   private static final String TAG = "MicroMsg.Loader.Reaper";
-  public static final f.a hfC = new f.a((byte)0);
-  public String hfA;
-  private final com.tencent.mm.loader.a.b<T, R> hfB;
-  private final com.tencent.mm.loader.e.g<T, R> hfb;
-  private com.tencent.mm.loader.e.b.g<?> hfc;
-  public final com.tencent.mm.loader.c.e hfd;
-  public final com.tencent.mm.loader.f.e<T, R> hfe;
-  public final com.tencent.mm.loader.f.d hff;
-  private com.tencent.mm.loader.f.f hfg;
-  public com.tencent.mm.loader.f.c<T> hfh;
-  public com.tencent.mm.loader.d.b<T> hfi;
-  public com.tencent.mm.loader.b.b.e<T, R> hfj;
-  public com.tencent.mm.loader.b.a.d<T, R> hfk;
-  private com.tencent.mm.loader.d.c hfl;
-  private com.tencent.mm.loader.f.b hfm;
-  public com.tencent.mm.loader.d.e hfn;
-  public com.tencent.mm.loader.d.d<R> hfo;
-  public com.tencent.mm.loader.e.c.a<R> hfp;
-  public com.tencent.mm.loader.e.c.a<R> hfq;
-  public com.tencent.mm.loader.f.a hfr;
-  private com.tencent.mm.loader.g.d<com.tencent.mm.loader.g.c> hfs;
-  private com.tencent.mm.loader.d.a<T> hft;
-  public com.tencent.mm.loader.f.g hfu;
-  public int hfv;
-  private Animation hfw;
-  public Drawable hfx;
-  public com.tencent.mm.loader.h.a.a<T> hfy;
-  public com.tencent.mm.loader.e.b.d<R> hfz;
+  public static final f.a hYx = new f.a((byte)0);
+  private final com.tencent.mm.loader.e.g<T, R> hXV;
+  private com.tencent.mm.loader.e.b.g<?> hXW;
+  public final com.tencent.mm.loader.c.e hXX;
+  public final com.tencent.mm.loader.f.e<T, R> hXY;
+  public final com.tencent.mm.loader.f.d hXZ;
+  private com.tencent.mm.loader.f.f hYa;
+  public com.tencent.mm.loader.f.c<T> hYb;
+  public com.tencent.mm.loader.d.b<T> hYc;
+  public com.tencent.mm.loader.b.b.e<T, R> hYd;
+  public com.tencent.mm.loader.b.a.d<T, R> hYe;
+  private com.tencent.mm.loader.d.c hYf;
+  private com.tencent.mm.loader.f.b hYg;
+  public com.tencent.mm.loader.d.e hYh;
+  public com.tencent.mm.loader.d.d<R> hYi;
+  public com.tencent.mm.loader.e.c.a<R> hYj;
+  public com.tencent.mm.loader.e.c.a<R> hYk;
+  public com.tencent.mm.loader.f.a hYl;
+  private com.tencent.mm.loader.g.d<com.tencent.mm.loader.g.c> hYm;
+  private com.tencent.mm.loader.d.a<T> hYn;
+  public com.tencent.mm.loader.f.g hYo;
+  public int hYp;
+  private Animation hYq;
+  public Drawable hYr;
+  public com.tencent.mm.loader.h.a.a<T> hYs;
+  public com.tencent.mm.loader.e.b.d<R> hYt;
+  public String hYu;
+  public boolean hYv;
+  public final com.tencent.mm.loader.a.b<T, R> hYw;
   
   public f(com.tencent.mm.loader.a.b<T, R> paramb, com.tencent.mm.loader.c.d<T, R> paramd)
   {
-    this.hfB = paramb;
-    this.hfb = new com.tencent.mm.loader.e.g();
-    Object localObject = this.hfB.hfd;
+    this.hYw = paramb;
+    this.hXV = new com.tencent.mm.loader.e.g();
+    Object localObject = this.hYw.hXX;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.arm();
+      paramb = paramd.aJL();
     }
-    this.hfd = paramb;
-    localObject = this.hfB.hfe;
+    this.hXX = paramb;
+    localObject = this.hYw.hXY;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = (com.tencent.mm.loader.f.e)this.hfb;
+      paramb = (com.tencent.mm.loader.f.e)this.hXV;
     }
-    this.hfe = paramb;
-    this.hff = this.hfB.hff;
-    localObject = this.hfB.hfg;
+    this.hXY = paramb;
+    this.hXZ = this.hYw.hXZ;
+    localObject = this.hYw.hYa;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.arn();
+      paramb = paramd.aJM();
     }
-    this.hfg = paramb;
-    this.hfh = this.hfB.hfh;
-    localObject = this.hfB.hfi;
+    this.hYa = paramb;
+    this.hYb = this.hYw.hYb;
+    localObject = this.hYw.hYc;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.ari();
+      paramb = paramd.aJH();
     }
-    this.hfi = paramb;
-    localObject = this.hfB.hfj;
+    this.hYc = paramb;
+    localObject = this.hYw.hYd;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.arg();
+      paramb = paramd.aJF();
     }
-    this.hfj = paramb;
-    localObject = this.hfB.hfk;
+    this.hYd = paramb;
+    localObject = this.hYw.hYe;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.arh();
+      paramb = paramd.aJG();
     }
-    this.hfk = paramb;
-    localObject = this.hfB.hfl;
+    this.hYe = paramb;
+    localObject = this.hYw.hYf;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.aro();
+      paramb = paramd.aJN();
     }
-    this.hfl = paramb;
-    localObject = this.hfB.hfm;
+    this.hYf = paramb;
+    localObject = this.hYw.hYg;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.arp();
+      paramb = paramd.aJO();
     }
-    this.hfm = paramb;
-    localObject = this.hfB.hfn;
+    this.hYg = paramb;
+    localObject = this.hYw.hYh;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.arq();
+      paramb = paramd.aJP();
     }
-    this.hfn = paramb;
-    localObject = this.hfB.hfo;
+    this.hYh = paramb;
+    localObject = this.hYw.hYi;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.arj();
+      paramb = paramd.aJI();
     }
-    this.hfo = paramb;
-    localObject = this.hfB.hfp;
+    this.hYi = paramb;
+    localObject = this.hYw.hYj;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.arl();
+      paramb = paramd.aJK();
     }
-    this.hfp = paramb;
-    this.hfq = this.hfB.hfq;
-    this.hfr = this.hfB.hfr;
-    localObject = this.hfB.hfs;
+    this.hYj = paramb;
+    this.hYk = this.hYw.hYk;
+    this.hYl = this.hYw.hYl;
+    localObject = this.hYw.hYm;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.ars();
+      paramb = paramd.aJR();
     }
-    this.hfs = paramb;
-    this.hft = paramd.arr();
-    localObject = this.hfB.hfu;
+    this.hYm = paramb;
+    this.hYn = paramd.aJQ();
+    localObject = this.hYw.hYo;
     paramb = (com.tencent.mm.loader.a.b<T, R>)localObject;
     if (localObject == null) {
-      paramb = paramd.ark();
+      paramb = paramd.aJJ();
     }
-    this.hfu = paramb;
-    this.hfv = this.hfd.hfv;
-    this.hfw = this.hfd.hfw;
-    paramb = this.hfd;
-    paramd = ak.getResources();
+    this.hYo = paramb;
+    this.hYp = this.hXX.hYp;
+    this.hYq = this.hXX.hYq;
+    paramb = this.hXX;
+    paramd = MMApplicationContext.getResources();
     p.g(paramd, "MMApplicationContext.getResources()");
     p.h(paramd, "resources");
-    if (paramb.hgJ != 0) {
-      paramb = (Drawable)new ColorDrawable(paramd.getColor(paramb.hgJ));
+    if (paramb.hZD != 0) {
+      paramb = (Drawable)new ColorDrawable(paramd.getColor(paramb.hZD));
     }
     for (;;)
     {
-      this.hfx = paramb;
-      this.hfy = this.hfB.hfI;
-      this.hfA = "";
+      this.hYr = paramb;
+      this.hYs = this.hYw.hYD;
+      this.hYu = "";
       return;
-      if (paramb.hfv != 0) {
-        paramb = paramd.getDrawable(paramb.hfv);
+      if (paramb.hYp != 0) {
+        paramb = paramd.getDrawable(paramb.hYp);
       } else {
-        paramb = paramb.hfx;
+        paramb = paramb.hYr;
       }
     }
   }
   
-  private final void aqW()
+  private final void a(com.tencent.mm.loader.k.b<?, ?> paramb)
+  {
+    aJv();
+    com.tencent.mm.loader.g.d locald = this.hYm;
+    if (locald != null) {
+      locald.b((com.tencent.mm.loader.g.c)paramb);
+    }
+  }
+  
+  private final void aJv()
   {
     try
     {
-      if (this.hfs == null)
+      if (this.hYm == null)
       {
-        com.tencent.mm.loader.g.a.e locale = com.tencent.mm.loader.g.a.e.hiP;
-        this.hfs = com.tencent.mm.loader.g.a.e.arI();
+        com.tencent.mm.loader.g.a.e locale = com.tencent.mm.loader.g.a.e.ibM;
+        this.hYm = com.tencent.mm.loader.g.a.e.aKh();
       }
       return;
     }
@@ -180,99 +187,94 @@ public final class f<T, R>
     }
   }
   
-  public final com.tencent.mm.loader.e.b.d<R> aqV()
+  public final com.tencent.mm.loader.e.b.d<R> aJt()
   {
-    com.tencent.mm.loader.e.b.d locald = this.hfz;
+    com.tencent.mm.loader.e.b.d locald = this.hYt;
     if (locald == null) {
-      p.bdF("target");
+      p.btv("target");
     }
     return locald;
   }
   
-  public final void vw()
+  public final void aJu()
   {
-    this.hfy = this.hfB.hfI;
-    Object localObject2 = this.hfB.hfz;
+    Object localObject2 = this.hYw.hYt;
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = (com.tencent.mm.loader.e.b.d)new com.tencent.mm.loader.e.b.a();
     }
-    this.hfz = ((com.tencent.mm.loader.e.b.d)localObject1);
-    localObject1 = com.tencent.mm.loader.e.b.e.hhB;
-    localObject1 = e.a.ary();
-    localObject2 = this.hfz;
+    this.hYt = ((com.tencent.mm.loader.e.b.d)localObject1);
+    localObject1 = com.tencent.mm.loader.e.b.e.iay;
+    localObject1 = e.a.aJX();
+    localObject2 = this.hYt;
     if (localObject2 == null) {
-      p.bdF("target");
+      p.btv("target");
     }
     if (localObject2 == null) {
-      throw new v("null cannot be cast to non-null type com.tencent.mm.loader.impr.target.ResourceShowTarget<kotlin.Any>");
+      throw new t("null cannot be cast to non-null type com.tencent.mm.loader.impr.target.ResourceShowTarget<kotlin.Any>");
     }
-    Object localObject3 = this.hfy;
-    p.h(localObject2, "target");
-    p.h(localObject3, "data");
-    ae.i(com.tencent.mm.loader.e.b.e.TAG, "register " + localObject2 + " and code " + ((com.tencent.mm.loader.e.b.d)localObject2).arw() + " data " + localObject3 + " try get: " + ((com.tencent.mm.loader.e.b.d)localObject2).hhv.get());
-    ((com.tencent.mm.loader.e.b.e)localObject1).cqi.put(Integer.valueOf(((com.tencent.mm.loader.e.b.d)localObject2).arw()), new o(localObject3, localObject2));
-    localObject1 = this.hfy;
+    ((com.tencent.mm.loader.e.b.e)localObject1).a((com.tencent.mm.loader.e.b.d)localObject2, this.hYs);
+    localObject1 = this.hYs;
     int i;
-    if (this.hfy.isLegal())
+    if (this.hYs.isLegal())
     {
-      if ((this.hfy.value() instanceof String))
+      if ((this.hYs.value() instanceof String))
       {
-        localObject2 = this.hfy.value();
+        localObject2 = this.hYs.value();
         if (localObject2 == null) {
-          throw new v("null cannot be cast to non-null type kotlin.String");
+          throw new t("null cannot be cast to non-null type kotlin.String");
         }
-        if (!bu.isNullOrNil((String)localObject2)) {}
+        if (!Util.isNullOrNil((String)localObject2)) {}
       }
     }
     else
     {
       i = 1;
       if (i == 0) {
-        break label346;
+        break label230;
       }
     }
     for (;;)
     {
       if (localObject1 != null)
       {
-        ae.w(TAG, "uri value is isLegal " + this.hfy);
-        localObject1 = com.tencent.mm.loader.e.b.e.hhB;
-        localObject1 = e.a.ary();
-        localObject2 = this.hfz;
+        Log.w(TAG, "uri value is isLegal " + this.hYs);
+        localObject1 = com.tencent.mm.loader.e.b.e.iay;
+        localObject1 = e.a.aJX();
+        localObject2 = this.hYt;
         if (localObject2 == null) {
-          p.bdF("target");
+          p.btv("target");
         }
         if (localObject2 == null)
         {
-          throw new v("null cannot be cast to non-null type com.tencent.mm.loader.impr.target.ResourceShowTarget<kotlin.Any>");
+          throw new t("null cannot be cast to non-null type com.tencent.mm.loader.impr.target.ResourceShowTarget<kotlin.Any>");
           i = 0;
           break;
-          label346:
+          label230:
           localObject1 = null;
           continue;
         }
-        ((com.tencent.mm.loader.e.b.e)localObject1).a((com.tencent.mm.loader.e.b.d)localObject2, this.hfy, "uri value is isLegal");
-        this.hfe.a(this.hfy, this.hfc, null);
-        localObject1 = this.hff;
+        ((com.tencent.mm.loader.e.b.e)localObject1).a((com.tencent.mm.loader.e.b.d)localObject2, this.hYs, "uri value is isLegal");
+        this.hXY.a(this.hYs, this.hXW, null);
+        localObject1 = this.hXZ;
         if (localObject1 != null) {
-          ((com.tencent.mm.loader.f.d)localObject1).a(this.hfc);
+          ((com.tencent.mm.loader.f.d)localObject1).a(this.hXW);
         }
         return;
       }
     }
-    localObject2 = new y.f();
-    label437:
+    localObject2 = new z.f();
+    label321:
     final boolean bool;
-    if (this.hfd.hgB)
+    if (this.hXX.hZw)
     {
-      localObject1 = this.hfj.a(this.hfy, this.hfp);
-      ((y.f)localObject2).NiY = localObject1;
-      bool = ((Boolean)((d.g.a.a)new c(this, (y.f)localObject2)).invoke()).booleanValue();
-      localObject1 = (com.tencent.mm.loader.h.e)((y.f)localObject2).NiY;
+      localObject1 = this.hYd.a(this.hYs, this.hYj);
+      ((z.f)localObject2).SYG = localObject1;
+      bool = ((Boolean)((kotlin.g.a.a)new f.c(this, (z.f)localObject2)).invoke()).booleanValue();
+      localObject1 = (com.tencent.mm.loader.h.e)((z.f)localObject2).SYG;
       if (localObject1 != null) {
         if (!((com.tencent.mm.loader.h.e)localObject1).isValid()) {
-          break label917;
+          break label767;
         }
       }
     }
@@ -283,121 +285,108 @@ public final class f<T, R>
         localObject1 = ((com.tencent.mm.loader.h.e)localObject1).getValue();
         if (localObject1 != null)
         {
-          ae.d(TAG, "[ImageLoader] load from cache. no need from url: " + this.hfy + " value " + localObject1);
+          Log.d(TAG, "[ImageLoader] load from cache. no need from url: " + this.hYs + " value " + localObject1);
           localObject2 = new com.tencent.mm.loader.h.e(localObject1);
-          localObject3 = this.hfp;
+          localObject3 = this.hYj;
           if (localObject3 != null)
           {
-            locald = this.hfz;
+            locald = this.hYt;
             if (locald == null) {
-              p.bdF("target");
+              p.btv("target");
             }
-            ((com.tencent.mm.loader.e.c.a)localObject3).a(locald.hhv, this, (com.tencent.mm.loader.h.e)localObject2, b.b.hhS);
+            ((com.tencent.mm.loader.e.c.a)localObject3).a(locald.ias, this, (com.tencent.mm.loader.h.e)localObject2, b.b.iaP);
           }
-          localObject2 = this.hff;
+          localObject2 = this.hXZ;
           if (localObject2 != null) {
-            ((com.tencent.mm.loader.f.d)localObject2).a(this.hfc);
+            ((com.tencent.mm.loader.f.d)localObject2).a(this.hXW);
           }
-          localObject2 = this.hfz;
+          localObject2 = this.hYt;
           if (localObject2 == null) {
-            p.bdF("target");
+            p.btv("target");
           }
           ((com.tencent.mm.loader.e.b.d)localObject2).a(localObject1, (com.tencent.mm.loader.e.b.b)new b(this, bool));
-          if (this.hfh != null)
+          if (this.hYb != null)
           {
-            localObject2 = com.tencent.mm.loader.h.c.hjf;
-            i = com.tencent.mm.loader.h.c.arL();
-            localObject2 = com.tencent.mm.loader.h.c.hjf;
-            new com.tencent.mm.loader.h.c(i, com.tencent.mm.loader.h.c.arO(), localObject1);
+            localObject2 = com.tencent.mm.loader.h.c.icc;
+            i = com.tencent.mm.loader.h.c.aKk();
+            localObject2 = com.tencent.mm.loader.h.c.icc;
+            new com.tencent.mm.loader.h.c(i, com.tencent.mm.loader.h.c.aKn(), localObject1);
           }
-          localObject2 = this.hfe;
-          localObject3 = this.hfy;
-          com.tencent.mm.loader.e.b.d locald = this.hfz;
+          localObject2 = this.hXY;
+          localObject3 = this.hYs;
+          com.tencent.mm.loader.e.b.d locald = this.hYt;
           if (locald == null) {
-            p.bdF("target");
+            p.btv("target");
           }
-          ((com.tencent.mm.loader.f.e)localObject2).a((com.tencent.mm.loader.h.a.a)localObject3, locald.hhv, localObject1);
+          ((com.tencent.mm.loader.f.e)localObject2).a((com.tencent.mm.loader.h.a.a)localObject3, locald.ias, localObject1);
           if (!bool) {
             break;
           }
         }
       }
-      localObject1 = this.hfy;
-      localObject2 = this.hfz;
+      localObject1 = this.hYs;
+      localObject2 = this.hYt;
       if (localObject2 == null) {
-        p.bdF("target");
+        p.btv("target");
       }
       localObject1 = new com.tencent.mm.loader.k.a((com.tencent.mm.loader.h.a.a)localObject1, (com.tencent.mm.loader.e.b.d)localObject2, this);
-      localObject2 = com.tencent.mm.loader.c.e.hgN;
+      localObject2 = com.tencent.mm.loader.c.e.hZH;
       if (com.tencent.mm.loader.c.e.access$getDEBUG$cp())
       {
-        localObject2 = bu.fpN().toString();
+        localObject2 = Util.getStack().toString();
         p.g(localObject2, "Util.getStack().toString()");
-        ((com.tencent.mm.loader.k.b)localObject1).hfA = ((String)localObject2);
-        this.hfA = ((String)localObject2);
+        ((com.tencent.mm.loader.k.b)localObject1).hYu = ((String)localObject2);
+        this.hYu = ((String)localObject2);
       }
-      ae.d(TAG, "[ImageLoader] load from task:%s", new Object[] { this.hfy });
-      localObject2 = this.hfz;
+      Log.d(TAG, "[ImageLoader] load from task:%s", new Object[] { this.hYs });
+      localObject2 = this.hYt;
       if (localObject2 == null) {
-        p.bdF("target");
+        p.btv("target");
       }
-      localObject3 = this.hfz;
+      Object localObject3 = this.hYt;
       if (localObject3 == null) {
-        p.bdF("target");
+        p.btv("target");
       }
-      ((com.tencent.mm.loader.e.b.d)localObject2).a(((com.tencent.mm.loader.e.b.d)localObject3).hhv, this);
-      localObject2 = (com.tencent.mm.loader.k.b)localObject1;
-      aqW();
-      localObject1 = this.hfs;
-      if (localObject1 == null) {
-        break;
-      }
-      localObject2 = (com.tencent.mm.loader.g.c)localObject2;
-      p.h(localObject2, "t");
-      ((com.tencent.mm.loader.g.d)localObject1).a((com.tencent.mm.loader.g.c)localObject2, null, true);
+      ((com.tencent.mm.loader.e.b.d)localObject2).a(((com.tencent.mm.loader.e.b.d)localObject3).ias, this);
+      a((com.tencent.mm.loader.k.b)localObject1);
       return;
       localObject1 = null;
-      break label437;
-      label917:
+      break label321;
+      label767:
       localObject1 = null;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/loader/Reaper$request$5$2", "Lcom/tencent/mm/loader/impr/target/IWaitUI;", "uiDone", "", "isRemove", "", "libimageloader_release"})
+  public final void vC()
+  {
+    this.hYs = this.hYw.hYD;
+    aJu();
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/loader/Reaper$request$5$2", "Lcom/tencent/mm/loader/impr/target/IWaitUI;", "uiDone", "", "isRemove", "", "libimageloader_release"})
   public static final class b
     implements com.tencent.mm.loader.e.b.b
   {
     b(f paramf, boolean paramBoolean) {}
     
-    public final void ea(boolean paramBoolean)
+    public final void eR(boolean paramBoolean)
     {
       if (paramBoolean)
       {
-        Object localObject = com.tencent.mm.loader.e.b.e.hhB;
-        localObject = e.a.ary();
-        com.tencent.mm.loader.e.b.d locald = this.hfD.aqV();
+        Object localObject = com.tencent.mm.loader.e.b.e.iay;
+        localObject = e.a.aJX();
+        com.tencent.mm.loader.e.b.d locald = this.hYy.aJt();
         if (locald == null) {
-          throw new v("null cannot be cast to non-null type com.tencent.mm.loader.impr.target.ResourceShowTarget<kotlin.Any>");
+          throw new t("null cannot be cast to non-null type com.tencent.mm.loader.impr.target.ResourceShowTarget<kotlin.Any>");
         }
-        ((com.tencent.mm.loader.e.b.e)localObject).a(locald, this.hfD.hfy, "may be hit cache");
+        ((com.tencent.mm.loader.e.b.e)localObject).a(locald, this.hYy.hYs, "may be hit cache");
       }
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "R", "invoke"})
-  static final class c
-    extends q
-    implements d.g.a.a<Boolean>
-  {
-    c(f paramf, y.f paramf1)
-    {
-      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.loader.f
  * JD-Core Version:    0.7.0.1
  */

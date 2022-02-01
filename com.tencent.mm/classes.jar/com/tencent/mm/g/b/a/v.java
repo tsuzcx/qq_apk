@@ -2,235 +2,193 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Arrays;
 
 public final class v
   extends a
 {
-  private String dUA;
-  private long dUB;
-  private String dUC;
-  private String dUD;
-  private int dUE;
-  private String dUF;
-  private long dUG;
-  private long dUH;
-  private long dUI;
-  private long dUJ;
-  private long dUK;
-  private long dUL;
-  private long dUM;
-  private long dUN;
-  private long dUO;
-  private String dUP;
-  private long dUQ;
-  private long dUR;
-  private long dUS;
-  private String dUT;
-  private String dUz;
+  private long ejW;
+  private long elA;
+  private String elB = "";
+  private String elC = "";
+  private String elD = "";
+  private String els = "";
+  private String elt = "";
+  private String elu = "";
+  private long elv;
+  private long elw;
+  private String elx = "";
+  private long ely;
+  private long elz;
   
-  public v()
+  public final String abV()
   {
-    this.dUz = "";
-    this.dUA = "";
-    this.dUB = 0L;
-    this.dUC = "";
-    this.dUD = "";
-    this.dUE = 0;
-    this.dUF = "";
-    this.dUG = 0L;
-    this.dUH = 0L;
-    this.dUI = 0L;
-    this.dUJ = 0L;
-    this.dUK = 0L;
-    this.dUL = 0L;
-    this.dUM = 0L;
-    this.dUN = 0L;
-    this.dUO = 0L;
-    this.dUP = "";
-    this.dUQ = 0L;
-    this.dUR = 0L;
-    this.dUS = 0L;
-    this.dUT = "";
-  }
-  
-  public v(String paramString)
-  {
-    AppMethodBeat.i(126681);
-    this.dUz = "";
-    this.dUA = "";
-    this.dUB = 0L;
-    this.dUC = "";
-    this.dUD = "";
-    this.dUE = 0;
-    this.dUF = "";
-    this.dUG = 0L;
-    this.dUH = 0L;
-    this.dUI = 0L;
-    this.dUJ = 0L;
-    this.dUK = 0L;
-    this.dUL = 0L;
-    this.dUM = 0L;
-    this.dUN = 0L;
-    this.dUO = 0L;
-    this.dUP = "";
-    this.dUQ = 0L;
-    this.dUR = 0L;
-    this.dUS = 0L;
-    this.dUT = "";
-    if (paramString != null)
-    {
-      paramString = paramString.split(",");
-      if (paramString != null)
-      {
-        if (paramString.length >= 21) {
-          break label442;
-        }
-        String[] arrayOfString = new String[21];
-        Arrays.fill(arrayOfString, 0, 21, "");
-        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
-        paramString = arrayOfString;
-      }
-    }
-    label442:
-    for (;;)
-    {
-      this.dUz = t("FromUser", paramString[0], true);
-      this.dUA = t("Session", paramString[1], true);
-      this.dUB = bu.getLong(paramString[2], 0L);
-      this.dUC = t("FileId", paramString[3], true);
-      this.dUD = t("SnsUrl", paramString[4], true);
-      this.dUE = bu.getInt(paramString[5], 0);
-      this.dUF = t("NewMd5", paramString[6], true);
-      this.dUG = bu.getLong(paramString[7], 0L);
-      this.dUH = bu.getLong(paramString[8], 0L);
-      this.dUI = bu.getLong(paramString[9], 0L);
-      this.dUJ = bu.getLong(paramString[10], 0L);
-      this.dUK = bu.getLong(paramString[11], 0L);
-      this.dUL = bu.getLong(paramString[12], 0L);
-      this.dUM = bu.getLong(paramString[13], 0L);
-      this.dUN = bu.getLong(paramString[14], 0L);
-      this.dUO = bu.getLong(paramString[15], 0L);
-      this.dUP = t("CDNIp", paramString[16], true);
-      this.dUQ = bu.getLong(paramString[17], 0L);
-      this.dUR = bu.getLong(paramString[18], 0L);
-      this.dUS = bu.getLong(paramString[19], 0L);
-      this.dUT = t("Publishid", paramString[20], true);
-      AppMethodBeat.o(126681);
-      return;
-    }
-  }
-  
-  public final String RC()
-  {
-    AppMethodBeat.i(126682);
+    AppMethodBeat.i(208828);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dUz);
+    ((StringBuffer)localObject).append(this.els);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUA);
+    ((StringBuffer)localObject).append(this.elt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUB);
+    ((StringBuffer)localObject).append(this.elu);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUC);
+    ((StringBuffer)localObject).append(this.elv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUD);
+    ((StringBuffer)localObject).append(this.elw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUE);
+    ((StringBuffer)localObject).append(this.elx);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUF);
+    ((StringBuffer)localObject).append(this.ely);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUG);
+    ((StringBuffer)localObject).append(this.ejW);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUH);
+    ((StringBuffer)localObject).append(this.elz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUI);
+    ((StringBuffer)localObject).append(this.elA);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUJ);
+    ((StringBuffer)localObject).append(this.elB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUK);
+    ((StringBuffer)localObject).append(this.elC);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUL);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUM);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUN);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUO);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUQ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dUT);
+    ((StringBuffer)localObject).append(this.elD);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(126682);
+    aMq((String)localObject);
+    AppMethodBeat.o(208828);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(126683);
+    AppMethodBeat.i(208829);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("FromUser:").append(this.dUz);
+    ((StringBuffer)localObject).append("sessionid:").append(this.els);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Session:").append(this.dUA);
+    ((StringBuffer)localObject).append("contextid:").append(this.elt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ChatNum:").append(this.dUB);
+    ((StringBuffer)localObject).append("clickTabContextid:").append(this.elu);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FileId:").append(this.dUC);
+    ((StringBuffer)localObject).append("nearby_uin:").append(this.elv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SnsUrl:").append(this.dUD);
+    ((StringBuffer)localObject).append("distance:").append(this.elw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NetType:").append(this.dUE);
+    ((StringBuffer)localObject).append("district:").append(this.elx);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NewMd5:").append(this.dUF);
+    ((StringBuffer)localObject).append("if_sns:").append(this.ely);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DownloadStartTime:").append(this.dUG);
+    ((StringBuffer)localObject).append("action:").append(this.ejW);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("DownloadEndTime:").append(this.dUH);
+    ((StringBuffer)localObject).append("actionTS:").append(this.elz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoSize:").append(this.dUI);
+    ((StringBuffer)localObject).append("filterType:").append(this.elA);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoDuration:").append(this.dUJ);
+    ((StringBuffer)localObject).append("nearby_username:").append(this.elB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoBitrate:").append(this.dUK);
+    ((StringBuffer)localObject).append("city:").append(this.elC);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AudioBitrate:").append(this.dUL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoFps:").append(this.dUM);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoWidth:").append(this.dUN);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoHeight:").append(this.dUO);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CDNIp:").append(this.dUP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OriginalAudioChannel:").append(this.dUQ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HadPreloadSize:").append(this.dUR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HadPreloadCompletion:").append(this.dUS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Publishid:").append(this.dUT);
+    ((StringBuffer)localObject).append("country:").append(this.elD);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(126683);
+    AppMethodBeat.o(208829);
     return localObject;
+  }
+  
+  public final v aca()
+  {
+    this.elv = 0L;
+    return this;
+  }
+  
+  public final v bR(long paramLong)
+  {
+    this.elw = paramLong;
+    return this;
+  }
+  
+  public final v bS(long paramLong)
+  {
+    this.ely = paramLong;
+    return this;
+  }
+  
+  public final v bT(long paramLong)
+  {
+    this.ejW = paramLong;
+    return this;
+  }
+  
+  public final v bU(long paramLong)
+  {
+    this.elz = paramLong;
+    return this;
+  }
+  
+  public final v bV(long paramLong)
+  {
+    this.elA = paramLong;
+    return this;
   }
   
   public final int getId()
   {
-    return 13795;
+    return 21855;
+  }
+  
+  public final v hU(String paramString)
+  {
+    AppMethodBeat.i(208821);
+    this.els = x("sessionid", paramString, true);
+    AppMethodBeat.o(208821);
+    return this;
+  }
+  
+  public final v hV(String paramString)
+  {
+    AppMethodBeat.i(208822);
+    this.elt = x("contextid", paramString, true);
+    AppMethodBeat.o(208822);
+    return this;
+  }
+  
+  public final v hW(String paramString)
+  {
+    AppMethodBeat.i(208823);
+    this.elu = x("clickTabContextid", paramString, true);
+    AppMethodBeat.o(208823);
+    return this;
+  }
+  
+  public final v hX(String paramString)
+  {
+    AppMethodBeat.i(208824);
+    this.elx = x("district", paramString, true);
+    AppMethodBeat.o(208824);
+    return this;
+  }
+  
+  public final v hY(String paramString)
+  {
+    AppMethodBeat.i(208825);
+    this.elB = x("nearby_username", paramString, true);
+    AppMethodBeat.o(208825);
+    return this;
+  }
+  
+  public final v hZ(String paramString)
+  {
+    AppMethodBeat.i(208826);
+    this.elC = x("city", paramString, true);
+    AppMethodBeat.o(208826);
+    return this;
+  }
+  
+  public final v ia(String paramString)
+  {
+    AppMethodBeat.i(208827);
+    this.elD = x("country", paramString, true);
+    AppMethodBeat.o(208827);
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.g.b.a.v
  * JD-Core Version:    0.7.0.1
  */

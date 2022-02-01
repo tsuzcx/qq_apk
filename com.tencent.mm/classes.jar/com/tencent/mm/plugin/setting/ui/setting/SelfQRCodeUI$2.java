@@ -3,40 +3,40 @@ package com.tencent.mm.plugin.setting.ui.setting;
 import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bh.e;
-import com.tencent.mm.br.d;
-import com.tencent.mm.r.a;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.br.c;
+import com.tencent.mm.q.a;
+import com.tencent.mm.ui.base.o.g;
 
 final class SelfQRCodeUI$2
-  implements n.e
+  implements o.g
 {
   SelfQRCodeUI$2(SelfQRCodeUI paramSelfQRCodeUI) {}
   
   public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
   {
-    AppMethodBeat.i(190307);
+    AppMethodBeat.i(256475);
     switch (paramMenuItem.getItemId())
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(190307);
+      AppMethodBeat.o(256475);
       return;
-      SelfQRCodeUI.g(this.yUO);
-      AppMethodBeat.o(190307);
+      SelfQRCodeUI.g(this.CZE);
+      AppMethodBeat.o(256475);
       return;
-      SelfQRCodeUI.a(this.yUO, 0);
-      AppMethodBeat.o(190307);
+      SelfQRCodeUI.a(this.CZE, 0);
+      AppMethodBeat.o(256475);
       return;
-      if (!a.n(this.yUO.getContext(), true))
+      if (!a.o(this.CZE.getContext(), true))
       {
-        this.yUO.getContext();
-        if ((!e.aME()) && (!a.p(this.yUO.getContext(), true)))
+        this.CZE.getContext();
+        if ((!e.bgF()) && (!a.r(this.CZE.getContext(), true)))
         {
-          d.Q(this.yUO.getContext(), "scanner", ".ui.BaseScanUI");
-          AppMethodBeat.o(190307);
+          c.V(this.CZE.getContext(), "scanner", ".ui.BaseScanUI");
+          AppMethodBeat.o(256475);
           return;
-          SelfQRCodeUI.h(this.yUO);
+          SelfQRCodeUI.h(this.CZE);
         }
       }
     }

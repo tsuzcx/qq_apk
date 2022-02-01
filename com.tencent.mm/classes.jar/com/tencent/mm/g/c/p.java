@@ -2,27 +2,21 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class p
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandLauncherLayoutItemUpdateTimeIndex ON AppBrandLauncherLayoutItem(updateTime)", "CREATE INDEX IF NOT EXISTS AppBrandLauncherLayoutItemSceneIndex ON AppBrandLauncherLayoutItem(scene)" };
-  private static final int eGZ = "updateTime".hashCode();
-  private static final int eGk = "scene".hashCode();
-  private static final int eHA = "recordId".hashCode();
-  private static final int eHB = "brandId".hashCode();
-  private static final int eHC = "usedInThirdPartyAppRecently".hashCode();
-  private static final int eHD = "thirdPartyAppUsingDesc".hashCode();
-  private static final int eHo = "versionType".hashCode();
+  private static final int fjQ = "scene".hashCode();
+  private static final int fkQ;
+  private static final int flc = "recordId".hashCode();
+  private static final int fld = "brandId".hashCode();
+  private static final int fle = "usedInThirdPartyAppRecently".hashCode();
+  private static final int flf = "thirdPartyAppUsingDesc".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGW = true;
-  private boolean eGi = true;
-  private boolean eHk = true;
-  private boolean eHw = true;
-  private boolean eHx = true;
-  private boolean eHy = true;
-  private boolean eHz = true;
+  private static final int updateTime_HASHCODE;
+  private boolean __hadSetupdateTime = true;
   public String field_brandId;
   public int field_recordId;
   public int field_scene;
@@ -30,6 +24,18 @@ public abstract class p
   public long field_updateTime;
   public boolean field_usedInThirdPartyAppRecently;
   public int field_versionType;
+  private boolean fjO = true;
+  private boolean fkM = true;
+  private boolean fkY = true;
+  private boolean fkZ = true;
+  private boolean fla = true;
+  private boolean flb = true;
+  
+  static
+  {
+    fkQ = "versionType".hashCode();
+    updateTime_HASHCODE = "updateTime".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -44,11 +50,11 @@ public abstract class p
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eHA != k) {
+      if (flc != k) {
         break label65;
       }
       this.field_recordId = paramCursor.getInt(i);
-      this.eHw = true;
+      this.fkY = true;
     }
     for (;;)
     {
@@ -56,25 +62,25 @@ public abstract class p
       break label20;
       break;
       label65:
-      if (eHB == k)
+      if (fld == k)
       {
         this.field_brandId = paramCursor.getString(i);
       }
-      else if (eHo == k)
+      else if (fkQ == k)
       {
         this.field_versionType = paramCursor.getInt(i);
       }
-      else if (eGZ == k)
+      else if (updateTime_HASHCODE == k)
       {
         this.field_updateTime = paramCursor.getLong(i);
       }
-      else if (eGk == k)
+      else if (fjQ == k)
       {
         this.field_scene = paramCursor.getInt(i);
       }
       else
       {
-        if (eHC == k)
+        if (fle == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (boolean bool = true;; bool = false)
@@ -83,7 +89,7 @@ public abstract class p
             break;
           }
         }
-        if (eHD == k) {
+        if (flf == k) {
           this.field_thirdPartyAppUsingDesc = paramCursor.getString(i);
         } else if (rowid_HASHCODE == k) {
           this.systemRowid = paramCursor.getLong(i);
@@ -95,25 +101,25 @@ public abstract class p
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eHw) {
+    if (this.fkY) {
       localContentValues.put("recordId", Integer.valueOf(this.field_recordId));
     }
-    if (this.eHx) {
+    if (this.fkZ) {
       localContentValues.put("brandId", this.field_brandId);
     }
-    if (this.eHk) {
+    if (this.fkM) {
       localContentValues.put("versionType", Integer.valueOf(this.field_versionType));
     }
-    if (this.eGW) {
+    if (this.__hadSetupdateTime) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if (this.eGi) {
+    if (this.fjO) {
       localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.eHy) {
+    if (this.fla) {
       localContentValues.put("usedInThirdPartyAppRecently", Boolean.valueOf(this.field_usedInThirdPartyAppRecently));
     }
-    if (this.eHz) {
+    if (this.flb) {
       localContentValues.put("thirdPartyAppUsingDesc", this.field_thirdPartyAppUsingDesc);
     }
     if (this.systemRowid > 0L) {
@@ -124,7 +130,7 @@ public abstract class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.p
  * JD-Core Version:    0.7.0.1
  */

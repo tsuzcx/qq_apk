@@ -2,61 +2,29 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class gi
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int fgE = "roomname".hashCode();
-  private static final int fwP = "newStoryList".hashCode();
-  private static final int fwQ = "extbuf".hashCode();
-  private static final int fwR = "nextSyncTime".hashCode();
-  private static final int fwy = "userStoryFlag".hashCode();
+  private static final int fAt = "extFlag".hashCode();
+  private static final int fBI;
+  private static final int fZE = "draft".hashCode();
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean fgt = true;
-  public byte[] field_extbuf;
-  public String field_newStoryList;
-  public long field_nextSyncTime;
-  public String field_roomname;
-  public int field_userStoryFlag;
-  private boolean fwM = true;
-  private boolean fwN = true;
-  private boolean fwO = true;
-  private boolean fwk = true;
+  private boolean __hadSetkey = true;
+  private boolean fAo = true;
+  private boolean fBy = true;
+  private boolean fZD = true;
+  public byte[] field_draft;
+  public int field_extFlag;
+  public String field_key;
+  public long field_timestamp;
   
-  public static c.a VD()
+  static
   {
-    c.a locala = new c.a();
-    locala.IBL = new Field[5];
-    locala.columns = new String[6];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "roomname";
-    locala.IBN.put("roomname", "TEXT default ''  PRIMARY KEY ");
-    localStringBuilder.append(" roomname TEXT default ''  PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IBM = "roomname";
-    locala.columns[1] = "userStoryFlag";
-    locala.IBN.put("userStoryFlag", "INTEGER");
-    localStringBuilder.append(" userStoryFlag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "newStoryList";
-    locala.IBN.put("newStoryList", "TEXT");
-    localStringBuilder.append(" newStoryList TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "extbuf";
-    locala.IBN.put("extbuf", "BLOB");
-    localStringBuilder.append(" extbuf BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "nextSyncTime";
-    locala.IBN.put("nextSyncTime", "LONG");
-    localStringBuilder.append(" nextSyncTime LONG");
-    locala.columns[5] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    fBI = "timestamp".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -72,11 +40,11 @@ public abstract class gi
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fgE != k) {
+      if (key_HASHCODE != k) {
         break label65;
       }
-      this.field_roomname = paramCursor.getString(i);
-      this.fgt = true;
+      this.field_key = paramCursor.getString(i);
+      this.__hadSetkey = true;
     }
     for (;;)
     {
@@ -84,14 +52,12 @@ public abstract class gi
       break label20;
       break;
       label65:
-      if (fwy == k) {
-        this.field_userStoryFlag = paramCursor.getInt(i);
-      } else if (fwP == k) {
-        this.field_newStoryList = paramCursor.getString(i);
-      } else if (fwQ == k) {
-        this.field_extbuf = paramCursor.getBlob(i);
-      } else if (fwR == k) {
-        this.field_nextSyncTime = paramCursor.getLong(i);
+      if (fBI == k) {
+        this.field_timestamp = paramCursor.getLong(i);
+      } else if (fAt == k) {
+        this.field_extFlag = paramCursor.getInt(i);
+      } else if (fZE == k) {
+        this.field_draft = paramCursor.getBlob(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -101,23 +67,20 @@ public abstract class gi
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.field_roomname == null) {
-      this.field_roomname = "";
+    if (this.field_key == null) {
+      this.field_key = "";
     }
-    if (this.fgt) {
-      localContentValues.put("roomname", this.field_roomname);
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.fwk) {
-      localContentValues.put("userStoryFlag", Integer.valueOf(this.field_userStoryFlag));
+    if (this.fBy) {
+      localContentValues.put("timestamp", Long.valueOf(this.field_timestamp));
     }
-    if (this.fwM) {
-      localContentValues.put("newStoryList", this.field_newStoryList);
+    if (this.fAo) {
+      localContentValues.put("extFlag", Integer.valueOf(this.field_extFlag));
     }
-    if (this.fwN) {
-      localContentValues.put("extbuf", this.field_extbuf);
-    }
-    if (this.fwO) {
-      localContentValues.put("nextSyncTime", Long.valueOf(this.field_nextSyncTime));
+    if (this.fZD) {
+      localContentValues.put("draft", this.field_draft);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -127,7 +90,7 @@ public abstract class gi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.gi
  * JD-Core Version:    0.7.0.1
  */

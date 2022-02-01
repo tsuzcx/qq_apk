@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:layout_gravity="center" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/i" android:textStyle="bold" android:textColor="@color/y4" android:id="@id/ful" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fvi" />
-    <TextView android:id="@id/fub" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fvh" android:layout_centerInParent="true" android:layout_marginStart="@dimen/ha" android:layout_marginEnd="@dimen/ha" />
-    <android.support.v7.widget.RecyclerView android:id="@id/fug" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/ful" android:overScrollMode="never" />
-</merge>
+    <FrameLayout android:layout_gravity="center" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ad0" android:minHeight="@dimen/ad0">
+        <View android:layout_gravity="center" android:id="@id/g7o" android:background="@drawable/aio" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" />
+        <View android:layout_gravity="center" android:id="@id/dyg" android:background="@drawable/ain" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" />
+        <ImageView android:layout_gravity="center" android:id="@id/dyi" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" />
+        <com.tencent.mm.plugin.recordvideo.ui.editor.MMEditorCircularProgressBar android:layout_gravity="center" android:id="@id/b34" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="@dimen/cr" />
+    </FrameLayout>
+    <View android:layout_gravity="bottom|center" android:layout_width="113.0dip" android:layout_height="113.0dip" />
+</FrameLayout>

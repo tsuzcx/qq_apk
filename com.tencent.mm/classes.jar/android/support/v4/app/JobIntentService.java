@@ -9,10 +9,10 @@ import java.util.HashMap;
 public abstract class JobIntentService
   extends Service
 {
-  static final HashMap<ComponentName, Object> GB = new HashMap();
+  static final HashMap<ComponentName, Object> GL = new HashMap();
   static final Object sLock = new Object();
-  final ArrayList<Object> GA;
-  boolean Gz = false;
+  boolean GJ = false;
+  final ArrayList<Object> GK;
   boolean mDestroyed = false;
   boolean mStopped = false;
   
@@ -20,15 +20,15 @@ public abstract class JobIntentService
   {
     if (Build.VERSION.SDK_INT >= 26)
     {
-      this.GA = null;
+      this.GK = null;
       return;
     }
-    this.GA = new ArrayList();
+    this.GK = new ArrayList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.app.JobIntentService
  * JD-Core Version:    0.7.0.1
  */

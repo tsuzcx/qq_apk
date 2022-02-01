@@ -7,7 +7,7 @@ import java.nio.ByteOrder;
 public abstract class WxaPkgBaseImpl
   implements a
 {
-  public static int q(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  public static int A(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     if (paramArrayOfByte == null) {
       return 0;
@@ -40,7 +40,7 @@ public abstract class WxaPkgBaseImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.pkg.WxaPkgBaseImpl
  * JD-Core Version:    0.7.0.1
  */

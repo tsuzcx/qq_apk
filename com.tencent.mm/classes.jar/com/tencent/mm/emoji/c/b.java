@@ -1,107 +1,82 @@
 package com.tencent.mm.emoji.c;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.c;
-import com.tencent.mm.kernel.b.h;
-import com.tencent.mm.kernel.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
-import java.util.HashMap;
-import java.util.HashSet;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/upload/EmojiCaptureCallbackDispatcher;", "", "()V", "TAG", "", "callbackMap", "Ljava/util/HashMap;", "", "Ljava/util/HashSet;", "Lcom/tencent/mm/emoji/upload/EmojiCaptureCallback;", "Lkotlin/collections/HashSet;", "Lkotlin/collections/HashMap;", "broadcastResult", "", "timeEnter", "success", "", "md5", "dispatch", "registerCallback", "callback", "unregisterCallback", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/report/ChatEmojiBtnClickReport;", "", "()V", "TAG", "", "btnClicked", "", "lastShow", "panelOpenTime", "", "recordBtnClick", "", "recordClose", "recordOpen", "plugin-emojisdk_release"})
 public final class b
 {
-  private static final String TAG = "MicroMsg.EmojiCaptureCallbackDispatcher";
-  private static final HashMap<Long, HashSet<a>> gsk;
-  public static final b gsl;
+  private static final String TAG = "MicroMsg.ChatEmojiBtnClickReport";
+  private static long hca;
+  private static boolean hcb;
+  private static boolean hcc;
+  public static final b hcd;
   
   static
   {
-    AppMethodBeat.i(105771);
-    gsl = new b();
-    TAG = "MicroMsg.EmojiCaptureCallbackDispatcher";
-    gsk = new HashMap();
-    AppMethodBeat.o(105771);
+    AppMethodBeat.i(105725);
+    hcd = new b();
+    TAG = "MicroMsg.ChatEmojiBtnClickReport";
+    AppMethodBeat.o(105725);
   }
   
-  public static void a(long paramLong, a parama)
+  public static void avZ()
   {
-    AppMethodBeat.i(105768);
-    p.h(parama, "callback");
-    c.h((d.g.a.a)new b(paramLong, parama));
-    AppMethodBeat.o(105768);
+    hcb = true;
   }
   
-  public static void b(long paramLong, a parama)
+  public static void awa()
   {
-    AppMethodBeat.i(105769);
-    p.h(parama, "callback");
-    c.h((d.g.a.a)new c(paramLong, parama));
-    AppMethodBeat.o(105769);
-  }
-  
-  public static void b(long paramLong, boolean paramBoolean, final String paramString)
-  {
-    AppMethodBeat.i(105770);
-    ae.i(TAG, "dispatch: " + paramLong + ", " + paramBoolean + ", " + paramString);
-    c.h((d.g.a.a)new a(paramLong, paramBoolean, paramString));
-    Object localObject = g.ajO().ajq();
-    p.g(localObject, "MMKernel.process().current()");
-    if (((h)localObject).akL())
+    int i = 3;
+    AppMethodBeat.i(105723);
+    hca = System.currentTimeMillis();
+    Log.i(TAG, "recordOpen: " + hca + ", " + hcc);
+    if (!hcc)
     {
-      localObject = new Intent("com.tencent.mm.Emoji_Capture_Upload");
-      ((Intent)localObject).putExtra("upload_time_enter", paramLong);
-      ((Intent)localObject).putExtra("upload_success", paramBoolean);
-      ((Intent)localObject).putExtra("upload_md5", paramString);
-      ak.getContext().sendBroadcast((Intent)localObject);
+      Object localObject = com.tencent.mm.plugin.report.service.h.CyF;
+      if (hcb) {
+        i = 1;
+      }
+      ((com.tencent.mm.plugin.report.service.h)localObject).a(17302, new Object[] { Integer.valueOf(i), Integer.valueOf(0), Long.valueOf(hca) });
+      c.awc().zj(hca);
+      h.awf().zj(hca);
+      localObject = g.hcn;
+      g.zj(hca);
     }
-    AppMethodBeat.o(105770);
+    hcc = true;
+    hcb = false;
+    AppMethodBeat.o(105723);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements d.g.a.a<z>
+  public static void awb()
   {
-    a(long paramLong, boolean paramBoolean, String paramString)
+    int i = 2;
+    AppMethodBeat.i(105724);
+    long l = System.currentTimeMillis() - hca;
+    Log.i(TAG, "recordClose: " + l + ", " + hca + ", " + hcc);
+    com.tencent.mm.plugin.report.service.h localh;
+    if (hcc)
     {
-      super();
+      localh = com.tencent.mm.plugin.report.service.h.CyF;
+      if (!hcb) {
+        break label110;
+      }
     }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class b
-    extends q
-    implements d.g.a.a<z>
-  {
-    b(long paramLong, a parama)
+    for (;;)
     {
-      super();
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class c
-    extends q
-    implements d.g.a.a<z>
-  {
-    c(long paramLong, a parama)
-    {
-      super();
+      localh.a(17302, new Object[] { Integer.valueOf(i), Long.valueOf(l) });
+      hcc = false;
+      AppMethodBeat.o(105724);
+      return;
+      label110:
+      i = 4;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.c.b
  * JD-Core Version:    0.7.0.1
  */

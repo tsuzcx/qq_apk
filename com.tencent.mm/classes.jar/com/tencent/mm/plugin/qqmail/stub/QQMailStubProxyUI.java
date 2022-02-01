@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.plugin.qqmail.ui.c;
 import com.tencent.mm.plugin.qqmail.ui.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.a;
 
 @a(7)
@@ -17,24 +17,24 @@ public class QQMailStubProxyUI
   {
     AppMethodBeat.i(122804);
     super.onCreate(paramBundle);
-    ae.d("MicroMsg.QQMail.QQMailStubProxyUI", "onCreate");
+    Log.d("MicroMsg.QQMail.QQMailStubProxyUI", "onCreate");
     paramBundle = new c(this);
     paramBundle.a(new c.a()
     {
-      public final void dFE()
+      public final void eGt()
       {
         AppMethodBeat.i(122802);
-        ae.d("MicroMsg.QQMail.QQMailStubProxyUI", "onAfterVerify");
+        Log.d("MicroMsg.QQMail.QQMailStubProxyUI", "onAfterVerify");
         paramBundle.release();
         QQMailStubProxyUI.this.setResult(-1);
         QQMailStubProxyUI.this.finish();
         AppMethodBeat.o(122802);
       }
       
-      public final void dFF()
+      public final void eGu()
       {
         AppMethodBeat.i(122803);
-        ae.e("MicroMsg.QQMail.QQMailStubProxyUI", "onVerifyFail, finish self");
+        Log.e("MicroMsg.QQMail.QQMailStubProxyUI", "onVerifyFail, finish self");
         paramBundle.release();
         QQMailStubProxyUI.this.setResult(0);
         QQMailStubProxyUI.this.finish();
@@ -52,7 +52,7 @@ public class QQMailStubProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.stub.QQMailStubProxyUI
  * JD-Core Version:    0.7.0.1
  */

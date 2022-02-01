@@ -5,37 +5,42 @@ import android.app.Activity;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.m;
-import com.tencent.mm.plugin.appbrand.platform.window.b.a.a;
-import com.tencent.mm.plugin.appbrand.platform.window.b.a.b;
+import com.tencent.mm.plugin.appbrand.n;
+import com.tencent.mm.plugin.appbrand.platform.window.c.a.a;
+import com.tencent.mm.plugin.appbrand.platform.window.c.a.b;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.ui.ab;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.ui.ah;
+import com.tencent.mm.sdk.platformtools.Log;
 
 @SuppressLint({"ViewConstructor"})
 public final class c
-  extends m<d>
+  extends n<d>
   implements b
 {
-  private com.tencent.mm.plugin.appbrand.platform.window.e cpR;
+  private com.tencent.mm.plugin.appbrand.platform.window.e cCk;
+  
+  public final boolean OG()
+  {
+    return false;
+  }
   
   public final void a(d paramd, AppBrandInitConfigLU paramAppBrandInitConfigLU, AppBrandStatObject paramAppBrandStatObject)
   {
-    AppMethodBeat.i(220769);
-    paramAppBrandInitConfigLU.cmE = paramAppBrandStatObject;
+    AppMethodBeat.i(229873);
+    paramAppBrandInitConfigLU.cyA = paramAppBrandStatObject;
     super.a(paramd, paramAppBrandInitConfigLU);
-    AppMethodBeat.o(220769);
+    AppMethodBeat.o(229873);
   }
   
   public final void b(AppBrandRuntime paramAppBrandRuntime1, AppBrandRuntime paramAppBrandRuntime2, Runnable paramRunnable)
   {
-    AppMethodBeat.i(220768);
+    AppMethodBeat.i(229872);
     super.b(paramAppBrandRuntime1, paramAppBrandRuntime2, paramRunnable);
     String str;
     if (paramAppBrandRuntime1 == null)
     {
       str = "null";
-      ae.i("Luggage.FULL.AppBrandRuntimeContainerViewImplLu", "onRuntimeClose entered, in.appId[%s], out.appId[%s]", new Object[] { str, paramAppBrandRuntime2.mAppId });
+      Log.i("Luggage.FULL.AppBrandRuntimeContainerViewImplLu", "onRuntimeClose entered, in.appId[%s], out.appId[%s]", new Object[] { str, paramAppBrandRuntime2.mAppId });
       paramRunnable.run();
       if ((getStackSize() > 1) || (paramAppBrandRuntime1 != null)) {
         break label145;
@@ -44,12 +49,12 @@ public final class c
       if (paramAppBrandRuntime1 != null) {
         break label99;
       }
-      ae.i("Luggage.FULL.AppBrandRuntimeContainerViewImplLu", "closeActivity: fail");
+      Log.i("Luggage.FULL.AppBrandRuntimeContainerViewImplLu", "closeActivity: fail");
     }
     for (;;)
     {
-      ae.i("Luggage.FULL.AppBrandRuntimeContainerViewImplLu", "onRuntimeClose: activity closed");
-      AppMethodBeat.o(220768);
+      Log.i("Luggage.FULL.AppBrandRuntimeContainerViewImplLu", "onRuntimeClose: activity closed");
+      AppMethodBeat.o(229872);
       return;
       str = paramAppBrandRuntime1.mAppId;
       break;
@@ -60,31 +65,31 @@ public final class c
         if (getStackSize() <= 0) {
           paramAppBrandRuntime1.overridePendingTransition(0, 0);
         } else {
-          ((ab)com.tencent.luggage.a.e.K(ab.class)).m(paramAppBrandRuntime1);
+          ((ah)com.tencent.luggage.a.e.M(ah.class)).m(paramAppBrandRuntime1);
         }
       }
     }
     label145:
-    if (paramAppBrandRuntime2.aWJ()) {
-      ((ab)com.tencent.luggage.a.e.K(ab.class)).a(paramAppBrandRuntime1, paramAppBrandRuntime2, null);
+    if (paramAppBrandRuntime2.brG()) {
+      ((ah)com.tencent.luggage.a.e.M(ah.class)).a(paramAppBrandRuntime1, paramAppBrandRuntime2, null);
     }
-    AppMethodBeat.o(220768);
+    AppMethodBeat.o(229872);
   }
   
   public final com.tencent.mm.plugin.appbrand.platform.window.e getOrientationHandler()
   {
-    AppMethodBeat.i(220767);
-    if (this.cpR == null) {
-      this.cpR = new a(this);
+    AppMethodBeat.i(229871);
+    if (this.cCk == null) {
+      this.cCk = new a(this);
     }
-    com.tencent.mm.plugin.appbrand.platform.window.e locale = this.cpR;
-    AppMethodBeat.o(220767);
+    com.tencent.mm.plugin.appbrand.platform.window.e locale = this.cCk;
+    AppMethodBeat.o(229871);
     return locale;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.d.c
  * JD-Core Version:    0.7.0.1
  */

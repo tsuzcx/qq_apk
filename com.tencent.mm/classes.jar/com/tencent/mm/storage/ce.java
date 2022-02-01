@@ -1,76 +1,46 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fs;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.ew;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
-public class ce
-  extends fs
+public final class ce
+  extends ew
 {
-  protected static Field[] IBL;
-  public static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(43301);
-    IBL = fs.getValidFields(ce.class);
-    c.a locala = new c.a();
-    locala.IBL = new Field[11];
-    locala.columns = new String[12];
+    AppMethodBeat.i(232418);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[4];
+    localMAutoDBInfo.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "svrid";
-    locala.IBN.put("svrid", "LONG default '0'  PRIMARY KEY ");
-    localStringBuilder.append(" svrid LONG default '0'  PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "msgId";
+    localMAutoDBInfo.colsMap.put("msgId", "LONG PRIMARY KEY ");
+    localStringBuilder.append(" msgId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "svrid";
-    locala.columns[1] = "status";
-    locala.IBN.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "type";
-    locala.IBN.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "scene";
-    locala.IBN.put("scene", "INTEGER");
-    localStringBuilder.append(" scene INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "createtime";
-    locala.IBN.put("createtime", "LONG");
-    localStringBuilder.append(" createtime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "talker";
-    locala.IBN.put("talker", "TEXT");
+    localMAutoDBInfo.primaryKey = "msgId";
+    localMAutoDBInfo.columns[1] = "talker";
+    localMAutoDBInfo.colsMap.put("talker", "TEXT");
     localStringBuilder.append(" talker TEXT");
     localStringBuilder.append(", ");
-    locala.columns[6] = "content";
-    locala.IBN.put("content", "TEXT");
-    localStringBuilder.append(" content TEXT");
+    localMAutoDBInfo.columns[2] = "createTime";
+    localMAutoDBInfo.colsMap.put("createTime", "LONG");
+    localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[7] = "sayhiuser";
-    locala.IBN.put("sayhiuser", "TEXT");
-    localStringBuilder.append(" sayhiuser TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "sayhicontent";
-    locala.IBN.put("sayhicontent", "TEXT");
-    localStringBuilder.append(" sayhicontent TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "imgpath";
-    locala.IBN.put("imgpath", "TEXT");
-    localStringBuilder.append(" imgpath TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "isSend";
-    locala.IBN.put("isSend", "INTEGER");
-    localStringBuilder.append(" isSend INTEGER");
-    locala.columns[11] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(43301);
+    localMAutoDBInfo.columns[3] = "digest";
+    localMAutoDBInfo.colsMap.put("digest", "TEXT");
+    localStringBuilder.append(" digest TEXT");
+    localMAutoDBInfo.columns[4] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(232418);
   }
   
-  public c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

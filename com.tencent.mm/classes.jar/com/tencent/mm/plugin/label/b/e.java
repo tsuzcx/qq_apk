@@ -1,62 +1,63 @@
 package com.tencent.mm.plugin.label.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bts;
-import com.tencent.mm.protocal.protobuf.drv;
-import com.tencent.mm.protocal.protobuf.drw;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cgu;
+import com.tencent.mm.protocal.protobuf.elt;
+import com.tencent.mm.protocal.protobuf.elu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b rr;
-  private bts vhS;
+  private i callback;
+  private final d rr;
+  private cgu yBW;
   
   public e(int paramInt, String paramString)
   {
     AppMethodBeat.i(26155);
-    this.vhS = null;
-    b.a locala = new b.a();
-    locala.hQF = new drv();
-    locala.hQG = new drw();
+    this.yBW = null;
+    d.a locala = new d.a();
+    locala.iLN = new elt();
+    locala.iLO = new elu();
     locala.uri = "/cgi-bin/micromsg-bin/updatecontactlabel";
     locala.funcId = 637;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    if ((paramInt >= 0) && (!bu.isNullOrNil(paramString)))
+    this.rr = locala.aXF();
+    if ((paramInt >= 0) && (!Util.isNullOrNil(paramString)))
     {
-      this.vhS = new bts();
-      this.vhS.HgP = paramInt;
-      this.vhS.HgO = paramString;
+      this.yBW = new cgu();
+      this.yBW.Mmc = paramInt;
+      this.yBW.Mmb = paramString;
     }
     AppMethodBeat.o(26155);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(26157);
-    this.callback = paramf;
-    drv localdrv = (drv)this.rr.hQD.hQJ;
-    if (this.vhS != null)
+    this.callback = parami;
+    elt localelt = (elt)this.rr.iLK.iLR;
+    if (this.yBW != null)
     {
-      localdrv.HYy = this.vhS;
-      int i = dispatch(parame, this.rr, this);
+      localelt.NkF = this.yBW;
+      int i = dispatch(paramg, this.rr, this);
       AppMethodBeat.o(26157);
       return i;
     }
-    ae.e("MicroMsg.Label.NetSceneUpdateContactLabel", "cpan[doScene] label pair is null.");
-    paramf.onSceneEnd(3, -1, "[doScene]empty label pair.", this);
+    Log.e("MicroMsg.Label.NetSceneUpdateContactLabel", "cpan[doScene] label pair is null.");
+    parami.onSceneEnd(3, -1, "[doScene]empty label pair.", this);
     AppMethodBeat.o(26157);
     return 0;
   }
@@ -66,17 +67,17 @@ public final class e
     return 637;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(26156);
-    ae.d("MicroMsg.Label.NetSceneUpdateContactLabel", "cpan[onGYNetEnd] netId:%d errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.d("MicroMsg.Label.NetSceneUpdateContactLabel", "cpan[onGYNetEnd] netId:%d errType:%d errCode:%d errMsg:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(26156);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.label.b.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.live;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.rtmp.ITXLiveBaseListener;
 import com.tencent.rtmp.TXLiveBase;
 
 public final class j
 {
-  private static boolean csj;
+  private static boolean cEy;
   
-  public static void Gg()
+  public static void PP()
   {
     AppMethodBeat.i(145902);
-    if (csj)
+    if (cEy)
     {
       AppMethodBeat.o(145902);
       return;
@@ -27,35 +27,35 @@ public final class j
         switch (paramAnonymousInt)
         {
         default: 
-          ae.d(paramAnonymousString1, paramAnonymousString2);
+          Log.d(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         case 0: 
-          ae.v(paramAnonymousString1, paramAnonymousString2);
+          Log.v(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         case 1: 
-          ae.d(paramAnonymousString1, paramAnonymousString2);
+          Log.d(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         case 2: 
-          ae.i(paramAnonymousString1, paramAnonymousString2);
+          Log.i(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         case 3: 
-          ae.w(paramAnonymousString1, paramAnonymousString2);
+          Log.w(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         case 4: 
-          ae.e(paramAnonymousString1, paramAnonymousString2);
+          Log.e(paramAnonymousString1, paramAnonymousString2);
           AppMethodBeat.o(145901);
           return;
         }
-        ae.f(paramAnonymousString1, paramAnonymousString2);
+        Log.f(paramAnonymousString1, paramAnonymousString2);
         AppMethodBeat.o(145901);
       }
     });
-    csj = true;
+    cEy = true;
     AppMethodBeat.o(145902);
   }
 }

@@ -1,50 +1,50 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.das;
-import com.tencent.mm.protocal.protobuf.dat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dtw;
+import com.tencent.mm.protocal.protobuf.dtx;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private String iKt;
-  private final b rr;
+  private i callback;
+  private String jGZ;
+  private final d rr;
   
   public o(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(218745);
-    this.iKt = paramString1;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new das();
-    ((b.a)localObject).hQG = new dat();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/sendopenimverifyrequest";
-    ((b.a)localObject).funcId = 243;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (das)this.rr.hQD.hQJ;
-    ((das)localObject).iKt = paramString1;
-    ((das)localObject).HJU = paramString2;
-    ((das)localObject).FNU = paramString3;
-    ((das)localObject).FNV = paramInt;
-    ae.i("MicroMsg.NetSceneSendOpenIMVerifyRequest", "init user:%s anti:%s", new Object[] { paramString1, paramString3 });
-    AppMethodBeat.o(218745);
+    AppMethodBeat.i(223645);
+    this.jGZ = paramString1;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dtw();
+    ((d.a)localObject).iLO = new dtx();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/sendopenimverifyrequest";
+    ((d.a)localObject).funcId = 243;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (dtw)this.rr.iLK.iLR;
+    ((dtw)localObject).jGZ = paramString1;
+    ((dtw)localObject).MVG = paramString2;
+    ((dtw)localObject).KHz = paramString3;
+    ((dtw)localObject).KHA = paramInt;
+    Log.i("MicroMsg.NetSceneSendOpenIMVerifyRequest", "init user:%s anti:%s", new Object[] { paramString1, paramString3 });
+    AppMethodBeat.o(223645);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(151220);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(151220);
     return i;
   }
@@ -54,12 +54,12 @@ public final class o
     return 243;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151221);
-    ae.i("MicroMsg.NetSceneSendOpenIMVerifyRequest", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.iKt });
+    Log.i("MicroMsg.NetSceneSendOpenIMVerifyRequest", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.jGZ });
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ae.e("MicroMsg.NetSceneSendOpenIMVerifyRequest", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      Log.e("MicroMsg.NetSceneSendOpenIMVerifyRequest", "errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(151221);

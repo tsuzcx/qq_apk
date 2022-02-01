@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.music.b.a;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.h.b;
+import com.tencent.mm.audio.mix.i.b;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class a
 {
-  static void G(ArrayList<IDKey> paramArrayList)
+  static void M(ArrayList<IDKey> paramArrayList)
   {
     AppMethodBeat.i(62939);
     StringBuilder localStringBuilder = new StringBuilder();

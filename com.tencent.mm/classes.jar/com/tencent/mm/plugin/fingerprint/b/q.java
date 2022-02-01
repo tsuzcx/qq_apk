@@ -14,16 +14,18 @@ import android.view.View.OnClickListener;
 import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fingerprint.faceid.auth.WalletFaceIdAuthUI;
 import com.tencent.mm.plugin.fingerprint.faceid.auth.WalletFaceIdDialog;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.i;
+import com.tencent.mm.wallet_core.d;
 
 public final class q
   implements h
@@ -41,16 +43,16 @@ public final class q
   public final boolean i(final MMActivity paramMMActivity)
   {
     AppMethodBeat.i(64399);
-    if (((Boolean)g.ajR().ajA().get(am.a.IMy, Boolean.FALSE)).booleanValue())
+    if (((Boolean)g.aAh().azQ().get(ar.a.NUA, Boolean.FALSE)).booleanValue())
     {
-      ae.i("MicroMsg.WalletSoterService", "has show the finger print auth guide!");
+      Log.i("MicroMsg.WalletSoterService", "has show the finger print auth guide!");
       AppMethodBeat.o(64399);
       return false;
     }
-    Object localObject3 = com.tencent.mm.wallet_core.a.bs(paramMMActivity);
+    Object localObject3 = com.tencent.mm.wallet_core.a.by(paramMMActivity);
     Object localObject1 = new Bundle();
     if (localObject3 != null) {
-      localObject1 = ((com.tencent.mm.wallet_core.d)localObject3).dyY;
+      localObject1 = ((d)localObject3).dQL;
     }
     for (;;)
     {
@@ -78,16 +80,16 @@ public final class q
       {
         if (TextUtils.isEmpty(((Bundle)localObject1).getString("key_pwd1")))
         {
-          ae.i("MicroMsg.WalletSoterService", "pwd is empty, not show the finger print auth guide!");
+          Log.i("MicroMsg.WalletSoterService", "pwd is empty, not show the finger print auth guide!");
           AppMethodBeat.o(64399);
           return false;
         }
-        Object localObject4 = (com.tencent.mm.plugin.fingerprint.d.a)g.ab(com.tencent.mm.plugin.fingerprint.d.a.class);
-        ae.i("MicroMsg.WalletSoterService", "fingerprint: %s has fingerprint: %s, faceid: %s has faceid: %s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.wallet.b.a.eIj()), Boolean.valueOf(((com.tencent.mm.plugin.fingerprint.d.a)localObject4).cRZ()), Boolean.valueOf(com.tencent.mm.plugin.wallet.b.a.eIk()), Boolean.valueOf(((com.tencent.mm.plugin.fingerprint.d.a)localObject4).cSh()) });
+        Object localObject4 = (com.tencent.mm.plugin.fingerprint.d.a)g.af(com.tencent.mm.plugin.fingerprint.d.a.class);
+        Log.i("MicroMsg.WalletSoterService", "fingerprint: %s has fingerprint: %s, faceid: %s has faceid: %s", new Object[] { Boolean.valueOf(com.tencent.mm.plugin.wallet.b.a.fPB()), Boolean.valueOf(((com.tencent.mm.plugin.fingerprint.d.a)localObject4).dJU()), Boolean.valueOf(com.tencent.mm.plugin.wallet.b.a.fPC()), Boolean.valueOf(((com.tencent.mm.plugin.fingerprint.d.a)localObject4).dKc()) });
         int i;
-        if ((!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).cRT()) && (!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).cRW()))
+        if ((!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).dJO()) && (!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).dJR()))
         {
-          if ((!com.tencent.mm.plugin.wallet.b.a.eIj()) || (!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).cRZ()) || (!com.tencent.mm.plugin.wallet.b.a.eIk()) || (!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).cSh())) {
+          if ((!com.tencent.mm.plugin.wallet.b.a.fPB()) || (!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).dJU()) || (!com.tencent.mm.plugin.wallet.b.a.fPC()) || (!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).dKc())) {
             break label764;
           }
           if (!bool1) {
@@ -126,35 +128,35 @@ public final class q
           localObject2 = new Bundle();
           if (i == 1)
           {
-            ae.i("MicroMsg.WalletSoterService", "click fingerprint btn");
+            Log.i("MicroMsg.WalletSoterService", "click fingerprint btn");
             ((Bundle)localObject2).putBoolean("key_show_guide", false);
             ((Bundle)localObject2).putBoolean("isFromKinda", true);
             ((Bundle)localObject2).putString("kindaPayPwd", (String)localObject1);
             localObject1 = new Intent();
             ((Intent)localObject1).putExtras((Bundle)localObject2);
-            com.tencent.mm.br.d.b(paramMMActivity, "fingerprint", ".ui.FingerPrintAuthTransparentUI", (Intent)localObject1);
+            c.b(paramMMActivity, "fingerprint", ".ui.FingerPrintAuthTransparentUI", (Intent)localObject1);
           }
           else if (i == 2)
           {
-            ae.i("MicroMsg.WalletSoterService", "click faceid btn");
+            Log.i("MicroMsg.WalletSoterService", "click faceid btn");
             localObject2 = new Intent(paramMMActivity, WalletFaceIdAuthUI.class);
             ((Intent)localObject2).putExtra("pwd", (String)localObject1);
             ((Intent)localObject2).putExtra("key_scene", 1);
-            localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-            com.tencent.mm.hellhoundlib.a.a.a(paramMMActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl", "kindaHandleOpenBiometricPay", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramMMActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
+            localObject1 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject2);
+            com.tencent.mm.hellhoundlib.a.a.a(paramMMActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl", "kindaHandleOpenBiometricPay", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramMMActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramMMActivity, "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl", "kindaHandleOpenBiometricPay", "(Landroid/app/Activity;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             continue;
             label598:
-            localObject2 = new i(paramMMActivity, 2131821723);
-            ((i)localObject2).setContentView(2131493189);
-            localObject4 = (CheckBox)((i)localObject2).findViewById(2131297491);
-            TextView localTextView1 = (TextView)((i)localObject2).findViewById(2131297492);
-            TextView localTextView2 = (TextView)((i)localObject2).findViewById(2131297493);
-            TextView localTextView3 = (TextView)((i)localObject2).findViewById(2131297490);
+            localObject2 = new i(paramMMActivity, 2131821772);
+            ((i)localObject2).setContentView(2131493235);
+            localObject4 = (CheckBox)((i)localObject2).findViewById(2131297730);
+            TextView localTextView1 = (TextView)((i)localObject2).findViewById(2131297731);
+            TextView localTextView2 = (TextView)((i)localObject2).findViewById(2131297732);
+            TextView localTextView3 = (TextView)((i)localObject2).findViewById(2131297729);
             localObject1 = new Bundle();
             if (localObject3 != null) {
-              localObject1 = ((com.tencent.mm.wallet_core.d)localObject3).dyY;
+              localObject1 = ((d)localObject3).dQL;
             }
             localTextView1.setOnClickListener(new View.OnClickListener()
             {
@@ -162,18 +164,18 @@ public final class q
               {
                 AppMethodBeat.i(64395);
                 Object localObject = new b();
-                ((b)localObject).bd(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-                ae.i("MicroMsg.WalletSoterService", "click faceid btn");
+                ((b)localObject).bm(paramAnonymousView);
+                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+                Log.i("MicroMsg.WalletSoterService", "click faceid btn");
                 localObject = new Intent(paramMMActivity, WalletFaceIdAuthUI.class);
-                ((Intent)localObject).putExtra("pwd", this.tsk.getString("key_pwd1"));
+                ((Intent)localObject).putExtra("pwd", this.wFQ.getString("key_pwd1"));
                 ((Intent)localObject).putExtra("key_scene", 1);
                 paramAnonymousView = paramMMActivity;
-                localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+                localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+                com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
                 com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$3", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                this.mHe.dismiss();
+                this.nUc.dismiss();
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(64395);
               }
@@ -184,17 +186,17 @@ public final class q
               {
                 AppMethodBeat.i(64396);
                 b localb = new b();
-                localb.bd(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                ae.i("MicroMsg.WalletSoterService", "click fingerprint btn");
-                if (this.tsn != null)
+                localb.bm(paramAnonymousView);
+                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                Log.i("MicroMsg.WalletSoterService", "click fingerprint btn");
+                if (this.wFT != null)
                 {
-                  this.tsk.putBoolean("key_show_guide", false);
+                  this.wFQ.putBoolean("key_show_guide", false);
                   paramAnonymousView = new Intent();
-                  paramAnonymousView.putExtras(this.tsk);
-                  com.tencent.mm.br.d.b(paramMMActivity, "fingerprint", ".ui.FingerPrintAuthTransparentUI", paramAnonymousView);
+                  paramAnonymousView.putExtras(this.wFQ);
+                  c.b(paramMMActivity, "fingerprint", ".ui.FingerPrintAuthTransparentUI", paramAnonymousView);
                 }
-                this.mHe.dismiss();
+                this.nUc.dismiss();
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(64396);
               }
@@ -205,13 +207,13 @@ public final class q
               {
                 AppMethodBeat.i(64397);
                 b localb = new b();
-                localb.bd(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                ae.i("MicroMsg.WalletSoterService", "click cancel btn");
-                if (this.tso.isChecked()) {
-                  g.ajR().ajA().set(am.a.IMy, Boolean.TRUE);
+                localb.bm(paramAnonymousView);
+                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                Log.i("MicroMsg.WalletSoterService", "click cancel btn");
+                if (this.wFU.isChecked()) {
+                  g.aAh().azQ().set(ar.a.NUA, Boolean.TRUE);
                 }
-                this.mHe.dismiss();
+                this.nUc.dismiss();
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(64397);
               }
@@ -220,7 +222,7 @@ public final class q
             ((MMActivity)paramMMActivity).addDialog((Dialog)localObject2);
             continue;
             label764:
-            if ((com.tencent.mm.plugin.wallet.b.a.eIj()) && (((com.tencent.mm.plugin.fingerprint.d.a)localObject4).cRZ()) && (!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).cRT()))
+            if ((com.tencent.mm.plugin.wallet.b.a.fPB()) && (((com.tencent.mm.plugin.fingerprint.d.a)localObject4).dJU()) && (!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).dJO()))
             {
               localObject3 = new Intent();
               ((Intent)localObject3).putExtras((Bundle)localObject1);
@@ -230,38 +232,38 @@ public final class q
                 ((Intent)localObject3).putExtra("kindaPayPwd", (String)localObject2);
                 ((Intent)localObject3).putExtra("key_show_guide", false);
               }
-              com.tencent.mm.br.d.b(paramMMActivity, "fingerprint", ".ui.FingerPrintAuthTransparentUI", (Intent)localObject3);
+              c.b(paramMMActivity, "fingerprint", ".ui.FingerPrintAuthTransparentUI", (Intent)localObject3);
             }
-            else if ((com.tencent.mm.plugin.wallet.b.a.eIk()) && (((com.tencent.mm.plugin.fingerprint.d.a)localObject4).cSh()) && (!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).cRW()))
+            else if ((com.tencent.mm.plugin.wallet.b.a.fPC()) && (((com.tencent.mm.plugin.fingerprint.d.a)localObject4).dKc()) && (!((com.tencent.mm.plugin.fingerprint.d.a)localObject4).dJR()))
             {
               if (bool1)
               {
                 localObject2 = new Intent(paramMMActivity, WalletFaceIdAuthUI.class);
                 ((Intent)localObject2).putExtra("pwd", ((Bundle)localObject1).getString("key_pwd1"));
                 ((Intent)localObject2).putExtra("key_scene", 1);
-                localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-                com.tencent.mm.hellhoundlib.a.a.a(paramMMActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl", "showOpenGuideAfterPaySucc", "(Lcom/tencent/mm/ui/MMActivity;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                paramMMActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
+                localObject1 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject2);
+                com.tencent.mm.hellhoundlib.a.a.a(paramMMActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl", "showOpenGuideAfterPaySucc", "(Lcom/tencent/mm/ui/MMActivity;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                paramMMActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0));
                 com.tencent.mm.hellhoundlib.a.a.a(paramMMActivity, "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl", "showOpenGuideAfterPaySucc", "(Lcom/tencent/mm/ui/MMActivity;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                 AppMethodBeat.o(64399);
                 return true;
               }
-              localObject2 = LayoutInflater.from(paramMMActivity).inflate(2131494137, null);
-              localObject3 = (TextView)((View)localObject2).findViewById(2131299905);
-              localObject4 = (CheckBox)((View)localObject2).findViewById(2131300097);
-              ((TextView)localObject3).setText(paramMMActivity.getString(2131758807));
-              com.tencent.mm.ui.base.h.a(paramMMActivity, false, null, (View)localObject2, paramMMActivity.getString(2131756747), paramMMActivity.getString(2131755691), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+              localObject2 = LayoutInflater.from(paramMMActivity).inflate(2131494691, null);
+              localObject3 = (TextView)((View)localObject2).findViewById(2131300605);
+              localObject4 = (CheckBox)((View)localObject2).findViewById(2131301532);
+              ((TextView)localObject3).setText(paramMMActivity.getString(2131759128));
+              com.tencent.mm.ui.base.h.a(paramMMActivity, false, null, (View)localObject2, paramMMActivity.getString(2131756909), paramMMActivity.getString(2131755761), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
               {
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                 {
                   AppMethodBeat.i(64393);
                   Object localObject = new Intent(paramMMActivity, WalletFaceIdAuthUI.class);
-                  ((Intent)localObject).putExtra("pwd", this.tsk.getString("key_pwd1"));
+                  ((Intent)localObject).putExtra("pwd", this.wFQ.getString("key_pwd1"));
                   ((Intent)localObject).putExtra("key_scene", 1);
                   paramAnonymousDialogInterface = paramMMActivity;
-                  localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-                  com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-                  paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+                  localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+                  com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+                  paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
                   com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/fingerprint/mgr/WalletSoterServiceImpl$1", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
                   AppMethodBeat.o(64393);
                 }
@@ -270,8 +272,8 @@ public final class q
                 public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
                 {
                   AppMethodBeat.i(64394);
-                  if (this.tsm.isChecked()) {
-                    g.ajR().ajA().set(am.a.IMy, Boolean.TRUE);
+                  if (this.wFS.isChecked()) {
+                    g.aAh().azQ().set(ar.a.NUA, Boolean.TRUE);
                   }
                   AppMethodBeat.o(64394);
                 }
@@ -286,7 +288,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.b.q
  * JD-Core Version:    0.7.0.1
  */

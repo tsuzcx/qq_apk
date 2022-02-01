@@ -6,52 +6,62 @@ import java.nio.charset.Charset;
 
 public final class NativeCrash
 {
-  private static c Mal;
-  private static a Mam;
-  private static final Charset Man;
+  private static c RAD;
+  private static a RAE;
+  private static final Charset RAF;
   
   static
   {
     AppMethodBeat.i(40117);
-    Man = Charset.forName("UTF-8");
+    RAF = Charset.forName("UTF-8");
     AppMethodBeat.o(40117);
   }
   
-  public static a a(a parama)
+  public static void EJ(String paramString)
   {
-    a locala = Mam;
-    Mam = parama;
-    return locala;
+    AppMethodBeat.i(40114);
+    if (paramString == null)
+    {
+      AppMethodBeat.o(40114);
+      return;
+    }
+    if (!paramString.endsWith("\n")) {}
+    for (paramString = paramString + "";; paramString = paramString + '\000')
+    {
+      nativeCustomInfo(paramString.getBytes(RAF));
+      AppMethodBeat.o(40114);
+      return;
+    }
   }
   
   public static c a(c paramc)
   {
-    c localc = Mal;
-    Mal = paramc;
+    c localc = RAD;
+    RAD = paramc;
     return localc;
   }
   
-  public static void baA(String paramString)
+  public static void bpJ(String paramString)
   {
-    AppMethodBeat.i(194923);
+    AppMethodBeat.i(196955);
     if (!InitializationProbe.libLoaded) {
       System.loadLibrary("wechatcrash");
     }
-    nativeInit(paramString, 1871, 2048, true);
-    AppMethodBeat.o(194923);
+    nativeInit(paramString, 1871, 2048, false);
+    AppMethodBeat.o(196955);
   }
   
-  public static c fWY()
+  public static c hiC()
   {
-    return Mal;
+    return RAD;
   }
   
-  public static a fWZ()
+  public static a hiD()
   {
-    return Mam;
+    return RAE;
   }
   
-  public static void fXa()
+  public static void hiE()
   {
     AppMethodBeat.i(40115);
     nativeResetCustomInfo();
@@ -67,115 +77,104 @@ public final class NativeCrash
   @Keep
   private static boolean onANRDumped(int paramInt, String paramString)
   {
-    AppMethodBeat.i(194925);
-    boolean bool = new b(true, paramInt, null, paramString).hZ();
-    AppMethodBeat.o(194925);
+    AppMethodBeat.i(196957);
+    boolean bool = new b(true, paramInt, null, paramString).ij();
+    AppMethodBeat.o(196957);
     return bool;
   }
   
   @Keep
   private static boolean onCrashDumped(int paramInt, String paramString1, String paramString2)
   {
-    AppMethodBeat.i(194924);
-    boolean bool = new b(false, paramInt, paramString1, paramString2).hZ();
-    AppMethodBeat.o(194924);
+    AppMethodBeat.i(196956);
+    boolean bool = new b(false, paramInt, paramString1, paramString2).ij();
+    AppMethodBeat.o(196956);
     return bool;
-  }
-  
-  public static void wu(String paramString)
-  {
-    AppMethodBeat.i(40114);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(40114);
-      return;
-    }
-    if (!paramString.endsWith("\n")) {}
-    for (paramString = paramString + "";; paramString = paramString + '\000')
-    {
-      nativeCustomInfo(paramString.getBytes(Man));
-      AppMethodBeat.o(40114);
-      return;
-    }
   }
   
   public static abstract interface a
   {
-    public abstract boolean adM();
+    public abstract boolean hiF();
   }
   
   static final class b
     implements Runnable
   {
-    final NativeCrash.c Mal;
-    final NativeCrash.a Mam;
-    Throwable Mao;
-    final String Map;
-    final String Maq;
+    final NativeCrash.c RAD;
+    final NativeCrash.a RAE;
+    Throwable RAG;
+    final String RAH;
+    final String RAI;
+    boolean cqT;
     final int mStatus;
-    boolean vkk;
     
     b(boolean paramBoolean, int paramInt, String paramString1, String paramString2)
     {
-      AppMethodBeat.i(194920);
-      this.vkk = false;
-      this.Mao = null;
+      AppMethodBeat.i(196952);
+      this.cqT = false;
+      this.RAG = null;
       if (paramBoolean) {
-        this.Mal = null;
+        this.RAD = null;
       }
-      for (this.Mam = NativeCrash.fWZ();; this.Mam = null)
+      for (this.RAE = NativeCrash.hiD();; this.RAE = null)
       {
         this.mStatus = paramInt;
-        this.Map = paramString1;
-        this.Maq = paramString2;
-        AppMethodBeat.o(194920);
+        this.RAH = paramString1;
+        this.RAI = paramString2;
+        AppMethodBeat.o(196952);
         return;
-        this.Mal = NativeCrash.fWY();
+        this.RAD = NativeCrash.hiC();
       }
     }
     
-    final boolean hZ()
+    final boolean ij()
     {
-      AppMethodBeat.i(194921);
-      if ((this.Mal == null) && (this.Mam == null))
+      AppMethodBeat.i(196953);
+      if ((this.RAD == null) && (this.RAE == null))
       {
-        AppMethodBeat.o(194921);
+        AppMethodBeat.o(196953);
         return false;
       }
-      Thread localThread = new Thread(this, "NativeCrash Dump Callback");
-      localThread.start();
-      localThread.join(5000L);
-      boolean bool = this.vkk;
-      AppMethodBeat.o(194921);
+      Object localObject = new Thread(this, "NativeCrash Dump Callback");
+      ((Thread)localObject).start();
+      ((Thread)localObject).join(5000L);
+      if (this.RAG != null)
+      {
+        localObject = this.RAG;
+        AppMethodBeat.o(196953);
+        throw ((Throwable)localObject);
+      }
+      boolean bool = this.cqT;
+      AppMethodBeat.o(196953);
       return bool;
     }
     
     public final void run()
     {
-      AppMethodBeat.i(194922);
+      AppMethodBeat.i(196954);
       try
       {
-        if (this.Mam != null)
+        if (this.RAE != null)
         {
-          this.vkk = this.Mam.adM();
-          AppMethodBeat.o(194922);
+          this.cqT = this.RAE.hiF();
+          AppMethodBeat.o(196954);
           return;
         }
-        if (this.Mal != null)
+        if (this.RAD != null)
         {
-          this.vkk = this.Mal.onCrashDumped(this.mStatus, this.Map, this.Maq);
-          AppMethodBeat.o(194922);
+          this.cqT = this.RAD.onCrashDumped(this.mStatus, this.RAH, this.RAI);
+          AppMethodBeat.o(196954);
           return;
         }
       }
       catch (Throwable localThrowable)
       {
-        this.Mao = localThrowable;
-        AppMethodBeat.o(194922);
+        this.RAG = localThrowable;
+        AppMethodBeat.o(196954);
         return;
       }
-      this.vkk = false;
-      AppMethodBeat.o(194922);
+      this.cqT = false;
+      AppMethodBeat.o(196954);
     }
   }
   
@@ -186,7 +185,7 @@ public final class NativeCrash
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.nativecrash.NativeCrash
  * JD-Core Version:    0.7.0.1
  */

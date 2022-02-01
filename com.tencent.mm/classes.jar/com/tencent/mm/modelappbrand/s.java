@@ -1,55 +1,54 @@
 package com.tencent.mm.modelappbrand;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.eke;
-import com.tencent.mm.protocal.protobuf.ekf;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.protocal.protobuf.fex;
+import com.tencent.mm.protocal.protobuf.fey;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class s
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f gCo;
-  private final b hNp;
+  private i heq;
+  private final d iIu;
   
   public s(String paramString)
   {
     AppMethodBeat.i(121059);
-    b.a locala = new b.a();
-    locala.hQF = new eke();
-    locala.hQG = new ekf();
+    d.a locala = new d.a();
+    locala.iLN = new fex();
+    locala.iLO = new fey();
     locala.uri = "/cgi-bin/mmbiz-bin/wxausrevent/wxatmplcomplaint";
     locala.funcId = getType();
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.hNp = locala.aDS();
-    ((eke)this.hNp.hQD.hQJ).Ink = paramString;
+    this.iIu = locala.aXF();
+    ((fex)this.iIu.iLK.iLR).NAm = paramString;
     AppMethodBeat.o(121059);
   }
   
-  public final ekf aEe()
+  public final fey aXR()
   {
-    if (this.hNp != null) {
-      return (ekf)this.hNp.hQE.hQJ;
+    if (this.iIu != null) {
+      return (fey)this.iIu.iLL.iLR;
     }
     return null;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(121061);
-    ae.i("MicroMsg.NetSceneGetServiceNotifyOptions", "doScene");
-    this.gCo = paramf;
-    int i = dispatch(parame, this.hNp, this);
+    Log.i("MicroMsg.NetSceneGetServiceNotifyOptions", "doScene");
+    this.heq = parami;
+    int i = dispatch(paramg, this.iIu, this);
     AppMethodBeat.o(121061);
     return i;
   }
@@ -59,12 +58,12 @@ public final class s
     return 1198;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(121060);
-    ae.i("MicroMsg.NetSceneGetServiceNotifyOptions", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if (this.gCo != null) {
-      this.gCo.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    Log.i("MicroMsg.NetSceneGetServiceNotifyOptions", "onGYNetEnd, errType = %d, errCode = %d, errMsg = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if (this.heq != null) {
+      this.heq.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     AppMethodBeat.o(121060);
   }

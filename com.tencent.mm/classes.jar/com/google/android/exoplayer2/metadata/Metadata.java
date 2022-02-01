@@ -11,7 +11,7 @@ public final class Metadata
   implements Parcelable
 {
   public static final Parcelable.Creator<Metadata> CREATOR;
-  public final Entry[] buc;
+  public final Entry[] btX;
   
   static
   {
@@ -23,11 +23,11 @@ public final class Metadata
   Metadata(Parcel paramParcel)
   {
     AppMethodBeat.i(92464);
-    this.buc = new Entry[paramParcel.readInt()];
+    this.btX = new Entry[paramParcel.readInt()];
     int i = 0;
-    while (i < this.buc.length)
+    while (i < this.btX.length)
     {
-      this.buc[i] = ((Entry)paramParcel.readParcelable(Entry.class.getClassLoader()));
+      this.btX[i] = ((Entry)paramParcel.readParcelable(Entry.class.getClassLoader()));
       i += 1;
     }
     AppMethodBeat.o(92464);
@@ -36,14 +36,14 @@ public final class Metadata
   public Metadata(List<? extends Entry> paramList)
   {
     AppMethodBeat.i(92463);
-    this.buc = new Entry[paramList.size()];
-    paramList.toArray(this.buc);
+    this.btX = new Entry[paramList.size()];
+    paramList.toArray(this.btX);
     AppMethodBeat.o(92463);
   }
   
   public Metadata(Entry... paramVarArgs)
   {
-    this.buc = paramVarArgs;
+    this.btX = paramVarArgs;
   }
   
   public final int describeContents()
@@ -65,7 +65,7 @@ public final class Metadata
       return false;
     }
     paramObject = (Metadata)paramObject;
-    boolean bool = Arrays.equals(this.buc, paramObject.buc);
+    boolean bool = Arrays.equals(this.btX, paramObject.btX);
     AppMethodBeat.o(92465);
     return bool;
   }
@@ -73,7 +73,7 @@ public final class Metadata
   public final int hashCode()
   {
     AppMethodBeat.i(92466);
-    int i = Arrays.hashCode(this.buc);
+    int i = Arrays.hashCode(this.btX);
     AppMethodBeat.o(92466);
     return i;
   }
@@ -81,8 +81,8 @@ public final class Metadata
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92467);
-    paramParcel.writeInt(this.buc.length);
-    Entry[] arrayOfEntry = this.buc;
+    paramParcel.writeInt(this.btX.length);
+    Entry[] arrayOfEntry = this.btX;
     int i = arrayOfEntry.length;
     paramInt = 0;
     while (paramInt < i)
@@ -99,7 +99,7 @@ public final class Metadata
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.Metadata
  * JD-Core Version:    0.7.0.1
  */

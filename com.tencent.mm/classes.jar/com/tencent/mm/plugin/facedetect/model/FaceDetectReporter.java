@@ -4,34 +4,32 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 
 public class FaceDetectReporter
   implements Parcelable
 {
   public static final Parcelable.Creator<FaceDetectReporter> CREATOR;
-  public static FaceDetectReporter rqb;
-  public String appId;
-  public boolean rpW;
-  private FaceDetectReportInfo rpX;
-  public int rpY;
-  public int rpZ;
-  public int rqa;
-  private long rqc;
-  public long rqd;
-  public long rqe;
-  public int rqf;
-  public boolean rqg;
+  public static FaceDetectReporter sRy;
+  String appId;
+  long sRA;
+  public long sRB;
+  int sRC;
+  boolean sRD;
+  public boolean sRt;
+  public FaceDetectReportInfo sRu;
+  private int sRv;
+  public int sRw;
+  public int sRx;
+  long sRz;
   public long sessionId;
   
   static
   {
     AppMethodBeat.i(103767);
-    rqb = new FaceDetectReporter();
+    sRy = new FaceDetectReporter();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(103767);
   }
@@ -39,48 +37,48 @@ public class FaceDetectReporter
   private FaceDetectReporter()
   {
     this.sessionId = 0L;
-    this.rpW = false;
-    this.rpX = null;
+    this.sRt = false;
+    this.sRu = null;
     this.appId = "";
-    this.rpY = -1;
-    this.rpZ = 0;
-    this.rqa = 0;
-    this.rqc = 0L;
-    this.rqd = -1L;
-    this.rqe = -1L;
-    this.rqf = 0;
-    this.rqg = false;
+    this.sRv = -1;
+    this.sRw = 0;
+    this.sRx = 0;
+    this.sRz = 0L;
+    this.sRA = -1L;
+    this.sRB = -1L;
+    this.sRC = 0;
+    this.sRD = false;
   }
   
   protected FaceDetectReporter(Parcel paramParcel)
   {
     AppMethodBeat.i(103753);
     this.sessionId = 0L;
-    this.rpW = false;
-    this.rpX = null;
+    this.sRt = false;
+    this.sRu = null;
     this.appId = "";
-    this.rpY = -1;
-    this.rpZ = 0;
-    this.rqa = 0;
-    this.rqc = 0L;
-    this.rqd = -1L;
-    this.rqe = -1L;
-    this.rqf = 0;
-    this.rqg = false;
+    this.sRv = -1;
+    this.sRw = 0;
+    this.sRx = 0;
+    this.sRz = 0L;
+    this.sRA = -1L;
+    this.sRB = -1L;
+    this.sRC = 0;
+    this.sRD = false;
     this.sessionId = paramParcel.readLong();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.rpW = bool1;
-      this.rpX = ((FaceDetectReportInfo)paramParcel.readParcelable(FaceDetectReportInfo.class.getClassLoader()));
+      this.sRt = bool1;
+      this.sRu = ((FaceDetectReportInfo)paramParcel.readParcelable(FaceDetectReportInfo.class.getClassLoader()));
       this.appId = paramParcel.readString();
-      this.rpY = paramParcel.readInt();
-      this.rpZ = paramParcel.readInt();
-      this.rqa = paramParcel.readInt();
-      this.rqc = paramParcel.readLong();
-      this.rqd = paramParcel.readLong();
-      this.rqe = paramParcel.readLong();
-      this.rqf = paramParcel.readInt();
+      this.sRv = paramParcel.readInt();
+      this.sRw = paramParcel.readInt();
+      this.sRx = paramParcel.readInt();
+      this.sRz = paramParcel.readLong();
+      this.sRA = paramParcel.readLong();
+      this.sRB = paramParcel.readLong();
+      this.sRC = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
         break label203;
       }
@@ -88,7 +86,7 @@ public class FaceDetectReporter
     label203:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.rqg = bool1;
+      this.sRD = bool1;
       AppMethodBeat.o(103753);
       return;
       bool1 = false;
@@ -96,7 +94,7 @@ public class FaceDetectReporter
     }
   }
   
-  public static int DY(int paramInt)
+  public static int HK(int paramInt)
   {
     switch (paramInt)
     {
@@ -114,16 +112,16 @@ public class FaceDetectReporter
     return 1;
   }
   
-  public static FaceDetectReporter cuI()
+  public static FaceDetectReporter cTe()
   {
     AppMethodBeat.i(103755);
-    if (rqb == null) {
+    if (sRy == null) {
       try
       {
-        if (rqb == null) {
-          rqb = new FaceDetectReporter();
+        if (sRy == null) {
+          sRy = new FaceDetectReporter();
         }
-        FaceDetectReporter localFaceDetectReporter1 = rqb;
+        FaceDetectReporter localFaceDetectReporter1 = sRy;
         return localFaceDetectReporter1;
       }
       finally
@@ -131,7 +129,7 @@ public class FaceDetectReporter
         AppMethodBeat.o(103755);
       }
     }
-    FaceDetectReporter localFaceDetectReporter2 = rqb;
+    FaceDetectReporter localFaceDetectReporter2 = sRy;
     AppMethodBeat.o(103755);
     return localFaceDetectReporter2;
   }
@@ -139,174 +137,110 @@ public class FaceDetectReporter
   public static void h(long paramLong, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(103756);
-    ae.i("MicroMsg.FaceDetectReporter", "hy: report video: bioId: %d, errType: %d, errCode: %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    g.yxI.f(14121, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.i("MicroMsg.FaceDetectReporter", "hy: report video: bioId: %d, errType: %d, errCode: %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    h.CyF.a(14121, new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(103756);
   }
   
-  public final void Z(int paramInt, long paramLong)
+  public final void ac(int paramInt, long paramLong)
   {
     AppMethodBeat.i(103764);
-    if (this.rpX != null)
+    if (this.sRu != null)
     {
-      FaceDetectReportInfo localFaceDetectReportInfo = this.rpX;
-      localFaceDetectReportInfo.dhD += 1;
-      localFaceDetectReportInfo = this.rpX;
-      localFaceDetectReportInfo.rpS = ((int)(localFaceDetectReportInfo.rpS + paramLong));
-      this.rpX.DX(paramInt);
+      FaceDetectReportInfo localFaceDetectReportInfo = this.sRu;
+      localFaceDetectReportInfo.dyP += 1;
+      localFaceDetectReportInfo = this.sRu;
+      localFaceDetectReportInfo.sRp = ((int)(localFaceDetectReportInfo.sRp + paramLong));
+      this.sRu.HJ(paramInt);
     }
     AppMethodBeat.o(103764);
   }
   
-  public final void a(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4)
+  public final void ad(int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(103761);
-    a(paramInt1, paramBoolean, paramInt2, paramInt3, paramInt4, 0);
-    AppMethodBeat.o(103761);
-  }
-  
-  public final void a(int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    AppMethodBeat.i(103762);
-    ae.v("MicroMsg.FaceDetectReporter", "reportFaceDetectVerifyResult sessionId: %d, hasReported: %b, businessType: %d, isRetry: %b, result: %d, errType: %d, errCode: %d", new Object[] { Long.valueOf(this.sessionId), Boolean.valueOf(this.rpW), Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    int i;
-    if ((this.rpX != null) && (!this.rpW))
+    AppMethodBeat.i(186368);
+    Log.v("MicroMsg.FaceDetectReporter", "reportFaceDetectVerifyResult sessionId: %d, hasReported: %b, businessType: %d, isRetry: %b, result: %d, errType: %d, errCode: %d", new Object[] { Long.valueOf(this.sessionId), Boolean.valueOf(this.sRt), Integer.valueOf(paramInt1), Boolean.FALSE, Integer.valueOf(3), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    int j;
+    if ((this.sRu != null) && (!this.sRt))
     {
-      ae.v("MicroMsg.FaceDetectReporter", "info: %s", new Object[] { this.rpX.toString() });
-      this.rpW = true;
-      this.rpX.rnS = paramInt5;
-      if (this.rpX.dhD != 0) {
-        this.rpX.rpT = (this.rpX.rpS / this.rpX.dhD);
+      Log.v("MicroMsg.FaceDetectReporter", "info: %s", new Object[] { this.sRu.toString() });
+      this.sRt = true;
+      this.sRu.sPx = 0;
+      if (this.sRu.dyP != 0) {
+        this.sRu.sRq = (this.sRu.sRp / this.sRu.dyP);
       }
-      paramInt5 = 0;
-      i = paramInt5;
-      if (this.rpX.rpU.containsKey(Integer.valueOf(0)))
-      {
-        i = paramInt5;
-        if (this.rpX.rpV.containsKey(Integer.valueOf(0)))
-        {
-          i = (int)(((Long)this.rpX.rpV.get(Integer.valueOf(0))).longValue() - ((Long)this.rpX.rpU.get(Integer.valueOf(0))).longValue());
-          ae.i("MicroMsg.FaceDetectReporter", "normalMotionTime : " + i + "  hashCode :" + hashCode());
-        }
+      if ((!this.sRu.sRr.containsKey(Integer.valueOf(0))) || (!this.sRu.sRs.containsKey(Integer.valueOf(0)))) {
+        break label905;
       }
-      if ((!this.rpX.rpU.containsKey(Integer.valueOf(4))) || (!this.rpX.rpV.containsKey(Integer.valueOf(4)))) {
-        break label938;
-      }
-      paramInt5 = (int)(((Long)this.rpX.rpV.get(Integer.valueOf(4))).longValue() - ((Long)this.rpX.rpU.get(Integer.valueOf(4))).longValue());
-      ae.i("MicroMsg.FaceDetectReporter", "readNumberMotionTime : " + paramInt5 + "  hashCode :" + hashCode());
+      j = (int)(((Long)this.sRu.sRs.get(Integer.valueOf(0))).longValue() - ((Long)this.sRu.sRr.get(Integer.valueOf(0))).longValue());
+      Log.i("MicroMsg.FaceDetectReporter", "normalMotionTime : " + j + "  hashCode :" + hashCode());
     }
     for (;;)
     {
-      int j = paramInt5;
-      if (this.rpX.rpU.containsKey(Integer.valueOf(6)))
+      int i;
+      if ((this.sRu.sRr.containsKey(Integer.valueOf(4))) && (this.sRu.sRs.containsKey(Integer.valueOf(4))))
       {
-        j = paramInt5;
-        if (this.rpX.rpV.containsKey(Integer.valueOf(6)))
+        i = (int)(((Long)this.sRu.sRs.get(Integer.valueOf(4))).longValue() - ((Long)this.sRu.sRr.get(Integer.valueOf(4))).longValue());
+        Log.i("MicroMsg.FaceDetectReporter", "readNumberMotionTime : " + i + "  hashCode :" + hashCode());
+      }
+      for (;;)
+      {
+        int k = i;
+        if (this.sRu.sRr.containsKey(Integer.valueOf(6)))
         {
-          j = (int)(((Long)this.rpX.rpV.get(Integer.valueOf(6))).longValue() - ((Long)this.rpX.rpU.get(Integer.valueOf(6))).longValue());
-          ae.i("MicroMsg.FaceDetectReporter", "MOTION_REFLECTION : " + j + "  hashCode :" + hashCode());
+          k = i;
+          if (this.sRu.sRs.containsKey(Integer.valueOf(6)))
+          {
+            k = (int)(((Long)this.sRu.sRs.get(Integer.valueOf(6))).longValue() - ((Long)this.sRu.sRr.get(Integer.valueOf(6))).longValue());
+            Log.i("MicroMsg.FaceDetectReporter", "MOTION_REFLECTION : " + k + "  hashCode :" + hashCode());
+          }
         }
-      }
-      ae.v("MicroMsg.FaceDetectReporter", "alvinluo normal motion time: %d ms, read number motion time: %d ms ,hashcode %d", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(hashCode()) });
-      g localg = g.yxI;
-      long l = this.sessionId;
-      if (paramBoolean) {}
-      for (paramInt5 = 1;; paramInt5 = 0)
-      {
-        localg.f(14006, new Object[] { Long.valueOf(l), Integer.valueOf(paramInt1), Integer.valueOf(paramInt5), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(this.rpX.rpE), Integer.valueOf(this.rpX.rpF), Integer.valueOf(this.rpX.rpG), Integer.valueOf(this.rpX.rpD), Integer.valueOf(this.rpX.rpH), Integer.valueOf(this.rpX.rpI), Integer.valueOf(this.rpX.rpJ), Integer.valueOf(this.rpX.rpK), Integer.valueOf(this.rpX.rpL), Integer.valueOf(this.rpX.rpM), Integer.valueOf(this.rpX.rpN), Integer.valueOf(this.rpX.rpO), Integer.valueOf(this.rpX.rpP), Integer.valueOf(this.rpX.rnS), Integer.valueOf(this.rpX.rpQ), Integer.valueOf(this.rpX.rpR), Integer.valueOf(this.rpX.rpT), Integer.valueOf(i), Integer.valueOf(j), this.appId, Integer.valueOf(this.rpY), Integer.valueOf(this.rpZ), Integer.valueOf(this.rqa) });
-        AppMethodBeat.o(103762);
+        Log.v("MicroMsg.FaceDetectReporter", "alvinluo normal motion time: %d ms, read number motion time: %d ms ,hashcode %d", new Object[] { Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(hashCode()) });
+        h.CyF.a(14006, new Object[] { Long.valueOf(this.sessionId), Integer.valueOf(paramInt1), Integer.valueOf(0), Integer.valueOf(3), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(this.sRu.sRc), Integer.valueOf(this.sRu.sRd), Integer.valueOf(this.sRu.sRe), Integer.valueOf(this.sRu.sRb), Integer.valueOf(this.sRu.sRf), Integer.valueOf(this.sRu.sRg), Integer.valueOf(this.sRu.sRh), Integer.valueOf(this.sRu.sRi), Integer.valueOf(this.sRu.sRj), Integer.valueOf(this.sRu.sRk), Integer.valueOf(this.sRu.sRl), Integer.valueOf(this.sRu.sRm), Integer.valueOf(this.sRu.sRn), Integer.valueOf(this.sRu.sPx), Integer.valueOf(this.sRu.sRo), Integer.valueOf(this.sRu.unstableCount), Integer.valueOf(this.sRu.sRq), Integer.valueOf(j), Integer.valueOf(k), this.appId, Integer.valueOf(this.sRv), Integer.valueOf(this.sRw), Integer.valueOf(this.sRx) });
+        AppMethodBeat.o(186368);
         return;
+        i = 0;
       }
-      label938:
-      paramInt5 = 0;
+      label905:
+      j = 0;
     }
   }
   
-  public final void a(FaceDetectReporter paramFaceDetectReporter)
-  {
-    AppMethodBeat.i(103759);
-    ae.v("MicroMsg.FaceDetectReporter", "alvinluo setReporter, stack: %s", new Object[] { bu.fpN().toString() });
-    this.rpX = paramFaceDetectReporter.rpX;
-    this.rpW = paramFaceDetectReporter.rpW;
-    this.sessionId = paramFaceDetectReporter.sessionId;
-    this.rpZ = paramFaceDetectReporter.rpZ;
-    this.rqa = paramFaceDetectReporter.rqa;
-    long l = this.sessionId;
-    if (this.rpX != null) {}
-    for (paramFaceDetectReporter = this.rpX.toString();; paramFaceDetectReporter = "null")
-    {
-      ae.v("MicroMsg.FaceDetectReporter", "alvinluo sessionId: %d, info: %s", new Object[] { Long.valueOf(l), paramFaceDetectReporter });
-      AppMethodBeat.o(103759);
-      return;
-    }
-  }
-  
-  public final void aa(int paramInt, long paramLong)
+  public final void ad(int paramInt, long paramLong)
   {
     AppMethodBeat.i(103765);
-    if (this.rpX != null)
+    if (this.sRu != null)
     {
-      ae.i("MicroMsg.FaceDetectReporter", "hashCode :" + hashCode() + " startTime" + paramLong);
-      this.rpX.rpU.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
+      Log.i("MicroMsg.FaceDetectReporter", "hashCode :" + hashCode() + " startTime" + paramLong);
+      this.sRu.sRr.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
     }
     AppMethodBeat.o(103765);
   }
   
-  public final void ab(int paramInt, long paramLong)
+  public final void ae(int paramInt, long paramLong)
   {
     AppMethodBeat.i(103766);
-    if (this.rpX != null)
+    if (this.sRu != null)
     {
-      ae.i("MicroMsg.FaceDetectReporter", "hashCode :" + hashCode() + " endTime:" + paramLong);
-      this.rpX.rpV.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
+      Log.i("MicroMsg.FaceDetectReporter", "hashCode :" + hashCode() + " endTime:" + paramLong);
+      this.sRu.sRs.put(Integer.valueOf(paramInt), Long.valueOf(paramLong));
     }
     AppMethodBeat.o(103766);
   }
   
-  public final void ad(int paramInt, boolean paramBoolean)
-  {
-    int i = 1;
-    AppMethodBeat.i(103760);
-    ae.v("MicroMsg.FaceDetectReporter", "reportStartFaceDetect businessType: %d, isRetry: %b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    g localg = g.yxI;
-    long l = this.sessionId;
-    if (paramBoolean) {}
-    for (;;)
-    {
-      localg.f(14005, new Object[] { Integer.valueOf(paramInt), Long.valueOf(l), Integer.valueOf(i) });
-      AppMethodBeat.o(103760);
-      return;
-      i = 0;
-    }
-  }
-  
-  public final long cuJ()
+  public final long cTf()
   {
     AppMethodBeat.i(103757);
-    ae.v("MicroMsg.FaceDetectReporter", "create report session");
-    if (this.rpX == null) {
-      this.rpX = new FaceDetectReportInfo();
+    Log.v("MicroMsg.FaceDetectReporter", "create report session");
+    if (this.sRu == null) {
+      this.sRu = new FaceDetectReportInfo();
     }
-    this.rpX.reset();
-    this.rpW = false;
+    this.sRu.reset();
+    this.sRt = false;
     this.sessionId = System.currentTimeMillis();
-    this.rpX.sessionId = this.sessionId;
+    this.sRu.sessionId = this.sessionId;
     long l = this.sessionId;
     AppMethodBeat.o(103757);
-    return l;
-  }
-  
-  public final long cuK()
-  {
-    AppMethodBeat.i(103758);
-    ae.v("MicroMsg.FaceDetectReporter", "create interface called session");
-    this.rqc = System.currentTimeMillis();
-    this.rqf = 0;
-    this.rqg = false;
-    this.rqd = -1L;
-    this.rqe = -1L;
-    long l = this.rqc;
-    AppMethodBeat.o(103758);
     return l;
   }
   
@@ -315,31 +249,31 @@ public class FaceDetectReporter
     return 0;
   }
   
-  public final void dl(String paramString, int paramInt)
+  public final void dr(String paramString, int paramInt)
   {
     long l1 = -1L;
     int i = 1;
     AppMethodBeat.i(103763);
-    g localg;
+    h localh;
     long l2;
     String str;
-    if ((this.rqd == -1L) || (this.rqe == -1L) || (this.rqe < this.rqd))
+    if ((this.sRA == -1L) || (this.sRB == -1L) || (this.sRB < this.sRA))
     {
-      ae.e("MicroMsg.FaceDetectReporter", "alvinluo not set calledStartTime:%d or calledEndTime: %d, total time is not valid", new Object[] { Long.valueOf(this.rqd), Long.valueOf(this.rqe) });
-      ae.i("MicroMsg.FaceDetectReporter", "alvinluo report face detect interface called result, sessionId: %d, functionName: %s, interfaceType: %d, businessType: %d, totalTime: %d, isSuccess: %b, appId: %s, faceDetectCount: %d", new Object[] { Long.valueOf(this.rqc), paramString, Integer.valueOf(-1), Integer.valueOf(paramInt), Long.valueOf(l1), Boolean.valueOf(this.rqg), this.appId, Integer.valueOf(this.rqf) });
-      localg = g.yxI;
-      l2 = this.rqc;
+      Log.e("MicroMsg.FaceDetectReporter", "alvinluo not set calledStartTime:%d or calledEndTime: %d, total time is not valid", new Object[] { Long.valueOf(this.sRA), Long.valueOf(this.sRB) });
+      Log.i("MicroMsg.FaceDetectReporter", "alvinluo report face detect interface called result, sessionId: %d, functionName: %s, interfaceType: %d, businessType: %d, totalTime: %d, isSuccess: %b, appId: %s, faceDetectCount: %d", new Object[] { Long.valueOf(this.sRz), paramString, Integer.valueOf(-1), Integer.valueOf(paramInt), Long.valueOf(l1), Boolean.valueOf(this.sRD), this.appId, Integer.valueOf(this.sRC) });
+      localh = h.CyF;
+      l2 = this.sRz;
       str = this.appId;
-      if (!this.rqg) {
+      if (!this.sRD) {
         break label273;
       }
     }
     for (;;)
     {
-      localg.f(14560, new Object[] { Long.valueOf(l2), paramString, Integer.valueOf(-1), Integer.valueOf(paramInt), str, Integer.valueOf(i), Long.valueOf(l1), Integer.valueOf(this.rqf) });
+      localh.a(14560, new Object[] { Long.valueOf(l2), paramString, Integer.valueOf(-1), Integer.valueOf(paramInt), str, Integer.valueOf(i), Long.valueOf(l1), Integer.valueOf(this.sRC) });
       AppMethodBeat.o(103763);
       return;
-      l1 = this.rqe - this.rqd;
+      l1 = this.sRB - this.sRA;
       break;
       label273:
       i = 0;
@@ -352,20 +286,20 @@ public class FaceDetectReporter
     AppMethodBeat.i(103754);
     paramParcel.writeLong(this.sessionId);
     int i;
-    if (this.rpW)
+    if (this.sRt)
     {
       i = 1;
       paramParcel.writeByte((byte)i);
-      paramParcel.writeParcelable(this.rpX, paramInt);
+      paramParcel.writeParcelable(this.sRu, paramInt);
       paramParcel.writeString(this.appId);
-      paramParcel.writeInt(this.rpY);
-      paramParcel.writeInt(this.rpZ);
-      paramParcel.writeInt(this.rqa);
-      paramParcel.writeLong(this.rqc);
-      paramParcel.writeLong(this.rqd);
-      paramParcel.writeLong(this.rqe);
-      paramParcel.writeInt(this.rqf);
-      if (!this.rqg) {
+      paramParcel.writeInt(this.sRv);
+      paramParcel.writeInt(this.sRw);
+      paramParcel.writeInt(this.sRx);
+      paramParcel.writeLong(this.sRz);
+      paramParcel.writeLong(this.sRA);
+      paramParcel.writeLong(this.sRB);
+      paramParcel.writeInt(this.sRC);
+      if (!this.sRD) {
         break label133;
       }
     }
@@ -382,7 +316,7 @@ public class FaceDetectReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.FaceDetectReporter
  * JD-Core Version:    0.7.0.1
  */

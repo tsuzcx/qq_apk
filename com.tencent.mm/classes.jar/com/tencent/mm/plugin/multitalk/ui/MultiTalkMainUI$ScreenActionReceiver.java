@@ -4,8 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class MultiTalkMainUI$ScreenActionReceiver
   extends BroadcastReceiver
@@ -18,10 +18,10 @@ public class MultiTalkMainUI$ScreenActionReceiver
     paramContext = paramIntent.getAction();
     if ((paramContext != null) && (paramContext.equals("android.intent.action.SCREEN_OFF")))
     {
-      ae.i("MicroMsg.MT.MultiTalkMainUI", "receive action screen off");
-      paramContext = this.wtA;
-      paramContext.wtz.removeCallbacksAndMessages(null);
-      paramContext.wtz.sendEmptyMessage(0);
+      Log.i("MicroMsg.MT.MultiTalkMainUI", "receive action screen off");
+      paramContext = this.zPW;
+      paramContext.zPV.removeCallbacksAndMessages(null);
+      paramContext.zPV.sendEmptyMessage(0);
     }
     AppMethodBeat.o(114662);
   }

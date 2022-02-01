@@ -8,10 +8,10 @@ public class PAGImageLayer
 {
   static
   {
-    AppMethodBeat.i(216923);
-    b.loadLibrary("libpag");
+    AppMethodBeat.i(236894);
+    b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(216923);
+    AppMethodBeat.o(236894);
   }
   
   public PAGImageLayer(long paramLong)
@@ -21,15 +21,15 @@ public class PAGImageLayer
   
   public static PAGImageLayer Make(int paramInt1, int paramInt2, long paramLong)
   {
-    AppMethodBeat.i(216921);
+    AppMethodBeat.i(236892);
     paramLong = nativeMake(paramInt1, paramInt2, paramLong);
     if (paramLong == 0L)
     {
-      AppMethodBeat.o(216921);
+      AppMethodBeat.o(236892);
       return null;
     }
     PAGImageLayer localPAGImageLayer = new PAGImageLayer(paramLong);
-    AppMethodBeat.o(216921);
+    AppMethodBeat.o(236892);
     return localPAGImageLayer;
   }
   
@@ -45,19 +45,19 @@ public class PAGImageLayer
   
   public void replaceImage(PAGImage paramPAGImage)
   {
-    AppMethodBeat.i(216922);
+    AppMethodBeat.i(236893);
     if (paramPAGImage == null) {}
     for (long l = 0L;; l = paramPAGImage.nativeContext)
     {
       replaceImage(l);
-      AppMethodBeat.o(216922);
+      AppMethodBeat.o(236893);
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.libpag.PAGImageLayer
  * JD-Core Version:    0.7.0.1
  */

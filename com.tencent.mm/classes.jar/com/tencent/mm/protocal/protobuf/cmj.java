@@ -5,74 +5,82 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class cmj
   extends com.tencent.mm.bw.a
 {
-  public int Hyq;
-  public int Hyr;
-  public String Hys;
+  public String bssid;
+  public int dIX;
+  public String ssid;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125754);
+    AppMethodBeat.i(32343);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.Hyq);
-      paramVarArgs.aS(2, this.Hyr);
-      if (this.Hys != null) {
-        paramVarArgs.d(3, this.Hys);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.ssid != null) {
+        paramVarArgs.e(1, this.ssid);
       }
-      AppMethodBeat.o(125754);
+      if (this.bssid != null) {
+        paramVarArgs.e(2, this.bssid);
+      }
+      paramVarArgs.aM(3, this.dIX);
+      AppMethodBeat.o(32343);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.bz(1, this.Hyq) + 0 + f.a.a.b.b.a.bz(2, this.Hyr);
-      paramInt = i;
-      if (this.Hys != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.Hys);
+    if (paramInt == 1) {
+      if (this.ssid == null) {
+        break label327;
       }
-      AppMethodBeat.o(125754);
-      return paramInt;
     }
-    if (paramInt == 2)
+    label327:
+    for (paramInt = g.a.a.b.b.a.f(1, this.ssid) + 0;; paramInt = 0)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
+      int i = paramInt;
+      if (this.bssid != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.bssid);
       }
-      AppMethodBeat.o(125754);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      cmj localcmj = (cmj)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = g.a.a.b.b.a.bu(3, this.dIX);
+      AppMethodBeat.o(32343);
+      return i + paramInt;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(125754);
-        return -1;
-      case 1: 
-        localcmj.Hyq = locala.OmT.zc();
-        AppMethodBeat.o(125754);
-        return 0;
-      case 2: 
-        localcmj.Hyr = locala.OmT.zc();
-        AppMethodBeat.o(125754);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
+        }
+        AppMethodBeat.o(32343);
         return 0;
       }
-      localcmj.Hys = locala.OmT.readString();
-      AppMethodBeat.o(125754);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        cmj localcmj = (cmj)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(32343);
+          return -1;
+        case 1: 
+          localcmj.ssid = locala.UbS.readString();
+          AppMethodBeat.o(32343);
+          return 0;
+        case 2: 
+          localcmj.bssid = locala.UbS.readString();
+          AppMethodBeat.o(32343);
+          return 0;
+        }
+        localcmj.dIX = locala.UbS.zi();
+        AppMethodBeat.o(32343);
+        return 0;
+      }
+      AppMethodBeat.o(32343);
+      return -1;
     }
-    AppMethodBeat.o(125754);
-    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cmj
  * JD-Core Version:    0.7.0.1
  */

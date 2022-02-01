@@ -10,29 +10,29 @@ public class ChatroomInfoUI$LocalHistoryInfo
 {
   public static final Parcelable.Creator<LocalHistoryInfo> CREATOR;
   public String aeskey;
-  public int fPH;
-  public int fPI;
   public String fileid;
   public String filemd5;
+  public int guR;
+  public int guS;
   
   static
   {
-    AppMethodBeat.i(217185);
+    AppMethodBeat.i(194099);
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(217185);
+    AppMethodBeat.o(194099);
   }
   
   public ChatroomInfoUI$LocalHistoryInfo() {}
   
   protected ChatroomInfoUI$LocalHistoryInfo(Parcel paramParcel)
   {
-    AppMethodBeat.i(217184);
+    AppMethodBeat.i(194098);
     this.fileid = paramParcel.readString();
     this.aeskey = paramParcel.readString();
     this.filemd5 = paramParcel.readString();
-    this.fPH = paramParcel.readInt();
-    this.fPI = paramParcel.readInt();
-    AppMethodBeat.o(217184);
+    this.guR = paramParcel.readInt();
+    this.guS = paramParcel.readInt();
+    AppMethodBeat.o(194098);
   }
   
   public int describeContents()
@@ -42,26 +42,26 @@ public class ChatroomInfoUI$LocalHistoryInfo
   
   public String toString()
   {
-    AppMethodBeat.i(217182);
-    String str = "LocalHistoryInfo{fileid='" + this.fileid + '\'' + ", aeskey='" + this.aeskey + '\'' + ", filemd5='" + this.filemd5 + '\'' + ", filelength=" + this.fPH + ", msgsount=" + this.fPI + '}';
-    AppMethodBeat.o(217182);
+    AppMethodBeat.i(194096);
+    String str = "LocalHistoryInfo{fileid='" + this.fileid + '\'' + ", aeskey='" + this.aeskey + '\'' + ", filemd5='" + this.filemd5 + '\'' + ", filelength=" + this.guR + ", msgsount=" + this.guS + '}';
+    AppMethodBeat.o(194096);
     return str;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(217183);
+    AppMethodBeat.i(194097);
     paramParcel.writeString(this.fileid);
     paramParcel.writeString(this.aeskey);
     paramParcel.writeString(this.filemd5);
-    paramParcel.writeInt(this.fPH);
-    paramParcel.writeInt(this.fPI);
-    AppMethodBeat.o(217183);
+    paramParcel.writeInt(this.guR);
+    paramParcel.writeInt(this.guS);
+    AppMethodBeat.o(194097);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.ChatroomInfoUI.LocalHistoryInfo
  * JD-Core Version:    0.7.0.1
  */

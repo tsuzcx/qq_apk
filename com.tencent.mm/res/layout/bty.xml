@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/b3c" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
-        <ImageView android:layout_gravity="center" android:id="@id/ahk" android:visibility="visible" android:layout_width="@dimen/cg" android:layout_height="@dimen/cg" android:src="@drawable/ag6" />
-    </FrameLayout>
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:id="@id/huw" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:id="@id/hv5" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView android:id="@id/hv4" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/hv2" android:background="@drawable/aue" android:layout_width="fill_parent" android:layout_height="44.0dip" android:paddingStart="12.0dip" android:paddingEnd="12.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/hv1" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginEnd="6.0dip" app:iconColor="@color/Link_100" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/Link_100" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/hv3" android:layout_width="fill_parent" android:layout_height="20.0dip" android:singleLine="true" />
+    </LinearLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginTop="12.0dip">
+        <com.tencent.mm.plugin.sns.ad.widget.stackup.StackUpLayout android:id="@id/hv0" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginEnd="6.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_0_Alpha_0_3" android:ellipsize="end" android:id="@id/huz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:singleLine="true" android:layout_toEndOf="@id/hv0" />
+    </RelativeLayout>
+</LinearLayout>

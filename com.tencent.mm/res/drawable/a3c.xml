@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/awe" />
-    <item android:state_enabled="false" android:drawable="@drawable/awe" />
-    <item android:drawable="@drawable/awf" />
-</selector>
+    <item android:right="@dimen/bt">
+        <shape>
+            <solid android:color="@color/a2x" />
+        </shape>
+    </item>
+</layer-list>

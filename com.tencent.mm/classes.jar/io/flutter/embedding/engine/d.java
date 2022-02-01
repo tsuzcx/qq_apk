@@ -10,25 +10,25 @@ import java.util.Set;
 
 public final class d
 {
-  private Set<String> MZU;
+  private Set<String> SOF;
   
   private d(List<String> paramList)
   {
     AppMethodBeat.i(10183);
-    this.MZU = new HashSet(paramList);
+    this.SOF = new HashSet(paramList);
     AppMethodBeat.o(10183);
   }
   
   public d(String[] paramArrayOfString)
   {
     AppMethodBeat.i(10182);
-    this.MZU = new HashSet(Arrays.asList(paramArrayOfString));
+    this.SOF = new HashSet(Arrays.asList(paramArrayOfString));
     AppMethodBeat.o(10182);
   }
   
-  public static d bC(Intent paramIntent)
+  public static d bO(Intent paramIntent)
   {
-    AppMethodBeat.i(197830);
+    AppMethodBeat.i(214940);
     ArrayList localArrayList = new ArrayList();
     if (paramIntent.getBooleanExtra("trace-startup", false)) {
       localArrayList.add("--trace-startup");
@@ -61,6 +61,9 @@ public final class d
     if (paramIntent.getBooleanExtra("trace-skia", false)) {
       localArrayList.add("--trace-skia");
     }
+    if (paramIntent.getBooleanExtra("trace-systrace", false)) {
+      localArrayList.add("--trace-systrace");
+    }
     if (paramIntent.getBooleanExtra("dump-skp-on-shader-compilation", false)) {
       localArrayList.add("--dump-skp-on-shader-compilation");
     }
@@ -74,22 +77,22 @@ public final class d
       localArrayList.add("--dart-flags=" + paramIntent.getStringExtra("dart-flags"));
     }
     paramIntent = new d(localArrayList);
-    AppMethodBeat.o(197830);
+    AppMethodBeat.o(214940);
     return paramIntent;
   }
   
   public final String[] toArray()
   {
     AppMethodBeat.i(10184);
-    String[] arrayOfString = new String[this.MZU.size()];
-    arrayOfString = (String[])this.MZU.toArray(arrayOfString);
+    String[] arrayOfString = new String[this.SOF.size()];
+    arrayOfString = (String[])this.SOF.toArray(arrayOfString);
     AppMethodBeat.o(10184);
     return arrayOfString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.embedding.engine.d
  * JD-Core Version:    0.7.0.1
  */

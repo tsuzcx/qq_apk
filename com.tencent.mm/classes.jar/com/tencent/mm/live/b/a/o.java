@@ -1,74 +1,76 @@
 package com.tencent.mm.live.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.bw.a;
-import com.tencent.mm.live.b.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bsi;
-import com.tencent.mm.protocal.protobuf.bsj;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.live.b.x;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cfc;
+import com.tencent.mm.protocal.protobuf.cfd;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveJoinLive;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "roomId", "", "liveCookies", "", "(JLjava/lang/String;[B)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/JoinLiveRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/JoinLiveResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResponse", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "Companion", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveJoinLive;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "liveId", "", "roomId", "", "liveCookies", "", "(JLjava/lang/String;[B)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/JoinLiveRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/JoinLiveResponse;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getResponse", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "Companion", "plugin-logic_release"})
 public final class o
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public static final a gSS;
-  private f callback;
-  private com.tencent.mm.ak.b gRX;
-  private final bsi gSQ;
-  public bsj gSR;
+  public static final a hKp;
+  private i callback;
+  private d hJu;
+  private final cfc hKn;
+  public cfd hKo;
   
   static
   {
-    AppMethodBeat.i(215844);
-    gSS = new a((byte)0);
-    AppMethodBeat.o(215844);
+    AppMethodBeat.i(207797);
+    hKp = new a((byte)0);
+    AppMethodBeat.o(207797);
   }
   
   public o(long paramLong, String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(215843);
-    Object localObject = new b.a();
-    ((b.a)localObject).c((a)new bsi());
-    ((b.a)localObject).d((a)new bsj());
-    ((b.a)localObject).oS(3797);
-    ((b.a)localObject).DN("/cgi-bin/micromsg-bin/joinlive");
-    ((b.a)localObject).oU(0);
-    ((b.a)localObject).oV(0);
-    ae.i("MicroMsg.LiveNetScene.NetSceneLiveJoinLive", "join live liveId:" + paramLong + ", roomId:" + paramString);
-    localObject = ((b.a)localObject).aDS();
+    AppMethodBeat.i(207796);
+    Object localObject = new d.a();
+    ((d.a)localObject).c((a)new cfc());
+    ((d.a)localObject).d((a)new cfd());
+    ((d.a)localObject).sG(3797);
+    ((d.a)localObject).MB("/cgi-bin/micromsg-bin/joinlive");
+    ((d.a)localObject).sI(0);
+    ((d.a)localObject).sJ(0);
+    Log.i("MicroMsg.LiveNetScene.NetSceneLiveJoinLive", "join live liveId:" + paramLong + ", roomId:" + paramString);
+    localObject = ((d.a)localObject).aXF();
     p.g(localObject, "builder.buildInstance()");
-    this.gRX = ((com.tencent.mm.ak.b)localObject);
-    localObject = this.gRX.aEU();
+    this.hJu = ((d)localObject);
+    localObject = this.hJu.aYJ();
     if (localObject == null)
     {
-      paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.JoinLiveRequest");
-      AppMethodBeat.o(215843);
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.JoinLiveRequest");
+      AppMethodBeat.o(207796);
       throw paramString;
     }
-    this.gSQ = ((bsi)localObject);
-    this.gSQ.FKy = paramLong;
-    this.gSQ.FKz = paramString;
-    this.gSQ.GTs = com.tencent.mm.bw.b.cm(paramArrayOfByte);
-    AppMethodBeat.o(215843);
+    this.hKn = ((cfc)localObject);
+    this.hKn.hyH = paramLong;
+    this.hKn.KDQ = paramString;
+    this.hKn.LFp = b.cD(paramArrayOfByte);
+    AppMethodBeat.o(207796);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(215841);
-    ae.i("MicroMsg.LiveNetScene.NetSceneLiveJoinLive", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, (q)this.gRX, (k)this);
-    AppMethodBeat.o(215841);
+    AppMethodBeat.i(207794);
+    Log.i("MicroMsg.LiveNetScene.NetSceneLiveJoinLive", "doScene");
+    this.callback = parami;
+    int i = dispatch(paramg, (s)this.hJu, (m)this);
+    AppMethodBeat.o(207794);
     return i;
   }
   
@@ -77,59 +79,59 @@ public final class o
     return 3797;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     paramArrayOfByte = null;
-    AppMethodBeat.i(215842);
-    ae.i("MicroMsg.LiveNetScene.NetSceneLiveJoinLive", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if (paramq == null)
+    AppMethodBeat.i(207795);
+    Log.i("MicroMsg.LiveNetScene.NetSceneLiveJoinLive", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (params == null)
     {
-      paramString = new v("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-      AppMethodBeat.o(215842);
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
+      AppMethodBeat.o(207795);
       throw paramString;
     }
-    paramq = ((com.tencent.mm.ak.b)paramq).aEV();
-    if (paramq == null)
+    params = ((d)params).aYK();
+    if (params == null)
     {
-      paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.JoinLiveResponse");
-      AppMethodBeat.o(215842);
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.JoinLiveResponse");
+      AppMethodBeat.o(207795);
       throw paramString;
     }
-    this.gSR = ((bsj)paramq);
+    this.hKo = ((cfd)params);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ae.e("MicroMsg.LiveNetScene.NetSceneLiveJoinLive", "onGYNetEnd error");
-      paramq = this.callback;
-      if (paramq != null)
+      Log.e("MicroMsg.LiveNetScene.NetSceneLiveJoinLive", "onGYNetEnd error");
+      params = this.callback;
+      if (params != null)
       {
-        paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-        AppMethodBeat.o(215842);
+        params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+        AppMethodBeat.o(207795);
         return;
       }
-      AppMethodBeat.o(215842);
+      AppMethodBeat.o(207795);
       return;
     }
-    paramq = this.gSR;
-    if (paramq != null) {}
-    for (paramq = paramq.GTs;; paramq = null)
+    params = this.hKo;
+    if (params != null) {}
+    for (params = params.LFp;; params = null)
     {
-      g localg = g.gQZ;
-      if (paramq != null) {
-        paramArrayOfByte = paramq.getBytes();
+      x localx = x.hJf;
+      if (params != null) {
+        paramArrayOfByte = params.zy;
       }
-      g.P(paramArrayOfByte);
-      paramq = this.callback;
-      if (paramq == null) {
+      x.ad(paramArrayOfByte);
+      params = this.callback;
+      if (params == null) {
         break;
       }
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(215842);
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+      AppMethodBeat.o(207795);
       return;
     }
-    AppMethodBeat.o(215842);
+    AppMethodBeat.o(207795);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveJoinLive$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/cgi/NetSceneLiveJoinLive$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class a {}
 }
 

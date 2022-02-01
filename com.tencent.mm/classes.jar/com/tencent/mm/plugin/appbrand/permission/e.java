@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
-import com.tencent.mm.plugin.appbrand.jsapi.j;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
 import java.util.HashMap;
 
 public class e
-  implements j
+  implements m
 {
-  HashMap<String, AppRuntimeApiPermissionBundle> mnf;
+  HashMap<String, AppRuntimeApiPermissionBundle> nxF;
   
   public e(HashMap<String, AppRuntimeApiPermissionBundle> paramHashMap)
   {
-    this.mnf = paramHashMap;
+    this.nxF = paramHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.e
  * JD-Core Version:    0.7.0.1
  */

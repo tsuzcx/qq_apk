@@ -1,62 +1,49 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
+import java.util.LinkedList;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.ReentrantLock;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/UpdateOp;", "T", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "", "cmd", "", "insList", "", "isNeedClear", "", "request", "(ILjava/util/List;ZLjava/lang/Object;)V", "getCmd", "()I", "getInsList", "()Ljava/util/List;", "()Z", "getRequest", "()Ljava/lang/Object;", "setRequest", "(Ljava/lang/Object;)V", "Companion", "plugin-finder_release"})
-public final class l<T extends i>
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer;", "T", "A", "", "policy", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Policy;", "name", "", "(Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Policy;Ljava/lang/String;)V", "buffer", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$PageData;", "empty", "Ljava/util/concurrent/locks/Condition;", "kotlin.jvm.PlatformType", "length", "", "getLength", "()I", "setLength", "(I)V", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "clear", "", "makeList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "offer", "page", "take", "count", "expiredTimeMs", "", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Callback;", "Callback", "Companion", "PageData", "Policy", "plugin-finder_release"})
+public final class l<T, A>
 {
-  public static final a sma;
-  final int EN;
-  final boolean isNeedClear;
-  Object request;
-  final List<T> slZ;
+  public static final a tYK;
+  private final ReentrantLock dgE;
+  private final String name;
+  private final Condition tYH;
+  private final LinkedList<Object<T, A>> tYI;
+  private final l.b tYJ;
   
   static
   {
-    AppMethodBeat.i(166126);
-    sma = new a((byte)0);
-    AppMethodBeat.o(166126);
+    AppMethodBeat.i(245035);
+    tYK = new a((byte)0);
+    AppMethodBeat.o(245035);
   }
   
-  private l(int paramInt, List<? extends T> paramList, boolean paramBoolean)
+  public l()
   {
-    this.EN = paramInt;
-    this.slZ = paramList;
-    this.isNeedClear = paramBoolean;
-    this.request = null;
+    this(null, null, 3);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/UpdateOp$Companion;", "", "()V", "ADD_LOADMORE", "", "ADD_REFRESH", "ALL_REFRESH", "CLEAN_REFRESH", "INIT", "INSERT", "LOADMORE_THAT_ALL", "REFRESH_THAT_ALL", "cmd2String", "", "cmd", "plugin-finder_release"})
-  public static final class a
+  private l(l.b paramb, String paramString)
   {
-    public static String ES(int paramInt)
-    {
-      switch (paramInt)
-      {
-      case 7: 
-      default: 
-        return "UNKNOWN";
-      case 1: 
-        return "ADD_LOADMORE";
-      case 2: 
-        return "ADD_REFRESH";
-      case 3: 
-        return "INIT";
-      case 4: 
-        return "CLEAN_REFRESH";
-      case 5: 
-        return "LOADMORE_THAT_ALL";
-      case 6: 
-        return "REFRESH_THAT_ALL";
-      }
-      return "INSERT";
-    }
+    AppMethodBeat.i(245033);
+    this.tYJ = paramb;
+    this.name = paramString;
+    this.dgE = new ReentrantLock();
+    this.tYH = this.dgE.newCondition();
+    this.tYI = new LinkedList();
+    AppMethodBeat.o(245033);
   }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/PageDataBuffer$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.internal.l
  * JD-Core Version:    0.7.0.1
  */

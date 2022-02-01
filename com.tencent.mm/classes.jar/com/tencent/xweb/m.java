@@ -6,13 +6,15 @@ public abstract interface m
   public abstract void a(l paraml);
   
   @Deprecated
-  public abstract void bcx(String paramString);
+  public abstract void bsg(String paramString);
+  
+  public abstract void forceEnableFrameCostProfile();
   
   public abstract boolean setProfileResultCallback(String paramString, k paramk);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.m
  * JD-Core Version:    0.7.0.1
  */

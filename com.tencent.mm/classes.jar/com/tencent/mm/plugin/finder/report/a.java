@@ -1,175 +1,224 @@
 package com.tencent.mm.plugin.finder.report;
 
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ac.c;
-import com.tencent.mm.g.b.a.aw;
-import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.arn;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
+import kotlin.a.ak;
+import kotlin.a.j;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderBulletSubtitleReporter;", "", "()V", "cache", "Ljava/util/concurrent/ConcurrentHashMap;", "", "Lcom/tencent/mm/plugin/finder/report/FinderBulletSubtitleReporter$FeedBulletData;", "getCache", "()Ljava/util/concurrent/ConcurrentHashMap;", "dequeReportData", "", "feedId", "everclosed", "", "everopened", "expocnt", "expotimes", "is_open", "value", "", "report20353", "mediaType", "action", "contextObj", "Lcom/tencent/mm/protocal/protobuf/FinderReportContextObj;", "start", "totalcnt", "FeedBulletData", "plugin-finder_release"})
-public final class a
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/ExposeStatisticUtil;", "ID", "", "()V", "browserExposeMap", "Ljava/util/concurrent/ConcurrentHashMap;", "", "clickChatExposeMap", "clickExposeSet", "", "curBrowseExposeSet", "diffDataListener", "Lcom/tencent/mm/plugin/finder/report/IDiffData;", "isStatistic", "", "statisticCondition", "Lcom/tencent/mm/plugin/finder/report/IStatisticCondition;", "threadName", "", "copySet", "", "src", "", "dst", "getExposeContainer", "type", "getExposePv", "", "getExposeSet", "getExposeUV", "getMapContainer", "incExpose", "id", "(Ljava/lang/Object;I)V", "isIdLegal", "(Ljava/lang/Object;)Z", "isShouldExecute", "onDiffData", "diffData", "record", "exposedSet", "curSet", "idSet", "setOnDiffDataListener", "setStatisticCondition", "startStatistic", "stopStatistic", "Companion", "plugin-finder_release"})
+public final class a<ID>
 {
-  private static final ConcurrentHashMap<Long, a> cache;
-  public static final a swO;
+  private static final String TAG = "Finder.ExposeStatisticUtil";
+  public static final a vcS;
+  private final String threadName;
+  volatile boolean vcL;
+  public z<ID> vcM;
+  ab<ID> vcN;
+  private final Set<ID> vcO;
+  private final ConcurrentHashMap<ID, Integer> vcP;
+  private final Set<ID> vcQ;
+  private final ConcurrentHashMap<ID, Integer> vcR;
   
   static
   {
-    AppMethodBeat.i(203729);
-    swO = new a();
-    cache = new ConcurrentHashMap();
-    AppMethodBeat.o(203729);
+    AppMethodBeat.i(250505);
+    vcS = new a((byte)0);
+    TAG = "Finder.ExposeStatisticUtil";
+    AppMethodBeat.o(250505);
   }
   
-  public static void G(long paramLong, int paramInt)
+  public a()
   {
-    AppMethodBeat.i(203722);
-    a locala = (a)cache.get(Long.valueOf(paramLong));
-    if (locala != null)
+    AppMethodBeat.i(250504);
+    this.threadName = "ExposeStatisticUtil";
+    this.vcO = ((Set)new HashSet());
+    this.vcP = new ConcurrentHashMap();
+    this.vcQ = ((Set)new HashSet());
+    this.vcR = new ConcurrentHashMap();
+    AppMethodBeat.o(250504);
+  }
+  
+  private final void a(Set<? extends ID> paramSet1, Set<? extends ID> paramSet2)
+  {
+    AppMethodBeat.i(250503);
+    if (!this.vcL)
     {
-      locala.swR = paramInt;
-      AppMethodBeat.o(203722);
+      AppMethodBeat.o(250503);
       return;
     }
-    AppMethodBeat.o(203722);
-  }
-  
-  public static void H(long paramLong, int paramInt)
-  {
-    AppMethodBeat.i(203723);
-    a locala = (a)cache.get(Long.valueOf(paramLong));
-    if (locala != null)
+    Object localObject1 = ak.a(paramSet2, (Iterable)paramSet1);
+    paramSet1 = this.vcO;
+    paramSet1.clear();
+    paramSet2 = ((Iterable)paramSet2).iterator();
+    while (paramSet2.hasNext()) {
+      paramSet1.add(paramSet2.next());
+    }
+    Object localObject2;
+    label130:
+    int i;
+    if ((localObject1 == null) || (((Set)localObject1).isEmpty()))
     {
-      locala.swS = paramInt;
-      AppMethodBeat.o(203723);
-      return;
+      paramSet2 = TAG;
+      localObject2 = new StringBuilder("newExposeRecords").append(localObject1).append("，size:");
+      if (localObject1 == null) {
+        break label313;
+      }
+      paramSet1 = Integer.valueOf(((Set)localObject1).size());
+      Log.i(paramSet2, paramSet1 + ')');
+      if (localObject1 == null) {
+        break label323;
+      }
+      if (((Collection)localObject1).isEmpty()) {
+        break label318;
+      }
+      i = 1;
+      label168:
+      if (i != 1) {
+        break label394;
+      }
+      paramSet1 = ((Iterable)localObject1).iterator();
     }
-    AppMethodBeat.o(203723);
-  }
-  
-  public static void a(long paramLong, int paramInt1, int paramInt2, arn paramarn)
-  {
-    AppMethodBeat.i(203728);
-    p.h(paramarn, "contextObj");
-    aw localaw = new aw();
-    localaw.iE(c.rp(paramLong));
-    localaw.dX(paramInt1);
-    localaw.dY(paramarn.sch);
-    localaw.dZ(paramInt2);
-    localaw.iF(paramarn.sessionId);
-    localaw.iG(paramarn.rfA);
-    localaw.iH(paramarn.rfo);
-    localaw.aLH();
-    paramarn = i.syT;
-    i.a((com.tencent.mm.plugin.report.a)localaw);
-    AppMethodBeat.o(203728);
-  }
-  
-  public static void start(long paramLong)
-  {
-    AppMethodBeat.i(203726);
-    if (!cache.containsKey(Long.valueOf(paramLong))) {
-      cache.put(Long.valueOf(paramLong), new a());
-    }
-    AppMethodBeat.o(203726);
-  }
-  
-  public static void wB(long paramLong)
-  {
-    AppMethodBeat.i(203720);
-    a locala = (a)cache.get(Long.valueOf(paramLong));
-    if (locala != null)
-    {
-      locala.swP += 1;
-      AppMethodBeat.o(203720);
-      return;
-    }
-    AppMethodBeat.o(203720);
-  }
-  
-  public static void wC(long paramLong)
-  {
-    AppMethodBeat.i(203721);
-    a locala = (a)cache.get(Long.valueOf(paramLong));
-    if (locala != null)
-    {
-      locala.swQ += 1;
-      AppMethodBeat.o(203721);
-      return;
-    }
-    AppMethodBeat.o(203721);
-  }
-  
-  public static void wD(long paramLong)
-  {
-    AppMethodBeat.i(203724);
-    a locala = (a)cache.get(Long.valueOf(paramLong));
-    if (locala != null)
-    {
-      locala.swT = 1;
-      AppMethodBeat.o(203724);
-      return;
-    }
-    AppMethodBeat.o(203724);
-  }
-  
-  public static void wE(long paramLong)
-  {
-    AppMethodBeat.i(203725);
-    a locala = (a)cache.get(Long.valueOf(paramLong));
-    if (locala != null)
-    {
-      locala.swU = 1;
-      AppMethodBeat.o(203725);
-      return;
-    }
-    AppMethodBeat.o(203725);
-  }
-  
-  public static String wF(long paramLong)
-  {
-    int i = 1;
-    AppMethodBeat.i(203727);
-    Object localObject = (a)cache.get(Long.valueOf(paramLong));
-    if (localObject == null)
-    {
-      AppMethodBeat.o(203727);
-      return "";
-    }
-    p.g(localObject, "cache[feedId] ?: return \"\"");
-    cache.remove(Long.valueOf(paramLong));
-    e locale = g.ajR();
-    p.g(locale, "MMKernel.storage()");
-    if (locale.ajA().getBoolean(am.a.Jdu, true)) {}
     for (;;)
     {
-      ((a)localObject).swS = i;
-      localObject = "{expocnt:" + ((a)localObject).swP + ";expotimes:" + ((a)localObject).swQ + ";totalcnt:" + ((a)localObject).swR + ';' + "is_open:" + ((a)localObject).swS + ";everclosed:" + ((a)localObject).swT + ";everopened:" + ((a)localObject).swU + '}';
-      AppMethodBeat.o(203727);
-      return localObject;
-      i = 0;
+      label184:
+      if (!paramSet1.hasNext()) {
+        break label394;
+      }
+      paramSet2 = paramSet1.next();
+      if ((paramSet2 instanceof Integer)) {
+        if (((Number)paramSet2).intValue() >= 0) {
+          i = 1;
+        }
+      }
+      for (;;)
+      {
+        if (i == 0) {
+          break label373;
+        }
+        localObject1 = this.vcP;
+        if (!((ConcurrentHashMap)localObject1).keySet().contains(paramSet2)) {
+          break label375;
+        }
+        localObject2 = (Integer)((ConcurrentHashMap)localObject1).get(paramSet2);
+        if (localObject2 == null) {
+          break label184;
+        }
+        ((Map)localObject1).put(paramSet2, Integer.valueOf(((Integer)localObject2).intValue() + 1));
+        break label184;
+        h.RTc.b((Runnable)new b(this, (Set)localObject1), this.threadName);
+        break;
+        label313:
+        paramSet1 = null;
+        break label130;
+        label318:
+        i = 0;
+        break label168;
+        label323:
+        AppMethodBeat.o(250503);
+        return;
+        i = 0;
+        continue;
+        if ((paramSet2 instanceof String))
+        {
+          if (!Util.isNullOrNil((String)paramSet2)) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+        }
+        else if (paramSet2 != null) {
+          i = 1;
+        } else {
+          i = 0;
+        }
+      }
+      label373:
+      continue;
+      label375:
+      ((Map)localObject1).put(paramSet2, Integer.valueOf(1));
     }
+    label394:
+    AppMethodBeat.o(250503);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/report/FinderBulletSubtitleReporter$FeedBulletData;", "", "()V", "everclosed", "", "getEverclosed", "()I", "setEverclosed", "(I)V", "everopened", "getEveropened", "setEveropened", "expocnt", "getExpocnt", "setExpocnt", "expotimes", "getExpotimes", "setExpotimes", "is_open", "set_open", "totalcnt", "getTotalcnt", "setTotalcnt", "plugin-finder_release"})
-  public static final class a
+  public final void m(Set<? extends ID> paramSet)
   {
-    int swP;
-    int swQ;
-    int swR;
-    int swS = 1;
-    int swT;
-    int swU;
+    AppMethodBeat.i(250502);
+    Object localObject1 = (Iterable)paramSet;
+    paramSet = (Collection)new ArrayList();
+    localObject1 = ((Iterable)localObject1).iterator();
+    label78:
+    label105:
+    label108:
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = ((Iterator)localObject1).next();
+      boolean bool;
+      if (this.vcL)
+      {
+        ab localab = this.vcN;
+        if (localab != null)
+        {
+          bool = localab.dm(localObject2);
+          if (!bool) {
+            break label105;
+          }
+        }
+      }
+      for (int i = 1;; i = 0)
+      {
+        if (i == 0) {
+          break label108;
+        }
+        paramSet.add(localObject2);
+        break;
+        bool = true;
+        break label78;
+      }
+    }
+    paramSet = (List)paramSet;
+    a(this.vcO, j.r((Iterable)paramSet));
+    AppMethodBeat.o(250502);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/report/ExposeStatisticUtil$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "TYPE_EXPOSE_BROWSE", "", "TYPE_EXPOSE_CLICK", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "ID", "run"})
+  static final class b
+    implements Runnable
+  {
+    b(a parama, Set paramSet) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(250501);
+      z localz = a.a(this.vcT);
+      if (localz != null)
+      {
+        localz.doO();
+        AppMethodBeat.o(250501);
+        return;
+      }
+      AppMethodBeat.o(250501);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.report.a
  * JD-Core Version:    0.7.0.1
  */

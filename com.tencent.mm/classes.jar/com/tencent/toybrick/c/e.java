@@ -10,35 +10,35 @@ import com.tencent.toybrick.f.a;
 public final class e
   extends g<e, a>
 {
-  public static final int MFn = 2131495638;
-  private int AVi;
+  public static final int Sno = 2131496539;
+  private int FfN;
   
   public final void a(a parama)
   {
     AppMethodBeat.i(159952);
-    if (this.AVi == 0) {
-      this.AVi = ((int)this.MFQ.getResources().getDimension(2131165289));
+    if (this.FfN == 0) {
+      this.FfN = ((int)this.SnR.getResources().getDimension(2131165296));
     }
-    parama.auu.setLayoutParams(new RecyclerView.LayoutParams(-1, this.AVi));
+    parama.aus.setLayoutParams(new RecyclerView.LayoutParams(-1, this.FfN));
     AppMethodBeat.o(159952);
-  }
-  
-  public final g.b gdg()
-  {
-    return g.b.MGe;
   }
   
   public final int getLayoutResource()
   {
-    return MFn;
+    return Sno;
   }
   
-  public final a hu(View paramView)
+  public final a hM(View paramView)
   {
     AppMethodBeat.i(159953);
     paramView = new a(paramView);
     AppMethodBeat.o(159953);
     return paramView;
+  }
+  
+  public final g.b hpJ()
+  {
+    return g.b.Sof;
   }
 }
 

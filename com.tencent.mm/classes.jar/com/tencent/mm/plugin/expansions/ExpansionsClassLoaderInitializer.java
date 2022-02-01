@@ -19,7 +19,7 @@ public final class ExpansionsClassLoaderInitializer
   public final void initializeClassLoader(Application paramApplication, ClassLoader paramClassLoader)
   {
     AppMethodBeat.i(152965);
-    c.fQ("MicroMsg.ExpansionsClassLoaderInitializer", "[+] Enter initializeClassLoader.");
+    c.gj("MicroMsg.ExpansionsClassLoaderInitializer", "[+] Enter initializeClassLoader.");
     if (paramApplication != null)
     {
       int i = Process.myPid();
@@ -33,13 +33,13 @@ public final class ExpansionsClassLoaderInitializer
           if (!paramApplication.endsWith(":push")) {
             break label123;
           }
-          c.fQ("MicroMsg.ExpansionsClassLoaderInitializer", "[!] push process needn't initialize Expansions.");
+          c.gj("MicroMsg.ExpansionsClassLoaderInitializer", "[!] push process needn't initialize Expansions.");
         }
       }
     }
     for (;;)
     {
-      c.fQ("MicroMsg.ExpansionsClassLoaderInitializer", "[+] Exit initializeClassLoader.");
+      c.gj("MicroMsg.ExpansionsClassLoaderInitializer", "[+] Exit initializeClassLoader.");
       AppMethodBeat.o(152965);
       return;
       paramApplication = null;
@@ -47,19 +47,19 @@ public final class ExpansionsClassLoaderInitializer
       label123:
       if (paramApplication.endsWith(":isolated_process0"))
       {
-        c.fQ("MicroMsg.ExpansionsClassLoaderInitializer", "[!] tbs isolated process cannot initialize Expansions.");
+        c.gj("MicroMsg.ExpansionsClassLoaderInitializer", "[!] tbs isolated process cannot initialize Expansions.");
       }
       else
       {
-        a.cob();
-        a.coa();
+        a.cMn();
+        a.cMm();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expansions.ExpansionsClassLoaderInitializer
  * JD-Core Version:    0.7.0.1
  */

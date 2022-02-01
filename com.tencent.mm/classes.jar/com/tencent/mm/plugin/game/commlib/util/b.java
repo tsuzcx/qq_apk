@@ -1,74 +1,74 @@
 package com.tencent.mm.plugin.game.commlib.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.game.commlib.c.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.util.Map;
 
 public final class b
 {
-  private static final String udP;
-  private static final String udQ;
+  private static final String xvB;
+  private static final String xvC;
   
   static
   {
     AppMethodBeat.i(89976);
-    udP = com.tencent.mm.loader.j.b.asb() + "game/";
-    udQ = com.tencent.mm.loader.j.b.asj() + "game/";
+    xvB = com.tencent.mm.loader.j.b.aKB() + "game/";
+    xvC = com.tencent.mm.loader.j.b.aKJ() + "game/";
     AppMethodBeat.o(89976);
   }
   
   public static String a(a parama)
   {
-    AppMethodBeat.i(221871);
-    parama = udP + parama.name() + "/";
-    AppMethodBeat.o(221871);
+    AppMethodBeat.i(256621);
+    parama = xvB + parama.name() + "/";
+    AppMethodBeat.o(256621);
     return parama;
   }
   
   public static String b(a parama)
   {
     AppMethodBeat.i(89970);
-    parama = cZG() + parama.name() + "/";
+    parama = dTg() + parama.name() + "/";
     AppMethodBeat.o(89970);
     return parama;
   }
   
-  private static boolean b(k paramk, long paramLong)
+  private static boolean b(o paramo, long paramLong)
   {
     int i = 0;
     AppMethodBeat.i(89974);
-    if ((paramk == null) || (!paramk.exists()))
+    if ((paramo == null) || (!paramo.exists()))
     {
       AppMethodBeat.o(89974);
       return false;
     }
-    if (paramk.isFile()) {
-      if (System.currentTimeMillis() - paramk.lastModified() > paramLong)
+    if (paramo.isFile()) {
+      if (System.currentTimeMillis() - paramo.lastModified() > paramLong)
       {
-        ae.i("MicroMsg.GameFileManager", "remove file:%s, lifetime:%d", new Object[] { w.B(paramk.fTh()), Long.valueOf(paramLong) });
-        paramk.delete();
+        Log.i("MicroMsg.GameFileManager", "remove file:%s, lifetime:%d", new Object[] { aa.z(paramo.her()), Long.valueOf(paramLong) });
+        paramo.delete();
       }
     }
     for (;;)
     {
       AppMethodBeat.o(89974);
       return true;
-      if (paramk.isDirectory())
+      if (paramo.isDirectory())
       {
-        paramk = paramk.fTj();
-        if (paramk != null) {
-          while (i < paramk.length)
+        paramo = paramo.het();
+        if (paramo != null) {
+          while (i < paramo.length)
           {
-            b(paramk[i], paramLong);
+            b(paramo[i], paramLong);
             i += 1;
           }
         }
@@ -79,60 +79,60 @@ public final class b
   public static String c(a parama)
   {
     AppMethodBeat.i(89971);
-    parama = udQ + parama.name() + "/";
+    parama = xvC + parama.name() + "/";
     AppMethodBeat.o(89971);
     return parama;
-  }
-  
-  public static String cZG()
-  {
-    AppMethodBeat.i(221870);
-    String str = (String)com.tencent.mm.vfs.e.fSU().gEn().get("account");
-    if (!bu.isNullOrNil(str)) {}
-    for (str = com.tencent.mm.loader.j.b.asb() + str + "/game/";; str = udP)
-    {
-      ae.i("MicroMsg.GameFileManager", "getGameDataRootPathByUin, validPath:%s", new Object[] { str });
-      AppMethodBeat.o(221870);
-      return str;
-    }
   }
   
   public static void clean()
   {
     AppMethodBeat.i(89972);
-    if (bu.rZ(bu.i((Long)g.ajR().ajA().get(am.a.IUI, Long.valueOf(0L)))) > 86400L)
+    if (Util.secondsToNow(Util.nullAsNil((Long)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.OcW, Long.valueOf(0L)))) > 86400L)
     {
-      g.ajR().ajA().set(am.a.IUI, Long.valueOf(bu.aRi()));
-      com.tencent.mm.plugin.game.commlib.c.a.cZE().a("game_cache_clean", new a.a()
+      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OcW, Long.valueOf(Util.nowSecond()));
+      com.tencent.mm.plugin.game.commlib.c.a.dTf().a("game_cache_clean", new a.a()
       {
-        public final void cdr()
+        public final void cBm()
         {
-          AppMethodBeat.i(221869);
-          a.cZF().postDelayed(new Runnable()
+          AppMethodBeat.i(256619);
+          a.getWorkerHandler().postDelayed(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(221868);
+              AppMethodBeat.i(256618);
               b.access$000();
-              AppMethodBeat.o(221868);
+              AppMethodBeat.o(256618);
             }
           }, 0L);
-          AppMethodBeat.o(221869);
+          AppMethodBeat.o(256619);
         }
       });
     }
     AppMethodBeat.o(89972);
   }
   
+  public static String dTg()
+  {
+    AppMethodBeat.i(256620);
+    String str = (String)com.tencent.mm.vfs.g.hRR().hRV().get("account");
+    if (!Util.isNullOrNil(str)) {}
+    for (str = com.tencent.mm.loader.j.b.aKB() + str + "/game/";; str = xvB)
+    {
+      Log.i("MicroMsg.GameFileManager", "getGameDataRootPathByUin, validPath:%s", new Object[] { str });
+      AppMethodBeat.o(256620);
+      return str;
+    }
+  }
+  
   public static void remove(String paramString)
   {
     AppMethodBeat.i(89973);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(89973);
       return;
     }
-    ae.i("MicroMsg.GameFileManager", "delete file:%s, ret:%b", new Object[] { paramString, Boolean.valueOf(o.deleteFile(paramString)) });
+    Log.i("MicroMsg.GameFileManager", "delete file:%s, ret:%b", new Object[] { paramString, Boolean.valueOf(s.deleteFile(paramString)) });
     AppMethodBeat.o(89973);
   }
   
@@ -143,12 +143,12 @@ public final class b
     static
     {
       AppMethodBeat.i(89968);
-      udS = new a("ONE_DAY", 0, 86400000L);
-      udT = new a("THREE_DAY", 1, 259200000L);
-      udU = new a("ONE_WEEK", 2, 604800000L);
-      udV = new a("ONE_MONTH", 3, 2592000000L);
-      udW = new a("PERMANENT", 4, 9223372036854775807L);
-      udX = new a[] { udS, udT, udU, udV, udW };
+      xvE = new a("ONE_DAY", 0, 86400000L);
+      xvF = new a("THREE_DAY", 1, 259200000L);
+      xvG = new a("ONE_WEEK", 2, 604800000L);
+      xvH = new a("ONE_MONTH", 3, 2592000000L);
+      xvI = new a("PERMANENT", 4, 9223372036854775807L);
+      xvJ = new a[] { xvE, xvF, xvG, xvH, xvI };
       AppMethodBeat.o(89968);
     }
     
@@ -160,7 +160,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.util.b
  * JD-Core Version:    0.7.0.1
  */

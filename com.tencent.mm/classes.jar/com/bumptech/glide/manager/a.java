@@ -1,6 +1,6 @@
 package com.bumptech.glide.manager;
 
-import com.bumptech.glide.h.j;
+import com.bumptech.glide.g.k;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.Collections;
 import java.util.Iterator;
@@ -11,28 +11,28 @@ import java.util.WeakHashMap;
 final class a
   implements h
 {
-  private boolean aLU;
-  private final Set<i> aMu;
-  private boolean aMv;
+  private final Set<i> aMm;
+  private boolean aMn;
+  private boolean isStarted;
   
   a()
   {
     AppMethodBeat.i(77540);
-    this.aMu = Collections.newSetFromMap(new WeakHashMap());
+    this.aMm = Collections.newSetFromMap(new WeakHashMap());
     AppMethodBeat.o(77540);
   }
   
   public final void a(i parami)
   {
     AppMethodBeat.i(77541);
-    this.aMu.add(parami);
-    if (this.aMv)
+    this.aMm.add(parami);
+    if (this.aMn)
     {
       parami.onDestroy();
       AppMethodBeat.o(77541);
       return;
     }
-    if (this.aLU)
+    if (this.isStarted)
     {
       parami.onStart();
       AppMethodBeat.o(77541);
@@ -45,15 +45,15 @@ final class a
   public final void b(i parami)
   {
     AppMethodBeat.i(77542);
-    this.aMu.remove(parami);
+    this.aMm.remove(parami);
     AppMethodBeat.o(77542);
   }
   
   final void onDestroy()
   {
     AppMethodBeat.i(77545);
-    this.aMv = true;
-    Iterator localIterator = j.c(this.aMu).iterator();
+    this.aMn = true;
+    Iterator localIterator = k.c(this.aMm).iterator();
     while (localIterator.hasNext()) {
       ((i)localIterator.next()).onDestroy();
     }
@@ -63,8 +63,8 @@ final class a
   final void onStart()
   {
     AppMethodBeat.i(77543);
-    this.aLU = true;
-    Iterator localIterator = j.c(this.aMu).iterator();
+    this.isStarted = true;
+    Iterator localIterator = k.c(this.aMm).iterator();
     while (localIterator.hasNext()) {
       ((i)localIterator.next()).onStart();
     }
@@ -74,8 +74,8 @@ final class a
   final void onStop()
   {
     AppMethodBeat.i(77544);
-    this.aLU = false;
-    Iterator localIterator = j.c(this.aMu).iterator();
+    this.isStarted = false;
+    Iterator localIterator = k.c(this.aMm).iterator();
     while (localIterator.hasNext()) {
       ((i)localIterator.next()).onStop();
     }
@@ -84,7 +84,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.manager.a
  * JD-Core Version:    0.7.0.1
  */

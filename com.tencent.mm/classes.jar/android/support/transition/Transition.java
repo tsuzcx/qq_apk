@@ -11,7 +11,7 @@ import android.graphics.Path;
 import android.graphics.Rect;
 import android.os.Build.VERSION;
 import android.support.v4.e.a;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.util.SparseIntArray;
@@ -30,8 +30,8 @@ import java.util.StringTokenizer;
 public abstract class Transition
   implements Cloneable
 {
-  private static final int[] BU = { 2, 1, 3, 4 };
-  private static final PathMotion BV = new PathMotion()
+  private static final int[] Cb = { 2, 1, 3, 4 };
+  private static final PathMotion Cc = new PathMotion()
   {
     public final Path getPath(float paramAnonymousFloat1, float paramAnonymousFloat2, float paramAnonymousFloat3, float paramAnonymousFloat4)
     {
@@ -41,46 +41,46 @@ public abstract class Transition
       return localPath;
     }
   };
-  private static ThreadLocal<a<Animator, a>> Cp = new ThreadLocal();
-  long BW = -1L;
-  TimeInterpolator BX = null;
-  ArrayList<Integer> BY = new ArrayList();
-  ArrayList<View> BZ = new ArrayList();
-  private ViewGroup By = null;
-  ArrayList<String> Ca = null;
-  ArrayList<Class> Cb = null;
-  private ArrayList<Integer> Cc = null;
-  private ArrayList<View> Cd = null;
-  private ArrayList<Class> Ce = null;
-  private ArrayList<String> Cf = null;
-  private ArrayList<Integer> Cg = null;
-  private ArrayList<View> Ch = null;
-  private ArrayList<Class> Ci = null;
-  private v Cj = new v();
-  private v Ck = new v();
-  TransitionSet Cl = null;
-  private int[] Cm = BU;
-  private ArrayList<u> Cn;
-  private ArrayList<u> Co;
-  boolean Cq = false;
-  ArrayList<Animator> Cr = new ArrayList();
-  private int Cs = 0;
-  private boolean Ct = false;
-  private boolean Cu = false;
-  s Cv;
-  b Cw;
-  private a<String, String> Cx;
-  PathMotion Cy = BV;
+  private static ThreadLocal<a<Animator, a>> Cw = new ThreadLocal();
+  private ViewGroup BF = null;
+  private boolean CA = false;
+  private boolean CB = false;
+  t CC;
+  c CD;
+  private a<String, String> CE;
+  PathMotion CF = Cc;
+  long Cd = -1L;
+  TimeInterpolator Ce = null;
+  ArrayList<Integer> Cf = new ArrayList();
+  ArrayList<View> Cg = new ArrayList();
+  ArrayList<String> Ch = null;
+  ArrayList<Class> Ci = null;
+  private ArrayList<Integer> Cj = null;
+  private ArrayList<View> Ck = null;
+  private ArrayList<Class> Cl = null;
+  private ArrayList<String> Cm = null;
+  private ArrayList<Integer> Cn = null;
+  private ArrayList<View> Co = null;
+  private ArrayList<Class> Cp = null;
+  private w Cq = new w();
+  private w Cr = new w();
+  TransitionSet Cs = null;
+  private int[] Ct = Cb;
+  private ArrayList<v> Cu;
+  private ArrayList<v> Cv;
+  boolean Cx = false;
+  ArrayList<Animator> Cy = new ArrayList();
+  private int Cz = 0;
   long mDuration = -1L;
-  private ArrayList<c> mListeners = null;
+  private ArrayList<d> mListeners = null;
   private String mName = getClass().getName();
-  private ArrayList<Animator> wW = new ArrayList();
+  private ArrayList<Animator> xd = new ArrayList();
   
   public Transition() {}
   
   public Transition(Context paramContext, AttributeSet paramAttributeSet)
   {
-    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, p.BL);
+    TypedArray localTypedArray = paramContext.obtainStyledAttributes(paramAttributeSet, p.BS);
     paramAttributeSet = (XmlResourceParser)paramAttributeSet;
     long l = android.support.v4.content.a.g.a(localTypedArray, paramAttributeSet, "duration", 1, -1);
     if (l >= 0L) {
@@ -101,14 +101,14 @@ public abstract class Transition
     localTypedArray.recycle();
   }
   
-  private void a(v paramv1, v paramv2)
+  private void a(w paramw1, w paramw2)
   {
-    a locala2 = new a(paramv1.CX);
-    a locala1 = new a(paramv2.CX);
+    a locala2 = new a(paramw1.Dg);
+    a locala1 = new a(paramw2.Dg);
     int i = 0;
-    if (i < this.Cm.length)
+    if (i < this.Ct.length)
     {
-      switch (this.Cm[i])
+      switch (this.Ct[i])
       {
       }
       for (;;)
@@ -119,40 +119,40 @@ public abstract class Transition
         while (j >= 0)
         {
           localObject1 = (View)locala2.keyAt(j);
-          if ((localObject1 != null) && (G((View)localObject1)))
+          if ((localObject1 != null) && (H((View)localObject1)))
           {
-            localObject1 = (u)locala1.remove(localObject1);
-            if ((localObject1 != null) && (((u)localObject1).view != null) && (G(((u)localObject1).view)))
+            localObject1 = (v)locala1.remove(localObject1);
+            if ((localObject1 != null) && (((v)localObject1).view != null) && (H(((v)localObject1).view)))
             {
-              localObject2 = (u)locala2.removeAt(j);
-              this.Cn.add(localObject2);
-              this.Co.add(localObject1);
+              localObject2 = (v)locala2.removeAt(j);
+              this.Cu.add(localObject2);
+              this.Cv.add(localObject1);
             }
           }
           j -= 1;
         }
-        Object localObject1 = paramv1.Da;
-        Object localObject2 = paramv2.Da;
+        Object localObject1 = paramw1.Dj;
+        Object localObject2 = paramw2.Dj;
         int k = ((a)localObject1).size();
         j = 0;
         View localView1;
         View localView2;
-        u localu1;
-        u localu2;
+        v localv1;
+        v localv2;
         while (j < k)
         {
           localView1 = (View)((a)localObject1).valueAt(j);
-          if ((localView1 != null) && (G(localView1)))
+          if ((localView1 != null) && (H(localView1)))
           {
             localView2 = (View)((a)localObject2).get(((a)localObject1).keyAt(j));
-            if ((localView2 != null) && (G(localView2)))
+            if ((localView2 != null) && (H(localView2)))
             {
-              localu1 = (u)locala2.get(localView1);
-              localu2 = (u)locala1.get(localView2);
-              if ((localu1 != null) && (localu2 != null))
+              localv1 = (v)locala2.get(localView1);
+              localv2 = (v)locala1.get(localView2);
+              if ((localv1 != null) && (localv2 != null))
               {
-                this.Cn.add(localu1);
-                this.Co.add(localu2);
+                this.Cu.add(localv1);
+                this.Cv.add(localv2);
                 locala2.remove(localView1);
                 locala1.remove(localView2);
               }
@@ -160,24 +160,24 @@ public abstract class Transition
           }
           j += 1;
         }
-        localObject1 = paramv1.CY;
-        localObject2 = paramv2.CY;
+        localObject1 = paramw1.Dh;
+        localObject2 = paramw2.Dh;
         k = ((SparseArray)localObject1).size();
         j = 0;
         while (j < k)
         {
           localView1 = (View)((SparseArray)localObject1).valueAt(j);
-          if ((localView1 != null) && (G(localView1)))
+          if ((localView1 != null) && (H(localView1)))
           {
             localView2 = (View)((SparseArray)localObject2).get(((SparseArray)localObject1).keyAt(j));
-            if ((localView2 != null) && (G(localView2)))
+            if ((localView2 != null) && (H(localView2)))
             {
-              localu1 = (u)locala2.get(localView1);
-              localu2 = (u)locala1.get(localView2);
-              if ((localu1 != null) && (localu2 != null))
+              localv1 = (v)locala2.get(localView1);
+              localv2 = (v)locala1.get(localView2);
+              if ((localv1 != null) && (localv2 != null))
               {
-                this.Cn.add(localu1);
-                this.Co.add(localu2);
+                this.Cu.add(localv1);
+                this.Cv.add(localv2);
                 locala2.remove(localView1);
                 locala1.remove(localView2);
               }
@@ -185,24 +185,24 @@ public abstract class Transition
           }
           j += 1;
         }
-        localObject1 = paramv1.CZ;
-        localObject2 = paramv2.CZ;
+        localObject1 = paramw1.Di;
+        localObject2 = paramw2.Di;
         k = ((android.support.v4.e.g)localObject1).size();
         j = 0;
         while (j < k)
         {
           localView1 = (View)((android.support.v4.e.g)localObject1).valueAt(j);
-          if ((localView1 != null) && (G(localView1)))
+          if ((localView1 != null) && (H(localView1)))
           {
             localView2 = (View)((android.support.v4.e.g)localObject2).get(((android.support.v4.e.g)localObject1).keyAt(j), null);
-            if ((localView2 != null) && (G(localView2)))
+            if ((localView2 != null) && (H(localView2)))
             {
-              localu1 = (u)locala2.get(localView1);
-              localu2 = (u)locala1.get(localView2);
-              if ((localu1 != null) && (localu2 != null))
+              localv1 = (v)locala2.get(localView1);
+              localv2 = (v)locala1.get(localView2);
+              if ((localv1 != null) && (localv2 != null))
               {
-                this.Cn.add(localu1);
-                this.Co.add(localu2);
+                this.Cu.add(localv1);
+                this.Cv.add(localv2);
                 locala2.remove(localView1);
                 locala1.remove(localView2);
               }
@@ -215,46 +215,46 @@ public abstract class Transition
     i = 0;
     while (i < locala2.size())
     {
-      paramv1 = (u)locala2.valueAt(i);
-      if (G(paramv1.view))
+      paramw1 = (v)locala2.valueAt(i);
+      if (H(paramw1.view))
       {
-        this.Cn.add(paramv1);
-        this.Co.add(null);
+        this.Cu.add(paramw1);
+        this.Cv.add(null);
       }
       i += 1;
     }
     i = 0;
     while (i < locala1.size())
     {
-      paramv1 = (u)locala1.valueAt(i);
-      if (G(paramv1.view))
+      paramw1 = (v)locala1.valueAt(i);
+      if (H(paramw1.view))
       {
-        this.Co.add(paramv1);
-        this.Cn.add(null);
+        this.Cv.add(paramw1);
+        this.Cu.add(null);
       }
       i += 1;
     }
   }
   
-  private static void a(v paramv, View paramView, u paramu)
+  private static void a(w paramw, View paramView, v paramv)
   {
-    paramv.CX.put(paramView, paramu);
+    paramw.Dg.put(paramView, paramv);
     int i = paramView.getId();
     if (i >= 0)
     {
-      if (paramv.CY.indexOfKey(i) >= 0) {
-        paramv.CY.put(i, null);
+      if (paramw.Dh.indexOfKey(i) >= 0) {
+        paramw.Dh.put(i, null);
       }
     }
     else
     {
-      paramu = t.an(paramView);
-      if (paramu != null)
+      paramv = u.an(paramView);
+      if (paramv != null)
       {
-        if (!paramv.Da.containsKey(paramu)) {
+        if (!paramw.Dj.containsKey(paramv)) {
           break label168;
         }
-        paramv.Da.put(paramu, null);
+        paramw.Dj.put(paramv, null);
       }
     }
     long l;
@@ -262,30 +262,30 @@ public abstract class Transition
     {
       if ((paramView.getParent() instanceof ListView))
       {
-        paramu = (ListView)paramView.getParent();
-        if (paramu.getAdapter().hasStableIds())
+        paramv = (ListView)paramView.getParent();
+        if (paramv.getAdapter().hasStableIds())
         {
-          l = paramu.getItemIdAtPosition(paramu.getPositionForView(paramView));
-          if (paramv.CZ.indexOfKey(l) < 0) {
+          l = paramv.getItemIdAtPosition(paramv.getPositionForView(paramView));
+          if (paramw.Di.indexOfKey(l) < 0) {
             break label181;
           }
-          paramView = (View)paramv.CZ.get(l, null);
+          paramView = (View)paramw.Di.get(l, null);
           if (paramView != null)
           {
-            t.d(paramView, false);
-            paramv.CZ.put(l, null);
+            u.d(paramView, false);
+            paramw.Di.put(l, null);
           }
         }
       }
       return;
-      paramv.CY.put(i, paramView);
+      paramw.Dh.put(i, paramView);
       break;
       label168:
-      paramv.Da.put(paramu, paramView);
+      paramw.Dj.put(paramv, paramView);
     }
     label181:
-    t.d(paramView, true);
-    paramv.CZ.put(l, paramView);
+    u.d(paramView, true);
+    paramw.Di.put(l, paramView);
   }
   
   private void a(View paramView, boolean paramBoolean)
@@ -295,66 +295,66 @@ public abstract class Transition
     {
       return;
       int j = paramView.getId();
-      if (((this.Cc == null) || (!this.Cc.contains(Integer.valueOf(j)))) && ((this.Cd == null) || (!this.Cd.contains(paramView))))
+      if (((this.Cj == null) || (!this.Cj.contains(Integer.valueOf(j)))) && ((this.Ck == null) || (!this.Ck.contains(paramView))))
       {
-        if (this.Ce != null)
+        if (this.Cl != null)
         {
-          int k = this.Ce.size();
+          int k = this.Cl.size();
           i = 0;
           for (;;)
           {
             if (i >= k) {
               break label100;
             }
-            if (((Class)this.Ce.get(i)).isInstance(paramView)) {
+            if (((Class)this.Cl.get(i)).isInstance(paramView)) {
               break;
             }
             i += 1;
           }
         }
         label100:
-        u localu;
+        v localv;
         if ((paramView.getParent() instanceof ViewGroup))
         {
-          localu = new u();
-          localu.view = paramView;
+          localv = new v();
+          localv.view = paramView;
           if (!paramBoolean) {
             break label261;
           }
-          a(localu);
+          a(localv);
           label135:
-          localu.CW.add(this);
-          d(localu);
+          localv.Df.add(this);
+          d(localv);
           if (!paramBoolean) {
             break label270;
           }
-          a(this.Cj, paramView, localu);
+          a(this.Cq, paramView, localv);
         }
         for (;;)
         {
-          if ((!(paramView instanceof ViewGroup)) || ((this.Cg != null) && (this.Cg.contains(Integer.valueOf(j)))) || ((this.Ch != null) && (this.Ch.contains(paramView)))) {
+          if ((!(paramView instanceof ViewGroup)) || ((this.Cn != null) && (this.Cn.contains(Integer.valueOf(j)))) || ((this.Co != null) && (this.Co.contains(paramView)))) {
             break label281;
           }
-          if (this.Ci == null) {
+          if (this.Cp == null) {
             break label283;
           }
-          j = this.Ci.size();
+          j = this.Cp.size();
           i = 0;
           for (;;)
           {
             if (i >= j) {
               break label283;
             }
-            if (((Class)this.Ci.get(i)).isInstance(paramView)) {
+            if (((Class)this.Cp.get(i)).isInstance(paramView)) {
               break;
             }
             i += 1;
           }
           label261:
-          b(localu);
+          b(localv);
           break label135;
           label270:
-          a(this.Ck, paramView, localu);
+          a(this.Cr, paramView, localv);
         }
         label281:
         continue;
@@ -370,14 +370,14 @@ public abstract class Transition
     }
   }
   
-  private static boolean a(u paramu1, u paramu2, String paramString)
+  private static boolean a(v paramv1, v paramv2, String paramString)
   {
-    paramu1 = paramu1.values.get(paramString);
-    paramu2 = paramu2.values.get(paramString);
-    if ((paramu1 != null) || (paramu2 != null))
+    paramv1 = paramv1.values.get(paramString);
+    paramv2 = paramv2.values.get(paramString);
+    if ((paramv1 != null) || (paramv2 != null))
     {
-      if ((paramu1 == null) || (paramu2 == null)) {}
-      while (!paramu1.equals(paramu2)) {
+      if ((paramv1 == null) || (paramv2 == null)) {}
+      while (!paramv1.equals(paramv2)) {
         return true;
       }
     }
@@ -405,14 +405,14 @@ public abstract class Transition
     }
   }
   
-  private static a<Animator, a> dK()
+  private static a<Animator, a> dN()
   {
-    a locala2 = (a)Cp.get();
+    a locala2 = (a)Cw.get();
     a locala1 = locala2;
     if (locala2 == null)
     {
       locala1 = new a();
-      Cp.set(locala1);
+      Cw.set(locala1);
     }
     return locala1;
   }
@@ -465,7 +465,7 @@ public abstract class Transition
   {
     if ((paramVarArgs == null) || (paramVarArgs.length == 0))
     {
-      this.Cm = BU;
+      this.Ct = Cb;
       return;
     }
     int i = 0;
@@ -481,66 +481,66 @@ public abstract class Transition
       }
       i += 1;
     }
-    this.Cm = ((int[])paramVarArgs.clone());
+    this.Ct = ((int[])paramVarArgs.clone());
   }
   
   final void B(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.Cj.CX.clear();
-      this.Cj.CY.clear();
-      this.Cj.CZ.clear();
+      this.Cq.Dg.clear();
+      this.Cq.Dh.clear();
+      this.Cq.Di.clear();
       return;
     }
-    this.Ck.CX.clear();
-    this.Ck.CY.clear();
-    this.Ck.CZ.clear();
+    this.Cr.Dg.clear();
+    this.Cr.Dh.clear();
+    this.Cr.Di.clear();
   }
   
-  final boolean G(View paramView)
+  final boolean H(View paramView)
   {
     int j = paramView.getId();
-    if ((this.Cc != null) && (this.Cc.contains(Integer.valueOf(j)))) {}
+    if ((this.Cj != null) && (this.Cj.contains(Integer.valueOf(j)))) {}
     for (;;)
     {
       return false;
-      if ((this.Cd == null) || (!this.Cd.contains(paramView)))
+      if ((this.Ck == null) || (!this.Ck.contains(paramView)))
       {
         int i;
-        if (this.Ce != null)
+        if (this.Cl != null)
         {
-          int k = this.Ce.size();
+          int k = this.Cl.size();
           i = 0;
           for (;;)
           {
             if (i >= k) {
               break label95;
             }
-            if (((Class)this.Ce.get(i)).isInstance(paramView)) {
+            if (((Class)this.Cl.get(i)).isInstance(paramView)) {
               break;
             }
             i += 1;
           }
         }
         label95:
-        if ((this.Cf == null) || (t.an(paramView) == null) || (!this.Cf.contains(t.an(paramView))))
+        if ((this.Cm == null) || (u.an(paramView) == null) || (!this.Cm.contains(u.an(paramView))))
         {
-          if ((this.BY.size() == 0) && (this.BZ.size() == 0) && ((this.Cb == null) || (this.Cb.isEmpty())) && ((this.Ca == null) || (this.Ca.isEmpty()))) {
+          if ((this.Cf.size() == 0) && (this.Cg.size() == 0) && ((this.Ci == null) || (this.Ci.isEmpty())) && ((this.Ch == null) || (this.Ch.isEmpty()))) {
             return true;
           }
-          if ((this.BY.contains(Integer.valueOf(j))) || (this.BZ.contains(paramView))) {
+          if ((this.Cf.contains(Integer.valueOf(j))) || (this.Cg.contains(paramView))) {
             return true;
           }
-          if ((this.Ca != null) && (this.Ca.contains(t.an(paramView)))) {
+          if ((this.Ch != null) && (this.Ch.contains(u.an(paramView)))) {
             return true;
           }
-          if (this.Cb != null)
+          if (this.Ci != null)
           {
             i = 0;
-            while (i < this.Cb.size())
+            while (i < this.Ci.size())
             {
-              if (((Class)this.Cb.get(i)).isInstance(paramView)) {
+              if (((Class)this.Ci.get(i)).isInstance(paramView)) {
                 return true;
               }
               i += 1;
@@ -551,33 +551,33 @@ public abstract class Transition
     }
   }
   
-  public Transition H(View paramView)
-  {
-    this.BZ.add(paramView);
-    return this;
-  }
-  
   public Transition I(View paramView)
   {
-    this.BZ.remove(paramView);
+    this.Cg.add(paramView);
     return this;
   }
   
-  public void J(View paramView)
+  public Transition J(View paramView)
+  {
+    this.Cg.remove(paramView);
+    return this;
+  }
+  
+  public void K(View paramView)
   {
     int k = 0;
-    if (!this.Cu)
+    if (!this.CB)
     {
-      a locala = dK();
+      a locala = dN();
       int i = locala.size();
-      paramView = ag.N(paramView);
+      paramView = ah.O(paramView);
       i -= 1;
       label96:
       int j;
       if (i >= 0)
       {
         Object localObject = (a)locala.valueAt(i);
-        if ((((a)localObject).mView != null) && (paramView.equals(((a)localObject).CC)))
+        if ((((a)localObject).mView != null) && (paramView.equals(((a)localObject).CJ)))
         {
           localObject = (Animator)locala.keyAt(i);
           if (Build.VERSION.SDK_INT < 19) {
@@ -612,30 +612,30 @@ public abstract class Transition
         i = k;
         while (i < j)
         {
-          ((c)paramView.get(i)).dC();
+          ((d)paramView.get(i)).dF();
           i += 1;
         }
       }
-      this.Ct = true;
+      this.CA = true;
     }
   }
   
-  public void K(View paramView)
+  public void L(View paramView)
   {
-    if (this.Ct)
+    if (this.CA)
     {
-      if (!this.Cu)
+      if (!this.CB)
       {
-        a locala = dK();
+        a locala = dN();
         int i = locala.size();
-        paramView = ag.N(paramView);
+        paramView = ah.O(paramView);
         i -= 1;
         label100:
         int j;
         if (i >= 0)
         {
           Object localObject = (a)locala.valueAt(i);
-          if ((((a)localObject).mView != null) && (paramView.equals(((a)localObject).CC)))
+          if ((((a)localObject).mView != null) && (paramView.equals(((a)localObject).CJ)))
           {
             localObject = (Animator)locala.keyAt(i);
             if (Build.VERSION.SDK_INT < 19) {
@@ -670,59 +670,76 @@ public abstract class Transition
           i = 0;
           while (i < j)
           {
-            ((c)paramView.get(i)).dD();
+            ((d)paramView.get(i)).dG();
             i += 1;
           }
         }
       }
-      this.Ct = false;
+      this.CA = false;
     }
   }
   
-  public Animator a(ViewGroup paramViewGroup, u paramu1, u paramu2)
+  public Animator a(ViewGroup paramViewGroup, v paramv1, v paramv2)
   {
     return null;
   }
   
-  public Transition a(c paramc)
+  public Transition a(d paramd)
   {
     if (this.mListeners == null) {
       this.mListeners = new ArrayList();
     }
-    this.mListeners.add(paramc);
+    this.mListeners.add(paramd);
     return this;
+  }
+  
+  public Transition a(Class paramClass, boolean paramBoolean)
+  {
+    ArrayList localArrayList2 = this.Cl;
+    ArrayList localArrayList1 = localArrayList2;
+    if (paramClass != null) {
+      if (!paramBoolean) {
+        break label31;
+      }
+    }
+    label31:
+    for (localArrayList1 = Transition.b.a(localArrayList2, paramClass);; localArrayList1 = Transition.b.b(localArrayList2, paramClass))
+    {
+      this.Cl = localArrayList1;
+      return this;
+    }
   }
   
   public void a(PathMotion paramPathMotion)
   {
     if (paramPathMotion == null)
     {
-      this.Cy = BV;
+      this.CF = Cc;
       return;
     }
-    this.Cy = paramPathMotion;
+    this.CF = paramPathMotion;
   }
   
-  public void a(b paramb)
+  public void a(c paramc)
   {
-    this.Cw = paramb;
+    this.CD = paramc;
   }
   
-  public void a(s params)
+  public void a(t paramt)
   {
-    this.Cv = params;
+    this.CC = paramt;
   }
   
-  public abstract void a(u paramu);
+  public abstract void a(v paramv);
   
   final void a(ViewGroup paramViewGroup)
   {
-    this.Cn = new ArrayList();
-    this.Co = new ArrayList();
-    a(this.Cj, this.Ck);
-    a locala = dK();
+    this.Cu = new ArrayList();
+    this.Cv = new ArrayList();
+    a(this.Cq, this.Cr);
+    a locala = dN();
     int i = locala.size();
-    ao localao = ag.N(paramViewGroup);
+    ap localap = ah.O(paramViewGroup);
     i -= 1;
     if (i >= 0)
     {
@@ -731,13 +748,13 @@ public abstract class Transition
       if (localAnimator != null)
       {
         a locala1 = (a)locala.get(localAnimator);
-        if ((locala1 != null) && (locala1.mView != null) && (localao.equals(locala1.CC)))
+        if ((locala1 != null) && (locala1.mView != null) && (localap.equals(locala1.CJ)))
         {
-          u localu1 = locala1.CB;
+          v localv1 = locala1.CI;
           Object localObject = locala1.mView;
-          u localu2 = b((View)localObject, true);
+          v localv2 = b((View)localObject, true);
           localObject = c((View)localObject, true);
-          if (((localu2 == null) && (localObject == null)) || (!locala1.CD.a(localu1, (u)localObject))) {
+          if (((localv2 == null) && (localObject == null)) || (!locala1.CK.a(localv1, (v)localObject))) {
             break label204;
           }
           j = 1;
@@ -762,34 +779,34 @@ public abstract class Transition
         locala.remove(localAnimator);
       }
     }
-    a(paramViewGroup, this.Cj, this.Ck, this.Cn, this.Co);
-    dL();
+    a(paramViewGroup, this.Cq, this.Cr, this.Cu, this.Cv);
+    dO();
   }
   
-  protected void a(ViewGroup paramViewGroup, v paramv1, v paramv2, ArrayList<u> paramArrayList1, ArrayList<u> paramArrayList2)
+  protected void a(ViewGroup paramViewGroup, w paramw1, w paramw2, ArrayList<v> paramArrayList1, ArrayList<v> paramArrayList2)
   {
-    a locala = dK();
+    a locala = dN();
     long l1 = 9223372036854775807L;
     SparseIntArray localSparseIntArray = new SparseIntArray();
     int k = paramArrayList1.size();
     int i = 0;
-    u localu1;
-    u localu2;
+    v localv1;
+    v localv2;
     if (i < k)
     {
-      localu1 = (u)paramArrayList1.get(i);
-      localu2 = (u)paramArrayList2.get(i);
-      if ((localu1 == null) || (localu1.CW.contains(this))) {
+      localv1 = (v)paramArrayList1.get(i);
+      localv2 = (v)paramArrayList2.get(i);
+      if ((localv1 == null) || (localv1.Df.contains(this))) {
         break label615;
       }
-      localu1 = null;
+      localv1 = null;
     }
     label312:
     label615:
     for (;;)
     {
-      if ((localu2 != null) && (!localu2.CW.contains(this))) {
-        localu2 = null;
+      if ((localv2 != null) && (!localv2.Df.contains(this))) {
+        localv2 = null;
       }
       for (;;)
       {
@@ -798,53 +815,53 @@ public abstract class Transition
         Animator localAnimator;
         Object localObject2;
         Object localObject1;
-        if (localu1 == null)
+        if (localv1 == null)
         {
           l2 = l1;
-          if (localu2 == null) {}
+          if (localv2 == null) {}
         }
         else
         {
-          if ((localu1 == null) || (localu2 == null) || (a(localu1, localu2))) {}
+          if ((localv1 == null) || (localv2 == null) || (a(localv1, localv2))) {}
           for (j = 1;; j = 0)
           {
             l2 = l1;
             if (j == 0) {
               break label493;
             }
-            localAnimator = a(paramViewGroup, localu1, localu2);
+            localAnimator = a(paramViewGroup, localv1, localv2);
             l2 = l1;
             if (localAnimator == null) {
               break label493;
             }
             localObject2 = null;
-            if (localu2 == null) {
+            if (localv2 == null) {
               break label528;
             }
-            localObject1 = localu2.view;
+            localObject1 = localv2.view;
             String[] arrayOfString = getTransitionProperties();
-            paramv1 = (v)localObject2;
+            paramw1 = (w)localObject2;
             if (localObject1 == null) {
               break label515;
             }
-            paramv1 = (v)localObject2;
+            paramw1 = (w)localObject2;
             if (arrayOfString == null) {
               break label515;
             }
-            paramv1 = (v)localObject2;
+            paramw1 = (w)localObject2;
             if (arrayOfString.length <= 0) {
               break label515;
             }
-            paramv1 = new u();
-            paramv1.view = ((View)localObject1);
-            localObject2 = (u)paramv2.CX.get(localObject1);
+            paramw1 = new v();
+            paramw1.view = ((View)localObject1);
+            localObject2 = (v)paramw2.Dg.get(localObject1);
             if (localObject2 == null) {
               break;
             }
             j = 0;
             while (j < arrayOfString.length)
             {
-              paramv1.values.put(arrayOfString[j], ((u)localObject2).values.get(arrayOfString[j]));
+              paramw1.values.put(arrayOfString[j], ((v)localObject2).values.get(arrayOfString[j]));
               j += 1;
             }
           }
@@ -854,13 +871,13 @@ public abstract class Transition
             break label515;
           }
           localObject2 = (a)locala.get((Animator)locala.keyAt(j));
-          if ((((a)localObject2).CB == null) || (((a)localObject2).mView != localObject1) || (!((a)localObject2).mName.equals(this.mName)) || (!((a)localObject2).CB.equals(paramv1))) {
+          if ((((a)localObject2).CI == null) || (((a)localObject2).mView != localObject1) || (!((a)localObject2).mName.equals(this.mName)) || (!((a)localObject2).CI.equals(paramw1))) {
             break label506;
           }
           localAnimator = null;
           localObject2 = localObject1;
-          localObject1 = paramv1;
-          paramv1 = (v)localObject2;
+          localObject1 = paramw1;
+          paramw1 = (w)localObject2;
         }
         for (;;)
         {
@@ -868,14 +885,14 @@ public abstract class Transition
           if (localAnimator != null)
           {
             l2 = l1;
-            if (this.Cv != null)
+            if (this.CC != null)
             {
-              l2 = this.Cv.a(paramViewGroup, this, localu1, localu2);
-              localSparseIntArray.put(this.wW.size(), (int)l2);
+              l2 = this.CC.a(paramViewGroup, this, localv1, localv2);
+              localSparseIntArray.put(this.xd.size(), (int)l2);
               l2 = Math.min(l2, l1);
             }
-            locala.put(localAnimator, new a(paramv1, this.mName, this, ag.N(paramViewGroup), (u)localObject1));
-            this.wW.add(localAnimator);
+            locala.put(localAnimator, new a(paramw1, this.mName, this, ah.O(paramViewGroup), (v)localObject1));
+            this.xd.add(localAnimator);
           }
           label493:
           i += 1;
@@ -884,11 +901,11 @@ public abstract class Transition
           label506:
           j += 1;
           break label312;
-          localObject2 = paramv1;
-          paramv1 = (v)localObject1;
+          localObject2 = paramw1;
+          paramw1 = (w)localObject1;
           localObject1 = localObject2;
           continue;
-          paramv1 = localu1.view;
+          paramw1 = localv1.view;
           localObject1 = null;
         }
         if (l1 != 0L)
@@ -897,7 +914,7 @@ public abstract class Transition
           while (i < localSparseIntArray.size())
           {
             j = localSparseIntArray.keyAt(i);
-            paramViewGroup = (Animator)this.wW.get(j);
+            paramViewGroup = (Animator)this.xd.get(j);
             paramViewGroup.setStartDelay(localSparseIntArray.valueAt(i) - l1 + paramViewGroup.getStartDelay());
             i += 1;
           }
@@ -907,9 +924,9 @@ public abstract class Transition
     }
   }
   
-  public boolean a(u paramu1, u paramu2)
+  public boolean a(v paramv1, v paramv2)
   {
-    if ((paramu1 != null) && (paramu2 != null))
+    if ((paramv1 != null) && (paramv2 != null))
     {
       Object localObject = getTransitionProperties();
       if (localObject != null)
@@ -918,16 +935,16 @@ public abstract class Transition
         int i = 0;
         while (i < j)
         {
-          if (a(paramu1, paramu2, localObject[i])) {
+          if (a(paramv1, paramv2, localObject[i])) {
             return true;
           }
           i += 1;
         }
         return false;
       }
-      localObject = paramu1.values.keySet().iterator();
+      localObject = paramv1.values.keySet().iterator();
       while (((Iterator)localObject).hasNext()) {
-        if (a(paramu1, paramu2, (String)((Iterator)localObject).next())) {
+        if (a(paramv1, paramv2, (String)((Iterator)localObject).next())) {
           return true;
         }
       }
@@ -935,34 +952,59 @@ public abstract class Transition
     return false;
   }
   
-  public Transition b(TimeInterpolator paramTimeInterpolator)
+  public Transition an(int paramInt)
   {
-    this.BX = paramTimeInterpolator;
+    if (paramInt != 0) {
+      this.Cf.add(Integer.valueOf(paramInt));
+    }
     return this;
   }
   
-  public Transition b(c paramc)
+  public Transition b(TimeInterpolator paramTimeInterpolator)
+  {
+    this.Ce = paramTimeInterpolator;
+    return this;
+  }
+  
+  public Transition b(d paramd)
   {
     if (this.mListeners == null) {}
     do
     {
       return this;
-      this.mListeners.remove(paramc);
+      this.mListeners.remove(paramd);
     } while (this.mListeners.size() != 0);
     this.mListeners = null;
     return this;
   }
   
-  public final u b(View paramView, boolean paramBoolean)
+  public Transition b(String paramString, boolean paramBoolean)
   {
-    for (Object localObject = this; ((Transition)localObject).Cl != null; localObject = ((Transition)localObject).Cl) {}
-    if (paramBoolean) {}
-    for (localObject = ((Transition)localObject).Cj;; localObject = ((Transition)localObject).Ck) {
-      return (u)((v)localObject).CX.get(paramView);
+    ArrayList localArrayList2 = this.Cm;
+    ArrayList localArrayList1 = localArrayList2;
+    if (paramString != null) {
+      if (!paramBoolean) {
+        break label31;
+      }
+    }
+    label31:
+    for (localArrayList1 = Transition.b.a(localArrayList2, paramString);; localArrayList1 = Transition.b.b(localArrayList2, paramString))
+    {
+      this.Cm = localArrayList1;
+      return this;
     }
   }
   
-  public abstract void b(u paramu);
+  public final v b(View paramView, boolean paramBoolean)
+  {
+    for (Object localObject = this; ((Transition)localObject).Cs != null; localObject = ((Transition)localObject).Cs) {}
+    if (paramBoolean) {}
+    for (localObject = ((Transition)localObject).Cq;; localObject = ((Transition)localObject).Cr) {
+      return (v)((w)localObject).Dg.get(paramView);
+    }
+  }
+  
+  public abstract void b(v paramv);
   
   final void b(ViewGroup paramViewGroup, boolean paramBoolean)
   {
@@ -971,64 +1013,64 @@ public abstract class Transition
     int i;
     Object localObject1;
     Object localObject2;
-    if (((this.BY.size() > 0) || (this.BZ.size() > 0)) && ((this.Ca == null) || (this.Ca.isEmpty())) && ((this.Cb == null) || (this.Cb.isEmpty())))
+    if (((this.Cf.size() > 0) || (this.Cg.size() > 0)) && ((this.Ch == null) || (this.Ch.isEmpty())) && ((this.Ci == null) || (this.Ci.isEmpty())))
     {
       i = 0;
-      if (i < this.BY.size())
+      if (i < this.Cf.size())
       {
-        localObject1 = paramViewGroup.findViewById(((Integer)this.BY.get(i)).intValue());
+        localObject1 = paramViewGroup.findViewById(((Integer)this.Cf.get(i)).intValue());
         if (localObject1 != null)
         {
-          localObject2 = new u();
-          ((u)localObject2).view = ((View)localObject1);
+          localObject2 = new v();
+          ((v)localObject2).view = ((View)localObject1);
           if (!paramBoolean) {
             break label164;
           }
-          a((u)localObject2);
+          a((v)localObject2);
           label126:
-          ((u)localObject2).CW.add(this);
-          d((u)localObject2);
+          ((v)localObject2).Df.add(this);
+          d((v)localObject2);
           if (!paramBoolean) {
             break label173;
           }
-          a(this.Cj, (View)localObject1, (u)localObject2);
+          a(this.Cq, (View)localObject1, (v)localObject2);
         }
         for (;;)
         {
           i += 1;
           break;
           label164:
-          b((u)localObject2);
+          b((v)localObject2);
           break label126;
           label173:
-          a(this.Ck, (View)localObject1, (u)localObject2);
+          a(this.Cr, (View)localObject1, (v)localObject2);
         }
       }
       i = 0;
-      if (i < this.BZ.size())
+      if (i < this.Cg.size())
       {
-        paramViewGroup = (View)this.BZ.get(i);
-        localObject1 = new u();
-        ((u)localObject1).view = paramViewGroup;
+        paramViewGroup = (View)this.Cg.get(i);
+        localObject1 = new v();
+        ((v)localObject1).view = paramViewGroup;
         if (paramBoolean)
         {
-          a((u)localObject1);
+          a((v)localObject1);
           label237:
-          ((u)localObject1).CW.add(this);
-          d((u)localObject1);
+          ((v)localObject1).Df.add(this);
+          d((v)localObject1);
           if (!paramBoolean) {
             break label283;
           }
-          a(this.Cj, paramViewGroup, (u)localObject1);
+          a(this.Cq, paramViewGroup, (v)localObject1);
         }
         for (;;)
         {
           i += 1;
           break;
-          b((u)localObject1);
+          b((v)localObject1);
           break label237;
           label283:
-          a(this.Ck, paramViewGroup, (u)localObject1);
+          a(this.Cr, paramViewGroup, (v)localObject1);
         }
       }
     }
@@ -1036,9 +1078,9 @@ public abstract class Transition
     {
       a(paramViewGroup, paramBoolean);
     }
-    if ((!paramBoolean) && (this.Cx != null))
+    if ((!paramBoolean) && (this.CE != null))
     {
-      int m = this.Cx.size();
+      int m = this.CE.size();
       paramViewGroup = new ArrayList(m);
       i = 0;
       int j;
@@ -1048,8 +1090,8 @@ public abstract class Transition
         if (i >= m) {
           break;
         }
-        localObject1 = (String)this.Cx.keyAt(i);
-        paramViewGroup.add(this.Cj.Da.remove(localObject1));
+        localObject1 = (String)this.CE.keyAt(i);
+        paramViewGroup.add(this.Cq.Dj.remove(localObject1));
         i += 1;
       }
       while (j < m)
@@ -1057,55 +1099,55 @@ public abstract class Transition
         localObject1 = (View)paramViewGroup.get(j);
         if (localObject1 != null)
         {
-          localObject2 = (String)this.Cx.valueAt(j);
-          this.Cj.Da.put(localObject2, localObject1);
+          localObject2 = (String)this.CE.valueAt(j);
+          this.Cq.Dj.put(localObject2, localObject1);
         }
         j += 1;
       }
     }
   }
   
-  final u c(View paramView, boolean paramBoolean)
+  final v c(View paramView, boolean paramBoolean)
   {
-    for (Object localObject = this; ((Transition)localObject).Cl != null; localObject = ((Transition)localObject).Cl) {}
+    for (Object localObject = this; ((Transition)localObject).Cs != null; localObject = ((Transition)localObject).Cs) {}
     ArrayList localArrayList;
     if (paramBoolean)
     {
-      localArrayList = ((Transition)localObject).Cn;
+      localArrayList = ((Transition)localObject).Cu;
       if (localArrayList != null) {
         break label49;
       }
     }
     label49:
     int i;
-    u localu;
+    v localv;
     do
     {
       return null;
-      localArrayList = ((Transition)localObject).Co;
+      localArrayList = ((Transition)localObject).Cv;
       break;
       int j = localArrayList.size();
       i = 0;
       if (i >= j) {
         break label135;
       }
-      localu = (u)localArrayList.get(i);
-    } while (localu == null);
-    if (localu.view == paramView) {}
+      localv = (v)localArrayList.get(i);
+    } while (localv == null);
+    if (localv.view == paramView) {}
     for (;;)
     {
       if (i >= 0) {
         if (paramBoolean) {
-          paramView = ((Transition)localObject).Co;
+          paramView = ((Transition)localObject).Cv;
         }
       }
       label103:
-      for (paramView = (u)paramView.get(i);; paramView = null)
+      for (paramView = (v)paramView.get(i);; paramView = null)
       {
         return paramView;
         i += 1;
         break;
-        paramView = ((Transition)localObject).Cn;
+        paramView = ((Transition)localObject).Cu;
         break label103;
       }
       label135:
@@ -1113,13 +1155,13 @@ public abstract class Transition
     }
   }
   
-  void d(u paramu)
+  void d(v paramv)
   {
     int j = 0;
     String[] arrayOfString;
-    if ((this.Cv != null) && (!paramu.values.isEmpty()))
+    if ((this.CC != null) && (!paramv.values.isEmpty()))
     {
-      arrayOfString = this.Cv.getPropagationProperties();
+      arrayOfString = this.CC.getPropagationProperties();
       if (arrayOfString != null) {
         break label36;
       }
@@ -1131,14 +1173,14 @@ public abstract class Transition
       return;
       int i = 0;
       if (i < arrayOfString.length) {
-        if (paramu.values.containsKey(arrayOfString[i])) {}
+        if (paramv.values.containsKey(arrayOfString[i])) {}
       }
       for (i = j;; i = 1)
       {
         if (i != 0) {
           break label86;
         }
-        this.Cv.c(paramu);
+        this.CC.c(paramv);
         return;
         i += 1;
         break;
@@ -1146,11 +1188,11 @@ public abstract class Transition
     }
   }
   
-  protected void dL()
+  protected void dO()
   {
     start();
-    final a locala = dK();
-    Iterator localIterator = this.wW.iterator();
+    final a locala = dN();
+    Iterator localIterator = this.xd.iterator();
     while (localIterator.hasNext())
     {
       Animator localAnimator = (Animator)localIterator.next();
@@ -1164,12 +1206,12 @@ public abstract class Transition
             public final void onAnimationEnd(Animator paramAnonymousAnimator)
             {
               locala.remove(paramAnonymousAnimator);
-              Transition.this.Cr.remove(paramAnonymousAnimator);
+              Transition.this.Cy.remove(paramAnonymousAnimator);
             }
             
             public final void onAnimationStart(Animator paramAnonymousAnimator)
             {
-              Transition.this.Cr.add(paramAnonymousAnimator);
+              Transition.this.Cy.add(paramAnonymousAnimator);
             }
           });
           if (localAnimator == null)
@@ -1181,11 +1223,11 @@ public abstract class Transition
             if (this.mDuration >= 0L) {
               localAnimator.setDuration(this.mDuration);
             }
-            if (this.BW >= 0L) {
-              localAnimator.setStartDelay(this.BW);
+            if (this.Cd >= 0L) {
+              localAnimator.setStartDelay(this.Cd);
             }
-            if (this.BX != null) {
-              localAnimator.setInterpolator(this.BX);
+            if (this.Ce != null) {
+              localAnimator.setInterpolator(this.Ce);
             }
             localAnimator.addListener(new AnimatorListenerAdapter()
             {
@@ -1200,20 +1242,20 @@ public abstract class Transition
         }
       }
     }
-    this.wW.clear();
+    this.xd.clear();
     end();
   }
   
-  public Transition dM()
+  public Transition dP()
   {
     try
     {
       Transition localTransition = (Transition)super.clone();
-      localTransition.wW = new ArrayList();
-      localTransition.Cj = new v();
-      localTransition.Ck = new v();
-      localTransition.Cn = null;
-      localTransition.Co = null;
+      localTransition.xd = new ArrayList();
+      localTransition.Cq = new w();
+      localTransition.Cr = new w();
+      localTransition.Cu = null;
+      localTransition.Cv = null;
       return localTransition;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException) {}
@@ -1222,8 +1264,8 @@ public abstract class Transition
   
   protected final void end()
   {
-    this.Cs -= 1;
-    if (this.Cs == 0)
+    this.Cz -= 1;
+    if (this.Cz == 0)
     {
       Object localObject;
       if ((this.mListeners != null) && (this.mListeners.size() > 0))
@@ -1233,29 +1275,46 @@ public abstract class Transition
         i = 0;
         while (i < j)
         {
-          ((c)((ArrayList)localObject).get(i)).a(this);
+          ((d)((ArrayList)localObject).get(i)).a(this);
           i += 1;
         }
       }
       int i = 0;
-      while (i < this.Cj.CZ.size())
+      while (i < this.Cq.Di.size())
       {
-        localObject = (View)this.Cj.CZ.valueAt(i);
+        localObject = (View)this.Cq.Di.valueAt(i);
         if (localObject != null) {
-          t.d((View)localObject, false);
+          u.d((View)localObject, false);
         }
         i += 1;
       }
       i = 0;
-      while (i < this.Ck.CZ.size())
+      while (i < this.Cr.Di.size())
       {
-        localObject = (View)this.Ck.CZ.valueAt(i);
+        localObject = (View)this.Cr.Di.valueAt(i);
         if (localObject != null) {
-          t.d((View)localObject, false);
+          u.d((View)localObject, false);
         }
         i += 1;
       }
-      this.Cu = true;
+      this.CB = true;
+    }
+  }
+  
+  public Transition f(int paramInt, boolean paramBoolean)
+  {
+    ArrayList localArrayList2 = this.Cj;
+    ArrayList localArrayList1 = localArrayList2;
+    if (paramInt > 0) {
+      if (!paramBoolean) {
+        break label34;
+      }
+    }
+    label34:
+    for (localArrayList1 = Transition.b.a(localArrayList2, Integer.valueOf(paramInt));; localArrayList1 = Transition.b.b(localArrayList2, Integer.valueOf(paramInt)))
+    {
+      this.Cj = localArrayList1;
+      return this;
     }
   }
   
@@ -1267,16 +1326,16 @@ public abstract class Transition
   
   public Transition g(long paramLong)
   {
-    this.BW = paramLong;
+    this.Cd = paramLong;
     return this;
   }
   
   public final Rect getEpicenter()
   {
-    if (this.Cw == null) {
+    if (this.CD == null) {
       return null;
     }
-    return this.Cw.dG();
+    return this.CD.dJ();
   }
   
   public String[] getTransitionProperties()
@@ -1284,9 +1343,27 @@ public abstract class Transition
     return null;
   }
   
+  public Transition h(Class paramClass)
+  {
+    if (this.Ci == null) {
+      this.Ci = new ArrayList();
+    }
+    this.Ci.add(paramClass);
+    return this;
+  }
+  
+  public Transition q(String paramString)
+  {
+    if (this.Ch == null) {
+      this.Ch = new ArrayList();
+    }
+    this.Ch.add(paramString);
+    return this;
+  }
+  
   protected final void start()
   {
-    if (this.Cs == 0)
+    if (this.Cz == 0)
     {
       if ((this.mListeners != null) && (this.mListeners.size() > 0))
       {
@@ -1295,13 +1372,13 @@ public abstract class Transition
         int i = 0;
         while (i < j)
         {
-          ((c)localArrayList.get(i)).dH();
+          ((d)localArrayList.get(i)).dK();
           i += 1;
         }
       }
-      this.Cu = false;
+      this.CB = false;
     }
-    this.Cs += 1;
+    this.Cz += 1;
   }
   
   public String toString()
@@ -1318,55 +1395,55 @@ public abstract class Transition
       paramString = str + "dur(" + this.mDuration + ") ";
     }
     str = paramString;
-    if (this.BW != -1L) {
-      str = paramString + "dly(" + this.BW + ") ";
+    if (this.Cd != -1L) {
+      str = paramString + "dly(" + this.Cd + ") ";
     }
     paramString = str;
-    if (this.BX != null) {
-      paramString = str + "interp(" + this.BX + ") ";
+    if (this.Ce != null) {
+      paramString = str + "interp(" + this.Ce + ") ";
     }
-    if (this.BY.size() <= 0)
+    if (this.Cf.size() <= 0)
     {
       str = paramString;
-      if (this.BZ.size() <= 0) {}
+      if (this.Cg.size() <= 0) {}
     }
     else
     {
       str = paramString + "tgts(";
       paramString = str;
       int i;
-      if (this.BY.size() > 0)
+      if (this.Cf.size() > 0)
       {
         i = 0;
         for (;;)
         {
           paramString = str;
-          if (i >= this.BY.size()) {
+          if (i >= this.Cf.size()) {
             break;
           }
           paramString = str;
           if (i > 0) {
             paramString = str + ", ";
           }
-          str = paramString + this.BY.get(i);
+          str = paramString + this.Cf.get(i);
           i += 1;
         }
       }
       str = paramString;
-      if (this.BZ.size() > 0)
+      if (this.Cg.size() > 0)
       {
         i = j;
         for (;;)
         {
           str = paramString;
-          if (i >= this.BZ.size()) {
+          if (i >= this.Cg.size()) {
             break;
           }
           str = paramString;
           if (i > 0) {
             str = paramString + ", ";
           }
-          paramString = str + this.BZ.get(i);
+          paramString = str + this.Cg.get(i);
           i += 1;
         }
       }
@@ -1377,36 +1454,36 @@ public abstract class Transition
   
   static final class a
   {
-    u CB;
-    ao CC;
-    Transition CD;
+    v CI;
+    ap CJ;
+    Transition CK;
     String mName;
     View mView;
     
-    a(View paramView, String paramString, Transition paramTransition, ao paramao, u paramu)
+    a(View paramView, String paramString, Transition paramTransition, ap paramap, v paramv)
     {
       this.mView = paramView;
       this.mName = paramString;
-      this.CB = paramu;
-      this.CC = paramao;
-      this.CD = paramTransition;
+      this.CI = paramv;
+      this.CJ = paramap;
+      this.CK = paramTransition;
     }
   }
   
-  public static abstract class b
+  public static abstract class c
   {
-    public abstract Rect dG();
+    public abstract Rect dJ();
   }
   
-  public static abstract interface c
+  public static abstract interface d
   {
     public abstract void a(Transition paramTransition);
     
-    public abstract void dC();
+    public abstract void dF();
     
-    public abstract void dD();
+    public abstract void dG();
     
-    public abstract void dH();
+    public abstract void dK();
   }
 }
 

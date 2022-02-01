@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.subapp.ui.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cd;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.cf;
+import com.tencent.mm.sdk.event.IListener;
 
 final class GestureGalleryUI$10
-  extends c<cd>
+  extends IListener<cf>
 {
   GestureGalleryUI$10(GestureGalleryUI paramGestureGalleryUI)
   {
     AppMethodBeat.i(161449);
-    this.__eventId = cd.class.getName().hashCode();
+    this.__eventId = cf.class.getName().hashCode();
     AppMethodBeat.o(161449);
   }
 }

@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.account.model;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c$1
   implements DialogInterface.OnCancelListener
@@ -16,16 +16,16 @@ public final class c$1
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(127824);
-    ae.w("MicroMsg.DoInit", "do init canceled");
-    g.ajj().a(this.jkn.dpw);
-    if (this.jkn.dpw.getType() == 139)
+    Log.w("MicroMsg.DoInit", "do init canceled");
+    g.azz().a(this.kip.dGJ);
+    if (this.kip.dGJ.getType() == 139)
     {
-      g.ajj().b(139, this.jkn);
+      g.azz().b(139, this.kip);
       AppMethodBeat.o(127824);
       return;
     }
-    if (this.jkn.dpw.getType() == 138) {
-      g.ajj().b(138, this.jkn);
+    if (this.kip.dGJ.getType() == 138) {
+      g.azz().b(138, this.kip);
     }
     AppMethodBeat.o(127824);
   }

@@ -2,8 +2,6 @@ package com.tencent.neattextview.textview.view;
 
 public abstract interface a
 {
-  public abstract boolean fXn();
-  
   public abstract float getHorizontalOffset();
   
   public abstract com.tencent.neattextview.textview.layout.a getLayout();
@@ -11,6 +9,8 @@ public abstract interface a
   public abstract NeatTextView.b getOnDoubleClickListener();
   
   public abstract float getVerticalOffset();
+  
+  public abstract boolean hiS();
 }
 
 

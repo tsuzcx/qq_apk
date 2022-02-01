@@ -17,40 +17,40 @@ import android.widget.TextView;
 
 final class bd
 {
-  private final TextView Xm;
-  private final WindowManager.LayoutParams azK = new WindowManager.LayoutParams();
-  private final Rect azL = new Rect();
-  private final int[] azM = new int[2];
-  private final int[] azN = new int[2];
+  private final TextView Xz;
+  private final WindowManager.LayoutParams azI = new WindowManager.LayoutParams();
+  private final Rect azJ = new Rect();
+  private final int[] azK = new int[2];
+  private final int[] azL = new int[2];
   private final View mContentView;
   private final Context mContext;
   
   bd(Context paramContext)
   {
     this.mContext = paramContext;
-    this.mContentView = LayoutInflater.from(this.mContext).inflate(2131492918, null);
-    this.Xm = ((TextView)this.mContentView.findViewById(2131302253));
-    this.azK.setTitle(getClass().getSimpleName());
-    this.azK.packageName = this.mContext.getPackageName();
-    this.azK.type = 1002;
-    this.azK.width = -2;
-    this.azK.height = -2;
-    this.azK.format = -3;
-    this.azK.windowAnimations = 2131820554;
-    this.azK.flags = 24;
+    this.mContentView = LayoutInflater.from(this.mContext).inflate(2131492935, null);
+    this.Xz = ((TextView)this.mContentView.findViewById(2131304639));
+    this.azI.setTitle(getClass().getSimpleName());
+    this.azI.packageName = this.mContext.getPackageName();
+    this.azI.type = 1002;
+    this.azI.width = -2;
+    this.azI.height = -2;
+    this.azI.format = -3;
+    this.azI.windowAnimations = 2131820554;
+    this.azI.flags = 24;
   }
   
   private void a(View paramView, int paramInt1, int paramInt2, boolean paramBoolean, WindowManager.LayoutParams paramLayoutParams)
   {
     paramLayoutParams.token = paramView.getApplicationWindowToken();
-    int i = this.mContext.getResources().getDimensionPixelOffset(2131166924);
+    int i = this.mContext.getResources().getDimensionPixelOffset(2131167059);
     if (paramView.getWidth() < i) {
       paramInt1 = paramView.getWidth() / 2;
     }
     Object localObject1;
     if (paramView.getHeight() >= i)
     {
-      i = this.mContext.getResources().getDimensionPixelOffset(2131166923);
+      i = this.mContext.getResources().getDimensionPixelOffset(2131167058);
       j = paramInt2 + i;
       i = paramInt2 - i;
       paramInt2 = j;
@@ -62,10 +62,10 @@ final class bd
     }
     int k;
     label134:
-    for (int j = 2131166927;; j = 2131166926)
+    for (int j = 2131167062;; j = 2131167061)
     {
       k = ((Resources)localObject1).getDimensionPixelOffset(j);
-      localObject1 = ce(paramView);
+      localObject1 = bQ(paramView);
       if (localObject1 != null) {
         break label141;
       }
@@ -75,9 +75,9 @@ final class bd
       break;
     }
     label141:
-    ((View)localObject1).getWindowVisibleDisplayFrame(this.azL);
+    ((View)localObject1).getWindowVisibleDisplayFrame(this.azJ);
     Object localObject2;
-    if ((this.azL.left < 0) && (this.azL.top < 0))
+    if ((this.azJ.left < 0) && (this.azJ.top < 0))
     {
       localObject2 = this.mContext.getResources();
       j = ((Resources)localObject2).getIdentifier("status_bar_height", "dimen", "android");
@@ -89,19 +89,19 @@ final class bd
     for (j = ((Resources)localObject2).getDimensionPixelSize(j);; j = 0)
     {
       localObject2 = ((Resources)localObject2).getDisplayMetrics();
-      this.azL.set(0, j, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
-      ((View)localObject1).getLocationOnScreen(this.azN);
-      paramView.getLocationOnScreen(this.azM);
-      paramView = this.azM;
-      paramView[0] -= this.azN[0];
-      paramView = this.azM;
-      paramView[1] -= this.azN[1];
-      paramLayoutParams.x = (this.azM[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
+      this.azJ.set(0, j, ((DisplayMetrics)localObject2).widthPixels, ((DisplayMetrics)localObject2).heightPixels);
+      ((View)localObject1).getLocationOnScreen(this.azL);
+      paramView.getLocationOnScreen(this.azK);
+      paramView = this.azK;
+      paramView[0] -= this.azL[0];
+      paramView = this.azK;
+      paramView[1] -= this.azL[1];
+      paramLayoutParams.x = (this.azK[0] + paramInt1 - ((View)localObject1).getWidth() / 2);
       paramInt1 = View.MeasureSpec.makeMeasureSpec(0, 0);
       this.mContentView.measure(paramInt1, paramInt1);
       paramInt1 = this.mContentView.getMeasuredHeight();
-      i = i + this.azM[1] - k - paramInt1;
-      paramInt2 = paramInt2 + this.azM[1] + k;
+      i = i + this.azK[1] - k - paramInt1;
+      paramInt2 = paramInt2 + this.azK[1] + k;
       if (!paramBoolean) {
         break;
       }
@@ -111,7 +111,7 @@ final class bd
       paramLayoutParams.y = paramInt2;
       return;
     }
-    if (paramInt1 + paramInt2 <= this.azL.height())
+    if (paramInt1 + paramInt2 <= this.azJ.height())
     {
       paramLayoutParams.y = paramInt2;
       return;
@@ -120,7 +120,7 @@ final class bd
     paramLayoutParams.y = i;
   }
   
-  private static View ce(View paramView)
+  private static View bQ(View paramView)
   {
     View localView = paramView.getRootView();
     ViewGroup.LayoutParams localLayoutParams = localView.getLayoutParams();
@@ -145,9 +145,9 @@ final class bd
     if (isShowing()) {
       hide();
     }
-    this.Xm.setText(paramCharSequence);
-    a(paramView, paramInt1, paramInt2, paramBoolean, this.azK);
-    ((WindowManager)this.mContext.getSystemService("window")).addView(this.mContentView, this.azK);
+    this.Xz.setText(paramCharSequence);
+    a(paramView, paramInt1, paramInt2, paramBoolean, this.azI);
+    ((WindowManager)this.mContext.getSystemService("window")).addView(this.mContentView, this.azI);
   }
   
   final void hide()

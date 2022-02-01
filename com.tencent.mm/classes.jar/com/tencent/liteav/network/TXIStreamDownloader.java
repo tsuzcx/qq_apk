@@ -2,7 +2,9 @@ package com.tencent.liteav.network;
 
 import android.content.Context;
 import android.os.Bundle;
+import com.tencent.liteav.basic.b.b;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.structs.a;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Vector;
@@ -15,10 +17,11 @@ public abstract class TXIStreamDownloader
   protected Context mApplicationContext = null;
   protected boolean mEnableMessage = false;
   protected boolean mEnableMetaData = false;
+  protected String mFlvSessionKey = "";
   protected Map<String, String> mHeaders;
   protected boolean mIsRunning = false;
   protected f mListener = null;
-  protected com.tencent.liteav.basic.c.a mNotifyListener = null;
+  protected b mNotifyListener = null;
   protected String mOriginUrl = "";
   protected a mRestartListener = null;
   protected String mUserID = "";
@@ -57,6 +60,11 @@ public abstract class TXIStreamDownloader
     return null;
   }
   
+  public String getFlvSessionKey()
+  {
+    return this.mFlvSessionKey;
+  }
+  
   public long getLastIFrameTS()
   {
     return 0L;
@@ -74,10 +82,10 @@ public abstract class TXIStreamDownloader
   
   public void onRecvAudioData(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    com.tencent.liteav.basic.structs.a locala;
+    a locala;
     if (this.mListener != null)
     {
-      locala = new com.tencent.liteav.basic.structs.a();
+      locala = new a();
       locala.f = paramArrayOfByte;
       locala.e = paramInt1;
       if (paramInt2 == 10) {
@@ -155,6 +163,11 @@ public abstract class TXIStreamDownloader
     }
   }
   
+  public void setFlvSessionKey(String paramString)
+  {
+    this.mFlvSessionKey = paramString;
+  }
+  
   public void setHeaders(Map<String, String> paramMap)
   {
     this.mHeaders = paramMap;
@@ -165,9 +178,9 @@ public abstract class TXIStreamDownloader
     this.mListener = paramf;
   }
   
-  public void setNotifyListener(com.tencent.liteav.basic.c.a parama)
+  public void setNotifyListener(b paramb)
   {
-    this.mNotifyListener = parama;
+    this.mNotifyListener = paramb;
   }
   
   public void setOriginUrl(String paramString)
@@ -198,7 +211,7 @@ public abstract class TXIStreamDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.network.TXIStreamDownloader
  * JD-Core Version:    0.7.0.1
  */

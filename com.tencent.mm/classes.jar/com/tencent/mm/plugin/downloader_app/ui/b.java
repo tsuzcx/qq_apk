@@ -3,83 +3,80 @@ package com.tencent.mm.plugin.downloader_app.ui;
 import android.content.Context;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
-import android.support.v7.widget.RecyclerView.w;
-import android.view.View;
-import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.p;
 import com.tencent.mm.plugin.downloader_app.a.i;
 import com.tencent.mm.plugin.game.commlib.c.c;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class b
-  extends RecyclerView.a<a>
+  extends RecyclerView.a<b.a>
 {
   private Context mContext;
-  c<i> pxG;
-  private boolean pxH;
-  private boolean pxI;
-  private boolean pxJ;
-  private boolean pxK;
-  boolean pxL;
-  boolean pxM;
+  c<i> qMX;
+  private boolean qMY;
+  private boolean qMZ;
+  private boolean qNa;
+  private boolean qNb;
+  boolean qNc;
+  boolean qNd;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(9055);
-    this.pxG = new c();
-    this.pxH = true;
-    this.pxI = false;
-    this.pxJ = false;
-    this.pxK = false;
-    this.pxL = false;
-    this.pxM = true;
+    this.qMX = new c();
+    this.qMY = true;
+    this.qMZ = false;
+    this.qNa = false;
+    this.qNb = false;
+    this.qNc = false;
+    this.qNd = true;
     this.mContext = paramContext;
     AppMethodBeat.o(9055);
   }
   
-  public final void W(LinkedList<i> paramLinkedList)
+  public final void Y(LinkedList<i> paramLinkedList)
   {
     AppMethodBeat.i(9058);
-    if (bu.ht(paramLinkedList))
+    if (Util.isNullOrNil(paramLinkedList))
     {
       AppMethodBeat.o(9058);
       return;
     }
     if (paramLinkedList.size() == 1)
     {
-      final int i = this.pxG.indexOf(paramLinkedList.get(0));
-      this.pxG.remove(i);
-      p.x(new Runnable()
+      final int i = this.qMX.indexOf(paramLinkedList.get(0));
+      this.qMX.remove(i);
+      p.y(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(9052);
-          b.this.cl(i);
+          b.this.ck(i);
           AppMethodBeat.o(9052);
         }
       });
       AppMethodBeat.o(9058);
       return;
     }
-    this.pxG.removeAll(paramLinkedList);
-    p.x(new Runnable()
+    this.qMX.removeAll(paramLinkedList);
+    p.y(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(9053);
-        b.this.asY.notifyChanged();
+        b.this.atj.notifyChanged();
         AppMethodBeat.o(9053);
       }
     });
     AppMethodBeat.o(9058);
   }
   
-  public final boolean cel()
+  public final boolean cCb()
   {
     AppMethodBeat.i(9059);
-    if (this.pxG.size() <= 5)
+    if (this.qMX.size() <= 5)
     {
       AppMethodBeat.o(9059);
       return true;
@@ -91,7 +88,7 @@ public final class b
   public final int getItemCount()
   {
     AppMethodBeat.i(9057);
-    int i = this.pxG.size();
+    int i = this.qMX.size();
     AppMethodBeat.o(9057);
     return i;
   }
@@ -99,28 +96,14 @@ public final class b
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(9056);
-    paramInt = ((i)this.pxG.get(paramInt)).type;
+    paramInt = ((i)this.qMX.get(paramInt)).type;
     AppMethodBeat.o(9056);
     return paramInt;
-  }
-  
-  public static final class a
-    extends RecyclerView.w
-  {
-    public View contentView;
-    
-    public a(View paramView)
-    {
-      super();
-      AppMethodBeat.i(9054);
-      this.contentView = ((ViewGroup)paramView).getChildAt(0);
-      AppMethodBeat.o(9054);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.b
  * JD-Core Version:    0.7.0.1
  */

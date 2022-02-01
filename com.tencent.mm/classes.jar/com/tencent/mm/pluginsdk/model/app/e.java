@@ -1,13 +1,13 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -15,15 +15,15 @@ import java.util.Map;
 import java.util.Set;
 
 public final class e
-  implements f
+  implements i
 {
-  Map<Integer, Set<u>> hRs;
+  Map<Integer, Set<u>> iMA;
   
   public e()
   {
     AppMethodBeat.i(151661);
-    this.hRs = new HashMap();
-    g.ajQ().gDv.a(452, this);
+    this.iMA = new HashMap();
+    g.aAg().hqi.a(452, this);
     AppMethodBeat.o(151661);
   }
   
@@ -31,23 +31,23 @@ public final class e
   {
     AppMethodBeat.i(151664);
     paramaa = new ab(paramInt, paramaa);
-    g.ajQ().gDv.a(paramaa, 0);
+    g.aAg().hqi.a(paramaa, 0);
     AppMethodBeat.o(151664);
   }
   
   public final void a(final int paramInt, final u paramu)
   {
     AppMethodBeat.i(151662);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(151658);
-        if (!e.this.hRs.containsKey(Integer.valueOf(paramInt))) {
-          e.this.hRs.put(Integer.valueOf(paramInt), new HashSet());
+        if (!e.this.iMA.containsKey(Integer.valueOf(paramInt))) {
+          e.this.iMA.put(Integer.valueOf(paramInt), new HashSet());
         }
-        if ((e.this.hRs.get(Integer.valueOf(paramInt)) != null) && (!((Set)e.this.hRs.get(Integer.valueOf(paramInt))).contains(paramu))) {
-          ((Set)e.this.hRs.get(Integer.valueOf(paramInt))).add(paramu);
+        if ((e.this.iMA.get(Integer.valueOf(paramInt)) != null) && (!((Set)e.this.iMA.get(Integer.valueOf(paramInt))).contains(paramu))) {
+          ((Set)e.this.iMA.get(Integer.valueOf(paramInt))).add(paramu);
         }
         AppMethodBeat.o(151658);
       }
@@ -58,13 +58,13 @@ public final class e
   public final void b(final int paramInt, final u paramu)
   {
     AppMethodBeat.i(151663);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(151659);
-        if (e.this.hRs.get(Integer.valueOf(paramInt)) != null) {
-          ((Set)e.this.hRs.get(Integer.valueOf(paramInt))).remove(paramu);
+        if (e.this.iMA.get(Integer.valueOf(paramInt)) != null) {
+          ((Set)e.this.iMA.get(Integer.valueOf(paramInt))).remove(paramu);
         }
         AppMethodBeat.o(151659);
       }
@@ -72,17 +72,17 @@ public final class e
     AppMethodBeat.o(151663);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(151665);
-    if (!(paramn instanceof ab))
+    if (!(paramq instanceof ab))
     {
-      ae.i("MicroMsg.AppCenterNetSceneService", "onSceneEnd, the scene is not a instance of NetSceneAppCenter");
+      Log.i("MicroMsg.AppCenterNetSceneService", "onSceneEnd, the scene is not a instance of NetSceneAppCenter");
       AppMethodBeat.o(151665);
       return;
     }
-    paramn = (ab)paramn;
-    Set localSet = (Set)this.hRs.get(Integer.valueOf(paramn.FfF));
+    paramq = (ab)paramq;
+    Set localSet = (Set)this.iMA.get(Integer.valueOf(paramq.JWw));
     if ((localSet != null) && (localSet.size() > 0))
     {
       Object localObject = new HashSet();
@@ -92,7 +92,7 @@ public final class e
       {
         u localu = (u)((Iterator)localObject).next();
         if ((localu != null) && (localSet.contains(localu))) {
-          localu.a(paramInt1, paramInt2, paramString, paramn.FfG);
+          localu.a(paramInt1, paramInt2, paramString, paramq.JWx);
         }
       }
     }

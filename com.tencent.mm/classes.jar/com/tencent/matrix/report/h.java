@@ -9,10 +9,10 @@ import com.tencent.matrix.mrs.core.MatrixUploadIssue;
 import com.tencent.matrix.mrs.core.MrsLogic;
 import com.tencent.matrix.strategy.MatrixStrategyNotifyBroadcast;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,27 +23,27 @@ import org.json.JSONObject;
 public final class h
   extends com.tencent.matrix.e.a
 {
-  public volatile boolean cBE = false;
-  private Long cFQ;
-  private String cFR;
-  private volatile boolean cFS;
-  private Long cFT;
-  private f cFU = new f();
-  private final ConcurrentHashMap<c, Object> cFV = new ConcurrentHashMap();
-  public b cFW;
-  private final ConcurrentLinkedQueue<d> cFX = new ConcurrentLinkedQueue();
-  public final ConcurrentLinkedDeque<d> cFY = new ConcurrentLinkedDeque();
+  private Long cWo;
+  private String cWp;
+  private volatile boolean cWq;
+  private Long cWr;
+  private f cWs = new f();
+  private final ConcurrentHashMap<c, Object> cWt = new ConcurrentHashMap();
+  public b cWu;
+  private final ConcurrentLinkedQueue<d> cWv = new ConcurrentLinkedQueue();
+  public final ConcurrentLinkedDeque<d> cWw = new ConcurrentLinkedDeque();
   private final Context context;
+  public volatile boolean isInit = false;
   
   public h(Context paramContext, Long paramLong1, String paramString, Boolean paramBoolean, Long paramLong2)
   {
     super(paramContext);
     this.context = paramContext;
-    this.cFQ = paramLong1;
-    this.cFR = paramString;
-    this.cFS = paramBoolean.booleanValue();
-    this.cFT = paramLong2;
-    if (ak.coh()) {
+    this.cWo = paramLong1;
+    this.cWp = paramString;
+    this.cWq = paramBoolean.booleanValue();
+    this.cWr = paramLong2;
+    if (MMApplicationContext.isMainProcess()) {
       try
       {
         MrsLogic.init(paramLong1.longValue(), paramString, paramBoolean.booleanValue(), paramLong2.longValue());
@@ -63,24 +63,24 @@ public final class h
     paramString = new MatrixStrategyNotifyBroadcast();
     try
     {
-      paramContext.registerReceiver(paramString, paramLong1, "com.tencent.mm.matrix.strategynotify", null);
+      paramContext.registerReceiver(paramString, paramLong1, MatrixStrategyNotifyBroadcast.dag, null);
       return;
     }
     catch (Throwable paramBoolean)
     {
       paramContext.unregisterReceiver(paramString);
-      paramContext.registerReceiver(paramString, paramLong1, "com.tencent.mm.matrix.strategynotify", null);
+      paramContext.registerReceiver(paramString, paramLong1, MatrixStrategyNotifyBroadcast.dag, null);
     }
   }
   
-  private static void a(c paramc, k paramk)
+  private static void a(c paramc, o paramo)
   {
     if (paramc != null) {}
     try
     {
-      if (!paramk.exists())
+      if (!paramo.exists())
       {
-        com.tencent.matrix.g.c.e("MicroMsg.MatrixReporter", "Matrix report, tag %s or file %s is null, just return", new Object[] { paramc, paramk });
+        com.tencent.matrix.g.c.e("MicroMsg.MatrixReporter", "Matrix report, tag %s or file %s is null, just return", new Object[] { paramc, paramo });
         return;
       }
       MatrixUploadIssue localMatrixUploadIssue = new MatrixUploadIssue();
@@ -90,7 +90,7 @@ public final class h
       localMatrixUploadIssue.setNeedDeleteFileAfterSucc(true);
       localMatrixUploadIssue.setType(paramc.type);
       localMatrixUploadIssue.setDesKey(paramc.key);
-      localMatrixUploadIssue.setFilePath(w.B(paramk.fTh()));
+      localMatrixUploadIssue.setFilePath(aa.z(paramo.her()));
       MrsLogic.uploadMatrixIssue(localMatrixUploadIssue);
       return;
     }
@@ -103,34 +103,34 @@ public final class h
   public final void a(c paramc)
   {
     paramc = d.d(paramc);
-    if ((paramc.cFH instanceof com.tencent.matrix.trace.a))
+    if ((paramc.cWf instanceof com.tencent.matrix.trace.a))
     {
-      this.cFY.addFirst(paramc);
-      if (this.cFY.size() >= 30) {
-        this.cFY.removeLast();
+      this.cWw.addFirst(paramc);
+      if (this.cWw.size() >= 30) {
+        this.cWw.removeLast();
       }
     }
     try
     {
-      if ((this.cFW != null) && (this.cFW.c(paramc)))
+      if ((this.cWu != null) && (this.cWu.c(paramc)))
       {
-        ae.w("MicroMsg.MatrixReporter", "[reportJson] pass this report! tag=%s", new Object[] { paramc.tag });
+        Log.w("MicroMsg.MatrixReporter", "[reportJson] pass this report! tag=%s", new Object[] { paramc.tag });
         return;
       }
     }
     catch (Exception paramc)
     {
-      ae.printErrStackTrace("MicroMsg.MatrixReporter", paramc, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.MatrixReporter", paramc, "", new Object[0]);
       return;
     }
-    Object localObject = this.cFV.keySet().iterator();
+    Object localObject = this.cWt.keySet().iterator();
     while (((Iterator)localObject).hasNext()) {
       ((c)((Iterator)localObject).next()).a(paramc);
     }
     localObject = paramc.filePath;
     try
     {
-      if (ak.coh())
+      if (MMApplicationContext.isMainProcess())
       {
         a(paramc, (String)localObject);
         return;
@@ -145,7 +145,7 @@ public final class h
     localIntent.putExtra("tag", paramc.tag);
     localIntent.putExtra("key", paramc.key);
     localIntent.putExtra("type", paramc.type);
-    localIntent.putExtra("value", paramc.cFG.toString());
+    localIntent.putExtra("value", paramc.cWe.toString());
     localIntent.putExtra("filePath", (String)localObject);
     com.tencent.matrix.g.c.i("MicroMsg.MatrixReporter", "Matrix report with broadcast tag:%s", new Object[] { paramc.tag });
     this.context.sendBroadcast(localIntent);
@@ -153,53 +153,53 @@ public final class h
   
   public final void a(c paramc, String paramString)
   {
-    if ((!this.cBE) && (ak.coh()))
+    if ((!this.isInit) && (MMApplicationContext.isMainProcess()))
     {
       com.tencent.matrix.g.c.w("MicroMsg.MatrixReporter", "MatrixReportBroadcast, matrix report is not init, wait to report plugin:%s", new Object[] { paramc.tag });
       paramc = d.d(paramc);
       paramc.filePath = paramString;
-      this.cFX.add(paramc);
+      this.cWv.add(paramc);
     }
     do
     {
       return;
-      if (!this.cFX.isEmpty())
+      if (!this.cWv.isEmpty())
       {
-        Iterator localIterator = this.cFX.iterator();
+        Iterator localIterator = this.cWv.iterator();
         while (localIterator.hasNext())
         {
           d locald = (d)localIterator.next();
-          com.tencent.matrix.g.c.i("MicroMsg.MatrixReporter", "Matrix report pending list! tag:%s, key:%s, data:%s", new Object[] { locald.tag, locald.cFG, Integer.valueOf(d.FFH) });
-          MrsLogic.collectData(locald.tag, locald.cFG.toString().getBytes());
+          com.tencent.matrix.g.c.i("MicroMsg.MatrixReporter", "Matrix report pending list! tag:%s, key:%s, data:%s", new Object[] { locald.tag, locald.cWe, Integer.valueOf(d.KyO) });
+          MrsLogic.collectData(locald.tag, locald.cWe.toString().getBytes());
           if (!TextUtils.isEmpty(paramString)) {
-            a(locald, new k(locald.filePath));
+            a(locald, new o(locald.filePath));
           }
         }
-        this.cFX.clear();
+        this.cWv.clear();
       }
-      com.tencent.matrix.g.c.i("MicroMsg.MatrixReporter", "Matrix reportLocal tag:%s, key:%s, data:%s", new Object[] { paramc.tag, paramc.cFG, Integer.valueOf(d.FFH) });
-      MrsLogic.collectData(paramc.tag, paramc.cFG.toString().getBytes());
-      this.cFU.d(paramc.tag, paramc.cFG);
+      com.tencent.matrix.g.c.i("MicroMsg.MatrixReporter", "Matrix reportLocal tag:%s, key:%s, data:%s", new Object[] { paramc.tag, paramc.cWe, Integer.valueOf(d.KyO) });
+      MrsLogic.collectData(paramc.tag, paramc.cWe.toString().getBytes());
+      this.cWs.g(paramc.tag, paramc.cWe);
     } while (TextUtils.isEmpty(paramString));
-    a(paramc, new k(paramString));
+    a(paramc, new o(paramString));
   }
   
   public final void a(c paramc)
   {
-    this.cFV.put(paramc, new Object());
+    this.cWt.put(paramc, new Object());
   }
   
   public final String toString()
   {
-    return "clientVersion=" + this.cFQ + " revision=" + this.cFR + " isDebug=" + this.cFS + " publishType" + this.cFT;
+    return "clientVersion=" + this.cWo + " revision=" + this.cWp + " isDebug=" + this.cWq + " publishType" + this.cWr;
   }
   
   public static final class a
   {
-    public Long cFQ;
-    public String cFR;
-    public Long cFT;
-    public Boolean cFZ;
+    public Long cWo;
+    public String cWp;
+    public Long cWr;
+    public Boolean cWx;
     public final Context context;
     
     public a(Context paramContext)
@@ -229,9 +229,9 @@ public final class h
     public static d d(c paramc)
     {
       d locald = new d();
-      locald.cFG = paramc.cFG;
+      locald.cWe = paramc.cWe;
       locald.tag = paramc.tag;
-      locald.cFH = paramc.cFH;
+      locald.cWf = paramc.cWf;
       locald.key = paramc.key;
       locald.type = paramc.type;
       return locald;
@@ -240,7 +240,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.report.h
  * JD-Core Version:    0.7.0.1
  */

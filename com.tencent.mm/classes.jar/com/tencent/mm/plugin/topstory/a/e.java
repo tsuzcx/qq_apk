@@ -1,60 +1,66 @@
 package com.tencent.mm.plugin.topstory.a;
 
-import com.tencent.mm.protocal.protobuf.dou;
+import com.tencent.mm.protocal.protobuf.eiq;
 
 public abstract interface e
 {
-  public abstract void BA(long paramLong);
-  
-  public abstract void Tz(int paramInt);
+  public abstract void KH(long paramLong);
   
   public abstract void a(e.a parama);
   
+  public abstract int abP(int paramInt);
+  
   public abstract void b(e.a parama);
   
-  public abstract boolean erP();
+  public abstract boolean fxB();
   
-  public abstract boolean erQ();
+  public abstract String fxC();
   
-  public abstract dou erR();
+  public abstract void fxD();
   
-  public abstract void erS();
+  public abstract String fxE();
   
-  public abstract dou erV();
+  public abstract long fxF();
   
-  public abstract boolean erX();
+  public abstract String fxG();
   
-  public abstract int erY();
+  public abstract void fxH();
   
-  public abstract dou esa();
+  public abstract boolean fxI();
   
-  public abstract dou esb();
+  public abstract boolean fxJ();
   
-  public abstract boolean esc();
+  public abstract boolean fxK();
   
-  public abstract boolean esf();
+  public abstract boolean fxL();
   
-  public abstract String esg();
+  public abstract void fxM();
   
-  public abstract void esh();
+  public abstract void fxN();
   
-  public abstract String esi();
+  public abstract boolean fxl();
   
-  public abstract long esj();
+  public abstract boolean fxm();
   
-  public abstract String esk();
+  public abstract eiq fxo();
   
-  public abstract void esl();
+  public abstract eiq fxr();
   
-  public abstract boolean esm();
+  public abstract boolean fxt();
   
-  public abstract boolean esn();
+  public abstract int fxu();
   
-  public abstract void h(long paramLong, int paramInt, boolean paramBoolean);
+  public abstract eiq fxw();
+  
+  public abstract eiq fxx();
+  
+  public abstract boolean fxy();
+  
+  public abstract void j(long paramLong, int paramInt, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.a.e
  * JD-Core Version:    0.7.0.1
  */

@@ -2,39 +2,40 @@ package com.tencent.mm.plugin.music.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ay.f;
-import com.tencent.mm.g.c.em;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.c.et;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public final class a
-  extends em
+  extends et
 {
-  public static c.a info;
-  public String hOJ;
-  public String ikx;
+  public static IAutoDBItem.MAutoDBInfo info;
+  public String iJP;
+  public String jft;
+  public boolean jfx;
   public String playUrl;
   
   static
   {
     AppMethodBeat.i(63171);
-    info = em.VD();
+    info = et.ajs();
     AppMethodBeat.o(63171);
   }
   
-  public final boolean C(int[] paramArrayOfInt)
+  public final boolean G(int[] paramArrayOfInt)
   {
     return (this.field_songBgColor == paramArrayOfInt[0]) && (this.field_songLyricColor == paramArrayOfInt[1]);
   }
   
-  public final boolean dwE()
+  public final boolean euM()
   {
     return (this.field_songBgColor != 0) && (this.field_songLyricColor != 0);
   }
   
-  public final boolean dwF()
+  public final boolean euN()
   {
     AppMethodBeat.i(63168);
-    if (!bu.isNullOrNil(this.field_songHAlbumUrl))
+    if (!Util.isNullOrNil(this.field_songHAlbumUrl))
     {
       AppMethodBeat.o(63168);
       return true;
@@ -43,43 +44,49 @@ public final class a
     return false;
   }
   
-  public final f dwG()
+  public final f euO()
   {
     AppMethodBeat.i(63170);
     f localf = new f();
-    localf.ijZ = this.field_originMusicId;
-    localf.ijX = this.field_musicType;
-    localf.ikm = this.field_appId;
-    localf.ikd = this.field_songAlbum;
-    localf.ikn = this.field_songAlbumType;
-    localf.ike = this.field_songAlbumUrl;
-    localf.ikq = this.field_songHAlbumUrl;
-    localf.iki = this.field_songLyric;
-    localf.ikf = this.field_songWifiUrl;
-    localf.ikb = this.field_songName;
-    localf.ikc = this.field_songSinger;
-    localf.ikg = this.field_songWapLinkUrl;
-    localf.ikh = this.field_songWebUrl;
-    localf.ikj = this.field_songAlbumLocalPath;
-    localf.ikp = this.field_songMediaId;
-    localf.ikr = this.field_songSnsAlbumUser;
-    localf.ikt = this.field_songSnsShareUser;
-    localf.ikv = this.field_hideBanner;
-    localf.ikw = this.field_jsWebUrlDomain;
-    localf.dez = this.field_startTime;
-    localf.ikx = this.ikx;
+    localf.jeV = this.field_originMusicId;
+    localf.jeT = this.field_musicType;
+    localf.jfi = this.field_appId;
+    localf.jeZ = this.field_songAlbum;
+    localf.jfj = this.field_songAlbumType;
+    localf.jfa = this.field_songAlbumUrl;
+    localf.jfm = this.field_songHAlbumUrl;
+    localf.jfe = this.field_songLyric;
+    localf.jfb = this.field_songWifiUrl;
+    localf.jeX = this.field_songName;
+    localf.jeY = this.field_songSinger;
+    localf.jfc = this.field_songWapLinkUrl;
+    localf.jfd = this.field_songWebUrl;
+    localf.jff = this.field_songAlbumLocalPath;
+    localf.jfl = this.field_songMediaId;
+    localf.jfn = this.field_songSnsAlbumUser;
+    localf.jfp = this.field_songSnsShareUser;
+    localf.jfr = this.field_hideBanner;
+    localf.jfs = this.field_jsWebUrlDomain;
+    localf.dvv = this.field_startTime;
+    localf.jft = this.jft;
     localf.protocol = this.field_protocol;
-    localf.iky = this.field_barBackToWebView;
-    localf.ikz = this.field_musicbar_url;
+    localf.jfu = this.field_barBackToWebView;
+    localf.jfv = this.field_musicbar_url;
     localf.playUrl = this.playUrl;
-    localf.dIt = this.field_srcUsername;
-    localf.hOB = this.field_playbackRate;
-    localf.hOJ = this.hOJ;
+    localf.eag = this.field_srcUsername;
+    localf.iJH = this.field_playbackRate;
+    localf.iJP = this.iJP;
+    localf.jfx = this.jfx;
     AppMethodBeat.o(63170);
     return localf;
   }
   
-  public final boolean g(a parama)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
+  
+  public final boolean h(a parama)
   {
     AppMethodBeat.i(63169);
     if (parama == null)
@@ -91,15 +98,10 @@ public final class a
     AppMethodBeat.o(63169);
     return bool;
   }
-  
-  public final c.a getDBInfo()
-  {
-    return info;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.e.a
  * JD-Core Version:    0.7.0.1
  */

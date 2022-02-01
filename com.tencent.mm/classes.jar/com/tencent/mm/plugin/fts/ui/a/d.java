@@ -2,31 +2,29 @@ package com.tencent.mm.plugin.fts.ui.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.ui.b.c;
 import com.tencent.mm.plugin.fts.ui.n;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 
 public final class d
   extends m
 {
-  public ac tKj;
-  public CharSequence tLB;
-  private a tLC;
+  public ah xbi;
+  public CharSequence xcC;
+  private a xcD;
   
   public d(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112060);
-    this.tLC = new a();
+    this.xcD = new a();
     AppMethodBeat.o(112060);
   }
   
@@ -34,41 +32,41 @@ public final class d
   {
     AppMethodBeat.i(112061);
     super.a(paramContext, parama, paramVarArgs);
-    an localan = ((l)g.ab(l.class)).azF().BH(this.kno.talker);
-    if (localan == null) {
-      parama = com.tencent.mm.plugin.fts.a.d.ahd(this.kno.tEY);
+    as localas = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(this.lqW.talker);
+    if (localas == null) {
+      parama = com.tencent.mm.plugin.fts.a.d.arL(this.lqW.wVX);
     }
     for (;;)
     {
-      if (!bu.isNullOrNil(parama)) {
-        this.tLB = k.d(paramContext, parama, b.c.tIY);
+      if (!Util.isNullOrNil(parama)) {
+        this.xcC = com.tencent.mm.pluginsdk.ui.span.l.d(paramContext, parama, b.c.wZX);
       }
       AppMethodBeat.o(112061);
       return;
-      if (bu.isNullOrNil(localan.field_conRemark))
+      if (Util.isNullOrNil(localas.field_conRemark))
       {
-        if (this.tKj != null)
+        if (this.xbi != null)
         {
-          paramVarArgs = this.tKj.zP(this.kno.talker);
+          paramVarArgs = this.xbi.getDisplayName(this.lqW.talker);
           parama = paramVarArgs;
-          if (bu.isNullOrNil(paramVarArgs)) {
-            parama = localan.field_nickname;
+          if (Util.isNullOrNil(paramVarArgs)) {
+            parama = localas.field_nickname;
           }
         }
         else
         {
-          parama = localan.field_nickname;
+          parama = localas.field_nickname;
         }
       }
       else {
-        parama = localan.field_conRemark;
+        parama = localas.field_conRemark;
       }
     }
   }
   
-  public final com.tencent.mm.plugin.fts.a.d.a.a.b agQ()
+  public final com.tencent.mm.plugin.fts.a.d.a.a.b axc()
   {
-    return this.tLC;
+    return this.xcD;
   }
   
   public final class a
@@ -84,25 +82,25 @@ public final class d
       AppMethodBeat.i(112059);
       paramContext = (d)parama1;
       parama = (m.a)parama;
-      n.p(parama.knu, d.this.tGL);
-      if (bu.isNullOrNil(paramContext.kno.talker)) {
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fQl, paramContext.kno.tEY);
+      n.q(parama.lrc, d.this.wXK);
+      if (Util.isNullOrNil(paramContext.lqW.talker)) {
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.gvv, paramContext.lqW.wVX);
       }
       for (;;)
       {
-        n.a(paramContext.tLB, parama.fQm);
-        n.a(paramContext.heE, parama.fVU);
-        n.a(paramContext.tMx, parama.fVV);
+        n.a(paramContext.xcC, parama.gvw);
+        n.a(paramContext.hXr, parama.gBb);
+        n.a(paramContext.xdx, parama.timeTV);
         AppMethodBeat.o(112059);
         return;
-        com.tencent.mm.pluginsdk.ui.a.b.c(parama.fQl, paramContext.kno.talker);
+        com.tencent.mm.pluginsdk.ui.a.b.c(parama.gvv, paramContext.lqW.talker);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.d
  * JD-Core Version:    0.7.0.1
  */

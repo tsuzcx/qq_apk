@@ -1,8 +1,8 @@
 package com.tencent.mm.modelvoice;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import junit.framework.Assert;
@@ -18,7 +18,7 @@ public final class a
     this.fileName = paramString;
   }
   
-  private boolean fc(boolean paramBoolean)
+  private boolean fS(boolean paramBoolean)
   {
     AppMethodBeat.i(130034);
     if (this.fileName.length() >= 0)
@@ -33,16 +33,16 @@ public final class a
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ae.d("MicroMsg.AmrFileOperator", "Open file:" + this.file + " forWrite:" + paramBoolean);
+      Log.d("MicroMsg.AmrFileOperator", "Open file:" + this.file + " forWrite:" + paramBoolean);
       try
       {
-        this.file = o.dg(this.fileName, paramBoolean);
+        this.file = s.dB(this.fileName, paramBoolean);
         AppMethodBeat.o(130034);
         return true;
       }
       catch (Exception localException)
       {
-        ae.e("MicroMsg.AmrFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
+        Log.e("MicroMsg.AmrFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
         this.file = null;
         AppMethodBeat.o(130034);
       }
@@ -52,7 +52,7 @@ public final class a
     return false;
   }
   
-  public final void aNK()
+  public final void bhP()
   {
     AppMethodBeat.i(130033);
     if (this.file != null) {
@@ -60,7 +60,7 @@ public final class a
       {
         this.file.close();
         this.file = null;
-        ae.d("MicroMsg.AmrFileOperator", "Close :" + this.fileName);
+        Log.d("MicroMsg.AmrFileOperator", "Close :" + this.fileName);
         AppMethodBeat.o(130033);
         return;
       }
@@ -69,7 +69,7 @@ public final class a
     AppMethodBeat.o(130033);
   }
   
-  public final g dr(int paramInt1, int paramInt2)
+  public final g dB(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130035);
     g localg = new g();
@@ -79,7 +79,7 @@ public final class a
       AppMethodBeat.o(130035);
       return localg;
     }
-    if ((this.file == null) && (!fc(false)))
+    if ((this.file == null) && (!fS(false)))
     {
       localg.ret = -2;
       AppMethodBeat.o(130035);
@@ -92,21 +92,21 @@ public final class a
       long l = this.file.length();
       this.file.seek(i);
       paramInt2 = this.file.read(localg.buf, 0, paramInt2);
-      ae.d("MicroMsg.AmrFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + i + " readRet:" + paramInt2 + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
+      Log.d("MicroMsg.AmrFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + i + " readRet:" + paramInt2 + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
       paramInt1 = paramInt2;
       if (paramInt2 < 0) {
         paramInt1 = 0;
       }
-      localg.diR = paramInt1;
-      localg.ixC = (paramInt1 + i - 6);
+      localg.dAc = paramInt1;
+      localg.jsR = (paramInt1 + i - 6);
       localg.ret = 0;
       AppMethodBeat.o(130035);
       return localg;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.AmrFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + i + "  failed:[" + localException.getMessage() + "] ");
-      aNK();
+      Log.e("MicroMsg.AmrFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + i + "  failed:[" + localException.getMessage() + "] ");
+      bhP();
       localg.ret = -1;
       AppMethodBeat.o(130035);
     }
@@ -126,7 +126,7 @@ public final class a
     for (boolean bool1 = true;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      if ((this.file != null) || (fc(true))) {
+      if ((this.file != null) || (fS(true))) {
         break;
       }
       AppMethodBeat.o(130036);
@@ -167,14 +167,14 @@ public final class a
         }
         catch (Exception paramArrayOfByte)
         {
-          ae.e("MicroMsg.AmrFileOperator", "ERR: WriteFile[" + this.fileName + "] Offset:" + i + " failed:[" + paramArrayOfByte.getMessage() + "]");
-          aNK();
+          Log.e("MicroMsg.AmrFileOperator", "ERR: WriteFile[" + this.fileName + "] Offset:" + i + " failed:[" + paramArrayOfByte.getMessage() + "]");
+          bhP();
           AppMethodBeat.o(130036);
           return -3;
         }
         paramArrayOfByte = paramArrayOfByte;
-        ae.e("MicroMsg.AmrFileOperator", "ERR: WriteHeadToFile[" + this.fileName + "] failed:[" + paramArrayOfByte.getMessage() + "]");
-        aNK();
+        Log.e("MicroMsg.AmrFileOperator", "ERR: WriteHeadToFile[" + this.fileName + "] failed:[" + paramArrayOfByte.getMessage() + "]");
+        bhP();
         AppMethodBeat.o(130036);
         return -2;
       }
@@ -187,7 +187,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelvoice.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mm.view.drawer;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.l;
+import kotlin.g.a.a;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
 final class RecyclerViewDrawerSquares$h$1
   implements Runnable
 {
@@ -13,7 +13,7 @@ final class RecyclerViewDrawerSquares$h$1
   public final void run()
   {
     AppMethodBeat.i(164674);
-    this.LPP.invoke();
+    this.Rov.invoke();
     AppMethodBeat.o(164674);
   }
 }

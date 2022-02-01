@@ -13,18 +13,18 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 class l
 {
-  private static volatile l gAs;
-  private static com.tencent.mm.ipcinvoker.a.b gAt;
-  private static final HandlerThread gAu;
+  private static volatile l hnh;
+  private static com.tencent.mm.ipcinvoker.a.b hni;
+  private static final HandlerThread hnj;
   ExecutorService mExecutorService;
   private Handler mHandler;
   
   static
   {
     AppMethodBeat.i(179050);
-    gAt = null;
+    hni = null;
     HandlerThread localHandlerThread = new HandlerThread("IPCThreadPool#WorkerThread");
-    gAu = localHandlerThread;
+    hnj = localHandlerThread;
     localHandlerThread.start();
     AppMethodBeat.o(179050);
   }
@@ -32,25 +32,25 @@ class l
   private l()
   {
     AppMethodBeat.i(179046);
-    this.mHandler = new Handler(gAu.getLooper());
-    if (gAt == null) {
-      gAt = new a();
+    this.mHandler = new Handler(hnj.getLooper());
+    if (hni == null) {
+      hni = new a();
     }
-    this.mExecutorService = gAt.ahQ();
+    this.mExecutorService = hni.ayd();
     com.tencent.mm.ipcinvoker.h.b.i("IPC.IPCThreadPool", "initialize IPCInvoker IPCThreadPool(hashCode : %s)", new Object[] { Integer.valueOf(hashCode()) });
     AppMethodBeat.o(179046);
   }
   
-  private static l ahO()
+  private static l ayb()
   {
     AppMethodBeat.i(179045);
-    if (gAs == null) {}
+    if (hnh == null) {}
     try
     {
-      if (gAs == null) {
-        gAs = new l();
+      if (hnh == null) {
+        hnh = new l();
       }
-      l locall = gAs;
+      l locall = hnh;
       AppMethodBeat.o(179045);
       return locall;
     }
@@ -60,10 +60,10 @@ class l
     }
   }
   
-  public static Handler ahP()
+  public static Handler ayc()
   {
     AppMethodBeat.i(179047);
-    Handler localHandler = new Handler(gAu.getLooper());
+    Handler localHandler = new Handler(hnj.getLooper());
     AppMethodBeat.o(179047);
     return localHandler;
   }
@@ -76,15 +76,15 @@ class l
       AppMethodBeat.o(179048);
       return false;
     }
-    ahO().mExecutorService.execute(paramRunnable);
+    ayb().mExecutorService.execute(paramRunnable);
     AppMethodBeat.o(179048);
     return true;
   }
   
-  public static boolean w(Runnable paramRunnable)
+  public static boolean x(Runnable paramRunnable)
   {
     AppMethodBeat.i(179049);
-    boolean bool = ahO().mHandler.postDelayed(paramRunnable, 2000L);
+    boolean bool = ayb().mHandler.postDelayed(paramRunnable, 2000L);
     AppMethodBeat.o(179049);
     return bool;
   }
@@ -92,13 +92,13 @@ class l
   static final class a
     implements com.tencent.mm.ipcinvoker.a.b
   {
-    private int gAv;
+    private int hnk;
     HandlerThread mHandlerThread;
     
     a()
     {
       AppMethodBeat.i(179043);
-      this.gAv = 3;
+      this.hnk = 3;
       HandlerThread localHandlerThread = new HandlerThread("IPCThreadPool#InnerWorkerThread-" + hashCode());
       localHandlerThread.start();
       com.tencent.mm.ipcinvoker.h.b.i("IPC.ExecutorServiceCreatorImpl", "createHandlerThread(hash : %d)", new Object[] { Integer.valueOf(localHandlerThread.hashCode()) });
@@ -106,10 +106,10 @@ class l
       AppMethodBeat.o(179043);
     }
     
-    public final ExecutorService ahQ()
+    public final ExecutorService ayd()
     {
       AppMethodBeat.i(179044);
-      ScheduledThreadPoolExecutor local2 = new ScheduledThreadPoolExecutor(this.gAv, new ThreadFactory()
+      ScheduledThreadPoolExecutor local2 = new ScheduledThreadPoolExecutor(this.hnk, new ThreadFactory()
       {
         int index = 0;
         
@@ -125,7 +125,7 @@ class l
             public final void run()
             {
               AppMethodBeat.i(179038);
-              ThreadLocal localThreadLocal = (ThreadLocal)new a(Looper.class, "sThreadLocal").ahW();
+              ThreadLocal localThreadLocal = (ThreadLocal)new a(Looper.class, "sThreadLocal").ayl();
               if ((localThreadLocal != null) && (localThreadLocal.get() == null))
               {
                 com.tencent.mm.ipcinvoker.h.b.d("IPC.ExecutorServiceCreatorImpl", "create a new Looper ThreadLocal variable.", new Object[0]);
@@ -178,7 +178,7 @@ class l
           AppMethodBeat.o(179041);
         }
       };
-      local2.setMaximumPoolSize((int)(this.gAv * 1.5D));
+      local2.setMaximumPoolSize((int)(this.hnk * 1.5D));
       local2.setRejectedExecutionHandler(new RejectedExecutionHandler()
       {
         public final void rejectedExecution(Runnable paramAnonymousRunnable, ThreadPoolExecutor paramAnonymousThreadPoolExecutor)
@@ -195,7 +195,7 @@ class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.l
  * JD-Core Version:    0.7.0.1
  */

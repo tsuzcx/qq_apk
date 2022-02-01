@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class jq
-  extends b
+  extends IEvent
 {
-  public a dxy;
-  public b dxz;
+  public a dOw;
+  public b dOx;
   
   public jq()
   {
@@ -17,27 +16,28 @@ public final class jq
   
   private jq(byte paramByte)
   {
-    AppMethodBeat.i(125621);
-    this.dxy = new a();
-    this.dxz = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(91207);
+    this.dOw = new a();
+    this.dOx = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125621);
+    AppMethodBeat.o(91207);
   }
   
   public static final class a
   {
-    public String dqc;
+    public int dOy = 0;
   }
   
   public static final class b
   {
-    public TimeLineObject dxA;
+    public String dOA;
+    public boolean dOz = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.jq
  * JD-Core Version:    0.7.0.1
  */

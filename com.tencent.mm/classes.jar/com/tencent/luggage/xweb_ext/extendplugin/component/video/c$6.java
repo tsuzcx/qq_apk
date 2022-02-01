@@ -1,37 +1,43 @@
 package com.tencent.luggage.xweb_ext.extendplugin.component.video;
 
+import com.tencent.luggage.xweb_ext.extendplugin.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class c$6
-  implements Runnable
+  implements a.a
 {
   c$6(c paramc) {}
   
-  public final void run()
+  public final void hU(int paramInt)
   {
-    boolean bool = false;
-    AppMethodBeat.i(138952);
-    c localc = this.cvH;
-    ae.i(localc.getLogTag(), "*** handler(%s) handleWebViewForeground", new Object[] { localc.BN() });
-    localc.cvu = false;
-    if (!localc.csB)
-    {
-      bool = localc.Gw();
-      localc.csD = null;
-    }
-    c.7 local7 = new c.7(localc, bool);
-    if (!localc.Gz())
-    {
-      ae.i(localc.getLogTag(), "handleWebViewForeground, resume playing");
-      local7.run();
-    }
-    AppMethodBeat.o(138952);
+    AppMethodBeat.i(215681);
+    Log.i(this.cJF.getLogTag(), "onBackground, type: ".concat(String.valueOf(paramInt)));
+    c localc = this.cJF;
+    localc.k(new c.10(localc, paramInt));
+    AppMethodBeat.o(215681);
+  }
+  
+  public final void onDestroy()
+  {
+    AppMethodBeat.i(215682);
+    c localc = this.cJF;
+    localc.k(new c.14(localc));
+    AppMethodBeat.o(215682);
+  }
+  
+  public final void onForeground()
+  {
+    AppMethodBeat.i(215680);
+    Log.i(this.cJF.getLogTag(), "onForeground");
+    c localc = this.cJF;
+    localc.k(new c.7(localc));
+    AppMethodBeat.o(215680);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.c.6
  * JD-Core Version:    0.7.0.1
  */

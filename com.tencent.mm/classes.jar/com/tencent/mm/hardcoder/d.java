@@ -4,18 +4,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  private static a gyM = null;
+  private static a hlz = null;
   
   public static void a(a parama)
   {
-    gyM = parama;
+    hlz = parama;
   }
   
   public static void d(String paramString1, String paramString2)
   {
     AppMethodBeat.i(62475);
-    if ((HardCoderJNI.isHcDebug()) && (gyM != null)) {
-      gyM.d(paramString1, paramString2);
+    if ((HardCoderJNI.isHcDebug()) && (hlz != null)) {
+      hlz.d(paramString1, paramString2);
     }
     AppMethodBeat.o(62475);
   }
@@ -23,8 +23,8 @@ public final class d
   public static void e(String paramString1, String paramString2)
   {
     AppMethodBeat.i(62476);
-    if (gyM != null) {
-      gyM.e(paramString1, paramString2);
+    if (hlz != null) {
+      hlz.e(paramString1, paramString2);
     }
     AppMethodBeat.o(62476);
   }
@@ -32,8 +32,8 @@ public final class d
   public static void i(String paramString1, String paramString2)
   {
     AppMethodBeat.i(62474);
-    if (gyM != null) {
-      gyM.i(paramString1, paramString2);
+    if (hlz != null) {
+      hlz.i(paramString1, paramString2);
     }
     AppMethodBeat.o(62474);
   }
@@ -41,8 +41,8 @@ public final class d
   public static void printErrStackTrace(String paramString1, Throwable paramThrowable, String paramString2, Object... paramVarArgs)
   {
     AppMethodBeat.i(62477);
-    if (gyM != null) {
-      gyM.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
+    if (hlz != null) {
+      hlz.printErrStackTrace(paramString1, paramThrowable, paramString2, paramVarArgs);
     }
     AppMethodBeat.o(62477);
   }

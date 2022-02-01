@@ -3,13 +3,19 @@ package com.tencent.mm.plugin.card;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.c.e;
-import com.tencent.mm.model.u;
 import com.tencent.mm.plugin.card.model.am;
 
 public class PluginCard
   extends f
   implements com.tencent.mm.plugin.card.a.a
 {
+  public void configure(com.tencent.mm.kernel.b.g paramg)
+  {
+    AppMethodBeat.i(201305);
+    com.tencent.mm.vfs.y.a("card", "card", 50331648L, 7);
+    AppMethodBeat.o(201305);
+  }
+  
   public void dependency()
   {
     AppMethodBeat.i(112561);
@@ -21,7 +27,7 @@ public class PluginCard
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(112560);
-    if (paramg.akL()) {
+    if (paramg.aBb()) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.card.c.b.class, new e(new com.tencent.mm.plugin.card.c.a()));
     }
     AppMethodBeat.o(112560);
@@ -30,7 +36,7 @@ public class PluginCard
   public am getCore()
   {
     AppMethodBeat.i(112559);
-    am localam = (am)u.ap(am.class);
+    am localam = (am)com.tencent.mm.model.y.at(am.class);
     AppMethodBeat.o(112559);
     return localam;
   }
@@ -50,7 +56,7 @@ public class PluginCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.PluginCard
  * JD-Core Version:    0.7.0.1
  */

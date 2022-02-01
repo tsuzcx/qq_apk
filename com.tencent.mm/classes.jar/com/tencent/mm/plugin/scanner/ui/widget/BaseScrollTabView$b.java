@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.scanner.ui.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
 final class BaseScrollTabView$b
   extends q
-  implements a<z>
+  implements a<x>
 {
-  public static final b yNh;
+  public static final b CQZ;
   
   static
   {
     AppMethodBeat.i(52340);
-    yNh = new b();
+    CQZ = new b();
     AppMethodBeat.o(52340);
   }
   

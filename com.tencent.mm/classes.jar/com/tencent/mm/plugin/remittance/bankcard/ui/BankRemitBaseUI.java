@@ -16,26 +16,7 @@ import java.lang.reflect.Method;
 public abstract class BankRemitBaseUI
   extends WalletBaseUI
 {
-  private static boolean a(Window paramWindow)
-  {
-    if (paramWindow != null) {
-      try
-      {
-        WindowManager.LayoutParams localLayoutParams = paramWindow.getAttributes();
-        Field localField1 = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
-        Field localField2 = WindowManager.LayoutParams.class.getDeclaredField("meizuFlags");
-        localField1.setAccessible(true);
-        localField2.setAccessible(true);
-        localField2.setInt(localLayoutParams, localField1.getInt(null) | localField2.getInt(localLayoutParams));
-        paramWindow.setAttributes(localLayoutParams);
-        return true;
-      }
-      catch (Exception paramWindow) {}
-    }
-    return false;
-  }
-  
-  public static int aB(Activity paramActivity)
+  public static int aC(Activity paramActivity)
   {
     int j = 0;
     int i = j;
@@ -51,15 +32,15 @@ public abstract class BankRemitBaseUI
     do
     {
       return i;
-      if (aC(paramActivity)) {
+      if (aD(paramActivity)) {
         return 1;
       }
       i = j;
-    } while (!a(paramActivity.getWindow()));
+    } while (!d(paramActivity.getWindow()));
     return 2;
   }
   
-  private static boolean aC(Activity paramActivity)
+  private static boolean aD(Activity paramActivity)
   {
     Window localWindow = paramActivity.getWindow();
     if (localWindow != null)
@@ -91,12 +72,31 @@ public abstract class BankRemitBaseUI
     }
   }
   
-  protected void deV() {}
+  private static boolean d(Window paramWindow)
+  {
+    if (paramWindow != null) {
+      try
+      {
+        WindowManager.LayoutParams localLayoutParams = paramWindow.getAttributes();
+        Field localField1 = WindowManager.LayoutParams.class.getDeclaredField("MEIZU_FLAG_DARK_STATUS_BAR_ICON");
+        Field localField2 = WindowManager.LayoutParams.class.getDeclaredField("meizuFlags");
+        localField1.setAccessible(true);
+        localField2.setAccessible(true);
+        localField2.setInt(localLayoutParams, localField1.getInt(null) | localField2.getInt(localLayoutParams));
+        paramWindow.setAttributes(localLayoutParams);
+        return true;
+      }
+      catch (Exception paramWindow) {}
+    }
+    return false;
+  }
+  
+  protected void dYP() {}
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    deV();
+    dYP();
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -125,7 +125,7 @@ public abstract class BankRemitBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.ui.BankRemitBaseUI
  * JD-Core Version:    0.7.0.1
  */

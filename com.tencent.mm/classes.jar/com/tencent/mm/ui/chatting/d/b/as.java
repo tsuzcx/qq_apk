@@ -1,20 +1,25 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import android.content.Intent;
-import android.view.MenuItem;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.ui.chatting.d.af;
 
 public abstract interface as
-  extends ad
+  extends af
 {
-  public abstract boolean a(MenuItem paramMenuItem, bv parambv);
+  public abstract void BU(boolean paramBoolean);
   
-  public abstract void aD(Intent paramIntent);
+  public abstract void aL(Runnable paramRunnable);
   
-  public abstract void bu(Intent paramIntent);
+  public abstract void bmP(String paramString);
   
-  public abstract boolean g(bv parambv, boolean paramBoolean);
+  public abstract void dq(String paramString, boolean paramBoolean);
+  
+  public abstract boolean gRh();
+  
+  public abstract boolean gRi();
+  
+  public abstract boolean gRj();
+  
+  public abstract int gRk();
 }
 
 

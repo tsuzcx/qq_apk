@@ -1,12 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.content.DialogInterface.OnDismissListener;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class uu
-  extends b
+  extends IEvent
 {
-  public a dKf;
+  public a ebc;
   
   public uu()
   {
@@ -15,21 +18,24 @@ public final class uu
   
   private uu(byte paramByte)
   {
-    AppMethodBeat.i(125641);
-    this.dKf = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(77798);
+    this.ebc = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125641);
+    AppMethodBeat.o(77798);
   }
   
   public static final class a
   {
-    public boolean dKg;
+    public Context context;
+    public String ebd;
+    public DialogInterface.OnDismissListener ebe;
+    public Bundle ebf;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.uu
  * JD-Core Version:    0.7.0.1
  */

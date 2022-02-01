@@ -2,163 +2,107 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class bi
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS emojiGroupIndex ON EmojiInfo(catalog)" };
-  private static final int eFV;
-  private static final int eHv;
-  private static final int eIf = "source".hashCode();
-  private static final int eTC;
-  private static final int eTG;
-  private static final int eUA = "md5".hashCode();
-  private static final int eUB = "svrid".hashCode();
-  private static final int eUC = "catalog".hashCode();
-  private static final int eUD;
-  private static final int eUE;
-  private static final int eUF;
-  private static final int eUG;
-  private static final int eUH;
-  private static final int eUI;
-  private static final int eUJ;
-  private static final int eUK;
-  private static final int eUL;
-  private static final int eUM;
-  private static final int eUN;
-  private static final int eUO = "needupload".hashCode();
-  private static final int eUP = "designerID".hashCode();
-  private static final int eUQ = "thumbUrl".hashCode();
-  private static final int eUR = "cdnUrl".hashCode();
-  private static final int eUS = "encrypturl".hashCode();
-  private static final int eUT = "aeskey".hashCode();
-  private static final int eUU = "width".hashCode();
-  private static final int eUV = "height".hashCode();
-  private static final int eUW = "externUrl".hashCode();
-  private static final int eUX = "externMd5".hashCode();
-  private static final int eUY = "activityid".hashCode();
-  private static final int eUZ = "tpurl".hashCode();
-  private static final int eVa = "tpauthkey".hashCode();
-  private static final int eVb = "wxamMd5".hashCode();
-  private static final int eVc = "attachedText".hashCode();
-  private static final int eVd = "captureStatus".hashCode();
-  private static final int eVe = "attachedEmojiMD5".hashCode();
-  private static final int eVf = "imitateMd5".hashCode();
-  private static final int eVg = "captureUploadErrCode".hashCode();
-  private static final int eVh = "captureUploadCounter".hashCode();
-  private static final int eVi = "captureEnterTime".hashCode();
-  private static final int eVj = "lensId".hashCode();
-  private static final int eVk = "attachTextColor".hashCode();
-  private static final int eVl = "captureScene".hashCode();
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int fjl;
+  private static final int fni = "flag".hashCode();
+  private static final int fwT = "productID".hashCode();
+  private static final int fwU = "packIconUrl".hashCode();
+  private static final int fwV = "packGrayIconUrl".hashCode();
+  private static final int fwW = "packCoverUrl".hashCode();
+  private static final int fwX = "packName".hashCode();
+  private static final int fwY = "packDesc".hashCode();
+  private static final int fwZ = "packAuthInfo".hashCode();
+  private static final int fxa = "packPrice".hashCode();
+  private static final int fxb = "packType".hashCode();
+  private static final int fxc = "packFlag".hashCode();
+  private static final int fxd = "packExpire".hashCode();
+  private static final int fxe = "packTimeStamp".hashCode();
+  private static final int fxf = "packCopyright".hashCode();
+  private static final int fxg;
+  private static final int fxh;
+  private static final int fxi;
+  private static final int fxj = "recommand".hashCode();
+  private static final int fxk = "sync".hashCode();
+  private static final int fxl = "idx".hashCode();
+  private static final int fxm = "BigIconUrl".hashCode();
+  private static final int fxn = "MutiLanName".hashCode();
+  private static final int fxo = "recommandType".hashCode();
+  private static final int fxp = "lang".hashCode();
+  private static final int fxq = "recommandWord".hashCode();
+  private static final int fxr = "buttonType".hashCode();
+  private static final int fxs = "count".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
   private boolean __hadSettype = true;
-  private boolean eFy = true;
-  private boolean eHt = true;
-  private boolean eIa = true;
-  private boolean eTO = true;
-  private boolean eTP = true;
-  private boolean eTQ = true;
-  private boolean eTR = true;
-  private boolean eTS = true;
-  private boolean eTT = true;
-  private boolean eTU = true;
-  private boolean eTV = true;
-  private boolean eTW = true;
-  private boolean eTX = true;
-  private boolean eTY = true;
-  private boolean eTZ = true;
-  private boolean eTc = true;
-  private boolean eTg = true;
-  private boolean eUa = true;
-  private boolean eUb = true;
-  private boolean eUc = true;
-  private boolean eUd = true;
-  private boolean eUe = true;
-  private boolean eUf = true;
-  private boolean eUg = true;
-  private boolean eUh = true;
-  private boolean eUi = true;
-  private boolean eUj = true;
-  private boolean eUk = true;
-  private boolean eUl = true;
-  private boolean eUm = true;
-  private boolean eUn = true;
-  private boolean eUo = true;
-  private boolean eUp = true;
-  private boolean eUq = true;
-  private boolean eUr = true;
-  private boolean eUs = true;
-  private boolean eUt = true;
-  private boolean eUu = true;
-  private boolean eUv = true;
-  private boolean eUw = true;
-  private boolean eUx = true;
-  private boolean eUy = true;
-  private boolean eUz = true;
-  public String field_activityid;
-  public String field_aeskey;
-  public String field_app_id;
-  public String field_attachTextColor;
-  public byte[] field_attachedEmojiMD5;
-  public String field_attachedText;
-  public long field_captureEnterTime;
-  public int field_captureScene;
-  public int field_captureStatus;
-  public int field_captureUploadCounter;
-  public int field_captureUploadErrCode;
-  public int field_catalog;
-  public String field_cdnUrl;
-  public String field_content;
-  public String field_designerID;
-  public String field_encrypturl;
-  public String field_externMd5;
-  public String field_externUrl;
-  public String field_framesInfo;
-  public String field_groupId;
-  public int field_height;
+  public String field_BigIconUrl;
+  public String field_MutiLanName;
+  public int field_buttonType;
+  public int field_count;
+  public int field_flag;
   public int field_idx;
-  public String field_imitateMd5;
+  public String field_lang;
   public long field_lastUseTime;
-  public String field_lensId;
-  public String field_md5;
-  public String field_name;
-  public int field_needupload;
-  public String field_reserved1;
-  public String field_reserved2;
-  public int field_reserved3;
-  public int field_reserved4;
-  public int field_size;
-  public int field_source;
-  public int field_start;
-  public int field_state;
-  public String field_svrid;
-  public int field_temp;
-  public String field_thumbUrl;
-  public String field_tpauthkey;
-  public String field_tpurl;
+  public String field_packAuthInfo;
+  public String field_packCopyright;
+  public String field_packCoverUrl;
+  public String field_packDesc;
+  public long field_packExpire;
+  public int field_packFlag;
+  public String field_packGrayIconUrl;
+  public String field_packIconUrl;
+  public String field_packName;
+  public String field_packPrice;
+  public int field_packStatus;
+  public long field_packTimeStamp;
+  public int field_packType;
+  public String field_productID;
+  public int field_recommand;
+  public int field_recommandType;
+  public String field_recommandWord;
+  public int field_sort;
+  public int field_status;
+  public int field_sync;
   public int field_type;
-  public int field_width;
-  public String field_wxamMd5;
+  private boolean fji = true;
+  private boolean fng = true;
+  private boolean fwA = true;
+  private boolean fwB = true;
+  private boolean fwC = true;
+  private boolean fwD = true;
+  private boolean fwE = true;
+  private boolean fwF = true;
+  private boolean fwG = true;
+  private boolean fwH = true;
+  private boolean fwI = true;
+  private boolean fwJ = true;
+  private boolean fwK = true;
+  private boolean fwL = true;
+  private boolean fwM = true;
+  private boolean fwN = true;
+  private boolean fwO = true;
+  private boolean fwP = true;
+  private boolean fwQ = true;
+  private boolean fwR = true;
+  private boolean fwS = true;
+  private boolean fwt = true;
+  private boolean fwu = true;
+  private boolean fwv = true;
+  private boolean fww = true;
+  private boolean fwx = true;
+  private boolean fwy = true;
+  private boolean fwz = true;
   
   static
   {
-    eHv = "size".hashCode();
-    eUD = "start".hashCode();
-    eUE = "state".hashCode();
-    eUF = "name".hashCode();
-    eFV = "content".hashCode();
-    eUG = "reserved1".hashCode();
-    eUH = "reserved2".hashCode();
-    eUI = "reserved3".hashCode();
-    eUJ = "reserved4".hashCode();
-    eUK = "app_id".hashCode();
-    eUL = "groupId".hashCode();
-    eTC = "lastUseTime".hashCode();
-    eUM = "framesInfo".hashCode();
-    eTG = "idx".hashCode();
-    eUN = "temp".hashCode();
+    fjl = "status".hashCode();
+    fxg = "sort".hashCode();
+    fxh = "lastUseTime".hashCode();
+    fxi = "packStatus".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -174,11 +118,11 @@ public abstract class bi
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eUA != k) {
+      if (fwT != k) {
         break label65;
       }
-      this.field_md5 = paramCursor.getString(i);
-      this.eTO = true;
+      this.field_productID = paramCursor.getString(i);
+      this.fwt = true;
     }
     for (;;)
     {
@@ -186,92 +130,62 @@ public abstract class bi
       break label20;
       break;
       label65:
-      if (eUB == k) {
-        this.field_svrid = paramCursor.getString(i);
-      } else if (eUC == k) {
-        this.field_catalog = paramCursor.getInt(i);
+      if (fwU == k) {
+        this.field_packIconUrl = paramCursor.getString(i);
+      } else if (fwV == k) {
+        this.field_packGrayIconUrl = paramCursor.getString(i);
+      } else if (fwW == k) {
+        this.field_packCoverUrl = paramCursor.getString(i);
+      } else if (fwX == k) {
+        this.field_packName = paramCursor.getString(i);
+      } else if (fwY == k) {
+        this.field_packDesc = paramCursor.getString(i);
+      } else if (fwZ == k) {
+        this.field_packAuthInfo = paramCursor.getString(i);
+      } else if (fxa == k) {
+        this.field_packPrice = paramCursor.getString(i);
+      } else if (fxb == k) {
+        this.field_packType = paramCursor.getInt(i);
+      } else if (fxc == k) {
+        this.field_packFlag = paramCursor.getInt(i);
+      } else if (fxd == k) {
+        this.field_packExpire = paramCursor.getLong(i);
+      } else if (fxe == k) {
+        this.field_packTimeStamp = paramCursor.getLong(i);
+      } else if (fxf == k) {
+        this.field_packCopyright = paramCursor.getString(i);
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eHv == k) {
-        this.field_size = paramCursor.getInt(i);
-      } else if (eUD == k) {
-        this.field_start = paramCursor.getInt(i);
-      } else if (eUE == k) {
-        this.field_state = paramCursor.getInt(i);
-      } else if (eUF == k) {
-        this.field_name = paramCursor.getString(i);
-      } else if (eFV == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (eUG == k) {
-        this.field_reserved1 = paramCursor.getString(i);
-      } else if (eUH == k) {
-        this.field_reserved2 = paramCursor.getString(i);
-      } else if (eUI == k) {
-        this.field_reserved3 = paramCursor.getInt(i);
-      } else if (eUJ == k) {
-        this.field_reserved4 = paramCursor.getInt(i);
-      } else if (eUK == k) {
-        this.field_app_id = paramCursor.getString(i);
-      } else if (eUL == k) {
-        this.field_groupId = paramCursor.getString(i);
-      } else if (eTC == k) {
+      } else if (fjl == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (fxg == k) {
+        this.field_sort = paramCursor.getInt(i);
+      } else if (fxh == k) {
         this.field_lastUseTime = paramCursor.getLong(i);
-      } else if (eUM == k) {
-        this.field_framesInfo = paramCursor.getString(i);
-      } else if (eTG == k) {
+      } else if (fxi == k) {
+        this.field_packStatus = paramCursor.getInt(i);
+      } else if (fni == k) {
+        this.field_flag = paramCursor.getInt(i);
+      } else if (fxj == k) {
+        this.field_recommand = paramCursor.getInt(i);
+      } else if (fxk == k) {
+        this.field_sync = paramCursor.getInt(i);
+      } else if (fxl == k) {
         this.field_idx = paramCursor.getInt(i);
-      } else if (eUN == k) {
-        this.field_temp = paramCursor.getInt(i);
-      } else if (eIf == k) {
-        this.field_source = paramCursor.getInt(i);
-      } else if (eUO == k) {
-        this.field_needupload = paramCursor.getInt(i);
-      } else if (eUP == k) {
-        this.field_designerID = paramCursor.getString(i);
-      } else if (eUQ == k) {
-        this.field_thumbUrl = paramCursor.getString(i);
-      } else if (eUR == k) {
-        this.field_cdnUrl = paramCursor.getString(i);
-      } else if (eUS == k) {
-        this.field_encrypturl = paramCursor.getString(i);
-      } else if (eUT == k) {
-        this.field_aeskey = paramCursor.getString(i);
-      } else if (eUU == k) {
-        this.field_width = paramCursor.getInt(i);
-      } else if (eUV == k) {
-        this.field_height = paramCursor.getInt(i);
-      } else if (eUW == k) {
-        this.field_externUrl = paramCursor.getString(i);
-      } else if (eUX == k) {
-        this.field_externMd5 = paramCursor.getString(i);
-      } else if (eUY == k) {
-        this.field_activityid = paramCursor.getString(i);
-      } else if (eUZ == k) {
-        this.field_tpurl = paramCursor.getString(i);
-      } else if (eVa == k) {
-        this.field_tpauthkey = paramCursor.getString(i);
-      } else if (eVb == k) {
-        this.field_wxamMd5 = paramCursor.getString(i);
-      } else if (eVc == k) {
-        this.field_attachedText = paramCursor.getString(i);
-      } else if (eVd == k) {
-        this.field_captureStatus = paramCursor.getInt(i);
-      } else if (eVe == k) {
-        this.field_attachedEmojiMD5 = paramCursor.getBlob(i);
-      } else if (eVf == k) {
-        this.field_imitateMd5 = paramCursor.getString(i);
-      } else if (eVg == k) {
-        this.field_captureUploadErrCode = paramCursor.getInt(i);
-      } else if (eVh == k) {
-        this.field_captureUploadCounter = paramCursor.getInt(i);
-      } else if (eVi == k) {
-        this.field_captureEnterTime = paramCursor.getLong(i);
-      } else if (eVj == k) {
-        this.field_lensId = paramCursor.getString(i);
-      } else if (eVk == k) {
-        this.field_attachTextColor = paramCursor.getString(i);
-      } else if (eVl == k) {
-        this.field_captureScene = paramCursor.getInt(i);
+      } else if (fxm == k) {
+        this.field_BigIconUrl = paramCursor.getString(i);
+      } else if (fxn == k) {
+        this.field_MutiLanName = paramCursor.getString(i);
+      } else if (fxo == k) {
+        this.field_recommandType = paramCursor.getInt(i);
+      } else if (fxp == k) {
+        this.field_lang = paramCursor.getString(i);
+      } else if (fxq == k) {
+        this.field_recommandWord = paramCursor.getString(i);
+      } else if (fxr == k) {
+        this.field_buttonType = paramCursor.getInt(i);
+      } else if (fxs == k) {
+        this.field_count = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -281,155 +195,102 @@ public abstract class bi
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eTO) {
-      localContentValues.put("md5", this.field_md5);
+    if (this.fwt) {
+      localContentValues.put("productID", this.field_productID);
     }
-    if (this.eTP) {
-      localContentValues.put("svrid", this.field_svrid);
+    if (this.fwu) {
+      localContentValues.put("packIconUrl", this.field_packIconUrl);
     }
-    if (this.eTQ) {
-      localContentValues.put("catalog", Integer.valueOf(this.field_catalog));
+    if (this.fwv) {
+      localContentValues.put("packGrayIconUrl", this.field_packGrayIconUrl);
+    }
+    if (this.fww) {
+      localContentValues.put("packCoverUrl", this.field_packCoverUrl);
+    }
+    if (this.fwx) {
+      localContentValues.put("packName", this.field_packName);
+    }
+    if (this.fwy) {
+      localContentValues.put("packDesc", this.field_packDesc);
+    }
+    if (this.fwz) {
+      localContentValues.put("packAuthInfo", this.field_packAuthInfo);
+    }
+    if (this.fwA) {
+      localContentValues.put("packPrice", this.field_packPrice);
+    }
+    if (this.fwB) {
+      localContentValues.put("packType", Integer.valueOf(this.field_packType));
+    }
+    if (this.fwC) {
+      localContentValues.put("packFlag", Integer.valueOf(this.field_packFlag));
+    }
+    if (this.fwD) {
+      localContentValues.put("packExpire", Long.valueOf(this.field_packExpire));
+    }
+    if (this.fwE) {
+      localContentValues.put("packTimeStamp", Long.valueOf(this.field_packTimeStamp));
+    }
+    if (this.fwF) {
+      localContentValues.put("packCopyright", this.field_packCopyright);
     }
     if (this.__hadSettype) {
       localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.eHt) {
-      localContentValues.put("size", Integer.valueOf(this.field_size));
+    if (this.fji) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.eTR) {
-      localContentValues.put("start", Integer.valueOf(this.field_start));
+    if (this.fwG) {
+      localContentValues.put("sort", Integer.valueOf(this.field_sort));
     }
-    if (this.eTS) {
-      localContentValues.put("state", Integer.valueOf(this.field_state));
-    }
-    if (this.eTT) {
-      localContentValues.put("name", this.field_name);
-    }
-    if (this.eFy) {
-      localContentValues.put("content", this.field_content);
-    }
-    if (this.eTU) {
-      localContentValues.put("reserved1", this.field_reserved1);
-    }
-    if (this.eTV) {
-      localContentValues.put("reserved2", this.field_reserved2);
-    }
-    if (this.eTW) {
-      localContentValues.put("reserved3", Integer.valueOf(this.field_reserved3));
-    }
-    if (this.eTX) {
-      localContentValues.put("reserved4", Integer.valueOf(this.field_reserved4));
-    }
-    if (this.eTY) {
-      localContentValues.put("app_id", this.field_app_id);
-    }
-    if (this.field_groupId == null) {
-      this.field_groupId = "";
-    }
-    if (this.eTZ) {
-      localContentValues.put("groupId", this.field_groupId);
-    }
-    if (this.eTc) {
+    if (this.fwH) {
       localContentValues.put("lastUseTime", Long.valueOf(this.field_lastUseTime));
     }
-    if (this.field_framesInfo == null) {
-      this.field_framesInfo = "";
+    if (this.fwI) {
+      localContentValues.put("packStatus", Integer.valueOf(this.field_packStatus));
     }
-    if (this.eUa) {
-      localContentValues.put("framesInfo", this.field_framesInfo);
+    if (this.fng) {
+      localContentValues.put("flag", Integer.valueOf(this.field_flag));
     }
-    if (this.eTg) {
+    if (this.fwJ) {
+      localContentValues.put("recommand", Integer.valueOf(this.field_recommand));
+    }
+    if (this.fwK) {
+      localContentValues.put("sync", Integer.valueOf(this.field_sync));
+    }
+    if (this.fwL) {
       localContentValues.put("idx", Integer.valueOf(this.field_idx));
     }
-    if (this.eUb) {
-      localContentValues.put("temp", Integer.valueOf(this.field_temp));
+    if (this.fwM) {
+      localContentValues.put("BigIconUrl", this.field_BigIconUrl);
     }
-    if (this.eIa) {
-      localContentValues.put("source", Integer.valueOf(this.field_source));
+    if (this.fwN) {
+      localContentValues.put("MutiLanName", this.field_MutiLanName);
     }
-    if (this.eUc) {
-      localContentValues.put("needupload", Integer.valueOf(this.field_needupload));
+    if (this.fwO) {
+      localContentValues.put("recommandType", Integer.valueOf(this.field_recommandType));
     }
-    if (this.eUd) {
-      localContentValues.put("designerID", this.field_designerID);
+    if (this.fwP) {
+      localContentValues.put("lang", this.field_lang);
     }
-    if (this.eUe) {
-      localContentValues.put("thumbUrl", this.field_thumbUrl);
+    if (this.fwQ) {
+      localContentValues.put("recommandWord", this.field_recommandWord);
     }
-    if (this.eUf) {
-      localContentValues.put("cdnUrl", this.field_cdnUrl);
+    if (this.fwR) {
+      localContentValues.put("buttonType", Integer.valueOf(this.field_buttonType));
     }
-    if (this.eUg) {
-      localContentValues.put("encrypturl", this.field_encrypturl);
-    }
-    if (this.eUh) {
-      localContentValues.put("aeskey", this.field_aeskey);
-    }
-    if (this.eUi) {
-      localContentValues.put("width", Integer.valueOf(this.field_width));
-    }
-    if (this.eUj) {
-      localContentValues.put("height", Integer.valueOf(this.field_height));
-    }
-    if (this.eUk) {
-      localContentValues.put("externUrl", this.field_externUrl);
-    }
-    if (this.eUl) {
-      localContentValues.put("externMd5", this.field_externMd5);
-    }
-    if (this.eUm) {
-      localContentValues.put("activityid", this.field_activityid);
-    }
-    if (this.eUn) {
-      localContentValues.put("tpurl", this.field_tpurl);
-    }
-    if (this.eUo) {
-      localContentValues.put("tpauthkey", this.field_tpauthkey);
-    }
-    if (this.eUp) {
-      localContentValues.put("wxamMd5", this.field_wxamMd5);
-    }
-    if (this.eUq) {
-      localContentValues.put("attachedText", this.field_attachedText);
-    }
-    if (this.eUr) {
-      localContentValues.put("captureStatus", Integer.valueOf(this.field_captureStatus));
-    }
-    if (this.eUs) {
-      localContentValues.put("attachedEmojiMD5", this.field_attachedEmojiMD5);
-    }
-    if (this.eUt) {
-      localContentValues.put("imitateMd5", this.field_imitateMd5);
-    }
-    if (this.eUu) {
-      localContentValues.put("captureUploadErrCode", Integer.valueOf(this.field_captureUploadErrCode));
-    }
-    if (this.eUv) {
-      localContentValues.put("captureUploadCounter", Integer.valueOf(this.field_captureUploadCounter));
-    }
-    if (this.eUw) {
-      localContentValues.put("captureEnterTime", Long.valueOf(this.field_captureEnterTime));
-    }
-    if (this.eUx) {
-      localContentValues.put("lensId", this.field_lensId);
-    }
-    if (this.eUy) {
-      localContentValues.put("attachTextColor", this.field_attachTextColor);
-    }
-    if (this.eUz) {
-      localContentValues.put("captureScene", Integer.valueOf(this.field_captureScene));
+    if (this.fwS) {
+      localContentValues.put("count", Integer.valueOf(this.field_count));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
     }
     return localContentValues;
   }
-  
-  public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.c.bi
  * JD-Core Version:    0.7.0.1
  */

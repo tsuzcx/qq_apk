@@ -15,14 +15,14 @@ public class FinderJsApiMediaObj
     AppMethodBeat.i(169000);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.mediaPath != null) {
-        paramVarArgs.d(1, this.mediaPath);
+        paramVarArgs.e(1, this.mediaPath);
       }
-      paramVarArgs.aS(2, this.mediaType);
+      paramVarArgs.aM(2, this.mediaType);
       if (this.thumbInfo != null)
       {
-        paramVarArgs.lJ(3, this.thumbInfo.computeSize());
+        paramVarArgs.ni(3, this.thumbInfo.computeSize());
         this.thumbInfo.writeFields(paramVarArgs);
       }
       AppMethodBeat.o(169000);
@@ -34,21 +34,21 @@ public class FinderJsApiMediaObj
       }
     }
     label414:
-    for (paramInt = f.a.a.b.b.a.e(1, this.mediaPath) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.mediaPath) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.mediaType);
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.mediaType);
       paramInt = i;
       if (this.thumbInfo != null) {
-        paramInt = i + f.a.a.a.lI(3, this.thumbInfo.computeSize());
+        paramInt = i + g.a.a.a.nh(3, this.thumbInfo.computeSize());
       }
       AppMethodBeat.o(169000);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(169000);
@@ -56,7 +56,7 @@ public class FinderJsApiMediaObj
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         FinderJsApiMediaObj localFinderJsApiMediaObj = (FinderJsApiMediaObj)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -65,23 +65,23 @@ public class FinderJsApiMediaObj
           AppMethodBeat.o(169000);
           return -1;
         case 1: 
-          localFinderJsApiMediaObj.mediaPath = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderJsApiMediaObj.mediaPath = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(169000);
           return 0;
         case 2: 
-          localFinderJsApiMediaObj.mediaType = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderJsApiMediaObj.mediaType = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(169000);
           return 0;
         }
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new FinderJsApiMediaThumbInfo();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((FinderJsApiMediaThumbInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((FinderJsApiMediaThumbInfo)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
           localFinderJsApiMediaObj.thumbInfo = ((FinderJsApiMediaThumbInfo)localObject1);
           paramInt += 1;
         }

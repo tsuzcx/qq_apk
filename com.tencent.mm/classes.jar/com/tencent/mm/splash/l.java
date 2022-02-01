@@ -9,15 +9,15 @@ import java.util.List;
 
 final class l
 {
-  public static List<ProviderInfo> IFA;
-  public static Method IFB;
-  public static j IFC;
-  public static Field IFD;
-  public static Field IFE;
-  public static Handler IFx;
-  public static Object IFy;
-  public static Application IFz;
-  public static Object cWk;
+  public static Object NMq;
+  public static Application NMr;
+  public static List<ProviderInfo> NMs;
+  public static Method NMt;
+  public static j NMu;
+  public static Field NMv;
+  public static Field NMw;
+  public static Object dmH;
+  public static Handler kHW;
 }
 
 

@@ -42,6 +42,7 @@ import com.tencent.kinda.framework.module.impl.ReportServiceImpl;
 import com.tencent.kinda.framework.module.impl.RsaCryptUtilImpl;
 import com.tencent.kinda.modularize.KindaModule;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.luckymoney.ui.b;
 
 public class KindaBaseServiceModule
   extends KindaModule
@@ -56,6 +57,7 @@ public class KindaBaseServiceModule
     registerNativeModule("IPlatformUtil", KindaPlatformUtil.class);
     registerNativeModule("KLogService", KLogServiceImpl.class);
     registerNativeModule("KDeviceService", KindaDeviceServiceImpl.class);
+    registerNativeModule("KUserService", b.class);
     registerNativeModule("KReportService", ReportServiceImpl.class);
     registerNativeModule("IDeviceFrameDrawLoopCallback", KindaDeviceFrameDrawLoopCallback.class);
     registerNativeModule("KPlatformUIRouter", PlatformUIRouterImpl.class);
@@ -97,7 +99,7 @@ public class KindaBaseServiceModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.module.base.KindaBaseServiceModule
  * JD-Core Version:    0.7.0.1
  */

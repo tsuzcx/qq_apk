@@ -10,34 +10,34 @@ import java.util.ArrayList;
 
 public final class a
 {
-  private static e.a kjw;
+  private static e.a lne;
   
   static
   {
     AppMethodBeat.i(121288);
-    kjw = new a.1();
+    lne = new a.1();
     AppMethodBeat.o(121288);
   }
   
-  public static e.a bgG()
+  public static e.a bBZ()
   {
-    return kjw;
+    return lne;
   }
   
-  public static void c(String paramString, ArrayList<LogInfo> paramArrayList)
+  public static void d(String paramString, ArrayList<LogInfo> paramArrayList)
   {
     AppMethodBeat.i(121287);
     Bundle localBundle = new Bundle();
     localBundle.putString("id", paramString);
     localBundle.putParcelableArrayList("logList", paramArrayList);
-    paramString = b.nvB;
-    c.ahU().m(paramString.getClass().getName(), localBundle);
+    paramString = b.oFD;
+    c.ayj().m(paramString.getClass().getName(), localBundle);
     AppMethodBeat.o(121287);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.debugger.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,40 +7,38 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.model.bl.a;
-import com.tencent.mm.model.c;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.x;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.model.bp.a;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.account.friend.a.l.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.j;
 import com.tencent.mm.pluginsdk.b.a;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.br;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bw;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
+import com.tencent.mm.ui.base.q;
 import junit.framework.Assert;
 
 public final class e
   implements a
 {
-  private an contact;
+  private boolean Bdx;
+  private HelperHeaderPreference.a Bfp;
+  private as contact;
   Context context;
   boolean isDeleteCancel;
   private f screen;
   private int status;
-  p tipDialog;
-  private boolean xfQ;
-  private HelperHeaderPreference.a xhB;
+  q tipDialog;
   
   public e(Context paramContext)
   {
@@ -48,25 +46,25 @@ public final class e
     this.tipDialog = null;
     this.isDeleteCancel = false;
     this.context = paramContext;
-    this.xhB = new o(paramContext);
+    this.Bfp = new p(paramContext);
     this.status = -1;
     AppMethodBeat.o(27119);
   }
   
-  private boolean Nz(int paramInt)
+  private boolean UM(int paramInt)
   {
     return (this.status & paramInt) != 0;
   }
   
-  private void h(boolean paramBoolean, int paramInt1, int paramInt2)
+  private void i(boolean paramBoolean, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(27121);
-    ae.d("MicroMsg.ContactWidgetFMessage", "switch change : open = " + paramBoolean + " item value = " + paramInt1 + " functionId = " + paramInt2);
+    Log.d("MicroMsg.ContactWidgetFMessage", "switch change : open = " + paramBoolean + " item value = " + paramInt1 + " functionId = " + paramInt2);
     if (paramBoolean)
     {
       this.status |= paramInt1;
-      bc.aCg();
-      c.ajA().set(7, Integer.valueOf(this.status));
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(7, Integer.valueOf(this.status));
       if (!paramBoolean) {
         break label127;
       }
@@ -74,8 +72,8 @@ public final class e
     label127:
     for (paramInt1 = 1;; paramInt1 = 2)
     {
-      bc.aCg();
-      c.azE().d(new com.tencent.mm.ba.h(paramInt2, paramInt1));
+      bg.aVF();
+      com.tencent.mm.model.c.aSM().d(new com.tencent.mm.ba.h(paramInt2, paramInt1));
       AppMethodBeat.o(27121);
       return;
       this.status &= (paramInt1 ^ 0xFFFFFFFF);
@@ -83,7 +81,7 @@ public final class e
     }
   }
   
-  public final boolean a(f paramf, an paraman, boolean paramBoolean, int paramInt)
+  public final boolean a(f paramf, as paramas, boolean paramBoolean, int paramInt)
   {
     int i = 0;
     AppMethodBeat.i(27122);
@@ -96,43 +94,43 @@ public final class e
     {
       bool = true;
       Assert.assertTrue(bool);
-      if (paraman == null) {
+      if (paramas == null) {
         break label368;
       }
       bool = true;
       Assert.assertTrue(bool);
-      Assert.assertTrue(x.As(paraman.field_username));
+      Assert.assertTrue(ab.IX(paramas.field_username));
       this.screen = paramf;
-      this.xfQ = paramBoolean;
-      this.contact = paraman;
+      this.Bdx = paramBoolean;
+      this.contact = paramas;
       if (this.status == -1) {
-        this.status = v.aAG();
+        this.status = z.aUc();
       }
-      paramf.addPreferencesFromResource(2131951641);
-      localCheckBoxPreference1 = (CheckBoxPreference)paramf.aXe("contact_info_recommend_qqfriends_to_me");
-      localCheckBoxPreference2 = (CheckBoxPreference)paramf.aXe("contact_info_recommend_mobilefriends_to_me");
-      localCheckBoxPreference3 = (CheckBoxPreference)paramf.aXe("contact_info_recommend_fbfriends_to_me");
-      if (Nz(256)) {
+      paramf.addPreferencesFromResource(2132017178);
+      localCheckBoxPreference1 = (CheckBoxPreference)paramf.bmg("contact_info_recommend_qqfriends_to_me");
+      localCheckBoxPreference2 = (CheckBoxPreference)paramf.bmg("contact_info_recommend_mobilefriends_to_me");
+      localCheckBoxPreference3 = (CheckBoxPreference)paramf.bmg("contact_info_recommend_fbfriends_to_me");
+      if (UM(256)) {
         break label374;
       }
       paramBoolean = true;
       label132:
       localCheckBoxPreference2.setChecked(paramBoolean);
-      if (Nz(128)) {
+      if (UM(128)) {
         break label379;
       }
       paramBoolean = true;
       label150:
       localCheckBoxPreference1.setChecked(paramBoolean);
-      if ((v.aAI() & 0x4) == 0) {
+      if ((z.aUe() & 0x4) == 0) {
         break label384;
       }
       paramBoolean = true;
       label166:
       localCheckBoxPreference3.setChecked(paramBoolean);
-      ((HelperHeaderPreference)paramf.aXe("contact_info_header_helper")).a(paraman, this.xhB);
-      bc.aCg();
-      if (bu.o((Integer)c.ajA().get(9, null)) == 0) {
+      ((HelperHeaderPreference)paramf.bmg("contact_info_header_helper")).a(paramas, this.Bfp);
+      bg.aVF();
+      if (Util.nullAsNil((Integer)com.tencent.mm.model.c.azQ().get(9, null)) == 0) {
         break label389;
       }
       paramInt = 1;
@@ -140,10 +138,10 @@ public final class e
       if (paramInt == 0) {
         break label395;
       }
-      paramf.d(paramf.aXe("contact_info_bind_qq_entry"));
-      paramf.d(paramf.aXe("contact_info_bind_qq_entry_tip"));
+      paramf.e(paramf.bmg("contact_info_bind_qq_entry"));
+      paramf.e(paramf.bmg("contact_info_bind_qq_entry_tip"));
       label251:
-      if (com.tencent.mm.plugin.account.friend.a.l.aTn() != l.a.jgH) {
+      if (com.tencent.mm.plugin.account.friend.a.l.bnZ() != l.a.keL) {
         break label443;
       }
       paramInt = 1;
@@ -151,23 +149,23 @@ public final class e
       if (paramInt == 0) {
         break label449;
       }
-      paramf.d(paramf.aXe("contact_info_bind_mobile_entry"));
-      paramf.d(paramf.aXe("contact_info_bind_mobile_entry_tip"));
+      paramf.e(paramf.bmg("contact_info_bind_mobile_entry"));
+      paramf.e(paramf.bmg("contact_info_bind_mobile_entry_tip"));
       label298:
       paramInt = i;
-      if ((v.aAO() & 0x2000) == 0) {
+      if ((z.aUl() & 0x2000) == 0) {
         paramInt = 1;
       }
       if (paramInt == 0) {
         break label490;
       }
-      paramBoolean = v.aBi();
-      com.tencent.mm.aw.b.aJE();
-      paramf.d(localCheckBoxPreference3);
+      paramBoolean = z.aUF();
+      com.tencent.mm.aw.b.bdF();
+      paramf.e(localCheckBoxPreference3);
       if (paramBoolean) {
         break label474;
       }
-      paramf.aXe("contact_info_bind_fb_entry").setSummary(2131763187);
+      paramf.bmg("contact_info_bind_fb_entry").setSummary(2131765355);
     }
     for (;;)
     {
@@ -191,69 +189,69 @@ public final class e
       paramInt = 0;
       break label216;
       label395:
-      paramf.d(localCheckBoxPreference1);
-      if (com.tencent.mm.aw.b.aJD()) {
+      paramf.e(localCheckBoxPreference1);
+      if (com.tencent.mm.aw.b.bdE()) {
         break label251;
       }
-      paramf.d(paramf.aXe("contact_info_bind_qq_entry"));
-      paramf.d(paramf.aXe("contact_info_bind_qq_entry_tip"));
+      paramf.e(paramf.bmg("contact_info_bind_qq_entry"));
+      paramf.e(paramf.bmg("contact_info_bind_qq_entry_tip"));
       break label251;
       label443:
       paramInt = 0;
       break label263;
       label449:
-      paramf.d(localCheckBoxPreference2);
-      paramf.aXe("contact_info_bind_mobile_entry").setSummary(2131763187);
+      paramf.e(localCheckBoxPreference2);
+      paramf.bmg("contact_info_bind_mobile_entry").setSummary(2131765355);
       break label298;
       label474:
-      paramf.aXe("contact_info_bind_fb_entry").setSummary(2131757658);
+      paramf.bmg("contact_info_bind_fb_entry").setSummary(2131757886);
       continue;
       label490:
-      paramf.d(paramf.aXe("contact_info_bind_fb_entry"));
-      paramf.d(paramf.aXe("contact_info_bind_fb_entry_tip"));
-      paramf.d(localCheckBoxPreference3);
+      paramf.e(paramf.bmg("contact_info_bind_fb_entry"));
+      paramf.e(paramf.bmg("contact_info_bind_fb_entry_tip"));
+      paramf.e(localCheckBoxPreference3);
     }
   }
   
-  public final boolean abx(String paramString)
+  public final boolean alD(String paramString)
   {
     boolean bool = false;
     AppMethodBeat.i(27120);
-    ae.d("MicroMsg.ContactWidgetFMessage", "handlerEvent : key = ".concat(String.valueOf(paramString)));
-    if (bu.nullAsNil(paramString).length() <= 0)
+    Log.d("MicroMsg.ContactWidgetFMessage", "handlerEvent : key = ".concat(String.valueOf(paramString)));
+    if (Util.nullAsNil(paramString).length() <= 0)
     {
       AppMethodBeat.o(27120);
       return false;
     }
     if (paramString.equals("contact_info_recommend_qqfriends_to_me"))
     {
-      if (!((CheckBoxPreference)this.screen.aXe("contact_info_recommend_qqfriends_to_me")).isChecked()) {}
+      if (!((CheckBoxPreference)this.screen.bmg("contact_info_recommend_qqfriends_to_me")).isChecked()) {}
       for (bool = true;; bool = false)
       {
-        h(bool, 128, 6);
+        i(bool, 128, 6);
         AppMethodBeat.o(27120);
         return true;
       }
     }
     if (paramString.equals("contact_info_recommend_mobilefriends_to_me"))
     {
-      if (!((CheckBoxPreference)this.screen.aXe("contact_info_recommend_mobilefriends_to_me")).isChecked()) {
+      if (!((CheckBoxPreference)this.screen.bmg("contact_info_recommend_mobilefriends_to_me")).isChecked()) {
         bool = true;
       }
-      h(bool, 256, 7);
+      i(bool, 256, 7);
       AppMethodBeat.o(27120);
       return true;
     }
     if (paramString.equals("contact_info_recommend_fbfriends_to_me"))
     {
-      bool = ((CheckBoxPreference)this.screen.aXe("contact_info_recommend_fbfriends_to_me")).isChecked();
-      ae.d("MicroMsg.ContactWidgetFMessage", "switch change : open = " + bool + " item value = 4 functionId = 18");
-      int i = v.aAI();
+      bool = ((CheckBoxPreference)this.screen.bmg("contact_info_recommend_fbfriends_to_me")).isChecked();
+      Log.d("MicroMsg.ContactWidgetFMessage", "switch change : open = " + bool + " item value = 4 functionId = 18");
+      int i = z.aUe();
       if (bool)
       {
         i |= 0x4;
-        bc.aCg();
-        c.ajA().set(40, Integer.valueOf(i));
+        bg.aVF();
+        com.tencent.mm.model.c.azQ().set(40, Integer.valueOf(i));
         if (!bool) {
           break label270;
         }
@@ -261,8 +259,8 @@ public final class e
       label270:
       for (i = 1;; i = 2)
       {
-        bc.aCg();
-        c.azE().d(new com.tencent.mm.ba.h(18, i));
+        bg.aVF();
+        com.tencent.mm.model.c.aSM().d(new com.tencent.mm.ba.h(18, i));
         AppMethodBeat.o(27120);
         return true;
         i &= 0xFFFFFFFB;
@@ -272,7 +270,7 @@ public final class e
     if (paramString.equals("contact_info_view_message"))
     {
       paramString = new Intent();
-      if (this.xfQ)
+      if (this.Bdx)
       {
         paramString.putExtra("Chat_User", this.contact.field_username);
         paramString.putExtra("Chat_Mode", 1);
@@ -287,31 +285,31 @@ public final class e
         paramString.putExtra("Chat_User", this.contact.field_username);
         paramString.putExtra("Chat_Mode", 1);
         paramString.addFlags(67108864);
-        com.tencent.mm.plugin.profile.b.iUz.d(paramString, this.context);
+        com.tencent.mm.plugin.profile.b.jRt.d(paramString, this.context);
         ((Activity)this.context).finish();
       }
     }
     if (paramString.equals("contact_info_bind_mobile_entry"))
     {
-      com.tencent.mm.plugin.profile.b.iUz.f(new Intent(), this.context);
+      com.tencent.mm.plugin.profile.b.jRt.f(new Intent(), this.context);
       AppMethodBeat.o(27120);
       return true;
     }
     if (paramString.equals("contact_info_bind_qq_entry"))
     {
-      com.tencent.mm.plugin.profile.b.iUz.g(new Intent(), this.context);
+      com.tencent.mm.plugin.profile.b.jRt.g(new Intent(), this.context);
       AppMethodBeat.o(27120);
       return true;
     }
     if (paramString.equals("contact_info_bind_fb_entry"))
     {
-      d.b(this.context, "account", ".ui.FacebookAuthUI", new Intent());
+      com.tencent.mm.br.c.b(this.context, "account", ".ui.FacebookAuthUI", new Intent());
       AppMethodBeat.o(27120);
       return true;
     }
     if (paramString.equals("contact_info_fmessage_clear_data"))
     {
-      com.tencent.mm.ui.base.h.e(this.context, this.context.getString(2131757630), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.c(this.context, this.context.getString(2131757858), "", this.context.getString(2131755764), this.context.getString(2131755761), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -319,27 +317,27 @@ public final class e
           paramAnonymousDialogInterface = e.this;
           paramAnonymousDialogInterface.isDeleteCancel = false;
           Context localContext = paramAnonymousDialogInterface.context;
-          paramAnonymousDialogInterface.context.getString(2131755906);
-          paramAnonymousDialogInterface.tipDialog = com.tencent.mm.ui.base.h.b(localContext, paramAnonymousDialogInterface.context.getString(2131755936), true, new e.2(paramAnonymousDialogInterface));
-          bl.a("fmessage", new e.3(paramAnonymousDialogInterface));
-          bc.aCg();
-          c.azL().aUY("fmessage");
+          paramAnonymousDialogInterface.context.getString(2131755998);
+          paramAnonymousDialogInterface.tipDialog = com.tencent.mm.ui.base.h.a(localContext, paramAnonymousDialogInterface.context.getString(2131756029), true, new e.2(paramAnonymousDialogInterface));
+          bp.a("fmessage", new e.3(paramAnonymousDialogInterface));
+          bg.aVF();
+          com.tencent.mm.model.c.aST().bjW("fmessage");
           AppMethodBeat.o(27117);
         }
       }, null);
       AppMethodBeat.o(27120);
       return true;
     }
-    ae.e("MicroMsg.ContactWidgetFMessage", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    Log.e("MicroMsg.ContactWidgetFMessage", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(27120);
     return false;
   }
   
-  public final boolean ceC()
+  public final boolean cCs()
   {
     AppMethodBeat.i(27123);
-    com.tencent.mm.plugin.profile.b.iUA.MM();
-    this.screen.aXe("contact_info_header_helper");
+    com.tencent.mm.plugin.profile.b.jRu.WZ();
+    this.screen.bmg("contact_info_header_helper");
     AppMethodBeat.o(27123);
     return true;
   }
@@ -348,7 +346,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.e
  * JD-Core Version:    0.7.0.1
  */

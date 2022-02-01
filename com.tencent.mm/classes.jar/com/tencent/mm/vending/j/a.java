@@ -4,33 +4,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class a
 {
-  public Object[] LFB;
+  public Object[] RaR;
   
-  public static <$1, $2> c<$1, $2> N($1 param$1, $2 param$2)
+  public static <$1, $2> c<$1, $2> Q($1 param$1, $2 param$2)
   {
     AppMethodBeat.i(74900);
     c localc = new c();
-    localc.LFB = new Object[] { param$1, param$2 };
+    localc.RaR = new Object[] { param$1, param$2 };
     param$1 = (c)localc;
     AppMethodBeat.o(74900);
     return param$1;
   }
   
-  public static <$1, $2, $3, $4> e<$1, $2, $3, $4> c($1 param$1, $2 param$2, $3 param$3, $4 param$4)
+  public static <$1, $2, $3, $4> e<$1, $2, $3, $4> b($1 param$1, $2 param$2, $3 param$3, $4 param$4)
   {
     AppMethodBeat.i(74902);
     e locale = new e();
-    locale.LFB = new Object[] { param$1, param$2, param$3, param$4 };
+    locale.RaR = new Object[] { param$1, param$2, param$3, param$4 };
     param$1 = (e)locale;
     AppMethodBeat.o(74902);
     return param$1;
   }
   
-  public static <$1> b<$1> el($1 param$1)
+  public static <$1> b<$1> ep($1 param$1)
   {
     AppMethodBeat.i(74899);
     b localb = new b();
-    localb.LFB = new Object[] { param$1 };
+    localb.RaR = new Object[] { param$1 };
     param$1 = (b)localb;
     AppMethodBeat.o(74899);
     return param$1;
@@ -40,7 +40,7 @@ public class a
   {
     AppMethodBeat.i(74901);
     d locald = new d();
-    locald.LFB = new Object[] { param$1, param$2, param$3 };
+    locald.RaR = new Object[] { param$1, param$2, param$3 };
     param$1 = (d)locald;
     AppMethodBeat.o(74901);
     return param$1;
@@ -48,18 +48,18 @@ public class a
   
   public final <T> T get(int paramInt)
   {
-    if (this.LFB.length <= paramInt) {
+    if (this.RaR.length <= paramInt) {
       return null;
     }
-    return this.LFB[paramInt];
+    return this.RaR[paramInt];
   }
   
   public final int size()
   {
-    if (this.LFB == null) {
+    if (this.RaR == null) {
       return 0;
     }
-    return this.LFB.length;
+    return this.RaR.length;
   }
   
   public String toString()
@@ -67,7 +67,7 @@ public class a
     AppMethodBeat.i(74903);
     Object localObject1 = new StringBuilder();
     int j = 1;
-    Object[] arrayOfObject = this.LFB;
+    Object[] arrayOfObject = this.RaR;
     int k = arrayOfObject.length;
     int i = 0;
     if (i < k)

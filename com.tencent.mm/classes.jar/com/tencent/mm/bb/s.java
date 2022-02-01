@@ -1,46 +1,43 @@
 package com.tencent.mm.bb;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.pa;
+import com.tencent.mm.g.a.ps;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.model.cf;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 
 public final class s
-  extends com.tencent.mm.sdk.b.c<pa>
+  extends IListener<ps>
 {
-  private static long fHu = 86400000L;
-  
   public s()
   {
-    AppMethodBeat.i(161781);
-    this.__eventId = pa.class.getName().hashCode();
-    AppMethodBeat.o(161781);
+    AppMethodBeat.i(161779);
+    this.__eventId = ps.class.getName().hashCode();
+    AppMethodBeat.o(161779);
   }
   
-  private static boolean WZ()
+  private static boolean bet()
   {
-    AppMethodBeat.i(150857);
-    if (bu.rZ(bu.i((Long)g.ajR().ajA().get(81938, null))) * 1000L > fHu)
+    AppMethodBeat.i(150852);
+    if (Util.secondsToNow(Util.nullAs((Long)g.aAh().azQ().get(66818, null), 0L)) * 1000L > 1800000L) {}
+    for (int i = 1;; i = 0)
     {
-      AppMethodBeat.o(150857);
-      return true;
+      if (i != 0)
+      {
+        i = Util.nullAs((Integer)g.aAh().azQ().get(66820, null), -99999);
+        if (i != -99999)
+        {
+          cf.I(9, String.valueOf(i));
+          g.aAh().azQ().set(66820, Integer.valueOf(-99999));
+        }
+        g.aAh().azQ().set(66818, Long.valueOf(Util.nowSecond()));
+      }
+      AppMethodBeat.o(150852);
+      return false;
     }
-    AppMethodBeat.o(150857);
-    return false;
-  }
-  
-  private static boolean aKq()
-  {
-    AppMethodBeat.i(150856);
-    ae.d("MicroMsg.PostTaskUpdateConfigListListener", "callback expired : " + WZ());
-    if (WZ()) {
-      c.aKl().update();
-    }
-    AppMethodBeat.o(150856);
-    return false;
   }
 }
 

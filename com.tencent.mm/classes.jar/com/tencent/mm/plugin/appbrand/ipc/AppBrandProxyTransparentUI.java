@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.a;
 
 @a(7)
@@ -22,8 +22,8 @@ public class AppBrandProxyTransparentUI
   {
     AppMethodBeat.i(45408);
     super.onCreate(paramBundle);
-    ae.i("MicroMsg.AppBrandProxyTransparentUI", "onCreate");
-    al.b(getWindow());
+    Log.i("MicroMsg.AppBrandProxyTransparentUI", "onCreate");
+    ao.e(getWindow());
     try
     {
       paramBundle = Class.forName(getIntent().getStringExtra("task_class_name"));
@@ -34,10 +34,10 @@ public class AppBrandProxyTransparentUI
       {
         paramBundle.a(this, new AppBrandProxyTransparentUIProcessTask.a()
         {
-          public final void biu()
+          public final void bDH()
           {
             AppMethodBeat.i(45407);
-            ae.i("MicroMsg.AppBrandProxyTransparentUI", "onResult");
+            Log.i("MicroMsg.AppBrandProxyTransparentUI", "onResult");
             Intent localIntent = new Intent();
             localIntent.putExtra("task_object", paramBundle);
             localIntent.putExtra("task_id", str);
@@ -54,7 +54,7 @@ public class AppBrandProxyTransparentUI
     {
       for (;;)
       {
-        ae.e("MicroMsg.AppBrandProxyTransparentUI", "ClassNotFoundException");
+        Log.e("MicroMsg.AppBrandProxyTransparentUI", "ClassNotFoundException");
         setResult(1);
         finish();
       }
@@ -68,7 +68,7 @@ public class AppBrandProxyTransparentUI
   {
     AppMethodBeat.i(45409);
     super.onDestroy();
-    ae.i("MicroMsg.AppBrandProxyTransparentUI", "onDestroy");
+    Log.i("MicroMsg.AppBrandProxyTransparentUI", "onDestroy");
     AppMethodBeat.o(45409);
   }
   
@@ -90,7 +90,7 @@ public class AppBrandProxyTransparentUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyTransparentUI
  * JD-Core Version:    0.7.0.1
  */

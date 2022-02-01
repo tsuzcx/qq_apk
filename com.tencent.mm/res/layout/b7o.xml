@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/b46" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/h8v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.widget.AdLandingVideoWrapper android:id="@id/goc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/g8t" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    <ProgressBar android:gravity="center" android:layout_gravity="center" android:id="@id/ekz" android:visibility="gone" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_centerInParent="true" style="@style/a4p" />
-    <ImageView android:id="@id/fsv" android:background="@null" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <TextView android:textSize="@dimen/jv" android:textColor="@color/a_u" android:gravity="center" android:id="@id/bnc" android:paddingBottom="20.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:alpha="0.8" />
-    <View android:id="@id/fle" android:background="@color/bv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/h_9" android:background="@drawable/c46" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="35.0dip" android:layout_centerInParent="true">
-        <ImageView android:id="@id/h__" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="10.0dip" android:src="@raw/pause_video_icon" android:layout_centerVertical="true" />
-        <TextView android:textSize="12.0dip" android:textColor="@android:color/white" android:gravity="center" android:id="@id/h_a" android:layout_width="40.0dip" android:layout_height="17.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:text="已暂停" android:includeFontPadding="false" android:layout_toRightOf="@id/h__" android:layout_centerVertical="true" />
+    <RelativeLayout android:layout_width="@dimen/cp" android:layout_height="@dimen/cp">
+        <ImageView android:id="@id/dtj" android:background="@drawable/apw" android:layout_width="@dimen/cp" android:layout_height="@dimen/cp" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dt5" android:layout_width="@dimen/tw" android:layout_height="@dimen/tw" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/dti" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
     </RelativeLayout>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:layout_alignParentBottom="true">
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/flf" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginRight="10.0dip" android:src="@raw/icon_volume_off" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-        <ImageView android:layout_gravity="center_horizontal" android:id="@id/h_y" android:visibility="gone" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@raw/icon_video_full_screen" android:scaleType="centerCrop" android:layout_toLeftOf="@id/flf" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-</RelativeLayout>
+    <TextView android:textSize="@dimen/ty" android:textColor="@color/BW_0_Alpha_0_5" android:gravity="center" android:id="@id/ipm" android:layout_width="@dimen/cp" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:maxLines="2" />
+</LinearLayout>

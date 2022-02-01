@@ -1,7 +1,8 @@
 package com.tencent.wxperf.jni.memory;
 
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.stubs.logger.Log;
+import com.tencent.wxperf.jni.HookManager;
 import com.tencent.wxperf.jni.a;
 import java.util.HashSet;
 import java.util.Set;
@@ -9,34 +10,38 @@ import java.util.Set;
 public class MemoryHook
   extends a
 {
-  public static final MemoryHook MLE;
-  private Set<String> MLF;
-  private Set<String> MLG;
-  public int MLH;
-  public int MLI;
-  private double MLJ;
-  public boolean MLK;
-  public boolean MLL;
+  public static final MemoryHook Sys;
+  public boolean SyA;
+  public Set<String> Syt;
+  public Set<String> Syu;
+  public int Syv;
+  public int Syw;
+  public int Syx;
+  public double Syy;
+  public boolean Syz;
   
   static
   {
-    AppMethodBeat.i(195219);
-    MLE = new MemoryHook();
-    AppMethodBeat.o(195219);
+    AppMethodBeat.i(199065);
+    Sys = new MemoryHook();
+    AppMethodBeat.o(199065);
   }
   
   private MemoryHook()
   {
-    AppMethodBeat.i(195213);
-    this.MLF = new HashSet();
-    this.MLG = new HashSet();
-    this.MLJ = 1.0D;
-    AppMethodBeat.o(195213);
+    AppMethodBeat.i(199061);
+    this.Syt = new HashSet();
+    this.Syu = new HashSet();
+    this.Syx = 10485760;
+    this.Syy = 1.0D;
+    AppMethodBeat.o(199061);
   }
   
   private native void addHookSoNative(String[] paramArrayOfString);
   
   private native void addIgnoreSoNative(String[] paramArrayOfString);
+  
+  private native void dumpNative(String paramString1, String paramString2);
   
   private native void enableMmapHookNative(boolean paramBoolean);
   
@@ -46,88 +51,46 @@ public class MemoryHook
   
   private native void setSamplingNative(double paramDouble);
   
-  public final MemoryHook F(double paramDouble)
+  private native void setStacktraceLogThresholdNative(int paramInt);
+  
+  public final void dump(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(195216);
-    if ((this.MLJ < 0.0D) || (this.MLJ > 1.0D))
+    AppMethodBeat.i(199064);
+    if (HookManager.Syn.Syo) {
+      dumpNative(paramString1, paramString2);
+    }
+    AppMethodBeat.o(199064);
+  }
+  
+  public final void hrX()
+  {
+    AppMethodBeat.i(199062);
+    if ((this.Syv < 0) || ((this.Syw != 0) && (this.Syw < this.Syv)))
     {
-      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("sampling should be between 0 and 1: ".concat(String.valueOf(paramDouble)));
-      AppMethodBeat.o(195216);
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("sizes should not be negative and maxSize should be 0 or greater than minSize: min = " + this.Syv + ", max = " + this.Syw);
+      AppMethodBeat.o(199062);
       throw localIllegalArgumentException;
     }
-    this.MLJ = paramDouble;
-    AppMethodBeat.o(195216);
-    return this;
+    Log.d("Yves.debug", "enable mmap? " + this.SyA);
+    enableMmapHookNative(this.SyA);
+    setSampleSizeRangeNative(this.Syv, this.Syw);
+    setSamplingNative(this.Syy);
+    setStacktraceLogThresholdNative(this.Syx);
+    enableStacktraceNative(this.Syz);
+    AppMethodBeat.o(199062);
   }
   
-  public final MemoryHook ag(String... paramVarArgs)
+  public final void hrY()
   {
-    AppMethodBeat.i(195214);
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramVarArgs[i];
-      if (TextUtils.isEmpty(str))
-      {
-        paramVarArgs = new IllegalArgumentException("regex = ".concat(String.valueOf(str)));
-        AppMethodBeat.o(195214);
-        throw paramVarArgs;
-      }
-      this.MLF.add(str);
-      i += 1;
-    }
-    AppMethodBeat.o(195214);
-    return this;
-  }
-  
-  public final MemoryHook ah(String... paramVarArgs)
-  {
-    AppMethodBeat.i(195215);
-    int j = paramVarArgs.length;
-    int i = 0;
-    while (i < j)
-    {
-      String str = paramVarArgs[i];
-      if (!TextUtils.isEmpty(str)) {
-        this.MLG.add(str);
-      }
-      i += 1;
-    }
-    AppMethodBeat.o(195215);
-    return this;
-  }
-  
-  public native void dumpNative(String paramString);
-  
-  public final void geH()
-  {
-    AppMethodBeat.i(195217);
-    if ((this.MLH < 0) || ((this.MLI != 0) && (this.MLI < this.MLH)))
-    {
-      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("sizes should not be negative and maxSize should be 0 or greater than minSize: min = " + this.MLH + ", max = " + this.MLI);
-      AppMethodBeat.o(195217);
-      throw localIllegalArgumentException;
-    }
-    new StringBuilder("enable mmap? ").append(this.MLL);
-    enableMmapHookNative(this.MLL);
-    setSampleSizeRangeNative(this.MLH, this.MLI);
-    setSamplingNative(this.MLJ);
-    enableStacktraceNative(this.MLK);
-    AppMethodBeat.o(195217);
-  }
-  
-  public final void geI()
-  {
-    AppMethodBeat.i(195218);
-    addHookSoNative((String[])this.MLF.toArray(new String[0]));
-    addIgnoreSoNative((String[])this.MLG.toArray(new String[0]));
-    AppMethodBeat.o(195218);
+    AppMethodBeat.i(199063);
+    addHookSoNative((String[])this.Syt.toArray(new String[0]));
+    addIgnoreSoNative((String[])this.Syu.toArray(new String[0]));
+    AppMethodBeat.o(199063);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.wxperf.jni.memory.MemoryHook
  * JD-Core Version:    0.7.0.1
  */

@@ -24,21 +24,7 @@ class WebViewLoginMethodHandler
   static
   {
     AppMethodBeat.i(7964);
-    CREATOR = new Parcelable.Creator()
-    {
-      public final WebViewLoginMethodHandler createFromParcel(Parcel paramAnonymousParcel)
-      {
-        AppMethodBeat.i(7955);
-        paramAnonymousParcel = new WebViewLoginMethodHandler(paramAnonymousParcel);
-        AppMethodBeat.o(7955);
-        return paramAnonymousParcel;
-      }
-      
-      public final WebViewLoginMethodHandler[] newArray(int paramAnonymousInt)
-      {
-        return new WebViewLoginMethodHandler[paramAnonymousInt];
-      }
-    };
+    CREATOR = new WebViewLoginMethodHandler.2();
     AppMethodBeat.o(7964);
   }
   
@@ -185,7 +171,7 @@ class WebViewLoginMethodHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.login.WebViewLoginMethodHandler
  * JD-Core Version:    0.7.0.1
  */

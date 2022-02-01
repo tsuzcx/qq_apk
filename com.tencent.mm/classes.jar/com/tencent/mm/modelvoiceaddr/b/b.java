@@ -1,26 +1,26 @@
 package com.tencent.mm.modelvoiceaddr.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b
-  implements f
+  implements i
 {
   public final void a(final List<String> paramList, final String paramString1, final String paramString2)
   {
     AppMethodBeat.i(148649);
     paramList = new ArrayList(paramList);
-    g.ajU().aw(new Runnable()
+    g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -30,30 +30,30 @@ public final class b
         while (((Iterator)localObject2).hasNext())
         {
           localObject3 = (String)((Iterator)localObject2).next();
-          ((LinkedList)localObject1).add(new cxn().aQV((String)localObject3));
-          ae.d("MicroMsg.NewVoiceInputReportManager", "mVoiceIdSet Id = %s", new Object[] { localObject3 });
+          ((LinkedList)localObject1).add(new dqi().bhy((String)localObject3));
+          Log.d("MicroMsg.NewVoiceInputReportManager", "mVoiceIdSet Id = %s", new Object[] { localObject3 });
         }
-        localObject2 = new cxn().aQV(paramString1);
-        Object localObject3 = new cxn().aQV(paramString2);
-        g.ajj().a(228, b.this);
-        localObject1 = new a(((LinkedList)localObject1).size(), (LinkedList)localObject1, (cxn)localObject2, (cxn)localObject3);
-        int i = this.fNp;
-        if (((a)localObject1).iCx != null) {
-          ((a)localObject1).iCx.Scene = i;
+        localObject2 = new dqi().bhy(paramString1);
+        Object localObject3 = new dqi().bhy(paramString2);
+        g.azz().a(228, b.this);
+        localObject1 = new a(((LinkedList)localObject1).size(), (LinkedList)localObject1, (dqi)localObject2, (dqi)localObject3);
+        int i = this.gsA;
+        if (((a)localObject1).jxM != null) {
+          ((a)localObject1).jxM.Scene = i;
         }
-        g.ajj().a((n)localObject1, 0);
+        g.azz().a((q)localObject1, 0);
         AppMethodBeat.o(148648);
       }
     });
     AppMethodBeat.o(148649);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(148650);
-    g.ajj().b(228, this);
-    if ((paramn instanceof a)) {
-      ae.i("MicroMsg.NewVoiceInputReportManager", "onSceneEnd errType = %s, errCode = %s, errMsg = %s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    g.azz().b(228, this);
+    if ((paramq instanceof a)) {
+      Log.i("MicroMsg.NewVoiceInputReportManager", "onSceneEnd errType = %s, errCode = %s, errMsg = %s ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     }
     AppMethodBeat.o(148650);
   }

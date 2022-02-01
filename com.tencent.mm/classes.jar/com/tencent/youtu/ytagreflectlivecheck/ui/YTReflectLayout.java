@@ -10,11 +10,11 @@ import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.youtu.ytagreflectlivecheck.controller.ReflectController;
 
 public class YTReflectLayout
   extends RelativeLayout
 {
+  private static String TAG = "YTReflectLayout";
   private ColorMatrixColorFilter mColorMatrixColorFilter;
   private Paint mPaint;
   private Rect mRect;
@@ -27,7 +27,7 @@ public class YTReflectLayout
     this.mPaint = new Paint(1);
     this.mPaint.setStyle(Paint.Style.FILL);
     this.mPaint.setColor(Color.argb(200, 0, 0, 0));
-    this.mColorMatrixColorFilter = ReflectController.DEFAULT_MATRIX_COLOR_FILTER;
+    this.mColorMatrixColorFilter = new ColorMatrixColorFilter(new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F });
     setWillNotDraw(false);
     AppMethodBeat.o(43406);
   }

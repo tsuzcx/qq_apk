@@ -10,16 +10,16 @@ import com.tencent.mm.plugin.gif.MMAnimateView;
 import com.tencent.mm.pluginsdk.a.e;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/view/BaseEmojiView;", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "value", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "emojiInfo", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setEmojiInfo", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "isHevc", "", "setImageBitmap", "", "bm", "Landroid/graphics/Bitmap;", "setMMGIFFileByteArray", "bytes", "", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/view/BaseEmojiView;", "Lcom/tencent/mm/plugin/gif/MMAnimateView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "value", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "emojiInfo", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setEmojiInfo", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "isHevc", "", "setImageBitmap", "", "bm", "Landroid/graphics/Bitmap;", "setMMGIFFileByteArray", "bytes", "", "plugin-emojisdk_release"})
 public class BaseEmojiView
   extends MMAnimateView
 {
   private final String TAG = "MicroMsg.BaseEmojiView";
-  private EmojiInfo glt;
-  public boolean gsO;
+  private EmojiInfo gWm;
+  public boolean isHevc;
   
   public BaseEmojiView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,159 +35,159 @@ public class BaseEmojiView
   private final void setMMGIFFileByteArray(byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: ldc 58
-    //   2: invokestatic 64	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 57
+    //   2: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 70	com/tencent/mm/sdk/platformtools/bu:cF	([B)Z
+    //   6: invokestatic 69	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	([B)Z
     //   9: ifne +238 -> 247
     //   12: aload_1
-    //   13: invokestatic 75	com/tencent/mm/sdk/platformtools/u:cy	([B)Z
+    //   13: invokestatic 74	com/tencent/mm/sdk/platformtools/ImgUtil:isWXGF	([B)Z
     //   16: ifeq +80 -> 96
-    //   19: ldc 77
-    //   21: invokestatic 83	com/tencent/mm/kernel/g:ad	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
+    //   19: ldc 76
+    //   21: invokestatic 82	com/tencent/mm/kernel/g:ah	(Ljava/lang/Class;)Lcom/tencent/mm/kernel/b/a;
     //   24: astore_2
     //   25: aload_2
-    //   26: ldc 85
-    //   28: invokestatic 91	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   26: ldc 84
+    //   28: invokestatic 90	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   31: aload_2
-    //   32: checkcast 77	com/tencent/mm/plugin/emoji/PluginEmoji
-    //   35: invokevirtual 95	com/tencent/mm/plugin/emoji/PluginEmoji:getProvider	()Lcom/tencent/mm/pluginsdk/a/e;
+    //   32: checkcast 76	com/tencent/mm/plugin/emoji/PluginEmoji
+    //   35: invokevirtual 94	com/tencent/mm/plugin/emoji/PluginEmoji:getProvider	()Lcom/tencent/mm/pluginsdk/a/e;
     //   38: astore_2
     //   39: aload_2
-    //   40: ldc 97
-    //   42: invokestatic 91	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   40: ldc 96
+    //   42: invokestatic 90	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   45: aload_2
-    //   46: invokeinterface 103 1 0
+    //   46: invokeinterface 102 1 0
     //   51: ifeq +45 -> 96
-    //   54: new 105	com/tencent/mm/plugin/gif/h
+    //   54: new 104	com/tencent/mm/plugin/gif/h
     //   57: dup
     //   58: aload_1
-    //   59: invokespecial 107	com/tencent/mm/plugin/gif/h:<init>	([B)V
-    //   62: checkcast 109	com/tencent/mm/plugin/gif/b
+    //   59: invokespecial 106	com/tencent/mm/plugin/gif/h:<init>	([B)V
+    //   62: checkcast 108	com/tencent/mm/plugin/gif/b
     //   65: astore_2
     //   66: aload_0
     //   67: iconst_1
-    //   68: putfield 111	com/tencent/mm/emoji/view/BaseEmojiView:gsO	Z
+    //   68: putfield 110	com/tencent/mm/emoji/view/BaseEmojiView:isHevc	Z
     //   71: aload_2
-    //   72: invokevirtual 114	com/tencent/mm/plugin/gif/b:isRunning	()Z
+    //   72: invokevirtual 113	com/tencent/mm/plugin/gif/b:isRunning	()Z
     //   75: ifne +7 -> 82
     //   78: aload_2
-    //   79: invokevirtual 118	com/tencent/mm/plugin/gif/b:reset	()V
+    //   79: invokevirtual 117	com/tencent/mm/plugin/gif/b:reset	()V
     //   82: aload_0
     //   83: aload_2
-    //   84: checkcast 120	android/graphics/drawable/Drawable
-    //   87: invokevirtual 124	com/tencent/mm/emoji/view/BaseEmojiView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   90: ldc 58
-    //   92: invokestatic 127	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   84: checkcast 119	android/graphics/drawable/Drawable
+    //   87: invokevirtual 123	com/tencent/mm/emoji/view/BaseEmojiView:setImageDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   90: ldc 57
+    //   92: invokestatic 126	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   95: return
     //   96: aload_0
-    //   97: getfield 50	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
-    //   100: ldc 129
-    //   102: invokestatic 135	com/tencent/mm/sdk/platformtools/ae:v	(Ljava/lang/String;Ljava/lang/String;)V
-    //   105: new 137	com/tencent/mm/plugin/gif/d
+    //   97: getfield 49	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
+    //   100: ldc 128
+    //   102: invokestatic 134	com/tencent/mm/sdk/platformtools/Log:v	(Ljava/lang/String;Ljava/lang/String;)V
+    //   105: new 136	com/tencent/mm/plugin/gif/d
     //   108: dup
     //   109: aload_1
-    //   110: invokespecial 138	com/tencent/mm/plugin/gif/d:<init>	([B)V
-    //   113: checkcast 109	com/tencent/mm/plugin/gif/b
+    //   110: invokespecial 137	com/tencent/mm/plugin/gif/d:<init>	([B)V
+    //   113: checkcast 108	com/tencent/mm/plugin/gif/b
     //   116: astore_2
     //   117: goto -46 -> 71
     //   120: astore_2
     //   121: aload_2
-    //   122: invokestatic 142	com/tencent/mm/emoji/view/BaseEmojiView:a	(Lcom/tencent/mm/plugin/gif/MMGIFException;)V
+    //   122: invokestatic 141	com/tencent/mm/emoji/view/BaseEmojiView:a	(Lcom/tencent/mm/plugin/gif/MMGIFException;)V
     //   125: aload_2
-    //   126: invokevirtual 146	com/tencent/mm/plugin/gif/MMGIFException:getErrorCode	()I
+    //   126: invokevirtual 145	com/tencent/mm/plugin/gif/MMGIFException:getErrorCode	()I
     //   129: bipush 103
     //   131: if_icmpne +83 -> 214
     //   134: aload_0
-    //   135: getfield 50	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
-    //   138: ldc 148
-    //   140: invokestatic 151	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   135: getfield 49	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
+    //   138: ldc 147
+    //   140: invokestatic 150	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   143: aload_1
-    //   144: invokestatic 157	com/tencent/mm/sdk/platformtools/h:cu	([B)Landroid/graphics/Bitmap;
+    //   144: invokestatic 156	com/tencent/mm/sdk/platformtools/BitmapUtil:decodeByteArray	([B)Landroid/graphics/Bitmap;
     //   147: astore_2
     //   148: aload_2
     //   149: ifnull +22 -> 171
     //   152: aload_2
     //   153: aload_0
-    //   154: invokevirtual 160	com/tencent/mm/emoji/view/BaseEmojiView:getEmojiDensity	()I
-    //   157: invokevirtual 165	android/graphics/Bitmap:setDensity	(I)V
+    //   154: invokevirtual 159	com/tencent/mm/emoji/view/BaseEmojiView:getEmojiDensity	()I
+    //   157: invokevirtual 164	android/graphics/Bitmap:setDensity	(I)V
     //   160: aload_0
     //   161: aload_2
-    //   162: invokevirtual 168	com/tencent/mm/emoji/view/BaseEmojiView:setImageBitmap	(Landroid/graphics/Bitmap;)V
-    //   165: ldc 58
-    //   167: invokestatic 127	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   162: invokevirtual 167	com/tencent/mm/emoji/view/BaseEmojiView:setImageBitmap	(Landroid/graphics/Bitmap;)V
+    //   165: ldc 57
+    //   167: invokestatic 126	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   170: return
     //   171: aload_0
-    //   172: getfield 50	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
-    //   175: ldc 170
+    //   172: getfield 49	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
+    //   175: ldc 169
     //   177: iconst_1
-    //   178: anewarray 172	java/lang/Object
+    //   178: anewarray 171	java/lang/Object
     //   181: dup
     //   182: iconst_0
     //   183: aload_1
-    //   184: invokestatic 178	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   184: invokestatic 177	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   187: aastore
-    //   188: invokestatic 182	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   188: invokestatic 181	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   191: aload_0
-    //   192: invokevirtual 184	com/tencent/mm/emoji/view/BaseEmojiView:getEmojiInfo	()Lcom/tencent/mm/storage/emotion/EmojiInfo;
+    //   192: invokevirtual 183	com/tencent/mm/emoji/view/BaseEmojiView:getEmojiInfo	()Lcom/tencent/mm/storage/emotion/EmojiInfo;
     //   195: astore_1
     //   196: aload_1
     //   197: ifnull +7 -> 204
     //   200: aload_1
-    //   201: invokevirtual 189	com/tencent/mm/storage/emotion/EmojiInfo:fxo	()V
+    //   201: invokevirtual 188	com/tencent/mm/storage/emotion/EmojiInfo:hRy	()V
     //   204: aload_0
-    //   205: invokevirtual 192	com/tencent/mm/emoji/view/BaseEmojiView:init	()V
-    //   208: ldc 58
-    //   210: invokestatic 127	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   205: invokevirtual 191	com/tencent/mm/emoji/view/BaseEmojiView:init	()V
+    //   208: ldc 57
+    //   210: invokestatic 126	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   213: return
     //   214: aload_0
-    //   215: getfield 50	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
-    //   218: ldc 194
+    //   215: getfield 49	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
+    //   218: ldc 193
     //   220: iconst_1
-    //   221: anewarray 172	java/lang/Object
+    //   221: anewarray 171	java/lang/Object
     //   224: dup
     //   225: iconst_0
     //   226: aload_2
-    //   227: invokevirtual 198	com/tencent/mm/plugin/gif/MMGIFException:toString	()Ljava/lang/String;
+    //   227: invokevirtual 197	com/tencent/mm/plugin/gif/MMGIFException:toString	()Ljava/lang/String;
     //   230: aastore
-    //   231: invokestatic 201	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   231: invokestatic 200	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   234: aload_0
-    //   235: invokevirtual 184	com/tencent/mm/emoji/view/BaseEmojiView:getEmojiInfo	()Lcom/tencent/mm/storage/emotion/EmojiInfo;
+    //   235: invokevirtual 183	com/tencent/mm/emoji/view/BaseEmojiView:getEmojiInfo	()Lcom/tencent/mm/storage/emotion/EmojiInfo;
     //   238: astore_1
     //   239: aload_1
     //   240: ifnull +7 -> 247
     //   243: aload_1
-    //   244: invokevirtual 189	com/tencent/mm/storage/emotion/EmojiInfo:fxo	()V
+    //   244: invokevirtual 188	com/tencent/mm/storage/emotion/EmojiInfo:hRy	()V
     //   247: aload_0
-    //   248: invokevirtual 192	com/tencent/mm/emoji/view/BaseEmojiView:init	()V
-    //   251: ldc 58
-    //   253: invokestatic 127	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   248: invokevirtual 191	com/tencent/mm/emoji/view/BaseEmojiView:init	()V
+    //   251: ldc 57
+    //   253: invokestatic 126	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   256: return
     //   257: astore_1
     //   258: aload_0
-    //   259: getfield 50	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
-    //   262: ldc 194
+    //   259: getfield 49	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
+    //   262: ldc 193
     //   264: iconst_1
-    //   265: anewarray 172	java/lang/Object
+    //   265: anewarray 171	java/lang/Object
     //   268: dup
     //   269: iconst_0
     //   270: aload_1
-    //   271: invokevirtual 202	java/io/IOException:toString	()Ljava/lang/String;
+    //   271: invokevirtual 201	java/io/IOException:toString	()Ljava/lang/String;
     //   274: aastore
-    //   275: invokestatic 201	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   275: invokestatic 200	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   278: goto -31 -> 247
     //   281: astore_1
     //   282: aload_0
-    //   283: getfield 50	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
-    //   286: ldc 194
+    //   283: getfield 49	com/tencent/mm/emoji/view/BaseEmojiView:TAG	Ljava/lang/String;
+    //   286: ldc 193
     //   288: iconst_1
-    //   289: anewarray 172	java/lang/Object
+    //   289: anewarray 171	java/lang/Object
     //   292: dup
     //   293: iconst_0
     //   294: aload_1
-    //   295: invokevirtual 203	java/lang/NullPointerException:toString	()Ljava/lang/String;
+    //   295: invokevirtual 202	java/lang/NullPointerException:toString	()Ljava/lang/String;
     //   298: aastore
-    //   299: invokestatic 201	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   299: invokestatic 200	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   302: goto -55 -> 247
     // Local variable table:
     //   start	length	slot	name	signature
@@ -214,33 +214,33 @@ public class BaseEmojiView
   
   public EmojiInfo getEmojiInfo()
   {
-    return this.glt;
+    return this.gWm;
   }
   
   public void setEmojiInfo(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105785);
-    if (p.i(this.glt, paramEmojiInfo))
+    if (p.j(this.gWm, paramEmojiInfo))
     {
       AppMethodBeat.o(105785);
       return;
     }
-    this.glt = paramEmojiInfo;
+    this.gWm = paramEmojiInfo;
     if (paramEmojiInfo != null)
     {
-      if ((paramEmojiInfo.getGroup() == EmojiGroupInfo.OzS) || (paramEmojiInfo.getGroup() == EmojiInfo.OzZ) || (paramEmojiInfo.getGroup() == EmojiInfo.OzY))
+      if ((paramEmojiInfo.getGroup() == EmojiGroupInfo.Uun) || (paramEmojiInfo.getGroup() == EmojiInfo.Uuu) || (paramEmojiInfo.getGroup() == EmojiInfo.Uut))
       {
-        setImageBitmap(paramEmojiInfo.z(getContext(), 300));
+        setImageBitmap(paramEmojiInfo.A(getContext(), 300));
         AppMethodBeat.o(105785);
         return;
       }
-      if (paramEmojiInfo.fxr())
+      if (paramEmojiInfo.hRB())
       {
-        c(EmojiInfo.bg(getContext(), paramEmojiInfo.getName()), "");
+        c(EmojiInfo.bD(getContext(), paramEmojiInfo.getName()), "");
         AppMethodBeat.o(105785);
         return;
       }
-      paramEmojiInfo = g.ad(PluginEmoji.class);
+      paramEmojiInfo = g.ah(PluginEmoji.class);
       p.g(paramEmojiInfo, "MMKernel.plugin(PluginEmoji::class.java)");
       setMMGIFFileByteArray(((PluginEmoji)paramEmojiInfo).getProvider().a(getEmojiInfo()));
     }
@@ -259,7 +259,7 @@ public class BaseEmojiView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.view.BaseEmojiView
  * JD-Core Version:    0.7.0.1
  */

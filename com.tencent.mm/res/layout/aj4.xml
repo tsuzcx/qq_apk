@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.view.TouchableLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:paddingTop="@dimen/c5" android:paddingBottom="@dimen/c5" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <android.support.constraint.ConstraintLayout android:id="@id/hqf" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/d4m" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:src="@raw/icons_outlined_location" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-            <TextView android:gravity="center_vertical" android:id="@id/d4y" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/c5" android:layout_weight="1.0" app:layout_constraintLeft_toRightOf="@id/d4m" app:layout_constraintTop_toTopOf="ea8" style="@style/ya" />
-            <TextView android:textSize="@dimen/jo" android:textColor="@color/FG_2" android:ellipsize="end" android:id="@id/hqg" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/bq" android:text="@string/hqt" android:maxLines="1" app:layout_constraintHorizontal_weight="1.0" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/d4y" />
-        </android.support.constraint.ConstraintLayout>
-        <LinearLayout android:orientation="horizontal" android:id="@id/hqe" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mm.ui.widget.MMProcessBar android:id="@id/hqh" android:background="@drawable/c76" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" />
-            <TextView android:textSize="@dimen/q" android:textColor="@color/FG_2" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/c5" android:text="@string/hqs" />
-        </LinearLayout>
-    </FrameLayout>
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c0" android:layout_height="@dimen/c8" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/BW_70" />
-</LinearLayout>
+    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/h7s" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b21">
+            <com.tencent.mm.view.recyclerview.WxRecyclerView android:id="@id/gka" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </android.support.design.widget.CoordinatorLayout>
+    <include layout="@layout/abw" />
+    <com.tencent.mm.plugin.finder.view.TestPreloadPreview android:layout_gravity="top" android:id="@id/ijo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</com.tencent.mm.view.TouchableLayout>

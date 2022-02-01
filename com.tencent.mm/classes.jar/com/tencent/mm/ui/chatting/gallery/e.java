@@ -16,14 +16,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
 import com.tencent.mm.b.f.a;
 import com.tencent.mm.b.f.b;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bf;
-import com.tencent.mm.sdk.platformtools.bf.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread.ThreadObject;
 import com.tencent.mm.ui.base.WxImageView;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
@@ -35,27 +34,27 @@ import java.util.Set;
 final class e
   implements ViewPager.OnPageChangeListener
 {
-  private static long Kmh = 0L;
+  private static long Pye = 0L;
   private static int mScreenHeight;
   private static int mScreenWidth = 0;
-  SparseArray<String> Kme;
-  a Kmf;
-  protected f<String, Bitmap> Kmg;
-  private LinkedList<Integer> Kmi;
-  private LinkedList<Integer> Kmj;
-  private int afo;
-  private aq gKO;
-  private bf hTx;
+  Bitmap CQj;
+  SparseArray<String> Pyb;
+  a Pyc;
+  protected f<String, Bitmap> Pyd;
+  private LinkedList<Integer> Pyf;
+  private LinkedList<Integer> Pyg;
+  private int afB;
+  private MMHandler hAk;
+  private QueueWorkerThread iOL;
   private int mScrollState;
-  SparseArray<WeakReference<View>> tYR;
-  HashMap<String, Integer> tYS;
-  SparseArray<String> tYT;
-  SparseArray<Bitmap> tYU;
-  protected f<String, Bitmap> tYV;
-  protected SparseIntArray tYW;
-  private LinkedList<String> tYX;
-  private boolean tYZ;
-  Bitmap yMr;
+  SparseArray<WeakReference<View>> xqf;
+  HashMap<String, Integer> xqg;
+  SparseArray<String> xqh;
+  SparseArray<Bitmap> xqi;
+  protected f<String, Bitmap> xqj;
+  protected SparseIntArray xqk;
+  private LinkedList<String> xql;
+  private boolean xqn;
   
   static
   {
@@ -65,60 +64,60 @@ final class e
   public e(a parama)
   {
     AppMethodBeat.i(36058);
-    this.hTx = new bf(1, "chatting-image-gallery-lazy-loader");
-    this.tYR = new SparseArray();
-    this.tYS = new HashMap();
-    this.tYT = new SparseArray();
-    this.tYU = new SparseArray();
-    this.Kme = new SparseArray();
+    this.iOL = new QueueWorkerThread(1, "chatting-image-gallery-lazy-loader");
+    this.xqf = new SparseArray();
+    this.xqg = new HashMap();
+    this.xqh = new SparseArray();
+    this.xqi = new SparseArray();
+    this.Pyb = new SparseArray();
     this.mScrollState = 0;
-    this.afo = -1;
-    this.Kmg = new com.tencent.mm.memory.a.b(400, new f.b() {}, getClass());
-    this.tYV = new com.tencent.mm.memory.a.b(5, new f.b() {}, getClass());
-    this.Kmi = new LinkedList();
-    this.tYW = new SparseIntArray();
-    this.tYX = new LinkedList();
-    this.Kmj = new LinkedList();
-    this.gKO = new aq();
-    this.tYZ = false;
-    this.Kmf = parama;
+    this.afB = -1;
+    this.Pyd = new com.tencent.mm.memory.a.b(400, new f.b() {}, getClass());
+    this.xqj = new com.tencent.mm.memory.a.b(5, new f.b() {}, getClass());
+    this.Pyf = new LinkedList();
+    this.xqk = new SparseIntArray();
+    this.xql = new LinkedList();
+    this.Pyg = new LinkedList();
+    this.hAk = new MMHandler();
+    this.xqn = false;
+    this.Pyc = parama;
     AppMethodBeat.o(36058);
   }
   
-  private void HQ(int paramInt)
+  private void NT(int paramInt)
   {
     AppMethodBeat.i(36063);
-    if (this.tYT.get(paramInt) != null)
+    if (this.xqh.get(paramInt) != null)
     {
-      String str = (String)this.tYT.get(paramInt);
-      this.tYR.remove(paramInt);
-      this.tYT.remove(paramInt);
-      this.tYS.remove(str);
-      this.tYU.remove(paramInt);
+      String str = (String)this.xqh.get(paramInt);
+      this.xqf.remove(paramInt);
+      this.xqh.remove(paramInt);
+      this.xqg.remove(str);
+      this.xqi.remove(paramInt);
     }
     AppMethodBeat.o(36063);
   }
   
-  private void HR(final int paramInt)
+  private void NU(final int paramInt)
   {
     AppMethodBeat.i(36062);
-    if (this.Kmg.aM(String.valueOf(paramInt)))
+    if (this.Pyd.check(String.valueOf(paramInt)))
     {
       AppMethodBeat.o(36062);
       return;
     }
-    bc.ajU().n(new Runnable()
+    bg.aAk().postToWorkerDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(36052);
         if (e.b(e.this) == null)
         {
-          ae.e("MicroMsg.ImageGalleryLazyLoader", "loader is null!");
+          Log.e("MicroMsg.ImageGalleryLazyLoader", "loader is null!");
           AppMethodBeat.o(36052);
           return;
         }
-        final Bitmap localBitmap = e.b(e.this).aeq(paramInt);
+        final Bitmap localBitmap = e.b(e.this).ana(paramInt);
         if (localBitmap == null)
         {
           AppMethodBeat.o(36052);
@@ -129,7 +128,7 @@ final class e
           public final void run()
           {
             AppMethodBeat.i(36051);
-            e.this.Kmg.put(e.5.this.vb, localBitmap);
+            e.this.Pyd.put(e.5.this.vi, localBitmap);
             AppMethodBeat.o(36051);
           }
         });
@@ -139,45 +138,45 @@ final class e
     AppMethodBeat.o(36062);
   }
   
-  private void Ov()
+  private void YC()
   {
     AppMethodBeat.i(36069);
-    if (this.tYZ)
+    if (this.xqn)
     {
       AppMethodBeat.o(36069);
       return;
     }
-    if (this.tYX.size() == 0)
+    if (this.xql.size() == 0)
     {
       AppMethodBeat.o(36069);
       return;
     }
-    Object localObject = (String)this.tYX.removeLast();
-    final int i = ((Integer)this.Kmj.removeLast()).intValue();
-    if (!this.tYS.containsKey(localObject))
+    Object localObject = (String)this.xql.removeLast();
+    final int i = ((Integer)this.Pyg.removeLast()).intValue();
+    if (!this.xqg.containsKey(localObject))
     {
       AppMethodBeat.o(36069);
       return;
     }
-    this.tYZ = true;
-    localObject = new bf.a()
+    this.xqn = true;
+    localObject = new QueueWorkerThread.ThreadObject()
     {
-      private boolean Kmn = false;
-      private Bitmap tZb = null;
+      private boolean Pyk = false;
+      private Bitmap xqp = null;
       
-      public final boolean aEC()
+      public final boolean doInBackground()
       {
         AppMethodBeat.i(36055);
-        if ((e.b(e.this) == null) || (TextUtils.isEmpty(this.liF)))
+        if ((e.b(e.this) == null) || (TextUtils.isEmpty(this.mol)))
         {
           AppMethodBeat.o(36055);
           return false;
         }
         try
         {
-          if (e.e(e.this).containsKey(this.liF))
+          if (e.e(e.this).containsKey(this.mol))
           {
-            int i = ((Integer)e.e(e.this).get(this.liF)).intValue();
+            int i = ((Integer)e.e(e.this).get(this.mol)).intValue();
             Object localObject = (WeakReference)e.i(e.this).get(i);
             if (localObject != null)
             {
@@ -185,54 +184,14 @@ final class e
               if ((localObject != null) && ((localObject instanceof WxImageView)))
               {
                 final String str = (String)e.j(e.this).get(i);
-                this.Kmn = true;
+                this.Pyk = true;
                 e.c(e.this).post(new Runnable()
                 {
                   public final void run()
                   {
-                    boolean bool2 = true;
                     AppMethodBeat.i(36053);
-                    e.6 local6 = e.6.this;
-                    WxImageView localWxImageView = (WxImageView)this.val$view;
-                    String str = e.6.this.liF;
-                    Object localObject = str;
-                    int i = e.6.this.Kmo;
-                    boolean bool1;
-                    if ((e.b(local6.Kmk) != null) && (localWxImageView != null) && (!bu.isNullOrNil(str)))
-                    {
-                      int j = e.k(local6.Kmk);
-                      if (e.l(local6.Kmk) != null) {
-                        break label232;
-                      }
-                      bool1 = true;
-                      if ((e.l(local6.Kmk) == null) || (!e.l(local6.Kmk).isRecycled())) {
-                        break label237;
-                      }
-                      label117:
-                      ae.i("MicroMsg.ImageGalleryLazyLoader", "alvinluo loadWxImageView position: %d, mLastPosition: %d, previewBitmap == null: %b, recycle: %b", new Object[] { Integer.valueOf(i), Integer.valueOf(j), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-                      if ((i != e.k(local6.Kmk)) || (e.l(local6.Kmk) == null) || (e.l(local6.Kmk).isRecycled())) {
-                        break label243;
-                      }
-                      localObject = a.m(e.l(local6.Kmk));
-                    }
-                    for (;;)
-                    {
-                      e.b(local6.Kmk).a(localWxImageView, str, (a)localObject);
-                      AppMethodBeat.o(36053);
-                      return;
-                      label232:
-                      bool1 = false;
-                      break;
-                      label237:
-                      bool2 = false;
-                      break label117;
-                      label243:
-                      if (!bu.isNullOrNil((String)localObject)) {
-                        localObject = a.aP((String)localObject);
-                      } else {
-                        localObject = null;
-                      }
-                    }
+                    e.6.a(e.6.this, (WxImageView)this.val$view, e.6.this.mol, str, e.6.this.Pyl);
+                    AppMethodBeat.o(36053);
                   }
                 });
                 AppMethodBeat.o(36055);
@@ -240,51 +199,51 @@ final class e
               }
             }
           }
-          this.tZb = e.b(e.this).aXQ(this.liF);
+          this.xqp = e.b(e.this).bmV(this.mol);
           AppMethodBeat.o(36055);
           return true;
         }
         catch (Exception localException)
         {
-          ae.w("MicroMsg.ImageGalleryLazyLoader", "try to load Bmp fail: %s", new Object[] { localException.getMessage() });
-          this.tZb = null;
+          Log.w("MicroMsg.ImageGalleryLazyLoader", "try to load Bmp fail: %s", new Object[] { localException.getMessage() });
+          this.xqp = null;
           AppMethodBeat.o(36055);
         }
         return false;
       }
       
-      public final boolean aED()
+      public final boolean onPostExecute()
       {
         AppMethodBeat.i(36054);
         e.d(e.this);
-        if (!this.Kmn) {
-          if (e.e(e.this).containsKey(this.liF))
+        if (!this.Pyk) {
+          if (e.e(e.this).containsKey(this.mol))
           {
-            i = ((Integer)e.e(e.this).get(this.liF)).intValue();
+            i = ((Integer)e.e(e.this).get(this.mol)).intValue();
             if (e.f(e.this)) {
               break label168;
             }
-            e.g(e.this).put(i, this.tZb);
+            e.g(e.this).put(i, this.xqp);
           }
         }
         Object localObject;
         int j;
         for (;;)
         {
-          e.this.w(this.liF, this.tZb);
-          e.this.e(i, this.tZb);
-          localObject = this.tZb;
+          e.this.w(this.mol, this.xqp);
+          e.this.e(i, this.xqp);
+          localObject = this.xqp;
           if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
             break;
           }
           j = 0;
-          ae.i("MicroMsg.ImageGalleryLazyLoader", "bmp size : %s", new Object[] { Integer.valueOf(j) });
-          this.tZb = null;
+          Log.i("MicroMsg.ImageGalleryLazyLoader", "bmp size : %s", new Object[] { Integer.valueOf(j) });
+          this.xqp = null;
           e.h(e.this);
           AppMethodBeat.o(36054);
           return false;
           label168:
-          e.a(e.this, i, this.tZb);
+          e.a(e.this, i, this.xqp);
         }
         if (Build.VERSION.SDK_INT >= 12) {}
         for (int i = ((Bitmap)localObject).getByteCount();; i = ((Bitmap)localObject).getRowBytes() * ((Bitmap)localObject).getHeight())
@@ -299,35 +258,35 @@ final class e
         }
       }
     };
-    this.hTx.c((bf.a)localObject);
+    this.iOL.add((QueueWorkerThread.ThreadObject)localObject);
     AppMethodBeat.o(36069);
   }
   
   private void a(int paramInt, View paramView, String paramString)
   {
     AppMethodBeat.i(36064);
-    this.tYS.put(paramString, Integer.valueOf(paramInt));
-    this.tYT.put(paramInt, paramString);
-    this.tYR.put(paramInt, new WeakReference(paramView));
+    this.xqg.put(paramString, Integer.valueOf(paramInt));
+    this.xqh.put(paramInt, paramString);
+    this.xqf.put(paramInt, new WeakReference(paramView));
     AppMethodBeat.o(36064);
   }
   
   private void b(int paramInt, Bitmap paramBitmap)
   {
     AppMethodBeat.i(36065);
-    if (this.tYR.get(paramInt) == null)
+    if (this.xqf.get(paramInt) == null)
     {
       AppMethodBeat.o(36065);
       return;
     }
-    View localView = (View)((WeakReference)this.tYR.get(paramInt)).get();
-    String str = (String)this.tYT.get(paramInt);
-    this.Kmf.a(0L, localView, str, paramBitmap);
-    HQ(paramInt);
+    View localView = (View)((WeakReference)this.xqf.get(paramInt)).get();
+    String str = (String)this.xqh.get(paramInt);
+    this.Pyc.a(0L, localView, str, paramBitmap);
+    NT(paramInt);
     AppMethodBeat.o(36065);
   }
   
-  private boolean cYM()
+  private boolean dSk()
   {
     return this.mScrollState == 0;
   }
@@ -335,33 +294,33 @@ final class e
   public final void b(View paramView, String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(36067);
-    if (this.tYX.contains(paramString1))
+    if (this.xql.contains(paramString1))
     {
       AppMethodBeat.o(36067);
       return;
     }
     int i = paramView.hashCode();
-    HQ(i);
+    NT(i);
     a(i, paramView, paramString1);
     if ((paramView instanceof WxImageView))
     {
-      this.Kme.remove(i);
-      this.Kme.put(i, paramString2);
+      this.Pyb.remove(i);
+      this.Pyb.put(i, paramString2);
     }
-    this.tYX.add(paramString1);
-    this.Kmj.add(Integer.valueOf(paramInt));
-    Ov();
+    this.xql.add(paramString1);
+    this.Pyg.add(Integer.valueOf(paramInt));
+    YC();
     AppMethodBeat.o(36067);
   }
   
   public final boolean c(ImageView paramImageView, int paramInt)
   {
     AppMethodBeat.i(36066);
-    ae.i("MicroMsg.ImageGalleryLazyLoader", "loadThumb position %s", new Object[] { Integer.valueOf(paramInt) });
-    Bitmap localBitmap = (Bitmap)this.Kmg.aL(String.valueOf(paramInt));
+    Log.i("MicroMsg.ImageGalleryLazyLoader", "loadThumb position %s", new Object[] { Integer.valueOf(paramInt) });
+    Bitmap localBitmap = (Bitmap)this.Pyd.aT(String.valueOf(paramInt));
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      this.Kmf.a(0L, paramImageView, null, localBitmap);
+      this.Pyc.a(0L, paramImageView, null, localBitmap);
       AppMethodBeat.o(36066);
       return true;
     }
@@ -369,15 +328,7 @@ final class e
     return false;
   }
   
-  final void cYL()
-  {
-    AppMethodBeat.i(36059);
-    this.Kmg.a(new f.a() {});
-    this.tYV.a(new f.a() {});
-    AppMethodBeat.o(36059);
-  }
-  
-  public final void ca(Map<String, Bitmap> paramMap)
+  public final void cg(Map<String, Bitmap> paramMap)
   {
     AppMethodBeat.i(36057);
     Iterator localIterator = paramMap.keySet().iterator();
@@ -387,25 +338,33 @@ final class e
       Bitmap localBitmap = (Bitmap)paramMap.get(str);
       if (localBitmap != null)
       {
-        this.tYV.put(str, localBitmap);
-        this.Kmi.push(Integer.valueOf(localBitmap.hashCode()));
-        ae.i("MicroMsg.ImageGalleryLazyLoader", "we got one cache from preload : %s %s", new Object[] { str, Integer.valueOf(localBitmap.hashCode()) });
+        this.xqj.put(str, localBitmap);
+        this.Pyf.push(Integer.valueOf(localBitmap.hashCode()));
+        Log.i("MicroMsg.ImageGalleryLazyLoader", "we got one cache from preload : %s %s", new Object[] { str, Integer.valueOf(localBitmap.hashCode()) });
       }
       else
       {
-        ae.e("MicroMsg.ImageGalleryLazyLoader", "we got one null cache from preload");
+        Log.e("MicroMsg.ImageGalleryLazyLoader", "we got one null cache from preload");
       }
     }
     AppMethodBeat.o(36057);
   }
   
+  final void dSj()
+  {
+    AppMethodBeat.i(36059);
+    this.Pyd.a(new f.a() {});
+    this.xqj.a(new f.a() {});
+    AppMethodBeat.o(36059);
+  }
+  
   public final void e(int paramInt, Bitmap paramBitmap)
   {
     AppMethodBeat.i(36070);
-    if ((paramInt == this.afo) || (this.afo == -1))
+    if ((paramInt == this.afB) || (this.afB == -1))
     {
-      ae.i("MicroMsg.ImageGalleryLazyLoader", "alvinluo notifyBitmapLoaded cache bitmap, position: %d", new Object[] { Integer.valueOf(paramInt) });
-      this.yMr = paramBitmap;
+      Log.i("MicroMsg.ImageGalleryLazyLoader", "alvinluo notifyBitmapLoaded cache bitmap, position: %d", new Object[] { Integer.valueOf(paramInt) });
+      this.CQj = paramBitmap;
     }
     AppMethodBeat.o(36070);
   }
@@ -413,17 +372,17 @@ final class e
   public final void f(ImageView paramImageView, String paramString, int paramInt)
   {
     AppMethodBeat.i(36068);
-    if (this.tYX.contains(paramString))
+    if (this.xql.contains(paramString))
     {
       AppMethodBeat.o(36068);
       return;
     }
     int i = paramImageView.hashCode();
-    HQ(i);
+    NT(i);
     a(i, paramImageView, paramString);
-    this.tYX.add(paramString);
-    this.Kmj.add(Integer.valueOf(paramInt));
-    Ov();
+    this.xql.add(paramString);
+    this.Pyg.add(Integer.valueOf(paramInt));
+    YC();
     AppMethodBeat.o(36068);
   }
   
@@ -432,9 +391,9 @@ final class e
     int j = 0;
     AppMethodBeat.i(36060);
     this.mScrollState = paramInt;
-    if (cYM())
+    if (dSk())
     {
-      int[] arrayOfInt = new int[this.tYU.size()];
+      int[] arrayOfInt = new int[this.xqi.size()];
       int i = 0;
       for (;;)
       {
@@ -442,13 +401,13 @@ final class e
         if (i >= arrayOfInt.length) {
           break;
         }
-        arrayOfInt[i] = this.tYU.keyAt(i);
+        arrayOfInt[i] = this.xqi.keyAt(i);
         i += 1;
       }
       while (paramInt < arrayOfInt.length)
       {
         i = arrayOfInt[paramInt];
-        b(i, (Bitmap)this.tYU.get(i));
+        b(i, (Bitmap)this.xqi.get(i));
         paramInt += 1;
       }
     }
@@ -460,16 +419,16 @@ final class e
   public final void onPageSelected(int paramInt)
   {
     AppMethodBeat.i(36061);
-    if (!((d)this.Kmf).Kkv.Kkx.bdb)
+    if (!((d)this.Pyc).Pwu.Pww.bcY)
     {
       AppMethodBeat.o(36061);
       return;
     }
-    if (this.afo == -1)
+    if (this.afB == -1)
     {
       int i = 0;
       if (i == 0) {
-        HR(paramInt);
+        NU(paramInt);
       }
       for (;;)
       {
@@ -479,37 +438,37 @@ final class e
           break label138;
         }
         if (paramInt + i <= paramInt + 3) {
-          HR(paramInt + i);
+          NU(paramInt + i);
         }
         if (paramInt - i >= Math.max(paramInt - 3, 0)) {
-          HR(paramInt - i);
+          NU(paramInt - i);
         }
       }
     }
-    if (this.afo > paramInt) {
-      HR(Math.max(paramInt - 3, 0));
+    if (this.afB > paramInt) {
+      NU(Math.max(paramInt - 3, 0));
     }
     for (;;)
     {
       label138:
-      this.afo = paramInt;
-      localObject = (d)this.Kmf;
+      this.afB = paramInt;
+      localObject = (d)this.Pyc;
       if (localObject == null) {
         break label223;
       }
-      if (((d)localObject).Kkv.HN(this.afo) == null) {
+      if (((d)localObject).Pwu.NQ(this.afB) == null) {
         break;
       }
-      this.yMr = null;
+      this.CQj = null;
       AppMethodBeat.o(36061);
       return;
-      if (this.afo < paramInt) {
-        HR(paramInt + 3);
+      if (this.afB < paramInt) {
+        NU(paramInt + 3);
       }
     }
-    Object localObject = ((d)localObject).Kkv.HO(this.afo);
+    Object localObject = ((d)localObject).Pwu.NR(this.afB);
     if (localObject != null) {
-      this.yMr = ((WxImageView)localObject).getFullImageBitmap();
+      this.CQj = ((WxImageView)localObject).getFullImageBitmap();
     }
     label223:
     AppMethodBeat.o(36061);
@@ -524,31 +483,31 @@ final class e
       long l2 = paramBitmap.getHeight();
       if ((mScreenHeight == 0) || (mScreenWidth == 0))
       {
-        mScreenWidth = ak.getContext().getResources().getDisplayMetrics().widthPixels;
-        mScreenHeight = ak.getContext().getResources().getDisplayMetrics().heightPixels;
-        Kmh = mScreenWidth * Kmh;
+        mScreenWidth = MMApplicationContext.getContext().getResources().getDisplayMetrics().widthPixels;
+        mScreenHeight = MMApplicationContext.getContext().getResources().getDisplayMetrics().heightPixels;
+        Pye = mScreenWidth * Pye;
       }
-      if (l1 * l2 <= Kmh * 2L) {}
+      if (l1 * l2 <= Pye * 2L) {}
     }
     for (int i = 1; i != 0; i = 0)
     {
-      ae.i("MicroMsg.ImageGalleryLazyLoader", "file %s too big to cache");
+      Log.i("MicroMsg.ImageGalleryLazyLoader", "file %s too big to cache");
       AppMethodBeat.o(36056);
       return;
     }
-    this.tYV.q(paramString, paramBitmap);
-    if (g.a.Kmu.tYV.aM(paramString))
+    this.xqj.x(paramString, paramBitmap);
+    if (g.a.Pyr.xqj.check(paramString))
     {
-      ae.i("MicroMsg.ImageGalleryLazyLoader", "update origCache and preload cache");
+      Log.i("MicroMsg.ImageGalleryLazyLoader", "update origCache and preload cache");
       try
       {
-        g.a.Kmu.tYV.q(paramString, paramBitmap);
+        g.a.Pyr.xqj.x(paramString, paramBitmap);
         AppMethodBeat.o(36056);
         return;
       }
       catch (Exception paramString)
       {
-        ae.printErrStackTrace("MicroMsg.ImageGalleryLazyLoader", paramString, "update preload cache failed", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ImageGalleryLazyLoader", paramString, "update preload cache failed", new Object[0]);
       }
     }
     AppMethodBeat.o(36056);
@@ -560,14 +519,14 @@ final class e
     
     public abstract void a(WxImageView paramWxImageView, String paramString, a parama);
     
-    public abstract Bitmap aXQ(String paramString);
+    public abstract Bitmap ana(int paramInt);
     
-    public abstract Bitmap aeq(int paramInt);
+    public abstract Bitmap bmV(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.e
  * JD-Core Version:    0.7.0.1
  */

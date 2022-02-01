@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/g60" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tenpay.android.wechat.MyKeyboardWindow android:id="@id/g61" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <RelativeLayout android:id="@id/g62" android:background="@drawable/aec" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_above="@id/g61">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/arrow_down" android:layout_centerInParent="true" android:contentDescription="@string/eb8" app:iconColor="@color/ee" />
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/dcj" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/dwl" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.tools.MMGestureGallery android:id="@id/dci" android:focusable="false" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:spacing="0.0dip" android:unselectedAlpha="1.2" />
+        <ProgressBar android:layout_gravity="center" android:id="@id/dw9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" style="@style/a61" />
     </RelativeLayout>
 </RelativeLayout>

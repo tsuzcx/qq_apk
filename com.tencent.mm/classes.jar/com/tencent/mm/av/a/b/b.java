@@ -2,8 +2,8 @@ package com.tencent.mm.av.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.c.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
 import java.net.SocketException;
 import java.net.SocketTimeoutException;
@@ -13,19 +13,19 @@ import javax.net.ssl.SSLHandshakeException;
 public final class b
   implements c
 {
-  public final com.tencent.mm.av.a.d.b Gj(String paramString)
+  public final com.tencent.mm.av.a.d.b OV(String paramString)
   {
     AppMethodBeat.i(130412);
-    ae.d("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data from url:%s", new Object[] { paramString });
+    Log.d("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data from url:%s", new Object[] { paramString });
     try
     {
-      paramString = a.Gk(paramString);
+      paramString = a.OW(paramString);
       AppMethodBeat.o(130412);
       return paramString;
     }
     catch (InterruptedException paramString)
     {
-      ae.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(paramString) });
+      Log.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(paramString) });
       paramString = new com.tencent.mm.av.a.d.b(null, null);
       AppMethodBeat.o(130412);
       return paramString;
@@ -34,42 +34,42 @@ public final class b
     {
       for (;;)
       {
-        ae.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(paramString) });
+        Log.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(paramString) });
       }
     }
     catch (SSLHandshakeException paramString)
     {
       for (;;)
       {
-        ae.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(paramString) });
+        Log.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(paramString) });
       }
     }
     catch (SocketException paramString)
     {
       for (;;)
       {
-        ae.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(paramString) });
+        Log.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(paramString) });
       }
     }
     catch (SocketTimeoutException paramString)
     {
       for (;;)
       {
-        ae.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(paramString) });
+        Log.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(paramString) });
       }
     }
     catch (IOException paramString)
     {
       for (;;)
       {
-        ae.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(paramString) });
+        Log.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(paramString) });
       }
     }
     catch (Exception paramString)
     {
       for (;;)
       {
-        ae.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { bu.o(paramString) });
+        Log.e("MicroMsg.imageload.DefaultImageDownloader", "[cpan] get image data failed.:%s", new Object[] { Util.stackTraceToString(paramString) });
       }
     }
   }
@@ -77,7 +77,7 @@ public final class b
   static final class a
   {
     /* Error */
-    public static com.tencent.mm.av.a.d.b Gk(String paramString)
+    public static com.tencent.mm.av.a.d.b OW(String paramString)
     {
       // Byte code:
       //   0: aconst_null
@@ -101,7 +101,7 @@ public final class b
       //   37: ifnonnull +10 -> 47
       //   40: ldc 38
       //   42: ldc 40
-      //   44: invokestatic 45	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   44: invokestatic 45	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   47: aload_0
       //   48: invokevirtual 49	java/net/HttpURLConnection:getResponseCode	()I
       //   51: sipush 300
@@ -113,7 +113,7 @@ public final class b
       //   65: invokevirtual 62	java/net/HttpURLConnection:disconnect	()V
       //   68: ldc 38
       //   70: ldc 64
-      //   72: invokestatic 67	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+      //   72: invokestatic 67	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
       //   75: ldc 12
       //   77: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   80: aconst_null
@@ -122,7 +122,7 @@ public final class b
       //   83: ldc 38
       //   85: aload_1
       //   86: invokevirtual 74	java/lang/Exception:getMessage	()Ljava/lang/String;
-      //   89: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   89: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   92: goto -28 -> 64
       //   95: aload_0
       //   96: invokevirtual 53	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
@@ -131,7 +131,7 @@ public final class b
       //   101: invokevirtual 80	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
       //   104: astore_2
       //   105: aload_1
-      //   106: invokestatic 86	com/tencent/mm/av/a/b/e:s	(Ljava/io/InputStream;)[B
+      //   106: invokestatic 86	com/tencent/mm/av/a/b/e:r	(Ljava/io/InputStream;)[B
       //   109: astore_3
       //   110: aload_0
       //   111: invokevirtual 53	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
@@ -156,7 +156,7 @@ public final class b
       //   148: ldc 38
       //   150: aload 4
       //   152: invokevirtual 74	java/lang/Exception:getMessage	()Ljava/lang/String;
-      //   155: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+      //   155: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
       //   158: goto -41 -> 117
       //   161: astore_0
       //   162: aload_1
@@ -202,7 +202,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.av.a.b.b
  * JD-Core Version:    0.7.0.1
  */

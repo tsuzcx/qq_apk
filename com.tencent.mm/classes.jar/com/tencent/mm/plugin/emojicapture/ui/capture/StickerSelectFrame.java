@@ -9,19 +9,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.g.f;
 import com.tencent.mm.sticker.loader.e;
 import com.tencent.mm.sticker.loader.g;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/capture/StickerSelectFrame;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "frame", "Landroid/view/View;", "frameBg", "frameLoadingBg", "lensId", "", "loading", "loadingCallback", "com/tencent/mm/plugin/emojicapture/ui/capture/StickerSelectFrame$loadingCallback$1", "Lcom/tencent/mm/plugin/emojicapture/ui/capture/StickerSelectFrame$loadingCallback$1;", "bindLensId", "", "notifyLoadingResult", "result", "Lcom/tencent/mm/loader/loader/WorkStatus;", "onDetachedFromWindow", "setSelected", "selected", "", "plugin-emojicapture_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/ui/capture/StickerSelectFrame;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "frame", "Landroid/view/View;", "frameBg", "frameLoadingBg", "lensId", "", "loading", "loadingCallback", "com/tencent/mm/plugin/emojicapture/ui/capture/StickerSelectFrame$loadingCallback$1", "Lcom/tencent/mm/plugin/emojicapture/ui/capture/StickerSelectFrame$loadingCallback$1;", "bindLensId", "", "notifyLoadingResult", "result", "Lcom/tencent/mm/loader/loader/WorkStatus;", "onDetachedFromWindow", "setSelected", "selected", "", "plugin-emojicapture_release"})
 public final class StickerSelectFrame
   extends FrameLayout
 {
-  private String pWT;
-  final int qcU;
-  final int qcV;
-  final View qcW;
-  final View qcX;
-  private final a qcY;
+  private String rnS;
+  final int rtS;
+  final int rtT;
+  final View rtU;
+  final View rtV;
+  private final a rtW;
   
   public StickerSelectFrame(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -34,42 +34,42 @@ public final class StickerSelectFrame
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(674);
-    this.qcU = 2131232078;
-    this.qcV = 2131232077;
-    this.qcY = new a(this);
-    View.inflate(paramContext, 2131493793, (ViewGroup)this);
-    paramContext = findViewById(2131299436);
+    this.rtS = 2131232170;
+    this.rtT = 2131232169;
+    this.rtW = new a(this);
+    View.inflate(paramContext, 2131493947, (ViewGroup)this);
+    paramContext = findViewById(2131300050);
     p.g(paramContext, "findViewById(R.id.emoji_sticker_select_frame)");
-    this.qcW = paramContext;
-    paramContext = findViewById(2131299437);
+    this.rtU = paramContext;
+    paramContext = findViewById(2131300051);
     p.g(paramContext, "findViewById(R.id.emoji_sticker_select_loading)");
-    this.qcX = paramContext;
+    this.rtV = paramContext;
     AppMethodBeat.o(674);
   }
   
-  public final void adh(String paramString)
+  public final void anq(String paramString)
   {
     AppMethodBeat.i(671);
-    this.pWT = paramString;
+    this.rnS = paramString;
     Object localObject = (CharSequence)paramString;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      this.qcW.setBackgroundResource(this.qcV);
-      this.qcX.setVisibility(8);
+      this.rtU.setBackgroundResource(this.rtT);
+      this.rtV.setVisibility(8);
       AppMethodBeat.o(671);
       return;
     }
-    localObject = e.IGU;
-    if (e.aTC(paramString))
+    localObject = e.NNN;
+    if (e.bix(paramString))
     {
-      this.qcW.setBackgroundResource(this.qcV);
-      this.qcX.setVisibility(8);
+      this.rtU.setBackgroundResource(this.rtT);
+      this.rtV.setVisibility(8);
       AppMethodBeat.o(671);
       return;
     }
-    this.qcW.setBackgroundResource(this.qcU);
-    this.qcX.setVisibility(0);
+    this.rtU.setBackgroundResource(this.rtS);
+    this.rtV.setVisibility(0);
     AppMethodBeat.o(671);
   }
   
@@ -77,8 +77,8 @@ public final class StickerSelectFrame
   {
     AppMethodBeat.i(673);
     super.onDetachedFromWindow();
-    e locale = e.IGU;
-    e.b((f)this.qcY);
+    e locale = e.NNN;
+    e.b((f)this.rtW);
     AppMethodBeat.o(673);
   }
   
@@ -88,26 +88,26 @@ public final class StickerSelectFrame
     super.setSelected(paramBoolean);
     if (!paramBoolean)
     {
-      locale = e.IGU;
-      e.b((f)this.qcY);
+      locale = e.NNN;
+      e.b((f)this.rtW);
       setVisibility(8);
       AppMethodBeat.o(672);
       return;
     }
-    e locale = e.IGU;
-    e.a((f)this.qcY);
+    e locale = e.NNN;
+    e.a((f)this.rtW);
     setVisibility(0);
     AppMethodBeat.o(672);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/emojicapture/ui/capture/StickerSelectFrame$loadingCallback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojicapture_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/emojicapture/ui/capture/StickerSelectFrame$loadingCallback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/sticker/loader/StickerTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojicapture_release"})
   public static final class a
     implements f<g>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.capture.StickerSelectFrame
  * JD-Core Version:    0.7.0.1
  */

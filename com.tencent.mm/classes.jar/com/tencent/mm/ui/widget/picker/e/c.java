@@ -8,62 +8,62 @@ import java.util.TimerTask;
 public final class c
   extends TimerTask
 {
-  private final WheelView LyN;
-  private int iNr;
-  private int iNs;
+  private final WheelView QUD;
+  private int jKf;
+  private int jKg;
   private int offset;
   
   public c(WheelView paramWheelView, int paramInt)
   {
-    this.LyN = paramWheelView;
+    this.QUD = paramWheelView;
     this.offset = paramInt;
-    this.iNr = 2147483647;
-    this.iNs = 0;
+    this.jKf = 2147483647;
+    this.jKg = 0;
   }
   
   public final void run()
   {
-    AppMethodBeat.i(200566);
-    if (this.iNr == 2147483647) {
-      this.iNr = this.offset;
+    AppMethodBeat.i(198524);
+    if (this.jKf == 2147483647) {
+      this.jKf = this.offset;
     }
-    this.iNs = ((int)(this.iNr * 0.1F));
-    if (this.iNs == 0) {
-      if (this.iNr >= 0) {
+    this.jKg = ((int)(this.jKf * 0.1F));
+    if (this.jKg == 0) {
+      if (this.jKf >= 0) {
         break label92;
       }
     }
     label92:
-    for (this.iNs = -1; Math.abs(this.iNr) <= 1; this.iNs = 1)
+    for (this.jKg = -1; Math.abs(this.jKf) <= 1; this.jKg = 1)
     {
-      this.LyN.aQp();
-      this.LyN.getHandler().sendEmptyMessage(3000);
-      AppMethodBeat.o(200566);
+      this.QUD.bkU();
+      this.QUD.getHandler().sendEmptyMessage(3000);
+      AppMethodBeat.o(198524);
       return;
     }
-    this.LyN.setTotalScrollY(this.LyN.getTotalScrollY() + this.iNs);
-    if (!this.LyN.iuX)
+    this.QUD.setTotalScrollY(this.QUD.getTotalScrollY() + this.jKg);
+    if (!this.QUD.jqj)
     {
-      float f1 = this.LyN.getItemHeight();
-      float f2 = -this.LyN.getInitPosition();
-      float f3 = this.LyN.getItemsCount() - 1 - this.LyN.getInitPosition();
-      if ((this.LyN.getTotalScrollY() <= f2 * f1) || (this.LyN.getTotalScrollY() >= f1 * f3))
+      float f1 = this.QUD.getItemHeight();
+      float f2 = -this.QUD.getInitPosition();
+      float f3 = this.QUD.getItemsCount() - 1 - this.QUD.getInitPosition();
+      if ((this.QUD.getTotalScrollY() <= f2 * f1) || (this.QUD.getTotalScrollY() >= f1 * f3))
       {
-        this.LyN.setTotalScrollY(this.LyN.getTotalScrollY() - this.iNs);
-        this.LyN.aQp();
-        this.LyN.getHandler().sendEmptyMessage(3000);
-        AppMethodBeat.o(200566);
+        this.QUD.setTotalScrollY(this.QUD.getTotalScrollY() - this.jKg);
+        this.QUD.bkU();
+        this.QUD.getHandler().sendEmptyMessage(3000);
+        AppMethodBeat.o(198524);
         return;
       }
     }
-    this.LyN.getHandler().sendEmptyMessage(1000);
-    this.iNr -= this.iNs;
-    AppMethodBeat.o(200566);
+    this.QUD.getHandler().sendEmptyMessage(1000);
+    this.jKf -= this.jKg;
+    AppMethodBeat.o(198524);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.e.c
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,12 @@ package com.tencent.mm.plugin.webview.ui.tools;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.text.TextPaint;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -17,21 +20,20 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.gdpr.c;
 import com.tencent.mm.plugin.webview.model.aa;
 import com.tencent.mm.plugin.webview.model.ac;
 import com.tencent.mm.plugin.webview.model.aj;
-import com.tencent.mm.protocal.protobuf.cea;
-import com.tencent.mm.protocal.protobuf.cyp;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.cuh;
+import com.tencent.mm.protocal.protobuf.drk;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.al;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.ao;
 import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -39,35 +41,35 @@ import java.util.LinkedList;
 @com.tencent.mm.ui.base.a(3)
 public class SDKOAuthOtherUI
   extends MMActivity
-  implements f
+  implements i
 {
-  private aj ErB;
-  private cyp ErC;
-  private boolean ErD = false;
-  private a ErJ;
+  private aj JeI;
+  private drk JeJ;
+  private boolean JeK = false;
+  private a JeQ;
   private int accountType = 2;
   private String appId;
-  private String dLz;
+  private String edo;
   private String extData;
-  private p fSP;
-  private int kCD;
+  private com.tencent.mm.ui.base.q gxX;
+  private int lGW;
   private long startTime;
   private String state;
   private String transaction;
   
-  private void aE(final int paramInt1, final int paramInt2, final int paramInt3)
+  private void aM(final int paramInt1, final int paramInt2, final int paramInt3)
   {
     AppMethodBeat.i(79728);
-    ae.i("MicroMsg.SDKOAuthOtherUI", "accept go  MPGdprPolicyUtil.checkPolicy");
-    c.a(this, com.tencent.mm.model.gdpr.a.hLM, this.appId, new com.tencent.mm.model.gdpr.b()
+    Log.i("MicroMsg.SDKOAuthOtherUI", "accept go  MPGdprPolicyUtil.checkPolicy");
+    c.a(this, com.tencent.mm.model.gdpr.a.iGO, this.appId, new com.tencent.mm.model.gdpr.b()
     {
-      public final void oJ(int paramAnonymousInt)
+      public final void sx(int paramAnonymousInt)
       {
         AppMethodBeat.i(79714);
-        ae.i("MicroMsg.SDKOAuthOtherUI", " MPGdprPolicyUtil.checkPolicy onPermissionReturn:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        Log.i("MicroMsg.SDKOAuthOtherUI", " MPGdprPolicyUtil.checkPolicy onPermissionReturn:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
         if (paramAnonymousInt == 1)
         {
-          SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).Xt(-4);
+          SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).agb(-4);
           AppMethodBeat.o(79714);
           return;
         }
@@ -77,11 +79,11 @@ public class SDKOAuthOtherUI
           SDKOAuthOtherUI.a locala = SDKOAuthOtherUI.e(SDKOAuthOtherUI.this);
           localLinkedList = new LinkedList();
           paramAnonymousInt = 0;
-          while (paramAnonymousInt < locala.ErO.size())
+          while (paramAnonymousInt < locala.JeV.size())
           {
-            cea localcea = (cea)locala.ErO.get(paramAnonymousInt);
-            if ((localcea.HqT == 2) || (localcea.HqT == 3)) {
-              localLinkedList.add(localcea.scope);
+            cuh localcuh = (cuh)locala.JeV.get(paramAnonymousInt);
+            if ((localcuh.MzA == 2) || (localcuh.MzA == 3)) {
+              localLinkedList.add(localcuh.scope);
             }
             paramAnonymousInt += 1;
           }
@@ -89,7 +91,7 @@ public class SDKOAuthOtherUI
         while ((paramInt1 != -2) && (paramInt2 != -2)) {
           if ((paramInt1 == 8) && (paramInt2 == 8) && (paramInt3 == 8))
           {
-            SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).Xt(-4);
+            SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).agb(-4);
             AppMethodBeat.o(79714);
             return;
             localLinkedList = new LinkedList();
@@ -105,7 +107,7 @@ public class SDKOAuthOtherUI
               SDKOAuthOtherUI.d(SDKOAuthOtherUI.this);
               aj.a(SDKOAuthOtherUI.g(SDKOAuthOtherUI.this), localLinkedList);
               if (SDKOAuthOtherUI.h(SDKOAuthOtherUI.this) == -1) {
-                ae.e("MicroMsg.SDKOAuthOtherUI", "btnCallback: do not get avatarId from pageone");
+                Log.e("MicroMsg.SDKOAuthOtherUI", "btnCallback: do not get avatarId from pageone");
               }
               if (SDKOAuthOtherUI.i(SDKOAuthOtherUI.this))
               {
@@ -114,7 +116,7 @@ public class SDKOAuthOtherUI
                 AppMethodBeat.o(79714);
                 return;
               }
-              SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).l(localLinkedList, SDKOAuthOtherUI.h(SDKOAuthOtherUI.this));
+              SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).k(localLinkedList, SDKOAuthOtherUI.h(SDKOAuthOtherUI.this));
               AppMethodBeat.o(79714);
               return;
             }
@@ -125,7 +127,7 @@ public class SDKOAuthOtherUI
               AppMethodBeat.o(79714);
               return;
             }
-            SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).bj(localLinkedList);
+            SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).bE(localLinkedList);
             AppMethodBeat.o(79714);
             return;
           }
@@ -134,7 +136,7 @@ public class SDKOAuthOtherUI
         {
           if ((paramInt1 == 8) && (paramInt3 == 8))
           {
-            SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).Xt(-4);
+            SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).agb(-4);
             AppMethodBeat.o(79714);
             return;
           }
@@ -144,7 +146,7 @@ public class SDKOAuthOtherUI
             SDKOAuthOtherUI.d(SDKOAuthOtherUI.this);
             aj.a(SDKOAuthOtherUI.g(SDKOAuthOtherUI.this), localLinkedList);
             if (SDKOAuthOtherUI.h(SDKOAuthOtherUI.this) == -1) {
-              ae.e("MicroMsg.SDKOAuthOtherUI", "btnCallback: do not get avatarId from pageone");
+              Log.e("MicroMsg.SDKOAuthOtherUI", "btnCallback: do not get avatarId from pageone");
             }
             if (SDKOAuthOtherUI.i(SDKOAuthOtherUI.this))
             {
@@ -153,7 +155,7 @@ public class SDKOAuthOtherUI
               AppMethodBeat.o(79714);
               return;
             }
-            SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).l(localLinkedList, SDKOAuthOtherUI.h(SDKOAuthOtherUI.this));
+            SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).k(localLinkedList, SDKOAuthOtherUI.h(SDKOAuthOtherUI.this));
             AppMethodBeat.o(79714);
             return;
           }
@@ -164,7 +166,7 @@ public class SDKOAuthOtherUI
             AppMethodBeat.o(79714);
             return;
           }
-          SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).bj(localLinkedList);
+          SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).bE(localLinkedList);
           AppMethodBeat.o(79714);
           return;
         }
@@ -172,7 +174,7 @@ public class SDKOAuthOtherUI
         {
           if ((paramInt2 == 8) && (paramInt3 == 8))
           {
-            SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).Xt(-4);
+            SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).agb(-4);
             AppMethodBeat.o(79714);
             return;
           }
@@ -187,13 +189,13 @@ public class SDKOAuthOtherUI
             AppMethodBeat.o(79714);
             return;
           }
-          SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).bj(localLinkedList);
+          SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).bE(localLinkedList);
           AppMethodBeat.o(79714);
           return;
         }
         if (paramInt3 == 8)
         {
-          SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).Xt(-4);
+          SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).agb(-4);
           AppMethodBeat.o(79714);
           return;
         }
@@ -205,98 +207,104 @@ public class SDKOAuthOtherUI
           AppMethodBeat.o(79714);
           return;
         }
-        SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).bj(localLinkedList);
+        SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).bE(localLinkedList);
         AppMethodBeat.o(79714);
       }
     });
     AppMethodBeat.o(79728);
   }
   
-  private void eVx()
+  private void gep()
   {
     AppMethodBeat.i(79725);
-    if (this.fSP == null)
+    if (this.gxX == null)
     {
       AppMethodBeat.o(79725);
       return;
     }
-    this.fSP.dismiss();
+    this.gxX.dismiss();
     AppMethodBeat.o(79725);
   }
   
   public int getLayoutId()
   {
-    return 2131495318;
+    return 2131496176;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(79721);
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131101179));
-    hideActionbarLine();
-    setMMTitle(getString(2131761567));
-    setBackBtnVisible(false);
-    setTitleBarClickListener(null, new Runnable()
+    g.azz().a(1346, this);
+    g.azz().a(1137, this);
+    paramBundle = getSupportActionBar();
+    if (paramBundle != null) {
+      paramBundle.hide();
+    }
+    ((TextView)findViewById(2131303133)).setOnClickListener(new View.OnClickListener()
     {
-      public final void run()
+      public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(79711);
-        com.tencent.mm.plugin.webview.j.b.ELt.a(SDKOAuthOtherUI.a(SDKOAuthOtherUI.this), SDKOAuthOtherUI.b(SDKOAuthOtherUI.this), 0, SDKOAuthOtherUI.c(SDKOAuthOtherUI.this), 4, 1, 0);
-        SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).Xt(-2);
+        AppMethodBeat.i(211043);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthOtherUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        com.tencent.mm.plugin.webview.k.b.JBk.a(SDKOAuthOtherUI.a(SDKOAuthOtherUI.this), SDKOAuthOtherUI.b(SDKOAuthOtherUI.this), 0, SDKOAuthOtherUI.c(SDKOAuthOtherUI.this), 4, 1, 0);
+        SDKOAuthOtherUI.d(SDKOAuthOtherUI.this).agb(-2);
         SDKOAuthOtherUI.this.finish();
-        AppMethodBeat.o(79711);
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthOtherUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(211043);
       }
     });
     paramBundle = getIntent();
     this.appId = paramBundle.getStringExtra("0");
     this.transaction = paramBundle.getStringExtra("1");
-    label655:
+    label662:
     for (;;)
     {
       try
       {
-        this.ErC = ((cyp)new cyp().parseFrom(paramBundle.getByteArrayExtra("2")));
+        this.JeJ = ((drk)new drk().parseFrom(paramBundle.getByteArrayExtra("2")));
         this.state = paramBundle.getStringExtra("4");
         this.extData = paramBundle.getStringExtra("7");
-        this.ErD = paramBundle.getBooleanExtra("auth_from_scan", false);
-        if (this.ErD)
+        this.JeK = paramBundle.getBooleanExtra("auth_from_scan", false);
+        if (this.JeK)
         {
           this.accountType = 3;
-          this.dLz = paramBundle.getStringExtra("auth_raw_url");
-          this.ErB = new aj(this, this.appId, this.dLz);
-          this.kCD = paramBundle.getIntExtra("3", -1);
-          Object localObject1 = (TextView)findViewById(2131296975);
-          ((TextView)localObject1).setText(2131761566);
+          this.edo = paramBundle.getStringExtra("auth_raw_url");
+          this.JeI = new aj(this, this.appId, this.edo);
+          this.lGW = paramBundle.getIntExtra("3", -1);
+          Object localObject1 = (TextView)findViewById(2131297094);
+          ((TextView)localObject1).setText(2131763532);
           ((TextView)localObject1).getPaint().setFakeBoldText(true);
-          localObject1 = (TextView)findViewById(2131296971);
-          if (bu.isNullOrNil(this.ErC.HIN)) {
+          localObject1 = (TextView)findViewById(2131297090);
+          if (Util.isNullOrNil(this.JeJ.MUa)) {
             continue;
           }
           ((TextView)localObject1).setVisibility(0);
-          ((TextView)localObject1).setText(this.ErC.HIN);
-          localObject1 = (ImageView)findViewById(2131302715);
-          localObject2 = (TextView)findViewById(2131302718);
+          ((TextView)localObject1).setText(this.JeJ.MUa);
+          localObject1 = (ImageView)findViewById(2131305282);
+          localObject2 = (TextView)findViewById(2131305285);
           Object localObject3 = new c.a();
-          ((c.a)localObject3).igv = 2131690915;
-          ((c.a)localObject3).igC = getResources().getDimension(2131166776);
-          ((c.a)localObject3).hhW = true;
-          com.tencent.mm.av.q.aJb().a(this.ErC.HqM, (ImageView)localObject1, ((c.a)localObject3).aJu());
-          ((TextView)localObject2).setText(this.ErC.hDU);
-          localObject1 = (ListView)findViewById(2131296974);
+          ((c.a)localObject3).jbq = 2131691211;
+          ((c.a)localObject3).jbx = getResources().getDimension(2131166899);
+          ((c.a)localObject3).iaT = true;
+          com.tencent.mm.av.q.bcV().a(this.JeJ.Mzt, (ImageView)localObject1, ((c.a)localObject3).bdv());
+          ((TextView)localObject2).setText(this.JeJ.ixZ);
+          localObject1 = (ListView)findViewById(2131297093);
           localObject2 = new LinkedList();
-          localObject3 = this.ErC.HqL.iterator();
+          localObject3 = this.JeJ.Mzs.iterator();
           bool = false;
           if (!((Iterator)localObject3).hasNext()) {
             continue;
           }
-          cea localcea = (cea)((Iterator)localObject3).next();
-          if ((localcea.scope.equals("snsapi_userinfo")) || (localcea.scope.equals("snsapi_login")) || (localcea.scope.equals("group_sns_login")) || (localcea.scope.equals("snsapi_friend"))) {
-            break label655;
+          cuh localcuh = (cuh)((Iterator)localObject3).next();
+          if ((localcuh.scope.equals("snsapi_userinfo")) || (localcuh.scope.equals("snsapi_login")) || (localcuh.scope.equals("group_sns_login")) || (localcuh.scope.equals("snsapi_friend"))) {
+            break label662;
           }
-          ((LinkedList)localObject2).add(localcea);
-          if (localcea.HqT != 3) {
-            break label655;
+          ((LinkedList)localObject2).add(localcuh);
+          if (localcuh.MzA != 3) {
+            break label662;
           }
           bool = true;
           continue;
@@ -305,16 +313,16 @@ public class SDKOAuthOtherUI
       catch (IOException localIOException)
       {
         final boolean bool;
-        ae.e("MicroMsg.SDKOAuthOtherUI", "SdkOauthAuthorizeResp parseFrom byteArray failed");
+        Log.e("MicroMsg.SDKOAuthOtherUI", "SdkOauthAuthorizeResp parseFrom byteArray failed");
         continue;
-        this.ErB = new aj(this, this.appId, this.transaction, this.state, this.extData);
+        this.JeI = new aj(this, this.appId, this.transaction, this.state, this.extData);
         continue;
         localIOException.setVisibility(8);
         continue;
-        this.ErJ = new a(this, (LinkedList)localObject2);
-        localIOException.setAdapter(this.ErJ);
-        Button localButton = (Button)findViewById(2131301565);
-        Object localObject2 = (Button)findViewById(2131301568);
+        this.JeQ = new a(this, (LinkedList)localObject2);
+        localIOException.setAdapter(this.JeQ);
+        Button localButton = (Button)findViewById(2131303787);
+        Object localObject2 = (Button)findViewById(2131303790);
         final int i = paramBundle.getIntExtra("5", -2);
         final int j = paramBundle.getIntExtra("6", -2);
         this.startTime = System.currentTimeMillis();
@@ -324,9 +332,9 @@ public class SDKOAuthOtherUI
           {
             AppMethodBeat.i(79712);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthOtherUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-            com.tencent.mm.plugin.webview.j.b.ELt.a(SDKOAuthOtherUI.a(SDKOAuthOtherUI.this), SDKOAuthOtherUI.b(SDKOAuthOtherUI.this), 1, SDKOAuthOtherUI.c(SDKOAuthOtherUI.this), 4, 1, 0);
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthOtherUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            com.tencent.mm.plugin.webview.k.b.JBk.a(SDKOAuthOtherUI.a(SDKOAuthOtherUI.this), SDKOAuthOtherUI.b(SDKOAuthOtherUI.this), 1, SDKOAuthOtherUI.c(SDKOAuthOtherUI.this), 4, 1, 0);
             SDKOAuthOtherUI.a(SDKOAuthOtherUI.this, i, j);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthOtherUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(79712);
@@ -338,9 +346,9 @@ public class SDKOAuthOtherUI
           {
             AppMethodBeat.i(79713);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthOtherUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-            com.tencent.mm.plugin.webview.j.b.ELt.a(SDKOAuthOtherUI.a(SDKOAuthOtherUI.this), SDKOAuthOtherUI.b(SDKOAuthOtherUI.this), 0, SDKOAuthOtherUI.c(SDKOAuthOtherUI.this), 4, 1, 0);
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthOtherUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            com.tencent.mm.plugin.webview.k.b.JBk.a(SDKOAuthOtherUI.a(SDKOAuthOtherUI.this), SDKOAuthOtherUI.b(SDKOAuthOtherUI.this), 0, SDKOAuthOtherUI.c(SDKOAuthOtherUI.this), 4, 1, 0);
             SDKOAuthOtherUI.a(SDKOAuthOtherUI.this, bool, i, j);
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthOtherUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(79713);
@@ -356,7 +364,9 @@ public class SDKOAuthOtherUI
   {
     AppMethodBeat.i(79724);
     super.onDestroy();
-    eVx();
+    gep();
+    g.azz().b(1346, this);
+    g.azz().b(1137, this);
     AppMethodBeat.o(79724);
   }
   
@@ -365,8 +375,8 @@ public class SDKOAuthOtherUI
     AppMethodBeat.i(79726);
     if ((paramInt == 4) && (paramKeyEvent.getRepeatCount() == 0))
     {
-      com.tencent.mm.plugin.webview.j.b.ELt.a(this.appId, this.startTime, 0, this.accountType, 4, 1, 0);
-      this.ErB.Xt(-2);
+      com.tencent.mm.plugin.webview.k.b.JBk.a(this.appId, this.startTime, 0, this.accountType, 4, 1, 0);
+      this.JeI.agb(-2);
       finish();
       AppMethodBeat.o(79726);
       return true;
@@ -380,8 +390,6 @@ public class SDKOAuthOtherUI
   {
     AppMethodBeat.i(79723);
     super.onPause();
-    g.ajj().b(1346, this);
-    g.ajj().b(1137, this);
     AppMethodBeat.o(79723);
   }
   
@@ -389,26 +397,24 @@ public class SDKOAuthOtherUI
   {
     AppMethodBeat.i(79722);
     super.onResume();
-    g.ajj().a(1346, this);
-    g.ajj().a(1137, this);
     AppMethodBeat.o(79722);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(79727);
     if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      com.tencent.mm.plugin.webview.j.b.ELt.a(this.appId, this.startTime, 2, this.accountType, 4, 1, paramInt2);
+      com.tencent.mm.plugin.webview.k.b.JBk.a(this.appId, this.startTime, 2, this.accountType, 4, 1, paramInt2);
     }
-    eVx();
-    if ((paramn instanceof ac))
+    gep();
+    if ((paramq instanceof ac))
     {
-      this.ErB.j(paramInt1, paramInt2, paramString, paramn);
+      this.JeI.i(paramInt1, paramInt2, paramString, paramq);
       AppMethodBeat.o(79727);
       return;
     }
-    if ((paramn instanceof aa)) {
-      this.ErB.O(paramInt1, paramInt2, paramString);
+    if ((paramq instanceof aa)) {
+      this.JeI.Q(paramInt1, paramInt2, paramString);
     }
     AppMethodBeat.o(79727);
   }
@@ -422,27 +428,27 @@ public class SDKOAuthOtherUI
   static final class a
     extends BaseAdapter
   {
-    LinkedList<cea> ErO;
+    LinkedList<cuh> JeV;
     private Context mContext;
     private LayoutInflater mInflater;
     
-    public a(Context paramContext, LinkedList<cea> paramLinkedList)
+    public a(Context paramContext, LinkedList<cuh> paramLinkedList)
     {
       AppMethodBeat.i(79716);
       this.mInflater = LayoutInflater.from(paramContext);
-      this.ErO = paramLinkedList;
+      this.JeV = paramLinkedList;
       this.mContext = paramContext;
       AppMethodBeat.o(79716);
     }
     
-    private cea XX(int paramInt)
+    private cuh agE(int paramInt)
     {
       AppMethodBeat.i(79718);
-      if ((paramInt >= 0) && (paramInt < this.ErO.size()))
+      if ((paramInt >= 0) && (paramInt < this.JeV.size()))
       {
-        cea localcea = (cea)this.ErO.get(paramInt);
+        cuh localcuh = (cuh)this.JeV.get(paramInt);
         AppMethodBeat.o(79718);
-        return localcea;
+        return localcuh;
       }
       AppMethodBeat.o(79718);
       return null;
@@ -451,12 +457,12 @@ public class SDKOAuthOtherUI
     public final int getCount()
     {
       AppMethodBeat.i(79717);
-      if (this.ErO == null)
+      if (this.JeV == null)
       {
         AppMethodBeat.o(79717);
         return 0;
       }
-      int i = this.ErO.size();
+      int i = this.JeV.size();
       AppMethodBeat.o(79717);
       return i;
     }
@@ -469,13 +475,13 @@ public class SDKOAuthOtherUI
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(79719);
-      if ((this.ErO == null) || (this.ErO.size() <= 0))
+      if ((this.JeV == null) || (this.JeV.size() <= 0))
       {
         AppMethodBeat.o(79719);
         return null;
       }
-      final cea localcea = XX(paramInt);
-      if (localcea == null)
+      final cuh localcuh = agE(paramInt);
+      if (localcuh == null)
       {
         AppMethodBeat.o(79719);
         return paramView;
@@ -483,41 +489,41 @@ public class SDKOAuthOtherUI
       if (paramView == null)
       {
         paramViewGroup = new a((byte)0);
-        paramView = this.mInflater.inflate(2131495314, null, false);
-        paramViewGroup.ErR = ((ImageView)paramView.findViewById(2131296682));
-        paramViewGroup.ngr = ((TextView)paramView.findViewById(2131296681));
+        paramView = this.mInflater.inflate(2131496172, null, false);
+        paramViewGroup.JeY = ((ImageView)paramView.findViewById(2131296771));
+        paramViewGroup.oqe = ((TextView)paramView.findViewById(2131296770));
         paramView.setTag(paramViewGroup);
-        if (localcea.HqT != 1) {
+        if (localcuh.MzA != 1) {
           break label177;
         }
-        paramViewGroup.ErR.setImageResource(2131235025);
+        paramViewGroup.JeY.setImageResource(2131231827);
       }
       for (;;)
       {
-        paramViewGroup.ngr.setText(localcea.desc);
-        final ImageView localImageView = paramViewGroup.ErR;
-        paramViewGroup.ErR.setOnClickListener(new View.OnClickListener()
+        paramViewGroup.oqe.setText(localcuh.desc);
+        final ImageView localImageView = paramViewGroup.JeY;
+        paramViewGroup.JeY.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(79715);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthOtherUI$LoginAuthListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-            if (localcea.HqT == 2)
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthOtherUI$LoginAuthListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            if (localcuh.MzA == 2)
             {
-              localImageView.setImageResource(2131235025);
-              localcea.HqT = 1;
+              localImageView.setImageResource(2131231827);
+              localcuh.MzA = 1;
             }
             for (;;)
             {
               com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthOtherUI$LoginAuthListAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
               AppMethodBeat.o(79715);
               return;
-              if (localcea.HqT == 1)
+              if (localcuh.MzA == 1)
               {
-                localImageView.setImageResource(2131689655);
-                localcea.HqT = 2;
+                localImageView.setImageResource(2131689962);
+                localcuh.MzA = 2;
               }
             }
           }
@@ -527,24 +533,24 @@ public class SDKOAuthOtherUI
         paramViewGroup = (a)paramView.getTag();
         break;
         label177:
-        if (localcea.HqT == 3)
+        if (localcuh.MzA == 3)
         {
-          localImageView = paramViewGroup.ErR;
-          if (al.isDarkMode()) {}
-          for (paramInt = 2131689632;; paramInt = 2131689634)
+          localImageView = paramViewGroup.JeY;
+          if (ao.isDarkMode()) {}
+          for (paramInt = 2131689956;; paramInt = 2131689957)
           {
             localImageView.setImageResource(paramInt);
             break;
           }
         }
-        paramViewGroup.ErR.setImageResource(2131689655);
+        paramViewGroup.JeY.setImageResource(2131689962);
       }
     }
     
     static final class a
     {
-      ImageView ErR;
-      TextView ngr;
+      ImageView JeY;
+      TextView oqe;
     }
   }
 }

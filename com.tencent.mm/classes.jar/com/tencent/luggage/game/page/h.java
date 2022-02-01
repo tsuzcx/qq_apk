@@ -18,25 +18,27 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.luggage.game.c.e.1;
 import com.tencent.luggage.game.c.e.c;
-import com.tencent.luggage.game.c.f;
-import com.tencent.luggage.h.i;
+import com.tencent.luggage.h.j;
+import com.tencent.luggage.sdk.b.a.a.a;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
 import com.tencent.magicbrush.MBRuntime;
-import com.tencent.magicbrush.d.b;
 import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.magicbrush.ui.MagicBrushView.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.config.b.a;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.page.AppBrandPageFullScreenView;
-import com.tencent.mm.plugin.appbrand.page.al;
-import com.tencent.mm.plugin.appbrand.page.ax;
-import com.tencent.mm.plugin.appbrand.page.az;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.page.ao;
 import com.tencent.mm.plugin.appbrand.page.bb;
-import com.tencent.mm.plugin.appbrand.page.bc;
+import com.tencent.mm.plugin.appbrand.page.bd;
+import com.tencent.mm.plugin.appbrand.page.bf;
+import com.tencent.mm.plugin.appbrand.page.bg;
 import com.tencent.mm.plugin.appbrand.page.capsulebar.AppBrandCapsuleBarPlaceHolderView;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -47,37 +49,37 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
   extends com.tencent.luggage.sdk.b.a.b.a<PAGE>
   implements b.b, d
 {
-  protected WAGamePageViewContainerLayout cld;
-  private MagicBrushView cle;
-  private al clf;
-  protected b clg;
-  private Bitmap clh;
-  private Bitmap cli;
-  private ImageView clj;
-  private final a clk;
-  double cll;
-  private AtomicBoolean clm;
-  private final View.OnAttachStateChangeListener cln;
+  protected WAGamePageViewContainerLayout cwY;
+  private MagicBrushView cwZ;
+  private ao cxa;
+  protected b cxb;
+  private Bitmap cxc;
+  private Bitmap cxd;
+  private ImageView cxe;
+  private final a cxf;
+  double cxg;
+  private AtomicBoolean cxh;
+  private final View.OnAttachStateChangeListener cxi;
   
   public h(PAGE arg1)
   {
     super(???);
     AppMethodBeat.i(130656);
-    this.cll = 60.0D;
-    this.clm = new AtomicBoolean(false);
-    this.cln = new View.OnAttachStateChangeListener()
+    this.cxg = 60.0D;
+    this.cxh = new AtomicBoolean(false);
+    this.cxi = new View.OnAttachStateChangeListener()
     {
       public final void onViewAttachedToWindow(View paramAnonymousView)
       {
         AppMethodBeat.i(130651);
-        ae.i("Luggage.Game.WAGamePageViewRenderer", "WAGamePageView onAttachedToWindow, notify mb foreground once");
-        h.a(h.this).getMagicBrush().Hj();
+        Log.i("Luggage.Game.WAGamePageViewRenderer", "WAGamePageView onAttachedToWindow, notify mb foreground once");
+        h.a(h.this).getMagicBrush().Rc();
         h.a(h.this).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(130650);
-            h.this.cld.removeOnAttachStateChangeListener(jdField_this);
+            h.this.cwY.removeOnAttachStateChangeListener(jdField_this);
             AppMethodBeat.o(130650);
           }
         });
@@ -86,64 +88,64 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
       
       public final void onViewDetachedFromWindow(View paramAnonymousView) {}
     };
-    this.clk = new a();
-    DE();
-    com.tencent.luggage.sdk.b.a.c.e locale = ???.Er().coW;
-    synchronized (this.cno)
+    this.cxf = new a();
+    Nb();
+    com.tencent.luggage.sdk.b.a.c.f localf = ???.NQ().cBj;
+    synchronized (this.czn)
     {
-      this.cno.putAll(locale.cno);
+      this.czn.putAll(localf.czn);
       AppMethodBeat.o(130656);
       return;
     }
   }
   
-  private void DL()
+  private void Nh()
   {
     AppMethodBeat.i(130668);
     BitmapDrawable localBitmapDrawable;
-    if (this.clj != null) {
-      if ((this.clj.getDrawable() instanceof BitmapDrawable))
+    if (this.cxe != null) {
+      if ((this.cxe.getDrawable() instanceof BitmapDrawable))
       {
-        localBitmapDrawable = (BitmapDrawable)this.clj.getDrawable();
-        this.clj.setImageDrawable(null);
+        localBitmapDrawable = (BitmapDrawable)this.cxe.getDrawable();
+        this.cxe.setImageDrawable(null);
       }
     }
     try
     {
       localBitmapDrawable.getBitmap().recycle();
-      this.clj.setVisibility(8);
-      if (this.clh == null) {}
+      this.cxe.setVisibility(8);
+      if (this.cxc == null) {}
     }
     catch (Exception localException1)
     {
       try
       {
-        this.clh.recycle();
-        this.clh = null;
+        this.cxc.recycle();
+        this.cxc = null;
         AppMethodBeat.o(130668);
         return;
         localException1 = localException1;
-        ae.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", localException1, "hy: cleanupCoverScreenshot error!", new Object[0]);
+        Log.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", localException1, "hy: cleanupCoverScreenshot error!", new Object[0]);
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ae.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", localException2, "hy: cleanupCoverScreenshot error!", new Object[0]);
+          Log.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", localException2, "hy: cleanupCoverScreenshot error!", new Object[0]);
         }
       }
     }
   }
   
-  private void DM()
+  private void Ni()
   {
     AppMethodBeat.i(130673);
-    if (this.cli != null) {}
+    if (this.cxd != null) {}
     try
     {
-      ae.i("Luggage.Game.WAGamePageViewRenderer", "hy: cleanupCanvasSecurityGuard");
-      this.cli.recycle();
-      this.cli = null;
+      Log.i("Luggage.Game.WAGamePageViewRenderer", "hy: cleanupCanvasSecurityGuard");
+      this.cxd.recycle();
+      this.cxd = null;
       AppMethodBeat.o(130673);
       return;
     }
@@ -151,92 +153,47 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
     {
       for (;;)
       {
-        ae.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", localException, "hy: cleanupCanvasSecurityGuard error!", new Object[0]);
+        Log.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", localException, "hy: cleanupCanvasSecurityGuard error!", new Object[0]);
       }
     }
   }
   
-  protected void DE()
-  {
-    AppMethodBeat.i(130657);
-    b(d.class, this);
-    AppMethodBeat.o(130657);
-  }
-  
-  public final bb DF()
-  {
-    return this.clg;
-  }
-  
-  public final al DG()
-  {
-    return this.clf;
-  }
-  
-  public final void DH()
-  {
-    AppMethodBeat.i(130663);
-    super.DH();
-    DL();
-    DM();
-    this.cle.getMagicBrush().Hj();
-    AppMethodBeat.o(130663);
-  }
-  
-  public void DI()
-  {
-    AppMethodBeat.i(130664);
-    super.DI();
-    this.cle.getMagicBrush().Hk();
-    AppMethodBeat.o(130664);
-  }
-  
-  public final Map<String, m> DJ()
-  {
-    AppMethodBeat.i(130666);
-    Map localMap = Collections.emptyMap();
-    AppMethodBeat.o(130666);
-    return localMap;
-  }
-  
-  public final void DK() {}
-  
-  public final void Dt()
+  public final void MP()
   {
     AppMethodBeat.i(130669);
-    DL();
-    if (!getMagicBrushView().getMagicBrush().cwZ.Cw())
+    Nh();
+    if (!MQ().getMagicBrush().cLi.LO())
     {
       AppMethodBeat.o(130669);
       return;
     }
-    Object localObject = ((com.tencent.luggage.sdk.b.a.c)Eo()).jDa.getOrientationHandler().aYg();
-    if (org.apache.commons.b.a.contains(new com.tencent.mm.plugin.appbrand.platform.window.e.b[] { com.tencent.mm.plugin.appbrand.platform.window.e.b.mtF, com.tencent.mm.plugin.appbrand.platform.window.e.b.mtG, com.tencent.mm.plugin.appbrand.platform.window.e.b.mtH, com.tencent.mm.plugin.appbrand.platform.window.e.b.mtI }, localObject))
+    Object localObject = ((com.tencent.luggage.sdk.b.a.c)NN()).kEb.getOrientationHandler().btm();
+    if (org.apache.commons.b.a.contains(new com.tencent.mm.plugin.appbrand.platform.window.e.b[] { com.tencent.mm.plugin.appbrand.platform.window.e.b.nEn, com.tencent.mm.plugin.appbrand.platform.window.e.b.nEo, com.tencent.mm.plugin.appbrand.platform.window.e.b.nEp, com.tencent.mm.plugin.appbrand.platform.window.e.b.nEq }, localObject))
     {
-      if (this.clj == null)
+      if (this.cxe == null)
       {
-        ae.w("Luggage.Game.WAGamePageViewRenderer", "markBeforeStartToTransparent coverImage is NULL, return");
+        Log.w("Luggage.Game.WAGamePageViewRenderer", "markBeforeStartToTransparent coverImage is NULL, return");
         AppMethodBeat.o(130669);
         return;
       }
-      if (this.cle != null) {
+      if (this.cwZ != null) {
         break label151;
       }
-      ae.e("Luggage.Game.WAGamePageViewRenderer", "captureScreen, view == null");
+      Log.e("Luggage.Game.WAGamePageViewRenderer", "captureScreen, view == null");
     }
     label151:
-    for (localObject = null;; localObject = com.tencent.magicbrush.b.a(this.cle.getMagicBrush().cxs))
+    for (localObject = null;; localObject = com.tencent.magicbrush.b.a(this.cwZ.getMagicBrush().cLA))
     {
-      this.clh = ((Bitmap)localObject);
-      this.cld.setOnConfigurationChangedListener(new WAGamePageViewContainerLayout.a()
+      this.cxc = ((Bitmap)localObject);
+      this.cwY.setOnConfigurationChangedListener(new WAGamePageViewContainerLayout.a()
       {
         public final void a(WAGamePageViewContainerLayout.b paramAnonymousb1, WAGamePageViewContainerLayout.b paramAnonymousb2)
         {
           AppMethodBeat.i(178042);
-          ae.v("Luggage.Game.WAGamePageViewRenderer", "hy: after change. old direction:%s, new direction: %s", new Object[] { paramAnonymousb1, paramAnonymousb2 });
+          Log.v("Luggage.Game.WAGamePageViewRenderer", "hy: after change. old direction:%s, new direction: %s", new Object[] { paramAnonymousb1, paramAnonymousb2 });
           if (h.c(h.this) == null)
           {
-            ae.e("Luggage.Game.WAGamePageViewRenderer", "hy: screenshot is null");
+            Log.e("Luggage.Game.WAGamePageViewRenderer", "hy: screenshot is null");
             AppMethodBeat.o(178042);
             return;
           }
@@ -248,7 +205,7 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
           if (h.a(paramAnonymousb2))
           {
             Matrix localMatrix = new Matrix();
-            if (((paramAnonymousb2 == WAGamePageViewContainerLayout.b.ckU) && (paramAnonymousb1 == WAGamePageViewContainerLayout.b.ckV)) || ((paramAnonymousb2 == WAGamePageViewContainerLayout.b.ckW) && (paramAnonymousb1 == WAGamePageViewContainerLayout.b.ckX))) {
+            if (((paramAnonymousb2 == WAGamePageViewContainerLayout.b.cwP) && (paramAnonymousb1 == WAGamePageViewContainerLayout.b.cwQ)) || ((paramAnonymousb2 == WAGamePageViewContainerLayout.b.cwR) && (paramAnonymousb1 == WAGamePageViewContainerLayout.b.cwS))) {
               localMatrix.postRotate(90.0F);
             }
             for (;;)
@@ -260,7 +217,7 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
               localMatrix.postRotate(270.0F);
             }
           }
-          h.this.cld.setOnConfigurationChangedListener(null);
+          h.this.cwY.setOnConfigurationChangedListener(null);
           AppMethodBeat.o(178042);
         }
       });
@@ -269,31 +226,36 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
     }
   }
   
-  public final void Du()
+  public MagicBrushView MQ()
+  {
+    return this.cwZ;
+  }
+  
+  public final void MR()
   {
     AppMethodBeat.i(130671);
-    ae.i("Luggage.Game.WAGamePageViewRenderer", "hy: markBeforeStartToBackground");
+    Log.i("Luggage.Game.WAGamePageViewRenderer", "hy: markBeforeStartToBackground");
     try
     {
-      DM();
-      this.cli = com.tencent.magicbrush.b.a(this.cle.getMagicBrush().cxs);
+      Ni();
+      this.cxd = com.tencent.magicbrush.b.a(this.cwZ.getMagicBrush().cLA);
       AppMethodBeat.o(130671);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", localException, "hy: captureDefaultWindow error!", new Object[0]);
+      Log.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", localException, "hy: captureDefaultWindow error!", new Object[0]);
       AppMethodBeat.o(130671);
     }
   }
   
-  public final Bitmap Dv()
+  public final Bitmap MS()
   {
     AppMethodBeat.i(130672);
-    if (this.cli != null)
+    if (this.cxd != null)
     {
-      ae.i("Luggage.Game.WAGamePageViewRenderer", "hy: getCanvasSecurityGuardBitmap");
-      Bitmap localBitmap = this.cli;
+      Log.i("Luggage.Game.WAGamePageViewRenderer", "hy: getCanvasSecurityGuardBitmap");
+      Bitmap localBitmap = this.cxd;
       AppMethodBeat.o(130672);
       return localBitmap;
     }
@@ -301,26 +263,66 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
     return null;
   }
   
+  protected void Nb()
+  {
+    AppMethodBeat.i(130657);
+    b(d.class, this);
+    AppMethodBeat.o(130657);
+  }
+  
+  public final bf Nc()
+  {
+    return this.cxb;
+  }
+  
+  public final void Nd()
+  {
+    AppMethodBeat.i(130663);
+    super.Nd();
+    Nh();
+    Ni();
+    this.cwZ.getMagicBrush().Rc();
+    AppMethodBeat.o(130663);
+  }
+  
+  public void Ne()
+  {
+    AppMethodBeat.i(130664);
+    super.Ne();
+    this.cwZ.getMagicBrush().Rd();
+    AppMethodBeat.o(130664);
+  }
+  
+  public final Map<String, p> Nf()
+  {
+    AppMethodBeat.i(130666);
+    Map localMap = Collections.emptyMap();
+    AppMethodBeat.o(130666);
+    return localMap;
+  }
+  
+  public final void Ng() {}
+  
   public final View a(LayoutInflater paramLayoutInflater)
   {
     AppMethodBeat.i(130658);
     paramLayoutInflater = new WAGamePageViewContainerLayout(paramLayoutInflater.getContext());
-    this.cld = paramLayoutInflater;
+    this.cwY = paramLayoutInflater;
     AppMethodBeat.o(130658);
     return paramLayoutInflater;
   }
   
-  protected MagicBrushView ay(Context paramContext)
+  protected MagicBrushView aH(Context paramContext)
   {
     AppMethodBeat.i(130659);
-    paramContext = new MagicBrushView(paramContext, MagicBrushView.h.cAW);
+    paramContext = new MagicBrushView(paramContext, MagicBrushView.h.cPc);
     AppMethodBeat.o(130659);
     return paramContext;
   }
   
-  public final ax az(Context paramContext)
+  public final bb aI(Context paramContext)
   {
-    return this.clk;
+    return this.cxf;
   }
   
   public void b(com.tencent.mm.plugin.appbrand.widget.actionbar.b paramb)
@@ -331,8 +333,8 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
     if ((localAppBrandCapsuleBarPlaceHolderView != null) && ((localAppBrandCapsuleBarPlaceHolderView.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
       ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localAppBrandCapsuleBarPlaceHolderView.getLayoutParams();
-      localMarginLayoutParams.rightMargin += paramb.getContext().getResources().getDimensionPixelSize(2131165772);
-      localMarginLayoutParams.topMargin += paramb.getContext().getResources().getDimensionPixelSize(2131165773);
+      localMarginLayoutParams.rightMargin += paramb.getContext().getResources().getDimensionPixelSize(2131165795);
+      localMarginLayoutParams.topMargin += paramb.getContext().getResources().getDimensionPixelSize(2131165796);
       localAppBrandCapsuleBarPlaceHolderView.requestLayout();
     }
     AppMethodBeat.o(130661);
@@ -341,130 +343,128 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
   public final boolean b(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(130667);
-    ((com.tencent.luggage.sdk.b.a.c)Eo()).Er().c(paramString1, paramString2, paramInt);
+    ((com.tencent.luggage.sdk.b.a.c)NN()).NQ().c(paramString1, paramString2, paramInt);
     AppMethodBeat.o(130667);
     return true;
   }
   
-  public final boolean cZ(String paramString)
+  public void ca(View paramView)
   {
-    return true;
-  }
-  
-  public void cl(View paramView)
-  {
-    AppMethodBeat.i(220735);
+    AppMethodBeat.i(222891);
     if (paramView.getVisibility() != 0)
     {
-      AppMethodBeat.o(220735);
+      AppMethodBeat.o(222891);
       return;
     }
-    if (this.clm.compareAndSet(false, true)) {
-      ((com.tencent.luggage.sdk.b.a.c)Eo()).TY("onNativeWidgetViewAdded");
+    if (this.cxh.compareAndSet(false, true)) {
+      ((com.tencent.luggage.sdk.b.a.c)NN()).adM("onNativeWidgetViewAdded");
     }
-    AppMethodBeat.o(220735);
+    AppMethodBeat.o(222891);
   }
   
-  public void cm(View paramView)
+  public void cb(View paramView)
   {
     AppMethodBeat.i(130660);
-    paramView = (com.tencent.luggage.game.d.a.a.b)Q(com.tencent.luggage.game.d.a.a.b.class);
+    paramView = (com.tencent.luggage.game.d.a.a.b)S(com.tencent.luggage.game.d.a.a.b.class);
     if (paramView == null)
     {
-      ae.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", new com.tencent.luggage.game.d.a.a.c(), "hy: not on game service!", new Object[0]);
+      Log.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", new com.tencent.luggage.game.d.a.a.d(), "hy: not on game service!", new Object[0]);
       AppMethodBeat.o(130660);
       return;
     }
-    this.cle = ay(getContext());
-    this.cle.setId(2131296729);
+    this.cwZ = aH(getContext());
+    this.cwZ.setId(2131296811);
     paramView = paramView.getMagicBrush();
-    this.cle.setMagicBrush(paramView);
-    paramView.cxq.add(new d.b()
+    this.cwZ.setMagicBrush(paramView);
+    paramView.cLy.add(new com.tencent.magicbrush.e.b()
     {
       public final void onFirstFrame()
       {
         AppMethodBeat.i(130652);
-        if (h.b(h.this).compareAndSet(false, true)) {
-          ((com.tencent.luggage.sdk.b.a.c)h.this.Eo()).TY("onFirstFrame");
+        if (h.b(h.this).compareAndSet(false, true))
+        {
+          ((com.tencent.luggage.sdk.b.a.c)h.this.NN()).adM("onFirstFrame");
+          com.tencent.mm.plugin.appbrand.keylogger.c.b(h.this.getAppId(), KSProcessWeAppLaunch.stepPageReady_Game);
+          com.tencent.mm.plugin.appbrand.keylogger.c.b(h.this.getAppId(), KSProcessWeAppLaunch.stepPageInit_Game);
         }
         AppMethodBeat.o(130652);
       }
     });
-    this.cld.addView(this.cle, 0, new FrameLayout.LayoutParams(-1, -1));
-    this.clg = new b(getContext());
-    this.clg.setNativeWidgetAddedCallback(this);
-    this.cld.addView(this.clg, -1, new ViewGroup.LayoutParams(-1, -1));
-    this.clf = new c(this.clg);
-    this.clf.setFullscreenImpl(((com.tencent.luggage.sdk.b.a.c)Eo()).getFullscreenImpl());
-    this.clf.a(new az()
+    this.cwY.addView(this.cwZ, 0, new FrameLayout.LayoutParams(-1, -1));
+    this.cxb = new b(getContext());
+    this.cxb.setNativeWidgetAddedCallback(this);
+    this.cwY.addView(this.cxb, -1, new ViewGroup.LayoutParams(-1, -1));
+    this.cxa = new c(this.cxb);
+    this.cxa.setFullscreenImpl(((com.tencent.luggage.sdk.b.a.c)NN()).getFullscreenImpl());
+    this.cxa.a(new bd()
     {
       public final void a(AppBrandPageFullScreenView paramAnonymousAppBrandPageFullScreenView)
       {
         AppMethodBeat.i(130653);
         if ((paramAnonymousAppBrandPageFullScreenView != null) && (paramAnonymousAppBrandPageFullScreenView.getParent() == null)) {
-          h.this.cld.addView(paramAnonymousAppBrandPageFullScreenView, new ViewGroup.LayoutParams(-1, -1));
+          h.this.cwY.addView(paramAnonymousAppBrandPageFullScreenView, new ViewGroup.LayoutParams(-1, -1));
         }
         AppMethodBeat.o(130653);
       }
     });
-    paramView = this.clf;
-    Object localObject1 = new bc()
+    paramView = this.cxa;
+    Object localObject1 = new bg()
     {
       public final void a(FrameLayout paramAnonymousFrameLayout)
       {
         AppMethodBeat.i(178040);
         if ((paramAnonymousFrameLayout != null) && (paramAnonymousFrameLayout.getParent() == null)) {
-          h.this.cld.addView(paramAnonymousFrameLayout, 0, new ViewGroup.LayoutParams(-1, -1));
+          h.this.cwY.addView(paramAnonymousFrameLayout, 0, new ViewGroup.LayoutParams(-1, -1));
         }
         AppMethodBeat.o(178040);
       }
     };
-    ae.i("MicroMsg.AppBrandWebViewCustomViewContainer", "setUnderViewAttacher notnull:%b", new Object[] { Boolean.TRUE });
-    paramView.mij = ((bc)localObject1);
-    if (paramView.mii != null)
+    Log.i("MicroMsg.AppBrandWebViewCustomViewContainer", "setUnderViewAttacher notnull:%b", new Object[] { Boolean.TRUE });
+    paramView.nsE = ((bg)localObject1);
+    if (paramView.nsD != null)
     {
-      if ((!al.$assertionsDisabled) && (paramView.mij == null))
+      if ((!ao.$assertionsDisabled) && (paramView.nsE == null))
       {
         paramView = new AssertionError();
         AppMethodBeat.o(130660);
         throw paramView;
       }
-      paramView.mij.a(paramView.mii);
+      paramView.nsE.a(paramView.nsD);
     }
-    boolean bool1 = ((com.tencent.luggage.sdk.b.a.c)Eo()).Eq().Ff().cmG;
-    boolean bool2 = ((com.tencent.luggage.sdk.b.a.c)Eo()).Eq().Ff().cmG;
+    boolean bool1 = ((com.tencent.luggage.sdk.b.a.c)NN()).NP().OM().cyC;
+    boolean bool2 = ((com.tencent.luggage.sdk.b.a.c)NN()).NP().OM().cyC;
     if ((bool1) || (bool2))
     {
-      ??? = (com.tencent.luggage.game.d.a.a.b)((com.tencent.luggage.sdk.b.a.c)Eo()).Er().Q(com.tencent.luggage.game.d.a.a.b.class);
+      ??? = (com.tencent.luggage.game.d.a.a.b)((com.tencent.luggage.sdk.b.a.c)NN()).NQ().S(com.tencent.luggage.game.d.a.a.b.class);
       if (??? == null) {
-        break label920;
+        break label902;
       }
-      paramView = ((com.tencent.luggage.game.d.a.a.b)???).CK();
+      paramView = ((com.tencent.luggage.game.d.a.a.b)???).Mg();
       localObject1 = new com.tencent.luggage.game.c.e.b();
-      ((com.tencent.luggage.game.c.e.b)localObject1).ciV = ((com.tencent.mm.plugin.appbrand.jsapi.h)Eo());
-      ((com.tencent.luggage.game.c.e.b)localObject1).cjv = ((com.tencent.luggage.game.d.a.a.b)???).getMagicBrush();
-      ((com.tencent.luggage.game.c.e.b)localObject1).cjw = this.cld;
-      ((com.tencent.luggage.game.c.e.b)localObject1).cjx = bool1;
-      ((com.tencent.luggage.game.c.e.b)localObject1).cjy = bool2;
-      ((com.tencent.luggage.game.c.e.b)localObject1).cjz = new e.c()
+      ((com.tencent.luggage.game.c.e.b)localObject1).cuQ = ((k)NN());
+      ((com.tencent.luggage.game.c.e.b)localObject1).cvr = ((com.tencent.luggage.game.d.a.a.b)???).getMagicBrush();
+      ((com.tencent.luggage.game.c.e.b)localObject1).cvs = this.cwY;
+      ((com.tencent.luggage.game.c.e.b)localObject1).cvt = bool1;
+      ((com.tencent.luggage.game.c.e.b)localObject1).cvu = bool2;
+      ((com.tencent.luggage.game.c.e.b)localObject1).cvv = new e.c()
       {
-        public final void B(List<f> paramAnonymousList)
+        public final void F(List<com.tencent.luggage.game.c.f> paramAnonymousList)
         {
           AppMethodBeat.i(178041);
           try
           {
             h localh = h.this;
-            Object localObject = this.clr.getMagicBrush();
+            Object localObject = this.cxm.getMagicBrush();
             if (localObject == null)
             {
-              ae.e("Luggage.Game.WAGamePageViewRenderer", "hy: can not retrieve runtime!");
+              Log.e("Luggage.Game.WAGamePageViewRenderer", "hy: can not retrieve runtime!");
               AppMethodBeat.o(178041);
               return;
             }
-            localObject = ((MBRuntime)localObject).clC.GX();
-            paramAnonymousList.add(new f("MinFPS", Math.round(localh.cll)));
-            paramAnonymousList.add(new f("RT-FPS", Math.round(((com.tencent.magicbrush.a)localObject).cwp)));
-            paramAnonymousList.add(new f("EX-FPS", Math.round(((com.tencent.magicbrush.a)localObject).cwq)));
+            localObject = ((MBRuntime)localObject).cxx.QP();
+            paramAnonymousList.add(new com.tencent.luggage.game.c.f("MinFPS", Math.round(localh.cxg)));
+            paramAnonymousList.add(new com.tencent.luggage.game.c.f("RT-FPS", Math.round(((com.tencent.magicbrush.a)localObject).cKu)));
+            paramAnonymousList.add(new com.tencent.luggage.game.c.f("EX-FPS", Math.round(((com.tencent.magicbrush.a)localObject).cKv)));
             AppMethodBeat.o(178041);
             return;
           }
@@ -474,7 +474,7 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
           }
         }
       };
-      paramView.cja = ((com.tencent.luggage.game.c.e.b)localObject1).cjv;
+      paramView.cuW = ((com.tencent.luggage.game.c.e.b)localObject1).cvr;
       if (Looper.myLooper() != Looper.getMainLooper())
       {
         paramView = new IllegalStateException("You can only init GameInspector in main thread.");
@@ -483,73 +483,71 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
       }
       if (paramView.mState == 0)
       {
-        paramView.mContext = ((com.tencent.luggage.game.c.e.b)localObject1).cjw.getContext();
-        if (((com.tencent.luggage.game.c.e.b)localObject1).cjx)
+        paramView.mContext = ((com.tencent.luggage.game.c.e.b)localObject1).cvs.getContext();
+        if (((com.tencent.luggage.game.c.e.b)localObject1).cvt)
         {
-          ??? = ((com.tencent.luggage.game.c.e.b)localObject1).cjz;
-          paramView.cjk = new com.tencent.luggage.game.c.d(paramView.mContext);
-          paramView.cjk.cjh = ((e.c)???);
-          paramView.cjk.setBackground(paramView.mContext.getResources().getDrawable(2131230977));
+          ??? = ((com.tencent.luggage.game.c.e.b)localObject1).cvv;
+          paramView.cvg = new com.tencent.luggage.game.c.d(paramView.mContext);
+          paramView.cvg.cvd = ((e.c)???);
+          paramView.cvg.setBackground(paramView.mContext.getResources().getDrawable(2131231006));
         }
-        Object localObject3;
-        if (((com.tencent.luggage.game.c.e.b)localObject1).cjy)
+        if (((com.tencent.luggage.game.c.e.b)localObject1).cvu)
         {
-          ??? = ((com.tencent.luggage.game.c.e.b)localObject1).ciV;
-          localObject3 = paramView.cja;
-          Context localContext = paramView.mContext;
-          paramView.cjl = new com.tencent.luggage.game.c.b(com.tencent.luggage.game.b.c.Cz().ciL, (com.tencent.magicbrush.d)localObject3, localContext, (com.tencent.mm.plugin.appbrand.jsapi.h)???);
+          ??? = ((com.tencent.luggage.game.c.e.b)localObject1).cuQ;
+          paramView.cvh = com.tencent.luggage.game.c.b.a(paramView.cuW, paramView.mContext, (k)???);
         }
-        ??? = ((com.tencent.luggage.game.c.e.b)localObject1).cjw;
+        ??? = ((com.tencent.luggage.game.c.e.b)localObject1).cvs;
         ((FrameLayout)???).setClipChildren(false);
         float f = paramView.mContext.getResources().getDisplayMetrics().density;
-        if (paramView.cjl != null)
+        FrameLayout.LayoutParams localLayoutParams;
+        if (paramView.cvh != null)
         {
-          localObject3 = new FrameLayout.LayoutParams(-1, -1);
-          ((FrameLayout)???).addView(paramView.cjl.getView(), (ViewGroup.LayoutParams)localObject3);
-          localObject3 = new FrameLayout.LayoutParams(-2, -2);
-          ((FrameLayout.LayoutParams)localObject3).gravity = 8388693;
-          ((FrameLayout.LayoutParams)localObject3).bottomMargin = ((int)(55.0F * f));
+          localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
+          ((FrameLayout)???).addView(paramView.cvh.getView(), localLayoutParams);
+          localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+          localLayoutParams.gravity = 8388693;
+          localLayoutParams.bottomMargin = ((int)(55.0F * f));
           int i = (int)(f * 15.0F);
-          ((FrameLayout.LayoutParams)localObject3).rightMargin = i;
-          ((FrameLayout.LayoutParams)localObject3).leftMargin = i;
-          ((FrameLayout)???).addView(paramView.cjl.ciX, (ViewGroup.LayoutParams)localObject3);
+          localLayoutParams.rightMargin = i;
+          localLayoutParams.leftMargin = i;
+          ((FrameLayout)???).addView(paramView.cvh.cuT, localLayoutParams);
         }
-        if (paramView.cjk != null)
+        if (paramView.cvg != null)
         {
-          localObject3 = new FrameLayout.LayoutParams(-2, -2);
-          ((FrameLayout.LayoutParams)localObject3).topMargin = i.cre.aG(paramView.mContext);
-          ((FrameLayout)???).addView(paramView.cjk, (ViewGroup.LayoutParams)localObject3);
+          localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+          localLayoutParams.topMargin = j.cDv.aP(paramView.mContext);
+          ((FrameLayout)???).addView(paramView.cvg, localLayoutParams);
         }
       }
     }
     for (;;)
     {
-      synchronized (paramView.cjm)
+      synchronized (paramView.cvi)
       {
         if (paramView.mState != 0)
         {
-          this.clj = new ImageView(getContext());
-          this.clj.setVisibility(8);
-          this.cld.addView(this.clj, new FrameLayout.LayoutParams(-1, -1));
-          this.cld.addOnAttachStateChangeListener(this.cln);
+          this.cxe = new ImageView(getContext());
+          this.cxe.setVisibility(8);
+          this.cwY.addView(this.cxe, new FrameLayout.LayoutParams(-1, -1));
+          this.cwY.addOnAttachStateChangeListener(this.cxi);
           AppMethodBeat.o(130660);
           return;
         }
         paramView.mState = 1;
-        if ((((com.tencent.luggage.game.c.e.b)localObject1).cjy) && (paramView.cjl != null)) {
-          paramView.cjl.post(new e.1(paramView));
+        if ((((com.tencent.luggage.game.c.e.b)localObject1).cvu) && (paramView.cvh != null)) {
+          paramView.cvh.post(new e.1(paramView));
         }
       }
-      label920:
-      ae.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", new com.tencent.luggage.game.d.a.a.c(), "hy: you're not on game service!", new Object[0]);
+      label902:
+      Log.printErrStackTrace("Luggage.Game.WAGamePageViewRenderer", new com.tencent.luggage.game.d.a.a.d(), "hy: you're not on game service!", new Object[0]);
     }
   }
   
-  public final RelativeLayout.LayoutParams cn(View paramView)
+  public final RelativeLayout.LayoutParams cc(View paramView)
   {
-    AppMethodBeat.i(220733);
+    AppMethodBeat.i(222889);
     paramView = new RelativeLayout.LayoutParams(-1, -1);
-    AppMethodBeat.o(220733);
+    AppMethodBeat.o(222889);
     return paramView;
   }
   
@@ -557,23 +555,23 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
   {
     AppMethodBeat.i(130665);
     super.dispatchDestroy();
-    DL();
-    DM();
-    if ((Eo() != null) && (((com.tencent.luggage.sdk.b.a.c)Eo()).Er() != null) && (((com.tencent.luggage.sdk.b.a.c)Eo()).Er().Q(com.tencent.luggage.game.d.a.a.b.class) != null))
+    Nh();
+    Ni();
+    if ((NN() != null) && (((com.tencent.luggage.sdk.b.a.c)NN()).NQ() != null) && (((com.tencent.luggage.sdk.b.a.c)NN()).NQ().S(com.tencent.luggage.game.d.a.a.b.class) != null))
     {
-      com.tencent.luggage.game.c.e locale = ((com.tencent.luggage.game.d.a.a.b)((com.tencent.luggage.sdk.b.a.c)Eo()).Er().Q(com.tencent.luggage.game.d.a.a.b.class)).CK();
+      com.tencent.luggage.game.c.e locale = ((com.tencent.luggage.game.d.a.a.b)((com.tencent.luggage.sdk.b.a.c)NN()).NQ().S(com.tencent.luggage.game.d.a.a.b.class)).Mg();
       locale.mState = 2;
-      locale.cjn.clU.clear();
-      locale.cja = null;
-      if (locale.cjl != null)
+      locale.cvj.cxP.clear();
+      locale.cuW = null;
+      if (locale.cvh != null)
       {
-        locale.cjl.ciU.destroy();
-        locale.cjl = null;
+        locale.cvh.cuP.destroy();
+        locale.cvh = null;
       }
-      if (locale.cjk != null)
+      if (locale.cvg != null)
       {
-        locale.cjk.cji.stopTimer();
-        locale.cjk = null;
+        locale.cvg.cve.stopTimer();
+        locale.cvg = null;
       }
     }
     AppMethodBeat.o(130665);
@@ -583,51 +581,56 @@ public class h<PAGE extends com.tencent.luggage.sdk.b.a.c>
   {
     AppMethodBeat.i(130662);
     super.dispatchStart();
-    super.b(com.tencent.mm.plugin.appbrand.page.a.h.class, new com.tencent.luggage.game.page.a.b((z)Eo()));
-    super.b(com.tencent.mm.plugin.appbrand.page.a.d.class, new g((z)Eo(), Eq().getAppConfig().jYN.cpm));
+    super.b(com.tencent.mm.plugin.appbrand.page.a.h.class, new com.tencent.luggage.game.page.a.b((ac)NN()));
+    super.b(com.tencent.mm.plugin.appbrand.page.a.d.class, new g((ac)NN(), NP().getAppConfig().lbP.cBG));
     AppMethodBeat.o(130662);
   }
   
-  public MagicBrushView getMagicBrushView()
+  public final boolean dy(String paramString)
   {
-    return this.cle;
+    return true;
   }
   
-  public final Bitmap q(int paramInt, boolean paramBoolean)
+  public final ao getCustomViewContainer()
+  {
+    return this.cxa;
+  }
+  
+  public final Bitmap u(int paramInt, boolean paramBoolean)
   {
     Bitmap localBitmap = null;
     AppMethodBeat.i(130670);
-    ae.i("Luggage.Game.WAGamePageViewRenderer", "got message doGetCanvasBitmap");
+    Log.i("Luggage.Game.WAGamePageViewRenderer", "got message doGetCanvasBitmap");
     if (paramInt == -1)
     {
-      ae.e("Luggage.Game.WAGamePageViewRenderer", "got message doGetCanvasBitmap canvasId is illegal");
+      Log.e("Luggage.Game.WAGamePageViewRenderer", "got message doGetCanvasBitmap canvasId is illegal");
       AppMethodBeat.o(130670);
       return null;
     }
-    ae.i("Luggage.Game.WAGamePageViewRenderer", "got message doGetCanvasBitmap canvasId:%d,sync:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
-    if (this.cle == null) {
-      ae.e("Luggage.Game.WAGamePageViewRenderer", "captureCanvas with [%d], view == null", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("Luggage.Game.WAGamePageViewRenderer", "got message doGetCanvasBitmap canvasId:%d,sync:%b", new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    if (this.cwZ == null) {
+      Log.e("Luggage.Game.WAGamePageViewRenderer", "captureCanvas with [%d], view == null", new Object[] { Integer.valueOf(paramInt) });
     }
     for (;;)
     {
-      ae.i("Luggage.Game.WAGamePageViewRenderer", "got message doGetCanvasBitmap end");
+      Log.i("Luggage.Game.WAGamePageViewRenderer", "got message doGetCanvasBitmap end");
       AppMethodBeat.o(130670);
       return localBitmap;
-      localBitmap = this.cle.getMagicBrush().cxs.h(this.cle.getVirtualElementId(), paramInt, false);
+      localBitmap = this.cwZ.getMagicBrush().cLA.h(this.cwZ.getVirtualElementId(), paramInt, false);
     }
   }
   
   public final boolean y(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(220734);
-    ((com.tencent.luggage.sdk.b.a.c)Eo()).Er().c(paramString1, paramString2, 0);
-    AppMethodBeat.o(220734);
+    AppMethodBeat.i(222890);
+    ((com.tencent.luggage.sdk.b.a.c)NN()).NQ().c(paramString1, paramString2, 0);
+    AppMethodBeat.o(222890);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.game.page.h
  * JD-Core Version:    0.7.0.1
  */

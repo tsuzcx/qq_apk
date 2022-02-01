@@ -64,14 +64,14 @@ final class g
     return true;
   }
   
-  public final String sD()
+  public final String sG()
   {
     return this.string;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.eclipsesource.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -6,165 +6,164 @@ import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.modelvideo.r;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.recordvideo.e.c;
-import com.tencent.mm.plugin.recordvideo.e.c.a;
+import com.tencent.mm.plugin.recordvideo.e.d.a;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordConfigProvider;
 import com.tencent.mm.plugin.recordvideo.model.audio.AudioCacheInfo;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.al;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ao;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig;", "", "muteOrigin", "", "audioCacheInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "editItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "Lkotlin/collections/ArrayList;", "editData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "drawingRect", "", "reMuxStartTimeMs", "", "reMuxEndTimeMs", "fakeImagesList", "", "blurBgPath", "validRect", "(ZLcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;Ljava/util/ArrayList;Ljava/util/ArrayList;[FIILjava/util/ArrayList;Ljava/lang/String;[F)V", "getAudioCacheInfo", "()Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "setAudioCacheInfo", "(Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;)V", "getBlurBgPath", "()Ljava/lang/String;", "setBlurBgPath", "(Ljava/lang/String;)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditData", "()Ljava/util/ArrayList;", "setEditData", "(Ljava/util/ArrayList;)V", "getEditItems", "setEditItems", "getFakeImagesList", "setFakeImagesList", "getMuteOrigin", "()Z", "setMuteOrigin", "(Z)V", "getReMuxEndTimeMs", "()I", "setReMuxEndTimeMs", "(I)V", "getReMuxStartTimeMs", "setReMuxStartTimeMs", "getValidRect", "setValidRect", "generateTargetConfig", "Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "mediaCaptureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "isLandVideoBySizeAndRotation", "videoInfo", "Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil$VideoInfo;", "isLandVideoOnlyBySize", "setSize", "", "config", "toString", "videoConfigForFile", "videoPath", "videoConfigForPhotoToVideo", "params", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "Companion", "EncodeConfig", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig;", "", "muteOrigin", "", "audioCacheInfo", "Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "editItems", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "Lkotlin/collections/ArrayList;", "editData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "drawingRect", "", "reMuxStartTimeMs", "", "reMuxEndTimeMs", "fakeImagesList", "", "blurBgPath", "validRect", "(ZLcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;Ljava/util/ArrayList;Ljava/util/ArrayList;[FIILjava/util/ArrayList;Ljava/lang/String;[F)V", "getAudioCacheInfo", "()Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;", "setAudioCacheInfo", "(Lcom/tencent/mm/plugin/recordvideo/model/audio/AudioCacheInfo;)V", "getBlurBgPath", "()Ljava/lang/String;", "setBlurBgPath", "(Ljava/lang/String;)V", "getDrawingRect", "()[F", "setDrawingRect", "([F)V", "getEditData", "()Ljava/util/ArrayList;", "setEditData", "(Ljava/util/ArrayList;)V", "getEditItems", "setEditItems", "getFakeImagesList", "setFakeImagesList", "getMuteOrigin", "()Z", "setMuteOrigin", "(Z)V", "getReMuxEndTimeMs", "()I", "setReMuxEndTimeMs", "(I)V", "getReMuxStartTimeMs", "setReMuxStartTimeMs", "getValidRect", "setValidRect", "generateTargetConfig", "Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;", "configProvider", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordConfigProvider;", "mediaCaptureInfo", "Lcom/tencent/mm/media/widget/camerarecordview/data/MediaCaptureInfo;", "isLandVideoBySizeAndRotation", "videoInfo", "Lcom/tencent/mm/plugin/recordvideo/util/MediaRecordParamUtil$VideoInfo;", "isLandVideoOnlyBySize", "setSize", "", "config", "toString", "videoConfigForFile", "videoPath", "videoConfigForPhotoToVideo", "params", "Lcom/tencent/mm/modelcontrol/VideoTransPara;", "Companion", "EncodeConfig", "plugin-recordvideo_release"})
 public final class f
 {
-  public static final f.a xNm;
-  public float[] xKR;
-  public float[] xKS;
-  public String xKW;
-  public boolean xMW;
-  public AudioCacheInfo xNg;
-  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> xNh;
-  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a> xNi;
-  public int xNj;
-  public int xNk;
-  public ArrayList<String> xNl;
+  public static final f.a BNs;
+  public float[] BKV;
+  public float[] BKW;
+  public String BLa;
+  public boolean BNc;
+  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> BNn;
+  public ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a> BNo;
+  public int BNp;
+  public int BNq;
+  public ArrayList<String> BNr;
+  public AudioCacheInfo wgG;
   
   static
   {
     AppMethodBeat.i(75378);
-    xNm = new f.a((byte)0);
+    BNs = new f.a((byte)0);
     AppMethodBeat.o(75378);
   }
   
   public f(boolean paramBoolean, AudioCacheInfo paramAudioCacheInfo, ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a.a> paramArrayList, ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.item.a> paramArrayList1, float[] paramArrayOfFloat1, int paramInt1, int paramInt2, ArrayList<String> paramArrayList2, String paramString, float[] paramArrayOfFloat2)
   {
-    AppMethodBeat.i(206550);
-    this.xMW = paramBoolean;
-    this.xNg = paramAudioCacheInfo;
-    this.xNh = paramArrayList;
-    this.xNi = paramArrayList1;
-    this.xKR = paramArrayOfFloat1;
-    this.xNj = paramInt1;
-    this.xNk = paramInt2;
-    this.xNl = paramArrayList2;
-    this.xKW = paramString;
-    this.xKS = paramArrayOfFloat2;
-    AppMethodBeat.o(206550);
+    AppMethodBeat.i(237255);
+    this.BNc = paramBoolean;
+    this.wgG = paramAudioCacheInfo;
+    this.BNn = paramArrayList;
+    this.BNo = paramArrayList1;
+    this.BKV = paramArrayOfFloat1;
+    this.BNp = paramInt1;
+    this.BNq = paramInt2;
+    this.BNr = paramArrayList2;
+    this.BLa = paramString;
+    this.BKW = paramArrayOfFloat2;
+    AppMethodBeat.o(237255);
   }
   
   private static b a(String paramString, RecordConfigProvider paramRecordConfigProvider, b paramb)
   {
     AppMethodBeat.i(75374);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(75374);
       return paramb;
     }
-    c localc = c.yho;
+    com.tencent.mm.plugin.recordvideo.e.d locald = com.tencent.mm.plugin.recordvideo.e.d.Cin;
     if (paramString == null) {
-      p.gkB();
+      p.hyc();
     }
-    paramString = c.axr(paramString);
+    paramString = com.tencent.mm.plugin.recordvideo.e.d.aLQ(paramString);
     if (paramString != null)
     {
-      paramb.audioBitrate = paramRecordConfigProvider.xOg.audioBitrate;
-      paramb.audioSampleRate = paramRecordConfigProvider.xOg.audioSampleRate;
+      paramb.audioBitrate = paramRecordConfigProvider.BOm.audioBitrate;
+      paramb.audioSampleRate = paramRecordConfigProvider.BOm.audioSampleRate;
       paramb.videoBitrate = paramString.videoBitrate;
-      paramb.hoy = paramString.dHi;
-      paramb.audioChannelCount = paramRecordConfigProvider.xOg.audioChannelCount;
-      ae.d("MicroMsg.RemuxMediaEditConfig", "video info : ".concat(String.valueOf(paramString)));
-      if (paramString.videoBitrate - 200000 > paramRecordConfigProvider.xOg.videoBitrate)
+      paramb.ihS = paramString.dYT;
+      paramb.audioChannelCount = paramRecordConfigProvider.BOm.audioChannelCount;
+      Log.d("MicroMsg.RemuxMediaEditConfig", "video info : ".concat(String.valueOf(paramString)));
+      if (paramString.videoBitrate - 200000 > paramRecordConfigProvider.BOm.videoBitrate)
       {
-        paramb.videoBitrate = paramRecordConfigProvider.xOg.videoBitrate;
-        paramb.xNn = true;
-        ae.i("MicroMsg.RemuxMediaEditConfig", "remux by high videoBitrate " + paramString.videoBitrate + "  " + paramRecordConfigProvider.xOg.videoBitrate);
+        paramb.videoBitrate = paramRecordConfigProvider.BOm.videoBitrate;
+        paramb.BNt = true;
+        Log.i("MicroMsg.RemuxMediaEditConfig", "remux by high videoBitrate " + paramString.videoBitrate + "  " + paramRecordConfigProvider.BOm.videoBitrate);
       }
       a(paramRecordConfigProvider, paramb, paramString);
       int j = paramString.fps;
       int i = j;
-      if (paramString.fps > paramRecordConfigProvider.xOg.fps * 1.5F)
+      if (paramString.fps > paramRecordConfigProvider.BOm.fps * 1.5F)
       {
         i = j;
-        if (paramRecordConfigProvider.xOg.fps >= 0) {
-          i = paramRecordConfigProvider.xOg.fps;
+        if (paramRecordConfigProvider.BOm.fps >= 0) {
+          i = paramRecordConfigProvider.BOm.fps;
         }
       }
       paramb.frameRate = i;
     }
-    paramb.videoBitrate = paramRecordConfigProvider.xOg.videoBitrate;
+    paramb.videoBitrate = paramRecordConfigProvider.BOm.videoBitrate;
     if (paramRecordConfigProvider != null) {}
-    for (paramString = paramRecordConfigProvider.xOg;; paramString = null)
+    for (paramString = paramRecordConfigProvider.BOm;; paramString = null)
     {
-      if ((paramString != null) && (paramString.hYj == 2))
+      if ((paramString != null) && (paramString.iTh == 2))
       {
-        paramb.hkJ = paramString.hkJ;
-        paramb.hkK = paramString.hkK;
-        paramb.hYj = paramString.hYj;
-        ae.i("MicroMsg.RemuxMediaEditConfig", "ABA: Min/Max QP Methods:videoBitrate [%d]  minQP [%d]  maxQP [%d]", new Object[] { Integer.valueOf(paramb.videoBitrate), Integer.valueOf(paramb.hkJ), Integer.valueOf(paramb.hkK) });
+        paramb.idF = paramString.idF;
+        paramb.idG = paramString.idG;
+        paramb.iTh = paramString.iTh;
+        Log.i("MicroMsg.RemuxMediaEditConfig", "ABA: Min/Max QP Methods:videoBitrate [%d]  minQP [%d]  maxQP [%d]", new Object[] { Integer.valueOf(paramb.videoBitrate), Integer.valueOf(paramb.idF), Integer.valueOf(paramb.idG) });
       }
-      paramString = paramb.dIJ();
+      paramString = paramb.eJw();
       AppMethodBeat.o(75374);
       return paramString;
     }
   }
   
-  private static void a(RecordConfigProvider paramRecordConfigProvider, b paramb, c.a parama)
+  private static void a(RecordConfigProvider paramRecordConfigProvider, b paramb, d.a parama)
   {
     AppMethodBeat.i(163421);
-    int i = paramRecordConfigProvider.xOg.width;
-    int j = paramRecordConfigProvider.xOg.height;
+    int i = paramRecordConfigProvider.BOm.width;
+    int j = paramRecordConfigProvider.BOm.height;
     boolean bool = a(parama);
     if (bool) {}
     for (;;)
     {
       int m;
-      if (paramRecordConfigProvider.xOj == 1)
+      if (paramRecordConfigProvider.BOp == 1)
       {
-        Point localPoint = al.ck(ak.getContext());
+        Point localPoint = ao.az(MMApplicationContext.getContext());
         k = localPoint.y;
         m = localPoint.x;
-        paramRecordConfigProvider.xOg.height = (k * paramRecordConfigProvider.xOg.width / m);
+        paramRecordConfigProvider.BOm.height = (k * paramRecordConfigProvider.BOm.width / m);
         k = parama.width;
         m = parama.height;
         if ((k - 32 > j) || (m - 32 > i))
         {
           paramb.targetWidth = j;
           paramb.targetHeight = i;
-          paramb.xNn = true;
-          ae.i("MicroMsg.RemuxMediaEditConfig", "remux by:FIT_SCREEN by high size " + parama.width + "  " + paramb.targetWidth);
+          paramb.BNt = true;
+          Log.i("MicroMsg.RemuxMediaEditConfig", "remux by:FIT_SCREEN by high size " + parama.width + "  " + paramb.targetWidth);
         }
       }
       for (;;)
       {
-        if ((paramRecordConfigProvider.xOA) && (b(parama)))
+        if ((paramRecordConfigProvider.BOH) && (b(parama)))
         {
-          paramb.targetWidth = Math.min(paramRecordConfigProvider.xOg.width, paramRecordConfigProvider.xOg.height);
-          paramb.targetHeight = Math.max(paramRecordConfigProvider.xOg.width, paramRecordConfigProvider.xOg.height);
+          paramb.targetWidth = Math.min(paramRecordConfigProvider.BOm.width, paramRecordConfigProvider.BOm.height);
+          paramb.targetHeight = Math.max(paramRecordConfigProvider.BOm.width, paramRecordConfigProvider.BOm.height);
         }
         AppMethodBeat.o(163421);
         return;
         paramb.targetHeight = parama.height;
         paramb.targetWidth = parama.width;
         continue;
-        if (paramRecordConfigProvider.xOj == 2)
+        if (paramRecordConfigProvider.BOp == 2)
         {
           k = parama.width;
           m = parama.height;
           if ((k != j) || (m != i))
           {
-            paramb.xNn = true;
-            ae.i("MicroMsg.RemuxMediaEditConfig", "remux by:FORCE_WIDTH_AND_HEIGHT by high size ");
+            paramb.BNt = true;
+            Log.i("MicroMsg.RemuxMediaEditConfig", "remux by:FORCE_WIDTH_AND_HEIGHT by high size ");
           }
           paramb.targetWidth = j;
           paramb.targetHeight = i;
         }
-        else if (paramRecordConfigProvider.xOj == 4)
+        else if (paramRecordConfigProvider.BOp == 4)
         {
           k = parama.width - 32;
           m = parama.height - 32;
@@ -176,19 +175,19 @@ public final class f
             {
               paramb.targetHeight = i;
               paramb.targetWidth = (i * k / m);
-              paramb.xNn = true;
-              ae.i("MicroMsg.RemuxMediaEditConfig", "remux by:SCALE_SIZE by high size ");
+              paramb.BNt = true;
+              Log.i("MicroMsg.RemuxMediaEditConfig", "remux by:SCALE_SIZE by high size ");
             }
           }
           else if (k > j)
           {
             paramb.targetWidth = j;
             paramb.targetHeight = (j * m / k);
-            paramb.xNn = true;
-            ae.i("MicroMsg.RemuxMediaEditConfig", "remux by:SCALE_SIZE by high size ");
+            paramb.BNt = true;
+            Log.i("MicroMsg.RemuxMediaEditConfig", "remux by:SCALE_SIZE by high size ");
           }
         }
-        else if (paramRecordConfigProvider.xOj == 3)
+        else if (paramRecordConfigProvider.BOp == 3)
         {
           paramb.targetWidth = parama.width;
           paramb.targetHeight = parama.height;
@@ -200,14 +199,14 @@ public final class f
     }
   }
   
-  private static boolean a(c.a parama)
+  private static boolean a(d.a parama)
   {
     return parama.width > parama.height;
   }
   
-  private static boolean b(c.a parama)
+  private static boolean b(d.a parama)
   {
-    if ((parama.dHi == 90) || (parama.dHi == 270)) {
+    if ((parama.dYT == 90) || (parama.dYT == 270)) {
       if (parama.height <= parama.width) {}
     }
     while (parama.width > parama.height)
@@ -223,26 +222,26 @@ public final class f
     AppMethodBeat.i(163420);
     if ((paramRecordConfigProvider == null) || (paramb == null))
     {
-      ae.e("MicroMsg.RemuxMediaEditConfig", "configProvider  is null");
+      Log.e("MicroMsg.RemuxMediaEditConfig", "configProvider  is null");
       paramRecordConfigProvider = new b((byte)0);
       AppMethodBeat.o(163420);
       return paramRecordConfigProvider;
     }
-    Object localObject1 = (Collection)paramb.hwK;
+    Object localObject1 = (Collection)paramb.iqm;
     if ((localObject1 == null) || (((Collection)localObject1).isEmpty())) {}
     for (int i = 1; i == 0; i = 0)
     {
-      paramRecordConfigProvider = paramRecordConfigProvider.xOg;
+      paramRecordConfigProvider = paramRecordConfigProvider.BOm;
       p.g(paramRecordConfigProvider, "configProvider.videoParam");
       paramb = new b((byte)0);
-      e.xNf.dII();
-      localObject1 = e.xNf;
+      e.BNm.eJv();
+      localObject1 = e.BNm;
       paramb.targetWidth = e.getWidth();
-      localObject1 = e.xNf;
+      localObject1 = e.BNm;
       paramb.targetHeight = e.getHeight();
-      localObject1 = e.xNf;
+      localObject1 = e.BNm;
       paramb.frameRate = e.getFrameRate();
-      float f2 = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qCU, 2.0F);
+      float f2 = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rVN, 2.0F);
       float f1 = f2;
       if (f2 <= 1.0F) {
         f1 = 1.0F;
@@ -251,39 +250,39 @@ public final class f
       paramb.audioSampleRate = paramRecordConfigProvider.audioSampleRate;
       paramb.audioChannelCount = paramRecordConfigProvider.audioChannelCount;
       paramb.videoBitrate = ((int)(f1 * paramRecordConfigProvider.videoBitrate));
-      paramb.hoy = 0;
-      paramb.xNn = true;
-      paramb.xNo = true;
+      paramb.ihS = 0;
+      paramb.BNt = true;
+      paramb.BNu = true;
       AppMethodBeat.o(163420);
       return paramb;
     }
-    if (paramRecordConfigProvider.xOg == null)
+    if (paramRecordConfigProvider.BOm == null)
     {
-      localObject1 = com.tencent.mm.modelcontrol.d.aHh();
+      localObject1 = com.tencent.mm.modelcontrol.e.baZ();
       p.g(localObject1, "SubCoreVideoControl.getCore()");
-      paramRecordConfigProvider.xOg = ((com.tencent.mm.modelcontrol.d)localObject1).aHk();
+      paramRecordConfigProvider.BOm = ((com.tencent.mm.modelcontrol.e)localObject1).bbc();
     }
-    localObject1 = paramRecordConfigProvider.xOg;
+    localObject1 = paramRecordConfigProvider.BOm;
     Object localObject2;
-    if ((localObject1 == null) || (((VideoTransPara)localObject1).hYi != 1))
+    if ((localObject1 == null) || (((VideoTransPara)localObject1).iTg != 1))
     {
-      localObject1 = paramRecordConfigProvider.xOg;
-      if ((localObject1 == null) || (((VideoTransPara)localObject1).hYi != 2)) {}
+      localObject1 = paramRecordConfigProvider.BOm;
+      if ((localObject1 == null) || (((VideoTransPara)localObject1).iTg != 2)) {}
     }
     else
     {
-      localObject2 = paramRecordConfigProvider.xOg;
+      localObject2 = paramRecordConfigProvider.BOm;
       if (localObject2 != null)
       {
-        localObject1 = paramRecordConfigProvider.xOg;
+        localObject1 = paramRecordConfigProvider.BOm;
         if (localObject1 == null) {
           break label481;
         }
-        localObject1 = Integer.valueOf(((VideoTransPara)localObject1).hYr);
+        localObject1 = Integer.valueOf(((VideoTransPara)localObject1).iTp);
         ((VideoTransPara)localObject2).videoBitrate = ((Integer)localObject1).intValue();
       }
       localObject2 = new StringBuilder("match aba switch, target videoBitrate:");
-      localObject1 = paramRecordConfigProvider.xOg;
+      localObject1 = paramRecordConfigProvider.BOm;
       if (localObject1 == null) {
         break label487;
       }
@@ -292,49 +291,49 @@ public final class f
     label487:
     for (localObject1 = Integer.valueOf(((VideoTransPara)localObject1).videoBitrate);; localObject1 = null)
     {
-      ae.i("MicroMsg.RemuxMediaEditConfig", localObject1);
-      if ((this.xNh.isEmpty()) && (this.xNg == null) && (!this.xMW)) {
+      Log.i("MicroMsg.RemuxMediaEditConfig", localObject1);
+      if ((this.BNn.isEmpty()) && (this.wgG == null) && (!this.BNc)) {
         break label493;
       }
       localObject1 = new b((byte)0);
-      ((b)localObject1).xNn = true;
-      ((b)localObject1).xNo = true;
-      ae.i("MicroMsg.RemuxMediaEditConfig", "remux by add editItems " + this.xNh);
-      paramRecordConfigProvider = a(paramb.hwB, paramRecordConfigProvider, (b)localObject1);
+      ((b)localObject1).BNt = true;
+      ((b)localObject1).BNu = true;
+      Log.i("MicroMsg.RemuxMediaEditConfig", "remux by add editItems " + this.BNn);
+      paramRecordConfigProvider = a(paramb.iqd, paramRecordConfigProvider, (b)localObject1);
       AppMethodBeat.o(163420);
       return paramRecordConfigProvider;
       localObject1 = null;
       break;
     }
     label493:
-    if ((this.xNj - 80 >= 0) || (this.xNk + 80 <= paramb.hwE))
+    if ((this.BNp - 80 >= 0) || (this.BNq + 80 <= paramb.iqg))
     {
-      ae.i("MicroMsg.RemuxMediaEditConfig", "remux by time reMuxEndTimeMs:" + this.xNk + "  reMuxStartTimeMs:" + this.xNj);
+      Log.i("MicroMsg.RemuxMediaEditConfig", "remux by time reMuxEndTimeMs:" + this.BNq + "  reMuxStartTimeMs:" + this.BNp);
       localObject1 = new b((byte)0);
-      ((b)localObject1).xNn = true;
-      ((b)localObject1).xNo = true;
-      paramRecordConfigProvider = a(paramb.hwB, paramRecordConfigProvider, (b)localObject1);
+      ((b)localObject1).BNt = true;
+      ((b)localObject1).BNu = true;
+      paramRecordConfigProvider = a(paramb.iqd, paramRecordConfigProvider, (b)localObject1);
       AppMethodBeat.o(163420);
       return paramRecordConfigProvider;
     }
-    boolean bool = r.isH265Video(paramb.hwB);
-    ae.i("MicroMsg.RemuxMediaEditConfig", "generateTargetConfig, isH265File:".concat(String.valueOf(bool)));
+    boolean bool = r.isH265Video(paramb.iqd);
+    Log.i("MicroMsg.RemuxMediaEditConfig", "generateTargetConfig, isH265File:".concat(String.valueOf(bool)));
     if (bool)
     {
-      ae.i("MicroMsg.RemuxMediaEditConfig", "force remux h265 file");
+      Log.i("MicroMsg.RemuxMediaEditConfig", "force remux h265 file");
       localObject1 = new b((byte)0);
-      ((b)localObject1).xNn = true;
-      paramRecordConfigProvider = a(paramb.hwB, paramRecordConfigProvider, (b)localObject1);
+      ((b)localObject1).BNt = true;
+      paramRecordConfigProvider = a(paramb.iqd, paramRecordConfigProvider, (b)localObject1);
       AppMethodBeat.o(163420);
       return paramRecordConfigProvider;
     }
-    if ((paramRecordConfigProvider.remuxType == 2) && (this.xNh.isEmpty()))
+    if ((paramRecordConfigProvider.remuxType == 2) && (this.BNn.isEmpty()))
     {
       paramRecordConfigProvider = new b((byte)0);
       AppMethodBeat.o(163420);
       return paramRecordConfigProvider;
     }
-    paramRecordConfigProvider = a(paramb.hwB, paramRecordConfigProvider, new b((byte)0));
+    paramRecordConfigProvider = a(paramb.iqd, paramRecordConfigProvider, new b((byte)0));
     AppMethodBeat.o(163420);
     return paramRecordConfigProvider;
   }
@@ -342,36 +341,36 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(75375);
-    String str = "RemuxMediaEditConfig(muteOrigin=" + this.xMW + ", audioCacheInfo=" + this.xNg + ", editItems=" + this.xNh + ", drawingRect=" + Arrays.toString(this.xKR) + ", reMuxStartTimeMs=" + this.xNj + ", reMuxEndTimeMs=" + this.xNk + ')';
+    String str = "RemuxMediaEditConfig(muteOrigin=" + this.BNc + ", audioCacheInfo=" + this.wgG + ", editItems=" + this.BNn + ", drawingRect=" + Arrays.toString(this.BKV) + ", reMuxStartTimeMs=" + this.BNp + ", reMuxEndTimeMs=" + this.BNq + ')';
     AppMethodBeat.o(75375);
     return str;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;", "", "targetWidth", "", "targetHeight", "videoBitrate", "audioBitrate", "frameRate", "videoRotate", "audioSampleRate", "audioChannelCount", "needRemux", "", "change", "minQP", "maxQP", "qpSwitch", "(IIIIIIIIZZIII)V", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "getAudioChannelCount", "setAudioChannelCount", "getAudioSampleRate", "setAudioSampleRate", "getChange", "()Z", "setChange", "(Z)V", "getFrameRate", "setFrameRate", "getMaxQP", "setMaxQP", "getMinQP", "setMinQP", "getNeedRemux", "setNeedRemux", "getQpSwitch", "setQpSwitch", "getTargetHeight", "setTargetHeight", "getTargetWidth", "setTargetWidth", "getVideoBitrate", "setVideoBitrate", "getVideoRotate", "setVideoRotate", "buildMediaCodecConfig", "component1", "component10", "component11", "component12", "component13", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "", "plugin-recordvideo_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/config/RemuxMediaEditConfig$EncodeConfig;", "", "targetWidth", "", "targetHeight", "videoBitrate", "audioBitrate", "frameRate", "videoRotate", "audioSampleRate", "audioChannelCount", "needRemux", "", "change", "minQP", "maxQP", "qpSwitch", "(IIIIIIIIZZIII)V", "getAudioBitrate", "()I", "setAudioBitrate", "(I)V", "getAudioChannelCount", "setAudioChannelCount", "getAudioSampleRate", "setAudioSampleRate", "getChange", "()Z", "setChange", "(Z)V", "getFrameRate", "setFrameRate", "getMaxQP", "setMaxQP", "getMinQP", "setMinQP", "getNeedRemux", "setNeedRemux", "getQpSwitch", "setQpSwitch", "getTargetHeight", "setTargetHeight", "getTargetWidth", "setTargetWidth", "getVideoBitrate", "setVideoBitrate", "getVideoRotate", "setVideoRotate", "buildMediaCodecConfig", "component1", "component10", "component11", "component12", "component13", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "", "plugin-recordvideo_release"})
   public static final class b
   {
+    public boolean BNt = false;
+    public boolean BNu = false;
     public int audioBitrate = 0;
     public int audioChannelCount = 1;
     public int audioSampleRate = 0;
     public int frameRate = 0;
-    public int hYj = 0;
-    public int hkJ = 0;
-    public int hkK = 0;
-    public int hoy = 0;
+    public int iTh = 0;
+    public int idF = 0;
+    public int idG = 0;
+    public int ihS = 0;
     public int targetHeight = 0;
     public int targetWidth = 0;
     public int videoBitrate = 0;
-    public boolean xNn = false;
-    public boolean xNo = false;
     
-    public final b dIJ()
+    public final b eJw()
     {
       AppMethodBeat.i(163419);
       if (this.targetWidth % 16 != 0) {
-        this.targetWidth = com.tencent.mm.plugin.mmsight.d.KG(this.targetWidth);
+        this.targetWidth = com.tencent.mm.plugin.mmsight.d.QH(this.targetWidth);
       }
       if (this.targetHeight % 16 != 0) {
-        this.targetHeight = com.tencent.mm.plugin.mmsight.d.KG(this.targetHeight);
+        this.targetHeight = com.tencent.mm.plugin.mmsight.d.QH(this.targetHeight);
       }
       AppMethodBeat.o(163419);
       return this;
@@ -384,7 +383,7 @@ public final class f
         if ((paramObject instanceof b))
         {
           paramObject = (b)paramObject;
-          if ((this.targetWidth != paramObject.targetWidth) || (this.targetHeight != paramObject.targetHeight) || (this.videoBitrate != paramObject.videoBitrate) || (this.audioBitrate != paramObject.audioBitrate) || (this.frameRate != paramObject.frameRate) || (this.hoy != paramObject.hoy) || (this.audioSampleRate != paramObject.audioSampleRate) || (this.audioChannelCount != paramObject.audioChannelCount) || (this.xNn != paramObject.xNn) || (this.xNo != paramObject.xNo) || (this.hkJ != paramObject.hkJ) || (this.hkK != paramObject.hkK) || (this.hYj != paramObject.hYj)) {}
+          if ((this.targetWidth != paramObject.targetWidth) || (this.targetHeight != paramObject.targetHeight) || (this.videoBitrate != paramObject.videoBitrate) || (this.audioBitrate != paramObject.audioBitrate) || (this.frameRate != paramObject.frameRate) || (this.ihS != paramObject.ihS) || (this.audioSampleRate != paramObject.audioSampleRate) || (this.audioChannelCount != paramObject.audioChannelCount) || (this.BNt != paramObject.BNt) || (this.BNu != paramObject.BNu) || (this.idF != paramObject.idF) || (this.idG != paramObject.idG) || (this.iTh != paramObject.iTh)) {}
         }
       }
       else {
@@ -401,7 +400,7 @@ public final class f
     public final String toString()
     {
       AppMethodBeat.i(75373);
-      String str = "EncodeConfig(targetWidth=" + this.targetWidth + ", targetHeight=" + this.targetHeight + ", videoBitrate=" + this.videoBitrate + ", audioBitrate=" + this.audioBitrate + ", frameRate=" + this.frameRate + ", videoRotate=" + this.hoy + ", audioSampleRate=" + this.audioSampleRate + ", audioChannelCount=" + this.audioChannelCount + ", needRemux=" + this.xNn + ", change=" + this.xNo + ", qpmin=" + this.hkJ + ", qpmax=" + this.hkK + ')';
+      String str = "EncodeConfig(targetWidth=" + this.targetWidth + ", targetHeight=" + this.targetHeight + ", videoBitrate=" + this.videoBitrate + ", audioBitrate=" + this.audioBitrate + ", frameRate=" + this.frameRate + ", videoRotate=" + this.ihS + ", audioSampleRate=" + this.audioSampleRate + ", audioChannelCount=" + this.audioChannelCount + ", needRemux=" + this.BNt + ", change=" + this.BNu + ", qpmin=" + this.idF + ", qpmax=" + this.idG + ')';
       AppMethodBeat.o(75373);
       return str;
     }
@@ -409,7 +408,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.b.f
  * JD-Core Version:    0.7.0.1
  */

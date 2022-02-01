@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge>
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-      xmlns:android="http://schemas.android.com/apk/res/android">
-        <TextView android:textSize="@dimen/a2n" android:textColor="@color/a_u" android:id="@id/cjj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/a2m" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
-    </RelativeLayout>
-</merge>
+<View android:background="@color/m9" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginTop="@dimen/cb" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

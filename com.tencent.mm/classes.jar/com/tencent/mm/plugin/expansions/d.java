@@ -1,57 +1,57 @@
 package com.tencent.mm.plugin.expansions;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
-import d.z;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expansions/expansions;", "", "()V", "isEnabled", "", "module", "", "isInstalled", "request", "", "setUpBlock", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/expansions/ExpansionsKtWrapper;", "Lkotlin/ExtensionFunctionType;", "tryGetAssets", "Landroid/content/res/AssetManager;", "tryLoadLibrary", "libName", "expansions-visitor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expansions/expansions;", "", "()V", "isEnabled", "", "module", "", "isInstalled", "request", "", "setUpBlock", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/expansions/ExpansionsKtWrapper;", "Lkotlin/ExtensionFunctionType;", "tryGetAssets", "Landroid/content/res/AssetManager;", "tryLoadLibrary", "libName", "expansions-visitor_release"})
 public final class d
 {
-  public static final d qvZ;
+  public static final d rNG;
   
   static
   {
     AppMethodBeat.i(152987);
-    qvZ = new d();
+    rNG = new d();
     AppMethodBeat.o(152987);
   }
   
-  public static boolean adR(String paramString)
+  public static boolean aoa(String paramString)
   {
     AppMethodBeat.i(152986);
     p.h(paramString, "libName");
-    boolean bool = a.adR(paramString);
+    boolean bool = a.aoa(paramString);
     AppMethodBeat.o(152986);
     return bool;
   }
   
-  public static boolean adS(String paramString)
+  public static boolean aob(String paramString)
   {
     AppMethodBeat.i(152984);
     p.h(paramString, "module");
-    boolean bool = a.coe();
+    boolean bool = a.cMq();
     AppMethodBeat.o(152984);
     return bool;
   }
   
-  public static boolean adT(String paramString)
+  public static boolean aoc(String paramString)
   {
     AppMethodBeat.i(152985);
     p.h(paramString, "module");
-    boolean bool = a.cof();
+    boolean bool = a.cMr();
     AppMethodBeat.o(152985);
     return bool;
   }
   
-  public static void z(d.g.a.b<? super b, z> paramb)
+  public static void z(kotlin.g.a.b<? super b, x> paramb)
   {
     AppMethodBeat.i(152983);
     b localb = new b();
     if (paramb != null) {
       paramb.invoke(localb);
     }
-    if (localb.qvV != null)
+    if (localb.rNC != null)
     {
       a.a((a.a)new b.a(localb));
       AppMethodBeat.o(152983);
@@ -63,7 +63,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.expansions.d
  * JD-Core Version:    0.7.0.1
  */

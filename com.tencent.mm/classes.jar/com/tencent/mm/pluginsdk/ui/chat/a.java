@@ -1,230 +1,169 @@
 package com.tencent.mm.pluginsdk.ui.chat;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.model.app.g;
 import java.util.ArrayList;
 
 public final class a
 {
-  c FqA;
-  c FqB;
-  c FqC;
-  c FqD;
-  c FqE;
-  c FqF;
-  c FqG;
-  c FqH;
-  c FqI;
-  c FqJ;
-  c FqK;
-  c FqL;
-  c FqM;
-  c FqN;
-  public c FqO;
-  c FqP;
-  c FqQ;
-  public c FqR;
-  private c FqS;
-  c FqT;
-  c FqU;
-  c FqV;
-  c FqW;
-  c FqX;
-  ArrayList<a> FqY;
-  c Fqw;
-  c Fqx;
-  c Fqy;
-  c Fqz;
+  a.c KhA;
+  a.c KhB;
+  a.c KhC;
+  a.c KhD;
+  a.c KhE;
+  public a.c KhF;
+  a.c KhG;
+  a.c KhH;
+  public a.c KhI;
+  private a.c KhJ;
+  a.c KhK;
+  a.c KhL;
+  a.c KhM;
+  a.c KhN;
+  a.c KhO;
+  ArrayList<a.a> KhP;
+  a.c Khn;
+  a.c Kho;
+  a.c Khp;
+  a.c Khq;
+  a.c Khr;
+  a.c Khs;
+  a.c Kht;
+  a.c Khu;
+  a.c Khv;
+  a.c Khw;
+  a.c Khx;
+  a.c Khy;
+  a.c Khz;
   public final String TAG;
   
   public a()
   {
     AppMethodBeat.i(31493);
     this.TAG = "MircoMsg.AppPanelControl";
-    this.Fqw = new c();
-    this.Fqx = new c();
-    this.Fqy = new c();
-    this.Fqz = new c();
-    this.FqA = new c();
-    this.FqB = new c();
-    this.FqC = new c();
-    this.FqL = new c();
-    this.FqJ = new c();
-    this.FqD = new c();
-    this.FqE = new c();
-    this.FqF = new c();
-    this.FqG = new c();
-    this.FqH = new c();
-    this.FqI = new c();
-    this.FqK = new c();
-    this.FqM = new c();
-    this.FqN = new c();
-    this.FqO = new c();
-    this.FqP = new c();
-    this.FqQ = new c();
-    this.FqR = new c();
-    this.FqS = new c();
-    this.FqT = new c();
-    this.FqW = new c();
-    this.FqX = new c();
-    this.FqU = new c();
-    this.FqV = new c();
+    this.Khn = new a.c(this);
+    this.Kho = new a.c(this);
+    this.Khp = new a.c(this);
+    this.Khq = new a.c(this);
+    this.Khr = new a.c(this);
+    this.Khs = new a.c(this);
+    this.Kht = new a.c(this);
+    this.KhC = new a.c(this);
+    this.KhA = new a.c(this);
+    this.Khu = new a.c(this);
+    this.Khv = new a.c(this);
+    this.Khw = new a.c(this);
+    this.Khx = new a.c(this);
+    this.Khy = new a.c(this);
+    this.Khz = new a.c(this);
+    this.KhB = new a.c(this);
+    this.KhD = new a.c(this);
+    this.KhE = new a.c(this);
+    this.KhF = new a.c(this);
+    this.KhG = new a.c(this);
+    this.KhH = new a.c(this);
+    this.KhI = new a.c(this);
+    this.KhJ = new a.c(this);
+    this.KhK = new a.c(this);
+    this.KhN = new a.c(this);
+    this.KhO = new a.c(this);
+    this.KhL = new a.c(this);
+    this.KhM = new a.c(this);
     AppMethodBeat.o(31493);
   }
   
-  public final void fgV()
+  public final void Aa(boolean paramBoolean)
   {
-    this.Fqw.value = true;
-    this.Fqx.value = true;
-    this.Fqy.value = true;
-    this.Fqz.value = true;
-    this.FqA.value = true;
-    this.FqB.value = true;
-    this.FqC.value = true;
-    this.FqL.value = true;
-    this.FqJ.value = true;
-    this.FqD.value = true;
-    this.FqE.value = true;
-    this.FqF.value = true;
-    this.FqG.value = true;
-    this.FqH.value = true;
-    this.FqI.value = true;
-    this.FqK.value = true;
-    this.FqM.value = true;
-    this.FqN.value = false;
-    this.FqO.value = true;
-    this.FqP.value = true;
-    this.FqR.value = true;
-    this.FqS.value = true;
-    this.FqR.value = false;
-    this.FqX.value = false;
-    this.FqT.value = true;
-    this.FqU.value = true;
-    this.FqV.value = true;
+    this.Khu.value = paramBoolean;
   }
   
-  public final void fgW()
+  public final void Ab(boolean paramBoolean)
   {
-    this.FqC.value = true;
+    this.Khv.value = paramBoolean;
   }
   
-  public final void fgX()
+  public final void Ac(boolean paramBoolean)
   {
-    this.FqK.value = true;
+    this.Khz.value = paramBoolean;
   }
   
-  public final ArrayList<a> getAppPanelUnCertainEnterArrayList()
+  public final void Ad(boolean paramBoolean)
+  {
+    this.KhD.value = paramBoolean;
+  }
+  
+  public final void Ae(boolean paramBoolean)
+  {
+    this.KhG.value = paramBoolean;
+  }
+  
+  public final void Af(boolean paramBoolean)
+  {
+    this.KhJ.value = paramBoolean;
+  }
+  
+  public final void Ag(boolean paramBoolean)
+  {
+    this.KhN.value = paramBoolean;
+  }
+  
+  public final ArrayList<a.a> getAppPanelUnCertainEnterArrayList()
   {
     AppMethodBeat.i(163211);
-    if (this.FqY == null)
+    if (this.KhP == null)
     {
       localArrayList = new ArrayList();
       AppMethodBeat.o(163211);
       return localArrayList;
     }
-    ArrayList localArrayList = this.FqY;
+    ArrayList localArrayList = this.KhP;
     AppMethodBeat.o(163211);
     return localArrayList;
   }
   
-  public final void wc(boolean paramBoolean)
+  public final void gqd()
   {
-    this.FqD.value = paramBoolean;
+    this.Khn.value = true;
+    this.Kho.value = true;
+    this.Khp.value = true;
+    this.Khq.value = true;
+    this.Khr.value = true;
+    this.Khs.value = true;
+    this.Kht.value = true;
+    this.KhC.value = true;
+    this.KhA.value = true;
+    this.Khu.value = true;
+    this.Khv.value = true;
+    this.Khw.value = true;
+    this.Khx.value = true;
+    this.Khy.value = true;
+    this.Khz.value = true;
+    this.KhB.value = true;
+    this.KhD.value = true;
+    this.KhE.value = false;
+    this.KhF.value = true;
+    this.KhG.value = true;
+    this.KhI.value = true;
+    this.KhJ.value = true;
+    this.KhI.value = false;
+    this.KhO.value = false;
+    this.KhK.value = true;
+    this.KhL.value = true;
+    this.KhM.value = true;
   }
   
-  public final void wd(boolean paramBoolean)
+  public final void gqe()
   {
-    this.FqE.value = paramBoolean;
+    this.Kht.value = true;
   }
   
-  public final void we(boolean paramBoolean)
+  public final void gqf()
   {
-    this.FqI.value = paramBoolean;
-  }
-  
-  public final void wf(boolean paramBoolean)
-  {
-    this.FqM.value = paramBoolean;
-  }
-  
-  public final void wg(boolean paramBoolean)
-  {
-    this.FqP.value = paramBoolean;
-  }
-  
-  public final void wh(boolean paramBoolean)
-  {
-    this.FqS.value = paramBoolean;
-  }
-  
-  public final void wi(boolean paramBoolean)
-  {
-    this.FqW.value = paramBoolean;
-  }
-  
-  public static final class a
-    extends g
-  {
-    public String FqZ;
-    public int Fra;
-    public String Frb;
-    public String Frc;
-    public int Frd;
-    public String Fre;
-    public String Frf;
-    public a.b Frg;
-    public a.b Frh;
-    public a.b Fri;
-    public a.b Frj;
-    public String Frk;
-    public int Frl;
-    public int Frm;
-    public long Frn;
-    public a Fro;
-    public String iconUrl;
-    public String jFV;
-    public String mdj;
-    public int uIW;
-    
-    public a()
-    {
-      AppMethodBeat.i(163209);
-      this.Frg = new a.b();
-      this.Frh = new a.b();
-      this.Fri = new a.b();
-      this.Frj = new a.b();
-      AppMethodBeat.o(163209);
-    }
-    
-    public static abstract interface a
-    {
-      public abstract String fgY();
-    }
-  }
-  
-  public static final class b
-  {
-    public String desc;
-    public String title;
-  }
-  
-  public final class c
-  {
-    private boolean Frp;
-    public boolean value;
-    
-    public c()
-    {
-      AppMethodBeat.i(31492);
-      this.Frp = true;
-      this.value = true;
-      AppMethodBeat.o(31492);
-    }
+    this.KhB.value = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.chat.a
  * JD-Core Version:    0.7.0.1
  */

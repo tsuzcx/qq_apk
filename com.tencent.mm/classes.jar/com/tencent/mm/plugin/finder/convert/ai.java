@@ -1,60 +1,62 @@
 package com.tencent.mm.plugin.finder.convert;
 
-import android.graphics.Paint;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
+import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.al;
-import com.tencent.mm.view.recyclerview.e;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.finder.feed.i;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.view.recyclerview.h;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/convert/FinderMoreSimilarTopicConvert;", "Lcom/tencent/mm/view/recyclerview/ItemConvert;", "Lcom/tencent/mm/plugin/finder/model/BaseLocalFeed;", "()V", "getLayoutId", "", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "position", "type", "isHotPatch", "", "payloads", "", "", "onCreateViewHolder", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/convert/FinderFeedTextCardConvert;", "Lcom/tencent/mm/plugin/finder/convert/FinderFeedImageConvert;", "contract", "Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;", "safeMode", "", "tabType", "", "(Lcom/tencent/mm/plugin/finder/feed/FinderFeedContract;ZI)V", "onBindViewHolder", "", "holder", "Lcom/tencent/mm/view/recyclerview/SimpleViewHolder;", "item", "Lcom/tencent/mm/plugin/finder/model/FinderFeedImage;", "position", "type", "isHotPatch", "payloads", "", "", "plugin-finder_release"})
 public class ai
-  extends com.tencent.mm.view.recyclerview.b<com.tencent.mm.plugin.finder.model.b>
+  extends u
 {
-  private static int rXF;
-  public static final ai.a rXG;
-  
-  static
+  private ai(i parami, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(201889);
-    rXG = new ai.a((byte)0);
-    rXF = -2;
-    AppMethodBeat.o(201889);
+    super(parami, paramBoolean, paramInt);
+    AppMethodBeat.i(165422);
+    AppMethodBeat.o(165422);
   }
   
-  public final void a(RecyclerView paramRecyclerView, e parame, int paramInt)
+  public void a(h paramh, com.tencent.mm.plugin.finder.model.u paramu, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
   {
-    AppMethodBeat.i(201886);
-    p.h(paramRecyclerView, "recyclerView");
-    p.h(parame, "holder");
-    parame.setTag(Integer.valueOf(rXF));
-    parame.auu.setTag(Integer.valueOf(rXF));
-    paramRecyclerView = (TextView)parame.GD(2131307438);
-    p.g(paramRecyclerView, "tipsTv");
-    al.a((Paint)paramRecyclerView.getPaint(), 0.8F);
-    AppMethodBeat.o(201886);
+    AppMethodBeat.i(165419);
+    p.h(paramh, "holder");
+    p.h(paramu, "item");
+    super.a(paramh, paramu, paramInt1, paramInt2, paramBoolean, paramList);
+    paramh.aus.setOnLongClickListener((View.OnLongClickListener)new a(paramu));
+    AppMethodBeat.o(165419);
   }
   
-  public void a(e parame, com.tencent.mm.plugin.finder.model.b paramb, int paramInt1, int paramInt2, boolean paramBoolean, List<Object> paramList)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+  static final class a
+    implements View.OnLongClickListener
   {
-    AppMethodBeat.i(201887);
-    p.h(parame, "holder");
-    p.h(paramb, "item");
-    AppMethodBeat.o(201887);
-  }
-  
-  public final int getLayoutId()
-  {
-    return 2131496229;
+    a(com.tencent.mm.plugin.finder.model.u paramu) {}
+    
+    public final boolean onLongClick(View paramView)
+    {
+      AppMethodBeat.i(165418);
+      b localb = new b();
+      localb.bm(paramView);
+      a.b("com/tencent/mm/plugin/finder/convert/FinderFeedTextCardConvert$onBindViewHolder$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+      Log.i("Finder.FeedConvert", "text=" + this.tDY.feedObject.getDescription());
+      a.a(true, this, "com/tencent/mm/plugin/finder/convert/FinderFeedTextCardConvert$onBindViewHolder$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
+      AppMethodBeat.o(165418);
+      return true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.convert.ai
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.mm.plugin.webview.ui.tools.game;
 
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class h
 {
-  public static String ECg;
-  public static String dIz;
-  public static int dPU;
+  public static String JrK;
+  public static String eam;
+  public static int ehX;
   
   public h(Intent paramIntent)
   {
@@ -18,9 +18,9 @@ public final class h
       AppMethodBeat.o(80955);
       return;
     }
-    dIz = bu.nullAsNil(paramIntent.getStringExtra("KPublisherId"));
-    ECg = bu.nullAsNil(paramIntent.getStringExtra("geta8key_username"));
-    dPU = bu.o(Integer.valueOf(paramIntent.getIntExtra("geta8key_scene", 0)));
+    eam = Util.nullAsNil(paramIntent.getStringExtra("KPublisherId"));
+    JrK = Util.nullAsNil(paramIntent.getStringExtra("geta8key_username"));
+    ehX = Util.nullAsNil(Integer.valueOf(paramIntent.getIntExtra("geta8key_scene", 0)));
     AppMethodBeat.o(80955);
   }
 }

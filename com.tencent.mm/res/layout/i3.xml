@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/ak2" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="24.0dip" android:text="@string/ad4" />
-    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
-        <CheckBox android:id="@id/a6k" android:focusable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="false" style="@style/lj" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/rx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@string/cel" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/h8z" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/bb" style="@style/mz"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/bb">
+        <View android:background="@color/FG_3" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="1.0px" />
+        <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/be9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb">
+            <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/iqp" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/i0">
+                <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:paddingLeft="@dimen/ih" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:text="{ddddd}" android:maxLines="2" android:singleLine="false" style="@style/mi" />
+                    </LinearLayout>
+                    <include android:gravity="center|right" layout="@layout/b8r" />
+                </LinearLayout>
+                <TextView android:gravity="left" android:id="@android:id/summary" android:paddingLeft="@dimen/ih" android:paddingRight="@dimen/ih" android:layout_marginTop="@dimen/kb" style="@style/m0" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="32.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/tq" android:gravity="center_horizontal" android:id="@id/a6l" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/acz" />
-    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/tq" android:gravity="center_horizontal" android:id="@id/a6m" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ad3" />
-    <View android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="1.0dip" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/fj" android:gravity="center_horizontal" android:id="@id/a6j" android:paddingTop="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/acx" />
 </LinearLayout>

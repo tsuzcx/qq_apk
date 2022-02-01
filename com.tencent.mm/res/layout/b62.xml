@@ -1,8 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="horizontal" android:background="@null" android:paddingTop="@dimen/hu" android:paddingBottom="@dimen/hu" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="top" android:orientation="vertical" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/s5" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8">
-        <ImageView android:id="@id/s4" android:layout_width="@dimen/jl" android:layout_height="@dimen/i8" android:src="@raw/sight_icon_mention" android:scaleType="fitCenter" />
-        <TextView android:id="@id/s6" android:visibility="gone" android:layout_marginRight="@dimen/js" android:layout_alignParentTop="true" android:layout_alignParentRight="true" style="@style/ad" />
-    </RelativeLayout>
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/g5s" android:background="#ffebebeb" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="30.0dip">
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/zh" android:ellipsize="end" android:gravity="left" android:id="@id/g5u" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/zh" android:ellipsize="end" android:gravity="right" android:id="@id/g5t" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+    </LinearLayout>
+    <LinearLayout android:gravity="top" android:paddingLeft="@dimen/hs" android:paddingTop="@dimen/k" android:paddingRight="@dimen/hs" android:paddingBottom="@dimen/k" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/zj" android:ellipsize="end" android:gravity="left" android:id="@id/g5z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/zh" android:ellipsize="end" android:gravity="left" android:id="@id/g5x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" android:includeFontPadding="false" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/zi" android:ellipsize="end" android:gravity="left" android:id="@id/g5y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:singleLine="true" android:includeFontPadding="false" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView android:textSize="18.0dip" android:textColor="@color/zj" android:ellipsize="end" android:gravity="right" android:id="@id/g5w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="18.0dip" android:textColor="@color/zg" android:ellipsize="end" android:gravity="right" android:id="@id/g5v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

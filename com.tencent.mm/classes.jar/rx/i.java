@@ -3,10 +3,10 @@ package rx;
 public abstract class i<T>
   implements e<T>, j
 {
-  public final rx.internal.util.i Ous;
-  private final i<?> Out;
-  private f Ouu;
-  private long Ouv = -9223372036854775808L;
+  public final rx.internal.util.i Ukg;
+  private final i<?> Ukh;
+  private f Uki;
+  private long Ukj = -9223372036854775808L;
   
   protected i()
   {
@@ -20,16 +20,16 @@ public abstract class i<T>
   
   private i(i<?> parami, boolean paramBoolean)
   {
-    this.Out = parami;
+    this.Ukh = parami;
     if ((paramBoolean) && (parami != null)) {}
-    for (parami = parami.Ous;; parami = new rx.internal.util.i())
+    for (parami = parami.Ukg;; parami = new rx.internal.util.i())
     {
-      this.Ous = parami;
+      this.Ukg = parami;
       return;
     }
   }
   
-  protected final void Gq(long paramLong)
+  protected final void Pw(long paramLong)
   {
     if (paramLong < 0L) {
       throw new IllegalArgumentException("number requested cannot be negative: ".concat(String.valueOf(paramLong)));
@@ -38,24 +38,24 @@ public abstract class i<T>
     {
       try
       {
-        if (this.Ouu != null)
+        if (this.Uki != null)
         {
-          f localf = this.Ouu;
-          localf.Gq(paramLong);
+          f localf = this.Uki;
+          localf.Pw(paramLong);
           return;
         }
-        if (this.Ouv == -9223372036854775808L)
+        if (this.Ukj == -9223372036854775808L)
         {
-          this.Ouv = paramLong;
+          this.Ukj = paramLong;
           return;
         }
       }
       finally {}
-      paramLong = this.Ouv + paramLong;
+      paramLong = this.Ukj + paramLong;
       if (paramLong < 0L) {
-        this.Ouv = 9223372036854775807L;
+        this.Ukj = 9223372036854775807L;
       } else {
-        this.Ouv = paramLong;
+        this.Ukj = paramLong;
       }
     }
   }
@@ -66,10 +66,10 @@ public abstract class i<T>
     long l;
     try
     {
-      l = this.Ouv;
-      this.Ouu = paramf;
+      l = this.Ukj;
+      this.Uki = paramf;
       int i = j;
-      if (this.Out != null)
+      if (this.Ukh != null)
       {
         i = j;
         if (l == -9223372036854775808L) {
@@ -78,32 +78,32 @@ public abstract class i<T>
       }
       if (i != 0)
       {
-        this.Out.a(this.Ouu);
+        this.Ukh.a(this.Uki);
         return;
       }
     }
     finally {}
     if (l == -9223372036854775808L)
     {
-      this.Ouu.Gq(9223372036854775807L);
+      this.Uki.Pw(9223372036854775807L);
       return;
     }
-    this.Ouu.Gq(l);
+    this.Uki.Pw(l);
   }
   
   public final void b(j paramj)
   {
-    this.Ous.b(paramj);
+    this.Ukg.b(paramj);
   }
   
-  public final void gDs()
+  public final void hQA()
   {
-    this.Ous.gDs();
+    this.Ukg.hQA();
   }
   
-  public final boolean gDt()
+  public final boolean hQB()
   {
-    return this.Ous.OxN;
+    return this.Ukg.UnB;
   }
   
   public void onStart() {}

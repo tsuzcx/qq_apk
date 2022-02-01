@@ -6,7 +6,7 @@ import com.tencent.luggage.bridge.l;
 import com.tencent.luggage.bridge.o;
 import com.tencent.luggage.d.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,15 +14,15 @@ import java.util.concurrent.ConcurrentHashMap;
 public abstract class n
   implements c
 {
-  final ConcurrentHashMap<String, Class<? extends b>> chF = new ConcurrentHashMap();
-  public a chG;
+  final ConcurrentHashMap<String, Class<? extends b>> ctA = new ConcurrentHashMap();
+  public a ctB;
   
-  public final a Cl()
+  public final a LC()
   {
-    if (this.chG == null) {
-      return a.cic;
+    if (this.ctB == null) {
+      return a.ctX;
     }
-    return this.chG;
+    return this.ctB;
   }
   
   public final void a(final d paramd)
@@ -31,23 +31,23 @@ public abstract class n
     {
       public final void a(com.tencent.luggage.d.a.b paramAnonymousb)
       {
-        AppMethodBeat.i(201150);
+        AppMethodBeat.i(221187);
         if (paramd == null)
         {
-          ae.e("Luggage.LuggageRuntime", "Null Event, Ignore");
-          AppMethodBeat.o(201150);
+          Log.e("Luggage.LuggageRuntime", "Null Event, Ignore");
+          AppMethodBeat.o(221187);
           return;
         }
-        if (paramAnonymousb == com.tencent.luggage.d.a.b.cif)
+        if (paramAnonymousb == com.tencent.luggage.d.a.b.cua)
         {
           paramAnonymousb = n.this.getBridge();
-          com.tencent.luggage.bridge.d locald = new com.tencent.luggage.bridge.d(paramd.name(), paramd.BP());
-          paramAnonymousb.cgO.a(locald);
+          com.tencent.luggage.bridge.d locald = new com.tencent.luggage.bridge.d(paramd.name(), paramd.Ld());
+          paramAnonymousb.csJ.a(locald);
         }
-        AppMethodBeat.o(201150);
+        AppMethodBeat.o(221187);
       }
     };
-    a locala = Cl();
+    a locala = LC();
     paramd.name();
     locala.a(local3);
   }
@@ -66,30 +66,30 @@ public abstract class n
       {
         try
         {
-          ((b)localObject1).chf = paramc;
-          this.chF.put(((b)localObject1).name(), localObject2);
+          ((b)localObject1).csZ = paramc;
+          this.ctA.put(((b)localObject1).name(), localObject2);
           localObject2 = getBridge();
           String str = ((b)localObject1).name();
           Object localObject1 = new l()
           {
             public final void a(k paramAnonymousk)
             {
-              AppMethodBeat.i(201148);
+              AppMethodBeat.i(221185);
               n localn = n.this;
-              b localb = this.chH;
+              b localb = this.ctC;
               paramAnonymousk = new n.2(localn, localb, paramAnonymousk);
-              localn.Cl().a(localb.name(), paramAnonymousk);
-              AppMethodBeat.o(201148);
+              localn.LC().a(localb.name(), paramAnonymousk);
+              AppMethodBeat.o(221185);
             }
           };
-          ((o)localObject2).cgQ.put(str, localObject1);
+          ((o)localObject2).csL.put(str, localObject1);
         }
         catch (Exception localException2)
         {
-          ae.e("Luggage.LuggageRuntime", "registerJsApi: ".concat(String.valueOf(localException2)));
+          Log.e("Luggage.LuggageRuntime", "registerJsApi: ".concat(String.valueOf(localException2)));
         }
         localException1 = localException1;
-        ae.e("Luggage.LuggageRuntime", "JsApi Initialize failed, %s, %s", new Object[] { ((Class)localObject2).getName(), localException1 });
+        Log.e("Luggage.LuggageRuntime", "JsApi Initialize failed, %s, %s", new Object[] { ((Class)localObject2).getName(), localException1 });
       }
     }
   }

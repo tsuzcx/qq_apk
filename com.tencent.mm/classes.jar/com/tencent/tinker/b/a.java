@@ -22,8 +22,8 @@ public final class a
     if (paramInputStream2 == null) {
       return 2;
     }
-    paramInputStream1 = b.U(paramInputStream1);
-    Object localObject2 = b.U(paramInputStream2);
+    paramInputStream1 = b.R(paramInputStream1);
+    Object localObject2 = b.R(paramInputStream2);
     int m = paramInputStream1.length;
     int i = localObject2.length;
     paramInputStream2 = new DataInputStream(new ByteArrayInputStream((byte[])localObject2, 0, i));
@@ -98,7 +98,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tinker.b.a
  * JD-Core Version:    0.7.0.1
  */

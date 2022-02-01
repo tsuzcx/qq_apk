@@ -5,29 +5,29 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
 public final class FinderPostFooter$e
   implements View.OnClickListener
 {
-  public static final e tgC;
+  public static final e wow;
   
   static
   {
-    AppMethodBeat.i(205804);
-    tgC = new e();
-    AppMethodBeat.o(205804);
+    AppMethodBeat.i(254894);
+    wow = new e();
+    AppMethodBeat.o(254894);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(205803);
+    AppMethodBeat.i(254893);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/finder/view/FinderPostFooter$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/finder/view/FinderPostFooter$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     a.a(this, "com/tencent/mm/plugin/finder/view/FinderPostFooter$initView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(205803);
+    AppMethodBeat.o(254893);
   }
 }
 

@@ -2,93 +2,68 @@ package com.tencent.mm.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.n;
-import com.tencent.mm.plugin.messenger.foundation.a.a.n.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.l;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class ch
-  extends j<cg>
-  implements n
+  extends MAutoStorage<cg>
 {
   public static final String[] SQL_CREATE;
-  private final l<n.a, cg> IIK;
-  private e db;
+  public ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(117352);
-    SQL_CREATE = new String[] { j.getCreateSQLs(cg.info, "Stranger") };
-    AppMethodBeat.o(117352);
+    AppMethodBeat.i(32885);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(cg.info, "OpenMsgListener") };
+    AppMethodBeat.o(32885);
   }
   
-  public ch(e parame)
+  public ch(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, cg.info, "Stranger", null);
-    AppMethodBeat.i(117347);
-    this.IIK = new l() {};
-    this.db = parame;
-    AppMethodBeat.o(117347);
+    super(paramISQLiteDatabase, cg.info, "OpenMsgListener", null);
+    AppMethodBeat.i(32881);
+    this.db = paramISQLiteDatabase;
+    paramISQLiteDatabase.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerAppIdIndex ON OpenMsgListener ( appId )");
+    paramISQLiteDatabase.execSQL("OpenMsgListener", "CREATE INDEX IF NOT EXISTS openMsgListenerStatusIndex ON OpenMsgListener ( status )");
+    AppMethodBeat.o(32881);
   }
   
-  private void b(cg paramcg)
+  public final cg bkL(String paramString)
   {
-    AppMethodBeat.i(117344);
-    if (this.IIK.dW(paramcg)) {
-      this.IIK.doNotify();
-    }
-    AppMethodBeat.o(117344);
-  }
-  
-  public final void a(n.a parama)
-  {
-    AppMethodBeat.i(117345);
-    this.IIK.a(parama, null);
-    AppMethodBeat.o(117345);
-  }
-  
-  public final cg arE(String paramString)
-  {
-    AppMethodBeat.i(117348);
+    AppMethodBeat.i(32882);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(117348);
+      AppMethodBeat.o(32882);
       return null;
     }
-    cg localcg = new cg();
-    paramString = this.db.a("Stranger", null, "encryptUsername = ?", new String[] { paramString }, null, null, null, 2);
-    if (paramString.moveToFirst()) {
-      localcg.convertFrom(paramString);
+    Cursor localCursor = this.db.query("OpenMsgListener", null, "appId=?", new String[] { Util.escapeSqlValue(paramString) }, null, null, null, 2);
+    if (!localCursor.moveToFirst())
+    {
+      Log.w("MicroMsg.OpenMsgListenerStorage", "get null with appId:".concat(String.valueOf(paramString)));
+      localCursor.close();
+      AppMethodBeat.o(32882);
+      return null;
     }
-    paramString.close();
-    AppMethodBeat.o(117348);
-    return localcg;
+    paramString = new cg();
+    paramString.convertFrom(localCursor);
+    localCursor.close();
+    AppMethodBeat.o(32882);
+    return paramString;
   }
   
-  public final int arF(String paramString)
+  public final Cursor gEl()
   {
-    AppMethodBeat.i(117349);
-    int i = this.db.delete("Stranger", "(encryptUsername=?)", new String[] { String.valueOf(paramString) });
-    if (i > 0) {
-      doNotify();
-    }
-    ae.i("MicroMsg.StrangerStorage", "delByEncryptUsername:" + paramString + " result:" + i);
-    AppMethodBeat.o(117349);
-    return i;
-  }
-  
-  public final void b(n.a parama)
-  {
-    AppMethodBeat.i(117346);
-    this.IIK.remove(parama);
-    AppMethodBeat.o(117346);
+    AppMethodBeat.i(32883);
+    Cursor localCursor = rawQuery("select * from OpenMsgListener where (status = ?) ", new String[] { "1" });
+    AppMethodBeat.o(32883);
+    return localCursor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.ch
  * JD-Core Version:    0.7.0.1
  */

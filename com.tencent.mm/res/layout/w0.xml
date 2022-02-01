@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckedTextView android:textAppearance="@style/u8" android:gravity="start|center" android:id="@id/b_r" android:layout_width="0.0dip" android:layout_height="fill_parent" android:maxLines="1" android:drawablePadding="@dimen/ya" android:layout_weight="1.0" />
-    <ViewStub android:id="@id/b_q" android:layout="@layout/vu" android:inflatedId="@id/b_p" android:layout_width="wrap_content" android:layout_height="fill_parent" />
-</merge>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/hs" android:layout_weight="1.0">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/b_i" style="@style/hk" />
+            <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <TextView android:textSize="@dimen/is" android:ellipsize="end" android:id="@id/b_g" android:layout_marginTop="0.0dip" android:text="message" android:maxLines="3" style="@style/hi" />
+            </ScrollView>
+        </LinearLayout>
+        <TextView android:id="@id/b_c" android:layout_marginLeft="0.0dip" android:text="source" style="@style/hj" />
+        <com.tencent.mm.ui.widget.edittext.PasterEditText android:id="@id/b_h" style="@style/hg" />
+    </LinearLayout>
+</LinearLayout>

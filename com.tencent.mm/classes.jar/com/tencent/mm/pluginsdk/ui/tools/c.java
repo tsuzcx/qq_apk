@@ -1,21 +1,21 @@
 package com.tencent.mm.pluginsdk.ui.tools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.f;
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ag.f;
+import com.tencent.mm.ag.k.b;
 import com.tencent.mm.i.d;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 
 public class c
   extends f
 {
-  public int dGQ = 0;
+  public int dYz = 0;
   
   public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(152375);
-    paramStringBuilder.append("<directshare>").append(this.dGQ).append("</directshare>");
+    paramStringBuilder.append("<directshare>").append(this.dYz).append("</directshare>");
     AppMethodBeat.o(152375);
   }
   
@@ -23,17 +23,17 @@ public class c
   {
     AppMethodBeat.i(152376);
     paramMap = (String)paramMap.get(".msg.appmsg.directshare");
-    if (!bu.isNullOrNil(paramMap)) {
-      this.dGQ = bu.aSB(paramMap);
+    if (!Util.isNullOrNil(paramMap)) {
+      this.dYz = Util.safeParseInt(paramMap);
     }
     AppMethodBeat.o(152376);
   }
   
-  public final f aoI()
+  public final f aHj()
   {
     AppMethodBeat.i(152374);
     c localc = new c();
-    localc.dGQ = this.dGQ;
+    localc.dYz = this.dYz;
     AppMethodBeat.o(152374);
     return localc;
   }

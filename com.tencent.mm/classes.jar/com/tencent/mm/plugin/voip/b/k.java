@@ -1,401 +1,213 @@
 package com.tencent.mm.plugin.voip.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import java.util.HashMap;
+import java.util.Map;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/util/VoipReportHelper;", "", "()V", "ID", "", "TAG", "", "markAddViewFullScreenToRendererCost", "", "data", "markAddViewFullScreenToRendererCostFirst", "markAddViewFullScreenToRendererCostInvite", "markAddViewMiniWindowToRendererCost", "markAddViewMiniWindowToRendererCostFirst", "markAddViewMiniWindowToRendererCostInvite", "markBatteryPropertyCurrentInHW", "markBatteryPropertyCurrentInSW", "markCameraOnError", "markCameraPboSizeHeight", "height", "markCameraPboSizeWidth", "width", "markCameraRendererPerFrameNewFullScreenCost", "cost", "markCameraRendererPerFrameNewFullScreenCostWithFaceBeauty", "markCameraRendererPerFrameNewMiniWindowCost", "markCameraRendererPerFrameNewMiniWindowCostWithFaceBeauty", "markDecodeModeChangeToHW", "count", "markDecodeModeChangeToSW", "markFaceBeautySendDataIlleagel", "markFaceBeautySendDataNull", "markFullScreenPercent", "percent", "markHWEncodeAvgCost", "markHWRendererPerFrameFullScreenCost", "markHWRendererPerFrameMiniWindowCost", "markInitCameraRendererSucc", "markInitServiceRendererSucc", "markMMFaceBeautyAlgoUse", "markMiniWindowsPercent", "markNoFaceBeautyAlgoUse", "markRenderAvgCost", "markRenderModeChangeAuto", "markRenderModeChangeManual", "markRendererUseSurfaceView", "markRendererUseTextureView", "markSoftEncodeAvgCost", "markSoftRgb2YuvAvgCost", "markTexture2BytearrayAvgCost", "markVoipRendererUseNew", "markYTFaceBeautyAlgoUse", "markYuvRendererPerFrameFullScreenCost", "markYuvRendererPerFrameMiniWindowCost", "plugin-voip_release"})
 public final class k
 {
-  public static final k CDm;
+  private static Map<Integer, String> Hhq;
   
   static
   {
-    AppMethodBeat.i(210479);
-    CDm = new k();
-    AppMethodBeat.o(210479);
+    AppMethodBeat.i(115526);
+    HashMap localHashMap = new HashMap();
+    Hhq = localHashMap;
+    localHashMap.put(Integer.valueOf(0), "CALLING_STATE_VIDEO_INVITING");
+    Hhq.put(Integer.valueOf(1), "CALLING_STATE_VOICE_INVITING");
+    Hhq.put(Integer.valueOf(2), "CALLING_STATE_VIDEO_WAITTING_ACCEPT");
+    Hhq.put(Integer.valueOf(3), "CALLING_STATE_VOICE_WAITTING_ACCEPT");
+    Hhq.put(Integer.valueOf(4), "CALLING_STATE_VIDEO_CONNECTING");
+    Hhq.put(Integer.valueOf(5), "CALLING_STATE_VOICE_CONNECTING");
+    Hhq.put(Integer.valueOf(6), "CALLING_STATE_VIDEO_TALKING");
+    Hhq.put(Integer.valueOf(7), "CALLING_STATE_VOICE_TALKING");
+    Hhq.put(Integer.valueOf(8), "CALLING_STATE_FINISH");
+    Hhq.put(Integer.valueOf(256), "CALLED_STATE_VIDEO_INVITING");
+    Hhq.put(Integer.valueOf(257), "CALLED_STATE_VOICE_INVITING");
+    Hhq.put(Integer.valueOf(258), "CALLED_STATE_VIDEO_CONNECTING");
+    Hhq.put(Integer.valueOf(259), "CALLED_STATE_VOICE_CONNECTING");
+    Hhq.put(Integer.valueOf(260), "CALLED_STATE_VIDEO_TALKING");
+    Hhq.put(Integer.valueOf(261), "CALLED_STATE_VOICE_TALKING");
+    Hhq.put(Integer.valueOf(262), "CALLED_STATE_FINISH");
+    Hhq.put(Integer.valueOf(4096), "ACTION_NOP");
+    Hhq.put(Integer.valueOf(4097), "ACTION_INVITE_RESPOND");
+    Hhq.put(Integer.valueOf(4098), "ACTION_CANCEL_INVITE");
+    Hhq.put(Integer.valueOf(4099), "ACTION_REJECT_INVITE");
+    Hhq.put(Integer.valueOf(4100), "ACTION_ACCEPT_INVITE");
+    Hhq.put(Integer.valueOf(4101), "ACTION_CLOSE_CAMERA");
+    Hhq.put(Integer.valueOf(4102), "ACTION_CONNECT_SUCC");
+    Hhq.put(Integer.valueOf(4103), "ACTION_SELF_HANGUP");
+    Hhq.put(Integer.valueOf(4104), "ACTION_ANOTHER_HANGUP");
+    Hhq.put(Integer.valueOf(4105), "ACTION_INVITE_TIMEOUT");
+    Hhq.put(Integer.valueOf(4106), "ACTION_SO_SHUTDOWN");
+    Hhq.put(Integer.valueOf(4107), "ACTION_PHONE_COMING");
+    Hhq.put(Integer.valueOf(4108), "ACTION_IGNORE_INVITE");
+    Hhq.put(Integer.valueOf(4109), "ACTION_ON_ERROR");
+    Hhq.put(Integer.valueOf(4110), "ACTION_SESSION_CALLED");
+    AppMethodBeat.o(115526);
   }
   
-  public static void BZ(long paramLong)
+  public static int aQ(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(210449);
-    ae.i("MicroMsg.VoipReportHelper", "markDecodeModeChangeToHW,count=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 11, 50, (int)paramLong, false);
-    AppMethodBeat.o(210449);
-  }
-  
-  public static void CA(long paramLong)
-  {
-    AppMethodBeat.i(210475);
-    h localh = h.CCW;
-    if (h.eDp())
-    {
-      ae.i("MicroMsg.VoipReportHelper", "markSoftEncodeAvgCost, gpu crop trans cost=".concat(String.valueOf(paramLong)));
-      g.yxI.c(1304, 111, 112, (int)paramLong, false);
-      AppMethodBeat.o(210475);
-      return;
+    int i = 1;
+    if ((true == paramBoolean1) && (true == paramBoolean2)) {
+      i = 0;
     }
-    localh = h.CCW;
-    if (!h.eDo())
-    {
-      ae.i("MicroMsg.VoipReportHelper", "markSoftEncodeAvgCost, cpu trans cost=".concat(String.valueOf(paramLong)));
-      g.yxI.c(1304, 84, 85, (int)paramLong, false);
-      AppMethodBeat.o(210475);
-      return;
+    while ((true == paramBoolean1) && (!paramBoolean2)) {
+      return i;
     }
-    ae.i("MicroMsg.VoipReportHelper", "markSoftEncodeAvgCost, gpu trans cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 87, 88, (int)paramLong, false);
-    AppMethodBeat.o(210475);
-  }
-  
-  public static void CB(long paramLong)
-  {
-    AppMethodBeat.i(210476);
-    h localh = h.CCW;
-    if (h.eDp())
-    {
-      ae.i("MicroMsg.VoipReportHelper", "markHWEncodeAvgCost, gpu crop trans cost=".concat(String.valueOf(paramLong)));
-      g.yxI.c(1304, 108, 109, (int)paramLong, false);
-      AppMethodBeat.o(210476);
-      return;
+    if ((!paramBoolean1) && (true == paramBoolean2)) {
+      return 256;
     }
-    localh = h.CCW;
-    if (!h.eDo())
+    return 257;
+  }
+  
+  public static String adM(int paramInt)
+  {
+    AppMethodBeat.i(115523);
+    if (Hhq.containsKey(Integer.valueOf(paramInt)))
     {
-      ae.i("MicroMsg.VoipReportHelper", "markHWEncodeAvgCost, cpu trans cost=".concat(String.valueOf(paramLong)));
-      g.yxI.c(1304, 90, 91, (int)paramLong, false);
-      AppMethodBeat.o(210476);
-      return;
+      String str = (String)Hhq.get(Integer.valueOf(paramInt));
+      AppMethodBeat.o(115523);
+      return str;
     }
-    ae.i("MicroMsg.VoipReportHelper", "markHWEncodeAvgCost, gpu trans cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 93, 94, (int)paramLong, false);
-    AppMethodBeat.o(210476);
+    AppMethodBeat.o(115523);
+    return "no found value";
   }
   
-  public static void CC(long paramLong)
+  public static l adN(int paramInt)
   {
-    AppMethodBeat.i(210477);
-    h localh = h.CCW;
-    if (!h.eDo())
-    {
-      ae.i("MicroMsg.VoipReportHelper", "markRenderAvgCost, cpu trans cost=".concat(String.valueOf(paramLong)));
-      g.yxI.c(1304, 96, 97, (int)paramLong, false);
-      AppMethodBeat.o(210477);
-      return;
-    }
-    ae.i("MicroMsg.VoipReportHelper", "markRenderAvgCost, gpu trans cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 99, 100, (int)paramLong, false);
-    AppMethodBeat.o(210477);
+    AppMethodBeat.i(115524);
+    l locall = new l(paramInt);
+    locall.aD(256, 4098, 262);
+    locall.aD(256, 4099, 262);
+    locall.aD(256, 4105, 262);
+    locall.aD(256, 4106, 262);
+    locall.aD(256, 4107, 262);
+    locall.aD(256, 4108, 262);
+    locall.aD(256, 4109, 262);
+    locall.aD(256, 4100, 258);
+    locall.aD(256, 4101, 257);
+    locall.aD(257, 4100, 259);
+    locall.aD(257, 4098, 262);
+    locall.aD(257, 4099, 262);
+    locall.aD(257, 4105, 262);
+    locall.aD(257, 4106, 262);
+    locall.aD(257, 4107, 262);
+    locall.aD(257, 4108, 262);
+    locall.aD(257, 4109, 262);
+    locall.aD(258, 4098, 262);
+    locall.aD(258, 4106, 262);
+    locall.aD(258, 4107, 262);
+    locall.aD(258, 4103, 262);
+    locall.aD(258, 4109, 262);
+    locall.aD(258, 4102, 260);
+    locall.aD(259, 4102, 261);
+    locall.aD(259, 4098, 262);
+    locall.aD(259, 4106, 262);
+    locall.aD(259, 4107, 262);
+    locall.aD(259, 4103, 262);
+    locall.aD(259, 4109, 262);
+    locall.aD(260, 4101, 261);
+    locall.aD(260, 4103, 262);
+    locall.aD(260, 4104, 262);
+    locall.aD(260, 4106, 262);
+    locall.aD(260, 4107, 262);
+    locall.aD(260, 4109, 262);
+    locall.aD(261, 4103, 262);
+    locall.aD(261, 4104, 262);
+    locall.aD(261, 4106, 262);
+    locall.aD(261, 4107, 262);
+    locall.aD(261, 4109, 262);
+    AppMethodBeat.o(115524);
+    return locall;
   }
   
-  public static void CD(long paramLong)
+  public static l adO(int paramInt)
   {
-    AppMethodBeat.i(210478);
-    h localh = h.CCW;
-    if (!h.eDo())
-    {
-      ae.i("MicroMsg.VoipReportHelper", "markTexture2BytearrayAvgCost, cpu trans cost=".concat(String.valueOf(paramLong)));
-      g.yxI.c(1304, 102, 103, (int)paramLong, false);
-      AppMethodBeat.o(210478);
-      return;
-    }
-    ae.i("MicroMsg.VoipReportHelper", "markTexture2BytearrayAvgCost, gpu trans cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 105, 106, (int)paramLong, false);
-    AppMethodBeat.o(210478);
+    AppMethodBeat.i(115525);
+    l locall = new l(paramInt);
+    locall.aD(0, 4098, 8);
+    locall.aD(0, 4106, 8);
+    locall.aD(0, 4107, 8);
+    locall.aD(0, 4109, 8);
+    locall.aD(0, 4097, 2);
+    locall.aD(0, 4101, 1);
+    locall.aD(1, 4097, 3);
+    locall.aD(1, 4098, 8);
+    locall.aD(1, 4106, 8);
+    locall.aD(1, 4107, 8);
+    locall.aD(1, 4109, 8);
+    locall.aD(2, 4098, 8);
+    locall.aD(2, 4099, 8);
+    locall.aD(2, 4105, 8);
+    locall.aD(2, 4106, 8);
+    locall.aD(2, 4107, 8);
+    locall.aD(2, 4109, 8);
+    locall.aD(2, 4100, 4);
+    locall.aD(2, 4101, 3);
+    locall.aD(3, 4100, 5);
+    locall.aD(3, 4098, 8);
+    locall.aD(3, 4099, 8);
+    locall.aD(3, 4105, 8);
+    locall.aD(3, 4106, 8);
+    locall.aD(3, 4107, 8);
+    locall.aD(3, 4109, 8);
+    locall.aD(4, 4102, 6);
+    locall.aD(4, 4101, 5);
+    locall.aD(5, 4102, 7);
+    locall.aD(6, 4103, 8);
+    locall.aD(6, 4104, 8);
+    locall.aD(6, 4106, 8);
+    locall.aD(6, 4107, 8);
+    locall.aD(6, 4109, 8);
+    locall.aD(6, 4101, 7);
+    locall.aD(7, 4103, 8);
+    locall.aD(7, 4104, 8);
+    locall.aD(7, 4106, 8);
+    locall.aD(7, 4107, 8);
+    locall.aD(7, 4109, 8);
+    locall.aD(4, 4098, 8);
+    locall.aD(4, 4099, 8);
+    locall.aD(4, 4106, 8);
+    locall.aD(4, 4107, 8);
+    locall.aD(4, 4103, 8);
+    locall.aD(4, 4109, 8);
+    locall.aD(5, 4098, 8);
+    locall.aD(5, 4099, 8);
+    locall.aD(5, 4106, 8);
+    locall.aD(5, 4107, 8);
+    locall.aD(5, 4103, 8);
+    locall.aD(5, 4109, 8);
+    locall.aD(0, 4110, 4);
+    locall.aD(1, 4110, 5);
+    AppMethodBeat.o(115525);
+    return locall;
   }
   
-  public static void Ca(long paramLong)
+  public static boolean adP(int paramInt)
   {
-    AppMethodBeat.i(210450);
-    ae.i("MicroMsg.VoipReportHelper", "markDecodeModeChangeToSW,count=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 12, 51, (int)paramLong, false);
-    AppMethodBeat.o(210450);
+    return (260 == paramInt) || (261 == paramInt) || (6 == paramInt) || (7 == paramInt);
   }
   
-  public static void Cb(long paramLong)
+  public static boolean adQ(int paramInt)
   {
-    AppMethodBeat.i(210458);
-    ae.i("MicroMsg.VoipReportHelper", "markBatteryPropertyCurrentInHW,data=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 20, 38, (int)paramLong, false);
-    AppMethodBeat.o(210458);
+    return (paramInt == 0) || (2 == paramInt) || (4 == paramInt) || (6 == paramInt) || (256 == paramInt) || (258 == paramInt) || (260 == paramInt);
   }
   
-  public static void Cc(long paramLong)
+  public static boolean adR(int paramInt)
   {
-    AppMethodBeat.i(210459);
-    ae.i("MicroMsg.VoipReportHelper", "markBatteryPropertyCurrentInSW, data=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 21, 39, (int)paramLong, false);
-    AppMethodBeat.o(210459);
+    return (1 == paramInt) || (paramInt == 0) || (2 == paramInt) || (3 == paramInt);
   }
   
-  public static void Cd(long paramLong)
+  public static boolean adS(int paramInt)
   {
-    AppMethodBeat.i(210460);
-    ae.i("MicroMsg.VoipReportHelper", "markAddViewFullScreenToRendererCost, data=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 24, 22, (int)paramLong, false);
-    AppMethodBeat.o(210460);
-  }
-  
-  public static void Ce(long paramLong)
-  {
-    AppMethodBeat.i(210461);
-    ae.i("MicroMsg.VoipReportHelper", "markAddViewMiniWindowToRendererCost, data=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 25, 23, (int)paramLong, false);
-    AppMethodBeat.o(210461);
-  }
-  
-  public static void Cf(long paramLong)
-  {
-    AppMethodBeat.i(210462);
-    ae.i("MicroMsg.VoipReportHelper", "markYuvRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 28, 26, (int)paramLong, false);
-    AppMethodBeat.o(210462);
-  }
-  
-  public static void Cg(long paramLong)
-  {
-    AppMethodBeat.i(210463);
-    ae.i("MicroMsg.VoipReportHelper", "markYuvRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 29, 27, (int)paramLong, false);
-    AppMethodBeat.o(210463);
-  }
-  
-  public static void Ch(long paramLong)
-  {
-    AppMethodBeat.i(210464);
-    ae.i("MicroMsg.VoipReportHelper", "markHWRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 32, 30, (int)paramLong, false);
-    AppMethodBeat.o(210464);
-  }
-  
-  public static void Ci(long paramLong)
-  {
-    AppMethodBeat.i(210465);
-    ae.i("MicroMsg.VoipReportHelper", "markHWRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 33, 31, (int)paramLong, false);
-    AppMethodBeat.o(210465);
-  }
-  
-  public static void Cn(long paramLong)
-  {
-    AppMethodBeat.i(210470);
-    ae.i("MicroMsg.VoipReportHelper", "markAddViewFullScreenToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 42, 40, (int)paramLong, false);
-    AppMethodBeat.o(210470);
-  }
-  
-  public static void Co(long paramLong)
-  {
-    AppMethodBeat.i(210471);
-    ae.i("MicroMsg.VoipReportHelper", "markAddViewMiniWindowToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 43, 41, (int)paramLong, false);
-    AppMethodBeat.o(210471);
-  }
-  
-  public static void Cp(long paramLong)
-  {
-    AppMethodBeat.i(210472);
-    ae.i("MicroMsg.VoipReportHelper", "markAddViewFullScreenToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 48, 52, (int)paramLong, false);
-    AppMethodBeat.o(210472);
-  }
-  
-  public static void Cq(long paramLong)
-  {
-    AppMethodBeat.i(210473);
-    ae.i("MicroMsg.VoipReportHelper", "markAddViewMiniWindowToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 49, 53, (int)paramLong, false);
-    AppMethodBeat.o(210473);
-  }
-  
-  public static void Cr(long paramLong)
-  {
-    AppMethodBeat.i(210443);
-    ae.i("MicroMsg.VoipReportHelper", "markInitServiceRendererSucc,width=".concat(String.valueOf(paramLong)));
-    g.yxI.n(1304L, 5L, paramLong);
-    AppMethodBeat.o(210443);
-  }
-  
-  public static void Cs(long paramLong)
-  {
-    AppMethodBeat.i(210444);
-    ae.i("MicroMsg.VoipReportHelper", "markInitServiceRendererSucc,height=".concat(String.valueOf(paramLong)));
-    g.yxI.n(1304L, 6L, paramLong);
-    AppMethodBeat.o(210444);
-  }
-  
-  public static void Ct(long paramLong)
-  {
-    AppMethodBeat.i(210451);
-    ae.i("MicroMsg.VoipReportHelper", "markFullScreenPercent,percent=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 13, 70, (int)paramLong, false);
-    AppMethodBeat.o(210451);
-  }
-  
-  public static void Cu(long paramLong)
-  {
-    AppMethodBeat.i(210452);
-    ae.i("MicroMsg.VoipReportHelper", "markMiniWindowsPercent,percent=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 14, 71, (int)paramLong, false);
-    AppMethodBeat.o(210452);
-  }
-  
-  public static void Cv(long paramLong)
-  {
-    AppMethodBeat.i(210466);
-    ae.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 36, 34, (int)paramLong, false);
-    AppMethodBeat.o(210466);
-  }
-  
-  public static void Cw(long paramLong)
-  {
-    AppMethodBeat.i(210467);
-    ae.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 37, 35, (int)paramLong, false);
-    AppMethodBeat.o(210467);
-  }
-  
-  public static void Cx(long paramLong)
-  {
-    AppMethodBeat.i(210468);
-    ae.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewFullScreenCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 72, 74, (int)paramLong, false);
-    AppMethodBeat.o(210468);
-  }
-  
-  public static void Cy(long paramLong)
-  {
-    AppMethodBeat.i(210469);
-    ae.i("MicroMsg.VoipReportHelper", "markCameraRendererPerFrameNewMiniWindowCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 73, 75, (int)paramLong, false);
-    AppMethodBeat.o(210469);
-  }
-  
-  public static void Cz(long paramLong)
-  {
-    AppMethodBeat.i(210474);
-    h localh = h.CCW;
-    if (!h.eDo())
-    {
-      ae.i("MicroMsg.VoipReportHelper", "markSoftRgb2YuvAvgCost, cpu trans cost=".concat(String.valueOf(paramLong)));
-      g.yxI.c(1304, 78, 79, (int)paramLong, false);
-      AppMethodBeat.o(210474);
-      return;
-    }
-    ae.i("MicroMsg.VoipReportHelper", "markSoftRgb2YuvAvgCost, gpu trans cost=".concat(String.valueOf(paramLong)));
-    g.yxI.c(1304, 81, 82, (int)paramLong, false);
-    AppMethodBeat.o(210474);
-  }
-  
-  public static void eDA()
-  {
-    AppMethodBeat.i(210442);
-    ae.i("MicroMsg.VoipReportHelper", "markInitServiceRendererSucc");
-    g.yxI.n(1304L, 4L, 1L);
-    AppMethodBeat.o(210442);
-  }
-  
-  public static void eDB()
-  {
-    AppMethodBeat.i(210445);
-    ae.i("MicroMsg.VoipReportHelper", "markRendererUseSurfaceView");
-    g.yxI.n(1304L, 7L, 1L);
-    AppMethodBeat.o(210445);
-  }
-  
-  public static void eDC()
-  {
-    AppMethodBeat.i(210446);
-    ae.i("MicroMsg.VoipReportHelper", "markRendererUseTextureView");
-    g.yxI.n(1304L, 8L, 1L);
-    AppMethodBeat.o(210446);
-  }
-  
-  public static void eDD()
-  {
-    AppMethodBeat.i(210447);
-    ae.i("MicroMsg.VoipReportHelper", "markRenderModeChangeAuto");
-    g.yxI.n(1304L, 9L, 1L);
-    AppMethodBeat.o(210447);
-  }
-  
-  public static void eDE()
-  {
-    AppMethodBeat.i(210448);
-    ae.i("MicroMsg.VoipReportHelper", "markRenderModeChangeManual");
-    g.yxI.n(1304L, 10L, 1L);
-    AppMethodBeat.o(210448);
-  }
-  
-  public static void eDF()
-  {
-    AppMethodBeat.i(210453);
-    ae.i("MicroMsg.VoipReportHelper", "markNoFaceBeautyAlgoUse");
-    g.yxI.n(1304L, 15L, 1L);
-    AppMethodBeat.o(210453);
-  }
-  
-  public static void eDG()
-  {
-    AppMethodBeat.i(210454);
-    ae.i("MicroMsg.VoipReportHelper", "markYTFaceBeautyAlgoUse");
-    g.yxI.n(1304L, 16L, 1L);
-    AppMethodBeat.o(210454);
-  }
-  
-  public static void eDH()
-  {
-    AppMethodBeat.i(210455);
-    ae.i("MicroMsg.VoipReportHelper", "markMMFaceBeautyAlgoUse");
-    g.yxI.n(1304L, 17L, 1L);
-    AppMethodBeat.o(210455);
-  }
-  
-  public static void eDI()
-  {
-    AppMethodBeat.i(210456);
-    ae.i("MicroMsg.VoipReportHelper", "markFaceBeautySendDataNull");
-    g.yxI.n(1304L, 18L, 1L);
-    AppMethodBeat.o(210456);
-  }
-  
-  public static void eDJ()
-  {
-    AppMethodBeat.i(210457);
-    ae.i("MicroMsg.VoipReportHelper", "markFaceBeautySendDataIlleagel");
-    g.yxI.n(1304L, 19L, 1L);
-    AppMethodBeat.o(210457);
-  }
-  
-  public static void eDx()
-  {
-    AppMethodBeat.i(210439);
-    ae.i("MicroMsg.VoipReportHelper", "markVoipRendererUseNew");
-    g.yxI.n(1304L, 1L, 1L);
-    AppMethodBeat.o(210439);
-  }
-  
-  public static void eDy()
-  {
-    AppMethodBeat.i(210440);
-    ae.i("MicroMsg.VoipReportHelper", "markCameraOnError");
-    g.yxI.n(1304L, 2L, 1L);
-    AppMethodBeat.o(210440);
-  }
-  
-  public static void eDz()
-  {
-    AppMethodBeat.i(210441);
-    ae.i("MicroMsg.VoipReportHelper", "markInitCameraRendererSucc");
-    g.yxI.n(1304L, 3L, 1L);
-    AppMethodBeat.o(210441);
+    return (paramInt == 256) || (paramInt == 257);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.b.k
  * JD-Core Version:    0.7.0.1
  */

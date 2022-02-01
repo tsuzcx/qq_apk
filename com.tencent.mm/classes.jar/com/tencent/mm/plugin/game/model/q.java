@@ -1,33 +1,37 @@
 package com.tencent.mm.plugin.game.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.game.api.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.Random;
 
 public final class q
 {
   public static void a(o paramo)
   {
     AppMethodBeat.i(41463);
-    if (bu.isNullOrNil(paramo.field_rawXML))
+    if (Util.isNullOrNil(paramo.field_rawXML))
     {
-      ae.e("MicroMsg.GameMessageParser", "msg content is null");
+      Log.e("MicroMsg.GameMessageParser", "msg content is null");
       AppMethodBeat.o(41463);
       return;
     }
-    Map localMap = bx.M(paramo.field_rawXML, "sysmsg");
+    Map localMap = XmlParser.parseXml(paramo.field_rawXML, "sysmsg", null);
     if ((localMap == null) || (localMap.size() == 0))
     {
-      ae.e("MicroMsg.GameMessageParser", "Parse failed");
+      Log.e("MicroMsg.GameMessageParser", "Parse failed");
       AppMethodBeat.o(41463);
       return;
     }
     if (!"gamecenter".equalsIgnoreCase((String)localMap.get(".sysmsg.$type")))
     {
-      ae.e("MicroMsg.GameMessageParser", "Type not matched");
+      Log.e("MicroMsg.GameMessageParser", "Type not matched");
       AppMethodBeat.o(41463);
       return;
     }
@@ -48,87 +52,129 @@ public final class q
   
   public static void a(Map<String, String> paramMap, o paramo)
   {
-    AppMethodBeat.i(195646);
+    AppMethodBeat.i(204165);
     if ((paramo == null) || (paramMap == null))
     {
-      AppMethodBeat.o(195646);
+      AppMethodBeat.o(204165);
       return;
     }
-    if (paramo.unD == 0) {
-      paramo.unD = paramo.field_msgType;
+    if (paramo.xFV == 0) {
+      paramo.xFV = paramo.field_msgType;
     }
     b(paramMap, paramo);
-    AppMethodBeat.o(195646);
+    AppMethodBeat.o(204165);
   }
   
-  public static String ak(Map<String, String> paramMap)
+  public static String al(Map<String, String> paramMap)
   {
     AppMethodBeat.i(41464);
-    paramMap = bu.bI((String)paramMap.get(".sysmsg.gamecenter.formatcontent"), "");
+    paramMap = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.formatcontent"), "");
     AppMethodBeat.o(41464);
     return paramMap;
   }
   
-  public static long al(Map<String, String> paramMap)
+  public static long am(Map<String, String> paramMap)
   {
     AppMethodBeat.i(41472);
-    long l = bu.getLong((String)paramMap.get(".sysmsg.game_control_info.control_flag"), 0L);
+    long l = Util.getLong((String)paramMap.get(".sysmsg.game_control_info.control_flag"), 0L);
     AppMethodBeat.o(41472);
     return l;
   }
   
   public static void b(o paramo)
   {
-    AppMethodBeat.i(195645);
-    if (bu.isNullOrNil(paramo.field_rawXML))
+    AppMethodBeat.i(204164);
+    if (Util.isNullOrNil(paramo.field_rawXML))
     {
-      ae.e("MicroMsg.GameMessageParser", "msg content is null");
-      AppMethodBeat.o(195645);
+      Log.e("MicroMsg.GameMessageParser", "msg content is null");
+      AppMethodBeat.o(204164);
       return;
     }
-    Map localMap = bx.M(paramo.field_rawXML, "sysmsg");
+    Map localMap = XmlParser.parseXml(paramo.field_rawXML, "sysmsg", null);
     if ((localMap == null) || (localMap.size() == 0))
     {
-      ae.e("MicroMsg.GameMessageParser", "Parse failed");
-      AppMethodBeat.o(195645);
+      Log.e("MicroMsg.GameMessageParser", "Parse failed");
+      AppMethodBeat.o(204164);
       return;
     }
     if (!"gamecenter".equalsIgnoreCase((String)localMap.get(".sysmsg.$type")))
     {
-      ae.e("MicroMsg.GameMessageParser", "Type not matched");
-      AppMethodBeat.o(195645);
+      Log.e("MicroMsg.GameMessageParser", "Type not matched");
+      AppMethodBeat.o(204164);
       return;
     }
     a(localMap, paramo);
-    AppMethodBeat.o(195645);
+    AppMethodBeat.o(204164);
   }
   
   private static void b(Map<String, String> paramMap, o paramo)
   {
-    AppMethodBeat.i(195647);
-    paramo.unx.hLz = bu.bI((String)paramMap.get(".sysmsg.report_rule.$report_id"), "");
-    paramo.unx.uow = bu.getInt((String)paramMap.get(".sysmsg.report_rule.report_mode"), 0);
-    AppMethodBeat.o(195647);
+    AppMethodBeat.i(204166);
+    paramo.xFP.iGB = Util.nullAs((String)paramMap.get(".sysmsg.report_rule.$report_id"), "");
+    paramo.xFP.xGO = Util.getInt((String)paramMap.get(".sysmsg.report_rule.report_mode"), 0);
+    paramo.xFP.xGP = Util.getInt((String)paramMap.get(".sysmsg.report_rule.report_sample"), 0);
+    if (paramo.xFP.eay == null) {
+      switch (paramo.xFP.xGO)
+      {
+      }
+    }
+    for (;;)
+    {
+      if (paramo.xFP.eay == null) {
+        paramo.xFP.eay = Boolean.FALSE;
+      }
+      paramo.field_needReport = Util.nullAs(paramo.xFP.eay, false);
+      Log.i("MicroMsg.GameMessageParser", "gameMessageId:%s, needReport:%b", new Object[] { paramo.field_gameMsgId, Boolean.valueOf(paramo.field_needReport) });
+      AppMethodBeat.o(204166);
+      return;
+      paramo.xFP.eay = Boolean.TRUE;
+      continue;
+      paramo.xFP.eay = Boolean.FALSE;
+      continue;
+      paramMap = ((f)g.af(f.class)).dSK().GJ(paramo.field_msgId);
+      if (paramMap != null) {
+        paramo.xFP.eay = Boolean.valueOf(paramMap.field_needReport);
+      } else {
+        try
+        {
+          g.aAi();
+          g.aAf();
+          i = new Random(a.getUin() ^ System.nanoTime()).nextInt(10001);
+          Log.i("MicroMsg.GameMessageParser", "randomValue:%d, reportSample:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(paramo.xFP.xGP) });
+          if (i < paramo.xFP.xGP) {
+            paramo.xFP.eay = Boolean.TRUE;
+          }
+        }
+        catch (Exception paramMap)
+        {
+          for (;;)
+          {
+            int i = Util.getIntRandom(10000, 0);
+          }
+          paramo.xFP.eay = Boolean.FALSE;
+        }
+      }
+    }
   }
   
   private static void c(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41465);
-    paramo.umZ = bu.getInt((String)paramMap.get(".sysmsg.gamecenter.wifi_flag"), 0);
+    paramo.xFr = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.wifi_flag"), 0);
     AppMethodBeat.o(41465);
   }
   
   private static void d(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41466);
-    paramo.pOE = ak(paramMap);
-    paramo.umE = bu.bI((String)paramMap.get(".sysmsg.gamecenter.url"), "");
-    paramo.umS = bu.bI((String)paramMap.get(".sysmsg.gamecenter.msg_picture_url"), "");
-    paramo.umF = bu.bI((String)paramMap.get(".sysmsg.gamecenter.message_bubble_info.message_bubble_url"), "");
-    if (bu.isNullOrNil(paramo.umF)) {
-      paramo.umF = bu.bI((String)paramMap.get(".sysmsg.gamecenter.url"), "");
+    paramo.rfc = al(paramMap);
+    paramo.xEW = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.url"), "");
+    paramo.xFk = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.msg_picture_url"), "");
+    paramo.xEX = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.message_bubble_info.message_bubble_url"), "");
+    if (Util.isNullOrNil(paramo.xEX)) {
+      paramo.xEX = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.url"), "");
     }
-    paramo.unC = bu.getInt((String)paramMap.get(".sysmsg.gamecenter.notify_type"), 0);
+    paramo.xFU = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.notify_type"), 0);
     AppMethodBeat.o(41466);
   }
   
@@ -142,7 +188,7 @@ public final class q
     case 8: 
     case 9: 
     default: 
-      ae.e("MicroMsg.GameMessageParser", "error gamecenter type: " + paramo.field_msgType);
+      Log.e("MicroMsg.GameMessageParser", "error gamecenter type: " + paramo.field_msgType);
       AppMethodBeat.o(41467);
       return;
     case 10: 
@@ -151,7 +197,7 @@ public final class q
       return;
     case 2: 
       l(paramMap, paramo);
-      ae.i("MicroMsg.GameMessageParser", "Received a ShareMsg: %s", new Object[] { paramo.field_appId });
+      Log.i("MicroMsg.GameMessageParser", "Received a ShareMsg: %s", new Object[] { paramo.field_appId });
       AppMethodBeat.o(41467);
       return;
     case 4: 
@@ -169,40 +215,40 @@ public final class q
   private static void f(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41468);
-    paramo.umT = bu.getInt((String)paramMap.get(".sysmsg.gamecenter.message_bubble_info.message_bubble_action"), 0);
-    paramo.umQ.unP = bu.bI((String)paramMap.get(".sysmsg.gamecenter.message_bubble_info.message_bubble_icon_url"), "");
-    paramo.umQ.mDesc = bu.bI((String)paramMap.get(".sysmsg.gamecenter.message_bubble_info.message_bubble_desc"), "");
+    paramo.xFl = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.message_bubble_info.message_bubble_action"), 0);
+    paramo.xFi.xGg = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.message_bubble_info.message_bubble_icon_url"), "");
+    paramo.xFi.mDesc = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.message_bubble_info.message_bubble_desc"), "");
     AppMethodBeat.o(41468);
   }
   
   private static void g(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41469);
-    paramo.mAppName = bu.bI((String)paramMap.get(".sysmsg.gamecenter.appinfo.appname2"), "");
-    if (bu.isNullOrNil(paramo.mAppName)) {
-      paramo.mAppName = bu.bI((String)paramMap.get(".sysmsg.gamecenter.appinfo.appname"), "");
+    paramo.mAppName = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.appinfo.appname2"), "");
+    if (Util.isNullOrNil(paramo.mAppName)) {
+      paramo.mAppName = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.appinfo.appname"), "");
     }
     if (paramo.field_msgType == 6)
     {
-      paramo.umK = bu.bI((String)paramMap.get(".sysmsg.gamecenter.appinfo.groupname"), "");
-      paramo.umL = bu.bI((String)paramMap.get(".sysmsg.gamecenter.appinfo.groupurl"), "");
+      paramo.xFc = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.appinfo.groupname"), "");
+      paramo.xFd = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.appinfo.groupurl"), "");
     }
     for (;;)
     {
-      paramo.umG = bu.bI((String)paramMap.get(".sysmsg.gamecenter.appinfo.iconurl"), "");
-      paramo.umH = bu.bI((String)paramMap.get(".sysmsg.gamecenter.appinfo.android_downloadurl"), "");
-      paramo.umI = bu.bI((String)paramMap.get(".sysmsg.gamecenter.appinfo.android_apk_md5"), "");
-      paramo.umJ = bu.getInt((String)paramMap.get(".sysmsg.gamecenter.appinfo.android_apk_size"), 0);
+      paramo.xEY = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.appinfo.iconurl"), "");
+      paramo.xEZ = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.appinfo.android_downloadurl"), "");
+      paramo.xFa = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.appinfo.android_apk_md5"), "");
+      paramo.xFb = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.appinfo.android_apk_size"), 0);
       AppMethodBeat.o(41469);
       return;
-      paramo.umK = paramo.mAppName;
+      paramo.xFc = paramo.mAppName;
     }
   }
   
   private static void h(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41470);
-    paramo.umM.clear();
+    paramo.xFe.clear();
     int i = 0;
     if (i == 0) {}
     for (String str = ".sysmsg.gamecenter.userinfo";; str = ".sysmsg.gamecenter.userinfo" + i)
@@ -211,12 +257,12 @@ public final class q
         break label278;
       }
       o.k localk = new o.k();
-      localk.userName = bu.bI((String)paramMap.get(str + ".username"), "");
-      localk.bVF = bu.bI((String)paramMap.get(str + ".nickname"), "");
-      localk.unY = bu.bI((String)paramMap.get(str + ".usericon"), "");
-      localk.uoa = bu.bI((String)paramMap.get(str + ".badge_icon"), "");
-      localk.uob = bu.bI((String)paramMap.get(str + ".$jump_id"), "");
-      paramo.umM.add(localk);
+      localk.userName = Util.nullAs((String)paramMap.get(str + ".username"), "");
+      localk.nickName = Util.nullAs((String)paramMap.get(str + ".nickname"), "");
+      localk.xGp = Util.nullAs((String)paramMap.get(str + ".usericon"), "");
+      localk.xGr = Util.nullAs((String)paramMap.get(str + ".badge_icon"), "");
+      localk.xGs = Util.nullAs((String)paramMap.get(str + ".$jump_id"), "");
+      paramo.xFe.add(localk);
       i += 1;
       break;
     }
@@ -227,35 +273,35 @@ public final class q
   private static void i(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41471);
-    paramo.unE = bu.bI((String)paramMap.get(".sysmsg.gamecenter.noticeid"), "");
+    paramo.xFW = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.noticeid"), "");
     AppMethodBeat.o(41471);
   }
   
   private static void j(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41473);
-    paramo.unb = al(paramMap);
+    paramo.xFt = am(paramMap);
     AppMethodBeat.o(41473);
   }
   
   private static void k(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41474);
-    paramo.umO.unR = bu.getInt((String)paramMap.get(".sysmsg.gamecenter.badge_display_type"), 0);
-    paramo.umO.unP = bu.bI((String)paramMap.get(".sysmsg.gamecenter.showiconurl"), "");
-    paramo.umO.mText = bu.bI((String)paramMap.get(".sysmsg.gamecenter.entrancetext"), "");
+    paramo.xFg.xGi = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.badge_display_type"), 0);
+    paramo.xFg.xGg = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.showiconurl"), "");
+    paramo.xFg.mText = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.entrancetext"), "");
     AppMethodBeat.o(41474);
   }
   
   private static void l(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41475);
-    paramo.umU = bu.getInt((String)paramMap.get(".sysmsg.gameshare.share_message_info.share_msg_type"), 1);
-    paramo.umV = bu.getInt((String)paramMap.get(".sysmsg.game_control_info.display_name_type"), 1);
-    paramo.umW = bu.bI((String)paramMap.get(".sysmsg.gameshare.share_message_info.share_msg_title"), "");
-    paramo.umX = bu.bI((String)paramMap.get(".sysmsg.gameshare.share_message_info.share_msg_content"), "");
-    paramo.umY = bu.bI((String)paramMap.get(".sysmsg.gameshare.share_message_info.media_url"), "");
-    paramo.umS = bu.bI((String)paramMap.get(".sysmsg.gameshare.share_message_info.thumb_url"), "");
+    paramo.xFm = Util.getInt((String)paramMap.get(".sysmsg.gameshare.share_message_info.share_msg_type"), 1);
+    paramo.xFn = Util.getInt((String)paramMap.get(".sysmsg.game_control_info.display_name_type"), 1);
+    paramo.xFo = Util.nullAs((String)paramMap.get(".sysmsg.gameshare.share_message_info.share_msg_title"), "");
+    paramo.xFp = Util.nullAs((String)paramMap.get(".sysmsg.gameshare.share_message_info.share_msg_content"), "");
+    paramo.xFq = Util.nullAs((String)paramMap.get(".sysmsg.gameshare.share_message_info.media_url"), "");
+    paramo.xFk = Util.nullAs((String)paramMap.get(".sysmsg.gameshare.share_message_info.thumb_url"), "");
     AppMethodBeat.o(41475);
   }
   
@@ -263,22 +309,22 @@ public final class q
   {
     boolean bool2 = true;
     AppMethodBeat.i(41476);
-    paramo.une.url = bu.bI((String)paramMap.get(".sysmsg.gamecenter.floatlayer.open_url"), "");
-    o.a locala = paramo.une;
-    if (bu.getInt((String)paramMap.get(".sysmsg.gamecenter.floatlayer.full_screen"), 0) == 1)
+    paramo.xFw.url = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.floatlayer.open_url"), "");
+    o.a locala = paramo.xFw;
+    if (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.floatlayer.full_screen"), 0) == 1)
     {
       bool1 = true;
-      locala.uea = bool1;
-      paramo.une.orientation = bu.getInt((String)paramMap.get(".sysmsg.gamecenter.floatlayer.orientation"), 0);
-      paramo = paramo.une;
-      if (bu.getInt((String)paramMap.get(".sysmsg.gamecenter.floatlayer.is_transparent"), 0) != 1) {
+      locala.xvW = bool1;
+      paramo.xFw.orientation = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.floatlayer.orientation"), 0);
+      paramo = paramo.xFw;
+      if (Util.getInt((String)paramMap.get(".sysmsg.gamecenter.floatlayer.is_transparent"), 0) != 1) {
         break label133;
       }
     }
     label133:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      paramo.unK = bool1;
+      paramo.crp = bool1;
       AppMethodBeat.o(41476);
       return;
       bool1 = false;
@@ -289,33 +335,33 @@ public final class q
   private static void n(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41477);
-    paramo.unj = bu.bI((String)paramMap.get(".sysmsg.gamepraise.praise_message_info.praise_content"), "");
-    paramo.unk = bu.bI((String)paramMap.get(".sysmsg.gamepraise.praise_message_info.praise_jumpurl"), "");
-    paramo.unl = bu.bI((String)paramMap.get(".sysmsg.gamepraise.praise_message_info.praise_iconurl"), "");
+    paramo.xFB = Util.nullAs((String)paramMap.get(".sysmsg.gamepraise.praise_message_info.praise_content"), "");
+    paramo.xFC = Util.nullAs((String)paramMap.get(".sysmsg.gamepraise.praise_message_info.praise_jumpurl"), "");
+    paramo.xFD = Util.nullAs((String)paramMap.get(".sysmsg.gamepraise.praise_message_info.praise_iconurl"), "");
     AppMethodBeat.o(41477);
   }
   
   private static void o(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41478);
-    paramo.unf = bu.bI((String)paramMap.get(".sysmsg.gamecenter.topic.reply_content"), "");
-    paramo.ung = bu.bI((String)paramMap.get(".sysmsg.gamecenter.topic.replied_content"), "");
-    paramo.uni = bu.bI((String)paramMap.get(".sysmsg.gamecenter.topic.topic_title"), "");
-    paramo.unh = bu.bI((String)paramMap.get(".sysmsg.gamecenter.topic.topic_url"), "");
+    paramo.xFx = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.topic.reply_content"), "");
+    paramo.xFy = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.topic.replied_content"), "");
+    paramo.xFA = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.topic.topic_title"), "");
+    paramo.xFz = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.topic.topic_url"), "");
     AppMethodBeat.o(41478);
   }
   
   private static void p(Map<String, String> paramMap, o paramo)
   {
     AppMethodBeat.i(41479);
-    paramo.unH = bu.getInt((String)paramMap.get(".sysmsg.gamecenter.message_card.message_card_jump_type"), 0);
-    paramo.unI = bu.bI((String)paramMap.get(".sysmsg.gamecenter.message_card.message_card_jump_url"), "");
+    paramo.xFZ = Util.getInt((String)paramMap.get(".sysmsg.gamecenter.message_card.message_card_jump_type"), 0);
+    paramo.xGa = Util.nullAs((String)paramMap.get(".sysmsg.gamecenter.message_card.message_card_jump_url"), "");
     AppMethodBeat.o(41479);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.q
  * JD-Core Version:    0.7.0.1
  */

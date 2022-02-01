@@ -1,431 +1,431 @@
 package com.tencent.thumbplayer.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.thumbplayer.b.j;
+import com.tencent.thumbplayer.api.TPPlayerState;
 
 public final class g
 {
-  private j MtS;
+  private TPPlayerState RWr;
   
-  public g(j paramj)
+  public g(TPPlayerState paramTPPlayerState)
   {
-    this.MtS = paramj;
+    this.RWr = paramTPPlayerState;
   }
   
-  private static boolean a(j paramj)
+  private static boolean a(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194313);
-    if ((paramj.ahR(2)) || (paramj.ahR(8)))
+    AppMethodBeat.i(188726);
+    if ((paramTPPlayerState.is(2)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)))
     {
-      AppMethodBeat.o(194313);
+      AppMethodBeat.o(188726);
       return true;
     }
-    AppMethodBeat.o(194313);
+    AppMethodBeat.o(188726);
     return false;
   }
   
-  private static boolean b(j paramj)
+  private static boolean b(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194314);
-    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(7)) || (paramj.ahR(8)))
+    AppMethodBeat.i(188727);
+    if ((paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)))
     {
-      AppMethodBeat.o(194314);
+      AppMethodBeat.o(188727);
       return true;
     }
-    AppMethodBeat.o(194314);
+    AppMethodBeat.o(188727);
     return false;
   }
   
-  private static boolean c(j paramj)
+  private static boolean c(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194315);
-    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(7)))
+    AppMethodBeat.i(188728);
+    if ((paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7)))
     {
-      AppMethodBeat.o(194315);
+      AppMethodBeat.o(188728);
       return true;
     }
-    AppMethodBeat.o(194315);
+    AppMethodBeat.o(188728);
     return false;
   }
   
-  private static boolean d(j paramj)
+  private static boolean d(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194316);
-    if ((paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(7)))
+    AppMethodBeat.i(188729);
+    if ((paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7)))
     {
-      AppMethodBeat.o(194316);
+      AppMethodBeat.o(188729);
       return true;
     }
-    AppMethodBeat.o(194316);
+    AppMethodBeat.o(188729);
     return false;
   }
   
-  private static boolean e(j paramj)
+  private static boolean e(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194317);
-    if ((paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(8)) || (paramj.ahR(6)) || (paramj.ahR(7)))
+    AppMethodBeat.i(188730);
+    if ((paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7)))
     {
-      AppMethodBeat.o(194317);
+      AppMethodBeat.o(188730);
       return true;
     }
-    AppMethodBeat.o(194317);
+    AppMethodBeat.o(188730);
     return false;
   }
   
-  private static boolean f(j paramj)
+  private static boolean f(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194318);
-    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)) || (paramj.ahR(9)))
+    AppMethodBeat.i(188731);
+    if ((paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(10)))
     {
-      AppMethodBeat.o(194318);
+      AppMethodBeat.o(188731);
       return true;
     }
-    AppMethodBeat.o(194318);
+    AppMethodBeat.o(188731);
     return false;
   }
   
-  private static boolean g(j paramj)
+  private static boolean g(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194319);
-    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(7)))
+    AppMethodBeat.i(188732);
+    if ((paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7)))
     {
-      AppMethodBeat.o(194319);
+      AppMethodBeat.o(188732);
       return true;
     }
-    AppMethodBeat.o(194319);
+    AppMethodBeat.o(188732);
     return false;
   }
   
-  private static boolean h(j paramj)
+  private static boolean h(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194320);
-    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)))
+    AppMethodBeat.i(188733);
+    if ((paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7)))
     {
-      AppMethodBeat.o(194320);
+      AppMethodBeat.o(188733);
       return true;
     }
-    AppMethodBeat.o(194320);
+    AppMethodBeat.o(188733);
     return false;
   }
   
-  private static boolean i(j paramj)
+  private static boolean i(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194321);
-    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)))
+    AppMethodBeat.i(188734);
+    if ((paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7)))
     {
-      AppMethodBeat.o(194321);
+      AppMethodBeat.o(188734);
       return true;
     }
-    AppMethodBeat.o(194321);
+    AppMethodBeat.o(188734);
     return false;
   }
   
-  private static boolean j(j paramj)
+  private static boolean j(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194322);
-    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)))
+    AppMethodBeat.i(188735);
+    if ((paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7)))
     {
-      AppMethodBeat.o(194322);
+      AppMethodBeat.o(188735);
       return true;
     }
-    AppMethodBeat.o(194322);
+    AppMethodBeat.o(188735);
     return false;
   }
   
-  private static boolean k(j paramj)
+  private static boolean k(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194323);
-    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)))
+    AppMethodBeat.i(188736);
+    if ((paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7)))
     {
-      AppMethodBeat.o(194323);
+      AppMethodBeat.o(188736);
       return true;
     }
-    AppMethodBeat.o(194323);
+    AppMethodBeat.o(188736);
     return false;
   }
   
-  private static boolean l(j paramj)
+  private static boolean l(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194324);
-    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)))
+    AppMethodBeat.i(188737);
+    if ((paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7)))
     {
-      AppMethodBeat.o(194324);
+      AppMethodBeat.o(188737);
       return true;
     }
-    AppMethodBeat.o(194324);
+    AppMethodBeat.o(188737);
     return false;
   }
   
-  private static boolean m(j paramj)
+  private static boolean m(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194325);
-    if ((paramj.ahR(1)) || (paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(8)) || (paramj.ahR(7)) || (paramj.ahR(9)))
+    AppMethodBeat.i(188738);
+    if ((paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(10)))
     {
-      AppMethodBeat.o(194325);
+      AppMethodBeat.o(188738);
       return true;
     }
-    AppMethodBeat.o(194325);
+    AppMethodBeat.o(188738);
     return false;
   }
   
-  private static boolean n(j paramj)
+  private static boolean n(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194326);
-    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)))
+    AppMethodBeat.i(188739);
+    if ((paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)))
     {
-      AppMethodBeat.o(194326);
+      AppMethodBeat.o(188739);
       return true;
     }
-    AppMethodBeat.o(194326);
+    AppMethodBeat.o(188739);
     return false;
   }
   
-  private static boolean o(j paramj)
+  private static boolean o(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194327);
-    if ((paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)))
+    AppMethodBeat.i(188740);
+    if ((paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)))
     {
-      AppMethodBeat.o(194327);
+      AppMethodBeat.o(188740);
       return true;
     }
-    AppMethodBeat.o(194327);
+    AppMethodBeat.o(188740);
     return false;
   }
   
-  private static boolean p(j paramj)
+  private static boolean p(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194328);
-    if ((paramj.ahR(2)) || (paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)))
+    AppMethodBeat.i(188741);
+    if ((paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)))
     {
-      AppMethodBeat.o(194328);
+      AppMethodBeat.o(188741);
       return true;
     }
-    AppMethodBeat.o(194328);
+    AppMethodBeat.o(188741);
     return false;
   }
   
-  private static boolean q(j paramj)
+  private static boolean q(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194329);
-    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)))
+    AppMethodBeat.i(188742);
+    if ((paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)))
     {
-      AppMethodBeat.o(194329);
+      AppMethodBeat.o(188742);
       return true;
     }
-    AppMethodBeat.o(194329);
+    AppMethodBeat.o(188742);
     return false;
   }
   
-  private static boolean r(j paramj)
+  private static boolean r(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194330);
-    if ((paramj.ahR(3)) || (paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)))
+    AppMethodBeat.i(188743);
+    if ((paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)))
     {
-      AppMethodBeat.o(194330);
+      AppMethodBeat.o(188743);
       return true;
     }
-    AppMethodBeat.o(194330);
+    AppMethodBeat.o(188743);
     return false;
   }
   
-  private static boolean s(j paramj)
+  private static boolean s(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194331);
-    if ((paramj.ahR(5)) || (paramj.ahR(6)))
+    AppMethodBeat.i(188744);
+    if ((paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)))
     {
-      AppMethodBeat.o(194331);
+      AppMethodBeat.o(188744);
       return true;
     }
-    AppMethodBeat.o(194331);
+    AppMethodBeat.o(188744);
     return false;
   }
   
-  private static boolean t(j paramj)
+  private static boolean t(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194332);
-    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(6)) || (paramj.ahR(7)))
+    AppMethodBeat.i(188745);
+    if ((paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7)))
     {
-      AppMethodBeat.o(194332);
+      AppMethodBeat.o(188745);
       return true;
     }
-    AppMethodBeat.o(194332);
+    AppMethodBeat.o(188745);
     return false;
   }
   
-  private static boolean u(j paramj)
+  private static boolean u(TPPlayerState paramTPPlayerState)
   {
-    AppMethodBeat.i(194333);
-    if ((paramj.ahR(4)) || (paramj.ahR(5)) || (paramj.ahR(8)) || (paramj.ahR(6)) || (paramj.ahR(7)))
+    AppMethodBeat.i(188746);
+    if ((paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7)))
     {
-      AppMethodBeat.o(194333);
+      AppMethodBeat.o(188746);
       return true;
     }
-    AppMethodBeat.o(194333);
+    AppMethodBeat.o(188746);
     return false;
   }
   
-  public final boolean ahG(int paramInt)
+  public final boolean aqS(int paramInt)
   {
-    AppMethodBeat.i(194311);
+    AppMethodBeat.i(188724);
     boolean bool;
     if (paramInt == 1)
     {
-      bool = a(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = a(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 2)
     {
-      bool = this.MtS.ahR(1);
-      AppMethodBeat.o(194311);
+      bool = this.RWr.is(1);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 3)
     {
-      bool = b(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = b(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 4)
     {
-      AppMethodBeat.o(194311);
+      AppMethodBeat.o(188724);
       return true;
     }
     if (paramInt == 5)
     {
-      bool = c(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = c(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 6)
     {
-      bool = d(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = d(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 7)
     {
-      bool = e(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = e(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 8)
     {
-      bool = f(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = f(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 9)
     {
-      bool = g(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = g(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 11)
     {
-      bool = h(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = h(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 12)
     {
-      bool = i(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = i(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 13)
     {
-      bool = j(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = j(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 14)
     {
-      bool = k(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = k(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 15)
     {
-      bool = l(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = l(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 16)
     {
-      bool = m(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = m(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 17)
     {
-      bool = t(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = t(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
     if (paramInt == 18)
     {
-      bool = u(this.MtS);
-      AppMethodBeat.o(194311);
+      bool = u(this.RWr);
+      AppMethodBeat.o(188724);
       return bool;
     }
-    AppMethodBeat.o(194311);
+    AppMethodBeat.o(188724);
     return false;
   }
   
-  public final boolean ahH(int paramInt)
+  public final boolean aqT(int paramInt)
   {
-    AppMethodBeat.i(194312);
+    AppMethodBeat.i(188725);
     boolean bool;
     if (paramInt == 1)
     {
-      bool = this.MtS.ahR(3);
-      AppMethodBeat.o(194312);
+      bool = this.RWr.is(3);
+      AppMethodBeat.o(188725);
       return bool;
     }
     if (paramInt == 2)
     {
-      bool = n(this.MtS);
-      AppMethodBeat.o(194312);
+      bool = n(this.RWr);
+      AppMethodBeat.o(188725);
       return bool;
     }
     if (paramInt == 3)
     {
-      bool = o(this.MtS);
-      AppMethodBeat.o(194312);
+      bool = o(this.RWr);
+      AppMethodBeat.o(188725);
       return bool;
     }
     if (paramInt == 4)
     {
-      bool = p(this.MtS);
-      AppMethodBeat.o(194312);
+      bool = p(this.RWr);
+      AppMethodBeat.o(188725);
       return bool;
     }
     if (paramInt == 5)
     {
-      bool = q(this.MtS);
-      AppMethodBeat.o(194312);
+      bool = q(this.RWr);
+      AppMethodBeat.o(188725);
       return bool;
     }
     if (paramInt == 6)
     {
-      bool = r(this.MtS);
-      AppMethodBeat.o(194312);
+      bool = r(this.RWr);
+      AppMethodBeat.o(188725);
       return bool;
     }
     if (paramInt == 7)
     {
-      bool = s(this.MtS);
-      AppMethodBeat.o(194312);
+      bool = s(this.RWr);
+      AppMethodBeat.o(188725);
       return bool;
     }
-    AppMethodBeat.o(194312);
+    AppMethodBeat.o(188725);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.a.g
  * JD-Core Version:    0.7.0.1
  */

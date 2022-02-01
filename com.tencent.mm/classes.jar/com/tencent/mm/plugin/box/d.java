@@ -5,7 +5,11 @@ public abstract interface d
 {
   public abstract String checkAllHotWords(String paramString);
   
-  public abstract boolean checkIfHasHotWord(String paramString);
+  public abstract String checkFirstHotWord(String paramString);
+  
+  public abstract String getExposedFingerWord(String paramString);
+  
+  public abstract String getMatchedFingerWord(String paramString1, String paramString2);
   
   public abstract int getSearchDuration();
   
@@ -13,7 +17,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.box.d
  * JD-Core Version:    0.7.0.1
  */

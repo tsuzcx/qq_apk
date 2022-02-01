@@ -4,12 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -17,26 +16,39 @@ import java.util.Random;
 
 public final class a
 {
-  private static SimpleDateFormat oWf = null;
+  private static SimpleDateFormat qkZ = null;
   
-  public static void D(Context paramContext, String paramString1, String paramString2)
+  public static String AF(long paramLong)
+  {
+    AppMethodBeat.i(28254);
+    paramLong = 1000L * paramLong;
+    new GregorianCalendar().setTimeInMillis(paramLong);
+    if (qkZ == null) {
+      qkZ = new SimpleDateFormat("yyyy.MM.dd");
+    }
+    String str = qkZ.format(new Date(paramLong));
+    AppMethodBeat.o(28254);
+    return str;
+  }
+  
+  public static void H(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(28255);
-    ae.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil doCardDetailUI()");
+    Log.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil doCardDetailUI()");
     Intent localIntent = new Intent();
     localIntent.putExtra("key_card_id", paramString1);
     localIntent.putExtra("key_card_ext", paramString2);
     localIntent.putExtra("key_from_scene", 15);
-    d.b(paramContext, "card", ".ui.CardDetailUI", localIntent);
+    com.tencent.mm.br.c.b(paramContext, "card", ".ui.CardDetailUI", localIntent);
     AppMethodBeat.o(28255);
   }
   
-  public static boolean PU(int paramInt)
+  public static boolean Xx(int paramInt)
   {
     return (paramInt >= 0) && (paramInt <= 5);
   }
   
-  public static int PV(int paramInt)
+  public static int Xy(int paramInt)
   {
     switch (paramInt)
     {
@@ -55,7 +67,7 @@ public final class a
     return 240;
   }
   
-  public static int PW(int paramInt)
+  public static int Xz(int paramInt)
   {
     switch (paramInt)
     {
@@ -82,13 +94,13 @@ public final class a
     return 300;
   }
   
-  public static int ZY(String paramString)
+  public static int ake(String paramString)
   {
     AppMethodBeat.i(28253);
     int i = Color.rgb(66, 66, 66);
     if ((paramString == null) || (paramString.length() < 7) || (!paramString.startsWith("#")))
     {
-      ae.e("MicroMsg.ShakeCardUtil", "string format error");
+      Log.e("MicroMsg.ShakeCardUtil", "string format error");
       AppMethodBeat.o(28253);
       return i;
     }
@@ -101,109 +113,146 @@ public final class a
     }
     catch (Exception paramString)
     {
-      ae.e("MicroMsg.ShakeCardUtil", paramString.toString());
+      Log.e("MicroMsg.ShakeCardUtil", paramString.toString());
       AppMethodBeat.o(28253);
     }
     return i;
   }
   
-  private static int dSA()
+  private static boolean eUA()
+  {
+    AppMethodBeat.i(28242);
+    int i = eUB();
+    int j = eUC();
+    Log.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil begin time : " + i + " end time : " + j);
+    if (i <= 0)
+    {
+      Log.e("MicroMsg.ShakeCardUtil", "ShakeCardUtil begin time is " + i + " , invalid");
+      AppMethodBeat.o(28242);
+      return false;
+    }
+    if (j <= 0)
+    {
+      Log.e("MicroMsg.ShakeCardUtil", "ShakeCardUtil end time  is " + j + " , invalid");
+      AppMethodBeat.o(28242);
+      return false;
+    }
+    if (i >= j)
+    {
+      Log.e("MicroMsg.ShakeCardUtil", "ShakeCardUtil begin time is >= end time, invalid time");
+      AppMethodBeat.o(28242);
+      return false;
+    }
+    int k = (int)(System.currentTimeMillis() / 1000L);
+    Log.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil current time : ".concat(String.valueOf(k)));
+    if ((k >= i) && (k <= j))
+    {
+      Log.e("MicroMsg.ShakeCardUtil", "ShakeCardUtil current time is incled in [btime, etime]");
+      AppMethodBeat.o(28242);
+      return true;
+    }
+    Log.e("MicroMsg.ShakeCardUtil", "ShakeCardUtil current time is not incled in [btime, etime]");
+    AppMethodBeat.o(28242);
+    return false;
+  }
+  
+  private static int eUB()
   {
     AppMethodBeat.i(28243);
-    bc.aCg();
-    int i = ((Integer)com.tencent.mm.model.c.ajA().get(am.a.IKs, Integer.valueOf(0))).intValue();
+    bg.aVF();
+    int i = ((Integer)com.tencent.mm.model.c.azQ().get(ar.a.NSq, Integer.valueOf(0))).intValue();
     AppMethodBeat.o(28243);
     return i;
   }
   
-  private static int dSB()
+  private static int eUC()
   {
     AppMethodBeat.i(28244);
-    bc.aCg();
-    int i = ((Integer)com.tencent.mm.model.c.ajA().get(am.a.IKt, Integer.valueOf(0))).intValue();
+    bg.aVF();
+    int i = ((Integer)com.tencent.mm.model.c.azQ().get(ar.a.NSr, Integer.valueOf(0))).intValue();
     AppMethodBeat.o(28244);
     return i;
   }
   
-  public static int dSC()
+  public static int eUD()
   {
     AppMethodBeat.i(28245);
-    bc.aCg();
-    int i = ((Integer)com.tencent.mm.model.c.ajA().get(am.a.IKy, Integer.valueOf(0))).intValue();
+    bg.aVF();
+    int i = ((Integer)com.tencent.mm.model.c.azQ().get(ar.a.NSw, Integer.valueOf(0))).intValue();
     AppMethodBeat.o(28245);
     return i;
   }
   
-  public static String dSD()
+  public static String eUE()
   {
     AppMethodBeat.i(28246);
-    bc.aCg();
-    String str = (String)com.tencent.mm.model.c.ajA().get(am.a.IKx, "");
+    bg.aVF();
+    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSv, "");
     AppMethodBeat.o(28246);
     return str;
   }
   
-  public static String dSE()
+  public static String eUF()
   {
     AppMethodBeat.i(28247);
-    bc.aCg();
-    String str = (String)com.tencent.mm.model.c.ajA().get(am.a.IKu, "");
+    bg.aVF();
+    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSs, "");
     AppMethodBeat.o(28247);
     return str;
   }
   
-  public static String dSF()
+  public static String eUG()
   {
     AppMethodBeat.i(28248);
-    bc.aCg();
-    String str = (String)com.tencent.mm.model.c.ajA().get(am.a.IKA, "");
+    bg.aVF();
+    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSy, "");
     AppMethodBeat.o(28248);
     return str;
   }
   
-  public static String dSG()
+  public static String eUH()
   {
     AppMethodBeat.i(28249);
-    bc.aCg();
-    String str = (String)com.tencent.mm.model.c.ajA().get(am.a.IKz, "");
+    bg.aVF();
+    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSx, "");
     AppMethodBeat.o(28249);
     return str;
   }
   
-  public static String dSH()
+  public static String eUI()
   {
     AppMethodBeat.i(28250);
-    bc.aCg();
-    String str = (String)com.tencent.mm.model.c.ajA().get(am.a.IKD, "");
+    bg.aVF();
+    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSB, "");
     AppMethodBeat.o(28250);
     return str;
   }
   
-  public static String dSI()
+  public static String eUJ()
   {
     AppMethodBeat.i(28251);
-    bc.aCg();
-    String str = (String)com.tencent.mm.model.c.ajA().get(am.a.IKC, "");
+    bg.aVF();
+    String str = (String)com.tencent.mm.model.c.azQ().get(ar.a.NSA, "");
     AppMethodBeat.o(28251);
     return str;
   }
   
-  public static int dSJ()
+  public static int eUK()
   {
     AppMethodBeat.i(28252);
-    bc.aCg();
+    bg.aVF();
     int i = com.tencent.mm.model.c.getUin();
     int j = (int)(System.currentTimeMillis() % 10L);
     i = (new Random(i).nextInt(10) + j) % 10;
-    ae.i("MicroMsg.ShakeCardUtil", "genShakeCardFrequencyLevel retRand:".concat(String.valueOf(i)));
+    Log.i("MicroMsg.ShakeCardUtil", "genShakeCardFrequencyLevel retRand:".concat(String.valueOf(i)));
     AppMethodBeat.o(28252);
     return i;
   }
   
-  public static boolean dSK()
+  public static boolean eUL()
   {
     AppMethodBeat.i(28256);
-    if ((dSg()) && (ad.foi()))
+    if ((eUh()) && (LocaleUtil.isChineseAppLang()))
     {
       AppMethodBeat.o(28256);
       return true;
@@ -212,46 +261,46 @@ public final class a
     return false;
   }
   
-  public static void dSf()
+  public static void eUg()
   {
     AppMethodBeat.i(28240);
-    ae.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance()");
-    if (!dSg())
+    Log.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance()");
+    if (!eUh())
     {
-      ae.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() entrance is not open");
-      if (dSz())
+      Log.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() entrance is not open");
+      if (eUA())
       {
-        bc.aCg();
-        com.tencent.mm.model.c.ajA().set(am.a.IKr, Boolean.TRUE);
-        ae.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() open shake card entrance");
+        bg.aVF();
+        com.tencent.mm.model.c.azQ().set(ar.a.NSp, Boolean.TRUE);
+        Log.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() open shake card entrance");
         AppMethodBeat.o(28240);
         return;
       }
-      ae.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() card entrance is not in open time");
+      Log.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() card entrance is not in open time");
       AppMethodBeat.o(28240);
       return;
     }
-    ae.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() entrance is open");
-    if (!dSz())
+    Log.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() entrance is open");
+    if (!eUA())
     {
-      ae.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() card entrance is not in open time, close card entrance");
-      bc.aCg();
-      com.tencent.mm.model.c.ajA().set(am.a.IKr, Boolean.FALSE);
+      Log.i("MicroMsg.ShakeCardUtil", "checkShakeCardEntrance() card entrance is not in open time, close card entrance");
+      bg.aVF();
+      com.tencent.mm.model.c.azQ().set(ar.a.NSp, Boolean.FALSE);
     }
     AppMethodBeat.o(28240);
   }
   
-  public static boolean dSg()
+  public static boolean eUh()
   {
     AppMethodBeat.i(28241);
-    if (!bc.ajM())
+    if (!bg.aAc())
     {
-      ae.e("MicroMsg.ShakeCardUtil", "acc is not ready");
+      Log.e("MicroMsg.ShakeCardUtil", "acc is not ready");
       AppMethodBeat.o(28241);
       return false;
     }
-    bc.aCg();
-    Object localObject = com.tencent.mm.model.c.ajA().get(am.a.IKr, Boolean.FALSE);
+    bg.aVF();
+    Object localObject = com.tencent.mm.model.c.azQ().get(ar.a.NSp, Boolean.FALSE);
     if (localObject != null) {}
     for (boolean bool = ((Boolean)localObject).booleanValue();; bool = false)
     {
@@ -260,116 +309,66 @@ public final class a
     }
   }
   
-  public static void dSh()
+  public static void eUi()
   {
     AppMethodBeat.i(28257);
-    ae.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil setShakeCardEntranceData()");
+    Log.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil setShakeCardEntranceData()");
     int i = (int)(System.currentTimeMillis() / 1000L);
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKs, Integer.valueOf(i));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKt, Integer.valueOf(86400 + i));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKu, "");
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKy, Integer.valueOf(0));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKv, Integer.valueOf(1));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKw, Integer.valueOf(6));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKx, "");
-    com.tencent.mm.y.c.ahI().x(262154, true);
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKz, String.valueOf(i));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKA, "hello");
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKB, "shake card");
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSq, Integer.valueOf(i));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSr, Integer.valueOf(86400 + i));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSs, "");
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSw, Integer.valueOf(0));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSt, Integer.valueOf(1));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSu, Integer.valueOf(6));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSv, "");
+    com.tencent.mm.y.c.axV().B(262154, true);
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSx, String.valueOf(i));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSy, "hello");
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSz, "shake card");
     AppMethodBeat.o(28257);
   }
   
-  public static void dSi()
+  public static void eUj()
   {
     AppMethodBeat.i(28258);
-    ae.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil clearShakeCardEntranceData()");
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKs, Integer.valueOf(0));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKt, Integer.valueOf(0));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKu, "");
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKy, Integer.valueOf(0));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKv, Integer.valueOf(0));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKw, Integer.valueOf(0));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKx, "");
-    com.tencent.mm.y.c.ahI().x(262154, false);
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKz, "");
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKA, "");
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKB, "");
+    Log.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil clearShakeCardEntranceData()");
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSq, Integer.valueOf(0));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSr, Integer.valueOf(0));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSs, "");
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSw, Integer.valueOf(0));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSt, Integer.valueOf(0));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSu, Integer.valueOf(0));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSv, "");
+    com.tencent.mm.y.c.axV().B(262154, false);
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSx, "");
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSy, "");
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSz, "");
     AppMethodBeat.o(28258);
-  }
-  
-  private static boolean dSz()
-  {
-    AppMethodBeat.i(28242);
-    int i = dSA();
-    int j = dSB();
-    ae.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil begin time : " + i + " end time : " + j);
-    if (i <= 0)
-    {
-      ae.e("MicroMsg.ShakeCardUtil", "ShakeCardUtil begin time is " + i + " , invalid");
-      AppMethodBeat.o(28242);
-      return false;
-    }
-    if (j <= 0)
-    {
-      ae.e("MicroMsg.ShakeCardUtil", "ShakeCardUtil end time  is " + j + " , invalid");
-      AppMethodBeat.o(28242);
-      return false;
-    }
-    if (i >= j)
-    {
-      ae.e("MicroMsg.ShakeCardUtil", "ShakeCardUtil begin time is >= end time, invalid time");
-      AppMethodBeat.o(28242);
-      return false;
-    }
-    int k = (int)(System.currentTimeMillis() / 1000L);
-    ae.i("MicroMsg.ShakeCardUtil", "ShakeCardUtil current time : ".concat(String.valueOf(k)));
-    if ((k >= i) && (k <= j))
-    {
-      ae.e("MicroMsg.ShakeCardUtil", "ShakeCardUtil current time is incled in [btime, etime]");
-      AppMethodBeat.o(28242);
-      return true;
-    }
-    ae.e("MicroMsg.ShakeCardUtil", "ShakeCardUtil current time is not incled in [btime, etime]");
-    AppMethodBeat.o(28242);
-    return false;
-  }
-  
-  public static String sz(long paramLong)
-  {
-    AppMethodBeat.i(28254);
-    paramLong = 1000L * paramLong;
-    new GregorianCalendar().setTimeInMillis(paramLong);
-    if (oWf == null) {
-      oWf = new SimpleDateFormat("yyyy.MM.dd");
-    }
-    String str = oWf.format(new Date(paramLong));
-    AppMethodBeat.o(28254);
-    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.c.c.a
  * JD-Core Version:    0.7.0.1
  */

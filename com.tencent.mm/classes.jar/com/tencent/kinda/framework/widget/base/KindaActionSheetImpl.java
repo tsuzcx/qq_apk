@@ -11,11 +11,11 @@ import com.tencent.kinda.framework.widget.tools.KindaContext;
 import com.tencent.kinda.gen.KActionSheet;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.aa;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.ui.widget.a.e;
-import com.tencent.mm.ui.z;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -73,16 +73,16 @@ public class KindaActionSheetImpl
       this.sheet = new e(localActivity, 1, bool);
       if (bool)
       {
-        View localView = z.jV(localActivity).inflate(2131494775, null);
-        TextView localTextView = (TextView)localView.findViewById(2131305945);
+        View localView = aa.jQ(localActivity).inflate(2131495509, null);
+        TextView localTextView = (TextView)localView.findViewById(2131309245);
         localTextView.setText(this.title);
         localTextView.setTextSize(14.0F);
         localTextView.setGravity(17);
-        this.sheet.P(localView, false);
+        this.sheet.V(localView, false);
       }
-      this.sheet.LfS = new n.d()
+      this.sheet.HLX = new o.f()
       {
-        public void onCreateMMMenu(l paramAnonymousl)
+        public void onCreateMMMenu(m paramAnonymousm)
         {
           AppMethodBeat.i(18830);
           Iterator localIterator = KindaActionSheetImpl.this.buttonTitles.iterator();
@@ -91,19 +91,19 @@ public class KindaActionSheetImpl
           {
             String str = (String)localIterator.next();
             if ((KindaActionSheetImpl.this.mDestructiveIndex >= 0) && (KindaActionSheetImpl.this.mDestructiveIndex == i)) {
-              paramAnonymousl.a(i, localActivity.getResources().getColor(2131099803), str);
+              paramAnonymousm.a(i, localActivity.getResources().getColor(2131099818), str);
             }
             for (;;)
             {
               i += 1;
               break;
-              paramAnonymousl.add(0, i, 0, str);
+              paramAnonymousm.add(0, i, 0, str);
             }
           }
           AppMethodBeat.o(18830);
         }
       };
-      this.sheet.LfT = new n.e()
+      this.sheet.HLY = new o.g()
       {
         public void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
@@ -114,7 +114,7 @@ public class KindaActionSheetImpl
           AppMethodBeat.o(18831);
         }
       };
-      this.sheet.cPF();
+      this.sheet.dGm();
       AppMethodBeat.o(18834);
       return;
     }
@@ -122,7 +122,7 @@ public class KindaActionSheetImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.KindaActionSheetImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,7 @@ package com.tencent.mm.pluginsdk.ui.tools;
 
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class VideoPlayerTextureView$3
   implements Runnable
@@ -14,24 +14,24 @@ final class VideoPlayerTextureView$3
     AppMethodBeat.i(134039);
     try
     {
-      if ((this.lxx != null) && (this.lxx.isValid()))
+      if ((this.mEu != null) && (this.mEu.isValid()))
       {
-        ae.i("MicroMsg.VideoPlayerTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(this.FDy.hashCode()), Integer.valueOf(this.lxx.hashCode()) });
-        this.lxx.release();
+        Log.i("MicroMsg.VideoPlayerTextureView", "%d release surface [%d]", new Object[] { Integer.valueOf(this.KwC.hashCode()), Integer.valueOf(this.mEu.hashCode()) });
+        this.mEu.release();
       }
       AppMethodBeat.o(134039);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.VideoPlayerTextureView", localException, "release Surface error", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.VideoPlayerTextureView", localException, "release Surface error", new Object[0]);
       AppMethodBeat.o(134039);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView.3
  * JD-Core Version:    0.7.0.1
  */

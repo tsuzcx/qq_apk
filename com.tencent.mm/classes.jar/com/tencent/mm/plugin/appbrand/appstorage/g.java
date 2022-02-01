@@ -3,51 +3,51 @@ package com.tencent.mm.plugin.appbrand.appstorage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.file.at;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoDownLoadMgr;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.m;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.s;
 import java.util.concurrent.TimeUnit;
 
 public final class g
 {
-  public static final Runnable jPx;
-  private static final long jPy;
-  private static final long jPz;
+  public static final Runnable kSf;
+  private static final long kSg;
+  private static final long kSh;
   
   static
   {
     AppMethodBeat.i(44454);
-    jPx = new Runnable()
+    kSf = new Runnable()
     {
-      private void q(k paramAnonymousk)
+      private void p(o paramAnonymouso)
       {
         int i = 0;
         AppMethodBeat.i(174713);
-        if ((!paramAnonymousk.exists()) || (!paramAnonymousk.isDirectory()))
+        if ((!paramAnonymouso.exists()) || (!paramAnonymouso.isDirectory()))
         {
           AppMethodBeat.o(174713);
           return;
         }
-        if (o.fB(w.B(paramAnonymousk.fTh()) + "/dir.lock"))
+        if (s.YS(aa.z(paramAnonymouso.her()) + "/dir.lock"))
         {
-          if (bu.fpO() - new k(w.B(paramAnonymousk.fTh()) + "/dir.lock").lastModified() < g.jPz)
+          if (Util.nowMilliSecond() - new o(aa.z(paramAnonymouso.her()) + "/dir.lock").lastModified() < g.kSh)
           {
-            ae.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, locked", new Object[] { paramAnonymousk.getName() });
+            Log.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, locked", new Object[] { paramAnonymouso.getName() });
             AppMethodBeat.o(174713);
             return;
           }
-          ae.e("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock expired", new Object[] { paramAnonymousk.getName() });
+          Log.e("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock expired", new Object[] { paramAnonymouso.getName() });
         }
-        ae.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock free", new Object[] { paramAnonymousk.getName() });
-        paramAnonymousk = paramAnonymousk.a(new m()
+        Log.d("MicroMsg.AppBrandLocalMediaPruner", "pruneAppDir dirName %s, lock free", new Object[] { paramAnonymouso.getName() });
+        paramAnonymouso = paramAnonymouso.a(new q()
         {
-          public final boolean accept(k paramAnonymous2k)
+          public final boolean accept(o paramAnonymous2o)
           {
             AppMethodBeat.i(174712);
-            if ((!paramAnonymous2k.getName().endsWith(".data")) && (!paramAnonymous2k.getName().startsWith("store_")) && (!paramAnonymous2k.getName().endsWith(".nomedia")))
+            if ((!paramAnonymous2o.getName().endsWith(".data")) && (!paramAnonymous2o.getName().startsWith("store_")) && (!paramAnonymous2o.getName().endsWith(".nomedia")))
             {
               AppMethodBeat.o(174712);
               return true;
@@ -56,18 +56,18 @@ public final class g
             return false;
           }
         });
-        if ((paramAnonymousk == null) || (paramAnonymousk.length <= 0))
+        if ((paramAnonymouso == null) || (paramAnonymouso.length <= 0))
         {
           AppMethodBeat.o(174713);
           return;
         }
-        long l = bu.fpO();
-        int j = paramAnonymousk.length;
+        long l = Util.nowMilliSecond();
+        int j = paramAnonymouso.length;
         while (i < j)
         {
-          Object localObject = paramAnonymousk[i];
-          if (l - localObject.lastModified() >= g.jPy) {
-            o.deleteFile(w.B(localObject.fTh()));
+          Object localObject = paramAnonymouso[i];
+          if (l - localObject.lastModified() >= g.kSg) {
+            s.deleteFile(aa.z(localObject.her()));
           }
           i += 1;
         }
@@ -78,13 +78,13 @@ public final class g
       {
         int j = 0;
         AppMethodBeat.i(44452);
-        Object localObject = new k(at.bkQ());
-        if ((!((k)localObject).exists()) || (!((k)localObject).isDirectory()))
+        Object localObject = new o(at.bGo());
+        if ((!((o)localObject).exists()) || (!((o)localObject).isDirectory()))
         {
           AppMethodBeat.o(44452);
           return;
         }
-        localObject = ((k)localObject).fTj();
+        localObject = ((o)localObject).het();
         if ((localObject == null) || (localObject.length <= 0))
         {
           AppMethodBeat.o(44452);
@@ -94,16 +94,16 @@ public final class g
         int i = 0;
         while (i < k)
         {
-          q(localObject[i]);
+          p(localObject[i]);
           i += 1;
         }
-        localObject = new k(AppBrandVideoDownLoadMgr.loX);
-        if ((!((k)localObject).exists()) || (!((k)localObject).isDirectory()))
+        localObject = new o(AppBrandVideoDownLoadMgr.mvD);
+        if ((!((o)localObject).exists()) || (!((o)localObject).isDirectory()))
         {
           AppMethodBeat.o(44452);
           return;
         }
-        localObject = ((k)localObject).fTj();
+        localObject = ((o)localObject).het();
         if ((localObject == null) || (localObject.length <= 0))
         {
           AppMethodBeat.o(44452);
@@ -113,20 +113,20 @@ public final class g
         i = j;
         while (i < k)
         {
-          q(localObject[i]);
+          p(localObject[i]);
           i += 1;
         }
         AppMethodBeat.o(44452);
       }
     };
-    jPy = TimeUnit.MINUTES.toMillis(30L);
-    jPz = TimeUnit.DAYS.toMillis(1L);
+    kSg = TimeUnit.MINUTES.toMillis(30L);
+    kSh = TimeUnit.DAYS.toMillis(1L);
     AppMethodBeat.o(44454);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.g
  * JD-Core Version:    0.7.0.1
  */

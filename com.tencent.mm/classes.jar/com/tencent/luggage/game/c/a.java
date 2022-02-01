@@ -16,10 +16,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a
   extends AppCompatButton
 {
-  private RectF ciO;
-  private boolean ciP;
-  private float ciQ;
-  private float ciR;
+  private RectF cuJ;
+  private boolean cuK;
+  private float cuL;
+  private float cuM;
   
   public a(Context paramContext)
   {
@@ -34,15 +34,15 @@ final class a
     AppMethodBeat.o(130484);
   }
   
-  private boolean r(float paramFloat1, float paramFloat2)
+  private boolean s(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(130485);
-    if (this.ciO == null)
+    if (this.cuJ == null)
     {
       AppMethodBeat.o(130485);
       return false;
     }
-    boolean bool = this.ciO.contains(paramFloat1, paramFloat2);
+    boolean bool = this.cuJ.contains(paramFloat1, paramFloat2);
     AppMethodBeat.o(130485);
     return bool;
   }
@@ -55,21 +55,21 @@ final class a
     }
     for (;;)
     {
-      this.ciQ = paramMotionEvent.getRawX();
-      this.ciR = paramMotionEvent.getRawY();
+      this.cuL = paramMotionEvent.getRawX();
+      this.cuM = paramMotionEvent.getRawY();
       AppMethodBeat.o(130486);
       return true;
-      this.ciO = new RectF(getX(), getY(), getX() + getWidth(), getY() + getHeight());
-      this.ciP = false;
+      this.cuJ = new RectF(getX(), getY(), getX() + getWidth(), getY() + getHeight());
+      this.cuK = false;
       continue;
-      if ((this.ciP) || (!r(paramMotionEvent.getRawX(), paramMotionEvent.getRawY())))
+      if ((this.cuK) || (!s(paramMotionEvent.getRawX(), paramMotionEvent.getRawY())))
       {
-        setX(getX() + (paramMotionEvent.getRawX() - this.ciQ));
-        setY(getY() + (paramMotionEvent.getRawY() - this.ciR));
+        setX(getX() + (paramMotionEvent.getRawX() - this.cuL));
+        setY(getY() + (paramMotionEvent.getRawY() - this.cuM));
         requestLayout();
-        this.ciP = true;
+        this.cuK = true;
         continue;
-        if ((!this.ciP) && (r(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))) {
+        if ((!this.cuK) && (s(paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))) {
           performClick();
         }
       }
@@ -79,14 +79,14 @@ final class a
   final class a
     extends Drawable
   {
-    RectF ciS;
+    RectF cuN;
     Paint paint;
     
     private a()
     {
       AppMethodBeat.i(130482);
       this.paint = new Paint(1);
-      this.ciS = new RectF();
+      this.cuN = new RectF();
       this.paint.setColor(-12748166);
       this.paint.setStyle(Paint.Style.FILL);
       AppMethodBeat.o(130482);
@@ -96,20 +96,20 @@ final class a
     {
       AppMethodBeat.i(130483);
       float f1 = paramCanvas.getHeight() / 2.0F;
-      RectF localRectF1 = this.ciS;
-      this.ciS.top = 0.0F;
+      RectF localRectF1 = this.cuN;
+      this.cuN.top = 0.0F;
       localRectF1.left = 0.0F;
-      localRectF1 = this.ciS;
-      RectF localRectF2 = this.ciS;
+      localRectF1 = this.cuN;
+      RectF localRectF2 = this.cuN;
       float f2 = f1 * 2.0F;
       localRectF2.bottom = f2;
       localRectF1.right = f2;
-      paramCanvas.drawArc(this.ciS, 90.0F, 180.0F, false, this.paint);
-      this.ciS.left = (paramCanvas.getWidth() - f1 * 2.0F);
-      this.ciS.top = 0.0F;
-      this.ciS.right = paramCanvas.getWidth();
-      this.ciS.bottom = paramCanvas.getHeight();
-      paramCanvas.drawArc(this.ciS, -90.0F, 180.0F, false, this.paint);
+      paramCanvas.drawArc(this.cuN, 90.0F, 180.0F, false, this.paint);
+      this.cuN.left = (paramCanvas.getWidth() - f1 * 2.0F);
+      this.cuN.top = 0.0F;
+      this.cuN.right = paramCanvas.getWidth();
+      this.cuN.bottom = paramCanvas.getHeight();
+      paramCanvas.drawArc(this.cuN, -90.0F, 180.0F, false, this.paint);
       paramCanvas.drawRect(f1 - 1.0F, 0.0F, a.this.getWidth() - f1 + 1.0F, a.this.getHeight(), this.paint);
       AppMethodBeat.o(130483);
     }
@@ -126,7 +126,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.luggage.game.c.a
  * JD-Core Version:    0.7.0.1
  */

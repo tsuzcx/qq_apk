@@ -7,9 +7,9 @@ public enum d$b
   static
   {
     AppMethodBeat.i(28745);
-    zlb = new b("search", 0);
-    zlc = new b("normal", 1);
-    zld = new b[] { zlb, zlc };
+    DpS = new b("search", 0);
+    DpT = new b("normal", 1);
+    DpU = new b[] { DpS, DpT };
     AppMethodBeat.o(28745);
   }
   

@@ -1,52 +1,52 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ar;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.as;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class k
-  extends ar
+  extends as
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(112784);
-    c.a locala = new c.a();
-    locala.IBL = new Field[4];
-    locala.columns = new String[5];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[4];
+    localMAutoDBInfo.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "code_id";
-    locala.IBN.put("code_id", "TEXT");
+    localMAutoDBInfo.columns[0] = "code_id";
+    localMAutoDBInfo.colsMap.put("code_id", "TEXT");
     localStringBuilder.append(" code_id TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "card_id";
-    locala.IBN.put("card_id", "TEXT");
+    localMAutoDBInfo.columns[1] = "card_id";
+    localMAutoDBInfo.colsMap.put("card_id", "TEXT");
     localStringBuilder.append(" card_id TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "code";
-    locala.IBN.put("code", "TEXT");
+    localMAutoDBInfo.columns[2] = "code";
+    localMAutoDBInfo.colsMap.put("code", "TEXT");
     localStringBuilder.append(" code TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "status";
-    locala.IBN.put("status", "INTEGER");
+    localMAutoDBInfo.columns[3] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
-    locala.columns[4] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[4] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(112784);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.k
  * JD-Core Version:    0.7.0.1
  */

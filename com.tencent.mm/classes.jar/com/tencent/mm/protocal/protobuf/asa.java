@@ -4,73 +4,176 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class asa
-  extends com.tencent.mm.bw.a
+  extends dpc
 {
-  public LinkedList<dim> object;
+  public baw LAF;
+  public int LDq;
+  public int continueFlag;
+  public int gAZ;
+  public com.tencent.mm.bw.b lastBuffer;
+  public LinkedList<FinderObject> object;
+  public int uKM;
   
   public asa()
   {
-    AppMethodBeat.i(169051);
+    AppMethodBeat.i(209406);
     this.object = new LinkedList();
-    AppMethodBeat.o(169051);
+    AppMethodBeat.o(209406);
   }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(169052);
+    AppMethodBeat.i(209407);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.object);
-      AppMethodBeat.o(169052);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
+      {
+        paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(209407);
+        throw paramVarArgs;
+      }
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ni(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      paramVarArgs.e(2, 8, this.object);
+      if (this.lastBuffer != null) {
+        paramVarArgs.c(3, this.lastBuffer);
+      }
+      paramVarArgs.aM(4, this.continueFlag);
+      paramVarArgs.aM(5, this.gAZ);
+      paramVarArgs.aM(6, this.uKM);
+      paramVarArgs.aM(7, this.LDq);
+      if (this.LAF != null)
+      {
+        paramVarArgs.ni(8, this.LAF.computeSize());
+        this.LAF.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(209407);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.a.c(1, 8, this.object);
-      AppMethodBeat.o(169052);
-      return paramInt + 0;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label890;
+      }
     }
-    if (paramInt == 2)
+    label890:
+    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.object.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+      int i = paramInt + g.a.a.a.c(2, 8, this.object);
+      paramInt = i;
+      if (this.lastBuffer != null) {
+        paramInt = i + g.a.a.b.b.a.b(3, this.lastBuffer);
+      }
+      i = paramInt + g.a.a.b.b.a.bu(4, this.continueFlag) + g.a.a.b.b.a.bu(5, this.gAZ) + g.a.a.b.b.a.bu(6, this.uKM) + g.a.a.b.b.a.bu(7, this.LDq);
+      paramInt = i;
+      if (this.LAF != null) {
+        paramInt = i + g.a.a.a.nh(8, this.LAF.computeSize());
+      }
+      AppMethodBeat.o(209407);
+      return paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.object.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
         }
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new g.a.a.b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(209407);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(209407);
+        return 0;
       }
-      AppMethodBeat.o(169052);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      asa localasa = (asa)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      if (paramInt == 3)
       {
-      default: 
-        AppMethodBeat.o(169052);
-        return -1;
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        asa localasa = (asa)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(209407);
+          return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localasa.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(209407);
+          return 0;
+        case 2: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new FinderObject();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((FinderObject)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localasa.object.add(localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(209407);
+          return 0;
+        case 3: 
+          localasa.lastBuffer = ((g.a.a.a.a)localObject1).UbS.hPo();
+          AppMethodBeat.o(209407);
+          return 0;
+        case 4: 
+          localasa.continueFlag = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(209407);
+          return 0;
+        case 5: 
+          localasa.gAZ = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(209407);
+          return 0;
+        case 6: 
+          localasa.uKM = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(209407);
+          return 0;
+        case 7: 
+          localasa.LDq = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(209407);
+          return 0;
+        }
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new baw();
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((baw)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+          localasa.LAF = ((baw)localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(209407);
+        return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new dim();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((dim)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localasa.object.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(169052);
-      return 0;
+      AppMethodBeat.o(209407);
+      return -1;
     }
-    AppMethodBeat.o(169052);
-    return -1;
   }
 }
 

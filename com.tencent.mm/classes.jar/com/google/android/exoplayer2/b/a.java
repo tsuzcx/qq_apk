@@ -9,34 +9,34 @@ public abstract class a
     this.flags = 0;
   }
   
-  public final void dP(int paramInt)
+  public final void dK(int paramInt)
   {
     this.flags |= paramInt;
   }
   
-  protected final boolean dQ(int paramInt)
+  protected final boolean dL(int paramInt)
   {
     return (this.flags & paramInt) == paramInt;
   }
   
-  public final boolean tX()
+  public final boolean uc()
   {
-    return dQ(-2147483648);
+    return dL(-2147483648);
   }
   
-  public final boolean tY()
+  public final boolean ud()
   {
-    return dQ(4);
+    return dL(4);
   }
   
-  public final boolean tZ()
+  public final boolean ue()
   {
-    return dQ(1);
+    return dL(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.b.a
  * JD-Core Version:    0.7.0.1
  */

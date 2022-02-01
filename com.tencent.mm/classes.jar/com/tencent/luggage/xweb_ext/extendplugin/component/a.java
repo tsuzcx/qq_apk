@@ -4,103 +4,105 @@ import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ab.h;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.jsapi.f.c;
-import com.tencent.mm.plugin.appbrand.jsapi.u;
-import com.tencent.mm.plugin.appbrand.jsapi.w;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.i.c;
+import com.tencent.mm.plugin.appbrand.jsapi.x;
+import com.tencent.mm.plugin.appbrand.jsapi.z;
+import com.tencent.mm.plugin.appbrand.page.ac;
 import com.tencent.mm.plugin.appbrand.platform.window.a.i;
 import com.tencent.mm.plugin.appbrand.platform.window.a.j;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.platform.window.c;
 import com.tencent.mm.plugin.appbrand.utils.ad.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import kotlin.g.b.p;
 
 public abstract class a
 {
-  z ckP;
-  f.c crA = null;
-  final com.tencent.luggage.xweb_ext.extendplugin.a.a cru;
-  final w crv;
-  protected boolean crw = false;
-  protected boolean crx = false;
-  private boolean cry = false;
-  j crz = null;
+  final com.tencent.luggage.xweb_ext.extendplugin.a.a cDK;
+  final z cDL;
+  protected boolean cDM = false;
+  protected boolean cDN = false;
+  private boolean cDO = false;
+  j cDP = null;
+  i.c cDQ = null;
+  ac cwK;
   
-  public a(com.tencent.luggage.xweb_ext.extendplugin.a.a parama, w paramw)
+  public a(com.tencent.luggage.xweb_ext.extendplugin.a.a parama, z paramz)
   {
-    this.cru = parama;
-    this.crv = paramw;
+    this.cDK = parama;
+    this.cDL = paramz;
   }
   
-  protected abstract boolean FM();
+  protected abstract boolean Pv();
   
   protected final void a(final com.tencent.luggage.xweb_ext.extendplugin.a parama)
   {
-    if (this.ckP != null) {
+    if (this.cwK != null) {
       return;
     }
-    parama = parama.Eo();
+    parama = parama.NN();
     Object localObject;
-    if (!(parama instanceof z))
+    if (!(parama instanceof ac))
     {
-      ae.w("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "setPageView, component(" + parama + ") is not AppBrandPageView");
-      if (!(parama instanceof r))
+      Log.w("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "setPageView, component(" + parama + ") is not AppBrandPageView");
+      if (!(parama instanceof com.tencent.mm.plugin.appbrand.s))
       {
-        ae.w("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "setPageView, component(" + parama + ") is not AppBrandService");
+        Log.w("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "setPageView, component(" + parama + ") is not AppBrandService");
         return;
       }
-      parama = ((r)parama).getCurrentPageView();
-      if (!this.cry)
+      parama = ((com.tencent.mm.plugin.appbrand.s)parama).getCurrentPageView();
+      if (!this.cDO)
       {
-        if (this.crz == null)
+        if (this.cDP == null)
         {
-          this.crz = new j()
+          this.cDP = new j()
           {
             public final void a(ad.a paramAnonymousa)
             {
               AppMethodBeat.i(178799);
-              ae.d("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onOrientationChanged, orientation: ".concat(String.valueOf(paramAnonymousa)));
-              if (!a.this.FM())
+              Log.d("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onOrientationChanged, orientation: ".concat(String.valueOf(paramAnonymousa)));
+              if (!a.this.Pv())
               {
-                ae.i("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onOrientationChanged, not in foreground");
+                Log.i("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onOrientationChanged, not in foreground");
                 AppMethodBeat.o(178799);
                 return;
               }
-              if ((!a.this.crw) || (!a.this.crx))
+              if ((!a.this.cDM) || (!a.this.cDN))
               {
-                ae.d("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onOrientationChanged, mIsNeedNotify: " + a.this.crw + ", mIsAutoRotationEnabled: " + a.this.crx);
+                Log.d("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onOrientationChanged, mIsNeedNotify: " + a.this.cDM + ", mIsAutoRotationEnabled: " + a.this.cDN);
                 AppMethodBeat.o(178799);
                 return;
               }
-              if (a.this.ckP == null)
+              if (a.this.cwK == null)
               {
-                ae.w("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onOrientationChanged, null == mPageView");
+                Log.w("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onOrientationChanged, null == mPageView");
                 AppMethodBeat.o(178799);
                 return;
               }
               Object localObject1 = parama.getRuntime().getWindowAndroid();
-              if ((localObject1 != null) && (((com.tencent.mm.plugin.appbrand.platform.window.c)localObject1).EX()))
+              if ((localObject1 != null) && (((c)localObject1).OD()))
               {
-                ae.i("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onOrientationChanged: disable autoRotationEnabled for pad compat mode");
+                Log.i("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onOrientationChanged: disable autoRotationEnabled for pad compat mode");
                 AppMethodBeat.o(178799);
                 return;
               }
-              localObject1 = a.this.crv.Gn();
-              z localz = a.this.ckP;
-              int i = a.this.cru.getId();
-              d.g.b.p.h(localz, "pageView");
-              d.g.b.p.h(paramAnonymousa, "orientation");
-              ae.d("MicroMsg.AppBrand.AppBrandOnVideoOrientationChanged", "dispatch, pageView: " + localz + ", viewId: " + i + ", orientation: " + paramAnonymousa);
-              switch (com.tencent.mm.plugin.appbrand.jsapi.v.cqt[paramAnonymousa.ordinal()])
+              localObject1 = a.this.cDL.PW();
+              ac localac = a.this.cwK;
+              int i = a.this.cDK.getId();
+              p.h(localac, "pageView");
+              p.h(paramAnonymousa, "orientation");
+              Log.d("MicroMsg.AppBrand.AppBrandOnVideoOrientationChanged", "dispatch, pageView: " + localac + ", viewId: " + i + ", orientation: " + paramAnonymousa);
+              switch (com.tencent.mm.plugin.appbrand.jsapi.y.$EnumSwitchMapping$0[paramAnonymousa.ordinal()])
               {
               default: 
                 paramAnonymousa = null;
               }
               while (paramAnonymousa == null)
               {
-                ae.d("MicroMsg.AppBrand.AppBrandOnVideoOrientationChanged", "dispatch, null == orientationStr");
+                Log.d("MicroMsg.AppBrand.AppBrandOnVideoOrientationChanged", "dispatch, null == orientationStr");
                 AppMethodBeat.o(178799);
                 return;
                 paramAnonymousa = "landscapeLeft";
@@ -112,38 +114,38 @@ public abstract class a
               Object localObject2 = new HashMap(2);
               ((Map)localObject2).put("viewId", Integer.valueOf(i));
               ((Map)localObject2).put("orientation", paramAnonymousa);
-              paramAnonymousa = h.t((Map)localObject2).toString();
-              ae.i("MicroMsg.AppBrand.AppBrandOnVideoOrientationChanged", "dispatch, name: " + ((u)localObject1).getName() + ", data: " + paramAnonymousa);
-              ((u)localObject1).PP(paramAnonymousa).a((com.tencent.mm.plugin.appbrand.jsapi.c)localz, localz.aXX()).bja();
-              localObject2 = localz.Ey();
+              paramAnonymousa = h.v((Map)localObject2).toString();
+              Log.i("MicroMsg.AppBrand.AppBrandOnVideoOrientationChanged", "dispatch, name: " + ((x)localObject1).getName() + ", data: " + paramAnonymousa);
+              ((x)localObject1).Zg(paramAnonymousa).a((f)localac, localac.getComponentId()).bEo();
+              localObject2 = localac.NY();
               if (localObject2 != null)
               {
-                ((u)localObject1).PP(paramAnonymousa).a((com.tencent.mm.plugin.appbrand.jsapi.c)localObject2, localz.aXX()).bja();
+                ((x)localObject1).Zg(paramAnonymousa).a((f)localObject2, localac.getComponentId()).bEo();
                 AppMethodBeat.o(178799);
                 return;
               }
               AppMethodBeat.o(178799);
             }
           };
-          this.crA = new f.c()
+          this.cDQ = new i.c()
           {
             public final void onDestroy()
             {
               AppMethodBeat.i(178800);
-              ae.d("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onDestroy");
+              Log.d("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onDestroy");
               Object localObject = parama.getActivity();
               if (localObject == null)
               {
-                ae.w("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onDestroy, null == activity");
+                Log.w("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "onDestroy, null == activity");
                 AppMethodBeat.o(178800);
                 return;
               }
-              localObject = i.E((Activity)localObject);
-              j localj = a.this.crz;
-              d.g.b.p.h(localj, "orientationObserver");
-              ae.d(((i)localObject).kIm, "removeOrientationObserver");
-              ((i)localObject).muB.remove(localj);
-              parama.b(a.this.crA);
+              localObject = i.F((Activity)localObject);
+              j localj = a.this.cDP;
+              p.h(localj, "orientationObserver");
+              Log.d(((i)localObject).lMQ, "removeOrientationObserver");
+              ((i)localObject).nFk.remove(localj);
+              parama.b(a.this.cDQ);
               AppMethodBeat.o(178800);
             }
           };
@@ -152,23 +154,23 @@ public abstract class a
         if (localObject != null) {
           break label160;
         }
-        ae.w("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "listenOrientationChanged, null == activity");
+        Log.w("MicroMsg.AppBrand.AbsAutoRotationPluginHandlerCommons", "listenOrientationChanged, null == activity");
       }
     }
     for (;;)
     {
-      this.ckP = parama;
+      this.cwK = parama;
       return;
-      parama = (z)parama;
+      parama = (ac)parama;
       break;
       label160:
-      localObject = i.E((Activity)localObject);
-      j localj = this.crz;
-      d.g.b.p.h(localj, "orientationObserver");
-      ae.d(((i)localObject).kIm, "addOrientationObserver");
-      ((i)localObject).muB.add(localj);
-      parama.a(this.crA);
-      this.cry = true;
+      localObject = i.F((Activity)localObject);
+      j localj = this.cDP;
+      p.h(localj, "orientationObserver");
+      Log.d(((i)localObject).lMQ, "addOrientationObserver");
+      ((i)localObject).nFk.add(localj);
+      parama.a(this.cDQ);
+      this.cDO = true;
     }
   }
   
@@ -176,7 +178,7 @@ public abstract class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.a
  * JD-Core Version:    0.7.0.1
  */

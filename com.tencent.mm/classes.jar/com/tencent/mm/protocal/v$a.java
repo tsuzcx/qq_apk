@@ -1,18 +1,18 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cdl;
+import com.tencent.mm.protocal.protobuf.ctr;
 
 public final class v$a
   extends l.d
   implements l.b
 {
-  public cdl FGV;
+  public ctr KAg;
   
   public v$a()
   {
     AppMethodBeat.i(133115);
-    this.FGV = new cdl();
+    this.KAg = new ctr();
     AppMethodBeat.o(133115);
   }
   
@@ -29,14 +29,14 @@ public final class v$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(133116);
-    byte[] arrayOfByte = this.FGV.toByteArray();
+    byte[] arrayOfByte = this.KAg.toByteArray();
     AppMethodBeat.o(133116);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.v.a
  * JD-Core Version:    0.7.0.1
  */

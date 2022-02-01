@@ -1,31 +1,32 @@
 package com.tencent.thumbplayer.a.b;
 
+import com.tencent.thumbplayer.a.b.b.c;
 import com.tencent.thumbplayer.core.common.TPNativeLibraryLoader;
 
 public abstract class b
   implements a
 {
-  protected com.tencent.thumbplayer.a.b.a.a MvB;
+  protected com.tencent.thumbplayer.a.b.a.a RYr;
   
   public b(com.tencent.thumbplayer.a.b.a.a parama)
   {
-    this.MvB = parama;
+    this.RYr = parama;
   }
   
-  private static boolean b(com.tencent.thumbplayer.a.b paramb)
+  static boolean b(com.tencent.thumbplayer.a.b paramb)
   {
-    return (TPNativeLibraryLoader.isLibLoaded()) && (com.tencent.thumbplayer.a.b.b.a.d(paramb));
+    return (TPNativeLibraryLoader.isLibLoaded()) && (c.d(paramb));
   }
   
   private static boolean c(com.tencent.thumbplayer.a.b paramb)
   {
-    return com.tencent.thumbplayer.a.b.b.a.e(paramb);
+    return c.e(paramb);
   }
   
-  public final int a(com.tencent.thumbplayer.a.b paramb)
+  public int a(com.tencent.thumbplayer.a.b paramb)
   {
     int i = 2;
-    switch (this.MvB.MvD)
+    switch (this.RYr.RYv)
     {
     default: 
       i = 0;
@@ -56,17 +57,17 @@ public abstract class b
     return 1;
   }
   
-  public final int a(com.tencent.thumbplayer.a.b paramb, com.tencent.thumbplayer.a.b.a.b paramb1)
+  public int a(com.tencent.thumbplayer.a.b paramb, com.tencent.thumbplayer.a.b.a.b paramb1)
   {
-    if (paramb1.MvE == 0) {
+    if (paramb1.RYx == 0) {
       return a(paramb);
     }
     return 0;
   }
   
-  public final int[] gaS()
+  public int[] hnd()
   {
-    switch (this.MvB.MvC)
+    switch (this.RYr.RYu)
     {
     default: 
       return null;
@@ -84,7 +85,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.a.b.b
  * JD-Core Version:    0.7.0.1
  */

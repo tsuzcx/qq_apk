@@ -35,6 +35,9 @@
 		<subtype val="15" ios="1" android="1" desc="QRCode按钮,点击之后相当于识别二维码的效果" />
 		<subtype val="16" ios="1" android="1" desc="扫一扫识别" />
 		<subtype val="17" ios="1" android="1" desc="一键关注公众号" />
+		<subtype val="18" ios="1" android="1" desc="跳转个人profile页" />
+        <subtype val="19" ios="1" android="1" desc="商家券按钮" />
+        <subtype val="20" ios="1" android="1" desc="视频号直播预约按钮" />
 	</componenttype>
 	<componenttype val="41" ios="1" android="1" desc="纯图类型">
 		<subtype val="0" ios="1" android="1" desc="纯图default类型" />
@@ -105,4 +108,10 @@
     <componenttype val="138" ios="1" android="1" desc="新的彩蛋悬浮跳转">
         <subtype val="0" ios="1" android="1" desc="新的webview" />
     </componenttype>
+	<componenttype val="139" ios="1" android="1" desc="容器组件，多个子view中选择一个展示">
+		<subtype val="0" ios="1" android="1" desc="容器组件，多个子view中选择一个展示" />
+	</componenttype>
+	<componenttype val="140" ios="1" android="1" desc="分享组件，点击弹出分享菜单">
+		<subtype val="0" ios="1" android="1" desc="分享组件，点击弹出分享菜单" />
+	</componenttype>
 </canvasvalidtype>

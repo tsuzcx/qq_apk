@@ -9,15 +9,15 @@ public class AppBrandRecommendStatObj
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandRecommendStatObj> CREATOR;
-  public float dBu;
-  public String dwb;
-  public float dzE;
-  public String mwf;
-  public String mwg;
-  public String mwh;
-  public String mwi;
-  public int mwj;
-  public String mwk;
+  public String dNI;
+  public float dTj;
+  public float latitude;
+  public String nHd;
+  public String nHe;
+  public String nHf;
+  public String nHg;
+  public int nHh;
+  public String nHi;
   public int position;
   public long sessionId;
   public String username;
@@ -25,7 +25,7 @@ public class AppBrandRecommendStatObj
   static
   {
     AppMethodBeat.i(123531);
-    CREATOR = new AppBrandRecommendStatObj.1();
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(123531);
   }
   
@@ -35,16 +35,16 @@ public class AppBrandRecommendStatObj
   {
     AppMethodBeat.i(123528);
     this.username = paramParcel.readString();
-    this.mwf = paramParcel.readString();
-    this.mwg = paramParcel.readString();
-    this.dwb = paramParcel.readString();
-    this.mwh = paramParcel.readString();
-    this.mwi = paramParcel.readString();
-    this.mwj = paramParcel.readInt();
-    this.mwk = paramParcel.readString();
+    this.nHd = paramParcel.readString();
+    this.nHe = paramParcel.readString();
+    this.dNI = paramParcel.readString();
+    this.nHf = paramParcel.readString();
+    this.nHg = paramParcel.readString();
+    this.nHh = paramParcel.readInt();
+    this.nHi = paramParcel.readString();
     this.position = paramParcel.readInt();
-    this.dBu = paramParcel.readFloat();
-    this.dzE = paramParcel.readFloat();
+    this.dTj = paramParcel.readFloat();
+    this.latitude = paramParcel.readFloat();
     this.sessionId = paramParcel.readLong();
     AppMethodBeat.o(123528);
   }
@@ -57,7 +57,7 @@ public class AppBrandRecommendStatObj
   public String toString()
   {
     AppMethodBeat.i(123529);
-    String str = "AppBrandRecommendStatObj{username=" + this.username + ", recommend_id='" + this.mwf + '\'' + ", strategy_info=" + this.mwg + ", appid='" + this.dwb + '\'' + ", page_path=" + this.mwh + ", page_param=" + this.mwi + ", card_type=" + this.mwj + ", pass_str=" + this.mwk + ", position=" + this.position + ", longitude=" + this.dBu + ", latitude=" + this.dzE + ", sessionId=" + this.sessionId + '}';
+    String str = "AppBrandRecommendStatObj{username=" + this.username + ", recommend_id='" + this.nHd + '\'' + ", strategy_info=" + this.nHe + ", appid='" + this.dNI + '\'' + ", page_path=" + this.nHf + ", page_param=" + this.nHg + ", card_type=" + this.nHh + ", pass_str=" + this.nHi + ", position=" + this.position + ", longitude=" + this.dTj + ", latitude=" + this.latitude + ", sessionId=" + this.sessionId + '}';
     AppMethodBeat.o(123529);
     return str;
   }
@@ -66,23 +66,23 @@ public class AppBrandRecommendStatObj
   {
     AppMethodBeat.i(123530);
     paramParcel.writeString(this.username);
-    paramParcel.writeString(this.mwf);
-    paramParcel.writeString(this.mwg);
-    paramParcel.writeString(this.dwb);
-    paramParcel.writeString(this.mwh);
-    paramParcel.writeString(this.mwi);
-    paramParcel.writeInt(this.mwj);
-    paramParcel.writeString(this.mwk);
+    paramParcel.writeString(this.nHd);
+    paramParcel.writeString(this.nHe);
+    paramParcel.writeString(this.dNI);
+    paramParcel.writeString(this.nHf);
+    paramParcel.writeString(this.nHg);
+    paramParcel.writeInt(this.nHh);
+    paramParcel.writeString(this.nHi);
     paramParcel.writeInt(this.position);
-    paramParcel.writeFloat(this.dBu);
-    paramParcel.writeFloat(this.dzE);
+    paramParcel.writeFloat(this.dTj);
+    paramParcel.writeFloat(this.latitude);
     paramParcel.writeLong(this.sessionId);
     AppMethodBeat.o(123530);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.AppBrandRecommendStatObj
  * JD-Core Version:    0.7.0.1
  */

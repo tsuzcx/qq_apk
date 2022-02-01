@@ -14,19 +14,17 @@
     <meta name="format-detection" content="telephone=no" />
     <meta name="color-scheme" content="light dark">
     <meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-    <link rel="stylesheet" type="text/css" href="dist/style.css?t=1596177759467"/>
+    <link rel="stylesheet" type="text/css" href="dist/style.css?t=1610093694572"/>
 </head>
 
 <body id="body" ontouchstart="">
     <canvas id="canvas" style="display:none;"></canvas>
     <div id="app" class="app" :class="[view,platform,isIOS8]" ontouchstart="">
-        <action-sheet
-            :show="showActionSheet"
-            :data="actionSheet"
-        ></action-sheet>
+
         <custom-dialog></custom-dialog>
         <toast></toast>
-
+        <cstest-pop></cstest-pop>
+        
         <!--进度条，只有在结果页的时候才展示-->
         <progress-bar v-show="view == 'result'"></progress-bar>
         <!--end of 进度条-->
@@ -35,7 +33,13 @@
             <router-view></router-view>
         </keep-alive>
     </div>
-    <script src="dist/build.js?t=1596177759467"></script>
+    <script type="text/javascript">
+        points[1] = Date.now()
+    </script>
+    <script src="dist/build.js?t=1610093694572"></script>
+    <script type="text/javascript">
+        points[3] = Date.now()
+    </script>
 </body>
 
 </html>

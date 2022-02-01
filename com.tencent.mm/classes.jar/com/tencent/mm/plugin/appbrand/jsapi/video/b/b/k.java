@@ -14,12 +14,12 @@ import java.io.RandomAccessFile;
 public class k
   implements t
 {
-  private long bEH;
+  private long bEJ;
   private RandomAccessFile file;
-  private String lqQ = "";
-  private String lrE;
-  private final s lrh = null;
-  private long lrj = -1L;
+  private final s mxN = null;
+  private long mxP = -1L;
+  private String mxw = "";
+  private String myk;
   private boolean opened;
   private Uri uri;
   
@@ -30,14 +30,9 @@ public class k
   
   private k(byte paramByte) {}
   
-  public final void Ru(String paramString)
-  {
-    this.lqQ = paramString;
-  }
-  
   public final long a(g paramg)
   {
-    AppMethodBeat.i(211082);
+    AppMethodBeat.i(234751);
     for (;;)
     {
       try
@@ -48,41 +43,88 @@ public class k
         if (paramg.length == -1L)
         {
           l = this.file.length() - paramg.position;
-          this.bEH = l;
-          this.lrj = (this.file.length() - paramg.position);
-          if (this.bEH >= 0L) {
+          this.bEJ = l;
+          this.mxP = (this.file.length() - paramg.position);
+          if (this.bEJ >= 0L) {
             break;
           }
           paramg = new EOFException();
-          AppMethodBeat.o(211082);
+          AppMethodBeat.o(234751);
           throw paramg;
         }
       }
       catch (IOException paramg)
       {
         paramg = new a(paramg);
-        AppMethodBeat.o(211082);
+        AppMethodBeat.o(234751);
         throw paramg;
       }
       l = paramg.length;
     }
     this.opened = true;
-    if (this.lrh != null) {
-      this.lrh.onTransferStart();
+    if (this.mxN != null) {
+      this.mxN.onTransferStart();
     }
-    long l = this.bEH;
-    AppMethodBeat.o(211082);
+    long l = this.bEJ;
+    AppMethodBeat.o(234751);
     return l;
   }
   
   public final long available()
   {
-    return this.lrj;
+    return this.mxP;
   }
   
-  public final long bbj()
+  public c bJP()
   {
-    AppMethodBeat.i(211087);
+    AppMethodBeat.i(234755);
+    Object localObject = a.bJK().appContext.getContentResolver().getType(this.uri);
+    if (localObject == null)
+    {
+      localObject = c.myw;
+      AppMethodBeat.o(234755);
+      return localObject;
+    }
+    localObject = c.abd((String)localObject);
+    AppMethodBeat.o(234755);
+    return localObject;
+  }
+  
+  public final void close()
+  {
+    AppMethodBeat.i(234754);
+    this.myk = null;
+    if (this.file != null) {
+      try
+      {
+        this.file.close();
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        a locala = new a(localIOException);
+        AppMethodBeat.o(234754);
+        throw locala;
+      }
+      finally
+      {
+        this.file = null;
+        if (this.opened)
+        {
+          this.opened = false;
+          if (this.mxN != null) {
+            this.mxN.onTransferEnd();
+          }
+        }
+        AppMethodBeat.o(234754);
+      }
+    }
+    AppMethodBeat.o(234754);
+  }
+  
+  public final long getTotalLength()
+  {
+    AppMethodBeat.i(234756);
     long l1 = 0L;
     try
     {
@@ -94,95 +136,53 @@ public class k
       label17:
       break label17;
     }
-    AppMethodBeat.o(211087);
+    AppMethodBeat.o(234756);
     return l1;
-  }
-  
-  public c bom()
-  {
-    AppMethodBeat.i(211086);
-    Object localObject = a.boh().appContext.getContentResolver().getType(this.uri);
-    if (localObject == null)
-    {
-      localObject = c.lrQ;
-      AppMethodBeat.o(211086);
-      return localObject;
-    }
-    localObject = c.Rx((String)localObject);
-    AppMethodBeat.o(211086);
-    return localObject;
-  }
-  
-  public final void close()
-  {
-    AppMethodBeat.i(211085);
-    this.lrE = null;
-    if (this.file != null) {
-      try
-      {
-        this.file.close();
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        a locala = new a(localIOException);
-        AppMethodBeat.o(211085);
-        throw locala;
-      }
-      finally
-      {
-        this.file = null;
-        if (this.opened)
-        {
-          this.opened = false;
-          if (this.lrh != null) {
-            this.lrh.onTransferEnd();
-          }
-        }
-        AppMethodBeat.o(211085);
-      }
-    }
-    AppMethodBeat.o(211085);
   }
   
   public final String getUri()
   {
-    AppMethodBeat.i(211084);
-    if ((TextUtils.isEmpty(this.lrE)) && (this.uri != null)) {
-      this.lrE = this.uri.toString();
+    AppMethodBeat.i(234753);
+    if ((TextUtils.isEmpty(this.myk)) && (this.uri != null)) {
+      this.myk = this.uri.toString();
     }
-    String str = this.lrE;
-    AppMethodBeat.o(211084);
+    String str = this.myk;
+    AppMethodBeat.o(234753);
     return str;
   }
   
   public final int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(211083);
-    if (this.bEH == 0L)
+    AppMethodBeat.i(234752);
+    if (this.bEJ == 0L)
     {
-      AppMethodBeat.o(211083);
+      AppMethodBeat.o(234752);
       return -1;
     }
     try
     {
-      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bEH, paramInt2));
+      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bEJ, paramInt2));
       if (paramInt1 > 0)
       {
-        this.bEH -= paramInt1;
-        if (this.lrh != null) {
-          this.lrh.tz(paramInt1);
+        this.bEJ -= paramInt1;
+        if (this.mxN != null) {
+          this.mxN.xx(paramInt1);
         }
       }
-      AppMethodBeat.o(211083);
+      AppMethodBeat.o(234752);
       return paramInt1;
     }
     catch (IOException paramArrayOfByte)
     {
       paramArrayOfByte = new a(paramArrayOfByte);
-      AppMethodBeat.o(211083);
+      AppMethodBeat.o(234752);
       throw paramArrayOfByte;
     }
+  }
+  
+  public final void setLogTag(String paramString)
+  {
+    this.mxw = paramString;
   }
   
   public static final class a
@@ -196,7 +196,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.b.k
  * JD-Core Version:    0.7.0.1
  */

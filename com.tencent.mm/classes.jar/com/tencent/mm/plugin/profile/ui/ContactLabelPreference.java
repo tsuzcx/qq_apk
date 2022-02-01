@@ -14,10 +14,10 @@ import java.util.ArrayList;
 public class ContactLabelPreference
   extends Preference
 {
+  private MMSingelLinePanel BdZ;
+  private ArrayList<String> Bea;
   private String title;
   private TextView titleTv;
-  private MMSingelLinePanel xgm;
-  private ArrayList<String> xgn;
   
   public ContactLabelPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,24 +28,24 @@ public class ContactLabelPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27012);
-    this.xgn = new ArrayList();
-    setLayoutResource(2131494804);
+    this.Bea = new ArrayList();
+    setLayoutResource(2131495538);
     AppMethodBeat.o(27012);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27014);
-    this.titleTv = ((TextView)paramView.findViewById(2131305902));
-    this.xgm = ((MMSingelLinePanel)paramView.findViewById(2131298672));
-    this.xgm.setSingleLine(true);
-    this.xgm.JIk = false;
-    this.xgm.xK(false);
+    this.titleTv = ((TextView)paramView.findViewById(2131309195));
+    this.BdZ = ((MMSingelLinePanel)paramView.findViewById(2131299109));
+    this.BdZ.setSingleLine(true);
+    this.BdZ.OTd = false;
+    this.BdZ.Bz(false);
     if (this.titleTv != null) {
       this.titleTv.setText(this.title);
     }
-    if ((this.xgm != null) && (this.xgn != null) && (this.xgn.size() > 0)) {
-      this.xgm.a(this.xgn, this.xgn);
+    if ((this.BdZ != null) && (this.Bea != null) && (this.Bea.size() > 0)) {
+      this.BdZ.a(this.Bea, this.Bea);
     }
     super.onBindView(paramView);
     AppMethodBeat.o(27014);
@@ -56,9 +56,9 @@ public class ContactLabelPreference
     AppMethodBeat.i(27013);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131494833, localViewGroup);
+    localLayoutInflater.inflate(2131495568, localViewGroup);
     AppMethodBeat.o(27013);
     return paramViewGroup;
   }

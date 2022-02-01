@@ -15,17 +15,17 @@ final class CollapseView$2
     AppMethodBeat.i(178906);
     Rect localRect = new Rect();
     this.val$view.getHitRect(localRect);
-    localRect.top -= this.ggK;
-    localRect.bottom += this.ggK;
-    localRect.left -= this.ggK;
-    localRect.right += this.ggK;
-    this.wuH.setTouchDelegate(new TouchDelegate(localRect, this.val$view));
+    localRect.top -= this.gMq;
+    localRect.bottom += this.gMq;
+    localRect.left -= this.gMq;
+    localRect.right += this.gMq;
+    this.zRE.setTouchDelegate(new TouchDelegate(localRect, this.val$view));
     AppMethodBeat.o(178906);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.multitalk.ui.widget.CollapseView.2
  * JD-Core Version:    0.7.0.1
  */

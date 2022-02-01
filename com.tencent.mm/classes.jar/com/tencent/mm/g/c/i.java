@@ -2,22 +2,27 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class i
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS AppBrandAppLaunchRecordUpdateTimeIndex ON AppBrandAppLaunchUsernameDuplicateRecord2(updateTime)" };
-  private static final int eGX = "usernameHash".hashCode();
-  private static final int eGY = "username".hashCode();
-  private static final int eGZ = "updateTime".hashCode();
+  private static final int fkB = "usernameHash".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGU = true;
-  private boolean eGV = true;
-  private boolean eGW = true;
+  private static final int updateTime_HASHCODE;
+  private static final int username_HASHCODE = "username".hashCode();
+  private boolean __hadSetupdateTime = true;
+  private boolean __hadSetusername = true;
   public long field_updateTime;
   public String field_username;
   public int field_usernameHash;
+  private boolean fkA = true;
+  
+  static
+  {
+    updateTime_HASHCODE = "updateTime".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -32,11 +37,11 @@ public abstract class i
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGX != k) {
+      if (fkB != k) {
         break label65;
       }
       this.field_usernameHash = paramCursor.getInt(i);
-      this.eGU = true;
+      this.fkA = true;
     }
     for (;;)
     {
@@ -44,9 +49,9 @@ public abstract class i
       break label20;
       break;
       label65:
-      if (eGY == k) {
+      if (username_HASHCODE == k) {
         this.field_username = paramCursor.getString(i);
-      } else if (eGZ == k) {
+      } else if (updateTime_HASHCODE == k) {
         this.field_updateTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -57,13 +62,13 @@ public abstract class i
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGU) {
+    if (this.fkA) {
       localContentValues.put("usernameHash", Integer.valueOf(this.field_usernameHash));
     }
-    if (this.eGV) {
+    if (this.__hadSetusername) {
       localContentValues.put("username", this.field_username);
     }
-    if (this.eGW) {
+    if (this.__hadSetupdateTime) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
     if (this.systemRowid > 0L) {
@@ -74,7 +79,7 @@ public abstract class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.i
  * JD-Core Version:    0.7.0.1
  */

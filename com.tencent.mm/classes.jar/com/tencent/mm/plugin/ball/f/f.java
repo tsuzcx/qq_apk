@@ -2,62 +2,69 @@ package com.tencent.mm.plugin.ball.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.ball.c.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.ball.c.b;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
 {
-  public static void bMs()
+  public static void cji()
   {
-    AppMethodBeat.i(224261);
+    AppMethodBeat.i(258315);
     e(false, true, true);
-    AppMethodBeat.o(224261);
+    AppMethodBeat.o(258315);
   }
   
-  public static void bMt()
+  public static void cjj()
   {
-    AppMethodBeat.i(224262);
+    AppMethodBeat.i(258316);
     e(true, true, true);
-    AppMethodBeat.o(224262);
+    AppMethodBeat.o(258316);
+  }
+  
+  public static void cjk()
+  {
+    AppMethodBeat.i(188581);
+    e(true, false, true);
+    AppMethodBeat.o(188581);
   }
   
   public static void e(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
     AppMethodBeat.i(184419);
-    c localc = (c)g.ab(c.class);
-    if (localc != null)
+    b localb = (b)g.af(b.class);
+    if (localb != null)
     {
       if (paramBoolean1)
       {
-        ae.m("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, hide float ball, mark:%s", new Object[] { Boolean.valueOf(paramBoolean3) });
+        Log.printInfoStack("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, hide float ball, mark:%s", new Object[] { Boolean.valueOf(paramBoolean3) });
         if (paramBoolean3)
         {
-          localc.iO(paramBoolean2);
+          localb.jN(paramBoolean2);
           AppMethodBeat.o(184419);
           return;
         }
-        localc.iM(paramBoolean2);
+        localb.jL(paramBoolean2);
         AppMethodBeat.o(184419);
         return;
       }
-      ae.m("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, show float ball, mark:%s", new Object[] { Boolean.valueOf(paramBoolean3) });
+      Log.printInfoStack("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, show float ball, mark:%s", new Object[] { Boolean.valueOf(paramBoolean3) });
       if (paramBoolean3)
       {
-        localc.iP(paramBoolean2);
+        localb.jO(paramBoolean2);
         AppMethodBeat.o(184419);
         return;
       }
-      localc.iN(paramBoolean2);
+      localb.jM(paramBoolean2);
       AppMethodBeat.o(184419);
       return;
     }
-    ae.i("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, service is null");
+    Log.i("MicroMsg.FloatBallVisibilityUtil", "operateFloatBall, service is null");
     AppMethodBeat.o(184419);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.f.f
  * JD-Core Version:    0.7.0.1
  */

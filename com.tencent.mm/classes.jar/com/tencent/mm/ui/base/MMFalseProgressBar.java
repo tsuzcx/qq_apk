@@ -6,28 +6,28 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.widget.ProgressBar;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 
 public class MMFalseProgressBar
   extends ProgressBar
 {
-  private aq mHandler;
+  private MMHandler mHandler;
   private boolean mIsStart;
   private float mProgress;
-  private float mYo;
-  private float mYp;
-  private float mYq;
-  private float mYr;
-  public boolean mYs;
+  private float olt;
+  private float olu;
+  private float olv;
+  private float olw;
+  public boolean olx;
   
   public MMFalseProgressBar(Context paramContext)
   {
     this(paramContext, null);
     AppMethodBeat.i(141887);
-    fCG();
+    gKF();
     AppMethodBeat.o(141887);
   }
   
@@ -42,8 +42,8 @@ public class MMFalseProgressBar
     AppMethodBeat.i(141888);
     this.mIsStart = false;
     this.mProgress = 0.0F;
-    this.mYs = true;
-    this.mHandler = new aq(Looper.getMainLooper())
+    this.olx = true;
+    this.mHandler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -69,33 +69,33 @@ public class MMFalseProgressBar
       }
     };
     setMax(1000);
-    fCG();
+    gKF();
     AppMethodBeat.o(141888);
   }
   
-  private void fCG()
+  private void gKF()
   {
     AppMethodBeat.i(141891);
-    if (az.jd(ak.getContext()))
+    if (NetStatusUtil.isWifiOr4G(MMApplicationContext.getContext()))
     {
-      this.mYo = 4.0F;
-      this.mYp = 1.0F;
-      this.mYq = 0.3F;
-      this.mYr = 50.0F;
+      this.olt = 4.0F;
+      this.olu = 1.0F;
+      this.olv = 0.3F;
+      this.olw = 50.0F;
       AppMethodBeat.o(141891);
       return;
     }
-    this.mYo = 2.0F;
-    this.mYp = 0.5F;
-    this.mYq = 0.15F;
-    this.mYr = 50.0F;
+    this.olt = 2.0F;
+    this.olu = 0.5F;
+    this.olv = 0.15F;
+    this.olw = 50.0F;
     AppMethodBeat.o(141891);
   }
   
   public final void finish()
   {
     AppMethodBeat.i(141890);
-    ae.d("MicroMsg.MMFalseProgressBar", "[cpan] finish");
+    Log.d("MicroMsg.MMFalseProgressBar", "[cpan] finish");
     if (this.mHandler != null) {
       this.mHandler.sendEmptyMessage(1002);
     }
@@ -105,8 +105,8 @@ public class MMFalseProgressBar
   public final void start()
   {
     AppMethodBeat.i(141889);
-    ae.d("MicroMsg.MMFalseProgressBar", "[cpan] start");
-    if (!this.mYs)
+    Log.d("MicroMsg.MMFalseProgressBar", "[cpan] start");
+    if (!this.olx)
     {
       AppMethodBeat.o(141889);
       return;
@@ -117,7 +117,7 @@ public class MMFalseProgressBar
       return;
     }
     this.mIsStart = true;
-    fCG();
+    gKF();
     if (this.mHandler != null)
     {
       this.mHandler.sendEmptyMessage(1000);
@@ -128,7 +128,7 @@ public class MMFalseProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMFalseProgressBar
  * JD-Core Version:    0.7.0.1
  */

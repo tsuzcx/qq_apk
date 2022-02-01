@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.ext.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.wq;
-import com.tencent.mm.protocal.protobuf.wr;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ya;
+import com.tencent.mm.protocal.protobuf.yb;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public f callback;
+  public i callback;
   public String mUrl;
-  public int rmE;
-  private b rr;
+  private d rr;
+  public int sOj;
   
   public a(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(24508);
-    this.rmE = -1;
+    this.sOj = -1;
     this.mUrl = null;
     this.mUrl = paramString;
-    b.a locala = new b.a();
-    locala.hQF = new wq();
-    locala.hQG = new wr();
+    d.a locala = new d.a();
+    locala.iLN = new ya();
+    locala.iLO = new yb();
     locala.uri = "/cgi-bin/micromsg-bin/checkcamerascan";
     locala.funcId = 782;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ae.i("MicroMsg.NetSceneCheckUrlAvailableInWx", "hy: checking url: %s", new Object[] { paramString });
-    paramString = (wq)this.rr.hQD.hQJ;
+    this.rr = locala.aXF();
+    Log.i("MicroMsg.NetSceneCheckUrlAvailableInWx", "hy: checking url: %s", new Object[] { paramString });
+    paramString = (ya)this.rr.iLK.iLR;
     paramString.URL = this.mUrl;
-    paramString.Goq = paramInt1;
-    paramString.Gor = paramInt2;
+    paramString.Ljb = paramInt1;
+    paramString.Ljc = paramInt2;
     AppMethodBeat.o(24508);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(24509);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(24509);
     return i;
   }
@@ -59,13 +59,13 @@ public final class a
     return 782;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(24510);
-    ae.d("MicroMsg.NetSceneCheckUrlAvailableInWx", "hy: on get camera url end. errType; %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (wr)((b)paramq).hQE.hQJ;
+    Log.d("MicroMsg.NetSceneCheckUrlAvailableInWx", "hy: on get camera url end. errType; %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    params = (yb)((d)params).iLL.iLR;
     if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.rmE = paramq.nJA;
+      this.sOj = params.oUv;
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(24510);

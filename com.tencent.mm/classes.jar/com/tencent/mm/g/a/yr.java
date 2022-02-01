@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class yr
-  extends b
+  extends IEvent
 {
-  public a dOD;
-  public yr.b dOE;
+  public a eeW;
   
   public yr()
   {
@@ -17,18 +15,16 @@ public final class yr
   
   private yr(byte paramByte)
   {
-    AppMethodBeat.i(153020);
-    this.dOD = new a();
-    this.dOE = new yr.b();
-    this.IvZ = false;
+    AppMethodBeat.i(131617);
+    this.eeW = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(153020);
+    AppMethodBeat.o(131617);
   }
   
   public static final class a
   {
-    public Activity activity;
-    public int dOF;
+    public long gY = 800L;
   }
 }
 

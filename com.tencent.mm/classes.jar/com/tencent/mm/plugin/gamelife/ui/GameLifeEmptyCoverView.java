@@ -8,10 +8,10 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.z;
-import d.l;
+import com.tencent.mm.ui.aa;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeEmptyCoverView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "plugin-gamelife_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/ui/GameLifeEmptyCoverView;", "Landroid/widget/FrameLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "plugin-gamelife_release"})
 public final class GameLifeEmptyCoverView
   extends FrameLayout
 {
@@ -23,13 +23,13 @@ public final class GameLifeEmptyCoverView
   public GameLifeEmptyCoverView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(212279);
+    AppMethodBeat.i(241522);
     setBackgroundResource(2131099650);
-    paramContext = z.jV(paramContext).inflate(2131496522, (ViewGroup)this, false);
+    paramContext = aa.jQ(paramContext).inflate(2131494975, (ViewGroup)this, false);
     paramAttributeSet = new FrameLayout.LayoutParams(-1, -2);
     paramAttributeSet.gravity = 17;
     addView(paramContext, (ViewGroup.LayoutParams)paramAttributeSet);
-    AppMethodBeat.o(212279);
+    AppMethodBeat.o(241522);
   }
 }
 

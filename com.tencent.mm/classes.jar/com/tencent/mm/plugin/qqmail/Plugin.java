@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.qqmail;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.bd;
 import com.tencent.mm.plugin.qqmail.a.a;
 import com.tencent.mm.plugin.qqmail.d.ac;
 import com.tencent.mm.pluginsdk.b.c;
@@ -10,12 +10,12 @@ import com.tencent.mm.pluginsdk.n;
 public final class Plugin
   implements com.tencent.mm.pluginsdk.b.d
 {
-  private d xqQ;
+  private d BqT;
   
   public Plugin()
   {
     AppMethodBeat.i(122626);
-    this.xqQ = new d();
+    this.BqT = new d();
     AppMethodBeat.o(122626);
   }
   
@@ -27,7 +27,7 @@ public final class Plugin
     return locala;
   }
   
-  public final az createSubCore()
+  public final bd createSubCore()
   {
     AppMethodBeat.i(122628);
     ac localac = new ac();
@@ -37,12 +37,12 @@ public final class Plugin
   
   public final c getContactWidgetFactory()
   {
-    return this.xqQ;
+    return this.BqT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.Plugin
  * JD-Core Version:    0.7.0.1
  */

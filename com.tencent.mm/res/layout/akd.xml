@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="@dimen/e" android:layout_height="@dimen/e"
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:layout_width="52.0dip" android:layout_height="52.0dip" android:src="@drawable/a0h" />
-    <ImageView android:id="@id/dbo" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:layout_margin="@dimen/jn" android:scaleType="fitXY" />
-    <ImageView android:layout_gravity="center|right|top" android:id="@id/dbh" android:paddingRight="@dimen/ic" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bos" />
-</FrameLayout>
+    <TextView android:id="@id/d32" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="common tab framgent" android:layout_centerInParent="true" />
+</RelativeLayout>

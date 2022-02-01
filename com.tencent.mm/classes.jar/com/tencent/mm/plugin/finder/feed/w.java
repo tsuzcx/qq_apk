@@ -1,79 +1,136 @@
 package com.tencent.mm.plugin.finder.feed;
 
-import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.plugin.finder.model.am;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.ase;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.f;
-import d.g;
-import d.g.a.a;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
+import com.tencent.mm.plugin.finder.model.c;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.storage.FinderItem.a;
+import com.tencent.mm.plugin.finder.storage.aa;
+import com.tencent.mm.plugin.finder.storage.o;
+import com.tencent.mm.plugin.finder.storage.z;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.ayr;
+import com.tencent.mm.protocal.protobuf.ays;
+import com.tencent.mm.protocal.protobuf.azm;
+import com.tencent.mm.protocal.protobuf.bcc;
+import kotlin.f;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderMoreLikeDivider;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "divider", "Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "(Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;)V", "getDivider", "()Lcom/tencent/mm/protocal/protobuf/FinderStreamDivider;", "id", "", "getId", "()J", "id$delegate", "Lkotlin/Lazy;", "wordingSpan", "Landroid/text/SpannableString;", "kotlin.jvm.PlatformType", "getWordingSpan", "()Landroid/text/SpannableString;", "compare", "", "obj", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "getItemId", "getItemType", "toString", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderMixFeedLogic;", "", "()V", "finderFeedToMixFeed", "Lcom/tencent/mm/plugin/finder/model/BaseMixFeed;", "feed", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "finderObjectToMixFeed", "Lcom/tencent/mm/protocal/protobuf/FinderObject;", "lbsToMixFeed", "lbsSection", "Lcom/tencent/mm/protocal/protobuf/FinderNearbySection;", "localToMixFeed", "localPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "pack", "mixItemPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixItemPb;", "plugin-finder_release"})
 public final class w
-  implements am
 {
-  private final f sfg;
-  public final SpannableString sfh;
-  public final ase sfi;
+  public static final w tOM;
   
-  public w(ase paramase)
+  static
   {
-    AppMethodBeat.i(202440);
-    this.sfi = paramase;
-    this.sfg = g.O((a)new a(this));
-    this.sfh = k.c(ak.getContext(), (CharSequence)this.sfi.dyI);
-    AppMethodBeat.o(202440);
+    AppMethodBeat.i(243994);
+    tOM = new w();
+    AppMethodBeat.o(243994);
   }
   
-  public final int a(i parami)
+  public static c a(azm paramazm)
   {
-    AppMethodBeat.i(202438);
-    p.h(parami, "obj");
-    if (((parami instanceof w)) && (((w)parami).sfi.GIB == this.sfi.GIB) && (((w)parami).sfi.GIL == this.sfi.GIL) && (p.i(((w)parami).sfi.dyI, this.sfi.dyI)))
+    AppMethodBeat.i(243992);
+    p.h(paramazm, "lbsSection");
+    Object localObject1 = new ayr();
+    Object localObject2 = z.vEM;
+    ((ayr)localObject1).dataType = z.dxS();
+    ((ayr)localObject1).vEa = paramazm;
+    localObject2 = new z((ayr)localObject1);
+    int i = ((z)localObject2).vEI.dataType;
+    paramazm = z.vEM;
+    if (i == z.dxS())
     {
-      AppMethodBeat.o(202438);
-      return 0;
+      localObject1 = ((z)localObject2).vEI.vEa;
+      paramazm = (azm)localObject1;
+      if (localObject1 == null) {
+        paramazm = new azm();
+      }
+      paramazm = new o(paramazm);
+      ((z)localObject2).vEF = paramazm;
+      ((z)localObject2).vEG = null;
+      ((z)localObject2).uNH = null;
+      ((z)localObject2).qcr = (paramazm.dxE().FVr + 1000);
+      long l = ((Number)paramazm.tON.getValue()).longValue();
+      paramazm = ((z)localObject2).vEF;
+      if (paramazm != null)
+      {
+        i = paramazm.hashCode();
+        ((z)localObject2).vEH = (i + l);
+      }
     }
-    AppMethodBeat.o(202438);
-    return -1;
-  }
-  
-  public final int bZz()
-  {
-    return 2002;
-  }
-  
-  public final long lP()
-  {
-    AppMethodBeat.i(202437);
-    long l = ((Number)this.sfg.getValue()).longValue();
-    AppMethodBeat.o(202437);
-    return l;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(202439);
-    String str = "ItemId=" + lP() + ",ItemType=2002 wordingSpan=" + this.sfh;
-    AppMethodBeat.o(202439);
-    return str;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<Long>
-  {
-    a(w paramw)
+    for (;;)
     {
-      super();
+      paramazm = new c((z)localObject2);
+      AppMethodBeat.o(243992);
+      return paramazm;
+      i = 0;
+      break;
+      paramazm = z.vEM;
+      if (i == z.dxT())
+      {
+        ((z)localObject2).vEF = null;
+        paramazm = FinderItem.Companion;
+        localObject1 = ((z)localObject2).vEI.tuO;
+        paramazm = (azm)localObject1;
+        if (localObject1 == null) {
+          paramazm = new FinderObject();
+        }
+        paramazm = FinderItem.a.a(paramazm, 0);
+        ((z)localObject2).vEG = paramazm;
+        ((z)localObject2).uNH = null;
+        ((z)localObject2).qcr = paramazm.getMediaType();
+        ((z)localObject2).vEH = paramazm.getId();
+      }
+      else
+      {
+        paramazm = z.vEM;
+        if (i == z.dxU())
+        {
+          ((z)localObject2).vEF = null;
+          ((z)localObject2).vEG = null;
+          localObject1 = ((z)localObject2).vEI.LIR;
+          paramazm = (azm)localObject1;
+          if (localObject1 == null) {
+            paramazm = new ays();
+          }
+          paramazm = new aa(paramazm);
+          ((z)localObject2).uNH = paramazm;
+          ((z)localObject2).qcr = paramazm.vEN.LIS;
+          ((z)localObject2).vEH = paramazm.getId();
+        }
+        else
+        {
+          ((z)localObject2).vEF = null;
+          ((z)localObject2).vEG = null;
+          ((z)localObject2).uNH = null;
+          ((z)localObject2).qcr = 10000;
+          ((z)localObject2).vEH = -1L;
+        }
+      }
     }
+  }
+  
+  public static c m(BaseFinderFeed paramBaseFinderFeed)
+  {
+    AppMethodBeat.i(243993);
+    p.h(paramBaseFinderFeed, "feed");
+    Object localObject1 = new ayr();
+    Object localObject2 = z.vEM;
+    ((ayr)localObject1).dataType = z.dxT();
+    ((ayr)localObject1).tuO = paramBaseFinderFeed.feedObject.getFeedObject();
+    localObject1 = new z((ayr)localObject1);
+    ((z)localObject1).vEF = null;
+    localObject2 = paramBaseFinderFeed.feedObject;
+    ((z)localObject1).vEG = ((FinderItem)localObject2);
+    ((z)localObject1).uNH = null;
+    ((z)localObject1).qcr = ((FinderItem)localObject2).getMediaType();
+    ((z)localObject1).vEH = ((FinderItem)localObject2).getId();
+    localObject1 = new c((z)localObject1);
+    ((c)localObject1).uNI = paramBaseFinderFeed;
+    AppMethodBeat.o(243993);
+    return localObject1;
   }
 }
 

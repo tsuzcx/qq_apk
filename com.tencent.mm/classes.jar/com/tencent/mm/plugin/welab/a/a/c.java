@@ -7,17 +7,17 @@ import com.tencent.mm.kernel.c.a;
 public abstract interface c
   extends a
 {
-  public abstract void af(Context paramContext, Intent paramIntent);
+  public abstract void at(Context paramContext, Intent paramIntent);
   
-  public abstract boolean fad();
+  public abstract boolean gji();
   
-  public abstract boolean fae();
+  public abstract boolean gjj();
   
-  public abstract boolean faf();
+  public abstract boolean gjk();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.a.a.c
  * JD-Core Version:    0.7.0.1
  */

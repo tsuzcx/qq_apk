@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.messenger.foundation.a;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.a.a;
-import com.tencent.mm.cm.c;
+import com.tencent.mm.co.a.a;
+import com.tencent.mm.co.c;
 
 public final class ab
 {
-  private static SparseArray<a> vVZ;
-  private static c<aa> vWa;
+  private static SparseArray<a> zqe;
+  private static c<aa> zqf;
   
   static
   {
     AppMethodBeat.i(43074);
-    vVZ = new SparseArray();
+    zqe = new SparseArray();
     AppMethodBeat.o(43074);
   }
   
@@ -22,14 +22,14 @@ public final class ab
     try
     {
       AppMethodBeat.i(43070);
-      a locala2 = (a)vVZ.get(paramInt);
+      a locala2 = (a)zqe.get(paramInt);
       a locala1 = locala2;
       if (locala2 == null)
       {
         locala1 = new a((byte)0);
-        vVZ.put(paramInt, locala1);
+        zqe.put(paramInt, locala1);
       }
-      locala1.bu(paramy);
+      locala1.add(paramy);
       AppMethodBeat.o(43070);
       return;
     }
@@ -41,12 +41,12 @@ public final class ab
     try
     {
       AppMethodBeat.i(43071);
-      a locala = (a)vVZ.get(5);
+      a locala = (a)zqe.get(5);
       if (locala != null)
       {
         locala.remove(paramy);
         if (locala.size() == 0) {
-          vVZ.remove(5);
+          zqe.remove(5);
         }
       }
       AppMethodBeat.o(43071);
@@ -60,7 +60,7 @@ public final class ab
     try
     {
       AppMethodBeat.i(43073);
-      a locala = (a)vVZ.get(paramInt);
+      a locala = (a)zqe.get(paramInt);
       if (locala != null) {
         locala.b(paramT);
       }
@@ -72,20 +72,20 @@ public final class ab
   
   public static final void b(c<aa> paramc)
   {
-    vWa = paramc;
+    zqf = paramc;
   }
   
-  public static final c<aa> doK()
+  public static final c<aa> eiz()
   {
-    return vWa;
+    return zqf;
   }
   
-  public static <T extends com.tencent.mm.bw.a> void j(T paramT)
+  public static <T extends com.tencent.mm.bw.a> void k(T paramT)
   {
     try
     {
       AppMethodBeat.i(43072);
-      a locala = (a)vVZ.get(5);
+      a locala = (a)zqe.get(5);
       if (locala != null) {
         locala.a(paramT);
       }
@@ -96,7 +96,7 @@ public final class ab
   }
   
   static final class a<T extends com.tencent.mm.bw.a>
-    extends com.tencent.mm.cm.a<y<T>>
+    extends com.tencent.mm.co.a<y<T>>
     implements y<T>
   {
     public final void a(final T paramT)
@@ -116,7 +116,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.ab
  * JD-Core Version:    0.7.0.1
  */

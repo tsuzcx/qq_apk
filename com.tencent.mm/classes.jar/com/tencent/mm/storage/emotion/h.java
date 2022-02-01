@@ -1,33 +1,33 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bl;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.bm;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class h
-  extends bl
+  extends bm
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(105105);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "groupID";
-    locala.IBN.put("groupID", "TEXT");
+    localMAutoDBInfo.columns[0] = "groupID";
+    localMAutoDBInfo.colsMap.put("groupID", "TEXT");
     localStringBuilder.append(" groupID TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "desc";
-    locala.IBN.put("desc", "TEXT");
+    localMAutoDBInfo.columns[1] = "desc";
+    localMAutoDBInfo.colsMap.put("desc", "TEXT");
     localStringBuilder.append(" desc TEXT");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(105105);
   }
   
@@ -39,14 +39,14 @@ public final class h
     this.field_desc = paramString2;
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.h
  * JD-Core Version:    0.7.0.1
  */

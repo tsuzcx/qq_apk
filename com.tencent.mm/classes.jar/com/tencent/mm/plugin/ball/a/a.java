@@ -5,7 +5,7 @@ import android.animation.Animator.AnimatorListener;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.text.Html;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,56 +19,56 @@ import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.view.CircleAnimateView;
 import com.tencent.mm.plugin.ball.view.CircleImageView;
 import com.tencent.mm.plugin.ball.view.d.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.u;
+import com.tencent.mm.sdk.platformtools.ImgUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 
 public final class a
   extends RecyclerView.a<a>
 {
-  private static final int nKA;
-  private static final int nKB;
-  private static final int nKC;
-  private static final int nKD;
-  private static final int nKE;
-  private static final int nKF;
-  private static final int nKG;
-  private static final int nKH;
-  private static final int nKI;
-  private static final int nKJ;
-  private static final int nKK;
-  private static final int nKL;
-  private static final int nKM;
-  private static final int nKN;
-  private static final int nKz;
+  private static final int oVA;
+  private static final int oVB;
+  private static final int oVC;
+  private static final int oVD;
+  private static final int oVE;
+  private static final int oVF;
+  private static final int oVG;
+  private static final int oVH;
+  private static final int oVI;
+  private static final int oVu;
+  private static final int oVv;
+  private static final int oVw;
+  private static final int oVx;
+  private static final int oVy;
+  private static final int oVz;
   private Context mContext;
-  public boolean nKt;
-  public boolean nKu;
-  public List<BallInfo> nKv;
-  public com.tencent.mm.plugin.ball.d.b nKw;
-  public boolean nKx;
-  public d.b nKy;
+  public boolean oVo;
+  public boolean oVp;
+  public List<BallInfo> oVq;
+  public com.tencent.mm.plugin.ball.d.b oVr;
+  public boolean oVs;
+  public d.b oVt;
   
   static
   {
     AppMethodBeat.i(106029);
-    nKz = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166382);
-    nKA = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166364);
-    nKB = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166383);
-    nKC = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166365);
-    nKD = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166379);
-    nKE = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166380);
-    nKF = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166378);
-    nKG = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166372);
-    nKH = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166374);
-    nKI = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166368);
-    nKJ = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166370);
-    nKK = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166373);
-    nKL = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166375);
-    nKM = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166369);
-    nKN = com.tencent.mm.cb.a.ay(ak.getContext(), 2131166371);
+    oVu = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166474);
+    oVv = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166456);
+    oVw = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166475);
+    oVx = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166457);
+    oVy = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166471);
+    oVz = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166472);
+    oVA = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166470);
+    oVB = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166464);
+    oVC = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166466);
+    oVD = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166460);
+    oVE = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166462);
+    oVF = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166465);
+    oVG = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166467);
+    oVH = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166461);
+    oVI = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166463);
     AppMethodBeat.o(106029);
   }
   
@@ -77,10 +77,22 @@ public final class a
     this.mContext = paramContext;
   }
   
+  private boolean BB(int paramInt)
+  {
+    AppMethodBeat.i(216964);
+    if ((paramInt >= 0) && (paramInt < this.oVq.size()))
+    {
+      AppMethodBeat.o(216964);
+      return true;
+    }
+    AppMethodBeat.o(216964);
+    return false;
+  }
+  
   private static void a(TextView paramTextView, String paramString)
   {
     AppMethodBeat.i(106024);
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
       paramTextView.setVisibility(0);
       paramTextView.setText(Html.fromHtml(paramString));
@@ -96,11 +108,11 @@ public final class a
   {
     AppMethodBeat.i(106025);
     if (paramInt != -1) {
-      if (u.aE(ak.getContext(), paramInt)) {
-        if (parama.nLe != paramInt)
+      if (ImgUtil.isGif(MMApplicationContext.getContext(), paramInt)) {
+        if (parama.oVZ != paramInt)
         {
-          parama.nKU.setVisibility(8);
-          parama.nKV.setVisibility(0);
+          parama.oVP.setVisibility(8);
+          parama.oVQ.setVisibility(0);
         }
       }
     }
@@ -109,71 +121,59 @@ public final class a
       int i;
       try
       {
-        parama.nKV.setImageResource(paramInt);
+        parama.oVQ.setImageResource(paramInt);
         if (paramBallInfo.progress >= 0L)
         {
-          parama.nKV.setProgress(paramBallInfo.progress);
-          parama.nLe = paramInt;
+          parama.oVQ.setProgress(paramBallInfo.progress);
+          parama.oVZ = paramInt;
           AppMethodBeat.o(106025);
           return;
         }
       }
       catch (Exception localException1)
       {
-        ae.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException1, "setIconAnimateView exception:%s", new Object[] { localException1 });
-        i = com.tencent.mm.plugin.ball.f.d.yg(paramBallInfo.state);
-        parama.nKV.setImageResource(i);
+        Log.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException1, "setIconAnimateView exception:%s", new Object[] { localException1 });
+        i = com.tencent.mm.plugin.ball.f.d.BM(paramBallInfo.state);
+        parama.oVQ.setImageResource(i);
         continue;
-        parama.nKV.setProgress(-2147483648L);
+        parama.oVQ.setProgress(-2147483648L);
         continue;
       }
-      if (parama.nLe != paramInt)
+      if (parama.oVZ != paramInt)
       {
-        parama.nKV.setVisibility(8);
-        parama.nKU.setVisibility(0);
+        parama.oVQ.setVisibility(8);
+        parama.oVP.setVisibility(0);
       }
       try
       {
-        parama.nKU.setImageResource(paramInt);
+        parama.oVP.setImageResource(paramInt);
         if (paramBallInfo.progress >= 0L) {
-          parama.nKU.setProgress(paramBallInfo.progress);
+          parama.oVP.setProgress(paramBallInfo.progress);
         }
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException2, "setIconImageView exception:%s", new Object[] { localException2 });
-          i = com.tencent.mm.plugin.ball.f.d.yf(paramBallInfo.type);
-          parama.nKU.setImageResource(i);
-          paramBallInfo.mdM = i;
+          Log.printErrStackTrace("MicroMsg.FloatBallMenuAdapter", localException2, "setIconImageView exception:%s", new Object[] { localException2 });
+          i = com.tencent.mm.plugin.ball.f.d.BL(paramBallInfo.type);
+          parama.oVP.setImageResource(i);
+          paramBallInfo.noe = i;
         }
-        parama.nKU.setProgress(-2147483648L);
+        parama.oVP.setProgress(-2147483648L);
       }
       continue;
-      parama.nKU.setVisibility(4);
-      parama.nKV.setVisibility(4);
+      parama.oVP.setVisibility(4);
+      parama.oVQ.setVisibility(4);
     }
-  }
-  
-  private boolean xV(int paramInt)
-  {
-    AppMethodBeat.i(209426);
-    if ((paramInt >= 0) && (paramInt < this.nKv.size()))
-    {
-      AppMethodBeat.o(209426);
-      return true;
-    }
-    AppMethodBeat.o(209426);
-    return false;
   }
   
   public final int getItemCount()
   {
     AppMethodBeat.i(106022);
-    if (com.tencent.mm.plugin.ball.f.d.h(this.nKv))
+    if (com.tencent.mm.plugin.ball.f.d.h(this.oVq))
     {
-      int i = this.nKv.size();
+      int i = this.oVq.size();
       AppMethodBeat.o(106022);
       return i;
     }
@@ -184,9 +184,9 @@ public final class a
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(106023);
-    if ((com.tencent.mm.plugin.ball.f.d.h(this.nKv)) && (paramInt >= 0) && (paramInt < this.nKv.size()))
+    if ((com.tencent.mm.plugin.ball.f.d.h(this.oVq)) && (paramInt >= 0) && (paramInt < this.oVq.size()))
     {
-      if (((BallInfo)this.nKv.get(paramInt)).nLu)
+      if (((BallInfo)this.oVq.get(paramInt)).oWr)
       {
         AppMethodBeat.o(106023);
         return 2;
@@ -199,44 +199,44 @@ public final class a
   }
   
   public final class a
-    extends RecyclerView.w
+    extends RecyclerView.v
   {
-    public BallInfo nKT;
-    public CircleImageView nKU;
-    public CircleAnimateView nKV;
-    public ImageView nKW;
-    public FrameLayout nKX;
-    public TextView nKY;
-    public TextView nKZ;
-    public LinearLayout nLa;
-    public ImageView nLb;
-    public LinearLayout nLc;
-    public LinearLayout nLd;
-    public int nLe;
+    public BallInfo oVO;
+    public CircleImageView oVP;
+    public CircleAnimateView oVQ;
+    public ImageView oVR;
+    public FrameLayout oVS;
+    public TextView oVT;
+    public TextView oVU;
+    public LinearLayout oVV;
+    public ImageView oVW;
+    public LinearLayout oVX;
+    public LinearLayout oVY;
+    public int oVZ;
     public int position;
     
     public a(View paramView)
     {
       super();
       AppMethodBeat.i(106021);
-      this.nLe = -1;
-      this.nKU = ((CircleImageView)paramView.findViewById(2131300881));
-      this.nKV = ((CircleAnimateView)paramView.findViewById(2131300879));
-      this.nKW = ((ImageView)paramView.findViewById(2131304078));
-      this.nKX = ((FrameLayout)paramView.findViewById(2131304077));
-      this.nKY = ((TextView)paramView.findViewById(2131302658));
-      this.nKZ = ((TextView)paramView.findViewById(2131302657));
-      this.nLa = ((LinearLayout)paramView.findViewById(2131302655));
-      this.nLb = ((ImageView)paramView.findViewById(2131296938));
-      this.nLc = ((LinearLayout)paramView.findViewById(2131307865));
-      this.nLd = ((LinearLayout)paramView.findViewById(2131307866));
+      this.oVZ = -1;
+      this.oVP = ((CircleImageView)paramView.findViewById(2131302476));
+      this.oVQ = ((CircleAnimateView)paramView.findViewById(2131302473));
+      this.oVR = ((ImageView)paramView.findViewById(2131306941));
+      this.oVS = ((FrameLayout)paramView.findViewById(2131306940));
+      this.oVT = ((TextView)paramView.findViewById(2131305212));
+      this.oVU = ((TextView)paramView.findViewById(2131305211));
+      this.oVV = ((LinearLayout)paramView.findViewById(2131305209));
+      this.oVW = ((ImageView)paramView.findViewById(2131297044));
+      this.oVX = ((LinearLayout)paramView.findViewById(2131304607));
+      this.oVY = ((LinearLayout)paramView.findViewById(2131304609));
       AppMethodBeat.o(106021);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.a.a
  * JD-Core Version:    0.7.0.1
  */

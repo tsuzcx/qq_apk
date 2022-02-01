@@ -5,29 +5,29 @@ import android.view.View.OnLongClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onLongClick"})
 final class AppBrandRecommendUILogic$g
   implements View.OnLongClickListener
 {
-  public static final g mSQ;
+  public static final g ofT;
   
   static
   {
     AppMethodBeat.i(51365);
-    mSQ = new g();
+    ofT = new g();
     AppMethodBeat.o(51365);
   }
   
   public final boolean onLongClick(View paramView)
   {
-    AppMethodBeat.i(223914);
+    AppMethodBeat.i(229570);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$initHeaderTagView$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$initHeaderTagView$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
     a.a(true, this, "com/tencent/mm/plugin/appbrand/ui/recommend/AppBrandRecommendUILogic$initHeaderTagView$1", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-    AppMethodBeat.o(223914);
+    AppMethodBeat.o(229570);
     return true;
   }
 }

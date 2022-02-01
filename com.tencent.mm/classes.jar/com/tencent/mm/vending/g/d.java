@@ -12,12 +12,12 @@ public abstract interface d<_Var>
   
   public static abstract interface a<T>
   {
-    public abstract void ce(T paramT);
+    public abstract void cn(T paramT);
   }
   
   public static abstract interface b<T>
   {
-    public abstract void bq(T paramT);
+    public abstract void bz(T paramT);
   }
 }
 

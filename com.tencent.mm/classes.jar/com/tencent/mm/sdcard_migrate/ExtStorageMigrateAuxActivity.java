@@ -22,7 +22,7 @@ import com.tencent.mm.sdcard_migrate.a.c;
 import com.tencent.mm.sdcard_migrate.a.c.a;
 import com.tencent.mm.sdcard_migrate.a.c.a.c;
 import com.tencent.mm.sdcard_migrate.util.ExtStorageMigrateException;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -34,155 +34,155 @@ import java.util.Set;
 public class ExtStorageMigrateAuxActivity
   extends HellActivity
 {
-  private static final Random IsM;
-  private static final Set<Integer> IsN;
-  private static WeakReference<ExtStorageMigrateAuxActivity> IsO;
-  private static Context caq;
-  private final Map<Integer, c> IsP;
-  private final Map<Integer, b> IsQ;
-  private c IsR;
-  private boolean IsS;
-  private a IsT;
-  private AuxMigrateResultCallback IsU;
-  private boolean IsV;
+  private static final Random NGk;
+  private static final Set<Integer> NGl;
+  private static WeakReference<ExtStorageMigrateAuxActivity> NGm;
+  private static Context ckW;
+  private final Map<Integer, c> NGn;
+  private final Map<Integer, b> NGo;
+  private c NGp;
+  private boolean NGq;
+  private a NGr;
+  private AuxMigrateResultCallback NGs;
+  private boolean NGt;
   
   static
   {
     AppMethodBeat.i(176060);
-    IsM = new Random();
-    IsN = new HashSet(5);
-    IsO = null;
-    caq = null;
+    NGk = new Random();
+    NGl = new HashSet(5);
+    NGm = null;
+    ckW = null;
     AppMethodBeat.o(176060);
   }
   
   public ExtStorageMigrateAuxActivity()
   {
     AppMethodBeat.i(176049);
-    this.IsP = new HashMap();
-    this.IsQ = new HashMap();
-    this.IsR = null;
-    this.IsS = false;
-    this.IsT = new a(this, false);
-    this.IsU = new AuxMigrateResultCallback(this);
-    this.IsV = false;
+    this.NGn = new HashMap();
+    this.NGo = new HashMap();
+    this.NGp = null;
+    this.NGq = false;
+    this.NGr = new a(this, false);
+    this.NGs = new AuxMigrateResultCallback(this);
+    this.NGt = false;
     AppMethodBeat.o(176049);
   }
   
-  private void aaL(int paramInt)
+  /* Error */
+  private void AB(boolean paramBoolean)
+  {
+    // Byte code:
+    //   0: iconst_0
+    //   1: istore_3
+    //   2: ldc 129
+    //   4: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   7: aload_0
+    //   8: getfield 110	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:NGp	Lcom/tencent/mm/sdcard_migrate/a/c;
+    //   11: ifnull +20 -> 31
+    //   14: aload_0
+    //   15: getfield 110	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:NGp	Lcom/tencent/mm/sdcard_migrate/a/c;
+    //   18: invokevirtual 135	com/tencent/mm/sdcard_migrate/a/c:isShowing	()Z
+    //   21: ifeq +10 -> 31
+    //   24: aload_0
+    //   25: getfield 110	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:NGp	Lcom/tencent/mm/sdcard_migrate/a/c;
+    //   28: invokevirtual 138	com/tencent/mm/sdcard_migrate/a/c:dismiss	()V
+    //   31: aload_0
+    //   32: getfield 117	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:NGr	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity$a;
+    //   35: invokestatic 141	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity$a:a	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity$a;)Lcom/tencent/mm/sdcard_migrate/e;
+    //   38: astore 4
+    //   40: iload_3
+    //   41: istore_2
+    //   42: aload 4
+    //   44: ifnull +29 -> 73
+    //   47: iload_3
+    //   48: istore_2
+    //   49: aload 4
+    //   51: invokeinterface 147 1 0
+    //   56: invokeinterface 152 1 0
+    //   61: ifeq +12 -> 73
+    //   64: aload 4
+    //   66: invokeinterface 155 1 0
+    //   71: iconst_1
+    //   72: istore_2
+    //   73: aload_0
+    //   74: aload_0
+    //   75: getfield 117	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:NGr	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity$a;
+    //   78: invokevirtual 159	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:unbindService	(Landroid/content/ServiceConnection;)V
+    //   81: iload_2
+    //   82: ifne +9 -> 91
+    //   85: getstatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:ckW	Landroid/content/Context;
+    //   88: invokestatic 165	com/tencent/mm/sdcard_migrate/ExtStorageMigrateRoutine:cancelMigration	(Landroid/content/Context;)V
+    //   91: invokestatic 170	com/tencent/mm/sdcard_migrate/b:gxd	()V
+    //   94: iload_1
+    //   95: ifeq +11 -> 106
+    //   98: aload_0
+    //   99: invokestatic 173	com/tencent/mm/sdcard_migrate/ExtStorageMigrateRoutine:startWeChat	(Landroid/content/Context;)V
+    //   102: aload_0
+    //   103: invokevirtual 176	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:finish	()V
+    //   106: ldc 129
+    //   108: invokestatic 98	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   111: return
+    //   112: astore 4
+    //   114: iload_3
+    //   115: istore_2
+    //   116: goto -43 -> 73
+    //   119: astore 4
+    //   121: goto -40 -> 81
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	124	0	this	ExtStorageMigrateAuxActivity
+    //   0	124	1	paramBoolean	boolean
+    //   41	75	2	i	int
+    //   1	114	3	j	int
+    //   38	27	4	locale	e
+    //   112	1	4	localThrowable1	java.lang.Throwable
+    //   119	1	4	localThrowable2	java.lang.Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   64	71	112	java/lang/Throwable
+    //   73	81	119	java/lang/Throwable
+  }
+  
+  private void ajA(int paramInt)
   {
     AppMethodBeat.i(176055);
-    IsN.remove(Integer.valueOf(paramInt));
-    this.IsP.remove(Integer.valueOf(paramInt));
+    NGl.remove(Integer.valueOf(paramInt));
+    this.NGn.remove(Integer.valueOf(paramInt));
     AppMethodBeat.o(176055);
   }
   
-  private static int fmQ()
+  private static int gwD()
   {
     AppMethodBeat.i(176054);
     int i;
     do
     {
-      int j = (int)(IsM.nextInt() + (System.nanoTime() & 0xFFFFFFFF));
+      int j = (int)(NGk.nextInt() + (System.nanoTime() & 0xFFFFFFFF));
       i = j;
       if (j < 0) {
         i = -j;
       }
-    } while ((i == 0) || (IsN.contains(Integer.valueOf(i))));
-    IsN.add(Integer.valueOf(i));
+    } while ((i == 0) || (NGl.contains(Integer.valueOf(i))));
+    NGl.add(Integer.valueOf(i));
     AppMethodBeat.o(176054);
     return i;
-  }
-  
-  /* Error */
-  private void wB(boolean paramBoolean)
-  {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: ldc_w 334
-    //   5: invokestatic 78	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: getfield 110	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:IsR	Lcom/tencent/mm/sdcard_migrate/a/c;
-    //   12: ifnull +20 -> 32
-    //   15: aload_0
-    //   16: getfield 110	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:IsR	Lcom/tencent/mm/sdcard_migrate/a/c;
-    //   19: invokevirtual 339	com/tencent/mm/sdcard_migrate/a/c:isShowing	()Z
-    //   22: ifeq +10 -> 32
-    //   25: aload_0
-    //   26: getfield 110	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:IsR	Lcom/tencent/mm/sdcard_migrate/a/c;
-    //   29: invokevirtual 342	com/tencent/mm/sdcard_migrate/a/c:dismiss	()V
-    //   32: aload_0
-    //   33: getfield 117	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:IsT	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity$a;
-    //   36: invokestatic 345	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity$a:a	(Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity$a;)Lcom/tencent/mm/sdcard_migrate/e;
-    //   39: astore 4
-    //   41: iload_3
-    //   42: istore_2
-    //   43: aload 4
-    //   45: ifnull +29 -> 74
-    //   48: iload_3
-    //   49: istore_2
-    //   50: aload 4
-    //   52: invokeinterface 349 1 0
-    //   57: invokeinterface 354 1 0
-    //   62: ifeq +12 -> 74
-    //   65: aload 4
-    //   67: invokeinterface 357 1 0
-    //   72: iconst_1
-    //   73: istore_2
-    //   74: aload_0
-    //   75: aload_0
-    //   76: getfield 117	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:IsT	Lcom/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity$a;
-    //   79: invokevirtual 361	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:unbindService	(Landroid/content/ServiceConnection;)V
-    //   82: iload_2
-    //   83: ifne +9 -> 92
-    //   86: getstatic 95	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:caq	Landroid/content/Context;
-    //   89: invokestatic 364	com/tencent/mm/sdcard_migrate/ExtStorageMigrateRoutine:cancelMigration	(Landroid/content/Context;)V
-    //   92: invokestatic 369	com/tencent/mm/sdcard_migrate/b:fnq	()V
-    //   95: iload_1
-    //   96: ifeq +11 -> 107
-    //   99: aload_0
-    //   100: invokestatic 372	com/tencent/mm/sdcard_migrate/ExtStorageMigrateRoutine:startWeChat	(Landroid/content/Context;)V
-    //   103: aload_0
-    //   104: invokevirtual 375	com/tencent/mm/sdcard_migrate/ExtStorageMigrateAuxActivity:finish	()V
-    //   107: ldc_w 334
-    //   110: invokestatic 98	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   113: return
-    //   114: astore 4
-    //   116: iload_3
-    //   117: istore_2
-    //   118: goto -44 -> 74
-    //   121: astore 4
-    //   123: goto -41 -> 82
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	126	0	this	ExtStorageMigrateAuxActivity
-    //   0	126	1	paramBoolean	boolean
-    //   42	76	2	i	int
-    //   1	116	3	j	int
-    //   39	27	4	locale	e
-    //   114	1	4	localThrowable1	java.lang.Throwable
-    //   121	1	4	localThrowable2	java.lang.Throwable
-    // Exception table:
-    //   from	to	target	type
-    //   65	72	114	java/lang/Throwable
-    //   74	82	121	java/lang/Throwable
   }
   
   protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(176057);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    paramIntent = (b)this.IsQ.get(Integer.valueOf(paramInt1));
+    paramIntent = (b)this.NGo.get(Integer.valueOf(paramInt1));
     if (paramIntent == null)
     {
-      ExtStorageMigrateMonitor.fmX().e("MicroMsg.ExtStorageMigrateAuxActivity", "[-] Unknown ticket: %s.", new Object[] { Integer.valueOf(paramInt1) });
+      ExtStorageMigrateMonitor.gwK().e("MicroMsg.ExtStorageMigrateAuxActivity", "[-] Unknown ticket: %s.", new Object[] { Integer.valueOf(paramInt1) });
       AppMethodBeat.o(176057);
       return;
     }
-    paramIntent.fmS();
-    IsN.remove(Integer.valueOf(paramInt1));
-    this.IsQ.remove(Integer.valueOf(paramInt1));
+    paramIntent.gwF();
+    NGl.remove(Integer.valueOf(paramInt1));
+    this.NGo.remove(Integer.valueOf(paramInt1));
     AppMethodBeat.o(176057);
   }
   
@@ -190,36 +190,36 @@ public class ExtStorageMigrateAuxActivity
   {
     AppMethodBeat.i(176050);
     super.onCreate(paramBundle);
-    ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateAuxActivity", "[+] onCreate called. object: %s", new Object[] { this });
-    caq = getApplicationContext();
-    ad.initLanguage(this);
-    setContentView(2131494757);
+    ExtStorageMigrateMonitor.gwK().i("MicroMsg.ExtStorageMigrateAuxActivity", "[+] onCreate called. object: %s", new Object[] { this });
+    ckW = getApplicationContext();
+    LocaleUtil.initLanguage(this);
+    setContentView(2131495487);
     getWindow().getDecorView().setSystemUiVisibility(1280);
-    if (IsO != null) {}
-    for (paramBundle = (ExtStorageMigrateAuxActivity)IsO.get();; paramBundle = null)
+    if (NGm != null) {}
+    for (paramBundle = (ExtStorageMigrateAuxActivity)NGm.get();; paramBundle = null)
     {
       if ((paramBundle != null) && (!paramBundle.isFinishing()) && (!paramBundle.isDestroyed()))
       {
         if (paramBundle != this)
         {
-          ExtStorageMigrateMonitor.fmX().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Duplicated instance. [latest: %s, prev: %s] Finish latest one.", new Object[] { this, paramBundle });
+          ExtStorageMigrateMonitor.gwK().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Duplicated instance. [latest: %s, prev: %s] Finish latest one.", new Object[] { this, paramBundle });
           finish();
           AppMethodBeat.o(176050);
         }
       }
       else {
-        IsO = new WeakReference(this);
+        NGm = new WeakReference(this);
       }
-      IsN.clear();
-      this.IsP.clear();
-      this.IsQ.clear();
-      if (this.IsR != null)
+      NGl.clear();
+      this.NGn.clear();
+      this.NGo.clear();
+      if (this.NGp != null)
       {
-        this.IsR.dismiss();
-        this.IsR = null;
+        this.NGp.dismiss();
+        this.NGp = null;
       }
-      this.IsS = false;
-      this.IsV = false;
+      this.NGq = false;
+      this.NGt = false;
       AppMethodBeat.o(176050);
       return;
     }
@@ -228,24 +228,24 @@ public class ExtStorageMigrateAuxActivity
   public void onDestroy()
   {
     AppMethodBeat.i(176053);
-    ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateAuxActivity", "[+] onDestroy called. object: %s", new Object[] { this });
+    ExtStorageMigrateMonitor.gwK().i("MicroMsg.ExtStorageMigrateAuxActivity", "[+] onDestroy called. object: %s", new Object[] { this });
     super.onDestroy();
-    if (this.IsR != null)
+    if (this.NGp != null)
     {
-      this.IsR.dismiss();
-      this.IsR = null;
+      this.NGp.dismiss();
+      this.NGp = null;
     }
-    wB(false);
-    this.IsQ.clear();
-    this.IsP.clear();
-    ExtStorageMigrateMonitor.fna();
+    AB(false);
+    this.NGo.clear();
+    this.NGn.clear();
+    ExtStorageMigrateMonitor.gwN();
     AppMethodBeat.o(176053);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
     AppMethodBeat.i(176051);
-    ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateAuxActivity", "[+] onNewIntent called. object: %s", new Object[] { this });
+    ExtStorageMigrateMonitor.gwK().i("MicroMsg.ExtStorageMigrateAuxActivity", "[+] onNewIntent called. object: %s", new Object[] { this });
     super.onNewIntent(paramIntent);
     setIntent(paramIntent);
     AppMethodBeat.o(176051);
@@ -256,33 +256,33 @@ public class ExtStorageMigrateAuxActivity
     boolean bool = true;
     AppMethodBeat.i(176056);
     super.onRequestPermissionsResult(paramInt, paramArrayOfString, paramArrayOfInt);
-    c localc = (c)this.IsP.get(Integer.valueOf(paramInt));
+    c localc = (c)this.NGn.get(Integer.valueOf(paramInt));
     if (localc == null)
     {
-      ExtStorageMigrateMonitor.fmX().e("MicroMsg.ExtStorageMigrateAuxActivity", "[-] Unknown ticket: %s.", new Object[] { Integer.valueOf(paramInt) });
+      ExtStorageMigrateMonitor.gwK().e("MicroMsg.ExtStorageMigrateAuxActivity", "[-] Unknown ticket: %s.", new Object[] { Integer.valueOf(paramInt) });
       finish();
       AppMethodBeat.o(176056);
       return;
     }
-    aaL(paramInt);
+    ajA(paramInt);
     if (paramArrayOfString.length == 0)
     {
-      ExtStorageMigrateMonitor.fmX().e("MicroMsg.ExtStorageMigrateAuxActivity", "[-] permissions array is empty.", new Object[0]);
-      aaL(paramInt);
+      ExtStorageMigrateMonitor.gwK().e("MicroMsg.ExtStorageMigrateAuxActivity", "[-] permissions array is empty.", new Object[0]);
+      ajA(paramInt);
       AppMethodBeat.o(176056);
       return;
     }
     paramArrayOfString = paramArrayOfString[0];
     if (paramArrayOfInt[0] == 0)
     {
-      localc.aQP();
+      localc.blu();
       AppMethodBeat.o(176056);
       return;
     }
     if (!android.support.v4.app.a.a(this, paramArrayOfString)) {}
     for (;;)
     {
-      localc.cL(paramArrayOfString, bool);
+      localc.dg(paramArrayOfString, bool);
       AppMethodBeat.o(176056);
       return;
       bool = false;
@@ -296,13 +296,13 @@ public class ExtStorageMigrateAuxActivity
     Intent localIntent;
     String str;
     int i;
-    if (!this.IsS)
+    if (!this.NGq)
     {
-      this.IsS = true;
+      this.NGq = true;
       localIntent = getIntent();
       if (localIntent == null)
       {
-        ExtStorageMigrateMonitor.fmX().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Income intent is null.", new Object[0]);
+        ExtStorageMigrateMonitor.gwK().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Income intent is null.", new Object[0]);
         finish();
         AppMethodBeat.o(176052);
         return;
@@ -310,7 +310,7 @@ public class ExtStorageMigrateAuxActivity
       str = localIntent.getAction();
       if (TextUtils.isEmpty(str))
       {
-        ExtStorageMigrateMonitor.fmX().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Income action is null or empty.", new Object[0]);
+        ExtStorageMigrateMonitor.gwK().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Income action is null or empty.", new Object[0]);
         finish();
         AppMethodBeat.o(176052);
         return;
@@ -325,7 +325,7 @@ public class ExtStorageMigrateAuxActivity
       switch (i)
       {
       default: 
-        ExtStorageMigrateMonitor.fmX().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Unknown action: ".concat(String.valueOf(str)), new Object[0]);
+        ExtStorageMigrateMonitor.gwK().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Unknown action: ".concat(String.valueOf(str)), new Object[0]);
         finish();
         AppMethodBeat.o(176052);
         return;
@@ -337,15 +337,15 @@ public class ExtStorageMigrateAuxActivity
     }
     if (!ExtStorageMigrateRoutine.needsToDoMigrate(this))
     {
-      ExtStorageMigrateMonitor.fmX().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Do not need to do migration, start wechat now.", new Object[0]);
+      ExtStorageMigrateMonitor.gwK().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Do not need to do migration, start wechat now.", new Object[0]);
       ExtStorageMigrateRoutine.startWeChat(this);
       finish();
       AppMethodBeat.o(176052);
       return;
     }
-    if (b.fnm())
+    if (b.gwZ())
     {
-      ExtStorageMigrateMonitor.fmX().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Migration routine indicates we should go on normal startup, start wechat now.", new Object[0]);
+      ExtStorageMigrateMonitor.gwK().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Migration routine indicates we should go on normal startup, start wechat now.", new Object[0]);
       ExtStorageMigrateRoutine.startWeChat(this);
       finish();
       AppMethodBeat.o(176052);
@@ -353,19 +353,19 @@ public class ExtStorageMigrateAuxActivity
     }
     if (localIntent.getBooleanExtra("auxui_param_is_migration_end", false))
     {
-      ExtStorageMigrateMonitor.fmX().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Migration routine indicates last migration is end, start wechat now.", new Object[0]);
+      ExtStorageMigrateMonitor.gwK().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Migration routine indicates last migration is end, start wechat now.", new Object[0]);
       ExtStorageMigrateRoutine.startWeChat(this);
       finish();
       AppMethodBeat.o(176052);
       return;
     }
-    b.fnp();
+    b.gxc();
     ExtStorageMigrateRoutine.startupMigrationService(this);
-    this.IsV = ExtStorageMigrateRoutine.bindMigrationService(this, this.IsT);
-    if (!this.IsV)
+    this.NGt = ExtStorageMigrateRoutine.bindMigrationService(this, this.NGr);
+    if (!this.NGt)
     {
-      ExtStorageMigrateMonitor.fmX().e("MicroMsg.ExtStorageMigrateAuxActivity", "[-] Fail to bind to migrate service, startup WeChat next.", new Object[0]);
-      wB(true);
+      ExtStorageMigrateMonitor.gwK().e("MicroMsg.ExtStorageMigrateAuxActivity", "[-] Fail to bind to migrate service, startup WeChat next.", new Object[0]);
+      AB(true);
     }
     AppMethodBeat.o(176052);
   }
@@ -379,125 +379,125 @@ public class ExtStorageMigrateAuxActivity
   static final class AuxMigrateResultCallback
     extends MigrateResultCallbackAdapter
   {
-    private final WeakReference<ExtStorageMigrateAuxActivity> Itd;
-    private int Ite;
+    private final WeakReference<ExtStorageMigrateAuxActivity> NGB;
+    private int NGC;
     
     AuxMigrateResultCallback(ExtStorageMigrateAuxActivity paramExtStorageMigrateAuxActivity)
     {
-      AppMethodBeat.i(211798);
-      this.Ite = 0;
-      this.Itd = new WeakReference(paramExtStorageMigrateAuxActivity);
-      AppMethodBeat.o(211798);
+      AppMethodBeat.i(204560);
+      this.NGC = 0;
+      this.NGB = new WeakReference(paramExtStorageMigrateAuxActivity);
+      AppMethodBeat.o(204560);
     }
     
     @SuppressLint({"NewApi"})
-    private ExtStorageMigrateAuxActivity fmT()
+    private ExtStorageMigrateAuxActivity gwG()
     {
-      AppMethodBeat.i(211799);
-      ExtStorageMigrateAuxActivity localExtStorageMigrateAuxActivity = (ExtStorageMigrateAuxActivity)this.Itd.get();
+      AppMethodBeat.i(204561);
+      ExtStorageMigrateAuxActivity localExtStorageMigrateAuxActivity = (ExtStorageMigrateAuxActivity)this.NGB.get();
       if ((localExtStorageMigrateAuxActivity == null) || (localExtStorageMigrateAuxActivity.isFinishing()) || (localExtStorageMigrateAuxActivity.isDestroyed()))
       {
-        AppMethodBeat.o(211799);
+        AppMethodBeat.o(204561);
         return null;
       }
-      AppMethodBeat.o(211799);
+      AppMethodBeat.o(204561);
       return localExtStorageMigrateAuxActivity;
     }
     
     public final void a(int paramInt, ExtStorageMigrateException paramExtStorageMigrateException)
     {
-      AppMethodBeat.i(211804);
+      AppMethodBeat.i(204566);
       switch (paramInt)
       {
       }
       final ExtStorageMigrateAuxActivity localExtStorageMigrateAuxActivity;
       for (;;)
       {
-        localExtStorageMigrateAuxActivity = fmT();
+        localExtStorageMigrateAuxActivity = gwG();
         if (localExtStorageMigrateAuxActivity != null) {
           break;
         }
-        AppMethodBeat.o(211804);
+        AppMethodBeat.o(204566);
         return;
-        ExtStorageMigrateMonitor.Do(109L);
+        ExtStorageMigrateMonitor.ME(109L);
         continue;
-        ExtStorageMigrateMonitor.Do(110L);
+        ExtStorageMigrateMonitor.ME(110L);
         continue;
-        ExtStorageMigrateMonitor.Do(111L);
+        ExtStorageMigrateMonitor.ME(111L);
         continue;
-        ExtStorageMigrateMonitor.Do(112L);
+        ExtStorageMigrateMonitor.ME(112L);
         continue;
-        ExtStorageMigrateMonitor.Do(113L);
+        ExtStorageMigrateMonitor.ME(113L);
       }
       if ((ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity) != null) && (ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity).isShowing())) {
         ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity).dismiss();
       }
       if (paramInt == 6) {}
-      for (paramExtStorageMigrateException = ExtStorageMigrateAuxActivity.aaM(2131758661);; paramExtStorageMigrateException = ExtStorageMigrateAuxActivity.aaM(2131758659))
+      for (paramExtStorageMigrateException = ExtStorageMigrateAuxActivity.ajB(2131758966);; paramExtStorageMigrateException = ExtStorageMigrateAuxActivity.ajB(2131758964))
       {
-        ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity, com.tencent.mm.sdcard_migrate.a.b.c(localExtStorageMigrateAuxActivity, paramExtStorageMigrateException, ExtStorageMigrateAuxActivity.aaM(2131758669), new DialogInterface.OnClickListener()
+        ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity, com.tencent.mm.sdcard_migrate.a.b.b(localExtStorageMigrateAuxActivity, paramExtStorageMigrateException, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
-            AppMethodBeat.i(211796);
+            AppMethodBeat.i(204558);
             paramAnonymousDialogInterface.dismiss();
             ExtStorageMigrateRoutine.startWeChat(localExtStorageMigrateAuxActivity);
             ExtStorageMigrateAuxActivity.c(localExtStorageMigrateAuxActivity);
             localExtStorageMigrateAuxActivity.finish();
-            AppMethodBeat.o(211796);
+            AppMethodBeat.o(204558);
           }
         }));
-        AppMethodBeat.o(211804);
+        AppMethodBeat.o(204566);
         return;
       }
     }
     
-    public final void aaN(int paramInt)
+    public final void ajC(int paramInt)
     {
-      AppMethodBeat.i(211802);
+      AppMethodBeat.i(204564);
       if ((paramInt == 3) || (paramInt == 2)) {
-        ExtStorageMigrateMonitor.Do(108L);
+        ExtStorageMigrateMonitor.ME(108L);
       }
-      final ExtStorageMigrateAuxActivity localExtStorageMigrateAuxActivity = fmT();
+      final ExtStorageMigrateAuxActivity localExtStorageMigrateAuxActivity = gwG();
       if (localExtStorageMigrateAuxActivity == null)
       {
-        AppMethodBeat.o(211802);
+        AppMethodBeat.o(204564);
         return;
       }
       if ((ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity) != null) && (ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity).isShowing())) {
         ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity).dismiss();
       }
-      ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity, com.tencent.mm.sdcard_migrate.a.b.c(localExtStorageMigrateAuxActivity, ExtStorageMigrateAuxActivity.aaM(2131758657), ExtStorageMigrateAuxActivity.aaM(2131758669), new DialogInterface.OnClickListener()
+      ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity, com.tencent.mm.sdcard_migrate.a.b.b(localExtStorageMigrateAuxActivity, ExtStorageMigrateAuxActivity.ajB(2131758962), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(211795);
+          AppMethodBeat.i(204557);
           paramAnonymousDialogInterface.dismiss();
           ExtStorageMigrateRoutine.startWeChat(localExtStorageMigrateAuxActivity);
           ExtStorageMigrateAuxActivity.c(localExtStorageMigrateAuxActivity);
           localExtStorageMigrateAuxActivity.finish();
-          AppMethodBeat.o(211795);
+          AppMethodBeat.o(204557);
         }
       }));
-      AppMethodBeat.o(211802);
+      AppMethodBeat.o(204564);
     }
     
-    public final void aaO(int paramInt)
+    public final void ajD(int paramInt)
     {
-      AppMethodBeat.i(211803);
-      Object localObject1 = fmT();
+      AppMethodBeat.i(204565);
+      Object localObject1 = gwG();
       if (localObject1 == null)
       {
-        AppMethodBeat.o(211803);
+        AppMethodBeat.o(204565);
         return;
       }
       Object localObject2;
       String str;
       if ((ExtStorageMigrateAuxActivity.a((ExtStorageMigrateAuxActivity)localObject1) != null) && (ExtStorageMigrateAuxActivity.a((ExtStorageMigrateAuxActivity)localObject1).isShowing()))
       {
-        localObject2 = String.format(ExtStorageMigrateAuxActivity.aaM(2131758663), new Object[] { paramInt + "%" });
+        localObject2 = String.format(ExtStorageMigrateAuxActivity.ajB(2131758968), new Object[] { paramInt + "%" });
         str = null;
-        switch (this.Ite)
+        switch (this.NGC)
         {
         }
       }
@@ -505,57 +505,56 @@ public class ExtStorageMigrateAuxActivity
       {
         ExtStorageMigrateAuxActivity.a((ExtStorageMigrateAuxActivity)localObject1).setMessage((CharSequence)localObject2);
         localObject2 = ExtStorageMigrateAuxActivity.a((ExtStorageMigrateAuxActivity)localObject1);
-        ((c)localObject2).Ivm.setVisibility(0);
-        ((c)localObject2).Ive.setVisibility(0);
+        ((c)localObject2).NIK.setVisibility(0);
+        ((c)localObject2).NID.setVisibility(0);
         localObject1 = str;
-        if (((c)localObject2).Ivw != null)
+        if (((c)localObject2).NIU != null)
         {
-          localObject1 = ((c)localObject2).Ivw;
-          ((c)localObject2).Ivd.getContext();
+          localObject1 = ((c)localObject2).NIU;
+          ((c)localObject2).NIC.getContext();
           str.toString();
-          ((c)localObject2).Ive.getTextSize();
-          localObject1 = ((c.a.c)localObject1).fnA();
+          ((c)localObject2).NID.getTextSize();
+          localObject1 = ((c.a.c)localObject1).gxn();
         }
-        ((c)localObject2).Ive.setText((CharSequence)localObject1);
-        AppMethodBeat.o(211803);
+        ((c)localObject2).NID.setText((CharSequence)localObject1);
+        AppMethodBeat.o(204565);
         return;
         str = "—";
-        this.Ite = 1;
+        this.NGC = 1;
         continue;
         str = "\\";
-        this.Ite = 2;
+        this.NGC = 2;
         continue;
         str = "|";
-        this.Ite = 3;
+        this.NGC = 3;
         continue;
         str = "/";
-        this.Ite = 0;
+        this.NGC = 0;
       }
     }
     
-    protected final void fmU()
+    protected final void gwH()
     {
-      AppMethodBeat.i(211801);
-      final ExtStorageMigrateAuxActivity localExtStorageMigrateAuxActivity = fmT();
+      AppMethodBeat.i(204563);
+      final ExtStorageMigrateAuxActivity localExtStorageMigrateAuxActivity = gwG();
       if (localExtStorageMigrateAuxActivity == null)
       {
-        AppMethodBeat.o(211801);
+        AppMethodBeat.o(204563);
         return;
       }
       if ((ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity) != null) && (ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity).isShowing())) {
         ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity).dismiss();
       }
-      Object localObject = ExtStorageMigrateAuxActivity.aaM(2131758664);
-      String str1 = ExtStorageMigrateAuxActivity.aaM(2131758669);
-      String str2 = ExtStorageMigrateAuxActivity.aaM(2131755691);
+      Object localObject = ExtStorageMigrateAuxActivity.ajB(2131758969);
+      String str = ExtStorageMigrateAuxActivity.ajB(2131755761);
       DialogInterface.OnClickListener local1 = new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(211794);
-          ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateAuxActivity", "[+] User click cancel on migrating dlg.", new Object[0]);
+          AppMethodBeat.i(204556);
+          ExtStorageMigrateMonitor.gwK().i("MicroMsg.ExtStorageMigrateAuxActivity", "[+] User click cancel on migrating dlg.", new Object[0]);
           ExtStorageMigrateAuxActivity.b(localExtStorageMigrateAuxActivity);
-          AppMethodBeat.o(211794);
+          AppMethodBeat.o(204556);
         }
       };
       if (((localExtStorageMigrateAuxActivity instanceof Activity)) && (((Activity)localExtStorageMigrateAuxActivity).isFinishing())) {
@@ -564,130 +563,130 @@ public class ExtStorageMigrateAuxActivity
       for (;;)
       {
         ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity, (c)localObject);
-        AppMethodBeat.o(211801);
+        AppMethodBeat.o(204563);
         return;
         c.a locala = new c.a(localExtStorageMigrateAuxActivity);
-        locala.aRp(str1);
-        locala.aRq((String)localObject);
-        locala.aRr(str2).a(local1);
-        locala.fny();
-        localObject = locala.fnz();
+        locala.bhS(null);
+        locala.bhT((String)localObject);
+        locala.bhU(str).a(local1);
+        locala.AI(false);
+        localObject = locala.gxm();
         ((c)localObject).show();
         com.tencent.mm.sdcard_migrate.a.b.a(localExtStorageMigrateAuxActivity, (Dialog)localObject);
       }
     }
     
-    public final void fmV()
+    public final void gwI()
     {
-      AppMethodBeat.i(211805);
-      ExtStorageMigrateMonitor.Do(107L);
-      b.fns();
-      final ExtStorageMigrateAuxActivity localExtStorageMigrateAuxActivity = fmT();
+      AppMethodBeat.i(204567);
+      ExtStorageMigrateMonitor.ME(107L);
+      b.gxf();
+      final ExtStorageMigrateAuxActivity localExtStorageMigrateAuxActivity = gwG();
       if (localExtStorageMigrateAuxActivity == null)
       {
-        AppMethodBeat.o(211805);
+        AppMethodBeat.o(204567);
         return;
       }
       if ((ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity) != null) && (ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity).isShowing())) {
         ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity).dismiss();
       }
-      ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity, com.tencent.mm.sdcard_migrate.a.b.c(localExtStorageMigrateAuxActivity, ExtStorageMigrateAuxActivity.aaM(2131758668), ExtStorageMigrateAuxActivity.aaM(2131758669), new DialogInterface.OnClickListener()
+      ExtStorageMigrateAuxActivity.a(localExtStorageMigrateAuxActivity, com.tencent.mm.sdcard_migrate.a.b.b(localExtStorageMigrateAuxActivity, ExtStorageMigrateAuxActivity.ajB(2131758974), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
-          AppMethodBeat.i(211797);
+          AppMethodBeat.i(204559);
           paramAnonymousDialogInterface.dismiss();
           ExtStorageMigrateRoutine.startWeChat(localExtStorageMigrateAuxActivity);
           ExtStorageMigrateAuxActivity.c(localExtStorageMigrateAuxActivity);
           localExtStorageMigrateAuxActivity.finish();
-          AppMethodBeat.o(211797);
+          AppMethodBeat.o(204559);
         }
       }));
-      AppMethodBeat.o(211805);
+      AppMethodBeat.o(204567);
     }
     
-    public final void jw(int paramInt1, int paramInt2)
+    public final void kI(int paramInt1, int paramInt2)
     {
-      AppMethodBeat.i(211800);
-      ExtStorageMigrateMonitor.fmX().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] MigrateCallback was overrided, old_attached_pid: %s, new_attached_pid: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-      AppMethodBeat.o(211800);
+      AppMethodBeat.i(204562);
+      ExtStorageMigrateMonitor.gwK().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] MigrateCallback was overrided, old_attached_pid: %s, new_attached_pid: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      AppMethodBeat.o(204562);
     }
   }
   
   static final class a
     implements ServiceConnection
   {
-    private final WeakReference<ExtStorageMigrateAuxActivity> Itd;
-    private final boolean Ith;
-    private e Iti;
+    private final WeakReference<ExtStorageMigrateAuxActivity> NGB;
+    private final boolean NGF;
+    private e NGG;
     
     a(ExtStorageMigrateAuxActivity paramExtStorageMigrateAuxActivity, boolean paramBoolean)
     {
-      AppMethodBeat.i(211806);
-      this.Itd = new WeakReference(paramExtStorageMigrateAuxActivity);
-      this.Ith = paramBoolean;
-      this.Iti = null;
-      AppMethodBeat.o(211806);
+      AppMethodBeat.i(204568);
+      this.NGB = new WeakReference(paramExtStorageMigrateAuxActivity);
+      this.NGF = paramBoolean;
+      this.NGG = null;
+      AppMethodBeat.o(204568);
     }
     
     @SuppressLint({"NewApi"})
-    private ExtStorageMigrateAuxActivity fmT()
+    private ExtStorageMigrateAuxActivity gwG()
     {
-      AppMethodBeat.i(211807);
-      ExtStorageMigrateAuxActivity localExtStorageMigrateAuxActivity = (ExtStorageMigrateAuxActivity)this.Itd.get();
+      AppMethodBeat.i(204569);
+      ExtStorageMigrateAuxActivity localExtStorageMigrateAuxActivity = (ExtStorageMigrateAuxActivity)this.NGB.get();
       if ((localExtStorageMigrateAuxActivity == null) || (localExtStorageMigrateAuxActivity.isFinishing()) || (localExtStorageMigrateAuxActivity.isDestroyed()))
       {
-        AppMethodBeat.o(211807);
+        AppMethodBeat.o(204569);
         return null;
       }
-      AppMethodBeat.o(211807);
+      AppMethodBeat.o(204569);
       return localExtStorageMigrateAuxActivity;
     }
     
     public final void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
     {
-      AppMethodBeat.i(211808);
-      paramComponentName = fmT();
+      AppMethodBeat.i(204570);
+      paramComponentName = gwG();
       if (paramComponentName != null)
       {
         ExtStorageMigrateAuxActivity.a(paramComponentName, true);
-        this.Iti = e.a.N(paramIBinder);
-        if (this.Ith)
+        this.NGG = e.a.N(paramIBinder);
+        if (this.NGF)
         {
-          ExtStorageMigrateAuxActivity.a(paramComponentName, this.Iti, false);
-          AppMethodBeat.o(211808);
+          ExtStorageMigrateAuxActivity.a(paramComponentName, this.NGG, false);
+          AppMethodBeat.o(204570);
           return;
         }
-        ExtStorageMigrateAuxActivity.a(paramComponentName, this.Iti);
-        AppMethodBeat.o(211808);
+        ExtStorageMigrateAuxActivity.a(paramComponentName, this.NGG);
+        AppMethodBeat.o(204570);
         return;
       }
-      ExtStorageMigrateMonitor.fmX().e("MicroMsg.ExtStorageMigrateAuxActivity", "[-] Fail to get aux ui instance in onServiceConnected", new Object[0]);
-      AppMethodBeat.o(211808);
+      ExtStorageMigrateMonitor.gwK().e("MicroMsg.ExtStorageMigrateAuxActivity", "[-] Fail to get aux ui instance in onServiceConnected", new Object[0]);
+      AppMethodBeat.o(204570);
     }
     
     public final void onServiceDisconnected(ComponentName paramComponentName)
     {
-      AppMethodBeat.i(211809);
-      ExtStorageMigrateMonitor.fmX().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Service [%s] disconnected.", new Object[] { paramComponentName });
-      paramComponentName = fmT();
+      AppMethodBeat.i(204571);
+      ExtStorageMigrateMonitor.gwK().w("MicroMsg.ExtStorageMigrateAuxActivity", "[!] Service [%s] disconnected.", new Object[] { paramComponentName });
+      paramComponentName = gwG();
       if (paramComponentName != null) {
         ExtStorageMigrateAuxActivity.a(paramComponentName, false);
       }
-      AppMethodBeat.o(211809);
+      AppMethodBeat.o(204571);
     }
   }
   
   static abstract interface b
   {
-    public abstract void fmS();
+    public abstract void gwF();
   }
   
   static abstract interface c
   {
-    public abstract void aQP();
+    public abstract void blu();
     
-    public abstract void cL(String paramString, boolean paramBoolean);
+    public abstract void dg(String paramString, boolean paramBoolean);
   }
 }
 

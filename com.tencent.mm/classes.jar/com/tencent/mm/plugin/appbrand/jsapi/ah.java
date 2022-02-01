@@ -1,33 +1,15 @@
 package com.tencent.mm.plugin.appbrand.jsapi;
 
-import android.content.Intent;
-import com.tencent.luggage.h.e.c;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.HashMap;
-import java.util.Map;
-import org.json.JSONArray;
-import org.json.JSONException;
+import kotlin.l;
 
-public final class ah
-  extends a<h>
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/IReturnCopyUrlWatcher;", "", "onReturnUrl", "", "url", "", "luggage-wechat-full-sdk_release"})
+public abstract interface ah
 {
-  public static final int CTRL_INDEX = 58;
-  public static final String NAME = "addCard";
-  int cgA;
-  final int kup;
-  
-  public ah()
-  {
-    AppMethodBeat.i(174749);
-    this.kup = com.tencent.luggage.sdk.g.a.aC(this);
-    AppMethodBeat.o(174749);
-  }
+  public abstract void Zi(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ah
  * JD-Core Version:    0.7.0.1
  */

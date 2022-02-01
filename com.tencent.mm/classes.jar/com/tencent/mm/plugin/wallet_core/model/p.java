@@ -10,26 +10,26 @@ import java.util.Vector;
 
 public abstract class p<K>
 {
-  Map<String, Integer> DoQ = new HashMap();
-  List<K> DoR = new LinkedList();
-  public Vector<p<K>.b> DoS = new Vector();
-  List<String> DoT = new LinkedList();
+  Map<String, Integer> HYe = new HashMap();
+  List<K> HYf = new LinkedList();
+  public Vector<p<K>.b> HYg = new Vector();
+  List<String> HYh = new LinkedList();
   
-  private void eIY()
+  private void fQB()
   {
     int i = 0;
     int j;
-    if (i < this.DoS.size()) {
-      if (((b)this.DoS.get(i)).Dpa != a.DoW)
+    if (i < this.HYg.size()) {
+      if (((b)this.HYg.get(i)).HYo != a.HYk)
       {
-        Object localObject = a(this.DoS, i);
-        if (this.DoQ.containsKey(localObject)) {
+        Object localObject = a(this.HYg, i);
+        if (this.HYe.containsKey(localObject)) {
           break label158;
         }
-        localObject = d.aGj((String)localObject);
+        localObject = d.aVK((String)localObject);
         j = 0;
         label67:
-        if (j >= this.DoT.size()) {
+        if (j >= this.HYh.size()) {
           break label153;
         }
         k = 0;
@@ -37,7 +37,7 @@ public abstract class p<K>
         if (k >= localObject.length) {
           break label170;
         }
-        if (((String)this.DoT.get(j)).contains(localObject[k])) {
+        if (((String)this.HYh.get(j)).contains(localObject[k])) {
           break label139;
         }
       }
@@ -55,7 +55,7 @@ public abstract class p<K>
         if (j != 0) {
           break label158;
         }
-        a(i, a.DoV);
+        a(i, a.HYj);
       }
       for (;;)
       {
@@ -67,7 +67,7 @@ public abstract class p<K>
         break label67;
         j = 0;
         break label120;
-        a(i, a.DoX);
+        a(i, a.HYl);
       }
       return;
     }
@@ -77,37 +77,37 @@ public abstract class p<K>
   
   public final void a(int paramInt, a parama)
   {
-    ((b)this.DoS.get(paramInt)).Dpa = parama;
+    ((b)this.HYg.get(paramInt)).HYo = parama;
   }
   
-  public final void e(List<K> paramList1, List<K> paramList2, List<String> paramList)
+  public final void f(List<K> paramList1, List<K> paramList2, List<String> paramList)
   {
-    this.DoT = paramList;
-    this.DoR = paramList2;
-    this.DoS.clear();
-    this.DoS = new Vector(paramList1.size());
+    this.HYh = paramList;
+    this.HYf = paramList2;
+    this.HYg.clear();
+    this.HYg = new Vector(paramList1.size());
     int i = 0;
     if (i < paramList1.size())
     {
       paramList2 = new b();
       Object localObject = paramList1.get(i);
-      paramList2.DoZ = localObject;
-      if (this.DoR.contains(localObject)) {}
-      for (paramList2.Dpa = a.DoW;; paramList2.Dpa = a.DoV)
+      paramList2.HYn = localObject;
+      if (this.HYf.contains(localObject)) {}
+      for (paramList2.HYo = a.HYk;; paramList2.HYo = a.HYj)
       {
-        this.DoS.add(paramList2);
+        this.HYg.add(paramList2);
         i += 1;
         break;
       }
     }
-    this.DoQ.clear();
+    this.HYe.clear();
     i = 0;
     while (i < paramList.size())
     {
-      this.DoQ.put(paramList.get(i), Integer.valueOf(0));
+      this.HYe.put(paramList.get(i), Integer.valueOf(0));
       i += 1;
     }
-    eIY();
+    fQB();
   }
   
   public static enum a
@@ -115,10 +115,10 @@ public abstract class p<K>
     static
     {
       AppMethodBeat.i(70308);
-      DoV = new a("DISABLED", 0);
-      DoW = new a("CHECKED", 1);
-      DoX = new a("UNCHECKED", 2);
-      DoY = new a[] { DoV, DoW, DoX };
+      HYj = new a("DISABLED", 0);
+      HYk = new a("CHECKED", 1);
+      HYl = new a("UNCHECKED", 2);
+      HYm = new a[] { HYj, HYk, HYl };
       AppMethodBeat.o(70308);
     }
     
@@ -127,15 +127,15 @@ public abstract class p<K>
   
   public final class b
   {
-    public K DoZ;
-    public p.a Dpa;
+    public K HYn;
+    public p.a HYo;
     
     public b() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.p
  * JD-Core Version:    0.7.0.1
  */

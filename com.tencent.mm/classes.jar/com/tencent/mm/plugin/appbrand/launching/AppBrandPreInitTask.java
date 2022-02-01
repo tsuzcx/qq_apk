@@ -4,27 +4,35 @@ import android.app.Activity;
 import android.content.Context;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.e.i;
+import com.tencent.f.i;
 import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
+import com.tencent.mm.plugin.appbrand.keylogger.c;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.report.quality.o;
+import com.tencent.mm.plugin.appbrand.report.w;
+import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
+import com.tencent.mm.plugin.teenmode.a.b;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Locale;
+import java.util.Objects;
 
 public final class AppBrandPreInitTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<AppBrandPreInitTask> CREATOR;
-  private transient a lIF;
-  private ActivityStarterIpcDelegate lIG;
-  private LaunchParcel lIH;
-  private boolean lII;
-  private AppBrandInitConfigWC lIJ;
-  private String lIK;
+  private Context context;
+  private transient a mQt;
+  private ActivityStarterIpcDelegate mQu;
+  private LaunchParcel mQv;
+  private boolean mQw;
+  private AppBrandInitConfigWC mQx;
+  private boolean mQy;
   
   static
   {
@@ -33,25 +41,23 @@ public final class AppBrandPreInitTask
     AppMethodBeat.o(47079);
   }
   
-  public AppBrandPreInitTask(Context paramContext, LaunchParcel paramLaunchParcel, String paramString, a parama)
+  public AppBrandPreInitTask(Context paramContext, LaunchParcel paramLaunchParcel, a parama)
   {
-    this(paramContext, paramLaunchParcel, paramString, false, parama);
-    AppMethodBeat.i(47071);
-    AppMethodBeat.o(47071);
+    this(paramContext, paramLaunchParcel, false, parama);
   }
   
-  public AppBrandPreInitTask(Context paramContext, LaunchParcel paramLaunchParcel, String paramString, boolean paramBoolean, a parama)
+  public AppBrandPreInitTask(Context paramContext, LaunchParcel paramLaunchParcel, boolean paramBoolean, a parama)
   {
-    AppMethodBeat.i(222741);
-    this.lIH = paramLaunchParcel;
-    this.lIK = paramString;
-    this.lII = paramBoolean;
-    this.lIF = parama;
+    AppMethodBeat.i(227054);
+    this.context = paramContext;
+    this.mQv = paramLaunchParcel;
+    this.mQw = paramBoolean;
+    this.mQt = parama;
     if ((paramContext instanceof Activity)) {}
-    for (this.lIG = new ActivityStarterIpcDelegate((Activity)paramContext);; this.lIG = null)
+    for (this.mQu = new ActivityStarterIpcDelegate((Activity)paramContext);; this.mQu = null)
     {
-      this.lIH.lIP = this.lIG;
-      AppMethodBeat.o(222741);
+      this.mQv.mQC = this.mQu;
+      AppMethodBeat.o(227054);
       return;
     }
   }
@@ -59,55 +65,76 @@ public final class AppBrandPreInitTask
   private AppBrandPreInitTask(Parcel paramParcel)
   {
     AppMethodBeat.i(47077);
-    e(paramParcel);
+    f(paramParcel);
     AppMethodBeat.o(47077);
   }
   
-  public final void aOX()
+  public final void bNf()
+  {
+    AppMethodBeat.i(47072);
+    if (this.mQv.mYM == 0L) {
+      this.mQv.mYM = Util.nowMilliSecond();
+    }
+    bDJ();
+    AppBrandMainProcessService.a(this);
+    AppMethodBeat.o(47072);
+  }
+  
+  public final void bjj()
   {
     AppMethodBeat.i(47074);
-    final f localf = new f(this.lIH, this.lIK, this.lII, new e.a() {});
-    final String str = this.lIH.appId;
-    final int i = this.lIH.hSZ;
-    com.tencent.e.h.MqF.aQ(new com.tencent.e.i.h()
+    Object localObject1 = com.tencent.mm.plugin.appbrand.report.quality.g.c(this.mQv, (String)Objects.requireNonNull(this.mQv.appId));
+    Object localObject2 = w.nHZ;
+    w.b(this.mQv, (String)localObject1);
+    if (o.bVk())
+    {
+      localObject2 = o.nMe;
+      o.eI(this.mQv.appId, (String)localObject1);
+      c.e(KSProcessWeAppLaunch.class, this.mQv.appId);
+      c.a(KSProcessWeAppLaunch.class, this.mQv.appId, String.format("Network:%s", new Object[] { NetStatusUtil.getNetTypeString(this.context) }));
+    }
+    localObject1 = new f(this.mQv, (String)localObject1, this.mQw, new e.a() {});
+    localObject2 = this.mQv.appId;
+    final int i = this.mQv.iOo;
+    com.tencent.f.h.RTc.aZ(new com.tencent.f.i.h()
     {
       public final String getKey()
       {
-        AppMethodBeat.i(222740);
-        String str = String.format(Locale.US, "AppBrandPreInitTask-%s|%d", new Object[] { str, Integer.valueOf(i) });
-        AppMethodBeat.o(222740);
+        AppMethodBeat.i(227053);
+        String str = String.format(Locale.US, "AppBrandPreInitTask-%s|%d", new Object[] { this.val$appId, Integer.valueOf(i) });
+        AppMethodBeat.o(227053);
         return str;
       }
       
       public final void run()
       {
         AppMethodBeat.i(47069);
-        localf.run();
+        this.mQA.run();
         AppMethodBeat.o(47069);
       }
     });
     AppMethodBeat.o(47074);
   }
   
-  public final void aOY()
+  public final void bjk()
   {
     AppMethodBeat.i(47073);
-    if (this.lIF != null) {
-      this.lIF.a(this.lIJ, this.lIH.lRA);
+    if (this.mQt != null)
+    {
+      if (!this.mQy) {
+        break label57;
+      }
+      this.mQt.a(null, null);
+      ((b)com.tencent.mm.kernel.g.af(b.class)).hr(this.context);
     }
-    bix();
-    AppMethodBeat.o(47073);
-  }
-  
-  public final void bru()
-  {
-    AppMethodBeat.i(47072);
-    if (this.lIH.lRC == 0L) {
-      this.lIH.lRC = bu.fpO();
+    for (;;)
+    {
+      bDK();
+      AppMethodBeat.o(47073);
+      return;
+      label57:
+      this.mQt.a(this.mQx, this.mQv.mYK);
     }
-    biw();
-    AppBrandMainProcessService.a(this);
-    AppMethodBeat.o(47072);
   }
   
   public final int describeContents()
@@ -115,35 +142,57 @@ public final class AppBrandPreInitTask
     return 0;
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
+    boolean bool2 = true;
     AppMethodBeat.i(47076);
-    this.lIH = ((LaunchParcel)paramParcel.readParcelable(LaunchParcel.class.getClassLoader()));
-    this.lIK = paramParcel.readString();
-    if (paramParcel.readByte() > 0) {}
-    for (boolean bool = true;; bool = false)
+    this.mQv = ((LaunchParcel)paramParcel.readParcelable(LaunchParcel.class.getClassLoader()));
+    if (paramParcel.readByte() > 0)
     {
-      this.lII = bool;
-      this.lIJ = ((AppBrandInitConfigWC)paramParcel.readParcelable(AppBrandInitConfigWC.class.getClassLoader()));
-      this.lIG = ((ActivityStarterIpcDelegate)paramParcel.readParcelable(ActivityStarterIpcDelegate.class.getClassLoader()));
+      bool1 = true;
+      this.mQw = bool1;
+      this.mQx = ((AppBrandInitConfigWC)paramParcel.readParcelable(AppBrandInitConfigWC.class.getClassLoader()));
+      this.mQu = ((ActivityStarterIpcDelegate)paramParcel.readParcelable(ActivityStarterIpcDelegate.class.getClassLoader()));
+      if (paramParcel.readByte() == 0) {
+        break label95;
+      }
+    }
+    label95:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      this.mQy = bool1;
       AppMethodBeat.o(47076);
       return;
+      bool1 = false;
+      break;
     }
   }
   
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
+    byte b = 1;
     AppMethodBeat.i(47075);
-    paramParcel.writeParcelable(this.lIH, paramInt);
-    paramParcel.writeString(this.lIK);
-    if (this.lII) {}
-    for (int i = 1;; i = 0)
+    paramParcel.writeParcelable(this.mQv, paramInt);
+    int i;
+    if (this.mQw)
     {
+      i = 1;
       paramParcel.writeByte((byte)i);
-      paramParcel.writeParcelable(this.lIJ, paramInt);
-      paramParcel.writeParcelable(this.lIG, paramInt);
+      paramParcel.writeParcelable(this.mQx, paramInt);
+      paramParcel.writeParcelable(this.mQu, paramInt);
+      if (!this.mQy) {
+        break label77;
+      }
+    }
+    for (;;)
+    {
+      paramParcel.writeByte(b);
       AppMethodBeat.o(47075);
       return;
+      i = 0;
+      break;
+      label77:
+      b = 0;
     }
   }
   
@@ -154,7 +203,7 @@ public final class AppBrandPreInitTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.AppBrandPreInitTask
  * JD-Core Version:    0.7.0.1
  */

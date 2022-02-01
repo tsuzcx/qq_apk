@@ -6,16 +6,16 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.a.a;
 import com.tencent.mm.pluginsdk.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ad
-  extends br
+  extends bs
 {
-  public final void a(Context paramContext, String paramString, final bq.a parama)
+  public final void a(Context paramContext, String paramString, final br.a parama)
   {
     AppMethodBeat.i(78569);
     try
@@ -23,7 +23,7 @@ public class ad
       Object localObject = new JSONObject(paramString);
       paramString = ((JSONObject)localObject).optString("tousername");
       String str1 = ((JSONObject)localObject).optString("extmsg");
-      ae.d("MicroMsg.JsApiJumpToBizProfile", "doJumpToBizProfile %s, %s", new Object[] { paramString, str1 });
+      Log.d("MicroMsg.JsApiJumpToBizProfile", "doJumpToBizProfile %s, %s", new Object[] { paramString, str1 });
       String str2 = ((JSONObject)localObject).optString("currentUrl");
       localObject = new Intent();
       ((Intent)localObject).putExtra("toUserName", paramString);
@@ -32,48 +32,48 @@ public class ad
       ((Intent)localObject).putExtra("source", 2);
       paramString = new MMActivity.a()
       {
-        public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
         {
           AppMethodBeat.i(78568);
           if (paramAnonymousInt1 == (ad.this.hashCode() & 0xFFFF)) {
-            ae.i("MicroMsg.JsApiJumpToBizProfile", "request jumpToBizProfile, resultCode = ".concat(String.valueOf(paramAnonymousInt2)));
+            Log.i("MicroMsg.JsApiJumpToBizProfile", "request jumpToBizProfile, resultCode = ".concat(String.valueOf(paramAnonymousInt2)));
           }
           switch (paramAnonymousInt2)
           {
           case 1: 
           default: 
-            parama.f("fail", null);
-            ae.e("MicroMsg.JsApiJumpToBizProfile", "unknown resultCode");
+            parama.i("fail", null);
+            Log.e("MicroMsg.JsApiJumpToBizProfile", "unknown resultCode");
             AppMethodBeat.o(78568);
             return;
           case -1: 
-            parama.f(null, null);
+            parama.i(null, null);
             AppMethodBeat.o(78568);
             return;
           case 0: 
-            parama.f("cancel", null);
+            parama.i("cancel", null);
             AppMethodBeat.o(78568);
             return;
           }
-          parama.f("check_fail", null);
+          parama.i("check_fail", null);
           AppMethodBeat.o(78568);
         }
       };
-      a.iUz.a((Intent)localObject, hashCode() & 0xFFFF, paramString, (MMActivity)paramContext);
+      a.jRt.a((Intent)localObject, hashCode() & 0xFFFF, paramString, (MMActivity)paramContext);
       AppMethodBeat.o(78569);
       return;
     }
     catch (JSONException paramContext)
     {
-      ae.e("MicroMsg.JsApiJumpToBizProfile", "parase json fail");
-      parama.f("fail", null);
+      Log.e("MicroMsg.JsApiJumpToBizProfile", "parase json fail");
+      parama.i("fail", null);
       AppMethodBeat.o(78569);
     }
   }
   
   public final void b(b.a parama) {}
   
-  public final int ced()
+  public final int dTs()
   {
     return 2;
   }

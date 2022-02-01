@@ -7,17 +7,17 @@ import android.widget.ListView;
 public final class m
   extends a
 {
-  private final ListView Up;
+  private final ListView UB;
   
   public m(ListView paramListView)
   {
     super(paramListView);
-    this.Up = paramListView;
+    this.UB = paramListView;
   }
   
-  public final void aR(int paramInt)
+  public final void aS(int paramInt)
   {
-    ListView localListView = this.Up;
+    ListView localListView = this.UB;
     if (Build.VERSION.SDK_INT >= 19) {
       localListView.scrollListBy(paramInt);
     }
@@ -35,9 +35,9 @@ public final class m
     localListView.setSelectionFromTop(i, localView.getTop() - paramInt);
   }
   
-  public final boolean aS(int paramInt)
+  public final boolean aT(int paramInt)
   {
-    ListView localListView = this.Up;
+    ListView localListView = this.UB;
     int i = localListView.getCount();
     if (i == 0) {}
     int j;

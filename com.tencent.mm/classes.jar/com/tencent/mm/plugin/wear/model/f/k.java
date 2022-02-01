@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wear.model.f;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wear.model.a;
 import com.tencent.mm.plugin.wear.model.e.r;
-import com.tencent.mm.protocal.protobuf.eez;
+import com.tencent.mm.protocal.protobuf.ezh;
 import java.io.IOException;
 
 public final class k
@@ -26,17 +26,17 @@ public final class k
   protected final void send()
   {
     AppMethodBeat.i(30133);
-    eez localeez = new eez();
+    ezh localezh = new ezh();
     switch (this.code)
     {
     }
     for (;;)
     {
-      localeez.HJs = this.msg;
+      localezh.MVg = this.msg;
       try
       {
-        a.eOh();
-        r.a(20016, localeez.toByteArray(), true);
+        a.fVQ();
+        r.a(20016, localezh.toByteArray(), true);
         AppMethodBeat.o(30133);
         return;
       }
@@ -44,15 +44,15 @@ public final class k
       {
         AppMethodBeat.o(30133);
       }
-      localeez.HQX = 0;
+      localezh.NcY = 0;
       continue;
-      localeez.HQX = 196610;
+      localezh.NcY = 196610;
       continue;
-      localeez.HQX = 196613;
+      localezh.NcY = 196613;
       continue;
-      localeez.HQX = 196614;
+      localezh.NcY = 196614;
       continue;
-      localeez.HQX = 196615;
+      localezh.NcY = 196615;
     }
   }
 }

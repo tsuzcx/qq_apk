@@ -5,75 +5,68 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class cfn
   extends com.tencent.mm.bw.a
 {
-  public String bVF;
-  public int status;
-  public String userName;
+  public String Mly;
+  public String Mlz;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152636);
+    AppMethodBeat.i(123622);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.userName != null) {
-        paramVarArgs.d(1, this.userName);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.Mly != null) {
+        paramVarArgs.e(1, this.Mly);
       }
-      paramVarArgs.aS(2, this.status);
-      if (this.bVF != null) {
-        paramVarArgs.d(3, this.bVF);
+      if (this.Mlz != null) {
+        paramVarArgs.e(2, this.Mlz);
       }
-      AppMethodBeat.o(152636);
+      AppMethodBeat.o(123622);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.userName == null) {
-        break label318;
+      if (this.Mly == null) {
+        break label274;
       }
     }
-    label318:
-    for (paramInt = f.a.a.b.b.a.e(1, this.userName) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = g.a.a.b.b.a.f(1, this.Mly) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.status);
-      paramInt = i;
-      if (this.bVF != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.bVF);
+      int i = paramInt;
+      if (this.Mlz != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.Mlz);
       }
-      AppMethodBeat.o(152636);
-      return paramInt;
+      AppMethodBeat.o(123622);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(152636);
+        AppMethodBeat.o(123622);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         cfn localcfn = (cfn)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(152636);
+          AppMethodBeat.o(123622);
           return -1;
         case 1: 
-          localcfn.userName = locala.OmT.readString();
-          AppMethodBeat.o(152636);
-          return 0;
-        case 2: 
-          localcfn.status = locala.OmT.zc();
-          AppMethodBeat.o(152636);
+          localcfn.Mly = locala.UbS.readString();
+          AppMethodBeat.o(123622);
           return 0;
         }
-        localcfn.bVF = locala.OmT.readString();
-        AppMethodBeat.o(152636);
+        localcfn.Mlz = locala.UbS.readString();
+        AppMethodBeat.o(123622);
         return 0;
       }
-      AppMethodBeat.o(152636);
+      AppMethodBeat.o(123622);
       return -1;
     }
   }

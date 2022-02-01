@@ -4,14 +4,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class d
 {
-  public int gDe;
-  public int pcE;
-  public int uXo;
+  public int hpS;
+  public int qrD;
+  public int ypP;
   
   public final String toString()
   {
     AppMethodBeat.i(25412);
-    String str = String.format("IPCallUserInfo, userStatus: %d, syncKey: %d, memberId: %d", new Object[] { Integer.valueOf(this.gDe), Integer.valueOf(this.uXo), Integer.valueOf(this.pcE) });
+    String str = String.format("IPCallUserInfo, userStatus: %d, syncKey: %d, memberId: %d", new Object[] { Integer.valueOf(this.hpS), Integer.valueOf(this.ypP), Integer.valueOf(this.qrD) });
     AppMethodBeat.o(25412);
     return str;
   }

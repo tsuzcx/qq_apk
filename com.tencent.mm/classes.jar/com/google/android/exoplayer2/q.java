@@ -4,11 +4,11 @@ public abstract interface q
 {
   public abstract void a(p paramp);
   
-  public abstract void a(a parama);
+  public abstract void a(q.a parama);
   
-  public abstract void aP(boolean paramBoolean);
+  public abstract void aO(boolean paramBoolean);
   
-  public abstract void b(a parama);
+  public abstract void b(q.a parama);
   
   public abstract int getBufferedPercentage();
   
@@ -28,32 +28,13 @@ public abstract interface q
   
   public abstract void stop();
   
-  public abstract int td();
+  public abstract int ti();
   
-  public abstract boolean te();
-  
-  public static abstract interface a
-  {
-    public abstract void a(e parame);
-    
-    public abstract void aA(int paramInt);
-    
-    public abstract void aS(boolean paramBoolean);
-    
-    public abstract void b(p paramp);
-    
-    public abstract void e(boolean paramBoolean, int paramInt);
-    
-    public abstract void tt();
-    
-    public abstract void tu();
-    
-    public abstract void tv();
-  }
+  public abstract boolean tj();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.q
  * JD-Core Version:    0.7.0.1
  */

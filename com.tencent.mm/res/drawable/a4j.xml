@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@raw/multitalk_pickup_press" />
-    <item android:state_pressed="false" android:drawable="@raw/multitalk_pickup" />
-</selector>
+    <item>
+        <rotate android:drawable="@drawable/apc" android:fromDegrees="0.0" android:toDegrees="1800.0" android:pivotX="50.0%" android:pivotY="50.0%" />
+    </item>
+</layer-list>

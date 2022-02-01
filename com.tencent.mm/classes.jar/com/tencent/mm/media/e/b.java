@@ -4,62 +4,62 @@ import android.media.MediaCodec.BufferInfo;
 import android.os.Looper;
 import android.view.Surface;
 import com.tencent.mm.media.b.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.a.a;
-import d.g.a.m;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.ByteBuffer;
+import kotlin.g.a.a;
+import kotlin.g.a.m;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "Lcom/tencent/mm/media/encoder/ITransEncoder;", "videoCodecConfig", "Lcom/tencent/mm/media/config/VideoCodecConfig;", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(Lcom/tencent/mm/media/config/VideoCodecConfig;Lkotlin/jvm/functions/Function1;)V", "TAG", "", "codecSurface", "Landroid/view/Surface;", "getCodecSurface", "()Landroid/view/Surface;", "setCodecSurface", "(Landroid/view/Surface;)V", "encoderLock", "Ljava/lang/Object;", "getEncoderLock", "()Ljava/lang/Object;", "frameNum", "", "getFrameNum", "()I", "setFrameNum", "(I)V", "getInit", "()Lkotlin/jvm/functions/Function1;", "setInit", "(Lkotlin/jvm/functions/Function1;)V", "isFinishEncode", "", "()Z", "setFinishEncode", "(Z)V", "isRelease", "setRelease", "onEncodeDataCallback", "Lkotlin/Function2;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "data", "Landroid/media/MediaCodec$BufferInfo;", "bufferInfo", "getOnEncodeDataCallback", "()Lkotlin/jvm/functions/Function2;", "setOnEncodeDataCallback", "(Lkotlin/jvm/functions/Function2;)V", "onEncodeEnd", "Lkotlin/Function0;", "getOnEncodeEnd", "()Lkotlin/jvm/functions/Function0;", "setOnEncodeEnd", "(Lkotlin/jvm/functions/Function0;)V", "useInRemuxer", "getUseInRemuxer", "setUseInRemuxer", "getVideoCodecConfig", "()Lcom/tencent/mm/media/config/VideoCodecConfig;", "setVideoCodecConfig", "(Lcom/tencent/mm/media/config/VideoCodecConfig;)V", "encodeFrame", "pts", "", "finishEncode", "getFrameCount", "getInputSurface", "getRecordTimes", "onEncode", "callback", "processEncodeBuffer", "buffer", "releaseEncoder", "useInRemux", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/encoder/IMediaCodecTransEncoder;", "Lcom/tencent/mm/media/encoder/ITransEncoder;", "videoCodecConfig", "Lcom/tencent/mm/media/config/VideoCodecConfig;", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(Lcom/tencent/mm/media/config/VideoCodecConfig;Lkotlin/jvm/functions/Function1;)V", "TAG", "", "codecSurface", "Landroid/view/Surface;", "getCodecSurface", "()Landroid/view/Surface;", "setCodecSurface", "(Landroid/view/Surface;)V", "encoderLock", "Ljava/lang/Object;", "getEncoderLock", "()Ljava/lang/Object;", "frameNum", "", "getFrameNum", "()I", "setFrameNum", "(I)V", "getInit", "()Lkotlin/jvm/functions/Function1;", "setInit", "(Lkotlin/jvm/functions/Function1;)V", "isFinishEncode", "", "()Z", "setFinishEncode", "(Z)V", "isRelease", "setRelease", "onEncodeDataCallback", "Lkotlin/Function2;", "Ljava/nio/ByteBuffer;", "Lkotlin/ParameterName;", "name", "data", "Landroid/media/MediaCodec$BufferInfo;", "bufferInfo", "getOnEncodeDataCallback", "()Lkotlin/jvm/functions/Function2;", "setOnEncodeDataCallback", "(Lkotlin/jvm/functions/Function2;)V", "onEncodeEnd", "Lkotlin/Function0;", "getOnEncodeEnd", "()Lkotlin/jvm/functions/Function0;", "setOnEncodeEnd", "(Lkotlin/jvm/functions/Function0;)V", "useInRemuxer", "getUseInRemuxer", "setUseInRemuxer", "getVideoCodecConfig", "()Lcom/tencent/mm/media/config/VideoCodecConfig;", "setVideoCodecConfig", "(Lcom/tencent/mm/media/config/VideoCodecConfig;)V", "encodeFrame", "pts", "", "finishEncode", "getFrameCount", "getInputSurface", "getRecordTimes", "onEncode", "callback", "processEncodeBuffer", "buffer", "releaseEncoder", "useInRemux", "plugin-mediaeditor_release"})
 public abstract class b
 {
   private final String TAG;
   public int frameNum;
-  public boolean hlB;
-  protected Surface hme;
-  public m<? super ByteBuffer, ? super MediaCodec.BufferInfo, z> hmf;
-  public a<z> hmg;
-  volatile boolean hmh;
-  volatile boolean hmi;
-  final Object hmj;
-  private d hmk;
-  private d.g.a.b<? super b, z> hml;
+  public boolean iex;
+  protected Surface ifa;
+  public m<? super ByteBuffer, ? super MediaCodec.BufferInfo, x> ifb;
+  public a<x> ifc;
+  volatile boolean ifd;
+  volatile boolean ife;
+  final Object iff;
+  private d ifg;
+  private kotlin.g.a.b<? super b, x> ifh;
   
-  public b(d paramd, d.g.a.b<? super b, z> paramb)
+  public b(d paramd, kotlin.g.a.b<? super b, x> paramb)
   {
-    this.hmk = paramd;
-    this.hml = paramb;
+    this.ifg = paramd;
+    this.ifh = paramb;
     this.TAG = "MicroMsg.IMediaCodecTransEncoder";
-    this.hmj = new Object();
+    this.iff = new Object();
   }
   
-  public abstract void atH();
+  public abstract void aMi();
   
-  public abstract void atI();
+  public abstract void aMj();
   
-  protected final Surface atJ()
+  protected final Surface aMk()
   {
-    Surface localSurface = this.hme;
+    Surface localSurface = this.ifa;
     if (localSurface == null) {
-      p.bdF("codecSurface");
+      p.btv("codecSurface");
     }
     return localSurface;
   }
   
-  public abstract void atK();
+  public abstract void aMl();
   
-  public abstract long atL();
+  public abstract long aMm();
   
   protected final void f(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
   {
     p.h(paramByteBuffer, "buffer");
     p.h(paramBufferInfo, "bufferInfo");
-    ae.i(this.TAG, "processEncodeBuffer, buffer " + paramByteBuffer + ", pts: " + paramBufferInfo.presentationTimeUs + ", size: " + paramBufferInfo.size + ", isMain: " + p.i(Looper.getMainLooper(), Looper.myLooper()));
-    m localm = this.hmf;
+    Log.i(this.TAG, "processEncodeBuffer, buffer " + paramByteBuffer + ", pts: " + paramBufferInfo.presentationTimeUs + ", size: " + paramBufferInfo.size + ", isMain: " + p.j(Looper.getMainLooper(), Looper.myLooper()));
+    m localm = this.ifb;
     if (localm != null) {
-      localm.p(paramByteBuffer, paramBufferInfo);
+      localm.invoke(paramByteBuffer, paramBufferInfo);
     }
     this.frameNum += 1;
   }
@@ -67,21 +67,21 @@ public abstract class b
   protected final void g(Surface paramSurface)
   {
     p.h(paramSurface, "<set-?>");
-    this.hme = paramSurface;
+    this.ifa = paramSurface;
   }
   
   public final Surface getInputSurface()
   {
-    Surface localSurface = this.hme;
+    Surface localSurface = this.ifa;
     if (localSurface == null) {
-      p.bdF("codecSurface");
+      p.btv("codecSurface");
     }
     return localSurface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.media.e.b
  * JD-Core Version:    0.7.0.1
  */

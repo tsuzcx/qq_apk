@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.ui.NoDrawingCacheLinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="200.0dip" android:src="@raw/app_brand_desktop_full_empty_icon" />
-    <TextView android:textSize="@dimen/os" android:textColor="@color/d7" android:gravity="center" android:id="@id/g7g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i_" android:text="@string/j7" />
-</LinearLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/bdq" android:background="?sg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:id="@id/bdr" android:background="@null" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/e" android:layout_width="wrap_content" android:layout_alignParentStart="true" style="@style/nq" />
+        <com.tencent.mm.ui.contact.CategoryTipView android:id="@id/bdt" android:paddingLeft="@dimen/cb" android:paddingRight="@dimen/e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:importantForAccessibility="yes">
+        <RelativeLayout android:id="@id/be0" android:layout_width="fill_parent" android:layout_height="@dimen/i0">
+            <TextView android:id="@id/be1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="signature" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/hn" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/bh" android:id="@id/bdn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" android:text="@string/dx" android:layout_toLeftOf="@id/be1" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/g4q" android:background="@drawable/b9w" android:paddingRight="36.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:maxEms="4" android:singleLine="true" android:layout_toLeftOf="@id/bdn" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingLeft="10.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/g4q">
+                <com.tencent.mm.ui.chatting.view.AvatarImageView android:id="@id/hg" android:layout_marginRight="10.0dip" android:importantForAccessibility="no" style="@style/gn" />
+                <com.tencent.mm.ui.base.NoMeasuredTextView android:id="@id/ft6" android:background="@drawable/b9w" android:paddingRight="@dimen/e" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.mm.ui.NoDrawingCacheLinearLayout>

@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/ba" />
-</selector>
+    <item android:id="@android:id/background">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/gp" />
+            <stroke android:width="@dimen/a2" android:color="@color/gs" />
+        </shape>
+    </item>
+    <item android:id="@android:id/secondaryProgress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="@color/go" />
+                <corners android:radius="@dimen/a0" />
+            </shape>
+        </clip>
+    </item>
+    <item android:id="@android:id/progress">
+        <clip>
+            <shape android:shape="rectangle">
+                <solid android:color="@color/go" />
+                <corners android:radius="@dimen/a0" />
+            </shape>
+        </clip>
+    </item>
+</layer-list>

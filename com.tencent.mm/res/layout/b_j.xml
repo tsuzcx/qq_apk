@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.sns.ui.PhotosContent android:id="@id/ed3" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/arw" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="48.0dip" style="@style/tv"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/hx" android:layout_width="73.0dip" android:layout_height="73.0dip" android:layout_margin="1.0dip" android:scaleType="centerCrop" android:maxHeight="350.0dip" />
-    <com.tencent.mm.plugin.sns.ui.MaskImageView android:id="@id/dm5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:scaleType="centerCrop" />
-    <ImageView android:id="@id/ft0" android:visibility="gone" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/shortvideo_play_btn" />
-</com.tencent.mm.plugin.sns.ui.PhotosContent>
+    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:background="@drawable/arw" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:ellipsize="end" android:gravity="center|left" android:id="@android:id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="9.0dip" android:singleLine="true" android:layout_weight="1.0" style="@style/mi" />
+        <ImageButton android:id="@id/gg0" android:background="@android:color/transparent" android:focusable="false" android:layout_width="50.0dip" android:layout_height="fill_parent" android:src="@drawable/bmt" />
+    </LinearLayout>
+</LinearLayout>

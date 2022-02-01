@@ -78,7 +78,7 @@ public final class TinkerDexOptimizer
     private final Context context;
     private final File dexFile;
     private final File optimizedDir;
-    private final boolean useDLCOnAPI29AndAbove;
+    private final boolean useDLC;
     private final boolean useInterpretMode;
     
     OptimizeWorker(Context paramContext, File paramFile1, File paramFile2, boolean paramBoolean1, boolean paramBoolean2, String paramString, TinkerDexOptimizer.ResultCallback paramResultCallback)
@@ -87,7 +87,7 @@ public final class TinkerDexOptimizer
       this.dexFile = paramFile1;
       this.optimizedDir = paramFile2;
       this.useInterpretMode = paramBoolean1;
-      this.useDLCOnAPI29AndAbove = paramBoolean2;
+      this.useDLC = paramBoolean2;
       this.callback = paramResultCallback;
       targetISA = paramString;
     }
@@ -648,7 +648,7 @@ public final class TinkerDexOptimizer
         if ((Build.VERSION.SDK_INT < 26) && ((Build.VERSION.SDK_INT < 25) || (Build.VERSION.PREVIEW_SDK_INT == 0))) {
           continue;
         }
-        NewClassLoaderInjector.triggerDex2Oat(this.context, this.optimizedDir, this.useDLCOnAPI29AndAbove, new String[] { this.dexFile.getAbsolutePath() });
+        NewClassLoaderInjector.triggerDex2Oat(this.context, this.optimizedDir, this.useDLC, new String[] { this.dexFile.getAbsolutePath() });
         triggerPMDexOptOnDemand(this.context, this.dexFile.getAbsolutePath(), str);
       }
       label318:

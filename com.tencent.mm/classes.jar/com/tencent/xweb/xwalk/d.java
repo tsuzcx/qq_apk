@@ -11,30 +11,23 @@ import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.content.pm.ApplicationInfo;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Environment;
 import android.os.Process;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.webkit.ValueCallback;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -50,14 +43,17 @@ import com.tencent.xweb.JsRuntime.JsRuntimeType;
 import com.tencent.xweb.WebView.c;
 import com.tencent.xweb.ah;
 import com.tencent.xweb.e;
+import com.tencent.xweb.f;
 import com.tencent.xweb.f.a;
-import com.tencent.xweb.internal.j.a;
-import com.tencent.xweb.q;
+import com.tencent.xweb.f.c;
+import com.tencent.xweb.internal.l;
+import com.tencent.xweb.internal.l.a;
 import com.tencent.xweb.s;
 import com.tencent.xweb.s.a;
 import com.tencent.xweb.w;
 import com.tencent.xweb.xwalk.a.a.a;
-import com.tencent.xweb.xwalk.a.l;
+import com.tencent.xweb.xwalk.a.j;
+import com.tencent.xweb.xwalk.a.k;
 import com.tencent.xweb.xwalk.updater.Scheduler;
 import com.tencent.xweb.xwalk.updater.XWebCoreScheduler;
 import com.tencent.xweb.y;
@@ -82,112 +78,44 @@ import org.xwalk.core.XWalkUpdater.UpdateConfig;
 public final class d
   implements com.tencent.xweb.internal.d
 {
-  Context MMV;
-  com.tencent.xweb.WebView MSJ;
-  String MSK;
-  ScrollView MSL;
-  TextView MSM;
-  TextView MSN;
-  TextView MSO;
-  Button MSP;
-  View MSQ;
-  boolean MSR;
-  String MSS;
-  private final String MST;
-  private final String MSU;
-  private final String MSV;
-  private final String MSW;
-  private View.OnClickListener MSX;
+  com.tencent.xweb.WebView SFP;
+  String SFQ;
+  ScrollView SFR;
+  TextView SFS;
+  TextView SFT;
+  TextView SFU;
+  Button SFV;
+  View SFW;
+  boolean SFX;
+  String SFY;
+  private final String SFZ;
+  private final String SGa;
+  private final String SGb;
+  private final String SGc;
+  private View.OnClickListener SGd;
+  Context SzQ;
   
   public d(com.tencent.xweb.WebView paramWebView)
   {
     AppMethodBeat.i(154224);
-    this.MSK = "";
-    this.MSL = null;
-    this.MSM = null;
-    this.MSN = null;
-    this.MSO = null;
-    this.MSP = null;
-    this.MSR = false;
-    this.MSS = "tools";
-    this.MST = "当前Dark Mode强制智能反色[%d,%d]（点击切换）";
-    this.MSU = "当前Dark Mode不强制智能反色[%d,%d]（点击切换）";
-    this.MSV = "当前Light Mode[%d,%d]（点击切换）";
-    this.MSW = "当前未知Mode[%d,%d]（点击切换）";
-    this.MSX = new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(154194);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$42", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        d.this.MSQ.setVisibility(8);
-        d.this.MSJ.startLongScreenshot(new q()
-        {
-          public final File getCacheFileDir()
-          {
-            AppMethodBeat.i(154192);
-            File localFile = new File(d.this.MMV.getExternalCacheDir().getAbsolutePath(), "LongScreenshot");
-            AppMethodBeat.o(154192);
-            return localFile;
-          }
-          
-          public final int getMaxHeightSupported()
-          {
-            return 0;
-          }
-          
-          public final File getResultFileDir()
-          {
-            AppMethodBeat.i(154193);
-            File localFile = new File(d.this.MMV.getExternalCacheDir().getAbsolutePath(), "LongScreenshot");
-            AppMethodBeat.o(154193);
-            return localFile;
-          }
-          
-          public final void onLongScreenshotFinished(int paramAnonymous2Int, String paramAnonymous2String)
-          {
-            AppMethodBeat.i(154191);
-            Log.d("WebDebugPage", "onLongScreenshotFinished with " + paramAnonymous2Int + " / " + paramAnonymous2String);
-            AppMethodBeat.o(154191);
-          }
-          
-          public final Bitmap overrideScreenshot(Bitmap paramAnonymous2Bitmap)
-          {
-            return paramAnonymous2Bitmap;
-          }
-        }, true);
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$42", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(154194);
-      }
-    };
-    this.MMV = paramWebView.getContext();
-    this.MSJ = paramWebView;
-    ght();
-    ghr();
+    this.SFQ = "";
+    this.SFR = null;
+    this.SFS = null;
+    this.SFT = null;
+    this.SFU = null;
+    this.SFV = null;
+    this.SFX = false;
+    this.SFY = "tools";
+    this.SFZ = "当前Dark Mode强制智能反色[%d,%d]（点击切换）";
+    this.SGa = "当前Dark Mode不强制智能反色[%d,%d]（点击切换）";
+    this.SGb = "当前Light Mode[%d,%d]（点击切换）";
+    this.SGc = "当前未知Mode[%d,%d]（点击切换）";
+    this.SGd = new d.40(this);
+    this.SzQ = paramWebView.getContext();
+    this.SFP = paramWebView;
+    huO();
+    huM();
     AppMethodBeat.o(154224);
-  }
-  
-  private void WA(String paramString)
-  {
-    AppMethodBeat.i(154240);
-    com.tencent.xweb.b.h localh = new com.tencent.xweb.b.h(paramString);
-    if (localh.isDirectory())
-    {
-      String[] arrayOfString = localh.list();
-      if (arrayOfString != null)
-      {
-        int i = 0;
-        while (i < arrayOfString.length)
-        {
-          WA(paramString + "//" + arrayOfString[i]);
-          i += 1;
-        }
-      }
-    }
-    localh.delete();
-    AppMethodBeat.o(154240);
   }
   
   private static String a(Context paramContext, WebView.c paramc, String paramString)
@@ -204,54 +132,54 @@ public final class d
       AppMethodBeat.o(154229);
       return paramContext;
     }
-    if (com.tencent.xweb.a.bbZ(paramString) != WebView.c.MNx)
+    if (com.tencent.xweb.a.brE(paramString) != WebView.c.SAs)
     {
-      paramc = com.tencent.xweb.a.bbZ(paramString);
+      paramc = com.tencent.xweb.a.brE(paramString);
       localStringBuilder.append("\n   has command type ".concat(String.valueOf(paramc)));
     }
-    if (y.gfo().dn(paramString, true) != WebView.c.MNx)
+    if (y.hsF().dI(paramString, true) != WebView.c.SAs)
     {
-      paramc = y.gfo().bcB(paramString);
+      paramc = y.hsF().bsk(paramString);
       localStringBuilder.append("\n   has abtest type ".concat(String.valueOf(paramc)));
     }
     for (int i = 1;; i = 0)
     {
-      if (y.gfo().dn(paramString, false) != WebView.c.MNx)
+      if (y.hsF().dI(paramString, false) != WebView.c.SAs)
       {
-        paramContext = y.gfo().bcB(paramString);
+        paramContext = y.hsF().bsk(paramString);
         localStringBuilder.append("\n   has hardcode type ".concat(String.valueOf(paramContext)));
         i = j;
       }
       for (;;)
       {
-        if ((i == 0) && (paramContext == WebView.c.MNy) && (XWalkEnvironment.getXWebInitArgs("isgpversion", false)))
+        if ((i == 0) && (paramContext == WebView.c.SAt) && (XWalkEnvironment.getXWebInitArgs("isgpversion", false)))
         {
-          paramContext = WebView.c.MNA;
+          paramContext = WebView.c.SAv;
           localStringBuilder.append("\n   is prefer " + paramContext + " because of gp version");
         }
         for (;;)
         {
           paramc = paramContext;
-          if (paramContext == WebView.c.MNy)
+          if (paramContext == WebView.c.SAt)
           {
             paramc = paramContext;
             if (!XWalkEnvironment.hasAvailableVersion())
             {
-              paramc = WebView.c.MNz;
+              paramc = WebView.c.SAu;
               localStringBuilder.append("\n   is prefer " + paramc + " because of xwalk is not available");
             }
           }
           com.tencent.xweb.internal.h.d(paramc);
-          if (com.tencent.xweb.internal.h.ggn().ggs())
+          if (com.tencent.xweb.internal.h.htF().htK())
           {
-            paramc = WebView.c.MNA;
+            paramc = WebView.c.SAv;
             localStringBuilder.append("\n   is prefer " + paramc + " because of LoadUrlWatchDog");
           }
           if (com.tencent.xweb.internal.b.c(paramc)) {
             localStringBuilder.append("\n   will not use " + paramc + " because of CrashWatchDog hit");
           }
-          if (paramc == WebView.c.MNz) {
-            com.tencent.xweb.x5.sdk.d.ghp();
+          if (paramc == WebView.c.SAu) {
+            com.tencent.xweb.x5.sdk.d.huK();
           }
           localStringBuilder.insert(0, "module: " + paramString + " core type is " + paramc);
           paramContext = localStringBuilder.toString();
@@ -267,9 +195,9 @@ public final class d
   {
     AppMethodBeat.i(154245);
     com.tencent.xweb.b.h localh = new com.tencent.xweb.b.h(Environment.getExternalStorageDirectory().getPath());
-    localh.ggc();
-    final com.tencent.xweb.xwalk.a.f localf = com.tencent.xweb.xwalk.a.g.bcp(paramString);
-    if (localf == null)
+    localh.htu();
+    final com.tencent.xweb.xwalk.a.g localg = com.tencent.xweb.xwalk.a.h.brX(paramString);
+    if (localg == null)
     {
       Toast.makeText(paramContext, "找不到对应插件", 0).show();
       paramValueCallback.onReceiveValue(Boolean.FALSE);
@@ -283,64 +211,64 @@ public final class d
     {
       new AsyncTask()
       {
-        private ProgressDialog vcb = null;
+        private ProgressDialog yuB = null;
         
-        private Boolean ghz()
+        private Boolean huU()
         {
           int i = 99999;
           boolean bool = true;
-          AppMethodBeat.i(154202);
+          AppMethodBeat.i(207265);
           Object localObject2 = null;
           for (;;)
           {
             try
             {
+              int k = localg.hvk();
               com.tencent.xweb.xwalk.updater.c localc;
-              if (this.MTq > 0)
+              if (this.SGy > 0)
               {
-                int j = this.MTq;
+                int j = this.SGy;
                 i = j;
-                if (localf.MUN > 0)
+                if (k > 0)
                 {
-                  localObject1 = localf.aju(localf.MUN);
-                  localf.ajt(-1);
+                  localObject1 = localg.atd(k);
+                  localg.atc(-1);
                   i = j;
                   if (localObject1 != null)
                   {
                     i = j;
                     if (!((String)localObject1).isEmpty())
                     {
-                      com.tencent.xweb.util.c.bcQ((String)localObject1);
+                      com.tencent.xweb.util.c.bsB((String)localObject1);
                       i = j;
                     }
                   }
                 }
                 localc = new com.tencent.xweb.xwalk.updater.c();
                 localc.version = i;
-                localc.MVY = false;
-                localc.path = localf.bz(i, false);
+                localc.SJc = false;
+                localc.path = localg.ca(i, false);
                 localObject1 = new File(localc.path);
               }
               try
               {
-                if (this.MTs)
+                if (this.SGz)
                 {
                   com.tencent.xweb.util.c.b(this.val$context.getAssets().open(paramString), (File)localObject1);
-                  localc.MVw = com.tencent.xweb.b.i.aRh(((File)localObject1).getPath());
-                  localc.MWh = true;
-                  if (localf.a(localc) != 0) {
+                  localc.SID = com.tencent.xweb.b.i.bhK(((File)localObject1).getPath());
+                  localc.SJl = true;
+                  if (localg.a(localc) != 0) {
                     continue;
                   }
-                  AppMethodBeat.o(154202);
+                  AppMethodBeat.o(207265);
                   return Boolean.valueOf(bool);
-                  if (localf.MUN < 99999) {
+                  if (k < 99999) {
                     continue;
                   }
-                  i = localf.MUN;
-                  i += 1;
+                  i = k + 1;
                   continue;
                 }
-                com.tencent.xweb.b.i.lS(this.MTu, ((File)localObject1).getPath());
+                com.tencent.xweb.b.i.copyFile(this.SGB, ((File)localObject1).getPath());
                 continue;
                 Log.e("WebDebugPage", "loadZipFormatPluginFromLocal error: " + ((Exception)localObject1).getMessage());
               }
@@ -360,7 +288,7 @@ public final class d
             {
               com.tencent.xweb.util.c.deleteAll(localObject2);
               localObject1 = Boolean.FALSE;
-              AppMethodBeat.o(154202);
+              AppMethodBeat.o(207265);
               return localObject1;
               bool = false;
             }
@@ -370,24 +298,24 @@ public final class d
         
         protected final void onPreExecute()
         {
-          AppMethodBeat.i(154201);
-          this.vcb = new ProgressDialog(this.val$context);
-          this.vcb.setProgressStyle(0);
-          this.vcb.setMessage("安装中");
-          this.vcb.setCancelable(false);
-          this.vcb.setCanceledOnTouchOutside(false);
-          this.vcb.setButton(-1, "完成", new DialogInterface.OnClickListener()
+          AppMethodBeat.i(207264);
+          this.yuB = new ProgressDialog(this.val$context);
+          this.yuB.setProgressStyle(0);
+          this.yuB.setMessage("安装中");
+          this.yuB.setCancelable(false);
+          this.yuB.setCanceledOnTouchOutside(false);
+          this.yuB.setButton(-1, "完成", new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
-              AppMethodBeat.i(154200);
-              d.39.a(d.39.this).hide();
-              AppMethodBeat.o(154200);
+              AppMethodBeat.i(207263);
+              d.42.a(d.42.this).hide();
+              AppMethodBeat.o(207263);
             }
           });
-          this.vcb.show();
-          this.vcb.getButton(-1).setVisibility(8);
-          AppMethodBeat.o(154201);
+          this.yuB.show();
+          this.yuB.getButton(-1).setVisibility(8);
+          AppMethodBeat.o(207264);
         }
       }.execute(new Void[0]);
       AppMethodBeat.o(154245);
@@ -412,7 +340,15 @@ public final class d
       }
       else if ("XFilesExcelReader".equals(paramString)) {
         paramString = "xfiles_excel_reader.zip";
-      } else {
+      } else if ("XFilesOfficeReader".equals(paramString))
+      {
+        if (paramBoolean) {
+          paramString = "xfiles_office_reader_arm64.zip";
+        } else {
+          paramString = "xfiles_office_reader_arm.zip";
+        }
+      }
+      else {
         paramString = "";
       }
     }
@@ -424,22 +360,22 @@ public final class d
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 457
-    //   6: invokestatic 152	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: ldc_w 389
+    //   6: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: ifnull +12 -> 22
-    //   13: invokestatic 291	com/tencent/xweb/y:gfo	()Lcom/tencent/xweb/y;
-    //   16: getfield 460	com/tencent/xweb/y:MNg	Z
+    //   13: invokestatic 212	com/tencent/xweb/y:hsF	()Lcom/tencent/xweb/y;
+    //   16: getfield 392	com/tencent/xweb/y:SAb	Z
     //   19: ifne +13 -> 32
-    //   22: ldc_w 457
-    //   25: invokestatic 212	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   22: ldc_w 389
+    //   25: invokestatic 154	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: ldc 2
     //   30: monitorexit
     //   31: return
     //   32: aload_0
-    //   33: invokestatic 462	com/tencent/xweb/xwalk/d:b	(Lcom/tencent/xweb/internal/IWebView;)V
-    //   36: ldc_w 457
-    //   39: invokestatic 212	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   33: invokestatic 394	com/tencent/xweb/xwalk/d:b	(Lcom/tencent/xweb/internal/IWebView;)V
+    //   36: ldc_w 389
+    //   39: invokestatic 154	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: goto -14 -> 28
     //   45: astore_0
     //   46: ldc 2
@@ -457,32 +393,53 @@ public final class d
     //   32	42	45	finally
   }
   
+  private void agw(String paramString)
+  {
+    AppMethodBeat.i(154240);
+    com.tencent.xweb.b.h localh = new com.tencent.xweb.b.h(paramString);
+    if (localh.isDirectory())
+    {
+      String[] arrayOfString = localh.list();
+      if (arrayOfString != null)
+      {
+        int i = 0;
+        while (i < arrayOfString.length)
+        {
+          agw(paramString + "//" + arrayOfString[i]);
+          i += 1;
+        }
+      }
+    }
+    localh.delete();
+    AppMethodBeat.o(154240);
+  }
+  
   /* Error */
   public static void b(com.tencent.xweb.internal.IWebView paramIWebView)
   {
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: ldc_w 532
-    //   6: invokestatic 152	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   3: ldc_w 490
+    //   6: invokestatic 92	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
     //   10: ifnull +12 -> 22
-    //   13: invokestatic 291	com/tencent/xweb/y:gfo	()Lcom/tencent/xweb/y;
-    //   16: getfield 460	com/tencent/xweb/y:MNg	Z
+    //   13: invokestatic 212	com/tencent/xweb/y:hsF	()Lcom/tencent/xweb/y;
+    //   16: getfield 392	com/tencent/xweb/y:SAb	Z
     //   19: ifne +13 -> 32
-    //   22: ldc_w 532
-    //   25: invokestatic 212	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   22: ldc_w 490
+    //   25: invokestatic 154	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: ldc 2
     //   30: monitorexit
     //   31: return
     //   32: aload_0
-    //   33: ldc_w 534
-    //   36: new 92	com/tencent/xweb/xwalk/d$47
+    //   33: ldc_w 492
+    //   36: new 38	com/tencent/xweb/xwalk/d$50
     //   39: dup
-    //   40: invokespecial 535	com/tencent/xweb/xwalk/d$47:<init>	()V
-    //   43: invokeinterface 541 3 0
-    //   48: ldc_w 532
-    //   51: invokestatic 212	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   40: invokespecial 493	com/tencent/xweb/xwalk/d$50:<init>	()V
+    //   43: invokeinterface 499 3 0
+    //   48: ldc_w 490
+    //   51: invokestatic 154	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: goto -26 -> 28
     //   57: astore_0
     //   58: ldc 2
@@ -500,7 +457,7 @@ public final class d
     //   32	54	57	finally
   }
   
-  public static boolean bdb(String paramString)
+  public static boolean bsN(String paramString)
   {
     boolean bool = false;
     AppMethodBeat.i(154252);
@@ -514,175 +471,14 @@ public final class d
     }
     if (bool)
     {
-      com.tencent.xweb.util.g.FJ(223L);
+      com.tencent.xweb.util.h.OQ(223L);
       Log.e("WebDebugPage", "this url contians debug piece, url =  ".concat(String.valueOf(paramString)));
     }
     AppMethodBeat.o(154252);
     return bool;
   }
   
-  public static void cI(Context paramContext, final String paramString)
-  {
-    AppMethodBeat.i(207569);
-    final com.tencent.xweb.xwalk.a.j localj = new com.tencent.xweb.xwalk.a.j();
-    localj.a(paramString, new com.tencent.xweb.xwalk.a.i()
-    {
-      ProgressDialog MTk = null;
-      boolean mFinished = false;
-      
-      public final void ajh(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(154198);
-        if ((this.mFinished) || (this.MTk == null))
-        {
-          AppMethodBeat.o(154198);
-          return;
-        }
-        this.MTk.setProgress(paramAnonymousInt);
-        AppMethodBeat.o(154198);
-      }
-      
-      public final void aji(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(154199);
-        this.mFinished = true;
-        if (this.MTk == null)
-        {
-          AppMethodBeat.o(154199);
-          return;
-        }
-        Object localObject = com.tencent.xweb.xwalk.a.g.bcp(paramString);
-        switch (paramAnonymousInt)
-        {
-        default: 
-          this.MTk.setMessage(paramString + " 更新失败，未知错误，ErrCode = " + paramAnonymousInt);
-          if ((this.MTo != null) && (y.gfo() != null))
-          {
-            if (!"XFilesPPTReader".equals(paramString)) {
-              break label764;
-            }
-            localObject = new String[2];
-            localObject[0] = "ppt";
-            localObject[1] = "pptx";
-          }
-          break;
-        }
-        for (;;)
-        {
-          String str = y.gfo().a((String[])localObject, this.MTo);
-          e.al((String[])localObject);
-          Toast.makeText(this.val$context, "格式:" + str + "强制使用" + this.MTo.name() + "打开", 0).show();
-          if (this.kQx != null) {
-            this.kQx.onReceiveValue(Integer.valueOf(paramAnonymousInt));
-          }
-          AppMethodBeat.o(154199);
-          return;
-          if (localObject != null) {
-            this.MTk.setMessage(paramString + " 更新完成，已安装版本" + ((com.tencent.xweb.xwalk.a.f)localObject).MUN);
-          }
-          for (;;)
-          {
-            this.MTk.setProgress(100);
-            this.MTk.getButton(-2).setVisibility(8);
-            this.MTk.getButton(-1).setVisibility(0);
-            if (!this.MTn) {
-              break;
-            }
-            this.MTk.dismiss();
-            break;
-            this.MTk.setMessage(paramString + " 更新完成");
-          }
-          this.MTk.setMessage(paramString + " 更新被取消，ErrCode = " + paramAnonymousInt);
-          break;
-          this.MTk.setMessage(paramString + " 更新失败，无网络，ErrCode = " + paramAnonymousInt);
-          break;
-          this.MTk.setMessage(paramString + " 更新失败，未到检查时间，ErrCode = " + paramAnonymousInt);
-          break;
-          this.MTk.setMessage(paramString + " 更新失败，其它任务正在更新插件，ErrCode = " + paramAnonymousInt);
-          break;
-          this.MTk.setMessage(paramString + " 更新失败，配置下载失败，ErrCode = " + paramAnonymousInt);
-          break;
-          this.MTk.setMessage(paramString + " 更新失败，配置解析失败，ErrCode = " + paramAnonymousInt);
-          break;
-          this.MTk.setMessage(paramString + " 更新失败，配置中未包含插件信息，ErrCode = " + paramAnonymousInt);
-          break;
-          if (localObject != null) {
-            this.MTk.setMessage(paramString + " 更新失败，未找到可用更新，当前已安装版本" + ((com.tencent.xweb.xwalk.a.f)localObject).MUN + "，ErrCode = " + paramAnonymousInt);
-          }
-          while (this.MTn)
-          {
-            this.MTk.dismiss();
-            break;
-            this.MTk.setMessage(paramString + " 更新失败，未找到可用更新，ErrCode = " + paramAnonymousInt);
-          }
-          this.MTk.setMessage(paramString + " 更新失败，下载安装出错，ErrCode = " + paramAnonymousInt);
-          break;
-          label764:
-          if ("XFilesPDFReader".equals(paramString))
-          {
-            localObject = new String[1];
-            localObject[0] = "pdf";
-          }
-          else if ("XFilesWordReader".equals(paramString))
-          {
-            localObject = new String[2];
-            localObject[0] = "doc";
-            localObject[1] = "docx";
-          }
-          else
-          {
-            if (!"XFilesExcelReader".equals(paramString)) {
-              break label849;
-            }
-            localObject = new String[2];
-            localObject[0] = "xls";
-            localObject[1] = "xlsx";
-          }
-        }
-        label849:
-        AppMethodBeat.o(154199);
-      }
-      
-      public final void gfc()
-      {
-        AppMethodBeat.i(154197);
-        this.MTk = new ProgressDialog(this.val$context);
-        this.MTk.setProgressStyle(1);
-        this.MTk.setMessage(paramString + " 下载更新中");
-        this.MTk.setCancelable(false);
-        this.MTk.setCanceledOnTouchOutside(false);
-        this.MTk.setButton(-2, "取消", new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-          {
-            AppMethodBeat.i(154195);
-            if (!d.38.this.mFinished) {
-              d.38.this.MTm.gfn();
-            }
-            AppMethodBeat.o(154195);
-          }
-        });
-        this.MTk.setButton(-1, "完成", new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-          {
-            AppMethodBeat.i(154196);
-            d.38.this.MTk.dismiss();
-            AppMethodBeat.o(154196);
-          }
-        });
-        this.MTk.show();
-        this.MTk.getButton(-1).setVisibility(8);
-        AppMethodBeat.o(154197);
-      }
-    });
-    paramString = new HashMap();
-    paramString.put("UpdaterCheckType", "1");
-    localj.a(paramContext, paramString);
-    AppMethodBeat.o(207569);
-  }
-  
-  private boolean dt(String paramString, boolean paramBoolean)
+  private boolean dP(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(154227);
     if ((paramString.contains("debugxweb.qq.com")) || (paramBoolean))
@@ -691,7 +487,7 @@ public final class d
       paramString = localUri.getQueryParameterNames();
       if ((paramString == null) || (paramString.size() == 0))
       {
-        ghv();
+        huQ();
         AppMethodBeat.o(154227);
         return true;
       }
@@ -699,7 +495,7 @@ public final class d
       while (localIterator.hasNext())
       {
         paramString = (String)localIterator.next();
-        label192:
+        label200:
         int i;
         if (paramString != null)
         {
@@ -715,111 +511,116 @@ public final class d
             default: 
               break;
             case 0: 
-              Ac(false);
+              Es(false);
               break;
               if (!paramString.equals("load_local_xwalk")) {
-                break label192;
+                break label200;
               }
               i = 0;
               continue;
               if (!paramString.equals("clear_commands")) {
-                break label192;
+                break label200;
               }
               i = 1;
               continue;
               if (!paramString.equals("wait_debugger")) {
-                break label192;
+                break label200;
               }
               i = 2;
               continue;
               if (!paramString.equals("debug_process")) {
-                break label192;
+                break label200;
               }
               i = 3;
               continue;
               if (!paramString.equals("set_apkver")) {
-                break label192;
+                break label200;
               }
               i = 4;
               continue;
               if (!paramString.equals("check_files")) {
-                break label192;
+                break label200;
               }
               i = 5;
               continue;
               if (!paramString.equals("revert_to_apk")) {
-                break label192;
+                break label200;
               }
               i = 6;
               continue;
               if (!paramString.equals("set_config_peroid")) {
-                break label192;
+                break label200;
               }
               i = 7;
               continue;
               if (!paramString.equals("recheck_cmds")) {
-                break label192;
+                break label200;
               }
               i = 8;
               continue;
               if (!paramString.equals("set_force_filereader")) {
-                break label192;
+                break label200;
               }
               i = 9;
               continue;
-              if (!paramString.equals("clear_all_plugin")) {
-                break label192;
+              if (!paramString.equals("set_force_use_office_reader")) {
+                break label200;
               }
               i = 10;
+              continue;
+              if (!paramString.equals("clear_all_plugin")) {
+                break label200;
+              }
+              i = 11;
             }
           }
           com.tencent.xweb.a.a(null, "0");
           continue;
           paramBoolean = localUri.getBooleanQueryParameter("wait_debugger", false);
-          paramString = y.gfo();
-          paramString.MNc = paramBoolean;
-          paramString.MMV.getSharedPreferences("wcwebview", 0).edit().putBoolean("bWaitforDebugger", paramBoolean).commit();
+          paramString = y.hsF();
+          paramString.SzX = paramBoolean;
+          paramString.SzQ.getSharedPreferences("wcwebview", 0).edit().putBoolean("bWaitforDebugger", paramBoolean).commit();
           continue;
           paramString = localUri.getQueryParameter("debug_process");
-          y.gfo().MMV.getSharedPreferences("wcwebview", 4).edit().putString("strDebugProcess", paramString).commit();
+          y.hsF().SzQ.getSharedPreferences("wcwebview", 4).edit().putString("strDebugProcess", paramString).commit();
           continue;
           paramString = localUri.getQueryParameter("set_apkver");
           try
           {
             XWalkEnvironment.setAvailableVersion(Integer.parseInt(paramString), "1.0.".concat(String.valueOf(paramString)), XWalkEnvironment.getRuntimeAbi());
-            dv("版本号设置到:" + paramString + " 点击空白处退出重启进程", true);
+            dR("版本号设置到:" + paramString + " 点击空白处退出重启进程", true);
           }
           catch (Exception paramString)
           {
-            du("设置版本号失败:" + paramString.getMessage(), true);
+            dQ("设置版本号失败:" + paramString.getMessage(), true);
           }
           continue;
-          p.Ad(true);
+          p.Et(true);
           continue;
           paramString = localUri.getQueryParameter("revert_to_apk");
           try
           {
-            i = p.aW(XWalkEnvironment.getApplicationContext(), Integer.parseInt(paramString));
-            dv("版本号回滚到:" + i + " 点击空白处退出重启进程", true);
+            i = p.aX(XWalkEnvironment.getApplicationContext(), Integer.parseInt(paramString));
+            dR("版本号回滚到:" + i + " 点击空白处退出重启进程", true);
           }
           catch (Exception paramString)
           {
-            du("版本号回滚到失败:" + paramString.getMessage(), true);
+            dQ("版本号回滚到失败:" + paramString.getMessage(), true);
           }
           continue;
           paramString = localUri.getQueryParameter("set_config_peroid");
           try
           {
-            com.tencent.xweb.a.ajg(Integer.parseInt(paramString));
-            dv("设置配置拉取周期为:" + paramString + "分钟", false);
+            com.tencent.xweb.a.asP(Integer.parseInt(paramString));
+            dR("设置配置拉取周期为:" + paramString + "分钟", false);
           }
           catch (Exception paramString)
           {
-            du("设置配置拉取周期失败:" + paramString.getMessage(), true);
+            dQ("设置配置拉取周期失败:" + paramString.getMessage(), true);
           }
           continue;
-          com.tencent.xweb.internal.j.g(WebView.c.MNy).excute("STR_CMD_SET_RECHECK_COMMAND", null);
-          dv("重新跑了一遍命令配置 点击空白处退出重启进程", true);
+          l.g(WebView.c.SAt).excute("STR_CMD_SET_RECHECK_COMMAND", null);
+          dR("重新跑了一遍命令配置 点击空白处退出重启进程", true);
           continue;
           paramString = "";
         }
@@ -828,47 +629,48 @@ public final class d
           localObject = localUri.getQueryParameter("set_force_filereader");
           paramString = (String)localObject;
         }
-        catch (Exception localException)
+        catch (Exception localException2)
         {
           for (;;)
           {
             Object localObject;
             String[] arrayOfString;
+            continue;
           }
         }
         arrayOfString = paramString.split("_");
         if (paramString.length() < 2)
         {
-          du("强制设置文件预览方式失败，参数错误", true);
+          dQ("强制设置文件预览方式失败，参数错误", true);
         }
         else
         {
           paramString = arrayOfString[(arrayOfString.length - 1)];
           if ("xweb".equalsIgnoreCase(paramString)) {
-            paramString = f.a.MMf;
+            paramString = f.a.SyU;
           }
           for (;;)
           {
             if ((arrayOfString.length == 2) && ("all".equalsIgnoreCase(arrayOfString[0])))
             {
-              localObject = com.tencent.xweb.f.MMc;
-              localObject = y.gfo().a((String[])localObject, paramString);
+              localObject = f.SyR;
+              localObject = y.hsF().a((String[])localObject, paramString);
               if (((String)localObject).isEmpty()) {
-                break label1058;
+                break label1086;
               }
-              du("格式:" + (String)localObject + "强制使用" + paramString.name() + "打开", true);
+              dQ("格式:" + (String)localObject + "强制使用" + paramString.name() + "打开", true);
               break;
               if ("x5".equalsIgnoreCase(paramString))
               {
-                paramString = f.a.MMg;
+                paramString = f.a.SyV;
               }
               else if ("none".equalsIgnoreCase(paramString))
               {
-                paramString = f.a.MMe;
+                paramString = f.a.SyT;
               }
               else
               {
-                du("强制设置文件预览方式失败，类型错误", true);
+                dQ("强制设置文件预览方式失败，类型错误", true);
                 break;
               }
             }
@@ -880,10 +682,77 @@ public final class d
             localObject[i] = arrayOfString[i];
             i += 1;
           }
-          label1058:
-          du("强制设置文件预览方式失败", true);
+          label1086:
+          dQ("强制设置文件预览方式失败", true);
           continue;
-          ghx();
+          paramString = "";
+        }
+        label1325:
+        label1336:
+        try
+        {
+          localObject = localUri.getQueryParameter("set_force_filereader");
+          paramString = (String)localObject;
+        }
+        catch (Exception localException1)
+        {
+          label1113:
+          label1372:
+          break label1113;
+        }
+        arrayOfString = paramString.split("_");
+        if (paramString.length() < 2)
+        {
+          dQ("强制设置OfficeReader失败，参数错误", true);
+        }
+        else
+        {
+          paramString = arrayOfString[(arrayOfString.length - 1)];
+          if ("yes".equalsIgnoreCase(paramString)) {
+            paramString = f.c.SyZ;
+          }
+          for (;;)
+          {
+            if ((arrayOfString.length != 2) || (!"all".equalsIgnoreCase(arrayOfString[0]))) {
+              break label1336;
+            }
+            localObject = new String[6];
+            localObject[0] = "doc";
+            localObject[1] = "docx";
+            localObject[2] = "xls";
+            localObject[3] = "xlsx";
+            localObject[4] = "ppt";
+            localObject[5] = "pptx";
+            localObject = y.hsF().a((String[])localObject, paramString);
+            if (((String)localObject).isEmpty()) {
+              break label1372;
+            }
+            dQ("格式:" + (String)localObject + "强制OfficeReader状态：" + paramString.toString(), true);
+            break;
+            if ("no".equalsIgnoreCase(paramString))
+            {
+              paramString = f.c.Sza;
+            }
+            else
+            {
+              if (!"none".equalsIgnoreCase(paramString)) {
+                break label1325;
+              }
+              paramString = f.c.SyY;
+            }
+          }
+          dQ("强制设置OfficeReader失败，类型错误", true);
+          continue;
+          localObject = new String[arrayOfString.length - 1];
+          i = 0;
+          while (i < arrayOfString.length - 1)
+          {
+            localObject[i] = arrayOfString[i];
+            i += 1;
+          }
+          dQ("强制设置OfficeReader失败", true);
+          continue;
+          huS();
         }
       }
       AppMethodBeat.o(154227);
@@ -896,30 +765,214 @@ public final class d
     }
   }
   
-  private void ghu()
+  public static void dc(Context paramContext, final String paramString)
+  {
+    AppMethodBeat.i(207284);
+    final k localk = new k();
+    localk.a(paramString, new j()
+    {
+      ProgressDialog SGr = null;
+      boolean mFinished = false;
+      
+      public final void asQ(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(207261);
+        if ((this.mFinished) || (this.SGr == null))
+        {
+          AppMethodBeat.o(207261);
+          return;
+        }
+        this.SGr.setProgress(paramAnonymousInt);
+        AppMethodBeat.o(207261);
+      }
+      
+      public final void asR(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(207262);
+        this.mFinished = true;
+        if (this.SGr == null)
+        {
+          AppMethodBeat.o(207262);
+          return;
+        }
+        Object localObject = com.tencent.xweb.xwalk.a.h.brX(paramString);
+        int i;
+        if (localObject != null)
+        {
+          i = ((com.tencent.xweb.xwalk.a.g)localObject).hvk();
+          switch (paramAnonymousInt)
+          {
+          default: 
+            this.SGr.setMessage(paramString + " 更新失败，未知错误，ErrCode = " + paramAnonymousInt);
+            label129:
+            if ((this.SGv != null) && (y.hsF() != null))
+            {
+              if (!"XFilesPPTReader".equals(paramString)) {
+                break label697;
+              }
+              localObject = new String[2];
+              localObject[0] = "ppt";
+              localObject[1] = "pptx";
+            }
+            break;
+          }
+        }
+        for (;;)
+        {
+          String str = y.hsF().a((String[])localObject, this.SGv);
+          e.ah((String[])localObject);
+          Toast.makeText(this.val$context, "格式:" + str + "强制使用" + this.SGv.name() + "打开", 0).show();
+          if (this.lVB != null) {
+            this.lVB.onReceiveValue(Integer.valueOf(paramAnonymousInt));
+          }
+          AppMethodBeat.o(207262);
+          return;
+          i = -1;
+          break;
+          this.SGr.setMessage(paramString + " 更新完成，已安装版本" + i);
+          this.SGr.setProgress(100);
+          this.SGr.getButton(-2).setVisibility(8);
+          this.SGr.getButton(-1).setVisibility(0);
+          if (!this.SGu) {
+            break label129;
+          }
+          this.SGr.dismiss();
+          break label129;
+          this.SGr.setMessage(paramString + " 更新被取消，ErrCode = " + paramAnonymousInt);
+          break label129;
+          this.SGr.setMessage(paramString + " 更新失败，无网络，ErrCode = " + paramAnonymousInt);
+          break label129;
+          this.SGr.setMessage(paramString + " 更新失败，未到检查时间，ErrCode = " + paramAnonymousInt);
+          break label129;
+          this.SGr.setMessage(paramString + " 更新失败，其它任务正在更新插件，ErrCode = " + paramAnonymousInt);
+          break label129;
+          this.SGr.setMessage(paramString + " 更新失败，配置下载失败，ErrCode = " + paramAnonymousInt);
+          break label129;
+          this.SGr.setMessage(paramString + " 更新失败，配置解析失败，ErrCode = " + paramAnonymousInt);
+          break label129;
+          this.SGr.setMessage(paramString + " 更新失败，配置中未包含插件信息，ErrCode = " + paramAnonymousInt);
+          break label129;
+          this.SGr.setMessage(paramString + " 更新失败，未找到可用更新，当前已安装版本" + i + "，ErrCode = " + paramAnonymousInt);
+          if (!this.SGu) {
+            break label129;
+          }
+          this.SGr.dismiss();
+          break label129;
+          this.SGr.setMessage(paramString + " 更新失败，下载安装出错，ErrCode = " + paramAnonymousInt);
+          break label129;
+          label697:
+          if ("XFilesPDFReader".equals(paramString))
+          {
+            localObject = new String[1];
+            localObject[0] = "pdf";
+          }
+          else if ("XFilesWordReader".equals(paramString))
+          {
+            localObject = new String[2];
+            localObject[0] = "doc";
+            localObject[1] = "docx";
+          }
+          else if ("XFilesExcelReader".equals(paramString))
+          {
+            localObject = new String[2];
+            localObject[0] = "xls";
+            localObject[1] = "xlsx";
+          }
+          else
+          {
+            if (!"XFilesOfficeReader".equals(paramString)) {
+              break label833;
+            }
+            localObject = new String[6];
+            localObject[0] = "doc";
+            localObject[1] = "docx";
+            localObject[2] = "xls";
+            localObject[3] = "xlsx";
+            localObject[4] = "ppt";
+            localObject[5] = "pptx";
+          }
+        }
+        label833:
+        AppMethodBeat.o(207262);
+      }
+      
+      public final void hst()
+      {
+        AppMethodBeat.i(207260);
+        this.SGr = new ProgressDialog(this.val$context);
+        this.SGr.setProgressStyle(1);
+        this.SGr.setMessage(paramString + " 下载更新中");
+        this.SGr.setCancelable(false);
+        this.SGr.setCanceledOnTouchOutside(false);
+        this.SGr.setButton(-2, "取消", new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+          {
+            AppMethodBeat.i(207258);
+            if (!d.41.this.mFinished) {
+              d.41.this.SGt.hsE();
+            }
+            AppMethodBeat.o(207258);
+          }
+        });
+        this.SGr.setButton(-1, "完成", new DialogInterface.OnClickListener()
+        {
+          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
+          {
+            AppMethodBeat.i(207259);
+            d.41.this.SGr.dismiss();
+            AppMethodBeat.o(207259);
+          }
+        });
+        this.SGr.show();
+        this.SGr.getButton(-1).setVisibility(8);
+        AppMethodBeat.o(207260);
+      }
+    });
+    paramString = new HashMap();
+    paramString.put("UpdaterCheckType", "1");
+    localk.b(paramContext, paramString);
+    AppMethodBeat.o(207284);
+  }
+  
+  private void huP()
   {
     AppMethodBeat.i(154233);
-    if (this.MSN == null)
+    if (this.SFT == null)
     {
       AppMethodBeat.o(154233);
       return;
     }
-    String str = Ab(false);
-    this.MSN.setText(str);
+    String str = Er(false);
+    this.SFT.setText(str);
     AppMethodBeat.o(154233);
   }
   
-  private static String ghw()
+  private static String huR()
   {
+    int j = 0;
     AppMethodBeat.i(154237);
     Object localObject = new StringBuilder();
-    String[] arrayOfString = com.tencent.xweb.f.MMc;
-    int j = arrayOfString.length;
+    String[] arrayOfString = f.SyR;
+    int k = arrayOfString.length;
     int i = 0;
-    while (i < j)
+    String str;
+    while (i < k)
     {
-      String str = arrayOfString[i];
-      ((StringBuilder)localObject).append("\n ").append(str).append(": force-").append(y.gfo().bcC(str)).append("  cmd-").append(com.tencent.xweb.b.bcm(str));
+      str = arrayOfString[i];
+      ((StringBuilder)localObject).append("\n ").append(str).append(": force-").append(y.hsF().bsl(str)).append("  cmd-tools-").append(com.tencent.xweb.b.nW(str, "tools")).append("  cmd-appbrand-").append(com.tencent.xweb.b.nW(str, "appbrand"));
+      i += 1;
+    }
+    ((StringBuilder)localObject).append("\n\n use office reader:");
+    arrayOfString = f.SyR;
+    k = arrayOfString.length;
+    i = j;
+    while (i < k)
+    {
+      str = arrayOfString[i];
+      if (!"pdf".equals(str)) {
+        ((StringBuilder)localObject).append("\n ").append(str).append(": force-").append(y.hsF().bsm(str)).append("  cmd-tools-").append(com.tencent.xweb.b.nV(str, "tools")).append("  cmd-appbrand-").append(com.tencent.xweb.b.nV(str, "appbrand")).append("  cmd-mm-").append(com.tencent.xweb.b.nV(str, "mm"));
+      }
       i += 1;
     }
     localObject = ((StringBuilder)localObject).toString();
@@ -927,7 +980,7 @@ public final class d
     return localObject;
   }
   
-  protected static void hN(Context paramContext)
+  protected static void iH(Context paramContext)
   {
     AppMethodBeat.i(154243);
     paramContext = (ActivityManager)paramContext.getSystemService("activity");
@@ -944,32 +997,32 @@ public final class d
         {
           localObject1 = com.tencent.mm.hellhoundlib.b.c.a(((ActivityManager.RunningAppProcessInfo)localObject1).pid, new com.tencent.mm.hellhoundlib.b.a());
           localObject2 = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/xweb/xwalk/WebDebugPage", "killAllProcess", "(Landroid/content/Context;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-          Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/xweb/xwalk/WebDebugPage", "killAllProcess", "(Landroid/content/Context;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+          Process.killProcess(((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0)).intValue());
           com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/xweb/xwalk/WebDebugPage", "killAllProcess", "(Landroid/content/Context;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
         }
       }
     }
     paramContext = com.tencent.mm.hellhoundlib.b.c.a(i, new com.tencent.mm.hellhoundlib.b.a());
     Object localObject1 = new Object();
-    com.tencent.mm.hellhoundlib.a.a.a(localObject1, paramContext.ahE(), "com/tencent/xweb/xwalk/WebDebugPage", "killAllProcess", "(Landroid/content/Context;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-    Process.killProcess(((Integer)paramContext.mt(0)).intValue());
+    com.tencent.mm.hellhoundlib.a.a.a(localObject1, paramContext.axQ(), "com/tencent/xweb/xwalk/WebDebugPage", "killAllProcess", "(Landroid/content/Context;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+    Process.killProcess(((Integer)paramContext.pG(0)).intValue());
     com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/xweb/xwalk/WebDebugPage", "killAllProcess", "(Landroid/content/Context;)V", "android/os/Process_EXEC_", "killProcess", "(I)V");
     AppMethodBeat.o(154243);
   }
   
-  public static void lG(Context paramContext)
+  public static void lF(Context paramContext)
   {
     AppMethodBeat.i(154238);
-    Scheduler.MVM = true;
-    com.tencent.xweb.xwalk.a.j localj = new com.tencent.xweb.xwalk.a.j();
+    Scheduler.SIT = true;
+    k localk = new k();
     HashMap localHashMap = new HashMap();
     localHashMap.put("UpdaterCheckType", "1");
-    localj.a(paramContext, localHashMap);
+    localk.b(paramContext, localHashMap);
     AppMethodBeat.o(154238);
   }
   
-  private static int lp(int paramInt1, int paramInt2)
+  private static int mP(int paramInt1, int paramInt2)
   {
     int i = 1;
     if (paramInt1 == 0) {
@@ -993,10 +1046,10 @@ public final class d
     return 4;
   }
   
-  final String Ab(boolean paramBoolean)
+  final String Er(boolean paramBoolean)
   {
     AppMethodBeat.i(154232);
-    String str2 = this.MSJ.getVersionInfo();
+    String str2 = this.SFP.getVersionInfo();
     int i;
     if (!paramBoolean)
     {
@@ -1004,34 +1057,34 @@ public final class d
       str1 = str2;
       if (i <= 0) {}
     }
-    for (String str1 = str2.substring(0, i);; str1 = str2 + ", " + com.tencent.xweb.xwalk.a.g.ghP() + " current process is " + XWalkEnvironment.getProcessName())
+    for (String str1 = str2.substring(0, i);; str1 = str2 + ", " + com.tencent.xweb.xwalk.a.h.hvp() + " current process is " + XWalkEnvironment.getProcessName())
     {
       AppMethodBeat.o(154232);
       return str1;
     }
   }
   
-  final void Ac(final boolean paramBoolean)
+  final void Es(boolean paramBoolean)
   {
     AppMethodBeat.i(154246);
     Object localObject1 = new com.tencent.xweb.b.h(Environment.getExternalStorageDirectory());
-    ((com.tencent.xweb.b.h)localObject1).ggc();
+    ((com.tencent.xweb.b.h)localObject1).htu();
     localObject1 = ((com.tencent.xweb.b.h)localObject1).getPath() + "/apkxwebtest";
     Object localObject2;
     try
     {
       localObject1 = new com.tencent.xweb.b.h((String)localObject1);
-      localObject2 = ((com.tencent.xweb.b.h)localObject1).ggc();
+      localObject2 = ((com.tencent.xweb.b.h)localObject1).htu();
       if (localObject2.length == 0)
       {
-        du("apkxwebtest目录下没有.zip文件,请确认应用权限，在权限管理打开应用的读写存储权限", true);
+        dQ("apkxwebtest目录下没有.zip文件,请确认应用权限，在权限管理打开应用的读写存储权限", true);
         AppMethodBeat.o(154246);
         return;
       }
     }
     catch (Exception localException)
     {
-      du("没有找到apkxwebtest目录,请确认应用权限，在权限管理打开应用的读写存储权限", true);
+      dQ("没有找到apkxwebtest目录,请确认应用权限，在权限管理打开应用的读写存储权限", true);
       AppMethodBeat.o(154246);
       return;
     }
@@ -1040,19 +1093,11 @@ public final class d
     {
       if (localObject2[i].getName().endsWith(".zip"))
       {
-        final String str = localObject2[i].getAbsolutePath();
+        String str = localObject2[i].getAbsolutePath();
         localObject2 = localObject2[i].getName();
         if (paramBoolean)
         {
-          new AlertDialog.Builder(this.MMV).setTitle("提示").setMessage("确定加载:" + (String)localObject2 + "?").setPositiveButton("确定", new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-            {
-              AppMethodBeat.i(154205);
-              d.this.G(str, this.MTz, paramBoolean);
-              AppMethodBeat.o(154205);
-            }
-          }).setNegativeButton("取消", new d.40(this)).show();
+          new AlertDialog.Builder(this.SzQ).setTitle("提示").setMessage("确定加载:" + (String)localObject2 + "?").setPositiveButton("确定", new d.44(this, str, (String)localObject2, paramBoolean)).setNegativeButton("取消", new d.43(this)).show();
           AppMethodBeat.o(154246);
           return;
         }
@@ -1062,7 +1107,7 @@ public final class d
       }
       i += 1;
     }
-    du("apkxwebtest目录下没有.zip文件", true);
+    dQ("apkxwebtest目录下没有.zip文件", true);
     AppMethodBeat.o(154246);
   }
   
@@ -1077,7 +1122,7 @@ public final class d
         ((com.tencent.xweb.b.h)localObject).delete();
       }
       paramString1 = com.tencent.xweb.b.i.openRead(paramString1);
-      localObject = com.tencent.xweb.b.i.Db(((com.tencent.xweb.b.h)localObject).getAbsolutePath());
+      localObject = com.tencent.xweb.b.i.LM(((com.tencent.xweb.b.h)localObject).getAbsolutePath());
       byte[] arrayOfByte = new byte[1048576];
       for (;;)
       {
@@ -1087,7 +1132,7 @@ public final class d
         }
         ((OutputStream)localObject).write(arrayOfByte, 0, i);
       }
-      du("安装" + paramString2 + "失败,错误码=" + paramString1, true);
+      dQ("安装" + paramString2 + "失败,错误码=" + paramString1, true);
     }
     catch (IOException paramString1)
     {
@@ -1097,7 +1142,7 @@ public final class d
         if (paramString1.intValue() != 0) {
           break;
         }
-        du("安装" + paramString2 + "成功", paramBoolean);
+        dQ("安装" + paramString2 + "成功", paramBoolean);
         AppMethodBeat.o(154247);
         return;
         ((OutputStream)localObject).flush();
@@ -1107,7 +1152,7 @@ public final class d
     }
     catch (Exception paramString1)
     {
-      du("安装失败", true);
+      dQ("安装失败", true);
       Log.e("WebDebugPage", "install local apk failed : " + paramString1.getMessage());
       AppMethodBeat.o(154247);
       return;
@@ -1132,12 +1177,12 @@ public final class d
           label25:
           com.tencent.xweb.x5.sdk.d.setWebContentsDebuggingEnabled(paramBoolean1);
           label29:
-          if ((paramBoolean2) && (this.MSJ.getX5WebViewExtension() != null))
+          if ((paramBoolean2) && (this.SFP.getX5WebViewExtension() != null))
           {
             if (!paramBoolean1) {
               break label79;
             }
-            this.MSJ.loadUrl("http://debugx5.qq.com/?inspector=true");
+            this.SFP.loadUrl("http://debugx5.qq.com/?inspector=true");
           }
           while (paramButton != null) {
             if (paramBoolean1)
@@ -1146,7 +1191,7 @@ public final class d
               AppMethodBeat.o(154244);
               return;
               label79:
-              this.MSJ.loadUrl("http://debugx5.qq.com/?inspector=false");
+              this.SFP.loadUrl("http://debugx5.qq.com/?inspector=false");
             }
             else
             {
@@ -1172,7 +1217,14 @@ public final class d
     }
   }
   
-  public final boolean bcD(String paramString)
+  final void bCn()
+  {
+    AppMethodBeat.i(154242);
+    iH(this.SzQ);
+    AppMethodBeat.o(154242);
+  }
+  
+  public final boolean bsn(String paramString)
   {
     boolean bool5 = false;
     AppMethodBeat.i(154226);
@@ -1188,7 +1240,7 @@ public final class d
     boolean bool2;
     if ((paramString.contains("debugmm.qq.com")) || (paramString.contains("debugxweb.qq.com")))
     {
-      com.tencent.xweb.util.g.FJ(224L);
+      com.tencent.xweb.util.h.OQ(224L);
       localObject6 = Uri.parse(paramString);
       localObject1 = ((Uri)localObject6).getQueryParameterNames();
       if ((localObject1 != null) && (((Set)localObject1).size() > 0))
@@ -1220,13 +1272,13 @@ public final class d
             case 0: 
               if (((Uri)localObject6).getBooleanQueryParameter("forcex5", false))
               {
-                y.gfo().a("tools", WebView.c.MNz);
-                y.gfo().a("appbrand", WebView.c.MNz);
-                y.gfo().a("support", WebView.c.MNz);
-                y.gfo().a("mm", WebView.c.MNz);
-                y.gfo().a("toolsmp", WebView.c.MNz);
-                y.gfo().a(JsRuntime.JsRuntimeType.MMF);
-                dv("force use x5 switch is on ", true);
+                y.hsF().a("tools", WebView.c.SAu);
+                y.hsF().a("appbrand", WebView.c.SAu);
+                y.hsF().a("support", WebView.c.SAu);
+                y.hsF().a("mm", WebView.c.SAu);
+                y.hsF().a("toolsmp", WebView.c.SAu);
+                y.hsF().a(JsRuntime.JsRuntimeType.SzA);
+                dR("force use x5 switch is on ", true);
               }
               break;
             }
@@ -1361,16 +1413,16 @@ public final class d
               }
               i = 20;
               break label310;
-              y.gfo().a("tools", WebView.c.MNx);
-              y.gfo().a("appbrand", WebView.c.MNx);
-              y.gfo().a("support", WebView.c.MNx);
-              y.gfo().a("mm", WebView.c.MNx);
-              y.gfo().a("toolsmp", WebView.c.MNx);
-              y.gfo().a(JsRuntime.JsRuntimeType.MMA);
-              dv("force use x5 switch is off ", true);
+              y.hsF().a("tools", WebView.c.SAs);
+              y.hsF().a("appbrand", WebView.c.SAs);
+              y.hsF().a("support", WebView.c.SAs);
+              y.hsF().a("mm", WebView.c.SAs);
+              y.hsF().a("toolsmp", WebView.c.SAs);
+              y.hsF().a(JsRuntime.JsRuntimeType.Szv);
+              dR("force use x5 switch is off ", true);
             }
             bool1 = ((Uri)localObject6).getBooleanQueryParameter("inspector", false);
-            y.gfo().zR(bool1);
+            y.hsF().setDebugEnable(bool1);
             a(bool1, null, true);
             AppMethodBeat.o(154226);
             return true;
@@ -1384,7 +1436,7 @@ public final class d
               if (bool2) {
                 break label1138;
               }
-              du("权限校验失败", true);
+              dQ("权限校验失败", true);
               Log.e("WebDebugPage", "checkTempPerssion failed");
               break;
               localObject5 = ((String)localObject5).trim();
@@ -1397,70 +1449,70 @@ public final class d
               {
                 localObject5 = ((String)localObject5).substring(0, i);
                 String str2 = new SimpleDateFormat("yyyyMMdd").format(new Date());
-                bool2 = com.tencent.xweb.util.b.bo((String)localObject5 + "@check_permission@" + str2, (String)localObject1, "MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAE4s7oy+BvW5kzf5PwtVqDdZb2rVQS7GDf\naJWwtkD95ILDQAtHM9Nv5apLYQnUbXkjTldOUpjK7MimTkf/qXjQfk8hF2A0Mf7L\nHbDPr7kD9DOuQlG53SWOuKQVEwwsjN1l");
+                bool2 = com.tencent.xweb.util.b.bw((String)localObject5 + "@check_permission@" + str2, (String)localObject1, "MHYwEAYHKoZIzj0CAQYFK4EEACIDYgAE4s7oy+BvW5kzf5PwtVqDdZb2rVQS7GDf\naJWwtkD95ILDQAtHM9Nv5apLYQnUbXkjTldOUpjK7MimTkf/qXjQfk8hF2A0Mf7L\nHbDPr7kD9DOuQlG53SWOuKQVEwwsjN1l");
               }
             }
             label1138:
             Log.i("WebDebugPage", "checkTempPerssion suc");
             continue;
             bool1 = ((Uri)localObject6).getBooleanQueryParameter("show_x5_ver", false);
-            paramString = y.gfo();
-            if (bool1 != paramString.MMZ)
+            paramString = y.hsF();
+            if (bool1 != paramString.SzU)
             {
-              paramString.MMZ = bool1;
-              paramString.MMV.getSharedPreferences("wcwebview", 0).edit().putBoolean("bShowX5Version", paramString.MMZ).commit();
+              paramString.SzU = bool1;
+              paramString.SzQ.getSharedPreferences("wcwebview", 0).edit().putBoolean("bShowX5Version", paramString.SzU).commit();
             }
             if (bool1) {
-              du("开启显示x5内核信息", true);
+              dQ("开启显示x5内核信息", true);
             }
             for (;;)
             {
               AppMethodBeat.o(154226);
               return true;
-              du("关闭显示x5内核信息", true);
+              dQ("关闭显示x5内核信息", true);
             }
             paramString = ((Uri)localObject6).getQueryParameter("encrpt_url");
             try
             {
-              paramString = com.tencent.xweb.util.a.a(paramString, com.tencent.xweb.util.a.bcO("b01d4598de5875eb9b86abdef32b811e9c55edcfb1673b5617cc0a6ab7dceaff"));
+              paramString = com.tencent.xweb.util.a.a(paramString, com.tencent.xweb.util.a.bsz("b01d4598de5875eb9b86abdef32b811e9c55edcfb1673b5617cc0a6ab7dceaff"));
               if (TextUtils.isEmpty(paramString))
               {
-                du("解密失败", true);
+                dQ("解密失败", true);
                 AppMethodBeat.o(154226);
                 return true;
               }
-              bcD(paramString);
+              bsn(paramString);
             }
             catch (Throwable paramString)
             {
               for (;;)
               {
-                du("解密失败", true);
+                dQ("解密失败", true);
               }
             }
             AppMethodBeat.o(154226);
             return true;
-            p.lI(XWalkEnvironment.getApplicationContext());
+            p.lG(XWalkEnvironment.getApplicationContext());
             AppMethodBeat.o(154226);
             return true;
             bool1 = ((Uri)localObject6).getBooleanQueryParameter("show_fps", false);
-            y.gfo().setShowFps(bool1);
+            y.hsF().setShowFps(bool1);
             AppMethodBeat.o(154226);
             return true;
             try
             {
               localObject1 = WebView.c.valueOf(((Uri)localObject6).getQueryParameter("set_mm_config"));
-              y.gfo().a("mm", (WebView.c)localObject1);
-              du("mm进程将使用:".concat(String.valueOf(localObject1)), true);
+              y.hsF().a("mm", (WebView.c)localObject1);
+              dQ("mm进程将使用:".concat(String.valueOf(localObject1)), true);
             }
             catch (Exception localException1) {}
             continue;
             try
             {
               WebView.c localc = WebView.c.valueOf(((Uri)localObject6).getQueryParameter("set_web_config"));
-              y.gfo().a("tools", localc);
-              y.gfo().a("toolsmp", localc);
-              du("打开网页将使用:".concat(String.valueOf(localc)), true);
+              y.hsF().a("tools", localc);
+              y.hsF().a("toolsmp", localc);
+              dQ("打开网页将使用:".concat(String.valueOf(localc)), true);
             }
             catch (Exception localException2) {}
             break;
@@ -1472,43 +1524,43 @@ public final class d
         try
         {
           Object localObject2 = WebView.c.valueOf(((Uri)localObject6).getQueryParameter("set_appbrand_config"));
-          y.gfo().a("appbrand", (WebView.c)localObject2);
-          y.gfo().a("support", (WebView.c)localObject2);
-          switch (48.mKi[localObject2.ordinal()])
+          y.hsF().a("appbrand", (WebView.c)localObject2);
+          y.hsF().a("support", (WebView.c)localObject2);
+          switch (51.nXl[localObject2.ordinal()])
           {
           case 1: 
-            y.gfo().a(JsRuntime.JsRuntimeType.MMI);
-            du("打开小程序将使用:".concat(String.valueOf(localObject2)), true);
+            y.hsF().a(JsRuntime.JsRuntimeType.SzD);
+            dQ("打开小程序将使用:".concat(String.valueOf(localObject2)), true);
             break;
           case 2: 
-            y.gfo().a(JsRuntime.JsRuntimeType.MMF);
-            du("打开小程序将使用:".concat(String.valueOf(localObject2)), true);
+            y.hsF().a(JsRuntime.JsRuntimeType.SzA);
+            dQ("打开小程序将使用:".concat(String.valueOf(localObject2)), true);
             break;
           case 3: 
-            y.gfo().a(JsRuntime.JsRuntimeType.MMI);
-            du("打开小程序将使用:".concat(String.valueOf(localObject2)), true);
+            y.hsF().a(JsRuntime.JsRuntimeType.SzD);
+            dQ("打开小程序将使用:".concat(String.valueOf(localObject2)), true);
             continue;
-            if (this.MSO == null)
+            if (this.SFU == null)
             {
-              localObject2 = new ScrollView(this.MMV);
-              this.MSO = new TextView(this.MMV);
-              this.MSO.setTextColor(-16777216);
-              this.MSO.setBackgroundColor(-1);
-              ((ScrollView)localObject2).addView(this.MSO);
-              this.MSO.setOnClickListener(new d.12(this));
-              ghs();
-              this.MSJ.getTopView().addView((View)localObject2);
+              localObject2 = new ScrollView(this.SzQ);
+              this.SFU = new TextView(this.SzQ);
+              this.SFU.setTextColor(-16777216);
+              this.SFU.setBackgroundColor(-1);
+              ((ScrollView)localObject2).addView(this.SFU);
+              this.SFU.setOnClickListener(new d.12(this));
+              huN();
+              this.SFP.getTopView().addView((View)localObject2);
               continue;
               try
               {
                 i = Integer.parseInt(((Uri)localObject6).getQueryParameter("set_grayvalue"));
                 XWalkEnvironment.setGrayValueForTest(i);
-                du("灰度值设为" + i % 10000, true);
+                dQ("灰度值设为" + i % 10000, true);
                 bool1 = true;
               }
               catch (Exception localException3)
               {
-                du("灰度值设置失败，参数解析错误", true);
+                dQ("灰度值设置失败，参数解析错误", true);
                 bool1 = true;
               }
               continue;
@@ -1518,62 +1570,64 @@ public final class d
                 XWalkEnvironment.sNDeviceRd = i;
                 XWalkEnvironment.getSharedPreferences().edit().putInt("sNDeviceRd", i).commit();
                 XWalkEnvironment.setGrayValueForTest(i);
-                du("设备随机灰度值设为" + i % 10000, true);
+                dQ("设备随机灰度值设为" + i % 10000, true);
                 bool1 = true;
               }
               catch (Exception localException4)
               {
-                du("设备随机灰度值设置失败，参数解析错误", true);
+                dQ("设备随机灰度值设置失败，参数解析错误", true);
                 bool1 = true;
               }
               continue;
-              du("开始检测浏览器和所有插件更新", true);
-              ghy();
-              lG(XWalkEnvironment.getApplicationContext());
+              dQ("开始检测浏览器和所有插件更新", true);
+              huT();
+              lF(XWalkEnvironment.getApplicationContext());
               continue;
-              du("模拟触发沙箱进程检测浏览器内核更新", true);
+              dQ("模拟触发沙箱进程检测浏览器内核更新", true);
               XWalkEnvironment.setConfigFetchPeriod(1800001L);
-              w.a(XWalkEnvironment.getApplicationContext(), null);
-              new a(this.MMV);
+              w.b(XWalkEnvironment.getApplicationContext(), null);
+              new a(this.SzQ);
               continue;
               Object localObject3 = Integer.TYPE;
-              localObject5 = this.MMV;
-              com.tencent.xweb.util.f.b("com.tencent.mm.pluginsdk.model.TBSHelper", "checkXWalkNow", new Class[] { Context.class, localObject3 }, new Object[] { localObject5, Integer.valueOf(4) });
+              localObject5 = this.SzQ;
+              com.tencent.xweb.util.g.b("com.tencent.mm.pluginsdk.model.TBSHelper", "checkXWalkNow", new Class[] { Context.class, localObject3 }, new Object[] { localObject5, Integer.valueOf(4) });
+              dQ("即将发起沙箱进程检查更新", true);
+              new a(this.SzQ);
               continue;
-              du("重置上次拉取配置时间", true);
-              Scheduler.gid();
-              com.tencent.xweb.xwalk.a.j.FR(0L);
+              dQ("重置上次拉取配置时间", true);
+              Scheduler.hvD();
+              k.OY(0L);
               continue;
-              du("清理本地的更新计划", true);
-              Scheduler.Af(false).ghW();
-              Scheduler.Af(true).ghW();
+              dQ("清理本地的更新计划", true);
+              Scheduler.Ev(false).hvw();
+              Scheduler.Ev(true).hvw();
               continue;
               try
               {
                 localObject3 = ((Uri)localObject6).getQueryParameter("set_config_url");
-                if ((XWalkEnvironment.isValidConfigHost((String)localObject3)) || (y.gfo().gfs())) {
-                  break label2081;
+                if ((XWalkEnvironment.isValidConfigHost((String)localObject3)) || (y.hsF().hsJ())) {
+                  break label2101;
                 }
-                du("you have no athority to set this config url:".concat(String.valueOf(localObject3)), true);
+                dQ("you have no athority to set this config url:".concat(String.valueOf(localObject3)), true);
               }
               catch (Exception localException5)
               {
-                du("测试连接设置失败，格式错误", true);
+                dQ("测试连接设置失败，格式错误", true);
               }
               continue;
-              label2081:
-              XWalkEnvironment.setTestDownLoadUrl(this.MMV, localException5);
-              du("测试连接设置为:".concat(String.valueOf(localException5)), true);
+              label2101:
+              XWalkEnvironment.setTestDownLoadUrl(this.SzQ, localException5);
+              dQ("测试连接设置为:".concat(String.valueOf(localException5)), true);
               continue;
               try
               {
                 String str1 = ((Uri)localObject6).getQueryParameter("set_plugin_config_url");
                 XWalkEnvironment.setPluginTestConfigUrl(str1);
-                du("插件测试连接设置为:".concat(String.valueOf(str1)), true);
+                dQ("插件测试连接设置为:".concat(String.valueOf(str1)), true);
               }
               catch (Exception localException6)
               {
-                du("插件测试连接设置失败，格式错误", true);
+                dQ("插件测试连接设置失败，格式错误", true);
               }
               continue;
               Object localObject4 = "";
@@ -1587,9 +1641,9 @@ public final class d
                 for (;;)
                 {
                   int k;
-                  label2676:
+                  label2720:
+                  label3154:
                   continue;
-                  label3110:
                   bool2 = bool1;
                   continue;
                   int j = 0;
@@ -1598,32 +1652,36 @@ public final class d
               }
               if ("all".equalsIgnoreCase((String)localObject4))
               {
-                du("开始检测所有插件更新", true);
-                lG(this.MMV);
+                dQ("开始检测所有插件更新", true);
+                lF(this.SzQ);
               }
               else if ("FullScreenVideo".equalsIgnoreCase((String)localObject4))
               {
-                cI(this.MMV, "FullScreenVideo");
+                dc(this.SzQ, "FullScreenVideo");
               }
               else if ("XFilesPDFReader".equalsIgnoreCase((String)localObject4))
               {
-                cI(this.MMV, "XFilesPDFReader");
+                dc(this.SzQ, "XFilesPDFReader");
               }
               else if ("XFilesPPTReader".equalsIgnoreCase((String)localObject4))
               {
-                cI(this.MMV, "XFilesPPTReader");
+                dc(this.SzQ, "XFilesPPTReader");
               }
               else if ("XFilesWordReader".equalsIgnoreCase((String)localObject4))
               {
-                cI(this.MMV, "XFilesWordReader");
+                dc(this.SzQ, "XFilesWordReader");
               }
               else if ("XFilesExcelReader".equalsIgnoreCase((String)localObject4))
               {
-                cI(this.MMV, "XFilesExcelReader");
+                dc(this.SzQ, "XFilesExcelReader");
+              }
+              else if ("XFilesOfficeReader".equalsIgnoreCase((String)localObject4))
+              {
+                dc(this.SzQ, "XFilesOfficeReader");
               }
               else
               {
-                du("检测插件更新失败，参数错误", true);
+                dQ("检测插件更新失败，参数错误", true);
                 continue;
                 bool3 = false;
                 bool4 = false;
@@ -1651,7 +1709,7 @@ public final class d
                   return true;
                 }
                 XWalkEnvironment.initTurnOnKVLog();
-                if ((y.gfo().gfs()) || (bool4)) {
+                if ((y.hsF().hsJ()) || (bool4)) {
                   k = 1;
                 }
                 for (;;)
@@ -1663,7 +1721,7 @@ public final class d
                     if ((localObject5 == null) || (((Set)localObject5).size() == 0))
                     {
                       if (k != 0) {
-                        ghv();
+                        huQ();
                       }
                       AppMethodBeat.o(154226);
                       return true;
@@ -1692,115 +1750,115 @@ public final class d
                               break;
                             case 0: 
                               bool1 = ((Uri)localObject4).getBooleanQueryParameter("inspector", false);
-                              y.gfo().zR(bool1);
+                              y.hsF().setDebugEnable(bool1);
                               a(bool1, null, true);
                               bool1 = true;
                               break;
                               if (!((String)localObject6).equals("inspector")) {
-                                break label2676;
+                                break label2720;
                               }
                               i = 0;
                               continue;
                               if (!((String)localObject6).equals("use_testconfig")) {
-                                break label2676;
+                                break label2720;
                               }
                               i = 1;
                               continue;
                               if (!((String)localObject6).equals("kill_all")) {
-                                break label2676;
+                                break label2720;
                               }
                               i = 2;
                               continue;
                               if (!((String)localObject6).equals("ignore_crashwatch")) {
-                                break label2676;
+                                break label2720;
                               }
                               i = 3;
                               continue;
                               if (!((String)localObject6).equals("save_page")) {
-                                break label2676;
+                                break label2720;
                               }
                               i = 4;
                               continue;
                               if (!((String)localObject6).equals("clear_cache")) {
-                                break label2676;
+                                break label2720;
                               }
                               i = 5;
                               continue;
                               if (!((String)localObject6).equals("clear_old_ver")) {
-                                break label2676;
+                                break label2720;
                               }
                               i = 6;
                               continue;
                               if (!((String)localObject6).equals("fix_dex")) {
-                                break label2676;
+                                break label2720;
                               }
                               i = 7;
                               continue;
                               if (!((String)localObject6).equals("clear_all")) {
-                                break label2676;
+                                break label2720;
                               }
                               i = 8;
                               continue;
                               if (!((String)localObject6).equals("abandon_curent_ver")) {
-                                break label2676;
+                                break label2720;
                               }
                               i = 9;
                             }
                           }
                           bool1 = ((Uri)localObject4).getBooleanQueryParameter("use_testconfig", false);
-                          y.gfo().zT(bool1);
+                          y.hsF().Ej(bool1);
                           if (bool1) {
-                            du("使用测试config", true);
+                            dQ("使用测试config", true);
                           }
                           for (;;)
                           {
                             bool1 = true;
                             break;
-                            du("使用正式config", true);
+                            dQ("使用正式config", true);
                           }
                           j = 1;
                           bool1 = true;
                           continue;
                           bool2 = ((Uri)localObject4).getBooleanQueryParameter("ignore_crashwatch", false);
-                          localObject6 = y.gfo();
-                          ((y)localObject6).MNd = bool2;
-                          ((y)localObject6).MMV.getSharedPreferences("wcwebview", 0).edit().putBoolean("ignore_crashwatch", bool2).commit();
-                          du("忽略crash检测设为 = ".concat(String.valueOf(bool2)), true);
+                          localObject6 = y.hsF();
+                          ((y)localObject6).SzY = bool2;
+                          ((y)localObject6).SzQ.getSharedPreferences("wcwebview", 0).edit().putBoolean("ignore_crashwatch", bool2).commit();
+                          dQ("忽略crash检测设为 = ".concat(String.valueOf(bool2)), true);
                           continue;
-                          if (!y.gfo().MNa) {}
+                          if (!y.hsF().SzV) {}
                           for (bool2 = true;; bool2 = false)
                           {
-                            y.gfo().zS(bool2);
+                            y.hsF().Ei(bool2);
                             if (!bool2) {
-                              break label3110;
+                              break label3154;
                             }
-                            ghr();
-                            this.MSP.setVisibility(0);
+                            huM();
+                            this.SFV.setVisibility(0);
                             break;
                           }
-                          if (this.MSP != null)
+                          if (this.SFV != null)
                           {
-                            this.MSP.setVisibility(8);
+                            this.SFV.setVisibility(8);
                             continue;
                             ah.clearAllWebViewCache(XWalkEnvironment.getApplicationContext(), true);
-                            du("网页cache已经清理:", true);
+                            dQ("网页cache已经清理:", true);
                             continue;
-                            p.K(XWalkEnvironment.getApplicationContext(), true);
-                            du("旧版本已经清理", true);
+                            p.L(XWalkEnvironment.getApplicationContext(), true);
+                            dQ("旧版本已经清理", true);
                             continue;
-                            p.ghD();
+                            p.hva();
                             continue;
-                            XWalkEnvironment.clearAllVersion(this.MMV);
+                            XWalkEnvironment.clearAllVersion(this.SzQ);
                             bool1 = true;
                             continue;
-                            p.ghB();
+                            p.huX();
                             bool1 = true;
                           }
                         }
                       }
                       if (k != 0)
                       {
-                        if (!dt(paramString, bool4))
+                        if (!dP(paramString, bool4))
                         {
                           bool2 = bool5;
                           if (!bool1) {}
@@ -1810,7 +1868,7 @@ public final class d
                           bool2 = true;
                         }
                         if (j != 0) {
-                          bgU();
+                          bCn();
                         }
                         AppMethodBeat.o(154226);
                         return bool2;
@@ -1828,20 +1886,13 @@ public final class d
     }
   }
   
-  final void bgU()
-  {
-    AppMethodBeat.i(154242);
-    hN(this.MMV);
-    AppMethodBeat.o(154242);
-  }
-  
-  final void du(String paramString, boolean paramBoolean)
+  final void dQ(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(154248);
     if (paramBoolean) {
       try
       {
-        AlertDialog.Builder localBuilder = new AlertDialog.Builder(this.MMV);
+        AlertDialog.Builder localBuilder = new AlertDialog.Builder(this.SzQ);
         localBuilder.setMessage(paramString);
         localBuilder.create().show();
         AppMethodBeat.o(154248);
@@ -1858,25 +1909,17 @@ public final class d
     AppMethodBeat.o(154248);
   }
   
-  final void dv(String paramString, boolean paramBoolean)
+  final void dR(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(154249);
     try
     {
-      AlertDialog.Builder localBuilder = new AlertDialog.Builder(this.MMV);
+      AlertDialog.Builder localBuilder = new AlertDialog.Builder(this.SzQ);
       localBuilder.setMessage(paramString);
       localBuilder.create();
       localBuilder.setCancelable(true);
       if (paramBoolean) {
-        localBuilder.setOnCancelListener(new DialogInterface.OnCancelListener()
-        {
-          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-          {
-            AppMethodBeat.i(154207);
-            d.this.bgU();
-            AppMethodBeat.o(154207);
-          }
-        });
+        localBuilder.setOnCancelListener(new d.48(this));
       }
       localBuilder.show();
       AppMethodBeat.o(154249);
@@ -1892,9 +1935,9 @@ public final class d
   final void f(Button paramButton)
   {
     AppMethodBeat.i(154236);
-    int i = this.MSJ.getSettings().getForceDarkMode();
-    int j = this.MSJ.getSettings().getForceDarkBehavior();
-    int k = lp(i, j);
+    int i = this.SFP.getSettings().getForceDarkMode();
+    int j = this.SFP.getSettings().getForceDarkBehavior();
+    int k = mP(i, j);
     if (k == 1)
     {
       paramButton.setText(String.format("当前Dark Mode强制智能反色[%d,%d]（点击切换）", new Object[] { Integer.valueOf(i), Integer.valueOf(j) }));
@@ -1919,540 +1962,392 @@ public final class d
     AppMethodBeat.o(154236);
   }
   
-  public final void gfH()
+  public final void hsZ()
   {
     AppMethodBeat.i(154225);
-    if (y.gfo().MMX) {
+    if (y.hsF().SzS) {
       a(true, null, false);
     }
     AppMethodBeat.o(154225);
   }
   
-  final void ghr()
+  final void huM()
   {
     AppMethodBeat.i(154228);
-    if (!y.gfo().MNa)
+    if (!y.hsF().SzV)
     {
       AppMethodBeat.o(154228);
       return;
     }
-    if (this.MSP != null)
+    if (this.SFV != null)
     {
       AppMethodBeat.o(154228);
       return;
     }
-    this.MSP = new Button(this.MMV);
-    this.MSP.setText("保存页面");
-    this.MSP.setOnClickListener(new View.OnClickListener()
-    {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(154152);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        new AlertDialog.Builder(d.this.MMV).setTitle("保存页面").setMessage("确定保存页面？").setPositiveButton("确定", new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-          {
-            AppMethodBeat.i(154151);
-            paramAnonymous2DialogInterface = d.this;
-            Object localObject1 = new Date();
-            Object localObject2 = new SimpleDateFormat("yyyy-MM-dd-HH_mm_ss");
-            String str = Environment.getExternalStorageDirectory().getPath();
-            localObject1 = str + "/xweb_dump/" + ((SimpleDateFormat)localObject2).format((Date)localObject1);
-            localObject2 = (String)localObject1 + "/main.html";
-            str = (String)localObject1 + "/resource";
-            paramAnonymous2DialogInterface.MSJ.savePage((String)localObject2, str, 1);
-            new Thread(new d.46(paramAnonymous2DialogInterface, (String)localObject1)).start();
-            AppMethodBeat.o(154151);
-          }
-        }).setNegativeButton("取消", new DialogInterface.OnClickListener()
-        {
-          public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
-        }).show();
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(154152);
-      }
-    });
-    this.MSJ.getTopView().addView(this.MSP);
+    this.SFV = new Button(this.SzQ);
+    this.SFV.setText("保存页面");
+    this.SFV.setOnClickListener(new d.1(this));
+    this.SFP.getTopView().addView(this.SFV);
     AppMethodBeat.o(154228);
   }
   
-  final void ghs()
+  final void huN()
   {
     AppMethodBeat.i(154230);
-    if (this.MSO == null)
+    if (this.SFU == null)
     {
       AppMethodBeat.o(154230);
       return;
     }
     Object localObject5 = XWalkEnvironment.getXWalkUpdateConfigUrl();
-    Object localObject2 = "\n\n" + this.MSJ.getAbstractInfo();
+    Object localObject2 = "\n\n" + this.SFP.getAbstractInfo();
     Object localObject1 = localObject2;
-    if (com.tencent.xweb.WebView.getCurWebType() != WebView.c.MNy) {
-      localObject1 = (String)localObject2 + "\n xwebsdk is = 200901 apk ver is " + XWalkEnvironment.getAvailableVersion();
+    if (com.tencent.xweb.WebView.getCurWebType() != WebView.c.SAt) {
+      localObject1 = (String)localObject2 + "\n xwebsdk is = 201201 apk ver is " + XWalkEnvironment.getAvailableVersion() + " des " + XWalkEnvironment.getAvailableVersionDetail();
     }
-    localObject1 = (String)localObject1 + "\n\n current js engine: =  " + JsRuntime.gfd() + "\n prefered js engine =  " + JsRuntime.a(JsRuntime.JsRuntimeType.MMA, "appbrand", this.MMV) + "\n user id(uin) = " + XWalkEnvironment.getUserId() + "\n local gray value = " + XWalkEnvironment.getGrayValue() + "\n local gray device rd value = " + XWalkEnvironment.getDeviceRd() + "\n today gray value = " + XWalkEnvironment.getTodayGrayValue() + "\n config url = " + (String)localObject5 + "\n config period(minutes) = " + Scheduler.gih() / 60000L + "\n\n apilevel = " + Build.VERSION.SDK_INT + "\n device is  " + Build.BRAND + " " + Build.MODEL + "\n usertype is " + XWalkEnvironment.getUserType() + "\n runtime abi is " + XWalkEnvironment.getRuntimeAbi() + "\n device abi is " + XWalkEnvironment.getDeviceAbi() + "\n installed ver for arm32 is " + XWalkEnvironment.getInstalledNewstVersion("armeabi-v7a") + "\n installed ver for arm64 is " + XWalkEnvironment.getInstalledNewstVersion("arm64-v8a") + "\n should embed =  false\n embed lib md5 match =  true\n embed config ver =  0/0\n embed try installed ver =  " + XWalkUpdater.getLastTryInstallVer(XWalkEnvironment.getRuntimeAbi()) + "\n current useragent: " + this.MSJ.getSettings().getUserAgentString() + "\n current clientversion: 0x" + Integer.toHexString(XWalkEnvironment.getAppClientVersion()) + "\n current app infos dump : " + XWalkEnvironment.dumpAppInfo();
-    localObject2 = (String)localObject1 + "\n\n ------dump module prefer webview core start:------\n";
-    localObject1 = localObject2;
-    try
+    if (XWalkEnvironment.getApplicationContext().getApplicationInfo() != null) {}
+    for (int i = XWalkEnvironment.getApplicationContext().getApplicationInfo().targetSdkVersion;; i = 0)
     {
-      localObject2 = (String)localObject2 + a(this.MMV, WebView.c.MNz, "tools") + "\n";
+      localObject1 = (String)localObject1 + "\n\n current js engine: =  " + JsRuntime.hsu() + "\n prefered js engine =  " + JsRuntime.a(JsRuntime.JsRuntimeType.Szv, "appbrand", this.SzQ) + "\n user id(uin) = " + XWalkEnvironment.getUserId() + "\n local gray value = " + XWalkEnvironment.getGrayValue() + "\n local gray device rd value = " + XWalkEnvironment.getDeviceRd() + "\n today gray value = " + XWalkEnvironment.getTodayGrayValue() + "\n config url = " + (String)localObject5 + "\n config period(minutes) = " + Scheduler.hvH() / 60000L + "\n\n apilevel = " + Build.VERSION.SDK_INT + "\n apilevel = " + i + "\n sys webversion = " + XWalkEnvironment.safeGetChromiunVersion() + "\n device is  " + Build.BRAND + " " + Build.MODEL + "\n usertype is " + XWalkEnvironment.getUserType() + "\n runtime abi is " + XWalkEnvironment.getRuntimeAbi() + "\n device abi is " + XWalkEnvironment.getDeviceAbi() + "\n installed ver for arm32 is " + XWalkEnvironment.getInstalledNewstVersion("armeabi-v7a") + "\n installed ver for arm64 is " + XWalkEnvironment.getInstalledNewstVersion("arm64-v8a") + "\n should embed =  false\n embed lib md5 match =  true\n embed config ver =  0/0" + "\n embed try installed ver =  " + XWalkUpdater.getLastTryInstallVer(XWalkEnvironment.getRuntimeAbi()) + "\n current useragent: " + this.SFP.getSettings().getUserAgentString() + "\n current clientversion: 0x" + Integer.toHexString(XWalkEnvironment.getAppClientVersion()) + "\n current app infos dump : " + XWalkEnvironment.dumpAppInfo();
+      localObject2 = (String)localObject1 + "\n\n ------dump module prefer webview core start:------\n";
       localObject1 = localObject2;
-      localObject2 = (String)localObject2 + a(this.MMV, WebView.c.MNy, "toolsmp") + "\n";
-      localObject1 = localObject2;
-      localObject2 = (String)localObject2 + a(this.MMV, WebView.c.MNx, "mm") + "\n";
-      localObject1 = localObject2;
-      localObject2 = (String)localObject2 + a(this.MMV, WebView.c.MNy, "appbrand") + "\n";
-      localObject1 = localObject2;
-      localObject2 = (String)localObject2 + a(this.MMV, WebView.c.MNy, "support") + "\n";
-      localObject1 = localObject2;
-    }
-    catch (Exception localException1)
-    {
-      for (;;)
+      try
       {
-        localObject1 = (String)localObject1 + localException1.getMessage() + "\n";
+        localObject2 = (String)localObject2 + a(this.SzQ, WebView.c.SAu, "tools") + "\n";
+        localObject1 = localObject2;
+        localObject2 = (String)localObject2 + a(this.SzQ, WebView.c.SAt, "toolsmp") + "\n";
+        localObject1 = localObject2;
+        localObject2 = (String)localObject2 + a(this.SzQ, WebView.c.SAs, "mm") + "\n";
+        localObject1 = localObject2;
+        localObject2 = (String)localObject2 + a(this.SzQ, WebView.c.SAt, "appbrand") + "\n";
+        localObject1 = localObject2;
+        localObject2 = (String)localObject2 + a(this.SzQ, WebView.c.SAt, "support") + "\n";
+        localObject1 = localObject2;
       }
-      localObject1 = (String)localObject1 + "\n current update match gap backward(update speed) is " + Scheduler.bdg(Scheduler.Af(false).Ah(false));
-      localObject1 = (String)localObject1 + "\n current update match gap forward(提前更新) is " + Scheduler.bdg(Scheduler.Af(false).Ah(true));
-      localObject1 = (String)localObject1 + "\n plugin current update match gap backward(update speed) is " + Scheduler.bdg(new a.a("").Ah(false));
-      localObject1 = (String)localObject1 + "\n plugin current update match gap forward(提前更新) is " + Scheduler.bdg(new a.a("").Ah(true));
-      localObject3 = com.tencent.xweb.a.getAbstractInfo();
-      if (localObject3 == null) {
-        break label1838;
-      }
-    }
-    localObject1 = (String)localObject1 + "------dump module prefer webview core end------";
-    localObject1 = (String)localObject1 + "\n" + XWebCoreScheduler.giw().ghX();
-    localObject1 = (String)localObject1 + "\n" + com.tencent.xweb.xwalk.updater.h.giv().ghX();
-    localObject2 = com.tencent.xweb.xwalk.a.g.ghO().iterator();
-    Object localObject3;
-    for (;;)
-    {
-      if (((Iterator)localObject2).hasNext())
+      catch (Exception localException1)
       {
-        localObject5 = (com.tencent.xweb.xwalk.a.f)((Iterator)localObject2).next();
-        if (localObject5 != null)
+        for (;;)
         {
-          localObject5 = com.tencent.xweb.xwalk.a.a.bdd(((com.tencent.xweb.xwalk.a.f)localObject5).getPluginName());
-          localObject1 = (String)localObject1 + "\n" + ((Scheduler)localObject5).ghX();
+          localObject1 = (String)localObject1 + localException1.getMessage() + "\n";
+        }
+        localObject1 = (String)localObject1 + "\n current update match gap backward(update speed) is " + Scheduler.bsT(Scheduler.Ev(false).Ex(false));
+        localObject1 = (String)localObject1 + "\n current update match gap forward(提前更新) is " + Scheduler.bsT(Scheduler.Ev(false).Ex(true));
+        localObject1 = (String)localObject1 + "\n plugin current update match gap backward(update speed) is " + Scheduler.bsT(new a.a("").Ex(false));
+        localObject1 = (String)localObject1 + "\n plugin current update match gap forward(提前更新) is " + Scheduler.bsT(new a.a("").Ex(true));
+        localObject3 = com.tencent.xweb.a.getAbstractInfo();
+        if (localObject3 == null) {
+          break label1923;
         }
       }
-      else if (!((String)localObject3).isEmpty())
+      localObject1 = (String)localObject1 + "------dump module prefer webview core end------";
+      localObject1 = (String)localObject1 + "\n" + XWebCoreScheduler.hvW().hvx();
+      localObject1 = (String)localObject1 + "\n" + com.tencent.xweb.xwalk.updater.i.hvV().hvx();
+      localObject2 = com.tencent.xweb.xwalk.a.h.hvo().iterator();
+      while (((Iterator)localObject2).hasNext())
       {
+        localObject5 = (com.tencent.xweb.xwalk.a.g)((Iterator)localObject2).next();
+        if (localObject5 != null)
+        {
+          localObject5 = com.tencent.xweb.xwalk.a.a.bsQ(((com.tencent.xweb.xwalk.a.g)localObject5).getPluginName());
+          localObject1 = (String)localObject1 + "\n" + ((Scheduler)localObject5).hvx();
+        }
+      }
+      Object localObject3;
+      if (!((String)localObject3).isEmpty()) {
         localObject1 = (String)localObject1 + "\n\n ------dump commands start:------\n" + (String)localObject3 + "\n ------dump commands end------";
       }
-    }
-    label1838:
-    for (;;)
-    {
-      localObject3 = new StringBuilder();
-      ((StringBuilder)localObject3).append("\n\n ------plugin info start:------\n plugin config url = ").append(XWalkEnvironment.getPluginConfigUrl()).append("\n plugin config period(minutes) = ").append(XWalkEnvironment.getPluginUpdatePeriod() / 60000).append("\n\n plugin version:");
-      localObject5 = com.tencent.xweb.xwalk.a.g.ghO().iterator();
-      Object localObject6;
-      while (((Iterator)localObject5).hasNext())
-      {
-        localObject6 = (com.tencent.xweb.xwalk.a.f)((Iterator)localObject5).next();
-        if (localObject6 != null) {
-          ((StringBuilder)localObject3).append("\n ").append(((com.tencent.xweb.xwalk.a.f)localObject6).getPluginName()).append(" = ").append(((com.tencent.xweb.xwalk.a.f)localObject6).MUN);
-        }
-      }
-      ((StringBuilder)localObject3).append("\n\n plugin commands:");
-      localObject5 = com.tencent.xweb.b.getAbstractInfo();
-      if ((localObject5 != null) && (!((String)localObject5).isEmpty())) {
-        ((StringBuilder)localObject3).append("\n").append((String)localObject5);
-      }
+      label1923:
       for (;;)
       {
-        ((StringBuilder)localObject3).append("\n xfiles setting:");
-        if (y.gfo() != null)
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("\n\n ------plugin info start:------\n plugin config url = ").append(XWalkEnvironment.getPluginConfigUrl()).append("\n plugin config period(minutes) = ").append(XWalkEnvironment.getPluginUpdatePeriod() / 60000).append("\n\n plugin version:");
+        localObject5 = com.tencent.xweb.xwalk.a.h.hvo().iterator();
+        Object localObject6;
+        while (((Iterator)localObject5).hasNext())
         {
-          ((StringBuilder)localObject3).append("\n disable cache = ").append(y.gfo().gfp());
-          ((StringBuilder)localObject3).append("\n disable crash detect = ").append(y.gfo().gfq());
+          localObject6 = (com.tencent.xweb.xwalk.a.g)((Iterator)localObject5).next();
+          if (localObject6 != null) {
+            ((StringBuilder)localObject3).append("\n ").append(((com.tencent.xweb.xwalk.a.g)localObject6).getPluginName()).append(" = ").append(((com.tencent.xweb.xwalk.a.g)localObject6).hvk());
+          }
         }
-        ((StringBuilder)localObject3).append(ghw()).append("\n\n ------plugin info end:------");
-        localObject6 = (String)localObject1 + ((StringBuilder)localObject3).toString();
-        localObject5 = "";
-        localObject1 = localObject5;
-        try
+        ((StringBuilder)localObject3).append("\n\n plugin commands:");
+        localObject5 = com.tencent.xweb.b.getAbstractInfo();
+        if ((localObject5 != null) && (!((String)localObject5).isEmpty())) {
+          ((StringBuilder)localObject3).append("\n").append((String)localObject5);
+        }
+        for (;;)
         {
-          SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-          localObject3 = localObject5;
+          ((StringBuilder)localObject3).append("\n xfiles setting:");
+          if (y.hsF() != null)
+          {
+            ((StringBuilder)localObject3).append("\n disable cache = ").append(y.hsF().hsG());
+            ((StringBuilder)localObject3).append("\n disable crash detect = ").append(y.hsF().hsH());
+          }
+          ((StringBuilder)localObject3).append(huR()).append("\n\n ------plugin info end:------");
+          localObject6 = (String)localObject1 + ((StringBuilder)localObject3).toString();
+          localObject5 = "";
           localObject1 = localObject5;
-          if (Scheduler.Af(false).ghZ())
+          try
           {
+            SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            localObject3 = localObject5;
             localObject1 = localObject5;
-            String str = localSimpleDateFormat.format(new Date(Scheduler.Af(false).gij().MWb));
-            localObject1 = localObject5;
-            localObject3 = "" + "going to update to apk ver = " + Scheduler.Af(false).gij().version;
+            if (Scheduler.Ev(false).hvz())
+            {
+              localObject1 = localObject5;
+              String str = localSimpleDateFormat.format(new Date(Scheduler.Ev(false).hvJ().SJf));
+              localObject1 = localObject5;
+              localObject3 = "" + "going to update to apk ver = " + Scheduler.Ev(false).hvJ().version;
+              localObject1 = localObject3;
+              localObject3 = (String)localObject3 + "\n update time is = " + str;
+              localObject1 = localObject3;
+              localObject3 = (String)localObject3 + "\n is patch update = " + Scheduler.Ev(false).hvJ().SJc;
+              localObject1 = localObject3;
+              localObject3 = (String)localObject3 + "\n can use cellular = " + Scheduler.Ev(false).hvJ().SIE;
+              localObject1 = localObject3;
+              localObject3 = (String)localObject3 + "\n updateHourStart = " + Scheduler.Ev(false).hvJ().SJj;
+              localObject1 = localObject3;
+              localObject3 = (String)localObject3 + "\n updateHourEnd = " + Scheduler.Ev(false).hvJ().SJk;
+              localObject1 = localObject3;
+              localObject3 = (String)localObject3 + "\n versionId = " + Scheduler.Ev(false).hvJ().SIv;
+              localObject1 = localObject3;
+              localObject3 = (String)localObject3 + "\n update time is = " + str;
+              localObject1 = localObject3;
+              localObject3 = (String)localObject3 + "\n try count = " + Scheduler.Ev(false).hvJ().SJh;
+              localObject1 = localObject3;
+              localObject3 = (String)localObject3 + "\n try use shared core count = " + Scheduler.Ev(false).hvJ().SJi;
+              localObject1 = localObject3;
+              localObject3 = (String)localObject3 + "\n";
+            }
             localObject1 = localObject3;
-            localObject3 = (String)localObject3 + "\n update time is = " + str;
+            localObject5 = new Date(Scheduler.Ev(false).hvJ().SJa);
             localObject1 = localObject3;
-            localObject3 = (String)localObject3 + "\n is patch update = " + Scheduler.Af(false).gij().MVY;
+            localObject3 = (String)localObject3 + " last fetch config time = " + localSimpleDateFormat.format((Date)localObject5);
             localObject1 = localObject3;
-            localObject3 = (String)localObject3 + "\n can use cellular = " + Scheduler.Af(false).gij().MVx;
-            localObject1 = localObject3;
-            localObject3 = (String)localObject3 + "\n updateHourStart = " + Scheduler.Af(false).gij().MWf;
-            localObject1 = localObject3;
-            localObject3 = (String)localObject3 + "\n updateHourEnd = " + Scheduler.Af(false).gij().MWg;
-            localObject1 = localObject3;
-            localObject3 = (String)localObject3 + "\n versionId = " + Scheduler.Af(false).gij().MVo;
-            localObject1 = localObject3;
-            localObject3 = (String)localObject3 + "\n update time is = " + str;
-            localObject1 = localObject3;
-            localObject3 = (String)localObject3 + "\n try count = " + Scheduler.Af(false).gij().MWd;
-            localObject1 = localObject3;
-            localObject3 = (String)localObject3 + "\n try use shared core count = " + Scheduler.Af(false).gij().MWe;
-            localObject1 = localObject3;
-            localObject3 = (String)localObject3 + "\n";
+            localObject3 = (String)localObject3 + " last fetch config abi = " + Scheduler.Ev(false).hvJ().SJb;
           }
-          localObject1 = localObject3;
-          localObject5 = new Date(Scheduler.Af(false).gij().MVW);
-          localObject1 = localObject3;
-          localObject3 = (String)localObject3 + " last fetch config time = " + localSimpleDateFormat.format((Date)localObject5);
-          localObject1 = localObject3;
-          localObject3 = (String)localObject3 + " last fetch config abi = " + Scheduler.Af(false).gij().MVX;
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
+          catch (Exception localException2)
           {
-            Object localObject4 = localObject1;
+            for (;;)
+            {
+              Object localObject4 = localObject1;
+            }
           }
-        }
-        localObject1 = localObject6;
-        if (localObject3 != null)
-        {
           localObject1 = localObject6;
-          if (!((String)localObject3).isEmpty()) {
-            localObject1 = (String)localObject6 + "\n\n ------dump schedule updateInfo start:------\n" + (String)localObject3 + "\n ------dump schedule updateInfo end------";
+          if (localObject3 != null)
+          {
+            localObject1 = localObject6;
+            if (!((String)localObject3).isEmpty()) {
+              localObject1 = (String)localObject6 + "\n\n ------dump schedule updateInfo start:------\n" + (String)localObject3 + "\n ------dump schedule updateInfo end------";
+            }
           }
-        }
-        localObject5 = XWalkEnvironment.getXWalkInitializeLog();
-        localObject3 = localObject1;
-        if (localObject5 != null)
-        {
+          localObject5 = XWalkEnvironment.getXWalkInitializeLog();
           localObject3 = localObject1;
-          if (!((String)localObject5).isEmpty()) {
-            localObject3 = (String)localObject1 + "\n\n ------dump xweb log------\n" + (String)localObject5;
+          if (localObject5 != null)
+          {
+            localObject3 = localObject1;
+            if (!((String)localObject5).isEmpty()) {
+              localObject3 = (String)localObject1 + "\n\n ------dump xweb log------\n" + (String)localObject5;
+            }
           }
+          this.SFU.setText((CharSequence)localObject3);
+          AppMethodBeat.o(154230);
+          return;
+          ((StringBuilder)localObject3).append("\n null\n");
         }
-        this.MSO.setText((CharSequence)localObject3);
-        AppMethodBeat.o(154230);
-        return;
-        ((StringBuilder)localObject3).append("\n null\n");
       }
     }
   }
   
-  final void ght()
+  final void huO()
   {
     AppMethodBeat.i(154231);
-    if ((!y.gfo().MMY) && ((!y.gfo().MMZ) || (this.MSJ.getWebCoreType() != WebView.c.MNz)))
+    if ((!y.hsF().SzT) && ((!y.hsF().SzU) || (this.SFP.getWebCoreType() != WebView.c.SAu)))
     {
       AppMethodBeat.o(154231);
       return;
     }
-    if (this.MSN != null)
+    if (this.SFT != null)
     {
       AppMethodBeat.o(154231);
       return;
     }
-    this.MSN = new TextView(this.MMV);
-    this.MSN.setOnLongClickListener(new d.23(this));
-    ghu();
-    this.MSJ.getTopView().addView(this.MSN);
+    this.SFT = new TextView(this.SzQ);
+    this.SFT.setOnLongClickListener(new d.23(this));
+    huP();
+    this.SFP.getTopView().addView(this.SFT);
     AppMethodBeat.o(154231);
   }
   
-  final boolean ghv()
+  final boolean huQ()
   {
     AppMethodBeat.i(154235);
-    b(this.MSJ);
-    if (this.MSQ != null)
+    b(this.SFP);
+    if (this.SFW != null)
     {
-      this.MSQ.setVisibility(0);
+      this.SFW.setVisibility(0);
       AppMethodBeat.o(154235);
       return true;
     }
-    this.MSQ = ((LayoutInflater)this.MMV.getSystemService("layout_inflater")).inflate(2131493685, this.MSJ.getTopView(), true).findViewById(2131306436);
-    ((Button)this.MSQ.findViewById(2131297647)).setOnClickListener(new d.34(this));
-    Object localObject1 = (CheckBox)this.MSQ.findViewById(2131298267);
-    ((CheckBox)localObject1).setChecked(y.gfo().MMY);
-    ((CheckBox)localObject1).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-    {
-      public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
-      {
-        AppMethodBeat.i(154208);
-        paramAnonymousCompoundButton = y.gfo();
-        if (paramAnonymousBoolean != paramAnonymousCompoundButton.MMY)
-        {
-          paramAnonymousCompoundButton.MMY = paramAnonymousBoolean;
-          paramAnonymousCompoundButton.MMV.getSharedPreferences("wcwebview", 0).edit().putBoolean("bShowVersion", paramAnonymousCompoundButton.MMY).commit();
-        }
-        if (paramAnonymousBoolean)
-        {
-          d.this.ght();
-          d.this.MSN.setVisibility(0);
-          AppMethodBeat.o(154208);
-          return;
-        }
-        if (d.this.MSN != null) {
-          d.this.MSN.setVisibility(8);
-        }
-        AppMethodBeat.o(154208);
-      }
-    });
-    ((TextView)this.MSQ.findViewById(2131298247)).setOnClickListener(new d.49(this, (CheckBox)localObject1));
-    localObject1 = (EditText)this.MSQ.findViewById(2131306174);
+    this.SFW = ((LayoutInflater)this.SzQ.getSystemService("layout_inflater")).inflate(2131493816, this.SFP.getTopView(), true).findViewById(2131309868);
+    ((Button)this.SFW.findViewById(2131297911)).setOnClickListener(new d.34(this));
+    Object localObject1 = (CheckBox)this.SFW.findViewById(2131298651);
+    ((CheckBox)localObject1).setChecked(y.hsF().SzT);
+    ((CheckBox)localObject1).setOnCheckedChangeListener(new d.45(this));
+    ((TextView)this.SFW.findViewById(2131298631)).setOnClickListener(new d.52(this, (CheckBox)localObject1));
+    localObject1 = (EditText)this.SFW.findViewById(2131309560);
     if (localObject1 != null)
     {
       ((EditText)localObject1).setInputType(2);
       ((EditText)localObject1).setText(XWalkEnvironment.getGrayValue());
-      ((EditText)localObject1).addTextChangedListener(new TextWatcher()
-      {
-        public final void afterTextChanged(Editable paramAnonymousEditable)
-        {
-          AppMethodBeat.i(154213);
-          paramAnonymousEditable = this.MTE.getText().toString();
-          int i = 0;
-          try
-          {
-            int j = Integer.parseInt(paramAnonymousEditable);
-            i = j;
-          }
-          catch (Exception paramAnonymousEditable)
-          {
-            label25:
-            break label25;
-          }
-          XWalkEnvironment.setGrayValueForTest(i);
-          AppMethodBeat.o(154213);
-        }
-        
-        public final void beforeTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
-        
-        public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3) {}
-      });
+      ((EditText)localObject1).addTextChangedListener(new d.53(this, (EditText)localObject1));
     }
-    ((Spinner)this.MSQ.findViewById(2131304547)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-    {
-      public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(154214);
-        Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousAdapterView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).mu(paramAnonymousInt);
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).rl(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$8", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-        paramAnonymousAdapterView = d.this.MMV.getResources().getStringArray(2130903104);
-        d.this.MSS = paramAnonymousAdapterView[paramAnonymousInt];
-        paramAnonymousAdapterView = d.this;
-        paramAnonymousAdapterView.MSR = true;
-        if (paramAnonymousAdapterView.MSS.equals("all"))
-        {
-          paramAnonymousView = paramAnonymousAdapterView.MMV.getResources().getStringArray(2130903103);
-          localObject = y.gfo().bcB(paramAnonymousView[0]);
-          paramAnonymousInt = 1;
-          if (paramAnonymousInt < paramAnonymousView.length) {
-            if (y.gfo().bcB(paramAnonymousView[paramAnonymousInt]) != localObject)
-            {
-              ((RadioButton)paramAnonymousAdapterView.MSQ.findViewById(2131296280)).setChecked(false);
-              ((RadioButton)paramAnonymousAdapterView.MSQ.findViewById(2131296283)).setChecked(false);
-              ((RadioButton)paramAnonymousAdapterView.MSQ.findViewById(2131296282)).setChecked(false);
-              ((RadioButton)paramAnonymousAdapterView.MSQ.findViewById(2131296281)).setChecked(false);
-            }
-          }
-        }
-        for (;;)
-        {
-          paramAnonymousAdapterView.MSR = false;
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$8", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-          AppMethodBeat.o(154214);
-          return;
-          paramAnonymousInt += 1;
-          break;
-          paramAnonymousAdapterView.m((WebView.c)localObject);
-          continue;
-          paramAnonymousAdapterView.m(y.gfo().bcB(paramAnonymousAdapterView.MSS));
-        }
-      }
-      
-      public final void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
-    });
-    ((RadioGroup)this.MSQ.findViewById(2131306908)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+    ((Spinner)this.SFW.findViewById(2131307575)).setOnItemSelectedListener(new d.54(this));
+    ((RadioGroup)this.SFW.findViewById(2131310379)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(RadioGroup paramAnonymousRadioGroup, int paramAnonymousInt)
       {
         AppMethodBeat.i(154215);
-        if (d.this.MSR)
+        if (d.this.SFX)
         {
           AppMethodBeat.o(154215);
           return;
         }
-        paramAnonymousRadioGroup = WebView.c.MNx;
+        paramAnonymousRadioGroup = WebView.c.SAs;
         if (paramAnonymousInt == 2131296280) {
-          paramAnonymousRadioGroup = WebView.c.MNx;
+          paramAnonymousRadioGroup = WebView.c.SAs;
         }
-        while (!d.this.MSS.equals("all"))
+        while (!d.this.SFY.equals("all"))
         {
-          y.gfo().a(d.this.MSS, paramAnonymousRadioGroup);
+          y.hsF().a(d.this.SFY, paramAnonymousRadioGroup);
           Log.d("WebDebugPage", "webview change to=".concat(String.valueOf(paramAnonymousRadioGroup)));
           AppMethodBeat.o(154215);
           return;
           if (paramAnonymousInt == 2131296283) {
-            paramAnonymousRadioGroup = WebView.c.MNy;
+            paramAnonymousRadioGroup = WebView.c.SAt;
           } else if (paramAnonymousInt == 2131296282) {
-            paramAnonymousRadioGroup = WebView.c.MNz;
+            paramAnonymousRadioGroup = WebView.c.SAu;
           } else if (paramAnonymousInt == 2131296281) {
-            paramAnonymousRadioGroup = WebView.c.MNA;
+            paramAnonymousRadioGroup = WebView.c.SAv;
           }
         }
-        String[] arrayOfString = d.this.MMV.getResources().getStringArray(2130903103);
+        String[] arrayOfString = d.this.SzQ.getResources().getStringArray(2130903105);
         paramAnonymousInt = 0;
         while (paramAnonymousInt < arrayOfString.length)
         {
-          y.gfo().a(arrayOfString[paramAnonymousInt], paramAnonymousRadioGroup);
+          y.hsF().a(arrayOfString[paramAnonymousInt], paramAnonymousRadioGroup);
           Log.d("WebDebugPage", "webview " + arrayOfString[paramAnonymousInt] + " change to=" + paramAnonymousRadioGroup);
           paramAnonymousInt += 1;
         }
         AppMethodBeat.o(154215);
       }
     });
-    switch (48.MSm[y.gfo().MNe.ordinal()])
+    switch (51.SFs[y.hsF().SzZ.ordinal()])
     {
     default: 
-      ((RadioGroup)this.MSQ.findViewById(2131306258)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+      ((RadioGroup)this.SFW.findViewById(2131309657)).setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
       {
         public final void onCheckedChanged(RadioGroup paramAnonymousRadioGroup, int paramAnonymousInt)
         {
           AppMethodBeat.i(154153);
-          paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.MMA;
-          if (paramAnonymousInt == 2131306255) {
-            paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.MMA;
+          paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.Szv;
+          if (paramAnonymousInt == 2131309654) {
+            paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.Szv;
           }
           for (;;)
           {
-            y.gfo().a(paramAnonymousRadioGroup);
+            y.hsF().a(paramAnonymousRadioGroup);
             Log.d("WebDebugPage", "v8 type change to=".concat(String.valueOf(paramAnonymousRadioGroup)));
             AppMethodBeat.o(154153);
             return;
-            if (paramAnonymousInt == 2131306259) {
-              paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.MMB;
-            } else if (paramAnonymousInt == 2131306260) {
-              paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.MMF;
-            } else if (paramAnonymousInt == 2131306257) {
-              paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.MMH;
-            } else if (paramAnonymousInt == 2131306256) {
-              paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.MMI;
+            if (paramAnonymousInt == 2131309658) {
+              paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.Szw;
+            } else if (paramAnonymousInt == 2131309659) {
+              paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.SzA;
+            } else if (paramAnonymousInt == 2131309656) {
+              paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.SzC;
+            } else if (paramAnonymousInt == 2131309655) {
+              paramAnonymousRadioGroup = JsRuntime.JsRuntimeType.SzD;
             }
           }
         }
       });
-      ((Button)this.MSQ.findViewById(2131297654)).setOnClickListener(new d.3(this));
-      localObject1 = (Button)this.MSQ.findViewById(2131297586);
-      a(y.gfo().MMX, (Button)localObject1, false);
-      ((Button)localObject1).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154155);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          if (!y.gfo().MMX) {}
-          for (boolean bool = true;; bool = false)
-          {
-            y.gfo().zR(bool);
-            d.this.a(bool, this.MTa, true);
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(154155);
-            return;
-          }
-        }
-      });
-      ((Button)this.MSQ.findViewById(2131297644)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154156);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          XWalkEnvironment.clearAllVersion(d.this.MMV);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$13", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(154156);
-        }
-      });
-      ((Button)this.MSQ.findViewById(2131297665)).setOnClickListener(new d.6(this));
-      ((Button)this.MSQ.findViewById(2131297657)).setOnClickListener(new d.7(this));
-      localObject1 = (Button)this.MSQ.findViewById(2131297649);
-      if ((this.MSJ.isXWalkKernel()) && (XWalkEnvironment.isCurrentVersionSupportForceDarkMode()))
+      ((Button)this.SFW.findViewById(2131297919)).setOnClickListener(new d.3(this));
+      localObject1 = (Button)this.SFW.findViewById(2131297831);
+      a(y.hsF().SzS, (Button)localObject1, false);
+      ((Button)localObject1).setOnClickListener(new d.4(this, (Button)localObject1));
+      ((Button)this.SFW.findViewById(2131297908)).setOnClickListener(new d.5(this));
+      ((Button)this.SFW.findViewById(2131297932)).setOnClickListener(new d.6(this));
+      ((Button)this.SFW.findViewById(2131297922)).setOnClickListener(new d.7(this));
+      localObject1 = (Button)this.SFW.findViewById(2131297913);
+      if ((this.SFP.isXWalkKernel()) && (XWalkEnvironment.isCurrentVersionSupportForceDarkMode()))
       {
         ((Button)localObject1).setVisibility(0);
         label502:
         f((Button)localObject1);
-        ((Button)localObject1).setOnClickListener(new d.8(this, (Button)localObject1));
-        Object localObject2 = (Button)this.MSQ.findViewById(2131297648);
+        ((Button)localObject1).setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(154159);
+            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+            ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+            paramAnonymousView = d.this;
+            localObject = this.SGh;
+            int i = paramAnonymousView.SFP.getSettings().getForceDarkMode();
+            int j = paramAnonymousView.SFP.getSettings().getForceDarkBehavior();
+            if ((i != 0) && (i == 2)) {
+              if (j == 2) {
+                paramAnonymousView.SFP.getSettings().setForceDarkBehavior(1);
+              }
+            }
+            for (;;)
+            {
+              paramAnonymousView.f((Button)localObject);
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$16", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(154159);
+              return;
+              if (j == 1)
+              {
+                paramAnonymousView.SFP.getSettings().setForceDarkMode(0);
+              }
+              else if (j == 0)
+              {
+                paramAnonymousView.SFP.getSettings().setForceDarkMode(0);
+              }
+              else
+              {
+                paramAnonymousView.SFP.getSettings().setForceDarkMode(2);
+                paramAnonymousView.SFP.getSettings().setForceDarkBehavior(2);
+              }
+            }
+          }
+        });
+        Object localObject2 = (Button)this.SFW.findViewById(2131297912);
         localObject1 = XWalkEnvironment.getXWalkUpdateConfigUrl();
         localObject1 = ((String)localObject1).substring(((String)localObject1).lastIndexOf('/') + 1);
         localObject1 = "(当前为" + (String)localObject1 + ")";
-        if (!y.gfo().MNf) {
-          break label1505;
+        if (!y.hsF().SAa) {
+          break label1594;
         }
         localObject1 = "使用正式版config".concat(String.valueOf(localObject1));
         label595:
         ((Button)localObject2).setText((CharSequence)localObject1);
-        ((Button)localObject2).setOnClickListener(new View.OnClickListener()
-        {
-          public final void onClick(View paramAnonymousView)
-          {
-            AppMethodBeat.i(154160);
-            Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-            ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-            paramAnonymousView = y.gfo();
-            boolean bool;
-            if (!y.gfo().MNf)
-            {
-              bool = true;
-              paramAnonymousView.zT(bool);
-              paramAnonymousView = XWalkEnvironment.getXWalkUpdateConfigUrl();
-              paramAnonymousView = paramAnonymousView.substring(paramAnonymousView.lastIndexOf('/') + 1);
-              paramAnonymousView = "(当前为" + paramAnonymousView + ")";
-              localObject = this.MTc;
-              if (!y.gfo().MNf) {
-                break label145;
-              }
-            }
-            label145:
-            for (paramAnonymousView = "使用正式版config".concat(String.valueOf(paramAnonymousView));; paramAnonymousView = "使用测试config".concat(String.valueOf(paramAnonymousView)))
-            {
-              ((Button)localObject).setText(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$17", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-              AppMethodBeat.o(154160);
-              return;
-              bool = false;
-              break;
-            }
-          }
-        });
-        ((Button)this.MSQ.findViewById(2131297668)).setOnClickListener(new d.10(this));
-        localObject1 = (LinearLayout)this.MSQ.findViewById(2131303310);
+        ((Button)localObject2).setOnClickListener(new d.9(this, (Button)localObject2));
+        ((Button)this.SFW.findViewById(2131297935)).setOnClickListener(new d.10(this));
+        localObject1 = (LinearLayout)this.SFW.findViewById(2131305984);
         ((LinearLayout)localObject1).setVisibility(8);
-        localObject2 = (Button)this.MSQ.findViewById(2131297663);
+        localObject2 = (Button)this.SFW.findViewById(2131297929);
         ((Button)localObject2).setText("插件设置");
         ((Button)localObject2).setOnClickListener(new d.11(this, (LinearLayout)localObject1));
-        localObject1 = (Button)this.MSQ.findViewById(2131297662);
+        localObject1 = (Button)this.SFW.findViewById(2131297928);
         localObject2 = XWalkEnvironment.getPluginTestConfigUrl();
         if ((localObject2 == null) || (((String)localObject2).isEmpty())) {
-          break label1529;
+          break label1618;
         }
         if (!((String)localObject2).equalsIgnoreCase("https://dldir1.qq.com/weixin/android/wxweb/plugin/pluginUpdateConfig_test.xml")) {
-          break label1519;
+          break label1608;
         }
         ((Button)localObject1).setText("切换插件配置，当前使用默认测试版");
       }
@@ -2460,435 +2355,166 @@ public final class d
     }
     for (;;)
     {
-      ((Button)localObject1).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154164);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$20", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          paramAnonymousView = XWalkEnvironment.getPluginTestConfigUrl();
-          if ((paramAnonymousView != null) && (!paramAnonymousView.isEmpty())) {
-            if (XWalkEnvironment.setPluginTestConfigUrl("")) {
-              this.MTe.setText("切换插件配置，当前使用正式版");
-            }
-          }
-          for (;;)
-          {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$20", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(154164);
-            return;
-            d.this.du("切换失败", true);
-            continue;
-            if (XWalkEnvironment.setPluginTestConfigUrl("https://dldir1.qq.com/weixin/android/wxweb/plugin/pluginUpdateConfig_test.xml")) {
-              this.MTe.setText("切换插件配置，当前使用默认测试版");
-            } else {
-              d.this.du("切换失败", true);
-            }
-          }
-        }
-      });
-      ((Button)this.MSQ.findViewById(2131297669)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154165);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          d.lG(d.this.MMV);
-          Toast.makeText(d.this.MMV, "开始检测插件更新", 0).show();
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$21", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(154165);
-        }
-      });
-      ((Button)this.MSQ.findViewById(2131297645)).setOnClickListener(new d.15(this));
-      ((Spinner)this.MSQ.findViewById(2131305151)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener()
-      {
-        public final void onItemSelected(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-        {
-          AppMethodBeat.i(154167);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousAdapterView);
-          localb.bd(paramAnonymousView);
-          localb.mu(paramAnonymousInt);
-          localb.rl(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$23", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-          paramAnonymousAdapterView = d.this.MMV.getResources().getStringArray(2130903075);
-          d.this.MSK = paramAnonymousAdapterView[paramAnonymousInt];
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$23", "android/widget/AdapterView$OnItemSelectedListener", "onItemSelected", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-          AppMethodBeat.o(154167);
-        }
-        
-        public final void onNothingSelected(AdapterView<?> paramAnonymousAdapterView) {}
-      });
-      ((Button)this.MSQ.findViewById(2131297659)).setOnClickListener(new View.OnClickListener()
+      ((Button)localObject1).setOnClickListener(new d.13(this, (Button)localObject1));
+      ((Button)this.SFW.findViewById(2131297936)).setOnClickListener(new d.14(this));
+      ((Button)this.SFW.findViewById(2131297909)).setOnClickListener(new d.15(this));
+      ((Spinner)this.SFW.findViewById(2131308334)).setOnItemSelectedListener(new d.16(this));
+      ((Button)this.SFW.findViewById(2131297924)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(154169);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          d.a(d.this.MMV, d.this.MSK, false, new ValueCallback() {});
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          d.a(d.this.SzQ, d.this.SFQ, false, new ValueCallback() {});
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$24", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(154169);
         }
       });
-      ((Button)this.MSQ.findViewById(2131297660)).setOnClickListener(new View.OnClickListener()
+      ((Button)this.SFW.findViewById(2131297925)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(154171);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          d.a(d.this.MMV, d.this.MSK, true, new ValueCallback() {});
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          d.a(d.this.SzQ, d.this.SFQ, true, new ValueCallback() {});
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$25", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(154171);
         }
       });
-      ((Button)this.MSQ.findViewById(2131297670)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154172);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          d.cI(d.this.MMV, d.this.MSK);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$26", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(154172);
-        }
-      });
-      ((Button)this.MSQ.findViewById(2131297646)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154173);
-          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$27", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-          paramAnonymousView = com.tencent.xweb.xwalk.a.g.bcp(d.this.MSK);
-          if (paramAnonymousView == null)
-          {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$27", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(154173);
-            return;
-          }
-          int i = paramAnonymousView.MUN;
-          if (i < 0)
-          {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$27", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(154173);
-            return;
-          }
-          localObject = paramAnonymousView.aju(i);
-          paramAnonymousView.ajt(-1);
-          if ((localObject != null) && (!((String)localObject).isEmpty())) {
-            com.tencent.xweb.util.c.bcQ((String)localObject);
-          }
-          Toast.makeText(d.this.MMV, "清理完成", 0).show();
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$27", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(154173);
-        }
-      });
-      localObject1 = (CheckBox)this.MSQ.findViewById(2131298265);
-      ((CheckBox)localObject1).setChecked(y.gfo().gfp());
-      ((CheckBox)localObject1).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-      {
-        public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(154174);
-          paramAnonymousCompoundButton = y.gfo().MMV.getSharedPreferences("wcwebview", 4);
-          if (paramAnonymousCompoundButton != null)
-          {
-            paramAnonymousCompoundButton = paramAnonymousCompoundButton.edit();
-            if (paramAnonymousCompoundButton != null)
-            {
-              paramAnonymousCompoundButton.putBoolean("fr_disable_cache", paramAnonymousBoolean);
-              paramAnonymousCompoundButton.commit();
-              if (paramAnonymousBoolean)
-              {
-                paramAnonymousCompoundButton = com.tencent.xweb.xwalk.a.g.ghO().iterator();
-                while (paramAnonymousCompoundButton.hasNext())
-                {
-                  Object localObject = (com.tencent.xweb.xwalk.a.f)paramAnonymousCompoundButton.next();
-                  if ((localObject instanceof l))
-                  {
-                    int i = ((com.tencent.xweb.xwalk.a.f)localObject).MUN;
-                    if (i >= 0)
-                    {
-                      localObject = ((com.tencent.xweb.xwalk.a.f)localObject).ajv(i);
-                      if (!((String)localObject).isEmpty()) {
-                        com.tencent.xweb.util.c.bcQ((String)localObject);
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-          AppMethodBeat.o(154174);
-        }
-      });
-      localObject1 = (CheckBox)this.MSQ.findViewById(2131298266);
-      ((CheckBox)localObject1).setChecked(y.gfo().gfq());
-      ((CheckBox)localObject1).setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
-      {
-        public final void onCheckedChanged(CompoundButton paramAnonymousCompoundButton, boolean paramAnonymousBoolean)
-        {
-          AppMethodBeat.i(154175);
-          paramAnonymousCompoundButton = y.gfo().MMV.getSharedPreferences("wcwebview", 4);
-          if (paramAnonymousCompoundButton != null)
-          {
-            paramAnonymousCompoundButton = paramAnonymousCompoundButton.edit();
-            if (paramAnonymousCompoundButton != null)
-            {
-              paramAnonymousCompoundButton.putBoolean("fr_disable_crash_detect", paramAnonymousBoolean);
-              paramAnonymousCompoundButton.commit();
-            }
-          }
-          AppMethodBeat.o(154175);
-        }
-      });
-      ((TextView)this.MSQ.findViewById(2131305730)).setText(ghw());
-      localObject1 = (EditText)this.MSQ.findViewById(2131299264);
-      ((Button)this.MSQ.findViewById(2131297652)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154177);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$30", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          d.a(d.this, this.MTh.getText().toString(), f.a.MMf);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$30", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(154177);
-        }
-      });
-      ((Button)this.MSQ.findViewById(2131297651)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154178);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$31", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          d.a(d.this, this.MTh.getText().toString(), f.a.MMg);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$31", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(154178);
-        }
-      });
-      ((Button)this.MSQ.findViewById(2131297650)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154179);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$32", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          d.a(d.this, this.MTh.getText().toString(), f.a.MMe);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$32", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(154179);
-        }
-      });
-      ((TextView)this.MSQ.findViewById(2131306169)).setText(Ab(true) + "\n" + XWalkInitializer.getXWalkInitializeLog());
-      ((LinearLayout)this.MSQ.findViewById(2131298553)).setVisibility(8);
-      ((Button)this.MSQ.findViewById(2131297643)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154180);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$33", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          XWalkEnvironment.setGrayValueForTest(1);
-          if (!XWalkEnvironment.hasAvailableVersion()) {
-            if (XWalkEnvironment.isIaDevice()) {
-              d.this.bcD("http://debugxweb.qq.com/?set_web_config=WV_KIND_CW&set_appbrand_config=WV_KIND_CW&set_config_url=https://dldir1.qq.com/weixin/android/wxweb/updateConfig_x86_test.xml&check_xwalk_update");
-            }
-          }
-          for (;;)
-          {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$33", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(154180);
-            return;
-            d.this.bcD("http://debugxweb.qq.com/?set_web_config=WV_KIND_CW&set_appbrand_config=WV_KIND_CW&set_config_url=https://dldir1.qq.com/weixin/android/wxweb/updateConfig_test.xml&check_xwalk_update");
-            continue;
-            y.gfo().a("tools", WebView.c.MNy);
-            y.gfo().a("toolsmp", WebView.c.MNy);
-            y.gfo().a("appbrand", WebView.c.MNy);
-            y.gfo().a("support", WebView.c.MNy);
-            y.gfo().a("mm", WebView.c.MNy);
-            d.this.dv("已使用XWeb，点任意位置重启进程生效\n", true);
-          }
-        }
-      });
-      ((Button)this.MSQ.findViewById(2131297642)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154181);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$34", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          y.gfo().a("tools", WebView.c.MNz);
-          y.gfo().a("toolsmp", WebView.c.MNz);
-          y.gfo().a("appbrand", WebView.c.MNz);
-          y.gfo().a("support", WebView.c.MNz);
-          y.gfo().a("mm", WebView.c.MNz);
-          if (com.tencent.xweb.WebView.getInstalledTbsCoreVersion(d.this.MMV) <= 0) {
-            d.this.du("已切换x5，但是x5未ready，点任意位置重启进程生效\n", true);
-          }
-          for (;;)
-          {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$34", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(154181);
-            return;
-            d.this.dv("已使用x5，点任意位置重启进程生效\n", true);
-          }
-        }
-      });
-      ((Button)this.MSQ.findViewById(2131297641)).setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154182);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$35", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          y.gfo().a("tools", WebView.c.MNA);
-          y.gfo().a("toolsmp", WebView.c.MNA);
-          y.gfo().a("appbrand", WebView.c.MNA);
-          y.gfo().a("support", WebView.c.MNA);
-          y.gfo().a("mm", WebView.c.MNA);
-          d.this.dv("已使用system，点任意位置重启进程生效\n", true);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$35", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(154182);
-        }
-      });
-      ((Button)this.MSQ.findViewById(2131297640)).setOnClickListener(new View.OnClickListener()
+      ((Button)this.SFW.findViewById(2131297937)).setOnClickListener(new d.19(this));
+      ((Button)this.SFW.findViewById(2131297910)).setOnClickListener(new d.20(this));
+      localObject1 = (CheckBox)this.SFW.findViewById(2131298649);
+      ((CheckBox)localObject1).setChecked(y.hsF().hsG());
+      ((CheckBox)localObject1).setOnCheckedChangeListener(new d.21(this));
+      localObject1 = (CheckBox)this.SFW.findViewById(2131298650);
+      ((CheckBox)localObject1).setChecked(y.hsF().hsH());
+      ((CheckBox)localObject1).setOnCheckedChangeListener(new d.22(this));
+      ((TextView)this.SFW.findViewById(2131308997)).setText(huR());
+      localObject1 = (EditText)this.SFW.findViewById(2131299841);
+      ((Button)this.SFW.findViewById(2131297916)).setOnClickListener(new d.24(this, (EditText)localObject1));
+      ((Button)this.SFW.findViewById(2131297915)).setOnClickListener(new d.25(this, (EditText)localObject1));
+      ((Button)this.SFW.findViewById(2131297914)).setOnClickListener(new d.26(this, (EditText)localObject1));
+      localObject1 = (EditText)this.SFW.findViewById(2131299844);
+      ((Button)this.SFW.findViewById(2131297940)).setOnClickListener(new d.27(this, (EditText)localObject1));
+      ((Button)this.SFW.findViewById(2131297938)).setOnClickListener(new d.28(this, (EditText)localObject1));
+      ((Button)this.SFW.findViewById(2131297939)).setOnClickListener(new d.29(this, (EditText)localObject1));
+      ((TextView)this.SFW.findViewById(2131309555)).setText(Er(true) + "\n" + XWalkInitializer.getXWalkInitializeLog());
+      ((LinearLayout)this.SFW.findViewById(2131298987)).setVisibility(8);
+      ((Button)this.SFW.findViewById(2131297907)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(154183);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$36", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          XWalkEnvironment.setGrayValueForTest(0);
-          XWalkEnvironment.setTestDownLoadUrl(d.this.MMV, "");
-          y.gfo().a("tools", WebView.c.MNx);
-          y.gfo().a("toolsmp", WebView.c.MNx);
-          y.gfo().a("appbrand", WebView.c.MNx);
-          y.gfo().a("support", WebView.c.MNx);
-          y.gfo().a("mm", WebView.c.MNx);
-          d.this.dv("已使用AUTO，点任意位置重启进程生效\n", true);
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$36", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(154183);
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$36", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          XWalkEnvironment.setGrayValueForTest(1);
+          if (!XWalkEnvironment.hasAvailableVersion()) {
+            if (XWalkEnvironment.isIaDevice()) {
+              d.this.bsn("http://debugxweb.qq.com/?set_web_config=WV_KIND_CW&set_appbrand_config=WV_KIND_CW&set_config_url=https://dldir1.qq.com/weixin/android/wxweb/updateConfig_x86_test.xml&check_xwalk_update");
+            }
+          }
+          for (;;)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$36", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(154183);
+            return;
+            d.this.bsn("http://debugxweb.qq.com/?set_web_config=WV_KIND_CW&set_appbrand_config=WV_KIND_CW&set_config_url=https://dldir1.qq.com/weixin/android/wxweb/updateConfig_test.xml&check_xwalk_update");
+            continue;
+            y.hsF().a("tools", WebView.c.SAt);
+            y.hsF().a("toolsmp", WebView.c.SAt);
+            y.hsF().a("appbrand", WebView.c.SAt);
+            y.hsF().a("support", WebView.c.SAt);
+            y.hsF().a("mm", WebView.c.SAt);
+            d.this.dR("已使用XWeb，点任意位置重启进程生效\n", true);
+          }
         }
       });
-      ((Button)this.MSQ.findViewById(2131297639)).setOnClickListener(new d.31(this));
-      ((Button)this.MSQ.findViewById(2131297666)).setOnClickListener(new View.OnClickListener()
+      ((Button)this.SFW.findViewById(2131297906)).setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(154184);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$37", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          y.hsF().a("tools", WebView.c.SAu);
+          y.hsF().a("toolsmp", WebView.c.SAu);
+          y.hsF().a("appbrand", WebView.c.SAu);
+          y.hsF().a("support", WebView.c.SAu);
+          y.hsF().a("mm", WebView.c.SAu);
+          if (com.tencent.xweb.WebView.getInstalledTbsCoreVersion(d.this.SzQ) <= 0) {
+            d.this.dQ("已切换x5，但是x5未ready，点任意位置重启进程生效\n", true);
+          }
+          for (;;)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$37", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(154184);
+            return;
+            d.this.dR("已使用x5，点任意位置重启进程生效\n", true);
+          }
+        }
+      });
+      ((Button)this.SFW.findViewById(2131297905)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(154185);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$38", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          boolean bool;
-          if (!y.gfo().MNa)
-          {
-            bool = true;
-            y.gfo().zS(bool);
-            if (!bool) {
-              break label97;
-            }
-            d.this.ghr();
-            d.this.MSP.setVisibility(0);
-          }
-          for (;;)
-          {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$38", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(154185);
-            return;
-            bool = false;
-            break;
-            label97:
-            if (d.this.MSP != null) {
-              d.this.MSP.setVisibility(8);
-            }
-          }
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$38", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          y.hsF().a("tools", WebView.c.SAv);
+          y.hsF().a("toolsmp", WebView.c.SAv);
+          y.hsF().a("appbrand", WebView.c.SAv);
+          y.hsF().a("support", WebView.c.SAv);
+          y.hsF().a("mm", WebView.c.SAv);
+          d.this.dR("已使用system，点任意位置重启进程生效\n", true);
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$38", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(154185);
         }
       });
-      localObject1 = (Button)this.MSQ.findViewById(2131297658);
-      ((Button)localObject1).setOnClickListener(new View.OnClickListener()
+      ((Button)this.SFW.findViewById(2131297904)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(154186);
-          Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$39", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
-          paramAnonymousView = d.this;
-          localObject1 = new com.tencent.xweb.b.h(Environment.getExternalStorageDirectory());
-          ((com.tencent.xweb.b.h)localObject1).ggc();
-          localObject1 = ((com.tencent.xweb.b.h)localObject1).getPath() + "/xweb_dump";
-          try
-          {
-            localObject2 = new com.tencent.xweb.b.h((String)localObject1);
-            localObject3 = ((com.tencent.xweb.b.h)localObject2).ggc();
-            if (localObject3.length != 0) {
-              break label137;
-            }
-            paramAnonymousView.du("web_dump目录下没有.zip文件,请确认应用权限，在权限管理打开应用的读写存储权限", true);
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              Object localObject2;
-              Object localObject3;
-              paramAnonymousView.du("没有找到web_dump目录,请确认应用权限，在权限管理打开应用的读写存储权限", true);
-              continue;
-              int i = 0;
-              for (;;)
-              {
-                if (i >= localObject3.length) {
-                  break label263;
-                }
-                if (localObject3[i].getName().endsWith(".zip"))
-                {
-                  localObject2 = localObject3[i].getAbsolutePath();
-                  localObject3 = localObject3[i].getName();
-                  new AlertDialog.Builder(paramAnonymousView.MMV).setTitle("提示").setMessage("确定加载:" + (String)localObject3 + "?").setPositiveButton("确定", new d.43(paramAnonymousView, localException, (String)localObject2)).setNegativeButton("取消", new d.42(paramAnonymousView)).show();
-                  break;
-                }
-                i += 1;
-              }
-              paramAnonymousView.du("web_dump目录下没有.zip文件", true);
-            }
-          }
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$39", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          XWalkEnvironment.setGrayValueForTest(0);
+          XWalkEnvironment.setTestDownLoadUrl(d.this.SzQ, "");
+          y.hsF().a("tools", WebView.c.SAs);
+          y.hsF().a("toolsmp", WebView.c.SAs);
+          y.hsF().a("appbrand", WebView.c.SAs);
+          y.hsF().a("support", WebView.c.SAs);
+          y.hsF().a("mm", WebView.c.SAs);
+          d.this.dR("已使用AUTO，点任意位置重启进程生效\n", true);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$39", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(154186);
         }
       });
-      ((Button)this.MSQ.findViewById(2131297667)).setOnClickListener(new View.OnClickListener()
+      ((Button)this.SFW.findViewById(2131297901)).setOnClickListener(new d.35(this));
+      ((Button)this.SFW.findViewById(2131297933)).setOnClickListener(new d.36(this));
+      localObject1 = (Button)this.SFW.findViewById(2131297923);
+      ((Button)localObject1).setOnClickListener(new d.37(this));
+      ((Button)this.SFW.findViewById(2131297934)).setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
-          AppMethodBeat.i(154188);
+          AppMethodBeat.i(207251);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$40", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$43", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           boolean bool;
-          if (!y.gfo().MNg)
+          if (!y.hsF().SAb)
           {
             bool = true;
-            y.gfo().setShowFps(bool);
-            d.b(d.this.MSJ);
+            y.hsF().setShowFps(bool);
+            d.b(d.this.SFP);
             if (!bool) {
               break label101;
             }
@@ -2896,241 +2522,217 @@ public final class d
           label101:
           for (paramAnonymousView = "打开显示fps";; paramAnonymousView = "关闭显示fps")
           {
-            d.this.dv(paramAnonymousView, false);
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$40", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-            AppMethodBeat.o(154188);
+            d.this.dR(paramAnonymousView, false);
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/xwalk/WebDebugPage$43", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(207251);
             return;
             bool = false;
             break;
           }
         }
       });
-      ((Button)localObject1).setOnLongClickListener(new View.OnLongClickListener()
-      {
-        public final boolean onLongClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(154190);
-          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/xwalk/WebDebugPage$41", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
-          new AlertDialog.Builder(d.this.MMV).setTitle("提示").setMessage("清空保存页面文件").setPositiveButton("确定", new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-            {
-              AppMethodBeat.i(154189);
-              d.b(d.this, Environment.getExternalStorageDirectory() + "/xweb_dump");
-              AppMethodBeat.o(154189);
-            }
-          }).setNegativeButton("取消", new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int) {}
-          }).show();
-          com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/xweb/xwalk/WebDebugPage$41", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-          AppMethodBeat.o(154190);
-          return false;
-        }
-      });
-      ((Button)this.MSQ.findViewById(2131297661)).setOnClickListener(this.MSX);
+      ((Button)localObject1).setOnLongClickListener(new d.39(this));
+      ((Button)this.SFW.findViewById(2131297926)).setOnClickListener(this.SGd);
       AppMethodBeat.o(154235);
       return true;
-      ((RadioButton)this.MSQ.findViewById(2131306255)).setChecked(true);
+      ((RadioButton)this.SFW.findViewById(2131309654)).setChecked(true);
       break;
-      ((RadioButton)this.MSQ.findViewById(2131306259)).setChecked(true);
+      ((RadioButton)this.SFW.findViewById(2131309658)).setChecked(true);
       break;
-      ((RadioButton)this.MSQ.findViewById(2131306260)).setChecked(true);
+      ((RadioButton)this.SFW.findViewById(2131309659)).setChecked(true);
       break;
-      ((RadioButton)this.MSQ.findViewById(2131306257)).setChecked(true);
+      ((RadioButton)this.SFW.findViewById(2131309656)).setChecked(true);
       break;
-      ((RadioButton)this.MSQ.findViewById(2131306256)).setChecked(true);
+      ((RadioButton)this.SFW.findViewById(2131309655)).setChecked(true);
       break;
       ((Button)localObject1).setVisibility(8);
       break label502;
-      label1505:
+      label1594:
       localObject1 = "使用测试config".concat(String.valueOf(localObject1));
       break label595;
-      label1519:
+      label1608:
       ((Button)localObject1).setText("切换插件配置, 当前使用自定义测试版");
       continue;
-      label1529:
+      label1618:
       ((Button)localObject1).setText("切换插件配置，当前使用正式版");
     }
   }
   
-  final void ghx()
+  final void huS()
   {
-    AppMethodBeat.i(207568);
-    Object localObject = com.tencent.xweb.xwalk.a.g.ghO().iterator();
+    AppMethodBeat.i(207283);
+    Object localObject = com.tencent.xweb.xwalk.a.h.hvo().iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((com.tencent.xweb.xwalk.a.f)((Iterator)localObject).next()).ajt(-1);
+      ((com.tencent.xweb.xwalk.a.g)((Iterator)localObject).next()).atc(-1);
     }
     localObject = XWalkEnvironment.getPluginBaseDir();
     if (((String)localObject).isEmpty())
     {
-      AppMethodBeat.o(207568);
+      AppMethodBeat.o(207283);
       return;
     }
-    com.tencent.xweb.util.c.bcQ((String)localObject);
-    du("所有插件清理完成", true);
-    AppMethodBeat.o(207568);
+    com.tencent.xweb.util.c.bsB((String)localObject);
+    dQ("所有插件清理完成", true);
+    AppMethodBeat.o(207283);
   }
   
-  final void ghy()
+  final void huT()
   {
     AppMethodBeat.i(154241);
-    Scheduler.MVM = true;
-    Scheduler.gid();
-    new c(this.MMV).q(null);
+    Scheduler.SIT = true;
+    Scheduler.hvD();
+    new c(this.SzQ).C(null);
     AppMethodBeat.o(154241);
   }
   
   final void m(WebView.c paramc)
   {
     AppMethodBeat.i(154234);
-    switch (48.mKi[paramc.ordinal()])
+    switch (51.nXl[paramc.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(154234);
       return;
-      ((RadioButton)this.MSQ.findViewById(2131296280)).setChecked(true);
+      ((RadioButton)this.SFW.findViewById(2131296280)).setChecked(true);
       AppMethodBeat.o(154234);
       return;
-      ((RadioButton)this.MSQ.findViewById(2131296283)).setChecked(true);
+      ((RadioButton)this.SFW.findViewById(2131296283)).setChecked(true);
       AppMethodBeat.o(154234);
       return;
-      ((RadioButton)this.MSQ.findViewById(2131296282)).setChecked(true);
+      ((RadioButton)this.SFW.findViewById(2131296282)).setChecked(true);
       AppMethodBeat.o(154234);
       return;
-      ((RadioButton)this.MSQ.findViewById(2131296281)).setChecked(true);
+      ((RadioButton)this.SFW.findViewById(2131296281)).setChecked(true);
     }
   }
   
   static final class a
     implements s.a
   {
-    boolean MTF;
-    private ProgressDialog MTk;
+    boolean SGM;
+    private ProgressDialog SGr;
     Context mContext;
     
     public a(Context paramContext)
     {
-      AppMethodBeat.i(207560);
-      this.MTF = false;
+      AppMethodBeat.i(207275);
+      this.SGM = false;
       this.mContext = paramContext;
       s.a(this);
-      bdc("正在监听更新,点空白区域取消");
-      AppMethodBeat.o(207560);
+      bsO("正在监听更新,点空白区域取消");
+      AppMethodBeat.o(207275);
     }
     
-    private void bdc(String paramString)
+    private void bsO(String paramString)
     {
-      AppMethodBeat.i(207566);
-      if (this.MTk == null)
+      AppMethodBeat.i(207281);
+      if (this.SGr == null)
       {
-        this.MTk = new ProgressDialog(this.mContext);
-        this.MTk.setProgressStyle(1);
-        this.MTk.setMessage(paramString);
-        this.MTk.setOnCancelListener(new DialogInterface.OnCancelListener()
+        this.SGr = new ProgressDialog(this.mContext);
+        this.SGr.setProgressStyle(1);
+        this.SGr.setMessage(paramString);
+        this.SGr.setOnCancelListener(new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
-            AppMethodBeat.i(207559);
+            AppMethodBeat.i(207274);
             s.b(d.a.this);
-            if (d.a.this.MTF) {
-              d.hN(d.a.this.mContext);
+            if (d.a.this.SGM) {
+              d.iH(d.a.this.mContext);
             }
-            AppMethodBeat.o(207559);
+            AppMethodBeat.o(207274);
           }
         });
-        this.MTk.setCancelable(true);
-        this.MTk.show();
+        this.SGr.setCancelable(true);
+        this.SGr.show();
       }
-      this.MTk.setMessage(paramString);
-      AppMethodBeat.o(207566);
+      this.SGr.setMessage(paramString);
+      AppMethodBeat.o(207281);
     }
     
-    public final void bHg()
+    public final void AN(int paramInt)
     {
-      AppMethodBeat.i(207561);
-      bdc("开始更新");
-      AppMethodBeat.o(207561);
-    }
-    
-    public final void bHh()
-    {
-      AppMethodBeat.i(207564);
-      bdc("主配置更新");
-      AppMethodBeat.o(207564);
-    }
-    
-    public final void bHi()
-    {
-      AppMethodBeat.i(207565);
-      bdc("插件配置更新");
-      AppMethodBeat.o(207565);
-    }
-    
-    public final void xh(int paramInt)
-    {
-      AppMethodBeat.i(207562);
+      AppMethodBeat.i(207277);
       if (paramInt == 0) {}
       try
       {
-        bdc("更新完成，点任意位置重启进程生效");
-        this.MTF = true;
-        this.MTk.setCancelable(true);
-        this.MTk.setCanceledOnTouchOutside(true);
-        this.MTk.setProgress(100);
-        AppMethodBeat.o(207562);
+        bsO("更新完成，点任意位置重启进程生效");
+        this.SGM = true;
+        this.SGr.setCancelable(true);
+        this.SGr.setCanceledOnTouchOutside(true);
+        this.SGr.setProgress(100);
+        AppMethodBeat.o(207277);
         return;
       }
       catch (Exception localException)
       {
         Log.i("WebDebugPage", "may run in background failed to load alert:" + localException.getMessage());
-        AppMethodBeat.o(207562);
+        AppMethodBeat.o(207277);
         return;
       }
       if (paramInt == -5)
       {
-        bdc("暂无需要立即更新的版本");
-        this.MTk.setCancelable(true);
-        this.MTk.setCanceledOnTouchOutside(true);
-        AppMethodBeat.o(207562);
+        bsO("暂无需要立即更新的版本");
+        this.SGr.setCancelable(true);
+        this.SGr.setCanceledOnTouchOutside(true);
+        AppMethodBeat.o(207277);
         return;
       }
-      this.MTk.setCancelable(true);
-      this.MTk.setCanceledOnTouchOutside(true);
-      bdc("更新失败, error code = :".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(207562);
+      this.SGr.setCancelable(true);
+      this.SGr.setCanceledOnTouchOutside(true);
+      bsO("更新失败, error code = :".concat(String.valueOf(paramInt)));
+      AppMethodBeat.o(207277);
     }
     
-    public final void xi(int paramInt)
+    public final void AO(int paramInt)
     {
-      AppMethodBeat.i(207563);
+      AppMethodBeat.i(207278);
       try
       {
-        bdc("正在下载内核");
-        if (this.MTk != null)
+        bsO("正在下载内核");
+        if (this.SGr != null)
         {
-          this.MTk.setCancelable(false);
-          this.MTk.setProgress(paramInt);
+          this.SGr.setCancelable(false);
+          this.SGr.setProgress(paramInt);
         }
-        AppMethodBeat.o(207563);
+        AppMethodBeat.o(207278);
         return;
       }
       catch (Exception localException)
       {
         Log.i("WebDebugPage", "may run in background failed to load alert:" + localException.getMessage());
-        AppMethodBeat.o(207563);
+        AppMethodBeat.o(207278);
       }
+    }
+    
+    public final void cdG()
+    {
+      AppMethodBeat.i(207276);
+      bsO("开始更新");
+      AppMethodBeat.o(207276);
+    }
+    
+    public final void cdH()
+    {
+      AppMethodBeat.i(207279);
+      bsO("主配置更新完成");
+      AppMethodBeat.o(207279);
+    }
+    
+    public final void cdI()
+    {
+      AppMethodBeat.i(207280);
+      bsO("插件配置更新完成");
+      AppMethodBeat.o(207280);
     }
   }
   
   static final class b
     extends XWalkUpdater.UpdateConfig
   {
-    String MTH;
+    String SGO;
     
     private b(int paramInt)
     {
@@ -3143,7 +2745,7 @@ public final class d
     {
       this(i);
       AppMethodBeat.i(154216);
-      this.MTH = paramString1;
+      this.SGO = paramString1;
       this.isMatchMd5 = false;
       this.isPatchUpdate = false;
       this.versionDetail = "local:".concat(String.valueOf(paramString2));
@@ -3162,15 +2764,15 @@ public final class d
     public c(Context paramContext)
     {
       super();
-      AppMethodBeat.i(207567);
-      new d.a(d.this.MMV);
-      AppMethodBeat.o(207567);
+      AppMethodBeat.i(207282);
+      new d.a(d.this.SzQ);
+      AppMethodBeat.o(207282);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.xwalk.d
  * JD-Core Version:    0.7.0.1
  */

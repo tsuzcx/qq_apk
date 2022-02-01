@@ -4,55 +4,55 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aj.i;
 import com.tencent.mm.aj.j;
 import com.tencent.mm.aj.p;
-import com.tencent.mm.ak.e.a;
+import com.tencent.mm.ak.h.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.model.e;
 import com.tencent.mm.openim.a.a;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bv.a;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.ca.a;
 
 public final class d
   extends e
 {
-  public final bv a(e.a parama, String paramString1, String paramString2, String paramString3)
+  public final ca a(h.a parama, String paramString1, String paramString2, String paramString3)
   {
-    AppMethodBeat.i(218365);
-    Object localObject1 = parama.gte;
-    Object localObject2 = z.a(((cv)localObject1).FNI);
+    AppMethodBeat.i(206400);
+    Object localObject1 = parama.heO;
+    Object localObject2 = z.a(((de)localObject1).KHn);
     if ((localObject2 == null) || (((String)localObject2).length() <= 0))
     {
-      ae.e("MicroMsg.CardMsgExtension", "possible friend msg : content is null");
-      AppMethodBeat.o(218365);
+      Log.e("MicroMsg.CardMsgExtension", "possible friend msg : content is null");
+      AppMethodBeat.o(206400);
       return null;
     }
-    localObject2 = bv.a.aVC((String)localObject2);
-    if (((cv)localObject1).urJ == 66) {
-      ((a)g.ab(a.class)).Jb(((bv.a)localObject2).JgZ);
+    localObject2 = ca.a.bkA((String)localObject2);
+    if (((de)localObject1).xKb == 66) {
+      ((a)g.af(a.class)).RY(((ca.a)localObject2).OqQ);
     }
-    if (bu.nullAsNil(((bv.a)localObject2).cUA).length() > 0)
+    if (Util.nullAsNil(((ca.a)localObject2).dkU).length() > 0)
     {
       localObject1 = new i();
-      ((i)localObject1).username = ((bv.a)localObject2).cUA;
-      ((i)localObject1).eQU = 3;
-      ((i)localObject1).eD(true);
-      ((i)localObject1).hPQ = ((bv.a)localObject2).JgV;
-      ((i)localObject1).hPP = ((bv.a)localObject2).JgW;
-      ((i)localObject1).dEu = -1;
-      ae.d("MicroMsg.CardMsgExtension", "dkhurl user:[%s] big:[%s] sm:[%s]", new Object[] { ((bv.a)localObject2).cUA, ((i)localObject1).aEG(), ((i)localObject1).aEH() });
-      p.aEN().b((i)localObject1);
+      ((i)localObject1).username = ((ca.a)localObject2).dkU;
+      ((i)localObject1).fuz = 3;
+      ((i)localObject1).fv(true);
+      ((i)localObject1).iKX = ((ca.a)localObject2).OqM;
+      ((i)localObject1).iKW = ((ca.a)localObject2).OqN;
+      ((i)localObject1).cSx = -1;
+      Log.d("MicroMsg.CardMsgExtension", "dkhurl user:[%s] big:[%s] sm:[%s]", new Object[] { ((ca.a)localObject2).dkU, ((i)localObject1).aYt(), ((i)localObject1).aYu() });
+      p.aYB().b((i)localObject1);
     }
     parama = super.a(parama, paramString1, paramString2, paramString3);
-    AppMethodBeat.o(218365);
+    AppMethodBeat.o(206400);
     return parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.d
  * JD-Core Version:    0.7.0.1
  */

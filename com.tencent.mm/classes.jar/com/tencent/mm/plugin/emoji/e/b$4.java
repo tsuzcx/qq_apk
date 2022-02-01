@@ -1,35 +1,35 @@
 package com.tencent.mm.plugin.emoji.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ls;
-import com.tencent.mm.g.a.ls.a;
+import com.tencent.mm.g.a.mi;
+import com.tencent.mm.g.a.mi.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 final class b$4
-  extends c<ls>
+  extends IListener<mi>
 {
   b$4(b paramb)
   {
     AppMethodBeat.i(161072);
-    this.__eventId = ls.class.getName().hashCode();
+    this.__eventId = mi.class.getName().hashCode();
     AppMethodBeat.o(161072);
   }
   
-  private static boolean a(ls paramls)
+  private static boolean a(mi parammi)
   {
     AppMethodBeat.i(108399);
-    if ((paramls != null) && ((paramls instanceof ls)))
+    if ((parammi != null) && ((parammi instanceof mi)))
     {
-      ae.i("MicroMsg.emoji.EmojiEventMgr", "manualAuthEventListener callback");
-      if (paramls.dzV.result)
+      Log.i("MicroMsg.emoji.EmojiEventMgr", "manualAuthEventListener callback");
+      if (parammi.dRI.result)
       {
-        g.ajR().ajA().set(am.a.IKR, Boolean.TRUE);
-        g.ajR().ajA().set(am.a.IKS, Boolean.TRUE);
+        g.aAh().azQ().set(ar.a.NSP, Boolean.TRUE);
+        g.aAh().azQ().set(ar.a.NSQ, Boolean.TRUE);
       }
     }
     AppMethodBeat.o(108399);
@@ -38,7 +38,7 @@ final class b$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.e.b.4
  * JD-Core Version:    0.7.0.1
  */

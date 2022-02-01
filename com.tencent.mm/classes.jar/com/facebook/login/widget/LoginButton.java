@@ -129,7 +129,7 @@ public class LoginButton
       });
       AppMethodBeat.o(40435);
       return;
-      displayToolTip(getResources().getString(2131757524));
+      displayToolTip(getResources().getString(2131757744));
     }
   }
   
@@ -181,7 +181,7 @@ public class LoginButton
     if ((!isInEditMode()) && (AccessToken.isCurrentAccessTokenActive()))
     {
       if (this.logoutText != null) {}
-      for (localObject = this.logoutText;; localObject = localResources.getString(2131757514))
+      for (localObject = this.logoutText;; localObject = localResources.getString(2131757734))
       {
         setText((CharSequence)localObject);
         AppMethodBeat.o(40445);
@@ -194,14 +194,14 @@ public class LoginButton
       AppMethodBeat.o(40445);
       return;
     }
-    String str = localResources.getString(2131757511);
+    String str = localResources.getString(2131757731);
     int i = getWidth();
     Object localObject = str;
     if (i != 0)
     {
       localObject = str;
       if (measureButtonWidth(str) > i) {
-        localObject = localResources.getString(2131757510);
+        localObject = localResources.getString(2131757730);
       }
     }
     setText((CharSequence)localObject);
@@ -232,13 +232,13 @@ public class LoginButton
     parseLoginButtonAttributes(paramContext, paramAttributeSet, paramInt1, paramInt2);
     if (isInEditMode())
     {
-      setBackgroundColor(getResources().getColor(2131100162));
+      setBackgroundColor(getResources().getColor(2131100195));
       this.loginText = "Continue with Facebook";
     }
     for (;;)
     {
       setButtonText();
-      setCompoundDrawablesWithIntrinsicBounds(a.l(getContext(), 2131231803), null, null, null);
+      setCompoundDrawablesWithIntrinsicBounds(a.l(getContext(), 2131231883), null, null, null);
       AppMethodBeat.o(40440);
       return;
       this.accessTokenTracker = new AccessTokenTracker()
@@ -290,7 +290,7 @@ public class LoginButton
   
   public int getDefaultStyleResource()
   {
-    return 2131821699;
+    return 2131821747;
   }
   
   public LoginBehavior getLoginBehavior()
@@ -394,17 +394,17 @@ public class LoginButton
     localObject = str;
     if (str == null)
     {
-      localObject = localResources.getString(2131757511);
+      localObject = localResources.getString(2131757731);
       k = measureButtonWidth((String)localObject);
       if (resolveSize(k, paramInt1) < k) {
-        localObject = localResources.getString(2131757510);
+        localObject = localResources.getString(2131757730);
       }
     }
     int k = measureButtonWidth((String)localObject);
     str = this.logoutText;
     localObject = str;
     if (str == null) {
-      localObject = localResources.getString(2131757514);
+      localObject = localResources.getString(2131757734);
     }
     setMeasuredDimension(resolveSize(Math.max(k, measureButtonWidth((String)localObject)), paramInt1), j + (i + paramInt2));
     AppMethodBeat.o(40443);
@@ -701,11 +701,11 @@ public class LoginButton
       final LoginManager localLoginManager = getLoginManager();
       if (LoginButton.this.confirmLogout)
       {
-        String str1 = LoginButton.this.getResources().getString(2131757513);
-        String str2 = LoginButton.this.getResources().getString(2131757509);
+        String str1 = LoginButton.this.getResources().getString(2131757733);
+        String str2 = LoginButton.this.getResources().getString(2131757729);
         Object localObject = Profile.getCurrentProfile();
         if ((localObject != null) && (((Profile)localObject).getName() != null)) {}
-        for (localObject = String.format(LoginButton.this.getResources().getString(2131757515), new Object[] { ((Profile)localObject).getName() });; localObject = LoginButton.this.getResources().getString(2131757516))
+        for (localObject = String.format(LoginButton.this.getResources().getString(2131757735), new Object[] { ((Profile)localObject).getName() });; localObject = LoginButton.this.getResources().getString(2131757736))
         {
           paramContext = new AlertDialog.Builder(paramContext);
           paramContext.setMessage((CharSequence)localObject).setCancelable(true).setPositiveButton(str1, new DialogInterface.OnClickListener()
@@ -783,7 +783,7 @@ public class LoginButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.login.widget.LoginButton
  * JD-Core Version:    0.7.0.1
  */

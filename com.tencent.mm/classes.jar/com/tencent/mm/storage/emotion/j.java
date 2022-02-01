@@ -1,45 +1,45 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bm;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.bn;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class j
-  extends bm
+  extends bn
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(105108);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "designerIDAndType";
-    locala.IBN.put("designerIDAndType", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "designerIDAndType";
+    localMAutoDBInfo.colsMap.put("designerIDAndType", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" designerIDAndType TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "designerIDAndType";
-    locala.columns[1] = "content";
-    locala.IBN.put("content", "BLOB default '' ");
+    localMAutoDBInfo.primaryKey = "designerIDAndType";
+    localMAutoDBInfo.columns[1] = "content";
+    localMAutoDBInfo.colsMap.put("content", "BLOB default '' ");
     localStringBuilder.append(" content BLOB default '' ");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(105108);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.j
  * JD-Core Version:    0.7.0.1
  */

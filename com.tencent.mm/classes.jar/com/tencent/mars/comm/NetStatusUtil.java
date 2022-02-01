@@ -12,6 +12,7 @@ import android.provider.Settings.System;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 import android.telephony.TelephonyManager;
+import com.tencent.mm.hellhoundlib.b.c;
 import java.lang.reflect.Method;
 
 public class NetStatusUtil
@@ -41,6 +42,7 @@ public class NetStatusUtil
   public static final int WAP_3G = 3;
   public static final int WIFI = 0;
   private static int nowStrength = 0;
+  private byte _hellAccFlag_;
   
   public static void dumpNetStatus(Context paramContext)
   {
@@ -306,7 +308,12 @@ public class NetStatusUtil
       if (getNetTypeForStat(paramContext) == 1) {
         return Math.abs(((WifiManager)paramContext.getSystemService("wifi")).getConnectionInfo().getRssi());
       }
-      ((TelephonyManager)paramContext.getSystemService("phone")).listen(new StrengthListener(), 256);
+      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+      Object localObject = new StrengthListener();
+      localObject = c.a(256, new com.tencent.mm.hellhoundlib.b.a()).bl(localObject);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mars/comm/NetStatusUtil", "getStrength", "(Landroid/content/Context;)I", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
+      paramContext.listen((PhoneStateListener)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0), ((Integer)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(1)).intValue());
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mars/comm/NetStatusUtil", "getStrength", "(Landroid/content/Context;)I", "android/telephony/TelephonyManager_EXEC_", "listen", "(Landroid/telephony/PhoneStateListener;I)V");
       int i = Math.abs(nowStrength);
       return i;
     }
@@ -575,7 +582,7 @@ public class NetStatusUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mars.comm.NetStatusUtil
  * JD-Core Version:    0.7.0.1
  */

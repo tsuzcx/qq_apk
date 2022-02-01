@@ -1,27 +1,27 @@
 package kotlinx.a;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/SerialDescriptor;", "", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "elementsCount", "", "getElementsCount", "()I", "isNullable", "", "()Z", "kind", "Lkotlinx/serialization/SerialKind;", "getKind", "()Lkotlinx/serialization/SerialKind;", "name", "", "name$annotations", "()V", "getName", "()Ljava/lang/String;", "serialName", "getSerialName", "getElementAnnotations", "index", "getElementDescriptor", "getElementIndex", "getElementName", "getEntityAnnotations", "isElementOptional", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/SerialDescriptor;", "", "annotations", "", "", "getAnnotations", "()Ljava/util/List;", "elementsCount", "", "getElementsCount", "()I", "isNullable", "", "()Z", "kind", "Lkotlinx/serialization/SerialKind;", "getKind", "()Lkotlinx/serialization/SerialKind;", "name", "", "name$annotations", "()V", "getName", "()Ljava/lang/String;", "serialName", "getSerialName", "getElementAnnotations", "index", "getElementDescriptor", "getElementIndex", "getElementName", "getEntityAnnotations", "isElementOptional", "kotlinx-serialization-runtime"})
 public abstract interface n
 {
-  public abstract String amt(int paramInt);
+  public abstract String awc(int paramInt);
   
-  public abstract n amu(int paramInt);
+  public abstract n awd(int paramInt);
   
-  public abstract int beQ(String paramString);
+  public abstract int buF(String paramString);
   
-  public abstract String gBs();
+  public abstract s hOA();
   
-  public abstract s gBt();
+  public abstract boolean hOB();
   
-  public abstract boolean gBu();
+  public abstract int hOC();
   
-  public abstract int gBv();
+  public abstract String hOz();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     kotlinx.a.n
  * JD-Core Version:    0.7.0.1
  */

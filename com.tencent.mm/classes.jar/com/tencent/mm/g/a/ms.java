@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ms
-  extends b
+  extends IEvent
 {
-  public a dBG;
-  public b dBH;
+  public a dSm;
   
   public ms()
   {
@@ -16,29 +15,23 @@ public final class ms
   
   private ms(byte paramByte)
   {
-    AppMethodBeat.i(116462);
-    this.dBG = new a();
-    this.dBH = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(19821);
+    this.dSm = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116462);
+    AppMethodBeat.o(19821);
   }
   
   public static final class a
   {
-    public String chatroomName;
-    public String dBI;
-    public boolean dBb = false;
-  }
-  
-  public static final class b
-  {
-    public int errCode;
+    public byte[] dSn;
+    public int dSo;
+    public boolean dSp;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.ms
  * JD-Core Version:    0.7.0.1
  */

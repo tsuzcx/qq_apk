@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/go"
+<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/o5" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gp">
-        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
-        <com.tencent.mm.ui.widget.MMTextView android:id="@id/ala" android:background="@drawable/l8" android:paddingLeft="20.0dip" android:paddingRight="15.0dip" android:maxWidth="225.0dip" android:minHeight="@dimen/aa" style="@style/h0" />
+    <LinearLayout android:orientation="vertical" android:id="@id/aum" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ViewStub android:id="@id/j8f" android:layout="@layout/qw" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/j8h" android:layout="@layout/r0" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/j8d" android:layout="@layout/qy" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/j8i" android:layout="@layout/r1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/j8c" android:layout="@layout/qx" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:id="@id/j8g" android:layout="@layout/qz" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hs">
+        <View android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <TextView android:id="@id/at6" android:layout_marginRight="@dimen/g" android:text="@string/axz" style="@style/gj" />
     </LinearLayout>
 </LinearLayout>

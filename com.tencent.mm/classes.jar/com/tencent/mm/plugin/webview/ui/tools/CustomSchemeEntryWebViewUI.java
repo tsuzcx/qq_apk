@@ -3,17 +3,17 @@ package com.tencent.mm.plugin.webview.ui.tools;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class CustomSchemeEntryWebViewUI
   extends WebViewUI
 {
   public void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(198177);
+    AppMethodBeat.i(211040);
     super.onCreate(paramBundle);
-    ae.i("MicroMsg.CustomSchemeEntryWebViewUI", "CustomSchemeEntryWebViewUI onCreate");
-    AppMethodBeat.o(198177);
+    Log.i("MicroMsg.CustomSchemeEntryWebViewUI", "CustomSchemeEntryWebViewUI onCreate");
+    AppMethodBeat.o(211040);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

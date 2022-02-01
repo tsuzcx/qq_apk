@@ -7,10 +7,10 @@ public enum g$a
   static
   {
     AppMethodBeat.i(56102);
-    vto = new a("UNKNOWN", 0);
-    vtp = new a("SUCC", 1);
-    vtq = new a("QUIT", 2);
-    vtr = new a[] { vto, vtp, vtq };
+    yNb = new a("UNKNOWN", 0);
+    yNc = new a("SUCC", 1);
+    yNd = new a("QUIT", 2);
+    yNe = new a[] { yNb, yNc, yNd };
     AppMethodBeat.o(56102);
   }
   
@@ -18,7 +18,7 @@ public enum g$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.impl.g.a
  * JD-Core Version:    0.7.0.1
  */

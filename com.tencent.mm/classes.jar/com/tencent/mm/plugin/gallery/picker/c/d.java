@@ -9,11 +9,11 @@ import com.tencent.mm.loader.h.b.a;
 import com.tencent.mm.loader.h.e;
 import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import com.tencent.mm.plugin.gallery.model.n;
-import d.g.b.p;
-import d.l;
-import d.v;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaThumbProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/ImageBitmapProducer;", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "plugin-gallery_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/picker/loader/MediaThumbProducer;", "Lcom/tencent/mm/loader/impr/imageproducer/ImageBitmapProducer;", "()V", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "Landroid/graphics/Bitmap;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "plugin-gallery_release"})
 public final class d
   extends b
 {
@@ -26,28 +26,28 @@ public final class d
     paramg = parama.getTag();
     if (paramg == null)
     {
-      paramg = new v("null cannot be cast to non-null type com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem");
+      paramg = new t("null cannot be cast to non-null type com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem");
       AppMethodBeat.o(164900);
       throw paramg;
     }
     paramf = (GalleryItem.MediaItem)paramg;
     if (paramf.getType() == 2) {
-      paramg = n.a(paramf.tRM, paramf.getType(), paramf.tRJ, paramf.tRJ);
+      paramg = n.a(paramf.xiZ, paramf.getType(), paramf.xiW, paramf.xiW);
     }
     for (;;)
     {
       paramg = new e(paramg);
       AppMethodBeat.o(164900);
       return paramg;
-      if (paramf.tRQ)
+      if (paramf.xjd)
       {
-        paramg = n.gU(paramf.tRJ, paramf.tRJ);
+        paramg = n.hB(paramf.xiW, paramf.xiW);
       }
       else
       {
-        paramg = n.aw(paramf.tRJ, paramf.tRM);
+        paramg = n.aw(paramf.xiW, paramf.xiZ);
         if (paramg == null) {
-          paramg = n.gU(paramf.tRJ, paramf.tRJ);
+          paramg = n.hB(paramf.xiW, paramf.xiW);
         }
       }
     }
@@ -55,7 +55,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.c.d
  * JD-Core Version:    0.7.0.1
  */

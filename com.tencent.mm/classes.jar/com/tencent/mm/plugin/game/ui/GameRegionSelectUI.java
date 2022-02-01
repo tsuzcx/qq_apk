@@ -8,17 +8,17 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.f.a;
-import com.tencent.mm.plugin.game.f.a.a;
+import com.tencent.mm.plugin.game.e.a;
+import com.tencent.mm.plugin.game.e.a.a;
 import com.tencent.mm.plugin.game.model.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.PreferenceCategory;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.t.b;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Map;
@@ -27,8 +27,8 @@ public class GameRegionSelectUI
   extends MMPreference
 {
   private f screen;
-  private GameRegionPreference.a uDF;
-  private Map<String, GameRegionPreference.a> uDJ;
+  private GameRegionPreference.a xVD;
+  private Map<String, GameRegionPreference.a> xVH;
   
   public int getResourceId()
   {
@@ -38,7 +38,7 @@ public class GameRegionSelectUI
   public void initView()
   {
     AppMethodBeat.i(42361);
-    setMMTitle(2131759972);
+    setMMTitle(2131761334);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -51,22 +51,22 @@ public class GameRegionSelectUI
         return true;
       }
     });
-    addTextOptionMenu(0, getString(2131759971), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getString(2131761333), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(42358);
-        if (e.fA(GameRegionSelectUI.this))
+        if (e.gg(GameRegionSelectUI.this))
         {
-          h.a(GameRegionSelectUI.this, true, GameRegionSelectUI.this.getString(2131759969), "", GameRegionSelectUI.this.getString(2131759970), GameRegionSelectUI.this.getString(2131759968), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          h.a(GameRegionSelectUI.this, true, GameRegionSelectUI.this.getString(2131761331), "", GameRegionSelectUI.this.getString(2131761332), GameRegionSelectUI.this.getString(2131761330), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(42357);
-              e.fB(GameRegionSelectUI.this);
+              e.gh(GameRegionSelectUI.this);
               GameRegionSelectUI.a(GameRegionSelectUI.this);
               paramAnonymous2DialogInterface = new Intent();
-              GameRegionPreference.a locala = e.fr(GameRegionSelectUI.this);
+              GameRegionPreference.a locala = e.fX(GameRegionSelectUI.this);
               if (locala != null)
               {
                 paramAnonymous2DialogInterface.putExtra("gameRegionName", e.a(locala));
@@ -89,7 +89,7 @@ public class GameRegionSelectUI
         }
         GameRegionSelectUI.a(GameRegionSelectUI.this);
         paramAnonymousMenuItem = new Intent();
-        GameRegionPreference.a locala = e.fr(GameRegionSelectUI.this);
+        GameRegionPreference.a locala = e.fX(GameRegionSelectUI.this);
         if (locala != null)
         {
           paramAnonymousMenuItem.putExtra("gameRegionName", e.a(locala));
@@ -102,22 +102,22 @@ public class GameRegionSelectUI
           GameRegionSelectUI.this.setResult(1);
         }
       }
-    }, null, s.b.JwA);
+    }, null, t.b.OGU);
     this.screen.removeAll();
-    this.uDJ = a.a.dde().ddd();
-    Object localObject = e.fr(this);
+    this.xVH = a.a.dWO().dWN();
+    Object localObject = e.fX(this);
     if (localObject != null) {
       ((GameRegionPreference.a)localObject).isSelected = true;
     }
-    localObject = this.uDJ.values().iterator();
+    localObject = this.xVH.values().iterator();
     while (((Iterator)localObject).hasNext())
     {
       GameRegionPreference.a locala = (GameRegionPreference.a)((Iterator)localObject).next();
       if (locala != null)
       {
         GameRegionPreference localGameRegionPreference = new GameRegionPreference(this);
-        if ((locala == null) || (bu.isNullOrNil(locala.eRl))) {
-          ae.e("MicroMsg.GameRegionPreference", "setData region error");
+        if ((locala == null) || (Util.isNullOrNil(locala.fuO))) {
+          Log.e("MicroMsg.GameRegionPreference", "setData region error");
         }
         for (;;)
         {
@@ -126,15 +126,15 @@ public class GameRegionSelectUI
           }
           this.screen.a(localGameRegionPreference, 0);
           break;
-          localGameRegionPreference.uDF = locala;
-          localGameRegionPreference.setKey(locala.eRl);
+          localGameRegionPreference.xVD = locala;
+          localGameRegionPreference.setKey(locala.fuO);
         }
         label184:
-        this.screen.b(localGameRegionPreference);
+        this.screen.c(localGameRegionPreference);
       }
     }
     localObject = new PreferenceCategory(this);
-    this.screen.b((Preference)localObject);
+    this.screen.c((Preference)localObject);
     this.screen.notifyDataSetChanged();
     AppMethodBeat.o(42361);
   }
@@ -151,7 +151,7 @@ public class GameRegionSelectUI
   public void onDestroy()
   {
     AppMethodBeat.i(42360);
-    a.a.dde().ddb();
+    a.a.dWO().dWL();
     super.onDestroy();
     AppMethodBeat.o(42360);
   }
@@ -161,14 +161,14 @@ public class GameRegionSelectUI
     AppMethodBeat.i(42362);
     if ((paramPreference instanceof GameRegionPreference))
     {
-      paramPreference = ((GameRegionPreference)paramPreference).uDF;
+      paramPreference = ((GameRegionPreference)paramPreference).xVD;
       if (paramPreference == null)
       {
         AppMethodBeat.o(42362);
         return false;
       }
-      this.uDF = paramPreference;
-      Iterator localIterator = this.uDJ.values().iterator();
+      this.xVD = paramPreference;
+      Iterator localIterator = this.xVH.values().iterator();
       while (localIterator.hasNext()) {
         ((GameRegionPreference.a)localIterator.next()).isSelected = false;
       }
@@ -189,7 +189,7 @@ public class GameRegionSelectUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameRegionSelectUI
  * JD-Core Version:    0.7.0.1
  */

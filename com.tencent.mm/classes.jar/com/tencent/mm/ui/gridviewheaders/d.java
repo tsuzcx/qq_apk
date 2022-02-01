@@ -11,13 +11,13 @@ public final class d
   extends BaseAdapter
   implements b
 {
-  private ListAdapter KXz;
-  private DataSetObserver Tf;
+  private ListAdapter QkP;
+  private DataSetObserver Tr;
   
   public d(ListAdapter paramListAdapter)
   {
     AppMethodBeat.i(142841);
-    this.Tf = new DataSetObserver()
+    this.Tr = new DataSetObserver()
     {
       public final void onChanged()
       {
@@ -33,8 +33,8 @@ public final class d
         AppMethodBeat.o(142840);
       }
     };
-    this.KXz = paramListAdapter;
-    paramListAdapter.registerDataSetObserver(this.Tf);
+    this.QkP = paramListAdapter;
+    paramListAdapter.registerDataSetObserver(this.Tr);
     AppMethodBeat.o(142841);
   }
   
@@ -43,12 +43,12 @@ public final class d
     return null;
   }
   
-  public final int afr(int paramInt)
+  public final int aob(int paramInt)
   {
     return 0;
   }
   
-  public final int fNY()
+  public final int gWs()
   {
     return 0;
   }
@@ -56,7 +56,7 @@ public final class d
   public final int getCount()
   {
     AppMethodBeat.i(142842);
-    int i = this.KXz.getCount();
+    int i = this.QkP.getCount();
     AppMethodBeat.o(142842);
     return i;
   }
@@ -64,7 +64,7 @@ public final class d
   public final Object getItem(int paramInt)
   {
     AppMethodBeat.i(142843);
-    Object localObject = this.KXz.getItem(paramInt);
+    Object localObject = this.QkP.getItem(paramInt);
     AppMethodBeat.o(142843);
     return localObject;
   }
@@ -72,7 +72,7 @@ public final class d
   public final long getItemId(int paramInt)
   {
     AppMethodBeat.i(142844);
-    long l = this.KXz.getItemId(paramInt);
+    long l = this.QkP.getItemId(paramInt);
     AppMethodBeat.o(142844);
     return l;
   }
@@ -80,7 +80,7 @@ public final class d
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(142845);
-    paramView = this.KXz.getView(paramInt, paramView, paramViewGroup);
+    paramView = this.QkP.getView(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(142845);
     return paramView;
   }

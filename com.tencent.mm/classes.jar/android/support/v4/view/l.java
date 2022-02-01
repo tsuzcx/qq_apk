@@ -1,15 +1,14 @@
 package android.support.v4.view;
 
-import android.os.Build.VERSION;
 import android.view.View;
 import android.view.ViewParent;
 
 public final class l
 {
-  private ViewParent PK;
-  private ViewParent PL;
-  public boolean PM;
-  private int[] PN;
+  private ViewParent PW;
+  private ViewParent PX;
+  public boolean PY;
+  private int[] PZ;
   private final View mView;
   
   public l(View paramView)
@@ -24,10 +23,10 @@ public final class l
     default: 
       return;
     case 0: 
-      this.PK = paramViewParent;
+      this.PW = paramViewParent;
       return;
     }
-    this.PL = paramViewParent;
+    this.PX = paramViewParent;
   }
   
   private ViewParent aO(int paramInt)
@@ -37,9 +36,9 @@ public final class l
     default: 
       return null;
     case 0: 
-      return this.PK;
+      return this.PW;
     }
-    return this.PL;
+    return this.PX;
   }
   
   public final boolean A(int paramInt1, int paramInt2)
@@ -47,40 +46,20 @@ public final class l
     if (aN(paramInt2)) {
       return true;
     }
-    if (this.PM)
+    if (this.PY)
     {
       ViewParent localViewParent = this.mView.getParent();
-      View localView1 = this.mView;
+      View localView = this.mView;
       while (localViewParent != null)
       {
-        if (w.a(localViewParent, localView1, this.mView, paramInt1, paramInt2))
+        if (x.a(localViewParent, localView, this.mView, paramInt1, paramInt2))
         {
           a(paramInt2, localViewParent);
-          View localView3 = this.mView;
-          if ((localViewParent instanceof n)) {
-            ((n)localViewParent).b(localView1, localView3, paramInt1, paramInt2);
-          }
-          for (;;)
-          {
-            return true;
-            if (paramInt2 == 0) {
-              if (Build.VERSION.SDK_INT >= 21) {
-                try
-                {
-                  localViewParent.onNestedScrollAccepted(localView1, localView3, paramInt1);
-                }
-                catch (AbstractMethodError localAbstractMethodError)
-                {
-                  new StringBuilder("ViewParent ").append(localViewParent).append(" does not implement interface method onNestedScrollAccepted");
-                }
-              } else if ((localViewParent instanceof m)) {
-                ((m)localViewParent).onNestedScrollAccepted(localAbstractMethodError, localView3, paramInt1);
-              }
-            }
-          }
+          x.b(localViewParent, localView, this.mView, paramInt1, paramInt2);
+          return true;
         }
         if ((localViewParent instanceof View)) {
-          View localView2 = (View)localViewParent;
+          localView = (View)localViewParent;
         }
         localViewParent = localViewParent.getParent();
       }
@@ -93,7 +72,7 @@ public final class l
     ViewParent localViewParent;
     int j;
     int i;
-    if (this.PM)
+    if (this.PY)
     {
       localViewParent = aO(paramInt5);
       if (localViewParent == null) {
@@ -111,7 +90,7 @@ public final class l
     }
     for (;;)
     {
-      w.a(localViewParent, this.mView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+      x.a(localViewParent, this.mView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
       if (paramArrayOfInt != null)
       {
         this.mView.getLocationInWindow(paramArrayOfInt);
@@ -136,7 +115,7 @@ public final class l
     ViewParent localViewParent;
     int j;
     int i;
-    if (this.PM)
+    if (this.PY)
     {
       localViewParent = aO(paramInt3);
       if (localViewParent == null) {
@@ -156,16 +135,16 @@ public final class l
     {
       if (paramArrayOfInt1 == null)
       {
-        if (this.PN == null) {
-          this.PN = new int[2];
+        if (this.PZ == null) {
+          this.PZ = new int[2];
         }
-        paramArrayOfInt1 = this.PN;
+        paramArrayOfInt1 = this.PZ;
       }
       for (;;)
       {
         paramArrayOfInt1[0] = 0;
         paramArrayOfInt1[1] = 0;
-        w.a(localViewParent, this.mView, paramInt1, paramInt2, paramArrayOfInt1, paramInt3);
+        x.a(localViewParent, this.mView, paramInt1, paramInt2, paramArrayOfInt1, paramInt3);
         if (paramArrayOfInt2 != null)
         {
           this.mView.getLocationInWindow(paramArrayOfInt2);
@@ -189,34 +168,10 @@ public final class l
   public final void aM(int paramInt)
   {
     ViewParent localViewParent = aO(paramInt);
-    View localView;
     if (localViewParent != null)
     {
-      localView = this.mView;
-      if (!(localViewParent instanceof n)) {
-        break label40;
-      }
-      ((n)localViewParent).j(localView, paramInt);
-    }
-    for (;;)
-    {
+      x.a(localViewParent, this.mView, paramInt);
       a(paramInt, null);
-      return;
-      label40:
-      if (paramInt == 0) {
-        if (Build.VERSION.SDK_INT >= 21) {
-          try
-          {
-            localViewParent.onStopNestedScroll(localView);
-          }
-          catch (AbstractMethodError localAbstractMethodError)
-          {
-            new StringBuilder("ViewParent ").append(localViewParent).append(" does not implement interface method onStopNestedScroll");
-          }
-        } else if ((localViewParent instanceof m)) {
-          ((m)localViewParent).onStopNestedScroll(localAbstractMethodError);
-        }
-      }
     }
   }
   
@@ -229,12 +184,12 @@ public final class l
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.PM)
+    if (this.PY)
     {
       ViewParent localViewParent = aO(0);
       bool1 = bool2;
       if (localViewParent != null) {
-        bool1 = w.a(localViewParent, this.mView, paramFloat1, paramFloat2, paramBoolean);
+        bool1 = x.a(localViewParent, this.mView, paramFloat1, paramFloat2, paramBoolean);
       }
     }
     return bool1;
@@ -244,12 +199,12 @@ public final class l
   {
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (this.PM)
+    if (this.PY)
     {
       ViewParent localViewParent = aO(0);
       bool1 = bool2;
       if (localViewParent != null) {
-        bool1 = w.a(localViewParent, this.mView, paramFloat1, paramFloat2);
+        bool1 = x.a(localViewParent, this.mView, paramFloat1, paramFloat2);
       }
     }
     return bool1;
@@ -265,12 +220,32 @@ public final class l
     return a(paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt, 0);
   }
   
+  public final boolean hasNestedScrollingParent()
+  {
+    return aN(0);
+  }
+  
+  public final boolean isNestedScrollingEnabled()
+  {
+    return this.PY;
+  }
+  
   public final void setNestedScrollingEnabled(boolean paramBoolean)
   {
-    if (this.PM) {
-      t.aw(this.mView);
+    if (this.PY) {
+      u.ax(this.mView);
     }
-    this.PM = paramBoolean;
+    this.PY = paramBoolean;
+  }
+  
+  public final boolean startNestedScroll(int paramInt)
+  {
+    return A(paramInt, 0);
+  }
+  
+  public final void stopNestedScroll()
+  {
+    aM(0);
   }
 }
 

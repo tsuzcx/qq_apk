@@ -1,113 +1,113 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.exdevice.k.b;
 import com.tencent.mm.plugin.exdevice.service.j.a;
-import com.tencent.mm.protocal.protobuf.bob;
-import com.tencent.mm.protocal.protobuf.km;
-import com.tencent.mm.protocal.protobuf.kn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.cat;
+import com.tencent.mm.protocal.protobuf.ld;
+import com.tencent.mm.protocal.protobuf.le;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class aa
   extends j.a
-  implements f
+  implements i
 {
-  static Object ddM;
-  private static final byte[] qjI;
-  private static aa qjJ;
-  static LinkedList<String> qjN;
-  private static HashMap<String, kn> qjO;
-  final aw jnx;
-  boolean qiX;
-  volatile String qir;
-  a qjK;
-  HashMap<String, byte[]> qjL;
-  LinkedList<n> qjM;
+  static Object duI;
+  private static final byte[] rAD;
+  private static aa rAE;
+  static LinkedList<String> rAI;
+  private static HashMap<String, le> rAJ;
+  final MTimerHandler klF;
+  a rAF;
+  HashMap<String, byte[]> rAG;
+  LinkedList<q> rAH;
+  boolean rzT;
+  volatile String rzn;
   
   static
   {
     AppMethodBeat.i(23435);
-    qjI = new byte[] { -2, 1, 1 };
-    ddM = new Object();
-    qjN = new LinkedList();
-    qjO = new HashMap(32);
+    rAD = new byte[] { -2, 1, 1 };
+    duI = new Object();
+    rAI = new LinkedList();
+    rAJ = new HashMap(32);
     AppMethodBeat.o(23435);
   }
   
   private aa()
   {
     AppMethodBeat.i(23429);
-    this.qjL = new HashMap();
-    this.qjM = new LinkedList();
-    this.jnx = new aw(new aw.a()
+    this.rAG = new HashMap();
+    this.rAH = new LinkedList();
+    this.klF = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(23427);
-        ae.i("MicroMsg.exdevice.ScanDeviceLogic", "Restart scanning...");
-        ad.cmQ().a(0, aa.this);
+        Log.i("MicroMsg.exdevice.ScanDeviceLogic", "Restart scanning...");
+        ad.cKS().a(0, aa.this);
         AppMethodBeat.o(23427);
         return true;
       }
     }, true);
-    this.qiX = false;
+    this.rzT = false;
     AppMethodBeat.o(23429);
   }
   
-  private void a(kn paramkn)
+  private void a(le paramle)
   {
     AppMethodBeat.i(23433);
-    if (paramkn == null)
+    if (paramle == null)
     {
-      ae.e("MicroMsg.exdevice.ScanDeviceLogic", "item null..");
+      Log.e("MicroMsg.exdevice.ScanDeviceLogic", "item null..");
       AppMethodBeat.o(23433);
       return;
     }
-    if (bu.isNullOrNil(paramkn.FVh))
+    if (Util.isNullOrNil(paramle.KOS))
     {
-      ae.e("MicroMsg.exdevice.ScanDeviceLogic", "invalid mac(null or nil)");
+      Log.e("MicroMsg.exdevice.ScanDeviceLogic", "invalid mac(null or nil)");
       AppMethodBeat.o(23433);
       return;
     }
-    if (paramkn.Ret != 0)
+    if (paramle.Ret != 0)
     {
-      ae.e("MicroMsg.exdevice.ScanDeviceLogic", "device(%s) is invalid", new Object[] { paramkn.FVh });
+      Log.e("MicroMsg.exdevice.ScanDeviceLogic", "device(%s) is invalid", new Object[] { paramle.KOS });
       AppMethodBeat.o(23433);
       return;
     }
-    if ((paramkn.FVo == null) || (bu.isNullOrNil(paramkn.FVo.nIM)))
+    if ((paramle.KOZ == null) || (Util.isNullOrNil(paramle.KOZ.oTH)))
     {
-      ae.e("MicroMsg.exdevice.ScanDeviceLogic", "invalid device id(mac=%s)", new Object[] { paramkn.FVh });
+      Log.e("MicroMsg.exdevice.ScanDeviceLogic", "invalid device id(mac=%s)", new Object[] { paramle.KOS });
       AppMethodBeat.o(23433);
       return;
     }
-    if ((bu.isNullOrNil(paramkn.FVo.FSh)) || (!paramkn.FVo.FSh.equals(this.qir)))
+    if ((Util.isNullOrNil(paramle.KOZ.KLO)) || (!paramle.KOZ.KLO.equals(this.rzn)))
     {
-      ae.e("MicroMsg.exdevice.ScanDeviceLogic", "device type (%s) is not equal to brand name (%s)", new Object[] { paramkn.nIN, this.qir });
+      Log.e("MicroMsg.exdevice.ScanDeviceLogic", "device type (%s) is not equal to brand name (%s)", new Object[] { paramle.oTI, this.rzn });
       AppMethodBeat.o(23433);
       return;
     }
-    byte[] arrayOfByte = (byte[])this.qjL.get(paramkn.FVh);
-    String str1 = paramkn.FVh;
-    String str2 = paramkn.FVo.FSh;
-    String str3 = paramkn.FVo.nIM;
-    String str4 = paramkn.nIN;
+    byte[] arrayOfByte = (byte[])this.rAG.get(paramle.KOS);
+    String str1 = paramle.KOS;
+    String str2 = paramle.KOZ.KLO;
+    String str3 = paramle.KOZ.oTH;
+    String str4 = paramle.oTI;
     int i;
     if (arrayOfByte == null)
     {
       i = 0;
-      ae.i("MicroMsg.exdevice.ScanDeviceLogic", "hakon, BatchSearch find mac=%s, deviceType=%s, deviceId=%s, %s, %s", new Object[] { str1, str2, str3, str4, Integer.valueOf(i) });
-      if (this.qjK == null) {
+      Log.i("MicroMsg.exdevice.ScanDeviceLogic", "hakon, BatchSearch find mac=%s, deviceType=%s, deviceId=%s, %s, %s", new Object[] { str1, str2, str3, str4, Integer.valueOf(i) });
+      if (this.rAF == null) {
         break label323;
       }
       if (arrayOfByte == null) {
@@ -116,20 +116,20 @@ public final class aa
     }
     label323:
     label337:
-    for (arrayOfByte = be(arrayOfByte);; arrayOfByte = null)
+    for (arrayOfByte = bv(arrayOfByte);; arrayOfByte = null)
     {
-      this.qjK.a(paramkn.FVo.nIM, arrayOfByte, false);
+      this.rAF.a(paramle.KOZ.oTH, arrayOfByte, false);
       AppMethodBeat.o(23433);
       return;
       i = arrayOfByte.length;
       break;
-      ae.e("MicroMsg.exdevice.ScanDeviceLogic", "mCallback null");
+      Log.e("MicroMsg.exdevice.ScanDeviceLogic", "mCallback null");
       AppMethodBeat.o(23433);
       return;
     }
   }
   
-  private static byte[] be(byte[] paramArrayOfByte)
+  private static byte[] bv(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23434);
     byte[] arrayOfByte = null;
@@ -152,7 +152,7 @@ public final class aa
         switch (paramArrayOfByte[m])
         {
         case -1: 
-          ae.i("MicroMsg.exdevice.ScanDeviceLogic", "hakon, Manufacturer Specific Data size = %s", new Object[] { Integer.valueOf(k) });
+          Log.i("MicroMsg.exdevice.ScanDeviceLogic", "hakon, Manufacturer Specific Data size = %s", new Object[] { Integer.valueOf(k) });
           arrayOfByte = new byte[k - 1];
           if (k > 1)
           {
@@ -168,7 +168,7 @@ public final class aa
           }
           else
           {
-            ae.i("MicroMsg.exdevice.ScanDeviceLogic", "hakon, Manufacturer Specific Data %s" + b.bf(arrayOfByte));
+            Log.i("MicroMsg.exdevice.ScanDeviceLogic", "hakon, Manufacturer Specific Data %s" + b.bw(arrayOfByte));
             continue;
             AppMethodBeat.o(23434);
             return arrayOfByte;
@@ -178,8 +178,8 @@ public final class aa
       }
       catch (Exception paramArrayOfByte)
       {
-        ae.printErrStackTrace("MicroMsg.exdevice.ScanDeviceLogic", paramArrayOfByte, "", new Object[0]);
-        ae.e("MicroMsg.exdevice.ScanDeviceLogic", "EX in parseBroadcastPacket %s", new Object[] { paramArrayOfByte.getMessage() });
+        Log.printErrStackTrace("MicroMsg.exdevice.ScanDeviceLogic", paramArrayOfByte, "", new Object[0]);
+        Log.e("MicroMsg.exdevice.ScanDeviceLogic", "EX in parseBroadcastPacket %s", new Object[] { paramArrayOfByte.getMessage() });
         AppMethodBeat.o(23434);
         return null;
       }
@@ -191,73 +191,73 @@ public final class aa
     }
   }
   
-  public static aa cmG()
+  public static aa cKI()
   {
     AppMethodBeat.i(23428);
-    if (qjJ != null)
+    if (rAE != null)
     {
-      localaa = qjJ;
+      localaa = rAE;
       AppMethodBeat.o(23428);
       return localaa;
     }
     aa localaa = new aa();
-    qjJ = localaa;
+    rAE = localaa;
     AppMethodBeat.o(23428);
     return localaa;
   }
   
-  public final void CN(int paramInt)
+  public final void Gy(int paramInt)
   {
     AppMethodBeat.i(23430);
-    ae.i("MicroMsg.exdevice.ScanDeviceLogic", "stopScanDevice %s, stopTimer", new Object[] { Integer.valueOf(paramInt) });
-    this.jnx.stopTimer();
-    if (this.qiX)
+    Log.i("MicroMsg.exdevice.ScanDeviceLogic", "stopScanDevice %s, stopTimer", new Object[] { Integer.valueOf(paramInt) });
+    this.klF.stopTimer();
+    if (this.rzT)
     {
-      ad.cmQ().CM(paramInt);
-      this.qiX = false;
-      this.qir = null;
-      this.qjL.clear();
-      bc.ajj().b(542, this);
-      ??? = this.qjM.iterator();
+      ad.cKS().Gx(paramInt);
+      this.rzT = false;
+      this.rzn = null;
+      this.rAG.clear();
+      bg.azz().b(542, this);
+      ??? = this.rAH.iterator();
       while (((Iterator)???).hasNext())
       {
-        n localn = (n)((Iterator)???).next();
-        if (localn != null) {
-          bc.ajj().a(localn);
+        q localq = (q)((Iterator)???).next();
+        if (localq != null) {
+          bg.azz().a(localq);
         }
       }
-      this.qjM.clear();
-      if (this.qjK != null) {
-        this.qjK.a(null, null, true);
+      this.rAH.clear();
+      if (this.rAF != null) {
+        this.rAF.a(null, null, true);
       }
-      this.qjK = null;
+      this.rAF = null;
     }
-    synchronized (ddM)
+    synchronized (duI)
     {
-      qjN.clear();
+      rAI.clear();
       AppMethodBeat.o(23430);
       return;
-      ae.i("MicroMsg.exdevice.ScanDeviceLogic", "stopScanDevice has been stoped");
+      Log.i("MicroMsg.exdevice.ScanDeviceLogic", "stopScanDevice has been stoped");
     }
   }
   
   public final void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String arg5, int paramInt3, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(23431);
-    if (this.qjL.containsKey(paramString2))
+    if (this.rAG.containsKey(paramString2))
     {
       AppMethodBeat.o(23431);
       return;
     }
     if (paramString2 == null)
     {
-      ae.w("MicroMsg.exdevice.ScanDeviceLogic", "deviceMac is null");
+      Log.w("MicroMsg.exdevice.ScanDeviceLogic", "deviceMac is null");
       AppMethodBeat.o(23431);
       return;
     }
     paramString1 = paramString2.replaceAll(":", "");
-    ??? = qjI;
-    if ((bu.cF(paramArrayOfByte)) || (bu.cF(???)) || (???.length > paramArrayOfByte.length)) {
+    ??? = rAD;
+    if ((Util.isNullOrNil(paramArrayOfByte)) || (Util.isNullOrNil(???)) || (???.length > paramArrayOfByte.length)) {
       paramInt1 = -1;
     }
     for (;;)
@@ -267,20 +267,20 @@ public final class aa
         {
           ??? = new byte[paramInt1 + 9];
           System.arraycopy(paramArrayOfByte, 0, ???, 0, ???.length);
-          ae.i("MicroMsg.exdevice.ScanDeviceLogic", "hakon, scanFound mac:%s, realAd:%s", new Object[] { paramString1, b.bf(???) });
-          this.qjL.put(paramString1, ???);
+          Log.i("MicroMsg.exdevice.ScanDeviceLogic", "hakon, scanFound mac:%s, realAd:%s", new Object[] { paramString1, b.bw(???) });
+          this.rAG.put(paramString1, ???);
           label158:
-          paramString1 = this.qir + "_" + paramString2;
-          if (qjO.containsKey(paramString1)) {
+          paramString1 = this.rzn + "_" + paramString2;
+          if (rAJ.containsKey(paramString1)) {
             break label394;
           }
         }
       }
-      synchronized (ddM)
+      synchronized (duI)
       {
-        if (qjN.contains(paramString1))
+        if (rAI.contains(paramString1))
         {
-          ae.d("MicroMsg.exdevice.ScanDeviceLogic", "hakon, already doing");
+          Log.d("MicroMsg.exdevice.ScanDeviceLogic", "hakon, already doing");
           AppMethodBeat.o(23431);
           return;
           paramInt2 = 0;
@@ -298,74 +298,74 @@ public final class aa
           label262:
           paramInt1 = -1;
           continue;
-          this.qjL.put(paramString1, null);
+          this.rAG.put(paramString1, null);
           break label158;
-          this.qjL.put(paramString1, null);
+          this.rAG.put(paramString1, null);
           break label158;
         }
         else
         {
-          qjN.add(paramString1);
-          ??? = this.qir;
+          rAI.add(paramString1);
+          ??? = this.rzn;
           paramString2 = new k(new String[] { paramString2 }, ???);
-          if (bc.ajj().a(paramString2, 0))
+          if (bg.azz().a(paramString2, 0))
           {
-            this.qjM.add(paramString2);
+            this.rAH.add(paramString2);
             AppMethodBeat.o(23431);
             return;
           }
         }
       }
     }
-    qjN.remove(paramString1);
-    ae.e("MicroMsg.exdevice.ScanDeviceLogic", "MMCore.getNetSceneQueue().doScene failed!!!");
+    rAI.remove(paramString1);
+    Log.e("MicroMsg.exdevice.ScanDeviceLogic", "MMCore.getNetSceneQueue().doScene failed!!!");
     AppMethodBeat.o(23431);
     return;
     label394:
-    ae.d("MicroMsg.exdevice.ScanDeviceLogic", "hakon, hit cache %s, %s", new Object[] { this.qir, paramString2 });
-    a((kn)qjO.get(paramString1));
+    Log.d("MicroMsg.exdevice.ScanDeviceLogic", "hakon, hit cache %s, %s", new Object[] { this.rzn, paramString2 });
+    a((le)rAJ.get(paramString1));
     AppMethodBeat.o(23431);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String arg3, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String arg3, q paramq)
   {
     AppMethodBeat.i(23432);
-    if (paramn == null) {}
-    for (Object localObject = "";; localObject = Integer.valueOf(paramn.getType()))
+    if (paramq == null) {}
+    for (Object localObject = "";; localObject = Integer.valueOf(paramq.getType()))
     {
-      ae.i("MicroMsg.exdevice.ScanDeviceLogic", "onSceneEnd, %s, errType=%d, errCode=%d, errMsg=%s", new Object[] { localObject, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), ??? });
-      this.qjM.remove(paramn);
-      if ((paramInt1 == 0) && (paramInt2 == 0) && (paramn != null)) {
+      Log.i("MicroMsg.exdevice.ScanDeviceLogic", "onSceneEnd, %s, errType=%d, errCode=%d, errMsg=%s", new Object[] { localObject, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), ??? });
+      this.rAH.remove(paramq);
+      if ((paramInt1 == 0) && (paramInt2 == 0) && (paramq != null)) {
         break;
       }
-      ae.e("MicroMsg.exdevice.ScanDeviceLogic", "do scene failed!!!");
+      Log.e("MicroMsg.exdevice.ScanDeviceLogic", "do scene failed!!!");
       AppMethodBeat.o(23432);
       return;
     }
-    if (542 == paramn.getType())
+    if (542 == paramq.getType())
     {
-      paramn = ((k)paramn).cmB().FVl.iterator();
-      while (paramn.hasNext())
+      paramq = ((k)paramq).cKD().KOW.iterator();
+      while (paramq.hasNext())
       {
-        localObject = (kn)paramn.next();
-        if (bu.isNullOrNil(((kn)localObject).FVh))
+        localObject = (le)paramq.next();
+        if (Util.isNullOrNil(((le)localObject).KOS))
         {
-          ae.e("MicroMsg.exdevice.ScanDeviceLogic", "invalid mac(null or nil)");
+          Log.e("MicroMsg.exdevice.ScanDeviceLogic", "invalid mac(null or nil)");
         }
         else
         {
-          String str = this.qir + "_" + ((kn)localObject).FVh;
-          synchronized (ddM)
+          String str = this.rzn + "_" + ((le)localObject).KOS;
+          synchronized (duI)
           {
-            if (qjN.contains(str)) {
-              qjN.remove(str);
+            if (rAI.contains(str)) {
+              rAI.remove(str);
             }
-            if (!qjO.containsKey(str))
+            if (!rAJ.containsKey(str))
             {
-              ae.i("MicroMsg.exdevice.ScanDeviceLogic", "hakon, put into cache, %s", new Object[] { str });
-              qjO.put(str, localObject);
+              Log.i("MicroMsg.exdevice.ScanDeviceLogic", "hakon, put into cache, %s", new Object[] { str });
+              rAJ.put(str, localObject);
             }
-            a((kn)localObject);
+            a((le)localObject);
           }
         }
       }
@@ -380,7 +380,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.model.aa
  * JD-Core Version:    0.7.0.1
  */

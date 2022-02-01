@@ -1,55 +1,50 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a;
-import d.d.f;
-import d.d.f.c;
-import d.l;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ServiceLoader;
+import kotlin.d.f;
+import kotlin.l;
+import kotlin.m.i;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"CoroutineExceptionHandler", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handler", "Lkotlin/Function2;", "Lkotlin/coroutines/CoroutineContext;", "", "", "handleCoroutineException", "context", "exception", "handlerException", "originalException", "thrownException", "kotlinx-coroutines-core"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"handlers", "", "Lkotlinx/coroutines/CoroutineExceptionHandler;", "handleCoroutineExceptionImpl", "", "context", "Lkotlin/coroutines/CoroutineContext;", "exception", "", "kotlinx-coroutines-core"})
 public final class ae
 {
-  public static final Throwable b(Throwable paramThrowable1, Throwable paramThrowable2)
+  private static final List<CoroutineExceptionHandler> TTU;
+  
+  static
   {
-    AppMethodBeat.i(118053);
-    if (paramThrowable1 == paramThrowable2)
-    {
-      AppMethodBeat.o(118053);
-      return paramThrowable1;
-    }
-    paramThrowable2 = new RuntimeException("Exception while trying to handle coroutine exception", paramThrowable2);
-    a.a((Throwable)paramThrowable2, paramThrowable1);
-    paramThrowable1 = (Throwable)paramThrowable2;
-    AppMethodBeat.o(118053);
-    return paramThrowable1;
+    AppMethodBeat.i(118160);
+    TTU = i.c(i.d(ServiceLoader.load(CoroutineExceptionHandler.class, CoroutineExceptionHandler.class.getClassLoader()).iterator()));
+    AppMethodBeat.o(118160);
   }
   
-  public static final void b(f paramf, Throwable paramThrowable)
+  public static final void a(f paramf, Throwable paramThrowable)
   {
-    AppMethodBeat.i(209205);
-    try
+    AppMethodBeat.i(118159);
+    Iterator localIterator = TTU.iterator();
+    while (localIterator.hasNext())
     {
-      CoroutineExceptionHandler localCoroutineExceptionHandler = (CoroutineExceptionHandler)paramf.get((f.c)CoroutineExceptionHandler.OeY);
-      if (localCoroutineExceptionHandler != null)
+      CoroutineExceptionHandler localCoroutineExceptionHandler = (CoroutineExceptionHandler)localIterator.next();
+      try
       {
         localCoroutineExceptionHandler.handleException(paramf, paramThrowable);
-        AppMethodBeat.o(209205);
-        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        Thread localThread = Thread.currentThread();
+        localThread.getUncaughtExceptionHandler().uncaughtException(localThread, af.b(paramThrowable, localThrowable));
       }
     }
-    catch (Throwable localThrowable)
-    {
-      ad.a(paramf, b(paramThrowable, localThrowable));
-      AppMethodBeat.o(209205);
-      return;
-    }
-    ad.a(paramf, paramThrowable);
-    AppMethodBeat.o(209205);
+    paramf = Thread.currentThread();
+    paramf.getUncaughtExceptionHandler().uncaughtException(paramf, paramThrowable);
+    AppMethodBeat.o(118159);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.ae
  * JD-Core Version:    0.7.0.1
  */

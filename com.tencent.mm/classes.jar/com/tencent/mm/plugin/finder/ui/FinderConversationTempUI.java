@@ -7,21 +7,30 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.finder.PluginFinder;
 import com.tencent.mm.plugin.finder.extension.reddot.a;
-import com.tencent.mm.plugin.finder.extension.reddot.e;
-import com.tencent.mm.sdk.platformtools.aq;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.finder.extension.reddot.f;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.HashMap;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationTempUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "()V", "getLayoutId", "", "getTitleResId", "onDestroy", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationTempUI;", "Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "()V", "finish", "", "getLayoutId", "", "getTitleResId", "plugin-finder_release"})
 public final class FinderConversationTempUI
   extends FinderConversationParentUI
 {
   private HashMap _$_findViewCache;
   
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(252216);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(252216);
+  }
+  
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204531);
+    AppMethodBeat.i(252215);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -32,33 +41,33 @@ public final class FinderConversationTempUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204531);
+    AppMethodBeat.o(252215);
     return localView1;
   }
   
-  public final int cMd()
+  public final int dzb()
   {
-    return 2131766545;
+    return 2131759620;
+  }
+  
+  public final void finish()
+  {
+    AppMethodBeat.i(252214);
+    super.finish();
+    Object localObject = g.ah(PluginFinder.class);
+    p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+    ((PluginFinder)localObject).getRedDotManager().tJB.das();
+    localObject = g.ah(PluginFinder.class);
+    p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
+    localObject = ((PluginFinder)localObject).getRedDotManager().tJB;
+    ((a)localObject).handler.removeMessages(9);
+    ((a)localObject).handler.sendEmptyMessage(9);
+    AppMethodBeat.o(252214);
   }
   
   public final int getLayoutId()
   {
-    return 2131496390;
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(204530);
-    super.onDestroy();
-    Object localObject = g.ad(PluginFinder.class);
-    p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-    ((PluginFinder)localObject).getRedDotManager().sax.cBh();
-    localObject = g.ad(PluginFinder.class);
-    p.g(localObject, "MMKernel.plugin(PluginFinder::class.java)");
-    localObject = ((PluginFinder)localObject).getRedDotManager().sax;
-    ((a)localObject).handler.removeMessages(9);
-    ((a)localObject).handler.sendEmptyMessage(9);
-    AppMethodBeat.o(204530);
+    return 2131494231;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

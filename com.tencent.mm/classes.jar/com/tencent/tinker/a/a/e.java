@@ -5,23 +5,23 @@ import com.tencent.tinker.a.a.b.c;
 public final class e
   extends s.a.a<e>
 {
-  public a[] MzA;
-  public a[] MzB;
-  public b[] MzC;
-  public b[] MzD;
+  public a[] SfE;
+  public a[] SfF;
+  public b[] SfG;
+  public b[] SfH;
   
   public e(int paramInt, a[] paramArrayOfa1, a[] paramArrayOfa2, b[] paramArrayOfb1, b[] paramArrayOfb2)
   {
     super(paramInt);
-    this.MzA = paramArrayOfa1;
-    this.MzB = paramArrayOfa2;
-    this.MzC = paramArrayOfb1;
-    this.MzD = paramArrayOfb2;
+    this.SfE = paramArrayOfa1;
+    this.SfF = paramArrayOfa2;
+    this.SfG = paramArrayOfb1;
+    this.SfH = paramArrayOfb2;
   }
   
   private int a(e parame)
   {
-    int i = c.a(this.MzA, parame.MzA);
+    int i = c.a(this.SfE, parame.SfE);
     if (i != 0) {}
     int j;
     do
@@ -29,13 +29,13 @@ public final class e
       do
       {
         return i;
-        j = c.a(this.MzB, parame.MzB);
+        j = c.a(this.SfF, parame.SfF);
         i = j;
       } while (j != 0);
-      j = c.a(this.MzC, parame.MzC);
+      j = c.a(this.SfG, parame.SfG);
       i = j;
     } while (j != 0);
-    return c.a(this.MzD, parame.MzD);
+    return c.a(this.SfH, parame.SfH);
   }
   
   public final boolean equals(Object paramObject)
@@ -49,28 +49,28 @@ public final class e
   
   public final int hashCode()
   {
-    return com.tencent.tinker.a.a.b.e.hash(new Object[] { this.MzA, this.MzB, this.MzC, this.MzD });
+    return com.tencent.tinker.a.a.b.e.hash(new Object[] { this.SfE, this.SfF, this.SfG, this.SfH });
   }
   
   public static final class a
     implements Comparable<a>
   {
-    public int MzE;
-    public int MzF;
+    public int SfI;
+    public int SfJ;
     
     public a(int paramInt1, int paramInt2)
     {
-      this.MzE = paramInt1;
-      this.MzF = paramInt2;
+      this.SfI = paramInt1;
+      this.SfJ = paramInt2;
     }
     
     private int a(a parama)
     {
-      int i = c.lf(this.MzE, parama.MzE);
+      int i = c.mD(this.SfI, parama.SfI);
       if (i != 0) {
         return i;
       }
-      return c.lg(this.MzF, parama.MzF);
+      return c.mE(this.SfJ, parama.SfJ);
     }
     
     public final boolean equals(Object paramObject)
@@ -84,36 +84,36 @@ public final class e
     
     public final int hashCode()
     {
-      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.MzE), Integer.valueOf(this.MzF) });
+      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.SfI), Integer.valueOf(this.SfJ) });
     }
   }
   
   public static final class b
     implements Comparable<b>
   {
-    public int MzF;
-    public int MzG;
-    public int MzH;
+    public int SfJ;
+    public int SfK;
+    public int SfL;
     
     public b(int paramInt1, int paramInt2, int paramInt3)
     {
-      this.MzG = paramInt1;
-      this.MzF = paramInt2;
-      this.MzH = paramInt3;
+      this.SfK = paramInt1;
+      this.SfJ = paramInt2;
+      this.SfL = paramInt3;
     }
     
     private int a(b paramb)
     {
-      int i = c.lf(this.MzG, paramb.MzG);
+      int i = c.mD(this.SfK, paramb.SfK);
       if (i != 0) {}
       int j;
       do
       {
         return i;
-        j = c.lg(this.MzF, paramb.MzF);
+        j = c.mE(this.SfJ, paramb.SfJ);
         i = j;
       } while (j != 0);
-      return c.lg(this.MzH, paramb.MzH);
+      return c.mE(this.SfL, paramb.SfL);
     }
     
     public final boolean equals(Object paramObject)
@@ -127,13 +127,13 @@ public final class e
     
     public final int hashCode()
     {
-      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.MzG), Integer.valueOf(this.MzF), Integer.valueOf(this.MzH) });
+      return com.tencent.tinker.a.a.b.e.hash(new Object[] { Integer.valueOf(this.SfK), Integer.valueOf(this.SfJ), Integer.valueOf(this.SfL) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.a.e
  * JD-Core Version:    0.7.0.1
  */

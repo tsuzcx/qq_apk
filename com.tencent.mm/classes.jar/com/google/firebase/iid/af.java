@@ -42,8 +42,8 @@ final class af
       paramContext.createNewFile();
       paramString = new Properties();
       paramString.setProperty("pub", paramag.zzq());
-      paramString.setProperty("pri", paramag.yn());
-      paramString.setProperty("cre", String.valueOf(paramag.bMn));
+      paramString.setProperty("pri", paramag.yv());
+      paramString.setProperty("cre", String.valueOf(paramag.bMD));
       paramag = new FileOutputStream(paramContext);
       paramContext = localObject;
       try
@@ -75,10 +75,10 @@ final class af
     }
   }
   
-  static File aq(Context paramContext)
+  static File ar(Context paramContext)
   {
     AppMethodBeat.i(4241);
-    File localFile = b.T(paramContext);
+    File localFile = b.U(paramContext);
     if ((localFile != null) && (localFile.isDirectory()))
     {
       AppMethodBeat.o(4241);
@@ -124,8 +124,8 @@ final class af
       Log.isLoggable("FirebaseInstanceId", 3);
       paramContext = paramContext.edit();
       paramContext.putString(p.o(paramString, "|P|"), paramag.zzq());
-      paramContext.putString(p.o(paramString, "|K|"), paramag.yn());
-      paramContext.putString(p.o(paramString, "cre"), String.valueOf(paramag.bMn));
+      paramContext.putString(p.o(paramString, "|K|"), paramag.yv());
+      paramContext.putString(p.o(paramString, "cre"), String.valueOf(paramag.bMD));
       paramContext.commit();
       AppMethodBeat.o(4245);
     }
@@ -134,7 +134,7 @@ final class af
   static ag j(Context paramContext, String paramString)
   {
     AppMethodBeat.i(4236);
-    ag localag1 = new ag(a.ye(), System.currentTimeMillis());
+    ag localag1 = new ag(a.ym(), System.currentTimeMillis());
     try
     {
       ag localag2 = k(paramContext, paramString);
@@ -271,7 +271,7 @@ final class af
     }
     for (;;)
     {
-      paramContext = new File(aq(paramContext), paramString);
+      paramContext = new File(ar(paramContext), paramString);
       AppMethodBeat.o(4242);
       return paramContext;
       try
@@ -488,7 +488,7 @@ final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.iid.af
  * JD-Core Version:    0.7.0.1
  */

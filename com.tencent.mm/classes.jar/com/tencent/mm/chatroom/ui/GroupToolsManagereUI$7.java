@@ -3,21 +3,21 @@ package com.tencent.mm.chatroom.ui;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class GroupToolsManagereUI$7
   implements DialogInterface.OnCancelListener
 {
-  GroupToolsManagereUI$7(GroupToolsManagereUI paramGroupToolsManagereUI, n paramn) {}
+  GroupToolsManagereUI$7(GroupToolsManagereUI paramGroupToolsManagereUI, q paramq) {}
   
   public final void onCancel(DialogInterface paramDialogInterface)
   {
     AppMethodBeat.i(182174);
-    ae.i("MicroMsg.roomtools.GroupToolsManagereUI", "dialog onCancel scene:%s", new Object[] { Integer.valueOf(this.djA.getType()) });
-    g.ajj().a(this.djA);
+    Log.i("MicroMsg.roomtools.GroupToolsManagereUI", "dialog onCancel scene:%s", new Object[] { Integer.valueOf(this.dAK.getType()) });
+    g.azz().a(this.dAK);
     AppMethodBeat.o(182174);
   }
 }

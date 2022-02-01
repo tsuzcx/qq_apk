@@ -8,7 +8,7 @@ import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.KRichLabelView;
 import com.tencent.kinda.gen.KText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class MMKRichLabelView
   extends MMKLabelView
@@ -35,7 +35,7 @@ public class MMKRichLabelView
     }
     for (;;)
     {
-      ae.d("MMKRichLabelView", "setRichText: %s, raw color: %s, color: %s, colorHex: %s", new Object[] { this.richText.get().toString(), getTextColor(), Integer.valueOf(MMKViewUtil.argbColor(ColorUtil.getColorByMode(getTextColor(), ColorUtil.MMViewType.MMKRichLabelView))), Integer.toHexString(MMKViewUtil.argbColor(ColorUtil.getColorByModeNoCompat(getTextColor()))) });
+      Log.d("MMKRichLabelView", "setRichText: %s, raw color: %s, color: %s, colorHex: %s", new Object[] { this.richText.get().toString(), getTextColor(), Integer.valueOf(MMKViewUtil.argbColor(ColorUtil.getColorByMode(getTextColor(), ColorUtil.MMViewType.MMKRichLabelView))), Integer.toHexString(MMKViewUtil.argbColor(ColorUtil.getColorByModeNoCompat(getTextColor()))) });
       setTextColor(getTextColor());
       notifyChanged();
       AppMethodBeat.o(19103);
@@ -49,7 +49,7 @@ public class MMKRichLabelView
   {
     AppMethodBeat.i(19104);
     super.setTextColor(paramDynamicColor);
-    ae.d("MMKRichLabelView", "setTextColor: " + Integer.toHexString(MMKViewUtil.argbColor(ColorUtil.getColorByMode(paramDynamicColor, ColorUtil.MMViewType.MMKRichLabelView))));
+    Log.d("MMKRichLabelView", "setTextColor: " + Integer.toHexString(MMKViewUtil.argbColor(ColorUtil.getColorByMode(paramDynamicColor, ColorUtil.MMViewType.MMKRichLabelView))));
     ((TextView)getView()).setTextColor(MMKViewUtil.argbColor(ColorUtil.getColorByModeNoCompat(paramDynamicColor)));
     notifyChanged();
     AppMethodBeat.o(19104);
@@ -57,7 +57,7 @@ public class MMKRichLabelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKRichLabelView
  * JD-Core Version:    0.7.0.1
  */

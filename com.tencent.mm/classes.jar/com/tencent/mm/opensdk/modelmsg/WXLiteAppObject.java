@@ -16,25 +16,25 @@ public class WXLiteAppObject
   
   public boolean checkArgs()
   {
-    AppMethodBeat.i(194113);
+    AppMethodBeat.i(190428);
     if (b.b(this.userName))
     {
       Log.e("MicroMsg.SDK.WXLiteAppObject", "userName is null");
-      AppMethodBeat.o(194113);
+      AppMethodBeat.o(190428);
       return false;
     }
-    AppMethodBeat.o(194113);
+    AppMethodBeat.o(190428);
     return true;
   }
   
   public void serialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(194111);
+    AppMethodBeat.i(190426);
     paramBundle.putString("_wxliteapp_webpageurl", this.webpageUrl);
     paramBundle.putString("_wxliteapp_username", this.userName);
     paramBundle.putString("_wxliteapp_path", this.path);
     paramBundle.putString("_wxliteapp_query", this.query);
-    AppMethodBeat.o(194111);
+    AppMethodBeat.o(190426);
   }
   
   public int type()
@@ -44,12 +44,12 @@ public class WXLiteAppObject
   
   public void unserialize(Bundle paramBundle)
   {
-    AppMethodBeat.i(194112);
+    AppMethodBeat.i(190427);
     this.webpageUrl = paramBundle.getString("_wxliteapp_webpageurl");
     this.userName = paramBundle.getString("_wxliteapp_username");
     this.path = paramBundle.getString("_wxliteapp_path");
     this.query = paramBundle.getString("_wxliteapp_query");
-    AppMethodBeat.o(194112);
+    AppMethodBeat.o(190427);
   }
 }
 

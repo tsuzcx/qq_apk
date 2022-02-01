@@ -11,29 +11,29 @@ import android.view.View;
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.z;
-import com.tencent.mm.model.z.b;
+import com.tencent.mm.model.ad;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.plugin.game.model.aa;
 import com.tencent.mm.plugin.game.model.c;
 import com.tencent.mm.plugin.game.model.k;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
 public class GameDetailRankUI
   extends MMActivity
 {
   public static String EXTRA_SESSION_ID = "extra_session_id";
-  public static String uyz = "gameDetailRankDataKey";
+  public static String xQy = "gameDetailRankDataKey";
   private String appId;
-  private ListView uyw;
-  private GameRankHeadView uyx;
-  private i uyy;
+  private ListView xQv;
+  private GameRankHeadView xQw;
+  private i xQx;
   
   public int getLayoutId()
   {
-    return 2131494284;
+    return 2131494846;
   }
   
   public void initView()
@@ -58,34 +58,34 @@ public class GameDetailRankUI
     AppMethodBeat.i(42005);
     super.onCreate(paramBundle);
     paramBundle = getIntent().getStringExtra(EXTRA_SESSION_ID);
-    paramBundle = z.aBG().Bq(paramBundle);
+    paramBundle = ad.aVe().JW(paramBundle);
     if (paramBundle == null)
     {
       finish();
       AppMethodBeat.o(42005);
       return;
     }
-    paramBundle = (a)paramBundle.get(uyz);
-    this.uyw = ((ListView)findViewById(2131300420));
-    if ((!bu.isNullOrNil(paramBundle.uyB)) && (!bu.isNullOrNil(paramBundle.uyC)))
+    paramBundle = (a)paramBundle.get(xQy);
+    this.xQv = ((ListView)findViewById(2131301943));
+    if ((!Util.isNullOrNil(paramBundle.xQA)) && (!Util.isNullOrNil(paramBundle.xQB)))
     {
-      View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131494291, this.uyw, false);
-      this.uyx = ((GameRankHeadView)localView.findViewById(2131300540));
-      this.uyw.addHeaderView(localView);
-      this.uyx.setData(paramBundle);
+      View localView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131494853, this.xQv, false);
+      this.xQw = ((GameRankHeadView)localView.findViewById(2131302072));
+      this.xQv.addHeaderView(localView);
+      this.xQw.setData(paramBundle);
     }
-    this.uyy = new i(this);
-    this.uyy.UR = 2131494285;
-    this.uyw.setAdapter(this.uyy);
-    this.appId = paramBundle.uyD.field_appId;
-    if (bu.isNullOrNil(this.appId))
+    this.xQx = new i(this);
+    this.xQx.Ve = 2131494847;
+    this.xQv.setAdapter(this.xQx);
+    this.appId = paramBundle.xQC.field_appId;
+    if (Util.isNullOrNil(this.appId))
     {
       finish();
       AppMethodBeat.o(42005);
       return;
     }
     initView();
-    g.ajU().aw(new Runnable()
+    g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -102,7 +102,7 @@ public class GameDetailRankUI
   {
     AppMethodBeat.i(42007);
     super.onDestroy();
-    k.b(this.uyx.uyI);
+    k.b(this.xQw.xQH);
     AppMethodBeat.o(42007);
   }
   
@@ -121,14 +121,14 @@ public class GameDetailRankUI
   
   public static final class a
   {
-    public String uyB;
-    public String uyC;
-    c uyD;
+    public String xQA;
+    public String xQB;
+    c xQC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameDetailRankUI
  * JD-Core Version:    0.7.0.1
  */

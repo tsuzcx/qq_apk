@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.game.api.b;
 import com.tencent.mm.plugin.game.api.b.a;
 import com.tencent.mm.ui.base.h;
@@ -17,19 +17,19 @@ public final class a
     super(paramContext, paramString1, paramString2, parama);
   }
   
-  protected final void bMX()
+  protected final void cjQ()
   {
     AppMethodBeat.i(22165);
-    h.a(this.context, 2131759960, 2131755906, false, new DialogInterface.OnClickListener()
+    h.a(this.context, 2131761321, 2131755998, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(22164);
-        paramAnonymousDialogInterface = b.a.cZq();
+        paramAnonymousDialogInterface = b.a.dSQ();
         if (paramAnonymousDialogInterface != null) {
-          paramAnonymousDialogInterface.k(a.this.openId, v.aAF(), a.this.appId);
+          paramAnonymousDialogInterface.k(a.this.openId, z.aUb(), a.this.appId);
         }
-        a.this.nSC.jb(false);
+        a.this.pdr.jZ(false);
         AppMethodBeat.o(22164);
       }
     });
@@ -38,7 +38,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.a
  * JD-Core Version:    0.7.0.1
  */

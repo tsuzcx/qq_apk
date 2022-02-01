@@ -2,40 +2,40 @@ package com.tencent.mm.ui.contact;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class w
 {
-  static int KKD;
-  private static List<String> KKE;
-  private static List<String> KKF;
+  static int PXE;
+  private static List<String> PXF;
+  private static List<String> PXG;
   
-  public static void iI(List<String> paramList)
+  public static void jL(List<String> paramList)
   {
     AppMethodBeat.i(102917);
     LinkedList localLinkedList = new LinkedList();
-    KKE = localLinkedList;
+    PXF = localLinkedList;
     localLinkedList.addAll(paramList);
-    ae.d("MicroMsg.NewGroupRecommendDetailReporter", "preCommend: %s", new Object[] { KKE });
+    Log.d("MicroMsg.NewGroupRecommendDetailReporter", "preCommend: %s", new Object[] { PXF });
     AppMethodBeat.o(102917);
   }
   
-  public static void iJ(List<String> paramList)
+  public static void jM(List<String> paramList)
   {
     AppMethodBeat.i(102918);
-    KKF = paramList;
-    ae.d("MicroMsg.NewGroupRecommendDetailReporter", "recommend: %s", new Object[] { KKF });
+    PXG = paramList;
+    Log.d("MicroMsg.NewGroupRecommendDetailReporter", "recommend: %s", new Object[] { PXG });
     AppMethodBeat.o(102918);
   }
   
-  public static void iK(List<String> paramList)
+  public static void jN(List<String> paramList)
   {
     AppMethodBeat.i(102919);
-    if ((KKE != null) && (KKF != null) && (KKF.size() > 0) && (paramList != null) && (paramList.size() > 0))
+    if ((PXF != null) && (PXG != null) && (PXG.size() > 0) && (paramList != null) && (paramList.size() > 0))
     {
       LinkedList localLinkedList1 = new LinkedList();
       LinkedList localLinkedList2 = new LinkedList();
@@ -44,8 +44,8 @@ public final class w
       while (paramList.hasNext())
       {
         String str = (String)paramList.next();
-        if (!KKE.contains(str)) {
-          if (KKF.contains(str)) {
+        if (!PXF.contains(str)) {
+          if (PXG.contains(str)) {
             localLinkedList1.add(str);
           } else {
             localLinkedList2.add(str);
@@ -53,17 +53,17 @@ public final class w
         }
       }
       int i = 0;
-      while (i < KKF.size())
+      while (i < PXG.size())
       {
-        if (localLinkedList1.contains(KKF.get(i))) {
+        if (localLinkedList1.contains(PXG.get(i))) {
           localLinkedList3.add(String.valueOf(i));
         }
         i += 1;
       }
       if ((localLinkedList1.size() > 0) || (localLinkedList2.size() > 0))
       {
-        g.yxI.f(18637, new Object[] { Integer.valueOf(KKD), TextUtils.join(";", KKE), TextUtils.join(";", KKF), TextUtils.join(";", localLinkedList1), TextUtils.join(";", localLinkedList2), TextUtils.join(";", localLinkedList3) });
-        ae.d("MicroMsg.NewGroupRecommendDetailReporter", "report, selectFromRecommend: %s, selectNotFromRecommendList: %s", new Object[] { localLinkedList1, localLinkedList2 });
+        h.CyF.a(18637, new Object[] { Integer.valueOf(PXE), TextUtils.join(";", PXF), TextUtils.join(";", PXG), TextUtils.join(";", localLinkedList1), TextUtils.join(";", localLinkedList2), TextUtils.join(";", localLinkedList3) });
+        Log.d("MicroMsg.NewGroupRecommendDetailReporter", "report, selectFromRecommend: %s, selectNotFromRecommendList: %s", new Object[] { localLinkedList1, localLinkedList2 });
       }
     }
     reset();
@@ -73,15 +73,15 @@ public final class w
   public static void reset()
   {
     AppMethodBeat.i(102920);
-    KKE = null;
-    KKF = null;
-    ae.d("MicroMsg.NewGroupRecommendDetailReporter", "reset");
+    PXF = null;
+    PXG = null;
+    Log.d("MicroMsg.NewGroupRecommendDetailReporter", "reset");
     AppMethodBeat.o(102920);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.contact.w
  * JD-Core Version:    0.7.0.1
  */

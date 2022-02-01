@@ -11,7 +11,7 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.order.model.MallOrderDetailObject.HelpCenter;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,11 +19,11 @@ import java.util.List;
 public final class j
   extends Preference
 {
+  List<MallOrderDetailObject.HelpCenter> ANM;
+  String AQR;
+  View.OnClickListener AQS;
   View.OnClickListener mOnClickListener;
   private View mView;
-  List<MallOrderDetailObject.HelpCenter> wRR;
-  String wUV;
-  View.OnClickListener wUW;
   
   public j(Context paramContext)
   {
@@ -31,9 +31,9 @@ public final class j
     AppMethodBeat.i(66831);
     this.mView = null;
     this.mOnClickListener = null;
-    this.wUW = null;
-    this.wRR = new LinkedList();
-    setLayoutResource(2131494718);
+    this.AQS = null;
+    this.ANM = new LinkedList();
+    setLayoutResource(2131495447);
     AppMethodBeat.o(66831);
   }
   
@@ -53,17 +53,17 @@ public final class j
   {
     AppMethodBeat.i(66833);
     super.onBindView(paramView);
-    paramView = (LinearLayout)paramView.findViewById(2131302068);
+    paramView = (LinearLayout)paramView.findViewById(2131304407);
     paramView.removeAllViews();
-    if (this.wRR == null)
+    if (this.ANM == null)
     {
       AppMethodBeat.o(66833);
       return;
     }
     int i;
-    if ((!bu.isNullOrNil(this.wUV)) && (this.wUW != null))
+    if ((!Util.isNullOrNil(this.AQR)) && (this.AQS != null))
     {
-      i = this.wRR.size();
+      i = this.ANM.size();
       if (i != 0) {
         break label455;
       }
@@ -77,45 +77,45 @@ public final class j
       Object localObject;
       for (;;)
       {
-        if (j < this.wRR.size())
+        if (j < this.ANM.size())
         {
-          localObject = (MallOrderDetailObject.HelpCenter)this.wRR.get(j);
+          localObject = (MallOrderDetailObject.HelpCenter)this.ANM.get(j);
           TextView localTextView = new TextView(this.mContext);
-          localTextView.setTextColor(this.mContext.getResources().getColor(2131100711));
-          localTextView.setTextSize(0, a.ax(this.mContext, 2131165517));
+          localTextView.setTextColor(this.mContext.getResources().getColor(2131100904));
+          localTextView.setTextSize(0, a.aG(this.mContext, 2131165535));
           localTextView.setIncludeFontPadding(false);
           localTextView.setText(((MallOrderDetailObject.HelpCenter)localObject).name);
           localTextView.setTag(localObject);
           localTextView.setGravity(17);
           localTextView.setOnClickListener(this.mOnClickListener);
           if (k == i) {
-            localTextView.setTextColor(this.mContext.getResources().getColor(2131100464));
+            localTextView.setTextColor(this.mContext.getResources().getColor(2131100566));
           }
           paramView.addView(localTextView, new LinearLayout.LayoutParams(0, -2, 1.0F));
           if (k < i)
           {
             localObject = new View(this.mContext);
-            ((View)localObject).setBackgroundColor(this.mContext.getResources().getColor(2131100886));
-            paramView.addView((View)localObject, new LinearLayout.LayoutParams(a.ax(this.mContext, 2131165270), -1));
+            ((View)localObject).setBackgroundColor(this.mContext.getResources().getColor(2131101085));
+            paramView.addView((View)localObject, new LinearLayout.LayoutParams(a.aG(this.mContext, 2131165274), -1));
           }
           k += 1;
           j += 1;
           continue;
-          i = this.wRR.size() - 1;
+          i = this.ANM.size() - 1;
           break;
         }
       }
-      if ((!bu.isNullOrNil(this.wUV)) && (this.wUW != null))
+      if ((!Util.isNullOrNil(this.AQR)) && (this.AQS != null))
       {
         localObject = new TextView(this.mContext);
-        ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131100711));
-        ((TextView)localObject).setTextSize(0, a.ax(this.mContext, 2131165517));
+        ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131100904));
+        ((TextView)localObject).setTextSize(0, a.aG(this.mContext, 2131165535));
         ((TextView)localObject).setIncludeFontPadding(false);
-        ((TextView)localObject).setText(this.wUV);
+        ((TextView)localObject).setText(this.AQR);
         ((TextView)localObject).setGravity(17);
-        ((TextView)localObject).setOnClickListener(this.wUW);
+        ((TextView)localObject).setOnClickListener(this.AQS);
         if (k == i) {
-          ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131100464));
+          ((TextView)localObject).setTextColor(this.mContext.getResources().getColor(2131100566));
         }
         paramView.addView((View)localObject, new LinearLayout.LayoutParams(0, -2, 1.0F));
       }
@@ -126,7 +126,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.j
  * JD-Core Version:    0.7.0.1
  */

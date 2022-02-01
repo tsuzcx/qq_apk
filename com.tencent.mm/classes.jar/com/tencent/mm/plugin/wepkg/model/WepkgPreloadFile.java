@@ -12,13 +12,13 @@ public class WepkgPreloadFile
   implements Parcelable
 {
   public static final Parcelable.Creator<WepkgPreloadFile> CREATOR;
-  public boolean EXI;
-  public int EXh;
-  public String EXv;
+  public int JMZ;
+  public boolean JNA;
+  public String JNn;
   public long createTime;
   public String downloadUrl;
   public String filePath;
-  public String guO;
+  public String hhD;
   public String key;
   public String md5;
   public String mimeType;
@@ -38,19 +38,19 @@ public class WepkgPreloadFile
   {
     AppMethodBeat.i(110720);
     this.key = paramParcel.readString();
-    this.guO = paramParcel.readString();
+    this.hhD = paramParcel.readString();
     this.version = paramParcel.readString();
     this.filePath = paramParcel.readString();
-    this.EXv = paramParcel.readString();
+    this.JNn = paramParcel.readString();
     this.mimeType = paramParcel.readString();
     this.md5 = paramParcel.readString();
     this.downloadUrl = paramParcel.readString();
     this.size = paramParcel.readInt();
-    this.EXh = paramParcel.readInt();
+    this.JMZ = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.EXI = bool;
+      this.JNA = bool;
       this.createTime = paramParcel.readLong();
       AppMethodBeat.o(110720);
       return;
@@ -62,16 +62,16 @@ public class WepkgPreloadFile
     if (paramc != null)
     {
       this.key = paramc.field_key;
-      this.guO = paramc.field_pkgId;
+      this.hhD = paramc.field_pkgId;
       this.version = paramc.field_version;
       this.filePath = paramc.field_filePath;
-      this.EXv = paramc.field_rid;
+      this.JNn = paramc.field_rid;
       this.mimeType = paramc.field_mimeType;
       this.md5 = paramc.field_md5;
       this.downloadUrl = paramc.field_downloadUrl;
       this.size = paramc.field_size;
-      this.EXh = paramc.field_downloadNetType;
-      this.EXI = paramc.field_completeDownload;
+      this.JMZ = paramc.field_downloadNetType;
+      this.JNA = paramc.field_completeDownload;
       this.createTime = paramc.field_createTime;
     }
   }
@@ -81,23 +81,23 @@ public class WepkgPreloadFile
     return 0;
   }
   
-  public final JSONObject fbN()
+  public final JSONObject gkT()
   {
     AppMethodBeat.i(110721);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("key", this.key);
-      localJSONObject.put("pkgId", this.guO);
+      localJSONObject.put("pkgId", this.hhD);
       localJSONObject.put("version", this.version);
       localJSONObject.put("filePath", this.filePath);
-      localJSONObject.put("rid", this.EXv);
+      localJSONObject.put("rid", this.JNn);
       localJSONObject.put("mimeType", this.mimeType);
       localJSONObject.put("md5", this.md5);
       localJSONObject.put("downloadUrl", this.downloadUrl);
       localJSONObject.put("size", this.size);
-      localJSONObject.put("downloadNetType", this.EXh);
-      localJSONObject.put("completeDownload", this.EXI);
+      localJSONObject.put("downloadNetType", this.JMZ);
+      localJSONObject.put("completeDownload", this.JNA);
       localJSONObject.put("createTime", this.createTime);
       label145:
       AppMethodBeat.o(110721);
@@ -113,16 +113,16 @@ public class WepkgPreloadFile
   {
     AppMethodBeat.i(110722);
     paramParcel.writeString(this.key);
-    paramParcel.writeString(this.guO);
+    paramParcel.writeString(this.hhD);
     paramParcel.writeString(this.version);
     paramParcel.writeString(this.filePath);
-    paramParcel.writeString(this.EXv);
+    paramParcel.writeString(this.JNn);
     paramParcel.writeString(this.mimeType);
     paramParcel.writeString(this.md5);
     paramParcel.writeString(this.downloadUrl);
     paramParcel.writeInt(this.size);
-    paramParcel.writeInt(this.EXh);
-    if (this.EXI) {}
+    paramParcel.writeInt(this.JMZ);
+    if (this.JNA) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -134,7 +134,7 @@ public class WepkgPreloadFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.model.WepkgPreloadFile
  * JD-Core Version:    0.7.0.1
  */

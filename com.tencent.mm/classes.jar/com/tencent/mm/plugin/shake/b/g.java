@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.shake.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class g
-  extends j<f>
+  extends MAutoStorage<f>
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(28135);
     INDEX_CREATE = new String[] { "CREATE INDEX IF NOT EXISTS  shakemessage_status_index ON shakemessage ( status )", "CREATE INDEX IF NOT EXISTS shakemessage_type_index ON shakemessage ( type )" };
-    SQL_CREATE = new String[] { j.getCreateSQLs(f.info, "shakemessage") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(f.info, "shakemessage") };
     AppMethodBeat.o(28135);
   }
   
-  public g(e parame)
+  public g(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, f.info, "shakemessage", INDEX_CREATE);
-    this.db = parame;
+    super(paramISQLiteDatabase, f.info, "shakemessage", INDEX_CREATE);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final Cursor PT(int paramInt)
+  public final Cursor Xw(int paramInt)
   {
     AppMethodBeat.i(28130);
     Object localObject = "SELECT * FROM " + getTableName() + " ORDER BY rowid DESC LIMIT " + paramInt;
@@ -43,7 +43,7 @@ public final class g
     AppMethodBeat.i(28129);
     if (paramf == null)
     {
-      ae.e("MicroMsg.ShakeMessageStorage", "insert fail, shakeMsg is null");
+      Log.e("MicroMsg.ShakeMessageStorage", "insert fail, shakeMsg is null");
       AppMethodBeat.o(28129);
       return false;
     }
@@ -57,10 +57,10 @@ public final class g
     return false;
   }
   
-  public final int bVY()
+  public final int ctM()
   {
     AppMethodBeat.i(28131);
-    Cursor localCursor = this.db.a("select count(*) from " + getTableName() + " where status != 1", null, 2);
+    Cursor localCursor = this.db.rawQuery("select count(*) from " + getTableName() + " where status != 1", null, 2);
     if (localCursor.moveToFirst()) {}
     for (int i = localCursor.getInt(0);; i = 0)
     {
@@ -75,12 +75,12 @@ public final class g
     }
   }
   
-  public final f dSc()
+  public final f eUd()
   {
     f localf = null;
     AppMethodBeat.i(28132);
     Object localObject = "SELECT * FROM " + getTableName() + " where status != 1 ORDER BY rowid DESC LIMIT 1";
-    localObject = this.db.a((String)localObject, null, 2);
+    localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject == null)
     {
       AppMethodBeat.o(28132);
@@ -96,12 +96,12 @@ public final class g
     return localf;
   }
   
-  public final List<f> dSd()
+  public final List<f> eUe()
   {
     AppMethodBeat.i(28133);
     ArrayList localArrayList = new ArrayList();
     Object localObject = "SELECT * FROM " + getTableName() + " where status != 1";
-    localObject = this.db.a((String)localObject, null, 2);
+    localObject = this.db.rawQuery((String)localObject, null, 2);
     if (localObject != null)
     {
       while (((Cursor)localObject).moveToNext())
@@ -118,7 +118,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.g
  * JD-Core Version:    0.7.0.1
  */

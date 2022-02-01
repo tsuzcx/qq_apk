@@ -6,17 +6,18 @@ import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.sdk.e.k;
-import d.l;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.sdk.storage.MStorage;
 import java.util.ArrayList;
 import java.util.List;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageIPC;", "Lcom/tencent/mm/sdk/storage/MStorage;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "()V", "addCollection", "", "username", "", "versionType", "getCount", "getCountLimit", "isCollection", "", "query", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "count", "order", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "refreshOnPullDownOpen", "", "refreshOnPullDownOpenAnimationEnd", "removeCollection", "reorder", "reorderList", "reason", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionStorageIPC;", "Lcom/tencent/mm/sdk/storage/MStorage;", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage;", "()V", "addCollection", "", "username", "", "versionType", "getCount", "getCountLimit", "isCollection", "", "query", "", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "count", "order", "Lcom/tencent/mm/plugin/appbrand/appusage/IAppBrandCollectionStorage$ORDER;", "refreshOnPullDownOpen", "", "refreshOnPullDownOpenAnimationEnd", "removeCollection", "reorder", "reorderList", "reason", "plugin-appbrand-integration_release"})
 public final class g
-  extends k
-  implements ah
+  extends MStorage
+  implements ag
 {
-  public final List<LocalUsageInfo> a(int paramInt, ah.a parama)
+  public final List<LocalUsageInfo> a(int paramInt, ag.a parama)
   {
     AppMethodBeat.i(50269);
     parama = a(paramInt, parama, 2147483647);
@@ -24,10 +25,10 @@ public final class g
     return parama;
   }
   
-  public final List<LocalUsageInfo> a(int paramInt1, ah.a parama, int paramInt2)
+  public final List<LocalUsageInfo> a(int paramInt1, ag.a parama, int paramInt2)
   {
     AppMethodBeat.i(50270);
-    parama = (Parcel)XIPCInvoker.a("com.tencent.mm", new QueryParams(paramInt1, parama, paramInt2), al.class);
+    parama = (Parcel)XIPCInvoker.a(MainProcessIPCService.dkO, new QueryParams(paramInt1, parama, paramInt2), al.class);
     if (parama != null)
     {
       ArrayList localArrayList = new ArrayList();
@@ -41,7 +42,7 @@ public final class g
     return parama;
   }
   
-  public final boolean ba(String paramString, int paramInt)
+  public final boolean bf(String paramString, int paramInt)
   {
     AppMethodBeat.i(50268);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -51,7 +52,7 @@ public final class g
       AppMethodBeat.o(50268);
       return false;
     }
-    paramString = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", new AppIdentity(paramString, paramInt), aj.class);
+    paramString = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.dkO, new AppIdentity(paramString, paramInt), ai.class);
     if (paramString != null)
     {
       boolean bool = paramString.value;
@@ -62,7 +63,7 @@ public final class g
     return false;
   }
   
-  public final int bb(String paramString, int paramInt)
+  public final int bg(String paramString, int paramInt)
   {
     AppMethodBeat.i(50266);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -72,7 +73,7 @@ public final class g
       AppMethodBeat.o(50266);
       return -1;
     }
-    paramString = (IPCInteger)XIPCInvoker.a("com.tencent.mm", new AppIdentity(paramString, paramInt), a.class);
+    paramString = (IPCInteger)XIPCInvoker.a(MainProcessIPCService.dkO, new AppIdentity(paramString, paramInt), a.class);
     if (paramString != null)
     {
       paramInt = paramString.value;
@@ -83,7 +84,7 @@ public final class g
     return -1;
   }
   
-  public final boolean bc(String paramString, int paramInt)
+  public final boolean bh(String paramString, int paramInt)
   {
     AppMethodBeat.i(50267);
     CharSequence localCharSequence = (CharSequence)paramString;
@@ -93,7 +94,7 @@ public final class g
       AppMethodBeat.o(50267);
       return false;
     }
-    paramString = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", new AppIdentity(paramString, paramInt), am.class);
+    paramString = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.dkO, new AppIdentity(paramString, paramInt), am.class);
     if (paramString != null)
     {
       boolean bool = paramString.value;
@@ -104,19 +105,19 @@ public final class g
     return false;
   }
   
-  public final void bcr() {}
+  public final void bxG() {}
   
-  public final int bcs()
+  public final int bxH()
   {
     AppMethodBeat.i(50272);
-    IPCInteger localIPCInteger = (IPCInteger)XIPCInvoker.a("com.tencent.mm", IPCVoid.gAP, ak.class);
+    IPCInteger localIPCInteger = (IPCInteger)XIPCInvoker.a(MainProcessIPCService.dkO, IPCVoid.hnE, aj.class);
     if (localIPCInteger != null)
     {
       i = localIPCInteger.value;
       AppMethodBeat.o(50272);
       return i;
     }
-    int i = v.bcZ();
+    int i = v.byo();
     AppMethodBeat.o(50272);
     return i;
   }
@@ -129,7 +130,7 @@ public final class g
   public final int getCount()
   {
     AppMethodBeat.i(50271);
-    IPCInteger localIPCInteger = (IPCInteger)XIPCInvoker.a("com.tencent.mm", IPCVoid.gAP, ae.class);
+    IPCInteger localIPCInteger = (IPCInteger)XIPCInvoker.a(MainProcessIPCService.dkO, IPCVoid.hnE, ad.class);
     if (localIPCInteger != null)
     {
       int i = localIPCInteger.value;
@@ -142,7 +143,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.g
  * JD-Core Version:    0.7.0.1
  */

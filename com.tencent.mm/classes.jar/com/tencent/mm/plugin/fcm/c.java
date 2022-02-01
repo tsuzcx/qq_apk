@@ -1,60 +1,62 @@
 package com.tencent.mm.plugin.fcm;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.ds;
-import com.tencent.mm.protocal.protobuf.dt;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ec;
+import com.tencent.mm.protocal.protobuf.ed;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b rr;
+  private i callback;
+  private final d rr;
   
   public c(String paramString)
   {
-    AppMethodBeat.i(127578);
-    b.a locala = new b.a();
-    locala.hQF = new ds();
-    locala.hQG = new dt();
-    locala.uri = "/cgi-bin/micromsg-bin/androidfcmunreg";
-    locala.funcId = 1059;
-    locala.hQH = 0;
-    locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ((ds)this.rr.hQD.hQJ).FJd = paramString;
-    AppMethodBeat.o(127578);
+    AppMethodBeat.i(127575);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new ec();
+    ((d.a)localObject).iLO = new ed();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/androidfcmreg";
+    ((d.a)localObject).funcId = 216;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (ec)this.rr.iLK.iLR;
+    ((ec)localObject).KCv = paramString;
+    ((ec)localObject).xIV = 1;
+    AppMethodBeat.o(127575);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(127579);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(127579);
+    AppMethodBeat.i(127576);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(127576);
     return i;
   }
   
   public final int getType()
   {
-    return 643;
+    return 216;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(127580);
-    ae.i("MicroMsg.FCM.NetSceneFcmUnreg", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
+    AppMethodBeat.i(127577);
+    Log.i("MicroMsg.FCM.NetSceneFcmReg", "onGYNetEnd, errType = " + paramInt2 + " errCode = " + paramInt3);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(127580);
+    AppMethodBeat.o(127577);
   }
 }
 

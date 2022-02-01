@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.List;
 
 public abstract interface t
-  extends g
+  extends IStorage
 {
-  public static final String[] SQL_CREATE = { j.getCreateSQLs(f.info, "FavEditInfo") };
+  public static final String[] SQL_CREATE = { MAutoStorage.getCreateSQLs(f.info, "FavEditInfo") };
   
-  public abstract void A(long paramLong, int paramInt);
+  public abstract f DX(long paramLong);
   
   public abstract boolean a(f paramf);
   
   public abstract boolean a(f paramf, String... paramVarArgs);
   
-  public abstract List<f> cwK();
+  public abstract List<f> cUO();
   
-  public abstract f vT(long paramLong);
+  public abstract void y(long paramLong, int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.t
  * JD-Core Version:    0.7.0.1
  */

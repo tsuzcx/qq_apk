@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class h
   extends d
 {
-  public a LFw;
+  public a RaM;
   Looper mLooper;
-  public String mType;
+  private String mType;
   
   public h(Handler paramHandler, String paramString)
   {
@@ -21,7 +21,7 @@ public final class h
   private h(Looper paramLooper, a parama, String paramString)
   {
     this.mLooper = paramLooper;
-    this.LFw = parama;
+    this.RaM = parama;
     this.mType = paramString;
   }
   
@@ -39,36 +39,36 @@ public final class h
     AppMethodBeat.o(74916);
   }
   
-  public final void cancel()
+  public final void arrange(Runnable paramRunnable)
   {
-    AppMethodBeat.i(74918);
-    this.LFw.fL();
-    AppMethodBeat.o(74918);
+    AppMethodBeat.i(74919);
+    this.RaM.post(paramRunnable);
+    AppMethodBeat.o(74919);
   }
   
-  public final void g(Runnable paramRunnable, long paramLong)
+  public final void arrangeInterval(Runnable paramRunnable, long paramLong)
   {
     AppMethodBeat.i(74920);
     if (paramLong >= 0L)
     {
-      this.LFw.c(paramRunnable, paramLong);
+      this.RaM.c(paramRunnable, paramLong);
       AppMethodBeat.o(74920);
       return;
     }
-    this.LFw.post(paramRunnable);
+    this.RaM.post(paramRunnable);
     AppMethodBeat.o(74920);
+  }
+  
+  public final void cancel()
+  {
+    AppMethodBeat.i(74918);
+    this.RaM.fS();
+    AppMethodBeat.o(74918);
   }
   
   public final String getType()
   {
     return this.mType;
-  }
-  
-  public final void u(Runnable paramRunnable)
-  {
-    AppMethodBeat.i(74919);
-    this.LFw.post(paramRunnable);
-    AppMethodBeat.o(74919);
   }
 }
 

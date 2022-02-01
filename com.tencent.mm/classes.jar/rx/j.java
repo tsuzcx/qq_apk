@@ -2,9 +2,9 @@ package rx;
 
 public abstract interface j
 {
-  public abstract void gDs();
+  public abstract void hQA();
   
-  public abstract boolean gDt();
+  public abstract boolean hQB();
 }
 
 

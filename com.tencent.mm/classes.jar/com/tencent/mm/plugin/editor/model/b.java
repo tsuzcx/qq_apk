@@ -2,30 +2,47 @@ package com.tencent.mm.plugin.editor.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.g.a.gx;
-import com.tencent.mm.g.a.gx.b;
+import com.tencent.mm.g.a.hb;
+import com.tencent.mm.g.a.hb.b;
+import com.tencent.mm.plugin.editor.model.a.a;
 import com.tencent.mm.plugin.editor.model.a.i;
 import com.tencent.mm.plugin.editor.model.a.j;
-import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.sdk.event.EventCenter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class b
 {
-  public static String a(ajx paramajx)
+  public static float AO(long paramLong)
   {
-    AppMethodBeat.i(181671);
-    gx localgx = new gx();
-    localgx.dub.type = 27;
-    localgx.dub.dud = paramajx;
-    com.tencent.mm.sdk.b.a.IvT.l(localgx);
-    paramajx = localgx.duc.thumbPath;
-    AppMethodBeat.o(181671);
-    return paramajx;
+    float f1 = 1.0F;
+    AppMethodBeat.i(181669);
+    float f2 = (float)paramLong / 1000.0F;
+    if (f2 < 1.0F) {}
+    for (;;)
+    {
+      f1 = Math.round(f1);
+      AppMethodBeat.o(181669);
+      return f1;
+      f1 = f2;
+    }
   }
   
-  public static ArrayList<com.tencent.mm.plugin.editor.model.a.a> a(Object paramObject, List<String> paramList)
+  public static String a(aml paramaml)
+  {
+    AppMethodBeat.i(181671);
+    hb localhb = new hb();
+    localhb.dLm.type = 27;
+    localhb.dLm.dLo = paramaml;
+    EventCenter.instance.publish(localhb);
+    paramaml = localhb.dLn.thumbPath;
+    AppMethodBeat.o(181671);
+    return paramaml;
+  }
+  
+  public static ArrayList<a> a(Object paramObject, List<String> paramList)
   {
     AppMethodBeat.i(181673);
     if (paramObject == null)
@@ -39,8 +56,8 @@ public final class b
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (com.tencent.mm.plugin.editor.model.a.a)((Iterator)localObject1).next();
-      if (((com.tencent.mm.plugin.editor.model.a.a)localObject2).getType() != 1) {
+      localObject2 = (a)((Iterator)localObject1).next();
+      if (((a)localObject2).getType() != 1) {
         localArrayList.add(localObject2);
       }
     }
@@ -51,8 +68,8 @@ public final class b
       if (((String)localObject1).trim().equals("<ThisisNoteNodeHrObj>"))
       {
         localObject1 = new i();
-        ((i)localObject1).pAj = false;
-        ((i)localObject1).pAp = false;
+        ((i)localObject1).qPA = false;
+        ((i)localObject1).qPG = false;
         if (i < localArrayList.size()) {
           localArrayList.add(i, localObject1);
         }
@@ -67,9 +84,9 @@ public final class b
         {
           localObject2 = new j();
           ((j)localObject2).content = ((String)localObject1);
-          ((j)localObject2).pAj = false;
-          ((j)localObject2).pAp = false;
-          ((j)localObject2).dua = abL(localObject2.toString());
+          ((j)localObject2).qPA = false;
+          ((j)localObject2).qPG = false;
+          ((j)localObject2).dLl = alR(localObject2.toString());
           if (i < localArrayList.size()) {
             localArrayList.add(i, localObject2);
           } else {
@@ -84,7 +101,7 @@ public final class b
     return localArrayList;
   }
   
-  public static String abL(String paramString)
+  public static String alR(String paramString)
   {
     AppMethodBeat.i(181670);
     paramString = g.getMessageDigest((paramString + 18 + System.currentTimeMillis()).getBytes());
@@ -92,36 +109,21 @@ public final class b
     return paramString;
   }
   
-  public static String b(ajx paramajx)
+  public static String b(aml paramaml)
   {
     AppMethodBeat.i(181672);
-    gx localgx = new gx();
-    localgx.dub.type = 27;
-    localgx.dub.dud = paramajx;
-    com.tencent.mm.sdk.b.a.IvT.l(localgx);
-    paramajx = localgx.duc.path;
+    hb localhb = new hb();
+    localhb.dLm.type = 27;
+    localhb.dLm.dLo = paramaml;
+    EventCenter.instance.publish(localhb);
+    paramaml = localhb.dLn.path;
     AppMethodBeat.o(181672);
-    return paramajx;
-  }
-  
-  public static float sI(long paramLong)
-  {
-    float f1 = 1.0F;
-    AppMethodBeat.i(181669);
-    float f2 = (float)paramLong / 1000.0F;
-    if (f2 < 1.0F) {}
-    for (;;)
-    {
-      f1 = Math.round(f1);
-      AppMethodBeat.o(181669);
-      return f1;
-      f1 = f2;
-    }
+    return paramaml;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.b
  * JD-Core Version:    0.7.0.1
  */

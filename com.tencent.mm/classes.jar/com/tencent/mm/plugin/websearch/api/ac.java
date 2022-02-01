@@ -1,264 +1,95 @@
 package com.tencent.mm.plugin.websearch.api;
 
-import android.content.Context;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.clv;
+import com.tencent.mm.protocal.protobuf.clw;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ac
+  extends q
+  implements m
 {
-  private static final Map<String, Integer> DTz;
+  public clw IEi;
+  private int IEj;
+  public int businessType;
+  private i callback;
+  public String dPI;
+  public int dVL;
+  private d iUB;
+  public int scene;
+  public String sessionId;
   
-  static
+  public ac(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, long paramLong, String paramString2, String paramString3, String paramString4)
   {
-    AppMethodBeat.i(117657);
-    DTz = new HashMap();
-    AppMethodBeat.o(117657);
+    AppMethodBeat.i(187841);
+    this.scene = paramInt1;
+    this.IEj = paramInt3;
+    this.dVL = paramInt4;
+    this.businessType = paramInt2;
+    this.dPI = paramString2;
+    this.sessionId = paramString3;
+    Log.i("MicroMsg.FTS.NetSceneWebSearchGuide", "scene %d, h5Version=%d type=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt3), Integer.valueOf(paramInt2) });
+    Object localObject = new d.a();
+    ((d.a)localObject).funcId = 1048;
+    ((d.a)localObject).uri = "/cgi-bin/mmsearch-bin/searchguide";
+    ((d.a)localObject).iLN = new clv();
+    ((d.a)localObject).iLO = new clw();
+    this.iUB = ((d.a)localObject).aXF();
+    localObject = (clv)this.iUB.iLK.iLR;
+    ((clv)localObject).Scene = paramInt1;
+    ((clv)localObject).MaY = paramInt3;
+    ((clv)localObject).MlQ = ai.clJ();
+    ((clv)localObject).xMB = paramInt2;
+    ((clv)localObject).rBI = paramString1;
+    ((clv)localObject).Mri = paramLong;
+    ((clv)localObject).SessionId = paramString3;
+    ((clv)localObject).Mrj = paramString4;
+    ((clv)localObject).MlR = ai.fYd();
+    ah.c(paramInt1, paramString3, "", "", paramString2, paramInt2);
+    AppMethodBeat.o(187841);
   }
   
-  private static int WH(int paramInt)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(117654);
-    switch (paramInt)
-    {
-    default: 
-      paramInt = ad.WL(0);
-      AppMethodBeat.o(117654);
-      return paramInt;
-    case 201: 
-      paramInt = ad.ePK();
-      AppMethodBeat.o(117654);
-      return paramInt;
-    }
-    paramInt = ad.WL(1);
-    AppMethodBeat.o(117654);
-    return paramInt;
+    AppMethodBeat.i(117639);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
+    AppMethodBeat.o(117639);
+    return i;
   }
   
-  private static void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, int paramInt3, boolean paramBoolean1, String paramString4, boolean paramBoolean2, String paramString5, String paramString6, int paramInt4)
+  public final int getType()
   {
-    AppMethodBeat.i(117652);
-    a(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3, paramBoolean1, paramString4, paramBoolean2, paramString5, paramString6, paramInt4, false);
-    AppMethodBeat.o(117652);
+    return 1048;
   }
   
-  private static void a(int paramInt1, int paramInt2, String paramString1, String paramString2, String paramString3, int paramInt3, boolean paramBoolean1, String paramString4, boolean paramBoolean2, String paramString5, String paramString6, int paramInt4, boolean paramBoolean3)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(117653);
-    int i;
-    String str2;
-    Object localObject;
-    label61:
-    int j;
-    label69:
-    long l;
-    String str1;
-    label109:
-    int m;
-    if (paramBoolean2)
+    AppMethodBeat.i(117640);
+    Log.i("MicroMsg.FTS.NetSceneWebSearchGuide", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      i = 1;
-      if ((paramInt1 == 1) || (paramInt1 == 10) || (paramInt1 == 12)) {
-        i = 0;
-      }
-      str2 = bu.bI(paramString1, "");
-      String str3 = bu.bI(paramString2, "");
-      if (!TextUtils.isEmpty(paramString3)) {
-        break label497;
-      }
-      localObject = "";
-      if (!paramBoolean1) {
-        break label504;
-      }
-      j = 1;
-      String str4 = bu.bI(paramString4, "");
-      l = System.currentTimeMillis();
-      String str5 = bxT();
-      String str6 = bu.bI(paramString5, "");
-      if (!TextUtils.isEmpty(paramString6)) {
-        break label510;
-      }
-      str1 = "";
-      m = WH(paramInt2);
-      if (!paramBoolean3) {
-        break label517;
-      }
-      k = 1;
-      label123:
-      ae.i("MicroMsg.WebSearch.WebSearchActionTracer", "reporting 14904 %s ", new Object[] { u(new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str2, str3, localObject, Integer.valueOf(paramInt3), Integer.valueOf(j), str4, Long.valueOf(l), str5, Integer.valueOf(i), str6, str1, Integer.valueOf(paramInt4), Integer.valueOf(m), Integer.valueOf(k) }) });
-      localObject = e.ywz;
-      str1 = bu.bI(paramString1, "");
-      str2 = bu.bI(paramString2, "");
-      paramString1 = paramString3;
-      if (TextUtils.isEmpty(paramString3)) {
-        paramString1 = "";
-      }
-      if (!paramBoolean1) {
-        break label523;
-      }
-      j = 1;
-      label303:
-      paramString3 = bu.bI(paramString4, "");
-      l = System.currentTimeMillis();
-      paramString4 = bxT();
-      paramString5 = bu.bI(paramString5, "");
-      paramString2 = paramString6;
-      if (TextUtils.isEmpty(paramString6)) {
-        paramString2 = "";
-      }
-      m = WH(paramInt2);
-      if (!paramBoolean3) {
-        break label529;
-      }
-    }
-    label517:
-    label523:
-    label529:
-    for (int k = 1;; k = 0)
-    {
-      ((e)localObject).f(14904, new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), str1, str2, paramString1, Integer.valueOf(paramInt3), Integer.valueOf(j), paramString3, Long.valueOf(l), paramString4, Integer.valueOf(i), paramString5, paramString2, Integer.valueOf(paramInt4), Integer.valueOf(m), Integer.valueOf(k) });
-      AppMethodBeat.o(117653);
+      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      AppMethodBeat.o(117640);
       return;
-      i = 2;
-      break;
-      label497:
-      localObject = paramString3;
-      break label61;
-      label504:
-      j = 0;
-      break label69;
-      label510:
-      str1 = paramString6;
-      break label109;
-      k = 0;
-      break label123;
-      j = 0;
-      break label303;
     }
-  }
-  
-  public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, boolean paramBoolean, String paramString4, String paramString5, int paramInt3)
-  {
-    AppMethodBeat.i(117644);
-    a(paramInt1, paramString1, paramString2, paramString3, paramInt2, paramBoolean, paramString4, paramString5, paramInt3, "");
-    AppMethodBeat.o(117644);
-  }
-  
-  public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, boolean paramBoolean, String paramString4, String paramString5, int paramInt3, String paramString6)
-  {
-    AppMethodBeat.i(117645);
-    a(4, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramBoolean, paramString4, true, paramString5, paramString6, paramInt3);
-    AppMethodBeat.o(117645);
-  }
-  
-  public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, boolean paramBoolean1, String paramString4, boolean paramBoolean2, String paramString5, int paramInt3)
-  {
-    AppMethodBeat.i(117646);
-    a(paramInt1, paramString1, paramString2, paramString3, paramInt2, paramBoolean1, paramString4, paramBoolean2, paramString5, paramInt3, "");
-    AppMethodBeat.o(117646);
-  }
-  
-  public static void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, boolean paramBoolean1, String paramString4, boolean paramBoolean2, String paramString5, int paramInt3, String paramString6)
-  {
-    AppMethodBeat.i(117647);
-    a(7, paramInt1, paramString1, paramString2, paramString3, paramInt2, paramBoolean1, paramString4, paramBoolean2, paramString5, paramString6, paramInt3);
-    AppMethodBeat.o(117647);
-  }
-  
-  public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt2)
-  {
-    AppMethodBeat.i(117650);
-    a(10, paramInt1, paramString1, paramString2, "", 0, paramBoolean, "", true, paramString3, "", paramInt2);
-    AppMethodBeat.o(117650);
-  }
-  
-  public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, String paramString3, int paramInt2, String paramString4, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(117649);
-    a(12, paramInt1, paramString1, paramString2, "", 0, paramBoolean1, "", true, paramString3, paramString4, paramInt2, paramBoolean2);
-    AppMethodBeat.o(117649);
-  }
-  
-  public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, String paramString3, int paramInt2, String paramString4, boolean paramBoolean2, String paramString5)
-  {
-    AppMethodBeat.i(117648);
-    a(1, paramInt1, paramString1, paramString2, paramString5, 0, paramBoolean1, "", true, paramString3, paramString4, paramInt2, paramBoolean2);
-    AppMethodBeat.o(117648);
-  }
-  
-  public static void a(int paramInt1, String paramString1, String paramString2, boolean paramBoolean1, String paramString3, int paramInt2, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(117651);
-    a(14, paramInt1, paramString1, paramString2, "", 0, paramBoolean1, "", true, paramString3, "", paramInt2, paramBoolean2);
-    AppMethodBeat.o(117651);
-  }
-  
-  private static String bxT()
-  {
-    AppMethodBeat.i(117655);
-    Context localContext = ak.getContext();
-    if (!az.isConnected(localContext))
-    {
-      ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, not connected");
-      AppMethodBeat.o(117655);
-      return "fail";
-    }
-    ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, type = ".concat(String.valueOf(az.getNetType(localContext))));
-    if (az.is2G(localContext))
-    {
-      ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 2g");
-      AppMethodBeat.o(117655);
-      return "2g";
-    }
-    if (az.is3G(localContext))
-    {
-      ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 3g");
-      AppMethodBeat.o(117655);
-      return "3g";
-    }
-    if (az.is4G(localContext))
-    {
-      ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, 4g");
-      AppMethodBeat.o(117655);
-      return "4g";
-    }
-    if (az.isWifi(localContext))
-    {
-      ae.v("MicroMsg.WebSearch.WebSearchActionTracer", "getNetworkType, wifi");
-      AppMethodBeat.o(117655);
-      return "wifi";
-    }
-    AppMethodBeat.o(117655);
-    return "fail";
-  }
-  
-  public static void ePI() {}
-  
-  private static String u(Object... paramVarArgs)
-  {
-    AppMethodBeat.i(117656);
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    while (i < 15)
-    {
-      localStringBuilder.append(String.valueOf(paramVarArgs[i]).replace(',', ' ')).append(',');
-      i += 1;
-    }
-    localStringBuilder.append(String.valueOf(paramVarArgs[15]));
-    paramVarArgs = localStringBuilder.toString();
-    AppMethodBeat.o(117656);
-    return paramVarArgs;
+    this.IEi = ((clw)this.iUB.iLL.iLR);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(117640);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.api.ac
  * JD-Core Version:    0.7.0.1
  */

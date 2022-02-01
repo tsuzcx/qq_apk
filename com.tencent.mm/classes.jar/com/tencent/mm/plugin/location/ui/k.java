@@ -1,11 +1,13 @@
 package com.tencent.mm.plugin.location.ui;
 
 import android.content.Context;
+import android.view.MotionEvent;
+import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.z;
 import com.tencent.mm.modelgeo.b.a;
 import com.tencent.mm.plugin.k.b;
 import com.tencent.mm.plugin.location.model.LocationInfo;
@@ -15,11 +17,11 @@ import com.tencent.mm.plugin.location.model.q;
 import com.tencent.mm.plugin.location.ui.impl.TrackPoint;
 import com.tencent.mm.plugin.location.ui.impl.TrackPointAnimAvatar;
 import com.tencent.mm.plugin.location_soso.ViewManager;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.cly;
-import com.tencent.mm.protocal.protobuf.dpk;
-import com.tencent.mm.protocal.protobuf.duy;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.ddj;
+import com.tencent.mm.protocal.protobuf.ejg;
+import com.tencent.mm.protocal.protobuf.eox;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
@@ -30,64 +32,91 @@ import java.util.Set;
 
 public final class k
 {
-  private static Object vqi;
-  protected float aTL;
-  protected float aTM;
-  private b.a fHp;
-  private boolean kWf;
+  private static Object yJY;
+  protected float aTD;
+  protected float aTE;
+  private b.a gmA;
   Context mContext;
-  public duy vmR;
-  public com.tencent.mm.plugin.k.d vnP;
-  boolean vnQ;
-  private com.tencent.mm.plugin.location.model.k.a vnd;
-  public List<duy> vqh;
-  public TrackPoint vqj;
-  TrackPointAnimAvatar vqk;
-  boolean vql;
-  public boolean vqm;
-  public boolean vqn;
-  public boolean vqo;
-  public boolean vqp;
-  public boolean vqq;
-  public dpk vqr;
-  public boolean vqs;
-  public boolean vqt;
-  private boolean vqu;
-  private long vqv;
-  private View.OnTouchListener vqw;
-  View.OnClickListener vqx;
-  View.OnClickListener vqy;
-  public a vqz;
+  private boolean mbo;
+  public eox yGJ;
+  private com.tencent.mm.plugin.location.model.k.a yGU;
+  public com.tencent.mm.plugin.k.d yHG;
+  boolean yHH;
+  public List<eox> yJX;
+  public TrackPoint yJZ;
+  TrackPointAnimAvatar yKa;
+  boolean yKb;
+  public boolean yKc;
+  public boolean yKd;
+  public boolean yKe;
+  public boolean yKf;
+  public boolean yKg;
+  public ejg yKh;
+  public boolean yKi;
+  public boolean yKj;
+  private boolean yKk;
+  private long yKl;
+  private View.OnTouchListener yKm;
+  View.OnClickListener yKn;
+  View.OnClickListener yKo;
+  public a yKp;
   
   static
   {
     AppMethodBeat.i(55980);
-    vqi = new Object();
+    yJY = new Object();
     AppMethodBeat.o(55980);
   }
   
   public k(Context paramContext, com.tencent.mm.plugin.k.d paramd, boolean paramBoolean)
   {
     AppMethodBeat.i(55968);
-    this.vql = false;
-    this.vqm = false;
-    this.vqn = true;
-    this.vqo = false;
-    this.vqp = false;
-    this.vqq = false;
-    this.vnQ = false;
-    this.vqs = true;
-    this.vqt = true;
-    this.vqu = false;
-    this.aTL = 0.0F;
-    this.aTM = 0.0F;
-    this.kWf = false;
-    this.vqv = 0L;
-    this.vqw = new k.1(this);
-    this.vqx = new k.2(this);
-    this.vqy = new k.3(this);
-    this.vqz = null;
-    this.fHp = new b.a()
+    this.yKb = false;
+    this.yKc = false;
+    this.yKd = true;
+    this.yKe = false;
+    this.yKf = false;
+    this.yKg = false;
+    this.yHH = false;
+    this.yKi = true;
+    this.yKj = true;
+    this.yKk = false;
+    this.aTD = 0.0F;
+    this.aTE = 0.0F;
+    this.mbo = false;
+    this.yKl = 0L;
+    this.yKm = new View.OnTouchListener()
+    {
+      public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
+      {
+        AppMethodBeat.i(55963);
+        switch (paramAnonymousMotionEvent.getAction())
+        {
+        }
+        for (;;)
+        {
+          AppMethodBeat.o(55963);
+          return false;
+          if ((Math.abs(paramAnonymousMotionEvent.getX() - k.this.aTD) > 10.0F) || (Math.abs(paramAnonymousMotionEvent.getY() - k.this.aTE) > 10.0F))
+          {
+            k.a(k.this, true);
+            continue;
+            k.this.aTD = paramAnonymousMotionEvent.getX();
+            k.this.aTE = paramAnonymousMotionEvent.getY();
+            k.a(k.this, System.currentTimeMillis());
+            k.a(k.this, false);
+            continue;
+            if ((!k.a(k.this)) && (System.currentTimeMillis() - k.b(k.this) < 200L)) {
+              k.c(k.this);
+            }
+          }
+        }
+      }
+    };
+    this.yKn = new k.2(this);
+    this.yKo = new k.3(this);
+    this.yKp = null;
+    this.gmA = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
@@ -103,117 +132,117 @@ public final class k
         StringBuffer localStringBuffer = new StringBuffer();
         localStringBuffer.append("[refreshMyLocation] ");
         localStringBuffer.append(String.format("latitude = %f, longtitude = %f", new Object[] { Double.valueOf(paramAnonymousDouble1), Double.valueOf(paramAnonymousDouble2) }));
-        if (localk.vmR == null)
+        if (localk.yGJ == null)
         {
-          localk.vmR = new duy();
-          localObject = new cly();
-          localk.vmR.IaJ = ((cly)localObject);
-          localObject = v.aAC();
-          localk.vmR.Username = ((String)localObject);
-          localk.vmR.IaJ.Gay = paramAnonymousDouble1;
-          localk.vmR.IaJ.Gax = paramAnonymousDouble2;
-          if ((localk.vnQ) && (localk.vql)) {
-            localk.djO();
+          localk.yGJ = new eox();
+          localObject = new ddj();
+          localk.yGJ.NmV = ((ddj)localObject);
+          localObject = z.aTY();
+          localk.yGJ.Username = ((String)localObject);
+          localk.yGJ.NmV.KUu = paramAnonymousDouble1;
+          localk.yGJ.NmV.KUt = paramAnonymousDouble2;
+          if ((localk.yHH) && (localk.yKb)) {
+            localk.edz();
           }
         }
-        localk.vmR.IaJ.Gay = paramAnonymousDouble1;
-        localk.vmR.IaJ.Gax = paramAnonymousDouble2;
-        Object localObject = localk.vnP.getViewByItag(localk.vmR.Username);
+        localk.yGJ.NmV.KUu = paramAnonymousDouble1;
+        localk.yGJ.NmV.KUt = paramAnonymousDouble2;
+        Object localObject = localk.yHG.getViewByItag(localk.yGJ.Username);
         if (localObject != null)
         {
           localStringBuffer.append("[ view is not null hasCode: " + localObject.hashCode() + " ] ");
-          ae.d("MicroMsg.TrackPointViewMgrImpl", localStringBuffer.toString());
+          Log.d("MicroMsg.TrackPointViewMgrImpl", localStringBuffer.toString());
           if ((localObject instanceof TrackPoint))
           {
-            localk.vqj = ((TrackPoint)localObject);
-            ae.d("MicroMsg.TrackPointViewMgrImpl", "udpate view layout");
-            localk.vqj.n(paramAnonymousDouble1, paramAnonymousDouble2);
+            localk.yJZ = ((TrackPoint)localObject);
+            Log.d("MicroMsg.TrackPointViewMgrImpl", "udpate view layout");
+            localk.yJZ.n(paramAnonymousDouble1, paramAnonymousDouble2);
           }
-          if (localk.vqs) {
-            localk.vnP.getIController().setCenter(localk.vmR.IaJ.Gay, localk.vmR.IaJ.Gax);
+          if (localk.yKi) {
+            localk.yHG.getIController().setCenter(localk.yGJ.NmV.KUu, localk.yGJ.NmV.KUt);
           }
           AppMethodBeat.o(55966);
           return true;
         }
-        localObject = new TrackPoint(localk.mContext, (ViewManager)localk.vnP.getViewManager(), (byte)0);
-        localk.vnP.addView(localObject, 0.0D, 0.0D, localk.vmR.Username);
+        localObject = new TrackPoint(localk.mContext, (ViewManager)localk.yHG.getViewManager(), (byte)0);
+        localk.yHG.addView(localObject, 0.0D, 0.0D, localk.yGJ.Username);
         ((TrackPoint)localObject).o(paramAnonymousDouble1, paramAnonymousDouble2);
-        if (localk.vqq)
+        if (localk.yKg)
         {
           ((TrackPoint)localObject).setOnAvatarOnClickListener(null);
           ((TrackPoint)localObject).setOnLocationOnClickListener(null);
-          ((TrackPoint)localObject).dks();
+          ((TrackPoint)localObject).eee();
         }
         for (;;)
         {
-          ((TrackPoint)localObject).setAvatar(localk.vmR.Username);
+          ((TrackPoint)localObject).setAvatar(localk.yGJ.Username);
           localStringBuffer.append("[view is null new one: " + localObject.hashCode() + " ] ");
-          localk.vqk = new TrackPointAnimAvatar(localk.mContext);
+          localk.yKa = new TrackPointAnimAvatar(localk.mContext);
           break;
-          ((TrackPoint)localObject).setOnAvatarOnClickListener(localk.vqy);
-          ((TrackPoint)localObject).setOnLocationOnClickListener(localk.vqx);
+          ((TrackPoint)localObject).setOnAvatarOnClickListener(localk.yKo);
+          ((TrackPoint)localObject).setOnLocationOnClickListener(localk.yKn);
         }
       }
     };
-    this.vnd = new com.tencent.mm.plugin.location.model.k.a()
+    this.yGU = new com.tencent.mm.plugin.location.model.k.a()
     {
       public final void w(double paramAnonymousDouble)
       {
         AppMethodBeat.i(55967);
         if (k.d(k.this) != null)
         {
-          ae.d("MicroMsg.TrackPointViewMgrImpl", "updateMyTrackPointDegree, degree = %f", new Object[] { Double.valueOf(paramAnonymousDouble) });
+          Log.d("MicroMsg.TrackPointViewMgrImpl", "updateMyTrackPointDegree, degree = %f", new Object[] { Double.valueOf(paramAnonymousDouble) });
           k.d(k.this).x(paramAnonymousDouble);
         }
         AppMethodBeat.o(55967);
       }
     };
     this.mContext = paramContext;
-    this.vnQ = paramBoolean;
-    this.vnP = paramd;
-    this.vqh = new ArrayList();
-    paramd.setMapViewOnTouchListener(this.vqw);
+    this.yHH = paramBoolean;
+    this.yHG = paramd;
+    this.yJX = new ArrayList();
+    paramd.setMapViewOnTouchListener(this.yKm);
     AppMethodBeat.o(55968);
   }
   
-  private void djP()
+  private void edA()
   {
     AppMethodBeat.i(55974);
     double d3 = 0.0D;
     double d4 = 0.0D;
-    if (this.vmR == null)
+    if (this.yGJ == null)
     {
       AppMethodBeat.o(55974);
       return;
     }
-    LocationInfo localLocationInfo = n.djg().vmS;
+    LocationInfo localLocationInfo = n.ecR().yGK;
     double d2 = d4;
     double d1 = d3;
-    if (this.vmR != null)
+    if (this.yGJ != null)
     {
       d2 = d4;
       d1 = d3;
-      if (e.j(localLocationInfo.vlC, localLocationInfo.vlD))
+      if (e.j(localLocationInfo.yFu, localLocationInfo.yFv))
       {
-        d1 = 2.0D * Math.abs(this.vmR.IaJ.Gay - localLocationInfo.vlC);
-        d2 = Math.abs(this.vmR.IaJ.Gax - localLocationInfo.vlD) * 2.0D;
+        d1 = 2.0D * Math.abs(this.yGJ.NmV.KUu - localLocationInfo.yFu);
+        d2 = Math.abs(this.yGJ.NmV.KUt - localLocationInfo.yFv) * 2.0D;
       }
     }
     int i = 0;
     d3 = d1;
-    for (d1 = d2; i < this.vqh.size(); d1 = d4)
+    for (d1 = d2; i < this.yJX.size(); d1 = d4)
     {
-      duy localduy = (duy)this.vqh.get(i);
+      eox localeox = (eox)this.yJX.get(i);
       d2 = d3;
       d4 = d1;
-      if (localduy != null)
+      if (localeox != null)
       {
         d2 = d3;
         d4 = d1;
-        if (e.j(localduy.IaJ.Gay, localduy.IaJ.Gax))
+        if (e.j(localeox.NmV.KUu, localeox.NmV.KUt))
         {
-          double d5 = 2.0D * Math.abs(localduy.IaJ.Gay - this.vmR.IaJ.Gay);
-          d4 = Math.abs(localduy.IaJ.Gax - this.vmR.IaJ.Gax) * 2.0D;
+          double d5 = 2.0D * Math.abs(localeox.NmV.KUu - this.yGJ.NmV.KUu);
+          d4 = Math.abs(localeox.NmV.KUt - this.yGJ.NmV.KUt) * 2.0D;
           d2 = d3;
           if (d5 > d3) {
             d2 = d5;
@@ -222,7 +251,7 @@ public final class k
           if (d4 > d1) {
             d3 = d4;
           }
-          ae.d("MicroMsg.TrackPointViewMgrImpl", "update %s %f %f", new Object[] { localduy.Username, Double.valueOf(localduy.IaJ.Gay), Double.valueOf(localduy.IaJ.Gax) });
+          Log.d("MicroMsg.TrackPointViewMgrImpl", "update %s %f %f", new Object[] { localeox.Username, Double.valueOf(localeox.NmV.KUu), Double.valueOf(localeox.NmV.KUt) });
           d4 = d3;
         }
       }
@@ -234,16 +263,16 @@ public final class k
       AppMethodBeat.o(55974);
       return;
     }
-    ae.d("MicroMsg.TrackPointViewMgrImpl", "zoomToSpan maxlat " + 1000000.0D * d3 + " maxlng " + 1000000.0D * d1 + " poi " + localLocationInfo.vlC + " " + localLocationInfo.vlD);
-    if (this.vmR != null)
+    Log.d("MicroMsg.TrackPointViewMgrImpl", "zoomToSpan maxlat " + 1000000.0D * d3 + " maxlng " + 1000000.0D * d1 + " poi " + localLocationInfo.yFu + " " + localLocationInfo.yFv);
+    if (this.yGJ != null)
     {
-      ae.d("MicroMsg.TrackPointViewMgrImpl", "mPosition item %f %f", new Object[] { Double.valueOf(this.vmR.IaJ.Gay), Double.valueOf(this.vmR.IaJ.Gax) });
-      this.vnP.zoomToSpan(this.vmR.IaJ.Gay, this.vmR.IaJ.Gax, d3, d1);
+      Log.d("MicroMsg.TrackPointViewMgrImpl", "mPosition item %f %f", new Object[] { Double.valueOf(this.yGJ.NmV.KUu), Double.valueOf(this.yGJ.NmV.KUt) });
+      this.yHG.zoomToSpan(this.yGJ.NmV.KUu, this.yGJ.NmV.KUt, d3, d1);
       AppMethodBeat.o(55974);
       return;
     }
-    if (e.j(localLocationInfo.vlC, localLocationInfo.vlD)) {
-      this.vnP.zoomToSpan(localLocationInfo.vlC, localLocationInfo.vlD, d3, d1);
+    if (e.j(localLocationInfo.yFu, localLocationInfo.yFv)) {
+      this.yHG.zoomToSpan(localLocationInfo.yFu, localLocationInfo.yFv, d3, d1);
     }
     AppMethodBeat.o(55974);
   }
@@ -251,81 +280,81 @@ public final class k
   public final void a(com.tencent.mm.plugin.k.d paramd)
   {
     AppMethodBeat.i(55975);
-    if (this.vmR == null)
+    if (this.yGJ == null)
     {
       AppMethodBeat.o(55975);
       return;
     }
     if (paramd.getZoomLevel() < 15)
     {
-      paramd.getIController().animateTo(this.vmR.IaJ.Gay, this.vmR.IaJ.Gax, 15);
+      paramd.getIController().animateTo(this.yGJ.NmV.KUu, this.yGJ.NmV.KUt, 15);
       AppMethodBeat.o(55975);
       return;
     }
-    paramd.getIController().animateTo(this.vmR.IaJ.Gay, this.vmR.IaJ.Gax);
+    paramd.getIController().animateTo(this.yGJ.NmV.KUu, this.yGJ.NmV.KUt);
     AppMethodBeat.o(55975);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(55970);
-    synchronized (vqi)
+    synchronized (yJY)
     {
-      if (this.vqh != null) {
-        this.vqh.clear();
+      if (this.yJX != null) {
+        this.yJX.clear();
       }
-      this.vnP.clean();
+      this.yHG.clean();
       AppMethodBeat.o(55970);
       return;
     }
   }
   
-  final void djO()
+  final void edz()
   {
     AppMethodBeat.i(55973);
-    if (this.vqm)
+    if (this.yKc)
     {
       AppMethodBeat.o(55973);
       return;
     }
-    if (this.vmR == null)
+    if (this.yGJ == null)
     {
       AppMethodBeat.o(55973);
       return;
     }
-    djP();
-    this.vqm = true;
+    edA();
+    this.yKc = true;
     AppMethodBeat.o(55973);
   }
   
-  public final void es(List<duy> paramList)
+  public final void fm(List<eox> paramList)
   {
     AppMethodBeat.i(55972);
-    this.vql = true;
-    int j = this.vqh.size() + 1;
+    this.yKb = true;
+    int j = this.yJX.size() + 1;
     int i;
     int k;
-    synchronized (vqi)
+    synchronized (yJY)
     {
-      this.vqh.clear();
+      this.yJX.clear();
       i = 0;
       while (i < paramList.size())
       {
-        this.vqh.add(paramList.get(i));
+        this.yJX.add(paramList.get(i));
         i += 1;
       }
-      k = this.vqh.size() + 1;
+      k = this.yJX.size() + 1;
     }
     Object localObject3;
     Object localObject2;
-    synchronized (vqi)
+    synchronized (yJY)
     {
-      localObject3 = this.vnP.getTags();
+      localObject3 = this.yHG.getTags();
       paramList = new HashSet();
       i = 0;
-      while (i < this.vqh.size())
+      while (i < this.yJX.size())
       {
-        paramList.add(((duy)this.vqh.get(i)).Username);
+        paramList.add(((eox)this.yJX.get(i)).Username);
         i += 1;
         continue;
         paramList = finally;
@@ -337,7 +366,7 @@ public final class k
       while (((Iterator)localObject3).hasNext())
       {
         String str = (String)((Iterator)localObject3).next();
-        if ((!paramList.contains(str)) && (!str.endsWith("myAnim")) && ((this.vqj == null) || (!this.vqj.equals(this.vnP.getViewByItag(str))))) {
+        if ((!paramList.contains(str)) && (!str.endsWith("myAnim")) && ((this.yJZ == null) || (!this.yJZ.equals(this.yHG.getViewByItag(str))))) {
           ((List)localObject2).add(str);
         }
       }
@@ -346,31 +375,31 @@ public final class k
     while (paramList.hasNext())
     {
       localObject2 = (String)paramList.next();
-      localObject3 = this.vnP.getViewByItag((String)localObject2);
+      localObject3 = this.yHG.getViewByItag((String)localObject2);
       if ((localObject3 instanceof TrackPoint))
       {
         localObject3 = (TrackPoint)localObject3;
         if (((TrackPoint)localObject3).mViewManager != null)
         {
-          ((TrackPoint)localObject3).mViewManager.removeView(((TrackPoint)localObject3).vuo);
-          ((TrackPoint)localObject3).mViewManager.removeView(((TrackPoint)localObject3).vup);
+          ((TrackPoint)localObject3).mViewManager.removeView(((TrackPoint)localObject3).yOd);
+          ((TrackPoint)localObject3).mViewManager.removeView(((TrackPoint)localObject3).yOe);
         }
       }
-      this.vnP.removeViewByTag((String)localObject2);
+      this.yHG.removeViewByTag((String)localObject2);
     }
     for (;;)
     {
-      if (i < this.vqh.size())
+      if (i < this.yJX.size())
       {
-        localObject2 = (duy)this.vqh.get(i);
-        paramList = this.vnP.getViewByItag(((duy)localObject2).Username);
-        ae.d("MicroMsg.TrackPointViewMgrImpl", "position %d %s %f %f %f", new Object[] { Integer.valueOf(i), ((duy)localObject2).Username, Double.valueOf(((duy)localObject2).IaJ.Gay), Double.valueOf(((duy)localObject2).IaJ.Gax), Double.valueOf(((duy)localObject2).IaJ.HxW) });
+        localObject2 = (eox)this.yJX.get(i);
+        paramList = this.yHG.getViewByItag(((eox)localObject2).Username);
+        Log.d("MicroMsg.TrackPointViewMgrImpl", "position %d %s %f %f %f", new Object[] { Integer.valueOf(i), ((eox)localObject2).Username, Double.valueOf(((eox)localObject2).NmV.KUu), Double.valueOf(((eox)localObject2).NmV.KUt), Double.valueOf(((eox)localObject2).NmV.MIv) });
         if (paramList != null)
         {
           if (!(paramList instanceof TrackPoint)) {
             break label875;
           }
-          ((TrackPoint)paramList).n(((duy)localObject2).IaJ.Gay, ((duy)localObject2).IaJ.Gax);
+          ((TrackPoint)paramList).n(((eox)localObject2).NmV.KUu, ((eox)localObject2).NmV.KUt);
         }
       }
       for (;;)
@@ -378,48 +407,48 @@ public final class k
         if ((paramList instanceof TrackPoint))
         {
           paramList = (TrackPoint)paramList;
-          paramList.setAvatar(((duy)localObject2).Username);
-          paramList.x(((duy)localObject2).IaJ.HxW);
-          if (!this.vqo)
+          paramList.setAvatar(((eox)localObject2).Username);
+          paramList.x(((eox)localObject2).NmV.MIv);
+          if (!this.yKe)
           {
-            paramList.dks();
+            paramList.eee();
             break label883;
-            paramList = new TrackPoint(this.mContext, (ViewManager)this.vnP.getViewManager());
-            this.vnP.addView(paramList, ((duy)localObject2).IaJ.Gay, ((duy)localObject2).IaJ.Gax, ((duy)localObject2).Username);
-            ((TrackPoint)paramList).o(((duy)localObject2).IaJ.Gay, ((duy)localObject2).IaJ.Gax);
-            ((TrackPoint)paramList).setOnAvatarOnClickListener(this.vqy);
-            ((TrackPoint)paramList).setOnLocationOnClickListener(this.vqx);
+            paramList = new TrackPoint(this.mContext, (ViewManager)this.yHG.getViewManager());
+            this.yHG.addView(paramList, ((eox)localObject2).NmV.KUu, ((eox)localObject2).NmV.KUt, ((eox)localObject2).Username);
+            ((TrackPoint)paramList).o(((eox)localObject2).NmV.KUu, ((eox)localObject2).NmV.KUt);
+            ((TrackPoint)paramList).setOnAvatarOnClickListener(this.yKo);
+            ((TrackPoint)paramList).setOnLocationOnClickListener(this.yKn);
             continue;
-            if ((this.vnQ) && (this.vql))
+            if ((this.yHH) && (this.yKb))
             {
-              if (!x.wb(n.djg().vmW)) {
+              if (!ab.Eq(n.ecR().rgD)) {
                 break label782;
               }
-              djO();
+              edz();
             }
             while ((j < 10) && (k >= 10))
             {
-              paramList = this.vnP.getChilds().iterator();
+              paramList = this.yHG.getChilds().iterator();
               while (paramList.hasNext())
               {
                 localObject2 = paramList.next();
                 if ((localObject2 instanceof TrackPoint)) {
-                  ((TrackPoint)localObject2).dks();
+                  ((TrackPoint)localObject2).eee();
                 }
               }
               label782:
-              if (this.vqh.size() > 0) {
-                djO();
+              if (this.yJX.size() > 0) {
+                edz();
               }
             }
             if ((j >= 10) && (k < 10))
             {
-              paramList = this.vnP.getChilds().iterator();
+              paramList = this.yHG.getChilds().iterator();
               while (paramList.hasNext())
               {
                 localObject2 = paramList.next();
                 if ((localObject2 instanceof TrackPoint)) {
-                  ((TrackPoint)localObject2).dkt();
+                  ((TrackPoint)localObject2).eef();
                 }
               }
             }
@@ -437,11 +466,27 @@ public final class k
     }
   }
   
-  public final void oa(boolean paramBoolean)
+  public final void onPause()
+  {
+    AppMethodBeat.i(55977);
+    com.tencent.mm.modelgeo.d.bca().c(this.gmA);
+    n.ecT().b(this.yGU);
+    AppMethodBeat.o(55977);
+  }
+  
+  public final void onResume()
+  {
+    AppMethodBeat.i(55976);
+    com.tencent.mm.modelgeo.d.bca().b(this.gmA, true);
+    n.ecT().a(this.yGU);
+    AppMethodBeat.o(55976);
+  }
+  
+  public final void qI(boolean paramBoolean)
   {
     AppMethodBeat.i(55969);
     if (paramBoolean) {
-      if (this.vqj == null) {
+      if (this.yJZ == null) {
         break label75;
       }
     }
@@ -450,53 +495,37 @@ public final class k
     {
       if (i != 0)
       {
-        g.yxI.f(10997, new Object[] { "20", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-        this.vqp = paramBoolean;
+        h.CyF.a(10997, new Object[] { "20", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+        this.yKf = paramBoolean;
       }
       AppMethodBeat.o(55969);
       return;
     }
   }
   
-  public final void ob(boolean paramBoolean)
+  public final void qJ(boolean paramBoolean)
   {
     AppMethodBeat.i(55971);
-    if ((paramBoolean) && (!this.vqo) && (this.vnP != null))
+    if ((paramBoolean) && (!this.yKe) && (this.yHG != null))
     {
-      Iterator localIterator = this.vnP.getChilds().iterator();
+      Iterator localIterator = this.yHG.getChilds().iterator();
       while (localIterator.hasNext())
       {
         Object localObject = localIterator.next();
         if ((localObject instanceof TrackPoint)) {
-          ((TrackPoint)localObject).dkt();
+          ((TrackPoint)localObject).eef();
         }
       }
     }
-    this.vqo = paramBoolean;
+    this.yKe = paramBoolean;
     AppMethodBeat.o(55971);
-  }
-  
-  public final void onPause()
-  {
-    AppMethodBeat.i(55977);
-    com.tencent.mm.modelgeo.d.aIh().c(this.fHp);
-    n.dji().b(this.vnd);
-    AppMethodBeat.o(55977);
-  }
-  
-  public final void onResume()
-  {
-    AppMethodBeat.i(55976);
-    com.tencent.mm.modelgeo.d.aIh().b(this.fHp, true);
-    n.dji().a(this.vnd);
-    AppMethodBeat.o(55976);
   }
   
   public static abstract interface a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.k
  * JD-Core Version:    0.7.0.1
  */

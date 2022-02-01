@@ -3,13 +3,15 @@ package com.tencent.mm.plugin.music.model.a.a;
 import android.content.ContentValues;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.b.f;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
 import com.tencent.mm.plugin.music.cache.ipc.IPCAudioParamRequest;
 import com.tencent.mm.plugin.music.model.e.c;
 import com.tencent.mm.plugin.music.model.e.d;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.music.model.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 
 public final class a$i
   implements k<IPCAudioParamRequest, IPCVoid>
@@ -21,23 +23,23 @@ public final class a$i
     {
       try
       {
-        ae.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setMusicMIMETypeByMusicId Task, musicId:%s, mimeType:%s", new Object[] { paramIPCAudioParamRequest.dAQ, paramIPCAudioParamRequest.mimeType });
-        localObject1 = paramIPCAudioParamRequest.dAQ;
+        Log.i("MicroMsg.Audio.MusicDataSourceCrossProcessImp", "ipc setMusicMIMETypeByMusicId Task, musicId:%s, mimeType:%s", new Object[] { paramIPCAudioParamRequest.dSF, paramIPCAudioParamRequest.mimeType });
+        localObject1 = paramIPCAudioParamRequest.dSF;
         paramIPCAudioParamRequest = paramIPCAudioParamRequest.mimeType;
-        localObject2 = com.tencent.mm.plugin.music.model.f.dww().atX((String)localObject1);
+        localObject2 = o.euE().aHX((String)localObject1);
         if (localObject2 != null) {
           continue;
         }
-        ae.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "setMusicMIMETypeByMusicId pMusic is null!'");
+        Log.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "setMusicMIMETypeByMusicId pMusic is null!'");
       }
       catch (Exception paramIPCAudioParamRequest)
       {
         Object localObject1;
         Object localObject2;
         ContentValues localContentValues;
-        ae.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc setMusicMIMETypeByMusicId task", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Audio.MusicDataSourceCrossProcessImp", paramIPCAudioParamRequest, "ipc setMusicMIMETypeByMusicId task", new Object[0]);
         continue;
-        ae.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "don't need update the piece file mime type");
+        Log.e("MicroMsg.Music.MusicDataSourceMainProcessImp", "don't need update the piece file mime type");
         continue;
       }
       paramIPCAudioParamRequest = new IPCVoid();
@@ -46,12 +48,12 @@ public final class a$i
       if ((!TextUtils.isEmpty(((c)localObject2).field_pieceFileMIMEType)) && (((c)localObject2).field_pieceFileMIMEType.equals(paramIPCAudioParamRequest))) {
         continue;
       }
-      ae.i("MicroMsg.Music.MusicDataSourceMainProcessImp", "updatePieceFileMIMEType()");
-      localObject2 = com.tencent.mm.plugin.music.model.f.dww();
+      Log.i("MicroMsg.Music.MusicDataSourceMainProcessImp", "updatePieceFileMIMEType()");
+      localObject2 = o.euE();
       localContentValues = new ContentValues();
       localContentValues.put("pieceFileMIMEType", paramIPCAudioParamRequest);
-      ae.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceFileMIMEType raw=%d musicId=%s", new Object[] { Integer.valueOf(((d)localObject2).db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { localObject1 })), localObject1 });
-      localObject1 = (c)((d)localObject2).wBy.get(localObject1);
+      Log.i("MicroMsg.Music.PieceMusicInfoStorage", "updatePieceFileMIMEType raw=%d musicId=%s", new Object[] { Integer.valueOf(((d)localObject2).db.update("PieceMusicInfo", localContentValues, "musicId=?", new String[] { localObject1 })), localObject1 });
+      localObject1 = (c)((d)localObject2).AlG.get(localObject1);
       if (localObject1 != null) {
         ((c)localObject1).field_pieceFileMIMEType = paramIPCAudioParamRequest;
       }
@@ -60,7 +62,7 @@ public final class a$i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.a.a.a.i
  * JD-Core Version:    0.7.0.1
  */

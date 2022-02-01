@@ -1,22 +1,22 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ay;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "kotlin.jvm.PlatformType", "invoke"})
 final class c$c
   extends q
-  implements a<ay>
+  implements a<MultiProcessMMKV>
 {
-  public static final c FbE;
+  public static final c JSy;
   
   static
   {
     AppMethodBeat.i(124766);
-    FbE = new c();
+    JSy = new c();
     AppMethodBeat.o(124766);
   }
   

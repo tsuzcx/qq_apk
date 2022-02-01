@@ -5,16 +5,14 @@ import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,23 +20,23 @@ import java.util.List;
 public class KeyValuePreference
   extends Preference
 {
-  private int IuT;
-  private boolean JNA;
-  private boolean JNB;
-  private boolean JNC;
-  private int JND;
-  public int JNE;
-  protected ImageView JNF;
-  public Drawable JNG;
-  private List<View> JNH;
-  public int JNI;
-  int JNJ;
-  public boolean JNz;
-  public String Jvz;
+  protected TextView BfZ;
+  private int NIs;
+  public String OFU;
+  public boolean OYB;
+  private boolean OYC;
+  private boolean OYD;
+  private boolean OYE;
+  private int OYF;
+  public int OYG;
+  protected ImageView OYH;
+  public Drawable OYI;
+  private List<View> OYJ;
+  public int OYK;
+  int OYL;
   private View contentView;
-  public float pDQ;
+  public float gPN;
   protected TextView titleTv;
-  protected TextView xif;
   
   public KeyValuePreference(Context paramContext)
   {
@@ -54,54 +52,64 @@ public class KeyValuePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142578);
-    this.JNz = true;
-    this.JNA = false;
-    this.Jvz = null;
-    this.JNB = false;
-    this.JNC = false;
-    this.IuT = 17;
-    this.JND = 17;
-    this.JNE = 0;
-    this.JNF = null;
-    this.JNG = null;
-    this.JNH = new LinkedList();
-    setLayoutResource(2131494804);
+    this.OYB = true;
+    this.OYC = false;
+    this.OFU = null;
+    this.OYD = false;
+    this.OYE = false;
+    this.NIs = 17;
+    this.OYF = 17;
+    this.OYG = 0;
+    this.OYH = null;
+    this.OYI = null;
+    this.OYJ = new LinkedList();
+    setLayoutResource(2131495538);
     AppMethodBeat.o(142578);
   }
   
-  public final void ada(int paramInt)
+  public final void BC(boolean paramBoolean)
+  {
+    AppMethodBeat.i(142582);
+    this.OYC = paramBoolean;
+    if (this.OYC) {
+      setWidgetLayoutResource(2131495622);
+    }
+    AppMethodBeat.o(142582);
+  }
+  
+  public final void alL(int paramInt)
   {
     AppMethodBeat.i(142581);
-    this.JNJ = paramInt;
-    if (this.xif != null) {
-      this.xif.setMaxLines(this.JNJ);
+    this.OYL = paramInt;
+    if (this.BfZ != null) {
+      this.BfZ.setMaxLines(this.OYL);
     }
     AppMethodBeat.o(142581);
   }
   
-  public final void fDF()
+  public final void gLI()
   {
-    this.JNC = true;
-    this.JND = 5;
+    this.OYE = true;
+    this.OYF = 5;
   }
   
-  public final void fDG()
+  public final void gLJ()
   {
     AppMethodBeat.i(142583);
-    this.JNH.clear();
+    this.OYJ.clear();
     AppMethodBeat.o(142583);
   }
   
-  public final void fDH()
+  public final void gLK()
   {
-    this.JNB = true;
-    this.IuT = 49;
+    this.OYD = true;
+    this.NIs = 49;
   }
   
-  public final void gh(View paramView)
+  public final void gz(View paramView)
   {
     AppMethodBeat.i(142584);
-    this.JNH.add(paramView);
+    this.OYJ.add(paramView);
     AppMethodBeat.o(142584);
   }
   
@@ -109,89 +117,64 @@ public class KeyValuePreference
   {
     AppMethodBeat.i(142580);
     super.onBindView(paramView);
-    this.contentView = paramView.findViewById(2131304242);
-    if (this.JOj != null) {
-      this.contentView.setOnClickListener(new View.OnClickListener()
-      {
-        public final void onClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(142576);
-          b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/preference/KeyValuePreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-          KeyValuePreference.this.JOj.dDy();
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/base/preference/KeyValuePreference$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(142576);
-        }
-      });
+    this.contentView = paramView.findViewById(2131307161);
+    if (this.OZp != null) {
+      this.contentView.setOnClickListener(new KeyValuePreference.1(this));
     }
-    if (this.JOk != null) {
-      paramView.setOnLongClickListener(new View.OnLongClickListener()
-      {
-        public final boolean onLongClick(View paramAnonymousView)
-        {
-          AppMethodBeat.i(142577);
-          b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/base/preference/KeyValuePreference$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
-          boolean bool = KeyValuePreference.this.JOk.dEL();
-          com.tencent.mm.hellhoundlib.a.a.a(bool, this, "com/tencent/mm/ui/base/preference/KeyValuePreference$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-          AppMethodBeat.o(142577);
-          return bool;
-        }
-      });
+    if (this.OZq != null) {
+      paramView.setOnLongClickListener(new KeyValuePreference.2(this));
     }
-    this.xif = ((TextView)paramView.findViewById(16908304));
-    if (this.xif != null)
+    this.BfZ = ((TextView)paramView.findViewById(16908304));
+    if (this.BfZ != null)
     {
-      this.xif.setSingleLine(this.JNz);
-      if (this.JNC) {
-        this.xif.setGravity(this.JND);
+      this.BfZ.setSingleLine(this.OYB);
+      if (this.OYE) {
+        this.BfZ.setGravity(this.OYF);
       }
     }
-    if (this.JNA) {
-      setWidgetLayoutResource(2131494884);
+    if (this.OYC) {
+      setWidgetLayoutResource(2131495622);
     }
     this.titleTv = ((TextView)paramView.findViewById(16908310));
-    if (!bu.isNullOrNil(this.Jvz)) {
-      this.titleTv.setText(this.Jvz);
+    if (!Util.isNullOrNil(this.OFU)) {
+      this.titleTv.setText(this.OFU);
     }
     Object localObject;
     int i;
     if (this.titleTv != null)
     {
       localObject = this.titleTv.getLayoutParams();
-      if (this.JNI == 0)
+      if (this.OYK == 0)
       {
-        i = com.tencent.mm.cb.a.ax(this.mContext, 2131165370);
+        i = a.aG(this.mContext, 2131165381);
         ((ViewGroup.LayoutParams)localObject).width = i;
         this.titleTv.setLayoutParams((ViewGroup.LayoutParams)localObject);
       }
     }
     else
     {
-      this.JNF = ((ImageView)paramView.findViewById(2131300943));
-      if (this.JNG == null) {
+      this.OYH = ((ImageView)paramView.findViewById(2131302573));
+      if (this.OYI == null) {
         break label368;
       }
-      this.JNF.setVisibility(this.JNE);
-      this.JNF.setImageDrawable(this.JNG);
+      this.OYH.setVisibility(this.OYG);
+      this.OYH.setImageDrawable(this.OYI);
     }
     for (;;)
     {
-      if (this.JNB)
+      if (this.OYD)
       {
-        localObject = (LinearLayout)paramView.findViewById(2131298736);
+        localObject = (LinearLayout)paramView.findViewById(2131299174);
         if (localObject != null) {
-          ((LinearLayout)localObject).setGravity(this.IuT);
+          ((LinearLayout)localObject).setGravity(this.NIs);
         }
       }
-      if (this.JNH.size() <= 0) {
+      if (this.OYJ.size() <= 0) {
         break label380;
       }
-      paramView = (LinearLayout)paramView.findViewById(2131305550);
+      paramView = (LinearLayout)paramView.findViewById(2131308771);
       paramView.removeAllViews();
-      localObject = this.JNH.iterator();
+      localObject = this.OYJ.iterator();
       while (((Iterator)localObject).hasNext())
       {
         View localView = (View)((Iterator)localObject).next();
@@ -201,19 +184,19 @@ public class KeyValuePreference
         }
         paramView.addView(localView);
       }
-      i = this.JNI;
+      i = this.OYK;
       break;
       label368:
-      this.JNF.setVisibility(8);
+      this.OYH.setVisibility(8);
     }
     label380:
-    if (this.pDQ != 0.0F)
+    if (this.gPN != 0.0F)
     {
-      this.titleTv.setTextSize(this.pDQ);
-      this.xif.setTextSize(this.pDQ);
+      this.titleTv.setTextSize(this.gPN);
+      this.BfZ.setTextSize(this.gPN);
     }
-    if (this.JNJ > 0) {
-      this.xif.setMaxLines(this.JNJ);
+    if (this.OYL > 0) {
+      this.BfZ.setMaxLines(this.OYL);
     }
     AppMethodBeat.o(142580);
   }
@@ -223,26 +206,16 @@ public class KeyValuePreference
     AppMethodBeat.i(142579);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131494832, localViewGroup);
+    localLayoutInflater.inflate(2131495567, localViewGroup);
     AppMethodBeat.o(142579);
     return paramViewGroup;
-  }
-  
-  public final void xN(boolean paramBoolean)
-  {
-    AppMethodBeat.i(142582);
-    this.JNA = paramBoolean;
-    if (this.JNA) {
-      setWidgetLayoutResource(2131494884);
-    }
-    AppMethodBeat.o(142582);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.KeyValuePreference
  * JD-Core Version:    0.7.0.1
  */

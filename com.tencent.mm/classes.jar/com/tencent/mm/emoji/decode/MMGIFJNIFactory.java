@@ -5,16 +5,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.b.a;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
 import com.tencent.mm.plugin.gif.MMGIFException;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.u;
+import com.tencent.mm.sdk.platformtools.ImgUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.p;
-import d.l;
 import java.io.InputStream;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/decode/MMGIFJNIFactory;", "", "()V", "Companion", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/decode/MMGIFJNIFactory;", "", "()V", "Companion", "plugin-emojisdk_release"})
 public final class MMGIFJNIFactory
 {
   public static final Companion Companion;
@@ -28,7 +29,7 @@ public final class MMGIFJNIFactory
     AppMethodBeat.o(105375);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/decode/MMGIFJNIFactory$Companion;", "", "()V", "TAG", "", "decodeThumb", "Landroid/graphics/Bitmap;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "getDecoder", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "isValid", "", "decoder", "plugin-emojisdk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/decode/MMGIFJNIFactory$Companion;", "", "()V", "TAG", "", "decodeThumb", "Landroid/graphics/Bitmap;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "byteArray", "", "getDecoder", "Lcom/tencent/mm/emoji/decode/IGIFDecoder;", "bytes", "md5", "isValid", "", "decoder", "plugin-emojisdk_release"})
   public static final class Companion
   {
     public final Bitmap decodeThumb(EmojiInfo paramEmojiInfo)
@@ -38,13 +39,29 @@ public final class MMGIFJNIFactory
       paramEmojiInfo = ((Companion)this).getDecoder(paramEmojiInfo);
       if (((Companion)this).isValid(paramEmojiInfo))
       {
-        paramEmojiInfo.aeG();
-        Bitmap localBitmap = paramEmojiInfo.aeH();
+        paramEmojiInfo.auo();
+        Bitmap localBitmap = paramEmojiInfo.getFrame();
         paramEmojiInfo.destroy();
         AppMethodBeat.o(177050);
         return localBitmap;
       }
       AppMethodBeat.o(177050);
+      return null;
+    }
+    
+    public final Bitmap decodeThumb(byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(199866);
+      paramArrayOfByte = ((Companion)this).getDecoder(paramArrayOfByte);
+      if (((Companion)this).isValid(paramArrayOfByte))
+      {
+        paramArrayOfByte.auo();
+        Bitmap localBitmap = paramArrayOfByte.getFrame();
+        paramArrayOfByte.destroy();
+        AppMethodBeat.o(199866);
+        return localBitmap;
+      }
+      AppMethodBeat.o(199866);
       return null;
     }
     
@@ -56,20 +73,20 @@ public final class MMGIFJNIFactory
       {
         try
         {
-          if ((paramEmojiInfo.getGroup() != EmojiGroupInfo.OzS) && (paramEmojiInfo.getGroup() != EmojiInfo.OzZ) && (paramEmojiInfo.getGroup() != EmojiInfo.OzY)) {
+          if ((paramEmojiInfo.getGroup() != EmojiGroupInfo.Uun) && (paramEmojiInfo.getGroup() != EmojiInfo.Uuu) && (paramEmojiInfo.getGroup() != EmojiInfo.Uut)) {
             continue;
           }
-          localObject = (d)new e(paramEmojiInfo.z(ak.getContext(), 300));
+          localObject = (d)new e(paramEmojiInfo.A(MMApplicationContext.getContext(), 300));
           paramEmojiInfo = (EmojiInfo)localObject;
         }
         catch (MMGIFException localMMGIFException)
         {
           Object localObject;
-          ae.w(MMGIFJNIFactory.access$getTAG$cp(), "decode error: " + localMMGIFException.getErrorCode());
+          Log.w(MMGIFJNIFactory.access$getTAG$cp(), "decode error: " + localMMGIFException.getErrorCode());
           if (localMMGIFException.getErrorCode() != 103) {
             continue;
           }
-          a locala = com.tencent.mm.kernel.g.ad(PluginEmoji.class);
+          a locala = com.tencent.mm.kernel.g.ah(PluginEmoji.class);
           p.g(locala, "MMKernel.plugin(PluginEmoji::class.java)");
           paramEmojiInfo = ((PluginEmoji)locala).getProvider().a(paramEmojiInfo);
           if (paramEmojiInfo == null) {
@@ -88,22 +105,22 @@ public final class MMGIFJNIFactory
         paramEmojiInfo = (d)new b();
         AppMethodBeat.o(105374);
         return paramEmojiInfo;
-        if (paramEmojiInfo.fxr())
+        if (paramEmojiInfo.hRB())
         {
-          localObject = EmojiInfo.bg(ak.getContext(), paramEmojiInfo.getName());
+          localObject = EmojiInfo.bD(MMApplicationContext.getContext(), paramEmojiInfo.getName());
           p.g(localObject, "EmojiInfo.getEmojiFile(M…ontext(), emojiInfo.name)");
           localObject = (d)new f((InputStream)localObject);
           paramEmojiInfo = (EmojiInfo)localObject;
         }
         else
         {
-          localObject = com.tencent.mm.kernel.g.ad(PluginEmoji.class);
+          localObject = com.tencent.mm.kernel.g.ah(PluginEmoji.class);
           p.g(localObject, "MMKernel.plugin(PluginEmoji::class.java)");
           localObject = ((PluginEmoji)localObject).getProvider().a(paramEmojiInfo);
           if (localObject == null) {
             continue;
           }
-          if (u.cy((byte[])localObject))
+          if (ImgUtil.isWXGF((byte[])localObject))
           {
             localObject = (d)new g((byte[])localObject);
             paramEmojiInfo = (EmojiInfo)localObject;
@@ -117,6 +134,74 @@ public final class MMGIFJNIFactory
       }
     }
     
+    public final d getDecoder(String paramString)
+    {
+      AppMethodBeat.i(199864);
+      p.h(paramString, "md5");
+      bj localbj = bj.gCJ();
+      p.g(localbj, "EmojiStorageMgr.getInstance()");
+      paramString = localbj.cgN().blk(paramString);
+      if (paramString == null)
+      {
+        paramString = (d)new b();
+        AppMethodBeat.o(199864);
+        return paramString;
+      }
+      paramString = ((Companion)this).getDecoder(paramString);
+      AppMethodBeat.o(199864);
+      return paramString;
+    }
+    
+    public final d getDecoder(byte[] paramArrayOfByte)
+    {
+      AppMethodBeat.i(199865);
+      if (paramArrayOfByte != null) {}
+      for (;;)
+      {
+        try
+        {
+          if (!ImgUtil.isWXGF(paramArrayOfByte)) {
+            continue;
+          }
+          locald = (d)new g(paramArrayOfByte);
+          paramArrayOfByte = locald;
+        }
+        catch (MMGIFException localMMGIFException)
+        {
+          d locald;
+          Log.printErrStackTrace(MMGIFJNIFactory.access$getTAG$cp(), (Throwable)localMMGIFException, "decode bytes error", new Object[0]);
+          if ((localMMGIFException.getErrorCode() != 103) || (paramArrayOfByte == null)) {
+            break label145;
+          }
+          paramArrayOfByte = (d)new e(paramArrayOfByte);
+          continue;
+          AppMethodBeat.o(199865);
+          return paramArrayOfByte;
+        }
+        if (paramArrayOfByte == null)
+        {
+          paramArrayOfByte = (d)new b();
+          AppMethodBeat.o(199865);
+          return paramArrayOfByte;
+          if (ImgUtil.isGif(paramArrayOfByte))
+          {
+            locald = (d)new f(paramArrayOfByte);
+            paramArrayOfByte = locald;
+          }
+          else
+          {
+            locald = (d)new e(paramArrayOfByte);
+            paramArrayOfByte = locald;
+          }
+        }
+        else
+        {
+          label145:
+          paramArrayOfByte = null;
+        }
+      }
+    }
+    
     public final boolean isValid(d paramd)
     {
       return (paramd != null) && (!(paramd instanceof b));
@@ -125,7 +210,7 @@ public final class MMGIFJNIFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.decode.MMGIFJNIFactory
  * JD-Core Version:    0.7.0.1
  */

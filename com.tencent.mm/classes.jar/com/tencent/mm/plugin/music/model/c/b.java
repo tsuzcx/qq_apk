@@ -5,15 +5,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
 import com.tencent.mm.plugin.music.f.a.a;
 import com.tencent.mm.plugin.music.f.a.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
   implements c
 {
-  public final boolean atU(String paramString)
+  public final boolean aHU(String paramString)
   {
     AppMethodBeat.i(63136);
-    boolean bool = j.vO(paramString);
+    boolean bool = j.Ee(paramString);
     AppMethodBeat.o(63136);
     return bool;
   }
@@ -38,26 +38,26 @@ public final class b
     AppMethodBeat.i(63134);
     if (TextUtils.isEmpty(paramString))
     {
-      ae.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary lib_name is null");
+      Log.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary lib_name is null");
       AppMethodBeat.o(63134);
       return false;
     }
-    if (j.vO(paramString))
+    if (j.Ee(paramString))
     {
       AppMethodBeat.o(63134);
       return true;
     }
-    ae.i("MicroMsg.Music.WechatMusicLoadLibrary", "load library %s", new Object[] { paramString });
+    Log.i("MicroMsg.Music.WechatMusicLoadLibrary", "load library %s", new Object[] { paramString });
     a.class.getClassLoader();
-    String str = j.vM(paramString);
+    String str = j.dZ(paramString);
     if (!TextUtils.isEmpty(str))
     {
-      ae.i("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary find and load the lib %s so", new Object[] { str });
-      j.vN(paramString);
+      Log.i("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary find and load the lib %s so", new Object[] { str });
+      j.Ed(paramString);
       AppMethodBeat.o(63134);
       return true;
     }
-    ae.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary can't find the lib %s so", new Object[] { paramString });
+    Log.e("MicroMsg.Music.WechatMusicLoadLibrary", "LoadLibrary can't find the lib %s so", new Object[] { paramString });
     AppMethodBeat.o(63134);
     return false;
   }

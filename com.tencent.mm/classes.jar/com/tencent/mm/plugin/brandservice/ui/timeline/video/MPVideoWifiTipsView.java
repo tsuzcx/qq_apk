@@ -7,21 +7,21 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoWifiTipsView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "tipsTv", "Landroid/widget/TextView;", "getSizeMB", "bytes", "", "cRound", "", "setTipsText", "", "fileSize", "wordingType", "", "Companion", "plugin-brandservice_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoWifiTipsView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "TAG", "", "tipsTv", "Landroid/widget/TextView;", "getSizeMB", "bytes", "", "cRound", "", "setTipsText", "", "fileSize", "wordingType", "", "Companion", "plugin-brandservice_release"})
 public final class MPVideoWifiTipsView
   extends RelativeLayout
 {
-  public static final a ows;
+  public static final a pJW;
   private final String TAG;
-  private TextView owr;
+  private TextView pJV;
   
   static
   {
     AppMethodBeat.i(175527);
-    ows = new a((byte)0);
+    pJW = new a((byte)0);
     AppMethodBeat.o(175527);
   }
   
@@ -30,14 +30,14 @@ public final class MPVideoWifiTipsView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(7273);
     this.TAG = "MicroMsg.MPVideoWifiTipsView";
-    View.inflate(paramContext, 2131494958, (ViewGroup)this);
-    paramContext = findViewById(2131297406);
+    View.inflate(paramContext, 2131495701, (ViewGroup)this);
+    paramContext = findViewById(2131297624);
     p.g(paramContext, "findViewById(R.id.biz_video_wifi_tips_tv)");
-    this.owr = ((TextView)paramContext);
+    this.pJV = ((TextView)paramContext);
     AppMethodBeat.o(7273);
   }
   
-  private static String tI(long paramLong)
+  private static String BN(long paramLong)
   {
     AppMethodBeat.i(7272);
     double d = Math.round(paramLong * 10.0D / 1048576.0D) / 10.0D;
@@ -45,32 +45,33 @@ public final class MPVideoWifiTipsView
     return String.valueOf(d);
   }
   
-  public final void q(long paramLong, int paramInt)
+  public final void n(long paramLong, int paramInt)
   {
     AppMethodBeat.i(175526);
     if (paramInt == 2) {}
-    for (String str = getContext().getString(2131756664, new Object[] { tI(paramLong) });; str = getContext().getString(2131756663))
+    for (String str = getContext().getString(2131756819, new Object[] { BN(paramLong) });; str = getContext().getString(2131756818))
     {
-      this.owr.setText((CharSequence)str);
+      p.g(str, "if (wordingType == 2) {\n…ideo_wifi_tips)\n        }");
+      this.pJV.setText((CharSequence)str);
       AppMethodBeat.o(175526);
       return;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoWifiTipsView$Companion;", "", "()V", "canShowWording1OnFirstPlay", "", "showWifiTipsFlag", "", "canShowWording2OnFirstPlay", "canShowWording2OnNetChange", "plugin-brandservice_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/MPVideoWifiTipsView$Companion;", "", "()V", "canShowWording1OnFirstPlay", "", "showWifiTipsFlag", "", "canShowWording2OnFirstPlay", "canShowWording2OnNetChange", "plugin-brandservice_release"})
   public static final class a
   {
-    public static boolean Af(int paramInt)
+    public static boolean DK(int paramInt)
     {
       return (paramInt & 0x1) != 0;
     }
     
-    public static boolean Ag(int paramInt)
+    public static boolean DL(int paramInt)
     {
       return (paramInt & 0x2) != 0;
     }
     
-    public static boolean Ah(int paramInt)
+    public static boolean DM(int paramInt)
     {
       return (paramInt & 0x4) != 0;
     }

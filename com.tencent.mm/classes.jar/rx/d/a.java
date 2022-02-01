@@ -6,7 +6,7 @@ import rx.b.b;
 public abstract class a
 {
   @Deprecated
-  public static Throwable R(Throwable paramThrowable)
+  public static Throwable T(Throwable paramThrowable)
   {
     return paramThrowable;
   }

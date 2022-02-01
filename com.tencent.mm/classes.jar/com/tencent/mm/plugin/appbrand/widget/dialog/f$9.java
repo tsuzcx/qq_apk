@@ -13,14 +13,14 @@ final class f$9
   public final void onAnimationStart(Animator paramAnimator)
   {
     AppMethodBeat.i(49873);
-    this.ngO.ngX.setAlpha(0.0F);
-    this.ngO.ngX.setVisibility(0);
+    this.oqB.Iac.setAlpha(0.0F);
+    this.oqB.Iac.setVisibility(0);
     AppMethodBeat.o(49873);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.f.9
  * JD-Core Version:    0.7.0.1
  */

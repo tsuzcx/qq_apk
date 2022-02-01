@@ -1,26 +1,26 @@
 package com.tencent.mm.protocal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cdm;
+import com.tencent.mm.protocal.protobuf.cts;
 
 public final class v$b
   extends l.e
   implements l.c
 {
-  public cdm FGW;
+  public cts KAh;
   
   public v$b()
   {
     AppMethodBeat.i(133117);
-    this.FGW = new cdm();
+    this.KAh = new cts();
     AppMethodBeat.o(133117);
   }
   
   public final int fromProtoBuf(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(133118);
-    this.FGW = ((cdm)new cdm().parseFrom(paramArrayOfByte));
-    int i = this.FGW.Ret;
+    this.KAh = ((cts)new cts().parseFrom(paramArrayOfByte));
+    int i = this.KAh.Ret;
     AppMethodBeat.o(133118);
     return i;
   }
@@ -32,7 +32,7 @@ public final class v$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.protocal.v.b
  * JD-Core Version:    0.7.0.1
  */

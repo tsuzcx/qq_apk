@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.model.z.b;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.modelappbrand.a.b.k;
 import com.tencent.mm.plugin.appbrand.appstorage.AppBrandLocalMediaObject;
@@ -31,21 +31,21 @@ final class c
   public final Bitmap a(final d paramd, final String paramString, Rect paramRect, final e.a parama)
   {
     AppMethodBeat.i(121256);
-    final String str = paramd.gCz.getString("id", "");
+    final String str = paramd.hpn.getString("id", "");
     if (paramString.startsWith("wxfile://"))
     {
-      paramd = AppBrandLocalMediaObjectManager.cm(str, paramString);
-      if ((paramd == null) || (TextUtils.isEmpty(paramd.hLr)))
+      paramd = AppBrandLocalMediaObjectManager.cz(str, paramString);
+      if ((paramd == null) || (TextUtils.isEmpty(paramd.iGf)))
       {
         AppMethodBeat.o(121256);
         return null;
       }
-      paramString = paramd.hLr;
+      paramString = paramd.iGf;
       paramd = paramString;
       if (!paramString.startsWith("file://")) {
         paramd = "file://".concat(String.valueOf(paramString));
       }
-      paramd = b.aEl().a(paramd, null);
+      paramd = b.aXY().a(paramd, null);
     }
     for (;;)
     {
@@ -53,17 +53,12 @@ final class c
       return paramd;
       if ((paramString.startsWith("https://")) || (paramString.startsWith("http://")))
       {
-        paramRect = b.aEl().a(paramString, null);
+        paramRect = b.aXY().a(paramString, null);
         if (paramRect == null)
         {
-          b.aEl().a(new b.k()
+          b.aXY().a(new b.k()
           {
-            public final String BN()
-            {
-              return "WxaWidgetIcon";
-            }
-            
-            public final void F(Bitmap paramAnonymousBitmap)
+            public final void I(Bitmap paramAnonymousBitmap)
             {
               AppMethodBeat.i(121252);
               if ((parama == null) || (paramAnonymousBitmap == null) || (paramAnonymousBitmap.isRecycled()))
@@ -75,15 +70,20 @@ final class c
               AppMethodBeat.o(121252);
             }
             
-            public final void aEt() {}
+            public final String Lb()
+            {
+              return "WxaWidgetIcon";
+            }
             
-            public final void ox()
+            public final void aYg() {}
+            
+            public final void oD()
             {
               AppMethodBeat.i(121253);
               Bundle localBundle = new Bundle();
               localBundle.putString("id", str);
               localBundle.putInt("widgetState", 2103);
-              h.a(i.bgs().Pc(str), localBundle, f.a.class, null);
+              h.a(i.bBL().Yn(str), localBundle, f.a.class, null);
               AppMethodBeat.o(121253);
             }
           }, paramString, null, null);
@@ -92,7 +92,7 @@ final class c
       }
       else
       {
-        paramd = a.cM(str, paramString);
+        paramd = a.db(str, paramString);
         continue;
       }
       paramd = paramRect;
@@ -109,7 +109,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b.c
  * JD-Core Version:    0.7.0.1
  */

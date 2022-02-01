@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.appbrand.game.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.b.b.a;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSupportGfxImageShareTexture;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/game/config/WAGameConfigSupportClientVertexBuffer;", "Lcom/tencent/mm/plugin/appbrand/game/config/WAGameDynamicConfig;", "", "()V", "enableABTest", "Lcom/tencent/mm/plugin/expt/api/IExptService$ExptEnum;", "enableKv", "", "getConfigDefaultValue", "()Ljava/lang/Boolean;", "onProcessConfig", "input", "(Ljava/lang/String;)Ljava/lang/Boolean;", "plugin-appbrand-integration_release"})
 public final class k
-  extends t<Boolean>
+  extends v<Boolean>
 {
-  public static final k kof;
+  public static final k lrL;
   
   static
   {
-    AppMethodBeat.i(223296);
-    kof = new k();
-    AppMethodBeat.o(223296);
+    AppMethodBeat.i(228200);
+    lrL = new k();
+    AppMethodBeat.o(228200);
   }
   
-  protected final String bhJ()
+  protected final String bCY()
   {
-    return "sgst";
+    return "scvb";
   }
   
-  protected final b.a bhK()
+  protected final b.a bCZ()
   {
-    return b.a.qDi;
+    return b.a.rWc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a.k
  * JD-Core Version:    0.7.0.1
  */

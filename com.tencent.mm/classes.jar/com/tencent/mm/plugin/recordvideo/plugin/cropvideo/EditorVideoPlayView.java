@@ -5,10 +5,10 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.h.a;
-import d.l;
+import com.tencent.mm.pluginsdk.ui.tools.j.a;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditorVideoPlayView;", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "handleOnSurfaceTextureUpdated", "", "surface", "Landroid/graphics/SurfaceTexture;", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/cropvideo/EditorVideoPlayView;", "Lcom/tencent/mm/pluginsdk/ui/tools/VideoPlayerTextureView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "handleOnSurfaceTextureUpdated", "", "surface", "Landroid/graphics/SurfaceTexture;", "plugin-recordvideo_release"})
 public class EditorVideoPlayView
   extends VideoPlayerTextureView
 {
@@ -27,14 +27,14 @@ public class EditorVideoPlayView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void k(SurfaceTexture paramSurfaceTexture)
+  public final void l(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(75716);
-    super.k(paramSurfaceTexture);
-    paramSurfaceTexture = this.qbr;
+    super.l(paramSurfaceTexture);
+    paramSurfaceTexture = this.rso;
     if (paramSurfaceTexture != null)
     {
-      paramSurfaceTexture.eU(getCurrentPosition(), getDuration());
+      paramSurfaceTexture.fh(getCurrentPosition(), getDuration());
       AppMethodBeat.o(75716);
       return;
     }
@@ -43,7 +43,7 @@ public class EditorVideoPlayView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.cropvideo.EditorVideoPlayView
  * JD-Core Version:    0.7.0.1
  */

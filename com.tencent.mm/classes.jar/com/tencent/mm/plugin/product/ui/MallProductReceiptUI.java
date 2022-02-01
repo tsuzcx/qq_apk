@@ -15,45 +15,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.product.b.c;
 import com.tencent.mm.plugin.product.b.d;
-import com.tencent.mm.protocal.protobuf.csg;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.protocal.protobuf.dki;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.u;
 import java.util.List;
 
 public class MallProductReceiptUI
   extends MallBaseUI
 {
-  private d xdD = null;
-  private AutoCompleteTextView xdE = null;
-  private h xdF = null;
-  private c xdn;
+  private c BaP;
+  private d Bbf = null;
+  private AutoCompleteTextView Bbg = null;
+  private h Bbh = null;
   
   public int getLayoutId()
   {
-    return 2131495124;
+    return 2131495967;
   }
   
   public void initView()
   {
     AppMethodBeat.i(67000);
-    setMMTitle(2131761124);
-    addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
+    setMMTitle(2131762911);
+    addTextOptionMenu(0, getString(2131755858), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         int i = 0;
         AppMethodBeat.i(66996);
         paramAnonymousMenuItem = MallProductReceiptUI.a(MallProductReceiptUI.this).getText().toString();
-        if (!bu.isNullOrNil(paramAnonymousMenuItem))
+        if (!Util.isNullOrNil(paramAnonymousMenuItem))
         {
           c localc = MallProductReceiptUI.b(MallProductReceiptUI.this);
-          localc.xbC = new csg();
-          csg localcsg = localc.xbC;
-          if (bu.isNullOrNil(paramAnonymousMenuItem))
+          localc.AZe = new dki();
+          dki localdki = localc.AZe;
+          if (Util.isNullOrNil(paramAnonymousMenuItem))
           {
-            localcsg.HDu = i;
-            localc.xbC.urL = paramAnonymousMenuItem;
+            localdki.MOm = i;
+            localc.AZe.xKd = paramAnonymousMenuItem;
             MallProductReceiptUI.this.finish();
           }
         }
@@ -63,35 +63,35 @@ public class MallProductReceiptUI
           return true;
           i = 1;
           break;
-          t.makeText(MallProductReceiptUI.this, 2131761123, 0).show();
+          u.makeText(MallProductReceiptUI.this, 2131762910, 0).show();
         }
       }
     });
-    this.xdE = ((AutoCompleteTextView)findViewById(2131302096));
-    csg localcsg = this.xdn.dCR();
-    if ((localcsg != null) && (!bu.isNullOrNil(localcsg.urL))) {
-      this.xdE.setText(localcsg.urL);
+    this.Bbg = ((AutoCompleteTextView)findViewById(2131304435));
+    dki localdki = this.BaP.eDj();
+    if ((localdki != null) && (!Util.isNullOrNil(localdki.xKd))) {
+      this.Bbg.setText(localdki.xKd);
     }
-    this.xdE.setSelection(this.xdE.getText().length());
-    this.xdF = new h(this);
-    this.xdE.setAdapter(this.xdF);
-    this.xdE.setOnItemClickListener(new AdapterView.OnItemClickListener()
+    this.Bbg.setSelection(this.Bbg.getText().length());
+    this.Bbh = new h(this);
+    this.Bbg.setAdapter(this.Bbh);
+    this.Bbg.setOnItemClickListener(new AdapterView.OnItemClickListener()
     {
       public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
       {
         AppMethodBeat.i(66997);
         b localb = new b();
-        localb.bd(paramAnonymousAdapterView);
-        localb.bd(paramAnonymousView);
-        localb.mu(paramAnonymousInt);
-        localb.rl(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/product/ui/MallProductReceiptUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+        localb.bm(paramAnonymousAdapterView);
+        localb.bm(paramAnonymousView);
+        localb.pH(paramAnonymousInt);
+        localb.zo(paramAnonymousLong);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/product/ui/MallProductReceiptUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
         paramAnonymousAdapterView = MallProductReceiptUI.c(MallProductReceiptUI.this);
-        if ((paramAnonymousAdapterView.xbN != null) && (paramAnonymousInt < paramAnonymousAdapterView.xbN.size())) {}
-        for (paramAnonymousAdapterView = (String)paramAnonymousAdapterView.xbN.get(paramAnonymousInt);; paramAnonymousAdapterView = null)
+        if ((paramAnonymousAdapterView.AZp != null) && (paramAnonymousInt < paramAnonymousAdapterView.AZp.size())) {}
+        for (paramAnonymousAdapterView = (String)paramAnonymousAdapterView.AZp.get(paramAnonymousInt);; paramAnonymousAdapterView = null)
         {
-          ae.d("MicroMsg.MallProductReceiptUI", "onItemClick receipt = ".concat(String.valueOf(paramAnonymousAdapterView)));
-          if (!bu.isNullOrNil(paramAnonymousAdapterView)) {
+          Log.d("MicroMsg.MallProductReceiptUI", "onItemClick receipt = ".concat(String.valueOf(paramAnonymousAdapterView)));
+          if (!Util.isNullOrNil(paramAnonymousAdapterView)) {
             MallProductReceiptUI.a(MallProductReceiptUI.this).setText(paramAnonymousAdapterView);
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/product/ui/MallProductReceiptUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
@@ -100,17 +100,17 @@ public class MallProductReceiptUI
         }
       }
     });
-    View.inflate(getContext(), 2131495120, null).setOnClickListener(new View.OnClickListener()
+    View.inflate(getContext(), 2131495963, null).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(66998);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/product/ui/MallProductReceiptUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/product/ui/MallProductReceiptUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         paramAnonymousView = MallProductReceiptUI.c(MallProductReceiptUI.this);
-        paramAnonymousView.xbN.clear();
-        paramAnonymousView.dDe();
+        paramAnonymousView.AZp.clear();
+        paramAnonymousView.eDw();
         MallProductReceiptUI.d(MallProductReceiptUI.this).notifyDataSetChanged();
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/product/ui/MallProductReceiptUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(66998);
@@ -123,9 +123,9 @@ public class MallProductReceiptUI
   {
     AppMethodBeat.i(66999);
     super.onCreate(paramBundle);
-    this.xdD = com.tencent.mm.plugin.product.a.a.dCJ().dCL();
-    com.tencent.mm.plugin.product.a.a.dCJ();
-    this.xdn = com.tencent.mm.plugin.product.a.a.dCK();
+    this.Bbf = com.tencent.mm.plugin.product.a.a.eDb().eDd();
+    com.tencent.mm.plugin.product.a.a.eDb();
+    this.BaP = com.tencent.mm.plugin.product.a.a.eDc();
     initView();
     AppMethodBeat.o(66999);
   }
@@ -138,7 +138,7 @@ public class MallProductReceiptUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MallProductReceiptUI
  * JD-Core Version:    0.7.0.1
  */

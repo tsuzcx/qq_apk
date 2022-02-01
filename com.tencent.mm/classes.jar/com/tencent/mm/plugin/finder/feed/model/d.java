@@ -1,33 +1,29 @@
 package com.tencent.mm.plugin.finder.feed.model;
 
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.g.a.ha;
+import com.tencent.mm.g.a.he;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.cgi.q;
-import com.tencent.mm.plugin.finder.event.base.c;
+import com.tencent.mm.plugin.finder.cgi.af;
 import com.tencent.mm.plugin.finder.event.base.h;
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
-import com.tencent.mm.plugin.finder.model.n;
+import com.tencent.mm.plugin.finder.model.bm;
+import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.model.s;
 import com.tencent.mm.plugin.finder.storage.FinderItem;
-import com.tencent.mm.plugin.finder.storage.ab;
-import com.tencent.mm.plugin.finder.storage.data.e;
-import com.tencent.mm.plugin.finder.storage.data.e.a;
+import com.tencent.mm.plugin.finder.storage.an;
+import com.tencent.mm.plugin.finder.storage.data.f.a;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
+import com.tencent.mm.plugin.i.a.ad;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.alr;
-import com.tencent.mm.protocal.protobuf.arn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.MMActivity;
-import d.a.j;
-import d.a.v;
-import d.g.b.p;
-import d.g.b.y.f;
-import d.l;
+import com.tencent.mm.protocal.protobuf.FinderObject;
+import com.tencent.mm.protocal.protobuf.aoh;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -36,141 +32,185 @@ import java.util.List;
 import java.util.Map;
 import java.util.Vector;
 import java.util.concurrent.CopyOnWriteArraySet;
+import kotlin.a.j;
+import kotlin.a.v;
+import kotlin.g.b.p;
+import kotlin.g.b.z.f;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentPreloader;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "TAG", "", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "commentScene", "", "getCommentScene", "()I", "setCommentScene", "(I)V", "getData", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "visiblePosition", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "lifeCycleKeeperStore", "Ljava/util/concurrent/CopyOnWriteArraySet;", "loadingList", "Ljava/util/Vector;", "", "scene", "cacheLevel2FirstAuthorComment", "Lcom/tencent/mm/autogen/events/FeedBulletSubtitleNotifyEvent;", "barrageCommentInfo", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "feedId", "expandTopLevel2Comment", "", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "respList", "filterComment", "data", "itemList", "", "getFeedByPosToLoad", "", "pos", "isCareEvent", "", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "keep", "p0", "mergeLocalLevel2Comments", "localLevel2Comments", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "onAttach", "onDetach", "onEventHappen", "ev", "preloadComment", "objectNonceId", "oldVersion", "feedUsername", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "pullScene", "preloadFirstPageComment", "preloadNextPageComment", "lastBuf", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderCommentPreloader;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycleKeeper;", "Lcom/tencent/mm/vending/lifecycle/ILifeCycle;", "Lcom/tencent/mm/plugin/finder/event/base/EventObserver;", "activity", "Landroid/support/v7/app/AppCompatActivity;", "(Landroid/support/v7/app/AppCompatActivity;)V", "TAG", "", "getActivity", "()Landroid/support/v7/app/AppCompatActivity;", "commentScene", "", "getCommentScene", "()I", "setCommentScene", "(I)V", "getData", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "visiblePosition", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "lifeCycleKeeperStore", "Ljava/util/concurrent/CopyOnWriteArraySet;", "loadingList", "Ljava/util/Vector;", "", "scene", "cacheLevel2FirstAuthorComment", "Lcom/tencent/mm/autogen/events/FeedBulletSubtitleNotifyEvent;", "barrageCommentInfo", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/FinderCommentInfo;", "feedId", "expandTopLevel2Comment", "", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "respList", "filterComment", "data", "itemList", "", "getFeedByPosToLoad", "", "pos", "isCareEvent", "", "dispatcher", "Lcom/tencent/mm/plugin/finder/event/base/EventDispatcher;", "event", "Lcom/tencent/mm/plugin/finder/event/base/Event;", "keep", "p0", "mergeLocalLevel2Comments", "localLevel2Comments", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "onAttach", "onDetach", "onEventHappen", "ev", "preloadComment", "objectNonceId", "oldVersion", "feedUsername", "lastBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "pullScene", "preloadFirstPageComment", "preloadNextPageComment", "lastBuf", "plugin-finder_release"})
 public final class d
   extends com.tencent.mm.plugin.finder.event.base.d
   implements com.tencent.mm.vending.e.b<com.tencent.mm.vending.e.a>
 {
   final String TAG;
-  private final MMActivity activity;
   private int scene;
-  private final CopyOnWriteArraySet<com.tencent.mm.vending.e.a> scf;
-  private int sch;
-  private d.g.a.b<? super Integer, ? extends BaseFinderFeed> sjW;
-  Vector<Long> sjX;
+  private int tCE;
+  private final CopyOnWriteArraySet<com.tencent.mm.vending.e.a> tLP;
+  private kotlin.g.a.b<? super Integer, ? extends bo> tUO;
+  Vector<Long> tUP;
+  private final AppCompatActivity tUQ;
   
-  public d(MMActivity paramMMActivity)
+  public d(AppCompatActivity paramAppCompatActivity)
   {
-    AppMethodBeat.i(202789);
-    this.activity = paramMMActivity;
+    AppMethodBeat.i(244559);
+    this.tUQ = paramAppCompatActivity;
     this.TAG = "Finder.FinderCommentPreloader";
-    this.scf = new CopyOnWriteArraySet();
+    this.tLP = new CopyOnWriteArraySet();
     this.scene = 2;
-    this.sjX = new Vector();
-    AppMethodBeat.o(202789);
+    this.tUP = new Vector();
+    AppMethodBeat.o(244559);
   }
   
-  private final void EP(int paramInt)
+  private final void IM(int paramInt)
   {
-    AppMethodBeat.i(202786);
-    Object localObject = this.sjW;
+    AppMethodBeat.i(244556);
+    Object localObject = this.tUO;
+    long l;
+    String str;
+    boolean bool;
     if (localObject != null)
     {
-      localObject = (BaseFinderFeed)((d.g.a.b)localObject).invoke(Integer.valueOf(paramInt));
-      if (localObject != null)
-      {
-        a(((BaseFinderFeed)localObject).feedObject.getId(), ((BaseFinderFeed)localObject).feedObject.getObjectNonceId(), this.sch, ((BaseFinderFeed)localObject).feedObject.isOldVersion(), ((BaseFinderFeed)localObject).feedObject.getUserName());
-        AppMethodBeat.o(202786);
-        return;
+      localObject = (bo)((kotlin.g.a.b)localObject).invoke(Integer.valueOf(paramInt));
+      if (localObject != null) {
+        if ((localObject instanceof BaseFinderFeed))
+        {
+          l = ((BaseFinderFeed)localObject).feedObject.getId();
+          str = ((BaseFinderFeed)localObject).feedObject.getObjectNonceId();
+          paramInt = this.tCE;
+          bool = ((BaseFinderFeed)localObject).feedObject.isOldVersion();
+          localObject = ((BaseFinderFeed)localObject).feedObject.getUserName();
+        }
       }
     }
-    AppMethodBeat.o(202786);
+    label212:
+    for (;;)
+    {
+      a(l, str, paramInt, bool, (String)localObject);
+      do
+      {
+        AppMethodBeat.o(244556);
+        return;
+      } while (!(localObject instanceof bm));
+      l = ((bm)localObject).getFeedObject().id;
+      str = ((bm)localObject).getFeedObject().objectNonceId;
+      paramInt = this.tCE;
+      if (((bm)localObject).getFeedObject().secondaryShowFlag != 1) {}
+      for (bool = true;; bool = false)
+      {
+        localObject = ((bm)localObject).getFeedObject().username;
+        if (localObject != null) {
+          break label212;
+        }
+        localObject = "";
+        break;
+      }
+      AppMethodBeat.o(244556);
+      return;
+    }
   }
   
-  public final void a(int paramInt1, int paramInt2, d.g.a.b<? super Integer, ? extends BaseFinderFeed> paramb)
+  public final void a(int paramInt1, int paramInt2, kotlin.g.a.b<? super Integer, ? extends bo> paramb)
   {
-    AppMethodBeat.i(202785);
-    ae.i(this.TAG, "onAttach");
-    this.sjW = paramb;
+    AppMethodBeat.i(244555);
+    Log.i(this.TAG, "onAttach");
+    this.tUO = paramb;
     this.scene = paramInt1;
-    this.sch = paramInt2;
-    AppMethodBeat.o(202785);
+    this.tCE = paramInt2;
+    AppMethodBeat.o(244555);
   }
   
   public final void a(final long paramLong, String paramString1, int paramInt, boolean paramBoolean, String paramString2)
   {
-    AppMethodBeat.i(202787);
+    AppMethodBeat.i(244557);
     p.h(paramString2, "feedUsername");
-    Object localObject1 = com.tencent.mm.plugin.finder.storage.b.sHP;
-    if (!com.tencent.mm.plugin.finder.storage.b.cIf())
+    Object localObject1 = g.af(ad.class);
+    p.g(localObject1, "MMKernel.service(IFinder…enModeConfig::class.java)");
+    if (((ad)localObject1).dxX())
     {
-      ae.i(this.TAG, "***preloadFirstPageComment disable");
-      AppMethodBeat.o(202787);
+      Log.i(this.TAG, "***preloadFirstPageComment disable for 青少年模式");
+      AppMethodBeat.o(244557);
+      return;
+    }
+    localObject1 = com.tencent.mm.plugin.finder.storage.c.vCb;
+    if (!com.tencent.mm.plugin.finder.storage.c.drQ())
+    {
+      Log.i(this.TAG, "***preloadFirstPageComment disable");
+      AppMethodBeat.o(244557);
       return;
     }
     if (paramLong == 0L)
     {
-      ae.i(this.TAG, "***preloadFirstPageComment feedId is 0");
-      AppMethodBeat.o(202787);
+      Log.i(this.TAG, "***preloadFirstPageComment feedId is 0");
+      AppMethodBeat.o(244557);
       return;
     }
-    if ((!bu.ht(e.sKJ.O(paramLong, 0L))) && (!bu.ht(e.sKJ.xm(paramLong))))
+    if ((!Util.isNullOrNil(com.tencent.mm.plugin.finder.storage.data.f.vGd.T(paramLong, 0L))) && (!Util.isNullOrNil(com.tencent.mm.plugin.finder.storage.data.f.vGd.FG(paramLong))))
     {
-      ae.i(this.TAG, "***preloadFirstPageComment has cache");
-      AppMethodBeat.o(202787);
+      Log.i(this.TAG, "***preloadFirstPageComment has cache");
+      AppMethodBeat.o(244557);
       return;
     }
-    if (this.sjX.contains(Long.valueOf(paramLong)))
+    if (this.tUP.contains(Long.valueOf(paramLong)))
     {
-      ae.i(this.TAG, "***preloadFirstPageComment is loading");
-      AppMethodBeat.o(202787);
+      Log.i(this.TAG, "***preloadFirstPageComment is loading");
+      AppMethodBeat.o(244557);
       return;
     }
-    final y.f localf1 = new y.f();
-    localf1.NiY = ((List)v.NhH);
-    y.f localf2 = new y.f();
-    localf2.NiY = ((List)v.NhH);
-    localf1.NiY = ((PluginFinder)g.ad(PluginFinder.class)).getFinderActionStorage().xc(paramLong);
+    final z.f localf1 = new z.f();
+    localf1.SYG = ((List)v.SXr);
+    z.f localf2 = new z.f();
+    localf2.SYG = ((List)v.SXr);
+    localf1.SYG = ((PluginFinder)g.ah(PluginFinder.class)).getFinderActionStorage().Ft(paramLong);
     if (!paramBoolean)
     {
-      Object localObject2 = (Iterable)localf1.NiY;
+      Object localObject2 = (Iterable)localf1.SYG;
       localObject1 = (Collection)new ArrayList();
       localObject2 = ((Iterable)localObject2).iterator();
       Object localObject3;
-      label300:
+      label346:
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = ((Iterator)localObject2).next();
-        if (((ab)localObject3).field_actionInfo.rQN != 0L) {}
+        if (((an)localObject3).field_actionInfo.tuf != 0L) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
-            break label300;
+            break label346;
           }
           ((Collection)localObject1).add(localObject3);
           break;
         }
       }
-      localf2.NiY = ((List)localObject1);
-      localObject2 = (Iterable)localf1.NiY;
+      localf2.SYG = ((List)localObject1);
+      localObject2 = (Iterable)localf1.SYG;
       localObject1 = (Collection)new ArrayList();
       localObject2 = ((Iterable)localObject2).iterator();
-      label406:
+      label452:
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = ((Iterator)localObject2).next();
-        if (((ab)localObject3).field_actionInfo.rQN == 0L) {}
+        if (((an)localObject3).field_actionInfo.tuf == 0L) {}
         for (i = 1;; i = 0)
         {
           if (i == 0) {
-            break label406;
+            break label452;
           }
           ((Collection)localObject1).add(localObject3);
           break;
         }
       }
-      localf1.NiY = ((List)localObject1);
+      localf1.SYG = ((List)localObject1);
     }
-    this.sjX.add(Long.valueOf(paramLong));
+    this.tUP.add(Long.valueOf(paramLong));
     int i = this.scene;
-    localObject1 = FinderReporterUIC.tnG;
-    localObject1 = FinderReporterUIC.a.fc((Context)this.activity);
+    localObject1 = FinderReporterUIC.wzC;
+    localObject1 = FinderReporterUIC.a.fH((Context)this.tUQ);
     if (localObject1 != null) {}
-    for (localObject1 = ((FinderReporterUIC)localObject1).cQZ();; localObject1 = null)
+    for (localObject1 = ((FinderReporterUIC)localObject1).dIx();; localObject1 = null)
     {
-      new q(paramLong, paramString1, paramInt, i, paramString2, false, null, null, 0L, null, false, false, null, (arn)localObject1, 3, 8160).aET().h((com.tencent.mm.vending.c.a)new a(this, paramLong, localf2, localf1)).a((com.tencent.mm.vending.e.b)this);
-      AppMethodBeat.o(202787);
+      new af(paramLong, paramString1, paramInt, i, paramString2, false, null, null, 0L, null, false, false, null, (bbn)localObject1, 3, 8160).aYI().h((com.tencent.mm.vending.c.a)new a(this, paramLong, localf2, localf1)).a((com.tencent.mm.vending.e.b)this);
+      AppMethodBeat.o(244557);
       return;
     }
   }
@@ -181,20 +221,20 @@ public final class d
     p.h(paramb, "ev");
     if ((paramb instanceof h))
     {
-      int k = ((h)paramb).rZF;
-      int m = ((h)paramb).rZH;
+      int k = ((h)paramb).tIy;
+      int m = ((h)paramb).tIA;
       if (k > m)
       {
         AppMethodBeat.o(166034);
         return;
       }
-      int j = ((h)paramb).rZM;
+      int j = ((h)paramb).tID;
       if (j <= m)
       {
         i = j;
         for (;;)
         {
-          EP(i);
+          IM(i);
           if (i == m) {
             break;
           }
@@ -205,7 +245,7 @@ public final class d
       if (i >= k) {
         for (;;)
         {
-          EP(i);
+          IM(i);
           if (i == k) {
             break;
           }
@@ -216,7 +256,7 @@ public final class d
     AppMethodBeat.o(166034);
   }
   
-  public final boolean a(c paramc, com.tencent.mm.plugin.finder.event.base.b paramb)
+  public final boolean a(com.tencent.mm.plugin.finder.event.base.c paramc, com.tencent.mm.plugin.finder.event.base.b paramb)
   {
     AppMethodBeat.i(166035);
     p.h(paramc, "dispatcher");
@@ -235,9 +275,9 @@ public final class d
     return false;
   }
   
-  final ha b(LinkedList<FinderCommentInfo> arg1, long paramLong)
+  final he b(LinkedList<FinderCommentInfo> arg1, long paramLong)
   {
-    AppMethodBeat.i(202788);
+    AppMethodBeat.i(244558);
     List localList = (List)new ArrayList();
     Object localObject2 = (Iterable)???;
     ??? = (Collection)new ArrayList(j.a((Iterable)localObject2, 10));
@@ -246,7 +286,7 @@ public final class d
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (FinderCommentInfo)((Iterator)localObject2).next();
-      localObject4 = com.tencent.mm.plugin.finder.storage.logic.a.sLo;
+      localObject4 = com.tencent.mm.plugin.finder.storage.logic.a.vGJ;
       ???.add(com.tencent.mm.plugin.finder.storage.logic.a.b((FinderCommentInfo)localObject3, paramLong));
     }
     localList.addAll((Collection)???);
@@ -259,26 +299,26 @@ public final class d
       localObject3 = ((Iterator)localObject2).next();
       int j = i + 1;
       if (i < 0) {
-        j.gkd();
+        j.hxH();
       }
-      localObject3 = (n)localObject3;
+      localObject3 = (s)localObject3;
       ???.add(localObject3);
-      if ((((n)localObject3).ste.field_actionInfo.rQN == 0L) && (((n)localObject3).ste.cLl().levelTwoComment.size() > 0) && ((i >= localList.size() - 1) || (((n)localList.get(i + 1)).ste.field_actionInfo.rQN == 0L)))
+      if ((((s)localObject3).uOf.field_actionInfo.tuf == 0L) && (((s)localObject3).uOf.dyb().levelTwoComment.size() > 0) && ((i >= localList.size() - 1) || (((s)localList.get(i + 1)).uOf.field_actionInfo.tuf == 0L)))
       {
-        int k = ((n)localObject3).ste.cLl().levelTwoComment.size();
+        int k = ((s)localObject3).uOf.dyb().levelTwoComment.size();
         i = 0;
         for (;;)
         {
           if (i >= k) {
-            break label382;
+            break label376;
           }
-          localObject4 = (FinderCommentInfo)((n)localObject3).ste.cLl().levelTwoComment.remove();
-          com.tencent.mm.plugin.finder.storage.logic.a locala = com.tencent.mm.plugin.finder.storage.logic.a.sLo;
+          localObject4 = (FinderCommentInfo)((s)localObject3).uOf.dyb().levelTwoComment.remove();
+          com.tencent.mm.plugin.finder.storage.logic.a locala = com.tencent.mm.plugin.finder.storage.logic.a.vGJ;
           p.g(localObject4, "level2CommentInfo");
-          localObject4 = com.tencent.mm.plugin.finder.storage.logic.a.b((FinderCommentInfo)localObject4, paramLong, ((n)localObject3).ste.cLl().commentId);
-          if (((n)localObject4).ste.cLt())
+          localObject4 = com.tencent.mm.plugin.finder.storage.logic.a.b((FinderCommentInfo)localObject4, paramLong, ((s)localObject3).lT());
+          if (((s)localObject4).uOf.dyj())
           {
-            ((n)localObject4).std = true;
+            ((s)localObject4).uOe = true;
             ???.add(localObject4);
             i = j;
             break;
@@ -286,19 +326,19 @@ public final class d
           i += 1;
         }
       }
-      label382:
+      label376:
       i = j;
     }
-    Object localObject3 = new ha();
-    ((ha)localObject3).duv.duw = paramLong;
-    if (!bu.ht(???))
+    Object localObject3 = new he();
+    ((he)localObject3).dLG.feedId = paramLong;
+    if (!Util.isNullOrNil(???))
     {
-      localObject2 = e.sKJ;
+      localObject2 = com.tencent.mm.plugin.finder.storage.data.f.vGd;
       localObject4 = (Iterable)???;
       ??? = (Collection)new ArrayList(j.a((Iterable)localObject4, 10));
       localObject4 = ((Iterable)localObject4).iterator();
       while (((Iterator)localObject4).hasNext()) {
-        ???.add(((n)((Iterator)localObject4).next()).ste);
+        ???.add(((s)((Iterator)localObject4).next()).uOf);
       }
       localObject4 = (List)???;
       p.h(localObject4, "comments");
@@ -307,20 +347,20 @@ public final class d
     {
       try
       {
-        synchronized (e.sKJ)
+        synchronized (com.tencent.mm.plugin.finder.storage.data.f.vGd)
         {
-          e.sKI.remove(new e.a(paramLong, 0L));
-          e.sKI.put(new e.a(paramLong, 0L), localObject4);
-          ae.i(this.TAG, "add bullet subtitle cache succ, feedId: " + paramLong + ", size:" + localList.size());
-          ((ha)localObject3).duv.dux = false;
-          AppMethodBeat.o(202788);
+          com.tencent.mm.plugin.finder.storage.data.f.vGc.remove(new f.a(paramLong, 0L));
+          com.tencent.mm.plugin.finder.storage.data.f.vGc.put(new f.a(paramLong, 0L), localObject4);
+          Log.i(this.TAG, "add bullet subtitle cache succ, feedId: " + paramLong + ", size:" + localList.size());
+          ((he)localObject3).dLG.dLH = false;
+          AppMethodBeat.o(244558);
           return localObject3;
         }
-        ((ha)localObject3).duv.dux = true;
+        ((he)localObject3).dLG.dLH = true;
       }
       finally
       {
-        AppMethodBeat.o(202788);
+        AppMethodBeat.o(244558);
       }
     }
   }
@@ -328,34 +368,34 @@ public final class d
   public final void keep(com.tencent.mm.vending.e.a parama)
   {
     AppMethodBeat.i(166036);
-    this.scf.add(parama);
+    this.tLP.add(parama);
     AppMethodBeat.o(166036);
   }
   
   public final void onDetach()
   {
     AppMethodBeat.i(166033);
-    ae.i(this.TAG, "onDetach");
-    this.sjW = null;
-    Iterator localIterator = ((Iterable)this.scf).iterator();
+    Log.i(this.TAG, "onDetach");
+    this.tUO = null;
+    Iterator localIterator = ((Iterable)this.tLP).iterator();
     while (localIterator.hasNext()) {
       ((com.tencent.mm.vending.e.a)localIterator.next()).dead();
     }
-    this.scf.clear();
-    this.sjX.clear();
+    this.tLP.clear();
+    this.tUP.clear();
     AppMethodBeat.o(166033);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "kotlin.jvm.PlatformType", "call"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/FinderGetCommentDetailResponse;", "kotlin.jvm.PlatformType", "call"})
   static final class a<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    a(d paramd, long paramLong, y.f paramf1, y.f paramf2) {}
+    a(d paramd, long paramLong, z.f paramf1, z.f paramf2) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.model.d
  * JD-Core Version:    0.7.0.1
  */

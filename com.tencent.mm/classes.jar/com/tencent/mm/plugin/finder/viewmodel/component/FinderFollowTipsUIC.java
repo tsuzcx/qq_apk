@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.finder.viewmodel.component;
 
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.UIComponent;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFollowTipsUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "onCreateAfter", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFollowTipsUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroid/support/v7/app/AppCompatActivity;", "(Landroid/support/v7/app/AppCompatActivity;)V", "onCreateAfter", "", "savedInstanceState", "Landroid/os/Bundle;", "Companion", "plugin-finder_release"})
 public final class FinderFollowTipsUIC
   extends UIComponent
 {
-  public static final a tmo;
+  public static final a wwq;
   
   static
   {
-    AppMethodBeat.i(206165);
-    tmo = new a((byte)0);
-    AppMethodBeat.o(206165);
+    AppMethodBeat.i(255536);
+    wwq = new a((byte)0);
+    AppMethodBeat.o(255536);
   }
   
-  public FinderFollowTipsUIC(MMActivity paramMMActivity)
+  public FinderFollowTipsUIC(AppCompatActivity paramAppCompatActivity)
   {
-    super(paramMMActivity);
-    AppMethodBeat.i(206164);
-    AppMethodBeat.o(206164);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(255535);
+    AppMethodBeat.o(255535);
   }
   
-  public final void ad(Bundle paramBundle)
+  public final void onCreateAfter(Bundle paramBundle)
   {
-    AppMethodBeat.i(206163);
-    super.ad(paramBundle);
+    AppMethodBeat.i(255534);
+    super.onCreateAfter(paramBundle);
     getActivity();
     getActivity();
-    AppMethodBeat.o(206163);
+    AppMethodBeat.o(255534);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFollowTipsUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFollowTipsUIC$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
 }
 

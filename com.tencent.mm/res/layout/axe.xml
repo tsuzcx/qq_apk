@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="150.0dip" android:layout_height="46.0dip" android:weightSum="3.0"
+<LinearLayout android:gravity="center" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/dj_" android:background="@drawable/bvn" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/a2e" android:scaleType="center" android:layout_weight="1.0" />
-    <TextView android:textSize="@dimen/bi" android:textColor="@color/y4" android:gravity="center" android:id="@id/dj5" android:background="@drawable/bvm" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
-    <ImageView android:id="@id/dj4" android:background="@drawable/bvr" android:layout_width="0.0dip" android:layout_height="fill_parent" android:src="@drawable/a2c" android:scaleType="center" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center_vertical" android:background="@drawable/bpv" android:padding="@dimen/ir" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/iq">
+        <ProgressBar android:id="@id/fgc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ir" style="@style/a61" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/fgd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200.0dip" android:minWidth="150.0dip" android:text="@string/hvf" />
+    </LinearLayout>
 </LinearLayout>

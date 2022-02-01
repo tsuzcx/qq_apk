@@ -1,10 +1,11 @@
 package com.tencent.mm.plugin.multitalk.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.aba;
-import com.tencent.mm.protocal.protobuf.abb;
-import com.tencent.mm.protocal.protobuf.dxw;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.acq;
+import com.tencent.mm.protocal.protobuf.acz;
+import com.tencent.mm.protocal.protobuf.ada;
+import com.tencent.mm.protocal.protobuf.esc;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,134 +16,186 @@ import java.util.TimerTask;
 
 public final class k
 {
-  ArrayList<j> pdr;
-  ArrayList<j> pds;
-  final ArrayList<a> pdt;
-  Timer pdu;
-  public String wmA;
-  ArrayList<j> wmB;
-  public String wmC;
-  public String wmD;
-  public long wmE;
-  public String wmF;
-  public long wmx;
-  public long wmy;
-  public String wmz;
+  ArrayList<j> qsr;
+  ArrayList<j> qss;
+  final ArrayList<a> qst;
+  Timer qsu;
+  public long zHB;
+  public long zHC;
+  public String zHD;
+  public String zHE;
+  ArrayList<j> zHF;
+  public String zHG;
+  public String zHH;
+  public long zHI;
+  public String zHJ;
   
   public k()
   {
-    AppMethodBeat.i(190467);
-    this.pds = new ArrayList(10);
-    this.pdt = new ArrayList(2);
-    this.pdr = new ArrayList(10);
-    AppMethodBeat.o(190467);
+    AppMethodBeat.i(239040);
+    this.qss = new ArrayList(10);
+    this.qst = new ArrayList(2);
+    this.qsr = new ArrayList(10);
+    AppMethodBeat.o(239040);
   }
   
-  final String KX(int paramInt)
+  final String QX(int paramInt)
   {
-    AppMethodBeat.i(190471);
-    if (this.pdr != null)
+    AppMethodBeat.i(239046);
+    if (this.qsr != null)
     {
-      Object localObject = this.pdr.iterator();
+      Object localObject = this.qsr.iterator();
       while (((Iterator)localObject).hasNext())
       {
         j localj = (j)((Iterator)localObject).next();
-        if ((localj != null) && (paramInt == localj.pcE))
+        if ((localj != null) && (paramInt == localj.qrD))
         {
-          localObject = localj.fIQ;
-          AppMethodBeat.o(190471);
+          localObject = localj.goe;
+          AppMethodBeat.o(239046);
           return localObject;
         }
       }
     }
-    AppMethodBeat.o(190471);
+    AppMethodBeat.o(239046);
     return null;
   }
   
-  final void Zm()
+  public final int QY(int paramInt)
   {
-    AppMethodBeat.i(190468);
-    this.pds.clear();
-    this.pdr.clear();
-    this.pdt.clear();
-    this.wmx = 0L;
-    this.wmy = 0L;
-    this.wmz = null;
-    this.wmB = null;
-    this.wmC = null;
-    this.wmD = null;
-    drJ();
-    AppMethodBeat.o(190468);
+    AppMethodBeat.i(239048);
+    if (this.qsr.size() == 0)
+    {
+      AppMethodBeat.o(239048);
+      return -1;
+    }
+    Iterator localIterator = this.qsr.iterator();
+    while (localIterator.hasNext())
+    {
+      j localj = (j)localIterator.next();
+      if (localj.qrD == paramInt)
+      {
+        paramInt = localj.qtI;
+        AppMethodBeat.o(239048);
+        return paramInt;
+      }
+    }
+    AppMethodBeat.o(239048);
+    return -1;
   }
   
-  final void a(abb paramabb, LinkedList<dxw> paramLinkedList, String paramString1, String paramString2, b<String> paramb)
+  final void a(ada paramada, LinkedList<esc> paramLinkedList, String paramString1, String paramString2, b<String> paramb)
   {
-    AppMethodBeat.i(190469);
+    AppMethodBeat.i(239044);
     ArrayList localArrayList = new ArrayList();
-    if ((paramabb == null) || (paramabb.FNS == null) || (paramabb.FNS.size() == 0)) {
-      this.pdr.clear();
+    if ((paramada == null) || (paramada.KHx == null) || (paramada.KHx.size() == 0)) {
+      this.qsr.clear();
     }
     for (;;)
     {
-      this.pdr = localArrayList;
-      this.wmB = this.pdr;
+      this.qsr = localArrayList;
+      this.zHF = this.qsr;
       paramb.a(0, 0, null, null);
-      AppMethodBeat.o(190469);
+      AppMethodBeat.o(239044);
       return;
-      paramabb = paramabb.FNS.iterator();
-      while (paramabb.hasNext())
+      paramada = paramada.KHx.iterator();
+      while (paramada.hasNext())
       {
-        aba localaba = (aba)paramabb.next();
+        acz localacz = (acz)paramada.next();
         j localj = new j();
-        localj.pcE = localaba.Gsd;
-        localj.openId = localaba.FQc;
-        localj.mStatus = localaba.status;
-        localj.fIQ = "";
+        localj.qrD = localacz.Lnt;
+        localj.openId = localacz.openid;
+        localj.mStatus = localacz.status;
+        localj.goe = "";
         Iterator localIterator = paramLinkedList.iterator();
         while (localIterator.hasNext())
         {
-          dxw localdxw = (dxw)localIterator.next();
-          ae.i("MicroMsg.Multitalk.ILinkMemberMgr", "username %s, openid:%s", new Object[] { localdxw.username, localdxw.IcF });
-          if (localaba.FQc.equals(localdxw.IcF)) {
-            localj.fIQ = localdxw.username;
+          esc localesc = (esc)localIterator.next();
+          Log.i("MicroMsg.Multitalk.ILinkMemberMgr", "username %s, openid:%s", new Object[] { localesc.username, localesc.Npd });
+          if (localacz.openid.equals(localesc.Npd)) {
+            localj.goe = localesc.username;
           }
-          if (localdxw.username.equals(paramString1)) {
-            localj.wmt = paramString2;
+          if (localesc.username.equals(paramString1)) {
+            localj.zHx = paramString2;
           }
         }
         localArrayList.add(localj);
-        ae.i("MicroMsg.Multitalk.ILinkMemberMgr", "steve: add member, memberid:%d openid:%s, username:%s, status %d, inviteName:%s", new Object[] { Integer.valueOf(localj.pcE), localj.openId, localj.fIQ, Integer.valueOf(localj.mStatus), localj.wmt });
+        Log.i("MicroMsg.Multitalk.ILinkMemberMgr", "steve: add member, memberid:%d openid:%s, username:%s, status %d, inviteName:%s", new Object[] { Integer.valueOf(localj.qrD), localj.openId, localj.goe, Integer.valueOf(localj.mStatus), localj.zHx });
       }
     }
   }
   
-  final j asd(String paramString)
+  final j aFx(String paramString)
   {
-    AppMethodBeat.i(190472);
-    if ((this.pdr != null) && (paramString != null))
+    AppMethodBeat.i(239047);
+    if ((this.qsr != null) && (paramString != null))
     {
-      Iterator localIterator = this.pdr.iterator();
+      Iterator localIterator = this.qsr.iterator();
       while (localIterator.hasNext())
       {
         j localj = (j)localIterator.next();
-        if ((localj != null) && (localj.fIQ.equals(paramString)))
+        if ((localj != null) && (localj.goe.equals(paramString)))
         {
-          AppMethodBeat.o(190472);
+          AppMethodBeat.o(239047);
           return localj;
         }
       }
     }
-    AppMethodBeat.o(190472);
+    AppMethodBeat.o(239047);
     return null;
   }
   
-  public final ArrayList<j> drI()
+  final void amZ()
+  {
+    AppMethodBeat.i(239041);
+    this.qss.clear();
+    this.qsr.clear();
+    this.qst.clear();
+    this.zHB = 0L;
+    this.zHC = 0L;
+    this.zHD = null;
+    this.zHF = null;
+    this.zHG = null;
+    this.zHH = null;
+    elG();
+    AppMethodBeat.o(239041);
+  }
+  
+  final void be(LinkedList<acq> paramLinkedList)
+  {
+    AppMethodBeat.i(239043);
+    if ((paramLinkedList != null) && (paramLinkedList.size() > 0))
+    {
+      Log.i("MicroMsg.Multitalk.ILinkMemberMgr", "yuemwang videoIdList: ".concat(String.valueOf(paramLinkedList)));
+      paramLinkedList = paramLinkedList.iterator();
+      if (paramLinkedList.hasNext())
+      {
+        acq localacq = (acq)paramLinkedList.next();
+        int i;
+        if ((localacq.Lnu & 0x4) != 0) {
+          if ((localacq.Lnu & 0x8) != 0) {
+            i = 102;
+          }
+        }
+        for (;;)
+        {
+          hf(localacq.Lnt, i);
+          break;
+          i = 101;
+          continue;
+          i = 103;
+        }
+      }
+    }
+    AppMethodBeat.o(239043);
+  }
+  
+  public final ArrayList<j> elF()
   {
     try
     {
-      AppMethodBeat.i(190470);
-      ArrayList localArrayList = (ArrayList)this.pdr.clone();
-      AppMethodBeat.o(190470);
+      AppMethodBeat.i(239045);
+      ArrayList localArrayList = (ArrayList)this.qsr.clone();
+      AppMethodBeat.o(239045);
       return localArrayList;
     }
     finally
@@ -152,23 +205,40 @@ public final class k
     }
   }
   
-  final void drJ()
+  final void elG()
   {
-    AppMethodBeat.i(190473);
-    synchronized (this.pdt)
+    AppMethodBeat.i(239049);
+    synchronized (this.qst)
     {
-      this.pdt.clear();
-      if (this.pdu != null) {
-        this.pdu.cancel();
+      this.qst.clear();
+      if (this.qsu != null) {
+        this.qsu.cancel();
       }
-      AppMethodBeat.o(190473);
+      AppMethodBeat.o(239049);
       return;
     }
   }
   
+  final void hf(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(239042);
+    if (this.qsr != null)
+    {
+      Iterator localIterator = this.qsr.iterator();
+      while (localIterator.hasNext())
+      {
+        j localj = (j)localIterator.next();
+        if ((localj != null) && (localj.qrD == paramInt1)) {
+          localj.qtI = paramInt2;
+        }
+      }
+    }
+    AppMethodBeat.o(239042);
+  }
+  
   static abstract interface a
   {
-    public abstract void J(ArrayList<j> paramArrayList);
+    public abstract void Q(ArrayList<j> paramArrayList);
   }
 }
 

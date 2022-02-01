@@ -7,21 +7,21 @@ import com.tencent.xweb.u;
 public abstract interface b
   extends u
 {
-  public abstract void ba(boolean paramBoolean1, boolean paramBoolean2);
+  public abstract void Em(boolean paramBoolean);
   
-  public abstract void eD(Object paramObject);
+  public abstract void bk(boolean paramBoolean1, boolean paramBoolean2);
   
-  public abstract boolean eE(Object paramObject);
+  public abstract void eJ(Object paramObject);
+  
+  public abstract boolean eK(Object paramObject);
   
   public abstract void onHideCustomView();
   
   public abstract void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback);
-  
-  public abstract void zW(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.extension.video.b
  * JD-Core Version:    0.7.0.1
  */

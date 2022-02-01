@@ -1,90 +1,126 @@
 package com.tencent.mm.plugin.appbrand.report;
 
-import android.app.Activity;
-import android.app.Application;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.ae;
-import d.g.b.p;
-import d.l;
-import d.v;
-import java.util.LinkedHashMap;
-import java.util.Map;
+import com.tencent.mm.plugin.appbrand.debugger.o;
+import com.tencent.mm.plugin.appbrand.m.c;
+import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.m.x;
+import com.tencent.mm.plugin.appbrand.page.at;
+import com.tencent.mm.plugin.appbrand.page.bb;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.xweb.WebView;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReportProvider;", "Landroid/app/Application$ActivityLifecycleCallbacks;", "()V", "hasAddActivityLifecycleCallbacks", "", "reporters", "", "Landroid/support/v4/app/FragmentActivity;", "Lcom/tencent/mm/plugin/appbrand/report/AppBrandLauncherDesktopReporter;", "of", "activity", "onActivityCreated", "", "Landroid/app/Activity;", "savedInstanceState", "Landroid/os/Bundle;", "onActivityDestroyed", "onActivityPaused", "onActivityResumed", "onActivitySaveInstanceState", "outState", "onActivityStarted", "onActivityStopped", "plugin-appbrand-integration_release"})
-public final class e
-  implements Application.ActivityLifecycleCallbacks
+public enum e
 {
-  private static boolean mvV;
-  private static final Map<FragmentActivity, AppBrandLauncherDesktopReporter> mvW;
-  public static final e mvX;
+  public static final e[] nGR;
   
   static
   {
-    AppMethodBeat.i(180644);
-    mvX = new e();
-    mvW = (Map)new LinkedHashMap();
-    AppMethodBeat.o(180644);
+    AppMethodBeat.i(48043);
+    nGH = new e("X5", 0);
+    nGI = new e("MMV8", 1);
+    nGJ = new e("WebViewBased", 2);
+    nGK = new e("NativeScript", 3);
+    nGL = new e("NodeJS", 4);
+    nGM = new e("J2V8", 5);
+    nGN = new e("WebViewX5", 6);
+    nGO = new e("WebViewXW", 7);
+    nGP = new e("WebViewSystem", 8);
+    nGQ = new e("Invalid", 9);
+    nGS = new e[] { nGH, nGI, nGJ, nGK, nGL, nGM, nGN, nGO, nGP, nGQ };
+    nGR = new e[] { nGI, nGM, nGL };
+    AppMethodBeat.o(48043);
   }
   
-  public static AppBrandLauncherDesktopReporter b(FragmentActivity paramFragmentActivity)
+  private e() {}
+  
+  public static e d(i parami)
   {
-    AppMethodBeat.i(180642);
-    p.h(paramFragmentActivity, "activity");
-    synchronized (mvW)
+    AppMethodBeat.i(48041);
+    if ((parami instanceof c))
     {
-      if (!mvV)
-      {
-        paramFragmentActivity.getApplication().registerActivityLifecycleCallbacks((Application.ActivityLifecycleCallbacks)mvX);
-        mvV = true;
+      parami = nGM;
+      AppMethodBeat.o(48041);
+      return parami;
+    }
+    if ((parami instanceof x))
+    {
+      parami = nGL;
+      AppMethodBeat.o(48041);
+      return parami;
+    }
+    if ((parami instanceof o))
+    {
+      parami = nGQ;
+      AppMethodBeat.o(48041);
+      return parami;
+    }
+    if ((parami instanceof bb))
+    {
+      if (!(parami instanceof at)) {
+        break label221;
       }
-      AppBrandLauncherDesktopReporter localAppBrandLauncherDesktopReporter2 = (AppBrandLauncherDesktopReporter)mvW.get(paramFragmentActivity);
-      AppBrandLauncherDesktopReporter localAppBrandLauncherDesktopReporter1 = localAppBrandLauncherDesktopReporter2;
-      if (localAppBrandLauncherDesktopReporter2 == null)
+      parami = ((at)parami).nsV;
+    }
+    label221:
+    for (;;)
+    {
+      if ((parami instanceof WebView))
       {
-        localAppBrandLauncherDesktopReporter1 = new AppBrandLauncherDesktopReporter();
-        mvW.put(paramFragmentActivity, localAppBrandLauncherDesktopReporter1);
+        parami = (WebView)parami;
+        if (parami.isSysKernel())
+        {
+          parami = nGP;
+          AppMethodBeat.o(48041);
+          return parami;
+        }
+        if (parami.isXWalkKernel())
+        {
+          parami = nGO;
+          AppMethodBeat.o(48041);
+          return parami;
+        }
+        if (parami.getX5WebViewExtension() != null)
+        {
+          parami = nGN;
+          AppMethodBeat.o(48041);
+          return parami;
+        }
       }
-      AppMethodBeat.o(180642);
-      return localAppBrandLauncherDesktopReporter1;
+      parami = nGQ;
+      AppMethodBeat.o(48041);
+      return parami;
+      if (BuildInfo.DEBUG)
+      {
+        if (parami == null) {}
+        for (parami = "null";; parami = parami.getClass().getSimpleName())
+        {
+          parami = new IllegalStateException(String.format("Unrecognized JsRuntime %s", new Object[] { parami }));
+          AppMethodBeat.o(48041);
+          throw parami;
+        }
+      }
+      parami = nGQ;
+      AppMethodBeat.o(48041);
+      return parami;
     }
   }
   
-  public final void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityDestroyed(Activity paramActivity)
+  public static String e(i parami)
   {
-    AppMethodBeat.i(180643);
-    Map localMap2;
-    synchronized (mvW)
-    {
-      localMap2 = mvW;
-      if (localMap2 == null)
-      {
-        paramActivity = new v("null cannot be cast to non-null type kotlin.collections.MutableMap<K, V>");
-        AppMethodBeat.o(180643);
-        throw paramActivity;
-      }
+    AppMethodBeat.i(48042);
+    String str2 = d(parami).name();
+    String str1 = str2;
+    if ((parami instanceof o)) {
+      str1 = str2 + "(remote_debug)";
     }
-    ae.eY(localMap2).remove(paramActivity);
-    AppMethodBeat.o(180643);
+    AppMethodBeat.o(48042);
+    return str1;
   }
-  
-  public final void onActivityPaused(Activity paramActivity) {}
-  
-  public final void onActivityResumed(Activity paramActivity) {}
-  
-  public final void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public final void onActivityStarted(Activity paramActivity) {}
-  
-  public final void onActivityStopped(Activity paramActivity) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.e
  * JD-Core Version:    0.7.0.1
  */

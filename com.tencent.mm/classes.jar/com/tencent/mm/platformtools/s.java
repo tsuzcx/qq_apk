@@ -8,34 +8,34 @@ public abstract interface s
   
   public abstract void a(s.a parama, String paramString);
   
-  public abstract b aQU();
+  public abstract void ad(String paramString, boolean paramBoolean);
   
-  public abstract String aQV();
+  public abstract String blA();
   
-  public abstract String aQW();
+  public abstract String blB();
   
-  public abstract String aQX();
+  public abstract String blC();
   
-  public abstract boolean aQY();
+  public abstract boolean blD();
   
-  public abstract boolean aQZ();
+  public abstract boolean blE();
   
-  public abstract Bitmap aRa();
+  public abstract Bitmap blF();
   
-  public abstract void aRb();
+  public abstract void blG();
   
-  public abstract void aa(String paramString, boolean paramBoolean);
+  public abstract b blz();
   
   public abstract String getCacheKey();
   
   public static abstract interface b
   {
-    public abstract Bitmap Jq(String paramString);
+    public abstract Bitmap So(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.platformtools.s
  * JD-Core Version:    0.7.0.1
  */

@@ -6,24 +6,24 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.ui.f;
 
 public final class b
 {
-  public static void aw(Activity paramActivity)
+  public static void ax(Activity paramActivity)
   {
     AppMethodBeat.i(66371);
-    ae.e("MicroMsg.OfflineErrorHelper", "offline code size is 0, show check network error dialog");
-    h.a(paramActivity, paramActivity.getString(2131765951), null, false, new DialogInterface.OnClickListener()
+    Log.e("MicroMsg.OfflineErrorHelper", "offline code size is 0, show check network error dialog");
+    h.a(paramActivity, paramActivity.getString(2131768404), null, false, new DialogInterface.OnClickListener()
     {
       public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
       {
         AppMethodBeat.i(66368);
         if ((this.val$activity instanceof WalletOfflineCoinPurseUI)) {
-          ((WalletOfflineCoinPurseUI)this.val$activity).wQz = false;
+          ((WalletOfflineCoinPurseUI)this.val$activity).AMq = false;
         }
         paramAnonymousDialogInterface.dismiss();
         AppMethodBeat.o(66368);
@@ -36,20 +36,20 @@ public final class b
   {
     AppMethodBeat.i(66370);
     if (TextUtils.isEmpty(paramString1)) {
-      paramString1 = paramActivity.getString(2131765901);
+      paramString1 = paramActivity.getString(2131768354);
     }
     for (;;)
     {
-      if (!bu.isNullOrNil(paramString2))
+      if (!Util.isNullOrNil(paramString2))
       {
-        ae.i("MicroMsg.OfflineErrorHelper", "error_detail_url is not null ");
-        h.a(paramActivity, paramString1, null, paramActivity.getResources().getString(2131765249), paramActivity.getResources().getString(2131755835), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+        Log.i("MicroMsg.OfflineErrorHelper", "error_detail_url is not null ");
+        h.a(paramActivity, paramString1, null, paramActivity.getResources().getString(2131767692), paramActivity.getResources().getString(2131755921), true, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(66366);
-            f.aY(this.val$activity, paramString2);
-            f.aha(3);
+            f.bn(this.val$activity, paramString2);
+            f.aqm(3);
             paramAnonymousDialogInterface.dismiss();
             AppMethodBeat.o(66366);
           }
@@ -65,18 +65,18 @@ public final class b
         AppMethodBeat.o(66370);
         return;
       }
-      e(paramActivity, paramString1);
+      i(paramActivity, paramString1);
       AppMethodBeat.o(66370);
       return;
     }
   }
   
-  public static void e(Activity paramActivity, String paramString)
+  public static void i(Activity paramActivity, String paramString)
   {
     AppMethodBeat.i(66369);
     String str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str = paramActivity.getString(2131765901);
+      str = paramActivity.getString(2131768354);
     }
     h.a(paramActivity, str, null, false, new DialogInterface.OnClickListener()
     {
@@ -92,7 +92,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.ui.b
  * JD-Core Version:    0.7.0.1
  */

@@ -9,33 +9,33 @@ import java.util.Map;
 
 public final class a
 {
-  private static a gyQ;
-  private static g gyU = null;
-  private static c gyV = null;
-  private final e gyR;
-  private final f gyS;
-  public d gyT;
+  private static a hlD;
+  private static g hlH = null;
+  private static c hlI = null;
+  private final e hlE;
+  private final f hlF;
+  public d hlG;
   
   private a()
   {
     AppMethodBeat.i(55504);
-    this.gyR = new e() {};
-    this.gyS = new f() {};
-    this.gyT = null;
+    this.hlE = new e() {};
+    this.hlF = new f() {};
+    this.hlG = null;
     AppMethodBeat.o(55504);
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Object paramObject1, Object paramObject2)
   {
-    AppMethodBeat.i(195468);
+    AppMethodBeat.i(186279);
     if ((paramString2 == null) && (paramString3 == null))
     {
       com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString4, paramString5, paramString6, paramObject1, paramObject2);
-      AppMethodBeat.o(195468);
+      AppMethodBeat.o(186279);
       return;
     }
     com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString4, paramString5, paramString6, paramObject2);
-    AppMethodBeat.o(195468);
+    AppMethodBeat.o(186279);
   }
   
   public static void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, Object paramObject, Object[] paramArrayOfObject)
@@ -72,16 +72,16 @@ public final class a
     AppMethodBeat.o(55510);
   }
   
-  public static a ahD()
+  public static a axP()
   {
     AppMethodBeat.i(55503);
-    if (gyQ == null) {}
+    if (hlD == null) {}
     try
     {
-      if (gyQ == null) {
-        gyQ = new a();
+      if (hlD == null) {
+        hlD = new a();
       }
-      a locala = gyQ;
+      a locala = hlD;
       AppMethodBeat.o(55503);
       return locala;
     }
@@ -143,27 +143,27 @@ public final class a
   public final void a(Object paramObject, Intent paramIntent)
   {
     AppMethodBeat.i(55506);
-    if (!b.aV(paramObject))
+    if (!b.be(paramObject))
     {
       AppMethodBeat.o(55506);
       return;
     }
-    if (this.gyT != null) {
-      this.gyT.b(paramObject, paramIntent);
+    if (this.hlG != null) {
+      this.hlG.b(paramObject, paramIntent);
     }
     AppMethodBeat.o(55506);
   }
   
-  public final void aU(Object paramObject)
+  public final void bd(Object paramObject)
   {
     AppMethodBeat.i(55508);
-    if (((paramObject instanceof Activity)) && (this.gyT != null)) {
-      this.gyT.x((Activity)paramObject);
+    if (((paramObject instanceof Activity)) && (this.hlG != null)) {
+      this.hlG.x((Activity)paramObject);
     }
     AppMethodBeat.o(55508);
   }
   
-  public final void f(Object paramObject, int paramInt)
+  public final void g(Object paramObject, int paramInt)
   {
     AppMethodBeat.i(55505);
     switch (paramInt)
@@ -173,33 +173,33 @@ public final class a
     {
       AppMethodBeat.o(55505);
       return;
-      if (this.gyT != null)
+      if (this.hlG != null)
       {
-        this.gyT.aW(paramObject);
+        this.hlG.bf(paramObject);
         AppMethodBeat.o(55505);
         return;
-        if (this.gyT != null)
+        if (this.hlG != null)
         {
-          this.gyT.aX(paramObject);
+          this.hlG.bg(paramObject);
           AppMethodBeat.o(55505);
           return;
-          if (this.gyT != null)
+          if (this.hlG != null)
           {
-            this.gyT.aY(paramObject);
+            this.hlG.bh(paramObject);
             AppMethodBeat.o(55505);
             return;
-            if (this.gyT != null)
+            if (this.hlG != null)
             {
-              this.gyT.aZ(paramObject);
+              this.hlG.bi(paramObject);
               AppMethodBeat.o(55505);
               return;
-              if (this.gyT != null)
+              if (this.hlG != null)
               {
-                this.gyT.ba(paramObject);
+                this.hlG.bj(paramObject);
                 AppMethodBeat.o(55505);
                 return;
-                if (this.gyT != null) {
-                  this.gyT.bb(paramObject);
+                if (this.hlG != null) {
+                  this.hlG.bk(paramObject);
                 }
               }
             }

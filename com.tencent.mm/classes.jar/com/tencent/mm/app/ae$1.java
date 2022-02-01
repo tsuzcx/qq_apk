@@ -1,35 +1,36 @@
 package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cp.d;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.cr.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class ae$1
-  implements aw.a
+  implements MTimerHandler.CallBack
 {
   ae$1(ae paramae) {}
   
   public final boolean onTimerExpired()
   {
     AppMethodBeat.i(19480);
-    String str = bu.cK(ak.getContext());
-    if ((str != null) && (str.toLowerCase().startsWith(ak.getPackageName())))
+    String str = Util.getTopActivityName(MMApplicationContext.getContext());
+    if ((str != null) && (str.toLowerCase().startsWith(MMApplicationContext.getSourcePackageName())))
     {
-      com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.TempAppForegroundNotifyDeprecated", "onTimerExpired, top activity belongs to mm, skip kill tools");
+      Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "onTimerExpired, top activity belongs to mm, skip kill tools");
       AppMethodBeat.o(19480);
       return false;
     }
-    com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.TempAppForegroundNotifyDeprecated", "onTimerExpired, kill tools process");
-    d.bax("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
+    Log.i("MicroMsg.TempAppForegroundNotifyDeprecated", "onTimerExpired, kill tools process");
+    d.bpG("com.tencent.mm.intent.ACTION_KILL_TOOLS_PROCESS");
     AppMethodBeat.o(19480);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.ae.1
  * JD-Core Version:    0.7.0.1
  */

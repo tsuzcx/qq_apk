@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class fa
-  extends b
+  extends IEvent
 {
-  public a drn;
-  public b dro;
+  public a dIs;
+  public b dIt;
   
   public fa()
   {
@@ -16,28 +16,29 @@ public final class fa
   
   private fa(byte paramByte)
   {
-    AppMethodBeat.i(19796);
-    this.drn = new a();
-    this.dro = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(116010);
+    this.dIs = new a();
+    this.dIt = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19796);
+    AppMethodBeat.o(116010);
   }
   
   public static final class a
   {
-    public boolean dpJ = false;
-    public String mac;
+    public boolean clear;
+    public String dGL;
+    public int direction;
   }
   
   public static final class b
   {
-    public boolean dpK;
+    public boolean dGX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.fa
  * JD-Core Version:    0.7.0.1
  */

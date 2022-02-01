@@ -6,37 +6,37 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
 {
   private static final String FORMAT;
-  int dEu = -2;
+  int cSx = -2;
   public int id = 0;
-  public int isT = 0;
-  public int isU = 0;
-  public long isV = 0L;
-  public int isW = 0;
-  public long isX = 0L;
-  public int isY = 0;
-  public long isZ = 0L;
-  public int ita = 0;
-  public long itb = 0L;
-  public long itc = 0L;
-  public long itd = 0L;
-  public long ite = 0L;
-  public long itf = 0L;
-  public int itg = 0;
-  public long ith = 0L;
-  public int iti = 0;
-  public long itj = 0L;
-  public int itk = 0;
-  public long itl = 0L;
-  public int itm = 0;
-  public long itn = 0L;
-  public long ito = 0L;
-  public long itp = 0L;
-  public long itq = 0L;
-  public long itr = 0L;
-  public long its = 0L;
-  public long itt = 0L;
-  public long itu = 0L;
-  public long itv = 0L;
+  public long joA = 0L;
+  public long joB = 0L;
+  public long joC = 0L;
+  public long joD = 0L;
+  public long joE = 0L;
+  public long joF = 0L;
+  public long joG = 0L;
+  public long joH = 0L;
+  public long joI = 0L;
+  public int jog = 0;
+  public int joh = 0;
+  public long joi = 0L;
+  public int joj = 0;
+  public long jok = 0L;
+  public int jol = 0;
+  public long jom = 0L;
+  public int jon = 0;
+  public long joo = 0L;
+  public long jop = 0L;
+  public long joq = 0L;
+  public long jor = 0L;
+  public long jos = 0L;
+  public int jot = 0;
+  public long jou = 0L;
+  public int jov = 0;
+  public long jow = 0L;
+  public int jox = 0;
+  public long joy = 0L;
+  public int joz = 0;
   
   static
   {
@@ -57,49 +57,49 @@ public final class k
   {
     AppMethodBeat.i(151084);
     this.id = paramCursor.getInt(0);
-    this.isT = paramCursor.getInt(1);
-    this.isU = paramCursor.getInt(2);
-    this.isV = paramCursor.getLong(3);
-    this.isW = paramCursor.getInt(4);
-    this.isX = paramCursor.getLong(5);
-    this.isY = paramCursor.getInt(6);
-    this.isZ = paramCursor.getLong(7);
-    this.ita = paramCursor.getInt(8);
-    this.itb = paramCursor.getLong(9);
-    this.itc = paramCursor.getLong(10);
-    this.itd = paramCursor.getLong(11);
-    this.ite = paramCursor.getLong(12);
-    this.itf = paramCursor.getLong(13);
-    this.itg = paramCursor.getInt(14);
-    this.ith = paramCursor.getLong(15);
-    this.iti = paramCursor.getInt(16);
-    this.itj = paramCursor.getLong(17);
-    this.itk = paramCursor.getInt(18);
-    this.itl = paramCursor.getLong(19);
-    this.itm = paramCursor.getInt(20);
-    this.itn = paramCursor.getLong(21);
-    this.ito = paramCursor.getLong(22);
-    this.itp = paramCursor.getLong(23);
-    this.itq = paramCursor.getLong(24);
-    this.itr = paramCursor.getLong(25);
-    this.its = paramCursor.getLong(26);
-    this.itt = paramCursor.getLong(27);
-    this.itu = paramCursor.getLong(28);
-    this.itv = paramCursor.getLong(29);
+    this.jog = paramCursor.getInt(1);
+    this.joh = paramCursor.getInt(2);
+    this.joi = paramCursor.getLong(3);
+    this.joj = paramCursor.getInt(4);
+    this.jok = paramCursor.getLong(5);
+    this.jol = paramCursor.getInt(6);
+    this.jom = paramCursor.getLong(7);
+    this.jon = paramCursor.getInt(8);
+    this.joo = paramCursor.getLong(9);
+    this.jop = paramCursor.getLong(10);
+    this.joq = paramCursor.getLong(11);
+    this.jor = paramCursor.getLong(12);
+    this.jos = paramCursor.getLong(13);
+    this.jot = paramCursor.getInt(14);
+    this.jou = paramCursor.getLong(15);
+    this.jov = paramCursor.getInt(16);
+    this.jow = paramCursor.getLong(17);
+    this.jox = paramCursor.getInt(18);
+    this.joy = paramCursor.getLong(19);
+    this.joz = paramCursor.getInt(20);
+    this.joA = paramCursor.getLong(21);
+    this.joB = paramCursor.getLong(22);
+    this.joC = paramCursor.getLong(23);
+    this.joD = paramCursor.getLong(24);
+    this.joE = paramCursor.getLong(25);
+    this.joF = paramCursor.getLong(26);
+    this.joG = paramCursor.getLong(27);
+    this.joH = paramCursor.getLong(28);
+    this.joI = paramCursor.getLong(29);
     AppMethodBeat.o(151084);
   }
   
   public final String toString()
   {
     AppMethodBeat.i(151085);
-    String str = String.format(FORMAT, new Object[] { Long.valueOf(this.itc), Long.valueOf(this.its), Long.valueOf(this.ite), Long.valueOf(this.ito), Long.valueOf(this.itu), Long.valueOf(this.itq), Long.valueOf(this.itd), Long.valueOf(this.itt), Long.valueOf(this.itf), Long.valueOf(this.itp), Long.valueOf(this.itv), Long.valueOf(this.itr), Integer.valueOf(this.isU), Long.valueOf(this.isV), Integer.valueOf(this.itg), Long.valueOf(this.ith), Integer.valueOf(this.isW), Long.valueOf(this.isX), Integer.valueOf(this.iti), Long.valueOf(this.itj), Integer.valueOf(this.isY), Long.valueOf(this.isZ), Integer.valueOf(this.itk), Long.valueOf(this.itl), Integer.valueOf(this.ita), Long.valueOf(this.itb), Integer.valueOf(this.itm), Long.valueOf(this.itn) });
+    String str = String.format(FORMAT, new Object[] { Long.valueOf(this.jop), Long.valueOf(this.joF), Long.valueOf(this.jor), Long.valueOf(this.joB), Long.valueOf(this.joH), Long.valueOf(this.joD), Long.valueOf(this.joq), Long.valueOf(this.joG), Long.valueOf(this.jos), Long.valueOf(this.joC), Long.valueOf(this.joI), Long.valueOf(this.joE), Integer.valueOf(this.joh), Long.valueOf(this.joi), Integer.valueOf(this.jot), Long.valueOf(this.jou), Integer.valueOf(this.joj), Long.valueOf(this.jok), Integer.valueOf(this.jov), Long.valueOf(this.jow), Integer.valueOf(this.jol), Long.valueOf(this.jom), Integer.valueOf(this.jox), Long.valueOf(this.joy), Integer.valueOf(this.jon), Long.valueOf(this.joo), Integer.valueOf(this.joz), Long.valueOf(this.joA) });
     AppMethodBeat.o(151085);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelstat.k
  * JD-Core Version:    0.7.0.1
  */

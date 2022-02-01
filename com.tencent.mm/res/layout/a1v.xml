@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/fep" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bre" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <com.tencent.mm.plugin.facedetect.views.FaceDetectView android:id="@id/brt" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-    <RelativeLayout android:id="@id/brv" android:background="@drawable/rt" android:layout_width="fill_parent" android:layout_height="@dimen/a2o" android:layout_alignParentTop="true" />
-    <RelativeLayout android:background="@drawable/ro" android:layout_width="fill_parent" android:layout_height="@dimen/a2o" android:layout_alignParentBottom="true" />
-    <Button android:id="@id/d0t" style="@style/io" />
-    <com.tencent.mm.plugin.facedetect.views.FaceScanRect android:id="@id/bru" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="50.0dip" android:layout_marginTop="-63.0dip" android:layout_marginRight="50.0dip" android:layout_marginBottom="99.0dip" android:layout_below="@id/brv" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/nj" android:id="@id/bn_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="164.0dip" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <include layout="@layout/a1w" />
+    <include android:id="@id/feo" layout="@layout/a1x" />
+    <include layout="@layout/a1w" />
+</LinearLayout>

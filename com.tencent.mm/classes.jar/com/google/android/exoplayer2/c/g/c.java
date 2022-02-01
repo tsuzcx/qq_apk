@@ -33,7 +33,7 @@ final class c
       if (locala.id == x.bJ("fmt ")) {
         break;
       }
-      paramf.dV((int)locala.size);
+      paramf.dQ((int)locala.size);
     }
     if (locala.size >= 16L) {}
     int i;
@@ -47,12 +47,12 @@ final class c
       a.checkState(bool);
       paramf.b(localm.data, 0, 16);
       localm.setPosition(0);
-      i = localm.wW();
-      j = localm.wW();
-      k = localm.xd();
-      m = localm.xd();
-      n = localm.wW();
-      i1 = localm.wW();
+      i = localm.xe();
+      j = localm.xe();
+      k = localm.xl();
+      m = localm.xl();
+      n = localm.xe();
+      i1 = localm.xe();
       i2 = j * i1 / 8;
       if (n == i2) {
         break;
@@ -61,7 +61,7 @@ final class c
       AppMethodBeat.o(92313);
       throw paramf;
     }
-    int i2 = x.ff(i1);
+    int i2 = x.fg(i1);
     if (i2 == 0)
     {
       AppMethodBeat.o(92313);
@@ -72,7 +72,7 @@ final class c
       AppMethodBeat.o(92313);
       return null;
     }
-    paramf.dV((int)locala.size - 16);
+    paramf.dQ((int)locala.size - 16);
     paramf = new b(j, k, m, n, i1, i2);
     AppMethodBeat.o(92313);
     return paramf;
@@ -94,7 +94,7 @@ final class c
       AppMethodBeat.i(92312);
       paramf.b(paramm.data, 0, 8);
       paramm.setPosition(0);
-      paramf = new a(paramm.readInt(), paramm.wY());
+      paramf = new a(paramm.readInt(), paramm.xg());
       AppMethodBeat.o(92312);
       return paramf;
     }
@@ -102,7 +102,7 @@ final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.g.c
  * JD-Core Version:    0.7.0.1
  */

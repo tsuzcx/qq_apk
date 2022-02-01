@@ -8,25 +8,25 @@ public abstract interface d
   
   public abstract void b(Canvas paramCanvas, boolean paramBoolean);
   
-  public abstract float boF();
+  public abstract float bKi();
   
-  public abstract boolean boG();
+  public abstract boolean bKj();
   
-  public abstract int boH();
+  public abstract int bKk();
   
-  public abstract void dV(int paramInt1, int paramInt2);
+  public abstract void eh(int paramInt1, int paramInt2);
   
   public abstract int getCurrX();
   
   public abstract int getWidth();
   
-  public abstract boolean tE(int paramInt);
+  public abstract boolean xC(int paramInt);
   
-  public abstract boolean tF(int paramInt);
+  public abstract boolean xD(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.danmu.d
  * JD-Core Version:    0.7.0.1
  */

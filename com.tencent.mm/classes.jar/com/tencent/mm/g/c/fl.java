@@ -2,147 +2,76 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class fl
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEL;
-  private static final int eGD = "appId".hashCode();
-  private static final int eGe;
-  private static final int eIh;
-  private static final int eJV;
-  private static final int eON;
-  private static final int eUA;
-  private static final int eYL;
-  private static final int feI;
-  private static final int fpa;
-  private static final int fqA;
-  private static final int fqx;
-  private static final int fsA = "wvCacheType".hashCode();
-  private static final int fsB = "packageId".hashCode();
-  private static final int fsg = "urlKey_hashcode".hashCode();
-  private static final int fsh = "urlKey".hashCode();
-  private static final int fsi;
-  private static final int fsj;
-  private static final int fsk;
-  private static final int fsl;
-  private static final int fsm;
-  private static final int fsn;
-  private static final int fso;
-  private static final int fsp;
-  private static final int fsq;
-  private static final int fsr;
-  private static final int fss;
-  private static final int fst;
-  private static final int fsu;
-  private static final int fsv;
-  private static final int fsw;
-  private static final int fsx;
-  private static final int fsy;
-  private static final int fsz;
+  private static final int fVc;
+  private static final int fVd;
+  private static final int fVe;
+  private static final int fVf;
+  private static final int fVg;
+  private static final int fVh;
+  private static final int fVi;
+  private static final int fVj;
+  private static final int fVk = "cmdSequence".hashCode();
+  private static final int fjQ;
+  private static final int fkj = "appId".hashCode();
+  private static final int flF;
+  private static final int flG;
+  private static final int flJ;
+  private static final int flv = "version".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEI = true;
-  private boolean eFH = true;
-  private boolean eGm = true;
-  private boolean eIc = true;
-  private boolean eJR = true;
-  private boolean eOF = true;
-  private boolean eTO = true;
-  private boolean eYi = true;
-  private boolean few = true;
-  public int field_EID;
+  private static final int type_HASHCODE = "type".hashCode();
+  private boolean __hadSettype = true;
+  private boolean fUT = true;
+  private boolean fUU = true;
+  private boolean fUV = true;
+  private boolean fUW = true;
+  private boolean fUX = true;
+  private boolean fUY = true;
+  private boolean fUZ = true;
+  private boolean fVa = true;
+  private boolean fVb = true;
   public String field_appId;
-  public long field_contentLength;
-  public String field_contentType;
-  public boolean field_deleted;
-  public byte[] field_eccSignature;
-  public String field_encryptKey;
-  public long field_expireTime;
-  public boolean field_fileCompress;
-  public boolean field_fileEncrypt;
-  public String field_filePath;
-  public long field_fileSize;
-  public boolean field_fileUpdated;
-  public String field_fileVersion;
-  public String field_groupId1;
-  public String field_groupId2;
-  public int field_keyVersion;
-  public int field_maxRetryTimes;
-  public String field_md5;
-  public boolean field_needRetry;
+  public long field_cmdSequence;
+  public boolean field_firstTimeTried;
+  public long field_lastRetryTime;
   public int field_networkType;
-  public String field_originalMd5;
-  public String field_packageId;
-  public int field_priority;
-  public long field_reportId;
-  public int field_resType;
+  public String field_packageKey;
+  public int field_packageType;
+  public String field_pkgMd5;
+  public int field_reportId;
+  public int field_retriedCount;
+  public long field_retryInterval;
   public int field_retryTimes;
-  public String field_sampleId;
-  public int field_status;
-  public int field_subType;
-  public String field_url;
-  public String field_urlKey;
-  public int field_urlKey_hashcode;
-  public int field_wvCacheType;
-  private boolean foS = true;
-  private boolean fqo = true;
-  private boolean fqr = true;
-  private boolean frK = true;
-  private boolean frL = true;
-  private boolean frM = true;
-  private boolean frN = true;
-  private boolean frO = true;
-  private boolean frP = true;
-  private boolean frQ = true;
-  private boolean frR = true;
-  private boolean frS = true;
-  private boolean frT = true;
-  private boolean frU = true;
-  private boolean frV = true;
-  private boolean frW = true;
-  private boolean frX = true;
-  private boolean frY = true;
-  private boolean frZ = true;
-  private boolean fsa = true;
-  private boolean fsb = true;
-  private boolean fsc = true;
-  private boolean fsd = true;
-  private boolean fse = true;
-  private boolean fsf = true;
+  public int field_scene;
+  public boolean field_splitDownloadURLCgi;
+  public int field_type;
+  public int field_version;
+  private boolean fjO = true;
+  private boolean fjS = true;
+  private boolean flA = true;
+  private boolean flB = true;
+  private boolean flE = true;
+  private boolean flq = true;
   
   static
   {
-    eJV = "url".hashCode();
-    fsi = "fileVersion".hashCode();
-    fqA = "networkType".hashCode();
-    fsj = "maxRetryTimes".hashCode();
-    fqx = "retryTimes".hashCode();
-    eON = "filePath".hashCode();
-    eEL = "status".hashCode();
-    fsk = "contentLength".hashCode();
-    fsl = "contentType".hashCode();
-    feI = "expireTime".hashCode();
-    eUA = "md5".hashCode();
-    fsm = "groupId1".hashCode();
-    fsn = "groupId2".hashCode();
-    fpa = "priority".hashCode();
-    fso = "fileUpdated".hashCode();
-    fsp = "deleted".hashCode();
-    fsq = "resType".hashCode();
-    eGe = "subType".hashCode();
-    eIh = "reportId".hashCode();
-    fsr = "sampleId".hashCode();
-    fss = "eccSignature".hashCode();
-    fst = "originalMd5".hashCode();
-    fsu = "fileCompress".hashCode();
-    fsv = "fileEncrypt".hashCode();
-    fsw = "encryptKey".hashCode();
-    fsx = "keyVersion".hashCode();
-    fsy = "EID".hashCode();
-    eYL = "fileSize".hashCode();
-    fsz = "needRetry".hashCode();
+    fVc = "retryTimes".hashCode();
+    fVd = "retriedCount".hashCode();
+    fVe = "retryInterval".hashCode();
+    fVf = "networkType".hashCode();
+    fVg = "pkgMd5".hashCode();
+    flG = "packageKey".hashCode();
+    flF = "packageType".hashCode();
+    fVh = "lastRetryTime".hashCode();
+    fVi = "firstTimeTried".hashCode();
+    flJ = "reportId".hashCode();
+    fVj = "splitDownloadURLCgi".hashCode();
+    fjQ = "scene".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -158,179 +87,90 @@ public abstract class fl
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fsg != k) {
-        break label65;
+      if (fkj != k) {
+        break label60;
       }
-      this.field_urlKey_hashcode = paramCursor.getInt(i);
-      this.frK = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (fsh == k)
+      label60:
+      if (flv == k)
       {
-        this.field_urlKey = paramCursor.getString(i);
+        this.field_version = paramCursor.getInt(i);
       }
-      else if (eJV == k)
+      else if (type_HASHCODE == k)
       {
-        this.field_url = paramCursor.getString(i);
+        this.field_type = paramCursor.getInt(i);
       }
-      else if (fsi == k)
-      {
-        this.field_fileVersion = paramCursor.getString(i);
-      }
-      else if (fqA == k)
-      {
-        this.field_networkType = paramCursor.getInt(i);
-      }
-      else if (fsj == k)
-      {
-        this.field_maxRetryTimes = paramCursor.getInt(i);
-      }
-      else if (fqx == k)
+      else if (fVc == k)
       {
         this.field_retryTimes = paramCursor.getInt(i);
       }
-      else if (eON == k)
+      else if (fVd == k)
       {
-        this.field_filePath = paramCursor.getString(i);
+        this.field_retriedCount = paramCursor.getInt(i);
       }
-      else if (eEL == k)
+      else if (fVe == k)
       {
-        this.field_status = paramCursor.getInt(i);
+        this.field_retryInterval = paramCursor.getLong(i);
       }
-      else if (fsk == k)
+      else if (fVf == k)
       {
-        this.field_contentLength = paramCursor.getLong(i);
+        this.field_networkType = paramCursor.getInt(i);
       }
-      else if (fsl == k)
+      else if (fVg == k)
       {
-        this.field_contentType = paramCursor.getString(i);
+        this.field_pkgMd5 = paramCursor.getString(i);
       }
-      else if (feI == k)
+      else if (flG == k)
       {
-        this.field_expireTime = paramCursor.getLong(i);
+        this.field_packageKey = paramCursor.getString(i);
       }
-      else if (eUA == k)
+      else if (flF == k)
       {
-        this.field_md5 = paramCursor.getString(i);
+        this.field_packageType = paramCursor.getInt(i);
       }
-      else if (fsm == k)
+      else if (fVh == k)
       {
-        this.field_groupId1 = paramCursor.getString(i);
-      }
-      else if (fsn == k)
-      {
-        this.field_groupId2 = paramCursor.getString(i);
-      }
-      else if (fpa == k)
-      {
-        this.field_priority = paramCursor.getInt(i);
+        this.field_lastRetryTime = paramCursor.getLong(i);
       }
       else
       {
         boolean bool;
-        if (fso == k)
+        if (fVi == k)
         {
           if (paramCursor.getInt(i) != 0) {}
           for (bool = true;; bool = false)
           {
-            this.field_fileUpdated = bool;
+            this.field_firstTimeTried = bool;
             break;
           }
         }
-        if (fsp == k)
+        if (flJ == k)
         {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_deleted = bool;
-            break;
-          }
-        }
-        if (fsq == k)
-        {
-          this.field_resType = paramCursor.getInt(i);
-        }
-        else if (eGe == k)
-        {
-          this.field_subType = paramCursor.getInt(i);
-        }
-        else if (eIh == k)
-        {
-          this.field_reportId = paramCursor.getLong(i);
-        }
-        else if (fsr == k)
-        {
-          this.field_sampleId = paramCursor.getString(i);
-        }
-        else if (fss == k)
-        {
-          this.field_eccSignature = paramCursor.getBlob(i);
-        }
-        else if (fst == k)
-        {
-          this.field_originalMd5 = paramCursor.getString(i);
+          this.field_reportId = paramCursor.getInt(i);
         }
         else
         {
-          if (fsu == k)
+          if (fVj == k)
           {
             if (paramCursor.getInt(i) != 0) {}
             for (bool = true;; bool = false)
             {
-              this.field_fileCompress = bool;
+              this.field_splitDownloadURLCgi = bool;
               break;
             }
           }
-          if (fsv == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_fileEncrypt = bool;
-              break;
-            }
-          }
-          if (fsw == k)
-          {
-            this.field_encryptKey = paramCursor.getString(i);
-          }
-          else if (fsx == k)
-          {
-            this.field_keyVersion = paramCursor.getInt(i);
-          }
-          else if (fsy == k)
-          {
-            this.field_EID = paramCursor.getInt(i);
-          }
-          else if (eYL == k)
-          {
-            this.field_fileSize = paramCursor.getLong(i);
-          }
-          else
-          {
-            if (fsz == k)
-            {
-              if (paramCursor.getInt(i) != 0) {}
-              for (bool = true;; bool = false)
-              {
-                this.field_needRetry = bool;
-                break;
-              }
-            }
-            if (eGD == k) {
-              this.field_appId = paramCursor.getString(i);
-            } else if (fsA == k) {
-              this.field_wvCacheType = paramCursor.getInt(i);
-            } else if (fsB == k) {
-              this.field_packageId = paramCursor.getString(i);
-            } else if (rowid_HASHCODE == k) {
-              this.systemRowid = paramCursor.getLong(i);
-            }
+          if (fjQ == k) {
+            this.field_scene = paramCursor.getInt(i);
+          } else if (fVk == k) {
+            this.field_cmdSequence = paramCursor.getLong(i);
+          } else if (rowid_HASHCODE == k) {
+            this.systemRowid = paramCursor.getLong(i);
           }
         }
       }
@@ -340,107 +180,53 @@ public abstract class fl
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.frK) {
-      localContentValues.put("urlKey_hashcode", Integer.valueOf(this.field_urlKey_hashcode));
-    }
-    if (this.frL) {
-      localContentValues.put("urlKey", this.field_urlKey);
-    }
-    if (this.eJR) {
-      localContentValues.put("url", this.field_url);
-    }
-    if (this.frM) {
-      localContentValues.put("fileVersion", this.field_fileVersion);
-    }
-    if (this.fqr) {
-      localContentValues.put("networkType", Integer.valueOf(this.field_networkType));
-    }
-    if (this.frN) {
-      localContentValues.put("maxRetryTimes", Integer.valueOf(this.field_maxRetryTimes));
-    }
-    if (this.fqo) {
-      localContentValues.put("retryTimes", Integer.valueOf(this.field_retryTimes));
-    }
-    if (this.eOF) {
-      localContentValues.put("filePath", this.field_filePath);
-    }
-    if (this.eEI) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
-    }
-    if (this.frO) {
-      localContentValues.put("contentLength", Long.valueOf(this.field_contentLength));
-    }
-    if (this.frP) {
-      localContentValues.put("contentType", this.field_contentType);
-    }
-    if (this.few) {
-      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
-    }
-    if (this.eTO) {
-      localContentValues.put("md5", this.field_md5);
-    }
-    if (this.frQ) {
-      localContentValues.put("groupId1", this.field_groupId1);
-    }
-    if (this.frR) {
-      localContentValues.put("groupId2", this.field_groupId2);
-    }
-    if (this.foS) {
-      localContentValues.put("priority", Integer.valueOf(this.field_priority));
-    }
-    if (this.frS) {
-      localContentValues.put("fileUpdated", Boolean.valueOf(this.field_fileUpdated));
-    }
-    if (this.frT) {
-      localContentValues.put("deleted", Boolean.valueOf(this.field_deleted));
-    }
-    if (this.frU) {
-      localContentValues.put("resType", Integer.valueOf(this.field_resType));
-    }
-    if (this.eFH) {
-      localContentValues.put("subType", Integer.valueOf(this.field_subType));
-    }
-    if (this.eIc) {
-      localContentValues.put("reportId", Long.valueOf(this.field_reportId));
-    }
-    if (this.frV) {
-      localContentValues.put("sampleId", this.field_sampleId);
-    }
-    if (this.frW) {
-      localContentValues.put("eccSignature", this.field_eccSignature);
-    }
-    if (this.frX) {
-      localContentValues.put("originalMd5", this.field_originalMd5);
-    }
-    if (this.frY) {
-      localContentValues.put("fileCompress", Boolean.valueOf(this.field_fileCompress));
-    }
-    if (this.frZ) {
-      localContentValues.put("fileEncrypt", Boolean.valueOf(this.field_fileEncrypt));
-    }
-    if (this.fsa) {
-      localContentValues.put("encryptKey", this.field_encryptKey);
-    }
-    if (this.fsb) {
-      localContentValues.put("keyVersion", Integer.valueOf(this.field_keyVersion));
-    }
-    if (this.fsc) {
-      localContentValues.put("EID", Integer.valueOf(this.field_EID));
-    }
-    if (this.eYi) {
-      localContentValues.put("fileSize", Long.valueOf(this.field_fileSize));
-    }
-    if (this.fsd) {
-      localContentValues.put("needRetry", Boolean.valueOf(this.field_needRetry));
-    }
-    if (this.eGm) {
+    if (this.fjS) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.fse) {
-      localContentValues.put("wvCacheType", Integer.valueOf(this.field_wvCacheType));
+    if (this.flq) {
+      localContentValues.put("version", Integer.valueOf(this.field_version));
     }
-    if (this.fsf) {
-      localContentValues.put("packageId", this.field_packageId);
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
+    }
+    if (this.fUT) {
+      localContentValues.put("retryTimes", Integer.valueOf(this.field_retryTimes));
+    }
+    if (this.fUU) {
+      localContentValues.put("retriedCount", Integer.valueOf(this.field_retriedCount));
+    }
+    if (this.fUV) {
+      localContentValues.put("retryInterval", Long.valueOf(this.field_retryInterval));
+    }
+    if (this.fUW) {
+      localContentValues.put("networkType", Integer.valueOf(this.field_networkType));
+    }
+    if (this.fUX) {
+      localContentValues.put("pkgMd5", this.field_pkgMd5);
+    }
+    if (this.flB) {
+      localContentValues.put("packageKey", this.field_packageKey);
+    }
+    if (this.flA) {
+      localContentValues.put("packageType", Integer.valueOf(this.field_packageType));
+    }
+    if (this.fUY) {
+      localContentValues.put("lastRetryTime", Long.valueOf(this.field_lastRetryTime));
+    }
+    if (this.fUZ) {
+      localContentValues.put("firstTimeTried", Boolean.valueOf(this.field_firstTimeTried));
+    }
+    if (this.flE) {
+      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
+    }
+    if (this.fVa) {
+      localContentValues.put("splitDownloadURLCgi", Boolean.valueOf(this.field_splitDownloadURLCgi));
+    }
+    if (this.fjO) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    }
+    if (this.fVb) {
+      localContentValues.put("cmdSequence", Long.valueOf(this.field_cmdSequence));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -450,7 +236,7 @@ public abstract class fl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.fl
  * JD-Core Version:    0.7.0.1
  */

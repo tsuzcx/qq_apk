@@ -4,23 +4,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class o
 {
-  public boolean gcv;
-  public int gcw;
-  public int gcx;
+  public boolean gHT;
+  public int gHU;
+  public int gHV;
   
   public o()
   {
     AppMethodBeat.i(155677);
-    this.gcv = false;
+    this.gHT = false;
     reset();
     AppMethodBeat.o(155677);
   }
   
   public final void reset()
   {
-    this.gcv = false;
-    this.gcw = 0;
-    this.gcx = 0;
+    this.gHT = false;
+    this.gHU = 0;
+    this.gHV = 0;
   }
 }
 

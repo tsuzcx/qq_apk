@@ -1,26 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:id="@id/cgi" android:background="@color/BW_97" android:padding="@dimen/a0b" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:id="@id/h4p" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qy" />
-            <TextView android:textColor="@color/y4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bj4" />
-        </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/h4i" android:background="@null" android:paddingTop="20.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageButton android:layout_gravity="center" android:id="@id/bwd" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qt" />
-            <TextView android:textColor="@color/y4" android:layout_gravity="center" android:id="@id/bwf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bj0" />
-        </LinearLayout>
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/h4n" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qv" />
-        <TextView android:textColor="@color/y4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bj1" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/h4o" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qw" />
-        <TextView android:textColor="@color/y4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bj2" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/dsw" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/qx" />
-        <TextView android:textColor="@color/y4" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/bj3" />
-    </LinearLayout>
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="18.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/dmr" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_begin="24.0dip" />
+    <android.support.constraint.Guideline android:orientation="horizontal" android:id="@id/dmq" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_end="28.0dip" />
+    <View android:id="@id/bc3" android:layout_width="0.5dip" android:layout_height="18.0dip" app:layout_constraintBottom_toBottomOf="@id/dmq" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" app:layout_constraintTop_toTopOf="@id/dmr" style="@style/hx" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/g_" android:gravity="center" android:id="@id/bas" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="30.0dip" android:text="@string/b_b" android:singleLine="false" app:layout_constraintBottom_toBottomOf="@id/dmq" app:layout_constraintRight_toLeftOf="@id/bc3" app:layout_constraintTop_toTopOf="@id/dmr" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/g_" android:gravity="center" android:id="@id/baj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:text="@string/b_i" android:singleLine="false" app:layout_constraintBottom_toBottomOf="@id/dmq" app:layout_constraintLeft_toRightOf="@id/bc3" app:layout_constraintTop_toTopOf="@id/dmr" />
+    <View android:id="@id/bat" android:layout_width="0.0dip" android:layout_height="0.5dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintRight_toRightOf="g8m" style="@style/hx" />
+</android.support.constraint.ConstraintLayout>

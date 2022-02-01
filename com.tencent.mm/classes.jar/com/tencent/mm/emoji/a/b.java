@@ -1,36 +1,135 @@
 package com.tencent.mm.emoji.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.protocal.protobuf.cst;
-import com.tencent.mm.protocal.protobuf.csu;
-import d.l;
+import com.tencent.mm.emoji.b.a;
+import java.util.ArrayList;
+import kotlin.g.b.p;
+import kotlin.l;
+import org.xmlpull.v1.XmlPullParser;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/model/CgiEmojiRecommend;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiResponse;", "req", "Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;", "(Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;)V", "getReq", "()Lcom/tencent/mm/protocal/protobuf/RecommendPanelEmojiRequest;", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/egg/EmojiAnimConfig;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "itemList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimItem;", "Lkotlin/collections/ArrayList;", "getItemList", "()Ljava/util/ArrayList;", "parse", "", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "parseTag", "tag", "", "EmojiAnimItem", "EmojiAnimScreenEffect", "plugin-emojisdk_release"})
 public final class b
-  extends com.tencent.mm.ak.a<csu>
+  extends a
 {
-  private final cst gmf;
+  public final ArrayList<a> gUV;
   
-  public b(cst paramcst)
+  public b()
   {
-    AppMethodBeat.i(188555);
-    this.gmf = paramcst;
-    paramcst = new csu();
-    b.a locala = new b.a();
-    locala.c((com.tencent.mm.bw.a)this.gmf);
-    locala.d((com.tencent.mm.bw.a)paramcst);
-    locala.DN("/cgi-bin/micromsg-bin/mmrecommendpanelemoji");
-    locala.oS(3793);
-    locala.oU(0);
-    locala.oV(0);
-    c(locala.aDS());
-    AppMethodBeat.o(188555);
+    AppMethodBeat.i(199874);
+    this.gUV = new ArrayList();
+    AppMethodBeat.o(199874);
+  }
+  
+  public final void a(String paramString, XmlPullParser paramXmlPullParser)
+  {
+    AppMethodBeat.i(199873);
+    p.h(paramString, "tag");
+    p.h(paramXmlPullParser, "parser");
+    switch (paramString.hashCode())
+    {
+    }
+    do
+    {
+      do
+      {
+        skip(paramXmlPullParser);
+        AppMethodBeat.o(199873);
+        return;
+      } while (!paramString.equals("item"));
+      paramString = new a();
+      paramString.c(paramXmlPullParser);
+      this.gUV.add(paramString);
+      AppMethodBeat.o(199873);
+      return;
+    } while (!paramString.equals("emoji"));
+    AppMethodBeat.o(199873);
+  }
+  
+  public final void c(XmlPullParser paramXmlPullParser)
+  {
+    AppMethodBeat.i(199872);
+    p.h(paramXmlPullParser, "parser");
+    this.gUV.clear();
+    super.c(paramXmlPullParser);
+    AppMethodBeat.o(199872);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimItem;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "animFile", "", "getAnimFile", "()Ljava/lang/String;", "setAnimFile", "(Ljava/lang/String;)V", "key", "getKey", "setKey", "screenEffect", "Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimScreenEffect;", "getScreenEffect", "()Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimScreenEffect;", "setScreenEffect", "(Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimScreenEffect;)V", "parseTag", "", "tag", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "plugin-emojisdk_release"})
+  public static final class a
+    extends a
+  {
+    public String gUW = "";
+    b.b gUX;
+    public String key = "";
+    
+    public final void a(String paramString, XmlPullParser paramXmlPullParser)
+    {
+      AppMethodBeat.i(199870);
+      p.h(paramString, "tag");
+      p.h(paramXmlPullParser, "parser");
+      switch (paramString.hashCode())
+      {
+      }
+      do
+      {
+        do
+        {
+          do
+          {
+            skip(paramXmlPullParser);
+            AppMethodBeat.o(199870);
+            return;
+          } while (!paramString.equals("animFile"));
+          this.gUW = d(paramXmlPullParser);
+          AppMethodBeat.o(199870);
+          return;
+        } while (!paramString.equals("key"));
+        this.key = d(paramXmlPullParser);
+        AppMethodBeat.o(199870);
+        return;
+      } while (!paramString.equals("screenEffect"));
+      paramString = new b.b();
+      paramString.c(paramXmlPullParser);
+      this.gUX = paramString;
+      AppMethodBeat.o(199870);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/egg/EmojiAnimConfig$EmojiAnimScreenEffect;", "Lcom/tencent/mm/emoji/model/BaseXmlContent;", "()V", "delay", "", "getDelay", "()I", "setDelay", "(I)V", "effectId", "", "getEffectId", "()Ljava/lang/String;", "setEffectId", "(Ljava/lang/String;)V", "parseTag", "", "tag", "parser", "Lorg/xmlpull/v1/XmlPullParser;", "plugin-emojisdk_release"})
+  public static final class b
+    extends a
+  {
+    public int delay;
+    public String effectId = "";
+    
+    public final void a(String paramString, XmlPullParser paramXmlPullParser)
+    {
+      AppMethodBeat.i(199871);
+      p.h(paramString, "tag");
+      p.h(paramXmlPullParser, "parser");
+      switch (paramString.hashCode())
+      {
+      }
+      do
+      {
+        do
+        {
+          skip(paramXmlPullParser);
+          AppMethodBeat.o(199871);
+          return;
+        } while (!paramString.equals("effectId"));
+        this.effectId = d(paramXmlPullParser);
+        AppMethodBeat.o(199871);
+        return;
+      } while (!paramString.equals("delay"));
+      this.delay = e(paramXmlPullParser);
+      AppMethodBeat.o(199871);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.a.b
  * JD-Core Version:    0.7.0.1
  */

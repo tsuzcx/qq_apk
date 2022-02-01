@@ -12,14 +12,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class a
   extends Animation
 {
-  private final float ATl;
-  private final float ATm;
-  private final float ATn;
-  private final boolean ATo;
-  private Camera ATp;
-  private final float cQO;
-  private final float cQP;
+  private final float FdR;
+  private final float FdS;
+  private final float FdT;
+  private final boolean FdU;
+  private Camera FdV;
   private Context context;
+  private final float dhi;
+  private final float dhj;
   private float scale;
   
   public a(Context paramContext, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, boolean paramBoolean)
@@ -27,12 +27,12 @@ public final class a
     AppMethodBeat.i(100450);
     this.scale = 1.0F;
     this.context = paramContext;
-    this.ATl = paramFloat1;
-    this.ATm = paramFloat2;
-    this.cQO = paramFloat3;
-    this.cQP = paramFloat4;
-    this.ATn = 150.0F;
-    this.ATo = paramBoolean;
+    this.FdR = paramFloat1;
+    this.FdS = paramFloat2;
+    this.dhi = paramFloat3;
+    this.dhj = paramFloat4;
+    this.FdT = 150.0F;
+    this.FdU = paramBoolean;
     this.scale = paramContext.getResources().getDisplayMetrics().density;
     AppMethodBeat.o(100450);
   }
@@ -40,16 +40,16 @@ public final class a
   protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     AppMethodBeat.i(100452);
-    float f1 = this.ATl;
-    float f2 = this.ATm;
-    float f3 = this.ATl;
-    float f4 = this.cQO;
-    float f5 = this.cQP;
-    Object localObject = this.ATp;
+    float f1 = this.FdR;
+    float f2 = this.FdS;
+    float f3 = this.FdR;
+    float f4 = this.dhi;
+    float f5 = this.dhj;
+    Object localObject = this.FdV;
     paramTransformation = paramTransformation.getMatrix();
     ((Camera)localObject).save();
-    if (this.ATo) {
-      ((Camera)localObject).translate(0.0F, 0.0F, this.ATn * paramFloat);
+    if (this.FdU) {
+      ((Camera)localObject).translate(0.0F, 0.0F, this.FdT * paramFloat);
     }
     for (;;)
     {
@@ -83,7 +83,7 @@ public final class a
       paramTransformation.postTranslate(f4, f5);
       AppMethodBeat.o(100452);
       return;
-      ((Camera)localObject).translate(0.0F, 0.0F, this.ATn * (1.0F - paramFloat));
+      ((Camera)localObject).translate(0.0F, 0.0F, this.FdT * (1.0F - paramFloat));
     }
   }
   
@@ -91,13 +91,13 @@ public final class a
   {
     AppMethodBeat.i(100451);
     super.initialize(paramInt1, paramInt2, paramInt3, paramInt4);
-    this.ATp = new Camera();
+    this.FdV = new Camera();
     AppMethodBeat.o(100451);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.a
  * JD-Core Version:    0.7.0.1
  */

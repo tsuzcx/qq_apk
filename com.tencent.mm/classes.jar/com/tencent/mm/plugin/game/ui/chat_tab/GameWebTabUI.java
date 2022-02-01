@@ -14,357 +14,381 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.luggage.d.j;
 import com.tencent.luggage.d.s;
-import com.tencent.luggage.h.e.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.type.IPCInteger;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.game.luggage.LuggageGameWebViewUI;
-import com.tencent.mm.plugin.game.luggage.f.d.a;
+import com.tencent.mm.plugin.game.luggage.g.f;
 import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMActivity;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
 public class GameWebTabUI
   extends LuggageGameWebViewUI
-  implements e.a
+  implements com.tencent.luggage.h.f.a
 {
-  private int omK;
-  private GameTabWidget2 uEU;
-  private BroadcastReceiver uEX;
-  private String uFE;
-  private GameTabData2 uFF;
+  private int pzw;
+  private GameTabWidget2 xWR;
+  private BroadcastReceiver xWV;
+  private String xXH;
+  private GameTabData2 xXI;
+  private boolean xXJ;
+  private d<Bundle> xXK;
   
   public GameWebTabUI()
   {
-    AppMethodBeat.i(195764);
-    this.omK = 0;
-    this.uEX = new BroadcastReceiver()
+    AppMethodBeat.i(204293);
+    this.pzw = 0;
+    this.xXJ = true;
+    this.xXK = new d() {};
+    this.xWV = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
-        AppMethodBeat.i(195759);
+        AppMethodBeat.i(204285);
         if ((paramAnonymousIntent != null) && ("com.tencent.mm.game.ACTION_EXIT".equals(paramAnonymousIntent.getAction())) && (GameWebTabUI.this != null) && (!GameWebTabUI.this.isFinishing()))
         {
-          ae.i("MicroMsg.GameWebTabUI", "GameWebTabUI exit!");
+          Log.i("MicroMsg.GameWebTabUI", "GameWebTabUI exit!");
           GameWebTabUI.this.finish();
         }
-        AppMethodBeat.o(195759);
+        AppMethodBeat.o(204285);
       }
     };
-    AppMethodBeat.o(195764);
+    AppMethodBeat.o(204293);
   }
   
-  private void a(GameTabData2.TabItem paramTabItem)
+  private void a(GameTabData2.TabItem paramTabItem, boolean paramBoolean)
   {
-    AppMethodBeat.i(195769);
-    if ((paramTabItem == null) || (this.uek == null))
+    AppMethodBeat.i(204298);
+    if ((paramTabItem == null) || (this.xwj == null))
     {
-      AppMethodBeat.o(195769);
+      AppMethodBeat.o(204298);
       return;
     }
-    com.tencent.mm.plugin.game.luggage.f.d locald = this.uek;
-    String str1 = paramTabItem.upi;
+    f localf = this.xwj;
+    String str1 = paramTabItem.xHB;
     String str2 = paramTabItem.jumpUrl;
-    if ((bu.isNullOrNil(str1)) || (bu.isNullOrNil(str2)) || (locald.ufF.containsKey(str1)) || (locald.ufI == null)) {}
+    if ((Util.isNullOrNil(str1)) || (Util.isNullOrNil(str2)) || (localf.xxQ.containsKey(str1)) || (localf.xxT == null)) {}
     for (;;)
     {
-      ae.i("MicroMsg.GameWebTabUI", "Preload tabItem[key:%s, url:%s]", new Object[] { paramTabItem.upi, paramTabItem.jumpUrl });
-      AppMethodBeat.o(195769);
+      Log.i("MicroMsg.GameWebTabUI", "Preload tabItem[key:%s, url:%s, isPreload:%b]", new Object[] { paramTabItem.xHB, paramTabItem.jumpUrl, Boolean.valueOf(paramBoolean) });
+      AppMethodBeat.o(204298);
       return;
-      ae.i("MicroMsg.GameTabWebPage", "insertTabHomeWeb, tabKey:%s, url:%s", new Object[] { str1, str2 });
+      Log.i("MicroMsg.GameTabWebPage", "insertTabHomeWeb, tabKey:%s, url:%s", new Object[] { str1, str2 });
       Bundle localBundle = new Bundle();
-      localBundle.putAll(locald.mParams);
+      localBundle.putAll(localf.mParams);
       localBundle.putString("rawUrl", str2);
-      com.tencent.mm.plugin.game.luggage.f.g localg = new com.tencent.mm.plugin.game.luggage.f.g(locald.chm, null, localBundle);
-      if (localg.eSQ() != null) {
-        localg.eSQ().eTj();
+      com.tencent.mm.plugin.game.luggage.g.i locali = new com.tencent.mm.plugin.game.luggage.g.i(localf.ctg, null, localBundle);
+      if (locali.gbC() != null) {
+        locali.gbC().gbW();
       }
-      localg.ugE = locald;
-      locald.a(localg, str1);
-      locald.ufI.addView(localg.mContentView, 0, new FrameLayout.LayoutParams(-1, -1));
-      localg.g(str2, localBundle);
-      locald.ufF.put(str1, localg);
+      locali.xyT = localf;
+      locali.xyU = paramBoolean;
+      if ((localf.pQZ != null) && (localf.pQZ.isPaused()))
+      {
+        locali.xyW = true;
+        Log.i("MicroMsg.GameTabWebPage", "mockFetchFcp, isPreload:%b, url:%s", new Object[] { Boolean.valueOf(paramBoolean), str2 });
+      }
+      localf.a(locali, str1);
+      localf.xxT.addView(locali.mContentView, 0, new FrameLayout.LayoutParams(-1, -1));
+      locali.g(str2, localBundle);
+      localf.xxQ.put(str1, locali);
     }
   }
   
-  public final boolean Fx()
+  public final boolean Pg()
   {
-    AppMethodBeat.i(195766);
-    a.fE(this);
-    AppMethodBeat.o(195766);
+    AppMethodBeat.i(204295);
+    a.gk(this);
+    AppMethodBeat.o(204295);
     return true;
   }
   
-  public final void cZJ()
+  public final void dTn()
   {
-    AppMethodBeat.i(195767);
-    a.fE(this);
-    AppMethodBeat.o(195767);
+    AppMethodBeat.i(204296);
+    a.gk(this);
+    AppMethodBeat.o(204296);
   }
   
-  public final void cZK()
+  public final void dTo()
   {
-    AppMethodBeat.i(195768);
-    super.cZK();
-    if (this.uek != null) {
-      this.uek.ufH = new d.a()
+    AppMethodBeat.i(204297);
+    super.dTo();
+    if (this.xwj != null) {
+      this.xwj.xxS = new com.tencent.mm.plugin.game.luggage.g.f.a()
       {
-        public final void HX(final int paramAnonymousInt)
+        public final boolean Lw()
         {
-          AppMethodBeat.i(195754);
-          ae.i("MicroMsg.GameWebTabUI", "showGameTab, isShowTab:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
-          com.tencent.e.h.MqF.aM(new Runnable()
+          AppMethodBeat.i(204284);
+          if (GameWebTabUI.a(GameWebTabUI.this) != null)
+          {
+            boolean bool = GameWebTabUI.a(GameWebTabUI.this).xXs;
+            AppMethodBeat.o(204284);
+            return bool;
+          }
+          AppMethodBeat.o(204284);
+          return true;
+        }
+        
+        public final void Oa(final int paramAnonymousInt)
+        {
+          AppMethodBeat.i(204279);
+          Log.i("MicroMsg.GameWebTabUI", "showGameTab, isShowTab:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          com.tencent.f.h.RTc.aV(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(195753);
+              AppMethodBeat.i(204278);
               if (paramAnonymousInt == 0)
               {
                 GameWebTabUI.a(GameWebTabUI.this).setVisibility(8);
-                AppMethodBeat.o(195753);
+                AppMethodBeat.o(204278);
                 return;
               }
               if (paramAnonymousInt == 1) {
                 GameWebTabUI.a(GameWebTabUI.this).setVisibility(0);
               }
-              AppMethodBeat.o(195753);
+              AppMethodBeat.o(204278);
             }
           });
-          AppMethodBeat.o(195754);
+          AppMethodBeat.o(204279);
         }
         
-        public final void HY(int paramAnonymousInt)
+        public final void Ob(int paramAnonymousInt)
         {
-          AppMethodBeat.i(195756);
-          ae.i("MicroMsg.GameWebTabUI", "disableTabSwitch, isSwitchEnable:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+          AppMethodBeat.i(204281);
+          Log.i("MicroMsg.GameWebTabUI", "disableTabSwitch, isSwitchEnable:%d", new Object[] { Integer.valueOf(paramAnonymousInt) });
           if (GameWebTabUI.a(GameWebTabUI.this) == null)
           {
-            AppMethodBeat.o(195756);
+            AppMethodBeat.o(204281);
             return;
           }
           if (paramAnonymousInt == 0)
           {
             GameWebTabUI.a(GameWebTabUI.this).setTabSwitchEnable(false);
-            AppMethodBeat.o(195756);
+            AppMethodBeat.o(204281);
             return;
           }
           if (paramAnonymousInt == 1) {
             GameWebTabUI.a(GameWebTabUI.this).setTabSwitchEnable(true);
           }
-          AppMethodBeat.o(195756);
+          AppMethodBeat.o(204281);
         }
         
-        public final boolean aKK()
+        public final int dTE()
         {
-          AppMethodBeat.i(224260);
-          if (GameWebTabUI.a(GameWebTabUI.this) != null)
-          {
-            boolean bool = GameWebTabUI.a(GameWebTabUI.this).DRr;
-            AppMethodBeat.o(224260);
-            return bool;
-          }
-          AppMethodBeat.o(224260);
-          return true;
-        }
-        
-        public final int cZW()
-        {
-          AppMethodBeat.i(195755);
+          AppMethodBeat.i(204280);
           int i = GameWebTabUI.a(GameWebTabUI.this).getHeight();
-          int j = com.tencent.mm.plugin.appbrand.y.g.vM(i);
-          ae.i("MicroMsg.GameWebTabUI", "tabHeight:%d, heightInH5:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-          AppMethodBeat.o(195755);
+          int j = g.zB(i);
+          Log.i("MicroMsg.GameWebTabUI", "tabHeight:%d, heightInH5:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+          AppMethodBeat.o(204280);
           return j;
         }
         
-        public final String cZX()
+        public final String dTF()
         {
-          AppMethodBeat.i(195757);
+          AppMethodBeat.i(204282);
           if (GameWebTabUI.b(GameWebTabUI.this) != null)
           {
             String str = GameWebTabUI.b(GameWebTabUI.this).toJson();
-            AppMethodBeat.o(195757);
+            AppMethodBeat.o(204282);
             return str;
           }
-          AppMethodBeat.o(195757);
+          AppMethodBeat.o(204282);
           return "";
         }
         
         public final void setPageChanging(boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(195758);
+          AppMethodBeat.i(204283);
           if (GameWebTabUI.a(GameWebTabUI.this) != null) {
             GameWebTabUI.a(GameWebTabUI.this).setPageChanging(paramAnonymousBoolean);
           }
-          AppMethodBeat.o(195758);
+          AppMethodBeat.o(204283);
         }
       };
     }
-    AppMethodBeat.o(195768);
+    AppMethodBeat.o(204297);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(195772);
+    AppMethodBeat.i(204302);
     super.onConfigurationChanged(paramConfiguration);
-    if (this.omK != paramConfiguration.orientation)
+    if (this.pzw != paramConfiguration.orientation)
     {
-      ae.i("MicroMsg.GameWebTabUI", "orientation:%d", new Object[] { Integer.valueOf(paramConfiguration.orientation) });
-      if (this.uEU != null) {
-        this.uEU.dcW();
+      Log.i("MicroMsg.GameWebTabUI", "orientation:%d", new Object[] { Integer.valueOf(paramConfiguration.orientation) });
+      if (this.xWR != null) {
+        this.xWR.dWE();
       }
-      this.omK = paramConfiguration.orientation;
+      this.pzw = paramConfiguration.orientation;
     }
-    AppMethodBeat.o(195772);
+    AppMethodBeat.o(204302);
   }
   
   public void onCreate(final Bundle paramBundle)
   {
-    AppMethodBeat.i(195765);
+    AppMethodBeat.i(204294);
     super.onCreate(paramBundle);
-    ae.i("MicroMsg.GameWebTabUI", "onCreate");
-    if (this.ueg == null)
+    Log.i("MicroMsg.GameWebTabUI", "onCreate");
+    if (this.xwg == null)
     {
       finish();
-      AppMethodBeat.o(195765);
+      AppMethodBeat.o(204294);
       return;
     }
-    this.uEU = a.b(this, this.ueg.chr);
-    this.uFF = ((GameTabData2)getIntent().getParcelableExtra("game_tab_data"));
-    this.uFE = getIntent().getStringExtra("game_tab_key");
-    if (this.uFF != null)
+    this.xWR = a.b(this, this.xwg.ctl);
+    this.xXI = ((GameTabData2)getIntent().getParcelableExtra("game_tab_data"));
+    this.xXH = getIntent().getStringExtra("game_tab_key");
+    if (this.xXI != null)
     {
-      paramBundle = this.uFF.afz().iterator();
+      paramBundle = this.xXI.avn().iterator();
       while (paramBundle.hasNext())
       {
         final GameTabData2.TabItem localTabItem = (GameTabData2.TabItem)paramBundle.next();
-        if ((localTabItem.dvm == 2) && (!bu.isNullOrNil(localTabItem.jumpUrl)) && (!localTabItem.upi.equalsIgnoreCase(this.uFE)) && (!localTabItem.uFl))
+        if ((localTabItem.dLS == 2) && (!Util.isNullOrNil(localTabItem.jumpUrl)) && (!localTabItem.xHB.equalsIgnoreCase(this.xXH)) && (!localTabItem.xXk))
         {
           Runnable local1 = new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(195751);
+              AppMethodBeat.i(204276);
               if ((GameWebTabUI.this.isFinishing()) || (GameWebTabUI.this.isDestroyed()))
               {
-                AppMethodBeat.o(195751);
+                AppMethodBeat.o(204276);
                 return;
               }
               GameWebTabUI.a(GameWebTabUI.this, localTabItem);
-              AppMethodBeat.o(195751);
+              AppMethodBeat.o(204276);
             }
           };
-          long l = localTabItem.uFm * 1000;
-          this.ueg.chr.postDelayed(local1, l);
+          long l = localTabItem.xXl * 1000;
+          this.xwg.ctl.postDelayed(local1, l);
         }
       }
     }
-    this.ueg.chy.Cj().cqV = this;
-    if ((this.ueg.chr instanceof ViewGroup))
+    this.xwg.cts.LA().cDn = this;
+    if ((this.xwg.ctl instanceof ViewGroup))
     {
-      paramBundle = (ViewGroup)this.ueg.chr;
+      paramBundle = (ViewGroup)this.xwg.ctl;
       paramBundle.setOnHierarchyChangeListener(new ViewGroup.OnHierarchyChangeListener()
       {
         public final void onChildViewAdded(View paramAnonymousView1, View paramAnonymousView2)
         {
-          AppMethodBeat.i(195760);
+          AppMethodBeat.i(204286);
           if (((paramAnonymousView2.getTag() instanceof String)) && ("game_float_view_tag".equalsIgnoreCase((String)paramAnonymousView2.getTag())))
           {
             int i = paramBundle.indexOfChild(paramAnonymousView2);
-            ae.i("MicroMsg.GameWebTabUI", "float page index2:%d", new Object[] { Integer.valueOf(i) });
+            Log.i("MicroMsg.GameWebTabUI", "float page index2:%d", new Object[] { Integer.valueOf(i) });
             if (i >= 0)
             {
               paramBundle.removeView(GameWebTabUI.a(GameWebTabUI.this));
               paramBundle.addView(GameWebTabUI.a(GameWebTabUI.this), i - 1);
             }
           }
-          AppMethodBeat.o(195760);
+          AppMethodBeat.o(204286);
         }
         
         public final void onChildViewRemoved(View paramAnonymousView1, View paramAnonymousView2) {}
       });
       int i = paramBundle.indexOfChild(paramBundle.findViewWithTag("game_float_view_tag"));
-      ae.i("MicroMsg.GameWebTabUI", "float page index1:%d", new Object[] { Integer.valueOf(i) });
+      Log.i("MicroMsg.GameWebTabUI", "float page index1:%d", new Object[] { Integer.valueOf(i) });
       if (i >= 0)
       {
-        paramBundle.removeView(this.uEU);
-        paramBundle.addView(this.uEU, i);
+        paramBundle.removeView(this.xWR);
+        paramBundle.addView(this.xWR, i);
       }
     }
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mm.game.ACTION_EXIT");
-    registerReceiver(this.uEX, paramBundle, "com.tencent.mm.permission.MM_MESSAGE", null);
-    com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", new IPCInteger(1), GameWebTabUI.a.class, new com.tencent.mm.ipcinvoker.d() {});
-    AppMethodBeat.o(195765);
+    registerReceiver(this.xWV, paramBundle, com.tencent.mm.plugin.game.a.xtn, null);
+    com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, new IPCInteger(1), GameWebTabUI.a.class, this.xXK);
+    AppMethodBeat.o(204294);
   }
   
   public void onDestroy()
   {
-    AppMethodBeat.i(195771);
+    AppMethodBeat.i(204301);
     super.onDestroy();
-    ae.i("MicroMsg.GameWebTabUI", "onDestroy");
-    unregisterReceiver(this.uEX);
-    com.tencent.mm.ipcinvoker.h.a("com.tencent.mm", new IPCInteger(2), GameWebTabUI.a.class, null);
-    a.fE(this);
-    AppMethodBeat.o(195771);
+    Log.i("MicroMsg.GameWebTabUI", "onDestroy");
+    unregisterReceiver(this.xWV);
+    com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, new IPCInteger(2), GameWebTabUI.a.class, null);
+    a.gk(this);
+    AppMethodBeat.o(204301);
   }
   
   public void onNewIntent(Intent paramIntent)
   {
-    AppMethodBeat.i(195770);
+    AppMethodBeat.i(204299);
     super.onNewIntent(paramIntent);
-    overridePendingTransition(2130772069, 2130772069);
-    ae.i("MicroMsg.GameWebTabUI", "onNewIntent");
+    overridePendingTransition(2130772082, 2130772082);
+    Log.i("MicroMsg.GameWebTabUI", "onNewIntent");
     if (paramIntent == null)
     {
-      AppMethodBeat.o(195770);
+      AppMethodBeat.o(204299);
       return;
     }
     setIntent(paramIntent);
     String str = paramIntent.getStringExtra("game_tab_key");
-    if (bu.nullAsNil(this.uFE).equalsIgnoreCase(str))
+    if (Util.nullAsNil(this.xXH).equalsIgnoreCase(str))
     {
-      AppMethodBeat.o(195770);
+      AppMethodBeat.o(204299);
       return;
     }
-    this.uFE = str;
+    this.xXH = str;
     paramIntent = paramIntent.getStringExtra("game_red_dot_tab_key");
-    if (this.uEU != null) {
-      this.uEU.hi(str, paramIntent);
+    if (this.xWR != null) {
+      this.xWR.hP(str, paramIntent);
     }
-    if ((this.uFF == null) || (this.uek == null))
+    if ((this.xXI == null) || (this.xwj == null))
     {
-      AppMethodBeat.o(195770);
+      AppMethodBeat.o(204299);
       return;
     }
-    a((GameTabData2.TabItem)this.uFF.uEZ.get(str));
-    paramIntent = this.uek;
-    com.tencent.mm.plugin.game.luggage.f.g localg;
-    if (!bu.isNullOrNil(str))
+    a((GameTabData2.TabItem)this.xXI.xWX.get(str), false);
+    paramIntent = this.xwj;
+    com.tencent.mm.plugin.game.luggage.g.i locali;
+    if (!Util.isNullOrNil(str))
     {
-      localg = (com.tencent.mm.plugin.game.luggage.f.g)paramIntent.ufF.get(str);
-      if (localg != null)
+      locali = (com.tencent.mm.plugin.game.luggage.g.i)paramIntent.xxQ.get(str);
+      if (locali != null)
       {
-        ae.i("MicroMsg.GameTabWebPage", "switch to tab: %s", new Object[] { str });
-        if ((!(localg instanceof com.tencent.mm.plugin.game.luggage.f.d)) || (paramIntent.ufJ == null)) {
-          break label235;
+        Log.i("MicroMsg.GameTabWebPage", "switch to tab: %s", new Object[] { str });
+        if ((!(locali instanceof f)) || (paramIntent.xxU == null)) {
+          break label236;
         }
-        paramIntent.ufJ.bringToFront();
+        paramIntent.xxU.bringToFront();
       }
     }
     for (;;)
     {
-      paramIntent.ufK = localg;
-      if (this.uEU != null) {
-        this.uEU.bringToFront();
+      paramIntent.xxV = locali;
+      if (this.xWR != null) {
+        this.xWR.bringToFront();
       }
-      AppMethodBeat.o(195770);
+      AppMethodBeat.o(204299);
       return;
-      label235:
-      localg.mContentView.bringToFront();
+      label236:
+      locali.mContentView.bringToFront();
     }
+  }
+  
+  public void onResume()
+  {
+    AppMethodBeat.i(204300);
+    super.onResume();
+    if (!this.xXJ) {
+      com.tencent.mm.ipcinvoker.h.a(MainProcessIPCService.dkO, new IPCInteger(3), GameWebTabUI.a.class, this.xXK);
+    }
+    this.xXJ = false;
+    AppMethodBeat.o(204300);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)

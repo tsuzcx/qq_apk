@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class pq
-  extends b
+  extends IEvent
 {
-  public a dEV;
-  public b dEW;
+  public a dVG;
   
   public pq()
   {
@@ -16,27 +15,21 @@ public final class pq
   
   private pq(byte paramByte)
   {
-    AppMethodBeat.i(149881);
-    this.dEV = new a();
-    this.dEW = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(149878);
+    this.dVG = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(149881);
+    AppMethodBeat.o(149878);
   }
   
   public static final class a
   {
-    public String dEX;
-  }
-  
-  public static final class b
-  {
-    public int ret = 0;
+    public byte[] content;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.g.a.pq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,180 +1,328 @@
 package com.tencent.mm.plugin.voip.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.ab.i;
+import com.tencent.mm.compatible.deviceinfo.ae;
+import com.tencent.mm.compatible.deviceinfo.k;
+import com.tencent.mm.media.k.d;
+import com.tencent.mm.media.k.d.a;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/util/VoipPrevReportHelper;", "", "()V", "ID", "", "TAG", "", "markAddViewFullScreenToRendererCost", "", "data", "markAddViewFullScreenToRendererCostFirst", "markAddViewFullScreenToRendererCostInvite", "markAddViewMiniWindowToRendererCost", "markAddViewMiniWindowToRendererCostFirst", "markAddViewMiniWindowToRendererCostInvite", "markBatteryPropertyCurrentInHW", "markBatteryPropertyCurrentInSW", "markCameraRendererPerFrameMiniWindowCostWithFaceBeauty", "cost", "markCameraRendererPerFramePrevFullScreenCost", "markCameraRendererPerFramePrevFullScreenCostWithFaceBeauty", "markCameraRendererPerFramePrevMiniWindowCost", "markDecodeModeChangeToHW", "count", "markDecodeModeChangeToSW", "markHWRendererPerFrameFullScreenCost", "markHWRendererPerFrameMiniWindowCost", "markVoipRendererUsePrev", "markYuvRendererPerFrameFullScreenCost", "markYuvRendererPerFrameMiniWindowCost", "plugin-voip_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/util/VoipRendererHelper;", "", "()V", "TAG", "", "checkPermissionByGpuInfo", "", "remoteInfo", "getXSettingVoipBeautyValue", "", "isAllowToUseFaceBeauty", "isNotAllowToUseFaceBeautyByGPUInfo", "isUseGpuCrop", "isUseGpuRgb2Yuv", "isUseNewCameraModular", "isUseNewVoipRenderer", "isUseRemovePreviewCallback", "isVoipUseCameraApi2", "isXSettingAllowToCheckGpu", "plugin-voip_release"})
 public final class g
 {
-  public static final g CCV;
-  private static final String TAG = "MicroMsg.VoipPrevReportHelper";
-  private static final long pXC = 1303L;
+  public static final g HgZ;
   
   static
   {
-    AppMethodBeat.i(210411);
-    CCV = new g();
-    TAG = "MicroMsg.VoipPrevReportHelper";
-    pXC = 1303L;
-    AppMethodBeat.o(210411);
+    AppMethodBeat.i(236080);
+    HgZ = new g();
+    AppMethodBeat.o(236080);
   }
   
-  public static void BZ(long paramLong)
+  private static boolean aUC(String paramString)
   {
-    AppMethodBeat.i(210393);
-    ae.i(TAG, "markDecodeModeChangeToHW,count=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 1, 41, (int)paramLong, false);
-    AppMethodBeat.o(210393);
+    boolean bool1 = true;
+    boolean bool2 = true;
+    AppMethodBeat.i(236079);
+    i locali = new i(paramString);
+    int i = locali.optInt("code");
+    Log.i("MicroMsg.VoipRendererHelper", "gpu faceBeauty black list is ".concat(String.valueOf(paramString)));
+    paramString = d.ilx.aNf();
+    if (!Util.isNullOrNil(paramString)) {
+      for (;;)
+      {
+        try
+        {
+          paramString = new i(paramString);
+          if (i == 0) {
+            continue;
+          }
+          if (i != paramString.optInt("code")) {
+            continue;
+          }
+          bool1 = bool2;
+          if (bool2)
+          {
+            Log.i("MicroMsg.VoipRendererHelper", "code is fit true cause code fit");
+            bool1 = bool2;
+          }
+        }
+        catch (Exception paramString)
+        {
+          Log.printErrStackTrace("MicroMsg.VoipRendererHelper", (Throwable)paramString, "checkPermissionByGpuInfo error", new Object[0]);
+          bool1 = false;
+          continue;
+          bool2 = false;
+          continue;
+        }
+        AppMethodBeat.o(236079);
+        return bool1;
+        bool2 = false;
+        continue;
+        if ((!p.j(locali.optString("vendor"), paramString.optString("vendor"))) || (!p.j(locali.optString("name"), paramString.optString("name"))) || (!p.j(locali.optString("version"), paramString.optString("version")))) {
+          continue;
+        }
+        bool2 = bool1;
+        bool1 = bool2;
+        if (bool2)
+        {
+          Log.i("MicroMsg.VoipRendererHelper", "code is fit true cause name and vendor and version fit");
+          bool1 = bool2;
+        }
+      }
+    }
+    AppMethodBeat.o(236079);
+    return false;
   }
   
-  public static void Ca(long paramLong)
+  public static final boolean fKe()
   {
-    AppMethodBeat.i(210394);
-    ae.i(TAG, "markDecodeModeChangeToSW,count=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 2, 42, (int)paramLong, false);
-    AppMethodBeat.o(210394);
+    AppMethodBeat.i(236070);
+    boolean bool;
+    switch (ae.gKE.gHk)
+    {
+    case 0: 
+    default: 
+      bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWP, false);
+      AppMethodBeat.o(236070);
+      return bool;
+    case -1: 
+      if (BuildInfo.IS_FLAVOR_RED)
+      {
+        AppMethodBeat.o(236070);
+        return true;
+      }
+      bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWP, false);
+      AppMethodBeat.o(236070);
+      return bool;
+    case 2: 
+      AppMethodBeat.o(236070);
+      return false;
+    }
+    AppMethodBeat.o(236070);
+    return true;
   }
   
-  public static void Cb(long paramLong)
+  public static final boolean fKf()
   {
-    AppMethodBeat.i(210395);
-    ae.i(TAG, "markBatteryPropertyCurrentInHW,data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 3, 21, (int)paramLong, false);
-    AppMethodBeat.o(210395);
+    AppMethodBeat.i(236071);
+    switch (ae.gKE.gHo)
+    {
+    case 0: 
+    default: 
+      AppMethodBeat.o(236071);
+      return false;
+    case -1: 
+      if (com.tencent.mm.media.widget.d.b.rG(12))
+      {
+        AppMethodBeat.o(236071);
+        return true;
+      }
+      if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG))
+      {
+        AppMethodBeat.o(236071);
+        return true;
+      }
+      AppMethodBeat.o(236071);
+      return false;
+    case 2: 
+      AppMethodBeat.o(236071);
+      return false;
+    }
+    AppMethodBeat.o(236071);
+    return true;
   }
   
-  public static void Cc(long paramLong)
+  public static final boolean fKg()
   {
-    AppMethodBeat.i(210396);
-    ae.i(TAG, "markBatteryPropertyCurrentInSW, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 4, 22, (int)paramLong, false);
-    AppMethodBeat.o(210396);
+    AppMethodBeat.i(236072);
+    if ((fKh()) && (fKf()))
+    {
+      AppMethodBeat.o(236072);
+      return true;
+    }
+    boolean bool;
+    switch (ae.gKE.gHn)
+    {
+    case 0: 
+    default: 
+      bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWQ, false);
+      AppMethodBeat.o(236072);
+      return bool;
+    case -1: 
+      if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG))
+      {
+        AppMethodBeat.o(236072);
+        return true;
+      }
+      bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWQ, false);
+      AppMethodBeat.o(236072);
+      return bool;
+    case 2: 
+      AppMethodBeat.o(236072);
+      return false;
+    }
+    AppMethodBeat.o(236072);
+    return true;
   }
   
-  public static void Cd(long paramLong)
+  public static final boolean fKh()
   {
-    AppMethodBeat.i(210397);
-    ae.i(TAG, "markAddViewFullScreenToRendererCost, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 7, 5, (int)paramLong, false);
-    AppMethodBeat.o(210397);
+    AppMethodBeat.i(236073);
+    boolean bool;
+    switch (ae.gKE.gHp)
+    {
+    case 0: 
+    default: 
+      bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWR, false);
+      AppMethodBeat.o(236073);
+      return bool;
+    case -1: 
+      if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG))
+      {
+        AppMethodBeat.o(236073);
+        return true;
+      }
+      bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWR, false);
+      AppMethodBeat.o(236073);
+      return bool;
+    case 2: 
+      AppMethodBeat.o(236073);
+      return false;
+    }
+    AppMethodBeat.o(236073);
+    return true;
   }
   
-  public static void Ce(long paramLong)
+  public static boolean fKi()
   {
-    AppMethodBeat.i(210398);
-    ae.i(TAG, "markAddViewMiniWindowToRendererCost, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 8, 6, (int)paramLong, false);
-    AppMethodBeat.o(210398);
+    AppMethodBeat.i(236074);
+    switch (ae.gKE.gHq)
+    {
+    default: 
+      if (BuildInfo.IS_FLAVOR_RED)
+      {
+        AppMethodBeat.o(236074);
+        return true;
+      }
+      break;
+    case 2: 
+      AppMethodBeat.o(236074);
+      return false;
+    case 1: 
+      AppMethodBeat.o(236074);
+      return true;
+    }
+    if ((fKj()) || (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWW, false)))
+    {
+      AppMethodBeat.o(236074);
+      return true;
+    }
+    AppMethodBeat.o(236074);
+    return false;
   }
   
-  public static void Cf(long paramLong)
+  public static boolean fKj()
   {
-    AppMethodBeat.i(210399);
-    ae.i(TAG, "markYuvRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 11, 9, (int)paramLong, false);
-    AppMethodBeat.o(210399);
+    AppMethodBeat.i(236075);
+    switch (ae.gKE.gHr)
+    {
+    default: 
+      if (BuildInfo.IS_FLAVOR_RED)
+      {
+        AppMethodBeat.o(236075);
+        return true;
+      }
+      break;
+    case 2: 
+      AppMethodBeat.o(236075);
+      return false;
+    case 1: 
+      AppMethodBeat.o(236075);
+      return true;
+    }
+    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWX, false);
+    AppMethodBeat.o(236075);
+    return bool;
   }
   
-  public static void Cg(long paramLong)
+  public static final int fKk()
   {
-    AppMethodBeat.i(210400);
-    ae.i(TAG, "markYuvRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 12, 10, (int)paramLong, false);
-    AppMethodBeat.o(210400);
+    AppMethodBeat.i(236076);
+    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWV, 1);
+    AppMethodBeat.o(236076);
+    return i;
   }
   
-  public static void Ch(long paramLong)
+  public static final boolean fKl()
   {
-    AppMethodBeat.i(210401);
-    ae.i(TAG, "markHWRendererPerFrameFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 15, 13, (int)paramLong, false);
-    AppMethodBeat.o(210401);
+    AppMethodBeat.i(236077);
+    if ((((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWU, false)) && (!fKm()))
+    {
+      int i = d.ilx.aNe();
+      int j = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWS, 50);
+      Log.i("MicroMsg.VoipRendererHelper", "gpu info rating is " + i + " and remote limited is " + j);
+      if (i >= j)
+      {
+        AppMethodBeat.o(236077);
+        return true;
+      }
+    }
+    AppMethodBeat.o(236077);
+    return false;
   }
   
-  public static void Ci(long paramLong)
+  private static boolean fKm()
   {
-    AppMethodBeat.i(210402);
-    ae.i(TAG, "markHWRendererPerFrameMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 16, 14, (int)paramLong, false);
-    AppMethodBeat.o(210402);
-  }
-  
-  public static void Cj(long paramLong)
-  {
-    AppMethodBeat.i(210403);
-    ae.i(TAG, "markCameraRendererPerFrameNewFullScreenCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 19, 17, (int)paramLong, false);
-    AppMethodBeat.o(210403);
-  }
-  
-  public static void Ck(long paramLong)
-  {
-    AppMethodBeat.i(210404);
-    ae.i(TAG, "markCameraRendererPerFrameNewMiniWindowCost,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 20, 18, (int)paramLong, false);
-    AppMethodBeat.o(210404);
-  }
-  
-  public static void Cl(long paramLong)
-  {
-    AppMethodBeat.i(210405);
-    ae.i(TAG, "markHWRendererPerFrameMiniWindowCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 49, 51, (int)paramLong, false);
-    AppMethodBeat.o(210405);
-  }
-  
-  public static void Cm(long paramLong)
-  {
-    AppMethodBeat.i(210406);
-    ae.i(TAG, "markCameraRendererPerFramePrevFullScreenCostWithFaceBeauty,cost=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 50, 52, (int)paramLong, false);
-    AppMethodBeat.o(210406);
-  }
-  
-  public static void Cn(long paramLong)
-  {
-    AppMethodBeat.i(210407);
-    ae.i(TAG, "markAddViewFullScreenToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 35, 33, (int)paramLong, false);
-    AppMethodBeat.o(210407);
-  }
-  
-  public static void Co(long paramLong)
-  {
-    AppMethodBeat.i(210408);
-    ae.i(TAG, "markAddViewMiniWindowToRendererCostInvite, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 36, 34, (int)paramLong, false);
-    AppMethodBeat.o(210408);
-  }
-  
-  public static void Cp(long paramLong)
-  {
-    AppMethodBeat.i(210409);
-    ae.i(TAG, "markAddViewFullScreenToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 39, 43, (int)paramLong, false);
-    AppMethodBeat.o(210409);
-  }
-  
-  public static void Cq(long paramLong)
-  {
-    AppMethodBeat.i(210410);
-    ae.i(TAG, "markAddViewMiniWindowToRendererCostFirst, data=".concat(String.valueOf(paramLong)));
-    com.tencent.mm.plugin.report.service.g.yxI.c((int)pXC, 40, 44, (int)paramLong, false);
-    AppMethodBeat.o(210410);
-  }
-  
-  public static void eDm()
-  {
-    AppMethodBeat.i(210392);
-    ae.i(TAG, "markVoipRendererUsePrev");
-    com.tencent.mm.plugin.report.service.g.yxI.n(pXC, 0L, 1L);
-    AppMethodBeat.o(210392);
+    AppMethodBeat.i(236078);
+    Object localObject = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rWT, "");
+    p.g(localObject, "remoteRatingLimited");
+    localObject = ((Iterable)n.a((CharSequence)localObject, new char[] { ';' })).iterator();
+    boolean bool = false;
+    for (;;)
+    {
+      if (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        if (bool)
+        {
+          AppMethodBeat.o(236078);
+          return true;
+        }
+        if (Util.isNullOrNil(str)) {
+          break label135;
+        }
+        try
+        {
+          bool = aUC(str);
+        }
+        catch (Exception localException)
+        {
+          Log.printErrStackTrace("MicroMsg.VoipRendererHelper", (Throwable)localException, "isNotAllowToUseFaceBeautyByGPUInfo error", new Object[0]);
+          bool = false;
+        }
+      }
+    }
+    label135:
+    for (;;)
+    {
+      break;
+      AppMethodBeat.o(236078);
+      return bool;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.b.g
  * JD-Core Version:    0.7.0.1
  */

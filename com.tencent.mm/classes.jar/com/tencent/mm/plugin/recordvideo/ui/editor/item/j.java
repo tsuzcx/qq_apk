@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.recordvideo.ui.editor.item;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;", "", "onBringToFront", "", "onDelete", "onUpdateMatrix", "centerX", "", "centerY", "scale", "rotate", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/ItemEditCallback;", "", "onBringToFront", "", "onDelete", "onUpdateMatrix", "centerX", "", "centerY", "scale", "rotate", "plugin-recordvideo_release"})
 public abstract interface j
 {
-  public abstract void dLr();
+  public abstract void eMr();
   
-  public abstract void dLs();
+  public abstract void eMs();
   
-  public abstract void n(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
+  public abstract void q(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.j
  * JD-Core Version:    0.7.0.1
  */

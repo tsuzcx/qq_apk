@@ -1,110 +1,111 @@
 package com.tencent.mm.plugin.appbrand.launching.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a.a;
-import com.tencent.mm.g.b.a.ix;
-import com.tencent.mm.g.b.a.ix.a;
-import com.tencent.mm.g.b.a.ix.b;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.g.b.a.mt;
+import com.tencent.mm.g.b.a.mt.a;
+import com.tencent.mm.g.b.a.mt.b;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
-import com.tencent.mm.protocal.protobuf.cmm;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.appbrand.report.quality.g;
+import com.tencent.mm.protocal.protobuf.ddz;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchGetDownloadInfoTask;", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandBasePreFetchTaskWC;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlResponse;", "enterPath", "", "userName", "appId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "cgiBack", "getEnterPath", "getUserName", "getPreFetchResult", "timeoutMs", "", "key", "preFetch", "report", "", "qualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "Companion", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchGetDownloadInfoTask;", "Lcom/tencent/mm/plugin/appbrand/launching/parallel/AppBrandBasePreFetchTaskWC;", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/PreGetDownloadUrlResponse;", "enterPath", "", "userName", "appId", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "getAppId", "()Ljava/lang/String;", "cgiBack", "getEnterPath", "getUserName", "getPreFetchResult", "timeoutMs", "", "key", "preFetch", "report", "", "qualitySession", "Lcom/tencent/mm/plugin/appbrand/report/quality/QualitySession;", "Companion", "plugin-appbrand-integration_release"})
 public final class f
-  extends a<a.a<cmm>>
+  extends a<c.a<ddz>>
 {
-  public static final a lRy;
+  public static final a mYH;
   private final String appId;
-  private final String jFL;
-  private a.a<cmm> lRx;
+  private final String kHw;
+  private c.a<ddz> mYG;
   private final String userName;
   
   static
   {
     AppMethodBeat.i(50812);
-    lRy = new a((byte)0);
+    mYH = new a((byte)0);
     AppMethodBeat.o(50812);
   }
   
   public f(String paramString1, String paramString2, String paramString3)
   {
-    this.jFL = paramString1;
+    this.kHw = paramString1;
     this.userName = paramString2;
     this.appId = paramString3;
   }
   
-  public final int Fp()
+  public final int OY()
   {
     return 1;
   }
   
-  public final void c(QualitySession paramQualitySession)
+  public final void b(QualitySession paramQualitySession)
   {
-    AppMethodBeat.i(223592);
+    AppMethodBeat.i(228753);
     p.h(paramQualitySession, "qualitySession");
-    if (this.lRx == null)
+    if (this.mYG == null)
     {
-      AppMethodBeat.o(223592);
+      AppMethodBeat.o(228753);
       return;
     }
-    long l1 = this.cqa;
-    long l2 = this.cpZ;
-    ix localix = new ix();
-    localix.rQ(paramQualitySession.lIU);
-    String str2 = localix.getAppId();
+    long l1 = this.cCt;
+    long l2 = this.cCs;
+    mt localmt = new mt();
+    localmt.zY(paramQualitySession.kEY);
+    String str2 = localmt.getAppId();
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    localix.rR(str1);
-    localix.pc(paramQualitySession.mAf);
-    localix.a(ix.a.jC(paramQualitySession.myD));
-    localix.pd(paramQualitySession.apptype);
-    localix.pe(l1 - l2);
-    localix.pf(paramQualitySession.scene);
-    localix.pg(localix.Ve());
-    localix.ph(localix.Vf());
-    if (com.tencent.mm.plugin.appbrand.n.a.e(this.lRx))
+    localmt.zZ(str1);
+    localmt.wN(paramQualitySession.nLk);
+    localmt.a(mt.a.mE(paramQualitySession.nJE));
+    localmt.wO(paramQualitySession.apptype);
+    localmt.wP(l1 - l2);
+    localmt.wQ(paramQualitySession.scene);
+    localmt.wR(localmt.aiV());
+    localmt.wS(localmt.aiW());
+    if (com.tencent.mm.plugin.appbrand.r.a.d(this.mYG))
     {
-      paramQualitySession = ix.b.eAa;
-      localix.a(paramQualitySession);
-      localix.pi(com.tencent.mm.plugin.appbrand.report.quality.f.getNetworkType());
-      localix.rS(this.userName);
-      localix.Vu();
-      if (!this.cqb) {
+      paramQualitySession = mt.b.fex;
+      localmt.a(paramQualitySession);
+      localmt.wT(g.getNetworkType());
+      localmt.Aa(this.userName);
+      localmt.ajk();
+      if (!this.cCu) {
         break label242;
       }
     }
     label242:
     for (l1 = 1L;; l1 = 0L)
     {
-      localix.pj(l1);
-      localix.aLH();
-      AppMethodBeat.o(223592);
+      localmt.wU(l1);
+      localmt.bfK();
+      AppMethodBeat.o(228753);
       return;
-      paramQualitySession = ix.b.eAb;
+      paramQualitySession = mt.b.fey;
       break;
     }
   }
   
-  public final a.a<cmm> uu(int paramInt)
+  public final c.a<ddz> yn(int paramInt)
   {
     AppMethodBeat.i(180640);
-    a.a locala = (a.a)super.gD(paramInt);
+    c.a locala = (c.a)super.hS(paramInt);
     if (locala != null) {
-      b.md(7);
+      b.pl(7);
     }
     AppMethodBeat.o(180640);
     return locala;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchGetDownloadInfoTask$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/launching/parallel/PreFetchGetDownloadInfoTask$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.d.f
  * JD-Core Version:    0.7.0.1
  */

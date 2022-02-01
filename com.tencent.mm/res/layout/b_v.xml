@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false" android:minHeight="@dimen/k4"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/gob" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/c9h" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <FrameLayout android:id="@id/god" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
-            <com.tencent.mm.plugin.sns.ui.OnlineVideoView android:id="@id/goc" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </FrameLayout>
-    </RelativeLayout>
-    <Button android:id="@id/cd8" android:visibility="gone" style="@style/a4g" />
-</FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/iqp" android:paddingTop="@dimen/ir" android:paddingBottom="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4">
+        <LinearLayout android:gravity="center|left" android:paddingLeft="@dimen/ih" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:id="@android:id/title" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" style="@style/mi" />
+            <LinearLayout android:gravity="center|right" android:orientation="vertical" android:id="@android:id/widget_frame" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="left" android:id="@android:id/summary" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:layout_marginTop="@dimen/k5" style="@style/m0" />
+    </LinearLayout>
+</LinearLayout>

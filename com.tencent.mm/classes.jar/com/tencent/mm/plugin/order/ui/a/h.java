@@ -5,26 +5,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public final class h
   extends Preference
 {
+  boolean AQN;
+  boolean AQO;
   private View mView;
-  boolean nrc;
-  boolean wUR;
-  boolean wUS;
+  boolean oAJ;
   
   public h(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66824);
     this.mView = null;
-    this.wUR = false;
-    this.wUS = false;
-    this.nrc = true;
-    setLayoutResource(2131494712);
+    this.AQN = false;
+    this.AQO = false;
+    this.oAJ = true;
+    setLayoutResource(2131495441);
     AppMethodBeat.o(66824);
   }
   
@@ -44,18 +44,18 @@ public final class h
   {
     AppMethodBeat.i(66826);
     super.onBindView(paramView);
-    paramView = paramView.findViewById(2131302042);
+    paramView = paramView.findViewById(2131304381);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramView.getLayoutParams();
-    int i = BackwardSupportUtil.b.h(this.mContext, 10.0F);
-    if (this.wUR) {}
+    int i = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 10.0F);
+    if (this.AQN) {}
     for (int j = i;; j = 0)
     {
-      if (this.wUS) {}
+      if (this.AQO) {}
       for (;;)
       {
         localLayoutParams.setMargins(0, j, 0, i);
         paramView.setLayoutParams(localLayoutParams);
-        if (!this.nrc)
+        if (!this.oAJ)
         {
           paramView.setVisibility(4);
           AppMethodBeat.o(66826);

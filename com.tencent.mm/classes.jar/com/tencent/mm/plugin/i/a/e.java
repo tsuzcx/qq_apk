@@ -1,150 +1,149 @@
 package com.tencent.mm.plugin.i.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.arw;
-import com.tencent.mm.protocal.protobuf.arx;
-import com.tencent.mm.protocal.protobuf.ary;
-import com.tencent.mm.protocal.protobuf.arz;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mm.ag.f;
+import com.tencent.mm.ag.k.b;
+import com.tencent.mm.i.d;
+import com.tencent.mm.protocal.protobuf.bci;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/findersdk/api/AppMsgContentFinderNameCard;", "Lcom/tencent/mm/message/AppContentPiece;", "()V", "value", "", "authIcon", "getAuthIcon", "()I", "setAuthIcon", "(I)V", "authIconUrl", "", "getAuthIconUrl", "()Ljava/lang/String;", "setAuthIconUrl", "(Ljava/lang/String;)V", "authJob", "getAuthJob", "setAuthJob", "avatar", "getAvatar", "setAvatar", "nickname", "getNickname", "setNickname", "shareNameCard", "Lcom/tencent/mm/protocal/protobuf/FinderShareNameCard;", "getShareNameCard", "()Lcom/tencent/mm/protocal/protobuf/FinderShareNameCard;", "setShareNameCard", "(Lcom/tencent/mm/protocal/protobuf/FinderShareNameCard;)V", "username", "getUsername", "setUsername", "cloneContent", "makeContent", "", "sb", "Ljava/lang/StringBuilder;", "content", "Lcom/tencent/mm/message/AppMessage$Content;", "cdnAttachId", "cdnResult", "Lcom/tencent/mm/cdn/keep_SceneResult;", "thumbWidth", "thumbHeight", "parseContent", "values", "", "finder-sdk_release"})
 public final class e
+  extends f
 {
-  public static String a(arz paramarz)
+  public String authIconUrl;
+  public String nickname;
+  public String uNR;
+  public String username;
+  public bci wDW;
+  public String wDX;
+  public int wDY;
+  
+  public e()
   {
-    AppMethodBeat.i(164042);
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramarz != null)
-    {
-      localStringBuilder.append("<finderTopic><topic>").append(bu.aSz(paramarz.dBe)).append("</topic><topicType>").append(paramarz.sXu).append("</topicType><iconUrl>").append(bx.aSV(paramarz.iconUrl)).append("</iconUrl><desc>").append(bu.aSz(paramarz.desc)).append("</desc>");
-      if (paramarz.GIz != null) {
-        localStringBuilder.append("<location><poiClassifyId>").append(bu.aSz(paramarz.GIz.GGA)).append("</poiClassifyId><longitude>").append(paramarz.GIz.dBu).append("</longitude><latitude>").append(paramarz.GIz.dzE).append("</latitude></location>");
-      }
-      localStringBuilder.append("</finderTopic>");
-    }
-    paramarz = localStringBuilder.toString();
-    AppMethodBeat.o(164042);
-    return paramarz;
+    AppMethodBeat.i(208777);
+    this.wDW = new bci();
+    this.username = "";
+    this.uNR = "";
+    this.nickname = "";
+    this.wDX = "";
+    this.authIconUrl = "";
+    AppMethodBeat.o(208777);
   }
   
-  public static String b(ary paramary)
+  public final void ML(int paramInt)
   {
-    AppMethodBeat.i(164040);
-    StringBuilder localStringBuilder = new StringBuilder();
-    if (paramary != null) {
-      try
-      {
-        localStringBuilder.append("<finderFeed><objectId>").append(paramary.objectId).append("</objectId><objectNonceId>").append(paramary.objectNonceId).append("</objectNonceId><feedType>").append(paramary.GIy).append("</feedType><nickname>").append(bu.aSz(paramary.nickname)).append("</nickname><username>").append(bu.aSz(paramary.username)).append("</username><avatar>").append(bx.aSV(paramary.ssR)).append("</avatar><desc>").append(bu.aSz(paramary.desc)).append("</desc><mediaCount>").append(paramary.drZ).append("</mediaCount>");
-        localStringBuilder.append("<mediaList>");
-        paramary = paramary.mediaList.iterator();
-        while (paramary.hasNext())
-        {
-          arx localarx = (arx)paramary.next();
-          localStringBuilder.append("<media><mediaType>").append(localarx.mediaType).append("</mediaType><url>").append(bx.aSV(localarx.url)).append("</url><thumbUrl>").append(bx.aSV(localarx.thumbUrl)).append("</thumbUrl><width>").append(localarx.width).append("</width><height>").append(localarx.height).append("</height><videoPlayDuration>").append(localarx.GIx).append("</videoPlayDuration></media>");
-          continue;
-          paramary = localStringBuilder.toString();
-        }
-      }
-      catch (Exception paramary)
-      {
-        ae.e("MicroMsg.FinderShareParser", "make content error! %s", new Object[] { paramary.getMessage() });
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(164040);
-      return paramary;
-      localStringBuilder.append("</mediaList>");
-      localStringBuilder.append("</finderFeed>");
-    }
+    this.wDW.wDY = paramInt;
+    this.wDY = paramInt;
   }
   
-  public static ary w(String paramString, Map<String, String> paramMap)
+  public final void a(StringBuilder paramStringBuilder, k.b paramb, String paramString, d paramd, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(164041);
-    ary localary = new ary();
-    try
-    {
-      String str = paramString + ".finderFeed";
-      int i;
-      arx localarx;
-      if ((!paramMap.isEmpty()) && (paramMap.containsKey(str + ".objectId")))
-      {
-        localary.objectId = bu.nullAsNil((String)paramMap.get(str + ".objectId"));
-        localary.objectNonceId = bu.nullAsNil((String)paramMap.get(str + ".objectNonceId"));
-        localary.GIy = bu.aSB((String)paramMap.get(str + ".feedType"));
-        localary.nickname = bu.nullAsNil((String)paramMap.get(str + ".nickname"));
-        localary.username = bu.nullAsNil((String)paramMap.get(str + ".username"));
-        localary.ssR = bu.nullAsNil((String)paramMap.get(str + ".avatar"));
-        localary.desc = bu.nullAsNil((String)paramMap.get(str + ".desc"));
-        localary.drZ = bu.aSB((String)paramMap.get(str + ".mediaCount"));
-        i = 0;
-        if (i < localary.drZ)
-        {
-          localarx = new arx();
-          paramString = str + ".mediaList.media";
-          if (i <= 0) {
-            break label695;
-          }
-          paramString = paramString + i;
-        }
-      }
-      for (;;)
-      {
-        localarx.mediaType = bu.aSB((String)paramMap.get(paramString + ".mediaType"));
-        localarx.url = bu.nullAsNil((String)paramMap.get(paramString + ".url"));
-        localarx.thumbUrl = bu.nullAsNil((String)paramMap.get(paramString + ".thumbUrl"));
-        localarx.width = bu.aSE((String)paramMap.get(paramString + ".width"));
-        localarx.height = bu.aSE((String)paramMap.get(paramString + ".height"));
-        localarx.GIx = bu.aSB((String)paramMap.get(paramString + ".videoPlayDuration"));
-        localary.mediaList.add(localarx);
-        i += 1;
-        break;
-      }
-    }
-    catch (Exception paramString)
-    {
-      ae.e("MicroMsg.FinderShareParser", "parse error! %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(164041);
-      return localary;
-    }
+    AppMethodBeat.i(168865);
+    p.h(paramStringBuilder, "sb");
+    paramStringBuilder.append("<findernamecard><username>").append(Util.escapeStringForXml(this.username)).append("</username><avatar>").append(k.b.HE(this.uNR)).append("</avatar><nickname>").append(Util.escapeStringForXml(this.nickname)).append("</nickname><auth_job>").append(Util.escapeStringForXml(this.wDX)).append("</auth_job><auth_icon>").append(this.wDY).append("</auth_icon><auth_icon_url>").append(Util.escapeStringForXml(this.authIconUrl)).append("</auth_icon_url></findernamecard>");
+    AppMethodBeat.o(168865);
   }
   
-  public static arz x(String paramString, Map<String, String> paramMap)
+  public final void a(Map<String, String> paramMap, k.b paramb)
   {
-    AppMethodBeat.i(164043);
-    arz localarz = new arz();
-    paramString = paramString + ".finderTopic";
-    arw localarw;
-    if (!paramMap.isEmpty())
-    {
-      localarz.dBe = bu.nullAsNil((String)paramMap.get(paramString + ".topic"));
-      localarz.sXu = bu.getInt((String)paramMap.get(paramString + ".topicType"), -1);
-      localarz.iconUrl = bu.nullAsNil((String)paramMap.get(paramString + ".iconUrl"));
-      localarz.desc = bu.nullAsNil((String)paramMap.get(paramString + ".desc"));
-      localarw = new arw();
-      localarw.GGA = ((String)paramMap.get(paramString + ".location.poiClassifyId"));
-      localarw.dBu = bu.getFloat((String)paramMap.get(paramString + ".location.longitude"), 0.0F);
-      localarw.dzE = bu.getFloat((String)paramMap.get(paramString + ".location.latitude"), 0.0F);
-    }
-    for (localarz.GIz = localarw;; localarz.GIz = new arw())
-    {
-      AppMethodBeat.o(164043);
-      return localarz;
-      localarz.dBe = "";
-      localarz.sXu = -1;
-      localarz.iconUrl = "";
-      localarz.desc = "";
-    }
+    AppMethodBeat.i(168866);
+    p.h(paramMap, "values");
+    paramb = Util.nullAsNil((String)paramMap.get(".msg.appmsg.findernamecard.username"));
+    p.g(paramb, "Util.nullAsNil(values.ge…indernamecard.username\"))");
+    setUsername(paramb);
+    paramb = Util.nullAsNil((String)paramMap.get(".msg.appmsg.findernamecard.avatar"));
+    p.g(paramb, "Util.nullAsNil(values.ge….findernamecard.avatar\"))");
+    setAvatar(paramb);
+    paramb = Util.nullAsNil((String)paramMap.get(".msg.appmsg.findernamecard.nickname"));
+    p.g(paramb, "Util.nullAsNil(values.ge…indernamecard.nickname\"))");
+    setNickname(paramb);
+    paramb = Util.nullAsNil((String)paramMap.get(".msg.appmsg.findernamecard.auth_job"));
+    p.g(paramb, "Util.nullAsNil(values.ge…indernamecard.auth_job\"))");
+    axa(paramb);
+    ML(Util.safeParseInt((String)paramMap.get(".msg.appmsg.findernamecard.auth_icon")));
+    paramMap = Util.nullAsNil((String)paramMap.get(".msg.appmsg.findernamecard.auth_icon_url"));
+    p.g(paramMap, "Util.nullAsNil(values.ge…namecard.auth_icon_url\"))");
+    this.authIconUrl = paramMap;
+    this.wDW.username = this.username;
+    this.wDW.uNR = this.uNR;
+    this.wDW.nickname = this.nickname;
+    this.wDW.wDX = this.wDX;
+    this.wDW.wDY = this.wDY;
+    AppMethodBeat.o(168866);
+  }
+  
+  public final f aHj()
+  {
+    AppMethodBeat.i(168864);
+    Object localObject = new e();
+    ((e)localObject).setUsername(this.username);
+    ((e)localObject).setAvatar(this.uNR);
+    ((e)localObject).setNickname(this.nickname);
+    ((e)localObject).axa(this.wDX);
+    ((e)localObject).ML(this.wDY);
+    ((e)localObject).authIconUrl = this.authIconUrl;
+    ((e)localObject).wDW = this.wDW;
+    localObject = (f)localObject;
+    AppMethodBeat.o(168864);
+    return localObject;
+  }
+  
+  public final void axa(String paramString)
+  {
+    AppMethodBeat.i(208775);
+    p.h(paramString, "value");
+    this.wDW.wDX = paramString;
+    this.wDX = paramString;
+    AppMethodBeat.o(208775);
+  }
+  
+  public final void axb(String paramString)
+  {
+    AppMethodBeat.i(208776);
+    p.h(paramString, "<set-?>");
+    this.authIconUrl = paramString;
+    AppMethodBeat.o(208776);
+  }
+  
+  public final String getNickname()
+  {
+    return this.nickname;
+  }
+  
+  public final void setAvatar(String paramString)
+  {
+    AppMethodBeat.i(208773);
+    p.h(paramString, "value");
+    this.wDW.uNR = paramString;
+    this.uNR = paramString;
+    AppMethodBeat.o(208773);
+  }
+  
+  public final void setNickname(String paramString)
+  {
+    AppMethodBeat.i(208774);
+    p.h(paramString, "value");
+    this.wDW.nickname = paramString;
+    this.nickname = paramString;
+    AppMethodBeat.o(208774);
+  }
+  
+  public final void setUsername(String paramString)
+  {
+    AppMethodBeat.i(208772);
+    p.h(paramString, "value");
+    this.wDW.username = paramString;
+    this.username = paramString;
+    AppMethodBeat.o(208772);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.i.a.e
  * JD-Core Version:    0.7.0.1
  */

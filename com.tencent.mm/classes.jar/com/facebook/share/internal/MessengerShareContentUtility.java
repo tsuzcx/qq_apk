@@ -165,7 +165,7 @@ public class MessengerShareContentUtility
       AppMethodBeat.o(8167);
       return "horizontal";
     }
-    switch (1.$SwitchMap$com$facebook$share$model$ShareMessengerGenericTemplateContent$ImageAspectRatio[paramImageAspectRatio.ordinal()])
+    switch (MessengerShareContentUtility.1.$SwitchMap$com$facebook$share$model$ShareMessengerGenericTemplateContent$ImageAspectRatio[paramImageAspectRatio.ordinal()])
     {
     default: 
       AppMethodBeat.o(8167);
@@ -183,7 +183,7 @@ public class MessengerShareContentUtility
       AppMethodBeat.o(8168);
       return "image";
     }
-    switch (1.$SwitchMap$com$facebook$share$model$ShareMessengerMediaTemplateContent$MediaType[paramMediaType.ordinal()])
+    switch (MessengerShareContentUtility.1.$SwitchMap$com$facebook$share$model$ShareMessengerMediaTemplateContent$MediaType[paramMediaType.ordinal()])
     {
     default: 
       AppMethodBeat.o(8168);
@@ -226,7 +226,7 @@ public class MessengerShareContentUtility
       AppMethodBeat.o(8166);
       return "full";
     }
-    switch (1.$SwitchMap$com$facebook$share$model$ShareMessengerURLActionButton$WebviewHeightRatio[paramWebviewHeightRatio.ordinal()])
+    switch (MessengerShareContentUtility.1.$SwitchMap$com$facebook$share$model$ShareMessengerURLActionButton$WebviewHeightRatio[paramWebviewHeightRatio.ordinal()])
     {
     default: 
       AppMethodBeat.o(8166);
@@ -353,7 +353,7 @@ public class MessengerShareContentUtility
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.share.internal.MessengerShareContentUtility
  * JD-Core Version:    0.7.0.1
  */

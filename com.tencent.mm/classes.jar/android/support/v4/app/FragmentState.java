@@ -9,7 +9,7 @@ final class FragmentState
   implements Parcelable
 {
   public static final Parcelable.Creator<FragmentState> CREATOR = new Parcelable.Creator() {};
-  Fragment FW;
+  Fragment Gg;
   final Bundle mArguments;
   final String mClassName;
   final int mContainerId;

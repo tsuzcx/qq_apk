@@ -2,9 +2,8 @@ package com.tencent.mm.plugin.webview.modeltools;
 
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.aa;
 import com.tencent.xweb.d;
@@ -14,41 +13,40 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import org.xwalk.core.Log;
 
 public final class c
 {
-  public static final String Eno;
-  private static ArrayList<String> Enp;
+  public static final String Jas;
+  private static ArrayList<String> Jat;
   
   static
   {
     AppMethodBeat.i(79119);
-    Eno = Integer.toString(100028);
+    Jas = Integer.toString(100028);
     AppMethodBeat.o(79119);
   }
   
   private static void a(String paramString, List<String> paramList, com.tencent.xweb.c paramc)
   {
     AppMethodBeat.i(79115);
-    if (!bu.ht(paramList))
+    if (!Util.isNullOrNil(paramList))
     {
       String str = Uri.parse(paramString).getHost();
       Object localObject = str.split("\\.");
       if (localObject.length <= 1) {}
       for (localObject = "";; localObject = localObject[(localObject.length - 2)] + "." + localObject[(localObject.length - 1)])
       {
-        ae.d("MicroMsg.WebView.CookiesCleanup", "host(%s)", new Object[] { str });
-        ae.d("MicroMsg.WebView.CookiesCleanup", "domain(%s)", new Object[] { localObject });
+        com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.WebView.CookiesCleanup", "host(%s)", new Object[] { str });
+        com.tencent.mm.sdk.platformtools.Log.d("MicroMsg.WebView.CookiesCleanup", "domain(%s)", new Object[] { localObject });
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
           str = (String)paramList.next();
-          if (!bu.isNullOrNil(str))
+          if (!Util.isNullOrNil(str))
           {
             paramc.setCookie(paramString, str + "=");
             paramc.setCookie(paramString, str + "=;path=/");
-            if (!bu.isNullOrNil((String)localObject)) {
+            if (!Util.isNullOrNil((String)localObject)) {
               paramc.setCookie((String)localObject, str + "=;domain=." + (String)localObject + ";path=/");
             }
           }
@@ -58,7 +56,7 @@ public final class c
     AppMethodBeat.o(79115);
   }
   
-  private static String aJj(String paramString)
+  private static String aZo(String paramString)
   {
     AppMethodBeat.i(79118);
     String str;
@@ -66,7 +64,7 @@ public final class c
     {
       paramString = new URI(paramString);
       str = paramString.getScheme();
-      if (bu.isNullOrNil(str))
+      if (Util.isNullOrNil(str))
       {
         AppMethodBeat.o(79118);
         return null;
@@ -74,7 +72,7 @@ public final class c
     }
     catch (Exception paramString)
     {
-      ae.e("MicroMsg.WebView.CookiesCleanup", "getOrigin fail %s", new Object[] { paramString.getMessage() });
+      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.WebView.CookiesCleanup", "getOrigin fail %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(79118);
       return null;
     }
@@ -96,7 +94,7 @@ public final class c
     }
   }
   
-  public static void ct(String paramString, boolean paramBoolean)
+  public static void cN(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(79117);
     if (!paramBoolean)
@@ -104,26 +102,26 @@ public final class c
       AppMethodBeat.o(79117);
       return;
     }
-    if (Enp == null) {
-      Enp = new ArrayList();
+    if (Jat == null) {
+      Jat = new ArrayList();
     }
-    if (Enp.contains(paramString))
+    if (Jat.contains(paramString))
     {
       AppMethodBeat.o(79117);
       return;
     }
-    Enp.add(paramString);
+    Jat.add(paramString);
     AppMethodBeat.o(79117);
   }
   
-  public static void eUx()
+  public static void gdm()
   {
     AppMethodBeat.i(79116);
-    if (Enp != null) {}
-    for (int i = Enp.size();; i = 0)
+    if (Jat != null) {}
+    for (int i = Jat.size();; i = 0)
     {
-      ae.i("MicroMsg.WebView.CookiesCleanup", "clearWebViewData url list size %d", new Object[] { Integer.valueOf(i) });
-      if (!bu.ht(Enp)) {
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WebView.CookiesCleanup", "clearWebViewData url list size %d", new Object[] { Integer.valueOf(i) });
+      if (!Util.isNullOrNil(Jat)) {
         break;
       }
       AppMethodBeat.o(79116);
@@ -131,17 +129,17 @@ public final class c
     }
     Object localObject3;
     Object localObject2;
-    if (!bu.ht(Enp))
+    if (!Util.isNullOrNil(Jat))
     {
-      localObject1 = Enp;
-      localObject3 = com.tencent.xweb.c.geY();
+      localObject1 = Jat;
+      localObject3 = com.tencent.xweb.c.hsp();
       Iterator localIterator = ((List)localObject1).iterator();
       if (localIterator.hasNext())
       {
         String str1 = (String)localIterator.next();
-        ae.i("MicroMsg.WebView.CookiesCleanup", "cookies cleanup: url(%s)", new Object[] { str1 });
+        com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WebView.CookiesCleanup", "cookies cleanup: url(%s)", new Object[] { str1 });
         localObject1 = ((com.tencent.xweb.c)localObject3).getCookie(str1);
-        if (bu.isNullOrNil((String)localObject1)) {
+        if (Util.isNullOrNil((String)localObject1)) {
           localObject1 = null;
         }
         for (;;)
@@ -162,7 +160,7 @@ public final class c
           while (i < j)
           {
             String str2 = localObject1[i];
-            if ((!bu.isNullOrNil(str2)) && (str2.contains("="))) {
+            if ((!Util.isNullOrNil(str2)) && (str2.contains("="))) {
               ((List)localObject2).add(str2.split("=")[0]);
             }
             i += 1;
@@ -173,22 +171,22 @@ public final class c
           }
         }
       }
-      d.lB(ak.getContext());
+      d.lA(MMApplicationContext.getContext());
       d.sync();
-      ae.i("MicroMsg.WebView.CookiesCleanup", "clearHostCookies end");
+      com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.WebView.CookiesCleanup", "clearHostCookies end");
     }
-    Object localObject1 = Enp.iterator();
+    Object localObject1 = Jat.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = aJj((String)((Iterator)localObject1).next());
-      localObject3 = aa.gfG();
-      if (((aa)localObject3).MNi == null) {
-        Log.e("WebStorage", "deleteOrigin failed webStg is null, cur core kind is " + WebView.getCurWebType());
+      localObject2 = aZo((String)((Iterator)localObject1).next());
+      localObject3 = aa.hsY();
+      if (((aa)localObject3).SAd == null) {
+        org.xwalk.core.Log.e("WebStorage", "deleteOrigin failed webStg is null, cur core kind is " + WebView.getCurWebType());
       } else {
-        ((aa)localObject3).MNi.deleteOrigin((String)localObject2);
+        ((aa)localObject3).SAd.deleteOrigin((String)localObject2);
       }
     }
-    Enp.clear();
+    Jat.clear();
     AppMethodBeat.o(79116);
   }
 }

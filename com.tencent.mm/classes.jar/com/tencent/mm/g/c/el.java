@@ -2,42 +2,28 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class el
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEL = "status".hashCode();
-  private static final int eFM;
-  private static final int eFO = "createTime".hashCode();
-  private static final int fmN;
-  private static final int fmR;
-  private static final int fmV = "memberUuid".hashCode();
-  private static final int fmW;
+  private static final int fBo = "subtype".hashCode();
+  private static final int fQA = "minilogoMd5".hashCode();
+  private static final int fQy = "bubbleMd5".hashCode();
+  private static final int fQz = "coverMd5".hashCode();
+  private static final int flv = "version".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEI = true;
-  private boolean eFp = true;
-  private boolean eFr = true;
-  public long field_createTime;
-  public String field_inviteUserName;
-  public long field_memberId;
-  public long field_memberUuid;
-  public int field_status;
-  public String field_userName;
-  public String field_wxGroupId;
-  private boolean fmH = true;
-  private boolean fmL = true;
-  private boolean fmT = true;
-  private boolean fmU = true;
-  
-  static
-  {
-    fmN = "wxGroupId".hashCode();
-    eFM = "userName".hashCode();
-    fmR = "inviteUserName".hashCode();
-    fmW = "memberId".hashCode();
-  }
+  private boolean fBm = true;
+  private boolean fQv = true;
+  private boolean fQw = true;
+  private boolean fQx = true;
+  public String field_bubbleMd5;
+  public String field_coverMd5;
+  public String field_minilogoMd5;
+  public int field_subtype;
+  public int field_version;
+  private boolean flq = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -52,29 +38,26 @@ public abstract class el
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fmV != k) {
-        break label60;
+      if (fBo != k) {
+        break label65;
       }
-      this.field_memberUuid = paramCursor.getLong(i);
+      this.field_subtype = paramCursor.getInt(i);
+      this.fBm = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (fmN == k) {
-        this.field_wxGroupId = paramCursor.getString(i);
-      } else if (eFM == k) {
-        this.field_userName = paramCursor.getString(i);
-      } else if (fmR == k) {
-        this.field_inviteUserName = paramCursor.getString(i);
-      } else if (fmW == k) {
-        this.field_memberId = paramCursor.getLong(i);
-      } else if (eEL == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (eFO == k) {
-        this.field_createTime = paramCursor.getLong(i);
+      label65:
+      if (fQy == k) {
+        this.field_bubbleMd5 = paramCursor.getString(i);
+      } else if (fQz == k) {
+        this.field_coverMd5 = paramCursor.getString(i);
+      } else if (fQA == k) {
+        this.field_minilogoMd5 = paramCursor.getString(i);
+      } else if (flv == k) {
+        this.field_version = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -84,26 +67,20 @@ public abstract class el
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fmT) {
-      localContentValues.put("memberUuid", Long.valueOf(this.field_memberUuid));
+    if (this.fBm) {
+      localContentValues.put("subtype", Integer.valueOf(this.field_subtype));
     }
-    if (this.fmH) {
-      localContentValues.put("wxGroupId", this.field_wxGroupId);
+    if (this.fQv) {
+      localContentValues.put("bubbleMd5", this.field_bubbleMd5);
     }
-    if (this.eFp) {
-      localContentValues.put("userName", this.field_userName);
+    if (this.fQw) {
+      localContentValues.put("coverMd5", this.field_coverMd5);
     }
-    if (this.fmL) {
-      localContentValues.put("inviteUserName", this.field_inviteUserName);
+    if (this.fQx) {
+      localContentValues.put("minilogoMd5", this.field_minilogoMd5);
     }
-    if (this.fmU) {
-      localContentValues.put("memberId", Long.valueOf(this.field_memberId));
-    }
-    if (this.eEI) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
-    }
-    if (this.eFr) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.flq) {
+      localContentValues.put("version", Integer.valueOf(this.field_version));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -113,7 +90,7 @@ public abstract class el
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.el
  * JD-Core Version:    0.7.0.1
  */

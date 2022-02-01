@@ -1,68 +1,66 @@
 package com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dso;
-import com.tencent.mm.protocal.protobuf.dsp;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.amx;
+import com.tencent.mm.protocal.protobuf.amy;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class i
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private b rr;
+  public String EiS;
+  private com.tencent.mm.ak.i callback;
+  private d rr;
   
   public i(String paramString)
   {
-    AppMethodBeat.i(97158);
-    b.a locala = new b.a();
-    locala.hQF = new dso();
-    locala.hQG = new dsp();
-    locala.uri = "/cgi-bin/mmoc-bin/adplayinfo/update_shared_uxinfo";
-    locala.funcId = 2883;
-    this.rr = locala.aDS();
-    ((dso)this.rr.hQD.hQJ).HYD = paramString;
-    AppMethodBeat.o(97158);
+    AppMethodBeat.i(97150);
+    this.EiS = "";
+    this.EiS = paramString;
+    d.a locala = new d.a();
+    locala.iLN = new amx();
+    locala.iLO = new amy();
+    locala.uri = "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_favofficialitem";
+    locala.funcId = 2874;
+    this.rr = locala.aXF();
+    ((amx)this.rr.iLK.iLR).LxV = paramString;
+    Log.i("MicroMsg.NetSceneFavOfficialItem", "Req: item_buff[%s]", new Object[] { paramString });
+    AppMethodBeat.o(97150);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
   {
-    AppMethodBeat.i(97161);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(97161);
+    AppMethodBeat.i(97151);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(97151);
     return i;
   }
   
   public final int getType()
   {
-    AppMethodBeat.i(97160);
-    int i = this.rr.getType();
-    AppMethodBeat.o(97160);
-    return i;
+    return 2874;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(97159);
-    ae.i("NetSceneUpdateUxInfo", "errType=" + paramInt2 + ", errCode=" + paramInt3 + ", errMsg=" + paramString);
-    if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    }
-    AppMethodBeat.o(97159);
+    AppMethodBeat.i(97152);
+    Log.i("MicroMsg.NetSceneFavOfficialItem", "netId : " + paramInt1 + " errType :" + paramInt2 + " errCode: " + paramInt3 + " errMsg :" + paramString);
+    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    AppMethodBeat.o(97152);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.i
  * JD-Core Version:    0.7.0.1
  */

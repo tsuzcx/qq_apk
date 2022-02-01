@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.appbrand.ui.recents;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ay;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "invoke"})
 final class c$b
   extends q
-  implements a<ay>
+  implements a<MultiProcessMMKV>
 {
-  public static final b mOp;
+  public static final b obr;
   
   static
   {
-    AppMethodBeat.i(223903);
-    mOp = new b();
-    AppMethodBeat.o(223903);
+    AppMethodBeat.i(229557);
+    obr = new b();
+    AppMethodBeat.o(229557);
   }
   
   c$b()
@@ -27,7 +27,7 @@ final class c$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.recents.c.b
  * JD-Core Version:    0.7.0.1
  */

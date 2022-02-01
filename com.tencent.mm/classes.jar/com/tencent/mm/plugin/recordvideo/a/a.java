@@ -10,10 +10,10 @@ import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoN
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.a;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.b;
 import com.tencent.mm.plugin.recordvideo.jumper.RecordMediaReportInfo;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/biz/MediaGenerateMediaCallback;", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoGenerateCallback;", "()V", "onEditFinish", "", "forward", "", "reportInfo", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordMediaReportInfo;", "extData", "Landroid/os/Bundle;", "onFinishBtnClick", "context", "Landroid/content/Context;", "finishController", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoFinishController;", "onMediaGenerated", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/biz/MediaGenerateMediaCallback;", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoGenerateCallback;", "()V", "onEditFinish", "", "forward", "", "reportInfo", "Lcom/tencent/mm/plugin/recordvideo/jumper/RecordMediaReportInfo;", "extData", "Landroid/os/Bundle;", "onFinishBtnClick", "context", "Landroid/content/Context;", "finishController", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$IVideoFinishController;", "onMediaGenerated", "model", "Lcom/tencent/mm/plugin/recordvideo/jumper/CaptureDataManager$CaptureVideoNormalModel;", "plugin-recordvideo_release"})
 public final class a
   implements CaptureDataManager.b
 {
@@ -33,10 +33,10 @@ public final class a
   
   public final void a(RecordMediaReportInfo paramRecordMediaReportInfo, Bundle paramBundle)
   {
-    AppMethodBeat.i(206549);
+    AppMethodBeat.i(237254);
     p.h(paramRecordMediaReportInfo, "reportInfo");
     p.h(paramBundle, "extData");
-    AppMethodBeat.o(206549);
+    AppMethodBeat.o(237254);
   }
   
   public final boolean a(Context paramContext, Bundle paramBundle, CaptureDataManager.a parama)
@@ -51,7 +51,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.a.a
  * JD-Core Version:    0.7.0.1
  */

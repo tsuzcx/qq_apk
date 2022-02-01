@@ -10,18 +10,21 @@ import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.plugin.webview.luggage.u;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.game.luggage.g.i;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.plugin.webview.luggage.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class g
-  extends bq<a>
+  extends br<a>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama)
+  public final void a(Context paramContext, String paramString, br.a parama)
   {
     AppMethodBeat.i(83063);
     AppMethodBeat.o(83063);
@@ -29,27 +32,27 @@ public class g
   
   public final void b(final com.tencent.luggage.d.b<a>.a paramb)
   {
-    AppMethodBeat.i(192993);
-    ae.i("MicroMsg.JsApiClearGameData", "invokeInOwn");
-    Object localObject2 = paramb.chh.cgn;
-    Object localObject3 = (a)paramb.chg;
-    if ((localObject3 instanceof com.tencent.mm.plugin.game.luggage.f.g))
+    AppMethodBeat.i(186854);
+    Log.i("MicroMsg.JsApiClearGameData", "invokeInOwn");
+    Object localObject2 = paramb.ctb.csi;
+    Object localObject3 = (a)paramb.cta;
+    if ((localObject3 instanceof i))
     {
-      localObject1 = ((com.tencent.mm.plugin.game.luggage.f.g)localObject3).EgL.getAppId();
-      if (!bu.isNullOrNil((String)localObject1)) {
-        break label234;
+      localObject1 = ((i)localObject3).ITw.getAppId();
+      if (!Util.isNullOrNil((String)localObject1)) {
+        break label238;
       }
-      localObject1 = Uri.parse(bu.nullAsNil(((com.tencent.mm.plugin.game.luggage.f.g)localObject3).bRn()));
-      if ((((Uri)localObject1).getHost() == null) || (!((Uri)localObject1).getHost().equals("game.weixin.qq.com")))
+      localObject1 = Uri.parse(Util.nullAsNil(((i)localObject3).coX()));
+      if ((((Uri)localObject1).getHost() == null) || (!((Uri)localObject1).getHost().equals(WeChatHosts.domainString(2131761707))))
       {
-        ae.i("MicroMsg.JsApiClearGameData", "appId is null");
-        paramb.a("appid_null", null);
-        AppMethodBeat.o(192993);
+        Log.i("MicroMsg.JsApiClearGameData", "appId is null");
+        paramb.c("appid_null", null);
+        AppMethodBeat.o(186854);
         return;
       }
     }
     Object localObject1 = "wx62d9035fd4fd2059";
-    label234:
+    label238:
     for (;;)
     {
       localObject3 = ((JSONObject)localObject2).optJSONArray("keys");
@@ -61,22 +64,22 @@ public class g
       }
       for (;;)
       {
-        h.a("com.tencent.mm", (Parcelable)localObject2, a.class, new d() {});
-        AppMethodBeat.o(192993);
+        h.a(MainProcessIPCService.dkO, (Parcelable)localObject2, a.class, new d() {});
+        AppMethodBeat.o(186854);
         return;
         if (!bool) {
           break;
         }
         ((Bundle)localObject2).putBoolean("clearAll", bool);
       }
-      ae.i("MicroMsg.JsApiClearGameData", "keys is null");
-      paramb.a("fail", null);
-      AppMethodBeat.o(192993);
+      Log.i("MicroMsg.JsApiClearGameData", "keys is null");
+      paramb.c("fail", null);
+      AppMethodBeat.o(186854);
       return;
     }
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

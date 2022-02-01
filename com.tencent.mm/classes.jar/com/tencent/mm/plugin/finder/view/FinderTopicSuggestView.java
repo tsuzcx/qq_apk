@@ -4,26 +4,23 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.protocal.protobuf.asj;
-import d.g.b.p;
-import d.l;
-import d.v;
-import d.z;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderTopicSuggestView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "listLayout", "listScrollView", "Landroid/widget/ScrollView;", "onItemSelected", "Lkotlin/Function1;", "", "getOnItemSelected", "()Lkotlin/jvm/functions/Function1;", "setOnItemSelected", "(Lkotlin/jvm/functions/Function1;)V", "initView", "refresh", "suggestions", "", "Lcom/tencent/mm/protocal/protobuf/FinderSuggestion;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderTopicSuggestView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "TAG", "", "listLayout", "listScrollView", "Landroid/widget/ScrollView;", "onItemSelected", "Lkotlin/Function1;", "", "getOnItemSelected", "()Lkotlin/jvm/functions/Function1;", "setOnItemSelected", "(Lkotlin/jvm/functions/Function1;)V", "initView", "refresh", "suggestions", "", "Lcom/tencent/mm/protocal/protobuf/FinderSuggestion;", "plugin-finder_release"})
 public final class FinderTopicSuggestView
   extends LinearLayout
 {
   private final String TAG;
-  public ScrollView tht;
-  public LinearLayout thu;
-  private d.g.a.b<? super String, z> thv;
+  private ScrollView wpG;
+  private LinearLayout wpH;
+  private b<? super String, x> wpI;
   
   public FinderTopicSuggestView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -47,66 +44,29 @@ public final class FinderTopicSuggestView
   {
     AppMethodBeat.i(168422);
     setOrientation(1);
-    LayoutInflater.from(getContext()).inflate(2131494120, (ViewGroup)this, true);
-    View localView = findViewById(2131306034);
+    LayoutInflater.from(getContext()).inflate(2131494661, (ViewGroup)this, true);
+    View localView = findViewById(2131309354);
     p.g(localView, "findViewById(R.id.topic_suggest_item_scrollview)");
-    this.tht = ((ScrollView)localView);
-    localView = findViewById(2131306035);
+    this.wpG = ((ScrollView)localView);
+    localView = findViewById(2131309355);
     p.g(localView, "findViewById(R.id.topic_suggest_list)");
-    this.thu = ((LinearLayout)localView);
+    this.wpH = ((LinearLayout)localView);
     AppMethodBeat.o(168422);
   }
   
-  public final d.g.a.b<String, z> getOnItemSelected()
+  public final b<String, x> getOnItemSelected()
   {
-    return this.thv;
+    return this.wpI;
   }
   
-  public final void setOnItemSelected(d.g.a.b<? super String, z> paramb)
+  public final void setOnItemSelected(b<? super String, x> paramb)
   {
-    this.thv = paramb;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  public static final class a
-    implements View.OnClickListener
-  {
-    public a(FinderTopicSuggestView paramFinderTopicSuggestView, View paramView) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(168421);
-      Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      a.b("com/tencent/mm/plugin/finder/view/FinderTopicSuggestView$refresh$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-      d.g.a.b localb = this.thw.getOnItemSelected();
-      if (localb != null)
-      {
-        paramView = this.thx;
-        p.g(paramView, "suggestItemView");
-        paramView = paramView.getTag();
-        if (paramView == null)
-        {
-          paramView = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.FinderSuggestion");
-          AppMethodBeat.o(168421);
-          throw paramView;
-        }
-        localObject = ((asj)paramView).GJz;
-        paramView = (View)localObject;
-        if (localObject == null) {
-          paramView = "";
-        }
-        localb.invoke(paramView);
-      }
-      this.thw.setVisibility(8);
-      a.a(this, "com/tencent/mm/plugin/finder/view/FinderTopicSuggestView$refresh$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(168421);
-    }
+    this.wpI = paramb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderTopicSuggestView
  * JD-Core Version:    0.7.0.1
  */

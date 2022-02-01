@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aa
 {
-  public int geA;
-  public int geB;
-  public int geC;
-  public int geD;
-  public int geE;
-  public int geF;
-  public int geG;
-  public int geH;
-  public boolean gez;
+  public boolean gKa;
+  public int gKb;
+  public int gKc;
+  public int gKd;
+  public int gKe;
+  public int gKf;
+  public int gKg;
+  public int gKh;
+  public int gKi;
   public int mVideoHeight;
   public int mVideoWidth;
   
@@ -25,17 +25,17 @@ public final class aa
   
   public final void reset()
   {
-    this.gez = false;
+    this.gKa = false;
     this.mVideoHeight = 224;
     this.mVideoWidth = 288;
-    this.geA = 10;
-    this.geB = 3000000;
-    this.geC = 1;
-    this.geD = 1;
-    this.geE = 1;
-    this.geF = 0;
-    this.geG = 1;
-    this.geH = 0;
+    this.gKb = 10;
+    this.gKc = 3000000;
+    this.gKd = 1;
+    this.gKe = 1;
+    this.gKf = 1;
+    this.gKg = 0;
+    this.gKh = 1;
+    this.gKi = 0;
   }
 }
 

@@ -1,52 +1,53 @@
 package com.tencent.mm.plugin.ipcall.model.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g
   extends a
 {
-  public long uZH = 0L;
-  public String uZI = "";
-  public String uZJ = "";
-  public long uZK = 0L;
-  public long uZL = 0L;
-  public long uZM = 0L;
-  public String uZN = "";
-  private long uZs;
-  public long uZt;
+  private long yrS;
+  public long yrT;
+  public long ysh = 0L;
+  public String ysi = "";
+  public String ysj = "";
+  public long ysk = 0L;
+  public long ysl = 0L;
+  public long ysm = 0L;
+  public String ysn = "";
   
-  protected final void byD()
+  protected final void bUV()
   {
     AppMethodBeat.i(25506);
-    com.tencent.mm.plugin.report.service.g.yxI.f(12933, new Object[] { Long.valueOf(this.uZs), Long.valueOf(this.uZt), Long.valueOf(this.uZH), this.uZI, this.uZJ, Long.valueOf(this.uZK), Long.valueOf(this.uZL), Long.valueOf(this.uZM), this.uZN });
+    h.CyF.a(12933, new Object[] { Long.valueOf(this.yrS), Long.valueOf(this.yrT), Long.valueOf(this.ysh), this.ysi, this.ysj, Long.valueOf(this.ysk), Long.valueOf(this.ysl), Long.valueOf(this.ysm), this.ysn });
     AppMethodBeat.o(25506);
   }
   
   public final void reset()
   {
-    this.uZs = 0L;
-    this.uZt = 0L;
-    this.uZH = 0L;
-    this.uZI = "";
-    this.uZJ = "";
-    this.uZK = 0L;
-    this.uZL = 0L;
-    this.uZM = 0L;
-    this.uZN = "";
+    this.yrS = 0L;
+    this.yrT = 0L;
+    this.ysh = 0L;
+    this.ysi = "";
+    this.ysj = "";
+    this.ysk = 0L;
+    this.ysl = 0L;
+    this.ysm = 0L;
+    this.ysn = "";
   }
   
   public final void start()
   {
     AppMethodBeat.i(25505);
     super.start();
-    this.uZs = bu.fpO();
+    this.yrS = Util.nowMilliSecond();
     AppMethodBeat.o(25505);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f.g
  * JD-Core Version:    0.7.0.1
  */

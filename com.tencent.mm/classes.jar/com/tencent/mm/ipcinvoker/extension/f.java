@@ -4,13 +4,13 @@ import android.os.Parcel;
 
 public abstract interface f
 {
-  public abstract void d(Parcel paramParcel);
+  public abstract void e(Parcel paramParcel);
   
   public abstract void readFromParcel(Parcel paramParcel);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.f
  * JD-Core Version:    0.7.0.1
  */

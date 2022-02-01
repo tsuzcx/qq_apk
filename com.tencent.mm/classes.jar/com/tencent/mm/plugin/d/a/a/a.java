@@ -4,25 +4,25 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  int[] nUN;
+  int[] pfK;
   
   public a(int[] paramArrayOfInt)
   {
     AppMethodBeat.i(22436);
-    this.nUN = null;
+    this.pfK = null;
     if (paramArrayOfInt.length == 0)
     {
       paramArrayOfInt = new NullPointerException("null == aDataGroup || 0 == aDataGroup.length");
       AppMethodBeat.o(22436);
       throw paramArrayOfInt;
     }
-    this.nUN = paramArrayOfInt;
+    this.pfK = paramArrayOfInt;
     AppMethodBeat.o(22436);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.a.a
  * JD-Core Version:    0.7.0.1
  */

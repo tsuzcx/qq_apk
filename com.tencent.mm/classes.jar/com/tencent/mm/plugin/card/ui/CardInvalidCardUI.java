@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.BaseAdapter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.card.base.CardBaseUI;
 import com.tencent.mm.plugin.card.d.d.a;
 import com.tencent.mm.plugin.card.model.n.a;
@@ -17,11 +17,11 @@ import com.tencent.mm.ui.base.h;
 public class CardInvalidCardUI
   extends CardBaseUI
 {
-  public final void bUv()
+  public final void csj()
   {
     AppMethodBeat.i(113467);
-    setMMTitle(2131756896);
-    addTextOptionMenu(0, getString(2131756808), new MenuItem.OnMenuItemClickListener()
+    setMMTitle(2131757066);
+    addTextOptionMenu(0, getString(2131756973), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -31,7 +31,7 @@ public class CardInvalidCardUI
         return true;
       }
     });
-    if (this.oCI.getCount() > 0)
+    if (this.pQr.getCount() > 0)
     {
       enableOptionMenu(true);
       AppMethodBeat.o(113467);
@@ -41,14 +41,14 @@ public class CardInvalidCardUI
     AppMethodBeat.o(113467);
   }
   
-  public final n.a bUw()
+  public final n.a csk()
   {
-    return n.a.oGl;
+    return n.a.pTR;
   }
   
   public int getLayoutId()
   {
-    return 2131493310;
+    return 2131493400;
   }
   
   public void initView()
@@ -66,24 +66,24 @@ public class CardInvalidCardUI
     AppMethodBeat.o(113465);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(113468);
-    super.onSceneEnd(paramInt1, paramInt2, paramString, paramn);
-    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramn instanceof r)))
+    super.onSceneEnd(paramInt1, paramInt2, paramString, paramq);
+    if ((paramInt1 == 0) && (paramInt2 == 0) && ((paramq instanceof r)))
     {
-      if (!this.oCM) {
+      if (!this.pQv) {
         break label62;
       }
-      h.cm(this, getResources().getString(2131756810));
+      h.cD(this, getResources().getString(2131756975));
     }
     for (;;)
     {
-      this.oCM = false;
+      this.pQv = false;
       AppMethodBeat.o(113468);
       return;
       label62:
-      h.cm(this, getResources().getString(2131756828));
+      h.cD(this, getResources().getString(2131756993));
     }
   }
   
@@ -95,7 +95,7 @@ public class CardInvalidCardUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.CardInvalidCardUI
  * JD-Core Version:    0.7.0.1
  */

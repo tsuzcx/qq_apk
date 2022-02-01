@@ -15,28 +15,28 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.ui.aa;
 
 public abstract class CardDetailBaseUI
   extends MMActivity
 {
-  private TextView lHk;
-  private ImageView mLS;
-  private View mLY;
-  private TextView oLi;
-  private ImageView oLj;
-  private View oLk;
+  private TextView mPa;
+  private ImageView nZa;
+  private View nZg;
+  private TextView pYW;
+  private ImageView pYX;
+  private View pYY;
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.mLY = z.jV(getContext()).inflate(2131493268, null);
-    this.mLY.setBackgroundColor(getResources().getColor(2131099873));
-    this.lHk = ((TextView)this.mLY.findViewById(2131305908));
-    this.oLi = ((TextView)this.mLY.findViewById(2131305509));
-    this.mLS = ((ImageView)this.mLY.findViewById(2131296940));
-    this.oLj = ((ImageView)this.mLY.findViewById(2131302241));
-    this.oLk = this.mLY.findViewById(2131299154);
+    this.nZg = aa.jQ(getContext()).inflate(2131493356, null);
+    this.nZg.setBackgroundColor(getResources().getColor(2131099891));
+    this.mPa = ((TextView)this.nZg.findViewById(2131309202));
+    this.pYW = ((TextView)this.nZg.findViewById(2131308718));
+    this.nZa = ((ImageView)this.nZg.findViewById(2131297047));
+    this.pYX = ((ImageView)this.nZg.findViewById(2131304616));
+    this.pYY = this.nZg.findViewById(2131299682);
     LinearLayout localLinearLayout;
     Object localObject;
     if ((getContentView() != null) && (((ViewGroup)getContentView()).getChildCount() > 0))
@@ -52,10 +52,10 @@ public abstract class CardDetailBaseUI
       }
     }
     label255:
-    for (int i = getResources().getDimensionPixelSize(2131165251);; i = getResources().getDimensionPixelSize(2131165252))
+    for (int i = getResources().getDimensionPixelSize(2131165255);; i = getResources().getDimensionPixelSize(2131165256))
     {
       localObject = new LinearLayout.LayoutParams(-1, i);
-      localLinearLayout.addView(this.mLY, (ViewGroup.LayoutParams)localObject);
+      localLinearLayout.addView(this.nZg, (ViewGroup.LayoutParams)localObject);
       localLinearLayout.addView(paramBundle);
       ((ViewGroup)getContentView()).addView(localLinearLayout);
       return;

@@ -12,14 +12,14 @@ final class WalletSecuritySettingUI$1
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(69790);
-    this.Dfs.finish();
+    this.HLl.finish();
     AppMethodBeat.o(69790);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletSecuritySettingUI.1
  * JD-Core Version:    0.7.0.1
  */

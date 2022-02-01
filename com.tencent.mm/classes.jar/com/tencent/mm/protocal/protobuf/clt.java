@@ -5,130 +5,100 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class clt
   extends com.tencent.mm.bw.a
 {
-  public String CRv;
-  public String CRw;
-  public String CZP;
-  public String DfC;
-  public String HxM;
-  public String dyI;
-  public int type;
+  public String KZj;
+  public String MaZ;
+  public long Mre;
+  public long Mrf;
+  public int oUv;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91620);
+    AppMethodBeat.i(117876);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.dyI != null) {
-        paramVarArgs.d(1, this.dyI);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.scene);
+      if (this.MaZ != null) {
+        paramVarArgs.e(2, this.MaZ);
       }
-      paramVarArgs.aS(2, this.type);
-      if (this.DfC != null) {
-        paramVarArgs.d(3, this.DfC);
+      paramVarArgs.bb(3, this.Mre);
+      paramVarArgs.bb(4, this.Mrf);
+      if (this.KZj != null) {
+        paramVarArgs.e(5, this.KZj);
       }
-      if (this.CRv != null) {
-        paramVarArgs.d(4, this.CRv);
-      }
-      if (this.CRw != null) {
-        paramVarArgs.d(5, this.CRw);
-      }
-      if (this.HxM != null) {
-        paramVarArgs.d(6, this.HxM);
-      }
-      if (this.CZP != null) {
-        paramVarArgs.d(7, this.CZP);
-      }
-      AppMethodBeat.o(91620);
+      paramVarArgs.aM(6, this.oUv);
+      AppMethodBeat.o(117876);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.dyI == null) {
-        break label562;
-      }
-    }
-    label562:
-    for (paramInt = f.a.a.b.b.a.e(1, this.dyI) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.type);
+      int i = g.a.a.b.b.a.bu(1, this.scene) + 0;
       paramInt = i;
-      if (this.DfC != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.DfC);
+      if (this.MaZ != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.MaZ);
       }
-      i = paramInt;
-      if (this.CRv != null) {
-        i = paramInt + f.a.a.b.b.a.e(4, this.CRv);
-      }
+      i = paramInt + g.a.a.b.b.a.r(3, this.Mre) + g.a.a.b.b.a.r(4, this.Mrf);
       paramInt = i;
-      if (this.CRw != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.CRw);
+      if (this.KZj != null) {
+        paramInt = i + g.a.a.b.b.a.f(5, this.KZj);
       }
-      i = paramInt;
-      if (this.HxM != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.HxM);
-      }
-      paramInt = i;
-      if (this.CZP != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.CZP);
-      }
-      AppMethodBeat.o(91620);
-      return paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
-          }
-        }
-        AppMethodBeat.o(91620);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        clt localclt = (clt)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(91620);
-          return -1;
-        case 1: 
-          localclt.dyI = locala.OmT.readString();
-          AppMethodBeat.o(91620);
-          return 0;
-        case 2: 
-          localclt.type = locala.OmT.zc();
-          AppMethodBeat.o(91620);
-          return 0;
-        case 3: 
-          localclt.DfC = locala.OmT.readString();
-          AppMethodBeat.o(91620);
-          return 0;
-        case 4: 
-          localclt.CRv = locala.OmT.readString();
-          AppMethodBeat.o(91620);
-          return 0;
-        case 5: 
-          localclt.CRw = locala.OmT.readString();
-          AppMethodBeat.o(91620);
-          return 0;
-        case 6: 
-          localclt.HxM = locala.OmT.readString();
-          AppMethodBeat.o(91620);
-          return 0;
-        }
-        localclt.CZP = locala.OmT.readString();
-        AppMethodBeat.o(91620);
-        return 0;
-      }
-      AppMethodBeat.o(91620);
-      return -1;
+      i = g.a.a.b.b.a.bu(6, this.oUv);
+      AppMethodBeat.o(117876);
+      return paramInt + i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      AppMethodBeat.o(117876);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      clt localclt = (clt)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(117876);
+        return -1;
+      case 1: 
+        localclt.scene = locala.UbS.zi();
+        AppMethodBeat.o(117876);
+        return 0;
+      case 2: 
+        localclt.MaZ = locala.UbS.readString();
+        AppMethodBeat.o(117876);
+        return 0;
+      case 3: 
+        localclt.Mre = locala.UbS.zl();
+        AppMethodBeat.o(117876);
+        return 0;
+      case 4: 
+        localclt.Mrf = locala.UbS.zl();
+        AppMethodBeat.o(117876);
+        return 0;
+      case 5: 
+        localclt.KZj = locala.UbS.readString();
+        AppMethodBeat.o(117876);
+        return 0;
+      }
+      localclt.oUv = locala.UbS.zi();
+      AppMethodBeat.o(117876);
+      return 0;
+    }
+    AppMethodBeat.o(117876);
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.clt
  * JD-Core Version:    0.7.0.1
  */

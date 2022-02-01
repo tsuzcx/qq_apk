@@ -1,38 +1,88 @@
 package com.tencent.mm.plugin.game.ui.message;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.game.model.s;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.ui.widget.a.g.a;
 import java.util.HashMap;
 
 public final class a
   extends FrameLayout
 {
-  View GG;
-  private int fRv;
-  c uFN;
-  private int uFO;
+  private View GQ;
+  private int gwE;
+  d xXS;
+  private int xXT;
+  private boolean xXU;
   
-  public a(Context paramContext, int paramInt)
+  public a(final Context paramContext, int paramInt, boolean paramBoolean)
   {
     super(paramContext);
-    AppMethodBeat.i(183869);
-    this.fRv = paramInt;
-    this.GG = LayoutInflater.from(getContext()).inflate(2131494354, this, false);
-    if (((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cZl().In(1) != 0)
+    AppMethodBeat.i(204307);
+    this.gwE = paramInt;
+    this.xXU = paramBoolean;
+    this.GQ = LayoutInflater.from(getContext()).inflate(2131494919, this, false);
+    if ((((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSK().Oo(1) != 0) && (this.xXU))
     {
-      this.uFN = new c(getContext(), this.fRv);
-      addView(this.uFN, new FrameLayout.LayoutParams(-1, -1));
-      AppMethodBeat.o(183869);
+      this.xXS = new d(getContext(), this.gwE);
+      this.xXS.setEmptyCallback(new c()
+      {
+        public final void dWH()
+        {
+          AppMethodBeat.i(204305);
+          a.this.refreshView();
+          AppMethodBeat.o(204305);
+        }
+      });
+      addView(this.xXS, new FrameLayout.LayoutParams(-1, -1));
+      paramInt = Util.nullAsNil((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.Odi, Integer.valueOf(0)));
+      if (paramInt <= 0)
+      {
+        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Odi, Integer.valueOf(paramInt + 1));
+        paramContext = new com.tencent.mm.ui.widget.a.g(getContext(), 2, 0, true);
+        paramContext.T(getResources().getString(2131761231));
+        paramContext.ape(1);
+        paramContext.QOT = new g.a()
+        {
+          public final void onClick()
+          {
+            AppMethodBeat.i(204306);
+            paramContext.bMo();
+            AppMethodBeat.o(204306);
+          }
+        };
+        paramContext.setCustomView(LayoutInflater.from(getContext()).inflate(2131494920, null));
+        paramContext.dGm();
+      }
+      AppMethodBeat.o(204307);
       return;
     }
-    addView(this.GG);
-    AppMethodBeat.o(183869);
+    addView(this.GQ);
+    AppMethodBeat.o(204307);
+  }
+  
+  public final void refreshView()
+  {
+    AppMethodBeat.i(204308);
+    if (((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSK().Oo(1) == 0)
+    {
+      if ((this.xXS != null) && (indexOfChild(this.xXS) >= 0)) {
+        removeView(this.xXS);
+      }
+      if ((this.GQ != null) && (indexOfChild(this.GQ) < 0)) {
+        addView(this.GQ);
+      }
+    }
+    AppMethodBeat.o(204308);
   }
   
   public final void resume()
@@ -40,20 +90,20 @@ public final class a
     AppMethodBeat.i(184806);
     HashMap localHashMap = new HashMap();
     localHashMap.put("tab", "1");
-    localHashMap.put("newmsg", String.valueOf(this.uFO));
-    com.tencent.mm.game.report.f.a(getContext(), 13, 1300, 0, 1, this.fRv, com.tencent.mm.game.report.f.r(localHashMap));
-    this.uFO = 0;
+    localHashMap.put("newmsg", String.valueOf(this.xXT));
+    com.tencent.mm.game.report.f.a(getContext(), 13, 1300, 0, 1, this.gwE, com.tencent.mm.game.report.f.t(localHashMap));
+    this.xXT = 0;
     AppMethodBeat.o(184806);
   }
   
   public final void setNewMessageCount(int paramInt)
   {
-    this.uFO = paramInt;
+    this.xXT = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.message.a
  * JD-Core Version:    0.7.0.1
  */

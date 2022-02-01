@@ -1,10 +1,10 @@
 package com.tencent.mm.plugin.downloader_app.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import org.json.JSONException;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static int BG(int paramInt)
+  public static int Fq(int paramInt)
   {
     switch (paramInt)
     {
@@ -31,30 +31,30 @@ public final class a
   public static void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(8921);
-    ae.d("MicroMsg.DownloadReporter", "kv16099, sceneId = %d, areaId = %d, positionId = %d, actionId = %d, appId = %s,noticeId = %s, extInfo = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
-    g.yxI.f(16099, new Object[] { Integer.valueOf(bfE()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
+    Log.d("MicroMsg.DownloadReporter", "kv16099, sceneId = %d, areaId = %d, positionId = %d, actionId = %d, appId = %s,noticeId = %s, extInfo = %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
+    h.CyF.a(16099, new Object[] { Integer.valueOf(bAX()), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), paramString1, paramString2, paramString3 });
     AppMethodBeat.o(8921);
   }
   
-  public static int bfE()
+  private static int bAX()
   {
     AppMethodBeat.i(8922);
-    if (az.isWifi(ak.getContext()))
+    if (NetStatusUtil.isWifi(MMApplicationContext.getContext()))
     {
       AppMethodBeat.o(8922);
       return 0;
     }
-    if (az.is4G(ak.getContext()))
+    if (NetStatusUtil.is4G(MMApplicationContext.getContext()))
     {
       AppMethodBeat.o(8922);
       return 4;
     }
-    if (az.is3G(ak.getContext()))
+    if (NetStatusUtil.is3G(MMApplicationContext.getContext()))
     {
       AppMethodBeat.o(8922);
       return 3;
     }
-    if (az.is2G(ak.getContext()))
+    if (NetStatusUtil.is2G(MMApplicationContext.getContext()))
     {
       AppMethodBeat.o(8922);
       return 2;
@@ -63,7 +63,7 @@ public final class a
     return 1;
   }
   
-  public static String fq(String paramString1, String paramString2)
+  public static String fH(String paramString1, String paramString2)
   {
     AppMethodBeat.i(8923);
     JSONObject localJSONObject = new JSONObject();
@@ -93,7 +93,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.k;
 import com.tencent.mm.plugin.wallet_core.model.t;
 import com.tencent.mm.plugin.wallet_core.model.y;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import org.json.JSONArray;
@@ -18,7 +19,7 @@ public final class g
   public g()
   {
     AppMethodBeat.i(69900);
-    t.eJj().db.execSQL("WalletBulletin", "delete from WalletBulletin");
+    t.fQM().db.execSQL("WalletBulletin", "delete from WalletBulletin");
     setRequestData(new HashMap());
     AppMethodBeat.o(69900);
   }
@@ -41,43 +42,43 @@ public final class g
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69901);
-    ae.i("MicroMsg.NetSceneGetBannerInfo", "NetSceneGetBannerInfo errCode = " + paramInt + " " + paramJSONObject);
+    Log.i("MicroMsg.NetSceneGetBannerInfo", "NetSceneGetBannerInfo errCode = " + paramInt + " " + paramJSONObject);
     if (paramInt == 0)
     {
-      y.bn(paramJSONObject);
+      y.bN(paramJSONObject);
       long l = paramJSONObject.optLong("banner_update_interval", 0L);
-      ae.i("MicroMsg.NetSceneGetBannerInfo", "update_interval=".concat(String.valueOf(l)));
-      com.tencent.mm.kernel.g.ajS();
-      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IOC, Long.valueOf(l));
+      Log.i("MicroMsg.NetSceneGetBannerInfo", "update_interval=".concat(String.valueOf(l)));
+      com.tencent.mm.kernel.g.aAi();
+      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NWE, Long.valueOf(l));
       paramString = paramJSONObject.optJSONObject("lbs_info");
       if (paramString != null)
       {
         JSONArray localJSONArray = paramString.optJSONArray("config_array");
         if ((localJSONArray != null) && (localJSONArray.length() > 0))
         {
-          k localk = k.eIQ();
+          k localk = k.fQt();
           if (localJSONArray != null)
           {
-            ae.d("MicroMsg.GpsReportHelper", localJSONArray.toString());
-            localk.DoD = localJSONArray;
-            com.tencent.mm.kernel.g.ajS();
-            com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IPu, localJSONArray.toString());
+            Log.d("MicroMsg.GpsReportHelper", localJSONArray.toString());
+            localk.HXV = localJSONArray;
+            com.tencent.mm.kernel.g.aAi();
+            com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NXv, localJSONArray.toString());
           }
         }
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IPv, paramString.optString("title"));
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IPw, paramString.optString("content"));
+        com.tencent.mm.kernel.g.aAi();
+        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NXw, paramString.optString("title"));
+        com.tencent.mm.kernel.g.aAi();
+        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NXx, paramString.optString("content"));
       }
       paramJSONObject = paramJSONObject.optJSONObject("realname_info");
       if (paramJSONObject != null)
       {
         paramString = paramJSONObject.optString("title");
         paramJSONObject = paramJSONObject.optString("balance_title");
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IPx, paramString);
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IPy, paramJSONObject);
+        com.tencent.mm.kernel.g.aAi();
+        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NXy, paramString);
+        com.tencent.mm.kernel.g.aAi();
+        com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NXz, paramJSONObject);
       }
     }
     AppMethodBeat.o(69901);

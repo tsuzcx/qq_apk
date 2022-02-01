@@ -7,53 +7,53 @@ import java.util.NoSuchElementException;
 final class d<T>
   implements Iterator<T>
 {
-  private final Iterator<T> LIP;
-  private T LIR;
-  private boolean LIS;
-  private final c.a<T> LIT;
+  private final Iterator<? extends T> ReR;
+  private T ReT;
+  private boolean ReU;
+  private final c.a<T> ReV;
   
-  d(Iterator<T> paramIterator, c.a<T> parama)
+  d(Iterator<? extends T> paramIterator, c.a<T> parama)
   {
-    this.LIP = paramIterator;
-    this.LIT = parama;
+    this.ReR = paramIterator;
+    this.ReV = parama;
   }
   
   public final boolean hasNext()
   {
-    AppMethodBeat.i(193460);
-    if (this.LIS)
+    AppMethodBeat.i(187774);
+    if (this.ReU)
     {
-      AppMethodBeat.o(193460);
+      AppMethodBeat.o(187774);
       return true;
     }
-    while (this.LIP.hasNext())
+    while (this.ReR.hasNext())
     {
-      Object localObject = this.LIP.next();
-      if (!this.LIT.en(localObject))
+      Object localObject = this.ReR.next();
+      if (!this.ReV.dm(localObject))
       {
-        this.LIR = localObject;
-        this.LIS = true;
-        AppMethodBeat.o(193460);
+        this.ReT = localObject;
+        this.ReU = true;
+        AppMethodBeat.o(187774);
         return true;
       }
     }
-    AppMethodBeat.o(193460);
+    AppMethodBeat.o(187774);
     return false;
   }
   
   public final T next()
   {
-    AppMethodBeat.i(193461);
-    if ((!this.LIS) && (!hasNext()))
+    AppMethodBeat.i(187775);
+    if ((!this.ReU) && (!hasNext()))
     {
       localObject = new NoSuchElementException();
-      AppMethodBeat.o(193461);
+      AppMethodBeat.o(187775);
       throw ((Throwable)localObject);
     }
-    Object localObject = this.LIR;
-    this.LIR = null;
-    this.LIS = false;
-    AppMethodBeat.o(193461);
+    Object localObject = this.ReT;
+    this.ReT = null;
+    this.ReU = false;
+    AppMethodBeat.o(187775);
     return localObject;
   }
 }

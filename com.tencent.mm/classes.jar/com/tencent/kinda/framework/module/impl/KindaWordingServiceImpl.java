@@ -20,8 +20,8 @@ public class KindaWordingServiceImpl
     {
       if (localContext != null)
       {
-        str = localContext.getString(2131765115);
-        paramString2 = localContext.getString(2131765116);
+        str = localContext.getString(2131767558);
+        paramString2 = localContext.getString(2131767559);
       }
       paramString2 = new Wording(true, "entryTip", str, "subTitle", paramString2, "subDesc");
     }
@@ -33,8 +33,8 @@ public class KindaWordingServiceImpl
       {
         if (localContext != null)
         {
-          str = localContext.getString(2131757985);
-          paramString2 = localContext.getString(2131757983);
+          str = localContext.getString(2131758234);
+          paramString2 = localContext.getString(2131758232);
         }
         paramString2 = new Wording(true, "entryTip", str, "subTitle", paramString2, "subDesc");
       }
@@ -56,7 +56,7 @@ public class KindaWordingServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.module.impl.KindaWordingServiceImpl
  * JD-Core Version:    0.7.0.1
  */

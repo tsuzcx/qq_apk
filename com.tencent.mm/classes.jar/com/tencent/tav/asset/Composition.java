@@ -19,31 +19,31 @@ public class Composition<CTrack extends CompositionTrack>
   
   protected Composition()
   {
-    AppMethodBeat.i(214307);
+    AppMethodBeat.i(217639);
     this.tracks = new ArrayList();
-    AppMethodBeat.o(214307);
+    AppMethodBeat.o(217639);
   }
   
   protected Composition(String paramString)
   {
     super(paramString);
-    AppMethodBeat.i(214309);
+    AppMethodBeat.i(217641);
     this.tracks = new ArrayList();
-    AppMethodBeat.o(214309);
+    AppMethodBeat.o(217641);
   }
   
   protected Composition(URL paramURL)
   {
     super(paramURL);
-    AppMethodBeat.i(214308);
+    AppMethodBeat.i(217640);
     this.tracks = new ArrayList();
-    AppMethodBeat.o(214308);
+    AppMethodBeat.o(217640);
   }
   
   @TargetApi(16)
   protected void createTracks()
   {
-    AppMethodBeat.i(214312);
+    AppMethodBeat.i(217644);
     int j = this.extractor.getTrackCount();
     if (this.tracks == null) {
       this.tracks = new ArrayList();
@@ -74,12 +74,12 @@ public class Composition<CTrack extends CompositionTrack>
       }
     }
     Logger.e("Asset", " Composition createTracks finish, has track count: " + this.tracks);
-    AppMethodBeat.o(214312);
+    AppMethodBeat.o(217644);
   }
   
   protected CMTime getAudioDuration()
   {
-    AppMethodBeat.i(214311);
+    AppMethodBeat.i(217643);
     Object localObject1 = CMTime.CMTimeZero;
     Iterator localIterator = this.tracks.iterator();
     if (localIterator.hasNext())
@@ -99,23 +99,23 @@ public class Composition<CTrack extends CompositionTrack>
     for (;;)
     {
       break;
-      AppMethodBeat.o(214311);
+      AppMethodBeat.o(217643);
       return localObject1;
     }
   }
   
   public List<CTrack> getTracks()
   {
-    AppMethodBeat.i(214313);
+    AppMethodBeat.i(217645);
     new StringBuilder("getTracks finish, has track count: ").append(this.tracks);
     List localList = this.tracks;
-    AppMethodBeat.o(214313);
+    AppMethodBeat.o(217645);
     return localList;
   }
   
   protected CMTime getVideoDuration()
   {
-    AppMethodBeat.i(214310);
+    AppMethodBeat.i(217642);
     Object localObject1 = CMTime.CMTimeZero;
     Iterator localIterator = this.tracks.iterator();
     if (localIterator.hasNext())
@@ -135,7 +135,7 @@ public class Composition<CTrack extends CompositionTrack>
     for (;;)
     {
       break;
-      AppMethodBeat.o(214310);
+      AppMethodBeat.o(217642);
       return localObject1;
     }
   }
@@ -149,15 +149,15 @@ public class Composition<CTrack extends CompositionTrack>
   
   public String toString()
   {
-    AppMethodBeat.i(214314);
+    AppMethodBeat.i(217646);
     String str = "Composition{\ntracks=" + this.tracks + "\ntrackCount=" + this.trackCount + '}';
-    AppMethodBeat.o(214314);
+    AppMethodBeat.o(217646);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.asset.Composition
  * JD-Core Version:    0.7.0.1
  */

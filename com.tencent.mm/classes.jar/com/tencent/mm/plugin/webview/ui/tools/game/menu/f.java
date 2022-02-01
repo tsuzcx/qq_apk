@@ -14,23 +14,23 @@ import com.tencent.mm.av.a.a.c;
 import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.b.g;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.n;
 import java.util.List;
 
 public final class f
   extends BaseAdapter
 {
-  private static final String umc;
-  l ECx;
+  private static final String xEu;
+  m HMc;
   private Context mContext;
   
   static
   {
     AppMethodBeat.i(81003);
-    umc = b.asj() + "Game/HvMenu/";
+    xEu = b.aKJ() + "Game/HvMenu/";
     AppMethodBeat.o(81003);
   }
   
@@ -39,10 +39,10 @@ public final class f
     this.mContext = paramContext;
   }
   
-  public final void a(l paraml)
+  public final void a(m paramm)
   {
     AppMethodBeat.i(80999);
-    this.ECx = paraml;
+    this.HMc = paramm;
     notifyDataSetChanged();
     AppMethodBeat.o(80999);
   }
@@ -50,12 +50,12 @@ public final class f
   public final int getCount()
   {
     AppMethodBeat.i(81000);
-    if (this.ECx == null)
+    if (this.HMc == null)
     {
       AppMethodBeat.o(81000);
       return 0;
     }
-    int i = this.ECx.size();
+    int i = this.HMc.size();
     AppMethodBeat.o(81000);
     return i;
   }
@@ -68,20 +68,20 @@ public final class f
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(81001);
-    paramView = LayoutInflater.from(this.mContext).inflate(2131494345, paramViewGroup, false);
+    paramView = LayoutInflater.from(this.mContext).inflate(2131494910, paramViewGroup, false);
     paramViewGroup = new a(paramView);
-    m localm = (m)this.ECx.JGM.get(paramInt);
+    n localn = (n)this.HMc.ORD.get(paramInt);
     Object localObject1;
-    if ((localm != null) && (localm.getItemId() != -1))
+    if ((localn != null) && (localn.getItemId() != -1))
     {
-      localObject1 = localm.getTitle().toString();
-      if (!bu.isNullOrNil((String)localObject1))
+      localObject1 = localn.getTitle().toString();
+      if (!Util.isNullOrNil((String)localObject1))
       {
         localObject1 = ((String)localObject1).split("__", 2);
         if (localObject1.length == 1)
         {
-          paramViewGroup.gqi.setText(localObject1[0]);
-          paramView.setTag(localm);
+          paramViewGroup.hbb.setText(localObject1[0]);
+          paramView.setTag(localn);
         }
       }
     }
@@ -89,19 +89,19 @@ public final class f
     {
       AppMethodBeat.o(81001);
       return paramView;
-      paramViewGroup.gqi.setText(localObject1[0]);
+      paramViewGroup.hbb.setText(localObject1[0]);
       localObject1 = localObject1[1];
       if (((String)localObject1).startsWith("http"))
       {
-        Object localObject2 = umc + g.getMessageDigest(((String)localObject1).getBytes());
+        Object localObject2 = xEu + g.getMessageDigest(((String)localObject1).getBytes());
         c.a locala = new c.a();
-        locala.igk = true;
-        locala.hgD = ((String)localObject2);
-        localObject2 = locala.aJu();
-        a.aJh().a((String)localObject1, paramViewGroup.ka, (c)localObject2);
+        locala.jbf = true;
+        locala.fullPath = ((String)localObject2);
+        localObject2 = locala.bdv();
+        a.bdb().a((String)localObject1, paramViewGroup.kc, (c)localObject2);
         break;
       }
-      paramViewGroup.ka.setImageResource(ak.getResources().getIdentifier((String)localObject1, "drawable", ak.getPackageName()));
+      paramViewGroup.kc.setImageResource(MMApplicationContext.getResources().getIdentifier((String)localObject1, "drawable", MMApplicationContext.getPackageName()));
       break;
       paramView.setTag(null);
     }
@@ -109,14 +109,14 @@ public final class f
   
   public final class a
   {
-    TextView gqi;
-    ImageView ka;
+    TextView hbb;
+    ImageView kc;
     
     public a(View paramView)
     {
       AppMethodBeat.i(80998);
-      this.gqi = ((TextView)paramView.findViewById(2131305902));
-      this.ka = ((ImageView)paramView.findViewById(2131300874));
+      this.hbb = ((TextView)paramView.findViewById(2131309195));
+      this.kc = ((ImageView)paramView.findViewById(2131302468));
       AppMethodBeat.o(80998);
     }
   }

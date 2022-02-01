@@ -1,64 +1,209 @@
 package com.tencent.mm.model;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.g;
-import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.am;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.n.b;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
 
 public final class be
 {
-  public static SharedPreferences aCl()
+  public static void m(boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(132249);
-    SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("auth_info_key_prefs", g.abv());
-    if (!localSharedPreferences.getBoolean("key_auth_info_prefs_created", false))
+    int j = 2;
+    AppMethodBeat.i(150169);
+    boolean bool2 = b.apN();
+    boolean bool3 = b.apP();
+    g.aAi();
+    boolean bool4 = ((Boolean)g.aAh().azQ().get(73217, Boolean.TRUE)).booleanValue();
+    g.aAi();
+    boolean bool5 = ((Boolean)g.aAh().azQ().get(73218, Boolean.TRUE)).booleanValue();
+    boolean bool1;
+    h localh;
+    int k;
+    label162:
+    int m;
+    label170:
+    int n;
+    label178:
+    int i;
+    if ((bool4) || (bool5))
     {
-      e.ywz.idkeyStat(148L, 12L, 1L, true);
-      Object localObject = new ai(am.IKh + "autoauth.cfg");
-      if ((!((ai)localObject).IJL) && (((ai)localObject).get(3) != null))
-      {
-        localEditor = localSharedPreferences.edit();
-        localEditor.putBoolean("key_auth_info_prefs_created", true);
-        localEditor.putInt("key_auth_update_version", ((Integer)((ai)localObject).get(1)).intValue());
-        localEditor.putInt("_auth_uin", ((Integer)((ai)localObject).get(2)).intValue());
-        localEditor.putString("_auth_key", (String)((ai)localObject).get(3));
-        localEditor.putString("server_id", (String)((ai)localObject).get(4));
-        ae.i("MicroMsg.MMReqRespAuthComm", "summerauth auth_info_key_prefs not exit! use autoauthcfg now commit[%b] create[%b], ver[%d], uin[%d], aak[%s], sid[%s]", new Object[] { Boolean.valueOf(localEditor.commit()), Boolean.valueOf(localSharedPreferences.getBoolean("key_auth_info_prefs_created", false)), Integer.valueOf(localSharedPreferences.getInt("key_auth_update_version", 0)), Integer.valueOf(localSharedPreferences.getInt("_auth_uin", 0)), localSharedPreferences.getString("_auth_key", ""), localSharedPreferences.getString("server_id", "") });
-        e.ywz.idkeyStat(148L, 51L, 1L, true);
-        AppMethodBeat.o(132249);
-        return localSharedPreferences;
+      bool1 = true;
+      Log.i("MicroMsg.KvNotificationStat", "doStatSysNotificationAfterModify, switchNewMsg: %s, switchVoipInvite: %s, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(paramBoolean1), Boolean.valueOf(paramBoolean2), Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool1) });
+      localh = h.CyF;
+      if (!bool2) {
+        break label284;
       }
-      localObject = ak.getContext().getSharedPreferences("auto_auth_key_prefs", g.abv());
-      SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-      if (bu.isNullOrNil(((SharedPreferences)localObject).getString("_auth_key", ""))) {
-        break label525;
+      k = 1;
+      if (!bool3) {
+        break label290;
       }
-      localEditor.putBoolean("key_auth_info_prefs_created", true);
-      localEditor.putInt("key_auth_update_version", ((SharedPreferences)localObject).getInt("key_auth_update_version", 0));
-      localEditor.putInt("_auth_uin", ((SharedPreferences)localObject).getInt("_auth_uin", 0));
-      localEditor.putString("_auth_key", ((SharedPreferences)localObject).getString("_auth_key", ""));
-      localEditor.putString("server_id", ak.getContext().getSharedPreferences("server_id_prefs", g.abv()).getString("server_id", ""));
-      ae.i("MicroMsg.MMReqRespAuthComm", "summerauth auth_info_key_prefs not exit! use oldAAKsp now commit[%b] create[%b], ver[%d], uin[%d], aak[%s], sid[%s]", new Object[] { Boolean.valueOf(localEditor.commit()), Boolean.valueOf(localSharedPreferences.getBoolean("key_auth_info_prefs_created", false)), Integer.valueOf(localSharedPreferences.getInt("key_auth_update_version", 0)), Integer.valueOf(localSharedPreferences.getInt("_auth_uin", 0)), localSharedPreferences.getString("_auth_key", ""), localSharedPreferences.getString("server_id", "") });
+      m = 1;
+      if (!bool1) {
+        break label296;
+      }
+      n = 1;
+      if (!paramBoolean1) {
+        break label307;
+      }
+      if (!bool2) {
+        break label302;
+      }
+      i = 2;
+      label189:
+      if (!paramBoolean2) {
+        break label317;
+      }
+      if (!bool3) {
+        break label312;
+      }
     }
     for (;;)
     {
-      AppMethodBeat.o(132249);
-      return localSharedPreferences;
-      label525:
-      ae.i("MicroMsg.MMReqRespAuthComm", "summerauth auth_info_key_prefs not exit! neither autoauthcfg nor oldAAKsp existed just install! stack[%s]", new Object[] { bu.fpN() });
+      localh.a(14852, new Object[] { Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(0), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(0), Integer.valueOf(0) });
+      AppMethodBeat.o(150169);
+      return;
+      bool1 = false;
+      break;
+      label284:
+      k = 0;
+      break label162;
+      label290:
+      m = 0;
+      break label170;
+      label296:
+      n = 0;
+      break label178;
+      label302:
+      i = 1;
+      break label189;
+      label307:
+      i = 0;
+      break label189;
+      label312:
+      j = 1;
+      continue;
+      label317:
+      j = 0;
     }
+  }
+  
+  public static void rY(int paramInt)
+  {
+    AppMethodBeat.i(150167);
+    boolean bool2 = b.apN();
+    boolean bool3 = b.apP();
+    boolean bool4 = b.apQ();
+    boolean bool5 = b.apR();
+    boolean bool6 = b.apV();
+    boolean bool7 = b.aqe();
+    int i2 = b.aqf();
+    int i3 = b.aqh();
+    int i4 = b.aqg();
+    int i5 = b.aqi();
+    g.aAi();
+    boolean bool8 = ((Boolean)g.aAh().azQ().get(73217, Boolean.TRUE)).booleanValue();
+    g.aAi();
+    boolean bool9 = ((Boolean)g.aAh().azQ().get(73218, Boolean.TRUE)).booleanValue();
+    boolean bool1;
+    h localh;
+    int i;
+    label287:
+    int j;
+    label294:
+    int k;
+    label301:
+    int m;
+    label309:
+    int n;
+    label317:
+    int i1;
+    label325:
+    String str1;
+    String str2;
+    if ((bool8) || (bool9))
+    {
+      bool1 = true;
+      Log.i("MicroMsg.KvNotificationStat", "doStatNotification, isNewMsgNotification: %s, isNewVoipMsgNotification: %s, isNotificationShowDetail: %s, isNotificationSound: %s, isNotificationShake: %s, isActiveSilentTime: %s, activeBegin: %s, activeEnd: %s, scene: %s, voipSound: %s, voipAudioSound: %s, voipHasSound: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool3), Boolean.valueOf(bool4), Boolean.valueOf(bool5), Boolean.valueOf(bool6), Boolean.valueOf(bool7), rZ(i2) + rZ(i3), rZ(i4) + rZ(i5), Integer.valueOf(paramInt), Boolean.valueOf(bool8), Boolean.valueOf(bool9), Boolean.valueOf(bool1) });
+      localh = h.CyF;
+      if (!bool2) {
+        break label488;
+      }
+      i = 1;
+      if (!bool3) {
+        break label493;
+      }
+      j = 1;
+      if (!bool4) {
+        break label498;
+      }
+      k = 1;
+      if (!bool5) {
+        break label503;
+      }
+      m = 1;
+      if (!bool6) {
+        break label509;
+      }
+      n = 1;
+      if (!bool7) {
+        break label515;
+      }
+      i1 = 2;
+      str1 = rZ(i4) + rZ(i5);
+      str2 = rZ(i2) + rZ(i3);
+      if (!bool1) {
+        break label521;
+      }
+    }
+    label515:
+    label521:
+    for (i2 = 1;; i2 = 2)
+    {
+      localh.a(15308, new Object[] { Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1), str1, str2, Integer.valueOf(paramInt), Integer.valueOf(i2) });
+      AppMethodBeat.o(150167);
+      return;
+      bool1 = false;
+      break;
+      label488:
+      i = 2;
+      break label287;
+      label493:
+      j = 2;
+      break label294;
+      label498:
+      k = 2;
+      break label301;
+      label503:
+      m = 2;
+      break label309;
+      label509:
+      n = 2;
+      break label317;
+      i1 = 1;
+      break label325;
+    }
+  }
+  
+  private static String rZ(int paramInt)
+  {
+    AppMethodBeat.i(150168);
+    if (paramInt > 10)
+    {
+      AppMethodBeat.o(150168);
+      return String.valueOf(paramInt);
+    }
+    String str = "0".concat(String.valueOf(paramInt));
+    AppMethodBeat.o(150168);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.be
  * JD-Core Version:    0.7.0.1
  */

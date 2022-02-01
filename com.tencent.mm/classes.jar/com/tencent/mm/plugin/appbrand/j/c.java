@@ -6,19 +6,19 @@ import com.tencent.mm.plugin.fts.a.a;
 public final class c
   extends a
 {
-  public final void agM()
+  public final void awY()
   {
     AppMethodBeat.i(45022);
-    if (agN()) {
-      R(-104L, 3L);
+    if (awZ()) {
+      W(-104L, 3L);
     }
     AppMethodBeat.o(45022);
   }
   
-  public final boolean agN()
+  public final boolean awZ()
   {
     AppMethodBeat.i(45023);
-    if (!ge(-104, 3))
+    if (!gD(-104, 3))
     {
       AppMethodBeat.o(45023);
       return true;

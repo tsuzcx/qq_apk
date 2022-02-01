@@ -7,9 +7,9 @@ import android.util.Property;
 public abstract interface c
   extends b.a
 {
-  public abstract void bs();
+  public abstract void bu();
   
-  public abstract void bt();
+  public abstract void bv();
   
   public abstract int getCircularRevealScrimColor();
   
@@ -24,14 +24,14 @@ public abstract interface c
   public static final class a
     implements TypeEvaluator<c.d>
   {
-    public static final TypeEvaluator<c.d> jN = new a();
-    private final c.d jJ = new c.d((byte)0);
+    public static final TypeEvaluator<c.d> jP = new a();
+    private final c.d jL = new c.d((byte)0);
   }
   
   public static final class b
     extends Property<c, c.d>
   {
-    public static final Property<c, c.d> jO = new b("circularReveal");
+    public static final Property<c, c.d> jQ = new b("circularReveal");
     
     private b(String paramString)
     {
@@ -42,7 +42,7 @@ public abstract interface c
   public static final class c
     extends Property<c, Integer>
   {
-    public static final Property<c, Integer> jP = new c("circularRevealScrimColor");
+    public static final Property<c, Integer> jR = new c("circularRevealScrimColor");
     
     private c(String paramString)
     {
@@ -90,7 +90,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.circularreveal.c
  * JD-Core Version:    0.7.0.1
  */

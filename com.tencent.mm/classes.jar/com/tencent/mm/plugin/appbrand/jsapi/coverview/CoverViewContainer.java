@@ -19,33 +19,34 @@ import android.view.ViewGroup.LayoutParams;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.jsapi.container.AppBrandNativeContainerView;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.page.bz;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class CoverViewContainer
   extends AppBrandNativeContainerView
-  implements com.tencent.mm.plugin.appbrand.jsapi.aa.g
+  implements com.tencent.mm.plugin.appbrand.jsapi.ac.g, bz
 {
-  private static HashMap<Integer, CoverViewContainer> kOd;
-  private View atS;
-  private float dbQ;
-  private float dbR;
-  private float kNY;
-  private float[] kNZ;
-  private float kOa;
-  private int kOb;
-  private Paint kOc;
-  public boolean kOe;
-  public String kOf;
-  private int kOg;
-  private boolean kOh;
-  private String kOi;
-  private long kOj;
-  GradientDrawable kOk;
-  float[] kOl;
-  private a kOm;
+  private static HashMap<Integer, CoverViewContainer> lSV;
+  private View atQ;
+  private float dsy;
+  private float dsz;
+  private float gPO;
+  private float lSR;
+  private float[] lSS;
+  private int lST;
+  private Paint lSU;
+  public boolean lSW;
+  public String lSX;
+  private int lSY;
+  private boolean lSZ;
+  private String lTa;
+  private long lTb;
+  GradientDrawable lTc;
+  float[] lTd;
+  private a lTe;
   private int mBgColor;
   private View.OnClickListener mOnClickListener;
   private int mScreenHeight;
@@ -54,23 +55,23 @@ public class CoverViewContainer
   
   static
   {
-    AppMethodBeat.i(201193);
-    kOd = new HashMap();
-    AppMethodBeat.o(201193);
+    AppMethodBeat.i(221236);
+    lSV = new HashMap();
+    AppMethodBeat.o(221236);
   }
   
   public CoverViewContainer(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(140657);
-    this.kOc = new Paint();
-    this.kOe = false;
-    this.kOf = "";
-    this.kOh = false;
+    this.lSU = new Paint();
+    this.lSW = false;
+    this.lSX = "";
+    this.lSZ = false;
     this.mScreenWidth = 0;
     this.mScreenHeight = 0;
-    this.kOk = new GradientDrawable();
-    this.kOl = new float[8];
+    this.lTc = new GradientDrawable();
+    this.lTd = new float[8];
     init();
     AppMethodBeat.o(140657);
   }
@@ -79,14 +80,14 @@ public class CoverViewContainer
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(140658);
-    this.kOc = new Paint();
-    this.kOe = false;
-    this.kOf = "";
-    this.kOh = false;
+    this.lSU = new Paint();
+    this.lSW = false;
+    this.lSX = "";
+    this.lSZ = false;
     this.mScreenWidth = 0;
     this.mScreenHeight = 0;
-    this.kOk = new GradientDrawable();
-    this.kOl = new float[8];
+    this.lTc = new GradientDrawable();
+    this.lTd = new float[8];
     init();
     AppMethodBeat.o(140658);
   }
@@ -95,53 +96,53 @@ public class CoverViewContainer
   {
     super(paramContext);
     AppMethodBeat.i(140660);
-    this.kOc = new Paint();
-    this.kOe = false;
-    this.kOf = "";
-    this.kOh = false;
+    this.lSU = new Paint();
+    this.lSW = false;
+    this.lSX = "";
+    this.lSZ = false;
     this.mScreenWidth = 0;
     this.mScreenHeight = 0;
-    this.kOk = new GradientDrawable();
-    this.kOl = new float[8];
+    this.lTc = new GradientDrawable();
+    this.lTd = new float[8];
     setTargetView(paramView);
     init();
     AppMethodBeat.o(140660);
   }
   
-  private static JSONObject P(View paramView, int paramInt)
+  private static JSONObject O(View paramView, int paramInt)
   {
-    AppMethodBeat.i(201191);
+    AppMethodBeat.i(221234);
     try
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("viewId", paramInt);
-      localJSONObject.put("left", com.tencent.mm.plugin.appbrand.y.g.aI(paramView.getX()));
-      localJSONObject.put("top", com.tencent.mm.plugin.appbrand.y.g.aI(paramView.getY()));
-      AppMethodBeat.o(201191);
+      localJSONObject.put("left", com.tencent.mm.plugin.appbrand.ac.g.aS(paramView.getX()));
+      localJSONObject.put("top", com.tencent.mm.plugin.appbrand.ac.g.aS(paramView.getY()));
+      AppMethodBeat.o(221234);
       return localJSONObject;
     }
     catch (JSONException paramView)
     {
-      AppMethodBeat.o(201191);
+      AppMethodBeat.o(221234);
     }
     return null;
   }
   
   private void a(String paramString, CoverViewContainer paramCoverViewContainer, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(201190);
-    if (this.kOm != null) {
-      this.kOm.a(paramString, paramCoverViewContainer.kOf, P(paramCoverViewContainer, paramCoverViewContainer.viewId), u(paramMotionEvent));
+    AppMethodBeat.i(221233);
+    if (this.lTe != null) {
+      this.lTe.a(paramString, paramCoverViewContainer.lSX, O(paramCoverViewContainer, paramCoverViewContainer.viewId), y(paramMotionEvent));
     }
-    AppMethodBeat.o(201190);
+    AppMethodBeat.o(221233);
   }
   
   private boolean a(ViewGroup paramViewGroup1, ViewGroup paramViewGroup2)
   {
-    AppMethodBeat.i(201189);
+    AppMethodBeat.i(221232);
     if (paramViewGroup1 == paramViewGroup2)
     {
-      AppMethodBeat.o(201189);
+      AppMethodBeat.o(221232);
       return false;
     }
     int j = paramViewGroup1.getChildCount();
@@ -151,21 +152,21 @@ public class CoverViewContainer
       View localView = paramViewGroup1.getChildAt(i);
       if (localView == paramViewGroup2)
       {
-        AppMethodBeat.o(201189);
+        AppMethodBeat.o(221232);
         return true;
       }
       if (((localView instanceof ViewGroup)) && (a((ViewGroup)localView, paramViewGroup2)))
       {
-        AppMethodBeat.o(201189);
+        AppMethodBeat.o(221232);
         return true;
       }
       i += 1;
     }
-    AppMethodBeat.o(201189);
+    AppMethodBeat.o(221232);
     return false;
   }
   
-  public static RectF cD(View paramView)
+  public static RectF cu(View paramView)
   {
     AppMethodBeat.i(140670);
     int[] arrayOfInt = new int[2];
@@ -177,32 +178,32 @@ public class CoverViewContainer
   
   private Drawable getShadowDrawable()
   {
-    AppMethodBeat.i(201184);
+    AppMethodBeat.i(221227);
     if (this.mBgColor != 0) {
-      this.kOk.setColor(this.mBgColor);
+      this.lTc.setColor(this.mBgColor);
     }
-    this.kOl[0] = this.kNZ[0];
-    this.kOl[1] = this.kNZ[0];
-    this.kOl[2] = this.kNZ[1];
-    this.kOl[3] = this.kNZ[1];
-    this.kOl[4] = this.kNZ[3];
-    this.kOl[5] = this.kNZ[3];
-    this.kOl[6] = this.kNZ[2];
-    this.kOl[7] = this.kNZ[2];
-    this.kOk.setCornerRadii(this.kOl);
-    if ((this.kOa > 0.0F) && (this.kOb != 0)) {
-      this.kOk.setStroke((int)this.kOa, this.kOb);
+    this.lTd[0] = this.lSS[0];
+    this.lTd[1] = this.lSS[0];
+    this.lTd[2] = this.lSS[1];
+    this.lTd[3] = this.lSS[1];
+    this.lTd[4] = this.lSS[3];
+    this.lTd[5] = this.lSS[3];
+    this.lTd[6] = this.lSS[2];
+    this.lTd[7] = this.lSS[2];
+    this.lTc.setCornerRadii(this.lTd);
+    if ((this.gPO > 0.0F) && (this.lST != 0)) {
+      this.lTc.setStroke((int)this.gPO, this.lST);
     }
-    GradientDrawable localGradientDrawable = this.kOk;
-    AppMethodBeat.o(201184);
+    GradientDrawable localGradientDrawable = this.lTc;
+    AppMethodBeat.o(221227);
     return localGradientDrawable;
   }
   
   private void init()
   {
     AppMethodBeat.i(140661);
-    this.kOc.setStyle(Paint.Style.STROKE);
-    this.kOc.setAntiAlias(true);
+    this.lSU.setStyle(Paint.Style.STROKE);
+    this.lSU.setAntiAlias(true);
     setWillNotDraw(false);
     WindowManager localWindowManager = (WindowManager)getContext().getSystemService("window");
     if (this.mScreenWidth == 0)
@@ -213,77 +214,77 @@ public class CoverViewContainer
     AppMethodBeat.o(140661);
   }
   
-  public static void tf(int paramInt)
+  public static void xb(int paramInt)
   {
-    AppMethodBeat.i(201187);
-    kOd.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(201187);
+    AppMethodBeat.i(221230);
+    lSV.remove(Integer.valueOf(paramInt));
+    AppMethodBeat.o(221230);
   }
   
-  private JSONObject u(MotionEvent paramMotionEvent)
+  private JSONObject y(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(201192);
+    AppMethodBeat.i(221235);
     try
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("viewId", this.viewId);
-      localJSONObject.put("x", com.tencent.mm.plugin.appbrand.y.g.aI(paramMotionEvent.getRawX()));
-      localJSONObject.put("y", com.tencent.mm.plugin.appbrand.y.g.aI(paramMotionEvent.getRawY()));
-      AppMethodBeat.o(201192);
+      localJSONObject.put("x", com.tencent.mm.plugin.appbrand.ac.g.aS(paramMotionEvent.getRawX()));
+      localJSONObject.put("y", com.tencent.mm.plugin.appbrand.ac.g.aS(paramMotionEvent.getRawY()));
+      AppMethodBeat.o(221235);
       return localJSONObject;
     }
     catch (JSONException paramMotionEvent)
     {
-      AppMethodBeat.o(201192);
+      AppMethodBeat.o(221235);
     }
     return null;
   }
   
-  protected final boolean G(float paramFloat1, float paramFloat2)
+  protected final boolean K(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(140669);
-    if (this.kNY <= 0.0F)
+    if (this.lSR <= 0.0F)
     {
       AppMethodBeat.o(140669);
       return true;
     }
-    double d1 = Math.pow(this.kNY, 2.0D);
+    double d1 = Math.pow(this.lSR, 2.0D);
     float f1 = getWidth();
     float f2 = getHeight();
     double d2;
-    if (paramFloat1 < this.kNY)
+    if (paramFloat1 < this.lSR)
     {
-      if (paramFloat2 < this.kNY)
+      if (paramFloat2 < this.lSR)
       {
-        if (Math.pow(this.kNY - paramFloat1, 2.0D) + Math.pow(this.kNY - paramFloat2, 2.0D) > d1)
+        if (Math.pow(this.lSR - paramFloat1, 2.0D) + Math.pow(this.lSR - paramFloat2, 2.0D) > d1)
         {
           AppMethodBeat.o(140669);
           return false;
         }
       }
-      else if (paramFloat2 > f2 - this.kNY)
+      else if (paramFloat2 > f2 - this.lSR)
       {
-        d2 = Math.pow(this.kNY - paramFloat1, 2.0D);
-        if (Math.pow(this.kNY + paramFloat2 - f2, 2.0D) + d2 > d1)
+        d2 = Math.pow(this.lSR - paramFloat1, 2.0D);
+        if (Math.pow(this.lSR + paramFloat2 - f2, 2.0D) + d2 > d1)
         {
           AppMethodBeat.o(140669);
           return false;
         }
       }
     }
-    else if (paramFloat1 > f1 - this.kNY) {
-      if (paramFloat2 < this.kNY)
+    else if (paramFloat1 > f1 - this.lSR) {
+      if (paramFloat2 < this.lSR)
       {
-        if (Math.pow(this.kNY + paramFloat1 - f1, 2.0D) + Math.pow(this.kNY - paramFloat2, 2.0D) > d1)
+        if (Math.pow(this.lSR + paramFloat1 - f1, 2.0D) + Math.pow(this.lSR - paramFloat2, 2.0D) > d1)
         {
           AppMethodBeat.o(140669);
           return false;
         }
       }
-      else if (paramFloat2 > f2 - this.kNY)
+      else if (paramFloat2 > f2 - this.lSR)
       {
-        d2 = Math.pow(this.kNY + paramFloat1 - f1, 2.0D);
-        if (Math.pow(this.kNY + paramFloat2 - f2, 2.0D) + d2 > d1)
+        d2 = Math.pow(this.lSR + paramFloat1 - f1, 2.0D);
+        if (Math.pow(this.lSR + paramFloat2 - f2, 2.0D) + d2 > d1)
         {
           AppMethodBeat.o(140669);
           return false;
@@ -296,18 +297,37 @@ public class CoverViewContainer
   
   public final void a(boolean paramBoolean, int paramInt, String paramString)
   {
-    AppMethodBeat.i(201186);
-    this.kOe = paramBoolean;
+    AppMethodBeat.i(221229);
+    this.lSW = paramBoolean;
     this.viewId = paramInt;
     if (paramBoolean)
     {
-      this.kOf = paramString;
-      kOd.put(Integer.valueOf(paramInt), this);
-      AppMethodBeat.o(201186);
+      this.lSX = paramString;
+      lSV.put(Integer.valueOf(paramInt), this);
+      AppMethodBeat.o(221229);
       return;
     }
-    kOd.remove(Integer.valueOf(paramInt));
-    AppMethodBeat.o(201186);
+    lSV.remove(Integer.valueOf(paramInt));
+    AppMethodBeat.o(221229);
+  }
+  
+  public final <T> T aB(Class<T> paramClass)
+  {
+    AppMethodBeat.i(140663);
+    try
+    {
+      if (paramClass.isAssignableFrom(this.atQ.getClass()))
+      {
+        paramClass = this.atQ;
+        AppMethodBeat.o(140663);
+        return paramClass;
+      }
+    }
+    catch (Exception paramClass)
+    {
+      AppMethodBeat.o(140663);
+    }
+    return null;
   }
   
   public void addView(View paramView, int paramInt)
@@ -348,34 +368,25 @@ public class CoverViewContainer
     }
   }
   
-  public final <T> T ax(Class<T> paramClass)
-  {
-    AppMethodBeat.i(140663);
-    try
-    {
-      if (paramClass.isAssignableFrom(this.atS.getClass()))
-      {
-        paramClass = this.atS;
-        AppMethodBeat.o(140663);
-        return paramClass;
-      }
-    }
-    catch (Exception paramClass)
-    {
-      AppMethodBeat.o(140663);
-    }
-    return null;
-  }
-  
-  public boolean bkM()
+  public boolean bGj()
   {
     return false;
   }
   
-  public final void dP(int paramInt1, int paramInt2)
+  public final boolean c(Canvas paramCanvas)
   {
-    this.viewId = paramInt1;
-    this.kOg = paramInt2;
+    AppMethodBeat.i(221226);
+    if ((getWidth() == 0) || (getHeight() == 0))
+    {
+      AppMethodBeat.o(221226);
+      return true;
+    }
+    paramCanvas.save();
+    paramCanvas.clipRect(0.0F, 0.0F, getWidth(), getHeight());
+    draw(paramCanvas);
+    paramCanvas.restore();
+    AppMethodBeat.o(221226);
+    return true;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -383,8 +394,8 @@ public class CoverViewContainer
     AppMethodBeat.i(140668);
     float f1 = paramMotionEvent.getRawX();
     float f2 = paramMotionEvent.getRawY();
-    boolean bool = cD(this).contains(f1, f2);
-    if ((paramMotionEvent.getActionMasked() == 0) && (!G(paramMotionEvent.getX(), paramMotionEvent.getY())) && (!bool))
+    boolean bool = cu(this).contains(f1, f2);
+    if ((paramMotionEvent.getActionMasked() == 0) && (!K(paramMotionEvent.getX(), paramMotionEvent.getY())) && (!bool))
     {
       AppMethodBeat.o(140668);
       return false;
@@ -398,45 +409,45 @@ public class CoverViewContainer
   {
     float f2 = 0.0F;
     AppMethodBeat.i(140662);
-    if ((this.kNZ != null) && (this.kNZ.length > 0))
+    if ((this.lSS != null) && (this.lSS.length > 0))
     {
       super.draw(paramCanvas);
       AppMethodBeat.o(140662);
       return;
     }
     int i;
-    if (this.kNY > 0.0F)
+    if (this.lSR > 0.0F)
     {
       i = 1;
       if (i != 0)
       {
         paramCanvas.save();
         localPath = new Path();
-        localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.kNY, this.kNY, Path.Direction.CW);
+        localPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.lSR, this.lSR, Path.Direction.CW);
         paramCanvas.clipPath(localPath);
       }
       if (this.mBgColor != 0) {
         paramCanvas.drawColor(this.mBgColor);
       }
-      if (this.kOa <= 0.0F) {
+      if (this.gPO <= 0.0F) {
         break label320;
       }
-      float f1 = this.kOa / 2.0F;
-      paramCanvas.drawRoundRect(new RectF(f1, f1, getWidth() - f1, getHeight() - f1), this.kNY, this.kNY, this.kOc);
+      float f1 = this.gPO / 2.0F;
+      paramCanvas.drawRoundRect(new RectF(f1, f1, getWidth() - f1, getHeight() - f1), this.lSR, this.lSR, this.lSU);
       if (i != 0) {
         paramCanvas.restore();
       }
       paramCanvas.save();
       Path localPath = new Path();
       f1 = f2;
-      if (this.kNY > 0.0F)
+      if (this.lSR > 0.0F)
       {
         f1 = f2;
-        if (this.kNY - this.kOa > 0.0F) {
-          f1 = this.kNY - this.kOa;
+        if (this.lSR - this.gPO > 0.0F) {
+          f1 = this.lSR - this.gPO;
         }
       }
-      localPath.addRoundRect(new RectF(this.kOa, this.kOa, getWidth() - this.kOa, getHeight() - this.kOa), f1, f1, Path.Direction.CW);
+      localPath.addRoundRect(new RectF(this.gPO, this.gPO, getWidth() - this.gPO, getHeight() - this.gPO), f1, f1, Path.Direction.CW);
       paramCanvas.clipPath(localPath);
       i = 1;
     }
@@ -454,19 +465,25 @@ public class CoverViewContainer
     }
   }
   
+  public final void eb(int paramInt1, int paramInt2)
+  {
+    this.viewId = paramInt1;
+    this.lSY = paramInt2;
+  }
+  
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     int j = 0;
-    AppMethodBeat.i(201188);
-    ae.d("MicroMsg.CoverViewContainer", "event: " + paramMotionEvent.getAction());
+    AppMethodBeat.i(221231);
+    Log.d("MicroMsg.CoverViewContainer", "event: " + paramMotionEvent.getAction());
     CoverViewContainer localCoverViewContainer = null;
     int m;
     int k;
     int i;
-    if (this.kOe)
+    if (this.lSW)
     {
       localCoverViewContainer = this;
-      if ((!this.kOe) && ((!this.kOh) || (!a(localCoverViewContainer, this)))) {}
+      if ((!this.lSW) && ((!this.lSZ) || (!a(localCoverViewContainer, this)))) {}
     }
     else
     {
@@ -481,22 +498,22 @@ public class CoverViewContainer
         {
           for (;;)
           {
-            AppMethodBeat.o(201188);
+            AppMethodBeat.o(221231);
             return true;
-            if (this.kOg <= 0) {
+            if (this.lSY <= 0) {
               break;
             }
-            localCoverViewContainer = (CoverViewContainer)kOd.get(Integer.valueOf(this.kOg));
+            localCoverViewContainer = (CoverViewContainer)lSV.get(Integer.valueOf(this.lSY));
             break;
-            this.dbQ = paramMotionEvent.getRawX();
-            this.dbR = paramMotionEvent.getRawY();
-            this.kOj = System.currentTimeMillis();
+            this.dsy = paramMotionEvent.getRawX();
+            this.dsz = paramMotionEvent.getRawY();
+            this.lTb = System.currentTimeMillis();
             if (localCoverViewContainer != null) {
               a("start", localCoverViewContainer, paramMotionEvent);
             }
           }
-          f1 = paramMotionEvent.getRawX() - this.dbQ;
-          f2 = paramMotionEvent.getRawY() - this.dbR;
+          f1 = paramMotionEvent.getRawX() - this.dsy;
+          f2 = paramMotionEvent.getRawY() - this.dsz;
         } while ((localCoverViewContainer == null) || ((Math.abs(f1) <= 1.0F) && (Math.abs(f2) <= 1.0F)));
         m = (int)(f1 + localCoverViewContainer.getX());
         k = (int)(f2 + localCoverViewContainer.getY());
@@ -516,8 +533,8 @@ public class CoverViewContainer
     for (;;)
     {
       localCoverViewContainer.setY(i);
-      this.dbQ = paramMotionEvent.getRawX();
-      this.dbR = paramMotionEvent.getRawY();
+      this.dsy = paramMotionEvent.getRawX();
+      this.dsz = paramMotionEvent.getRawY();
       a("dragging", localCoverViewContainer, paramMotionEvent);
       break;
       i = m;
@@ -531,8 +548,8 @@ public class CoverViewContainer
       {
         i = this.mScreenHeight - localCoverViewContainer.getHeight();
         continue;
-        long l = System.currentTimeMillis() - this.kOj;
-        if ((this.kOj != 0L) && (l < 300L) && (l >= 0L) && (this.mOnClickListener != null)) {
+        long l = System.currentTimeMillis() - this.lTb;
+        if ((this.lTb != 0L) && (l < 300L) && (l >= 0L) && (this.mOnClickListener != null)) {
           this.mOnClickListener.onClick(this);
         }
         if (localCoverViewContainer == null) {
@@ -541,7 +558,7 @@ public class CoverViewContainer
         a("end", localCoverViewContainer, paramMotionEvent);
         break;
         boolean bool = super.onTouchEvent(paramMotionEvent);
-        AppMethodBeat.o(201188);
+        AppMethodBeat.o(221231);
         return bool;
       }
       i = k;
@@ -556,47 +573,47 @@ public class CoverViewContainer
   public void setBorderColor(int paramInt)
   {
     AppMethodBeat.i(140666);
-    this.kOb = paramInt;
-    this.kOc.setColor(paramInt);
+    this.lST = paramInt;
+    this.lSU.setColor(paramInt);
     AppMethodBeat.o(140666);
   }
   
   public void setBorderRadius(float paramFloat)
   {
-    this.kNY = paramFloat;
+    this.lSR = paramFloat;
   }
   
   public void setBorderRadius(float[] paramArrayOfFloat)
   {
-    AppMethodBeat.i(201185);
-    this.kNZ = paramArrayOfFloat;
-    if ((this.kNZ != null) && (this.kNZ.length > 0)) {
+    AppMethodBeat.i(221228);
+    this.lSS = paramArrayOfFloat;
+    if ((this.lSS != null) && (this.lSS.length > 0)) {
       setBackground(getShadowDrawable());
     }
-    AppMethodBeat.o(201185);
+    AppMethodBeat.o(221228);
   }
   
   public void setBorderWidth(float paramFloat)
   {
     AppMethodBeat.i(140667);
-    this.kOa = paramFloat;
-    this.kOc.setStrokeWidth(paramFloat);
+    this.gPO = paramFloat;
+    this.lSU.setStrokeWidth(paramFloat);
     AppMethodBeat.o(140667);
   }
   
   public void setDragConfig(String paramString)
   {
-    this.kOi = paramString;
+    this.lTa = paramString;
   }
   
   public void setDragEventCallback(a parama)
   {
-    this.kOm = parama;
+    this.lTe = parama;
   }
   
   public void setIsInterceptEvent(boolean paramBoolean)
   {
-    this.kOh = paramBoolean;
+    this.lSZ = paramBoolean;
   }
   
   public void setOnCustomerClickListener(View.OnClickListener paramOnClickListener)
@@ -607,7 +624,7 @@ public class CoverViewContainer
   public void setTargetView(View paramView)
   {
     AppMethodBeat.i(140659);
-    this.atS = paramView;
+    this.atQ = paramView;
     super.addView(paramView, 0, new ViewGroup.LayoutParams(-1, -1));
     AppMethodBeat.o(140659);
   }

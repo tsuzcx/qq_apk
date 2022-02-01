@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:background="@color/BW_100" android:padding="0.5px" android:layout_width="fill_parent" android:layout_height="230.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <ImageView style="@style/hp" />
+    <ImageView style="@style/hx" />
     <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:textColor="@color/y4" android:id="@id/tenpay_keyboard_1" android:background="@drawable/aea" android:text="1" style="@style/tn" />
-        <ImageView style="@style/yl" />
-        <Button android:textColor="@color/y4" android:id="@id/tenpay_keyboard_2" android:background="@drawable/aea" android:text="2" style="@style/tn" />
-        <ImageView style="@style/yl" />
-        <Button android:textColor="@color/y4" android:id="@id/tenpay_keyboard_3" android:background="@drawable/aea" android:text="3" style="@style/tn" />
+        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_1" android:background="@drawable/az0" android:text="1" style="@style/ut" />
+        <ImageView style="@style/zv" />
+        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_2" android:background="@drawable/az0" android:text="2" style="@style/ut" />
+        <ImageView style="@style/zv" />
+        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_3" android:background="@drawable/az0" android:text="3" style="@style/ut" />
     </LinearLayout>
-    <ImageView style="@style/hp" />
+    <ImageView style="@style/hx" />
     <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:textColor="@color/y4" android:id="@id/tenpay_keyboard_4" android:background="@drawable/aea" android:text="4" style="@style/tn" />
-        <ImageView style="@style/yl" />
-        <Button android:textColor="@color/y4" android:id="@id/tenpay_keyboard_5" android:background="@drawable/aea" android:text="5" style="@style/tn" />
-        <ImageView style="@style/yl" />
-        <Button android:textColor="@color/y4" android:id="@id/tenpay_keyboard_6" android:background="@drawable/aea" android:text="6" style="@style/tn" />
+        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_4" android:background="@drawable/az0" android:text="4" style="@style/ut" />
+        <ImageView style="@style/zv" />
+        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_5" android:background="@drawable/az0" android:text="5" style="@style/ut" />
+        <ImageView style="@style/zv" />
+        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_6" android:background="@drawable/az0" android:text="6" style="@style/ut" />
     </LinearLayout>
-    <ImageView style="@style/hp" />
+    <ImageView style="@style/hx" />
     <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:textColor="@color/y4" android:id="@id/tenpay_keyboard_7" android:background="@drawable/aea" android:text="7" style="@style/tn" />
-        <ImageView style="@style/yl" />
-        <Button android:textColor="@color/y4" android:id="@id/tenpay_keyboard_8" android:background="@drawable/aea" android:text="8" style="@style/tn" />
-        <ImageView style="@style/yl" />
-        <Button android:textColor="@color/y4" android:id="@id/tenpay_keyboard_9" android:background="@drawable/aea" android:text="9" style="@style/tn" />
+        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_7" android:background="@drawable/az0" android:text="7" style="@style/ut" />
+        <ImageView style="@style/zv" />
+        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_8" android:background="@drawable/az0" android:text="8" style="@style/ut" />
+        <ImageView style="@style/zv" />
+        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_9" android:background="@drawable/az0" android:text="9" style="@style/ut" />
     </LinearLayout>
-    <ImageView style="@style/hp" />
+    <ImageView style="@style/hx" />
     <LinearLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
-        <Button android:textSize="26.0dip" android:textColor="@color/y4" android:id="@id/tenpay_keyboard_x" android:background="@drawable/ae7" android:text="" style="@style/tn" />
-        <ImageView style="@style/yl" />
-        <Button android:textColor="@color/y4" android:id="@id/tenpay_keyboard_0" android:background="@drawable/aea" android:text="0" style="@style/tn" />
-        <ImageView style="@style/yl" />
-        <RelativeLayout android:id="@id/tenpay_keyboard_d" android:background="@drawable/ae7" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/keyboard_delete" android:layout_centerInParent="true" android:contentDescription="@string/d9y" app:iconColor="@color/FG_0" />
+        <Button android:textSize="26.0dip" android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_x" android:background="@drawable/ayw" android:text="" style="@style/ut" />
+        <ImageView style="@style/zv" />
+        <Button android:textColor="@color/a2x" android:id="@id/tenpay_keyboard_0" android:background="@drawable/az0" android:text="0" style="@style/ut" />
+        <ImageView style="@style/zv" />
+        <RelativeLayout android:id="@id/tenpay_keyboard_d" android:background="@drawable/ayw" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/keyboard_delete" android:layout_centerInParent="true" android:contentDescription="@string/e_v" app:iconColor="@color/FG_0" />
         </RelativeLayout>
     </LinearLayout>
 </LinearLayout>

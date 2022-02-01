@@ -6,12 +6,12 @@ import java.util.HashMap;
 
 public final class a
 {
-  public static HashMap<String, WeakReference<Object>> iMU;
+  public static HashMap<String, WeakReference<Object>> jJI;
   
   static
   {
     AppMethodBeat.i(145582);
-    iMU = new HashMap();
+    jJI = new HashMap();
     AppMethodBeat.o(145582);
   }
 }

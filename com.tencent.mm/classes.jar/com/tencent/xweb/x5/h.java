@@ -13,9 +13,9 @@ import org.xwalk.core.Log;
 public final class h
   implements IJsRuntime
 {
-  private JsContext MSd;
-  private h.a MSe;
-  private n MSf;
+  private JsContext SFj;
+  private h.a SFk;
+  private n SFl;
   private Context mContext;
   
   public h(Context paramContext)
@@ -29,11 +29,11 @@ public final class h
   public final void init(int paramInt)
   {
     AppMethodBeat.i(153867);
-    this.MSd = new JsContext(this.mContext);
-    this.MSe = new h.a();
-    this.MSd.addJavascriptInterface(this.MSe, "nativeBufferCompat");
-    this.MSd.evaluateJavascript("function getNativeBufferId() {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBufferId();   }   return -1;}function setNativeBuffer(id, bytes) {   if (nativeBufferCompat) {       return nativeBufferCompat.setNativeBuffer(id, bytes);   }}function getNativeBuffer(id) {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBuffer(id);   }}", new a.d(new ValueCallback() {}));
-    this.MSd.setExceptionHandler(new JsContext.ExceptionHandler()
+    this.SFj = new JsContext(this.mContext);
+    this.SFk = new h.a();
+    this.SFj.addJavascriptInterface(this.SFk, "nativeBufferCompat");
+    this.SFj.evaluateJavascript("function getNativeBufferId() {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBufferId();   }   return -1;}function setNativeBuffer(id, bytes) {   if (nativeBufferCompat) {       return nativeBufferCompat.setNativeBuffer(id, bytes);   }}function getNativeBuffer(id) {   if (nativeBufferCompat) {       return nativeBufferCompat.getNativeBuffer(id);   }}", new a.d(new ValueCallback() {}));
+    this.SFj.setExceptionHandler(new JsContext.ExceptionHandler()
     {
       public final void handleException(JsContext paramAnonymousJsContext, JsError paramAnonymousJsError)
       {
@@ -56,7 +56,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.xweb.x5.h
  * JD-Core Version:    0.7.0.1
  */

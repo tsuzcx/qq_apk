@@ -6,11 +6,11 @@ import java.util.Set;
 
 public abstract interface e
 {
-  public abstract Map<Object, Set<View>> aDT();
+  public abstract Map<Object, Set<View>> aXG();
   
-  public abstract Set<View> bX(Object paramObject);
+  public abstract Set<View> ch(Object paramObject);
   
-  public abstract Set<View> bY(Object paramObject);
+  public abstract Set<View> ci(Object paramObject);
   
   public abstract boolean d(Object paramObject, View paramView);
   
@@ -18,7 +18,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.e
  * JD-Core Version:    0.7.0.1
  */

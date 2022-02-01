@@ -1,18 +1,23 @@
 package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cp.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.cr.d;
+import com.tencent.mm.pluginsdk.model.x;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class ah
   extends i
 {
-  public final void LN()
+  public final void Wa()
   {
     AppMethodBeat.i(160135);
-    ae.i("MicroMsg.ToolsProcessBootStep", "installPlugins()");
+    Log.i("MicroMsg.ToolsProcessBootStep", "installPlugins()");
+    if (MMApplicationContext.isToolsProcess()) {
+      x.gmG();
+    }
     d.a(null);
-    super.LN();
+    super.Wa();
     AppMethodBeat.o(160135);
   }
 }

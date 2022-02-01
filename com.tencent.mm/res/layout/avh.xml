@@ -1,3 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/cr2" style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/j4y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/j6i" android:background="@drawable/a8f" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerSeekBar android:id="@id/j5y" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:onClick="onClick" />
+    </LinearLayout>
+</RelativeLayout>

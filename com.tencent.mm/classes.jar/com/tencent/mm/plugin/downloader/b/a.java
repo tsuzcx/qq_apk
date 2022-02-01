@@ -7,52 +7,57 @@ import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ir;
+import com.tencent.mm.g.a.jg;
 import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.downloader.model.c;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
 import com.tencent.mm.plugin.downloader.model.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
 public final class a
   implements m
 {
-  private static a ppY;
-  private static BroadcastReceiver ppZ;
-  private static Set<b> pqa;
-  private static Set<c> pqb;
-  private static com.tencent.mm.sdk.b.c pqc;
+  private static a qFD;
+  private static BroadcastReceiver qFE;
+  private static Set<b> qFF;
+  private static Set<c> qFG;
+  private static IListener qFH;
   
   static
   {
     AppMethodBeat.i(88848);
-    ppY = null;
-    ppZ = null;
-    pqa = new CopyOnWriteArraySet();
-    pqb = new CopyOnWriteArraySet();
-    pqc = new com.tencent.mm.sdk.b.c() {};
+    qFD = null;
+    qFE = null;
+    qFF = new CopyOnWriteArraySet();
+    qFG = new CopyOnWriteArraySet();
+    qFH = new IListener() {};
     AppMethodBeat.o(88848);
   }
   
-  private static void K(int paramInt, long paramLong)
+  private static void N(int paramInt, long paramLong)
   {
     AppMethodBeat.i(88846);
-    ae.i("MicroMsg.DownloadEventBus", "dispatch event = %d, id = %d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
-    com.tencent.mm.plugin.downloader.g.a locala = d.ur(paramLong);
+    Log.i("MicroMsg.DownloadEventBus", "dispatch event = %d, id = %d", new Object[] { Integer.valueOf(paramInt), Long.valueOf(paramLong) });
+    com.tencent.mm.plugin.downloader.g.a locala = d.Cw(paramLong);
     if (locala == null)
     {
       AppMethodBeat.o(88846);
       return;
     }
-    Iterator localIterator = pqa.iterator();
+    Iterator localIterator = qFF.iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).L(paramInt, locala.field_downloadId);
+      ((b)localIterator.next()).O(paramInt, locala.field_downloadId);
     }
     a(locala, paramInt);
     AppMethodBeat.o(88846);
@@ -62,7 +67,7 @@ public final class a
   {
     AppMethodBeat.i(88834);
     if (paramb != null) {
-      pqa.add(paramb);
+      qFF.add(paramb);
     }
     AppMethodBeat.o(88834);
   }
@@ -71,7 +76,7 @@ public final class a
   {
     AppMethodBeat.i(177453);
     if (paramc != null) {
-      pqb.add(paramc);
+      qFG.add(paramc);
     }
     AppMethodBeat.o(177453);
   }
@@ -95,7 +100,7 @@ public final class a
   {
     AppMethodBeat.i(88835);
     if (paramb != null) {
-      pqa.remove(paramb);
+      qFF.remove(paramb);
     }
     AppMethodBeat.o(88835);
   }
@@ -104,98 +109,98 @@ public final class a
   {
     AppMethodBeat.i(177454);
     if (paramc != null) {
-      pqb.remove(paramc);
+      qFG.remove(paramc);
     }
     AppMethodBeat.o(177454);
   }
   
-  public static void cds()
+  public static void cBn()
   {
     AppMethodBeat.i(88836);
-    if (ppY == null) {
-      ppY = new a();
+    if (qFD == null) {
+      qFD = new a();
     }
-    if (ppZ == null) {
-      ppZ = new a((byte)0);
+    if (qFE == null) {
+      qFE = new a((byte)0);
     }
-    f.cdA();
-    com.tencent.mm.plugin.downloader.model.c.a(ppY);
+    f.cBv();
+    c.a(qFD);
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
     localIntentFilter.addAction("android.intent.action.PACKAGE_REPLACED");
     localIntentFilter.addDataScheme("package");
-    ak.getContext().registerReceiver(ppZ, localIntentFilter);
-    com.tencent.mm.sdk.b.a.IvT.c(pqc);
+    MMApplicationContext.getContext().registerReceiver(qFE, localIntentFilter);
+    EventCenter.instance.addListener(qFH);
     AppMethodBeat.o(88836);
   }
   
-  public static void cdt()
+  public static void cBo()
   {
     AppMethodBeat.i(88837);
-    f.cdA();
-    com.tencent.mm.plugin.downloader.model.c.b(ppY);
-    ak.getContext().unregisterReceiver(ppZ);
-    ppY = null;
-    ppZ = null;
-    pqa.clear();
-    com.tencent.mm.sdk.b.a.IvT.d(pqc);
+    f.cBv();
+    c.b(qFD);
+    MMApplicationContext.getContext().unregisterReceiver(qFE);
+    qFD = null;
+    qFE = null;
+    qFF.clear();
+    EventCenter.instance.removeListener(qFH);
     AppMethodBeat.o(88837);
   }
   
-  public final void a(long paramLong, int paramInt, boolean paramBoolean)
+  public final void Bd(long paramLong)
   {
-    AppMethodBeat.i(88840);
-    K(5, paramLong);
-    AppMethodBeat.o(88840);
+    AppMethodBeat.i(88841);
+    N(4, paramLong);
+    AppMethodBeat.o(88841);
+  }
+  
+  public final void Be(long paramLong)
+  {
+    AppMethodBeat.i(88842);
+    N(2, paramLong);
+    AppMethodBeat.o(88842);
+  }
+  
+  public final void Bf(long paramLong)
+  {
+    AppMethodBeat.i(88845);
+    N(8, paramLong);
+    AppMethodBeat.o(88845);
   }
   
   public final void a(long paramLong1, String paramString, long paramLong2, long paramLong3)
   {
-    AppMethodBeat.i(207155);
-    K(6, paramLong1);
-    AppMethodBeat.o(207155);
+    AppMethodBeat.i(192249);
+    N(6, paramLong1);
+    AppMethodBeat.o(192249);
+  }
+  
+  public final void b(long paramLong, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(88840);
+    N(5, paramLong);
+    AppMethodBeat.o(88840);
   }
   
   public final void b(long paramLong, String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(88839);
-    K(3, paramLong);
+    N(3, paramLong);
     AppMethodBeat.o(88839);
-  }
-  
-  public final void j(long paramLong, String paramString)
-  {
-    AppMethodBeat.i(88838);
-    K(1, paramLong);
-    AppMethodBeat.o(88838);
   }
   
   public final void k(long paramLong, String paramString)
   {
+    AppMethodBeat.i(88838);
+    N(1, paramLong);
+    AppMethodBeat.o(88838);
+  }
+  
+  public final void l(long paramLong, String paramString)
+  {
     AppMethodBeat.i(88844);
-    K(7, paramLong);
+    N(7, paramLong);
     AppMethodBeat.o(88844);
-  }
-  
-  public final void sY(long paramLong)
-  {
-    AppMethodBeat.i(88841);
-    K(4, paramLong);
-    AppMethodBeat.o(88841);
-  }
-  
-  public final void sZ(long paramLong)
-  {
-    AppMethodBeat.i(88842);
-    K(2, paramLong);
-    AppMethodBeat.o(88842);
-  }
-  
-  public final void ta(long paramLong)
-  {
-    AppMethodBeat.i(88845);
-    K(8, paramLong);
-    AppMethodBeat.o(88845);
   }
   
   static final class a
@@ -210,10 +215,10 @@ public final class a
         return;
       }
       paramContext = paramIntent.getAction();
-      ae.i("MicroMsg.DownloadEventBus", paramContext);
-      if (bu.isNullOrNil(paramContext))
+      Log.i("MicroMsg.DownloadEventBus", paramContext);
+      if (Util.isNullOrNil(paramContext))
       {
-        ae.e("MicroMsg.DownloadEventBus", "action is null or nill, ignore");
+        Log.e("MicroMsg.DownloadEventBus", "action is null or nill, ignore");
         AppMethodBeat.o(88833);
         return;
       }
@@ -232,88 +237,93 @@ public final class a
       {
         for (;;)
         {
-          ae.e("MicroMsg.DownloadEventBus", "%s", new Object[] { bu.o(paramIntent) });
+          Log.e("MicroMsg.DownloadEventBus", "%s", new Object[] { Util.stackTraceToString(paramIntent) });
         }
         paramIntent = paramContext;
         if (!paramContext.startsWith("package:")) {
           break label159;
         }
         paramIntent = paramContext.substring(8);
-        if ((g.ajM()) && (!com.tencent.mm.kernel.a.aiT())) {
+        if ((g.aAc()) && (!com.tencent.mm.kernel.a.azj())) {
           break label184;
         }
-        ae.e("MicroMsg.DownloadEventBus", "no user login");
+        Log.e("MicroMsg.DownloadEventBus", "no user login");
         AppMethodBeat.o(88833);
         return;
-        paramContext = d.azM();
+        paramContext = d.aSU();
         if (paramContext != null) {
-          break label204;
+          break label207;
         }
+        paramContext = null;
+        while (Util.isNullOrNil(paramContext))
+        {
+          AppMethodBeat.o(88833);
+          return;
+          if (Util.isNullOrNil(paramIntent))
+          {
+            Log.e("MicroMsg.FileDownloadInfoStorage", "Null or nil PakcageName");
+            paramContext = null;
+          }
+          else
+          {
+            localCursor = paramContext.rawQuery("select * from FileDownloadInfo where packageName='" + paramIntent + "' order by downloadId desc", new String[0]);
+            paramIntent = new LinkedList();
+            paramContext = paramIntent;
+            if (localCursor != null)
+            {
+              if (localCursor.moveToFirst()) {
+                do
+                {
+                  paramContext = new com.tencent.mm.plugin.downloader.g.a();
+                  paramContext.convertFrom(localCursor);
+                  paramIntent.add(paramContext);
+                } while (localCursor.moveToNext());
+              }
+              localCursor.close();
+              paramContext = paramIntent;
+            }
+          }
+        }
+        paramIntent = paramContext.iterator();
       }
-      ae.i("MicroMsg.DownloadEventBus", "get added package name : %s", new Object[] { paramContext });
-      if (bu.isNullOrNil(paramContext))
+      Log.i("MicroMsg.DownloadEventBus", "get added package name : %s", new Object[] { paramContext });
+      if (Util.isNullOrNil(paramContext))
       {
-        ae.e("MicroMsg.DownloadEventBus", "get installed broadcast, while the package name is null or nil");
+        Log.e("MicroMsg.DownloadEventBus", "get installed broadcast, while the package name is null or nil");
         AppMethodBeat.o(88833);
         return;
       }
       label159:
       label184:
-      paramContext = null;
-      label204:
-      Cursor localCursor;
-      while (paramContext == null)
+      label207:
+      do
       {
-        AppMethodBeat.o(88833);
-        return;
-        if (bu.isNullOrNil(paramIntent))
-        {
-          ae.e("MicroMsg.FileDownloadInfoStorage", "Null or nil PakcageName");
-          paramContext = null;
-        }
-        else
-        {
-          localCursor = paramContext.rawQuery("select * from FileDownloadInfo where packageName='" + paramIntent + "' order by downloadId desc limit 1", new String[0]);
-          if (localCursor == null)
-          {
-            paramContext = null;
-          }
-          else
-          {
-            if (!localCursor.moveToFirst()) {
-              break label314;
-            }
-            paramIntent = new com.tencent.mm.plugin.downloader.g.a();
-            paramIntent.convertFrom(localCursor);
-          }
-        }
-      }
-      for (;;)
-      {
-        paramContext = paramIntent;
-        if (localCursor == null) {
+        Cursor localCursor;
+        if (!paramIntent.hasNext()) {
           break;
         }
-        localCursor.close();
-        paramContext = paramIntent;
-        break;
-        a.uf(paramContext.field_downloadId);
+        paramContext = (com.tencent.mm.plugin.downloader.g.a)paramIntent.next();
+      } while (paramContext.field_fileType != 1);
+      for (;;)
+      {
+        if (paramContext != null) {
+          a.Ck(paramContext.field_downloadId);
+        }
         AppMethodBeat.o(88833);
         return;
-        label314:
-        paramIntent = null;
+        paramContext = null;
       }
     }
   }
   
   public static abstract interface b
   {
-    public abstract void L(int paramInt, long paramLong);
+    public abstract void O(int paramInt, long paramLong);
   }
   
   public static abstract interface c
   {
-    public abstract void aa(Bundle paramBundle);
+    public abstract void ag(Bundle paramBundle);
   }
   
   static class d
@@ -322,7 +332,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.b.a
  * JD-Core Version:    0.7.0.1
  */

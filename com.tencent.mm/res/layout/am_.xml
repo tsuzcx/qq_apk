@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:id="@id/e98" android:background="@drawable/brx" android:padding="@dimen/jn" android:layout_height="0.0dip" android:layout_margin="0.0dip" android:minHeight="100.0dip" android:layout_weight="1.0" style="@style/qj"
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/be9" android:background="@color/ag1" android:paddingLeft="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="top" android:id="@id/e9i" android:background="@raw/mall_order_detail_frame" android:layout_width="53.299988dip" android:layout_height="53.299988dip" android:layout_marginTop="23.599976dip" android:src="@raw/mall_order_trade_state_icon" />
-    <LinearLayout android:layout_gravity="top" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/jn" android:layout_marginTop="23.599976dip" android:layout_marginBottom="23.599976dip" android:layout_weight="1.0">
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/ve" android:id="@id/e9_" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/vc" android:ellipsize="end" android:id="@id/e99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:maxLines="1" />
+    <ImageView android:background="@raw/force_notify_show_ui_icon" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bx" />
+    <TextView android:textSize="@dimen/q" android:textStyle="bold" android:textColor="@color/fr" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="37.0dip" android:text="@string/dh1" />
+    <TextView android:textSize="@dimen/s" android:textColor="@color/fr" android:gravity="center" android:id="@id/bmr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" />
+    <LinearLayout android:gravity="bottom|center" android:orientation="vertical" android:background="@color/ac_" android:paddingBottom="@dimen/bx" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:textColor="@color/ag1" android:id="@id/b7" android:background="@drawable/a8x" android:layout_width="@dimen/c6" android:layout_height="@dimen/cl" android:text="@string/dgz" style="@style/ov" />
+        <Button android:id="@id/ai8" android:layout_width="@dimen/c6" android:layout_height="@dimen/cl" android:layout_marginTop="@dimen/cb" android:text="@string/dh3" style="@style/p3" />
     </LinearLayout>
 </LinearLayout>

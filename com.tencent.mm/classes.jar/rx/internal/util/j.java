@@ -11,8 +11,8 @@ public final class j
     static
     {
       AppMethodBeat.i(90230);
-      OxO = new a("INSTANCE");
-      OxP = new a[] { OxO };
+      UnC = new a("INSTANCE");
+      UnD = new a[] { UnC };
       AppMethodBeat.o(90230);
     }
     

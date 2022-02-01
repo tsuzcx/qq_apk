@@ -1,16 +1,16 @@
 package com.tencent.mm.plugin.fav.a;
 
-import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public abstract interface s
-  extends g
+  extends IStorage
 {
-  public static final String[] SQL_CREATE = { j.getCreateSQLs(e.info, "FavConfigInfo") };
+  public static final String[] SQL_CREATE = { MAutoStorage.getCreateSQLs(e.info, "FavConfigInfo") };
   
-  public abstract void bn(byte[] paramArrayOfByte);
+  public abstract void bE(byte[] paramArrayOfByte);
   
-  public abstract byte[] cwJ();
+  public abstract byte[] cUN();
 }
 
 

@@ -10,7 +10,7 @@ public final class e
   Bitmap bitmap = null;
   int resId = -1;
   
-  public final void n(ImageView paramImageView)
+  public final void p(ImageView paramImageView)
   {
     AppMethodBeat.i(142536);
     if (paramImageView == null)
@@ -29,7 +29,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,43 @@
 package com.tencent.mm.plugin.card.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ex;
-import com.tencent.mm.protocal.protobuf.tw;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.ff;
+import com.tencent.mm.protocal.protobuf.vb;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class ak
-  extends ex
+  extends ff
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(112869);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "cardUserId";
-    locala.IBN.put("cardUserId", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "cardUserId";
+    localMAutoDBInfo.colsMap.put("cardUserId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" cardUserId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "cardUserId";
-    locala.columns[1] = "retryCount";
-    locala.IBN.put("retryCount", "INTEGER");
+    localMAutoDBInfo.primaryKey = "cardUserId";
+    localMAutoDBInfo.columns[1] = "retryCount";
+    localMAutoDBInfo.colsMap.put("retryCount", "INTEGER");
     localStringBuilder.append(" retryCount INTEGER");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(112869);
   }
   
-  public static ak b(tw paramtw)
+  public static ak b(vb paramvb)
   {
     AppMethodBeat.i(112868);
     ak localak = new ak();
-    localak.field_cardUserId = paramtw.Gaq;
+    localak.field_cardUserId = paramvb.KUk;
     AppMethodBeat.o(112868);
     return localak;
   }
@@ -53,7 +53,7 @@ public final class ak
     return true;
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
@@ -73,7 +73,7 @@ public final class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.ak
  * JD-Core Version:    0.7.0.1
  */

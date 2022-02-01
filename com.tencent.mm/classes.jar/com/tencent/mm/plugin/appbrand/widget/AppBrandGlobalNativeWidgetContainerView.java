@@ -1,121 +1,131 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
 import android.content.Context;
+import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.AbsoluteLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ap;
-import com.tencent.mm.plugin.appbrand.page.bp;
-import com.tencent.mm.plugin.appbrand.page.bp.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.page.as;
+import com.tencent.mm.plugin.appbrand.page.bv;
+import com.tencent.mm.plugin.appbrand.page.bv.a;
+import com.tencent.mm.plugin.appbrand.page.bz;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public class AppBrandGlobalNativeWidgetContainerView
   extends AbsoluteLayout
-  implements ap, bp
+  implements as, bv, bz
 {
-  private final AbsoluteLayout mWT;
-  private final List<bp.a> mWU;
+  private final AbsoluteLayout ojW;
+  private final List<bv.a> ojX;
   
   public AppBrandGlobalNativeWidgetContainerView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(207992);
-    this.mWU = new LinkedList();
-    this.mWT = this;
-    AppMethodBeat.o(207992);
+    AppMethodBeat.i(219596);
+    this.ojX = new LinkedList();
+    this.ojW = this;
+    AppMethodBeat.o(219596);
   }
   
   public AppBrandGlobalNativeWidgetContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(207993);
-    this.mWU = new LinkedList();
-    this.mWT = this;
-    AppMethodBeat.o(207993);
+    AppMethodBeat.i(219597);
+    this.ojX = new LinkedList();
+    this.ojW = this;
+    AppMethodBeat.o(219597);
   }
   
   public AppBrandGlobalNativeWidgetContainerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(207994);
-    this.mWU = new LinkedList();
-    this.mWT = this;
-    AppMethodBeat.o(207994);
+    AppMethodBeat.i(219598);
+    this.ojX = new LinkedList();
+    this.ojW = this;
+    AppMethodBeat.o(219598);
   }
   
-  public final void a(bp.a parama)
+  public final void a(bv.a parama)
   {
-    AppMethodBeat.i(207996);
+    AppMethodBeat.i(219600);
     if (parama == null)
     {
-      AppMethodBeat.o(207996);
+      AppMethodBeat.o(219600);
       return;
     }
-    if (this.mWU.contains(parama))
+    if (this.ojX.contains(parama))
     {
-      AppMethodBeat.o(207996);
+      AppMethodBeat.o(219600);
       return;
     }
-    this.mWU.add(parama);
-    AppMethodBeat.o(207996);
+    this.ojX.add(parama);
+    AppMethodBeat.o(219600);
   }
   
-  public final void b(bp.a parama)
+  public final void b(bv.a parama)
   {
-    AppMethodBeat.i(207997);
+    AppMethodBeat.i(219601);
     if (parama == null)
     {
-      AppMethodBeat.o(207997);
+      AppMethodBeat.o(219601);
       return;
     }
-    this.mWU.remove(parama);
-    AppMethodBeat.o(207997);
+    this.ojX.remove(parama);
+    AppMethodBeat.o(219601);
+  }
+  
+  public final boolean c(Canvas paramCanvas)
+  {
+    AppMethodBeat.i(219602);
+    draw(paramCanvas);
+    AppMethodBeat.o(219602);
+    return true;
   }
   
   public final void onScrollChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
   {
-    AppMethodBeat.i(207995);
-    ae.v("MicroMsg.AppBrandGlobalNativeWidgetContainerView", "onScrollChanged, left = %d, top = %d, oldLeft = %d, oldTop = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
-    if (this.mWT != null)
+    AppMethodBeat.i(219599);
+    Log.v("MicroMsg.AppBrandGlobalNativeWidgetContainerView", "onScrollChanged, left = %d, top = %d, oldLeft = %d, oldTop = %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    if (this.ojW != null)
     {
       paramInt3 = paramView.getWidth();
       paramInt4 = paramView.getHeight();
-      if (this.mWT != null)
+      if (this.ojW != null)
       {
-        paramView = this.mWT.getLayoutParams();
+        paramView = this.ojW.getLayoutParams();
         if (paramView != null) {
           break label157;
         }
         paramView = new ViewGroup.LayoutParams(paramInt3, paramInt4);
-        this.mWT.setLayoutParams(paramView);
+        this.ojW.setLayoutParams(paramView);
       }
     }
     for (;;)
     {
-      this.mWT.scrollTo(paramInt1, paramInt2);
-      paramView = this.mWU.iterator();
+      this.ojW.scrollTo(paramInt1, paramInt2);
+      paramView = this.ojX.iterator();
       while (paramView.hasNext()) {
-        ((bp.a)paramView.next()).eg(paramInt1, paramInt2);
+        ((bv.a)paramView.next()).eu(paramInt1, paramInt2);
       }
       label157:
       if ((paramInt3 != paramView.width) || (paramInt4 != paramView.height))
       {
         paramView.width = paramInt3;
         paramView.height = paramInt4;
-        this.mWT.setLayoutParams(paramView);
+        this.ojW.setLayoutParams(paramView);
       }
     }
-    AppMethodBeat.o(207995);
+    AppMethodBeat.o(219599);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.AppBrandGlobalNativeWidgetContainerView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,21 +10,21 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.au;
 import com.tencent.mm.ui.base.preference.Preference;
-import com.tencent.mm.ui.tools.t;
+import com.tencent.mm.ui.tools.u;
 
 public class HelperHeaderPreference
   extends Preference
 {
-  private a Fyv;
+  private a Kpu;
   
   public HelperHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(152254);
-    this.Fyv = new a();
+    this.Kpu = new a();
     AppMethodBeat.o(152254);
   }
   
@@ -32,16 +32,16 @@ public class HelperHeaderPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(152255);
-    this.Fyv = new a();
+    this.Kpu = new a();
     AppMethodBeat.o(152255);
   }
   
-  public final void ba(String paramString1, String paramString2, String paramString3)
+  public final void bk(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(152257);
-    this.Fyv.dED = paramString1;
-    this.Fyv.fXp = paramString2;
-    this.Fyv.hint = paramString3;
+    this.Kpu.dWq = paramString1;
+    this.Kpu.gCv = paramString2;
+    this.Kpu.hint = paramString3;
     super.callChangeListener(null);
     AppMethodBeat.o(152257);
   }
@@ -49,28 +49,28 @@ public class HelperHeaderPreference
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(152256);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131297008);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131305208);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131302867);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131300747);
-    TextView localTextView4 = (TextView)paramView.findViewById(2131299870);
-    final View localView = paramView.findViewById(2131303492);
-    localTextView4.setText(2131759042);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131297134);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131308405);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131305440);
+    TextView localTextView3 = (TextView)paramView.findViewById(2131302335);
+    TextView localTextView4 = (TextView)paramView.findViewById(2131300550);
+    final View localView = paramView.findViewById(2131306255);
+    localTextView4.setText(2131759368);
     if (localImageView != null) {
-      a.b.c(localImageView, this.Fyv.dED);
+      a.b.c(localImageView, this.Kpu.dWq);
     }
     if (localTextView1 != null) {
-      switch (this.Fyv.status)
+      switch (this.Kpu.status)
       {
       }
     }
     for (;;)
     {
       if (localTextView2 != null) {
-        localTextView2.setText(this.Fyv.fXp);
+        localTextView2.setText(this.Kpu.gCv);
       }
       if (localTextView3 != null) {
-        localTextView3.setText(this.Fyv.hint);
+        localTextView3.setText(this.Kpu.hint);
       }
       super.onBindView(paramView);
       localView.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener()
@@ -83,15 +83,15 @@ public class HelperHeaderPreference
           localView.getLocationOnScreen(arrayOfInt);
           int k = arrayOfInt[1];
           int j = a.fromDPToPix(HelperHeaderPreference.this.mContext, 60);
-          int m = ar.jN(HelperHeaderPreference.this.mContext);
-          int n = ar.dX(HelperHeaderPreference.this.mContext);
-          ae.i("MicroMsg.HelperHeaderPreference", "actionBarHeight=%s ,statusBarHeight=%s , rootTop:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(k) });
+          int m = au.getStatusBarHeight(HelperHeaderPreference.this.mContext);
+          int n = au.eu(HelperHeaderPreference.this.mContext);
+          Log.i("MicroMsg.HelperHeaderPreference", "actionBarHeight=%s ,statusBarHeight=%s , rootTop:%s", new Object[] { Integer.valueOf(n), Integer.valueOf(m), Integer.valueOf(k) });
           int i = j;
           if (m > 0)
           {
             i = j;
             if (n > 0) {
-              i = a.ay(HelperHeaderPreference.this.mContext, 2131165289) + n;
+              i = a.aH(HelperHeaderPreference.this.mContext, 2131165296) + n;
             }
           }
           j = i;
@@ -111,12 +111,12 @@ public class HelperHeaderPreference
       AppMethodBeat.o(152256);
       return;
       localTextView1.setVisibility(0);
-      localTextView1.setTextColor(t.kJ(this.mContext));
-      localTextView1.setText(2131763360);
+      localTextView1.setTextColor(u.kF(this.mContext));
+      localTextView1.setText(2131765542);
       continue;
       localTextView1.setVisibility(0);
-      localTextView1.setTextColor(t.kK(this.mContext));
-      localTextView1.setText(2131763368);
+      localTextView1.setTextColor(u.kG(this.mContext));
+      localTextView1.setText(2131765550);
       continue;
       localTextView1.setVisibility(8);
     }
@@ -125,15 +125,15 @@ public class HelperHeaderPreference
   public final void updateStatus(int paramInt)
   {
     AppMethodBeat.i(152258);
-    this.Fyv.status = paramInt;
+    this.Kpu.status = paramInt;
     super.callChangeListener(null);
     AppMethodBeat.o(152258);
   }
   
   public static final class a
   {
-    public String dED;
-    public String fXp;
+    public String dWq;
+    public String gCv;
     public String hint;
     public int status;
   }

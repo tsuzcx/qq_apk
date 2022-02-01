@@ -1,7 +1,9 @@
 !!brut.androlib.meta.MetaInfo
-apkFileName: 微信-7.0.19-1760-3454.apk
+apkFileName: wechat-8.0.0-1840-3454.apk
 compressionType: false
 doNotCompress:
+- resources.arsc
+- assets/MidasPay.zip
 - png
 - assets/b7c9a7fd-851e-7761-07df-8ab7c0b02787.sec
 - assets/default_poi_categories.dat
@@ -10,25 +12,29 @@ doNotCompress:
 - assets/game_region_default.txt
 - assets/googleLogo.data
 - m4a
-- assets/rel_wechat.lic
 - assets/rel_wechat_2055-12-06.lic1.2
 - wav
+- assets/small_lottery_amin.pag
 - assets/wenote_config.conf
 - assets/xwalk-command-line
 - assets/TencentLocationComp_sapp/1
 - jpg
 - assets/fts/feature/version.info
 - mp3
-- assets/tencentmap/tms_ps/tms_module/45d24df158f33eafc1323b21e63cd45d
+- mp4
+- assets/newemoji/config.conf
+- assets/panel/config.conf
+- assets/tencentmap/tms_ps/tms_module/efea2d381206fc327b1deff457f31bab
 - assets/wxa_library/develop/DEVELOP
 - assets/wxa_library/local/LOCAL
+- r/ao/android_wear_micro_apk.apk
 isFrameworkApk: false
 packageInfo:
   forcedPackageId: '127'
   renameManifestPackage: null
 sdkInfo:
   minSdkVersion: '21'
-  targetSdkVersion: '28'
+  targetSdkVersion: '29'
 sharedLibrary: false
 sparseResources: false
 unknownFiles: {}
@@ -38,5 +44,5 @@ usesFramework:
   tag: null
 version: 2.6.0
 versionInfo:
-  versionCode: '1760'
-  versionName: 7.0.19
+  versionCode: '1840'
+  versionName: 8.0.0

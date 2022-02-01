@@ -4,20 +4,20 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.booter.NotifyReceiver;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.bq.a;
-import com.tencent.mm.network.e;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bu;
+import com.tencent.mm.model.bu.a;
+import com.tencent.mm.network.g;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX.Req;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil;
 import com.tencent.mm.pluginsdk.model.app.ReportUtil.ReportArgs;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.chatting.ChattingUI;
 import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
 
@@ -25,17 +25,17 @@ import com.tencent.mm.ui.transmit.SendAppMessageWrapperUI;
 public class UIEntryStub
   extends HellActivity
 {
-  private String Lw;
-  private Intent dzp;
-  private int nSG;
-  private boolean nSH;
+  private String LG;
+  private Intent dRc;
+  private boolean pdv;
+  private int sdkVersion;
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(22185);
     super.onCreate(paramBundle);
-    NotifyReceiver.WR();
-    this.nSH = false;
+    NotifyReceiver.akF();
+    this.pdv = false;
     AppMethodBeat.o(22185);
   }
   
@@ -43,9 +43,9 @@ public class UIEntryStub
   {
     AppMethodBeat.i(22186);
     super.onNewIntent(paramIntent);
-    this.dzp = paramIntent;
-    ae.i("MicroMsg.UIEntryStub", "onNewIntent mHasHandled: %b", new Object[] { Boolean.valueOf(this.nSH) });
-    this.nSH = false;
+    this.dRc = paramIntent;
+    Log.i("MicroMsg.UIEntryStub", "onNewIntent mHasHandled: %b", new Object[] { Boolean.valueOf(this.pdv) });
+    this.pdv = false;
     AppMethodBeat.o(22186);
   }
   
@@ -53,21 +53,21 @@ public class UIEntryStub
   {
     AppMethodBeat.i(22187);
     super.onResume();
-    if (this.dzp == null) {
-      this.dzp = getIntent();
+    if (this.dRc == null) {
+      this.dRc = getIntent();
     }
-    bc.ajj().a(new bq(new bq.a()
+    bg.azz().a(new bu(new bu.a()
     {
-      public final void a(e paramAnonymouse)
+      public final void a(g paramAnonymousg)
       {
         AppMethodBeat.i(22180);
-        if (paramAnonymouse == null)
+        if (paramAnonymousg == null)
         {
           UIEntryStub.this.finish();
           AppMethodBeat.o(22180);
           return;
         }
-        ae.i("MicroMsg.UIEntryStub", "onResume mHasHandled: %b", new Object[] { Boolean.valueOf(UIEntryStub.a(UIEntryStub.this)) });
+        Log.i("MicroMsg.UIEntryStub", "onResume mHasHandled: %b", new Object[] { Boolean.valueOf(UIEntryStub.a(UIEntryStub.this)) });
         if (!UIEntryStub.a(UIEntryStub.this))
         {
           UIEntryStub.b(UIEntryStub.this);
@@ -87,7 +87,7 @@ public class UIEntryStub
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.base.stub.UIEntryStub
  * JD-Core Version:    0.7.0.1
  */

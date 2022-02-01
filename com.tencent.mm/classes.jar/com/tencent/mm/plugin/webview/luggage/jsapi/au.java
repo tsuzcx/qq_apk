@@ -1,119 +1,198 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
+import android.app.ProgressDialog;
 import android.content.Context;
-import com.tencent.luggage.d.b;
-import com.tencent.luggage.d.s;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import android.content.Intent;
+import android.widget.Toast;
+import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ch.a;
-import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
-import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Iterator;
-import java.util.LinkedList;
-import org.json.JSONArray;
+import com.tencent.mm.aj.d;
+import com.tencent.mm.g.a.uj;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ay.a;
+import com.tencent.mm.model.ay.b;
+import com.tencent.mm.model.ay.b.a;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class au
-  extends bq<s>
+  extends bs
 {
-  private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
+  public final void a(final Context paramContext, final String paramString, final br.a parama)
   {
-    AppMethodBeat.i(78607);
-    if (bu.ht(paramLinkedList))
-    {
-      AppMethodBeat.o(78607);
-      return;
-    }
-    paramLinkedList = paramLinkedList.iterator();
-    while (paramLinkedList.hasNext())
-    {
-      String str = (String)paramLinkedList.next();
-      JSONObject localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("download_id", -1);
-        localJSONObject.put("state", "default");
-        paramJSONObject.put(str, localJSONObject);
-      }
-      catch (Exception localException)
-      {
-        ae.e("MicroMsg.JsApiQueryDownloadTask", localException.getMessage());
-      }
-    }
-    AppMethodBeat.o(78607);
-  }
-  
-  public final void a(final Context paramContext, String paramString, final bq.a parama)
-  {
-    AppMethodBeat.i(78606);
-    ae.i("MicroMsg.JsApiQueryDownloadTask", "invokeInMM");
+    AppMethodBeat.i(78604);
+    Object localObject2;
     try
     {
-      paramContext = new JSONObject(paramString);
-      a.post(new Runnable()
+      localObject3 = new JSONObject(paramString);
+      localObject2 = ((JSONObject)localObject3).optString("username");
+      if ((localObject2 == null) || (((String)localObject2).length() == 0))
       {
-        public final void run()
-        {
-          AppMethodBeat.i(78605);
-          Object localObject = paramContext.optJSONArray("appIdArray");
-          if ((localObject != null) && (((JSONArray)localObject).length() > 0))
-          {
-            au.b((JSONArray)localObject, parama);
-            AppMethodBeat.o(78605);
-            return;
-          }
-          long l = paramContext.optLong("download_id", -1L);
-          localObject = paramContext.optString("appid");
-          FileDownloadTaskInfo localFileDownloadTaskInfo;
-          if (l > 0L)
-          {
-            localFileDownloadTaskInfo = f.cdA().uj(l);
-            localObject = localFileDownloadTaskInfo;
-            if (localFileDownloadTaskInfo == null) {
-              localObject = new FileDownloadTaskInfo();
-            }
-            au.b((FileDownloadTaskInfo)localObject, parama);
-            AppMethodBeat.o(78605);
-            return;
-          }
-          if (!bu.isNullOrNil((String)localObject))
-          {
-            localFileDownloadTaskInfo = f.cdA().aaZ((String)localObject);
-            localObject = localFileDownloadTaskInfo;
-            if (localFileDownloadTaskInfo == null) {
-              localObject = new FileDownloadTaskInfo();
-            }
-            au.b((FileDownloadTaskInfo)localObject, parama);
-            AppMethodBeat.o(78605);
-            return;
-          }
-          parama.f("fail", null);
-          AppMethodBeat.o(78605);
-        }
-      });
-      AppMethodBeat.o(78606);
-      return;
+        Log.e("MicroMsg.JsApiProfile", "doProfile fail, username is null");
+        parama.i("fail", null);
+        AppMethodBeat.o(78604);
+        return;
+      }
     }
     catch (JSONException paramContext)
     {
-      ae.e("MicroMsg.JsApiQueryDownloadTask", "paras data error: " + paramContext.getMessage());
-      parama.f("fail", null);
-      AppMethodBeat.o(78606);
+      Log.e("MicroMsg.JsApiProfile", "parase json fail");
+      parama.i("fail", null);
+      AppMethodBeat.o(78604);
+      return;
     }
+    if (Util.isNullOrNil((String)localObject2))
+    {
+      com.tencent.mm.ipcinvoker.p.y(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(78600);
+          Toast.makeText(MMApplicationContext.getContext(), MMApplicationContext.getContext().getString(2131760879, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
+          AppMethodBeat.o(78600);
+        }
+      });
+      parama.i("fail", null);
+      AppMethodBeat.o(78604);
+      return;
+    }
+    g.aAf();
+    if (!com.tencent.mm.kernel.a.azo())
+    {
+      Log.e("MicroMsg.JsApiProfile", "doProfile, MMCore.hasCfgDefaultUin() is false");
+      parama.i("fail", null);
+      AppMethodBeat.o(78604);
+      return;
+    }
+    Object localObject1 = ((l)g.af(l.class)).aSN().Kn((String)localObject2);
+    if (localObject1 != null)
+    {
+      paramString = (String)localObject1;
+      if ((int)((com.tencent.mm.contact.c)localObject1).gMZ > 0) {}
+    }
+    else
+    {
+      paramString = ((l)g.af(l.class)).aSN().bjH((String)localObject2);
+    }
+    localObject1 = new Intent();
+    Object localObject3 = ((JSONObject)localObject3).optString("profileReportInfo");
+    if (!Util.isNullOrNil((String)localObject3)) {
+      ((Intent)localObject1).putExtra("key_add_contact_report_info", (String)localObject3);
+    }
+    if ((paramString != null) && ((int)paramString.gMZ > 0))
+    {
+      ((Intent)localObject1).addFlags(268435456);
+      ((Intent)localObject1).putExtra("Contact_User", paramString.field_username);
+      if (paramString.gBM()) {
+        ((Intent)localObject1).putExtra("Contact_Scene", 42);
+      }
+      if (com.tencent.mm.contact.c.oR(paramString.field_type))
+      {
+        localObject2 = new uj();
+        ((uj)localObject2).eaI.intent = ((Intent)localObject1);
+        ((uj)localObject2).eaI.username = paramString.field_username;
+        EventCenter.instance.publish((IEvent)localObject2);
+      }
+      com.tencent.mm.plugin.webview.a.a.jRt.c((Intent)localObject1, paramContext);
+      parama.i(null, null);
+      AppMethodBeat.o(78604);
+      return;
+    }
+    paramContext.getString(2131755998);
+    paramString = com.tencent.mm.ui.base.h.a(paramContext, paramContext.getString(2131756029), true, new DialogInterface.OnCancelListener()
+    {
+      public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(78601);
+        ay.a.iDq.JZ(this.gtu);
+        parama.i("cancel", null);
+        AppMethodBeat.o(78601);
+      }
+    });
+    ay.a.iDq.a((String)localObject2, "", new ay.b.a()
+    {
+      public final void p(String paramAnonymousString, boolean paramAnonymousBoolean)
+      {
+        AppMethodBeat.i(78603);
+        if (paramContext == null)
+        {
+          Log.w("MicroMsg.JsApiProfile", "getNow callback, msghandler has already been detached!");
+          parama.i("fail", null);
+          AppMethodBeat.o(78603);
+          return;
+        }
+        if (paramString != null) {
+          paramString.dismiss();
+        }
+        as localas2 = ((l)g.af(l.class)).aSN().Kn(paramAnonymousString);
+        as localas1;
+        if (localas2 != null)
+        {
+          localas1 = localas2;
+          if ((int)localas2.gMZ > 0) {}
+        }
+        else
+        {
+          localas1 = ((l)g.af(l.class)).aSN().bjH(paramAnonymousString);
+        }
+        if ((localas1 == null) || ((int)localas1.gMZ <= 0)) {
+          paramAnonymousBoolean = false;
+        }
+        while (!paramAnonymousBoolean)
+        {
+          com.tencent.mm.ipcinvoker.p.y(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(78602);
+              Toast.makeText(MMApplicationContext.getContext(), au.3.this.val$context.getString(2131760879, new Object[] { Integer.valueOf(3), Integer.valueOf(-1) }), 0).show();
+              AppMethodBeat.o(78602);
+            }
+          });
+          parama.i("fail", null);
+          AppMethodBeat.o(78603);
+          return;
+          paramAnonymousString = localas1.field_username;
+        }
+        com.tencent.mm.aj.c.ap(paramAnonymousString, 3);
+        com.tencent.mm.aj.p.aYD().Mg(paramAnonymousString);
+        this.val$intent.addFlags(268435456);
+        this.val$intent.putExtra("Contact_User", paramAnonymousString);
+        if (localas1.gBM())
+        {
+          com.tencent.mm.plugin.report.service.h.CyF.kvStat(10298, localas1.field_username + ",42");
+          this.val$intent.putExtra("Contact_Scene", 42);
+        }
+        com.tencent.mm.plugin.webview.a.a.jRt.c(this.val$intent, paramContext);
+        parama.i(null, null);
+        AppMethodBeat.o(78603);
+      }
+    });
+    AppMethodBeat.o(78604);
   }
   
-  public final void b(b<s>.a paramb) {}
+  public final void b(b.a parama) {}
   
-  public final int ced()
+  public final int dTs()
   {
-    return 1;
+    return 2;
   }
   
   public final String name()
   {
-    return "queryDownloadTask";
+    return "profile";
   }
 }
 

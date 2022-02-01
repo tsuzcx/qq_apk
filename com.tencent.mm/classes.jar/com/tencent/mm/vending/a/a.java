@@ -5,16 +5,16 @@ import com.tencent.mm.vending.e.c;
 
 public final class a
 {
-  public c<com.tencent.mm.vending.e.a> LDo;
-  public c<com.tencent.mm.vending.e.a> LDp;
-  public c<com.tencent.mm.vending.e.a> LDq;
+  public c<com.tencent.mm.vending.e.a> QYJ;
+  public c<com.tencent.mm.vending.e.a> QYK;
+  public c<com.tencent.mm.vending.e.a> QYL;
   
   public a()
   {
     AppMethodBeat.i(74934);
-    this.LDo = new c();
-    this.LDp = new c();
-    this.LDq = new c();
+    this.QYJ = new c();
+    this.QYK = new c();
+    this.QYL = new c();
     AppMethodBeat.o(74934);
   }
 }

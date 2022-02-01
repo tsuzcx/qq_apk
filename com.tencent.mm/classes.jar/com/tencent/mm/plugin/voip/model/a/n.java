@@ -1,71 +1,70 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.voip.model.l;
-import com.tencent.mm.plugin.voip.model.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public abstract class n<REQ, RESP>
-  extends com.tencent.mm.ak.n
-  implements k
+  extends q
+  implements com.tencent.mm.network.m
 {
-  protected l CsR = m.ezW();
-  f callback;
-  protected b rr;
-  private f tyn;
+  protected l GWA = com.tencent.mm.plugin.voip.model.m.fGM();
+  i callback;
+  protected d rr;
+  private i wPq;
   
-  public int doScene(e parame, f paramf)
+  public int doScene(com.tencent.mm.network.g paramg, i parami)
   {
-    int i = eBM();
+    int i = fIG();
     if (i != 0) {
       return i;
     }
-    this.tyn = paramf;
-    this.callback = eBL();
-    return dispatch(parame, this.rr, this);
+    this.wPq = parami;
+    this.callback = fIF();
+    return dispatch(paramg, this.rr, this);
   }
   
-  public abstract f eBL();
+  public abstract i fIF();
   
-  public int eBM()
+  public int fIG()
   {
     return 0;
   }
   
-  public final void eBO()
+  public final void fII()
   {
-    ae.i("MicroMsg.VoipNetSceneBase", "netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
-    g.ajj().a(this, 0);
+    Log.i("MicroMsg.VoipNetSceneBase", "netscene " + getClass().getSimpleName() + '@' + Integer.toHexString(hashCode()) + " is started.");
+    com.tencent.mm.kernel.g.azz().a(this, 0);
   }
   
-  public final <RESP> RESP eBP()
+  public final <RESP> RESP fIJ()
   {
-    return this.rr.hQE.hQJ;
+    return this.rr.iLL.iLR;
   }
   
-  public final <REQ> REQ eBQ()
+  public final <REQ> REQ fIK()
   {
-    return this.rr.hQD.hQJ;
+    return this.rr.iLK.iLR;
   }
   
-  public void ix(int paramInt1, int paramInt2) {}
+  public void jC(int paramInt1, int paramInt2) {}
   
-  public void onGYNetEnd(int paramInt1, final int paramInt2, final int paramInt3, final String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public void onGYNetEnd(int paramInt1, final int paramInt2, final int paramInt3, final String paramString, s params, byte[] paramArrayOfByte)
   {
-    ix(paramInt2, paramInt3);
-    if (this.tyn != null) {
-      this.tyn.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    jC(paramInt2, paramInt3);
+    if (this.wPq != null) {
+      this.wPq.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
     if (this.callback != null) {
-      ar.f(new Runnable()
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
@@ -81,7 +80,7 @@ public abstract class n<REQ, RESP>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.n
  * JD-Core Version:    0.7.0.1
  */

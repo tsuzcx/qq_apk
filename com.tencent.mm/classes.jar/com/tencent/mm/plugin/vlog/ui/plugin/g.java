@@ -1,84 +1,58 @@
 package com.tencent.mm.plugin.vlog.ui.plugin;
 
-import android.support.v7.widget.RecyclerView.a;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.vlog.model.effect.e;
-import d.g.a.m;
-import d.g.b.p;
-import d.l;
-import d.z;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicPanelAdapter;", "Landroid/support/v7/widget/RecyclerView$Adapter;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicPanelViewHolder;", "()V", "itemList", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "onItemClickListener", "Lkotlin/Function2;", "", "Lkotlin/ParameterName;", "name", "position", "item", "", "getOnItemClickListener", "()Lkotlin/jvm/functions/Function2;", "setOnItemClickListener", "(Lkotlin/jvm/functions/Function2;)V", "getItemCount", "getItemViewType", "onBindViewHolder", "viewHolder", "onCreateViewHolder", "parent", "Landroid/view/ViewGroup;", "viewType", "updateData", "items", "", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicAddEffectItemViewHolder;", "Lcom/tencent/mm/plugin/vlog/ui/plugin/MagicPanelViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "icon", "Landroid/widget/ImageView;", "getIcon", "()Landroid/widget/ImageView;", "order", "Landroid/widget/TextView;", "getOrder", "()Landroid/widget/TextView;", "onBind", "", "item", "Lcom/tencent/mm/plugin/vlog/model/effect/MagicListItem;", "plugin-vlog_release"})
 public final class g
-  extends RecyclerView.a<h>
+  extends j
 {
-  private final LinkedList<e> gjQ;
-  m<? super Integer, ? super e, z> sLA;
+  private final ImageView kc;
+  private final TextView utK;
   
-  public g()
+  public g(View paramView)
   {
-    AppMethodBeat.i(191671);
-    this.gjQ = new LinkedList();
-    AppMethodBeat.o(191671);
+    super(paramView);
+    AppMethodBeat.i(191279);
+    View localView = paramView.findViewById(2131302832);
+    p.g(localView, "itemView.findViewById(R.id.item_magic_panel_icon)");
+    this.kc = ((ImageView)localView);
+    paramView = paramView.findViewById(2131302833);
+    p.g(paramView, "itemView.findViewById(R.id.item_magic_panel_order)");
+    this.utK = ((TextView)paramView);
+    AppMethodBeat.o(191279);
   }
   
-  public final void V(List<? extends e> paramList)
+  public final void a(com.tencent.mm.plugin.vlog.model.effect.e parame)
   {
-    AppMethodBeat.i(191666);
-    p.h(paramList, "items");
-    this.gjQ.clear();
-    this.gjQ.addAll((Collection)paramList);
-    notifyDataSetChanged();
-    AppMethodBeat.o(191666);
-  }
-  
-  public final int getItemCount()
-  {
-    AppMethodBeat.i(191669);
-    int i = this.gjQ.size();
-    AppMethodBeat.o(191669);
-    return i;
-  }
-  
-  public final int getItemViewType(int paramInt)
-  {
-    AppMethodBeat.i(191667);
-    paramInt = ((e)this.gjQ.get(paramInt)).type;
-    AppMethodBeat.o(191667);
-    return paramInt;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(g paramg, int paramInt, e parame) {}
-    
-    public final void onClick(View paramView)
+    AppMethodBeat.i(191278);
+    p.h(parame, "item");
+    if (!(parame instanceof com.tencent.mm.plugin.vlog.model.effect.b)) {
+      parame = null;
+    }
+    for (;;)
     {
-      AppMethodBeat.i(191665);
-      b localb = new b();
-      localb.bd(paramView);
-      a.b("com/tencent/mm/plugin/vlog/ui/plugin/MagicPanelAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = this.CeK.sLA;
-      if (paramView != null) {
-        paramView.p(Integer.valueOf(this.gke), this.CeL);
+      parame = (com.tencent.mm.plugin.vlog.model.effect.b)parame;
+      if (parame != null)
+      {
+        com.tencent.mm.loader.e locale = com.tencent.mm.loader.e.hXU;
+        com.tencent.mm.loader.e.aJs().He(parame.GAm.icon).c(this.kc);
+        this.utK.setText((CharSequence)String.valueOf(parame.order));
+        AppMethodBeat.o(191278);
+        return;
       }
-      a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/MagicPanelAdapter$onBindViewHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(191665);
+      AppMethodBeat.o(191278);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.g
  * JD-Core Version:    0.7.0.1
  */

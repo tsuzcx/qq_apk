@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class c
 {
-  private TRVADNative Mii;
-  private int iAT;
+  private TRVADNative RKJ;
+  private int jwi;
   private int mTimeout;
   
   public c()
   {
     AppMethodBeat.i(87690);
-    this.Mii = new TRVADNative();
-    this.iAT = 500000;
+    this.RKJ = new TRVADNative();
+    this.jwi = 500000;
     this.mTimeout = 10000000;
     AppMethodBeat.o(87690);
   }
@@ -20,8 +20,8 @@ public final class c
   public c(int paramInt)
   {
     AppMethodBeat.i(87689);
-    this.Mii = new TRVADNative();
-    this.iAT = paramInt;
+    this.RKJ = new TRVADNative();
+    this.jwi = paramInt;
     this.mTimeout = 5000000;
     AppMethodBeat.o(87689);
   }
@@ -41,22 +41,22 @@ public final class c
           AppMethodBeat.o(87693);
           return;
         }
-        switch (this.Mii.mfeSendData(paramArrayOfShort, paramInt))
+        switch (this.RKJ.mfeSendData(paramArrayOfShort, paramInt))
         {
         case 1: 
-          parama.Mij = 0;
+          parama.RKK = 0;
         }
       }
       finally {}
-      parama.Min = ((int)d1);
-      new StringBuilder("volumn：").append(parama.Min);
+      parama.RKO = ((int)d1);
+      new StringBuilder("volumn：").append(parama.RKO);
       AppMethodBeat.o(87693);
       break;
-      parama.Mij = 1;
+      parama.RKK = 1;
       break label200;
-      parama.Mij = 2;
+      parama.RKK = 2;
       break label200;
-      parama.Mij = 3;
+      parama.RKK = 3;
       int j;
       int i;
       label200:
@@ -83,21 +83,21 @@ public final class c
     }
   }
   
-  public final int fYh()
+  public final int hkt()
   {
     AppMethodBeat.i(87691);
-    int j = this.Mii.mfeInit(this.iAT, this.mTimeout);
+    int j = this.RKJ.mfeInit(this.jwi, this.mTimeout);
     int i = j;
     if (j == 0)
     {
-      j = this.Mii.mfeOpen();
+      j = this.RKJ.mfeOpen();
       i = j;
       if (j == 0)
       {
-        j = this.Mii.mfeEnableNoiseDetection(true);
+        j = this.RKJ.mfeEnableNoiseDetection(true);
         i = j;
         if (j == 0) {
-          i = this.Mii.mfeStart();
+          i = this.RKJ.mfeStart();
         }
       }
     }
@@ -113,14 +113,14 @@ public final class c
   public final int stop()
   {
     AppMethodBeat.i(87692);
-    int j = this.Mii.mfeStop();
+    int j = this.RKJ.mfeStop();
     int i = j;
     if (j == 0)
     {
-      j = this.Mii.mfeClose();
+      j = this.RKJ.mfeClose();
       i = j;
       if (j == 0) {
-        i = this.Mii.mfeExit();
+        i = this.RKJ.mfeExit();
       }
     }
     if (i == 0)

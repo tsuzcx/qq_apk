@@ -43,6 +43,7 @@ if (typeof wx !== 'undefined') {
         _invokeMethod("openWebViewUseFastLoad", args);
       };
 
+
       function transWxmlToHtml(url) {
         if (typeof url !== 'string') {
           return url;
@@ -97,6 +98,10 @@ if (typeof wx !== 'undefined') {
          _invokeMethod("operateRecentUsageList", args)
       }
 
+      var _openWCExDeviceList = function(args) {
+          _invokeMethod("openWCExDeviceList", args)
+      }
+
       /**** Add JsApi Here ****/
 
       var methodsList = {
@@ -114,7 +119,8 @@ if (typeof wx !== 'undefined') {
         handleMPChannelAction : _handleMPChannelAction,
         openWebViewUseFastLoad : _openWebViewUseFastLoad,
         getRecentUsageList: _getRecentUsageList,
-        operateRecentUsageList: _operateRecentUsageList
+        operateRecentUsageList: _operateRecentUsageList,
+        openWCExDeviceList: _openWCExDeviceList
 
       };
       /**** Add JsApiEvent Here ****/

@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.card.ui.a;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.ui.e.a;
-import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.protocal.protobuf.uz;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 
@@ -15,23 +15,16 @@ public final class h
     super(paramMMActivity);
   }
   
-  protected final void bYF()
-  {
-    AppMethodBeat.i(113650);
-    super.bYF();
-    AppMethodBeat.o(113650);
-  }
-  
-  public final boolean bYP()
+  public final boolean cwF()
   {
     AppMethodBeat.i(113651);
-    ArrayList localArrayList = com.tencent.mm.plugin.card.sharecard.a.b.Zo(this.oDm.bVh());
-    if (((!this.oMg.oEy) || (this.oMg.fRv == 4)) && (!TextUtils.isEmpty(this.oDm.bVi())))
+    ArrayList localArrayList = com.tencent.mm.plugin.card.sharecard.a.b.ajt(this.pQV.csV());
+    if (((!this.pZU.pSh) || (this.pZU.gwE == 4)) && (!TextUtils.isEmpty(this.pQV.csW())))
     {
       AppMethodBeat.o(113651);
       return true;
     }
-    if (((this.oMg.oEy) && (localArrayList != null) && (localArrayList.size() > 0)) || ((!TextUtils.isEmpty(this.oDm.bVi())) && (bYQ())))
+    if (((this.pZU.pSh) && (localArrayList != null) && (localArrayList.size() > 0)) || ((!TextUtils.isEmpty(this.pQV.csW())) && (cwG())))
     {
       AppMethodBeat.o(113651);
       return true;
@@ -40,35 +33,35 @@ public final class h
     return false;
   }
   
-  public final boolean bYQ()
+  public final boolean cwG()
   {
-    return this.oMg.fRv == 3;
+    return this.pZU.gwE == 3;
   }
   
-  public final boolean bYR()
-  {
-    return false;
-  }
-  
-  public final boolean bYT()
-  {
-    return this.oQP;
-  }
-  
-  public final boolean bYU()
+  public final boolean cwH()
   {
     return false;
   }
   
-  public final boolean bYW()
+  public final boolean cwJ()
+  {
+    return this.qeD;
+  }
+  
+  public final boolean cwK()
   {
     return false;
   }
   
-  public final boolean bYX()
+  public final boolean cwM()
+  {
+    return false;
+  }
+  
+  public final boolean cwN()
   {
     AppMethodBeat.i(113652);
-    if ((this.oQP) && (super.bYX()))
+    if ((this.qeD) && (super.cwN()))
     {
       AppMethodBeat.o(113652);
       return true;
@@ -77,30 +70,30 @@ public final class h
     return false;
   }
   
-  public final boolean bZb()
+  public final boolean cwR()
   {
     return false;
   }
   
-  public final boolean bZc()
+  public final boolean cwS()
   {
     return false;
   }
   
-  public final boolean bZd()
+  public final boolean cwT()
   {
     AppMethodBeat.i(113653);
-    if (super.bZd())
+    if (super.cwT())
     {
       AppMethodBeat.o(113653);
       return true;
     }
-    if (bZe())
+    if (cwU())
     {
       AppMethodBeat.o(113653);
       return true;
     }
-    if ((this.oDm.bUI()) && (this.oQP))
+    if ((this.pQV.csw()) && (this.qeD))
     {
       AppMethodBeat.o(113653);
       return true;
@@ -109,10 +102,10 @@ public final class h
     return false;
   }
   
-  public final boolean bZe()
+  public final boolean cwU()
   {
     AppMethodBeat.i(113654);
-    if ((!this.oQP) && (this.oDm.bVc().Gku == 1))
+    if ((!this.qeD) && (this.pQV.csQ().LeX == 1))
     {
       AppMethodBeat.o(113654);
       return true;
@@ -120,10 +113,17 @@ public final class h
     AppMethodBeat.o(113654);
     return false;
   }
+  
+  protected final void cwv()
+  {
+    AppMethodBeat.i(113650);
+    super.cwv();
+    AppMethodBeat.o(113650);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.a.h
  * JD-Core Version:    0.7.0.1
  */

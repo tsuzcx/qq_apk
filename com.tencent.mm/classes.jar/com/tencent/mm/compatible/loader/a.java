@@ -4,8 +4,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  private static Object[] gfd = new Object[0];
-  private static Object[] gfe = new Object[73];
+  private static Object[] gKK = new Object[0];
+  private static Object[] gKL = new Object[73];
   
   public static boolean contains(int[] paramArrayOfInt, int paramInt)
   {
@@ -77,7 +77,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.compatible.loader.a
  * JD-Core Version:    0.7.0.1
  */

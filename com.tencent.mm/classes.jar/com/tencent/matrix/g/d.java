@@ -10,9 +10,9 @@ import java.util.Date;
 
 public final class d
 {
-  private static final ThreadLocal<MessageDigest> cOD = new ThreadLocal()
+  private static final ThreadLocal<MessageDigest> dfc = new ThreadLocal()
   {
-    private static MessageDigest JD()
+    private static MessageDigest initialValue()
     {
       try
       {
@@ -25,9 +25,9 @@ public final class d
       }
     }
   };
-  private static final ThreadLocal<MessageDigest> cOE = new ThreadLocal()
+  private static final ThreadLocal<MessageDigest> dfd = new ThreadLocal()
   {
-    private static MessageDigest JD()
+    private static MessageDigest initialValue()
     {
       try
       {
@@ -59,38 +59,21 @@ public final class d
     catch (IOException paramCloseable) {}
   }
   
-  public static String ej(String paramString)
+  public static long eT(String paramString)
   {
-    paramString = paramString.getBytes();
-    paramString = ((MessageDigest)cOD.get()).digest(paramString);
-    int j = paramString.length;
-    StringBuffer localStringBuffer = new StringBuffer(j * 2);
-    int i = 0;
-    while (i < j + 0)
-    {
-      int k = paramString[i];
-      char c1 = hexDigits[((k & 0xF0) >> 4)];
-      char c2 = hexDigits[(k & 0xF)];
-      localStringBuffer.append(c1);
-      localStringBuffer.append(c2);
-      i += 1;
-    }
-    return localStringBuffer.toString();
-  }
-  
-  public static long ek(String paramString)
-  {
-    try
-    {
-      if (paramString.length() <= 0) {
-        return 0L;
+    if (paramString != null) {
+      try
+      {
+        if (paramString.length() <= 0) {
+          return 0L;
+        }
+        long l = Long.decode(paramString).longValue();
+        return l;
       }
-      long l = Long.decode(paramString).longValue();
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
-      c.printErrStackTrace("Matrix.MatrixUtil", paramString, "", new Object[0]);
+      catch (NumberFormatException paramString)
+      {
+        c.printErrStackTrace("Matrix.MatrixUtil", paramString, "", new Object[0]);
+      }
     }
     return 0L;
   }
@@ -121,6 +104,25 @@ public final class d
     return paramException.toString();
   }
   
+  public static String getMD5String(String paramString)
+  {
+    paramString = paramString.getBytes();
+    paramString = ((MessageDigest)dfc.get()).digest(paramString);
+    int j = paramString.length;
+    StringBuffer localStringBuffer = new StringBuffer(j * 2);
+    int i = 0;
+    while (i < j + 0)
+    {
+      int k = paramString[i];
+      char c1 = hexDigits[((k & 0xF0) >> 4)];
+      char c2 = hexDigits[(k & 0xF)];
+      localStringBuffer.append(c1);
+      localStringBuffer.append(c2);
+      i += 1;
+    }
+    return localStringBuffer.toString();
+  }
+  
   public static String getProcessName(Context paramContext)
   {
     if (processName != null) {
@@ -141,7 +143,7 @@ public final class d
     //   5: ifnull +7 -> 12
     //   8: iload_1
     //   9: ifgt +6 -> 15
-    //   12: ldc 111
+    //   12: ldc 80
     //   14: areturn
     //   15: aload_0
     //   16: ldc 184
@@ -180,13 +182,13 @@ public final class d
     //   87: astore_0
     //   88: goto -11 -> 77
     //   91: astore_0
-    //   92: new 143	java/lang/StringBuilder
+    //   92: new 112	java/lang/StringBuilder
     //   95: dup
     //   96: ldc 220
-    //   98: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   98: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   101: aload_0
     //   102: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   105: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   108: pop
     //   109: aconst_null
     //   110: astore_0
@@ -196,15 +198,15 @@ public final class d
     //   119: astore 5
     //   121: new 225	java/io/FileInputStream
     //   124: dup
-    //   125: new 143	java/lang/StringBuilder
+    //   125: new 112	java/lang/StringBuilder
     //   128: dup
     //   129: ldc 227
-    //   131: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   131: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   134: iload_1
-    //   135: invokevirtual 167	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   135: invokevirtual 140	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   138: ldc 229
-    //   140: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   140: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   143: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   146: invokespecial 230	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   149: astore 4
     //   151: aload 4
@@ -220,7 +222,7 @@ public final class d
     //   168: goto +147 -> 315
     //   171: aload 4
     //   173: astore_0
-    //   174: new 60	java/lang/String
+    //   174: new 62	java/lang/String
     //   177: dup
     //   178: aload 5
     //   180: iconst_0
@@ -246,7 +248,7 @@ public final class d
     //   213: goto +102 -> 315
     //   216: aload 4
     //   218: invokevirtual 246	java/io/FileInputStream:close	()V
-    //   221: ldc 111
+    //   221: ldc 80
     //   223: areturn
     //   224: astore_0
     //   225: aload_0
@@ -258,13 +260,13 @@ public final class d
     //   236: astore 4
     //   238: aload 4
     //   240: astore_0
-    //   241: new 143	java/lang/StringBuilder
+    //   241: new 112	java/lang/StringBuilder
     //   244: dup
     //   245: ldc 220
-    //   247: invokespecial 145	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   247: invokespecial 117	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   250: aload 5
     //   252: invokevirtual 223	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   255: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: invokevirtual 129	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   258: pop
     //   259: aload 4
     //   261: ifnull -40 -> 221

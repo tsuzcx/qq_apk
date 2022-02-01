@@ -10,7 +10,7 @@ import org.xwalk.core.XWalkUpdater;
 
 public final class a
 {
-  public static com.tencent.xweb.a.a eG(Object paramObject)
+  public static com.tencent.xweb.a.a eM(Object paramObject)
   {
     int j = 1;
     com.tencent.xweb.a.a locala;
@@ -26,12 +26,12 @@ public final class a
       {
         return locala;
         com.tencent.xweb.internal.a.a locala1 = (com.tencent.xweb.internal.a.a)paramObject;
-        str1 = locala1.MPH;
-        paramObject = locala1.MPI;
-        if (!locala1.MPH.equals("executeCommand")) {
+        str1 = locala1.SCF;
+        paramObject = locala1.SCG;
+        if (!locala1.SCF.equals("executeCommand")) {
           break label396;
         }
-        paramObject = com.tencent.xweb.a.bcg(locala1.MPI);
+        paramObject = com.tencent.xweb.a.brL(locala1.SCG);
         if ((paramObject != null) && (paramObject.length >= 2)) {
           break;
         }
@@ -72,11 +72,11 @@ public final class a
         }
         i = 3;
         break label399;
-        locala.MLU = true;
+        locala.SyJ = true;
         try
         {
           i = Integer.parseInt(paramObject);
-          p.aW(XWalkEnvironment.getApplicationContext(), i);
+          p.aX(XWalkEnvironment.getApplicationContext(), i);
           AppMethodBeat.o(154150);
         }
         catch (Exception localException)
@@ -86,22 +86,22 @@ public final class a
         }
       }
       break;
-      locala.MLU = true;
-      if (p.ghD())
+      locala.SyJ = true;
+      if (p.hva())
       {
         continue;
-        locala.MLU = true;
+        locala.SyJ = true;
         XWalkUpdater.clearLastTryEmebedVersion();
         continue;
         Log.i("ConfigCmdProc", "got command : ".concat(String.valueOf(localException)));
-        String str2 = com.tencent.xweb.a.nb("clearSchedule", "tools");
+        String str2 = com.tencent.xweb.a.nS("clearSchedule", "tools");
         if ((!TextUtils.isEmpty(paramObject)) && (!paramObject.equals(str2))) {
           Log.i("ConfigCmdProc", "this command value changed from " + str2 + " to " + paramObject);
         }
         for (i = j; i != 0; i = 0)
         {
-          Scheduler.Af(false).ghW();
-          Scheduler.Af(true).ghW();
+          Scheduler.Ev(false).hvw();
+          Scheduler.Ev(true).hvw();
           break;
         }
         label396:
@@ -116,7 +116,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.xwalk.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,22 +4,22 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class i
 {
-  public static a d(int paramInt1, int paramInt2, long paramLong)
+  public static a f(int paramInt1, int paramInt2, long paramLong)
   {
     AppMethodBeat.i(133870);
     Object localObject;
-    if (paramInt2 == a.blr) {
+    if (paramInt2 == a.blm) {
       localObject = new p(paramInt1, paramLong, paramInt2);
     }
     for (;;)
     {
       AppMethodBeat.o(133870);
       return localObject;
-      if (paramInt2 == a.bls) {
+      if (paramInt2 == a.bln) {
         localObject = new g(paramInt1, paramLong, paramInt2);
-      } else if (paramInt2 == a.blu) {
+      } else if (paramInt2 == a.blp) {
         localObject = new o(paramInt1, paramLong, paramInt2);
-      } else if (paramInt2 == a.blD) {
+      } else if (paramInt2 == a.bly) {
         localObject = new d(paramInt1, paramLong, paramInt2);
       } else {
         localObject = new a(paramInt1, paramLong, paramInt2, 0L);
@@ -29,7 +29,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.a.i
  * JD-Core Version:    0.7.0.1
  */

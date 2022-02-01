@@ -2,27 +2,27 @@ package com.tencent.mm.bh;
 
 public abstract interface d
 {
-  public abstract void Hk(String paramString);
+  public abstract void PX(String paramString);
   
-  public abstract void aMA();
+  public abstract void bA(String paramString1, String paramString2);
   
-  public abstract void aMB();
+  public abstract void bgA();
   
-  public abstract void aMC();
+  public abstract void bgB();
   
-  public abstract void aMD();
+  public abstract void bgC();
   
-  public abstract void aMy();
+  public abstract void bgD();
   
-  public abstract void aMz();
+  public abstract void bgE();
   
-  public abstract void bw(String paramString1, String paramString2);
+  public abstract void bgz();
   
   public abstract void j(int paramInt1, int paramInt2, String paramString);
   
-  public abstract void qk(int paramInt);
-  
   public abstract void s(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void ua(int paramInt);
 }
 
 

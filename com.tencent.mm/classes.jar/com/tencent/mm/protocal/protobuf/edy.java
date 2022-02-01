@@ -1,67 +1,61 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
 
 public final class edy
   extends com.tencent.mm.bw.a
 {
-  public long IiJ;
-  public b nIq;
+  public long Nds;
+  public int Nek;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(32516);
+    AppMethodBeat.i(118459);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aZ(1, this.IiJ);
-      if (this.nIq != null) {
-        paramVarArgs.c(2, this.nIq);
-      }
-      AppMethodBeat.o(32516);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bb(1, this.Nds);
+      paramVarArgs.aM(2, this.Nek);
+      AppMethodBeat.o(118459);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.p(1, this.IiJ) + 0;
-      paramInt = i;
-      if (this.nIq != null) {
-        paramInt = i + f.a.a.b.b.a.b(2, this.nIq);
-      }
-      AppMethodBeat.o(32516);
-      return paramInt;
+      paramInt = g.a.a.b.b.a.r(1, this.Nds);
+      int i = g.a.a.b.b.a.bu(2, this.Nek);
+      AppMethodBeat.o(118459);
+      return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
-      AppMethodBeat.o(32516);
+      AppMethodBeat.o(118459);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       edy localedy = (edy)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(32516);
+        AppMethodBeat.o(118459);
         return -1;
       case 1: 
-        localedy.IiJ = locala.OmT.zd();
-        AppMethodBeat.o(32516);
+        localedy.Nds = locala.UbS.zl();
+        AppMethodBeat.o(118459);
         return 0;
       }
-      localedy.nIq = locala.OmT.gCk();
-      AppMethodBeat.o(32516);
+      localedy.Nek = locala.UbS.zi();
+      AppMethodBeat.o(118459);
       return 0;
     }
-    AppMethodBeat.o(32516);
+    AppMethodBeat.o(118459);
     return -1;
   }
 }

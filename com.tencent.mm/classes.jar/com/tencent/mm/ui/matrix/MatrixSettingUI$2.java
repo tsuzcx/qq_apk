@@ -1,18 +1,18 @@
 package com.tencent.mm.ui.matrix;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class MatrixSettingUI$2
   implements MatrixSettingSeekBarPreference.a
 {
   MatrixSettingUI$2(MatrixSettingUI paramMatrixSettingUI) {}
   
-  public final void afx(int paramInt)
+  public final void aok(int paramInt)
   {
     AppMethodBeat.i(38887);
-    ae.i("Matrix.SettingUI", "[onConfirm] threshold=".concat(String.valueOf(paramInt)));
-    MatrixSettingUI.co("MODIFY_EVIL_THRESHOLD", paramInt);
+    Log.i("Matrix.SettingUI", "[onConfirm] threshold=".concat(String.valueOf(paramInt)));
+    MatrixSettingUI.cj("MODIFY_EVIL_THRESHOLD", paramInt);
     AppMethodBeat.o(38887);
   }
 }

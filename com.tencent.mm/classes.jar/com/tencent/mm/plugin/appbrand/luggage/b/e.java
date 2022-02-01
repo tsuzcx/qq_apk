@@ -8,7 +8,7 @@ import com.tencent.mm.plugin.appbrand.widget.input.panel.e.b;
 public final class e
   implements e.b
 {
-  public final com.tencent.mm.plugin.appbrand.widget.input.panel.e dH(Context paramContext)
+  public final com.tencent.mm.plugin.appbrand.widget.input.panel.e ec(Context paramContext)
   {
     AppMethodBeat.i(47483);
     paramContext = new AppBrandSmileyPanel(paramContext);
@@ -18,7 +18,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.e
  * JD-Core Version:    0.7.0.1
  */

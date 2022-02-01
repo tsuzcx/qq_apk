@@ -10,7 +10,7 @@ import java.util.List;
 public final class e
   implements v.c
 {
-  private final List<Format> bqL;
+  private final List<Format> bqG;
   private final int flags;
   
   public e()
@@ -37,7 +37,7 @@ public final class e
         localObject = Collections.singletonList(Format.bc("application/cea-608"));
       }
     }
-    this.bqL = ((List)localObject);
+    this.bqG = ((List)localObject);
     AppMethodBeat.o(92221);
   }
   
@@ -46,13 +46,13 @@ public final class e
     AppMethodBeat.i(92224);
     if (isSet(32))
     {
-      paramb = new s(this.bqL);
+      paramb = new s(this.bqG);
       AppMethodBeat.o(92224);
       return paramb;
     }
-    com.google.android.exoplayer2.i.m localm = new com.google.android.exoplayer2.i.m(paramb.bsQ);
-    paramb = this.bqL;
-    while (localm.wV() > 0)
+    com.google.android.exoplayer2.i.m localm = new com.google.android.exoplayer2.i.m(paramb.bsL);
+    paramb = this.bqG;
+    while (localm.xd() > 0)
     {
       int i = localm.readUnsignedByte();
       int k = localm.readUnsignedByte();
@@ -78,7 +78,7 @@ public final class e
           for (int j = i1 & 0x3F;; j = 1)
           {
             localArrayList.add(Format.a(null, paramb, 0, str, j));
-            localm.fa(2);
+            localm.eZ(2);
             i += 1;
             break;
             j = 0;
@@ -164,12 +164,12 @@ public final class e
       AppMethodBeat.o(92223);
       return paramb;
     }
-    paramb = new o(new g(paramb.bsP));
+    paramb = new o(new g(paramb.bsK));
     AppMethodBeat.o(92223);
     return paramb;
   }
   
-  public final SparseArray<v> uN()
+  public final SparseArray<v> uS()
   {
     AppMethodBeat.i(92222);
     SparseArray localSparseArray = new SparseArray();
@@ -179,7 +179,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.e
  * JD-Core Version:    0.7.0.1
  */

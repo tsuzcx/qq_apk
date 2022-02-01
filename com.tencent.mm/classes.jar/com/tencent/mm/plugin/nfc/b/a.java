@@ -6,16 +6,16 @@ import java.io.Serializable;
 public final class a
   implements Serializable
 {
+  public com.tencent.mm.plugin.nfc.a.a AEc;
+  public c AEd;
   public int id;
   public String name;
-  public com.tencent.mm.plugin.nfc.a.a wIR;
-  public c wIS;
   
   public a(int paramInt, String paramString, com.tencent.mm.plugin.nfc.a.a parama)
   {
     this.id = paramInt;
     this.name = paramString;
-    this.wIR = parama;
+    this.AEc = parama;
   }
 }
 

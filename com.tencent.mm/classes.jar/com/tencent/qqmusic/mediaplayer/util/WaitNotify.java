@@ -58,7 +58,7 @@ public class WaitNotify
       if (!bool) {}
       try
       {
-        Logger.d("WaitNotify", "doWait internal " + Thread.currentThread().getName());
+        Logger.d("WaitNotify", "doWait internal " + Thread.currentThread().getName() + " " + i);
         this.isWaiting = true;
         if (i < paramInt)
         {
@@ -74,7 +74,7 @@ public class WaitNotify
         {
           this.myMonitorObject.wait();
         }
-        Logger.d("WaitNotify", "doWait wake " + Thread.currentThread().getName());
+        Logger.d("WaitNotify", "doWait wake " + Thread.currentThread().getName() + " " + i);
       }
       catch (InterruptedException localInterruptedException)
       {
@@ -99,7 +99,7 @@ public class WaitNotify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.util.WaitNotify
  * JD-Core Version:    0.7.0.1
  */

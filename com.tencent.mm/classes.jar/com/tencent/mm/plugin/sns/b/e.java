@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.sns.b;
 
 public abstract interface e
 {
-  public abstract int bVY();
+  public abstract int ctM();
 }
 
 

@@ -7,143 +7,123 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.m;
+import android.support.v7.widget.RecyclerView.l;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.finder.PluginFinder;
+import com.tencent.mm.plugin.finder.conv.c;
 import com.tencent.mm.plugin.finder.conv.d.a;
 import com.tencent.mm.plugin.finder.conv.d.b;
-import com.tencent.mm.plugin.finder.conv.e;
+import com.tencent.mm.plugin.finder.conv.f;
 import com.tencent.mm.plugin.finder.conv.f.b;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC.a;
-import com.tencent.mm.protocal.protobuf.arn;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.plugin.i.a.m;
+import com.tencent.mm.plugin.i.a.n;
+import com.tencent.mm.protocal.protobuf.bbn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.widget.MMProcessBar;
 import com.tencent.mm.view.RefreshLoadMoreLayout;
 import com.tencent.mm.view.RefreshLoadMoreLayout.a;
 import com.tencent.mm.view.RefreshLoadMoreLayout.c;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.v;
-import d.z;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "Lcom/tencent/mm/plugin/finder/ui/ReadyChattingCompatUI;", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationDataSource$onQueryBackListener;", "()V", "animRunnable", "Lcom/tencent/mm/plugin/finder/conv/FinderConvItemUnselectedAnim;", "convScene", "", "getConvScene", "()I", "setConvScene", "(I)V", "convType", "getConvType", "setConvType", "conversationAdapter", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationAdapter;", "getConversationAdapter", "()Lcom/tencent/mm/plugin/finder/conv/FinderConversationAdapter;", "dataSource", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationDataSource;", "getDataSource", "()Lcom/tencent/mm/plugin/finder/conv/FinderConversationDataSource;", "setDataSource", "(Lcom/tencent/mm/plugin/finder/conv/FinderConversationDataSource;)V", "onContactStorageChange", "Lcom/tencent/mm/sdk/storage/MStorageEx$IOnStorageChange;", "onConversationStorageChange", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "onFinderContactStorageChange", "checkEmpty", "", "doSomethingOnConvDel", "getLayoutId", "getTitleResId", "loadAfter", "data", "", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "loadInitial", "modifyChange", "obj", "", "onChattingUIEnter", "onChattingUIExit", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "source", "onCreateAfter", "onDestroy", "onResume", "refreshAll", "reportChatExpose", "updateActionBar", "scene", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI;", "Lcom/tencent/mm/plugin/finder/ui/ReadyChattingCompatUI;", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationDataSource$onQueryBackListener;", "()V", "animRunnable", "Lcom/tencent/mm/plugin/finder/conv/FinderConvItemUnselectedAnim;", "getAnimRunnable", "()Lcom/tencent/mm/plugin/finder/conv/FinderConvItemUnselectedAnim;", "setAnimRunnable", "(Lcom/tencent/mm/plugin/finder/conv/FinderConvItemUnselectedAnim;)V", "convScene", "", "getConvScene", "()I", "setConvScene", "(I)V", "convType", "getConvType", "setConvType", "conversationAdapter", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationAdapter;", "getConversationAdapter", "()Lcom/tencent/mm/plugin/finder/conv/FinderConversationAdapter;", "setConversationAdapter", "(Lcom/tencent/mm/plugin/finder/conv/FinderConversationAdapter;)V", "dataSource", "Lcom/tencent/mm/plugin/finder/conv/FinderConversationDataSource;", "getDataSource", "()Lcom/tencent/mm/plugin/finder/conv/FinderConversationDataSource;", "setDataSource", "(Lcom/tencent/mm/plugin/finder/conv/FinderConversationDataSource;)V", "onContactStorageChange", "Lcom/tencent/mm/sdk/storage/MStorageEx$IOnStorageChange;", "onConversationStorageChange", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "onFinderContactStorageChange", "checkEmpty", "", "doSomethingOnConvDel", "getLayoutId", "getTitleResId", "loadAfter", "data", "", "Lcom/tencent/mm/plugin/finder/conv/FinderConversation;", "loadInitial", "modifyChange", "obj", "", "onBackPressed", "onChattingUIEnter", "onChattingUIExit", "", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "source", "onCreateAfter", "onDestroy", "onResume", "refreshAll", "reportChatExpose", "updateActionBar", "scene", "Companion", "plugin-finder_release"})
 public class FinderConversationParentUI
   extends ReadyChattingCompatUI
   implements f.b
 {
-  public static final FinderConversationParentUI.b sMd;
+  public static final b vHT;
   private HashMap _$_findViewCache;
-  int sLV;
-  int sLW;
-  public com.tencent.mm.plugin.finder.conv.f sLX;
-  private com.tencent.mm.plugin.finder.conv.b sLY;
-  final com.tencent.mm.plugin.finder.conv.d sLZ;
-  private final k.a sMa;
-  private final k.a sMb;
-  private final n.b sMc;
+  int vHL;
+  int vHM;
+  public f vHN;
+  com.tencent.mm.plugin.finder.conv.b vHO;
+  com.tencent.mm.plugin.finder.conv.d vHP;
+  private final MStorage.IOnStorageChange vHQ;
+  private final MStorage.IOnStorageChange vHR;
+  private final MStorageEx.IOnStorageChange vHS;
   
   static
   {
-    AppMethodBeat.i(204525);
-    sMd = new FinderConversationParentUI.b((byte)0);
-    AppMethodBeat.o(204525);
+    AppMethodBeat.i(252206);
+    vHT = new b((byte)0);
+    AppMethodBeat.o(252206);
   }
   
   public FinderConversationParentUI()
   {
-    AppMethodBeat.i(204524);
-    this.sLV = -1;
-    this.sLW = -1;
+    AppMethodBeat.i(252205);
+    this.vHL = -1;
+    this.vHM = -1;
     com.tencent.mm.plugin.finder.conv.d locald = new com.tencent.mm.plugin.finder.conv.d();
-    Object localObject = (d.b)new com.tencent.mm.plugin.finder.conv.g((d.g.a.a)FinderConversationParentUI.c.sMf);
-    p.h(localObject, "listener");
-    locald.rTE = ((d.b)localObject);
-    localObject = (d.a)new e((ReadyChattingCompatUI)this, (d.g.a.b)new a(this));
-    p.h(localObject, "listener");
-    locald.rTD = ((d.a)localObject);
-    this.sLZ = locald;
-    this.sMa = ((k.a)new e(this));
-    this.sMb = ((k.a)new j(this));
-    this.sMc = ((n.b)new d(this));
-    AppMethodBeat.o(204524);
+    locald.a((d.b)new com.tencent.mm.plugin.finder.conv.h((kotlin.g.a.a)c.vHV));
+    locald.a((d.a)new com.tencent.mm.plugin.finder.conv.e((ReadyChattingCompatUI)this, (kotlin.g.a.b)new a(this)));
+    this.vHP = locald;
+    this.vHQ = ((MStorage.IOnStorageChange)new e(this));
+    this.vHR = ((MStorage.IOnStorageChange)new j(this));
+    this.vHS = ((MStorageEx.IOnStorageChange)new d(this));
+    AppMethodBeat.o(252205);
   }
   
-  private final void cMc()
+  private final void dza()
   {
-    AppMethodBeat.i(204514);
-    Object localObject = findViewById(2131299472);
+    AppMethodBeat.i(252195);
+    Object localObject = findViewById(2131300101);
     if (localObject != null)
     {
-      if (this.sLZ.getItemCount() == 0)
+      if (this.vHP.getItemCount() == 0)
       {
         ((View)localObject).setVisibility(0);
-        localObject = (RefreshLoadMoreLayout)_$_findCachedViewById(2131304203);
+        localObject = (RefreshLoadMoreLayout)_$_findCachedViewById(2131307118);
         p.g(localObject, "rl_layout");
         ((RefreshLoadMoreLayout)localObject).setVisibility(8);
-        AppMethodBeat.o(204514);
+        AppMethodBeat.o(252195);
         return;
       }
       ((View)localObject).setVisibility(8);
-      localObject = (RefreshLoadMoreLayout)_$_findCachedViewById(2131304203);
+      localObject = (RefreshLoadMoreLayout)_$_findCachedViewById(2131307118);
       p.g(localObject, "rl_layout");
       ((RefreshLoadMoreLayout)localObject).setVisibility(0);
-      AppMethodBeat.o(204514);
+      AppMethodBeat.o(252195);
       return;
     }
-    AppMethodBeat.o(204514);
+    AppMethodBeat.o(252195);
   }
   
-  public final void ZI()
+  public void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(204517);
-    super.ZI();
-    setMMTitle(cMd());
-    AppMethodBeat.o(204517);
-  }
-  
-  public final void ZK()
-  {
-    AppMethodBeat.i(204520);
-    super.ZK();
-    RecyclerView localRecyclerView = (RecyclerView)_$_findCachedViewById(2131308076);
-    p.g(localRecyclerView, "conversationRecyclerView");
-    localRecyclerView.setLayoutFrozen(true);
-    AppMethodBeat.o(204520);
-  }
-  
-  public boolean ZL()
-  {
-    AppMethodBeat.i(204521);
-    super.ZL();
-    RecyclerView localRecyclerView = (RecyclerView)_$_findCachedViewById(2131308076);
-    p.g(localRecyclerView, "conversationRecyclerView");
-    localRecyclerView.setLayoutFrozen(false);
-    AppMethodBeat.o(204521);
-    return true;
+    AppMethodBeat.i(252210);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(252210);
   }
   
   public View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204528);
+    AppMethodBeat.i(252209);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -154,48 +134,48 @@ public class FinderConversationParentUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204528);
+    AppMethodBeat.o(252209);
     return localView1;
   }
   
-  public final void a(Bundle paramBundle, int paramInt)
+  public void a(Bundle paramBundle, int paramInt)
   {
-    AppMethodBeat.i(204516);
+    AppMethodBeat.i(252197);
     super.a(paramBundle, paramInt);
-    paramBundle = this.sTw;
+    paramBundle = this.vQb;
     if (paramBundle != null) {
-      paramBundle.d(Boolean.TRUE);
+      paramBundle.c(Boolean.TRUE);
     }
-    this.sLV = getIntent().getIntExtra("KEY_TALKER_TYPE", -1);
-    this.sLW = getIntent().getIntExtra("KEY_TALKER_SCENE", -1);
-    this.sLZ.pageType = this.sLV;
-    this.sLZ.scene = this.sLW;
-    ae.i("Finder.FinderConversationParentUI", "[onCreate] scene==" + this.sLV);
-    ((com.tencent.mm.plugin.i.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.g.class)).m(this.sMa);
-    ((com.tencent.mm.plugin.i.a.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.f.class)).m(this.sMb);
+    this.vHL = getIntent().getIntExtra("KEY_TALKER_TYPE", -1);
+    this.vHM = getIntent().getIntExtra("KEY_TALKER_SCENE", -1);
+    this.vHP.pageType = this.vHL;
+    this.vHP.scene = this.vHM;
+    Log.i("Finder.FinderConversationParentUI", "[onCreate] scene==" + this.vHL);
+    ((n)g.af(n.class)).m(this.vHQ);
+    ((m)g.af(m.class)).m(this.vHR);
     setBackBtn((MenuItem.OnMenuItemClickListener)new g(this));
-    paramBundle = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage();
-    Object localObject = (RecyclerView)_$_findCachedViewById(2131308076);
+    paramBundle = ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage();
+    Object localObject = (RecyclerView)_$_findCachedViewById(2131299243);
     p.g(localObject, "this");
     ((RecyclerView)localObject).getContext();
-    ((RecyclerView)localObject).setLayoutManager((RecyclerView.i)new LinearLayoutManager());
-    ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.sLZ);
+    ((RecyclerView)localObject).setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager());
+    ((RecyclerView)localObject).setAdapter((RecyclerView.a)this.vHP);
     ((RecyclerView)localObject).setItemAnimator(null);
-    ((RecyclerView)localObject).a((RecyclerView.m)new f(this));
-    localObject = (RecyclerView)_$_findCachedViewById(2131308076);
+    ((RecyclerView)localObject).a((RecyclerView.l)new f(this));
+    localObject = (RecyclerView)_$_findCachedViewById(2131299243);
     p.g(localObject, "conversationRecyclerView");
     localObject = ((RecyclerView)localObject).getViewTreeObserver();
     if (localObject != null) {
       ((ViewTreeObserver)localObject).addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new h(this));
     }
-    this.sLX = new com.tencent.mm.plugin.finder.conv.f(paramBundle, this.sLV, this.sLW, (f.b)this);
-    localObject = this.sLX;
+    this.vHN = new f(paramBundle, this.vHL, this.vHM, (f.b)this);
+    localObject = this.vHN;
     if (localObject == null) {
-      p.bdF("dataSource");
+      p.btv("dataSource");
     }
-    com.tencent.mm.plugin.finder.storage.d locald = ((com.tencent.mm.plugin.finder.conv.f)localObject).rTM;
-    if (((com.tencent.mm.plugin.finder.conv.f)localObject).type == 1) {
-      if (((com.tencent.mm.plugin.finder.conv.f)localObject).scene == 2)
+    com.tencent.mm.plugin.finder.storage.e locale = ((f)localObject).tyE;
+    if (((f)localObject).type == 1) {
+      if (((f)localObject).scene == 2)
       {
         paramBundle = new int[2];
         Bundle tmp345_344 = paramBundle;
@@ -207,14 +187,14 @@ public class FinderConversationParentUI
     }
     for (;;)
     {
-      paramBundle = locald.a(0, 15, paramBundle, ((com.tencent.mm.plugin.finder.conv.f)localObject).scene);
-      ((com.tencent.mm.plugin.finder.conv.f)localObject).rTN.dD(paramBundle);
-      ((RefreshLoadMoreLayout)_$_findCachedViewById(2131304203)).setActionCallback((RefreshLoadMoreLayout.a)new i(this));
-      if (this.sLW != 1) {
+      paramBundle = locale.a(0, 15, paramBundle, ((f)localObject).scene);
+      ((f)localObject).tyF.dS(paramBundle);
+      ((RefreshLoadMoreLayout)_$_findCachedViewById(2131307118)).setActionCallback((RefreshLoadMoreLayout.a)new i(this));
+      if (this.vHM != 1) {
         break;
       }
-      com.tencent.mm.plugin.report.service.g.yxI.n(1473L, 11L, 1L);
-      AppMethodBeat.o(204516);
+      com.tencent.mm.plugin.report.service.h.CyF.n(1473L, 11L, 1L);
+      AppMethodBeat.o(252197);
       return;
       paramBundle = new int[1];
       paramBundle[0] = 2;
@@ -222,85 +202,99 @@ public class FinderConversationParentUI
       paramBundle = new int[1];
       paramBundle[0] = 1;
     }
-    if (this.sLW == 2)
+    if (this.vHM == 2)
     {
-      if (this.sLV == 1)
+      if (this.vHL == 1)
       {
-        com.tencent.mm.plugin.report.service.g.yxI.n(1473L, 12L, 1L);
-        AppMethodBeat.o(204516);
+        com.tencent.mm.plugin.report.service.h.CyF.n(1473L, 12L, 1L);
+        AppMethodBeat.o(252197);
         return;
       }
-      if (this.sLV == 2) {
-        com.tencent.mm.plugin.report.service.g.yxI.n(1473L, 13L, 1L);
+      if (this.vHL == 2) {
+        com.tencent.mm.plugin.report.service.h.CyF.n(1473L, 13L, 1L);
       }
     }
-    AppMethodBeat.o(204516);
+    AppMethodBeat.o(252197);
   }
   
-  public final com.tencent.mm.plugin.finder.conv.f cMa()
+  public void anv()
   {
-    AppMethodBeat.i(204513);
-    com.tencent.mm.plugin.finder.conv.f localf = this.sLX;
-    if (localf == null) {
-      p.bdF("dataSource");
-    }
-    AppMethodBeat.o(204513);
-    return localf;
+    AppMethodBeat.i(252198);
+    super.anv();
+    setMMTitle(dzb());
+    AppMethodBeat.o(252198);
   }
   
-  public void cMb() {}
-  
-  public int cMd()
+  public final void anx()
   {
-    return 0;
+    AppMethodBeat.i(252201);
+    super.anx();
+    RecyclerView localRecyclerView = (RecyclerView)_$_findCachedViewById(2131299243);
+    p.g(localRecyclerView, "conversationRecyclerView");
+    localRecyclerView.setLayoutFrozen(true);
+    AppMethodBeat.o(252201);
   }
   
-  public final void dD(List<com.tencent.mm.plugin.finder.conv.c> paramList)
+  public boolean any()
   {
-    AppMethodBeat.i(204518);
+    AppMethodBeat.i(252202);
+    super.any();
+    RecyclerView localRecyclerView = (RecyclerView)_$_findCachedViewById(2131299243);
+    p.g(localRecyclerView, "conversationRecyclerView");
+    localRecyclerView.setLayoutFrozen(false);
+    AppMethodBeat.o(252202);
+    return true;
+  }
+  
+  public final void dS(List<c> paramList)
+  {
+    AppMethodBeat.i(252199);
     p.h(paramList, "data");
-    this.sLZ.dC(paramList);
-    paramList = (MMProcessBar)_$_findCachedViewById(2131308148);
-    p.g(paramList, "loadingIcon");
-    if (paramList.getVisibility() == 0)
+    this.vHP.dR(paramList);
+    Object localObject = (MMProcessBar)_$_findCachedViewById(2131303691);
+    p.g(localObject, "loadingIcon");
+    if (((MMProcessBar)localObject).getVisibility() == 0)
     {
-      paramList = (RefreshLoadMoreLayout)_$_findCachedViewById(2131304203);
-      p.g(paramList, "rl_layout");
-      if (paramList.getVisibility() != 0)
+      localObject = (RefreshLoadMoreLayout)_$_findCachedViewById(2131307118);
+      p.g(localObject, "rl_layout");
+      if (((RefreshLoadMoreLayout)localObject).getVisibility() != 0)
       {
-        paramList = (MMProcessBar)_$_findCachedViewById(2131308148);
-        p.g(paramList, "loadingIcon");
-        paramList.setVisibility(8);
-        paramList = (RefreshLoadMoreLayout)_$_findCachedViewById(2131304203);
-        p.g(paramList, "rl_layout");
-        paramList.setVisibility(0);
+        localObject = (MMProcessBar)_$_findCachedViewById(2131303691);
+        p.g(localObject, "loadingIcon");
+        ((MMProcessBar)localObject).setVisibility(8);
+        localObject = (RefreshLoadMoreLayout)_$_findCachedViewById(2131307118);
+        p.g(localObject, "rl_layout");
+        ((RefreshLoadMoreLayout)localObject).setVisibility(0);
       }
     }
-    AppMethodBeat.o(204518);
+    if (paramList.size() < 15) {
+      ((RefreshLoadMoreLayout)_$_findCachedViewById(2131307118)).setEnableLoadMore(false);
+    }
+    AppMethodBeat.o(252199);
   }
   
-  public final void dE(List<com.tencent.mm.plugin.finder.conv.c> paramList)
+  public final void dT(List<c> paramList)
   {
-    AppMethodBeat.i(204519);
+    AppMethodBeat.i(252200);
     p.h(paramList, "data");
-    Object localObject = RefreshLoadMoreLayout.c.LOa;
-    localObject = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.fUy());
-    ((RefreshLoadMoreLayout.c)localObject).iOP = false;
+    Object localObject = RefreshLoadMoreLayout.c.Rms;
+    localObject = new RefreshLoadMoreLayout.c(RefreshLoadMoreLayout.c.hfU());
+    ((RefreshLoadMoreLayout.c)localObject).jLE = false;
     if (!((Collection)paramList).isEmpty()) {}
     for (boolean bool = true;; bool = false)
     {
-      ((RefreshLoadMoreLayout.c)localObject).LNT = bool;
-      ((RefreshLoadMoreLayout.c)localObject).LNU = paramList.size();
-      this.sLZ.dC(paramList);
-      ((RefreshLoadMoreLayout)_$_findCachedViewById(2131304203)).d((RefreshLoadMoreLayout.c)localObject);
-      AppMethodBeat.o(204519);
+      ((RefreshLoadMoreLayout.c)localObject).Rmj = bool;
+      ((RefreshLoadMoreLayout.c)localObject).Rmk = paramList.size();
+      this.vHP.dR(paramList);
+      ((RefreshLoadMoreLayout)_$_findCachedViewById(2131307118)).onPreFinishLoadMoreSmooth((RefreshLoadMoreLayout.c)localObject);
+      AppMethodBeat.o(252200);
       return;
     }
   }
   
-  public final void dd(Object paramObject)
+  public final void dn(Object paramObject)
   {
-    AppMethodBeat.i(204522);
+    AppMethodBeat.i(252203);
     int i;
     if ((paramObject instanceof String))
     {
@@ -310,7 +304,7 @@ public class FinderConversationParentUI
       i = 1;
       if (i != 0)
       {
-        localObject1 = this.sLZ.oeJ;
+        localObject1 = this.vHP.ppH;
         if (localObject1 == null) {
           break label220;
         }
@@ -320,14 +314,14 @@ public class FinderConversationParentUI
           break label215;
         }
         Object localObject2 = localIterator.next();
-        com.tencent.mm.plugin.finder.conv.c localc = (com.tencent.mm.plugin.finder.conv.c)localObject2;
+        c localc = (c)localObject2;
         localObject1 = localc.contact;
         if (localObject1 == null) {
           break label205;
         }
-        localObject1 = ((an)localObject1).getUsername();
+        localObject1 = ((as)localObject1).getUsername();
         label95:
-        if ((!p.i(localObject1, paramObject)) && (!p.i(localc.field_talker, paramObject))) {
+        if ((!p.j(localObject1, paramObject)) && (!p.j(localc.field_talker, paramObject))) {
           break label210;
         }
         i = 1;
@@ -339,20 +333,20 @@ public class FinderConversationParentUI
       }
     }
     label124:
-    for (Object localObject1 = (com.tencent.mm.plugin.finder.conv.c)localObject1;; localObject1 = null)
+    for (Object localObject1 = (c)localObject1;; localObject1 = null)
     {
       if (localObject1 != null)
       {
-        ae.i("Finder.FinderConversationParentUI", "[onContactStorageChange] username=".concat(String.valueOf(paramObject)));
-        paramObject = this.sLZ;
+        Log.i("Finder.FinderConversationParentUI", "[onContactStorageChange] username=".concat(String.valueOf(paramObject)));
+        paramObject = this.vHP;
         p.h(localObject1, "conv");
-        ((com.tencent.mm.plugin.finder.conv.c)localObject1).prepare();
-        i = paramObject.oeJ.indexOf(localObject1);
-        if ((i >= 0) && (i < paramObject.oeJ.size())) {
-          paramObject.cj(i);
+        ((c)localObject1).prepare();
+        i = paramObject.ppH.indexOf(localObject1);
+        if ((i >= 0) && (i < paramObject.ppH.size())) {
+          paramObject.Il(i);
         }
       }
-      AppMethodBeat.o(204522);
+      AppMethodBeat.o(252203);
       return;
       i = 0;
       break;
@@ -366,43 +360,68 @@ public class FinderConversationParentUI
     }
   }
   
+  public final f dyY()
+  {
+    AppMethodBeat.i(252193);
+    f localf = this.vHN;
+    if (localf == null) {
+      p.btv("dataSource");
+    }
+    AppMethodBeat.o(252193);
+    return localf;
+  }
+  
+  public void dyZ() {}
+  
+  public int dzb()
+  {
+    return 0;
+  }
+  
   public int getLayoutId()
   {
     return 0;
   }
   
+  public void onBackPressed()
+  {
+    AppMethodBeat.i(252194);
+    super.onBackPressed();
+    AppMethodBeat.o(252194);
+  }
+  
   public void onDestroy()
   {
-    AppMethodBeat.i(204523);
+    AppMethodBeat.i(252204);
     super.onDestroy();
-    ((com.tencent.mm.plugin.i.a.f)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.f.class)).l(this.sMb);
-    ((com.tencent.mm.plugin.i.a.g)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.i.a.g.class)).l(this.sMa);
-    Object localObject = com.tencent.mm.plugin.finder.report.b.sxb;
-    localObject = FinderReporterUIC.tnG;
+    ((m)g.af(m.class)).l(this.vHR);
+    ((n)g.af(n.class)).l(this.vHQ);
+    Object localObject = com.tencent.mm.plugin.finder.report.d.vdp;
+    localObject = FinderReporterUIC.wzC;
     localObject = getContext();
     p.g(localObject, "context");
-    localObject = FinderReporterUIC.a.fc((Context)localObject);
+    localObject = FinderReporterUIC.a.fH((Context)localObject);
     if (localObject != null) {}
-    for (localObject = ((FinderReporterUIC)localObject).cQZ();; localObject = null)
+    for (localObject = ((FinderReporterUIC)localObject).dIx();; localObject = null)
     {
-      com.tencent.mm.plugin.finder.report.b.b((arn)localObject);
-      AppMethodBeat.o(204523);
+      com.tencent.mm.plugin.finder.report.d.c((bbn)localObject);
+      AppMethodBeat.o(252204);
       return;
     }
   }
   
   public void onResume()
   {
-    AppMethodBeat.i(204515);
+    AppMethodBeat.i(252196);
     super.onResume();
-    com.tencent.mm.plugin.finder.conv.b localb = this.sLY;
+    com.tencent.mm.plugin.finder.conv.b localb = this.vHO;
     if (localb != null)
     {
-      com.tencent.mm.ac.c.a(200L, (Runnable)localb);
-      this.sLY = null;
+      com.tencent.mm.ac.d.a(200L, (Runnable)localb);
+      this.vHO = null;
     }
-    cMc();
-    AppMethodBeat.o(204515);
+    dza();
+    AppMethodBeat.o(252196);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -411,10 +430,10 @@ public class FinderConversationParentUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/conv/FinderConvItemUnselectedAnim;", "invoke", "com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$conversationAdapter$1$2"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/conv/FinderConvItemUnselectedAnim;", "invoke", "com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$conversationAdapter$1$2"})
   static final class a
     extends q
-    implements d.g.a.b<com.tencent.mm.plugin.finder.conv.b, z>
+    implements kotlin.g.a.b<com.tencent.mm.plugin.finder.conv.b, x>
   {
     a(FinderConversationParentUI paramFinderConversationParentUI)
     {
@@ -422,94 +441,117 @@ public class FinderConversationParentUI
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "event", "", "stg", "Lcom/tencent/mm/sdk/storage/MStorageEx;", "kotlin.jvm.PlatformType", "obj", "", "onNotifyChange"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderConversationParentUI$Companion;", "", "()V", "DEFAULT_DURATION", "", "KEY_CONV_SCENE", "", "KEY_CONV_TYPE", "MENU_ID_MORE", "", "PAGE_COUNT", "PAGE_INITIAL_COUNT", "PREFETCH_DISTANCE", "REPORT_EXPOSE_SCROLL_LIMIT", "REQUEST_CODE_BLACK_SESSION", "TAG", "plugin-finder_release"})
+  public static final class b {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class c
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    public static final c vHV;
+    
+    static
+    {
+      AppMethodBeat.i(252180);
+      vHV = new c();
+      AppMethodBeat.o(252180);
+    }
+    
+    c()
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "event", "", "stg", "Lcom/tencent/mm/sdk/storage/MStorageEx;", "kotlin.jvm.PlatformType", "obj", "", "onNotifyChange"})
   static final class d
-    implements n.b
+    implements MStorageEx.IOnStorageChange
   {
     d(FinderConversationParentUI paramFinderConversationParentUI) {}
     
-    public final void a(int paramInt, n paramn, Object paramObject)
+    public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
     {
-      AppMethodBeat.i(204501);
-      ae.i("Finder.FinderConversationParentUI", "[onContactStorageChange]");
-      this.sMe.dd(paramObject);
-      AppMethodBeat.o(204501);
+      AppMethodBeat.i(252181);
+      Log.i("Finder.FinderConversationParentUI", "[onContactStorageChange]");
+      this.vHU.dn(paramObject);
+      AppMethodBeat.o(252181);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "event", "", "kotlin.jvm.PlatformType", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "event", "", "kotlin.jvm.PlatformType", "eventData", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
   static final class e
-    implements k.a
+    implements MStorage.IOnStorageChange
   {
     e(FinderConversationParentUI paramFinderConversationParentUI) {}
     
-    public final void a(String paramString, final m paramm)
+    public final void onNotifyChange(String paramString, final MStorageEventData paramMStorageEventData)
     {
-      AppMethodBeat.i(204503);
-      if ((paramm.obj instanceof com.tencent.mm.plugin.finder.conv.c))
+      AppMethodBeat.i(252183);
+      if ((paramMStorageEventData.obj instanceof c))
       {
-        paramString = paramm.obj;
+        paramString = paramMStorageEventData.obj;
         if (paramString == null)
         {
-          paramString = new v("null cannot be cast to non-null type com.tencent.mm.plugin.finder.conv.FinderConversation");
-          AppMethodBeat.o(204503);
+          paramString = new t("null cannot be cast to non-null type com.tencent.mm.plugin.finder.conv.FinderConversation");
+          AppMethodBeat.o(252183);
           throw paramString;
         }
-        paramString = (com.tencent.mm.plugin.finder.conv.c)paramString;
-        if (paramString.field_scene != this.sMe.sLW)
+        paramString = (c)paramString;
+        if (paramString.field_scene != this.vHU.vHM)
         {
-          ae.i("Finder.FinderConversationParentUI", "conv.field_scene:" + paramString.field_scene + " != conveScene:" + this.sMe.sLW);
-          AppMethodBeat.o(204503);
+          Log.i("Finder.FinderConversationParentUI", "conv.field_scene:" + paramString.field_scene + " != conveScene:" + this.vHU.vHM);
+          AppMethodBeat.o(252183);
           return;
         }
-        com.tencent.mm.ac.c.h((d.g.a.a)new q(paramm) {});
+        com.tencent.mm.ac.d.h((kotlin.g.a.a)new q(paramMStorageEventData) {});
       }
-      AppMethodBeat.o(204503);
+      AppMethodBeat.o(252183);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$2$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$2$1", "Landroid/support/v7/widget/RecyclerView$OnScrollListener;", "onScrollStateChanged", "", "recyclerView", "Landroid/support/v7/widget/RecyclerView;", "newState", "", "plugin-finder_release"})
   public static final class f
-    extends RecyclerView.m
+    extends RecyclerView.l
   {
     f(FinderConversationParentUI paramFinderConversationParentUI) {}
     
-    public final void a(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+    public final void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
     {
-      AppMethodBeat.i(204505);
+      AppMethodBeat.i(252184);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramRecyclerView);
-      localb.mu(paramInt1);
-      localb.mu(paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$$inlined$apply$lambda$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahF());
-      super.a(paramRecyclerView, paramInt1, paramInt2);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$$inlined$apply$lambda$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-      AppMethodBeat.o(204505);
-    }
-    
-    public final void b(RecyclerView paramRecyclerView, int paramInt)
-    {
-      AppMethodBeat.i(204504);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramRecyclerView);
-      localb.mu(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$$inlined$apply$lambda$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
+      localb.bm(paramRecyclerView);
+      localb.pH(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$$inlined$apply$lambda$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.axR());
       p.h(paramRecyclerView, "recyclerView");
-      super.b(paramRecyclerView, paramInt);
+      super.onScrollStateChanged(paramRecyclerView, paramInt);
       switch (paramInt)
       {
       }
       for (;;)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$$inlined$apply$lambda$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-        AppMethodBeat.o(204504);
+        AppMethodBeat.o(252184);
         return;
-        FinderConversationParentUI.a(this.sMe);
+        FinderConversationParentUI.a(this.vHU);
       }
+    }
+    
+    public final void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
+    {
+      AppMethodBeat.i(252185);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bm(paramRecyclerView);
+      localb.pH(paramInt1);
+      localb.pH(paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$$inlined$apply$lambda$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.axR());
+      super.onScrolled(paramRecyclerView, paramInt1, paramInt2);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$$inlined$apply$lambda$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
+      AppMethodBeat.o(252185);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class g
     implements MenuItem.OnMenuItemClickListener
   {
@@ -517,78 +559,67 @@ public class FinderConversationParentUI
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(204506);
-      this.sMe.finish();
-      AppMethodBeat.o(204506);
+      AppMethodBeat.i(252186);
+      this.vHU.finish();
+      AppMethodBeat.o(252186);
       return true;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$3", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$3", "Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;", "onGlobalLayout", "", "plugin-finder_release"})
   public static final class h
     implements ViewTreeObserver.OnGlobalLayoutListener
   {
     public final void onGlobalLayout()
     {
-      AppMethodBeat.i(204507);
-      FinderConversationParentUI.a(this.sMe);
-      Object localObject = (RecyclerView)this.sMe._$_findCachedViewById(2131308076);
+      AppMethodBeat.i(252187);
+      FinderConversationParentUI.a(this.vHU);
+      Object localObject = (RecyclerView)this.vHU._$_findCachedViewById(2131299243);
       p.g(localObject, "conversationRecyclerView");
       localObject = ((RecyclerView)localObject).getViewTreeObserver();
       if (localObject != null)
       {
         ((ViewTreeObserver)localObject).removeOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)this);
-        AppMethodBeat.o(204507);
+        AppMethodBeat.o(252187);
         return;
       }
-      AppMethodBeat.o(204507);
+      AppMethodBeat.o(252187);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "Lcom/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback;", "onLoadMoreBegin", "", "plugin-finder_release"})
   public static final class i
     extends RefreshLoadMoreLayout.a
   {
-    public final void AY(int paramInt)
+    public final void ED(int paramInt)
     {
-      AppMethodBeat.i(204509);
+      AppMethodBeat.i(252189);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.mu(paramInt);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.ahF());
-      super.AY(paramInt);
+      localb.pH(paramInt);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V", this, localb.axR());
+      super.ED(paramInt);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshBegin", "(I)V");
-      AppMethodBeat.o(204509);
+      AppMethodBeat.o(252189);
     }
     
     public final void a(RefreshLoadMoreLayout.c paramc)
     {
-      AppMethodBeat.i(204511);
+      AppMethodBeat.i(252191);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ahF());
+      localb.bm(paramc);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.axR());
       super.a(paramc);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(204511);
+      AppMethodBeat.o(252191);
     }
     
-    public final void b(RefreshLoadMoreLayout.c paramc)
+    public final void cxo()
     {
-      AppMethodBeat.i(204510);
-      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramc);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.ahF());
-      super.b(paramc);
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
-      AppMethodBeat.o(204510);
-    }
-    
-    public final void bZA()
-    {
-      AppMethodBeat.i(204508);
+      AppMethodBeat.i(252188);
       com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V", this);
-      com.tencent.mm.plugin.finder.conv.f localf = this.sMe.cMa();
-      int i = this.sMe.sLZ.oeJ.size();
-      com.tencent.mm.plugin.finder.storage.d locald = localf.rTM;
+      f localf = this.vHU.dyY();
+      int i = this.vHU.vHP.ppH.size();
+      com.tencent.mm.plugin.finder.storage.e locale = localf.tyE;
       Object localObject;
       if (localf.type == 1) {
         if (localf.scene == 2)
@@ -603,10 +634,10 @@ public class FinderConversationParentUI
       }
       for (;;)
       {
-        localObject = locald.a(i, 60, (int[])localObject, localf.scene);
-        localf.rTN.dE((List)localObject);
+        localObject = locale.a(i, 60, (int[])localObject, localf.scene);
+        localf.tyF.dT((List)localObject);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onLoadMoreBegin", "()V");
-        AppMethodBeat.o(204508);
+        AppMethodBeat.o(252188);
         return;
         localObject = new int[1];
         localObject[0] = 2;
@@ -615,26 +646,37 @@ public class FinderConversationParentUI
         localObject[0] = 1;
       }
     }
+    
+    public final void onRefreshEnd(RefreshLoadMoreLayout.c paramc)
+    {
+      AppMethodBeat.i(252190);
+      com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+      localb.bm(paramc);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V", this, localb.axR());
+      super.onRefreshEnd(paramc);
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/finder/ui/FinderConversationParentUI$onCreate$4", "com/tencent/mm/view/RefreshLoadMoreLayout$ActionCallback", "onRefreshEnd", "(Lcom/tencent/mm/view/RefreshLoadMoreLayout$MoreReason;)V");
+      AppMethodBeat.o(252190);
+    }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "event", "", "kotlin.jvm.PlatformType", "obj", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "event", "", "kotlin.jvm.PlatformType", "obj", "Lcom/tencent/mm/sdk/storage/MStorageEventData;", "onNotifyChange"})
   static final class j
-    implements k.a
+    implements MStorage.IOnStorageChange
   {
     j(FinderConversationParentUI paramFinderConversationParentUI) {}
     
-    public final void a(String paramString, m paramm)
+    public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
     {
-      AppMethodBeat.i(204512);
-      ae.i("Finder.FinderConversationParentUI", "[onFinderContactStorageChange]");
-      this.sMe.dd(paramm.obj);
-      AppMethodBeat.o(204512);
+      AppMethodBeat.i(252192);
+      Log.i("Finder.FinderConversationParentUI", "[onFinderContactStorageChange]");
+      this.vHU.dn(paramMStorageEventData.obj);
+      AppMethodBeat.o(252192);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderConversationParentUI
  * JD-Core Version:    0.7.0.1
  */

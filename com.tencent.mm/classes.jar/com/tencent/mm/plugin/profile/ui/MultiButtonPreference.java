@@ -6,24 +6,24 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class MultiButtonPreference
   extends Preference
 {
-  private String xit;
-  public String xiu;
-  private String xiv;
-  private View.OnClickListener xiw;
-  public View.OnClickListener xix;
-  private View.OnClickListener xiy;
+  private String Bgn;
+  public String Bgo;
+  private String Bgp;
+  private View.OnClickListener Bgq;
+  public View.OnClickListener Bgr;
+  private View.OnClickListener Bgs;
   
   public MultiButtonPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(27263);
-    setLayoutResource(2131495140);
+    setLayoutResource(2131495983);
     AppMethodBeat.o(27263);
   }
   
@@ -31,57 +31,57 @@ public class MultiButtonPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27262);
-    setLayoutResource(2131495140);
+    setLayoutResource(2131495983);
     AppMethodBeat.o(27262);
   }
   
   public final void a(String paramString, View.OnClickListener paramOnClickListener)
   {
-    this.xit = paramString;
-    this.xiw = paramOnClickListener;
+    this.Bgn = paramString;
+    this.Bgq = paramOnClickListener;
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27264);
     super.onBindView(paramView);
-    Button localButton1 = (Button)paramView.findViewById(2131297634);
-    View localView1 = paramView.findViewById(2131297635);
-    Button localButton2 = (Button)paramView.findViewById(2131297636);
-    View localView2 = paramView.findViewById(2131297637);
-    Button localButton3 = (Button)paramView.findViewById(2131297638);
+    Button localButton1 = (Button)paramView.findViewById(2131297896);
+    View localView1 = paramView.findViewById(2131297897);
+    Button localButton2 = (Button)paramView.findViewById(2131297898);
+    View localView2 = paramView.findViewById(2131297899);
+    Button localButton3 = (Button)paramView.findViewById(2131297900);
     paramView.setBackgroundColor(0);
-    if (!bu.isNullOrNil(this.xit))
+    if (!Util.isNullOrNil(this.Bgn))
     {
       localButton1.setVisibility(0);
-      localButton1.setText(this.xit);
-      if (bu.isNullOrNil(this.xiu)) {
+      localButton1.setText(this.Bgn);
+      if (Util.isNullOrNil(this.Bgo)) {
         break label219;
       }
-      if (!bu.isNullOrNil(this.xit)) {
+      if (!Util.isNullOrNil(this.Bgn)) {
         break label211;
       }
       localView1.setVisibility(8);
       label112:
       localButton2.setVisibility(0);
-      localButton2.setText(this.xiu);
+      localButton2.setText(this.Bgo);
       label127:
-      if (bu.isNullOrNil(this.xiv)) {
+      if (Util.isNullOrNil(this.Bgp)) {
         break label244;
       }
-      if (!bu.isNullOrNil(this.xiu)) {
+      if (!Util.isNullOrNil(this.Bgo)) {
         break label235;
       }
       localView2.setVisibility(8);
       label154:
       localButton3.setVisibility(0);
-      localButton3.setText(this.xiv);
+      localButton3.setText(this.Bgp);
     }
     for (;;)
     {
-      localButton1.setOnClickListener(this.xiw);
-      localButton2.setOnClickListener(this.xix);
-      localButton3.setOnClickListener(this.xiy);
+      localButton1.setOnClickListener(this.Bgq);
+      localButton2.setOnClickListener(this.Bgr);
+      localButton3.setOnClickListener(this.Bgs);
       AppMethodBeat.o(27264);
       return;
       localButton1.setVisibility(8);

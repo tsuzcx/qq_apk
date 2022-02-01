@@ -9,32 +9,32 @@ import java.util.Set;
 
 public class HookManager
 {
-  public static final HookManager MLy;
-  private Set<a> MLA;
-  public volatile boolean MLz;
+  public static final HookManager Syn;
+  public volatile boolean Syo;
+  private Set<a> Syp;
   
   static
   {
-    AppMethodBeat.i(195204);
-    MLy = new HookManager();
-    AppMethodBeat.o(195204);
+    AppMethodBeat.i(199052);
+    Syn = new HookManager();
+    AppMethodBeat.o(199052);
   }
   
   private HookManager()
   {
-    AppMethodBeat.i(195199);
-    this.MLA = new HashSet();
-    AppMethodBeat.o(195199);
+    AppMethodBeat.i(199047);
+    this.Syp = new HashSet();
+    AppMethodBeat.o(199047);
   }
   
   @Keep
   public static String getStack()
   {
-    AppMethodBeat.i(195203);
+    AppMethodBeat.i(199051);
     Object localObject1 = Thread.currentThread().getStackTrace();
     if (localObject1 == null)
     {
-      AppMethodBeat.o(195203);
+      AppMethodBeat.o(199051);
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
@@ -44,12 +44,12 @@ public class HookManager
     {
       Object localObject2 = localObject1[i];
       if (!localObject2.getClassName().contains("java.lang.Thread")) {
-        localStringBuilder.append("\t").append(localObject2).append('\n');
+        localStringBuilder.append(localObject2).append(';');
       }
       i += 1;
     }
     localObject1 = localStringBuilder.toString();
-    AppMethodBeat.o(195203);
+    AppMethodBeat.o(199051);
     return localObject1;
   }
   
@@ -63,60 +63,60 @@ public class HookManager
   
   public final HookManager a(a parama)
   {
-    AppMethodBeat.i(195201);
+    AppMethodBeat.i(199049);
     if (parama != null) {
-      this.MLA.add(parama);
+      this.Syp.add(parama);
     }
-    AppMethodBeat.o(195201);
+    AppMethodBeat.o(199049);
     return this;
   }
   
-  public final void geJ()
+  public final void hrZ()
   {
-    AppMethodBeat.i(195200);
+    AppMethodBeat.i(199048);
     Object localObject;
-    if (this.MLz)
+    if (this.Syo)
     {
       localObject = new a("this process has already been hooked!");
-      AppMethodBeat.o(195200);
+      AppMethodBeat.o(199048);
       throw ((Throwable)localObject);
     }
-    if (this.MLA.isEmpty())
+    if (this.Syp.isEmpty())
     {
-      AppMethodBeat.o(195200);
+      AppMethodBeat.o(199048);
       return;
     }
     try
     {
       System.loadLibrary("wxperf-jni");
-      localObject = this.MLA.iterator();
+      localObject = this.Syp.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((a)((Iterator)localObject).next()).geH();
+        ((a)((Iterator)localObject).next()).hrX();
       }
-      localIterator = this.MLA.iterator();
+      localIterator = this.Syp.iterator();
     }
     catch (Throwable localThrowable)
     {
       Log.printStack(6, "Wxperf.HookManager", localThrowable);
-      AppMethodBeat.o(195200);
+      AppMethodBeat.o(199048);
       return;
     }
     Iterator localIterator;
     while (localIterator.hasNext()) {
-      ((a)localIterator.next()).geI();
+      ((a)localIterator.next()).hrY();
     }
     xhookEnableDebugNative(false);
     xhookEnableSigSegvProtectionNative(true);
     xhookRefreshNative(false);
-    this.MLz = true;
-    AppMethodBeat.o(195200);
+    this.Syo = true;
+    AppMethodBeat.o(199048);
   }
   
-  public final HookManager geK()
+  public final HookManager hsa()
   {
-    AppMethodBeat.i(195202);
-    this.MLA.clear();
-    AppMethodBeat.o(195202);
+    AppMethodBeat.i(199050);
+    this.Syp.clear();
+    AppMethodBeat.o(199050);
     return this;
   }
   
@@ -131,7 +131,7 @@ public class HookManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.wxperf.jni.HookManager
  * JD-Core Version:    0.7.0.1
  */

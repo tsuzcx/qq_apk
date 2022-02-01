@@ -12,29 +12,29 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.luggage.g.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.v;
-import d.z;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/RequestDialogRotationHelper;", "", "()V", "applyStyleByRotation", "", "context", "Landroid/content/Context;", "rootView", "Landroid/view/View;", "buttonGroup", "rotation", "", "shouldInLargeScreenCompatMode", "", "getAppropriateLargeScreenRequestDialogWidth", "dialogMeasuredWidth", "dp2Px", "dp", "isLargeScreenEnv", "onPreDrawOnce", "block", "Lkotlin/Function0;", "postRequestLayout", "wrapScreenAdaptiveContextForRequestDialogIfNeed", "luggage-wechat-full-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/widget/dialog/RequestDialogRotationHelper;", "", "()V", "applyStyleByRotation", "", "context", "Landroid/content/Context;", "rootView", "Landroid/view/View;", "buttonGroup", "rotation", "", "shouldInLargeScreenCompatMode", "", "getAppropriateLargeScreenRequestDialogWidth", "dialogMeasuredWidth", "dp2Px", "dp", "isLargeScreenEnv", "onPreDrawOnce", "block", "Lkotlin/Function0;", "postRequestLayout", "wrapScreenAdaptiveContextForRequestDialogIfNeed", "luggage-wechat-full-sdk_release"})
 public final class n
 {
-  public static final n nic;
+  public static final n OrG;
   
   static
   {
     AppMethodBeat.i(148269);
-    nic = new n();
+    OrG = new n();
     AppMethodBeat.o(148269);
   }
   
-  public static final int K(Context paramContext, int paramInt)
+  public static final int O(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(169666);
     p.h(paramContext, "context");
-    int i = paramContext.getResources().getDimensionPixelSize(2131165885);
+    int i = paramContext.getResources().getDimensionPixelSize(2131165911);
     Resources localResources = paramContext.getResources();
     p.g(localResources, "context.resources");
     int j = Math.max(i, localResources.getDisplayMetrics().widthPixels / 2);
@@ -77,7 +77,7 @@ public final class n
       {
         if (localLayoutParams == null)
         {
-          paramContext = new v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+          paramContext = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
           AppMethodBeat.o(183080);
           throw paramContext;
           localLayoutParams = null;
@@ -86,13 +86,13 @@ public final class n
           paramView2 = null;
           continue;
         }
-        ((RelativeLayout.LayoutParams)localLayoutParams).bottomMargin = paramContext.getResources().getDimensionPixelSize(2131165882);
+        ((RelativeLayout.LayoutParams)localLayoutParams).bottomMargin = paramContext.getResources().getDimensionPixelSize(2131165908);
       }
     }
     if (!paramBoolean)
     {
       paramView2 = paramView1.getLayoutParams();
-      paramView2.width = paramContext.getResources().getDimensionPixelSize(2131165885);
+      paramView2.width = paramContext.getResources().getDimensionPixelSize(2131165911);
       paramView1.setLayoutParams(paramView2);
       AppMethodBeat.o(183080);
       return;
@@ -104,23 +104,23 @@ public final class n
       while ((localObject1 instanceof RelativeLayout)) {
         if (localLayoutParams == null)
         {
-          paramContext = new v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+          paramContext = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
           AppMethodBeat.o(183080);
           throw paramContext;
           localObject1 = null;
         }
         else
         {
-          ((RelativeLayout.LayoutParams)localLayoutParams).bottomMargin = paramContext.getResources().getDimensionPixelSize(2131165883);
+          ((RelativeLayout.LayoutParams)localLayoutParams).bottomMargin = paramContext.getResources().getDimensionPixelSize(2131165909);
         }
       }
-      if ((!paramBoolean) && (cP(paramContext)))
+      if ((!paramBoolean) && (dk(paramContext)))
       {
-        localObject1 = (d.g.a.a)new a(paramView1, paramContext);
+        localObject1 = (kotlin.g.a.a)new a(paramView1, paramContext);
         ViewTreeObserver localViewTreeObserver = paramView1.getViewTreeObserver();
         p.g(localViewTreeObserver, "this.viewTreeObserver");
         if (localViewTreeObserver.isAlive()) {
-          paramView1.getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new n.b(paramView1, (d.g.a.a)localObject1));
+          paramView1.getViewTreeObserver().addOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)new b(paramView1, (kotlin.g.a.a)localObject1));
         }
         paramView1 = localObject2;
         if (paramView2 != null) {
@@ -130,11 +130,11 @@ public final class n
         {
           if (localLayoutParams == null)
           {
-            paramContext = new v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+            paramContext = new t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
             AppMethodBeat.o(183080);
             throw paramContext;
           }
-          ((RelativeLayout.LayoutParams)localLayoutParams).bottomMargin = paramContext.getResources().getDimensionPixelSize(2131165882);
+          ((RelativeLayout.LayoutParams)localLayoutParams).bottomMargin = paramContext.getResources().getDimensionPixelSize(2131165908);
           AppMethodBeat.o(183080);
         }
       }
@@ -148,7 +148,7 @@ public final class n
     AppMethodBeat.o(183080);
   }
   
-  private static boolean cP(Context paramContext)
+  private static boolean dk(Context paramContext)
   {
     AppMethodBeat.i(183081);
     paramContext = paramContext.getResources();
@@ -162,24 +162,24 @@ public final class n
     return false;
   }
   
-  public static final Context dv(Context paramContext)
+  public static final Context eA(Context paramContext)
   {
     AppMethodBeat.i(169667);
     p.h(paramContext, "$this$wrapScreenAdaptiveContextForRequestDialogIfNeed");
-    if (!cP(paramContext))
+    if (!dk(paramContext))
     {
       AppMethodBeat.o(169667);
       return paramContext;
     }
-    paramContext = (Context)new com.tencent.luggage.g.a(paramContext, (a.b)d.nho);
+    paramContext = (Context)new com.tencent.luggage.g.a(paramContext, (a.b)d.oro);
     AppMethodBeat.o(169667);
     return paramContext;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class a
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
     a(View paramView, Context paramContext)
     {
@@ -187,16 +187,50 @@ public final class n
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/util/DisplayMetrics;", "originalMetrics", "<anonymous parameter 1>", "Landroid/content/res/Configuration;", "applyScreenAdaptiveDensity"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/widget/dialog/RequestDialogRotationHelper$onPreDrawOnce$1", "Landroid/view/ViewTreeObserver$OnPreDrawListener;", "onPreDraw", "", "luggage-wechat-full-sdk_release"})
+  public static final class b
+    implements ViewTreeObserver.OnPreDrawListener
+  {
+    b(View paramView, kotlin.g.a.a parama) {}
+    
+    public final boolean onPreDraw()
+    {
+      AppMethodBeat.i(169661);
+      ViewTreeObserver localViewTreeObserver = this.jCH.getViewTreeObserver();
+      p.g(localViewTreeObserver, "this@onPreDrawOnce.viewTreeObserver");
+      if (localViewTreeObserver.isAlive()) {
+        this.jCH.getViewTreeObserver().removeOnPreDrawListener((ViewTreeObserver.OnPreDrawListener)this);
+      }
+      this.hvp.invoke();
+      AppMethodBeat.o(169661);
+      return false;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  static final class c
+    implements Runnable
+  {
+    c(View paramView) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(169662);
+      this.jCI.requestLayout();
+      AppMethodBeat.o(169662);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/util/DisplayMetrics;", "originalMetrics", "<anonymous parameter 1>", "Landroid/content/res/Configuration;", "applyScreenAdaptiveDensity"})
   static final class d
     implements a.b
   {
-    public static final d nho;
+    public static final d oro;
     
     static
     {
       AppMethodBeat.i(169664);
-      nho = new d();
+      oro = new d();
       AppMethodBeat.o(169664);
     }
     
@@ -233,7 +267,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.n
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,50 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.v;
+import com.tencent.mm.ag.v;
 import com.tencent.mm.plugin.brandservice.ui.timeline.video.b;
 import com.tencent.mm.plugin.brandservice.ui.widget.MPVideoView;
 import com.tencent.mm.plugin.brandservice.ui.widget.c;
 import com.tencent.mm.plugin.brandservice.ui.widget.c.a;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.protocal.protobuf.fu;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.gh;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.LinkedList;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/KV17149;", "", "()V", "SPLITOR", "", "TAG", "controller", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "definitionAfter", "", "getDefinitionAfter", "()I", "setDefinitionAfter", "(I)V", "definitionBefore", "getDefinitionBefore", "setDefinitionBefore", "definitionOptions", "getDefinitionOptions", "()Ljava/lang/String;", "setDefinitionOptions", "(Ljava/lang/String;)V", "endPlayTime", "getEndPlayTime", "setEndPlayTime", "firstBuffering", "", "getFirstBuffering", "()Z", "setFirstBuffering", "(Z)V", "height", "getHeight", "setHeight", "isFans", "setFans", "playErrType", "getPlayErrType", "setPlayErrType", "realPlayTime", "getRealPlayTime", "setRealPlayTime", "stayTimeInPage", "getStayTimeInPage", "setStayTimeInPage", "videoView", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView;", "getVideoView", "()Ljava/lang/ref/WeakReference;", "setVideoView", "(Ljava/lang/ref/WeakReference;)V", "width", "getWidth", "setWidth", "wifiTipsWordingType", "getWifiTipsWordingType", "setWifiTipsWordingType", "doReport", "", "eventType", "bufferingTime", "getPlayType", "playStatus", "init", "reportBuffering", "timeCost", "bufferType", "urlInfos", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "Companion", "plugin-brandservice_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/KV17149;", "", "()V", "SPLITOR", "", "TAG", "controller", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "definitionAfter", "", "getDefinitionAfter", "()I", "setDefinitionAfter", "(I)V", "definitionBefore", "getDefinitionBefore", "setDefinitionBefore", "definitionOptions", "getDefinitionOptions", "()Ljava/lang/String;", "setDefinitionOptions", "(Ljava/lang/String;)V", "endPlayTime", "getEndPlayTime", "setEndPlayTime", "firstBuffering", "", "getFirstBuffering", "()Z", "setFirstBuffering", "(Z)V", "height", "getHeight", "setHeight", "isFans", "setFans", "playErrType", "getPlayErrType", "setPlayErrType", "realPlayTime", "getRealPlayTime", "setRealPlayTime", "stayTimeInPage", "getStayTimeInPage", "setStayTimeInPage", "videoView", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/brandservice/ui/widget/MPVideoView;", "getVideoView", "()Ljava/lang/ref/WeakReference;", "setVideoView", "(Ljava/lang/ref/WeakReference;)V", "width", "getWidth", "setWidth", "wifiTipsWordingType", "getWifiTipsWordingType", "setWifiTipsWordingType", "doReport", "", "eventType", "bufferingTime", "getPlayType", "playStatus", "init", "reportBuffering", "timeCost", "bufferType", "urlInfos", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/AppMsgVideoUrlInfo;", "Companion", "plugin-brandservice_release"})
 public final class m
 {
-  private static WeakReference<m> oyg;
-  public static final a oyh;
+  private static WeakReference<m> pLK;
+  public static final a pLL;
   private final String TAG = "MicroMsg.MPDataReportHelper";
   public int height;
-  public b ovq;
-  private final String oxV = ",";
-  public int oxW;
-  public int oxX;
-  public int oxY;
-  public String oxZ = "";
-  public WeakReference<MPVideoView> oxf;
-  public boolean oya;
-  public boolean oyb = true;
-  public int oyc;
-  public int oyd;
-  public int oye = 1;
-  private String oyf = "";
+  public b pIL;
+  public WeakReference<MPVideoView> pKJ;
+  public int pLA;
+  public int pLB;
+  public int pLC;
+  public String pLD = "";
+  public boolean pLE;
+  public boolean pLF = true;
+  public int pLG;
+  public int pLH;
+  public int pLI = 1;
+  private String pLJ = "";
+  private final String pLz = ",";
   public int width;
   
   static
   {
     AppMethodBeat.i(179021);
-    oyh = new a((byte)0);
+    pLL = new a((byte)0);
     AppMethodBeat.o(179021);
   }
   
-  public static int Al(int paramInt)
+  public static int DQ(int paramInt)
   {
     switch (paramInt)
     {
@@ -60,22 +60,22 @@ public final class m
     return 10;
   }
   
-  public static final void Am(int paramInt)
+  public static final void DR(int paramInt)
   {
     AppMethodBeat.i(179022);
-    a.Am(paramInt);
+    a.DR(paramInt);
     AppMethodBeat.o(179022);
   }
   
-  private final MPVideoView bSp()
+  private final MPVideoView cpZ()
   {
     AppMethodBeat.i(7324);
-    if (this.oxf == null)
+    if (this.pKJ == null)
     {
       AppMethodBeat.o(7324);
       return null;
     }
-    Object localObject = this.oxf;
+    Object localObject = this.pKJ;
     if (localObject != null)
     {
       localObject = (MPVideoView)((WeakReference)localObject).get();
@@ -86,7 +86,7 @@ public final class m
     return null;
   }
   
-  public final void J(LinkedList<fu> paramLinkedList)
+  public final void L(LinkedList<gh> paramLinkedList)
   {
     AppMethodBeat.i(7321);
     p.h(paramLinkedList, "urlInfos");
@@ -94,237 +94,216 @@ public final class m
     paramLinkedList = paramLinkedList.iterator();
     if (paramLinkedList.hasNext())
     {
-      fu localfu = (fu)paramLinkedList.next();
+      gh localgh = (gh)paramLinkedList.next();
       if (((CharSequence)localStringBuilder).length() > 0) {}
       for (int i = 1;; i = 0)
       {
         if (i != 0) {
           localStringBuilder.append(";");
         }
-        localStringBuilder.append(localfu.FQz);
+        localStringBuilder.append(localgh.KKg);
         break;
       }
     }
     paramLinkedList = localStringBuilder.toString();
     p.g(paramLinkedList, "sb.toString()");
-    this.oyf = paramLinkedList;
+    this.pLJ = paramLinkedList;
     AppMethodBeat.o(7321);
   }
   
-  public final void eS(int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(7322);
-    if ((paramInt1 < 0) || (paramInt1 > 3600000L))
-    {
-      AppMethodBeat.o(7322);
-      return;
-    }
-    ed(paramInt2, paramInt1);
-    if (this.oyb)
-    {
-      this.oyb = false;
-      ed(16, paramInt1);
-      ae.v(this.TAG, "[KEY_TIME] reportBuffering firstBuffering = ".concat(String.valueOf(paramInt1)));
-      AppMethodBeat.o(7322);
-      return;
-    }
-    ed(17, paramInt1);
-    AppMethodBeat.o(7322);
-  }
-  
-  public final void ed(int paramInt1, int paramInt2)
+  public final void er(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(7323);
-    int j = com.tencent.mm.ah.m.abf();
+    int j = com.tencent.mm.ag.m.ape();
     int i = j;
     if (j == 100) {
       i = -1;
     }
-    if ((this.oxW < 0) || (this.oxW > 86400000L)) {
-      this.oxW = 0;
+    if ((this.pLA < 0) || (this.pLA > 86400000L)) {
+      this.pLA = 0;
     }
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(i);
-    localStringBuilder.append(this.oxV);
-    Object localObject1 = this.ovq;
+    localStringBuilder.append(this.pLz);
+    Object localObject1 = this.pIL;
     if (localObject1 == null) {
-      p.bdF("controller");
+      p.btv("controller");
     }
-    localStringBuilder.append(((b)localObject1).Wa());
-    localStringBuilder.append(this.oxV);
-    localObject1 = this.ovq;
+    localStringBuilder.append(((b)localObject1).ajO());
+    localStringBuilder.append(this.pLz);
+    localObject1 = this.pIL;
     if (localObject1 == null) {
-      p.bdF("controller");
+      p.btv("controller");
     }
-    localStringBuilder.append(((b)localObject1).hGH);
-    localStringBuilder.append(this.oxV);
-    localObject1 = this.ovq;
+    localStringBuilder.append(((b)localObject1).iAQ);
+    localStringBuilder.append(this.pLz);
+    localObject1 = this.pIL;
     if (localObject1 == null) {
-      p.bdF("controller");
+      p.btv("controller");
     }
     localStringBuilder.append(((b)localObject1).idx);
-    localStringBuilder.append(this.oxV);
-    localObject1 = this.ovq;
+    localStringBuilder.append(this.pLz);
+    localObject1 = this.pIL;
     if (localObject1 == null) {
-      p.bdF("controller");
+      p.btv("controller");
     }
-    localStringBuilder.append(((b)localObject1).oua);
-    localStringBuilder.append(this.oxV);
-    localObject1 = this.ovq;
+    localStringBuilder.append(((b)localObject1).pHx);
+    localStringBuilder.append(this.pLz);
+    localObject1 = this.pIL;
     if (localObject1 == null) {
-      p.bdF("controller");
+      p.btv("controller");
     }
-    localStringBuilder.append(((b)localObject1).otX);
-    localStringBuilder.append(this.oxV);
-    localObject1 = this.ovq;
+    localStringBuilder.append(((b)localObject1).pHu);
+    localStringBuilder.append(this.pLz);
+    localObject1 = this.pIL;
     if (localObject1 == null) {
-      p.bdF("controller");
+      p.btv("controller");
     }
-    localStringBuilder.append(((b)localObject1).hCa);
-    localStringBuilder.append(this.oxV);
-    localObject1 = this.ovq;
+    localStringBuilder.append(((b)localObject1).vid);
+    localStringBuilder.append(this.pLz);
+    localObject1 = this.pIL;
     if (localObject1 == null) {
-      p.bdF("controller");
+      p.btv("controller");
     }
-    localStringBuilder.append(((b)localObject1).bSi().hGi);
-    localStringBuilder.append(this.oxV);
+    localStringBuilder.append(((b)localObject1).cpS().iAs);
+    localStringBuilder.append(this.pLz);
     localStringBuilder.append(paramInt1);
-    localStringBuilder.append(this.oxV);
+    localStringBuilder.append(this.pLz);
     localStringBuilder.append((int)(System.currentTimeMillis() / 1000L));
-    localStringBuilder.append(this.oxV);
-    localStringBuilder.append(this.oxW);
-    localStringBuilder.append(this.oxV);
-    localStringBuilder.append(this.oxX);
-    localStringBuilder.append(this.oxV);
-    localStringBuilder.append(this.oxY);
-    localStringBuilder.append(this.oxV);
-    localObject1 = this.ovq;
+    localStringBuilder.append(this.pLz);
+    localStringBuilder.append(this.pLA);
+    localStringBuilder.append(this.pLz);
+    localStringBuilder.append(this.pLB);
+    localStringBuilder.append(this.pLz);
+    localStringBuilder.append(this.pLC);
+    localStringBuilder.append(this.pLz);
+    localObject1 = this.pIL;
     if (localObject1 == null) {
-      p.bdF("controller");
+      p.btv("controller");
     }
     localStringBuilder.append(((b)localObject1).scene);
-    localStringBuilder.append(this.oxV);
-    localObject1 = this.ovq;
+    localStringBuilder.append(this.pLz);
+    localObject1 = this.pIL;
     if (localObject1 == null) {
-      p.bdF("controller");
+      p.btv("controller");
     }
-    localStringBuilder.append(((b)localObject1).otZ);
-    localStringBuilder.append(this.oxV);
-    localStringBuilder.append(this.oxZ);
-    localStringBuilder.append(this.oxV);
-    if (this.oya)
+    localStringBuilder.append(((b)localObject1).pHw);
+    localStringBuilder.append(this.pLz);
+    localStringBuilder.append(this.pLD);
+    localStringBuilder.append(this.pLz);
+    if (this.pLE)
     {
       i = 1;
       localStringBuilder.append(i);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       localStringBuilder.append(paramInt2);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       localStringBuilder.append(this.height);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       localStringBuilder.append(this.width);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       localStringBuilder.append(0);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       localStringBuilder.append(0);
-      localStringBuilder.append(this.oxV);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
+      localStringBuilder.append(this.pLz);
       localStringBuilder.append(2);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       localStringBuilder.append(0);
-      localStringBuilder.append(this.oxV);
-      localStringBuilder.append(this.oyc);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
+      localStringBuilder.append(this.pLG);
+      localStringBuilder.append(this.pLz);
       if (paramInt1 != 22) {
         break label1480;
       }
-      i = this.oyd;
+      i = this.pLH;
       label722:
       localStringBuilder.append(i);
-      localStringBuilder.append(this.oxV);
-      if (bSp() == null) {
+      localStringBuilder.append(this.pLz);
+      if (cpZ() == null) {
         break label1485;
       }
-      localObject1 = bSp();
+      localObject1 = cpZ();
       if (localObject1 == null) {
-        p.gkB();
+        p.hyc();
       }
-      if (!((MPVideoView)localObject1).bnx()) {
+      if (!((MPVideoView)localObject1).bJb()) {
         break label1485;
       }
       i = 1;
       label770:
       localStringBuilder.append(i);
-      localStringBuilder.append(this.oxV);
-      localStringBuilder.append(this.oxV);
-      localObject1 = bSp();
+      localStringBuilder.append(this.pLz);
+      localStringBuilder.append(this.pLz);
+      localObject1 = cpZ();
       if (localObject1 == null) {
         break label1490;
       }
       localObject1 = Integer.valueOf(((MPVideoView)localObject1).getCurrPosMs());
       label818:
       localStringBuilder.append(localObject1);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       if ((paramInt1 != 22) && (paramInt1 != 21)) {
         break label1496;
       }
-      localObject1 = this.oyf;
+      localObject1 = this.pLJ;
       label854:
       localStringBuilder.append((String)localObject1);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       localStringBuilder.append(0);
-      localStringBuilder.append(this.oxV);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
+      localStringBuilder.append(this.pLz);
       localStringBuilder.append(0);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       localStringBuilder.append(0);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       localStringBuilder.append(0);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       if (paramInt1 != 14) {
         break label1503;
       }
-      localObject1 = this.ovq;
+      localObject1 = this.pIL;
       if (localObject1 == null) {
-        p.bdF("controller");
+        p.btv("controller");
       }
-      i = ((b)localObject1).bSn();
+      i = ((b)localObject1).cpX();
       label978:
       localStringBuilder.append(i);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       if (paramInt1 != 14) {
         break label1508;
       }
-      i = this.oye;
+      i = this.pLI;
       label1006:
       localStringBuilder.append(i);
-      localStringBuilder.append(this.oxV);
-      localObject1 = this.ovq;
+      localStringBuilder.append(this.pLz);
+      localObject1 = this.pIL;
       if (localObject1 == null) {
-        p.bdF("controller");
+        p.btv("controller");
       }
-      localStringBuilder.append(((b)localObject1).hBV);
-      localStringBuilder.append(this.oxV);
-      localObject1 = this.ovq;
+      localStringBuilder.append(((b)localObject1).iwc);
+      localStringBuilder.append(this.pLz);
+      localObject1 = this.pIL;
       if (localObject1 == null) {
-        p.bdF("controller");
+        p.btv("controller");
       }
-      localStringBuilder.append(((b)localObject1).ouc);
-      localStringBuilder.append(this.oxV);
-      localObject1 = this.ovq;
+      localStringBuilder.append(((b)localObject1).pHz);
+      localStringBuilder.append(this.pLz);
+      localObject1 = this.pIL;
       if (localObject1 == null) {
-        p.bdF("controller");
+        p.btv("controller");
       }
-      localStringBuilder.append(((b)localObject1).oud);
-      localStringBuilder.append(this.oxV);
-      localStringBuilder.append(this.oxV);
-      localObject1 = a.owG;
-      if (!a.bTk()) {
+      localStringBuilder.append(((b)localObject1).pHA);
+      localStringBuilder.append(this.pLz);
+      localStringBuilder.append(this.pLz);
+      localObject1 = a.pKk;
+      if (!a.cqV()) {
         break label1513;
       }
       i = 1;
       label1157:
       localStringBuilder.append(i);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       if (paramInt1 != 32) {
         break label1518;
       }
@@ -332,11 +311,11 @@ public final class m
     for (;;)
     {
       localStringBuilder.append(paramInt2);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       if (paramInt1 == 43)
       {
-        localObject1 = c.oAe;
-        localObject1 = c.bTK();
+        localObject1 = c.pNP;
+        localObject1 = c.crx();
         if (localObject1 != null)
         {
           localObject2 = ((c.a)localObject1).desc;
@@ -349,11 +328,11 @@ public final class m
       localObject1 = "";
       label1238:
       localStringBuilder.append((String)localObject1);
-      localStringBuilder.append(this.oxV);
+      localStringBuilder.append(this.pLz);
       if (paramInt1 == 43)
       {
-        localObject1 = c.oAe;
-        localObject1 = c.bTL();
+        localObject1 = c.pNP;
+        localObject1 = c.cry();
         if (localObject1 != null)
         {
           localObject2 = ((c.a)localObject1).desc;
@@ -367,28 +346,28 @@ public final class m
       label1297:
       localStringBuilder.append((String)localObject1);
       localObject1 = this.TAG;
-      Object localObject2 = this.ovq;
+      Object localObject2 = this.pIL;
       if (localObject2 == null) {
-        p.bdF("controller");
+        p.btv("controller");
       }
-      localObject2 = ((b)localObject2).ouc;
-      b localb = this.ovq;
+      localObject2 = ((b)localObject2).pHz;
+      b localb = this.pIL;
       if (localb == null) {
-        p.bdF("controller");
+        p.btv("controller");
       }
-      ae.d((String)localObject1, "alvinluo reportKV17149 channelSessionId: %s, landingPageType: %d", new Object[] { localObject2, Integer.valueOf(localb.oud) });
+      Log.d((String)localObject1, "alvinluo reportKV17149 channelSessionId: %s, landingPageType: %d", new Object[] { localObject2, Integer.valueOf(localb.pHA) });
       localObject1 = localStringBuilder.toString();
       p.g(localObject1, "sb.toString()");
-      ae.d(this.TAG, "eventType: " + paramInt1 + " reportData: " + (String)localObject1);
-      g.yxI.kvStat(17149, (String)localObject1);
+      Log.d(this.TAG, "eventType: " + paramInt1 + " reportData: " + (String)localObject1);
+      h.CyF.kvStat(17149, (String)localObject1);
       if (paramInt1 != 3) {
         break label1523;
       }
-      localObject1 = this.ovq;
+      localObject1 = this.pIL;
       if (localObject1 == null) {
-        p.bdF("controller");
+        p.btv("controller");
       }
-      ((b)localObject1).otT.An(0);
+      ((b)localObject1).pHq.DS(0);
       AppMethodBeat.o(7323);
       return;
       i = 0;
@@ -420,38 +399,59 @@ public final class m
     label1523:
     if (paramInt1 == 4)
     {
-      localObject1 = this.ovq;
+      localObject1 = this.pIL;
       if (localObject1 == null) {
-        p.bdF("controller");
+        p.btv("controller");
       }
-      ((b)localObject1).otT.An(1);
+      ((b)localObject1).pHq.DS(1);
       AppMethodBeat.o(7323);
       return;
     }
     if (paramInt1 == 10)
     {
-      localObject1 = this.ovq;
+      localObject1 = this.pIL;
       if (localObject1 == null) {
-        p.bdF("controller");
+        p.btv("controller");
       }
-      ((b)localObject1).otT.An(2);
+      ((b)localObject1).pHq.DS(2);
     }
     AppMethodBeat.o(7323);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/KV17149$Companion;", "", "()V", "kv17149Ref", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/KV17149;", "getKv17149Ref", "()Ljava/lang/ref/WeakReference;", "setKv17149Ref", "(Ljava/lang/ref/WeakReference;)V", "quickReport", "", "eventType", "", "bufferingTime", "plugin-brandservice_release"})
+  public final void ff(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(7322);
+    if ((paramInt1 < 0) || (paramInt1 > 3600000L))
+    {
+      AppMethodBeat.o(7322);
+      return;
+    }
+    er(paramInt2, paramInt1);
+    if (this.pLF)
+    {
+      this.pLF = false;
+      er(16, paramInt1);
+      Log.v(this.TAG, "[KEY_TIME] reportBuffering firstBuffering = ".concat(String.valueOf(paramInt1)));
+      AppMethodBeat.o(7322);
+      return;
+    }
+    er(17, paramInt1);
+    AppMethodBeat.o(7322);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/KV17149$Companion;", "", "()V", "kv17149Ref", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/KV17149;", "getKv17149Ref", "()Ljava/lang/ref/WeakReference;", "setKv17149Ref", "(Ljava/lang/ref/WeakReference;)V", "quickReport", "", "eventType", "", "bufferingTime", "plugin-brandservice_release"})
   public static final class a
   {
-    public static void Am(int paramInt)
+    public static void DR(int paramInt)
     {
       AppMethodBeat.i(179020);
-      Object localObject = m.bTq();
+      Object localObject = m.crb();
       if (localObject != null)
       {
         localObject = (m)((WeakReference)localObject).get();
         if (localObject != null)
         {
-          ((m)localObject).ed(paramInt, 0);
+          ((m)localObject).er(paramInt, 0);
           AppMethodBeat.o(179020);
           return;
         }

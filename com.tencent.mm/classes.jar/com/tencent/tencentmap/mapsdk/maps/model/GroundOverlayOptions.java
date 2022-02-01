@@ -1,17 +1,43 @@
 package com.tencent.tencentmap.mapsdk.maps.model;
 
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+
 public final class GroundOverlayOptions
 {
-  private float mAlpha = 1.0F;
-  private float mAnchorU = 0.5F;
-  private float mAnchorV = 0.5F;
+  public static Bitmap TRANSPARENT_PIXEL;
+  private float mAlpha;
+  private float mAnchorU;
+  private float mAnchorV;
   private BitmapDescriptor mBitmapDescriptor;
   private LatLngBounds mLatLngBounds;
-  private int mLevel = OverlayLevel.OverlayLevelAboveBuildings;
+  private int mLevel;
   private LatLng mPosition;
-  private boolean mVisibility = true;
+  private boolean mVisibility;
   private int mZIndex;
-  private float mZoom = 18.0F;
+  private float mZoom;
+  
+  static
+  {
+    AppMethodBeat.i(193608);
+    Bitmap.Config localConfig = Bitmap.Config.ARGB_8888;
+    TRANSPARENT_PIXEL = Bitmap.createBitmap(new int[] { 0 }, 1, 1, localConfig);
+    AppMethodBeat.o(193608);
+  }
+  
+  public GroundOverlayOptions()
+  {
+    AppMethodBeat.i(193607);
+    this.mBitmapDescriptor = BitmapDescriptorFactory.fromBitmap(TRANSPARENT_PIXEL);
+    this.mZoom = 18.0F;
+    this.mAnchorU = 0.5F;
+    this.mAnchorV = 0.5F;
+    this.mAlpha = 1.0F;
+    this.mVisibility = true;
+    this.mLevel = OverlayLevel.OverlayLevelAboveBuildings;
+    AppMethodBeat.o(193607);
+  }
   
   public final GroundOverlayOptions alpha(float paramFloat)
   {
@@ -123,7 +149,7 @@ public final class GroundOverlayOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.GroundOverlayOptions
  * JD-Core Version:    0.7.0.1
  */

@@ -12,36 +12,36 @@ import java.util.List;
 final class i
   implements d
 {
-  private final List<e> bAD;
-  private final long[] bCC;
-  private final int bDQ;
-  private final long[] bDR;
+  private final List<e> bAF;
+  private final long[] bCE;
+  private final int bDR;
+  private final long[] bDS;
   
   public i(List<e> paramList)
   {
     AppMethodBeat.i(92917);
-    this.bAD = paramList;
-    this.bDQ = paramList.size();
-    this.bCC = new long[this.bDQ * 2];
+    this.bAF = paramList;
+    this.bDR = paramList.size();
+    this.bCE = new long[this.bDR * 2];
     int i = 0;
-    while (i < this.bDQ)
+    while (i < this.bDR)
     {
       e locale = (e)paramList.get(i);
       int j = i * 2;
-      this.bCC[j] = locale.startTime;
-      this.bCC[(j + 1)] = locale.endTime;
+      this.bCE[j] = locale.startTime;
+      this.bCE[(j + 1)] = locale.endTime;
       i += 1;
     }
-    this.bDR = Arrays.copyOf(this.bCC, this.bCC.length);
-    Arrays.sort(this.bDR);
+    this.bDS = Arrays.copyOf(this.bCE, this.bCE.length);
+    Arrays.sort(this.bDS);
     AppMethodBeat.o(92917);
   }
   
   public final int ai(long paramLong)
   {
     AppMethodBeat.i(92918);
-    int i = x.a(this.bDR, paramLong, false, false);
-    if (i < this.bDR.length)
+    int i = x.a(this.bDS, paramLong, false, false);
+    if (i < this.bDS.length)
     {
       AppMethodBeat.o(92918);
       return i;
@@ -57,21 +57,21 @@ final class i
     SpannableStringBuilder localSpannableStringBuilder = null;
     Object localObject1 = null;
     Object localObject3 = null;
-    if (i < this.bDQ)
+    if (i < this.bDR)
     {
       Object localObject2 = localObject3;
       int j;
-      if (this.bCC[(i * 2)] <= paramLong)
+      if (this.bCE[(i * 2)] <= paramLong)
       {
         localObject2 = localObject3;
-        if (paramLong < this.bCC[(i * 2 + 1)])
+        if (paramLong < this.bCE[(i * 2 + 1)])
         {
           localObject2 = localObject3;
           if (localObject3 == null) {
             localObject2 = new ArrayList();
           }
-          localObject3 = (e)this.bAD.get(i);
-          if ((((e)localObject3).bAa == 1.4E-45F) && (((e)localObject3).bAc == 1.4E-45F))
+          localObject3 = (e)this.bAF.get(i);
+          if ((((e)localObject3).bAc == 1.4E-45F) && (((e)localObject3).bAe == 1.4E-45F))
           {
             j = 1;
             label118:
@@ -123,7 +123,7 @@ final class i
     return localObject1;
   }
   
-  public final long eI(int paramInt)
+  public final long eH(int paramInt)
   {
     boolean bool2 = true;
     AppMethodBeat.i(92919);
@@ -131,7 +131,7 @@ final class i
     {
       bool1 = true;
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      if (paramInt >= this.bDR.length) {
+      if (paramInt >= this.bDS.length) {
         break label53;
       }
     }
@@ -139,7 +139,7 @@ final class i
     for (boolean bool1 = bool2;; bool1 = false)
     {
       com.google.android.exoplayer2.i.a.checkArgument(bool1);
-      long l = this.bDR[paramInt];
+      long l = this.bDS[paramInt];
       AppMethodBeat.o(92919);
       return l;
       bool1 = false;
@@ -147,14 +147,14 @@ final class i
     }
   }
   
-  public final int vV()
+  public final int wa()
   {
-    return this.bDR.length;
+    return this.bDS.length;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.i
  * JD-Core Version:    0.7.0.1
  */

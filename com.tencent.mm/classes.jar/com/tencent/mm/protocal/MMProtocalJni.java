@@ -37,6 +37,8 @@ public final class MMProtocalJni
   
   public static native boolean setClientPackVersion(int paramInt);
   
+  public static native void setDeviceTypeId(int paramInt);
+  
   public static native void setIsLite(boolean paramBoolean);
   
   public static native boolean setProtocalJniLogLevel(int paramInt);

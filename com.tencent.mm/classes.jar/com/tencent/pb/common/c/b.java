@@ -5,11 +5,11 @@ import com.tencent.wecall.talkroom.model.f;
 
 public final class b
 {
-  private static int Mgx = 2;
-  private static boolean Mgy = false;
+  private static int RGP = 2;
+  private static boolean RGQ = false;
   public static int level = 0;
   
-  private static String N(Object[] paramArrayOfObject)
+  private static String O(Object[] paramArrayOfObject)
   {
     if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
       return "";
@@ -39,57 +39,57 @@ public final class b
     return localStringBuffer.toString();
   }
   
-  private static void X(int paramInt, String paramString1, String paramString2)
+  private static void aa(int paramInt, String paramString1, String paramString2)
   {
-    e locale = f.ges();
+    e locale = f.hrt();
     if (locale != null) {
-      locale.E(paramInt, "MTSDK".concat(String.valueOf(paramString1)), paramString2);
+      locale.H(paramInt, "MTSDK".concat(String.valueOf(paramString1)), paramString2);
     }
   }
   
   public static void d(String paramString, Object... paramVarArgs)
   {
-    if ((!Mgy) || (Mgx > 1)) {}
+    if ((!RGQ) || (RGP > 1)) {}
     while (paramString == null) {
       return;
     }
-    X(1, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
+    aa(1, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
   }
   
   public static void e(String paramString, Object... paramVarArgs)
   {
-    if ((!Mgy) || (Mgx > 4)) {
+    if ((!RGQ) || (RGP > 4)) {
       return;
     }
-    X(4, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
+    aa(4, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
   }
   
-  public static void fXI()
+  public static void hjo()
   {
-    Mgx = 0;
-    Mgy = true;
+    RGP = 0;
+    RGQ = true;
   }
   
   public static void i(String paramString, Object... paramVarArgs)
   {
-    if ((!Mgy) || (Mgx > 2)) {
+    if ((!RGQ) || (RGP > 2)) {
       return;
     }
-    X(2, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
+    aa(2, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
   }
   
   public static void w(String paramString, Object... paramVarArgs)
   {
-    if ((!Mgy) || (Mgx > 3)) {}
+    if ((!RGQ) || (RGP > 3)) {}
     while (paramString == null) {
       return;
     }
-    X(3, paramString, " ".concat(String.valueOf(N(paramVarArgs))));
+    aa(3, paramString, " ".concat(String.valueOf(O(paramVarArgs))));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.pb.common.c.b
  * JD-Core Version:    0.7.0.1
  */

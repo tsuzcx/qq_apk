@@ -1,0 +1,125 @@
+package com.tencent.mm.plugin.appbrand.openmaterial.model;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.api.d;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
+import org.json.JSONObject;
+
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialNativeExtraData;", "Lcom/tencent/mm/plugin/appbrand/api/IWeAppOpenNativeExtraData;", "mimeType", "", "materialPath", "materialName", "materialSize", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;I)V", "getMaterialName", "()Ljava/lang/String;", "getMaterialPath", "getMaterialSize", "()I", "getMimeType", "toJsonString", "Companion", "plugin-appbrand-integration_release"})
+public final class a
+  implements d
+{
+  public static final a nlL;
+  public final String mimeType;
+  public final String nlI;
+  private final String nlJ;
+  private final int nlK;
+  
+  static
+  {
+    AppMethodBeat.i(229187);
+    nlL = new a((byte)0);
+    AppMethodBeat.o(229187);
+  }
+  
+  public a(String paramString1, String paramString2, String paramString3, int paramInt)
+  {
+    AppMethodBeat.i(229185);
+    this.mimeType = paramString1;
+    this.nlI = paramString2;
+    this.nlJ = paramString3;
+    this.nlK = paramInt;
+    AppMethodBeat.o(229185);
+  }
+  
+  public static final a adn(String paramString)
+  {
+    AppMethodBeat.i(229188);
+    paramString = a.adn(paramString);
+    AppMethodBeat.o(229188);
+    return paramString;
+  }
+  
+  public static final String ado(String paramString)
+  {
+    AppMethodBeat.i(229189);
+    if (paramString != null)
+    {
+      paramString = a.adn(paramString);
+      if (paramString != null)
+      {
+        paramString = paramString.mimeType;
+        AppMethodBeat.o(229189);
+        return paramString;
+      }
+      AppMethodBeat.o(229189);
+      return null;
+    }
+    AppMethodBeat.o(229189);
+    return null;
+  }
+  
+  public final String bua()
+  {
+    AppMethodBeat.i(229184);
+    try
+    {
+      Object localObject = new JSONObject();
+      ((JSONObject)localObject).put("mimeType", this.mimeType);
+      ((JSONObject)localObject).put("materialPath", this.nlI);
+      ((JSONObject)localObject).put("materialName", this.nlJ);
+      ((JSONObject)localObject).put("materialSize", this.nlK);
+      localObject = ((JSONObject)localObject).toString();
+      AppMethodBeat.o(229184);
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.w("MicroMsg.AppBrand.AppBrandOpenMaterialNativeExtraData", "toJsonString fail since ".concat(String.valueOf(localException)));
+        String str = "{}";
+      }
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialNativeExtraData$Companion;", "", "()V", "fromJsonString", "Lcom/tencent/mm/plugin/appbrand/openmaterial/model/AppBrandOpenMaterialNativeExtraData;", "jsonStr", "", "parseMimeType", "plugin-appbrand-integration_release"})
+  public static final class a
+  {
+    public static a adn(String paramString)
+    {
+      AppMethodBeat.i(229183);
+      p.h(paramString, "jsonStr");
+      try
+      {
+        paramString = new JSONObject(paramString);
+        String str1 = paramString.getString("mimeType");
+        String str2 = paramString.getString("materialPath");
+        String str3 = paramString.optString("materialName", "");
+        int i = paramString.optInt("materialSize", 0);
+        p.g(str1, "mimeType");
+        p.g(str2, "materialPath");
+        p.g(str3, "materialName");
+        paramString = new a(str1, str2, str3, i);
+        AppMethodBeat.o(229183);
+        return paramString;
+      }
+      catch (Exception paramString)
+      {
+        for (;;)
+        {
+          Log.w("MicroMsg.AppBrand.AppBrandOpenMaterialNativeExtraData", "fromJsonString fail since ".concat(String.valueOf(paramString)));
+          paramString = null;
+        }
+      }
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+ * Qualified Name:     com.tencent.mm.plugin.appbrand.openmaterial.model.a
+ * JD-Core Version:    0.7.0.1
+ */

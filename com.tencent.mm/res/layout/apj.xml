@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|left" android:paddingTop="@dimen/d" android:paddingBottom="@dimen/d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0"
+<LinearLayout android:orientation="vertical" android:id="@id/abd" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/gam" android:layout_width="@dimen/eb" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" android:singleLine="true" style="@style/lw" />
-    <TextView android:textColor="@color/tq" android:gravity="center|left" android:id="@id/dps" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="52.0dip" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/abb" android:paddingTop="@dimen/gv" android:paddingBottom="@dimen/gu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
+            <ImageView android:layout_gravity="center_horizontal" android:id="@id/abc" android:layout_width="@dimen/gt" android:layout_height="@dimen/gt" android:scaleType="centerInside" />
+            <TextView android:textSize="@dimen/fx" android:textColor="@color/s5" android:layout_gravity="center_horizontal" android:id="@id/abf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/gw" android:singleLine="true" />
+        </LinearLayout>
+        <ImageView android:gravity="center" android:id="@id/h7e" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:src="@drawable/b1a" android:layout_alignTop="@id/abb" android:layout_alignRight="@id/abb" />
+        <TextView android:textSize="@dimen/fx" android:textColor="@android:color/white" android:gravity="center" android:id="@id/abe" android:background="@drawable/b16" android:paddingLeft="3.0dip" android:paddingRight="3.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="1.0dip" android:minWidth="18.0dip" android:layout_alignParentRight="true" />
+    </RelativeLayout>
 </LinearLayout>

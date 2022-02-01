@@ -1,13 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class bs
-  extends b
+  extends IEvent
 {
-  public a dnK;
-  
   public bs()
   {
     this((byte)0);
@@ -15,21 +12,13 @@ public final class bs
   
   private bs(byte paramByte)
   {
-    AppMethodBeat.i(114791);
-    this.dnK = new a();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(114791);
-  }
-  
-  public static final class a
-  {
-    public boolean aLU = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.a.bs
  * JD-Core Version:    0.7.0.1
  */

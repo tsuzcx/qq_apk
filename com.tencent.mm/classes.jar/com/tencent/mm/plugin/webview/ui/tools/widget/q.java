@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.MMActivity;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"toActivity", "Lcom/tencent/mm/ui/MMActivity;", "Landroid/content/Context;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"toActivity", "Lcom/tencent/mm/ui/MMActivity;", "Landroid/content/Context;", "plugin-webview_release"})
 public final class q
 {
-  static final MMActivity hh(Context paramContext)
+  static final MMActivity ib(Context paramContext)
   {
     AppMethodBeat.i(82757);
     if (!(paramContext instanceof MMActivity))

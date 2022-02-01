@@ -14,10 +14,10 @@ import com.tencent.mm.cb.a;
 import com.tencent.mm.plugin.location.model.n;
 import com.tencent.mm.plugin.location.model.r;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MMHorList;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -27,80 +27,59 @@ import java.util.List;
 public final class f
 {
   Context context;
-  private String fUg;
-  private aq mHandler;
+  private String gzn;
+  private MMHandler mHandler;
   private boolean mIsInit;
-  MMHorList voS;
-  a voT;
-  private int voU;
-  f.c voV;
+  MMHorList yII;
+  a yIJ;
+  private int yIK;
+  f.c yIL;
   
   public f(Context paramContext, View paramView, String paramString)
   {
     AppMethodBeat.i(55905);
     this.mIsInit = false;
-    this.fUg = "";
-    this.mHandler = new aq(Looper.getMainLooper());
-    this.voV = null;
+    this.gzn = "";
+    this.mHandler = new MMHandler(Looper.getMainLooper());
+    this.yIL = null;
     this.context = paramContext;
-    this.voS = ((MMHorList)paramView);
-    this.fUg = paramString;
-    djA();
+    this.yII = ((MMHorList)paramView);
+    this.gzn = paramString;
+    edl();
     AppMethodBeat.o(55905);
   }
   
-  private void ah(ArrayList<b> paramArrayList)
-  {
-    AppMethodBeat.i(55907);
-    Iterator localIterator = paramArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      b localb = (b)localIterator.next();
-      if (localb.voZ) {
-        localb.djD();
-      }
-    }
-    this.voU = a.fromDPToPix(this.context, 60);
-    this.voS.setOverScrollEnabled(true);
-    this.voS.setItemWidth(this.voU);
-    this.voS.setCenterInParent(true);
-    this.voS.setOnItemClickListener(new f.1(this));
-    this.voT = new a(paramArrayList);
-    this.voS.setAdapter(this.voT);
-    AppMethodBeat.o(55907);
-  }
-  
-  private void apI(String paramString)
+  private void aDb(String paramString)
   {
     AppMethodBeat.i(55908);
-    ae.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberEnter, usernmae=%s", new Object[] { paramString });
-    if (this.voT.apM(paramString))
+    Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberEnter, usernmae=%s", new Object[] { paramString });
+    if (this.yIJ.aDf(paramString))
     {
       AppMethodBeat.o(55908);
       return;
     }
     paramString = new b(paramString);
-    a locala = this.voT;
-    locala.voY.add(paramString);
+    a locala = this.yIJ;
+    locala.yIO.add(paramString);
     locala.notifyDataSetChanged();
-    this.voS.invalidate();
+    this.yII.invalidate();
     AppMethodBeat.o(55908);
   }
   
-  private void apJ(String paramString)
+  private void aDc(String paramString)
   {
     AppMethodBeat.i(55909);
-    ae.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberExit, username=%s", new Object[] { paramString });
+    Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberExit, username=%s", new Object[] { paramString });
     a locala;
     int i;
-    if (this.voT.apM(paramString))
+    if (this.yIJ.aDf(paramString))
     {
-      locala = this.voT;
+      locala = this.yIJ;
       i = 0;
-      if (i >= locala.voY.size()) {
+      if (i >= locala.yIO.size()) {
         break label108;
       }
-      if (!((b)locala.voY.get(i)).username.equals(paramString)) {
+      if (!((b)locala.yIO.get(i)).username.equals(paramString)) {
         break label101;
       }
     }
@@ -108,10 +87,10 @@ public final class f
     {
       if (i != -1)
       {
-        locala.voY.remove(i);
+        locala.yIO.remove(i);
         locala.notifyDataSetChanged();
       }
-      this.voS.invalidate();
+      this.yII.invalidate();
       AppMethodBeat.o(55909);
       return;
       label101:
@@ -122,37 +101,132 @@ public final class f
     }
   }
   
-  private void djA()
+  private void av(ArrayList<b> paramArrayList)
+  {
+    AppMethodBeat.i(55907);
+    Iterator localIterator = paramArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      b localb = (b)localIterator.next();
+      if (localb.yIP) {
+        localb.edo();
+      }
+    }
+    this.yIK = a.fromDPToPix(this.context, 60);
+    this.yII.setOverScrollEnabled(true);
+    this.yII.setItemWidth(this.yIK);
+    this.yII.setCenterInParent(true);
+    this.yII.setOnItemClickListener(new f.1(this));
+    this.yIJ = new a(paramArrayList);
+    this.yII.setAdapter(this.yIJ);
+    AppMethodBeat.o(55907);
+  }
+  
+  private void edl()
   {
     AppMethodBeat.i(55906);
-    Object localObject = n.djh().Hl(this.fUg);
-    ae.d("MicroMsg.ShareHeaderAvatarViewMgr", "initAvatarList, memebers.size=%d", new Object[] { Integer.valueOf(((List)localObject).size()) });
+    Object localObject = n.ecS().PY(this.gzn);
+    Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "initAvatarList, memebers.size=%d", new Object[] { Integer.valueOf(((List)localObject).size()) });
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      if (!bu.isNullOrNil(str))
+      if (!Util.isNullOrNil(str))
       {
         localArrayList1.add(new b(str));
         localArrayList2.add(str);
       }
     }
-    ah(localArrayList1);
-    ai(localArrayList2);
-    this.voS.invalidate();
-    this.voT.notifyDataSetChanged();
+    av(localArrayList1);
+    aw(localArrayList2);
+    this.yII.invalidate();
+    this.yIJ.notifyDataSetChanged();
     AppMethodBeat.o(55906);
   }
   
-  public final void ai(ArrayList<String> paramArrayList)
+  public final void aDd(String paramString)
+  {
+    int k = 0;
+    AppMethodBeat.i(55910);
+    Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberTalk, username=%s", new Object[] { paramString });
+    final int i;
+    if (this.yIJ.aDf(paramString))
+    {
+      this.yIJ.aDe(paramString).edo();
+      this.yIJ.notifyDataSetChanged();
+      this.yII.invalidate();
+      if ((this.yII.getIsTouching()) || (Util.isNullOrNil(paramString)))
+      {
+        AppMethodBeat.o(55910);
+        return;
+      }
+      a locala = this.yIJ;
+      i = 0;
+      if (i >= locala.yIO.size()) {
+        break label242;
+      }
+      if (!((b)locala.yIO.get(i)).username.equals(paramString)) {
+        break label201;
+      }
+    }
+    label171:
+    label201:
+    label208:
+    label237:
+    label242:
+    for (int j = i;; j = -1)
+    {
+      Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker, index=%d", new Object[] { Integer.valueOf(j) });
+      int m;
+      if (j != -1)
+      {
+        m = j * this.yIK;
+        i = this.yII.getCurrentPosition();
+        if (m >= i) {
+          break label208;
+        }
+      }
+      for (;;)
+      {
+        if (j == 0) {
+          i = k;
+        }
+        for (;;)
+        {
+          this.mHandler.post(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(55894);
+              Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker pos=%d", new Object[] { Integer.valueOf(i) });
+              f.this.yII.alA(i);
+              AppMethodBeat.o(55894);
+            }
+          });
+          AppMethodBeat.o(55910);
+          return;
+          i += 1;
+          break;
+          if (m <= i + this.yIK * 3) {
+            break label237;
+          }
+          i = m - this.yIK * 3;
+          break label171;
+        }
+        i = 0;
+      }
+    }
+  }
+  
+  public final void aw(ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(55912);
-    ae.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, members.size=%d", new Object[] { Integer.valueOf(paramArrayList.size()) });
+    Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, members.size=%d", new Object[] { Integer.valueOf(paramArrayList.size()) });
     ArrayList localArrayList2 = new ArrayList();
     ArrayList localArrayList1 = new ArrayList();
-    Object localObject1 = this.voT.djC();
+    Object localObject1 = this.yIJ.edn();
     Object localObject2 = paramArrayList.iterator();
     while (((Iterator)localObject2).hasNext())
     {
@@ -169,134 +243,60 @@ public final class f
         localArrayList1.add(localObject2);
       }
     }
-    ae.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, newMember.size=%d, removeMember.size=%d", new Object[] { Integer.valueOf(localArrayList2.size()), Integer.valueOf(localArrayList1.size()) });
+    Log.d("MicroMsg.ShareHeaderAvatarViewMgr", "onRefreshMemberList, newMember.size=%d, removeMember.size=%d", new Object[] { Integer.valueOf(localArrayList2.size()), Integer.valueOf(localArrayList1.size()) });
     if (localArrayList2.size() > 0)
     {
       paramArrayList = localArrayList2.iterator();
       while (paramArrayList.hasNext()) {
-        apI((String)paramArrayList.next());
+        aDb((String)paramArrayList.next());
       }
     }
     if (localArrayList1.size() > 0)
     {
       paramArrayList = localArrayList1.iterator();
       while (paramArrayList.hasNext()) {
-        apJ((String)paramArrayList.next());
+        aDc((String)paramArrayList.next());
       }
     }
     AppMethodBeat.o(55912);
   }
   
-  public final void apK(String paramString)
-  {
-    int k = 0;
-    AppMethodBeat.i(55910);
-    ae.d("MicroMsg.ShareHeaderAvatarViewMgr", "onMemberTalk, username=%s", new Object[] { paramString });
-    final int i;
-    if (this.voT.apM(paramString))
-    {
-      this.voT.apL(paramString).djD();
-      this.voT.notifyDataSetChanged();
-      this.voS.invalidate();
-      if ((this.voS.getIsTouching()) || (bu.isNullOrNil(paramString)))
-      {
-        AppMethodBeat.o(55910);
-        return;
-      }
-      a locala = this.voT;
-      i = 0;
-      if (i >= locala.voY.size()) {
-        break label244;
-      }
-      if (!((b)locala.voY.get(i)).username.equals(paramString)) {
-        break label203;
-      }
-    }
-    label173:
-    label203:
-    label210:
-    label239:
-    label244:
-    for (int j = i;; j = -1)
-    {
-      ae.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker, index=%d", new Object[] { Integer.valueOf(j) });
-      int m;
-      if (j != -1)
-      {
-        m = j * this.voU;
-        i = this.voS.getCurrentPosition();
-        if (m >= i) {
-          break label210;
-        }
-      }
-      for (;;)
-      {
-        if (j == 0) {
-          i = k;
-        }
-        for (;;)
-        {
-          this.mHandler.post(new Runnable()
-          {
-            public final void run()
-            {
-              AppMethodBeat.i(55894);
-              ae.d("MicroMsg.ShareHeaderAvatarViewMgr", "scrollToTalker pos=%d", new Object[] { Integer.valueOf(i) });
-              f.this.voS.acQ(i);
-              AppMethodBeat.o(55894);
-            }
-          });
-          AppMethodBeat.o(55910);
-          return;
-          i += 1;
-          break;
-          if (m <= i + this.voU * 3) {
-            break label239;
-          }
-          i = m - this.voU * 3;
-          break label173;
-        }
-        i = 0;
-      }
-    }
-  }
-  
-  public final void djB()
+  public final void edm()
   {
     AppMethodBeat.i(55911);
-    a locala = this.voT;
-    Iterator localIterator = locala.voY.iterator();
+    a locala = this.yIJ;
+    Iterator localIterator = locala.yIO.iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).djE();
+      ((b)localIterator.next()).edp();
     }
     locala.notifyDataSetChanged();
-    this.voS.invalidate();
+    this.yII.invalidate();
     AppMethodBeat.o(55911);
   }
   
   final class a
     extends BaseAdapter
   {
-    ArrayList<f.b> voY;
+    ArrayList<f.b> yIO;
     
     public a()
     {
       AppMethodBeat.i(55895);
-      this.voY = new ArrayList();
+      this.yIO = new ArrayList();
       Collection localCollection;
-      this.voY.addAll(localCollection);
+      this.yIO.addAll(localCollection);
       AppMethodBeat.o(55895);
     }
     
-    public final f.b apL(String paramString)
+    public final f.b aDe(String paramString)
     {
       AppMethodBeat.i(55899);
       int i = 0;
-      while (i < this.voY.size())
+      while (i < this.yIO.size())
       {
-        if (((f.b)this.voY.get(i)).username.equals(paramString))
+        if (((f.b)this.yIO.get(i)).username.equals(paramString))
         {
-          paramString = (f.b)this.voY.get(i);
+          paramString = (f.b)this.yIO.get(i);
           AppMethodBeat.o(55899);
           return paramString;
         }
@@ -306,13 +306,13 @@ public final class f
       return null;
     }
     
-    public final boolean apM(String paramString)
+    public final boolean aDf(String paramString)
     {
       AppMethodBeat.i(55900);
       int i = 0;
-      while (i < this.voY.size())
+      while (i < this.yIO.size())
       {
-        if (((f.b)this.voY.get(i)).username.equals(paramString))
+        if (((f.b)this.yIO.get(i)).username.equals(paramString))
         {
           AppMethodBeat.o(55900);
           return true;
@@ -323,11 +323,11 @@ public final class f
       return false;
     }
     
-    public final ArrayList<String> djC()
+    public final ArrayList<String> edn()
     {
       AppMethodBeat.i(55901);
       ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = this.voY.iterator();
+      Iterator localIterator = this.yIO.iterator();
       while (localIterator.hasNext()) {
         localArrayList.add(((f.b)localIterator.next()).username);
       }
@@ -338,7 +338,7 @@ public final class f
     public final int getCount()
     {
       AppMethodBeat.i(55896);
-      int i = this.voY.size();
+      int i = this.yIO.size();
       AppMethodBeat.o(55896);
       return i;
     }
@@ -346,7 +346,7 @@ public final class f
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(55897);
-      Object localObject = this.voY.get(paramInt);
+      Object localObject = this.yIO.get(paramInt);
       AppMethodBeat.o(55897);
       return localObject;
     }
@@ -359,7 +359,7 @@ public final class f
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(55898);
-      paramView = ((f.b)this.voY.get(paramInt)).vpa.vpb;
+      paramView = ((f.b)this.yIO.get(paramInt)).yIQ.yIR;
       AppMethodBeat.o(55898);
       return paramView;
     }
@@ -368,58 +368,58 @@ public final class f
   final class b
   {
     String username;
-    private LinearLayout.LayoutParams uwV;
-    boolean voZ;
-    a vpa;
+    private LinearLayout.LayoutParams xOV;
+    boolean yIP;
+    a yIQ;
     
     public b(String paramString)
     {
       AppMethodBeat.i(55902);
-      this.voZ = false;
+      this.yIP = false;
       this.username = paramString;
-      if (bu.isNullOrNil(paramString))
+      if (Util.isNullOrNil(paramString))
       {
-        ae.e("MicroMsg.ShareHeaderAvatarViewMgr", "init HeaderAvatar, username can't not be null");
+        Log.e("MicroMsg.ShareHeaderAvatarViewMgr", "init HeaderAvatar, username can't not be null");
         AppMethodBeat.o(55902);
         return;
       }
-      this.vpa = new a();
+      this.yIQ = new a();
       this$1 = (LayoutInflater)f.this.context.getSystemService("layout_inflater");
-      this.vpa.vpb = ((RelativeLayout)f.this.inflate(2131494599, null));
-      this.vpa.iZn = ((ImageView)this.vpa.vpb.findViewById(2131296996));
-      a.b.d(this.vpa.iZn, this.username);
-      this.vpa.vpb.setTag(this.username);
-      this.uwV = new LinearLayout.LayoutParams(-2, -2);
-      this.uwV.leftMargin = BackwardSupportUtil.b.h(f.this.context, 5.0F);
-      this.uwV.rightMargin = BackwardSupportUtil.b.h(f.this.context, 5.0F);
-      this.uwV.gravity = 17;
+      this.yIQ.yIR = ((RelativeLayout)f.this.inflate(2131495310, null));
+      this.yIQ.jWS = ((ImageView)this.yIQ.yIR.findViewById(2131297119));
+      a.b.d(this.yIQ.jWS, this.username);
+      this.yIQ.yIR.setTag(this.username);
+      this.xOV = new LinearLayout.LayoutParams(-2, -2);
+      this.xOV.leftMargin = BackwardSupportUtil.BitmapFactory.fromDPToPix(f.this.context, 5.0F);
+      this.xOV.rightMargin = BackwardSupportUtil.BitmapFactory.fromDPToPix(f.this.context, 5.0F);
+      this.xOV.gravity = 17;
       AppMethodBeat.o(55902);
     }
     
-    public final void djD()
+    public final void edo()
     {
       AppMethodBeat.i(55903);
-      ae.i("MicroMsg.ShareHeaderAvatarViewMgr", "setTalking, username=%s", new Object[] { this.username });
-      this.vpa.vpb.setBackgroundResource(2131232903);
-      this.vpa.vpb.invalidate();
-      this.voZ = true;
+      Log.i("MicroMsg.ShareHeaderAvatarViewMgr", "setTalking, username=%s", new Object[] { this.username });
+      this.yIQ.yIR.setBackgroundResource(2131233546);
+      this.yIQ.yIR.invalidate();
+      this.yIP = true;
       AppMethodBeat.o(55903);
     }
     
-    public final void djE()
+    public final void edp()
     {
       AppMethodBeat.i(55904);
-      ae.i("MicroMsg.ShareHeaderAvatarViewMgr", "exitTalking, username=%s", new Object[] { this.username });
-      this.vpa.vpb.setBackgroundResource(2131232902);
-      this.vpa.vpb.invalidate();
-      this.voZ = false;
+      Log.i("MicroMsg.ShareHeaderAvatarViewMgr", "exitTalking, username=%s", new Object[] { this.username });
+      this.yIQ.yIR.setBackgroundResource(2131233545);
+      this.yIQ.yIR.invalidate();
+      this.yIP = false;
       AppMethodBeat.o(55904);
     }
     
     final class a
     {
-      ImageView iZn;
-      RelativeLayout vpb;
+      ImageView jWS;
+      RelativeLayout yIR;
       
       a() {}
     }
@@ -427,7 +427,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.f
  * JD-Core Version:    0.7.0.1
  */

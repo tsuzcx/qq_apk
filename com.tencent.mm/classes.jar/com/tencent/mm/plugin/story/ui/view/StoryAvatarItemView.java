@@ -12,35 +12,34 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
-import d.g.b.p;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
+import kotlin.g.b.p;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/ui/view/StoryAvatarItemView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "avatarIv", "Landroid/widget/ImageView;", "dp_2", "nameTv", "Landroid/widget/TextView;", "unreadTip", "setAvatar", "", "username", "", "setTipCount", "count", "plugin-story_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/ui/view/StoryAvatarItemView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "avatarIv", "Landroid/widget/ImageView;", "dp_2", "nameTv", "Landroid/widget/TextView;", "unreadTip", "setAvatar", "", "username", "", "setTipCount", "count", "plugin-story_release"})
 public final class StoryAvatarItemView
   extends RelativeLayout
 {
-  private final int BqN;
-  private TextView BqO;
-  private TextView fSj;
-  private ImageView fTj;
+  private final int FBA;
+  private TextView FBB;
+  private TextView gxs;
+  private ImageView gyr;
   
   public StoryAvatarItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(120084);
-    this.BqN = a.fromDPToPix(getContext(), 2);
-    View.inflate(getContext(), 2131495660, (ViewGroup)this);
-    paramContext = findViewById(2131305264);
+    this.FBA = a.fromDPToPix(getContext(), 2);
+    View.inflate(getContext(), 2131496565, (ViewGroup)this);
+    paramContext = findViewById(2131308469);
     p.g(paramContext, "findViewById(R.id.story_avatar_item_iv)");
-    this.fTj = ((ImageView)paramContext);
-    paramContext = findViewById(2131305265);
+    this.gyr = ((ImageView)paramContext);
+    paramContext = findViewById(2131308470);
     p.g(paramContext, "findViewById(R.id.story_avatar_item_name_tv)");
-    this.fSj = ((TextView)paramContext);
-    paramContext = findViewById(2131305266);
+    this.gxs = ((TextView)paramContext);
+    paramContext = findViewById(2131308471);
     p.g(paramContext, "findViewById(R.id.story_avatar_item_unread_tip)");
-    this.BqO = ((TextView)paramContext);
+    this.FBB = ((TextView)paramContext);
     AppMethodBeat.o(120084);
   }
   
@@ -48,17 +47,17 @@ public final class StoryAvatarItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(120085);
-    this.BqN = a.fromDPToPix(getContext(), 2);
-    View.inflate(getContext(), 2131495660, (ViewGroup)this);
-    paramContext = findViewById(2131305264);
+    this.FBA = a.fromDPToPix(getContext(), 2);
+    View.inflate(getContext(), 2131496565, (ViewGroup)this);
+    paramContext = findViewById(2131308469);
     p.g(paramContext, "findViewById(R.id.story_avatar_item_iv)");
-    this.fTj = ((ImageView)paramContext);
-    paramContext = findViewById(2131305265);
+    this.gyr = ((ImageView)paramContext);
+    paramContext = findViewById(2131308470);
     p.g(paramContext, "findViewById(R.id.story_avatar_item_name_tv)");
-    this.fSj = ((TextView)paramContext);
-    paramContext = findViewById(2131305266);
+    this.gxs = ((TextView)paramContext);
+    paramContext = findViewById(2131308471);
     p.g(paramContext, "findViewById(R.id.story_avatar_item_unread_tip)");
-    this.BqO = ((TextView)paramContext);
+    this.FBB = ((TextView)paramContext);
     AppMethodBeat.o(120085);
   }
   
@@ -66,22 +65,22 @@ public final class StoryAvatarItemView
   {
     AppMethodBeat.i(120082);
     p.h(paramString, "username");
-    a.b.d(this.fTj, paramString, 0.5F);
-    this.fTj.setBackground(getResources().getDrawable(2131234224));
-    this.fTj.setPadding(this.BqN, this.BqN, this.BqN, this.BqN);
-    Object localObject = g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    a.b.d(this.gyr, paramString, 0.5F);
+    this.gyr.setBackground(getResources().getDrawable(2131235100));
+    this.gyr.setPadding(this.FBA, this.FBA, this.FBA, this.FBA);
+    Object localObject = g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
     p.g(localObject, "MMKernel.service(IMessengerStorage::class.java)");
-    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).azF().BH(paramString);
+    paramString = ((com.tencent.mm.plugin.messenger.foundation.a.l)localObject).aSN().Kn(paramString);
     localObject = getContext();
     if (paramString != null)
     {
-      paramString = paramString.adG();
+      paramString = paramString.arJ();
       if (paramString == null) {}
     }
     for (paramString = (CharSequence)paramString;; paramString = (CharSequence)"")
     {
-      paramString = k.b((Context)localObject, paramString, this.fSj.getTextSize());
-      this.fSj.setText((CharSequence)paramString);
+      paramString = com.tencent.mm.pluginsdk.ui.span.l.b((Context)localObject, paramString, this.gxs.getTextSize());
+      this.gxs.setText((CharSequence)paramString);
       AppMethodBeat.o(120082);
       return;
     }
@@ -92,12 +91,12 @@ public final class StoryAvatarItemView
     AppMethodBeat.i(120083);
     if (paramInt <= 0)
     {
-      this.BqO.setVisibility(8);
+      this.FBB.setVisibility(8);
       AppMethodBeat.o(120083);
       return;
     }
-    this.BqO.setText((CharSequence)String.valueOf(paramInt));
-    this.BqO.setVisibility(0);
+    this.FBB.setText((CharSequence)String.valueOf(paramInt));
+    this.FBB.setVisibility(0);
     AppMethodBeat.o(120083);
   }
 }

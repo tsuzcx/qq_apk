@@ -16,9 +16,9 @@ import com.tencent.kinda.framework.widget.tools.ColorUtil;
 import com.tencent.kinda.gen.DynamicColor;
 import com.tencent.kinda.gen.IUIModal;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.al;
-import com.tencent.mm.ui.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.t;
 
 public class ModalFragment
   extends BaseFragment
@@ -31,13 +31,13 @@ public class ModalFragment
   private int getBlackMaskColorRes()
   {
     AppMethodBeat.i(178766);
-    if (al.isDarkMode())
+    if (ao.isDarkMode())
     {
       AppMethodBeat.o(178766);
-      return 2131101096;
+      return 2131101339;
     }
     AppMethodBeat.o(178766);
-    return 2131101097;
+    return 2131101340;
   }
   
   private void initCenterPaddingView(View paramView)
@@ -45,8 +45,8 @@ public class ModalFragment
     AppMethodBeat.i(18559);
     if (paramView != null)
     {
-      this.mViewCenterPadding = paramView.findViewById(2131306427);
-      int i = al.jN(getContext());
+      this.mViewCenterPadding = paramView.findViewById(2131309859);
+      int i = ao.getStatusBarHeight(getContext());
       this.mViewCenterPadding.setVisibility(0);
       paramView = this.mViewCenterPadding.getLayoutParams();
       paramView.height = i;
@@ -62,7 +62,7 @@ public class ModalFragment
     {
       this.page.setPlatformDelegate(this.pagePlatformDelegate);
       covertPlatformData(getActivity().getIntent().getBundleExtra("key_platform_data"));
-      ae.i("MicroMsg.ModalFragment", "finish init page");
+      Log.i("MicroMsg.ModalFragment", "finish init page");
     }
     AppMethodBeat.o(18545);
   }
@@ -91,8 +91,8 @@ public class ModalFragment
     }
     if ((this.mPreFragment instanceof ModalFragment))
     {
-      i = ((ModalFragment)this.mPreFragment).getController().fAS();
-      setCenterPaddingColor(getContext().getResources().getColor(2131101053));
+      i = ((ModalFragment)this.mPreFragment).getController().gIN();
+      setCenterPaddingColor(getContext().getResources().getColor(2131101287));
       setActionBarColor(i);
       AppMethodBeat.o(178764);
       return;
@@ -105,7 +105,7 @@ public class ModalFragment
         AppMethodBeat.o(178764);
         return;
       }
-      i = ((MainFragment)this.mPreFragment).getController().fAS();
+      i = ((MainFragment)this.mPreFragment).getController().gIN();
       int j = getContext().getResources().getColor(getBlackMaskColorRes());
       setActionBarColor((int)ColorUtil.MergeColors(i, j));
       setCenterPaddingColor(j);
@@ -122,7 +122,7 @@ public class ModalFragment
   {
     AppMethodBeat.i(18554);
     super.finalize();
-    ae.i("MicroMsg.ModalFragment", "finalize " + this.page);
+    Log.i("MicroMsg.ModalFragment", "finalize " + this.page);
     AppMethodBeat.o(18554);
   }
   
@@ -208,11 +208,11 @@ public class ModalFragment
   
   public void onKeyboardShow(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(193139);
+    AppMethodBeat.i(214430);
     if (this.pagePlatformFuncDelegate != null) {
       this.pagePlatformFuncDelegate.onKeyboardShow(paramBoolean, paramInt);
     }
-    AppMethodBeat.o(193139);
+    AppMethodBeat.o(214430);
   }
   
   public void onStart()
@@ -286,7 +286,7 @@ public class ModalFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.app.ModalFragment
  * JD-Core Version:    0.7.0.1
  */

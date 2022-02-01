@@ -264,39 +264,41 @@ public final class a
   private static void a(com.tencent.xweb.internal.a.b paramb, Element paramElement)
   {
     AppMethodBeat.i(154543);
-    paramb.MPM = a(paramElement, "apkMin");
-    paramb.MPN = a(paramElement, "apkMax");
-    paramb.MPO = a(paramElement, "preDownApkMin");
-    paramb.MPP = a(paramElement, "preDownApkMax");
-    paramb.MPK = a(paramElement, "sdkMin");
-    paramb.MPL = a(paramElement, "sdkMax");
-    paramb.MPQ = a(paramElement, "apiMin");
-    paramb.MPR = a(paramElement, "apiMax");
-    paramb.MPS = paramElement.getAttribute("forbidDeviceRegex");
-    paramb.MPT = paramElement.getAttribute("whiteDeviceRegex");
-    paramb.MQd = paramElement.getAttribute("forbidAppRegex");
-    paramb.MQe = paramElement.getAttribute("whiteAppRegex");
-    paramb.MPU = a(paramElement, "grayMin");
-    paramb.MPV = a(paramElement, "grayMax");
-    paramb.MPW = a(paramElement, "dayGrayMin");
-    paramb.MPX = a(paramElement, "dayGrayMax");
-    paramb.MPY = a(paramElement, "chromeMin");
-    paramb.MPZ = a(paramElement, "chromeMax");
-    paramb.MQa = a(paramElement, "usertype");
-    paramb.MQf = a(paramElement, "x5sdkmin");
-    paramb.MQg = a(paramElement, "x5sdkmax");
-    paramb.MQh = a(paramElement, "x5coremin");
-    paramb.MQi = a(paramElement, "x5coremax");
-    paramb.MQb = c(paramElement, "hoursStart");
-    paramb.MQc = c(paramElement, "hoursEnd");
-    paramb.MQk = paramElement.getAttribute("runtimeAbis");
-    paramb.MQm = paramElement.getAttribute("blackRuntimeAbis");
-    paramb.MQj = paramElement.getAttribute("deviceAbis");
-    paramb.MQl = paramElement.getAttribute("blackDeviceAbis");
-    paramb.MQn = b(paramElement, "appClientVerMin");
-    paramb.MQo = b(paramElement, "appClientVerMax");
-    paramb.MQp = paramElement.getAttribute("appInfoWhiteList");
-    paramb.MQq = paramElement.getAttribute("appInfoBlackList");
+    paramb.SCK = a(paramElement, "apkMin");
+    paramb.SCL = a(paramElement, "apkMax");
+    paramb.SCM = a(paramElement, "preDownApkMin");
+    paramb.SCN = a(paramElement, "preDownApkMax");
+    paramb.SCI = a(paramElement, "sdkMin");
+    paramb.SCJ = a(paramElement, "sdkMax");
+    paramb.SCO = a(paramElement, "apiMin");
+    paramb.SCP = a(paramElement, "apiMax");
+    paramb.SCQ = a(paramElement, "targetApiMin");
+    paramb.SCR = a(paramElement, "targetApiMax");
+    paramb.SCS = paramElement.getAttribute("forbidDeviceRegex");
+    paramb.SCT = paramElement.getAttribute("whiteDeviceRegex");
+    paramb.SDd = paramElement.getAttribute("forbidAppRegex");
+    paramb.SDe = paramElement.getAttribute("whiteAppRegex");
+    paramb.SCU = a(paramElement, "grayMin");
+    paramb.SCV = a(paramElement, "grayMax");
+    paramb.SCW = a(paramElement, "dayGrayMin");
+    paramb.SCX = a(paramElement, "dayGrayMax");
+    paramb.SCY = a(paramElement, "chromeMin");
+    paramb.SCZ = a(paramElement, "chromeMax");
+    paramb.SDa = a(paramElement, "usertype");
+    paramb.SDf = a(paramElement, "x5sdkmin");
+    paramb.SDg = a(paramElement, "x5sdkmax");
+    paramb.SDh = a(paramElement, "x5coremin");
+    paramb.SDi = a(paramElement, "x5coremax");
+    paramb.SDb = c(paramElement, "hoursStart");
+    paramb.SDc = c(paramElement, "hoursEnd");
+    paramb.SDk = paramElement.getAttribute("runtimeAbis");
+    paramb.SDm = paramElement.getAttribute("blackRuntimeAbis");
+    paramb.SDj = paramElement.getAttribute("deviceAbis");
+    paramb.SDl = paramElement.getAttribute("blackDeviceAbis");
+    paramb.SDn = b(paramElement, "appClientVerMin");
+    paramb.SDo = b(paramElement, "appClientVerMax");
+    paramb.SDp = paramElement.getAttribute("appInfoWhiteList");
+    paramb.SDq = paramElement.getAttribute("appInfoBlackList");
     AppMethodBeat.o(154543);
   }
   
@@ -312,10 +314,10 @@ public final class a
       {
         c localc = new c();
         Element localElement = (Element)paramElement.item(i);
-        localc.MVp = localElement.getAttribute("url");
-        localc.MVF = a(localElement, "targetVersion");
-        localc.MVw = localElement.getAttribute("md5");
-        localc.MVx = e(localElement, "useCellular");
+        localc.SIw = localElement.getAttribute("url");
+        localc.SIM = a(localElement, "targetVersion");
+        localc.SID = localElement.getAttribute("md5");
+        localc.SIE = e(localElement, "useCellular");
         localc.bUseCdn = e(localElement, "useCdn");
         arrayOfc[i] = localc;
         i += 1;
@@ -329,16 +331,16 @@ public final class a
   
   private static int b(Element paramElement, String paramString)
   {
-    AppMethodBeat.i(207614);
+    AppMethodBeat.i(207347);
     if (paramElement == null)
     {
-      AppMethodBeat.o(207614);
+      AppMethodBeat.o(207347);
       return 0;
     }
     paramString = paramElement.getAttribute(paramString);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      AppMethodBeat.o(207614);
+      AppMethodBeat.o(207347);
       return 0;
     }
     paramElement = paramString;
@@ -348,13 +350,13 @@ public final class a
     try
     {
       int i = Integer.parseInt(paramElement, 16);
-      AppMethodBeat.o(207614);
+      AppMethodBeat.o(207347);
       return i;
     }
     catch (Exception paramElement)
     {
       Log.e("ConfigParser", "safeGetIntFromHex failed" + paramElement.getMessage());
-      AppMethodBeat.o(207614);
+      AppMethodBeat.o(207347);
     }
     return 0;
   }
@@ -378,10 +380,10 @@ public final class a
         {
           com.tencent.xweb.internal.a.a locala = new com.tencent.xweb.internal.a.a();
           Element localElement = (Element)paramElement.item(i);
-          locala.MPH = localElement.getAttribute("optype");
-          locala.MPI = localElement.getAttribute("opvalue");
-          locala.MPJ = localElement.getAttribute("module");
-          a(locala.MPG, localElement);
+          locala.SCF = localElement.getAttribute("optype");
+          locala.SCG = localElement.getAttribute("opvalue");
+          locala.SCH = localElement.getAttribute("module");
+          a(locala.SCE, localElement);
           arrayOfa[i] = locala;
           i += 1;
         }
@@ -397,7 +399,7 @@ public final class a
     return null;
   }
   
-  public static b bdf(String paramString)
+  public static b bsS(String paramString)
   {
     AppMethodBeat.i(154536);
     if (paramString == null)
@@ -413,7 +415,7 @@ public final class a
       AppMethodBeat.o(154536);
       return null;
     }
-    paramString = j(paramString, a(paramString, (int)paramString.length(), "<Versions>"));
+    paramString = k(paramString, a(paramString, (int)paramString.length(), "<Versions>"));
     AppMethodBeat.o(154536);
     return paramString;
   }
@@ -448,28 +450,28 @@ public final class a
   
   private static float d(Element paramElement, String paramString)
   {
-    AppMethodBeat.i(207615);
+    AppMethodBeat.i(207348);
     if (paramElement == null)
     {
-      AppMethodBeat.o(207615);
+      AppMethodBeat.o(207348);
       return -1.0F;
     }
     paramElement = paramElement.getAttribute(paramString);
     if ((paramElement == null) || (paramElement.isEmpty()))
     {
-      AppMethodBeat.o(207615);
+      AppMethodBeat.o(207348);
       return -1.0F;
     }
     try
     {
       float f = Float.parseFloat(paramElement);
-      AppMethodBeat.o(207615);
+      AppMethodBeat.o(207348);
       return f;
     }
     catch (Exception paramElement)
     {
       Log.e("ConfigParser", "safeGetFloat failed : " + paramElement.getMessage());
-      AppMethodBeat.o(207615);
+      AppMethodBeat.o(207348);
     }
     return -1.0F;
   }
@@ -494,12 +496,12 @@ public final class a
   }
   
   /* Error */
-  private static b j(File paramFile, String paramString)
+  private static b k(File paramFile, String paramString)
   {
     // Byte code:
-    //   0: ldc_w 478
+    //   0: ldc_w 488
     //   3: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 484	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
+    //   6: invokestatic 494	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
     //   9: astore 5
     //   11: new 87	java/io/FileInputStream
     //   14: dup
@@ -510,282 +512,282 @@ public final class a
     //   23: astore_0
     //   24: new 9	com/tencent/xweb/xwalk/updater/a$b
     //   27: dup
-    //   28: invokespecial 485	com/tencent/xweb/xwalk/updater/a$b:<init>	()V
+    //   28: invokespecial 495	com/tencent/xweb/xwalk/updater/a$b:<init>	()V
     //   31: astore_3
     //   32: aload 4
     //   34: astore_0
     //   35: aload 5
-    //   37: invokevirtual 489	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
+    //   37: invokevirtual 499	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
     //   40: aload 4
-    //   42: invokevirtual 495	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
-    //   45: invokeinterface 501 1 0
+    //   42: invokevirtual 505	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
+    //   45: invokeinterface 511 1 0
     //   50: astore 5
     //   52: aload 5
     //   54: ifnonnull +37 -> 91
     //   57: aload 4
     //   59: astore_0
-    //   60: ldc_w 503
-    //   63: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   60: ldc_w 513
+    //   63: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   66: aload 4
     //   68: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   71: ldc_w 478
+    //   71: ldc_w 488
     //   74: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   77: aconst_null
     //   78: areturn
     //   79: astore_0
     //   80: ldc 58
-    //   82: ldc_w 505
+    //   82: ldc_w 515
     //   85: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   88: goto -17 -> 71
     //   91: aload 4
     //   93: astore_0
     //   94: aload_3
     //   95: aload 5
-    //   97: ldc_w 507
+    //   97: ldc_w 517
     //   100: invokeinterface 44 2 0
-    //   105: putfield 508	com/tencent/xweb/xwalk/updater/a$b:MVw	Ljava/lang/String;
+    //   105: putfield 518	com/tencent/xweb/xwalk/updater/a$b:SID	Ljava/lang/String;
     //   108: aload 4
     //   110: astore_0
     //   111: aload_3
     //   112: aload 5
-    //   114: ldc_w 510
+    //   114: ldc_w 520
     //   117: invokeinterface 44 2 0
-    //   122: putfield 512	com/tencent/xweb/xwalk/updater/a$b:signature	Ljava/lang/String;
+    //   122: putfield 522	com/tencent/xweb/xwalk/updater/a$b:signature	Ljava/lang/String;
     //   125: aload 4
     //   127: astore_0
     //   128: aload_3
-    //   129: getfield 508	com/tencent/xweb/xwalk/updater/a$b:MVw	Ljava/lang/String;
+    //   129: getfield 518	com/tencent/xweb/xwalk/updater/a$b:SID	Ljava/lang/String;
     //   132: ifnull +17 -> 149
     //   135: aload 4
     //   137: astore_0
     //   138: aload_3
-    //   139: getfield 508	com/tencent/xweb/xwalk/updater/a$b:MVw	Ljava/lang/String;
+    //   139: getfield 518	com/tencent/xweb/xwalk/updater/a$b:SID	Ljava/lang/String;
     //   142: aload_1
-    //   143: invokevirtual 515	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   143: invokevirtual 525	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   146: ifne +46 -> 192
     //   149: aload 4
     //   151: astore_0
-    //   152: ldc2_w 516
-    //   155: invokestatic 523	com/tencent/xweb/util/g:FJ	(J)V
+    //   152: ldc2_w 526
+    //   155: invokestatic 533	com/tencent/xweb/util/h:OQ	(J)V
     //   158: aload 4
     //   160: astore_0
-    //   161: ldc_w 525
-    //   164: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   161: ldc_w 535
+    //   164: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   167: aload 4
     //   169: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   172: ldc_w 478
+    //   172: ldc_w 488
     //   175: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   178: aconst_null
     //   179: areturn
     //   180: astore_0
     //   181: ldc 58
-    //   183: ldc_w 505
+    //   183: ldc_w 515
     //   186: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   189: goto -17 -> 172
     //   192: aload 4
     //   194: astore_0
     //   195: aload_3
-    //   196: getfield 508	com/tencent/xweb/xwalk/updater/a$b:MVw	Ljava/lang/String;
+    //   196: getfield 518	com/tencent/xweb/xwalk/updater/a$b:SID	Ljava/lang/String;
     //   199: aload_3
-    //   200: getfield 512	com/tencent/xweb/xwalk/updater/a$b:signature	Ljava/lang/String;
-    //   203: ldc_w 527
-    //   206: invokestatic 533	com/tencent/xweb/util/b:bo	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   200: getfield 522	com/tencent/xweb/xwalk/updater/a$b:signature	Ljava/lang/String;
+    //   203: ldc_w 537
+    //   206: invokestatic 543	com/tencent/xweb/util/b:bw	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
     //   209: ifne +46 -> 255
     //   212: aload 4
     //   214: astore_0
-    //   215: ldc2_w 534
-    //   218: invokestatic 523	com/tencent/xweb/util/g:FJ	(J)V
+    //   215: ldc2_w 544
+    //   218: invokestatic 533	com/tencent/xweb/util/h:OQ	(J)V
     //   221: aload 4
     //   223: astore_0
-    //   224: ldc_w 537
-    //   227: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   224: ldc_w 547
+    //   227: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   230: aload 4
     //   232: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   235: ldc_w 478
+    //   235: ldc_w 488
     //   238: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   241: aconst_null
     //   242: areturn
     //   243: astore_0
     //   244: ldc 58
-    //   246: ldc_w 505
+    //   246: ldc_w 515
     //   249: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   252: goto -17 -> 235
     //   255: aload 4
     //   257: astore_0
     //   258: aload_3
     //   259: aload 5
-    //   261: ldc_w 539
+    //   261: ldc_w 549
     //   264: invokeinterface 44 2 0
-    //   269: putfield 542	com/tencent/xweb/xwalk/updater/a$b:MVC	Ljava/lang/String;
+    //   269: putfield 552	com/tencent/xweb/xwalk/updater/a$b:SIJ	Ljava/lang/String;
     //   272: aload 4
     //   274: astore_0
     //   275: aload_3
     //   276: aload 5
-    //   278: invokestatic 544	com/tencent/xweb/xwalk/updater/a:b	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/internal/a$a;
-    //   281: putfield 548	com/tencent/xweb/xwalk/updater/a$b:MVE	[Lcom/tencent/xweb/internal/a$a;
+    //   278: invokestatic 554	com/tencent/xweb/xwalk/updater/a:b	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/internal/a$a;
+    //   281: putfield 558	com/tencent/xweb/xwalk/updater/a$b:SIL	[Lcom/tencent/xweb/internal/a$a;
     //   284: aload 4
     //   286: astore_0
     //   287: aload 5
-    //   289: ldc_w 550
-    //   292: invokeinterface 328 2 0
+    //   289: ldc_w 560
+    //   292: invokeinterface 338 2 0
     //   297: astore_1
     //   298: aload_1
     //   299: ifnull +524 -> 823
     //   302: aload 4
     //   304: astore_0
     //   305: aload_1
-    //   306: invokeinterface 333 1 0
+    //   306: invokeinterface 343 1 0
     //   311: ifeq +512 -> 823
     //   314: aload 4
     //   316: astore_0
     //   317: aload_3
     //   318: aload_1
-    //   319: invokeinterface 333 1 0
+    //   319: invokeinterface 343 1 0
     //   324: anewarray 21	com/tencent/xweb/xwalk/updater/a$f
-    //   327: putfield 554	com/tencent/xweb/xwalk/updater/a$b:MVD	[Lcom/tencent/xweb/xwalk/updater/a$f;
+    //   327: putfield 564	com/tencent/xweb/xwalk/updater/a$b:SIK	[Lcom/tencent/xweb/xwalk/updater/a$f;
     //   330: iconst_0
     //   331: istore_2
     //   332: aload 4
     //   334: astore_0
     //   335: iload_2
     //   336: aload_1
-    //   337: invokeinterface 333 1 0
+    //   337: invokeinterface 343 1 0
     //   342: if_icmpge +481 -> 823
     //   345: aload 4
     //   347: astore_0
     //   348: new 21	com/tencent/xweb/xwalk/updater/a$f
     //   351: dup
-    //   352: invokespecial 555	com/tencent/xweb/xwalk/updater/a$f:<init>	()V
+    //   352: invokespecial 565	com/tencent/xweb/xwalk/updater/a$f:<init>	()V
     //   355: astore 5
     //   357: aload 4
     //   359: astore_0
     //   360: aload_1
     //   361: iload_2
-    //   362: invokeinterface 339 2 0
+    //   362: invokeinterface 349 2 0
     //   367: checkcast 40	org/w3c/dom/Element
     //   370: astore 6
     //   372: aload 4
     //   374: astore_0
     //   375: aload 5
     //   377: aload 6
-    //   379: ldc_w 557
+    //   379: ldc_w 567
     //   382: invokeinterface 44 2 0
-    //   387: putfield 558	com/tencent/xweb/xwalk/updater/a$f:MVp	Ljava/lang/String;
+    //   387: putfield 568	com/tencent/xweb/xwalk/updater/a$f:SIw	Ljava/lang/String;
     //   390: aload 4
     //   392: astore_0
     //   393: aload 5
     //   395: aload 6
-    //   397: ldc_w 351
+    //   397: ldc_w 361
     //   400: invokeinterface 44 2 0
-    //   405: putfield 559	com/tencent/xweb/xwalk/updater/a$f:MVw	Ljava/lang/String;
+    //   405: putfield 569	com/tencent/xweb/xwalk/updater/a$f:SID	Ljava/lang/String;
     //   408: aload 4
     //   410: astore_0
     //   411: aload 5
-    //   413: getfield 560	com/tencent/xweb/xwalk/updater/a$f:MPG	Lcom/tencent/xweb/internal/a$b;
+    //   413: getfield 570	com/tencent/xweb/xwalk/updater/a$f:SCE	Lcom/tencent/xweb/internal/a$b;
     //   416: aload 6
-    //   418: invokestatic 411	com/tencent/xweb/xwalk/updater/a:a	(Lcom/tencent/xweb/internal/a$b;Lorg/w3c/dom/Element;)V
+    //   418: invokestatic 421	com/tencent/xweb/xwalk/updater/a:a	(Lcom/tencent/xweb/internal/a$b;Lorg/w3c/dom/Element;)V
     //   421: aload 4
     //   423: astore_0
     //   424: aload 5
     //   426: aload 6
-    //   428: ldc_w 562
+    //   428: ldc_w 572
     //   431: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   434: putfield 565	com/tencent/xweb/xwalk/updater/a$f:MVv	I
+    //   434: putfield 575	com/tencent/xweb/xwalk/updater/a$f:SIC	I
     //   437: aload 4
     //   439: astore_0
     //   440: aload 5
     //   442: aload 6
-    //   444: ldc_w 567
+    //   444: ldc_w 577
     //   447: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   450: putfield 569	com/tencent/xweb/xwalk/updater/a$f:version	I
+    //   450: putfield 579	com/tencent/xweb/xwalk/updater/a$f:version	I
     //   453: aload 4
     //   455: astore_0
     //   456: aload 5
     //   458: aload 6
-    //   460: ldc_w 356
-    //   463: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   466: putfield 570	com/tencent/xweb/xwalk/updater/a$f:MVx	Z
+    //   460: ldc_w 366
+    //   463: invokestatic 369	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
+    //   466: putfield 580	com/tencent/xweb/xwalk/updater/a$f:SIE	Z
     //   469: aload 4
     //   471: astore_0
     //   472: aload 5
     //   474: aload 6
-    //   476: ldc_w 572
-    //   479: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   482: putfield 575	com/tencent/xweb/xwalk/updater/a$f:MVy	Z
+    //   476: ldc_w 582
+    //   479: invokestatic 369	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
+    //   482: putfield 585	com/tencent/xweb/xwalk/updater/a$f:SIF	Z
     //   485: aload 4
     //   487: astore_0
     //   488: aload 5
     //   490: aload 6
-    //   492: ldc_w 365
-    //   495: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   498: putfield 576	com/tencent/xweb/xwalk/updater/a$f:bUseCdn	Z
+    //   492: ldc_w 375
+    //   495: invokestatic 369	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
+    //   498: putfield 586	com/tencent/xweb/xwalk/updater/a$f:bUseCdn	Z
     //   501: aload 4
     //   503: astore_0
     //   504: aload 5
     //   506: aload 6
-    //   508: ldc_w 578
+    //   508: ldc_w 588
     //   511: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   514: putfield 581	com/tencent/xweb/xwalk/updater/a$f:MVo	I
+    //   514: putfield 591	com/tencent/xweb/xwalk/updater/a$f:SIv	I
     //   517: aload 4
     //   519: astore_0
     //   520: aload 5
     //   522: aload 6
-    //   524: ldc_w 583
+    //   524: ldc_w 593
     //   527: invokeinterface 44 2 0
-    //   532: putfield 586	com/tencent/xweb/xwalk/updater/a$f:MVs	Ljava/lang/String;
+    //   532: putfield 596	com/tencent/xweb/xwalk/updater/a$f:SIz	Ljava/lang/String;
     //   535: aload 4
     //   537: astore_0
     //   538: aload 5
     //   540: aload 6
-    //   542: ldc_w 588
+    //   542: ldc_w 598
     //   545: invokeinterface 44 2 0
-    //   550: putfield 591	com/tencent/xweb/xwalk/updater/a$f:MVt	Ljava/lang/String;
+    //   550: putfield 601	com/tencent/xweb/xwalk/updater/a$f:SIA	Ljava/lang/String;
     //   553: aload 4
     //   555: astore_0
     //   556: aload 5
     //   558: aload 6
-    //   560: ldc_w 593
+    //   560: ldc_w 603
     //   563: invokeinterface 44 2 0
-    //   568: putfield 596	com/tencent/xweb/xwalk/updater/a$f:MVK	Ljava/lang/String;
+    //   568: putfield 606	com/tencent/xweb/xwalk/updater/a$f:SIR	Ljava/lang/String;
     //   571: aload 4
     //   573: astore_0
     //   574: aload 5
     //   576: aload 6
-    //   578: ldc_w 598
+    //   578: ldc_w 608
     //   581: invokeinterface 44 2 0
-    //   586: putfield 601	com/tencent/xweb/xwalk/updater/a$f:MVz	Ljava/lang/String;
+    //   586: putfield 611	com/tencent/xweb/xwalk/updater/a$f:SIG	Ljava/lang/String;
     //   589: aload 4
     //   591: astore_0
     //   592: aload 5
     //   594: aload 6
-    //   596: ldc_w 603
+    //   596: ldc_w 613
     //   599: invokeinterface 44 2 0
-    //   604: putfield 606	com/tencent/xweb/xwalk/updater/a$f:MVA	Ljava/lang/String;
+    //   604: putfield 616	com/tencent/xweb/xwalk/updater/a$f:SIH	Ljava/lang/String;
     //   607: aload 4
     //   609: astore_0
     //   610: aload 5
     //   612: aload 6
-    //   614: ldc_w 608
+    //   614: ldc_w 618
     //   617: invokeinterface 44 2 0
-    //   622: putfield 611	com/tencent/xweb/xwalk/updater/a$f:MVB	Ljava/lang/String;
+    //   622: putfield 621	com/tencent/xweb/xwalk/updater/a$f:SII	Ljava/lang/String;
     //   625: aload 4
     //   627: astore_0
     //   628: aload 5
     //   630: aload 6
-    //   632: ldc_w 613
-    //   635: invokestatic 615	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
-    //   638: putfield 619	com/tencent/xweb/xwalk/updater/a$f:MVq	F
+    //   632: ldc_w 623
+    //   635: invokestatic 625	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
+    //   638: putfield 629	com/tencent/xweb/xwalk/updater/a$f:SIx	F
     //   641: aload 4
     //   643: astore_0
     //   644: aload 5
     //   646: aload 6
-    //   648: ldc_w 621
-    //   651: invokestatic 615	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
-    //   654: putfield 624	com/tencent/xweb/xwalk/updater/a$f:MVr	F
+    //   648: ldc_w 631
+    //   651: invokestatic 625	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
+    //   654: putfield 634	com/tencent/xweb/xwalk/updater/a$f:SIy	F
     //   657: aload 4
     //   659: astore_0
     //   660: aload 6
-    //   662: ldc_w 626
+    //   662: ldc_w 636
     //   665: invokeinterface 44 2 0
     //   670: astore 7
     //   672: aload 7
@@ -799,55 +801,55 @@ public final class a
     //   690: astore_0
     //   691: aload 5
     //   693: aload 7
-    //   695: invokestatic 471	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
-    //   698: putfield 629	com/tencent/xweb/xwalk/updater/a$f:bTryUseSharedCore	Z
+    //   695: invokestatic 481	java/lang/Boolean:parseBoolean	(Ljava/lang/String;)Z
+    //   698: putfield 639	com/tencent/xweb/xwalk/updater/a$f:bTryUseSharedCore	Z
     //   701: aload 4
     //   703: astore_0
     //   704: aload 5
     //   706: aload 6
-    //   708: ldc_w 631
-    //   711: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   714: putfield 634	com/tencent/xweb/xwalk/updater/a$f:MVJ	Z
+    //   708: ldc_w 641
+    //   711: invokestatic 369	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
+    //   714: putfield 644	com/tencent/xweb/xwalk/updater/a$f:SIQ	Z
     //   717: aload 4
     //   719: astore_0
     //   720: aload 5
-    //   722: getfield 638	com/tencent/xweb/xwalk/updater/a$f:MVI	Lcom/tencent/xweb/xwalk/updater/a$g;
+    //   722: getfield 648	com/tencent/xweb/xwalk/updater/a$f:SIP	Lcom/tencent/xweb/xwalk/updater/a$g;
     //   725: astore 7
     //   727: aload 7
     //   729: ifnull +63 -> 792
     //   732: aload 4
     //   734: astore_0
     //   735: aload 6
-    //   737: ldc_w 640
-    //   740: invokeinterface 328 2 0
+    //   737: ldc_w 650
+    //   740: invokeinterface 338 2 0
     //   745: astore 8
     //   747: aload 8
     //   749: ifnull +43 -> 792
     //   752: aload 4
     //   754: astore_0
     //   755: aload 8
-    //   757: invokeinterface 333 1 0
+    //   757: invokeinterface 343 1 0
     //   762: ifeq +30 -> 792
     //   765: aload 4
     //   767: astore_0
     //   768: aload 7
     //   770: aload 8
     //   772: iconst_0
-    //   773: invokeinterface 339 2 0
+    //   773: invokeinterface 349 2 0
     //   778: checkcast 40	org/w3c/dom/Element
-    //   781: ldc_w 642
+    //   781: ldc_w 652
     //   784: invokeinterface 44 2 0
-    //   789: putfield 645	com/tencent/xweb/xwalk/updater/a$g:MVL	Ljava/lang/String;
+    //   789: putfield 655	com/tencent/xweb/xwalk/updater/a$g:SIS	Ljava/lang/String;
     //   792: aload 4
     //   794: astore_0
     //   795: aload 5
     //   797: aload 6
-    //   799: invokestatic 647	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/xwalk/updater/a$c;
-    //   802: putfield 651	com/tencent/xweb/xwalk/updater/a$f:MVu	[Lcom/tencent/xweb/xwalk/updater/a$c;
+    //   799: invokestatic 657	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/xwalk/updater/a$c;
+    //   802: putfield 661	com/tencent/xweb/xwalk/updater/a$f:SIB	[Lcom/tencent/xweb/xwalk/updater/a$c;
     //   805: aload 4
     //   807: astore_0
     //   808: aload_3
-    //   809: getfield 554	com/tencent/xweb/xwalk/updater/a$b:MVD	[Lcom/tencent/xweb/xwalk/updater/a$f;
+    //   809: getfield 564	com/tencent/xweb/xwalk/updater/a$b:SIK	[Lcom/tencent/xweb/xwalk/updater/a$f;
     //   812: iload_2
     //   813: aload 5
     //   815: aastore
@@ -860,13 +862,13 @@ public final class a
     //   825: invokevirtual 98	java/io/FileInputStream:close	()V
     //   828: aload_3
     //   829: astore_0
-    //   830: ldc_w 478
+    //   830: ldc_w 488
     //   833: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   836: aload_0
     //   837: areturn
     //   838: astore_0
     //   839: ldc 58
-    //   841: ldc_w 505
+    //   841: ldc_w 515
     //   844: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   847: aload_3
     //   848: astore_0
@@ -878,8 +880,8 @@ public final class a
     //   857: astore_1
     //   858: aload 4
     //   860: astore_0
-    //   861: ldc_w 503
-    //   864: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   861: ldc_w 513
+    //   864: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   867: aload_1
     //   868: astore_0
     //   869: aload 4
@@ -891,7 +893,7 @@ public final class a
     //   881: goto -51 -> 830
     //   884: astore_0
     //   885: ldc 58
-    //   887: ldc_w 505
+    //   887: ldc_w 515
     //   890: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   893: aload_1
     //   894: astore_0
@@ -903,8 +905,8 @@ public final class a
     //   903: astore_1
     //   904: aload 4
     //   906: astore_0
-    //   907: ldc_w 503
-    //   910: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   907: ldc_w 513
+    //   910: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   913: aload_1
     //   914: astore_0
     //   915: aload 4
@@ -916,7 +918,7 @@ public final class a
     //   927: goto -97 -> 830
     //   930: astore_0
     //   931: ldc 58
-    //   933: ldc_w 505
+    //   933: ldc_w 515
     //   936: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   939: aload_1
     //   940: astore_0
@@ -928,8 +930,8 @@ public final class a
     //   949: astore_1
     //   950: aload 4
     //   952: astore_0
-    //   953: ldc_w 503
-    //   956: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   953: ldc_w 513
+    //   956: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   959: aload_1
     //   960: astore_0
     //   961: aload 4
@@ -941,7 +943,7 @@ public final class a
     //   973: goto -143 -> 830
     //   976: astore_0
     //   977: ldc 58
-    //   979: ldc_w 505
+    //   979: ldc_w 515
     //   982: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   985: aload_1
     //   986: astore_0
@@ -953,13 +955,13 @@ public final class a
     //   994: ifnull +7 -> 1001
     //   997: aload_0
     //   998: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   1001: ldc_w 478
+    //   1001: ldc_w 488
     //   1004: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   1007: aload_1
     //   1008: athrow
     //   1009: astore_0
     //   1010: ldc 58
-    //   1012: ldc_w 505
+    //   1012: ldc_w 515
     //   1015: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   1018: goto -17 -> 1001
     //   1021: astore_1
@@ -1207,12 +1209,12 @@ public final class a
   }
   
   /* Error */
-  public static d k(File paramFile, String paramString)
+  public static d l(File paramFile, String paramString)
   {
     // Byte code:
-    //   0: ldc_w 654
+    //   0: ldc_w 664
     //   3: invokestatic 35	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 484	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
+    //   6: invokestatic 494	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
     //   9: astore 5
     //   11: new 87	java/io/FileInputStream
     //   14: dup
@@ -1223,284 +1225,284 @@ public final class a
     //   23: astore_0
     //   24: new 15	com/tencent/xweb/xwalk/updater/a$d
     //   27: dup
-    //   28: invokespecial 655	com/tencent/xweb/xwalk/updater/a$d:<init>	()V
+    //   28: invokespecial 665	com/tencent/xweb/xwalk/updater/a$d:<init>	()V
     //   31: astore_3
     //   32: aload 4
     //   34: astore_0
     //   35: aload 5
-    //   37: invokevirtual 489	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
+    //   37: invokevirtual 499	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
     //   40: aload 4
-    //   42: invokevirtual 495	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
-    //   45: invokeinterface 501 1 0
+    //   42: invokevirtual 505	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
+    //   45: invokeinterface 511 1 0
     //   50: astore 5
     //   52: aload 5
     //   54: ifnonnull +37 -> 91
     //   57: aload 4
     //   59: astore_0
-    //   60: ldc_w 657
-    //   63: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   60: ldc_w 667
+    //   63: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   66: aload 4
     //   68: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   71: ldc_w 654
+    //   71: ldc_w 664
     //   74: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   77: aconst_null
     //   78: areturn
     //   79: astore_0
     //   80: ldc 58
-    //   82: ldc_w 659
+    //   82: ldc_w 669
     //   85: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   88: goto -17 -> 71
     //   91: aload 4
     //   93: astore_0
     //   94: aload_3
     //   95: aload 5
-    //   97: ldc_w 507
+    //   97: ldc_w 517
     //   100: invokeinterface 44 2 0
-    //   105: putfield 660	com/tencent/xweb/xwalk/updater/a$d:MVw	Ljava/lang/String;
+    //   105: putfield 670	com/tencent/xweb/xwalk/updater/a$d:SID	Ljava/lang/String;
     //   108: aload 4
     //   110: astore_0
     //   111: aload_3
     //   112: aload 5
-    //   114: ldc_w 510
+    //   114: ldc_w 520
     //   117: invokeinterface 44 2 0
-    //   122: putfield 661	com/tencent/xweb/xwalk/updater/a$d:signature	Ljava/lang/String;
+    //   122: putfield 671	com/tencent/xweb/xwalk/updater/a$d:signature	Ljava/lang/String;
     //   125: aload 4
     //   127: astore_0
     //   128: aload_3
-    //   129: getfield 660	com/tencent/xweb/xwalk/updater/a$d:MVw	Ljava/lang/String;
+    //   129: getfield 670	com/tencent/xweb/xwalk/updater/a$d:SID	Ljava/lang/String;
     //   132: ifnull +17 -> 149
     //   135: aload 4
     //   137: astore_0
     //   138: aload_3
-    //   139: getfield 660	com/tencent/xweb/xwalk/updater/a$d:MVw	Ljava/lang/String;
+    //   139: getfield 670	com/tencent/xweb/xwalk/updater/a$d:SID	Ljava/lang/String;
     //   142: aload_1
-    //   143: invokevirtual 515	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
+    //   143: invokevirtual 525	java/lang/String:equalsIgnoreCase	(Ljava/lang/String;)Z
     //   146: ifne +37 -> 183
     //   149: aload 4
     //   151: astore_0
-    //   152: ldc_w 663
-    //   155: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   152: ldc_w 673
+    //   155: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   158: aload 4
     //   160: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   163: ldc_w 654
+    //   163: ldc_w 664
     //   166: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   169: aconst_null
     //   170: areturn
     //   171: astore_0
     //   172: ldc 58
-    //   174: ldc_w 659
+    //   174: ldc_w 669
     //   177: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   180: goto -17 -> 163
     //   183: aload 4
     //   185: astore_0
     //   186: aload_3
-    //   187: getfield 660	com/tencent/xweb/xwalk/updater/a$d:MVw	Ljava/lang/String;
+    //   187: getfield 670	com/tencent/xweb/xwalk/updater/a$d:SID	Ljava/lang/String;
     //   190: aload_3
-    //   191: getfield 661	com/tencent/xweb/xwalk/updater/a$d:signature	Ljava/lang/String;
-    //   194: ldc_w 527
-    //   197: invokestatic 533	com/tencent/xweb/util/b:bo	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
+    //   191: getfield 671	com/tencent/xweb/xwalk/updater/a$d:signature	Ljava/lang/String;
+    //   194: ldc_w 537
+    //   197: invokestatic 543	com/tencent/xweb/util/b:bw	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Z
     //   200: ifne +46 -> 246
     //   203: aload 4
     //   205: astore_0
-    //   206: ldc2_w 534
-    //   209: invokestatic 523	com/tencent/xweb/util/g:FJ	(J)V
+    //   206: ldc2_w 544
+    //   209: invokestatic 533	com/tencent/xweb/util/h:OQ	(J)V
     //   212: aload 4
     //   214: astore_0
-    //   215: ldc_w 665
-    //   218: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   215: ldc_w 675
+    //   218: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   221: aload 4
     //   223: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   226: ldc_w 654
+    //   226: ldc_w 664
     //   229: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   232: aconst_null
     //   233: areturn
     //   234: astore_0
     //   235: ldc 58
-    //   237: ldc_w 659
+    //   237: ldc_w 669
     //   240: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   243: goto -17 -> 226
     //   246: aload 4
     //   248: astore_0
     //   249: aload_3
     //   250: aload 5
-    //   252: ldc_w 539
+    //   252: ldc_w 549
     //   255: invokeinterface 44 2 0
-    //   260: putfield 666	com/tencent/xweb/xwalk/updater/a$d:MVC	Ljava/lang/String;
+    //   260: putfield 676	com/tencent/xweb/xwalk/updater/a$d:SIJ	Ljava/lang/String;
     //   263: aload 4
     //   265: astore_0
     //   266: aload_3
     //   267: aload 5
-    //   269: invokestatic 544	com/tencent/xweb/xwalk/updater/a:b	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/internal/a$a;
-    //   272: putfield 667	com/tencent/xweb/xwalk/updater/a$d:MVE	[Lcom/tencent/xweb/internal/a$a;
+    //   269: invokestatic 554	com/tencent/xweb/xwalk/updater/a:b	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/internal/a$a;
+    //   272: putfield 677	com/tencent/xweb/xwalk/updater/a$d:SIL	[Lcom/tencent/xweb/internal/a$a;
     //   275: aload 4
     //   277: astore_0
     //   278: aload 5
-    //   280: ldc_w 669
-    //   283: invokeinterface 328 2 0
+    //   280: ldc_w 679
+    //   283: invokeinterface 338 2 0
     //   288: astore_1
     //   289: aload_1
     //   290: ifnull +389 -> 679
     //   293: aload 4
     //   295: astore_0
     //   296: aload_1
-    //   297: invokeinterface 333 1 0
+    //   297: invokeinterface 343 1 0
     //   302: ifeq +377 -> 679
     //   305: aload 4
     //   307: astore_0
     //   308: aload_3
     //   309: aload_1
-    //   310: invokeinterface 333 1 0
+    //   310: invokeinterface 343 1 0
     //   315: anewarray 18	com/tencent/xweb/xwalk/updater/a$e
-    //   318: putfield 673	com/tencent/xweb/xwalk/updater/a$d:MVG	[Lcom/tencent/xweb/xwalk/updater/a$e;
+    //   318: putfield 683	com/tencent/xweb/xwalk/updater/a$d:SIN	[Lcom/tencent/xweb/xwalk/updater/a$e;
     //   321: iconst_0
     //   322: istore_2
     //   323: aload 4
     //   325: astore_0
     //   326: iload_2
     //   327: aload_1
-    //   328: invokeinterface 333 1 0
+    //   328: invokeinterface 343 1 0
     //   333: if_icmpge +346 -> 679
     //   336: aload 4
     //   338: astore_0
     //   339: aload_1
     //   340: iload_2
-    //   341: invokeinterface 339 2 0
+    //   341: invokeinterface 349 2 0
     //   346: checkcast 40	org/w3c/dom/Element
     //   349: astore 5
     //   351: aload 4
     //   353: astore_0
     //   354: new 18	com/tencent/xweb/xwalk/updater/a$e
     //   357: dup
-    //   358: invokespecial 674	com/tencent/xweb/xwalk/updater/a$e:<init>	()V
+    //   358: invokespecial 684	com/tencent/xweb/xwalk/updater/a$e:<init>	()V
     //   361: astore 6
     //   363: aload 4
     //   365: astore_0
     //   366: aload 6
     //   368: aload 5
-    //   370: ldc_w 676
+    //   370: ldc_w 686
     //   373: invokeinterface 44 2 0
-    //   378: putfield 679	com/tencent/xweb/xwalk/updater/a$e:MVH	Ljava/lang/String;
+    //   378: putfield 689	com/tencent/xweb/xwalk/updater/a$e:SIO	Ljava/lang/String;
     //   381: aload 4
     //   383: astore_0
     //   384: aload 6
     //   386: aload 5
-    //   388: ldc_w 567
+    //   388: ldc_w 577
     //   391: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   394: putfield 680	com/tencent/xweb/xwalk/updater/a$e:version	I
+    //   394: putfield 690	com/tencent/xweb/xwalk/updater/a$e:version	I
     //   397: aload 4
     //   399: astore_0
     //   400: aload 6
     //   402: aload 5
-    //   404: ldc_w 557
+    //   404: ldc_w 567
     //   407: invokeinterface 44 2 0
-    //   412: putfield 681	com/tencent/xweb/xwalk/updater/a$e:MVp	Ljava/lang/String;
+    //   412: putfield 691	com/tencent/xweb/xwalk/updater/a$e:SIw	Ljava/lang/String;
     //   415: aload 4
     //   417: astore_0
     //   418: aload 6
     //   420: aload 5
-    //   422: ldc_w 351
+    //   422: ldc_w 361
     //   425: invokeinterface 44 2 0
-    //   430: putfield 682	com/tencent/xweb/xwalk/updater/a$e:MVw	Ljava/lang/String;
+    //   430: putfield 692	com/tencent/xweb/xwalk/updater/a$e:SID	Ljava/lang/String;
     //   433: aload 4
     //   435: astore_0
     //   436: aload 6
     //   438: aload 5
-    //   440: ldc_w 356
-    //   443: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   446: putfield 683	com/tencent/xweb/xwalk/updater/a$e:MVx	Z
+    //   440: ldc_w 366
+    //   443: invokestatic 369	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
+    //   446: putfield 693	com/tencent/xweb/xwalk/updater/a$e:SIE	Z
     //   449: aload 4
     //   451: astore_0
     //   452: aload 6
     //   454: aload 5
-    //   456: ldc_w 572
-    //   459: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   462: putfield 684	com/tencent/xweb/xwalk/updater/a$e:MVy	Z
+    //   456: ldc_w 582
+    //   459: invokestatic 369	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
+    //   462: putfield 694	com/tencent/xweb/xwalk/updater/a$e:SIF	Z
     //   465: aload 4
     //   467: astore_0
     //   468: aload 6
     //   470: aload 5
-    //   472: ldc_w 365
-    //   475: invokestatic 359	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
-    //   478: putfield 685	com/tencent/xweb/xwalk/updater/a$e:bUseCdn	Z
+    //   472: ldc_w 375
+    //   475: invokestatic 369	com/tencent/xweb/xwalk/updater/a:e	(Lorg/w3c/dom/Element;Ljava/lang/String;)Z
+    //   478: putfield 695	com/tencent/xweb/xwalk/updater/a$e:bUseCdn	Z
     //   481: aload 4
     //   483: astore_0
     //   484: aload 6
     //   486: aload 5
-    //   488: ldc_w 562
+    //   488: ldc_w 572
     //   491: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   494: putfield 686	com/tencent/xweb/xwalk/updater/a$e:MVv	I
+    //   494: putfield 696	com/tencent/xweb/xwalk/updater/a$e:SIC	I
     //   497: aload 4
     //   499: astore_0
     //   500: aload 6
     //   502: aload 5
-    //   504: ldc_w 578
+    //   504: ldc_w 588
     //   507: invokestatic 147	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;Ljava/lang/String;)I
-    //   510: putfield 687	com/tencent/xweb/xwalk/updater/a$e:MVo	I
+    //   510: putfield 697	com/tencent/xweb/xwalk/updater/a$e:SIv	I
     //   513: aload 4
     //   515: astore_0
     //   516: aload 6
     //   518: aload 5
-    //   520: ldc_w 583
+    //   520: ldc_w 593
     //   523: invokeinterface 44 2 0
-    //   528: putfield 688	com/tencent/xweb/xwalk/updater/a$e:MVs	Ljava/lang/String;
+    //   528: putfield 698	com/tencent/xweb/xwalk/updater/a$e:SIz	Ljava/lang/String;
     //   531: aload 4
     //   533: astore_0
     //   534: aload 6
     //   536: aload 5
-    //   538: ldc_w 588
+    //   538: ldc_w 598
     //   541: invokeinterface 44 2 0
-    //   546: putfield 689	com/tencent/xweb/xwalk/updater/a$e:MVt	Ljava/lang/String;
+    //   546: putfield 699	com/tencent/xweb/xwalk/updater/a$e:SIA	Ljava/lang/String;
     //   549: aload 4
     //   551: astore_0
     //   552: aload 6
     //   554: aload 5
-    //   556: ldc_w 598
+    //   556: ldc_w 608
     //   559: invokeinterface 44 2 0
-    //   564: putfield 690	com/tencent/xweb/xwalk/updater/a$e:MVz	Ljava/lang/String;
+    //   564: putfield 700	com/tencent/xweb/xwalk/updater/a$e:SIG	Ljava/lang/String;
     //   567: aload 4
     //   569: astore_0
     //   570: aload 6
     //   572: aload 5
-    //   574: ldc_w 603
+    //   574: ldc_w 613
     //   577: invokeinterface 44 2 0
-    //   582: putfield 691	com/tencent/xweb/xwalk/updater/a$e:MVA	Ljava/lang/String;
+    //   582: putfield 701	com/tencent/xweb/xwalk/updater/a$e:SIH	Ljava/lang/String;
     //   585: aload 4
     //   587: astore_0
     //   588: aload 6
     //   590: aload 5
-    //   592: ldc_w 608
+    //   592: ldc_w 618
     //   595: invokeinterface 44 2 0
-    //   600: putfield 692	com/tencent/xweb/xwalk/updater/a$e:MVB	Ljava/lang/String;
+    //   600: putfield 702	com/tencent/xweb/xwalk/updater/a$e:SII	Ljava/lang/String;
     //   603: aload 4
     //   605: astore_0
     //   606: aload 6
     //   608: aload 5
-    //   610: ldc_w 613
-    //   613: invokestatic 615	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
-    //   616: putfield 693	com/tencent/xweb/xwalk/updater/a$e:MVq	F
+    //   610: ldc_w 623
+    //   613: invokestatic 625	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
+    //   616: putfield 703	com/tencent/xweb/xwalk/updater/a$e:SIx	F
     //   619: aload 4
     //   621: astore_0
     //   622: aload 6
     //   624: aload 5
-    //   626: ldc_w 621
-    //   629: invokestatic 615	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
-    //   632: putfield 694	com/tencent/xweb/xwalk/updater/a$e:MVr	F
+    //   626: ldc_w 631
+    //   629: invokestatic 625	com/tencent/xweb/xwalk/updater/a:d	(Lorg/w3c/dom/Element;Ljava/lang/String;)F
+    //   632: putfield 704	com/tencent/xweb/xwalk/updater/a$e:SIy	F
     //   635: aload 4
     //   637: astore_0
     //   638: aload 6
-    //   640: getfield 695	com/tencent/xweb/xwalk/updater/a$e:MPG	Lcom/tencent/xweb/internal/a$b;
+    //   640: getfield 705	com/tencent/xweb/xwalk/updater/a$e:SCE	Lcom/tencent/xweb/internal/a$b;
     //   643: aload 5
-    //   645: invokestatic 411	com/tencent/xweb/xwalk/updater/a:a	(Lcom/tencent/xweb/internal/a$b;Lorg/w3c/dom/Element;)V
+    //   645: invokestatic 421	com/tencent/xweb/xwalk/updater/a:a	(Lcom/tencent/xweb/internal/a$b;Lorg/w3c/dom/Element;)V
     //   648: aload 4
     //   650: astore_0
     //   651: aload 6
     //   653: aload 5
-    //   655: invokestatic 647	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/xwalk/updater/a$c;
-    //   658: putfield 696	com/tencent/xweb/xwalk/updater/a$e:MVu	[Lcom/tencent/xweb/xwalk/updater/a$c;
+    //   655: invokestatic 657	com/tencent/xweb/xwalk/updater/a:a	(Lorg/w3c/dom/Element;)[Lcom/tencent/xweb/xwalk/updater/a$c;
+    //   658: putfield 706	com/tencent/xweb/xwalk/updater/a$e:SIB	[Lcom/tencent/xweb/xwalk/updater/a$c;
     //   661: aload 4
     //   663: astore_0
     //   664: aload_3
-    //   665: getfield 673	com/tencent/xweb/xwalk/updater/a$d:MVG	[Lcom/tencent/xweb/xwalk/updater/a$e;
+    //   665: getfield 683	com/tencent/xweb/xwalk/updater/a$d:SIN	[Lcom/tencent/xweb/xwalk/updater/a$e;
     //   668: iload_2
     //   669: aload 6
     //   671: aastore
@@ -1513,13 +1515,13 @@ public final class a
     //   681: invokevirtual 98	java/io/FileInputStream:close	()V
     //   684: aload_3
     //   685: astore_0
-    //   686: ldc_w 654
+    //   686: ldc_w 664
     //   689: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   692: aload_0
     //   693: areturn
     //   694: astore_0
     //   695: ldc 58
-    //   697: ldc_w 659
+    //   697: ldc_w 669
     //   700: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   703: aload_3
     //   704: astore_0
@@ -1531,8 +1533,8 @@ public final class a
     //   713: astore_1
     //   714: aload 4
     //   716: astore_0
-    //   717: ldc_w 698
-    //   720: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   717: ldc_w 708
+    //   720: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   723: aload_1
     //   724: astore_0
     //   725: aload 4
@@ -1544,7 +1546,7 @@ public final class a
     //   737: goto -51 -> 686
     //   740: astore_0
     //   741: ldc 58
-    //   743: ldc_w 659
+    //   743: ldc_w 669
     //   746: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   749: aload_1
     //   750: astore_0
@@ -1556,8 +1558,8 @@ public final class a
     //   759: astore_1
     //   760: aload 4
     //   762: astore_0
-    //   763: ldc_w 700
-    //   766: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   763: ldc_w 710
+    //   766: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   769: aload_1
     //   770: astore_0
     //   771: aload 4
@@ -1569,7 +1571,7 @@ public final class a
     //   783: goto -97 -> 686
     //   786: astore_0
     //   787: ldc 58
-    //   789: ldc_w 659
+    //   789: ldc_w 669
     //   792: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   795: aload_1
     //   796: astore_0
@@ -1581,8 +1583,8 @@ public final class a
     //   805: astore_1
     //   806: aload 4
     //   808: astore_0
-    //   809: ldc_w 702
-    //   812: invokestatic 423	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
+    //   809: ldc_w 712
+    //   812: invokestatic 433	org/xwalk/core/XWalkInitializer:addXWalkInitializeLog	(Ljava/lang/String;)V
     //   815: aload_1
     //   816: astore_0
     //   817: aload 4
@@ -1594,7 +1596,7 @@ public final class a
     //   829: goto -143 -> 686
     //   832: astore_0
     //   833: ldc 58
-    //   835: ldc_w 659
+    //   835: ldc_w 669
     //   838: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   841: aload_1
     //   842: astore_0
@@ -1606,13 +1608,13 @@ public final class a
     //   850: ifnull +7 -> 857
     //   853: aload_0
     //   854: invokevirtual 98	java/io/FileInputStream:close	()V
-    //   857: ldc_w 654
+    //   857: ldc_w 664
     //   860: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   863: aload_1
     //   864: athrow
     //   865: astore_0
     //   866: ldc 58
-    //   868: ldc_w 659
+    //   868: ldc_w 669
     //   871: invokestatic 82	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   874: goto -17 -> 857
     //   877: astore_1
@@ -1823,70 +1825,70 @@ public final class a
   
   public static class a
   {
-    public com.tencent.xweb.internal.a.b MPG;
-    public String MVA;
-    public String MVB;
-    public int MVo;
-    public String MVp;
-    public float MVq;
-    public float MVr;
-    public String MVs;
-    public String MVt;
-    public a.c[] MVu;
-    public int MVv;
-    public String MVw;
-    public boolean MVx;
-    public boolean MVy;
-    public String MVz;
+    public com.tencent.xweb.internal.a.b SCE;
+    public String SIA;
+    public a.c[] SIB;
+    public int SIC;
+    public String SID;
+    public boolean SIE;
+    public boolean SIF;
+    public String SIG;
+    public String SIH;
+    public String SII;
+    public int SIv;
+    public String SIw;
+    public float SIx;
+    public float SIy;
+    public String SIz;
     public boolean bUseCdn;
     public int version;
     
     public a()
     {
-      AppMethodBeat.i(207613);
-      this.MPG = new com.tencent.xweb.internal.a.c();
-      this.MVq = -1.0F;
-      this.MVr = -1.0F;
-      AppMethodBeat.o(207613);
+      AppMethodBeat.i(207346);
+      this.SCE = new com.tencent.xweb.internal.a.c();
+      this.SIx = -1.0F;
+      this.SIy = -1.0F;
+      AppMethodBeat.o(207346);
     }
   }
   
   public static final class b
   {
-    public String MVC;
-    public a.f[] MVD;
-    public com.tencent.xweb.internal.a.a[] MVE;
-    public String MVw;
+    public String SID;
+    public String SIJ;
+    public a.f[] SIK;
+    public com.tencent.xweb.internal.a.a[] SIL;
     public String signature;
   }
   
   public static final class c
   {
-    public int MVF;
-    public String MVp;
-    public String MVw;
-    public boolean MVx;
+    public String SID;
+    public boolean SIE;
+    public int SIM;
+    public String SIw;
     public boolean bUseCdn;
   }
   
   public static final class d
   {
-    public String MVC = "";
-    public com.tencent.xweb.internal.a.a[] MVE;
-    public a.e[] MVG = null;
-    public String MVw = "";
+    public String SID = "";
+    public String SIJ = "";
+    public com.tencent.xweb.internal.a.a[] SIL;
+    public a.e[] SIN = null;
     public String signature;
   }
   
   public static final class e
     extends a.a
   {
-    public String MVH;
+    public String SIO;
     
     public e()
     {
       AppMethodBeat.i(154534);
-      this.MVH = "";
+      this.SIO = "";
       AppMethodBeat.o(154534);
     }
   }
@@ -1894,15 +1896,15 @@ public final class a
   public static final class f
     extends a.a
   {
-    public a.g MVI;
-    public boolean MVJ;
-    public String MVK;
+    public a.g SIP;
+    public boolean SIQ;
+    public String SIR;
     public boolean bTryUseSharedCore;
     
     public f()
     {
       AppMethodBeat.i(154535);
-      this.MVI = new a.g();
+      this.SIP = new a.g();
       this.bTryUseSharedCore = true;
       AppMethodBeat.o(154535);
     }
@@ -1910,12 +1912,12 @@ public final class a
   
   public static final class g
   {
-    public String MVL = "";
+    public String SIS = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.xwalk.updater.a
  * JD-Core Version:    0.7.0.1
  */

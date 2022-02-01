@@ -2,9 +2,9 @@ package com.tencent.mm.av.a.c;
 
 public abstract interface i
 {
-  public abstract void Go(String paramString);
+  public abstract void Pa(String paramString);
   
-  public abstract void aJx();
+  public abstract void bdy();
 }
 
 

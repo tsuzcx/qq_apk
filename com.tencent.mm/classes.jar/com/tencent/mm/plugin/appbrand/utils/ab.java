@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.appbrand.utils;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
-import com.tencent.mm.plugin.appbrand.jsapi.ad.e.a.b;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.appbrand.jsapi.ag;
+import com.tencent.mm.plugin.appbrand.jsapi.ag.e.a.b;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/utils/OpenUrlHelper;", "Lcom/tencent/mm/plugin/appbrand/jsapi/xwebplugin/video/cast/IOpenUrlHelper;", "()V", "openUrl", "", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "url", "", "context", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/utils/OpenUrlHelper;", "Lcom/tencent/mm/plugin/appbrand/jsapi/xwebplugin/video/cast/IOpenUrlHelper;", "()V", "openUrl", "", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "url", "", "context", "Landroid/content/Context;", "plugin-appbrand-integration_release"})
 public final class ab
   implements b
 {
-  public final void a(c paramc, String paramString, Context paramContext)
+  public final void a(f paramf, String paramString, Context paramContext)
   {
     AppMethodBeat.i(51403);
-    p.h(paramc, "component");
+    p.h(paramf, "component");
     p.h(paramString, "url");
     p.h(paramContext, "context");
-    paramc = (ac)paramc.K(ac.class);
-    if (paramc != null)
+    paramf = (ag)paramf.M(ag.class);
+    if (paramf != null)
     {
-      paramc.a(paramContext, paramString, null);
+      paramf.a(paramContext, paramString, null);
       AppMethodBeat.o(51403);
       return;
     }

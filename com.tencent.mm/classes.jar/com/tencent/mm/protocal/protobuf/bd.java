@@ -1,86 +1,105 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
 
 public final class bd
   extends com.tencent.mm.bw.a
 {
-  public boolean FLi;
-  public boolean FLj;
-  public int FLk;
-  public boolean FLl;
-  public b FLm;
+  public String AZI;
+  public String IconUrl;
+  public String Name;
+  public String iAc;
+  public int oUv;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123537);
+    AppMethodBeat.i(91340);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bC(1, this.FLi);
-      paramVarArgs.bC(2, this.FLj);
-      paramVarArgs.aS(3, this.FLk);
-      paramVarArgs.bC(4, this.FLl);
-      if (this.FLm != null) {
-        paramVarArgs.c(5, this.FLm);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.Name != null) {
+        paramVarArgs.e(1, this.Name);
       }
-      AppMethodBeat.o(123537);
+      if (this.AZI != null) {
+        paramVarArgs.e(2, this.AZI);
+      }
+      paramVarArgs.aM(3, this.oUv);
+      if (this.iAc != null) {
+        paramVarArgs.e(4, this.iAc);
+      }
+      if (this.IconUrl != null) {
+        paramVarArgs.e(5, this.IconUrl);
+      }
+      AppMethodBeat.o(91340);
       return 0;
     }
-    if (paramInt == 1)
+    if (paramInt == 1) {
+      if (this.Name == null) {
+        break label438;
+      }
+    }
+    label438:
+    for (paramInt = g.a.a.b.b.a.f(1, this.Name) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.amF(1) + 0 + f.a.a.b.b.a.amF(2) + f.a.a.b.b.a.bz(3, this.FLk) + f.a.a.b.b.a.amF(4);
+      int i = paramInt;
+      if (this.AZI != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.AZI);
+      }
+      i += g.a.a.b.b.a.bu(3, this.oUv);
       paramInt = i;
-      if (this.FLm != null) {
-        paramInt = i + f.a.a.b.b.a.b(5, this.FLm);
+      if (this.iAc != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.iAc);
       }
-      AppMethodBeat.o(123537);
-      return paramInt;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
+      i = paramInt;
+      if (this.IconUrl != null) {
+        i = paramInt + g.a.a.b.b.a.f(5, this.IconUrl);
       }
-      AppMethodBeat.o(123537);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      bd localbd = (bd)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      AppMethodBeat.o(91340);
+      return i;
+      if (paramInt == 2)
       {
-      default: 
-        AppMethodBeat.o(123537);
-        return -1;
-      case 1: 
-        localbd.FLi = locala.OmT.gvY();
-        AppMethodBeat.o(123537);
-        return 0;
-      case 2: 
-        localbd.FLj = locala.OmT.gvY();
-        AppMethodBeat.o(123537);
-        return 0;
-      case 3: 
-        localbd.FLk = locala.OmT.zc();
-        AppMethodBeat.o(123537);
-        return 0;
-      case 4: 
-        localbd.FLl = locala.OmT.gvY();
-        AppMethodBeat.o(123537);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
+        }
+        AppMethodBeat.o(91340);
         return 0;
       }
-      localbd.FLm = locala.OmT.gCk();
-      AppMethodBeat.o(123537);
-      return 0;
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        bd localbd = (bd)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(91340);
+          return -1;
+        case 1: 
+          localbd.Name = locala.UbS.readString();
+          AppMethodBeat.o(91340);
+          return 0;
+        case 2: 
+          localbd.AZI = locala.UbS.readString();
+          AppMethodBeat.o(91340);
+          return 0;
+        case 3: 
+          localbd.oUv = locala.UbS.zi();
+          AppMethodBeat.o(91340);
+          return 0;
+        case 4: 
+          localbd.iAc = locala.UbS.readString();
+          AppMethodBeat.o(91340);
+          return 0;
+        }
+        localbd.IconUrl = locala.UbS.readString();
+        AppMethodBeat.o(91340);
+        return 0;
+      }
+      AppMethodBeat.o(91340);
+      return -1;
     }
-    AppMethodBeat.o(123537);
-    return -1;
   }
 }
 

@@ -1,14 +1,15 @@
 package com.tencent.mm.plugin.forcenotify.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.protocal.protobuf.cxv;
-import com.tencent.mm.protocal.protobuf.cxw;
-import d.l;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.protocal.protobuf.dqq;
+import com.tencent.mm.protocal.protobuf.dqr;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/forcenotify/model/CgiAcceptForceNotify;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/ScanAppForcePushResponse;", "data", "", "(Ljava/lang/String;)V", "TAG", "getTAG", "()Ljava/lang/String;", "result", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "getResult", "()Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "setResult", "(Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-force-notify_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/forcenotify/model/CgiAcceptForceNotify;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/ScanAppForcePushResponse;", "data", "", "(Ljava/lang/String;)V", "TAG", "getTAG", "()Ljava/lang/String;", "result", "Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "getResult", "()Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;", "setResult", "(Lcom/tencent/mm/plugin/forcenotify/model/ForceNotifyInfo;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "plugin-force-notify_release"})
 public final class a
-  extends com.tencent.mm.ak.a<cxw>
+  extends c<dqr>
 {
   private final String TAG;
   
@@ -16,16 +17,16 @@ public final class a
   {
     AppMethodBeat.i(149177);
     this.TAG = "MicroMsg.CgiAcceptForceNotify";
-    b.a locala = new b.a();
-    cxv localcxv = new cxv();
-    localcxv.HIo = paramString;
-    locala.c((com.tencent.mm.bw.a)localcxv);
-    locala.d((com.tencent.mm.bw.a)new cxw());
-    locala.DN("/cgi-bin/micromsg-bin/subappforcepush");
-    locala.oS(3743);
-    locala.oU(0);
-    locala.oV(0);
-    c(locala.aDS());
+    d.a locala = new d.a();
+    dqq localdqq = new dqq();
+    localdqq.MTz = paramString;
+    locala.c((com.tencent.mm.bw.a)localdqq);
+    locala.d((com.tencent.mm.bw.a)new dqr());
+    locala.MB("/cgi-bin/micromsg-bin/subappforcepush");
+    locala.sG(3743);
+    locala.sI(0);
+    locala.sJ(0);
+    c(locala.aXF());
     AppMethodBeat.o(149177);
   }
 }

@@ -1624,7 +1624,7 @@ public class TraeAudioManager
           checkDevicePlug("DEVICE_WIREDHEADSET", true);
         }
         if ((bool1 != true) || (this._deviceConfigManager.getVisible("DEVICE_WIREDHEADSET"))) {
-          break label1007;
+          break label1040;
         }
         checkDevicePlug("DEVICE_WIREDHEADSET", false);
         AppMethodBeat.o(13724);
@@ -1633,6 +1633,9 @@ public class TraeAudioManager
     }
     catch (Exception paramContext)
     {
+      if (QLog.isColorLevel()) {
+        QLog.e("TRAE", 2, "deal with receiver failed." + paramContext.getMessage());
+      }
       AppMethodBeat.o(13724);
       return;
     }
@@ -1759,7 +1762,7 @@ public class TraeAudioManager
         }
       }
     }
-    label1007:
+    label1040:
     AppMethodBeat.o(13724);
   }
   
@@ -2154,16 +2157,16 @@ public class TraeAudioManager
           }
           this._profile = paramBluetoothProfile;
           if (this._profile == null) {
-            break label471;
+            break label500;
           }
           paramBluetoothProfile = this._profile.getConnectedDevices();
           if ((paramBluetoothProfile != null) && (this._profile != null))
           {
             if (!QLog.isColorLevel()) {
-              break label476;
+              break label505;
             }
             QLog.w("TRAE", 2, "TRAEBluetoohProxy: HEADSET Connected devs:" + paramBluetoothProfile.size() + " _profile:" + this._profile);
-            break label476;
+            break label505;
             if (paramInt < paramBluetoothProfile.size())
             {
               BluetoothDevice localBluetoothDevice = (BluetoothDevice)paramBluetoothProfile.get(paramInt);
@@ -2175,14 +2178,17 @@ public class TraeAudioManager
                   if (i == 2) {
                     this._devCfg.setBluetoothName(localBluetoothDevice.getName());
                   }
-                  if (QLog.isColorLevel()) {
-                    QLog.w("TRAE", 2, "   " + paramInt + " " + localBluetoothDevice.getName() + " ConnectionState:" + i);
+                  if (!QLog.isColorLevel()) {
+                    break label510;
                   }
-                  paramInt += 1;
+                  QLog.w("TRAE", 2, "   " + paramInt + " " + localBluetoothDevice.getName() + " ConnectionState:" + i);
                 }
               }
               catch (Exception localException)
               {
+                if (QLog.isColorLevel()) {
+                  QLog.e("TRAE", 2, "get bluetooth connection state failed." + localException.getMessage());
+                }
                 int i = 0;
                 continue;
               }
@@ -2192,7 +2198,7 @@ public class TraeAudioManager
           if (this._devCfg != null)
           {
             if (TraeAudioManager.this._deviceConfigManager == null) {
-              break label466;
+              break label495;
             }
             paramBluetoothProfile = TraeAudioManager.this._deviceConfigManager.getBluetoothName();
             if (TextUtils.isEmpty(paramBluetoothProfile)) {
@@ -2220,14 +2226,17 @@ public class TraeAudioManager
         {
           this._devCfg.setVisible("DEVICE_BLUETOOTHHEADSET", false);
           continue;
-          label466:
+          label495:
           paramBluetoothProfile = null;
           continue;
-          label471:
+          label500:
           paramBluetoothProfile = null;
           continue;
-          label476:
+          label505:
           paramInt = 0;
+          continue;
+          label510:
+          paramInt += 1;
         }
       }
     }
@@ -2664,7 +2673,6 @@ public class TraeAudioManager
       try
       {
         localObject.invoke(this.BluetoothHeadsetObj, new Object[0]);
-        label85:
         this.BluetoothHeadsetClass = null;
         this.ListenerClass = null;
         this.BluetoothHeadsetObj = null;
@@ -2673,17 +2681,14 @@ public class TraeAudioManager
         AppMethodBeat.o(13792);
         return;
       }
-      catch (InvocationTargetException localInvocationTargetException)
+      catch (Exception localException)
       {
-        break label85;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        break label85;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        break label85;
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TRAE", 2, "close bluetooth headset failed." + localException.getMessage());
+          }
+        }
       }
     }
   }
@@ -3417,26 +3422,26 @@ public class TraeAudioManager
       // Byte code:
       //   0: aload_0
       //   1: aload_1
-      //   2: putfield 88	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
+      //   2: putfield 86	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:this$0	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
       //   5: aload_0
-      //   6: invokespecial 91	java/lang/Thread:<init>	()V
+      //   6: invokespecial 89	java/lang/Thread:<init>	()V
       //   9: sipush 13911
-      //   12: invokestatic 97	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+      //   12: invokestatic 95	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   15: aload_0
       //   16: aconst_null
-      //   17: putfield 99	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:mMsgHandler	Landroid/os/Handler;
+      //   17: putfield 97	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:mMsgHandler	Landroid/os/Handler;
       //   20: aload_0
       //   21: aconst_null
-      //   22: putfield 101	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_ringPlayer	Lcom/tencent/rtmp/sharp/jni/TraeMediaPlayer;
+      //   22: putfield 99	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_ringPlayer	Lcom/tencent/rtmp/sharp/jni/TraeMediaPlayer;
       //   25: aload_0
-      //   26: ldc2_w 102
-      //   29: putfield 105	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_ringSessionID	J
+      //   26: ldc2_w 100
+      //   29: putfield 103	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_ringSessionID	J
       //   32: aload_0
-      //   33: ldc 107
-      //   35: putfield 109	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_ringOperation	Ljava/lang/String;
+      //   33: ldc 105
+      //   35: putfield 107	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_ringOperation	Ljava/lang/String;
       //   38: aload_0
-      //   39: ldc 107
-      //   41: putfield 111	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_ringUserdata	Ljava/lang/String;
+      //   39: ldc 105
+      //   41: putfield 109	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_ringUserdata	Ljava/lang/String;
       //   44: aload_0
       //   45: iconst_1
       //   46: newarray boolean
@@ -3444,89 +3449,89 @@ public class TraeAudioManager
       //   49: iconst_0
       //   50: iconst_0
       //   51: bastore
-      //   52: putfield 113	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_started	[Z
+      //   52: putfield 111	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_started	[Z
       //   55: aload_0
       //   56: iconst_0
-      //   57: putfield 115	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_enabled	Z
+      //   57: putfield 113	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_enabled	Z
       //   60: aload_0
       //   61: aconst_null
-      //   62: putfield 117	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_parent	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
+      //   62: putfield 115	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_parent	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
       //   65: aload_0
-      //   66: ldc 107
-      //   68: putfield 119	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_lastCfg	Ljava/lang/String;
+      //   66: ldc 105
+      //   68: putfield 117	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_lastCfg	Ljava/lang/String;
       //   71: aload_0
       //   72: iconst_0
-      //   73: putfield 121	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_preServiceMode	I
+      //   73: putfield 119	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_preServiceMode	I
       //   76: aload_0
       //   77: iconst_0
-      //   78: putfield 123	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_preRingMode	I
+      //   78: putfield 121	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_preRingMode	I
       //   81: aload_0
-      //   82: ldc2_w 102
-      //   85: putfield 125	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_voiceCallSessionID	J
+      //   82: ldc2_w 100
+      //   85: putfield 123	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_voiceCallSessionID	J
       //   88: aload_0
-      //   89: ldc 107
-      //   91: putfield 127	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_voiceCallOperation	Ljava/lang/String;
+      //   89: ldc 105
+      //   91: putfield 125	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_voiceCallOperation	Ljava/lang/String;
       //   94: aload_0
       //   95: aconst_null
-      //   96: putfield 129	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:mAudioFocusChangeListener	Landroid/media/AudioManager$OnAudioFocusChangeListener;
+      //   96: putfield 127	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:mAudioFocusChangeListener	Landroid/media/AudioManager$OnAudioFocusChangeListener;
       //   99: aload_0
       //   100: iconst_0
-      //   101: putfield 131	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_focusSteamType	I
+      //   101: putfield 129	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_focusSteamType	I
       //   104: aload_0
       //   105: aload_2
-      //   106: putfield 117	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_parent	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
-      //   109: invokestatic 137	android/os/SystemClock:elapsedRealtime	()J
+      //   106: putfield 115	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_parent	Lcom/tencent/rtmp/sharp/jni/TraeAudioManager;
+      //   109: invokestatic 135	android/os/SystemClock:elapsedRealtime	()J
       //   112: lstore_3
-      //   113: invokestatic 143	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+      //   113: invokestatic 141	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
       //   116: ifeq +11 -> 127
-      //   119: ldc 145
+      //   119: ldc 143
       //   121: iconst_2
-      //   122: ldc 147
-      //   124: invokestatic 151	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+      //   122: ldc 145
+      //   124: invokestatic 149	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
       //   127: aload_0
-      //   128: invokevirtual 154	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:start	()V
+      //   128: invokevirtual 152	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:start	()V
       //   131: aload_0
-      //   132: getfield 113	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_started	[Z
+      //   132: getfield 111	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_started	[Z
       //   135: astore_1
       //   136: aload_1
       //   137: monitorenter
       //   138: aload_0
-      //   139: getfield 113	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_started	[Z
+      //   139: getfield 111	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_started	[Z
       //   142: iconst_0
       //   143: baload
       //   144: istore 5
       //   146: iload 5
       //   148: ifne +13 -> 161
       //   151: aload_0
-      //   152: getfield 113	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_started	[Z
-      //   155: ldc2_w 155
-      //   158: invokevirtual 162	java/lang/Object:wait	(J)V
+      //   152: getfield 111	com/tencent/rtmp/sharp/jni/TraeAudioManager$TraeAudioManagerLooper:_started	[Z
+      //   155: ldc2_w 153
+      //   158: invokevirtual 160	java/lang/Object:wait	(J)V
       //   161: aload_1
       //   162: monitorexit
-      //   163: invokestatic 143	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
+      //   163: invokestatic 141	com/tencent/rtmp/sharp/jni/QLog:isColorLevel	()Z
       //   166: ifeq +34 -> 200
-      //   169: ldc 145
+      //   169: ldc 143
       //   171: iconst_2
-      //   172: new 164	java/lang/StringBuilder
+      //   172: new 162	java/lang/StringBuilder
       //   175: dup
-      //   176: ldc 166
-      //   178: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-      //   181: invokestatic 137	android/os/SystemClock:elapsedRealtime	()J
+      //   176: ldc 164
+      //   178: invokespecial 167	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+      //   181: invokestatic 135	android/os/SystemClock:elapsedRealtime	()J
       //   184: lload_3
       //   185: lsub
-      //   186: invokevirtual 173	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-      //   189: ldc 175
-      //   191: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   194: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   197: invokestatic 151	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+      //   186: invokevirtual 171	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+      //   189: ldc 173
+      //   191: invokevirtual 176	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   194: invokevirtual 180	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   197: invokestatic 149	com/tencent/rtmp/sharp/jni/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
       //   200: sipush 13911
-      //   203: invokestatic 185	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   203: invokestatic 183	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   206: return
       //   207: astore_2
       //   208: aload_1
       //   209: monitorexit
       //   210: sipush 13911
-      //   213: invokestatic 185	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+      //   213: invokestatic 183	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   216: aload_2
       //   217: athrow
       //   218: astore_2
@@ -3583,7 +3588,7 @@ public class TraeAudioManager
       {
         public void run()
         {
-          AppMethodBeat.i(13693);
+          AppMethodBeat.i(222659);
           Intent localIntent = new Intent();
           localIntent.setAction("com.tencent.sharp.ACTION_TRAEAUDIOMANAGER_NOTIFY");
           localIntent.putExtra("PARAM_OPERATION", "NOTIFY_STREAMTYPE_UPDATE");
@@ -3591,7 +3596,7 @@ public class TraeAudioManager
           if (TraeAudioManager.this._context != null) {
             TraeAudioManager.this._context.sendBroadcast(localIntent);
           }
-          AppMethodBeat.o(13693);
+          AppMethodBeat.o(222659);
         }
       });
       AppMethodBeat.o(13932);
@@ -3661,9 +3666,6 @@ public class TraeAudioManager
             paramHashMap.playRing(i, j, localUri, str, bool2, k, bool3, bool1, TraeAudioManager.this._streamType);
             if (QLog.isColorLevel()) {
               QLog.w("TRAE", 2, " _ringUserdata:" + this._ringUserdata + " DurationMS:" + this._ringPlayer.getDuration());
-            }
-            if (!this._ringPlayer.hasCall()) {
-              requestAudioFocus(this._ringPlayer.getStreamType());
             }
             InternalNotifyStreamTypeUpdate(this._ringPlayer.getStreamType());
             AudioDeviceInterface.LogTraceExit();
@@ -3778,7 +3780,7 @@ public class TraeAudioManager
         }
         localObject = (Integer)paramHashMap.get("PARAM_STREAMTYPE");
         if (localObject != null) {
-          break label391;
+          break label386;
         }
         if (QLog.isColorLevel()) {
           QLog.e("TRAE", 2, " params.get(PARAM_STREAMTYPE)==null!!");
@@ -3786,13 +3788,12 @@ public class TraeAudioManager
         TraeAudioManager.this._streamType = 0;
         label281:
         if ((!TraeAudioManager.isCloseSystemAPM(TraeAudioManager.this._modePolicy)) || (TraeAudioManager.this._activeMode == 2) || (TraeAudioManager.this._deviceConfigManager == null)) {
-          break label421;
+          break label411;
         }
         if (!TraeAudioManager.this._deviceConfigManager.getConnectedDevice().equals("DEVICE_SPEAKERPHONE")) {
-          break label405;
+          break label400;
         }
         TraeAudioManager.this.InternalSetMode(0);
-        requestAudioFocus(3);
       }
       for (;;)
       {
@@ -3803,16 +3804,14 @@ public class TraeAudioManager
         return 0;
         TraeAudioManager.this._modePolicy = ((Integer)localObject).intValue();
         break;
-        label391:
+        label386:
         TraeAudioManager.this._streamType = ((Integer)localObject).intValue();
         break label281;
-        label405:
+        label400:
         TraeAudioManager.this.InternalSetMode(3);
-        requestAudioFocus(0);
         continue;
-        label421:
+        label411:
         TraeAudioManager.this.InternalSetMode(TraeAudioManager.getCallAudioMode(TraeAudioManager.this._modePolicy));
-        requestAudioFocus(TraeAudioManager.this._streamType);
       }
     }
     
@@ -3842,7 +3841,7 @@ public class TraeAudioManager
         for (;;)
         {
           if (QLog.isColorLevel()) {
-            QLog.w("TRAE", 2, "======7");
+            QLog.e("TRAE", 2, "======7");
           }
         }
       }
@@ -3869,6 +3868,9 @@ public class TraeAudioManager
       }
       catch (Exception localException)
       {
+        if (QLog.isColorLevel()) {
+          QLog.e("TRAE", 2, "stop service failed." + localException.getMessage());
+        }
         AppMethodBeat.o(13921);
       }
     }
@@ -3894,6 +3896,9 @@ public class TraeAudioManager
       }
       catch (Exception localException)
       {
+        if (QLog.isColorLevel()) {
+          QLog.w("TRAE", 2, "======7");
+        }
         AppMethodBeat.o(13920);
       }
     }
@@ -3918,12 +3923,16 @@ public class TraeAudioManager
           TraeAudioManager.this._deviceConfigManager.clearConfig();
         }
         TraeAudioManager.this._deviceConfigManager = null;
-        label103:
         AudioDeviceInterface.LogTraceExit();
       }
       catch (Exception localException)
       {
-        break label103;
+        for (;;)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("TRAE", 2, "uninit failed." + localException.getMessage());
+          }
+        }
       }
       AppMethodBeat.o(13922);
     }
@@ -3932,19 +3941,6 @@ public class TraeAudioManager
     void abandonAudioFocus()
     {
       AppMethodBeat.i(13925);
-      if (Build.VERSION.SDK_INT <= 8)
-      {
-        AppMethodBeat.o(13925);
-        return;
-      }
-      if ((TraeAudioManager.this._am != null) && (this.mAudioFocusChangeListener != null))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "-------abandonAudioFocus _focusSteamType:" + this._focusSteamType);
-        }
-        TraeAudioManager.this._am.abandonAudioFocus(this.mAudioFocusChangeListener);
-        this.mAudioFocusChangeListener = null;
-      }
       AppMethodBeat.o(13925);
     }
     
@@ -4109,54 +4105,6 @@ public class TraeAudioManager
       }
     }
     
-    @TargetApi(8)
-    void requestAudioFocus(int paramInt)
-    {
-      AppMethodBeat.i(13924);
-      if (Build.VERSION.SDK_INT <= 8)
-      {
-        AppMethodBeat.o(13924);
-        return;
-      }
-      if (this.mAudioFocusChangeListener == null)
-      {
-        this.mAudioFocusChangeListener = new AudioManager.OnAudioFocusChangeListener()
-        {
-          @TargetApi(8)
-          public void onAudioFocusChange(int paramAnonymousInt)
-          {
-            AppMethodBeat.i(13784);
-            if (QLog.isColorLevel()) {
-              QLog.w("TRAE", 2, "focusChange:" + paramAnonymousInt + " _focusSteamType:" + TraeAudioManager.TraeAudioManagerLooper.this._focusSteamType + " currMode:" + TraeAudioManager.this._am.getMode() + " _activeMode:" + TraeAudioManager.this._activeMode);
-            }
-            AppMethodBeat.o(13784);
-          }
-        };
-        if (TraeAudioManager.this._am != null) {
-          try
-          {
-            int i = TraeAudioManager.this._am.requestAudioFocus(this.mAudioFocusChangeListener, paramInt, 1);
-            if ((i != 1) && (QLog.isColorLevel())) {
-              QLog.e("TRAE", 2, "request audio focus fail. " + i + " mode:" + TraeAudioManager.this._am.getMode());
-            }
-            this._focusSteamType = paramInt;
-            if (QLog.isColorLevel()) {
-              QLog.w("TRAE", 2, "-------requestAudioFocus _focusSteamType:" + this._focusSteamType);
-            }
-            AppMethodBeat.o(13924);
-            return;
-          }
-          catch (SecurityException localSecurityException)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("TRAE", 2, "request audio focus exception. ".concat(String.valueOf(localSecurityException)));
-            }
-          }
-        }
-      }
-      AppMethodBeat.o(13924);
-    }
-    
     public void run()
     {
       AppMethodBeat.i(13918);
@@ -4262,7 +4210,6 @@ public class TraeAudioManager
               TraeAudioManager.TraeAudioManagerLooper.this.abandonAudioFocus();
               AppMethodBeat.o(13790);
               return;
-              TraeAudioManager.TraeAudioManagerLooper.this.requestAudioFocus(TraeAudioManager.this._streamType);
               AppMethodBeat.o(13790);
               return;
               TraeAudioManager.TraeAudioManagerLooper.this.InternalGetStreamType((HashMap)localObject);
@@ -4465,7 +4412,6 @@ public class TraeAudioManager
             QLog.w("TRAE", 2, "NeedForceVolumeType: AudioManager.STREAM_MUSIC");
             TraeAudioManager.forceVolumeControlStream(TraeAudioManager.this._am, 3);
           }
-          label245:
           _post_stopService();
           AudioDeviceInterface.LogTraceExit();
           AppMethodBeat.o(13916);
@@ -4477,7 +4423,12 @@ public class TraeAudioManager
         }
         catch (Exception localException)
         {
-          break label245;
+          for (;;)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("TRAE", 2, "set mode failed." + localException.getMessage());
+            }
+          }
         }
       }
     }
@@ -4945,7 +4896,7 @@ public class TraeAudioManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.TraeAudioManager
  * JD-Core Version:    0.7.0.1
  */

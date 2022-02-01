@@ -4,8 +4,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 
 final class SDKOAuthUI$13
   implements View.OnTouchListener
@@ -15,26 +13,21 @@ final class SDKOAuthUI$13
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(79745);
-    b localb = new b();
-    localb.bd(paramView);
-    localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
     switch (paramMotionEvent.getAction())
     {
     }
     for (;;)
     {
-      a.a(false, this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$7", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(79745);
       return false;
-      SDKOAuthUI.b(this.Esd, (int)paramMotionEvent.getRawX());
-      SDKOAuthUI.c(this.Esd, (int)paramMotionEvent.getRawY());
+      SDKOAuthUI.b(this.Jfk, (int)paramMotionEvent.getRawX());
+      SDKOAuthUI.c(this.Jfk, (int)paramMotionEvent.getRawY());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.SDKOAuthUI.13
  * JD-Core Version:    0.7.0.1
  */

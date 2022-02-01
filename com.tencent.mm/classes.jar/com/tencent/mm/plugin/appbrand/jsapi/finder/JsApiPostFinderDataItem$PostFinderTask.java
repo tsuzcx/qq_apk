@@ -2,18 +2,17 @@ package com.tencent.mm.plugin.appbrand.jsapi.finder;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.e.h;
+import com.tencent.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.plugin.appbrand.jsapi.p;
-import com.tencent.mm.plugin.appbrand.r;
 import com.tencent.mm.plugin.finder.upload.g;
-import com.tencent.mm.plugin.finder.upload.l;
+import com.tencent.mm.plugin.finder.upload.p;
+import com.tencent.mm.plugin.finder.upload.q;
 import com.tencent.mm.protocal.protobuf.FinderJsApiMediaObj;
 import com.tencent.mm.protocal.protobuf.FinderJsApiMediaThumbInfo;
-import com.tencent.mm.protocal.protobuf.bvy;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.cjk;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,47 +22,47 @@ import org.json.JSONObject;
 
 class JsApiPostFinderDataItem$PostFinderTask
   extends MainProcessTask
-  implements l
+  implements q
 {
   public static final Parcelable.Creator<PostFinderTask> CREATOR;
   private String content;
-  private String dmp;
-  private r kQI;
-  private String kQL;
-  private String kQR;
-  private long kQS;
-  private int kmu;
+  private String event;
+  private com.tencent.mm.plugin.appbrand.s lVM;
+  private String lVP;
+  private String lVV;
+  private long lVW;
+  private int lqe;
   private int mediaType;
   
   static
   {
     AppMethodBeat.i(163973);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new JsApiPostFinderDataItem.PostFinderTask.2();
     AppMethodBeat.o(163973);
   }
   
   private JsApiPostFinderDataItem$PostFinderTask(Parcel paramParcel)
   {
     AppMethodBeat.i(163965);
-    e(paramParcel);
+    f(paramParcel);
     AppMethodBeat.o(163965);
   }
   
-  public JsApiPostFinderDataItem$PostFinderTask(r paramr, int paramInt1, int paramInt2, String paramString1, String paramString2)
+  public JsApiPostFinderDataItem$PostFinderTask(com.tencent.mm.plugin.appbrand.s params, int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
-    this.kQI = paramr;
-    this.kmu = paramInt1;
+    this.lVM = params;
+    this.lqe = paramInt1;
     this.mediaType = paramInt2;
-    this.kQR = paramString1;
+    this.lVV = paramString1;
     this.content = paramString2;
   }
   
-  public final void aOX()
+  public final void bjj()
   {
     AppMethodBeat.i(163969);
     try
     {
-      JSONArray localJSONArray = new JSONArray(this.kQR);
+      JSONArray localJSONArray = new JSONArray(this.lVV);
       final ArrayList localArrayList = new ArrayList();
       int i = 0;
       while (i < localJSONArray.length())
@@ -71,40 +70,40 @@ class JsApiPostFinderDataItem$PostFinderTask
         localArrayList.add((FinderJsApiMediaObj)a.a(localJSONArray.optJSONObject(i), FinderJsApiMediaObj.class));
         i += 1;
       }
-      h.MqF.f(new Runnable()
+      h.RTc.b(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(163963);
-          bvy localbvy = new bvy();
+          cjk localcjk = new cjk();
           Object localObject2 = localArrayList.iterator();
           if (((Iterator)localObject2).hasNext())
           {
             localObject1 = (FinderJsApiMediaObj)((Iterator)localObject2).next();
             com.tencent.mm.plugin.finder.upload.i locali;
             if (((FinderJsApiMediaObj)localObject1).mediaType == 4) {
-              locali = com.tencent.mm.plugin.finder.upload.i.sUG;
+              locali = com.tencent.mm.plugin.finder.upload.i.vSX;
             }
-            for (localObject1 = com.tencent.mm.plugin.finder.upload.i.a(((FinderJsApiMediaObj)localObject1).mediaPath, ((FinderJsApiMediaObj)localObject1).thumbInfo.thumbPath, null, "");; localObject1 = com.tencent.mm.plugin.finder.upload.i.gy(((FinderJsApiMediaObj)localObject1).mediaPath, ((FinderJsApiMediaObj)localObject1).thumbInfo.thumbPath))
+            for (localObject1 = com.tencent.mm.plugin.finder.upload.i.a(((FinderJsApiMediaObj)localObject1).mediaPath, ((FinderJsApiMediaObj)localObject1).thumbInfo.thumbPath, null, "");; localObject1 = com.tencent.mm.plugin.finder.upload.i.ha(((FinderJsApiMediaObj)localObject1).mediaPath, ((FinderJsApiMediaObj)localObject1).thumbInfo.thumbPath))
             {
-              localbvy.mediaList.add(localObject1);
+              localcjk.mediaList.add(localObject1);
               break;
-              locali = com.tencent.mm.plugin.finder.upload.i.sUG;
+              locali = com.tencent.mm.plugin.finder.upload.i.vSX;
             }
           }
           Object localObject1 = JsApiPostFinderDataItem.PostFinderTask.this;
-          localObject2 = g.sUx;
-          JsApiPostFinderDataItem.PostFinderTask.a((JsApiPostFinderDataItem.PostFinderTask)localObject1, g.cNo().a(JsApiPostFinderDataItem.PostFinderTask.a(JsApiPostFinderDataItem.PostFinderTask.this), JsApiPostFinderDataItem.PostFinderTask.b(JsApiPostFinderDataItem.PostFinderTask.this), localbvy, null, null, 0, null, false, "", null));
+          localObject2 = g.vSJ;
+          JsApiPostFinderDataItem.PostFinderTask.a((JsApiPostFinderDataItem.PostFinderTask)localObject1, g.dBa().a(new p(JsApiPostFinderDataItem.PostFinderTask.a(JsApiPostFinderDataItem.PostFinderTask.this), JsApiPostFinderDataItem.PostFinderTask.b(JsApiPostFinderDataItem.PostFinderTask.this), localcjk, null, null, 0, null, false, "", null, false, false, null, "", "", 0, null)));
           if (JsApiPostFinderDataItem.PostFinderTask.c(JsApiPostFinderDataItem.PostFinderTask.this) != -1L)
           {
-            localObject1 = g.sUx;
-            g.cNo().a(JsApiPostFinderDataItem.PostFinderTask.this);
+            localObject1 = g.vSJ;
+            g.dBa().a(JsApiPostFinderDataItem.PostFinderTask.this);
             localObject1 = new JSONObject();
           }
           try
           {
             ((JSONObject)localObject1).put("feedLocalId", JsApiPostFinderDataItem.PostFinderTask.c(JsApiPostFinderDataItem.PostFinderTask.this));
-            label201:
+            label217:
             JsApiPostFinderDataItem.PostFinderTask.a(JsApiPostFinderDataItem.PostFinderTask.this, a.a("", 0, (JSONObject)localObject1));
             for (;;)
             {
@@ -116,7 +115,7 @@ class JsApiPostFinderDataItem$PostFinderTask
           }
           catch (Exception localException)
           {
-            break label201;
+            break label217;
           }
         }
       }, "JsApiPostFinderDataItem");
@@ -129,29 +128,29 @@ class JsApiPostFinderDataItem$PostFinderTask
     }
   }
   
-  public final void aOY()
+  public final void bjk()
   {
     AppMethodBeat.i(163968);
-    ae.i("MicroMsg.Finder.JsApiPostFinderDataItem", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.kQI.getAppId(), this.kQL, Integer.valueOf(this.kmu), Boolean.valueOf(this.kQI.isRunning()) });
-    if ((!bu.isNullOrNil(this.dmp)) && (this.dmp.equals("onPostEnd")))
+    Log.i("MicroMsg.Finder.JsApiPostFinderDataItem", "runInClientProcess callback, appId[%s], msg[%s], callbackId[%d], isRunning[%b]", new Object[] { this.lVM.getAppId(), this.lVP, Integer.valueOf(this.lqe), Boolean.valueOf(this.lVM.isRunning()) });
+    if ((!Util.isNullOrNil(this.event)) && (this.event.equals("onPostEnd")))
     {
-      new JsApiPostFinderDataItem.PostFinderTask.a((byte)0).g(this.kQI).PP(this.kQL).bja();
-      bix();
+      new a((byte)0).g(this.lVM).Zg(this.lVP).bEo();
+      bDK();
       AppMethodBeat.o(163968);
       return;
     }
-    this.kQI.h(this.kmu, this.kQL);
+    this.lVM.i(this.lqe, this.lVP);
     AppMethodBeat.o(163968);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     AppMethodBeat.i(163966);
     this.mediaType = paramParcel.readInt();
-    this.kQR = paramParcel.readString();
+    this.lVV = paramParcel.readString();
     this.content = paramParcel.readString();
-    this.kQL = paramParcel.readString();
-    this.dmp = paramParcel.readString();
+    this.lVP = paramParcel.readString();
+    this.event = paramParcel.readString();
     AppMethodBeat.o(163966);
   }
   
@@ -159,20 +158,20 @@ class JsApiPostFinderDataItem$PostFinderTask
   {
     AppMethodBeat.i(163970);
     Object localObject;
-    if (paramLong == this.kQS)
+    if (paramLong == this.lVW)
     {
-      localObject = g.sUx;
-      g.cNo().b(this);
+      localObject = g.vSJ;
+      g.dBa().b(this);
       localObject = new JSONObject();
     }
     try
     {
       ((JSONObject)localObject).put("feedLocalId", String.valueOf(paramLong));
-      this.dmp = "onPostEnd";
+      this.event = "onPostEnd";
       if (paramBoolean)
       {
-        this.kQL = a.a("", 0, (JSONObject)localObject);
-        biG();
+        this.lVP = a.a("", 0, (JSONObject)localObject);
+        bDU();
         AppMethodBeat.o(163970);
         return;
       }
@@ -181,9 +180,9 @@ class JsApiPostFinderDataItem$PostFinderTask
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Finder.JsApiPostFinderDataItem", localException, "PostFinderTask onPostEnd", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Finder.JsApiPostFinderDataItem", localException, "PostFinderTask onPostEnd", new Object[0]);
         continue;
-        this.kQL = a.a("post fail", -1, (JSONObject)localObject);
+        this.lVP = a.a("post fail", -1, (JSONObject)localObject);
       }
     }
   }
@@ -194,18 +193,18 @@ class JsApiPostFinderDataItem$PostFinderTask
   {
     AppMethodBeat.i(163971);
     Object localObject;
-    if (paramLong1 == this.kQS)
+    if (paramLong1 == this.lVW)
     {
-      localObject = g.sUx;
-      g.cNo().b(this);
+      localObject = g.vSJ;
+      g.dBa().b(this);
       localObject = new JSONObject();
     }
     try
     {
       ((JSONObject)localObject).put("feedLocalId", String.valueOf(paramLong1));
-      this.dmp = "onPostEnd";
-      this.kQL = a.a("", 0, (JSONObject)localObject);
-      biG();
+      this.event = "onPostEnd";
+      this.lVP = a.a("", 0, (JSONObject)localObject);
+      bDU();
       AppMethodBeat.o(163971);
       return;
     }
@@ -213,7 +212,7 @@ class JsApiPostFinderDataItem$PostFinderTask
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Finder.JsApiPostFinderDataItem", localException, "PostFinderTask onPostEnd", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Finder.JsApiPostFinderDataItem", localException, "PostFinderTask onPostEnd", new Object[0]);
       }
     }
   }
@@ -224,16 +223,23 @@ class JsApiPostFinderDataItem$PostFinderTask
   {
     AppMethodBeat.i(163967);
     paramParcel.writeInt(this.mediaType);
-    paramParcel.writeString(this.kQR);
+    paramParcel.writeString(this.lVV);
     paramParcel.writeString(this.content);
-    paramParcel.writeString(this.kQL);
-    paramParcel.writeString(this.dmp);
+    paramParcel.writeString(this.lVP);
+    paramParcel.writeString(this.event);
     AppMethodBeat.o(163967);
+  }
+  
+  static final class a
+    extends com.tencent.mm.plugin.appbrand.jsapi.s
+  {
+    private static final int CTRL_INDEX = -2;
+    private static final String NAME = "onFeedPostCallback";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.finder.JsApiPostFinderDataItem.PostFinderTask
  * JD-Core Version:    0.7.0.1
  */

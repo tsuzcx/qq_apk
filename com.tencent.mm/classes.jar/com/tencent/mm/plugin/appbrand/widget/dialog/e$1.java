@@ -15,10 +15,10 @@ final class e$1
   {
     AppMethodBeat.i(131477);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    if (paramView == this.ngC) {
-      e.a(this.ngC);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    if (paramView == this.oqp) {
+      e.a(this.oqp);
     }
     a.a(this, "com/tencent/mm/plugin/appbrand/widget/dialog/AppBrandDialogContainerLayout$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(131477);
@@ -26,7 +26,7 @@ final class e$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.dialog.e.1
  * JD-Core Version:    0.7.0.1
  */

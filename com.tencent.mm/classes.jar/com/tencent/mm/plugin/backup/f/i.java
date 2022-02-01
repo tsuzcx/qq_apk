@@ -2,11 +2,11 @@ package com.tencent.mm.plugin.backup.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.backup.i.u;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.protocal.protobuf.cxo;
-import com.tencent.mm.protocal.protobuf.if;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.protocal.protobuf.dqj;
+import com.tencent.mm.protocal.protobuf.is;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 import java.util.LinkedList;
 
 public final class i
@@ -14,48 +14,48 @@ public final class i
   public static int a(a parama)
   {
     AppMethodBeat.i(21527);
-    if (parama.nCO == null)
+    if (parama.oNL == null)
     {
-      ae.e("MicroMsg.BackupPackUtil", "packBackupItem %s is null!", new Object[] { "backupItemInfo.backupitem" });
+      Log.e("MicroMsg.BackupPackUtil", "packBackupItem %s is null!", new Object[] { "backupItemInfo.backupitem" });
       AppMethodBeat.o(21527);
       return 0;
     }
-    int i = (int)o.aZR(parama.filePath);
+    int i = (int)s.boW(parama.filePath);
     if (i <= 0)
     {
-      ae.e("MicroMsg.BackupPackUtil", "packBackupItem filePath error:" + parama.filePath);
+      Log.e("MicroMsg.BackupPackUtil", "packBackupItem filePath error:" + parama.filePath);
       AppMethodBeat.o(21527);
       return 0;
     }
-    if (parama.nCQ)
+    if (parama.oNN)
     {
       AppMethodBeat.o(21527);
       return i;
     }
-    if (parama.nCP == null)
+    if (parama.oNM == null)
     {
-      ae.e("MicroMsg.BackupPackUtil", "packBackupItem error mediaInfoList null");
+      Log.e("MicroMsg.BackupPackUtil", "packBackupItem error mediaInfoList null");
       AppMethodBeat.o(21527);
       return 0;
     }
-    StringBuilder localStringBuilder = new StringBuilder(parama.nCO.FNG.toString()).append("_").append(parama.nCO.FNH.toString()).append("_").append(parama.nCO.xrk).append("_backup");
-    if (parama.nCR == null) {}
-    for (String str = "";; str = "_" + parama.nCR)
+    StringBuilder localStringBuilder = new StringBuilder(parama.oNL.KHl.toString()).append("_").append(parama.oNL.KHm.toString()).append("_").append(parama.oNL.Brn).append("_backup");
+    if (parama.oNO == null) {}
+    for (String str = "";; str = "_" + parama.oNO)
     {
       str = str;
-      ae.d("MicroMsg.BackupPackUtil", "packBackupItem mediaId:%s, filePath:%s", new Object[] { str, parama.filePath });
-      parama.nCO.FTh.add(new cxn().aQV(str));
-      parama.nCO.FTi.add(new cxo().aaA(parama.mediaType));
-      parama.nCO.FTg = parama.nCO.FTh.size();
-      if (parama.nCL == null) {
-        parama.nCL = new u();
+      Log.d("MicroMsg.BackupPackUtil", "packBackupItem mediaId:%s, filePath:%s", new Object[] { str, parama.filePath });
+      parama.oNL.KMQ.add(new dqi().bhy(str));
+      parama.oNL.KMR.add(new dqj().ajp(parama.mediaType));
+      parama.oNL.KMP = parama.oNL.KMQ.size();
+      if (parama.oNI == null) {
+        parama.oNI = new u();
       }
-      parama.nCL.nJy = parama.nCO.xrk;
-      parama.nCL.mediaId = str;
-      parama.nCL.path = parama.filePath;
-      parama.nCL.type = parama.mediaType;
-      if (!parama.nCS) {
-        parama.nCP.add(parama.nCL);
+      parama.oNI.oUt = parama.oNL.Brn;
+      parama.oNI.mediaId = str;
+      parama.oNI.path = parama.filePath;
+      parama.oNI.type = parama.mediaType;
+      if (!parama.oNP) {
+        parama.oNM.add(parama.oNI);
       }
       AppMethodBeat.o(21527);
       return 0;
@@ -66,40 +66,40 @@ public final class i
   {
     String filePath;
     int mediaType;
-    u nCL;
-    if nCO;
-    LinkedList<u> nCP;
-    boolean nCQ = true;
-    String nCR;
-    boolean nCS;
+    u oNI;
+    is oNL;
+    LinkedList<u> oNM;
+    boolean oNN = true;
+    String oNO;
+    boolean oNP;
     
-    public a(String paramString1, if paramif, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
+    public a(String paramString1, is paramis, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean1, String paramString2, boolean paramBoolean2)
     {
       this.filePath = paramString1;
-      this.nCO = paramif;
-      this.nCP = paramLinkedList;
+      this.oNL = paramis;
+      this.oNM = paramLinkedList;
       this.mediaType = paramInt;
-      this.nCQ = paramBoolean1;
-      this.nCR = paramString2;
-      this.nCS = paramBoolean2;
-      this.nCL = null;
+      this.oNN = paramBoolean1;
+      this.oNO = paramString2;
+      this.oNP = paramBoolean2;
+      this.oNI = null;
     }
     
-    public a(String paramString, if paramif, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean1, boolean paramBoolean2, u paramu)
+    public a(String paramString, is paramis, LinkedList<u> paramLinkedList, int paramInt, boolean paramBoolean1, boolean paramBoolean2, u paramu)
     {
       this.filePath = paramString;
-      this.nCO = paramif;
-      this.nCP = paramLinkedList;
+      this.oNL = paramis;
+      this.oNM = paramLinkedList;
       this.mediaType = paramInt;
-      this.nCQ = paramBoolean1;
-      this.nCS = paramBoolean2;
-      this.nCL = paramu;
+      this.oNN = paramBoolean1;
+      this.oNP = paramBoolean2;
+      this.oNI = paramu;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.f.i
  * JD-Core Version:    0.7.0.1
  */

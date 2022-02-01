@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class lu
-  extends b
+  extends IEvent
 {
-  public a dzY;
+  public a dRh;
+  public b dRi;
   
   public lu()
   {
@@ -15,28 +16,24 @@ public final class lu
   
   private lu(byte paramByte)
   {
-    AppMethodBeat.i(126679);
-    this.dzY = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(89748);
+    this.dRh = new a();
+    this.dRi = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(126679);
+    AppMethodBeat.o(89748);
   }
   
   public static final class a
   {
-    public String dAa;
-    public int dAb;
-    public String[] dAc;
-    public String dAd;
-    public int dAe;
-    public int dAf;
-    public String dAg;
-    public String dzZ;
-    public long endTime;
-    public String fileId;
-    public int netType;
-    public String path;
-    public long startTime;
+    public int dJY = 0;
+    public String dRj;
+    public int dRk = 0;
+  }
+  
+  public static final class b
+  {
+    public boolean dFE = false;
   }
 }
 

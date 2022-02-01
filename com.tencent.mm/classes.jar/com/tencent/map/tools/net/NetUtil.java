@@ -252,17 +252,17 @@ public class NetUtil
   
   public static final void safeClose(Closeable paramCloseable)
   {
-    AppMethodBeat.i(209853);
+    AppMethodBeat.i(193593);
     if (paramCloseable != null) {
       try
       {
         paramCloseable.close();
-        AppMethodBeat.o(209853);
+        AppMethodBeat.o(193593);
         return;
       }
       catch (IOException paramCloseable) {}
     }
-    AppMethodBeat.o(209853);
+    AppMethodBeat.o(193593);
   }
   
   /* Error */
@@ -354,27 +354,27 @@ public class NetUtil
   
   public static void writeBytesWithoutClose(byte[] paramArrayOfByte, OutputStream paramOutputStream)
   {
-    AppMethodBeat.i(209855);
+    AppMethodBeat.i(193595);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0) || (paramOutputStream == null))
     {
-      AppMethodBeat.o(209855);
+      AppMethodBeat.o(193595);
       return;
     }
     try
     {
       paramOutputStream.write(paramArrayOfByte);
-      AppMethodBeat.o(209855);
+      AppMethodBeat.o(193595);
       return;
     }
     catch (IOException paramArrayOfByte)
     {
-      AppMethodBeat.o(209855);
+      AppMethodBeat.o(193595);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.net.NetUtil
  * JD-Core Version:    0.7.0.1
  */

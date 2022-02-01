@@ -12,21 +12,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a.a;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.ak.c.a;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.wallet.pwd.a.c;
 import com.tencent.mm.plugin.wallet_core.ui.q.a;
-import com.tencent.mm.protocal.protobuf.buz;
-import com.tencent.mm.protocal.protobuf.cgx;
-import com.tencent.mm.protocal.protobuf.cqi;
-import com.tencent.mm.protocal.protobuf.drn;
-import com.tencent.mm.protocal.protobuf.dro;
-import com.tencent.mm.protocal.protobuf.dsl;
-import com.tencent.mm.protocal.protobuf.zu;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.h;
+import com.tencent.mm.protocal.protobuf.abk;
+import com.tencent.mm.protocal.protobuf.cig;
+import com.tencent.mm.protocal.protobuf.cxe;
+import com.tencent.mm.protocal.protobuf.dih;
+import com.tencent.mm.protocal.protobuf.elj;
+import com.tencent.mm.protocal.protobuf.elk;
+import com.tencent.mm.protocal.protobuf.emj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 import com.tencent.mm.ui.widget.a.d;
@@ -40,57 +38,57 @@ import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 public class WalletUniversalPayOrderUI
   extends WalletBaseUI
 {
-  private DragSortListView DfK;
-  private WalletUniversalPayOrderUI.a DfL;
-  private TextView DfM;
-  private TextView DfN;
-  private TextView DfO;
-  private MMSwitchBtn DfP;
-  private TextView DfQ;
-  private TextView DfR;
-  private Dialog DfS;
-  private boolean DfT = true;
-  private ViewGroup oTj;
-  private ViewGroup uRT;
+  private DragSortListView HLG;
+  private WalletUniversalPayOrderUI.a HLH;
+  private TextView HLI;
+  private TextView HLJ;
+  private TextView HLK;
+  private MMSwitchBtn HLL;
+  private TextView HLM;
+  private TextView HLN;
+  private Dialog HLO;
+  private boolean HLP = true;
+  private ViewGroup qgZ;
+  private ViewGroup ykw;
   
   public int getLayoutId()
   {
-    return 2131495945;
+    return 2131496925;
   }
   
   public void initView()
   {
     AppMethodBeat.i(69837);
-    this.DfK = ((DragSortListView)findViewById(2131306891));
-    this.oTj = ((ViewGroup)LayoutInflater.from(this).inflate(2131495943, null, false));
-    this.DfM = ((TextView)this.oTj.findViewById(2131306887));
-    this.DfN = ((TextView)this.oTj.findViewById(2131306883));
-    this.DfO = ((TextView)this.oTj.findViewById(2131306885));
-    this.DfP = ((MMSwitchBtn)this.oTj.findViewById(2131306884));
-    this.DfQ = ((TextView)this.oTj.findViewById(2131306886));
-    this.DfK.addHeaderView(this.oTj, null, false);
-    this.uRT = ((ViewGroup)LayoutInflater.from(this).inflate(2131495942, null, false));
-    this.DfR = ((TextView)this.uRT.findViewById(2131306882));
-    this.DfK.addFooterView(this.uRT, null, false);
-    this.DfL = new WalletUniversalPayOrderUI.a(this);
-    this.DfK.setAdapter(this.DfL);
-    this.DfK.setDropListener(new DragSortListView.h()
+    this.HLG = ((DragSortListView)findViewById(2131310359));
+    this.qgZ = ((ViewGroup)LayoutInflater.from(this).inflate(2131496923, null, false));
+    this.HLI = ((TextView)this.qgZ.findViewById(2131310355));
+    this.HLJ = ((TextView)this.qgZ.findViewById(2131310351));
+    this.HLK = ((TextView)this.qgZ.findViewById(2131310353));
+    this.HLL = ((MMSwitchBtn)this.qgZ.findViewById(2131310352));
+    this.HLM = ((TextView)this.qgZ.findViewById(2131310354));
+    this.HLG.addHeaderView(this.qgZ, null, false);
+    this.ykw = ((ViewGroup)LayoutInflater.from(this).inflate(2131496922, null, false));
+    this.HLN = ((TextView)this.ykw.findViewById(2131310350));
+    this.HLG.addFooterView(this.ykw, null, false);
+    this.HLH = new WalletUniversalPayOrderUI.a(this);
+    this.HLG.setAdapter(this.HLH);
+    this.HLG.setDropListener(new DragSortListView.h()
     {
-      public final void ek(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void ey(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(69819);
         if (paramAnonymousInt1 == paramAnonymousInt2)
         {
-          ae.d("MicroMsg.WalletUniversalPayOrderUI", "no change: %s", new Object[] { Integer.valueOf(paramAnonymousInt1) });
+          Log.d("MicroMsg.WalletUniversalPayOrderUI", "no change: %s", new Object[] { Integer.valueOf(paramAnonymousInt1) });
           AppMethodBeat.o(69819);
           return;
         }
         WalletUniversalPayOrderUI.a(WalletUniversalPayOrderUI.this, paramAnonymousInt1, paramAnonymousInt2);
-        g.yxI.f(16343, new Object[] { Integer.valueOf(10) });
+        com.tencent.mm.plugin.report.service.h.CyF.a(16343, new Object[] { Integer.valueOf(10) });
         AppMethodBeat.o(69819);
       }
     });
-    this.DfK.setRemoveListener(new DragSortListView.l()
+    this.HLG.setRemoveListener(new DragSortListView.l()
     {
       public final void remove(int paramAnonymousInt) {}
     });
@@ -102,22 +100,22 @@ public class WalletUniversalPayOrderUI
     AppMethodBeat.i(69836);
     fixStatusbar(true);
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131101179));
+    setActionbarColor(getResources().getColor(2131101424));
     hideActionbarLine();
     setMMTitle("");
     initView();
-    ae.i("MicroMsg.WalletUniversalPayOrderUI", "do query uni pay order");
-    getString(2131755726);
-    this.DfS = h.b(this, getString(2131765693), false, new DialogInterface.OnCancelListener()
+    Log.i("MicroMsg.WalletUniversalPayOrderUI", "do query uni pay order");
+    getString(2131755797);
+    this.HLO = com.tencent.mm.ui.base.h.a(this, getString(2131768146), false, new DialogInterface.OnCancelListener()
     {
       public final void onCancel(DialogInterface paramAnonymousDialogInterface) {}
     });
-    new c().aET().b(new a() {});
-    g.yxI.f(16343, new Object[] { Integer.valueOf(1) });
+    new c().aYI().b(new a() {});
+    com.tencent.mm.plugin.report.service.h.CyF.a(16343, new Object[] { Integer.valueOf(1) });
     AppMethodBeat.o(69836);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     return false;
   }
@@ -130,7 +128,7 @@ public class WalletUniversalPayOrderUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletUniversalPayOrderUI
  * JD-Core Version:    0.7.0.1
  */

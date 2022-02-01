@@ -12,15 +12,15 @@ final class FacebookFriendUI$2
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(127959);
-    this.jmI.hideVKB();
-    this.jmI.finish();
+    this.kkR.hideVKB();
+    this.kkR.finish();
     AppMethodBeat.o(127959);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.FacebookFriendUI.2
  * JD-Core Version:    0.7.0.1
  */

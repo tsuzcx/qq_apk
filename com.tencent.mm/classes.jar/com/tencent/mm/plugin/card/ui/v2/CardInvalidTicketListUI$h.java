@@ -1,37 +1,24 @@
 package com.tencent.mm.plugin.card.ui.v2;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.ui.base.h;
-import d.l;
+import com.tencent.mm.protocal.protobuf.cyp;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menu", "Landroid/view/ContextMenu;", "kotlin.jvm.PlatformType", "v", "Landroid/view/View;", "menuInfo", "Landroid/view/ContextMenu$ContextMenuInfo;", "onCreateContextMenu", "com/tencent/mm/plugin/card/ui/v2/CardInvalidTicketListUI$showDeleteCardAlert$1$1"})
 final class CardInvalidTicketListUI$h
-  implements MenuItem.OnMenuItemClickListener
+  implements View.OnCreateContextMenuListener
 {
-  CardInvalidTicketListUI$h(CardInvalidTicketListUI paramCardInvalidTicketListUI) {}
+  CardInvalidTicketListUI$h(CardInvalidTicketListUI paramCardInvalidTicketListUI, View paramView, cyp paramcyp) {}
   
-  public final boolean onMenuItemClick(MenuItem paramMenuItem)
+  public final void onCreateContextMenu(ContextMenu paramContextMenu, View paramView, ContextMenu.ContextMenuInfo paramContextMenuInfo)
   {
-    AppMethodBeat.i(112488);
-    h.a((Context)this.oSw.getContext(), false, this.oSw.getString(2131756897), "", this.oSw.getString(2131757560), this.oSw.getString(2131757558), (DialogInterface.OnClickListener)new DialogInterface.OnClickListener()
-    {
-      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-      {
-        AppMethodBeat.i(112485);
-        CardInvalidTicketListUI.bZq();
-        g.yxI.f(16322, new Object[] { Integer.valueOf(11) });
-        AppMethodBeat.o(112485);
-      }
-    }, (DialogInterface.OnClickListener)2.oSB);
-    g.yxI.f(16322, new Object[] { Integer.valueOf(10) });
-    AppMethodBeat.o(112488);
-    return false;
+    AppMethodBeat.i(201390);
+    paramContextMenu.add(0, 1, 0, (CharSequence)this.qgk.getString(2131755778));
+    AppMethodBeat.o(201390);
   }
 }
 

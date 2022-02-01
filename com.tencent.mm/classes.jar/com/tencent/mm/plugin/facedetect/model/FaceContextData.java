@@ -10,27 +10,27 @@ public class FaceContextData
   implements Parcelable
 {
   public static final Parcelable.Creator<FaceContextData> CREATOR;
-  private static volatile FaceContextData rpj;
-  public long rpk;
+  private static volatile FaceContextData sQH;
+  public long sQI;
   
   static
   {
     AppMethodBeat.i(103712);
-    rpj = null;
+    sQH = null;
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(103712);
   }
   
   public FaceContextData()
   {
-    this.rpk = -1L;
+    this.sQI = -1L;
   }
   
   protected FaceContextData(Parcel paramParcel)
   {
     AppMethodBeat.i(103710);
-    this.rpk = -1L;
-    this.rpk = paramParcel.readLong();
+    this.sQI = -1L;
+    this.sQI = paramParcel.readLong();
     AppMethodBeat.o(103710);
   }
   
@@ -39,11 +39,11 @@ public class FaceContextData
     AppMethodBeat.i(103708);
     if (paramFaceContextData == null)
     {
-      rpj = null;
+      sQH = null;
       AppMethodBeat.o(103708);
       return;
     }
-    if (rpj != null)
+    if (sQH != null)
     {
       b(paramFaceContextData);
       AppMethodBeat.o(103708);
@@ -51,12 +51,12 @@ public class FaceContextData
     }
     try
     {
-      if (rpj != null)
+      if (sQH != null)
       {
         b(paramFaceContextData);
         return;
       }
-      rpj = paramFaceContextData;
+      sQH = paramFaceContextData;
       return;
     }
     finally
@@ -68,21 +68,21 @@ public class FaceContextData
   private static void b(FaceContextData paramFaceContextData)
   {
     AppMethodBeat.i(103709);
-    if ((rpj != null) && (paramFaceContextData != null)) {}
+    if ((sQH != null) && (paramFaceContextData != null)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      rpj.rpk = paramFaceContextData.rpk;
+      sQH.sQI = paramFaceContextData.sQI;
       AppMethodBeat.o(103709);
       return;
     }
   }
   
-  public static FaceContextData cur()
+  public static FaceContextData cST()
   {
     try
     {
-      FaceContextData localFaceContextData = rpj;
+      FaceContextData localFaceContextData = sQH;
       return localFaceContextData;
     }
     finally
@@ -100,13 +100,13 @@ public class FaceContextData
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(103711);
-    paramParcel.writeLong(this.rpk);
+    paramParcel.writeLong(this.sQI);
     AppMethodBeat.o(103711);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.model.FaceContextData
  * JD-Core Version:    0.7.0.1
  */

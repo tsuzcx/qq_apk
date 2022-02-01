@@ -1,82 +1,92 @@
 package com.tencent.mm.plugin.facedetect.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n.a;
-import com.tencent.mm.ak.n.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q.a;
+import com.tencent.mm.ak.q.b;
 import com.tencent.mm.an.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.an.f;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.axy;
-import com.tencent.mm.protocal.protobuf.ccx;
-import com.tencent.mm.protocal.protobuf.lx;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.bji;
+import com.tencent.mm.protocal.protobuf.ctc;
+import com.tencent.mm.protocal.protobuf.mo;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class v
   extends p
-  implements k, b
+  implements m, b
 {
-  private final q hRG;
-  private long roD;
-  private byte[] roE;
+  private final s iMO;
+  private long sQh;
+  private float sQi;
+  private byte[] sQj;
+  private byte[] sQk;
   
   public v(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(103637);
-    this.roD = -1L;
-    this.roE = null;
-    this.hRG = new h();
-    i.a locala = (i.a)this.hRG.getReqObj();
-    locala.roc.GOU = p.roy;
-    locala.roc.nJA = 1;
-    locala.roc.Scene = paramInt1;
-    locala.roc.GOV = paramInt2;
+    this.sQh = -1L;
+    this.sQi = 0.5F;
+    this.sQj = null;
+    this.sQk = null;
+    this.iMO = new h();
+    i.a locala = (i.a)this.iMO.getReqObj();
+    locala.sPH.LSY = p.sQc;
+    locala.sPH.oUv = 1;
+    locala.sPH.Scene = paramInt1;
+    locala.sPH.LSZ = paramInt2;
     AppMethodBeat.o(103637);
   }
   
-  final void agO(String paramString)
+  final void ary(String paramString)
   {
     AppMethodBeat.i(103640);
-    ((i.a)this.hRG.getReqObj()).roc.GOU = paramString;
+    ((i.a)this.iMO.getReqObj()).sPH.LSY = paramString;
     AppMethodBeat.o(103640);
   }
   
-  public final void c(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void c(int paramInt1, int paramInt2, String paramString, s params)
   {
     AppMethodBeat.i(103639);
-    ae.d("MicroMsg.NetSceneGetBioConfigRsa", "hy: onGYNetEnd  errType:" + paramInt1 + " errCode:" + paramInt2);
+    Log.d("MicroMsg.NetSceneGetBioConfigRsa", "hy: onGYNetEnd  errType:" + paramInt1 + " errCode:" + paramInt2);
     i.b localb;
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      localb = (i.b)paramq.getRespObj();
-      this.roD = localb.rod.GOW;
-      if (localb.rod.GOX != null) {
-        this.roE = localb.rod.GOX.zr;
+      localb = (i.b)params.getRespObj();
+      this.sQh = localb.sPI.LTb;
+      this.sQi = localb.sPI.LTf;
+      if (localb.sPI.LTc != null) {
+        this.sQj = localb.sPI.LTc.zy;
       }
-      if (localb.rod.GOZ != null)
+      if (localb.sPI.LTa != null) {
+        this.sQk = localb.sPI.LTa.zy;
+      }
+      if (localb.sPI.LTe != null)
       {
-        if ((localb.rod.GOZ.FXb == null) || (localb.rod.GOZ.FXb.getILen() <= 0)) {
-          break label393;
+        if ((localb.sPI.LTe.KQN == null) || (localb.sPI.LTe.KQN.getILen() <= 0)) {
+          break label441;
         }
-        ae.i("MicroMsg.NetSceneGetBioConfigRsa", "summersafecdn onGYNetEnd cdnrule:%d", new Object[] { Integer.valueOf(localb.rod.GOZ.FXb.getILen()) });
+        Log.i("MicroMsg.NetSceneGetBioConfigRsa", "summersafecdn onGYNetEnd cdnrule:%d", new Object[] { Integer.valueOf(localb.sPI.LTe.KQN.getILen()) });
       }
     }
-    label393:
-    for (paramq = z.a(localb.rod.GOZ.FXb);; paramq = null)
+    label441:
+    for (params = z.a(localb.sPI.LTe.KQN);; params = null)
     {
-      if ((localb.rod.GOZ.FXc != null) && (localb.rod.GOZ.FXc.getILen() > 0)) {
-        ae.i("MicroMsg.NetSceneGetBioConfigRsa", "summersafecdn onGYNetEnd safecdnrule:%d", new Object[] { Integer.valueOf(localb.rod.GOZ.FXc.getILen()) });
+      if ((localb.sPI.LTe.KQO != null) && (localb.sPI.LTe.KQO.getILen() > 0)) {
+        Log.i("MicroMsg.NetSceneGetBioConfigRsa", "summersafecdn onGYNetEnd safecdnrule:%d", new Object[] { Integer.valueOf(localb.sPI.LTe.KQO.getILen()) });
       }
-      for (byte[] arrayOfByte = z.a(localb.rod.GOZ.FXc);; arrayOfByte = null)
+      for (byte[] arrayOfByte = z.a(localb.sPI.LTe.KQO);; arrayOfByte = null)
       {
-        com.tencent.mm.an.f.aHa().a(localb.rod.GOZ.FWY, localb.rod.GOZ.FWZ, localb.rod.GOZ.FXa, paramq, arrayOfByte, localb.rod.GOZ.FXd);
-        long l = this.roD;
-        if (this.roE == null) {}
-        for (int i = 0;; i = this.roE.length)
+        f.baR().a(localb.sPI.LTe.KQK, localb.sPI.LTe.KQL, localb.sPI.LTe.KQM, params, arrayOfByte, localb.sPI.LTe.KQP);
+        long l = this.sQh;
+        if (this.sQj == null) {}
+        for (int i = 0;; i = this.sQj.length)
         {
-          ae.i("MicroMsg.NetSceneGetBioConfigRsa", "hy: get bio config: bioId: %s, bioConfigSize: %d", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
+          Log.i("MicroMsg.NetSceneGetBioConfigRsa", "hy: get bio config: bioId: %s, bioConfigSize: %d ratio:%s", new Object[] { Long.valueOf(l), Integer.valueOf(i), Float.valueOf(this.sQi) });
           this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
           AppMethodBeat.o(103639);
           return;
@@ -85,30 +95,43 @@ public final class v
     }
   }
   
-  public final long cud()
+  public final long cSK()
   {
-    return this.roD;
+    return this.sQh;
   }
   
-  public final byte[] cue()
+  public final byte[] cSL()
   {
-    return this.roE;
+    return this.sQj;
   }
   
-  final int f(e parame)
+  public final float cSM()
+  {
+    if ((this.sQi <= 0.0F) || (this.sQi > 1.0F)) {
+      this.sQi = 0.5F;
+    }
+    return this.sQi;
+  }
+  
+  public final byte[] cSN()
+  {
+    return this.sQk;
+  }
+  
+  final int f(g paramg)
   {
     AppMethodBeat.i(103638);
-    int i = dispatch(parame, this.hRG, this);
+    int i = dispatch(paramg, this.iMO, this);
     AppMethodBeat.o(103638);
     return i;
   }
   
-  protected final ccx f(q paramq)
+  protected final ctc f(s params)
   {
     AppMethodBeat.i(103641);
-    paramq = ((i.b)paramq.getRespObj()).rod.GOY;
+    params = ((i.b)params.getRespObj()).sPI.LTd;
     AppMethodBeat.o(103641);
-    return paramq;
+    return params;
   }
   
   public final int getType()
@@ -121,16 +144,16 @@ public final class v
     return 3;
   }
   
-  public final n.b securityVerificationChecked(q paramq)
+  public final q.b securityVerificationChecked(s params)
   {
-    return n.b.hRi;
+    return q.b.iMq;
   }
   
-  public final void setSecurityCheckError(n.a parama) {}
+  public final void setSecurityCheckError(q.a parama) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.b.v
  * JD-Core Version:    0.7.0.1
  */

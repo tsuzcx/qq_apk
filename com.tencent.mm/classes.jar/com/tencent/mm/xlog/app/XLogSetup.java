@@ -6,9 +6,9 @@ import com.tencent.mars.xlog.LogLogic;
 import com.tencent.mars.xlog.Xlog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class XLogSetup
 {
@@ -37,7 +37,7 @@ public class XLogSetup
     AppMethodBeat.i(133557);
     if (!hasInit)
     {
-      PlatformComm.init(ak.getContext(), new aq(Looper.getMainLooper()));
+      PlatformComm.init(MMApplicationContext.getContext(), new MMHandler(Looper.getMainLooper()));
       hasInit = true;
     }
     cachePath = paramString1;
@@ -57,14 +57,14 @@ public class XLogSetup
       return;
     }
     setup = true;
-    paramString1 = a.LYI;
+    paramString1 = a.Rza;
     XLogSetup.class.getClassLoader();
-    j.vN(paramString1);
-    ae.a(xlog);
-    ae.setConsoleLogOpen(isLogcatOpen.booleanValue());
+    j.Ed(paramString1);
+    Log.setLogImp(xlog);
+    Log.setConsoleLogOpen(isLogcatOpen.booleanValue());
     if (toolsLevel == null)
     {
-      ae.appenderOpen(2, 0, cachePath, logPath, nameprefix, 3);
+      Log.appenderOpen(2, 0, cachePath, logPath, nameprefix, 3);
       LogLogic.initIPxxLogInfo();
       AppMethodBeat.o(133557);
       return;
@@ -72,7 +72,7 @@ public class XLogSetup
     if (paramBoolean1.booleanValue()) {}
     for (;;)
     {
-      ae.appenderOpen(toolsLevel.intValue(), i, cachePath, logPath, nameprefix, 0);
+      Log.appenderOpen(toolsLevel.intValue(), i, cachePath, logPath, nameprefix, 0);
       AppMethodBeat.o(133557);
       return;
       i = 0;

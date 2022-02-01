@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.modelgeo.Addr;
@@ -18,16 +18,16 @@ final class NearLifeCreatePoiUI$1
   {
     AppMethodBeat.i(26597);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/nearlife/ui/NearLifeCreatePoiUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/nearlife/ui/NearLifeCreatePoiUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     paramView = new Intent();
-    paramView.putExtra("ui_title", 2131761615);
-    if (NearLifeCreatePoiUI.a(this.wHk) != null)
+    paramView.putExtra("ui_title", 2131763583);
+    if (NearLifeCreatePoiUI.a(this.ACu) != null)
     {
-      paramView.putExtra("extra_province", NearLifeCreatePoiUI.a(this.wHk).hZR);
-      paramView.putExtra("extra_city", NearLifeCreatePoiUI.a(this.wHk).hZS);
+      paramView.putExtra("extra_province", NearLifeCreatePoiUI.a(this.ACu).iUP);
+      paramView.putExtra("extra_city", NearLifeCreatePoiUI.a(this.ACu).iUQ);
     }
-    d.b(this.wHk.getContext(), "address", ".ui.WalletMultiRcptSelectUI", paramView, 1);
+    c.b(this.ACu.getContext(), "address", ".ui.WalletMultiRcptSelectUI", paramView, 1);
     a.a(this, "com/tencent/mm/plugin/nearlife/ui/NearLifeCreatePoiUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(26597);
   }

@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.preference.CheckBoxPreference android:key="open_sns_pay_pref" android:layout="@layout/aop" android:title="@string/dg8" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.preference.HeadImgNewPreference mm:key="settings_change_avatar" mm:layout="@layout/b8j" mm:title="@string/gnm" />
+    <Preference mm:key="settings_name" mm:layout="@layout/b8j" mm:title="@string/gre" />
+    <Preference mm:key="settings_pat" mm:layout="@layout/b8j" mm:title="@string/fjn" />
+    <Preference mm:key="settings_username" mm:layout="@layout/b8j" mm:title="@string/gw_" />
+    <Preference mm:key="settings_qrcode" mm:layout="@layout/b8j" mm:title="@string/gt4" mm:widgetLayout="@layout/b_3" />
+    <Preference mm:key="settings_finder_recent_like" mm:layout="@layout/b8j" mm:title="@string/gp3" />
+    <Preference mm:key="settings_more_info" mm:layout="@layout/b8j" mm:title="@string/wp" />
+    <PreferenceSmallCategory />
+    <Preference mm:key="settings_wecoin" mm:layout="@layout/b8j" mm:title="@string/gqe" />
+    <PreferenceSmallCategory />
+    <Preference mm:key="settings_address" mm:layout="@layout/b8j" mm:title="@string/gnc" />
+    <Preference mm:key="settings_invoice" mm:layout="@layout/b8j" mm:title="@string/gpg" />
 </PreferenceScreen>

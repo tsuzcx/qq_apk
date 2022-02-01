@@ -5,75 +5,63 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class bob
   extends com.tencent.mm.bw.a
 {
-  public String FSh;
-  public String nIM;
+  public String KOR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(82424);
+    AppMethodBeat.i(82409);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.FSh != null) {
-        paramVarArgs.d(1, this.FSh);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.KOR != null) {
+        paramVarArgs.e(1, this.KOR);
       }
-      if (this.nIM != null) {
-        paramVarArgs.d(2, this.nIM);
-      }
-      AppMethodBeat.o(82424);
+      AppMethodBeat.o(82409);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.FSh == null) {
-        break label274;
+      if (this.KOR == null) {
+        break label213;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.FSh) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = g.a.a.b.b.a.f(1, this.KOR) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.nIM != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.nIM);
-      }
-      AppMethodBeat.o(82424);
-      return i;
+      AppMethodBeat.o(82409);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(82424);
+        AppMethodBeat.o(82409);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         bob localbob = (bob)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(82424);
+          AppMethodBeat.o(82409);
           return -1;
-        case 1: 
-          localbob.FSh = locala.OmT.readString();
-          AppMethodBeat.o(82424);
-          return 0;
         }
-        localbob.nIM = locala.OmT.readString();
-        AppMethodBeat.o(82424);
+        localbob.KOR = locala.UbS.readString();
+        AppMethodBeat.o(82409);
         return 0;
       }
-      AppMethodBeat.o(82424);
+      AppMethodBeat.o(82409);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.bob
  * JD-Core Version:    0.7.0.1
  */

@@ -3,18 +3,19 @@
     <item type="xml" name="d">false</item>
     <item type="xml" name="f">false</item>
     <item type="xml" name="g">false</item>
-    <item type="xml" name="o">false</item>
-    <item type="xml" name="t">false</item>
-    <item type="xml" name="a0">false</item>
-    <item type="xml" name="a9">false</item>
-    <item type="xml" name="ac">false</item>
-    <item type="xml" name="af">false</item>
-    <item type="xml" name="ai">false</item>
-    <item type="xml" name="aj">false</item>
-    <item type="xml" name="b5">false</item>
-    <item type="xml" name="bk">false</item>
-    <item type="xml" name="cj">false</item>
-    <item type="xml" name="cu">false</item>
-    <item type="xml" name="d8">false</item>
-    <item type="xml" name="de">false</item>
+    <item type="xml" name="p">false</item>
+    <item type="xml" name="u">false</item>
+    <item type="xml" name="a1">false</item>
+    <item type="xml" name="aa">false</item>
+    <item type="xml" name="ae">false</item>
+    <item type="xml" name="ah">false</item>
+    <item type="xml" name="ak">false</item>
+    <item type="xml" name="al">false</item>
+    <item type="xml" name="av">false</item>
+    <item type="xml" name="b1">false</item>
+    <item type="xml" name="bs">false</item>
+    <item type="xml" name="cs">false</item>
+    <item type="xml" name="d3">false</item>
+    <item type="xml" name="dg">false</item>
+    <item type="xml" name="dn">false</item>
 </resources>

@@ -4,13 +4,13 @@ import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class ExceptionMonitorService
   extends Service
   implements b.a
 {
-  b IqP = null;
+  b NEm = null;
   
   public IBinder onBind(Intent paramIntent)
   {
@@ -21,9 +21,9 @@ public class ExceptionMonitorService
   {
     AppMethodBeat.i(32607);
     super.onCreate();
-    ae.i("MicroMsg.ExceptionMonitorService", "onCreate()");
-    this.IqP = new b();
-    this.IqP.a(this);
+    Log.i("MicroMsg.ExceptionMonitorService", "onCreate()");
+    this.NEm = new b();
+    this.NEm.a(this);
     AppMethodBeat.o(32607);
   }
   
@@ -31,11 +31,11 @@ public class ExceptionMonitorService
   {
     AppMethodBeat.i(32610);
     super.onDestroy();
-    ae.i("MicroMsg.ExceptionMonitorService", "onDestroy()");
-    if (this.IqP != null)
+    Log.i("MicroMsg.ExceptionMonitorService", "onDestroy()");
+    if (this.NEm != null)
     {
-      this.IqP.onDestroy();
-      this.IqP = null;
+      this.NEm.onDestroy();
+      this.NEm = null;
     }
     AppMethodBeat.o(32610);
   }
@@ -44,9 +44,9 @@ public class ExceptionMonitorService
   {
     AppMethodBeat.i(32608);
     super.onStart(paramIntent, paramInt);
-    ae.i("MicroMsg.ExceptionMonitorService", "onStart()");
-    if (this.IqP != null) {
-      this.IqP.o(paramIntent);
+    Log.i("MicroMsg.ExceptionMonitorService", "onStart()");
+    if (this.NEm != null) {
+      this.NEm.o(paramIntent);
     }
     AppMethodBeat.o(32608);
   }
@@ -54,9 +54,9 @@ public class ExceptionMonitorService
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(32609);
-    ae.i("MicroMsg.ExceptionMonitorService", "onStartCommand()");
-    if (this.IqP != null) {
-      this.IqP.o(paramIntent);
+    Log.i("MicroMsg.ExceptionMonitorService", "onStartCommand()");
+    if (this.NEm != null) {
+      this.NEm.o(paramIntent);
     }
     AppMethodBeat.o(32609);
     return 1;
@@ -64,7 +64,7 @@ public class ExceptionMonitorService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sandbox.monitor.ExceptionMonitorService
  * JD-Core Version:    0.7.0.1
  */

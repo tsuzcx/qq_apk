@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/s8"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:ellipsize="end" android:id="@id/bv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-    <TextView android:ellipsize="end" android:id="@id/bu" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/lp" android:singleLine="true" />
-</LinearLayout>

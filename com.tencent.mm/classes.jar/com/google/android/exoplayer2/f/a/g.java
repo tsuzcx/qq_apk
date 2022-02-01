@@ -12,7 +12,7 @@ public final class g
     int j;
     do
     {
-      if (paramm.wV() == 0)
+      if (paramm.xd() == 0)
       {
         AppMethodBeat.o(92788);
         return -1;
@@ -28,19 +28,19 @@ public final class g
   public static void a(long paramLong, com.google.android.exoplayer2.i.m paramm, com.google.android.exoplayer2.c.m[] paramArrayOfm)
   {
     AppMethodBeat.i(92787);
-    while (paramm.wV() > 1)
+    while (paramm.xd() > 1)
     {
       int i = A(paramm);
       int j = A(paramm);
-      if ((j == -1) || (j > paramm.wV()))
+      if ((j == -1) || (j > paramm.xd()))
       {
         paramm.setPosition(paramm.limit);
       }
       else if (a(i, j, paramm))
       {
-        paramm.fa(8);
+        paramm.eZ(8);
         int k = paramm.readUnsignedByte() & 0x1F;
-        paramm.fa(1);
+        paramm.eZ(1);
         int m = k * 3;
         int n = paramm.position;
         int i1 = paramArrayOfm.length;
@@ -53,11 +53,11 @@ public final class g
           localm.a(paramLong, 1, m, 0, null);
           i += 1;
         }
-        paramm.fa(j - (k * 3 + 10));
+        paramm.eZ(j - (k * 3 + 10));
       }
       else
       {
-        paramm.fa(j);
+        paramm.eZ(j);
       }
     }
     AppMethodBeat.o(92787);
@@ -88,7 +88,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a.g
  * JD-Core Version:    0.7.0.1
  */

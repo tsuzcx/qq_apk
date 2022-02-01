@@ -1,19 +1,21 @@
 package com.tencent.mm.plugin.facedetectaction.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelcontrol.VideoTransPara;
 import com.tencent.mm.plugin.facedetect.PluginFace;
 import com.tencent.mm.plugin.facedetect.e.a.3;
 import com.tencent.mm.plugin.facedetect.model.p;
 import com.tencent.mm.plugin.facedetectaction.ui.FaceActionUI;
-import com.tencent.mm.protocal.protobuf.bbt;
-import com.tencent.mm.protocal.protobuf.bbv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.bnf;
+import com.tencent.mm.protocal.protobuf.bnh;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.youtu.ytcommon.YTCommonExInterface;
 import com.tencent.youtu.ytfacetrack.YTFaceTrack;
@@ -23,53 +25,54 @@ import com.tencent.youtu.ytposedetect.YTPoseDetectInterface;
 import com.tencent.ytcommon.util.YTCommonInterface;
 
 public final class d
-  implements f
+  implements i
 {
-  public static d rxC;
-  String dGY;
-  public String dGZ;
-  String dHa;
-  public MMActivity fNT;
-  public int hxN;
+  public static d sXz;
+  String dYK;
+  public String dYL;
+  String dYM;
+  public MMActivity gte;
+  public int irL;
   public int mStatus = 0;
   String packageName;
+  private String personId;
   int requestCode;
-  private String rpA;
-  b rxD;
-  private e rxE;
-  private String rxF;
-  private float rxG;
-  private String rxH;
-  public a rxI;
-  aq rxJ;
-  public int rxK;
-  public int rxL;
-  public boolean rxM = false;
-  public FaceActionUI rxp;
+  private String sQY;
+  b sXA;
+  private e sXB;
+  private float sXC;
+  private String sXD;
+  public a sXE;
+  public int sXF;
+  public int sXG;
+  public FaceActionUI sXH;
+  public boolean sXI = false;
   int scene;
+  MMHandler workerHandler;
   
   static
   {
     AppMethodBeat.i(104222);
-    rxC = new d();
+    sXz = new d();
     AppMethodBeat.o(104222);
   }
   
   public final void a(FaceActionUI paramFaceActionUI)
   {
     AppMethodBeat.i(104215);
-    com.tencent.mm.plugin.facedetectaction.a.a locala = new com.tencent.mm.plugin.facedetectaction.a.a(this.scene, this.packageName, this.dGY);
-    com.tencent.mm.kernel.g.ajj().a(2696, this);
-    com.tencent.mm.kernel.g.ajj().a(locala, 0);
-    this.rxp = paramFaceActionUI;
+    com.tencent.mm.plugin.flash.c.b.axn("reqCfg");
+    com.tencent.mm.plugin.facedetectaction.a.a locala = new com.tencent.mm.plugin.facedetectaction.a.a(this.scene, this.packageName, this.dYK);
+    g.azz().a(2696, this);
+    g.azz().a(locala, 0);
+    this.sXH = paramFaceActionUI;
     AppMethodBeat.o(104215);
   }
   
-  public final void ad(Runnable paramRunnable)
+  public final void aj(Runnable paramRunnable)
   {
     AppMethodBeat.i(104217);
-    if (this.rxJ != null) {
-      this.rxJ.post(paramRunnable);
+    if (this.workerHandler != null) {
+      this.workerHandler.post(paramRunnable);
     }
     AppMethodBeat.o(104217);
   }
@@ -77,46 +80,50 @@ public final class d
   public final void onBackPressed()
   {
     AppMethodBeat.i(104218);
-    if (this.rxp != null)
+    if (this.sXH != null)
     {
       if ((this.mStatus == 0) || (this.mStatus == 1))
       {
-        this.rxp.a("cancel", 90004, null, Boolean.valueOf(this.rxp.ryl));
+        this.sXH.a("cancel", 90004, null, Boolean.valueOf(this.sXH.sYp));
         AppMethodBeat.o(104218);
         return;
       }
       if (this.mStatus == 2)
       {
-        this.rxp.a("cancel", 90025, null, Boolean.valueOf(this.rxp.ryl));
+        this.sXH.a("cancel", 0, null, Boolean.valueOf(this.sXH.sYp));
         AppMethodBeat.o(104218);
         return;
       }
       if (this.mStatus == 3) {
-        this.rxp.a("cancel", 90006, null, Boolean.valueOf(this.rxp.ryl));
+        this.sXH.a("cancel", 90006, null, Boolean.valueOf(this.sXH.sYp));
       }
     }
     AppMethodBeat.o(104218);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(104216);
-    ae.i("MicroMsg.FaceCheckActionMgr", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramn });
-    if ((paramn instanceof com.tencent.mm.plugin.facedetectaction.a.a))
+    Log.i("MicroMsg.FaceCheckActionMgr", "onSceneEnd, errType: %s, errCode: %s, errMsg: %s, scene: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, paramq });
+    if ((paramq instanceof com.tencent.mm.plugin.facedetectaction.a.a))
     {
-      com.tencent.mm.kernel.g.ajj().b(2696, this);
-      paramn = (com.tencent.mm.plugin.facedetectaction.a.a)paramn;
+      g.azz().b(2696, this);
+      paramq = (com.tencent.mm.plugin.facedetectaction.a.a)paramq;
+      com.tencent.mm.plugin.flash.c.b.s("errorType", paramInt1 + "#" + paramInt2);
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = paramn.rxj;
-        ae.i("MicroMsg.FaceCheckActionMgr", "GetFaceCheckAction, ret_code: %s, ret_msg: %s, action_data: %s, reduction_ratio: %s, take_message: %s", new Object[] { Integer.valueOf(paramString.oGt), paramString.oGu, paramString.action_data, Float.valueOf(paramString.GRI), paramString.GoW });
-        if (paramString.oGt == 0)
+        paramString = paramq.sXg;
+        com.tencent.mm.plugin.flash.c.b.dLj().eqT = paramString.pTZ;
+        com.tencent.mm.plugin.flash.c.b.s("rspCfg", Integer.valueOf(paramString.pTZ));
+        com.tencent.mm.plugin.flash.c.b.s("msgCfg", paramString.pUa);
+        Log.i("MicroMsg.FaceCheckActionMgr", "GetFaceCheckAction, ret_code: %s, ret_msg: %s, action_data: %s, reduction_ratio: %s, take_message: %s", new Object[] { Integer.valueOf(paramString.pTZ), paramString.pUa, paramString.action_data, Float.valueOf(paramString.LVN), paramString.LjH });
+        if (paramString.pTZ == 0)
         {
-          this.rxF = paramString.person_id;
-          this.rpA = paramString.action_data;
-          this.rxG = paramString.GRI;
-          this.rxH = paramString.GoW;
-          switch (bu.getInt(this.rpA, -1))
+          this.personId = paramString.person_id;
+          this.sQY = paramString.action_data;
+          this.sXC = paramString.LVN;
+          this.sXD = paramString.LjH;
+          switch (Util.getInt(this.sQY, -1))
           {
           case 2: 
           case 4: 
@@ -125,61 +132,61 @@ public final class d
           }
           while (paramInt1 == -1)
           {
-            if (this.rxI == null) {
-              break label663;
+            if (this.sXE == null) {
+              break label726;
             }
-            this.rxI.a(1, -1, "", "", 1);
+            this.sXE.a(1, -1, "", "", 1);
             AppMethodBeat.o(104216);
             return;
             paramInt1 = 1;
             continue;
             paramInt1 = 2;
           }
-          paramString = paramString.GRJ;
-          ae.i("MicroMsg.FaceCheckActionMgr", "onGetLiveTypeFinish, liveType: %s, actionHint: %s", new Object[] { Integer.valueOf(paramInt1), paramString });
-          paramn = this.rxD;
-          MMActivity localMMActivity = this.fNT;
+          paramString = paramString.LVO;
+          Log.i("MicroMsg.FaceCheckActionMgr", "onGetLiveTypeFinish, liveType: %s, actionHint: %s", new Object[] { Integer.valueOf(paramInt1), paramString });
+          paramq = this.sXA;
+          MMActivity localMMActivity = this.gte;
           b.tryLoadLibrary();
           if (!PluginFace.isEnabled()) {
             paramInt2 = 0;
           }
           while (paramInt2 == 0)
           {
-            ae.i("MicroMsg.FaceCheckActionMgr", "init face actionsource failed");
+            Log.i("MicroMsg.FaceCheckActionMgr", "init face actionsource failed");
             AppMethodBeat.o(104216);
             return;
-            paramInt2 = YTCommonInterface.initAuth(ak.getContext(), "rel_wechat_2055-12-06.lic1.2", 0);
-            ae.i("MicroMsg.FaceCheckActionEngine", "initAuth ret: %s", new Object[] { Integer.valueOf(paramInt2) });
-            paramn.rxy = paramInt1;
+            paramInt2 = YTCommonInterface.initAuth(MMApplicationContext.getContext(), "rel_wechat_2055-12-06.lic1.2", 0);
+            Log.i("MicroMsg.FaceCheckActionEngine", "initAuth ret: %s", new Object[] { Integer.valueOf(paramInt2) });
+            paramq.liveType = paramInt1;
             if (paramInt2 != 0)
             {
-              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(917L, 58L, 1L, false);
+              h.CyF.idkeyStat(917L, 58L, 1L, false);
               paramInt2 = 0;
             }
             else
             {
-              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(917L, 57L, 1L, false);
-              ae.i("MicroMsg.FaceCheckActionEngine", "initYoutuInstance()");
+              h.CyF.idkeyStat(917L, 57L, 1L, false);
+              Log.i("MicroMsg.FaceCheckActionEngine", "initYoutuInstance()");
               paramInt2 = -1;
               if (PluginFace.isEnabled()) {
-                paramInt2 = YTFaceTrack.GlobalInit(com.tencent.mm.b.q.k(p.cuM(), false) + "/");
+                paramInt2 = YTFaceTrack.GlobalInit(com.tencent.mm.b.q.k(p.cTh(), false) + "/");
               }
-              ae.i("MicroMsg.FaceCheckActionEngine", "YTPoseDetectInterface.initModel ret: %s", new Object[] { Integer.valueOf(paramInt2) });
+              Log.i("MicroMsg.FaceCheckActionEngine", "YTPoseDetectInterface.initModel ret: %s", new Object[] { Integer.valueOf(paramInt2) });
               if (paramInt2 != 0)
               {
                 paramInt2 = 0;
-                label473:
+                label536:
                 if (paramInt2 == 0) {
-                  break label620;
+                  break label683;
                 }
                 YTCommonExInterface.setAppBrightness(localMMActivity, 255);
-                paramn.status = 1;
+                paramq.status = 1;
               }
-              label620:
+              label683:
               for (paramInt2 = 1;; paramInt2 = 0)
               {
-                paramn.rxz = new b.1(paramn);
-                a.b.cvN().rxu = paramn.rxz;
+                paramq.sXw = new b.1(paramq);
+                a.b.cTX().sXs = paramq.sXw;
                 break;
                 Object localObject = YTFaceTrack.getInstance().GetFaceDetectParam();
                 ((YTFaceDetectParam)localObject).bigger_face_mode = true;
@@ -192,71 +199,74 @@ public final class d
                 paramInt2 = YTPoseDetectInterface.initModel();
                 if (paramInt2 != 0)
                 {
-                  ae.i("MicroMsg.FaceCheckActionEngine", "YTFaceTraceInterface.initModel failed，return:".concat(String.valueOf(paramInt2)));
+                  Log.i("MicroMsg.FaceCheckActionEngine", "YTFaceTraceInterface.initModel failed，return:".concat(String.valueOf(paramInt2)));
                   paramInt2 = 0;
-                  break label473;
+                  break label536;
                 }
                 paramInt2 = 1;
                 YTPoseDetectInterface.setSafetyLevel(1);
-                break label473;
+                break label536;
               }
             }
           }
           this.mStatus = 0;
-          this.rxD.rxA = new b.a()
+          this.sXA.sXx = new b.a()
           {
             public final void a(byte[][] paramAnonymousArrayOfByte, int paramAnonymousInt1, int paramAnonymousInt2)
             {
               AppMethodBeat.i(104211);
-              ae.i("MicroMsg.FaceCheckActionMgr", "onStartRecord, frameDatas: %s, width: %s, height: %s", new Object[] { paramAnonymousArrayOfByte, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+              Log.i("MicroMsg.FaceCheckActionMgr", "onStartRecord, frameDatas: %s, width: %s, height: %s", new Object[] { paramAnonymousArrayOfByte, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
               if (paramAnonymousArrayOfByte != null) {
                 d.a(d.this, paramAnonymousArrayOfByte, paramAnonymousInt1, paramAnonymousInt2);
               }
               AppMethodBeat.o(104211);
             }
           };
-          if (this.rxI != null) {
-            this.rxI.aV(paramInt1, paramString);
+          if (this.sXE != null) {
+            this.sXE.aX(paramInt1, paramString);
           }
-          label663:
+          label726:
           AppMethodBeat.o(104216);
           return;
         }
-        if (this.rxI != null) {
-          this.rxI.a(1, paramString.oGt, paramString.oGu, "", 1);
+        if (this.sXE != null) {
+          this.sXE.a(1, paramString.pTZ, paramString.pUa, "", 1);
         }
         AppMethodBeat.o(104216);
         return;
       }
-      ae.e("MicroMsg.FaceCheckActionMgr", "get face check action failed!");
-      if (this.rxI != null) {
-        this.rxI.a(1, paramInt2, paramString, "", 1);
+      Log.e("MicroMsg.FaceCheckActionMgr", "get face check action failed!");
+      if (this.sXE != null) {
+        this.sXE.a(1, paramInt2, paramString, "", 1);
       }
       AppMethodBeat.o(104216);
       return;
     }
-    if ((paramn instanceof com.tencent.mm.plugin.facedetectaction.a.b))
+    if ((paramq instanceof com.tencent.mm.plugin.facedetectaction.a.b))
     {
-      paramn = (com.tencent.mm.plugin.facedetectaction.a.b)paramn;
-      com.tencent.mm.kernel.g.ajj().b(2726, this);
-      paramn = paramn.rxl;
-      ae.i("MicroMsg.FaceCheckActionMgr", "get face check result, ret_code: %s, ret_msg: %s serialId:%s", new Object[] { Integer.valueOf(paramn.oGt), paramn.oGu, paramn.GRP });
+      paramq = (com.tencent.mm.plugin.facedetectaction.a.b)paramq;
+      g.azz().b(2726, this);
+      paramq = paramq.sXi;
+      Log.i("MicroMsg.FaceCheckActionMgr", "get face check result, ret_code: %s, ret_msg: %s serialId:%s", new Object[] { Integer.valueOf(paramq.pTZ), paramq.pUa, paramq.LVU });
+      com.tencent.mm.plugin.flash.c.b.s("rspVerify", Integer.valueOf(paramq.pTZ));
+      com.tencent.mm.plugin.flash.c.b.s("msgVerify", paramq.pUa);
+      com.tencent.mm.plugin.flash.c.b.dLj().eqV = paramq.pTZ;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (paramn.oGt != 0)
+        if (paramq.pTZ != 0)
         {
-          if (this.rxI != null)
+          if (this.sXE != null)
           {
-            this.rxI.a(3, paramn.oGt, paramn.oGu, paramn.GRP, paramn.GRO);
+            this.sXE.a(3, paramq.pTZ, paramq.pUa, paramq.LVU, paramq.LVT);
             AppMethodBeat.o(104216);
           }
         }
         else
         {
-          ae.i("MicroMsg.FaceCheckActionMgr", "on verify finish!");
-          if (this.rxI != null)
+          Log.i("MicroMsg.FaceCheckActionMgr", "on verify finish!");
+          if (this.sXE != null)
           {
-            this.rxI.a(paramn);
+            this.sXE.a(paramq);
             this.mStatus = 2;
             AppMethodBeat.o(104216);
           }
@@ -264,9 +274,9 @@ public final class d
       }
       else
       {
-        ae.e("MicroMsg.FaceCheckActionMgr", "get face check result failed");
-        if (this.rxI != null) {
-          this.rxI.a(3, paramInt2, paramString, paramn.GRP, 1);
+        Log.e("MicroMsg.FaceCheckActionMgr", "get face check result failed");
+        if (this.sXE != null) {
+          this.sXE.a(3, paramInt2, paramString, paramq.LVU, 1);
         }
       }
     }
@@ -276,27 +286,27 @@ public final class d
   public final void release(boolean paramBoolean)
   {
     AppMethodBeat.i(104219);
-    ae.i("MicroMsg.FaceCheckActionMgr", "release, recreate: %s", new Object[] { Boolean.valueOf(paramBoolean) });
-    if (this.rxD != null)
+    Log.i("MicroMsg.FaceCheckActionMgr", "release, recreate: %s", new Object[] { Boolean.valueOf(paramBoolean) });
+    if (this.sXA != null)
     {
       b.release();
-      this.rxD = new b();
+      this.sXA = new b();
     }
-    if (this.rxE != null)
+    if (this.sXB != null)
     {
-      if (com.tencent.mm.plugin.facedetect.e.a.cvw().isStarted()) {
-        com.tencent.mm.plugin.facedetect.e.a.cvw().cvy();
+      if (com.tencent.mm.plugin.facedetect.e.a.cTF().isStarted()) {
+        com.tencent.mm.plugin.facedetect.e.a.cTF().cTH();
       }
-      this.rxE = null;
+      this.sXB = null;
     }
     if (paramBoolean)
     {
-      if (this.rxJ != null)
+      if (this.workerHandler != null)
       {
-        this.rxJ.getSerial().Msx.quit();
-        this.rxJ = null;
+        this.workerHandler.getSerial().RUS.quit();
+        this.workerHandler = null;
       }
-      rxC = new d();
+      sXz = new d();
     }
     AppMethodBeat.o(104219);
   }
@@ -305,16 +315,16 @@ public final class d
   {
     public abstract void a(int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3);
     
-    public abstract void a(bbv parambbv);
+    public abstract void a(bnh parambnh);
     
-    public abstract void aV(int paramInt, String paramString);
+    public abstract void aX(int paramInt, String paramString);
     
-    public abstract void cvO();
+    public abstract void cTY();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.b.d
  * JD-Core Version:    0.7.0.1
  */

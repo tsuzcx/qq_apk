@@ -6,57 +6,47 @@ import com.tencent.mm.plugin.report.a;
 public final class ac
   extends a
 {
-  public long dWc;
-  public long dWd;
-  public long dWe;
-  public long dWf = 0L;
-  public long dWg = 0L;
+  public String enA = "";
+  public String enB = "";
+  public int enC = 0;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(73526);
+    AppMethodBeat.i(121744);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dWc);
+    ((StringBuffer)localObject).append(this.enA);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWd);
+    ((StringBuffer)localObject).append(this.enB);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWe);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWf);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dWg);
+    ((StringBuffer)localObject).append(this.enC);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(73526);
+    aMq((String)localObject);
+    AppMethodBeat.o(121744);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(73527);
+    AppMethodBeat.i(121745);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("favid:").append(this.dWc);
+    ((StringBuffer)localObject).append("ChatroomName:").append(this.enA);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("favsize:").append(this.dWd);
+    ((StringBuffer)localObject).append("ExptScore:").append(this.enB);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cachecnt:").append(this.dWe);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cachelsize:").append(this.dWf);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cachesuccess:").append(this.dWg);
+    ((StringBuffer)localObject).append("ExptFlag:").append(this.enC);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(73527);
+    AppMethodBeat.o(121745);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18053;
+    return 15459;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ac
  * JD-Core Version:    0.7.0.1
  */

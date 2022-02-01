@@ -2,72 +2,72 @@ package com.tencent.mm.plugin.wallet_core.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gz;
+import com.tencent.mm.g.c.hk;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.protocal.protobuf.cjx;
-import com.tencent.mm.protocal.protobuf.ecv;
-import com.tencent.mm.protocal.protobuf.edb;
-import com.tencent.mm.protocal.protobuf.edc;
-import com.tencent.mm.protocal.protobuf.ede;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.daf;
+import com.tencent.mm.protocal.protobuf.exd;
+import com.tencent.mm.protocal.protobuf.exj;
+import com.tencent.mm.protocal.protobuf.exk;
+import com.tencent.mm.protocal.protobuf.exm;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
 public final class aj
-  extends gz
+  extends hk
 {
-  public static c.a info;
-  private cjx Dsj;
-  public ecv Dsk;
-  public edc Dsl;
-  public boolean Dsm;
-  public String Dsn;
-  public String Dso;
-  public String Dsp;
-  public String Dsq;
-  public String vCm;
+  public static IAutoDBItem.MAutoDBInfo info;
+  public String IbA;
+  public String IbB;
+  public String IbC;
+  private daf Ibv;
+  public exd Ibw;
+  public exk Ibx;
+  public boolean Iby;
+  public String Ibz;
+  public String yXn;
   
   static
   {
     AppMethodBeat.i(70471);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "wallet_region";
-    locala.IBN.put("wallet_region", "INTEGER PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "wallet_region";
+    localMAutoDBInfo.colsMap.put("wallet_region", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" wallet_region INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "wallet_region";
-    locala.columns[1] = "wallet_grey_item_buf";
-    locala.IBN.put("wallet_grey_item_buf", "BLOB");
+    localMAutoDBInfo.primaryKey = "wallet_region";
+    localMAutoDBInfo.columns[1] = "wallet_grey_item_buf";
+    localMAutoDBInfo.colsMap.put("wallet_grey_item_buf", "BLOB");
     localStringBuilder.append(" wallet_grey_item_buf BLOB");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(70471);
   }
   
   public aj()
   {
     AppMethodBeat.i(70469);
-    this.Dsj = new cjx();
-    this.Dsk = null;
-    this.Dsl = null;
-    this.Dsm = false;
-    this.Dsn = "";
-    this.Dso = "";
-    this.Dsp = "";
-    this.vCm = "";
-    this.Dsq = "";
-    if (this.Dsk == null) {
-      this.Dsk = new ecv();
+    this.Ibv = new daf();
+    this.Ibw = null;
+    this.Ibx = null;
+    this.Iby = false;
+    this.Ibz = "";
+    this.IbA = "";
+    this.IbB = "";
+    this.yXn = "";
+    this.IbC = "";
+    if (this.Ibw == null) {
+      this.Ibw = new exd();
     }
-    if (this.Dsl == null) {
-      this.Dsl = new edc();
+    if (this.Ibx == null) {
+      this.Ibx = new exk();
     }
     AppMethodBeat.o(70469);
   }
@@ -76,23 +76,23 @@ public final class aj
   {
     AppMethodBeat.i(70470);
     super.convertFrom(paramCursor);
-    this.Dsj = new cjx();
+    this.Ibv = new daf();
     try
     {
-      this.Dsj = ((cjx)this.Dsj.parseFrom(this.field_wallet_grey_item_buf));
-      this.Dsk = this.Dsj.Hwt;
-      this.Dsl = this.Dsj.Hwu;
-      this.Dsm = this.Dsj.Hwv;
-      this.Dsq = "";
-      paramCursor = this.Dsj.Hww.iterator();
+      this.Ibv = ((daf)this.Ibv.parseFrom(this.field_wallet_grey_item_buf));
+      this.Ibw = this.Ibv.MFs;
+      this.Ibx = this.Ibv.MFt;
+      this.Iby = this.Ibv.MFu;
+      this.IbC = "";
+      paramCursor = this.Ibv.MFv.iterator();
       for (;;)
       {
         if (paramCursor.hasNext())
         {
           String str = (String)paramCursor.next();
-          this.Dsq = (this.Dsq + str + "\n");
+          this.IbC = (this.IbC + str + "\n");
           continue;
-          if (this.Dsk != null) {
+          if (this.Ibw != null) {
             break;
           }
         }
@@ -100,38 +100,38 @@ public final class aj
     }
     catch (Exception paramCursor)
     {
-      ae.e("WalletRegionGreyItem", "parser PayIBGGetOverseaWalletRsp error");
+      Log.e("WalletRegionGreyItem", "parser PayIBGGetOverseaWalletRsp error");
     }
     for (;;)
     {
-      this.Dsk = new ecv();
-      if (this.Dsl == null) {
-        this.Dsl = new edc();
+      this.Ibw = new exd();
+      if (this.Ibx == null) {
+        this.Ibx = new exk();
       }
       AppMethodBeat.o(70470);
       return;
-      if (this.Dsj.Hwr != null)
+      if (this.Ibv.MFq != null)
       {
-        this.Dsn = z.a(this.Dsj.Hwr.Iik);
-        this.Dso = z.a(this.Dsj.Hwr.Iil);
+        this.Ibz = z.a(this.Ibv.MFq.NuO);
+        this.IbA = z.a(this.Ibv.MFq.NuP);
       }
-      if (this.Dsj.Hws != null)
+      if (this.Ibv.MFr != null)
       {
-        this.Dsp = z.a(this.Dsj.Hws.Iii);
-        this.vCm = z.a(this.Dsj.Hws.Iij);
+        this.IbB = z.a(this.Ibv.MFr.NuM);
+        this.yXn = z.a(this.Ibv.MFr.NuN);
       }
-      ae.v("WalletRegionGreyItem", "noticeContent %s", new Object[] { this.Dsp });
+      Log.v("WalletRegionGreyItem", "noticeContent %s", new Object[] { this.IbB });
     }
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.aj
  * JD-Core Version:    0.7.0.1
  */

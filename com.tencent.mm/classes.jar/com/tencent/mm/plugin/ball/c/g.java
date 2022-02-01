@@ -1,23 +1,26 @@
 package com.tencent.mm.plugin.ball.c;
 
-import com.tencent.mm.plugin.ball.model.BallInfo;
-import d.l;
+import android.view.MotionEvent;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListenerAdapter;", "Lcom/tencent/mm/plugin/ball/api/OnFloatBallInfoEventListener;", "()V", "onFloatBallInfoAdded", "", "ballInfo", "Lcom/tencent/mm/plugin/ball/model/BallInfo;", "onFloatBallInfoClicked", "onFloatBallInfoExposed", "onFloatBallInfoRemoved", "api-ball_release"})
-public class g
-  implements f
+public abstract interface g
 {
-  public void c(BallInfo paramBallInfo) {}
+  public abstract void M(MotionEvent paramMotionEvent);
   
-  public void d(BallInfo paramBallInfo) {}
+  public abstract void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2);
   
-  public void e(BallInfo paramBallInfo) {}
+  public abstract void chY();
   
-  public void h(BallInfo paramBallInfo) {}
+  public abstract void chZ();
+  
+  public abstract void cia();
+  
+  public abstract void cib();
+  
+  public abstract void onOrientationChange(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.c.g
  * JD-Core Version:    0.7.0.1
  */

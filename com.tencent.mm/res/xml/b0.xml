@@ -1,10 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.base.preference.HeadImgNewPreference android:key="settings_avatar" android:layout="@layout/aop" android:title="@string/c8x" />
-    <Preference android:key="settings_nickname" android:layout="@layout/aop" android:title="@string/cb_" />
-    <PreferenceSmallCategory />
-    <Preference android:key="settings_sex" android:layout="@layout/aop" android:title="@string/f_v" />
-    <Preference android:key="settings_district" android:layout="@layout/aop" android:title="@string/c_0" />
-    <PreferenceSmallCategory />
-    <Preference android:key="settings_signature" android:layout="@layout/aop" android:title="@string/cde" />
-</PreferenceScreen>
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android" />

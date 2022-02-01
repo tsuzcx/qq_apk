@@ -5,33 +5,33 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class g
   extends com.tencent.mm.bw.a
 {
-  public int xri;
-  public long xrk;
+  public int Brl;
+  public long Brn;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(122661);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.xri);
-      paramVarArgs.aZ(2, this.xrk);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.Brl);
+      paramVarArgs.bb(2, this.Brn);
       AppMethodBeat.o(122661);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.xri);
-      int i = f.a.a.b.b.a.p(2, this.xrk);
+      paramInt = g.a.a.b.b.a.bu(1, this.Brl);
+      int i = g.a.a.b.b.a.r(2, this.Brn);
       AppMethodBeat.o(122661);
       return paramInt + 0 + i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(122661);
@@ -39,7 +39,7 @@ public final class g
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       g localg = (g)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -47,11 +47,11 @@ public final class g
         AppMethodBeat.o(122661);
         return -1;
       case 1: 
-        localg.xri = locala.OmT.zc();
+        localg.Brl = locala.UbS.zi();
         AppMethodBeat.o(122661);
         return 0;
       }
-      localg.xrk = locala.OmT.zd();
+      localg.Brn = locala.UbS.zl();
       AppMethodBeat.o(122661);
       return 0;
     }

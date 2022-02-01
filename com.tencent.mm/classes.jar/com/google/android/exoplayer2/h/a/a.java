@@ -14,19 +14,19 @@ public abstract interface a
   
   public abstract long bp(String paramString);
   
-  public abstract g d(String paramString, long paramLong);
-  
   public abstract g e(String paramString, long paramLong);
   
   public abstract File e(String paramString, long paramLong1, long paramLong2);
   
   public abstract long f(String paramString, long paramLong1, long paramLong2);
   
-  public abstract void f(String paramString, long paramLong);
+  public abstract g f(String paramString, long paramLong);
+  
+  public abstract void g(String paramString, long paramLong);
   
   public abstract void w(File paramFile);
   
-  public abstract long wF();
+  public abstract long wN();
   
   public static class a
     extends IOException
@@ -53,7 +53,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.h.a.a
  * JD-Core Version:    0.7.0.1
  */

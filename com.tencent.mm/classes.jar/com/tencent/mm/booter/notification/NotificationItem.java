@@ -20,25 +20,25 @@ import com.tencent.mm.booter.notification.a.g;
 import com.tencent.mm.booter.notification.queue.NotificationQueue;
 import com.tencent.mm.booter.notification.queue.a;
 import com.tencent.mm.booter.notification.queue.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 
 public class NotificationItem
   implements Parcelable
 {
   public static final Parcelable.Creator<NotificationItem> CREATOR;
-  Notification HN;
+  Notification HX;
   private final String TAG;
   private Bitmap b;
-  private PendingIntent fIP;
-  public String fIQ;
-  public long fIR;
-  public int fIS;
-  public boolean fIT;
-  public int fIU;
-  public int fIV;
+  private PendingIntent god;
+  public String goe;
+  public long gof;
+  public int gog;
+  public boolean goh;
+  public int goi;
+  public int goj;
   public int id;
   
   static
@@ -64,19 +64,19 @@ public class NotificationItem
     AppMethodBeat.i(19989);
     this.TAG = "MicroMsg.NotificationItem";
     this.id = -1;
-    this.fIR = 0L;
-    this.fIS = 0;
-    this.fIT = true;
-    this.fIU = 0;
-    this.fIV = 0;
+    this.gof = 0L;
+    this.gog = 0;
+    this.goh = true;
+    this.goi = 0;
+    this.goj = 0;
     this.id = paramInt;
-    this.fIQ = paramString;
+    this.goe = paramString;
     if (Build.VERSION.SDK_INT >= 11) {
       this.b = paramNotification.largeIcon;
     }
-    this.HN = paramNotification;
-    this.fIT = paramBoolean;
-    this.fIU = 0;
+    this.HX = paramNotification;
+    this.goh = paramBoolean;
+    this.goi = 0;
     AppMethodBeat.o(19989);
   }
   
@@ -90,27 +90,27 @@ public class NotificationItem
     AppMethodBeat.i(19992);
     this.TAG = "MicroMsg.NotificationItem";
     this.id = -1;
-    this.fIR = 0L;
-    this.fIS = 0;
-    this.fIT = true;
-    this.fIU = 0;
-    this.fIV = 0;
+    this.gof = 0L;
+    this.gog = 0;
+    this.goh = true;
+    this.goi = 0;
+    this.goj = 0;
     if (paramParcel == null)
     {
       AppMethodBeat.o(19992);
       return;
     }
     this.id = paramParcel.readInt();
-    this.fIQ = paramParcel.readString();
+    this.goe = paramParcel.readString();
     this.b = ((Bitmap)paramParcel.readParcelable(Bitmap.class.getClassLoader()));
-    this.HN = ((Notification)paramParcel.readParcelable(Notification.class.getClassLoader()));
-    this.fIP = ((PendingIntent)paramParcel.readParcelable(PendingIntent.class.getClassLoader()));
+    this.HX = ((Notification)paramParcel.readParcelable(Notification.class.getClassLoader()));
+    this.god = ((PendingIntent)paramParcel.readParcelable(PendingIntent.class.getClassLoader()));
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.fIT = bool;
-      this.fIR = paramParcel.readLong();
-      this.fIS = paramParcel.readInt();
+      this.goh = bool;
+      this.gof = paramParcel.readLong();
+      this.gog = paramParcel.readInt();
       AppMethodBeat.o(19992);
       return;
     }
@@ -130,12 +130,12 @@ public class NotificationItem
         Context localContext;
         if (this.id == -1)
         {
-          i = b.Xw().o(this.fIQ, this.fIT);
+          i = b.alj().o(this.goe, this.goh);
           this.id = i;
-          localContext = ak.getContext();
+          localContext = MMApplicationContext.getContext();
           if (localContext == null)
           {
-            ae.e("MicroMsg.NotificationItem", "error, show notification but MMApplicationContext.getContext() == null");
+            Log.e("MicroMsg.NotificationItem", "error, show notification but MMApplicationContext.getContext() == null");
             AppMethodBeat.o(19991);
             i = -1;
             return i;
@@ -146,44 +146,44 @@ public class NotificationItem
           i = this.id;
           continue;
         }
-        if (this.HN == null)
+        if (this.HX == null)
         {
-          ae.e("MicroMsg.NotificationItem", "error, show notification but mNotification == null");
+          Log.e("MicroMsg.NotificationItem", "error, show notification but mNotification == null");
           AppMethodBeat.o(19991);
           i = -1;
           continue;
         }
-        localObject1 = b.Xw();
-        localObject3 = this.fIQ;
-        if (bu.isNullOrNil((String)localObject3))
+        localObject1 = b.alj();
+        localObject3 = this.goe;
+        if (Util.isNullOrNil((String)localObject3))
         {
           localObject1 = null;
           if (localObject1 != null)
           {
-            localObject3 = b.Xw();
+            localObject3 = b.alj();
             i = ((NotificationItem)localObject1).id;
-            ae.d("MicroMsg.Notification.Queue", "mark: %d", new Object[] { Integer.valueOf(i) });
+            Log.d("MicroMsg.Notification.Queue", "mark: %d", new Object[] { Integer.valueOf(i) });
             ((b)localObject3).mark = i;
           }
-          if ((localObject1 != null) && (((NotificationItem)localObject1).HN.tickerText != null) && (this.HN.tickerText != null) && (((NotificationItem)localObject1).HN.tickerText.equals(this.HN.tickerText))) {
-            this.HN.tickerText += " ";
+          if ((localObject1 != null) && (((NotificationItem)localObject1).HX.tickerText != null) && (this.HX.tickerText != null) && (((NotificationItem)localObject1).HX.tickerText.equals(this.HX.tickerText))) {
+            this.HX.tickerText += " ";
           }
-          localObject3 = b.Xw();
+          localObject3 = b.alj();
           if (this.id == -1)
           {
-            ae.e("MicroMsg.Notification.Queue", "notification id = -1(NotificationItem.INVALID_ID) when put");
+            Log.e("MicroMsg.Notification.Queue", "notification id = -1(NotificationItem.INVALID_ID) when put");
             localObject1 = localBundle;
             label269:
             if (localObject1 != null) {
-              b.Xw().cancel(((NotificationItem)localObject1).id);
+              b.alj().cancel(((NotificationItem)localObject1).id);
             }
-            this.fIV = e.a(this.HN, paramg);
+            this.goj = e.a(this.HX, paramg);
             if (localContext != null)
             {
-              if (this.HN != null) {
+              if (this.HX != null) {
                 break label538;
               }
-              ae.e("MicroMsg.NotificationItem", "error, notify but mNotification == null");
+              Log.e("MicroMsg.NotificationItem", "error, notify but mNotification == null");
             }
             i = this.id;
             AppMethodBeat.o(19991);
@@ -201,55 +201,55 @@ public class NotificationItem
         if (localIterator.hasNext())
         {
           localObject1 = (NotificationItem)localIterator.next();
-          if ((localObject1 != null) && (((NotificationItem)localObject1).fIQ != null) && (((NotificationItem)localObject1).fIQ.equals(localObject3)))
+          if ((localObject1 != null) && (((NotificationItem)localObject1).goe != null) && (((NotificationItem)localObject1).goe.equals(localObject3)))
           {
             break;
             if (((b)localObject3).mark > 0)
             {
               if (((b)localObject3).mark == this.id)
               {
-                ae.d("MicroMsg.Notification.Queue", "remove mark: %d", new Object[] { Integer.valueOf(((b)localObject3).mark) });
-                ((b)localObject3).kV(((b)localObject3).mark);
+                Log.d("MicroMsg.Notification.Queue", "remove mark: %d", new Object[] { Integer.valueOf(((b)localObject3).mark) });
+                ((b)localObject3).nX(((b)localObject3).mark);
               }
               ((b)localObject3).mark = -1;
             }
-            ((b)localObject3).kV(this.id);
+            ((b)localObject3).nX(this.id);
             localObject1 = localObject2;
-            if (((b)localObject3).fJb.size() >= 5) {
-              localObject1 = ((b)localObject3).Xx();
+            if (((b)localObject3).goq.size() >= 5) {
+              localObject1 = ((b)localObject3).alk();
             }
-            ((b)localObject3).fJb.e(this);
-            ((b)localObject3).fJc.c(this);
-            ae.i("MicroMsg.Notification.Queue", "put item: %s, queuesize: %d", new Object[] { toString(), Integer.valueOf(((b)localObject3).fJb.size()) });
+            ((b)localObject3).goq.e(this);
+            ((b)localObject3).gor.c(this);
+            Log.i("MicroMsg.Notification.Queue", "put item: %s, queuesize: %d", new Object[] { toString(), Integer.valueOf(((b)localObject3).goq.size()) });
             break label269;
             label538:
-            paramg = ak.getContext();
+            paramg = MMApplicationContext.getContext();
             if (paramg == null)
             {
-              ae.e("MicroMsg.NotificationItem", "error, safeCheck but MMApplicationContext.getContext() == null");
+              Log.e("MicroMsg.NotificationItem", "error, safeCheck but MMApplicationContext.getContext() == null");
               label554:
-              ae.i("MicroMsg.NotificationItem", "notificaiton.defaults: %d, notification.sound: %s, notification.vibrate: %s", new Object[] { Integer.valueOf(this.HN.defaults), this.HN.sound, g.a(this.HN.vibrate) });
+              Log.i("MicroMsg.NotificationItem", "notificaiton.defaults: %d, notification.sound: %s, notification.vibrate: %s", new Object[] { Integer.valueOf(this.HX.defaults), this.HX.sound, g.a(this.HX.vibrate) });
             }
             for (;;)
             {
               try
               {
-                if ((com.tencent.mm.booter.notification.a.e.XG() == 1) && (this.HN.defaults != 2) && (this.HN.vibrate == null))
+                if ((com.tencent.mm.booter.notification.a.e.alt() == 1) && (this.HX.defaults != 2) && (this.HX.vibrate == null))
                 {
-                  this.HN.defaults = 0;
-                  this.HN.sound = null;
-                  ae.i("MicroMsg.NotificationItem", "mode == vibrate & wechat shake is close, so notification switch to silent");
+                  this.HX.defaults = 0;
+                  this.HX.sound = null;
+                  Log.i("MicroMsg.NotificationItem", "mode == vibrate & wechat shake is close, so notification switch to silent");
                 }
-                if (com.tencent.mm.compatible.util.d.lA(26))
+                if (com.tencent.mm.compatible.util.d.oD(26))
                 {
-                  ae.i("MicroMsg.NotificationItem", "manual add led to notification");
-                  this.HN.ledARGB = -16711936;
-                  this.HN.ledOnMS = 300;
-                  this.HN.ledOffMS = 1000;
+                  Log.i("MicroMsg.NotificationItem", "manual add led to notification");
+                  this.HX.ledARGB = -16711936;
+                  this.HX.ledOnMS = 300;
+                  this.HX.ledOffMS = 1000;
                 }
-                paramg = v.O(ak.getContext());
+                paramg = v.P(MMApplicationContext.getContext());
                 j = this.id;
-                localObject1 = this.HN;
+                localObject1 = this.HX;
                 localBundle = s.a((Notification)localObject1);
                 if ((localBundle == null) || (!localBundle.getBoolean("android.support.useSideChannel"))) {
                   continue;
@@ -259,33 +259,33 @@ public class NotificationItem
                   continue;
                 }
                 paramg.a(new v.b(paramg.mContext.getPackageName(), j, (Notification)localObject1));
-                paramg.Im.cancel(null, j);
+                paramg.Iw.cancel(null, j);
               }
               catch (Exception paramg)
               {
                 int j;
-                ae.printErrStackTrace("MicroMsg.NotificationItem", paramg, "Notification Exception?", new Object[0]);
+                Log.printErrStackTrace("MicroMsg.NotificationItem", paramg, "Notification Exception?", new Object[0]);
                 continue;
               }
-              if (this.fIR == 0L) {
+              if (this.gof == 0L) {
                 break;
               }
-              d.qW(this.fIR);
+              d.yO(this.gof);
               break;
-              if (this.HN == null)
+              if (this.HX == null)
               {
-                ae.e("MicroMsg.NotificationItem", "error, safeCheck but mNotification == null");
+                Log.e("MicroMsg.NotificationItem", "error, safeCheck but mNotification == null");
                 break label554;
               }
-              i = this.HN.icon;
+              i = this.HX.icon;
               if (paramg.getResources().getDrawable(i) != null) {
                 break label554;
               }
-              this.HN.icon = 2131232660;
+              this.HX.icon = 2131233070;
               break label554;
               i = 0;
               continue;
-              paramg.Im.notify(null, j, (Notification)localObject1);
+              paramg.Iw.notify(null, j, (Notification)localObject1);
             }
           }
         }
@@ -301,12 +301,12 @@ public class NotificationItem
       AppMethodBeat.i(19990);
       if ((this.b != null) && (!this.b.isRecycled()))
       {
-        ae.i("MicroMsg.NotificationItem", "recycle bitmap:%s", new Object[] { this.b.toString() });
+        Log.i("MicroMsg.NotificationItem", "recycle bitmap:%s", new Object[] { this.b.toString() });
         this.b.recycle();
       }
-      this.HN = null;
+      this.HX = null;
       this.b = null;
-      this.fIP = null;
+      this.god = null;
       AppMethodBeat.o(19990);
       return;
     }
@@ -321,7 +321,7 @@ public class NotificationItem
   public String toString()
   {
     AppMethodBeat.i(19994);
-    String str = "id: " + this.id + ",msgId: " + this.fIR + ",userName: " + this.fIQ + ",unreadCount: " + this.fIS;
+    String str = "id: " + this.id + ",msgId: " + this.gof + ",userName: " + this.goe + ",unreadCount: " + this.gog;
     AppMethodBeat.o(19994);
     return str;
   }
@@ -331,14 +331,14 @@ public class NotificationItem
     AppMethodBeat.i(19993);
     paramParcel.writeInt(this.id);
     String str;
-    if (this.fIQ == null)
+    if (this.goe == null)
     {
       str = "";
       paramParcel.writeString(str);
       paramParcel.writeParcelable(this.b, 0);
-      paramParcel.writeParcelable(this.HN, 0);
-      paramParcel.writeParcelable(this.fIP, 0);
-      if (!this.fIT) {
+      paramParcel.writeParcelable(this.HX, 0);
+      paramParcel.writeParcelable(this.god, 0);
+      if (!this.goh) {
         break label103;
       }
     }
@@ -346,18 +346,18 @@ public class NotificationItem
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.fIR);
-      paramParcel.writeInt(this.fIS);
+      paramParcel.writeLong(this.gof);
+      paramParcel.writeInt(this.gog);
       AppMethodBeat.o(19993);
       return;
-      str = this.fIQ;
+      str = this.goe;
       break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.notification.NotificationItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,102 +1,139 @@
 package com.tencent.mm.plugin.music.ui;
 
 import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ay.f;
-import com.tencent.mm.plugin.ball.f.d;
-import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.plugin.music.model.a.a;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.a.mx;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.lang.ref.WeakReference;
 
 public final class a
   extends com.tencent.mm.pluginsdk.ui.b.b
 {
-  private c kzS;
-  private View nFO;
-  private View nFP;
-  private TextView wCG;
+  private TextView And;
+  private f Ane;
+  private IListener lEl;
+  private View oQL;
+  private View oQM;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(63196);
+    this.Ane = null;
     if (this.view != null)
     {
-      this.wCG = ((TextView)this.view.findViewById(2131302598));
-      this.nFO = this.view.findViewById(2131302599);
-      this.nFP = this.view.findViewById(2131297183);
-      this.wCG.setTextSize(0, com.tencent.mm.cb.a.ax(ak.getContext(), 2131165466));
-      this.view.setOnClickListener(new a.1(this));
+      this.And = ((TextView)this.view.findViewById(2131305083));
+      this.oQL = this.view.findViewById(2131305084);
+      this.oQM = this.view.findViewById(2131297327);
+      this.And.setTextSize(0, com.tencent.mm.cb.a.aG(MMApplicationContext.getContext(), 2131165482));
+      this.view.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(63194);
+          Object localObject = new com.tencent.mm.hellhoundlib.b.b();
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/music/ui/MusicBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+          paramAnonymousView = com.tencent.mm.ay.a.bef();
+          if ((paramAnonymousView != null) && (paramAnonymousView.jfu) && (!TextUtils.isEmpty(paramAnonymousView.jfv)))
+          {
+            paramAnonymousView = paramAnonymousView.jfv;
+            Log.i("MusicBanner", "barBackToWebView is true, start to jump Url:%s", new Object[] { paramAnonymousView });
+            localObject = new Intent();
+            ((Intent)localObject).putExtra("rawUrl", paramAnonymousView);
+            c.b((Context)a.this.Kgr.get(), "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+          }
+          for (;;)
+          {
+            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/music/ui/MusicBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(63194);
+            return;
+            paramAnonymousView = new Intent();
+            h.CyF.a(11992, new Object[] { Integer.valueOf(1) });
+            paramAnonymousView.putExtra("key_scene", 1);
+            c.b((Context)a.this.Kgr.get(), "music", ".ui.MusicMainUI", paramAnonymousView);
+          }
+        }
+      });
     }
-    this.kzS = new a.2(this);
-    com.tencent.mm.sdk.b.a.IvT.c(this.kzS);
+    this.lEl = new IListener() {};
+    EventCenter.instance.addListener(this.lEl);
     AppMethodBeat.o(63196);
   }
   
-  private void aua(String paramString)
+  private void aIa(String paramString)
   {
     AppMethodBeat.i(63200);
-    if (this.wCG != null) {
-      this.wCG.setText(paramString);
+    if (this.And != null) {
+      this.And.setText(paramString);
     }
     AppMethodBeat.o(63200);
   }
   
-  private boolean dwX()
+  private boolean evf()
   {
     AppMethodBeat.i(63201);
     f localf;
-    if ((this.isFirst) && (this.hms))
+    if ((this.isFirst) && (this.ifo))
     {
-      this.nFP.setBackgroundResource(2131234377);
-      this.nFO.setBackground(null);
-      this.wCG.setBackground(null);
-      if (!com.tencent.mm.ay.a.aJZ()) {
-        break label240;
+      this.oQM.setBackgroundResource(2131235299);
+      this.oQL.setBackground(null);
+      this.And.setBackground(null);
+      if (!com.tencent.mm.ay.a.bec()) {
+        break label250;
       }
-      localf = com.tencent.mm.ay.a.aKc();
-      aua(ak.getContext().getString(2131761464) + ak.getContext().getString(2131761465) + localf.ikb);
-      if (!localf.ikv) {
-        break label228;
+      localf = com.tencent.mm.ay.a.bef();
+      this.Ane = localf;
+      aIa(MMApplicationContext.getContext().getString(2131763333) + MMApplicationContext.getContext().getString(2131763334) + localf.jeX);
+      if (!localf.jfr) {
+        break label238;
       }
     }
-    label228:
+    label238:
     for (int i = 8;; i = 0)
     {
       setVisibility(i);
-      if (localf.ikv) {
-        break label233;
+      this.Ane = null;
+      if (localf.jfr) {
+        break label243;
       }
       AppMethodBeat.o(63201);
       return true;
       if (this.isFirst)
       {
-        this.nFP.setBackgroundResource(2131232872);
-        this.nFO.setBackgroundResource(2131232870);
-        this.wCG.setBackgroundResource(2131232867);
+        this.oQM.setBackgroundResource(2131233332);
+        this.oQL.setBackgroundResource(2131233330);
+        this.And.setBackgroundResource(2131233327);
         break;
       }
-      if (this.hms)
+      if (this.ifo)
       {
-        this.nFP.setBackgroundResource(2131232872);
-        this.nFO.setBackgroundResource(2131232867);
-        this.wCG.setBackground(null);
+        this.oQM.setBackgroundResource(2131233332);
+        this.oQL.setBackgroundResource(2131233327);
+        this.And.setBackground(null);
         break;
       }
-      this.nFP.setBackgroundResource(2131232872);
-      this.nFO.setBackground(null);
-      this.wCG.setBackgroundResource(2131232867);
+      this.oQM.setBackgroundResource(2131233332);
+      this.oQL.setBackground(null);
+      this.And.setBackgroundResource(2131233327);
       break;
     }
-    label233:
+    label243:
     AppMethodBeat.o(63201);
     return false;
-    label240:
-    if (com.tencent.mm.ay.a.aKa())
+    label250:
+    if (com.tencent.mm.ay.a.bed())
     {
       setVisibility(0);
       AppMethodBeat.o(63201);
@@ -107,10 +144,10 @@ public final class a
     return false;
   }
   
-  public final boolean bAV()
+  public final boolean bYa()
   {
     AppMethodBeat.i(63198);
-    boolean bool = dwX();
+    boolean bool = evf();
     AppMethodBeat.o(63198);
     return bool;
   }
@@ -118,13 +155,13 @@ public final class a
   public final void destroy()
   {
     AppMethodBeat.i(63199);
-    com.tencent.mm.sdk.b.a.IvT.d(this.kzS);
+    EventCenter.instance.removeListener(this.lEl);
     AppMethodBeat.o(63199);
   }
   
   public final int getLayoutId()
   {
-    return 2131494982;
+    return 2131495767;
   }
   
   public final int getOrder()
@@ -137,41 +174,27 @@ public final class a
     AppMethodBeat.i(63197);
     if (this.view != null)
     {
-      Object localObject = this.view.findViewById(2131302599);
+      View localView = this.view.findViewById(2131305084);
       if (paramInt == 0)
       {
-        if (com.tencent.mm.compatible.d.b.cc(ak.getContext()))
+        if (com.tencent.mm.compatible.e.b.cx(MMApplicationContext.getContext()))
         {
-          ae.e("MicroMsg.MusicBanner", "isFloatWindowOpAllowed return true");
-          ((View)localObject).setVisibility(8);
-          if (com.tencent.mm.ay.a.aJZ())
+          Log.e("MicroMsg.MusicBanner", "isFloatWindowOpAllowed return true");
+          localView.setVisibility(8);
+          if (com.tencent.mm.ay.a.bec())
           {
-            ae.i("MicroMsg.MusicBanner", "resume music to float ball");
-            localObject = a.a.wAp;
-            if (!((com.tencent.mm.plugin.music.model.a)localObject).bLw())
-            {
-              ((com.tencent.mm.plugin.music.model.a)localObject).iV(true);
-              f localf = com.tencent.mm.ay.a.aKc();
-              ((com.tencent.mm.plugin.music.model.a)localObject).WY(localf.ikb);
-              ((com.tencent.mm.plugin.music.model.a)localObject).WZ(localf.ikc);
-              ((com.tencent.mm.plugin.music.model.a)localObject).eD("song_id", localf.ijZ);
-              ((com.tencent.mm.plugin.music.model.a)localObject).eD("db_music_id", com.tencent.mm.plugin.music.h.b.O(localf));
-              ((com.tencent.mm.plugin.music.model.a)localObject).yc(d.eI(((com.tencent.mm.plugin.music.model.a)localObject).nLK.state, 2));
-              ((com.tencent.mm.plugin.music.model.a)localObject).bLD().nLB = localf.ijX;
-              ((com.tencent.mm.plugin.ball.service.a)localObject).bLz();
-              ((com.tencent.mm.plugin.music.model.a)localObject).x(localf);
-              ((com.tencent.mm.plugin.music.model.a)localObject).bLy();
-            }
+            Log.i("MicroMsg.MusicBanner", "resume music to float ball");
+            com.tencent.mm.plugin.music.model.b.x(this.Ane);
             AppMethodBeat.o(63197);
           }
         }
         else
         {
-          ae.e("MicroMsg.MusicBanner", "isFloatWindowOpAllowed return false");
+          Log.e("MicroMsg.MusicBanner", "isFloatWindowOpAllowed return false");
         }
       }
       else {
-        ((View)localObject).setVisibility(paramInt);
+        localView.setVisibility(paramInt);
       }
     }
     AppMethodBeat.o(63197);
@@ -179,7 +202,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.a
  * JD-Core Version:    0.7.0.1
  */

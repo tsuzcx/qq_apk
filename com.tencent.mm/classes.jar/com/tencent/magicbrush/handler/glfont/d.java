@@ -17,19 +17,19 @@ abstract interface d
   
   public static final class a
   {
-    public Queue<d.b> aJa;
+    public Queue<d.b> aIT;
     
     public a()
     {
       AppMethodBeat.i(140006);
-      this.aJa = new LinkedList();
+      this.aIT = new LinkedList();
       AppMethodBeat.o(140006);
     }
     
-    public final d.b HJ()
+    public final d.b Ry()
     {
       AppMethodBeat.i(140007);
-      d.b localb = (d.b)this.aJa.poll();
+      d.b localb = (d.b)this.aIT.poll();
       if (localb == null)
       {
         localb = new d.b();
@@ -43,11 +43,11 @@ abstract interface d
     public final void a(d.b paramb)
     {
       AppMethodBeat.i(140008);
-      this.aJa.offer(paramb);
+      this.aIT.offer(paramb);
       AppMethodBeat.o(140008);
     }
     
-    public final void d(ArrayList<d.b> paramArrayList)
+    public final void e(ArrayList<d.b> paramArrayList)
     {
       AppMethodBeat.i(140009);
       if ((paramArrayList == null) || (paramArrayList.isEmpty()))
@@ -59,7 +59,7 @@ abstract interface d
       while (localIterator.hasNext())
       {
         d.b localb = (d.b)localIterator.next();
-        this.aJa.offer(localb);
+        this.aIT.offer(localb);
       }
       paramArrayList.clear();
       AppMethodBeat.o(140009);
@@ -72,7 +72,7 @@ abstract interface d
     public int y;
     public int z;
     
-    public final b gV(int paramInt)
+    public final b im(int paramInt)
     {
       this.x = 1;
       this.y = 1;

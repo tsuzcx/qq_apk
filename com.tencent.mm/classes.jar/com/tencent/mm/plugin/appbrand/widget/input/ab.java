@@ -4,16 +4,18 @@ import android.content.Context;
 import android.text.TextWatcher;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.page.ac;
 import com.tencent.mm.plugin.appbrand.widget.input.autofill.b;
 
 public abstract interface ab
 {
-  public abstract void B(z paramz);
+  public abstract int Ak(int paramInt);
   
-  public abstract void C(z paramz);
+  public abstract void G(ac paramac);
   
-  public abstract void M(float paramFloat1, float paramFloat2);
+  public abstract void H(ac paramac);
+  
+  public abstract void Q(float paramFloat1, float paramFloat2);
   
   public abstract void a(View.OnFocusChangeListener paramOnFocusChangeListener);
   
@@ -25,17 +27,17 @@ public abstract interface ab
   
   public abstract void b(View.OnFocusChangeListener paramOnFocusChangeListener);
   
-  public abstract void bFA();
+  public abstract boolean cbB();
   
-  public abstract void bFB();
+  public abstract void cbQ();
   
-  public abstract void bFC();
+  public abstract void cbR();
   
-  public abstract boolean bFi();
+  public abstract void cbS();
   
-  public abstract boolean bFj();
+  public abstract boolean cbx();
   
-  public abstract boolean bFm();
+  public abstract boolean cby();
   
   public abstract void destroy();
   
@@ -59,26 +61,24 @@ public abstract interface ab
   
   public abstract void setOnKeyUpPostImeListener(b paramb);
   
-  public abstract int wC(int paramInt);
-  
   public static abstract interface a
   {
-    public abstract void iv();
+    public abstract void iE();
   }
   
   public static abstract interface b
   {
-    public abstract boolean ws(int paramInt);
+    public abstract boolean Aa(int paramInt);
   }
   
   public static abstract interface c
   {
-    public abstract void bFl();
+    public abstract void cbA();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.ab
  * JD-Core Version:    0.7.0.1
  */

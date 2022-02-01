@@ -4,134 +4,48 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bw.a;
 import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.recordvideo.background.c;
-import com.tencent.mm.protocal.protobuf.agh;
-import com.tencent.mm.protocal.protobuf.csx;
-import com.tencent.mm.protocal.protobuf.dkg;
-import com.tencent.mm.protocal.protobuf.dvb;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.l;
+import com.tencent.mm.protocal.protobuf.aio;
+import com.tencent.mm.protocal.protobuf.dlg;
+import com.tencent.mm.protocal.protobuf.edt;
+import com.tencent.mm.protocal.protobuf.epc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "", "localId", "", "storyId", "", "createTime", "username", "", "(IJILjava/lang/String;)V", "getCreateTime", "()I", "setCreateTime", "(I)V", "fakeVideoData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "getFakeVideoData", "()Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "setFakeVideoData", "(Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;)V", "getLocalId", "setLocalId", "location", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "setLocation", "(Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;)V", "media", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "getMedia", "()Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "setMedia", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;)V", "getStoryId", "()J", "taskId", "getTaskId", "()Ljava/lang/String;", "setTaskId", "(Ljava/lang/String;)V", "getUsername", "setUsername", "videoType", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;", "getVideoType", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;", "setVideoType", "(Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;)V", "canPlay", "", "equals", "other", "hashCode", "isFakeVideo", "isImageVideo", "isNormalVideo", "isVLogFakeVideo", "toString", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "", "localId", "", "storyId", "", "createTime", "username", "", "(IJILjava/lang/String;)V", "getCreateTime", "()I", "setCreateTime", "(I)V", "fakeVideoData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "getFakeVideoData", "()Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "setFakeVideoData", "(Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;)V", "getLocalId", "setLocalId", "location", "Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "getLocation", "()Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;", "setLocation", "(Lcom/tencent/mm/protocal/protobuf/RecordLocationInfo;)V", "media", "Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "getMedia", "()Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;", "setMedia", "(Lcom/tencent/mm/protocal/protobuf/StoryMediaObj;)V", "getStoryId", "()J", "taskId", "getTaskId", "()Ljava/lang/String;", "setTaskId", "(Ljava/lang/String;)V", "getUsername", "setUsername", "videoType", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;", "getVideoType", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;", "setVideoType", "(Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoState;)V", "canPlay", "", "equals", "other", "hashCode", "isFakeVideo", "isImageVideo", "isNormalVideo", "isVLogFakeVideo", "toString", "plugin-story_release"})
 public final class j
 {
-  public k Bel;
-  public dkg Bem;
-  public c Ben;
-  public int dKr;
-  public final long dLI;
-  public int icw;
+  dlg BKf;
+  public k Fpc;
+  public edt Fpd;
+  public c Fpe;
+  public int ecf;
+  public final long edx;
+  public int iXu;
   public String taskId;
   public String username;
-  csx xKb;
   
   public j(int paramInt1, long paramLong, int paramInt2, String paramString)
   {
     AppMethodBeat.i(118941);
-    this.dKr = paramInt1;
-    this.dLI = paramLong;
-    this.icw = paramInt2;
+    this.ecf = paramInt1;
+    this.edx = paramLong;
+    this.iXu = paramInt2;
     this.username = paramString;
-    this.Bel = k.Ber;
-    paramString = new dkg();
+    this.Fpc = k.Fpi;
+    paramString = new edt();
     paramString.Url = "";
-    paramString.Hmj = "";
+    paramString.Msz = "";
     paramString.Id = "";
-    this.Bem = paramString;
+    this.Fpd = paramString;
     this.taskId = "";
     AppMethodBeat.o(118941);
   }
   
-  private boolean emt()
+  private boolean foU()
   {
-    return this.Bel == k.Ber;
-  }
-  
-  public final boolean emu()
-  {
-    return this.Bel == k.Bep;
-  }
-  
-  public final boolean emv()
-  {
-    return this.Bel != k.Beo;
-  }
-  
-  public final boolean emw()
-  {
-    AppMethodBeat.i(118939);
-    if (emu())
-    {
-      Object localObject = this.Ben;
-      if (localObject != null)
-      {
-        localObject = ((c)localObject).dHV().Gww;
-        if ((localObject != null) && (((LinkedList)localObject).size() > 0))
-        {
-          ae.i("MicroMsg.Story.StoryVideoItem", "item" + this.taskId + " is fake imageVideo");
-          AppMethodBeat.o(118939);
-          return true;
-        }
-      }
-    }
-    AppMethodBeat.o(118939);
-    return false;
-  }
-  
-  public final boolean emx()
-  {
-    AppMethodBeat.i(118940);
-    if (emu())
-    {
-      Object localObject4 = (a)new agh();
-      Object localObject1 = this.Ben;
-      if (localObject1 != null) {
-        localObject1 = ((c)localObject1).field_baseItemData;
-      }
-      try
-      {
-        ((a)localObject4).parseFrom((byte[])localObject1);
-        localObject1 = localObject4;
-        localObject4 = (agh)localObject1;
-        if ((localObject4 != null) && (((agh)localObject4).Gwx != null))
-        {
-          localObject1 = (a)new dvb();
-          localObject4 = ((agh)localObject4).Gwx.toByteArray();
-        }
-      }
-      catch (Exception localException1)
-      {
-        try
-        {
-          for (;;)
-          {
-            ((a)localObject1).parseFrom((byte[])localObject4);
-            if ((dvb)localObject1 == null) {
-              break;
-            }
-            ae.i("MicroMsg.Story.StoryVideoItem", "item" + this.taskId + " is fake isVLogFakeVideo");
-            AppMethodBeat.o(118940);
-            return true;
-            localObject1 = null;
-          }
-          localException1 = localException1;
-          ae.l("safeParser", "", new Object[] { localException1 });
-          Object localObject2 = null;
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            ae.l("safeParser", "", new Object[] { localException2 });
-            Object localObject3 = null;
-          }
-        }
-      }
-    }
-    ae.i("MicroMsg.Story.StoryVideoItem", "item" + this.taskId + " is not fake isVLogFakeVideo");
-    AppMethodBeat.o(118940);
-    return false;
+    return this.Fpc == k.Fpi;
   }
   
   public final boolean equals(Object paramObject)
@@ -147,22 +61,108 @@ public final class j
       AppMethodBeat.o(118936);
       return true;
     }
-    if ((this.Bel == k.Beo) && (((j)paramObject).Bel == k.Beo))
+    if ((this.Fpc == k.Fpf) && (((j)paramObject).Fpc == k.Fpf))
     {
       AppMethodBeat.o(118936);
       return true;
     }
-    if ((emu()) && (((j)paramObject).emu()) && (bu.lX(this.taskId, ((j)paramObject).taskId)))
+    if ((foV()) && (((j)paramObject).foV()) && (Util.isEqual(this.taskId, ((j)paramObject).taskId)))
     {
       AppMethodBeat.o(118936);
       return true;
     }
-    if ((emt()) && (((j)paramObject).emt()) && (this.dKr == ((j)paramObject).dKr))
+    if ((foU()) && (((j)paramObject).foU()) && (this.ecf == ((j)paramObject).ecf))
     {
       AppMethodBeat.o(118936);
       return true;
     }
     AppMethodBeat.o(118936);
+    return false;
+  }
+  
+  public final boolean foV()
+  {
+    return this.Fpc == k.Fpg;
+  }
+  
+  public final boolean foW()
+  {
+    return this.Fpc != k.Fpf;
+  }
+  
+  public final boolean foX()
+  {
+    AppMethodBeat.i(118939);
+    if (foV())
+    {
+      Object localObject = this.Fpe;
+      if (localObject != null)
+      {
+        localObject = ((c)localObject).eII().Lsc;
+        if ((localObject != null) && (((LinkedList)localObject).size() > 0))
+        {
+          Log.i("MicroMsg.Story.StoryVideoItem", "item" + this.taskId + " is fake imageVideo");
+          AppMethodBeat.o(118939);
+          return true;
+        }
+      }
+    }
+    AppMethodBeat.o(118939);
+    return false;
+  }
+  
+  public final boolean foY()
+  {
+    AppMethodBeat.i(118940);
+    if (foV())
+    {
+      Object localObject4 = (a)new aio();
+      Object localObject1 = this.Fpe;
+      if (localObject1 != null) {
+        localObject1 = ((c)localObject1).field_baseItemData;
+      }
+      try
+      {
+        ((a)localObject4).parseFrom((byte[])localObject1);
+        localObject1 = localObject4;
+        localObject4 = (aio)localObject1;
+        if ((localObject4 != null) && (((aio)localObject4).Lsd != null))
+        {
+          localObject1 = (a)new epc();
+          localObject4 = ((aio)localObject4).Lsd.toByteArray();
+        }
+      }
+      catch (Exception localException1)
+      {
+        try
+        {
+          for (;;)
+          {
+            ((a)localObject1).parseFrom((byte[])localObject4);
+            if ((epc)localObject1 == null) {
+              break;
+            }
+            Log.i("MicroMsg.Story.StoryVideoItem", "item" + this.taskId + " is fake isVLogFakeVideo");
+            AppMethodBeat.o(118940);
+            return true;
+            localObject1 = null;
+          }
+          localException1 = localException1;
+          Log.printDebugStack("safeParser", "", new Object[] { localException1 });
+          Object localObject2 = null;
+        }
+        catch (Exception localException2)
+        {
+          for (;;)
+          {
+            Log.printDebugStack("safeParser", "", new Object[] { localException2 });
+            Object localObject3 = null;
+          }
+        }
+      }
+    }
+    Log.i("MicroMsg.Story.StoryVideoItem", "item" + this.taskId + " is not fake isVLogFakeVideo");
+    AppMethodBeat.o(118940);
     return false;
   }
   
@@ -177,14 +177,14 @@ public final class j
   public final String toString()
   {
     AppMethodBeat.i(118938);
-    String str = "[VideoItem=" + hashCode() + ",localId=:" + this.dKr + ",storyId=" + this.dLI + ",videoType:=" + this.Bel + ", username=" + this.username + ", url=" + this.Bem.Url + ']';
+    String str = "[VideoItem=" + hashCode() + ",localId=:" + this.ecf + ",storyId=" + this.edx + ",videoType:=" + this.Fpc + ", username=" + this.username + ", url=" + this.Fpd.Url + ']';
     AppMethodBeat.o(118938);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.d.j
  * JD-Core Version:    0.7.0.1
  */

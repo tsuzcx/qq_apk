@@ -10,89 +10,89 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class PersonalPreference
   extends Preference
 {
-  private String dEC;
-  private TextView fRI;
-  private String fhy;
-  Bitmap hPl;
-  ImageView rLC;
-  String ssR;
+  int CZh;
+  private String dWp;
+  private String fMb;
+  private TextView gwR;
+  Bitmap iKs;
+  private View.OnClickListener tAc;
+  ImageView tlo;
+  String uNR;
+  private TextView userTV;
   private String username;
-  private TextView yUp;
-  int yUq;
-  private View.OnClickListener yUr;
   
   public PersonalPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.fRI = null;
-    this.yUp = null;
-    this.rLC = null;
-    this.hPl = null;
-    this.yUq = -1;
-    this.ssR = null;
+    this.gwR = null;
+    this.userTV = null;
+    this.tlo = null;
+    this.iKs = null;
+    this.CZh = -1;
+    this.uNR = null;
   }
   
   public PersonalPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73903);
-    this.fRI = null;
-    this.yUp = null;
-    this.rLC = null;
-    this.hPl = null;
-    this.yUq = -1;
-    this.ssR = null;
-    setLayoutResource(2131494804);
-    setWidgetLayoutResource(2131494884);
+    this.gwR = null;
+    this.userTV = null;
+    this.tlo = null;
+    this.iKs = null;
+    this.CZh = -1;
+    this.uNR = null;
+    setLayoutResource(2131495538);
+    setWidgetLayoutResource(2131495622);
     AppMethodBeat.o(73903);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(73905);
-    if (this.rLC == null) {
-      this.rLC = ((ImageView)paramView.findViewById(2131300943));
+    if (this.tlo == null) {
+      this.tlo = ((ImageView)paramView.findViewById(2131302573));
     }
-    if (this.hPl != null)
+    if (this.iKs != null)
     {
-      this.rLC.setImageBitmap(this.hPl);
-      this.rLC.setOnClickListener(this.yUr);
-      if ((this.fRI != null) && (this.dEC != null)) {
-        this.fRI.setText(k.b(this.mContext, this.dEC, this.fRI.getTextSize()));
+      this.tlo.setImageBitmap(this.iKs);
+      this.tlo.setOnClickListener(this.tAc);
+      if ((this.gwR != null) && (this.dWp != null)) {
+        this.gwR.setText(l.b(this.mContext, this.dWp, this.gwR.getTextSize()));
       }
-      if (this.yUp != null) {
-        if (!bu.isNullOrNil(this.fhy)) {
+      if (this.userTV != null) {
+        if (!Util.isNullOrNil(this.fMb)) {
           break label230;
         }
       }
     }
     label230:
-    for (String str = this.username;; str = this.fhy)
+    for (String str = this.username;; str = this.fMb)
     {
-      if ((bu.isNullOrNil(this.fhy)) && (an.aUy(this.username))) {
-        this.yUp.setVisibility(8);
+      if ((Util.isNullOrNil(this.fMb)) && (as.bjx(this.username))) {
+        this.userTV.setVisibility(8);
       }
-      this.yUp.setText(this.mContext.getString(2131755760) + str);
+      this.userTV.setText(this.mContext.getString(2131755837) + str);
       super.onBindView(paramView);
       AppMethodBeat.o(73905);
       return;
-      if (this.yUq > 0)
+      if (this.CZh > 0)
       {
-        this.rLC.setImageResource(this.yUq);
+        this.tlo.setImageResource(this.CZh);
         break;
       }
-      if (this.ssR == null) {
+      if (this.uNR == null) {
         break;
       }
-      a.b.c(this.rLC, this.ssR);
+      a.b.c(this.tlo, this.uNR);
       break;
     }
   }
@@ -101,9 +101,9 @@ public class PersonalPreference
   {
     AppMethodBeat.i(73904);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131494838, localViewGroup);
+    View.inflate(this.mContext, 2131495573, localViewGroup);
     AppMethodBeat.o(73904);
     return paramViewGroup;
   }

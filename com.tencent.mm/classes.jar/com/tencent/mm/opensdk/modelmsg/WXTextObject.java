@@ -18,9 +18,9 @@ public class WXTextObject
   
   public WXTextObject(String paramString)
   {
-    AppMethodBeat.i(194110);
+    AppMethodBeat.i(190425);
     this.text = paramString;
-    AppMethodBeat.o(194110);
+    AppMethodBeat.o(190425);
   }
   
   public boolean checkArgs()

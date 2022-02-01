@@ -1,82 +1,69 @@
 package com.tencent.mm.plugin.fingerprint.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.fingerprint.d.a;
-import com.tencent.mm.plugin.soter.b.d;
-import com.tencent.mm.protocal.protobuf.dii;
-import com.tencent.mm.protocal.protobuf.dij;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.ebs;
+import com.tencent.mm.protocal.protobuf.ebt;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tenpay.android.wechat.TenpayUtil;
 
 public final class b
-  extends d
-  implements k
+  extends com.tencent.mm.plugin.soter.b.d
+  implements m
 {
-  private f callback;
-  public final com.tencent.mm.ak.b rr;
-  private int tsC;
+  private i callback;
+  public final com.tencent.mm.ak.d rr;
+  private int wGi;
   
   public b(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     AppMethodBeat.i(64458);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new dii();
-    ((b.a)localObject).hQG = new dij();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/soteropenfppayment";
-    ((b.a)localObject).funcId = 1638;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (dii)this.rr.hQD.hQJ;
-    ((dii)localObject).HsE = paramString1;
-    ((dii)localObject).signature = paramString2;
-    ((dii)localObject).HPC = paramString3;
-    ((dii)localObject).dxK = TenpayUtil.signWith3Des("passwd=" + ((dii)localObject).HPC);
-    ((dii)localObject).HPz = paramInt;
-    ((dii)localObject).HPA = 1;
-    this.tsC = paramInt;
-    ae.i("MicroMsg.NetSceneSoterOpenTouchPay", "soter type: %s", new Object[] { Integer.valueOf(paramInt) });
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new ebs();
+    ((d.a)localObject).iLO = new ebt();
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/soteropenfppayment";
+    ((d.a)localObject).funcId = 1638;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (ebs)this.rr.iLK.iLR;
+    ((ebs)localObject).MBA = paramString1;
+    ((ebs)localObject).signature = paramString2;
+    ((ebs)localObject).Nbu = paramString3;
+    ((ebs)localObject).dPr = TenpayUtil.signWith3Des("passwd=" + ((ebs)localObject).Nbu);
+    ((ebs)localObject).Nbr = paramInt;
+    ((ebs)localObject).Nbs = 1;
+    this.wGi = paramInt;
+    Log.i("MicroMsg.NetSceneSoterOpenTouchPay", "soter type: %s", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(64458);
   }
   
-  public final void GZ(int paramInt)
+  public final void MO(int paramInt)
   {
     AppMethodBeat.i(64461);
-    ae.i("MicroMsg.NetSceneSoterOpenTouchPay", "hy: onError: errType: %d, errcode: %d", new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.NetSceneSoterOpenTouchPay", "hy: onError: errType: %d, errcode: %d", new Object[] { Integer.valueOf(3), Integer.valueOf(paramInt) });
     if (this.callback != null) {
       this.callback.onSceneEnd(4, -1, "", this);
     }
     AppMethodBeat.o(64461);
   }
   
-  public final void cSG()
-  {
-    AppMethodBeat.i(64460);
-    ae.i("MicroMsg.NetSceneSoterOpenTouchPay", "hy: authkey required");
-    if (this.callback != null) {
-      this.callback.onSceneEnd(4, -1, "", this);
-    }
-    AppMethodBeat.o(64460);
-  }
-  
-  public final void d(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void d(int paramInt1, int paramInt2, String paramString, s params)
   {
     AppMethodBeat.i(64459);
-    ae.i("MicroMsg.NetSceneSoterOpenTouchPay", "hy: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    Log.i("MicroMsg.NetSceneSoterOpenTouchPay", "hy: errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     if ((paramInt1 == 0) && (paramInt2 == 0))
     {
-      ae.i("MicroMsg.NetSceneSoterOpenTouchPay", "open fingerprintpay success");
-      if (this.tsC == 1)
+      Log.i("MicroMsg.NetSceneSoterOpenTouchPay", "open fingerprintpay success");
+      if (this.wGi == 1)
       {
-        ((a)g.ab(a.class)).mC(true);
-        ((a)g.ab(a.class)).mD(false);
+        ((a)com.tencent.mm.kernel.g.af(a.class)).pj(true);
+        ((a)com.tencent.mm.kernel.g.af(a.class)).pk(false);
       }
     }
     for (;;)
@@ -84,18 +71,28 @@ public final class b
       this.callback.onSceneEnd(paramInt1, paramInt2, "", this);
       AppMethodBeat.o(64459);
       return;
-      ((a)g.ab(a.class)).mD(true);
-      ((a)g.ab(a.class)).mC(false);
+      ((a)com.tencent.mm.kernel.g.af(a.class)).pk(true);
+      ((a)com.tencent.mm.kernel.g.af(a.class)).pj(false);
       continue;
-      ae.e("MicroMsg.NetSceneSoterOpenTouchPay", "open fingerprintpay failed");
+      Log.e("MicroMsg.NetSceneSoterOpenTouchPay", "open fingerprintpay failed");
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final void dKB()
+  {
+    AppMethodBeat.i(64460);
+    Log.i("MicroMsg.NetSceneSoterOpenTouchPay", "hy: authkey required");
+    if (this.callback != null) {
+      this.callback.onSceneEnd(4, -1, "", this);
+    }
+    AppMethodBeat.o(64460);
+  }
+  
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(64462);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(64462);
     return i;
   }
@@ -107,7 +104,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.c.b
  * JD-Core Version:    0.7.0.1
  */

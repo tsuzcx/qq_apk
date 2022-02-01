@@ -19,21 +19,21 @@ import org.xmlpull.v1.XmlPullParserFactory;
 public final class a
   extends com.google.android.exoplayer2.f.b
 {
-  private static final Pattern bCF;
-  private static final Pattern bCG;
   private static final Pattern bCH;
   private static final Pattern bCI;
-  private static final a bCJ;
-  private final XmlPullParserFactory bCK;
+  private static final Pattern bCJ;
+  private static final Pattern bCK;
+  private static final a bCL;
+  private final XmlPullParserFactory bCM;
   
   static
   {
     AppMethodBeat.i(92847);
-    bCF = Pattern.compile("^([0-9][0-9]+):([0-9][0-9]):([0-9][0-9])(?:(\\.[0-9]+)|:([0-9][0-9])(?:\\.([0-9]+))?)?$");
-    bCG = Pattern.compile("^([0-9]+(?:\\.[0-9]+)?)(h|m|s|ms|f|t)$");
-    bCH = Pattern.compile("^(([0-9]*.)?[0-9]+)(px|em|%)$");
-    bCI = Pattern.compile("^(\\d+\\.?\\d*?)% (\\d+\\.?\\d*?)%$");
-    bCJ = new a(30.0F, 1, 1);
+    bCH = Pattern.compile("^([0-9][0-9]+):([0-9][0-9]):([0-9][0-9])(?:(\\.[0-9]+)|:([0-9][0-9])(?:\\.([0-9]+))?)?$");
+    bCI = Pattern.compile("^([0-9]+(?:\\.[0-9]+)?)(h|m|s|ms|f|t)$");
+    bCJ = Pattern.compile("^(([0-9]*.)?[0-9]+)(px|em|%)$");
+    bCK = Pattern.compile("^(\\d+\\.?\\d*?)% (\\d+\\.?\\d*?)%$");
+    bCL = new a(30.0F, 1, 1);
     AppMethodBeat.o(92847);
   }
   
@@ -43,8 +43,8 @@ public final class a
     AppMethodBeat.i(92838);
     try
     {
-      this.bCK = XmlPullParserFactory.newInstance();
-      this.bCK.setNamespaceAware(true);
+      this.bCM = XmlPullParserFactory.newInstance();
+      this.bCM.setNamespaceAware(true);
       AppMethodBeat.o(92838);
       return;
     }
@@ -60,7 +60,7 @@ public final class a
   {
     double d3 = 0.0D;
     AppMethodBeat.i(92845);
-    Matcher localMatcher = bCF.matcher(paramString);
+    Matcher localMatcher = bCH.matcher(paramString);
     double d1;
     double d2;
     long l;
@@ -79,11 +79,11 @@ public final class a
         }
       }
       label176:
-      for (d2 = (float)Long.parseLong(paramString) / parama.bCL;; d2 = 0.0D)
+      for (d2 = (float)Long.parseLong(paramString) / parama.bCN;; d2 = 0.0D)
       {
         paramString = localMatcher.group(6);
         if (paramString != null) {
-          d3 = Long.parseLong(paramString) / parama.bCM / parama.bCL;
+          d3 = Long.parseLong(paramString) / parama.bCO / parama.bCN;
         }
         l = ((d2 + (d6 + (d4 + d5) + d1) + d3) * 1000000.0D);
         AppMethodBeat.o(92845);
@@ -92,7 +92,7 @@ public final class a
         break;
       }
     }
-    localMatcher = bCG.matcher(paramString);
+    localMatcher = bCI.matcher(paramString);
     if (localMatcher.matches())
     {
       d2 = Double.parseDouble(localMatcher.group(1));
@@ -150,7 +150,7 @@ public final class a
         continue;
         d1 = d2 / 1000.0D;
         continue;
-        d1 = d2 / parama.bCL;
+        d1 = d2 / parama.bCN;
         continue;
         d1 = d2 / parama.tickRate;
       }
@@ -280,15 +280,15 @@ public final class a
     if (paramb != null)
     {
       l4 = l1;
-      if (paramb.bxm != -9223372036854775807L)
+      if (paramb.bxn != -9223372036854775807L)
       {
         l2 = l1;
         if (l1 != -9223372036854775807L) {
-          l2 = l1 + paramb.bxm;
+          l2 = l1 + paramb.bxn;
         }
         l4 = l2;
         if (l3 != -9223372036854775807L) {
-          l1 = l3 + paramb.bxm;
+          l1 = l3 + paramb.bxn;
         }
       }
     }
@@ -304,8 +304,8 @@ public final class a
         paramXmlPullParser = new b(paramXmlPullParser.getName(), null, l2, l1, locald, localObject2, (String)localObject1);
         AppMethodBeat.o(92844);
         return paramXmlPullParser;
-        if ((paramb != null) && (paramb.bxn != -9223372036854775807L)) {
-          l1 = paramb.bxn;
+        if ((paramb != null) && (paramb.bxo != -9223372036854775807L)) {
+          l1 = paramb.bxo;
         }
       }
       l1 = l3;
@@ -326,7 +326,7 @@ public final class a
     Object localObject = y.c(paramXmlPullParser, "origin");
     if (localObject != null)
     {
-      localObject = bCI.matcher((CharSequence)localObject);
+      localObject = bCK.matcher((CharSequence)localObject);
       if (!((Matcher)localObject).matches()) {}
     }
     for (;;)
@@ -343,7 +343,7 @@ public final class a
         if (localObject == null) {
           break label287;
         }
-        localObject = bCI.matcher((CharSequence)localObject);
+        localObject = bCK.matcher((CharSequence)localObject);
         if (!((Matcher)localObject).matches()) {
           break label280;
         }
@@ -511,19 +511,19 @@ public final class a
       paramd = a(locald1);
       try
       {
-        paramd.eU(com.google.android.exoplayer2.i.e.bv(str));
+        paramd.eT(com.google.android.exoplayer2.i.e.bv(str));
       }
       catch (IllegalArgumentException localIllegalArgumentException1) {}
       continue;
       paramd = a(localIllegalArgumentException1);
       try
       {
-        paramd.eT(com.google.android.exoplayer2.i.e.bv(str));
+        paramd.eS(com.google.android.exoplayer2.i.e.bv(str));
       }
       catch (IllegalArgumentException localIllegalArgumentException2) {}
       continue;
       paramd = a(localIllegalArgumentException2);
-      if (paramd.bDb == null) {}
+      if (paramd.bDd == null) {}
       for (boolean bool1 = true;; bool1 = false)
       {
         com.google.android.exoplayer2.i.a.checkState(bool1);
@@ -540,7 +540,7 @@ public final class a
         if (localObject.length == 1)
         {
           paramd = locald2;
-          localObject = bCH.matcher(str);
+          localObject = bCJ.matcher(str);
           label495:
           paramd = locald2;
           if (!((Matcher)localObject).matches()) {
@@ -566,7 +566,7 @@ public final class a
           if (localObject.length == 2)
           {
             paramd = locald2;
-            localObject = bCH.matcher(localObject[1]);
+            localObject = bCJ.matcher(localObject[1]);
             break label495;
           }
           paramd = locald2;
@@ -591,7 +591,7 @@ public final class a
                 i = 2;
                 break label1447;
                 paramd = locald2;
-                locald2.bDa = 1;
+                locald2.bDc = 1;
                 for (;;)
                 {
                   paramd = locald2;
@@ -599,10 +599,10 @@ public final class a
                   paramd = locald2;
                   break;
                   paramd = locald2;
-                  locald2.bDa = 2;
+                  locald2.bDc = 2;
                   continue;
                   paramd = locald2;
-                  locald2.bDa = 3;
+                  locald2.bDc = 3;
                 }
                 label807:
                 paramd = locald2;
@@ -613,7 +613,7 @@ public final class a
                 throw ((Throwable)localObject);
                 paramd = a(locald2);
                 boolean bool2 = "bold".equalsIgnoreCase(str);
-                if (paramd.bDb == null)
+                if (paramd.bDd == null)
                 {
                   bool1 = true;
                   label884:
@@ -625,14 +625,14 @@ public final class a
                 label910:
                 for (i = 1;; i = 0)
                 {
-                  paramd.bCY = i;
+                  paramd.bDa = i;
                   break;
                   bool1 = false;
                   break label884;
                 }
                 paramd = a(locald2);
                 bool2 = "italic".equalsIgnoreCase(str);
-                if (paramd.bDb == null)
+                if (paramd.bDd == null)
                 {
                   bool1 = true;
                   label941:
@@ -644,7 +644,7 @@ public final class a
                 label967:
                 for (i = 1;; i = 0)
                 {
-                  paramd.bCZ = i;
+                  paramd.bDb = i;
                   break;
                   bool1 = false;
                   break label941;
@@ -663,7 +663,7 @@ public final class a
                     break;
                   case 0: 
                     paramd = a(locald2);
-                    paramd.bDc = Layout.Alignment.ALIGN_NORMAL;
+                    paramd.bDe = Layout.Alignment.ALIGN_NORMAL;
                     break;
                     if (paramd.equals("left"))
                     {
@@ -692,16 +692,16 @@ public final class a
                   }
                 }
                 paramd = a(locald2);
-                paramd.bDc = Layout.Alignment.ALIGN_NORMAL;
+                paramd.bDe = Layout.Alignment.ALIGN_NORMAL;
                 break;
                 paramd = a(locald2);
-                paramd.bDc = Layout.Alignment.ALIGN_OPPOSITE;
+                paramd.bDe = Layout.Alignment.ALIGN_OPPOSITE;
                 break;
                 paramd = a(locald2);
-                paramd.bDc = Layout.Alignment.ALIGN_OPPOSITE;
+                paramd.bDe = Layout.Alignment.ALIGN_OPPOSITE;
                 break;
                 paramd = a(locald2);
-                paramd.bDc = Layout.Alignment.ALIGN_CENTER;
+                paramd.bDe = Layout.Alignment.ALIGN_CENTER;
                 break;
                 paramd = x.bH(str);
                 i = -1;
@@ -716,7 +716,7 @@ public final class a
                     paramd = locald2;
                     break;
                   case 0: 
-                    paramd = a(locald2).aV(true);
+                    paramd = a(locald2).aU(true);
                     break;
                     if (paramd.equals("linethrough"))
                     {
@@ -739,11 +739,11 @@ public final class a
                     break;
                   }
                 }
+                paramd = a(locald2).aU(false);
+                break;
+                paramd = a(locald2).aV(true);
+                break;
                 paramd = a(locald2).aV(false);
-                break;
-                paramd = a(locald2).aW(true);
-                break;
-                paramd = a(locald2).aW(false);
                 break;
                 AppMethodBeat.o(92842);
                 return locald2;
@@ -825,7 +825,7 @@ public final class a
     int i;
     try
     {
-      localXmlPullParser = this.bCK.newPullParser();
+      localXmlPullParser = this.bCM.newPullParser();
       localHashMap1 = new HashMap();
       localHashMap2 = new HashMap();
       localHashMap2.put("", new c());
@@ -833,7 +833,7 @@ public final class a
       locale = null;
       localLinkedList = new LinkedList();
       i = localXmlPullParser.getEventType();
-      paramArrayOfByte = bCJ;
+      paramArrayOfByte = bCL;
       paramInt = 0;
     }
     catch (XmlPullParserException paramArrayOfByte)
@@ -849,13 +849,13 @@ public final class a
       AppMethodBeat.o(92839);
       throw paramArrayOfByte;
       f = Integer.parseInt(paramArrayOfByte[0]) / Integer.parseInt(paramArrayOfByte[1]);
-      j = bCJ.bCM;
+      j = bCL.bCO;
       paramArrayOfByte = localXmlPullParser.getAttributeValue("http://www.w3.org/ns/ttml#parameter", "subFrameRate");
       if (paramArrayOfByte == null) {
         break label812;
       }
       j = Integer.parseInt(paramArrayOfByte);
-      k = bCJ.tickRate;
+      k = bCL.tickRate;
       paramArrayOfByte = localXmlPullParser.getAttributeValue("http://www.w3.org/ns/ttml#parameter", "tickRate");
       if (paramArrayOfByte == null) {
         break label809;
@@ -999,21 +999,21 @@ public final class a
   
   static final class a
   {
-    final float bCL;
-    final int bCM;
+    final float bCN;
+    final int bCO;
     final int tickRate;
     
     a(float paramFloat, int paramInt1, int paramInt2)
     {
-      this.bCL = paramFloat;
-      this.bCM = paramInt1;
+      this.bCN = paramFloat;
+      this.bCO = paramInt1;
       this.tickRate = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.e.a
  * JD-Core Version:    0.7.0.1
  */

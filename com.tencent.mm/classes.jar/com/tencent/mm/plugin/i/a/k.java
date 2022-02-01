@@ -1,13 +1,27 @@
 package com.tencent.mm.plugin.i.a;
 
-import com.tencent.mm.kernel.c.a;
-import d.l;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.regex.Pattern;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/findersdk/api/IFinderModifyFeedReproduce;", "Lcom/tencent/mm/kernel/service/IService;", "modifyFeedReproduce", "", "ifOpen", "", "finder-sdk_release"})
-public abstract interface k
-  extends a
+public final class k
 {
-  public abstract void lK(boolean paramBoolean);
+  public static final Pattern PATTERN;
+  public static int wEa;
+  public static int wEb;
+  
+  static
+  {
+    AppMethodBeat.i(209314);
+    PATTERN = Pattern.compile("<a>(.+?)</a>");
+    wEa = 0;
+    wEb = 33554432;
+    AppMethodBeat.o(209314);
+  }
+  
+  public static boolean MM(int paramInt)
+  {
+    return (paramInt == 76) || (paramInt == 77) || (paramInt == 80);
+  }
 }
 
 

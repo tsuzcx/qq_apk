@@ -17,7 +17,7 @@ public class IPCInstallApp
     implements Parcelable
   {
     public static final Parcelable.Creator<IPCInstallAppParam> CREATOR;
-    private boolean FfC;
+    private boolean JWt;
     private String filePath;
     private int type;
     private Uri uri;
@@ -34,7 +34,7 @@ public class IPCInstallApp
       this.type = paramInt;
       this.filePath = paramString;
       this.uri = paramUri;
-      this.FfC = paramBoolean;
+      this.JWt = paramBoolean;
     }
     
     protected IPCInstallAppParam(Parcel paramParcel)
@@ -46,7 +46,7 @@ public class IPCInstallApp
       if (paramParcel.readByte() != 0) {}
       for (boolean bool = true;; bool = false)
       {
-        this.FfC = bool;
+        this.JWt = bool;
         AppMethodBeat.o(151798);
         return;
       }
@@ -63,7 +63,7 @@ public class IPCInstallApp
       paramParcel.writeInt(this.type);
       paramParcel.writeString(this.filePath);
       paramParcel.writeParcelable(this.uri, paramInt);
-      if (this.FfC) {}
+      if (this.JWt) {}
       for (byte b = 1;; b = 0)
       {
         paramParcel.writeByte(b);

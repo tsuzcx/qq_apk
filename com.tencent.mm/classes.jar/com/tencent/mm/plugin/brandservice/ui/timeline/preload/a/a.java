@@ -1,57 +1,57 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.preload.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ae;
-import com.tencent.mm.protocal.protobuf.fo;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.af;
+import com.tencent.mm.protocal.protobuf.gb;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends ae
+  extends af
 {
-  public static c.a hGW;
+  public static IAutoDBItem.MAutoDBInfo iBg;
   
   static
   {
     AppMethodBeat.i(6187);
-    c.a locala = new c.a();
-    locala.IBL = new Field[4];
-    locala.columns = new String[5];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[4];
+    localMAutoDBInfo.columns = new String[5];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appMsgReportContextId";
-    locala.IBN.put("appMsgReportContextId", "LONG PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "appMsgReportContextId";
+    localMAutoDBInfo.colsMap.put("appMsgReportContextId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" appMsgReportContextId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "appMsgReportContextId";
-    locala.columns[1] = "url";
-    locala.IBN.put("url", "TEXT");
+    localMAutoDBInfo.primaryKey = "appMsgReportContextId";
+    localMAutoDBInfo.columns[1] = "url";
+    localMAutoDBInfo.colsMap.put("url", "TEXT");
     localStringBuilder.append(" url TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "reportTime";
-    locala.IBN.put("reportTime", "LONG");
+    localMAutoDBInfo.columns[2] = "reportTime";
+    localMAutoDBInfo.colsMap.put("reportTime", "LONG");
     localStringBuilder.append(" reportTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[3] = "aScene";
-    locala.IBN.put("aScene", "INTEGER");
+    localMAutoDBInfo.columns[3] = "aScene";
+    localMAutoDBInfo.colsMap.put("aScene", "INTEGER");
     localStringBuilder.append(" aScene INTEGER");
-    locala.columns[4] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    hGW = locala;
+    localMAutoDBInfo.columns[4] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    iBg = localMAutoDBInfo;
     AppMethodBeat.o(6187);
   }
   
   public a() {}
   
-  public a(fo paramfo)
+  public a(gb paramgb)
   {
-    this.field_url = paramfo.Url;
-    this.field_reportTime = paramfo.FQj;
+    this.field_url = paramgb.Url;
+    this.field_reportTime = paramgb.KJQ;
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return hGW;
+    return iBg;
   }
   
   public final String toString()
@@ -64,7 +64,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.a
  * JD-Core Version:    0.7.0.1
  */

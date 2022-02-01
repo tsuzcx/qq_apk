@@ -3,7 +3,7 @@ package com.tencent.mm.sdk.platformtools;
 import android.os.ParcelFileDescriptor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.a.b;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
 import com.tencent.recovery.Recovery;
 import java.io.PrintWriter;
 import java.io.StringWriter;
@@ -17,15 +17,15 @@ public class CrashMonitorForJni
 {
   private static final String TAG = "MicroMsg.CrashMonitorForJni";
   private static ParcelFileDescriptor mCrashRecordFd = null;
-  private static a sCrashExtraMessageGetter;
+  private static CrashExtraMessageGetter sCrashExtraMessageGetter;
   
   private static void OnCrash(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(145683);
     Recovery.crash();
     new StringBuilder("OnCrash sig:").append(paramInt1).append("  stack:").append(paramString);
-    b.d(paramInt1, paramString, "CrashMonitor");
-    ae.appenderClose();
+    CrashReportFactory.reportJniCrash(paramInt1, paramString, "CrashMonitor");
+    Log.appenderClose();
     AppMethodBeat.o(145683);
   }
   
@@ -82,7 +82,7 @@ public class CrashMonitorForJni
     if (localObject2 != null)
     {
       localPrintWriter.append("\n");
-      localPrintWriter.append(((a)localObject2).Mr());
+      localPrintWriter.append(((CrashExtraMessageGetter)localObject2).getExtraMessage());
       localPrintWriter.append("\n");
     }
     localObject2 = new Throwable("\n******* Java stack for JNI crash *******");
@@ -166,9 +166,9 @@ public class CrashMonitorForJni
   
   public static native void setClientVersionMsg(String paramString);
   
-  public static void setCrashExtraMessageGetter(a parama)
+  public static void setCrashExtraMessageGetter(CrashExtraMessageGetter paramCrashExtraMessageGetter)
   {
-    sCrashExtraMessageGetter = parama;
+    sCrashExtraMessageGetter = paramCrashExtraMessageGetter;
   }
   
   public static void setCrashRecordLowFd(ParcelFileDescriptor paramParcelFileDescriptor)
@@ -261,14 +261,14 @@ public class CrashMonitorForJni
     //   26	38	114	java/lang/Throwable
   }
   
-  public static abstract interface a
+  public static abstract interface CrashExtraMessageGetter
   {
-    public abstract String Mr();
+    public abstract String getExtraMessage();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.sdk.platformtools.CrashMonitorForJni
  * JD-Core Version:    0.7.0.1
  */

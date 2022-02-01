@@ -6,27 +6,26 @@ import android.os.ResultReceiver;
 import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.b.b;
-import com.tencent.mm.plugin.ball.c.e;
 import com.tencent.mm.plugin.ball.model.BallInfo;
 import com.tencent.mm.plugin.ball.view.FloatBallView;
 import com.tencent.mm.plugin.ball.view.FloatMenuView;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 
 public class d
-  implements e
+  implements com.tencent.mm.plugin.ball.c.d
 {
-  private static d nNl;
-  public volatile boolean nMh = false;
-  public a nNm;
-  private boolean nNn = false;
+  private static d oYh;
+  public volatile boolean oXd = false;
+  public a oYi;
+  private boolean oYj = false;
   
-  private static boolean H(BallInfo paramBallInfo)
+  private static boolean G(BallInfo paramBallInfo)
   {
-    return (paramBallInfo.state != 0) && (!paramBallInfo.nLv);
+    return (paramBallInfo.state != 0) && (!paramBallInfo.nno);
   }
   
   private void b(List<BallInfo> paramList, BallInfo paramBallInfo)
@@ -36,15 +35,15 @@ public class d
     {
       if (com.tencent.mm.plugin.ball.f.d.h(paramList))
       {
-        if (!bMi())
+        if (!ciY())
         {
-          ae.i("MicroMsg.FloatBallUIManager", "float ball did not create");
-          bMk();
+          Log.i("MicroMsg.FloatBallUIManager", "float ball did not create");
+          cja();
           c(paramList, paramBallInfo);
           AppMethodBeat.o(184618);
           return;
         }
-        ae.i("MicroMsg.FloatBallUIManager", "float ball already created");
+        Log.i("MicroMsg.FloatBallUIManager", "float ball already created");
         c(paramList, paramBallInfo);
         AppMethodBeat.o(184618);
         return;
@@ -52,64 +51,73 @@ public class d
     }
     catch (Exception paramList)
     {
-      ae.e("MicroMsg.FloatBallUIManager", "onFloatBallInfoChangedInternal exp:%s", new Object[] { paramList });
+      Log.e("MicroMsg.FloatBallUIManager", "onFloatBallInfoChangedInternal exp:%s", new Object[] { paramList });
       AppMethodBeat.o(184618);
       return;
     }
-    ae.i("MicroMsg.FloatBallUIManager", "empty ball info list");
-    bMj();
+    Log.i("MicroMsg.FloatBallUIManager", "empty ball info list");
+    ciZ();
     AppMethodBeat.o(184618);
   }
   
-  private boolean bMf()
+  private void c(List<BallInfo> paramList, BallInfo paramBallInfo)
   {
-    AppMethodBeat.i(209502);
-    if ((bMi()) && (this.nNm.bMf()))
+    AppMethodBeat.i(184620);
+    if (ciY()) {
+      this.oYi.a(paramList, paramBallInfo);
+    }
+    AppMethodBeat.o(184620);
+  }
+  
+  private boolean ciV()
+  {
+    AppMethodBeat.i(217056);
+    if ((ciY()) && (this.oYi.ciV()))
     {
-      AppMethodBeat.o(209502);
+      AppMethodBeat.o(217056);
       return true;
     }
-    AppMethodBeat.o(209502);
+    AppMethodBeat.o(217056);
     return false;
   }
   
   /* Error */
-  public static d bMh()
+  public static d ciX()
   {
     // Byte code:
-    //   0: ldc 132
+    //   0: ldc 139
     //   2: invokestatic 61	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: ldc 2
     //   7: monitorenter
-    //   8: getstatic 134	com/tencent/mm/plugin/ball/ui/d:nNl	Lcom/tencent/mm/plugin/ball/ui/d;
+    //   8: getstatic 141	com/tencent/mm/plugin/ball/ui/d:oYh	Lcom/tencent/mm/plugin/ball/ui/d;
     //   11: ifnonnull +19 -> 30
     //   14: ldc 2
     //   16: monitorenter
     //   17: new 2	com/tencent/mm/plugin/ball/ui/d
     //   20: dup
-    //   21: invokespecial 135	com/tencent/mm/plugin/ball/ui/d:<init>	()V
-    //   24: putstatic 134	com/tencent/mm/plugin/ball/ui/d:nNl	Lcom/tencent/mm/plugin/ball/ui/d;
+    //   21: invokespecial 142	com/tencent/mm/plugin/ball/ui/d:<init>	()V
+    //   24: putstatic 141	com/tencent/mm/plugin/ball/ui/d:oYh	Lcom/tencent/mm/plugin/ball/ui/d;
     //   27: ldc 2
     //   29: monitorexit
     //   30: ldc 2
     //   32: monitorexit
-    //   33: getstatic 134	com/tencent/mm/plugin/ball/ui/d:nNl	Lcom/tencent/mm/plugin/ball/ui/d;
+    //   33: getstatic 141	com/tencent/mm/plugin/ball/ui/d:oYh	Lcom/tencent/mm/plugin/ball/ui/d;
     //   36: astore_0
-    //   37: ldc 132
+    //   37: ldc 139
     //   39: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   42: aload_0
     //   43: areturn
     //   44: astore_0
     //   45: ldc 2
     //   47: monitorexit
-    //   48: ldc 132
+    //   48: ldc 139
     //   50: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   53: aload_0
     //   54: athrow
     //   55: astore_0
     //   56: ldc 2
     //   58: monitorexit
-    //   59: ldc 132
+    //   59: ldc 139
     //   61: invokestatic 68	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   64: aload_0
     //   65: athrow
@@ -128,80 +136,71 @@ public class d
     //   56	59	55	finally
   }
   
-  private void bMk()
+  private void cja()
   {
     AppMethodBeat.i(184619);
-    this.nNm = new a(ak.getContext());
-    this.nNm.bMe();
-    bMl();
+    this.oYi = new a(MMApplicationContext.getContext());
+    this.oYi.ciU();
+    cjb();
     AppMethodBeat.o(184619);
   }
   
-  private void bMl()
+  private void cjb()
   {
-    AppMethodBeat.i(209505);
-    if (this.nNn)
+    AppMethodBeat.i(217059);
+    if (this.oYj)
     {
-      this.nNm.setNeedTranslateAnimation(this.nNn);
-      this.nNn = false;
+      this.oYi.setNeedTranslateAnimation(this.oYj);
+      this.oYj = false;
     }
-    AppMethodBeat.o(209505);
-  }
-  
-  private void c(List<BallInfo> paramList, BallInfo paramBallInfo)
-  {
-    AppMethodBeat.i(184620);
-    if (bMi()) {
-      this.nNm.a(paramList, paramBallInfo);
-    }
-    AppMethodBeat.o(184620);
+    AppMethodBeat.o(217059);
   }
   
   private void d(boolean paramBoolean, AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(209501);
-    if (bMi())
+    AppMethodBeat.i(217055);
+    if (ciY())
     {
-      if (bMf())
+      if (ciV())
       {
-        this.nNm.c(paramBoolean, paramAnimatorListenerAdapter);
-        AppMethodBeat.o(209501);
+        this.oYi.c(paramBoolean, paramAnimatorListenerAdapter);
+        AppMethodBeat.o(217055);
         return;
       }
       if (paramAnimatorListenerAdapter != null) {
         paramAnimatorListenerAdapter.onAnimationEnd(null);
       }
     }
-    AppMethodBeat.o(209501);
+    AppMethodBeat.o(217055);
   }
   
   public final void a(int paramInt, BallInfo paramBallInfo)
   {
-    AppMethodBeat.i(209503);
-    ae.v("MicroMsg.FloatBallUIManager", "alvinluo onFloatBallAdded size: %d, state: %d, hidden: %b", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramBallInfo.state), Boolean.valueOf(paramBallInfo.nLv) });
-    if ((paramInt == 1) && (H(paramBallInfo))) {
-      this.nNn = true;
+    AppMethodBeat.i(217057);
+    Log.v("MicroMsg.FloatBallUIManager", "alvinluo onFloatBallAdded size: %d, state: %d, hidden: %b", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramBallInfo.state), Boolean.valueOf(paramBallInfo.nno) });
+    if ((paramInt == 1) && (G(paramBallInfo))) {
+      this.oYj = true;
     }
-    AppMethodBeat.o(209503);
+    AppMethodBeat.o(217057);
   }
   
   public final void a(final List<BallInfo> paramList, final BallInfo paramBallInfo)
   {
     AppMethodBeat.i(106313);
-    ae.d("MicroMsg.FloatBallUIManager", "onFloatBallInfoChanged");
+    Log.d("MicroMsg.FloatBallUIManager", "onFloatBallInfoChanged");
     if (Looper.getMainLooper() == Looper.myLooper())
     {
       b(paramList, paramBallInfo);
       AppMethodBeat.o(106313);
       return;
     }
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(209498);
+        AppMethodBeat.i(217052);
         d.a(d.this, paramList, paramBallInfo);
-        AppMethodBeat.o(209498);
+        AppMethodBeat.o(217052);
       }
     });
     AppMethodBeat.o(106313);
@@ -209,66 +208,66 @@ public class d
   
   public final void a(final boolean paramBoolean, final ResultReceiver paramResultReceiver)
   {
-    AppMethodBeat.i(209499);
-    ar.f(new Runnable()
+    AppMethodBeat.i(217053);
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(106305);
-        if (d.this.bMi())
+        if (d.this.ciY())
         {
           a locala = d.a(d.this);
           boolean bool = paramBoolean;
           ResultReceiver localResultReceiver = paramResultReceiver;
-          locala.nMP.nLI = bu.fpO();
-          if ((locala.nML != null) && (locala.nMM != null))
+          locala.oXL.iOB = Util.nowMilliSecond();
+          if ((locala.oXH != null) && (locala.oXI != null))
           {
-            locala.nML.b(false, null);
-            locala.nMM.setInLongPressMode(false);
-            locala.nMM.setForceShowFloatMenu(true);
-            locala.nMM.c(localResultReceiver);
-            locala.nMQ = bool;
+            locala.oXH.b(false, null);
+            locala.oXI.setInLongPressMode(false);
+            locala.oXI.setForceShowFloatMenu(true);
+            locala.oXI.c(localResultReceiver);
+            locala.oXM = bool;
           }
         }
         AppMethodBeat.o(106305);
       }
     });
-    AppMethodBeat.o(209499);
+    AppMethodBeat.o(217053);
   }
   
   public final void b(int paramInt, BallInfo paramBallInfo)
   {
-    AppMethodBeat.i(209504);
-    ae.v("MicroMsg.FloatBallUIManager", "alvinluo onFloatBallRemoved size: %d, state: %d, hidden: %b", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramBallInfo.state), Boolean.valueOf(paramBallInfo.nLv) });
-    if ((paramInt == 0) && (bMi()) && (H(paramBallInfo))) {
-      this.nNn = true;
+    AppMethodBeat.i(217058);
+    Log.v("MicroMsg.FloatBallUIManager", "alvinluo onFloatBallRemoved size: %d, state: %d, hidden: %b", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramBallInfo.state), Boolean.valueOf(paramBallInfo.nno) });
+    if ((paramInt == 0) && (ciY()) && (G(paramBallInfo))) {
+      this.oYj = true;
     }
-    AppMethodBeat.o(209504);
+    AppMethodBeat.o(217058);
   }
   
   public final void b(final boolean paramBoolean1, final boolean paramBoolean2, final AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
     AppMethodBeat.i(184617);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(106308);
-        if (d.this.bMi())
+        if (d.this.ciY())
         {
           a locala = d.a(d.this);
           boolean bool1 = paramBoolean1;
           boolean bool2 = paramBoolean2;
           AnimatorListenerAdapter localAnimatorListenerAdapter = paramAnimatorListenerAdapter;
-          if (locala.nML != null)
+          if (locala.oXH != null)
           {
-            ae.i("MicroMsg.FloatBallContainer", "resume FloatBallView, animation:%s", new Object[] { Boolean.valueOf(bool1) });
-            locala.nML.c(bool1, bool2, localAnimatorListenerAdapter);
+            Log.i("MicroMsg.FloatBallContainer", "resume FloatBallView, animation:%s", new Object[] { Boolean.valueOf(bool1) });
+            locala.oXH.c(bool1, bool2, localAnimatorListenerAdapter);
           }
-          if (locala.nMM != null)
+          if (locala.oXI != null)
           {
-            ae.i("MicroMsg.FloatBallContainer", "quickHide FloatMenuView");
-            locala.nMM.d(localAnimatorListenerAdapter);
+            Log.i("MicroMsg.FloatBallContainer", "quickHide FloatMenuView");
+            locala.oXI.e(localAnimatorListenerAdapter);
           }
         }
         AppMethodBeat.o(106308);
@@ -277,116 +276,16 @@ public class d
     AppMethodBeat.o(184617);
   }
   
-  public final void bMc()
-  {
-    AppMethodBeat.i(176971);
-    if (bMi())
-    {
-      this.nNm.bMc();
-      AppMethodBeat.o(176971);
-      return;
-    }
-    ae.w("MicroMsg.FloatBallUIManager", "clearVOIPView, container is null");
-    AppMethodBeat.o(176971);
-  }
-  
-  public final boolean bMd()
-  {
-    AppMethodBeat.i(106310);
-    if (bMi())
-    {
-      boolean bool = this.nNm.bMd();
-      AppMethodBeat.o(106310);
-      return bool;
-    }
-    AppMethodBeat.o(106310);
-    return false;
-  }
-  
-  public final boolean bMi()
-  {
-    return this.nNm != null;
-  }
-  
-  public final void bMj()
-  {
-    AppMethodBeat.i(106312);
-    ar.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(176969);
-        Object localObject;
-        boolean bool;
-        FloatBallView localFloatBallView;
-        if (d.this.bMi())
-        {
-          d.c(d.this);
-          localObject = d.a(d.this);
-          if ((((a)localObject).nML.getVisibility() != 0) && (((a)localObject).nMM.getVisibility() != 0)) {
-            break label193;
-          }
-          if (((a)localObject).nML.getVisibility() != 0) {
-            break label200;
-          }
-          bool = ((a)localObject).nML.nNn;
-          ae.i("MicroMsg.FloatBallContainer", "detachFromWindow, hide floatBallView, needTranslateAnimation: %b", new Object[] { Boolean.valueOf(bool) });
-          if (!bool) {
-            break label184;
-          }
-          localFloatBallView = ((a)localObject).nML;
-          localObject = new a.5((a)localObject);
-          ae.i("MicroMsg.FloatBallView", "alvinluo hideByTranslation");
-          localFloatBallView.setNeedTranslateAnimation(false);
-          if (localFloatBallView.getVisibility() != 8) {
-            break label146;
-          }
-          ae.i("MicroMsg.FloatBallView", "hideByTranslation float ball already hide");
-        }
-        for (;;)
-        {
-          d.d(d.this);
-          AppMethodBeat.o(176969);
-          return;
-          label146:
-          if (localFloatBallView.nQc != null)
-          {
-            bool = localFloatBallView.yn(((WindowManager.LayoutParams)localFloatBallView.getLayoutParams()).x);
-            localFloatBallView.nQc.a(localFloatBallView.getCurrentStateWidth(), bool, (AnimatorListenerAdapter)localObject);
-          }
-        }
-        label184:
-        ((a)localObject).nML.b(false, null);
-        for (;;)
-        {
-          label193:
-          ((a)localObject).bMg();
-          break;
-          label200:
-          if (((a)localObject).nMM.getVisibility() != 0) {
-            break;
-          }
-          ae.i("MicroMsg.FloatBallContainer", "detachFromWindow, hide floatMenuView");
-          ((a)localObject).nMP.ya(1);
-          ((a)localObject).nMM.setCanAddFloatBallWhenHide(((a)localObject).nMQ);
-          ((a)localObject).nMQ = false;
-          ((a)localObject).nMM.d(null);
-        }
-      }
-    });
-    AppMethodBeat.o(106312);
-  }
-  
   public final void c(final boolean paramBoolean, final AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
-    AppMethodBeat.i(209500);
+    AppMethodBeat.i(217054);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
       d(paramBoolean, paramAnimatorListenerAdapter);
-      AppMethodBeat.o(209500);
+      AppMethodBeat.o(217054);
       return;
     }
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
@@ -395,18 +294,118 @@ public class d
         AppMethodBeat.o(106306);
       }
     });
-    AppMethodBeat.o(209500);
+    AppMethodBeat.o(217054);
+  }
+  
+  public final void ciS()
+  {
+    AppMethodBeat.i(176971);
+    if (ciY())
+    {
+      this.oYi.ciS();
+      AppMethodBeat.o(176971);
+      return;
+    }
+    Log.w("MicroMsg.FloatBallUIManager", "clearVOIPView, container is null");
+    AppMethodBeat.o(176971);
+  }
+  
+  public final boolean ciT()
+  {
+    AppMethodBeat.i(106310);
+    if (ciY())
+    {
+      boolean bool = this.oYi.ciT();
+      AppMethodBeat.o(106310);
+      return bool;
+    }
+    AppMethodBeat.o(106310);
+    return false;
+  }
+  
+  public final boolean ciY()
+  {
+    return this.oYi != null;
+  }
+  
+  public final void ciZ()
+  {
+    AppMethodBeat.i(106312);
+    MMHandlerThread.postToMainThread(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(176969);
+        Object localObject;
+        boolean bool;
+        FloatBallView localFloatBallView;
+        if (d.this.ciY())
+        {
+          d.c(d.this);
+          localObject = d.a(d.this);
+          if ((((a)localObject).oXH.getVisibility() != 0) && (((a)localObject).oXI.getVisibility() != 0)) {
+            break label193;
+          }
+          if (((a)localObject).oXH.getVisibility() != 0) {
+            break label200;
+          }
+          bool = ((a)localObject).oXH.oYj;
+          Log.i("MicroMsg.FloatBallContainer", "detachFromWindow, hide floatBallView, needTranslateAnimation: %b", new Object[] { Boolean.valueOf(bool) });
+          if (!bool) {
+            break label184;
+          }
+          localFloatBallView = ((a)localObject).oXH;
+          localObject = new a.5((a)localObject);
+          Log.i("MicroMsg.FloatBallView", "alvinluo hideByTranslation");
+          localFloatBallView.setNeedTranslateAnimation(false);
+          if (localFloatBallView.getVisibility() != 8) {
+            break label146;
+          }
+          Log.i("MicroMsg.FloatBallView", "hideByTranslation float ball already hide");
+        }
+        for (;;)
+        {
+          d.d(d.this);
+          AppMethodBeat.o(176969);
+          return;
+          label146:
+          if (localFloatBallView.paV != null)
+          {
+            bool = localFloatBallView.BT(((WindowManager.LayoutParams)localFloatBallView.getLayoutParams()).x);
+            localFloatBallView.paV.b(localFloatBallView.getCurrentStateWidth(), bool, (AnimatorListenerAdapter)localObject);
+          }
+        }
+        label184:
+        ((a)localObject).oXH.b(false, null);
+        for (;;)
+        {
+          label193:
+          ((a)localObject).ciW();
+          break;
+          label200:
+          if (((a)localObject).oXI.getVisibility() != 0) {
+            break;
+          }
+          Log.i("MicroMsg.FloatBallContainer", "detachFromWindow, hide floatMenuView");
+          ((a)localObject).oXL.BF(1);
+          ((a)localObject).oXI.setCanAddFloatBallWhenHide(((a)localObject).oXM);
+          ((a)localObject).oXM = false;
+          ((a)localObject).oXI.e(null);
+        }
+      }
+    });
+    AppMethodBeat.o(106312);
   }
   
   public final void e(final boolean paramBoolean, final AnimatorListenerAdapter paramAnimatorListenerAdapter)
   {
     AppMethodBeat.i(184616);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(106307);
-        if (d.this.bMi()) {
+        if (d.this.ciY()) {
           d.a(d.this).b(paramBoolean, paramAnimatorListenerAdapter);
         }
         AppMethodBeat.o(106307);
@@ -418,39 +417,39 @@ public class d
   public final int getPositionY()
   {
     AppMethodBeat.i(184615);
-    if (bMi())
+    if (ciY())
     {
-      i = this.nNm.getPositionY();
+      i = this.oYi.getPositionY();
       AppMethodBeat.o(184615);
       return i;
     }
-    int i = com.tencent.mm.plugin.ball.f.d.bMr();
+    int i = com.tencent.mm.plugin.ball.f.d.cjh();
     AppMethodBeat.o(184615);
     return i;
   }
   
-  public final void iR(final boolean paramBoolean)
+  public final void jQ(final boolean paramBoolean)
   {
     AppMethodBeat.i(176970);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(106303);
-        if (d.this.bMi())
+        if (d.this.ciY())
         {
           a locala = d.a(d.this);
           boolean bool = paramBoolean;
-          if (locala.nML != null) {
-            locala.nML.iR(bool);
+          if (locala.oXH != null) {
+            locala.oXH.jQ(bool);
           }
           if (!bool)
           {
-            if (locala.nMM != null) {
-              locala.nMM.d(null);
+            if (locala.oXI != null) {
+              locala.oXI.e(null);
             }
-            if (locala.nML != null) {
-              locala.nML.iR(bool);
+            if (locala.oXH != null) {
+              locala.oXH.jQ(bool);
             }
           }
           if (paramBoolean) {
@@ -465,7 +464,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.ui.d
  * JD-Core Version:    0.7.0.1
  */

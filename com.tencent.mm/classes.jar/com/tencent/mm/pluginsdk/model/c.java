@@ -1,148 +1,59 @@
 package com.tencent.mm.pluginsdk.model;
 
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ActivityInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
-import android.net.Uri;
-import android.os.Bundle;
+import android.os.Build;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends s
 {
-  private final c.a FdW;
-  private final Intent FdX;
-  private final x FdY;
+  private static int JUK = 0;
+  private static int JUL = 1;
+  private static String TAG = "MicroMsg.C2CTransferConfig";
   
-  public c(Bundle paramBundle)
+  public static boolean kz(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(109457);
-    this.FdY = new x();
-    if ((paramBundle == null) || (paramBundle.getParcelable("key_target_intent") == null)) {
-      this.FdW = c.a.Fea;
-    }
-    while (this.FdW == c.a.Fea)
+    AppMethodBeat.i(240890);
+    int i = ((b)g.af(b.class)).a(b.a.rZf, JUK);
+    String str2 = Build.MODEL.toLowerCase();
+    String str3 = TAG;
+    String str1;
+    if (i == JUL)
     {
-      this.FdX = null;
-      AppMethodBeat.o(109457);
-      return;
-      c.a locala = c.a.YQ(paramBundle.getInt("key_map_app", c.a.Fea.code));
-      if (a(ak.getContext(), locala, null) == null) {
-        this.FdW = c.a.Fea;
-      } else {
-        this.FdW = locala;
+      str1 = "mediaCodec";
+      Log.i(str3, "transferType:%s model:%s select %s mode", new Object[] { Integer.valueOf(i), str2, str1 });
+      if (i != JUL) {
+        break label101;
       }
     }
-    this.FdX = ((Intent)paramBundle.getParcelable("key_target_intent"));
-    AppMethodBeat.o(109457);
-  }
-  
-  private static ResolveInfo a(Context paramContext, c.a parama, Intent paramIntent)
-  {
-    AppMethodBeat.i(109458);
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent("android.intent.action.VIEW", Uri.parse(String.format("geo:%f,%f", new Object[] { Float.valueOf(0.0F), Float.valueOf(0.0F) })));
-    }
-    paramContext = paramContext.getPackageManager().queryIntentActivities(localIntent, 0);
-    if (bu.ht(paramContext))
+    label101:
+    for (i = 1;; i = 0)
     {
-      AppMethodBeat.o(109458);
-      return null;
-    }
-    paramContext = paramContext.iterator();
-    while (paramContext.hasNext())
-    {
-      paramIntent = (ResolveInfo)paramContext.next();
-      if ((paramIntent != null) && (paramIntent.activityInfo != null) && (parama.getPackage().equals(paramIntent.activityInfo.packageName)))
-      {
-        AppMethodBeat.o(109458);
-        return paramIntent;
+      if (i == 0) {
+        break label106;
       }
+      AppMethodBeat.o(240890);
+      return true;
+      str1 = "x264";
+      break;
     }
-    AppMethodBeat.o(109458);
-    return null;
-  }
-  
-  public final String a(Context paramContext, ResolveInfo paramResolveInfo)
-  {
-    AppMethodBeat.i(109462);
-    paramContext = this.FdY.a(paramContext, paramResolveInfo);
-    AppMethodBeat.o(109462);
-    return paramContext;
-  }
-  
-  public final boolean aMR(String paramString)
-  {
-    AppMethodBeat.i(109460);
-    boolean bool = this.FdW.getPackage().equals(paramString);
-    AppMethodBeat.o(109460);
-    return bool;
-  }
-  
-  public final String aQW()
-  {
-    if (this.FdW == c.a.Fea) {
-      return "http://softroute.map.qq.com/downloadfile?cid=00008&referer=wx_client";
-    }
-    return null;
-  }
-  
-  public final String fdg()
-  {
-    if (this.FdW == c.a.Fea) {
-      return "TencentMap.apk";
-    }
-    return null;
-  }
-  
-  public final t.a fdh()
-  {
-    AppMethodBeat.i(109461);
-    if (this.FdW == c.a.Fea)
+    label106:
+    i = ((b)g.af(b.class)).a(b.a.rZe, 3000);
+    Log.i(TAG, "rawWidth %d rawHeight:%d limit:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(i) });
+    if (Math.max(paramInt2, paramInt1) >= i)
     {
-      locala = this.FdY.fdh();
-      AppMethodBeat.o(109461);
-      return locala;
-    }
-    t.a locala = new t.a();
-    locala.FeM = -1;
-    locala.FeJ = -1;
-    ResolveInfo localResolveInfo = a(ak.getContext(), this.FdW, this.FdX);
-    if (localResolveInfo != null) {
-      locala.FeN = a(ak.getContext(), localResolveInfo);
-    }
-    AppMethodBeat.o(109461);
-    return locala;
-  }
-  
-  public final boolean ht(Context paramContext)
-  {
-    AppMethodBeat.i(109459);
-    if (this.FdW == c.a.Fea)
-    {
-      boolean bool = this.FdY.ht(paramContext);
-      AppMethodBeat.o(109459);
-      return bool;
-    }
-    if (a(paramContext, this.FdW, this.FdX) != null)
-    {
-      AppMethodBeat.o(109459);
+      AppMethodBeat.o(240890);
       return true;
     }
-    AppMethodBeat.o(109459);
+    AppMethodBeat.o(240890);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.c
  * JD-Core Version:    0.7.0.1
  */

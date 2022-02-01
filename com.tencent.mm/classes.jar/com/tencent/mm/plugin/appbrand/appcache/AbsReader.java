@@ -2,36 +2,36 @@ package com.tencent.mm.plugin.appbrand.appcache;
 
 import android.text.TextUtils;
 import com.tencent.mm.ab.i;
+import com.tencent.mm.plugin.appbrand.ac.d;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.y.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.InputStream;
 import java.util.Locale;
 
 public abstract class AbsReader
   implements ICommLibReader
 {
-  private volatile String jHW;
-  private volatile String jHX;
-  private volatile i jHY;
+  private volatile String kJU;
+  private volatile String kJV;
+  private volatile i kJW;
   private volatile String versionName;
   
   /* Error */
-  private i aZJ()
+  private i bva()
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:jHY	Lcom/tencent/mm/ab/i;
+    //   1: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:kJW	Lcom/tencent/mm/ab/i;
     //   4: ifnonnull +66 -> 70
     //   7: aload_0
     //   8: monitorenter
     //   9: aload_0
-    //   10: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:jHY	Lcom/tencent/mm/ab/i;
+    //   10: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:kJW	Lcom/tencent/mm/ab/i;
     //   13: ifnonnull +55 -> 68
     //   16: aload_0
     //   17: ldc 25
-    //   19: invokevirtual 29	com/tencent/mm/plugin/appbrand/appcache/AbsReader:LD	(Ljava/lang/String;)Ljava/lang/String;
+    //   19: invokevirtual 29	com/tencent/mm/plugin/appbrand/appcache/AbsReader:UM	(Ljava/lang/String;)Ljava/lang/String;
     //   22: astore_2
     //   23: aload_2
     //   24: invokestatic 35	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
@@ -43,9 +43,9 @@ public abstract class AbsReader
     //   38: dup
     //   39: iconst_0
     //   40: aload_0
-    //   41: invokevirtual 43	com/tencent/mm/plugin/appbrand/appcache/AbsReader:aZN	()Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;
+    //   41: invokevirtual 43	com/tencent/mm/plugin/appbrand/appcache/AbsReader:bve	()Lcom/tencent/mm/plugin/appbrand/appcache/IPkgInfo;
     //   44: aastore
-    //   45: invokestatic 49	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   45: invokestatic 49	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   48: aload_2
     //   49: invokestatic 35	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   52: ifeq +23 -> 75
@@ -55,11 +55,11 @@ public abstract class AbsReader
     //   62: astore_1
     //   63: aload_0
     //   64: aload_1
-    //   65: putfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:jHY	Lcom/tencent/mm/ab/i;
+    //   65: putfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:kJW	Lcom/tencent/mm/ab/i;
     //   68: aload_0
     //   69: monitorexit
     //   70: aload_0
-    //   71: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:jHY	Lcom/tencent/mm/ab/i;
+    //   71: getfield 23	com/tencent/mm/plugin/appbrand/appcache/AbsReader:kJW	Lcom/tencent/mm/ab/i;
     //   74: areturn
     //   75: new 51	com/tencent/mm/ab/i
     //   78: dup
@@ -77,7 +77,7 @@ public abstract class AbsReader
     //   98: iconst_0
     //   99: aload_2
     //   100: aastore
-    //   101: invokestatic 61	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   101: invokestatic 61	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   104: new 51	com/tencent/mm/ab/i
     //   107: dup
     //   108: invokespecial 52	com/tencent/mm/ab/i:<init>	()V
@@ -113,32 +113,32 @@ public abstract class AbsReader
     //   117	119	116	finally
   }
   
-  public final String LD(String paramString)
+  public final String UM(String paramString)
   {
     InputStream localInputStream = openRead(paramString);
     if (localInputStream == null) {
       return null;
     }
-    long l = bu.HQ();
+    long l = Util.currentTicks();
     String str = d.convertStreamToString(localInputStream);
-    bu.d(localInputStream);
-    ae.v("MicroMsg.AppBrand.AbsReader", "readAsString(%s), cost %dms", new Object[] { paramString, Long.valueOf(bu.HQ() - l) });
+    Util.qualityClose(localInputStream);
+    Log.v("MicroMsg.AppBrand.AbsReader", "readAsString(%s), cost %dms", new Object[] { paramString, Long.valueOf(Util.currentTicks() - l) });
     return str;
   }
   
-  public final String LE(String paramString)
+  public final String UN(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {}
     i locali;
     do
     {
       return null;
-      locali = aZJ().xy("features");
+      locali = bva().FK("features");
     } while (locali == null);
     return locali.optString(paramString, null);
   }
   
-  public final String aZK()
+  public final String bvb()
   {
     String str2;
     String str1;
@@ -152,7 +152,7 @@ public abstract class AbsReader
     }
     try
     {
-      i locali = aZJ();
+      i locali = bva();
       str1 = str2;
       localObject1 = localObject2;
       localObject2 = locali.getString("version");
@@ -161,7 +161,7 @@ public abstract class AbsReader
       str2 = locali.getString("updateTime");
       str1 = str2;
       localObject1 = localObject2;
-      ae.i("MicroMsg.AppBrand.AbsReader", "AbsReader version parsed wx.version[%s | %s]", new Object[] { localObject2, str2 });
+      Log.i("MicroMsg.AppBrand.AbsReader", "AbsReader version parsed wx.version[%s | %s]", new Object[] { localObject2, str2 });
       localObject1 = localObject2;
       str1 = str2;
     }
@@ -169,7 +169,7 @@ public abstract class AbsReader
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.AppBrand.AbsReader", localException, "get WAVersion.json failed.", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.AppBrand.AbsReader", localException, "get WAVersion.json failed.", new Object[0]);
       }
     }
     Object localObject2 = localObject1;
@@ -177,25 +177,25 @@ public abstract class AbsReader
       localObject2 = "";
     }
     this.versionName = ((String)localObject2);
-    this.jHW = str1;
-    this.jHX = String.format(Locale.US, "%s (%s)", new Object[] { this.versionName, this.jHW });
+    this.kJU = str1;
+    this.kJV = String.format(Locale.US, "%s (%s)", new Object[] { this.versionName, this.kJU });
     return this.versionName;
   }
   
-  public final String aZL()
+  public final String bvc()
   {
-    aZK();
-    return bu.nullAsNil(this.jHX);
+    bvb();
+    return Util.nullAsNil(this.kJV);
   }
   
-  public final int aZM()
+  public final int bvd()
   {
-    return aZN().pkgVersion();
+    return bve().pkgVersion();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.AbsReader
  * JD-Core Version:    0.7.0.1
  */

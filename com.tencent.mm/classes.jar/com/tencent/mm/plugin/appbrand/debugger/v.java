@@ -12,13 +12,13 @@ import com.tencent.mm.b.s;
 import com.tencent.mm.bw.a;
 import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.appbrand.appcache.bg;
-import com.tencent.mm.protocal.protobuf.eas;
-import com.tencent.mm.protocal.protobuf.eay;
-import com.tencent.mm.protocal.protobuf.eaz;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.euz;
+import com.tencent.mm.protocal.protobuf.evf;
+import com.tencent.mm.protocal.protobuf.evg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.ByteBuffer;
@@ -29,27 +29,27 @@ import org.json.JSONObject;
 public final class v
 {
   private static String deviceID = null;
-  public static m kfo = null;
-  private static int kfp = 0;
-  private static Boolean kfq = null;
+  public static m liX = null;
+  private static int liY = 0;
+  private static Boolean liZ = null;
   
-  public static n OO(String paramString)
+  public static n XZ(String paramString)
   {
     AppMethodBeat.i(147095);
-    ae.i("MicroMsg.RemoteDebugUtil", "parseRemoteDebugInfo extInfo=%s", new Object[] { paramString });
+    Log.i("MicroMsg.RemoteDebugUtil", "parseRemoteDebugInfo extInfo=%s", new Object[] { paramString });
     n localn = new n();
-    if (!bu.isNullOrNil(paramString)) {}
+    if (!Util.isNullOrNil(paramString)) {}
     try
     {
-      paramString = h.xs(paramString);
-      localn.keD = paramString.optBoolean("open_remote", false);
+      paramString = h.FE(paramString);
+      localn.lin = paramString.optBoolean("open_remote", false);
       localn.roomId = paramString.optString("room_id");
-      localn.keE = paramString.optString("wxpkg_info");
-      localn.keF = paramString.optString("qrcode_id");
-      localn.keG = paramString.optInt("remote_network_type", 1);
-      localn.cmJ = paramString.optBoolean("disable_url_check", true);
-      localn.keH = paramString.optInt("remote_proxy_port", 9976);
-      localn.keI = paramString.optInt("remote_support_compress_algo");
+      localn.lio = paramString.optString("wxpkg_info");
+      localn.lip = paramString.optString("qrcode_id");
+      localn.liq = paramString.optInt("remote_network_type", 1);
+      localn.cyF = paramString.optBoolean("disable_url_check", true);
+      localn.lir = paramString.optInt("remote_proxy_port", 9976);
+      localn.lis = paramString.optInt("remote_support_compress_algo");
       AppMethodBeat.o(147095);
       return localn;
     }
@@ -57,7 +57,7 @@ public final class v
     {
       for (;;)
       {
-        ae.e("MicroMsg.RemoteDebugUtil", "parseRemoteDebugInfo %s", new Object[] { paramString });
+        Log.e("MicroMsg.RemoteDebugUtil", "parseRemoteDebugInfo %s", new Object[] { paramString });
       }
     }
   }
@@ -65,76 +65,76 @@ public final class v
   public static p a(a parama, m paramm, String paramString)
   {
     AppMethodBeat.i(147098);
-    localeaz = new eaz();
+    localevg = new evg();
     for (;;)
     {
       try
       {
         parama = parama.toByteArray();
-        if ((parama.length <= 256) || (paramm == null) || (!sp(paramm.kek.keI))) {
+        if ((parama.length <= 256) || (paramm == null) || (!wl(paramm.lhV.lis))) {
           continue;
         }
         byte[] arrayOfByte = s.compress(parama);
-        localeaz.Gwe = b.cm(arrayOfByte);
-        localeaz.HJB = 1;
-        ae.v("MicroMsg.RemoteDebugUtil", "use zlib %d/%d", new Object[] { Integer.valueOf(parama.length), Integer.valueOf(arrayOfByte.length) });
+        localevg.LrK = b.cD(arrayOfByte);
+        localevg.MVo = 1;
+        Log.v("MicroMsg.RemoteDebugUtil", "use zlib %d/%d", new Object[] { Integer.valueOf(parama.length), Integer.valueOf(arrayOfByte.length) });
       }
       catch (IOException parama)
       {
-        ae.e("MicroMsg.RemoteDebugUtil", "parseDebugMessageToSend %s", new Object[] { parama });
+        Log.e("MicroMsg.RemoteDebugUtil", "parseDebugMessageToSend %s", new Object[] { parama });
         continue;
-        localeaz.ape = ((int)(System.currentTimeMillis() - paramm.ken));
+        localevg.apr = ((int)(System.currentTimeMillis() - paramm.lhY));
         continue;
       }
       if (paramm == null)
       {
         Debug.waitForDebugger();
-        ae.e("MicroMsg.RemoteDebugUtil", "env = null ");
+        Log.e("MicroMsg.RemoteDebugUtil", "env = null ");
       }
-      localeaz.iqb = paramm.kel.incrementAndGet();
-      if (paramm.ken != 0L) {
+      localevg.jlm = paramm.lhW.incrementAndGet();
+      if (paramm.lhY != 0L) {
         continue;
       }
-      localeaz.ape = 0;
-      paramm.ken = System.currentTimeMillis();
-      localeaz.category = paramString;
-      ae.d("MicroMsg.RemoteDebugUtil", "parseDebugMessageToSend seq %d", new Object[] { Integer.valueOf(localeaz.iqb) });
+      localevg.apr = 0;
+      paramm.lhY = System.currentTimeMillis();
+      localevg.category = paramString;
+      Log.d("MicroMsg.RemoteDebugUtil", "parseDebugMessageToSend seq %d", new Object[] { Integer.valueOf(localevg.jlm) });
       parama = new p();
-      parama.kdZ = System.currentTimeMillis();
-      parama.keT = localeaz.Gwe.zr.length;
-      parama.keS = localeaz;
+      parama.lhG = System.currentTimeMillis();
+      parama.liC = localevg.LrK.zy.length;
+      parama.liB = localevg;
       AppMethodBeat.o(147098);
       return parama;
-      localeaz.Gwe = b.cm(parama);
+      localevg.LrK = b.cD(parama);
     }
   }
   
-  public static eay a(int paramInt, a parama)
+  public static evf a(int paramInt, a parama)
   {
     AppMethodBeat.i(147099);
-    eay localeay = new eay();
-    localeay.EN = paramInt;
-    if (bu.isNullOrNil(deviceID))
+    evf localevf = new evf();
+    localevf.EX = paramInt;
+    if (Util.isNullOrNil(deviceID))
     {
       Random localRandom = new Random(System.currentTimeMillis());
-      deviceID = localRandom.nextInt() + "-" + kfp;
+      deviceID = localRandom.nextInt() + "-" + liY;
     }
-    localeay.uuid = (deviceID + "-" + System.currentTimeMillis());
-    localeay.Gwe = h(parama);
+    localevf.uuid = (deviceID + "-" + System.currentTimeMillis());
+    localevf.LrK = h(parama);
     AppMethodBeat.o(147099);
-    return localeay;
+    return localevf;
   }
   
   public static String a(String paramString, d paramd)
   {
     AppMethodBeat.i(147101);
-    if (!paramd.Fj())
+    if (!paramd.OQ())
     {
       AppMethodBeat.o(147101);
       return "";
     }
     paramString = bg.d(paramd, paramString + ".map");
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(147101);
       return "";
@@ -147,70 +147,70 @@ public final class v
     }
     catch (UnsupportedEncodingException paramString)
     {
-      ae.e("MicroMsg.RemoteDebugUtil", "execGameExternalScript Base64.encode %s", new Object[] { paramString.getMessage() });
+      Log.e("MicroMsg.RemoteDebugUtil", "execGameExternalScript Base64.encode %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(147101);
     }
     return "";
   }
   
-  public static boolean a(m paramm, eay parameay, eas parameas, w paramw, q paramq)
+  public static boolean a(m paramm, evf paramevf, euz parameuz, w paramw, q paramq)
   {
     AppMethodBeat.i(147100);
-    if (parameay == null)
+    if (paramevf == null)
     {
-      ae.w("MicroMsg.RemoteDebugUtil", "handleError dataFormat is null");
+      Log.w("MicroMsg.RemoteDebugUtil", "handleError dataFormat is null");
       AppMethodBeat.o(147100);
       return false;
     }
-    int i = parameay.EN;
-    if (parameas == null)
+    int i = paramevf.EX;
+    if (parameuz == null)
     {
-      ae.w("MicroMsg.RemoteDebugUtil", "handleError cmd id: %d resp is null", new Object[] { Integer.valueOf(i) });
+      Log.w("MicroMsg.RemoteDebugUtil", "handleError cmd id: %d resp is null", new Object[] { Integer.valueOf(i) });
       AppMethodBeat.o(147100);
       return false;
     }
     if (i == 1006)
     {
-      if (-50011 != parameas.drN) {
+      if (-50011 != parameuz.dIZ) {
         break label102;
       }
-      paramm.fZ(true);
+      paramm.gW(true);
     }
-    while (parameas.drN == 0)
+    while (parameuz.dIZ == 0)
     {
       AppMethodBeat.o(147100);
       return true;
       label102:
       boolean bool = paramm.isBusy();
-      paramm.fZ(false);
+      paramm.gW(false);
       if (bool) {
-        paramq.bfy();
+        paramq.bAR();
       }
     }
-    ae.i("MicroMsg.RemoteDebugUtil", "handleError cmd id: %d, uuid: %s, errorCode: %d, errMsg: %s", new Object[] { Integer.valueOf(i), parameay.uuid, Integer.valueOf(parameas.drN), parameas.drO });
-    ar.f(new w.8(paramw, i, parameas));
+    Log.i("MicroMsg.RemoteDebugUtil", "handleError cmd id: %d, uuid: %s, errorCode: %d, errMsg: %s", new Object[] { Integer.valueOf(i), paramevf.uuid, Integer.valueOf(parameuz.dIZ), parameuz.dJa });
+    MMHandlerThread.postToMainThread(new w.8(paramw, i, parameuz));
     AppMethodBeat.o(147100);
     return false;
   }
   
-  public static boolean bfF()
+  public static boolean bAY()
   {
     AppMethodBeat.i(147102);
-    if (kfq != null)
+    if (liZ != null)
     {
-      bool = kfq.booleanValue();
+      bool = liZ.booleanValue();
       AppMethodBeat.o(147102);
       return bool;
     }
-    SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("app_brand_global_sp", 0);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("app_brand_global_sp", 0);
     if (localSharedPreferences == null)
     {
-      ae.w("MicroMsg.RemoteDebugUtil", "isHardCodeOpenGamePreload, sp is null.");
+      Log.w("MicroMsg.RemoteDebugUtil", "isHardCodeOpenGamePreload, sp is null.");
       AppMethodBeat.o(147102);
       return true;
     }
     boolean bool = localSharedPreferences.getBoolean("hard_code_open_game_preload", true);
-    kfq = Boolean.valueOf(bool);
+    liZ = Boolean.valueOf(bool);
     AppMethodBeat.o(147102);
     return bool;
   }
@@ -226,20 +226,20 @@ public final class v
     }
     catch (IOException parama)
     {
-      ae.w("MicroMsg.RemoteDebugUtil", parama.getMessage());
+      Log.w("MicroMsg.RemoteDebugUtil", parama.getMessage());
       parama = ByteBuffer.allocate(0);
       AppMethodBeat.o(147096);
     }
     return parama;
   }
   
-  public static void gb(boolean paramBoolean)
+  public static void gY(boolean paramBoolean)
   {
     AppMethodBeat.i(147103);
-    SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("app_brand_global_sp", 0);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("app_brand_global_sp", 0);
     if (localSharedPreferences == null)
     {
-      ae.w("MicroMsg.RemoteDebugUtil", "setHardCodeOpenGamePreload, sp is null.");
+      Log.w("MicroMsg.RemoteDebugUtil", "setHardCodeOpenGamePreload, sp is null.");
       AppMethodBeat.o(147103);
       return;
     }
@@ -252,14 +252,14 @@ public final class v
     AppMethodBeat.i(147097);
     try
     {
-      parama = b.cm(parama.toByteArray());
+      parama = b.cD(parama.toByteArray());
       AppMethodBeat.o(147097);
       return parama;
     }
     catch (IOException parama)
     {
-      ae.w("MicroMsg.RemoteDebugUtil", parama.getMessage());
-      parama = b.cm(new byte[0]);
+      Log.w("MicroMsg.RemoteDebugUtil", parama.getMessage());
+      parama = b.cD(new byte[0]);
       AppMethodBeat.o(147097);
     }
     return parama;
@@ -267,17 +267,17 @@ public final class v
   
   public static void setUin(int paramInt)
   {
-    kfp = paramInt;
+    liY = paramInt;
   }
   
-  public static boolean sp(int paramInt)
+  public static boolean wl(int paramInt)
   {
     return (paramInt & 0x1) != 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.v
  * JD-Core Version:    0.7.0.1
  */

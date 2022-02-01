@@ -1,47 +1,48 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.db;
-import com.tencent.mm.protocal.protobuf.dc;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dk;
+import com.tencent.mm.protocal.protobuf.dl;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public String iKt;
-  private final com.tencent.mm.ak.b rr;
+  private i callback;
+  public String jGZ;
+  private final d rr;
   
   public b(String paramString1, String paramString2)
   {
     AppMethodBeat.i(151180);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new db();
-    ((b.a)localObject).hQG = new dc();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/addopenimcontact";
-    ((b.a)localObject).funcId = 667;
-    this.rr = ((b.a)localObject).aDS();
-    this.iKt = paramString1;
-    localObject = (db)this.rr.hQD.hQJ;
-    ((db)localObject).iKt = paramString1;
-    ((db)localObject).FNU = paramString2;
-    ae.i("MicroMsg.Openim.NetSceneAddOpenIMContact", "tp_username: %s, antispam_ticket:%s", new Object[] { paramString1, paramString2 });
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dk();
+    ((d.a)localObject).iLO = new dl();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/addopenimcontact";
+    ((d.a)localObject).funcId = 667;
+    this.rr = ((d.a)localObject).aXF();
+    this.jGZ = paramString1;
+    localObject = (dk)this.rr.iLK.iLR;
+    ((dk)localObject).jGZ = paramString1;
+    ((dk)localObject).KHz = paramString2;
+    Log.i("MicroMsg.Openim.NetSceneAddOpenIMContact", "tp_username: %s, antispam_ticket:%s", new Object[] { paramString1, paramString2 });
     AppMethodBeat.o(151180);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(151182);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(151182);
     return i;
   }
@@ -51,10 +52,10 @@ public final class b
     return 667;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151181);
-    ae.i("MicroMsg.Openim.NetSceneAddOpenIMContact", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.iKt });
+    Log.i("MicroMsg.Openim.NetSceneAddOpenIMContact", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.jGZ });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

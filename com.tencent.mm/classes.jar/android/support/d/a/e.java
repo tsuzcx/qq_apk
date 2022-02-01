@@ -192,7 +192,7 @@ public final class e
       if (((String)localObject1).equals("set"))
       {
         localObject1 = new AnimatorSet();
-        localObject2 = g.a(paramResources, paramTheme, paramAttributeSet, a.wK);
+        localObject2 = g.a(paramResources, paramTheme, paramAttributeSet, a.wR);
         i = g.a((TypedArray)localObject2, paramXmlPullParser, "ordering", 0, 0);
         a(paramContext, paramResources, paramTheme, paramXmlPullParser, paramAttributeSet, (AnimatorSet)localObject1, i, paramFloat);
         ((TypedArray)localObject2).recycle();
@@ -281,7 +281,7 @@ public final class e
       i = paramInt1;
       if (paramInt1 == 4)
       {
-        if (((j == 0) || (!am(m))) && ((k == 0) || (!am(n)))) {
+        if (((j == 0) || (!al(m))) && ((k == 0) || (!al(n)))) {
           break label227;
         }
         i = 3;
@@ -298,8 +298,8 @@ public final class e
       {
         localObject = paramTypedArray.getString(paramInt2);
         paramTypedArray = paramTypedArray.getString(paramInt3);
-        c.b[] arrayOfb1 = c.x((String)localObject);
-        c.b[] arrayOfb2 = c.x(paramTypedArray);
+        c.b[] arrayOfb1 = c.y((String)localObject);
+        c.b[] arrayOfb2 = c.y(paramTypedArray);
         if ((arrayOfb1 == null) && (arrayOfb2 == null)) {
           break label685;
         }
@@ -342,7 +342,7 @@ public final class e
     }
     localObject = null;
     if (i == 3) {
-      localObject = f.dw();
+      localObject = f.dz();
     }
     float f1;
     label345:
@@ -408,7 +408,7 @@ public final class e
         {
           paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1, paramInt2 });
           break;
-          if (am(m))
+          if (al(m))
           {
             paramInt1 = paramTypedArray.getColor(paramInt2, 0);
             break label506;
@@ -416,7 +416,7 @@ public final class e
           paramInt1 = paramTypedArray.getInt(paramInt2, 0);
           break label506;
           label573:
-          if (am(n)) {
+          if (al(n)) {
             paramInt2 = paramTypedArray.getColor(paramInt3, 0);
           } else {
             paramInt2 = paramTypedArray.getInt(paramInt3, 0);
@@ -436,7 +436,7 @@ public final class e
           {
             paramTypedArray = PropertyValuesHolder.ofInt(paramString, new int[] { paramInt1 });
             break;
-            if (am(n)) {
+            if (al(n)) {
               paramInt1 = paramTypedArray.getColor(paramInt3, 0);
             } else {
               paramInt1 = paramTypedArray.getInt(paramInt3, 0);
@@ -452,8 +452,8 @@ public final class e
   
   private static ValueAnimator a(Context paramContext, Resources paramResources, Resources.Theme paramTheme, AttributeSet paramAttributeSet, ValueAnimator paramValueAnimator, float paramFloat, XmlPullParser paramXmlPullParser)
   {
-    TypedArray localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.wJ);
-    paramTheme = g.a(paramResources, paramTheme, paramAttributeSet, a.wN);
+    TypedArray localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.wQ);
+    paramTheme = g.a(paramResources, paramTheme, paramAttributeSet, a.wU);
     paramResources = paramValueAnimator;
     if (paramValueAnimator == null) {
       paramResources = new ValueAnimator();
@@ -504,7 +504,7 @@ public final class e
         }
         m = ((TypedValue)localObject).type;
         label131:
-        if (((i == 0) || (!am(j))) && ((k == 0) || (!am(m)))) {
+        if (((i == 0) || (!al(j))) && ((k == 0) || (!al(m)))) {
           break label348;
         }
       }
@@ -548,7 +548,7 @@ public final class e
       break label131;
     }
     label354:
-    a(c.u(paramTypedArray1), paramValueAnimator, 0.5F * paramFloat, (String)localObject, paramXmlPullParser);
+    a(c.x(paramTypedArray1), paramValueAnimator, 0.5F * paramFloat, (String)localObject, paramXmlPullParser);
     label371:
     return;
     label372:
@@ -647,7 +647,7 @@ public final class e
     int j;
     if (paramXmlPullParser.getName().equals("propertyValuesHolder"))
     {
-      TypedArray localTypedArray1 = g.a(paramResources, paramTheme, paramAttributeSet, a.wL);
+      TypedArray localTypedArray1 = g.a(paramResources, paramTheme, paramAttributeSet, a.wS);
       String str = g.c(localTypedArray1, paramXmlPullParser, "propertyName", 3);
       int i1 = g.a(localTypedArray1, paramXmlPullParser, "valueType", 2, 4);
       localObject1 = null;
@@ -669,20 +669,20 @@ public final class e
           j = i;
           if (i == 4)
           {
-            localObject2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.wM);
+            localObject2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.wT);
             localObject3 = g.a((TypedArray)localObject2, paramXmlPullParser, "value");
             if (localObject3 == null) {
               break label418;
             }
             i = 1;
-            if ((i == 0) || (!am(((TypedValue)localObject3).type))) {
+            if ((i == 0) || (!al(((TypedValue)localObject3).type))) {
               break label424;
             }
             i = 3;
             ((TypedArray)localObject2).recycle();
             j = i;
           }
-          localTypedArray2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.wM);
+          localTypedArray2 = g.a(paramResources, paramTheme, Xml.asAttributeSet(paramXmlPullParser), a.wT);
           localObject3 = null;
           f = g.a(localTypedArray2, paramXmlPullParser, "fraction", 3, -1.0F);
           localObject2 = g.a(localTypedArray2, paramXmlPullParser, "value");
@@ -694,7 +694,7 @@ public final class e
           if (j != 4) {
             break label981;
           }
-          if ((k == 0) || (!am(((TypedValue)localObject2).type))) {
+          if ((k == 0) || (!al(((TypedValue)localObject2).type))) {
             break label436;
           }
           i = 3;
@@ -828,7 +828,7 @@ public final class e
             localObject1 = localObject2;
             if (i == 3)
             {
-              ((PropertyValuesHolder)localObject2).setEvaluator(f.dw());
+              ((PropertyValuesHolder)localObject2).setEvaluator(f.dz());
               localObject1 = localObject2;
             }
             label848:
@@ -881,7 +881,7 @@ public final class e
     }
   }
   
-  private static boolean am(int paramInt)
+  private static boolean al(int paramInt)
   {
     return (paramInt >= 28) && (paramInt <= 31);
   }
@@ -889,7 +889,7 @@ public final class e
   static final class a
     implements TypeEvaluator<c.b[]>
   {
-    private c.b[] wZ;
+    private c.b[] xg;
   }
 }
 

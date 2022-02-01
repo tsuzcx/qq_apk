@@ -16,9 +16,11 @@ import com.tencent.kinda.gen.KText;
 import com.tencent.kinda.gen.LinkStyle;
 import com.tencent.kinda.gen.VoidCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.pluginsdk.ui.span.o;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.plugin.appbrand.widget.h.c;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.pluginsdk.ui.span.p;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class MMKRichText
   implements KText
@@ -50,7 +52,7 @@ public class MMKRichText
   {
     AppMethodBeat.i(19110);
     if (paramString != null) {
-      this.spanText.append(k.c(ak.getContext(), paramString));
+      this.spanText.append(l.c(MMApplicationContext.getContext(), paramString));
     }
     AppMethodBeat.o(19110);
   }
@@ -63,12 +65,15 @@ public class MMKRichText
   public static class MMKLink
     implements KLink
   {
+    private DynamicColor bgColor;
+    private int bgRadius;
     private VoidCallback clickCallback;
     public boolean hasCallBack = false;
     private int linkColor;
     private LinkStyle linkStyle;
     private boolean setLinkColor = false;
     private String text;
+    private float textSize;
     
     public SpannableString get()
     {
@@ -77,21 +82,38 @@ public class MMKRichText
       if (this.text != null) {
         localSpannableString = new SpannableString(this.text);
       }
-      if ((!this.setLinkColor) && (ColorUtil.ifCompatKindaDarkModeDefaultColor())) {
-        this.linkColor = MMKViewUtil.argbColor(ColorUtil.getColorByMode(new DynamicColor(Long.parseLong("E6000000", 16), Long.parseLong("CCFFFFFF", 16))));
+      for (;;)
+      {
+        if ((!this.setLinkColor) && (ColorUtil.ifCompatKindaDarkModeDefaultColor())) {
+          this.linkColor = MMKViewUtil.argbColor(ColorUtil.getColorByMode(new DynamicColor(Long.parseLong("E6000000", 16), Long.parseLong("CCFFFFFF", 16))));
+        }
+        localSpannableString.setSpan(new ForegroundColorSpan(this.linkColor), 0, localSpannableString.length(), 33);
+        if (this.clickCallback != null) {
+          localSpannableString.setSpan(new LinkClickableSpan(this.linkColor, this.clickCallback), 0, localSpannableString.length(), 33);
+        }
+        if (this.linkStyle == LinkStyle.DELETED) {
+          localSpannableString.setSpan(new StrikethroughSpan(), 0, localSpannableString.length(), 33);
+        }
+        if (this.linkStyle == LinkStyle.UNDERLINE) {
+          localSpannableString.setSpan(new UnderlineSpan(), 0, localSpannableString.length(), 33);
+        }
+        if (this.bgColor != null)
+        {
+          long l = ColorUtil.getColorByMode(this.bgColor);
+          int i = a.fromDPToPix(MMApplicationContext.getContext(), 4);
+          localSpannableString.setSpan(new c(this.text, i, i, (int)this.textSize, this.linkColor, (int)l, this.bgRadius), 0, localSpannableString.length(), 33);
+        }
+        AppMethodBeat.o(19108);
+        return localSpannableString;
       }
-      localSpannableString.setSpan(new ForegroundColorSpan(this.linkColor), 0, localSpannableString.length(), 33);
-      if (this.clickCallback != null) {
-        localSpannableString.setSpan(new LinkClickableSpan(this.linkColor, this.clickCallback), 0, localSpannableString.length(), 33);
-      }
-      if (this.linkStyle == LinkStyle.DELETED) {
-        localSpannableString.setSpan(new StrikethroughSpan(), 0, localSpannableString.length(), 33);
-      }
-      if (this.linkStyle == LinkStyle.UNDERLINE) {
-        localSpannableString.setSpan(new UnderlineSpan(), 0, localSpannableString.length(), 33);
-      }
-      AppMethodBeat.o(19108);
-      return localSpannableString;
+    }
+    
+    public void setBackground(DynamicColor paramDynamicColor, int paramInt)
+    {
+      AppMethodBeat.i(214558);
+      this.bgColor = paramDynamicColor;
+      this.bgRadius = a.fromDPToPix(MMApplicationContext.getContext(), paramInt);
+      AppMethodBeat.o(214558);
     }
     
     public void setLinkCallbackImpl(VoidCallback paramVoidCallback)
@@ -123,8 +145,15 @@ public class MMKRichText
       this.text = paramString;
     }
     
+    public void setTextSize(float paramFloat)
+    {
+      AppMethodBeat.i(214559);
+      this.textSize = a.fromDPToPix(MMApplicationContext.getContext(), paramFloat);
+      AppMethodBeat.o(214559);
+    }
+    
     static class LinkClickableSpan
-      extends o
+      extends p
     {
       private VoidCallback clickCallback;
       private int linkColor;
@@ -136,7 +165,7 @@ public class MMKRichText
         AppMethodBeat.i(19105);
         this.linkColor = paramInt;
         this.clickCallback = paramVoidCallback;
-        setColor(this.linkColor, ak.getContext().getResources().getColor(2131099656));
+        setColor(this.linkColor, MMApplicationContext.getContext().getResources().getColor(2131099657));
         AppMethodBeat.o(19105);
       }
       
@@ -153,7 +182,7 @@ public class MMKRichText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKRichText
  * JD-Core Version:    0.7.0.1
  */

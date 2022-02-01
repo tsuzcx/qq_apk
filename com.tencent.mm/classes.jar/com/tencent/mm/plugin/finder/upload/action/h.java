@@ -3,72 +3,66 @@ package com.tencent.mm.plugin.finder.upload.action;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.g.c;
 import com.tencent.mm.loader.g.j;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "(Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;)V", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "needRetry", "", "getNeedRetry", "()Z", "setNeedRetry", "(Z)V", "call", "", "uniqueId", "", "Companion", "ICallback", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/upload/action/FollowActionTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "action", "Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "(Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;)V", "getAction", "()Lcom/tencent/mm/plugin/finder/upload/action/FinderAction;", "needRetry", "", "getNeedRetry", "()Z", "setNeedRetry", "(Z)V", "call", "", "uniqueId", "", "Companion", "plugin-finder_release"})
 public final class h
   extends c
 {
-  public static final a sVy;
-  boolean sVi;
-  final e sVj;
+  public static final a vUp;
+  boolean vUd;
+  final e vUe;
   
   static
   {
-    AppMethodBeat.i(167829);
-    sVy = new a((byte)0);
-    AppMethodBeat.o(167829);
+    AppMethodBeat.i(253215);
+    vUp = new a((byte)0);
+    AppMethodBeat.o(253215);
   }
   
   public h(e parame)
   {
-    AppMethodBeat.i(167828);
-    this.sVj = parame;
-    AppMethodBeat.o(167828);
+    AppMethodBeat.i(253214);
+    this.vUe = parame;
+    AppMethodBeat.o(253214);
   }
   
-  public final String aeW()
+  public final String auK()
   {
-    AppMethodBeat.i(167827);
-    String str = this.sVj.aeW();
-    AppMethodBeat.o(167827);
+    AppMethodBeat.i(253213);
+    String str = this.vUe.auK();
+    AppMethodBeat.o(253213);
     return str;
   }
   
   public final void call()
   {
-    AppMethodBeat.i(167826);
-    this.sVj.a((b)new c(this));
-    AppMethodBeat.o(167826);
+    AppMethodBeat.i(253212);
+    this.vUe.a((k.b)new b(this));
+    AppMethodBeat.o(253212);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/upload/action/FollowActionTask$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
   public static final class a {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "", "onTaskResult", "", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "needRetry", "", "plugin-finder_release"})
-  public static abstract interface b
-  {
-    public abstract void a(j paramj, boolean paramBoolean);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/upload/action/LikeActionTask$call$1", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "onTaskResult", "", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "isNeedRetry", "", "plugin-finder_release"})
-  public static final class c
-    implements h.b
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/upload/action/FollowActionTask$call$1", "Lcom/tencent/mm/plugin/finder/upload/action/LikeActionTask$ICallback;", "onTaskResult", "", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "isNeedRetry", "", "plugin-finder_release"})
+  public static final class b
+    implements k.b
   {
     public final void a(j paramj, boolean paramBoolean)
     {
-      AppMethodBeat.i(167825);
+      AppMethodBeat.i(253211);
       p.h(paramj, "status");
-      this.sVz.sVi = paramBoolean;
-      this.sVz.a(paramj);
-      AppMethodBeat.o(167825);
+      this.vUq.vUd = paramBoolean;
+      this.vUq.a(paramj);
+      AppMethodBeat.o(253211);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.upload.action.h
  * JD-Core Version:    0.7.0.1
  */

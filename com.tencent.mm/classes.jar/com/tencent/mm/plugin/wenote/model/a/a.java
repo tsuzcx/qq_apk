@@ -7,28 +7,28 @@ public final class a
 {
   public a()
   {
-    this.dua = "";
-    this.pAw = "";
-    this.dCC = "";
+    this.dLl = "";
+    this.qPN = "";
+    this.dUs = "";
     this.type = -2;
-  }
-  
-  public final String faA()
-  {
-    AppMethodBeat.i(30373);
-    String str = super.faA();
-    AppMethodBeat.o(30373);
-    return str;
   }
   
   public final int getType()
   {
     return this.type;
   }
+  
+  public final String gjF()
+  {
+    AppMethodBeat.i(30373);
+    String str = super.gjF();
+    AppMethodBeat.o(30373);
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.a.a
  * JD-Core Version:    0.7.0.1
  */

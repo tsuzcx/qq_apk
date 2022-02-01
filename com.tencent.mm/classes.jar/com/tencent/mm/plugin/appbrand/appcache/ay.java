@@ -6,12 +6,13 @@ import android.content.res.AssetManager;
 import com.tencent.luggage.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.io.File;
 import java.io.InputStream;
 import org.json.JSONObject;
@@ -19,9 +20,9 @@ import org.json.JSONObject;
 public final class ay
 {
   public static final int VERSION;
-  private static Boolean jKA;
-  public static final String[] jKy;
-  static final a jKz;
+  public static final String[] kMx;
+  static final a kMy;
+  private static Boolean kMz;
   
   static
   {
@@ -29,13 +30,13 @@ public final class ay
     AppMethodBeat.i(139836);
     try
     {
-      String str = baP();
+      String str = bwd();
       i = j;
-      if (!bu.isNullOrNil(str))
+      if (!Util.isNullOrNil(str))
       {
         i = j;
-        if (o.fB(str)) {
-          i = new JSONObject(o.aZT(str)).optInt("version");
+        if (s.YS(str)) {
+          i = new JSONObject(s.boY(str)).optInt("version");
         }
       }
     }
@@ -49,22 +50,22 @@ public final class ay
     if (i > 0)
     {
       VERSION = i;
-      jKy = a.cro;
+      kMx = a.cDE;
     }
-    for (jKz = a.jKE;; jKz = a.jKE)
+    for (kMy = a.kMD;; kMy = a.kMD)
     {
-      jKA = null;
+      kMz = null;
       AppMethodBeat.o(139836);
       return;
-      VERSION = 426;
-      jKy = a.cro;
+      VERSION = 491;
+      kMx = a.cDE;
     }
   }
   
-  private static InputStream LW(String paramString)
+  private static InputStream Vf(String paramString)
   {
     AppMethodBeat.i(139834);
-    Object localObject = ak.getContext().getAssets();
+    Object localObject = MMApplicationContext.getContext().getAssets();
     try
     {
       localObject = ((AssetManager)localObject).open(paramString, 3);
@@ -73,71 +74,71 @@ public final class ay
     }
     catch (Exception localException)
     {
-      ae.v("MicroMsg.AppBrand.WxaLocalLibPkg", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, localException });
+      Log.v("MicroMsg.AppBrand.WxaLocalLibPkg", "openRead file( %s ) failed, exp = %s", new Object[] { paramString, localException });
       AppMethodBeat.o(139834);
     }
     return null;
   }
   
-  public static void baO()
+  public static void bwc()
   {
     AppMethodBeat.i(139829);
-    o.deleteFile(baP());
+    s.deleteFile(bwd());
     AppMethodBeat.o(139829);
   }
   
-  static String baP()
+  static String bwd()
   {
     AppMethodBeat.i(139830);
-    String str = w.B(new k(ak.getContext().getCacheDir().getAbsolutePath() + "/MockLibInfo.json").fTh());
+    String str = aa.z(new o(MMApplicationContext.getContext().getCacheDir().getAbsolutePath() + "/MockLibInfo.json").her());
     AppMethodBeat.o(139830);
     return str;
   }
   
-  public static boolean baQ()
+  public static boolean bwe()
   {
     AppMethodBeat.i(139831);
-    if (jKA == null) {
-      jKA = Boolean.FALSE;
+    if (kMz == null) {
+      kMz = Boolean.FALSE;
     }
-    boolean bool = jKA.booleanValue();
+    boolean bool = kMz.booleanValue();
     AppMethodBeat.o(139831);
     return bool;
   }
   
-  public static WxaPkgWrappingInfo baR()
+  public static WxaPkgWrappingInfo bwf()
   {
     AppMethodBeat.i(139835);
     WxaPkgWrappingInfo localWxaPkgWrappingInfo = new WxaPkgWrappingInfo();
     localWxaPkgWrappingInfo.pkgVersion = VERSION;
-    localWxaPkgWrappingInfo.jLX = true;
+    localWxaPkgWrappingInfo.kNY = true;
     AppMethodBeat.o(139835);
     return localWxaPkgWrappingInfo;
   }
   
-  public static void fM(boolean paramBoolean)
+  public static void gI(boolean paramBoolean)
   {
     AppMethodBeat.i(139832);
-    com.tencent.mm.sdk.platformtools.ay.aRW("__appbrand_comm_lib__prefs").putBoolean("disable_develop_lib", paramBoolean).commit();
+    MultiProcessMMKV.getMMKV("__appbrand_comm_lib__prefs").putBoolean("disable_develop_lib", paramBoolean).commit();
     AppMethodBeat.o(139832);
   }
   
   public static InputStream openRead(String paramString)
   {
     AppMethodBeat.i(139833);
-    paramString = n.MV(paramString);
-    switch (1.jKB[jKz.ordinal()])
+    paramString = n.We(paramString);
+    switch (1.kMA[kMy.ordinal()])
     {
     default: 
-      paramString = LW("wxa_library".concat(String.valueOf(paramString)));
+      paramString = Vf("wxa_library".concat(String.valueOf(paramString)));
       AppMethodBeat.o(139833);
       return paramString;
     case 1: 
-      paramString = LW("wxa_library/custom".concat(String.valueOf(paramString)));
+      paramString = Vf("wxa_library/custom".concat(String.valueOf(paramString)));
       AppMethodBeat.o(139833);
       return paramString;
     }
-    paramString = LW("wxa_library/develop".concat(String.valueOf(paramString)));
+    paramString = Vf("wxa_library/develop".concat(String.valueOf(paramString)));
     AppMethodBeat.o(139833);
     return paramString;
   }
@@ -147,10 +148,10 @@ public final class ay
     static
     {
       AppMethodBeat.i(139828);
-      jKC = new a("CUSTOM", 0);
-      jKD = new a("DEVELOP", 1);
-      jKE = new a("STABLE", 2);
-      jKF = new a[] { jKC, jKD, jKE };
+      kMB = new a("CUSTOM", 0);
+      kMC = new a("DEVELOP", 1);
+      kMD = new a("STABLE", 2);
+      kME = new a[] { kMB, kMC, kMD };
       AppMethodBeat.o(139828);
     }
     
@@ -159,7 +160,7 @@ public final class ay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.ay
  * JD-Core Version:    0.7.0.1
  */

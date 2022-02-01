@@ -4,46 +4,46 @@ import android.annotation.TargetApi;
 import android.media.AudioRecord;
 import android.media.audiofx.AcousticEchoCanceler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class f
   implements h.a
 {
-  private AcousticEchoCanceler fXM;
+  private AcousticEchoCanceler gCS;
   
   @TargetApi(16)
   public f(AudioRecord paramAudioRecord)
   {
     AppMethodBeat.i(155557);
-    this.fXM = null;
+    this.gCS = null;
     boolean bool = AcousticEchoCanceler.isAvailable();
-    ae.d("MicroMsg.MMAcousticEchoCanceler", "available  ".concat(String.valueOf(bool)));
+    Log.d("MicroMsg.MMAcousticEchoCanceler", "available  ".concat(String.valueOf(bool)));
     if (bool) {
-      this.fXM = AcousticEchoCanceler.create(paramAudioRecord.getAudioSessionId());
+      this.gCS = AcousticEchoCanceler.create(paramAudioRecord.getAudioSessionId());
     }
     AppMethodBeat.o(155557);
   }
   
   @TargetApi(16)
-  public final boolean ZR()
+  public final boolean anE()
   {
     AppMethodBeat.i(155559);
-    if (this.fXM != null) {}
+    if (this.gCS != null) {}
     try
     {
-      int i = this.fXM.setEnabled(true);
+      int i = this.gCS.setEnabled(true);
       if (i == 0)
       {
         AppMethodBeat.o(155559);
         return true;
       }
-      ae.d("MicroMsg.MMAcousticEchoCanceler", "setEnabled failed ".concat(String.valueOf(i)));
+      Log.d("MicroMsg.MMAcousticEchoCanceler", "setEnabled failed ".concat(String.valueOf(i)));
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.MMAcousticEchoCanceler", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.MMAcousticEchoCanceler", localException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(155559);
@@ -61,7 +61,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.compatible.b.f
  * JD-Core Version:    0.7.0.1
  */

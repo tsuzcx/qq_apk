@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:padding="@dimen/e4" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/m0" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-        <include layout="@layout/a43" />
-        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <ImageView android:id="@id/buu" style="@style/iv" />
-                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dz">
-                    <TextView android:id="@id/bwa" android:text="{title}" style="@style/j2" />
-                    <TextView android:id="@id/buh" android:layout_marginTop="@dimen/e9" android:text="{detail}" style="@style/iz" />
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.bizchat.BizChatSearchListView android:id="@id/a_b" android:background="#f7ffffff" android:focusable="false" android:visibility="gone" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:transcriptMode="disabled" style="@style/np" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/uj" android:gravity="center_horizontal" android:id="@id/g01" android:background="@color/a2h" android:paddingTop="@dimen/hy" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/bxr" />
+    </FrameLayout>
 </LinearLayout>

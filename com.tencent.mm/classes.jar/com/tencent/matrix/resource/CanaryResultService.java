@@ -33,7 +33,7 @@ public class CanaryResultService
         paramIntent = new JSONObject();
         paramIntent.put("resultZipPath", localObject);
         paramIntent.put("activity", str);
-        localObject = com.tencent.matrix.b.HT().V(b.class);
+        localObject = com.tencent.matrix.b.RG().Y(b.class);
         if (localObject != null) {
           ((com.tencent.matrix.e.b)localObject).onDetectIssue(new com.tencent.matrix.report.c(paramIntent));
         }
@@ -50,7 +50,7 @@ public class CanaryResultService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.resource.CanaryResultService
  * JD-Core Version:    0.7.0.1
  */

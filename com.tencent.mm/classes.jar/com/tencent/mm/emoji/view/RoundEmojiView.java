@@ -9,15 +9,15 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/view/RoundEmojiView;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "getPath", "()Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "getRect", "()Landroid/graphics/RectF;", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/view/RoundEmojiView;", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "path", "Landroid/graphics/Path;", "getPath", "()Landroid/graphics/Path;", "rect", "Landroid/graphics/RectF;", "getRect", "()Landroid/graphics/RectF;", "onDraw", "", "canvas", "Landroid/graphics/Canvas;", "plugin-emojisdk_release"})
 public final class RoundEmojiView
   extends BaseEmojiView
 {
-  private final RectF ciS;
-  private final Path lP;
+  private final RectF cuN;
+  private final Path lR;
   
   public RoundEmojiView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,19 +28,19 @@ public final class RoundEmojiView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(105816);
-    this.lP = new Path();
-    this.ciS = new RectF();
+    this.lR = new Path();
+    this.cuN = new RectF();
     AppMethodBeat.o(105816);
   }
   
   public final Path getPath()
   {
-    return this.lP;
+    return this.lR;
   }
   
   public final RectF getRect()
   {
-    return this.ciS;
+    return this.cuN;
   }
   
   protected final void onDraw(Canvas paramCanvas)
@@ -66,7 +66,7 @@ public final class RoundEmojiView
       p.g(localObject, "drawable");
       if (i >= ((Drawable)localObject).getBounds().bottom)
       {
-        localObject = this.ciS;
+        localObject = this.cuN;
         i = getMeasuredWidth();
         localDrawable = getDrawable();
         p.g(localDrawable, "drawable");
@@ -93,12 +93,12 @@ public final class RoundEmojiView
     }
     for (;;)
     {
-      this.lP.addRoundRect(this.ciS, getMeasuredWidth() / 10.0F, getMeasuredHeight() / 10.0F, Path.Direction.CW);
+      this.lR.addRoundRect(this.cuN, getMeasuredWidth() / 10.0F, getMeasuredHeight() / 10.0F, Path.Direction.CW);
       if (paramCanvas != null) {
         paramCanvas.save();
       }
       if (paramCanvas != null) {
-        paramCanvas.clipPath(this.lP);
+        paramCanvas.clipPath(this.lR);
       }
       super.onDraw(paramCanvas);
       if (paramCanvas == null) {
@@ -112,7 +112,7 @@ public final class RoundEmojiView
       p.g(localObject, "drawable");
       if (i >= ((Drawable)localObject).getBounds().right)
       {
-        localObject = this.ciS;
+        localObject = this.cuN;
         i = getMeasuredWidth();
         localDrawable = getDrawable();
         p.g(localDrawable, "drawable");
@@ -132,7 +132,7 @@ public final class RoundEmojiView
         p.g(localObject, "drawable");
         if (i >= ((Drawable)localObject).getBounds().bottom)
         {
-          localObject = this.ciS;
+          localObject = this.cuN;
           i = getMeasuredHeight();
           localDrawable = getDrawable();
           p.g(localDrawable, "drawable");
@@ -148,7 +148,7 @@ public final class RoundEmojiView
         }
         else
         {
-          this.ciS.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+          this.cuN.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
         }
       }
     }
@@ -157,7 +157,7 @@ public final class RoundEmojiView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.emoji.view.RoundEmojiView
  * JD-Core Version:    0.7.0.1
  */

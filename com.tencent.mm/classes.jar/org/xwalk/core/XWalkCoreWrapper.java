@@ -8,8 +8,8 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.a;
-import com.tencent.xweb.util.g;
 import com.tencent.xweb.util.h;
+import com.tencent.xweb.util.i;
 import com.tencent.xweb.xwalk.updater.Scheduler;
 import java.io.File;
 import java.security.MessageDigest;
@@ -17,6 +17,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
+import org.xwalk.core.resource.XWalkContextWrapper;
 
 public class XWalkCoreWrapper
 {
@@ -59,7 +60,7 @@ public class XWalkCoreWrapper
     {
       this.mMinApiVersion = paramInt1;
       this.mCoreStatus = 0;
-      this.mWrapperContext = paramContext;
+      this.mWrapperContext = new XWalkContextWrapper(paramContext, XWalkEnvironment.getAvailableVersion());
       this.mApkVersion = paramInt2;
       AppMethodBeat.o(154658);
       return;
@@ -142,7 +143,7 @@ public class XWalkCoreWrapper
           bool = ((Boolean)localReflectMethod.invoke(new Object[] { this.mBridgeContext, str1 })).booleanValue();
           if (!bool)
           {
-            g.FJ(191L);
+            h.OQ(191L);
             Log.e("XWalkLib", "Mismatch of CPU architecture current device abi is " + XWalkEnvironment.getRuntimeAbi() + ", runtime abi is " + XWalkEnvironment.getRuntimeAbi() + ", core detail is " + XWalkEnvironment.getAvailableVersionDetail());
             this.mCoreStatus = 6;
             AppMethodBeat.o(154673);
@@ -165,7 +166,7 @@ public class XWalkCoreWrapper
       {
         Log.e("XWalkLib", localRuntimeException.getLocalizedMessage());
         Log.e("XWalkLib", "current device abi is " + XWalkEnvironment.getRuntimeAbi() + ", runtime abi is " + XWalkEnvironment.getRuntimeAbi() + ", core detail is " + XWalkEnvironment.getAvailableVersionDetail());
-        g.FJ(192L);
+        h.OQ(192L);
         if ((localRuntimeException.getCause() instanceof UnsatisfiedLinkError))
         {
           this.mCoreStatus = 6;
@@ -174,16 +175,16 @@ public class XWalkCoreWrapper
           if (!TextUtils.isEmpty(str2))
           {
             if (str2.contains("is 64-bit instead of 32-bit")) {
-              g.FJ(193L);
+              h.OQ(193L);
             }
           }
           else {
             try
             {
-              if (!"true".equalsIgnoreCase(a.bce("dis_abandon_when_32runtime_use_64so")))
+              if (!"true".equalsIgnoreCase(a.brJ("dis_abandon_when_32runtime_use_64so")))
               {
                 XWalkEnvironment.setAvailableVersion(-1, "", XWalkEnvironment.getRuntimeAbi());
-                Scheduler.gie();
+                Scheduler.hvE();
               }
               AppMethodBeat.o(154673);
               return false;
@@ -196,14 +197,14 @@ public class XWalkCoreWrapper
           }
           if (localThrowable1.contains("is 32-bit instead of 64-bit"))
           {
-            g.FJ(194L);
+            h.OQ(194L);
             try
             {
-              if ("true".equalsIgnoreCase(a.bce("dis_abandon_when_64runtime_use_32so"))) {
+              if ("true".equalsIgnoreCase(a.brJ("dis_abandon_when_64runtime_use_32so"))) {
                 continue;
               }
               XWalkEnvironment.setAvailableVersion(-1, "", XWalkEnvironment.getRuntimeAbi());
-              Scheduler.gie();
+              Scheduler.hvE();
             }
             catch (Throwable localThrowable2)
             {
@@ -211,7 +212,7 @@ public class XWalkCoreWrapper
             }
             continue;
           }
-          g.FJ(195L);
+          h.OQ(195L);
           continue;
         }
         this.mCoreStatus = 5;
@@ -262,6 +263,7 @@ public class XWalkCoreWrapper
     Log.d("XWalkLib", "Dock xwalk core");
     sInstance = sProvisionalInstance;
     sProvisionalInstance = null;
+    a.hsb().nT("DIS_INIT_XWALK_AT_LOAD", "tools");
     AppMethodBeat.o(154656);
   }
   
@@ -309,40 +311,25 @@ public class XWalkCoreWrapper
   private static ClassLoader getStandAloneClassLoader()
   {
     AppMethodBeat.i(154671);
-    Object localObject;
+    ClassLoader localClassLoader;
     if ((getInstance() != null) && (getInstance().sBridgeLoader != null))
     {
-      localObject = getInstance().sBridgeLoader;
+      localClassLoader = getInstance().sBridgeLoader;
       AppMethodBeat.o(154671);
-      return localObject;
+      return localClassLoader;
     }
     if (mStandAloneClassLoader != null)
     {
-      localObject = mStandAloneClassLoader;
+      localClassLoader = mStandAloneClassLoader;
       AppMethodBeat.o(154671);
-      return localObject;
+      return localClassLoader;
     }
     try
     {
-      int i = XWalkEnvironment.getAvailableVersion();
-      if (i == -1)
-      {
-        Log.i("XWalkLib", "getXWalkClassLoader version = -1");
-        AppMethodBeat.o(154671);
-        return null;
-      }
-      localObject = XWalkEnvironment.getExtractedCoreDir(i);
-      String str = XWalkEnvironment.getClassDexFilePath(i);
-      boolean bool = new File(str).exists();
-      if (!bool)
-      {
-        AppMethodBeat.o(154671);
-        return null;
-      }
-      mStandAloneClassLoader = h.bp(str, XWalkEnvironment.getOptimizedDexDir(i), (String)localObject);
-      localObject = mStandAloneClassLoader;
+      mStandAloneClassLoader = i.huI();
+      localClassLoader = mStandAloneClassLoader;
       AppMethodBeat.o(154671);
-      return localObject;
+      return localClassLoader;
     }
     catch (Exception localException)
     {
@@ -542,7 +529,7 @@ public class XWalkCoreWrapper
     catch (RuntimeException paramClassLoader)
     {
       Log.e("XWalkLib", "invokeNativeChannel error:" + paramClassLoader.getLocalizedMessage());
-      g.ghl();
+      h.huF();
       AppMethodBeat.o(154667);
       return false;
     }
@@ -551,7 +538,7 @@ public class XWalkCoreWrapper
       for (;;)
       {
         Log.e("XWalkLib", "invokeRuntimeChannel error:" + paramClassLoader.getLocalizedMessage());
-        g.ghm();
+        h.huG();
       }
     }
     catch (Exception paramClassLoader)
@@ -559,7 +546,7 @@ public class XWalkCoreWrapper
       for (;;)
       {
         Log.e("XWalkLib", "invokeRuntimeChannel error:" + paramClassLoader.getLocalizedMessage());
-        g.ghn();
+        h.huH();
       }
     }
   }
@@ -617,7 +604,7 @@ public class XWalkCoreWrapper
     catch (RuntimeException paramClassLoader)
     {
       Log.e("XWalkLib", "invokeRuntimeChannel error:" + paramClassLoader.getLocalizedMessage());
-      g.ghl();
+      h.huF();
       AppMethodBeat.o(154666);
       return null;
     }
@@ -626,7 +613,7 @@ public class XWalkCoreWrapper
       for (;;)
       {
         Log.e("XWalkLib", "invokeRuntimeChannel error:" + paramClassLoader.getLocalizedMessage());
-        g.ghm();
+        h.huG();
       }
     }
     catch (Exception paramClassLoader)
@@ -634,7 +621,7 @@ public class XWalkCoreWrapper
       for (;;)
       {
         Log.e("XWalkLib", "invokeRuntimeChannel error:" + paramClassLoader.getLocalizedMessage());
-        g.ghn();
+        h.huH();
       }
     }
   }
@@ -834,21 +821,14 @@ public class XWalkCoreWrapper
     AppMethodBeat.i(183749);
     if (this.sBridgeLoader != null)
     {
-      localObject = this.sBridgeLoader;
+      localClassLoader = this.sBridgeLoader;
       AppMethodBeat.o(183749);
-      return localObject;
+      return localClassLoader;
     }
-    Object localObject = XWalkEnvironment.getExtractedCoreDir(this.mApkVersion);
-    String str = XWalkEnvironment.getClassDexFilePath(this.mApkVersion);
-    if (!new File(str).exists())
-    {
-      AppMethodBeat.o(183749);
-      return null;
-    }
-    this.sBridgeLoader = h.bp(str, XWalkEnvironment.getOptimizedDexDir(this.mApkVersion), (String)localObject);
-    localObject = this.sBridgeLoader;
+    this.sBridgeLoader = i.asW(this.mApkVersion);
+    ClassLoader localClassLoader = this.sBridgeLoader;
     AppMethodBeat.o(183749);
-    return localObject;
+    return localClassLoader;
   }
   
   public Object getBridgeObject(Object paramObject)
@@ -944,11 +924,11 @@ public class XWalkCoreWrapper
             AppMethodBeat.o(154644);
             return;
           }
-          g.t(Long.parseLong((String)paramAnonymousArrayOfObject[0]), Long.parseLong((String)paramAnonymousArrayOfObject[1]), Integer.parseInt((String)paramAnonymousArrayOfObject[2]));
+          h.s(Long.parseLong((String)paramAnonymousArrayOfObject[0]), Long.parseLong((String)paramAnonymousArrayOfObject[1]), Integer.parseInt((String)paramAnonymousArrayOfObject[2]));
           AppMethodBeat.o(154644);
           return;
         }
-        g.dc(Integer.parseInt((String)paramAnonymousArrayOfObject[0]), (String)paramAnonymousArrayOfObject[1]);
+        h.dz(Integer.parseInt((String)paramAnonymousArrayOfObject[0]), (String)paramAnonymousArrayOfObject[1]);
         AppMethodBeat.o(154644);
       }
     };
@@ -1044,7 +1024,7 @@ public class XWalkCoreWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     org.xwalk.core.XWalkCoreWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -15,25 +15,25 @@ import java.lang.reflect.Method;
 
 public final class e
 {
-  private static boolean PD = false;
-  private static Method PE = null;
-  private static boolean PF = false;
-  private static Field PG = null;
+  private static boolean PP = false;
+  private static Method PQ = null;
+  private static boolean PR = false;
+  private static Field PS = null;
   
   private static DialogInterface.OnKeyListener a(Dialog paramDialog)
   {
-    if (!PF) {}
+    if (!PR) {}
     try
     {
       Field localField = Dialog.class.getDeclaredField("mOnKeyListener");
-      PG = localField;
+      PS = localField;
       localField.setAccessible(true);
       label23:
-      PF = true;
-      if (PG != null) {
+      PR = true;
+      if (PS != null) {
         try
         {
-          paramDialog = (DialogInterface.OnKeyListener)PG.get(paramDialog);
+          paramDialog = (DialogInterface.OnKeyListener)PS.get(paramDialog);
           return paramDialog;
         }
         catch (IllegalAccessException paramDialog) {}
@@ -48,16 +48,16 @@ public final class e
   
   private static boolean a(ActionBar paramActionBar, KeyEvent paramKeyEvent)
   {
-    if (!PD) {}
+    if (!PP) {}
     try
     {
-      PE = paramActionBar.getClass().getMethod("onMenuKeyEvent", new Class[] { KeyEvent.class });
+      PQ = paramActionBar.getClass().getMethod("onMenuKeyEvent", new Class[] { KeyEvent.class });
       label27:
-      PD = true;
-      if (PE != null) {}
+      PP = true;
+      if (PQ != null) {}
       try
       {
-        boolean bool = ((Boolean)PE.invoke(paramActionBar, new Object[] { paramKeyEvent })).booleanValue();
+        boolean bool = ((Boolean)PQ.invoke(paramActionBar, new Object[] { paramKeyEvent })).booleanValue();
         return bool;
       }
       catch (InvocationTargetException paramActionBar)
@@ -102,7 +102,7 @@ public final class e
         return true;
       }
       paramCallback = parama.getDecorView();
-      if (t.c(paramCallback, paramKeyEvent)) {
+      if (u.c(paramCallback, paramKeyEvent)) {
         return true;
       }
       parama = localObject1;
@@ -123,7 +123,7 @@ public final class e
         return true;
       }
       paramCallback = parama.getDecorView();
-      if (t.c(paramCallback, paramKeyEvent)) {
+      if (u.c(paramCallback, paramKeyEvent)) {
         return true;
       }
       parama = localObject2;
@@ -132,12 +132,12 @@ public final class e
       }
       return paramKeyEvent.dispatch(paramView, parama, paramView);
     }
-    return ((paramView != null) && (t.c(paramView, paramKeyEvent))) || (parama.superDispatchKeyEvent(paramKeyEvent));
+    return ((paramView != null) && (u.c(paramView, paramKeyEvent))) || (parama.superDispatchKeyEvent(paramKeyEvent));
   }
   
   public static boolean a(View paramView, KeyEvent paramKeyEvent)
   {
-    return t.b(paramView, paramKeyEvent);
+    return u.b(paramView, paramKeyEvent);
   }
   
   public static abstract interface a

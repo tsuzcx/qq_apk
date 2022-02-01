@@ -1,123 +1,323 @@
 package com.tencent.mm.plugin.multitalk.model;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.util.ArrayMap;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkVideoView;
-import com.tencent.mm.plugin.voip.ui.d;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.multitalk.ui.MultiTalkMainUI;
+import com.tencent.mm.plugin.multitalk.ui.widget.MultitalkFrameView;
+import com.tencent.mm.plugin.multitalk.ui.widget.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import com.tencent.pb.talkroom.sdk.MultiTalkGroupMember;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.u;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import kotlin.l;
+import kotlin.o;
+import kotlin.s;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManager;", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTargetContainer;", "Landroid/view/View$OnClickListener;", "()V", "bigAvatarAdapter", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutAdapter;", "bigAvatarHolder", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder;", "bigAvatarLayout", "Landroid/widget/RelativeLayout;", "dispatchToAvatarEvent", "Lkotlin/Function1;", "", "", "dispatchToScreenCastBigEvent", "dispatchToScreenCastSmallEvent", "dispatchToVideoBigEvent", "dispatchToVideoSmallEvent", "firstScreenUser", "handlerMap", "", "", "screenCastBigLoadingShow", "", "screenCastUiCallback", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "showElement", "talkingAvatarContainer", "Landroid/support/v7/widget/RecyclerView;", "talkingBigAvatarLayout", "Landroid/widget/FrameLayout;", "uiCallback", "Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManagerUiCallback;", "userStateMap", "Landroid/util/ArrayMap;", "videoDisplayDataMuxer", "Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer;", "getVideoDisplayDataMuxer", "()Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer;", "close", "closeMemberToVideo", "videoUserSet", "", "closeScreenCastBig", "displayVoiceTalkingIcon", "displayWeakNetWorkIcon", "finish", "isMini", "getAvatarViewGroupByUsername", "Landroid/view/View;", "wxUserName", "getAvatarViewHolderByUsername", "getBigHolderWxUserName", "getLargeRenderTarget", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "ori", "getNormalRenderTarget", "getUserState", "hideScreenCastBig", "hideVideoBig", "isBigAvatarScreenCastting", "isBigAvatarVideo", "isScreenCastPause", "onClick", "v", "onScreenFrame", "openMemberToVideo", "registerView", "mainUI", "Lcom/tencent/mm/plugin/multitalk/ui/MultiTalkMainUI;", "setBigAvatarUserState", "member", "Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;", "is2GOr3G", "currentVideoSet", "Ljava/util/HashSet;", "setMute", "isMute", "setStatus", "state", "showScreenCastBig", "showVideoBig", "unregisterView", "updateAvatar", "userStateTrans", "Companion", "ScreenCastReceiverUiCallbackImpl", "plugin-multitalk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManager;", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTargetContainer;", "Landroid/view/View$OnClickListener;", "()V", "bigAvatarAdapter", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutAdapter;", "bigAvatarHolder", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder;", "bigAvatarLayout", "Landroid/widget/RelativeLayout;", "dispatchToAvatarEvent", "Lkotlin/Function1;", "", "", "dispatchToScreenCastBigEvent", "dispatchToScreenCastSmallEvent", "dispatchToVideoBigEvent", "dispatchToVideoSmallEvent", "firstScreenUser", "handlerMap", "", "", "screenCastBigLoadingShow", "", "screenCastUiCallback", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "showElement", "talkingAvatarContainer", "Landroid/support/v7/widget/RecyclerView;", "talkingBigAvatarLayout", "Landroid/widget/FrameLayout;", "uiCallback", "Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManagerUiCallback;", "userStateMap", "Landroid/util/ArrayMap;", "videoDisplayDataMuxer", "Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer;", "getVideoDisplayDataMuxer", "()Lcom/tencent/mm/plugin/multitalk/model/VideoDisplayDataMuxer;", "close", "closeMemberToVideo", "videoUserSet", "", "closeScreenCastBig", "displayVoiceTalkingIcon", "displayWeakNetWorkIcon", "finish", "isMini", "getAvatarViewGroupByUsername", "Landroid/view/View;", "wxUserName", "getAvatarViewHolderByUsername", "getBigHolderWxUserName", "getLargeRenderTarget", "Lcom/tencent/mm/plugin/multitalk/model/IRenderTarget;", "ori", "getNormalRenderTarget", "getUserState", "hideScreenCastBig", "hideVideoBig", "initCurrentViewStatus", "isBigAvatarScreenCastting", "isBigAvatarVideo", "isScreenCastPause", "onClick", "v", "onScreenFrame", "openMemberToVideo", "registerView", "mainUI", "Lcom/tencent/mm/plugin/multitalk/ui/MultiTalkMainUI;", "setBigAvatarUserState", "member", "Lcom/tencent/pb/talkroom/sdk/MultiTalkGroupMember;", "is2GOr3G", "currentVideoSet", "Ljava/util/HashSet;", "setMute", "isMute", "setStatus", "state", "showScreenCastBig", "showVideoBig", "unregisterView", "updateAvatar", "userStateTrans", "Companion", "ScreenCastReceiverUiCallbackImpl", "plugin-multitalk_release"})
 public final class a
   implements View.OnClickListener, g
 {
-  public static final a.a wpS;
-  private final Map<Integer, d.g.a.b<String, d.z>> hKX;
-  public RecyclerView wpB;
-  public FrameLayout wpC;
-  public RelativeLayout wpD;
-  public b wpE;
-  public com.tencent.mm.plugin.multitalk.ui.widget.b wpF;
-  public com.tencent.mm.plugin.multitalk.ui.widget.a wpG;
-  public ArrayMap<String, Integer> wpH;
-  public i wpI;
-  private String wpJ;
-  private boolean wpK;
-  private ab wpL;
-  private final d.g.a.b<String, d.z> wpM;
-  private final d.g.a.b<String, d.z> wpN;
-  private final d.g.a.b<String, d.z> wpO;
-  private final d.g.a.b<String, d.z> wpP;
-  private final d.g.a.b<String, d.z> wpQ;
-  private boolean wpR;
+  public static final a.a zLe;
+  private final Map<Integer, kotlin.g.a.b<String, x>> iFL;
+  private RecyclerView zKN;
+  private FrameLayout zKO;
+  private RelativeLayout zKP;
+  public b zKQ;
+  com.tencent.mm.plugin.multitalk.ui.widget.b zKR;
+  public com.tencent.mm.plugin.multitalk.ui.widget.a zKS;
+  public ArrayMap<String, Integer> zKT;
+  private i zKU;
+  private String zKV;
+  private boolean zKW;
+  private ae zKX;
+  private final kotlin.g.a.b<String, x> zKY;
+  private final kotlin.g.a.b<String, x> zKZ;
+  private final kotlin.g.a.b<String, x> zLa;
+  private final kotlin.g.a.b<String, x> zLb;
+  private final kotlin.g.a.b<String, x> zLc;
+  private boolean zLd;
   
   static
   {
-    AppMethodBeat.i(190922);
-    wpS = new a.a((byte)0);
-    AppMethodBeat.o(190922);
+    AppMethodBeat.i(239592);
+    zLe = new a.a((byte)0);
+    AppMethodBeat.o(239592);
   }
   
   public a()
   {
-    AppMethodBeat.i(190921);
-    this.wpH = new ArrayMap();
-    this.wpJ = "";
-    Object localObject = z.dtK();
-    p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-    localObject = ((o)localObject).dte();
-    p.g(localObject, "SubCoreMultiTalk.getMult…kManager().videoDataMuxer");
-    this.wpL = ((ab)localObject);
-    this.wpM = ((d.g.a.b)new c(this));
-    this.wpN = ((d.g.a.b)new g(this));
-    this.wpO = ((d.g.a.b)new f(this));
-    this.wpP = ((d.g.a.b)new e(this));
-    this.wpQ = ((d.g.a.b)new d(this));
-    this.hKX = d.a.ae.a(new d.o[] { u.R(Integer.valueOf(0), this.wpM), u.R(Integer.valueOf(1), this.wpN), u.R(Integer.valueOf(2), this.wpO), u.R(Integer.valueOf(3), this.wpP), u.R(Integer.valueOf(4), this.wpQ) });
-    this.wpR = true;
-    AppMethodBeat.o(190921);
+    AppMethodBeat.i(239591);
+    this.zKT = new ArrayMap();
+    this.zKV = "";
+    Object localObject = ac.eom();
+    kotlin.g.b.p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
+    localObject = ((q)localObject).enz();
+    kotlin.g.b.p.g(localObject, "SubCoreMultiTalk.getMult…kManager().videoDataMuxer");
+    this.zKX = ((ae)localObject);
+    this.zKY = ((kotlin.g.a.b)new c(this));
+    this.zKZ = ((kotlin.g.a.b)new g(this));
+    this.zLa = ((kotlin.g.a.b)new f(this));
+    this.zLb = ((kotlin.g.a.b)new e(this));
+    this.zLc = ((kotlin.g.a.b)new d(this));
+    this.iFL = kotlin.a.ae.e(new o[] { s.U(Integer.valueOf(0), this.zKY), s.U(Integer.valueOf(1), this.zKZ), s.U(Integer.valueOf(2), this.zLa), s.U(Integer.valueOf(3), this.zLb), s.U(Integer.valueOf(4), this.zLc) });
+    this.zLd = true;
+    AppMethodBeat.o(239591);
   }
   
-  public final f Lc(final int paramInt)
+  private final ae elY()
   {
-    AppMethodBeat.i(190917);
-    Object localObject = this.wpF;
+    AppMethodBeat.i(239575);
+    Object localObject1 = ac.eom();
+    kotlin.g.b.p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
+    localObject1 = ((q)localObject1).enz();
+    kotlin.g.b.p.g(localObject1, "SubCoreMultiTalk.getMult…kManager().videoDataMuxer");
+    this.zKX = ((ae)localObject1);
+    Object localObject2 = this.zKX;
+    localObject1 = (g)this;
+    kotlin.g.b.p.h(localObject1, "container");
+    localObject2 = ((ae)localObject2).zPa;
+    if ((localObject2 != null) && (((ArrayList)localObject2).contains(localObject1) == true)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i == 0) {
+        this.zKX.a((g)this);
+      }
+      localObject1 = this.zKX;
+      AppMethodBeat.o(239575);
+      return localObject1;
+    }
+  }
+  
+  private void elZ()
+  {
+    AppMethodBeat.i(239577);
+    this.zKR = null;
+    this.zKS = null;
+    this.zKP = null;
+    q localq = ac.eom();
+    kotlin.g.b.p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+    localq.enz().b((g)this);
+    AppMethodBeat.o(239577);
+  }
+  
+  private final void emd()
+  {
+    AppMethodBeat.i(239590);
+    Object localObject1 = this.zKN;
+    if (localObject1 != null) {
+      ((RecyclerView)localObject1).setVisibility(0);
+    }
+    localObject1 = this.zKQ;
+    if (localObject1 != null) {
+      ((b)localObject1).emj();
+    }
+    localObject1 = this.zKQ;
+    if (localObject1 != null) {
+      b.a.a((b)localObject1, "");
+    }
+    localObject1 = this.zKR;
+    Object localObject2;
+    if (localObject1 != null)
+    {
+      localObject2 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).zQT;
+      if (localObject2 != null) {
+        ((MultitalkFrameView)localObject2).epb();
+      }
+      com.tencent.mm.plugin.multitalk.ui.widget.b.b((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1);
+      ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).eoB();
+    }
+    localObject1 = this.zKO;
+    if (localObject1 != null)
+    {
+      localObject2 = ((FrameLayout)localObject1).getLayoutParams();
+      if (localObject2 == null)
+      {
+        localObject1 = new kotlin.t("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
+        AppMethodBeat.o(239590);
+        throw ((Throwable)localObject1);
+      }
+      localObject2 = (RelativeLayout.LayoutParams)localObject2;
+      Object localObject3 = this.zKQ;
+      if (localObject3 != null)
+      {
+        localObject3 = ((b)localObject3).eme();
+        ((RelativeLayout.LayoutParams)localObject2).topMargin = (localObject3[1] - localObject3[0]);
+      }
+      ((FrameLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+      ((FrameLayout)localObject1).setVisibility(8);
+    }
+    localObject1 = this.zKQ;
+    if (localObject1 != null) {
+      ((b)localObject1).emn();
+    }
+    ac.eom().bR("", true);
+    AppMethodBeat.o(239590);
+  }
+  
+  public final f Rc(final int paramInt)
+  {
+    AppMethodBeat.i(239587);
+    Object localObject = this.zKR;
     if (localObject != null) {
       if (1 <= paramInt) {}
     }
-    for (localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).wua;; localObject = null)
+    for (localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).zQT;; localObject = null)
     {
       localObject = (f)localObject;
-      AppMethodBeat.o(190917);
+      AppMethodBeat.o(239587);
       return localObject;
       if (5 < paramInt) {
         break;
       }
-      com.tencent.mm.ac.c.h((d.g.a.a)new h((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject, paramInt));
+      d.h((kotlin.g.a.a)new h((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject, paramInt));
       break;
     }
   }
   
-  public final com.tencent.mm.plugin.multitalk.ui.widget.b asg(String paramString)
+  public final void a(RecyclerView paramRecyclerView, FrameLayout paramFrameLayout, MultiTalkMainUI paramMultiTalkMainUI, b paramb)
   {
-    AppMethodBeat.i(190910);
-    p.h(paramString, "wxUserName");
-    p.h(paramString, "wxUserName");
-    com.tencent.mm.plugin.multitalk.ui.widget.a locala = this.wpG;
+    AppMethodBeat.i(239576);
+    kotlin.g.b.p.h(paramRecyclerView, "talkingAvatarContainer");
+    kotlin.g.b.p.h(paramFrameLayout, "talkingBigAvatarLayout");
+    kotlin.g.b.p.h(paramMultiTalkMainUI, "mainUI");
+    kotlin.g.b.p.h(paramb, "uiCallback");
+    this.zKQ = paramb;
+    this.zKN = paramRecyclerView;
+    this.zKO = paramFrameLayout;
+    paramRecyclerView = paramRecyclerView.getAdapter();
+    if (paramRecyclerView == null)
+    {
+      paramRecyclerView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.multitalk.ui.widget.AvatarLayoutAdapter");
+      AppMethodBeat.o(239576);
+      throw paramRecyclerView;
+    }
+    this.zKS = ((com.tencent.mm.plugin.multitalk.ui.widget.a)paramRecyclerView);
+    paramRecyclerView = c.zRp;
+    paramRecyclerView = (Context)paramMultiTalkMainUI;
+    paramMultiTalkMainUI = (ViewGroup)paramFrameLayout;
+    paramb = (View.OnClickListener)this;
+    kotlin.g.b.p.h(paramRecyclerView, "context");
+    kotlin.g.b.p.h(paramMultiTalkMainUI, "parent");
+    kotlin.g.b.p.h(paramb, "clickListener");
+    paramRecyclerView = LayoutInflater.from(paramRecyclerView).inflate(2131495411, paramMultiTalkMainUI, false);
+    if (paramRecyclerView == null)
+    {
+      paramRecyclerView = new kotlin.t("null cannot be cast to non-null type android.widget.RelativeLayout");
+      AppMethodBeat.o(239576);
+      throw paramRecyclerView;
+    }
+    paramRecyclerView = (RelativeLayout)paramRecyclerView;
+    paramMultiTalkMainUI = new com.tencent.mm.plugin.multitalk.ui.widget.b((View)paramRecyclerView);
+    paramMultiTalkMainUI.zQT = ((MultitalkFrameView)paramRecyclerView.findViewById(2131308916));
+    MultitalkFrameView localMultitalkFrameView = paramMultiTalkMainUI.zQT;
+    if (localMultitalkFrameView != null) {
+      localMultitalkFrameView.setIndex(0);
+    }
+    localMultitalkFrameView = paramMultiTalkMainUI.zQT;
+    if (localMultitalkFrameView != null) {
+      localMultitalkFrameView.setOnClickListener(paramb);
+    }
+    paramMultiTalkMainUI.maskView = paramRecyclerView.findViewById(2131304511);
+    paramb = paramRecyclerView.findViewById(2131309946);
+    if (paramb == null)
+    {
+      paramRecyclerView = new kotlin.t("null cannot be cast to non-null type android.widget.ImageView");
+      AppMethodBeat.o(239576);
+      throw paramRecyclerView;
+    }
+    paramMultiTalkMainUI.zQU = ((ImageView)paramb);
+    paramb = paramRecyclerView.findViewById(2131305074);
+    if (paramb == null)
+    {
+      paramRecyclerView = new kotlin.t("null cannot be cast to non-null type android.widget.ImageView");
+      AppMethodBeat.o(239576);
+      throw paramRecyclerView;
+    }
+    paramMultiTalkMainUI.zQV = ((ImageView)paramb);
+    paramb = paramRecyclerView.findViewById(2131308801);
+    if (paramb == null)
+    {
+      paramRecyclerView = new kotlin.t("null cannot be cast to non-null type android.widget.TextView");
+      AppMethodBeat.o(239576);
+      throw paramRecyclerView;
+    }
+    paramMultiTalkMainUI.zQW = ((TextView)paramb);
+    paramb = paramRecyclerView.findViewById(2131303705);
+    if (paramb == null)
+    {
+      paramRecyclerView = new kotlin.t("null cannot be cast to non-null type android.widget.ImageView");
+      AppMethodBeat.o(239576);
+      throw paramRecyclerView;
+    }
+    paramMultiTalkMainUI.zhh = ((ImageView)paramb);
+    paramRecyclerView.setTag(paramMultiTalkMainUI);
+    this.zKP = paramRecyclerView;
+    paramRecyclerView = this.zKP;
+    if (paramRecyclerView != null) {}
+    for (paramRecyclerView = paramRecyclerView.getTag(); paramRecyclerView == null; paramRecyclerView = null)
+    {
+      paramRecyclerView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.multitalk.ui.widget.AvatarLayoutHolder");
+      AppMethodBeat.o(239576);
+      throw paramRecyclerView;
+    }
+    this.zKR = ((com.tencent.mm.plugin.multitalk.ui.widget.b)paramRecyclerView);
+    paramFrameLayout.addView((View)this.zKP);
+    paramRecyclerView = this.zKP;
+    if (paramRecyclerView != null) {
+      paramRecyclerView.setVisibility(8);
+    }
+    paramFrameLayout.setVisibility(8);
+    this.zKU = ((i)new b());
+    paramRecyclerView = ac.eom();
+    kotlin.g.b.p.g(paramRecyclerView, "SubCoreMultiTalk.getMultiTalkManager()");
+    paramRecyclerView.enw().a(this.zKU);
+    elY();
+    AppMethodBeat.o(239576);
+  }
+  
+  public final com.tencent.mm.plugin.multitalk.ui.widget.b aFA(String paramString)
+  {
+    AppMethodBeat.i(239579);
+    kotlin.g.b.p.h(paramString, "wxUserName");
+    kotlin.g.b.p.h(paramString, "wxUserName");
+    com.tencent.mm.plugin.multitalk.ui.widget.a locala = this.zKS;
     Object localObject1;
     label103:
     label115:
     int i;
     if (locala != null)
     {
-      p.h(paramString, "userName");
-      Iterator localIterator = ((Iterable)locala.wtQ).iterator();
+      kotlin.g.b.p.h(paramString, "userName");
+      Iterator localIterator = ((Iterable)locala.zQI).iterator();
       if (localIterator.hasNext())
       {
         Object localObject2 = localIterator.next();
         localObject1 = (com.tencent.mm.plugin.multitalk.data.a)localObject2;
         if (localObject1 != null)
         {
-          localObject1 = ((com.tencent.mm.plugin.multitalk.data.a)localObject1).wmd;
+          localObject1 = ((com.tencent.mm.plugin.multitalk.data.a)localObject1).zHg;
           if (localObject1 != null)
           {
-            localObject1 = ((MultiTalkGroupMember)localObject1).MgJ;
-            if (!p.i(localObject1, paramString)) {
+            localObject1 = ((MultiTalkGroupMember)localObject1).RHb;
+            if (!kotlin.g.b.p.j(localObject1, paramString)) {
               break label198;
             }
             paramString = localObject2;
@@ -127,8 +327,8 @@ public final class a
             }
             i = paramString.index;
             label129:
-            int j = locala.tii;
-            paramString = this.wpB;
+            int j = locala.wqJ;
+            paramString = this.zKN;
             if (paramString == null) {
               break label210;
             }
@@ -137,7 +337,7 @@ public final class a
             if (paramString == null) {
               break label233;
             }
-            localObject1 = this.wpB;
+            localObject1 = this.zKN;
             if (localObject1 == null) {
               break label220;
             }
@@ -149,13 +349,13 @@ public final class a
     label205:
     label210:
     label220:
-    for (paramString = ((RecyclerView)localObject1).bh(paramString);; paramString = null)
+    for (paramString = ((RecyclerView)localObject1).bi(paramString);; paramString = null)
     {
       if (!(paramString instanceof com.tencent.mm.plugin.multitalk.ui.widget.b)) {
         break label225;
       }
       paramString = (com.tencent.mm.plugin.multitalk.ui.widget.b)paramString;
-      AppMethodBeat.o(190910);
+      AppMethodBeat.o(239579);
       return paramString;
       localObject1 = null;
       break label103;
@@ -170,24 +370,24 @@ public final class a
       break label152;
     }
     label225:
-    AppMethodBeat.o(190910);
+    AppMethodBeat.o(239579);
     return null;
     label233:
-    AppMethodBeat.o(190910);
+    AppMethodBeat.o(239579);
     return null;
   }
   
-  public final f ash(String paramString)
+  public final f aFB(String paramString)
   {
     Object localObject = null;
-    AppMethodBeat.i(190918);
-    p.h(paramString, "wxUserName");
-    com.tencent.mm.plugin.multitalk.ui.widget.b localb = asg(paramString);
+    AppMethodBeat.i(239588);
+    kotlin.g.b.p.h(paramString, "wxUserName");
+    com.tencent.mm.plugin.multitalk.ui.widget.b localb = aFA(paramString);
     paramString = localObject;
     int i;
     if (localb != null)
     {
-      if (localb.lN() < 0) {
+      if (localb.lR() < 0) {
         break label67;
       }
       i = 1;
@@ -199,10 +399,10 @@ public final class a
     {
       paramString = localObject;
       if (localb != null) {
-        paramString = localb.wua;
+        paramString = localb.zQT;
       }
       paramString = (f)paramString;
-      AppMethodBeat.o(190918);
+      AppMethodBeat.o(239588);
       return paramString;
       label67:
       i = 0;
@@ -212,249 +412,180 @@ public final class a
     }
   }
   
-  public final ab drS()
-  {
-    AppMethodBeat.i(190908);
-    Object localObject = z.dtK();
-    p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-    localObject = ((o)localObject).dte();
-    p.g(localObject, "SubCoreMultiTalk.getMult…kManager().videoDataMuxer");
-    this.wpL = ((ab)localObject);
-    if (this.wpL.wsM != null) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
-      {
-        localObject = this.wpL;
-        g localg = (g)this;
-        p.h(localg, "targetContainer");
-        if (!p.i(((ab)localObject).wsM, localg)) {
-          ((ab)localObject).wsM = localg;
-        }
-      }
-      localObject = this.wpL;
-      AppMethodBeat.o(190908);
-      return localObject;
-    }
-  }
-  
-  public final boolean drT()
-  {
-    AppMethodBeat.i(190912);
-    Object localObject = this.wpC;
-    if ((localObject != null) && (((FrameLayout)localObject).getVisibility() == 0))
-    {
-      localObject = this.wpF;
-      if (localObject != null)
-      {
-        localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).wua;
-        if (localObject == null) {}
-      }
-      for (boolean bool = ((MultiTalkVideoView)localObject).duj(); bool; bool = false)
-      {
-        AppMethodBeat.o(190912);
-        return true;
-      }
-    }
-    AppMethodBeat.o(190912);
-    return false;
-  }
-  
-  public final void drU()
-  {
-    AppMethodBeat.i(190913);
-    Object localObject1 = z.dtK();
-    p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
-    localObject1 = ((o)localObject1).dts();
-    Object localObject2 = this.wpG;
-    if (localObject2 != null)
-    {
-      localObject2 = ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject2).wtQ;
-      if (localObject2 != null)
-      {
-        localObject2 = ((Iterable)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
-        {
-          Object localObject3 = (com.tencent.mm.plugin.multitalk.data.a)((Iterator)localObject2).next();
-          if ((localObject1 != null) && (((List)localObject1).contains(((com.tencent.mm.plugin.multitalk.data.a)localObject3).wmd.MgJ) == true))
-          {
-            Object localObject4 = ((com.tencent.mm.plugin.multitalk.data.a)localObject3).wmd.MgJ;
-            p.g(localObject4, "it.member.usrName");
-            localObject4 = asg((String)localObject4);
-            if (localObject4 != null)
-            {
-              localObject4 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject4).wuc;
-              if (localObject4 != null) {
-                ((ImageView)localObject4).setVisibility(0);
-              }
-            }
-            boolean bool = p.i(com.tencent.mm.model.v.aAC(), ((com.tencent.mm.plugin.multitalk.data.a)localObject3).wmd.MgJ);
-            n.oU(bool);
-            if (bool) {
-              com.tencent.mm.plugin.voip.c.eyt().tC(true);
-            }
-          }
-          else
-          {
-            localObject3 = ((com.tencent.mm.plugin.multitalk.data.a)localObject3).wmd.MgJ;
-            p.g(localObject3, "it.member.usrName");
-            localObject3 = asg((String)localObject3);
-            if (localObject3 != null)
-            {
-              localObject3 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).wuc;
-              if (localObject3 != null) {
-                ((ImageView)localObject3).setVisibility(8);
-              }
-            }
-          }
-        }
-        AppMethodBeat.o(190913);
-        return;
-      }
-    }
-    AppMethodBeat.o(190913);
-  }
-  
-  public final void drV()
-  {
-    AppMethodBeat.i(190919);
-    if (!this.wpK)
-    {
-      com.tencent.mm.plugin.multitalk.ui.widget.b localb = this.wpF;
-      if (localb == null) {
-        break label51;
-      }
-      if (localb.wuo != 1) {}
-    }
-    else
-    {
-      com.tencent.mm.ac.c.h((d.g.a.a)new i(this));
-    }
-    AppMethodBeat.o(190919);
-    return;
-    label51:
-    AppMethodBeat.o(190919);
-  }
-  
-  public final void drW()
-  {
-    AppMethodBeat.i(190920);
-    Object localObject1 = this.wpB;
-    if (localObject1 != null) {
-      ((RecyclerView)localObject1).setVisibility(0);
-    }
-    localObject1 = this.wpE;
-    if (localObject1 != null) {
-      ((b)localObject1).dsd();
-    }
-    localObject1 = this.wpE;
-    if (localObject1 != null) {
-      b.a.a((b)localObject1, "");
-    }
-    localObject1 = this.wpF;
-    Object localObject2;
-    if (localObject1 != null)
-    {
-      localObject2 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).wua;
-      if (localObject2 != null) {
-        ((MultiTalkVideoView)localObject2).duf();
-      }
-      com.tencent.mm.plugin.multitalk.ui.widget.b.b((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1);
-      ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).dtU();
-    }
-    localObject1 = this.wpC;
-    if (localObject1 != null)
-    {
-      localObject2 = ((FrameLayout)localObject1).getLayoutParams();
-      if (localObject2 == null)
-      {
-        localObject1 = new d.v("null cannot be cast to non-null type android.widget.RelativeLayout.LayoutParams");
-        AppMethodBeat.o(190920);
-        throw ((Throwable)localObject1);
-      }
-      localObject2 = (RelativeLayout.LayoutParams)localObject2;
-      Object localObject3 = this.wpE;
-      if (localObject3 != null)
-      {
-        localObject3 = ((b)localObject3).drX();
-        ((RelativeLayout.LayoutParams)localObject2).topMargin = (localObject3[1] - localObject3[0]);
-      }
-      ((FrameLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-      ((FrameLayout)localObject1).setVisibility(8);
-    }
-    z.dtK().asG("");
-    AppMethodBeat.o(190920);
-  }
-  
-  public final void ex(String paramString, int paramInt)
+  public final void eL(String paramString, int paramInt)
   {
     for (;;)
     {
       int j;
       try
       {
-        AppMethodBeat.i(190911);
-        p.h(paramString, "wxUserName");
-        localObject = z.dtK();
-        p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
-        j = ((o)localObject).dtb().asL(paramString);
+        AppMethodBeat.i(239580);
+        kotlin.g.b.p.h(paramString, "wxUserName");
+        localObject = ac.eom();
+        kotlin.g.b.p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
+        j = ((q)localObject).enw().aGj(paramString);
         if (paramInt != 1) {
-          break label176;
+          break label180;
         }
         if (j == 101) {
-          break label181;
+          break label185;
         }
         if (j != 102) {
-          break label176;
+          break label180;
         }
       }
       finally {}
-      com.tencent.mm.sdk.platformtools.ae.i("AvatarViewManager", paramString + " to state " + i);
-      Object localObject = (d.g.a.b)this.hKX.get(Integer.valueOf(i));
+      Log.printInfoStack("AvatarViewManager", paramString + " to state " + i, new Object[0]);
+      Object localObject = (kotlin.g.a.b)this.iFL.get(Integer.valueOf(i));
       if (localObject != null) {
-        ((d.g.a.b)localObject).invoke(paramString);
+        ((kotlin.g.a.b)localObject).invoke(paramString);
       }
       if ((paramInt == 1) && (j == 102))
       {
-        localObject = this.wpI;
+        localObject = this.zKU;
         if (localObject != null)
         {
-          ((i)localObject).asj(paramString);
-          AppMethodBeat.o(190911);
+          ((i)localObject).aFC(paramString);
+          AppMethodBeat.o(239580);
           return;
         }
       }
-      AppMethodBeat.o(190911);
+      AppMethodBeat.o(239580);
       continue;
-      label176:
+      label180:
       int i = paramInt;
       continue;
-      label181:
+      label185:
       i = 3;
     }
   }
   
-  public final void ge(boolean paramBoolean)
+  public final void ema()
   {
-    AppMethodBeat.i(190916);
-    Object localObject1 = this.wpG;
+    AppMethodBeat.i(239581);
+    Object localObject = this.zKO;
+    if (localObject != null)
+    {
+      if (((FrameLayout)localObject).getVisibility() != 0) {
+        break label111;
+      }
+      localObject = this.zKR;
+      if (localObject == null) {
+        break label111;
+      }
+      localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).zQT;
+      if (localObject == null) {
+        break label111;
+      }
+      localObject = ((MultitalkFrameView)localObject).getUsername();
+      if (localObject == null) {
+        break label111;
+      }
+      q localq = ac.eom();
+      kotlin.g.b.p.g(localq, "SubCoreMultiTalk.getMultiTalkManager()");
+      int i = localq.enw().aGj((String)localObject);
+      if ((i == 103) || (i == 100))
+      {
+        emd();
+        AppMethodBeat.o(239581);
+      }
+    }
+    else
+    {
+      AppMethodBeat.o(239581);
+      return;
+    }
+    eL((String)localObject, 3);
+    AppMethodBeat.o(239581);
+    return;
+    label111:
+    AppMethodBeat.o(239581);
+  }
+  
+  public final boolean emb()
+  {
+    AppMethodBeat.i(239582);
+    Object localObject = this.zKO;
+    if ((localObject != null) && (((FrameLayout)localObject).getVisibility() == 0))
+    {
+      localObject = this.zKR;
+      if (localObject != null)
+      {
+        localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).zQT;
+        if (localObject == null) {}
+      }
+      for (boolean bool = ((MultitalkFrameView)localObject).epd(); bool; bool = false)
+      {
+        AppMethodBeat.o(239582);
+        return true;
+      }
+    }
+    AppMethodBeat.o(239582);
+    return false;
+  }
+  
+  public final void emc()
+  {
+    AppMethodBeat.i(239589);
+    if (!this.zKW)
+    {
+      com.tencent.mm.plugin.multitalk.ui.widget.b localb = this.zKR;
+      if (localb == null) {
+        break label51;
+      }
+      if (localb.zRi != 1) {}
+    }
+    else
+    {
+      d.h((kotlin.g.a.a)new i(this));
+    }
+    AppMethodBeat.o(239589);
+    return;
+    label51:
+    AppMethodBeat.o(239589);
+  }
+  
+  public final void hb(boolean paramBoolean)
+  {
+    AppMethodBeat.i(239586);
+    Object localObject1 = this.zKS;
     Object localObject2;
     if (localObject1 != null)
     {
-      localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject1).wtQ;
+      localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject1).zQI;
       if (localObject1 != null)
       {
         localObject1 = ((Iterable)localObject1).iterator();
         while (((Iterator)localObject1).hasNext())
         {
-          localObject2 = ((com.tencent.mm.plugin.multitalk.data.a)((Iterator)localObject1).next()).wmd.MgJ;
-          p.g(localObject2, "it.member.usrName");
-          localObject2 = asg((String)localObject2);
+          localObject2 = (com.tencent.mm.plugin.multitalk.data.a)((Iterator)localObject1).next();
+          Object localObject3 = ((com.tencent.mm.plugin.multitalk.data.a)localObject2).zHg.RHb;
+          kotlin.g.b.p.g(localObject3, "it.member.usrName");
+          localObject3 = aFA((String)localObject3);
+          if (localObject3 != null)
+          {
+            MTimerHandler localMTimerHandler = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).cve;
+            if (localMTimerHandler != null) {
+              localMTimerHandler.quitSafely();
+            }
+            localMTimerHandler = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).cve;
+            if (localMTimerHandler != null) {
+              localMTimerHandler.stopTimer();
+            }
+            localMTimerHandler = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).cve;
+            if (localMTimerHandler != null) {
+              localMTimerHandler.removeCallbacksAndMessages(null);
+            }
+            ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).cve = null;
+          }
+          localObject2 = ((com.tencent.mm.plugin.multitalk.data.a)localObject2).zHg.RHb;
+          kotlin.g.b.p.g(localObject2, "it.member.usrName");
+          localObject2 = aFA((String)localObject2);
           if (localObject2 != null)
           {
-            localObject2 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject2).wua;
+            localObject2 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject2).zQT;
             if (localObject2 != null) {
-              ((MultiTalkVideoView)localObject2).finish();
+              Log.i("MicroMsg.MultitalkFrameView", "release it " + ((MultitalkFrameView)localObject2).hashCode());
             }
           }
         }
@@ -462,344 +593,448 @@ public final class a
     }
     if (paramBoolean)
     {
-      localObject1 = this.wpF;
+      localObject1 = this.zKR;
       if (localObject1 != null)
       {
-        localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).wua;
+        localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).zQT;
         if (localObject1 != null)
         {
-          localObject1 = ((MultiTalkVideoView)localObject1).getUsername();
+          localObject1 = ((MultitalkFrameView)localObject1).getUsername();
           if (localObject1 != null)
           {
-            if (!drT()) {
-              break label211;
+            if (!emb()) {
+              break label309;
             }
-            p.g(localObject1, "it");
-            ex((String)localObject1, 3);
+            eL((String)localObject1, 3);
           }
         }
       }
     }
-    label259:
-    label290:
-    label293:
+    label384:
     for (;;)
     {
-      this.wpF = null;
-      this.wpG = null;
-      this.wpD = null;
-      localObject1 = this.wpG;
+      elZ();
+      localObject1 = this.zKS;
       if (localObject1 != null) {
-        ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject1).wtW = null;
+        ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject1).zQP = null;
       }
-      this.wpI = null;
-      localObject1 = z.dtK();
-      p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
-      ((o)localObject1).dtb().a(null);
-      AppMethodBeat.o(190916);
+      this.zKU = null;
+      localObject1 = ac.eom();
+      kotlin.g.b.p.g(localObject1, "SubCoreMultiTalk.getMultiTalkManager()");
+      ((q)localObject1).enw().a(null);
+      AppMethodBeat.o(239586);
       return;
-      label211:
-      localObject2 = this.wpC;
+      label309:
+      localObject2 = this.zKO;
       if ((localObject2 != null) && (((FrameLayout)localObject2).getVisibility() == 0))
       {
-        localObject2 = this.wpF;
+        localObject2 = this.zKR;
         if (localObject2 != null)
         {
-          localObject2 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject2).wua;
+          localObject2 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject2).zQT;
           if (localObject2 != null)
           {
-            paramBoolean = ((MultiTalkVideoView)localObject2).dui();
+            paramBoolean = ((MultitalkFrameView)localObject2).enp();
+            label357:
             if (!paramBoolean) {
-              break label290;
+              break label381;
             }
           }
         }
       }
+      label381:
       for (int i = 1;; i = 0)
       {
         if (i == 0) {
-          break label293;
+          break label384;
         }
-        p.g(localObject1, "it");
-        ex((String)localObject1, 1);
+        eL((String)localObject1, 1);
         break;
         paramBoolean = false;
-        break label259;
+        break label357;
       }
     }
-  }
-  
-  public final void n(Set<String> paramSet)
-  {
-    AppMethodBeat.i(190914);
-    p.h(paramSet, "videoUserSet");
-    com.tencent.mm.sdk.platformtools.ae.i("AvatarViewManager", "openMemberToVideo, %s", new Object[] { paramSet });
-    Object localObject = this.wpG;
-    if (localObject != null)
-    {
-      localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject).wtQ;
-      if (localObject != null)
-      {
-        Iterator localIterator = ((Iterable)localObject).iterator();
-        label147:
-        label151:
-        label193:
-        label322:
-        while (localIterator.hasNext())
-        {
-          com.tencent.mm.plugin.multitalk.data.a locala = (com.tencent.mm.plugin.multitalk.data.a)localIterator.next();
-          localObject = locala.wmd.MgJ;
-          p.g(localObject, "it.member.usrName");
-          localObject = asg((String)localObject);
-          int i;
-          if (localObject != null)
-          {
-            localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).wua;
-            if (localObject != null) {
-              if ((((MultiTalkVideoView)localObject).getUsername() != null) && ((p.i(com.tencent.mm.model.v.aAC(), ((MultiTalkVideoView)localObject).getUsername()) ^ true)) && (!((MultiTalkVideoView)localObject).duj()))
-              {
-                i = 1;
-                if (i == 0) {
-                  break label293;
-                }
-                if (localObject == null) {
-                  break label319;
-                }
-                if (!paramSet.contains(((MultiTalkVideoView)localObject).getUsername())) {
-                  break label298;
-                }
-                if (((MultiTalkVideoView)localObject).duh())
-                {
-                  localObject = ((MultiTalkVideoView)localObject).getUsername();
-                  p.g(localObject, "it.getUsername()");
-                  ex((String)localObject, 1);
-                }
-              }
-            }
-          }
-          for (localObject = d.z.Nhr;; localObject = null)
-          {
-            if (localObject != null) {
-              break label322;
-            }
-            com.tencent.mm.sdk.platformtools.ae.i("AvatarViewManager", "UI not ready, just init state");
-            if (!paramSet.contains(locala.wmd.MgJ)) {
-              break;
-            }
-            com.tencent.mm.sdk.platformtools.ae.i("AvatarViewManager", "init " + locala.wmd.MgJ + " to VIDEO_SMALL");
-            localObject = locala.wmd.MgJ;
-            p.g(localObject, "it.member.usrName");
-            ex((String)localObject, 1);
-            break;
-            i = 0;
-            break label147;
-            localObject = null;
-            break label151;
-            localObject = ((MultiTalkVideoView)localObject).getUsername();
-            p.g(localObject, "it.getUsername()");
-            ex((String)localObject, 0);
-            break label193;
-          }
-        }
-        label293:
-        label298:
-        label319:
-        AppMethodBeat.o(190914);
-        return;
-      }
-    }
-    AppMethodBeat.o(190914);
-  }
-  
-  public final void o(Set<String> paramSet)
-  {
-    AppMethodBeat.i(190915);
-    p.h(paramSet, "videoUserSet");
-    Object localObject = this.wpG;
-    if (localObject != null)
-    {
-      localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject).wtQ;
-      if (localObject != null)
-      {
-        Iterator localIterator = ((Iterable)localObject).iterator();
-        while (localIterator.hasNext())
-        {
-          localObject = ((com.tencent.mm.plugin.multitalk.data.a)localIterator.next()).wmd.MgJ;
-          p.g(localObject, "it.member.usrName");
-          localObject = asg((String)localObject);
-          if (localObject != null)
-          {
-            localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).wua;
-            if (localObject != null)
-            {
-              int i;
-              if ((((MultiTalkVideoView)localObject).getUsername() != null) && ((p.i(com.tencent.mm.model.v.aAC(), ((MultiTalkVideoView)localObject).getUsername()) ^ true)))
-              {
-                i = 1;
-                label119:
-                if (i == 0) {
-                  break label166;
-                }
-              }
-              for (;;)
-              {
-                if (localObject == null) {
-                  break label169;
-                }
-                if (paramSet.contains(((MultiTalkVideoView)localObject).getUsername())) {
-                  break label171;
-                }
-                localObject = ((MultiTalkVideoView)localObject).getUsername();
-                p.g(localObject, "it.getUsername()");
-                ex((String)localObject, 0);
-                break;
-                i = 0;
-                break label119;
-                label166:
-                localObject = null;
-              }
-              label169:
-              continue;
-              label171:
-              if (((MultiTalkVideoView)localObject).duh())
-              {
-                localObject = ((MultiTalkVideoView)localObject).getUsername();
-                p.g(localObject, "it.getUsername()");
-                ex((String)localObject, 1);
-              }
-            }
-          }
-        }
-        AppMethodBeat.o(190915);
-        return;
-      }
-    }
-    AppMethodBeat.o(190915);
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(190909);
+    AppMethodBeat.i(239578);
     Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-    ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/model/AvatarViewManager", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-    if (drT())
+    ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/multitalk/model/AvatarViewManager", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+    if (emb())
     {
-      if (this.wpR)
+      if (this.zLd)
       {
-        paramView = this.wpE;
+        paramView = this.zKQ;
         if (paramView != null) {
-          paramView.dsf();
+          paramView.eml();
         }
       }
-      for (this.wpR = false;; this.wpR = true)
+      for (this.zLd = false;; this.zLd = true)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/model/AvatarViewManager", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(190909);
+        AppMethodBeat.o(239578);
         return;
-        paramView = this.wpE;
+        paramView = this.zKQ;
         if (paramView != null) {
-          paramView.dse();
+          paramView.emk();
         }
       }
     }
     if (paramView == null)
     {
-      paramView = new d.v("null cannot be cast to non-null type com.tencent.mm.plugin.multitalk.ui.widget.MultiTalkVideoView");
-      AppMethodBeat.o(190909);
+      paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.multitalk.ui.widget.MultitalkFrameView");
+      AppMethodBeat.o(239578);
       throw paramView;
     }
-    paramView = (MultiTalkVideoView)paramView;
+    paramView = (MultitalkFrameView)paramView;
     if (paramView.getUsername() == null)
     {
-      com.tencent.mm.sdk.platformtools.ae.e("AvatarViewManager", "videoview get null username");
+      Log.e("AvatarViewManager", "videoview get null username");
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/model/AvatarViewManager", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(190909);
+      AppMethodBeat.o(239578);
       return;
     }
-    localObject = this.wpC;
+    localObject = this.zKO;
     if ((localObject == null) || (((FrameLayout)localObject).getVisibility() != 0)) {
-      if (paramView.duj())
+      if (paramView.epd())
       {
-        paramView = paramView.getUsername();
-        p.g(paramView, "videoView.getUsername()");
-        ex(paramView, 4);
+        eL(paramView.getUsername(), 4);
+        p.zMs += 1;
+        paramView = this.zKQ;
+        if (paramView != null) {
+          paramView.emm();
+        }
       }
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/multitalk/model/AvatarViewManager", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(190909);
+      AppMethodBeat.o(239578);
       return;
-      paramView = paramView.getUsername();
-      p.g(paramView, "videoView.getUsername()");
-      ex(paramView, 2);
-      continue;
-      if (paramView.duj())
+      eL(paramView.getUsername(), 2);
+      paramView = this.zKQ;
+      if (paramView != null)
       {
-        paramView = paramView.getUsername();
-        p.g(paramView, "videoView.getUsername()");
-        ex(paramView, 3);
-      }
-      else
-      {
-        paramView = paramView.getUsername();
-        p.g(paramView, "videoView.getUsername()");
-        ex(paramView, 1);
+        paramView.emn();
+        continue;
+        if (paramView.epd())
+        {
+          eL(paramView.getUsername(), 3);
+          paramView = this.zKQ;
+          if (paramView != null) {
+            paramView.emn();
+          }
+        }
+        else
+        {
+          eL(paramView.getUsername(), 1);
+          paramView = this.zKQ;
+          if (paramView != null) {
+            paramView.emn();
+          }
+        }
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManager$ScreenCastReceiverUiCallbackImpl;", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "(Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManager;)V", "markPause", "", "wxUserName", "", "markRestart", "markResume", "markStart", "markStop", "updateTask", "task", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder;", "plugin-multitalk_release"})
+  public final void p(Set<String> paramSet)
+  {
+    AppMethodBeat.i(239583);
+    kotlin.g.b.p.h(paramSet, "videoUserSet");
+    Log.i("AvatarViewManager", "openMemberToVideo, %s", new Object[] { paramSet });
+    Object localObject = this.zKS;
+    if (localObject != null)
+    {
+      localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject).zQI;
+      if (localObject != null)
+      {
+        Iterator localIterator = ((Iterable)localObject).iterator();
+        label140:
+        label144:
+        label177:
+        label334:
+        label339:
+        label351:
+        label354:
+        while (localIterator.hasNext())
+        {
+          com.tencent.mm.plugin.multitalk.data.a locala = (com.tencent.mm.plugin.multitalk.data.a)localIterator.next();
+          localObject = locala.zHg.RHb;
+          kotlin.g.b.p.g(localObject, "it.member.usrName");
+          localObject = aFA((String)localObject);
+          int i;
+          if (localObject != null)
+          {
+            localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).zQT;
+            if (localObject != null) {
+              if (((kotlin.g.b.p.j(z.aTY(), ((MultitalkFrameView)localObject).getUsername()) ^ true)) && (!((MultitalkFrameView)localObject).epd()))
+              {
+                i = 1;
+                if (i == 0) {
+                  break label334;
+                }
+                if (localObject == null) {
+                  break label351;
+                }
+                if (!paramSet.contains(((MultitalkFrameView)localObject).getUsername())) {
+                  break label339;
+                }
+                if (((MultitalkFrameView)localObject).epc()) {
+                  eL(((MultitalkFrameView)localObject).getUsername(), 1);
+                }
+              }
+            }
+          }
+          for (localObject = x.SXb;; localObject = null)
+          {
+            if (localObject != null) {
+              break label354;
+            }
+            Log.i("AvatarViewManager", "UI not ready, just init state");
+            if ((!paramSet.contains(locala.zHg.RHb)) || (!(kotlin.g.b.p.j(z.aTY(), locala.zHg.RHb) ^ true))) {
+              break;
+            }
+            localObject = ac.eom();
+            kotlin.g.b.p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
+            localObject = ((q)localObject).enw().zNE;
+            if ((localObject != null) && (((ArrayList)localObject).contains(locala.zHg.RHb) == true)) {
+              break;
+            }
+            Log.i("AvatarViewManager", "init " + locala.zHg.RHb + " to VIDEO_SMALL");
+            localObject = locala.zHg.RHb;
+            kotlin.g.b.p.g(localObject, "it.member.usrName");
+            eL((String)localObject, 1);
+            break;
+            i = 0;
+            break label140;
+            localObject = null;
+            break label144;
+            eL(((MultitalkFrameView)localObject).getUsername(), 0);
+            break label177;
+          }
+        }
+        AppMethodBeat.o(239583);
+        return;
+      }
+    }
+    AppMethodBeat.o(239583);
+  }
+  
+  public final void q(Set<String> paramSet)
+  {
+    AppMethodBeat.i(239584);
+    kotlin.g.b.p.h(paramSet, "videoUserSet");
+    Object localObject = this.zKS;
+    Iterator localIterator;
+    if (localObject != null)
+    {
+      localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject).zQI;
+      Log.i("AvatarViewManager", "openMemberToVideo, %s,%s", new Object[] { paramSet, localObject });
+      localObject = this.zKS;
+      if (localObject != null)
+      {
+        localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject).zQI;
+        if (localObject != null) {
+          localIterator = ((Iterable)localObject).iterator();
+        }
+      }
+    }
+    else
+    {
+      label195:
+      label456:
+      label459:
+      for (;;)
+      {
+        label77:
+        if (!localIterator.hasNext()) {
+          break label461;
+        }
+        com.tencent.mm.plugin.multitalk.data.a locala = (com.tencent.mm.plugin.multitalk.data.a)localIterator.next();
+        localObject = ac.eom();
+        kotlin.g.b.p.g(localObject, "SubCoreMultiTalk.getMultiTalkManager()");
+        localObject = ((q)localObject).enw().zNE;
+        int i;
+        if ((localObject != null) && (((ArrayList)localObject).contains(locala.zHg.RHb) == true))
+        {
+          Log.i("AvatarViewManager", "init " + locala.zHg.RHb + " to SCREEN_CAST_SMALL");
+          localObject = locala.zHg.RHb;
+          kotlin.g.b.p.g(localObject, "it.member.usrName");
+          eL((String)localObject, 3);
+          localObject = locala.zHg.RHb;
+          kotlin.g.b.p.g(localObject, "it.member.usrName");
+          localObject = aFA((String)localObject);
+          if (localObject == null) {
+            break label456;
+          }
+          localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).zQT;
+          if (localObject == null) {
+            break label456;
+          }
+          if ((!(kotlin.g.b.p.j(z.aTY(), ((MultitalkFrameView)localObject).getUsername()) ^ true)) || (((MultitalkFrameView)localObject).epd())) {
+            break label434;
+          }
+          i = 1;
+          label254:
+          if (i == 0) {
+            break label439;
+          }
+          if (localObject == null) {
+            break label456;
+          }
+          if (!paramSet.contains(((MultitalkFrameView)localObject).getUsername())) {
+            break label444;
+          }
+          if (((MultitalkFrameView)localObject).epc()) {
+            eL(((MultitalkFrameView)localObject).getUsername(), 1);
+          }
+        }
+        for (localObject = x.SXb;; localObject = null)
+        {
+          if (localObject != null) {
+            break label459;
+          }
+          Log.i("AvatarViewManager", "UI not ready, just init state user name is %s", new Object[] { locala.zHg.RHb });
+          break label77;
+          localObject = null;
+          break;
+          if (paramSet.contains(locala.zHg.RHb))
+          {
+            Log.i("AvatarViewManager", "init " + locala.zHg.RHb + " to VIDEO_SMALL");
+            localObject = locala.zHg.RHb;
+            kotlin.g.b.p.g(localObject, "it.member.usrName");
+            eL((String)localObject, 1);
+            break label195;
+          }
+          localObject = locala.zHg.RHb;
+          kotlin.g.b.p.g(localObject, "it.member.usrName");
+          eL((String)localObject, 0);
+          break label195;
+          i = 0;
+          break label254;
+          localObject = null;
+          break label258;
+          eL(((MultitalkFrameView)localObject).getUsername(), 0);
+          break label291;
+        }
+      }
+      label258:
+      label291:
+      label434:
+      label439:
+      label444:
+      label461:
+      AppMethodBeat.o(239584);
+      return;
+    }
+    AppMethodBeat.o(239584);
+  }
+  
+  public final void r(Set<String> paramSet)
+  {
+    AppMethodBeat.i(239585);
+    kotlin.g.b.p.h(paramSet, "videoUserSet");
+    Object localObject = this.zKS;
+    if (localObject != null)
+    {
+      localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.a)localObject).zQI;
+      if (localObject != null)
+      {
+        Iterator localIterator = ((Iterable)localObject).iterator();
+        while (localIterator.hasNext())
+        {
+          localObject = ((com.tencent.mm.plugin.multitalk.data.a)localIterator.next()).zHg.RHb;
+          kotlin.g.b.p.g(localObject, "it.member.usrName");
+          localObject = aFA((String)localObject);
+          if (localObject != null)
+          {
+            localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).zQT;
+            if (localObject != null)
+            {
+              int i;
+              if ((((MultitalkFrameView)localObject).getUsername() != null) && ((kotlin.g.b.p.j(z.aTY(), ((MultitalkFrameView)localObject).getUsername()) ^ true)))
+              {
+                i = 1;
+                label119:
+                if (i == 0) {
+                  break label157;
+                }
+              }
+              for (;;)
+              {
+                if (localObject == null) {
+                  break label160;
+                }
+                if (paramSet.contains(((MultitalkFrameView)localObject).getUsername())) {
+                  break label162;
+                }
+                eL(((MultitalkFrameView)localObject).getUsername(), 0);
+                break;
+                i = 0;
+                break label119;
+                label157:
+                localObject = null;
+              }
+              label160:
+              continue;
+              label162:
+              if (((MultitalkFrameView)localObject).epc()) {
+                eL(((MultitalkFrameView)localObject).getUsername(), 1);
+              }
+            }
+          }
+        }
+        AppMethodBeat.o(239585);
+        return;
+      }
+    }
+    AppMethodBeat.o(239585);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManager$ScreenCastReceiverUiCallbackImpl;", "Lcom/tencent/mm/plugin/multitalk/model/IScreenCastUiCallback;", "(Lcom/tencent/mm/plugin/multitalk/model/AvatarViewManager;)V", "markPause", "", "wxUserName", "", "markRestart", "markResume", "markStart", "markStop", "updateTask", "task", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder;", "plugin-multitalk_release"})
   public final class b
     implements i
   {
-    public final void asi(String paramString)
-    {
-      AppMethodBeat.i(190896);
-      p.h(paramString, "wxUserName");
-      this.wpT.ex(paramString, 3);
-      AppMethodBeat.o(190896);
-    }
-    
-    public final void asj(String paramString)
+    public final void aFC(String paramString)
     {
       Object localObject2 = null;
-      AppMethodBeat.i(190897);
-      p.h(paramString, "wxUserName");
-      Object localObject1 = this.wpT.asg(paramString);
+      AppMethodBeat.i(239564);
+      kotlin.g.b.p.h(paramString, "wxUserName");
+      Object localObject1 = this.zLf.aFA(paramString);
       boolean bool;
       if (localObject1 != null)
       {
-        localObject3 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).wua;
+        localObject3 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).zQT;
         if (localObject3 == null) {
           break label153;
         }
-        bool = ((MultiTalkVideoView)localObject3).duj();
+        bool = ((MultitalkFrameView)localObject3).epd();
         if (!bool) {
           break label158;
         }
         label51:
         if (localObject1 != null) {
-          ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).W(true, false);
+          ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).Z(true, false);
         }
       }
-      Object localObject3 = a.a(this.wpT);
+      Object localObject3 = a.a(this.zLf);
       if (localObject3 != null)
       {
-        localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).wua;
+        localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).zQT;
         if (localObject1 != null)
         {
-          localObject1 = ((MultiTalkVideoView)localObject1).getUsername();
+          localObject1 = ((MultitalkFrameView)localObject1).getUsername();
           label96:
-          if (!p.i(localObject1, paramString)) {
+          if (!kotlin.g.b.p.j(localObject1, paramString)) {
             break label175;
           }
-          paramString = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).wua;
+          paramString = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).zQT;
           if (paramString == null) {
             break label170;
           }
-          bool = paramString.duj();
+          bool = paramString.epd();
           label120:
           if (!bool) {
             break label175;
@@ -819,7 +1054,7 @@ public final class a
             break label180;
           }
           com.tencent.mm.plugin.multitalk.ui.widget.b.a(paramString, false, false, 3);
-          AppMethodBeat.o(190897);
+          AppMethodBeat.o(239564);
           return;
           bool = false;
           break;
@@ -832,45 +1067,45 @@ public final class a
         }
       }
       label180:
-      AppMethodBeat.o(190897);
+      AppMethodBeat.o(239564);
     }
     
-    public final void ask(String paramString)
+    public final void aFD(String paramString)
     {
-      AppMethodBeat.i(190898);
-      p.h(paramString, "wxUserName");
-      this.wpT.ex(paramString, 3);
-      Object localObject = a.a(this.wpT);
+      AppMethodBeat.i(239565);
+      kotlin.g.b.p.h(paramString, "wxUserName");
+      this.zLf.eL(paramString, 3);
+      Object localObject = a.a(this.zLf);
       if (localObject != null)
       {
-        localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).wua;
+        localObject = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject).zQT;
         if (localObject == null) {}
       }
-      for (localObject = ((MultiTalkVideoView)localObject).getUsername();; localObject = null)
+      for (localObject = ((MultitalkFrameView)localObject).getUsername();; localObject = null)
       {
-        if (p.i(localObject, paramString)) {
-          this.wpT.ex(paramString, 4);
+        if (kotlin.g.b.p.j(localObject, paramString)) {
+          this.zLf.eL(paramString, 4);
         }
-        AppMethodBeat.o(190898);
+        AppMethodBeat.o(239565);
         return;
       }
     }
     
-    public final void asl(String paramString)
+    public final void aFE(String paramString)
     {
       Object localObject2 = null;
-      AppMethodBeat.i(190899);
-      p.h(paramString, "wxUserName");
-      d.g.a.b localb = (d.g.a.b)a.wpU;
-      Object localObject1 = this.wpT.asg(paramString);
+      AppMethodBeat.i(239566);
+      kotlin.g.b.p.h(paramString, "wxUserName");
+      kotlin.g.a.b localb = (kotlin.g.a.b)a.zLg;
+      Object localObject1 = this.zLf.aFA(paramString);
       boolean bool;
       if (localObject1 != null)
       {
-        localObject3 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).wua;
+        localObject3 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject1).zQT;
         if (localObject3 == null) {
           break label260;
         }
-        bool = ((MultiTalkVideoView)localObject3).duj();
+        bool = ((MultitalkFrameView)localObject3).epd();
         if (!bool) {
           break label265;
         }
@@ -879,24 +1114,24 @@ public final class a
           localb.invoke(localObject1);
         }
       }
-      Object localObject3 = a.a(this.wpT);
+      Object localObject3 = a.a(this.zLf);
       label107:
       int i;
       if (localObject3 != null)
       {
-        localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).wua;
+        localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).zQT;
         if (localObject1 == null) {
           break label271;
         }
-        localObject1 = ((MultiTalkVideoView)localObject1).getUsername();
-        if (!p.i(localObject1, paramString)) {
+        localObject1 = ((MultitalkFrameView)localObject1).getUsername();
+        if (!kotlin.g.b.p.j(localObject1, paramString)) {
           break label282;
         }
-        localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).wua;
+        localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).zQT;
         if (localObject1 == null) {
           break label277;
         }
-        bool = ((MultiTalkVideoView)localObject1).duj();
+        bool = ((MultitalkFrameView)localObject1).epd();
         label134:
         if (!bool) {
           break label282;
@@ -912,22 +1147,22 @@ public final class a
           localb.invoke(localObject1);
         }
       }
-      localObject3 = a.a(this.wpT);
+      localObject3 = a.a(this.zLf);
       if (localObject3 != null)
       {
-        localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).wua;
+        localObject1 = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).zQT;
         if (localObject1 != null)
         {
-          localObject1 = ((MultiTalkVideoView)localObject1).getUsername();
+          localObject1 = ((MultitalkFrameView)localObject1).getUsername();
           label196:
-          if (!p.i(localObject1, paramString)) {
+          if (!kotlin.g.b.p.j(localObject1, paramString)) {
             break label304;
           }
-          paramString = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).wua;
+          paramString = ((com.tencent.mm.plugin.multitalk.ui.widget.b)localObject3).zQT;
           if (paramString == null) {
             break label299;
           }
-          bool = paramString.duj();
+          bool = paramString.epd();
           label220:
           if (!bool) {
             break label304;
@@ -950,9 +1185,9 @@ public final class a
           if (paramString == null) {
             break label309;
           }
-          paramString.W(false, false);
-          a.a(this.wpT, true);
-          AppMethodBeat.o(190899);
+          paramString.Z(false, false);
+          a.a(this.zLf, true);
+          AppMethodBeat.o(239566);
           return;
           bool = false;
           break;
@@ -973,29 +1208,37 @@ public final class a
         }
       }
       label309:
-      AppMethodBeat.o(190899);
+      AppMethodBeat.o(239566);
     }
     
-    public final void asm(String paramString)
+    public final void aFF(String paramString)
     {
-      AppMethodBeat.i(190900);
-      p.h(paramString, "wxUserName");
-      this.wpT.ex(paramString, 0);
-      AppMethodBeat.o(190900);
+      AppMethodBeat.i(239567);
+      kotlin.g.b.p.h(paramString, "wxUserName");
+      this.zLf.eL(paramString, 0);
+      AppMethodBeat.o(239567);
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder;", "invoke"})
+    public final void afd(String paramString)
+    {
+      AppMethodBeat.i(239563);
+      kotlin.g.b.p.h(paramString, "wxUserName");
+      this.zLf.eL(paramString, 3);
+      AppMethodBeat.o(239563);
+    }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/multitalk/ui/widget/AvatarLayoutHolder;", "invoke"})
     static final class a
-      extends q
-      implements d.g.a.b<com.tencent.mm.plugin.multitalk.ui.widget.b, d.z>
+      extends kotlin.g.b.q
+      implements kotlin.g.a.b<com.tencent.mm.plugin.multitalk.ui.widget.b, x>
     {
-      public static final a wpU;
+      public static final a zLg;
       
       static
       {
-        AppMethodBeat.i(190895);
-        wpU = new a();
-        AppMethodBeat.o(190895);
+        AppMethodBeat.i(239562);
+        zLg = new a();
+        AppMethodBeat.o(239562);
       }
       
       a()
@@ -1005,10 +1248,10 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "wxUserName", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "wxUserName", "", "invoke"})
   static final class c
-    extends q
-    implements d.g.a.b<String, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<String, x>
   {
     c(a parama)
     {
@@ -1016,10 +1259,10 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "wxUserName", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "wxUserName", "", "invoke"})
   static final class d
-    extends q
-    implements d.g.a.b<String, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<String, x>
   {
     d(a parama)
     {
@@ -1027,10 +1270,10 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "wxUserName", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "wxUserName", "", "invoke"})
   static final class e
-    extends q
-    implements d.g.a.b<String, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<String, x>
   {
     e(a parama)
     {
@@ -1038,10 +1281,10 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "wxUserName", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "wxUserName", "", "invoke"})
   static final class f
-    extends q
-    implements d.g.a.b<String, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<String, x>
   {
     f(a parama)
     {
@@ -1049,10 +1292,10 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "wxUserName", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "wxUserName", "", "invoke"})
   static final class g
-    extends q
-    implements d.g.a.b<String, d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.b<String, x>
   {
     g(a parama)
     {
@@ -1060,10 +1303,10 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/multitalk/model/AvatarViewManager$getLargeRenderTarget$1$1"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke", "com/tencent/mm/plugin/multitalk/model/AvatarViewManager$getLargeRenderTarget$1$1"})
   static final class h
-    extends q
-    implements d.g.a.a<d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<x>
   {
     h(com.tencent.mm.plugin.multitalk.ui.widget.b paramb, int paramInt)
     {
@@ -1071,10 +1314,10 @@ public final class a
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class i
-    extends q
-    implements d.g.a.a<d.z>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<x>
   {
     i(a parama)
     {

@@ -7,37 +7,43 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
 public class SelectNoSupportUI
   extends MMActivity
 {
-  private String LkO = "friend";
-  private TextView LkP;
-  private TextView LkQ;
+  private String QzS = "friend";
+  private TextView QzT;
+  private TextView QzU;
   
   public int getLayoutId()
   {
-    return 2131494901;
+    return 2131495639;
   }
   
   public void initView()
   {
     AppMethodBeat.i(39412);
-    setMMTitle(getString(2131763005));
-    this.LkP = ((TextView)findViewById(2131302887));
-    this.LkQ = ((TextView)findViewById(2131302886));
-    this.LkP.setText(getString(2131763015));
-    String str = this.LkO;
-    int i = -1;
-    switch (str.hashCode())
+    setMMTitle(getString(2131765142));
+    this.QzT = ((TextView)findViewById(2131305464));
+    this.QzU = ((TextView)findViewById(2131305463));
+    this.QzT.setText(getString(2131765152));
+    String str;
+    int i;
+    if (!Util.isNullOrNil(this.QzS))
     {
-    default: 
-      switch (i)
+      str = this.QzS;
+      i = -1;
+      switch (str.hashCode())
       {
+      default: 
+        switch (i)
+        {
+        }
+        break;
       }
-      break;
     }
     for (;;)
     {
@@ -65,9 +71,9 @@ public class SelectNoSupportUI
       }
       i = 1;
       break;
-      this.LkQ.setText(getString(2131763016));
+      this.QzU.setText(getString(2131765153));
       continue;
-      this.LkQ.setText(getString(2131763017));
+      this.QzU.setText(getString(2131765154));
     }
   }
   
@@ -75,11 +81,11 @@ public class SelectNoSupportUI
   {
     AppMethodBeat.i(39411);
     super.onCreate(paramBundle);
-    ae.i("MicroMsg.SelectNoSupportUI", "onCreate!");
-    this.LkO = getIntent().getStringExtra("sharePictureTo");
-    ae.i("MicroMsg.SelectNoSupportUI", "initData done!");
+    Log.i("MicroMsg.SelectNoSupportUI", "onCreate!");
+    this.QzS = getIntent().getStringExtra("sharePictureTo");
+    Log.i("MicroMsg.SelectNoSupportUI", "initData done!");
     initView();
-    ae.i("MicroMsg.SelectNoSupportUI", "initView done!");
+    Log.i("MicroMsg.SelectNoSupportUI", "initView done!");
     AppMethodBeat.o(39411);
   }
   

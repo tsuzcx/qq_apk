@@ -5,62 +5,62 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class b
 {
-  LinearLayout zaS;
-  LinearLayout zaT;
-  LinearLayout zaU;
-  LinearLayout zaV;
-  LinearLayout zaW;
+  LinearLayout DfK;
+  LinearLayout DfL;
+  LinearLayout DfM;
+  LinearLayout DfN;
+  LinearLayout DfO;
   
-  public final void ayy(String paramString)
+  public final void aNi(String paramString)
   {
     AppMethodBeat.i(74625);
     if (paramString.equals("downloading"))
     {
-      this.zaS.setVisibility(0);
-      this.zaT.setVisibility(8);
-      this.zaU.setVisibility(8);
-      this.zaV.setVisibility(8);
-      this.zaW.setVisibility(8);
+      this.DfK.setVisibility(0);
+      this.DfL.setVisibility(8);
+      this.DfM.setVisibility(8);
+      this.DfN.setVisibility(8);
+      this.DfO.setVisibility(8);
       AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("downloaded"))
     {
-      this.zaS.setVisibility(8);
-      this.zaT.setVisibility(0);
-      this.zaU.setVisibility(8);
-      this.zaV.setVisibility(8);
-      this.zaW.setVisibility(8);
+      this.DfK.setVisibility(8);
+      this.DfL.setVisibility(0);
+      this.DfM.setVisibility(8);
+      this.DfN.setVisibility(8);
+      this.DfO.setVisibility(8);
       AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("undownloaded"))
     {
-      this.zaS.setVisibility(8);
-      this.zaT.setVisibility(8);
-      this.zaU.setVisibility(0);
-      this.zaV.setVisibility(8);
-      this.zaW.setVisibility(8);
+      this.DfK.setVisibility(8);
+      this.DfL.setVisibility(8);
+      this.DfM.setVisibility(0);
+      this.DfN.setVisibility(8);
+      this.DfO.setVisibility(8);
       AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("using"))
     {
-      this.zaS.setVisibility(8);
-      this.zaT.setVisibility(8);
-      this.zaU.setVisibility(8);
-      this.zaV.setVisibility(0);
-      this.zaW.setVisibility(8);
+      this.DfK.setVisibility(8);
+      this.DfL.setVisibility(8);
+      this.DfM.setVisibility(8);
+      this.DfN.setVisibility(0);
+      this.DfO.setVisibility(8);
       AppMethodBeat.o(74625);
       return;
     }
     if (paramString.equals("canceling"))
     {
-      this.zaS.setVisibility(8);
-      this.zaT.setVisibility(8);
-      this.zaU.setVisibility(8);
-      this.zaV.setVisibility(8);
-      this.zaW.setVisibility(0);
+      this.DfK.setVisibility(8);
+      this.DfL.setVisibility(8);
+      this.DfM.setVisibility(8);
+      this.DfN.setVisibility(8);
+      this.DfO.setVisibility(0);
       AppMethodBeat.o(74625);
       return;
     }
@@ -69,7 +69,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.b
  * JD-Core Version:    0.7.0.1
  */

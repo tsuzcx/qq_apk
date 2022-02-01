@@ -8,7 +8,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.emoji.RTChattingEmojiView;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
@@ -16,31 +16,31 @@ import java.util.Map;
 public final class l$b
   extends c.a
 {
-  public static Map<String, WeakReference<b>> KxW;
-  ImageView KvW;
-  RTChattingEmojiView KxR;
-  ImageView KxS;
-  ProgressBar KxT;
-  ImageView KxU;
-  TextView KxV;
+  public static Map<String, WeakReference<b>> PKm;
+  ImageView PIn;
+  RTChattingEmojiView PKh;
+  ImageView PKi;
+  ProgressBar PKj;
+  ImageView PKk;
+  TextView PKl;
   
   static
   {
     AppMethodBeat.i(36923);
-    KxW = new HashMap();
+    PKm = new HashMap();
     AppMethodBeat.o(36923);
   }
   
   public static void u(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(36922);
-    if (!KxW.containsKey(paramString))
+    if (!PKm.containsKey(paramString))
     {
-      ae.i("AppMsgEmojiItemHolder", "no contain attchid:%s");
+      Log.i("AppMsgEmojiItemHolder", "no contain attchid:%s");
       AppMethodBeat.o(36922);
       return;
     }
-    paramString = (b)((WeakReference)KxW.get(paramString)).get();
+    paramString = (b)((WeakReference)PKm.get(paramString)).get();
     if (paramString != null) {
       switch (paramInt2)
       {
@@ -50,53 +50,58 @@ public final class l$b
     {
       AppMethodBeat.o(36922);
       return;
-      paramString.KxT.setVisibility(8);
-      paramString.KxV.setVisibility(8);
-      paramString.KxU.setVisibility(8);
+      paramString.PKj.setVisibility(8);
+      paramString.PKl.setVisibility(8);
+      paramString.PKk.setVisibility(8);
       AppMethodBeat.o(36922);
       return;
-      paramString.KxT.setVisibility(8);
-      paramString.KxV.setVisibility(8);
-      paramString.KxU.setVisibility(0);
-      paramString.KxT.setProgress(paramInt1);
-      paramString.KxU.setImageResource(2131232024);
+      paramString.PKj.setVisibility(8);
+      paramString.PKl.setVisibility(8);
+      paramString.PKk.setVisibility(0);
+      paramString.PKj.setProgress(paramInt1);
+      paramString.PKk.setImageResource(2131232115);
       AppMethodBeat.o(36922);
       return;
-      paramString.KxT.setVisibility(0);
-      paramString.KxV.setVisibility(8);
-      paramString.KxU.setVisibility(8);
-      paramString.KxT.setProgress(0);
+      paramString.PKj.setVisibility(0);
+      paramString.PKl.setVisibility(8);
+      paramString.PKk.setVisibility(8);
+      paramString.PKj.setProgress(0);
     }
   }
   
-  public final c.a E(View paramView, boolean paramBoolean)
+  public final c.a G(View paramView, boolean paramBoolean)
   {
     AppMethodBeat.i(36921);
-    super.gs(paramView);
-    this.fVV = ((TextView)paramView.findViewById(2131298178));
-    this.KxR = ((RTChattingEmojiView)paramView.findViewById(2131298074));
-    this.iFD = ((CheckBox)paramView.findViewById(2131298068));
-    this.hcH = paramView.findViewById(2131298147);
-    this.KxT = ((ProgressBar)paramView.findViewById(2131298082));
-    this.KxU = ((ImageView)paramView.findViewById(2131298175));
-    this.KxV = ((TextView)paramView.findViewById(2131298171));
+    super.create(paramView);
+    this.timeTV = ((TextView)paramView.findViewById(2131298558));
+    this.PKh = ((RTChattingEmojiView)paramView.findViewById(2131298417));
+    this.checkBox = ((CheckBox)paramView.findViewById(2131298410));
+    this.maskView = paramView.findViewById(2131298508);
+    this.PKj = ((ProgressBar)paramView.findViewById(2131298425));
+    this.PKk = ((ImageView)paramView.findViewById(2131298555));
+    this.PKl = ((TextView)paramView.findViewById(2131298550));
     if (!paramBoolean)
     {
-      this.xvJ = ((ProgressBar)paramView.findViewById(2131306220));
-      this.KuL = ((ImageView)paramView.findViewById(2131298174));
-      this.KvW = ((ImageView)paramView.findViewById(2131298176));
+      this.uploadingPB = ((ProgressBar)paramView.findViewById(2131309619));
+      this.stateIV = ((ImageView)paramView.findViewById(2131298554));
+      this.PIn = ((ImageView)paramView.findViewById(2131298556));
     }
-    if (this.KxS != null) {
-      ((ViewGroup)this.KxS.getParent()).setBackgroundDrawable(null);
+    if (this.PKi != null) {
+      ((ViewGroup)this.PKi.getParent()).setBackgroundDrawable(null);
     }
-    this.yUp = ((TextView)paramView.findViewById(2131298185));
+    this.userTV = ((TextView)paramView.findViewById(2131298566));
     AppMethodBeat.o(36921);
     return this;
+  }
+  
+  public final View getMainContainerView()
+  {
+    return this.PKh;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.l.b
  * JD-Core Version:    0.7.0.1
  */

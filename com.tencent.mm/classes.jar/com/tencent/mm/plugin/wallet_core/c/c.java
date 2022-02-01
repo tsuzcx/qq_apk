@@ -1,36 +1,35 @@
 package com.tencent.mm.plugin.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.protocal.protobuf.drk;
-import com.tencent.mm.protocal.protobuf.drl;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.protocal.protobuf.elg;
+import com.tencent.mm.protocal.protobuf.elh;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends a<drl>
+  extends com.tencent.mm.ak.c<elh>
 {
   public c(String paramString)
   {
     AppMethodBeat.i(69889);
-    b.a locala = new b.a();
-    drk localdrk = new drk();
-    localdrk.Gpk = paramString;
-    localdrk.timestamp = System.currentTimeMillis();
-    locala.hQF = localdrk;
-    locala.hQG = new drl();
+    d.a locala = new d.a();
+    elg localelg = new elg();
+    localelg.LjW = paramString;
+    localelg.timestamp = System.currentTimeMillis();
+    locala.iLN = localelg;
+    locala.iLO = new elh();
     locala.uri = "/cgi-bin/mmpay-bin/mktuncheckmchservicepos";
     locala.funcId = 2595;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    c(locala.aDS());
-    ae.i("MicroMsg.CgiUnCheckMchServicePos", "CgiUnCheckMchServicePos: %s", new Object[] { paramString });
+    c(locala.aXF());
+    Log.i("MicroMsg.CgiUnCheckMchServicePos", "CgiUnCheckMchServicePos: %s", new Object[] { paramString });
     AppMethodBeat.o(69889);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.c.c
  * JD-Core Version:    0.7.0.1
  */

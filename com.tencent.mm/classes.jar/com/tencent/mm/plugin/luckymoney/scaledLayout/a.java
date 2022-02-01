@@ -1,47 +1,49 @@
 package com.tencent.mm.plugin.luckymoney.scaledLayout;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.i;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.r;
+import android.support.v7.widget.RecyclerView.r.a;
 import android.support.v7.widget.RecyclerView.s;
-import android.support.v7.widget.RecyclerView.s.a;
-import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.ae;
 import android.support.v7.widget.aj;
 import android.support.v7.widget.ak;
 import android.util.DisplayMetrics;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
   extends ak
 {
   public Context context;
-  public View vDb;
-  public boolean vDc = false;
+  public View yYd;
+  public boolean yYe = false;
   
-  public static View h(RecyclerView.i parami)
+  public static View h(RecyclerView.LayoutManager paramLayoutManager)
   {
     Object localObject = null;
     AppMethodBeat.i(65323);
-    int n = parami.getChildCount();
+    int n = paramLayoutManager.getChildCount();
     if (n == 0)
     {
       AppMethodBeat.o(65323);
       return null;
     }
-    aj localaj = aj.d(parami);
+    aj localaj = aj.d(paramLayoutManager);
     int j;
     int k;
-    if (parami.getClipToPadding())
+    if (paramLayoutManager.getClipToPadding())
     {
-      j = localaj.kB() + localaj.kD() / 2;
+      j = localaj.kH() + localaj.kJ() / 2;
       int i = 2147483647;
       k = 0;
       label58:
       if (k >= n) {
         break label126;
       }
-      View localView = parami.getChildAt(k);
-      int m = Math.abs(localaj.bn(localView) + localaj.br(localView) / 2 - j);
+      View localView = paramLayoutManager.getChildAt(k);
+      int m = Math.abs(localaj.bo(localView) + localaj.bs(localView) / 2 - j);
       if (m >= i) {
         break label134;
       }
@@ -61,31 +63,31 @@ public final class a
     }
   }
   
-  public final int a(RecyclerView.i parami, int paramInt1, int paramInt2)
+  public final int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(65322);
-    if (parami.getItemCount() == 0)
+    if (paramLayoutManager.getItemCount() == 0)
     {
       AppMethodBeat.o(65322);
       return -1;
     }
-    View localView2 = h(parami);
+    View localView2 = h(paramLayoutManager);
     if (localView2 == null)
     {
       AppMethodBeat.o(65322);
       return -1;
     }
     View localView1 = localView2;
-    if (this.vDb != null)
+    if (this.yYd != null)
     {
       localView1 = localView2;
-      if (this.vDb != localView2) {
-        localView1 = this.vDb;
+      if (this.yYd != localView2) {
+        localView1 = this.yYd;
       }
     }
-    paramInt2 = RecyclerView.i.bB(localView1);
-    com.tencent.mm.sdk.platformtools.ae.d("CusPager", "pos: %s", new Object[] { Integer.valueOf(paramInt2) });
-    if ((paramInt1 >= 100) && (paramInt2 + 1 < parami.getItemCount()))
+    paramInt2 = paramLayoutManager.getPosition(localView1);
+    Log.d("CusPager", "pos: %s", new Object[] { Integer.valueOf(paramInt2) });
+    if ((paramInt1 >= 100) && (paramInt2 + 1 < paramLayoutManager.getItemCount()))
     {
       AppMethodBeat.o(65322);
       return paramInt2 + 1;
@@ -99,17 +101,17 @@ public final class a
     return paramInt2;
   }
   
-  public final View a(RecyclerView.i parami)
+  public final View a(RecyclerView.LayoutManager paramLayoutManager)
   {
     AppMethodBeat.i(65321);
-    View localView1 = super.a(parami);
+    View localView1 = super.a(paramLayoutManager);
     int i = 0;
     int j = 0;
     int k = 0;
     View localView2;
-    if (i < parami.getChildCount())
+    if (i < paramLayoutManager.getChildCount())
     {
-      localView2 = parami.getChildAt(i);
+      localView2 = paramLayoutManager.getChildAt(i);
       if (localView2 != localView1) {
         break label118;
       }
@@ -118,72 +120,72 @@ public final class a
     label118:
     for (;;)
     {
-      if (localView2 == this.vDb) {
+      if (localView2 == this.yYd) {
         k = i;
       }
       i += 1;
       break;
       if (j - k > 1)
       {
-        parami = parami.bY(k + 1);
+        paramLayoutManager = paramLayoutManager.findViewByPosition(k + 1);
         AppMethodBeat.o(65321);
-        return parami;
+        return paramLayoutManager;
       }
       if (j - k < -1)
       {
-        parami = parami.bY(k - 1);
+        paramLayoutManager = paramLayoutManager.findViewByPosition(k - 1);
         AppMethodBeat.o(65321);
-        return parami;
+        return paramLayoutManager;
       }
       AppMethodBeat.o(65321);
       return localView1;
     }
   }
   
-  public final RecyclerView.s g(final RecyclerView.i parami)
+  public final RecyclerView.r g(final RecyclerView.LayoutManager paramLayoutManager)
   {
     AppMethodBeat.i(65324);
-    if (this.vDc)
+    if (this.yYe)
     {
-      parami = super.g(parami);
+      paramLayoutManager = super.g(paramLayoutManager);
       AppMethodBeat.o(65324);
-      return parami;
+      return paramLayoutManager;
     }
-    parami = new android.support.v7.widget.ae(this.context)
+    paramLayoutManager = new ae(this.context)
     {
       public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
       {
         return 50.0F / paramAnonymousDisplayMetrics.densityDpi;
       }
       
-      public final void a(View paramAnonymousView, RecyclerView.t paramAnonymoust, RecyclerView.s.a paramAnonymousa)
+      public final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
       {
         AppMethodBeat.i(65319);
-        paramAnonymousView = a.this.a(parami, paramAnonymousView);
+        paramAnonymousView = a.this.a(paramLayoutManager, paramAnonymousView);
         int i = paramAnonymousView[0];
         int j = paramAnonymousView[1];
-        int k = cd(Math.max(Math.abs(i), Math.abs(j)));
+        int k = cc(Math.max(Math.abs(i), Math.abs(j)));
         if (k > 0) {
-          paramAnonymousa.a(i, j, k, this.VD);
+          paramAnonymousa.a(i, j, k, this.VQ);
         }
         AppMethodBeat.o(65319);
       }
       
-      public final int ce(int paramAnonymousInt)
+      public final int cd(int paramAnonymousInt)
       {
         AppMethodBeat.i(65320);
-        paramAnonymousInt = Math.min(50, super.ce(paramAnonymousInt));
+        paramAnonymousInt = Math.min(50, super.cd(paramAnonymousInt));
         AppMethodBeat.o(65320);
         return paramAnonymousInt;
       }
     };
     AppMethodBeat.o(65324);
-    return parami;
+    return paramLayoutManager;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.scaledLayout.a
  * JD-Core Version:    0.7.0.1
  */

@@ -14,53 +14,53 @@ import java.nio.charset.CodingErrorAction;
 public final class f
   extends Reader
 {
-  private e lrk;
-  private boolean lrl;
-  private CharsetDecoder lrm;
-  private final ByteBuffer lrn;
+  private e mxQ;
+  private boolean mxR;
+  private CharsetDecoder mxS;
+  private final ByteBuffer mxT;
   
   public f(e parame, String paramString)
   {
     super(parame);
-    AppMethodBeat.i(211050);
-    this.lrl = false;
-    this.lrn = ByteBuffer.allocate(8192);
-    this.lrk = parame;
+    AppMethodBeat.i(234719);
+    this.mxR = false;
+    this.mxT = ByteBuffer.allocate(8192);
+    this.mxQ = parame;
     try
     {
-      this.lrm = Charset.forName(paramString).newDecoder().onMalformedInput(CodingErrorAction.REPLACE).onUnmappableCharacter(CodingErrorAction.REPLACE);
-      this.lrn.limit(0);
-      AppMethodBeat.o(211050);
+      this.mxS = Charset.forName(paramString).newDecoder().onMalformedInput(CodingErrorAction.REPLACE).onUnmappableCharacter(CodingErrorAction.REPLACE);
+      this.mxT.limit(0);
+      AppMethodBeat.o(234719);
       return;
     }
     catch (IllegalArgumentException parame)
     {
       parame = (UnsupportedEncodingException)new UnsupportedEncodingException(paramString).initCause(parame);
-      AppMethodBeat.o(211050);
+      AppMethodBeat.o(234719);
       throw parame;
     }
   }
   
   private boolean isOpen()
   {
-    return this.lrk != null;
+    return this.mxQ != null;
   }
   
   public final void close()
   {
-    AppMethodBeat.i(211051);
+    AppMethodBeat.i(234720);
     synchronized (this.lock)
     {
-      if (this.lrm != null) {
-        this.lrm.reset();
+      if (this.mxS != null) {
+        this.mxS.reset();
       }
-      this.lrm = null;
-      if (this.lrk != null)
+      this.mxS = null;
+      if (this.mxQ != null)
       {
-        this.lrk.close();
-        this.lrk = null;
+        this.mxQ.close();
+        this.mxQ = null;
       }
-      AppMethodBeat.o(211051);
+      AppMethodBeat.o(234720);
       return;
     }
   }
@@ -68,13 +68,13 @@ public final class f
   public final int read()
   {
     int i = -1;
-    AppMethodBeat.i(211052);
+    AppMethodBeat.i(234721);
     synchronized (this.lock)
     {
       if (!isOpen())
       {
         IOException localIOException = new IOException("DataSourceReader is closed");
-        AppMethodBeat.o(211052);
+        AppMethodBeat.o(234721);
         throw localIOException;
       }
     }
@@ -82,19 +82,19 @@ public final class f
     if (read(arrayOfChar, 0, 1) != -1) {
       i = arrayOfChar[0];
     }
-    AppMethodBeat.o(211052);
+    AppMethodBeat.o(234721);
     return i;
   }
   
   public final int read(char[] paramArrayOfChar, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(211053);
+    AppMethodBeat.i(234722);
     synchronized (this.lock)
     {
       if (!isOpen())
       {
         paramArrayOfChar = new IOException("DataSourceReader is closed");
-        AppMethodBeat.o(211053);
+        AppMethodBeat.o(234722);
         throw paramArrayOfChar;
       }
     }
@@ -102,17 +102,17 @@ public final class f
     if (((paramInt1 | paramInt2) < 0) || (paramInt1 > i) || (i - paramInt1 < paramInt2))
     {
       paramArrayOfChar = new ArrayIndexOutOfBoundsException("arrayLength=" + i + ",offset=" + paramInt1 + ",count=" + paramInt2);
-      AppMethodBeat.o(211053);
+      AppMethodBeat.o(234722);
       throw paramArrayOfChar;
     }
     if (paramInt2 == 0)
     {
-      AppMethodBeat.o(211053);
+      AppMethodBeat.o(234722);
       return 0;
     }
     CharBuffer localCharBuffer = CharBuffer.wrap(paramArrayOfChar, paramInt1, paramInt2);
     paramArrayOfChar = CoderResult.UNDERFLOW;
-    if (!this.lrn.hasRemaining()) {
+    if (!this.mxT.hasRemaining()) {
       paramInt2 = 1;
     }
     for (;;)
@@ -127,7 +127,7 @@ public final class f
       {
         try
         {
-          if (this.lrk.available() != 0L) {
+          if (this.mxQ.available() != 0L) {
             break label309;
           }
           paramInt2 = localCharBuffer.position();
@@ -138,11 +138,11 @@ public final class f
           if (paramArrayOfChar == CoderResult.UNDERFLOW)
           {
             localObject1 = paramArrayOfChar;
-            if (this.lrl)
+            if (this.mxR)
             {
-              localObject1 = this.lrm.decode(this.lrn, localCharBuffer, true);
-              this.lrm.flush(localCharBuffer);
-              this.lrm.reset();
+              localObject1 = this.mxS.decode(this.mxT, localCharBuffer, true);
+              this.mxS.flush(localCharBuffer);
+              this.mxS.reset();
             }
           }
           if ((((CoderResult)localObject1).isMalformed()) || (((CoderResult)localObject1).isUnmappable())) {
@@ -152,36 +152,36 @@ public final class f
             break label490;
           }
           paramInt1 = -1;
-          AppMethodBeat.o(211053);
+          AppMethodBeat.o(234722);
           return paramInt1;
         }
         catch (Exception localException) {}
         paramInt2 = 0;
         break;
-        if (!this.lrl)
+        if (!this.mxR)
         {
-          paramInt2 = this.lrn.capacity();
-          i = this.lrn.limit();
-          int j = this.lrn.arrayOffset();
-          int k = this.lrn.limit();
-          paramInt2 = this.lrk.read(this.lrn.array(), j + k, paramInt2 - i);
+          paramInt2 = this.mxT.capacity();
+          i = this.mxT.limit();
+          int j = this.mxT.arrayOffset();
+          int k = this.mxT.limit();
+          paramInt2 = this.mxQ.read(this.mxT.array(), j + k, paramInt2 - i);
           if (paramInt2 == -1)
           {
-            this.lrl = true;
+            this.mxR = true;
           }
           else if (paramInt2 != 0)
           {
-            this.lrn.limit(paramInt2 + this.lrn.limit());
-            localCoderResult = this.lrm.decode(this.lrn, localCharBuffer, false);
+            this.mxT.limit(paramInt2 + this.mxT.limit());
+            localCoderResult = this.mxS.decode(this.mxT, localCharBuffer, false);
             paramArrayOfChar = localCoderResult;
             if (localCoderResult.isUnderflow())
             {
-              if (this.lrn.limit() != this.lrn.capacity()) {
+              if (this.mxT.limit() != this.mxT.capacity()) {
                 break label509;
               }
-              this.lrn.compact();
-              this.lrn.limit(this.lrn.position());
-              this.lrn.position(0);
+              this.mxT.compact();
+              this.mxT.limit(this.mxT.position());
+              this.mxT.position(0);
               break label509;
               label490:
               paramInt2 = localCharBuffer.position();
@@ -199,7 +199,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.b.f
  * JD-Core Version:    0.7.0.1
  */

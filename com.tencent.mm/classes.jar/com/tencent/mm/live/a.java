@@ -21,11 +21,16 @@ public abstract interface a
   
   public abstract com.tencent.mm.live.api.a liveEntranceJumper();
   
-  public abstract void refreshLiveStatus(long paramLong, String paramString, a.a parama);
+  public abstract void refreshLiveStatus(long paramLong, String paramString, a parama);
+  
+  public static abstract interface a
+  {
+    public abstract void c(long paramLong, int paramInt);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.a
  * JD-Core Version:    0.7.0.1
  */

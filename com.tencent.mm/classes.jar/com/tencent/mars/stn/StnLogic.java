@@ -152,12 +152,12 @@ public class StnLogic
     callBack.onPush(paramString, paramInt1, paramInt2, paramArrayOfByte);
   }
   
-  private static int onTaskEnd(int paramInt1, Object paramObject, int paramInt2, int paramInt3)
+  private static int onTaskEnd(int paramInt1, Object paramObject, int paramInt2, int paramInt3, CgiProfile paramCgiProfile)
   {
     if (callBack == null) {
       return 0;
     }
-    return callBack.onTaskEnd(paramInt1, paramObject, paramInt2, paramInt3);
+    return callBack.onTaskEnd(paramInt1, paramObject, paramInt2, paramInt3, paramCgiProfile);
   }
   
   public static native void redoTask();
@@ -198,6 +198,8 @@ public class StnLogic
   
   public static native void reset();
   
+  public static native void resetAndInitEncoderVersion(int paramInt);
+  
   public static native void setBackupIPs(String paramString, String[] paramArrayOfString);
   
   public static void setCallBack(ICallBack paramICallBack)
@@ -235,6 +237,18 @@ public class StnLogic
   
   private static void trafficData(int paramInt1, int paramInt2) {}
   
+  public static class CgiProfile
+  {
+    public long connectSuccessfulTime = 0L;
+    public long handshakeSuccessfulTime = 0L;
+    public long readPacketFinishedTime = 0L;
+    public long startConnectTime = 0L;
+    public long startHandshakeTime = 0L;
+    public long startReadPacketTime = 0L;
+    public long startSendPacketTime = 0L;
+    public long taskStartTime = 0L;
+  }
+  
   public static abstract interface ICallBack
   {
     public static final int BaseNetDetectEnd = 2;
@@ -262,7 +276,7 @@ public class StnLogic
     
     public abstract void onPush(String paramString, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
     
-    public abstract int onTaskEnd(int paramInt1, Object paramObject, int paramInt2, int paramInt3);
+    public abstract int onTaskEnd(int paramInt1, Object paramObject, int paramInt2, int paramInt3, StnLogic.CgiProfile paramCgiProfile);
     
     public abstract void reportConnectInfo(int paramInt1, int paramInt2);
     

@@ -8,13 +8,13 @@ public final class g
   extends AtomicLong
   implements ThreadFactory
 {
-  public static final ThreadFactory OxC;
-  final String iqJ;
+  public static final ThreadFactory Unq;
+  final String prefix;
   
   static
   {
     AppMethodBeat.i(90207);
-    OxC = new ThreadFactory()
+    Unq = new ThreadFactory()
     {
       public final Thread newThread(Runnable paramAnonymousRunnable)
       {
@@ -29,13 +29,13 @@ public final class g
   
   public g(String paramString)
   {
-    this.iqJ = paramString;
+    this.prefix = paramString;
   }
   
   public final Thread newThread(Runnable paramRunnable)
   {
     AppMethodBeat.i(90206);
-    paramRunnable = new Thread(paramRunnable, this.iqJ + incrementAndGet());
+    paramRunnable = new Thread(paramRunnable, this.prefix + incrementAndGet());
     paramRunnable.setDaemon(true);
     AppMethodBeat.o(90206);
     return paramRunnable;
@@ -43,7 +43,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     rx.internal.util.g
  * JD-Core Version:    0.7.0.1
  */

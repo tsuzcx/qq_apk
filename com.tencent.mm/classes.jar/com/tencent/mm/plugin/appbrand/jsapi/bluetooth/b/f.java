@@ -3,56 +3,57 @@ package com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b;
 import android.bluetooth.BluetoothGattServer;
 import android.bluetooth.BluetoothGattService;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
 import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.UUID;
+import kotlin.g.b.p;
+import kotlin.l;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiRemoveBlePeripheralService;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiRemoveBlePeripheralService;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class f
-  extends a<com.tencent.mm.plugin.appbrand.jsapi.c>
+  extends d<com.tencent.mm.plugin.appbrand.jsapi.f>
 {
   private static final int CTRL_INDEX = 724;
   private static final String NAME = "removeBLEPeripheralService";
-  public static final a kGQ;
+  public static final a lLr;
   
   static
   {
     AppMethodBeat.i(144757);
-    kGQ = new a((byte)0);
+    lLr = new a((byte)0);
     NAME = "removeBLEPeripheralService";
     CTRL_INDEX = 724;
     AppMethodBeat.o(144757);
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(144756);
-    p.h(paramc, "env");
-    if (!com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.c.bki())
+    p.h(paramf, "env");
+    if (!c.bFE())
     {
-      b.a(this, paramInt, paramc, 10001, "fail:not available");
-      ae.i("MicroMsg.BLE.JsApiRemoveBlePeripheralService", "invoke: Ble is not available");
+      b.a(this, paramInt, paramf, 10001, "fail:not available");
+      Log.i("MicroMsg.BLE.JsApiRemoveBlePeripheralService", "invoke: Ble is not available");
       AppMethodBeat.o(144756);
       return;
     }
     if ((paramJSONObject == null) || (!paramJSONObject.has("serverId")) || (!paramJSONObject.has("serviceId")))
     {
-      ae.e("MicroMsg.BLE.JsApiRemoveBlePeripheralService", "invoke data is invalid");
-      b.a(this, paramInt, paramc, 10013, "fail:invalid data");
+      Log.e("MicroMsg.BLE.JsApiRemoveBlePeripheralService", "invoke data is invalid");
+      b.a(this, paramInt, paramf, 10013, "fail:invalid data");
       AppMethodBeat.o(144756);
       return;
     }
     int i = paramJSONObject.optInt("serverId");
-    Object localObject = o.kHu;
-    localObject = o.sU(i);
+    Object localObject = o.lLV;
+    localObject = o.wQ(i);
     if (localObject == null)
     {
-      ae.i("MicroMsg.BLE.JsApiRemoveBlePeripheralService", "invoke: retrieve a null server");
-      b.a(this, paramInt, paramc, 10020, "fail: no server");
+      Log.i("MicroMsg.BLE.JsApiRemoveBlePeripheralService", "invoke: retrieve a null server");
+      b.a(this, paramInt, paramf, 10020, "fail: no server");
       AppMethodBeat.o(144756);
       return;
     }
@@ -61,36 +62,36 @@ public final class f
     {
       paramJSONObject = UUID.fromString(paramJSONObject.optString("serviceId"));
       p.g(paramJSONObject, "UUID.fromString(data.optString(PARAMS_SERVICE_ID))");
-      localBluetoothGattService = ((n)localObject).bjS().getService(paramJSONObject);
+      localBluetoothGattService = ((n)localObject).bFi().getService(paramJSONObject);
       if (localBluetoothGattService == null)
       {
-        b.a(this, paramInt, paramc, 10004, "fail:no service");
+        b.a(this, paramInt, paramf, 10004, "fail:no service");
         AppMethodBeat.o(144756);
         return;
       }
     }
     catch (Exception paramJSONObject)
     {
-      b.a(this, paramInt, paramc, 10013, "fail:invalid data");
+      b.a(this, paramInt, paramf, 10013, "fail:invalid data");
       AppMethodBeat.o(144756);
       return;
     }
-    if (((n)localObject).bjS().removeService(localBluetoothGattService))
+    if (((n)localObject).bFi().removeService(localBluetoothGattService))
     {
-      b.a(this, paramInt, paramc);
+      b.a(this, paramInt, paramf);
       AppMethodBeat.o(144756);
       return;
     }
-    b.a(this, paramInt, paramc, 10008, "fail: remove #" + paramJSONObject + " service fail");
+    b.a(this, paramInt, paramf, 10008, "fail: remove #" + paramJSONObject + " service fail");
     AppMethodBeat.o(144756);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiRemoveBlePeripheralService$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-connectivity-ext_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/bluetooth/peripheral/JsApiRemoveBlePeripheralService$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "luggage-commons-jsapi-connectivity-ext_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.b.f
  * JD-Core Version:    0.7.0.1
  */

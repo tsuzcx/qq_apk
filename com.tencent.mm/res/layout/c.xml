@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/axc" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/duw" android:background="@drawable/ti" android:layout_width="wrap_content" android:layout_height="@dimen/cb" android:layout_marginTop="@dimen/ci" android:layout_marginBottom="@dimen/c0" android:paddingStart="@dimen/c0" android:paddingEnd="@dimen/c0">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="start|center" android:id="@id/duj" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_error" app:iconColor="@color/Red" />
-        <TextView android:textSize="@dimen/jo" android:textColor="@color/a_r" android:layout_gravity="start|center" android:id="@id/dne" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c_n" android:maxLines="1" android:layout_marginStart="@dimen/c0" />
-        <ImageView android:background="@drawable/b6l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/c0" />
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/a8j" />
+        <View android:id="@id/i3u" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginStart="52.0dip" />
     </LinearLayout>
 </FrameLayout>

@@ -1,104 +1,92 @@
 package com.tencent.mm.pluginsdk.ui.span;
 
-import android.text.style.CharacterStyle;
-import android.view.MotionEvent;
+import android.text.Layout;
+import android.text.Spanned;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.ap;
-import com.tencent.neattextview.textview.view.NeatTextView;
+import com.tencent.mm.kiss.widget.textview.StaticTextView;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public class g
-  extends com.tencent.neattextview.textview.view.b
+public final class g
 {
-  private n FzE;
-  
-  public g(NeatTextView paramNeatTextView, n paramn)
+  public static boolean a(View paramView, Spanned paramSpanned)
   {
-    super(paramNeatTextView.getContext(), paramNeatTextView);
-    AppMethodBeat.i(152268);
-    this.FzE = paramn;
-    AppMethodBeat.o(152268);
-  }
-  
-  public final void cancel(int paramInt)
-  {
-    AppMethodBeat.i(152271);
-    if (this.MbT != null)
+    AppMethodBeat.i(152267);
+    if ((paramView != null) && (paramSpanned != null) && (((paramView instanceof TextView)) || ((paramView instanceof StaticTextView))))
     {
-      CharacterStyle localCharacterStyle = this.MbT.Mau;
-      if ((localCharacterStyle instanceof o)) {
-        ((o)localCharacterStyle).setIsPressed(false);
-      }
-    }
-    super.cancel(paramInt);
-    AppMethodBeat.o(152271);
-  }
-  
-  public boolean onDown(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(152270);
-    boolean bool = super.onDown(paramMotionEvent);
-    if (this.MbT != null)
-    {
-      paramMotionEvent = this.MbT.Mau;
-      if ((paramMotionEvent instanceof o)) {
-        ((o)paramMotionEvent).setIsPressed(true);
-      }
-      AppMethodBeat.o(152270);
-      return true;
-    }
-    AppMethodBeat.o(152270);
-    return bool;
-  }
-  
-  public void onLongPress(MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(152272);
-    if ((this.MbT != null) && (this.mView != null)) {
-      this.mView.performLongClick();
-    }
-    super.onLongPress(paramMotionEvent);
-    AppMethodBeat.o(152272);
-  }
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    AppMethodBeat.i(152269);
-    ap.d("MMNeatTouchListener", "onTouch", new Object[0]);
-    paramView.setTag(2131306044, new int[] { (int)paramMotionEvent.getRawX(), (int)paramMotionEvent.getRawY() });
-    if ((paramView instanceof NeatTextView))
-    {
-      NeatTextView localNeatTextView = (NeatTextView)paramView;
-      if ((!localNeatTextView.fPK()) || (localNeatTextView.ozd))
+      int j = gp(paramView);
+      if ((j == 1) && (paramSpanned.length() > 500))
       {
-        if ((paramMotionEvent.getAction() == 3) || (paramMotionEvent.getAction() == 1)) {
-          localNeatTextView.getWrappedTextView().setPressed(false);
-        }
-        for (;;)
+        Log.e("MicroMsg.InvalidTextCheck", "error black dot");
+        AppMethodBeat.o(152267);
+        return true;
+      }
+      int i = 1;
+      while (i < j)
+      {
+        if (aD(paramView, i) - aD(paramView, i - 1) > 500)
         {
-          localNeatTextView.getWrappedTextView().setTag(paramView.getTag());
-          bool = this.FzE.onTouch(localNeatTextView.getWrappedTextView(), paramMotionEvent);
-          AppMethodBeat.o(152269);
-          return bool;
-          if (paramMotionEvent.getAction() == 0) {
-            localNeatTextView.getWrappedTextView().setPressed(true);
-          }
+          Log.e("MicroMsg.InvalidTextCheck", "error black dot");
+          AppMethodBeat.o(152267);
+          return true;
         }
+        i += 1;
       }
     }
-    else
+    AppMethodBeat.o(152267);
+    return false;
+  }
+  
+  private static int aD(View paramView, int paramInt)
+  {
+    AppMethodBeat.i(152266);
+    if ((paramView instanceof TextView))
     {
-      this.FzE.onTouch(paramView, paramMotionEvent);
+      if (((TextView)paramView).getLayout() == null)
+      {
+        AppMethodBeat.o(152266);
+        return 0;
+      }
+      paramInt = ((TextView)paramView).getLayout().getLineEnd(paramInt);
+      AppMethodBeat.o(152266);
+      return paramInt;
     }
-    boolean bool = super.onTouch(paramView, paramMotionEvent);
-    AppMethodBeat.o(152269);
-    return bool;
+    if ((paramView instanceof StaticTextView))
+    {
+      if (((StaticTextView)paramView).getTvLayout() == null)
+      {
+        AppMethodBeat.o(152266);
+        return 0;
+      }
+      paramInt = ((StaticTextView)paramView).getTvLayout().getLineEnd(paramInt);
+      AppMethodBeat.o(152266);
+      return paramInt;
+    }
+    AppMethodBeat.o(152266);
+    return 0;
+  }
+  
+  private static int gp(View paramView)
+  {
+    AppMethodBeat.i(152265);
+    int i = 0;
+    if ((paramView instanceof TextView)) {
+      i = ((TextView)paramView).getLineCount();
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(152265);
+      return i;
+      if ((paramView instanceof StaticTextView)) {
+        i = ((StaticTextView)paramView).getLineCount();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.span.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j5"
+<LinearLayout android:orientation="vertical" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:padding="@dimen/e4" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/ix">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <TextView android:id="@id/bw9" android:text="{text}" android:maxLines="3" style="@style/j2" />
-            </LinearLayout>
-            <include layout="@layout/a2x" />
-            <include layout="@layout/a2w" />
-        </LinearLayout>
-        <include layout="@layout/a2u" />
-    </LinearLayout>
-</FrameLayout>
+    <com.tencent.mm.ui.base.MMPullDownView android:id="@id/ep2" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ListView android:gravity="center" android:id="@android:id/list" android:background="@color/ac_" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" android:choiceMode="none" />
+    </com.tencent.mm.ui.base.MMPullDownView>
+    <include android:visibility="gone" layout="@layout/a2o" />
+</LinearLayout>

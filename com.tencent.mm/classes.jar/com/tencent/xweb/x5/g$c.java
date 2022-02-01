@@ -7,23 +7,23 @@ import com.tencent.smtt.export.external.interfaces.IX5WebChromeClient.CustomView
 public final class g$c
   implements WebChromeClient.CustomViewCallback
 {
-  IX5WebChromeClient.CustomViewCallback MRX;
+  IX5WebChromeClient.CustomViewCallback SFd;
   
   g$c(IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    this.MRX = paramCustomViewCallback;
+    this.SFd = paramCustomViewCallback;
   }
   
   public final void onCustomViewHidden()
   {
     AppMethodBeat.i(153849);
-    this.MRX.onCustomViewHidden();
+    this.SFd.onCustomViewHidden();
     AppMethodBeat.o(153849);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.x5.g.c
  * JD-Core Version:    0.7.0.1
  */

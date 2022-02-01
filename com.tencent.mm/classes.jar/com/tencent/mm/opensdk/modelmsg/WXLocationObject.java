@@ -17,10 +17,10 @@ public class WXLocationObject
   
   public WXLocationObject(double paramDouble1, double paramDouble2)
   {
-    AppMethodBeat.i(194042);
+    AppMethodBeat.i(190354);
     this.lat = paramDouble1;
     this.lng = paramDouble2;
-    AppMethodBeat.o(194042);
+    AppMethodBeat.o(190354);
   }
   
   public boolean checkArgs()
@@ -51,7 +51,7 @@ public class WXLocationObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXLocationObject
  * JD-Core Version:    0.7.0.1
  */

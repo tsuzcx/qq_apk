@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.wear.model.e;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.w;
-import com.tencent.mm.protocal.protobuf.edz;
-import com.tencent.mm.protocal.protobuf.eef;
-import com.tencent.mm.protocal.protobuf.eeg;
-import com.tencent.mm.protocal.protobuf.efc;
-import com.tencent.mm.protocal.protobuf.efd;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.protocal.protobuf.eyh;
+import com.tencent.mm.protocal.protobuf.eyn;
+import com.tencent.mm.protocal.protobuf.eyo;
+import com.tencent.mm.protocal.protobuf.ezk;
+import com.tencent.mm.protocal.protobuf.ezl;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bw;
 import com.tencent.mm.ui.contact.u;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import java.util.List;
 public final class c
   extends a
 {
-  protected final boolean WA(int paramInt)
+  protected final boolean afg(int paramInt)
   {
     AppMethodBeat.i(30074);
     if (paramInt == 11008)
@@ -36,12 +36,12 @@ public final class c
       AppMethodBeat.o(30074);
       return true;
     }
-    boolean bool = super.WA(paramInt);
+    boolean bool = super.afg(paramInt);
     AppMethodBeat.o(30074);
     return bool;
   }
   
-  protected final boolean WB(int paramInt)
+  protected final boolean afh(int paramInt)
   {
     AppMethodBeat.i(30073);
     if (paramInt == 11008)
@@ -54,12 +54,12 @@ public final class c
       AppMethodBeat.o(30073);
       return true;
     }
-    boolean bool = super.WB(paramInt);
+    boolean bool = super.afh(paramInt);
     AppMethodBeat.o(30073);
     return bool;
   }
   
-  public final List<Integer> eOv()
+  public final List<Integer> fWe()
   {
     AppMethodBeat.i(30071);
     ArrayList localArrayList = new ArrayList();
@@ -76,45 +76,45 @@ public final class c
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    edz localedz;
+    eyh localeyh;
     if (paramInt == 11008)
     {
-      com.tencent.mm.plugin.wear.model.c.a.Wz(6);
-      localObject1 = new efc();
+      com.tencent.mm.plugin.wear.model.c.a.aff(6);
+      localObject1 = new ezk();
       for (;;)
       {
         try
         {
-          ((efc)localObject1).parseFrom(paramArrayOfByte);
+          ((ezk)localObject1).parseFrom(paramArrayOfByte);
           paramArrayOfByte = new LinkedList();
-          paramArrayOfByte.addAll(u.fMH());
-          paramArrayOfByte.addAll(u.fMI());
-          bc.aCg();
-          paramArrayOfByte = com.tencent.mm.model.c.azL().f(paramArrayOfByte, ((efc)localObject1).GeT, 50);
-          if (((efc)localObject1).GeT == 0)
+          paramArrayOfByte.addAll(u.gVb());
+          paramArrayOfByte.addAll(u.gVc());
+          bg.aVF();
+          paramArrayOfByte = com.tencent.mm.model.c.aST().f(paramArrayOfByte, ((ezk)localObject1).KZk, 50);
+          if (((ezk)localObject1).KZk == 0)
           {
             paramInt = i;
-            localObject2 = new efd();
-            ((efd)localObject2).GeT = ((efc)localObject1).GeT;
+            localObject2 = new ezl();
+            ((ezl)localObject2).KZk = ((ezk)localObject1).KZk;
             if ((paramArrayOfByte != null) && (paramArrayOfByte.moveToNext()))
             {
               localObject3 = paramArrayOfByte.getString(paramArrayOfByte.getColumnIndex("username"));
-              bc.aCg();
-              localObject3 = com.tencent.mm.model.c.azF().BH((String)localObject3);
-              ((efd)localObject2).GeT += 1;
-              if ((((an)localObject3).fug()) || (((an)localObject3).adv())) {
+              bg.aVF();
+              localObject3 = com.tencent.mm.model.c.aSN().Kn((String)localObject3);
+              ((ezl)localObject2).KZk += 1;
+              if ((((as)localObject3).gBM()) || (((as)localObject3).ary())) {
                 continue;
               }
-              localedz = new edz();
-              localedz.nJO = w.b((an)localObject3);
-              localedz.nIJ = ((aw)localObject3).field_username;
-              ((efd)localObject2).GQv.add(localedz);
-              if (((efd)localObject2).GQv.size() < paramInt) {
+              localeyh = new eyh();
+              localeyh.oUJ = aa.b((as)localObject3);
+              localeyh.UserName = ((ax)localObject3).field_username;
+              ((ezl)localObject2).LUC.add(localeyh);
+              if (((ezl)localObject2).LUC.size() < paramInt) {
                 continue;
               }
-              ((efd)localObject2).GUq = paramArrayOfByte.moveToNext();
+              ((ezl)localObject2).LYI = paramArrayOfByte.moveToNext();
             }
-            ae.d("MicroMsg.Wear.HttpContactServer", "request offset: %d | return offset: %d | return size: %d", new Object[] { Integer.valueOf(((efc)localObject1).GeT), Integer.valueOf(((efd)localObject2).GeT), Integer.valueOf(((efd)localObject2).GQv.size()) });
+            Log.d("MicroMsg.Wear.HttpContactServer", "request offset: %d | return offset: %d | return size: %d", new Object[] { Integer.valueOf(((ezk)localObject1).KZk), Integer.valueOf(((ezl)localObject2).KZk), Integer.valueOf(((ezl)localObject2).LUC.size()) });
             if (paramArrayOfByte != null) {
               paramArrayOfByte.close();
             }
@@ -125,7 +125,7 @@ public final class c
         {
           try
           {
-            paramArrayOfByte = ((efd)localObject2).toByteArray();
+            paramArrayOfByte = ((ezl)localObject2).toByteArray();
             AppMethodBeat.o(30072);
             return paramArrayOfByte;
           }
@@ -135,7 +135,7 @@ public final class c
             return null;
           }
           paramArrayOfByte = paramArrayOfByte;
-          ae.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
           AppMethodBeat.o(30072);
           return null;
         }
@@ -143,17 +143,17 @@ public final class c
     }
     if (paramInt == 11009)
     {
-      com.tencent.mm.plugin.wear.model.c.a.Wz(7);
-      localObject1 = new eef();
+      com.tencent.mm.plugin.wear.model.c.a.aff(7);
+      localObject1 = new eyn();
       for (;;)
       {
         try
         {
-          ((eef)localObject1).parseFrom(paramArrayOfByte);
-          paramArrayOfByte = new eeg();
-          bc.aCg();
-          localObject2 = com.tencent.mm.model.c.azF().hO(null);
-          paramInt = ((eef)localObject1).GeT;
+          ((eyn)localObject1).parseFrom(paramArrayOfByte);
+          paramArrayOfByte = new eyo();
+          bg.aVF();
+          localObject2 = com.tencent.mm.model.c.aSN().iS(null);
+          paramInt = ((eyn)localObject1).KZk;
           if ((localObject2 == null) || (!((Cursor)localObject2).moveToNext())) {
             break;
           }
@@ -166,24 +166,24 @@ public final class c
         }
         catch (IOException paramArrayOfByte)
         {
-          ae.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
           AppMethodBeat.o(30072);
           return null;
         }
-        bc.aCg();
-        localObject3 = com.tencent.mm.model.c.azF().BH((String)localObject3);
-        localedz = new edz();
-        localedz.nJO = w.b((an)localObject3);
-        localedz.nIJ = ((aw)localObject3).field_username;
-        paramArrayOfByte.GQv.add(localedz);
-        if (paramArrayOfByte.GQv.size() >= 5) {
-          paramArrayOfByte.GUq = ((Cursor)localObject2).moveToNext();
+        bg.aVF();
+        localObject3 = com.tencent.mm.model.c.aSN().Kn((String)localObject3);
+        localeyh = new eyh();
+        localeyh.oUJ = aa.b((as)localObject3);
+        localeyh.UserName = ((ax)localObject3).field_username;
+        paramArrayOfByte.LUC.add(localeyh);
+        if (paramArrayOfByte.LUC.size() >= 5) {
+          paramArrayOfByte.LYI = ((Cursor)localObject2).moveToNext();
         }
       }
       if (localObject2 != null) {
         ((Cursor)localObject2).close();
       }
-      paramArrayOfByte.GeT = (((eef)localObject1).GeT + paramArrayOfByte.GQv.size());
+      paramArrayOfByte.KZk = (((eyn)localObject1).KZk + paramArrayOfByte.LUC.size());
       try
       {
         paramArrayOfByte = paramArrayOfByte.toByteArray();
@@ -192,7 +192,7 @@ public final class c
       }
       catch (IOException paramArrayOfByte)
       {
-        ae.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Wear.HttpContactServer", paramArrayOfByte, "", new Object[0]);
         AppMethodBeat.o(30072);
         return null;
       }
@@ -203,7 +203,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.e.c
  * JD-Core Version:    0.7.0.1
  */

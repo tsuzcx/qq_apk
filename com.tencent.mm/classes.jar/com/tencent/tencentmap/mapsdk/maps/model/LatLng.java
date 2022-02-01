@@ -5,9 +5,10 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.tencentmap.mapsdk.maps.interfaces.Coordinate;
 
 public class LatLng
-  implements Parcelable
+  implements Parcelable, Coordinate
 {
   public static final Parcelable.Creator<LatLng> CREATOR;
   public double altitude;
@@ -183,6 +184,21 @@ public class LatLng
     AppMethodBeat.o(173151);
   }
   
+  public void setX(double paramDouble)
+  {
+    this.latitude = paramDouble;
+  }
+  
+  public void setY(double paramDouble)
+  {
+    this.longitude = paramDouble;
+  }
+  
+  public void setZ(double paramDouble)
+  {
+    this.altitude = paramDouble;
+  }
+  
   public String toString()
   {
     AppMethodBeat.i(173155);
@@ -207,10 +223,25 @@ public class LatLng
     paramParcel.writeDouble(this.altitude);
     AppMethodBeat.o(173156);
   }
+  
+  public double x()
+  {
+    return this.latitude;
+  }
+  
+  public double y()
+  {
+    return this.longitude;
+  }
+  
+  public double z()
+  {
+    return this.altitude;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.LatLng
  * JD-Core Version:    0.7.0.1
  */

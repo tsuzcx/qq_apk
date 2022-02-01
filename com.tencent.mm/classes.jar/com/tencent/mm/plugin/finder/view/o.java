@@ -1,21 +1,33 @@
 package com.tencent.mm.plugin.finder.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.wt;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.aps;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"publish", "", "Lcom/tencent/mm/autogen/events/TestPreloadPreviewNotifyEvent;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"safeParseFrom", "Lcom/tencent/mm/protocal/protobuf/FinderContactMsgInfo;", "byteArray", "", "plugin-finder_release"})
 public final class o
 {
-  public static final void a(wt paramwt)
+  public static final aps a(aps paramaps, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(205949);
-    p.h(paramwt, "$this$publish");
-    a.IvT.l((b)paramwt);
-    AppMethodBeat.o(205949);
+    AppMethodBeat.i(255044);
+    p.h(paramaps, "$this$safeParseFrom");
+    if (paramArrayOfByte == null)
+    {
+      AppMethodBeat.o(255044);
+      return paramaps;
+    }
+    try
+    {
+      paramaps.parseFrom(paramArrayOfByte);
+      label28:
+      AppMethodBeat.o(255044);
+      return paramaps;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      break label28;
+    }
   }
 }
 

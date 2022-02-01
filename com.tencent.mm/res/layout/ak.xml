@@ -1,5 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.ContentFrameLayout android:id="@id/bo" android:layout_width="fill_parent" android:layout_height="fill_parent" android:foreground="?android:windowContentOverlay" android:foregroundGravity="fill_horizontal|center|top" />
-</merge>
+<android.support.v7.widget.ActionMenuView android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" app:divider="?w" app:dividerPadding="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" />

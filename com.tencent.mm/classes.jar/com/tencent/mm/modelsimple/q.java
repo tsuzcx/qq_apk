@@ -1,41 +1,41 @@
 package com.tencent.mm.modelsimple;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.protocal.protobuf.bij;
-import com.tencent.mm.protocal.protobuf.bik;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.buk;
+import com.tencent.mm.protocal.protobuf.bul;
 
 public final class q
-  extends n
-  implements k
+  extends com.tencent.mm.ak.q
+  implements m
 {
-  private f callback;
-  public final b hZD;
+  private i callback;
+  public final d iUB;
   
   public q()
   {
     AppMethodBeat.i(20635);
-    b.a locala = new b.a();
-    locala.hQF = new bij();
-    locala.hQG = new bik();
+    d.a locala = new d.a();
+    locala.iLN = new buk();
+    locala.iLO = new bul();
     locala.uri = "/cgi-bin/micromsg-bin/getremind";
     locala.funcId = 866;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.hZD = locala.aDS();
+    this.iUB = locala.aXF();
     AppMethodBeat.o(20635);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(20636);
-    this.callback = paramf;
-    int i = dispatch(parame, this.hZD, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
     AppMethodBeat.o(20636);
     return i;
   }
@@ -45,7 +45,7 @@ public final class q
     return 866;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20637);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

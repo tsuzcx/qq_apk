@@ -12,28 +12,28 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFrameView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mBoundaryColor", "mMaskColor", "mPaint", "Landroid/graphics/Paint;", "mPath", "Landroid/graphics/Path;", "mPosition", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFramePosition;", "init", "", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setMaskColor", "maskColor", "setPosition", "position", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFrameView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "mBoundaryColor", "mMaskColor", "mPaint", "Landroid/graphics/Paint;", "mPath", "Landroid/graphics/Path;", "mPosition", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorFramePosition;", "init", "", "onDraw", "canvas", "Landroid/graphics/Canvas;", "setMaskColor", "maskColor", "setPosition", "position", "plugin-recordvideo_release"})
 public final class EditorFrameView
   extends View
 {
+  private int CcE;
+  private int CcF;
+  private c CcG;
   private Paint mPaint;
-  private Path xN;
-  private int ybC;
-  private int ybD;
-  private c ybE;
+  private Path xT;
   
   public EditorFrameView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(75980);
-    this.ybC = -1;
-    this.ybD = -1;
-    this.ybE = c.ybx;
+    this.CcE = -1;
+    this.CcF = -1;
+    this.CcG = c.Ccz;
     this.mPaint = new Paint();
-    this.xN = new Path();
+    this.xT = new Path();
     init();
     AppMethodBeat.o(75980);
   }
@@ -42,11 +42,11 @@ public final class EditorFrameView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(75981);
-    this.ybC = -1;
-    this.ybD = -1;
-    this.ybE = c.ybx;
+    this.CcE = -1;
+    this.CcF = -1;
+    this.CcG = c.Ccz;
     this.mPaint = new Paint();
-    this.xN = new Path();
+    this.xT = new Path();
     init();
     AppMethodBeat.o(75981);
   }
@@ -55,11 +55,11 @@ public final class EditorFrameView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(75982);
-    this.ybC = -1;
-    this.ybD = -1;
-    this.ybE = c.ybx;
+    this.CcE = -1;
+    this.CcF = -1;
+    this.CcG = c.Ccz;
     this.mPaint = new Paint();
-    this.xN = new Path();
+    this.xT = new Path();
     init();
     AppMethodBeat.o(75982);
   }
@@ -69,12 +69,12 @@ public final class EditorFrameView
     AppMethodBeat.i(75977);
     Context localContext = getContext();
     p.g(localContext, "context");
-    this.ybC = localContext.getResources().getColor(2131100969);
+    this.CcE = localContext.getResources().getColor(2131101197);
     int i = a.fromDPToPix(getContext(), 1);
     this.mPaint.setStyle(Paint.Style.STROKE);
     this.mPaint.setAntiAlias(true);
     this.mPaint.setStrokeWidth(2.0F * i);
-    this.mPaint.setColor(this.ybD);
+    this.mPaint.setColor(this.CcF);
     this.mPaint.setPathEffect((PathEffect)new DashPathEffect(new float[] { i * 4.0F, i * 4.0F }, 0.0F));
     AppMethodBeat.o(75977);
   }
@@ -87,10 +87,10 @@ public final class EditorFrameView
       paramCanvas.save();
     }
     if (paramCanvas != null) {
-      paramCanvas.drawColor(this.ybC);
+      paramCanvas.drawColor(this.CcE);
     }
-    c localc = this.ybE;
-    switch (d.cqt[localc.ordinal()])
+    c localc = this.CcG;
+    switch (d.$EnumSwitchMapping$0[localc.ordinal()])
     {
     }
     while (paramCanvas != null)
@@ -98,28 +98,28 @@ public final class EditorFrameView
       paramCanvas.restore();
       AppMethodBeat.o(75979);
       return;
-      this.xN.moveTo(getWidth(), 0.0F);
-      this.xN.lineTo(getWidth(), getHeight());
+      this.xT.moveTo(getWidth(), 0.0F);
+      this.xT.lineTo(getWidth(), getHeight());
       if (paramCanvas != null)
       {
-        paramCanvas.drawPath(this.xN, this.mPaint);
+        paramCanvas.drawPath(this.xT, this.mPaint);
         continue;
-        this.xN.moveTo(0.0F, getHeight());
-        this.xN.lineTo(getWidth(), getHeight());
+        this.xT.moveTo(0.0F, getHeight());
+        this.xT.lineTo(getWidth(), getHeight());
         if (paramCanvas != null)
         {
-          paramCanvas.drawPath(this.xN, this.mPaint);
+          paramCanvas.drawPath(this.xT, this.mPaint);
           continue;
-          this.xN.moveTo(0.0F, 0.0F);
-          this.xN.lineTo(0.0F, getHeight());
+          this.xT.moveTo(0.0F, 0.0F);
+          this.xT.lineTo(0.0F, getHeight());
           if (paramCanvas != null)
           {
-            paramCanvas.drawPath(this.xN, this.mPaint);
+            paramCanvas.drawPath(this.xT, this.mPaint);
             continue;
-            this.xN.moveTo(0.0F, 0.0F);
-            this.xN.lineTo(getWidth(), 0.0F);
+            this.xT.moveTo(0.0F, 0.0F);
+            this.xT.lineTo(getWidth(), 0.0F);
             if (paramCanvas != null) {
-              paramCanvas.drawPath(this.xN, this.mPaint);
+              paramCanvas.drawPath(this.xT, this.mPaint);
             }
           }
         }
@@ -130,14 +130,14 @@ public final class EditorFrameView
   
   public final void setMaskColor(int paramInt)
   {
-    this.ybC = paramInt;
+    this.CcE = paramInt;
   }
   
   public final void setPosition(c paramc)
   {
     AppMethodBeat.i(75978);
     p.h(paramc, "position");
-    this.ybE = paramc;
+    this.CcG = paramc;
     AppMethodBeat.o(75978);
   }
 }

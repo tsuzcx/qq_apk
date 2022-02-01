@@ -1,64 +1,76 @@
 package com.tencent.mm.plugin.fts.a.d.a;
 
 import android.content.Context;
+import android.view.View;
+import android.view.ViewGroup;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.a.h;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.fts.a.a.m;
+import com.tencent.mm.plugin.fts.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class a
 {
   public String info;
-  public int lox;
-  public final int oOD;
-  public int pSr;
+  public int mve;
   public int pageType;
   public final int position;
-  public h tFe;
-  public boolean tGK;
-  public boolean tGL = true;
-  public int tGM;
-  public int tGN;
-  public String tGO;
-  public long tGP;
-  public boolean tGQ;
-  public int tGR;
-  public int tGS;
-  public long tGT;
-  public boolean tGU;
+  public final int qcr;
+  public int rjr;
+  public h wWd;
+  public boolean wXJ;
+  public boolean wXK = true;
+  public int wXL;
+  public int wXM;
+  public String wXN;
+  public long wXO;
+  public boolean wXP;
+  public int wXQ;
+  public int wXR;
+  public long wXS;
+  public boolean wXT;
   
   public a(int paramInt1, int paramInt2)
   {
-    this.oOD = paramInt1;
+    this.qcr = paramInt1;
     this.position = paramInt2;
-    ae.v("MicroMsg.FTS.FTSDataItem", "create data item | viewType=%d | position=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.v("MicroMsg.FTS.FTSDataItem", "create data item | viewType=%d | position=%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
   }
   
-  public void a(Context paramContext, a.a parama, Object... paramVarArgs) {}
+  public void a(Context paramContext, a parama, Object... paramVarArgs) {}
   
-  public abstract a.b agQ();
+  public abstract b axc();
   
-  public String bhD()
+  public String bCR()
   {
     return "";
   }
   
-  public int bhE()
+  public int bCS()
   {
     return 0;
   }
   
-  public int cVB()
+  public int dOK()
   {
     return 0;
   }
   
-  public boolean cVC()
+  public boolean dOL()
   {
     return false;
   }
   
-  public int cVD()
+  public int dOM()
   {
     return 0;
+  }
+  
+  public final void gE(int paramInt1, int paramInt2)
+  {
+    this.wXQ = paramInt1;
+    this.wXR = paramInt2;
+    this.wXT = true;
   }
   
   public String getAppId()
@@ -66,16 +78,30 @@ public abstract class a
     return "";
   }
   
-  public final void gf(int paramInt1, int paramInt2)
+  public abstract class a
   {
-    this.tGR = paramInt1;
-    this.tGS = paramInt2;
-    this.tGU = true;
+    public a() {}
+  }
+  
+  public abstract class b
+  {
+    public b() {}
+    
+    protected static void a(String paramString, m paramm)
+    {
+      ((n)g.ah(n.class)).updateTopHitsRank(paramString, paramm, 0);
+    }
+    
+    public abstract View a(Context paramContext, ViewGroup paramViewGroup);
+    
+    public abstract void a(Context paramContext, a.a parama, a parama1, Object... paramVarArgs);
+    
+    public abstract boolean a(Context paramContext, View paramView, a paramVarArgs);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.d.a.a
  * JD-Core Version:    0.7.0.1
  */

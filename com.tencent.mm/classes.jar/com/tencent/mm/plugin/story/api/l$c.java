@@ -10,21 +10,21 @@ public abstract interface l$c
   
   public abstract void b(l.b paramb);
   
-  public abstract List<String> ekI();
+  public abstract List<String> fnj();
   
-  public abstract List<String> ekJ();
+  public abstract List<String> fnk();
   
-  public abstract LinkedHashMap<String, ArrayList<Long>> ekK();
+  public abstract LinkedHashMap<String, ArrayList<Long>> fnl();
   
-  public abstract int ekL();
+  public abstract int fnm();
   
-  public abstract List<String> ekM();
+  public abstract List<String> fnn();
   
-  public abstract void ekN();
+  public abstract void fno();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.api.l.c
  * JD-Core Version:    0.7.0.1
  */

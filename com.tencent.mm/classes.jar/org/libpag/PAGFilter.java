@@ -9,10 +9,10 @@ public class PAGFilter
   
   static
   {
-    AppMethodBeat.i(216894);
-    b.loadLibrary("libpag");
+    AppMethodBeat.i(236863);
+    b.loadLibrary("pag");
     nativeInit();
-    AppMethodBeat.o(216894);
+    AppMethodBeat.o(236863);
   }
   
   public PAGFilter(long paramLong)
@@ -44,7 +44,7 @@ public class PAGFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.libpag.PAGFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -6,44 +6,45 @@ import android.content.res.Resources;
 import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.modelsimple.o;
 import com.tencent.mm.pluginsdk.ui.b.b;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
 import java.lang.ref.WeakReference;
 
 public final class p
   extends b
 {
-  private boolean KVs;
-  private View nFO;
-  private View nFP;
-  private WeImageView ofI;
+  private boolean QiI;
+  private WeImageView hex;
+  private View oQL;
+  private View oQM;
   private TextView titleTv;
   
   public p(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(38853);
-    this.KVs = false;
-    if ((!this.KVs) && (this.view != null))
+    this.QiI = false;
+    if ((!this.QiI) && (this.view != null))
     {
-      this.nFO = this.view.findViewById(2131297178);
-      this.nFP = this.view.findViewById(2131297183);
-      this.ofI = ((WeImageView)this.view.findViewById(2131297180));
-      this.ofI.setIconColor(((Context)this.FpA.get()).getResources().getColor(2131099676));
-      this.titleTv = ((TextView)this.view.findViewById(2131297184));
-      this.KVs = true;
+      this.oQL = this.view.findViewById(2131297322);
+      this.oQM = this.view.findViewById(2131297327);
+      this.hex = ((WeImageView)this.view.findViewById(2131297324));
+      this.hex.setIconColor(((Context)this.Kgr.get()).getResources().getColor(2131099683));
+      this.titleTv = ((TextView)this.view.findViewById(2131297328));
+      this.QiI = true;
     }
     AppMethodBeat.o(38853);
   }
   
-  private static boolean o(Object paramObject, int paramInt)
+  private static boolean q(Object paramObject, int paramInt)
   {
     AppMethodBeat.i(38856);
     if (paramObject == null)
@@ -60,27 +61,27 @@ public final class p
     return false;
   }
   
-  public final boolean bAV()
+  public final boolean bYa()
   {
     AppMethodBeat.i(38855);
     Object localObject;
     boolean bool;
-    if ((this.isFirst) && (this.hms))
+    if ((this.isFirst) && (this.ifo))
     {
-      this.nFP.setBackgroundResource(2131234377);
-      this.nFO.setBackground(null);
+      this.oQM.setBackgroundResource(2131235299);
+      this.oQL.setBackground(null);
       this.titleTv.setBackground(null);
-      bc.aCg();
-      if (!c.aiX()) {
+      bg.aVF();
+      if (!c.azn()) {
         break label211;
       }
-      bc.aCg();
-      if (!o.pV(c.azC())) {
+      bg.aVF();
+      if (!o.tK(c.aSK())) {
         break label211;
       }
-      localObject = bc.ajj();
-      bc.aCg();
-      ((q)localObject).a(new o(c.azC()), 0);
+      localObject = bg.azz();
+      bg.aVF();
+      ((t)localObject).a(new o(c.aSK()), 0);
       bool = false;
     }
     for (;;)
@@ -95,129 +96,145 @@ public final class p
         return bool;
         if (this.isFirst)
         {
-          this.nFP.setBackgroundResource(2131232872);
-          this.nFO.setBackgroundResource(2131232870);
-          this.titleTv.setBackgroundResource(2131232867);
+          this.oQM.setBackgroundResource(2131233332);
+          this.oQL.setBackgroundResource(2131233330);
+          this.titleTv.setBackgroundResource(2131233327);
           break;
         }
-        if (this.hms)
+        if (this.ifo)
         {
-          this.nFP.setBackgroundResource(2131232872);
-          this.nFO.setBackgroundResource(2131232867);
+          this.oQM.setBackgroundResource(2131233332);
+          this.oQL.setBackgroundResource(2131233327);
           this.titleTv.setBackground(null);
           break;
         }
-        this.nFP.setBackgroundResource(2131232872);
-        this.nFO.setBackground(null);
-        this.titleTv.setBackgroundResource(2131232867);
+        this.oQM.setBackgroundResource(2131233332);
+        this.oQL.setBackground(null);
+        this.titleTv.setBackgroundResource(2131233327);
         break;
         label211:
-        bc.aCg();
-        if ((c.aiX()) && (!bu.isNullOrNil(o.iou)) && (!o.aLb()))
+        bg.aVF();
+        if ((c.azn()) && (!Util.isNullOrNil(o.jjB)) && (!o.bfd()))
         {
-          if (v.acG()) {
-            if ((!o.aLe()) && (o.aLc()))
+          if (z.aqE()) {
+            if ((!o.bfg()) && (o.bfe()))
             {
-              this.titleTv.setText(o.ioA);
+              this.titleTv.setText(o.jjH);
               label264:
-              this.ofI.setIconColor(((Context)this.FpA.get()).getResources().getColor(2131099676));
-              if (o.aLa() != 1) {
+              this.hex.setIconColor(((Context)this.Kgr.get()).getResources().getColor(2131099683));
+              if (o.bfc() != 1) {
                 break label446;
               }
-              if (o(this.ofI.getTag(), 2131690555))
+              if (q(this.hex.getTag(), 2131690784))
               {
-                this.ofI.setTag(Integer.valueOf(2131690555));
-                this.ofI.setImageResource(2131690555);
+                this.hex.setTag(Integer.valueOf(2131690784));
+                this.hex.setImageResource(2131690784);
               }
             }
           }
           for (;;)
           {
             localObject = new Intent();
-            ((Intent)localObject).putExtra("intent.key.online_version", o.aLd());
+            ((Intent)localObject).putExtra("intent.key.online_version", o.bff());
             this.view.setOnClickListener(new p.1(this, (Intent)localObject));
             bool = true;
             break;
-            this.titleTv.setText(o.iou + " " + o.iov);
+            this.titleTv.setText(o.jjB + " " + o.jjC);
             break label264;
-            if ((!o.aLe()) && (o.aLc()))
+            if ((!o.bfg()) && (o.bfe()))
             {
-              this.titleTv.setText(o.ioB);
+              this.titleTv.setText(o.jjI);
               break label264;
             }
-            this.titleTv.setText(o.ioy);
+            this.titleTv.setText(o.jjF);
             break label264;
             label446:
-            if (o.aLa() == 2)
+            if (o.bfc() == 2)
             {
-              if (o.aLc())
+              if (o.bfe())
               {
-                if (o(this.ofI.getTag(), 2131690584))
+                if (q(this.hex.getTag(), 2131690819))
                 {
-                  this.ofI.setTag(Integer.valueOf(2131690584));
-                  this.ofI.setImageResource(2131690584);
+                  this.hex.setTag(Integer.valueOf(2131690819));
+                  this.hex.setImageResource(2131690819);
                 }
               }
-              else if (o(this.ofI.getTag(), 2131690583))
+              else if (q(this.hex.getTag(), 2131690818))
               {
-                this.ofI.setTag(Integer.valueOf(2131690583));
-                this.ofI.setImageResource(2131690583);
+                this.hex.setTag(Integer.valueOf(2131690818));
+                this.hex.setImageResource(2131690818);
               }
             }
-            else if (o.aLa() == 3)
+            else if (o.bfc() == 3)
             {
-              if (o(this.ofI.getTag(), 2131690615))
+              if (q(this.hex.getTag(), 2131690861))
               {
-                this.ofI.setTag(Integer.valueOf(2131690615));
-                this.ofI.setImageResource(2131690615);
+                this.hex.setTag(Integer.valueOf(2131690861));
+                this.hex.setImageResource(2131690861);
               }
             }
-            else if (o.aLa() == 6)
+            else if (o.bfc() == 6)
             {
-              if (o(this.ofI.getTag(), 2131689964))
+              if (q(this.hex.getTag(), 2131689991))
               {
-                this.ofI.setTag(Integer.valueOf(2131689964));
-                this.ofI.setImageResource(2131689964);
+                this.hex.setTag(Integer.valueOf(2131689991));
+                this.hex.setImageResource(2131689991);
               }
             }
-            else if (o(this.ofI.getTag(), 2131691293))
+            else if (o.bfc() == 7)
             {
-              this.ofI.setTag(Integer.valueOf(2131691293));
-              this.ofI.setImageResource(2131691293);
+              if (q(this.hex.getTag(), 2131690003))
+              {
+                this.hex.setTag(Integer.valueOf(2131690003));
+                this.hex.setImageResource(2131690003);
+              }
+            }
+            else if (o.bfc() == 8)
+            {
+              if (q(this.hex.getTag(), 2131690735))
+              {
+                this.hex.setTag(Integer.valueOf(2131690735));
+                this.hex.setImageResource(2131690735);
+              }
+            }
+            else if (q(this.hex.getTag(), 2131691625))
+            {
+              this.hex.setTag(Integer.valueOf(2131691625));
+              this.hex.setImageResource(2131691625);
             }
           }
         }
-        if (!j.EX_DEVICE_LOGIN) {
-          break label798;
+        if ((!BuildInfo.EX_DEVICE_LOGIN) && (!ao.gJH())) {
+          break label898;
         }
-        bc.aCg();
-        if (!c.aiX()) {
-          break label798;
+        bg.aVF();
+        if (!c.azn()) {
+          break label898;
         }
         int i = o.getDeviceType();
-        if ((o.aLa() != 0) || ((i != 2) && (i != 1))) {
-          break label798;
+        if ((o.bfc() != 0) || ((i != 2) && (i != 1))) {
+          break label898;
         }
         this.view.setOnClickListener(null);
-        if (o(this.ofI.getTag(), 2131691293))
+        if (q(this.hex.getTag(), 2131691625))
         {
-          this.ofI.setTag(Integer.valueOf(2131691293));
-          this.ofI.setImageResource(2131691293);
+          this.hex.setTag(Integer.valueOf(2131691625));
+          this.hex.setImageResource(2131691625);
         }
         if (i == 2)
         {
-          this.titleTv.setText(2131758551);
+          this.titleTv.setText(2131758850);
           bool = true;
           break label93;
         }
         if (i == 1) {
-          this.titleTv.setText(2131758552);
+          this.titleTv.setText(2131758852);
         }
         bool = true;
         break label93;
         setVisibility(8);
       }
-      label798:
+      label898:
       bool = false;
     }
   }
@@ -226,7 +243,7 @@ public final class p
   
   public final int getLayoutId()
   {
-    return 2131495061;
+    return 2131495895;
   }
   
   public final int getOrder()
@@ -237,15 +254,15 @@ public final class p
   public final void setVisibility(int paramInt)
   {
     AppMethodBeat.i(38854);
-    if (this.nFO != null) {
-      this.nFO.setVisibility(paramInt);
+    if (this.oQL != null) {
+      this.oQL.setVisibility(paramInt);
     }
     AppMethodBeat.o(38854);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.p
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,9 @@ public class TXLiveConstants
   public static final int AUTO_ADJUST_REALTIME_BITRATE_RESOLUTION_STRATEGY = 5;
   public static final int AUTO_ADJUST_REALTIME_BITRATE_STRATEGY = 4;
   public static final int AUTO_ADJUST_REALTIME_VIDEOCHAT_STRATEGY = 5;
-  public static final int BEAUTY_STYLE_HAZY = 2;
+  public static final int BEAUTY_STYLE_HAZY = 3;
   public static final int BEAUTY_STYLE_NATURE = 1;
+  public static final int BEAUTY_STYLE_PITU = 2;
   public static final int BEAUTY_STYLE_SMOOTH = 0;
   public static final int CUSTOM_MODE_AUDIO_CAPTURE = 1;
   public static final int CUSTOM_MODE_AUDIO_PREPROCESS = 4;
@@ -85,6 +86,7 @@ public class TXLiveConstants
   public static final int PLAY_EVT_CHANGE_RESOLUTION = 2009;
   public static final int PLAY_EVT_CHANGE_ROTATION = 2011;
   public static final int PLAY_EVT_CONNECT_SUCC = 2001;
+  public static final int PLAY_EVT_GET_FLVSESSIONKEY = 2031;
   public static final int PLAY_EVT_GET_MESSAGE = 2012;
   public static final int PLAY_EVT_GET_METADATA = 2028;
   public static final int PLAY_EVT_GET_PLAYINFO_SUCC = 2010;
@@ -223,7 +225,7 @@ public class TXLiveConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.TXLiveConstants
  * JD-Core Version:    0.7.0.1
  */

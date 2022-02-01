@@ -1,45 +1,39 @@
 package com.tencent.mm.plugin.appbrand.jsapi.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
-public final class e
-  extends b
+public class e<CONTEXT extends f>
+  extends d<CONTEXT>
 {
-  public static final int CTRL_INDEX = 785;
-  public static final String NAME = "addMapCustomLayer";
+  private static final int CTRL_INDEX = 587;
+  private static final String NAME = "disableLocationUpdate";
+  protected s lXb;
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public void a(CONTEXT paramCONTEXT, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(183551);
-    super.a(paramc, paramJSONObject, paramInt);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(143627);
+    Log.i("MicroMsg.AppBrand.JsApiDisableLocationUpdate", "disableLocationUpdate invoke");
+    this.lXb = ((s)paramCONTEXT.aw(s.class));
+    if (this.lXb == null)
     {
-      ae.e("MicroMsg.JsApiAddMapCustomLayer", "data is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(183551);
+      Log.i("MicroMsg.AppBrand.JsApiDisableLocationUpdate", "fail:location update not enabled");
+      paramCONTEXT.i(paramInt, h("fail:location update not enabled", null));
+      AppMethodBeat.o(143627);
       return;
     }
-    ae.i("MicroMsg.JsApiAddMapCustomLayer", "data:%s", new Object[] { paramJSONObject });
-    com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
-    if (localb == null)
-    {
-      ae.e("MicroMsg.JsApiAddMapCustomLayer", "mapView is null, return");
-      paramc.h(paramInt, e("fail:mapview is null", null));
-      AppMethodBeat.o(183551);
-      return;
-    }
-    localb.Qq(paramJSONObject.optString("layerId", ""));
-    a(paramc, paramInt, e("ok", null), true, localb.blB());
-    AppMethodBeat.o(183551);
+    this.lXb.bGK();
+    paramCONTEXT.i(paramInt, h("ok", null));
+    AppMethodBeat.o(143627);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.e
  * JD-Core Version:    0.7.0.1
  */

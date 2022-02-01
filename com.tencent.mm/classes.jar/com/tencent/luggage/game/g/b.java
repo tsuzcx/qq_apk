@@ -6,28 +6,28 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public abstract class b<T>
   implements l.a<T>
 {
-  public ConcurrentLinkedQueue<T> clU = new ConcurrentLinkedQueue();
+  public ConcurrentLinkedQueue<T> cxP = new ConcurrentLinkedQueue();
   
-  protected abstract T CG();
+  protected abstract T Mc();
   
   public final T acquire()
   {
-    Object localObject2 = this.clU.poll();
+    Object localObject2 = this.cxP.poll();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = CG();
+      localObject1 = Mc();
     }
     return localObject1;
   }
   
   public final boolean release(T paramT)
   {
-    return this.clU.offer(paramT);
+    return this.cxP.offer(paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.game.g.b
  * JD-Core Version:    0.7.0.1
  */

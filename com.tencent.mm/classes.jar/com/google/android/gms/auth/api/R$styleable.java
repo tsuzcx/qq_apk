@@ -2,8 +2,8 @@ package com.google.android.gms.auth.api;
 
 public final class R$styleable
 {
-  public static final int[] LoadingImageView = { 2130968771, 2130969082, 2130969083 };
-  public static final int[] SignInButton = { 2130968718, 2130968817, 2130969423 };
+  public static final int[] LoadingImageView = { 2130968786, 2130969114, 2130969115 };
+  public static final int[] SignInButton = { 2130968731, 2130968832, 2130969501 };
 }
 
 

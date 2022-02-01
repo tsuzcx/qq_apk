@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.shake;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.bd;
 import com.tencent.mm.plugin.shake.b.m;
 import com.tencent.mm.pluginsdk.b.c;
 import com.tencent.mm.pluginsdk.b.d;
@@ -11,14 +11,14 @@ import com.tencent.mm.pluginsdk.n;
 public class Plugin
   implements d
 {
-  private c zby;
+  private c Dgq;
   
   public Plugin()
   {
     AppMethodBeat.i(28083);
-    this.zby = new c()
+    this.Dgq = new c()
     {
-      public final com.tencent.mm.pluginsdk.b.a ac(Context paramAnonymousContext, String paramAnonymousString)
+      public final com.tencent.mm.pluginsdk.b.a ak(Context paramAnonymousContext, String paramAnonymousString)
       {
         AppMethodBeat.i(28082);
         paramAnonymousContext = new com.tencent.mm.plugin.shake.ui.a(paramAnonymousContext);
@@ -37,7 +37,7 @@ public class Plugin
     return locala;
   }
   
-  public az createSubCore()
+  public bd createSubCore()
   {
     AppMethodBeat.i(28085);
     m localm = new m();
@@ -47,12 +47,12 @@ public class Plugin
   
   public c getContactWidgetFactory()
   {
-    return this.zby;
+    return this.Dgq;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.Plugin
  * JD-Core Version:    0.7.0.1
  */

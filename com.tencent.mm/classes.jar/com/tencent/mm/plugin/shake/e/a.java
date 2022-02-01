@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.shake.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -9,12 +9,12 @@ import java.util.Map;
 
 public final class a
 {
-  public LinkedList<a> lJQ;
+  public LinkedList<a> mRG;
   
   public a()
   {
     AppMethodBeat.i(28614);
-    this.lJQ = new LinkedList();
+    this.mRG = new LinkedList();
     AppMethodBeat.o(28614);
   }
   
@@ -22,8 +22,8 @@ public final class a
   {
     AppMethodBeat.i(28616);
     a locala = new a(paramInt);
-    locala.title = bu.nullAsNil((String)paramMap.get(paramString + ".title"));
-    locala.summary = bu.nullAsNil((String)paramMap.get(paramString + ".summary"));
+    locala.title = Util.nullAsNil((String)paramMap.get(paramString + ".title"));
+    locala.summary = Util.nullAsNil((String)paramMap.get(paramString + ".summary"));
     String str = paramString + ".thumburl";
     int i = 0;
     if (i < 100)
@@ -33,10 +33,10 @@ public final class a
       for (Object localObject = Integer.valueOf(i);; localObject = "")
       {
         localObject = (String)paramMap.get(localObject);
-        if (bu.isNullOrNil((String)localObject)) {
+        if (Util.isNullOrNil((String)localObject)) {
           break label197;
         }
-        locala.zgX.add(localObject);
+        locala.DlO.add(localObject);
         i += 1;
         break;
       }
@@ -49,20 +49,20 @@ public final class a
     {
       AppMethodBeat.o(28616);
       return locala;
-      locala.cKc = bu.nullAsNil((String)paramMap.get(paramString + ".h5url.link"));
-      locala.zgY = bu.nullAsNil((String)paramMap.get(paramString + ".h5url.title"));
-      locala.zgZ = bu.nullAsNil((String)paramMap.get(paramString + ".h5url.username"));
+      locala.daA = Util.nullAsNil((String)paramMap.get(paramString + ".h5url.link"));
+      locala.DlP = Util.nullAsNil((String)paramMap.get(paramString + ".h5url.title"));
+      locala.DlQ = Util.nullAsNil((String)paramMap.get(paramString + ".h5url.username"));
       continue;
-      locala.cKc = bu.nullAsNil((String)paramMap.get(paramString + ".bizprofile.username"));
-      locala.zgY = bu.nullAsNil((String)paramMap.get(paramString + ".bizprofile.showchat"));
+      locala.daA = Util.nullAsNil((String)paramMap.get(paramString + ".bizprofile.username"));
+      locala.DlP = Util.nullAsNil((String)paramMap.get(paramString + ".bizprofile.showchat"));
       continue;
-      locala.cKc = bu.nullAsNil((String)paramMap.get(paramString + ".nativepay.wx_pay_url"));
+      locala.daA = Util.nullAsNil((String)paramMap.get(paramString + ".nativepay.wx_pay_url"));
       continue;
-      locala.cKc = bu.nullAsNil((String)paramMap.get(paramString + ".product.product_id"));
+      locala.daA = Util.nullAsNil((String)paramMap.get(paramString + ".product.product_id"));
     }
   }
   
-  public static LinkedList<a> n(Map<String, String> paramMap, String paramString)
+  public static LinkedList<a> o(Map<String, String> paramMap, String paramString)
   {
     AppMethodBeat.i(28615);
     LinkedList localLinkedList = new LinkedList();
@@ -95,7 +95,7 @@ public final class a
       for (localObject1 = Integer.valueOf(k);; localObject1 = "")
       {
         localObject3 = localObject1;
-        if (!bu.isNullOrNil((String)paramMap.get((String)localObject3 + ".type"))) {
+        if (!Util.isNullOrNil((String)paramMap.get((String)localObject3 + ".type"))) {
           break label224;
         }
         if (i == 0) {
@@ -107,7 +107,7 @@ public final class a
         break;
       }
       label200:
-      locala1.lJQ = ((LinkedList)localObject2);
+      locala1.mRG = ((LinkedList)localObject2);
       i = 1;
     }
     label209:
@@ -129,8 +129,8 @@ public final class a
             break label424;
           }
           localObject1 = new a(m);
-          ((a)localObject1).cKc = bu.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.id"));
-          ((a)localObject1).title = bu.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.title"));
+          ((a)localObject1).daA = Util.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.id"));
+          ((a)localObject1).title = Util.nullAsNil((String)paramMap.get((String)localObject3 + ".comment.title"));
           if (localObject1 != null) {
             ((LinkedList)localObject2).add(localObject1);
           }
@@ -145,7 +145,7 @@ public final class a
             AppMethodBeat.o(28615);
             return localLinkedList;
           }
-          locala1.lJQ = ((LinkedList)localObject2);
+          locala1.mRG = ((LinkedList)localObject2);
           i = 1;
         }
         break label209;
@@ -167,29 +167,29 @@ public final class a
   
   public static final class a
   {
-    public String cKc;
+    public List<String> DlO;
+    public String DlP;
+    public String DlQ;
+    public String daA;
     public String summary;
     public String title;
     public int type;
-    public List<String> zgX;
-    public String zgY;
-    public String zgZ;
     
     public a()
     {
       AppMethodBeat.i(28612);
-      this.zgX = new ArrayList();
-      this.zgY = "";
-      this.zgZ = "";
+      this.DlO = new ArrayList();
+      this.DlP = "";
+      this.DlQ = "";
       AppMethodBeat.o(28612);
     }
     
     public a(int paramInt)
     {
       AppMethodBeat.i(28613);
-      this.zgX = new ArrayList();
-      this.zgY = "";
-      this.zgZ = "";
+      this.DlO = new ArrayList();
+      this.DlP = "";
+      this.DlQ = "";
       this.type = paramInt;
       AppMethodBeat.o(28613);
     }
@@ -197,7 +197,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.e.a
  * JD-Core Version:    0.7.0.1
  */

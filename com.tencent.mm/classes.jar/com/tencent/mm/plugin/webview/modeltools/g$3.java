@@ -1,70 +1,71 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.zq;
-import com.tencent.mm.g.a.zq.a;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.y;
+import com.tencent.mm.g.a.aax;
+import com.tencent.mm.g.a.aax.a;
+import com.tencent.mm.model.ac;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.sns.b.j;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
 final class g$3
-  extends c<zq>
+  extends IListener<aax>
 {
   g$3(g paramg)
   {
     AppMethodBeat.i(160426);
-    this.__eventId = zq.class.getName().hashCode();
+    this.__eventId = aax.class.getName().hashCode();
     AppMethodBeat.o(160426);
   }
   
-  private static boolean a(zq paramzq)
+  private static boolean a(aax paramaax)
   {
     AppMethodBeat.i(79154);
     Object localObject;
     String str1;
-    if ((paramzq instanceof zq))
+    if ((paramaax instanceof aax))
     {
-      String str4 = v.aAC();
+      String str4 = z.aTY();
       ArrayList localArrayList = new ArrayList();
-      localArrayList.add(paramzq.dPK.dPL);
-      localArrayList.add(paramzq.dPK.dPM);
-      localArrayList.add(paramzq.dPK.dPN);
-      localArrayList.add(paramzq.dPK.dPO);
-      localArrayList.add(paramzq.dPK.url);
-      localArrayList.add(paramzq.dPK.dPP);
-      localArrayList.add(paramzq.dPK.dPQ);
-      localArrayList.add(paramzq.dPK.dPR);
-      localArrayList.add(paramzq.dPK.dPS);
-      localArrayList.add(paramzq.dPK.dPT);
+      localArrayList.add(paramaax.ehN.ehO);
+      localArrayList.add(paramaax.ehN.ehP);
+      localArrayList.add(paramaax.ehN.ehQ);
+      localArrayList.add(paramaax.ehN.ehR);
+      localArrayList.add(paramaax.ehN.url);
+      localArrayList.add(paramaax.ehN.ehS);
+      localArrayList.add(paramaax.ehN.ehT);
+      localArrayList.add(paramaax.ehN.ehU);
+      localArrayList.add(paramaax.ehN.ehV);
+      localArrayList.add(paramaax.ehN.ehW);
       localArrayList.add(str4);
-      localArrayList.add(paramzq.dPK.dPU);
-      localArrayList.add(paramzq.dPK.dPV);
+      localArrayList.add(paramaax.ehN.ehX);
+      localArrayList.add(paramaax.ehN.ehY);
       PString localPString = new PString();
-      String str5 = ((j)com.tencent.mm.kernel.g.ab(j.class)).a(paramzq.dPK.dPW, localPString);
+      String str5 = ((j)com.tencent.mm.kernel.g.af(j.class)).a(paramaax.ehN.ehZ, localPString);
       localArrayList.add(str5);
       localArrayList.add("");
       localArrayList.add("");
       localArrayList.add("");
-      int i = y.aH(paramzq.dPK.dPN, paramzq.dPK.dPO);
-      int j = y.aH(str4, paramzq.dPK.dPQ);
+      int i = ac.aJ(paramaax.ehN.ehQ, paramaax.ehN.ehR);
+      int j = ac.aJ(str4, paramaax.ehN.ehT);
       localArrayList.add(String.valueOf(i));
       localArrayList.add(String.valueOf(j));
-      String str2 = paramzq.dPK.dPX;
-      localObject = paramzq.dPK.dPZ;
+      String str2 = paramaax.ehN.eia;
+      localObject = paramaax.ehN.eic;
       for (str1 = str2;; str1 = str2)
       {
         try
         {
           str2 = URLEncoder.encode(str2, "UTF-8");
           str1 = str2;
-          if (bu.isNullOrNil((String)localObject)) {
+          if (Util.isNullOrNil((String)localObject)) {
             break label809;
           }
           str1 = str2;
@@ -86,39 +87,39 @@ final class g$3
             int n;
             int i1;
             label809:
-            ae.printErrStackTrace("MicroMsg.SubCoreTools", localException, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.SubCoreTools", localException, "", new Object[0]);
             continue;
-            str1 = paramzq.dPK.url.replace(",", "!");
+            str1 = paramaax.ehN.url.replace(",", "!");
             continue;
-            localObject = paramzq.dPK.dPV.replace(",", "!");
+            localObject = paramaax.ehN.ehY.replace(",", "!");
           }
         }
         localArrayList.add(str1);
         localArrayList.add(localPString.value);
         localArrayList.add(localObject);
-        str2 = paramzq.dPK.dPL;
-        str3 = paramzq.dPK.dPM;
-        str6 = paramzq.dPK.dPN;
-        str7 = paramzq.dPK.dPO;
-        if (paramzq.dPK.url != null) {
+        str2 = paramaax.ehN.ehO;
+        str3 = paramaax.ehN.ehP;
+        str6 = paramaax.ehN.ehQ;
+        str7 = paramaax.ehN.ehR;
+        if (paramaax.ehN.url != null) {
           break;
         }
-        str1 = paramzq.dPK.url;
-        k = paramzq.dPK.dPP;
-        str8 = paramzq.dPK.dPQ;
-        str9 = paramzq.dPK.dPR;
-        m = paramzq.dPK.dPS;
-        n = paramzq.dPK.dPT;
-        i1 = paramzq.dPK.dPU;
-        if (paramzq.dPK.dPV != null) {
+        str1 = paramaax.ehN.url;
+        k = paramaax.ehN.ehS;
+        str8 = paramaax.ehN.ehT;
+        str9 = paramaax.ehN.ehU;
+        m = paramaax.ehN.ehV;
+        n = paramaax.ehN.ehW;
+        i1 = paramaax.ehN.ehX;
+        if (paramaax.ehN.ehY != null) {
           break label857;
         }
-        localObject = paramzq.dPK.dPV;
-        ae.d("MicroMsg.SubCoreTools", "report(11954) : prePublishId : %s, curPublishId : %s, preUsername : %s, preChatName : %s, url : %s, preMsgIndex : %s, curChatName : %s, curChatTitle : %s, curChatMemberCount : %s, sendAppMsgScene : %s, curUserName : %s, getA8KeyScene : %s, referUrl : %s. : statExtStr:%s(%s), preChatType:%d, curChatType:%d, webViewTitle:%s, sourceAppId:%s  webViewDesc: %s", new Object[] { str2, str3, str6, str7, str1, Integer.valueOf(k), str8, str9, Integer.valueOf(m), Integer.valueOf(n), str4, Integer.valueOf(i1), localObject, paramzq.dPK.dPW, str5, Integer.valueOf(i), Integer.valueOf(j), paramzq.dPK.dPX, localPString.value, paramzq.dPK.dPZ });
-        if (paramzq.dPK.dPY != 2)
+        localObject = paramaax.ehN.ehY;
+        Log.d("MicroMsg.SubCoreTools", "report(11954) : prePublishId : %s, curPublishId : %s, preUsername : %s, preChatName : %s, url : %s, preMsgIndex : %s, curChatName : %s, curChatTitle : %s, curChatMemberCount : %s, sendAppMsgScene : %s, curUserName : %s, getA8KeyScene : %s, referUrl : %s. : statExtStr:%s(%s), preChatType:%d, curChatType:%d, webViewTitle:%s, sourceAppId:%s  webViewDesc: %s", new Object[] { str2, str3, str6, str7, str1, Integer.valueOf(k), str8, str9, Integer.valueOf(m), Integer.valueOf(n), str4, Integer.valueOf(i1), localObject, paramaax.ehN.ehZ, str5, Integer.valueOf(i), Integer.valueOf(j), paramaax.ehN.eia, localPString.value, paramaax.ehN.eic });
+        if (paramaax.ehN.eib != 2)
         {
-          paramzq = com.tencent.mm.plugin.report.service.g.yxI;
-          com.tencent.mm.plugin.report.service.g.m(11954, localArrayList);
+          paramaax = h.CyF;
+          h.r(11954, localArrayList);
         }
         AppMethodBeat.o(79154);
         return true;

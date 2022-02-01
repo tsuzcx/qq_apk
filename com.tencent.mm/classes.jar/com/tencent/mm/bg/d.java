@@ -1,20 +1,22 @@
 package com.tencent.mm.bg;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.b.f;
 import com.tencent.mm.b.h;
-import com.tencent.mm.bb.t;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.bb.r;
+import com.tencent.mm.bb.v;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.model.v;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.ao;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -22,23 +24,23 @@ import java.util.Map;
 import java.util.Random;
 
 public final class d
-  implements com.tencent.mm.ak.f
+  implements i
 {
   public static int chatType;
-  private static final com.tencent.mm.b.f<Integer, a> fVO;
-  private static d iqw;
-  public boolean gnW = false;
-  private int ilG = 3;
+  private static final f<Integer, a> gAU;
+  private static d jlH;
+  public boolean gYQ = false;
+  private int jgF = 3;
   
   static
   {
     AppMethodBeat.i(148389);
-    fVO = new h(5);
+    gAU = new h(5);
     chatType = 0;
     AppMethodBeat.o(148389);
   }
   
-  public static int Hc(String paramString)
+  public static int PP(String paramString)
   {
     int i = 5;
     AppMethodBeat.i(148383);
@@ -53,41 +55,41 @@ public final class d
     if (paramString.startsWith("app")) {
       i = 8;
     }
-    ae.d("upload", "type ".concat(String.valueOf(i)));
+    Log.d("upload", "type ".concat(String.valueOf(i)));
     AppMethodBeat.o(148383);
     return i;
   }
   
-  public static d aLM()
+  public static d bfP()
   {
     AppMethodBeat.i(148384);
-    if (iqw == null) {
-      iqw = new d();
+    if (jlH == null) {
+      jlH = new d();
     }
-    d locald = iqw;
+    d locald = jlH;
     AppMethodBeat.o(148384);
     return locald;
   }
   
-  public static void aLN()
+  public static void bfQ()
   {
     AppMethodBeat.i(148387);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajR().ajA().set(16646145, Integer.valueOf(0));
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAh().azQ().set(16646145, Integer.valueOf(0));
     AppMethodBeat.o(148387);
   }
   
-  public static void aLO()
+  public static void bfR()
   {
     AppMethodBeat.i(148388);
-    com.tencent.mm.kernel.g.ajS();
-    Integer localInteger2 = Integer.valueOf(bu.o((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(16646145, null)));
+    com.tencent.mm.kernel.g.aAi();
+    Integer localInteger2 = Integer.valueOf(Util.nullAsNil((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(16646145, null)));
     Integer localInteger1 = localInteger2;
     if (localInteger2.intValue() < 0) {
       localInteger1 = Integer.valueOf(0);
     }
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajR().ajA().set(16646145, Integer.valueOf(localInteger1.intValue() + 1));
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAh().azQ().set(16646145, Integer.valueOf(localInteger1.intValue() + 1));
     AppMethodBeat.o(148388);
   }
   
@@ -105,22 +107,22 @@ public final class d
     return "app_";
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(148386);
-    if ((!(paramn instanceof com.tencent.mm.ak.p)) || (((com.tencent.mm.ak.p)paramn).aFc() != 9))
+    if ((!(paramq instanceof com.tencent.mm.ak.s)) || (((com.tencent.mm.ak.s)paramq).aYR() != 9))
     {
-      ae.d("upload", "another scene");
+      Log.d("upload", "another scene");
       AppMethodBeat.o(148386);
       return;
     }
-    if (paramn.getType() == 159)
+    if (paramq.getType() == 159)
     {
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label91;
       }
-      com.tencent.mm.kernel.g.ajS();
-      com.tencent.mm.kernel.g.ajR().ajA().set(81944, Long.valueOf(bu.aRi()));
+      com.tencent.mm.kernel.g.aAi();
+      com.tencent.mm.kernel.g.aAh().azQ().set(81944, Long.valueOf(Util.nowSecond()));
     }
     for (;;)
     {
@@ -128,13 +130,13 @@ public final class d
       AppMethodBeat.o(148386);
       return;
       label91:
-      paramInt1 = this.ilG - 1;
-      this.ilG = paramInt1;
+      paramInt1 = this.jgF - 1;
+      this.jgF = paramInt1;
       if (paramInt1 < 0)
       {
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajR().ajA().set(81944, Long.valueOf((bu.fpO() - 86400000L + 3600000L) / 1000L));
-        this.ilG = 3;
+        com.tencent.mm.kernel.g.aAi();
+        com.tencent.mm.kernel.g.aAh().azQ().set(81944, Long.valueOf((Util.nowMilliSecond() - 86400000L + 3600000L) / 1000L));
+        this.jgF = 3;
       }
     }
   }
@@ -142,82 +144,82 @@ public final class d
   public final void release()
   {
     AppMethodBeat.i(148385);
-    this.gnW = false;
-    com.tencent.mm.kernel.g.ajj().b(159, this);
+    this.gYQ = false;
+    com.tencent.mm.kernel.g.azz().b(159, this);
     AppMethodBeat.o(148385);
   }
   
   public static final class a
   {
-    public int eQV;
-    public int iqA;
-    public int iqB;
-    public int iqC;
-    public int iqD;
-    public int iqE;
-    public int iqF;
-    public int iqG;
-    private Random iqH;
-    public List<String> iqI;
-    public String iqx;
-    public int iqy;
-    public int iqz;
+    public int fuA;
+    public String jlI;
+    public int jlJ;
+    public int jlK;
+    public int jlL;
+    public int jlM;
+    public int jlN;
+    public int jlO;
+    public int jlP;
+    public int jlQ;
+    public int jlR;
+    private Random jlS;
+    public List<String> jlT;
     
     public a()
     {
       AppMethodBeat.i(148379);
-      this.iqx = "BeiJing;GuangZhou;ShangHai;";
-      this.eQV = 0;
-      this.iqy = 0;
-      this.iqz = 2;
-      this.iqA = 2;
-      this.iqB = 2;
-      this.iqC = 10240;
-      this.iqD = 10240000;
-      this.iqE = 100;
-      this.iqF = 100;
-      this.iqG = 100;
-      this.iqH = new Random();
-      this.iqI = null;
+      this.jlI = "BeiJing;GuangZhou;ShangHai;";
+      this.fuA = 0;
+      this.jlJ = 0;
+      this.jlK = 2;
+      this.jlL = 2;
+      this.jlM = 2;
+      this.jlN = 10240;
+      this.jlO = 10240000;
+      this.jlP = 100;
+      this.jlQ = 100;
+      this.jlR = 100;
+      this.jlS = new Random();
+      this.jlT = null;
       AppMethodBeat.o(148379);
     }
     
-    private int aLR()
+    private int bfU()
     {
       switch (d.chatType)
       {
       default: 
-        return this.iqE;
+        return this.jlP;
       case 0: 
-        return this.iqE;
+        return this.jlP;
       case 1: 
-        return this.iqF;
+        return this.jlQ;
       }
-      return this.iqG;
+      return this.jlR;
     }
     
-    public static a aLT()
+    public static a bfW()
     {
       AppMethodBeat.i(148382);
-      ae.d("upload", "parseFromFile");
-      Object localObject1 = t.aKs();
-      localObject1 = com.tencent.mm.bb.p.aKp() + ((com.tencent.mm.bb.p)localObject1).dl(1, 9);
-      int i = (int)o.aZR((String)localObject1);
+      Log.d("upload", "parseFromFile");
+      Object localObject1 = v.bev();
+      localObject1 = r.bes() + ((r)localObject1).dv(1, 9);
+      int i = (int)com.tencent.mm.vfs.s.boW((String)localObject1);
       if (i == -1)
       {
-        ae.e("upload", "read file failed " + i + (String)localObject1);
+        Log.e("upload", "read file failed " + i + (String)localObject1);
         AppMethodBeat.o(148382);
         return null;
       }
-      Object localObject3 = o.bb((String)localObject1, 0, i);
+      Object localObject3 = com.tencent.mm.vfs.s.aW((String)localObject1, 0, i);
       if (localObject3 == null)
       {
-        ae.e("upload", "read file failed " + i + (String)localObject1);
+        Log.e("upload", "read file failed " + i + (String)localObject1);
         AppMethodBeat.o(148382);
         return null;
       }
       localObject1 = new String((byte[])localObject3);
-      if (bu.isNullOrNil((String)localObject1))
+      if (Util.isNullOrNil((String)localObject1))
       {
         AppMethodBeat.o(148382);
         return null;
@@ -228,16 +230,16 @@ public final class d
       {
         localObject1 = ((String)localObject1).substring(i);
         k = ((String)localObject1).hashCode();
-        localObject3 = (a)d.aLP().get(Integer.valueOf(k));
+        localObject3 = (a)d.bfS().get(Integer.valueOf(k));
         if (localObject3 != null)
         {
           AppMethodBeat.o(148382);
           return localObject3;
         }
-        localObject3 = bx.M((String)localObject1, "Config");
+        localObject3 = XmlParser.parseXml((String)localObject1, "Config", null);
         if (localObject3 == null)
         {
-          ae.e("upload", "parse msg failed");
+          Log.e("upload", "parse msg failed");
           AppMethodBeat.o(148382);
           return null;
         }
@@ -256,9 +258,9 @@ public final class d
           {
             localObject1 = "";
             localObject1 = (String)((Map)localObject3).get(localObject1 + ".$key");
-            ae.d("upload", "key ".concat(String.valueOf(localObject1)));
+            Log.d("upload", "key ".concat(String.valueOf(localObject1)));
             if (localObject1 == null) {
-              break label1155;
+              break label1156;
             }
             if (!((String)localObject1).equals("region")) {
               continue;
@@ -267,24 +269,24 @@ public final class d
             if (i == 0)
             {
               localObject1 = "";
-              locala.iqx = ((String)((Map)localObject3).get(localObject1));
-              if ((locala.iqx == null) || (locala.iqx.length() <= 0)) {
-                break label1473;
+              locala.jlI = ((String)((Map)localObject3).get(localObject1));
+              if ((locala.jlI == null) || (locala.jlI.length() <= 0)) {
+                break label1474;
               }
-              localObject1 = locala.iqx.split(";");
-              locala.iqI = new ArrayList();
+              localObject1 = locala.jlI.split(";");
+              locala.jlT = new ArrayList();
               if ((localObject1 == null) || (localObject1.length <= 0)) {
-                break label1473;
+                break label1474;
               }
               j = 0;
               if (j >= localObject1.length) {
-                break label1473;
+                break label1474;
               }
               if ((localObject1[j] == null) || (localObject1[j].length() <= 0)) {
-                break label1466;
+                break label1467;
               }
-              locala.iqI.add(localObject1[j]);
-              break label1466;
+              locala.jlT.add(localObject1[j]);
+              break label1467;
             }
           }
           else
@@ -300,7 +302,7 @@ public final class d
             if (i == 0)
             {
               localObject1 = "";
-              locala.eQV = bu.getInt((String)((Map)localObject3).get(localObject1), 0);
+              locala.fuA = Util.getInt((String)((Map)localObject3).get(localObject1), 0);
             }
             else
             {
@@ -314,13 +316,13 @@ public final class d
             if (i == 0)
             {
               localObject1 = "";
-              locala.iqy = bu.getInt((String)((Map)localObject3).get(localObject1), 0);
+              locala.jlJ = Util.getInt((String)((Map)localObject3).get(localObject1), 0);
             }
           }
         }
         catch (Exception localException)
         {
-          ae.e("upload", "exception:%s", new Object[] { bu.o(localException) });
+          Log.e("upload", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
           AppMethodBeat.o(148382);
           return null;
         }
@@ -332,7 +334,7 @@ public final class d
           if (i == 0) {}
           for (localObject2 = "";; localObject2 = Integer.valueOf(i))
           {
-            locala.iqC = bu.getInt((String)((Map)localObject3).get(localObject2), 0);
+            locala.jlN = Util.getInt((String)((Map)localObject3).get(localObject2), 0);
             break;
           }
         }
@@ -342,7 +344,7 @@ public final class d
           if (i == 0) {}
           for (localObject2 = "";; localObject2 = Integer.valueOf(i))
           {
-            locala.iqD = bu.getInt((String)((Map)localObject3).get(localObject2), 0);
+            locala.jlO = Util.getInt((String)((Map)localObject3).get(localObject2), 0);
             break;
           }
         }
@@ -352,7 +354,7 @@ public final class d
           if (i == 0) {}
           for (localObject2 = "";; localObject2 = Integer.valueOf(i))
           {
-            locala.iqE = bu.getInt((String)((Map)localObject3).get(localObject2), 0);
+            locala.jlP = Util.getInt((String)((Map)localObject3).get(localObject2), 0);
             break;
           }
         }
@@ -362,7 +364,7 @@ public final class d
           if (i == 0) {}
           for (localObject2 = "";; localObject2 = Integer.valueOf(i))
           {
-            locala.iqF = bu.getInt((String)((Map)localObject3).get(localObject2), 0);
+            locala.jlQ = Util.getInt((String)((Map)localObject3).get(localObject2), 0);
             break;
           }
         }
@@ -372,7 +374,7 @@ public final class d
           if (i == 0) {}
           for (localObject2 = "";; localObject2 = Integer.valueOf(i))
           {
-            locala.iqG = bu.getInt((String)((Map)localObject3).get(localObject2), 0);
+            locala.jlR = Util.getInt((String)((Map)localObject3).get(localObject2), 0);
             break;
           }
         }
@@ -382,7 +384,7 @@ public final class d
           if (i == 0) {}
           for (localObject2 = "";; localObject2 = Integer.valueOf(i))
           {
-            locala.iqz = bu.getInt((String)((Map)localObject3).get(localObject2), 0);
+            locala.jlK = Util.getInt((String)((Map)localObject3).get(localObject2), 0);
             break;
           }
         }
@@ -392,7 +394,7 @@ public final class d
           if (i == 0) {}
           for (localObject2 = "";; localObject2 = Integer.valueOf(i))
           {
-            locala.iqA = bu.getInt((String)((Map)localObject3).get(localObject2), 0);
+            locala.jlL = Util.getInt((String)((Map)localObject3).get(localObject2), 0);
             break;
           }
         }
@@ -402,46 +404,46 @@ public final class d
           if (i == 0) {}
           for (localObject2 = "";; localObject2 = Integer.valueOf(i))
           {
-            locala.iqB = bu.getInt((String)((Map)localObject3).get(localObject2), 0);
+            locala.jlM = Util.getInt((String)((Map)localObject3).get(localObject2), 0);
             break;
           }
-          label1155:
-          ae.d("upload", "sex " + locala.eQV);
-          ae.d("upload", "rate_single " + locala.iqz);
-          ae.d("upload", "rate_chatroom " + locala.iqA);
-          ae.d("upload", "rate_app " + locala.iqB);
-          ae.d("upload", "rate " + locala.iqy);
-          ae.d("upload", "minsize " + locala.iqC);
-          ae.d("upload", "maxsize " + locala.iqD);
-          ae.d("upload", "daycount_single " + locala.iqE);
-          ae.d("upload", "daycount_chatroom " + locala.iqF);
-          ae.d("upload", "daycount_app " + locala.iqG);
-          ae.d("upload", "region " + locala.iqx);
-          d.aLP().q(Integer.valueOf(k), locala);
+          label1156:
+          Log.d("upload", "sex " + locala.fuA);
+          Log.d("upload", "rate_single " + locala.jlK);
+          Log.d("upload", "rate_chatroom " + locala.jlL);
+          Log.d("upload", "rate_app " + locala.jlM);
+          Log.d("upload", "rate " + locala.jlJ);
+          Log.d("upload", "minsize " + locala.jlN);
+          Log.d("upload", "maxsize " + locala.jlO);
+          Log.d("upload", "daycount_single " + locala.jlP);
+          Log.d("upload", "daycount_chatroom " + locala.jlQ);
+          Log.d("upload", "daycount_app " + locala.jlR);
+          Log.d("upload", "region " + locala.jlI);
+          d.bfS().x(Integer.valueOf(k), locala);
           AppMethodBeat.o(148382);
           return locala;
           break;
-          label1466:
+          label1467:
           j += 1;
           continue;
         }
-        label1473:
+        label1474:
         i += 1;
       }
     }
     
-    public final boolean aLQ()
+    public final boolean bfT()
     {
       AppMethodBeat.i(148380);
-      Object localObject2 = v.aBo();
+      Object localObject2 = z.aUL();
       Object localObject1;
       int i;
       if ("  getRegionCode ".concat(String.valueOf(localObject2)) != null)
       {
-        localObject1 = ((aw)localObject2).eRl;
-        ae.d("upload", (String)localObject1);
-        localObject1 = ((aw)localObject2).eRl;
-        if ((localObject1 != null) && (((String)localObject1).length() > 0) && (this.iqI != null) && (this.iqI.size() > 0))
+        localObject1 = ((ax)localObject2).fuO;
+        Log.d("upload", (String)localObject1);
+        localObject1 = ((ax)localObject2).fuO;
+        if ((localObject1 != null) && (((String)localObject1).length() > 0) && (this.jlT != null) && (this.jlT.size() > 0))
         {
           localObject1 = ((String)localObject1).split("_");
           if ((localObject1 != null) && (localObject1.length > 0)) {
@@ -458,13 +460,13 @@ public final class d
           }
           if ((localObject1[i] != null) && (localObject1[i].length() > 0))
           {
-            localObject2 = this.iqI.iterator();
+            localObject2 = this.jlT.iterator();
             for (;;)
             {
               if (((Iterator)localObject2).hasNext()) {
                 if (((String)((Iterator)localObject2).next()).trim().toLowerCase().equals(localObject1[i].trim().toLowerCase()))
                 {
-                  ae.d("upload", "isInRegion");
+                  Log.d("upload", "isInRegion");
                   AppMethodBeat.o(148380);
                   return true;
                   localObject1 = "";
@@ -481,20 +483,20 @@ public final class d
       return false;
     }
     
-    public final boolean aLS()
+    public final boolean bfV()
     {
       AppMethodBeat.i(148381);
-      if (1 == com.tencent.mm.audio.b.g.A("EnableSpeexVoiceUpload", 0))
+      if (1 == com.tencent.mm.audio.b.g.B("EnableSpeexVoiceUpload", 0))
       {
         AppMethodBeat.o(148381);
         return true;
       }
-      ae.d("upload", "type " + d.chatType);
-      int j = aLR();
+      Log.d("upload", "type " + d.chatType);
+      int j = bfU();
       int i = getRate();
-      com.tencent.mm.kernel.g.ajS();
-      Integer localInteger = Integer.valueOf(bu.o((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(16646145, null)));
-      ae.d("upload", "daycount " + aLR() + "  count " + localInteger + " rate " + i);
+      com.tencent.mm.kernel.g.aAi();
+      Integer localInteger = Integer.valueOf(Util.nullAsNil((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(16646145, null)));
+      Log.d("upload", "daycount " + bfU() + "  count " + localInteger + " rate " + i);
       if (localInteger.intValue() > j)
       {
         AppMethodBeat.o(148381);
@@ -505,38 +507,38 @@ public final class d
         AppMethodBeat.o(148381);
         return false;
       }
-      if (!az.isWifi(ak.getContext()))
+      if (!NetStatusUtil.isWifi(MMApplicationContext.getContext()))
       {
         AppMethodBeat.o(148381);
         return false;
       }
-      com.tencent.mm.kernel.g.ajS();
-      j = bu.a((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(12290, null), 0);
+      com.tencent.mm.kernel.g.aAi();
+      j = Util.nullAs((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(12290, null), 0);
       boolean bool;
-      if (this.eQV == 0) {
+      if (this.fuA == 0) {
         bool = true;
       }
       for (;;)
       {
-        ae.d("upload", "fitSex " + this.eQV + " " + bool + " " + this.eQV);
+        Log.d("upload", "fitSex " + this.fuA + " " + bool + " " + this.fuA);
         if (bool) {
           break;
         }
         AppMethodBeat.o(148381);
         return false;
-        if (this.eQV == j) {
+        if (this.fuA == j) {
           bool = true;
         } else {
           bool = false;
         }
       }
-      if (!aLQ())
+      if (!bfT())
       {
         AppMethodBeat.o(148381);
         return false;
       }
-      j = this.iqH.nextInt(i);
-      ae.d("upload", "luck ".concat(String.valueOf(j)));
+      j = this.jlS.nextInt(i);
+      Log.d("upload", "luck ".concat(String.valueOf(j)));
       if (j == i / 2)
       {
         AppMethodBeat.o(148381);
@@ -551,19 +553,27 @@ public final class d
       switch (d.chatType)
       {
       default: 
-        return this.iqz;
+        return this.jlK;
       case 0: 
-        return this.iqz;
+        return this.jlK;
       case 1: 
-        return this.iqA;
+        return this.jlL;
       }
-      return this.iqB;
+      return this.jlM;
     }
+  }
+  
+  public static final class b
+  {
+    public int audioFormat = 0;
+    public int jlA = 0;
+    public String prefix = "";
+    public int sampleRate = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bg.d
  * JD-Core Version:    0.7.0.1
  */

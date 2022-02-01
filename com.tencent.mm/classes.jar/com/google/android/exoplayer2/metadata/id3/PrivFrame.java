@@ -10,8 +10,8 @@ public final class PrivFrame
   extends Id3Frame
 {
   public static final Parcelable.Creator<PrivFrame> CREATOR;
-  public final String buG;
-  public final byte[] buH;
+  public final String buA;
+  public final byte[] buB;
   
   static
   {
@@ -24,16 +24,16 @@ public final class PrivFrame
   {
     super("PRIV");
     AppMethodBeat.i(92445);
-    this.buG = paramParcel.readString();
-    this.buH = paramParcel.createByteArray();
+    this.buA = paramParcel.readString();
+    this.buB = paramParcel.createByteArray();
     AppMethodBeat.o(92445);
   }
   
   public PrivFrame(String paramString, byte[] paramArrayOfByte)
   {
     super("PRIV");
-    this.buG = paramString;
-    this.buH = paramArrayOfByte;
+    this.buA = paramString;
+    this.buB = paramArrayOfByte;
   }
   
   public final boolean equals(Object paramObject)
@@ -50,7 +50,7 @@ public final class PrivFrame
       return false;
     }
     paramObject = (PrivFrame)paramObject;
-    if ((x.i(this.buG, paramObject.buG)) && (Arrays.equals(this.buH, paramObject.buH)))
+    if ((x.j(this.buA, paramObject.buA)) && (Arrays.equals(this.buB, paramObject.buB)))
     {
       AppMethodBeat.o(92446);
       return true;
@@ -62,10 +62,10 @@ public final class PrivFrame
   public final int hashCode()
   {
     AppMethodBeat.i(92447);
-    if (this.buG != null) {}
-    for (int i = this.buG.hashCode();; i = 0)
+    if (this.buA != null) {}
+    for (int i = this.buA.hashCode();; i = 0)
     {
-      int j = Arrays.hashCode(this.buH);
+      int j = Arrays.hashCode(this.buB);
       AppMethodBeat.o(92447);
       return (i + 527) * 31 + j;
     }
@@ -74,14 +74,14 @@ public final class PrivFrame
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(92448);
-    paramParcel.writeString(this.buG);
-    paramParcel.writeByteArray(this.buH);
+    paramParcel.writeString(this.buA);
+    paramParcel.writeByteArray(this.buB);
     AppMethodBeat.o(92448);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.id3.PrivFrame
  * JD-Core Version:    0.7.0.1
  */

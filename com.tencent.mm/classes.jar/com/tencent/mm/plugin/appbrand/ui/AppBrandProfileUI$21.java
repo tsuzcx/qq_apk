@@ -1,35 +1,30 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import android.graphics.Rect;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.t;
 import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cb.a;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
 
 final class AppBrandProfileUI$21
-  extends RecyclerView.h
+  implements View.OnClickListener
 {
   AppBrandProfileUI$21(AppBrandProfileUI paramAppBrandProfileUI) {}
   
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
+  public final void onClick(View paramView)
   {
-    AppMethodBeat.i(223115);
-    int i = a.ax(this.mJd, 2131165829);
-    int j = a.ax(this.mJd, 2131165823);
-    if (RecyclerView.bw(paramView) == 0) {}
-    for (paramRect.left = i;; paramRect.left = 0)
-    {
-      paramRect.right = j;
-      AppMethodBeat.o(223115);
-      return;
-    }
+    AppMethodBeat.i(227644);
+    b localb = new b();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    AppBrandProfileUI.a(this.nWa, paramView);
+    a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandProfileUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+    AppMethodBeat.o(227644);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.AppBrandProfileUI.21
  * JD-Core Version:    0.7.0.1
  */

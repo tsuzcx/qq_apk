@@ -2,73 +2,75 @@ package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.service.i;
-import com.tencent.mm.plugin.webview.c.d;
-import com.tencent.mm.plugin.webview.c.f;
-import d.g.b.p;
-import d.g.b.q;
-import d.z;
+import com.tencent.mm.plugin.appbrand.service.j;
+import com.tencent.mm.plugin.webview.d.f;
+import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.d.n;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 import org.json.JSONObject;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiInvokeMiniProgramAPI;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "binderID", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "getBinderID", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;)I", "handleMsg", "", "env", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiInvokeMiniProgramAPI;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "binderID", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "getBinderID", "(Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;)I", "handleMsg", "", "env", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class e
-  extends com.tencent.mm.plugin.webview.c.c.a
+  extends com.tencent.mm.plugin.webview.d.c.a
 {
-  private static final int ECX = 295;
-  public static final e EDc;
-  private static final String dLB = "invokeMiniProgramAPI";
+  private static final int CDJ = 295;
+  public static final e JsD;
+  private static final String edq = "invokeMiniProgramAPI";
   
   static
   {
     AppMethodBeat.i(175672);
-    EDc = new e();
-    ECX = 295;
-    dLB = "invokeMiniProgramAPI";
+    JsD = new e();
+    CDJ = 295;
+    edq = "invokeMiniProgramAPI";
     AppMethodBeat.o(175672);
   }
   
-  public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(f paramf, n paramn)
   {
-    AppMethodBeat.i(199361);
-    p.h(paramd, "env");
-    p.h(paraml, "msg");
-    i locali = (i)g.ab(i.class);
-    if (locali != null)
+    AppMethodBeat.i(210553);
+    p.h(paramf, "env");
+    p.h(paramn, "msg");
+    j localj = (j)g.af(j.class);
+    if (localj != null)
     {
-      String str = paraml.Efz.optString("name");
-      Object localObject = paraml.Efz.opt("arg");
-      locali.a(paramd.DQe.getBinderID(), str, localObject);
+      String str = paramn.ISf.optString("name");
+      Object localObject = paramn.ISf.opt("arg");
+      localj.a(paramf.IQZ.getBinderID(), str, localObject);
     }
     for (;;)
     {
-      paramd.DQe.i(paraml.Efy, dLB + ":ok", null);
-      AppMethodBeat.o(199361);
+      paramf.IQZ.h(paramn.ISe, edq + ":ok", null);
+      AppMethodBeat.o(210553);
       return true;
-      ((d.g.a.a)a.EDd).invoke();
+      ((kotlin.g.a.a)a.JsE).invoke();
     }
   }
   
-  public final int eSw()
+  public final int ePA()
   {
-    return ECX;
+    return CDJ;
   }
   
-  public final String eSx()
+  public final String ePz()
   {
-    return dLB;
+    return edq;
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class a
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
-    public static final a EDd;
+    public static final a JsE;
     
     static
     {
       AppMethodBeat.i(175670);
-      EDd = new a();
+      JsE = new a();
       AppMethodBeat.o(175670);
     }
     

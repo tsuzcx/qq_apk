@@ -81,7 +81,7 @@ public final class c<E extends b>
     }
   }
   
-  public final int dl(Object paramObject)
+  public final int ds(Object paramObject)
   {
     AppMethodBeat.i(89956);
     int i = 0;
@@ -89,7 +89,7 @@ public final class c<E extends b>
     for (int j = 0; i < size(); j = k)
     {
       k = j;
-      if (((b)get(i)).ceo().equals(paramObject)) {
+      if (((b)get(i)).cCe().equals(paramObject)) {
         k = j + 1;
       }
       i += 1;
@@ -100,7 +100,7 @@ public final class c<E extends b>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.c.c
  * JD-Core Version:    0.7.0.1
  */

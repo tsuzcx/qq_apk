@@ -4,58 +4,56 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.n.f;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 
 public final class a
-  implements n.b
+  implements MStorageEx.IOnStorageChange
 {
-  private final int DELAY_TIME;
+  private final int AGw;
+  public boolean AGx;
   private final String TAG;
-  private aq mHandler;
-  public boolean wKV;
+  private MMHandler mHandler;
   
   public a()
   {
     AppMethodBeat.i(26721);
     this.TAG = "MicroMsg.NotificationObserver";
-    this.DELAY_TIME = 50;
-    this.wKV = false;
-    this.mHandler = new aq(Looper.getMainLooper())
+    this.AGw = 50;
+    this.AGx = false;
+    this.mHandler = new MMHandler(Looper.getMainLooper())
     {
       public final void handleMessage(final Message paramAnonymousMessage)
       {
         AppMethodBeat.i(26720);
         super.handleMessage(paramAnonymousMessage);
         paramAnonymousMessage = paramAnonymousMessage.getData().getString("com.tencent.mm.notification.observer");
-        bc.ajU().n(new Runnable()
+        bg.aAk().postToWorkerDelayed(new Runnable()
         {
           public final void run()
           {
             final int i = 0;
             AppMethodBeat.i(26719);
-            if (!g.ajP().aiZ())
+            if (!com.tencent.mm.kernel.g.aAf().azp())
             {
-              ae.w("MicroMsg.NotificationObserver", "account not init.");
+              Log.w("MicroMsg.NotificationObserver", "account not init.");
               AppMethodBeat.o(26719);
               return;
             }
-            final int j = f.acI();
-            bc.aCg();
-            an localan = com.tencent.mm.model.c.azF().BH(paramAnonymousMessage);
+            final int j = com.tencent.mm.n.g.aqG();
+            bg.aVF();
+            as localas = com.tencent.mm.model.c.aSN().Kn(paramAnonymousMessage);
             final boolean bool;
-            if (localan == null)
+            if (localas == null)
             {
               bool = false;
               if (!bool) {
@@ -64,26 +62,26 @@ public final class a
             }
             for (;;)
             {
-              ar.f(new Runnable()
+              MMHandlerThread.postToMainThread(new Runnable()
               {
                 public final void run()
                 {
                   AppMethodBeat.i(26718);
-                  bc.getNotification().kP(j);
+                  bg.getNotification().nR(j);
                   if (!bool) {
-                    bc.getNotification().B(a.1.1.this.wKX, i);
+                    bg.getNotification().C(a.1.1.this.AGz, i);
                   }
-                  ae.i("MicroMsg.NotificationObserver", "NotificationObserver refresh total badge count: %d, and talker badge count: %d, talker is mute: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool) });
-                  b.c(new Runnable()
+                  Log.i("MicroMsg.NotificationObserver", "NotificationObserver refresh total badge count: %d, and talker badge count: %d, talker is mute: %b", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool) });
+                  ThreadPool.post(new Runnable()
                   {
                     public final void run()
                     {
                       AppMethodBeat.i(26717);
-                      bc.getNotification().p(a.1.1.1.this.wKZ, a.1.1.this.wKX);
-                      if (a.this.wKV)
+                      bg.getNotification().r(a.1.1.1.this.AGB, a.1.1.this.AGz);
+                      if (a.a(a.this))
                       {
-                        a.this.wKV = false;
-                        bc.getNotification().cA(false);
+                        a.b(a.this);
+                        bg.getNotification().dj(false);
                       }
                       AppMethodBeat.o(26717);
                     }
@@ -93,10 +91,10 @@ public final class a
               });
               AppMethodBeat.o(26719);
               return;
-              bool = localan.Pd();
+              bool = localas.Zx();
               break;
               label94:
-              i = f.vZ(paramAnonymousMessage);
+              i = com.tencent.mm.n.g.Eo(paramAnonymousMessage);
             }
           }
         }, 500L);
@@ -106,28 +104,28 @@ public final class a
     AppMethodBeat.o(26721);
   }
   
-  public final void a(int paramInt, n paramn, Object paramObject)
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
     AppMethodBeat.i(26722);
-    ae.i("MicroMsg.NotificationObserver", "event: %d", new Object[] { Integer.valueOf(paramInt) });
-    if ((!(paramObject instanceof String)) || (bu.isNullOrNil((String)paramObject)))
+    Log.i("MicroMsg.NotificationObserver", "event: %d", new Object[] { Integer.valueOf(paramInt) });
+    if ((!(paramObject instanceof String)) || (Util.isNullOrNil((String)paramObject)))
     {
-      ae.d("MicroMsg.NotificationObserver", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramn, paramObject });
+      Log.d("MicroMsg.NotificationObserver", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), paramMStorageEx, paramObject });
       AppMethodBeat.o(26722);
       return;
     }
-    if (!bc.aBZ()) {
-      bc.aCg();
+    if (!bg.aVy()) {
+      bg.aVF();
     }
-    for (paramInt = (int)com.tencent.mm.model.c.azF().aUK((String)paramObject).ght;; paramInt = 0)
+    for (paramInt = (int)com.tencent.mm.model.c.aSN().bjJ((String)paramObject).gMZ;; paramInt = 0)
     {
       this.mHandler.removeMessages(paramInt);
-      paramn = Message.obtain();
+      paramMStorageEx = Message.obtain();
       Bundle localBundle = new Bundle();
       localBundle.putString("com.tencent.mm.notification.observer", (String)paramObject);
-      paramn.setData(localBundle);
-      paramn.what = paramInt;
-      this.mHandler.sendMessageDelayed(paramn, 50L);
+      paramMStorageEx.setData(localBundle);
+      paramMStorageEx.what = paramInt;
+      this.mHandler.sendMessageDelayed(paramMStorageEx, 50L);
       AppMethodBeat.o(26722);
       return;
     }
@@ -135,7 +133,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.a.a
  * JD-Core Version:    0.7.0.1
  */

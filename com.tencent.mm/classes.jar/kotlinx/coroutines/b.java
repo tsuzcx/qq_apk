@@ -1,19 +1,19 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/Active;", "Lkotlinx/coroutines/NotCompleted;", "()V", "toString", "", "kotlinx-coroutines-core"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/Active;", "Lkotlinx/coroutines/NotCompleted;", "()V", "toString", "", "kotlinx-coroutines-core"})
 final class b
-  implements cc
+  implements ch
 {
-  public static final b OeB;
+  public static final b TTv;
   
   static
   {
-    AppMethodBeat.i(209190);
-    OeB = new b();
-    AppMethodBeat.o(209190);
+    AppMethodBeat.i(192318);
+    TTv = new b();
+    AppMethodBeat.o(192318);
   }
   
   public final String toString()

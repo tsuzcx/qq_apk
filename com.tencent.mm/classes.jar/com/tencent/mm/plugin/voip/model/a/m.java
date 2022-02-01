@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.voip.model.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.model.v;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.model.z;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.dzg;
-import com.tencent.mm.protocal.protobuf.eap;
-import com.tencent.mm.protocal.protobuf.eaq;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.etn;
+import com.tencent.mm.protocal.protobuf.euw;
+import com.tencent.mm.protocal.protobuf.eux;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class m
-  extends n<eap, eaq>
+  extends n<euw, eux>
 {
-  public m(int paramInt1, dzg paramdzg, byte[] paramArrayOfByte, long paramLong, int paramInt2)
+  public m(int paramInt1, etn parametn, byte[] paramArrayOfByte, long paramLong, int paramInt2)
   {
     AppMethodBeat.i(115256);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new eap();
-    ((b.a)localObject).hQG = new eaq();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/voipsync";
-    ((b.a)localObject).funcId = 174;
-    ((b.a)localObject).hQH = 62;
-    ((b.a)localObject).respCmdId = 1000000062;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (eap)this.rr.hQD.hQJ;
-    ((eap)localObject).Gxq = paramInt1;
-    ((eap)localObject).Igz = paramdzg;
-    ((eap)localObject).Gxr = paramLong;
-    ((eap)localObject).HzT = v.aAC();
-    ((eap)localObject).GjP = paramInt2;
-    ((eap)localObject).GjQ = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
-    ((eap)localObject).Idp = System.currentTimeMillis();
-    ae.i("MicroMsg.NetSceneVoipSync", "sync timestamp: " + ((eap)localObject).Idp);
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new euw();
+    ((d.a)localObject).iLO = new eux();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/voipsync";
+    ((d.a)localObject).funcId = 174;
+    ((d.a)localObject).iLP = 62;
+    ((d.a)localObject).respCmdId = 1000000062;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (euw)this.rr.iLK.iLR;
+    ((euw)localObject).LsZ = paramInt1;
+    ((euw)localObject).NsX = parametn;
+    ((euw)localObject).Lta = paramLong;
+    ((euw)localObject).MKC = z.aTY();
+    ((euw)localObject).Leu = paramInt2;
+    ((euw)localObject).Lev = new SKBuiltinBuffer_t().setBuffer(paramArrayOfByte);
+    ((euw)localObject).NpN = System.currentTimeMillis();
+    Log.i("MicroMsg.NetSceneVoipSync", "sync timestamp: " + ((euw)localObject).NpN);
     AppMethodBeat.o(115256);
   }
   
-  public final f eBL()
+  public final i fIF()
   {
     AppMethodBeat.i(115257);
     m.1 local1 = new m.1(this);
@@ -46,9 +46,9 @@ public final class m
     return local1;
   }
   
-  public final int eBN()
+  public final int fIH()
   {
-    return ((eap)this.rr.hQD.hQJ).GjP;
+    return ((euw)this.rr.iLK.iLR).Leu;
   }
   
   public final int getType()
@@ -58,7 +58,7 @@ public final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.model.a.m
  * JD-Core Version:    0.7.0.1
  */

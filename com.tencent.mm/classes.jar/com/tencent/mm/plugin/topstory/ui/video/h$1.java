@@ -15,9 +15,9 @@ final class h$1
   {
     AppMethodBeat.i(126072);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    this.BLN.fD(paramView);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    this.Gmt.fV(paramView);
     a.a(this, "com/tencent/mm/plugin/topstory/ui/video/TopStoryBaseVideoHolder$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(126072);
   }

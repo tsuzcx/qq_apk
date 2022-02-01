@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@color/ae1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:paddingTop="0.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" style="@style/a05">
+        <TextView android:id="@id/dyz" android:text="@string/i8e" style="@style/a0h" />
+        <LinearLayout style="@style/a0y">
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/jel" wallet:contentHint="@string/ieg" wallet:editType="a0y" wallet:titleText="@string/ieh" style="@style/a03" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/jf2" wallet:contentGravity="aq3|h6l" wallet:contentHint="@string/ic9" wallet:titleText="@string/i96" style="@style/ha" />
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/fgm" android:imeOptions="actionNext" wallet:contentHint="@string/i_h" wallet:titleText="@string/i_i" style="@style/a0v" />
+        </LinearLayout>
+        <Button android:id="@id/fz0" android:layout_width="fill_parent" android:layout_marginTop="16.0dip" android:text="@string/x5" style="@style/a0u" />
+    </LinearLayout>
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/c21" />
+</RelativeLayout>

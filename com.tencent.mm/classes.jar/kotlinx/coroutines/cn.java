@@ -1,44 +1,22 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.d;
-import d.d.f;
-import d.l;
-import d.z;
-import kotlinx.coroutines.internal.r;
-import kotlinx.coroutines.internal.x;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/UndispatchedCoroutine;", "T", "Lkotlinx/coroutines/internal/ScopeCoroutine;", "context", "Lkotlin/coroutines/CoroutineContext;", "uCont", "Lkotlin/coroutines/Continuation;", "(Lkotlin/coroutines/CoroutineContext;Lkotlin/coroutines/Continuation;)V", "afterResume", "", "state", "", "kotlinx-coroutines-core"})
-final class cn<T>
-  extends r<T>
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"SupervisorJob", "Lkotlinx/coroutines/CompletableJob;", "parent", "Lkotlinx/coroutines/Job;", "SupervisorJob0", "supervisorScope", "R", "block", "Lkotlin/Function2;", "Lkotlinx/coroutines/CoroutineScope;", "Lkotlin/coroutines/Continuation;", "", "Lkotlin/ExtensionFunctionType;", "(Lkotlin/jvm/functions/Function2;Lkotlin/coroutines/Continuation;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
+public final class cn
 {
-  public cn(f paramf, d<? super T> paramd)
+  public static final u hNy()
   {
-    super(paramf, paramd);
-  }
-  
-  public final void fI(Object paramObject)
-  {
-    AppMethodBeat.i(209194);
-    Object localObject2 = v.b(paramObject, this.Ohh);
-    paramObject = this.Ohh.gkg();
-    Object localObject1 = x.a(paramObject, null);
-    try
-    {
-      this.Ohh.eQ(localObject2);
-      localObject2 = z.Nhr;
-      return;
-    }
-    finally
-    {
-      x.b(paramObject, localObject1);
-      AppMethodBeat.o(209194);
-    }
+    AppMethodBeat.i(192387);
+    u localu = (u)new cm(null);
+    AppMethodBeat.o(192387);
+    return localu;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.cn
  * JD-Core Version:    0.7.0.1
  */

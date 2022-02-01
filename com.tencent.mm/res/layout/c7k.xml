@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/b6j" android:paddingLeft="@dimen/bh" android:paddingTop="@dimen/bh" android:paddingRight="@dimen/bh" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/b4d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/c_w" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/f6b" android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginTop="8.0dip" android:src="@raw/wcpay_security_icon" android:layout_below="@id/b4d" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0dip" android:textStyle="bold" android:textColor="@color/a2x" android:id="@id/f6o" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:layout_below="@id/f6b" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/u_" android:gravity="center_horizontal" android:id="@id/f6j" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="{你名下各账户的累计提现金额较大，为保护资金安全、降低风险，请完善信息后继续操作}" android:layout_below="@id/f6o" android:layout_centerHorizontal="true" />
+        <Button android:enabled="true" android:textSize="17.0dip" android:textColor="@color/ag2" android:id="@id/b9t" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="32.0dip" android:layout_below="@id/f6j" android:layout_centerHorizontal="true" style="@style/ov" />
+    </RelativeLayout>
+</LinearLayout>

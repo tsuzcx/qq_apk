@@ -1,109 +1,111 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.g.a.xa;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.g.a.yb;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.protocal.protobuf.bjy;
-import com.tencent.mm.protocal.protobuf.bjz;
-import com.tencent.mm.protocal.protobuf.dqv;
-import com.tencent.mm.protocal.protobuf.dqw;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.bwf;
+import com.tencent.mm.protocal.protobuf.bwg;
+import com.tencent.mm.protocal.protobuf.ekr;
+import com.tencent.mm.protocal.protobuf.eks;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.dqv;>;
+import java.util.LinkedList<Lcom.tencent.mm.protocal.protobuf.ekr;>;
 
 public final class r
 {
-  private int EkO = 2000;
-  private int EkP = 50;
-  private LinkedList<dqv> EkQ = null;
-  ArrayList<Integer> EkR = null;
-  HashMap<String, String> EkS = null;
+  private int IXM = 2000;
+  private int IXN = 50;
+  private LinkedList<ekr> IXO = null;
+  ArrayList<Integer> IXP = null;
+  HashMap<String, String> IXQ = null;
   
-  private Integer be(LinkedList<dqv> paramLinkedList)
+  private Integer bz(LinkedList<ekr> paramLinkedList)
   {
     AppMethodBeat.i(78893);
     try
     {
-      Object localObject1 = new bjy();
-      ((bjy)localObject1).GXr = paramLinkedList;
-      ((bjy)localObject1).nIC = paramLinkedList.size();
-      Object localObject2 = new b.a();
-      ((b.a)localObject2).hQF = ((com.tencent.mm.bw.a)localObject1);
-      ((b.a)localObject2).hQG = new bjz();
-      ((b.a)localObject2).uri = "/cgi-bin/micromsg-bin/gettranstext";
-      ((b.a)localObject2).funcId = 631;
-      ((b.a)localObject2).hQH = 0;
-      ((b.a)localObject2).respCmdId = 0;
-      localObject2 = ((b.a)localObject2).aDS();
+      Object localObject1 = new bwf();
+      ((bwf)localObject1).Mcg = paramLinkedList;
+      ((bwf)localObject1).oTy = paramLinkedList.size();
+      Object localObject2 = new d.a();
+      ((d.a)localObject2).iLN = ((a)localObject1);
+      ((d.a)localObject2).iLO = new bwg();
+      ((d.a)localObject2).uri = "/cgi-bin/micromsg-bin/gettranstext";
+      ((d.a)localObject2).funcId = 631;
+      ((d.a)localObject2).iLP = 0;
+      ((d.a)localObject2).respCmdId = 0;
+      localObject2 = ((d.a)localObject2).aXF();
       localObject1 = Integer.valueOf(localObject1.hashCode());
-      ae.i("MicroMsg.NetSceneGetTransTextXWeb", "translate: reqStringList size = " + paramLinkedList.size() + " hashcode = " + localObject1);
-      IPCRunCgi.a((b)localObject2, new IPCRunCgi.a()
+      Log.i("MicroMsg.NetSceneGetTransTextXWeb", "translate: reqStringList size = " + paramLinkedList.size() + " hashcode = " + localObject1);
+      IPCRunCgi.a((d)localObject2, new IPCRunCgi.a()
       {
-        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb)
+        public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd)
         {
           AppMethodBeat.i(78891);
           if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0))
           {
-            ae.i("MicroMsg.NetSceneGetTransTextXWeb", "translate: onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+            Log.i("MicroMsg.NetSceneGetTransTextXWeb", "translate: onSceneEnd errType = %d, errCode = %d ,errMsg = %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
             AppMethodBeat.o(78891);
             return;
           }
           r localr = r.this;
-          paramAnonymousString = this.EkT;
-          bjz localbjz = (bjz)paramAnonymousb.hQE.hQJ;
-          ae.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: cgi return!!  processRespData hashcode = " + paramAnonymousString + "  response.MsgList.size() = " + localbjz.GXr.size());
-          if (!localr.EkR.remove(paramAnonymousString))
+          paramAnonymousString = this.IXR;
+          bwg localbwg = (bwg)paramAnonymousd.iLL.iLR;
+          Log.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: cgi return!!  processRespData hashcode = " + paramAnonymousString + "  response.MsgList.size() = " + localbwg.Mcg.size());
+          if (!localr.IXP.remove(paramAnonymousString))
           {
-            ae.e("MicroMsg.NetSceneGetTransTextXWeb", "translate: err cgi return!!");
+            Log.e("MicroMsg.NetSceneGetTransTextXWeb", "translate: err cgi return!!");
             AppMethodBeat.o(78891);
             return;
           }
           paramAnonymousString = "";
           paramAnonymousInt1 = 0;
-          if (paramAnonymousInt1 < localbjz.GXr.size())
+          if (paramAnonymousInt1 < localbwg.Mcg.size())
           {
-            dqw localdqw = (dqw)localbjz.GXr.get(paramAnonymousInt1);
-            if ((localdqw == null) || (localdqw.Ret != 0) || (localdqw.HXS == null) || (localdqw.HXS.trim().length() == 0))
+            eks localeks = (eks)localbwg.Mcg.get(paramAnonymousInt1);
+            if ((localeks == null) || (localeks.Ret != 0) || (localeks.NjY == null) || (localeks.NjY.trim().length() == 0))
             {
-              ae.e("MicroMsg.NetSceneGetTransTextXWeb", "translate: some translate message err!! ");
-              paramAnonymousb = paramAnonymousString;
-              if (localdqw != null)
+              Log.e("MicroMsg.NetSceneGetTransTextXWeb", "translate: some translate message err!! ");
+              paramAnonymousd = paramAnonymousString;
+              if (localeks != null)
               {
-                ae.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: some translate message err!! rsp ClientMsgID = " + localdqw.HXP + " TranslatedText = " + localdqw.HXS + " ret = " + localdqw.Ret);
-                paramAnonymousb = paramAnonymousString;
+                Log.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: some translate message err!! rsp ClientMsgID = " + localeks.NjV + " TranslatedText = " + localeks.NjY + " ret = " + localeks.Ret);
+                paramAnonymousd = paramAnonymousString;
               }
             }
             for (;;)
             {
               paramAnonymousInt1 += 1;
-              paramAnonymousString = paramAnonymousb;
+              paramAnonymousString = paramAnonymousd;
               break;
-              paramAnonymousb = paramAnonymousString;
-              if (localdqw.HpR != null)
+              paramAnonymousd = paramAnonymousString;
+              if (localeks.Myy != null)
               {
-                paramAnonymousb = paramAnonymousString;
-                if (localdqw.HpR.length() > 0) {
-                  paramAnonymousb = localdqw.HpR;
+                paramAnonymousd = paramAnonymousString;
+                if (localeks.Myy.length() > 0) {
+                  paramAnonymousd = localeks.Myy;
                 }
               }
-              localr.EkS.put(String.valueOf(localdqw.HXP), localdqw.HXS);
+              localr.IXQ.put(String.valueOf(localeks.NjV), localeks.NjY);
             }
           }
-          if (localr.EkR.size() == 0)
+          if (localr.IXP.size() == 0)
           {
-            ae.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: all cgi finish !! TranslateMessageListResultEvent publish!  translated HashMapAll.size() = " + localr.EkS.size());
-            localr.EkS.put("BrandWording", paramAnonymousString);
-            paramAnonymousString = new xa();
-            paramAnonymousb = new ArrayList();
-            paramAnonymousb.add(localr.EkS);
-            paramAnonymousString.dMB.dMC = paramAnonymousb;
-            com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousString);
+            Log.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: all cgi finish !! TranslateMessageListResultEvent publish!  translated HashMapAll.size() = " + localr.IXQ.size());
+            localr.IXQ.put("BrandWording", paramAnonymousString);
+            paramAnonymousString = new yb();
+            paramAnonymousd = new ArrayList();
+            paramAnonymousd.add(localr.IXQ);
+            paramAnonymousString.eet.eeu = paramAnonymousd;
+            EventCenter.instance.publish(paramAnonymousString);
           }
           AppMethodBeat.o(78891);
         }
@@ -113,18 +115,18 @@ public final class r
     }
     catch (Exception paramLinkedList)
     {
-      ae.e("MicroMsg.NetSceneGetTransTextXWeb", "translate: do cgi failed！！！");
+      Log.e("MicroMsg.NetSceneGetTransTextXWeb", "translate: do cgi failed！！！");
       AppMethodBeat.o(78893);
     }
     return null;
   }
   
-  public final boolean d(LinkedList<dqv> paramLinkedList, int paramInt1, int paramInt2)
+  public final boolean d(LinkedList<ekr> paramLinkedList, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(78892);
     if (paramLinkedList.size() == 0)
     {
-      ae.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: reqStringList is empty!!");
+      Log.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: reqStringList is empty!!");
       AppMethodBeat.o(78892);
       return false;
     }
@@ -137,50 +139,50 @@ public final class r
       if (paramInt2 <= 0) {
         break label195;
       }
-      ae.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: all cgi begin !! to translate reqStringList.size() = " + paramLinkedList.size() + " maxByte = " + paramInt1 + " maxCount = " + paramInt2);
-      this.EkS = new HashMap();
-      this.EkQ = paramLinkedList;
-      this.EkR = new ArrayList();
+      Log.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: all cgi begin !! to translate reqStringList.size() = " + paramLinkedList.size() + " maxByte = " + paramInt1 + " maxCount = " + paramInt2);
+      this.IXQ = new HashMap();
+      this.IXO = paramLinkedList;
+      this.IXP = new ArrayList();
       paramLinkedList = new LinkedList();
       i = 0;
-      if (i >= this.EkQ.size()) {
+      if (i >= this.IXO.size()) {
         break label280;
       }
-      localObject = (dqv)this.EkQ.get(i);
-      int j = ((dqv)localObject).HXQ.getBytes().length;
+      localObject = (ekr)this.IXO.get(i);
+      int j = ((ekr)localObject).NjW.getBytes().length;
       if (j <= paramInt1) {
         break label203;
       }
-      ae.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: translate string is too long need cut !! len = ".concat(String.valueOf(j)));
+      Log.d("MicroMsg.NetSceneGetTransTextXWeb", "translate: translate string is too long need cut !! len = ".concat(String.valueOf(j)));
       localObject = paramLinkedList;
     }
     for (;;)
     {
       i += 1;
-      paramLinkedList = (LinkedList<dqv>)localObject;
+      paramLinkedList = (LinkedList<ekr>)localObject;
       break label114;
-      paramInt1 = this.EkO;
+      paramInt1 = this.IXM;
       break;
       label195:
-      paramInt2 = this.EkP;
+      paramInt2 = this.IXN;
       break label34;
       label203:
       paramLinkedList.add(localObject);
       if (paramLinkedList.size() != paramInt2)
       {
         localObject = paramLinkedList;
-        if (i != this.EkQ.size() - 1) {}
+        if (i != this.IXO.size() - 1) {}
       }
       else
       {
-        paramLinkedList = be(paramLinkedList);
+        paramLinkedList = bz(paramLinkedList);
         if (paramLinkedList == null)
         {
-          ae.e("MicroMsg.NetSceneGetTransTextXWeb", "translate: do cgi err");
+          Log.e("MicroMsg.NetSceneGetTransTextXWeb", "translate: do cgi err");
           AppMethodBeat.o(78892);
           return false;
         }
-        this.EkR.add(paramLinkedList);
+        this.IXP.add(paramLinkedList);
         localObject = new LinkedList();
       }
     }

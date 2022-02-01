@@ -1,94 +1,48 @@
 package com.tencent.liteav.audio;
 
-import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
-import com.tencent.liteav.audio.impl.TXCTraeJNI;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 
 public class TXCLiveBGMPlayer
+  implements TXAudioEffectManager.TXMusicPlayObserver
 {
-  private static final int PLAY_ERR_AUDIO_TRACK = -3;
-  private static final int PLAY_ERR_AUDIO_TRACK_PLAY = -4;
-  private static final int PLAY_ERR_FILE_NOTFOUND = -2;
   private static final int PLAY_ERR_OPEN = -1;
   private static final int PLAY_SUCCESS = 0;
-  private static final String TAG;
-  private static TXCLiveBGMPlayer instance;
-  private Context mContext = null;
-  private String mFilePath = null;
-  private boolean mIsPause = false;
-  private boolean mIsRunning = false;
-  private WeakReference<f> mWeakListener = null;
+  private static final String TAG = "AudioCenter:TXCLiveBGMPlayer";
+  private int mBGMId;
+  private final Handler mHandler;
+  private boolean mIsPause;
+  private boolean mIsRunning;
+  private WeakReference<f> mWeakListener;
   
   static
   {
     AppMethodBeat.i(16236);
     com.tencent.liteav.basic.util.f.f();
-    TAG = "AudioCenter:" + TXCLiveBGMPlayer.class.getSimpleName();
     AppMethodBeat.o(16236);
+  }
+  
+  private TXCLiveBGMPlayer()
+  {
+    AppMethodBeat.i(221840);
+    this.mIsRunning = false;
+    this.mIsPause = false;
+    this.mWeakListener = null;
+    this.mBGMId = 2147483647;
+    this.mHandler = new Handler(Looper.getMainLooper());
+    AppMethodBeat.o(221840);
   }
   
   public static TXCLiveBGMPlayer getInstance()
   {
     AppMethodBeat.i(16222);
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new TXCLiveBGMPlayer();
-      }
-      TXCLiveBGMPlayer localTXCLiveBGMPlayer = instance;
-      AppMethodBeat.o(16222);
-      return localTXCLiveBGMPlayer;
-    }
-    finally
-    {
-      AppMethodBeat.o(16222);
-    }
+    TXCLiveBGMPlayer localTXCLiveBGMPlayer = a.a();
+    AppMethodBeat.o(16222);
+    return localTXCLiveBGMPlayer;
   }
-  
-  private native int nativeGetBitsPerChannel();
-  
-  private native int nativeGetChannels();
-  
-  private native int nativeGetCurDurationMS();
-  
-  private native int nativeGetCurPtsMS();
-  
-  private native int nativeGetDurationMS(String paramString);
-  
-  private native int nativeGetSampleRate();
-  
-  private void nativeOPlayProgress(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(16235);
-    onPlayProgress(paramLong1, paramLong2);
-    if (paramLong1 == paramLong2) {
-      onPlayEnd(0);
-    }
-    AppMethodBeat.o(16235);
-  }
-  
-  private native void nativePause();
-  
-  private native void nativeResume();
-  
-  private native int nativeSetCurPtsMS(int paramInt);
-  
-  private native void nativeSetPitch(float paramFloat);
-  
-  private native void nativeSetPlayoutVolume(float paramFloat);
-  
-  private native void nativeSetPublishVolume(float paramFloat);
-  
-  private native void nativeSetVolume(float paramFloat);
-  
-  private native boolean nativeStartPlay(String paramString, TXCLiveBGMPlayer paramTXCLiveBGMPlayer);
-  
-  private native void nativeStopPlay();
   
   private void onPlayEnd(final int paramInt)
   {
@@ -99,7 +53,7 @@ public class TXCLiveBGMPlayer
       if (this.mWeakListener != null) {
         localf = (f)this.mWeakListener.get();
       }
-      new Handler(Looper.getMainLooper()).post(new Runnable()
+      this.mHandler.post(new Runnable()
       {
         public void run()
         {
@@ -119,18 +73,26 @@ public class TXCLiveBGMPlayer
     }
   }
   
-  private void onPlayProgress(long paramLong1, long paramLong2)
+  private void onPlayProgress(final long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(16234);
-    f localf = null;
+    final f localf = null;
     try
     {
       if (this.mWeakListener != null) {
         localf = (f)this.mWeakListener.get();
       }
-      if (localf != null) {
-        localf.onPlayProgress(paramLong1, paramLong2);
-      }
+      this.mHandler.post(new Runnable()
+      {
+        public void run()
+        {
+          AppMethodBeat.i(221788);
+          if (localf != null) {
+            localf.onPlayProgress(paramLong1, this.c);
+          }
+          AppMethodBeat.o(221788);
+        }
+      });
       AppMethodBeat.o(16234);
       return;
     }
@@ -140,16 +102,16 @@ public class TXCLiveBGMPlayer
     }
   }
   
-  private void onPlayStart()
+  private void onPlayStart(int paramInt)
   {
-    AppMethodBeat.i(16232);
+    AppMethodBeat.i(221846);
     final f localf = null;
     try
     {
       if (this.mWeakListener != null) {
         localf = (f)this.mWeakListener.get();
       }
-      new Handler(Looper.getMainLooper()).post(new Runnable()
+      this.mHandler.post(new Runnable()
       {
         public void run()
         {
@@ -160,27 +122,34 @@ public class TXCLiveBGMPlayer
           AppMethodBeat.o(16280);
         }
       });
-      AppMethodBeat.o(16232);
+      AppMethodBeat.o(221846);
       return;
     }
     finally
     {
-      AppMethodBeat.o(16232);
+      AppMethodBeat.o(221846);
     }
   }
   
   public int getBGMDuration(String paramString)
   {
     AppMethodBeat.i(16229);
-    if (paramString == null)
-    {
-      i = nativeGetCurDurationMS();
-      AppMethodBeat.o(16229);
-      return i;
-    }
-    int i = nativeGetDurationMS(paramString);
+    int i = (int)TXAudioEffectManagerImpl.getInstance().getMusicDurationInMS(paramString);
     AppMethodBeat.o(16229);
     return i;
+  }
+  
+  public long getBGMGetCurrentProgressInMs(String paramString)
+  {
+    AppMethodBeat.i(221844);
+    if (paramString == null)
+    {
+      long l = TXAudioEffectManagerImpl.getInstance().getMusicCurrentPosInMS(this.mBGMId);
+      AppMethodBeat.o(221844);
+      return l;
+    }
+    AppMethodBeat.o(221844);
+    return 0L;
   }
   
   public boolean isPlaying()
@@ -193,12 +162,33 @@ public class TXCLiveBGMPlayer
     return (this.mIsRunning) && (!this.mIsPause);
   }
   
+  public void onComplete(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(221849);
+    onPlayEnd(paramInt2);
+    AppMethodBeat.o(221849);
+  }
+  
+  public void onPlayProgress(int paramInt, long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(221847);
+    onPlayProgress(paramLong1, paramLong2);
+    AppMethodBeat.o(221847);
+  }
+  
+  public void onStart(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(221848);
+    onPlayStart(paramInt2);
+    AppMethodBeat.o(221848);
+  }
+  
   public boolean pause()
   {
     AppMethodBeat.i(16226);
-    TXCLog.i(TAG, "pause");
+    TXCLog.i("AudioCenter:TXCLiveBGMPlayer", "pause");
     this.mIsPause = true;
-    nativePause();
+    TXAudioEffectManagerImpl.getInstance().pausePlayMusic(this.mBGMId);
     AppMethodBeat.o(16226);
     return true;
   }
@@ -206,48 +196,18 @@ public class TXCLiveBGMPlayer
   public boolean resume()
   {
     AppMethodBeat.i(16227);
-    TXCLog.i(TAG, "resume");
+    TXCLog.i("AudioCenter:TXCLiveBGMPlayer", "resume");
     this.mIsPause = false;
-    nativeResume();
+    TXAudioEffectManagerImpl.getInstance().resumePlayMusic(this.mBGMId);
     AppMethodBeat.o(16227);
     return true;
   }
   
-  public boolean setBGMPlayoutVolume(float paramFloat)
+  public void setBGMPosition(int paramInt)
   {
-    AppMethodBeat.i(182283);
-    nativeSetPlayoutVolume(paramFloat);
-    AppMethodBeat.o(182283);
-    return true;
-  }
-  
-  public int setBGMPosition(int paramInt)
-  {
-    AppMethodBeat.i(16230);
-    if (paramInt >= getBGMDuration(null))
-    {
-      TXCLog.e(TAG, "setMusicPosition with position out of current music duration , finish play!");
-      stopPlay();
-      onPlayEnd(0);
-      AppMethodBeat.o(16230);
-      return 0;
-    }
-    paramInt = nativeSetCurPtsMS(paramInt);
-    AppMethodBeat.o(16230);
-    return paramInt;
-  }
-  
-  public boolean setBGMPublishVolume(float paramFloat)
-  {
-    AppMethodBeat.i(182284);
-    nativeSetPublishVolume(paramFloat);
-    AppMethodBeat.o(182284);
-    return true;
-  }
-  
-  public void setContext(Context paramContext)
-  {
-    this.mContext = paramContext;
+    AppMethodBeat.i(221845);
+    TXAudioEffectManagerImpl.getInstance().seekMusicToPosInMS(this.mBGMId, paramInt);
+    AppMethodBeat.o(221845);
   }
   
   public void setOnPlayListener(f paramf)
@@ -268,14 +228,32 @@ public class TXCLiveBGMPlayer
   public void setPitch(float paramFloat)
   {
     AppMethodBeat.i(16231);
-    nativeSetPitch(paramFloat);
+    TXAudioEffectManagerImpl.getInstance().setMusicPitch(this.mBGMId, paramFloat);
     AppMethodBeat.o(16231);
+  }
+  
+  public boolean setPlayoutVolume(float paramFloat)
+  {
+    AppMethodBeat.i(221842);
+    TXCLog.i("AudioCenter:TXCLiveBGMPlayer", "setPlayoutVolume:".concat(String.valueOf(paramFloat)));
+    TXAudioEffectManagerImpl.getInstance().setMusicPlayoutVolume(this.mBGMId, (int)(100.0F * paramFloat));
+    AppMethodBeat.o(221842);
+    return true;
+  }
+  
+  public boolean setPublishVolume(float paramFloat)
+  {
+    AppMethodBeat.i(221843);
+    TXAudioEffectManagerImpl.getInstance().setMusicPublishVolume(this.mBGMId, (int)(100.0F * paramFloat));
+    AppMethodBeat.o(221843);
+    return true;
   }
   
   public boolean setVolume(float paramFloat)
   {
     AppMethodBeat.i(16228);
-    nativeSetVolume(paramFloat);
+    TXCLog.i("AudioCenter:TXCLiveBGMPlayer", "setVolume");
+    TXAudioEffectManagerImpl.getInstance().setMusicVolume(this.mBGMId, (int)(100.0F * paramFloat));
     AppMethodBeat.o(16228);
     return true;
   }
@@ -285,24 +263,34 @@ public class TXCLiveBGMPlayer
     AppMethodBeat.i(16224);
     if ((paramString == null) || (paramString.isEmpty()))
     {
-      TXCLog.e(TAG, "start live bgm failed! invalid params!");
+      TXCLog.e("AudioCenter:TXCLiveBGMPlayer", "start live bgm failed! invalid params!");
       AppMethodBeat.o(16224);
       return false;
     }
-    stopPlay();
-    this.mFilePath = paramString;
     this.mIsRunning = true;
-    if (!nativeStartPlay(this.mFilePath, this))
+    TXAudioEffectManager.AudioMusicParam localAudioMusicParam = new TXAudioEffectManager.AudioMusicParam(this.mBGMId, paramString);
+    localAudioMusicParam.publish = true;
+    localAudioMusicParam.loopCount = 0;
+    boolean bool = TXAudioEffectManagerImpl.getInstance().startPlayMusic(localAudioMusicParam);
+    TXAudioEffectManagerImpl.getInstance().setMusicObserver(this.mBGMId, this);
+    if (!bool)
     {
       onPlayEnd(-1);
       AppMethodBeat.o(16224);
       return false;
     }
-    TXCTraeJNI.traeStartPlay(this.mContext);
-    onPlayStart();
-    TXCLog.i(TAG, "start bgm play : filePath = ".concat(String.valueOf(paramString)));
+    TXCLog.i("AudioCenter:TXCLiveBGMPlayer", "start bgm play : filePath = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(16224);
     return true;
+  }
+  
+  public void stopAll()
+  {
+    AppMethodBeat.i(221841);
+    TXAudioEffectManagerImpl.getInstance().stopAllMusics();
+    TXAudioEffectManagerImpl.getAutoCacheHolder().stopAllMusics();
+    TXAudioEffectManagerImpl.getCacheInstance().stopAllMusics();
+    AppMethodBeat.o(221841);
   }
   
   public boolean stopPlay()
@@ -310,19 +298,34 @@ public class TXCLiveBGMPlayer
     AppMethodBeat.i(16225);
     this.mIsRunning = false;
     long l = System.currentTimeMillis();
-    nativeStopPlay();
-    TXCTraeJNI.traeStopPlay();
-    this.mFilePath = null;
-    this.mContext = null;
+    TXAudioEffectManagerImpl.getInstance().setMusicObserver(this.mBGMId, null);
+    TXAudioEffectManagerImpl.getInstance().stopPlayMusic(this.mBGMId);
     this.mIsPause = false;
-    TXCLog.i(TAG, "stopBGMPlay cost(MS): " + (System.currentTimeMillis() - l));
+    TXCLog.i("AudioCenter:TXCLiveBGMPlayer", "stopBGMPlay cost(MS): " + (System.currentTimeMillis() - l));
     AppMethodBeat.o(16225);
     return true;
+  }
+  
+  static class a
+  {
+    private static TXCLiveBGMPlayer a;
+    
+    static
+    {
+      AppMethodBeat.i(222006);
+      a = new TXCLiveBGMPlayer(null);
+      AppMethodBeat.o(222006);
+    }
+    
+    public static TXCLiveBGMPlayer a()
+    {
+      return a;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.audio.TXCLiveBGMPlayer
  * JD-Core Version:    0.7.0.1
  */

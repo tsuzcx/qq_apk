@@ -4,21 +4,21 @@ public final class x
   extends FileStructStat
   implements q.a
 {
-  public final String jQx;
+  public final String kTh;
   
   public x(String paramString)
   {
-    this.jQx = paramString;
+    this.kTh = paramString;
   }
   
-  public final long bbW()
+  public final long bxm()
   {
     return this.st_size;
   }
   
   public final String getFileName()
   {
-    return this.jQx;
+    return this.kTh;
   }
   
   public final long lastModified()
@@ -28,7 +28,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.x
  * JD-Core Version:    0.7.0.1
  */

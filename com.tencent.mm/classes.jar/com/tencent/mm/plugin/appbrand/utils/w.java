@@ -5,18 +5,18 @@ import java.lang.reflect.Method;
 
 public final class w
 {
-  public static boolean FB()
+  public static boolean Pk()
   {
-    AppMethodBeat.i(217745);
+    AppMethodBeat.i(204370);
     Class localClass = Class.forName("com.huawei.android.os.SystemPropertiesEx");
     boolean bool = ((Boolean)localClass.getMethod("getBoolean", new Class[] { String.class, Boolean.TYPE }).invoke(localClass.newInstance(), new Object[] { "ro.config.hw_magic_window_enable", Boolean.FALSE })).booleanValue();
-    AppMethodBeat.o(217745);
+    AppMethodBeat.o(204370);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.w
  * JD-Core Version:    0.7.0.1
  */

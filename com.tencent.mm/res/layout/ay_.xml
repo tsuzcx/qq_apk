@@ -1,57 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:scrollbarAlwaysDrawVerticalTrack="false" android:id="@id/emk" android:background="@color/xo" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:fadeScrollbars="true"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/b40" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:id="@id/dfs" style="@style/a5g">
-            <TextView android:id="@id/dfr" android:text="@string/e9t" style="@style/a5i" />
-            <LinearLayout android:orientation="horizontal" android:id="@id/c56" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="0.0dip" android:layout_height="0.0dip" />
-            <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/emg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <AutoCompleteTextView style="@style/a5e" />
-                </FrameLayout>
-            </com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl>
-            <ImageView android:id="@id/emb" style="@style/a5f" />
+<RelativeLayout android:orientation="horizontal" android:paddingTop="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/be9" android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="1.0">
+        <ImageView android:id="@id/a7" android:layout_width="@dimen/kt" android:layout_height="@dimen/kt" android:scaleType="fitXY" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/lg" android:textColor="@color/a3i" android:ellipsize="end" android:id="@id/aw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:maxLength="15" />
+            <TextView android:textSize="@dimen/ky" android:textColor="@color/ao" android:id="@id/ft5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ao" />
         </LinearLayout>
-        <LinearLayout android:id="@id/emj" style="@style/a5g">
-            <TextView android:text="@string/e9m" style="@style/a5i" />
-        </LinearLayout>
-        <LinearLayout android:id="@id/emf" android:visibility="gone" style="@style/a5g">
-            <TextView android:text="@string/e9k" style="@style/a5i" />
-            <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/eme" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <AutoCompleteTextView style="@style/a5e" />
-                </FrameLayout>
-            </com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl>
-            <ImageView android:id="@id/ema" android:visibility="invisible" style="@style/a5f" />
-        </LinearLayout>
-        <LinearLayout android:id="@id/emd" android:visibility="gone" style="@style/a5g">
-            <TextView android:text="@string/e9i" style="@style/a5i" />
-            <com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl android:id="@id/emc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <AutoCompleteTextView style="@style/a5e" />
-                </FrameLayout>
-            </com.tencent.mm.plugin.qqmail.ui.MailAddrsViewControl>
-            <ImageView android:id="@id/em_" android:visibility="invisible" style="@style/a5f" />
-        </LinearLayout>
-        <LinearLayout android:id="@id/dg0" style="@style/a5g">
-            <TextView android:text="@string/e9r" style="@style/a5i" />
-            <EditText android:textColor="@color/y4" android:id="@id/emo" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
-            <ImageView android:id="@id/emn" android:visibility="gone" android:src="@drawable/a1t" style="@style/a5j" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/em9" android:background="@drawable/a7q" android:focusable="true" style="@style/a5g">
-            <TextView android:textSize="@dimen/i" android:textColor="@color/z6" android:id="@id/emi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/e9c" android:layout_weight="1.0" />
-            <ImageView android:id="@id/emh" android:src="@raw/qqmail_attach_icon_normal" style="@style/a5d" />
-        </LinearLayout>
-        <LinearLayout android:visibility="gone" style="@style/a5h">
-            <LinearLayout android:orientation="vertical" android:id="@id/ef5" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <EditText android:textSize="@dimen/gx" android:gravity="center|left|top" android:id="@id/eml" android:background="@null" android:padding="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="100.0dip" />
-        <com.tencent.mm.ui.widget.MMWebView android:layout_gravity="center|left|top" android:id="@id/emm" android:background="@null" android:padding="5.0dip" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="100.0dip" />
-        <LinearLayout android:gravity="center|top" android:orientation="vertical" android:id="@id/fgt" android:background="@drawable/r2" android:padding="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="20.0dip" android:layout_marginBottom="15.0dip" android:minHeight="100.0dip">
-            <TextView android:textSize="20.0sp" android:textColor="@color/y4" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/erc" />
-            <TextView android:textSize="15.0sp" android:textColor="@color/y4" android:id="@id/f3z" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/ere" android:maxLines="6" android:singleLine="false" />
-            <ImageView android:id="@id/emw" android:layout_width="220.0dip" android:layout_height="220.0dip" android:layout_marginTop="23.0dip" android:src="@drawable/ang" />
-            <TextView android:textSize="12.0sp" android:textColor="@color/km" android:gravity="center" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="33.0dip" android:text="@string/erd" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="right" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <com.tencent.mm.wallet_core.ui.formview.WalletFormView android:gravity="right" android:id="@id/e83" android:background="@null" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="70.0dip" android:minHeight="0.0dip" android:hint="@string/ecp" wallet:contentGravity="aq3|h6l" wallet:contentHint="@string/ecp" wallet:layoutRes="@layout/ay6" style="@style/a0x" />
+            <TextView android:textSize="@dimen/lg" android:textColor="@color/a2x" android:id="@id/e84" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eco" />
         </LinearLayout>
     </LinearLayout>
-</ScrollView>
+    <View android:id="@id/e87" android:background="@drawable/a9m" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="10.0dip" android:layout_below="@id/be9" />
+</RelativeLayout>

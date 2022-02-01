@@ -6,6 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tav.ResourceLoadUtil;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.decoder.DecoderUtils;
+import com.tencent.tav.decoder.logger.Logger;
 import java.io.FileDescriptor;
 import java.io.PrintStream;
 import java.lang.reflect.Field;
@@ -32,12 +33,12 @@ public class AssetExtractor
   
   static
   {
-    AppMethodBeat.i(215153);
+    AppMethodBeat.i(218504);
     DOWNGRADING = false;
     if (ResourceLoadUtil.isLoaded())
     {
       nativeInit();
-      AppMethodBeat.o(215153);
+      AppMethodBeat.o(218504);
       return;
     }
     System.out.println("loadlibrary : tav start");
@@ -46,12 +47,12 @@ public class AssetExtractor
       System.loadLibrary("tav");
       ResourceLoadUtil.setLoaded(true);
       nativeInit();
-      AppMethodBeat.o(215153);
+      AppMethodBeat.o(218504);
       return;
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(215153);
+      AppMethodBeat.o(218504);
     }
   }
   
@@ -62,7 +63,7 @@ public class AssetExtractor
   
   public AssetExtractor(boolean paramBoolean)
   {
-    AppMethodBeat.i(215131);
+    AppMethodBeat.i(218482);
     this.released = false;
     this.mNativeContext = 0L;
     this.sourcePath = "";
@@ -72,7 +73,7 @@ public class AssetExtractor
     if (paramBoolean) {
       this.delegate = new ApiAssetExtractorDelegate();
     }
-    AppMethodBeat.o(215131);
+    AppMethodBeat.o(218482);
   }
   
   private synchronized native boolean advanceNative();
@@ -105,35 +106,35 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(215143);
+        AppMethodBeat.i(218494);
         if (this.delegate != null)
         {
           bool = this.delegate.advance();
-          AppMethodBeat.o(215143);
+          AppMethodBeat.o(218494);
           return bool;
         }
         if (!this.released)
         {
           bool = advanceNative();
-          AppMethodBeat.o(215143);
+          AppMethodBeat.o(218494);
           continue;
         }
         boolean bool = false;
       }
       finally {}
-      AppMethodBeat.o(215143);
+      AppMethodBeat.o(218494);
     }
   }
   
   public AssetExtractor clone()
   {
-    AppMethodBeat.i(215132);
+    AppMethodBeat.i(218483);
     AssetExtractor localAssetExtractor = new AssetExtractor();
     localAssetExtractor.setSize(getSize());
     localAssetExtractor.setPreferRotation(getPreferRotation());
     localAssetExtractor.setDuration(getDuration());
     localAssetExtractor.setDataSource(this.sourcePath);
-    AppMethodBeat.o(215132);
+    AppMethodBeat.o(218483);
     return localAssetExtractor;
   }
   
@@ -183,15 +184,15 @@ public class AssetExtractor
   
   protected void finalize()
   {
-    AppMethodBeat.i(215136);
+    AppMethodBeat.i(218487);
     if (this.delegate != null)
     {
-      AppMethodBeat.o(215136);
+      AppMethodBeat.o(218487);
       return;
     }
     if (this.released)
     {
-      AppMethodBeat.o(215136);
+      AppMethodBeat.o(218487);
       return;
     }
     try
@@ -205,7 +206,7 @@ public class AssetExtractor
     }
     finally
     {
-      AppMethodBeat.o(215136);
+      AppMethodBeat.o(218487);
     }
   }
   
@@ -213,9 +214,9 @@ public class AssetExtractor
   {
     try
     {
-      AppMethodBeat.i(215149);
+      AppMethodBeat.i(218500);
       long l = DecoderUtils.getAudioDuration(this);
-      AppMethodBeat.o(215149);
+      AppMethodBeat.o(218500);
       return l;
     }
     finally
@@ -229,12 +230,12 @@ public class AssetExtractor
   {
     try
     {
-      AppMethodBeat.i(215148);
+      AppMethodBeat.i(218499);
       if (this.duration == 0L) {
         this.duration = DecoderUtils.getDuration(this);
       }
       long l = this.duration;
-      AppMethodBeat.o(215148);
+      AppMethodBeat.o(218499);
       return l;
     }
     finally {}
@@ -244,12 +245,12 @@ public class AssetExtractor
   {
     try
     {
-      AppMethodBeat.i(215151);
+      AppMethodBeat.i(218502);
       if (this.preferRotation == -1) {
         this.preferRotation = ExtractorUtils.getPreferRotation(this);
       }
       int i = this.preferRotation;
-      AppMethodBeat.o(215151);
+      AppMethodBeat.o(218502);
       return i;
     }
     finally {}
@@ -263,23 +264,23 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(215146);
+        AppMethodBeat.i(218497);
         if (this.delegate != null)
         {
           l = this.delegate.getSampleTime();
-          AppMethodBeat.o(215146);
+          AppMethodBeat.o(218497);
           return l;
         }
         if (!this.released)
         {
           l = getSampleTimeNative();
-          AppMethodBeat.o(215146);
+          AppMethodBeat.o(218497);
           continue;
         }
         long l = -1L;
       }
       finally {}
-      AppMethodBeat.o(215146);
+      AppMethodBeat.o(218497);
     }
   }
   
@@ -289,23 +290,23 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(215145);
+        AppMethodBeat.i(218496);
         if (this.delegate != null)
         {
           i = this.delegate.getSampleTrackIndex();
-          AppMethodBeat.o(215145);
+          AppMethodBeat.o(218496);
           return i;
         }
         if (!this.released)
         {
           i = getSampleTrackIndexNative();
-          AppMethodBeat.o(215145);
+          AppMethodBeat.o(218496);
           continue;
         }
         int i = -1;
       }
       finally {}
-      AppMethodBeat.o(215145);
+      AppMethodBeat.o(218496);
     }
   }
   
@@ -313,12 +314,12 @@ public class AssetExtractor
   {
     try
     {
-      AppMethodBeat.i(215150);
+      AppMethodBeat.i(218501);
       if (this.size == null) {
         this.size = ExtractorUtils.getVideoSize(this);
       }
       CGSize localCGSize = this.size;
-      AppMethodBeat.o(215150);
+      AppMethodBeat.o(218501);
       return localCGSize;
     }
     finally {}
@@ -335,23 +336,23 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(215138);
+        AppMethodBeat.i(218489);
         if (this.delegate != null)
         {
           i = this.delegate.getTrackCount();
-          AppMethodBeat.o(215138);
+          AppMethodBeat.o(218489);
           return i;
         }
         if (!this.released)
         {
           i = getTrackCountNative();
-          AppMethodBeat.o(215138);
+          AppMethodBeat.o(218489);
           continue;
         }
         int i = 0;
       }
       finally {}
-      AppMethodBeat.o(215138);
+      AppMethodBeat.o(218489);
     }
   }
   
@@ -361,17 +362,17 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(215139);
+        AppMethodBeat.i(218490);
         if (this.delegate != null)
         {
           localMediaFormat = this.delegate.getTrackFormat(paramInt);
-          AppMethodBeat.o(215139);
+          AppMethodBeat.o(218490);
           return localMediaFormat;
         }
         MediaFormat localMediaFormat = new MediaFormat();
         if (this.released)
         {
-          AppMethodBeat.o(215139);
+          AppMethodBeat.o(218490);
           continue;
         }
         localMap = getTrackFormatNative(paramInt);
@@ -383,13 +384,13 @@ public class AssetExtractor
         Field localField = MediaFormat.class.getDeclaredField("mMap");
         localField.setAccessible(true);
         localField.set(localObject, localMap);
-        AppMethodBeat.o(215139);
+        AppMethodBeat.o(218490);
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          localException.getMessage();
+          Logger.e("VideoCore", localException.getMessage());
         }
       }
     }
@@ -406,23 +407,23 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(215144);
+        AppMethodBeat.i(218495);
         if (this.delegate != null)
         {
           paramInt = this.delegate.readSampleData(paramByteBuffer, paramInt);
-          AppMethodBeat.o(215144);
+          AppMethodBeat.o(218495);
           return paramInt;
         }
         if (!this.released)
         {
           paramInt = readSampleDataNative(paramByteBuffer, paramInt);
-          AppMethodBeat.o(215144);
+          AppMethodBeat.o(218495);
           continue;
         }
         paramInt = -1;
       }
       finally {}
-      AppMethodBeat.o(215144);
+      AppMethodBeat.o(218495);
     }
   }
   
@@ -432,18 +433,18 @@ public class AssetExtractor
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 263
+    //   2: ldc_w 271
     //   5: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
     //   12: ifnull +26 -> 38
     //   15: aload_0
     //   16: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
-    //   19: invokeinterface 265 1 0
+    //   19: invokeinterface 273 1 0
     //   24: aload_0
     //   25: aconst_null
     //   26: putfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
-    //   29: ldc_w 263
+    //   29: ldc_w 271
     //   32: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   35: aload_0
     //   36: monitorexit
@@ -456,7 +457,7 @@ public class AssetExtractor
     //   49: aload_0
     //   50: iconst_1
     //   51: putfield 92	com/tencent/tav/extractor/AssetExtractor:released	Z
-    //   54: ldc_w 263
+    //   54: ldc_w 271
     //   57: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   60: goto -25 -> 35
     //   63: astore_1
@@ -481,7 +482,7 @@ public class AssetExtractor
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 267
+    //   2: ldc_w 275
     //   5: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
@@ -490,8 +491,8 @@ public class AssetExtractor
     //   16: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
     //   19: lload_1
     //   20: iload_3
-    //   21: invokeinterface 269 4 0
-    //   26: ldc_w 267
+    //   21: invokeinterface 277 4 0
+    //   26: ldc_w 275
     //   29: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   32: aload_0
     //   33: monitorexit
@@ -502,8 +503,8 @@ public class AssetExtractor
     //   42: aload_0
     //   43: lload_1
     //   44: iload_3
-    //   45: invokespecial 271	com/tencent/tav/extractor/AssetExtractor:seekToNative	(JI)V
-    //   48: ldc_w 267
+    //   45: invokespecial 279	com/tencent/tav/extractor/AssetExtractor:seekToNative	(JI)V
+    //   48: ldc_w 275
     //   51: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: goto -22 -> 32
     //   57: astore 4
@@ -530,7 +531,7 @@ public class AssetExtractor
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 273
+    //   2: ldc_w 281
     //   5: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
@@ -538,8 +539,8 @@ public class AssetExtractor
     //   15: aload_0
     //   16: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
     //   19: iload_1
-    //   20: invokeinterface 275 2 0
-    //   25: ldc_w 273
+    //   20: invokeinterface 283 2 0
+    //   25: ldc_w 281
     //   28: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: aload_0
     //   32: monitorexit
@@ -549,8 +550,8 @@ public class AssetExtractor
     //   38: ifne +8 -> 46
     //   41: aload_0
     //   42: iload_1
-    //   43: invokespecial 277	com/tencent/tav/extractor/AssetExtractor:selectTrackNative	(I)V
-    //   46: ldc_w 273
+    //   43: invokespecial 285	com/tencent/tav/extractor/AssetExtractor:selectTrackNative	(I)V
+    //   46: ldc_w 281
     //   49: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   52: goto -21 -> 31
     //   55: astore_2
@@ -576,23 +577,23 @@ public class AssetExtractor
     {
       try
       {
-        AppMethodBeat.i(215134);
+        AppMethodBeat.i(218485);
         if (this.delegate != null)
         {
           this.delegate.setDataSource(paramAssetFileDescriptor);
-          AppMethodBeat.o(215134);
+          AppMethodBeat.o(218485);
           return;
         }
         if (paramAssetFileDescriptor.getDeclaredLength() < 0L)
         {
           setDataSource(paramAssetFileDescriptor.getFileDescriptor());
-          AppMethodBeat.o(215134);
+          AppMethodBeat.o(218485);
           continue;
         }
         setDataSource(paramAssetFileDescriptor.getFileDescriptor(), paramAssetFileDescriptor.getStartOffset(), paramAssetFileDescriptor.getDeclaredLength());
       }
       finally {}
-      AppMethodBeat.o(215134);
+      AppMethodBeat.o(218485);
     }
   }
   
@@ -602,7 +603,7 @@ public class AssetExtractor
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 300
+    //   2: ldc_w 308
     //   5: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
@@ -610,8 +611,8 @@ public class AssetExtractor
     //   15: aload_0
     //   16: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
     //   19: aload_1
-    //   20: invokeinterface 301 2 0
-    //   25: ldc_w 300
+    //   20: invokeinterface 309 2 0
+    //   25: ldc_w 308
     //   28: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: aload_0
     //   32: monitorexit
@@ -619,9 +620,9 @@ public class AssetExtractor
     //   34: aload_0
     //   35: aload_1
     //   36: lconst_0
-    //   37: ldc2_w 302
-    //   40: invokevirtual 299	com/tencent/tav/extractor/AssetExtractor:setDataSource	(Ljava/io/FileDescriptor;JJ)V
-    //   43: ldc_w 300
+    //   37: ldc2_w 310
+    //   40: invokevirtual 307	com/tencent/tav/extractor/AssetExtractor:setDataSource	(Ljava/io/FileDescriptor;JJ)V
+    //   43: ldc_w 308
     //   46: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   49: goto -18 -> 31
     //   52: astore_1
@@ -647,7 +648,7 @@ public class AssetExtractor
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 304
+    //   2: ldc_w 312
     //   5: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
@@ -655,25 +656,25 @@ public class AssetExtractor
     //   15: aload_0
     //   16: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
     //   19: aload_1
-    //   20: invokeinterface 305 2 0
+    //   20: invokeinterface 313 2 0
     //   25: aload_0
     //   26: aload_1
     //   27: putfield 98	com/tencent/tav/extractor/AssetExtractor:sourcePath	Ljava/lang/String;
     //   30: aload_1
-    //   31: invokestatic 311	com/tencent/tav/extractor/wrapper/ExtractorWrapperPool:contains	(Ljava/lang/String;)Z
+    //   31: invokestatic 319	com/tencent/tav/extractor/wrapper/ExtractorWrapperPool:contains	(Ljava/lang/String;)Z
     //   34: ifeq +20 -> 54
     //   37: aload_0
     //   38: getfield 98	com/tencent/tav/extractor/AssetExtractor:sourcePath	Ljava/lang/String;
     //   41: aload_0
-    //   42: invokestatic 315	com/tencent/tav/extractor/wrapper/ExtractorWrapperPool:fillIn	(Ljava/lang/String;Lcom/tencent/tav/extractor/AssetExtractor;)V
-    //   45: ldc_w 304
+    //   42: invokestatic 323	com/tencent/tav/extractor/wrapper/ExtractorWrapperPool:fillIn	(Ljava/lang/String;Lcom/tencent/tav/extractor/AssetExtractor;)V
+    //   45: ldc_w 312
     //   48: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: aload_0
     //   52: monitorexit
     //   53: return
     //   54: aload_1
-    //   55: invokestatic 320	com/tencent/tav/extractor/wrapper/ExtractorLoader:cacheExtractor	(Ljava/lang/String;)V
-    //   58: ldc_w 304
+    //   55: invokestatic 328	com/tencent/tav/extractor/wrapper/ExtractorLoader:cacheExtractor	(Ljava/lang/String;)V
+    //   58: ldc_w 312
     //   61: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   64: goto -13 -> 51
     //   67: astore_1
@@ -713,7 +714,7 @@ public class AssetExtractor
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 322
+    //   2: ldc_w 330
     //   5: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
     //   9: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
@@ -721,8 +722,8 @@ public class AssetExtractor
     //   15: aload_0
     //   16: getfield 109	com/tencent/tav/extractor/AssetExtractor:delegate	Lcom/tencent/tav/extractor/IAssetExtractorDelegate;
     //   19: iload_1
-    //   20: invokeinterface 324 2 0
-    //   25: ldc_w 322
+    //   20: invokeinterface 332 2 0
+    //   25: ldc_w 330
     //   28: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   31: aload_0
     //   32: monitorexit
@@ -732,8 +733,8 @@ public class AssetExtractor
     //   38: ifne +8 -> 46
     //   41: aload_0
     //   42: iload_1
-    //   43: invokespecial 326	com/tencent/tav/extractor/AssetExtractor:unselectTrackNative	(I)V
-    //   46: ldc_w 322
+    //   43: invokespecial 334	com/tencent/tav/extractor/AssetExtractor:unselectTrackNative	(I)V
+    //   46: ldc_w 330
     //   49: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   52: goto -21 -> 31
     //   55: astore_2
@@ -755,7 +756,7 @@ public class AssetExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.extractor.AssetExtractor
  * JD-Core Version:    0.7.0.1
  */

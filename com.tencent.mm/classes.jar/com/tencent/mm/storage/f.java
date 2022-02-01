@@ -4,15 +4,15 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.p;
 import com.tencent.mm.contact.c;
-import com.tencent.mm.sdk.platformtools.ab;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.LVBuffer;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.a.a;
 
 public final class f
   implements a<String>
 {
-  public CharSequence IHU;
+  public CharSequence NON;
   private String field_alias;
   public String field_conRemark;
   public int field_deleteFlag;
@@ -26,11 +26,11 @@ public final class f
   public int field_showHead;
   public String field_signature;
   public String field_username;
-  public int field_verifyFlag;
+  private int field_verifyFlag;
   public int field_weiboFlag;
-  public long ght;
+  public long gMZ;
   
-  private void fsz()
+  private void gzA()
   {
     AppMethodBeat.i(90781);
     if (this.field_lvbuff == null)
@@ -50,40 +50,40 @@ public final class f
         AppMethodBeat.o(90781);
         return;
       }
-      ab localab = new ab();
-      int i = localab.cB(this.field_lvbuff);
+      LVBuffer localLVBuffer = new LVBuffer();
+      int i = localLVBuffer.initParse(this.field_lvbuff);
       if (i != 0)
       {
         AppMethodBeat.o(90781);
         return;
       }
-      localab.aba(4);
-      localab.aba(4);
-      localab.fob();
-      localab.aba(8);
-      localab.aba(4);
-      localab.fob();
-      localab.fob();
-      localab.aba(4);
-      localab.aba(4);
-      localab.fob();
-      localab.fob();
-      localab.aba(4);
-      localab.aba(4);
-      this.field_signature = localab.getString();
-      localab.fob();
-      localab.fob();
-      localab.fob();
-      localab.aba(4);
-      localab.aba(4);
-      localab.fob();
-      localab.aba(4);
-      localab.fob();
-      localab.fob();
-      localab.aba(4);
-      localab.aba(4);
-      if (!localab.foc()) {
-        this.field_remarkDesc = localab.getString();
+      localLVBuffer.skipPosition(4);
+      localLVBuffer.skipPosition(4);
+      localLVBuffer.skipString();
+      localLVBuffer.skipPosition(8);
+      localLVBuffer.skipPosition(4);
+      localLVBuffer.skipString();
+      localLVBuffer.skipString();
+      localLVBuffer.skipPosition(4);
+      localLVBuffer.skipPosition(4);
+      localLVBuffer.skipString();
+      localLVBuffer.skipString();
+      localLVBuffer.skipPosition(4);
+      localLVBuffer.skipPosition(4);
+      this.field_signature = localLVBuffer.getString();
+      localLVBuffer.skipString();
+      localLVBuffer.skipString();
+      localLVBuffer.skipString();
+      localLVBuffer.skipPosition(4);
+      localLVBuffer.skipPosition(4);
+      localLVBuffer.skipString();
+      localLVBuffer.skipPosition(4);
+      localLVBuffer.skipString();
+      localLVBuffer.skipString();
+      localLVBuffer.skipPosition(4);
+      localLVBuffer.skipPosition(4);
+      if (!localLVBuffer.checkGetFinish()) {
+        this.field_remarkDesc = localLVBuffer.getString();
       }
       this.field_lvbuff = null;
       AppMethodBeat.o(90781);
@@ -91,12 +91,12 @@ public final class f
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.AddressUIContact", "exception:%s", new Object[] { bu.o(localException) });
+      Log.e("MicroMsg.AddressUIContact", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
       AppMethodBeat.o(90781);
     }
   }
   
-  public final void aO(int paramInt, long paramLong)
+  public final void aT(int paramInt, long paramLong)
   {
     switch (paramInt)
     {
@@ -112,13 +112,13 @@ public final class f
       this.field_weiboFlag = ((int)paramLong);
       return;
     case 7: 
-      this.ght = paramLong;
+      this.gMZ = paramLong;
       return;
     }
     this.field_deleteFlag = ((int)paramLong);
   }
   
-  public final String adG()
+  public final String arJ()
   {
     AppMethodBeat.i(90780);
     if ((this.field_conRemark != null) && (!this.field_conRemark.trim().equals("")))
@@ -127,7 +127,7 @@ public final class f
       AppMethodBeat.o(90780);
       return localObject;
     }
-    Object localObject = c.wh(this.field_username);
+    Object localObject = c.Ew(this.field_username);
     if (localObject != null)
     {
       AppMethodBeat.o(90780);
@@ -136,7 +136,7 @@ public final class f
     if ((this.field_nickname == null) || (this.field_nickname.length() <= 0))
     {
       localObject = this.field_alias;
-      if (!bu.isNullOrNil((String)localObject))
+      if (!Util.isNullOrNil((String)localObject))
       {
         AppMethodBeat.o(90780);
         return localObject;
@@ -175,7 +175,31 @@ public final class f
     return localObject;
   }
   
-  public final void cN(int paramInt, String paramString)
+  public final void convertFrom(Cursor paramCursor)
+  {
+    AppMethodBeat.i(90779);
+    this.field_username = paramCursor.getString(0);
+    this.field_nickname = paramCursor.getString(1);
+    this.field_alias = paramCursor.getString(2);
+    this.field_conRemark = paramCursor.getString(3);
+    this.field_verifyFlag = paramCursor.getInt(4);
+    this.field_showHead = paramCursor.getInt(5);
+    this.field_weiboFlag = paramCursor.getInt(6);
+    this.gMZ = paramCursor.getLong(7);
+    this.field_deleteFlag = paramCursor.getInt(8);
+    this.field_lvbuff = paramCursor.getBlob(9);
+    this.field_descWordingId = paramCursor.getString(10);
+    this.field_openImAppid = paramCursor.getString(11);
+    if (paramCursor.getColumnCount() >= 14)
+    {
+      this.field_descWording = paramCursor.getString(12);
+      this.field_descWordingQuanpin = paramCursor.getString(13);
+    }
+    gzA();
+    AppMethodBeat.o(90779);
+  }
+  
+  public final void dh(int paramInt, String paramString)
   {
     switch (paramInt)
     {
@@ -212,34 +236,10 @@ public final class f
     this.field_descWordingQuanpin = paramString;
   }
   
-  public final void convertFrom(Cursor paramCursor)
-  {
-    AppMethodBeat.i(90779);
-    this.field_username = paramCursor.getString(0);
-    this.field_nickname = paramCursor.getString(1);
-    this.field_alias = paramCursor.getString(2);
-    this.field_conRemark = paramCursor.getString(3);
-    this.field_verifyFlag = paramCursor.getInt(4);
-    this.field_showHead = paramCursor.getInt(5);
-    this.field_weiboFlag = paramCursor.getInt(6);
-    this.ght = paramCursor.getLong(7);
-    this.field_deleteFlag = paramCursor.getInt(8);
-    this.field_lvbuff = paramCursor.getBlob(9);
-    this.field_descWordingId = paramCursor.getString(10);
-    this.field_openImAppid = paramCursor.getString(11);
-    if (paramCursor.getColumnCount() >= 14)
-    {
-      this.field_descWording = paramCursor.getString(12);
-      this.field_descWordingQuanpin = paramCursor.getString(13);
-    }
-    fsz();
-    AppMethodBeat.o(90779);
-  }
-  
-  public final void fsA()
+  public final void gzB()
   {
     AppMethodBeat.i(90782);
-    fsz();
+    gzA();
     AppMethodBeat.o(90782);
   }
   
@@ -252,7 +252,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.f
  * JD-Core Version:    0.7.0.1
  */

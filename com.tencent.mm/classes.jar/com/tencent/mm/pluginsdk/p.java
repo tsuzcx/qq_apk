@@ -9,7 +9,7 @@ public abstract interface p
 {
   public abstract boolean a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener);
   
-  public abstract boolean fK(String paramString);
+  public abstract boolean gw(String paramString);
   
   public abstract String v(Context paramContext, String paramString);
 }

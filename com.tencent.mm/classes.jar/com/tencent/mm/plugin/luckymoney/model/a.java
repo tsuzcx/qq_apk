@@ -1,41 +1,27 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.protocal.protobuf.abg;
-import com.tencent.mm.protocal.protobuf.abh;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.protocal.protobuf.xl;
+import com.tencent.mm.protocal.protobuf.xm;
 
 public final class a
-  extends com.tencent.mm.ak.a<abh>
+  extends c<xm>
 {
-  public a(String paramString)
+  public a(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(65161);
-    abg localabg = new abg();
-    localabg.Gta = paramString;
-    paramString = new com.tencent.mm.ak.b.a();
-    paramString.hQF = localabg;
-    paramString.hQG = new abh();
-    int i;
-    if (((b)g.ab(b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qNz, 1) == 1)
-    {
-      i = 1;
-      if (i == 0) {
-        break label105;
-      }
-      paramString.funcId = 479;
-    }
-    for (paramString.uri = "/cgi-bin/micromsg-bin/confirmshowsourcenew";; paramString.uri = "/cgi-bin/mmpay-bin/ftfhb/confirmshowsource")
-    {
-      c(paramString.aDS());
-      AppMethodBeat.o(65161);
-      return;
-      i = 0;
-      break;
-      label105:
-      paramString.funcId = 2968;
-    }
+    AppMethodBeat.i(213301);
+    xl localxl = new xl();
+    d.a locala = new d.a();
+    locala.iLN = localxl;
+    locala.iLO = new xm();
+    locala.funcId = 4193;
+    locala.uri = "/cgi-bin/micromsg-bin/checkandusetimelimitpromo";
+    localxl.iwu = paramString1;
+    localxl.signature = paramString2;
+    c(locala.aXF());
+    AppMethodBeat.o(213301);
   }
 }
 

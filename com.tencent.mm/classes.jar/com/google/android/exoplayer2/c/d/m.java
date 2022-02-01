@@ -6,10 +6,10 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class m
 {
-  public final int[] bhJ;
-  public final int bnb;
-  public final int[] bnd;
-  public final long[] boV;
+  public final int[] bhG;
+  public final int bmW;
+  public final int[] bmY;
+  public final long[] boQ;
   public final long[] offsets;
   public final int sampleCount;
   
@@ -36,10 +36,10 @@ final class m
     {
       a.checkArgument(bool1);
       this.offsets = paramArrayOfLong1;
-      this.bhJ = paramArrayOfInt1;
-      this.bnb = paramInt;
-      this.boV = paramArrayOfLong2;
-      this.bnd = paramArrayOfInt2;
+      this.bhG = paramArrayOfInt1;
+      this.bmW = paramInt;
+      this.boQ = paramArrayOfLong2;
+      this.bmY = paramArrayOfInt2;
       this.sampleCount = paramArrayOfLong1.length;
       AppMethodBeat.o(92132);
       return;
@@ -53,10 +53,10 @@ final class m
   public final int P(long paramLong)
   {
     AppMethodBeat.i(92133);
-    int i = x.a(this.boV, paramLong, false);
+    int i = x.a(this.boQ, paramLong, false);
     while (i >= 0)
     {
-      if ((this.bnd[i] & 0x1) != 0)
+      if ((this.bmY[i] & 0x1) != 0)
       {
         AppMethodBeat.o(92133);
         return i;
@@ -70,10 +70,10 @@ final class m
   public final int Q(long paramLong)
   {
     AppMethodBeat.i(92134);
-    int i = x.a(this.boV, paramLong, true, false);
-    while (i < this.boV.length)
+    int i = x.a(this.boQ, paramLong, true, false);
+    while (i < this.boQ.length)
     {
-      if ((this.bnd[i] & 0x1) != 0)
+      if ((this.bmY[i] & 0x1) != 0)
       {
         AppMethodBeat.o(92134);
         return i;
@@ -86,7 +86,7 @@ final class m
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.m
  * JD-Core Version:    0.7.0.1
  */

@@ -4,21 +4,21 @@ import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.f.b.c;
 import com.tencent.mm.plugin.expt.hellhound.a.f.b.d;
-import com.tencent.mm.protocal.protobuf.aup;
-import com.tencent.mm.protocal.protobuf.aur;
-import com.tencent.mm.protocal.protobuf.bot;
-import com.tencent.mm.protocal.protobuf.bou;
-import com.tencent.mm.protocal.protobuf.bov;
-import com.tencent.mm.protocal.protobuf.bow;
-import com.tencent.mm.protocal.protobuf.btk;
-import com.tencent.mm.protocal.protobuf.cia;
-import com.tencent.mm.protocal.protobuf.cie;
-import com.tencent.mm.protocal.protobuf.dcc;
-import com.tencent.mm.protocal.protobuf.dcg;
-import com.tencent.mm.protocal.protobuf.dwx;
-import com.tencent.mm.protocal.protobuf.dwy;
-import com.tencent.mm.protocal.protobuf.oh;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.bfy;
+import com.tencent.mm.protocal.protobuf.bga;
+import com.tencent.mm.protocal.protobuf.cbl;
+import com.tencent.mm.protocal.protobuf.cbm;
+import com.tencent.mm.protocal.protobuf.cbn;
+import com.tencent.mm.protocal.protobuf.cbo;
+import com.tencent.mm.protocal.protobuf.cgd;
+import com.tencent.mm.protocal.protobuf.cyh;
+import com.tencent.mm.protocal.protobuf.cyl;
+import com.tencent.mm.protocal.protobuf.dvg;
+import com.tencent.mm.protocal.protobuf.dvk;
+import com.tencent.mm.protocal.protobuf.erd;
+import com.tencent.mm.protocal.protobuf.ere;
+import com.tencent.mm.protocal.protobuf.pd;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -33,55 +33,55 @@ import org.json.JSONObject;
 
 public final class j
 {
-  public static void a(bot parambot, bow parambow, boolean paramBoolean)
+  public static void a(cbl paramcbl, cbo paramcbo, boolean paramBoolean)
   {
     int j = 0;
     long l2 = 0L;
     AppMethodBeat.i(122253);
-    Collections.sort(parambot.Hck, new Comparator() {});
-    Object localObject1 = c(parambot);
-    Object localObject2 = parambow.Hco.iterator();
+    Collections.sort(paramcbl.Mhn, new Comparator() {});
+    Object localObject1 = c(paramcbl);
+    Object localObject2 = paramcbo.Mhr.iterator();
     Object localObject3;
     List localList;
     while (((Iterator)localObject2).hasNext())
     {
-      localObject3 = (cie)((Iterator)localObject2).next();
-      localList = (List)((Map)localObject1).get(((cie)localObject3).sessionId);
+      localObject3 = (cyl)((Iterator)localObject2).next();
+      localList = (List)((Map)localObject1).get(((cyl)localObject3).sessionId);
       if ((localList != null) && (!localList.isEmpty())) {
-        ((bou)localList.get(0)).startTime = ((cie)localObject3).startTime;
+        ((cbm)localList.get(0)).startTime = ((cyl)localObject3).startTime;
       }
     }
-    localObject2 = parambow.Hcq.iterator();
+    localObject2 = paramcbo.Mht.iterator();
     while (((Iterator)localObject2).hasNext())
     {
-      localObject3 = (cia)((Iterator)localObject2).next();
-      localList = (List)((Map)localObject1).get(((cia)localObject3).duQ + "_" + ((cia)localObject3).startTime);
+      localObject3 = (cyh)((Iterator)localObject2).next();
+      localList = (List)((Map)localObject1).get(((cyh)localObject3).dMl + "_" + ((cyh)localObject3).startTime);
       if ((localList != null) && (!localList.isEmpty())) {
-        ((bou)localList.get(0)).startTime = ((cia)localObject3).startTime;
+        ((cbm)localList.get(0)).startTime = ((cyh)localObject3).startTime;
       }
     }
-    int k = parambot.Hck.size();
+    int k = paramcbl.Mhn.size();
     if (k > 0)
     {
-      localObject1 = (bou)parambot.Hck.getFirst();
+      localObject1 = (cbm)paramcbl.Mhn.getFirst();
       if (localObject1 != null) {
-        ((bou)localObject1).startTime = parambow.Hcm;
+        ((cbm)localObject1).startTime = paramcbo.Mhp;
       }
     }
     int i = 0;
     long l1;
     if (i < k)
     {
-      localObject1 = (bou)parambot.Hck.get(i);
+      localObject1 = (cbm)paramcbl.Mhn.get(i);
       if (localObject1 != null)
       {
         if (i + 1 >= k) {
           break label371;
         }
-        localObject2 = (bou)parambot.Hck.get(i + 1);
-        if ((localObject2 != null) && (((bou)localObject1).duration == 0L))
+        localObject2 = (cbm)paramcbl.Mhn.get(i + 1);
+        if ((localObject2 != null) && (((cbm)localObject1).duration == 0L))
         {
-          l1 = ((bou)localObject2).startTime - ((bou)localObject1).startTime;
+          l1 = ((cbm)localObject2).startTime - ((cbm)localObject1).startTime;
           if (l1 <= 0L) {
             break label365;
           }
@@ -89,7 +89,7 @@ public final class j
       }
       for (;;)
       {
-        ((bou)localObject1).duration = l1;
+        ((cbm)localObject1).duration = l1;
         i += 1;
         break;
         label365:
@@ -103,11 +103,11 @@ public final class j
       i = j;
       if (i < k)
       {
-        localObject1 = (bou)parambot.Hck.get(i);
-        if ((localObject1 == null) || (((bou)localObject1).duration <= 0L)) {
+        localObject1 = (cbm)paramcbl.Mhn.get(i);
+        if ((localObject1 == null) || (((cbm)localObject1).duration <= 0L)) {
           break label507;
         }
-        l1 = ((bou)localObject1).duration + l1;
+        l1 = ((cbm)localObject1).duration + l1;
       }
     }
     label507:
@@ -115,20 +115,20 @@ public final class j
     {
       i += 1;
       break;
-      parambow.Hcn = (parambow.Hcm + l1);
+      paramcbo.Mhq = (paramcbo.Mhp + l1);
       AppMethodBeat.o(122253);
       return;
       if (k > 0)
       {
-        parambot = (bou)parambot.Hck.getLast();
-        if (parambot != null)
+        paramcbl = (cbm)paramcbl.Mhn.getLast();
+        if (paramcbl != null)
         {
-          long l3 = parambow.Hcn - parambot.startTime;
+          long l3 = paramcbo.Mhq - paramcbl.startTime;
           l1 = l2;
           if (l3 > 0L) {
             l1 = l3;
           }
-          parambot.duration = l1;
+          paramcbl.duration = l1;
         }
       }
       AppMethodBeat.o(122253);
@@ -136,18 +136,18 @@ public final class j
     }
   }
   
-  public static void a(bow parambow, bou parambou)
+  public static void a(cbo paramcbo, cbm paramcbm)
   {
     AppMethodBeat.i(122256);
-    ae.i("HABBYGE-MALI.HellSessionReportUtil", "adjustSession");
+    Log.i("HABBYGE-MALI.HellSessionReportUtil", "adjustSession");
     Object localObject4 = null;
-    Object localObject5 = parambow.Hco.iterator();
+    Object localObject5 = paramcbo.Mhr.iterator();
     Object localObject1 = null;
     Object localObject2;
     Object localObject3;
     while (((Iterator)localObject5).hasNext())
     {
-      localObject2 = (cie)((Iterator)localObject5).next();
+      localObject2 = (cyl)((Iterator)localObject5).next();
       if (localObject2 != null) {
         if (localObject4 == null)
         {
@@ -157,10 +157,10 @@ public final class j
         else
         {
           localObject3 = localObject4;
-          if (((cie)localObject2).startTime < localObject4.startTime) {
+          if (((cyl)localObject2).startTime < localObject4.startTime) {
             localObject3 = localObject2;
           }
-          if (((cie)localObject2).endTime <= localObject1.endTime) {
+          if (((cyl)localObject2).endTime <= localObject1.endTime) {
             break label503;
           }
         }
@@ -172,12 +172,12 @@ public final class j
       localObject4 = localObject3;
       break;
       localObject5 = null;
-      Iterator localIterator = parambow.Hcq.iterator();
+      Iterator localIterator = paramcbo.Mht.iterator();
       localObject2 = null;
       Object localObject6;
       while (localIterator.hasNext())
       {
-        localObject3 = (cia)localIterator.next();
+        localObject3 = (cyh)localIterator.next();
         if (localObject3 != null) {
           if (localObject5 == null)
           {
@@ -187,10 +187,10 @@ public final class j
           else
           {
             localObject6 = localObject5;
-            if (((cia)localObject3).startTime < ((cia)localObject5).startTime) {
+            if (((cyh)localObject3).startTime < ((cyh)localObject5).startTime) {
               localObject6 = localObject3;
             }
-            if (((cia)localObject3).endTime <= ((cia)localObject2).endTime) {
+            if (((cyh)localObject3).endTime <= ((cyh)localObject2).endTime) {
               break label496;
             }
           }
@@ -212,18 +212,18 @@ public final class j
           }
           j = 0;
           i = j;
-          if (((cia)localObject5).duQ.equals(parambou.duQ))
+          if (((cyh)localObject5).dMl.equals(paramcbm.dMl))
           {
             i = j;
-            if (((cia)localObject5).startTime == parambou.startTime) {
+            if (((cyh)localObject5).startTime == paramcbm.startTime) {
               i = 1;
             }
           }
-          ((cia)localObject5).startTime = parambow.Hcm;
+          ((cyh)localObject5).startTime = paramcbo.Mhp;
           if (i != 0)
           {
-            ae.i("HABBYGE-MALI.HellSessionReportUtil", " adjustSession same page TRUE !!!");
-            parambou.startTime = ((cia)localObject5).startTime;
+            Log.i("HABBYGE-MALI.HellSessionReportUtil", " adjustSession same page TRUE !!!");
+            paramcbm.startTime = ((cyh)localObject5).startTime;
           }
         }
         while (localObject1 == null)
@@ -231,45 +231,45 @@ public final class j
           if (localObject2 == null) {
             break label490;
           }
-          ((cia)localObject2).endTime = parambow.Hcn;
+          ((cyh)localObject2).endTime = paramcbo.Mhq;
           AppMethodBeat.o(122256);
           return;
-          ae.e("HABBYGE-MALI.HellSessionReportUtil", " adjustSession same page FALSE !!!");
+          Log.e("HABBYGE-MALI.HellSessionReportUtil", " adjustSession same page FALSE !!!");
           continue;
-          if ((localObject5 != null) && (((cia)localObject5).startTime < localObject4.startTime))
+          if ((localObject5 != null) && (((cyh)localObject5).startTime < localObject4.startTime))
           {
             j = 0;
             i = j;
-            if (((cia)localObject5).duQ.equals(parambou.duQ))
+            if (((cyh)localObject5).dMl.equals(paramcbm.dMl))
             {
               i = j;
-              if (((cia)localObject5).startTime == parambou.startTime) {
+              if (((cyh)localObject5).startTime == paramcbm.startTime) {
                 i = 1;
               }
             }
-            ((cia)localObject5).startTime = parambow.Hcm;
+            ((cyh)localObject5).startTime = paramcbo.Mhp;
             if (i != 0)
             {
-              ae.i("HABBYGE-MALI.HellSessionReportUtil", " adjustSession same page TRUE !!!");
-              parambou.startTime = ((cia)localObject5).startTime;
+              Log.i("HABBYGE-MALI.HellSessionReportUtil", " adjustSession same page TRUE !!!");
+              paramcbm.startTime = ((cyh)localObject5).startTime;
             }
             else
             {
-              ae.e("HABBYGE-MALI.HellSessionReportUtil", " adjustSession same page FALSE !!!");
+              Log.e("HABBYGE-MALI.HellSessionReportUtil", " adjustSession same page FALSE !!!");
             }
           }
           else
           {
-            localObject4.startTime = parambow.Hcm;
+            localObject4.startTime = paramcbo.Mhp;
           }
         }
-        if ((localObject2 != null) && (((cia)localObject2).endTime > localObject1.endTime))
+        if ((localObject2 != null) && (((cyh)localObject2).endTime > localObject1.endTime))
         {
-          ((cia)localObject2).endTime = parambow.Hcn;
+          ((cyh)localObject2).endTime = paramcbo.Mhq;
           AppMethodBeat.o(122256);
           return;
         }
-        localObject1.endTime = parambow.Hcn;
+        localObject1.endTime = paramcbo.Mhq;
         label490:
         AppMethodBeat.o(122256);
         return;
@@ -281,127 +281,127 @@ public final class j
     }
   }
   
-  static void a(JSONArray paramJSONArray, aur paramaur, long paramLong)
+  static void a(JSONArray paramJSONArray, bga parambga, long paramLong)
   {
-    AppMethodBeat.i(196156);
+    AppMethodBeat.i(220587);
     ArrayList localArrayList = new ArrayList();
-    Object localObject1 = paramaur.GLC.iterator();
+    Object localObject1 = parambga.LPG.iterator();
     Object localObject2;
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (bov)((Iterator)localObject1).next();
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((bov)localObject2).kNn))) {
-        localArrayList.add(((bov)localObject2).kNn);
+      localObject2 = (cbn)((Iterator)localObject1).next();
+      if ((localObject2 != null) && (!TextUtils.isEmpty(((cbn)localObject2).businessId))) {
+        localArrayList.add(((cbn)localObject2).businessId);
       }
     }
     try
     {
-      localObject2 = paramaur.GLC.iterator();
+      localObject2 = parambga.LPG.iterator();
       i = 0;
       do
       {
         if (!((Iterator)localObject2).hasNext()) {
           break;
         }
-        localbov = (bov)((Iterator)localObject2).next();
-      } while (localbov == null);
+        localcbn = (cbn)((Iterator)localObject2).next();
+      } while (localcbn == null);
       localJSONObject = new JSONObject();
-      if (localbov.dGe != null) {
+      if (localcbn.dataPath != null) {
         break label259;
       }
       localObject1 = "";
       label137:
       localJSONObject.put("dataPath", localObject1);
-      if (localbov.value != null) {
+      if (localcbn.value != null) {
         break label269;
       }
       localObject1 = "";
       label159:
       localJSONObject.put("value", localObject1);
-      if (!TextUtils.isEmpty(localbov.kNn)) {
+      if (!TextUtils.isEmpty(localcbn.businessId)) {
         break label279;
       }
     }
-    catch (JSONException paramaur)
+    catch (JSONException parambga)
     {
       for (;;)
       {
-        bov localbov;
+        cbn localcbn;
         JSONObject localJSONObject;
         long l;
-        ae.printErrStackTrace("HABBYGE-MALI.HellSessionReportUtil", paramaur, "handleFuzzyPathDetailParams: %s", new Object[] { paramaur.getMessage() });
+        Log.printErrStackTrace("HABBYGE-MALI.HellSessionReportUtil", parambga, "handleFuzzyPathDetailParams: %s", new Object[] { parambga.getMessage() });
         if (paramJSONArray.length() > 0) {}
         for (int i = 0;; i = 1)
         {
-          l.w(paramLong, i);
-          AppMethodBeat.o(196156);
+          l.t(paramLong, i);
+          AppMethodBeat.o(220587);
           return;
         }
       }
     }
-    l = paramaur.startTime;
+    l = parambga.startTime;
     i += 1;
-    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.v(l, i);
+    localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.s(l, i);
     if (!localArrayList.contains(localObject1))
     {
       localArrayList.add(localObject1);
       for (;;)
       {
         localJSONObject.put("businessId", localObject1);
-        ae.i("HABBYGE-MALI.HellSessionReportUtil", "handleSessionPageDetailParams, bizId, %s", new Object[] { localObject1 });
+        Log.i("HABBYGE-MALI.HellSessionReportUtil", "handleSessionPageDetailParams, bizId, %s", new Object[] { localObject1 });
         paramJSONArray.put(localJSONObject);
         break;
         label259:
-        localObject1 = localbov.dGe;
+        localObject1 = localcbn.dataPath;
         break label137;
         label269:
-        localObject1 = localbov.value;
+        localObject1 = localcbn.value;
         break label159;
         label279:
-        localObject1 = localbov.kNn;
+        localObject1 = localcbn.businessId;
       }
     }
   }
   
-  static void a(JSONObject paramJSONObject, bou parambou, long paramLong)
+  static void a(JSONObject paramJSONObject, cbm paramcbm, long paramLong)
   {
-    AppMethodBeat.i(196157);
-    if (parambou.GLD.isEmpty())
+    AppMethodBeat.i(220588);
+    if (paramcbm.LPH.isEmpty())
     {
-      as(parambou.duQ, paramLong);
-      AppMethodBeat.o(196157);
+      ar(paramcbm.dMl, paramLong);
+      AppMethodBeat.o(220588);
       return;
     }
     JSONArray localJSONArray1 = new JSONArray();
-    Iterator localIterator1 = parambou.GLD.iterator();
+    Iterator localIterator1 = paramcbm.LPH.iterator();
     while (localIterator1.hasNext())
     {
-      dwx localdwx = (dwx)localIterator1.next();
-      if ((localdwx != null) && (!localdwx.Ics))
+      erd localerd = (erd)localIterator1.next();
+      if ((localerd != null) && (!localerd.NoQ))
       {
         JSONObject localJSONObject1 = new JSONObject();
-        localJSONObject1.put("viewId", localdwx.Icn);
-        localJSONObject1.put("type", localdwx.type);
-        localJSONObject1.put("action", localdwx.duP);
-        localJSONObject1.put("timestamp", localdwx.timestamp);
-        if (!localdwx.GbV.isEmpty())
+        localJSONObject1.put("viewId", localerd.NoL);
+        localJSONObject1.put("type", localerd.type);
+        localJSONObject1.put("action", localerd.eventId);
+        localJSONObject1.put("timestamp", localerd.timestamp);
+        if (!localerd.KVY.isEmpty())
         {
           JSONArray localJSONArray2 = new JSONArray();
-          Iterator localIterator2 = localdwx.GbV.iterator();
+          Iterator localIterator2 = localerd.KVY.iterator();
           while (localIterator2.hasNext())
           {
-            Object localObject = (oh)localIterator2.next();
-            if ((localObject != null) && (((oh)localObject).GbU == paramLong))
+            Object localObject = (pd)localIterator2.next();
+            if ((localObject != null) && (((pd)localObject).KVX == paramLong))
             {
-              localObject = ((oh)localObject).GbV.iterator();
+              localObject = ((pd)localObject).KVY.iterator();
               while (((Iterator)localObject).hasNext())
               {
-                bov localbov = (bov)((Iterator)localObject).next();
-                if ((localbov != null) && (localbov.dGe != null) && (a(paramLong, localbov.dGe, localdwx)))
+                cbn localcbn = (cbn)((Iterator)localObject).next();
+                if ((localcbn != null) && (localcbn.dataPath != null) && (a(paramLong, localcbn.dataPath, localerd)))
                 {
                   JSONObject localJSONObject2 = new JSONObject();
-                  localJSONObject2.put("dataPath", localbov.dGe);
-                  localJSONObject2.put("value", localbov.value);
+                  localJSONObject2.put("dataPath", localcbn.dataPath);
+                  localJSONObject2.put("value", localcbn.value);
                   localJSONArray2.put(localJSONObject2);
                 }
               }
@@ -410,43 +410,43 @@ public final class j
           if (localJSONArray2.length() > 0)
           {
             localJSONObject1.put("businessParam", localJSONArray2);
-            l.w(paramLong, 4);
+            l.t(paramLong, 4);
           }
         }
         for (;;)
         {
           localJSONArray1.put(localJSONObject1);
           break;
-          l.w(paramLong, 5);
+          l.t(paramLong, 5);
           continue;
-          g(localdwx.Icn, parambou.duQ, paramLong);
+          i(localerd.NoL, paramcbm.dMl, paramLong);
         }
       }
     }
     if (localJSONArray1.length() > 0) {}
     for (int i = 2;; i = 3)
     {
-      l.w(paramLong, i);
+      l.t(paramLong, i);
       paramJSONObject.put("viewOp", localJSONArray1);
-      AppMethodBeat.o(196157);
+      AppMethodBeat.o(220588);
       return;
     }
   }
   
-  static void a(JSONObject paramJSONObject, bou parambou, boolean paramBoolean, long paramLong)
+  static void a(JSONObject paramJSONObject, cbm paramcbm, boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(196159);
+    AppMethodBeat.i(220590);
     if (paramBoolean) {}
     JSONArray localJSONArray;
-    for (Object localObject1 = parambou.Hcl;; localObject1 = parambou.GLC)
+    for (Object localObject1 = paramcbm.Mho;; localObject1 = paramcbm.LPG)
     {
       localJSONArray = new JSONArray();
       if (!((List)localObject1).isEmpty()) {
         break;
       }
       paramJSONObject.put("businessParam", localJSONArray);
-      d(parambou.duQ, paramBoolean, paramLong);
-      AppMethodBeat.o(196159);
+      d(paramcbm.dMl, paramBoolean, paramLong);
+      AppMethodBeat.o(220590);
       return;
     }
     ArrayList localArrayList = new ArrayList();
@@ -454,39 +454,39 @@ public final class j
     Object localObject2;
     while (localIterator.hasNext())
     {
-      localObject2 = (bov)localIterator.next();
-      if ((localObject2 != null) && (!TextUtils.isEmpty(((bov)localObject2).kNn))) {
-        localArrayList.add(((bov)localObject2).kNn);
+      localObject2 = (cbn)localIterator.next();
+      if ((localObject2 != null) && (!TextUtils.isEmpty(((cbn)localObject2).businessId))) {
+        localArrayList.add(((cbn)localObject2).businessId);
       }
     }
     int i = 0;
     localIterator = ((List)localObject1).iterator();
     while (localIterator.hasNext())
     {
-      bov localbov = (bov)localIterator.next();
-      if (localbov != null)
+      cbn localcbn = (cbn)localIterator.next();
+      if (localcbn != null)
       {
         localObject2 = new JSONObject();
-        if (localbov.dGe == null)
+        if (localcbn.dataPath == null)
         {
           localObject1 = "";
           label202:
           ((JSONObject)localObject2).put("dataPath", localObject1);
-          if (localbov.value != null) {
+          if (localcbn.value != null) {
             break label343;
           }
           localObject1 = "";
           label224:
           ((JSONObject)localObject2).put("value", localObject1);
-          if (!TextUtils.isEmpty(localbov.kNn)) {
+          if (!TextUtils.isEmpty(localcbn.businessId)) {
             break label353;
           }
           int j;
           do
           {
-            long l = parambou.startTime;
+            long l = paramcbm.startTime;
             j = i + 1;
-            localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.v(l, j);
+            localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.s(l, j);
             i = j;
           } while (localArrayList.contains(localObject1));
           localArrayList.add(localObject1);
@@ -495,16 +495,16 @@ public final class j
         for (;;)
         {
           ((JSONObject)localObject2).put("businessId", localObject1);
-          ae.i("HABBYGE-MALI.HellSessionReportUtil", "handleSessionPageDetailParams, bizId, %s", new Object[] { localObject1 });
+          Log.i("HABBYGE-MALI.HellSessionReportUtil", "handleSessionPageDetailParams, bizId, %s", new Object[] { localObject1 });
           localJSONArray.put(localObject2);
           break;
-          localObject1 = localbov.dGe;
+          localObject1 = localcbn.dataPath;
           break label202;
           label343:
-          localObject1 = localbov.value;
+          localObject1 = localcbn.value;
           break label224;
           label353:
-          localObject1 = localbov.kNn;
+          localObject1 = localcbn.businessId;
         }
       }
     }
@@ -516,27 +516,27 @@ public final class j
     label401:
     for (i = 0;; i = 1)
     {
-      l.w(paramLong, i);
+      l.t(paramLong, i);
       paramJSONObject.put("businessParam", localJSONArray);
-      AppMethodBeat.o(196159);
+      AppMethodBeat.o(220590);
       return;
     }
   }
   
-  private static boolean a(long paramLong, String paramString, dwx paramdwx)
+  private static boolean a(long paramLong, String paramString, erd paramerd)
   {
-    AppMethodBeat.i(196158);
-    paramdwx = paramdwx.Icr.iterator();
+    AppMethodBeat.i(220589);
+    paramerd = paramerd.NoP.iterator();
     boolean bool = false;
     for (;;)
     {
-      if (!paramdwx.hasNext()) {
+      if (!paramerd.hasNext()) {
         break label107;
       }
-      Object localObject = (btk)paramdwx.next();
-      if ((localObject != null) && (((btk)localObject).GbU == paramLong))
+      Object localObject = (cgd)paramerd.next();
+      if ((localObject != null) && (((cgd)localObject).KVX == paramLong))
       {
-        localObject = ((btk)localObject).HgK.iterator();
+        localObject = ((cgd)localObject).MlP.iterator();
         if (((Iterator)localObject).hasNext())
         {
           String str = (String)((Iterator)localObject).next();
@@ -548,33 +548,33 @@ public final class j
       }
     }
     label107:
-    AppMethodBeat.o(196158);
+    AppMethodBeat.o(220589);
     return bool;
   }
   
-  static void as(String paramString, long paramLong)
+  static void ar(String paramString, long paramLong)
   {
-    AppMethodBeat.i(196160);
-    d.crw();
-    Object localObject = d.vq(paramLong);
+    AppMethodBeat.i(220591);
+    d.cQe();
+    Object localObject = d.Du(paramLong);
     int i;
     label88:
     int j;
     if (localObject != null)
     {
-      localObject = ((dcg)localObject).HKI.iterator();
+      localObject = ((dvk)localObject).MWr.iterator();
       i = 0;
       for (;;)
       {
         if (((Iterator)localObject).hasNext())
         {
-          dcc localdcc = (dcc)((Iterator)localObject).next();
-          if (localdcc != null)
+          dvg localdvg = (dvg)((Iterator)localObject).next();
+          if (localdvg != null)
           {
-            if (!paramString.equals(com.tencent.mm.plugin.expt.hellhound.core.b.aer(localdcc.duQ))) {
+            if (!paramString.equals(com.tencent.mm.plugin.expt.hellhound.core.b.aoE(localdvg.dMl))) {
               break label123;
             }
-            if (!localdcc.HKD.isEmpty())
+            if (!localdvg.MWm.isEmpty())
             {
               i = 1;
               j = i;
@@ -595,77 +595,77 @@ public final class j
       break label88;
       j = i;
       if (j != 0) {
-        l.w(paramLong, 3);
+        l.t(paramLong, 3);
       }
-      AppMethodBeat.o(196160);
+      AppMethodBeat.o(220591);
       return;
     }
   }
   
-  static Map<String, List<bou>> c(bot parambot)
+  static Map<String, List<cbm>> c(cbl paramcbl)
   {
     AppMethodBeat.i(122254);
     HashMap localHashMap = new HashMap();
-    Iterator localIterator = parambot.Hck.iterator();
+    Iterator localIterator = paramcbl.Mhn.iterator();
     while (localIterator.hasNext())
     {
-      bou localbou = (bou)localIterator.next();
-      if (localbou != null)
+      cbm localcbm = (cbm)localIterator.next();
+      if (localcbm != null)
       {
-        if ((localbou.dAa != null) && (!localbou.dAa.isEmpty()))
+        if ((localcbm.dRM != null) && (!localcbm.dRM.isEmpty()))
         {
-          if (localHashMap.containsKey(localbou.dAa))
+          if (localHashMap.containsKey(localcbm.dRM))
           {
-            List localList = (List)localHashMap.get(localbou.dAa);
-            parambot = localList;
+            List localList = (List)localHashMap.get(localcbm.dRM);
+            paramcbl = localList;
             if (localList != null) {}
           }
-          for (parambot = new ArrayList();; parambot = new ArrayList())
+          for (paramcbl = new ArrayList();; paramcbl = new ArrayList())
           {
-            parambot.add(localbou);
-            localHashMap.put(localbou.dAa, parambot);
+            paramcbl.add(localcbm);
+            localHashMap.put(localcbm.dRM, paramcbl);
             break;
           }
         }
-        parambot = new ArrayList();
-        parambot.add(localbou);
-        localHashMap.put(localbou.duQ + "_" + localbou.startTime, parambot);
+        paramcbl = new ArrayList();
+        paramcbl.add(localcbm);
+        localHashMap.put(localcbm.dMl + "_" + localcbm.startTime, paramcbl);
       }
     }
     AppMethodBeat.o(122254);
     return localHashMap;
   }
   
-  static Map<String, List<bou>> d(bot parambot)
+  static Map<String, List<cbm>> d(cbl paramcbl)
   {
     AppMethodBeat.i(122255);
     HashMap localHashMap = new HashMap();
-    Iterator localIterator = parambot.Hck.iterator();
+    Iterator localIterator = paramcbl.Mhn.iterator();
     while (localIterator.hasNext())
     {
-      bou localbou = (bou)localIterator.next();
-      if (localbou != null)
+      cbm localcbm = (cbm)localIterator.next();
+      if (localcbm != null)
       {
-        if ((localbou.dAa != null) && (!localbou.dAa.isEmpty()))
+        if ((localcbm.dRM != null) && (!localcbm.dRM.isEmpty()))
         {
-          if (localHashMap.containsKey(localbou.dAa))
+          if (localHashMap.containsKey(localcbm.dRM))
           {
-            List localList = (List)localHashMap.get(localbou.dAa);
-            parambot = localList;
+            List localList = (List)localHashMap.get(localcbm.dRM);
+            paramcbl = localList;
             if (localList != null) {}
           }
-          for (parambot = new ArrayList();; parambot = new ArrayList())
+          for (paramcbl = new ArrayList();; paramcbl = new ArrayList())
           {
-            parambot.add(localbou);
-            localHashMap.put(localbou.dAa, parambot);
+            paramcbl.add(localcbm);
+            localHashMap.put(localcbm.dRM, paramcbl);
             break;
           }
         }
-        if (!localHashMap.containsKey(localbou.duQ))
+        if (!localHashMap.containsKey(localcbm.dMl))
         {
-          parambot = new ArrayList();
-          parambot.add(localbou);
-          localHashMap.put(localbou.duQ, parambot);
+          paramcbl = new ArrayList();
+          paramcbl.add(localcbm);
+          localHashMap.put(localcbm.dMl, paramcbl);
         }
       }
     }
@@ -673,45 +673,45 @@ public final class j
     return localHashMap;
   }
   
-  public static void d(bow parambow, bot parambot, cie paramcie)
+  public static void d(cbo paramcbo, cbl paramcbl, cyl paramcyl)
   {
     AppMethodBeat.i(177407);
-    ae.i("HABBYGE-MALI.HellSessionReportUtil", "HellSessionReportUtil, realReport");
-    k.a(parambow, parambot);
-    k(parambow);
-    e(parambow, parambot, paramcie);
-    a.f(parambow);
+    Log.i("HABBYGE-MALI.HellSessionReportUtil", "HellSessionReportUtil, realReport");
+    k.a(paramcbo, paramcbl);
+    k(paramcbo);
+    e(paramcbo, paramcbl, paramcyl);
+    a.f(paramcbo);
     AppMethodBeat.o(177407);
   }
   
   static void d(String paramString, boolean paramBoolean, long paramLong)
   {
-    AppMethodBeat.i(196162);
+    AppMethodBeat.i(220593);
     if (paramBoolean)
     {
-      AppMethodBeat.o(196162);
+      AppMethodBeat.o(220593);
       return;
     }
-    d.crw();
-    Object localObject = d.vq(paramLong);
+    d.cQe();
+    Object localObject = d.Du(paramLong);
     int i;
     label101:
     int j;
     if (localObject != null)
     {
-      localObject = ((dcg)localObject).HKI.iterator();
+      localObject = ((dvk)localObject).MWr.iterator();
       i = 0;
       for (;;)
       {
         if (((Iterator)localObject).hasNext())
         {
-          dcc localdcc = (dcc)((Iterator)localObject).next();
-          if (localdcc != null)
+          dvg localdvg = (dvg)((Iterator)localObject).next();
+          if (localdvg != null)
           {
-            if (!paramString.equals(com.tencent.mm.plugin.expt.hellhound.core.b.aer(localdcc.duQ))) {
+            if (!paramString.equals(com.tencent.mm.plugin.expt.hellhound.core.b.aoE(localdvg.dMl))) {
               break label140;
             }
-            if (!localdcc.HKC.isEmpty())
+            if (!localdvg.MWl.isEmpty())
             {
               i = 1;
               j = i;
@@ -732,52 +732,52 @@ public final class j
       j = i;
       label123:
       if (j != 0) {
-        l.w(paramLong, 1);
+        l.t(paramLong, 1);
       }
-      AppMethodBeat.o(196162);
+      AppMethodBeat.o(220593);
       return;
     }
   }
   
-  private static bot e(bot parambot)
+  private static cbl e(cbl paramcbl)
   {
     AppMethodBeat.i(122257);
-    bot localbot = new bot();
-    parambot = parambot.Hck.iterator();
-    while (parambot.hasNext())
+    cbl localcbl = new cbl();
+    paramcbl = paramcbl.Mhn.iterator();
+    while (paramcbl.hasNext())
     {
-      bou localbou1 = (bou)parambot.next();
-      bou localbou2 = new bou();
-      localbou2.dAa = localbou1.dAa;
-      localbou2.duQ = localbou1.duQ;
-      localbou2.aHQ = localbou1.aHQ;
-      localbou2.startTime = localbou1.startTime;
-      localbou2.duration = localbou1.duration;
-      localbou2.count = localbou1.count;
-      localbot.Hck.add(localbou2);
+      cbm localcbm1 = (cbm)paramcbl.next();
+      cbm localcbm2 = new cbm();
+      localcbm2.dRM = localcbm1.dRM;
+      localcbm2.dMl = localcbm1.dMl;
+      localcbm2.aHK = localcbm1.aHK;
+      localcbm2.startTime = localcbm1.startTime;
+      localcbm2.duration = localcbm1.duration;
+      localcbm2.count = localcbm1.count;
+      localcbl.Mhn.add(localcbm2);
     }
     AppMethodBeat.o(122257);
-    return localbot;
+    return localcbl;
   }
   
-  private static void e(bow parambow, bot parambot, cie paramcie)
+  private static void e(cbo paramcbo, cbl paramcbl, cyl paramcyl)
   {
     AppMethodBeat.i(177408);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.d.a.rgA;
-    localObject = com.tencent.mm.plugin.expt.hellhound.a.d.a.cqT();
-    g.a(parambow, parambot, (aup)localObject, paramcie);
-    h.a(parambow, e(parambot), (aup)localObject, paramcie);
-    com.tencent.mm.plugin.expt.hellhound.a.f.c.k.crU();
-    parambow = com.tencent.mm.plugin.expt.hellhound.a.d.a.rgA;
-    com.tencent.mm.plugin.expt.hellhound.a.d.a.cqS();
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.d.a.sHW;
+    localObject = com.tencent.mm.plugin.expt.hellhound.a.d.a.cPB();
+    g.a(paramcbo, paramcbl, (bfy)localObject, paramcyl);
+    h.a(paramcbo, e(paramcbl), (bfy)localObject, paramcyl);
+    com.tencent.mm.plugin.expt.hellhound.a.f.c.k.cQC();
+    paramcbo = com.tencent.mm.plugin.expt.hellhound.a.d.a.sHW;
+    com.tencent.mm.plugin.expt.hellhound.a.d.a.cPA();
     AppMethodBeat.o(177408);
   }
   
-  static void g(String paramString1, String paramString2, long paramLong)
+  static void i(String paramString1, String paramString2, long paramLong)
   {
-    AppMethodBeat.i(196161);
-    d.crw();
-    Object localObject1 = d.vq(paramLong);
+    AppMethodBeat.i(220592);
+    d.cQe();
+    Object localObject1 = d.Du(paramLong);
     int i;
     label139:
     int j;
@@ -785,24 +785,24 @@ public final class j
     int k;
     if (localObject1 != null)
     {
-      localObject1 = ((dcg)localObject1).HKI.iterator();
+      localObject1 = ((dvk)localObject1).MWr.iterator();
       i = 0;
       while (((Iterator)localObject1).hasNext())
       {
-        Object localObject2 = (dcc)((Iterator)localObject1).next();
+        Object localObject2 = (dvg)((Iterator)localObject1).next();
         if (localObject2 != null)
         {
-          if (!paramString2.equals(com.tencent.mm.plugin.expt.hellhound.core.b.aer(((dcc)localObject2).duQ))) {
+          if (!paramString2.equals(com.tencent.mm.plugin.expt.hellhound.core.b.aoE(((dvg)localObject2).dMl))) {
             break label187;
           }
-          localObject2 = ((dcc)localObject2).HKD.iterator();
+          localObject2 = ((dvg)localObject2).MWm.iterator();
           for (;;)
           {
             if (((Iterator)localObject2).hasNext())
             {
-              dwy localdwy = (dwy)((Iterator)localObject2).next();
-              if ((localdwy != null) && (paramString1.equals(localdwy.Icn))) {
-                if (!localdwy.HKC.isEmpty())
+              ere localere = (ere)((Iterator)localObject2).next();
+              if ((localere != null) && (paramString1.equals(localere.NoL))) {
+                if (!localere.MWl.isEmpty())
                 {
                   i = 1;
                   j = 1;
@@ -826,25 +826,25 @@ public final class j
       break label139;
       k = i;
       if (k != 0) {
-        l.w(paramLong, 5);
+        l.t(paramLong, 5);
       }
-      AppMethodBeat.o(196161);
+      AppMethodBeat.o(220592);
       return;
       j = 0;
       break label142;
     }
   }
   
-  private static void k(bow parambow)
+  private static void k(cbo paramcbo)
   {
     AppMethodBeat.i(122251);
-    c.crs();
-    if (c.crv())
+    c.cQa();
+    if (c.cQd())
     {
-      ae.i("HABBYGE-MALI.HellSessionReportUtil", "HellSessionReportUtil, reportSession Detail true");
-      e.f(parambow);
+      Log.i("HABBYGE-MALI.HellSessionReportUtil", "HellSessionReportUtil, reportSession Detail true");
+      e.f(paramcbo);
     }
-    f.f(parambow);
+    f.f(paramcbo);
     AppMethodBeat.o(122251);
   }
 }

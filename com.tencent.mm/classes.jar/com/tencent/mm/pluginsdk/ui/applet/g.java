@@ -6,52 +6,35 @@ import android.net.Uri.Builder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.t;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.j;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.net.URLDecoder;
 import java.util.Iterator;
 import java.util.Set;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageDownloadUtil;", "", "()V", "TAG", "", "enableImageBlankReport", "", "canReport", "scene", "", "canReportBlank", "getFormattedNetType", "context", "Landroid/content/Context;", "getImageTypeByContentType", "contentType", "getRequestImageTypeByUrl", "url", "isJpeg", "isRequestJpeg", "isRequestWebp", "isRequestWxPic", "isResponseWebp", "isResponseWxPic", "isWebp", "isWxPic", "removeQueryParameter", "uri", "Landroid/net/Uri;", "key", "updateEnableImageBlankReport", "", "plugin-biz_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageDownloadUtil;", "", "()V", "TAG", "", "enableImageBlankReport", "", "canReport", "scene", "", "canReportBlank", "getFormattedNetType", "context", "Landroid/content/Context;", "getImageTypeByContentType", "contentType", "getRequestImageTypeByUrl", "url", "isJpeg", "isRequestJpeg", "isRequestWebp", "isRequestWxPic", "isResponseWebp", "isResponseWxPic", "isWebp", "isWxPic", "removeQueryParameter", "uri", "Landroid/net/Uri;", "key", "updateEnableImageBlankReport", "", "plugin-biz_release"})
 public final class g
 {
-  private static boolean FnE;
-  public static final g FnF;
+  private static boolean Keu;
+  public static final g Kev;
   
   static
   {
     AppMethodBeat.i(124863);
-    FnF = new g();
-    ffZ();
+    Kev = new g();
+    gpi();
     AppMethodBeat.o(124863);
   }
   
-  public static boolean Zu(int paramInt)
-  {
-    AppMethodBeat.i(124860);
-    if ((com.tencent.mm.api.b.Kk()) && ((paramInt == 1) || (paramInt == 3) || (paramInt == 2)))
-    {
-      AppMethodBeat.o(124860);
-      return true;
-    }
-    AppMethodBeat.o(124860);
-    return false;
-  }
-  
-  public static boolean Zv(int paramInt)
-  {
-    return (FnE) && (paramInt == 1);
-  }
-  
-  private static boolean aBK(String paramString)
+  private static boolean aQF(String paramString)
   {
     AppMethodBeat.i(124858);
     CharSequence localCharSequence = (CharSequence)paramString;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; (i == 0) && (p.i(paramString, "image/webp")); i = 0)
+    for (int i = 1; (i == 0) && (p.j(paramString, "image/webp")); i = 0)
     {
       AppMethodBeat.o(124858);
       return true;
@@ -60,71 +43,24 @@ public final class g
     return false;
   }
   
-  public static boolean aOg(String paramString)
+  public static boolean aif(int paramInt)
   {
-    AppMethodBeat.i(124854);
-    p.h(paramString, "url");
-    if ((com.tencent.mm.api.b.Kk()) && (com.tencent.mm.api.b.eC(paramString)))
+    AppMethodBeat.i(124860);
+    if ((com.tencent.mm.api.b.Ut()) && ((paramInt == 1) || (paramInt == 3) || (paramInt == 2)))
     {
-      AppMethodBeat.o(124854);
+      AppMethodBeat.o(124860);
       return true;
     }
-    AppMethodBeat.o(124854);
+    AppMethodBeat.o(124860);
     return false;
   }
   
-  public static boolean aOh(String paramString)
+  public static boolean aig(int paramInt)
   {
-    AppMethodBeat.i(124856);
-    p.h(paramString, "url");
-    if ((t.aJf()) && (com.tencent.mm.api.b.eA(paramString)))
-    {
-      AppMethodBeat.o(124856);
-      return true;
-    }
-    AppMethodBeat.o(124856);
-    return false;
+    return (Keu) && (paramInt == 1);
   }
   
-  public static boolean aOi(String paramString)
-  {
-    AppMethodBeat.i(124857);
-    CharSequence localCharSequence = (CharSequence)paramString;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; (i == 0) && (p.i(paramString, "image/wxpic")); i = 0)
-    {
-      AppMethodBeat.o(124857);
-      return true;
-    }
-    AppMethodBeat.o(124857);
-    return false;
-  }
-  
-  public static int aOj(String paramString)
-  {
-    AppMethodBeat.i(124859);
-    CharSequence localCharSequence = (CharSequence)paramString;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
-    {
-      AppMethodBeat.o(124859);
-      return -1;
-    }
-    if (aOi(paramString))
-    {
-      AppMethodBeat.o(124859);
-      return 1;
-    }
-    if (aBK(paramString))
-    {
-      AppMethodBeat.o(124859);
-      return 2;
-    }
-    AppMethodBeat.o(124859);
-    return 0;
-  }
-  
-  public static String c(Uri paramUri, String paramString)
+  public static String b(Uri paramUri, String paramString)
   {
     AppMethodBeat.i(124862);
     p.h(paramUri, "uri");
@@ -135,7 +71,7 @@ public final class g
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      if ((p.i(str, paramString) ^ true)) {
+      if ((p.j(str, paramString) ^ true)) {
         localBuilder.appendQueryParameter(str, paramUri.getQueryParameter(str));
       }
     }
@@ -145,18 +81,82 @@ public final class g
     return paramUri;
   }
   
-  public static final void ffZ()
+  public static boolean beI(String paramString)
+  {
+    AppMethodBeat.i(124854);
+    p.h(paramString, "url");
+    if ((com.tencent.mm.api.b.Ut()) && (com.tencent.mm.api.b.fo(paramString)))
+    {
+      AppMethodBeat.o(124854);
+      return true;
+    }
+    AppMethodBeat.o(124854);
+    return false;
+  }
+  
+  public static boolean beJ(String paramString)
+  {
+    AppMethodBeat.i(124856);
+    p.h(paramString, "url");
+    if ((t.bcZ()) && (com.tencent.mm.api.b.fm(paramString)))
+    {
+      AppMethodBeat.o(124856);
+      return true;
+    }
+    AppMethodBeat.o(124856);
+    return false;
+  }
+  
+  public static boolean beK(String paramString)
+  {
+    AppMethodBeat.i(124857);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; (i == 0) && (p.j(paramString, "image/wxpic")); i = 0)
+    {
+      AppMethodBeat.o(124857);
+      return true;
+    }
+    AppMethodBeat.o(124857);
+    return false;
+  }
+  
+  public static int beL(String paramString)
+  {
+    AppMethodBeat.i(124859);
+    CharSequence localCharSequence = (CharSequence)paramString;
+    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
+    for (int i = 1; i != 0; i = 0)
+    {
+      AppMethodBeat.o(124859);
+      return -1;
+    }
+    if (beK(paramString))
+    {
+      AppMethodBeat.o(124859);
+      return 1;
+    }
+    if (aQF(paramString))
+    {
+      AppMethodBeat.o(124859);
+      return 2;
+    }
+    AppMethodBeat.o(124859);
+    return 0;
+  }
+  
+  public static final void gpi()
   {
     AppMethodBeat.i(124853);
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qGy, 0);
+    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rZP, 0);
     boolean bool;
-    if ((j.IS_FLAVOR_RED) || (j.DEBUG)) {
+    if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG)) {
       bool = true;
     }
     for (;;)
     {
-      FnE = bool;
-      ae.i("MicroMsg.BizImageDownloadUtil", "alvinluo updateEnableImageBlankReport config: %d, %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(FnE) });
+      Keu = bool;
+      Log.i("MicroMsg.BizImageDownloadUtil", "alvinluo updateEnableImageBlankReport config: %d, %b", new Object[] { Integer.valueOf(i), Boolean.valueOf(Keu) });
       AppMethodBeat.o(124853);
       return;
       if (i == 1) {
@@ -167,35 +167,35 @@ public final class g
     }
   }
   
-  public static String hF(Context paramContext)
+  public static String iz(Context paramContext)
   {
     AppMethodBeat.i(124861);
-    if (!az.isConnected(paramContext))
+    if (!NetStatusUtil.isConnected(paramContext))
     {
       AppMethodBeat.o(124861);
       return "unknow";
     }
-    if (az.is4G(paramContext))
+    if (NetStatusUtil.is4G(paramContext))
     {
       AppMethodBeat.o(124861);
       return "4G";
     }
-    if (az.is5G(paramContext))
+    if (NetStatusUtil.is5G(paramContext))
     {
       AppMethodBeat.o(124861);
       return "5G";
     }
-    if (az.isWifi(paramContext))
+    if (NetStatusUtil.isWifi(paramContext))
     {
       AppMethodBeat.o(124861);
       return "WiFi";
     }
-    if (az.is3G(paramContext))
+    if (NetStatusUtil.is3G(paramContext))
     {
       AppMethodBeat.o(124861);
       return "3G";
     }
-    if (az.is2G(paramContext))
+    if (NetStatusUtil.is2G(paramContext))
     {
       AppMethodBeat.o(124861);
       return "2G";
@@ -204,11 +204,11 @@ public final class g
     return "other";
   }
   
-  public static boolean lC(String paramString1, String paramString2)
+  public static boolean mA(String paramString1, String paramString2)
   {
     AppMethodBeat.i(124855);
     p.h(paramString1, "url");
-    if ((t.aJf()) && (aBK(paramString2)) && (com.tencent.mm.api.b.eA(paramString1)))
+    if ((t.bcZ()) && (aQF(paramString2)) && (com.tencent.mm.api.b.fm(paramString1)))
     {
       AppMethodBeat.o(124855);
       return true;

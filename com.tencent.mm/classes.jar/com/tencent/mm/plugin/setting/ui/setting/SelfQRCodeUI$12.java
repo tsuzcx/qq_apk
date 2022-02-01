@@ -10,9 +10,9 @@ final class SelfQRCodeUI$12
   
   public final void run()
   {
-    AppMethodBeat.i(190311);
-    Toast.makeText(this.yUO, 2131762779, 1).show();
-    AppMethodBeat.o(190311);
+    AppMethodBeat.i(256479);
+    Toast.makeText(this.CZE, 2131764864, 1).show();
+    AppMethodBeat.o(256479);
   }
 }
 

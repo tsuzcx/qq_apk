@@ -14,21 +14,21 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Timer;
 
 public class FaceNumberItemView
   extends View
 {
-  static final long rwp = 29L;
-  Timer rwo;
-  private boolean rwq;
-  private Paint rwr;
-  private RectF rws;
-  private Bitmap rwt;
-  private int rwu;
-  int rwv;
-  Runnable rww;
+  static final long sWm = 29L;
+  Timer sWl;
+  private boolean sWn;
+  private Paint sWo;
+  private RectF sWp;
+  private Bitmap sWq;
+  private int sWr;
+  int sWs;
+  Runnable sWt;
   
   public FaceNumberItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -39,14 +39,14 @@ public class FaceNumberItemView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104166);
-    this.rwo = null;
-    this.rwq = false;
-    this.rwr = null;
-    this.rws = null;
-    this.rwt = null;
-    this.rwu = 17;
-    this.rwv = 0;
-    this.rww = new Runnable()
+    this.sWl = null;
+    this.sWn = false;
+    this.sWo = null;
+    this.sWp = null;
+    this.sWq = null;
+    this.sWr = 17;
+    this.sWs = 0;
+    this.sWt = new Runnable()
     {
       public final void run()
       {
@@ -58,25 +58,25 @@ public class FaceNumberItemView
           AppMethodBeat.o(104163);
           return;
         }
-        FaceNumberItemView.this.cvJ();
+        FaceNumberItemView.this.cTT();
         AppMethodBeat.o(104163);
       }
     };
     setLayerType(1, null);
-    this.rwr = new Paint();
-    this.rwr.setColor(paramContext.getResources().getColor(2131100331));
-    this.rwr.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
-    this.rws = new RectF();
+    this.sWo = new Paint();
+    this.sWo.setColor(paramContext.getResources().getColor(2131100366));
+    this.sWo.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_ATOP));
+    this.sWp = new RectF();
     AppMethodBeat.o(104166);
   }
   
-  public final void cvJ()
+  public final void cTT()
   {
     AppMethodBeat.i(104169);
-    if (this.rwo != null)
+    if (this.sWl != null)
     {
-      this.rwo.cancel();
-      this.rwo = null;
+      this.sWl.cancel();
+      this.sWl = null;
     }
     AppMethodBeat.o(104169);
   }
@@ -87,35 +87,35 @@ public class FaceNumberItemView
     super.onDraw(paramCanvas);
     float f2;
     float f1;
-    if (this.rwu == 17)
+    if (this.sWr == 17)
     {
-      f2 = getWidth() - this.rwt.getWidth() >> 1;
-      f1 = getHeight() - this.rwt.getHeight() >> 1;
+      f2 = getWidth() - this.sWq.getWidth() >> 1;
+      f1 = getHeight() - this.sWq.getHeight() >> 1;
     }
     for (;;)
     {
-      if (!this.rwq) {
-        paramCanvas.drawBitmap(this.rwt, f2, f1, null);
+      if (!this.sWn) {
+        paramCanvas.drawBitmap(this.sWq, f2, f1, null);
       }
-      this.rws.set(f2, 0.0F, this.rwt.getWidth() * this.rwv / 30.0F + f2, getHeight());
-      paramCanvas.drawRect(this.rws, this.rwr);
+      this.sWp.set(f2, 0.0F, this.sWq.getWidth() * this.sWs / 30.0F + f2, getHeight());
+      paramCanvas.drawRect(this.sWp, this.sWo);
       AppMethodBeat.o(104170);
       return;
-      if (this.rwu == 3)
+      if (this.sWr == 3)
       {
-        f1 = getHeight() - this.rwt.getHeight() >> 1;
+        f1 = getHeight() - this.sWq.getHeight() >> 1;
         f2 = 0.0F;
       }
-      else if (this.rwu == 5)
+      else if (this.sWr == 5)
       {
-        f2 = getWidth() - this.rwt.getWidth();
-        f1 = getHeight() - this.rwt.getHeight() >> 1;
+        f2 = getWidth() - this.sWq.getWidth();
+        f1 = getHeight() - this.sWq.getHeight() >> 1;
       }
       else
       {
-        ae.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
-        f2 = getWidth() - this.rwt.getWidth() >> 1;
-        f1 = getHeight() - this.rwt.getHeight() >> 1;
+        Log.e("MicroMsg.FaceNumberItemView", "hy: not support gravity! treat as center");
+        f2 = getWidth() - this.sWq.getWidth() >> 1;
+        f1 = getHeight() - this.sWq.getHeight() >> 1;
       }
     }
   }
@@ -123,8 +123,8 @@ public class FaceNumberItemView
   public void setGravity(int paramInt)
   {
     AppMethodBeat.i(104168);
-    ae.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
-    this.rwu = paramInt;
+    Log.i("MicroMsg.FaceNumberItemView", "hy: setting gravity");
+    this.sWr = paramInt;
     AppMethodBeat.o(104168);
   }
   
@@ -132,18 +132,18 @@ public class FaceNumberItemView
   {
     AppMethodBeat.i(104167);
     Bitmap localBitmap1 = BitmapFactory.decodeResource(getResources(), paramInt);
-    if (paramInt == 2131232151)
+    if (paramInt == 2131232262)
     {
-      paramInt = (getResources().getDimensionPixelSize(2131166279) - a.fromDPToPix(getContext(), 8)) / 2;
+      paramInt = (getResources().getDimensionPixelSize(2131166326) - a.fromDPToPix(getContext(), 8)) / 2;
       Bitmap localBitmap2 = Bitmap.createBitmap(localBitmap1.getWidth() + paramInt * 2, localBitmap1.getHeight() + 0, Bitmap.Config.ARGB_8888);
       Canvas localCanvas = new Canvas(localBitmap2);
       localCanvas.drawARGB(0, 255, 255, 255);
       localCanvas.drawBitmap(localBitmap1, paramInt, 0.0F, null);
-      this.rwt = localBitmap2;
+      this.sWq = localBitmap2;
       AppMethodBeat.o(104167);
       return;
     }
-    this.rwt = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
+    this.sWq = Bitmap.createScaledBitmap(localBitmap1, a.fromDPToPix(getContext(), 48), localBitmap1.getHeight(), false);
     AppMethodBeat.o(104167);
   }
 }

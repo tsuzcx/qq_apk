@@ -12,7 +12,7 @@ import com.tencent.map.lib.models.GroundOverlayInfo;
 import com.tencent.map.lib.models.IntersectionOverlayInfo;
 import com.tencent.map.lib.models.MarkerInfo;
 import com.tencent.map.lib.models.MaskLayer;
-import com.tencent.map.lib.models.Polygon2D;
+import com.tencent.map.lib.models.PolygonInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions.Text;
@@ -83,7 +83,7 @@ public class JNIInterface
   
   public native int nativeAddMaskLayer(long paramLong, MaskLayer paramMaskLayer);
   
-  public native int nativeAddPolygon(long paramLong, Polygon2D paramPolygon2D);
+  public native int nativeAddPolygon(long paramLong, PolygonInfo paramPolygonInfo);
   
   public native void nativeAddRouteNameSegments(long paramLong, byte[][] paramArrayOfByte, int paramInt1, GeoPoint[] paramArrayOfGeoPoint, int paramInt2);
   
@@ -105,7 +105,7 @@ public class JNIInterface
   
   public native AnnocationTextResult nativeCreateAnnotationText(long paramLong, AnnocationText paramAnnocationText);
   
-  public native int nativeCreateOrUpdateLine(long paramLong, int paramInt1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, GeoPoint[] paramArrayOfGeoPoint, String paramString, float paramFloat1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt3, boolean paramBoolean5, int[] paramArrayOfInt3, int[] paramArrayOfInt4, float paramFloat2, int[] paramArrayOfInt5, float paramFloat3, int paramInt4);
+  public native int nativeCreateOrUpdateLine(long paramLong, int paramInt1, int[] paramArrayOfInt1, int[] paramArrayOfInt2, GeoPoint[] paramArrayOfGeoPoint, String paramString, float paramFloat1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, int paramInt3, boolean paramBoolean4, int[] paramArrayOfInt3, int[] paramArrayOfInt4, float paramFloat2, int[] paramArrayOfInt5, float paramFloat3, int paramInt4, boolean paramBoolean5);
   
   public native void nativeDeleteCircle(long paramLong, int paramInt);
   
@@ -350,7 +350,7 @@ public class JNIInterface
   
   public native void nativeSetTrafficStyle(long paramLong, TrafficStyle paramTrafficStyle);
   
-  public native void nativeSetTurnArrow(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
+  public native void nativeSetTurnArrow(long paramLong1, long paramLong2, GeoPoint[] paramArrayOfGeoPoint, int paramInt1, int paramInt2);
   
   public native void nativeSetTurnArrowStyle(long paramLong1, long paramLong2, int paramInt1, int paramInt2);
   
@@ -382,7 +382,7 @@ public class JNIInterface
   
   public native void nativeUpdateMaskLayer(long paramLong, int paramInt1, int paramInt2);
   
-  public native void nativeUpdatePolygon(long paramLong, int paramInt1, int paramInt2, Polygon2D paramPolygon2D);
+  public native void nativeUpdatePolygon(long paramLong, int paramInt1, int paramInt2, PolygonInfo paramPolygonInfo);
   
   public native void nativeWriteMapDataBlock(long paramLong, String paramString, byte[] paramArrayOfByte);
   
@@ -396,14 +396,14 @@ public class JNIInterface
   
   public boolean onJniCallbackRenderMapFrame(int paramInt)
   {
-    AppMethodBeat.i(209758);
+    AppMethodBeat.i(193492);
     if (this.mCallback != null)
     {
       boolean bool = this.mCallback.onJniCallbackRenderMapFrame(paramInt);
-      AppMethodBeat.o(209758);
+      AppMethodBeat.o(193492);
       return bool;
     }
-    AppMethodBeat.o(209758);
+    AppMethodBeat.o(193492);
     return false;
   }
   
@@ -442,7 +442,7 @@ public class JNIInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.map.lib.JNIInterface
  * JD-Core Version:    0.7.0.1
  */

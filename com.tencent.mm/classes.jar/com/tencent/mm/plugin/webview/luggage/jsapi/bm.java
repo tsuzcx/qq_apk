@@ -1,49 +1,146 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
+import android.content.Intent;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
+import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.br.c;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.webview.luggage.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.MMActivity.a;
 import org.json.JSONObject;
 
 public class bm
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
-  public final void b(b<g>.a paramb)
+  public final void b(final b<g>.a paramb)
   {
-    AppMethodBeat.i(78636);
-    ae.i("MicroMsg.JsApiShowMenuItems", "invokeInOwn");
-    JSONArray localJSONArray = paramb.chh.cgn.optJSONArray("menuList");
-    if (localJSONArray == null)
+    AppMethodBeat.i(78635);
+    Log.i("MicroMsg.JsApiShareTimeLine", "invoke");
+    final MMActivity localMMActivity = (MMActivity)((g)paramb.cta).mContext;
+    if ((localMMActivity == null) || (localMMActivity.isFinishing()))
     {
-      ae.i("MicroMsg.JsApiShowMenuItems", "data is null");
-      paramb.a("invalid_data", null);
-      AppMethodBeat.o(78636);
+      Log.w("MicroMsg.JsApiShareTimeLine", "activity is null or finish");
+      AppMethodBeat.o(78635);
       return;
     }
-    m localm = ((g)paramb.chg).eSQ();
-    if (localm != null) {
-      localm.P(localJSONArray);
+    Object localObject1 = paramb.ctb.csi;
+    String str1 = ((JSONObject)localObject1).optString("link");
+    if (Util.isNullOrNil(str1))
+    {
+      Log.e("MicroMsg.JsApiShareTimeLine", "link is null");
+      paramb.c("invalid_params", null);
+      AppMethodBeat.o(78635);
+      return;
     }
-    paramb.a("", null);
-    AppMethodBeat.o(78636);
+    String str2 = ((JSONObject)localObject1).optString("desc");
+    if (str2 != null)
+    {
+      if (!str2.startsWith("http://")) {
+        break label531;
+      }
+      str2.substring(7);
+    }
+    for (;;)
+    {
+      str2 = ((JSONObject)localObject1).optString("appid");
+      Object localObject2 = ((JSONObject)localObject1).optString("img_width");
+      String str7 = ((JSONObject)localObject1).optString("img_height");
+      Log.i("MicroMsg.JsApiShareTimeLine", "doTimeline, rawUrl:[%s], shareUrl:[%s]", new Object[] { str1, str1 });
+      String str3 = ((JSONObject)localObject1).optString("type");
+      String str4 = ((JSONObject)localObject1).optString("title");
+      String str5 = ((JSONObject)localObject1).optString("img_url");
+      String str6 = ((JSONObject)localObject1).optString("src_username");
+      localObject1 = ((JSONObject)localObject1).optString("src_displayname");
+      int i = -1;
+      try
+      {
+        int j = Integer.valueOf((String)localObject2).intValue();
+        i = j;
+        Integer.valueOf(str7);
+        i = j;
+      }
+      catch (Exception localException)
+      {
+        label245:
+        break label245;
+      }
+      localObject2 = new Intent();
+      ((Intent)localObject2).putExtra("Ksnsupload_width", i);
+      ((Intent)localObject2).putExtra("Ksnsupload_height", i);
+      ((Intent)localObject2).putExtra("Ksnsupload_link", str1);
+      ((Intent)localObject2).putExtra("Ksnsupload_title", str4);
+      ((Intent)localObject2).putExtra("Ksnsupload_imgurl", str5);
+      if (ab.IT(str6))
+      {
+        ((Intent)localObject2).putExtra("src_username", str6);
+        ((Intent)localObject2).putExtra("src_displayname", (String)localObject1);
+      }
+      ((Intent)localObject2).putExtra("Ksnsupload_source", 1);
+      ((Intent)localObject2).putExtra("Ksnsupload_type", 1);
+      if ((!Util.isNullOrNil(str3)) && (str3.equals("music"))) {
+        ((Intent)localObject2).putExtra("ksnsis_music", true);
+      }
+      if ((!Util.isNullOrNil(str3)) && (str3.equals("video"))) {
+        ((Intent)localObject2).putExtra("ksnsis_video", true);
+      }
+      if ((str2 != null) && (str2.length() > 0)) {
+        ((Intent)localObject2).putExtra("Ksnsupload_appid", str2);
+      }
+      ((Intent)localObject2).putExtra("ShareUrlOriginal", str1);
+      ((Intent)localObject2).putExtra("ShareUrlOpen", ((g)paramb.cta).getUrl());
+      ((Intent)localObject2).putExtra("JsAppId", ((g)paramb.cta).ITw.getAppId());
+      ((Intent)localObject2).putExtra("need_result", true);
+      Log.i("MicroMsg.JsApiShareTimeLine", "doTimeline, start activity");
+      localMMActivity.mmSetOnActivityResultCallback(new MMActivity.a()
+      {
+        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+        {
+          AppMethodBeat.i(78634);
+          if (paramAnonymousInt1 == (bm.this.hashCode() & 0xFFFF))
+          {
+            if (paramAnonymousInt2 != -1) {
+              break label48;
+            }
+            paramb.c("", null);
+          }
+          for (;;)
+          {
+            localMMActivity.mmSetOnActivityResultCallback(null);
+            AppMethodBeat.o(78634);
+            return;
+            label48:
+            paramb.c("cancel", null);
+          }
+        }
+      });
+      c.a(localMMActivity, "sns", ".ui.SnsUploadUI", (Intent)localObject2, hashCode() & 0xFFFF, false);
+      AppMethodBeat.o(78635);
+      return;
+      label531:
+      if (str2.startsWith("https://")) {
+        str2.substring(8);
+      }
+    }
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "showMenuItems";
+    return "shareTimeline";
   }
 }
 

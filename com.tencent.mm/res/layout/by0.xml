@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/f" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/afz" android:paddingTop="@dimen/ir" android:paddingBottom="@dimen/ir" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textColor="@color/fg" android:gravity="left" android:layout_gravity="left" android:id="@id/i7f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:text="@string/i3d" android:singleLine="false" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/i0t" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/g" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip" android:scaleType="fitCenter" android:contentDescription="@string/ha3" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/i0v" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/g" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip" android:scaleType="fitCenter" android:contentDescription="@string/ha4" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/i0s" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/g" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip" android:scaleType="fitCenter" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/i0u" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/g" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip" android:scaleType="fitCenter" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

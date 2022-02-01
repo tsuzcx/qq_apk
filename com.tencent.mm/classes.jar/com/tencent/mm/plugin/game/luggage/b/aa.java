@@ -1,81 +1,75 @@
 package com.tencent.mm.plugin.game.luggage.b;
 
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.f.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.bq.a;
-import com.tencent.mm.plugin.webview.luggage.jsapi.br;
-import com.tencent.mm.plugin.webview.ui.tools.game.c;
-import com.tencent.mm.plugin.webview.ui.tools.game.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.a.iw;
+import com.tencent.mm.g.a.iw.b;
+import com.tencent.mm.plugin.game.luggage.g.i;
+import com.tencent.mm.plugin.webview.luggage.jsapi.br.a;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bs;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class aa
-  extends br<g>
+  extends bs<i>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
-  
-  public final void b(b.a parama)
+  public final void a(Context paramContext, String paramString, br.a parama)
   {
-    AppMethodBeat.i(83087);
-    Object localObject = parama.chh.cgn;
-    String str1 = ((JSONObject)localObject).optString("reportId");
-    boolean bool1;
-    if (((JSONObject)localObject).optInt("reportInstantly", 0) == 1)
+    AppMethodBeat.i(83084);
+    Log.i("MicroMsg.JsApiOperateGameCenterMsg", "invokeInMM");
+    try
     {
-      bool1 = true;
-      if (((JSONObject)localObject).optInt("reportTimeBegin", 0) != 1) {
-        break label102;
+      paramContext = new JSONObject(paramString);
+      if (paramContext == null)
+      {
+        Log.i("MicroMsg.JsApiOperateGameCenterMsg", "data is null");
+        parama.i("invalid_data", null);
+        AppMethodBeat.o(83084);
+        return;
       }
     }
-    String str2;
-    label102:
-    for (boolean bool2 = true;; bool2 = false)
+    catch (JSONException paramContext)
     {
-      str2 = ((JSONObject)localObject).optString("reportFormatData");
-      localObject = ((JSONObject)localObject).optString("reportTabsFormatData");
-      if (!bu.isNullOrNil(str1)) {
-        break label107;
+      for (;;)
+      {
+        paramContext = null;
       }
-      ae.e("MicroMsg.JsApiReportGamePageTime", "reportId is null or nil");
-      parama.a("invalid_reportId", null);
-      AppMethodBeat.o(83087);
-      return;
-      bool1 = false;
-      break;
+      int i = paramContext.optInt("cmd");
+      paramString = paramContext.optJSONObject("param");
+      paramContext = new iw();
+      paramContext.dNy.EX = i;
+      paramContext.dNy.param = paramString.toString();
+      EventCenter.instance.publish(paramContext);
+      paramString = new JSONObject();
     }
-    label107:
-    if ((bu.isNullOrNil(str2)) && (bu.isNullOrNil((String)localObject)))
+    try
     {
-      ae.e("MicroMsg.JsApiReportGamePageTime", "reportFormatData && reportTabsFormatData is null or nil");
-      parama.a("invalid_reportFormatData_reportTabsFormatData", null);
-      AppMethodBeat.o(83087);
+      paramString.put("result", Util.nullAsNil(paramContext.dNz.dNA));
+      label127:
+      parama.i(null, paramString);
+      AppMethodBeat.o(83084);
       return;
     }
-    ae.i("MicroMsg.JsApiReportGamePageTime", "reportGamePageTime, reportId:%s, reportInstantly:%b, reportTimeBegin:%b, reportFormatData:(%s), reportTabsFormatData(%s)", new Object[] { str1, Boolean.valueOf(bool1), Boolean.valueOf(bool2), str2, localObject });
-    Bundle localBundle = new Bundle();
-    localBundle.putString("game_page_report_id", str1);
-    localBundle.putBoolean("game_page_report_instantly", bool1);
-    localBundle.putBoolean("game_page_report_time_begin", bool2);
-    localBundle.putString("game_page_report_format_data", str2);
-    localBundle.putString("game_page_report_tabs_format_data", (String)localObject);
-    ((g)parama.chg).ugv.EAK.ba(localBundle);
-    parama.a("", null);
-    AppMethodBeat.o(83087);
+    catch (JSONException paramContext)
+    {
+      break label127;
+    }
   }
   
-  public final int ced()
+  public final void b(b.a parama) {}
+  
+  public final int dTs()
   {
-    return 0;
+    return 1;
   }
   
   public final String name()
   {
-    return "reportGamePageTime";
+    return "operateGameCenterMsg";
   }
 }
 

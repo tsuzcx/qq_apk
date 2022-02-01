@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:background="@color/xo" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/ha" android:paddingRight="@dimen/i_" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/a0q" android:layout_width="@dimen/w4" android:layout_height="@dimen/w4" android:layout_marginTop="@dimen/he" />
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center" android:id="@id/a0s" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/g99" />
-        <Button android:id="@id/a0t" android:visibility="visible" android:layout_marginTop="@dimen/hd" android:layout_marginBottom="@dimen/jn" android:text="@string/g9_" style="@style/o6" />
-        <Button android:id="@id/a0r" android:visibility="visible" android:layout_marginTop="@dimen/hd" android:layout_marginBottom="@dimen/jn" android:text="@string/acu" style="@style/o6" />
+<LinearLayout android:id="@id/a29" android:background="@drawable/a_9" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center|left" android:id="@id/zj" android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/amh">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/zk" android:layout_width="@dimen/k9" android:layout_height="@dimen/k9" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:src="@raw/icons_outlined_display_mobile" android:contentDescription="@string/wx" app:iconColor="@color/BW_50" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/abs" android:id="@id/zl" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/a7e" />
     </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

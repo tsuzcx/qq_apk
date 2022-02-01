@@ -6,9 +6,9 @@ import android.graphics.Matrix;
 public final class g
   implements TypeEvaluator<Matrix>
 {
-  private final float[] gS = new float[9];
-  private final float[] gT = new float[9];
-  private final Matrix gU = new Matrix();
+  private final float[] gU = new float[9];
+  private final float[] gV = new float[9];
+  private final Matrix gW = new Matrix();
 }
 
 

@@ -1,145 +1,103 @@
 package com.tencent.mm.plugin.backup.d;
 
-import android.content.Context;
-import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bl;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bp;
 import com.tencent.mm.plugin.backup.g.e;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public final class b
   extends com.tencent.mm.plugin.backup.b.d
 {
-  private static b nAn;
-  private d nAo;
-  private c nAp;
-  private a nAq;
-  private com.tencent.mm.plugin.backup.c.a nAr;
-  String nAs = "tickit";
+  private static b oLl;
+  private d oLm;
+  private c oLn;
+  private a oLo;
+  private com.tencent.mm.plugin.backup.c.a oLp;
+  String oLq = "tickit";
   private PowerManager.WakeLock wakeLock = null;
   
-  public static b bIE()
+  public static b cfv()
   {
     AppMethodBeat.i(21292);
-    if (nAn == null)
+    if (oLl == null)
     {
       localb = new b();
-      nAn = localb;
+      oLl = localb;
       a(localb);
     }
-    b localb = nAn;
+    b localb = oLl;
     AppMethodBeat.o(21292);
     return localb;
   }
   
-  public final void bHQ()
+  public final void ceH()
   {
-    nAn = null;
+    oLl = null;
   }
   
-  public final void bHW()
+  public final void ceN()
   {
     AppMethodBeat.i(21298);
-    ar.f(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(21290);
-        try
-        {
-          if (b.a(b.this) == null)
-          {
-            PowerManager localPowerManager = (PowerManager)ak.getContext().getSystemService("power");
-            b.a(b.this, localPowerManager.newWakeLock(26, "BackupMove Lock"));
-          }
-          if (!b.a(b.this).isHeld()) {
-            b.a(b.this).acquire();
-          }
-          AppMethodBeat.o(21290);
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          AppMethodBeat.o(21290);
-        }
-      }
-    });
+    Log.i("MicroMsg.BackupMoveModel", "startWakeLock");
+    MMHandlerThread.postToMainThread(new b.2(this));
     AppMethodBeat.o(21298);
   }
   
-  public final void bHX()
+  public final void ceO()
   {
     AppMethodBeat.i(21299);
-    ar.o(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(21291);
-        try
-        {
-          if ((b.a(b.this) != null) && (b.a(b.this).isHeld())) {
-            b.a(b.this).release();
-          }
-          AppMethodBeat.o(21291);
-          return;
-        }
-        catch (Throwable localThrowable)
-        {
-          AppMethodBeat.o(21291);
-        }
-      }
-    }, 15000L);
+    Log.i("MicroMsg.BackupMoveModel", "stopWakeLock");
+    MMHandlerThread.postToMainThreadDelayed(new b.3(this), 15000L);
     AppMethodBeat.o(21299);
   }
   
-  public final com.tencent.mm.plugin.backup.c.a bIF()
+  public final com.tencent.mm.plugin.backup.c.a cfw()
   {
     AppMethodBeat.i(21294);
-    if (this.nAr == null) {
-      this.nAr = new com.tencent.mm.plugin.backup.c.a();
+    if (this.oLp == null) {
+      this.oLp = new com.tencent.mm.plugin.backup.c.a();
     }
-    com.tencent.mm.plugin.backup.c.a locala = this.nAr;
+    com.tencent.mm.plugin.backup.c.a locala = this.oLp;
     AppMethodBeat.o(21294);
     return locala;
   }
   
-  public final d bIG()
+  public final d cfx()
   {
     AppMethodBeat.i(21295);
-    if (this.nAo == null) {
-      this.nAo = new d();
+    if (this.oLm == null) {
+      this.oLm = new d();
     }
-    d locald = this.nAo;
+    d locald = this.oLm;
     AppMethodBeat.o(21295);
     return locald;
   }
   
-  public final c bIH()
+  public final c cfy()
   {
     AppMethodBeat.i(21296);
-    if (this.nAp == null) {
-      this.nAp = new c();
+    if (this.oLn == null) {
+      this.oLn = new c();
     }
-    c localc = this.nAp;
+    c localc = this.oLn;
     AppMethodBeat.o(21296);
     return localc;
   }
   
-  public final a bII()
+  public final a cfz()
   {
     AppMethodBeat.i(21297);
-    if (this.nAq == null) {
-      this.nAq = new a();
+    if (this.oLo == null) {
+      this.oLo = new a();
     }
-    a locala = this.nAq;
+    a locala = this.oLo;
     AppMethodBeat.o(21297);
     return locala;
   }
@@ -147,21 +105,21 @@ public final class b
   public final void o(Object... paramVarArgs)
   {
     AppMethodBeat.i(21293);
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(21289);
-        Object localObject = b.bIE().bIH();
+        Object localObject = b.cfv().cfy();
         String str = this.val$url;
-        ae.w("MicroMsg.BackupMoveRecoverServer", "~~~~~~~~~~~~  start by url:%s", new Object[] { str });
-        if (((l)g.ab(l.class)).aAi().doN()) {
-          bl.aCs();
+        Log.w("MicroMsg.BackupMoveRecoverServer", "~~~~~~~~~~~~  start by url:%s", new Object[] { str });
+        if (((l)g.af(l.class)).aTq().eiC()) {
+          bp.aVQ();
         }
-        com.tencent.mm.plugin.backup.g.b.bJE();
-        bc.ajj().a(595, ((c)localObject).nAT);
+        com.tencent.mm.plugin.backup.g.b.cgx();
+        bg.azz().a(595, ((c)localObject).oLS);
         localObject = new e(str);
-        bc.ajj().a((n)localObject, 0);
+        bg.azz().a((q)localObject, 0);
         AppMethodBeat.o(21289);
       }
     });
@@ -170,7 +128,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.d.b
  * JD-Core Version:    0.7.0.1
  */

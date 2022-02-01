@@ -10,7 +10,7 @@ import java.io.InputStream;
 public abstract interface e
   extends b
 {
-  public static final e kWR = new e()
+  public static final e mca = new e()
   {
     public final Bitmap b(InputStream paramAnonymousInputStream, BitmapFactory.Options paramAnonymousOptions)
     {
@@ -30,9 +30,9 @@ public abstract interface e
     
     public final Bitmap decodeStream(InputStream paramAnonymousInputStream)
     {
-      AppMethodBeat.i(201194);
+      AppMethodBeat.i(221237);
       paramAnonymousInputStream = BitmapFactory.decodeStream(paramAnonymousInputStream);
-      AppMethodBeat.o(201194);
+      AppMethodBeat.o(221237);
       return paramAnonymousInputStream;
     }
   };
@@ -49,7 +49,7 @@ public abstract interface e
     {
       e locale = parame;
       if (parame == null) {
-        locale = e.kWR;
+        locale = e.mca;
       }
       return locale;
     }
@@ -57,7 +57,7 @@ public abstract interface e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.media.e
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,13 @@ package android.support.v4.view;
 
 import android.view.View;
 
-public class z
-  implements y
+public abstract interface z
 {
-  public void aH(View paramView) {}
+  public abstract void aI(View paramView);
   
-  public void aI(View paramView) {}
+  public abstract void aJ(View paramView);
   
-  public void aJ(View paramView) {}
+  public abstract void aK(View paramView);
 }
 
 

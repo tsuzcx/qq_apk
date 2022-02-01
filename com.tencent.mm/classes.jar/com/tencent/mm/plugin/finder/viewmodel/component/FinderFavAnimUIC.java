@@ -9,6 +9,7 @@ import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -16,99 +17,98 @@ import android.view.Window;
 import android.view.animation.LinearInterpolator;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.component.UIComponent;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.b.p;
-import d.g.b.y.c;
-import d.l;
-import d.v;
-import d.z;
+import kotlin.g.b.p;
+import kotlin.g.b.z.c;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "(Lcom/tencent/mm/ui/MMActivity;)V", "imageAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "imageFinalSize", "", "interpolator", "Landroid/view/animation/LinearInterpolator;", "pictureAnimIv", "Landroid/widget/ImageView;", "getPictureAnimIv", "()Landroid/widget/ImageView;", "setPictureAnimIv", "(Landroid/widget/ImageView;)V", "scaleRatio", "", "starAnimIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getStarAnimIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setStarAnimIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "starDownAnimator", "starFinalSize", "starMiddleSize", "starOriginalSize", "starUpAnimator", "startLocation", "", "targetRect", "Landroid/graphics/Rect;", "addViewToDecor", "", "child", "Landroid/view/View;", "isAdd", "", "params", "Landroid/view/ViewGroup$LayoutParams;", "animFav", "bitmap", "Landroid/graphics/Bitmap;", "startViewLocation", "animFrameImage", "animStar", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC;", "Lcom/tencent/mm/ui/component/UIComponent;", "activity", "Landroid/support/v7/app/AppCompatActivity;", "(Landroid/support/v7/app/AppCompatActivity;)V", "imageAnimator", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "imageFinalSize", "", "interpolator", "Landroid/view/animation/LinearInterpolator;", "pictureAnimIv", "Landroid/widget/ImageView;", "getPictureAnimIv", "()Landroid/widget/ImageView;", "setPictureAnimIv", "(Landroid/widget/ImageView;)V", "scaleRatio", "", "starAnimIv", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "getStarAnimIv", "()Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "setStarAnimIv", "(Lcom/tencent/mm/ui/widget/imageview/WeImageView;)V", "starDownAnimator", "starFinalSize", "starMiddleSize", "starOriginalSize", "starUpAnimator", "startLocation", "", "targetRect", "Landroid/graphics/Rect;", "addViewToDecor", "", "child", "Landroid/view/View;", "isAdd", "", "params", "Landroid/view/ViewGroup$LayoutParams;", "animFav", "bitmap", "Landroid/graphics/Bitmap;", "startViewLocation", "animFrameImage", "animStar", "Companion", "plugin-finder_release"})
 public final class FinderFavAnimUIC
   extends UIComponent
 {
-  public static final FinderFavAnimUIC.g tmf;
-  public ImageView tlS;
-  WeImageView tlT;
-  public final int tlU;
-  private final int tlV;
-  private final int tlW;
-  private final int tlX;
-  public float tlY;
-  public final Rect tlZ;
-  public int[] tma;
-  private final LinearInterpolator tmb;
-  public final ValueAnimator tmc;
-  private final ValueAnimator tmd;
-  private final ValueAnimator tme;
+  public static final FinderFavAnimUIC.g wvS;
+  public ImageView wvF;
+  WeImageView wvG;
+  public final int wvH;
+  private final int wvI;
+  private final int wvJ;
+  private final int wvK;
+  public float wvL;
+  public final Rect wvM;
+  public int[] wvN;
+  private final LinearInterpolator wvO;
+  public final ValueAnimator wvP;
+  private final ValueAnimator wvQ;
+  private final ValueAnimator wvR;
   
   static
   {
-    AppMethodBeat.i(206149);
-    tmf = new FinderFavAnimUIC.g((byte)0);
-    AppMethodBeat.o(206149);
+    AppMethodBeat.i(255478);
+    wvS = new FinderFavAnimUIC.g((byte)0);
+    AppMethodBeat.o(255478);
   }
   
-  public FinderFavAnimUIC(MMActivity paramMMActivity)
+  public FinderFavAnimUIC(AppCompatActivity paramAppCompatActivity)
   {
-    super(paramMMActivity);
-    AppMethodBeat.i(206148);
-    this.tlU = paramMMActivity.getResources().getDimensionPixelSize(2131165289);
-    this.tlV = paramMMActivity.getResources().getDimensionPixelSize(2131165296);
-    this.tlW = paramMMActivity.getResources().getDimensionPixelSize(2131165289);
-    this.tlX = paramMMActivity.getResources().getDimensionPixelSize(2131165303);
-    this.tlY = 1.0F;
-    this.tlZ = new Rect();
-    this.tmb = new LinearInterpolator();
-    paramMMActivity = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    p.g(paramMMActivity, "it");
-    paramMMActivity.setInterpolator((TimeInterpolator)this.tmb);
-    paramMMActivity.setDuration(400L);
-    final y.c localc1 = new y.c();
-    localc1.NiV = 0.0F;
-    final y.c localc2 = new y.c();
-    localc2.NiV = 0.0F;
-    paramMMActivity.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new a(localc2, localc1, this));
-    paramMMActivity.addListener((Animator.AnimatorListener)new b(localc1, localc2, this));
-    this.tmc = paramMMActivity;
-    paramMMActivity = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    p.g(paramMMActivity, "it");
-    paramMMActivity.setDuration(150L);
-    paramMMActivity.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new c(this));
-    paramMMActivity.addListener((Animator.AnimatorListener)new d(this));
-    this.tmd = paramMMActivity;
-    paramMMActivity = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    p.g(paramMMActivity, "it");
-    paramMMActivity.setDuration(300L);
-    paramMMActivity.setInterpolator((TimeInterpolator)this.tmb);
-    localc1 = new y.c();
-    localc1.NiV = 0.0F;
-    localc2 = new y.c();
-    localc2.NiV = 0.0F;
-    paramMMActivity.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new e(localc1, localc2, this));
-    paramMMActivity.addListener((Animator.AnimatorListener)new f(localc1, localc2, this));
-    this.tme = paramMMActivity;
-    AppMethodBeat.o(206148);
+    super(paramAppCompatActivity);
+    AppMethodBeat.i(255477);
+    this.wvH = paramAppCompatActivity.getResources().getDimensionPixelSize(2131165296);
+    this.wvI = paramAppCompatActivity.getResources().getDimensionPixelSize(2131165306);
+    this.wvJ = paramAppCompatActivity.getResources().getDimensionPixelSize(2131165296);
+    this.wvK = paramAppCompatActivity.getResources().getDimensionPixelSize(2131165314);
+    this.wvL = 1.0F;
+    this.wvM = new Rect();
+    this.wvO = new LinearInterpolator();
+    paramAppCompatActivity = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    p.g(paramAppCompatActivity, "it");
+    paramAppCompatActivity.setInterpolator((TimeInterpolator)this.wvO);
+    paramAppCompatActivity.setDuration(400L);
+    final z.c localc1 = new z.c();
+    localc1.SYD = 0.0F;
+    final z.c localc2 = new z.c();
+    localc2.SYD = 0.0F;
+    paramAppCompatActivity.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new a(localc2, localc1, this));
+    paramAppCompatActivity.addListener((Animator.AnimatorListener)new b(localc1, localc2, this));
+    this.wvP = paramAppCompatActivity;
+    paramAppCompatActivity = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    p.g(paramAppCompatActivity, "it");
+    paramAppCompatActivity.setDuration(150L);
+    paramAppCompatActivity.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new c(this));
+    paramAppCompatActivity.addListener((Animator.AnimatorListener)new d(this));
+    this.wvQ = paramAppCompatActivity;
+    paramAppCompatActivity = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    p.g(paramAppCompatActivity, "it");
+    paramAppCompatActivity.setDuration(300L);
+    paramAppCompatActivity.setInterpolator((TimeInterpolator)this.wvO);
+    localc1 = new z.c();
+    localc1.SYD = 0.0F;
+    localc2 = new z.c();
+    localc2.SYD = 0.0F;
+    paramAppCompatActivity.addUpdateListener((ValueAnimator.AnimatorUpdateListener)new e(localc1, localc2, this));
+    paramAppCompatActivity.addListener((Animator.AnimatorListener)new f(localc1, localc2, this));
+    this.wvR = paramAppCompatActivity;
+    AppMethodBeat.o(255477);
   }
   
   private final void a(View paramView, boolean paramBoolean, ViewGroup.LayoutParams paramLayoutParams)
   {
-    AppMethodBeat.i(206146);
+    AppMethodBeat.i(255475);
     if (paramBoolean)
     {
       if (paramView.getParent() != null)
       {
-        ae.i("FinderFavAnimUIC", "addViewToDecor: view already has parent view");
+        Log.i("FinderFavAnimUIC", "addViewToDecor: view already has parent view");
         localObject = getActivity().getWindow();
         p.g(localObject, "activity.window");
         localObject = ((Window)localObject).getDecorView();
         if (localObject == null)
         {
-          paramView = new v("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(206146);
+          paramView = new t("null cannot be cast to non-null type android.view.ViewGroup");
+          AppMethodBeat.o(255475);
           throw paramView;
         }
         ((ViewGroup)localObject).removeView(paramView);
@@ -118,12 +118,12 @@ public final class FinderFavAnimUIC
       localObject = ((Window)localObject).getDecorView();
       if (localObject == null)
       {
-        paramView = new v("null cannot be cast to non-null type android.view.ViewGroup");
-        AppMethodBeat.o(206146);
+        paramView = new t("null cannot be cast to non-null type android.view.ViewGroup");
+        AppMethodBeat.o(255475);
         throw paramView;
       }
       ((ViewGroup)localObject).addView(paramView, paramLayoutParams);
-      AppMethodBeat.o(206146);
+      AppMethodBeat.o(255475);
       return;
     }
     paramLayoutParams = getActivity().getWindow();
@@ -131,83 +131,83 @@ public final class FinderFavAnimUIC
     paramLayoutParams = paramLayoutParams.getDecorView();
     if (paramLayoutParams == null)
     {
-      paramView = new v("null cannot be cast to non-null type android.view.ViewGroup");
-      AppMethodBeat.o(206146);
+      paramView = new t("null cannot be cast to non-null type android.view.ViewGroup");
+      AppMethodBeat.o(255475);
       throw paramView;
     }
     ((ViewGroup)paramLayoutParams).removeView(paramView);
-    AppMethodBeat.o(206146);
+    AppMethodBeat.o(255475);
   }
   
-  public final void cQS()
+  public final void dIa()
   {
-    AppMethodBeat.i(206145);
-    ae.i("FinderFavAnimUIC", "[animStar]");
-    if (this.tlT == null)
+    AppMethodBeat.i(255474);
+    Log.i("FinderFavAnimUIC", "[animStar]");
+    if (this.wvG == null)
     {
       localObject = (FinderFavAnimUIC)this;
-      ((FinderFavAnimUIC)localObject).tlT = new WeImageView((Context)((FinderFavAnimUIC)localObject).getActivity());
-      localObject = z.Nhr;
+      ((FinderFavAnimUIC)localObject).wvG = new WeImageView((Context)((FinderFavAnimUIC)localObject).getActivity());
+      localObject = x.SXb;
     }
-    Object localObject = this.tlT;
+    Object localObject = this.wvG;
     if (localObject != null)
     {
-      ((WeImageView)localObject).setImageResource(2131691595);
-      ((WeImageView)localObject).setIconColor(getActivity().getResources().getColor(2131099830));
-      this.tme.cancel();
-      this.tmd.start();
-      AppMethodBeat.o(206145);
+      ((WeImageView)localObject).setImageResource(2131690231);
+      ((WeImageView)localObject).setIconColor(getActivity().getResources().getColor(2131099847));
+      this.wvR.cancel();
+      this.wvQ.start();
+      AppMethodBeat.o(255474);
       return;
     }
-    AppMethodBeat.o(206145);
+    AppMethodBeat.o(255474);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "anim", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$imageAnimator$1$1"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "anim", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$imageAnimator$1$1"})
   static final class a
     implements ValueAnimator.AnimatorUpdateListener
   {
-    a(y.c paramc1, y.c paramc2, FinderFavAnimUIC paramFinderFavAnimUIC) {}
+    a(z.c paramc1, z.c paramc2, FinderFavAnimUIC paramFinderFavAnimUIC) {}
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(206136);
-      ImageView localImageView = jdField_this.tlS;
+      AppMethodBeat.i(255465);
+      ImageView localImageView = jdField_this.wvF;
       if (localImageView != null)
       {
         p.g(paramValueAnimator, "anim");
         float f = 1.0F - paramValueAnimator.getAnimatedFraction() * (1.0F - FinderFavAnimUIC.a(jdField_this));
         localImageView.setScaleX(f);
         localImageView.setScaleY(f);
-        localImageView.setTranslationX(FinderFavAnimUIC.b(jdField_this)[0] + (this.tmg.NiV - FinderFavAnimUIC.b(jdField_this)[0]) * paramValueAnimator.getAnimatedFraction());
-        localImageView.setTranslationY(FinderFavAnimUIC.b(jdField_this)[1] + (localc1.NiV - FinderFavAnimUIC.b(jdField_this)[1]) * paramValueAnimator.getAnimatedFraction());
-        AppMethodBeat.o(206136);
+        localImageView.setTranslationX(FinderFavAnimUIC.b(jdField_this)[0] + (this.wvT.SYD - FinderFavAnimUIC.b(jdField_this)[0]) * paramValueAnimator.getAnimatedFraction());
+        localImageView.setTranslationY(FinderFavAnimUIC.b(jdField_this)[1] + (localc1.SYD - FinderFavAnimUIC.b(jdField_this)[1]) * paramValueAnimator.getAnimatedFraction());
+        AppMethodBeat.o(255465);
         return;
       }
-      AppMethodBeat.o(206136);
+      AppMethodBeat.o(255465);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$imageAnimator$1$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "onAnimationStart", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$imageAnimator$1$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "onAnimationStart", "plugin-finder_release"})
   public static final class b
     extends AnimatorListenerAdapter
   {
-    b(y.c paramc1, y.c paramc2, FinderFavAnimUIC paramFinderFavAnimUIC) {}
+    b(z.c paramc1, z.c paramc2, FinderFavAnimUIC paramFinderFavAnimUIC) {}
     
     public final void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
     {
-      AppMethodBeat.i(206138);
-      paramAnimator = jdField_this.tlS;
+      AppMethodBeat.i(255467);
+      paramAnimator = jdField_this.wvF;
       if (paramAnimator != null) {
         FinderFavAnimUIC.a(jdField_this, (View)paramAnimator);
       }
       FinderFavAnimUIC.e(jdField_this);
-      AppMethodBeat.o(206138);
+      AppMethodBeat.o(255467);
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(206137);
-      paramAnimator = jdField_this.tlS;
+      AppMethodBeat.i(255466);
+      paramAnimator = jdField_this.wvF;
       if (paramAnimator != null)
       {
         ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(-1, -2);
@@ -218,16 +218,16 @@ public final class FinderFavAnimUIC
         paramAnimator.setPivotY(0.0F);
         paramAnimator.setTranslationX(FinderFavAnimUIC.b(jdField_this)[0]);
         paramAnimator.setTranslationY(FinderFavAnimUIC.b(jdField_this)[1]);
-        this.tmh.NiV = (FinderFavAnimUIC.c(jdField_this).top + (FinderFavAnimUIC.c(jdField_this).height() - FinderFavAnimUIC.d(jdField_this)) / 2.0F);
-        localc2.NiV = (FinderFavAnimUIC.c(jdField_this).left + (FinderFavAnimUIC.c(jdField_this).width() - FinderFavAnimUIC.d(jdField_this)) / 2.0F);
-        AppMethodBeat.o(206137);
+        this.wvU.SYD = (FinderFavAnimUIC.c(jdField_this).top + (FinderFavAnimUIC.c(jdField_this).height() - FinderFavAnimUIC.d(jdField_this)) / 2.0F);
+        localc2.SYD = (FinderFavAnimUIC.c(jdField_this).left + (FinderFavAnimUIC.c(jdField_this).width() - FinderFavAnimUIC.d(jdField_this)) / 2.0F);
+        AppMethodBeat.o(255466);
         return;
       }
-      AppMethodBeat.o(206137);
+      AppMethodBeat.o(255466);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "anim", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$starUpAnimator$1$1"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "anim", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$starUpAnimator$1$1"})
   static final class c
     implements ValueAnimator.AnimatorUpdateListener
   {
@@ -235,24 +235,24 @@ public final class FinderFavAnimUIC
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(206139);
-      WeImageView localWeImageView = this.tmi.tlT;
+      AppMethodBeat.i(255468);
+      WeImageView localWeImageView = this.wvV.wvG;
       if (localWeImageView != null)
       {
         p.g(paramValueAnimator, "anim");
-        float f1 = 1.0F - paramValueAnimator.getAnimatedFraction() * (1.0F - FinderFavAnimUIC.f(this.tmi) / FinderFavAnimUIC.g(this.tmi));
+        float f1 = 1.0F - paramValueAnimator.getAnimatedFraction() * (1.0F - FinderFavAnimUIC.f(this.wvV) / FinderFavAnimUIC.g(this.wvV));
         localWeImageView.setScaleX(f1);
         localWeImageView.setScaleY(f1);
-        float f2 = FinderFavAnimUIC.c(this.tmi).left;
+        float f2 = FinderFavAnimUIC.c(this.wvV).left;
         localWeImageView.setTranslationX((1.0F - f1) * localWeImageView.getWidth() / 2.0F + f2);
-        AppMethodBeat.o(206139);
+        AppMethodBeat.o(255468);
         return;
       }
-      AppMethodBeat.o(206139);
+      AppMethodBeat.o(255468);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$starUpAnimator$1$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "onAnimationStart", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$starUpAnimator$1$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "onAnimationStart", "plugin-finder_release"})
   public static final class d
     extends AnimatorListenerAdapter
   {
@@ -260,100 +260,100 @@ public final class FinderFavAnimUIC
     
     public final void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
     {
-      AppMethodBeat.i(206141);
-      FinderFavAnimUIC.h(this.tmi).start();
-      AppMethodBeat.o(206141);
+      AppMethodBeat.i(255470);
+      FinderFavAnimUIC.h(this.wvV).start();
+      AppMethodBeat.o(255470);
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(206140);
-      paramAnimator = this.tmi.tlT;
+      AppMethodBeat.i(255469);
+      paramAnimator = this.wvV.wvG;
       if (paramAnimator != null)
       {
         paramAnimator.setVisibility(0);
-        ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(FinderFavAnimUIC.g(this.tmi), FinderFavAnimUIC.g(this.tmi));
-        FinderFavAnimUIC.a(this.tmi, (View)paramAnimator, localLayoutParams);
+        ViewGroup.LayoutParams localLayoutParams = new ViewGroup.LayoutParams(FinderFavAnimUIC.g(this.wvV), FinderFavAnimUIC.g(this.wvV));
+        FinderFavAnimUIC.a(this.wvV, (View)paramAnimator, localLayoutParams);
         paramAnimator.setScaleX(1.0F);
         paramAnimator.setScaleY(1.0F);
         paramAnimator.setPivotY(0.0F);
         paramAnimator.setAlpha(1.0F);
-        paramAnimator.setTranslationX(FinderFavAnimUIC.c(this.tmi).left);
-        paramAnimator.setTranslationY(FinderFavAnimUIC.c(this.tmi).top);
-        AppMethodBeat.o(206140);
+        paramAnimator.setTranslationX(FinderFavAnimUIC.c(this.wvV).left);
+        paramAnimator.setTranslationY(FinderFavAnimUIC.c(this.wvV).top);
+        AppMethodBeat.o(255469);
         return;
       }
-      AppMethodBeat.o(206140);
+      AppMethodBeat.o(255469);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "anim", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$starDownAnimator$1$1"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "anim", "Landroid/animation/ValueAnimator;", "kotlin.jvm.PlatformType", "onAnimationUpdate", "com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$starDownAnimator$1$1"})
   static final class e
     implements ValueAnimator.AnimatorUpdateListener
   {
-    e(y.c paramc1, y.c paramc2, FinderFavAnimUIC paramFinderFavAnimUIC) {}
+    e(z.c paramc1, z.c paramc2, FinderFavAnimUIC paramFinderFavAnimUIC) {}
     
     public final void onAnimationUpdate(ValueAnimator paramValueAnimator)
     {
-      AppMethodBeat.i(206142);
-      WeImageView localWeImageView = jdField_this.tlT;
+      AppMethodBeat.i(255471);
+      WeImageView localWeImageView = jdField_this.wvG;
       if (localWeImageView != null)
       {
         p.g(paramValueAnimator, "anim");
         if (paramValueAnimator.getAnimatedFraction() <= 0.5F)
         {
-          float f1 = this.tmj.NiV - paramValueAnimator.getAnimatedFraction() * 2.0F * (this.tmj.NiV - FinderFavAnimUIC.i(jdField_this) / FinderFavAnimUIC.g(jdField_this));
+          float f1 = this.wvW.SYD - paramValueAnimator.getAnimatedFraction() * 2.0F * (this.wvW.SYD - FinderFavAnimUIC.i(jdField_this) / FinderFavAnimUIC.g(jdField_this));
           localWeImageView.setScaleX(f1);
           localWeImageView.setScaleY(f1);
-          localWeImageView.setTranslationY(localc2.NiV + paramValueAnimator.getAnimatedFraction() * FinderFavAnimUIC.f(jdField_this) * 2.0F);
+          localWeImageView.setTranslationY(localc2.SYD + paramValueAnimator.getAnimatedFraction() * FinderFavAnimUIC.f(jdField_this) * 2.0F);
           float f2 = FinderFavAnimUIC.c(jdField_this).left;
           localWeImageView.setTranslationX((1.0F - f1) * localWeImageView.getWidth() / 2.0F + f2);
         }
         localWeImageView.setAlpha(1.0F - paramValueAnimator.getAnimatedFraction());
-        AppMethodBeat.o(206142);
+        AppMethodBeat.o(255471);
         return;
       }
-      AppMethodBeat.o(206142);
+      AppMethodBeat.o(255471);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$starDownAnimator$1$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "onAnimationStart", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/viewmodel/component/FinderFavAnimUIC$starDownAnimator$1$2", "Landroid/animation/AnimatorListenerAdapter;", "onAnimationEnd", "", "animation", "Landroid/animation/Animator;", "isReverse", "", "onAnimationStart", "plugin-finder_release"})
   public static final class f
     extends AnimatorListenerAdapter
   {
-    f(y.c paramc1, y.c paramc2, FinderFavAnimUIC paramFinderFavAnimUIC) {}
+    f(z.c paramc1, z.c paramc2, FinderFavAnimUIC paramFinderFavAnimUIC) {}
     
     public final void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
     {
-      AppMethodBeat.i(206144);
-      paramAnimator = jdField_this.tlT;
+      AppMethodBeat.i(255473);
+      paramAnimator = jdField_this.wvG;
       if (paramAnimator != null)
       {
         FinderFavAnimUIC.a(jdField_this, (View)paramAnimator);
-        AppMethodBeat.o(206144);
+        AppMethodBeat.o(255473);
         return;
       }
-      AppMethodBeat.o(206144);
+      AppMethodBeat.o(255473);
     }
     
     public final void onAnimationStart(Animator paramAnimator)
     {
-      AppMethodBeat.i(206143);
-      paramAnimator = jdField_this.tlT;
+      AppMethodBeat.i(255472);
+      paramAnimator = jdField_this.wvG;
       if (paramAnimator != null)
       {
-        this.tmj.NiV = paramAnimator.getScaleX();
-        localc2.NiV = paramAnimator.getTranslationY();
-        AppMethodBeat.o(206143);
+        this.wvW.SYD = paramAnimator.getScaleX();
+        localc2.SYD = paramAnimator.getTranslationY();
+        AppMethodBeat.o(255472);
         return;
       }
-      AppMethodBeat.o(206143);
+      AppMethodBeat.o(255472);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.FinderFavAnimUIC
  * JD-Core Version:    0.7.0.1
  */

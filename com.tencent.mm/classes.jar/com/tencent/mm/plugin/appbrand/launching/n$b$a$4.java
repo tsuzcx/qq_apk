@@ -2,19 +2,19 @@ package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.vending.g.d.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "invoke"})
 final class n$b$a$4<T>
   implements d.b<Object>
 {
-  public static final 4 lLB;
+  public static final 4 mTr;
   
   static
   {
-    AppMethodBeat.i(180500);
-    lLB = new 4();
-    AppMethodBeat.o(180500);
+    AppMethodBeat.i(228637);
+    mTr = new 4();
+    AppMethodBeat.o(228637);
   }
 }
 

@@ -84,11 +84,13 @@ public abstract interface IImageDecodeService
     
     public abstract void a(IImageDecodeService.b paramb);
     
-    public abstract void bc(int paramInt1, int paramInt2);
+    public abstract void aW(int paramInt1, int paramInt2);
     
     public abstract void destroy();
     
     public abstract void forceSetUseType(BitmapType paramBitmapType);
+    
+    public abstract boolean isDestroyed();
   }
   
   public static abstract interface b
@@ -102,33 +104,29 @@ public abstract interface IImageDecodeService
       static
       {
         AppMethodBeat.i(127358);
-        baU = new a("OK", 0);
-        baV = new a("NOT_EXIST", 1);
-        baW = new a("PRE_DECODE_ERROR", 2);
-        baX = new a("DECODE_ERROR", 3);
-        baY = new a("UNSUPPORTED_IMG_FORMAT", 4);
-        baZ = new a("HUGE_SIZE", 5);
-        bba = new a("IO_ERROR", 6);
-        bbb = new a("OUT_OF_MEMORY", 7);
-        bbc = new a("LEGACY_MODE", 8);
-        bbd = new a("TIME_COST_HUGE", 9);
-        bbe = new a("NATIVE_DECODE_ERROR", 10);
-        bbf = new a[] { baU, baV, baW, baX, baY, baZ, bba, bbb, bbc, bbd, bbe };
+        baQ = new a("OK", 0);
+        baR = new a("NOT_EXIST", 1);
+        baS = new a("PRE_DECODE_ERROR", 2);
+        baT = new a("DECODE_ERROR", 3);
+        baU = new a("UNSUPPORTED_IMG_FORMAT", 4);
+        baV = new a("HUGE_SIZE", 5);
+        baW = new a("IO_ERROR", 6);
+        baX = new a("OUT_OF_MEMORY", 7);
+        baY = new a("LEGACY_MODE", 8);
+        baZ = new a("TIME_COST_HUGE", 9);
+        bba = new a("NATIVE_DECODE_ERROR", 10);
+        bbb = new a("THROW_EXCEPTION", 11);
+        bbc = new a[] { baQ, baR, baS, baT, baU, baV, baW, baX, baY, baZ, bba, bbb };
         AppMethodBeat.o(127358);
       }
       
       private a() {}
     }
   }
-  
-  public static abstract interface c
-  {
-    public abstract void ad(Object paramObject);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.api.IImageDecodeService
  * JD-Core Version:    0.7.0.1
  */

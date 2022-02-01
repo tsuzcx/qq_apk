@@ -7,7 +7,7 @@ import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.game.report.f;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.game.f.c;
+import com.tencent.mm.plugin.game.e.c;
 import com.tencent.mm.plugin.game.model.a.a;
 
 final class GameIndexSearchView$1
@@ -19,33 +19,33 @@ final class GameIndexSearchView$1
   {
     AppMethodBeat.i(42170);
     Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameIndexSearchView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    ((b)localObject).bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/GameIndexSearchView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
     int i;
     if ((paramView.getTag() != null) && ((paramView.getTag() instanceof String)))
     {
       paramView = (String)paramView.getTag();
-      i = c.B(GameIndexSearchView.a(this.uBe), paramView, "game_center_msgcenter");
+      i = c.D(GameIndexSearchView.a(this.xTc), paramView, "game_center_msgcenter");
     }
     for (;;)
     {
-      f.a(GameIndexSearchView.a(this.uBe), 14, 1401, 1, i, 0, null, this.uwY, 0, null, null, null);
+      f.a(GameIndexSearchView.a(this.xTc), 14, 1401, 1, i, 0, null, this.xOY, 0, null, null, null);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/GameIndexSearchView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42170);
       return;
-      paramView = com.tencent.mm.plugin.game.model.a.dbg();
-      if (paramView.dEu == 2)
+      paramView = com.tencent.mm.plugin.game.model.a.dUN();
+      if (paramView.cSx == 2)
       {
-        i = c.B(GameIndexSearchView.a(this.uBe), paramView.url, "game_center_msgcenter");
+        i = c.D(GameIndexSearchView.a(this.xTc), paramView.url, "game_center_msgcenter");
       }
       else
       {
-        localObject = new Intent(GameIndexSearchView.a(this.uBe), GameSearchUI.class);
+        localObject = new Intent(GameIndexSearchView.a(this.xTc), GameSearchUI.class);
         ((Intent)localObject).putExtra("game_report_from_scene", 1001);
-        paramView = GameIndexSearchView.a(this.uBe);
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/game/ui/GameIndexSearchView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+        paramView = GameIndexSearchView.a(this.xTc);
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/game/ui/GameIndexSearchView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(paramView, "com/tencent/mm/plugin/game/ui/GameIndexSearchView$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         i = 6;
       }
@@ -54,7 +54,7 @@ final class GameIndexSearchView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameIndexSearchView.1
  * JD-Core Version:    0.7.0.1
  */

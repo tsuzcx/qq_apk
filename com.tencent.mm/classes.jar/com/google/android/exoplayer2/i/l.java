@@ -4,9 +4,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class l
 {
-  private int bpM;
-  public int bpN;
-  public int bpO;
+  private int bpH;
+  public int bpI;
+  public int bpJ;
   public byte[] data;
   
   public l() {}
@@ -21,24 +21,24 @@ public final class l
   public l(byte[] paramArrayOfByte, int paramInt)
   {
     this.data = paramArrayOfByte;
-    this.bpM = paramInt;
+    this.bpH = paramInt;
   }
   
-  private void wT()
+  private void xb()
   {
     AppMethodBeat.i(93158);
-    int i = this.bpO + 1;
-    this.bpO = i;
+    int i = this.bpJ + 1;
+    this.bpJ = i;
     if (i == 8)
     {
-      this.bpO = 0;
-      this.bpN += 1;
+      this.bpJ = 0;
+      this.bpI += 1;
     }
-    uE();
+    uJ();
     AppMethodBeat.o(93158);
   }
   
-  public final int es(int paramInt)
+  public final int em(int paramInt)
   {
     AppMethodBeat.i(93161);
     if (paramInt == 0)
@@ -46,61 +46,61 @@ public final class l
       AppMethodBeat.o(93161);
       return 0;
     }
-    this.bpO += paramInt;
+    this.bpJ += paramInt;
     int i = 0;
-    while (this.bpO > 8)
+    while (this.bpJ > 8)
     {
-      this.bpO -= 8;
+      this.bpJ -= 8;
       byte[] arrayOfByte = this.data;
-      j = this.bpN;
-      this.bpN = (j + 1);
-      i |= (arrayOfByte[j] & 0xFF) << this.bpO;
+      j = this.bpI;
+      this.bpI = (j + 1);
+      i |= (arrayOfByte[j] & 0xFF) << this.bpJ;
     }
-    int j = this.data[this.bpN];
-    int k = this.bpO;
-    if (this.bpO == 8)
+    int j = this.data[this.bpI];
+    int k = this.bpJ;
+    if (this.bpJ == 8)
     {
-      this.bpO = 0;
-      this.bpN += 1;
+      this.bpJ = 0;
+      this.bpI += 1;
     }
-    uE();
+    uJ();
     AppMethodBeat.o(93161);
     return (i | (j & 0xFF) >> 8 - k) & -1 >>> 32 - paramInt;
   }
   
-  public final void et(int paramInt)
+  public final void en(int paramInt)
   {
     AppMethodBeat.i(93159);
     int i = paramInt / 8;
-    this.bpN += i;
-    this.bpO = (paramInt - i * 8 + this.bpO);
-    if (this.bpO > 7)
+    this.bpI += i;
+    this.bpJ = (paramInt - i * 8 + this.bpJ);
+    if (this.bpJ > 7)
     {
-      this.bpN += 1;
-      this.bpO -= 8;
+      this.bpI += 1;
+      this.bpJ -= 8;
     }
-    uE();
+    uJ();
     AppMethodBeat.o(93159);
   }
   
   public final void n(byte[] paramArrayOfByte, int paramInt)
   {
     this.data = paramArrayOfByte;
-    this.bpN = 0;
-    this.bpO = 0;
-    this.bpM = paramInt;
+    this.bpI = 0;
+    this.bpJ = 0;
+    this.bpH = paramInt;
   }
   
   public final void p(byte[] paramArrayOfByte, int paramInt)
   {
     AppMethodBeat.i(93163);
-    if (this.bpO == 0) {}
+    if (this.bpJ == 0) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      System.arraycopy(this.data, this.bpN, paramArrayOfByte, 0, paramInt);
-      this.bpN += paramInt;
-      uE();
+      System.arraycopy(this.data, this.bpI, paramArrayOfByte, 0, paramInt);
+      this.bpI += paramInt;
+      uJ();
       AppMethodBeat.o(93163);
       return;
     }
@@ -109,28 +109,28 @@ public final class l
   public final void setPosition(int paramInt)
   {
     AppMethodBeat.i(93157);
-    this.bpN = (paramInt / 8);
-    this.bpO = (paramInt - this.bpN * 8);
-    uE();
+    this.bpI = (paramInt / 8);
+    this.bpJ = (paramInt - this.bpI * 8);
+    uJ();
     AppMethodBeat.o(93157);
   }
   
-  public final boolean uD()
+  public final boolean uI()
   {
     AppMethodBeat.i(93160);
-    if ((this.data[this.bpN] & 128 >> this.bpO) != 0) {}
+    if ((this.data[this.bpI] & 128 >> this.bpJ) != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      wT();
+      xb();
       AppMethodBeat.o(93160);
       return bool;
     }
   }
   
-  public final void uE()
+  public final void uJ()
   {
     AppMethodBeat.i(93164);
-    if ((this.bpN >= 0) && ((this.bpN < this.bpM) || ((this.bpN == this.bpM) && (this.bpO == 0)))) {}
+    if ((this.bpI >= 0) && ((this.bpI < this.bpH) || ((this.bpI == this.bpH) && (this.bpJ == 0)))) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
@@ -139,41 +139,41 @@ public final class l
     }
   }
   
-  public final int wR()
+  public final int wZ()
   {
-    return (this.bpM - this.bpN) * 8 - this.bpO;
+    return (this.bpH - this.bpI) * 8 - this.bpJ;
   }
   
-  public final int wS()
+  public final int xa()
   {
     AppMethodBeat.i(93156);
-    if (this.bpO == 0) {}
+    if (this.bpJ == 0) {}
     for (boolean bool = true;; bool = false)
     {
       a.checkState(bool);
-      int i = this.bpN;
+      int i = this.bpI;
       AppMethodBeat.o(93156);
       return i;
     }
   }
   
-  public final void wU()
+  public final void xc()
   {
     AppMethodBeat.i(93162);
-    if (this.bpO == 0)
+    if (this.bpJ == 0)
     {
       AppMethodBeat.o(93162);
       return;
     }
-    this.bpO = 0;
-    this.bpN += 1;
-    uE();
+    this.bpJ = 0;
+    this.bpI += 1;
+    uJ();
     AppMethodBeat.o(93162);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.i.l
  * JD-Core Version:    0.7.0.1
  */

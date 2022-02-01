@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.view.menu.ExpandedMenuView android:id="@id/bpo" android:layout_width="?un" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ProgressBar android:layout_width="24.0dip" android:layout_height="24.0dip" style="@style/a71" />
+    <TextView android:textSize="@dimen/ky" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/ekc" />
+</LinearLayout>

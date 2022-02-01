@@ -4,63 +4,69 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Rect;
 import com.tencent.magicbrush.MBRuntime;
-import com.tencent.magicbrush.f;
-import com.tencent.magicbrush.f.a;
+import com.tencent.magicbrush.g.a;
 import com.tencent.magicbrush.ui.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.appbrand.v8.IJSRuntime.Config;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.debugger.DebuggerShell;
 import com.tencent.mm.plugin.appbrand.debugger.v;
-import com.tencent.mm.plugin.appbrand.game.a.k;
-import com.tencent.mm.plugin.appbrand.game.a.l;
-import com.tencent.mm.plugin.appbrand.game.a.n;
+import com.tencent.mm.plugin.appbrand.game.a.h;
+import com.tencent.mm.plugin.appbrand.game.a.j;
+import com.tencent.mm.plugin.appbrand.game.a.m;
 import com.tencent.mm.plugin.appbrand.game.a.o;
-import com.tencent.mm.plugin.appbrand.game.a.s;
-import com.tencent.mm.plugin.appbrand.jsruntime.ad;
-import com.tencent.mm.plugin.appbrand.jsruntime.p.a;
-import com.tencent.mm.plugin.appbrand.jsruntime.x;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.game.a.r;
+import com.tencent.mm.plugin.appbrand.game.a.t;
+import com.tencent.mm.plugin.appbrand.game.a.u;
+import com.tencent.mm.plugin.appbrand.m.ad;
+import com.tencent.mm.plugin.appbrand.m.af;
+import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.m.p.a;
+import com.tencent.mm.plugin.appbrand.m.w;
+import com.tencent.mm.plugin.appbrand.m.x;
+import com.tencent.mm.plugin.appbrand.page.ac;
 import com.tencent.mm.plugin.appbrand.report.b.1;
 import com.tencent.mm.plugin.appbrand.report.b.2;
 import com.tencent.mm.plugin.appbrand.report.quality.QualitySessionRuntime;
-import com.tencent.mm.plugin.appbrand.report.quality.l.a;
+import com.tencent.mm.plugin.appbrand.report.quality.m.a;
 import com.tencent.mm.plugin.appbrand.utils.ai;
-import com.tencent.mm.protocal.protobuf.eiu;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.protocal.protobuf.fdm;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class a
   extends com.tencent.luggage.game.d.a.a.a<com.tencent.mm.plugin.appbrand.service.c>
   implements b
 {
-  private com.tencent.mm.plugin.appbrand.q.a knA;
-  private com.tencent.mm.plugin.appbrand.report.b knB;
-  private boolean knC;
-  private long knD;
+  private com.tencent.mm.plugin.appbrand.u.a lri;
+  private com.tencent.mm.plugin.appbrand.report.b lrj;
+  private boolean lrk;
+  private long lrl;
   
   public a(com.tencent.mm.plugin.appbrand.service.c paramc)
   {
     super(paramc);
     AppMethodBeat.i(45054);
-    this.knA = null;
-    this.knC = false;
-    this.knD = -1L;
-    this.knB = new com.tencent.mm.plugin.appbrand.report.b();
+    this.lri = null;
+    this.lrk = false;
+    this.lrl = -1L;
+    this.lrj = new com.tencent.mm.plugin.appbrand.report.b();
     AppMethodBeat.o(45054);
   }
   
-  private static boolean bhG()
+  private static boolean bCU()
   {
     AppMethodBeat.i(45057);
-    boolean bool1 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.p.kok.att()).booleanValue();
-    boolean bool2 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.q.kol.att()).booleanValue();
-    ae.i("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: isUseNodeFromConfig: %b, isUseSurfaceFromConfig: %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+    boolean bool1 = ((Boolean)r.lrS.aLT()).booleanValue();
+    boolean bool2 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.s.lrT.aLT()).booleanValue();
+    Log.i("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: isUseNodeFromConfig: %b, isUseSurfaceFromConfig: %b", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
     if ((bool1) && (!bool2))
     {
       AppMethodBeat.o(45057);
@@ -70,32 +76,32 @@ public class a
     return false;
   }
   
-  public final void CM()
+  public final void Mi()
   {
     AppMethodBeat.i(45072);
-    new com.tencent.mm.plugin.appbrand.game.c.c().CA();
+    new com.tencent.mm.plugin.appbrand.game.c.c().LW();
     AppMethodBeat.o(45072);
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsruntime.i CO()
+  public final i Mk()
   {
     AppMethodBeat.i(45055);
-    this.knD = System.currentTimeMillis();
-    com.tencent.mm.plugin.appbrand.jsruntime.i locali = super.CO();
-    com.tencent.mm.plugin.appbrand.jsruntime.p localp = (com.tencent.mm.plugin.appbrand.jsruntime.p)locali.P(com.tencent.mm.plugin.appbrand.jsruntime.p.class);
+    this.lrl = System.currentTimeMillis();
+    i locali = super.Mk();
+    com.tencent.mm.plugin.appbrand.m.p localp = (com.tencent.mm.plugin.appbrand.m.p)locali.R(com.tencent.mm.plugin.appbrand.m.p.class);
     if (localp != null)
     {
-      this.knC = true;
+      this.lrk = true;
       localp.a(new p.a()
       {
         public final void onInitialized()
         {
           AppMethodBeat.i(45048);
-          com.tencent.mm.plugin.appbrand.report.quality.a.byG();
-          if (this.knE) {}
-          for (com.tencent.mm.plugin.appbrand.task.e locale = com.tencent.mm.plugin.appbrand.task.e.mDf;; locale = null)
+          com.tencent.mm.plugin.appbrand.report.quality.b.bUZ();
+          if (this.lrm) {}
+          for (com.tencent.mm.plugin.appbrand.task.g localg = com.tencent.mm.plugin.appbrand.task.g.nPE;; localg = null)
           {
-            com.tencent.mm.plugin.appbrand.report.quality.b.a(locale, this.val$appId, a.a(a.this), com.tencent.mm.plugin.appbrand.report.d.mvK);
+            com.tencent.mm.plugin.appbrand.report.quality.c.a(localg, this.val$appId, a.a(a.this), com.tencent.mm.plugin.appbrand.report.e.nGI);
             AppMethodBeat.o(45048);
             return;
           }
@@ -106,52 +112,52 @@ public class a
     return locali;
   }
   
-  public final void CP()
+  public final void Ml()
   {
     AppMethodBeat.i(45061);
-    super.CP();
-    if (!this.knC)
+    super.Ml();
+    if (!this.lrk)
     {
-      this.knC = true;
-      com.tencent.mm.plugin.appbrand.report.quality.a.byG();
-      if (!((com.tencent.mm.plugin.appbrand.service.c)Eo()).aXP()) {
+      this.lrk = true;
+      com.tencent.mm.plugin.appbrand.report.quality.b.bUZ();
+      if (!((com.tencent.mm.plugin.appbrand.service.c)NN()).bsW()) {
         break label69;
       }
     }
     label69:
-    for (com.tencent.mm.plugin.appbrand.task.e locale = com.tencent.mm.plugin.appbrand.task.e.mDf;; locale = null)
+    for (com.tencent.mm.plugin.appbrand.task.g localg = com.tencent.mm.plugin.appbrand.task.g.nPE;; localg = null)
     {
-      com.tencent.mm.plugin.appbrand.report.quality.b.a(locale, ((com.tencent.mm.plugin.appbrand.service.c)Eo()).getAppId(), this.knD, com.tencent.mm.plugin.appbrand.report.d.mvK);
+      com.tencent.mm.plugin.appbrand.report.quality.c.a(localg, ((com.tencent.mm.plugin.appbrand.service.c)NN()).getAppId(), this.lrl, com.tencent.mm.plugin.appbrand.report.e.nGI);
       AppMethodBeat.o(45061);
       return;
     }
   }
   
-  public final void CQ()
+  public final void Mm()
   {
     AppMethodBeat.i(45071);
-    super.CQ();
-    com.tencent.mm.plugin.appbrand.report.b localb = this.knB;
-    localb.krf.post(new b.2(localb));
+    super.Mm();
+    com.tencent.mm.plugin.appbrand.report.b localb = this.lrj;
+    localb.luO.post(new b.2(localb));
     AppMethodBeat.o(45071);
   }
   
-  public final void CR()
+  public final void Mn()
   {
     AppMethodBeat.i(45059);
-    super.CR();
-    if (this.knA != null) {
-      this.knA.bup();
+    super.Mn();
+    if (this.lri != null) {
+      this.lri.bPW();
     }
     AppMethodBeat.o(45059);
   }
   
-  public final String CS()
+  public final String Mo()
   {
     AppMethodBeat.i(45062);
-    if (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qzX, false))
+    if (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rSi, false))
     {
-      String str = ad.bie();
+      String str = ad.bDt();
       AppMethodBeat.o(45062);
       return str;
     }
@@ -159,10 +165,10 @@ public class a
     return null;
   }
   
-  public final boolean CT()
+  public final boolean Mp()
   {
     AppMethodBeat.i(45064);
-    if (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qzW, false))
+    if (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rSh, false))
     {
       AppMethodBeat.o(45064);
       return true;
@@ -171,12 +177,12 @@ public class a
     return false;
   }
   
-  public final boolean CV()
+  public final boolean Mr()
   {
     AppMethodBeat.i(45065);
-    if (ak.foy() != null)
+    if (MMApplicationContext.getToolsProcesstPreference() != null)
     {
-      int i = ak.foy().getInt("appbrandgame_use_commandbuffer", -1);
+      int i = MMApplicationContext.getToolsProcesstPreference().getInt("appbrandgame_use_commandbuffer", -1);
       if (i != -1)
       {
         if (i != 0)
@@ -188,7 +194,7 @@ public class a
         return false;
       }
     }
-    if (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qGs, false))
+    if (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rZG, false))
     {
       AppMethodBeat.o(45065);
       return true;
@@ -197,10 +203,10 @@ public class a
     return false;
   }
   
-  public final boolean CW()
+  public final boolean Ms()
   {
     AppMethodBeat.i(45066);
-    if (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qGt, false))
+    if (!((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rZH, false))
     {
       AppMethodBeat.o(45066);
       return true;
@@ -209,101 +215,105 @@ public class a
     return false;
   }
   
-  public final int CX()
+  public final int Mt()
   {
     AppMethodBeat.i(45067);
-    if (ak.foy() != null)
+    if (MMApplicationContext.getToolsProcesstPreference() != null)
     {
-      i = ak.foy().getInt("appbrandgame_cmd_pool_type", -1);
+      i = MMApplicationContext.getToolsProcesstPreference().getInt("appbrandgame_cmd_pool_type", -1);
       if (i != -1)
       {
         AppMethodBeat.o(45067);
         return i;
       }
     }
-    if ((com.tencent.mm.sdk.platformtools.j.IS_FLAVOR_RED) || (com.tencent.mm.sdk.platformtools.j.DEBUG))
+    if ((BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG))
     {
       AppMethodBeat.o(45067);
       return 1;
     }
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qGu, 1);
+    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rZI, 1);
     AppMethodBeat.o(45067);
     return i;
   }
   
-  public final boolean CY()
+  public final boolean Mu()
   {
-    AppMethodBeat.i(222341);
-    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qGw, false);
-    AppMethodBeat.o(222341);
+    AppMethodBeat.i(226610);
+    boolean bool = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rZL, false);
+    AppMethodBeat.o(226610);
     return bool;
   }
   
-  public final Map<String, com.tencent.mm.plugin.appbrand.jsapi.m> DJ()
-  {
-    AppMethodBeat.i(45060);
-    Map localMap = (Map)com.tencent.luggage.sdk.g.c.a("AppBrandGameServiceLogicImpWC.onCreateJsApiPool()", new d.g.a.a() {});
-    AppMethodBeat.o(45060);
-    return localMap;
-  }
-  
-  public final String Dc()
+  public final String My()
   {
     AppMethodBeat.i(45058);
-    if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qEA, true)) {}
-    for (Object localObject = "" + "var openInvokeHandlerJsBinding = true;";; localObject = "")
-    {
-      String str = (String)localObject + super.Dc();
-      localObject = str;
-      if (this.knA != null) {
-        localObject = str + this.knA.buq();
-      }
-      AppMethodBeat.o(45058);
-      return localObject;
+    String str2 = super.My();
+    String str1 = str2;
+    if (this.lri != null) {
+      str1 = str2 + this.lri.bPX();
     }
+    AppMethodBeat.o(45058);
+    return str1;
   }
   
-  public final int Dd()
+  public final int Mz()
   {
     AppMethodBeat.i(45068);
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qLp, 0);
+    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.shG, 0);
     AppMethodBeat.o(45068);
     return i;
   }
   
-  public final com.tencent.luggage.game.a.d a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
+  public final Map<String, com.tencent.mm.plugin.appbrand.jsapi.p> Nf()
   {
-    AppMethodBeat.i(222342);
-    a locala = new a(((com.tencent.mm.plugin.appbrand.service.c)Eo()).getContext(), ((com.tencent.mm.plugin.appbrand.service.c)Eo()).aYB(), paramBoolean1, paramBoolean2, paramInt, paramBoolean3);
-    AppMethodBeat.o(222342);
+    AppMethodBeat.i(45060);
+    Map localMap = (Map)com.tencent.luggage.sdk.g.c.a("AppBrandGameServiceLogicImpWC.onCreateJsApiPool()", new kotlin.g.a.a() {});
+    AppMethodBeat.o(45060);
+    return localMap;
+  }
+  
+  public final String OB()
+  {
+    AppMethodBeat.i(226611);
+    String str = af.bDt();
+    AppMethodBeat.o(226611);
+    return str;
+  }
+  
+  public final com.tencent.luggage.game.a.b a(boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
+  {
+    AppMethodBeat.i(226612);
+    a locala = new a(((com.tencent.mm.plugin.appbrand.service.c)NN()).getContext(), ((com.tencent.mm.plugin.appbrand.service.c)NN()).getJsRuntime(), paramBoolean1, paramBoolean2, paramInt, paramBoolean3);
+    AppMethodBeat.o(226612);
     return locala;
   }
   
-  public final com.tencent.mm.plugin.appbrand.report.b bhH()
+  public final com.tencent.mm.plugin.appbrand.report.b bCV()
   {
-    return this.knB;
+    return this.lrj;
   }
   
   public final void c(final AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(45063);
     super.c(paramAppBrandRuntime);
-    ae.i("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: wc post runtime ready");
-    com.tencent.mm.plugin.appbrand.report.b localb = this.knB;
+    Log.i("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: wc post runtime ready");
+    com.tencent.mm.plugin.appbrand.report.b localb = this.lrj;
     com.tencent.mm.plugin.appbrand.report.b.a local3 = new com.tencent.mm.plugin.appbrand.report.b.a()
     {
-      public final void dL(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void dW(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(45050);
         if (paramAppBrandRuntime == null)
         {
-          ae.w("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: can not get runtime!");
+          Log.w("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: can not get runtime!");
           AppMethodBeat.o(45050);
           return;
         }
-        if ((paramAppBrandRuntime.isDestroyed()) || (paramAppBrandRuntime.SB))
+        if ((paramAppBrandRuntime.isDestroyed()) || (paramAppBrandRuntime.SO))
         {
-          ae.w("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: runtime finished. abort");
+          Log.w("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: runtime finished. abort");
           AppMethodBeat.o(45050);
           return;
         }
@@ -311,108 +321,108 @@ public class a
         {
           Object localObject = paramAppBrandRuntime.mAppId;
           com.tencent.mm.plugin.appbrand.report.b localb = a.b(a.this);
-          paramAppBrandRuntime.Fm();
-          com.tencent.mm.plugin.appbrand.report.quality.a.a((String)localObject, localb);
-          localObject = ((com.tencent.mm.plugin.appbrand.service.c)a.this.Eo()).aXu();
+          paramAppBrandRuntime.OT();
+          com.tencent.mm.plugin.appbrand.report.quality.b.a((String)localObject, localb);
+          localObject = ((com.tencent.mm.plugin.appbrand.service.c)a.this.NN()).bsz();
           if (localObject == null)
           {
-            ae.w("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: no game renderer!");
+            Log.w("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: no game renderer!");
             AppMethodBeat.o(45050);
             return;
           }
-          localObject = (com.tencent.mm.plugin.appbrand.game.f.a)((z)localObject).Q(com.tencent.mm.plugin.appbrand.game.f.a.class);
+          localObject = (com.tencent.mm.plugin.appbrand.game.f.a)((ac)localObject).S(com.tencent.mm.plugin.appbrand.game.f.a.class);
           if (localObject != null) {
             ((com.tencent.mm.plugin.appbrand.game.f.a)localObject).a(a.b(a.this));
           }
           for (;;)
           {
-            localObject = a.b(a.this).mvp;
-            if ((localObject == null) || (((eiu)localObject).IlX == 0) || (((eiu)localObject).IlZ == 0) || (((eiu)localObject).Ima == 0) || (((eiu)localObject).Imb == 0) || (((eiu)localObject).IlY == 0)) {
+            localObject = a.b(a.this).nGd;
+            if ((localObject == null) || (((fdm)localObject).Nza == 0) || (((fdm)localObject).Nzc == 0) || (((fdm)localObject).Nzd == 0) || (((fdm)localObject).Nze == 0) || (((fdm)localObject).Nzb == 0)) {
               break;
             }
-            a.this.ckd.getMagicBrush().clC.a(((eiu)localObject).IlZ, ((eiu)localObject).Ima, ((eiu)localObject).Imb, ((eiu)localObject).IlY, false);
+            a.this.cwa.getMagicBrush().cxx.a(((fdm)localObject).Nzc, ((fdm)localObject).Nzd, ((fdm)localObject).Nze, ((fdm)localObject).Nzb, false);
             AppMethodBeat.o(45050);
             return;
-            ae.w("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: not game renderer!");
+            Log.w("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: not game renderer!");
           }
-          if (DebuggerShell.bfe()) {
-            a.this.ckd.getMagicBrush().clC.a(5, 10, 10.0F, 60, true);
+          if (DebuggerShell.bAx()) {
+            a.this.cwa.getMagicBrush().cxx.a(5, 10, 10.0F, 60, true);
           }
           AppMethodBeat.o(45050);
           return;
         }
-        ae.w("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: get sampling failed!");
+        Log.w("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: get sampling failed!");
         AppMethodBeat.o(45050);
       }
     };
-    localb.krf.post(new b.1(localb, paramAppBrandRuntime, local3));
+    localb.luO.post(new b.1(localb, paramAppBrandRuntime, local3));
     AppMethodBeat.o(45063);
   }
   
   public final void c(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(222343);
+    AppMethodBeat.i(226613);
     super.c(paramJSONObject);
-    ((com.tencent.mm.plugin.appbrand.service.c)Eo()).c(paramJSONObject, "statusBarHeight", Integer.valueOf(com.tencent.luggage.game.g.a.b((com.tencent.luggage.sdk.b.a.c.c)Eo())));
+    ((com.tencent.mm.plugin.appbrand.service.c)NN()).c(paramJSONObject, "statusBarHeight", Integer.valueOf(com.tencent.luggage.game.g.a.b((com.tencent.luggage.sdk.b.a.c.d)NN())));
     HashMap localHashMap = new HashMap(6);
-    Object localObject = ai.f((com.tencent.mm.plugin.appbrand.jsapi.h)Eo());
+    Object localObject = ai.f((com.tencent.mm.plugin.appbrand.jsapi.k)NN());
     int m = localObject[0];
     int k = localObject[1];
-    localObject = ((com.tencent.mm.plugin.appbrand.service.c)Eo()).jDa.getSafeAreaInsets();
+    localObject = ((com.tencent.mm.plugin.appbrand.service.c)NN()).kEb.getSafeAreaInsets();
     if (localObject != null)
     {
-      int i = com.tencent.mm.plugin.appbrand.y.g.vM(((Rect)localObject).left);
-      int j = com.tencent.mm.plugin.appbrand.y.g.vM(((Rect)localObject).top);
-      m = com.tencent.mm.plugin.appbrand.y.g.vM(Math.min(((Rect)localObject).right, m));
-      k = com.tencent.mm.plugin.appbrand.y.g.vM(Math.min(((Rect)localObject).bottom, k));
+      int i = com.tencent.mm.plugin.appbrand.ac.g.zB(((Rect)localObject).left);
+      int j = com.tencent.mm.plugin.appbrand.ac.g.zB(((Rect)localObject).top);
+      m = com.tencent.mm.plugin.appbrand.ac.g.zB(Math.min(((Rect)localObject).right, m));
+      k = com.tencent.mm.plugin.appbrand.ac.g.zB(Math.min(((Rect)localObject).bottom, k));
       localHashMap.put("left", Integer.valueOf(i));
       localHashMap.put("top", Integer.valueOf(j));
       localHashMap.put("right", Integer.valueOf(m));
       localHashMap.put("bottom", Integer.valueOf(k));
       localHashMap.put("width", Integer.valueOf(m - i));
       localHashMap.put("height", Integer.valueOf(k - j));
-      ((com.tencent.mm.plugin.appbrand.service.c)Eo()).c(paramJSONObject, "safeArea", localHashMap);
+      ((com.tencent.mm.plugin.appbrand.service.c)NN()).c(paramJSONObject, "safeArea", localHashMap);
     }
-    AppMethodBeat.o(222343);
+    AppMethodBeat.o(226613);
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsruntime.i d(String paramString, byte[] paramArrayOfByte)
+  public final i d(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(45056);
     IJSRuntime.Config localConfig = new IJSRuntime.Config();
-    localConfig.cYF = paramString;
-    localConfig.cYG = paramArrayOfByte;
-    paramString = (String)com.tencent.mm.plugin.appbrand.game.a.g.knX.att();
-    ae.i("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: use native buffer type: %s", new Object[] { paramString });
-    localConfig.cYH = paramString;
-    localConfig.cYI = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qEz, true);
-    localConfig.cYK = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.m.koh.att()).booleanValue();
+    localConfig.dpj = paramString;
+    localConfig.dpk = paramArrayOfByte;
+    paramString = (String)h.lrE.aLT();
+    Log.i("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: use native buffer type: %s", new Object[] { paramString });
+    localConfig.dpl = paramString;
+    localConfig.dpm = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rXG, true);
+    localConfig.dpo = ((Boolean)o.lrP.aLT()).booleanValue();
     boolean bool;
-    if (!((Boolean)l.kog.att()).booleanValue())
+    if (!((Boolean)m.lrN.aLT()).booleanValue())
     {
       bool = true;
-      localConfig.cYL = bool;
-      localConfig.cYN = new WeakReference(Eo());
-      bool = bhG();
-      ae.i("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: should use node: %b, config is %s", new Object[] { Boolean.valueOf(bool), localConfig.toString() });
+      localConfig.dpp = bool;
+      localConfig.dps = new WeakReference(NN());
+      bool = bCU();
+      Log.i("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: should use node: %b, config is %s", new Object[] { Boolean.valueOf(bool), localConfig.toString() });
       if (!bool) {
         break label283;
       }
     }
     label283:
-    for (paramString = new x(localConfig);; paramString = new com.tencent.mm.plugin.appbrand.jsruntime.b(localConfig))
+    for (paramString = new x(localConfig);; paramString = new com.tencent.mm.plugin.appbrand.m.b(localConfig))
     {
       if ((paramString instanceof x))
       {
-        this.knA = new com.tencent.mm.plugin.appbrand.q.a();
-        this.knA.a((com.tencent.mm.plugin.appbrand.r)Eo(), paramString);
+        this.lri = new com.tencent.mm.plugin.appbrand.u.a();
+        this.lri.a((com.tencent.mm.plugin.appbrand.s)NN(), paramString);
       }
-      paramArrayOfByte = (com.tencent.mm.plugin.appbrand.jsruntime.q)paramString.P(com.tencent.mm.plugin.appbrand.jsruntime.q.class);
+      paramArrayOfByte = (com.tencent.mm.plugin.appbrand.m.q)paramString.R(com.tencent.mm.plugin.appbrand.m.q.class);
       if (paramArrayOfByte != null)
       {
-        bool = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.i.Px("tracejstask").att()).booleanValue();
-        ae.i("MicroMsg.AppBrandGameServiceLogicImpWC", "dl: Trace Task Name in JSThread: ".concat(String.valueOf(bool)));
-        paramArrayOfByte.cj(bool);
+        bool = ((Boolean)j.YI("tracejstask").aLT()).booleanValue();
+        Log.i("MicroMsg.AppBrandGameServiceLogicImpWC", "dl: Trace Task Name in JSThread: ".concat(String.valueOf(bool)));
+        paramArrayOfByte.cS(bool);
       }
       AppMethodBeat.o(45056);
       return paramString;
@@ -421,13 +431,31 @@ public class a
     }
   }
   
-  public final String dp(String paramString)
+  public final void d(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(226609);
+    super.d(paramJSONObject);
+    try
+    {
+      paramJSONObject.put("clientVersion", com.tencent.mm.protocal.d.KyO);
+      paramJSONObject.put("JSEngineName", w.c(((com.tencent.mm.plugin.appbrand.service.c)NN()).getJsRuntime()));
+      AppMethodBeat.o(226609);
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      Log.printErrStackTrace("MicroMsg.AppBrandGameServiceLogicImpWC", paramJSONObject, "attachCommonConfig error", new Object[0]);
+      AppMethodBeat.o(226609);
+    }
+  }
+  
+  public final String dH(String paramString)
   {
     AppMethodBeat.i(45070);
-    if ((((com.tencent.mm.plugin.appbrand.service.c)Eo()).getRuntime() != null) && (((com.tencent.mm.plugin.appbrand.service.c)Eo()).getRuntime().Fj())) {}
+    if ((((com.tencent.mm.plugin.appbrand.service.c)NN()).getRuntime() != null) && (((com.tencent.mm.plugin.appbrand.service.c)NN()).getRuntime().OQ())) {}
     for (int i = 1; i != 0; i = 0)
     {
-      paramString = v.a(paramString, ((com.tencent.mm.plugin.appbrand.service.c)Eo()).getRuntime());
+      paramString = v.a(paramString, ((com.tencent.mm.plugin.appbrand.service.c)NN()).getRuntime());
       AppMethodBeat.o(45070);
       return paramString;
     }
@@ -435,11 +463,11 @@ public class a
     return "";
   }
   
-  public final void gt(int paramInt)
+  public final void hH(int paramInt)
   {
     AppMethodBeat.i(45069);
-    super.gt(paramInt);
-    Object localObject = com.tencent.mm.plugin.appbrand.report.quality.a.Ve(((com.tencent.mm.plugin.appbrand.service.c)Eo()).getAppId());
+    super.hH(paramInt);
+    Object localObject = com.tencent.mm.plugin.appbrand.report.quality.b.aeU(((com.tencent.mm.plugin.appbrand.service.c)NN()).getAppId());
     if (localObject == null)
     {
       AppMethodBeat.o(45069);
@@ -447,19 +475,19 @@ public class a
     }
     if (paramInt == 1)
     {
-      ((QualitySessionRuntime)localObject).mAt.mAE = l.a.mAG;
+      ((QualitySessionRuntime)localObject).nLy.nLJ = m.a.nLL;
       AppMethodBeat.o(45069);
       return;
     }
     if (paramInt == 2)
     {
-      ((QualitySessionRuntime)localObject).mAt.mAE = l.a.mAH;
+      ((QualitySessionRuntime)localObject).nLy.nLJ = m.a.nLM;
       AppMethodBeat.o(45069);
       return;
     }
     if (paramInt == 3)
     {
-      ((QualitySessionRuntime)localObject).mAt.mAE = l.a.mAI;
+      ((QualitySessionRuntime)localObject).nLy.nLJ = m.a.nLN;
       AppMethodBeat.o(45069);
       return;
     }
@@ -469,97 +497,93 @@ public class a
   }
   
   final class a
-    extends com.tencent.luggage.game.a.d
+    extends com.tencent.luggage.game.a.b
   {
-    public a(Context paramContext, com.tencent.mm.plugin.appbrand.jsruntime.i parami, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
+    public a(Context paramContext, i parami, boolean paramBoolean1, boolean paramBoolean2, int paramInt, boolean paramBoolean3)
     {
       super(parami, paramBoolean1, paramBoolean2, paramInt, paramBoolean3);
     }
     
-    public final void a(com.tencent.magicbrush.d paramd, long paramLong)
+    public final void a(com.tencent.magicbrush.e parame, long paramLong)
     {
       AppMethodBeat.i(45052);
-      com.tencent.mm.plugin.appbrand.report.quality.a.byG();
-      com.tencent.mm.plugin.appbrand.report.quality.b.a(((com.tencent.mm.plugin.appbrand.service.c)a.this.Eo()).aXP(), ((com.tencent.mm.plugin.appbrand.service.c)a.this.Eo()).getAppId(), paramLong);
+      com.tencent.mm.plugin.appbrand.report.quality.b.bUZ();
+      com.tencent.mm.plugin.appbrand.report.quality.c.a(((com.tencent.mm.plugin.appbrand.service.c)a.this.NN()).bsW(), ((com.tencent.mm.plugin.appbrand.service.c)a.this.NN()).getAppId(), paramLong);
       AppMethodBeat.o(45052);
     }
     
-    public final void a(com.tencent.magicbrush.e parame)
+    public final void a(com.tencent.magicbrush.f paramf)
     {
       AppMethodBeat.i(45051);
-      super.a(parame);
-      boolean bool1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qDa, false);
-      parame.cxL.a(f.cxA[6], Boolean.valueOf(bool1));
-      parame.ae(com.tencent.mm.plugin.appbrand.game.a.d.knR.jdMethod_do(((com.tencent.mm.plugin.appbrand.service.c)a.this.Eo()).getContext()));
-      parame.bP(s.bhP());
-      bool1 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.b.knK.att()).booleanValue();
-      parame.cxM.a(f.cxA[7], Boolean.valueOf(bool1));
-      bool1 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.q.kol.att()).booleanValue();
+      super.a(paramf);
+      boolean bool1 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.rVT, false);
+      paramf.cLT.a(com.tencent.magicbrush.g.cLI[6], Boolean.valueOf(bool1));
+      paramf.af(com.tencent.mm.plugin.appbrand.game.a.e.lry.dJ(((com.tencent.mm.plugin.appbrand.service.c)a.this.NN()).getContext()));
+      paramf.cp(u.bDe());
+      bool1 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.b.lrq.aLT()).booleanValue();
+      paramf.cLU.a(com.tencent.magicbrush.g.cLI[7], Boolean.valueOf(bool1));
+      bool1 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.s.lrT.aLT()).booleanValue();
       String str1;
       label194:
       String str2;
       label202:
       String str3;
-      if ((a.bhI()) && (((Boolean)com.tencent.mm.plugin.appbrand.game.a.r.kom.att()).booleanValue()))
+      if ((a.bCW()) && (((Boolean)t.lrU.aLT()).booleanValue()))
       {
-        parame.b(a.b.cAw);
-        boolean bool2 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.e.knV.att()).booleanValue();
-        bool1 = ((Boolean)n.koi.att()).booleanValue();
-        boolean bool3 = ((Boolean)o.koj.att()).booleanValue();
+        paramf.b(a.b.cOC);
+        boolean bool2 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.f.lrC.aLT()).booleanValue();
+        bool1 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.p.lrQ.aLT()).booleanValue();
+        boolean bool3 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.q.lrR.aLT()).booleanValue();
         if (!bool2) {
-          break label457;
+          break label399;
         }
         str1 = "yes";
         if (!bool1) {
-          break label465;
+          break label407;
         }
         str2 = "yes";
         if (!bool3) {
-          break label473;
+          break label415;
         }
         str3 = "yes";
         label211:
-        ae.i("MicroMsg.AppBrandGameServiceLogicImpWC", "[hilive] supportHardCodec: %s useHardDecode: %s useHardEncode: %s", new Object[] { str1, str2, str3 });
+        Log.i("MicroMsg.AppBrandGameServiceLogicImpWC", "[hilive] supportHardCodec: %s useHardDecode: %s useHardEncode: %s", new Object[] { str1, str2, str3 });
         if ((!bool2) || (!bool1)) {
-          break label481;
+          break label423;
         }
         bool1 = true;
         label247:
-        parame.bU(bool1);
+        paramf.cw(bool1);
         if ((!bool2) || (!bool3)) {
-          break label486;
+          break label428;
         }
       }
-      label457:
-      label465:
-      label473:
-      label481:
-      label486:
+      label399:
+      label407:
+      label415:
+      label423:
+      label428:
       for (bool1 = true;; bool1 = false)
       {
-        parame.bT(bool1);
-        ae.i("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: use animation handler: %s", new Object[] { parame.Hy().toString() });
-        bool1 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.c.knL.att()).booleanValue();
-        parame.cya.a(f.cxA[19], Boolean.valueOf(bool1));
-        parame.bR(((Boolean)com.tencent.mm.plugin.appbrand.game.a.h.knY.att()).booleanValue());
-        parame.bS(((Boolean)l.kog.att()).booleanValue());
-        bool1 = ((Boolean)k.kof.att()).booleanValue();
-        parame.cye.a(f.cxA[23], Boolean.valueOf(bool1));
-        bool1 = ((Boolean)com.tencent.mm.plugin.appbrand.game.a.j.koe.att()).booleanValue();
-        parame.cyf.a(f.cxA[24], Boolean.valueOf(bool1));
+        paramf.cv(bool1);
+        Log.i("MicroMsg.AppBrandGameServiceLogicImpWC", "hy: use animation handler: %s", new Object[] { paramf.Rq().toString() });
+        paramf.cs(((Boolean)com.tencent.mm.plugin.appbrand.game.a.c.lrr.aLT()).booleanValue());
+        paramf.ct(((Boolean)m.lrN.aLT()).booleanValue());
+        paramf.cu(((Boolean)com.tencent.mm.plugin.appbrand.game.a.k.lrL.aLT()).booleanValue());
+        paramf.cx(((Boolean)com.tencent.mm.plugin.appbrand.game.a.d.lrs.aLT()).booleanValue());
         AppMethodBeat.o(45051);
         return;
         if (!bool1)
         {
-          parame.b(a.b.cAu);
+          paramf.b(a.b.cOA);
           break;
         }
-        if (a.bhI())
+        if (a.bCW())
         {
-          parame.b(a.b.cAt);
+          paramf.b(a.b.cOz);
           break;
         }
-        parame.b(a.b.cAs);
+        paramf.b(a.b.cOy);
         break;
         str1 = "no";
         break label194;
@@ -576,7 +600,7 @@ public class a
     {
       AppMethodBeat.i(45053);
       super.a(paramAppBrandRuntime);
-      com.tencent.mm.plugin.appbrand.game.c.a.kou.a(getMagicBrush(), paramAppBrandRuntime);
+      com.tencent.mm.plugin.appbrand.game.c.a.lsc.a(getMagicBrush(), paramAppBrandRuntime);
       a.c(a.this);
       AppMethodBeat.o(45053);
     }
@@ -584,7 +608,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.a
  * JD-Core Version:    0.7.0.1
  */

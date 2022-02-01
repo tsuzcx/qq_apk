@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/aev" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="@dimen/by" android:layout_height="@dimen/by">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:id="@id/gc3" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:src="@raw/toast_ok" app:iconColor="@color/aj" />
-        <TextView android:textSize="@dimen/q" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/gc4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c0" android:layout_marginTop="@dimen/c0" android:layout_marginRight="@dimen/c0" android:maxLines="2" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:gravity="center" android:id="@id/ame" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/ab0" android:background="@color/FG_4" android:layout_width="1.0dip" android:layout_height="15.0dip" android:layout_centerInParent="true" android:layerType="software" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:gravity="center" android:id="@id/ixi" android:padding="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_toLeftOf="@id/ixh" android:layout_centerInParent="true" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/Link" android:gravity="center" android:id="@id/ixh" android:padding="13.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_toRightOf="@id/ab0" android:layout_alignParentTop="true" android:layout_centerInParent="true" />
+</RelativeLayout>

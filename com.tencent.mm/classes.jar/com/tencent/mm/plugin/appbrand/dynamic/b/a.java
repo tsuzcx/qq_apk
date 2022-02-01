@@ -6,46 +6,46 @@ import com.tencent.mm.modelappbrand.a.b.d;
 import com.tencent.mm.modelappbrand.a.b.l;
 import com.tencent.mm.plugin.appbrand.dynamic.j.c;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.xweb.WebResourceResponse;
 import java.io.IOException;
 import java.io.InputStream;
 
 public final class a
 {
-  private static final b.l kje;
+  private static final b.l lmM;
   
   static
   {
     AppMethodBeat.i(121250);
-    kje = new b.d();
+    lmM = new b.d();
     AppMethodBeat.o(121250);
   }
   
-  public static Bitmap cM(String paramString1, String paramString2)
+  public static Bitmap db(String paramString1, String paramString2)
   {
     AppMethodBeat.i(121249);
-    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(121249);
       return null;
     }
-    Object localObject = LaunchParcel.MW(paramString2);
-    if (bu.isNullOrNil((String)localObject))
+    Object localObject = LaunchParcel.Wf(paramString2);
+    if (Util.isNullOrNil((String)localObject))
     {
       AppMethodBeat.o(121249);
       return null;
     }
     paramString2 = paramString1 + '#' + (String)localObject;
-    Bitmap localBitmap = kje.wA(paramString2);
+    Bitmap localBitmap = lmM.EP(paramString2);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       AppMethodBeat.o(121249);
       return localBitmap;
     }
-    paramString1 = c.cS(paramString1, (String)localObject);
+    paramString1 = c.dh(paramString1, (String)localObject);
     if (paramString1 != null) {}
     try
     {
@@ -58,23 +58,23 @@ public final class a
       {
         return null;
       }
-      localObject = h.decodeStream(paramString1.mInputStream);
+      localObject = BitmapUtil.decodeStream(paramString1.mInputStream);
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
       {
-        kje.put(paramString2, (Bitmap)localObject);
+        lmM.put(paramString2, (Bitmap)localObject);
         return localObject;
       }
       if (paramString1 != null) {
-        bu.d(paramString1.mInputStream);
+        Util.qualityClose(paramString1.mInputStream);
       }
     }
     catch (IOException paramString2)
     {
       for (;;)
       {
-        ae.e("MicroMsg.CanvasImageCache", "try decode icon e = %s", new Object[] { paramString2 });
+        Log.e("MicroMsg.CanvasImageCache", "try decode icon e = %s", new Object[] { paramString2 });
         if (paramString1 != null) {
-          bu.d(paramString1.mInputStream);
+          Util.qualityClose(paramString1.mInputStream);
         }
       }
     }
@@ -83,7 +83,7 @@ public final class a
       if (paramString1 == null) {
         break label255;
       }
-      bu.d(paramString1.mInputStream);
+      Util.qualityClose(paramString1.mInputStream);
       AppMethodBeat.o(121249);
     }
     AppMethodBeat.o(121249);
@@ -92,7 +92,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b.a
  * JD-Core Version:    0.7.0.1
  */

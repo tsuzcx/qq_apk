@@ -1,10 +1,10 @@
 package com.tencent.mm.pluginsdk.j.a.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.io.Closeable;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -12,18 +12,36 @@ import java.io.OutputStream;
 
 public final class a
 {
+  public static boolean YS(String paramString)
+  {
+    AppMethodBeat.i(152089);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(152089);
+      return false;
+    }
+    paramString = new o(paramString);
+    if ((paramString.exists()) && (paramString.isFile()))
+    {
+      AppMethodBeat.o(152089);
+      return true;
+    }
+    AppMethodBeat.o(152089);
+    return false;
+  }
+  
   /* Error */
-  public static byte[] aNG(String paramString)
+  public static byte[] bei(String paramString)
   {
     // Byte code:
-    //   0: ldc 11
-    //   2: invokestatic 17	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc 42
+    //   2: invokestatic 13	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: invokestatic 23	com/tencent/mm/vfs/o:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   6: invokestatic 48	com/tencent/mm/vfs/s:openRead	(Ljava/lang/String;)Ljava/io/InputStream;
     //   9: astore_0
-    //   10: new 25	java/io/ByteArrayOutputStream
+    //   10: new 50	java/io/ByteArrayOutputStream
     //   13: dup
-    //   14: invokespecial 29	java/io/ByteArrayOutputStream:<init>	()V
+    //   14: invokespecial 53	java/io/ByteArrayOutputStream:<init>	()V
     //   17: astore 4
     //   19: aload 4
     //   21: astore_3
@@ -38,7 +56,7 @@ public final class a
     //   35: astore_2
     //   36: aload_0
     //   37: aload 5
-    //   39: invokevirtual 35	java/io/InputStream:read	([B)I
+    //   39: invokevirtual 59	java/io/InputStream:read	([B)I
     //   42: istore_1
     //   43: iload_1
     //   44: iconst_m1
@@ -51,25 +69,25 @@ public final class a
     //   55: aload 5
     //   57: iconst_0
     //   58: iload_1
-    //   59: invokevirtual 39	java/io/ByteArrayOutputStream:write	([BII)V
+    //   59: invokevirtual 63	java/io/ByteArrayOutputStream:write	([BII)V
     //   62: goto -31 -> 31
     //   65: astore 5
     //   67: aload 4
     //   69: astore_3
     //   70: aload_0
     //   71: astore_2
-    //   72: ldc 41
+    //   72: ldc 65
     //   74: aload 5
-    //   76: ldc 43
+    //   76: ldc 67
     //   78: iconst_0
     //   79: anewarray 4	java/lang/Object
-    //   82: invokestatic 49	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   82: invokestatic 73	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   85: aload_0
-    //   86: invokestatic 53	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
+    //   86: invokestatic 77	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
     //   89: aload 4
-    //   91: invokestatic 53	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
-    //   94: ldc 11
-    //   96: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   91: invokestatic 77	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
+    //   94: ldc 42
+    //   96: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   99: aconst_null
     //   100: areturn
     //   101: aload 4
@@ -77,20 +95,20 @@ public final class a
     //   104: aload_0
     //   105: astore_2
     //   106: aload 4
-    //   108: invokevirtual 59	java/io/ByteArrayOutputStream:flush	()V
+    //   108: invokevirtual 80	java/io/ByteArrayOutputStream:flush	()V
     //   111: aload 4
     //   113: astore_3
     //   114: aload_0
     //   115: astore_2
     //   116: aload 4
-    //   118: invokevirtual 63	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   118: invokevirtual 84	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   121: astore 5
     //   123: aload_0
-    //   124: invokestatic 53	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
+    //   124: invokestatic 77	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
     //   127: aload 4
-    //   129: invokestatic 53	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
-    //   132: ldc 11
-    //   134: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   129: invokestatic 77	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
+    //   132: ldc 42
+    //   134: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   137: aload 5
     //   139: areturn
     //   140: astore 5
@@ -102,16 +120,16 @@ public final class a
     //   149: astore_3
     //   150: aload_0
     //   151: astore_2
-    //   152: ldc 41
+    //   152: ldc 65
     //   154: aload 5
-    //   156: ldc 43
+    //   156: ldc 67
     //   158: iconst_0
     //   159: anewarray 4	java/lang/Object
-    //   162: invokestatic 49	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   162: invokestatic 73	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   165: aload_0
-    //   166: invokestatic 53	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
+    //   166: invokestatic 77	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
     //   169: aload 4
-    //   171: invokestatic 53	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
+    //   171: invokestatic 77	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
     //   174: goto -80 -> 94
     //   177: astore 4
     //   179: aconst_null
@@ -119,11 +137,11 @@ public final class a
     //   181: aconst_null
     //   182: astore_0
     //   183: aload_0
-    //   184: invokestatic 53	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
+    //   184: invokestatic 77	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
     //   187: aload_3
-    //   188: invokestatic 53	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
-    //   191: ldc 11
-    //   193: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   188: invokestatic 77	com/tencent/mm/pluginsdk/j/a/d/a:c	(Ljava/io/Closeable;)V
+    //   191: ldc 42
+    //   193: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   196: aload 4
     //   198: athrow
     //   199: astore 4
@@ -196,15 +214,15 @@ public final class a
     //   10	19	236	java/io/FileNotFoundException
   }
   
-  public static boolean aNH(String paramString)
+  public static boolean bej(String paramString)
   {
     AppMethodBeat.i(152088);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(152088);
       return false;
     }
-    paramString = new k(paramString);
+    paramString = new o(paramString);
     if ((!paramString.exists()) || (paramString.delete()))
     {
       AppMethodBeat.o(152088);
@@ -230,39 +248,21 @@ public final class a
     }
     catch (IOException localIOException)
     {
-      ae.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", localIOException, "", new Object[0]);
-      ae.e("MicroMsg.ResDownloaderFileUtils", String.format("%s close failed (%s)", new Object[] { paramCloseable.getClass().getSimpleName(), localIOException.getMessage() }));
+      Log.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", localIOException, "", new Object[0]);
+      Log.e("MicroMsg.ResDownloaderFileUtils", String.format("%s close failed (%s)", new Object[] { paramCloseable.getClass().getSimpleName(), localIOException.getMessage() }));
       AppMethodBeat.o(152087);
     }
   }
   
-  public static boolean fB(String paramString)
-  {
-    AppMethodBeat.i(152089);
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(152089);
-      return false;
-    }
-    paramString = new k(paramString);
-    if ((paramString.exists()) && (paramString.isFile()))
-    {
-      AppMethodBeat.o(152089);
-      return true;
-    }
-    AppMethodBeat.o(152089);
-    return false;
-  }
-  
-  public static long gE(String paramString)
+  public static long hv(String paramString)
   {
     AppMethodBeat.i(152084);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(152084);
       return 0L;
     }
-    paramString = new k(paramString);
+    paramString = new o(paramString);
     if (paramString.isFile())
     {
       long l = paramString.length();
@@ -276,20 +276,20 @@ public final class a
   public static boolean y(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(152085);
-    if (bu.cF(paramArrayOfByte))
+    if (Util.isNullOrNil(paramArrayOfByte))
     {
       AppMethodBeat.o(152085);
       return false;
     }
-    Object localObject3 = new k(paramString);
-    ((k)localObject3).delete();
-    ((k)localObject3).fTg().mkdirs();
+    Object localObject3 = new o(paramString);
+    ((o)localObject3).delete();
+    ((o)localObject3).heq().mkdirs();
     Object localObject2 = null;
     paramString = null;
     Object localObject1 = null;
     try
     {
-      localObject3 = o.aj((k)localObject3);
+      localObject3 = s.ap((o)localObject3);
       localObject1 = localObject3;
       localObject2 = localObject3;
       paramString = (String)localObject3;
@@ -306,7 +306,7 @@ public final class a
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramString, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramString, "", new Object[0]);
         }
       }
       try
@@ -320,14 +320,14 @@ public final class a
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramString, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramString, "", new Object[0]);
         }
       }
     }
     catch (FileNotFoundException paramArrayOfByte)
     {
       paramString = localObject1;
-      ae.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramArrayOfByte, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramArrayOfByte, "", new Object[0]);
       if (localObject1 != null) {}
       try
       {
@@ -340,7 +340,7 @@ public final class a
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramString, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramString, "", new Object[0]);
         }
       }
     }
@@ -349,7 +349,7 @@ public final class a
       for (;;)
       {
         paramString = localObject2;
-        ae.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramArrayOfByte, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramArrayOfByte, "", new Object[0]);
         if (localObject2 != null) {
           try
           {
@@ -358,7 +358,7 @@ public final class a
           }
           catch (IOException paramString)
           {
-            ae.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramString, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.ResDownloaderFileUtils", paramString, "", new Object[0]);
           }
         }
       }
@@ -371,7 +371,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.d.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/gnv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/gmi" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</FrameLayout>
+    <TextView android:textColor="?kg" android:gravity="center_vertical" android:id="@id/c11" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:id="@id/c0y" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <View android:layout_gravity="center_vertical" android:id="@id/c10" android:layout_marginEnd="@dimen/ct" style="@style/zs" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/c0z" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginEnd="@dimen/bt" />
+        <TextView android:textColor="?kg" android:gravity="center_vertical" android:id="@id/c0x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:drawablePadding="@dimen/ct" android:drawableEnd="@drawable/bt4" />
+    </LinearLayout>
+</LinearLayout>

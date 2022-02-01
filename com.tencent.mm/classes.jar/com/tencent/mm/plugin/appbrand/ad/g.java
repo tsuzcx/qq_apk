@@ -7,121 +7,177 @@ import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.jsapi.at;
-import com.tencent.mm.plugin.appbrand.jsapi.d;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.e.a;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.h.a;
 import com.tencent.mm.plugin.appbrand.jsapi.j;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
-import com.tencent.mm.plugin.appbrand.jsruntime.i;
-import com.tencent.mm.plugin.appbrand.jsruntime.o;
-import com.tencent.mm.plugin.appbrand.page.al;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.appbrand.ui.x;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.n;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.m.o;
+import com.tencent.mm.plugin.appbrand.page.ao;
+import com.tencent.mm.plugin.appbrand.s;
 import java.util.Map;
 
 public final class g
-  extends com.tencent.mm.plugin.appbrand.jsapi.g
-  implements e
+  extends j
+  implements h
 {
-  private r jFj;
-  public al jFk;
-  public f jFl;
+  private s kGT;
+  public ao kGU;
+  public f kGV;
   
-  public g(r paramr)
+  public g(s params)
   {
     AppMethodBeat.i(134653);
-    this.jFj = paramr;
+    this.kGT = params;
     AppMethodBeat.o(134653);
   }
   
-  private al DG()
+  private ao getCustomViewContainer()
   {
     AppMethodBeat.i(134656);
-    al localal;
-    if (this.jFk != null)
+    ao localao;
+    if (this.kGU != null)
     {
-      localal = this.jFk;
+      localao = this.kGU;
       AppMethodBeat.o(134656);
-      return localal;
+      return localao;
     }
     if ((getContentView() instanceof ViewGroup))
     {
-      this.jFk = new al((ViewGroup)getContentView());
-      localal = this.jFk;
+      this.kGU = new ao((ViewGroup)getContentView());
+      localao = this.kGU;
       AppMethodBeat.o(134656);
-      return localal;
+      return localao;
     }
     AppMethodBeat.o(134656);
     return null;
   }
   
-  public final i EM()
-  {
-    return null;
-  }
-  
-  public final Map<String, com.tencent.mm.plugin.appbrand.jsapi.m> EN()
-  {
-    return null;
-  }
-  
-  public final q Fl()
-  {
-    return null;
-  }
-  
-  public final <T extends com.tencent.luggage.a.b> T K(Class<T> paramClass)
+  public final <T extends com.tencent.luggage.a.b> T M(Class<T> paramClass)
   {
     AppMethodBeat.i(134654);
-    paramClass = this.jFj.K(paramClass);
+    paramClass = this.kGT.M(paramClass);
     AppMethodBeat.o(134654);
     return paramClass;
   }
   
-  public final void K(Runnable paramRunnable)
+  public final i Oo()
+  {
+    return null;
+  }
+  
+  public final Map<String, p> Op()
+  {
+    return null;
+  }
+  
+  public final void P(Runnable paramRunnable)
   {
     AppMethodBeat.i(134661);
-    this.jFj.K(paramRunnable);
+    this.kGT.P(paramRunnable);
     AppMethodBeat.o(134661);
   }
   
-  public final void a(at paramat)
+  public final void a(bc parambc)
   {
     AppMethodBeat.i(134664);
-    this.jFj.a(paramat);
+    this.kGT.a(parambc);
     AppMethodBeat.o(134664);
   }
   
-  public final void a(at paramat, o paramo)
+  public final void a(bc parambc, o paramo)
   {
-    AppMethodBeat.i(207748);
-    this.jFj.a(paramat, paramo);
-    AppMethodBeat.o(207748);
+    AppMethodBeat.i(219299);
+    this.kGT.a(parambc, paramo);
+    AppMethodBeat.o(219299);
   }
   
-  public final boolean a(k paramk)
+  public final void a(bc parambc, int[] paramArrayOfInt)
+  {
+    AppMethodBeat.i(134665);
+    this.kGT.a(parambc);
+    AppMethodBeat.o(134665);
+  }
+  
+  public final boolean a(n paramn)
   {
     return false;
   }
   
-  public final com.tencent.mm.plugin.appbrand.a.b aWc()
+  public final <T extends com.tencent.mm.plugin.appbrand.jsapi.m> T av(Class<T> paramClass)
   {
     return null;
   }
   
-  public final com.tencent.mm.plugin.appbrand.widget.dialog.m aWd()
+  public final <T extends n> T aw(Class<T> paramClass)
   {
     return null;
   }
   
-  public final boolean aXO()
+  public final void b(String paramString1, String paramString2, int[] paramArrayOfInt)
   {
-    return this.jFj.jCZ;
+    AppMethodBeat.i(134666);
+    this.kGT.c(paramString1, paramString2, 0);
+    AppMethodBeat.o(134666);
   }
   
-  public final int aXX()
+  public final boolean bsV()
+  {
+    return this.kGT.kEa;
+  }
+  
+  public final boolean btO()
+  {
+    return false;
+  }
+  
+  public final void co(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(134663);
+    this.kGT.c(paramString1, paramString2, 0);
+    AppMethodBeat.o(134663);
+  }
+  
+  public final h.a gA(boolean paramBoolean)
+  {
+    AppMethodBeat.i(219297);
+    if (paramBoolean)
+    {
+      if (this.kGT.getRuntime().kAT != null)
+      {
+        localObject = this.kGT.getRuntime().kAT;
+        AppMethodBeat.o(219297);
+        return localObject;
+      }
+      AppMethodBeat.o(219297);
+      return null;
+    }
+    Object localObject = getCustomViewContainer();
+    AppMethodBeat.o(219297);
+    return localObject;
+  }
+  
+  public final String getAppId()
+  {
+    AppMethodBeat.i(134658);
+    String str = this.kGT.getAppId();
+    AppMethodBeat.o(134658);
+    return str;
+  }
+  
+  public final com.tencent.mm.plugin.appbrand.a.b getAppState()
+  {
+    return null;
+  }
+  
+  public final Handler getAsyncHandler()
+  {
+    return null;
+  }
+  
+  public final int getComponentId()
   {
     AppMethodBeat.i(134657);
     int i = hashCode();
@@ -129,142 +185,71 @@ public final class g
     return i;
   }
   
-  public final Handler aYA()
-  {
-    return null;
-  }
-  
-  public final i aYB()
-  {
-    return null;
-  }
-  
-  public final <T extends j> T ar(Class<T> paramClass)
-  {
-    return null;
-  }
-  
-  public final <T extends k> T as(Class<T> paramClass)
-  {
-    return null;
-  }
-  
-  public final void b(at paramat)
-  {
-    AppMethodBeat.i(160929);
-    this.jFj.a(paramat);
-    AppMethodBeat.o(160929);
-  }
-  
-  public final void b(String paramString1, String paramString2, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(134666);
-    this.jFj.c(paramString1, paramString2, 0);
-    AppMethodBeat.o(134666);
-  }
-  
-  public final void cb(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(134663);
-    this.jFj.c(paramString1, paramString2, 0);
-    AppMethodBeat.o(134663);
-  }
-  
-  public final e.a fF(boolean paramBoolean)
-  {
-    AppMethodBeat.i(207746);
-    if (paramBoolean)
-    {
-      if (this.jFj.getRuntime().jAc != null)
-      {
-        localObject = this.jFj.getRuntime().jAc;
-        AppMethodBeat.o(207746);
-        return localObject;
-      }
-      AppMethodBeat.o(207746);
-      return null;
-    }
-    Object localObject = DG();
-    AppMethodBeat.o(207746);
-    return localObject;
-  }
-  
-  public final String getAppId()
-  {
-    AppMethodBeat.i(134658);
-    String str = this.jFj.getAppId();
-    AppMethodBeat.o(134658);
-    return str;
-  }
-  
   public final View getContentView()
   {
     AppMethodBeat.i(134655);
-    Object localObject1;
-    if (this.jFl != null)
+    ViewGroup localViewGroup;
+    if (this.kGV != null)
     {
-      localObject1 = this.jFl.getContentContainer();
+      localViewGroup = this.kGV.getContentContainer();
       AppMethodBeat.o(134655);
-      return localObject1;
+      return localViewGroup;
     }
-    Object localObject2;
-    if (this.jFj.getRuntime() != null)
+    if (this.kGT.getRuntime() != null)
     {
-      localObject2 = this.jFj.getRuntime();
-      if ((((AppBrandRuntime)localObject2).jzG instanceof x))
+      this.kGV = this.kGT.getRuntime().getRuntimeAdViewContainer();
+      if (this.kGV != null)
       {
-        ae.d("MicroMsg.AppBrandRuntime", "getRuntimeAdViewContainer, appId:%s, use AdLoadingSplash RuntimeAdViewContainer", new Object[] { ((AppBrandRuntime)localObject2).mAppId });
-        localObject1 = ((x)((AppBrandRuntime)localObject2).jzG).getRuntimeAdViewContainer();
-      }
-    }
-    for (;;)
-    {
-      String str = ((AppBrandRuntime)localObject2).mAppId;
-      if (((AppBrandRuntime)localObject2).jzG == null) {}
-      for (localObject2 = "null";; localObject2 = ((AppBrandRuntime)localObject2).jzG.getClass().getSimpleName())
-      {
-        ae.i("MicroMsg.AppBrandRuntime", "getRuntimeAdViewContainer:%s, appId:%s, splash:%s", new Object[] { localObject1, str, localObject2 });
-        this.jFl = ((f)localObject1);
-        if (this.jFl == null) {
-          break label198;
-        }
-        localObject1 = this.jFl.getContentContainer();
+        localViewGroup = this.kGV.getContentContainer();
         AppMethodBeat.o(134655);
-        return localObject1;
-        if (((AppBrandRuntime)localObject2).jzI == null) {
-          break label205;
-        }
-        ae.d("MicroMsg.AppBrandRuntime", "getRuntimeAdViewContainer, appId:%s, use secondaryRuntimeAdViewContainer", new Object[] { ((AppBrandRuntime)localObject2).mAppId });
-        localObject1 = ((AppBrandRuntime)localObject2).jzI;
-        break;
+        return localViewGroup;
       }
-      label198:
-      AppMethodBeat.o(134655);
-      return null;
-      label205:
-      localObject1 = null;
     }
+    AppMethodBeat.o(134655);
+    return null;
   }
   
   public final Context getContext()
   {
     AppMethodBeat.i(134659);
-    Context localContext = this.jFj.getContext();
+    Context localContext = this.kGT.getContext();
     AppMethodBeat.o(134659);
     return localContext;
   }
   
-  public final void h(int paramInt, String paramString)
+  public final com.tencent.mm.plugin.appbrand.widget.dialog.m getDialogContainer()
+  {
+    return null;
+  }
+  
+  public final q getFileSystem()
+  {
+    return null;
+  }
+  
+  public final i getJsRuntime()
+  {
+    return null;
+  }
+  
+  public final void i(int paramInt, String paramString)
   {
     AppMethodBeat.i(134662);
-    this.jFj.h(paramInt, paramString);
+    this.kGT.i(paramInt, paramString);
     AppMethodBeat.o(134662);
+  }
+  
+  public final void i(Runnable paramRunnable, long paramLong)
+  {
+    AppMethodBeat.i(219298);
+    this.kGT.i(paramRunnable, paramLong);
+    AppMethodBeat.o(219298);
   }
   
   public final boolean isRunning()
   {
     AppMethodBeat.i(134660);
-    if ((this.jFj.getRuntime() != null) && (!this.jFj.getRuntime().isDestroyed()))
+    if ((this.kGT.getRuntime() != null) && (!this.kGT.getRuntime().isDestroyed()))
     {
       AppMethodBeat.o(134660);
       return true;
@@ -272,17 +257,10 @@ public final class g
     AppMethodBeat.o(134660);
     return false;
   }
-  
-  public final void j(Runnable paramRunnable, long paramLong)
-  {
-    AppMethodBeat.i(207747);
-    this.jFj.j(paramRunnable, paramLong);
-    AppMethodBeat.o(207747);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.g
  * JD-Core Version:    0.7.0.1
  */

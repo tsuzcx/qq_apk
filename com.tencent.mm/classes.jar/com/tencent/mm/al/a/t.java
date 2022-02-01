@@ -1,46 +1,46 @@
 package com.tencent.mm.al.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bby;
-import com.tencent.mm.protocal.protobuf.bbz;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bnk;
+import com.tencent.mm.protocal.protobuf.bnl;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class t
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public b rr;
+  private i callback;
+  public d rr;
   
   public t(String paramString)
   {
     AppMethodBeat.i(124313);
-    b.a locala = new b.a();
-    locala.hQF = new bby();
-    locala.hQG = new bbz();
+    d.a locala = new d.a();
+    locala.iLN = new bnk();
+    locala.iLO = new bnl();
     locala.uri = "/cgi-bin/mmocbiz-bin/getfavbizchatlist";
     locala.funcId = 1367;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ((bby)this.rr.hQD.hQJ).FZx = paramString;
+    this.rr = locala.aXF();
+    ((bnk)this.rr.iLK.iLR).KTt = paramString;
     AppMethodBeat.o(124313);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(124315);
-    this.callback = paramf;
-    ae.i("MicroMsg.brandservice.NetSceneGetFavBizChatList", "do scene");
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    Log.i("MicroMsg.brandservice.NetSceneGetFavBizChatList", "do scene");
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(124315);
     return i;
   }
@@ -50,10 +50,10 @@ public final class t
     return 1367;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(124314);
-    ae.d("MicroMsg.brandservice.NetSceneGetFavBizChatList", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.d("MicroMsg.brandservice.NetSceneGetFavBizChatList", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

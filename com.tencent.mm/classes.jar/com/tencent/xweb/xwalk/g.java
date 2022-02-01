@@ -1,7 +1,6 @@
 package com.tencent.xweb.xwalk;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.webkit.DownloadListener;
 import android.webkit.GeolocationPermissions.Callback;
@@ -14,8 +13,6 @@ import com.tencent.xweb.WebResourceResponse;
 import com.tencent.xweb.a.a;
 import com.tencent.xweb.j;
 import com.tencent.xweb.o;
-import com.tencent.xweb.q;
-import java.io.File;
 import java.util.Map;
 import org.xwalk.core.CustomViewCallback;
 import org.xwalk.core.Log;
@@ -24,7 +21,6 @@ import org.xwalk.core.XWalkFindListener;
 import org.xwalk.core.XWalkGeolocationPermissionsCallback;
 import org.xwalk.core.XWalkHttpAuthHandler;
 import org.xwalk.core.XWalkJavascriptResult;
-import org.xwalk.core.XWalkLongScreenshotCallback;
 import org.xwalk.core.XWalkWebResourceRequest;
 import org.xwalk.core.XWalkWebResourceResponse;
 
@@ -46,17 +42,17 @@ public final class g
   public static final class a
     implements WebChromeClient.CustomViewCallback
   {
-    CustomViewCallback MTK;
+    CustomViewCallback SGR;
     
     a(CustomViewCallback paramCustomViewCallback)
     {
-      this.MTK = paramCustomViewCallback;
+      this.SGR = paramCustomViewCallback;
     }
     
     public final void onCustomViewHidden()
     {
       AppMethodBeat.i(154265);
-      this.MTK.onCustomViewHidden();
+      this.SGR.onCustomViewHidden();
       AppMethodBeat.o(154265);
     }
   }
@@ -64,18 +60,18 @@ public final class g
   public static final class b
     implements GeolocationPermissions.Callback
   {
-    XWalkGeolocationPermissionsCallback MTL;
+    XWalkGeolocationPermissionsCallback SGS;
     
     public b(XWalkGeolocationPermissionsCallback paramXWalkGeolocationPermissionsCallback)
     {
-      this.MTL = paramXWalkGeolocationPermissionsCallback;
+      this.SGS = paramXWalkGeolocationPermissionsCallback;
     }
     
     public final void invoke(String paramString, boolean paramBoolean1, boolean paramBoolean2)
     {
       AppMethodBeat.i(154266);
-      if (this.MTL != null) {
-        this.MTL.invoke(paramString, paramBoolean1, paramBoolean2);
+      if (this.SGS != null) {
+        this.SGS.invoke(paramString, paramBoolean1, paramBoolean2);
       }
       AppMethodBeat.o(154266);
     }
@@ -84,113 +80,63 @@ public final class g
   public static final class c
     extends JsResult
   {
-    public XWalkJavascriptResult MTM;
+    public XWalkJavascriptResult SGT;
     
     public c(XWalkJavascriptResult paramXWalkJavascriptResult)
     {
-      this.MTM = paramXWalkJavascriptResult;
+      this.SGT = paramXWalkJavascriptResult;
     }
     
     public final void cancel()
     {
       AppMethodBeat.i(154269);
-      this.MTM.cancel();
+      this.SGT.cancel();
       AppMethodBeat.o(154269);
     }
     
     public final void confirm()
     {
       AppMethodBeat.i(154268);
-      this.MTM.confirm();
+      this.SGT.confirm();
       AppMethodBeat.o(154268);
     }
     
     public final void confirmWithResult(String paramString)
     {
       AppMethodBeat.i(154267);
-      this.MTM.confirmWithResult(paramString);
+      this.SGT.confirmWithResult(paramString);
       AppMethodBeat.o(154267);
-    }
-  }
-  
-  public static final class d
-    extends XWalkLongScreenshotCallback
-  {
-    private q MTN;
-    
-    public d(q paramq)
-    {
-      this.MTN = paramq;
-    }
-    
-    public final File getCacheFileDir()
-    {
-      AppMethodBeat.i(154271);
-      File localFile = this.MTN.getCacheFileDir();
-      AppMethodBeat.o(154271);
-      return localFile;
-    }
-    
-    public final int getMaxHeightSupported()
-    {
-      AppMethodBeat.i(154274);
-      int i = this.MTN.getMaxHeightSupported();
-      AppMethodBeat.o(154274);
-      return i;
-    }
-    
-    public final File getResultFileDir()
-    {
-      AppMethodBeat.i(154272);
-      File localFile = this.MTN.getResultFileDir();
-      AppMethodBeat.o(154272);
-      return localFile;
-    }
-    
-    public final void onLongScreenshotFinished(int paramInt, String paramString)
-    {
-      AppMethodBeat.i(154270);
-      this.MTN.onLongScreenshotFinished(paramInt, paramString);
-      AppMethodBeat.o(154270);
-    }
-    
-    public final Bitmap overrideScreenshot(Bitmap paramBitmap)
-    {
-      AppMethodBeat.i(154273);
-      paramBitmap = this.MTN.overrideScreenshot(paramBitmap);
-      AppMethodBeat.o(154273);
-      return paramBitmap;
     }
   }
   
   public static final class e
     extends o
   {
-    public XWalkJavascriptResult MTM;
+    public XWalkJavascriptResult SGT;
     
     public e(XWalkJavascriptResult paramXWalkJavascriptResult)
     {
-      this.MTM = paramXWalkJavascriptResult;
+      this.SGT = paramXWalkJavascriptResult;
     }
     
     public final void cancel()
     {
       AppMethodBeat.i(154277);
-      this.MTM.cancel();
+      this.SGT.cancel();
       AppMethodBeat.o(154277);
     }
     
     public final void confirm()
     {
       AppMethodBeat.i(154276);
-      this.MTM.confirm();
+      this.SGT.confirm();
       AppMethodBeat.o(154276);
     }
     
     public final void confirmWithResult(String paramString)
     {
       AppMethodBeat.i(154275);
-      this.MTM.confirmWithResult(paramString);
+      this.SGT.confirmWithResult(paramString);
       AppMethodBeat.o(154275);
     }
   }
@@ -198,19 +144,19 @@ public final class g
   public static final class f
     extends XWalkDownloadListener
   {
-    DownloadListener MRM;
+    DownloadListener SES;
     
     public f(Context paramContext, DownloadListener paramDownloadListener)
     {
       super();
-      this.MRM = paramDownloadListener;
+      this.SES = paramDownloadListener;
     }
     
     public final void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
     {
       AppMethodBeat.i(154278);
-      if (this.MRM != null) {
-        this.MRM.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
+      if (this.SES != null) {
+        this.SES.onDownloadStart(paramString1, paramString2, paramString3, paramString4, paramLong);
       }
       AppMethodBeat.o(154278);
     }
@@ -219,18 +165,18 @@ public final class g
   public static final class g
     extends XWalkFindListener
   {
-    WebView.FindListener MRN;
+    WebView.FindListener SET;
     
     public g(WebView.FindListener paramFindListener)
     {
-      this.MRN = paramFindListener;
+      this.SET = paramFindListener;
     }
     
     public final void onFindResultReceived(int paramInt1, int paramInt2, boolean paramBoolean)
     {
       AppMethodBeat.i(154279);
-      if (this.MRN != null) {
-        this.MRN.onFindResultReceived(paramInt1, paramInt2, paramBoolean);
+      if (this.SET != null) {
+        this.SET.onFindResultReceived(paramInt1, paramInt2, paramBoolean);
       }
       AppMethodBeat.o(154279);
     }
@@ -239,11 +185,11 @@ public final class g
   public static final class i
     implements WebResourceRequest
   {
-    private boolean DJg;
-    private Map<String, String> Fjf;
-    private boolean MQX;
-    private boolean MQY;
-    a MQZ;
+    private boolean Isw;
+    private Map<String, String> JZZ;
+    private boolean SEb;
+    private boolean SEc;
+    a SEd;
     private String method;
     private Uri url;
     
@@ -253,10 +199,10 @@ public final class g
       try
       {
         this.url = Uri.parse(paramString1);
-        this.MQX = paramBoolean1;
-        this.MQY = paramBoolean2;
+        this.SEb = paramBoolean1;
+        this.SEc = paramBoolean2;
         this.method = paramString2;
-        this.DJg = paramBoolean3;
+        this.Isw = paramBoolean3;
         AppMethodBeat.o(154283);
         return;
       }
@@ -273,11 +219,11 @@ public final class g
     {
       AppMethodBeat.i(154282);
       this.url = paramXWalkWebResourceRequest.getUrl();
-      this.MQX = paramXWalkWebResourceRequest.isForMainFrame();
-      this.MQY = paramXWalkWebResourceRequest.hasGesture();
+      this.SEb = paramXWalkWebResourceRequest.isForMainFrame();
+      this.SEc = paramXWalkWebResourceRequest.hasGesture();
       this.method = paramXWalkWebResourceRequest.getMethod();
-      this.Fjf = paramXWalkWebResourceRequest.getRequestHeaders();
-      this.MQZ = new a(this);
+      this.JZZ = paramXWalkWebResourceRequest.getRequestHeaders();
+      this.SEd = new a(this);
       AppMethodBeat.o(154282);
     }
     
@@ -288,7 +234,7 @@ public final class g
     
     public final Map<String, String> getRequestHeaders()
     {
-      return this.Fjf;
+      return this.JZZ;
     }
     
     public final Uri getUrl()
@@ -298,36 +244,36 @@ public final class g
     
     public final boolean hasGesture()
     {
-      return this.MQY;
+      return this.SEc;
     }
     
     public final boolean isForMainFrame()
     {
-      return this.MQX;
+      return this.SEb;
     }
   }
   
   public static final class j
     implements j
   {
-    XWalkHttpAuthHandler MTP;
+    XWalkHttpAuthHandler SGW;
     
     public j(XWalkHttpAuthHandler paramXWalkHttpAuthHandler)
     {
-      this.MTP = paramXWalkHttpAuthHandler;
+      this.SGW = paramXWalkHttpAuthHandler;
     }
     
     public final void cancel()
     {
-      AppMethodBeat.i(207573);
-      this.MTP.cancel();
-      AppMethodBeat.o(207573);
+      AppMethodBeat.i(207289);
+      this.SGW.cancel();
+      AppMethodBeat.o(207289);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.xwalk.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.freewifi.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.protocal.protobuf.aui;
-import com.tencent.mm.protocal.protobuf.bgq;
-import com.tencent.mm.protocal.protobuf.bgr;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.protocal.protobuf.bfr;
+import com.tencent.mm.protocal.protobuf.bsm;
+import com.tencent.mm.protocal.protobuf.bsn;
 
 public final class h
   extends c
@@ -15,33 +15,33 @@ public final class h
   public h(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(24860);
-    cUl();
-    bgq localbgq = (bgq)this.rr.hQD.hQJ;
-    localbgq.appId = paramString1;
-    localbgq.tBw = paramInt;
-    localbgq.dqk = paramString2;
+    dNu();
+    bsm localbsm = (bsm)this.rr.iLK.iLR;
+    localbsm.appId = paramString1;
+    localbsm.wSx = paramInt;
+    localbsm.dHx = paramString2;
     AppMethodBeat.o(24860);
   }
   
-  protected final void cUl()
+  protected final void dNu()
   {
     AppMethodBeat.i(24859);
-    b.a locala = new b.a();
-    locala.hQF = new bgq();
-    locala.hQG = new bgr();
+    d.a locala = new d.a();
+    locala.iLN = new bsm();
+    locala.iLO = new bsn();
     locala.uri = "/cgi-bin/mmo2o-bin/getpcfrontpage";
     locala.funcId = 1760;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
+    this.rr = locala.aXF();
     AppMethodBeat.o(24859);
   }
   
-  public final aui cUp()
+  public final bfr dNy()
   {
-    bgr localbgr = (bgr)this.rr.hQE.hQJ;
-    if (localbgr != null) {
-      return localbgr.FJr;
+    bsn localbsn = (bsn)this.rr.iLL.iLR;
+    if (localbsn != null) {
+      return localbsn.KCJ;
     }
     return null;
   }

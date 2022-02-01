@@ -6,30 +6,30 @@ import com.tencent.tinker.a.a.b.e;
 public final class q
   extends s.a.a<q>
 {
-  public int MAx;
-  public int MAy;
-  public int MAz;
+  public int SgB;
+  public int SgC;
+  public int SgD;
   
   public q(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super(paramInt1);
-    this.MAx = paramInt2;
-    this.MAy = paramInt3;
-    this.MAz = paramInt4;
+    this.SgB = paramInt2;
+    this.SgC = paramInt3;
+    this.SgD = paramInt4;
   }
   
   private int b(q paramq)
   {
-    int i = c.lf(this.MAx, paramq.MAx);
+    int i = c.mD(this.SgB, paramq.SgB);
     if (i != 0) {}
     int j;
     do
     {
       return i;
-      j = c.lf(this.MAy, paramq.MAy);
+      j = c.mD(this.SgC, paramq.SgC);
       i = j;
     } while (j != 0);
-    return c.lg(this.MAz, paramq.MAz);
+    return c.mE(this.SgD, paramq.SgD);
   }
   
   public final boolean equals(Object paramObject)
@@ -43,12 +43,12 @@ public final class q
   
   public final int hashCode()
   {
-    return e.hash(new Object[] { Integer.valueOf(this.MAx), Integer.valueOf(this.MAy), Integer.valueOf(this.MAz) });
+    return e.hash(new Object[] { Integer.valueOf(this.SgB), Integer.valueOf(this.SgC), Integer.valueOf(this.SgD) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.a.q
  * JD-Core Version:    0.7.0.1
  */

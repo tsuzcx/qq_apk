@@ -2,25 +2,25 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class o
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eHh = "data".hashCode();
-  private static final int eHu = "dataType".hashCode();
-  private static final int eHv = "size".hashCode();
+  private static final int fkJ = "data".hashCode();
+  private static final int fkW = "dataType".hashCode();
+  private static final int fkX = "size".hashCode();
   private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private boolean __hadSetkey = true;
-  private boolean eHd = true;
-  private boolean eHs = true;
-  private boolean eHt = true;
   public String field_data;
   public String field_dataType;
   public String field_key;
   public int field_size;
+  private boolean fkF = true;
+  private boolean fkU = true;
+  private boolean fkV = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -47,11 +47,11 @@ public abstract class o
       break label20;
       break;
       label65:
-      if (eHh == k) {
+      if (fkJ == k) {
         this.field_data = paramCursor.getString(i);
-      } else if (eHu == k) {
+      } else if (fkW == k) {
         this.field_dataType = paramCursor.getString(i);
-      } else if (eHv == k) {
+      } else if (fkX == k) {
         this.field_size = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
@@ -65,13 +65,13 @@ public abstract class o
     if (this.__hadSetkey) {
       localContentValues.put("key", this.field_key);
     }
-    if (this.eHd) {
+    if (this.fkF) {
       localContentValues.put("data", this.field_data);
     }
-    if (this.eHs) {
+    if (this.fkU) {
       localContentValues.put("dataType", this.field_dataType);
     }
-    if (this.eHt) {
+    if (this.fkV) {
       localContentValues.put("size", Integer.valueOf(this.field_size));
     }
     if (this.systemRowid > 0L) {
@@ -82,7 +82,7 @@ public abstract class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.o
  * JD-Core Version:    0.7.0.1
  */

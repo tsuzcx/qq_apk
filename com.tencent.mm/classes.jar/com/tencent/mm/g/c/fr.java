@@ -2,91 +2,57 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.protocal.protobuf.anb;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import java.io.IOException;
 
 public abstract class fr
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGR;
-  private static final int eGY;
-  private static final int eMR = "lvbuffer".hashCode();
-  private static final int eMy;
-  private static final int eUG;
-  private static final int eUH;
-  private static final int eUI;
-  private static final int eUJ;
-  private static final int fem;
-  private static final int ftA;
-  private static final int ftB = "regionCode".hashCode();
-  private static final int ftC = "snsFlag".hashCode();
-  private static final int ftD = "sns_bgurl".hashCode();
-  private static final int ftu = "shakeItemID".hashCode();
-  private static final int ftv;
-  private static final int ftw;
-  private static final int ftx;
-  private static final int fty;
-  private static final int ftz;
+  private static final int fAT;
+  private static final int fWg;
+  private static final int fWh;
+  private static final int fWi = "favFrom".hashCode();
+  private static final int fjf;
+  private static final int fjl;
+  private static final int fne;
+  private static final int fyW;
+  private static final int localId_HASHCODE = "localId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE;
+  private boolean __hadSetlocalId = true;
   private boolean __hadSettype = true;
-  private boolean eGA = true;
-  private boolean eGV = true;
-  private boolean eMD = true;
-  private boolean eMu = true;
-  private boolean eTU = true;
-  private boolean eTV = true;
-  private boolean eTW = true;
-  private boolean eTX = true;
-  private boolean fei = true;
-  public String field_city;
-  public String field_distance;
-  public int field_hasHDImg;
-  public int field_imgstatus;
-  public int field_insertBatch;
-  public byte[] field_lvbuffer;
-  public String field_nickname;
-  public String field_province;
-  public String field_regionCode;
-  public int field_reserved1;
-  public int field_reserved2;
-  public String field_reserved3;
-  public String field_reserved4;
-  public int field_sex;
-  public int field_shakeItemID;
-  public String field_signature;
-  public int field_snsFlag;
-  public String field_sns_bgurl;
+  private boolean fAF = true;
+  private boolean fWd = true;
+  private boolean fWe = true;
+  private boolean fWf = true;
+  public anb field_dataProto;
+  public String field_desc;
+  public String field_favFrom;
+  public int field_localId;
+  public long field_msgId;
+  public long field_oriMsgId;
+  public int field_status;
+  public String field_title;
+  public String field_toUser;
   public int field_type;
-  public String field_username;
-  private boolean ftk = true;
-  private boolean ftl = true;
-  private boolean ftm = true;
-  private boolean ftn = true;
-  private boolean fto = true;
-  private boolean ftp = true;
-  private boolean ftq = true;
-  private boolean ftr = true;
-  private boolean fts = true;
-  private boolean ftt = true;
+  private boolean fjb = true;
+  private boolean fji = true;
+  private boolean fnb = true;
+  private boolean fyS = true;
   
   static
   {
-    eGY = "username".hashCode();
-    eMy = "nickname".hashCode();
-    ftv = "province".hashCode();
-    ftw = "city".hashCode();
-    eGR = "signature".hashCode();
-    ftx = "distance".hashCode();
-    fem = "sex".hashCode();
-    fty = "imgstatus".hashCode();
-    ftz = "hasHDImg".hashCode();
-    ftA = "insertBatch".hashCode();
-    eUG = "reserved1".hashCode();
-    eUH = "reserved2".hashCode();
-    eUI = "reserved3".hashCode();
-    eUJ = "reserved4".hashCode();
+    fjf = "msgId".hashCode();
+    fWg = "oriMsgId".hashCode();
+    fAT = "toUser".hashCode();
+    fne = "title".hashCode();
+    fyW = "desc".hashCode();
+    fWh = "dataProto".hashCode();
     type_HASHCODE = "type".hashCode();
+    fjl = "status".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -95,18 +61,18 @@ public abstract class fr
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ftu != k) {
+      if (localId_HASHCODE != k) {
         break label65;
       }
-      this.field_shakeItemID = paramCursor.getInt(i);
-      this.ftk = true;
+      this.field_localId = paramCursor.getInt(i);
+      this.__hadSetlocalId = true;
     }
     for (;;)
     {
@@ -114,44 +80,35 @@ public abstract class fr
       break label20;
       break;
       label65:
-      if (eGY == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (eMy == k) {
-        this.field_nickname = paramCursor.getString(i);
-      } else if (ftv == k) {
-        this.field_province = paramCursor.getString(i);
-      } else if (ftw == k) {
-        this.field_city = paramCursor.getString(i);
-      } else if (eGR == k) {
-        this.field_signature = paramCursor.getString(i);
-      } else if (ftx == k) {
-        this.field_distance = paramCursor.getString(i);
-      } else if (fem == k) {
-        this.field_sex = paramCursor.getInt(i);
-      } else if (fty == k) {
-        this.field_imgstatus = paramCursor.getInt(i);
-      } else if (ftz == k) {
-        this.field_hasHDImg = paramCursor.getInt(i);
-      } else if (ftA == k) {
-        this.field_insertBatch = paramCursor.getInt(i);
-      } else if (eUG == k) {
-        this.field_reserved1 = paramCursor.getInt(i);
-      } else if (eUH == k) {
-        this.field_reserved2 = paramCursor.getInt(i);
-      } else if (eUI == k) {
-        this.field_reserved3 = paramCursor.getString(i);
-      } else if (eUJ == k) {
-        this.field_reserved4 = paramCursor.getString(i);
+      if (fjf == k) {
+        this.field_msgId = paramCursor.getLong(i);
+      } else if (fWg == k) {
+        this.field_oriMsgId = paramCursor.getLong(i);
+      } else if (fAT == k) {
+        this.field_toUser = paramCursor.getString(i);
+      } else if (fne == k) {
+        this.field_title = paramCursor.getString(i);
+      } else if (fyW == k) {
+        this.field_desc = paramCursor.getString(i);
+      } else if (fWh == k) {
+        try
+        {
+          byte[] arrayOfByte = paramCursor.getBlob(i);
+          if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+            continue;
+          }
+          this.field_dataProto = ((anb)new anb().parseFrom(arrayOfByte));
+        }
+        catch (IOException localIOException)
+        {
+          Log.e("MicroMsg.SDK.BaseRecordMessageInfo", localIOException.getMessage());
+        }
       } else if (type_HASHCODE == k) {
         this.field_type = paramCursor.getInt(i);
-      } else if (eMR == k) {
-        this.field_lvbuffer = paramCursor.getBlob(i);
-      } else if (ftB == k) {
-        this.field_regionCode = paramCursor.getString(i);
-      } else if (ftC == k) {
-        this.field_snsFlag = paramCursor.getInt(i);
-      } else if (ftD == k) {
-        this.field_sns_bgurl = paramCursor.getString(i);
+      } else if (fjl == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (fWi == k) {
+        this.field_favFrom = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -161,70 +118,52 @@ public abstract class fr
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.ftk) {
-      localContentValues.put("shakeItemID", Integer.valueOf(this.field_shakeItemID));
+    if (this.__hadSetlocalId) {
+      localContentValues.put("localId", Integer.valueOf(this.field_localId));
     }
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
+    if (this.fjb) {
+      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
     }
-    if (this.eMu) {
-      localContentValues.put("nickname", this.field_nickname);
+    if (this.fWd) {
+      localContentValues.put("oriMsgId", Long.valueOf(this.field_oriMsgId));
     }
-    if (this.ftl) {
-      localContentValues.put("province", this.field_province);
+    if (this.field_toUser == null) {
+      this.field_toUser = "";
     }
-    if (this.ftm) {
-      localContentValues.put("city", this.field_city);
+    if (this.fAF) {
+      localContentValues.put("toUser", this.field_toUser);
     }
-    if (this.eGA) {
-      localContentValues.put("signature", this.field_signature);
+    if (this.fnb) {
+      localContentValues.put("title", this.field_title);
     }
-    if (this.ftn) {
-      localContentValues.put("distance", this.field_distance);
+    if (this.fyS) {
+      localContentValues.put("desc", this.field_desc);
     }
-    if (this.fei) {
-      localContentValues.put("sex", Integer.valueOf(this.field_sex));
+    if ((this.fWe) && (this.field_dataProto != null)) {}
+    try
+    {
+      localContentValues.put("dataProto", this.field_dataProto.toByteArray());
+      if (this.__hadSettype) {
+        localContentValues.put("type", Integer.valueOf(this.field_type));
+      }
+      if (this.fji) {
+        localContentValues.put("status", Integer.valueOf(this.field_status));
+      }
+      if (this.fWf) {
+        localContentValues.put("favFrom", this.field_favFrom);
+      }
+      if (this.systemRowid > 0L) {
+        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+      }
+      return localContentValues;
     }
-    if (this.fto) {
-      localContentValues.put("imgstatus", Integer.valueOf(this.field_imgstatus));
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Log.e("MicroMsg.SDK.BaseRecordMessageInfo", localIOException.getMessage());
+      }
     }
-    if (this.ftp) {
-      localContentValues.put("hasHDImg", Integer.valueOf(this.field_hasHDImg));
-    }
-    if (this.ftq) {
-      localContentValues.put("insertBatch", Integer.valueOf(this.field_insertBatch));
-    }
-    if (this.eTU) {
-      localContentValues.put("reserved1", Integer.valueOf(this.field_reserved1));
-    }
-    if (this.eTV) {
-      localContentValues.put("reserved2", Integer.valueOf(this.field_reserved2));
-    }
-    if (this.eTW) {
-      localContentValues.put("reserved3", this.field_reserved3);
-    }
-    if (this.eTX) {
-      localContentValues.put("reserved4", this.field_reserved4);
-    }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
-    }
-    if (this.eMD) {
-      localContentValues.put("lvbuffer", this.field_lvbuffer);
-    }
-    if (this.ftr) {
-      localContentValues.put("regionCode", this.field_regionCode);
-    }
-    if (this.fts) {
-      localContentValues.put("snsFlag", Integer.valueOf(this.field_snsFlag));
-    }
-    if (this.ftt) {
-      localContentValues.put("sns_bgurl", this.field_sns_bgurl);
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mm.contact.a;
 
-import com.tencent.mm.model.p;
+import com.tencent.mm.model.t;
 
 public abstract class b
-  implements p<b>
+  implements t<b>
 {
   public String content = "";
   public int ret;
@@ -11,7 +11,7 @@ public abstract class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.contact.a.b
  * JD-Core Version:    0.7.0.1
  */

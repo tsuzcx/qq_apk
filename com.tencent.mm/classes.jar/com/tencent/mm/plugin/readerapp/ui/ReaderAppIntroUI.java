@@ -8,7 +8,7 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.br;
+import com.tencent.mm.model.bv;
 import com.tencent.mm.plugin.readerapp.b.a;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.ui.MMActivity;
@@ -16,24 +16,24 @@ import com.tencent.mm.ui.MMActivity;
 public class ReaderAppIntroUI
   extends MMActivity
 {
-  private int dFo = 0;
+  private int dXa = 0;
   
   public int getLayoutId()
   {
-    return 2131495192;
+    return 2131496035;
   }
   
   public void initView()
   {
     AppMethodBeat.i(102705);
-    ImageView localImageView = (ImageView)findViewById(2131303778);
-    TextView localTextView = (TextView)findViewById(2131303779);
-    this.dFo = getIntent().getIntExtra("type", 0);
-    if (this.dFo == 20)
+    ImageView localImageView = (ImageView)findViewById(2131306567);
+    TextView localTextView = (TextView)findViewById(2131306568);
+    this.dXa = getIntent().getIntExtra("type", 0);
+    if (this.dXa == 20)
     {
-      setMMTitle(2131760208);
-      localImageView.setImageResource(2131233792);
-      localTextView.setText(2131757782);
+      setMMTitle(2131761594);
+      localImageView.setImageResource(2131234613);
+      localTextView.setText(2131758022);
     }
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
@@ -45,12 +45,12 @@ public class ReaderAppIntroUI
         return true;
       }
     });
-    addIconOptionMenu(0, 2131689511, new MenuItem.OnMenuItemClickListener()
+    addIconOptionMenu(0, 2131689513, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(102703);
-        a.iUz.c(new Intent().putExtra("Contact_User", br.oC(ReaderAppIntroUI.a(ReaderAppIntroUI.this))), ReaderAppIntroUI.this);
+        a.jRt.c(new Intent().putExtra("Contact_User", bv.sd(ReaderAppIntroUI.a(ReaderAppIntroUI.this))), ReaderAppIntroUI.this);
         ReaderAppIntroUI.this.finish();
         AppMethodBeat.o(102703);
         return true;
@@ -75,7 +75,7 @@ public class ReaderAppIntroUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.readerapp.ui.ReaderAppIntroUI
  * JD-Core Version:    0.7.0.1
  */

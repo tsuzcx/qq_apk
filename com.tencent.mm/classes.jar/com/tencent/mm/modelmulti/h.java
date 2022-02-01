@@ -1,73 +1,71 @@
 package com.tencent.mm.modelmulti;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.clz;
-import com.tencent.mm.protocal.protobuf.cma;
-import com.tencent.mm.protocal.protobuf.dqz;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.k.a;
-import org.b.d.i;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ddm;
+import com.tencent.mm.protocal.protobuf.ddn;
+import com.tencent.mm.protocal.protobuf.ekv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.o.a;
 
 public final class h
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private int ihA;
-  private b rr;
+  private com.tencent.mm.ak.i callback;
+  private int jcv;
+  private d rr;
   
   public h(int paramInt, String paramString)
   {
     AppMethodBeat.i(20546);
-    this.ihA = 0;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new clz();
-    ((b.a)localObject).hQG = new cma();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/postinvitefriendsmsg";
-    ((b.a)localObject).funcId = 1804;
-    this.rr = ((b.a)localObject).aDS();
-    clz localclz = (clz)this.rr.hQD.hQJ;
-    localclz.GSF = paramInt;
-    localclz.GSH = paramString;
+    this.jcv = 0;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new ddm();
+    ((d.a)localObject).iLO = new ddn();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/postinvitefriendsmsg";
+    ((d.a)localObject).funcId = 1804;
+    this.rr = ((d.a)localObject).aXF();
+    ddm localddm = (ddm)this.rr.iLK.iLR;
+    localddm.LWR = paramInt;
+    localddm.LWT = paramString;
     if ((paramInt & 0x10) > 0)
     {
       a locala = new a();
-      localObject = new dqz();
-      if (locala.Llz == null) {
+      localObject = new ekv();
+      if (locala.QAH == null) {
         break label185;
       }
       paramString = (String)localObject;
-      if (!bu.isNullOrNil(locala.Llz.token))
+      if (!Util.isNullOrNil(locala.QAH.token))
       {
-        ((dqz)localObject).HXY = locala.Llz.token;
-        ((dqz)localObject).HXZ = locala.Llz.HmQ;
+        ((ekv)localObject).Nke = locala.QAH.token;
+        ((ekv)localObject).Nkf = locala.QAH.Mte;
       }
     }
     label185:
     for (paramString = (String)localObject;; paramString = null)
     {
-      localclz.HxX = paramString;
-      this.ihA = paramInt;
+      localddm.MID = paramString;
+      this.jcv = paramInt;
       AppMethodBeat.o(20546);
       return;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
   {
     AppMethodBeat.i(20548);
-    ae.d("MicroMsg.NetScenePostInviteFriendsMsg", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    Log.d("MicroMsg.NetScenePostInviteFriendsMsg", "doScene");
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(20548);
     return i;
   }
@@ -77,10 +75,10 @@ public final class h
     return 1804;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20547);
-    ae.d("MicroMsg.NetScenePostInviteFriendsMsg", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    Log.d("MicroMsg.NetScenePostInviteFriendsMsg", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -93,7 +91,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.modelmulti.h
  * JD-Core Version:    0.7.0.1
  */

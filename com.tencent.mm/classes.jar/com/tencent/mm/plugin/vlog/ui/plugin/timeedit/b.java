@@ -11,149 +11,149 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.f;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.f;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditMenuView;", "Landroid/widget/LinearLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "captionMenu", "Landroid/view/ViewGroup;", "deleteListener", "Lkotlin/Function0;", "", "getDeleteListener", "()Lkotlin/jvm/functions/Function0;", "setDeleteListener", "(Lkotlin/jvm/functions/Function0;)V", "deleteMenu", "downDrawable", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "getDownDrawable", "()Landroid/graphics/drawable/Drawable;", "downDrawable$delegate", "Lkotlin/Lazy;", "editCaptionListener", "getEditCaptionListener", "setEditCaptionListener", "editContentListener", "getEditContentListener", "setEditContentListener", "editMenu", "editTimeListener", "getEditTimeListener", "setEditTimeListener", "enableReadMenu", "", "readMenu", "readTextListener", "getReadTextListener", "setReadTextListener", "timeMenu", "upDrawable", "getUpDrawable", "upDrawable$delegate", "doSetMenuChecked", "menu", "visibility", "", "downBackground", "loadMenuLayout", "layout", "iconRes", "titleRes", "onClick", "v", "Landroid/view/View;", "setMenuChecked", "checked", "showCaptionMenu", "showNormalMenu", "enableTimeEdit", "showTextMenu", "upwardsBackground", "Companion", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditMenuView;", "Landroid/widget/LinearLayout;", "Landroid/view/View$OnClickListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "captionMenu", "Landroid/view/ViewGroup;", "deleteListener", "Lkotlin/Function0;", "", "getDeleteListener", "()Lkotlin/jvm/functions/Function0;", "setDeleteListener", "(Lkotlin/jvm/functions/Function0;)V", "deleteMenu", "downDrawable", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "getDownDrawable", "()Landroid/graphics/drawable/Drawable;", "downDrawable$delegate", "Lkotlin/Lazy;", "editCaptionListener", "getEditCaptionListener", "setEditCaptionListener", "editContentListener", "getEditContentListener", "setEditContentListener", "editMenu", "editTimeListener", "getEditTimeListener", "setEditTimeListener", "enableReadMenu", "", "readMenu", "readTextListener", "getReadTextListener", "setReadTextListener", "timeMenu", "upDrawable", "getUpDrawable", "upDrawable$delegate", "doSetMenuChecked", "menu", "visibility", "", "downBackground", "loadMenuLayout", "layout", "iconRes", "titleRes", "onClick", "v", "Landroid/view/View;", "setMenuChecked", "checked", "showCaptionMenu", "showNormalMenu", "enableTimeEdit", "showTextMenu", "upwardsBackground", "Companion", "plugin-vlog_release"})
 public final class b
   extends LinearLayout
   implements View.OnClickListener
 {
-  public static final b.a CjY;
-  private d.g.a.a<z> CjL;
-  private d.g.a.a<z> CjM;
-  private d.g.a.a<z> CjN;
-  private d.g.a.a<z> CjO;
-  private d.g.a.a<z> CjP;
-  ViewGroup CjQ;
-  private ViewGroup CjR;
-  ViewGroup CjS;
-  ViewGroup CjT;
-  ViewGroup CjU;
-  final boolean CjV;
-  private final f CjW;
-  private final f CjX;
+  public static final a GNa;
+  private kotlin.g.a.a<x> GMM;
+  private kotlin.g.a.a<x> GMN;
+  private kotlin.g.a.a<x> GMO;
+  private kotlin.g.a.a<x> GMP;
+  private kotlin.g.a.a<x> GMQ;
+  ViewGroup GMR;
+  private ViewGroup GMS;
+  ViewGroup GMU;
+  ViewGroup GMV;
+  ViewGroup GMW;
+  final boolean GMX;
+  private final f GMY;
+  private final f GMZ;
   
   static
   {
-    AppMethodBeat.i(192165);
-    CjY = new b.a((byte)0);
-    AppMethodBeat.o(192165);
+    AppMethodBeat.i(191901);
+    GNa = new a((byte)0);
+    AppMethodBeat.o(191901);
   }
   
   public b(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(192164);
-    this.CjV = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qIo, false);
-    this.CjW = d.g.O((d.g.a.a)new c(this));
-    this.CjX = d.g.O((d.g.a.a)new b(this));
-    LayoutInflater.from(paramContext).inflate(2131496494, (ViewGroup)this, true);
-    paramContext = findViewById(2131308340);
+    AppMethodBeat.i(191900);
+    this.GMX = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(com.tencent.mm.plugin.expt.b.b.a.scO, false);
+    this.GMY = kotlin.g.ah((kotlin.g.a.a)new c(this));
+    this.GMZ = kotlin.g.ah((kotlin.g.a.a)new b(this));
+    LayoutInflater.from(paramContext).inflate(2131496708, (ViewGroup)this, true);
+    paramContext = findViewById(2131302840);
     p.g(paramContext, "findViewById(R.id.item_menu_time)");
-    this.CjQ = ((ViewGroup)paramContext);
-    paramContext = findViewById(2131308337);
+    this.GMR = ((ViewGroup)paramContext);
+    paramContext = findViewById(2131302837);
     p.g(paramContext, "findViewById(R.id.item_menu_delete)");
-    this.CjR = ((ViewGroup)paramContext);
-    paramContext = findViewById(2131308338);
+    this.GMS = ((ViewGroup)paramContext);
+    paramContext = findViewById(2131302838);
     p.g(paramContext, "findViewById(R.id.item_menu_edit)");
-    this.CjS = ((ViewGroup)paramContext);
-    paramContext = findViewById(2131308336);
+    this.GMU = ((ViewGroup)paramContext);
+    paramContext = findViewById(2131302836);
     p.g(paramContext, "findViewById(R.id.item_menu_caption)");
-    this.CjT = ((ViewGroup)paramContext);
-    paramContext = findViewById(2131308339);
+    this.GMV = ((ViewGroup)paramContext);
+    paramContext = findViewById(2131302839);
     p.g(paramContext, "findViewById(R.id.item_menu_read)");
-    this.CjU = ((ViewGroup)paramContext);
-    if (!this.CjV) {
-      this.CjU.setVisibility(8);
+    this.GMW = ((ViewGroup)paramContext);
+    if (!this.GMX) {
+      this.GMW.setVisibility(8);
     }
-    e(this.CjQ, 2131690487, 2131767231);
-    e(this.CjR, 2131690384, 2131767228);
-    e(this.CjS, 2131690457, 2131767229);
-    e(this.CjT, 2131691600, 2131767227);
-    e(this.CjU, 2131690485, 2131767230);
-    AppMethodBeat.o(192164);
+    e(this.GMR, 2131690692, 2131767130);
+    e(this.GMS, 2131690529, 2131767127);
+    e(this.GMU, 2131690644, 2131767128);
+    e(this.GMV, 2131690503, 2131767126);
+    e(this.GMW, 2131690689, 2131767129);
+    AppMethodBeat.o(191900);
   }
   
   private final void e(ViewGroup paramViewGroup, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192160);
-    Object localObject = paramViewGroup.findViewById(2131305902);
+    AppMethodBeat.i(191896);
+    Object localObject = paramViewGroup.findViewById(2131309195);
     p.g(localObject, "layout.findViewById<TextView>(R.id.title)");
-    ((TextView)localObject).setText((CharSequence)com.tencent.mm.cb.a.az(getContext(), paramInt2));
-    ((WeImageView)paramViewGroup.findViewById(2131300874)).setImageResource(paramInt1);
-    localObject = (ImageView)paramViewGroup.findViewById(2131298214);
+    ((TextView)localObject).setText((CharSequence)com.tencent.mm.cb.a.aI(getContext(), paramInt2));
+    ((WeImageView)paramViewGroup.findViewById(2131302468)).setImageResource(paramInt1);
+    localObject = (ImageView)paramViewGroup.findViewById(2131298596);
     if (localObject != null) {
-      ((ImageView)localObject).setImageDrawable(com.tencent.mm.cb.a.l(getContext(), 2131691551));
+      ((ImageView)localObject).setImageDrawable(com.tencent.mm.cb.a.l(getContext(), 2131691337));
     }
     paramViewGroup.setOnClickListener((View.OnClickListener)this);
-    AppMethodBeat.o(192160);
+    AppMethodBeat.o(191896);
   }
   
   private final Drawable getDownDrawable()
   {
-    AppMethodBeat.i(192158);
-    Drawable localDrawable = (Drawable)this.CjX.getValue();
-    AppMethodBeat.o(192158);
+    AppMethodBeat.i(191894);
+    Drawable localDrawable = (Drawable)this.GMZ.getValue();
+    AppMethodBeat.o(191894);
     return localDrawable;
   }
   
   private final Drawable getUpDrawable()
   {
-    AppMethodBeat.i(192157);
-    Drawable localDrawable = (Drawable)this.CjW.getValue();
-    AppMethodBeat.o(192157);
+    AppMethodBeat.i(191893);
+    Drawable localDrawable = (Drawable)this.GMY.getValue();
+    AppMethodBeat.o(191893);
     return localDrawable;
   }
   
-  public final void exC()
+  public final void fEo()
   {
-    AppMethodBeat.i(192162);
+    AppMethodBeat.i(191898);
     setBackground(getUpDrawable());
-    AppMethodBeat.o(192162);
+    AppMethodBeat.o(191898);
   }
   
-  public final void exD()
+  public final void fEp()
   {
-    AppMethodBeat.i(192163);
+    AppMethodBeat.i(191899);
     setBackground(getDownDrawable());
-    AppMethodBeat.o(192163);
+    AppMethodBeat.o(191899);
   }
   
-  public final d.g.a.a<z> getDeleteListener()
+  public final kotlin.g.a.a<x> getDeleteListener()
   {
-    return this.CjM;
+    return this.GMN;
   }
   
-  public final d.g.a.a<z> getEditCaptionListener()
+  public final kotlin.g.a.a<x> getEditCaptionListener()
   {
-    return this.CjO;
+    return this.GMP;
   }
   
-  public final d.g.a.a<z> getEditContentListener()
+  public final kotlin.g.a.a<x> getEditContentListener()
   {
-    return this.CjN;
+    return this.GMO;
   }
   
-  public final d.g.a.a<z> getEditTimeListener()
+  public final kotlin.g.a.a<x> getEditTimeListener()
   {
-    return this.CjL;
+    return this.GMM;
   }
   
-  public final d.g.a.a<z> getReadTextListener()
+  public final kotlin.g.a.a<x> getReadTextListener()
   {
-    return this.CjP;
+    return this.GMQ;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(192159);
+    AppMethodBeat.i(191895);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditMenuView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditMenuView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     if (paramView != null)
     {
       paramView = Integer.valueOf(paramView.getId());
@@ -180,50 +180,50 @@ public final class b
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditMenuView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(192159);
+      AppMethodBeat.o(191895);
       return;
       paramView = null;
       break;
       label99:
-      if (paramView.intValue() != 2131308337) {
+      if (paramView.intValue() != 2131302837) {
         break label55;
       }
-      paramView = this.CjM;
+      paramView = this.GMN;
       if (paramView != null)
       {
         paramView.invoke();
         continue;
         label127:
-        if (paramView.intValue() != 2131308340) {
+        if (paramView.intValue() != 2131302840) {
           break label59;
         }
-        paramView = this.CjL;
+        paramView = this.GMM;
         if (paramView != null)
         {
           paramView.invoke();
           continue;
           label155:
-          if (paramView.intValue() != 2131308338) {
+          if (paramView.intValue() != 2131302838) {
             break label63;
           }
-          paramView = this.CjN;
+          paramView = this.GMO;
           if (paramView != null)
           {
             paramView.invoke();
             continue;
             label183:
-            if (paramView.intValue() != 2131308336) {
+            if (paramView.intValue() != 2131302836) {
               break label67;
             }
-            paramView = this.CjO;
+            paramView = this.GMP;
             if (paramView != null)
             {
               paramView.invoke();
               continue;
               label211:
-              if (paramView.intValue() == 2131308339)
+              if (paramView.intValue() == 2131302839)
               {
-                paramView = this.CjP;
+                paramView = this.GMQ;
                 if (paramView != null) {
                   paramView.invoke();
                 }
@@ -235,52 +235,55 @@ public final class b
     }
   }
   
-  public final void setDeleteListener(d.g.a.a<z> parama)
+  public final void setDeleteListener(kotlin.g.a.a<x> parama)
   {
-    this.CjM = parama;
+    this.GMN = parama;
   }
   
-  public final void setEditCaptionListener(d.g.a.a<z> parama)
+  public final void setEditCaptionListener(kotlin.g.a.a<x> parama)
   {
-    this.CjO = parama;
+    this.GMP = parama;
   }
   
-  public final void setEditContentListener(d.g.a.a<z> parama)
+  public final void setEditContentListener(kotlin.g.a.a<x> parama)
   {
-    this.CjN = parama;
+    this.GMO = parama;
   }
   
-  public final void setEditTimeListener(d.g.a.a<z> parama)
+  public final void setEditTimeListener(kotlin.g.a.a<x> parama)
   {
-    this.CjL = parama;
+    this.GMM = parama;
   }
   
   public final void setMenuChecked$2563266(boolean paramBoolean)
   {
-    AppMethodBeat.i(192161);
+    AppMethodBeat.i(191897);
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
-      View localView = this.CjU.findViewById(2131298214);
+      View localView = this.GMW.findViewById(2131298596);
       if (localView == null) {
         break;
       }
       localView.setVisibility(i);
-      AppMethodBeat.o(192161);
+      AppMethodBeat.o(191897);
       return;
     }
-    AppMethodBeat.o(192161);
+    AppMethodBeat.o(191897);
   }
   
-  public final void setReadTextListener(d.g.a.a<z> parama)
+  public final void setReadTextListener(kotlin.g.a.a<x> parama)
   {
-    this.CjP = parama;
+    this.GMQ = parama;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditMenuView$Companion;", "", "()V", "MENU_CAPTION", "", "MENU_DELETE", "MENU_EDIT", "MENU_READ", "MENU_TIME", "plugin-vlog_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
-    implements d.g.a.a<Drawable>
+    implements kotlin.g.a.a<Drawable>
   {
     b(b paramb)
     {
@@ -288,10 +291,10 @@ public final class b
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/graphics/drawable/Drawable;", "kotlin.jvm.PlatformType", "invoke"})
   static final class c
     extends q
-    implements d.g.a.a<Drawable>
+    implements kotlin.g.a.a<Drawable>
   {
     c(b paramb)
     {
@@ -301,7 +304,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.timeedit.b
  * JD-Core Version:    0.7.0.1
  */

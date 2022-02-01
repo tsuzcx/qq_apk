@@ -2,120 +2,117 @@
 <!-- 
 	item:主要有二种 /::| /ue436
 -->
-<emoji-panel>
-  <item><![CDATA[/::)]]></item>
-  <item><![CDATA[/::~]]></item>
-  <item><![CDATA[/::B]]></item>
-  <item><![CDATA[/::|]]></item>
-  <item><![CDATA[/:8-)]]></item>
-  <item><![CDATA[/::<]]></item>
-  <item><![CDATA[/::$]]></item>
-  <item><![CDATA[/::X]]></item>
-  <item><![CDATA[/::Z]]></item>
-  <item><![CDATA[/::'(]]></item>
-  <item><![CDATA[/::-|]]></item>
-  <item><![CDATA[/::@]]></item>
-  <item><![CDATA[/::P]]></item>
-  <item><![CDATA[/::D]]></item>
-  <item><![CDATA[/::O]]></item>
-  <item><![CDATA[/::(]]></item>
+<emoji-panel> 
+  <item><![CDATA[/::)]]></item>  
+  <item><![CDATA[/::~]]></item>  
+  <item><![CDATA[/::B]]></item>  
+  <item><![CDATA[/::|]]></item>  
+  <item><![CDATA[/:8-)]]></item>  
+  <item><![CDATA[/::<]]></item>  
+  <item><![CDATA[/::$]]></item>  
+  <item><![CDATA[/::X]]></item>  
+  <item><![CDATA[/::Z]]></item>  
+  <item><![CDATA[/::'(]]></item>  
+  <item><![CDATA[/::-|]]></item>  
+  <item><![CDATA[/::@]]></item>  
+  <item><![CDATA[/::P]]></item>  
+  <item><![CDATA[/::D]]></item>  
+  <item><![CDATA[/::O]]></item>  
+  <item><![CDATA[/::(]]></item>  
   <item><![CDATA[[Blush]]]></item>
-  <item><![CDATA[/::Q]]></item>
-  <item><![CDATA[/::T]]></item>
-  <item><![CDATA[/:,@P]]></item>
-  <item><![CDATA[/:,@-D]]></item>
-  <item><![CDATA[/::d]]></item>
-  <item><![CDATA[/:,@o]]></item>
-  <item><![CDATA[/:|-)]]></item>
-  <item><![CDATA[/::!]]></item>
-  <item><![CDATA[/::L]]></item>
-  <item><![CDATA[/::>]]></item>
-  <item><![CDATA[/::,@]]></item>
-  <item><![CDATA[/:,@f]]></item>
-  <item><![CDATA[/::-S]]></item>
-  <item><![CDATA[/:?]]></item>
-  <item><![CDATA[/:,@x]]></item>
-  <item><![CDATA[/:,@@]]></item>
-  <item><![CDATA[/:,@!]]></item>
-  <item><![CDATA[/:!!!]]></item>
-  <item><![CDATA[/:xx]]></item>
+  <item><![CDATA[/::Q]]></item>  
+  <item><![CDATA[/::T]]></item>  
+  <item><![CDATA[/:,@P]]></item>  
+  <item><![CDATA[/:,@-D]]></item>  
+  <item><![CDATA[/::d]]></item>  
+  <item><![CDATA[/:,@o]]></item>  
+  <item><![CDATA[/:|-)]]></item>  
+  <item><![CDATA[/::!]]></item>  
+  <item><![CDATA[/::>]]></item>  
+  <item><![CDATA[/::,@]]></item>  
+  <item><![CDATA[/::-S]]></item>  
+  <item><![CDATA[/:?]]></item>  
+  <item><![CDATA[/:,@x]]></item>  
+  <item><![CDATA[/:,@@]]></item>  
+  <item><![CDATA[/:,@!]]></item>  
+  <item><![CDATA[/:!!!]]></item>  
+  <item><![CDATA[/:xx]]></item>  
   <item><![CDATA[[Bye]]]></item>
-  <item><![CDATA[/:wipe]]></item>
-  <item><![CDATA[/:dig]]></item>
-  <item><![CDATA[/:handclap]]></item>
-  <item><![CDATA[/:B-)]]></item>
-  <item><![CDATA[/:<@]]></item>
-  <item><![CDATA[/:@>]]></item>
-  <item><![CDATA[/::-O]]></item>
-  <item><![CDATA[/:>-|]]></item>
-  <item><![CDATA[/:P-(]]></item>
-  <item><![CDATA[/::'|]]></item>
-  <item><![CDATA[/:X-)]]></item>
-  <item><![CDATA[/::*]]></item>
-  <item><![CDATA[/:8*]]></item>
-  <item><![CDATA[/:pd]]></item>
-  <item><![CDATA[/:<W>]]></item>
-  <item><![CDATA[/:beer]]></item>
-  <item><![CDATA[/:coffee]]></item>
-  <item><![CDATA[/:pig]]></item>
-  <item><![CDATA[/:rose]]></item>
-  <item><![CDATA[/:fade]]></item>
-  <item><![CDATA[/:showlove]]></item>
-  <item><![CDATA[/:heart]]></item>
-  <item><![CDATA[/:break]]></item>
-  <item><![CDATA[/:cake]]></item>
-  <item><![CDATA[/:bome]]></item>
-  <item><![CDATA[/:shit]]></item>
-  <item><![CDATA[/:moon]]></item>
-  <item><![CDATA[/:sun]]></item>
-  <item><![CDATA[/:hug]]></item>
-  <item><![CDATA[/:strong]]></item>
-  <item><![CDATA[/:weak]]></item>
-  <item><![CDATA[/:share]]></item>
-  <item><![CDATA[/:v]]></item>
-  <item><![CDATA[[Salute]]]></item>
-  <item><![CDATA[/:jj]]></item>
-  <item><![CDATA[/:@@]]></item>
-  <item><![CDATA[/:ok]]></item>
-  <item><![CDATA[/:jump]]></item>
-  <item><![CDATA[/:shake]]></item>
-  <item><![CDATA[/:<O>]]></item>
-  <item><![CDATA[/:circle]]></item>
-  <item><![CDATA["\\ue415"]]></item>
-  <item><![CDATA["\\ue40c"]]></item>
-  <item><![CDATA["\\ue412"]]></item>
-  <item><![CDATA["\\ue409"]]></item>
-  <item><![CDATA["\\ue40d"]]></item>
-  <item><![CDATA["\\ue107"]]></item>
-  <item><![CDATA["\\ue403"]]></item>
-  <item><![CDATA["\\ue40e"]]></item>
-
+  <item><![CDATA[/:wipe]]></item>  
+  <item><![CDATA[/:dig]]></item>  
+  <item><![CDATA[/:handclap]]></item>  
+  <item><![CDATA[/:B-)]]></item>  
+  <item><![CDATA[/:@>]]></item>  
+  <item><![CDATA[/:>-|]]></item>  
+  <item><![CDATA[/:P-(]]></item>  
+  <item><![CDATA[/::'|]]></item>  
+  <item><![CDATA[/:X-)]]></item>  
+  <item><![CDATA[/::*]]></item>  
+  <item><![CDATA[/:8*]]></item>  
+  <item><![CDATA[[Happy]]]></item>
+  <item><![CDATA[[Sick]]]></item>
+  <item><![CDATA[[Flushed]]]></item>
+  <item><![CDATA[[Lol]]]></item>
+  <item><![CDATA[[Terror]]]></item>
+  <item><![CDATA[[LetDown]]]></item>
+  <item><![CDATA[[Duh]]]></item>
   <item><![CDATA[[Hey]]]></item>
   <item><![CDATA[[Facepalm]]]></item>
   <item><![CDATA[[Smirk]]]></item>
   <item><![CDATA[[Smart]]]></item>
   <item><![CDATA[[Concerned]]]></item>
   <item><![CDATA[[Yeah!]]]></item>
-
-  <item><![CDATA[[Onlooker]]]></item>
+  <item><![CDATA[[Onlooker]]]></item> 
   <item><![CDATA[[GoForIt]]]></item>
   <item><![CDATA[[Sweats]]]></item>
-  <item><![CDATA[[OMG]]]></item>
+  <item><![CDATA[[OMG]]]></item> 
   <item><![CDATA[[Emm]]]></item>
   <item><![CDATA[[Respect]]]></item>
   <item><![CDATA[[Doge]]]></item>
-  <item><![CDATA[[NoProb]]]></item>
+  <item><![CDATA[[NoProb]]]></item> 
   <item><![CDATA[[MyBad]]]></item>
   <item><![CDATA[[Wow]]]></item>
+  <item><![CDATA[[Boring]]]></item>
+  <item><![CDATA[[666]]]></item>
+  <item><![CDATA[[LetMeSee]]]></item>
+  <item><![CDATA[[Sigh]]]></item>
+  <item><![CDATA[[Hurt]]]></item>
+  <item><![CDATA[[Broken]]]></item>
 
+  <item><![CDATA[/:showlove]]></item>  
+  <item><![CDATA[/:heart]]></item>  
+  <item><![CDATA[/:break]]></item>  
+  <item><![CDATA[/:hug]]></item>  
+  <item><![CDATA[/:strong]]></item>  
+  <item><![CDATA[/:weak]]></item>  
+  <item><![CDATA[/:share]]></item>  
+  <item><![CDATA[/:v]]></item>  
+  <item><![CDATA[[Salute]]]></item>
+  <item><![CDATA[/:jj]]></item>  
+  <item><![CDATA[/:@@]]></item>  
 
-  <item><![CDATA["\\ue11b"]]></item><!-- ghost -->
-  <item><![CDATA["\\ue41d"]]></item>
-  <item><![CDATA["\\ue14c"]]></item>
-  <item><![CDATA["\\ue312"]]></item>
-  <item><![CDATA["\\ue112"]]></item>
+  <item><![CDATA[/:ok]]></item>  
+  <item><![CDATA[[Worship]]]></item>
 
+  <item><![CDATA[/:beer]]></item>  
+  <item><![CDATA[/:coffee]]></item>
+  <item><![CDATA[/:cake]]></item>  
+
+  <item><![CDATA[/:rose]]></item>  
+  <item><![CDATA[/:fade]]></item> 
+  <item><![CDATA[/:pd]]></item>  
+  <item><![CDATA[/:bome]]></item>  
+  <item><![CDATA[/:shit]]></item>  
+  <item><![CDATA[/:moon]]></item>  
+  <item><![CDATA[/:sun]]></item> 
+  <item><![CDATA[[Party]]]></item><!-- SWITCHED -->
+  <item><![CDATA[[gift]]]></item>
   <item><![CDATA[[Packet]]]></item>
-  <item><![CDATA[[Rich]]]></item>
   <item><![CDATA[[Blessing]]]></item>
+  <item><![CDATA[[Fireworks]]]></item>
+
+  <item><![CDATA[/:pig]]></item>  
+  <item><![CDATA[/:jump]]></item>  
+  <item><![CDATA[/:shake]]></item>  
+  <item><![CDATA[/:circle]]></item>
 </emoji-panel>

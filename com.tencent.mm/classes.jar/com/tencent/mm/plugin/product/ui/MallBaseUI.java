@@ -11,17 +11,17 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
 public abstract class MallBaseUI
   extends MMActivity
 {
-  protected String kwn;
+  protected String lAr;
   
-  protected final void avQ(String paramString)
+  protected final void aKi(String paramString)
   {
-    this.kwn = paramString;
+    this.lAr = paramString;
     showDialog(-10001);
   }
   
@@ -47,10 +47,10 @@ public abstract class MallBaseUI
     default: 
       return super.onCreateDialog(paramInt);
     case -10001: 
-      if (bu.isNullOrNil(this.kwn)) {
-        this.kwn = getString(2131761118);
+      if (Util.isNullOrNil(this.lAr)) {
+        this.lAr = getString(2131762905);
       }
-      com.tencent.mm.ui.base.h.a(this, this.kwn, null, false, new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.a(this, this.lAr, null, false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -93,7 +93,7 @@ public abstract class MallBaseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.MallBaseUI
  * JD-Core Version:    0.7.0.1
  */

@@ -12,216 +12,216 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.live.b.f.f;
-import com.tencent.mm.ui.aq;
-import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
-import d.g.b.p;
-import d.v;
+import com.tencent.mm.ui.at;
+import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
 import java.util.ArrayList;
 import java.util.Collection;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/plugin/LiveAnchorClosePlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statueMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "bottomSheetItemClickListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "closeBtn", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "value", "", "mNavigatorHeight", "setMNavigatorHeight", "(I)V", "resume", "", "showQuitBottomSheet", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/LiveAnchorClosePlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/view/ViewGroup;", "statueMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "bottomSheetItemClickListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "closeBtn", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "value", "", "mNavigatorHeight", "setMNavigatorHeight", "(I)V", "resume", "", "showQuitBottomSheet", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "plugin-logic_release"})
 public final class e
   extends a
 {
-  private final TextView gVA;
-  com.tencent.mm.ui.widget.a.e gVB;
-  private int gVC;
-  private final n.e gVD;
-  final b gVE;
+  private final TextView hOu;
+  com.tencent.mm.ui.widget.a.e hOv;
+  private int hOw;
+  private final com.tencent.mm.ui.base.o.g hOx;
+  final b hOy;
   
   public e(final ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(215937);
-    this.gVE = paramb;
-    this.gVA = ((TextView)paramViewGroup.findViewById(2131307554));
-    this.gVC = ar.en(paramViewGroup.getContext());
-    this.gVD = ((n.e)new a(this, paramViewGroup));
-    this.gVA.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    AppMethodBeat.i(207899);
+    this.hOy = paramb;
+    this.hOu = ((TextView)paramViewGroup.findViewById(2131303314));
+    this.hOw = au.aD(paramViewGroup.getContext());
+    this.hOx = ((com.tencent.mm.ui.base.o.g)new a(this, paramViewGroup));
+    this.hOu.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(215931);
+        AppMethodBeat.i(207893);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveAnchorClosePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        b.b.a(this.gVF.gVE, b.c.gUd);
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveAnchorClosePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        b.b.a(this.hOz.hOy, b.c.hLC);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveAnchorClosePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(215931);
+        AppMethodBeat.o(207893);
       }
     });
-    if ((aoA()) && (paramViewGroup.getLayoutParams() != null) && ((paramViewGroup.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))) {
+    if ((isLandscape()) && (paramViewGroup.getLayoutParams() != null) && ((paramViewGroup.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))) {
       switch (getCurrentOrientation())
       {
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(215937);
+      AppMethodBeat.o(207899);
       return;
       paramb = paramViewGroup.getLayoutParams();
       if (paramb == null)
       {
-        paramViewGroup = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(215937);
+        paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+        AppMethodBeat.o(207899);
         throw paramViewGroup;
       }
-      ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(ar.en(paramViewGroup.getContext()));
-      AppMethodBeat.o(215937);
+      ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(au.aD(paramViewGroup.getContext()));
+      AppMethodBeat.o(207899);
       return;
       paramb = paramViewGroup.getLayoutParams();
       if (paramb == null)
       {
-        paramViewGroup = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(215937);
+        paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+        AppMethodBeat.o(207899);
         throw paramViewGroup;
       }
-      ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(aq.fromDPToPix(paramViewGroup.getContext(), 16));
+      ((ViewGroup.MarginLayoutParams)paramb).setMarginEnd(at.fromDPToPix(paramViewGroup.getContext(), 16));
     }
   }
   
-  public final void a(final b.c paramc, final Bundle paramBundle)
+  public final void resume()
   {
-    AppMethodBeat.i(215936);
+    AppMethodBeat.i(207897);
+    super.resume();
+    int j = au.aD(this.hwr.getContext());
+    int i = j;
+    if (j == 0) {
+      i = at.fromDPToPix(this.hwr.getContext(), 16);
+    }
+    this.hOw = i;
+    AppMethodBeat.o(207897);
+  }
+  
+  public final void statusChange(final b.c paramc, final Bundle paramBundle)
+  {
+    AppMethodBeat.i(207898);
     p.h(paramc, "status");
-    switch (f.cqt[paramc.ordinal()])
+    switch (f.$EnumSwitchMapping$0[paramc.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(215936);
+      AppMethodBeat.o(207898);
       return;
       paramc = new ArrayList();
       paramBundle = new ArrayList();
-      Object localObject = this.gJt.getContext();
+      Object localObject = this.hwr.getContext();
       p.g(localObject, "root.context");
-      paramc.add(((Context)localObject).getResources().getString(2131766641));
-      localObject = f.f.gPX;
-      paramBundle.add(Integer.valueOf(f.f.ant()));
-      if (this.gVB == null) {
-        this.gVB = new com.tencent.mm.ui.widget.a.e(this.gJt.getContext(), 1, false);
+      paramc.add(((Context)localObject).getResources().getString(2131762334));
+      localObject = com.tencent.mm.live.b.o.g.hHa;
+      paramBundle.add(Integer.valueOf(com.tencent.mm.live.b.o.g.aFE()));
+      if (this.hOv == null) {
+        this.hOv = new com.tencent.mm.ui.widget.a.e(this.hwr.getContext(), 1, false);
       }
-      localObject = this.gVB;
+      localObject = this.hOv;
       if (localObject != null) {
-        ((com.tencent.mm.ui.widget.a.e)localObject).fQx();
+        ((com.tencent.mm.ui.widget.a.e)localObject).hbr();
       }
-      localObject = this.gVB;
+      localObject = this.hOv;
       if (localObject != null) {
-        ((com.tencent.mm.ui.widget.a.e)localObject).a((n.d)new b(this, paramc, paramBundle));
+        ((com.tencent.mm.ui.widget.a.e)localObject).a((o.f)new b(this, paramc, paramBundle));
       }
-      paramc = this.gVB;
+      paramc = this.hOv;
       if (paramc != null) {
-        paramc.a(this.gVD);
+        paramc.a(this.hOx);
       }
-      paramc = this.gVB;
+      paramc = this.hOv;
       if (paramc != null) {
         paramc.b((com.tencent.mm.ui.widget.a.e.b)new c(this));
       }
-      paramc = this.gVB;
+      paramc = this.hOv;
       if (paramc != null)
       {
-        paramc.cPF();
-        AppMethodBeat.o(215936);
+        paramc.dGm();
+        AppMethodBeat.o(207898);
         return;
       }
-      AppMethodBeat.o(215936);
+      AppMethodBeat.o(207898);
       return;
-      nL(8);
-      AppMethodBeat.o(215936);
+      rg(8);
+      AppMethodBeat.o(207898);
       return;
-      nL(0);
-      AppMethodBeat.o(215936);
+      rg(0);
+      AppMethodBeat.o(207898);
       return;
-      if ((this.gJt.getLayoutParams() != null) && ((this.gJt.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))) {
+      if ((this.hwr.getLayoutParams() != null) && ((this.hwr.getLayoutParams() instanceof ViewGroup.MarginLayoutParams))) {
         switch (getCurrentOrientation())
         {
         case 2: 
         default: 
           break;
         case 1: 
-          paramc = this.gJt.getLayoutParams();
+          paramc = this.hwr.getLayoutParams();
           if (paramc == null)
           {
-            paramc = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-            AppMethodBeat.o(215936);
+            paramc = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+            AppMethodBeat.o(207898);
             throw paramc;
           }
         case 3: 
-          paramc = this.gJt.getLayoutParams();
+          paramc = this.hwr.getLayoutParams();
           if (paramc == null)
           {
-            paramc = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-            AppMethodBeat.o(215936);
+            paramc = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+            AppMethodBeat.o(207898);
             throw paramc;
           }
-          ((ViewGroup.MarginLayoutParams)paramc).setMarginEnd(this.gVC);
-          AppMethodBeat.o(215936);
+          ((ViewGroup.MarginLayoutParams)paramc).setMarginEnd(this.hOw);
+          AppMethodBeat.o(207898);
           return;
-          ((ViewGroup.MarginLayoutParams)paramc).setMarginEnd(aq.fromDPToPix(this.gJt.getContext(), 16));
+          ((ViewGroup.MarginLayoutParams)paramc).setMarginEnd(at.fromDPToPix(this.hwr.getContext(), 16));
         }
       }
     }
   }
   
-  public final void resume()
-  {
-    AppMethodBeat.i(215935);
-    super.resume();
-    int j = ar.en(this.gJt.getContext());
-    int i = j;
-    if (j == 0) {
-      i = aq.fromDPToPix(this.gJt.getContext(), 16);
-    }
-    this.gVC = i;
-    AppMethodBeat.o(215935);
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
   static final class a
-    implements n.e
+    implements com.tencent.mm.ui.base.o.g
   {
     a(e parame, ViewGroup paramViewGroup) {}
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
-      AppMethodBeat.i(215933);
+      AppMethodBeat.i(207895);
       p.g(paramMenuItem, "menuItem");
       paramInt = paramMenuItem.getItemId();
-      paramMenuItem = f.f.gPX;
-      if (paramInt == f.f.ant())
+      paramMenuItem = com.tencent.mm.live.b.o.g.hHa;
+      if (paramInt == com.tencent.mm.live.b.o.g.aFE())
       {
         paramMenuItem = paramViewGroup.getContext();
         if (paramMenuItem == null)
         {
-          paramMenuItem = new v("null cannot be cast to non-null type android.app.Activity");
-          AppMethodBeat.o(215933);
+          paramMenuItem = new t("null cannot be cast to non-null type android.app.Activity");
+          AppMethodBeat.o(207895);
           throw paramMenuItem;
         }
         ((Activity)paramMenuItem).getIntent().putExtra("key_is_live_finished", true);
-        b.b.a(this.gVF.gVE, b.c.gUw);
-        com.tencent.mm.live.d.a.apC();
+        b.b.a(this.hOz.hOy, b.c.hLV);
+        com.tencent.mm.live.d.a.aIb();
       }
-      AppMethodBeat.o(215933);
+      AppMethodBeat.o(207895);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
   static final class b
-    implements n.d
+    implements o.f
   {
     b(e parame, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
     
-    public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
+    public final void onCreateMMMenu(m paramm)
     {
-      AppMethodBeat.i(215934);
-      Object localObject = this.gVF.gVB;
+      AppMethodBeat.i(207896);
+      Object localObject = this.hOz.hOv;
       if (localObject != null) {
         ((com.tencent.mm.ui.widget.a.e)localObject).setFooterView(null);
       }
-      paraml.clear();
+      paramm.clear();
       int i = 0;
       int j = ((Collection)paramc).size();
       while (i < j)
@@ -229,16 +229,16 @@ public final class e
         localObject = paramBundle.get(i);
         p.g(localObject, "ids[i]");
         int k = ((Number)localObject).intValue();
-        localObject = this.gVF.gJt.getContext();
+        localObject = this.hOz.hwr.getContext();
         p.g(localObject, "root.context");
-        paraml.a(k, ((Context)localObject).getResources().getColor(2131101209), (CharSequence)paramc.get(i));
+        paramm.a(k, ((Context)localObject).getResources().getColor(2131100712), (CharSequence)paramc.get(i));
         i += 1;
       }
-      AppMethodBeat.o(215934);
+      AppMethodBeat.o(207896);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onDismiss"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onDismiss"})
   static final class c
     implements com.tencent.mm.ui.widget.a.e.b
   {
@@ -246,13 +246,13 @@ public final class e
     
     public final void onDismiss()
     {
-      this.gVF.gVB = null;
+      this.hOz.hOv = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.c.e
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,49 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class f$43$1
   implements h.d
 {
   f$43$1(f.43 param43) {}
   
-  private void cG(int paramInt, String paramString)
+  private void cZ(int paramInt, String paramString)
   {
-    AppMethodBeat.i(198476);
-    f.c localc = f.b(this.EEN.EEe, paramInt);
-    if ((localc != null) && (localc.EDe != null) && (localc.EfN != null)) {
-      f.a(this.EEN.EEe, f.k(this.EEN.EEe), f.j(this.EEN.EEe), "openMapNavigateMenu:" + bu.bI(paramString, "fail"));
+    AppMethodBeat.i(211387);
+    f.c localc = f.b(this.Juu.JtL, paramInt);
+    if ((localc != null) && (localc.JsF != null) && (localc.ISw != null)) {
+      f.a(this.Juu.JtL, f.k(this.Juu.JtL), f.j(this.Juu.JtL), "openMapNavigateMenu:" + Util.nullAs(paramString, "fail"));
     }
-    AppMethodBeat.o(198476);
+    AppMethodBeat.o(211387);
   }
   
-  public final void Yr(int paramInt)
+  public final void ahb(int paramInt)
   {
-    AppMethodBeat.i(198473);
-    cG(paramInt, "cancel");
-    AppMethodBeat.o(198473);
+    AppMethodBeat.i(211384);
+    cZ(paramInt, "cancel");
+    AppMethodBeat.o(211384);
   }
   
-  public final void Ys(int paramInt)
+  public final void ahc(int paramInt)
   {
-    AppMethodBeat.i(198477);
-    f.c(this.EEN.EEe, paramInt);
-    AppMethodBeat.o(198477);
+    AppMethodBeat.i(211388);
+    f.c(this.Juu.JtL, paramInt);
+    AppMethodBeat.o(211388);
   }
   
   public final void onFail(int paramInt)
   {
-    AppMethodBeat.i(198474);
-    cG(paramInt, "fail");
-    AppMethodBeat.o(198474);
+    AppMethodBeat.i(211385);
+    cZ(paramInt, "fail");
+    AppMethodBeat.o(211385);
   }
   
   public final void onSuccess(int paramInt)
   {
-    AppMethodBeat.i(198475);
-    cG(paramInt, "ok");
-    AppMethodBeat.o(198475);
+    AppMethodBeat.i(211386);
+    cZ(paramInt, "ok");
+    AppMethodBeat.o(211386);
   }
 }
 

@@ -1,33 +1,39 @@
 package com.tencent.mm.protocal;
 
+import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
+import com.tencent.mm.network.b;
+import com.tencent.mm.network.b.a;
+import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
-import com.tencent.mm.plugin.normsg.a.b;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.afy;
-import com.tencent.mm.protocal.protobuf.bym;
-import com.tencent.mm.protocal.protobuf.byn;
-import com.tencent.mm.protocal.protobuf.byo;
-import com.tencent.mm.protocal.protobuf.drp;
-import com.tencent.mm.protocal.protobuf.eby;
-import com.tencent.mm.protocal.protobuf.gx;
+import com.tencent.mm.protocal.protobuf.aif;
+import com.tencent.mm.protocal.protobuf.cme;
+import com.tencent.mm.protocal.protobuf.cmf;
+import com.tencent.mm.protocal.protobuf.cmg;
+import com.tencent.mm.protocal.protobuf.dfx;
+import com.tencent.mm.protocal.protobuf.ell;
+import com.tencent.mm.protocal.protobuf.ewf;
 import com.tencent.mm.protocal.protobuf.hk;
-import com.tencent.mm.protocal.protobuf.hm;
-import com.tencent.mm.protocal.protobuf.hn;
-import com.tencent.mm.protocal.protobuf.ix;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.k;
-import com.tencent.mm.storage.ai;
-import com.tencent.mm.storage.cd;
+import com.tencent.mm.protocal.protobuf.hx;
+import com.tencent.mm.protocal.protobuf.hz;
+import com.tencent.mm.protocal.protobuf.ia;
+import com.tencent.mm.protocal.protobuf.jk;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.an;
+import com.tencent.mm.storage.ck;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public final class j
 {
@@ -35,19 +41,19 @@ public final class j
     extends j.h
     implements l.b
   {
-    public hm FGj;
+    public hz Kzu;
     public String username;
     
     public a()
     {
       AppMethodBeat.i(133087);
-      this.FGj = new hm();
+      this.Kzu = new hz();
       AppMethodBeat.o(133087);
     }
     
     public final int getFuncId()
     {
-      if (f.FFQ) {
+      if (f.KyZ) {
         return 763;
       }
       return 702;
@@ -55,7 +61,7 @@ public final class j
     
     public final String getUri()
     {
-      if (f.FFQ) {
+      if (f.KyZ) {
         return "/cgi-bin/micromsg-bin/secautoauth";
       }
       return "/cgi-bin/micromsg-bin/autoauth";
@@ -65,7 +71,7 @@ public final class j
     {
       int j = -1;
       AppMethodBeat.i(133088);
-      a.xz("");
+      a.FL("");
       int k = getSceneStatus();
       int i;
       Object localObject1;
@@ -73,50 +79,51 @@ public final class j
       if (k == 12)
       {
         i = 1;
-        ae.d("MicroMsg.AutoReq", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-        setRsaInfo(ac.fkn());
-        if ((10002 == com.tencent.mm.platformtools.ac.iRH) && (com.tencent.mm.platformtools.ac.iRI > 0))
+        Log.d("MicroMsg.AutoReq", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+        setRsaInfo(ac.gtR());
+        if ((10002 == com.tencent.mm.platformtools.ac.jOC) && (com.tencent.mm.platformtools.ac.jOD > 0))
         {
-          com.tencent.mm.platformtools.ac.iRI = 0;
-          ac.am("", "", 0);
+          com.tencent.mm.platformtools.ac.jOD = 0;
+          ac.aq("", "", 0);
         }
-        localObject1 = this.FGj.FSn;
-        ((hk)localObject1).setBaseRequest(l.a(this));
-        ae.i("MicroMsg.AutoReq", "summerauth autoauth toProtoBuf uin[%d]", new Object[] { Integer.valueOf(getUin()) });
-        ((hk)localObject1).uQx = com.tencent.mm.compatible.deviceinfo.q.cH(true);
-        ((hk)localObject1).FSe = b.wJt.MD(i);
-        ((hk)localObject1).FSf = 0;
-        ((hk)localObject1).FSg = a.ajd();
-        ((hk)localObject1).jfY = bu.jp(ak.getContext());
-        ((hk)localObject1).nIN = d.DEVICE_NAME;
-        ((hk)localObject1).FSh = cd.fwK();
-        ((hk)localObject1).qkN = ad.fom();
-        ((hk)localObject1).qkM = bu.fpH();
-        ((hk)localObject1).FJf = k.cSM;
-        g.ajS();
-        localObject2 = (String)g.ajR().gDO.get(18);
-        ae.d("MicroMsg.AutoReq", "summerecdh ksid:%s, flag:%d", new Object[] { localObject2, Integer.valueOf(((hk)localObject1).FSd.FUr) });
-        ((hk)localObject1).FSd.FUp.FWO = new SKBuiltinBuffer_t().setBuffer(bu.aSx((String)localObject2));
+        localObject1 = this.Kzu.KLW;
+        ((hx)localObject1).setBaseRequest(l.a(this));
+        Log.i("MicroMsg.AutoReq", "summerauth autoauth toProtoBuf uin[%d]", new Object[] { Integer.valueOf(getUin()) });
+        ((hx)localObject1).yiZ = q.dr(true);
+        ((hx)localObject1).KLL = com.tencent.mm.plugin.normsg.a.d.AEF.TK(i);
+        ((hx)localObject1).KLM = 0;
+        ((hx)localObject1).KLN = a.azt();
+        ((hx)localObject1).keb = Util.getSourceeMd5(MMApplicationContext.getContext());
+        ((hx)localObject1).oTI = d.DEVICE_NAME;
+        ((hx)localObject1).KLO = ck.getFingerprint();
+        ((hx)localObject1).rBI = LocaleUtil.getApplicationLanguage();
+        ((hx)localObject1).rBH = Util.getTimeZoneOffset();
+        ((hx)localObject1).KCx = ChannelUtil.channelId;
+        ((hx)localObject1).KFu = MMApplicationContext.getApplicationId();
+        g.aAi();
+        localObject2 = (String)g.aAh().hqB.get(18);
+        Log.d("MicroMsg.AutoReq", "summerecdh ksid:%s, flag:%d", new Object[] { localObject2, Integer.valueOf(((hx)localObject1).KLK.KOa) });
+        ((hx)localObject1).KLK.KNY.KQA = new SKBuiltinBuffer_t().setBuffer(Util.decodeHexString((String)localObject2));
       }
       for (;;)
       {
         try
         {
-          localObject2 = b.wJt.dye();
+          localObject2 = com.tencent.mm.plugin.normsg.a.d.AEF.exJ();
           if (localObject2 == null) {
             continue;
           }
           i = localObject2.length;
-          ae.d("MicroMsg.AutoReq", "[tomys] ccd set on auto auth, len: %s", new Object[] { Integer.valueOf(i) });
-          localObject3 = new eby();
-          ((eby)localObject3).Ihs = new SKBuiltinBuffer_t().setBuffer((byte[])localObject2);
-          ((eby)localObject3).Ihw = new SKBuiltinBuffer_t().setBuffer(b.wJt.dyh());
-          if (((eby)localObject3).Ihw == null) {
+          Log.d("MicroMsg.AutoReq", "[tomys] ccd set on auto auth, len: %s", new Object[] { Integer.valueOf(i) });
+          localObject3 = new ewf();
+          ((ewf)localObject3).NtQ = new SKBuiltinBuffer_t().setBuffer((byte[])localObject2);
+          ((ewf)localObject3).NtU = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.d.AEF.exM());
+          if (((ewf)localObject3).NtU == null) {
             continue;
           }
-          i = ((eby)localObject3).Ihw.getILen();
-          ae.d("MicroMsg.AutoReq", "[debug] devtok on auto auth, len: %s", new Object[] { Integer.valueOf(i) });
-          ((hk)localObject1).FSj = new SKBuiltinBuffer_t().setBuffer(((eby)localObject3).toByteArray());
+          i = ((ewf)localObject3).NtU.getILen();
+          Log.d("MicroMsg.AutoReq", "[debug] devtok on auto auth, len: %s", new Object[] { Integer.valueOf(i) });
+          ((hx)localObject1).KLQ = new SKBuiltinBuffer_t().setBuffer(((ewf)localObject3).toByteArray());
         }
         catch (Throwable localThrowable)
         {
@@ -124,23 +131,39 @@ public final class j
           Object localObject5;
           Object localObject4;
           int m;
-          ae.printErrStackTrace("MicroMsg.AutoReq", localThrowable, "cc throws exception.", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.AutoReq", localThrowable, "cc throws exception.", new Object[0]);
+          continue;
+          ((hx)localObject1).KLS.LrO = 0;
+          ((hx)localObject1).KLS.KLU = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+          Log.e("MicroMsg.AutoReq", "get sign key failed");
           continue;
           i = localObject5.length;
           continue;
           j = localObject4.length;
           continue;
         }
-        localObject2 = this.FGj.FSm;
-        localObject3 = new afy();
-        ((afy)localObject3).Gwi = 713;
+        ((hx)localObject1).KLS = new dfx();
+        localObject2 = b.bjq().bjr();
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          continue;
+        }
+        ((hx)localObject1).KLS.LrO = b.bjq().jDB.LrO;
+        ((hx)localObject1).KLS.KLU = new SKBuiltinBuffer_t().setBuffer(((String)localObject2).getBytes(StandardCharsets.ISO_8859_1));
+        Log.i("MicroMsg.AutoReq", "autoauth add public key , length " + ((String)localObject2).length());
+        localObject2 = new b.a();
+        ((b.a)localObject2).jDD = b.bjq().bjr();
+        ((b.a)localObject2).jDC = b.bjq().jDC;
+        setCGiVerifyKey((b.a)localObject2);
+        localObject2 = this.Kzu.KLV;
+        localObject3 = new aif();
+        ((aif)localObject3).LrO = 713;
         localObject5 = new PByteArray();
         localObject4 = new PByteArray();
-        k = MMProtocalJni.generateECKey(((afy)localObject3).Gwi, (PByteArray)localObject5, (PByteArray)localObject4);
+        k = MMProtocalJni.generateECKey(((aif)localObject3).LrO, (PByteArray)localObject5, (PByteArray)localObject4);
         localObject5 = ((PByteArray)localObject5).value;
         localObject4 = ((PByteArray)localObject4).value;
-        cp((byte[])localObject4);
-        m = ((afy)localObject3).Gwi;
+        cG((byte[])localObject4);
+        m = ((aif)localObject3).LrO;
         if (localObject5 != null) {
           continue;
         }
@@ -148,23 +171,23 @@ public final class j
         if (localObject4 != null) {
           continue;
         }
-        ae.d("MicroMsg.AutoReq", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), bu.cE((byte[])localObject5), bu.cE((byte[])localObject4) });
-        ((afy)localObject3).FSl = new SKBuiltinBuffer_t().setBuffer((byte[])localObject5);
-        ((hn)localObject2).FSp = ((afy)localObject3);
-        ae.i("MicroMsg.AutoReq", "summerauth auto IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d]", new Object[] { ((hk)localObject1).uQx, ((hk)localObject1).FSe, ((hk)localObject1).FSg, ((hk)localObject1).jfY, ((hk)localObject1).nIN, ((hk)localObject1).FSh, ((hk)localObject1).qkN, ((hk)localObject1).qkM, Integer.valueOf(((hk)localObject1).FJf), Integer.valueOf(k.cSM), Integer.valueOf(k.IwF) });
+        Log.d("MicroMsg.AutoReq", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), Util.dumpHex((byte[])localObject5), Util.dumpHex((byte[])localObject4) });
+        ((aif)localObject3).KLU = new SKBuiltinBuffer_t().setBuffer((byte[])localObject5);
+        ((ia)localObject2).KLY = ((aif)localObject3);
+        Log.i("MicroMsg.AutoReq", "summerauth auto IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s AndroidPackageName:%s chan[%d,%d,%d]", new Object[] { ((hx)localObject1).yiZ, ((hx)localObject1).KLL, ((hx)localObject1).KLN, ((hx)localObject1).keb, ((hx)localObject1).oTI, ((hx)localObject1).KLO, ((hx)localObject1).rBI, ((hx)localObject1).rBH, ((hx)localObject1).KFu, Integer.valueOf(((hx)localObject1).KCx), Integer.valueOf(ChannelUtil.channelId), Integer.valueOf(ChannelUtil.historyChannelId) });
         try
         {
-          localObject1 = this.FGj.toByteArray();
+          localObject1 = this.Kzu.toByteArray();
           AppMethodBeat.o(133088);
           return localObject1;
         }
         catch (IOException localIOException)
         {
-          ae.e("MicroMsg.AutoReq", "summerauth toProtoBuf :%s", new Object[] { bu.o(localIOException) });
+          Log.e("MicroMsg.AutoReq", "summerauth toProtoBuf :%s", new Object[] { Util.stackTraceToString(localIOException) });
           AppMethodBeat.o(133088);
         }
-        g.ajS();
-        i = g.ajR().gDO.abw(46);
+        g.aAi();
+        i = g.aAh().hqB.ake(46);
         break;
         i = -1;
         continue;
@@ -183,25 +206,25 @@ public final class j
       AppMethodBeat.i(133089);
       try
       {
-        this.FGl = ((drp)this.FGl.parseFrom(paramArrayOfByte));
-        l.a(this, this.FGl.getBaseResponse());
-        this.gxH = 0;
-        if ((this.FGl.getBaseResponse().Ret == 0) && ((this.FGl.HYs == null) || (this.FGl.HYs.qkC == 0) || (bu.cF(z.a(this.FGl.HYs.FRr)))))
+        this.Kzw = ((ell)this.Kzw.parseFrom(paramArrayOfByte));
+        l.a(this, this.Kzw.getBaseResponse());
+        this.hku = 0;
+        if ((this.Kzw.getBaseResponse().Ret == 0) && ((this.Kzw.Nky == null) || (this.Kzw.Nky.rBx == 0) || (Util.isNullOrNil(z.a(this.Kzw.Nky.KKY)))))
         {
-          ae.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
-          this.FGl.getBaseResponse().Ret = -1;
+          Log.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
+          this.Kzw.getBaseResponse().Ret = -1;
         }
         paramArrayOfByte = getErrMsg();
-        ae.i("MicroMsg.MMAuth", "summerauthkick auto errmsg[%s]", new Object[] { paramArrayOfByte });
-        a.xz(paramArrayOfByte);
-        int i = this.FGl.getBaseResponse().Ret;
+        Log.i("MicroMsg.MMAuth", "summerauthkick auto errmsg[%s]", new Object[] { paramArrayOfByte });
+        a.FL(paramArrayOfByte);
+        int i = this.Kzw.getBaseResponse().Ret;
         AppMethodBeat.o(133089);
         return i;
       }
       catch (IOException paramArrayOfByte)
       {
-        ae.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { bu.o(paramArrayOfByte) });
-        this.FGl.getBaseResponse().Ret = -1;
+        Log.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
+        this.Kzw.getBaseResponse().Ret = -1;
         AppMethodBeat.o(133089);
       }
       return -1;
@@ -212,14 +235,14 @@ public final class j
     extends l.d
     implements l.b
   {
-    public hm FGj;
-    private byte[] FGk;
+    public hz Kzu;
+    private byte[] Kzv;
     public String username;
     
     public c()
     {
       AppMethodBeat.i(133090);
-      this.FGj = new hm();
+      this.Kzu = new hz();
       AppMethodBeat.o(133090);
     }
     
@@ -232,85 +255,104 @@ public final class j
     {
       int j = -1;
       AppMethodBeat.i(133091);
-      a.xz("");
+      a.FL("");
       int k = getSceneStatus();
       int i;
       Object localObject1;
       Object localObject2;
-      afy localafy;
+      label404:
+      aif localaif;
       Object localObject4;
       Object localObject3;
       int m;
       if (k == 12)
       {
         i = 1;
-        ae.d("MicroMsg.MMAuth", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-        setRsaInfo(ac.fkn());
-        if ((10002 == com.tencent.mm.platformtools.ac.iRH) && (com.tencent.mm.platformtools.ac.iRI > 0))
+        Log.d("MicroMsg.MMAuth", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+        setRsaInfo(ac.gtR());
+        if ((10002 == com.tencent.mm.platformtools.ac.jOC) && (com.tencent.mm.platformtools.ac.jOD > 0))
         {
-          com.tencent.mm.platformtools.ac.iRI = 0;
-          ac.am("", "", 0);
+          com.tencent.mm.platformtools.ac.jOD = 0;
+          ac.aq("", "", 0);
         }
-        localObject1 = this.FGj.FSn;
-        ((hk)localObject1).setBaseRequest(l.a(this));
-        ae.i("MicroMsg.MMAuth", "summerauth autoauth toProtoBuf uin[%d]", new Object[] { Integer.valueOf(getUin()) });
-        ((hk)localObject1).uQx = com.tencent.mm.compatible.deviceinfo.q.aaA();
-        ((hk)localObject1).FSe = b.wJt.MD(i);
-        ((hk)localObject1).FSf = 0;
-        ((hk)localObject1).FSg = a.ajd();
-        ((hk)localObject1).jfY = bu.jp(ak.getContext());
-        ((hk)localObject1).nIN = d.DEVICE_NAME;
-        ((hk)localObject1).FSh = cd.fwK();
-        ((hk)localObject1).qkN = ad.fom();
-        ((hk)localObject1).qkM = bu.fpH();
-        ((hk)localObject1).FJf = k.cSM;
-        g.ajS();
-        localObject2 = (String)g.ajR().gDO.get(18);
-        ae.d("MicroMsg.MMAuth", "summerecdh ksid:%s, flag:%d", new Object[] { localObject2, Integer.valueOf(((hk)localObject1).FSd.FUr) });
-        ((hk)localObject1).FSd.FUp.FWO = new SKBuiltinBuffer_t().setBuffer(bu.aSx((String)localObject2));
-        localObject2 = this.FGj.FSm;
-        localafy = new afy();
-        localafy.Gwi = 713;
+        localObject1 = this.Kzu.KLW;
+        ((hx)localObject1).setBaseRequest(l.a(this));
+        Log.i("MicroMsg.MMAuth", "summerauth autoauth toProtoBuf uin[%d]", new Object[] { Integer.valueOf(getUin()) });
+        ((hx)localObject1).yiZ = q.aoz();
+        ((hx)localObject1).KLL = com.tencent.mm.plugin.normsg.a.d.AEF.TK(i);
+        ((hx)localObject1).KLM = 0;
+        ((hx)localObject1).KLN = a.azt();
+        ((hx)localObject1).keb = Util.getSourceeMd5(MMApplicationContext.getContext());
+        ((hx)localObject1).oTI = d.DEVICE_NAME;
+        ((hx)localObject1).KLO = ck.getFingerprint();
+        ((hx)localObject1).rBI = LocaleUtil.getApplicationLanguage();
+        ((hx)localObject1).rBH = Util.getTimeZoneOffset();
+        ((hx)localObject1).KCx = ChannelUtil.channelId;
+        ((hx)localObject1).KFu = MMApplicationContext.getApplicationId();
+        g.aAi();
+        localObject2 = (String)g.aAh().hqB.get(18);
+        Log.d("MicroMsg.MMAuth", "summerecdh ksid:%s, flag:%d", new Object[] { localObject2, Integer.valueOf(((hx)localObject1).KLK.KOa) });
+        ((hx)localObject1).KLK.KNY.KQA = new SKBuiltinBuffer_t().setBuffer(Util.decodeHexString((String)localObject2));
+        ((hx)localObject1).KLS = new dfx();
+        localObject2 = b.bjq().bjr();
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label775;
+        }
+        ((hx)localObject1).KLS.LrO = b.bjq().jDB.LrO;
+        ((hx)localObject1).KLS.KLU = new SKBuiltinBuffer_t().setBuffer(((String)localObject2).getBytes(StandardCharsets.ISO_8859_1));
+        Log.i("MicroMsg.MMAuth", "disaster auth add public key , length " + ((String)localObject2).length());
+        localObject2 = new b.a();
+        ((b.a)localObject2).jDD = b.bjq().bjr();
+        ((b.a)localObject2).jDC = b.bjq().jDC;
+        setCGiVerifyKey((b.a)localObject2);
+        localObject2 = this.Kzu.KLV;
+        localaif = new aif();
+        localaif.LrO = 713;
         localObject4 = new PByteArray();
         localObject3 = new PByteArray();
-        k = MMProtocalJni.generateECKey(localafy.Gwi, (PByteArray)localObject4, (PByteArray)localObject3);
+        k = MMProtocalJni.generateECKey(localaif.LrO, (PByteArray)localObject4, (PByteArray)localObject3);
         localObject4 = ((PByteArray)localObject4).value;
         localObject3 = ((PByteArray)localObject3).value;
-        this.FGk = ((byte[])localObject3);
-        m = localafy.Gwi;
+        this.Kzv = ((byte[])localObject3);
+        m = localaif.LrO;
         if (localObject4 != null) {
-          break label624;
+          break label816;
         }
         i = -1;
-        label390:
+        label532:
         if (localObject3 != null) {
-          break label631;
+          break label823;
         }
       }
       for (;;)
       {
-        ae.d("MicroMsg.MMAuth", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), bu.cE((byte[])localObject4), bu.cE((byte[])localObject3) });
-        localafy.FSl = new SKBuiltinBuffer_t().setBuffer((byte[])localObject4);
-        ((hn)localObject2).FSp = localafy;
-        ae.i("MicroMsg.MMAuth", "summerauth auto IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d]", new Object[] { ((hk)localObject1).uQx, ((hk)localObject1).FSe, ((hk)localObject1).FSg, ((hk)localObject1).jfY, ((hk)localObject1).nIN, ((hk)localObject1).FSh, ((hk)localObject1).qkN, ((hk)localObject1).qkM, Integer.valueOf(((hk)localObject1).FJf), Integer.valueOf(k.cSM), Integer.valueOf(k.IwF) });
+        Log.d("MicroMsg.MMAuth", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), Util.dumpHex((byte[])localObject4), Util.dumpHex((byte[])localObject3) });
+        localaif.KLU = new SKBuiltinBuffer_t().setBuffer((byte[])localObject4);
+        ((ia)localObject2).KLY = localaif;
+        Log.i("MicroMsg.MMAuth", "summerauth auto IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s AndroidPackageName:%s chan[%d,%d,%d]", new Object[] { ((hx)localObject1).yiZ, ((hx)localObject1).KLL, ((hx)localObject1).KLN, ((hx)localObject1).keb, ((hx)localObject1).oTI, ((hx)localObject1).KLO, ((hx)localObject1).rBI, ((hx)localObject1).rBH, ((hx)localObject1).KFu, Integer.valueOf(((hx)localObject1).KCx), Integer.valueOf(ChannelUtil.channelId), Integer.valueOf(ChannelUtil.historyChannelId) });
         try
         {
-          localObject1 = this.FGj.toByteArray();
+          localObject1 = this.Kzu.toByteArray();
           AppMethodBeat.o(133091);
           return localObject1;
         }
         catch (IOException localIOException)
         {
-          ae.e("MicroMsg.MMAuth", "summerauth toProtoBuf :%s", new Object[] { bu.o(localIOException) });
+          Log.e("MicroMsg.MMAuth", "summerauth toProtoBuf :%s", new Object[] { Util.stackTraceToString(localIOException) });
           AppMethodBeat.o(133091);
         }
-        g.ajS();
-        i = g.ajR().gDO.abw(46);
+        g.aAi();
+        i = g.aAh().hqB.ake(46);
         break;
-        label624:
+        label775:
+        ((hx)localObject1).KLS.LrO = 0;
+        ((hx)localObject1).KLS.KLU = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+        Log.e("MicroMsg.MMAuth", "get sign key failed");
+        break label404;
+        label816:
         i = localObject4.length;
-        break label390;
-        label631:
+        break label532;
+        label823:
         j = localObject3.length;
       }
       return null;
@@ -321,13 +363,13 @@ public final class j
   {
     public abstract void a(j.h paramh, j.i parami, int paramInt1, int paramInt2, String paramString);
     
-    public abstract int aCk();
+    public abstract int aVJ();
     
-    public abstract com.tencent.mm.network.q dc(int paramInt1, int paramInt2);
+    public abstract s dm(int paramInt1, int paramInt2);
     
     public static final class a
     {
-      public static j.e FGm;
+      public static j.e Kzx;
     }
   }
   
@@ -335,20 +377,20 @@ public final class j
     extends j.h
     implements l.b
   {
-    public byn FGn;
-    public boolean FGo;
+    public cmf Kzy;
+    public boolean Kzz;
     
     public f()
     {
       AppMethodBeat.i(133094);
-      this.FGn = new byn();
-      this.FGo = false;
+      this.Kzy = new cmf();
+      this.Kzz = false;
       AppMethodBeat.o(133094);
     }
     
     public final int getFuncId()
     {
-      if (f.FFQ) {
+      if (f.KyZ) {
         return 252;
       }
       return 701;
@@ -356,7 +398,7 @@ public final class j
     
     public final String getUri()
     {
-      if (f.FFQ) {
+      if (f.KyZ) {
         return "/cgi-bin/micromsg-bin/secmanualauth";
       }
       return "/cgi-bin/micromsg-bin/manualauth";
@@ -366,7 +408,7 @@ public final class j
     {
       int j = -1;
       AppMethodBeat.i(133095);
-      a.xz("");
+      a.FL("");
       int k = getSceneStatus();
       int i;
       Object localObject1;
@@ -374,128 +416,150 @@ public final class j
       if (k == 16)
       {
         i = 1;
-        ae.d("MicroMsg.ManualReq", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
-        if ((10002 == com.tencent.mm.platformtools.ac.iRH) && (com.tencent.mm.platformtools.ac.iRI > 0))
+        Log.d("MicroMsg.ManualReq", "summerstatus[%d] clientUpgrade[%d]", new Object[] { Integer.valueOf(k), Integer.valueOf(i) });
+        if ((10002 == com.tencent.mm.platformtools.ac.jOC) && (com.tencent.mm.platformtools.ac.jOD > 0))
         {
-          com.tencent.mm.platformtools.ac.iRI = 0;
-          ac.am("", "", 0);
+          com.tencent.mm.platformtools.ac.jOD = 0;
+          ac.aq("", "", 0);
         }
-        setRsaInfo(ac.fkn());
-        localObject1 = this.FGn.Hlp;
-        ((bym)localObject1).setBaseRequest(l.a(this));
-        ((bym)localObject1).uQx = com.tencent.mm.compatible.deviceinfo.q.cH(true);
-        ((bym)localObject1).FSe = b.wJt.MD(i);
-        ((bym)localObject1).FSf = 0;
-        ((bym)localObject1).FSg = a.ajd();
-        ((bym)localObject1).jfY = bu.jp(ak.getContext());
-        ((bym)localObject1).nIN = d.DEVICE_NAME;
-        ((bym)localObject1).FSh = cd.fwK();
-        ((bym)localObject1).qkN = ad.fom();
-        ((bym)localObject1).qkM = bu.fpH();
-        ((bym)localObject1).FJf = k.cSM;
-        if ((10012 == com.tencent.mm.platformtools.ac.iRH) && (com.tencent.mm.platformtools.ac.iRI > 0)) {
-          ((bym)localObject1).FJf = com.tencent.mm.platformtools.ac.iRI;
+        setRsaInfo(ac.gtR());
+        localObject1 = this.Kzy.MrB;
+        ((cme)localObject1).setBaseRequest(l.a(this));
+        ((cme)localObject1).yiZ = q.dr(true);
+        ((cme)localObject1).KLL = com.tencent.mm.plugin.normsg.a.d.AEF.TK(i);
+        ((cme)localObject1).KLM = 0;
+        ((cme)localObject1).KLN = a.azt();
+        ((cme)localObject1).keb = Util.getSourceeMd5(MMApplicationContext.getContext());
+        ((cme)localObject1).oTI = d.DEVICE_NAME;
+        ((cme)localObject1).KLO = ck.getFingerprint();
+        ((cme)localObject1).rBI = LocaleUtil.getApplicationLanguage();
+        ((cme)localObject1).rBH = Util.getTimeZoneOffset();
+        ((cme)localObject1).KCx = ChannelUtil.channelId;
+        if ((10012 == com.tencent.mm.platformtools.ac.jOC) && (com.tencent.mm.platformtools.ac.jOD > 0)) {
+          ((cme)localObject1).KCx = com.tencent.mm.platformtools.ac.jOD;
         }
-        ((bym)localObject1).gvp = d.FFB;
-        ((bym)localObject1).gvo = d.FFC;
-        ((bym)localObject1).Hlk = d.FFD;
-        ((bym)localObject1).GwD = com.tencent.mm.compatible.deviceinfo.q.getSimCountryIso();
-        g.ajS();
-        localObject2 = (String)g.ajR().gDO.get(18);
-        ae.d("MicroMsg.ManualReq", "summerauth ksid:%s authreq flag:%d", new Object[] { localObject2, Integer.valueOf(((bym)localObject1).FSd.FUr) });
-        ((bym)localObject1).FSd.FUp.FWO = new SKBuiltinBuffer_t().setBuffer(bu.aSx((String)localObject2));
+        ((cme)localObject1).hie = d.KyI;
+        ((cme)localObject1).hid = d.KyJ;
+        ((cme)localObject1).Mrw = d.KyK;
+        ((cme)localObject1).Lsj = q.getSimCountryIso();
+        ((cme)localObject1).KFu = MMApplicationContext.getApplicationId();
+        g.aAi();
+        localObject2 = (String)g.aAh().hqB.get(18);
+        Log.d("MicroMsg.ManualReq", "summerauth ksid:%s authreq flag:%d", new Object[] { localObject2, Integer.valueOf(((cme)localObject1).KLK.KOa) });
+        ((cme)localObject1).KLK.KNY.KQA = new SKBuiltinBuffer_t().setBuffer(Util.decodeHexString((String)localObject2));
       }
       for (;;)
       {
         try
         {
-          localObject2 = b.wJt.dye();
+          localObject2 = com.tencent.mm.plugin.normsg.a.d.AEF.exJ();
           if (localObject2 == null) {
             continue;
           }
           i = localObject2.length;
-          ae.d("MicroMsg.ManualReq", "[debug] ccd set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
-          localObject3 = new eby();
-          if ((2 == ((bym)localObject1).Hln) || (1 == ((bym)localObject1).Hln))
+          Log.d("MicroMsg.ManualReq", "[debug] ccd set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
+          localObject3 = new ewf();
+          if ((2 == ((cme)localObject1).Mrz) || (1 == ((cme)localObject1).Mrz) || (((cme)localObject1).Mrz == 0))
           {
-            if (b.wJt.auF("ie_login_id")) {
-              b.wJt.auE("ie_login_id");
+            if (com.tencent.mm.plugin.normsg.a.d.AEF.aIO("ie_login_id")) {
+              com.tencent.mm.plugin.normsg.a.d.AEF.aIN("ie_login_id");
             }
-            ((eby)localObject3).Ihq = new SKBuiltinBuffer_t().setBuffer(b.wJt.auG("ie_login_id"));
-            if (((eby)localObject3).Ihq == null) {
+            ((ewf)localObject3).NtO = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.d.AEF.aIP("ie_login_id"));
+            if (((ewf)localObject3).NtO == null) {
               continue;
             }
-            i = ((eby)localObject3).Ihq.getILen();
-            ae.d("MicroMsg.ManualReq", "[debug] wcstf set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
-            ((eby)localObject3).Ihr = new SKBuiltinBuffer_t().setBuffer(b.wJt.auJ("ce_login_id"));
-            if (((eby)localObject3).Ihr == null) {
+            i = ((ewf)localObject3).NtO.getILen();
+            Log.d("MicroMsg.ManualReq", "[debug] wcstf set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
+            ((ewf)localObject3).NtP = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.d.AEF.aIS("ce_login_id"));
+            if (((ewf)localObject3).NtP == null) {
               continue;
             }
-            i = ((eby)localObject3).Ihr.getILen();
-            ae.d("MicroMsg.ManualReq", "[debug] wcste set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
+            i = ((ewf)localObject3).NtP.getILen();
+            Log.d("MicroMsg.ManualReq", "[debug] wcste set on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
+            localObject4 = com.tencent.mm.plugin.normsg.a.d.AEF.aIT("ce_login_id");
+            if (localObject4 != null) {
+              ((ewf)localObject3).NtV = new SKBuiltinBuffer_t().setBuffer(((String)localObject4).getBytes());
+            }
           }
-          ((eby)localObject3).Ihw = new SKBuiltinBuffer_t().setBuffer(b.wJt.dyh());
-          if (((eby)localObject3).Ihw == null) {
+          ((ewf)localObject3).NtU = new SKBuiltinBuffer_t().setBuffer(com.tencent.mm.plugin.normsg.a.d.AEF.exM());
+          if (((ewf)localObject3).NtU == null) {
             continue;
           }
-          i = ((eby)localObject3).Ihw.getILen();
-          ae.d("MicroMsg.ManualReq", "[debug] devtok on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
-          ((eby)localObject3).Ihs = new SKBuiltinBuffer_t().setBuffer((byte[])localObject2);
-          ((bym)localObject1).FSj = new SKBuiltinBuffer_t().setBuffer(((eby)localObject3).toByteArray());
+          i = ((ewf)localObject3).NtU.getILen();
+          Log.d("MicroMsg.ManualReq", "[debug] devtok on manual auth, len: %s", new Object[] { Integer.valueOf(i) });
+          ((ewf)localObject3).NtQ = new SKBuiltinBuffer_t().setBuffer((byte[])localObject2);
+          ((cme)localObject1).KLQ = new SKBuiltinBuffer_t().setBuffer(((ewf)localObject3).toByteArray());
         }
         catch (Throwable localThrowable)
         {
           Object localObject3;
-          Object localObject5;
           Object localObject4;
+          Object localObject5;
+          Object localObject6;
           int m;
-          ae.printErrStackTrace("MicroMsg.ManualReq", localThrowable, "cc throws exception.", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.ManualReq", localThrowable, "cc throws exception.", new Object[0]);
           continue;
-          i = localObject5.length;
+          ((cme)localObject1).KLS.LrO = 0;
+          ((cme)localObject1).KLS.KLU = new SKBuiltinBuffer_t().setBuffer(new byte[0]);
+          Log.e("MicroMsg.ManualReq", "get sign key failed");
           continue;
-          j = localObject4.length;
+          i = localObject4.length;
+          continue;
+          j = localObject5.length;
           continue;
         }
-        localObject2 = this.FGn.Hlo;
-        ((byo)localObject2).FWl = new SKBuiltinBuffer_t().setBuffer(bu.fpG());
-        localObject3 = new afy();
-        ((afy)localObject3).Gwi = 713;
-        localObject5 = new PByteArray();
+        localObject2 = this.Kzy.MrA;
+        ((cmg)localObject2).KPW = new SKBuiltinBuffer_t().setBuffer(Util.getUuidRandom());
+        localObject3 = new aif();
+        ((aif)localObject3).LrO = 713;
         localObject4 = new PByteArray();
-        k = MMProtocalJni.generateECKey(((afy)localObject3).Gwi, (PByteArray)localObject5, (PByteArray)localObject4);
-        localObject5 = ((PByteArray)localObject5).value;
+        localObject5 = new PByteArray();
+        k = MMProtocalJni.generateECKey(((aif)localObject3).LrO, (PByteArray)localObject4, (PByteArray)localObject5);
         localObject4 = ((PByteArray)localObject4).value;
-        cp((byte[])localObject4);
-        m = ((afy)localObject3).Gwi;
-        if (localObject5 != null) {
+        localObject5 = ((PByteArray)localObject5).value;
+        cG((byte[])localObject5);
+        ((cme)localObject1).KLS = new dfx();
+        localObject6 = b.bjq().bjr();
+        if (TextUtils.isEmpty((CharSequence)localObject6)) {
           continue;
         }
-        i = -1;
+        ((cme)localObject1).KLS.LrO = b.bjq().jDB.LrO;
+        ((cme)localObject1).KLS.KLU = new SKBuiltinBuffer_t().setBuffer(((String)localObject6).getBytes(StandardCharsets.ISO_8859_1));
+        Log.i("MicroMsg.ManualReq", "manualauth add public key , length " + ((String)localObject6).length());
+        localObject6 = new b.a();
+        ((b.a)localObject6).jDD = b.bjq().bjr();
+        ((b.a)localObject6).jDC = b.bjq().jDC;
+        setCGiVerifyKey((b.a)localObject6);
+        m = ((aif)localObject3).LrO;
         if (localObject4 != null) {
           continue;
         }
-        ae.d("MicroMsg.ManualReq", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), bu.cE((byte[])localObject5), bu.cE((byte[])localObject4) });
-        ((afy)localObject3).FSl = new SKBuiltinBuffer_t().setBuffer((byte[])localObject5);
-        ((byo)localObject2).FSp = ((afy)localObject3);
-        ae.i("MicroMsg.ManualReq", "summerauth manual IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d] DeviceBrand:%s DeviceModel:%s OSType:%s RealCountry:%s", new Object[] { ((bym)localObject1).uQx, ((bym)localObject1).FSe, ((bym)localObject1).FSg, ((bym)localObject1).jfY, ((bym)localObject1).nIN, ((bym)localObject1).FSh, ((bym)localObject1).qkN, ((bym)localObject1).qkM, Integer.valueOf(((bym)localObject1).FJf), Integer.valueOf(k.cSM), Integer.valueOf(k.IwF), ((bym)localObject1).gvp, ((bym)localObject1).gvo, ((bym)localObject1).Hlk, ((bym)localObject1).GwD });
+        i = -1;
+        if (localObject5 != null) {
+          continue;
+        }
+        Log.d("MicroMsg.ManualReq", "summerecdh nid:%d ret:%d, pub len: %d, pri len:%d, pub:%s, pri:%s", new Object[] { Integer.valueOf(m), Integer.valueOf(k), Integer.valueOf(i), Integer.valueOf(j), Util.dumpHex((byte[])localObject4), Util.dumpHex((byte[])localObject5) });
+        ((aif)localObject3).KLU = new SKBuiltinBuffer_t().setBuffer((byte[])localObject4);
+        ((cmg)localObject2).KLY = ((aif)localObject3);
+        Log.i("MicroMsg.ManualReq", "summerauth manual IMEI:%s SoftType:%s ClientSeqID:%s Signature:%s DeviceName:%s DeviceType:%s Language:%s TimeZone:%s chan[%d,%d,%d] DeviceBrand:%s DeviceModel:%s OSType:%s RealCountry:%s AndroidPackageName:%s", new Object[] { ((cme)localObject1).yiZ, ((cme)localObject1).KLL, ((cme)localObject1).KLN, ((cme)localObject1).keb, ((cme)localObject1).oTI, ((cme)localObject1).KLO, ((cme)localObject1).rBI, ((cme)localObject1).rBH, Integer.valueOf(((cme)localObject1).KCx), Integer.valueOf(ChannelUtil.channelId), Integer.valueOf(ChannelUtil.historyChannelId), ((cme)localObject1).hie, ((cme)localObject1).hid, ((cme)localObject1).Mrw, ((cme)localObject1).Lsj, ((cme)localObject1).KFu });
         try
         {
-          localObject1 = this.FGn.toByteArray();
+          localObject1 = this.Kzy.toByteArray();
           AppMethodBeat.o(133095);
           return localObject1;
         }
         catch (IOException localIOException)
         {
-          ae.e("MicroMsg.ManualReq", "summerauth toProtoBuf :%s", new Object[] { bu.o(localIOException) });
+          Log.e("MicroMsg.ManualReq", "summerauth toProtoBuf :%s", new Object[] { Util.stackTraceToString(localIOException) });
           AppMethodBeat.o(133095);
         }
-        if (this.FGo)
+        if (this.Kzz)
         {
           i = 3;
           break;
         }
-        g.ajS();
-        i = g.ajR().gDO.abw(46);
+        g.aAi();
+        i = g.aAh().hqB.ake(46);
         break;
         i = -1;
         continue;
@@ -518,25 +582,25 @@ public final class j
       AppMethodBeat.i(133096);
       try
       {
-        this.FGl = ((drp)this.FGl.parseFrom(paramArrayOfByte));
-        l.a(this, this.FGl.getBaseResponse());
-        this.gxH = 0;
-        if ((this.FGl.getBaseResponse().Ret == 0) && ((this.FGl.HYs == null) || (this.FGl.HYs.qkC == 0) || (bu.cF(z.a(this.FGl.HYs.FRr)))))
+        this.Kzw = ((ell)this.Kzw.parseFrom(paramArrayOfByte));
+        l.a(this, this.Kzw.getBaseResponse());
+        this.hku = 0;
+        if ((this.Kzw.getBaseResponse().Ret == 0) && ((this.Kzw.Nky == null) || (this.Kzw.Nky.rBx == 0) || (Util.isNullOrNil(z.a(this.Kzw.Nky.KKY)))))
         {
-          ae.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
-          this.FGl.getBaseResponse().Ret = -1;
+          Log.e("MicroMsg.MMAuth", "retcode 0 but invalid auth sect resp or invalid uin or invalid session");
+          this.Kzw.getBaseResponse().Ret = -1;
         }
         paramArrayOfByte = getErrMsg();
-        ae.i("MicroMsg.MMAuth", "summerauthkick manual errmsg[%s]", new Object[] { paramArrayOfByte });
-        a.xz(paramArrayOfByte);
-        int i = this.FGl.getBaseResponse().Ret;
+        Log.i("MicroMsg.MMAuth", "summerauthkick manual errmsg[%s]", new Object[] { paramArrayOfByte });
+        a.FL(paramArrayOfByte);
+        int i = this.Kzw.getBaseResponse().Ret;
         AppMethodBeat.o(133096);
         return i;
       }
       catch (IOException paramArrayOfByte)
       {
-        ae.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { bu.o(paramArrayOfByte) });
-        this.FGl.getBaseResponse().Ret = -1;
+        Log.e("MicroMsg.MMAuth", "toProtoBuf :%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
+        this.Kzw.getBaseResponse().Ret = -1;
         AppMethodBeat.o(133096);
       }
       return -1;
@@ -547,14 +611,14 @@ public final class j
     extends l.d
     implements l.b
   {
-    public byte[] FGk;
+    public byte[] Kzv;
     
-    public final void cp(byte[] paramArrayOfByte)
+    public final void cG(byte[] paramArrayOfByte)
     {
       if (paramArrayOfByte != null) {}
       for (;;)
       {
-        this.FGk = paramArrayOfByte;
+        this.Kzv = paramArrayOfByte;
         return;
         paramArrayOfByte = new byte[0];
       }
@@ -567,15 +631,15 @@ public final class j
     extends l.e
     implements l.c
   {
-    public drp FGl = new drp();
-    public byte[] FGp;
-    private byte[] FGq;
-    public String dvq;
-    public int gxH = 0;
-    private byte[] iHg;
-    private byte[] iHh;
+    public byte[] KzA;
+    private byte[] KzB;
+    public ell Kzw = new ell();
+    public String dMW;
+    public int hku = 0;
+    private byte[] jDp;
+    private byte[] jDq;
     
-    public final byte[] aak(int paramInt)
+    public final byte[] aiZ(int paramInt)
     {
       byte[] arrayOfByte = new byte[0];
       switch (paramInt)
@@ -587,30 +651,30 @@ public final class j
       }
       for (int i = -1;; i = arrayOfByte.length)
       {
-        ae.i("MicroMsg.MMAuth", "summerauths getSession seesionKeyType[%s] [%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+        Log.i("MicroMsg.MMAuth", "summerauths getSession seesionKeyType[%s] [%s]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
         return arrayOfByte;
-        arrayOfByte = this.FGq;
+        arrayOfByte = this.KzB;
         break;
-        arrayOfByte = this.iHg;
+        arrayOfByte = this.jDp;
         break;
-        arrayOfByte = this.iHh;
+        arrayOfByte = this.jDq;
         break;
       }
     }
     
     public final void b(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
     {
-      this.FGq = paramArrayOfByte1;
-      this.iHg = paramArrayOfByte2;
-      this.iHh = paramArrayOfByte3;
-      ae.i("MicroMsg.MMAuth", "summerauths setSession [%s] [%s], [%s]", new Object[] { bu.aSM(bu.cE(this.FGq)), bu.aSM(bu.cE(this.iHg)), bu.aSM(bu.cE(this.iHh)) });
+      this.KzB = paramArrayOfByte1;
+      this.jDp = paramArrayOfByte2;
+      this.jDq = paramArrayOfByte3;
+      Log.i("MicroMsg.MMAuth", "summerauths setSession [%s] [%s], [%s]", new Object[] { Util.secPrint(Util.dumpHex(this.KzB)), Util.secPrint(Util.dumpHex(this.jDp)), Util.secPrint(Util.dumpHex(this.jDq)) });
     }
     
     public byte[] getAuthResponse()
     {
       try
       {
-        byte[] arrayOfByte = this.FGl.toByteArray();
+        byte[] arrayOfByte = this.Kzw.toByteArray();
         return arrayOfByte;
       }
       catch (Exception localException) {}

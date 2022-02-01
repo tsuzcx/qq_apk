@@ -1,12 +1,36 @@
 package com.tencent.mm.plugin.appbrand.permission;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
 import com.tencent.mm.plugin.appbrand.d;
-import d.l;
+import com.tencent.mm.plugin.appbrand.widget.dialog.m;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/permission/IAuthorizePresenterViewCommon;", "", "dismiss", "", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "show", "findPromptViewContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "luggage-wechat-full-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/permission/IAuthorizePresenterViewCommon;", "", "dismiss", "", "component", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "show", "findPromptViewContainer", "Lcom/tencent/mm/plugin/appbrand/widget/dialog/IRuntimeDialogContainer;", "luggage-wechat-full-sdk_release"})
 public abstract interface f
 {
   public abstract void h(d paramd);
+  
+  @l(hxD={1, 1, 16})
+  public static final class a
+  {
+    public static m j(d paramd)
+    {
+      AppMethodBeat.i(230123);
+      p.h(paramd, "$this$findPromptViewContainer");
+      paramd = paramd.getRuntime();
+      if (paramd == null) {
+        p.hyc();
+      }
+      paramd = paramd.brn();
+      if (paramd == null) {
+        p.hyc();
+      }
+      AppMethodBeat.o(230123);
+      return paramd;
+    }
+  }
 }
 
 

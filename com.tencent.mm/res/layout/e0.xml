@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="20.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ff888888" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/pa" />
-    <View android:layout_width="fill_parent" android:layout_marginTop="8.299988dip" style="@style/hp" />
-</LinearLayout>

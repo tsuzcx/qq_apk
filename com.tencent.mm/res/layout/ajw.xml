@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="@dimen/a9n" android:layout_height="@dimen/a9j"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/g75" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/btc" />
-</RelativeLayout>

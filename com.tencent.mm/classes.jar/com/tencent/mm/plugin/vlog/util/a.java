@@ -2,84 +2,148 @@ package com.tencent.mm.plugin.vlog.util;
 
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
-import android.media.ExifInterface;
+import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.vlog.ui.plugin.d;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.b.b;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.vlog.ui.plugin.f;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
+import java.nio.ByteBuffer;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/util/FinderEditUtil;", "", "()V", "MIN_RATIO", "", "NORMAL_RATIO", "getNORMAL_RATIO", "()F", "TAG", "", "getRatio", "width", "", "height", "keepPhotoExifInfo", "", "source", "dst", "makePhotoSizeConformity", "maxSize", "", "quality", "bitmap", "Landroid/graphics/Bitmap;", "path", "savePhotoThumbNail", "compressQuality", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/util/FinderEditUtil;", "", "()V", "FULLSCREEN_RATIO", "", "getFULLSCREEN_RATIO", "()F", "MIN_RATIO", "NORMAL_RATIO", "getNORMAL_RATIO", "RATIO_TOLERANCE", "SUPPORT_RATIO", "TAG", "", "cropThumb", "Landroid/graphics/Bitmap;", "thumb", "cropRect", "Landroid/graphics/Rect;", "getGOPSize", "", "path", "getRatio", "width", "height", "keepPhotoExifInfo", "", "source", "dst", "makePhotoSizeConformity", "maxSize", "", "quality", "bitmap", "savePhotoThumbNail", "compressQuality", "plugin-vlog_release"})
 public final class a
 {
-  public static final a CmB;
+  private static final float GQB;
+  public static final a GQC;
   
   static
   {
-    AppMethodBeat.i(192379);
-    CmB = new a();
-    AppMethodBeat.o(192379);
+    AppMethodBeat.i(192226);
+    GQC = new a();
+    GQB = ((b)g.af(b.class)).a(b.a.snK, 1.777778F);
+    AppMethodBeat.o(192226);
   }
   
   public static void a(int paramInt, Bitmap paramBitmap, String paramString)
   {
-    AppMethodBeat.i(192377);
+    AppMethodBeat.i(192223);
     p.h(paramBitmap, "bitmap");
     p.h(paramString, "path");
-    com.tencent.mm.sdk.platformtools.h.a(paramBitmap, paramInt, Bitmap.CompressFormat.JPEG, paramString, false);
+    BitmapUtil.saveBitmapToImage(paramBitmap, paramInt, Bitmap.CompressFormat.JPEG, paramString, false);
     int j = 0;
     int i = paramInt;
     paramInt = j;
-    while ((0L > 0L) && (o.aZR(paramString) > 0L) && (i > 0) && (paramInt <= 5))
+    while ((0L > 0L) && (s.boW(paramString) > 0L) && (i > 0) && (paramInt <= 5))
     {
       i -= 5;
-      com.tencent.mm.sdk.platformtools.h.a(paramBitmap, i, Bitmap.CompressFormat.JPEG, paramString, false);
+      BitmapUtil.saveBitmapToImage(paramBitmap, i, Bitmap.CompressFormat.JPEG, paramString, false);
       paramInt += 1;
     }
-    new StringBuilder("makePhotoSizeConformity  maxSize:0  compressQuality:").append(i).append(" size:").append(o.fB(paramString));
-    com.tencent.d.f.h.fYG();
-    AppMethodBeat.o(192377);
+    Log.i("MicroMsg.FinderEditUtil", "makePhotoSizeConformity  maxSize:0  compressQuality:" + i + " size:" + s.YS(paramString));
+    AppMethodBeat.o(192223);
   }
   
-  public static float exN()
+  public static int aUr(String paramString)
   {
-    AppMethodBeat.i(192376);
-    d locald = d.CeI;
-    if (d.ewY())
+    int k = 0;
+    AppMethodBeat.i(192225);
+    p.h(paramString, "path");
+    boolean bool = ((b)g.af(b.class)).a(b.a.slH, true);
+    Log.i("MicroMsg.FinderEditUtil", "getGOPSize path:" + paramString + " enable:" + bool);
+    if ((!s.YS(paramString)) && (bool))
     {
-      AppMethodBeat.o(192376);
+      AppMethodBeat.o(192225);
+      return 0;
+    }
+    localc = new com.tencent.mm.compatible.i.c();
+    i = k;
+    try
+    {
+      localc.setDataSource(paramString);
+      i = k;
+      m = localc.getTrackCount();
+      j = 0;
+    }
+    catch (Exception localException1)
+    {
+      for (;;)
+      {
+        int m;
+        int j;
+        Object localObject;
+        localException1 = localException1;
+        localc.release();
+      }
+    }
+    finally
+    {
+      localc.release();
+      AppMethodBeat.o(192225);
+    }
+    if (j < m)
+    {
+      i = k;
+      localObject = localc.getTrackFormat(j);
+      i = k;
+      p.g(localObject, "extractor.getTrackFormat(i)");
+      i = k;
+      localObject = ((MediaFormat)localObject).getString("mime");
+      if (localObject != null)
+      {
+        i = k;
+        if (n.e((CharSequence)localObject, (CharSequence)"video") == true)
+        {
+          i = k;
+          localc.selectTrack(j);
+        }
+      }
+    }
+    else
+    {
+      i = k;
+      localObject = ByteBuffer.allocate(102400);
+      i = 0;
+      j = i;
+    }
+  }
+  
+  public static float fEA()
+  {
+    AppMethodBeat.i(192222);
+    f localf = f.GHk;
+    if (f.fDl())
+    {
+      AppMethodBeat.o(192222);
       return 1.333333F;
     }
-    AppMethodBeat.o(192376);
+    AppMethodBeat.o(192222);
     return 1.166667F;
   }
   
-  public static void ku(String paramString1, String paramString2)
+  public static float fEB()
   {
-    AppMethodBeat.i(192378);
+    return GQB;
+  }
+  
+  public static void lm(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(192224);
     p.h(paramString1, "source");
     p.h(paramString2, "dst");
-    Object localObject = new ExifInterface(o.k(paramString1, false));
-    paramString1 = ((ExifInterface)localObject).getAttribute("GPSLongitude");
-    String str1 = ((ExifInterface)localObject).getAttribute("GPSLatitude");
-    String str2 = ((ExifInterface)localObject).getAttribute("GPSLongitudeRef");
-    String str3 = ((ExifInterface)localObject).getAttribute("GPSLatitudeRef");
-    String str4 = ((ExifInterface)localObject).getAttribute("GPSDestLongitude");
-    localObject = ((ExifInterface)localObject).getAttribute("GPSDestLongitudeRef");
-    paramString2 = new ExifInterface(o.k(paramString2, false));
-    paramString2.setAttribute("GPSLongitude", paramString1);
-    paramString2.setAttribute("GPSLatitude", str1);
-    paramString2.setAttribute("GPSLongitudeRef", str2);
-    paramString2.setAttribute("GPSLatitudeRef", str3);
-    paramString2.setAttribute("GPSDestLongitude", str4);
-    paramString2.setAttribute("GPSDestLongitudeRef", (String)localObject);
-    paramString2.saveAttributes();
-    AppMethodBeat.o(192378);
+    com.tencent.mm.plugin.gallery.picker.b.c localc = com.tencent.mm.plugin.gallery.picker.b.c.Uqd;
+    com.tencent.mm.plugin.gallery.picker.b.c.lm(paramString1, paramString2);
+    AppMethodBeat.o(192224);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.util.a
  * JD-Core Version:    0.7.0.1
  */

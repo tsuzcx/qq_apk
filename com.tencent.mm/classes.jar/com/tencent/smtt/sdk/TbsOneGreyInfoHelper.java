@@ -21,7 +21,6 @@ import com.tencent.tbs.one.TBSOneManager.Policy;
 import com.tencent.tbs.one.impl.common.statistic.StatisticReport;
 import java.io.File;
 import java.lang.reflect.Method;
-import java.util.Map;
 import org.json.JSONObject;
 
 public class TbsOneGreyInfoHelper
@@ -38,28 +37,28 @@ public class TbsOneGreyInfoHelper
   
   static TBSOneManager a(Context paramContext)
   {
-    AppMethodBeat.i(192684);
+    AppMethodBeat.i(188384);
     String str = "default";
     if (is64BitImpl()) {
       str = "default_64";
     }
     paramContext = TBSOneManager.getInstance(paramContext, str);
-    AppMethodBeat.o(192684);
+    AppMethodBeat.o(188384);
     return paramContext;
   }
   
   private static int b(Context paramContext)
   {
-    AppMethodBeat.i(192685);
+    AppMethodBeat.i(188385);
     if (g != -1)
     {
       i = g;
-      AppMethodBeat.o(192685);
+      AppMethodBeat.o(188385);
       return i;
     }
     int i = paramContext.getSharedPreferences("one_config", 0).getInt("one_enable", 0);
     g = i;
-    AppMethodBeat.o(192685);
+    AppMethodBeat.o(188385);
     return i;
   }
   
@@ -186,7 +185,7 @@ public class TbsOneGreyInfoHelper
   
   public static d getTbsFileInterface(Context paramContext)
   {
-    AppMethodBeat.i(192686);
+    AppMethodBeat.i(188386);
     if (isOneModeAvailable(paramContext))
     {
       paramContext = new d()
@@ -207,11 +206,11 @@ public class TbsOneGreyInfoHelper
           return bool;
         }
       };
-      AppMethodBeat.o(192686);
+      AppMethodBeat.o(188386);
       return paramContext;
     }
     paramContext = d;
-    AppMethodBeat.o(192686);
+    AppMethodBeat.o(188386);
     return paramContext;
   }
   
@@ -320,8 +319,6 @@ public class TbsOneGreyInfoHelper
         return true;
       }
       
-      public final void dispatchX5EcCommands(Context paramAnonymousContext, Integer paramAnonymousInteger, Map<Integer, String> paramAnonymousMap) {}
-      
       public final String[] getDexLoaderFileList(Context paramAnonymousContext1, Context paramAnonymousContext2, String paramAnonymousString)
       {
         return new String[0];
@@ -375,50 +372,50 @@ public class TbsOneGreyInfoHelper
   
   public static boolean is64BitImpl()
   {
-    AppMethodBeat.i(192687);
+    AppMethodBeat.i(188387);
     try
     {
       int i = Build.VERSION.SDK_INT;
       if (i < 21)
       {
-        AppMethodBeat.o(192687);
+        AppMethodBeat.o(188387);
         return false;
       }
       Object localObject1 = Class.forName("dalvik.system.VMRuntime");
       if (localObject1 == null)
       {
-        AppMethodBeat.o(192687);
+        AppMethodBeat.o(188387);
         return false;
       }
       Object localObject2 = ((Class)localObject1).getDeclaredMethod("getRuntime", new Class[0]);
       if (localObject2 == null)
       {
-        AppMethodBeat.o(192687);
+        AppMethodBeat.o(188387);
         return false;
       }
       localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
       if (localObject2 == null)
       {
-        AppMethodBeat.o(192687);
+        AppMethodBeat.o(188387);
         return false;
       }
       localObject1 = ((Class)localObject1).getDeclaredMethod("is64Bit", new Class[0]);
       if (localObject1 == null)
       {
-        AppMethodBeat.o(192687);
+        AppMethodBeat.o(188387);
         return false;
       }
       localObject1 = ((Method)localObject1).invoke(localObject2, new Object[0]);
       if ((localObject1 instanceof Boolean))
       {
         boolean bool = ((Boolean)localObject1).booleanValue();
-        AppMethodBeat.o(192687);
+        AppMethodBeat.o(188387);
         return bool;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(192687);
+      AppMethodBeat.o(188387);
     }
     return false;
   }
@@ -436,6 +433,12 @@ public class TbsOneGreyInfoHelper
     {
       AppMethodBeat.o(174293);
       return true;
+    }
+    if (!QbSdk.isEnableSensitiveApi())
+    {
+      TbsLog.i("x5logtag", "isOneModeAvailable enable=false,isEnableSensitiveApi=false");
+      AppMethodBeat.o(174293);
+      return false;
     }
     boolean bool2 = isTbsOneModeEnable(paramContext);
     boolean bool1;
@@ -518,7 +521,7 @@ public class TbsOneGreyInfoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsOneGreyInfoHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ public abstract class TinkerApplication
   private final int tinkerFlags;
   private final boolean tinkerLoadVerifyFlag;
   protected Intent tinkerResultIntent;
-  private final boolean useDelegateLastClassLoaderOnAPI29AndAbove;
+  private final boolean useDelegateLastClassLoader;
   private boolean useSafeMode;
   
   protected TinkerApplication(int paramInt)
@@ -53,7 +53,7 @@ public abstract class TinkerApplication
       this.delegateClassName = paramString1;
       this.loaderClassName = paramString2;
       this.tinkerLoadVerifyFlag = paramBoolean1;
-      this.useDelegateLastClassLoaderOnAPI29AndAbove = paramBoolean2;
+      this.useDelegateLastClassLoader = paramBoolean2;
       return;
     }
   }
@@ -166,9 +166,9 @@ public abstract class TinkerApplication
     return this.tinkerLoadVerifyFlag;
   }
   
-  public boolean isUseDelegateLastClassLoaderOnAPI29AndAbove()
+  public boolean isUseDelegateLastClassLoader()
   {
-    return this.useDelegateLastClassLoaderOnAPI29AndAbove;
+    return this.useDelegateLastClassLoader;
   }
   
   @Keep

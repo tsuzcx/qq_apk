@@ -1,39 +1,38 @@
 package com.tencent.mm.plugin.appbrand.debugger;
 
-import com.tencent.luggage.sdk.b.a.c.i;
+import com.tencent.luggage.sdk.b.a.c.d;
+import com.tencent.luggage.sdk.b.a.c.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.jsapi.q;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.appbrand.service.c;
 import java.util.Map;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/debugger/RemoteDebugServiceLogicWC;", "Lcom/tencent/luggage/sdk/jsapi/component/service/MPRemoteDebugServiceLogic;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "service", "(Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;)V", "getService", "()Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "onCreateJsApiPool", "", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/debugger/RemoteDebugServiceLogicWC;", "Lcom/tencent/luggage/sdk/jsapi/component/service/MPRemoteDebugServiceLogic;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "service", "(Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;)V", "getService", "()Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "onCreateJsApiPool", "", "", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandJsApi;", "plugin-appbrand-integration_release"})
 public final class t
-  extends i<com.tencent.mm.plugin.appbrand.service.c>
+  extends j<c>
 {
-  private final com.tencent.mm.plugin.appbrand.service.c kfi;
+  private final c liR;
   
-  public t(com.tencent.mm.plugin.appbrand.service.c paramc)
+  public t(c paramc)
   {
-    super((com.tencent.luggage.sdk.b.a.c.c)paramc);
+    super((d)paramc);
     AppMethodBeat.i(50353);
-    this.kfi = paramc;
+    this.liR = paramc;
     AppMethodBeat.o(50353);
   }
   
-  public final Map<String, m> DJ()
+  public final Map<String, com.tencent.mm.plugin.appbrand.jsapi.p> Nf()
   {
     AppMethodBeat.i(50352);
-    Map localMap = q.biU();
-    p.g(localMap, "AppBrandJsApiPool.getServiceApiPool()");
+    Map localMap = com.tencent.mm.plugin.appbrand.jsapi.t.bEk();
+    kotlin.g.b.p.g(localMap, "AppBrandJsApiPool.getServiceApiPool()");
     AppMethodBeat.o(50352);
     return localMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.t
  * JD-Core Version:    0.7.0.1
  */

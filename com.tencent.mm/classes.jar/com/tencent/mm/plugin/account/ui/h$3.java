@@ -1,24 +1,27 @@
 package com.tencent.mm.plugin.account.ui;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.ui.MMActivity;
 
 final class h$3
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  h$3(h paramh) {}
+  h$3(h paramh, MMActivity paramMMActivity) {}
   
-  public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public final void run()
   {
-    AppMethodBeat.i(128265);
-    paramDialogInterface = new StringBuilder();
-    g.ajP();
-    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.ajd()).append(",").append(getClass().getName()).append(",F200_200,");
-    g.ajP();
-    com.tencent.mm.plugin.b.a.i(true, com.tencent.mm.kernel.a.xB("F200_200") + ",2");
-    AppMethodBeat.o(128265);
+    AppMethodBeat.i(128261);
+    Object localObject = com.tencent.mm.plugin.account.a.a.jRt.bZ(this.knk);
+    ((Intent)localObject).addFlags(67108864);
+    MMActivity localMMActivity = this.knk;
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(localMMActivity, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/account/ui/MobileAutoLogin$3", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    localMMActivity.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
+    com.tencent.mm.hellhoundlib.a.a.a(localMMActivity, "com/tencent/mm/plugin/account/ui/MobileAutoLogin$3", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    this.knk.finish();
+    AppMethodBeat.o(128261);
   }
 }
 

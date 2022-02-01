@@ -2,31 +2,31 @@ package com.tencent.mm.plugin.freewifi.f;
 
 public final class a
 {
-  public String dnP;
-  public int tzc;
-  public int tzd;
-  public String tze;
-  public String tzf;
-  public long tzg;
-  public String tzh;
-  public String tzi;
-  public int tzj;
-  public String tzk;
-  public String tzl;
-  public int tzm;
-  public long tzn;
-  public long tzo;
-  public int tzp;
-  public int tzq;
-  public int tzr;
-  public String tzs;
-  public String tzt;
-  public String tzu;
-  public int tzv;
+  public String dFe;
+  public int wQe;
+  public int wQf;
+  public String wQg;
+  public String wQh;
+  public long wQi;
+  public String wQj;
+  public String wQk;
+  public int wQl;
+  public String wQm;
+  public String wQn;
+  public int wQo;
+  public long wQp;
+  public long wQq;
+  public int wQr;
+  public int wQs;
+  public int wQt;
+  public String wQu;
+  public String wQv;
+  public String wQw;
+  public int wQx;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.f.a
  * JD-Core Version:    0.7.0.1
  */

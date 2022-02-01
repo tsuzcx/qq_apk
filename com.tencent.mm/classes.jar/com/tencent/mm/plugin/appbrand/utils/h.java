@@ -6,7 +6,7 @@ import android.app.Application.ActivityLifecycleCallbacks;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -15,29 +15,29 @@ public final class h
   implements Application.ActivityLifecycleCallbacks
 {
   public Application app;
-  public final Queue<a> mTI;
-  private int mTJ;
-  public boolean mTK;
+  public final Queue<a> ogJ;
+  private int ogK;
+  public boolean ogL;
   
   public h()
   {
     AppMethodBeat.i(137911);
-    this.mTI = new LinkedList();
-    this.mTJ = 0;
-    this.mTK = false;
+    this.ogJ = new LinkedList();
+    this.ogK = 0;
+    this.ogL = false;
     AppMethodBeat.o(137911);
   }
   
   public final void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(137912);
-    this.mTJ += 1;
-    if (this.mTJ == 1)
+    this.ogK += 1;
+    if (this.ogK == 1)
     {
-      ae.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnActivityCreated ");
-      paramBundle = this.mTI.iterator();
+      Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnActivityCreated ");
+      paramBundle = this.ogJ.iterator();
       while (paramBundle.hasNext()) {
-        ((a)paramBundle.next()).dU(paramActivity);
+        ((a)paramBundle.next()).er(paramActivity);
       }
     }
     AppMethodBeat.o(137912);
@@ -46,23 +46,23 @@ public final class h
   public final void onActivityDestroyed(Activity paramActivity)
   {
     AppMethodBeat.i(137913);
-    this.mTJ -= 1;
-    if (this.mTJ == 0)
+    this.ogK -= 1;
+    if (this.ogK == 0)
     {
-      ae.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnNoActivityLeft ");
-      paramActivity = this.mTI.iterator();
+      Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.notifyOnNoActivityLeft ");
+      paramActivity = this.ogJ.iterator();
       while (paramActivity.hasNext()) {
-        ((a)paramActivity.next()).bCm();
+        ((a)paramActivity.next()).bZq();
       }
-      if ((this.mTK) && (this.app != null))
+      if ((this.ogL) && (this.app != null))
       {
         paramActivity = this.app;
-        ae.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.release ");
+        Log.i("MicroMsg.AppSingletonRegistry", "AppSingletonRegistry.release ");
         paramActivity.unregisterActivityLifecycleCallbacks(this);
-        this.mTI.clear();
+        this.ogJ.clear();
         this.app = null;
-        this.mTK = false;
-        this.mTK = false;
+        this.ogL = false;
+        this.ogL = false;
         this.app = null;
       }
     }
@@ -81,14 +81,14 @@ public final class h
   
   public static abstract interface a
   {
-    public abstract void bCm();
+    public abstract void bZq();
     
-    public abstract void dU(Context paramContext);
+    public abstract void er(Context paramContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.utils.h
  * JD-Core Version:    0.7.0.1
  */

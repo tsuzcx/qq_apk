@@ -1,40 +1,100 @@
 package com.tencent.mm.plugin.game.luggage.d.a;
 
-import android.content.Context;
-import com.tencent.luggage.d.d;
-import com.tencent.luggage.d.p;
-import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.jsapi.ba;
-import com.tencent.mm.protocal.protobuf.bzp;
+import com.tencent.mm.ch.a;
+import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
+import com.tencent.mm.plugin.downloader.model.f;
+import com.tencent.mm.plugin.lite.jsapi.b;
+import com.tencent.mm.plugin.lite.jsapi.b.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.LinkedList;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
-public final class j
-  extends a
+public class j
+  extends b
 {
-  public j()
+  private static void a(JSONObject paramJSONObject, LinkedList<String> paramLinkedList)
   {
-    super(3);
+    AppMethodBeat.i(186918);
+    if (Util.isNullOrNil(paramLinkedList))
+    {
+      AppMethodBeat.o(186918);
+      return;
+    }
+    paramLinkedList = paramLinkedList.iterator();
+    while (paramLinkedList.hasNext())
+    {
+      String str = (String)paramLinkedList.next();
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("download_id", -1);
+        localJSONObject.put("state", "default");
+        paramJSONObject.put(str, localJSONObject);
+      }
+      catch (Exception localException)
+      {
+        Log.e("LiteAppJsApiQueryDownloadTask", localException.getMessage());
+      }
+    }
+    AppMethodBeat.o(186918);
   }
   
-  public final void a(Context paramContext, g paramg, bzp parambzp)
+  public final void a(String paramString, final JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(83115);
-    ba.Xq(0);
-    paramg.chX.a(new d()
+    AppMethodBeat.i(186917);
+    a.post(new Runnable()
     {
-      public final JSONObject BP()
+      public final void run()
       {
-        return null;
-      }
-      
-      public final String name()
-      {
-        return "menu:share:appmessage";
+        AppMethodBeat.i(186916);
+        Object localObject = paramJSONObject.optJSONArray("appIdArray");
+        if ((localObject != null) && (((JSONArray)localObject).length() > 0))
+        {
+          j.a(j.this, (JSONArray)localObject);
+          AppMethodBeat.o(186916);
+          return;
+        }
+        long l = paramJSONObject.optLong("download_id", -1L);
+        String str = paramJSONObject.optString("appid");
+        FileDownloadTaskInfo localFileDownloadTaskInfo;
+        if (l > 0L)
+        {
+          localFileDownloadTaskInfo = f.cBv().Co(l);
+          localObject = localFileDownloadTaskInfo;
+          if (localFileDownloadTaskInfo == null) {
+            localObject = new FileDownloadTaskInfo();
+          }
+          ((FileDownloadTaskInfo)localObject).appId = str;
+          j.a(j.this, (FileDownloadTaskInfo)localObject);
+          AppMethodBeat.o(186916);
+          return;
+        }
+        if (!Util.isNullOrNil(str))
+        {
+          localFileDownloadTaskInfo = f.cBv().alg(str);
+          localObject = localFileDownloadTaskInfo;
+          if (localFileDownloadTaskInfo == null) {
+            localObject = new FileDownloadTaskInfo();
+          }
+          ((FileDownloadTaskInfo)localObject).appId = str;
+          j.a(j.this, (FileDownloadTaskInfo)localObject);
+          AppMethodBeat.o(186916);
+          return;
+        }
+        j.a(j.this).aCS("fail");
+        AppMethodBeat.o(186916);
       }
     });
-    AppMethodBeat.o(83115);
+    AppMethodBeat.o(186917);
+  }
+  
+  public final int dTw()
+  {
+    return 1;
   }
 }
 

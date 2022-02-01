@@ -18,7 +18,7 @@ public class PreferenceHeaderCategory
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142659);
-    setLayoutResource(2131494857);
+    setLayoutResource(2131495593);
     AppMethodBeat.o(142659);
   }
   
@@ -26,7 +26,7 @@ public class PreferenceHeaderCategory
   {
     AppMethodBeat.i(142660);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    paramViewGroup.findViewById(16908310).setBackgroundResource(2131232878);
+    paramViewGroup.findViewById(16908310).setBackgroundResource(2131233338);
     AppMethodBeat.o(142660);
     return paramViewGroup;
   }

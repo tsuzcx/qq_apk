@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.plugin.selectrecord.ui.RecordSelectTipsBar android:id="@id/i52" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/bf6" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:id="@id/dcj" android:background="@color/fm" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/j44" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2t" android:gravity="right" android:id="@id/imt" android:padding="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:layout_below="@id/j44" android:layout_alignParentRight="true" />
+        <ImageView android:id="@id/hrt" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+        <TextView android:textColor="@color/ag2" android:gravity="center" android:id="@id/ipe" android:padding="@dimen/hs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/hw" android:text="@string/h18" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/j73" android:background="@color/kp" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/hrm" android:visibility="gone" android:layout_width="@dimen/ag2" android:layout_height="@dimen/ag2" android:layout_centerInParent="true" />
+        <ImageView android:id="@id/j72" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/btb" android:scaleType="center" android:layout_centerInParent="true" />
+        <include layout="@layout/bsz" />
+    </RelativeLayout>
+</LinearLayout>

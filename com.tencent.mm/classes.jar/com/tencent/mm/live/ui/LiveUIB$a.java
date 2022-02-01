@@ -1,15 +1,15 @@
 package com.tencent.mm.live.ui;
 
 import android.view.View;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "invoke"})
 final class LiveUIB$a
   extends q
-  implements b<View, z>
+  implements b<View, x>
 {
   LiveUIB$a(LiveUIB paramLiveUIB)
   {

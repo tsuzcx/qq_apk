@@ -1,30 +1,31 @@
 package com.tencent.mm.plugin.luckymoney.story.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class f
-  extends j<e>
+  extends MAutoStorage<e>
 {
   public static final String[] SQL_CREATE;
-  private com.tencent.mm.sdk.e.e db;
+  private ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(189851);
-    SQL_CREATE = new String[] { j.getCreateSQLs(e.info, "LuckyMoneyDetailOpenRecord") };
-    AppMethodBeat.o(189851);
+    AppMethodBeat.i(213353);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(e.info, "LuckyMoneyDetailOpenRecord") };
+    AppMethodBeat.o(213353);
   }
   
-  public f(com.tencent.mm.sdk.e.e parame)
+  public f(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, e.info, "LuckyMoneyDetailOpenRecord", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, e.info, "LuckyMoneyDetailOpenRecord", null);
+    this.db = paramISQLiteDatabase;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.story.b.f
  * JD-Core Version:    0.7.0.1
  */

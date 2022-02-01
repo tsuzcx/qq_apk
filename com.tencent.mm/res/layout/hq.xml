@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout style="@style/qp"
+<ScrollView android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMWebView android:id="@id/cf2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/blq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cv3" />
-</FrameLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj">
+        <ImageView android:id="@id/yt" android:layout_width="160.0dip" android:layout_height="160.0dip" android:layout_marginTop="32.0dip" android:src="@drawable/byz" android:scaleType="centerInside" />
+        <TextView android:textSize="18.0dip" android:textColor="@color/a2x" android:id="@id/yz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginTop="32.0dip" android:layout_marginRight="25.0dip" android:text="@string/a9k" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:id="@id/yy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="16.0dip" android:text="@string/a9j" />
+        <Button android:id="@id/yu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/br" android:layout_marginTop="32.0dip" android:layout_marginRight="@dimen/br" android:text="@string/a9h" style="@style/ou" />
+    </LinearLayout>
+</ScrollView>

@@ -10,20 +10,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.plugin.luckymoney.model.ah;
-import com.tencent.mm.plugin.luckymoney.model.av;
-import com.tencent.mm.plugin.luckymoney.model.l;
-import com.tencent.mm.plugin.luckymoney.model.u;
+import com.tencent.mm.plugin.luckymoney.model.af;
+import com.tencent.mm.plugin.luckymoney.model.ap;
+import com.tencent.mm.plugin.luckymoney.model.bh;
+import com.tencent.mm.plugin.luckymoney.model.z;
 import com.tencent.mm.plugin.luckymoney.story.b.d;
-import com.tencent.mm.protocal.protobuf.bih;
-import com.tencent.mm.protocal.protobuf.bom;
-import com.tencent.mm.protocal.protobuf.ctd;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.protocal.protobuf.buh;
+import com.tencent.mm.protocal.protobuf.cbe;
+import com.tencent.mm.protocal.protobuf.dlt;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.wallet_core.c.a.a;
 import java.util.LinkedList;
@@ -33,97 +31,17 @@ import java.util.List;
 public class LuckyMoneyBeforeDetailUI
   extends LuckyMoneyBaseUI
 {
+  private String mRa;
   private Dialog tipDialog;
-  private String vHa;
-  private com.tencent.mm.plugin.luckymoney.story.a.b vHb;
+  private int yQh;
+  private String yUc;
+  private int zbZ;
+  private com.tencent.mm.plugin.luckymoney.story.a.b zca;
   
-  private void dmf()
-  {
-    AppMethodBeat.i(163704);
-    ae.i("MicroMsg.LuckyMoneyBeforeDetailUI", "try fetch story info");
-    if (!getIntent().getBooleanExtra("key_has_story", true))
-    {
-      ae.i("MicroMsg.LuckyMoneyBeforeDetailUI", "no story, don't fetch data");
-      dmg();
-      AppMethodBeat.o(163704);
-      return;
-    }
-    final String str = getIntent().getStringExtra("key_packet_id");
-    Object localObject;
-    if (bu.isNullOrNil(str))
-    {
-      localObject = com.tencent.mm.plugin.luckymoney.a.b.apU(this.vHa);
-      if (localObject != null)
-      {
-        localObject = av.aqc(((l)localObject).vAH);
-        if ((localObject != null) && (((av)localObject).vzN != null)) {
-          str = ((av)localObject).vzN.Gta;
-        }
-      }
-    }
-    for (;;)
-    {
-      if (bu.isNullOrNil(str))
-      {
-        ae.i("MicroMsg.LuckyMoneyBeforeDetailUI", "no packet id");
-        dmg();
-        AppMethodBeat.o(163704);
-        return;
-      }
-      localObject = new com.tencent.mm.plugin.luckymoney.story.b.a();
-      ((com.tencent.mm.plugin.luckymoney.story.b.a)localObject).field_packet_id = str;
-      boolean bool = com.tencent.mm.plugin.luckymoney.b.a.dkG().dkD().get((c)localObject, new String[0]);
-      long l = ((com.tencent.mm.plugin.luckymoney.story.b.a)localObject).field_update_time;
-      ae.i("MicroMsg.LuckyMoneyBeforeDetailUI", "has story info: %s, %s", new Object[] { Boolean.valueOf(bool), Long.valueOf(l) });
-      if (System.currentTimeMillis() - l > 86400000L)
-      {
-        ae.w("MicroMsg.LuckyMoneyBeforeDetailUI", "need refetch story");
-        bool = false;
-      }
-      if (bool)
-      {
-        localObject = com.tencent.mm.plugin.luckymoney.story.b.a.a((com.tencent.mm.plugin.luckymoney.story.b.a)localObject);
-        List localList = com.tencent.mm.plugin.luckymoney.b.a.dkG().dkE().aqf(str);
-        ((ctd)localObject).HEg.addAll(localList);
-        com.tencent.mm.plugin.luckymoney.a.b.a(str, (ctd)localObject);
-        dmg();
-        AppMethodBeat.o(163704);
-        return;
-      }
-      if (this.tipDialog == null) {
-        this.tipDialog = h.a(getContext(), 3, 2131820985, getString(2131760709), true, new DialogInterface.OnCancelListener()
-        {
-          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
-          {
-            AppMethodBeat.i(163699);
-            if ((LuckyMoneyBeforeDetailUI.a(LuckyMoneyBeforeDetailUI.this) != null) && (LuckyMoneyBeforeDetailUI.a(LuckyMoneyBeforeDetailUI.this).isShowing())) {
-              LuckyMoneyBeforeDetailUI.a(LuckyMoneyBeforeDetailUI.this).dismiss();
-            }
-            LuckyMoneyBeforeDetailUI.this.vGY.forceCancel();
-            if (LuckyMoneyBeforeDetailUI.b(LuckyMoneyBeforeDetailUI.this) != null) {
-              LuckyMoneyBeforeDetailUI.b(LuckyMoneyBeforeDetailUI.this).cancel();
-            }
-            if ((LuckyMoneyBeforeDetailUI.c(LuckyMoneyBeforeDetailUI.this).getVisibility() == 8) || (LuckyMoneyBeforeDetailUI.d(LuckyMoneyBeforeDetailUI.this).getVisibility() == 4))
-            {
-              ae.i("MicroMsg.LuckyMoneyBeforeDetailUI", "user cancel & finish");
-              LuckyMoneyBeforeDetailUI.this.finish();
-            }
-            AppMethodBeat.o(163699);
-          }
-        });
-      }
-      this.vHb = new com.tencent.mm.plugin.luckymoney.story.a.b();
-      this.vHb.b(new com.tencent.mm.plugin.luckymoney.story.a.a(str, true));
-      this.vHb.a(new a.a() {}, 0L);
-      AppMethodBeat.o(163704);
-      return;
-    }
-  }
-  
-  private void dmg()
+  private void eeX()
   {
     AppMethodBeat.i(163705);
-    ae.i("MicroMsg.LuckyMoneyBeforeDetailUI", "go to detail ui");
+    Log.i("MicroMsg.LuckyMoneyBeforeDetailUI", "go to detail ui");
     if (this.tipDialog != null) {
       this.tipDialog.dismiss();
     }
@@ -135,11 +53,11 @@ public class LuckyMoneyBeforeDetailUI
         Object localObject = new Intent(LuckyMoneyBeforeDetailUI.this.getContext(), LuckyMoneyDetailUI.class);
         ((Intent)localObject).putExtras(LuckyMoneyBeforeDetailUI.this.getIntent());
         LuckyMoneyBeforeDetailUI localLuckyMoneyBeforeDetailUI = LuckyMoneyBeforeDetailUI.this;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localLuckyMoneyBeforeDetailUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBeforeDetailUI$3", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localLuckyMoneyBeforeDetailUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(localLuckyMoneyBeforeDetailUI, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBeforeDetailUI$3", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localLuckyMoneyBeforeDetailUI.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(localLuckyMoneyBeforeDetailUI, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBeforeDetailUI$3", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        ar.o(new Runnable()
+        MMHandlerThread.postToMainThreadDelayed(new Runnable()
         {
           public final void run()
           {
@@ -152,6 +70,89 @@ public class LuckyMoneyBeforeDetailUI
       }
     }.run();
     AppMethodBeat.o(163705);
+  }
+  
+  private void egb()
+  {
+    AppMethodBeat.i(163704);
+    Log.i("MicroMsg.LuckyMoneyBeforeDetailUI", "try fetch story info");
+    if (!getIntent().getBooleanExtra("key_has_story", true))
+    {
+      Log.i("MicroMsg.LuckyMoneyBeforeDetailUI", "no story, don't fetch data");
+      eeX();
+      AppMethodBeat.o(163704);
+      return;
+    }
+    final String str = getIntent().getStringExtra("key_packet_id");
+    Object localObject;
+    if (Util.isNullOrNil(str))
+    {
+      localObject = com.tencent.mm.plugin.luckymoney.a.b.aDn(this.yUc);
+      if (localObject != null)
+      {
+        localObject = bh.aDy(((com.tencent.mm.plugin.luckymoney.model.q)localObject).yVB);
+        if ((localObject != null) && (((bh)localObject).yUC != null)) {
+          str = ((bh)localObject).yUC.Lot;
+        }
+      }
+    }
+    for (;;)
+    {
+      if (Util.isNullOrNil(str))
+      {
+        Log.i("MicroMsg.LuckyMoneyBeforeDetailUI", "no packet id");
+        eeX();
+        AppMethodBeat.o(163704);
+        return;
+      }
+      localObject = new com.tencent.mm.plugin.luckymoney.story.b.a();
+      ((com.tencent.mm.plugin.luckymoney.story.b.a)localObject).field_packet_id = str;
+      boolean bool = com.tencent.mm.plugin.luckymoney.b.a.eex().eeu().get((IAutoDBItem)localObject, new String[0]);
+      long l = ((com.tencent.mm.plugin.luckymoney.story.b.a)localObject).field_update_time;
+      Log.i("MicroMsg.LuckyMoneyBeforeDetailUI", "has story info: %s, %s", new Object[] { Boolean.valueOf(bool), Long.valueOf(l) });
+      if (System.currentTimeMillis() - l > 86400000L)
+      {
+        Log.w("MicroMsg.LuckyMoneyBeforeDetailUI", "need refetch story");
+        bool = false;
+      }
+      if (bool)
+      {
+        localObject = com.tencent.mm.plugin.luckymoney.story.b.a.a((com.tencent.mm.plugin.luckymoney.story.b.a)localObject);
+        List localList = com.tencent.mm.plugin.luckymoney.b.a.eex().eev().aDB(str);
+        ((dlt)localObject).MPo.addAll(localList);
+        com.tencent.mm.plugin.luckymoney.a.b.a(str, (dlt)localObject);
+        eeX();
+        AppMethodBeat.o(163704);
+        return;
+      }
+      if (this.tipDialog == null) {
+        this.tipDialog = h.a(getContext(), 3, 2131821007, getString(2131762446), true, new DialogInterface.OnCancelListener()
+        {
+          public final void onCancel(DialogInterface paramAnonymousDialogInterface)
+          {
+            AppMethodBeat.i(163699);
+            if ((LuckyMoneyBeforeDetailUI.a(LuckyMoneyBeforeDetailUI.this) != null) && (LuckyMoneyBeforeDetailUI.a(LuckyMoneyBeforeDetailUI.this).isShowing())) {
+              LuckyMoneyBeforeDetailUI.a(LuckyMoneyBeforeDetailUI.this).dismiss();
+            }
+            LuckyMoneyBeforeDetailUI.this.zbX.forceCancel();
+            if (LuckyMoneyBeforeDetailUI.b(LuckyMoneyBeforeDetailUI.this) != null) {
+              LuckyMoneyBeforeDetailUI.b(LuckyMoneyBeforeDetailUI.this).cancel();
+            }
+            if ((LuckyMoneyBeforeDetailUI.c(LuckyMoneyBeforeDetailUI.this).getVisibility() == 8) || (LuckyMoneyBeforeDetailUI.d(LuckyMoneyBeforeDetailUI.this).getVisibility() == 4))
+            {
+              Log.i("MicroMsg.LuckyMoneyBeforeDetailUI", "user cancel & finish");
+              LuckyMoneyBeforeDetailUI.this.finish();
+            }
+            AppMethodBeat.o(163699);
+          }
+        });
+      }
+      this.zca = new com.tencent.mm.plugin.luckymoney.story.a.b();
+      this.zca.b(new com.tencent.mm.plugin.luckymoney.story.a.a(str, true));
+      this.zca.a(new a.a() {}, 0L);
+      AppMethodBeat.o(163704);
+      return;
+    }
   }
   
   public void finish()
@@ -171,18 +172,21 @@ public class LuckyMoneyBeforeDetailUI
   {
     AppMethodBeat.i(65443);
     super.onCreate(paramBundle);
-    overridePendingTransition(0, 2130772119);
-    al.r(this, getResources().getColor(2131101053));
+    overridePendingTransition(0, 2130772143);
+    com.tencent.mm.ui.ao.q(this, getResources().getColor(2131101287));
     setContentViewVisibility(8);
-    this.vHa = getIntent().getStringExtra("key_sendid");
+    this.yUc = getIntent().getStringExtra("key_sendid");
+    this.zbZ = getIntent().getIntExtra("scene_id", 0);
+    this.mRa = getIntent().getStringExtra("key_username");
+    this.yQh = getIntent().getIntExtra("key_hb_kind", 1);
     paramBundle = getIntent().getStringExtra("key_native_url");
     int i = getIntent().getIntExtra("key_jump_from", 2);
-    ae.i("MicroMsg.LuckyMoneyBeforeDetailUI", "sendid=" + bu.nullAsNil(this.vHa) + ", nativeurl=" + bu.nullAsNil(paramBundle) + ", jumpFrom=" + i);
+    Log.i("MicroMsg.LuckyMoneyBeforeDetailUI", "sendid=" + Util.nullAsNil(this.yUc) + ", nativeurl=" + Util.nullAsNil(paramBundle) + ", jumpFrom=" + i);
     if (i == 2)
     {
-      if (com.tencent.mm.plugin.luckymoney.a.b.apU(this.vHa) != null)
+      if (com.tencent.mm.plugin.luckymoney.a.b.aDn(this.yUc) != null)
       {
-        dmf();
+        egb();
         AppMethodBeat.o(65443);
         return;
       }
@@ -191,11 +195,11 @@ public class LuckyMoneyBeforeDetailUI
         Object localObject1 = getIntent().getByteArrayExtra("key_detail_info");
         if (localObject1 != null)
         {
-          localObject1 = (l)new l().parseFrom((byte[])localObject1);
+          localObject1 = (com.tencent.mm.plugin.luckymoney.model.q)new com.tencent.mm.plugin.luckymoney.model.q().parseFrom((byte[])localObject1);
           if (localObject1 != null)
           {
-            com.tencent.mm.plugin.luckymoney.a.b.a(this.vHa, (l)localObject1);
-            dmf();
+            com.tencent.mm.plugin.luckymoney.a.b.a(this.yUc, (com.tencent.mm.plugin.luckymoney.model.q)localObject1);
+            egb();
             AppMethodBeat.o(65443);
             return;
           }
@@ -203,22 +207,22 @@ public class LuckyMoneyBeforeDetailUI
       }
       catch (Exception localException1)
       {
-        ae.w("MicroMsg.LuckyMoneyBeforeDetailUI", "Parse LuckyMoneyDetail fail!" + localException1.getLocalizedMessage());
+        Log.w("MicroMsg.LuckyMoneyBeforeDetailUI", "Parse LuckyMoneyDetail fail!" + localException1.getLocalizedMessage());
       }
     }
     Object localObject2;
-    if ((bu.isNullOrNil(this.vHa)) && (!bu.isNullOrNil(paramBundle))) {
+    if ((Util.isNullOrNil(this.yUc)) && (!Util.isNullOrNil(paramBundle))) {
       localObject2 = Uri.parse(paramBundle);
     }
     try
     {
-      this.vHa = ((Uri)localObject2).getQueryParameter("sendid");
-      label265:
-      if (!bu.isNullOrNil(this.vHa))
+      this.yUc = ((Uri)localObject2).getQueryParameter("sendid");
+      label309:
+      if (!Util.isNullOrNil(this.yUc))
       {
-        localObject2 = this.vHa;
-        ae.i("MicroMsg.LuckyMoneyBeforeDetailUI", "get recordList");
-        this.tipDialog = h.a(getContext(), 3, 2131820985, getString(2131760709), true, new DialogInterface.OnCancelListener()
+        localObject2 = this.yUc;
+        Log.i("MicroMsg.LuckyMoneyBeforeDetailUI", "get recordList");
+        this.tipDialog = h.a(getContext(), 3, 2131821007, getString(2131762446), true, new DialogInterface.OnCancelListener()
         {
           public final void onCancel(DialogInterface paramAnonymousDialogInterface)
           {
@@ -226,52 +230,67 @@ public class LuckyMoneyBeforeDetailUI
             if ((LuckyMoneyBeforeDetailUI.a(LuckyMoneyBeforeDetailUI.this) != null) && (LuckyMoneyBeforeDetailUI.a(LuckyMoneyBeforeDetailUI.this).isShowing())) {
               LuckyMoneyBeforeDetailUI.a(LuckyMoneyBeforeDetailUI.this).dismiss();
             }
-            LuckyMoneyBeforeDetailUI.this.vGY.forceCancel();
+            LuckyMoneyBeforeDetailUI.this.zbX.forceCancel();
             if (LuckyMoneyBeforeDetailUI.b(LuckyMoneyBeforeDetailUI.this) != null) {
               LuckyMoneyBeforeDetailUI.b(LuckyMoneyBeforeDetailUI.this).cancel();
             }
             if ((LuckyMoneyBeforeDetailUI.f(LuckyMoneyBeforeDetailUI.this).getVisibility() == 8) || (LuckyMoneyBeforeDetailUI.g(LuckyMoneyBeforeDetailUI.this).getVisibility() == 4))
             {
-              ae.i("MicroMsg.LuckyMoneyBeforeDetailUI", "user cancel & finish");
+              Log.i("MicroMsg.LuckyMoneyBeforeDetailUI", "user cancel & finish");
               LuckyMoneyBeforeDetailUI.this.finish();
             }
             AppMethodBeat.o(163703);
           }
         });
-        doSceneProgress(new ah((String)localObject2, 11, 0, paramBundle, "v1.0", ""), false);
-        AppMethodBeat.o(65443);
-        return;
+        if (this.zbZ != 0) {
+          if (af.rQ(this.zbZ)) {
+            paramBundle = new ap((String)localObject2, 0, paramBundle, "v1.0", "");
+          }
+        }
+        for (;;)
+        {
+          doSceneProgress(paramBundle, false);
+          AppMethodBeat.o(65443);
+          return;
+          paramBundle = new com.tencent.mm.plugin.luckymoney.model.ao((String)localObject2, 11, 0, paramBundle, "v1.0", "");
+          continue;
+          if (this.yQh == 5) {
+            paramBundle = new ap((String)localObject2, 0, paramBundle, "v1.0", "");
+          } else {
+            paramBundle = new com.tencent.mm.plugin.luckymoney.model.ao((String)localObject2, 11, 0, paramBundle, "v1.0", "");
+          }
+        }
       }
-      ae.w("MicroMsg.LuckyMoneyBeforeDetailUI", "sendid null or nil, finish");
+      Log.w("MicroMsg.LuckyMoneyBeforeDetailUI", "sendid null or nil, finish");
       finish();
       AppMethodBeat.o(65443);
       return;
     }
     catch (Exception localException2)
     {
-      break label265;
+      break label309;
     }
   }
   
-  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(65444);
-    ae.i("MicroMsg.LuckyMoneyBeforeDetailUI", "onSceneEnd() errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " netsceneType:" + paramn.getType());
-    if ((paramn instanceof ah))
+    Log.i("MicroMsg.LuckyMoneyBeforeDetailUI", "onSceneEnd() errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " netsceneType:" + paramq.getType());
+    if ((paramq instanceof com.tencent.mm.plugin.luckymoney.model.ao))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (ah)paramn;
-        com.tencent.mm.plugin.luckymoney.a.b.a(this.vHa, paramString.vBT);
-        getIntent().putExtra("key_process_content", paramString.vCf);
-        getIntent().putExtra("key_detail_emoji_md5", paramString.vCg);
-        getIntent().putExtra("key_detail_emoji_type", paramString.vCh);
-        getIntent().putExtra("key_emoji_switch", paramString.vCi);
-        dmf();
+        paramString = (com.tencent.mm.plugin.luckymoney.model.ao)paramq;
+        com.tencent.mm.plugin.luckymoney.a.b.a(this.yUc, paramString.yWT);
+        getIntent().putExtra("key_process_content", paramString.yXg);
+        getIntent().putExtra("key_detail_emoji_md5", paramString.yXh);
+        getIntent().putExtra("key_detail_emoji_type", paramString.yXi);
+        getIntent().putExtra("key_emoji_switch", paramString.yXj);
+        egb();
         AppMethodBeat.o(65444);
         return true;
       }
-      h.cm(this, paramString);
+      h.cD(this, paramString);
       finish();
       AppMethodBeat.o(65444);
       return true;
@@ -288,7 +307,7 @@ public class LuckyMoneyBeforeDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBeforeDetailUI
  * JD-Core Version:    0.7.0.1
  */

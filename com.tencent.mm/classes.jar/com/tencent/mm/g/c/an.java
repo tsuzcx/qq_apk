@@ -2,383 +2,371 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import java.lang.reflect.Field;
-import java.util.Map;
+import com.tencent.mm.protocal.protobuf.gf;
+import com.tencent.mm.sdk.platformtools.LVBuffer;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import java.io.IOException;
 
 public abstract class an
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eEF = "msgId".hashCode();
-  private static final int eEL;
-  private static final int eFO;
-  private static final int eFV;
-  private static final int eJG;
-  private static final int eKn;
-  private static final int eKy;
-  private static final int eMO = "msgSvrId".hashCode();
-  private static final int eMP;
-  private static final int eMQ;
-  private static final int eMR;
-  private static final int eMS;
-  private static final int eMZ;
-  private static final int eMi = "extInfo".hashCode();
-  private static final int eNo;
-  private static final int eNp;
-  private static final int eNq;
-  private static final int eNr;
-  private static final int eNs;
-  private static final int eNt;
-  private static final int eNu;
-  private static final int eNv;
+  private static final int content_HASHCODE;
+  private static final int createTime_HASHCODE;
+  private static final int fjf = "msgId".hashCode();
+  private static final int fjl;
+  private static final int foC = "bitFlag".hashCode();
+  private static final int fqA;
+  private static final int fqB;
+  private static final int fqC;
+  private static final int fqD;
+  private static final int fqE;
+  private static final int fqF;
+  private static final int fqG = "bizClientMsgId".hashCode();
+  private static final int fqH = "rankSessionId".hashCode();
+  private static final int fqI = "recommendCardId".hashCode();
+  private static final int fqv = "msgSvrId".hashCode();
+  private static final int fqw;
+  private static final int fqx;
+  private static final int fqy;
+  private static final int fqz;
   private static final int rowid_HASHCODE = "rowid".hashCode();
   private static final int type_HASHCODE = "type".hashCode();
-  private boolean __hadSettype;
-  private boolean eEB;
-  private boolean eEI;
-  private boolean eFr;
-  private boolean eFy;
-  private boolean eJE;
-  private boolean eJY;
-  private boolean eKj;
-  private boolean eLU;
-  private boolean eMA;
-  private boolean eMB;
-  private boolean eMC;
-  private boolean eMD;
-  private boolean eME;
-  private boolean eML;
-  private boolean eNg;
-  private boolean eNh;
-  private boolean eNi;
-  private boolean eNj;
-  private boolean eNk;
-  private boolean eNl;
-  private boolean eNm;
-  private boolean eNn;
-  public long field_bizChatId;
-  public String field_bizChatUserId;
+  private boolean __hadSetcontent = true;
+  private boolean __hadSetcreateTime = true;
+  private boolean __hadSettype = true;
+  public gf field_appMsgStatInfoProto;
+  public int field_bitFlag;
   public String field_bizClientMsgId;
   public String field_content;
   public long field_createTime;
-  public byte[] field_extInfo;
-  public int field_flag;
-  public String field_fromUsername;
+  public int field_hasShow;
   public String field_imgPath;
-  public int field_isSend;
-  public int field_isShowTimer;
+  public boolean field_isExpand;
+  public int field_isRead;
   public byte[] field_lvbuffer;
   public long field_msgId;
-  public long field_msgSeq;
   public long field_msgSvrId;
-  public String field_reserved;
+  public long field_orderFlag;
+  public int field_placeTop;
+  public String field_rankSessionId;
+  public String field_recommendCardId;
   public int field_status;
   public String field_talker;
   public int field_talkerId;
-  public String field_toUsername;
-  public String field_transBrandWording;
-  public String field_transContent;
   public int field_type;
+  private boolean fjb = true;
+  private boolean fji = true;
+  private boolean fop = true;
+  private int fqJ;
+  public String fqK;
+  protected byte[] fqL;
+  public long fqM;
+  private boolean fqh = true;
+  private boolean fqi = true;
+  private boolean fqj = true;
+  protected boolean fqk = true;
+  private boolean fql = true;
+  private boolean fqm = true;
+  private boolean fqn = true;
+  private boolean fqo = true;
+  private boolean fqp = true;
+  private boolean fqq = true;
+  private boolean fqr = true;
+  private boolean fqs = true;
+  private boolean fqt = true;
+  private boolean fqu = true;
   
   static
   {
-    eEL = "status".hashCode();
-    eKy = "isSend".hashCode();
-    eNo = "isShowTimer".hashCode();
-    eFO = "createTime".hashCode();
-    eMP = "talker".hashCode();
-    eFV = "content".hashCode();
-    eMQ = "imgPath".hashCode();
-    eNp = "reserved".hashCode();
-    eMR = "lvbuffer".hashCode();
-    eMS = "talkerId".hashCode();
-    eNq = "transContent".hashCode();
-    eNr = "transBrandWording".hashCode();
-    eMZ = "bizClientMsgId".hashCode();
-    eKn = "bizChatId".hashCode();
-    eNs = "bizChatUserId".hashCode();
-    eNt = "msgSeq".hashCode();
-    eJG = "flag".hashCode();
-    eNu = "fromUsername".hashCode();
-    eNv = "toUsername".hashCode();
+    fjl = "status".hashCode();
+    createTime_HASHCODE = "createTime".hashCode();
+    fqw = "talker".hashCode();
+    content_HASHCODE = "content".hashCode();
+    fqx = "imgPath".hashCode();
+    fqy = "lvbuffer".hashCode();
+    fqz = "talkerId".hashCode();
+    fqA = "isExpand".hashCode();
+    fqB = "orderFlag".hashCode();
+    fqC = "hasShow".hashCode();
+    fqD = "placeTop".hashCode();
+    fqE = "appMsgStatInfoProto".hashCode();
+    fqF = "isRead".hashCode();
   }
   
-  public static c.a VD()
+  public final void BB(String paramString)
   {
-    c.a locala = new c.a();
-    locala.IBL = new Field[23];
-    locala.columns = new String[24];
-    StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "msgId";
-    locala.IBN.put("msgId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" msgId LONG PRIMARY KEY ");
-    localStringBuilder.append(", ");
-    locala.IBM = "msgId";
-    locala.columns[1] = "msgSvrId";
-    locala.IBN.put("msgSvrId", "LONG");
-    localStringBuilder.append(" msgSvrId LONG");
-    localStringBuilder.append(", ");
-    locala.columns[2] = "type";
-    locala.IBN.put("type", "INTEGER");
-    localStringBuilder.append(" type INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[3] = "status";
-    locala.IBN.put("status", "INTEGER");
-    localStringBuilder.append(" status INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[4] = "isSend";
-    locala.IBN.put("isSend", "INTEGER");
-    localStringBuilder.append(" isSend INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[5] = "isShowTimer";
-    locala.IBN.put("isShowTimer", "INTEGER");
-    localStringBuilder.append(" isShowTimer INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[6] = "createTime";
-    locala.IBN.put("createTime", "LONG");
-    localStringBuilder.append(" createTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[7] = "talker";
-    locala.IBN.put("talker", "TEXT");
-    localStringBuilder.append(" talker TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[8] = "content";
-    locala.IBN.put("content", "TEXT default '' ");
-    localStringBuilder.append(" content TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[9] = "imgPath";
-    locala.IBN.put("imgPath", "TEXT");
-    localStringBuilder.append(" imgPath TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[10] = "reserved";
-    locala.IBN.put("reserved", "TEXT");
-    localStringBuilder.append(" reserved TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[11] = "lvbuffer";
-    locala.IBN.put("lvbuffer", "BLOB");
-    localStringBuilder.append(" lvbuffer BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[12] = "talkerId";
-    locala.IBN.put("talkerId", "INTEGER");
-    localStringBuilder.append(" talkerId INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[13] = "transContent";
-    locala.IBN.put("transContent", "TEXT default '' ");
-    localStringBuilder.append(" transContent TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[14] = "transBrandWording";
-    locala.IBN.put("transBrandWording", "TEXT default '' ");
-    localStringBuilder.append(" transBrandWording TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[15] = "bizClientMsgId";
-    locala.IBN.put("bizClientMsgId", "TEXT default '' ");
-    localStringBuilder.append(" bizClientMsgId TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[16] = "bizChatId";
-    locala.IBN.put("bizChatId", "LONG default '-1' ");
-    localStringBuilder.append(" bizChatId LONG default '-1' ");
-    localStringBuilder.append(", ");
-    locala.columns[17] = "bizChatUserId";
-    locala.IBN.put("bizChatUserId", "TEXT default '' ");
-    localStringBuilder.append(" bizChatUserId TEXT default '' ");
-    localStringBuilder.append(", ");
-    locala.columns[18] = "msgSeq";
-    locala.IBN.put("msgSeq", "LONG");
-    localStringBuilder.append(" msgSeq LONG");
-    localStringBuilder.append(", ");
-    locala.columns[19] = "flag";
-    locala.IBN.put("flag", "INTEGER default '0' ");
-    localStringBuilder.append(" flag INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[20] = "fromUsername";
-    locala.IBN.put("fromUsername", "TEXT");
-    localStringBuilder.append(" fromUsername TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[21] = "toUsername";
-    locala.IBN.put("toUsername", "TEXT");
-    localStringBuilder.append(" toUsername TEXT");
-    localStringBuilder.append(", ");
-    locala.columns[22] = "extInfo";
-    locala.IBN.put("extInfo", "BLOB");
-    localStringBuilder.append(" extInfo BLOB");
-    locala.columns[23] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    this.fqK = paramString;
+    this.fqk = true;
+  }
+  
+  public final String ajw()
+  {
+    return this.fqK;
   }
   
   public void convertFrom(Cursor paramCursor)
   {
     String[] arrayOfString = paramCursor.getColumnNames();
-    if (arrayOfString == null) {
-      return;
-    }
-    int i = 0;
-    int j = arrayOfString.length;
-    label20:
-    int k;
-    if (i < j)
+    if (arrayOfString == null) {}
+    do
     {
-      k = arrayOfString[i].hashCode();
-      if (eEF != k) {
-        break label65;
+      for (;;)
+      {
+        return;
+        int j = arrayOfString.length;
+        int i = 0;
+        if (i < j)
+        {
+          int k = arrayOfString[i].hashCode();
+          if (fjf == k)
+          {
+            this.field_msgId = paramCursor.getLong(i);
+            this.fjb = true;
+          }
+          for (;;)
+          {
+            i += 1;
+            break;
+            if (fqv == k)
+            {
+              this.field_msgSvrId = paramCursor.getLong(i);
+            }
+            else if (type_HASHCODE == k)
+            {
+              this.field_type = paramCursor.getInt(i);
+            }
+            else if (fjl == k)
+            {
+              this.field_status = paramCursor.getInt(i);
+            }
+            else if (createTime_HASHCODE == k)
+            {
+              this.field_createTime = paramCursor.getLong(i);
+            }
+            else if (fqw == k)
+            {
+              this.field_talker = paramCursor.getString(i);
+            }
+            else if (content_HASHCODE == k)
+            {
+              this.field_content = paramCursor.getString(i);
+            }
+            else if (fqx == k)
+            {
+              this.field_imgPath = paramCursor.getString(i);
+            }
+            else if (fqy == k)
+            {
+              this.field_lvbuffer = paramCursor.getBlob(i);
+            }
+            else if (fqz == k)
+            {
+              this.field_talkerId = paramCursor.getInt(i);
+            }
+            else
+            {
+              if (fqA == k)
+              {
+                if (paramCursor.getInt(i) != 0) {}
+                for (boolean bool = true;; bool = false)
+                {
+                  this.field_isExpand = bool;
+                  break;
+                }
+              }
+              if (fqB == k) {
+                this.field_orderFlag = paramCursor.getLong(i);
+              } else if (fqC == k) {
+                this.field_hasShow = paramCursor.getInt(i);
+              } else if (fqD == k) {
+                this.field_placeTop = paramCursor.getInt(i);
+              } else if (fqE == k) {
+                try
+                {
+                  byte[] arrayOfByte = paramCursor.getBlob(i);
+                  if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
+                    continue;
+                  }
+                  this.field_appMsgStatInfoProto = ((gf)new gf().parseFrom(arrayOfByte));
+                }
+                catch (IOException localIOException)
+                {
+                  Log.e("MicroMsg.SDK.BaseBizTimeLineInfo", localIOException.getMessage());
+                }
+              } else if (fqF == k) {
+                this.field_isRead = paramCursor.getInt(i);
+              } else if (foC == k) {
+                this.field_bitFlag = paramCursor.getInt(i);
+              } else if (fqG == k) {
+                this.field_bizClientMsgId = paramCursor.getString(i);
+              } else if (fqH == k) {
+                this.field_rankSessionId = paramCursor.getString(i);
+              } else if (fqI == k) {
+                this.field_recommendCardId = paramCursor.getString(i);
+              } else if (rowid_HASHCODE == k) {
+                this.systemRowid = paramCursor.getLong(i);
+              }
+            }
+          }
+        }
+        try
+        {
+          if ((this.field_lvbuffer != null) && (this.field_lvbuffer.length != 0))
+          {
+            paramCursor = new LVBuffer();
+            i = paramCursor.initParse(this.field_lvbuffer);
+            if (i != 0)
+            {
+              Log.e("MicroMsg.SDK.BaseBizTimeLineInfo", "parse LVBuffer error:".concat(String.valueOf(i)));
+              return;
+            }
+          }
+        }
+        catch (Exception paramCursor)
+        {
+          Log.e("MicroMsg.SDK.BaseBizTimeLineInfo", "get value failed");
+          return;
+        }
       }
-      this.field_msgId = paramCursor.getLong(i);
-      this.eEB = true;
-    }
-    for (;;)
-    {
-      i += 1;
-      break label20;
-      break;
-      label65:
-      if (eMO == k) {
-        this.field_msgSvrId = paramCursor.getLong(i);
-      } else if (type_HASHCODE == k) {
-        this.field_type = paramCursor.getInt(i);
-      } else if (eEL == k) {
-        this.field_status = paramCursor.getInt(i);
-      } else if (eKy == k) {
-        this.field_isSend = paramCursor.getInt(i);
-      } else if (eNo == k) {
-        this.field_isShowTimer = paramCursor.getInt(i);
-      } else if (eFO == k) {
-        this.field_createTime = paramCursor.getLong(i);
-      } else if (eMP == k) {
-        this.field_talker = paramCursor.getString(i);
-      } else if (eFV == k) {
-        this.field_content = paramCursor.getString(i);
-      } else if (eMQ == k) {
-        this.field_imgPath = paramCursor.getString(i);
-      } else if (eNp == k) {
-        this.field_reserved = paramCursor.getString(i);
-      } else if (eMR == k) {
-        this.field_lvbuffer = paramCursor.getBlob(i);
-      } else if (eMS == k) {
-        this.field_talkerId = paramCursor.getInt(i);
-      } else if (eNq == k) {
-        this.field_transContent = paramCursor.getString(i);
-      } else if (eNr == k) {
-        this.field_transBrandWording = paramCursor.getString(i);
-      } else if (eMZ == k) {
-        this.field_bizClientMsgId = paramCursor.getString(i);
-      } else if (eKn == k) {
-        this.field_bizChatId = paramCursor.getLong(i);
-      } else if (eNs == k) {
-        this.field_bizChatUserId = paramCursor.getString(i);
-      } else if (eNt == k) {
-        this.field_msgSeq = paramCursor.getLong(i);
-      } else if (eJG == k) {
-        this.field_flag = paramCursor.getInt(i);
-      } else if (eNu == k) {
-        this.field_fromUsername = paramCursor.getString(i);
-      } else if (eNv == k) {
-        this.field_toUsername = paramCursor.getString(i);
-      } else if (eMi == k) {
-        this.field_extInfo = paramCursor.getBlob(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      if (!paramCursor.checkGetFinish()) {
+        this.fqJ = paramCursor.getInt();
       }
-    }
+      if (!paramCursor.checkGetFinish()) {
+        this.fqK = paramCursor.getString();
+      }
+      if (!paramCursor.checkGetFinish()) {
+        this.fqL = paramCursor.getBuffer();
+      }
+    } while (paramCursor.checkGetFinish());
+    this.fqM = paramCursor.getLong();
   }
   
   public ContentValues convertTo()
   {
-    ContentValues localContentValues = new ContentValues();
-    if (this.eEB) {
-      localContentValues.put("msgId", Long.valueOf(this.field_msgId));
+    try
+    {
+      if (this.fqk)
+      {
+        localObject = new LVBuffer();
+        ((LVBuffer)localObject).initBuild();
+        ((LVBuffer)localObject).putInt(this.fqJ);
+        ((LVBuffer)localObject).putString(this.fqK);
+        ((LVBuffer)localObject).putBuffer(this.fqL);
+        ((LVBuffer)localObject).putLong(this.fqM);
+        this.field_lvbuffer = ((LVBuffer)localObject).buildFinish();
+      }
+      localObject = new ContentValues();
+      if (this.fjb) {
+        ((ContentValues)localObject).put("msgId", Long.valueOf(this.field_msgId));
+      }
+      if (this.fqh) {
+        ((ContentValues)localObject).put("msgSvrId", Long.valueOf(this.field_msgSvrId));
+      }
+      if (this.__hadSettype) {
+        ((ContentValues)localObject).put("type", Integer.valueOf(this.field_type));
+      }
+      if (this.fji) {
+        ((ContentValues)localObject).put("status", Integer.valueOf(this.field_status));
+      }
+      if (this.__hadSetcreateTime) {
+        ((ContentValues)localObject).put("createTime", Long.valueOf(this.field_createTime));
+      }
+      if (this.fqi) {
+        ((ContentValues)localObject).put("talker", this.field_talker);
+      }
+      if (this.field_content == null) {
+        this.field_content = "";
+      }
+      if (this.__hadSetcontent) {
+        ((ContentValues)localObject).put("content", this.field_content);
+      }
+      if (this.fqj) {
+        ((ContentValues)localObject).put("imgPath", this.field_imgPath);
+      }
+      if (this.fqk) {
+        ((ContentValues)localObject).put("lvbuffer", this.field_lvbuffer);
+      }
+      if (this.fql) {
+        ((ContentValues)localObject).put("talkerId", Integer.valueOf(this.field_talkerId));
+      }
+      if (this.fqm) {
+        ((ContentValues)localObject).put("isExpand", Boolean.valueOf(this.field_isExpand));
+      }
+      if (this.fqn) {
+        ((ContentValues)localObject).put("orderFlag", Long.valueOf(this.field_orderFlag));
+      }
+      if (this.fqo) {
+        ((ContentValues)localObject).put("hasShow", Integer.valueOf(this.field_hasShow));
+      }
+      if (this.fqp) {
+        ((ContentValues)localObject).put("placeTop", Integer.valueOf(this.field_placeTop));
+      }
+      if ((!this.fqq) || (this.field_appMsgStatInfoProto == null)) {}
     }
-    if (this.eMA) {
-      localContentValues.put("msgSvrId", Long.valueOf(this.field_msgSvrId));
+    catch (Exception localException)
+    {
+      try
+      {
+        Object localObject;
+        ((ContentValues)localObject).put("appMsgStatInfoProto", this.field_appMsgStatInfoProto.toByteArray());
+        if (this.fqr) {
+          ((ContentValues)localObject).put("isRead", Integer.valueOf(this.field_isRead));
+        }
+        if (this.fop) {
+          ((ContentValues)localObject).put("bitFlag", Integer.valueOf(this.field_bitFlag));
+        }
+        if (this.field_bizClientMsgId == null) {
+          this.field_bizClientMsgId = "";
+        }
+        if (this.fqs) {
+          ((ContentValues)localObject).put("bizClientMsgId", this.field_bizClientMsgId);
+        }
+        if (this.field_rankSessionId == null) {
+          this.field_rankSessionId = "";
+        }
+        if (this.fqt) {
+          ((ContentValues)localObject).put("rankSessionId", this.field_rankSessionId);
+        }
+        if (this.field_recommendCardId == null) {
+          this.field_recommendCardId = "";
+        }
+        if (this.fqu) {
+          ((ContentValues)localObject).put("recommendCardId", this.field_recommendCardId);
+        }
+        if (this.systemRowid > 0L) {
+          ((ContentValues)localObject).put("rowid", Long.valueOf(this.systemRowid));
+        }
+        return localObject;
+        localException = localException;
+        Log.e("MicroMsg.SDK.BaseBizTimeLineInfo", "get value failed, %s", new Object[] { localException.getMessage() });
+      }
+      catch (IOException localIOException)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.SDK.BaseBizTimeLineInfo", localIOException.getMessage());
+        }
+      }
     }
-    if (this.__hadSettype) {
-      localContentValues.put("type", Integer.valueOf(this.field_type));
-    }
-    if (this.eEI) {
-      localContentValues.put("status", Integer.valueOf(this.field_status));
-    }
-    if (this.eKj) {
-      localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
-    }
-    if (this.eNg) {
-      localContentValues.put("isShowTimer", Integer.valueOf(this.field_isShowTimer));
-    }
-    if (this.eFr) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
-    }
-    if (this.eMB) {
-      localContentValues.put("talker", this.field_talker);
-    }
-    if (this.field_content == null) {
-      this.field_content = "";
-    }
-    if (this.eFy) {
-      localContentValues.put("content", this.field_content);
-    }
-    if (this.eMC) {
-      localContentValues.put("imgPath", this.field_imgPath);
-    }
-    if (this.eNh) {
-      localContentValues.put("reserved", this.field_reserved);
-    }
-    if (this.eMD) {
-      localContentValues.put("lvbuffer", this.field_lvbuffer);
-    }
-    if (this.eME) {
-      localContentValues.put("talkerId", Integer.valueOf(this.field_talkerId));
-    }
-    if (this.field_transContent == null) {
-      this.field_transContent = "";
-    }
-    if (this.eNi) {
-      localContentValues.put("transContent", this.field_transContent);
-    }
-    if (this.field_transBrandWording == null) {
-      this.field_transBrandWording = "";
-    }
-    if (this.eNj) {
-      localContentValues.put("transBrandWording", this.field_transBrandWording);
-    }
-    if (this.field_bizClientMsgId == null) {
-      this.field_bizClientMsgId = "";
-    }
-    if (this.eML) {
-      localContentValues.put("bizClientMsgId", this.field_bizClientMsgId);
-    }
-    if (this.eJY) {
-      localContentValues.put("bizChatId", Long.valueOf(this.field_bizChatId));
-    }
-    if (this.field_bizChatUserId == null) {
-      this.field_bizChatUserId = "";
-    }
-    if (this.eNk) {
-      localContentValues.put("bizChatUserId", this.field_bizChatUserId);
-    }
-    if (this.eNl) {
-      localContentValues.put("msgSeq", Long.valueOf(this.field_msgSeq));
-    }
-    if (this.eJE) {
-      localContentValues.put("flag", Integer.valueOf(this.field_flag));
-    }
-    if (this.eNm) {
-      localContentValues.put("fromUsername", this.field_fromUsername);
-    }
-    if (this.eNn) {
-      localContentValues.put("toUsername", this.field_toUsername);
-    }
-    if (this.eLU) {
-      localContentValues.put("extInfo", this.field_extInfo);
-    }
-    if (this.systemRowid > 0L) {
-      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-    }
-    return localContentValues;
+  }
+  
+  public final void nc(int paramInt)
+  {
+    this.fqJ = paramInt;
+    this.fqk = true;
+  }
+  
+  public final void yw(long paramLong)
+  {
+    this.fqM = paramLong;
+    this.fqk = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.c.an
  * JD-Core Version:    0.7.0.1
  */

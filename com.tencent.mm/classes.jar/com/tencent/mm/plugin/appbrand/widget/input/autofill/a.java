@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.widget.input.ab;
 import com.tencent.mm.plugin.appbrand.widget.input.d.a.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 
 final class a
@@ -20,15 +20,15 @@ final class a
   implements g
 {
   private final LayoutInflater mInflater;
-  private b nmj;
-  h nmk;
-  private boolean nml;
+  private b ovQ;
+  h ovR;
+  private boolean ovS;
   
   a(Context paramContext, List<a.b> paramList)
   {
-    super(paramContext, 2131493005, paramList);
+    super(paramContext, 2131493043, paramList);
     AppMethodBeat.i(136615);
-    this.nml = false;
+    this.ovS = false;
     this.mInflater = LayoutInflater.from(paramContext);
     AppMethodBeat.o(136615);
   }
@@ -36,14 +36,14 @@ final class a
   public final void a(b paramb)
   {
     AppMethodBeat.i(136617);
-    this.nmj = paramb;
-    this.nmj.setOnDismissListener(new PopupWindow.OnDismissListener()
+    this.ovQ = paramb;
+    this.ovQ.setOnDismissListener(new PopupWindow.OnDismissListener()
     {
       public final void onDismiss()
       {
         AppMethodBeat.i(136612);
         if ((a.a(a.this) != null) && (!a.b(a.this))) {
-          a.a(a.this).a("", h.a.nmV);
+          a.a(a.this).a("", h.a.owC);
         }
         AppMethodBeat.o(136612);
       }
@@ -51,11 +51,11 @@ final class a
     AppMethodBeat.o(136617);
   }
   
-  public final void bFL()
+  public final void ccb()
   {
     AppMethodBeat.i(136618);
-    this.nmj.setOnDismissListener(null);
-    this.nmj = null;
+    this.ovQ.setOnDismissListener(null);
+    this.ovQ = null;
     AppMethodBeat.o(136618);
   }
   
@@ -73,7 +73,7 @@ final class a
     AppMethodBeat.i(136619);
     View localView = paramView;
     if (paramView == null) {
-      localView = this.mInflater.inflate(2131493005, paramViewGroup, false);
+      localView = this.mInflater.inflate(2131493043, paramViewGroup, false);
     }
     paramView = (a)localView.getTag();
     if (paramView == null)
@@ -84,16 +84,16 @@ final class a
     for (;;)
     {
       paramViewGroup = (a.b)getItem(paramInt);
-      paramView.nmq = paramViewGroup;
-      paramView.nmn.setText(paramViewGroup.title);
-      paramView.nmo.setText(paramViewGroup.content);
-      TextView localTextView = paramView.nmo;
+      paramView.ovX = paramViewGroup;
+      paramView.ovU.setText(paramViewGroup.title);
+      paramView.ovV.setText(paramViewGroup.content);
+      TextView localTextView = paramView.ovV;
       int i;
-      if (bu.isNullOrNil(paramViewGroup.content))
+      if (Util.isNullOrNil(paramViewGroup.content))
       {
         i = 8;
         localTextView.setVisibility(i);
-        paramView = paramView.iYM;
+        paramView = paramView.jWr;
         if (paramInt != getCount() - 1) {
           break label159;
         }
@@ -120,24 +120,24 @@ final class a
   final class a
     implements View.OnClickListener
   {
-    View auu;
-    View iYM;
-    TextView nmn;
-    TextView nmo;
-    View nmp;
-    a.b nmq;
+    View aus;
+    View jWr;
+    TextView ovU;
+    TextView ovV;
+    View ovW;
+    a.b ovX;
     
     a(View paramView)
     {
       AppMethodBeat.i(136613);
-      this.auu = paramView;
-      this.nmn = ((TextView)paramView.findViewById(2131305902));
-      this.nmo = ((TextView)paramView.findViewById(2131298739));
-      this.nmp = paramView.findViewById(2131298360);
-      this.iYM = paramView.findViewById(2131299154);
-      paramView.setBackgroundResource(2131233634);
+      this.aus = paramView;
+      this.ovU = ((TextView)paramView.findViewById(2131309195));
+      this.ovV = ((TextView)paramView.findViewById(2131299180));
+      this.ovW = paramView.findViewById(2131298763);
+      this.jWr = paramView.findViewById(2131299682);
+      paramView.setBackgroundResource(2131234447);
       paramView.setOnClickListener(this);
-      this.nmp.setOnClickListener(this);
+      this.ovW.setOnClickListener(this);
       AppMethodBeat.o(136613);
     }
     
@@ -145,16 +145,16 @@ final class a
     {
       AppMethodBeat.i(136614);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillAdapter$AutoFillViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      if (this.nmq != null)
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/widget/input/autofill/AutoFillAdapter$AutoFillViewHolder", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      if (this.ovX != null)
       {
-        if (paramView.getId() != 2131298360) {
+        if (paramView.getId() != 2131298763) {
           break label111;
         }
-        a.this.remove(this.nmq);
+        a.this.remove(this.ovX);
         if (a.a(a.this) != null) {
-          a.a(a.this).a(this.nmq.id, h.a.nmW);
+          a.a(a.this).a(this.ovX.id, h.a.owD);
         }
       }
       for (;;)
@@ -163,14 +163,14 @@ final class a
         AppMethodBeat.o(136614);
         return;
         label111:
-        if ((paramView == this.auu) && (a.a(a.this) != null))
+        if ((paramView == this.aus) && (a.a(a.this) != null))
         {
-          if (this.nmq != null) {
-            a.a(a.this).a(this.nmq.id, h.a.nmX);
+          if (this.ovX != null) {
+            a.a(a.this).a(this.ovX.id, h.a.owE);
           }
           a.c(a.this);
           if (a.d(a.this) != null) {
-            a.d(a.this).nmr.getView().clearFocus();
+            a.d(a.this).ovY.getView().clearFocus();
           }
         }
       }
@@ -179,7 +179,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.autofill.a
  * JD-Core Version:    0.7.0.1
  */

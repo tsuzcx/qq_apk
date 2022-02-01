@@ -6,19 +6,19 @@ import java.util.HashSet;
 public final class a<E>
   extends HashSet<E>
 {
-  private b oXR;
+  private b qmO;
   
   public a(b paramb)
   {
-    this.oXR = paramb;
+    this.qmO = paramb;
   }
   
-  private void cam()
+  private void cyd()
   {
     try
     {
       AppMethodBeat.i(120764);
-      this.oXR.cal();
+      this.qmO.cyc();
       AppMethodBeat.o(120764);
       return;
     }
@@ -29,12 +29,12 @@ public final class a<E>
     }
   }
   
-  private void can()
+  private void cye()
   {
     try
     {
       AppMethodBeat.i(120765);
-      this.oXR.remove();
+      this.qmO.remove();
       AppMethodBeat.o(120765);
       return;
     }
@@ -45,12 +45,12 @@ public final class a<E>
     }
   }
   
-  private void cao()
+  private void cyf()
   {
     try
     {
       AppMethodBeat.i(120766);
-      this.oXR.clear();
+      this.qmO.clear();
       AppMethodBeat.o(120766);
       return;
     }
@@ -67,7 +67,7 @@ public final class a<E>
     {
       AppMethodBeat.i(120767);
       boolean bool = super.add(paramE);
-      cam();
+      cyd();
       AppMethodBeat.o(120767);
       return bool;
     }
@@ -82,7 +82,7 @@ public final class a<E>
   {
     AppMethodBeat.i(120768);
     super.clear();
-    cao();
+    cyf();
     AppMethodBeat.o(120768);
   }
   
@@ -92,7 +92,7 @@ public final class a<E>
     {
       AppMethodBeat.i(120769);
       boolean bool = super.remove(paramObject);
-      can();
+      cye();
       AppMethodBeat.o(120769);
       return bool;
     }
@@ -105,7 +105,7 @@ public final class a<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.cdndownloader.e.a
  * JD-Core Version:    0.7.0.1
  */

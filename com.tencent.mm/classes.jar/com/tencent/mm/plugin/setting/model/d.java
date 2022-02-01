@@ -1,24 +1,23 @@
 package com.tencent.mm.plugin.setting.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aea;
-import com.tencent.mm.protocal.protobuf.aeb;
-import com.tencent.mm.protocal.protobuf.dup;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.agd;
+import com.tencent.mm.protocal.protobuf.age;
+import com.tencent.mm.protocal.protobuf.eoo;
 
 public final class d
-  extends n
-  implements k
+  extends q
+  implements m
 {
   public final String appId;
-  private f callback;
+  private i callback;
   private final int scene;
   
   public d(String paramString, int paramInt)
@@ -27,21 +26,21 @@ public final class d
     this.scene = paramInt;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(73764);
-    this.callback = paramf;
-    paramf = new b.a();
-    aea localaea = new aea();
-    localaea.dwb = this.appId;
-    localaea.dJd = this.scene;
-    paramf.hQF = localaea;
-    paramf.uri = "/cgi-bin/mmbiz-bin/deluserauth";
-    paramf.hQG = new aeb();
-    paramf.funcId = getType();
-    paramf.hQH = 0;
-    paramf.respCmdId = 0;
-    int i = dispatch(parame, paramf.aDS(), this);
+    this.callback = parami;
+    parami = new d.a();
+    agd localagd = new agd();
+    localagd.dNI = this.appId;
+    localagd.eaQ = this.scene;
+    parami.iLN = localagd;
+    parami.uri = "/cgi-bin/mmbiz-bin/deluserauth";
+    parami.iLO = new age();
+    parami.funcId = getType();
+    parami.iLP = 0;
+    parami.respCmdId = 0;
+    int i = dispatch(paramg, parami.aXF(), this);
     AppMethodBeat.o(73764);
     return i;
   }
@@ -51,11 +50,11 @@ public final class d
     return 1127;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(73765);
-    paramString = (aeb)((b)paramq).hQE.hQJ;
-    this.callback.onSceneEnd(paramInt2, paramString.GuN.drN, paramString.GuN.drO, this);
+    paramString = (age)((com.tencent.mm.ak.d)params).iLL.iLR;
+    this.callback.onSceneEnd(paramInt2, paramString.Lqs.dIZ, paramString.Lqs.dJa, this);
     AppMethodBeat.o(73765);
   }
 }

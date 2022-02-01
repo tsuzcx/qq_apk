@@ -6,15 +6,15 @@ import android.util.AttributeSet;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.vfs.s;
 
 public class SimpleImageView
   extends ImageView
 {
-  public aq handler;
+  public MMHandler handler;
   public String imagePath;
   public int targetHeight;
   public int targetWidth;
@@ -25,7 +25,7 @@ public class SimpleImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55930);
     this.url = null;
-    this.handler = new aq()
+    this.handler = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -33,16 +33,16 @@ public class SimpleImageView
         byte[] arrayOfByte = (byte[])paramAnonymousMessage.obj;
         if ((arrayOfByte == null) || (arrayOfByte.length == 0))
         {
-          ae.e("MicroMsg.SimpleImageView", "handleMsg fail, data is null");
+          Log.e("MicroMsg.SimpleImageView", "handleMsg fail, data is null");
           AppMethodBeat.o(55928);
           return;
         }
-        paramAnonymousMessage = h.cu(arrayOfByte);
+        paramAnonymousMessage = BitmapUtil.decodeByteArray(arrayOfByte);
         String str = SimpleImageView.a(SimpleImageView.this) + g.getMessageDigest(SimpleImageView.b(SimpleImageView.this).getBytes());
-        ae.d("MicroMsg.SimpleImageView", "filePath  %s", new Object[] { str });
-        o.f(str, arrayOfByte, arrayOfByte.length);
+        Log.d("MicroMsg.SimpleImageView", "filePath  %s", new Object[] { str });
+        s.f(str, arrayOfByte, arrayOfByte.length);
         if ((paramAnonymousMessage != null) && (SimpleImageView.c(SimpleImageView.this) > 0) && (SimpleImageView.d(SimpleImageView.this) > 0)) {
-          paramAnonymousMessage = h.a(paramAnonymousMessage, SimpleImageView.d(SimpleImageView.this), SimpleImageView.c(SimpleImageView.this), true, false);
+          paramAnonymousMessage = BitmapUtil.extractThumbNail(paramAnonymousMessage, SimpleImageView.d(SimpleImageView.this), SimpleImageView.c(SimpleImageView.this), true, false);
         }
         for (;;)
         {

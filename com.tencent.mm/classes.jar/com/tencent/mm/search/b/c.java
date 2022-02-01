@@ -1,28 +1,29 @@
 package com.tencent.mm.search.b;
 
 import android.content.Context;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.emoji.a.b.ac;
-import com.tencent.mm.emoji.a.b.h;
+import com.tencent.mm.emoji.b.b.ac;
+import com.tencent.mm.emoji.b.b.h;
 import com.tencent.mm.emoji.panel.a.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.search.c.a;
-import com.tencent.mm.storage.be;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.emotion.EmojiInfo;
 import com.tencent.mm.storage.emotion.f;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/search/logic/SosSimilarEmojiPanelClickListener;", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelClickListener;", "scene", "", "(I)V", "onClick", "", "context", "Landroid/content/Context;", "position", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Companion", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/search/logic/SosSimilarEmojiPanelClickListener;", "Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelClickListener;", "scene", "", "(I)V", "onClick", "", "view", "Landroid/view/View;", "context", "Landroid/content/Context;", "position", "item", "Lcom/tencent/mm/emoji/model/panel/PanelItem;", "Companion", "plugin-emojisdk_release"})
 public final class c
   extends d
 {
-  public static final c.a ICB;
+  public static final c.a NJu;
   
   static
   {
     AppMethodBeat.i(105840);
-    ICB = new c.a((byte)0);
+    NJu = new c.a((byte)0);
     AppMethodBeat.o(105840);
   }
   
@@ -31,39 +32,39 @@ public final class c
     super(paramInt);
   }
   
-  public final void a(Context paramContext, int paramInt, ac paramac)
+  public final void a(View paramView, Context paramContext, int paramInt, ac paramac)
   {
-    AppMethodBeat.i(105839);
+    AppMethodBeat.i(200087);
     p.h(paramContext, "context");
     if (paramac == null)
     {
-      AppMethodBeat.o(105839);
+      AppMethodBeat.o(200087);
       return;
     }
-    ae.i("MicroMsg.SimilarEmoji", "onClick: " + paramInt + ", " + ((h)paramac).glt.field_md5);
-    switch (((h)paramac).gnk)
+    Log.i("MicroMsg.SimilarEmoji", "onClick: " + paramInt + ", " + ((h)paramac).gWm.field_md5);
+    switch (((h)paramac).gYc)
     {
     default: 
-      AppMethodBeat.o(105839);
+      AppMethodBeat.o(200087);
       return;
     }
-    paramContext = a.ICC;
-    a.fqA();
-    paramContext = ((h)paramac).glt;
-    paramac = be.fvc();
-    p.g(paramac, "EmojiStorageMgr.getInstance()");
-    if (paramac.bJU().aWl(paramContext.field_md5) == null)
+    paramView = a.NJv;
+    a.gxv();
+    paramView = ((h)paramac).gWm;
+    paramContext = bj.gCJ();
+    p.g(paramContext, "EmojiStorageMgr.getInstance()");
+    if (paramContext.cgN().blk(paramView.field_md5) == null)
     {
-      paramac = be.fvc();
-      p.g(paramac, "EmojiStorageMgr.getInstance()");
-      paramac.bJU().J(paramContext);
+      paramContext = bj.gCJ();
+      p.g(paramContext, "EmojiStorageMgr.getInstance()");
+      paramContext.cgN().K(paramView);
     }
-    AppMethodBeat.o(105839);
+    AppMethodBeat.o(200087);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.search.b.c
  * JD-Core Version:    0.7.0.1
  */

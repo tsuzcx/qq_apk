@@ -12,14 +12,14 @@ final class MobileInputUI$12
   public final boolean onMenuItemClick(MenuItem paramMenuItem)
   {
     AppMethodBeat.i(128345);
-    MobileInputUI.b(this.jpJ);
+    MobileInputUI.b(this.knV);
     AppMethodBeat.o(128345);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.MobileInputUI.12
  * JD-Core Version:    0.7.0.1
  */

@@ -16,6 +16,7 @@ import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.smtt.sdk.TbsDownloadConfig;
 import java.io.File;
 import java.io.InputStream;
@@ -707,9 +708,15 @@ public class b
   
   public static String c()
   {
-    AppMethodBeat.i(192966);
+    AppMethodBeat.i(188550);
     try
     {
+      if (!QbSdk.isEnableSensitiveApi())
+      {
+        TbsLog.i("AppUtil", "isEnableSensitiveApi = false");
+        AppMethodBeat.o(188550);
+        return "";
+      }
       Object localObject1 = Collections.list(NetworkInterface.getNetworkInterfaces()).iterator();
       while (((Iterator)localObject1).hasNext())
       {
@@ -719,7 +726,7 @@ public class b
           localObject1 = ((NetworkInterface)localObject2).getHardwareAddress();
           if (localObject1 == null)
           {
-            AppMethodBeat.o(192966);
+            AppMethodBeat.o(188550);
             return "";
           }
           localObject2 = new StringBuilder();
@@ -734,14 +741,14 @@ public class b
             ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
           }
           localObject1 = ((StringBuilder)localObject2).toString();
-          AppMethodBeat.o(192966);
+          AppMethodBeat.o(188550);
           return localObject1;
         }
       }
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(192966);
+      AppMethodBeat.o(188550);
     }
     return "02:00:00:00:00:00";
   }
@@ -769,7 +776,7 @@ public class b
   public static int d(Context paramContext)
   {
     int i = 0;
-    AppMethodBeat.i(192964);
+    AppMethodBeat.i(188548);
     try
     {
       String str = paramContext.getPackageName();
@@ -781,56 +788,56 @@ public class b
       label28:
       break label28;
     }
-    AppMethodBeat.o(192964);
+    AppMethodBeat.o(188548);
     return i;
   }
   
   public static boolean d()
   {
-    AppMethodBeat.i(192968);
+    AppMethodBeat.i(188552);
     try
     {
       int i = Build.VERSION.SDK_INT;
       if (i < 21)
       {
-        AppMethodBeat.o(192968);
+        AppMethodBeat.o(188552);
         return false;
       }
       Object localObject1 = Class.forName("dalvik.system.VMRuntime");
       if (localObject1 == null)
       {
-        AppMethodBeat.o(192968);
+        AppMethodBeat.o(188552);
         return false;
       }
       Object localObject2 = ((Class)localObject1).getDeclaredMethod("getRuntime", new Class[0]);
       if (localObject2 == null)
       {
-        AppMethodBeat.o(192968);
+        AppMethodBeat.o(188552);
         return false;
       }
       localObject2 = ((Method)localObject2).invoke(null, new Object[0]);
       if (localObject2 == null)
       {
-        AppMethodBeat.o(192968);
+        AppMethodBeat.o(188552);
         return false;
       }
       localObject1 = ((Class)localObject1).getDeclaredMethod("is64Bit", new Class[0]);
       if (localObject1 == null)
       {
-        AppMethodBeat.o(192968);
+        AppMethodBeat.o(188552);
         return false;
       }
       localObject1 = ((Method)localObject1).invoke(localObject2, new Object[0]);
       if ((localObject1 instanceof Boolean))
       {
         boolean bool = ((Boolean)localObject1).booleanValue();
-        AppMethodBeat.o(192968);
+        AppMethodBeat.o(188552);
         return bool;
       }
     }
     catch (Throwable localThrowable)
     {
-      AppMethodBeat.o(192968);
+      AppMethodBeat.o(188552);
     }
     return false;
   }
@@ -857,6 +864,12 @@ public class b
   public static String f(Context paramContext)
   {
     AppMethodBeat.i(53967);
+    if (!QbSdk.isEnableSensitiveApi())
+    {
+      TbsLog.i("AppUtil", "isEnableSensitiveApi = false");
+      AppMethodBeat.o(53967);
+      return "";
+    }
     if (!TextUtils.isEmpty(a)) {
       paramContext = a;
     }
@@ -878,6 +891,12 @@ public class b
   public static String g(Context paramContext)
   {
     AppMethodBeat.i(53969);
+    if (!QbSdk.isEnableSensitiveApi())
+    {
+      TbsLog.i("AppUtil", "isEnableSensitiveApi = false");
+      AppMethodBeat.o(53969);
+      return "";
+    }
     if (!TextUtils.isEmpty(b)) {
       paramContext = b;
     }
@@ -898,7 +917,13 @@ public class b
   
   public static String h(Context paramContext)
   {
-    AppMethodBeat.i(192965);
+    AppMethodBeat.i(188549);
+    if (!QbSdk.isEnableSensitiveApi())
+    {
+      TbsLog.i("AppUtil", "isEnableSensitiveApi = false");
+      AppMethodBeat.o(188549);
+      return "";
+    }
     if ((!TextUtils.isEmpty(d)) || (Build.VERSION.SDK_INT < 23)) {}
     try
     {
@@ -920,10 +945,10 @@ public class b
     for (d = paramContext;; d = c())
     {
       paramContext = d;
-      AppMethodBeat.o(192965);
+      AppMethodBeat.o(188549);
       return paramContext;
       paramContext = paramContext.getConnectionInfo();
-      break label91;
+      break label114;
       paramContext = paramContext.getMacAddress();
       break;
     }
@@ -931,30 +956,36 @@ public class b
   
   public static String i(Context paramContext)
   {
-    AppMethodBeat.i(192967);
+    AppMethodBeat.i(188551);
+    if (!QbSdk.isEnableSensitiveApi())
+    {
+      TbsLog.i("AppUtil", "isEnableSensitiveApi = false");
+      AppMethodBeat.o(188551);
+      return "";
+    }
     if (!TextUtils.isEmpty(e))
     {
       paramContext = e;
-      AppMethodBeat.o(192967);
+      AppMethodBeat.o(188551);
       return paramContext;
     }
     try
     {
       e = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
-      label40:
+      label63:
       paramContext = e;
-      AppMethodBeat.o(192967);
+      AppMethodBeat.o(188551);
       return paramContext;
     }
     catch (Exception paramContext)
     {
-      break label40;
+      break label63;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.utils.b
  * JD-Core Version:    0.7.0.1
  */

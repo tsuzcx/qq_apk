@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:background="@drawable/c9" android:padding="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.MMTextView android:textSize="17.0dip" android:textColor="@color/afz" android:id="@id/iyz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.9" />
+    <View android:id="@id/aeu" android:background="@raw/icons_outlined_add2" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_alignParentRight="true" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_below="@id/iyz">
+        <LinearLayout android:orientation="horizontal" android:id="@id/be6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/afz" android:id="@id/ixg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:alpha="0.6" />
+    </LinearLayout>
+</RelativeLayout>

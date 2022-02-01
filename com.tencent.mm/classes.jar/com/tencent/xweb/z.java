@@ -16,33 +16,35 @@ public abstract class z
   
   public abstract String getUserAgentString();
   
-  public abstract void gfA();
+  public abstract void hsK();
+  
+  public abstract void hsL();
+  
+  public abstract void hsM();
   
   @Deprecated
-  public abstract void gfB();
+  public abstract void hsN();
   
-  public abstract void gfC();
+  public abstract void hsO();
   
-  public abstract void gfD();
+  public abstract void hsP();
   
-  public abstract void gfE();
+  public abstract void hsQ();
   
-  public abstract void gfF();
-  
-  public abstract void gft();
-  
-  public abstract void gfu();
-  
-  public abstract void gfv();
+  public abstract void hsR();
   
   @Deprecated
-  public abstract void gfw();
+  public abstract void hsS();
   
-  public abstract void gfx();
+  public abstract void hsT();
   
-  public abstract void gfy();
+  public abstract void hsU();
   
-  public abstract void gfz();
+  public abstract void hsV();
+  
+  public abstract void hsW();
+  
+  public abstract void hsX();
   
   public abstract void setAppBrandInfo(Map<String, String> paramMap);
   

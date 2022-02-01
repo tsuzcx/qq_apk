@@ -11,16 +11,16 @@ public class PluginFavUI
   extends f
   implements com.tencent.mm.kernel.a.b.b, c
 {
-  private com.tencent.mm.plugin.fav.ui.d.a rHs;
-  private a rHt;
-  private q rHu;
+  private com.tencent.mm.plugin.fav.ui.c.a tgZ;
+  private a tha;
+  private q thb;
   
   public PluginFavUI()
   {
     AppMethodBeat.i(107082);
-    this.rHs = new com.tencent.mm.plugin.fav.ui.d.a();
-    this.rHt = new a();
-    this.rHu = new q();
+    this.tgZ = new com.tencent.mm.plugin.fav.ui.c.a();
+    this.tha = new a();
+    this.thb = new q();
     AppMethodBeat.o(107082);
   }
   
@@ -29,18 +29,18 @@ public class PluginFavUI
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(107083);
-    this.rHs.alive();
-    this.rHt.alive();
-    this.rHu.alive();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).getFTSTaskDaemon().a(-86016, new com.tencent.mm.plugin.fts.a.a.a()
+    this.tgZ.alive();
+    this.tha.alive();
+    this.thb.alive();
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).getFTSTaskDaemon().a(-86016, new com.tencent.mm.plugin.fts.a.a.a()
     {
       public final boolean execute()
       {
         AppMethodBeat.i(107081);
-        Object localObject = new com.tencent.mm.plugin.fav.ui.c.d();
-        ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
-        localObject = new com.tencent.mm.plugin.fav.ui.c.b();
-        ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+        Object localObject = new com.tencent.mm.plugin.fav.ui.b.d();
+        ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+        localObject = new com.tencent.mm.plugin.fav.ui.b.b();
+        ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
         AppMethodBeat.o(107081);
         return true;
       }
@@ -56,9 +56,9 @@ public class PluginFavUI
   public void onAccountRelease()
   {
     AppMethodBeat.i(107084);
-    this.rHs.dead();
-    this.rHt.dead();
-    this.rHu.dead();
+    this.tgZ.dead();
+    this.tha.dead();
+    this.thb.dead();
     AppMethodBeat.o(107084);
   }
   

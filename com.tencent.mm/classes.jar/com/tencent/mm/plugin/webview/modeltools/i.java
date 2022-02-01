@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.webview.modeltools;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.he;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.hp;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class i
-  extends he
+  extends hp
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(79202);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "host";
-    locala.IBN.put("host", "TEXT");
+    localMAutoDBInfo.columns[0] = "host";
+    localMAutoDBInfo.colsMap.put("host", "TEXT");
     localStringBuilder.append(" host TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "expireTime";
-    locala.IBN.put("expireTime", "LONG");
+    localMAutoDBInfo.columns[1] = "expireTime";
+    localMAutoDBInfo.colsMap.put("expireTime", "LONG");
     localStringBuilder.append(" expireTime LONG");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(79202);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

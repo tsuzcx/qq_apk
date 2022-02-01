@@ -7,23 +7,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class b$2
   extends b.m
 {
-  b$2(b paramb1, ImageView paramImageView, b paramb2, Drawable paramDrawable)
+  b$2(b paramb1, ImageView paramImageView, b paramb2, String paramString, b.p paramp, Drawable paramDrawable)
   {
-    super(paramImageView, paramb2, (byte)0);
+    super(paramImageView, paramb2, paramString, paramp, (byte)0);
   }
   
-  public final void aEt()
+  public final void aYg()
   {
     AppMethodBeat.i(131337);
-    if ((getImageView() != null) && (this.hNS != null)) {
-      getImageView().setImageDrawable(this.hNS);
+    if ((getImageView() != null) && (this.iIX != null)) {
+      getImageView().setImageDrawable(this.iIX);
     }
     AppMethodBeat.o(131337);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a.b.2
  * JD-Core Version:    0.7.0.1
  */

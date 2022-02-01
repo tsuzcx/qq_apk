@@ -1,110 +1,195 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgLoadProgress;
-import com.tencent.mm.plugin.appbrand.appcache.WxaPkgWrappingInfo;
-import com.tencent.mm.plugin.appbrand.appcache.a.a.a;
-import com.tencent.mm.plugin.appbrand.appcache.ad;
-import com.tencent.mm.plugin.appbrand.appcache.bd;
-import com.tencent.mm.plugin.appbrand.appcache.bh;
-import com.tencent.mm.plugin.appbrand.appcache.bj;
-import com.tencent.mm.protocal.protobuf.cvv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Locale;
+import com.tencent.mm.protocal.protobuf.che;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class ao
-  extends am
+  extends MAutoStorage<ap>
 {
-  final String appId;
-  final String coY;
-  String dKY;
-  final int dov;
-  int duK;
-  String lOi;
+  public static final String mWc;
   
-  ao(u paramu)
+  static
   {
-    super(new ad(paramu.lLM.dwb, paramu.lLM.GXn, paramu.lLM.GXq));
-    AppMethodBeat.i(174984);
-    this.dKY = paramu.lLP;
-    this.appId = paramu.lLM.dwb;
-    this.coY = paramu.lLM.GXn;
-    this.dov = paramu.lLM.Gdl;
-    this.duK = paramu.lLM.GXq;
-    this.lOi = new ad(this.appId, this.coY, this.duK).toString();
-    AppMethodBeat.o(174984);
+    AppMethodBeat.i(47281);
+    mWc = MAutoStorage.getCreateSQLs(ap.kLR, "LaunchWxaAppRespTable");
+    AppMethodBeat.o(47281);
   }
   
-  public final String aWU()
+  public ao(ISQLiteDatabase paramISQLiteDatabase)
   {
-    AppMethodBeat.i(174986);
-    String str = String.format(Locale.US, "appId %s, module %s, codeType %d, pkgType %d,queryKey:%s", new Object[] { this.appId, this.coY, Integer.valueOf(this.dov), Integer.valueOf(this.duK), this.lNZ });
-    AppMethodBeat.o(174986);
-    return str;
+    super(paramISQLiteDatabase, ap.kLR, "LaunchWxaAppRespTable", ap.INDEX_CREATE);
   }
   
-  public final void prepare()
+  private boolean a(ap paramap, boolean paramBoolean)
   {
-    AppMethodBeat.i(174985);
-    al local1 = new al(this.dov)
-    {
-      protected final void b(WxaPkgLoadProgress paramAnonymousWxaPkgLoadProgress)
-      {
-        AppMethodBeat.i(174982);
-        super.b(paramAnonymousWxaPkgLoadProgress);
-        ao.this.c(paramAnonymousWxaPkgLoadProgress);
-        AppMethodBeat.o(174982);
-      }
-      
-      final String bsb()
-      {
-        AppMethodBeat.i(174980);
-        String str = ao.this.aWU();
-        AppMethodBeat.o(174980);
-        return str;
-      }
-      
-      final void e(WxaPkgWrappingInfo paramAnonymousWxaPkgWrappingInfo)
-      {
-        AppMethodBeat.i(174981);
-        ao.this.f(paramAnonymousWxaPkgWrappingInfo);
-        ao.this.g(paramAnonymousWxaPkgWrappingInfo);
-        AppMethodBeat.o(174981);
-      }
-    };
-    ae.i("MicroMsg.LaunchPkgPrepareJobMultiPkgNewTestCode", "%s before download, url(%s)", new Object[] { aWU(), this.dKY });
-    if (bu.isNullOrNil(this.dKY))
-    {
-      f(null);
-      AppMethodBeat.o(174985);
-      return;
+    AppMethodBeat.i(47275);
+    paramap.field_appIdHash = paramap.field_appId.hashCode();
+    super.insertNotify(paramap, paramBoolean);
+    paramBoolean = a(paramap, new String[] { "appId" });
+    Log.i("MicroMsg.LaunchWxaAppCacheStorage", "insertNotify appId %s ret %B", new Object[] { paramap.field_appId, Boolean.valueOf(paramBoolean) });
+    AppMethodBeat.o(47275);
+    return paramBoolean;
+  }
+  
+  private boolean a(ap paramap, boolean paramBoolean, String... paramVarArgs)
+  {
+    AppMethodBeat.i(47273);
+    int i;
+    if (!Util.isNullOrNil(paramVarArgs)) {
+      i = 0;
     }
-    if (!bj.a(this.lNZ.toString(), this.dov, this.dKY, local1, new a.a()
+    for (;;)
     {
-      public final String bav()
+      if (i < paramVarArgs.length)
       {
-        AppMethodBeat.i(174983);
-        Object localObject = j.aZu().a(ao.this.lNZ.toString(), ao.this.dov, new String[] { "versionMd5" });
-        localObject = "_" + ((bd)localObject).field_versionMd5;
-        AppMethodBeat.o(174983);
-        return localObject;
+        if (paramVarArgs[i].equals("appId"))
+        {
+          paramVarArgs[i] = "appIdHash";
+          paramap.field_appIdHash = paramap.field_appId.hashCode();
+        }
       }
-    }))
-    {
-      ae.e("MicroMsg.LaunchPkgPrepareJobMultiPkgNewTestCode", "%s start downloadPkg failed", new Object[] { aWU() });
-      f(null);
-      AppMethodBeat.o(174985);
-      return;
+      else
+      {
+        paramBoolean = super.delete(paramap, paramBoolean, paramVarArgs);
+        AppMethodBeat.o(47273);
+        return paramBoolean;
+      }
+      i += 1;
     }
-    bse();
-    AppMethodBeat.o(174985);
+  }
+  
+  private boolean b(ap paramap, boolean paramBoolean, String... paramVarArgs)
+  {
+    AppMethodBeat.i(47276);
+    int i;
+    if (!Util.isNullOrNil(paramVarArgs)) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < paramVarArgs.length)
+      {
+        if (paramVarArgs[i].equals("appId"))
+        {
+          paramVarArgs[i] = "appIdHash";
+          paramap.field_appIdHash = paramap.field_appId.hashCode();
+        }
+      }
+      else
+      {
+        paramBoolean = super.updateNotify(paramap, paramBoolean, paramVarArgs);
+        Log.i("MicroMsg.LaunchWxaAppCacheStorage", "updateNotify appId %s, ret %B", new Object[] { paramap.field_appId, Boolean.valueOf(paramBoolean) });
+        AppMethodBeat.o(47276);
+        return paramBoolean;
+      }
+      i += 1;
+    }
+  }
+  
+  public final ap a(String paramString, che paramche)
+  {
+    AppMethodBeat.i(47271);
+    if ((Util.isNullOrNil(paramString)) || (paramche == null))
+    {
+      AppMethodBeat.o(47271);
+      return null;
+    }
+    ap localap = new ap();
+    localap.b(paramche);
+    localap.field_appId = paramString;
+    paramche = new ap();
+    paramche.field_appId = paramString;
+    boolean bool1;
+    boolean bool2;
+    if (!a(paramche, new String[] { "appId" }))
+    {
+      bool1 = true;
+      if ((!bool1) && (paramche.equals(localap))) {
+        break label173;
+      }
+      bool2 = true;
+      label92:
+      Log.i("MicroMsg.LaunchWxaAppCacheStorage", "flush resp, appId %s, apply %B, insert %B", new Object[] { paramString, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      if (bool2)
+      {
+        if (!bool1) {
+          break label179;
+        }
+        a(localap, false);
+      }
+    }
+    for (;;)
+    {
+      if (!bool2) {
+        break label199;
+      }
+      if (!a(paramche, new String[] { "appId" })) {
+        break label199;
+      }
+      AppMethodBeat.o(47271);
+      return paramche;
+      bool1 = false;
+      break;
+      label173:
+      bool2 = false;
+      break label92;
+      label179:
+      b(localap, false, new String[] { "appId" });
+    }
+    label199:
+    AppMethodBeat.o(47271);
+    return localap;
+  }
+  
+  public final boolean a(ap paramap, String... paramVarArgs)
+  {
+    AppMethodBeat.i(47274);
+    int i;
+    if (!Util.isNullOrNil(paramVarArgs)) {
+      i = 0;
+    }
+    for (;;)
+    {
+      if (i < paramVarArgs.length)
+      {
+        if (paramVarArgs[i].equals("appId"))
+        {
+          paramVarArgs[i] = "appIdHash";
+          paramap.field_appIdHash = paramap.field_appId.hashCode();
+        }
+      }
+      else
+      {
+        boolean bool = super.get(paramap, paramVarArgs);
+        AppMethodBeat.o(47274);
+        return bool;
+      }
+      i += 1;
+    }
+  }
+  
+  public final boolean gC(String paramString)
+  {
+    AppMethodBeat.i(47272);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(47272);
+      return false;
+    }
+    ap localap = new ap();
+    localap.field_appId = paramString;
+    boolean bool = a(localap, false, new String[] { "appId" });
+    AppMethodBeat.o(47272);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.ao
  * JD-Core Version:    0.7.0.1
  */

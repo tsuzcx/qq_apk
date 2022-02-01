@@ -6,177 +6,186 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ag.k.b;
 import com.tencent.mm.aj.e;
-import com.tencent.mm.g.a.yh;
-import com.tencent.mm.g.a.yh.b;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.g.a.zj;
+import com.tencent.mm.g.a.zj.b;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bl;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bp;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.x;
-import com.tencent.mm.modelvoice.s;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.j.a;
-import com.tencent.mm.protocal.protobuf.eea;
-import com.tencent.mm.protocal.protobuf.eer;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.protocal.protobuf.eyi;
+import com.tencent.mm.protocal.protobuf.eyz;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bv.a;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.ca.a;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.vfs.k;
 import com.tencent.mm.vfs.o;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public final class h
 {
-  public static eer aD(bv parambv)
+  public static byte[] aF(Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(30024);
+    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
+    paramBitmap = localByteArrayOutputStream.toByteArray();
+    AppMethodBeat.o(30024);
+    return paramBitmap;
+  }
+  
+  public static eyz aP(ca paramca)
   {
     AppMethodBeat.i(30023);
-    eer localeer = new eer();
-    localeer.FSD = parambv.field_msgId;
-    localeer.FSt = parambv.field_createTime;
-    localeer.urJ = 1;
-    localeer.IiW = true;
+    eyz localeyz = new eyz();
+    localeyz.KMm = paramca.field_msgId;
+    localeyz.KMc = paramca.field_createTime;
+    localeyz.xKb = 1;
+    localeyz.NvA = true;
     Object localObject2;
     Object localObject1;
     label97:
     int i;
-    if (parambv.field_isSend == 1)
+    if (paramca.field_isSend == 1)
     {
-      localeer.Nickname = aGM(v.aAC());
-      localeer.HGP = v.aAC();
+      localeyz.Nickname = aWo(z.aTY());
+      localeyz.MRZ = z.aTY();
       localObject2 = null;
-      if (parambv.isSystem())
+      if (paramca.isSystem())
       {
-        localObject1 = ak.getContext().getString(2131761727);
-        localeer.urJ = 3;
-        parambv = (bv)localObject1;
+        localObject1 = MMApplicationContext.getContext().getString(2131763695);
+        localeyz.xKb = 3;
+        paramca = (ca)localObject1;
         if (localObject1 == null) {
-          parambv = ak.getContext().getString(2131761720);
+          paramca = MMApplicationContext.getContext().getString(2131763688);
         }
-        localeer.hFS = parambv;
+        localeyz.iAc = paramca;
         AppMethodBeat.o(30023);
-        return localeer;
+        return localeyz;
       }
     }
-    else if (x.wb(parambv.field_talker))
+    else if (ab.Eq(paramca.field_talker))
     {
-      localObject1 = parambv.field_talker;
-      i = bl.BJ(parambv.field_content);
+      localObject1 = paramca.field_talker;
+      i = bp.Kp(paramca.field_content);
       if (i == -1) {
-        break label1508;
+        break label1523;
       }
-      localObject2 = parambv.field_content.substring(0, i).trim();
+      localObject2 = paramca.field_content.substring(0, i).trim();
       if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
-        break label1508;
+        break label1523;
       }
       localObject1 = localObject2;
     }
-    label1159:
-    label1207:
-    label1505:
-    label1508:
+    label1172:
+    label1220:
+    label1520:
+    label1523:
     for (;;)
     {
       for (;;)
       {
-        localeer.Nickname = aGM((String)localObject1);
-        localeer.HGP = ((String)localObject1);
+        localeyz.Nickname = aWo((String)localObject1);
+        localeyz.MRZ = ((String)localObject1);
         break;
-        localeer.Nickname = aGM(parambv.field_talker);
-        localeer.HGP = parambv.field_talker;
+        localeyz.Nickname = aWo(paramca.field_talker);
+        localeyz.MRZ = paramca.field_talker;
         break;
-        if (parambv.ftg())
+        if (paramca.gAz())
         {
-          localObject1 = ak.getContext().getString(2131761693);
-          localeer.urJ = 4;
+          localObject1 = MMApplicationContext.getContext().getString(2131763661);
+          localeyz.xKb = 4;
           break label97;
         }
-        if (parambv.isText())
+        if (paramca.isText())
         {
-          if ((x.wb(parambv.field_talker)) && (parambv.field_isSend != 1))
+          if ((ab.Eq(paramca.field_talker)) && (paramca.field_isSend != 1))
           {
-            i = bl.BJ(parambv.field_content);
+            i = bp.Kp(paramca.field_content);
             if (i != -1)
             {
-              localObject1 = parambv.field_content.substring(i + 1).trim();
+              localObject1 = paramca.field_content.substring(i + 1).trim();
               break label97;
             }
-            localObject1 = parambv.field_content;
+            localObject1 = paramca.field_content;
             break label97;
           }
-          localObject1 = parambv.field_content;
+          localObject1 = paramca.field_content;
           break label97;
         }
-        if (parambv.ftf())
+        if (paramca.gAy())
         {
-          localObject1 = ak.getContext().getString(2131761729);
-          localeer.urJ = 6;
-          localeer.IiW = s.Y(parambv);
-          float f = s.sI(new com.tencent.mm.modelvoice.p(parambv.field_content).time);
-          localeer.IiX = new com.tencent.mm.bw.b(ak.getContext().getString(2131759570, new Object[] { Integer.valueOf((int)f) }).getBytes());
+          localObject1 = MMApplicationContext.getContext().getString(2131763697);
+          localeyz.xKb = 6;
+          localeyz.NvA = com.tencent.mm.modelvoice.s.ai(paramca);
+          float f = com.tencent.mm.modelvoice.s.AO(new com.tencent.mm.modelvoice.p(paramca.field_content).time);
+          localeyz.NvB = new com.tencent.mm.bw.b(MMApplicationContext.getContext().getString(2131760887, new Object[] { Integer.valueOf((int)f) }).getBytes());
           break label97;
         }
-        if (parambv.cyG())
+        if (paramca.cWJ())
         {
-          localObject1 = ak.getContext().getString(2131761728);
+          localObject1 = MMApplicationContext.getContext().getString(2131763696);
           break label97;
         }
-        if (parambv.cyI())
+        if (paramca.cWL())
         {
-          localObject1 = ak.getContext().getString(2131761719);
+          localObject1 = MMApplicationContext.getContext().getString(2131763687);
           break label97;
         }
-        if (parambv.fvx())
+        if (paramca.gDe())
         {
-          k.b localb = k.b.zb(parambv.field_content);
+          k.b localb = k.b.HD(paramca.field_content);
           localObject1 = localObject2;
           if (localb == null) {
             break label97;
           }
-          if (localb.hEl.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))
+          if (localb.iyr.startsWith("wxpay://c2cbizmessagehandler/hongbao/receivehongbao"))
           {
-            localeer.urJ = 5;
-            if (parambv.field_isSend == 1)
+            localeyz.xKb = 5;
+            if (paramca.field_isSend == 1)
             {
-              localObject1 = localb.hEf;
+              localObject1 = localb.iyl;
               break label97;
             }
-            localObject1 = localb.hEe;
+            localObject1 = localb.iyk;
             break label97;
           }
-          if (parambv.field_isSend == 1) {}
-          for (parambv = localb.hEf;; parambv = localb.hEe)
+          if (paramca.field_isSend == 1) {}
+          for (paramca = localb.iyl;; paramca = localb.iyk)
           {
-            localObject1 = ak.getContext().getString(2131761672, new Object[] { parambv });
+            localObject1 = MMApplicationContext.getContext().getString(2131763640, new Object[] { paramca });
             break;
           }
         }
-        if (parambv.fvy())
+        if (paramca.gDf())
         {
-          localObject1 = ak.getContext().getString(2131761671);
-          localeer.urJ = 5;
+          localObject1 = MMApplicationContext.getContext().getString(2131763639);
+          localeyz.xKb = 5;
           break label97;
         }
-        if (parambv.cVH())
+        if (paramca.dOQ())
         {
-          parambv = k.b.zb(parambv.field_content);
+          paramca = k.b.HD(paramca.field_content);
           localObject1 = localObject2;
-          if (parambv == null) {
+          if (paramca == null) {
             break label97;
           }
-          switch (parambv.type)
+          switch (paramca.type)
           {
           case 7: 
           case 9: 
@@ -189,163 +198,162 @@ public final class h
             localObject1 = localObject2;
             break;
           case 2: 
-            localObject1 = String.format(ak.getContext().getString(2131761693), new Object[0]);
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763661), new Object[0]);
             break;
           case 5: 
-            localObject1 = String.format(ak.getContext().getString(2131761662), new Object[] { bu.bI(parambv.title, "") });
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763630), new Object[] { Util.nullAs(paramca.title, "") });
             break;
           case 3: 
-            localObject1 = String.format(ak.getContext().getString(2131761665), new Object[] { bu.bI(parambv.title, "") });
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763633), new Object[] { Util.nullAs(paramca.title, "") });
             break;
           case 6: 
-            localObject1 = String.format(ak.getContext().getString(2131761661), new Object[] { bu.bI(parambv.title, "") });
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763629), new Object[] { Util.nullAs(paramca.title, "") });
             break;
           case 4: 
-            localObject1 = String.format(ak.getContext().getString(2131761669), new Object[] { bu.bI(parambv.title, "") });
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763637), new Object[] { Util.nullAs(paramca.title, "") });
             break;
           case 19: 
-            localObject1 = String.format(ak.getContext().getString(2131761667), new Object[] { bu.bI(parambv.title, "") });
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763635), new Object[] { Util.nullAs(paramca.title, "") });
             break;
           case 15: 
-            localObject1 = String.format(ak.getContext().getString(2131761660), new Object[] { bu.bI(parambv.title, "") });
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763628), new Object[] { Util.nullAs(paramca.title, "") });
             break;
           case 10: 
-            localObject1 = String.format(ak.getContext().getString(2131761666), new Object[] { bu.bI(parambv.title, "") });
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763634), new Object[] { Util.nullAs(paramca.title, "") });
             break;
           case 13: 
-            localObject1 = String.format(ak.getContext().getString(2131761664), new Object[] { bu.bI(parambv.title, "") });
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763632), new Object[] { Util.nullAs(paramca.title, "") });
             break;
           case 20: 
-            localObject1 = String.format(ak.getContext().getString(2131761668), new Object[] { bu.bI(parambv.title, "") });
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763636), new Object[] { Util.nullAs(paramca.title, "") });
             break;
           case 16: 
-            localObject1 = String.format(ak.getContext().getString(2131761673), new Object[] { bu.bI(parambv.title, "") });
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763641), new Object[] { Util.nullAs(paramca.title, "") });
             break;
           case 8: 
-            localObject1 = ak.getContext().getString(2131761674, new Object[] { bu.bI(parambv.title, "") });
+            localObject1 = MMApplicationContext.getContext().getString(2131763642, new Object[] { Util.nullAs(paramca.title, "") });
             break;
           }
         }
-        if (parambv.fvG())
+        if (paramca.gDn())
         {
-          localObject1 = ak.getContext().getString(2131761682);
-          if (((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr() == null) {
-            break label1505;
+          localObject1 = MMApplicationContext.getContext().getString(2131763650);
+          if (((com.tencent.mm.plugin.emoji.b.d)g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr() == null) {
+            break label1520;
           }
-          parambv = ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aci(parambv.field_imgPath);
-          if (bu.isNullOrNil(((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().acm(parambv.Lj())))
+          paramca = ((com.tencent.mm.plugin.emoji.b.d)g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().aml(paramca.field_imgPath);
+          if (Util.isNullOrNil(((com.tencent.mm.plugin.emoji.b.d)g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().amp(paramca.getMd5())))
           {
-            localObject1 = ak.getContext().getString(2131761682);
-            localObject2 = new eea();
-            ((eea)localObject2).MD5 = parambv.Lj();
-            if (!parambv.isGif()) {
-              break label1264;
+            localObject1 = MMApplicationContext.getContext().getString(2131763650);
+            localObject2 = new eyi();
+            ((eyi)localObject2).MD5 = paramca.getMd5();
+            if (!paramca.isGif()) {
+              break label1278;
             }
-            ((eea)localObject2).nJA = 1;
+            ((eyi)localObject2).oUv = 1;
           }
         }
         try
         {
           for (;;)
           {
-            localeer.IiX = new com.tencent.mm.bw.b(((eea)localObject2).toByteArray());
-            localeer.urJ = 2;
+            localeyz.NvB = new com.tencent.mm.bw.b(((eyi)localObject2).toByteArray());
+            localeyz.xKb = 2;
             break;
-            localObject1 = "[" + ((com.tencent.mm.plugin.emoji.b.d)g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().acm(parambv.Lj()) + "]";
-            break label1159;
-            label1264:
-            ((eea)localObject2).nJA = 2;
+            localObject1 = "[" + ((com.tencent.mm.plugin.emoji.b.d)g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().amp(paramca.getMd5()) + "]";
+            break label1172;
+            label1278:
+            ((eyi)localObject2).oUv = 2;
           }
-          if (parambv.cVJ())
+          if (paramca.dOS())
           {
-            localObject1 = ak.getContext().getString(2131761694);
+            localObject1 = MMApplicationContext.getContext().getString(2131763662);
             break label97;
           }
-          if ((!parambv.fvA()) && (!parambv.fvB()))
+          if ((!paramca.gDh()) && (!paramca.gDi()))
           {
-            if (parambv.getType() == 64)
+            if (paramca.getType() == 64)
             {
               i = 1;
               if (i == 0) {
-                break label1425;
+                break label1439;
               }
             }
           }
-          else if (!parambv.field_content.equals(bv.JgK))
+          else if (!paramca.field_content.equals(ca.OqB))
           {
-            parambv = parambv.field_content;
-            localObject1 = new yh();
-            ((yh)localObject1).dNE.dto = 1;
-            ((yh)localObject1).dNE.content = parambv;
-            a.IvT.l((com.tencent.mm.sdk.b.b)localObject1);
-            if (((yh)localObject1).dNF.type != 3) {
-              break label1407;
+            paramca = paramca.field_content;
+            localObject1 = new zj();
+            ((zj)localObject1).efx.dKy = 1;
+            ((zj)localObject1).efx.content = paramca;
+            EventCenter.instance.publish((IEvent)localObject1);
+            if (((zj)localObject1).efy.type != 3) {
+              break label1421;
             }
           }
-          label1407:
           for (i = 1;; i = 0)
           {
             if (i == 0) {
-              break label1412;
+              break label1426;
             }
-            localObject1 = ak.getContext().getString(2131761733);
+            localObject1 = MMApplicationContext.getContext().getString(2131763701);
             break;
             i = 0;
-            break label1318;
+            break label1332;
           }
-          localObject1 = ak.getContext().getString(2131761732);
+          localObject1 = MMApplicationContext.getContext().getString(2131763700);
           break label97;
-          if (parambv.fvE())
+          if (paramca.gDl())
           {
-            bc.aCg();
-            parambv = c.azI().arp(parambv.field_content);
-            localObject1 = String.format(ak.getContext().getString(2131761673), new Object[] { parambv.getDisplayName() });
+            bg.aVF();
+            paramca = c.aSQ().aEK(paramca.field_content);
+            localObject1 = String.format(MMApplicationContext.getContext().getString(2131763641), new Object[] { paramca.getDisplayName() });
             break label97;
           }
           localObject1 = localObject2;
-          if (parambv.getType() != -1879048186) {
+          if (paramca.getType() != -1879048186) {
             break label97;
           }
-          localObject1 = ak.getContext().getString(2131761663);
+          localObject1 = MMApplicationContext.getContext().getString(2131763631);
         }
-        catch (IOException parambv)
+        catch (IOException paramca)
         {
-          break label1207;
+          break label1220;
         }
       }
       break label97;
     }
   }
   
-  public static final Bitmap aGL(String paramString)
+  public static final Bitmap aWn(String paramString)
   {
     AppMethodBeat.i(30021);
-    Bitmap localBitmap = a.b.ffl().fl(paramString);
+    Bitmap localBitmap = a.b.gov().fZ(paramString);
     if (localBitmap == null)
     {
-      com.tencent.mm.aj.p.aEA();
-      paramString = e.K(paramString, false);
-      ae.d("MicroMsg.Wear.WearUtil", "avatar fullpath: %s", new Object[] { paramString });
+      com.tencent.mm.aj.p.aYn();
+      paramString = e.M(paramString, false);
+      Log.d("MicroMsg.Wear.WearUtil", "avatar fullpath: %s", new Object[] { paramString });
     }
-    for (paramString = e.DF(paramString);; paramString = localBitmap)
+    for (paramString = e.Mq(paramString);; paramString = localBitmap)
     {
       AppMethodBeat.o(30021);
       return paramString;
-      ae.d("MicroMsg.Wear.WearUtil", "get wear avatar from cache: %s", new Object[] { paramString });
+      Log.d("MicroMsg.Wear.WearUtil", "get wear avatar from cache: %s", new Object[] { paramString });
     }
   }
   
-  public static String aGM(String paramString)
+  public static String aWo(String paramString)
   {
     AppMethodBeat.i(30022);
-    bc.aCg();
-    an localan = c.azF().BH(paramString);
+    bg.aVF();
+    as localas = c.aSN().Kn(paramString);
     String str;
-    if (x.wb(paramString))
+    if (ab.Eq(paramString))
     {
-      str = ak.getContext().getString(2131757293);
-      paramString = com.tencent.mm.model.w.b(localan, paramString);
-      if ((localan.field_username.equals(paramString)) || (bu.isNullOrNil(paramString))) {
+      str = MMApplicationContext.getContext().getString(2131757507);
+      paramString = com.tencent.mm.model.aa.b(localas, paramString);
+      if ((localas.field_username.equals(paramString)) || (Util.isNullOrNil(paramString))) {
         break label78;
       }
     }
@@ -353,27 +361,27 @@ public final class h
     {
       AppMethodBeat.o(30022);
       return paramString;
-      paramString = com.tencent.mm.model.w.b(localan, paramString);
+      paramString = com.tencent.mm.model.aa.b(localas, paramString);
       continue;
       label78:
       paramString = str;
     }
   }
   
-  public static byte[] aGN(String paramString)
+  public static byte[] aWp(String paramString)
   {
     AppMethodBeat.i(30027);
     paramString = "lib" + paramString + ".so";
-    paramString = o.bb(com.tencent.mm.vfs.w.B(new k(new k(com.tencent.mm.loader.j.b.asa(), "lib"), paramString).fTh()), 0, -1);
+    paramString = com.tencent.mm.vfs.s.aW(com.tencent.mm.vfs.aa.z(new o(new o(com.tencent.mm.loader.j.b.aKA(), "lib"), paramString).her()), 0, -1);
     AppMethodBeat.o(30027);
     return paramString;
   }
   
-  public static boolean afv()
+  public static boolean avj()
   {
     boolean bool = true;
     AppMethodBeat.i(30025);
-    PackageManager localPackageManager = ak.getContext().getPackageManager();
+    PackageManager localPackageManager = MMApplicationContext.getContext().getPackageManager();
     try
     {
       localPackageManager.getPackageInfo("com.google.android.wearable.app.cn", 1);
@@ -389,11 +397,11 @@ public final class h
     }
   }
   
-  public static boolean afw()
+  public static boolean avk()
   {
     boolean bool = true;
     AppMethodBeat.i(30026);
-    PackageManager localPackageManager = ak.getContext().getPackageManager();
+    PackageManager localPackageManager = MMApplicationContext.getContext().getPackageManager();
     try
     {
       localPackageManager.getPackageInfo("com.google.android.wearable.app", 1);
@@ -408,20 +416,10 @@ public final class h
       }
     }
   }
-  
-  public static byte[] at(Bitmap paramBitmap)
-  {
-    AppMethodBeat.i(30024);
-    ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-    paramBitmap.compress(Bitmap.CompressFormat.PNG, 100, localByteArrayOutputStream);
-    paramBitmap = localByteArrayOutputStream.toByteArray();
-    AppMethodBeat.o(30024);
-    return paramBitmap;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wear.model.h
  * JD-Core Version:    0.7.0.1
  */

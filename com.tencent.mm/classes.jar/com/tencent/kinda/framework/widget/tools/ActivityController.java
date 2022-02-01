@@ -11,9 +11,9 @@ import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.kinda.gen.IUIPage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.framework.app.UIPageFragmentActivity;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -41,7 +41,7 @@ public class ActivityController
   public static void attach(Activity paramActivity)
   {
     AppMethodBeat.i(19305);
-    ae.i("MicroMsg.ActivityController", "attach %s", new Object[] { paramActivity });
+    Log.i("MicroMsg.ActivityController", "attach %s", new Object[] { paramActivity });
     try
     {
       currentActivity = new WeakReference(paramActivity);
@@ -68,14 +68,14 @@ public class ActivityController
       AppMethodBeat.o(19305);
     }
     activityCreating = false;
-    ae.i("MicroMsg.ActivityController", "activityCreating has set false.");
+    Log.i("MicroMsg.ActivityController", "activityCreating has set false.");
     AppMethodBeat.o(19305);
   }
   
   public static void detach(Activity paramActivity)
   {
-    AppMethodBeat.i(193253);
-    ae.i("MicroMsg.ActivityController", "detach %s", new Object[] { paramActivity });
+    AppMethodBeat.i(214570);
+    Log.i("MicroMsg.ActivityController", "detach %s", new Object[] { paramActivity });
     try
     {
       if ((currentActivity != null) && (paramActivity == currentActivity.get())) {
@@ -87,7 +87,7 @@ public class ActivityController
     }
     finally
     {
-      AppMethodBeat.o(193253);
+      AppMethodBeat.o(214570);
     }
   }
   
@@ -115,7 +115,7 @@ public class ActivityController
     //   12: ifnonnull +20 -> 32
     //   15: ldc 8
     //   17: ldc 134
-    //   19: invokestatic 137	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   19: invokestatic 137	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   22: ldc 2
     //   24: monitorexit
     //   25: sipush 19309
@@ -149,10 +149,10 @@ public class ActivityController
     //   90: return
     //   91: aload_0
     //   92: ifnonnull +14 -> 106
-    //   95: getstatic 155	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
+    //   95: getstatic 155	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
     //   98: sipush 965
     //   101: bipush 53
-    //   103: invokevirtual 159	com/tencent/mm/plugin/report/service/g:dD	(II)V
+    //   103: invokevirtual 159	com/tencent/mm/plugin/report/service/h:dN	(II)V
     //   106: ldc 8
     //   108: new 161	java/lang/StringBuilder
     //   111: dup
@@ -165,7 +165,7 @@ public class ActivityController
     //   126: aload_0
     //   127: invokevirtual 170	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   130: invokevirtual 179	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   133: invokestatic 137	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   133: invokestatic 137	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   136: goto -55 -> 81
     //   139: astore_0
     //   140: ldc 2
@@ -192,21 +192,21 @@ public class ActivityController
   public static void removeAll()
   {
     AppMethodBeat.i(185698);
-    ae.i("MicroMsg.ActivityController", "removeAllFragments");
+    Log.i("MicroMsg.ActivityController", "removeAllFragments");
     if ((currentActivity == null) || (currentActivity.get() == null))
     {
-      ae.e("MicroMsg.ActivityController", "currentActivity is null, needn't remove any modal.");
+      Log.e("MicroMsg.ActivityController", "currentActivity is null, needn't remove any modal.");
       AppMethodBeat.o(185698);
       return;
     }
     Activity localActivity = (Activity)currentActivity.get();
     if ((localActivity != null) && (!localActivity.isFinishing()))
     {
-      ae.w("MicroMsg.ActivityController", "remove all modal");
+      Log.w("MicroMsg.ActivityController", "remove all modal");
       if (fragmentPond.size() > 0)
       {
         fragmentPond.clear();
-        g.yxI.dD(965, 52);
+        h.CyF.dN(965, 52);
       }
       localActivity.finish();
     }
@@ -217,7 +217,7 @@ public class ActivityController
   {
     AppMethodBeat.i(19310);
     activityCreating = false;
-    ae.i("MicroMsg.ActivityController", "activityCreating has set false.");
+    Log.i("MicroMsg.ActivityController", "activityCreating has set false.");
     AppMethodBeat.o(19310);
   }
   
@@ -243,180 +243,205 @@ public class ActivityController
     //   3: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: ldc 2
     //   8: monitorenter
-    //   9: aload_0
-    //   10: invokevirtual 140	java/lang/Object:hashCode	()I
-    //   13: istore_1
-    //   14: getstatic 36	com/tencent/kinda/framework/widget/tools/ActivityController:fragmentPond	Ljava/util/HashMap;
-    //   17: iload_1
-    //   18: invokestatic 144	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   21: invokevirtual 207	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
-    //   24: ifne +72 -> 96
-    //   27: new 210	com/tencent/kinda/framework/app/ModalFragment
-    //   30: dup
-    //   31: invokespecial 211	com/tencent/kinda/framework/app/ModalFragment:<init>	()V
-    //   34: astore_2
-    //   35: aload_2
-    //   36: checkcast 210	com/tencent/kinda/framework/app/ModalFragment
-    //   39: aload_0
-    //   40: invokevirtual 214	com/tencent/kinda/framework/app/ModalFragment:attachModal	(Lcom/tencent/kinda/gen/IUIModal;)V
-    //   43: getstatic 36	com/tencent/kinda/framework/widget/tools/ActivityController:fragmentPond	Ljava/util/HashMap;
-    //   46: iload_1
-    //   47: invokestatic 144	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   50: aload_2
-    //   51: invokevirtual 218	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   54: pop
-    //   55: aload_2
-    //   56: astore_0
-    //   57: invokestatic 220	com/tencent/kinda/framework/widget/tools/ActivityController:isTopKindaActivity	()Z
-    //   60: ifeq +53 -> 113
-    //   63: getstatic 64	com/tencent/kinda/framework/widget/tools/ActivityController:currentActivity	Ljava/lang/ref/WeakReference;
-    //   66: invokevirtual 117	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   69: checkcast 72	com/tencent/kinda/framework/widget/base/IEventFragment
-    //   72: aload_0
-    //   73: invokeinterface 103 2 0
-    //   78: pop
-    //   79: ldc 8
-    //   81: ldc 222
-    //   83: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   86: ldc 2
-    //   88: monitorexit
-    //   89: sipush 19308
-    //   92: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   95: return
-    //   96: getstatic 36	com/tencent/kinda/framework/widget/tools/ActivityController:fragmentPond	Ljava/util/HashMap;
-    //   99: iload_1
-    //   100: invokestatic 144	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   103: invokevirtual 97	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   106: checkcast 99	com/tencent/kinda/framework/widget/base/BaseFragment
-    //   109: astore_0
-    //   110: goto -53 -> 57
-    //   113: getstatic 43	com/tencent/kinda/framework/widget/tools/ActivityController:pendingList	Ljava/util/List;
-    //   116: iload_1
-    //   117: invokestatic 144	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   120: invokeinterface 225 2 0
-    //   125: pop
-    //   126: getstatic 38	com/tencent/kinda/framework/widget/tools/ActivityController:activityCreating	Z
-    //   129: ifeq +20 -> 149
-    //   132: ldc 8
-    //   134: ldc 227
-    //   136: invokestatic 188	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   139: ldc 2
-    //   141: monitorexit
-    //   142: sipush 19308
-    //   145: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   148: return
-    //   149: invokestatic 126	com/tencent/kinda/framework/widget/tools/KindaContext:get	()Landroid/content/Context;
-    //   152: astore_0
-    //   153: aload_0
-    //   154: ifnonnull +20 -> 174
-    //   157: ldc 8
-    //   159: ldc 229
-    //   161: invokestatic 188	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   164: ldc 2
-    //   166: monitorexit
-    //   167: sipush 19308
-    //   170: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   173: return
-    //   174: iconst_1
-    //   175: putstatic 38	com/tencent/kinda/framework/widget/tools/ActivityController:activityCreating	Z
-    //   178: ldc 8
-    //   180: ldc 231
-    //   182: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   185: new 233	android/content/Intent
-    //   188: dup
-    //   189: aload_0
-    //   190: ldc 121
-    //   192: invokespecial 236	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
-    //   195: astore_2
-    //   196: aload_0
-    //   197: instanceof 74
-    //   200: ifeq +23 -> 223
-    //   203: aload_0
-    //   204: checkcast 74	android/app/Activity
-    //   207: invokevirtual 240	android/app/Activity:getIntent	()Landroid/content/Intent;
-    //   210: astore_3
-    //   211: aload_3
-    //   212: ifnull +11 -> 223
-    //   215: aload_3
-    //   216: ldc 242
-    //   218: iconst_1
-    //   219: invokevirtual 246	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-    //   222: pop
-    //   223: aload_2
-    //   224: ldc 248
-    //   226: iconst_0
-    //   227: invokevirtual 246	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
-    //   230: pop
-    //   231: new 250	com/tencent/mm/hellhoundlib/b/a
-    //   234: dup
-    //   235: invokespecial 251	com/tencent/mm/hellhoundlib/b/a:<init>	()V
-    //   238: aload_2
-    //   239: invokevirtual 255	com/tencent/mm/hellhoundlib/b/a:bc	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
-    //   242: astore_2
+    //   9: getstatic 64	com/tencent/kinda/framework/widget/tools/ActivityController:currentActivity	Ljava/lang/ref/WeakReference;
+    //   12: ifnull +37 -> 49
+    //   15: getstatic 64	com/tencent/kinda/framework/widget/tools/ActivityController:currentActivity	Ljava/lang/ref/WeakReference;
+    //   18: invokevirtual 117	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   21: checkcast 74	android/app/Activity
+    //   24: astore_2
+    //   25: aload_2
+    //   26: instanceof 121
+    //   29: ifeq +20 -> 49
+    //   32: getstatic 36	com/tencent/kinda/framework/widget/tools/ActivityController:fragmentPond	Ljava/util/HashMap;
+    //   35: invokevirtual 189	java/util/HashMap:size	()I
+    //   38: ifne +11 -> 49
+    //   41: aload_2
+    //   42: checkcast 121	com/tencent/mm/framework/app/UIPageFragmentActivity
+    //   45: iconst_1
+    //   46: putfield 211	com/tencent/mm/framework/app/UIPageFragmentActivity:hgt	Z
+    //   49: aload_0
+    //   50: invokevirtual 140	java/lang/Object:hashCode	()I
+    //   53: istore_1
+    //   54: getstatic 36	com/tencent/kinda/framework/widget/tools/ActivityController:fragmentPond	Ljava/util/HashMap;
+    //   57: iload_1
+    //   58: invokestatic 144	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   61: invokevirtual 207	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   64: ifne +72 -> 136
+    //   67: new 213	com/tencent/kinda/framework/app/ModalFragment
+    //   70: dup
+    //   71: invokespecial 214	com/tencent/kinda/framework/app/ModalFragment:<init>	()V
+    //   74: astore_2
+    //   75: aload_2
+    //   76: checkcast 213	com/tencent/kinda/framework/app/ModalFragment
+    //   79: aload_0
+    //   80: invokevirtual 217	com/tencent/kinda/framework/app/ModalFragment:attachModal	(Lcom/tencent/kinda/gen/IUIModal;)V
+    //   83: getstatic 36	com/tencent/kinda/framework/widget/tools/ActivityController:fragmentPond	Ljava/util/HashMap;
+    //   86: iload_1
+    //   87: invokestatic 144	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   90: aload_2
+    //   91: invokevirtual 221	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   94: pop
+    //   95: aload_2
+    //   96: astore_0
+    //   97: invokestatic 223	com/tencent/kinda/framework/widget/tools/ActivityController:isTopKindaActivity	()Z
+    //   100: ifeq +53 -> 153
+    //   103: getstatic 64	com/tencent/kinda/framework/widget/tools/ActivityController:currentActivity	Ljava/lang/ref/WeakReference;
+    //   106: invokevirtual 117	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   109: checkcast 72	com/tencent/kinda/framework/widget/base/IEventFragment
+    //   112: aload_0
+    //   113: invokeinterface 103 2 0
+    //   118: pop
+    //   119: ldc 8
+    //   121: ldc 225
+    //   123: invokestatic 111	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   126: ldc 2
+    //   128: monitorexit
+    //   129: sipush 19308
+    //   132: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   135: return
+    //   136: getstatic 36	com/tencent/kinda/framework/widget/tools/ActivityController:fragmentPond	Ljava/util/HashMap;
+    //   139: iload_1
+    //   140: invokestatic 144	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   143: invokevirtual 97	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   146: checkcast 99	com/tencent/kinda/framework/widget/base/BaseFragment
+    //   149: astore_0
+    //   150: goto -53 -> 97
+    //   153: getstatic 43	com/tencent/kinda/framework/widget/tools/ActivityController:pendingList	Ljava/util/List;
+    //   156: iload_1
+    //   157: invokestatic 144	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   160: invokeinterface 228 2 0
+    //   165: pop
+    //   166: getstatic 38	com/tencent/kinda/framework/widget/tools/ActivityController:activityCreating	Z
+    //   169: ifeq +20 -> 189
+    //   172: ldc 8
+    //   174: ldc 230
+    //   176: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   179: ldc 2
+    //   181: monitorexit
+    //   182: sipush 19308
+    //   185: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   188: return
+    //   189: invokestatic 126	com/tencent/kinda/framework/widget/tools/KindaContext:get	()Landroid/content/Context;
+    //   192: astore_0
+    //   193: aload_0
+    //   194: ifnonnull +20 -> 214
+    //   197: ldc 8
+    //   199: ldc 232
+    //   201: invokestatic 188	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   204: ldc 2
+    //   206: monitorexit
+    //   207: sipush 19308
+    //   210: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   213: return
+    //   214: iconst_1
+    //   215: putstatic 38	com/tencent/kinda/framework/widget/tools/ActivityController:activityCreating	Z
+    //   218: ldc 8
+    //   220: ldc 234
+    //   222: invokestatic 111	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   225: new 236	android/content/Intent
+    //   228: dup
+    //   229: aload_0
+    //   230: ldc 121
+    //   232: invokespecial 239	android/content/Intent:<init>	(Landroid/content/Context;Ljava/lang/Class;)V
+    //   235: astore_2
+    //   236: aload_0
+    //   237: instanceof 74
+    //   240: ifeq +23 -> 263
     //   243: aload_0
-    //   244: aload_2
-    //   245: invokevirtual 259	com/tencent/mm/hellhoundlib/b/a:ahE	()[Ljava/lang/Object;
-    //   248: ldc_w 260
-    //   251: ldc_w 261
-    //   254: ldc_w 262
-    //   257: ldc_w 264
-    //   260: ldc_w 266
-    //   263: ldc_w 268
-    //   266: invokestatic 274	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   269: aload_0
-    //   270: aload_2
-    //   271: iconst_0
-    //   272: invokevirtual 278	com/tencent/mm/hellhoundlib/b/a:mt	(I)Ljava/lang/Object;
-    //   275: checkcast 233	android/content/Intent
-    //   278: invokevirtual 282	android/content/Context:startActivity	(Landroid/content/Intent;)V
-    //   281: aload_0
-    //   282: ldc_w 260
-    //   285: ldc_w 261
-    //   288: ldc_w 262
+    //   244: checkcast 74	android/app/Activity
+    //   247: invokevirtual 243	android/app/Activity:getIntent	()Landroid/content/Intent;
+    //   250: astore_3
+    //   251: aload_3
+    //   252: ifnull +11 -> 263
+    //   255: aload_3
+    //   256: ldc 245
+    //   258: iconst_1
+    //   259: invokevirtual 249	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   262: pop
+    //   263: aload_2
+    //   264: ldc 251
+    //   266: iconst_0
+    //   267: invokevirtual 249	android/content/Intent:putExtra	(Ljava/lang/String;Z)Landroid/content/Intent;
+    //   270: pop
+    //   271: new 253	com/tencent/mm/hellhoundlib/b/a
+    //   274: dup
+    //   275: invokespecial 254	com/tencent/mm/hellhoundlib/b/a:<init>	()V
+    //   278: aload_2
+    //   279: invokevirtual 258	com/tencent/mm/hellhoundlib/b/a:bl	(Ljava/lang/Object;)Lcom/tencent/mm/hellhoundlib/b/a;
+    //   282: astore_2
+    //   283: aload_0
+    //   284: aload_2
+    //   285: invokevirtual 262	com/tencent/mm/hellhoundlib/b/a:axQ	()[Ljava/lang/Object;
+    //   288: ldc_w 263
     //   291: ldc_w 264
-    //   294: ldc_w 266
-    //   297: ldc_w 268
-    //   300: invokestatic 285	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   303: ldc 8
-    //   305: ldc_w 287
-    //   308: invokestatic 111	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   311: goto -225 -> 86
-    //   314: astore_0
-    //   315: ldc 2
-    //   317: monitorexit
-    //   318: sipush 19308
-    //   321: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   324: aload_0
-    //   325: athrow
+    //   294: ldc_w 265
+    //   297: ldc_w 267
+    //   300: ldc_w 269
+    //   303: ldc_w 271
+    //   306: invokestatic 277	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;[Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   309: aload_0
+    //   310: aload_2
+    //   311: iconst_0
+    //   312: invokevirtual 281	com/tencent/mm/hellhoundlib/b/a:pG	(I)Ljava/lang/Object;
+    //   315: checkcast 236	android/content/Intent
+    //   318: invokevirtual 285	android/content/Context:startActivity	(Landroid/content/Intent;)V
+    //   321: aload_0
+    //   322: ldc_w 263
+    //   325: ldc_w 264
+    //   328: ldc_w 265
+    //   331: ldc_w 267
+    //   334: ldc_w 269
+    //   337: ldc_w 271
+    //   340: invokestatic 288	com/tencent/mm/hellhoundlib/a/a:a	(Ljava/lang/Object;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   343: ldc 8
+    //   345: ldc_w 290
+    //   348: invokestatic 111	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   351: goto -225 -> 126
+    //   354: astore_0
+    //   355: ldc 2
+    //   357: monitorexit
+    //   358: sipush 19308
+    //   361: invokestatic 46	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   364: aload_0
+    //   365: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	326	0	paramIUIModal	com.tencent.kinda.gen.IUIModal
-    //   13	104	1	i	int
-    //   34	237	2	localObject	Object
-    //   210	6	3	localIntent	Intent
+    //   0	366	0	paramIUIModal	com.tencent.kinda.gen.IUIModal
+    //   53	104	1	i	int
+    //   24	287	2	localObject	Object
+    //   250	6	3	localIntent	Intent
     // Exception table:
     //   from	to	target	type
-    //   9	55	314	finally
-    //   57	86	314	finally
-    //   86	89	314	finally
-    //   96	110	314	finally
-    //   113	142	314	finally
-    //   149	153	314	finally
-    //   157	167	314	finally
-    //   174	211	314	finally
-    //   215	223	314	finally
-    //   223	311	314	finally
-    //   315	318	314	finally
+    //   9	49	354	finally
+    //   49	95	354	finally
+    //   97	126	354	finally
+    //   126	129	354	finally
+    //   136	150	354	finally
+    //   153	182	354	finally
+    //   189	193	354	finally
+    //   197	207	354	finally
+    //   214	251	354	finally
+    //   255	263	354	finally
+    //   263	351	354	finally
+    //   355	358	354	finally
   }
   
   public static void startNewUIPage(IUIPage paramIUIPage, ITransmitKvData paramITransmitKvData)
   {
     AppMethodBeat.i(19307);
+    if (currentActivity != null)
+    {
+      localObject = (Activity)currentActivity.get();
+      if ((localObject instanceof UIPageFragmentActivity)) {
+        ((UIPageFragmentActivity)localObject).hgt = false;
+      }
+    }
     String str1 = paramITransmitKvData.getString("KindaWebViewURL");
     String str2 = paramITransmitKvData.getString("KindaTinyAppUserName");
     String str3 = paramITransmitKvData.getString("KindaTinyAppPath");
     String str4 = paramITransmitKvData.getString("KindaTinyAppVersion");
-    int i = bu.getInt(paramITransmitKvData.getString("KindaTinyAppType"), 0);
+    int i = Util.getInt(paramITransmitKvData.getString("KindaTinyAppScene"), 0);
+    int j = Util.getInt(paramITransmitKvData.getString("KindaTinyAppType"), 0);
     Object localObject = new MainFragment();
     ((MainFragment)localObject).attachPage(paramIUIPage);
     fragmentPond.put(Integer.valueOf(paramIUIPage.hashCode()), localObject);
@@ -430,7 +455,7 @@ public class ActivityController
       localBundle = new Bundle();
       localBundle.putInt("intent_target", paramIUIPage.hashCode());
       if (str1.length() <= 0) {
-        break label264;
+        break label318;
       }
       localBundle.putBoolean("intent_webview", true);
       localBundle.putString("intent_webview_url", str1);
@@ -440,10 +465,10 @@ public class ActivityController
       localIntent.putExtra("intent_bundle", localBundle);
       localIntent.putExtra("check_wallet_lock", paramITransmitKvData.getBool("check_wallet_lock"));
       if (!isTopKindaActivity()) {
-        break label323;
+        break label386;
       }
-      ((UIPageFragmentActivity)currentActivity.get()).p(localIntent.getBundleExtra("intent_bundle"));
-      ae.i("MicroMsg.ActivityController", "startNewUIPage by onNewIntentForKinda.");
+      ((UIPageFragmentActivity)currentActivity.get()).t(localIntent.getBundleExtra("intent_bundle"));
+      Log.i("MicroMsg.ActivityController", "startNewUIPage by onNewIntentForKinda.");
       AppMethodBeat.o(19307);
       return;
       localObject = KindaContext.get();
@@ -454,28 +479,29 @@ public class ActivityController
       }
       localIntent = new Intent((Context)localObject, UIPageFragmentActivity.class);
       break;
-      label264:
+      label318:
       if (str2.length() > 0)
       {
         localBundle.putBoolean("intent_tinyapp", true);
         localBundle.putString("intent_tinyapp_username", str2);
         localBundle.putString("intent_tinyapp_path", str3);
         localBundle.putString("intent_tinyapp_version", str4);
-        localBundle.putInt("intent_tinyapp_type", i);
+        localBundle.putInt("intent_tinyapp_type", j);
+        localBundle.putInt("intent_tinyapp_scene", i);
       }
     }
-    label323:
-    paramIUIPage = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(localObject, paramIUIPage.ahE(), "com/tencent/kinda/framework/widget/tools/ActivityController", "startNewUIPage", "(Lcom/tencent/kinda/gen/IUIPage;Lcom/tencent/kinda/gen/ITransmitKvData;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ((Context)localObject).startActivity((Intent)paramIUIPage.mt(0));
+    label386:
+    paramIUIPage = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(localObject, paramIUIPage.axQ(), "com/tencent/kinda/framework/widget/tools/ActivityController", "startNewUIPage", "(Lcom/tencent/kinda/gen/IUIPage;Lcom/tencent/kinda/gen/ITransmitKvData;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    ((Context)localObject).startActivity((Intent)paramIUIPage.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/kinda/framework/widget/tools/ActivityController", "startNewUIPage", "(Lcom/tencent/kinda/gen/IUIPage;Lcom/tencent/kinda/gen/ITransmitKvData;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    ae.i("MicroMsg.ActivityController", "startNewUIPage by a new activity.");
+    Log.i("MicroMsg.ActivityController", "startNewUIPage by a new activity.");
     AppMethodBeat.o(19307);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.tools.ActivityController
  * JD-Core Version:    0.7.0.1
  */

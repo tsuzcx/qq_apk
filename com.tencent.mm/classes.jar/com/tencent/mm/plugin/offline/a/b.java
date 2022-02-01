@@ -2,12 +2,14 @@ package com.tencent.mm.plugin.offline.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.offline.c.a;
 import com.tencent.mm.plugin.offline.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import java.util.Map;
@@ -23,16 +25,16 @@ public final class b
     AppMethodBeat.i(66282);
     this.TAG = "MicroMsg.NetSceneOfflineAckMsg";
     HashMap localHashMap = new HashMap();
-    localHashMap.put("ack_key", a.dAV());
-    localHashMap.put("req_key", a.dAW());
-    localHashMap.put("paymsg_type", a.dAX());
-    localHashMap.put("transactionid", a.dAY());
-    localHashMap.put("network", a.getNetworkType(ak.getContext()));
-    if (k.wNr)
+    localHashMap.put("ack_key", a.eAH());
+    localHashMap.put("req_key", a.eAI());
+    localHashMap.put("paymsg_type", a.eAJ());
+    localHashMap.put("transactionid", a.eAK());
+    localHashMap.put("network", a.getNetworkType(MMApplicationContext.getContext()));
+    if (k.AIX)
     {
       str = "1";
       localHashMap.put("processed", str);
-      if (!a.dAZ()) {
+      if (!a.eAL()) {
         break label213;
       }
       str = "1";
@@ -73,25 +75,25 @@ public final class b
     AppMethodBeat.i(66283);
     if (paramInt == 0)
     {
-      ae.v(this.TAG, "response ok");
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(135L, 68L, 1L, true);
+      Log.v(this.TAG, "response ok");
+      h.CyF.idkeyStat(135L, 68L, 1L, true);
       paramInt = paramJSONObject.optInt("poll_time") * 1000;
       if (paramInt > 0)
       {
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.ITW, Integer.valueOf(paramInt));
+        g.aAi();
+        g.aAh().azQ().set(ar.a.Ock, Integer.valueOf(paramInt));
       }
       AppMethodBeat.o(66283);
       return;
     }
-    ae.v(this.TAG, "response fail");
-    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(135L, 69L, 1L, true);
+    Log.v(this.TAG, "response fail");
+    h.CyF.idkeyStat(135L, 69L, 1L, true);
     AppMethodBeat.o(66283);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -2,95 +2,113 @@ package com.tencent.mm.plugin.finder.model;
 
 import android.text.SpannableString;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.feed.model.internal.i;
-import com.tencent.mm.plugin.finder.storage.ab;
+import com.tencent.mm.b.h;
+import com.tencent.mm.plugin.finder.storage.FinderItem;
+import com.tencent.mm.plugin.finder.utils.y;
 import com.tencent.mm.protocal.protobuf.FinderCommentInfo;
-import com.tencent.mm.protocal.protobuf.alr;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.view.recyclerview.a;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.Iterator;
+import kotlin.g.b.p;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "Lcom/tencent/mm/view/recyclerview/ConvertData;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/ILoaderData;", "commentObj", "Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "(Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;)V", "blink", "", "getBlink", "()Z", "setBlink", "(Z)V", "getCommentObj", "()Lcom/tencent/mm/plugin/finder/storage/LocalFinderCommentObject;", "setCommentObj", "contentCollapse", "getContentCollapse", "setContentCollapse", "hasBlink", "getHasBlink", "setHasBlink", "isAutoExpand", "setAutoExpand", "isFriendComment", "setFriendComment", "remainLevel2Comment", "", "getRemainLevel2Comment", "()I", "setRemainLevel2Comment", "(I)V", "replyContentCollapse", "getReplyContentCollapse", "setReplyContentCollapse", "replyText", "Landroid/text/SpannableString;", "getReplyText", "()Landroid/text/SpannableString;", "setReplyText", "(Landroid/text/SpannableString;)V", "compare", "obj", "getItemId", "", "getItemType", "Companion", "plugin-finder_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/model/FinderCommentInfoEx;", "", "()V", "spanCache", "Lcom/tencent/mm/algorithm/MMLRUMap;", "", "Landroid/text/SpannableString;", "getSpanCache", "()Lcom/tencent/mm/algorithm/MMLRUMap;", "release", "", "update", "item", "Lcom/tencent/mm/plugin/finder/storage/FinderItem;", "plugin-finder_release"})
 public final class n
-  implements i, a
 {
-  private static final int stf = 1;
-  private static final int stg = 2;
-  public static final n.a sth;
-  public boolean ssW;
-  public SpannableString ssX;
-  public boolean ssY;
-  public boolean ssZ;
-  public boolean sta;
-  public boolean stb;
-  public int stc;
-  public boolean std;
-  public ab ste;
+  private static final h<String, SpannableString> uNT;
+  public static final n uNU;
   
   static
   {
-    AppMethodBeat.i(178313);
-    sth = new n.a((byte)0);
-    stf = 1;
-    stg = 2;
-    AppMethodBeat.o(178313);
+    AppMethodBeat.i(166377);
+    uNU = new n();
+    uNT = new h(200);
+    AppMethodBeat.o(166377);
   }
   
-  public n(ab paramab)
+  public static void d(FinderItem paramFinderItem)
   {
-    AppMethodBeat.i(166383);
-    this.ste = paramab;
-    if (!bu.isNullOrNil(this.ste.getUsername()))
+    AppMethodBeat.i(166376);
+    p.h(paramFinderItem, "item");
+    Object localObject4 = ((Iterable)paramFinderItem.getCommentList()).iterator();
+    Object localObject1;
+    Object localObject2;
+    while (((Iterator)localObject4).hasNext())
     {
-      paramab = com.tencent.mm.plugin.finder.utils.p.sXz;
-      if ((!com.tencent.mm.plugin.finder.utils.p.ajV(this.ste.getUsername())) && (!((PluginFinder)g.ad(PluginFinder.class)).isFriend(this.ste.getUsername()))) {}
+      FinderCommentInfo localFinderCommentInfo = (FinderCommentInfo)((Iterator)localObject4).next();
+      if (!uNT.check(localFinderCommentInfo.username))
+      {
+        localObject1 = y.vXH;
+        localObject2 = localFinderCommentInfo.username;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        localObject3 = localFinderCommentInfo.nickname;
+        localObject2 = localObject3;
+        if (localObject3 == null) {
+          localObject2 = "";
+        }
+        localObject1 = y.he((String)localObject1, (String)localObject2);
+        uNT.put(localFinderCommentInfo.username, com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)localObject1));
+      }
+      if (!uNT.check(localFinderCommentInfo.reply_username))
+      {
+        localObject1 = y.vXH;
+        localObject2 = localFinderCommentInfo.reply_username;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        localObject3 = localFinderCommentInfo.replyNickname;
+        localObject2 = localObject3;
+        if (localObject3 == null) {
+          localObject2 = "";
+        }
+        localObject1 = y.he((String)localObject1, (String)localObject2);
+        uNT.put(localFinderCommentInfo.reply_username, com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)localObject1));
+      }
+      if (!uNT.check(localFinderCommentInfo.content)) {
+        uNT.put(localFinderCommentInfo.content, com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)localFinderCommentInfo.content));
+      }
     }
-    for (boolean bool = true;; bool = false)
+    Object localObject3 = ((Iterable)paramFinderItem.getLikeList()).iterator();
+    while (((Iterator)localObject3).hasNext())
     {
-      this.ssW = bool;
-      this.ssY = true;
-      this.ssZ = true;
-      this.stc = this.ste.cLl().expandCommentCount;
-      AppMethodBeat.o(166383);
-      return;
+      localObject4 = (FinderCommentInfo)((Iterator)localObject3).next();
+      if (!uNT.check(((FinderCommentInfo)localObject4).username))
+      {
+        paramFinderItem = y.vXH;
+        localObject1 = ((FinderCommentInfo)localObject4).username;
+        paramFinderItem = (FinderItem)localObject1;
+        if (localObject1 == null) {
+          paramFinderItem = "";
+        }
+        localObject2 = ((FinderCommentInfo)localObject4).nickname;
+        localObject1 = localObject2;
+        if (localObject2 == null) {
+          localObject1 = "";
+        }
+        paramFinderItem = y.he(paramFinderItem, (String)localObject1);
+        uNT.put(((FinderCommentInfo)localObject4).username, com.tencent.mm.pluginsdk.ui.span.l.c(MMApplicationContext.getContext(), (CharSequence)paramFinderItem));
+      }
     }
+    AppMethodBeat.o(166376);
   }
   
-  public final int a(i parami)
+  public static h<String, SpannableString> dkv()
   {
-    AppMethodBeat.i(166382);
-    d.g.b.p.h(parami, "obj");
-    AppMethodBeat.o(166382);
-    return 0;
+    return uNT;
   }
   
-  public final int bZz()
+  public static void release()
   {
-    AppMethodBeat.i(166381);
-    if (this.ste.field_actionInfo.rQN == 0L)
-    {
-      i = stf;
-      AppMethodBeat.o(166381);
-      return i;
-    }
-    int i = stg;
-    AppMethodBeat.o(166381);
-    return i;
-  }
-  
-  public final long lP()
-  {
-    AppMethodBeat.i(224300);
-    long l = this.ste.cLl().commentId;
-    AppMethodBeat.o(224300);
-    return l;
+    AppMethodBeat.i(166375);
+    uNT.clear();
+    AppMethodBeat.o(166375);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.model.n
  * JD-Core Version:    0.7.0.1
  */

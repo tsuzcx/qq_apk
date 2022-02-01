@@ -1,74 +1,74 @@
 package com.tencent.mm.plugin.backup.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
   extends com.tencent.mm.plugin.backup.b.a
 {
   private static String TAG = "MicroMsg.BackupStorageModel";
-  private static d nFL;
-  private b nFM;
-  private a nFN;
+  private static d oQI;
+  private b oQJ;
+  private a oQK;
   
-  public static d bJW()
+  public static d cgP()
   {
     AppMethodBeat.i(21763);
-    if (nFL == null)
+    if (oQI == null)
     {
       locald = new d();
-      nFL = locald;
+      oQI = locald;
       a(locald);
     }
-    d locald = nFL;
+    d locald = oQI;
     AppMethodBeat.o(21763);
     return locald;
   }
   
-  public final void bHQ()
+  public final void ceH()
   {
-    nFL = null;
+    oQI = null;
   }
   
-  public final b bJX()
+  public final b cgQ()
   {
     AppMethodBeat.i(21764);
-    if (this.nFM == null) {
-      this.nFM = new b();
+    if (this.oQJ == null) {
+      this.oQJ = new b();
     }
-    b localb = this.nFM;
+    b localb = this.oQJ;
     AppMethodBeat.o(21764);
     return localb;
   }
   
-  public final a bJY()
+  public final a cgR()
   {
     AppMethodBeat.i(21765);
-    if (this.nFN == null) {
-      this.nFN = new a();
+    if (this.oQK == null) {
+      this.oQK = new a();
     }
-    a locala = this.nFN;
+    a locala = this.oQK;
     AppMethodBeat.o(21765);
     return locala;
   }
   
-  public final void bJZ()
+  public final void cgS()
   {
     AppMethodBeat.i(21766);
-    ae.i(TAG, "backupInitStorage.");
-    b localb = bJX();
-    bc.aCg();
+    Log.i(TAG, "backupInitStorage.");
+    b localb = cgQ();
+    bg.aVF();
     String str = c.getAccPath();
-    bc.aCg();
-    localb.cq(str, c.getUin());
+    bg.aVF();
+    localb.cx(str, c.getUin());
     AppMethodBeat.o(21766);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.h.d
  * JD-Core Version:    0.7.0.1
  */

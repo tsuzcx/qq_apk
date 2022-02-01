@@ -17,13 +17,13 @@ import junit.framework.Assert;
 public final class ChoicePreference
   extends Preference
 {
-  private RadioGroup JMv;
-  private CharSequence[] JMw;
-  private CharSequence[] JMx;
-  public Preference.a JMy;
+  private int BaH;
+  private RadioGroup OXv;
+  private CharSequence[] OXw;
+  private CharSequence[] OXx;
+  public Preference.a OXy;
   String value;
   private final HashMap<CharSequence, b> values;
-  private int xdf;
   
   public ChoicePreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -35,34 +35,34 @@ public final class ChoicePreference
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142523);
     this.values = new HashMap();
-    this.xdf = -1;
+    this.BaH = -1;
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.ChoicePreference, paramInt, 0);
-    this.JMw = paramContext.getTextArray(0);
-    this.JMx = paramContext.getTextArray(1);
+    this.OXw = paramContext.getTextArray(0);
+    this.OXx = paramContext.getTextArray(1);
     paramContext.recycle();
-    fDz();
+    gLC();
     AppMethodBeat.o(142523);
   }
   
-  private void fDz()
+  private void gLC()
   {
     int i = 0;
     AppMethodBeat.i(142525);
-    if (this.JMw == null) {
-      this.JMw = new CharSequence[0];
+    if (this.OXw == null) {
+      this.OXw = new CharSequence[0];
     }
-    if (this.JMx == null) {
-      this.JMx = new CharSequence[0];
+    if (this.OXx == null) {
+      this.OXx = new CharSequence[0];
     }
-    if (this.JMw.length == this.JMx.length) {}
+    if (this.OXw.length == this.OXx.length) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("entries count different", bool);
       this.values.clear();
-      while (i < this.JMx.length)
+      while (i < this.OXx.length)
       {
-        b localb = new b(this.JMw[i], 1048576 + i);
-        this.values.put(this.JMx[i], localb);
+        b localb = new b(this.OXw[i], 1048576 + i);
+        this.values.put(this.OXx[i], localb);
         i += 1;
       }
     }
@@ -71,15 +71,15 @@ public final class ChoicePreference
   
   public final void a(Preference.a parama)
   {
-    this.JMy = parama;
+    this.OXy = parama;
   }
   
   protected final void onBindView(View paramView)
   {
     AppMethodBeat.i(142526);
     super.onBindView(paramView);
-    if (this.JMv != null) {
-      this.JMv.check(this.xdf);
+    if (this.OXv != null) {
+      this.OXv.check(this.BaH);
     }
     AppMethodBeat.o(142526);
   }
@@ -89,14 +89,14 @@ public final class ChoicePreference
     AppMethodBeat.i(142524);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    Object localObject = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    Object localObject = (ViewGroup)paramViewGroup.findViewById(2131299180);
     ((ViewGroup)localObject).removeAllViews();
-    localLayoutInflater.inflate(2131494825, (ViewGroup)localObject);
-    this.JMv = ((RadioGroup)paramViewGroup.findViewById(2131300621));
+    localLayoutInflater.inflate(2131495559, (ViewGroup)localObject);
+    this.OXv = ((RadioGroup)paramViewGroup.findViewById(2131302176));
     int i = 0;
-    if (i < this.JMx.length)
+    if (i < this.OXx.length)
     {
-      localObject = this.JMx[i];
+      localObject = this.OXx[i];
       localObject = (b)this.values.get(localObject);
       RadioButton localRadioButton;
       if (localObject != null)
@@ -104,30 +104,30 @@ public final class ChoicePreference
         if (i != 0) {
           break label139;
         }
-        localRadioButton = (RadioButton)localLayoutInflater.inflate(2131494778, null);
+        localRadioButton = (RadioButton)localLayoutInflater.inflate(2131495512, null);
         ((b)localObject).a(localRadioButton);
-        this.JMv.addView(localRadioButton);
+        this.OXv.addView(localRadioButton);
       }
       for (;;)
       {
         i += 1;
         break;
         label139:
-        if (i == this.JMx.length - 1)
+        if (i == this.OXx.length - 1)
         {
-          localRadioButton = (RadioButton)localLayoutInflater.inflate(2131494780, null);
+          localRadioButton = (RadioButton)localLayoutInflater.inflate(2131495514, null);
           ((b)localObject).a(localRadioButton);
-          this.JMv.addView(localRadioButton);
+          this.OXv.addView(localRadioButton);
         }
         else
         {
-          localRadioButton = (RadioButton)localLayoutInflater.inflate(2131494779, null);
+          localRadioButton = (RadioButton)localLayoutInflater.inflate(2131495513, null);
           ((b)localObject).a(localRadioButton);
-          this.JMv.addView(localRadioButton);
+          this.OXv.addView(localRadioButton);
         }
       }
     }
-    this.JMv.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
+    this.OXv.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
     {
       public final void onCheckedChanged(RadioGroup paramAnonymousRadioGroup, int paramAnonymousInt)
       {
@@ -161,17 +161,17 @@ public final class ChoicePreference
     paramString = (b)this.values.get(paramString);
     if (paramString == null)
     {
-      this.xdf = -1;
+      this.BaH = -1;
       AppMethodBeat.o(142527);
       return;
     }
-    this.xdf = paramString.id;
+    this.BaH = paramString.id;
     AppMethodBeat.o(142527);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.ChoicePreference
  * JD-Core Version:    0.7.0.1
  */

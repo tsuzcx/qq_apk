@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameFeedMatchView android:orientation="vertical" android:padding="@dimen/fy" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.game.ui.GameFeedTitleDescView android:id="@id/cbb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/g3" />
-        <com.tencent.mm.plugin.game.ui.GameRoundImageView android:id="@id/z_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/g1" />
-        <com.tencent.mm.plugin.game.ui.GameFeedSubscriptView android:id="@id/g1u" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/g3" />
-    </com.tencent.mm.plugin.game.ui.GameFeedMatchView>
-</FrameLayout>
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" app:cornerRadius="@dimen/bt"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include layout="@layout/ab5" />
+        <include layout="@layout/ab3" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.finder.view.FinderLiveOnliveWidget android:id="@id/cw_" android:paddingLeft="@dimen/bt" android:paddingRight="@dimen/bt" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginLeft="@dimen/bt" android:layout_marginTop="@dimen/bt" app:logo_mode="g42" app:logo_style="dup" />
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

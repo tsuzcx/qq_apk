@@ -1,30 +1,43 @@
 package com.tencent.mm.ui.e;
 
-import android.graphics.drawable.AnimationDrawable;
+import android.content.Context;
+import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
-  extends AnimationDrawable
 {
-  private static String TAG = "MMAnimationDrawable";
+  static android.arch.a.c.a<Context, Resources> PRK;
+  static android.arch.a.c.a<String, String> PRL;
   
-  public final void start()
+  static
   {
-    AppMethodBeat.i(142749);
-    super.start();
-    AppMethodBeat.o(142749);
+    AppMethodBeat.i(198213);
+    PRK = new android.arch.a.c.a() {};
+    PRL = new android.arch.a.c.a() {};
+    AppMethodBeat.o(198213);
   }
   
-  public final void stop()
+  public static void b(android.arch.a.c.a<Context, Resources> parama)
   {
-    AppMethodBeat.i(142750);
-    super.stop();
-    AppMethodBeat.o(142750);
+    PRK = parama;
+  }
+  
+  public static void c(android.arch.a.c.a<String, String> parama)
+  {
+    PRL = parama;
+  }
+  
+  public static Resources kn(Context paramContext)
+  {
+    AppMethodBeat.i(198212);
+    paramContext = (Resources)PRK.apply(paramContext);
+    AppMethodBeat.o(198212);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ui.e.a
  * JD-Core Version:    0.7.0.1
  */

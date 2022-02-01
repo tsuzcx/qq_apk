@@ -5,18 +5,18 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bw.b;
-import com.tencent.mm.plugin.appbrand.jsapi.j;
-import com.tencent.mm.protocal.protobuf.xi;
+import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.protocal.protobuf.ys;
 import java.util.LinkedList;
 import java.util.Locale;
 
 public final class AppRuntimeApiPermissionBundle
-  implements Parcelable, j
+  implements Parcelable, m
 {
   public static final Parcelable.Creator<AppRuntimeApiPermissionBundle> CREATOR;
-  public final byte[] mmK;
-  public final byte[] mmL;
-  final byte[] mmM;
+  public final byte[] nxk;
+  public final byte[] nxl;
+  final byte[] nxm;
   
   static
   {
@@ -28,18 +28,18 @@ public final class AppRuntimeApiPermissionBundle
   private AppRuntimeApiPermissionBundle(Parcel paramParcel)
   {
     AppMethodBeat.i(147638);
-    this.mmK = paramParcel.createByteArray();
-    this.mmL = paramParcel.createByteArray();
-    this.mmM = paramParcel.createByteArray();
+    this.nxk = paramParcel.createByteArray();
+    this.nxl = paramParcel.createByteArray();
+    this.nxm = paramParcel.createByteArray();
     AppMethodBeat.o(147638);
   }
   
-  public AppRuntimeApiPermissionBundle(xi paramxi)
+  public AppRuntimeApiPermissionBundle(ys paramys)
   {
     AppMethodBeat.i(147635);
-    this.mmK = paramxi.Gph.zr;
-    this.mmL = ((b)paramxi.Gpi.get(0)).zr;
-    this.mmM = ((b)paramxi.Gpi.get(1)).zr;
+    this.nxk = paramys.LjS.zy;
+    this.nxl = ((b)paramys.LjT.get(0)).zy;
+    this.nxm = ((b)paramys.LjT.get(1)).zy;
     AppMethodBeat.o(147635);
   }
   
@@ -51,7 +51,7 @@ public final class AppRuntimeApiPermissionBundle
   public final String toString()
   {
     AppMethodBeat.i(147636);
-    String str = String.format(Locale.US, "PermissionBundle[%d][%d][%d]", new Object[] { Integer.valueOf(this.mmK.length), Integer.valueOf(this.mmL.length), Integer.valueOf(this.mmM.length) });
+    String str = String.format(Locale.US, "PermissionBundle[%d][%d][%d]", new Object[] { Integer.valueOf(this.nxk.length), Integer.valueOf(this.nxl.length), Integer.valueOf(this.nxm.length) });
     AppMethodBeat.o(147636);
     return str;
   }
@@ -59,15 +59,15 @@ public final class AppRuntimeApiPermissionBundle
   public final void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(147637);
-    paramParcel.writeByteArray(this.mmK);
-    paramParcel.writeByteArray(this.mmL);
-    paramParcel.writeByteArray(this.mmM);
+    paramParcel.writeByteArray(this.nxk);
+    paramParcel.writeByteArray(this.nxl);
+    paramParcel.writeByteArray(this.nxm);
     AppMethodBeat.o(147637);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.AppRuntimeApiPermissionBundle
  * JD-Core Version:    0.7.0.1
  */

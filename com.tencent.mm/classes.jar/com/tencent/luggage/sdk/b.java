@@ -2,26 +2,26 @@ package com.tencent.luggage.sdk;
 
 import com.tencent.luggage.bridge.a.a.c;
 import com.tencent.luggage.sdk.a.a;
-import com.tencent.luggage.sdk.b.a.c.b.a;
-import com.tencent.luggage.sdk.b.a.c.d;
-import com.tencent.luggage.sdk.b.a.c.i;
+import com.tencent.luggage.sdk.b.a.c.c.a;
+import com.tencent.luggage.sdk.b.a.c.e;
+import com.tencent.luggage.sdk.b.a.c.j;
 import com.tencent.luggage.sdk.customize.impl.FullSdkExternalToolsHelper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.ac;
-import com.tencent.mm.plugin.appbrand.page.bb.a;
+import com.tencent.mm.plugin.appbrand.ac.p.a;
+import com.tencent.mm.plugin.appbrand.jsapi.ag;
+import com.tencent.mm.plugin.appbrand.page.bf.a;
 import com.tencent.mm.plugin.appbrand.widget.input.al.a;
-import com.tencent.mm.plugin.appbrand.y.p.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class b
   extends c
 {
-  protected void DY()
+  protected void Nu()
   {
     AppMethodBeat.i(146682);
-    ae.i("Luggage.FullSdkLuggageInitDelegate", "hy: trigger registerServiceLogicImp");
-    d.EW().a(new b.a(), com.tencent.luggage.sdk.b.a.c.b.class);
-    d.EW().a(i.cpb, i.class);
+    Log.i("Luggage.FullSdkLuggageInitDelegate", "hy: trigger registerServiceLogicImp");
+    e.Oy().a(new c.a(), com.tencent.luggage.sdk.b.a.c.c.class);
+    e.Oy().a(j.cBs, j.class);
     AppMethodBeat.o(146682);
   }
   
@@ -42,10 +42,10 @@ public class b
       public final void run()
       {
         AppMethodBeat.i(146680);
-        paramc.a(ac.class, new FullSdkExternalToolsHelper());
+        paramc.a(ag.class, new FullSdkExternalToolsHelper());
         paramc.a(p.a.class, new a());
-        paramc.a(bb.a.class, new al.a());
-        b.this.DY();
+        paramc.a(bf.a.class, new al.a());
+        b.this.Nu();
         AppMethodBeat.o(146680);
       }
     });
@@ -54,7 +54,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.b
  * JD-Core Version:    0.7.0.1
  */

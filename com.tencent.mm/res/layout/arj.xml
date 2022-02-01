@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/bzg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip"
+<LinearLayout android:orientation="vertical" android:id="@id/fdr" android:background="@drawable/asf" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/don" android:layout_width="fill_parent" android:layout_height="0.0dip" android:minHeight="148.0dip" android:layout_weight="1.0">
-        <ImageView android:id="@id/dpm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/confirm_dialog_successful_icon" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dog" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/i" android:textColor="@color/y4" android:gravity="center" android:id="@id/dui" android:padding="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/dt5" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginTop="10.0dip" android:scaleType="fitCenter" />
+    <TextView android:textSize="11.0sp" android:textColor="#ff5b5b5b" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="5.0dip" android:maxLines="2" />
 </LinearLayout>

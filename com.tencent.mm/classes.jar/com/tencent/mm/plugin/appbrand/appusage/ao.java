@@ -3,26 +3,26 @@ package com.tencent.mm.plugin.appbrand.appusage;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.service.t;
-import com.tencent.mm.plugin.appbrand.service.t.a;
+import com.tencent.mm.plugin.appbrand.service.x;
+import com.tencent.mm.plugin.appbrand.service.x.a;
 import java.util.ArrayList;
 
 public final class ao
-  implements t
+  implements x
 {
-  public final t.a bdg()
+  public final x.a byv()
   {
     AppMethodBeat.i(44663);
-    t.a locala = new t.a();
-    locala.hMc = new ArrayList(0);
-    locala.mBp = -1;
-    locala.dyI = "";
-    if (!g.ajP().gDk)
+    x.a locala = new x.a();
+    locala.iHf = new ArrayList(0);
+    locala.nMt = -1;
+    locala.dQx = "";
+    if (!g.aAf().hpY)
     {
       AppMethodBeat.o(44663);
       return locala;
     }
-    if (!i.bcv())
+    if (!i.bxK())
     {
       AppMethodBeat.o(44663);
       return locala;
@@ -33,7 +33,7 @@ public final class ao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ao
  * JD-Core Version:    0.7.0.1
  */

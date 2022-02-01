@@ -3,24 +3,24 @@ package com.tencent.mm.plugin.expt.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.expt.i.c;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
 {
   public static int b(b.a parama)
   {
     AppMethodBeat.i(122357);
-    c.ctt();
-    int i = bu.getInt(c.b(parama, ""), 0);
+    c.cSa();
+    int i = Util.getInt(c.c(parama, ""), 0);
     AppMethodBeat.o(122357);
     return i;
   }
   
-  public static boolean csJ()
+  public static boolean cRq()
   {
     AppMethodBeat.i(122354);
-    c.ctt();
-    if (bu.getInt(c.b(b.a.qBA, ""), 0) > 0)
+    c.cSa();
+    if (Util.getInt(c.c(b.a.rUk, ""), 0) > 0)
     {
       AppMethodBeat.o(122354);
       return true;
@@ -29,11 +29,11 @@ public final class a
     return false;
   }
   
-  public static boolean csK()
+  public static boolean cRr()
   {
     AppMethodBeat.i(122355);
-    c.ctt();
-    if (bu.getInt(c.b(b.a.qBB, ""), 0) > 0)
+    c.cSa();
+    if (Util.getInt(c.c(b.a.rUl, ""), 0) > 0)
     {
       AppMethodBeat.o(122355);
       return true;
@@ -42,11 +42,11 @@ public final class a
     return false;
   }
   
-  public static boolean csL()
+  public static boolean cRs()
   {
     AppMethodBeat.i(122356);
-    c.ctt();
-    if (bu.getInt(c.b(b.a.qBC, ""), 0) > 0)
+    c.cSa();
+    if (Util.getInt(c.c(b.a.rUm, ""), 0) > 0)
     {
       AppMethodBeat.o(122356);
       return true;

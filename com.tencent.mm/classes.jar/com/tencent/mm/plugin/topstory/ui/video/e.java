@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.topstory.ui.video;
 import android.support.v4.e.o;
 import android.support.v7.widget.RecyclerView.a;
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.dpa;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.List;
@@ -13,89 +13,89 @@ import java.util.Map;
 public abstract class e
   extends RecyclerView.a<h>
 {
-  protected o<View> BLj = new o();
-  protected o<View> BLk = new o();
-  public Map<String, WeakReference<h>> BLl = new HashMap();
-  public b BLm;
+  protected o<View> GlP = new o();
+  protected o<View> GlQ = new o();
+  public Map<String, WeakReference<h>> GlR = new HashMap();
+  public b GlS;
   
   public e(b paramb)
   {
-    this.BLm = paramb;
+    this.GlS = paramb;
   }
   
-  public int TI(int paramInt)
+  public int abY(int paramInt)
   {
     return 1;
   }
   
-  public final boolean TJ(int paramInt)
+  public final boolean abZ(int paramInt)
   {
-    return paramInt < this.BLj.size();
+    return paramInt < this.GlP.size();
   }
   
-  public final boolean TK(int paramInt)
+  public final boolean aca(int paramInt)
   {
-    return paramInt >= this.BLj.size() + this.BLm.ets().euc();
+    return paramInt >= this.GlP.size() + this.GlS.fyO().fzy();
   }
   
   public final void addHeaderView(View paramView)
   {
-    this.BLj.put(this.BLj.size() + 100000, paramView);
+    this.GlP.put(this.GlP.size() + 100000, paramView);
   }
   
-  public final h b(dpa paramdpa)
+  public final h b(eiw parameiw)
   {
-    if ((paramdpa != null) && (this.BLl.containsKey(paramdpa.udb)) && (this.BLl.get(paramdpa.udb) != null))
+    if ((parameiw != null) && (this.GlR.containsKey(parameiw.psI)) && (this.GlR.get(parameiw.psI) != null))
     {
-      h localh = (h)((WeakReference)this.BLl.get(paramdpa.udb)).get();
-      if ((localh != null) && (localh.BIY != null) && (localh.BIY == paramdpa)) {
+      h localh = (h)((WeakReference)this.GlR.get(parameiw.psI)).get();
+      if ((localh != null) && (localh.GjH != null) && (localh.GjH == parameiw)) {
         return localh;
       }
-      this.BLl.remove(paramdpa.udb);
-      ae.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "getViewHolderByVideoInfo not match");
+      this.GlR.remove(parameiw.psI);
+      Log.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "getViewHolderByVideoInfo not match");
     }
     return null;
   }
   
-  public final void ety()
+  public final void fT(View paramView)
   {
-    this.BLk.clear();
+    this.GlQ.put(this.GlQ.size() + 200000, paramView);
   }
   
-  public final void fB(View paramView)
+  public final void fyU()
   {
-    this.BLk.put(this.BLk.size() + 200000, paramView);
+    this.GlQ.clear();
   }
   
   public final int getFootersCount()
   {
-    return this.BLk.size();
+    return this.GlQ.size();
   }
   
   public final int getHeadersCount()
   {
-    return this.BLj.size();
+    return this.GlP.size();
   }
   
   public final int getItemCount()
   {
-    return this.BLm.ets().euc() + this.BLj.size() + this.BLk.size();
+    return this.GlS.fyO().fzy() + this.GlP.size() + this.GlQ.size();
   }
   
   public final int getItemViewType(int paramInt)
   {
-    if (TJ(paramInt)) {
-      return this.BLj.keyAt(paramInt);
+    if (abZ(paramInt)) {
+      return this.GlP.keyAt(paramInt);
     }
-    if (TK(paramInt)) {
-      return this.BLk.keyAt(paramInt - this.BLj.size() - this.BLm.ets().euc());
+    if (aca(paramInt)) {
+      return this.GlQ.keyAt(paramInt - this.GlP.size() - this.GlS.fyO().fzy());
     }
-    return TI(paramInt);
+    return abY(paramInt);
   }
   
-  protected void o(List<dpa> paramList, boolean paramBoolean)
+  protected void t(List<eiw> paramList, boolean paramBoolean)
   {
-    ae.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "callbackToSuccess %d %b", new Object[] { Integer.valueOf(paramList.size()), Boolean.valueOf(paramBoolean) });
+    Log.i("MicroMsg.TopStory.TopStoryBaseVideoAdapter", "callbackToSuccess %d %b", new Object[] { Integer.valueOf(paramList.size()), Boolean.valueOf(paramBoolean) });
   }
 }
 

@@ -3,36 +3,36 @@ package com.tencent.mm.plugin.appbrand.phonenumber;
 import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.bsa;
-import com.tencent.mm.protocal.protobuf.bsb;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.a.r;
-import d.g.b.p;
-import d.l;
-import d.v;
-import d.z;
+import com.tencent.mm.protocal.protobuf.ceu;
+import com.tencent.mm.protocal.protobuf.cev;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.nio.charset.Charset;
 import java.util.List;
+import kotlin.g.a.r;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 import org.json.JSONException;
 import org.json.JSONStringer;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/phonenumber/CgiGetAllPhone;", "", "appId", "", "apiName", "withCredentials", "", "(Ljava/lang/String;Ljava/lang/String;Z)V", "getApiName", "()Ljava/lang/String;", "getAppId", "getWithCredentials", "()Z", "jsonStringer", "run", "", "callback", "Lkotlin/Function4;", "Lkotlin/ParameterName;", "name", "isSucces", "errMsg", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "phoneItems", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$Info;", "info", "luggage-wechat-full-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/CgiGetAllPhone;", "", "appId", "", "apiName", "withCredentials", "", "(Ljava/lang/String;Ljava/lang/String;Z)V", "getApiName", "()Ljava/lang/String;", "getAppId", "getWithCredentials", "()Z", "jsonStringer", "run", "", "callback", "Lkotlin/Function4;", "Lkotlin/ParameterName;", "name", "isSucces", "errMsg", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "phoneItems", "Lcom/tencent/mm/plugin/appbrand/jsapi/autofill/JsApiGetCustomPhoneNumber$Info;", "info", "luggage-wechat-full-sdk_release"})
 public final class d
 {
   private final String appId;
-  private final String lTy;
-  private final boolean mnX;
+  private final String nbb;
+  private final boolean nyJ;
   
   public d(String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(148028);
     this.appId = paramString1;
-    this.lTy = paramString2;
-    this.mnX = paramBoolean;
+    this.nbb = paramString2;
+    this.nyJ = paramBoolean;
     AppMethodBeat.o(148028);
   }
   
-  private static String az(String paramString, boolean paramBoolean)
+  private static String aA(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(148026);
     JSONStringer localJSONStringer = new JSONStringer();
@@ -53,58 +53,41 @@ public final class d
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.JsApiGetPhoneNumberNew", (Throwable)paramString, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.JsApiGetPhoneNumberNew", (Throwable)paramString, "", new Object[0]);
       }
     }
   }
   
-  public final void b(r<? super Boolean, ? super String, ? super List<PhoneItem>, ? super com.tencent.mm.plugin.appbrand.jsapi.autofill.d.b, z> paramr)
+  public final void b(r<? super Boolean, ? super String, ? super List<PhoneItem>, ? super com.tencent.mm.plugin.appbrand.jsapi.autofill.d.b, x> paramr)
   {
     AppMethodBeat.i(148027);
-    Object localObject = az(this.lTy, this.mnX);
-    bsa localbsa = new bsa();
-    localbsa.ikm = this.appId;
-    Charset localCharset = d.n.d.UTF_8;
+    Object localObject = aA(this.nbb, this.nyJ);
+    ceu localceu = new ceu();
+    localceu.jfi = this.appId;
+    Charset localCharset = kotlin.n.d.UTF_8;
     if (localObject == null)
     {
-      paramr = new v("null cannot be cast to non-null type java.lang.String");
+      paramr = new t("null cannot be cast to non-null type java.lang.String");
       AppMethodBeat.o(148027);
       throw paramr;
     }
     localObject = ((String)localObject).getBytes(localCharset);
     p.g(localObject, "(this as java.lang.String).getBytes(charset)");
-    localbsa.nIq = new b((byte[])localObject);
-    ((com.tencent.mm.plugin.appbrand.networking.c)e.K(com.tencent.mm.plugin.appbrand.networking.c.class)).a("/cgi-bin/mmbiz-bin/wxaapp/customphone/getallphone", (com.tencent.mm.bw.a)localbsa, bsb.class).c((com.tencent.mm.vending.c.a)new d.a(paramr)).a((com.tencent.mm.vending.g.d.a)new b(paramr));
+    localceu.oTm = new b((byte[])localObject);
+    ((com.tencent.mm.plugin.appbrand.networking.c)e.M(com.tencent.mm.plugin.appbrand.networking.c.class)).a("/cgi-bin/mmbiz-bin/wxaapp/customphone/getallphone", (com.tencent.mm.bw.a)localceu, cev.class).c((com.tencent.mm.vending.c.a)new a(paramr)).a((com.tencent.mm.vending.g.d.a)new d.b(paramr));
     AppMethodBeat.o(148027);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onInterrupt"})
-  static final class b<T>
-    implements com.tencent.mm.vending.g.d.a<Object>
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/protocal/protobuf/JSOperateWxDataResponse;", "kotlin.jvm.PlatformType", "call"})
+  static final class a<_Ret, _Var>
+    implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
-    b(r paramr) {}
-    
-    public final void ce(Object paramObject)
-    {
-      AppMethodBeat.i(148025);
-      ae.e("Luggage.FULL.CgiPhoneNumber", "getPhoneNumber fail");
-      if ((paramObject instanceof Exception)) {
-        ae.e("Luggage.FULL.CgiPhoneNumber", "CgiGetAllPhone " + ((Exception)paramObject).getMessage());
-      }
-      paramObject = this.mnY;
-      if (paramObject != null)
-      {
-        paramObject.a(Boolean.FALSE, "cgi fail", null, null);
-        AppMethodBeat.o(148025);
-        return;
-      }
-      AppMethodBeat.o(148025);
-    }
+    a(r paramr) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.phonenumber.d
  * JD-Core Version:    0.7.0.1
  */

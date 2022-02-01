@@ -1,13 +1,14 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.pluginsdk.ui.chat.ChatFooter;
+import com.tencent.mm.ui.chatting.d.af;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/chatting/component/api/IFloatBallComponent;", "Lcom/tencent/mm/ui/chatting/component/IChattingComponent;", "attachFooter", "", "chatFooter", "Lcom/tencent/mm/pluginsdk/ui/chat/ChatFooter;", "detachFooter", "app_release"})
 public abstract interface t
-  extends ad
+  extends af
 {
-  public abstract boolean fHS();
-  
-  public abstract void fHT();
+  public abstract void bD(ChatFooter paramChatFooter);
 }
 
 

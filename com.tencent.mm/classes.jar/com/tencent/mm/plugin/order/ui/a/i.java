@@ -11,32 +11,32 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class i
   extends Preference
 {
+  private int AQP;
+  String AQQ;
   private View mView;
-  private int wUT;
-  String wUU;
   
   public i(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(66827);
     this.mView = null;
-    this.wUT = 2147483647;
-    setLayoutResource(2131494713);
+    this.AQP = 2147483647;
+    setLayoutResource(2131495442);
     AppMethodBeat.o(66827);
   }
   
-  public final void avu(String paramString)
+  public final void aJH(String paramString)
   {
     AppMethodBeat.i(66830);
     try
     {
-      this.wUT = g.cp(paramString, true);
+      this.AQP = g.cI(paramString, true);
       AppMethodBeat.o(66830);
       return;
     }
     catch (Exception paramString)
     {
-      this.wUT = -1;
+      this.AQP = -1;
       AppMethodBeat.o(66830);
     }
   }
@@ -57,19 +57,19 @@ public final class i
   {
     AppMethodBeat.i(66829);
     super.onBindView(paramView);
-    TextView localTextView = (TextView)paramView.findViewById(2131302044);
-    paramView = (TextView)paramView.findViewById(2131302043);
+    TextView localTextView = (TextView)paramView.findViewById(2131304383);
+    paramView = (TextView)paramView.findViewById(2131304382);
     localTextView.setText(getTitle());
-    paramView.setText(this.wUU);
-    if (this.wUT != 2147483647) {
-      paramView.setTextColor(this.wUT);
+    paramView.setText(this.AQQ);
+    if (this.AQP != 2147483647) {
+      paramView.setTextColor(this.AQP);
     }
     AppMethodBeat.o(66829);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.order.ui.a.i
  * JD-Core Version:    0.7.0.1
  */

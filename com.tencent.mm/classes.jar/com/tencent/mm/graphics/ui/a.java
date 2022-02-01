@@ -7,9 +7,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
   static
   {
     AppMethodBeat.i(136220);
-    gxK = new a("Normal", 0);
-    gxL = new a("Tile", 1);
-    gxM = new a[] { gxK, gxL };
+    hkx = new a("Normal", 0);
+    hky = new a("Tile", 1);
+    hkz = new a[] { hkx, hky };
     AppMethodBeat.o(136220);
   }
   

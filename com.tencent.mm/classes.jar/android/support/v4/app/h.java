@@ -5,15 +5,15 @@ import java.util.List;
 
 public final class h
 {
-  final List<Fragment> FP;
-  final List<h> FQ;
-  final List<ViewModelStore> FR;
+  final List<Fragment> FZ;
+  final List<h> Ga;
+  final List<ViewModelStore> Gb;
   
   h(List<Fragment> paramList, List<h> paramList1, List<ViewModelStore> paramList2)
   {
-    this.FP = paramList;
-    this.FQ = paramList1;
-    this.FR = paramList2;
+    this.FZ = paramList;
+    this.Ga = paramList1;
+    this.Gb = paramList2;
   }
 }
 

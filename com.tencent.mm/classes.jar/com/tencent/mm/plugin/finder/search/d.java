@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.finder.search;
 
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchFeedHeaderHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "divider", "onBindView", "", "needShowDivider", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchFeedHeaderHolder;", "Landroid/support/v7/widget/RecyclerView$ViewHolder;", "itemView", "Landroid/view/View;", "(Landroid/view/View;)V", "divider", "onBindView", "", "needShowDivider", "", "plugin-finder_release"})
 public final class d
-  extends RecyclerView.w
+  extends RecyclerView.v
 {
-  View iYM;
+  private View jWr;
   
   public d(View paramView)
   {
     super(paramView);
     AppMethodBeat.i(166802);
-    paramView = paramView.findViewById(2131299171);
+    paramView = paramView.findViewById(2131299715);
     p.g(paramView, "itemView.findViewById(R.id.divider_view)");
-    this.iYM = paramView;
+    this.jWr = paramView;
     AppMethodBeat.o(166802);
   }
 }

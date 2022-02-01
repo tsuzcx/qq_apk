@@ -1,151 +1,137 @@
 package com.tencent.mm.plugin.game.ui.message;
 
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
-import android.view.MenuItem;
+import android.content.Context;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnCreateContextMenuListener;
-import android.view.View.OnLongClickListener;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.model.o;
-import com.tencent.mm.plugin.game.model.o.g;
-import com.tencent.mm.plugin.game.model.p;
+import com.tencent.mm.memory.a.b;
+import com.tencent.mm.plugin.game.e.e.a.a;
 import com.tencent.mm.plugin.game.model.s;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.ui.base.n.e;
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public final class e
-  implements View.OnClickListener, View.OnLongClickListener
+  extends RecyclerView
 {
-  private int fRv;
-  private b uGt;
+  private int gwE;
+  private Context mContext;
+  private com.tencent.mm.b.f<String, Bitmap> xUC;
+  b xYB;
+  private f xYo;
+  private c xYp;
+  private Set<Integer> xYq;
   
-  public e(int paramInt, b paramb)
+  public e(Context paramContext, int paramInt)
   {
-    this.fRv = paramInt;
-    this.uGt = paramb;
-  }
-  
-  public final void onClick(View paramView)
-  {
-    AppMethodBeat.i(183902);
-    Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/message/OnMsgClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-    if (!(paramView.getTag() instanceof a))
+    super(paramContext);
+    AppMethodBeat.i(183896);
+    this.xYq = new HashSet();
+    this.mContext = paramContext;
+    this.gwE = paramInt;
+    this.xUC = new b(30, getClass());
+    this.xYo = new f(this.gwE, new f.b()
     {
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/message/OnMsgClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(183902);
-      return;
-    }
-    localObject = (a)paramView.getTag();
-    if ((((a)localObject).uGw == null) || (((a)localObject).uGx == null))
-    {
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/message/OnMsgClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(183902);
-      return;
-    }
-    int i = p.a(paramView.getContext(), ((a)localObject).uGw, ((a)localObject).uGx, ((a)localObject).uGw.field_appId, this.fRv);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("tab", "2");
-    if (((a)localObject).isNew) {}
-    for (paramView = "1";; paramView = "2")
-    {
-      localHashMap.put("isnew", paramView);
-      localHashMap.put("fold", String.valueOf(((a)localObject).uGw.field_hasMergedCount));
-      localHashMap.put("ext_data", ((a)localObject).uGw.unF);
-      com.tencent.mm.game.report.f.a(ak.getContext(), 13, 1301, ((a)localObject).upr, i, 0, ((a)localObject).uGw.field_appId, this.fRv, ((a)localObject).uGw.unD, ((a)localObject).uGw.field_gameMsgId, ((a)localObject).uGw.unE, com.tencent.mm.game.report.f.r(localHashMap));
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/game/ui/message/OnMsgClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(183902);
-      return;
-    }
-  }
-  
-  public final boolean onLongClick(View paramView)
-  {
-    AppMethodBeat.i(183903);
-    Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/game/ui/message/OnMsgClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, ((b)localObject).ahF());
-    if (!(paramView.getTag() instanceof a))
-    {
-      com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/game/ui/message/OnMsgClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-      AppMethodBeat.o(183903);
-      return false;
-    }
-    localObject = (a)paramView.getTag();
-    if (((a)localObject).uGw == null)
-    {
-      com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/game/ui/message/OnMsgClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-      AppMethodBeat.o(183903);
-      return false;
-    }
-    paramView = new com.tencent.mm.ui.widget.b.a(paramView.getContext(), paramView);
-    paramView.LwG = new View.OnCreateContextMenuListener()
-    {
-      public final void onCreateContextMenu(ContextMenu paramAnonymousContextMenu, View paramAnonymousView, ContextMenu.ContextMenuInfo paramAnonymousContextMenuInfo)
+      public final void dWI()
       {
-        AppMethodBeat.i(183900);
-        paramAnonymousContextMenu.add(0, 11, 0, 2131759843);
-        AppMethodBeat.o(183900);
+        AppMethodBeat.i(183891);
+        e.a(e.this);
+        AppMethodBeat.o(183891);
       }
-    };
-    paramView.LfT = new n.e()
+    });
+    paramInt = ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSK().Op(2);
+    this.xYB = new b(paramContext, ((com.tencent.mm.plugin.game.api.f)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.game.api.f.class)).dSK().On(2), paramInt);
+    setLayoutManager(new LinearLayoutManager());
+    setAdapter(this.xYB);
+    AppMethodBeat.o(183896);
+  }
+  
+  private void b(ImageView paramImageView, final String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(183897);
+    e.a.a locala = new e.a.a();
+    locala.jbd = false;
+    locala.xZw = paramFloat;
+    com.tencent.mm.plugin.game.e.e.dWR().a(paramImageView, paramString, locala.dWS(), new com.tencent.mm.plugin.game.e.e.b()
     {
-      public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
+      public final void a(View paramAnonymousView, Bitmap paramAnonymousBitmap)
       {
-        AppMethodBeat.i(183901);
-        if (paramAnonymousMenuItem.getItemId() == 11)
-        {
-          ((com.tencent.mm.plugin.game.api.f)g.ab(com.tencent.mm.plugin.game.api.f.class)).cZl().delete(this.uGv.uGw, new String[0]);
-          if (e.a(e.this) != null) {
-            e.a(e.this).dcY();
-          }
+        AppMethodBeat.i(183892);
+        if ((paramAnonymousBitmap != null) && (!paramAnonymousBitmap.isRecycled())) {
+          e.f(e.this).put(paramString, paramAnonymousBitmap);
         }
-        AppMethodBeat.o(183901);
+        AppMethodBeat.o(183892);
       }
-    };
-    paramView.el(0, 0);
-    com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/mm/plugin/game/ui/message/OnMsgClickListener", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
-    AppMethodBeat.o(183903);
-    return true;
+    });
+    AppMethodBeat.o(183897);
   }
   
-  public static final class a
+  public final void setEmptyCallback(c paramc)
   {
-    public boolean isNew;
-    public o uGw;
-    public o.g uGx;
-    public int upr;
+    this.xYp = paramc;
+  }
+  
+  final class a
+    extends RecyclerView.v
+  {
+    ImageView gBZ;
+    TextView hPW;
+    TextView pIN;
+    TextView timeTv;
+    TextView titleTv;
+    View xYA;
+    private ViewGroup xYD;
+    ImageView xYE;
+    ViewGroup xYs;
+    View xYy;
+    View xYz;
     
-    public a(o paramo, o.g paramg, int paramInt)
+    public a(View paramView)
     {
-      AppMethodBeat.i(184812);
-      this.uGw = paramo;
-      this.uGx = paramg;
-      this.upr = paramInt;
-      if (!paramo.field_isRead) {}
-      for (boolean bool = true;; bool = false)
-      {
-        this.isNew = bool;
-        AppMethodBeat.o(184812);
-        return;
-      }
+      super();
+      AppMethodBeat.i(183893);
+      this.xYs = ((ViewGroup)paramView.findViewById(2131304950));
+      this.gBZ = ((ImageView)paramView.findViewById(2131302497));
+      this.pIN = ((TextView)paramView.findViewById(2131305440));
+      this.xYD = ((ViewGroup)paramView.findViewById(2131304951));
+      this.xYE = ((ImageView)paramView.findViewById(2131298194));
+      this.titleTv = ((TextView)paramView.findViewById(2131298232));
+      this.hPW = ((TextView)paramView.findViewById(2131298092));
+      this.timeTv = ((TextView)paramView.findViewById(2131309101));
+      this.xYy = paramView.findViewById(2131302045);
+      this.xYz = paramView.findViewById(2131305359);
+      this.xYA = paramView.findViewById(2131303689);
+      this.xYs.setOnLongClickListener(e.e(e.this));
+      this.xYs.setOnClickListener(e.e(e.this));
+      this.gBZ.setOnLongClickListener(e.e(e.this));
+      this.gBZ.setOnClickListener(e.e(e.this));
+      this.pIN.setOnLongClickListener(e.e(e.this));
+      this.pIN.setOnClickListener(e.e(e.this));
+      AppMethodBeat.o(183893);
     }
   }
   
-  public static abstract interface b
+  final class b
+    extends g<e.a>
   {
-    public abstract void dcY();
+    int dCm;
+    
+    public b(Context paramContext, Cursor paramCursor, int paramInt)
+    {
+      super(paramCursor);
+      this.dCm = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.message.e
  * JD-Core Version:    0.7.0.1
  */

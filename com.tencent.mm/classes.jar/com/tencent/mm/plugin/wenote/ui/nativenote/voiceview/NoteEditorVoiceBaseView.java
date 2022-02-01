@@ -13,21 +13,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.e;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.wenote.model.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.u;
 
 public class NoteEditorVoiceBaseView
   extends TextView
   implements a.a
 {
   private Context context;
-  public int dui;
+  public int dLt;
   private int duration;
   private boolean isRunning;
-  private AlphaAnimation pEQ;
-  private AnimationDrawable pER;
   public String path;
+  private AlphaAnimation qUh;
+  private AnimationDrawable qUi;
   
   public NoteEditorVoiceBaseView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -37,7 +37,7 @@ public class NoteEditorVoiceBaseView
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    aQx();
+    blc();
     AppMethodBeat.o(30890);
   }
   
@@ -49,58 +49,58 @@ public class NoteEditorVoiceBaseView
     this.duration = -1;
     this.path = "";
     this.context = paramContext;
-    aQx();
+    blc();
     AppMethodBeat.o(30891);
   }
   
-  private void aQx()
+  private void blc()
   {
     AppMethodBeat.i(30892);
-    this.pEQ = new AlphaAnimation(0.1F, 1.0F);
-    this.pEQ.setDuration(1000L);
-    this.pEQ.setRepeatCount(-1);
-    this.pEQ.setRepeatMode(2);
-    this.pER = new com.tencent.mm.ui.e.a();
-    Drawable localDrawable = getResources().getDrawable(2131689892);
+    this.qUh = new AlphaAnimation(0.1F, 1.0F);
+    this.qUh.setDuration(1000L);
+    this.qUh.setRepeatCount(-1);
+    this.qUh.setRepeatMode(2);
+    this.qUi = new com.tencent.mm.ui.f.a();
+    Drawable localDrawable = getResources().getDrawable(2131689907);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pER.addFrame(localDrawable, 300);
-    localDrawable = getResources().getDrawable(2131689893);
+    this.qUi.addFrame(localDrawable, 300);
+    localDrawable = getResources().getDrawable(2131689908);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pER.addFrame(localDrawable, 300);
-    localDrawable = getResources().getDrawable(2131689894);
+    this.qUi.addFrame(localDrawable, 300);
+    localDrawable = getResources().getDrawable(2131689909);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pER.addFrame(localDrawable, 300);
-    this.pER.setOneShot(false);
-    this.pER.setVisible(true, true);
+    this.qUi.addFrame(localDrawable, 300);
+    this.qUi.setOneShot(false);
+    this.qUi.setVisible(true, true);
     AppMethodBeat.o(30892);
   }
   
-  public final void abP(String paramString)
+  public final void alV(String paramString)
   {
     AppMethodBeat.i(30895);
-    ae.d("MicroMsg.NoteEditorVoiceBaseView", "on play, my path %s, my duration %d, play path %s", new Object[] { this.path, Integer.valueOf(this.duration), paramString });
-    if (!bu.bI(paramString, "").equals(this.path)) {
-      cgN();
+    Log.d("MicroMsg.NoteEditorVoiceBaseView", "on play, my path %s, my duration %d, play path %s", new Object[] { this.path, Integer.valueOf(this.duration), paramString });
+    if (!Util.nullAs(paramString, "").equals(this.path)) {
+      cEA();
     }
     AppMethodBeat.o(30895);
   }
   
-  public final void cgN()
+  public final void cEA()
   {
     AppMethodBeat.i(30893);
-    if ((this.pEQ != null) && (this.pEQ.isInitialized())) {
+    if ((this.qUh != null) && (this.qUh.isInitialized())) {
       setAnimation(null);
     }
     this.isRunning = false;
-    setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2131689891), null, null, null);
-    this.pER.stop();
+    setCompoundDrawablesWithIntrinsicBounds(getResources().getDrawable(2131689906), null, null, null);
+    this.qUi.stop();
     AppMethodBeat.o(30893);
   }
   
-  public final void cgO()
+  public final void cEB()
   {
     AppMethodBeat.i(30896);
-    cgN();
+    cEA();
     AppMethodBeat.o(30896);
   }
   
@@ -114,39 +114,39 @@ public class NoteEditorVoiceBaseView
       {
         AppMethodBeat.i(30889);
         Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/voiceview/NoteEditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+        ((b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wenote/ui/nativenote/voiceview/NoteEditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
         String str = NoteEditorVoiceBaseView.a(NoteEditorVoiceBaseView.this);
-        if (a.fbf().cgS()) {}
+        if (a.gkl().cEF()) {}
         for (localObject = "true";; localObject = "false")
         {
-          ae.i("MicroMsg.NoteEditorVoiceBaseView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str, localObject, a.fbf().path });
-          if ((!com.tencent.mm.r.a.ch(NoteEditorVoiceBaseView.b(NoteEditorVoiceBaseView.this))) && (!com.tencent.mm.r.a.cf(NoteEditorVoiceBaseView.b(NoteEditorVoiceBaseView.this))) && (!com.tencent.mm.r.a.cj(NoteEditorVoiceBaseView.b(NoteEditorVoiceBaseView.this)))) {
+          Log.i("MicroMsg.NoteEditorVoiceBaseView", "clicked path:%s, player isPlay:%s, path:%s", new Object[] { str, localObject, a.gkl().path });
+          if ((!com.tencent.mm.q.a.cC(NoteEditorVoiceBaseView.b(NoteEditorVoiceBaseView.this))) && (!com.tencent.mm.q.a.cA(NoteEditorVoiceBaseView.b(NoteEditorVoiceBaseView.this))) && (!com.tencent.mm.q.a.cE(NoteEditorVoiceBaseView.b(NoteEditorVoiceBaseView.this)))) {
             break;
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/voiceview/NoteEditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(30889);
           return;
         }
-        if ((!e.abo()) && (!bu.isNullOrNil(NoteEditorVoiceBaseView.a(NoteEditorVoiceBaseView.this))))
+        if ((!e.apn()) && (!Util.isNullOrNil(NoteEditorVoiceBaseView.a(NoteEditorVoiceBaseView.this))))
         {
-          t.g(paramAnonymousView.getContext(), null);
+          u.g(paramAnonymousView.getContext(), null);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/voiceview/NoteEditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(30889);
           return;
         }
-        if (k.fay().pzT)
+        if (k.gjD().qPk)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wenote/ui/nativenote/voiceview/NoteEditorVoiceBaseView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(30889);
           return;
         }
-        if ((bu.bI(NoteEditorVoiceBaseView.a(NoteEditorVoiceBaseView.this), "").equals(a.fbf().path)) && (a.fbf().cgS()))
+        if ((Util.nullAs(NoteEditorVoiceBaseView.a(NoteEditorVoiceBaseView.this), "").equals(a.gkl().path)) && (a.gkl().cEF()))
         {
           paramAnonymousView = NoteEditorVoiceBaseView.this;
-          ae.d("MicroMsg.NoteEditorVoiceBaseView", "stop play");
-          paramAnonymousView.cgN();
-          a.fbf().stopPlay();
+          Log.d("MicroMsg.NoteEditorVoiceBaseView", "stop play");
+          paramAnonymousView.cEA();
+          a.gkl().stopPlay();
         }
         for (;;)
         {
@@ -162,7 +162,7 @@ public class NoteEditorVoiceBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.voiceview.NoteEditorVoiceBaseView
  * JD-Core Version:    0.7.0.1
  */

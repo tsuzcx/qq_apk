@@ -13,10 +13,12 @@ import com.tencent.mm.plugin.qqmail.c.b;
 import com.tencent.mm.plugin.qqmail.c.c;
 import com.tencent.mm.plugin.qqmail.c.d;
 import com.tencent.mm.plugin.qqmail.c.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
+import com.tencent.mm.vfs.s;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.net.HttpURLConnection;
@@ -33,31 +35,42 @@ import java.util.Map;
 
 public final class v
 {
-  private static SparseArray<String> xrV = null;
-  Map<String, String> xqO;
-  public m xrQ;
-  public h xrR;
-  private j xrS;
-  private Map<Long, c.c> xrT;
-  private Map<Long, a> xrU;
+  public static final String BrS;
+  public static final String BrT;
+  private static SparseArray<String> BrZ;
+  public m BrU;
+  public h BrV;
+  private j BrW;
+  private Map<Long, c.c> BrX;
+  private Map<Long, a> BrY;
+  Map<String, String> cookie;
+  
+  static
+  {
+    AppMethodBeat.i(198622);
+    BrS = WeChatHosts.domainString(2131761755);
+    BrT = WeChatHosts.domainString(2131761755) + ":443";
+    BrZ = null;
+    AppMethodBeat.o(198622);
+  }
   
   public v()
   {
-    AppMethodBeat.i(217961);
-    this.xqO = new HashMap();
-    this.xrT = new HashMap();
-    this.xrU = new HashMap();
+    AppMethodBeat.i(198615);
+    this.cookie = new HashMap();
+    this.BrX = new HashMap();
+    this.BrY = new HashMap();
     reset();
-    AppMethodBeat.o(217961);
+    AppMethodBeat.o(198615);
   }
   
-  private static String NQ(int paramInt)
+  private static String Vf(int paramInt)
   {
     AppMethodBeat.i(122752);
     Object localObject1;
-    if (xrV == null)
+    if (BrZ == null)
     {
-      xrV = new SparseArray();
+      BrZ = new SparseArray();
       localObject1 = HttpURLConnection.class.getDeclaredFields();
       int k = localObject1.length;
       int i = 0;
@@ -82,7 +95,7 @@ public final class v
             }
             localStringBuilder.append("error");
           }
-          xrV.put(m, localStringBuilder.toString().toLowerCase());
+          BrZ.put(m, localStringBuilder.toString().toLowerCase());
         }
         catch (Exception localException)
         {
@@ -94,10 +107,10 @@ public final class v
     }
     else
     {
-      localObject1 = (String)xrV.get(paramInt);
+      localObject1 = (String)BrZ.get(paramInt);
       if (localObject1 == null)
       {
-        localObject1 = bD(paramInt, "request error");
+        localObject1 = bR(paramInt, "request error");
         AppMethodBeat.o(122752);
         return localObject1;
       }
@@ -106,15 +119,15 @@ public final class v
     }
   }
   
-  public static an aj(Bundle paramBundle)
+  public static an at(Bundle paramBundle)
   {
-    AppMethodBeat.i(217963);
+    AppMethodBeat.i(198618);
     an localan = new an();
-    localan.xsS = paramBundle.getInt("mail_send_type");
-    localan.xsW = paramBundle.getString("mail_id");
-    localan.xrr = paramBundle.getString("mail_subject");
+    localan.BsV = paramBundle.getInt("mail_send_type");
+    localan.BsZ = paramBundle.getString("mail_id");
+    localan.Bru = paramBundle.getString("mail_subject");
     localan.content = paramBundle.getString("mail_content");
-    ae.i("MicroMsg.Mail.NormalMailAppService", "parseSendMailContent before content:%s", new Object[] { localan.content });
+    Log.i("MicroMsg.Mail.NormalMailAppService", "parseSendMailContent before content:%s", new Object[] { localan.content });
     Object localObject1 = paramBundle.getParcelableArrayList("mail_image_attach");
     Object localObject2;
     Object localObject3;
@@ -130,18 +143,18 @@ public final class v
         localan.content = localan.content.replaceAll(String.format("src=\"%s\"", new Object[] { "file://".concat(String.valueOf(localObject4)) }), String.format("src=\"/attach/preview?bizid=50&fileid=%s&name=%s\"", new Object[] { localObject2, localObject3 }));
       }
     }
-    ae.i("MicroMsg.Mail.NormalMailAppService", "parseSendMailContent after content:%s", new Object[] { localan.content });
-    localan.xsX = true;
+    Log.i("MicroMsg.Mail.NormalMailAppService", "parseSendMailContent after content:%s", new Object[] { localan.content });
+    localan.Bta = true;
     localObject1 = paramBundle.getParcelableArrayList("mail_from_list");
     if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
     {
-      localan.xsT = new al();
-      localObject2 = localan.xsT;
-      g.ajP();
+      localan.BsW = new al();
+      localObject2 = localan.BsW;
+      g.aAf();
       ((al)localObject2).uin = com.tencent.mm.kernel.a.getUin();
-      localan.xsT.xsH = ((Bundle)((ArrayList)localObject1).get(0)).getString("item_addr");
-      localan.xsT.nickname = ((Bundle)((ArrayList)localObject1).get(0)).getString("item_name");
-      ae.i("MicroMsg.Mail.NormalMailAppService", "from addr %s", new Object[] { localan.xsT.xsH });
+      localan.BsW.BsK = ((Bundle)((ArrayList)localObject1).get(0)).getString("item_addr");
+      localan.BsW.nickname = ((Bundle)((ArrayList)localObject1).get(0)).getString("item_name");
+      Log.i("MicroMsg.Mail.NormalMailAppService", "from addr %s", new Object[] { localan.BsW.BsK });
     }
     localObject1 = paramBundle.getParcelableArrayList("mail_to_list");
     if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
@@ -151,10 +164,10 @@ public final class v
       {
         localObject2 = (Bundle)((Iterator)localObject1).next();
         localObject3 = new al();
-        ((al)localObject3).xsH = ((Bundle)localObject2).getString("item_addr");
+        ((al)localObject3).BsK = ((Bundle)localObject2).getString("item_addr");
         ((al)localObject3).nickname = ((Bundle)localObject2).getString("item_name");
-        localan.xsK.add(localObject3);
-        ae.i("MicroMsg.Mail.NormalMailAppService", "to addr %s", new Object[] { ((al)localObject3).xsH });
+        localan.BsN.add(localObject3);
+        Log.i("MicroMsg.Mail.NormalMailAppService", "to addr %s", new Object[] { ((al)localObject3).BsK });
       }
     }
     localObject1 = paramBundle.getParcelableArrayList("mail_cc_list");
@@ -165,10 +178,10 @@ public final class v
       {
         localObject2 = (Bundle)((Iterator)localObject1).next();
         localObject3 = new al();
-        ((al)localObject3).xsH = ((Bundle)localObject2).getString("item_addr");
+        ((al)localObject3).BsK = ((Bundle)localObject2).getString("item_addr");
         ((al)localObject3).nickname = ((Bundle)localObject2).getString("item_name");
-        localan.xsL.add(localObject3);
-        ae.i("MicroMsg.Mail.NormalMailAppService", "cc addr %s", new Object[] { ((al)localObject3).xsH });
+        localan.BsO.add(localObject3);
+        Log.i("MicroMsg.Mail.NormalMailAppService", "cc addr %s", new Object[] { ((al)localObject3).BsK });
       }
     }
     localObject1 = paramBundle.getParcelableArrayList("mail_bcc_list");
@@ -179,10 +192,10 @@ public final class v
       {
         localObject2 = (Bundle)((Iterator)localObject1).next();
         localObject3 = new al();
-        ((al)localObject3).xsH = ((Bundle)localObject2).getString("item_addr");
+        ((al)localObject3).BsK = ((Bundle)localObject2).getString("item_addr");
         ((al)localObject3).nickname = ((Bundle)localObject2).getString("item_name");
-        localan.xsM.add(localObject3);
-        ae.i("MicroMsg.Mail.NormalMailAppService", "bcc addr %s", new Object[] { ((al)localObject3).xsH });
+        localan.BsP.add(localObject3);
+        Log.i("MicroMsg.Mail.NormalMailAppService", "bcc addr %s", new Object[] { ((al)localObject3).BsK });
       }
     }
     localObject1 = paramBundle.getParcelableArrayList("mail_normal_attach");
@@ -197,10 +210,10 @@ public final class v
         ((ak)localObject3).key = ((Bundle)localObject2).getString("attach_key");
         ((ak)localObject3).name = ((Bundle)localObject2).getString("attach_name");
         ((ak)localObject3).size = ((Bundle)localObject2).getInt("attach_size");
-        ((ak)localObject3).xsG = ((Bundle)localObject2).getString("attach_download_url");
+        ((ak)localObject3).BsJ = ((Bundle)localObject2).getString("attach_download_url");
         ((ak)localObject3).type = ((Bundle)localObject2).getString("attach_type");
-        localan.xsU.add(localObject3);
-        ae.i("MicroMsg.Mail.NormalMailAppService", "attach %s,%s,%s", new Object[] { ((ak)localObject3).fileid, ((ak)localObject3).name, ((ak)localObject3).xsG });
+        localan.BsX.add(localObject3);
+        Log.i("MicroMsg.Mail.NormalMailAppService", "attach %s,%s,%s", new Object[] { ((ak)localObject3).fileid, ((ak)localObject3).name, ((ak)localObject3).BsJ });
       }
     }
     paramBundle = paramBundle.getParcelableArrayList("mail_big_attach");
@@ -215,17 +228,17 @@ public final class v
         ((ak)localObject2).key = ((Bundle)localObject1).getString("attach_key");
         ((ak)localObject2).name = ((Bundle)localObject1).getString("attach_name");
         ((ak)localObject2).size = ((Bundle)localObject1).getInt("attach_size");
-        ((ak)localObject2).xsG = ((Bundle)localObject1).getString("attach_download_url");
+        ((ak)localObject2).BsJ = ((Bundle)localObject1).getString("attach_download_url");
         ((ak)localObject2).type = ((Bundle)localObject1).getString("attach_type");
-        localan.xsV.add(localObject2);
-        ae.i("MicroMsg.Mail.NormalMailAppService", "big attach %s,%s,%s", new Object[] { ((ak)localObject2).fileid, ((ak)localObject2).name, ((ak)localObject2).xsG });
+        localan.BsY.add(localObject2);
+        Log.i("MicroMsg.Mail.NormalMailAppService", "big attach %s,%s,%s", new Object[] { ((ak)localObject2).fileid, ((ak)localObject2).name, ((ak)localObject2).BsJ });
       }
     }
-    AppMethodBeat.o(217963);
+    AppMethodBeat.o(198618);
     return localan;
   }
   
-  private static String bD(int paramInt, String paramString)
+  private static String bR(int paramInt, String paramString)
   {
     AppMethodBeat.i(122753);
     int i = 0;
@@ -238,21 +251,21 @@ public final class v
     {
       AppMethodBeat.o(122753);
       return paramString;
-      paramInt = 2131761981;
+      paramInt = 2131763988;
       continue;
-      paramInt = 2131761986;
+      paramInt = 2131763993;
       continue;
-      paramInt = 2131761988;
+      paramInt = 2131763995;
       continue;
-      paramInt = 2131761985;
+      paramInt = 2131763992;
       continue;
-      paramInt = 2131761987;
+      paramInt = 2131763994;
       continue;
-      paramInt = 2131761983;
+      paramInt = 2131763990;
       continue;
-      paramInt = 2131761984;
+      paramInt = 2131763991;
     }
-    paramString = com.tencent.mm.cb.a.az(com.tencent.mm.sdk.platformtools.ak.getContext(), paramInt);
+    paramString = com.tencent.mm.cb.a.aI(MMApplicationContext.getContext(), paramInt);
     AppMethodBeat.o(122753);
     return paramString;
   }
@@ -260,33 +273,36 @@ public final class v
   private void cancel()
   {
     AppMethodBeat.i(122745);
-    Iterator localIterator = this.xrU.values().iterator();
+    Iterator localIterator = this.BrY.values().iterator();
     while (localIterator.hasNext()) {
       ((a)localIterator.next()).cancel(true);
     }
-    this.xrU.clear();
-    this.xrT.clear();
+    this.BrY.clear();
+    this.BrX.clear();
     AppMethodBeat.o(122745);
   }
   
-  public static String dFB()
+  public static String eGq()
   {
-    return "https://wx.mail.qq.com";
+    AppMethodBeat.i(198616);
+    String str = "https://" + BrS;
+    AppMethodBeat.o(198616);
+    return str;
   }
   
-  public static String dFC()
+  public static String eGr()
   {
-    AppMethodBeat.i(217964);
-    String str = ((IPCString)com.tencent.mm.ipcinvoker.h.a(com.tencent.mm.sdk.platformtools.ak.getPackageName(), new IPCVoid(), com.tencent.mm.plugin.qqmail.c.c.class)).value;
-    AppMethodBeat.o(217964);
+    AppMethodBeat.i(198619);
+    String str = ((IPCString)com.tencent.mm.ipcinvoker.h.a(MMApplicationContext.getPackageName(), new IPCVoid(), com.tencent.mm.plugin.qqmail.c.c.class)).value;
+    AppMethodBeat.o(198619);
     return str;
   }
   
   public static String getDownloadPath()
   {
     AppMethodBeat.i(122749);
-    String str = b.atg() + "attach/";
-    o.aZI(str);
+    String str = b.aLG() + "attach/";
+    s.boN(str);
     AppMethodBeat.o(122749);
     return str;
   }
@@ -328,7 +344,7 @@ public final class v
   
   public final long a(final String paramString, int paramInt, Map<String, String> paramMap, c.b paramb, c.a parama)
   {
-    AppMethodBeat.i(217962);
+    AppMethodBeat.i(198617);
     Object localObject = paramMap;
     if (paramMap == null) {
       localObject = new HashMap();
@@ -337,10 +353,10 @@ public final class v
     ((Map)localObject).put("f", "xml");
     ((Map)localObject).put("charset", "utf-8");
     ((Map)localObject).put("clientip", getLocalIp());
-    paramMap = new c.e(paramInt, (Map)localObject, this.xqO);
-    paramString = new c.c("https://wx.mail.qq.com".concat(String.valueOf(paramString)), paramMap, parama);
-    paramString.xqH = paramb;
-    ar.f(new Runnable()
+    paramMap = new c.e(paramInt, (Map)localObject, this.cookie);
+    paramString = new c.c(eGq() + paramString, paramMap, parama);
+    paramString.BqN = paramb;
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
@@ -353,44 +369,44 @@ public final class v
       }
     });
     long l = paramString.id;
-    AppMethodBeat.o(217962);
+    AppMethodBeat.o(198617);
     return l;
   }
   
   public final long a(String paramString, Map<String, String> paramMap, c.a parama)
   {
-    AppMethodBeat.i(217959);
+    AppMethodBeat.i(198613);
     long l = a(paramString, paramMap, new c.b(), parama);
-    AppMethodBeat.o(217959);
+    AppMethodBeat.o(198613);
     return l;
   }
   
   public final long a(String paramString, Map<String, String> paramMap, c.b paramb, c.a parama)
   {
-    AppMethodBeat.i(217960);
+    AppMethodBeat.i(198614);
     long l = a(paramString, 1, paramMap, paramb, parama);
-    AppMethodBeat.o(217960);
+    AppMethodBeat.o(198614);
     return l;
   }
   
   public final void cancel(long paramLong)
   {
     AppMethodBeat.i(122746);
-    a locala = (a)this.xrU.get(Long.valueOf(paramLong));
+    a locala = (a)this.BrY.get(Long.valueOf(paramLong));
     if (locala != null)
     {
       locala.onCancelled();
       locala.cancel(true);
     }
-    this.xrU.remove(Long.valueOf(paramLong));
-    this.xrT.remove(Long.valueOf(paramLong));
+    this.BrY.remove(Long.valueOf(paramLong));
+    this.BrX.remove(Long.valueOf(paramLong));
     AppMethodBeat.o(122746);
   }
   
   public final void clearData()
   {
     AppMethodBeat.i(122748);
-    o.dd("wcf://mailapp/", true);
+    s.dy("wcf://mailapp/", true);
     reset();
     AppMethodBeat.o(122748);
   }
@@ -399,20 +415,20 @@ public final class v
   {
     AppMethodBeat.i(122747);
     cancel();
-    this.xqO.clear();
-    String str = dFC();
-    if (bu.isNullOrNil(str))
+    this.cookie.clear();
+    String str = eGr();
+    if (Util.isNullOrNil(str))
     {
-      this.xrQ = new m("wcf://mailapp/" + "addr/mail_address/addrpage");
-      this.xrQ.xry.aQN();
+      this.BrU = new m("wcf://mailapp/" + "addr/mail_address/addrpage");
+      this.BrU.BrA.blr();
     }
     for (;;)
     {
-      this.xrR = new h("wcf://mailapp/" + "draft/");
-      this.xrS = new j("wcf://mailapp/" + "http/", 0);
+      this.BrV = new h("wcf://mailapp/" + "draft/");
+      this.BrW = new j("wcf://mailapp/" + "http/", 0);
       AppMethodBeat.o(122747);
       return;
-      this.xrQ = new m("wcf://mailapp/" + "addr/mail_address/" + str + "/addrpage");
+      this.BrU = new m("wcf://mailapp/" + "addr/mail_address/" + str + "/addrpage");
     }
   }
   
@@ -420,26 +436,26 @@ public final class v
     extends AsyncTask<c.c, Integer, c.c>
     implements c.d
   {
-    private com.tencent.mm.plugin.qqmail.c xrY;
-    c.c xrZ;
+    private com.tencent.mm.plugin.qqmail.c Bsc;
+    c.c Bsd;
     
     private a() {}
     
     public final boolean b(c.c paramc)
     {
-      AppMethodBeat.i(217958);
-      if (!paramc.xqL.onReady())
+      AppMethodBeat.i(198612);
+      if (!paramc.BqR.onReady())
       {
-        AppMethodBeat.o(217958);
+        AppMethodBeat.o(198612);
         return false;
       }
-      this.xrZ = paramc;
+      this.Bsd = paramc;
       super.execute(new c.c[] { paramc });
-      AppMethodBeat.o(217958);
+      AppMethodBeat.o(198612);
       return true;
     }
     
-    public final void dFu()
+    public final void eGj()
     {
       AppMethodBeat.i(122730);
       publishProgress(new Integer[] { Integer.valueOf(0) });
@@ -449,8 +465,8 @@ public final class v
     protected final void onCancelled()
     {
       AppMethodBeat.i(122731);
-      g.ajS();
-      g.ajU().aw(new Runnable()
+      g.aAi();
+      g.aAk().postToWorker(new Runnable()
       {
         public final void run()
         {
@@ -476,7 +492,7 @@ public final class v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d.v
  * JD-Core Version:    0.7.0.1
  */

@@ -2,140 +2,164 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.FinderFeedReportObject;
-import com.tencent.mm.protocal.protobuf.FinderObject;
-import com.tencent.mm.protocal.protobuf.amt;
-import com.tencent.mm.protocal.protobuf.aqx;
-import com.tencent.mm.protocal.protobuf.bwa;
-import com.tencent.mm.protocal.protobuf.bwf;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.io.IOException;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public abstract class cf
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FinderFeedItem_local_index ON FinderFeedItem(localId)", "CREATE INDEX IF NOT EXISTS FinderFeedItem_Id ON FinderFeedItem(id)", "CREATE INDEX IF NOT EXISTS FinderFeedItem_create_time ON FinderFeedItem(createTime)", "CREATE INDEX IF NOT EXISTS FinderFeedItem__Local_Flag ON FinderFeedItem(localFlag)" };
-  private static final int eFN = "localFlag".hashCode();
-  private static final int eFO;
-  private static final int eGY;
-  private static final int eGZ;
-  private static final int eQh;
-  private static final int eWU = "localId".hashCode();
-  private static final int far;
-  private static final int fas;
-  private static final int fat = "postinfo".hashCode();
-  private static final int fau = "mediaExtList".hashCode();
-  private static final int fav = "reportObject".hashCode();
-  private static final int faw = "postExtraData".hashCode();
-  private static final int fax = "customData".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FinderConversation_sessionId_index ON FinderConversation(sessionId)", "CREATE INDEX IF NOT EXISTS FinderConversation_talker_index ON FinderConversation(talker)", "CREATE INDEX IF NOT EXISTS FinderConversation_username_status ON FinderConversation(status)", "CREATE INDEX IF NOT EXISTS FinderConversation_updateTime_index ON FinderConversation(updateTime)", "CREATE INDEX IF NOT EXISTS FinderConversation_type_index ON FinderConversation(type)", "CREATE INDEX IF NOT EXISTS FinderConversation_scene_index ON FinderConversation(scene)", "CREATE INDEX IF NOT EXISTS FinderConversation_readStatus_index ON FinderConversation(readStatus)" };
+  private static final int content_HASHCODE;
+  private static final int fAZ = "sessionId".hashCode();
+  private static final int fDV;
+  private static final int fDW;
+  private static final int fDX;
+  private static final int fDY = "readStatus".hashCode();
+  private static final int fjQ;
+  private static final int fjl;
+  private static final int fnV;
+  private static final int fnX;
+  private static final int fnZ;
+  private static final int foa;
+  private static final int foc;
+  private static final int foe;
+  private static final int fqw = "talker".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFq = true;
-  private boolean eFr = true;
-  private boolean eGV = true;
-  private boolean eGW = true;
-  private boolean eQd = true;
-  private boolean eWS = true;
-  private boolean fak = true;
-  private boolean fal = true;
-  private boolean fam = true;
-  private boolean fan = true;
-  private boolean fao = true;
-  private boolean fap = true;
-  private boolean faq = true;
-  public long field_createTime;
-  public amt field_customData;
-  public FinderObject field_finderObject;
-  public long field_id;
-  public int field_localFlag;
-  public long field_localId;
-  public bwf field_mediaExtList;
-  public aqx field_postExtraData;
-  public bwa field_postinfo;
-  public FinderFeedReportObject field_reportObject;
-  public int field_sourceFlag;
+  private static final int type_HASHCODE;
+  private static final int updateTime_HASHCODE;
+  private boolean __hadSetcontent = true;
+  private boolean __hadSettype = true;
+  private boolean __hadSetupdateTime = true;
+  private boolean fAL = true;
+  private boolean fDR = true;
+  private boolean fDS = true;
+  private boolean fDT = true;
+  private boolean fDU = true;
+  public int field_actionPermission;
+  public String field_content;
+  public String field_digest;
+  public String field_digestType;
+  public String field_digestUser;
+  public String field_editingMsg;
+  public int field_isSend;
+  public long field_lastMsgID;
+  public long field_placedFlag;
+  public int field_readStatus;
+  public int field_scene;
+  public String field_sessionId;
+  public int field_status;
+  public String field_talker;
+  public int field_type;
+  public int field_unReadCount;
   public long field_updateTime;
-  public String field_username;
+  private boolean fjO = true;
+  private boolean fji = true;
+  private boolean fnG = true;
+  private boolean fnI = true;
+  private boolean fnK = true;
+  private boolean fnL = true;
+  private boolean fnN = true;
+  private boolean fnP = true;
+  private boolean fqi = true;
   
   static
   {
-    eQh = "id".hashCode();
-    eFO = "createTime".hashCode();
-    eGY = "username".hashCode();
-    far = "sourceFlag".hashCode();
-    eGZ = "updateTime".hashCode();
-    fas = "finderObject".hashCode();
+    fnV = "unReadCount".hashCode();
+    fjl = "status".hashCode();
+    updateTime_HASHCODE = "updateTime".hashCode();
+    fnZ = "digest".hashCode();
+    foa = "digestUser".hashCode();
+    fDV = "digestType".hashCode();
+    fnX = "lastMsgID".hashCode();
+    content_HASHCODE = "content".hashCode();
+    foe = "isSend".hashCode();
+    fDW = "placedFlag".hashCode();
+    foc = "editingMsg".hashCode();
+    type_HASHCODE = "type".hashCode();
+    fDX = "actionPermission".hashCode();
+    fjQ = "scene".hashCode();
   }
   
-  private final void buildBuff() {}
-  
-  public static c.a initAutoDBInfo(Class<?> paramClass)
+  public static IAutoDBItem.MAutoDBInfo ajs()
   {
-    paramClass = new c.a();
-    paramClass.IBL = new Field[13];
-    paramClass.columns = new String[14];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[17];
+    localMAutoDBInfo.columns = new String[18];
     StringBuilder localStringBuilder = new StringBuilder();
-    paramClass.columns[0] = "localId";
-    paramClass.IBN.put("localId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" localId LONG PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "sessionId";
+    localMAutoDBInfo.colsMap.put("sessionId", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" sessionId TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    paramClass.IBM = "localId";
-    paramClass.columns[1] = "id";
-    paramClass.IBN.put("id", "LONG");
-    localStringBuilder.append(" id LONG");
+    localMAutoDBInfo.primaryKey = "sessionId";
+    localMAutoDBInfo.columns[1] = "talker";
+    localMAutoDBInfo.colsMap.put("talker", "TEXT default '' ");
+    localStringBuilder.append(" talker TEXT default '' ");
     localStringBuilder.append(", ");
-    paramClass.columns[2] = "createTime";
-    paramClass.IBN.put("createTime", "LONG");
-    localStringBuilder.append(" createTime LONG");
+    localMAutoDBInfo.columns[2] = "unReadCount";
+    localMAutoDBInfo.colsMap.put("unReadCount", "INTEGER default '0' ");
+    localStringBuilder.append(" unReadCount INTEGER default '0' ");
     localStringBuilder.append(", ");
-    paramClass.columns[3] = "username";
-    paramClass.IBN.put("username", "TEXT");
-    localStringBuilder.append(" username TEXT");
+    localMAutoDBInfo.columns[3] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER default '0' ");
+    localStringBuilder.append(" status INTEGER default '0' ");
     localStringBuilder.append(", ");
-    paramClass.columns[4] = "sourceFlag";
-    paramClass.IBN.put("sourceFlag", "INTEGER");
-    localStringBuilder.append(" sourceFlag INTEGER");
+    localMAutoDBInfo.columns[4] = "updateTime";
+    localMAutoDBInfo.colsMap.put("updateTime", "LONG default '0' ");
+    localStringBuilder.append(" updateTime LONG default '0' ");
     localStringBuilder.append(", ");
-    paramClass.columns[5] = "updateTime";
-    paramClass.IBN.put("updateTime", "LONG");
-    localStringBuilder.append(" updateTime LONG");
+    localMAutoDBInfo.columns[5] = "digest";
+    localMAutoDBInfo.colsMap.put("digest", "TEXT default '' ");
+    localStringBuilder.append(" digest TEXT default '' ");
     localStringBuilder.append(", ");
-    paramClass.columns[6] = "finderObject";
-    paramClass.IBN.put("finderObject", "BLOB");
-    localStringBuilder.append(" finderObject BLOB");
+    localMAutoDBInfo.columns[6] = "digestUser";
+    localMAutoDBInfo.colsMap.put("digestUser", "TEXT default '' ");
+    localStringBuilder.append(" digestUser TEXT default '' ");
     localStringBuilder.append(", ");
-    paramClass.columns[7] = "localFlag";
-    paramClass.IBN.put("localFlag", "INTEGER");
-    localStringBuilder.append(" localFlag INTEGER");
+    localMAutoDBInfo.columns[7] = "digestType";
+    localMAutoDBInfo.colsMap.put("digestType", "TEXT default '' ");
+    localStringBuilder.append(" digestType TEXT default '' ");
     localStringBuilder.append(", ");
-    paramClass.columns[8] = "postinfo";
-    paramClass.IBN.put("postinfo", "BLOB");
-    localStringBuilder.append(" postinfo BLOB");
+    localMAutoDBInfo.columns[8] = "lastMsgID";
+    localMAutoDBInfo.colsMap.put("lastMsgID", "LONG");
+    localStringBuilder.append(" lastMsgID LONG");
     localStringBuilder.append(", ");
-    paramClass.columns[9] = "mediaExtList";
-    paramClass.IBN.put("mediaExtList", "BLOB");
-    localStringBuilder.append(" mediaExtList BLOB");
+    localMAutoDBInfo.columns[9] = "content";
+    localMAutoDBInfo.colsMap.put("content", "TEXT");
+    localStringBuilder.append(" content TEXT");
     localStringBuilder.append(", ");
-    paramClass.columns[10] = "reportObject";
-    paramClass.IBN.put("reportObject", "BLOB");
-    localStringBuilder.append(" reportObject BLOB");
+    localMAutoDBInfo.columns[10] = "isSend";
+    localMAutoDBInfo.colsMap.put("isSend", "INTEGER");
+    localStringBuilder.append(" isSend INTEGER");
     localStringBuilder.append(", ");
-    paramClass.columns[11] = "postExtraData";
-    paramClass.IBN.put("postExtraData", "BLOB");
-    localStringBuilder.append(" postExtraData BLOB");
+    localMAutoDBInfo.columns[11] = "placedFlag";
+    localMAutoDBInfo.colsMap.put("placedFlag", "LONG default '0' ");
+    localStringBuilder.append(" placedFlag LONG default '0' ");
     localStringBuilder.append(", ");
-    paramClass.columns[12] = "customData";
-    paramClass.IBN.put("customData", "BLOB");
-    localStringBuilder.append(" customData BLOB");
-    paramClass.columns[13] = "rowid";
-    paramClass.sql = localStringBuilder.toString();
-    return paramClass;
+    localMAutoDBInfo.columns[12] = "editingMsg";
+    localMAutoDBInfo.colsMap.put("editingMsg", "TEXT");
+    localStringBuilder.append(" editingMsg TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[13] = "type";
+    localMAutoDBInfo.colsMap.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[14] = "actionPermission";
+    localMAutoDBInfo.colsMap.put("actionPermission", "INTEGER");
+    localStringBuilder.append(" actionPermission INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[15] = "scene";
+    localMAutoDBInfo.colsMap.put("scene", "INTEGER");
+    localStringBuilder.append(" scene INTEGER");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[16] = "readStatus";
+    localMAutoDBInfo.colsMap.put("readStatus", "INTEGER");
+    localStringBuilder.append(" readStatus INTEGER");
+    localMAutoDBInfo.columns[17] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
   }
-  
-  private final void parseBuff() {}
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -143,18 +167,18 @@ public abstract class cf
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eWU != k) {
+      if (fAZ != k) {
         break label65;
       }
-      this.field_localId = paramCursor.getLong(i);
-      this.eWS = true;
+      this.field_sessionId = paramCursor.getString(i);
+      this.fAL = true;
     }
     for (;;)
     {
@@ -162,96 +186,38 @@ public abstract class cf
       break label20;
       break;
       label65:
-      if (eQh == k) {
-        this.field_id = paramCursor.getLong(i);
-      } else if (eFO == k) {
-        this.field_createTime = paramCursor.getLong(i);
-      } else if (eGY == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (far == k) {
-        this.field_sourceFlag = paramCursor.getInt(i);
-      } else if (eGZ == k) {
+      if (fqw == k) {
+        this.field_talker = paramCursor.getString(i);
+      } else if (fnV == k) {
+        this.field_unReadCount = paramCursor.getInt(i);
+      } else if (fjl == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (updateTime_HASHCODE == k) {
         this.field_updateTime = paramCursor.getLong(i);
-      } else if (fas == k) {
-        try
-        {
-          byte[] arrayOfByte1 = paramCursor.getBlob(i);
-          if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
-            continue;
-          }
-          this.field_finderObject = ((FinderObject)new FinderObject().parseFrom(arrayOfByte1));
-        }
-        catch (IOException localIOException1)
-        {
-          ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException1.getMessage());
-        }
-      } else if (eFN == k) {
-        this.field_localFlag = paramCursor.getInt(i);
-      } else if (fat == k) {
-        try
-        {
-          byte[] arrayOfByte2 = paramCursor.getBlob(i);
-          if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
-            continue;
-          }
-          this.field_postinfo = ((bwa)new bwa().parseFrom(arrayOfByte2));
-        }
-        catch (IOException localIOException2)
-        {
-          ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException2.getMessage());
-        }
-      } else if (fau == k) {
-        try
-        {
-          byte[] arrayOfByte3 = paramCursor.getBlob(i);
-          if ((arrayOfByte3 == null) || (arrayOfByte3.length <= 0)) {
-            continue;
-          }
-          this.field_mediaExtList = ((bwf)new bwf().parseFrom(arrayOfByte3));
-        }
-        catch (IOException localIOException3)
-        {
-          ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException3.getMessage());
-        }
-      } else if (fav == k) {
-        try
-        {
-          byte[] arrayOfByte4 = paramCursor.getBlob(i);
-          if ((arrayOfByte4 == null) || (arrayOfByte4.length <= 0)) {
-            continue;
-          }
-          this.field_reportObject = ((FinderFeedReportObject)new FinderFeedReportObject().parseFrom(arrayOfByte4));
-        }
-        catch (IOException localIOException4)
-        {
-          ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException4.getMessage());
-        }
-      } else if (faw == k) {
-        try
-        {
-          byte[] arrayOfByte5 = paramCursor.getBlob(i);
-          if ((arrayOfByte5 == null) || (arrayOfByte5.length <= 0)) {
-            continue;
-          }
-          this.field_postExtraData = ((aqx)new aqx().parseFrom(arrayOfByte5));
-        }
-        catch (IOException localIOException5)
-        {
-          ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException5.getMessage());
-        }
-      } else if (fax == k) {
-        try
-        {
-          byte[] arrayOfByte6 = paramCursor.getBlob(i);
-          if ((arrayOfByte6 == null) || (arrayOfByte6.length <= 0)) {
-            continue;
-          }
-          this.field_customData = ((amt)new amt().parseFrom(arrayOfByte6));
-        }
-        catch (IOException localIOException6)
-        {
-          ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException6.getMessage());
-        }
+      } else if (fnZ == k) {
+        this.field_digest = paramCursor.getString(i);
+      } else if (foa == k) {
+        this.field_digestUser = paramCursor.getString(i);
+      } else if (fDV == k) {
+        this.field_digestType = paramCursor.getString(i);
+      } else if (fnX == k) {
+        this.field_lastMsgID = paramCursor.getLong(i);
+      } else if (content_HASHCODE == k) {
+        this.field_content = paramCursor.getString(i);
+      } else if (foe == k) {
+        this.field_isSend = paramCursor.getInt(i);
+      } else if (fDW == k) {
+        this.field_placedFlag = paramCursor.getLong(i);
+      } else if (foc == k) {
+        this.field_editingMsg = paramCursor.getString(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (fDX == k) {
+        this.field_actionPermission = paramCursor.getInt(i);
+      } else if (fjQ == k) {
+        this.field_scene = paramCursor.getInt(i);
+      } else if (fDY == k) {
+        this.field_readStatus = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -260,108 +226,82 @@ public abstract class cf
   
   public ContentValues convertTo()
   {
-    buildBuff();
     ContentValues localContentValues = new ContentValues();
-    if (this.eWS) {
-      localContentValues.put("localId", Long.valueOf(this.field_localId));
+    if (this.field_sessionId == null) {
+      this.field_sessionId = "";
     }
-    if (this.eQd) {
-      localContentValues.put("id", Long.valueOf(this.field_id));
+    if (this.fAL) {
+      localContentValues.put("sessionId", this.field_sessionId);
     }
-    if (this.eFr) {
-      localContentValues.put("createTime", Long.valueOf(this.field_createTime));
+    if (this.field_talker == null) {
+      this.field_talker = "";
     }
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
+    if (this.fqi) {
+      localContentValues.put("talker", this.field_talker);
     }
-    if (this.fak) {
-      localContentValues.put("sourceFlag", Integer.valueOf(this.field_sourceFlag));
+    if (this.fnG) {
+      localContentValues.put("unReadCount", Integer.valueOf(this.field_unReadCount));
     }
-    if (this.eGW) {
+    if (this.fji) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
+    }
+    if (this.__hadSetupdateTime) {
       localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
     }
-    if ((this.fal) && (this.field_finderObject != null)) {}
-    try
-    {
-      localContentValues.put("finderObject", this.field_finderObject.toByteArray());
-      if (this.eFq) {
-        localContentValues.put("localFlag", Integer.valueOf(this.field_localFlag));
-      }
-      if ((!this.fam) || (this.field_postinfo == null)) {}
+    if (this.field_digest == null) {
+      this.field_digest = "";
     }
-    catch (IOException localIOException5)
-    {
-      try
-      {
-        localContentValues.put("postinfo", this.field_postinfo.toByteArray());
-        if ((!this.fan) || (this.field_mediaExtList == null)) {}
-      }
-      catch (IOException localIOException5)
-      {
-        try
-        {
-          localContentValues.put("mediaExtList", this.field_mediaExtList.toByteArray());
-          if ((!this.fao) || (this.field_reportObject == null)) {}
-        }
-        catch (IOException localIOException5)
-        {
-          try
-          {
-            localContentValues.put("reportObject", this.field_reportObject.toByteArray());
-            if ((!this.fap) || (this.field_postExtraData == null)) {}
-          }
-          catch (IOException localIOException5)
-          {
-            try
-            {
-              localContentValues.put("postExtraData", this.field_postExtraData.toByteArray());
-              if ((!this.faq) || (this.field_customData == null)) {}
-            }
-            catch (IOException localIOException5)
-            {
-              try
-              {
-                for (;;)
-                {
-                  localContentValues.put("customData", this.field_customData.toByteArray());
-                  if (this.systemRowid > 0L) {
-                    localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-                  }
-                  return localContentValues;
-                  localIOException1 = localIOException1;
-                  ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException1.getMessage());
-                  continue;
-                  localIOException2 = localIOException2;
-                  ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException2.getMessage());
-                  continue;
-                  localIOException3 = localIOException3;
-                  ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException3.getMessage());
-                  continue;
-                  localIOException4 = localIOException4;
-                  ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException4.getMessage());
-                }
-                localIOException5 = localIOException5;
-                ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException5.getMessage());
-              }
-              catch (IOException localIOException6)
-              {
-                for (;;)
-                {
-                  ae.e("MicroMsg.SDK.BaseFinderFeedItem", localIOException6.getMessage());
-                }
-              }
-            }
-          }
-        }
-      }
+    if (this.fnK) {
+      localContentValues.put("digest", this.field_digest);
     }
+    if (this.field_digestUser == null) {
+      this.field_digestUser = "";
+    }
+    if (this.fnL) {
+      localContentValues.put("digestUser", this.field_digestUser);
+    }
+    if (this.field_digestType == null) {
+      this.field_digestType = "";
+    }
+    if (this.fDR) {
+      localContentValues.put("digestType", this.field_digestType);
+    }
+    if (this.fnI) {
+      localContentValues.put("lastMsgID", Long.valueOf(this.field_lastMsgID));
+    }
+    if (this.__hadSetcontent) {
+      localContentValues.put("content", this.field_content);
+    }
+    if (this.fnP) {
+      localContentValues.put("isSend", Integer.valueOf(this.field_isSend));
+    }
+    if (this.fDS) {
+      localContentValues.put("placedFlag", Long.valueOf(this.field_placedFlag));
+    }
+    if (this.fnN) {
+      localContentValues.put("editingMsg", this.field_editingMsg);
+    }
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
+    }
+    if (this.fDT) {
+      localContentValues.put("actionPermission", Integer.valueOf(this.field_actionPermission));
+    }
+    if (this.fjO) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    }
+    if (this.fDU) {
+      localContentValues.put("readStatus", Integer.valueOf(this.field_readStatus));
+    }
+    if (this.systemRowid > 0L) {
+      localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+    }
+    return localContentValues;
   }
-  
-  public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.cf
  * JD-Core Version:    0.7.0.1
  */

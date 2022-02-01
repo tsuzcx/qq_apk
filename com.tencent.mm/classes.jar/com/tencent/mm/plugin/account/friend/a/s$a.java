@@ -6,19 +6,19 @@ import com.tencent.mm.protocal.l;
 import com.tencent.mm.protocal.l.b;
 import com.tencent.mm.protocal.l.d;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.agi;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.air;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class s$a
   extends l.d
   implements l.b
 {
-  public agi jgN;
+  public air keR;
   
   public s$a()
   {
     AppMethodBeat.i(131067);
-    this.jgN = new agi();
+    this.keR = new air();
     AppMethodBeat.o(131067);
   }
   
@@ -30,17 +30,17 @@ public final class s$a
   public final byte[] toProtoBuf()
   {
     AppMethodBeat.i(131068);
-    setRsaInfo(ac.fkp());
-    this.jgN.FWl = new SKBuiltinBuffer_t().setBuffer(bu.fpG());
-    this.jgN.setBaseRequest(l.a(this));
-    byte[] arrayOfByte = this.jgN.toByteArray();
+    setRsaInfo(ac.gtT());
+    this.keR.KPW = new SKBuiltinBuffer_t().setBuffer(Util.getUuidRandom());
+    this.keR.setBaseRequest(l.a(this));
+    byte[] arrayOfByte = this.keR.toByteArray();
     AppMethodBeat.o(131068);
     return arrayOfByte;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.s.a
  * JD-Core Version:    0.7.0.1
  */

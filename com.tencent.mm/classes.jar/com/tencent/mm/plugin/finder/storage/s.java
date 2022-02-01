@@ -1,68 +1,68 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.e;
-import d.l;
-import junit.framework.Assert;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.g.c.cj;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderMessageStorage;", "Lcom/tencent/mm/storage/AbstractMessageStorage;", "storage", "Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;", "(Lcom/tencent/mm/plugin/messenger/foundation/api/storage/IMsgInfoStorage;)V", "recognizeTableByTalker", "", "talker", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderLiveGiftInfo;", "Lcom/tencent/mm/autogen/table/BaseFinderLiveGiftInfo;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "isFullPagGift", "", "pagFetched", "pagFullFetched", "pagPreFetched", "resetPagFullFetched", "", "toFinderLiveGift", "Lcom/tencent/mm/protocal/protobuf/FinderLiveGift;", "Companion", "plugin-finder_release"})
 public final class s
-  extends e
+  extends cj
 {
-  public static final s.a sJJ;
+  private static final IAutoDBItem.MAutoDBInfo info;
+  public static final a vEi;
   
   static
   {
-    AppMethodBeat.i(204284);
-    sJJ = new s.a((byte)0);
-    AppMethodBeat.o(204284);
+    AppMethodBeat.i(251799);
+    vEi = new a((byte)0);
+    info = cj.ajs();
+    AppMethodBeat.o(251799);
   }
   
-  public s(i parami)
+  public final boolean dxN()
   {
-    super(parami);
-    AppMethodBeat.i(204283);
-    d(getDB(), "findermessage006");
-    a(new i.b(512, "findermessage006", i.b.a(4000001L, 4500000L, 108000001L, 208000000L)));
-    AppMethodBeat.o(204283);
+    return this.field_giftType == 2;
   }
   
-  public final String ajr(String paramString)
+  public final boolean dxO()
   {
-    AppMethodBeat.i(204282);
-    int i;
-    if (paramString != null) {
-      if (((CharSequence)paramString).length() > 0)
-      {
-        i = 1;
-        if (i != 1) {
-          break label54;
-        }
-      }
-    }
-    label54:
-    for (boolean bool = true;; bool = false)
-    {
-      Assert.assertTrue(bool);
-      if (!an.aji(paramString)) {
-        break label59;
-      }
-      AppMethodBeat.o(204282);
-      return "findermessage006";
-      i = 0;
-      break;
-    }
-    label59:
-    AppMethodBeat.o(204282);
-    return null;
+    AppMethodBeat.i(251797);
+    boolean bool = d.cW(this.field_state, 1);
+    AppMethodBeat.o(251797);
+    return bool;
   }
+  
+  public final boolean dxP()
+  {
+    AppMethodBeat.i(251798);
+    boolean bool = d.cW(this.field_state, 2);
+    AppMethodBeat.o(251798);
+    return bool;
+  }
+  
+  public final void dxQ()
+  {
+    this.field_state &= 0xFFFFFFFD;
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    AppMethodBeat.i(251796);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = info;
+    p.g(localMAutoDBInfo, "info");
+    AppMethodBeat.o(251796);
+    return localMAutoDBInfo;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderLiveGiftInfo$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "kotlin.jvm.PlatformType", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.s
  * JD-Core Version:    0.7.0.1
  */

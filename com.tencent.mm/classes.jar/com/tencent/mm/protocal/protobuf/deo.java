@@ -1,140 +1,130 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class deo
-  extends com.tencent.mm.bw.a
+  extends dop
 {
-  public String HLI;
-  public String HLJ;
-  public String HLK;
-  public String HLL;
-  public int HLM;
-  public String HLN;
-  public String content;
-  public int state;
+  public String LoB;
+  public String MJG;
+  public int Meb;
+  public String request_id;
+  public int scene;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(153299);
+    AppMethodBeat.i(214320);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.content != null) {
-        paramVarArgs.d(1, this.content);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseRequest != null)
+      {
+        paramVarArgs.ni(1, this.BaseRequest.computeSize());
+        this.BaseRequest.writeFields(paramVarArgs);
       }
-      if (this.HLI != null) {
-        paramVarArgs.d(2, this.HLI);
+      if (this.request_id != null) {
+        paramVarArgs.e(2, this.request_id);
       }
-      if (this.HLJ != null) {
-        paramVarArgs.d(3, this.HLJ);
+      if (this.MJG != null) {
+        paramVarArgs.e(3, this.MJG);
       }
-      if (this.HLK != null) {
-        paramVarArgs.d(4, this.HLK);
+      paramVarArgs.aM(4, this.Meb);
+      paramVarArgs.aM(100, this.scene);
+      if (this.LoB != null) {
+        paramVarArgs.e(101, this.LoB);
       }
-      if (this.HLL != null) {
-        paramVarArgs.d(5, this.HLL);
-      }
-      paramVarArgs.aS(6, this.HLM);
-      paramVarArgs.aS(7, this.state);
-      if (this.HLN != null) {
-        paramVarArgs.d(8, this.HLN);
-      }
-      AppMethodBeat.o(153299);
+      AppMethodBeat.o(214320);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.content == null) {
-        break label606;
+      if (this.BaseRequest == null) {
+        break label602;
       }
     }
-    label606:
-    for (int i = f.a.a.b.b.a.e(1, this.content) + 0;; i = 0)
+    label602:
+    for (int i = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; i = 0)
     {
       paramInt = i;
-      if (this.HLI != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.HLI);
+      if (this.request_id != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.request_id);
       }
       i = paramInt;
-      if (this.HLJ != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.HLJ);
+      if (this.MJG != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.MJG);
       }
+      i = i + g.a.a.b.b.a.bu(4, this.Meb) + g.a.a.b.b.a.bu(100, this.scene);
       paramInt = i;
-      if (this.HLK != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.HLK);
+      if (this.LoB != null) {
+        paramInt = i + g.a.a.b.b.a.f(101, this.LoB);
       }
-      i = paramInt;
-      if (this.HLL != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.HLL);
-      }
-      i = i + f.a.a.b.b.a.bz(6, this.HLM) + f.a.a.b.b.a.bz(7, this.state);
-      paramInt = i;
-      if (this.HLN != null) {
-        paramInt = i + f.a.a.b.b.a.e(8, this.HLN);
-      }
-      AppMethodBeat.o(153299);
+      AppMethodBeat.o(214320);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(153299);
+        AppMethodBeat.o(214320);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         deo localdeo = (deo)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(153299);
+          AppMethodBeat.o(214320);
           return -1;
         case 1: 
-          localdeo.content = locala.OmT.readString();
-          AppMethodBeat.o(153299);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new jr();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localdeo.BaseRequest = ((jr)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(214320);
           return 0;
         case 2: 
-          localdeo.HLI = locala.OmT.readString();
-          AppMethodBeat.o(153299);
+          localdeo.request_id = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(214320);
           return 0;
         case 3: 
-          localdeo.HLJ = locala.OmT.readString();
-          AppMethodBeat.o(153299);
+          localdeo.MJG = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(214320);
           return 0;
         case 4: 
-          localdeo.HLK = locala.OmT.readString();
-          AppMethodBeat.o(153299);
+          localdeo.Meb = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(214320);
           return 0;
-        case 5: 
-          localdeo.HLL = locala.OmT.readString();
-          AppMethodBeat.o(153299);
-          return 0;
-        case 6: 
-          localdeo.HLM = locala.OmT.zc();
-          AppMethodBeat.o(153299);
-          return 0;
-        case 7: 
-          localdeo.state = locala.OmT.zc();
-          AppMethodBeat.o(153299);
+        case 100: 
+          localdeo.scene = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(214320);
           return 0;
         }
-        localdeo.HLN = locala.OmT.readString();
-        AppMethodBeat.o(153299);
+        localdeo.LoB = ((g.a.a.a.a)localObject1).UbS.readString();
+        AppMethodBeat.o(214320);
         return 0;
       }
-      AppMethodBeat.o(153299);
+      AppMethodBeat.o(214320);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.deo
  * JD-Core Version:    0.7.0.1
  */

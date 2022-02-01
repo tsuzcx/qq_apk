@@ -1,175 +1,241 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.content.MutableContextWrapper;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.view.ViewStub;
+import android.widget.ImageView;
+import com.tencent.luggage.h.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.h;
-import com.tencent.mm.plugin.appbrand.h.d;
-import com.tencent.mm.plugin.appbrand.widget.actionbar.e;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.al;
-import d.z;
+import com.tencent.mm.plugin.appbrand.bb;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
+import com.tencent.mm.plugin.appbrand.q;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.vfs.s;
 
-@SuppressLint({"ViewConstructor"})
-class k
-  extends com.tencent.mm.ui.statusbar.b
-  implements w, y
+public final class k
 {
-  private AppBrandRuntime jDb;
-  private WxaAttributes.WxaVersionInfo kcL;
-  private e mHu;
-  private d.g.a.a<z> mHv;
+  private static final android.support.v4.e.a<AppBrandRuntime, Bitmap> nUe;
   
-  public k(Context paramContext, AppBrandRuntime paramAppBrandRuntime, WxaAttributes.WxaVersionInfo paramWxaVersionInfo)
+  static
   {
-    super(paramContext);
-    AppMethodBeat.i(147671);
-    this.jDb = paramAppBrandRuntime;
-    this.kcL = paramWxaVersionInfo;
-    setBackgroundColor(getResources().getColor(2131099650));
-    this.mHu = new ad(paramContext);
-    this.mHu.setBackgroundColor(com.tencent.mm.cb.a.n(paramContext, 2131101053));
-    addView(this.mHu.getActionView());
-    bzZ();
-    AppMethodBeat.o(147671);
+    AppMethodBeat.i(48662);
+    nUe = new android.support.v4.e.a();
+    AppMethodBeat.o(48662);
   }
   
-  protected final void b(String paramString1, int paramInt1, String paramString2, int paramInt2)
+  public static aa a(Context paramContext, AppBrandInitConfigWC paramAppBrandInitConfigWC)
   {
-    AppMethodBeat.i(223106);
-    this.mHu.setMainTitle(paramString1);
-    this.mHu.setForegroundStyle(paramString2);
-    this.mHu.setLoadingIconVisibility(true);
-    this.mHu.setForegroundColor(paramInt2);
-    M(paramInt1, "black".equals(paramString2));
-    AppMethodBeat.o(223106);
-  }
-  
-  protected void bzZ()
-  {
-    AppMethodBeat.i(223105);
-    this.mHu.fE(false);
-    Object localObject = new View.OnClickListener()
+    AppMethodBeat.i(227610);
+    if (paramAppBrandInitConfigWC.ldN)
     {
-      public final void onClick(View paramAnonymousView)
+      if (!TextUtils.isEmpty(l.dM(paramAppBrandInitConfigWC.kHw)))
       {
-        AppMethodBeat.i(147669);
-        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/appbrand/ui/AppBrandPluginLoadingSplash$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if (k.a(k.this) != null)
+        AppMethodBeat.o(227610);
+        return null;
+      }
+      if (!com.tencent.mm.plugin.appbrand.ui.c.a.b.bZg())
+      {
+        Log.i("MicroMsg.AppBrandLoadingSplashFactory", "createSnapshotDisplayLoadingSplash but switch off, appId:%s", new Object[] { paramAppBrandInitConfigWC.appId });
+        AppMethodBeat.o(227610);
+        return null;
+      }
+      String str = paramAppBrandInitConfigWC.lea;
+      if (s.YS(str))
+      {
+        Log.i("MicroMsg.AppBrandLoadingSplashFactory", "createScreenshotSplash with appId:%s, path:%s", new Object[] { paramAppBrandInitConfigWC.appId, str });
+        paramAppBrandInitConfigWC = BitmapUtil.decodeFile(str);
+        if ((paramAppBrandInitConfigWC != null) && (!paramAppBrandInitConfigWC.isRecycled()))
         {
-          h.a(k.a(k.this).mAppId, h.d.jzh);
-          k.a(k.this).finish();
+          paramContext = new aa(paramContext, paramAppBrandInitConfigWC);
+          AppMethodBeat.o(227610);
+          return paramContext;
         }
-        for (;;)
+      }
+      AppMethodBeat.o(227610);
+      return null;
+    }
+    AppMethodBeat.o(227610);
+    return null;
+  }
+  
+  public static ab a(Context paramContext, q paramq)
+  {
+    AppMethodBeat.i(48659);
+    Object localObject = (Bitmap)nUe.remove(paramq);
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
+    {
+      paramContext = new o(paramContext, (Bitmap)localObject);
+      AppMethodBeat.o(48659);
+      return paramContext;
+    }
+    localObject = a(paramContext, paramq.bsC());
+    if (localObject != null)
+    {
+      ((aa)localObject).setRuntime(paramq);
+      AppMethodBeat.o(48659);
+      return localObject;
+    }
+    if (com.tencent.mm.plugin.appbrand.af.g.an(paramq))
+    {
+      paramContext = new com.tencent.mm.plugin.appbrand.af.b(en(paramContext), paramq);
+      AppMethodBeat.o(48659);
+      return paramContext;
+    }
+    if ((r.am(paramq)) || (bb.r(paramq)) || (paramq.bsN()))
+    {
+      if (paramq.NA()) {}
+      for (paramContext = new g(en(paramContext), paramq, paramq.bsC().cyv);; paramContext = new m(en(paramContext), paramq, paramq.bsC().cyv))
+      {
+        if (paramq.bsN()) {
+          paramContext.CF(true);
+        }
+        AppMethodBeat.o(48659);
+        return paramContext;
+      }
+    }
+    if (paramq.NA())
+    {
+      localObject = new h(en(paramContext), paramq);
+      if (paramq.brL())
+      {
+        paramContext = new c(en(paramContext), paramq, (ab)localObject, paramq.kDu);
+        AppMethodBeat.o(48659);
+        return paramContext;
+      }
+      AppMethodBeat.o(48659);
+      return localObject;
+    }
+    AppBrandUILoadingSplash localAppBrandUILoadingSplash = (AppBrandUILoadingSplash)paramq.bsn().a(AppBrandUILoadingSplash.class, paramContext);
+    boolean bool;
+    if (localAppBrandUILoadingSplash != null)
+    {
+      Log.d("MicroMsg.AppBrandUILoadingSplash", "attachRuntime %s", new Object[] { paramq.OU().brandName });
+      localAppBrandUILoadingSplash.kEc = paramq;
+      Activity localActivity = AndroidContextUtil.castActivityOrNull(paramq.mContext);
+      localObject = localAppBrandUILoadingSplash;
+      if ((localAppBrandUILoadingSplash.getContext() instanceof MutableContextWrapper))
+      {
+        ((MutableContextWrapper)localAppBrandUILoadingSplash.getContext()).setBaseContext(localActivity);
+        int i = localAppBrandUILoadingSplash.getResources().getColor(2131099650);
+        if (localAppBrandUILoadingSplash.isDarkMode()) {
+          break label418;
+        }
+        bool = true;
+        localAppBrandUILoadingSplash.S(i, bool);
+      }
+    }
+    for (localObject = localAppBrandUILoadingSplash;; localObject = new AppBrandUILoadingSplash(en(paramContext), paramq))
+    {
+      ((AppBrandUILoadingSplash)localObject).setLabelInjector(new AppBrandUILoadingSplash.a()
+      {
+        public final void a(ViewStub paramAnonymousViewStub)
         {
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/appbrand/ui/AppBrandPluginLoadingSplash$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(147669);
-          return;
-          if (k.b(k.this) != null) {
-            k.b(k.this).invoke();
+          AppMethodBeat.i(227608);
+          if ((com.tencent.luggage.sdk.config.e.hO(this.kzl.bsC().lec)) && (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.smL, 0) == 1))
+          {
+            paramAnonymousViewStub.setLayoutResource(2131493102);
+            paramAnonymousViewStub.inflate();
+          }
+          AppMethodBeat.o(227608);
+        }
+        
+        @SuppressLint({"ResourceType"})
+        public final void b(ViewStub paramAnonymousViewStub)
+        {
+          AppMethodBeat.i(227609);
+          if ((com.tencent.luggage.sdk.config.e.hP(this.kzl.bsC().leb)) && (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skg, 0) == 1))
+          {
+            paramAnonymousViewStub.setLayoutResource(2131493105);
+            paramAnonymousViewStub = (ImageView)paramAnonymousViewStub.inflate().findViewById(2131302468);
+            if (!ao.isDarkMode()) {
+              break label81;
+            }
+          }
+          label81:
+          for (int i = 2131689707;; i = 2131689706)
+          {
+            paramAnonymousViewStub.setImageResource(i);
+            AppMethodBeat.o(227609);
+            return;
           }
         }
+      });
+      if (!paramq.brL()) {
+        break label440;
       }
-    };
-    this.mHu.setCloseButtonClickListener((View.OnClickListener)localObject);
-    this.mHu.setBackButtonClickListener((View.OnClickListener)localObject);
-    int m = getContext().getResources().getColor(2131099650);
-    int i = getContext().getResources().getColor(2131100711);
-    localObject = "white";
-    int j = m;
-    int k = i;
-    if (this.kcL != null)
-    {
-      if (!al.isDarkMode()) {
-        break label205;
-      }
-      j = m;
-      if (!bu.isNullOrNil(this.kcL.kdA)) {
-        j = g.ck(this.kcL.kdA, getContext().getResources().getColor(2131099650));
-      }
-      if (!bu.isNullOrNil(this.kcL.kdz)) {
-        i = g.ck(this.kcL.kdz, getContext().getResources().getColor(2131100711));
-      }
-      localObject = "white";
+      paramContext = new c(en(paramContext), paramq, (ab)localObject, paramq.kDu);
+      AppMethodBeat.o(48659);
+      return paramContext;
+      label418:
+      bool = false;
+      break;
     }
-    for (k = i;; k = i)
+    label440:
+    AppMethodBeat.o(48659);
+    return localObject;
+  }
+  
+  public static void a(AppBrandRuntime paramAppBrandRuntime, Bitmap paramBitmap)
+  {
+    AppMethodBeat.i(48661);
+    if ((paramAppBrandRuntime == null) || (paramBitmap == null) || (paramBitmap.isRecycled()))
     {
-      b(getContext().getString(2131755293), j, (String)localObject, k);
-      uD(j);
-      AppMethodBeat.o(223105);
+      AppMethodBeat.o(48661);
       return;
-      label205:
-      j = m;
-      if (!bu.isNullOrNil(this.kcL.kdy)) {
-        j = g.ck(this.kcL.kdy, getContext().getResources().getColor(2131099650));
-      }
-      if (!bu.isNullOrNil(this.kcL.kdx)) {
-        i = g.ck(this.kcL.kdx, getContext().getResources().getColor(2131100711));
-      }
-      localObject = "black";
     }
+    nUe.put(paramAppBrandRuntime, paramBitmap);
+    AppMethodBeat.o(48661);
   }
   
-  public final void dX(String paramString1, String paramString2)
+  public static boolean bXf()
   {
-    AppMethodBeat.i(147672);
-    this.mHu.setMainTitle(getContext().getString(2131755293));
-    AppMethodBeat.o(147672);
-  }
-  
-  public View getView()
-  {
-    return this;
-  }
-  
-  public void setProgress(int paramInt) {}
-  
-  public final void uD(int paramInt)
-  {
-    AppMethodBeat.i(147674);
-    setBackgroundColor(android.support.v4.graphics.b.v(paramInt, getContext().getResources().getColor(2131099650)));
-    AppMethodBeat.o(147674);
-  }
-  
-  public final void v(final d.g.a.a<z> parama)
-  {
-    AppMethodBeat.i(223107);
-    post(new Runnable()
+    AppMethodBeat.i(161867);
+    if (MMApplicationContext.isMainProcess())
     {
-      public final void run()
-      {
-        AppMethodBeat.i(147670);
-        k.this.setVisibility(8);
-        if (k.this.getParent() != null) {
-          ((ViewGroup)k.this.getParent()).removeView(k.this);
-        }
-        k.c(k.this).destroy();
-        if (parama != null) {
-          parama.invoke();
-        }
-        AppMethodBeat.o(147670);
-      }
-    });
-    AppMethodBeat.o(223107);
+      AppMethodBeat.o(161867);
+      return false;
+    }
+    if ((!com.tencent.mm.cc.a.gvt()) && (com.tencent.mm.cc.a.gvm())) {}
+    for (int i = 1; (i != 0) && (!com.tencent.mm.cc.a.gvs()); i = 0)
+    {
+      AppMethodBeat.o(161867);
+      return true;
+    }
+    AppMethodBeat.o(161867);
+    return false;
   }
   
-  public final void x(d.g.a.a<z> parama)
+  private static Context en(Context paramContext)
   {
-    this.mHv = parama;
+    AppMethodBeat.i(48660);
+    Context localContext = paramContext;
+    if (paramContext == null) {
+      localContext = MMApplicationContext.getContext();
+    }
+    paramContext = localContext;
+    if (bXf()) {
+      paramContext = new w(localContext);
+    }
+    AppMethodBeat.o(48660);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.k
  * JD-Core Version:    0.7.0.1
  */

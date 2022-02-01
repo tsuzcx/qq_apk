@@ -2,27 +2,27 @@ package com.tencent.mm.plugin.updater.model;
 
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
 final class b$d
   implements Runnable
 {
-  public static final d BWc;
+  public static final d GwG;
   
   static
   {
-    AppMethodBeat.i(197776);
-    BWc = new d();
-    AppMethodBeat.o(197776);
+    AppMethodBeat.i(194738);
+    GwG = new d();
+    AppMethodBeat.o(194738);
   }
   
   public final void run()
   {
-    AppMethodBeat.i(197775);
-    Toast.makeText(ak.getContext(), 2131762896, 0).show();
-    AppMethodBeat.o(197775);
+    AppMethodBeat.i(194737);
+    Toast.makeText(MMApplicationContext.getContext(), 2131765032, 0).show();
+    AppMethodBeat.o(194737);
   }
 }
 

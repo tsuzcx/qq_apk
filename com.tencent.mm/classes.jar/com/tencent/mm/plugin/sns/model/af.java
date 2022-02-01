@@ -1,1066 +1,181 @@
 package com.tencent.mm.plugin.sns.model;
 
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.b;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.sns.i.d;
-import com.tencent.mm.plugin.sns.i.e;
-import com.tencent.mm.plugin.sns.i.f;
-import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.protocal.protobuf.dgb;
-import com.tencent.mm.protocal.protobuf.dgc;
-import com.tencent.mm.protocal.protobuf.dgh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Vector;
+import com.tencent.mm.an.e;
+import com.tencent.mm.i.d;
+import com.tencent.mm.i.h.a;
+import com.tencent.mm.modelvideo.b;
+import com.tencent.mm.modelvideo.b.a;
+import com.tencent.mm.modelvideo.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.vfs.s;
 
 public final class af
+  implements b
 {
-  String fHO;
-  private String path;
-  private d zAm;
-  private List<Integer> zAn;
-  private Map<String, Integer> zAo;
-  private List<Integer> zAp;
-  private Map<Integer, Integer> zAq;
+  private h.a DJU;
+  b.a qWn;
+  String xCU;
   
-  public af(String paramString)
+  public af()
   {
-    AppMethodBeat.i(95722);
-    this.fHO = "";
-    this.zAn = new Vector();
-    this.zAo = new HashMap();
-    this.zAp = new Vector();
-    this.zAq = new HashMap();
-    this.path = paramString;
-    if (!dXg()) {
-      this.zAm = new d();
-    }
-    this.zAn.clear();
-    this.zAo.clear();
-    AppMethodBeat.o(95722);
-  }
-  
-  private static void a(long paramLong, LinkedList<e> paramLinkedList, String paramString)
-  {
-    AppMethodBeat.i(95735);
-    a(paramLong, paramLinkedList, paramString, false);
-    AppMethodBeat.o(95735);
-  }
-  
-  private static boolean a(long paramLong, LinkedList<e> paramLinkedList, String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(95736);
-    Iterator localIterator = paramLinkedList.iterator();
-    e locale2;
-    do
+    AppMethodBeat.i(95716);
+    this.xCU = "";
+    this.DJU = new h.a()
     {
-      do
+      public final void Ds(String paramAnonymousString) {}
+      
+      public final void a(final String paramAnonymousString, final int paramAnonymousInt, d paramAnonymousd)
       {
-        if (!localIterator.hasNext()) {
-          break;
+        AppMethodBeat.i(95715);
+        if ((af.this.qWn != null) && (af.this.xCU.equals(paramAnonymousString))) {
+          MMHandlerThread.postToMainThread(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(95711);
+              MMApplicationContext.getContext().getSharedPreferences("sns_ad_download_resource_preferences", 0).edit().putBoolean(paramAnonymousString, true).commit();
+              af.this.qWn.ax(paramAnonymousString, paramAnonymousInt);
+              aj.faJ().aOM(paramAnonymousString);
+              AppMethodBeat.o(95711);
+            }
+          });
         }
-        locale2 = (e)localIterator.next();
-      } while (locale2.zxT.Id != paramLong);
-      locale1 = locale2;
-      if (paramBoolean) {
-        break;
+        AppMethodBeat.o(95715);
       }
-    } while (!locale2.zHQ.equals(paramString));
-    for (e locale1 = locale2;; locale1 = null)
-    {
-      if (locale1 != null)
+      
+      public final void a(final String paramAnonymousString1, final long paramAnonymousLong1, long paramAnonymousLong2, final String paramAnonymousString2)
       {
-        paramLinkedList.remove(locale1);
-        AppMethodBeat.o(95736);
-        return true;
+        AppMethodBeat.i(202731);
+        if ((af.this.qWn != null) && (af.this.xCU.equals(paramAnonymousString1))) {
+          MMHandlerThread.postToMainThread(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(95708);
+              af.this.qWn.AI(paramAnonymousLong1);
+              AppMethodBeat.o(95708);
+            }
+          });
+        }
+        AppMethodBeat.o(202731);
       }
-      AppMethodBeat.o(95736);
-      return false;
-    }
-  }
-  
-  private static boolean a(LinkedList<dgh> paramLinkedList, String paramString, int paramInt)
-  {
-    AppMethodBeat.i(95728);
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(95728);
-      return true;
-    }
-    paramLinkedList = paramLinkedList.iterator();
-    while (paramLinkedList.hasNext())
-    {
-      dgh localdgh = (dgh)paramLinkedList.next();
-      if ((paramString.equals(localdgh.hFS)) && (paramInt == localdgh.CreateTime))
+      
+      public final void i(final String paramAnonymousString, final long paramAnonymousLong1, long paramAnonymousLong2)
       {
-        AppMethodBeat.o(95728);
-        return true;
+        AppMethodBeat.i(95714);
+        if ((af.this.qWn != null) && (af.this.xCU.equals(paramAnonymousString))) {
+          MMHandlerThread.postToMainThread(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(95710);
+              af.this.qWn.i(paramAnonymousString, paramAnonymousLong1, this.xCr);
+              AppMethodBeat.o(95710);
+            }
+          });
+        }
+        AppMethodBeat.o(95714);
       }
-    }
-    AppMethodBeat.o(95728);
-    return false;
-  }
-  
-  public static boolean aAk(String paramString)
-  {
-    AppMethodBeat.i(95721);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(95721);
-      return false;
-    }
-    if (paramString.startsWith("_AD_TAG_"))
-    {
-      AppMethodBeat.o(95721);
-      return true;
-    }
-    AppMethodBeat.o(95721);
-    return false;
-  }
-  
-  private static boolean aU(LinkedList<e> paramLinkedList)
-  {
-    AppMethodBeat.i(95724);
-    while (!paramLinkedList.isEmpty())
-    {
-      e locale = (e)paramLinkedList.getFirst();
-      if (bu.rZ(locale.zHR) > 21600L)
+      
+      public final void onDataAvailable(final String paramAnonymousString, final long paramAnonymousLong1, long paramAnonymousLong2)
       {
-        paramLinkedList.removeFirst();
+        AppMethodBeat.i(95713);
+        if ((af.this.qWn != null) && (af.this.xCU.equals(paramAnonymousString))) {
+          MMHandlerThread.postToMainThread(new Runnable()
+          {
+            public final void run()
+            {
+              AppMethodBeat.i(95709);
+              af.this.qWn.onDataAvailable(paramAnonymousString, paramAnonymousLong1, this.mwP);
+              AppMethodBeat.o(95709);
+            }
+          });
+        }
+        AppMethodBeat.o(95713);
       }
-      else
-      {
-        if (aAk(locale.zHQ))
-        {
-          g.ajS();
-          g.ajQ().gDv.a(new k(locale.zxT, locale.zHQ, locale.zHS, 0), 0);
-        }
-        for (;;)
-        {
-          AppMethodBeat.o(95724);
-          return true;
-          g.ajS();
-          g.ajQ().gDv.a(new o(locale.zxT, locale.zHQ), 0);
-        }
-      }
+    };
+    AppMethodBeat.o(95716);
+  }
+  
+  public final void a(b.a parama)
+  {
+    this.qWn = parama;
+  }
+  
+  public final void he(String paramString)
+  {
+    AppMethodBeat.i(95718);
+    Log.i("MicroMsg.SnsAdStreamVideoProxy", "%s, stop stream[%s]", new Object[] { Integer.valueOf(hashCode()), paramString });
+    if (this.xCU.equals(paramString)) {
+      aj.faJ().aOM(paramString);
     }
-    AppMethodBeat.o(95724);
-    return false;
+    AppMethodBeat.o(95718);
   }
   
-  public static dgh b(dgc paramdgc)
+  public final boolean isVideoDataAvailable(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(95730);
-    dgb localdgb = paramdgc.HNs;
-    paramdgc = paramdgc.HNt;
-    dgh localdgh = new dgh();
-    localdgh.hFS = localdgb.hFS;
-    localdgh.CreateTime = localdgb.CreateTime;
-    localdgh.Nickname = localdgb.HNh;
-    localdgh.ucK = localdgb.ucK;
-    localdgh.nJA = localdgb.nJA;
-    localdgh.Username = localdgb.HzT;
-    localdgh.HNk = localdgb.HNk;
-    localdgh.HNm = localdgb.HNm;
-    localdgh.HNo = localdgb.HNo;
-    localdgh.HNE = paramdgc.HzT;
-    localdgh.HNl = paramdgc.HNl;
-    localdgh.HNj = paramdgc.HNj;
-    localdgh.HNp = localdgb.HNp;
-    localdgh.HNq = localdgb.HNq;
-    AppMethodBeat.o(95730);
-    return localdgh;
-  }
-  
-  private boolean dXf()
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(95739);
-        try
-        {
-          byte[] arrayOfByte = this.zAm.toByteArray();
-          if (com.tencent.mm.vfs.o.f(this.path, arrayOfByte, arrayOfByte.length) != 0) {
-            continue;
-          }
-          bool = true;
-          AppMethodBeat.o(95739);
-        }
-        catch (IOException localIOException)
-        {
-          ae.printErrStackTrace("MicroMsg.SnsAsyncQueueMgr", localIOException, "listToFile failed: " + this.path, new Object[0]);
-          com.tencent.mm.vfs.o.deleteFile(this.path);
-          AppMethodBeat.o(95739);
-          boolean bool = false;
-          continue;
-        }
-        return bool;
-      }
-      finally {}
-      AppMethodBeat.o(95739);
-      bool = false;
+    boolean bool = false;
+    AppMethodBeat.i(95720);
+    Log.d("MicroMsg.SnsAdStreamVideoProxy", "%s, check video data available[%s, %s, %s]", new Object[] { Integer.valueOf(hashCode()), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.xCU.equals(paramString)) {
+      bool = o.bhk().isVideoDataAvailable(paramString, paramInt1, paramInt2);
     }
-  }
-  
-  private boolean dXg()
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(95740);
-        arrayOfByte = com.tencent.mm.vfs.o.bb(this.path, 0, -1);
-        if (arrayOfByte != null) {
-          continue;
-        }
-        AppMethodBeat.o(95740);
-        bool = false;
-      }
-      finally
-      {
-        try
-        {
-          byte[] arrayOfByte;
-          this.zAm = ((d)new d().parseFrom(arrayOfByte));
-          bool = true;
-          AppMethodBeat.o(95740);
-        }
-        catch (IOException localIOException)
-        {
-          ae.printErrStackTrace("MicroMsg.SnsAsyncQueueMgr", localIOException, "", new Object[0]);
-          com.tencent.mm.vfs.o.deleteFile(this.path);
-          AppMethodBeat.o(95740);
-          boolean bool = false;
-        }
-        localObject = finally;
-      }
-      return bool;
-    }
-  }
-  
-  private void i(long paramLong, int paramInt, String paramString)
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(95734);
-        switch (paramInt)
-        {
-        case 4: 
-        case 6: 
-        case 9: 
-        case 10: 
-        case 11: 
-        case 12: 
-        case 13: 
-        case 14: 
-        case 15: 
-          dXf();
-          AppMethodBeat.o(95734);
-          return;
-        }
-      }
-      finally {}
-      a(paramLong, this.zAm.zHK, paramString);
-      continue;
-      a(paramLong, this.zAm.zHL, paramString);
-      continue;
-      a(paramLong, this.zAm.zHK, paramString);
-      continue;
-      a(paramLong, this.zAm.zHL, paramString);
-      continue;
-      a(paramLong, this.zAm.zHM, paramString);
-      continue;
-      a(paramLong, this.zAm.zHN, paramString);
-    }
-  }
-  
-  /* Error */
-  public final boolean Ak(long paramLong)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 339
-    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: getfield 59	com/tencent/mm/plugin/sns/model/af:zAm	Lcom/tencent/mm/plugin/sns/i/d;
-    //   12: getfield 342	com/tencent/mm/plugin/sns/i/d:zHO	Ljava/util/LinkedList;
-    //   15: invokevirtual 86	java/util/LinkedList:iterator	()Ljava/util/Iterator;
-    //   18: astore 4
-    //   20: aload 4
-    //   22: invokeinterface 91 1 0
-    //   27: ifeq +33 -> 60
-    //   30: aload 4
-    //   32: invokeinterface 95 1 0
-    //   37: checkcast 344	com/tencent/mm/plugin/sns/i/f
-    //   40: getfield 347	com/tencent/mm/plugin/sns/i/f:zHT	J
-    //   43: lload_1
-    //   44: lcmp
-    //   45: ifne -25 -> 20
-    //   48: iconst_0
-    //   49: istore_3
-    //   50: ldc_w 339
-    //   53: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   56: aload_0
-    //   57: monitorexit
-    //   58: iload_3
-    //   59: ireturn
-    //   60: iconst_1
-    //   61: istore_3
-    //   62: ldc_w 339
-    //   65: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   68: goto -12 -> 56
-    //   71: astore 4
-    //   73: aload_0
-    //   74: monitorexit
-    //   75: aload 4
-    //   77: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	78	0	this	af
-    //   0	78	1	paramLong	long
-    //   49	13	3	bool	boolean
-    //   18	13	4	localIterator	Iterator
-    //   71	5	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	20	71	finally
-    //   20	48	71	finally
-    //   50	56	71	finally
-    //   62	68	71	finally
-  }
-  
-  public final void Al(long paramLong)
-  {
-    try
-    {
-      AppMethodBeat.i(95726);
-      f localf = new f();
-      localf.zHT = paramLong;
-      localf.zHR = ((int)bu.aRi());
-      this.zAm.zHO.add(localf);
-      dXf();
-      AppMethodBeat.o(95726);
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  final void Am(long paramLong)
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(95727);
-        Iterator localIterator = this.zAm.zHO.iterator();
-        if (localIterator.hasNext())
-        {
-          f localf = (f)localIterator.next();
-          if (localf.zHT != paramLong) {
-            continue;
-          }
-          if (localf != null) {
-            this.zAm.zHO.remove(localf);
-          }
-          dXf();
-          AppMethodBeat.o(95727);
-          return;
-        }
-      }
-      finally {}
-      Object localObject2 = null;
-    }
-  }
-  
-  /* Error */
-  public final boolean An(long paramLong)
-  {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: ldc_w 363
-    //   7: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: new 344	com/tencent/mm/plugin/sns/i/f
-    //   13: dup
-    //   14: invokespecial 351	com/tencent/mm/plugin/sns/i/f:<init>	()V
-    //   17: astore 4
-    //   19: aload 4
-    //   21: lload_1
-    //   22: putfield 347	com/tencent/mm/plugin/sns/i/f:zHT	J
-    //   25: aload 4
-    //   27: invokestatic 355	com/tencent/mm/sdk/platformtools/bu:aRi	()J
-    //   30: l2i
-    //   31: putfield 356	com/tencent/mm/plugin/sns/i/f:zHR	I
-    //   34: aload_0
-    //   35: getfield 59	com/tencent/mm/plugin/sns/model/af:zAm	Lcom/tencent/mm/plugin/sns/i/d;
-    //   38: getfield 366	com/tencent/mm/plugin/sns/i/d:zHP	Ljava/util/LinkedList;
-    //   41: aload 4
-    //   43: invokevirtual 359	java/util/LinkedList:add	(Ljava/lang/Object;)Z
-    //   46: pop
-    //   47: aload_0
-    //   48: invokespecial 322	com/tencent/mm/plugin/sns/model/af:dXf	()Z
-    //   51: pop
-    //   52: lload_1
-    //   53: aload_0
-    //   54: getfield 59	com/tencent/mm/plugin/sns/model/af:zAm	Lcom/tencent/mm/plugin/sns/i/d;
-    //   57: getfield 325	com/tencent/mm/plugin/sns/i/d:zHK	Ljava/util/LinkedList;
-    //   60: ldc 32
-    //   62: iconst_1
-    //   63: invokestatic 77	com/tencent/mm/plugin/sns/model/af:a	(JLjava/util/LinkedList;Ljava/lang/String;Z)Z
-    //   66: ifne +13 -> 79
-    //   69: ldc_w 363
-    //   72: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   75: aload_0
-    //   76: monitorexit
-    //   77: iload_3
-    //   78: ireturn
-    //   79: iconst_0
-    //   80: istore_3
-    //   81: ldc_w 363
-    //   84: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   87: goto -12 -> 75
-    //   90: astore 4
-    //   92: aload_0
-    //   93: monitorexit
-    //   94: aload 4
-    //   96: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	97	0	this	af
-    //   0	97	1	paramLong	long
-    //   1	80	3	bool	boolean
-    //   17	25	4	localf	f
-    //   90	5	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   4	75	90	finally
-    //   81	87	90	finally
-  }
-  
-  final boolean Ao(long paramLong)
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(95738);
-        Iterator localIterator = this.zAm.zHP.iterator();
-        if (!localIterator.hasNext()) {
-          break label99;
-        }
-        f localf = (f)localIterator.next();
-        if (localf.zHT != paramLong) {
-          continue;
-        }
-        if (localf != null)
-        {
-          this.zAm.zHP.remove(localf);
-          bool = true;
-          dXf();
-          AppMethodBeat.o(95738);
-          return bool;
-        }
-      }
-      finally {}
-      boolean bool = false;
-      continue;
-      label99:
-      Object localObject2 = null;
-    }
-  }
-  
-  public final boolean QA(int paramInt)
-  {
-    try
-    {
-      AppMethodBeat.i(95749);
-      this.zAp.remove(Integer.valueOf(paramInt));
-      this.zAq.remove(Integer.valueOf(paramInt));
-      AppMethodBeat.o(95749);
-      return true;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean QB(int paramInt)
-  {
-    try
-    {
-      AppMethodBeat.i(95751);
-      this.zAq.remove(Integer.valueOf(paramInt));
-      AppMethodBeat.o(95751);
-      return true;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  /* Error */
-  public final int QC(int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 386
-    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: getfield 48	com/tencent/mm/plugin/sns/model/af:zAq	Ljava/util/Map;
-    //   12: iload_1
-    //   13: invokestatic 377	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   16: invokeinterface 389 2 0
-    //   21: ifeq +33 -> 54
-    //   24: aload_0
-    //   25: getfield 48	com/tencent/mm/plugin/sns/model/af:zAq	Ljava/util/Map;
-    //   28: iload_1
-    //   29: invokestatic 377	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   32: invokeinterface 392 2 0
-    //   37: checkcast 373	java/lang/Integer
-    //   40: invokevirtual 396	java/lang/Integer:intValue	()I
-    //   43: istore_1
-    //   44: ldc_w 386
-    //   47: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   50: aload_0
-    //   51: monitorexit
-    //   52: iload_1
-    //   53: ireturn
-    //   54: iconst_m1
-    //   55: istore_1
-    //   56: ldc_w 386
-    //   59: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   62: goto -12 -> 50
-    //   65: astore_2
-    //   66: aload_0
-    //   67: monitorexit
-    //   68: aload_2
-    //   69: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	70	0	this	af
-    //   0	70	1	paramInt	int
-    //   65	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	50	65	finally
-    //   56	62	65	finally
-  }
-  
-  public final boolean Qw(int paramInt)
-  {
-    try
-    {
-      AppMethodBeat.i(95741);
-      boolean bool = this.zAn.contains(Integer.valueOf(paramInt));
-      AppMethodBeat.o(95741);
-      return bool;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  /* Error */
-  public final boolean Qx(int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 403
-    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: getfield 39	com/tencent/mm/plugin/sns/model/af:zAn	Ljava/util/List;
-    //   12: iload_1
-    //   13: invokestatic 377	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   16: invokeinterface 401 2 0
-    //   21: ifeq +15 -> 36
-    //   24: iconst_0
-    //   25: istore_2
-    //   26: ldc_w 403
-    //   29: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: iload_2
-    //   35: ireturn
-    //   36: aload_0
-    //   37: getfield 39	com/tencent/mm/plugin/sns/model/af:zAn	Ljava/util/List;
-    //   40: iload_1
-    //   41: invokestatic 377	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   44: invokeinterface 404 2 0
-    //   49: pop
-    //   50: iconst_1
-    //   51: istore_2
-    //   52: ldc_w 403
-    //   55: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   58: goto -26 -> 32
-    //   61: astore_3
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload_3
-    //   65: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	66	0	this	af
-    //   0	66	1	paramInt	int
-    //   25	27	2	bool	boolean
-    //   61	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	24	61	finally
-    //   26	32	61	finally
-    //   36	50	61	finally
-    //   52	58	61	finally
-  }
-  
-  public final boolean Qy(int paramInt)
-  {
-    try
-    {
-      AppMethodBeat.i(95743);
-      this.zAn.remove(Integer.valueOf(paramInt));
-      AppMethodBeat.o(95743);
-      return true;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  /* Error */
-  public final boolean Qz(int paramInt)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 408
-    //   5: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: aload_0
-    //   9: getfield 46	com/tencent/mm/plugin/sns/model/af:zAp	Ljava/util/List;
-    //   12: iload_1
-    //   13: invokestatic 377	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   16: invokeinterface 401 2 0
-    //   21: ifeq +15 -> 36
-    //   24: iconst_0
-    //   25: istore_2
-    //   26: ldc_w 408
-    //   29: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   32: aload_0
-    //   33: monitorexit
-    //   34: iload_2
-    //   35: ireturn
-    //   36: aload_0
-    //   37: getfield 46	com/tencent/mm/plugin/sns/model/af:zAp	Ljava/util/List;
-    //   40: iload_1
-    //   41: invokestatic 377	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   44: invokeinterface 404 2 0
-    //   49: pop
-    //   50: iconst_1
-    //   51: istore_2
-    //   52: ldc_w 408
-    //   55: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   58: goto -26 -> 32
-    //   61: astore_3
-    //   62: aload_0
-    //   63: monitorexit
-    //   64: aload_3
-    //   65: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	66	0	this	af
-    //   0	66	1	paramInt	int
-    //   25	27	2	bool	boolean
-    //   61	4	3	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	24	61	finally
-    //   26	32	61	finally
-    //   36	50	61	finally
-    //   52	58	61	finally
-  }
-  
-  public final boolean a(String paramString, dgc paramdgc)
-  {
-    AppMethodBeat.i(95731);
-    boolean bool = a(paramString, paramdgc, "");
-    AppMethodBeat.o(95731);
+    AppMethodBeat.o(95720);
     return bool;
   }
   
-  public final boolean a(String paramString1, dgc paramdgc, String paramString2)
+  public final void p(String paramString1, String paramString2, String paramString3)
   {
-    boolean bool2 = true;
-    for (;;)
+    AppMethodBeat.i(95717);
+    this.xCU = paramString1;
+    Log.i("MicroMsg.SnsAdStreamVideoProxy", "%s start http stream[%s, %s, %s]", new Object[] { Integer.valueOf(hashCode()), paramString1, paramString3, paramString2 });
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("sns_ad_download_resource_preferences", 0);
+    boolean bool = localSharedPreferences.getBoolean(paramString1, false);
+    if (s.YS(paramString2))
     {
-      e locale;
-      try
+      Log.i("MicroMsg.SnsAdStreamVideoProxy", "is already download %s", new Object[] { Boolean.valueOf(bool) });
+      if (bool)
       {
-        AppMethodBeat.i(95732);
-        locale = new e();
-        locale.zHQ = paramString1;
-        locale.zxT = paramdgc;
-        locale.zHR = ((int)bu.aRi());
-        locale.zHS = paramString2;
-        bool1 = bool2;
-        switch (paramdgc.HNs.nJA)
-        {
-        case 4: 
-        case 6: 
-        case 9: 
-        case 10: 
-        case 11: 
-        case 12: 
-        case 13: 
-        case 14: 
-        case 15: 
-          if (!dXf()) {
-            ae.e("MicroMsg.SnsAsyncQueueMgr", "error listToFile");
-          }
-          AppMethodBeat.o(95732);
-          return bool1;
-        }
-      }
-      finally {}
-      this.zAm.zHK.add(locale);
-      boolean bool1 = bool2;
-      if (Ao(paramdgc.Id))
-      {
-        bool1 = false;
-        continue;
-        this.zAm.zHL.add(locale);
-        bool1 = bool2;
-        continue;
-        this.zAm.zHK.add(locale);
-        bool1 = bool2;
-        if (Ao(paramdgc.Id))
-        {
-          bool1 = false;
-          continue;
-          this.zAm.zHL.add(locale);
-          bool1 = bool2;
-          continue;
-          this.zAm.zHM.add(locale);
-          bool1 = bool2;
-          continue;
-          this.zAm.zHN.add(locale);
-          bool1 = bool2;
-          continue;
-          bool1 = bool2;
-        }
+        this.DJU.a(paramString1, 0, null);
+        AppMethodBeat.o(95717);
       }
     }
+    else if (bool)
+    {
+      Log.i("MicroMsg.SnsAdStreamVideoProxy", "last download file was deleted");
+      localSharedPreferences.edit().putBoolean(paramString1, false).commit();
+    }
+    if (aj.faJ().aOP(paramString1))
+    {
+      Log.i("%s is already in downloading", paramString3);
+      AppMethodBeat.o(95717);
+      return;
+    }
+    aj.faJ().a(paramString1, paramString3, paramString2, this.DJU);
+    AppMethodBeat.o(95717);
   }
   
-  /* Error */
-  public final boolean aAl(String paramString)
+  public final void requestVideoData(String paramString, int paramInt1, int paramInt2)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: ldc_w 425
-    //   7: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   10: aload_0
-    //   11: getfield 44	com/tencent/mm/plugin/sns/model/af:zAo	Ljava/util/Map;
-    //   14: aload_1
-    //   15: invokeinterface 389 2 0
-    //   20: ifeq +13 -> 33
-    //   23: ldc_w 425
-    //   26: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   29: aload_0
-    //   30: monitorexit
-    //   31: iload_2
-    //   32: ireturn
-    //   33: aload_0
-    //   34: getfield 44	com/tencent/mm/plugin/sns/model/af:zAo	Ljava/util/Map;
-    //   37: aload_1
-    //   38: iconst_0
-    //   39: invokestatic 377	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   42: invokeinterface 429 3 0
-    //   47: pop
-    //   48: iconst_1
-    //   49: istore_2
-    //   50: ldc_w 425
-    //   53: invokestatic 70	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   56: goto -27 -> 29
-    //   59: astore_1
-    //   60: aload_0
-    //   61: monitorexit
-    //   62: aload_1
-    //   63: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	64	0	this	af
-    //   0	64	1	paramString	String
-    //   1	49	2	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   4	29	59	finally
-    //   33	48	59	finally
-    //   50	56	59	finally
-  }
-  
-  public final boolean aAm(String paramString)
-  {
-    try
+    AppMethodBeat.i(95719);
+    Log.d("MicroMsg.SnsAdStreamVideoProxy", "%s, request video data[%s, %s, %s]", new Object[] { Integer.valueOf(hashCode()), paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    if (this.xCU.equals(paramString))
     {
-      AppMethodBeat.i(95746);
-      this.zAo.remove(paramString);
-      AppMethodBeat.o(95746);
-      return true;
+      o.bhk();
+      e.r(paramString, paramInt1, paramInt2);
     }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
-  }
-  
-  public final SnsObject d(SnsObject paramSnsObject)
-  {
-    long l;
-    Iterator localIterator;
-    Object localObject1;
-    Object localObject2;
-    try
-    {
-      AppMethodBeat.i(95729);
-      if (bu.isNullOrNil(this.fHO)) {
-        this.fHO = v.aAC();
-      }
-      if ((this.zAm.zHK.size() == 0) && (this.zAm.zHL.size() == 0))
-      {
-        AppMethodBeat.o(95729);
-        return paramSnsObject;
-      }
-      l = paramSnsObject.Id;
-      localIterator = this.zAm.zHK.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject1 = (e)localIterator.next();
-        localObject2 = b(((e)localObject1).zxT);
-        if ((((e)localObject1).zxT.Id == l) && (!a(paramSnsObject.LikeUserList, ((dgh)localObject2).hFS, ((dgh)localObject2).CreateTime)))
-        {
-          paramSnsObject.LikeUserList.add(localObject2);
-          paramSnsObject.LikeCount += 1;
-        }
-      }
-      localIterator = paramSnsObject.LikeUserList.iterator();
-    }
-    finally {}
-    label180:
-    int i;
-    while (localIterator.hasNext())
-    {
-      localObject1 = (dgh)localIterator.next();
-      if (((dgh)localObject1).Username.equals(this.fHO))
-      {
-        i = 0;
-        localObject2 = this.zAm.zHP.iterator();
-        label231:
-        if (!((Iterator)localObject2).hasNext()) {
-          break label396;
-        }
-        if (((f)((Iterator)localObject2).next()).zHT != l) {
-          break label393;
-        }
-        paramSnsObject.LikeUserList.remove(localObject1);
-        paramSnsObject.LikeCount -= 1;
-        i = 1;
-        break label393;
-      }
-    }
-    for (;;)
-    {
-      localIterator = this.zAm.zHL.iterator();
-      while (localIterator.hasNext())
-      {
-        localObject1 = (e)localIterator.next();
-        if (((e)localObject1).zxT.Id == l)
-        {
-          localObject1 = b(((e)localObject1).zxT);
-          if (!a(paramSnsObject.CommentUserList, ((dgh)localObject1).hFS, ((dgh)localObject1).CreateTime))
-          {
-            paramSnsObject.CommentUserList.add(localObject1);
-            paramSnsObject.CommentCount += 1;
-          }
-        }
-      }
-      AppMethodBeat.o(95729);
-      break;
-      label393:
-      break label231;
-      label396:
-      if (i == 0) {
-        break label180;
-      }
-    }
-  }
-  
-  public final void dXe()
-  {
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(95723);
-        if (aU(this.zAm.zHK))
-        {
-          AppMethodBeat.o(95723);
-          return;
-        }
-        if (aU(this.zAm.zHL))
-        {
-          AppMethodBeat.o(95723);
-          continue;
-        }
-        if (!aU(this.zAm.zHM)) {
-          break label79;
-        }
-      }
-      finally {}
-      AppMethodBeat.o(95723);
-      continue;
-      label79:
-      if (aU(this.zAm.zHN))
-      {
-        AppMethodBeat.o(95723);
-      }
-      else
-      {
-        f localf;
-        long l;
-        for (;;)
-        {
-          if (!this.zAm.zHO.isEmpty())
-          {
-            localf = (f)this.zAm.zHO.getFirst();
-            if (bu.rZ(localf.zHR) > 21600L)
-            {
-              this.zAm.zHO.removeFirst();
-            }
-            else
-            {
-              l = localf.zHT;
-              g.ajS();
-              g.ajQ().gDv.a(new r(l, 1), 0);
-              AppMethodBeat.o(95723);
-              break;
-            }
-          }
-        }
-        for (;;)
-        {
-          if (!this.zAm.zHP.isEmpty())
-          {
-            localf = (f)this.zAm.zHP.getFirst();
-            if (bu.rZ(localf.zHR) > 21600L)
-            {
-              this.zAm.zHP.removeFirst();
-            }
-            else
-            {
-              l = localf.zHT;
-              g.ajS();
-              g.ajQ().gDv.a(new r(l, 5), 0);
-              AppMethodBeat.o(95723);
-              break;
-            }
-          }
-        }
-        AppMethodBeat.o(95723);
-      }
-    }
-  }
-  
-  public final int dXh()
-  {
-    try
-    {
-      AppMethodBeat.i(95747);
-      int i = this.zAo.size();
-      AppMethodBeat.o(95747);
-      return i;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void h(long paramLong, int paramInt, String paramString)
-  {
-    AppMethodBeat.i(95733);
-    al.dYa();
-    i(paramLong, paramInt, paramString);
-    AppMethodBeat.o(95733);
-  }
-  
-  public final boolean hC(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      AppMethodBeat.i(95750);
-      this.zAq.put(Integer.valueOf(paramInt1), Integer.valueOf(paramInt2));
-      AppMethodBeat.o(95750);
-      return true;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean isDownloading(String paramString)
-  {
-    try
-    {
-      AppMethodBeat.i(95744);
-      boolean bool = this.zAo.containsKey(paramString);
-      AppMethodBeat.o(95744);
-      return bool;
-    }
-    finally
-    {
-      paramString = finally;
-      throw paramString;
-    }
+    AppMethodBeat.o(95719);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.af
  * JD-Core Version:    0.7.0.1
  */

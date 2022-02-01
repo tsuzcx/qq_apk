@@ -4,68 +4,68 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fw;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.gf;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class SmileyInfo
-  extends fw
+  extends gf
   implements Parcelable
 {
   public static final Parcelable.Creator<SmileyInfo> CREATOR;
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(105142);
-    c.a locala = new c.a();
-    locala.IBL = new Field[10];
-    locala.columns = new String[11];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[10];
+    localMAutoDBInfo.columns = new String[11];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "key";
-    locala.IBN.put("key", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "key";
+    localMAutoDBInfo.colsMap.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "key";
-    locala.columns[1] = "cnValue";
-    locala.IBN.put("cnValue", "TEXT");
+    localMAutoDBInfo.primaryKey = "key";
+    localMAutoDBInfo.columns[1] = "cnValue";
+    localMAutoDBInfo.colsMap.put("cnValue", "TEXT");
     localStringBuilder.append(" cnValue TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "qqValue";
-    locala.IBN.put("qqValue", "TEXT");
+    localMAutoDBInfo.columns[2] = "qqValue";
+    localMAutoDBInfo.colsMap.put("qqValue", "TEXT");
     localStringBuilder.append(" qqValue TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "twValue";
-    locala.IBN.put("twValue", "TEXT");
+    localMAutoDBInfo.columns[3] = "twValue";
+    localMAutoDBInfo.colsMap.put("twValue", "TEXT");
     localStringBuilder.append(" twValue TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "enValue";
-    locala.IBN.put("enValue", "TEXT");
+    localMAutoDBInfo.columns[4] = "enValue";
+    localMAutoDBInfo.colsMap.put("enValue", "TEXT");
     localStringBuilder.append(" enValue TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "thValue";
-    locala.IBN.put("thValue", "TEXT");
+    localMAutoDBInfo.columns[5] = "thValue";
+    localMAutoDBInfo.colsMap.put("thValue", "TEXT");
     localStringBuilder.append(" thValue TEXT");
     localStringBuilder.append(", ");
-    locala.columns[6] = "fileName";
-    locala.IBN.put("fileName", "TEXT");
+    localMAutoDBInfo.columns[6] = "fileName";
+    localMAutoDBInfo.colsMap.put("fileName", "TEXT");
     localStringBuilder.append(" fileName TEXT");
     localStringBuilder.append(", ");
-    locala.columns[7] = "eggIndex";
-    locala.IBN.put("eggIndex", "INTEGER default '-1' ");
+    localMAutoDBInfo.columns[7] = "eggIndex";
+    localMAutoDBInfo.colsMap.put("eggIndex", "INTEGER default '-1' ");
     localStringBuilder.append(" eggIndex INTEGER default '-1' ");
     localStringBuilder.append(", ");
-    locala.columns[8] = "position";
-    locala.IBN.put("position", "INTEGER default '-1' ");
+    localMAutoDBInfo.columns[8] = "position";
+    localMAutoDBInfo.colsMap.put("position", "INTEGER default '-1' ");
     localStringBuilder.append(" position INTEGER default '-1' ");
     localStringBuilder.append(", ");
-    locala.columns[9] = "flag";
-    locala.IBN.put("flag", "INTEGER");
+    localMAutoDBInfo.columns[9] = "flag";
+    localMAutoDBInfo.colsMap.put("flag", "INTEGER");
     localStringBuilder.append(" flag INTEGER");
-    locala.columns[10] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[10] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(105142);
   }
@@ -116,7 +116,7 @@ public class SmileyInfo
     return 0;
   }
   
-  public c.a getDBInfo()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return null;
   }
@@ -157,7 +157,7 @@ public class SmileyInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.SmileyInfo
  * JD-Core Version:    0.7.0.1
  */

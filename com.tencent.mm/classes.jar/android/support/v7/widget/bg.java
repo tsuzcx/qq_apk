@@ -7,58 +7,58 @@ import android.support.v4.e.l.b;
 
 final class bg
 {
-  final a<RecyclerView.w, a> azW = new a();
-  final g<RecyclerView.w> azX = new g();
+  final a<RecyclerView.v, a> azU = new a();
+  final g<RecyclerView.v> azV = new g();
   
-  final boolean E(RecyclerView.w paramw)
+  final boolean G(RecyclerView.v paramv)
   {
-    paramw = (a)this.azW.get(paramw);
-    return (paramw != null) && ((paramw.flags & 0x1) != 0);
+    paramv = (a)this.azU.get(paramv);
+    return (paramv != null) && ((paramv.flags & 0x1) != 0);
   }
   
-  final boolean F(RecyclerView.w paramw)
+  final boolean H(RecyclerView.v paramv)
   {
-    paramw = (a)this.azW.get(paramw);
-    return (paramw != null) && ((paramw.flags & 0x4) != 0);
+    paramv = (a)this.azU.get(paramv);
+    return (paramv != null) && ((paramv.flags & 0x4) != 0);
   }
   
-  final void G(RecyclerView.w paramw)
+  final void I(RecyclerView.v paramv)
   {
-    a locala2 = (a)this.azW.get(paramw);
+    a locala2 = (a)this.azU.get(paramv);
     a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = a.nk();
-      this.azW.put(paramw, locala1);
+      locala1 = a.nm();
+      this.azU.put(paramv, locala1);
     }
     locala1.flags |= 0x1;
   }
   
-  final void H(RecyclerView.w paramw)
+  final void J(RecyclerView.v paramv)
   {
-    paramw = (a)this.azW.get(paramw);
-    if (paramw == null) {
+    paramv = (a)this.azU.get(paramv);
+    if (paramv == null) {
       return;
     }
-    paramw.flags &= 0xFFFFFFFE;
+    paramv.flags &= 0xFFFFFFFE;
   }
   
-  final void I(RecyclerView.w paramw)
+  final void K(RecyclerView.v paramv)
   {
-    int i = this.azX.size() - 1;
+    int i = this.azV.size() - 1;
     for (;;)
     {
       if (i >= 0)
       {
-        if (paramw == this.azX.valueAt(i)) {
-          this.azX.removeAt(i);
+        if (paramv == this.azV.valueAt(i)) {
+          this.azV.removeAt(i);
         }
       }
       else
       {
-        paramw = (a)this.azW.remove(paramw);
-        if (paramw != null) {
-          a.a(paramw);
+        paramv = (a)this.azU.remove(paramv);
+        if (paramv != null) {
+          a.a(paramv);
         }
         return;
       }
@@ -66,20 +66,20 @@ final class bg
     }
   }
   
-  final void a(long paramLong, RecyclerView.w paramw)
+  final void a(long paramLong, RecyclerView.v paramv)
   {
-    this.azX.put(paramLong, paramw);
+    this.azV.put(paramLong, paramv);
   }
   
   final void a(b paramb)
   {
-    int i = this.azW.size() - 1;
+    int i = this.azU.size() - 1;
     if (i >= 0)
     {
-      RecyclerView.w localw = (RecyclerView.w)this.azW.keyAt(i);
-      a locala = (a)this.azW.removeAt(i);
+      RecyclerView.v localv = (RecyclerView.v)this.azU.keyAt(i);
+      a locala = (a)this.azU.removeAt(i);
       if ((locala.flags & 0x3) == 3) {
-        paramb.j(localw);
+        paramb.j(localv);
       }
       for (;;)
       {
@@ -88,61 +88,61 @@ final class bg
         break;
         if ((locala.flags & 0x1) != 0)
         {
-          if (locala.azY == null) {
-            paramb.j(localw);
+          if (locala.azW == null) {
+            paramb.j(localv);
           } else {
-            paramb.a(localw, locala.azY, locala.azZ);
+            paramb.a(localv, locala.azW, locala.azX);
           }
         }
         else if ((locala.flags & 0xE) == 14) {
-          paramb.b(localw, locala.azY, locala.azZ);
+          paramb.b(localv, locala.azW, locala.azX);
         } else if ((locala.flags & 0xC) == 12) {
-          paramb.c(localw, locala.azY, locala.azZ);
+          paramb.c(localv, locala.azW, locala.azX);
         } else if ((locala.flags & 0x4) != 0) {
-          paramb.a(localw, locala.azY, null);
+          paramb.a(localv, locala.azW, null);
         } else if ((locala.flags & 0x8) != 0) {
-          paramb.b(localw, locala.azY, locala.azZ);
+          paramb.b(localv, locala.azW, locala.azX);
         }
       }
     }
   }
   
-  final void b(RecyclerView.w paramw, RecyclerView.f.c paramc)
+  final void b(RecyclerView.v paramv, RecyclerView.f.c paramc)
   {
-    a locala2 = (a)this.azW.get(paramw);
+    a locala2 = (a)this.azU.get(paramv);
     a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = a.nk();
-      this.azW.put(paramw, locala1);
+      locala1 = a.nm();
+      this.azU.put(paramv, locala1);
     }
-    locala1.azY = paramc;
+    locala1.azW = paramc;
     locala1.flags |= 0x4;
   }
   
-  final void c(RecyclerView.w paramw, RecyclerView.f.c paramc)
+  final void c(RecyclerView.v paramv, RecyclerView.f.c paramc)
   {
-    a locala2 = (a)this.azW.get(paramw);
+    a locala2 = (a)this.azU.get(paramv);
     a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = a.nk();
-      this.azW.put(paramw, locala1);
+      locala1 = a.nm();
+      this.azU.put(paramv, locala1);
     }
     locala1.flags |= 0x2;
-    locala1.azY = paramc;
+    locala1.azW = paramc;
   }
   
   final void clear()
   {
-    this.azW.clear();
-    this.azX.clear();
+    this.azU.clear();
+    this.azV.clear();
   }
   
-  final RecyclerView.f.c d(RecyclerView.w paramw, int paramInt)
+  final RecyclerView.f.c d(RecyclerView.v paramv, int paramInt)
   {
     Object localObject2 = null;
-    int i = this.azW.indexOfKey(paramw);
+    int i = this.azU.indexOfKey(paramv);
     Object localObject1;
     if (i < 0) {
       localObject1 = localObject2;
@@ -153,22 +153,22 @@ final class bg
       do
       {
         return localObject1;
-        locala = (a)this.azW.valueAt(i);
+        locala = (a)this.azU.valueAt(i);
         localObject1 = localObject2;
       } while (locala == null);
       localObject1 = localObject2;
     } while ((locala.flags & paramInt) == 0);
     locala.flags &= (paramInt ^ 0xFFFFFFFF);
     if (paramInt == 4) {}
-    for (paramw = locala.azY;; paramw = locala.azZ)
+    for (paramv = locala.azW;; paramv = locala.azX)
     {
-      localObject1 = paramw;
+      localObject1 = paramv;
       if ((locala.flags & 0xC) != 0) {
         break;
       }
-      this.azW.removeAt(i);
+      this.azU.removeAt(i);
       a.a(locala);
-      return paramw;
+      return paramv;
       if (paramInt != 8) {
         break label129;
       }
@@ -177,42 +177,42 @@ final class bg
     throw new IllegalArgumentException("Must provide flag PRE or POST");
   }
   
-  final void d(RecyclerView.w paramw, RecyclerView.f.c paramc)
+  final void d(RecyclerView.v paramv, RecyclerView.f.c paramc)
   {
-    a locala2 = (a)this.azW.get(paramw);
+    a locala2 = (a)this.azU.get(paramv);
     a locala1 = locala2;
     if (locala2 == null)
     {
-      locala1 = a.nk();
-      this.azW.put(paramw, locala1);
+      locala1 = a.nm();
+      this.azU.put(paramv, locala1);
     }
-    locala1.azZ = paramc;
+    locala1.azX = paramc;
     locala1.flags |= 0x8;
   }
   
-  final RecyclerView.w n(long paramLong)
+  final RecyclerView.v n(long paramLong)
   {
-    return (RecyclerView.w)this.azX.get(paramLong, null);
+    return (RecyclerView.v)this.azV.get(paramLong, null);
   }
   
   static final class a
   {
-    static l.a<a> aAa = new l.b(20);
-    RecyclerView.f.c azY;
-    RecyclerView.f.c azZ;
+    static l.a<a> azY = new l.b(20);
+    RecyclerView.f.c azW;
+    RecyclerView.f.c azX;
     int flags;
     
     static void a(a parama)
     {
       parama.flags = 0;
-      parama.azY = null;
-      parama.azZ = null;
-      aAa.release(parama);
+      parama.azW = null;
+      parama.azX = null;
+      azY.release(parama);
     }
     
-    static a nk()
+    static a nm()
     {
-      a locala2 = (a)aAa.acquire();
+      a locala2 = (a)azY.acquire();
       a locala1 = locala2;
       if (locala2 == null) {
         locala1 = new a();
@@ -220,21 +220,21 @@ final class bg
       return locala1;
     }
     
-    static void nl()
+    static void nn()
     {
-      while (aAa.acquire() != null) {}
+      while (azY.acquire() != null) {}
     }
   }
   
   static abstract interface b
   {
-    public abstract void a(RecyclerView.w paramw, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2);
+    public abstract void a(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2);
     
-    public abstract void b(RecyclerView.w paramw, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2);
+    public abstract void b(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2);
     
-    public abstract void c(RecyclerView.w paramw, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2);
+    public abstract void c(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2);
     
-    public abstract void j(RecyclerView.w paramw);
+    public abstract void j(RecyclerView.v paramv);
   }
 }
 

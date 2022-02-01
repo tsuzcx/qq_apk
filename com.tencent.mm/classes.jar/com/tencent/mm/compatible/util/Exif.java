@@ -2,9 +2,9 @@ package com.tencent.mm.compatible.util;
 
 import androidx.a.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.text.ParseException;
@@ -96,7 +96,7 @@ public class Exif
     this.imageHeight = this.mExif.getAttributeInt("ImageLength", 0);
     this.fileSource = this.mExif.getAttributeInt("FileSource", 0);
     this.sceneType = this.mExif.getAttributeInt("SceneType", 0);
-    Object localObject = this.mExif.ns();
+    Object localObject = this.mExif.nu();
     if (localObject != null)
     {
       this.latitude = localObject[0];
@@ -189,7 +189,7 @@ public class Exif
     }
     catch (ParseException localParseException)
     {
-      ae.printErrStackTrace("MicroMsg.Exif", localParseException, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.Exif", localParseException, "", new Object[0]);
       AppMethodBeat.o(155899);
     }
     return 0L;
@@ -218,7 +218,7 @@ public class Exif
     Object localObject1 = null;
     try
     {
-      InputStream localInputStream = o.openRead(paramString);
+      InputStream localInputStream = s.openRead(paramString);
       localObject1 = localInputStream;
       localObject2 = localInputStream;
       this.mExif = new a(localInputStream);
@@ -230,12 +230,12 @@ public class Exif
     catch (Exception localException)
     {
       localObject2 = localObject1;
-      ae.w("MicroMsg.Exif", "Cannot read EXIF from file '%s': %s", new Object[] { paramString, localException.getMessage() });
+      Log.w("MicroMsg.Exif", "Cannot read EXIF from file '%s': %s", new Object[] { paramString, localException.getMessage() });
       return -1;
     }
     finally
     {
-      bu.d(localObject2);
+      Util.qualityClose(localObject2);
       AppMethodBeat.o(155892);
     }
   }
@@ -252,7 +252,7 @@ public class Exif
     }
     catch (Exception localException)
     {
-      ae.w("MicroMsg.Exif", "Cannot read EXIF from stream '%s': %s", new Object[] { paramInputStream, localException.getMessage() });
+      Log.w("MicroMsg.Exif", "Cannot read EXIF from stream '%s': %s", new Object[] { paramInputStream, localException.getMessage() });
       AppMethodBeat.o(155893);
     }
     return -1;

@@ -1,15 +1,15 @@
 package com.tencent.mm.media.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.a.j;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/decoder/PassthroughDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "init", "", "startTime", "", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/decoder/PassthroughDecodeStrategy;", "Lcom/tencent/mm/media/decoder/DecodeStrategy;", "()V", "TAG", "", "init", "", "startTime", "", "frames", "", "inFPS", "", "outFPS", "parents", "", "outPts", "", "plugin-mediaeditor_release"})
 public final class k
   implements c
 {
@@ -21,7 +21,7 @@ public final class k
     p.h(paramList, "frames");
     p.h(paramMap, "parents");
     p.h(paramMap1, "outPts");
-    ae.i(this.TAG, "use passthrough decode strategy");
+    Log.i(this.TAG, "use passthrough decode strategy");
     paramList = ((Iterable)paramList).iterator();
     long l1 = -1L;
     if (paramList.hasNext())
@@ -45,7 +45,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.media.d.k
  * JD-Core Version:    0.7.0.1
  */

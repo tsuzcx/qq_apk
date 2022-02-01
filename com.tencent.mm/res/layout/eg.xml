@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/y4" android:gravity="center" android:id="@android:id/title" android:layout_width="fill_parent" android:layout_height="64.0dip" android:text="@string/jd" />
-</LinearLayout>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="@dimen/su"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/dt5" android:layout_width="44.0dip" android:layout_height="44.0dip" android:layout_marginTop="10.0dip" android:layout_marginBottom="10.0dip" android:scaleType="fitCenter" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_marginRight="25.0dip" android:layout_centerVertical="true" android:layout_toEndOf="@id/dt5">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" />
+        <TextView android:textSize="@dimen/k6" android:textColor="@color/uj" android:ellipsize="end" android:id="@id/id1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:lines="1" />
+    </LinearLayout>
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hiv" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginLeft="5.0dip" android:src="@raw/icons_outlined_done" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/Brand" />
+    <ImageView android:layout_width="fill_parent" android:layout_height="@dimen/tv" android:src="@color/BW_90" android:layout_alignParentBottom="true" />
+</RelativeLayout>

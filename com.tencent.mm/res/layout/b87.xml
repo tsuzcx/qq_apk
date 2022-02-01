@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:layout_marginRight="@dimen/hd" android:layout_marginBottom="@dimen/hd"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/jo" android:textColor="@color/Link_100" android:id="@id/in" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fk1" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/im" android:layout_width="wrap_content" android:layout_height="@dimen/agf" android:layout_marginLeft="@dimen/ju" android:src="@raw/arrow_right" app:iconColor="@color/Link_100" />
-</LinearLayout>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.widget.textview.MMAutoAdjustTextView android:id="@id/ipm" style="@style/mu" />
+    <com.tencent.mm.ui.base.MMClearEditText android:id="@id/bxz" android:imeOptions="actionDone" style="@style/ms" />
+</merge>

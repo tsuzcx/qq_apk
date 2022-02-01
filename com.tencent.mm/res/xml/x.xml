@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/awl" />
-    <PreferenceSmallCategory android:key="contact_info_facebookapp_cat" />
-    <Preference android:key="contact_info_facebookapp_listfriend" android:layout="@layout/aop" android:title="@string/b5x" />
-    <Preference android:key="contact_info_facebookapp_account" android:layout="@layout/aop" android:title="@string/b5u" />
-    <Preference android:key="contact_info_facebookapp_addr" android:layout="@layout/aop" android:title="@string/cyp" />
-    <PreferenceSmallCategory android:key="contact_info_facebookapp_cat2" />
-    <Preference android:key="contact_info_facebookapp_install" android:layout="@layout/ag2" android:title="@string/f9r" />
-    <Preference android:key="contact_info_facebookapp_uninstall" android:layout="@layout/ajc" android:title="@string/f9x" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bi_" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_go_to_downloader" android:layout="@layout/b8j" android:title="@string/bok" />
+    <Preference android:key="contact_info_downloader_manager" android:layout="@layout/b8j" android:title="@string/boi" />
+    <Preference android:key="contact_info_common_problem" android:layout="@layout/b8j" android:title="@string/boh" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="contact_info_top_downloader" android:layout="@layout/b8j" android:persistent="false" android:title="@string/boo" />
+    <CheckBoxPreference android:key="contact_info_not_disturb" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bom" />
+    <Preference android:key="contact_info_clear_data" android:layout="@layout/b8j" android:title="@string/ba3" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_downloader_install" android:layout="@layout/aw2" android:title="@string/gsq" />
+    <Preference android:key="contact_info_downloader_uninstall" android:layout="@layout/b2o" android:title="@string/gsv" />
     <PreferenceCategory />
 </PreferenceScreen>

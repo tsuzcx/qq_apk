@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.plugin.subapp.ui.openapi.AppHeaderPreference android:key="app_profile_header" android:layout="@layout/fc" />
-    <PreferenceCategory />
-    <Preference android:key="app_profile_add" android:layout="@layout/ag2" android:title="@string/vr" />
-    <Preference android:key="app_profile_remove" android:layout="@layout/ajc" android:title="@string/vs" />
-    <PreferenceCategory android:key="app_profile_cat" />
+<PreferenceScreen
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.weui.base.preference.CheckBoxPreference android:title="是否开启预载" android:key="pref_key_enable_preload" android:defaultValue="true" />
+    <com.tencent.weui.base.preference.CheckBoxPreference android:title="enable v2 manager" android:key="pref_key_enable_v2_manager" android:defaultValue="true" />
+    <com.tencent.weui.base.preference.CheckBoxPreference android:title="enable single task dispatch strategy" android:key="pref_key_enable_single_task_dispatch" android:defaultValue="true" />
+    <com.tencent.weui.base.preference.CheckBoxPreference android:title="enable three process dispatch strategy" android:key="pref_key_enable_three_proc_tasks_dispatch" android:defaultValue="true" />
+    <com.tencent.weui.base.preference.IconPreference android:title="preload next normal wxa runtime" android:key="pref_key_preload_next_wxa" />
+    <com.tencent.weui.base.preference.IconPreference android:title="preload next plugin wxa runtime" android:key="pref_key_preload_next_plugin" />
+    <com.tencent.weui.base.preference.IconPreference android:title="kill all wxa process" android:key="pref_key_test_kill_all" />
+    <com.tencent.weui.base.preference.IconPreference android:title="preload_downgrade" android:key="pref_key_preload_downgrade" />
 </PreferenceScreen>

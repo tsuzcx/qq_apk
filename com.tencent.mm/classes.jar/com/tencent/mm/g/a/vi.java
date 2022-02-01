@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class vi
-  extends b
+  extends IEvent
 {
-  public a dKE;
+  public a ebE;
   
   public vi()
   {
@@ -15,24 +15,22 @@ public final class vi
   
   private vi(byte paramByte)
   {
-    AppMethodBeat.i(125647);
-    this.dKE = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(125633);
+    this.ebE = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125647);
+    AppMethodBeat.o(125633);
   }
   
   public static final class a
   {
-    public String dKF;
-    public String id;
-    public String result;
-    public int type;
+    public String dRS;
+    public String ebF;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.vi
  * JD-Core Version:    0.7.0.1
  */

@@ -4,26 +4,26 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.fo;
-import com.tencent.mm.g.a.fo.a;
+import com.tencent.mm.g.a.fr;
+import com.tencent.mm.g.a.fr.a;
 import com.tencent.mm.plugin.base.stub.WXBizEntryActivity;
 import com.tencent.mm.plugin.base.stub.WXCustomSchemeEntryActivity;
 import com.tencent.mm.plugin.base.stub.f;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
 final class WorkerProfile$8
-  extends c<fo>
+  extends IListener<fr>
 {
   WorkerProfile$8(WorkerProfile paramWorkerProfile)
   {
     AppMethodBeat.i(161238);
-    this.__eventId = fo.class.getName().hashCode();
+    this.__eventId = fr.class.getName().hashCode();
     AppMethodBeat.o(161238);
   }
   
@@ -33,12 +33,12 @@ final class WorkerProfile$8
     Context localContext = paramContext;
     if (paramContext == null)
     {
-      ae.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:context is null.");
-      localContext = ak.getContext();
+      Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:context is null.");
+      localContext = MMApplicationContext.getContext();
     }
     if ((paramArrayOfString1 == null) || (paramArrayOfString1.length < 2))
     {
-      ae.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:args error.");
+      Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:args error.");
       AppMethodBeat.o(19550);
       return false;
     }
@@ -46,7 +46,7 @@ final class WorkerProfile$8
     int i = 0;
     while (i < j)
     {
-      ae.i("MicroMsg.WorkerProfile", "arg : %s", new Object[] { paramArrayOfString1[i] });
+      Log.i("MicroMsg.WorkerProfile", "arg : %s", new Object[] { paramArrayOfString1[i] });
       i += 1;
     }
     String str1 = paramArrayOfString1[0];
@@ -57,40 +57,40 @@ final class WorkerProfile$8
     }
     j = 0;
     if (paramArrayOfString1.length > 3) {
-      j = bu.getInt(paramArrayOfString1[3], 0);
+      j = Util.getInt(paramArrayOfString1[3], 0);
     }
     int k = 0;
     if (paramArrayOfString1.length > 4) {
-      k = bu.getInt(paramArrayOfString1[4], 0);
+      k = Util.getInt(paramArrayOfString1[4], 0);
     }
-    ae.i("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:source(%d)", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:source(%d)", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
-      ae.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:source is out of range.");
+      Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:source is out of range.");
       AppMethodBeat.o(19550);
       return false;
     case 1: 
       if ((paramArrayOfString2 == null) || (paramArrayOfString2.length == 0))
       {
-        ae.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:packageNames is null or nil.");
+        Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:packageNames is null or nil.");
         AppMethodBeat.o(19550);
         return false;
       }
       break;
     case 2: 
-      if (bu.isNullOrNil(paramString))
+      if (Util.isNullOrNil(paramString))
       {
-        ae.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:fromURL(%s) is null or nil.", new Object[] { paramString });
+        Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:fromURL(%s) is null or nil.", new Object[] { paramString });
         AppMethodBeat.o(19550);
         return false;
       }
       break;
     }
-    ae.i("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener: appId(%s), toUserName(%s), extInfo(%s), fromURL(%s)", new Object[] { str1, str2, paramContext, paramString });
-    if ((bu.isNullOrNil(str1)) || (bu.isNullOrNil(str2)))
+    Log.i("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener: appId(%s), toUserName(%s), extInfo(%s), fromURL(%s)", new Object[] { str1, str2, paramContext, paramString });
+    if ((Util.isNullOrNil(str1)) || (Util.isNullOrNil(str2)))
     {
-      ae.e("MicroMsg.WorkerProfile", "appId or toUsername is null or nil.");
+      Log.e("MicroMsg.WorkerProfile", "appId or toUsername is null or nil.");
       AppMethodBeat.o(19550);
       return false;
     }
@@ -125,54 +125,54 @@ final class WorkerProfile$8
     }
     paramArrayOfString1.putStringArrayListExtra("androidPackNameList", paramContext);
     label482:
-    f.v(paramArrayOfString1, localContext);
+    f.u(paramArrayOfString1, localContext);
     AppMethodBeat.o(19550);
     return true;
   }
   
-  private static boolean a(fo paramfo)
+  private static boolean a(fr paramfr)
   {
     AppMethodBeat.i(19549);
-    if (paramfo == null)
+    if (paramfr == null)
     {
-      ae.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:event is null.");
+      Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:event is null.");
       AppMethodBeat.o(19549);
       return false;
     }
-    if (!(paramfo instanceof fo))
+    if (!(paramfr instanceof fr))
     {
-      ae.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:event is not a instance of ExtCallBizEvent.");
+      Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:event is not a instance of ExtCallBizEvent.");
       AppMethodBeat.o(19549);
       return false;
     }
-    if (paramfo.drD == null)
+    if (paramfr.dIP == null)
     {
-      ae.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:event.data is null.");
+      Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent IListener:event.data is null.");
       AppMethodBeat.o(19549);
       return false;
     }
     String str3;
     String str4;
-    switch (paramfo.drD.op)
+    switch (paramfr.dIP.op)
     {
     default: 
-      boolean bool = a(paramfo.drD.context, paramfo.drD.selectionArgs, paramfo.drD.dkL, paramfo.drD.doj, paramfo.drD.drE);
+      boolean bool = a(paramfr.dIP.context, paramfr.dIP.selectionArgs, paramfr.dIP.dBX, paramfr.dIP.source, paramfr.dIP.dIQ);
       AppMethodBeat.o(19549);
       return bool;
     case 27: 
-      if ((paramfo.drD.selectionArgs == null) || (paramfo.drD.selectionArgs.length < 2))
+      if ((paramfr.dIP.selectionArgs == null) || (paramfr.dIP.selectionArgs.length < 2))
       {
-        ae.e("MicroMsg.WorkerProfile", "ExtCallBizEvent selectionArgs error.");
+        Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent selectionArgs error.");
         AppMethodBeat.o(19549);
         return true;
       }
-      str3 = paramfo.drD.selectionArgs[0];
-      str4 = paramfo.drD.selectionArgs[1];
-      if (paramfo.drD.selectionArgs.length < 3) {
+      str3 = paramfr.dIP.selectionArgs[0];
+      str4 = paramfr.dIP.selectionArgs[1];
+      if (paramfr.dIP.selectionArgs.length < 3) {
         break;
       }
     }
-    for (Object localObject = bu.nullAsNil(paramfo.drD.selectionArgs[2]);; localObject = "")
+    for (Object localObject = Util.nullAsNil(paramfr.dIP.selectionArgs[2]);; localObject = "")
     {
       try
       {
@@ -186,37 +186,37 @@ final class WorkerProfile$8
       }
       if ((str3 == null) || (str4 == null))
       {
-        ae.e("MicroMsg.WorkerProfile", "ExtCallBizEvent wrong args, %s, %s", new Object[] { str3, str4 });
+        Log.e("MicroMsg.WorkerProfile", "ExtCallBizEvent wrong args, %s, %s", new Object[] { str3, str4 });
         AppMethodBeat.o(19549);
         return true;
       }
       String str2;
-      if (paramfo.drD.selectionArgs.length >= 4)
+      if (paramfr.dIP.selectionArgs.length >= 4)
       {
-        str2 = paramfo.drD.selectionArgs[3];
-        if (bu.isNullOrNil(str2)) {}
+        str2 = paramfr.dIP.selectionArgs[3];
+        if (Util.isNullOrNil(str2)) {}
       }
-      for (int i = bu.getInt(str2, 0);; i = 0)
+      for (int i = Util.getInt(str2, 0);; i = 0)
       {
-        ae.i("MicroMsg.WorkerProfile", "ExtCallBizEvent jump biz tempSession");
+        Log.i("MicroMsg.WorkerProfile", "ExtCallBizEvent jump biz tempSession");
         str2 = String.format("weixin://dl/business/tempsession/?username=%s&appid=%s&sessionFrom=%s&showtype=%s&scene=%s", new Object[] { str4, str3, localObject, Integer.valueOf(i), Integer.valueOf(0) });
-        localObject = new Intent(paramfo.drD.context, WXCustomSchemeEntryActivity.class);
+        localObject = new Intent(paramfr.dIP.context, WXCustomSchemeEntryActivity.class);
         ((Intent)localObject).addFlags(268435456);
         ((Intent)localObject).setData(Uri.parse(str2));
         ((Intent)localObject).putExtra("translate_link_scene", 1);
-        paramfo = paramfo.drD.context;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(paramfo, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/app/WorkerProfile$16", "callback", "(Lcom/tencent/mm/autogen/events/ExtCallBizEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        paramfo.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
-        com.tencent.mm.hellhoundlib.a.a.a(paramfo, "com/tencent/mm/app/WorkerProfile$16", "callback", "(Lcom/tencent/mm/autogen/events/ExtCallBizEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramfr = paramfr.dIP.context;
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(paramfr, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/app/WorkerProfile$16", "callback", "(Lcom/tencent/mm/autogen/events/ExtCallBizEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        paramfr.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
+        com.tencent.mm.hellhoundlib.a.a.a(paramfr, "com/tencent/mm/app/WorkerProfile$16", "callback", "(Lcom/tencent/mm/autogen/events/ExtCallBizEvent;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(19549);
         return true;
-        ae.i("MicroMsg.WorkerProfile", "ExtCallBizEvent open exdevice rank list.");
-        paramfo = paramfo.drD.context;
-        localObject = new Intent(paramfo, WXBizEntryActivity.class);
+        Log.i("MicroMsg.WorkerProfile", "ExtCallBizEvent open exdevice rank list.");
+        paramfr = paramfr.dIP.context;
+        localObject = new Intent(paramfr, WXBizEntryActivity.class);
         ((Intent)localObject).addFlags(268435456);
         ((Intent)localObject).putExtra("key_command_id", 11);
-        f.v((Intent)localObject, paramfo);
+        f.u((Intent)localObject, paramfr);
         AppMethodBeat.o(19549);
         return true;
       }
@@ -225,7 +225,7 @@ final class WorkerProfile$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.app.WorkerProfile.8
  * JD-Core Version:    0.7.0.1
  */

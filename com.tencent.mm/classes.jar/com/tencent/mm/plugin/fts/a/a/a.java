@@ -8,23 +8,23 @@ public abstract class a
 {
   public boolean mCancelled = false;
   public int mPriority = 2147483647;
-  public long tEQ = 0L;
-  public long tER = 0L;
-  public List<a> tES;
-  public Object tET;
+  public long wVP = 0L;
+  public long wVQ = 0L;
+  public List<a> wVR;
+  public Object wVS;
   
-  protected final void alt(String paramString)
+  protected final void ayx(String paramString)
   {
-    if (this.tES == null) {
-      this.tES = new ArrayList();
+    if (this.wVR == null) {
+      this.wVR = new ArrayList();
     }
     a locala = new a();
-    locala.tEU = paramString;
+    locala.wVT = paramString;
     locala.timestamp = System.currentTimeMillis();
-    this.tES.add(locala);
+    this.wVR.add(locala);
   }
   
-  public String bhC()
+  public String bCQ()
   {
     return "";
   }
@@ -53,15 +53,15 @@ public abstract class a
   
   public final class a
   {
-    public String tEU;
     public long timestamp;
+    public String wVT;
     
     public a() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.a
  * JD-Core Version:    0.7.0.1
  */

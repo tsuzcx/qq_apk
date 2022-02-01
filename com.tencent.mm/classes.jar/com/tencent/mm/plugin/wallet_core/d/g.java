@@ -3,34 +3,34 @@ package com.tencent.mm.plugin.wallet_core.d;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.ad;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 
 public final class g
-  extends j<ad>
+  extends MAutoStorage<ad>
 {
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(70616);
-    SQL_CREATE = new String[] { j.getCreateSQLs(ad.info, "WalletKindInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(ad.info, "WalletKindInfo") };
     AppMethodBeat.o(70616);
   }
   
-  public g(e parame)
+  public g(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, ad.info, "WalletKindInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, ad.info, "WalletKindInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final ArrayList<ad> eKN()
+  public final ArrayList<ad> fSs()
   {
     ArrayList localArrayList = null;
     AppMethodBeat.i(70615);
-    Cursor localCursor = this.db.a("select * from WalletKindInfo", null, 2);
+    Cursor localCursor = this.db.rawQuery("select * from WalletKindInfo", null, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(70615);
@@ -53,7 +53,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.g
  * JD-Core Version:    0.7.0.1
  */

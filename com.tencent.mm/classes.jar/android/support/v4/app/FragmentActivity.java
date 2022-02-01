@@ -74,10 +74,10 @@ public class FragmentActivity
     {
       o localo = this.mPendingFragmentActivityResults;
       i = this.mNextCandidateRequestIndex;
-      if (localo.OG) {
+      if (localo.OU) {
         localo.gc();
       }
-      if (d.b(localo.OW, localo.mSize, i) < 0) {
+      if (d.b(localo.Pi, localo.mSize, i) < 0) {
         break;
       }
       this.mNextCandidateRequestIndex = ((this.mNextCandidateRequestIndex + 1) % 65534);
@@ -159,7 +159,7 @@ public class FragmentActivity
   {
     b localb = (b)getLastNonConfigurationInstance();
     if (localb != null) {
-      return localb.Ft;
+      return localb.FD;
     }
     return null;
   }
@@ -189,7 +189,7 @@ public class FragmentActivity
     {
       b localb = (b)getLastNonConfigurationInstance();
       if (localb != null) {
-        this.mViewModelStore = localb.Fu;
+        this.mViewModelStore = localb.FE;
       }
       if (this.mViewModelStore == null) {
         this.mViewModelStore = new ViewModelStore();
@@ -219,8 +219,8 @@ public class FragmentActivity
       } while (localObject == null);
       ((Fragment)localObject).onActivityResult(0xFFFF & paramInt1, paramInt2, paramIntent);
       return;
-      localObject = a.dR();
-    } while ((localObject != null) && (((a.b)localObject).dT()));
+      localObject = a.dV();
+    } while ((localObject != null) && (((a.b)localObject).dX()));
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
@@ -250,8 +250,8 @@ public class FragmentActivity
     ((e)localObject).mHost.mFragmentManager.attachController(((e)localObject).mHost, ((e)localObject).mHost, null);
     super.onCreate(paramBundle);
     localObject = (b)getLastNonConfigurationInstance();
-    if ((localObject != null) && (((b)localObject).Fu != null) && (this.mViewModelStore == null)) {
-      this.mViewModelStore = ((b)localObject).Fu;
+    if ((localObject != null) && (((b)localObject).FE != null) && (this.mViewModelStore == null)) {
+      this.mViewModelStore = ((b)localObject).FE;
     }
     if (paramBundle != null)
     {
@@ -260,7 +260,7 @@ public class FragmentActivity
       if (localObject == null) {
         break label189;
       }
-      localObject = ((b)localObject).Fv;
+      localObject = ((b)localObject).FF;
       locale.mHost.mFragmentManager.restoreAllState(localParcelable, (h)localObject);
       if (paramBundle.containsKey("android:support:next_request_index"))
       {
@@ -468,9 +468,9 @@ public class FragmentActivity
       return null;
     }
     b localb = new b();
-    localb.Ft = localObject;
-    localb.Fu = this.mViewModelStore;
-    localb.Fv = localh;
+    localb.FD = localObject;
+    localb.FE = this.mViewModelStore;
+    localb.FF = localh;
     return localb;
   }
   
@@ -685,12 +685,12 @@ public class FragmentActivity
       FragmentActivity.this.dump(paramString, null, paramPrintWriter, paramArrayOfString);
     }
     
-    public final boolean ea()
+    public final boolean ek()
     {
       return !FragmentActivity.this.isFinishing();
     }
     
-    public final void eb()
+    public final void el()
     {
       FragmentActivity.this.supportInvalidateOptionsMenu();
     }
@@ -730,7 +730,7 @@ public class FragmentActivity
       return FragmentActivity.this.getWindow() != null;
     }
     
-    public final boolean q(String paramString)
+    public final boolean r(String paramString)
     {
       return a.a(FragmentActivity.this, paramString);
     }
@@ -738,9 +738,9 @@ public class FragmentActivity
   
   static final class b
   {
-    Object Ft;
-    ViewModelStore Fu;
-    h Fv;
+    Object FD;
+    ViewModelStore FE;
+    h FF;
   }
 }
 

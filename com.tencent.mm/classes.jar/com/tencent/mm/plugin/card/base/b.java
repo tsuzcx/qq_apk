@@ -1,83 +1,83 @@
 package com.tencent.mm.plugin.card.base;
 
-import com.tencent.mm.protocal.protobuf.den;
-import com.tencent.mm.protocal.protobuf.st;
-import com.tencent.mm.protocal.protobuf.tn;
-import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.protocal.protobuf.dxr;
+import com.tencent.mm.protocal.protobuf.ty;
+import com.tencent.mm.protocal.protobuf.us;
+import com.tencent.mm.protocal.protobuf.uz;
 
 public abstract interface b
 {
-  public abstract String Az(int paramInt);
+  public abstract String Ee(int paramInt);
   
-  public abstract void YT(String paramString);
+  public abstract void a(ty paramty);
   
-  public abstract void a(st paramst);
+  public abstract void a(us paramus);
   
-  public abstract void a(tn paramtn);
+  public abstract void aiY(String paramString);
   
-  public abstract boolean bUH();
+  public abstract boolean csA();
   
-  public abstract boolean bUI();
+  public abstract boolean csB();
   
-  public abstract boolean bUJ();
+  public abstract boolean csC();
   
-  public abstract boolean bUK();
+  public abstract boolean csD();
   
-  public abstract boolean bUL();
+  public abstract boolean csE();
   
-  public abstract boolean bUM();
+  public abstract boolean csF();
   
-  public abstract boolean bUN();
+  public abstract boolean csG();
   
-  public abstract boolean bUO();
+  public abstract boolean csH();
   
-  public abstract boolean bUP();
+  public abstract boolean csI();
   
-  public abstract boolean bUQ();
+  public abstract boolean csJ();
   
-  public abstract boolean bUR();
+  public abstract boolean csK();
   
-  public abstract boolean bUS();
+  public abstract boolean csL();
   
-  public abstract boolean bUT();
+  public abstract boolean csM();
   
-  public abstract boolean bUU();
+  public abstract boolean csN();
   
-  public abstract boolean bUV();
+  public abstract boolean csO();
   
-  public abstract boolean bUW();
+  public abstract boolean csP();
   
-  public abstract boolean bUX();
+  public abstract uz csQ();
   
-  public abstract boolean bUY();
+  public abstract ty csR();
   
-  public abstract boolean bUZ();
+  public abstract dxr csS();
   
-  public abstract boolean bVa();
+  public abstract us csT();
   
-  public abstract boolean bVb();
+  public abstract String csU();
   
-  public abstract tu bVc();
+  public abstract String csV();
   
-  public abstract st bVd();
+  public abstract String csW();
   
-  public abstract den bVe();
+  public abstract long csX();
   
-  public abstract tn bVf();
+  public abstract String csY();
   
-  public abstract String bVg();
+  public abstract int csZ();
   
-  public abstract String bVh();
+  public abstract boolean csv();
   
-  public abstract String bVi();
+  public abstract boolean csw();
   
-  public abstract long bVj();
+  public abstract boolean csx();
   
-  public abstract String bVk();
+  public abstract boolean csy();
   
-  public abstract int bVl();
+  public abstract boolean csz();
   
-  public abstract String bVm();
+  public abstract String cta();
   
   public abstract long getEndTime();
   
@@ -85,7 +85,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.base.b
  * JD-Core Version:    0.7.0.1
  */

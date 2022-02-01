@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/f47" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/kp" android:padding="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cd">
-        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/bid" android:background="@null" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:src="@raw/icons_outlined_emoji" android:scaleType="fitXY" />
-        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/jq" android:background="@null" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginLeft="@dimen/ci" android:src="@raw/icons_outlined_alignment_left" android:scaleType="fitXY" />
-    </LinearLayout>
+    <ListView android:id="@id/c5v" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@color/x5" android:dividerHeight="@dimen/iu" />
+    <include android:id="@id/c2g" android:visibility="gone" layout="@layout/a4m" />
 </LinearLayout>

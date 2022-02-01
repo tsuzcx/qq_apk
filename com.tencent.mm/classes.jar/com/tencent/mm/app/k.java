@@ -8,18 +8,18 @@ public final class k
 {
   static boolean e(Application paramApplication)
   {
-    AppMethodBeat.i(210656);
+    AppMethodBeat.i(212149);
     try
     {
       Method localMethod = Class.forName("com.tencent.mm.sdcard_migrate.ExtStorageMigrateRoutine").getDeclaredMethod("triggerOnDemand", new Class[] { Application.class });
       localMethod.setAccessible(true);
       boolean bool = ((Boolean)localMethod.invoke(null, new Object[] { paramApplication })).booleanValue();
-      AppMethodBeat.o(210656);
+      AppMethodBeat.o(212149);
       return bool;
     }
     catch (Throwable paramApplication)
     {
-      AppMethodBeat.o(210656);
+      AppMethodBeat.o(212149);
     }
     return false;
   }

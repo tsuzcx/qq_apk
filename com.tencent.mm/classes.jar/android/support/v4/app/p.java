@@ -19,7 +19,7 @@ public abstract class p
   @Deprecated
   public abstract void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString);
   
-  public abstract void em();
+  public abstract void eq();
   
   public static abstract interface a<D>
   {

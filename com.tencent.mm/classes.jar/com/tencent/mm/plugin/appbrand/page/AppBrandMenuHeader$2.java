@@ -15,9 +15,9 @@ final class AppBrandMenuHeader$2
   {
     AppMethodBeat.i(47772);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/appbrand/page/AppBrandMenuHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    this.mdw.run();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/appbrand/page/AppBrandMenuHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    this.nnO.run();
     a.a(this, "com/tencent/mm/plugin/appbrand/page/AppBrandMenuHeader$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(47772);
   }

@@ -8,40 +8,40 @@ import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI;
 import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.plugin.appbrand.report.quality.f;
-import com.tencent.mm.plugin.appbrand.report.quality.n;
+import com.tencent.mm.plugin.appbrand.report.quality.o;
+import com.tencent.mm.plugin.appbrand.report.w;
 import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
 import com.tencent.mm.plugin.appbrand.ui.AppBrandUI;
-import com.tencent.mm.plugin.appbrand.utils.b;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.ui.y;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class c
   extends a
   implements g
 {
-  int ksm;
-  private LaunchParcel lRV;
+  int lvW;
   private Intent mIntent;
+  private LaunchParcel mYY;
   
   public c(AppBrandLaunchProxyUI paramAppBrandLaunchProxyUI)
   {
     AppMethodBeat.i(47439);
-    this.ksm = 0;
+    this.lvW = 0;
     setBaseContext(paramAppBrandLaunchProxyUI);
-    this.lRK = false;
+    this.mYV = false;
     AppMethodBeat.o(47439);
   }
   
-  private void bsM()
+  private void bOj()
   {
     AppMethodBeat.i(47445);
-    if ((isFinishing()) || (bsK()))
+    if ((isFinishing()) || (bOh()))
     {
       AppMethodBeat.o(47445);
       return;
     }
-    super.bsI();
+    super.bOe();
     AppMethodBeat.o(47445);
   }
   
@@ -51,8 +51,8 @@ public final class c
     if ((getBaseContext() != null) && ((getBaseContext() instanceof Activity)))
     {
       localObject1 = (Activity)getBaseContext();
-      com.tencent.mm.plugin.appbrand.ui.t.b(((Activity)localObject1).getWindow());
-      com.tencent.mm.plugin.appbrand.ui.t.c(((Activity)localObject1).getWindow(), true);
+      y.e(((Activity)localObject1).getWindow());
+      y.d(((Activity)localObject1).getWindow(), true);
     }
     this.mIntent = paramIntent;
     LaunchParcel localLaunchParcel = (LaunchParcel)paramIntent.getParcelableExtra("extra_launch_parcel");
@@ -62,29 +62,28 @@ public final class c
       AppMethodBeat.o(47440);
       return;
     }
-    this.lRV = localLaunchParcel;
+    this.mYY = localLaunchParcel;
     Object localObject1 = localLaunchParcel.appId;
     paramIntent = (Intent)localObject1;
-    if (bu.isNullOrNil((String)localObject1)) {
+    if (Util.isNullOrNil((String)localObject1)) {
       paramIntent = h.a(localLaunchParcel);
     }
-    localObject1 = b.c(localLaunchParcel, paramIntent);
-    f.a(localLaunchParcel, (String)localObject1, paramIntent);
-    f.b(localLaunchParcel, (String)localObject1, paramIntent);
-    Object localObject2 = com.tencent.mm.plugin.appbrand.report.t.mwW;
-    com.tencent.mm.plugin.appbrand.report.t.b(localLaunchParcel, (String)localObject1);
-    if (n.byR())
+    localObject1 = com.tencent.mm.plugin.appbrand.report.quality.g.c(localLaunchParcel, paramIntent);
+    com.tencent.mm.plugin.appbrand.report.quality.g.a(localLaunchParcel, (String)localObject1, paramIntent);
+    Object localObject2 = w.nHZ;
+    w.b(localLaunchParcel, (String)localObject1);
+    if (o.bVk())
     {
-      localObject2 = n.mAZ;
-      n.ep(paramIntent, (String)localObject1);
-      com.tencent.mm.plugin.appbrand.keylogger.c.a(KSProcessWeAppLaunch.class, paramIntent);
-      com.tencent.mm.plugin.appbrand.keylogger.c.a(KSProcessWeAppLaunch.class, paramIntent, String.format("Network:%s", new Object[] { az.getNetTypeString(this) }));
+      localObject2 = o.nMe;
+      o.eI(paramIntent, (String)localObject1);
+      com.tencent.mm.plugin.appbrand.keylogger.c.e(KSProcessWeAppLaunch.class, paramIntent);
+      com.tencent.mm.plugin.appbrand.keylogger.c.a(KSProcessWeAppLaunch.class, paramIntent, String.format("Network:%s", new Object[] { NetStatusUtil.getNetTypeString(this) }));
     }
     a(localLaunchParcel, (String)localObject1);
     AppMethodBeat.o(47440);
   }
   
-  public final boolean bsL()
+  public final boolean bOi()
   {
     return true;
   }
@@ -92,14 +91,14 @@ public final class c
   protected final void c(AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(47444);
-    if ((this.lRV != null) && (this.lRV.lRE != null))
+    if ((this.mYY != null) && (this.mYY.mYO != null))
     {
       Bundle localBundle = new Bundle();
       localBundle.putParcelable("KEY_PRECONDITION_RESULT", paramAppBrandInitConfigWC);
-      this.lRV.lRE.b(localBundle);
+      this.mYY.mYO.b(localBundle);
     }
     if (paramAppBrandInitConfigWC != null) {
-      paramAppBrandInitConfigWC.kaL = this.mIntent.getStringExtra("extra_launch_source_process_name");
+      paramAppBrandInitConfigWC.ldP = this.mIntent.getStringExtra("extra_launch_source_process_name");
     }
     super.c(paramAppBrandInitConfigWC, paramAppBrandStatObject);
     AppMethodBeat.o(47444);
@@ -110,7 +109,7 @@ public final class c
     AppMethodBeat.i(47438);
     try
     {
-      Class localClass = Class.forName(bu.nullAsNil(this.mIntent.getStringExtra("extra_launch_source_context")));
+      Class localClass = Class.forName(Util.nullAsNil(this.mIntent.getStringExtra("extra_launch_source_context")));
       if ((localClass != null) && (AppBrandUI.class.isAssignableFrom(localClass)))
       {
         AppMethodBeat.o(47438);
@@ -132,31 +131,31 @@ public final class c
   public final void onDestroy()
   {
     AppMethodBeat.i(47443);
-    super.bsG();
+    super.bOc();
     AppMethodBeat.o(47443);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(47442);
-    bsM();
+    bOj();
     AppMethodBeat.o(47442);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(47441);
-    int i = this.ksm + 1;
-    this.ksm = i;
+    int i = this.lvW + 1;
+    this.lvW = i;
     if (i > 1) {
-      bsM();
+      bOj();
     }
     AppMethodBeat.o(47441);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.e.c
  * JD-Core Version:    0.7.0.1
  */

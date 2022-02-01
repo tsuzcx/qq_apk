@@ -12,20 +12,20 @@ public final class c$3
   
   public final void run()
   {
-    AppMethodBeat.i(209649);
-    synchronized (c.a(this.gwx))
+    AppMethodBeat.i(186181);
+    synchronized (c.a(this.hjl))
     {
-      Iterator localIterator = c.a(this.gwx).values().iterator();
+      Iterator localIterator = c.a(this.hjl).values().iterator();
       if (localIterator.hasNext()) {
-        ((Map)localIterator.next()).remove(Long.valueOf(this.gwy));
+        ((Map)localIterator.next()).remove(Long.valueOf(this.hjm));
       }
     }
-    AppMethodBeat.o(209649);
+    AppMethodBeat.o(186181);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.gpu.d.c.3
  * JD-Core Version:    0.7.0.1
  */

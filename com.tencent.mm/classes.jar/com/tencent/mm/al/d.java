@@ -1,98 +1,98 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aj;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.ak;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends aj
+  extends ak
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(123984);
-    c.a locala = new c.a();
-    locala.IBL = new Field[17];
-    locala.columns = new String[18];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[17];
+    localMAutoDBInfo.columns = new String[18];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "userName";
-    locala.IBN.put("userName", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "userName";
+    localMAutoDBInfo.colsMap.put("userName", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" userName TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "userName";
-    locala.columns[1] = "qyUin";
-    locala.IBN.put("qyUin", "INTEGER");
+    localMAutoDBInfo.primaryKey = "userName";
+    localMAutoDBInfo.columns[1] = "qyUin";
+    localMAutoDBInfo.colsMap.put("qyUin", "INTEGER");
     localStringBuilder.append(" qyUin INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "userUin";
-    locala.IBN.put("userUin", "INTEGER");
+    localMAutoDBInfo.columns[2] = "userUin";
+    localMAutoDBInfo.colsMap.put("userUin", "INTEGER");
     localStringBuilder.append(" userUin INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[3] = "userFlag";
-    locala.IBN.put("userFlag", "INTEGER");
+    localMAutoDBInfo.columns[3] = "userFlag";
+    localMAutoDBInfo.colsMap.put("userFlag", "INTEGER");
     localStringBuilder.append(" userFlag INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[4] = "wwExposeTimes";
-    locala.IBN.put("wwExposeTimes", "INTEGER");
+    localMAutoDBInfo.columns[4] = "wwExposeTimes";
+    localMAutoDBInfo.colsMap.put("wwExposeTimes", "INTEGER");
     localStringBuilder.append(" wwExposeTimes INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[5] = "wwMaxExposeTimes";
-    locala.IBN.put("wwMaxExposeTimes", "INTEGER");
+    localMAutoDBInfo.columns[5] = "wwMaxExposeTimes";
+    localMAutoDBInfo.colsMap.put("wwMaxExposeTimes", "INTEGER");
     localStringBuilder.append(" wwMaxExposeTimes INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[6] = "wwCorpId";
-    locala.IBN.put("wwCorpId", "LONG");
+    localMAutoDBInfo.columns[6] = "wwCorpId";
+    localMAutoDBInfo.colsMap.put("wwCorpId", "LONG");
     localStringBuilder.append(" wwCorpId LONG");
     localStringBuilder.append(", ");
-    locala.columns[7] = "wwUserVid";
-    locala.IBN.put("wwUserVid", "LONG");
+    localMAutoDBInfo.columns[7] = "wwUserVid";
+    localMAutoDBInfo.colsMap.put("wwUserVid", "LONG");
     localStringBuilder.append(" wwUserVid LONG");
     localStringBuilder.append(", ");
-    locala.columns[8] = "userType";
-    locala.IBN.put("userType", "INTEGER");
+    localMAutoDBInfo.columns[8] = "userType";
+    localMAutoDBInfo.colsMap.put("userType", "INTEGER");
     localStringBuilder.append(" userType INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[9] = "chatOpen";
-    locala.IBN.put("chatOpen", "INTEGER");
+    localMAutoDBInfo.columns[9] = "chatOpen";
+    localMAutoDBInfo.colsMap.put("chatOpen", "INTEGER");
     localStringBuilder.append(" chatOpen INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[10] = "wwUnreadCnt";
-    locala.IBN.put("wwUnreadCnt", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[10] = "wwUnreadCnt";
+    localMAutoDBInfo.colsMap.put("wwUnreadCnt", "INTEGER default '0' ");
     localStringBuilder.append(" wwUnreadCnt INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[11] = "show_confirm";
-    locala.IBN.put("show_confirm", "INTEGER");
+    localMAutoDBInfo.columns[11] = "show_confirm";
+    localMAutoDBInfo.colsMap.put("show_confirm", "INTEGER");
     localStringBuilder.append(" show_confirm INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[12] = "use_preset_banner_tips";
-    locala.IBN.put("use_preset_banner_tips", "INTEGER");
+    localMAutoDBInfo.columns[12] = "use_preset_banner_tips";
+    localMAutoDBInfo.colsMap.put("use_preset_banner_tips", "INTEGER");
     localStringBuilder.append(" use_preset_banner_tips INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[13] = "hide_create_chat";
-    locala.IBN.put("hide_create_chat", "INTEGER");
+    localMAutoDBInfo.columns[13] = "hide_create_chat";
+    localMAutoDBInfo.colsMap.put("hide_create_chat", "INTEGER");
     localStringBuilder.append(" hide_create_chat INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[14] = "hide_mod_chat_member";
-    locala.IBN.put("hide_mod_chat_member", "INTEGER");
+    localMAutoDBInfo.columns[14] = "hide_mod_chat_member";
+    localMAutoDBInfo.colsMap.put("hide_mod_chat_member", "INTEGER");
     localStringBuilder.append(" hide_mod_chat_member INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[15] = "hide_colleage_invite";
-    locala.IBN.put("hide_colleage_invite", "INTEGER default 'true' ");
+    localMAutoDBInfo.columns[15] = "hide_colleage_invite";
+    localMAutoDBInfo.colsMap.put("hide_colleage_invite", "INTEGER default 'true' ");
     localStringBuilder.append(" hide_colleage_invite INTEGER default 'true' ");
     localStringBuilder.append(", ");
-    locala.columns[16] = "raw_attrs";
-    locala.IBN.put("raw_attrs", "BLOB");
+    localMAutoDBInfo.columns[16] = "raw_attrs";
+    localMAutoDBInfo.colsMap.put("raw_attrs", "BLOB");
     localStringBuilder.append(" raw_attrs BLOB");
-    locala.columns[17] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[17] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(123984);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

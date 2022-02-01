@@ -3,37 +3,37 @@ package com.tencent.mm.plugin.appbrand.report.model;
 import android.util.Pair;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.page.ag;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Deque;
 import java.util.LinkedList;
 
 public final class c
   implements g, h
 {
-  private final String mxr;
-  private final SparseArray<h.a> mxs;
-  private final Deque<h.a> mxt;
-  private boolean mxu;
-  private String mxv;
-  private h.a mxw;
+  private h.a nIA;
+  private final String nIv;
+  private final SparseArray<h.a> nIw;
+  private final Deque<h.a> nIx;
+  private boolean nIy;
+  private String nIz;
   
   public c(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(222932);
-    this.mxs = new SparseArray();
-    this.mxt = new LinkedList();
-    this.mxu = true;
-    this.mxr = paramString1;
+    AppMethodBeat.i(227380);
+    this.nIw = new SparseArray();
+    this.nIx = new LinkedList();
+    this.nIy = true;
+    this.nIv = paramString1;
     try
     {
-      this.mxv = paramString2;
+      this.nIz = paramString2;
       return;
     }
     finally
     {
-      AppMethodBeat.o(222932);
+      AppMethodBeat.o(227380);
     }
   }
   
@@ -42,8 +42,8 @@ public final class c
     try
     {
       AppMethodBeat.i(48102);
-      this.mxt.offerFirst(parama);
-      this.mxs.put(parama.dtl, parama);
+      this.nIx.offerFirst(parama);
+      this.nIw.put(parama.dKv, parama);
       AppMethodBeat.o(48102);
       return;
     }
@@ -54,37 +54,37 @@ public final class c
     }
   }
   
-  private void b(ad paramad1, ad paramad2)
+  private void b(ag paramag1, ag paramag2)
   {
     try
     {
       AppMethodBeat.i(48096);
-      boolean bool = UY(paramad2.mcM);
-      this.mxw = r(paramad2);
-      this.mxw.mxD = new h.c(1, paramad1.mcM);
-      int i = paramad1.hashCode();
-      while ((!isEmpty()) && (byp().dtl != i)) {
-        byo();
+      boolean bool = aeN(paramag2.nna);
+      this.nIA = r(paramag2);
+      this.nIA.nIH = new h.c(1, paramag1.nna);
+      int i = paramag1.hashCode();
+      while ((!isEmpty()) && (bUH().dKv != i)) {
+        bUG();
       }
       if (!bool) {
         break label98;
       }
     }
     finally {}
-    a(new h.a(paramad1));
+    a(new h.a(paramag1));
     label98:
-    r(paramad1).mxE = new h.b(paramad2.mcM);
-    r(paramad1).mxD = null;
+    r(paramag1).nII = new h.b(paramag2.nna);
+    r(paramag1).nIH = null;
     AppMethodBeat.o(48096);
   }
   
-  private void byn()
+  private void bUF()
   {
     try
     {
-      this.mxw = null;
-      this.mxv = null;
-      this.mxu = false;
+      this.nIA = null;
+      this.nIz = null;
+      this.nIy = false;
       return;
     }
     finally
@@ -94,14 +94,14 @@ public final class c
     }
   }
   
-  private h.a byo()
+  private h.a bUG()
   {
     try
     {
       AppMethodBeat.i(48103);
-      h.a locala = (h.a)this.mxt.pollFirst();
+      h.a locala = (h.a)this.nIx.pollFirst();
       if (locala != null) {
-        this.mxs.remove(locala.dtl);
+        this.nIw.remove(locala.dKv);
       }
       AppMethodBeat.o(48103);
       return locala;
@@ -114,7 +114,7 @@ public final class c
     try
     {
       AppMethodBeat.i(48105);
-      boolean bool = this.mxt.isEmpty();
+      boolean bool = this.nIx.isEmpty();
       AppMethodBeat.o(48105);
       return bool;
     }
@@ -126,7 +126,7 @@ public final class c
   }
   
   /* Error */
-  private void q(ad paramad)
+  private void q(ag paramag)
   {
     // Byte code:
     //   0: aload_0
@@ -135,29 +135,29 @@ public final class c
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: aload_1
-    //   9: getfield 80	com/tencent/mm/plugin/appbrand/page/z:mcM	Ljava/lang/String;
-    //   12: putfield 49	com/tencent/mm/plugin/appbrand/report/model/c:mxv	Ljava/lang/String;
+    //   9: getfield 80	com/tencent/mm/plugin/appbrand/page/ac:nna	Ljava/lang/String;
+    //   12: putfield 49	com/tencent/mm/plugin/appbrand/report/model/c:nIz	Ljava/lang/String;
     //   15: aload_0
     //   16: iconst_0
-    //   17: putfield 45	com/tencent/mm/plugin/appbrand/report/model/c:mxu	Z
+    //   17: putfield 45	com/tencent/mm/plugin/appbrand/report/model/c:nIy	Z
     //   20: aload_0
     //   21: new 64	com/tencent/mm/plugin/appbrand/report/model/h$a
     //   24: dup
     //   25: aload_1
-    //   26: invokespecial 117	com/tencent/mm/plugin/appbrand/report/model/h$a:<init>	(Lcom/tencent/mm/plugin/appbrand/page/ad;)V
+    //   26: invokespecial 117	com/tencent/mm/plugin/appbrand/report/model/h$a:<init>	(Lcom/tencent/mm/plugin/appbrand/page/ag;)V
     //   29: invokespecial 119	com/tencent/mm/plugin/appbrand/report/model/c:a	(Lcom/tencent/mm/plugin/appbrand/report/model/h$a;)V
     //   32: aload_0
-    //   33: invokevirtual 111	com/tencent/mm/plugin/appbrand/report/model/c:byp	()Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
+    //   33: invokevirtual 111	com/tencent/mm/plugin/appbrand/report/model/c:bUH	()Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
     //   36: astore_2
     //   37: aload_0
-    //   38: getfield 47	com/tencent/mm/plugin/appbrand/report/model/c:mxr	Ljava/lang/String;
-    //   41: invokestatic 146	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   38: getfield 47	com/tencent/mm/plugin/appbrand/report/model/c:nIv	Ljava/lang/String;
+    //   41: invokestatic 146	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   44: ifeq +18 -> 62
     //   47: aconst_null
     //   48: astore_1
     //   49: aload_2
     //   50: aload_1
-    //   51: putfield 128	com/tencent/mm/plugin/appbrand/report/model/h$a:mxE	Lcom/tencent/mm/plugin/appbrand/report/model/h$b;
+    //   51: putfield 128	com/tencent/mm/plugin/appbrand/report/model/h$a:nII	Lcom/tencent/mm/plugin/appbrand/report/model/h$b;
     //   54: ldc 141
     //   56: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   59: aload_0
@@ -166,7 +166,7 @@ public final class c
     //   62: new 121	com/tencent/mm/plugin/appbrand/report/model/h$b
     //   65: dup
     //   66: aload_0
-    //   67: getfield 47	com/tencent/mm/plugin/appbrand/report/model/c:mxr	Ljava/lang/String;
+    //   67: getfield 47	com/tencent/mm/plugin/appbrand/report/model/c:nIv	Ljava/lang/String;
     //   70: invokespecial 124	com/tencent/mm/plugin/appbrand/report/model/h$b:<init>	(Ljava/lang/String;)V
     //   73: astore_1
     //   74: goto -25 -> 49
@@ -178,7 +178,7 @@ public final class c
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	82	0	this	c
-    //   0	82	1	paramad	ad
+    //   0	82	1	paramag	ag
     //   36	14	2	locala	h.a
     // Exception table:
     //   from	to	target	type
@@ -187,46 +187,151 @@ public final class c
     //   62	74	77	finally
   }
   
-  private h.a r(ad paramad)
+  private h.a r(ag paramag)
   {
     AppMethodBeat.i(48100);
-    h.a locala = byp();
+    h.a locala = bUH();
     if (locala == null)
     {
-      paramad = new h.a(paramad);
+      paramag = new h.a(paramag);
       AppMethodBeat.o(48100);
-      return paramad;
+      return paramag;
     }
-    if (locala.dtl == paramad.hashCode())
+    if (locala.dKv == paramag.hashCode())
     {
       AppMethodBeat.o(48100);
       return locala;
     }
-    ae.printErrStackTrace("MicroMsg.AppBrandPageVisitStack", new Throwable(), "mismatch stack order", new Object[0]);
+    Log.printErrStackTrace("MicroMsg.AppBrandPageVisitStack", new Throwable(), "mismatch stack order", new Object[0]);
     AppMethodBeat.o(48100);
     return locala;
   }
   
   /* Error */
-  public final boolean UY(String paramString)
+  public final void a(ag paramag1, ag paramag2, com.tencent.mm.plugin.appbrand.page.bx parambx)
+  {
+    // Byte code:
+    //   0: ldc 162
+    //   2: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   5: aload_0
+    //   6: monitorenter
+    //   7: aload_0
+    //   8: getfield 45	com/tencent/mm/plugin/appbrand/report/model/c:nIy	Z
+    //   11: ifeq +16 -> 27
+    //   14: aload_0
+    //   15: aload_1
+    //   16: invokespecial 164	com/tencent/mm/plugin/appbrand/report/model/c:q	(Lcom/tencent/mm/plugin/appbrand/page/ag;)V
+    //   19: aload_0
+    //   20: monitorexit
+    //   21: ldc 162
+    //   23: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   26: return
+    //   27: aload_3
+    //   28: getstatic 170	com/tencent/mm/plugin/appbrand/page/bx:nuF	Lcom/tencent/mm/plugin/appbrand/page/bx;
+    //   31: if_acmpne +17 -> 48
+    //   34: aload_0
+    //   35: aload_1
+    //   36: aload_2
+    //   37: invokespecial 172	com/tencent/mm/plugin/appbrand/report/model/c:b	(Lcom/tencent/mm/plugin/appbrand/page/ag;Lcom/tencent/mm/plugin/appbrand/page/ag;)V
+    //   40: aload_0
+    //   41: monitorexit
+    //   42: ldc 162
+    //   44: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   47: return
+    //   48: aload_0
+    //   49: getfield 90	com/tencent/mm/plugin/appbrand/report/model/c:nIA	Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
+    //   52: ifnull +7 -> 59
+    //   55: aload_0
+    //   56: invokespecial 174	com/tencent/mm/plugin/appbrand/report/model/c:bUF	()V
+    //   59: aload_2
+    //   60: ifnull +29 -> 89
+    //   63: aload_0
+    //   64: aload_2
+    //   65: invokespecial 88	com/tencent/mm/plugin/appbrand/report/model/c:r	(Lcom/tencent/mm/plugin/appbrand/page/ag;)Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
+    //   68: astore_3
+    //   69: aload_3
+    //   70: ifnull +19 -> 89
+    //   73: aload_3
+    //   74: new 92	com/tencent/mm/plugin/appbrand/report/model/h$c
+    //   77: dup
+    //   78: iconst_2
+    //   79: aload_1
+    //   80: getfield 80	com/tencent/mm/plugin/appbrand/page/ac:nna	Ljava/lang/String;
+    //   83: invokespecial 95	com/tencent/mm/plugin/appbrand/report/model/h$c:<init>	(ILjava/lang/String;)V
+    //   86: putfield 99	com/tencent/mm/plugin/appbrand/report/model/h$a:nIH	Lcom/tencent/mm/plugin/appbrand/report/model/h$c;
+    //   89: new 64	com/tencent/mm/plugin/appbrand/report/model/h$a
+    //   92: dup
+    //   93: aload_1
+    //   94: invokespecial 117	com/tencent/mm/plugin/appbrand/report/model/h$a:<init>	(Lcom/tencent/mm/plugin/appbrand/page/ag;)V
+    //   97: astore_3
+    //   98: aload_2
+    //   99: ifnonnull +23 -> 122
+    //   102: aconst_null
+    //   103: astore_1
+    //   104: aload_3
+    //   105: aload_1
+    //   106: putfield 128	com/tencent/mm/plugin/appbrand/report/model/h$a:nII	Lcom/tencent/mm/plugin/appbrand/report/model/h$b;
+    //   109: aload_0
+    //   110: aload_3
+    //   111: invokespecial 119	com/tencent/mm/plugin/appbrand/report/model/c:a	(Lcom/tencent/mm/plugin/appbrand/report/model/h$a;)V
+    //   114: aload_0
+    //   115: monitorexit
+    //   116: ldc 162
+    //   118: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   121: return
+    //   122: new 121	com/tencent/mm/plugin/appbrand/report/model/h$b
+    //   125: dup
+    //   126: aload_2
+    //   127: getfield 80	com/tencent/mm/plugin/appbrand/page/ac:nna	Ljava/lang/String;
+    //   130: invokespecial 124	com/tencent/mm/plugin/appbrand/report/model/h$b:<init>	(Ljava/lang/String;)V
+    //   133: astore_1
+    //   134: goto -30 -> 104
+    //   137: astore_1
+    //   138: aload_0
+    //   139: monitorexit
+    //   140: ldc 162
+    //   142: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   145: aload_1
+    //   146: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	147	0	this	c
+    //   0	147	1	paramag1	ag
+    //   0	147	2	paramag2	ag
+    //   0	147	3	parambx	com.tencent.mm.plugin.appbrand.page.bx
+    // Exception table:
+    //   from	to	target	type
+    //   7	21	137	finally
+    //   27	42	137	finally
+    //   48	59	137	finally
+    //   63	69	137	finally
+    //   73	89	137	finally
+    //   89	98	137	finally
+    //   104	116	137	finally
+    //   122	134	137	finally
+    //   138	140	137	finally
+  }
+  
+  /* Error */
+  public final boolean aeN(String paramString)
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 161
+    //   2: ldc 175
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 49	com/tencent/mm/plugin/appbrand/report/model/c:mxv	Ljava/lang/String;
-    //   11: invokestatic 146	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   8: getfield 49	com/tencent/mm/plugin/appbrand/report/model/c:nIz	Ljava/lang/String;
+    //   11: invokestatic 146	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   14: ifne +25 -> 39
     //   17: aload_0
-    //   18: getfield 49	com/tencent/mm/plugin/appbrand/report/model/c:mxv	Ljava/lang/String;
+    //   18: getfield 49	com/tencent/mm/plugin/appbrand/report/model/c:nIz	Ljava/lang/String;
     //   21: aload_1
-    //   22: invokevirtual 166	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   22: invokevirtual 180	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   25: ifeq +14 -> 39
     //   28: iconst_1
     //   29: istore_2
-    //   30: ldc 161
+    //   30: ldc 175
     //   32: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   35: aload_0
     //   36: monitorexit
@@ -234,7 +339,7 @@ public final class c
     //   38: ireturn
     //   39: iconst_0
     //   40: istore_2
-    //   41: ldc 161
+    //   41: ldc 175
     //   43: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   46: goto -11 -> 35
     //   49: astore_1
@@ -254,117 +359,12 @@ public final class c
     //   41	46	49	finally
   }
   
-  /* Error */
-  public final void a(ad paramad1, ad paramad2, com.tencent.mm.plugin.appbrand.page.br parambr)
-  {
-    // Byte code:
-    //   0: ldc 168
-    //   2: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: aload_0
-    //   6: monitorenter
-    //   7: aload_0
-    //   8: getfield 45	com/tencent/mm/plugin/appbrand/report/model/c:mxu	Z
-    //   11: ifeq +16 -> 27
-    //   14: aload_0
-    //   15: aload_1
-    //   16: invokespecial 170	com/tencent/mm/plugin/appbrand/report/model/c:q	(Lcom/tencent/mm/plugin/appbrand/page/ad;)V
-    //   19: aload_0
-    //   20: monitorexit
-    //   21: ldc 168
-    //   23: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   26: return
-    //   27: aload_3
-    //   28: getstatic 176	com/tencent/mm/plugin/appbrand/page/br:mki	Lcom/tencent/mm/plugin/appbrand/page/br;
-    //   31: if_acmpne +17 -> 48
-    //   34: aload_0
-    //   35: aload_1
-    //   36: aload_2
-    //   37: invokespecial 178	com/tencent/mm/plugin/appbrand/report/model/c:b	(Lcom/tencent/mm/plugin/appbrand/page/ad;Lcom/tencent/mm/plugin/appbrand/page/ad;)V
-    //   40: aload_0
-    //   41: monitorexit
-    //   42: ldc 168
-    //   44: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   47: return
-    //   48: aload_0
-    //   49: getfield 90	com/tencent/mm/plugin/appbrand/report/model/c:mxw	Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
-    //   52: ifnull +7 -> 59
-    //   55: aload_0
-    //   56: invokespecial 180	com/tencent/mm/plugin/appbrand/report/model/c:byn	()V
-    //   59: aload_2
-    //   60: ifnull +29 -> 89
-    //   63: aload_0
-    //   64: aload_2
-    //   65: invokespecial 88	com/tencent/mm/plugin/appbrand/report/model/c:r	(Lcom/tencent/mm/plugin/appbrand/page/ad;)Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
-    //   68: astore_3
-    //   69: aload_3
-    //   70: ifnull +19 -> 89
-    //   73: aload_3
-    //   74: new 92	com/tencent/mm/plugin/appbrand/report/model/h$c
-    //   77: dup
-    //   78: iconst_2
-    //   79: aload_1
-    //   80: getfield 80	com/tencent/mm/plugin/appbrand/page/z:mcM	Ljava/lang/String;
-    //   83: invokespecial 95	com/tencent/mm/plugin/appbrand/report/model/h$c:<init>	(ILjava/lang/String;)V
-    //   86: putfield 99	com/tencent/mm/plugin/appbrand/report/model/h$a:mxD	Lcom/tencent/mm/plugin/appbrand/report/model/h$c;
-    //   89: new 64	com/tencent/mm/plugin/appbrand/report/model/h$a
-    //   92: dup
-    //   93: aload_1
-    //   94: invokespecial 117	com/tencent/mm/plugin/appbrand/report/model/h$a:<init>	(Lcom/tencent/mm/plugin/appbrand/page/ad;)V
-    //   97: astore_3
-    //   98: aload_2
-    //   99: ifnonnull +23 -> 122
-    //   102: aconst_null
-    //   103: astore_1
-    //   104: aload_3
-    //   105: aload_1
-    //   106: putfield 128	com/tencent/mm/plugin/appbrand/report/model/h$a:mxE	Lcom/tencent/mm/plugin/appbrand/report/model/h$b;
-    //   109: aload_0
-    //   110: aload_3
-    //   111: invokespecial 119	com/tencent/mm/plugin/appbrand/report/model/c:a	(Lcom/tencent/mm/plugin/appbrand/report/model/h$a;)V
-    //   114: aload_0
-    //   115: monitorexit
-    //   116: ldc 168
-    //   118: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   121: return
-    //   122: new 121	com/tencent/mm/plugin/appbrand/report/model/h$b
-    //   125: dup
-    //   126: aload_2
-    //   127: getfield 80	com/tencent/mm/plugin/appbrand/page/z:mcM	Ljava/lang/String;
-    //   130: invokespecial 124	com/tencent/mm/plugin/appbrand/report/model/h$b:<init>	(Ljava/lang/String;)V
-    //   133: astore_1
-    //   134: goto -30 -> 104
-    //   137: astore_1
-    //   138: aload_0
-    //   139: monitorexit
-    //   140: ldc 168
-    //   142: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   145: aload_1
-    //   146: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	147	0	this	c
-    //   0	147	1	paramad1	ad
-    //   0	147	2	paramad2	ad
-    //   0	147	3	parambr	com.tencent.mm.plugin.appbrand.page.br
-    // Exception table:
-    //   from	to	target	type
-    //   7	21	137	finally
-    //   27	42	137	finally
-    //   48	59	137	finally
-    //   63	69	137	finally
-    //   73	89	137	finally
-    //   89	98	137	finally
-    //   104	116	137	finally
-    //   122	134	137	finally
-    //   138	140	137	finally
-  }
-  
-  public final h.a byp()
+  public final h.a bUH()
   {
     try
     {
       AppMethodBeat.i(48104);
-      h.a locala = (h.a)this.mxt.peekFirst();
+      h.a locala = (h.a)this.nIx.peekFirst();
       AppMethodBeat.o(48104);
       return locala;
     }
@@ -375,17 +375,17 @@ public final class c
     }
   }
   
-  public final void d(ad paramad)
+  public final void d(ag paramag)
   {
     AppMethodBeat.i(48099);
     try
     {
-      h.a locala = r(paramad);
+      h.a locala = r(paramag);
       if (locala == null) {
         return;
       }
-      paramad = d.t(paramad);
-      locala.mxD = new h.c(((Integer)paramad.first).intValue(), (String)paramad.second);
+      paramag = d.t(paramag);
+      locala.nIH = new h.c(((Integer)paramag.first).intValue(), (String)paramag.second);
       return;
     }
     finally
@@ -395,7 +395,7 @@ public final class c
   }
   
   /* Error */
-  public final void e(ad paramad)
+  public final void e(ag paramag)
   {
     // Byte code:
     //   0: aload_0
@@ -403,18 +403,18 @@ public final class c
     //   2: ldc 208
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 45	com/tencent/mm/plugin/appbrand/report/model/c:mxu	Z
+    //   8: getfield 45	com/tencent/mm/plugin/appbrand/report/model/c:nIy	Z
     //   11: ifeq +16 -> 27
     //   14: aload_0
     //   15: aload_1
-    //   16: invokespecial 170	com/tencent/mm/plugin/appbrand/report/model/c:q	(Lcom/tencent/mm/plugin/appbrand/page/ad;)V
+    //   16: invokespecial 164	com/tencent/mm/plugin/appbrand/report/model/c:q	(Lcom/tencent/mm/plugin/appbrand/page/ag;)V
     //   19: ldc 208
     //   21: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   24: aload_0
     //   25: monitorexit
     //   26: return
     //   27: aload_0
-    //   28: invokespecial 180	com/tencent/mm/plugin/appbrand/report/model/c:byn	()V
+    //   28: invokespecial 174	com/tencent/mm/plugin/appbrand/report/model/c:bUF	()V
     //   31: ldc 208
     //   33: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   36: goto -12 -> 24
@@ -426,7 +426,7 @@ public final class c
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	44	0	this	c
-    //   0	44	1	paramad	ad
+    //   0	44	1	paramag	ag
     // Exception table:
     //   from	to	target	type
     //   2	24	39	finally
@@ -434,7 +434,7 @@ public final class c
   }
   
   /* Error */
-  public final h.a s(ad paramad)
+  public final h.a s(ag paramag)
   {
     // Byte code:
     //   0: aload_0
@@ -442,7 +442,7 @@ public final class c
     //   2: ldc 210
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: getfield 38	com/tencent/mm/plugin/appbrand/report/model/c:mxs	Landroid/util/SparseArray;
+    //   8: getfield 38	com/tencent/mm/plugin/appbrand/report/model/c:nIw	Landroid/util/SparseArray;
     //   11: aload_1
     //   12: invokevirtual 103	java/lang/Object:hashCode	()I
     //   15: invokevirtual 214	android/util/SparseArray:get	(I)Ljava/lang/Object;
@@ -451,16 +451,16 @@ public final class c
     //   22: aload_2
     //   23: ifnonnull +38 -> 61
     //   26: aload_0
-    //   27: getfield 90	com/tencent/mm/plugin/appbrand/report/model/c:mxw	Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
+    //   27: getfield 90	com/tencent/mm/plugin/appbrand/report/model/c:nIA	Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
     //   30: ifnull +31 -> 61
     //   33: aload_0
-    //   34: getfield 90	com/tencent/mm/plugin/appbrand/report/model/c:mxw	Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
-    //   37: getfield 68	com/tencent/mm/plugin/appbrand/report/model/h$a:dtl	I
+    //   34: getfield 90	com/tencent/mm/plugin/appbrand/report/model/c:nIA	Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
+    //   37: getfield 68	com/tencent/mm/plugin/appbrand/report/model/h$a:dKv	I
     //   40: aload_1
     //   41: invokevirtual 103	java/lang/Object:hashCode	()I
     //   44: if_icmpne +17 -> 61
     //   47: aload_0
-    //   48: getfield 90	com/tencent/mm/plugin/appbrand/report/model/c:mxw	Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
+    //   48: getfield 90	com/tencent/mm/plugin/appbrand/report/model/c:nIA	Lcom/tencent/mm/plugin/appbrand/report/model/h$a;
     //   51: astore_1
     //   52: ldc 210
     //   54: invokestatic 52	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -481,7 +481,7 @@ public final class c
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	76	0	this	c
-    //   0	76	1	paramad	ad
+    //   0	76	1	paramag	ag
     //   21	46	2	locala	h.a
     // Exception table:
     //   from	to	target	type
@@ -492,7 +492,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.model.c
  * JD-Core Version:    0.7.0.1
  */

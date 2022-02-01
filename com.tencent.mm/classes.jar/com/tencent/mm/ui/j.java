@@ -1,45 +1,22 @@
 package com.tencent.mm.ui;
 
-import android.app.Activity;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelstat.d;
-import com.tencent.mm.sdk.g.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import android.view.View.OnTouchListener;
+import android.widget.AbsListView.OnScrollListener;
+import java.util.List;
 
-public final class j
+public abstract class j
+  implements View.OnTouchListener, AbsListView.OnScrollListener
 {
-  public static void a(Activity paramActivity, final int paramInt1, final int paramInt2, String paramString)
+  protected List<a> FSp;
+  
+  public final void a(a parama)
   {
-    AppMethodBeat.i(33284);
-    b.c(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(33283);
-        Activity localActivity = this.val$activity;
-        int i = paramInt1;
-        int j = paramInt2;
-        ae.i("MicroMsg.LauncherUI.HomeUtil", "clickFlowStat index:%d op:%d %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i), bu.fpN() });
-        if (j >= 0)
-        {
-          String str = "MainUI";
-          if (j == 1) {
-            str = "AddressUI";
-          }
-          if (j == 2) {
-            str = "FindMoreFriendUI";
-          }
-          if (j == 3) {
-            str = "MoreTabUI";
-          }
-          d.d(i, str, localActivity.hashCode() / 16 * 16 + j);
-        }
-        AppMethodBeat.o(33283);
-      }
-    }, paramString);
-    AppMethodBeat.o(33284);
+    if (!this.FSp.contains(parama)) {
+      this.FSp.add(parama);
+    }
   }
+  
+  public static abstract interface a {}
 }
 
 

@@ -4,16 +4,16 @@ import android.view.accessibility.AccessibilityRecord;
 
 public final class e
 {
-  private final AccessibilityRecord RO;
+  private final AccessibilityRecord Sb;
   
   @Deprecated
   private e(Object paramObject)
   {
-    this.RO = ((AccessibilityRecord)paramObject);
+    this.Sb = ((AccessibilityRecord)paramObject);
   }
   
   @Deprecated
-  public static e fC()
+  public static e fJ()
   {
     return new e(AccessibilityRecord.obtain());
   }
@@ -34,51 +34,51 @@ public final class e
           return false;
         }
         paramObject = (e)paramObject;
-        if (this.RO != null) {
+        if (this.Sb != null) {
           break;
         }
-      } while (paramObject.RO == null);
+      } while (paramObject.Sb == null);
       return false;
-    } while (this.RO.equals(paramObject.RO));
+    } while (this.Sb.equals(paramObject.Sb));
     return false;
   }
   
   @Deprecated
   public final int hashCode()
   {
-    if (this.RO == null) {
+    if (this.Sb == null) {
       return 0;
     }
-    return this.RO.hashCode();
+    return this.Sb.hashCode();
   }
   
   @Deprecated
   public final void setFromIndex(int paramInt)
   {
-    this.RO.setFromIndex(paramInt);
+    this.Sb.setFromIndex(paramInt);
   }
   
   @Deprecated
   public final void setItemCount(int paramInt)
   {
-    this.RO.setItemCount(paramInt);
+    this.Sb.setItemCount(paramInt);
   }
   
   @Deprecated
   public final void setScrollable(boolean paramBoolean)
   {
-    this.RO.setScrollable(paramBoolean);
+    this.Sb.setScrollable(paramBoolean);
   }
   
   @Deprecated
   public final void setToIndex(int paramInt)
   {
-    this.RO.setToIndex(paramInt);
+    this.Sb.setToIndex(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.view.a.e
  * JD-Core Version:    0.7.0.1
  */

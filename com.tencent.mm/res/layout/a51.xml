@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/b1_" android:background="@drawable/qa" android:paddingLeft="@dimen/ib" android:paddingTop="@dimen/d9" android:paddingRight="@dimen/d_" android:paddingBottom="@dimen/d9" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/dtb" android:layout_width="@dimen/db" android:layout_height="@dimen/db" android:layout_marginLeft="@dimen/ib" android:src="@drawable/c69" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@string/ty" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="left" android:id="@id/ft9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:text="@string/hb" android:layout_toRightOf="@id/dtb" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

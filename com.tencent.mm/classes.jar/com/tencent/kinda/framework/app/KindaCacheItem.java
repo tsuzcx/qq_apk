@@ -3,19 +3,19 @@ package com.tencent.kinda.framework.app;
 import android.content.ContentValues;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dt;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.dz;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 
 public class KindaCacheItem
-  extends dt
+  extends dz
 {
   private static final String TAG = "MicroMsg.KindaCacheItem";
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(18386);
-    info = dt.initAutoDBInfo(dt.class);
+    info = dz.initAutoDBInfo(dz.class);
     AppMethodBeat.o(18386);
   }
   
@@ -34,14 +34,14 @@ public class KindaCacheItem
     return localContentValues;
   }
   
-  public c.a getDBInfo()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.kinda.framework.app.KindaCacheItem
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="3.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="3.0dip" android:layout_marginBottom="4.0dip"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/c4b" android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <ImageView android:id="@id/cn1" android:layout_width="@dimen/am3" android:layout_height="@dimen/am3" android:src="@drawable/c4i" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/fg" android:id="@id/b__" android:padding="3.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="8.0dip" android:maxWidth="120.0dip" />
-    </LinearLayout>
-</LinearLayout>
+    <View android:layout_gravity="center_horizontal" android:id="@id/hc3" android:background="#50000000" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/fos" android:background="@drawable/ak6" android:layout_width="@dimen/cf" android:layout_height="@dimen/cf" android:layout_marginBottom="8.0dip" android:layout_alignParentBottom="true" android:layout_marginEnd="8.0dip" android:layout_alignParentEnd="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/foy" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <RelativeLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hc2" android:background="@raw/icons_filled_board" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_centerInParent="true" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/am" android:id="@id/hc4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/geu" android:layout_centerInParent="true" android:layout_marginStart="@dimen/bt" android:layout_toEndOf="@id/hc2" />
+    </RelativeLayout>
+</RelativeLayout>

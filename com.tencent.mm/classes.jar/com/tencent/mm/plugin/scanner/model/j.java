@@ -1,85 +1,96 @@
 package com.tencent.mm.plugin.scanner.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.nu;
-import com.tencent.mm.protocal.protobuf.nv;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.mx;
+import com.tencent.mm.protocal.protobuf.my;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/model/NetSceneBizAiScanImageRetrieval;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "requestId", "", "requestJson", "type", "", "(Ljava/lang/String;Ljava/lang/String;I)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "commReqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getRequestId", "getResp", "Lcom/tencent/mm/protocal/protobuf/BizAiScanImageRetrievalResponse;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-scan_release"})
 public final class j
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private String dpp;
-  private String pjO;
-  public b rr;
-  private int scene;
+  public static final a CFC;
+  private i callback;
+  public String dPI;
+  public final d iUB;
   
-  public j(String paramString1, int paramInt, String paramString2)
+  static
   {
-    this.dpp = paramString1;
-    this.scene = paramInt;
-    this.pjO = paramString2;
+    AppMethodBeat.i(52165);
+    CFC = new a((byte)0);
+    AppMethodBeat.o(52165);
   }
   
-  public final int doScene(e parame, f paramf)
+  public j(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(51620);
-    this.callback = paramf;
-    paramf = new b.a();
-    paramf.hQF = new nu();
-    paramf.hQG = new nv();
-    paramf.uri = "/cgi-bin/mmbiz-bin/usrmsg/bizscangetproductinfo";
-    paramf.funcId = 1063;
-    paramf.hQH = 0;
-    paramf.respCmdId = 0;
-    this.rr = paramf.aDS();
-    paramf = (nu)this.rr.hQD.hQJ;
-    paramf.ProductID = this.dpp;
-    paramf.Scene = this.scene;
-    paramf.Gaw = this.pjO;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(51620);
+    AppMethodBeat.i(52164);
+    this.dPI = paramString1;
+    paramString1 = new d.a();
+    paramString1.c((a)new mx());
+    paramString1.d((a)new my());
+    paramString1.MB("/cgi-bin/mmbiz-bin/usrmsg/aiscan_image_retrieval");
+    paramString1.sG(1532);
+    paramString1.sI(0);
+    paramString1.sJ(0);
+    paramString1 = paramString1.aXF();
+    p.g(paramString1, "builder.buildInstance()");
+    this.iUB = paramString1;
+    paramString1 = this.iUB.aYJ();
+    if (paramString1 == null)
+    {
+      paramString1 = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.BizAiScanImageRetrievalRequest");
+      AppMethodBeat.o(52164);
+      throw paramString1;
+    }
+    paramString1 = (mx)paramString1;
+    paramString1.KRB = paramString2;
+    paramString1.type = 1;
+    Log.d("MicroMsg.NetSceneBizAiScanImageRetrieval", "alvinluo AiScanImageRetrieval requestJson: %s, type: %d", new Object[] { paramString2, Integer.valueOf(1) });
+    AppMethodBeat.o(52164);
+  }
+  
+  public final int doScene(g paramg, i parami)
+  {
+    AppMethodBeat.i(52162);
+    this.callback = parami;
+    int i = dispatch(paramg, (s)this.iUB, (m)this);
+    AppMethodBeat.o(52162);
     return i;
   }
   
   public final int getType()
   {
-    return 1063;
+    return 1532;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(51622);
-    ae.d("MicroMsg.scanner.NetSceneGetProductInfo", "onGYNetEnd errtype:" + paramInt2 + " errcode:" + paramInt3 + " errMsg:" + paramString);
-    this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(51622);
-  }
-  
-  public final n.b securityVerificationChecked(q paramq)
-  {
-    AppMethodBeat.i(51621);
-    paramq = (nu)((b)paramq).hQD.hQJ;
-    if ((paramq.Scene < 0) || (paramq.ProductID == null) || (paramq.ProductID.length() <= 0))
+    AppMethodBeat.i(52163);
+    Log.i("MicroMsg.NetSceneBizAiScanImageRetrieval", "alvinluo onGYNetEnd errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    params = this.callback;
+    if (params != null)
     {
-      ae.e("MicroMsg.scanner.NetSceneGetProductInfo", "ERR: Security Check Failed, Scene = %s", new Object[] { Integer.valueOf(paramq.Scene) });
-      paramq = n.b.hRj;
-      AppMethodBeat.o(51621);
-      return paramq;
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+      AppMethodBeat.o(52163);
+      return;
     }
-    paramq = n.b.hRi;
-    AppMethodBeat.o(51621);
-    return paramq;
+    AppMethodBeat.o(52163);
   }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/model/NetSceneBizAiScanImageRetrieval$Companion;", "", "()V", "AI_SCAN_IMAGE_TYPE_RETRIEVAL_BY_KEY", "", "AI_SCAN_IMAGE_TYPE_UNKNOWN", "TAG", "", "plugin-scan_release"})
+  public static final class a {}
 }
 
 

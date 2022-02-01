@@ -30,7 +30,7 @@ final class OpenFileRequest$OpenResult
     return 0;
   }
   
-  public final void j(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     AppMethodBeat.i(174831);
     this.ret = paramParcel.readInt();
@@ -46,7 +46,7 @@ final class OpenFileRequest$OpenResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.OpenFileRequest.OpenResult
  * JD-Core Version:    0.7.0.1
  */

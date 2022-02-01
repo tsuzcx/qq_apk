@@ -4,16 +4,16 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.aed;
-import com.tencent.mm.protocal.protobuf.dqd;
-import com.tencent.mm.protocal.protobuf.dqe;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.agg;
+import com.tencent.mm.protocal.protobuf.ejz;
+import com.tencent.mm.protocal.protobuf.eka;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,33 +22,33 @@ import java.util.List;
 public final class NetSceneMobileRemitGetRecvInfo
   extends a
 {
+  public String ClX;
+  private eka ClY;
   private final String TAG;
-  public String oED;
-  public String ykX;
-  private dqe ykY;
+  public String pSm;
   
   public NetSceneMobileRemitGetRecvInfo(String paramString1, String paramString2, String paramString3, int paramInt)
   {
     AppMethodBeat.i(67647);
     this.TAG = "MicroMsg.mobileRemit.NetSceneMobileRemitGetRecvInfo";
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new dqd();
-    ((b.a)localObject).hQG = new dqe();
-    ((b.a)localObject).funcId = 1495;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/transferphonegetrcvr";
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (dqd)this.rr.hQD.hQJ;
-    ((dqd)localObject).oED = paramString1;
-    ((dqd)localObject).HXb = paramString2;
-    ((dqd)localObject).HXd = paramString3;
-    ((dqd)localObject).HGI = paramInt;
-    ae.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecvInfo", "do scene NetSceneMobileRemitGetRecvInfo phone:%s rcvr_id:%s input_type:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
-    this.ykX = paramString2;
-    this.oED = paramString1;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new ejz();
+    ((d.a)localObject).iLO = new eka();
+    ((d.a)localObject).funcId = 1495;
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/transferphonegetrcvr";
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (ejz)this.rr.iLK.iLR;
+    ((ejz)localObject).pSm = paramString1;
+    ((ejz)localObject).Njh = paramString2;
+    ((ejz)localObject).Njj = paramString3;
+    ((ejz)localObject).MRS = paramInt;
+    Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecvInfo", "do scene NetSceneMobileRemitGetRecvInfo phone:%s rcvr_id:%s input_type:%s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    this.ClX = paramString2;
+    this.pSm = paramString1;
     AppMethodBeat.o(67647);
   }
   
-  public static ArrayList<DelayOptionParcel> aP(LinkedList<aed> paramLinkedList)
+  public static ArrayList<DelayOptionParcel> bm(LinkedList<agg> paramLinkedList)
   {
     AppMethodBeat.i(67649);
     if (paramLinkedList == null)
@@ -59,13 +59,13 @@ public final class NetSceneMobileRemitGetRecvInfo
     ArrayList localArrayList = new ArrayList();
     paramLinkedList = paramLinkedList.iterator();
     while (paramLinkedList.hasNext()) {
-      localArrayList.add(new DelayOptionParcel((aed)paramLinkedList.next()));
+      localArrayList.add(new DelayOptionParcel((agg)paramLinkedList.next()));
     }
     AppMethodBeat.o(67649);
     return localArrayList;
   }
   
-  public static ArrayList<aed> fv(List<DelayOptionParcel> paramList)
+  public static ArrayList<agg> gq(List<DelayOptionParcel> paramList)
   {
     AppMethodBeat.i(67650);
     if (paramList == null)
@@ -78,40 +78,40 @@ public final class NetSceneMobileRemitGetRecvInfo
     while (paramList.hasNext())
     {
       DelayOptionParcel localDelayOptionParcel = (DelayOptionParcel)paramList.next();
-      aed localaed = new aed();
-      localaed.ykZ = localDelayOptionParcel.ykZ;
-      localaed.code = localDelayOptionParcel.code;
-      localArrayList.add(localaed);
+      agg localagg = new agg();
+      localagg.ClZ = localDelayOptionParcel.ClZ;
+      localagg.code = localDelayOptionParcel.code;
+      localArrayList.add(localagg);
     }
     AppMethodBeat.o(67650);
     return localArrayList;
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
     AppMethodBeat.i(67648);
-    ae.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecvInfo", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.ykY = ((dqe)((b)paramq).hQE.hQJ);
-    ae.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecvInfo", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.ykY.oGt), this.ykY.oGu });
+    Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecvInfo", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.ClY = ((eka)((d)params).iLL.iLR);
+    Log.i("MicroMsg.mobileRemit.NetSceneMobileRemitGetRecvInfo", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.ClY.pTZ), this.ClY.pUa });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(67648);
   }
   
-  public final dqe dMn()
+  public final void e(s params)
   {
-    if (this.ykY == null) {
-      return null;
-    }
-    return this.ykY;
+    params = (eka)((d)params).iLL.iLR;
+    this.RtZ = params.pTZ;
+    this.Rua = params.pUa;
   }
   
-  public final void e(q paramq)
+  public final eka eNn()
   {
-    paramq = (dqe)((b)paramq).hQE.hQJ;
-    this.LVj = paramq.oGt;
-    this.LVk = paramq.oGu;
+    if (this.ClY == null) {
+      return null;
+    }
+    return this.ClY;
   }
   
   public final int getType()
@@ -123,8 +123,8 @@ public final class NetSceneMobileRemitGetRecvInfo
     implements Parcelable
   {
     public static final Parcelable.Creator<DelayOptionParcel> CREATOR;
+    public String ClZ;
     public int code;
-    public String ykZ;
     
     static
     {
@@ -138,15 +138,15 @@ public final class NetSceneMobileRemitGetRecvInfo
     protected DelayOptionParcel(Parcel paramParcel)
     {
       AppMethodBeat.i(67645);
-      this.ykZ = paramParcel.readString();
+      this.ClZ = paramParcel.readString();
       this.code = paramParcel.readInt();
       AppMethodBeat.o(67645);
     }
     
-    protected DelayOptionParcel(aed paramaed)
+    protected DelayOptionParcel(agg paramagg)
     {
-      this.ykZ = paramaed.ykZ;
-      this.code = paramaed.code;
+      this.ClZ = paramagg.ClZ;
+      this.code = paramagg.code;
     }
     
     public int describeContents()
@@ -157,7 +157,7 @@ public final class NetSceneMobileRemitGetRecvInfo
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
       AppMethodBeat.i(67644);
-      paramParcel.writeString(this.ykZ);
+      paramParcel.writeString(this.ClZ);
       paramParcel.writeInt(this.code);
       AppMethodBeat.o(67644);
     }
@@ -165,7 +165,7 @@ public final class NetSceneMobileRemitGetRecvInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.mobile.cgi.NetSceneMobileRemitGetRecvInfo
  * JD-Core Version:    0.7.0.1
  */

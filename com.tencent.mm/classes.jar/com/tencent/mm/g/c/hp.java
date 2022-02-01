@@ -2,19 +2,19 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class hp
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGD = "appId".hashCode();
-  private static final int fEp = "permissionProtoBlob".hashCode();
+  private static final int fJb = "expireTime".hashCode();
+  private static final int ghx = "host".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGm = true;
-  private boolean fEo = true;
-  public String field_appId;
-  public byte[] field_permissionProtoBlob;
+  private boolean fIP = true;
+  public long field_expireTime;
+  public String field_host;
+  private boolean ghw = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -29,20 +29,19 @@ public abstract class hp
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGD != k) {
-        break label65;
+      if (ghx != k) {
+        break label60;
       }
-      this.field_appId = paramCursor.getString(i);
-      this.eGm = true;
+      this.field_host = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (fEp == k) {
-        this.field_permissionProtoBlob = paramCursor.getBlob(i);
+      label60:
+      if (fJb == k) {
+        this.field_expireTime = paramCursor.getLong(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -52,11 +51,11 @@ public abstract class hp
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGm) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.ghw) {
+      localContentValues.put("host", this.field_host);
     }
-    if (this.fEo) {
-      localContentValues.put("permissionProtoBlob", this.field_permissionProtoBlob);
+    if (this.fIP) {
+      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -66,7 +65,7 @@ public abstract class hp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.hp
  * JD-Core Version:    0.7.0.1
  */

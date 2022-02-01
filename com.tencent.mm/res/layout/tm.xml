@@ -1,8 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:orientation="vertical" android:id="@id/a1t" android:layout_width="fill_parent" android:layout_height="0.0dip" app:layout_constraintBottom_toBottomOf="@id/a1u" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="@id/a1r" />
-    <View android:id="@id/a1r" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/hj" app:layout_constraintBottom_toBottomOf="@id/a1q" app:layout_constraintLeft_toLeftOf="ea8" />
-    <TextView android:textSize="@dimen/jo" android:textColor="@color/a_u" android:id="@id/biz_slot_show_desc_tv" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginBottom="@dimen/bq" app:layout_constraintBottom_toTopOf="@id/biz_slot_title_neat_tv" app:layout_constraintLeft_toLeftOf="ea8" app:layout_goneMarginBottom="@dimen/ci" />
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/ia" android:textStyle="bold" android:textColor="@color/a_u" android:ellipsize="end" android:id="@id/biz_slot_title_neat_tv" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:layout_marginRight="@dimen/c5" android:layout_marginBottom="@dimen/ci" android:maxLines="2" android:lineSpacingExtra="2.0dip" app:layout_constraintBottom_toBottomOf="@id/a1u" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" />
-</merge>
+<LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/gs"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gu">
+        <TextView android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/ayb" android:layout_marginRight="6.0dip" style="@style/h2" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/ayk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="6.0dip" style="@style/a71" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip">
+                <FrameLayout android:id="@id/auf" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <ImageView android:layout_gravity="center" android:id="@id/aul" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                    <ImageView android:id="@id/aun" android:background="@drawable/mf" android:layout_width="@dimen/a6" android:layout_height="@dimen/a6" />
+                    <ImageView android:layout_gravity="center" android:id="@id/ayc" android:background="@null" android:layout_width="@dimen/ab" android:layout_height="@dimen/ab" />
+                </FrameLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:ellipsize="end" android:id="@id/atq" android:layout_marginLeft="0.0dip" android:singleLine="true" style="@style/gj" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <com.tencent.mm.ui.chatting.view.ChattingAvatarImageView android:id="@id/au2" android:focusable="false" android:visibility="gone" style="@style/gr" />
+</LinearLayout>

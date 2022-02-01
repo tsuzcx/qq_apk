@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class qf
-  extends b
+  extends IEvent
 {
-  public a dFM;
+  public qf.a dWy;
   
   public qf()
   {
@@ -15,25 +15,11 @@ public final class qf
   
   private qf(byte paramByte)
   {
-    AppMethodBeat.i(116042);
-    this.dFM = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(89649);
+    this.dWy = new qf.a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116042);
-  }
-  
-  public static final class a
-  {
-    public String dEy;
-    public int dFK;
-    public int dFN;
-    public int dFO;
-    public float dFP;
-    public float dFQ;
-    public int dov;
-    public int dow;
-    public String filePath;
-    public String result;
+    AppMethodBeat.o(89649);
   }
 }
 

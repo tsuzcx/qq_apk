@@ -12,115 +12,115 @@ public final class a<T>
   extends com.tencent.mm.ui.widget.picker.a
   implements View.OnClickListener
 {
-  public b LyP;
+  public b QUF;
   private Context context;
   
   public a(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(200567);
-    this.LyP = new b();
+    AppMethodBeat.i(198525);
+    this.QUF = new b();
     this.context = paramContext;
-    AppMethodBeat.o(200567);
-  }
-  
-  public final boolean aQA()
-  {
-    return this.LwV.iOG;
-  }
-  
-  public final void aQB()
-  {
-    AppMethodBeat.i(200571);
-    if (this.LwV.LyJ != null)
-    {
-      int[] arrayOfInt = this.LyP.aQF();
-      this.LwV.LyJ.qX(arrayOfInt[0]);
-    }
-    AppMethodBeat.o(200571);
+    AppMethodBeat.o(198525);
   }
   
   public final void b(com.tencent.mm.ui.widget.picker.c.a parama)
   {
-    AppMethodBeat.i(200568);
-    this.LwV = parama;
+    AppMethodBeat.i(198526);
+    this.QSH = parama;
     Object localObject = this.context;
-    aQz();
-    aQw();
-    aQx();
-    parama = this.LyP;
+    ble();
+    blb();
+    blc();
+    parama = this.QUF;
     localObject = new WheelView((Context)localObject);
-    parama.iOh = this.LwV.iOh;
-    if (parama.LyQ == null) {
-      parama.LyQ = ((WheelView)localObject);
+    parama.jKW = this.QSH.jKW;
+    if (parama.QUG == null) {
+      parama.QUG = ((WheelView)localObject);
     }
-    parama.LyR = parama.LyQ;
-    if (this.LwV.LyM != null) {
-      this.LyP.LyM = this.LwV.LyM;
+    parama.QUH = parama.QUG;
+    if (this.QSH.QUC != null) {
+      this.QUF.QUC = this.QSH.QUC;
     }
-    parama = this.LyP;
-    localObject = this.LwV.label;
+    parama = this.QUF;
+    localObject = this.QSH.label;
     if (localObject != null) {
-      parama.LyR.setLabel((String)localObject);
+      parama.QUH.setLabel((String)localObject);
     }
-    parama = this.LyP;
-    boolean bool = this.LwV.iOg;
-    parama.LyR.setCyclic(bool);
-    zj(this.LwV.ov);
-    this.LyP.setDividerColor(this.LwV.iNG);
-    this.LyP.LxX = this.LwV.LxX;
-    this.LyP.iOF = this.LwV.iOF;
-    parama = this.LyP;
-    bool = this.LwV.iNz;
-    parama.LyR.iNz = bool;
-    this.LyP.qY(this.LwV.kl);
-    this.LyP.setDividerColor(this.LwV.iNG);
-    AppMethodBeat.o(200568);
+    parama = this.QUF;
+    boolean bool = this.QSH.jKV;
+    parama.QUH.setCyclic(bool);
+    Ds(this.QSH.ox);
+    this.QUF.setDividerColor(this.QSH.jKu);
+    this.QUF.QTM = this.QSH.QTM;
+    this.QUF.jLu = this.QSH.jLu;
+    parama = this.QUF;
+    bool = this.QSH.jKn;
+    parama.QUH.jKn = bool;
+    this.QUF.uQ(this.QSH.kn);
+    this.QUF.setDividerColor(this.QSH.jKu);
+    AppMethodBeat.o(198526);
   }
   
-  public final void fRu()
+  public final boolean blf()
   {
-    AppMethodBeat.i(200569);
-    if (this.LyP != null) {
-      this.LyP.qY(this.LwV.option);
-    }
-    AppMethodBeat.o(200569);
+    return this.QSH.jLv;
   }
   
-  public final WheelView fRv()
+  public final void blg()
   {
-    AppMethodBeat.i(200572);
-    if (this.LyP.LyQ == null) {
-      this.LyP.LyQ = new WheelView(this.context);
+    AppMethodBeat.i(198529);
+    if (this.QSH.QUz != null)
+    {
+      int[] arrayOfInt = this.QUF.blk();
+      this.QSH.QUz.uP(arrayOfInt[0]);
     }
-    WheelView localWheelView = this.LyP.LyQ;
-    AppMethodBeat.o(200572);
+    AppMethodBeat.o(198529);
+  }
+  
+  public final void hcw()
+  {
+    AppMethodBeat.i(198527);
+    if (this.QUF != null) {
+      this.QUF.uQ(this.QSH.option);
+    }
+    AppMethodBeat.o(198527);
+  }
+  
+  public final WheelView hcx()
+  {
+    AppMethodBeat.i(198530);
+    if (this.QUF.QUG == null) {
+      this.QUF.QUG = new WheelView(this.context);
+    }
+    WheelView localWheelView = this.QUF.QUG;
+    AppMethodBeat.o(198530);
     return localWheelView;
   }
   
   public final void onClick(View paramView)
   {
-    AppMethodBeat.i(200570);
+    AppMethodBeat.i(198528);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/view/OptionsPickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/picker/view/OptionsPickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     if (((String)paramView.getTag()).equals("submit")) {
-      aQB();
+      blg();
     }
     dismiss();
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/picker/view/OptionsPickerView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(200570);
+    AppMethodBeat.o(198528);
   }
   
   public final void setOnValueChangedListener(d paramd)
   {
-    this.LwV.LyM = paramd;
-    this.LyP.LyM = this.LwV.LyM;
+    this.QSH.QUC = paramd;
+    this.QUF.QUC = this.QSH.QUC;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.g.a
  * JD-Core Version:    0.7.0.1
  */

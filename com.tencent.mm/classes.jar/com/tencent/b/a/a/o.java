@@ -12,7 +12,7 @@ public final class o
     super(paramContext);
   }
   
-  protected final boolean JJ()
+  protected final boolean TW()
   {
     AppMethodBeat.i(87617);
     boolean bool = s.checkPermission(this.context, "android.permission.WRITE_SETTINGS");
@@ -20,14 +20,14 @@ public final class o
     return bool;
   }
   
-  protected final a JK()
+  protected final a TX()
   {
     AppMethodBeat.i(87620);
     try
     {
       a locala = new a(Settings.System.getString(this.context.getContentResolver(), s.decode("4kU71lN96TJUomD1vOU9lgj9U+kKmxDPLVM+zzjst5U=")));
       new StringBuilder("read readCheckEntity from Settings.System:").append(locala.toString());
-      s.JS();
+      s.Uf();
       return locala;
     }
     finally
@@ -42,8 +42,8 @@ public final class o
     try
     {
       new StringBuilder("write CheckEntity to Settings.System:").append(parama.toString());
-      s.JS();
-      p.aX(this.context).K(s.decode("4kU71lN96TJUomD1vOU9lgj9U+kKmxDPLVM+zzjst5U="), parama.toString());
+      s.Uf();
+      p.br(this.context).N(s.decode("4kU71lN96TJUomD1vOU9lgj9U+kKmxDPLVM+zzjst5U="), parama.toString());
       return;
     }
     finally
@@ -57,7 +57,7 @@ public final class o
     AppMethodBeat.i(87618);
     try
     {
-      s.JS();
+      s.Uf();
       String str = Settings.System.getString(this.context.getContentResolver(), s.decode("4kU71lN96TJUomD1vOU9lgj9Tw=="));
       return str;
     }
@@ -72,8 +72,8 @@ public final class o
     AppMethodBeat.i(87619);
     try
     {
-      s.JS();
-      p.aX(this.context).K(s.decode("4kU71lN96TJUomD1vOU9lgj9Tw=="), paramString);
+      s.Uf();
+      p.br(this.context).N(s.decode("4kU71lN96TJUomD1vOU9lgj9Tw=="), paramString);
       return;
     }
     finally
@@ -84,7 +84,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.b.a.a.o
  * JD-Core Version:    0.7.0.1
  */

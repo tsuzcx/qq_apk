@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class yg
-  extends b
+  extends IEvent
 {
-  public a dNC;
+  public a eeB;
   
   public yg()
   {
@@ -15,24 +15,30 @@ public final class yg
   
   private yg(byte paramByte)
   {
-    AppMethodBeat.i(149894);
-    this.dNC = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(140991);
+    this.eeB = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(149894);
+    AppMethodBeat.o(140991);
   }
   
   public static final class a
   {
-    public boolean dND = false;
-    public boolean dlr = false;
-    public boolean dls = false;
-    public String talker;
+    public String Title;
+    public int dDF = 0;
+    public int dDG = 0;
+    public int dDH = 0;
+    public int dDI = 0;
+    public String dDJ;
+    public String desc;
+    public int position = 0;
+    public String url;
+    public boolean visible = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.yg
  * JD-Core Version:    0.7.0.1
  */

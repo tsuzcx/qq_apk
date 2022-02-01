@@ -6,39 +6,34 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.ar;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.au;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoShadowPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/EditPhotoShadowPlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "view", "Landroid/view/View;", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "(Landroid/view/View;Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "TAG", "", "getStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "getView", "()Landroid/view/View;", "setView", "(Landroid/view/View;)V", "plugin-recordvideo_release"})
 public final class n
   implements t
 {
   private final String TAG;
-  private d tbP;
   private View view;
+  private d wgr;
   
   public n(View paramView, d paramd)
   {
     AppMethodBeat.i(75563);
     this.view = paramView;
-    this.tbP = paramd;
+    this.wgr = paramd;
     this.TAG = "MicroMsg.EditPhotoShadowPlugin";
-    ae.i(this.TAG, "status bar : " + ar.en(this.view.getContext()));
-    paramView = new RelativeLayout.LayoutParams(-1, this.view.getLayoutParams().height + ar.en(this.view.getContext()));
+    Log.i(this.TAG, "status bar : " + au.aD(this.view.getContext()));
+    paramView = new RelativeLayout.LayoutParams(-1, this.view.getLayoutParams().height + au.aD(this.view.getContext()));
     paramView.addRule(12, -1);
     this.view.setLayoutParams((ViewGroup.LayoutParams)paramView);
     this.view.invalidate();
     AppMethodBeat.o(75563);
   }
   
-  public final boolean aoQ()
-  {
-    return false;
-  }
-  
-  public final void azm() {}
+  public final void aSs() {}
   
   public final String name()
   {
@@ -47,17 +42,22 @@ public final class n
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
   
+  public final boolean onBackPress()
+  {
+    return false;
+  }
+  
   public final void onDetach() {}
   
   public final void onPause() {}
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(206579);
+    AppMethodBeat.i(237295);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(206579);
+    AppMethodBeat.o(237295);
   }
   
   public final void onResume() {}

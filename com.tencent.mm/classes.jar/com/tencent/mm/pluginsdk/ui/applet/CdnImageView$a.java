@@ -2,21 +2,21 @@ package com.tencent.mm.pluginsdk.ui.applet;
 
 import android.os.Bundle;
 import android.os.Message;
-import com.tencent.e.i.h;
+import com.tencent.f.i.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class CdnImageView$a
   implements h
 {
-  private aq handler;
+  private MMHandler handler;
   private String url;
   
-  CdnImageView$a(String paramString, aq paramaq)
+  CdnImageView$a(String paramString, MMHandler paramMMHandler)
   {
     this.url = paramString;
-    this.handler = paramaq;
+    this.handler = paramMMHandler;
   }
   
   public final String getKey()
@@ -27,7 +27,7 @@ final class CdnImageView$a
   public final void run()
   {
     AppMethodBeat.i(152165);
-    byte[] arrayOfByte = bu.aSF(this.url);
+    byte[] arrayOfByte = Util.httpGet(this.url);
     Message localMessage = Message.obtain();
     Bundle localBundle = new Bundle();
     localBundle.putByteArray("k_data", arrayOfByte);
@@ -39,7 +39,7 @@ final class CdnImageView$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.CdnImageView.a
  * JD-Core Version:    0.7.0.1
  */

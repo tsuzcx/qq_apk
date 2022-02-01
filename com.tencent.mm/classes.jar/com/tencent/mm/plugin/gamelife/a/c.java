@@ -1,37 +1,36 @@
 package com.tencent.mm.plugin.gamelife.a;
 
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.gamelife.e.d;
-import com.tencent.mm.sdk.e.k.a;
+import com.tencent.mm.plugin.gamelife.e.b;
+import com.tencent.mm.plugin.gamelife.e.e;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
 
 public abstract interface c
   extends a
 {
-  public abstract void ajb(String paramString);
+  public abstract boolean aAT(String paramString);
   
-  public abstract int ajc(String paramString);
+  public abstract void ave(String paramString);
   
-  public abstract String aje(String paramString);
+  public abstract int avf(String paramString);
   
-  public abstract boolean anA(String paramString);
+  public abstract String avh(String paramString);
   
-  public abstract int ddp();
+  public abstract int dWZ();
   
-  public abstract String ddq();
+  public abstract b dXa();
   
-  public abstract long ddr();
+  public abstract e dXb();
   
-  public abstract d dds();
+  public abstract boolean gT(String paramString1, String paramString2);
   
-  public abstract boolean gt(String paramString1, String paramString2);
+  public abstract void l(MStorage.IOnStorageChange paramIOnStorageChange);
   
-  public abstract void l(k.a parama);
-  
-  public abstract void m(k.a parama);
+  public abstract void m(MStorage.IOnStorageChange paramIOnStorageChange);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.gamelife.a.c
  * JD-Core Version:    0.7.0.1
  */

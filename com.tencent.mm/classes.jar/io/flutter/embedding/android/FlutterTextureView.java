@@ -13,11 +13,11 @@ public class FlutterTextureView
   extends TextureView
   implements c
 {
-  private boolean MYG;
-  private boolean MYH;
-  private io.flutter.embedding.engine.b.a MYI;
-  private Surface MYL;
-  private final TextureView.SurfaceTextureListener MYM;
+  private Surface AsF;
+  private io.flutter.embedding.engine.b.a SMT;
+  private boolean SMW;
+  private boolean SNd;
+  private final TextureView.SurfaceTextureListener SNg;
   
   public FlutterTextureView(Context paramContext)
   {
@@ -28,14 +28,14 @@ public class FlutterTextureView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(9970);
-    this.MYG = false;
-    this.MYH = false;
-    this.MYM = new TextureView.SurfaceTextureListener()
+    this.SNd = false;
+    this.SMW = false;
+    this.SNg = new TextureView.SurfaceTextureListener()
     {
       public final void onSurfaceTextureAvailable(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(10019);
-        io.flutter.a.giD();
+        io.flutter.a.hwd();
         FlutterTextureView.a(FlutterTextureView.this, true);
         if (FlutterTextureView.a(FlutterTextureView.this)) {
           FlutterTextureView.b(FlutterTextureView.this);
@@ -46,7 +46,7 @@ public class FlutterTextureView
       public final boolean onSurfaceTextureDestroyed(SurfaceTexture paramAnonymousSurfaceTexture)
       {
         AppMethodBeat.i(10021);
-        io.flutter.a.giD();
+        io.flutter.a.hwd();
         FlutterTextureView.a(FlutterTextureView.this, false);
         if (FlutterTextureView.a(FlutterTextureView.this)) {
           FlutterTextureView.c(FlutterTextureView.this);
@@ -58,7 +58,7 @@ public class FlutterTextureView
       public final void onSurfaceTextureSizeChanged(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(10020);
-        io.flutter.a.giD();
+        io.flutter.a.hwd();
         if (FlutterTextureView.a(FlutterTextureView.this)) {
           FlutterTextureView.a(FlutterTextureView.this, paramAnonymousInt1, paramAnonymousInt2);
         }
@@ -67,85 +67,99 @@ public class FlutterTextureView
       
       public final void onSurfaceTextureUpdated(SurfaceTexture paramAnonymousSurfaceTexture) {}
     };
-    setSurfaceTextureListener(this.MYM);
+    setSurfaceTextureListener(this.SNg);
     AppMethodBeat.o(9970);
   }
   
-  private void giX()
+  private void hww()
   {
     AppMethodBeat.i(9973);
-    if ((this.MYI == null) || (getSurfaceTexture() == null))
+    if ((this.SMT == null) || (getSurfaceTexture() == null))
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("connectSurfaceToRenderer() should only be called when flutterRenderer and getSurfaceTexture() are non-null.");
       AppMethodBeat.o(9973);
       throw localIllegalStateException;
     }
-    this.MYL = new Surface(getSurfaceTexture());
-    this.MYI.m(this.MYL);
+    this.AsF = new Surface(getSurfaceTexture());
+    this.SMT.o(this.AsF);
     AppMethodBeat.o(9973);
   }
   
-  private void giY()
+  private void hwx()
   {
     AppMethodBeat.i(9974);
-    if (this.MYI == null)
+    if (this.SMT == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("disconnectSurfaceFromRenderer() should only be called when flutterRenderer is non-null.");
       AppMethodBeat.o(9974);
       throw localIllegalStateException;
     }
-    this.MYI.gjx();
-    this.MYL.release();
-    this.MYL = null;
+    this.SMT.hwZ();
+    this.AsF.release();
+    this.AsF = null;
     AppMethodBeat.o(9974);
   }
   
   public final void a(io.flutter.embedding.engine.b.a parama)
   {
     AppMethodBeat.i(9971);
-    io.flutter.a.giD();
-    if (this.MYI != null)
+    io.flutter.a.hwd();
+    if (this.SMT != null)
     {
-      io.flutter.a.giD();
-      this.MYI.gjx();
+      io.flutter.a.hwd();
+      this.SMT.hwZ();
     }
-    this.MYI = parama;
-    this.MYH = true;
-    if (this.MYG)
+    this.SMT = parama;
+    this.SMW = true;
+    if (this.SNd)
     {
-      io.flutter.a.giD();
-      giX();
+      io.flutter.a.hwd();
+      hww();
     }
     AppMethodBeat.o(9971);
   }
   
   public io.flutter.embedding.engine.b.a getAttachedRenderer()
   {
-    return this.MYI;
+    return this.SMT;
   }
   
-  public final void giW()
+  public final void hwu()
   {
     AppMethodBeat.i(9972);
-    if (this.MYI != null)
+    if (this.SMT != null)
     {
       if (getWindowToken() != null)
       {
-        io.flutter.a.giD();
-        giY();
+        io.flutter.a.hwd();
+        hwx();
       }
-      this.MYI = null;
-      this.MYH = false;
+      this.SMT = null;
+      this.SMW = false;
       AppMethodBeat.o(9972);
       return;
     }
-    io.flutter.a.giG();
+    io.flutter.a.hwf();
     AppMethodBeat.o(9972);
+  }
+  
+  public final void pause()
+  {
+    AppMethodBeat.i(215066);
+    if (this.SMT != null)
+    {
+      this.SMT = null;
+      this.SMW = false;
+      AppMethodBeat.o(215066);
+      return;
+    }
+    io.flutter.a.hwf();
+    AppMethodBeat.o(215066);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterTextureView
  * JD-Core Version:    0.7.0.1
  */

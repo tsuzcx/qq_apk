@@ -56,20 +56,20 @@ public class SetFontStyleActionArg
     return bool;
   }
   
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145162);
-    super.h(paramParcel);
-    this.fontStyle = paramParcel.readString();
-    AppMethodBeat.o(145162);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145166);
     int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), this.fontStyle });
     AppMethodBeat.o(145166);
     return i;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145162);
+    super.i(paramParcel);
+    this.fontStyle = paramParcel.readString();
+    AppMethodBeat.o(145162);
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -90,7 +90,7 @@ public class SetFontStyleActionArg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetFontStyleActionArg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,115 +1,126 @@
 package com.bumptech.glide;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.widget.ImageView.ScaleType;
-import com.bumptech.glide.f.a;
-import com.bumptech.glide.f.b;
-import com.bumptech.glide.f.d;
-import com.bumptech.glide.f.h;
-import com.bumptech.glide.manager.n;
-import com.bumptech.glide.manager.o;
+import com.bumptech.glide.e.a;
+import com.bumptech.glide.e.b;
+import com.bumptech.glide.e.d;
+import com.bumptech.glide.e.f;
+import com.bumptech.glide.e.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.concurrent.Executor;
 
 public final class i<TranscodeType>
+  extends a<i<TranscodeType>>
   implements Cloneable
 {
-  protected static final com.bumptech.glide.f.e aDb;
-  private final com.bumptech.glide.f.e aCA;
-  private final c aCh;
-  private final e aCn;
+  protected static final f aDb;
+  private final c aCg;
+  private final e aCm;
   private final j aDc;
   private final Class<TranscodeType> aDd;
-  protected com.bumptech.glide.f.e aDe;
-  private k<?, ? super TranscodeType> aDf;
-  private Object aDg;
-  private d<TranscodeType> aDh;
+  private k<?, ? super TranscodeType> aDe;
+  private Object aDf;
+  private List<com.bumptech.glide.e.e<TranscodeType>> aDg;
+  private i<TranscodeType> aDh;
   private i<TranscodeType> aDi;
-  private i<TranscodeType> aDj;
-  private Float aDk;
+  private Float aDj;
+  private boolean aDk;
   private boolean aDl;
   private boolean aDm;
-  private boolean aDn;
   private final Context context;
   
   static
   {
     AppMethodBeat.i(76817);
-    aDb = new com.bumptech.glide.f.e().b(com.bumptech.glide.c.b.i.aHj).b(g.aCP).pW();
+    aDb = (f)((f)((f)new f().a(com.bumptech.glide.load.b.j.aHb)).b(g.aCP)).pX();
     AppMethodBeat.o(76817);
   }
   
+  @SuppressLint({"CheckResult"})
   protected i(c paramc, j paramj, Class<TranscodeType> paramClass, Context paramContext)
   {
     AppMethodBeat.i(76807);
-    this.aDl = true;
-    this.aCh = paramc;
+    this.aDk = true;
+    this.aCg = paramc;
     this.aDc = paramj;
     this.aDd = paramClass;
-    this.aCA = paramj.aDe;
     this.context = paramContext;
-    this.aDf = paramj.j(paramClass);
-    this.aDe = this.aCA;
-    this.aCn = paramc.aCn;
+    this.aDe = paramj.k(paramClass);
+    this.aCm = paramc.aCm;
+    paramc = paramj.aDx.iterator();
+    while (paramc.hasNext())
+    {
+      paramClass = (com.bumptech.glide.e.e)paramc.next();
+      if (paramClass != null)
+      {
+        if (this.aDg == null) {
+          this.aDg = new ArrayList();
+        }
+        this.aDg.add(paramClass);
+      }
+    }
+    a(paramj.nU());
     AppMethodBeat.o(76807);
   }
   
-  private b a(com.bumptech.glide.f.a.e<TranscodeType> parame, d<TranscodeType> paramd, com.bumptech.glide.f.c paramc, k<?, ? super TranscodeType> paramk, g paramg, int paramInt1, int paramInt2, com.bumptech.glide.f.e parame1)
+  private com.bumptech.glide.e.c a(com.bumptech.glide.e.a.e<TranscodeType> parame, com.bumptech.glide.e.e<TranscodeType> parame1, a<?> parama, d paramd, k<?, ? super TranscodeType> paramk, g paramg, int paramInt1, int paramInt2, Executor paramExecutor)
   {
-    AppMethodBeat.i(76813);
+    AppMethodBeat.i(204447);
+    parame = h.a(this.context, this.aCm, this.aDf, this.aDd, parama, paramInt1, paramInt2, paramg, parame, parame1, this.aDg, paramd, this.aCm.aCi, paramk.aDA, paramExecutor);
+    AppMethodBeat.o(204447);
+    return parame;
+  }
+  
+  private com.bumptech.glide.e.c a(com.bumptech.glide.e.a.e<TranscodeType> parame, com.bumptech.glide.e.e<TranscodeType> parame1, d paramd, k<?, ? super TranscodeType> paramk, g paramg, int paramInt1, int paramInt2, a<?> parama, Executor paramExecutor)
+  {
+    AppMethodBeat.i(204445);
     Object localObject1;
-    if (this.aDj != null) {
-      localObject1 = new a(paramc);
+    if (this.aDi != null) {
+      localObject1 = new b(paramd);
     }
     Object localObject2;
-    for (paramc = (com.bumptech.glide.f.c)localObject1;; paramc = localObject2)
+    for (paramd = (d)localObject1;; paramd = localObject2)
     {
-      paramk = b(parame, paramd, (com.bumptech.glide.f.c)localObject1, paramk, paramg, paramInt1, paramInt2, parame1);
-      if (paramc == null)
+      paramk = b(parame, parame1, (d)localObject1, paramk, paramg, paramInt1, paramInt2, parama, paramExecutor);
+      if (paramd == null)
       {
-        AppMethodBeat.o(76813);
+        AppMethodBeat.o(204445);
         return paramk;
       }
-      int k = this.aDj.aDe.aNn;
-      int m = this.aDj.aDe.aNm;
+      int k = this.aDi.aNb;
+      int m = this.aDi.aNa;
       int j = k;
       int i = m;
-      if (com.bumptech.glide.h.j.aZ(paramInt1, paramInt2))
+      if (com.bumptech.glide.g.k.aT(paramInt1, paramInt2))
       {
         j = k;
         i = m;
-        if (!this.aDj.aDe.qa())
+        if (!this.aDi.pZ())
         {
-          j = parame1.aNn;
-          i = parame1.aNm;
+          j = parama.aNb;
+          i = parama.aNa;
         }
       }
-      paramc.a(paramk, this.aDj.a(parame, paramd, paramc, this.aDj.aDf, this.aDj.aDe.aGk, j, i, this.aDj.aDe));
-      AppMethodBeat.o(76813);
-      return paramc;
+      paramd.a(paramk, this.aDi.a(parame, parame1, paramd, this.aDi.aDe, this.aDi.aGc, j, i, this.aDi, paramExecutor));
+      AppMethodBeat.o(204445);
+      return paramd;
       localObject2 = null;
-      localObject1 = paramc;
+      localObject1 = paramd;
     }
-  }
-  
-  private b a(com.bumptech.glide.f.a.e<TranscodeType> parame, d<TranscodeType> paramd, com.bumptech.glide.f.e parame1, com.bumptech.glide.f.c paramc, k<?, ? super TranscodeType> paramk, g paramg, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(76815);
-    parame = com.bumptech.glide.f.g.a(this.context, this.aCn, this.aDg, this.aDd, parame1, paramInt1, paramInt2, paramg, parame, paramd, this.aDh, paramc, this.aCn.aCj, paramk.aDz);
-    AppMethodBeat.o(76815);
-    return parame;
   }
   
   private g a(g paramg)
   {
     AppMethodBeat.i(76812);
-    switch (1.aDo[paramg.ordinal()])
+    switch (1.aDn[paramg.ordinal()])
     {
     default: 
-      paramg = new IllegalArgumentException("unknown priority: " + this.aDe.aGk);
+      paramg = new IllegalArgumentException("unknown priority: " + this.aGc);
       AppMethodBeat.o(76812);
       throw paramg;
     case 1: 
@@ -126,241 +137,129 @@ public final class i<TranscodeType>
     return paramg;
   }
   
-  private b b(com.bumptech.glide.f.a.e<TranscodeType> parame, d<TranscodeType> paramd, com.bumptech.glide.f.c paramc, k<?, ? super TranscodeType> paramk, g paramg, int paramInt1, int paramInt2, com.bumptech.glide.f.e parame1)
+  private com.bumptech.glide.e.c b(com.bumptech.glide.e.a.e<TranscodeType> parame, com.bumptech.glide.e.e<TranscodeType> parame1, d paramd, k<?, ? super TranscodeType> paramk, g paramg, int paramInt1, int paramInt2, a<?> parama, Executor paramExecutor)
   {
-    AppMethodBeat.i(76814);
+    AppMethodBeat.i(204446);
     Object localObject;
-    if (this.aDi != null)
+    if (this.aDh != null)
     {
-      if (this.aDn)
+      if (this.aDm)
       {
         parame = new IllegalStateException("You cannot use a request as both the main request and a thumbnail, consider using clone() on the request(s) passed to thumbnail()");
-        AppMethodBeat.o(76814);
+        AppMethodBeat.o(204446);
         throw parame;
       }
-      localObject = this.aDi.aDf;
-      if (!this.aDi.aDl) {
-        break label340;
+      localObject = this.aDh.aDe;
+      if (!this.aDh.aDk) {
+        break label333;
       }
       localObject = paramk;
     }
-    label337:
-    label340:
+    label330:
+    label333:
     for (;;)
     {
       g localg;
       int j;
       int i;
-      if (this.aDi.aDe.qb())
+      if (this.aDh.qa())
       {
-        localg = this.aDi.aDe.aGk;
-        j = this.aDi.aDe.aNn;
-        i = this.aDi.aDe.aNm;
-        if ((!com.bumptech.glide.h.j.aZ(paramInt1, paramInt2)) || (this.aDi.aDe.qa())) {
-          break label337;
+        localg = this.aDh.aGc;
+        j = this.aDh.aNb;
+        i = this.aDh.aNa;
+        if ((!com.bumptech.glide.g.k.aT(paramInt1, paramInt2)) || (this.aDh.pZ())) {
+          break label330;
         }
-        j = parame1.aNn;
-        i = parame1.aNm;
+        j = parama.aNb;
+        i = parama.aNa;
       }
       for (;;)
       {
-        paramc = new h(paramc);
-        paramk = a(parame, paramd, parame1, paramc, paramk, paramg, paramInt1, paramInt2);
-        this.aDn = true;
-        parame = this.aDi.a(parame, paramd, paramc, (k)localObject, localg, j, i, this.aDi.aDe);
-        this.aDn = false;
-        paramc.a(paramk, parame);
-        AppMethodBeat.o(76814);
-        return paramc;
+        paramd = new com.bumptech.glide.e.i(paramd);
+        paramk = a(parame, parame1, parama, paramd, paramk, paramg, paramInt1, paramInt2, paramExecutor);
+        this.aDm = true;
+        parame = this.aDh.a(parame, parame1, paramd, (k)localObject, localg, j, i, this.aDh, paramExecutor);
+        this.aDm = false;
+        paramd.a(paramk, parame);
+        AppMethodBeat.o(204446);
+        return paramd;
         localg = a(paramg);
         break;
-        if (this.aDk != null)
+        if (this.aDj != null)
         {
-          paramc = new h(paramc);
-          paramc.a(a(parame, paramd, parame1, paramc, paramk, paramg, paramInt1, paramInt2), a(parame, paramd, parame1.pX().Q(this.aDk.floatValue()), paramc, paramk, a(paramg), paramInt1, paramInt2));
-          AppMethodBeat.o(76814);
-          return paramc;
+          paramd = new com.bumptech.glide.e.i(paramd);
+          paramd.a(a(parame, parame1, parama, paramd, paramk, paramg, paramInt1, paramInt2, paramExecutor), a(parame, parame1, parama.nQ().Q(this.aDj.floatValue()), paramd, paramk, a(paramg), paramInt1, paramInt2, paramExecutor));
+          AppMethodBeat.o(204446);
+          return paramd;
         }
-        parame = a(parame, paramd, parame1, paramc, paramk, paramg, paramInt1, paramInt2);
-        AppMethodBeat.o(76814);
+        parame = a(parame, parame1, parama, paramd, paramk, paramg, paramInt1, paramInt2, paramExecutor);
+        AppMethodBeat.o(204446);
         return parame;
       }
     }
   }
   
-  private com.bumptech.glide.f.e nM()
-  {
-    AppMethodBeat.i(76809);
-    if (this.aCA == this.aDe)
-    {
-      locale = this.aDe.pX();
-      AppMethodBeat.o(76809);
-      return locale;
-    }
-    com.bumptech.glide.f.e locale = this.aDe;
-    AppMethodBeat.o(76809);
-    return locale;
-  }
-  
-  private i<TranscodeType> nN()
+  private i<TranscodeType> nP()
   {
     AppMethodBeat.i(76810);
-    try
-    {
-      i locali = (i)super.clone();
-      locali.aDe = locali.aDe.pX();
-      locali.aDf = locali.aDf.nP();
-      AppMethodBeat.o(76810);
-      return locali;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException)
-    {
-      RuntimeException localRuntimeException = new RuntimeException(localCloneNotSupportedException);
-      AppMethodBeat.o(76810);
-      throw localRuntimeException;
-    }
+    i locali = (i)super.nQ();
+    locali.aDe = locali.aDe.nV();
+    AppMethodBeat.o(76810);
+    return locali;
   }
   
   public final i<TranscodeType> Q(Object paramObject)
   {
-    this.aDg = paramObject;
-    this.aDm = true;
+    this.aDf = paramObject;
+    this.aDl = true;
     return this;
   }
   
-  public final i<TranscodeType> a(com.bumptech.glide.f.e parame)
+  public final i<TranscodeType> a(a<?> parama)
   {
-    AppMethodBeat.i(76808);
-    com.bumptech.glide.h.i.checkNotNull(parame, "Argument must not be null");
-    for (com.bumptech.glide.f.e locale = nM(); locale.aNs; locale = locale.pX()) {}
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 2)) {
-      locale.aNh = parame.aNh;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 262144)) {
-      locale.aNt = parame.aNt;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 1048576)) {
-      locale.aHJ = parame.aHJ;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 4)) {
-      locale.aGl = parame.aGl;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 8)) {
-      locale.aGk = parame.aGk;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 16)) {
-      locale.aNi = parame.aNi;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 32)) {
-      locale.aNj = parame.aNj;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 64)) {
-      locale.aNk = parame.aNk;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 128)) {
-      locale.aNl = parame.aNl;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 256)) {
-      locale.aFQ = parame.aFQ;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 512))
-    {
-      locale.aNn = parame.aNn;
-      locale.aNm = parame.aNm;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 1024)) {
-      locale.aGb = parame.aGb;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 4096)) {
-      locale.aGf = parame.aGf;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 8192)) {
-      locale.aNp = parame.aNp;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 16384)) {
-      locale.aNq = parame.aNq;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 32768)) {
-      locale.aNr = parame.aNr;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 65536)) {
-      locale.aNo = parame.aNo;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 131072)) {
-      locale.aGm = parame.aGm;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 2048))
-    {
-      locale.aGh.putAll(parame.aGh);
-      locale.aGn = parame.aGn;
-    }
-    if (com.bumptech.glide.f.e.aW(parame.aNg, 524288)) {
-      locale.aGz = parame.aGz;
-    }
-    if (!locale.aNo)
-    {
-      locale.aGh.clear();
-      locale.aNg &= 0xFFFFF7FF;
-      locale.aGm = false;
-      locale.aNg &= 0xFFFDFFFF;
-      locale.aGn = true;
-    }
-    locale.aNg |= parame.aNg;
-    locale.aGd.a(parame.aGd);
-    this.aDe = locale.pZ();
-    AppMethodBeat.o(76808);
-    return this;
+    AppMethodBeat.i(204444);
+    com.bumptech.glide.g.j.checkNotNull(parama, "Argument must not be null");
+    parama = (i)super.b(parama);
+    AppMethodBeat.o(204444);
+    return parama;
   }
   
-  public final <Y extends com.bumptech.glide.f.a.e<TranscodeType>> Y b(Y paramY)
+  public final <Y extends com.bumptech.glide.e.a.e<TranscodeType>> Y b(Y paramY)
   {
     AppMethodBeat.i(76811);
-    Object localObject1 = nM();
-    com.bumptech.glide.h.j.qs();
-    com.bumptech.glide.h.i.checkNotNull(paramY, "Argument must not be null");
-    if (!this.aDm)
+    Object localObject = com.bumptech.glide.g.e.qr();
+    com.bumptech.glide.g.j.checkNotNull(paramY, "Argument must not be null");
+    if (!this.aDl)
     {
       paramY = new IllegalArgumentException("You must call #load() before calling #into()");
       AppMethodBeat.o(76811);
       throw paramY;
     }
-    Object localObject2 = ((com.bumptech.glide.f.e)localObject1).pY();
-    localObject1 = a(paramY, null, null, this.aDf, ((com.bumptech.glide.f.e)localObject2).aGk, ((com.bumptech.glide.f.e)localObject2).aNn, ((com.bumptech.glide.f.e)localObject2).aNm, (com.bumptech.glide.f.e)localObject2);
-    b localb = paramY.qm();
-    if (((b)localObject1).a(localb))
+    localObject = a(paramY, null, null, this.aDe, this.aGc, this.aNb, this.aNa, this, (Executor)localObject);
+    com.bumptech.glide.e.c localc = paramY.qn();
+    if (((com.bumptech.glide.e.c)localObject).a(localc))
     {
-      if ((!((com.bumptech.glide.f.e)localObject2).aFQ) && (localb.isComplete())) {}
+      if ((!this.aFI) && (localc.isComplete())) {}
       for (int i = 1; i == 0; i = 0)
       {
-        ((b)localObject1).recycle();
-        if (!((b)com.bumptech.glide.h.i.checkNotNull(localb, "Argument must not be null")).isRunning()) {
-          localb.begin();
+        ((com.bumptech.glide.e.c)localObject).recycle();
+        if (!((com.bumptech.glide.e.c)com.bumptech.glide.g.j.checkNotNull(localc, "Argument must not be null")).isRunning()) {
+          localc.begin();
         }
         AppMethodBeat.o(76811);
         return paramY;
       }
     }
     this.aDc.c(paramY);
-    paramY.h((b)localObject1);
-    localObject2 = this.aDc;
-    ((j)localObject2).aDu.aMU.add(paramY);
-    localObject2 = ((j)localObject2).aDs;
-    ((n)localObject2).aMP.add(localObject1);
-    if (!((n)localObject2).isPaused) {
-      ((b)localObject1).begin();
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(76811);
-      return paramY;
-      Log.isLoggable("RequestTracker", 2);
-      ((n)localObject2).aMQ.add(localObject1);
-    }
+    paramY.h((com.bumptech.glide.e.c)localObject);
+    this.aDc.a(paramY, (com.bumptech.glide.e.c)localObject);
+    AppMethodBeat.o(76811);
+    return paramY;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.i
  * JD-Core Version:    0.7.0.1
  */

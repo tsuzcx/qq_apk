@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.order.a;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.e.c;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.c;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.cf.a;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.cj.a;
+import com.tencent.mm.model.y;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.image.d;
 import com.tencent.mm.plugin.order.model.c;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.XmlParser;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.storagebase.h.b;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -27,16 +27,16 @@ import java.util.List;
 import java.util.Map;
 
 public class b
-  implements az
+  implements bd
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private aq mHandler;
-  private List<WeakReference<Object>> oCX;
-  private cf.a pgl;
-  com.tencent.mm.plugin.order.model.b wRG;
-  private com.tencent.mm.plugin.order.b.b wRH;
-  private c wRI;
-  private cf.a wRJ;
+  com.tencent.mm.plugin.order.model.b ANB;
+  private com.tencent.mm.plugin.order.b.b ANC;
+  private c AND;
+  private cj.a ANE;
+  private MMHandler mHandler;
+  private List<WeakReference<Object>> pQG;
+  private cj.a qvw;
   
   static
   {
@@ -50,39 +50,39 @@ public class b
         return com.tencent.mm.plugin.order.b.b.SQL_CREATE;
       }
     });
-    com.tencent.mm.wallet_core.a.i("ShowOrdersInfoProcess", a.class);
+    com.tencent.mm.wallet_core.a.j("ShowOrdersInfoProcess", a.class);
     AppMethodBeat.o(66646);
   }
   
   public b()
   {
     AppMethodBeat.i(66639);
-    this.mHandler = new aq(Looper.getMainLooper());
-    this.wRG = null;
-    this.wRI = null;
-    this.oCX = new ArrayList();
-    this.wRJ = new cf.a()
+    this.mHandler = new MMHandler(Looper.getMainLooper());
+    this.ANB = null;
+    this.AND = null;
+    this.pQG = new ArrayList();
+    this.ANE = new cj.a()
     {
-      public final void a(final e.a paramAnonymousa)
+      public final void a(final h.a paramAnonymousa)
       {
         AppMethodBeat.i(66636);
-        paramAnonymousa = z.a(paramAnonymousa.gte.FNI);
-        ae.i("MicroMsg.SubCoreWalletOrder", "MallOrderNotifyConfXml:".concat(String.valueOf(paramAnonymousa)));
+        paramAnonymousa = z.a(paramAnonymousa.heO.KHn);
+        Log.i("MicroMsg.SubCoreWalletOrder", "MallOrderNotifyConfXml:".concat(String.valueOf(paramAnonymousa)));
         b.a(b.this).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(66635);
             Object localObject1 = b.this;
-            g.ajP().aiU();
-            if (((b)localObject1).wRG == null) {
-              ((b)localObject1).wRG = new com.tencent.mm.plugin.order.model.b();
+            g.aAf().azk();
+            if (((b)localObject1).ANB == null) {
+              ((b)localObject1).ANB = new com.tencent.mm.plugin.order.model.b();
             }
-            localObject1 = ((b)localObject1).wRG;
+            localObject1 = ((b)localObject1).ANB;
             Object localObject2 = paramAnonymousa;
-            if (!bu.isNullOrNil((String)localObject2))
+            if (!Util.isNullOrNil((String)localObject2))
             {
-              localObject2 = bx.M((String)localObject2, "sysmsg");
+              localObject2 = XmlParser.parseXml((String)localObject2, "sysmsg", null);
               if (localObject2 == null)
               {
                 AppMethodBeat.o(66635);
@@ -91,17 +91,17 @@ public class b
               try
               {
                 localObject2 = (String)((Map)localObject2).get(".sysmsg.wxpay.transid");
-                if (!bu.isNullOrNil((String)localObject2))
+                if (!Util.isNullOrNil((String)localObject2))
                 {
-                  ae.d("MicroMsg.WalletOrdersManager", "transid ".concat(String.valueOf(localObject2)));
-                  if (!((com.tencent.mm.plugin.order.model.b)localObject1).wSa.contains(localObject2))
+                  Log.d("MicroMsg.WalletOrdersManager", "transid ".concat(String.valueOf(localObject2)));
+                  if (!((com.tencent.mm.plugin.order.model.b)localObject1).ANV.contains(localObject2))
                   {
-                    ((com.tencent.mm.plugin.order.model.b)localObject1).wSa.add(localObject2);
-                    g.ajS();
-                    g.ajR().ajA().set(204817, Integer.valueOf(((com.tencent.mm.plugin.order.model.b)localObject1).wSa.size()));
-                    ae.d("MicroMsg.WalletOrdersManager", "notifyTrans.size() : " + ((com.tencent.mm.plugin.order.model.b)localObject1).wSa.size());
-                    ((com.tencent.mm.plugin.order.model.b)localObject1).dBs();
-                    b.dBo().onChange();
+                    ((com.tencent.mm.plugin.order.model.b)localObject1).ANV.add(localObject2);
+                    g.aAi();
+                    g.aAh().azQ().set(204817, Integer.valueOf(((com.tencent.mm.plugin.order.model.b)localObject1).ANV.size()));
+                    Log.d("MicroMsg.WalletOrdersManager", "notifyTrans.size() : " + ((com.tencent.mm.plugin.order.model.b)localObject1).ANV.size());
+                    ((com.tencent.mm.plugin.order.model.b)localObject1).Yy();
+                    b.eBa().onChange();
                   }
                 }
                 AppMethodBeat.o(66635);
@@ -109,7 +109,7 @@ public class b
               }
               catch (Exception localException)
               {
-                ae.e("MicroMsg.WalletOrdersManager", "cmdid error");
+                Log.e("MicroMsg.WalletOrdersManager", "cmdid error");
               }
             }
             AppMethodBeat.o(66635);
@@ -118,65 +118,65 @@ public class b
         AppMethodBeat.o(66636);
       }
       
-      public final void a(e.c paramAnonymousc) {}
+      public final void a(h.c paramAnonymousc) {}
     };
-    this.pgl = new cf.a()
+    this.qvw = new cj.a()
     {
-      public final void a(e.a paramAnonymousa)
+      public final void a(h.a paramAnonymousa)
       {
         AppMethodBeat.i(66638);
-        String str = z.a(paramAnonymousa.gte.FNI);
-        ae.i("MicroMsg.SubCoreWalletOrder", "MallPayMsg:".concat(String.valueOf(str)));
+        String str = z.a(paramAnonymousa.heO.KHn);
+        Log.i("MicroMsg.SubCoreWalletOrder", "MallPayMsg:".concat(String.valueOf(str)));
         b.a(b.this).post(new b.3.1(this, str, paramAnonymousa));
         AppMethodBeat.o(66638);
       }
       
-      public final void a(e.c paramAnonymousc) {}
+      public final void a(h.c paramAnonymousc) {}
     };
     AppMethodBeat.o(66639);
   }
   
-  public static b dBo()
+  public static b eBa()
   {
     AppMethodBeat.i(66640);
-    b localb = (b)u.ap(b.class);
+    b localb = (b)y.at(b.class);
     AppMethodBeat.o(66640);
     return localb;
   }
   
-  public static com.tencent.mm.plugin.order.b.b dBq()
+  public static com.tencent.mm.plugin.order.b.b eBc()
   {
     AppMethodBeat.i(66643);
-    g.ajP().aiU();
-    if (dBo().wRH == null)
+    g.aAf().azk();
+    if (eBa().ANC == null)
     {
-      localObject = dBo();
-      g.ajS();
-      ((b)localObject).wRH = new com.tencent.mm.plugin.order.b.b(g.ajR().gDX);
+      localObject = eBa();
+      g.aAi();
+      ((b)localObject).ANC = new com.tencent.mm.plugin.order.b.b(g.aAh().hqK);
     }
-    Object localObject = dBo().wRH;
+    Object localObject = eBa().ANC;
     AppMethodBeat.o(66643);
     return localObject;
   }
   
-  public static c dBr()
+  public static c eBd()
   {
     AppMethodBeat.i(66644);
-    g.ajP().aiU();
-    if (dBo().wRI == null) {
-      dBo().wRI = new c();
+    g.aAf().azk();
+    if (eBa().AND == null) {
+      eBa().AND = new c();
     }
-    c localc = dBo().wRI;
+    c localc = eBa().AND;
     AppMethodBeat.o(66644);
     return localc;
   }
   
-  public static String dkI()
+  public static String eeA()
   {
     AppMethodBeat.i(66645);
-    if (g.ajM())
+    if (g.aAc())
     {
-      String str = d.azQ() + "order";
+      String str = d.aSY() + "order";
       AppMethodBeat.o(66645);
       return str;
     }
@@ -186,18 +186,18 @@ public class b
   
   public void clearPluginData(int paramInt) {}
   
-  public final void dBp()
+  public final void eBb()
   {
     AppMethodBeat.i(66641);
-    if (this.oCX == null)
+    if (this.pQG == null)
     {
       AppMethodBeat.o(66641);
       return;
     }
     int i = 0;
-    while (i < this.oCX.size())
+    while (i < this.pQG.size())
     {
-      WeakReference localWeakReference = (WeakReference)this.oCX.get(i);
+      WeakReference localWeakReference = (WeakReference)this.pQG.get(i);
       if (localWeakReference != null) {
         localWeakReference.get();
       }
@@ -213,8 +213,8 @@ public class b
   
   public void onAccountPostReset(boolean paramBoolean)
   {
-    this.wRG = null;
-    this.wRI = null;
+    this.ANB = null;
+    this.AND = null;
   }
   
   public void onAccountRelease() {}
@@ -222,15 +222,15 @@ public class b
   public final void onChange()
   {
     AppMethodBeat.i(66642);
-    if (this.oCX == null)
+    if (this.pQG == null)
     {
       AppMethodBeat.o(66642);
       return;
     }
     int i = 0;
-    while (i < this.oCX.size())
+    while (i < this.pQG.size())
     {
-      WeakReference localWeakReference = (WeakReference)this.oCX.get(i);
+      WeakReference localWeakReference = (WeakReference)this.pQG.get(i);
       if (localWeakReference != null) {
         localWeakReference.get();
       }

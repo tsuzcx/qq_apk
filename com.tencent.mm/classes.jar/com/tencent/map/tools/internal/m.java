@@ -1,6 +1,7 @@
 package com.tencent.map.tools.internal;
 
 import android.content.Context;
+import com.tencent.map.tools.sheet.SheetNetworkStateMonitor;
 import com.tencent.map.tools.sheet.listener.ModuleEncryptListener;
 import com.tencent.map.tools.sheet.listener.ModuleUncaughtListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -11,21 +12,21 @@ import java.util.zip.GZIPOutputStream;
 
 public class m
 {
-  private static final String a;
-  private DexClassLoader b;
-  private Context c;
-  private ModuleUncaughtListener d;
-  private File e;
-  private h f;
-  private j g;
-  private i h;
-  private n i;
+  private static final String e;
+  public Context a;
+  public ModuleUncaughtListener b;
+  public File c;
+  public n d;
+  private DexClassLoader f;
+  private h g;
+  private j h;
+  private i i;
   private ModuleEncryptListener j;
   
   static
   {
     AppMethodBeat.i(180825);
-    a = m.class.getSimpleName();
+    e = m.class.getSimpleName();
     AppMethodBeat.o(180825);
   }
   
@@ -42,11 +43,11 @@ public class m
         return paramAnonymousArrayOfByte;
       }
     };
-    this.c = paramContext;
-    this.f = new h(paramContext);
-    this.g = new j(paramContext);
-    this.h = new i(paramContext, g.a(paramContext).c());
-    g.a(paramContext).a(this.j);
+    this.a = paramContext;
+    this.g = new h(paramContext);
+    this.h = new j(paramContext);
+    this.i = new i(paramContext, g.a(paramContext).h);
+    g.a(paramContext).f = this.j;
     AppMethodBeat.o(180820);
   }
   
@@ -88,31 +89,31 @@ public class m
     //   1: istore_2
     //   2: aload_0
     //   3: monitorenter
-    //   4: ldc 141
+    //   4: ldc 140
     //   6: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   9: aload_0
-    //   10: invokevirtual 144	com/tencent/map/tools/internal/m:b	()Ldalvik/system/DexClassLoader;
+    //   10: invokevirtual 143	com/tencent/map/tools/internal/m:a	()Ldalvik/system/DexClassLoader;
     //   13: astore 4
     //   15: aload 4
     //   17: ifnonnull +12 -> 29
-    //   20: ldc 141
+    //   20: ldc 140
     //   22: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   25: aload_0
     //   26: monitorexit
     //   27: iload_2
     //   28: ireturn
     //   29: aload_1
-    //   30: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   30: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   33: ifne +69 -> 102
     //   36: aload_0
-    //   37: getfield 58	com/tencent/map/tools/internal/m:c	Landroid/content/Context;
-    //   40: invokevirtual 156	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   43: ldc 158
+    //   37: getfield 58	com/tencent/map/tools/internal/m:a	Landroid/content/Context;
+    //   40: invokevirtual 155	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
+    //   43: ldc 157
     //   45: iconst_1
     //   46: anewarray 36	java/lang/Class
     //   49: dup
     //   50: iconst_0
-    //   51: ldc 160
+    //   51: ldc 159
     //   53: aastore
     //   54: iconst_1
     //   55: anewarray 4	java/lang/Object
@@ -120,56 +121,56 @@ public class m
     //   59: iconst_0
     //   60: aload_1
     //   61: aastore
-    //   62: invokestatic 165	com/tencent/map/tools/internal/x:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   65: checkcast 160	java/lang/String
+    //   62: invokestatic 164	com/tencent/map/tools/internal/x:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   65: checkcast 159	java/lang/String
     //   68: astore_1
     //   69: aload_1
-    //   70: invokestatic 150	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   70: invokestatic 149	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   73: ifne +29 -> 102
-    //   76: new 167	java/io/File
+    //   76: new 166	java/io/File
     //   79: dup
     //   80: aload_1
-    //   81: invokespecial 170	java/io/File:<init>	(Ljava/lang/String;)V
-    //   84: invokevirtual 174	java/io/File:exists	()Z
+    //   81: invokespecial 169	java/io/File:<init>	(Ljava/lang/String;)V
+    //   84: invokevirtual 173	java/io/File:exists	()Z
     //   87: istore_3
     //   88: iload_3
     //   89: ifeq +13 -> 102
-    //   92: ldc 141
+    //   92: ldc 140
     //   94: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   97: iconst_0
     //   98: istore_2
     //   99: goto -74 -> 25
-    //   102: getstatic 176	com/tencent/map/tools/internal/x:g	Ljava/lang/String;
+    //   102: getstatic 175	com/tencent/map/tools/internal/x:g	Ljava/lang/String;
     //   105: astore_1
     //   106: aload_1
     //   107: ifnull +14 -> 121
     //   110: aload_1
-    //   111: ldc 178
-    //   113: invokevirtual 182	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   111: ldc 177
+    //   113: invokevirtual 181	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   116: istore_3
     //   117: iload_3
     //   118: ifeq +13 -> 131
-    //   121: ldc 141
+    //   121: ldc 140
     //   123: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   126: iconst_3
     //   127: istore_2
     //   128: goto -103 -> 25
-    //   131: invokestatic 188	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   131: invokestatic 187	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
     //   134: astore 5
-    //   136: getstatic 194	android/os/Build$VERSION:SDK_INT	I
+    //   136: getstatic 193	android/os/Build$VERSION:SDK_INT	I
     //   139: bipush 28
     //   141: if_icmplt +48 -> 189
     //   144: aload 5
-    //   146: ldc 196
+    //   146: ldc 195
     //   148: iconst_2
     //   149: anewarray 36	java/lang/Class
     //   152: dup
     //   153: iconst_0
-    //   154: ldc 160
+    //   154: ldc 159
     //   156: aastore
     //   157: dup
     //   158: iconst_1
-    //   159: ldc 198
+    //   159: ldc 197
     //   161: aastore
     //   162: iconst_2
     //   163: anewarray 4	java/lang/Object
@@ -181,28 +182,28 @@ public class m
     //   171: iconst_1
     //   172: aload 4
     //   174: aastore
-    //   175: invokestatic 165	com/tencent/map/tools/internal/x:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   175: invokestatic 164	com/tencent/map/tools/internal/x:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   178: pop
-    //   179: ldc 141
+    //   179: ldc 140
     //   181: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   184: iconst_0
     //   185: istore_2
     //   186: goto -161 -> 25
     //   189: aload 5
-    //   191: ldc 196
+    //   191: ldc 195
     //   193: iconst_3
     //   194: anewarray 36	java/lang/Class
     //   197: dup
     //   198: iconst_0
-    //   199: ldc 160
+    //   199: ldc 159
     //   201: aastore
     //   202: dup
     //   203: iconst_1
-    //   204: ldc 198
+    //   204: ldc 197
     //   206: aastore
     //   207: dup
     //   208: iconst_2
-    //   209: ldc 160
+    //   209: ldc 159
     //   211: aastore
     //   212: iconst_3
     //   213: anewarray 4	java/lang/Object
@@ -218,17 +219,17 @@ public class m
     //   226: iconst_2
     //   227: aconst_null
     //   228: aastore
-    //   229: invokestatic 165	com/tencent/map/tools/internal/x:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   229: invokestatic 164	com/tencent/map/tools/internal/x:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   232: pop
     //   233: goto -54 -> 179
     //   236: astore_1
-    //   237: ldc 141
+    //   237: ldc 140
     //   239: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   242: iconst_2
     //   243: istore_2
     //   244: goto -219 -> 25
     //   247: astore_1
-    //   248: ldc 141
+    //   248: ldc 140
     //   250: invokestatic 45	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   253: iconst_2
     //   254: istore_2
@@ -271,87 +272,63 @@ public class m
     //   248	253	258	finally
   }
   
-  public final void a()
+  public final DexClassLoader a()
   {
-    AppMethodBeat.i(224089);
-    g.a(this.c).b();
-    AppMethodBeat.o(224089);
-  }
-  
-  public final void a(ModuleUncaughtListener paramModuleUncaughtListener)
-  {
-    AppMethodBeat.i(224087);
-    if (paramModuleUncaughtListener != null)
+    DexClassLoader localDexClassLoader = null;
+    try
     {
-      this.d = paramModuleUncaughtListener;
-      this.i = new n(this.c);
-      this.i.a(paramModuleUncaughtListener);
+      AppMethodBeat.i(180821);
+      if (this.f != null)
+      {
+        localDexClassLoader = this.f;
+        AppMethodBeat.o(180821);
+      }
+      for (;;)
+      {
+        return localDexClassLoader;
+        if (this.a != null) {
+          break;
+        }
+        AppMethodBeat.o(180821);
+      }
+      v.a(this.a).a("load");
     }
-    AppMethodBeat.o(224087);
-  }
-  
-  public final void a(File paramFile)
-  {
-    AppMethodBeat.i(224088);
-    this.e = paramFile;
-    if (a.i) {
-      g.a(this.c).a(this.e);
-    }
-    AppMethodBeat.o(224088);
-  }
-  
-  public final DexClassLoader b()
-  {
-    DexClassLoader localDexClassLoader1 = null;
-    for (;;)
+    finally {}
+    y.a = System.currentTimeMillis();
+    h localh = this.g;
+    s.a(localh.a);
+    x.a(localh.a, x.a);
+    x.a(localh.a, x.b);
+    x.a(localh.a, x.c);
+    String str1 = t.k;
+    String str2 = x.b(localh.a, t.C, "");
+    g.a(localh.a).a("DCV", str2 + "_" + str1);
+    if (!str1.equals(str2)) {}
+    for (boolean bool = l.a(localh.a, str1);; bool = true)
     {
-      try
+      if (!bool)
       {
-        AppMethodBeat.i(224090);
-        if (this.b != null)
-        {
-          localDexClassLoader1 = this.b;
-          AppMethodBeat.o(224090);
-          return localDexClassLoader1;
-        }
-        if (this.c == null)
-        {
-          AppMethodBeat.o(224090);
-          continue;
-        }
-        v.a(this.c).a("load");
+        AppMethodBeat.o(180821);
+        break;
       }
-      finally {}
-      y.a = System.currentTimeMillis();
-      if (!this.f.a())
-      {
-        AppMethodBeat.o(224090);
+      if (!this.g.a()) {
+        l.a(this.a, t.k);
       }
-      else
-      {
-        if (!this.f.b()) {
-          l.a(this.c, t.k);
-        }
-        this.b = this.g.a();
-        this.h.a();
-        v.a(this.c).b("load");
-        DexClassLoader localDexClassLoader2 = this.b;
-        AppMethodBeat.o(224090);
-      }
+      this.f = this.h.a();
+      Object localObject2 = this.i;
+      ((i)localObject2).c = false;
+      q.a(((i)localObject2).b, 10006, 0L);
+      ((i)localObject2).d.startup(((i)localObject2).b);
+      v.a(this.a).b("load");
+      localObject2 = this.f;
+      AppMethodBeat.o(180821);
+      break;
     }
-  }
-  
-  public final File c()
-  {
-    AppMethodBeat.i(224091);
-    File localFile = g.a(this.c).e();
-    AppMethodBeat.o(224091);
-    return localFile;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.internal.m
  * JD-Core Version:    0.7.0.1
  */

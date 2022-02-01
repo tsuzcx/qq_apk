@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/lz">
+        <ImageView android:id="@id/d_j" android:src="@drawable/bdo" style="@style/k2" />
+        <TextView android:id="@id/d_k" android:text="正在获取Wi-Fi信息..." style="@style/ko" />
+        <Button android:textSize="15.0sp" android:id="@id/d_l" android:visibility="invisible" android:layout_width="220.0dip" android:layout_marginTop="70.0dip" android:minHeight="34.0dip" android:text="@string/dil" style="@style/kn" />
+    </LinearLayout>
+</LinearLayout>

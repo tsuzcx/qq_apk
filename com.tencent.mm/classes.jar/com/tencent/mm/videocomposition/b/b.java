@@ -1,41 +1,50 @@
 package com.tencent.mm.videocomposition.b;
 
-import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import com.tencent.tavkit.composition.video.TAVVideoMixEffect;
+import com.tencent.tavkit.composition.video.TAVVideoMixEffect.Filter;
+import kotlin.l;
 
-@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/render/BlendBitmapRender;", "", "()V", "blendBitmapProvider", "Lkotlin/Function1;", "", "Landroid/graphics/Bitmap;", "height", "", "texture", "width", "blendTexture", "Lcom/tencent/mm/xeffect/InputTexture;", "pts", "ensureTexture", "", "release", "setBlendBitmapProvider", "uploadBitmap", "bitmap", "Companion", "video_composition_release"})
+@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/videocomposition/render/CompositionMixEffect;", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect;", "filter", "Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect;", "(Lcom/tencent/mm/videocomposition/render/BaseMultiVideoCompositionEffect;)V", "createFilter", "Lcom/tencent/tavkit/composition/video/TAVVideoMixEffect$Filter;", "effectId", "", "getFilter", "renderContext", "Landroid/opengl/EGLContext;", "updateRenderSize", "", "width", "", "height", "Companion", "video_composition_release"})
 public final class b
+  implements TAVVideoMixEffect
 {
-  public static final a LKd;
-  int BZy;
-  int height;
-  d.g.a.b<? super Long, Bitmap> hnM;
-  int width;
+  public static final a RhX;
+  private final a RhW;
   
   static
   {
-    AppMethodBeat.i(195037);
-    LKd = new a((byte)0);
-    AppMethodBeat.o(195037);
+    AppMethodBeat.i(216845);
+    RhX = new a((byte)0);
+    AppMethodBeat.o(216845);
   }
   
-  public final void F(d.g.a.b<? super Long, Bitmap> paramb)
+  public b(a parama)
   {
-    AppMethodBeat.i(195036);
-    p.h(paramb, "blendBitmapProvider");
-    new StringBuilder("setBlendBitmapProvider:").append(paramb.hashCode());
-    this.hnM = paramb;
-    AppMethodBeat.o(195036);
+    AppMethodBeat.i(216844);
+    this.RhW = parama;
+    AppMethodBeat.o(216844);
   }
   
-  @l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/render/BlendBitmapRender$Companion;", "", "()V", "TAG", "", "video_composition_release"})
+  public final TAVVideoMixEffect.Filter createFilter()
+  {
+    return (TAVVideoMixEffect.Filter)this.RhW;
+  }
+  
+  public final String effectId()
+  {
+    AppMethodBeat.i(216843);
+    String str = "CompositionMixEffect_" + hashCode();
+    AppMethodBeat.o(216843);
+    return str;
+  }
+  
+  @l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/videocomposition/render/CompositionMixEffect$Companion;", "", "()V", "TAG", "", "video_composition_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.videocomposition.b.b
  * JD-Core Version:    0.7.0.1
  */

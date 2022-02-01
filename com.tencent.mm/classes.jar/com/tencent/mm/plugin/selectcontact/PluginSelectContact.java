@@ -1,30 +1,32 @@
 package com.tencent.mm.plugin.selectcontact;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.dc;
+import com.tencent.mm.g.a.df;
+import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.selectcontact.a.a;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.ui.contact.u;
 
 public class PluginSelectContact
   extends f
-  implements com.tencent.mm.kernel.api.bucket.c, a
+  implements c, a
 {
-  private com.tencent.mm.sdk.b.c yRT;
+  private IListener CWJ;
   
   public PluginSelectContact()
   {
     AppMethodBeat.i(102768);
-    this.yRT = new com.tencent.mm.sdk.b.c() {};
+    this.CWJ = new IListener() {};
     AppMethodBeat.o(102768);
   }
   
   public void configure(g paramg)
   {
     AppMethodBeat.i(102770);
-    paramg.akL();
+    paramg.aBb();
     AppMethodBeat.o(102770);
   }
   
@@ -33,7 +35,7 @@ public class PluginSelectContact
   public void execute(g paramg)
   {
     AppMethodBeat.i(102771);
-    paramg.akL();
+    paramg.aBb();
     AppMethodBeat.o(102771);
   }
   
@@ -53,20 +55,20 @@ public class PluginSelectContact
   {
     AppMethodBeat.i(102772);
     u.init();
-    this.yRT.alive();
+    this.CWJ.alive();
     AppMethodBeat.o(102772);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(102773);
-    this.yRT.dead();
+    this.CWJ.dead();
     AppMethodBeat.o(102773);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.selectcontact.PluginSelectContact
  * JD-Core Version:    0.7.0.1
  */

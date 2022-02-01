@@ -2,54 +2,54 @@ package com.tencent.mm.media.widget.b.a.a;
 
 import android.util.Range;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
-import d.n.n;
-import d.v;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
+import kotlin.t;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "", "()V", "KEY_CAMERAID", "", "getKEY_CAMERAID", "()Ljava/lang/String;", "KEY_CHILD", "getKEY_CHILD", "KEY_DEFAULTVALUE", "getKEY_DEFAULTVALUE", "KEY_PARENT", "getKEY_PARENT", "KEY_STREAM", "getKEY_STREAM", "KEY_SUPPORTVALUE", "getKEY_SUPPORTVALUE", "KEY_VENDORTAG", "getKEY_VENDORTAG", "TAG", "getTAG", "cameraId", "", "getCameraId", "()Ljava/lang/Integer;", "setCameraId", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "childKey", "getChildKey", "setChildKey", "(Ljava/lang/String;)V", "defaultValue", "getDefaultValue", "()Ljava/lang/Object;", "setDefaultValue", "(Ljava/lang/Object;)V", "parentKey", "getParentKey", "setParentKey", "stream", "getStream", "setStream", "supportValue", "getSupportValue", "setSupportValue", "vendorTag", "getVendorTag", "setVendorTag", "initEffectTag", "", "params", "Lorg/json/JSONObject;", "parseData", "parseSupportValue", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "", "()V", "KEY_CAMERAID", "", "getKEY_CAMERAID", "()Ljava/lang/String;", "KEY_CHILD", "getKEY_CHILD", "KEY_DEFAULTVALUE", "getKEY_DEFAULTVALUE", "KEY_PARENT", "getKEY_PARENT", "KEY_STREAM", "getKEY_STREAM", "KEY_SUPPORTVALUE", "getKEY_SUPPORTVALUE", "KEY_VENDORTAG", "getKEY_VENDORTAG", "TAG", "getTAG", "cameraId", "", "getCameraId", "()Ljava/lang/Integer;", "setCameraId", "(Ljava/lang/Integer;)V", "Ljava/lang/Integer;", "childKey", "getChildKey", "setChildKey", "(Ljava/lang/String;)V", "defaultValue", "getDefaultValue", "()Ljava/lang/Object;", "setDefaultValue", "(Ljava/lang/Object;)V", "parentKey", "getParentKey", "setParentKey", "stream", "getStream", "setStream", "supportValue", "getSupportValue", "setSupportValue", "vendorTag", "getVendorTag", "setVendorTag", "initEffectTag", "", "params", "Lorg/json/JSONObject;", "parseData", "parseSupportValue", "plugin-mediaeditor_release"})
 public final class a
 {
   private final String TAG = "MicroMsg.WCCameraEffectRequestTag";
-  public Object aFh;
-  private final String hvb = "cameraId";
-  private final String hvc = "parentKey";
-  private final String hvd = "childKey";
-  private final String hve = "vendorTag";
-  private final String hvf = "supportValue";
-  private final String hvg = "stream";
-  private final String hvh = "defaultValue";
-  public String hvi;
-  public Integer hvj;
-  public String hvk;
-  public Object hvl;
-  public String hvm;
-  public Integer hvn;
+  public Object aEX;
+  private final String ioC = "cameraId";
+  private final String ioD = "parentKey";
+  private final String ioE = "childKey";
+  private final String ioF = "vendorTag";
+  private final String ioG = "supportValue";
+  private final String ioH = "stream";
+  private final String ioI = "defaultValue";
+  public String ioJ;
+  public Integer ioK;
+  public String ioL;
+  public Object ioM;
+  public String ioN;
+  public Integer ioO;
   
-  public final String axx()
+  public final String aPV()
   {
     AppMethodBeat.i(94193);
-    Object localObject1 = this.hvl;
+    Object localObject1 = this.ioM;
     Object localObject2;
     if ((localObject1 instanceof Range))
     {
       localObject1 = new StringBuilder("range:");
-      localObject2 = this.hvl;
+      localObject2 = this.ioM;
       if (localObject2 == null)
       {
-        localObject1 = new v("null cannot be cast to non-null type android.util.Range<kotlin.Int>");
+        localObject1 = new t("null cannot be cast to non-null type android.util.Range<kotlin.Int>");
         AppMethodBeat.o(94193);
         throw ((Throwable)localObject1);
       }
       localObject1 = ((StringBuilder)localObject1).append((Integer)((Range)localObject2).getLower()).append(" ~");
-      localObject2 = this.hvl;
+      localObject2 = this.ioM;
       if (localObject2 == null)
       {
-        localObject1 = new v("null cannot be cast to non-null type android.util.Range<kotlin.Int>");
+        localObject1 = new t("null cannot be cast to non-null type android.util.Range<kotlin.Int>");
         AppMethodBeat.o(94193);
         throw ((Throwable)localObject1);
       }
@@ -60,10 +60,10 @@ public final class a
     if ((localObject1 instanceof ArrayList))
     {
       localObject1 = new StringBuffer();
-      localObject2 = this.hvl;
+      localObject2 = this.ioM;
       if (localObject2 == null)
       {
-        localObject1 = new v("null cannot be cast to non-null type kotlin.collections.ArrayList<*> /* = java.util.ArrayList<*> */");
+        localObject1 = new t("null cannot be cast to non-null type kotlin.collections.ArrayList<*> /* = java.util.ArrayList<*> */");
         AppMethodBeat.o(94193);
         throw ((Throwable)localObject1);
       }
@@ -81,7 +81,7 @@ public final class a
     return "";
   }
   
-  public final void o(JSONObject paramJSONObject)
+  public final void s(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(94192);
     if (paramJSONObject == null)
@@ -98,23 +98,23 @@ public final class a
       if (localIterator.hasNext())
       {
         localObject1 = (String)localIterator.next();
-        if (p.i(localObject1, this.hvb))
+        if (p.j(localObject1, this.ioC))
         {
-          this.hvj = Integer.valueOf(paramJSONObject.optInt((String)localObject1));
+          this.ioK = Integer.valueOf(paramJSONObject.optInt((String)localObject1));
         }
-        else if (p.i(localObject1, this.hvc))
+        else if (p.j(localObject1, this.ioD))
         {
-          this.hvi = paramJSONObject.optString((String)localObject1);
+          this.ioJ = paramJSONObject.optString((String)localObject1);
         }
-        else if (p.i(localObject1, this.hvd))
+        else if (p.j(localObject1, this.ioE))
         {
-          this.hvk = paramJSONObject.optString((String)localObject1);
+          this.ioL = paramJSONObject.optString((String)localObject1);
         }
-        else if (p.i(localObject1, this.hve))
+        else if (p.j(localObject1, this.ioF))
         {
-          this.hvm = paramJSONObject.optString((String)localObject1);
+          this.ioN = paramJSONObject.optString((String)localObject1);
         }
-        else if (p.i(localObject1, this.hvf))
+        else if (p.j(localObject1, this.ioG))
         {
           localObject1 = paramJSONObject.optString((String)localObject1);
           p.g(localObject1, "params.optString(it)");
@@ -132,12 +132,12 @@ public final class a
     for (;;)
     {
       label226:
-      this.hvl = localObject1;
+      this.ioM = localObject1;
       break;
       if (!((String)localObject1).equals("array")) {
         break label224;
       }
-      localObject1 = this.aFh;
+      localObject1 = this.aEX;
       if ((localObject1 instanceof Boolean))
       {
         localObject1 = new ArrayList();
@@ -177,15 +177,15 @@ public final class a
           {
             ((ArrayList)localObject1).add(Integer.valueOf(Integer.parseInt((String)((Iterator)localObject2).next())));
             continue;
-            if (p.i(localObject1, this.hvh))
+            if (p.j(localObject1, this.ioI))
             {
-              this.aFh = paramJSONObject.opt((String)localObject1);
+              this.aEX = paramJSONObject.opt((String)localObject1);
               break;
             }
-            if (!p.i(localObject1, this.hvg)) {
+            if (!p.j(localObject1, this.ioH)) {
               break;
             }
-            this.hvn = Integer.valueOf(paramJSONObject.optInt((String)localObject1));
+            this.ioO = Integer.valueOf(paramJSONObject.optInt((String)localObject1));
             break;
             AppMethodBeat.o(94192);
             return;
@@ -197,7 +197,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.media.widget.b.a.a.a
  * JD-Core Version:    0.7.0.1
  */

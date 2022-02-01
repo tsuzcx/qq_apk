@@ -9,27 +9,27 @@ public final class f
   {
     super(paramString1, paramString2);
     AppMethodBeat.i(158887);
-    cG("SOAPACTION", "\"" + paramString2 + "#" + this.kfN + "\"");
-    bfP();
+    cV("SOAPACTION", "\"" + paramString2 + "#" + this.ljw + "\"");
+    bBi();
     AppMethodBeat.o(158887);
   }
   
-  public final String bfN()
+  public final String bBg()
   {
     return "Pause";
   }
   
-  public final String bfO()
+  public final String bBh()
   {
     AppMethodBeat.i(158888);
-    String str = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?><s:Envelope s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body>" + new StringBuilder("<u:").append(this.kfN).append(" xmlns:u=\"").append(this.kfO).append("\">\n<InstanceID>0</InstanceID>\n</u:").append(this.kfN).append(">\n").toString() + "</s:Body></s:Envelope>";
+    String str = "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?><s:Envelope s:encodingStyle=\"http://schemas.xmlsoap.org/soap/encoding/\" xmlns:s=\"http://schemas.xmlsoap.org/soap/envelope/\"><s:Body>" + new StringBuilder("<u:").append(this.ljw).append(" xmlns:u=\"").append(this.ljx).append("\">\n<InstanceID>0</InstanceID>\n</u:").append(this.ljw).append(">\n").toString() + "</s:Body></s:Envelope>";
     AppMethodBeat.o(158888);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.g.a.f
  * JD-Core Version:    0.7.0.1
  */

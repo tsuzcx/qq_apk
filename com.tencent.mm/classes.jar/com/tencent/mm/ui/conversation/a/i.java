@@ -4,51 +4,51 @@ import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
-import com.tencent.e.h;
+import com.tencent.f.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
 import java.lang.ref.WeakReference;
 
 public final class i
   extends com.tencent.mm.pluginsdk.ui.b.b
-  implements k.a
+  implements MStorage.IOnStorageChange
 {
-  View BBn;
-  TextView KUK;
-  TextView KUL;
-  View nFO;
-  View nFP;
+  private View FLZ;
+  private TextView Qia;
+  private TextView Qib;
+  private View oQL;
+  private View oQM;
   
   public i(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(38786);
-    ae.i("MicroMsg.ForceNotifyBanner", "[initialize]");
-    this.nFP = this.view.findViewById(2131297183);
-    this.nFO = this.view.findViewById(2131297178);
-    this.BBn = this.view.findViewById(2131299521);
-    this.KUK = ((TextView)this.view.findViewById(2131302978));
-    this.KUL = ((TextView)this.view.findViewById(2131299522));
+    Log.i("MicroMsg.ForceNotifyBanner", "[initialize]");
+    this.oQM = this.view.findViewById(2131297327);
+    this.oQL = this.view.findViewById(2131297322);
+    this.FLZ = this.view.findViewById(2131300159);
+    this.Qia = ((TextView)this.view.findViewById(2131305567));
+    this.Qib = ((TextView)this.view.findViewById(2131300160));
     paramContext = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(38785);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/ui/conversation/banner/ForceNotifyBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        boolean bool = i.this.fNP();
-        ae.i("MicroMsg.ForceNotifyBanner", "[onClick] isShow=%s", new Object[] { Boolean.valueOf(bool) });
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/ui/conversation/banner/ForceNotifyBanner$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        boolean bool = i.this.gWj();
+        Log.i("MicroMsg.ForceNotifyBanner", "[onClick] isShow=%s", new Object[] { Boolean.valueOf(bool) });
         if (bool)
         {
-          paramAnonymousView = (com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class);
+          paramAnonymousView = (com.tencent.mm.plugin.forcenotify.a.b)g.af(com.tencent.mm.plugin.forcenotify.a.b.class);
           if (paramAnonymousView != null) {
-            paramAnonymousView.fk((Context)i.this.FpA.get());
+            paramAnonymousView.fQ((Context)i.a(i.this).get());
           }
         }
         for (;;)
@@ -61,86 +61,79 @@ public final class i
       }
     };
     this.view.setOnClickListener(paramContext);
-    paramContext = (com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class);
+    paramContext = (com.tencent.mm.plugin.forcenotify.a.b)g.af(com.tencent.mm.plugin.forcenotify.a.b.class);
     if (paramContext != null) {
-      paramContext.cTd().add(this);
+      paramContext.dMm().add(this);
     }
-    fNP();
+    gWj();
     AppMethodBeat.o(38786);
   }
   
-  public final void a(String paramString, m paramm)
-  {
-    AppMethodBeat.i(38790);
-    fNP();
-    AppMethodBeat.o(38790);
-  }
-  
-  public final boolean bAV()
+  public final boolean bYa()
   {
     AppMethodBeat.i(38789);
-    h.MqF.aM(new Runnable()
+    h.RTc.aV(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(188162);
-        final boolean bool = ((com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class)).hasError();
-        h.MqF.aM(new Runnable()
+        AppMethodBeat.i(234284);
+        final boolean bool = ((com.tencent.mm.plugin.forcenotify.a.b)g.af(com.tencent.mm.plugin.forcenotify.a.b.class)).hasError();
+        h.RTc.aV(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(188161);
-            if ((i.this.isFirst) && (i.this.hms))
+            AppMethodBeat.i(234283);
+            if ((i.this.isFirst) && (i.this.ifo))
             {
               if (bool)
               {
-                i.this.BBn.setBackgroundResource(2131234376);
-                AppMethodBeat.o(188161);
+                i.b(i.this).setBackgroundResource(2131235298);
+                AppMethodBeat.o(234283);
                 return;
               }
-              i.this.nFO.setBackgroundResource(2131234377);
-              AppMethodBeat.o(188161);
+              i.c(i.this).setBackgroundResource(2131235299);
+              AppMethodBeat.o(234283);
               return;
             }
             if (i.this.isFirst)
             {
               if (bool)
               {
-                i.this.nFP.setBackgroundResource(2131233815);
-                i.this.BBn.setBackgroundResource(2131232870);
-                i.this.KUL.setBackgroundResource(2131232867);
-                AppMethodBeat.o(188161);
+                i.d(i.this).setBackgroundResource(2131234639);
+                i.b(i.this).setBackgroundResource(2131233330);
+                i.e(i.this).setBackgroundResource(2131233327);
+                AppMethodBeat.o(234283);
                 return;
               }
-              i.this.nFP.setBackgroundResource(2131232872);
-              i.this.nFO.setBackgroundResource(2131232870);
-              i.this.KUK.setBackgroundResource(2131232867);
-              AppMethodBeat.o(188161);
+              i.d(i.this).setBackgroundResource(2131233332);
+              i.c(i.this).setBackgroundResource(2131233330);
+              i.f(i.this).setBackgroundResource(2131233327);
+              AppMethodBeat.o(234283);
               return;
             }
-            if (i.this.hms)
+            if (i.this.ifo)
             {
               if (bool)
               {
-                i.this.nFP.setBackgroundResource(2131233815);
-                i.this.BBn.setBackgroundResource(2131232867);
-                i.this.KUL.setBackground(null);
-                AppMethodBeat.o(188161);
+                i.d(i.this).setBackgroundResource(2131234639);
+                i.b(i.this).setBackgroundResource(2131233327);
+                i.e(i.this).setBackground(null);
+                AppMethodBeat.o(234283);
                 return;
               }
-              i.this.nFP.setBackgroundResource(2131232872);
-              i.this.nFO.setBackgroundResource(2131232867);
-              i.this.KUK.setBackground(null);
+              i.d(i.this).setBackgroundResource(2131233332);
+              i.c(i.this).setBackgroundResource(2131233327);
+              i.f(i.this).setBackground(null);
             }
-            AppMethodBeat.o(188161);
+            AppMethodBeat.o(234283);
           }
         });
-        AppMethodBeat.o(188162);
+        AppMethodBeat.o(234284);
       }
     });
-    com.tencent.mm.plugin.forcenotify.a.b localb = (com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class);
+    com.tencent.mm.plugin.forcenotify.a.b localb = (com.tencent.mm.plugin.forcenotify.a.b)g.af(com.tencent.mm.plugin.forcenotify.a.b.class);
     if (localb != null) {}
-    for (boolean bool = localb.cTc();; bool = false)
+    for (boolean bool = localb.dMl();; bool = false)
     {
       AppMethodBeat.o(38789);
       return bool;
@@ -150,29 +143,29 @@ public final class i
   public final void destroy()
   {
     AppMethodBeat.i(38787);
-    if ((com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class) != null)
+    if ((com.tencent.mm.plugin.forcenotify.a.b)g.af(com.tencent.mm.plugin.forcenotify.a.b.class) != null)
     {
-      j localj = ((com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class)).cTd();
-      if (localj != null) {
-        localj.remove(this);
+      MAutoStorage localMAutoStorage = ((com.tencent.mm.plugin.forcenotify.a.b)g.af(com.tencent.mm.plugin.forcenotify.a.b.class)).dMm();
+      if (localMAutoStorage != null) {
+        localMAutoStorage.remove(this);
       }
     }
     AppMethodBeat.o(38787);
   }
   
-  public final boolean fNP()
+  public final boolean gWj()
   {
     int j = 8;
     AppMethodBeat.i(38788);
-    Object localObject = (com.tencent.mm.plugin.forcenotify.a.b)g.ab(com.tencent.mm.plugin.forcenotify.a.b.class);
+    Object localObject = (com.tencent.mm.plugin.forcenotify.a.b)g.af(com.tencent.mm.plugin.forcenotify.a.b.class);
     if (localObject == null)
     {
       AppMethodBeat.o(38788);
       return false;
     }
-    boolean bool2 = ((com.tencent.mm.plugin.forcenotify.a.b)localObject).cTc();
+    boolean bool2 = ((com.tencent.mm.plugin.forcenotify.a.b)localObject).dMl();
     boolean bool3 = ((com.tencent.mm.plugin.forcenotify.a.b)localObject).hasError();
-    if ((this.BBn == null) || (this.nFO == null))
+    if ((this.FLZ == null) || (this.oQL == null))
     {
       AppMethodBeat.o(38788);
       return false;
@@ -180,12 +173,12 @@ public final class i
     int i;
     if (bool3)
     {
-      localObject = this.BBn;
+      localObject = this.FLZ;
       if (bool2)
       {
         i = 0;
         ((View)localObject).setVisibility(i);
-        localObject = this.nFO;
+        localObject = this.oQL;
         i = j;
         label101:
         ((View)localObject).setVisibility(i);
@@ -197,13 +190,13 @@ public final class i
     label194:
     for (boolean bool1 = true;; bool1 = false)
     {
-      ae.i("MicroMsg.ForceNotifyBanner", "[checkShow] isShow:%s hasError:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3) });
+      Log.i("MicroMsg.ForceNotifyBanner", "[checkShow] isShow:%s hasError:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool3) });
       AppMethodBeat.o(38788);
       return bool2;
       i = 8;
       break;
-      this.BBn.setVisibility(8);
-      View localView = this.nFO;
+      this.FLZ.setVisibility(8);
+      View localView = this.oQL;
       localObject = localView;
       i = j;
       if (!bool2) {
@@ -217,12 +210,19 @@ public final class i
   
   public final int getLayoutId()
   {
-    return 2131494161;
+    return 2131494716;
+  }
+  
+  public final void onNotifyChange(String paramString, MStorageEventData paramMStorageEventData)
+  {
+    AppMethodBeat.i(38790);
+    gWj();
+    AppMethodBeat.o(38790);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.i
  * JD-Core Version:    0.7.0.1
  */

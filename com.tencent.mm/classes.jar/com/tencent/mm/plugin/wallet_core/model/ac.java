@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.wallet_core.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public final class ac
 {
   public static String TAG = "MicroMsg.WalletIndexPayMenu";
   
-  public static void UH(String paramString)
+  public static void aev(String paramString)
   {
     AppMethodBeat.i(70428);
-    g.ajS();
-    g.ajR().ajA().set(am.a.IUx, paramString);
+    g.aAi();
+    g.aAh().azQ().set(ar.a.OcL, paramString);
     AppMethodBeat.o(70428);
   }
 }

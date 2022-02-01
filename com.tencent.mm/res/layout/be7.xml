@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/h8y" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/btt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/bts" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@color/BW_93" />
-</FrameLayout>
+    <ImageView android:id="@id/j6n" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/j5c" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/BW_100_Alpha_0_9" android:id="@id/j4n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bt" android:layout_marginBottom="@dimen/bt" android:text="02:24" android:layout_alignParentBottom="true" />
+</RelativeLayout>

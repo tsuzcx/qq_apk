@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/f94" style="@style/il">
-        <ProgressBar android:layout_gravity="center_vertical" android:id="@id/if" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ds" style="@style/a5o" />
-        <TextView android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/ga1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dn" android:text="{tip}" style="@style/m3" />
-    </LinearLayout>
-</RelativeLayout>

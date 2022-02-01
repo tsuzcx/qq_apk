@@ -7,20 +7,20 @@ import java.util.List;
 public final class a
   extends com.google.android.exoplayer2.f.b
 {
-  private final b bBD;
+  private final b bBF;
   
   public a(List<byte[]> paramList)
   {
     super("DvbDecoder");
     AppMethodBeat.i(92790);
     paramList = new m((byte[])paramList.get(0));
-    this.bBD = new b(paramList.readUnsignedShort(), paramList.readUnsignedShort());
+    this.bBF = new b(paramList.readUnsignedShort(), paramList.readUnsignedShort());
     AppMethodBeat.o(92790);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.b.a
  * JD-Core Version:    0.7.0.1
  */

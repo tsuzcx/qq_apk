@@ -12,78 +12,78 @@ import com.tencent.mm.av.a.a.c;
 import com.tencent.mm.av.a.a.c.a;
 import com.tencent.mm.av.q;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.List;
 
 final class b
   extends BaseAdapter
 {
-  private List<z> JSR;
-  boolean JSS;
+  private List<z> PdW;
+  boolean PdX;
   private Context context;
-  private c qon;
+  private c rFu;
   
   public b(Context paramContext)
   {
     AppMethodBeat.i(34220);
-    this.JSS = false;
+    this.PdX = false;
     this.context = paramContext;
-    this.JSR = new ArrayList();
+    this.PdW = new ArrayList();
     paramContext = new c.a();
-    paramContext.igv = 2131233401;
-    this.qon = paramContext.aJu();
-    V(null);
+    paramContext.jbq = 2131234199;
+    this.rFu = paramContext.bdv();
+    ad(null);
     AppMethodBeat.o(34220);
   }
   
-  private z adp(int paramInt)
+  private z alZ(int paramInt)
   {
     AppMethodBeat.i(34225);
-    z localz = (z)this.JSR.get(paramInt);
+    z localz = (z)this.PdW.get(paramInt);
     AppMethodBeat.o(34225);
     return localz;
   }
   
-  private z fEF()
+  private z gMM()
   {
     AppMethodBeat.i(34222);
     z localz = new z();
-    localz.resId = 2131233942;
-    localz.fXp = this.context.getString(2131763457);
+    localz.resId = 2131234778;
+    localz.gCv = this.context.getString(2131765640);
     AppMethodBeat.o(34222);
     return localz;
   }
   
-  private z fEG()
+  private z gMN()
   {
     AppMethodBeat.i(34223);
     z localz = new z();
-    localz.resId = 2131233943;
-    localz.fXp = this.context.getString(2131757313);
+    localz.resId = 2131234779;
+    localz.gCv = this.context.getString(2131757527);
     AppMethodBeat.o(34223);
     return localz;
   }
   
-  public final void V(List<z> paramList)
+  public final void ad(List<z> paramList)
   {
     AppMethodBeat.i(34221);
-    this.JSR.clear();
+    this.PdW.clear();
     if ((paramList != null) && (paramList.size() != 0)) {
-      this.JSR.addAll(paramList);
+      this.PdW.addAll(paramList);
     }
-    if (this.JSS) {
-      this.JSR.add(fEG());
+    if (this.PdX) {
+      this.PdW.add(gMN());
     }
-    this.JSR.add(fEF());
-    ae.d("MicroMsg.AppInfoListAdapter", "updateData mDeviceInfoList.size() = %d.", new Object[] { Integer.valueOf(this.JSR.size()) });
+    this.PdW.add(gMM());
+    Log.d("MicroMsg.AppInfoListAdapter", "updateData mDeviceInfoList.size() = %d.", new Object[] { Integer.valueOf(this.PdW.size()) });
     AppMethodBeat.o(34221);
   }
   
   public final int getCount()
   {
     AppMethodBeat.i(34224);
-    int i = this.JSR.size();
+    int i = this.PdW.size();
     AppMethodBeat.o(34224);
     return i;
   }
@@ -96,48 +96,48 @@ final class b
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(34226);
-    z localz = adp(paramInt);
+    z localz = alZ(paramInt);
     Object localObject;
     if (paramView == null)
     {
-      paramView = new ar();
-      localObject = View.inflate(paramViewGroup.getContext(), 2131495368, null);
-      paramView.qrn = ((View)localObject).findViewById(2131298736);
-      paramView.jiC = ((TextView)((View)localObject).findViewById(2131302656));
-      paramView.mdt = ((ImageView)((View)localObject).findViewById(2131300880));
-      paramView.JXN = ((TextView)((View)localObject).findViewById(2131304561));
-      paramView.JZK = ((SendDataToDeviceProgressBar)((View)localObject).findViewById(2131304560));
-      paramView.JZK.setVisibility(4);
+      paramView = new as();
+      localObject = View.inflate(paramViewGroup.getContext(), 2131496229, null);
+      paramView.rII = ((View)localObject).findViewById(2131299174);
+      paramView.kgE = ((TextView)((View)localObject).findViewById(2131305210));
+      paramView.nnL = ((ImageView)((View)localObject).findViewById(2131302475));
+      paramView.Pjb = ((TextView)((View)localObject).findViewById(2131307603));
+      paramView.Plh = ((SendDataToDeviceProgressBar)((View)localObject).findViewById(2131307602));
+      paramView.Plh.setVisibility(4);
       ((View)localObject).setTag(paramView);
       paramViewGroup = paramView;
       paramView = (View)localObject;
-      paramViewGroup.jiC.setText(localz.fXp);
-      ae.v("MicroMsg.AppInfoListAdapter", "position(%s), name(%s).", new Object[] { Integer.valueOf(paramInt), localz.fXp });
+      paramViewGroup.kgE.setText(localz.gCv);
+      Log.v("MicroMsg.AppInfoListAdapter", "position(%s), name(%s).", new Object[] { Integer.valueOf(paramInt), localz.gCv });
       if (localz.resId == 0) {
         break label209;
       }
-      paramViewGroup.mdt.setImageResource(localz.resId);
+      paramViewGroup.nnL.setImageResource(localz.resId);
     }
     for (;;)
     {
-      paramViewGroup.qrn.setTag(Integer.valueOf(paramInt));
+      paramViewGroup.rII.setTag(Integer.valueOf(paramInt));
       AppMethodBeat.o(34226);
       return paramView;
-      paramViewGroup = (ar)paramView.getTag();
+      paramViewGroup = (as)paramView.getTag();
       break;
       label209:
       localObject = h.c(localz.appId, 1, com.tencent.mm.cb.a.getDensity(this.context));
       if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-        paramViewGroup.mdt.setImageBitmap((Bitmap)localObject);
+        paramViewGroup.nnL.setImageBitmap((Bitmap)localObject);
       } else {
-        q.aJb().a(localz.iconUrl, paramViewGroup.mdt, this.qon);
+        q.bcV().a(localz.iconUrl, paramViewGroup.nnL, this.rFu);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.b
  * JD-Core Version:    0.7.0.1
  */

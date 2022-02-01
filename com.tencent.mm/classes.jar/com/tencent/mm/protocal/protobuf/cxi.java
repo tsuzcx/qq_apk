@@ -5,68 +5,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class cxi
   extends com.tencent.mm.bw.a
 {
-  public String Username;
-  public String uuA;
+  public String MBR;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(181513);
+    AppMethodBeat.i(123631);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Username != null) {
-        paramVarArgs.d(1, this.Username);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.MBR != null) {
+        paramVarArgs.e(1, this.MBR);
       }
-      if (this.uuA != null) {
-        paramVarArgs.d(2, this.uuA);
-      }
-      AppMethodBeat.o(181513);
+      AppMethodBeat.o(123631);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Username == null) {
-        break label274;
+      if (this.MBR == null) {
+        break label213;
       }
     }
-    label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Username) + 0;; paramInt = 0)
+    label213:
+    for (paramInt = g.a.a.b.b.a.f(1, this.MBR) + 0;; paramInt = 0)
     {
-      int i = paramInt;
-      if (this.uuA != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.uuA);
-      }
-      AppMethodBeat.o(181513);
-      return i;
+      AppMethodBeat.o(123631);
+      return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(181513);
+        AppMethodBeat.o(123631);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         cxi localcxi = (cxi)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(181513);
+          AppMethodBeat.o(123631);
           return -1;
-        case 1: 
-          localcxi.Username = locala.OmT.readString();
-          AppMethodBeat.o(181513);
-          return 0;
         }
-        localcxi.uuA = locala.OmT.readString();
-        AppMethodBeat.o(181513);
+        localcxi.MBR = locala.UbS.readString();
+        AppMethodBeat.o(123631);
         return 0;
       }
-      AppMethodBeat.o(181513);
+      AppMethodBeat.o(123631);
       return -1;
     }
   }

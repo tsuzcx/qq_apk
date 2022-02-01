@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.base.DrawedCallBackFrameLayout android:id="@id/f40" style="@style/kd"
+<RelativeLayout android:gravity="center" android:background="@drawable/bgv" android:padding="5.0dip" android:layout_width="60.0dip" android:layout_height="60.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/dm6" android:paddingTop="@dimen/ic" android:paddingBottom="@dimen/ic" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/jm" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:gravity="center|left" android:id="@id/j9" android:background="@color/aa" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/ju" android:paddingRight="@dimen/jn" android:paddingBottom="@dimen/ju" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:gravity="center|left" android:id="@id/j_" android:background="@color/aa" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/ju" android:paddingRight="@dimen/jn" android:paddingBottom="@dimen/ju" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/a_u" android:gravity="center|left" android:id="@id/ii" android:background="@color/rx" android:paddingLeft="@dimen/ha" android:paddingTop="@dimen/ju" android:paddingRight="@dimen/jn" android:paddingBottom="@dimen/ju" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/hf" />
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/hq" android:background="@color/po" android:layout_width="fill_parent" android:layout_height="@dimen/jm">
-        <TextView android:enabled="false" android:textSize="@dimen/ia" android:textColor="@color/z9" android:gravity="center_vertical" android:id="@id/dmd" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="0.0dip" android:layout_height="fill_parent" android:minWidth="64.0dip" android:text="@string/coq" android:layout_weight="1.0" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:layout_marginStart="-30.0dip">
-            <ImageButton android:id="@id/e9y" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/radio_off" />
-            <TextView android:textSize="@dimen/ia" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/e9z" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/cop" android:maxLines="2" android:layout_marginStart="@dimen/jn" />
-        </LinearLayout>
-    </LinearLayout>
-    <com.tencent.mm.plugin.gallery.ui.ImageFolderMgrView android:id="@id/coh" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</com.tencent.mm.ui.base.DrawedCallBackFrameLayout>
+    <ImageView android:layout_gravity="center" android:id="@id/wm" android:paddingBottom="2.0dip" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij" android:src="@drawable/bca" android:layout_centerInParent="true" />
+</RelativeLayout>

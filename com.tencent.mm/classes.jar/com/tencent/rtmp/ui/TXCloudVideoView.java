@@ -16,7 +16,7 @@ import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.liteav.j;
+import com.tencent.liteav.k;
 import com.tencent.liteav.renderer.TXCFocusIndicatorView;
 import com.tencent.liteav.renderer.TXCGLSurfaceView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -28,7 +28,7 @@ public class TXCloudVideoView
   private static final int FOCUS_AREA_SIZE_DP = 70;
   private static final String TAG = "TXCloudVideoView";
   private float mBottom;
-  private j mCapture;
+  private k mCapture;
   private int mCaptureHeight;
   private int mCaptureWidth;
   private int mCurrentScale;
@@ -530,20 +530,20 @@ public class TXCloudVideoView
     AppMethodBeat.o(14263);
   }
   
-  public void start(boolean paramBoolean1, boolean paramBoolean2, j paramj)
+  public void start(boolean paramBoolean1, boolean paramBoolean2, k paramk)
   {
-    AppMethodBeat.i(14268);
+    AppMethodBeat.i(222662);
     this.mFocus = paramBoolean1;
     this.mZoom = paramBoolean2;
     if ((this.mFocus) || (this.mZoom))
     {
       setOnTouchListener(this);
-      this.mCapture = paramj;
+      this.mCapture = paramk;
     }
     if (this.mGLSurfaceView != null) {
       this.mGLSurfaceView.setVisibility(0);
     }
-    AppMethodBeat.o(14268);
+    AppMethodBeat.o(222662);
   }
   
   public void stop(boolean paramBoolean)
@@ -654,7 +654,7 @@ public class TXCloudVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.ui.TXCloudVideoView
  * JD-Core Version:    0.7.0.1
  */

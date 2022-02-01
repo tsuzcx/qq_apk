@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<LinearLayout android:orientation="vertical" android:id="@id/h8v" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView style="@style/ny">
-        <LinearLayout style="@style/ld">
-            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <LinearLayout android:orientation="vertical" android:paddingBottom="80.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                    <ImageView android:layout_gravity="center_horizontal" android:id="@id/e7i" android:layout_width="@dimen/hb" android:layout_height="@dimen/hb" android:src="@raw/success_icon" />
-                    <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:gravity="center" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/dsf" />
-                    <TextView android:textSize="@dimen/hf" android:textColor="@color/y4" android:gravity="center" android:id="@id/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" />
-                </LinearLayout>
-                <Button android:id="@id/fd3" android:visibility="gone" android:layout_marginBottom="@dimen/i_" android:text="@string/dse" style="@style/o6" />
-                <TextView android:textSize="@dimen/ia" android:textColor="@color/s5" android:gravity="center" android:id="@id/b_l" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-            </LinearLayout>
+    <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:background="@drawable/b6d" android:paddingLeft="6.0dip" android:paddingTop="6.0dip" android:paddingRight="6.0dip" android:paddingBottom="6.0dip" style="@style/mq">
+        <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:background="@drawable/ca2" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/a2x" android:id="@id/f57" android:background="@null" android:layout_width="0.0dip" android:layout_marginBottom="@dimen/iu" android:maxHeight="@dimen/ae" android:minHeight="@dimen/ag" android:singleLine="false" android:layout_weight="1.0" android:inputType="textCapSentences|textMultiLine" style="@style/mb" />
+            <ImageButton android:id="@id/f59" android:background="@null" android:padding="@dimen/k5" android:layout_width="@dimen/aj" android:layout_height="@dimen/aj" android:layout_marginLeft="@dimen/g" android:layout_marginBottom="@dimen/iu" android:src="@drawable/of" android:contentDescription="@string/auf" />
         </LinearLayout>
-    </ScrollView>
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip">
+            <TextView android:gravity="top" android:id="@id/aze" android:visibility="gone" style="@style/h9" />
+            <Button android:textColor="@color/fu" android:id="@id/f5_" android:background="@drawable/aer" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:layout_width="wrap_content" android:layout_height="@dimen/aj" android:minWidth="@dimen/al" android:text="@string/eo_" />
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

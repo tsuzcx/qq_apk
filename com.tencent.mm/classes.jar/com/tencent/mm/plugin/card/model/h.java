@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.card.model;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class h
-  extends j<g>
+  extends MAutoStorage<g>
 {
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(112780);
-    SQL_CREATE = new String[] { j.getCreateSQLs(g.info, "CardMsgInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(g.info, "CardMsgInfo") };
     AppMethodBeat.o(112780);
   }
   
-  public h(e parame)
+  public h(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, g.info, "CardMsgInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, g.info, "CardMsgInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final int bVY()
+  public final int ctM()
   {
     int i = 0;
     AppMethodBeat.i(112778);
-    Cursor localCursor = this.db.a(" select count(*) from CardMsgInfo where read_state = ? ", new String[] { "1" }, 2);
+    Cursor localCursor = this.db.rawQuery(" select count(*) from CardMsgInfo where read_state = ? ", new String[] { "1" }, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(112778);
@@ -42,7 +42,7 @@ public final class h
     return i;
   }
   
-  public final boolean bVZ()
+  public final boolean ctN()
   {
     AppMethodBeat.i(112779);
     boolean bool = this.db.execSQL("CardMsgInfo", " update CardMsgInfo set read_state = 0  where read_state = 1");
@@ -60,7 +60,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.h
  * JD-Core Version:    0.7.0.1
  */

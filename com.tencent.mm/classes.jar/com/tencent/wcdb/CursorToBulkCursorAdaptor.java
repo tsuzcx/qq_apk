@@ -1,11 +1,7 @@
 package com.tencent.wcdb;
 
-import android.database.ContentObserver;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.os.IBinder.DeathRecipient;
-import android.os.RemoteException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class CursorToBulkCursorAdaptor
@@ -16,7 +12,7 @@ public final class CursorToBulkCursorAdaptor
   private CrossProcessCursor mCursor;
   private CursorWindow mFilledWindow;
   private final Object mLock;
-  private ContentObserverProxy mObserver;
+  private CursorToBulkCursorAdaptor.ContentObserverProxy mObserver;
   private final String mProviderName;
   
   public CursorToBulkCursorAdaptor(Cursor arg1, IContentObserver paramIContentObserver, String paramString)
@@ -59,7 +55,7 @@ public final class CursorToBulkCursorAdaptor
       AppMethodBeat.o(2698);
       throw paramIContentObserver;
     }
-    this.mObserver = new ContentObserverProxy(paramIContentObserver, this);
+    this.mObserver = new CursorToBulkCursorAdaptor.ContentObserverProxy(paramIContentObserver, this);
     this.mCursor.registerContentObserver(this.mObserver);
     AppMethodBeat.o(2698);
   }
@@ -271,61 +267,10 @@ public final class CursorToBulkCursorAdaptor
       return paramBundle;
     }
   }
-  
-  static final class ContentObserverProxy
-    extends ContentObserver
-  {
-    protected IContentObserver mRemote;
-    
-    public ContentObserverProxy(IContentObserver paramIContentObserver, IBinder.DeathRecipient paramDeathRecipient)
-    {
-      super();
-      AppMethodBeat.i(2684);
-      this.mRemote = paramIContentObserver;
-      try
-      {
-        paramIContentObserver.asBinder().linkToDeath(paramDeathRecipient, 0);
-        AppMethodBeat.o(2684);
-        return;
-      }
-      catch (RemoteException paramIContentObserver)
-      {
-        AppMethodBeat.o(2684);
-      }
-    }
-    
-    public final boolean deliverSelfNotifications()
-    {
-      return false;
-    }
-    
-    public final void onChange(boolean paramBoolean, Uri paramUri)
-    {
-      AppMethodBeat.i(2686);
-      try
-      {
-        this.mRemote.onChange(paramBoolean, paramUri);
-        AppMethodBeat.o(2686);
-        return;
-      }
-      catch (RemoteException paramUri)
-      {
-        AppMethodBeat.o(2686);
-      }
-    }
-    
-    public final boolean unlinkToDeath(IBinder.DeathRecipient paramDeathRecipient)
-    {
-      AppMethodBeat.i(2685);
-      boolean bool = this.mRemote.asBinder().unlinkToDeath(paramDeathRecipient, 0);
-      AppMethodBeat.o(2685);
-      return bool;
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.wcdb.CursorToBulkCursorAdaptor
  * JD-Core Version:    0.7.0.1
  */

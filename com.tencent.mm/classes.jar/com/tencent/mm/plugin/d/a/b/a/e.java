@@ -7,79 +7,79 @@ public class e
   extends a
 {
   static final String TAG;
-  public static final String nXW;
-  public static final String nXX;
-  public static final String nXY;
-  public static final String nXZ;
-  public byte nYa;
-  public byte nYb;
-  public byte nYc;
-  public byte nYd;
-  public byte[] nYe;
-  public int nYf;
-  public byte nYg;
-  public byte nYh;
-  public byte[] nYi;
+  public static final String piU;
+  public static final String piV;
+  public static final String piW;
+  public static final String piX;
+  public byte piY;
+  public byte piZ;
+  public byte pja;
+  public byte pjb;
+  public byte[] pjc;
+  public int pjd;
+  public byte pje;
+  public byte pjf;
+  public byte[] pjg;
   
   static
   {
     AppMethodBeat.i(22582);
     TAG = e.class.getName();
-    nXW = h.nWR;
-    nXX = h.nWS;
-    nXY = h.nWT;
-    nXZ = h.nWU;
+    piU = h.phN;
+    piV = h.phO;
+    piW = h.phP;
+    piX = h.phQ;
     AppMethodBeat.o(22582);
   }
   
   public e()
   {
     AppMethodBeat.i(22580);
-    this.nXh = null;
-    this.nXi = 8;
-    this.nWB = 16L;
-    this.nYa = 0;
-    this.nYb = 0;
-    this.nYc = 0;
-    this.nYd = 0;
-    this.nYe = new byte[] { 0, 0 };
-    this.nYf = -1;
-    this.nYg = 0;
-    this.nYh = 0;
-    this.nYi = null;
+    this.pie = null;
+    this.pif = 8;
+    this.phx = 16L;
+    this.piY = 0;
+    this.piZ = 0;
+    this.pja = 0;
+    this.pjb = 0;
+    this.pjc = new byte[] { 0, 0 };
+    this.pjd = -1;
+    this.pje = 0;
+    this.pjf = 0;
+    this.pjg = null;
     AppMethodBeat.o(22580);
   }
   
-  public final byte[] bNM()
+  public final byte[] ckM()
   {
     AppMethodBeat.i(22581);
     byte[] arrayOfByte;
-    if (this.nXh.equalsIgnoreCase(nXW))
+    if (this.pie.equalsIgnoreCase(piU))
     {
       arrayOfByte = new byte[3];
-      System.arraycopy(Byte.valueOf(this.nYa), 0, arrayOfByte, 0, 1);
-      System.arraycopy(Byte.valueOf(this.nYb), 0, arrayOfByte, 1, 1);
-      System.arraycopy(Byte.valueOf(this.nYc), 0, arrayOfByte, 2, 1);
+      System.arraycopy(Byte.valueOf(this.piY), 0, arrayOfByte, 0, 1);
+      System.arraycopy(Byte.valueOf(this.piZ), 0, arrayOfByte, 1, 1);
+      System.arraycopy(Byte.valueOf(this.pja), 0, arrayOfByte, 2, 1);
       AppMethodBeat.o(22581);
       return arrayOfByte;
     }
-    if (this.nXh.equalsIgnoreCase(nXX))
+    if (this.pie.equalsIgnoreCase(piV))
     {
       arrayOfByte = new byte[1];
-      System.arraycopy(Byte.valueOf(this.nYd), 0, arrayOfByte, 0, 1);
+      System.arraycopy(Byte.valueOf(this.pjb), 0, arrayOfByte, 0, 1);
       AppMethodBeat.o(22581);
       return arrayOfByte;
     }
-    if (this.nXh.equalsIgnoreCase(nXZ))
+    if (this.pie.equalsIgnoreCase(piX))
     {
-      arrayOfByte = new byte[this.nYf];
-      byte b1 = (byte)(this.nYf & 0xFF);
-      byte b2 = (byte)(this.nYf >> 8 & 0xFF);
+      arrayOfByte = new byte[this.pjd];
+      byte b1 = (byte)(this.pjd & 0xFF);
+      byte b2 = (byte)(this.pjd >> 8 & 0xFF);
       System.arraycopy(Byte.valueOf(b1), 0, arrayOfByte, 0, 1);
       System.arraycopy(Byte.valueOf(b2), 0, arrayOfByte, 1, 1);
-      System.arraycopy(Byte.valueOf(this.nYg), 0, arrayOfByte, 2, 1);
-      if (this.nYf > 3) {
-        System.arraycopy(this.nYi, 0, arrayOfByte, 3, this.nYf - 3);
+      System.arraycopy(Byte.valueOf(this.pje), 0, arrayOfByte, 2, 1);
+      if (this.pjd > 3) {
+        System.arraycopy(this.pjg, 0, arrayOfByte, 3, this.pjd - 3);
       }
       AppMethodBeat.o(22581);
       return arrayOfByte;

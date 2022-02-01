@@ -1,14 +1,14 @@
 package com.tencent.mm.plugin.music.f.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
 {
-  public static int Mf(int paramInt)
+  public static int Tc(int paramInt)
   {
     AppMethodBeat.i(137405);
-    ae.i("MicroMsg.PlayerErrorHandler", "getErrCodeType, errorCode: %d", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.PlayerErrorHandler", "getErrCodeType, errorCode: %d", new Object[] { Integer.valueOf(paramInt) });
     switch (paramInt)
     {
     default: 
@@ -48,7 +48,7 @@ public final class e
     return 10001;
   }
   
-  public static String uF(int paramInt)
+  public static String yw(int paramInt)
   {
     AppMethodBeat.i(137406);
     Object localObject = new StringBuilder();
@@ -131,7 +131,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.f.a.e
  * JD-Core Version:    0.7.0.1
  */

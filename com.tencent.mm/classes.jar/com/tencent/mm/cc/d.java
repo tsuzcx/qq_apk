@@ -2,19 +2,19 @@ package com.tencent.mm.cc;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
 import java.io.InputStream;
 
 public final class d
 {
-  public SparseArray<a> IpU;
+  public SparseArray<a> NDr;
   public byte[] mData;
   
   private d(SparseArray<a> paramSparseArray, byte[] paramArrayOfByte)
   {
-    this.IpU = paramSparseArray;
+    this.NDr = paramSparseArray;
     this.mData = paramArrayOfByte;
   }
   
@@ -25,7 +25,7 @@ public final class d
     {
       byte[] arrayOfByte = new byte[paramInt];
       if (paramInputStream.read(arrayOfByte, 0, arrayOfByte.length) != arrayOfByte.length) {
-        ae.e("MicroMsg.language.PluralsCollection", "[cpan] newPluralsConllection failed. data length no equal.");
+        Log.e("MicroMsg.language.PluralsCollection", "[cpan] newPluralsConllection failed. data length no equal.");
       }
       paramSparseArray = new d(paramSparseArray, arrayOfByte);
       AppMethodBeat.o(141240);
@@ -33,7 +33,7 @@ public final class d
     }
     catch (IOException paramSparseArray)
     {
-      ae.e("MicroMsg.language.PluralsCollection", "[cpan] newPluralsConllection failed:%s", new Object[] { bu.o(paramSparseArray) });
+      Log.e("MicroMsg.language.PluralsCollection", "[cpan] newPluralsConllection failed:%s", new Object[] { Util.stackTraceToString(paramSparseArray) });
       AppMethodBeat.o(141240);
     }
     return null;
@@ -44,14 +44,14 @@ public final class d
     AppMethodBeat.i(141241);
     try
     {
-      j = this.IpU.indexOfKey(paramInt1);
+      j = this.NDr.indexOfKey(paramInt1);
       if (j < 0)
       {
         AppMethodBeat.o(141241);
         return null;
       }
-      localObject1 = (a)this.IpU.valueAt(j);
-      k = ((a)localObject1).IpW.length;
+      localObject1 = (a)this.NDr.valueAt(j);
+      k = ((a)localObject1).NDt.length;
       paramInt1 = 0;
       i = 0;
     }
@@ -63,7 +63,7 @@ public final class d
         int k;
         int i;
         Object localObject1 = null;
-        ae.e("MicroMsg.language.PluralsCollection", "[cpan] getString failed. %s", new Object[] { bu.o(paramVarArgs) });
+        Log.e("MicroMsg.language.PluralsCollection", "[cpan] getString failed. %s", new Object[] { Util.stackTraceToString(paramVarArgs) });
         Object localObject2 = localObject1;
         continue;
         paramInt1 += 1;
@@ -71,24 +71,24 @@ public final class d
     }
     if (paramInt1 < k)
     {
-      if (localObject1.IpW[paramInt1] == paramInt2) {
+      if (localObject1.NDt[paramInt1] == paramInt2) {
         i = paramInt1;
       }
     }
     else
     {
-      if (j <= this.IpU.size() - 1) {
+      if (j <= this.NDr.size() - 1) {
         if (i >= k - 1)
         {
-          localObject2 = (a)this.IpU.valueAt(j + 1);
-          localObject1 = new String(this.mData, localObject1.IpX[i], localObject2.IpX[0] - localObject1.IpX[i]);
+          localObject2 = (a)this.NDr.valueAt(j + 1);
+          localObject1 = new String(this.mData, localObject1.NDu[i], localObject2.NDu[0] - localObject1.NDu[i]);
         }
       }
       for (;;)
       {
         try
         {
-          if (!bu.isNullOrNil((String)localObject1))
+          if (!Util.isNullOrNil((String)localObject1))
           {
             localObject2 = localObject1;
             if (paramVarArgs == null) {}
@@ -104,12 +104,12 @@ public final class d
         {
           continue;
         }
-        localObject1 = new String(this.mData, localObject1.IpX[i], localObject1.IpX[(i + 1)] - localObject1.IpX[i]);
+        localObject1 = new String(this.mData, localObject1.NDu[i], localObject1.NDu[(i + 1)] - localObject1.NDu[i]);
         continue;
         if (i >= k - 1) {
-          localObject1 = new String(this.mData, localObject1.IpX[i], this.mData.length - localObject1.IpX[i]);
+          localObject1 = new String(this.mData, localObject1.NDu[i], this.mData.length - localObject1.NDu[i]);
         } else {
-          localObject1 = new String(this.mData, localObject1.IpX[i], localObject1.IpX[(i + 1)] - localObject1.IpX[i]);
+          localObject1 = new String(this.mData, localObject1.NDu[i], localObject1.NDu[(i + 1)] - localObject1.NDu[i]);
         }
       }
     }
@@ -117,15 +117,15 @@ public final class d
   
   static final class a
   {
-    public final int IpV;
-    public final int[] IpW;
-    public final int[] IpX;
+    public final int NDs;
+    public final int[] NDt;
+    public final int[] NDu;
     
     public a(int paramInt, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
     {
-      this.IpV = paramInt;
-      this.IpW = paramArrayOfInt1;
-      this.IpX = paramArrayOfInt2;
+      this.NDs = paramInt;
+      this.NDt = paramArrayOfInt1;
+      this.NDu = paramArrayOfInt2;
     }
   }
 }

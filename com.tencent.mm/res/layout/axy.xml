@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a_r" android:paddingLeft="@dimen/ad4" android:paddingRight="@dimen/ad4" android:layout_width="fill_parent" android:layout_height="@dimen/adf"
+<com.tencent.kinda.framework.app.KindaPlatformLayout android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/adj" android:textColor="@color/zj" android:gravity="center|left" android:id="@id/ejn" android:layout_width="@dimen/ade" android:layout_height="wrap_content" android:singleLine="false" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="@dimen/adj" android:textColor="@color/zj" android:gravity="left" android:id="@id/ejp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/adh" android:singleLine="true" android:layout_toRightOf="@id/ejn" />
-    <TextView android:textSize="@dimen/adj" android:textColor="@color/zj" android:layout_gravity="right" android:id="@id/ejq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <ViewStub android:id="@id/e6l" android:layout="@layout/bd" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <FrameLayout android:id="@id/be7" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/be3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+    </FrameLayout>
+    <View android:id="@id/j7f" android:background="@color/ac_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="100.0dip" />
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/c21" />
+</com.tencent.kinda.framework.app.KindaPlatformLayout>

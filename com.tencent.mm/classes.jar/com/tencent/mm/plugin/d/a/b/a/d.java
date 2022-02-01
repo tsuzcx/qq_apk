@@ -7,45 +7,45 @@ public class d
   extends a
 {
   static final String TAG;
-  public static String nXI;
-  public static String nXJ;
-  public static String nXj;
-  private final int nXK = 1;
-  private final int nXL = 4;
-  private final int nXM = 6;
-  private final int nXN = 8;
-  private final int nXO = 16;
-  String nXP = "";
-  a nXQ = null;
+  public static String piG;
+  public static String piH;
+  public static String pig;
+  private final int piI = 1;
+  private final int piJ = 4;
+  private final int piK = 6;
+  private final int piL = 8;
+  private final int piM = 16;
+  String piN = "";
+  a piO = null;
   
   static
   {
     AppMethodBeat.i(22579);
     TAG = d.class.getName();
-    nXj = h.nWZ;
-    nXI = h.nXa;
-    nXJ = h.nXb;
+    pig = h.phV;
+    piG = h.phW;
+    piH = h.phX;
     AppMethodBeat.o(22579);
   }
   
   public d()
   {
-    this.nXh = null;
-    this.nXi = 2;
-    this.nWB = 4L;
+    this.pie = null;
+    this.pif = 2;
+    this.phx = 4L;
   }
   
-  public final byte[] bNM()
+  public final byte[] ckM()
   {
     return null;
   }
   
   final class a
   {
-    public int nXR = 0;
-    public int nXS = 0;
-    public int nXT = 0;
-    public int nXU = 0;
+    public int piP = 0;
+    public int piQ = 0;
+    public int piR = 0;
+    public int piS = 0;
     
     public a() {}
   }

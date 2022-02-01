@@ -1,61 +1,60 @@
 package com.tencent.mm.plugin.appbrand.api;
 
-import android.app.ActivityOptions;
-import android.os.PersistableBundle;
-import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchFromNotifyReferrer;
-import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
+import kotlin.l;
 
-public final class f
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/api/PreRenderColdStartResultCallback;", "", "onError", "", "errCode", "", "errMsg", "", "onSuccess", "ErrCode", "api-protocol_release"})
+public abstract interface f
 {
-  public String appId;
-  public String cmv;
-  public String cmw;
-  public String dlj;
-  public int hSZ;
-  public String jFL;
-  public d jFM;
-  public PersistableBundle jFN;
-  public int jFO;
-  public String jFP;
-  public ValueCallback<String> jFQ;
-  public int jFR;
-  public ActivityOptions jFS;
-  public String jFT;
-  public AppBrandLaunchReferrer jFU;
-  public String jFV;
-  public String jFW;
-  public AppBrandLaunchFromNotifyReferrer jFX;
-  public WeAppOpenDeclarePromptBundle jFY;
-  public int launchMode;
-  public int scene;
-  public String username;
-  public int version;
+  public abstract void onError(int paramInt, String paramString);
   
-  public f()
+  public abstract void onSuccess();
+  
+  @l(hxD={1, 1, 16})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/api/PreRenderColdStartResultCallback$ErrCode;", "", "()V", "ERR_INVALID_PARAMS", "", "ERR_TASK_ALREADY_ALIVE", "ERR_TASK_BIND_REMOTE_SERVICE_FAIL", "ERR_TASK_CREATE_RUNTIME_FAILED", "ERR_TASK_GET_ATTRS_FAIL", "ERR_TASK_REMOTE_SERVICE_DIED", "ERR_TASK_RESOURCE_PREPARE_FAIL", "ERR_TASK_UNSUPPORTED", "OK", "codeToString", "", "code", "api-protocol_release"})
+  public static final class b
   {
-    AppMethodBeat.i(153192);
-    this.launchMode = 0;
-    this.hSZ = 0;
-    this.version = 0;
-    this.jFL = "";
-    this.jFM = null;
-    if (this.jFN != null) {
-      this.jFN.clear();
+    public static final b kHv;
+    
+    static
+    {
+      AppMethodBeat.i(194314);
+      kHv = new b();
+      AppMethodBeat.o(194314);
     }
-    this.jFN = null;
-    this.scene = 1000;
-    this.jFR = -100;
-    this.jFS = null;
-    this.jFU = null;
-    this.jFY = null;
-    AppMethodBeat.o(153192);
+    
+    public static String vM(int paramInt)
+    {
+      switch (paramInt)
+      {
+      default: 
+        return "UNKNOWN";
+      case 0: 
+        return "OK";
+      case -1: 
+        return "ERR_INVALID_PARAMS";
+      case -2: 
+        return "ERR_TASK_ALREADY_ALIVE";
+      case -3: 
+        return "ERR_TASK_GET_ATTRS_FAIL";
+      case -4: 
+        return "ERR_TASK_BIND_REMOTE_SERVICE_FAIL";
+      case -5: 
+        return "ERR_TASK_REMOTE_SERVICE_DIED";
+      case -6: 
+        return "ERR_TASK_CREATE_RUNTIME_FAILED";
+      case -7: 
+        return "ERR_TASK_RESOURCE_PREPARE_FAIL";
+      }
+      return "ERR_TASK_UNSUPPORTED";
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.api.f
  * JD-Core Version:    0.7.0.1
  */

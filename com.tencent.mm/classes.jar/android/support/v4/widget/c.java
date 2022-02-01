@@ -10,7 +10,7 @@ import android.graphics.Shader.TileMode;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.OvalShape;
 import android.os.Build.VERSION;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.DisplayMetrics;
 import android.view.animation.Animation.AnimationListener;
 import android.widget.ImageView;
@@ -18,8 +18,8 @@ import android.widget.ImageView;
 final class c
   extends ImageView
 {
-  Animation.AnimationListener Sq;
-  int Sr;
+  Animation.AnimationListener SD;
+  int SE;
   
   c(Context paramContext)
   {
@@ -27,26 +27,26 @@ final class c
     float f = getContext().getResources().getDisplayMetrics().density;
     int i = (int)(1.75F * f);
     int j = (int)(0.0F * f);
-    this.Sr = ((int)(3.5F * f));
-    if (fG())
+    this.SE = ((int)(3.5F * f));
+    if (fN())
     {
       paramContext = new ShapeDrawable(new OvalShape());
-      t.k(this, f * 4.0F);
+      u.l(this, f * 4.0F);
     }
     for (;;)
     {
       paramContext.getPaint().setColor(-328966);
-      t.a(this, paramContext);
+      u.a(this, paramContext);
       return;
-      paramContext = new ShapeDrawable(new a(this.Sr));
+      paramContext = new ShapeDrawable(new a(this.SE));
       setLayerType(1, paramContext.getPaint());
-      paramContext.getPaint().setShadowLayer(this.Sr, j, i, 503316480);
-      i = this.Sr;
+      paramContext.getPaint().setShadowLayer(this.SE, j, i, 503316480);
+      i = this.SE;
       setPadding(i, i, i, i);
     }
   }
   
-  private static boolean fG()
+  private static boolean fN()
   {
     return Build.VERSION.SDK_INT >= 21;
   }
@@ -54,24 +54,24 @@ final class c
   public final void onAnimationEnd()
   {
     super.onAnimationEnd();
-    if (this.Sq != null) {
-      this.Sq.onAnimationEnd(getAnimation());
+    if (this.SD != null) {
+      this.SD.onAnimationEnd(getAnimation());
     }
   }
   
   public final void onAnimationStart()
   {
     super.onAnimationStart();
-    if (this.Sq != null) {
-      this.Sq.onAnimationStart(getAnimation());
+    if (this.SD != null) {
+      this.SD.onAnimationStart(getAnimation());
     }
   }
   
   protected final void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    if (!fG()) {
-      setMeasuredDimension(getMeasuredWidth() + this.Sr * 2, getMeasuredHeight() + this.Sr * 2);
+    if (!fN()) {
+      setMeasuredDimension(getMeasuredWidth() + this.SE * 2, getMeasuredHeight() + this.SE * 2);
     }
   }
   
@@ -85,37 +85,37 @@ final class c
   final class a
     extends OvalShape
   {
-    private RadialGradient Ss;
-    private Paint St = new Paint();
+    private RadialGradient SF;
+    private Paint SG = new Paint();
     
     a(int paramInt)
     {
-      c.this.Sr = paramInt;
-      aT((int)rect().width());
+      c.this.SE = paramInt;
+      aU((int)rect().width());
     }
     
-    private void aT(int paramInt)
+    private void aU(int paramInt)
     {
       float f1 = paramInt / 2;
       float f2 = paramInt / 2;
-      float f3 = c.this.Sr;
+      float f3 = c.this.SE;
       Shader.TileMode localTileMode = Shader.TileMode.CLAMP;
-      this.Ss = new RadialGradient(f1, f2, f3, new int[] { 1023410176, 0 }, null, localTileMode);
-      this.St.setShader(this.Ss);
+      this.SF = new RadialGradient(f1, f2, f3, new int[] { 1023410176, 0 }, null, localTileMode);
+      this.SG.setShader(this.SF);
     }
     
     public final void draw(Canvas paramCanvas, Paint paramPaint)
     {
       int i = c.this.getWidth();
       int j = c.this.getHeight();
-      paramCanvas.drawCircle(i / 2, j / 2, i / 2, this.St);
-      paramCanvas.drawCircle(i / 2, j / 2, i / 2 - c.this.Sr, paramPaint);
+      paramCanvas.drawCircle(i / 2, j / 2, i / 2, this.SG);
+      paramCanvas.drawCircle(i / 2, j / 2, i / 2 - c.this.SE, paramPaint);
     }
     
     protected final void onResize(float paramFloat1, float paramFloat2)
     {
       super.onResize(paramFloat1, paramFloat2);
-      aT((int)paramFloat1);
+      aU((int)paramFloat1);
     }
   }
 }

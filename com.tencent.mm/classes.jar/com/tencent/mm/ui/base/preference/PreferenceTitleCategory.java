@@ -23,8 +23,8 @@ public class PreferenceTitleCategory
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(142664);
-    if (getLayoutResource() != 2131494867) {
-      setLayoutResource(2131494864);
+    if (getLayoutResource() != 2131495603) {
+      setLayoutResource(2131495600);
     }
     AppMethodBeat.o(142664);
   }
@@ -52,7 +52,7 @@ public class PreferenceTitleCategory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.PreferenceTitleCategory
  * JD-Core Version:    0.7.0.1
  */

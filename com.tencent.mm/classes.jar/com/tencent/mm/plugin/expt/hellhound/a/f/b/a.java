@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.expt.hellhound.a.f.b;
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.b;
-import com.tencent.mm.protocal.protobuf.dby;
-import com.tencent.mm.protocal.protobuf.dbz;
+import com.tencent.mm.protocal.protobuf.dvc;
+import com.tencent.mm.protocal.protobuf.dvd;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class a
 {
-  public static boolean a(Activity paramActivity, dbz paramdbz)
+  public static boolean a(Activity paramActivity, dvd paramdvd)
   {
     AppMethodBeat.i(122098);
-    if (paramdbz.HKA.isEmpty())
+    if (paramdvd.MWj.isEmpty())
     {
       AppMethodBeat.o(122098);
       return true;
@@ -23,19 +23,19 @@ public final class a
     {
       try
       {
-        Iterator localIterator = paramdbz.HKA.iterator();
+        Iterator localIterator = paramdvd.MWj.iterator();
         if (localIterator.hasNext())
         {
-          dby localdby = (dby)localIterator.next();
+          dvc localdvc = (dvc)localIterator.next();
           Object localObject1 = paramActivity;
           if (paramActivity == null)
           {
             localObject1 = paramActivity;
-            if ("MoreTabUI".equals(paramdbz.HKs)) {
-              localObject1 = b.cph();
+            if ("MoreTabUI".equals(paramdvd.MWb)) {
+              localObject1 = b.cNA();
             }
           }
-          if ((localObject1 == null) || (localdby == null))
+          if ((localObject1 == null) || (localdvc == null))
           {
             bool = false;
             paramActivity = (Activity)localObject1;
@@ -45,11 +45,11 @@ public final class a
             AppMethodBeat.o(122098);
             return false;
           }
-          paramActivity = Class.forName(localdby.className);
-          if ((localdby.dGe == null) || (localdby.dGe.isEmpty())) {
+          paramActivity = Class.forName(localdvc.className);
+          if ((localdvc.dataPath == null) || (localdvc.dataPath.isEmpty())) {
             break label294;
           }
-          String[] arrayOfString2 = localdby.dGe.split(",");
+          String[] arrayOfString2 = localdvc.dataPath.split(",");
           if (arrayOfString2.length <= 0)
           {
             bool = false;
@@ -75,7 +75,7 @@ public final class a
               continue;
             }
           }
-          bool = localdby.HKt.equals(localObject2);
+          bool = localdvc.MWc.equals(localObject2);
           continue;
         }
         AppMethodBeat.o(122098);

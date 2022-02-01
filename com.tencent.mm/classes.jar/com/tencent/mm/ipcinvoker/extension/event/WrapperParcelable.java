@@ -11,7 +11,7 @@ class WrapperParcelable
   implements Parcelable
 {
   public static final Parcelable.Creator<WrapperParcelable> CREATOR;
-  Object gAI;
+  Object hnx;
   
   static
   {
@@ -28,14 +28,14 @@ class WrapperParcelable
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(158818);
-    if (this.gAI != null)
+    if (this.hnx != null)
     {
-      a locala = c.bh(this.gAI);
+      a locala = c.bq(this.hnx);
       if (locala != null)
       {
         paramParcel.writeInt(1);
         paramParcel.writeString(locala.getClass().getName());
-        locala.a(this.gAI, paramParcel);
+        locala.a(this.hnx, paramParcel);
         AppMethodBeat.o(158818);
         return;
       }
@@ -46,7 +46,7 @@ class WrapperParcelable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.extension.event.WrapperParcelable
  * JD-Core Version:    0.7.0.1
  */

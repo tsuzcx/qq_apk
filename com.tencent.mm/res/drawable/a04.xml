@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/a8m" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/a8m" />
-    <item android:state_focused="false" android:drawable="@drawable/a8l" />
-</selector>
+    <solid android:color="@color/q8" />
+    <size android:height="@dimen/ce" />
+    <corners android:radius="@dimen/c5" />
+</shape>

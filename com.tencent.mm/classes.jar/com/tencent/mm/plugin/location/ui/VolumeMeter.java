@@ -6,57 +6,57 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.ImageView;
-import com.tencent.e.j.a;
+import com.tencent.f.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public class VolumeMeter
   extends ImageView
   implements Runnable
 {
-  boolean hYP;
+  boolean iTN;
   private Context mContext;
   private Paint paint;
   private float radius;
-  boolean vqB;
-  private View vqC;
-  private int vqD;
-  private int vqE;
-  public aq vqF;
-  private float vqG;
-  private float vqH;
-  private float vqI;
-  private float vqJ;
-  private int vqK;
-  private int vqL;
-  private float vqM;
-  private float vqN;
-  private int vqO;
-  private float vqP;
-  private float vqQ;
-  private float vqR;
-  private float vqS;
-  public Runnable vqT;
+  private int yKA;
+  private int yKB;
+  private float yKC;
+  private float yKD;
+  private int yKE;
+  private float yKF;
+  private float yKG;
+  private float yKH;
+  private float yKI;
+  public Runnable yKJ;
+  boolean yKr;
+  private View yKs;
+  private int yKt;
+  private int yKu;
+  public MMHandler yKv;
+  private float yKw;
+  private float yKx;
+  private float yKy;
+  private float yKz;
   
   public VolumeMeter(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(55987);
-    this.hYP = false;
-    this.vqB = false;
-    this.vqD = -1;
-    this.vqE = -1;
-    this.vqF = null;
-    this.vqK = -6751336;
-    this.vqL = 70;
-    this.vqM = 0.5F;
-    this.vqN = 0.001F;
-    this.vqO = 20;
+    this.iTN = false;
+    this.yKr = false;
+    this.yKt = -1;
+    this.yKu = -1;
+    this.yKv = null;
+    this.yKA = -6751336;
+    this.yKB = 70;
+    this.yKC = 0.5F;
+    this.yKD = 0.001F;
+    this.yKE = 20;
     this.radius = 0.0F;
-    this.vqR = 40.0F;
-    this.vqS = 30.0F;
-    this.vqT = new Runnable()
+    this.yKH = 40.0F;
+    this.yKI = 30.0F;
+    this.yKJ = new Runnable()
     {
       public final void run()
       {
@@ -80,20 +80,20 @@ public class VolumeMeter
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(55986);
-    this.hYP = false;
-    this.vqB = false;
-    this.vqD = -1;
-    this.vqE = -1;
-    this.vqF = null;
-    this.vqK = -6751336;
-    this.vqL = 70;
-    this.vqM = 0.5F;
-    this.vqN = 0.001F;
-    this.vqO = 20;
+    this.iTN = false;
+    this.yKr = false;
+    this.yKt = -1;
+    this.yKu = -1;
+    this.yKv = null;
+    this.yKA = -6751336;
+    this.yKB = 70;
+    this.yKC = 0.5F;
+    this.yKD = 0.001F;
+    this.yKE = 20;
     this.radius = 0.0F;
-    this.vqR = 40.0F;
-    this.vqS = 30.0F;
-    this.vqT = new Runnable()
+    this.yKH = 40.0F;
+    this.yKI = 30.0F;
+    this.yKJ = new Runnable()
     {
       public final void run()
       {
@@ -120,25 +120,25 @@ public class VolumeMeter
     AppMethodBeat.o(55988);
   }
   
-  public final void djQ()
+  public final void edB()
   {
     AppMethodBeat.i(55984);
-    if (this.vqF == null)
+    if (this.yKv == null)
     {
-      new aq().postDelayed(new Runnable()
+      new MMHandler().postDelayed(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(55981);
-          VolumeMeter.a(VolumeMeter.this, new aq());
-          VolumeMeter.this.djQ();
+          VolumeMeter.a(VolumeMeter.this, new MMHandler());
+          VolumeMeter.this.edB();
           AppMethodBeat.o(55981);
         }
       }, 100L);
       AppMethodBeat.o(55984);
       return;
     }
-    this.vqF.post(this);
+    this.yKv.post(this);
     AppMethodBeat.o(55984);
   }
   
@@ -149,42 +149,42 @@ public class VolumeMeter
     getWidth();
     getHeight();
     int[] arrayOfInt;
-    if (this.vqC != null)
+    if (this.yKs != null)
     {
       arrayOfInt = new int[2];
-      this.vqC.getLocationInWindow(arrayOfInt);
+      this.yKs.getLocationInWindow(arrayOfInt);
       if ((arrayOfInt[0] != 0) && (arrayOfInt[1] != 0)) {
         break label75;
       }
     }
-    while ((this.vqD < 0) || (this.vqE < 0))
+    while ((this.yKt < 0) || (this.yKu < 0))
     {
       AppMethodBeat.o(55989);
       return;
       label75:
-      int i = this.vqC.getWidth();
-      int j = this.vqC.getHeight();
+      int i = this.yKs.getWidth();
+      int j = this.yKs.getHeight();
       if ((i != 0) && (j != 0))
       {
-        int k = BackwardSupportUtil.b.h(this.mContext, 50.0F);
-        this.vqD = (arrayOfInt[0] + i / 2);
-        this.vqE = (arrayOfInt[1] + j / 2 - k / 2);
-        this.vqQ = (i / 2);
-        this.vqP = (i / 2 * 2.0F);
+        int k = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, 50.0F);
+        this.yKt = (arrayOfInt[0] + i / 2);
+        this.yKu = (arrayOfInt[1] + j / 2 - k / 2);
+        this.yKG = (i / 2);
+        this.yKF = (i / 2 * 2.0F);
       }
     }
-    this.paint.setColor(this.vqK);
-    this.paint.setAlpha(this.vqL);
-    float f2 = BackwardSupportUtil.b.h(this.mContext, this.radius);
+    this.paint.setColor(this.yKA);
+    this.paint.setAlpha(this.yKB);
+    float f2 = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.mContext, this.radius);
     float f1 = f2;
-    if (f2 > this.vqP) {
-      f1 = this.vqP;
+    if (f2 > this.yKF) {
+      f1 = this.yKF;
     }
     f2 = f1;
-    if (f1 < this.vqQ) {
-      f2 = this.vqQ;
+    if (f1 < this.yKG) {
+      f2 = this.yKG;
     }
-    paramCanvas.drawCircle(this.vqD, this.vqE, f2, this.paint);
+    paramCanvas.drawCircle(this.yKt, this.yKu, f2, this.paint);
     AppMethodBeat.o(55989);
   }
   
@@ -192,10 +192,10 @@ public class VolumeMeter
   {
     AppMethodBeat.i(55990);
     this.radius = 0.0F;
-    this.vqG = 0.0F;
-    this.vqH = 0.0F;
-    this.vqI = 0.0F;
-    this.vqJ = 0.0F;
+    this.yKw = 0.0F;
+    this.yKx = 0.0F;
+    this.yKy = 0.0F;
+    this.yKz = 0.0F;
     postInvalidate();
     AppMethodBeat.o(55990);
   }
@@ -206,49 +206,49 @@ public class VolumeMeter
     float f2;
     float f3;
     float f1;
-    if (this.hYP)
+    if (this.iTN)
     {
-      f2 = this.vqI;
-      if (this.vqH <= this.vqG) {
+      f2 = this.yKy;
+      if (this.yKx <= this.yKw) {
         break label147;
       }
-      f3 = (this.vqH - this.vqG) / this.vqS;
-      if (f3 <= this.vqM) {
+      f3 = (this.yKx - this.yKw) / this.yKI;
+      if (f3 <= this.yKC) {
         break label128;
       }
-      f1 = this.vqM;
+      f1 = this.yKC;
       f1 += f2;
     }
     for (;;)
     {
-      this.vqI = f1;
-      this.vqJ = this.vqI;
-      this.radius = ((float)(260.0D * Math.sqrt(this.vqI) - 130.0F * this.vqI) / 1.5F);
+      this.yKy = f1;
+      this.yKz = this.yKy;
+      this.radius = ((float)(260.0D * Math.sqrt(this.yKy) - 130.0F * this.yKy) / 1.5F);
       postInvalidate();
-      this.vqF.postDelayed(this, this.vqO);
+      this.yKv.postDelayed(this, this.yKE);
       AppMethodBeat.o(55985);
       return;
       label128:
       f1 = f3;
-      if (f3 >= this.vqN) {
+      if (f3 >= this.yKD) {
         break;
       }
-      f1 = this.vqN;
+      f1 = this.yKD;
       break;
       label147:
-      if (this.vqH <= this.vqG)
+      if (this.yKx <= this.yKw)
       {
-        f3 = (this.vqG - this.vqH) / this.vqR;
-        if (f3 > this.vqM) {
-          f1 = this.vqM;
+        f3 = (this.yKw - this.yKx) / this.yKH;
+        if (f3 > this.yKC) {
+          f1 = this.yKC;
         }
         for (;;)
         {
           f1 = f2 - f1;
           break;
           f1 = f3;
-          if (f3 < this.vqN) {
-            f1 = this.vqN;
+          if (f3 < this.yKD) {
+            f1 = this.yKD;
           }
         }
       }
@@ -258,18 +258,18 @@ public class VolumeMeter
   
   public void setArchView(View paramView)
   {
-    this.vqC = paramView;
+    this.yKs = paramView;
   }
   
   public void setVolume(float paramFloat)
   {
-    this.vqG = this.vqH;
-    this.vqH = paramFloat;
+    this.yKw = this.yKx;
+    this.yKx = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.VolumeMeter
  * JD-Core Version:    0.7.0.1
  */

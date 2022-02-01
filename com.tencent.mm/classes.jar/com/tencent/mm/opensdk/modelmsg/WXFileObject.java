@@ -16,27 +16,27 @@ public class WXFileObject
   
   public WXFileObject()
   {
-    AppMethodBeat.i(194088);
+    AppMethodBeat.i(190400);
     this.contentLengthLimit = 10485760;
     this.fileData = null;
     this.filePath = null;
-    AppMethodBeat.o(194088);
+    AppMethodBeat.o(190400);
   }
   
   public WXFileObject(String paramString)
   {
-    AppMethodBeat.i(194090);
+    AppMethodBeat.i(190402);
     this.contentLengthLimit = 10485760;
     this.filePath = paramString;
-    AppMethodBeat.o(194090);
+    AppMethodBeat.o(190402);
   }
   
   public WXFileObject(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(194089);
+    AppMethodBeat.i(190401);
     this.contentLengthLimit = 10485760;
     this.fileData = paramArrayOfByte;
-    AppMethodBeat.o(194089);
+    AppMethodBeat.o(190401);
   }
   
   private int getFileSize(String paramString)
@@ -118,7 +118,7 @@ public class WXFileObject
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.WXFileObject
  * JD-Core Version:    0.7.0.1
  */

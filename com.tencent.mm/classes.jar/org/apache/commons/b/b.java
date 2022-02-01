@@ -9,146 +9,146 @@ import org.apache.commons.b.c.a;
 
 public final class b
 {
-  public static final String OpX;
-  public static final String OpY;
-  private static final Map OpZ;
-  private static final Map Oqa;
-  private static final Map Oqb;
-  private static final Map Oqc;
-  static Class Oqd;
-  static Class Oqe;
-  static Class Oqf;
-  static Class Oqg;
-  static Class Oqh;
-  static Class Oqi;
-  static Class Oqj;
-  static Class Oqk;
+  public static final String UeV;
+  public static final String UeW;
+  private static final Map UeX;
+  private static final Map UeY;
+  private static final Map UeZ;
+  private static final Map Ufa;
+  static Class Ufb;
+  static Class Ufc;
+  static Class Ufd;
+  static Class Ufe;
+  static Class Uff;
+  static Class Ufg;
+  static Class Ufh;
+  static Class Ufi;
   
   static
   {
     AppMethodBeat.i(40703);
-    OpX = ".";
-    OpY = "$";
+    UeV = ".";
+    UeW = "$";
     Object localObject2 = new HashMap();
-    OpZ = (Map)localObject2;
+    UeX = (Map)localObject2;
     Class localClass = Boolean.TYPE;
     Object localObject1;
-    if (Oqd == null)
+    if (Ufb == null)
     {
-      localObject1 = bfm("java.lang.Boolean");
-      Oqd = (Class)localObject1;
+      localObject1 = bvc("java.lang.Boolean");
+      Ufb = (Class)localObject1;
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = OpZ;
+      localObject2 = UeX;
       localClass = Byte.TYPE;
-      if (Oqe != null) {
+      if (Ufc != null) {
         break label389;
       }
-      localObject1 = bfm("java.lang.Byte");
-      Oqe = (Class)localObject1;
+      localObject1 = bvc("java.lang.Byte");
+      Ufc = (Class)localObject1;
       label80:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = OpZ;
+      localObject2 = UeX;
       localClass = Character.TYPE;
-      if (Oqf != null) {
+      if (Ufd != null) {
         break label396;
       }
-      localObject1 = bfm("java.lang.Character");
-      Oqf = (Class)localObject1;
+      localObject1 = bvc("java.lang.Character");
+      Ufd = (Class)localObject1;
       label113:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = OpZ;
+      localObject2 = UeX;
       localClass = Short.TYPE;
-      if (Oqg != null) {
+      if (Ufe != null) {
         break label403;
       }
-      localObject1 = bfm("java.lang.Short");
-      Oqg = (Class)localObject1;
+      localObject1 = bvc("java.lang.Short");
+      Ufe = (Class)localObject1;
       label146:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = OpZ;
+      localObject2 = UeX;
       localClass = Integer.TYPE;
-      if (Oqh != null) {
+      if (Uff != null) {
         break label410;
       }
-      localObject1 = bfm("java.lang.Integer");
-      Oqh = (Class)localObject1;
+      localObject1 = bvc("java.lang.Integer");
+      Uff = (Class)localObject1;
       label179:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = OpZ;
+      localObject2 = UeX;
       localClass = Long.TYPE;
-      if (Oqi != null) {
+      if (Ufg != null) {
         break label417;
       }
-      localObject1 = bfm("java.lang.Long");
-      Oqi = (Class)localObject1;
+      localObject1 = bvc("java.lang.Long");
+      Ufg = (Class)localObject1;
       label212:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = OpZ;
+      localObject2 = UeX;
       localClass = Double.TYPE;
-      if (Oqj != null) {
+      if (Ufh != null) {
         break label424;
       }
-      localObject1 = bfm("java.lang.Double");
-      Oqj = (Class)localObject1;
+      localObject1 = bvc("java.lang.Double");
+      Ufh = (Class)localObject1;
       label245:
       ((Map)localObject2).put(localClass, localObject1);
-      localObject2 = OpZ;
+      localObject2 = UeX;
       localClass = Float.TYPE;
-      if (Oqk != null) {
+      if (Ufi != null) {
         break label431;
       }
-      localObject1 = bfm("java.lang.Float");
-      Oqk = (Class)localObject1;
+      localObject1 = bvc("java.lang.Float");
+      Ufi = (Class)localObject1;
     }
     for (;;)
     {
       ((Map)localObject2).put(localClass, localObject1);
-      localObject1 = OpZ;
+      localObject1 = UeX;
       localObject2 = Void.TYPE;
       ((Map)localObject1).put(localObject2, localObject2);
-      Oqa = new HashMap();
-      localObject1 = OpZ.keySet().iterator();
+      UeY = new HashMap();
+      localObject1 = UeX.keySet().iterator();
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (Class)((Iterator)localObject1).next();
-        localClass = (Class)OpZ.get(localObject2);
+        localClass = (Class)UeX.get(localObject2);
         if (!localObject2.equals(localClass)) {
-          Oqa.put(localClass, localObject2);
+          UeY.put(localClass, localObject2);
         }
       }
-      localObject1 = Oqd;
+      localObject1 = Ufb;
       break;
       label389:
-      localObject1 = Oqe;
+      localObject1 = Ufc;
       break label80;
       label396:
-      localObject1 = Oqf;
+      localObject1 = Ufd;
       break label113;
       label403:
-      localObject1 = Oqg;
+      localObject1 = Ufe;
       break label146;
       label410:
-      localObject1 = Oqh;
+      localObject1 = Uff;
       break label179;
       label417:
-      localObject1 = Oqi;
+      localObject1 = Ufg;
       break label212;
       label424:
-      localObject1 = Oqj;
+      localObject1 = Ufh;
       break label245;
       label431:
-      localObject1 = Oqk;
+      localObject1 = Ufi;
     }
-    Oqb = new HashMap();
-    Oqc = new HashMap();
-    nQ("int", "I");
-    nQ("boolean", "Z");
-    nQ("float", "F");
-    nQ("long", "J");
-    nQ("short", "S");
-    nQ("byte", "B");
-    nQ("double", "D");
-    nQ("char", "C");
+    UeZ = new HashMap();
+    Ufa = new HashMap();
+    oI("int", "I");
+    oI("boolean", "Z");
+    oI("float", "F");
+    oI("long", "J");
+    oI("short", "S");
+    oI("byte", "B");
+    oI("double", "D");
+    oI("char", "C");
     AppMethodBeat.o(40703);
   }
   
@@ -179,7 +179,7 @@ public final class b
       while (((String)localObject).charAt(0) == '[')
       {
         localObject = ((String)localObject).substring(1);
-        locala.bfy("[]");
+        locala.bvo("[]");
       }
       paramClass = (Class)localObject;
       if (((String)localObject).charAt(0) == 'L')
@@ -191,8 +191,8 @@ public final class b
       }
     }
     localObject = paramClass;
-    if (Oqc.containsKey(paramClass)) {
-      localObject = (String)Oqc.get(paramClass);
+    if (Ufa.containsKey(paramClass)) {
+      localObject = (String)Ufa.get(paramClass);
     }
     int j = ((String)localObject).lastIndexOf('.');
     if (j == -1) {}
@@ -211,7 +211,7 @@ public final class b
     }
   }
   
-  private static Class bfm(String paramString)
+  private static Class bvc(String paramString)
   {
     AppMethodBeat.i(40702);
     try
@@ -228,17 +228,17 @@ public final class b
     }
   }
   
-  private static void nQ(String paramString1, String paramString2)
+  private static void oI(String paramString1, String paramString2)
   {
     AppMethodBeat.i(40700);
-    Oqb.put(paramString1, paramString2);
-    Oqc.put(paramString2, paramString1);
+    UeZ.put(paramString1, paramString2);
+    Ufa.put(paramString2, paramString1);
     AppMethodBeat.o(40700);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     org.apache.commons.b.b
  * JD-Core Version:    0.7.0.1
  */

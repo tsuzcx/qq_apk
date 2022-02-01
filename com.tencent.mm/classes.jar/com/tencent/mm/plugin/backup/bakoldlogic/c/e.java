@@ -1,44 +1,47 @@
 package com.tencent.mm.plugin.backup.bakoldlogic.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.protocal.ac;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.axh;
-import com.tencent.mm.protocal.protobuf.axi;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.bir;
+import com.tencent.mm.protocal.protobuf.bis;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
+  private i callback;
   private final String id;
-  public byte[] nHy;
-  private final com.tencent.mm.ak.b rr;
+  public byte[] oSv;
+  private final d rr;
   
   public e(String paramString)
   {
     AppMethodBeat.i(21948);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new axh();
-    ((b.a)localObject).hQG = new axi();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getbakchatkey";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    ((b.a)localObject).funcId = 596;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (axh)this.rr.hQD.hQJ;
-    ((axh)localObject).ID = paramString;
-    ((axh)localObject).GOF = ac.fkp().ver;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bir();
+    ((d.a)localObject).iLO = new bis();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getbakchatkey";
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    ((d.a)localObject).funcId = 596;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (bir)this.rr.iLK.iLR;
+    ((bir)localObject).ID = paramString;
+    ((bir)localObject).LSJ = ac.gtT().ver;
     this.id = paramString;
-    ae.i("MicroMsg.NetSceneGetBakchatkey", "init id:%s, ver:0x%x", new Object[] { ((axh)localObject).ID, Integer.valueOf(((axh)localObject).GOF) });
+    Log.i("MicroMsg.NetSceneGetBakchatkey", "init id:%s, ver:0x%x", new Object[] { ((bir)localObject).ID, Integer.valueOf(((bir)localObject).LSJ) });
     AppMethodBeat.o(21948);
   }
   
@@ -49,11 +52,11 @@ public final class e
     AppMethodBeat.o(21949);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(21950);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(21950);
     return i;
   }
@@ -63,31 +66,31 @@ public final class e
     return 596;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(21951);
-    ae.i("MicroMsg.NetSceneGetBakchatkey", "errType %d,  errCode %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.i("MicroMsg.NetSceneGetBakchatkey", "errType %d,  errCode %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      this.nHy = ((axi)this.rr.hQE.hQJ).FSl.getBuffer().zr;
-      paramq = this.id;
-      if (this.nHy == null) {}
-      for (paramInt1 = 0;; paramInt1 = this.nHy.length)
+      this.oSv = ((bis)this.rr.iLL.iLR).KLU.getBuffer().zy;
+      params = this.id;
+      if (this.oSv == null) {}
+      for (paramInt1 = 0;; paramInt1 = this.oSv.length)
       {
-        ae.i("MicroMsg.NetSceneGetBakchatkey", "id:%s,  key len:%d", new Object[] { paramq, Integer.valueOf(paramInt1) });
-        if (this.nHy == null) {
+        Log.i("MicroMsg.NetSceneGetBakchatkey", "id:%s,  key len:%d", new Object[] { params, Integer.valueOf(paramInt1) });
+        if (this.oSv == null) {
           break label197;
         }
-        paramArrayOfByte = this.nHy;
-        paramq = "";
+        paramArrayOfByte = this.oSv;
+        params = "";
         paramInt1 = 0;
         while (paramInt1 < paramArrayOfByte.length)
         {
-          paramq = paramq + Integer.toHexString(paramArrayOfByte[paramInt1] & 0xFF) + " ";
+          params = params + Integer.toHexString(paramArrayOfByte[paramInt1] & 0xFF) + " ";
           paramInt1 += 1;
         }
       }
-      ae.i("MicroMsg.NetSceneGetBakchatkey", "dump bakchat: %s", new Object[] { paramq });
+      Log.i("MicroMsg.NetSceneGetBakchatkey", "dump bakchat: %s", new Object[] { params });
     }
     label197:
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

@@ -9,31 +9,31 @@ import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  private static a Ipr;
-  private static final SparseIntArray Ips;
-  private static boolean Ipt;
-  private static boolean Ipu;
+  private static a NCP;
+  private static boolean NCQ;
+  private static boolean NCR;
+  private static final SparseIntArray csc;
   private static float density;
   private static float scale;
   
   static
   {
     AppMethodBeat.i(125178);
-    Ipr = null;
+    NCP = null;
     density = -1.0F;
-    Ips = new SparseIntArray();
+    csc = new SparseIntArray();
     scale = 0.0F;
-    Ipt = false;
-    Ipu = true;
+    NCQ = false;
+    NCR = true;
     AppMethodBeat.o(125178);
   }
   
-  public static int aA(Context paramContext, int paramInt)
+  public static int E(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(125155);
     paramInt = Math.round(paramInt / getDensity(paramContext));
@@ -41,7 +41,77 @@ public final class a
     return paramInt;
   }
   
-  private static boolean al(float paramFloat1, float paramFloat2)
+  public static int aG(Context paramContext, int paramInt)
+  {
+    float f1 = 1.4F;
+    AppMethodBeat.i(125149);
+    float f2 = ez(paramContext);
+    if (f2 > 1.4F) {}
+    for (;;)
+    {
+      paramInt = (int)(f1 * aH(paramContext, paramInt));
+      AppMethodBeat.o(125149);
+      return paramInt;
+      f1 = f2;
+    }
+  }
+  
+  public static int aH(Context arg0, int paramInt)
+  {
+    AppMethodBeat.i(125150);
+    if (??? == null)
+    {
+      Log.e("MicroMsg.ResourceHelper", "get dimension pixel size, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
+      AppMethodBeat.o(125150);
+      return 0;
+    }
+    int i;
+    synchronized (csc)
+    {
+      int j = csc.get(paramInt, 0);
+      i = j;
+      if (j <= 0)
+      {
+        if (NCP != null) {
+          break label109;
+        }
+        i = ???.getResources().getDimensionPixelSize(paramInt);
+      }
+    }
+    synchronized (csc)
+    {
+      csc.put(paramInt, i);
+      AppMethodBeat.o(125150);
+      return i;
+      ??? = finally;
+      AppMethodBeat.o(125150);
+      throw ???;
+      label109:
+      i = NCP.gvg();
+    }
+  }
+  
+  public static String aI(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(125151);
+    if (NCP == null)
+    {
+      if (paramContext == null)
+      {
+        Log.e("MicroMsg.ResourceHelper", "get string, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
+        AppMethodBeat.o(125151);
+        return "";
+      }
+      paramContext = paramContext.getResources().getString(paramInt);
+      AppMethodBeat.o(125151);
+      return paramContext;
+    }
+    paramContext = NCP.gvh();
+    AppMethodBeat.o(125151);
+    return paramContext;
+  }
+  
+  private static boolean as(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(125177);
     if (Math.abs(paramFloat1 - paramFloat2) <= 1.E-005D)
@@ -53,77 +123,7 @@ public final class a
     return false;
   }
   
-  public static int ax(Context paramContext, int paramInt)
-  {
-    float f1 = 1.4F;
-    AppMethodBeat.i(125149);
-    float f2 = ef(paramContext);
-    if (f2 > 1.4F) {}
-    for (;;)
-    {
-      paramInt = (int)(f1 * ay(paramContext, paramInt));
-      AppMethodBeat.o(125149);
-      return paramInt;
-      f1 = f2;
-    }
-  }
-  
-  public static int ay(Context arg0, int paramInt)
-  {
-    AppMethodBeat.i(125150);
-    if (??? == null)
-    {
-      ae.e("MicroMsg.ResourceHelper", "get dimension pixel size, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
-      AppMethodBeat.o(125150);
-      return 0;
-    }
-    int i;
-    synchronized (Ips)
-    {
-      int j = Ips.get(paramInt, 0);
-      i = j;
-      if (j <= 0)
-      {
-        if (Ipr != null) {
-          break label109;
-        }
-        i = ???.getResources().getDimensionPixelSize(paramInt);
-      }
-    }
-    synchronized (Ips)
-    {
-      Ips.put(paramInt, i);
-      AppMethodBeat.o(125150);
-      return i;
-      ??? = finally;
-      AppMethodBeat.o(125150);
-      throw ???;
-      label109:
-      i = Ipr.flu();
-    }
-  }
-  
-  public static String az(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(125151);
-    if (Ipr == null)
-    {
-      if (paramContext == null)
-      {
-        ae.e("MicroMsg.ResourceHelper", "get string, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
-        AppMethodBeat.o(125151);
-        return "";
-      }
-      paramContext = paramContext.getResources().getString(paramInt);
-      AppMethodBeat.o(125151);
-      return paramContext;
-    }
-    paramContext = Ipr.flv();
-    AppMethodBeat.o(125151);
-    return paramContext;
-  }
-  
-  public static float ef(Context paramContext)
+  public static float ez(Context paramContext)
   {
     AppMethodBeat.i(125164);
     if (scale == 0.0F) {
@@ -132,20 +132,28 @@ public final class a
       }
     }
     label89:
-    for (scale = 1.0F;; scale = paramContext.getSharedPreferences(ak.fow(), 0).getFloat("text_size_scale_key", 1.0F))
+    for (scale = 1.0F;; scale = paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getFloat("text_size_scale_key", 1.0F))
     {
-      if (!Ipt)
+      if (!NCQ)
       {
-        Ipu = paramContext.getSharedPreferences(ak.fow(), 0).getBoolean("screenResolution_isModifyDensity", true);
-        Ipt = true;
+        NCR = paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getBoolean("screenResolution_isModifyDensity", true);
+        NCQ = true;
       }
-      if ((Ipu) && ((scale == 1.1F) || (scale == 0.8F))) {
+      if ((NCR) && ((scale == 1.1F) || (scale == 0.8F))) {
         scale = 1.0F;
       }
       float f = scale;
       AppMethodBeat.o(125164);
       return f;
     }
+  }
+  
+  public static int fromDPToPix(Context paramContext, float paramFloat)
+  {
+    AppMethodBeat.i(125153);
+    int i = Math.round(getDensity(paramContext) * paramFloat);
+    AppMethodBeat.o(125153);
+    return i;
   }
   
   public static int fromDPToPix(Context paramContext, int paramInt)
@@ -161,7 +169,7 @@ public final class a
     AppMethodBeat.i(125152);
     Context localContext = paramContext;
     if (paramContext == null) {
-      localContext = ak.getContext();
+      localContext = MMApplicationContext.getContext();
     }
     float f = localContext.getResources().getDisplayMetrics().density;
     density = f;
@@ -169,28 +177,20 @@ public final class a
     return f;
   }
   
-  public static int h(Context paramContext, float paramFloat)
-  {
-    AppMethodBeat.i(125153);
-    int i = Math.round(getDensity(paramContext) * paramFloat);
-    AppMethodBeat.o(125153);
-    return i;
-  }
-  
-  public static void i(Context paramContext, float paramFloat)
+  public static void h(Context paramContext, float paramFloat)
   {
     AppMethodBeat.i(125171);
-    paramContext = paramContext.getSharedPreferences(ak.fow(), 0).edit();
+    paramContext = paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).edit();
     paramContext.putFloat("text_size_scale_key", paramFloat);
     paramContext.commit();
     scale = paramFloat;
     AppMethodBeat.o(125171);
   }
   
-  public static float id(Context paramContext)
+  public static float iW(Context paramContext)
   {
     AppMethodBeat.i(125156);
-    if (im(paramContext))
+    if (jf(paramContext))
     {
       AppMethodBeat.o(125156);
       return 0.8F;
@@ -199,10 +199,10 @@ public final class a
     return 0.875F;
   }
   
-  public static float ie(Context paramContext)
+  public static float iX(Context paramContext)
   {
     AppMethodBeat.i(125157);
-    if (im(paramContext))
+    if (jf(paramContext))
     {
       AppMethodBeat.o(125157);
       return 1.0F;
@@ -211,10 +211,10 @@ public final class a
     return 1.0F;
   }
   
-  public static float jdMethod_if(Context paramContext)
+  public static float iY(Context paramContext)
   {
     AppMethodBeat.i(125158);
-    if (im(paramContext))
+    if (jf(paramContext))
     {
       AppMethodBeat.o(125158);
       return 1.1F;
@@ -223,10 +223,10 @@ public final class a
     return 1.11F;
   }
   
-  public static float ig(Context paramContext)
+  public static float iZ(Context paramContext)
   {
     AppMethodBeat.i(125159);
-    if (im(paramContext))
+    if (jf(paramContext))
     {
       AppMethodBeat.o(125159);
       return 1.12F;
@@ -235,10 +235,10 @@ public final class a
     return 1.25F;
   }
   
-  public static float ih(Context paramContext)
+  public static float ja(Context paramContext)
   {
     AppMethodBeat.i(125160);
-    if (im(paramContext))
+    if (jf(paramContext))
     {
       AppMethodBeat.o(125160);
       return 1.125F;
@@ -247,10 +247,10 @@ public final class a
     return 1.375F;
   }
   
-  public static float ii(Context paramContext)
+  public static float jb(Context paramContext)
   {
     AppMethodBeat.i(125161);
-    if (im(paramContext))
+    if (jf(paramContext))
     {
       AppMethodBeat.o(125161);
       return 1.4F;
@@ -259,10 +259,10 @@ public final class a
     return 1.625F;
   }
   
-  public static float ij(Context paramContext)
+  public static float jc(Context paramContext)
   {
     AppMethodBeat.i(125162);
-    if (im(paramContext))
+    if (jf(paramContext))
     {
       AppMethodBeat.o(125162);
       return 1.55F;
@@ -271,10 +271,10 @@ public final class a
     return 1.875F;
   }
   
-  public static float ik(Context paramContext)
+  public static float jd(Context paramContext)
   {
     AppMethodBeat.i(125163);
-    if (im(paramContext))
+    if (jf(paramContext))
     {
       AppMethodBeat.o(125163);
       return 1.65F;
@@ -283,7 +283,7 @@ public final class a
     return 2.025F;
   }
   
-  public static float il(Context paramContext)
+  public static float je(Context paramContext)
   {
     float f = 1.0F;
     AppMethodBeat.i(125165);
@@ -292,63 +292,63 @@ public final class a
     {
       AppMethodBeat.o(125165);
       return f;
-      f = paramContext.getSharedPreferences(ak.fow(), 0).getFloat("text_size_scale_key", 1.0F);
+      f = paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getFloat("text_size_scale_key", 1.0F);
     }
   }
   
-  public static boolean im(Context paramContext)
+  public static boolean jf(Context paramContext)
   {
     AppMethodBeat.i(125166);
-    if ((paramContext != null) && (!Ipt))
+    if ((paramContext != null) && (!NCQ))
     {
-      Ipu = paramContext.getSharedPreferences(ak.fow(), 0).getBoolean("screenResolution_isModifyDensity", true);
-      Ipt = true;
+      NCR = paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getBoolean("screenResolution_isModifyDensity", true);
+      NCQ = true;
     }
-    boolean bool = Ipu;
+    boolean bool = NCR;
     AppMethodBeat.o(125166);
     return bool;
   }
   
-  public static int in(Context paramContext)
+  public static int jg(Context paramContext)
   {
     AppMethodBeat.i(125167);
-    float f = il(paramContext);
-    if (f == id(paramContext))
+    float f = je(paramContext);
+    if (f == iW(paramContext))
     {
       AppMethodBeat.o(125167);
       return 1;
     }
-    if (f == ie(paramContext))
+    if (f == iX(paramContext))
     {
       AppMethodBeat.o(125167);
       return 2;
     }
-    if (f == jdMethod_if(paramContext))
+    if (f == iY(paramContext))
     {
       AppMethodBeat.o(125167);
       return 3;
     }
-    if (f == ig(paramContext))
+    if (f == iZ(paramContext))
     {
       AppMethodBeat.o(125167);
       return 4;
     }
-    if (f == ih(paramContext))
+    if (f == ja(paramContext))
     {
       AppMethodBeat.o(125167);
       return 5;
     }
-    if (f == ii(paramContext))
+    if (f == jb(paramContext))
     {
       AppMethodBeat.o(125167);
       return 6;
     }
-    if (f == ij(paramContext))
+    if (f == jc(paramContext))
     {
       AppMethodBeat.o(125167);
       return 7;
     }
-    if (f == ik(paramContext))
+    if (f == jd(paramContext))
     {
       AppMethodBeat.o(125167);
       return 8;
@@ -357,10 +357,10 @@ public final class a
     return 2;
   }
   
-  public static int io(Context paramContext)
+  public static int jh(Context paramContext)
   {
     AppMethodBeat.i(125168);
-    float f = il(paramContext);
+    float f = je(paramContext);
     if (f == 0.875F)
     {
       AppMethodBeat.o(125168);
@@ -386,17 +386,17 @@ public final class a
       AppMethodBeat.o(125168);
       return 4;
     }
-    if ((f == 1.625F) || (al(f, 1.3F)))
+    if ((f == 1.625F) || (as(f, 1.3F)))
     {
       AppMethodBeat.o(125168);
       return 5;
     }
-    if ((f == 1.875F) || (al(f, 1.38F)))
+    if ((f == 1.875F) || (as(f, 1.38F)))
     {
       AppMethodBeat.o(125168);
       return 6;
     }
-    if ((f == 2.025F) || (al(f, 1.565F)))
+    if ((f == 2.025F) || (as(f, 1.565F)))
     {
       AppMethodBeat.o(125168);
       return 7;
@@ -405,12 +405,12 @@ public final class a
     return 1;
   }
   
-  public static float ip(Context paramContext)
+  public static float ji(Context paramContext)
   {
     AppMethodBeat.i(125169);
     float f = 1.0F;
-    if (is(paramContext)) {
-      if (!im(paramContext)) {
+    if (jl(paramContext)) {
+      if (!jf(paramContext)) {
         break label34;
       }
     }
@@ -422,15 +422,15 @@ public final class a
     }
   }
   
-  public static float iq(Context paramContext)
+  public static float jj(Context paramContext)
   {
     AppMethodBeat.i(125170);
     float f2 = 1.0F;
     float f1 = f2;
-    if (!im(paramContext))
+    if (!jf(paramContext))
     {
       f1 = f2;
-      if (is(paramContext)) {
+      if (jl(paramContext)) {
         f1 = 1.1F;
       }
     }
@@ -438,12 +438,12 @@ public final class a
     return f1;
   }
   
-  public static boolean ir(Context paramContext)
+  public static boolean jk(Context paramContext)
   {
     AppMethodBeat.i(125172);
-    float f = ef(paramContext);
+    float f = ez(paramContext);
     scale = f;
-    if (Float.compare(f, jdMethod_if(paramContext)) > 0)
+    if (Float.compare(f, iY(paramContext)) > 0)
     {
       AppMethodBeat.o(125172);
       return true;
@@ -452,12 +452,12 @@ public final class a
     return false;
   }
   
-  public static boolean is(Context paramContext)
+  public static boolean jl(Context paramContext)
   {
     AppMethodBeat.i(125173);
-    float f = ef(paramContext);
+    float f = ez(paramContext);
     scale = f;
-    if (Float.compare(f, ig(paramContext)) > 0)
+    if (Float.compare(f, iZ(paramContext)) > 0)
     {
       AppMethodBeat.o(125173);
       return true;
@@ -466,12 +466,12 @@ public final class a
     return false;
   }
   
-  public static boolean it(Context paramContext)
+  public static boolean jm(Context paramContext)
   {
     AppMethodBeat.i(125174);
-    float f = ef(paramContext);
+    float f = ez(paramContext);
     scale = f;
-    if (f == id(paramContext))
+    if (f == iW(paramContext))
     {
       AppMethodBeat.o(125174);
       return true;
@@ -480,14 +480,14 @@ public final class a
     return false;
   }
   
-  public static int iu(Context paramContext)
+  public static int jn(Context paramContext)
   {
     AppMethodBeat.i(125175);
-    if (Ipr == null)
+    if (NCP == null)
     {
       if (paramContext == null)
       {
-        ae.e("MicroMsg.ResourceHelper", "get widthPixels but context is null");
+        Log.e("MicroMsg.ResourceHelper", "get widthPixels but context is null");
         AppMethodBeat.o(125175);
         return 0;
       }
@@ -499,14 +499,14 @@ public final class a
     return 0;
   }
   
-  public static int iv(Context paramContext)
+  public static int jo(Context paramContext)
   {
     AppMethodBeat.i(125176);
-    if (Ipr == null)
+    if (NCP == null)
     {
       if (paramContext == null)
       {
-        ae.e("MicroMsg.ResourceHelper", "get heightPixels but context is null");
+        Log.e("MicroMsg.ResourceHelper", "get heightPixels but context is null");
         AppMethodBeat.o(125176);
         return 0;
       }
@@ -521,11 +521,11 @@ public final class a
   public static Drawable l(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(125148);
-    if (Ipr == null)
+    if (NCP == null)
     {
       if (paramContext == null)
       {
-        ae.e("MicroMsg.ResourceHelper", "get drawable, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
+        Log.e("MicroMsg.ResourceHelper", "get drawable, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(125148);
         return null;
       }
@@ -533,7 +533,7 @@ public final class a
       AppMethodBeat.o(125148);
       return paramContext;
     }
-    paramContext = Ipr.flt();
+    paramContext = NCP.gvf();
     AppMethodBeat.o(125148);
     return paramContext;
   }
@@ -541,11 +541,11 @@ public final class a
   public static ColorStateList m(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(125147);
-    if (Ipr == null)
+    if (NCP == null)
     {
       if (paramContext == null)
       {
-        ae.e("MicroMsg.ResourceHelper", "get color state list, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
+        Log.e("MicroMsg.ResourceHelper", "get color state list, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(125147);
         return null;
       }
@@ -553,7 +553,7 @@ public final class a
       AppMethodBeat.o(125147);
       return paramContext;
     }
-    paramContext = Ipr.fls();
+    paramContext = NCP.gve();
     AppMethodBeat.o(125147);
     return paramContext;
   }
@@ -561,11 +561,11 @@ public final class a
   public static int n(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(125146);
-    if (Ipr == null)
+    if (NCP == null)
     {
       if (paramContext == null)
       {
-        ae.e("MicroMsg.ResourceHelper", "get color, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
+        Log.e("MicroMsg.ResourceHelper", "get color, resId %d, but context is null", new Object[] { Integer.valueOf(paramInt) });
         AppMethodBeat.o(125146);
         return 0;
       }
@@ -573,22 +573,22 @@ public final class a
       AppMethodBeat.o(125146);
       return paramInt;
     }
-    paramInt = Ipr.flr();
+    paramInt = NCP.gvd();
     AppMethodBeat.o(125146);
     return paramInt;
   }
   
   public static abstract interface a
   {
-    public abstract int flr();
+    public abstract int gvd();
     
-    public abstract ColorStateList fls();
+    public abstract ColorStateList gve();
     
-    public abstract Drawable flt();
+    public abstract Drawable gvf();
     
-    public abstract int flu();
+    public abstract int gvg();
     
-    public abstract String flv();
+    public abstract String gvh();
   }
 }
 

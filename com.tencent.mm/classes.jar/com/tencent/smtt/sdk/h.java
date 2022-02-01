@@ -8,20 +8,20 @@ public class h
 {
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
   {
-    AppMethodBeat.i(192596);
+    AppMethodBeat.i(188240);
     if ((paramThrowable instanceof SQLiteException))
     {
-      AppMethodBeat.o(192596);
+      AppMethodBeat.o(188240);
       return;
     }
     paramThread = new RuntimeException(paramThrowable);
-    AppMethodBeat.o(192596);
+    AppMethodBeat.o(188240);
     throw paramThread;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.h
  * JD-Core Version:    0.7.0.1
  */

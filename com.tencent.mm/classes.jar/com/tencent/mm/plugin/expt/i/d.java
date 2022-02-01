@@ -2,36 +2,36 @@ package com.tencent.mm.plugin.expt.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.h.c;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class d
-  extends j<c>
+  extends MAutoStorage<c>
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(122469);
-    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "ExptItem") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "ExptItem") };
     INDEX_CREATE = new String[0];
     AppMethodBeat.o(122469);
   }
   
-  public d(e parame)
+  public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, c.info, "ExptItem", INDEX_CREATE);
-    this.db = parame;
+    super(paramISQLiteDatabase, c.info, "ExptItem", INDEX_CREATE);
+    this.db = paramISQLiteDatabase;
   }
   
-  private boolean DR(int paramInt)
+  private boolean HE(int paramInt)
   {
     AppMethodBeat.i(122464);
     try
@@ -47,7 +47,7 @@ public final class d
     {
       for (;;)
       {
-        ae.e("MicroMsg.ExptStorage", "delete expt by id [%s]", new Object[] { localException.toString() });
+        Log.e("MicroMsg.ExptStorage", "delete expt by id [%s]", new Object[] { localException.toString() });
         paramInt = 0;
       }
       AppMethodBeat.o(122464);
@@ -66,7 +66,7 @@ public final class d
     try
     {
       bool = super.replace(paramc);
-      ae.d("MicroMsg.ExptStorage", "replace expt ret[%b] item[%s]", new Object[] { Boolean.valueOf(bool), paramc.toString() });
+      Log.d("MicroMsg.ExptStorage", "replace expt ret[%b] item[%s]", new Object[] { Boolean.valueOf(bool), paramc.toString() });
       AppMethodBeat.o(122465);
       return bool;
     }
@@ -74,20 +74,20 @@ public final class d
     {
       for (;;)
       {
-        ae.e("MicroMsg.ExptStorage", "replace expt error [%s]", new Object[] { localException.toString() });
+        Log.e("MicroMsg.ExptStorage", "replace expt error [%s]", new Object[] { localException.toString() });
         boolean bool = false;
       }
     }
   }
   
   /* Error */
-  public final c DQ(int paramInt)
+  public final c HD(int paramInt)
   {
     // Byte code:
     //   0: ldc 104
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 48	com/tencent/mm/plugin/expt/i/d:db	Lcom/tencent/mm/sdk/e/e;
+    //   6: getfield 48	com/tencent/mm/plugin/expt/i/d:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   9: ldc 29
     //   11: aconst_null
     //   12: ldc 55
@@ -149,7 +149,7 @@ public final class d
     //   112: aload 5
     //   114: invokevirtual 75	java/lang/Exception:toString	()Ljava/lang/String;
     //   117: aastore
-    //   118: invokestatic 81	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   118: invokestatic 81	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   121: aload_2
     //   122: astore 4
     //   124: aload_3
@@ -207,7 +207,7 @@ public final class d
     //   64	69	174	java/lang/Exception
   }
   
-  public final int cts()
+  public final int cRZ()
   {
     int i = 0;
     AppMethodBeat.i(122468);
@@ -220,7 +220,7 @@ public final class d
     {
       for (;;)
       {
-        ae.e("MicroMsg.ExptStorage", "delete all expt error[%s]", new Object[] { localException.toString() });
+        Log.e("MicroMsg.ExptStorage", "delete all expt error[%s]", new Object[] { localException.toString() });
       }
     }
     AppMethodBeat.o(122468);
@@ -228,13 +228,13 @@ public final class d
   }
   
   /* Error */
-  public final List<c> ctv()
+  public final List<c> cSc()
   {
     // Byte code:
     //   0: ldc 133
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 48	com/tencent/mm/plugin/expt/i/d:db	Lcom/tencent/mm/sdk/e/e;
+    //   6: getfield 48	com/tencent/mm/plugin/expt/i/d:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   9: ldc 135
     //   11: aconst_null
     //   12: invokeinterface 139 3 0
@@ -282,7 +282,7 @@ public final class d
     //   90: aload 4
     //   92: invokevirtual 75	java/lang/Exception:toString	()Ljava/lang/String;
     //   95: aastore
-    //   96: invokestatic 81	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   96: invokestatic 81	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   99: aload_1
     //   100: astore_3
     //   101: aload_2
@@ -307,7 +307,7 @@ public final class d
     //   133: invokeinterface 158 1 0
     //   138: invokestatic 163	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   141: aastore
-    //   142: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   142: invokestatic 99	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   145: aload_1
     //   146: astore_3
     //   147: aload_2
@@ -376,13 +376,13 @@ public final class d
   }
   
   /* Error */
-  public final java.util.ArrayList<Integer> ctw()
+  public final java.util.ArrayList<Integer> cSd()
   {
     // Byte code:
     //   0: ldc 168
     //   2: invokestatic 19	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
-    //   6: getfield 48	com/tencent/mm/plugin/expt/i/d:db	Lcom/tencent/mm/sdk/e/e;
+    //   6: getfield 48	com/tencent/mm/plugin/expt/i/d:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   9: ldc 170
     //   11: aconst_null
     //   12: invokeinterface 139 3 0
@@ -426,7 +426,7 @@ public final class d
     //   85: aload 4
     //   87: invokevirtual 75	java/lang/Exception:toString	()Ljava/lang/String;
     //   90: aastore
-    //   91: invokestatic 81	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   91: invokestatic 81	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   94: aload_1
     //   95: astore_3
     //   96: aload_2
@@ -499,51 +499,7 @@ public final class d
     //   24	33	167	java/lang/Exception
   }
   
-  public final int dh(List<Integer> paramList)
-  {
-    long l = -1L;
-    int i = 0;
-    AppMethodBeat.i(122467);
-    if ((paramList == null) || (paramList.size() <= 0))
-    {
-      AppMethodBeat.o(122467);
-      return 0;
-    }
-    h localh;
-    if ((this.db instanceof h))
-    {
-      localh = (h)this.db;
-      l = localh.yi(-1L);
-    }
-    for (;;)
-    {
-      try
-      {
-        paramList = paramList.iterator();
-        if (paramList.hasNext())
-        {
-          boolean bool = DR(((Integer)paramList.next()).intValue());
-          if (bool)
-          {
-            i += 1;
-            continue;
-          }
-          continue;
-        }
-        return i;
-      }
-      finally
-      {
-        if (localh != null) {
-          localh.sW(l);
-        }
-        AppMethodBeat.o(122467);
-      }
-      localh = null;
-    }
-  }
-  
-  public final List<c> dn(List<c> paramList)
+  public final List<c> dB(List<c> paramList)
   {
     long l = -1L;
     AppMethodBeat.i(122466);
@@ -556,7 +512,7 @@ public final class d
     if ((this.db instanceof h))
     {
       localh = (h)this.db;
-      l = localh.yi(-1L);
+      l = localh.beginTransaction(-1L);
     }
     for (;;)
     {
@@ -581,21 +537,65 @@ public final class d
       finally
       {
         if (localh != null) {
-          localh.sW(l);
+          localh.endTransaction(l);
         }
         AppMethodBeat.o(122466);
       }
-      localh.sW(l);
+      localh.endTransaction(l);
       label147:
       AppMethodBeat.o(122466);
       return localLinkedList;
       localh = null;
     }
   }
+  
+  public final int dv(List<Integer> paramList)
+  {
+    long l = -1L;
+    int i = 0;
+    AppMethodBeat.i(122467);
+    if ((paramList == null) || (paramList.size() <= 0))
+    {
+      AppMethodBeat.o(122467);
+      return 0;
+    }
+    h localh;
+    if ((this.db instanceof h))
+    {
+      localh = (h)this.db;
+      l = localh.beginTransaction(-1L);
+    }
+    for (;;)
+    {
+      try
+      {
+        paramList = paramList.iterator();
+        if (paramList.hasNext())
+        {
+          boolean bool = HE(((Integer)paramList.next()).intValue());
+          if (bool)
+          {
+            i += 1;
+            continue;
+          }
+          continue;
+        }
+        return i;
+      }
+      finally
+      {
+        if (localh != null) {
+          localh.endTransaction(l);
+        }
+        AppMethodBeat.o(122467);
+      }
+      localh = null;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.i.d
  * JD-Core Version:    0.7.0.1
  */

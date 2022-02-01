@@ -6,122 +6,146 @@ import com.tencent.mm.plugin.report.a;
 public final class hc
   extends a
 {
-  private String dYc = "";
-  private String erZ = "";
-  private String esa = "";
-  private long etb = 0L;
-  private long etf = 0L;
-  private long etg;
-  private long eti = 0L;
-  private String etj = "";
+  private long eBF;
+  private long eBn;
+  private String eBo = "";
+  private String eBp = "";
+  private long eBr;
+  private String eBu = "";
+  private long eLr;
+  private long eLs;
+  private String eLt = "";
+  private String eLu = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(43464);
+    AppMethodBeat.i(209312);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dYc);
+    ((StringBuffer)localObject).append(this.eBn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.erZ);
+    ((StringBuffer)localObject).append(this.eBr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etb);
+    ((StringBuffer)localObject).append(this.eLr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eti);
+    ((StringBuffer)localObject).append(this.eBo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etf);
+    ((StringBuffer)localObject).append(this.eBp);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etg);
+    ((StringBuffer)localObject).append(this.eLs);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etj);
+    ((StringBuffer)localObject).append(this.eLt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.esa);
+    ((StringBuffer)localObject).append(this.eLu);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eBF);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eBu);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(43464);
+    aMq((String)localObject);
+    AppMethodBeat.o(209312);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(43465);
+    AppMethodBeat.i(209313);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Username:").append(this.dYc);
+    ((StringBuffer)localObject).append("RedDotCtrlType:").append(this.eBn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Appid:").append(this.erZ);
+    ((StringBuffer)localObject).append("RedDotShowInfoType:").append(this.eBr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.etb);
+    ((StringBuffer)localObject).append("RevokeState:").append(this.eLr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsFirstHit:").append(this.eti);
+    ((StringBuffer)localObject).append("RedDotTipsID:").append(this.eBo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ReportId:").append(this.etf);
+    ((StringBuffer)localObject).append("RedDotShowInfoPath:").append(this.eBp);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PackageType:").append(this.etg);
+    ((StringBuffer)localObject).append("RevokeType:").append(this.eLs);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ModuleName:").append(this.etj);
+    ((StringBuffer)localObject).append("WhiteListReddotList:").append(this.eLt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("InstanceId:").append(this.esa);
+    ((StringBuffer)localObject).append("OverwriteRedDotTipsID:").append(this.eLu);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotactiontimestamp:").append(this.eBF);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("RedDotShowInfoExt:").append(this.eBu);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43465);
+    AppMethodBeat.o(209313);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16634;
+    return 20951;
   }
   
-  public final hc mv(long paramLong)
+  public final hc qI(long paramLong)
   {
-    this.etb = paramLong;
+    this.eBn = paramLong;
     return this;
   }
   
-  public final hc mw(long paramLong)
+  public final hc qJ(long paramLong)
   {
-    this.eti = paramLong;
+    this.eBr = paramLong;
     return this;
   }
   
-  public final hc mx(long paramLong)
+  public final hc qK(long paramLong)
   {
-    this.etf = paramLong;
+    this.eLr = paramLong;
     return this;
   }
   
-  public final hc my(long paramLong)
+  public final hc qL(long paramLong)
   {
-    this.etg = paramLong;
+    this.eLs = paramLong;
     return this;
   }
   
-  public final hc qo(String paramString)
+  public final hc qM(long paramLong)
   {
-    AppMethodBeat.i(43460);
-    this.dYc = t("Username", paramString, true);
-    AppMethodBeat.o(43460);
+    this.eBF = paramLong;
     return this;
   }
   
-  public final hc qp(String paramString)
+  public final hc uQ(String paramString)
   {
-    AppMethodBeat.i(43461);
-    this.erZ = t("Appid", paramString, true);
-    AppMethodBeat.o(43461);
+    AppMethodBeat.i(209307);
+    this.eBo = x("RedDotTipsID", paramString, true);
+    AppMethodBeat.o(209307);
     return this;
   }
   
-  public final hc qq(String paramString)
+  public final hc uR(String paramString)
   {
-    AppMethodBeat.i(43462);
-    this.etj = t("ModuleName", paramString, true);
-    AppMethodBeat.o(43462);
+    AppMethodBeat.i(209308);
+    this.eBp = x("RedDotShowInfoPath", paramString, true);
+    AppMethodBeat.o(209308);
     return this;
   }
   
-  public final hc qr(String paramString)
+  public final hc uS(String paramString)
   {
-    AppMethodBeat.i(43463);
-    this.esa = t("InstanceId", paramString, true);
-    AppMethodBeat.o(43463);
+    AppMethodBeat.i(209309);
+    this.eLt = x("WhiteListReddotList", paramString, true);
+    AppMethodBeat.o(209309);
+    return this;
+  }
+  
+  public final hc uT(String paramString)
+  {
+    AppMethodBeat.i(209310);
+    this.eLu = x("OverwriteRedDotTipsID", paramString, true);
+    AppMethodBeat.o(209310);
+    return this;
+  }
+  
+  public final hc uU(String paramString)
+  {
+    AppMethodBeat.i(209311);
+    this.eBu = x("RedDotShowInfoExt", paramString, true);
+    AppMethodBeat.o(209311);
     return this;
   }
 }

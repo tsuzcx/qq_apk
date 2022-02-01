@@ -4,11 +4,11 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.wallet_core.id_verify.model.e;
-import com.tencent.mm.protocal.protobuf.bht;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.protocal.protobuf.btr;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.ao;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import java.io.IOException;
 
@@ -25,47 +25,45 @@ public class WcPayRealnameProxyUI
   {
     AppMethodBeat.i(70067);
     super.onCreate(paramBundle);
-    al.r(this, getResources().getColor(2131101053));
-    ae.i("MicroMsg.WcPayRealnameProxyUI", "do get wording");
+    ao.q(this, getResources().getColor(2131101287));
+    Log.i("MicroMsg.WcPayRealnameProxyUI", "do get wording");
     paramBundle = new e(getInput().getString("key_realname_sessionid"));
     addSceneEndListener(1666);
     doSceneProgress(paramBundle);
     AppMethodBeat.o(70067);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(70068);
     removeSceneEndListener(1666);
-    paramString = (e)paramn;
-    if (paramString.Dkl == null)
+    paramString = (e)paramq;
+    if (paramString.HTE == null)
     {
-      com.tencent.mm.wallet_core.a.b(getContext(), getInput(), 0);
+      com.tencent.mm.wallet_core.a.c(getContext(), getInput(), 0);
       AppMethodBeat.o(70068);
       return false;
     }
     try
     {
-      paramn = new String(paramString.Dkl.toByteArray(), org.apache.commons.a.a.ISO_8859_1);
+      paramq = new String(paramString.HTE.toByteArray(), org.apache.commons.a.a.ISO_8859_1);
       Bundle localBundle = new Bundle();
-      localBundle.putString("realname_verify_process_get_wording_cache", paramn);
+      localBundle.putString("realname_verify_process_get_wording_cache", paramq);
       localBundle.putAll(getInput());
-      if (paramString.Dkl.GWd) {
-        localBundle.putInt("real_name_verify_mode", 4);
-      }
-      localBundle.putBoolean("realname_verify_process_show_bindcard_page", paramString.Dkl.GWe);
-      getInput().putBoolean("realname_verify_process_verify_sms_without_bindcard", paramString.Dkl.GWg);
-      com.tencent.mm.wallet_core.a.k(getContext(), localBundle);
+      localBundle.putInt("real_name_verify_mode", 4);
+      localBundle.putBoolean("realname_verify_process_show_bindcard_page", paramString.HTE.Maz);
+      getInput().putBoolean("realname_verify_process_verify_sms_without_bindcard", paramString.HTE.MaB);
+      com.tencent.mm.wallet_core.a.l(getContext(), localBundle);
+      AppMethodBeat.o(70068);
+      return false;
     }
     catch (IOException paramString)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.WcPayRealnameProxyUI", paramString, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.WcPayRealnameProxyUI", paramString, "", new Object[0]);
       }
     }
-    AppMethodBeat.o(70068);
-    return false;
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -76,7 +74,7 @@ public class WcPayRealnameProxyUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.id_verify.WcPayRealnameProxyUI
  * JD-Core Version:    0.7.0.1
  */

@@ -10,19 +10,19 @@ import java.util.Map;
 public final class d
   implements b
 {
-  public Map<Integer, b> nLf;
+  public Map<Integer, b> oWa;
   
   private d()
   {
     AppMethodBeat.i(176955);
-    this.nLf = new HashMap();
+    this.oWa = new HashMap();
     AppMethodBeat.o(176955);
   }
   
   public final boolean a(Context paramContext, BallInfo paramBallInfo)
   {
     AppMethodBeat.i(176956);
-    b localb = (b)this.nLf.get(Integer.valueOf(paramBallInfo.type));
+    b localb = (b)this.oWa.get(Integer.valueOf(paramBallInfo.type));
     if (localb == null)
     {
       AppMethodBeat.o(176956);
@@ -36,7 +36,7 @@ public final class d
   public final boolean a(TextView paramTextView, BallInfo paramBallInfo)
   {
     AppMethodBeat.i(176957);
-    b localb = (b)this.nLf.get(Integer.valueOf(paramBallInfo.type));
+    b localb = (b)this.oWa.get(Integer.valueOf(paramBallInfo.type));
     if (localb == null)
     {
       AppMethodBeat.o(176957);
@@ -49,19 +49,19 @@ public final class d
   
   public static final class a
   {
-    public static d nLg;
+    public static d oWb;
     
     static
     {
       AppMethodBeat.i(176954);
-      nLg = new d((byte)0);
+      oWb = new d((byte)0);
       AppMethodBeat.o(176954);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.a.d
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ public enum LayoutPassReason
   
   static
   {
-    AppMethodBeat.i(221783);
+    AppMethodBeat.i(207051);
     INITIAL = new LayoutPassReason("INITIAL", 0, 0);
     ABS_LAYOUT = new LayoutPassReason("ABS_LAYOUT", 1, 1);
     STRETCH = new LayoutPassReason("STRETCH", 2, 2);
@@ -18,7 +18,7 @@ public enum LayoutPassReason
     ABS_MEASURE = new LayoutPassReason("ABS_MEASURE", 6, 6);
     FLEX_MEASURE = new LayoutPassReason("FLEX_MEASURE", 7, 7);
     $VALUES = new LayoutPassReason[] { INITIAL, ABS_LAYOUT, STRETCH, MULTILINE_STRETCH, FLEX_LAYOUT, MEASURE, ABS_MEASURE, FLEX_MEASURE };
-    AppMethodBeat.o(221783);
+    AppMethodBeat.o(207051);
   }
   
   private LayoutPassReason(int paramInt)
@@ -28,44 +28,44 @@ public enum LayoutPassReason
   
   public static LayoutPassReason fromInt(int paramInt)
   {
-    AppMethodBeat.i(221782);
+    AppMethodBeat.i(207050);
     switch (paramInt)
     {
     default: 
       localObject = new IllegalArgumentException("Unknown enum value: ".concat(String.valueOf(paramInt)));
-      AppMethodBeat.o(221782);
+      AppMethodBeat.o(207050);
       throw ((Throwable)localObject);
     case 0: 
       localObject = INITIAL;
-      AppMethodBeat.o(221782);
+      AppMethodBeat.o(207050);
       return localObject;
     case 1: 
       localObject = ABS_LAYOUT;
-      AppMethodBeat.o(221782);
+      AppMethodBeat.o(207050);
       return localObject;
     case 2: 
       localObject = STRETCH;
-      AppMethodBeat.o(221782);
+      AppMethodBeat.o(207050);
       return localObject;
     case 3: 
       localObject = MULTILINE_STRETCH;
-      AppMethodBeat.o(221782);
+      AppMethodBeat.o(207050);
       return localObject;
     case 4: 
       localObject = FLEX_LAYOUT;
-      AppMethodBeat.o(221782);
+      AppMethodBeat.o(207050);
       return localObject;
     case 5: 
       localObject = MEASURE;
-      AppMethodBeat.o(221782);
+      AppMethodBeat.o(207050);
       return localObject;
     case 6: 
       localObject = ABS_MEASURE;
-      AppMethodBeat.o(221782);
+      AppMethodBeat.o(207050);
       return localObject;
     }
     Object localObject = FLEX_MEASURE;
-    AppMethodBeat.o(221782);
+    AppMethodBeat.o(207050);
     return localObject;
   }
   

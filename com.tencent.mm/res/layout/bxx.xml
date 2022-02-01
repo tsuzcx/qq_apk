@@ -1,3 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/h8v" android:background="@color/BW_20" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.plugin.sns.ui.TestTimeForSns android:id="@id/in6" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.ui.KeyboardLinearLayout android:orientation="vertical" android:id="@id/i18" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/ak_">
+            <com.tencent.mm.ui.base.MMPullDownView android:id="@id/i00" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+                <com.tencent.mm.plugin.sns.ui.AdListView android:id="@id/hzr" android:background="@color/a8u" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:scrollingCache="false" android:divider="@null" android:overScrollMode="never" />
+            </com.tencent.mm.ui.base.MMPullDownView>
+            <com.tencent.mm.plugin.sns.ui.SnsCommentFooter android:id="@id/b8y" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </com.tencent.mm.ui.KeyboardLinearLayout>
+        <AbsoluteLayout android:paddingLeft="35.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.mm.ui.widget.QFadeImageView android:gravity="center" android:id="@id/i01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/friendactivity_refresh" android:scaleType="matrix" android:layout_y="-40.0dip" />
+        </AbsoluteLayout>
+    </com.tencent.mm.plugin.sns.ui.TestTimeForSns>
+    <ImageView android:id="@id/hxi" android:background="@drawable/co3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:id="@id/i1e" android:background="@drawable/aw8" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:layout_centerHorizontal="true" android:elevation="@dimen/bt">
+        <TextView android:textSize="14.0dip" android:textColor="@color/Brand" android:id="@id/i1g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:layout_marginBottom="@dimen/bt" android:text="@string/hbt" android:layout_centerInParent="true" android:layout_marginStart="@dimen/ce" android:layout_marginEnd="@dimen/ce" />
+    </RelativeLayout>
+</RelativeLayout>

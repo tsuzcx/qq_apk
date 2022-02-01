@@ -6,37 +6,37 @@ import java.nio.ByteBuffer;
 public class e
   extends a
 {
-  public ByteBuffer aKX;
-  public final b bhs;
-  public final int bht;
+  public ByteBuffer aKP;
+  public final b bhp;
+  public final int bhq;
   public long timeUs;
   
   public e(int paramInt)
   {
     AppMethodBeat.i(91850);
-    this.bhs = new b();
-    this.bht = paramInt;
+    this.bhp = new b();
+    this.bhq = paramInt;
     AppMethodBeat.o(91850);
   }
   
-  private ByteBuffer dS(int paramInt)
+  private ByteBuffer dN(int paramInt)
   {
     AppMethodBeat.i(91855);
     Object localObject;
-    if (this.bht == 1)
+    if (this.bhq == 1)
     {
       localObject = ByteBuffer.allocate(paramInt);
       AppMethodBeat.o(91855);
       return localObject;
     }
-    if (this.bht == 2)
+    if (this.bhq == 2)
     {
       localObject = ByteBuffer.allocateDirect(paramInt);
       AppMethodBeat.o(91855);
       return localObject;
     }
-    if (this.aKX == null) {}
-    for (int i = 0;; i = this.aKX.capacity())
+    if (this.aKP == null) {}
+    for (int i = 0;; i = this.aKP.capacity())
     {
       localObject = new IllegalStateException("Buffer too small (" + i + " < " + paramInt + ")");
       AppMethodBeat.o(91855);
@@ -48,58 +48,58 @@ public class e
   {
     AppMethodBeat.i(91854);
     super.clear();
-    if (this.aKX != null) {
-      this.aKX.clear();
+    if (this.aKP != null) {
+      this.aKP.clear();
     }
     AppMethodBeat.o(91854);
   }
   
-  public final void dR(int paramInt)
+  public final void dM(int paramInt)
   {
     AppMethodBeat.i(91851);
-    if (this.aKX == null)
+    if (this.aKP == null)
     {
-      this.aKX = dS(paramInt);
+      this.aKP = dN(paramInt);
       AppMethodBeat.o(91851);
       return;
     }
-    int i = this.aKX.capacity();
-    int j = this.aKX.position();
+    int i = this.aKP.capacity();
+    int j = this.aKP.position();
     paramInt = j + paramInt;
     if (i >= paramInt)
     {
       AppMethodBeat.o(91851);
       return;
     }
-    ByteBuffer localByteBuffer = dS(paramInt);
+    ByteBuffer localByteBuffer = dN(paramInt);
     if (j > 0)
     {
-      this.aKX.position(0);
-      this.aKX.limit(j);
-      localByteBuffer.put(this.aKX);
+      this.aKP.position(0);
+      this.aKP.limit(j);
+      localByteBuffer.put(this.aKP);
     }
-    this.aKX = localByteBuffer;
+    this.aKP = localByteBuffer;
     AppMethodBeat.o(91851);
   }
   
-  public final boolean uc()
+  public final boolean uh()
   {
     AppMethodBeat.i(91852);
-    boolean bool = dQ(1073741824);
+    boolean bool = dL(1073741824);
     AppMethodBeat.o(91852);
     return bool;
   }
   
-  public final void ud()
+  public final void ui()
   {
     AppMethodBeat.i(91853);
-    this.aKX.flip();
+    this.aKP.flip();
     AppMethodBeat.o(91853);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.b.e
  * JD-Core Version:    0.7.0.1
  */

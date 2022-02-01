@@ -8,8 +8,6 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Pair;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import com.tencent.luggage.bridge.o;
@@ -18,7 +16,7 @@ import com.tencent.luggage.webview.a.b;
 import com.tencent.luggage.webview.a.d;
 import com.tencent.luggage.webview.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.regex.Matcher;
@@ -27,81 +25,81 @@ import java.util.regex.Pattern;
 public final class p
   extends n
 {
-  o cgI;
-  private final MutableContextWrapper chM;
-  final Class<? extends com.tencent.luggage.webview.a> chN;
-  public q chO;
-  public com.tencent.luggage.webview.a chP;
-  boolean chQ;
-  public b chR;
-  d chS;
-  boolean chT;
-  private a.a chU;
+  o csD;
+  private final MutableContextWrapper ctH;
+  final Class<? extends com.tencent.luggage.webview.a> ctI;
+  public q ctJ;
+  public com.tencent.luggage.webview.a ctK;
+  boolean ctL;
+  public b ctM;
+  d ctN;
+  boolean ctO;
+  private a.a ctP;
   private Handler mHandler;
   public String mUrl;
   
   public p(Context paramContext, Class<? extends com.tencent.luggage.webview.a> paramClass)
   {
     AppMethodBeat.i(140424);
-    this.chQ = false;
-    this.chT = false;
-    this.chU = new a.a()
+    this.ctL = false;
+    this.ctO = false;
+    this.ctP = new a.a()
     {
-      private void cI(String paramAnonymousString)
+      private void cZ(String paramAnonymousString)
       {
-        AppMethodBeat.i(201158);
-        if (!p.this.chT)
+        AppMethodBeat.i(221195);
+        if (!p.this.ctO)
         {
-          if (cJ(paramAnonymousString))
+          if (df(paramAnonymousString))
           {
-            AppMethodBeat.o(201158);
+            AppMethodBeat.o(221195);
             return;
           }
-          p.this.Cr();
+          p.this.LI();
         }
-        AppMethodBeat.o(201158);
+        AppMethodBeat.o(221195);
       }
       
-      private static boolean cJ(String paramAnonymousString)
+      private static boolean df(String paramAnonymousString)
       {
-        AppMethodBeat.i(201159);
+        AppMethodBeat.i(221196);
         if ((paramAnonymousString == null) || (paramAnonymousString.length() == 0))
         {
-          AppMethodBeat.o(201159);
+          AppMethodBeat.o(221196);
           return false;
         }
         paramAnonymousString = Uri.parse(paramAnonymousString).getPath();
         if ((paramAnonymousString != null) && (paramAnonymousString.trim().endsWith("html")))
         {
-          AppMethodBeat.o(201159);
+          AppMethodBeat.o(221196);
           return true;
         }
-        AppMethodBeat.o(201159);
+        AppMethodBeat.o(221196);
         return false;
       }
       
       public final WebResourceResponse a(WebResourceRequest paramAnonymousWebResourceRequest, Bundle paramAnonymousBundle)
       {
-        AppMethodBeat.i(201156);
-        cI(paramAnonymousWebResourceRequest.getUrl().toString());
-        if (p.this.chO != null)
+        AppMethodBeat.i(221193);
+        cZ(paramAnonymousWebResourceRequest.getUrl().toString());
+        if (p.this.ctJ != null)
         {
-          paramAnonymousBundle = p.this.chO.a(paramAnonymousWebResourceRequest, paramAnonymousBundle);
+          paramAnonymousBundle = p.this.ctJ.a(paramAnonymousWebResourceRequest, paramAnonymousBundle);
           if (paramAnonymousBundle != null)
           {
-            AppMethodBeat.o(201156);
+            AppMethodBeat.o(221193);
             return paramAnonymousBundle;
           }
         }
-        paramAnonymousWebResourceRequest = p.this.chR.dv(paramAnonymousWebResourceRequest.getUrl().toString());
-        AppMethodBeat.o(201156);
+        paramAnonymousWebResourceRequest = p.this.ctM.dO(paramAnonymousWebResourceRequest.getUrl().toString());
+        AppMethodBeat.o(221193);
         return paramAnonymousWebResourceRequest;
       }
       
-      public final boolean cD(String paramAnonymousString)
+      public final boolean cU(String paramAnonymousString)
       {
-        AppMethodBeat.i(201152);
-        Iterator localIterator = p.this.chS.crl.iterator();
+        AppMethodBeat.i(221189);
+        Iterator localIterator = p.this.ctN.cDB.iterator();
         while (localIterator.hasNext())
         {
           Object localObject = (Pair)localIterator.next();
@@ -109,110 +107,100 @@ public final class p
           localObject = (Pattern)((Pair)localObject).second;
           if ((localObject != null) && (((Pattern)localObject).matcher(paramAnonymousString).matches()))
           {
-            boolean bool = locale.FD();
-            AppMethodBeat.o(201152);
+            boolean bool = locale.Pm();
+            AppMethodBeat.o(221189);
             return bool;
           }
         }
-        AppMethodBeat.o(201152);
+        AppMethodBeat.o(221189);
         return false;
       }
       
-      public final void cE(String paramAnonymousString)
+      public final void cV(String paramAnonymousString)
       {
-        AppMethodBeat.i(201153);
-        p.this.chT = false;
+        AppMethodBeat.i(221190);
+        p.this.ctO = false;
         p.this.mUrl = paramAnonymousString;
-        if (p.this.chO != null) {
-          p.this.chO.cE(paramAnonymousString);
+        if (p.this.ctJ != null) {
+          p.this.ctJ.cV(paramAnonymousString);
         }
-        AppMethodBeat.o(201153);
+        AppMethodBeat.o(221190);
       }
       
-      public final void cF(String paramAnonymousString)
+      public final void cW(String paramAnonymousString)
       {
-        AppMethodBeat.i(201154);
+        AppMethodBeat.i(221191);
         p.this.mUrl = paramAnonymousString;
-        p.this.cgI.cgP.onReady();
-        if (p.this.chO != null)
+        p.this.csD.csK.onReady();
+        if (p.this.ctJ != null)
         {
-          p.this.cgI.cw(p.this.chO.Cs());
-          p.this.chO.cF(paramAnonymousString);
+          p.this.csD.cN(p.this.ctJ.LJ());
+          p.this.ctJ.cW(paramAnonymousString);
         }
-        AppMethodBeat.o(201154);
+        AppMethodBeat.o(221191);
       }
       
-      public final WebResourceResponse cG(String paramAnonymousString)
+      public final WebResourceResponse cX(String paramAnonymousString)
       {
-        AppMethodBeat.i(201155);
-        cI(paramAnonymousString);
-        paramAnonymousString = p.this.chR.dv(paramAnonymousString);
-        AppMethodBeat.o(201155);
+        AppMethodBeat.i(221192);
+        cZ(paramAnonymousString);
+        paramAnonymousString = p.this.ctM.dO(paramAnonymousString);
+        AppMethodBeat.o(221192);
         return paramAnonymousString;
       }
       
-      public final String cH(String paramAnonymousString)
+      public final String cY(String paramAnonymousString)
       {
-        AppMethodBeat.i(201157);
-        paramAnonymousString = p.this.cgI.cgP.cx(paramAnonymousString);
-        AppMethodBeat.o(201157);
+        AppMethodBeat.i(221194);
+        paramAnonymousString = p.this.csD.csK.cO(paramAnonymousString);
+        AppMethodBeat.o(221194);
         return paramAnonymousString;
       }
     };
-    this.chM = new MutableContextWrapper(paramContext);
+    this.ctH = new MutableContextWrapper(paramContext);
     paramContext = paramClass;
     if (paramClass == null) {
       paramContext = com.tencent.luggage.webview.default_impl.a.class;
     }
-    this.chN = paramContext;
+    this.ctI = paramContext;
     this.mHandler = new Handler(Looper.getMainLooper());
-    Cm();
-    this.chP = ((com.tencent.luggage.webview.a)org.a.a.bF(this.chN).ai(new Object[] { this.chM }).object);
-    this.chP.setWebCore(this);
-    this.chP.a(this.chU);
-    this.cgI = new o(this.chP);
+    LD();
+    this.ctK = ((com.tencent.luggage.webview.a)org.a.a.bF(this.ctI).ak(new Object[] { this.ctH }).object);
+    this.ctK.setWebCore(this);
+    this.ctK.a(this.ctP);
+    this.csD = new o(this.ctK);
     AppMethodBeat.o(140424);
   }
   
-  private void Cm()
+  private void LD()
   {
     AppMethodBeat.i(140425);
-    this.chR = new b();
-    this.chS = new d();
-    Cn();
+    this.ctM = new b();
+    this.ctN = new d();
+    LE();
     AppMethodBeat.o(140425);
   }
   
-  private void Cn()
+  private void LE()
   {
     AppMethodBeat.i(140426);
-    this.chR.a(new com.tencent.luggage.webview.a.a(this.chM));
+    this.ctM.a(new com.tencent.luggage.webview.a.a(this.ctH));
     AppMethodBeat.o(140426);
   }
   
-  private void Cq()
-  {
-    AppMethodBeat.i(140435);
-    ViewParent localViewParent = getView().getParent();
-    if ((localViewParent instanceof ViewGroup)) {
-      ((ViewGroup)localViewParent).removeView(getView());
-    }
-    AppMethodBeat.o(140435);
-  }
-  
-  final void Co()
+  public final void LF()
   {
     AppMethodBeat.i(140430);
-    if (this.chQ)
+    if (this.ctL)
     {
-      this.chQ = false;
-      Cm();
+      this.ctL = false;
+      LD();
     }
     AppMethodBeat.o(140430);
   }
   
   @Deprecated
-  public final <T> T Cp()
+  public final <T> T LG()
   {
     AppMethodBeat.i(140431);
     try
@@ -223,66 +211,75 @@ public final class p
     }
     catch (Exception localException)
     {
-      ae.e(getClass().getSimpleName(), "CoreImpl cast failed", new Object[] { localException });
+      Log.e(getClass().getSimpleName(), "CoreImpl cast failed", new Object[] { localException });
       AppMethodBeat.o(140431);
     }
     return null;
   }
   
-  public final void Cr()
+  public final void LH()
+  {
+    AppMethodBeat.i(221197);
+    if (this.ctK != null) {
+      this.ctK.destroy();
+    }
+    AppMethodBeat.o(221197);
+  }
+  
+  public final void LI()
   {
     try
     {
-      AppMethodBeat.i(201162);
-      if (!this.chT)
+      AppMethodBeat.i(221200);
+      if (!this.ctO)
       {
-        ae.m("Luggage.LuggageWebCore", "try inject jsbridge", new Object[0]);
-        this.cgI.BM();
-        if (this.chO != null) {
-          this.cgI.cw(this.chO.Cs());
+        Log.printInfoStack("Luggage.LuggageWebCore", "try inject jsbridge", new Object[0]);
+        this.csD.La();
+        if (this.ctJ != null) {
+          this.csD.cN(this.ctJ.LJ());
         }
-        this.chT = true;
+        this.ctO = true;
       }
-      AppMethodBeat.o(201162);
+      AppMethodBeat.o(221200);
       return;
     }
     finally {}
   }
   
-  public final void cC(String paramString)
+  public final void cT(String paramString)
   {
-    AppMethodBeat.i(201160);
-    this.chP.evaluateJavascript(paramString, null);
-    AppMethodBeat.o(201160);
+    AppMethodBeat.i(221198);
+    this.ctK.evaluateJavascript(paramString, null);
+    AppMethodBeat.o(221198);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(140436);
-    Cq();
-    if (!this.chQ) {
-      this.chP.destroy();
+    Log.i("Luggage.LuggageWebCore", "destroy");
+    if (!this.ctL) {
+      this.ctK.destroy();
     }
     AppMethodBeat.o(140436);
   }
   
   final o getBridge()
   {
-    return this.cgI;
+    return this.csD;
   }
   
   public final String getUserAgent()
   {
-    AppMethodBeat.i(201161);
-    String str = this.chP.getUserAgent();
-    AppMethodBeat.o(201161);
+    AppMethodBeat.i(221199);
+    String str = this.ctK.getUserAgent();
+    AppMethodBeat.o(221199);
     return str;
   }
   
   public final View getView()
   {
     AppMethodBeat.i(140432);
-    View localView = this.chP.getView();
+    View localView = this.ctK.getView();
     AppMethodBeat.o(140432);
     return localView;
   }
@@ -290,16 +287,16 @@ public final class p
   public final void loadUrl(String paramString)
   {
     AppMethodBeat.i(140433);
-    this.chP.loadUrl(paramString);
+    this.ctK.loadUrl(paramString);
     AppMethodBeat.o(140433);
   }
   
   public final void setContext(Context paramContext)
   {
     AppMethodBeat.i(140427);
-    this.chM.setBaseContext(paramContext);
-    if (this.chP != null) {
-      this.chP.setContext(paramContext);
+    this.ctH.setBaseContext(paramContext);
+    if (this.ctK != null) {
+      this.ctK.setContext(paramContext);
     }
     AppMethodBeat.o(140427);
   }
@@ -307,7 +304,7 @@ public final class p
   public final void stopLoading()
   {
     AppMethodBeat.i(140434);
-    this.chP.stopLoading();
+    this.ctK.stopLoading();
     AppMethodBeat.o(140434);
   }
 }

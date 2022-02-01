@@ -32,7 +32,7 @@ public class ViewModelProvider
   
   public <T extends ViewModel> T get(String paramString, Class<T> paramClass)
   {
-    ViewModel localViewModel = (ViewModel)this.mViewModelStore.dz.get(paramString);
+    ViewModel localViewModel = (ViewModel)this.mViewModelStore.mMap.get(paramString);
     if (paramClass.isInstance(localViewModel)) {
       return localViewModel;
     }

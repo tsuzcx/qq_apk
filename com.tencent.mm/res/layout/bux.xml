@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/hxm" android:layout_width="@dimen/jr" android:layout_height="@dimen/jr" android:layout_marginLeft="@dimen/amw" android:layout_marginTop="@dimen/amw" android:layout_marginRight="@dimen/sz" android:layout_marginBottom="@dimen/amw" android:src="@raw/icons_outlined_me" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/gcc" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginLeft="@dimen/k5" android:src="@raw/media_player_play_btn" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/abg" android:id="@id/gce" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k" android:text="00:00" android:layout_toRightOf="@id/gcc" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/abg" android:id="@id/gck" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hs" android:text="00:00" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toLeftOf="@id/gck" android:layout_toRightOf="@id/gce" android:layout_centerVertical="true">
+        <ImageView android:layout_gravity="center|left" android:id="@id/gcw" android:background="@color/a4k" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" />
+        <ImageView android:layout_gravity="center|left" android:id="@id/gcx" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/hs" android:layout_marginRight="@dimen/hs" />
+        <ImageView android:id="@id/gd0" android:paddingLeft="@dimen/k" android:paddingTop="@dimen/k" android:paddingRight="@dimen/k" android:paddingBottom="@dimen/k" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:src="@raw/media_player_control_btn" />
+    </FrameLayout>
 </RelativeLayout>

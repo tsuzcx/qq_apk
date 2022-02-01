@@ -16,7 +16,7 @@ public class CoreComponentFactory
     Object localObject1 = paramT;
     if ((paramT instanceof a))
     {
-      Object localObject2 = ((a)paramT).dY();
+      Object localObject2 = ((a)paramT).ei();
       localObject1 = paramT;
       if (localObject2 != null) {
         localObject1 = localObject2;
@@ -52,12 +52,12 @@ public class CoreComponentFactory
   
   public static abstract interface a
   {
-    public abstract Object dY();
+    public abstract Object ei();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.app.CoreComponentFactory
  * JD-Core Version:    0.7.0.1
  */

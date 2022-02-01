@@ -12,10 +12,10 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class ContactMobileInfoPreference
   extends Preference
 {
-  private String jpF;
-  private TextView lHk;
+  private TextView Beb;
+  private String knP;
+  private TextView mPa;
   private String mTitle;
-  private TextView xgo;
   
   public ContactMobileInfoPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,20 +26,20 @@ public class ContactMobileInfoPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(27015);
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(27015);
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(27017);
-    this.lHk = ((TextView)paramView.findViewById(2131305902));
-    this.xgo = ((TextView)paramView.findViewById(2131302344));
-    if (this.lHk != null) {
-      this.lHk.setText(this.mTitle);
+    this.mPa = ((TextView)paramView.findViewById(2131309195));
+    this.Beb = ((TextView)paramView.findViewById(2131304739));
+    if (this.mPa != null) {
+      this.mPa.setText(this.mTitle);
     }
-    if (this.xgo != null) {
-      this.xgo.setText(this.jpF);
+    if (this.Beb != null) {
+      this.Beb.setText(this.knP);
     }
     super.onBindView(paramView);
     AppMethodBeat.o(27017);
@@ -50,9 +50,9 @@ public class ContactMobileInfoPreference
     AppMethodBeat.i(27016);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131494835, localViewGroup);
+    localLayoutInflater.inflate(2131495570, localViewGroup);
     AppMethodBeat.o(27016);
     return paramViewGroup;
   }

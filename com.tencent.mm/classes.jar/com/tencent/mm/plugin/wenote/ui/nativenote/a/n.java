@@ -15,32 +15,32 @@ public final class n
   {
     super(paramView, paramk);
     AppMethodBeat.i(30881);
-    this.pzb.setVisibility(0);
-    this.dtJ.setVisibility(8);
-    this.jnX.setVisibility(8);
-    this.pzb.setTag(this);
-    this.pzb.setOnClickListener(this.pzq);
+    this.qOs.setVisibility(0);
+    this.dKU.setVisibility(8);
+    this.kmg.setVisibility(8);
+    this.qOs.setTag(this);
+    this.qOs.setOnClickListener(this.qOH);
     AppMethodBeat.o(30881);
   }
   
   public final void a(c paramc, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(30882);
-    this.pze.setImageResource(2131690875);
-    this.pzc.setText(((com.tencent.mm.plugin.wenote.model.a.j)paramc).title);
-    this.pzd.setText(((com.tencent.mm.plugin.wenote.model.a.j)paramc).content);
+    this.qOv.setImageResource(2131691162);
+    this.qOt.setText(((com.tencent.mm.plugin.wenote.model.a.j)paramc).title);
+    this.qOu.setText(((com.tencent.mm.plugin.wenote.model.a.j)paramc).content);
     super.a(paramc, paramInt1, paramInt2);
     AppMethodBeat.o(30882);
   }
   
-  public final int cfi()
+  public final int cCY()
   {
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.n
  * JD-Core Version:    0.7.0.1
  */

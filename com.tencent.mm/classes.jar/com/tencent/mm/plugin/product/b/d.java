@@ -3,59 +3,59 @@ package com.tencent.mm.plugin.product.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class d
 {
-  public List<String> xbN;
+  public List<String> AZp;
   
   public d()
   {
     AppMethodBeat.i(66885);
-    this.xbN = new ArrayList();
-    Zm();
+    this.AZp = new ArrayList();
+    amZ();
     AppMethodBeat.o(66885);
   }
   
-  private void Zm()
+  private void amZ()
   {
     AppMethodBeat.i(66886);
-    this.xbN.clear();
-    g.ajS();
-    Object localObject = (String)g.ajR().ajA().get(270340, "");
-    ae.d("MicroMsg.MallNewsManager", "data : ".concat(String.valueOf(localObject)));
-    localObject = bu.U(((String)localObject).split(";")).iterator();
+    this.AZp.clear();
+    g.aAi();
+    Object localObject = (String)g.aAh().azQ().get(270340, "");
+    Log.d("MicroMsg.MallNewsManager", "data : ".concat(String.valueOf(localObject)));
+    localObject = Util.stringsToList(((String)localObject).split(";")).iterator();
     while (((Iterator)localObject).hasNext())
     {
       String str = (String)((Iterator)localObject).next();
-      if (!bu.isNullOrNil(str)) {
-        this.xbN.add(str);
+      if (!Util.isNullOrNil(str)) {
+        this.AZp.add(str);
       }
     }
     AppMethodBeat.o(66886);
   }
   
-  public final boolean dDe()
+  public final boolean eDw()
   {
     AppMethodBeat.i(66887);
-    ae.d("MicroMsg.MallNewsManager", "notifyNewsMap.size : " + this.xbN.size());
+    Log.d("MicroMsg.MallNewsManager", "notifyNewsMap.size : " + this.AZp.size());
     StringBuffer localStringBuffer = new StringBuffer();
-    Iterator localIterator = this.xbN.iterator();
+    Iterator localIterator = this.AZp.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if ((!bu.isNullOrNil(str)) && (!str.contains(";"))) {
+      if ((!Util.isNullOrNil(str)) && (!str.contains(";"))) {
         localStringBuffer.append(str);
       }
     }
-    ae.d("MicroMsg.MallNewsManager", "save data  : " + localStringBuffer.toString());
-    g.ajS();
-    g.ajR().ajA().set(270340, localStringBuffer.toString());
+    Log.d("MicroMsg.MallNewsManager", "save data  : " + localStringBuffer.toString());
+    g.aAi();
+    g.aAh().azQ().set(270340, localStringBuffer.toString());
     AppMethodBeat.o(66887);
     return true;
   }

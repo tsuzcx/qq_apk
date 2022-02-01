@@ -1,51 +1,18 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import android.view.MenuItem.OnMenuItemClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mm.ui.chatting.d.ad;
-import com.tencent.mm.ui.v;
+import com.tencent.mm.ui.chatting.d.ab.a;
+import com.tencent.mm.ui.chatting.d.af;
 
 public abstract interface y
-  extends ad
+  extends af
 {
-  public abstract void a(boolean paramBoolean, View.OnClickListener paramOnClickListener);
+  public abstract void BP(boolean paramBoolean);
   
-  public abstract void adQ(int paramInt);
+  public abstract void BQ(boolean paramBoolean);
   
-  public abstract v fEY();
+  public abstract void a(ab.a parama);
   
-  public abstract void fHr();
-  
-  public abstract void fIb();
-  
-  public abstract void fId();
-  
-  public abstract void fIf();
-  
-  public abstract void fIh();
-  
-  public abstract int fIn();
-  
-  public abstract int fIo();
-  
-  public abstract void gk(View paramView);
-  
-  public abstract void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener);
-  
-  public abstract void setMMSubTitle(String paramString);
-  
-  public abstract void setMMTitle(int paramInt);
-  
-  public abstract void setMMTitle(CharSequence paramCharSequence);
-  
-  public abstract void setTitleForceNotifyIconVisibility(int paramInt);
-  
-  public abstract void setTitleMuteIconVisibility(int paramInt);
-  
-  public abstract void setTitlePhoneIconVisibility(int paramInt);
-  
-  public abstract void yc(boolean paramBoolean);
+  public abstract int dYg();
 }
 
 

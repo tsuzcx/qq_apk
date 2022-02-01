@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.notification;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.ag.k.b;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.aw;
+import com.tencent.mm.model.ba;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.plugin.messenger.foundation.a.aa;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.cb;
-import com.tencent.mm.storage.cb.a;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.ci;
+import com.tencent.mm.storage.ci.a;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -22,15 +22,15 @@ import java.util.List;
 public final class e
   implements aa
 {
-  private static List<aw> wLf;
-  private boolean wLg;
-  private boolean wLh;
-  private List<bv> wLi;
+  private static List<ba> AGH;
+  private boolean AGI;
+  private boolean AGJ;
+  private List<ca> AGK;
   
   static
   {
     AppMethodBeat.i(149387);
-    wLf = new ArrayList();
+    AGH = new ArrayList();
     AppMethodBeat.o(149387);
   }
   
@@ -42,105 +42,105 @@ public final class e
   public e(boolean paramBoolean)
   {
     AppMethodBeat.i(149383);
-    this.wLg = false;
-    this.wLh = false;
-    this.wLi = new LinkedList();
-    this.wLg = paramBoolean;
-    this.wLh = false;
-    this.wLi = new LinkedList();
+    this.AGI = false;
+    this.AGJ = false;
+    this.AGK = new LinkedList();
+    this.AGI = paramBoolean;
+    this.AGJ = false;
+    this.AGK = new LinkedList();
     AppMethodBeat.o(149383);
   }
   
-  public static void a(aw paramaw)
+  public static void a(ba paramba)
   {
     AppMethodBeat.i(149381);
-    synchronized (wLf)
+    synchronized (AGH)
     {
-      if (!wLf.contains(paramaw)) {
-        wLf.add(paramaw);
+      if (!AGH.contains(paramba)) {
+        AGH.add(paramba);
       }
       AppMethodBeat.o(149381);
       return;
     }
   }
   
-  public static void b(aw paramaw)
+  public static void b(ba paramba)
   {
     AppMethodBeat.i(149382);
-    synchronized (wLf)
+    synchronized (AGH)
     {
-      wLf.remove(paramaw);
+      AGH.remove(paramba);
       AppMethodBeat.o(149382);
       return;
     }
   }
   
-  public final void a(final bv parambv, final cv paramcv)
+  public final void a(final ca paramca, final de paramde)
   {
     AppMethodBeat.i(149385);
-    if (this.wLg)
+    if (this.AGI)
     {
-      ae.i("MicroMsg.SyncMessageNotifier", "mDummy is true, do nothing and return.");
+      Log.i("MicroMsg.SyncMessageNotifier", "mDummy is true, do nothing and return.");
       AppMethodBeat.o(149385);
       return;
     }
-    synchronized (wLf)
+    synchronized (AGH)
     {
-      if (wLf.isEmpty())
+      if (AGH.isEmpty())
       {
-        ae.i("MicroMsg.SyncMessageNotifier", "no notifiers, ignore");
+        Log.i("MicroMsg.SyncMessageNotifier", "no notifiers, ignore");
         AppMethodBeat.o(149385);
         return;
       }
-      if ((parambv.field_isSend != 0) || (parambv.field_status == 4))
+      if ((paramca.field_isSend != 0) || (paramca.field_status == 4))
       {
-        ae.i("MicroMsg.SyncMessageNotifier", "not new msg, ignore");
+        Log.i("MicroMsg.SyncMessageNotifier", "not new msg, ignore");
         AppMethodBeat.o(149385);
         return;
       }
     }
-    ??? = z.a(paramcv.FNG);
-    ??? = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azO().arD(new cb.a((String)???).aVT(""));
-    if ((??? != null) && (!((cb)???).fwD()))
+    ??? = z.a(paramde.KHl);
+    ??? = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSW().aEY(new ci.a((String)???).bkR(""));
+    if ((??? != null) && (!((ci)???).gEp()))
     {
-      ae.d("MicroMsg.SyncMessageNotifier", "account no notification");
+      Log.d("MicroMsg.SyncMessageNotifier", "account no notification");
       AppMethodBeat.o(149385);
       return;
     }
-    if (!this.wLh)
+    if (!this.AGJ)
     {
-      this.wLh = true;
+      this.AGJ = true;
       Object localObject2 = new ArrayList();
-      synchronized (wLf)
+      synchronized (AGH)
       {
-        Iterator localIterator = wLf.iterator();
+        Iterator localIterator = AGH.iterator();
         if (localIterator.hasNext()) {
-          ((List)localObject2).add((aw)localIterator.next());
+          ((List)localObject2).add((ba)localIterator.next());
         }
       }
       ??? = ((List)localObject2).iterator();
       while (((Iterator)???).hasNext())
       {
-        localObject2 = (aw)((Iterator)???).next();
-        new aq(((aw)localObject2).getLooper()).post(new Runnable()
+        localObject2 = (ba)((Iterator)???).next();
+        new MMHandler(((ba)localObject2).getLooper()).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(149380);
-            if (paramcv.urJ == 49)
+            if (paramde.xKb == 49)
             {
-              k.b localb = k.b.zb(e.c(paramcv));
-              if ((localb.hDZ == 1) && (!bu.isNullOrNil(localb.hEa)) && (!bu.isNullOrNil(localb.hEb)))
+              k.b localb = k.b.HD(e.c(paramde));
+              if ((localb.iyf == 1) && (!Util.isNullOrNil(localb.iyg)) && (!Util.isNullOrNil(localb.iyh)))
               {
-                this.wLn.a(39, localb.hEb, "", localb.hEa, null, null);
+                this.AGP.a(39, localb.iyh, "", localb.iyg, null, null);
                 AppMethodBeat.o(149380);
                 return;
               }
-              this.wLn.a(parambv);
+              this.AGP.a(paramca);
               AppMethodBeat.o(149380);
               return;
             }
-            this.wLn.a(parambv);
+            this.AGP.a(paramca);
             AppMethodBeat.o(149380);
           }
         });
@@ -148,39 +148,39 @@ public final class e
       AppMethodBeat.o(149385);
       return;
     }
-    this.wLi.add(parambv);
+    this.AGK.add(paramca);
     AppMethodBeat.o(149385);
   }
   
-  public final void cEs()
+  public final void dkt()
   {
     AppMethodBeat.i(149384);
     LinkedList localLinkedList = new LinkedList();
-    localLinkedList.addAll(this.wLi);
-    this.wLi.clear();
+    localLinkedList.addAll(this.AGK);
+    this.AGK.clear();
     if (localLinkedList.size() == 0)
     {
       AppMethodBeat.o(149384);
       return;
     }
     Object localObject2 = new ArrayList();
-    synchronized (wLf)
+    synchronized (AGH)
     {
-      Iterator localIterator = wLf.iterator();
+      Iterator localIterator = AGH.iterator();
       if (localIterator.hasNext()) {
-        ((List)localObject2).add((aw)localIterator.next());
+        ((List)localObject2).add((ba)localIterator.next());
       }
     }
     ??? = ((List)localObject2).iterator();
     while (((Iterator)???).hasNext())
     {
-      localObject2 = (aw)((Iterator)???).next();
-      new aq(((aw)localObject2).getLooper()).post(new Runnable()
+      localObject2 = (ba)((Iterator)???).next();
+      new MMHandler(((ba)localObject2).getLooper()).post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(149379);
-          this.wLj.M(localList);
+          this.AGL.S(localList);
           AppMethodBeat.o(149379);
         }
       });
@@ -190,7 +190,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.e
  * JD-Core Version:    0.7.0.1
  */

@@ -8,25 +8,26 @@ import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.k;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.ipcinvoker.type.IPCString;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class AppBrandBackgroundFetchDataTokenStorageIPC
   implements l
 {
-  public final AppBrandBackgroundFetchDataTokenParcel Nq(String paramString)
+  public final AppBrandBackgroundFetchDataTokenParcel Wy(String paramString)
   {
     AppMethodBeat.i(44752);
-    paramString = (AppBrandBackgroundFetchDataTokenParcel)XIPCInvoker.a("com.tencent.mm", new IPCString(paramString), a.class);
+    paramString = (AppBrandBackgroundFetchDataTokenParcel)XIPCInvoker.a(MainProcessIPCService.dkO, new IPCString(paramString), a.class);
     AppMethodBeat.o(44752);
     return paramString;
   }
   
-  public final boolean cz(String paramString1, String paramString2)
+  public final boolean cN(String paramString1, String paramString2)
   {
     AppMethodBeat.i(44753);
-    paramString1 = (IPCBoolean)XIPCInvoker.a("com.tencent.mm", new WxappParams(paramString1, paramString2), b.class);
+    paramString1 = (IPCBoolean)XIPCInvoker.a(MainProcessIPCService.dkO, new WxappParams(paramString1, paramString2), b.class);
     if ((paramString1 != null) && (paramString1.value))
     {
       AppMethodBeat.o(44753);
@@ -86,21 +87,21 @@ public final class AppBrandBackgroundFetchDataTokenStorageIPC
     private static AppBrandBackgroundFetchDataTokenParcel a(IPCString paramIPCString)
     {
       AppMethodBeat.i(44744);
-      if ((paramIPCString == null) || (bu.isNullOrNil(paramIPCString.value)))
+      if ((paramIPCString == null) || (Util.isNullOrNil(paramIPCString.value)))
       {
-        ae.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageIPC", "GetCall:data or username is null");
+        Log.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageIPC", "GetCall:data or username is null");
         AppMethodBeat.o(44744);
         return null;
       }
       try
       {
-        paramIPCString = ((l)g.ab(l.class)).Nq(paramIPCString.value);
+        paramIPCString = ((l)g.af(l.class)).Wy(paramIPCString.value);
         AppMethodBeat.o(44744);
         return paramIPCString;
       }
       catch (Exception paramIPCString)
       {
-        ae.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageIPC", "GetCall fail", new Object[] { paramIPCString });
+        Log.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageIPC", "GetCall fail", new Object[] { paramIPCString });
         AppMethodBeat.o(44744);
       }
       return null;
@@ -113,22 +114,22 @@ public final class AppBrandBackgroundFetchDataTokenStorageIPC
     private static IPCBoolean a(AppBrandBackgroundFetchDataTokenStorageIPC.WxappParams paramWxappParams)
     {
       AppMethodBeat.i(44746);
-      if ((paramWxappParams == null) || (bu.isNullOrNil(paramWxappParams.username)))
+      if ((paramWxappParams == null) || (Util.isNullOrNil(paramWxappParams.username)))
       {
-        ae.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageIPC", "SetCall:data or username is null");
+        Log.w("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageIPC", "SetCall:data or username is null");
         paramWxappParams = new IPCBoolean(false);
         AppMethodBeat.o(44746);
         return paramWxappParams;
       }
       try
       {
-        paramWxappParams = new IPCBoolean(((l)g.ab(l.class)).cz(paramWxappParams.username, paramWxappParams.token));
+        paramWxappParams = new IPCBoolean(((l)g.af(l.class)).cN(paramWxappParams.username, paramWxappParams.token));
         AppMethodBeat.o(44746);
         return paramWxappParams;
       }
       catch (Exception paramWxappParams)
       {
-        ae.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageIPC", "SetCall fail", new Object[] { paramWxappParams });
+        Log.e("MicroMsg.AppBrand.AppBrandBackgroundFetchDataTokenStorageIPC", "SetCall fail", new Object[] { paramWxappParams });
         paramWxappParams = new IPCBoolean(false);
         AppMethodBeat.o(44746);
       }
@@ -138,7 +139,7 @@ public final class AppBrandBackgroundFetchDataTokenStorageIPC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundfetch.AppBrandBackgroundFetchDataTokenStorageIPC
  * JD-Core Version:    0.7.0.1
  */

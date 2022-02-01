@@ -24,23 +24,23 @@ public class BDStatusInfo
     AppMethodBeat.i(151533);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aZ(1, this.mmDBSize_);
-      paramVarArgs.aZ(2, this.snsDBSize_);
-      paramVarArgs.aS(3, this.mmDBTableCount_);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bb(1, this.mmDBSize_);
+      paramVarArgs.bb(2, this.snsDBSize_);
+      paramVarArgs.aM(3, this.mmDBTableCount_);
       paramVarArgs.e(4, 8, this.tableList_);
-      paramVarArgs.aZ(5, this.favDBSize_);
+      paramVarArgs.bb(5, this.favDBSize_);
       AppMethodBeat.o(151533);
       return 0;
     }
     int i;
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.p(1, this.mmDBSize_);
-      i = f.a.a.b.b.a.p(2, this.snsDBSize_);
-      int j = f.a.a.b.b.a.bz(3, this.mmDBTableCount_);
-      int k = f.a.a.a.c(4, 8, this.tableList_);
-      int m = f.a.a.b.b.a.p(5, this.favDBSize_);
+      paramInt = g.a.a.b.b.a.r(1, this.mmDBSize_);
+      i = g.a.a.b.b.a.r(2, this.snsDBSize_);
+      int j = g.a.a.b.b.a.bu(3, this.mmDBTableCount_);
+      int k = g.a.a.a.c(4, 8, this.tableList_);
+      int m = g.a.a.b.b.a.r(5, this.favDBSize_);
       AppMethodBeat.o(151533);
       return paramInt + 0 + i + j + k + m;
     }
@@ -48,10 +48,10 @@ public class BDStatusInfo
     {
       paramVarArgs = (byte[])paramVarArgs[0];
       this.tableList_.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(151533);
@@ -59,7 +59,7 @@ public class BDStatusInfo
     }
     if (paramInt == 3)
     {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
       BDStatusInfo localBDStatusInfo = (BDStatusInfo)paramVarArgs[1];
       paramInt = ((Integer)paramVarArgs[2]).intValue();
       switch (paramInt)
@@ -68,34 +68,34 @@ public class BDStatusInfo
         AppMethodBeat.o(151533);
         return -1;
       case 1: 
-        localBDStatusInfo.mmDBSize_ = ((f.a.a.a.a)localObject1).OmT.zd();
+        localBDStatusInfo.mmDBSize_ = ((g.a.a.a.a)localObject1).UbS.zl();
         AppMethodBeat.o(151533);
         return 0;
       case 2: 
-        localBDStatusInfo.snsDBSize_ = ((f.a.a.a.a)localObject1).OmT.zd();
+        localBDStatusInfo.snsDBSize_ = ((g.a.a.a.a)localObject1).UbS.zl();
         AppMethodBeat.o(151533);
         return 0;
       case 3: 
-        localBDStatusInfo.mmDBTableCount_ = ((f.a.a.a.a)localObject1).OmT.zc();
+        localBDStatusInfo.mmDBTableCount_ = ((g.a.a.a.a)localObject1).UbS.zi();
         AppMethodBeat.o(151533);
         return 0;
       case 4: 
-        paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
         i = paramVarArgs.size();
         paramInt = 0;
         while (paramInt < i)
         {
           Object localObject2 = (byte[])paramVarArgs.get(paramInt);
           localObject1 = new TableInfo();
-          localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-          for (boolean bool = true; bool; bool = ((TableInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (boolean bool = true; bool; bool = ((TableInfo)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
           localBDStatusInfo.tableList_.add(localObject1);
           paramInt += 1;
         }
         AppMethodBeat.o(151533);
         return 0;
       }
-      localBDStatusInfo.favDBSize_ = ((f.a.a.a.a)localObject1).OmT.zd();
+      localBDStatusInfo.favDBSize_ = ((g.a.a.a.a)localObject1).UbS.zl();
       AppMethodBeat.o(151533);
       return 0;
     }

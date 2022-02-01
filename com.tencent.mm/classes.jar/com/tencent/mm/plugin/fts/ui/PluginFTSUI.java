@@ -18,27 +18,27 @@ public class PluginFTSUI
   {
     AppMethodBeat.i(112051);
     Object localObject = new k();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new e();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new com.tencent.mm.plugin.fts.ui.b.c();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new h();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new com.tencent.mm.plugin.fts.ui.b.g();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new j();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new com.tencent.mm.plugin.fts.ui.b.d();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new com.tencent.mm.plugin.fts.ui.b.b();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new i();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new a();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     localObject = new com.tencent.mm.plugin.fts.ui.b.f();
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).registerFTSUILogic((com.tencent.mm.plugin.fts.a.d.d)localObject);
     AppMethodBeat.o(112051);
   }
   
@@ -54,16 +54,16 @@ public class PluginFTSUI
   public void onAccountRelease()
   {
     AppMethodBeat.i(112050);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterFTSUILogic(16);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterFTSUILogic(32);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterFTSUILogic(48);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterFTSUILogic(64);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterFTSUILogic(112);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterFTSUILogic(4112);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterFTSUILogic(4128);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterFTSUILogic(4176);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterFTSUILogic(8192);
-    ((n)com.tencent.mm.kernel.g.ad(n.class)).unregisterFTSUILogic(160);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(16);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(32);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(48);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(64);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(112);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(4112);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(4128);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(4176);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(8192);
+    ((n)com.tencent.mm.kernel.g.ah(n.class)).unregisterFTSUILogic(160);
     AppMethodBeat.o(112050);
   }
   
@@ -71,7 +71,7 @@ public class PluginFTSUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.PluginFTSUI
  * JD-Core Version:    0.7.0.1
  */

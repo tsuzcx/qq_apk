@@ -33,22 +33,23 @@ import com.tencent.mm.ipcinvoker.type.IPCInteger;
 import com.tencent.mm.ipcinvoker.type.IPCLong;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.plugin.qqmail.c.f;
+import com.tencent.mm.plugin.qqmail.d.o;
 import com.tencent.mm.plugin.qqmail.d.v;
-import com.tencent.mm.plugin.webview.ui.tools.widget.c;
 import com.tencent.mm.plugin.webview.ui.tools.widget.c.a;
 import com.tencent.mm.plugin.webview.ui.tools.widget.g.a;
 import com.tencent.mm.pluginsdk.model.app.q;
 import com.tencent.mm.protocal.JsapiPermissionWrapper;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h.c;
+import com.tencent.mm.ui.base.h.d;
 import com.tencent.mm.ui.tools.l;
 import com.tencent.mm.ui.widget.MMWebView;
+import com.tencent.mm.vfs.s;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.WebView.b;
 import com.tencent.xweb.z;
@@ -60,163 +61,166 @@ public class ReadMailUI
   extends MMActivity
   implements View.OnCreateContextMenuListener
 {
-  private static String xxq = "var mail_css = document.createElement(\"style\");";
-  private static String xxr = "";
-  private static String xxs = "";
-  private static float xxt;
-  private static int xxu;
-  private MMWebView hcA;
-  private ProgressBar jeY;
-  private long kwo;
+  private static String Bxs = "var mail_css = document.createElement(\"style\");";
+  private static String Bxt = "";
+  private static String Bxu = "";
+  private static float Bxv;
+  private static int Bxw;
+  private o BwT;
+  private ImageView BwU;
+  private TextView BwV;
+  private MailAddrsViewControl BwW;
+  private MailAddrsViewControl BwX;
+  private MailAddrsViewControl BwY;
+  private TextView BwZ;
+  private View Bxa;
+  private LinearLayout Bxb;
+  private TextView Bxc;
+  private TextView Bxd;
+  private LinearLayout Bxe;
+  private MailAttachListLinearLayout Bxf;
+  private View Bxg;
+  private TextView Bxh;
+  private TextView Bxi;
+  private View Bxj;
+  private boolean Bxk;
+  private String Bxl;
+  private String Bxm;
+  private String Bxn;
+  private int Bxo;
+  private String Bxp;
+  private int Bxq;
+  private int Bxr;
+  private String Bxx;
+  private int Bxy;
+  private MTimerHandler Bxz;
+  private ProgressBar kdb;
+  private long lAs;
   private long msgId;
   private SharedPreferences sp;
   private TextView timeTv;
-  private com.tencent.mm.plugin.qqmail.d.o xwR;
-  private ImageView xwS;
-  private TextView xwT;
-  private MailAddrsViewControl xwU;
-  private MailAddrsViewControl xwV;
-  private MailAddrsViewControl xwW;
-  private TextView xwX;
-  private View xwY;
-  private LinearLayout xwZ;
-  private TextView xxa;
-  private TextView xxb;
-  private LinearLayout xxc;
-  private MailAttachListLinearLayout xxd;
-  private View xxe;
-  private TextView xxf;
-  private TextView xxg;
-  private View xxh;
-  private boolean xxi;
-  private String xxj;
-  private String xxk;
-  private String xxl;
-  private int xxm;
-  private String xxn;
-  private int xxo;
-  private int xxp;
-  private String xxv;
-  private int xxw;
-  private aw xxx;
+  private MMWebView webView;
   
   public ReadMailUI()
   {
     AppMethodBeat.i(123176);
     this.msgId = -1L;
-    this.kwo = -1L;
-    this.xxm = 0;
-    this.xxo = 0;
-    this.xxp = 0;
-    this.xxx = new aw(Looper.getMainLooper(), new aw.a()
+    this.lAs = -1L;
+    this.Bxo = 0;
+    this.Bxq = 0;
+    this.Bxr = 0;
+    this.Bxz = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
-        AppMethodBeat.i(218093);
+        AppMethodBeat.i(198749);
         ReadMailUI.C(ReadMailUI.this);
-        AppMethodBeat.o(218093);
+        AppMethodBeat.o(198749);
         return true;
       }
     }, true);
     AppMethodBeat.o(123176);
   }
   
-  private void dGk()
+  private void eGY()
   {
     AppMethodBeat.i(123177);
-    switch (this.xxp)
+    switch (this.Bxr)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(123177);
       return;
-      this.xxg.setText(2131762195);
+      this.Bxi.setText(2131764216);
       AppMethodBeat.o(123177);
       return;
-      this.xxg.setText(2131762193);
+      this.Bxi.setText(2131764214);
       AppMethodBeat.o(123177);
       return;
-      this.xxg.setText(2131762194);
+      this.Bxi.setText(2131764215);
       AppMethodBeat.o(123177);
       return;
       String str = "";
-      if (this.xxw > 99) {
+      if (this.Bxy > 99) {
         str = "99+";
       }
-      while (bu.isNullOrNil(str))
+      while (Util.isNullOrNil(str))
       {
-        this.xxg.setText(2131762196);
+        this.Bxi.setText(2131764217);
         AppMethodBeat.o(123177);
         return;
-        if (this.xxw > 0) {
-          str = Integer.toString(this.xxw);
+        if (this.Bxy > 0) {
+          str = Integer.toString(this.Bxy);
         }
       }
-      this.xxg.setText(String.format(com.tencent.mm.cb.a.az(this, 2131762197), new Object[] { str }));
+      this.Bxi.setText(String.format(com.tencent.mm.cb.a.aI(this, 2131764218), new Object[] { str }));
     }
   }
   
-  private void dGl()
+  private void eGZ()
   {
-    AppMethodBeat.i(218108);
-    com.tencent.mm.ipcinvoker.h.a(ak.getPackageName(), null, com.tencent.mm.plugin.qqmail.c.e.class, new com.tencent.mm.ipcinvoker.d() {});
-    com.tencent.mm.ipcinvoker.h.a(ak.getPackageName(), null, com.tencent.mm.plugin.qqmail.c.g.class, new com.tencent.mm.ipcinvoker.d() {});
+    AppMethodBeat.i(198764);
+    com.tencent.mm.ipcinvoker.h.a(MMApplicationContext.getPackageName(), null, com.tencent.mm.plugin.qqmail.c.e.class, new com.tencent.mm.ipcinvoker.d() {});
+    com.tencent.mm.ipcinvoker.h.a(MMApplicationContext.getPackageName(), null, com.tencent.mm.plugin.qqmail.c.g.class, new com.tencent.mm.ipcinvoker.d() {});
     if (q.s(this, "com.tencent.androidqqmail"))
     {
-      this.xxp = 3;
-      dGk();
-      AppMethodBeat.o(218108);
+      this.Bxr = 3;
+      eGY();
+      AppMethodBeat.o(198764);
       return;
     }
-    this.sp = ak.getContext().getSharedPreferences("QQMAIL", com.tencent.mm.compatible.util.g.abv());
+    this.sp = MMApplicationContext.getContext().getSharedPreferences("QQMAIL", com.tencent.mm.compatible.util.g.aps());
     if (this.sp == null)
     {
-      AppMethodBeat.o(218108);
+      AppMethodBeat.o(198764);
       return;
     }
-    this.kwo = this.sp.getLong("qqmail_downloadid", -1L);
-    com.tencent.mm.ipcinvoker.h.a(ak.getPackageName(), new IPCLong(this.kwo), com.tencent.mm.plugin.qqmail.c.d.class, new com.tencent.mm.ipcinvoker.d() {});
-    AppMethodBeat.o(218108);
+    this.lAs = this.sp.getLong("qqmail_downloadid", -1L);
+    com.tencent.mm.ipcinvoker.h.a(MMApplicationContext.getPackageName(), new IPCLong(this.lAs), com.tencent.mm.plugin.qqmail.c.d.class, new com.tencent.mm.ipcinvoker.d() {});
+    AppMethodBeat.o(198764);
   }
   
   public int getLayoutId()
   {
-    return 2131495196;
+    return 2131496039;
   }
   
   public void initView()
   {
     AppMethodBeat.i(123183);
-    this.xwU = ((MailAddrsViewControl)findViewById(2131303601));
-    this.xwW = ((MailAddrsViewControl)findViewById(2131303602));
-    this.xwV = ((MailAddrsViewControl)findViewById(2131303600));
-    this.xwX = ((TextView)findViewById(2131303794));
-    this.xwY = findViewById(2131303796);
-    this.xwZ = ((LinearLayout)findViewById(2131303793));
-    this.xxa = ((TextView)findViewById(2131303799));
-    this.timeTv = ((TextView)findViewById(2131303800));
-    this.xxb = ((TextView)findViewById(2131303798));
-    this.xxc = ((LinearLayout)findViewById(2131303792));
-    this.xxd = ((MailAttachListLinearLayout)findViewById(2131303791));
-    this.jeY = ((ProgressBar)findViewById(2131303795));
-    this.xwS = ((ImageView)findViewById(2131303797));
-    this.xwT = ((TextView)findViewById(2131303801));
+    this.BwW = ((MailAddrsViewControl)findViewById(2131306378));
+    this.BwY = ((MailAddrsViewControl)findViewById(2131306379));
+    this.BwX = ((MailAddrsViewControl)findViewById(2131306377));
+    this.BwZ = ((TextView)findViewById(2131306584));
+    this.Bxa = findViewById(2131306586);
+    this.Bxb = ((LinearLayout)findViewById(2131306583));
+    this.Bxc = ((TextView)findViewById(2131306589));
+    this.timeTv = ((TextView)findViewById(2131306590));
+    this.Bxd = ((TextView)findViewById(2131306588));
+    this.Bxe = ((LinearLayout)findViewById(2131306582));
+    this.Bxf = ((MailAttachListLinearLayout)findViewById(2131306581));
+    this.kdb = ((ProgressBar)findViewById(2131306585));
+    this.BwU = ((ImageView)findViewById(2131306587));
+    this.BwV = ((TextView)findViewById(2131306591));
     setMMTitle("");
-    this.hcA = g.a.EID.es(this);
-    ((FrameLayout)findViewById(2131303784)).addView(this.hcA);
-    this.xxh = findViewById(2131301981);
-    this.xxe = findViewById(2131301975);
-    this.xxg = ((TextView)findViewById(2131301978));
-    this.xxf = ((TextView)findViewById(2131301977));
-    this.xxe.setOnClickListener(new View.OnClickListener()
+    this.webView = g.a.Jyt.eK(this);
+    if (this.webView.gYU()) {
+      this.webView.setBackgroundColor(getResources().getColor(2131099844));
+    }
+    ((FrameLayout)findViewById(2131306574)).addView(this.webView);
+    this.Bxj = findViewById(2131304316);
+    this.Bxg = findViewById(2131304310);
+    this.Bxi = ((TextView)findViewById(2131304313));
+    this.Bxh = ((TextView)findViewById(2131304312));
+    this.Bxg.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123156);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/ReadMailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/ReadMailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         switch (ReadMailUI.j(ReadMailUI.this))
         {
         }
@@ -225,8 +229,8 @@ public class ReadMailUI
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(123156);
           return;
-          ReadMailUI.NV(2);
-          if ((!bu.isNullOrNil(ReadMailUI.k(ReadMailUI.this))) && (!bu.isNullOrNil(ReadMailUI.l(ReadMailUI.this))))
+          ReadMailUI.Vk(2);
+          if ((!Util.isNullOrNil(ReadMailUI.k(ReadMailUI.this))) && (!Util.isNullOrNil(ReadMailUI.l(ReadMailUI.this))))
           {
             ReadMailUI.m(ReadMailUI.this);
           }
@@ -234,38 +238,38 @@ public class ReadMailUI
           {
             ReadMailUI.n(ReadMailUI.this);
             continue;
-            ReadMailUI.NV(1);
-            ae.e("MicroMsg.ReadMailUI", "cancel_download_task:fail_apilevel_too_low downloadId = %d", new Object[] { Long.valueOf(ReadMailUI.o(ReadMailUI.this)) });
+            ReadMailUI.Vk(1);
+            Log.e("MicroMsg.ReadMailUI", "cancel_download_task:fail_apilevel_too_low downloadId = %d", new Object[] { Long.valueOf(ReadMailUI.o(ReadMailUI.this)) });
             continue;
-            ReadMailUI.NV(3);
+            ReadMailUI.Vk(3);
             ReadMailUI.q(ReadMailUI.this);
             continue;
-            ReadMailUI.NV(4);
+            ReadMailUI.Vk(4);
             ReadMailUI.r(ReadMailUI.this);
           }
         }
       }
     });
-    this.xwX.setOnClickListener(new View.OnClickListener()
+    this.BwZ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(218100);
+        AppMethodBeat.i(198756);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/ReadMailUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/ReadMailUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (ReadMailUI.s(ReadMailUI.this).getVisibility() == 8)
         {
-          ReadMailUI.t(ReadMailUI.this).setText(2131762186);
+          ReadMailUI.t(ReadMailUI.this).setText(2131764207);
           ReadMailUI.s(ReadMailUI.this).setVisibility(0);
           ReadMailUI.s(ReadMailUI.this).post(new Runnable()
           {
             public final void run()
             {
-              AppMethodBeat.i(218099);
-              ReadMailUI.u(ReadMailUI.this).dGi();
-              ReadMailUI.v(ReadMailUI.this).dGi();
-              AppMethodBeat.o(218099);
+              AppMethodBeat.i(198755);
+              ReadMailUI.u(ReadMailUI.this).eGW();
+              ReadMailUI.v(ReadMailUI.this).eGW();
+              AppMethodBeat.o(198755);
             }
           });
           ReadMailUI.w(ReadMailUI.this).setVisibility(0);
@@ -273,75 +277,75 @@ public class ReadMailUI
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(218100);
+          AppMethodBeat.o(198756);
           return;
-          ReadMailUI.t(ReadMailUI.this).setText(2131762187);
+          ReadMailUI.t(ReadMailUI.this).setText(2131764208);
           ReadMailUI.s(ReadMailUI.this).setVisibility(8);
           ReadMailUI.w(ReadMailUI.this).setVisibility(8);
         }
       }
     });
-    this.xwS.setOnClickListener(new View.OnClickListener()
+    this.BwU.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(218101);
+        AppMethodBeat.i(198757);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/ReadMailUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/ReadMailUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         ReadMailUI.i(ReadMailUI.this).setVisibility(8);
         ReadMailUI.e(ReadMailUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(218101);
+        AppMethodBeat.o(198757);
       }
     });
-    this.xxb.setOnClickListener(new View.OnClickListener()
+    this.Bxd.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(123162);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/ReadMailUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/qqmail/ui/ReadMailUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         ReadMailUI.x(ReadMailUI.this);
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(123162);
       }
     });
-    addIconOptionMenu(0, 2131690603, new MenuItem.OnMenuItemClickListener()
+    addIconOptionMenu(0, 2131690843, new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
-        AppMethodBeat.i(218103);
+        AppMethodBeat.i(198759);
         if (ReadMailUI.b(ReadMailUI.this) == null)
         {
-          ae.w("MicroMsg.ReadMailUI", "mailObject is null!");
-          AppMethodBeat.o(218103);
+          Log.w("MicroMsg.ReadMailUI", "mailObject is null!");
+          AppMethodBeat.o(198759);
           return true;
         }
-        paramAnonymousMenuItem = ReadMailUI.this.getResources().getStringArray(2130903057);
-        com.tencent.mm.ui.base.h.b(ReadMailUI.this, null, paramAnonymousMenuItem, ReadMailUI.this.getResources().getString(2131762191), new h.c()
+        paramAnonymousMenuItem = ReadMailUI.this.getResources().getStringArray(2130903058);
+        com.tencent.mm.ui.base.h.b(ReadMailUI.this, null, paramAnonymousMenuItem, ReadMailUI.this.getResources().getString(2131764212), new h.d()
         {
-          public final void lh(int paramAnonymous2Int)
+          public final void oj(int paramAnonymous2Int)
           {
-            AppMethodBeat.i(218102);
+            AppMethodBeat.i(198758);
             if (paramAnonymous2Int == 3)
             {
               ReadMailUI.y(ReadMailUI.this);
-              AppMethodBeat.o(218102);
+              AppMethodBeat.o(198758);
               return;
             }
             Object localObject1 = new Intent();
             ((Intent)localObject1).setClass(ReadMailUI.this, ComposeUI.class);
-            ((Intent)localObject1).putExtra("mailid", ReadMailUI.b(ReadMailUI.this).xrE);
-            ((Intent)localObject1).putExtra("subject", ReadMailUI.b(ReadMailUI.this).xrr);
+            ((Intent)localObject1).putExtra("mailid", ReadMailUI.b(ReadMailUI.this).BrG);
+            ((Intent)localObject1).putExtra("subject", ReadMailUI.b(ReadMailUI.this).Bru);
             Object localObject2 = ReadMailUI.z(ReadMailUI.this).getMailAddrStringArray();
             String[] arrayOfString1 = ReadMailUI.u(ReadMailUI.this).getMailAddrStringArray();
             String[] arrayOfString2 = ReadMailUI.v(ReadMailUI.this).getMailAddrStringArray();
             switch (paramAnonymous2Int)
             {
             default: 
-              AppMethodBeat.o(218102);
+              AppMethodBeat.o(198758);
               return;
             case 0: 
               ((Intent)localObject1).putExtra("composeType", 2);
@@ -350,11 +354,11 @@ public class ReadMailUI
             for (;;)
             {
               localObject2 = ReadMailUI.this;
-              localObject1 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject1);
-              com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).ahE(), "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$7$1", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              ((ReadMailUI)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).mt(0));
+              localObject1 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject1);
+              com.tencent.mm.hellhoundlib.a.a.a(localObject2, ((com.tencent.mm.hellhoundlib.b.a)localObject1).axQ(), "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$7$1", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+              ((ReadMailUI)localObject2).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject1).pG(0));
               com.tencent.mm.hellhoundlib.a.a.a(localObject2, "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$7$1", "onClick", "(I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-              AppMethodBeat.o(218102);
+              AppMethodBeat.o(198758);
               return;
               ((Intent)localObject1).putExtra("composeType", 2);
               String[] arrayOfString3 = new String[localObject2.length + arrayOfString1.length];
@@ -379,13 +383,13 @@ public class ReadMailUI
               ((Intent)localObject1).putExtra("ccList", arrayOfString2);
               continue;
               ((Intent)localObject1).putExtra("mail_content", ReadMailUI.b(ReadMailUI.this).content);
-              ((Intent)localObject1).putExtra("mail_attach", ReadMailUI.b(ReadMailUI.this).xrJ);
+              ((Intent)localObject1).putExtra("mail_attach", ReadMailUI.b(ReadMailUI.this).BrL);
               ((Intent)localObject1).putExtra("mail_mode", 21);
               ((Intent)localObject1).putExtra("composeType", 3);
             }
           }
         });
-        AppMethodBeat.o(218103);
+        AppMethodBeat.o(198759);
         return false;
       }
     });
@@ -401,17 +405,17 @@ public class ReadMailUI
     });
     Object localObject = new DisplayMetrics();
     getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject);
-    xxt = ((DisplayMetrics)localObject).widthPixels / ((DisplayMetrics)localObject).scaledDensity;
-    xxu = ((DisplayMetrics)localObject).heightPixels;
-    this.hcA.getSettings().setDefaultTextEncodingName("utf-8");
-    this.hcA.getSettings().setSupportZoom(false);
-    this.hcA.getSettings().setBuiltInZoomControls(false);
-    this.hcA.getSettings().gft();
-    this.hcA.getSettings().setLoadsImagesAutomatically(false);
-    this.hcA.getSettings().setUseWideViewPort(true);
-    this.hcA.fPT();
-    ((com.tencent.mm.plugin.webview.ui.tools.widget.h)this.hcA).setEmbeddedTitleBarCompat(this.xxh);
-    ((com.tencent.mm.plugin.webview.ui.tools.widget.h)this.hcA).setEmbeddedBottomBar(this.xxe);
+    Bxv = ((DisplayMetrics)localObject).widthPixels / ((DisplayMetrics)localObject).scaledDensity;
+    Bxw = ((DisplayMetrics)localObject).heightPixels;
+    this.webView.getSettings().setDefaultTextEncodingName("utf-8");
+    this.webView.getSettings().setSupportZoom(false);
+    this.webView.getSettings().setBuiltInZoomControls(false);
+    this.webView.getSettings().hsK();
+    this.webView.getSettings().setLoadsImagesAutomatically(false);
+    this.webView.getSettings().setUseWideViewPort(true);
+    this.webView.gYW();
+    ((com.tencent.mm.plugin.webview.ui.tools.widget.h)this.webView).setEmbeddedTitleBarCompat(this.Bxj);
+    ((com.tencent.mm.plugin.webview.ui.tools.widget.h)this.webView).setEmbeddedBottomBar(this.Bxg);
     localObject = getContext().getIntent();
     byte[] arrayOfByte = new byte[112];
     arrayOfByte[25] = 1;
@@ -425,12 +429,12 @@ public class ReadMailUI
     arrayOfByte[111] = 1;
     ((Intent)localObject).putExtra("hardcode_jspermission", new JsapiPermissionWrapper(arrayOfByte));
     getContext().setIntent((Intent)localObject);
-    this.hcA.setWebViewClient(c.a.EIB.a(this.hcA, true, new com.tencent.mm.plugin.webview.ui.tools.widget.e()
+    this.webView.setWebViewClient(c.a.Jyr.a(this.webView, true, new com.tencent.mm.plugin.webview.ui.tools.widget.e()
     {
-      public final boolean Cq(String paramAnonymousString)
+      public final boolean Lb(String paramAnonymousString)
       {
-        AppMethodBeat.i(218106);
-        ae.d("MicroMsg.ReadMailUI", "url:%s", new Object[] { paramAnonymousString });
+        AppMethodBeat.i(198762);
+        Log.d("MicroMsg.ReadMailUI", "url:%s", new Object[] { paramAnonymousString });
         Object localObject;
         if ((paramAnonymousString != null) && (paramAnonymousString.startsWith("mailto:")))
         {
@@ -439,23 +443,23 @@ public class ReadMailUI
           paramAnonymousString.putExtra("composeType", 4);
           paramAnonymousString.putExtra("toList", new String[] { (String)localObject + " " + (String)localObject });
           localObject = ReadMailUI.this;
-          paramAnonymousString = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousString);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousString.ahE(), "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$9", "handleUrlLoading", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((ReadMailUI)localObject).startActivity((Intent)paramAnonymousString.mt(0));
+          paramAnonymousString = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousString);
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousString.axQ(), "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$9", "handleUrlLoading", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((ReadMailUI)localObject).startActivity((Intent)paramAnonymousString.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$9", "handleUrlLoading", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         }
         for (;;)
         {
-          AppMethodBeat.o(218106);
+          AppMethodBeat.o(198762);
           return true;
           if ((paramAnonymousString != null) && (paramAnonymousString.startsWith("tel:")))
           {
             localObject = new Intent("android.intent.action.DIAL", Uri.parse(paramAnonymousString));
             ((Intent)localObject).addFlags(268435456);
             paramAnonymousString = ReadMailUI.this;
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousString, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$9", "handleUrlLoading", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousString, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$9", "handleUrlLoading", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousString.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousString, "com/tencent/mm/plugin/qqmail/ui/ReadMailUI$9", "handleUrlLoading", "(Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           }
           else
@@ -463,10 +467,10 @@ public class ReadMailUI
             if ((paramAnonymousString == null) || (paramAnonymousString.startsWith("data:"))) {
               break label378;
             }
-            if (((com.tencent.mm.plugin.webview.ui.tools.widget.h)ReadMailUI.g(ReadMailUI.this)).eZe())
+            if (((com.tencent.mm.plugin.webview.ui.tools.widget.h)ReadMailUI.g(ReadMailUI.this)).gik())
             {
-              ((com.tencent.mm.plugin.webview.ui.tools.widget.h)ReadMailUI.g(ReadMailUI.this)).eZf();
-              AppMethodBeat.o(218106);
+              ((com.tencent.mm.plugin.webview.ui.tools.widget.h)ReadMailUI.g(ReadMailUI.this)).gil();
+              AppMethodBeat.o(198762);
               return true;
             }
             if (!paramAnonymousString.startsWith("http")) {
@@ -474,72 +478,72 @@ public class ReadMailUI
             }
             localObject = new Intent();
             ((Intent)localObject).putExtra("rawUrl", paramAnonymousString);
-            com.tencent.mm.br.d.b(ReadMailUI.this, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
+            com.tencent.mm.br.c.b(ReadMailUI.this, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
           }
         }
-        AppMethodBeat.o(218106);
+        AppMethodBeat.o(198762);
         return false;
         label378:
-        AppMethodBeat.o(218106);
+        AppMethodBeat.o(198762);
         return false;
       }
       
-      public final boolean aDy()
+      public final boolean aXk()
       {
         return false;
       }
       
-      public final void aDz() {}
+      public final void aXl() {}
       
       public final void c(MMWebView paramAnonymousMMWebView)
       {
-        AppMethodBeat.i(218107);
+        AppMethodBeat.i(198763);
         paramAnonymousMMWebView.evaluateJavascript("javascript:var meta = document.createElement(\"meta\");meta.name=\"viewport\";meta.id=\"viewport\";meta.content=\"initial-scale=1,user-scalable=yes,maximum-scale=3.0\";document.head.appendChild(meta);", null);
-        paramAnonymousMMWebView.evaluateJavascript("javascript:" + ReadMailUI.dGo(), null);
-        paramAnonymousMMWebView.evaluateJavascript("javascript:" + ReadMailUI.dGp(), null);
-        paramAnonymousMMWebView.evaluateJavascript("javascript:" + ReadMailUI.dGq(), null);
-        new aq(ReadMailUI.this.getMainLooper()).postDelayed(new Runnable()
+        paramAnonymousMMWebView.evaluateJavascript("javascript:" + ReadMailUI.eHc(), null);
+        paramAnonymousMMWebView.evaluateJavascript("javascript:" + ReadMailUI.eHd(), null);
+        paramAnonymousMMWebView.evaluateJavascript("javascript:" + ReadMailUI.eHe(), null);
+        new MMHandler(ReadMailUI.this.getMainLooper()).postDelayed(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(218104);
+            AppMethodBeat.i(198760);
             ReadMailUI.g(ReadMailUI.this).getSettings().setLoadsImagesAutomatically(true);
             ReadMailUI.g(ReadMailUI.this).getSettings().setSupportZoom(true);
             ReadMailUI.g(ReadMailUI.this).getSettings().setBuiltInZoomControls(true);
-            ((com.tencent.mm.plugin.webview.ui.tools.widget.h)ReadMailUI.g(ReadMailUI.this)).eZg();
-            ((com.tencent.mm.plugin.webview.ui.tools.widget.h)ReadMailUI.g(ReadMailUI.this)).eZh();
-            AppMethodBeat.o(218104);
+            ((com.tencent.mm.plugin.webview.ui.tools.widget.h)ReadMailUI.g(ReadMailUI.this)).gim();
+            ((com.tencent.mm.plugin.webview.ui.tools.widget.h)ReadMailUI.g(ReadMailUI.this)).gin();
+            AppMethodBeat.o(198760);
           }
         }, 200L);
-        new aq(ReadMailUI.this.getMainLooper()).postDelayed(new Runnable()
+        new MMHandler(ReadMailUI.this.getMainLooper()).postDelayed(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(218105);
+            AppMethodBeat.i(198761);
             int i = (int)(ReadMailUI.g(ReadMailUI.this).getContentHeight() * ReadMailUI.g(ReadMailUI.this).getScale());
-            ae.d("MicroMsg.ReadMailUI", ReadMailUI.g(ReadMailUI.this).getContentHeight() + "," + ReadMailUI.g(ReadMailUI.this).getHeight() + "," + ReadMailUI.g(ReadMailUI.this).getScale());
+            Log.d("MicroMsg.ReadMailUI", ReadMailUI.g(ReadMailUI.this).getContentHeight() + "," + ReadMailUI.g(ReadMailUI.this).getHeight() + "," + ReadMailUI.g(ReadMailUI.this).getScale());
             if (Math.abs(i - ReadMailUI.g(ReadMailUI.this).getHeight()) < 10) {
-              ((com.tencent.mm.plugin.webview.ui.tools.widget.h)ReadMailUI.g(ReadMailUI.this)).vy(true);
+              ((com.tencent.mm.plugin.webview.ui.tools.widget.h)ReadMailUI.g(ReadMailUI.this)).zu(true);
             }
-            AppMethodBeat.o(218105);
+            AppMethodBeat.o(198761);
           }
         }, 400L);
-        AppMethodBeat.o(218107);
+        AppMethodBeat.o(198763);
       }
       
-      public final boolean g(int paramAnonymousInt, Bundle paramAnonymousBundle)
+      public final boolean f(int paramAnonymousInt, Bundle paramAnonymousBundle)
       {
         return false;
       }
     }));
-    if (xxr.equals("")) {}
+    if (Bxt.equals("")) {}
     try
     {
-      xxr += bu.convertStreamToString(getAssets().open("mail/lib.js"));
-      xxs += bu.convertStreamToString(getAssets().open("mail/readmail.js"));
-      xxq = xxq + "mail_css.innerHTML='" + bu.convertStreamToString(getAssets().open("mail/qmail_webview.css")) + "'; document.head.appendChild(mail_css);";
-      registerForContextMenu(this.hcA);
-      new l(this).a(this.hcA, this, null);
+      Bxt += Util.convertStreamToString(getAssets().open("mail/lib.js"));
+      Bxu += Util.convertStreamToString(getAssets().open("mail/readmail.js"));
+      Bxs = Bxs + "mail_css.innerHTML='" + Util.convertStreamToString(getAssets().open("mail/qmail_webview.css")) + "'; document.head.appendChild(mail_css);";
+      registerForContextMenu(this.webView);
+      new l(this).a(this.webView, this, null);
       AppMethodBeat.o(123183);
       return;
     }
@@ -547,8 +551,8 @@ public class ReadMailUI
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.ReadMailUI", localIOException, "", new Object[0]);
-        ae.e("MicroMsg.ReadMailUI", "evaluateJavascript error " + localIOException.getMessage());
+        Log.printErrStackTrace("MicroMsg.ReadMailUI", localIOException, "", new Object[0]);
+        Log.e("MicroMsg.ReadMailUI", "evaluateJavascript error " + localIOException.getMessage());
       }
     }
   }
@@ -558,10 +562,10 @@ public class ReadMailUI
     AppMethodBeat.i(123178);
     super.onCreate(paramBundle);
     this.msgId = getIntent().getLongExtra("msgid", -1L);
-    ae.i("MicroMsg.ReadMailUI", "onCreate msgId %d", new Object[] { Long.valueOf(this.msgId) });
+    Log.i("MicroMsg.ReadMailUI", "onCreate msgId %d", new Object[] { Long.valueOf(this.msgId) });
     initView();
-    dGl();
-    com.tencent.mm.ipcinvoker.h.a(ak.getPackageName(), new IPCLong(this.msgId), f.class, new com.tencent.mm.ipcinvoker.d() {});
+    eGZ();
+    com.tencent.mm.ipcinvoker.h.a(MMApplicationContext.getPackageName(), new IPCLong(this.msgId), f.class, new com.tencent.mm.ipcinvoker.d() {});
     AppMethodBeat.o(123178);
   }
   
@@ -585,8 +589,8 @@ public class ReadMailUI
   {
     AppMethodBeat.i(123181);
     super.onDestroy();
-    this.hcA.setVisibility(8);
-    this.hcA.destroy();
+    this.webView.setVisibility(8);
+    this.webView.destroy();
     AppMethodBeat.o(123181);
   }
   
@@ -601,8 +605,8 @@ public class ReadMailUI
   {
     AppMethodBeat.i(123193);
     super.onResume();
-    if (this.xxi) {
-      dGl();
+    if (this.Bxk) {
+      eGZ();
     }
     AppMethodBeat.o(123193);
   }
@@ -611,7 +615,7 @@ public class ReadMailUI
   {
     AppMethodBeat.i(123180);
     super.onStop();
-    this.hcA.stopLoading();
+    this.webView.stopLoading();
     AppMethodBeat.o(123180);
   }
   
@@ -620,12 +624,10 @@ public class ReadMailUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
-  
-  public final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.ui.ReadMailUI
  * JD-Core Version:    0.7.0.1
  */

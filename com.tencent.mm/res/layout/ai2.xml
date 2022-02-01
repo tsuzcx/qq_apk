@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="@dimen/a4y" android:layout_height="@dimen/a4y"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="end|bottom|center" android:id="@id/u8" android:layout_width="@dimen/a4z" android:layout_height="@dimen/a4z" android:src="@drawable/e2" />
-    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:background="@null" android:paddingLeft="@dimen/a4x" android:paddingTop="@dimen/a4x" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <ImageView android:id="@id/cqi" android:layout_width="@dimen/a4w" android:layout_height="@dimen/a4w" android:src="@raw/float_indicator_icon" />
-        <TextView android:textSize="@dimen/jv" android:textColor="@color/p2" android:layout_gravity="center_horizontal" android:id="@id/cqj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/bp9" />
-    </LinearLayout>
+<FrameLayout android:id="@id/ge2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:background="@drawable/aqu" android:layout_width="fill_parent" android:layout_height="fill_parent" app:loadMoreLayout="@layout/b21">
+        <android.support.v7.widget.RecyclerView android:id="@id/ge1" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.mm.view.RefreshLoadMoreLayout>
+    <FrameLayout android:id="@id/c3e" android:background="@drawable/aqu" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ProgressBar android:layout_gravity="center_horizontal" android:id="@id/gl7" android:visibility="gone" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/c4" android:indeterminateDrawable="@drawable/apb" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/h5w" android:paddingTop="@dimen/c4" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/cmj" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/a2x" android:layout_gravity="center_horizontal" android:id="@id/c35" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c4" android:text="@string/d3g" />
+    </FrameLayout>
+    <FrameLayout android:id="@id/ip9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include layout="@layout/a8m" />
+    </FrameLayout>
 </FrameLayout>

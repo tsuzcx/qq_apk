@@ -12,7 +12,7 @@ import com.tencent.mm.plugin.appbrand.appcache.bh;
 import com.tencent.mm.plugin.appbrand.appcache.br;
 import com.tencent.mm.plugin.appbrand.appcache.j.a;
 import com.tencent.mm.pluginsdk.j.a.c.m;
-import com.tencent.mm.sdk.e.f;
+import com.tencent.mm.sdk.storage.ISQLiteDatabaseEx;
 import java.util.ArrayList;
 import java.util.Locale;
 
@@ -35,24 +35,24 @@ public final class d
   static final class a
     implements ae.a
   {
-    private ArrayList<IDKey> jJn;
-    private long jJo = 0L;
-    private long jJp = 0L;
-    private final br kjk;
-    private a kjl;
+    private ArrayList<IDKey> kLk;
+    private long kLl = 0L;
+    private long kLm = 0L;
+    private final br lmS;
+    private a lmT;
     
     private a(br parambr)
     {
-      this.kjk = parambr;
+      this.lmS = parambr;
     }
     
-    private void bau()
+    private void bvI()
     {
       AppMethodBeat.i(121262);
       try
       {
-        com.tencent.mm.plugin.report.e.ywz.b(this.jJn, false);
-        this.jJn.clear();
+        com.tencent.mm.plugin.report.e.Cxv.b(this.kLk, false);
+        this.kLk.clear();
         AppMethodBeat.o(121262);
         return;
       }
@@ -62,13 +62,13 @@ public final class d
       }
     }
     
-    private void sr(int paramInt)
+    private void wn(int paramInt)
     {
       AppMethodBeat.i(121261);
-      if (this.jJn == null) {
-        this.jJn = new ArrayList();
+      if (this.kLk == null) {
+        this.kLk = new ArrayList();
       }
-      this.jJn.add(new IDKey(640, paramInt, 1));
+      this.kLk.add(new IDKey(640, paramInt, 1));
       AppMethodBeat.o(121261);
     }
     
@@ -77,23 +77,23 @@ public final class d
       int k = 1;
       int j = 2;
       AppMethodBeat.i(121266);
-      long l = SystemClock.elapsedRealtime() - this.jJo;
+      long l = SystemClock.elapsedRealtime() - this.kLl;
       if (l <= 1000L)
       {
         i = 0;
         label31:
-        com.tencent.mm.plugin.report.e.ywz.idkeyStat(665L, i, 1L, false);
-        com.tencent.mm.plugin.report.e.ywz.idkeyStat(665L, 6L, 1L, false);
+        com.tencent.mm.plugin.report.e.Cxv.idkeyStat(665L, i, 1L, false);
+        com.tencent.mm.plugin.report.e.Cxv.idkeyStat(665L, 6L, 1L, false);
         if ((paramm == null) || (paramm.status != 2)) {
           break label179;
         }
       }
       label179:
       for (int i = k;; i = 0) {
-        switch (d.1.kjj[this.kjl.ordinal()])
+        switch (d.1.lmR[this.lmT.ordinal()])
         {
         default: 
-          bau();
+          bvI();
           AppMethodBeat.o(121266);
           return;
           if (l <= 2000L)
@@ -123,47 +123,47 @@ public final class d
       if (i != 0) {}
       for (i = j;; i = 3)
       {
-        sr(i);
+        wn(i);
         break;
       }
       if (i != 0) {}
       for (i = 11;; i = 12)
       {
-        sr(i);
+        wn(i);
         break;
       }
     }
     
-    public final void aZS()
+    public final void bvj()
     {
       int j = 0;
       AppMethodBeat.i(121263);
       Object localObject;
-      if (j.a.rT(this.kjk.duK))
+      if (j.a.vP(this.lmS.dMe))
       {
-        if (((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYP() == null) {
+        if (((com.tencent.mm.plugin.appbrand.api.e)g.af(com.tencent.mm.plugin.appbrand.api.e.class)).bub() == null) {
           i = 1;
         }
         while (i > 1)
         {
-          localObject = a.kjn;
+          localObject = a.lmV;
           label47:
-          this.kjl = ((a)localObject);
+          this.lmT = ((a)localObject);
           label52:
-          switch (d.1.kjj[this.kjl.ordinal()])
+          switch (d.1.lmR[this.lmT.ordinal()])
           {
           default: 
             i = j;
             label86:
-            sr(i);
-            this.jJo = SystemClock.elapsedRealtime();
+            wn(i);
+            this.kLl = SystemClock.elapsedRealtime();
             AppMethodBeat.o(121263);
             return;
-            localObject = ((com.tencent.mm.plugin.appbrand.api.e)g.ab(com.tencent.mm.plugin.appbrand.api.e.class)).aYP();
-            String str1 = this.kjk.appId;
-            i = this.kjk.duK;
+            localObject = ((com.tencent.mm.plugin.appbrand.api.e)g.af(com.tencent.mm.plugin.appbrand.api.e.class)).bub();
+            String str1 = this.lmS.appId;
+            i = this.lmS.dMe;
             String str2 = String.format(Locale.US, "select count(%s) from %s where %s=? and %s=?", new Object[] { "version", "AppBrandWxaPkgManifestRecord", "appId", "debugType" });
-            localObject = ((bh)localObject).jLK.a(str2, new String[] { str1, String.valueOf(i) }, 2);
+            localObject = ((bh)localObject).kNJ.rawQuery(str2, new String[] { str1, String.valueOf(i) }, 2);
             if (localObject == null) {
               i = 0;
             } else {
@@ -180,9 +180,9 @@ public final class d
       {
         ((Cursor)localObject).close();
         break;
-        localObject = a.kjm;
+        localObject = a.lmU;
         break label47;
-        this.kjl = a.kjm;
+        this.lmT = a.lmU;
         break label52;
         i = 1;
         break label86;
@@ -191,58 +191,58 @@ public final class d
       }
     }
     
-    public final void aZT()
+    public final void bvk()
     {
       AppMethodBeat.i(121264);
-      sr(32);
+      wn(32);
       AppMethodBeat.o(121264);
     }
     
-    public final void aZU()
+    public final void bvl()
     {
-      AppMethodBeat.i(121265);
-      sr(31);
-      AppMethodBeat.o(121265);
+      AppMethodBeat.i(192518);
+      wn(34);
+      AppMethodBeat.o(192518);
     }
     
-    public final void aZV() {}
+    public final void bvm() {}
     
-    public final void aZW() {}
+    public final void bvn() {}
     
-    public final void aZX()
+    public final void bvo()
     {
       AppMethodBeat.i(121267);
-      this.jJp = SystemClock.elapsedRealtime();
-      switch (d.1.kjj[this.kjl.ordinal()])
+      this.kLm = SystemClock.elapsedRealtime();
+      switch (d.1.lmR[this.lmT.ordinal()])
       {
       }
       for (;;)
       {
         AppMethodBeat.o(121267);
         return;
-        sr(5);
+        wn(5);
         AppMethodBeat.o(121267);
         return;
-        sr(14);
+        wn(14);
       }
     }
     
-    public final void aZY() {}
+    public final void bvp() {}
     
-    public final void fI(boolean paramBoolean)
+    public final void gE(boolean paramBoolean)
     {
       AppMethodBeat.i(121268);
       SystemClock.elapsedRealtime();
       int i;
-      switch (d.1.kjj[this.kjl.ordinal()])
+      switch (d.1.lmR[this.lmT.ordinal()])
       {
       default: 
         i = 0;
       }
       for (;;)
       {
-        sr(i);
-        bau();
+        wn(i);
+        bvI();
         AppMethodBeat.o(121268);
         return;
         if (paramBoolean)
@@ -262,18 +262,18 @@ public final class d
       }
     }
     
-    public final void fJ(boolean paramBoolean) {}
+    public final void gF(boolean paramBoolean) {}
     
-    public final void rU(int paramInt) {}
+    public final void vQ(int paramInt) {}
     
     static enum a
     {
       static
       {
         AppMethodBeat.i(121260);
-        kjm = new a("DOWNLOAD", 0);
-        kjn = new a("UPDATE", 1);
-        kjo = new a[] { kjm, kjn };
+        lmU = new a("DOWNLOAD", 0);
+        lmV = new a("UPDATE", 1);
+        lmW = new a[] { lmU, lmV };
         AppMethodBeat.o(121260);
       }
       
@@ -283,7 +283,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.b.d
  * JD-Core Version:    0.7.0.1
  */

@@ -7,19 +7,19 @@ import java.util.List;
 
 final class d
 {
-  String aQh;
-  int bCT;
-  boolean bCU;
-  boolean bCV;
-  int bCW;
-  int bCX;
+  String aQa;
+  int bCV;
+  boolean bCW;
+  boolean bCX;
   int bCY;
   int bCZ;
   String bDA;
+  List<String> bDB;
+  String bDC;
   int bDa;
-  Layout.Alignment bDc;
-  String bDy;
-  List<String> bDz;
+  int bDb;
+  int bDc;
+  Layout.Alignment bDe;
   int backgroundColor;
   String fontFamily;
   float fontSize;
@@ -27,19 +27,19 @@ final class d
   public d()
   {
     AppMethodBeat.i(92891);
-    this.aQh = "";
-    this.bDy = "";
-    this.bDz = Collections.emptyList();
+    this.aQa = "";
     this.bDA = "";
+    this.bDB = Collections.emptyList();
+    this.bDC = "";
     this.fontFamily = null;
-    this.bCU = false;
-    this.bCV = false;
-    this.bCW = -1;
-    this.bCX = -1;
+    this.bCW = false;
+    this.bCX = false;
     this.bCY = -1;
     this.bCZ = -1;
     this.bDa = -1;
-    this.bDc = null;
+    this.bDb = -1;
+    this.bDc = -1;
+    this.bDe = null;
     AppMethodBeat.o(92891);
   }
   
@@ -63,13 +63,13 @@ final class d
   public final int getStyle()
   {
     int j = 0;
-    if ((this.bCY == -1) && (this.bCZ == -1)) {
+    if ((this.bDa == -1) && (this.bDb == -1)) {
       return -1;
     }
-    if (this.bCY == 1) {}
+    if (this.bDa == 1) {}
     for (int i = 1;; i = 0)
     {
-      if (this.bCZ == 1) {
+      if (this.bDb == 1) {
         j = 2;
       }
       return i | j;
@@ -78,7 +78,7 @@ final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.d
  * JD-Core Version:    0.7.0.1
  */

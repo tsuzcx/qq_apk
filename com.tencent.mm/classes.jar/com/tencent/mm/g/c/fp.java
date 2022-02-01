@@ -2,28 +2,33 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class fp
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int ftf = "originMD5".hashCode();
-  private static final int ftg = "resultFile".hashCode();
-  private static final int fth = "fromLang".hashCode();
-  private static final int fti = "toLang".hashCode();
-  private static final int ftj = "brand".hashCode();
+  private static final int fVU = "decryptKey".hashCode();
+  private static final int fVg = "pkgMd5".hashCode();
+  private static final int fkR;
+  private static final int fkj = "appId".hashCode();
+  private static final int flJ = "reportId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  public String field_brand;
-  public String field_fromLang;
-  public String field_originMD5;
-  public String field_resultFile;
-  public String field_toLang;
-  private boolean fta = true;
-  private boolean ftb = true;
-  private boolean ftc = true;
-  private boolean ftd = true;
-  private boolean fte = true;
+  private boolean fUX = true;
+  private boolean fVT = true;
+  public String field_appId;
+  public int field_appVersion;
+  public String field_decryptKey;
+  public String field_pkgMd5;
+  public int field_reportId;
+  private boolean fjS = true;
+  private boolean fkN = true;
+  private boolean flE = true;
+  
+  static
+  {
+    fkR = "appVersion".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -38,26 +43,25 @@ public abstract class fp
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (ftf != k) {
-        break label65;
+      if (fkj != k) {
+        break label60;
       }
-      this.field_originMD5 = paramCursor.getString(i);
-      this.fta = true;
+      this.field_appId = paramCursor.getString(i);
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label65:
-      if (ftg == k) {
-        this.field_resultFile = paramCursor.getString(i);
-      } else if (fth == k) {
-        this.field_fromLang = paramCursor.getString(i);
-      } else if (fti == k) {
-        this.field_toLang = paramCursor.getString(i);
-      } else if (ftj == k) {
-        this.field_brand = paramCursor.getString(i);
+      label60:
+      if (fkR == k) {
+        this.field_appVersion = paramCursor.getInt(i);
+      } else if (fVU == k) {
+        this.field_decryptKey = paramCursor.getString(i);
+      } else if (fVg == k) {
+        this.field_pkgMd5 = paramCursor.getString(i);
+      } else if (flJ == k) {
+        this.field_reportId = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -67,20 +71,20 @@ public abstract class fp
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fta) {
-      localContentValues.put("originMD5", this.field_originMD5);
+    if (this.fjS) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.ftb) {
-      localContentValues.put("resultFile", this.field_resultFile);
+    if (this.fkN) {
+      localContentValues.put("appVersion", Integer.valueOf(this.field_appVersion));
     }
-    if (this.ftc) {
-      localContentValues.put("fromLang", this.field_fromLang);
+    if (this.fVT) {
+      localContentValues.put("decryptKey", this.field_decryptKey);
     }
-    if (this.ftd) {
-      localContentValues.put("toLang", this.field_toLang);
+    if (this.fUX) {
+      localContentValues.put("pkgMd5", this.field_pkgMd5);
     }
-    if (this.fte) {
-      localContentValues.put("brand", this.field_brand);
+    if (this.flE) {
+      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -90,7 +94,7 @@ public abstract class fp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.fp
  * JD-Core Version:    0.7.0.1
  */

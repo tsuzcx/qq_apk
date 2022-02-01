@@ -2,116 +2,175 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Arrays;
 
 public final class de
   extends a
 {
-  public long dZW;
-  public String efY;
-  public long efZ;
-  public long ega;
+  private long enl;
+  private String etN = "";
+  private String etO = "";
+  private int etP;
+  private String etQ = "";
+  private long etR;
+  private long ews;
+  private String eyL = "";
   
-  public de()
+  public final String abV()
   {
-    this.efY = "";
-    this.dZW = 0L;
-    this.efZ = 0L;
-    this.ega = 0L;
-  }
-  
-  public de(String paramString)
-  {
-    AppMethodBeat.i(121753);
-    this.efY = "";
-    this.dZW = 0L;
-    this.efZ = 0L;
-    this.ega = 0L;
-    if (paramString != null)
-    {
-      paramString = paramString.split(",");
-      if (paramString != null)
-      {
-        if (paramString.length >= 4) {
-          break label123;
-        }
-        String[] arrayOfString = new String[4];
-        Arrays.fill(arrayOfString, 0, 4, "");
-        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
-        paramString = arrayOfString;
-      }
-    }
-    label123:
-    for (;;)
-    {
-      mK(paramString[0]);
-      this.dZW = bu.getLong(paramString[1], 0L);
-      jz(bu.getLong(paramString[2], 0L));
-      this.ega = bu.getLong(paramString[3], 0L);
-      AppMethodBeat.o(121753);
-      return;
-    }
-  }
-  
-  public final String RC()
-  {
-    AppMethodBeat.i(121756);
+    AppMethodBeat.i(220187);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.efY);
+    ((StringBuffer)localObject).append(this.etN);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZW);
+    ((StringBuffer)localObject).append(this.etO);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efZ);
+    ((StringBuffer)localObject).append(this.etP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ega);
+    ((StringBuffer)localObject).append(this.etQ);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.etR);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.enl);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eyL);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.ews);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(121756);
+    aMq((String)localObject);
+    AppMethodBeat.o(220187);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(121757);
+    AppMethodBeat.i(220188);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Name:").append(this.efY);
+    ((StringBuffer)localObject).append("FinderUsrname:").append(this.etN);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Type:").append(this.dZW);
+    ((StringBuffer)localObject).append("FinderWxAppInfo:").append(this.etO);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TimeStampMs:").append(this.efZ);
+    ((StringBuffer)localObject).append("IsPrivate:").append(this.etP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("HashCode:").append(this.ega);
+    ((StringBuffer)localObject).append("FinderSessionId:").append(this.etQ);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ActionTimeMs:").append(this.etR);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ActionType:").append(this.enl);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ActionJson:").append(this.eyL);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("SourceScene:").append(this.ews);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(121757);
+    AppMethodBeat.o(220188);
     return localObject;
+  }
+  
+  public final String acG()
+  {
+    return this.etN;
+  }
+  
+  public final String acH()
+  {
+    return this.etO;
+  }
+  
+  public final int acI()
+  {
+    return this.etP;
+  }
+  
+  public final String acJ()
+  {
+    return this.etQ;
+  }
+  
+  public final long acK()
+  {
+    return this.etR;
+  }
+  
+  public final long acL()
+  {
+    return this.enl;
+  }
+  
+  public final long adn()
+  {
+    return this.ews;
+  }
+  
+  public final String aeO()
+  {
+    return this.eyL;
   }
   
   public final int getId()
   {
-    return 0;
+    return 21106;
   }
   
-  public final de jz(long paramLong)
+  public final de iY(long paramLong)
   {
-    AppMethodBeat.i(121755);
-    this.efZ = paramLong;
-    super.bh("TimeStampMs", this.efZ);
-    AppMethodBeat.o(121755);
+    AppMethodBeat.i(220185);
+    this.etR = paramLong;
+    super.bi("ActionTimeMs", this.etR);
+    AppMethodBeat.o(220185);
     return this;
   }
   
-  public final de mK(String paramString)
+  public final de iZ(long paramLong)
   {
-    AppMethodBeat.i(121754);
-    this.efY = t("Name", paramString, true);
-    AppMethodBeat.o(121754);
+    this.enl = paramLong;
+    return this;
+  }
+  
+  public final de ja(long paramLong)
+  {
+    this.ews = paramLong;
+    return this;
+  }
+  
+  public final de kI(int paramInt)
+  {
+    this.etP = paramInt;
+    return this;
+  }
+  
+  public final de or(String paramString)
+  {
+    AppMethodBeat.i(220182);
+    this.etN = x("FinderUsrname", paramString, true);
+    AppMethodBeat.o(220182);
+    return this;
+  }
+  
+  public final de os(String paramString)
+  {
+    AppMethodBeat.i(220183);
+    this.etO = x("FinderWxAppInfo", paramString, true);
+    AppMethodBeat.o(220183);
+    return this;
+  }
+  
+  public final de ot(String paramString)
+  {
+    AppMethodBeat.i(220184);
+    this.etQ = x("FinderSessionId", paramString, true);
+    AppMethodBeat.o(220184);
+    return this;
+  }
+  
+  public final de ou(String paramString)
+  {
+    AppMethodBeat.i(220186);
+    this.eyL = x("ActionJson", paramString, true);
+    AppMethodBeat.o(220186);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.de
  * JD-Core Version:    0.7.0.1
  */

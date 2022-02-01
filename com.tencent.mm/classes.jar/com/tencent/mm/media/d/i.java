@@ -3,205 +3,207 @@ package com.tencent.mm.media.d;
 import android.media.MediaCodec.BufferInfo;
 import android.view.Surface;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.media.k.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.a.b;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.compatible.deviceinfo.z;
+import com.tencent.mm.media.k.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/decoder/MediaCodecTransDecoder;", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "decodeSurface", "Landroid/view/Surface;", "outputFps", "", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;ILkotlin/jvm/functions/Function1;)V", "TAG", "", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "sawInputEOS", "", "drainDecoder", "inputDecoder", "sendDecoderEOS", "startDecode", "Companion", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/decoder/MediaCodecTransDecoder;", "Lcom/tencent/mm/media/decoder/IMediaCodecTransDecoder;", "startTimeMs", "", "endTimeMs", "mediaExtractorWrapper", "Lcom/tencent/mm/media/extractor/MediaExtractorWrapper;", "decodeSurface", "Landroid/view/Surface;", "outputFps", "", "enableHevc", "", "init", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "(JJLcom/tencent/mm/media/extractor/MediaExtractorWrapper;Landroid/view/Surface;IZLkotlin/jvm/functions/Function1;)V", "TAG", "", "bufferInfo", "Landroid/media/MediaCodec$BufferInfo;", "sawInputEOS", "drainDecoder", "inputDecoder", "sendDecoderEOS", "startDecode", "Companion", "plugin-mediaeditor_release"})
 public final class i
   extends f
 {
-  public static final i.a hlT;
+  public static final i.a ieP;
   private final String TAG;
   private MediaCodec.BufferInfo bufferInfo;
-  private volatile boolean hlM;
+  private volatile boolean ieI;
   
   static
   {
     AppMethodBeat.i(93548);
-    hlT = new i.a((byte)0);
+    ieP = new i.a((byte)0);
     AppMethodBeat.o(93548);
   }
   
-  public i(long paramLong1, long paramLong2, com.tencent.mm.media.f.a parama, Surface paramSurface, int paramInt, b<? super f, d.z> paramb)
+  public i(long paramLong1, long paramLong2, com.tencent.mm.media.f.a parama, Surface paramSurface, int paramInt, boolean paramBoolean, b<? super f, x> paramb)
   {
-    super(paramLong1, paramLong2, parama, paramSurface, paramInt);
-    AppMethodBeat.i(93547);
+    super(paramLong1, paramLong2, parama, paramSurface, paramInt, paramBoolean);
+    AppMethodBeat.i(258661);
     this.bufferInfo = new MediaCodec.BufferInfo();
     this.TAG = "MicroMsg.MediaCodecTransDecoder";
     try
     {
-      this.mediaFormat = parama.hmO;
-      this.hlf = com.tencent.mm.compatible.deviceinfo.z.vI(parama.atQ());
-      parama = this.hlf;
+      this.mediaFormat = parama.igh;
+      this.iec = z.DZ(parama.aMs());
+      parama = this.iec;
       if (parama == null) {
-        p.gkB();
+        p.hyc();
       }
       parama.a(this.mediaFormat, paramSurface, 0);
-      parama = this.hlf;
+      parama = this.iec;
       if (parama == null) {
-        p.gkB();
+        p.hyc();
       }
       parama.start();
       if (paramb != null)
       {
         paramb.invoke(this);
-        AppMethodBeat.o(93547);
+        AppMethodBeat.o(258661);
         return;
       }
     }
     catch (Exception parama)
     {
-      ae.printErrStackTrace(this.TAG, (Throwable)parama, "create decoder error:" + parama.getMessage(), new Object[0]);
+      Log.printErrStackTrace(this.TAG, (Throwable)parama, "create decoder error:" + parama.getMessage(), new Object[0]);
       parama = (Throwable)new IllegalStateException("init decoder error");
-      AppMethodBeat.o(93547);
+      AppMethodBeat.o(258661);
       throw parama;
     }
-    AppMethodBeat.o(93547);
+    AppMethodBeat.o(258661);
   }
   
-  private final boolean atE()
+  private final boolean aMf()
   {
     AppMethodBeat.i(93545);
     long l1;
     Object localObject2;
     try
     {
-      synchronized (this.hly)
+      synchronized (this.ieu)
       {
-        if (this.gJv) {
-          ae.i(this.TAG, "inputDecoder already finished");
+        if (this.isFinished) {
+          Log.i(this.TAG, "inputDecoder already finished");
         }
-        d.z localz = d.z.Nhr;
-        ae.i(this.TAG, "inputDecoder");
-        l1 = bu.HQ();
-        ??? = this.hlf;
+        x localx = x.SXb;
+        Log.i(this.TAG, "inputDecoder");
+        l1 = Util.currentTicks();
+        ??? = this.iec;
         if (??? == null) {
-          p.gkB();
+          p.hyc();
         }
-        ??? = ((com.tencent.mm.compatible.deviceinfo.z)???).getInputBuffers();
+        ??? = ((z)???).getInputBuffers();
         if (??? == null)
         {
           AppMethodBeat.o(93545);
           return false;
         }
       }
-      localObject4 = this.hlf;
+      localObject4 = this.iec;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace(this.TAG, (Throwable)localException, "inputDecoder error", new Object[0]);
-      if (this.hlB)
+      Log.printErrStackTrace(this.TAG, (Throwable)localException, "inputDecoder error", new Object[0]);
+      if (this.iex)
       {
-        localObject2 = d.hrI;
-        d.avX();
+        localObject2 = e.ilC;
+        e.aOK();
       }
       AppMethodBeat.o(93545);
       return true;
     }
     Object localObject4;
     if (localObject4 == null) {
-      p.gkB();
+      p.hyc();
     }
-    int i = ((com.tencent.mm.compatible.deviceinfo.z)localObject4).dequeueInputBuffer(60000L);
+    int i = ((z)localObject4).dequeueInputBuffer(60000L);
     int j = 0;
     while ((i < 0) && (j < 15))
     {
-      if (atF())
+      if (aMg())
       {
         AppMethodBeat.o(93545);
         return true;
       }
-      localObject4 = this.hlf;
+      localObject4 = this.iec;
       if (localObject4 == null) {
-        p.gkB();
+        p.hyc();
       }
-      i = ((com.tencent.mm.compatible.deviceinfo.z)localObject4).dequeueInputBuffer(60000L);
+      i = ((z)localObject4).dequeueInputBuffer(60000L);
       j += 1;
     }
-    this.hlM = false;
+    this.ieI = false;
     long l2;
     int k;
     if (i >= 0)
     {
       localObject2 = localObject2[i];
       ((ByteBuffer)localObject2).clear();
-      localObject4 = this.hll;
+      localObject4 = this.iei;
       if (localObject4 == null) {
-        p.gkB();
+        p.hyc();
       }
       p.g(localObject2, "inputBuffer");
-      if (!((com.tencent.mm.media.f.a)localObject4).j((ByteBuffer)localObject2))
+      if (!com.tencent.mm.media.f.a.a((com.tencent.mm.media.f.a)localObject4, (ByteBuffer)localObject2))
       {
-        ae.i(this.TAG, "read sample end");
+        Log.i(this.TAG, "read sample end");
         AppMethodBeat.o(93545);
         return true;
       }
-      l2 = this.hll.getSampleTime();
-      k = this.hll.sampleSize;
+      l2 = this.iei.getSampleTime();
+      k = this.iei.sampleSize;
       ((ByteBuffer)localObject2).position(0);
-      ae.i(this.TAG, "sampleTime : " + l2 + " us");
-      if ((k < 0) || (l2 >= this.hlm * 1000L))
+      Log.i(this.TAG, "sampleTime : " + l2 + " us");
+      if ((k < 0) || (l2 >= this.endTimeMs * 1000L))
       {
-        this.hlM = true;
-        ae.i(this.TAG, "sawInputEOS");
+        this.ieI = true;
+        Log.i(this.TAG, "sawInputEOS");
       }
-      localObject2 = this.hlf;
+      localObject2 = this.iec;
       if (localObject2 == null) {
-        p.gkB();
+        p.hyc();
       }
-      if (!this.hlM) {
+      if (!this.ieI) {
         break label490;
       }
     }
     label490:
     for (j = 4;; j = 0)
     {
-      ((com.tencent.mm.compatible.deviceinfo.z)localObject2).a(i, k, l2, j);
+      ((z)localObject2).a(i, k, l2, j);
       for (;;)
       {
-        bool = atF();
-        ae.i(this.TAG, "inputDecoder cost " + bu.aO(l1));
+        bool = aMg();
+        Log.i(this.TAG, "inputDecoder cost " + Util.ticksToNow(l1));
         if (!bool) {
           break;
         }
-        ae.i(this.TAG, "drainDecoder eos");
+        Log.i(this.TAG, "drainDecoder eos");
         AppMethodBeat.o(93545);
         return true;
-        ae.w(this.TAG, "input buffer not available");
+        Log.w(this.TAG, "input buffer not available");
       }
-      boolean bool = this.hlM;
+      boolean bool = this.ieI;
       AppMethodBeat.o(93545);
       return bool;
     }
   }
   
-  private final boolean atF()
+  private final boolean aMg()
   {
     AppMethodBeat.i(93546);
     for (;;)
     {
       try
       {
-        ae.i(this.TAG, "drainDecoder");
-        synchronized (this.hly)
+        Log.i(this.TAG, "drainDecoder");
+        synchronized (this.ieu)
         {
-          if (this.gJv) {
-            ae.i(this.TAG, "drainDecoder already finished");
+          if (this.isFinished) {
+            Log.i(this.TAG, "drainDecoder already finished");
           }
-          d.z localz = d.z.Nhr;
-          ??? = this.hlf;
+          x localx = x.SXb;
+          ??? = this.iec;
           if (??? == null) {
-            p.gkB();
+            p.hyc();
           }
-          i = ((com.tencent.mm.compatible.deviceinfo.z)???).dequeueOutputBuffer(this.bufferInfo, 100L);
+          i = ((z)???).dequeueOutputBuffer(this.bufferInfo, 100L);
           if (i == -1)
           {
-            ae.i(this.TAG, "no output from decoder available, break");
+            Log.i(this.TAG, "no output from decoder available, break");
             AppMethodBeat.o(93546);
             return false;
           }
@@ -212,30 +214,30 @@ public final class i
       }
       catch (Exception localException1)
       {
-        ae.printErrStackTrace(this.TAG, (Throwable)localException1, "drainDecoder error", new Object[0]);
-        if (this.hlB)
+        Log.printErrStackTrace(this.TAG, (Throwable)localException1, "drainDecoder error", new Object[0]);
+        if (this.iex)
         {
-          localObject2 = d.hrI;
-          d.avX();
+          localObject2 = e.ilC;
+          e.aOK();
         }
         AppMethodBeat.o(93546);
         return false;
       }
-      ae.i(this.TAG, "decoder output buffers changed");
+      Log.i(this.TAG, "decoder output buffers changed");
       continue;
       label177:
       if (i == -2)
       {
-        localObject2 = this.hlf;
+        localObject2 = this.iec;
         if (localObject2 == null) {
-          p.gkB();
+          p.hyc();
         }
-        this.mediaFormat = ((com.tencent.mm.compatible.deviceinfo.z)localObject2).getOutputFormat();
-        ae.i(this.TAG, "decoder output format changed: " + this.mediaFormat);
+        this.mediaFormat = ((z)localObject2).getOutputFormat();
+        Log.i(this.TAG, "decoder output format changed: " + this.mediaFormat);
         localObject2 = this.mediaFormat;
         if (localObject2 != null)
         {
-          b localb = this.hlu;
+          b localb = this.ieq;
           if (localb != null) {
             localb.invoke(localObject2);
           }
@@ -243,29 +245,29 @@ public final class i
       }
       else if (i < 0)
       {
-        ae.w(this.TAG, "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
+        Log.w(this.TAG, "unexpected result from decoder.dequeueOutputBuffer: ".concat(String.valueOf(i)));
       }
       else
       {
         long l = this.bufferInfo.presentationTimeUs;
-        ae.i(this.TAG, "presentationTimeUs : ".concat(String.valueOf(l)));
+        Log.i(this.TAG, "presentationTimeUs : ".concat(String.valueOf(l)));
         if ((l < this.startTimeMs * 1000L) && ((this.bufferInfo.flags & 0x4) == 0))
         {
-          localObject2 = this.hlf;
+          localObject2 = this.iec;
           if (localObject2 == null) {
-            p.gkB();
+            p.hyc();
           }
-          ((com.tencent.mm.compatible.deviceinfo.z)localObject2).releaseOutputBuffer(i, false);
-          ae.i(this.TAG, "decoder pts: " + l + ", not reach start: " + this.startTimeMs * 1000L);
+          ((z)localObject2).releaseOutputBuffer(i, false);
+          Log.i(this.TAG, "decoder pts: " + l + ", not reach start: " + this.startTimeMs * 1000L);
           AppMethodBeat.o(93546);
           return false;
         }
         if (this.bufferInfo.size != 0)
         {
           a(i, this.bufferInfo);
-          if ((this.hlm * 1000L != 1L) && (l >= this.hlm * 1000L))
+          if ((this.endTimeMs * 1000L != 1L) && (l >= this.endTimeMs * 1000L))
           {
-            ae.e(this.TAG, "exceed endTimeMs");
+            Log.e(this.TAG, "exceed endTimeMs");
             AppMethodBeat.o(93546);
             return true;
           }
@@ -275,16 +277,16 @@ public final class i
       }
       try
       {
-        localObject2 = this.hlf;
+        localObject2 = this.iec;
         if (localObject2 == null) {
-          p.gkB();
+          p.hyc();
         }
-        ((com.tencent.mm.compatible.deviceinfo.z)localObject2).stop();
-        localObject2 = this.hlf;
+        ((z)localObject2).stop();
+        localObject2 = this.iec;
         if (localObject2 == null) {
-          p.gkB();
+          p.hyc();
         }
-        ((com.tencent.mm.compatible.deviceinfo.z)localObject2).release();
+        ((z)localObject2).release();
       }
       catch (Exception localException2)
       {
@@ -296,16 +298,16 @@ public final class i
       return true;
       AppMethodBeat.o(93546);
       return false;
-      Object localObject2 = this.hlf;
+      Object localObject2 = this.iec;
       if (localObject2 == null) {
-        p.gkB();
+        p.hyc();
       }
-      ((com.tencent.mm.compatible.deviceinfo.z)localObject2).releaseOutputBuffer(i, false);
-      localObject2 = this.hlf;
+      ((z)localObject2).releaseOutputBuffer(i, false);
+      localObject2 = this.iec;
       if (localObject2 == null) {
-        p.gkB();
+        p.hyc();
       }
-      j = ((com.tencent.mm.compatible.deviceinfo.z)localObject2).dequeueOutputBuffer(this.bufferInfo, 100L);
+      j = ((z)localObject2).dequeueOutputBuffer(this.bufferInfo, 100L);
       int i = j;
       if (j >= 0) {}
     }
@@ -314,36 +316,36 @@ public final class i
   public final void startDecode()
   {
     AppMethodBeat.i(93544);
-    while (!atE()) {}
-    ae.i(this.TAG, "inputDecoder end");
+    while (!aMf()) {}
+    Log.i(this.TAG, "inputDecoder end");
     try
     {
       int i;
-      synchronized (this.hly)
+      synchronized (this.ieu)
       {
-        if (this.gJv) {
-          ae.i(this.TAG, "drainDecoder already finished");
+        if (this.isFinished) {
+          Log.i(this.TAG, "drainDecoder already finished");
         }
-        Object localObject3 = d.z.Nhr;
-        ae.i(this.TAG, "sendDecoderEOS");
-        ??? = this.hlf;
+        Object localObject3 = x.SXb;
+        Log.i(this.TAG, "sendDecoderEOS");
+        ??? = this.iec;
         if (??? == null) {
-          p.gkB();
+          p.hyc();
         }
-        ??? = ((com.tencent.mm.compatible.deviceinfo.z)???).getInputBuffers();
-        localObject3 = this.hlf;
+        ??? = ((z)???).getInputBuffers();
+        localObject3 = this.iec;
         if (localObject3 == null) {
-          p.gkB();
+          p.hyc();
         }
-        i = ((com.tencent.mm.compatible.deviceinfo.z)localObject3).dequeueInputBuffer(60000L);
+        i = ((z)localObject3).dequeueInputBuffer(60000L);
         if (i < 0) {
-          if (!atF())
+          if (!aMg())
           {
-            localObject3 = this.hlf;
+            localObject3 = this.iec;
             if (localObject3 == null) {
-              p.gkB();
+              p.hyc();
             }
-            i = ((com.tencent.mm.compatible.deviceinfo.z)localObject3).dequeueInputBuffer(60000L);
+            i = ((z)localObject3).dequeueInputBuffer(60000L);
           }
         }
       }
@@ -354,39 +356,39 @@ public final class i
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace(this.TAG, (Throwable)localException, "sendDecoderEOS error", new Object[0]);
+      Log.printErrStackTrace(this.TAG, (Throwable)localException, "sendDecoderEOS error", new Object[0]);
       for (;;)
       {
         releaseDecoder();
-        localObject2 = this.hlt;
+        localObject2 = this.iep;
         if (localObject2 == null) {
           break;
         }
-        ((d.g.a.a)localObject2).invoke();
+        ((kotlin.g.a.a)localObject2).invoke();
         AppMethodBeat.o(93544);
         return;
         if (i >= 0)
         {
           localObject2 = localObject2[i];
           ((ByteBuffer)localObject2).clear();
-          locala = this.hll;
+          locala = this.iei;
           if (locala == null) {
-            p.gkB();
+            p.hyc();
           }
           p.g(localObject2, "inputBuffer");
-          locala.j((ByteBuffer)localObject2);
-          l = this.hll.getSampleTime();
+          com.tencent.mm.media.f.a.a(locala, (ByteBuffer)localObject2);
+          l = this.iei.getSampleTime();
           ((ByteBuffer)localObject2).position(0);
           if (i >= 0)
           {
-            localObject2 = this.hlf;
+            localObject2 = this.iec;
             if (localObject2 == null) {
-              p.gkB();
+              p.hyc();
             }
-            ((com.tencent.mm.compatible.deviceinfo.z)localObject2).a(i, 0, l, 4);
+            ((z)localObject2).a(i, 0, l, 4);
           }
         }
-        atF();
+        aMg();
       }
       AppMethodBeat.o(93544);
     }
@@ -394,7 +396,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.media.d.i
  * JD-Core Version:    0.7.0.1
  */

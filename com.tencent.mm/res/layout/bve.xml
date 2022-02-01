@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/auc" android:background="@color/afz" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sns.ui.widget.SnsAdTouchProgressView android:id="@id/i03" android:layout_width="fill_parent" android:layout_height="0.0dip" />
-</FrameLayout>
+    <TextView android:textSize="@dimen/amj" android:textColor="@color/a2x" android:id="@id/hx5" android:background="@color/a2r" android:paddingTop="@dimen/g" android:paddingBottom="@dimen/g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/h5a" android:paddingStart="@dimen/r" android:paddingEnd="@dimen/r" />
+    <GridView android:id="@id/hx4" android:background="@color/a2h" android:paddingLeft="@dimen/i1" android:paddingTop="@dimen/ib" android:paddingRight="@dimen/i1" android:paddingBottom="@dimen/ib" android:scrollbars="vertical" android:numColumns="5" style="@style/np" />
+</LinearLayout>

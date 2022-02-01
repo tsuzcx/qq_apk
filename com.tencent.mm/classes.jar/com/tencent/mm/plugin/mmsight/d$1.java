@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.mmsight;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
 
 final class d$1
   implements Runnable
@@ -13,29 +13,29 @@ final class d$1
   {
     AppMethodBeat.i(89284);
     int i = d.access$000();
-    while (i < this.vYu)
+    while (i < this.zsw)
     {
-      k localk1 = new k(String.format("%s/tempvideo%s.mp4", new Object[] { this.vYv, Integer.valueOf(i) }));
-      if (localk1.exists()) {
-        localk1.delete();
+      o localo1 = new o(String.format("%s/tempvideo%s.mp4", new Object[] { this.zsx, Integer.valueOf(i) }));
+      if (localo1.exists()) {
+        localo1.delete();
       }
-      k localk2 = new k(w.B(localk1.fTh()) + ".remux");
-      if (localk2.exists()) {
-        localk2.delete();
+      o localo2 = new o(aa.z(localo1.her()) + ".remux");
+      if (localo2.exists()) {
+        localo2.delete();
       }
-      localk1 = new k(localk1.fTi() + ".thumb");
-      if (localk1.exists()) {
-        localk1.delete();
+      localo1 = new o(localo1.hes() + ".thumb");
+      if (localo1.exists()) {
+        localo1.delete();
       }
       i += 1;
     }
-    d.access$002(Math.max(this.vYu, 0));
+    d.access$002(Math.max(this.zsw, 0));
     AppMethodBeat.o(89284);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.d.1
  * JD-Core Version:    0.7.0.1
  */

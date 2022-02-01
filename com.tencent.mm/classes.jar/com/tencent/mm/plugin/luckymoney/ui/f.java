@@ -2,69 +2,57 @@ package com.tencent.mm.plugin.luckymoney.ui;
 
 import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.model.t;
+import android.widget.BaseAdapter;
+import com.tencent.mm.plugin.luckymoney.model.y;
+import java.util.LinkedList;
+import java.util.List;
 
-public final class f
-  extends e
+public abstract class f
+  extends BaseAdapter
 {
-  private Context mContext = null;
+  protected Context mContext;
+  protected LayoutInflater mInflater;
+  protected List<y> yQe = new LinkedList();
   
   public f(Context paramContext)
   {
-    super(paramContext);
     this.mContext = paramContext;
+    this.mInflater = LayoutInflater.from(paramContext);
   }
   
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  public final y PT(int paramInt)
   {
-    AppMethodBeat.i(65660);
-    if (paramView == null)
+    return (y)this.yQe.get(paramInt);
+  }
+  
+  public final void a(y paramy)
+  {
+    this.yQe.remove(paramy);
+  }
+  
+  public final void fq(List<y> paramList)
+  {
+    if (paramList == null) {}
+    for (this.yQe = new LinkedList();; this.yQe = paramList)
     {
-      paramView = this.mInflater.inflate(2131494650, paramViewGroup, false);
-      paramViewGroup = new a();
-      paramViewGroup.lHk = ((TextView)paramView.findViewById(2131301859));
-      paramViewGroup.lHT = ((TextView)paramView.findViewById(2131301857));
-      paramViewGroup.vvV = ((TextView)paramView.findViewById(2131301858));
-      paramViewGroup.vvW = ((TextView)paramView.findViewById(2131301856));
-      paramViewGroup.fq = paramInt;
-      paramView.setTag(paramViewGroup);
-    }
-    for (;;)
-    {
-      t localt = JR(paramInt);
-      paramViewGroup.lHk.setText(localt.vBu);
-      paramViewGroup.vvV.setText(localt.vBv);
-      paramViewGroup.vvW.setText(this.mContext.getString(2131760831, new Object[] { com.tencent.mm.wallet_core.ui.f.C(localt.vAp / 100.0D) }));
-      String str2 = this.mContext.getString(2131760961, new Object[] { Long.valueOf(localt.vAn), Long.valueOf(localt.vBw) });
-      String str1 = str2;
-      if (localt.status == 5) {
-        str1 = this.mContext.getString(2131760962) + " " + str2;
-      }
-      paramViewGroup.lHT.setText(str1);
-      AppMethodBeat.o(65660);
-      return paramView;
-      paramViewGroup = (a)paramView.getTag();
+      notifyDataSetChanged();
+      return;
     }
   }
   
-  final class a
+  public int getCount()
   {
-    int fq;
-    TextView lHT;
-    TextView lHk;
-    TextView vvV;
-    TextView vvW;
-    
-    a() {}
+    return this.yQe.size();
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.f
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:dslv="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.sortlist.DragSortListView android:id="@id/h1c" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="32.0dip" android:layout_marginRight="32.0dip" android:listSelector="@android:color/transparent" android:overScrollMode="never" dslv:collapsed_height="2.0dip" dslv:drag_enabled="true" dslv:drag_handle_id="@id/h1_" dslv:drag_scroll_start="0.33" dslv:drag_start_mode="e7r" dslv:float_alpha="0.4" dslv:max_drag_scroll_speed="0.5" dslv:remove_enabled="false" dslv:remove_mode="c3y" dslv:slide_shuffle_speed="0.3" dslv:sort_enabled="true" dslv:track_drag_sort="false" dslv:use_default_controller="true" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/aol" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="@dimen/cp" android:layout_height="wrap_content" android:minHeight="@dimen/cs">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/dt5" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginTop="@dimen/cb" app:iconColor="@color/a41" />
+        <TextView android:textSize="@dimen/eo" android:textColor="@color/a41" android:gravity="center_horizontal" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bt" android:layout_marginBottom="@dimen/cb" android:maxLines="2" android:includeFontPadding="false" />
+    </LinearLayout>
 </LinearLayout>

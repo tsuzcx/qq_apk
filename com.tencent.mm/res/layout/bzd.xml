@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:id="@id/i7g" android:background="@color/u_" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/i7h" android:background="@drawable/aws" android:layout_width="fill_parent" android:layout_height="368.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/cb" android:textColor="@color/BW_0_Alpha_0_9" android:id="@id/i7n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cl" android:text="@string/hgm" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="@dimen/c5" android:textColor="@color/BW_0_Alpha_0_3" android:id="@id/i7m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/hgl" android:layout_below="@id/i7n" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/i7l" android:layout_width="116.0dip" android:layout_height="@dimen/cs" android:layout_marginTop="@dimen/cl" android:src="@drawable/bvs" android:layout_below="@id/i7m" android:layout_centerHorizontal="true" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/i7j" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cp" android:layout_below="@id/i7l" android:layout_centerHorizontal="true">
+            <Button android:textColor="@color/aae" android:id="@id/i7i" android:background="@drawable/kd" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/hgj" android:layout_marginEnd="@dimen/ct" />
+            <Button android:textColor="@color/ag2" android:id="@id/i7k" android:background="@drawable/awt" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/hgk" android:layout_marginStart="@dimen/ct" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

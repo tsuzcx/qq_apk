@@ -1,115 +1,116 @@
 package com.tencent.mm.modelmulti;
 
-import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.cdm;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.protocal.protobuf.zx;
-import com.tencent.mm.protocal.protobuf.zy;
+import com.tencent.mm.protocal.protobuf.abn;
+import com.tencent.mm.protocal.protobuf.abo;
+import com.tencent.mm.protocal.protobuf.cts;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.protocal.protobuf.dqi;
 import com.tencent.mm.protocal.v.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.as;
 import java.util.ArrayList;
 import java.util.LinkedList;
 
 public final class s
 {
-  private static ArrayList<cv> ijG;
-  private static ArrayList<an> ijH;
+  private static ArrayList<de> jeC;
+  private static ArrayList<as> jeD;
   
   static
   {
     AppMethodBeat.i(20563);
-    ijG = new ArrayList();
-    ijH = new ArrayList();
+    jeC = new ArrayList();
+    jeD = new ArrayList();
     AppMethodBeat.o(20563);
   }
   
-  public static void di(int paramInt1, final int paramInt2)
+  public static void ds(int paramInt1, final int paramInt2)
   {
     AppMethodBeat.i(20560);
-    bc.ajU().aw(new Runnable()
+    bg.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(20559);
         s.access$000();
-        s.GB(b.asj() + "/testaddmsg.txt");
-        if ((s.aJU().size() <= 0) || (s.ijG.size() <= 0))
+        s.Pn(b.aKJ() + "/testaddmsg.txt");
+        if ((s.bdW().size() <= 0) || (s.bdX().size() <= 0))
         {
-          ae.e("MicroMsg.TestSyncAddMsg", "syncAddMsg get source failed cmd:%d contact:%d", new Object[] { Integer.valueOf(s.ijG.size()), Integer.valueOf(s.aJU().size()) });
+          Log.e("MicroMsg.TestSyncAddMsg", "syncAddMsg get source failed cmd:%d contact:%d", new Object[] { Integer.valueOf(s.bdX().size()), Integer.valueOf(s.bdW().size()) });
           AppMethodBeat.o(20559);
           return;
         }
-        new com.tencent.mm.sdk.platformtools.aw(bc.ajU().IxZ.getLooper(), new aw.a()
+        new MTimerHandler(bg.aAk().getLooper(), new MTimerHandler.CallBack()
         {
-          int ijK;
+          int jeG;
           
           public final boolean onTimerExpired()
           {
             AppMethodBeat.i(20558);
-            if (this.ijK <= 0)
+            if (this.jeG <= 0)
             {
               AppMethodBeat.o(20558);
               return false;
             }
-            this.ijK -= 1;
+            this.jeG -= 1;
             v.b localb = new v.b();
-            localb.FGW.GjT = new zy();
-            int j = bu.jA(s.1.this.ijJ, 1);
+            localb.KAh.Ley = new abo();
+            int j = Util.getIntRandom(s.1.this.jeF, 1);
             int i = 0;
             for (;;)
             {
               if (i >= j) {
                 break label349;
               }
-              cv localcv = (cv)s.ijG.get(bu.jA(s.ijG.size() - 1, 0));
-              localcv.FNG = new cxn().aQV(((an)s.aJU().get(bu.jA(s.aJU().size() - 1, 0))).field_username);
-              localcv.CreateTime = ((int)bu.aRi());
-              localcv.xrk = Math.abs((int)bu.fpO() % 10000000);
+              de localde = (de)s.bdX().get(Util.getIntRandom(s.bdX().size() - 1, 0));
+              localde.KHl = new dqi().bhy(((as)s.bdW().get(Util.getIntRandom(s.bdW().size() - 1, 0))).field_username);
+              localde.CreateTime = ((int)Util.nowSecond());
+              localde.Brn = Math.abs((int)Util.nowMilliSecond() % 10000000);
               try
               {
-                Object localObject = new zx();
-                ((zx)localObject).Grv = new SKBuiltinBuffer_t();
-                ((zx)localObject).Grv.setBuffer(localcv.toByteArray());
-                ((zx)localObject).Gru = 5;
-                localb.FGW.GjT.nIE.add(localObject);
-                localObject = localb.FGW.GjT;
-                ((zy)localObject).nID += 1;
-                ae.d("MicroMsg.TestSyncAddMsg", "syncAddMsg  loop:%d cnt:[%d,%d] cmdList:%d id:%d u:%s", new Object[] { Integer.valueOf(this.ijK), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localb.FGW.GjT.nIE.size()), Long.valueOf(localcv.xrk), localcv.FNG.HId });
+                Object localObject = new abn();
+                ((abn)localObject).Lmt = new SKBuiltinBuffer_t();
+                ((abn)localObject).Lmt.setBuffer(localde.toByteArray());
+                ((abn)localObject).Lms = 5;
+                localb.KAh.Ley.oTA.add(localObject);
+                localObject = localb.KAh.Ley;
+                ((abo)localObject).oTz += 1;
+                Log.d("MicroMsg.TestSyncAddMsg", "syncAddMsg  loop:%d cnt:[%d,%d] cmdList:%d id:%d u:%s", new Object[] { Integer.valueOf(this.jeG), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localb.KAh.Ley.oTA.size()), Long.valueOf(localde.Brn), localde.KHl.MTo });
               }
               catch (Exception localException)
               {
                 for (;;)
                 {
-                  ae.d("MicroMsg.TestSyncAddMsg", localException.getMessage());
-                  ae.printErrStackTrace("MicroMsg.TestSyncAddMsg", localException, "", new Object[0]);
+                  Log.d("MicroMsg.TestSyncAddMsg", localException.getMessage());
+                  Log.printErrStackTrace("MicroMsg.TestSyncAddMsg", localException, "", new Object[0]);
                 }
               }
               i += 1;
             }
             label349:
-            localb.FGW.GeQ = 0;
-            cdm localcdm = localb.FGW;
-            bc.aCg();
-            localcdm.GjQ = z.al(bu.aSx(bu.nullAsNil((String)c.ajA().get(8195, new byte[0]))));
-            localb.FGW.Ret = 0;
-            localb.FGW.nJb = 0;
-            p.aJQ().a(localb, 0, bu.aRi());
+            localb.KAh.KZh = 0;
+            cts localcts = localb.KAh;
+            bg.aVF();
+            localcts.Lev = z.aC(Util.decodeHexString(Util.nullAsNil((String)c.azQ().get(8195, new byte[0]))));
+            localb.KAh.Ret = 0;
+            localb.KAh.oTW = 0;
+            p.bdS().a(localb, 0, Util.nowSecond());
             AppMethodBeat.o(20558);
             return true;
           }
-        }, true).ay(3000L, 3000L);
+        }, true).startTimer(3000L);
         AppMethodBeat.o(20559);
       }
     });
@@ -118,7 +119,7 @@ public final class s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelmulti.s
  * JD-Core Version:    0.7.0.1
  */

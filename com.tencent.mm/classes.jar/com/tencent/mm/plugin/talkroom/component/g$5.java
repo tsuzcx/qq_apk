@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.talkroom.component;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dmv;
-import com.tencent.mm.protocal.protobuf.dzv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bp;
+import com.tencent.mm.protocal.protobuf.egm;
+import com.tencent.mm.protocal.protobuf.euc;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.SyncTask;
 import java.io.IOException;
 import java.util.LinkedList;
 
 final class g$5
-  extends bp<Integer>
+  extends SyncTask<Integer>
 {
   g$5(g paramg, Integer paramInteger, String[] paramArrayOfString, int[] paramArrayOfInt, b paramb, int paramInt1, int paramInt2, int paramInt3, long paramLong, int paramInt4)
   {
-    super(3000L, paramInteger, (byte)0);
+    super(3000L, paramInteger);
   }
   
-  private Integer aPn()
+  private Integer bjO()
   {
     AppMethodBeat.i(29403);
     for (;;)
     {
       try
       {
-        dzv localdzv = new dzv();
-        ae.i("MicroMsg.TalkRoomEngineProxy", "Open Engine svr cnt %d", new Object[] { Integer.valueOf(this.BEn.length) });
+        euc localeuc = new euc();
+        Log.i("MicroMsg.TalkRoomEngineProxy", "Open Engine svr cnt %d", new Object[] { Integer.valueOf(this.FPe.length) });
         i = 0;
-        if (i < this.BEn.length)
+        if (i < this.FPe.length)
         {
-          dmv localdmv = new dmv();
-          localdmv.HUh = this.BEn[i];
-          if (localdmv.HUh == null)
+          egm localegm = new egm();
+          localegm.Ngz = this.FPe[i];
+          if (localegm.Ngz == null)
           {
-            ae.i("MicroMsg.TalkRoomEngineProxy", "Open Engine ip_str null skip");
+            Log.i("MicroMsg.TalkRoomEngineProxy", "Open Engine ip_str null skip");
           }
           else
           {
-            localdmv.port = this.BEo[i];
-            localdzv.IeY.add(localdmv);
-            ae.i("MicroMsg.TalkRoomEngineProxy", "Open Engine svr:[%s][%d] ", new Object[] { localdmv.HUh, Integer.valueOf(localdmv.port) });
+            localegm.port = this.FPf[i];
+            localeuc.Nrw.add(localegm);
+            Log.i("MicroMsg.TalkRoomEngineProxy", "Open Engine svr:[%s][%d] ", new Object[] { localegm.Ngz, Integer.valueOf(localegm.port) });
           }
         }
       }
       catch (IOException localIOException)
       {
-        ae.printErrStackTrace("MicroMsg.TalkRoomEngineProxy", localIOException, "engine.Open exception", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.TalkRoomEngineProxy", localIOException, "engine.Open exception", new Object[0]);
         AppMethodBeat.o(29403);
         return Integer.valueOf(-1);
       }
-      ae.i("MicroMsg.TalkRoomEngineProxy", "Open Engine valid svr cnt %d", new Object[] { Integer.valueOf(localIOException.IeY.size()) });
-      int i = g.a(this.BEl).Open(this.BEp, this.pKl, this.BEq, this.BEr, this.BEs, this.BEt, localIOException.toByteArray(), localIOException.toByteArray().length);
+      Log.i("MicroMsg.TalkRoomEngineProxy", "Open Engine valid svr cnt %d", new Object[] { Integer.valueOf(localIOException.Nrw.size()) });
+      int i = g.a(this.FPc).Open(this.FPg, this.raO, this.FPh, this.FPi, this.FPj, this.FPk, localIOException.toByteArray(), localIOException.toByteArray().length);
       AppMethodBeat.o(29403);
       return Integer.valueOf(i);
       i += 1;
@@ -58,7 +58,7 @@ final class g$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.g.5
  * JD-Core Version:    0.7.0.1
  */

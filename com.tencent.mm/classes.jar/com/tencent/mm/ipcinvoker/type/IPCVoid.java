@@ -9,12 +9,12 @@ public class IPCVoid
   implements Parcelable
 {
   public static final Parcelable.Creator<IPCVoid> CREATOR;
-  public static final IPCVoid gAP;
+  public static final IPCVoid hnE;
   
   static
   {
     AppMethodBeat.i(158876);
-    gAP = new IPCVoid();
+    hnE = new IPCVoid();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(158876);
   }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<inset android:insetLeft="@dimen/jn" android:insetRight="@dimen/jn"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <shape>
-        <solid android:color="@color/ts" />
-    </shape>
-</inset>
+    <item android:drawable="@raw/delete_icon_sel" android:state_activated="true" />
+    <item android:drawable="@raw/delete_icon_nor" />
+</selector>

@@ -8,26 +8,26 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.memory.b.a;
 import com.tencent.mm.memory.i;
 import com.tencent.mm.memory.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class PictureView
   extends ImageView
 {
   private boolean DEBUG;
-  private i hAE;
-  private boolean hAF;
-  private Runnable hAG;
+  private i iuL;
+  private boolean iuM;
+  private Runnable iuN;
   
   public PictureView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(156531);
     this.DEBUG = false;
-    this.hAE = null;
-    this.hAF = false;
-    this.hAG = new Runnable()
+    this.iuL = null;
+    this.iuM = false;
+    this.iuN = new Runnable()
     {
       public final void run()
       {
@@ -44,9 +44,9 @@ public class PictureView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(156532);
     this.DEBUG = false;
-    this.hAE = null;
-    this.hAF = false;
-    this.hAG = new Runnable()
+    this.iuL = null;
+    this.iuM = false;
+    this.iuN = new Runnable()
     {
       public final void run()
       {
@@ -58,23 +58,23 @@ public class PictureView
     AppMethodBeat.o(156532);
   }
   
-  private void azm()
+  private void aSs()
   {
     AppMethodBeat.i(156538);
-    removeCallbacks(this.hAG);
+    removeCallbacks(this.iuN);
     if (this.DEBUG) {
-      ae.i("MicroMsg.PictureView", "onAttach" + hashCode() + " " + bu.fpN().toString());
+      Log.i("MicroMsg.PictureView", "onAttach" + hashCode() + " " + Util.getStack().toString());
     }
-    if (this.hAF)
+    if (this.iuM)
     {
       AppMethodBeat.o(156538);
       return;
     }
-    this.hAF = true;
+    this.iuM = true;
     AppMethodBeat.o(156538);
   }
   
-  private static String bT(Object paramObject)
+  private static String cd(Object paramObject)
   {
     AppMethodBeat.i(156533);
     if (paramObject == null)
@@ -84,7 +84,7 @@ public class PictureView
     }
     if ((paramObject instanceof a))
     {
-      paramObject = paramObject + " hashcode " + paramObject.hashCode() + " " + ((a)paramObject).azl() + " " + ((a)paramObject).azl().hashCode();
+      paramObject = paramObject + " hashcode " + paramObject.hashCode() + " " + ((a)paramObject).aSr() + " " + ((a)paramObject).aSr().hashCode();
       AppMethodBeat.o(156533);
       return paramObject;
     }
@@ -93,20 +93,20 @@ public class PictureView
     return paramObject;
   }
   
-  private static void bU(Object paramObject)
+  private static void ce(Object paramObject)
   {
     AppMethodBeat.i(156536);
     if ((paramObject != null) && ((paramObject instanceof i))) {
-      ((i)paramObject).ayQ();
+      ((i)paramObject).aRW();
     }
     AppMethodBeat.o(156536);
   }
   
-  private static void bV(Object paramObject)
+  private static void cf(Object paramObject)
   {
     AppMethodBeat.i(156537);
     if ((paramObject != null) && ((paramObject instanceof i))) {
-      ((i)paramObject).ayR();
+      ((i)paramObject).aRX();
     }
     AppMethodBeat.o(156537);
   }
@@ -115,16 +115,16 @@ public class PictureView
   {
     AppMethodBeat.i(156539);
     if (this.DEBUG) {
-      ae.i("MicroMsg.PictureView", "onDetach " + hashCode() + " " + bu.fpN().toString());
+      Log.i("MicroMsg.PictureView", "onDetach " + hashCode() + " " + Util.getStack().toString());
     }
-    if (!this.hAF)
+    if (!this.iuM)
     {
       AppMethodBeat.o(156539);
       return;
     }
-    this.hAF = false;
-    removeCallbacks(this.hAG);
-    postDelayed(this.hAG, 500L);
+    this.iuM = false;
+    removeCallbacks(this.iuN);
+    postDelayed(this.iuN, 500L);
     AppMethodBeat.o(156539);
   }
   
@@ -132,7 +132,7 @@ public class PictureView
   {
     AppMethodBeat.i(156540);
     super.onAttachedToWindow();
-    azm();
+    aSs();
     AppMethodBeat.o(156540);
   }
   
@@ -148,7 +148,7 @@ public class PictureView
   {
     AppMethodBeat.i(156543);
     super.onFinishTemporaryDetach();
-    azm();
+    aSs();
     AppMethodBeat.o(156543);
   }
   
@@ -163,20 +163,20 @@ public class PictureView
   public void setImageDrawable(Drawable paramDrawable)
   {
     AppMethodBeat.i(156535);
-    removeCallbacks(this.hAG);
-    if ((paramDrawable == null) || (paramDrawable.equals(this.hAE)))
+    removeCallbacks(this.iuN);
+    if ((paramDrawable == null) || (paramDrawable.equals(this.iuL)))
     {
       AppMethodBeat.o(156535);
       return;
     }
     if (this.DEBUG) {
-      ae.i("MicroMsg.PictureView", "setImageDrawable " + hashCode() + " old: " + bT(this.hAE) + " new:" + bT(paramDrawable) + " " + bu.fpN().toString());
+      Log.i("MicroMsg.PictureView", "setImageDrawable " + hashCode() + " old: " + cd(this.iuL) + " new:" + cd(paramDrawable) + " " + Util.getStack().toString());
     }
-    bV(this.hAE);
+    cf(this.iuL);
     if ((paramDrawable instanceof i)) {}
-    for (this.hAE = ((i)paramDrawable);; this.hAE = null)
+    for (this.iuL = ((i)paramDrawable);; this.iuL = null)
     {
-      bU(paramDrawable);
+      ce(paramDrawable);
       super.setImageDrawable(paramDrawable);
       AppMethodBeat.o(156535);
       return;
@@ -186,20 +186,20 @@ public class PictureView
   public void setReleasableBitmap(n paramn)
   {
     AppMethodBeat.i(156534);
-    if ((paramn == null) || (paramn.equals(this.hAE)))
+    if ((paramn == null) || (paramn.equals(this.iuL)))
     {
       AppMethodBeat.o(156534);
       return;
     }
-    setImageBitmap(paramn.ayV());
-    this.hAE = paramn;
-    bU(this.hAE);
+    setImageBitmap(paramn.aSb());
+    this.iuL = paramn;
+    ce(this.iuL);
     AppMethodBeat.o(156534);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.memory.ui.PictureView
  * JD-Core Version:    0.7.0.1
  */

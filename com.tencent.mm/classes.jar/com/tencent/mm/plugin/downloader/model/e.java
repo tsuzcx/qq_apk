@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.downloader.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.c.b.q;
 import com.tencent.mm.plugin.downloader.f.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.security.MessageDigest;
@@ -18,13 +18,35 @@ import java.util.Set;
 
 public final class e
 {
-  private static Set<Long> psM;
+  private static Set<Long> qIq;
   
   static
   {
     AppMethodBeat.i(88970);
-    psM = new HashSet();
+    qIq = new HashSet();
     AppMethodBeat.o(88970);
+  }
+  
+  public static boolean CA(long paramLong)
+  {
+    AppMethodBeat.i(88966);
+    boolean bool = qIq.contains(Long.valueOf(paramLong));
+    AppMethodBeat.o(88966);
+    return bool;
+  }
+  
+  public static void Cy(long paramLong)
+  {
+    AppMethodBeat.i(88964);
+    qIq.add(Long.valueOf(paramLong));
+    AppMethodBeat.o(88964);
+  }
+  
+  public static void Cz(long paramLong)
+  {
+    AppMethodBeat.i(88965);
+    qIq.remove(Long.valueOf(paramLong));
+    AppMethodBeat.o(88965);
   }
   
   private static boolean c(String paramString, LinkedList<com.tencent.mm.plugin.downloader.c.b.a> paramLinkedList)
@@ -34,7 +56,7 @@ public final class e
     str = null;
     try
     {
-      paramString = o.dg(paramString, false);
+      paramString = s.dB(paramString, false);
       str = paramString;
       localObject = paramString;
       localMessageDigest = MessageDigest.getInstance("MD5");
@@ -50,7 +72,7 @@ public final class e
       int i;
       byte[] arrayOfByte;
       localObject = str;
-      ae.printErrStackTrace("MicroMsg.FileDownloadMD5Manager", paramString, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.FileDownloadMD5Manager", paramString, "", new Object[0]);
       if (str == null) {
         break label410;
       }
@@ -92,7 +114,7 @@ public final class e
         {
           str = paramString;
           localObject = paramString;
-          bool1 = localStringBuilder.toString().trim().equals(locala.pqG);
+          bool1 = localStringBuilder.toString().trim().equals(locala.qGl);
           if (bool1) {
             break;
           }
@@ -141,10 +163,10 @@ public final class e
       locala = (com.tencent.mm.plugin.downloader.c.b.a)paramLinkedList.next();
       str = paramString;
       localObject = paramString;
-      paramString.seek(locala.pqE);
+      paramString.seek(locala.qGj);
       str = paramString;
       localObject = paramString;
-      l = locala.pqF - locala.pqE + 1L;
+      l = locala.qGk - locala.qGj + 1L;
       str = paramString;
       localObject = paramString;
       i = (int)Math.min(2048L, l);
@@ -176,17 +198,17 @@ public final class e
       String str2 = parama.field_filePath;
       String str1 = parama.field_md5;
       parama = parama.field_appId;
-      k localk = new k(str2);
-      ae.i("MicroMsg.FileDownloadMD5Manager", "MD5 Check: %s, File Exists: %b", new Object[] { str2, Boolean.valueOf(localk.exists()) });
+      o localo = new o(str2);
+      Log.i("MicroMsg.FileDownloadMD5Manager", "MD5 Check: %s, File Exists: %b", new Object[] { str2, Boolean.valueOf(localo.exists()) });
       long l1 = System.currentTimeMillis();
-      str2 = o.aRh(w.B(localk.mUri));
+      str2 = s.bhK(aa.z(localo.mUri));
       l1 = System.currentTimeMillis() - l1;
-      ae.i("MicroMsg.FileDownloadMD5Manager", "MD5 Check Time: %d", new Object[] { Long.valueOf(l1) });
-      ae.i("MicroMsg.FileDownloadMD5Manager", "Original MD5: %s, Calculated MD5: %s", new Object[] { str1, str2 });
+      Log.i("MicroMsg.FileDownloadMD5Manager", "MD5 Check Time: %d", new Object[] { Long.valueOf(l1) });
+      Log.i("MicroMsg.FileDownloadMD5Manager", "Original MD5: %s, Calculated MD5: %s", new Object[] { str1, str2 });
       long l2;
-      if (!bu.isNullOrNil(parama))
+      if (!Util.isNullOrNil(parama))
       {
-        com.tencent.mm.plugin.downloader.g.a locala = d.aaU(parama);
+        com.tencent.mm.plugin.downloader.g.a locala = d.alb(parama);
         if (locala != null)
         {
           l2 = locala.field_downloadId;
@@ -198,19 +220,19 @@ public final class e
       for (;;)
       {
         com.tencent.mm.plugin.downloader.f.a.a(111, new b(parama, l2, "", l1, i));
-        if (!bu.isNullOrNil(str1)) {
+        if (!Util.isNullOrNil(str1)) {
           break;
         }
-        bool = localk.exists();
+        bool = localo.exists();
         AppMethodBeat.o(88967);
         return bool;
         label206:
         i = 0;
       }
-      if (bu.isNullOrNil(str2))
+      if (Util.isNullOrNil(str2))
       {
-        ae.i("MicroMsg.FileDownloadMD5Manager", "check from file failed, may caused by low memory while checking md5");
-        bool = localk.exists();
+        Log.i("MicroMsg.FileDownloadMD5Manager", "check from file failed, may caused by low memory while checking md5");
+        bool = localo.exists();
         AppMethodBeat.o(88967);
         return bool;
       }
@@ -236,9 +258,9 @@ public final class e
     try
     {
       ((q)localObject).parseFrom(parama.field_sectionMd5Byte);
-      boolean bool = c(parama.field_filePath, ((q)localObject).pqU);
+      boolean bool = c(parama.field_filePath, ((q)localObject).qGz);
       l1 = System.currentTimeMillis() - l1;
-      ae.i("MicroMsg.FileDownloadMD5Manager", "sectionMd5Check, costTime = %d, ret = %b", new Object[] { Long.valueOf(l1), Boolean.valueOf(bool) });
+      Log.i("MicroMsg.FileDownloadMD5Manager", "sectionMd5Check, costTime = %d, ret = %b", new Object[] { Long.valueOf(l1), Boolean.valueOf(bool) });
       localObject = parama.field_appId;
       long l2 = parama.field_downloadId;
       if (parama.field_reserveInWifi) {}
@@ -252,36 +274,14 @@ public final class e
     }
     catch (IOException parama)
     {
-      ae.printErrStackTrace("MicroMsg.FileDownloadMD5Manager", parama, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.FileDownloadMD5Manager", parama, "", new Object[0]);
       AppMethodBeat.o(88968);
     }
-  }
-  
-  public static void ut(long paramLong)
-  {
-    AppMethodBeat.i(88964);
-    psM.add(Long.valueOf(paramLong));
-    AppMethodBeat.o(88964);
-  }
-  
-  public static void uu(long paramLong)
-  {
-    AppMethodBeat.i(88965);
-    psM.remove(Long.valueOf(paramLong));
-    AppMethodBeat.o(88965);
-  }
-  
-  public static boolean uv(long paramLong)
-  {
-    AppMethodBeat.i(88966);
-    boolean bool = psM.contains(Long.valueOf(paramLong));
-    AppMethodBeat.o(88966);
-    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.model.e
  * JD-Core Version:    0.7.0.1
  */

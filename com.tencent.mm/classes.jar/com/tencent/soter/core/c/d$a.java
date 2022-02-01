@@ -5,7 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class d$a
   implements c
 {
-  public final void b(String paramString1, Throwable paramThrowable, String paramString2) {}
+  public final void a(String paramString1, Throwable paramThrowable, String paramString2) {}
   
   public final void d(String paramString1, String paramString2, Object... paramVarArgs)
   {

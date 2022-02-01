@@ -12,7 +12,7 @@ public final class c
     super(paramMMActivity, true);
   }
   
-  protected final boolean esS()
+  protected final boolean fyp()
   {
     return false;
   }
@@ -26,7 +26,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.home.c
  * JD-Core Version:    0.7.0.1
  */

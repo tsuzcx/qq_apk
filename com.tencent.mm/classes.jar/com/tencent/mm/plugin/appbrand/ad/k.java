@@ -9,13 +9,13 @@ public abstract interface k
 {
   public abstract boolean H(AppBrandRuntime paramAppBrandRuntime);
   
-  public abstract boolean Lo(String paramString);
+  public abstract boolean Ux(String paramString);
   
-  public abstract q aYv();
+  public abstract q btJ();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ad.k
  * JD-Core Version:    0.7.0.1
  */

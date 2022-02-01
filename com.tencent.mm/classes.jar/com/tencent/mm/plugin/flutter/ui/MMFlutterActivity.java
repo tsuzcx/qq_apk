@@ -1,91 +1,64 @@
 package com.tencent.mm.plugin.flutter.ui;
 
+import android.app.ActionBar;
 import android.app.Activity;
+import android.arch.lifecycle.Lifecycle;
+import android.arch.lifecycle.Lifecycle.Event;
+import android.arch.lifecycle.LifecycleOwner;
+import android.arch.lifecycle.LifecycleRegistry;
 import android.content.Intent;
-import android.graphics.Bitmap;
+import android.os.Build.VERSION;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
+import android.view.View;
+import android.view.Window;
 import android.widget.FrameLayout;
-import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
+import com.tencent.mm.hellhoundlib.activities.HellActivity;
 import com.tencent.mm.plugin.flutter.PluginFlutter;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.SwipeBackLayout;
+import com.tencent.mm.sdk.platformtools.Log;
 import io.flutter.embedding.android.FlutterView;
-import io.flutter.embedding.engine.FlutterJNI;
-import io.flutter.embedding.engine.c.c;
-import java.util.concurrent.atomic.AtomicInteger;
+import io.flutter.embedding.android.FlutterView.c;
 
 public class MMFlutterActivity
-  extends MMActivity
-  implements a
+  extends HellActivity
+  implements LifecycleOwner, a
 {
-  private boolean pwU;
-  boolean ttA;
-  private io.flutter.embedding.engine.a tti;
-  private FlutterView ttx;
-  private ImageView tty;
-  private FrameLayout ttz;
+  private LifecycleRegistry crq;
+  private boolean qMl;
+  private io.flutter.embedding.engine.a wJi;
+  boolean wKL;
+  private FlutterView wKM;
+  private io.flutter.plugin.platform.b wKN;
+  boolean wKO;
   
-  public final void cSU()
+  public MMFlutterActivity()
   {
-    AppMethodBeat.i(148882);
-    this.tty.setVisibility(8);
-    AppMethodBeat.o(148882);
+    AppMethodBeat.i(240964);
+    this.crq = new LifecycleRegistry(this);
+    AppMethodBeat.o(240964);
   }
   
-  public final void cSV()
-  {
-    AppMethodBeat.i(148886);
-    if (this.ttA)
-    {
-      if (!this.pwU)
-      {
-        Bitmap localBitmap = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().tti.MYh.MZl.getBitmap();
-        this.tty.setImageBitmap(localBitmap);
-        this.tty.setVisibility(0);
-        ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().cSQ();
-      }
-      finish();
-      AppMethodBeat.o(148886);
-      return;
-    }
-    ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().cSQ();
-    AppMethodBeat.o(148886);
-  }
-  
-  public final MMActivity getActivity()
+  public final Activity getActivity()
   {
     return this;
   }
   
-  public int getLayoutId()
+  public Lifecycle getLifecycle()
   {
-    return 2131494144;
+    return this.crq;
   }
   
-  public final void mK(boolean paramBoolean)
-  {
-    AppMethodBeat.i(148883);
-    this.ttA = paramBoolean;
-    getSwipeBackLayout().setEnableGesture(paramBoolean);
-    AppMethodBeat.o(148883);
-  }
-  
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(148887);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().onActivityResult(paramInt1, paramInt2, paramIntent);
     AppMethodBeat.o(148887);
   }
   
   public void onBackPressed()
   {
     AppMethodBeat.i(148885);
-    cSV();
+    ((PluginFlutter)com.tencent.mm.kernel.g.ah(PluginFlutter.class)).getFlutterEngineMgr().fP(this);
     AppMethodBeat.o(148885);
   }
   
@@ -93,37 +66,67 @@ public class MMFlutterActivity
   {
     AppMethodBeat.i(148876);
     super.onCreate(paramBundle);
-    if (getSupportActionBar() != null) {
-      getSupportActionBar().hide();
+    this.crq.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+    if (getActionBar() != null) {
+      getActionBar().hide();
     }
-    this.pwU = getIntent().getBooleanExtra("first_create", false);
-    int i = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().ttn.incrementAndGet();
-    ae.i("MicroMsg.Flutter.FlutterEngineMgr", "onCreate %s InstanceCount %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(i) });
-    this.tti = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().tti;
-    this.ttz = ((FrameLayout)findViewById(2131300142));
-    this.tty = ((ImageView)findViewById(2131300143));
-    this.tty.setVisibility(8);
-    this.ttx = new FlutterView(this);
-    this.ttz.addView(this.ttx);
-    this.ttA = true;
-    AppMethodBeat.o(148876);
+    getWindow().setStatusBarColor(-16777216);
+    getWindow().setNavigationBarColor(-16777216);
+    this.qMl = getIntent().getBooleanExtra("first_create", false);
+    ((PluginFlutter)com.tencent.mm.kernel.g.ah(PluginFlutter.class)).getFlutterEngineMgr().a(this);
+    ((PluginFlutter)com.tencent.mm.kernel.g.ah(PluginFlutter.class)).getFlutterEngineMgr();
+    this.wJi = ((PluginFlutter)com.tencent.mm.kernel.g.ah(PluginFlutter.class)).getFlutterEngineMgr().wJi;
+    paramBundle = new FrameLayout(this);
+    this.wKO = getIntent().getBooleanExtra("videoEditor", false);
+    if (this.wKO)
+    {
+      com.tencent.mm.plugin.vlog.ui.plugin.imageenhancement.b.GLF.cMT();
+      com.tencent.mm.plugin.recordvideo.res.g.BYp.bbA();
+      this.wKM = new FlutterView(this, FlutterView.c.SND);
+      setResult(0);
+    }
+    for (;;)
+    {
+      paramBundle.addView(this.wKM);
+      setContentView(paramBundle);
+      this.wKL = true;
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        paramBundle = getWindow();
+        paramBundle.addFlags(-2147483648);
+        paramBundle.setStatusBarColor(1073741824);
+        paramBundle.getDecorView().setSystemUiVisibility(1280);
+      }
+      AppMethodBeat.o(148876);
+      return;
+      this.wKM = new FlutterView(this);
+    }
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(148877);
     super.onDestroy();
-    ae.i("MicroMsg.Flutter.MMFlutterActivity", "onDestroy %s", new Object[] { Integer.valueOf(hashCode()) });
-    ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().onDestroy();
+    Log.i("MicroMsg.Flutter.MMBaseFlutterActivity", "onDestroy %s", new Object[] { Integer.valueOf(hashCode()) });
+    if (this.wKN != null) {
+      this.wKN.destroy();
+    }
+    this.wKN = null;
+    ((PluginFlutter)com.tencent.mm.kernel.g.ah(PluginFlutter.class)).getFlutterEngineMgr().onDestroy();
+    this.crq.handleLifecycleEvent(Lifecycle.Event.ON_DESTROY);
     AppMethodBeat.o(148877);
   }
   
   public void onPause()
   {
     AppMethodBeat.i(148881);
+    if (!this.wKO) {
+      overridePendingTransition(0, 0);
+    }
     super.onPause();
-    ae.i("MicroMsg.Flutter.MMFlutterActivity", "onPause %s", new Object[] { Integer.valueOf(hashCode()) });
-    ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr();
+    this.crq.handleLifecycleEvent(Lifecycle.Event.ON_PAUSE);
+    Log.i("MicroMsg.Flutter.MMBaseFlutterActivity", "onPause %s", new Object[] { Integer.valueOf(hashCode()) });
+    ((PluginFlutter)com.tencent.mm.kernel.g.ah(PluginFlutter.class)).getFlutterEngineMgr();
     AppMethodBeat.o(148881);
   }
   
@@ -131,31 +134,37 @@ public class MMFlutterActivity
   {
     AppMethodBeat.i(148880);
     super.onResume();
-    ae.i("MicroMsg.Flutter.MMFlutterActivity", "onResume %s", new Object[] { Integer.valueOf(hashCode()) });
-    com.tencent.mm.plugin.flutter.b.a locala = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr();
-    if (equals(locala.ttj)) {
-      locala.tti.MZp.gjB();
-    }
+    this.crq.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+    Log.i("MicroMsg.Flutter.MMBaseFlutterActivity", "onResume %s", new Object[] { Integer.valueOf(hashCode()) });
+    ((PluginFlutter)com.tencent.mm.kernel.g.ah(PluginFlutter.class)).getFlutterEngineMgr().b(this);
     AppMethodBeat.o(148880);
+  }
+  
+  protected void onSaveInstanceState(Bundle paramBundle)
+  {
+    AppMethodBeat.i(240965);
+    super.onSaveInstanceState(paramBundle);
+    AppMethodBeat.o(240965);
   }
   
   public void onStart()
   {
     AppMethodBeat.i(148878);
     super.onStart();
-    ae.i("MicroMsg.Flutter.MMFlutterActivity", "onStart %s", new Object[] { Integer.valueOf(hashCode()) });
+    this.crq.handleLifecycleEvent(Lifecycle.Event.ON_START);
+    Log.i("MicroMsg.Flutter.MMBaseFlutterActivity", "onStart %s", new Object[] { Integer.valueOf(hashCode()) });
     try
     {
-      this.ttx.c(this.tti);
-      com.tencent.mm.plugin.flutter.b.a locala = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr();
-      locala.ttj = this;
-      locala.tti.MZp.gjA();
+      this.wKN = new io.flutter.plugin.platform.b(this, this.wJi.SOe);
+      this.wKM.d(this.wJi);
+      this.wJi.SNX.a(this, getLifecycle());
+      ((PluginFlutter)com.tencent.mm.kernel.g.ah(PluginFlutter.class)).getFlutterEngineMgr().c(this);
       AppMethodBeat.o(148878);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.Flutter.MMFlutterActivity", localException, "onStart", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.Flutter.MMBaseFlutterActivity", localException, "onStart", new Object[0]);
       AppMethodBeat.o(148878);
     }
   }
@@ -164,34 +173,24 @@ public class MMFlutterActivity
   {
     AppMethodBeat.i(148879);
     super.onStop();
-    ae.i("MicroMsg.Flutter.MMFlutterActivity", "onStop %s", new Object[] { Integer.valueOf(hashCode()) });
+    Log.i("MicroMsg.Flutter.MMBaseFlutterActivity", "onStop %s", new Object[] { Integer.valueOf(hashCode()) });
     try
     {
-      com.tencent.mm.plugin.flutter.b.a locala = ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr();
-      if (locala.ttj.equals(this))
-      {
-        locala.tti.MZp.gjC();
-        locala.ttj = null;
-      }
-      this.ttx.giZ();
+      this.wJi.SNX.hwK();
+      ((PluginFlutter)com.tencent.mm.kernel.g.ah(PluginFlutter.class)).getFlutterEngineMgr().d(this);
+      ((PluginFlutter)com.tencent.mm.kernel.g.ah(PluginFlutter.class)).getFlutterEngineMgr();
+      this.wKM.hwy();
+      this.crq.handleLifecycleEvent(Lifecycle.Event.ON_STOP);
       AppMethodBeat.o(148879);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.Flutter.MMFlutterActivity", localException, "onStop", new Object[0]);
-      AppMethodBeat.o(148879);
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.Flutter.MMBaseFlutterActivity", localException, "onStop", new Object[0]);
+      }
     }
-  }
-  
-  public void onSwipeBack()
-  {
-    AppMethodBeat.i(148884);
-    super.onSwipeBack();
-    if (!this.pwU) {
-      ((PluginFlutter)g.ad(PluginFlutter.class)).getFlutterEngineMgr().cSQ();
-    }
-    AppMethodBeat.o(148884);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -202,7 +201,7 @@ public class MMFlutterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.flutter.ui.MMFlutterActivity
  * JD-Core Version:    0.7.0.1
  */

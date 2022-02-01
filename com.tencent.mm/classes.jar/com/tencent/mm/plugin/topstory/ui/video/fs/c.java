@@ -27,15 +27,15 @@ public final class c
       if (localObject == null) {
         break label191;
       }
-      i = ((g)localObject).lN();
-      if ((i != paramb.etl()) && (paramb.eti().BNs))
+      i = ((g)localObject).lR();
+      if ((i != paramb.fyH()) && (paramb.fyF().GnZ))
       {
-        paramb.eti().stopPlay();
+        paramb.fyF().stopPlay();
         if (localObject != null) {
-          paramb.ete().i(((g)localObject).BIY);
+          paramb.fyB().j(((g)localObject).GjH);
         }
       }
-      paramb.etb();
+      paramb.fyy();
       j = 0;
       label103:
       if (j >= localRecyclerView.getChildCount()) {
@@ -44,13 +44,13 @@ public final class c
       localObject = localRecyclerView.getChildAt(j);
       if (((View)localObject).getTag() != null)
       {
-        localObject = (g)paramb.getRecyclerView().bh((View)localObject);
-        if (((g)localObject).lN() != i) {
+        localObject = (g)paramb.getRecyclerView().bi((View)localObject);
+        if (((g)localObject).lR() != i) {
           break label196;
         }
-        ((g)localObject).eta();
-        if (!paramb.eti().BNs) {
-          ((g)localObject).BOr.etz();
+        ((g)localObject).fyx();
+        if (!paramb.fyF().GnZ) {
+          ((g)localObject).GoY.fyV();
         }
       }
     }
@@ -64,7 +64,7 @@ public final class c
       i = -1;
       break;
       label196:
-      ((g)localObject).BOr.etA();
+      ((g)localObject).GoY.fyW();
     }
     label207:
     AppMethodBeat.o(126245);
@@ -75,25 +75,25 @@ public final class c
     AppMethodBeat.i(126246);
     h localh = c(paramb);
     if ((localh != null) && ((localh instanceof g))) {
-      if (!paramb.eti().BNs)
+      if (!paramb.fyF().GnZ)
       {
-        if (!paramb.etd().isConnected()) {
+        if (!paramb.fyA().isConnected()) {
           break label89;
         }
-        paramb.a(localh.BIY);
-        localh.sQ(true);
+        paramb.a(localh.GjH);
+        localh.wu(true);
       }
     }
     for (;;)
     {
-      localh.eta();
-      paramb.TF(localh.etc());
-      paramb.ete().euf();
+      localh.fyx();
+      paramb.abV(localh.fyz());
+      paramb.fyB().fzB();
       AppMethodBeat.o(126246);
       return;
       label89:
-      localh.etO().etD();
-      paramb.eti().stopPlay();
+      localh.fzk().fyZ();
+      paramb.fyF().stopPlay();
     }
   }
 }

@@ -6,81 +6,89 @@ import com.tencent.mm.plugin.report.a;
 public final class ju
   extends a
 {
-  public int dVT = 0;
-  private String eDT = "";
-  private String eDU = "";
-  private String eDV = "";
-  public int eDW;
+  private long eAl = 0L;
+  private long eQv = 0L;
+  private String eRJ = "";
+  private long eRK = 0L;
+  private long eSu = 0L;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(184124);
+    AppMethodBeat.i(118522);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dVT);
+    ((StringBuffer)localObject).append(this.eRJ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eDT);
+    ((StringBuffer)localObject).append(this.eAl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eDU);
+    ((StringBuffer)localObject).append(this.eQv);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eDV);
+    ((StringBuffer)localObject).append(this.eRK);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eDW);
+    ((StringBuffer)localObject).append(this.eSu);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(184124);
+    aMq((String)localObject);
+    AppMethodBeat.o(118522);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(184125);
+    AppMethodBeat.i(118523);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("action:").append(this.dVT);
+    ((StringBuffer)localObject).append("StoryId:").append(this.eRJ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("oldaccountusername:").append(this.eDT);
+    ((StringBuffer)localObject).append("VideoType:").append(this.eAl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("newaccountusername:").append(this.eDU);
+    ((StringBuffer)localObject).append("PreviewEnterScene:").append(this.eQv);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("friendusername:").append(this.eDV);
+    ((StringBuffer)localObject).append("ProfileSource:").append(this.eRK);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("errortype:").append(this.eDW);
+    ((StringBuffer)localObject).append("IsAlbumStarButton:").append(this.eSu);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(184125);
+    AppMethodBeat.o(118523);
     return localObject;
   }
   
   public final int getId()
   {
-    return 19376;
+    return 17090;
   }
   
-  public final ju sF(String paramString)
+  public final ju sS(long paramLong)
   {
-    AppMethodBeat.i(184121);
-    this.eDT = t("oldaccountusername", paramString, true);
-    AppMethodBeat.o(184121);
+    this.eAl = paramLong;
     return this;
   }
   
-  public final ju sG(String paramString)
+  public final ju sT(long paramLong)
   {
-    AppMethodBeat.i(184122);
-    this.eDU = t("newaccountusername", paramString, true);
-    AppMethodBeat.o(184122);
+    this.eQv = paramLong;
     return this;
   }
   
-  public final ju sH(String paramString)
+  public final ju sU(long paramLong)
   {
-    AppMethodBeat.i(184123);
-    this.eDV = t("friendusername", paramString, true);
-    AppMethodBeat.o(184123);
+    this.eRK = paramLong;
+    return this;
+  }
+  
+  public final ju sV(long paramLong)
+  {
+    this.eSu = paramLong;
+    return this;
+  }
+  
+  public final ju xf(String paramString)
+  {
+    AppMethodBeat.i(118521);
+    this.eRJ = x("StoryId", paramString, true);
+    AppMethodBeat.o(118521);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ju
  * JD-Core Version:    0.7.0.1
  */

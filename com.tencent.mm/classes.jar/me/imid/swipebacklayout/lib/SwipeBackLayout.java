@@ -6,7 +6,7 @@ import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.support.v4.widget.p;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
@@ -24,21 +24,21 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class SwipeBackLayout
   extends FrameLayout
 {
-  private static final int[] OlS = { 1, 2, 8, 11 };
-  private float LpQ;
-  private int LpR;
-  private int LpS;
-  private float LpU;
-  private int OlT;
-  private b OlU;
-  private CopyOnWriteArrayList<a> OlV;
-  private Drawable OlW;
-  private int OlX;
-  private Drawable TQ;
-  private Drawable TR;
-  private Rect TW;
-  private int Tu;
-  private float Tv;
+  private static final int[] UaP = { 1, 2, 8, 11 };
+  private CopyOnWriteArrayList<a> Sfj;
+  private int TG;
+  private float TH;
+  private int UaQ;
+  private b UaR;
+  private Drawable UaS;
+  private int UaT;
+  private Drawable Uc;
+  private Drawable Ud;
+  private Rect Ui;
+  private float hfn;
+  private int hfo;
+  private int hfp;
+  private float hfr;
   private View mContentView;
   private boolean mEnable;
   private boolean mInLayout;
@@ -50,42 +50,42 @@ public class SwipeBackLayout
   
   public SwipeBackLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130968594);
+    this(paramContext, paramAttributeSet, 2130968595);
   }
   
   public SwipeBackLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(140882);
-    this.LpQ = 0.3F;
+    this.hfn = 0.3F;
     this.mEnable = true;
-    this.Tu = -1728053248;
-    this.TW = new Rect();
-    this.OlU = b.a(this, new c((byte)0));
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.SwipeBackLayout, paramInt, 2131821307);
+    this.TG = -1728053248;
+    this.Ui = new Rect();
+    this.UaR = b.a(this, new c((byte)0));
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.SwipeBackLayout, paramInt, 2131821349);
     paramInt = paramContext.getDimensionPixelSize(1, -1);
     if (paramInt > 0) {
       setEdgeSize(paramInt);
     }
-    setEdgeTrackingEnabled(OlS[paramContext.getInt(0, 0)]);
-    paramInt = paramContext.getResourceId(3, 2131233962);
-    int i = paramContext.getResourceId(4, 2131233963);
-    int j = paramContext.getResourceId(2, 2131233960);
-    lD(paramInt, 1);
-    lD(i, 2);
-    lD(j, 8);
+    setEdgeTrackingEnabled(UaP[paramContext.getInt(0, 0)]);
+    paramInt = paramContext.getResourceId(3, 2131234799);
+    int i = paramContext.getResourceId(4, 2131234800);
+    int j = paramContext.getResourceId(2, 2131234797);
+    ne(paramInt, 1);
+    ne(i, 2);
+    ne(j, 8);
     paramContext.recycle();
     float f = getResources().getDisplayMetrics().density * 400.0F;
-    this.OlU.Wu = f;
-    this.OlU.Wt = (f * 2.0F);
+    this.UaR.WH = f;
+    this.UaR.WG = (f * 2.0F);
     AppMethodBeat.o(140882);
   }
   
-  private void f(Drawable paramDrawable, int paramInt)
+  private void g(Drawable paramDrawable, int paramInt)
   {
     AppMethodBeat.i(140887);
     if ((paramInt & 0x1) != 0) {
-      this.TQ = paramDrawable;
+      this.Uc = paramDrawable;
     }
     for (;;)
     {
@@ -93,70 +93,70 @@ public class SwipeBackLayout
       AppMethodBeat.o(140887);
       return;
       if ((paramInt & 0x2) != 0) {
-        this.TR = paramDrawable;
+        this.Ud = paramDrawable;
       } else if ((paramInt & 0x8) != 0) {
-        this.OlW = paramDrawable;
+        this.UaS = paramDrawable;
       }
     }
   }
   
-  private void lD(int paramInt1, int paramInt2)
+  private void ne(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(140888);
-    f(getResources().getDrawable(paramInt1), paramInt2);
+    g(getResources().getDrawable(paramInt1), paramInt2);
     AppMethodBeat.o(140888);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(140885);
-    if (this.OlV == null) {
-      this.OlV = new CopyOnWriteArrayList();
+    if (this.Sfj == null) {
+      this.Sfj = new CopyOnWriteArrayList();
     }
-    this.OlV.add(parama);
+    this.Sfj.add(parama);
     AppMethodBeat.o(140885);
   }
   
   public void computeScroll()
   {
     AppMethodBeat.i(140894);
-    this.Tv = (1.0F - this.LpU);
-    b localb = this.OlU;
+    this.TH = (1.0F - this.hfr);
+    b localb = this.UaR;
     boolean bool;
     int i;
-    if (localb.Wk == 2)
+    if (localb.Wx == 2)
     {
-      bool = localb.nrj.Ur.computeScrollOffset();
-      i = localb.nrj.Ur.getCurrX();
-      int j = localb.nrj.Ur.getCurrY();
-      int k = i - localb.Wy.getLeft();
-      int m = j - localb.Wy.getTop();
+      bool = localb.hgg.UD.computeScrollOffset();
+      i = localb.hgg.UD.getCurrX();
+      int j = localb.hgg.UD.getCurrY();
+      int k = i - localb.WL.getLeft();
+      int m = j - localb.WL.getTop();
       if (k != 0) {
-        localb.Wy.offsetLeftAndRight(k);
+        localb.WL.offsetLeftAndRight(k);
       }
       if (m != 0) {
-        localb.Wy.offsetTopAndBottom(m);
+        localb.WL.offsetTopAndBottom(m);
       }
       if ((k != 0) || (m != 0)) {
-        localb.Omb.o(localb.Wy, i, j, k, m);
+        localb.UaX.l(localb.WL, i, j, k, m);
       }
-      if ((!bool) || (i != localb.nrj.Ur.getFinalX()) || (j != localb.nrj.Ur.getFinalY())) {
+      if ((!bool) || (i != localb.hgg.UD.getFinalX()) || (j != localb.hgg.UD.getFinalY())) {
         break label253;
       }
-      localb.nrj.Ur.abortAnimation();
-      bool = localb.nrj.Ur.isFinished();
+      localb.hgg.UD.abortAnimation();
+      bool = localb.hgg.UD.isFinished();
     }
     label253:
     for (;;)
     {
       if (!bool) {
-        localb.WA.post(localb.WB);
+        localb.WN.post(localb.WO);
       }
-      if (localb.Wk == 2) {}
+      if (localb.Wx == 2) {}
       for (i = 1;; i = 0)
       {
         if (i != 0) {
-          t.W(this);
+          u.X(this);
         }
         AppMethodBeat.o(140894);
         return;
@@ -174,22 +174,22 @@ public class SwipeBackLayout
       return bool;
     }
     Object localObject;
-    if ((this.OlV != null) && (!this.OlV.isEmpty()))
+    if ((this.Sfj != null) && (!this.Sfj.isEmpty()))
     {
-      localObject = this.OlV.iterator();
+      localObject = this.Sfj.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((a)((Iterator)localObject).next()).k(paramMotionEvent);
+        ((a)((Iterator)localObject).next()).n(paramMotionEvent);
       }
     }
-    if (this.OlU.Wk == 1)
+    if (this.UaR.Wx == 1)
     {
-      this.OlU.h(paramMotionEvent);
+      this.UaR.k(paramMotionEvent);
       AppMethodBeat.o(140889);
       return true;
     }
     try
     {
-      localObject = this.OlU;
+      localObject = this.UaR;
       j = paramMotionEvent.getActionMasked();
       i = paramMotionEvent.getActionIndex();
       if (j == 0) {
@@ -216,10 +216,10 @@ public class SwipeBackLayout
           k = paramMotionEvent.getPointerId(i);
           f1 = paramMotionEvent.getX(i);
           f2 = paramMotionEvent.getY(i);
-          f3 = f1 - localObject.Wl[k];
-          f4 = f2 - localObject.Wm[k];
+          f3 = f1 - localObject.Wy[k];
+          f4 = f2 - localObject.Wz[k];
           ((b)localObject).b(f3, f4, k);
-          if (((b)localObject).Wk != 1)
+          if (((b)localObject).Wx != 1)
           {
             localView = ((b)localObject).J((int)f1, (int)f2);
             if ((localView == null) || (!((b)localObject).c(localView, f3, f4)) || (!((b)localObject).z(localView, k))) {
@@ -227,7 +227,7 @@ public class SwipeBackLayout
             }
           }
         }
-        ((b)localObject).f(paramMotionEvent);
+        ((b)localObject).i(paramMotionEvent);
       }
     }
     catch (IllegalArgumentException paramMotionEvent)
@@ -236,7 +236,7 @@ public class SwipeBackLayout
       {
         AppMethodBeat.o(140889);
         return false;
-        ((b)localObject).bc(paramMotionEvent.getPointerId(i));
+        ((b)localObject).bd(paramMotionEvent.getPointerId(i));
       }
     }
     catch (ArrayIndexOutOfBoundsException paramMotionEvent)
@@ -244,7 +244,7 @@ public class SwipeBackLayout
       AppMethodBeat.o(140889);
       return false;
     }
-    if (((b)localObject).Wk == 1) {}
+    if (((b)localObject).Wx == 1) {}
     for (int i = 1;; i = 0)
     {
       float f1;
@@ -261,10 +261,10 @@ public class SwipeBackLayout
         i = paramMotionEvent.getPointerId(0);
         ((b)localObject).a(f1, f2, i);
         localView = ((b)localObject).J((int)f1, (int)f2);
-        if ((localView == ((b)localObject).Wy) && (((b)localObject).Wk == 2)) {
+        if ((localView == ((b)localObject).WL) && (((b)localObject).Wx == 2)) {
           ((b)localObject).z(localView, i);
         }
-        if ((localObject.Oma[i] & ((b)localObject).Ww) == 0) {
+        if ((localObject.UaW[i] & ((b)localObject).WJ) == 0) {
           break;
         }
         break;
@@ -272,11 +272,11 @@ public class SwipeBackLayout
         f1 = paramMotionEvent.getX(i);
         f2 = paramMotionEvent.getY(i);
         ((b)localObject).a(f1, f2, j);
-        if ((((b)localObject).Wk == 0) || (((b)localObject).Wk != 2)) {
+        if ((((b)localObject).Wx == 0) || (((b)localObject).Wx != 2)) {
           break;
         }
         localView = ((b)localObject).J((int)f1, (int)f2);
-        if (localView != ((b)localObject).Wy) {
+        if (localView != ((b)localObject).WL) {
           break;
         }
         ((b)localObject).z(localView, j);
@@ -308,31 +308,31 @@ public class SwipeBackLayout
     {
       i = 1;
       bool = super.drawChild(paramCanvas, paramView, paramLong);
-      if ((this.Tv > 0.0F) && (i != 0) && (this.OlU.Wk != 0))
+      if ((this.TH > 0.0F) && (i != 0) && (this.UaR.Wx != 0))
       {
-        Rect localRect = this.TW;
+        Rect localRect = this.Ui;
         paramView.getHitRect(localRect);
-        if ((this.OlT & 0x1) != 0)
+        if ((this.UaQ & 0x1) != 0)
         {
-          this.TQ.setBounds(localRect.left - this.TQ.getIntrinsicWidth(), localRect.top, localRect.left, localRect.bottom);
-          this.TQ.setAlpha((int)(this.Tv * 255.0F));
-          this.TQ.draw(paramCanvas);
+          this.Uc.setBounds(localRect.left - this.Uc.getIntrinsicWidth(), localRect.top, localRect.left, localRect.bottom);
+          this.Uc.setAlpha((int)(this.TH * 255.0F));
+          this.Uc.draw(paramCanvas);
         }
-        if ((this.OlT & 0x2) != 0)
+        if ((this.UaQ & 0x2) != 0)
         {
-          this.TR.setBounds(localRect.right, localRect.top, localRect.right + this.TR.getIntrinsicWidth(), localRect.bottom);
-          this.TR.setAlpha((int)(this.Tv * 255.0F));
-          this.TR.draw(paramCanvas);
+          this.Ud.setBounds(localRect.right, localRect.top, localRect.right + this.Ud.getIntrinsicWidth(), localRect.bottom);
+          this.Ud.setAlpha((int)(this.TH * 255.0F));
+          this.Ud.draw(paramCanvas);
         }
-        if ((this.OlT & 0x8) != 0)
+        if ((this.UaQ & 0x8) != 0)
         {
-          this.OlW.setBounds(localRect.left, localRect.bottom, localRect.right, localRect.bottom + this.OlW.getIntrinsicHeight());
-          this.OlW.setAlpha((int)(this.Tv * 255.0F));
-          this.OlW.draw(paramCanvas);
+          this.UaS.setBounds(localRect.left, localRect.bottom, localRect.right, localRect.bottom + this.UaS.getIntrinsicHeight());
+          this.UaS.setAlpha((int)(this.TH * 255.0F));
+          this.UaS.draw(paramCanvas);
         }
-        i = (int)(((this.Tu & 0xFF000000) >>> 24) * this.Tv);
-        j = this.Tu;
-        if ((this.OlX & 0x1) == 0) {
+        i = (int)(((this.TG & 0xFF000000) >>> 24) * this.TH);
+        j = this.TG;
+        if ((this.UaT & 0x1) == 0) {
           break label348;
         }
         paramCanvas.clipRect(0, 0, paramView.getLeft(), getHeight());
@@ -346,27 +346,12 @@ public class SwipeBackLayout
       i = 0;
       break;
       label348:
-      if ((this.OlX & 0x2) != 0) {
+      if ((this.UaT & 0x2) != 0) {
         paramCanvas.clipRect(paramView.getRight(), 0, getRight(), getHeight());
-      } else if ((this.OlX & 0x8) != 0) {
+      } else if ((this.UaT & 0x8) != 0) {
         paramCanvas.clipRect(paramView.getLeft(), paramView.getBottom(), getRight(), getHeight());
       }
     }
-  }
-  
-  public final void gCb()
-  {
-    AppMethodBeat.i(201310);
-    this.LpU = 0.0F;
-    this.OlU.cancel();
-    this.OlU.be(0);
-    if ((this.LpR != 0) || (this.LpS != 0))
-    {
-      this.LpS = 0;
-      this.LpR = 0;
-      requestLayout();
-    }
-    AppMethodBeat.o(201310);
   }
   
   public View getTargetView()
@@ -374,12 +359,27 @@ public class SwipeBackLayout
     return this.mContentView;
   }
   
+  public final void hPi()
+  {
+    AppMethodBeat.i(221355);
+    this.hfr = 0.0F;
+    this.UaR.cancel();
+    this.UaR.bf(0);
+    if ((this.hfo != 0) || (this.hfp != 0))
+    {
+      this.hfp = 0;
+      this.hfo = 0;
+      requestLayout();
+    }
+    AppMethodBeat.o(221355);
+  }
+  
   protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(140891);
     this.mInLayout = true;
     if (this.mContentView != null) {
-      this.mContentView.layout(this.LpR, this.LpS, this.LpR + this.mContentView.getMeasuredWidth(), this.LpS + this.mContentView.getMeasuredHeight());
+      this.mContentView.layout(this.hfo, this.hfp, this.hfo + this.mContentView.getMeasuredWidth(), this.hfp + this.mContentView.getMeasuredHeight());
     }
     this.mInLayout = false;
     AppMethodBeat.o(140891);
@@ -393,7 +393,7 @@ public class SwipeBackLayout
       AppMethodBeat.o(140890);
       return false;
     }
-    this.OlU.h(paramMotionEvent);
+    this.UaR.k(paramMotionEvent);
     AppMethodBeat.o(140890);
     return true;
   }
@@ -414,13 +414,13 @@ public class SwipeBackLayout
   
   public void setEdgeSize(int paramInt)
   {
-    this.OlU.Wv = paramInt;
+    this.UaR.WI = paramInt;
   }
   
   public void setEdgeTrackingEnabled(int paramInt)
   {
-    this.OlT = paramInt;
-    this.OlU.Ww = this.OlT;
+    this.UaQ = paramInt;
+    this.UaR.WJ = this.UaQ;
   }
   
   public void setEnableGesture(boolean paramBoolean)
@@ -430,18 +430,18 @@ public class SwipeBackLayout
   
   public void setMaxVelocity(float paramFloat)
   {
-    this.OlU.Wt = paramFloat;
+    this.UaR.WG = paramFloat;
   }
   
   public void setMinVelocity(float paramFloat)
   {
-    this.OlU.Wu = paramFloat;
+    this.UaR.WH = paramFloat;
   }
   
   public void setScrimColor(int paramInt)
   {
     AppMethodBeat.i(140883);
-    this.Tu = paramInt;
+    this.TG = paramInt;
     invalidate();
     AppMethodBeat.o(140883);
   }
@@ -455,7 +455,7 @@ public class SwipeBackLayout
       AppMethodBeat.o(140886);
       throw localIllegalArgumentException;
     }
-    this.LpQ = paramFloat;
+    this.hfn = paramFloat;
     AppMethodBeat.o(140886);
   }
   
@@ -469,19 +469,19 @@ public class SwipeBackLayout
   
   public static abstract interface a
   {
-    public abstract void Cv();
+    public abstract void LN();
     
-    public abstract int bq(boolean paramBoolean);
+    public abstract int bS(boolean paramBoolean);
     
     public abstract void i(int paramInt, float paramFloat);
     
-    public abstract void k(MotionEvent paramMotionEvent);
+    public abstract void n(MotionEvent paramMotionEvent);
   }
   
   final class c
     extends b.a
   {
-    private boolean OlY;
+    private boolean UaU;
     
     private c() {}
     
@@ -532,7 +532,7 @@ public class SwipeBackLayout
               if (i != 0) {}
               for (boolean bool = true;; bool = false)
               {
-                k = locala.bq(bool);
+                k = locala.bS(bool);
                 if (k != 2) {
                   break label344;
                 }
@@ -568,7 +568,7 @@ public class SwipeBackLayout
         }
         label356:
         paramView = SwipeBackLayout.b(SwipeBackLayout.this);
-        if (!paramView.Wz)
+        if (!paramView.WM)
         {
           paramView = new IllegalStateException("Cannot settleCapturedViewAt outside of a call to Callback#onViewReleased");
           AppMethodBeat.o(140878);
@@ -576,20 +576,20 @@ public class SwipeBackLayout
         }
         int n = (int)paramView.mVelocityTracker.getXVelocity(paramView.mActivePointerId);
         int i1 = (int)paramView.mVelocityTracker.getYVelocity(paramView.mActivePointerId);
-        i = paramView.Wy.getLeft();
-        int m = paramView.Wy.getTop();
+        i = paramView.WL.getLeft();
+        int m = paramView.WL.getTop();
         k -= i;
         j -= m;
         if ((k == 0) && (j == 0))
         {
-          paramView.nrj.Ur.abortAnimation();
-          paramView.be(0);
+          paramView.hgg.UD.abortAnimation();
+          paramView.bf(0);
           SwipeBackLayout.this.invalidate();
           AppMethodBeat.o(140878);
           return;
         }
-        n = b.i(n, (int)paramView.Wu, (int)paramView.Wt);
-        i1 = b.i(i1, (int)paramView.Wu, (int)paramView.Wt);
+        n = b.i(n, (int)paramView.WH, (int)paramView.WG);
+        i1 = b.i(i1, (int)paramView.WH, (int)paramView.WG);
         int i2 = Math.abs(k);
         int i3 = Math.abs(j);
         int i4 = Math.abs(n);
@@ -607,12 +607,12 @@ public class SwipeBackLayout
         label676:
         for (paramFloat2 = i5 / i6;; paramFloat2 = i3 / i7)
         {
-          n = paramView.h(k, n, paramView.Omb.fOh());
-          i1 = paramView.h(j, i1, paramView.Omb.ce());
+          n = paramView.h(k, n, paramView.UaX.awM());
+          i1 = paramView.h(j, i1, paramView.UaX.cg());
           float f = n;
           n = (int)(paramFloat2 * i1 + paramFloat1 * f);
-          paramView.nrj.startScroll(i, m, k, j, n);
-          paramView.be(2);
+          paramView.hgg.startScroll(i, m, k, j, n);
+          paramView.bf(2);
           break;
           paramFloat1 = i2 / i7;
           break label575;
@@ -623,60 +623,15 @@ public class SwipeBackLayout
       }
     }
     
-    public final boolean afz(int paramInt)
+    public final int awM()
     {
-      int i = 1;
-      AppMethodBeat.i(140874);
-      int j = SwipeBackLayout.b(SwipeBackLayout.this).lF(SwipeBackLayout.a(SwipeBackLayout.this), paramInt);
-      if (j != 0)
-      {
-        if (SwipeBackLayout.b(SwipeBackLayout.this).lF(1, paramInt)) {
-          SwipeBackLayout.a(SwipeBackLayout.this, 1);
-        }
-        while ((SwipeBackLayout.c(SwipeBackLayout.this) != null) && (!SwipeBackLayout.c(SwipeBackLayout.this).isEmpty()))
-        {
-          Iterator localIterator = SwipeBackLayout.c(SwipeBackLayout.this).iterator();
-          while (localIterator.hasNext())
-          {
-            SwipeBackLayout.a locala = (SwipeBackLayout.a)localIterator.next();
-            SwipeBackLayout.d(SwipeBackLayout.this);
-            locala.Cv();
-          }
-          if (SwipeBackLayout.b(SwipeBackLayout.this).lF(2, paramInt)) {
-            SwipeBackLayout.a(SwipeBackLayout.this, 2);
-          } else if (SwipeBackLayout.b(SwipeBackLayout.this).lF(8, paramInt)) {
-            SwipeBackLayout.a(SwipeBackLayout.this, 8);
-          }
-        }
-        this.OlY = true;
-      }
-      if ((SwipeBackLayout.a(SwipeBackLayout.this) == 1) || (SwipeBackLayout.a(SwipeBackLayout.this) == 2)) {
-        if (!SwipeBackLayout.b(SwipeBackLayout.this).lE(2, paramInt))
-        {
-          paramInt = 1;
-          i = paramInt;
-        }
-      }
-      for (;;)
-      {
-        boolean bool = SwipeBackLayout.e(SwipeBackLayout.this);
-        AppMethodBeat.o(140874);
-        return j & i & bool;
-        paramInt = 0;
-        break;
-        if (SwipeBackLayout.a(SwipeBackLayout.this) == 8)
-        {
-          if (SwipeBackLayout.b(SwipeBackLayout.this).lE(1, paramInt)) {
-            i = 0;
-          }
-        }
-        else if (SwipeBackLayout.a(SwipeBackLayout.this) != 11) {
-          i = 0;
-        }
-      }
+      AppMethodBeat.i(140875);
+      int i = SwipeBackLayout.a(SwipeBackLayout.this);
+      AppMethodBeat.o(140875);
+      return i & 0x3;
     }
     
-    public final int ce()
+    public final int cg()
     {
       AppMethodBeat.i(140876);
       int i = SwipeBackLayout.a(SwipeBackLayout.this);
@@ -712,18 +667,10 @@ public class SwipeBackLayout
       }
     }
     
-    public final int fOh()
-    {
-      AppMethodBeat.i(140875);
-      int i = SwipeBackLayout.a(SwipeBackLayout.this);
-      AppMethodBeat.o(140875);
-      return i & 0x3;
-    }
-    
-    public final void o(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+    public final void l(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
     {
       AppMethodBeat.i(140877);
-      super.o(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+      super.l(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
       if ((SwipeBackLayout.d(SwipeBackLayout.this) & 0x1) != 0) {
         SwipeBackLayout.a(SwipeBackLayout.this, Math.abs(paramInt1 / (SwipeBackLayout.f(SwipeBackLayout.this).getWidth() + SwipeBackLayout.g(SwipeBackLayout.this).getIntrinsicWidth())));
       }
@@ -732,15 +679,15 @@ public class SwipeBackLayout
         SwipeBackLayout.b(SwipeBackLayout.this, paramInt1);
         SwipeBackLayout.c(SwipeBackLayout.this, paramInt2);
         SwipeBackLayout.this.invalidate();
-        if ((SwipeBackLayout.j(SwipeBackLayout.this) < SwipeBackLayout.k(SwipeBackLayout.this)) && (!this.OlY)) {
-          this.OlY = true;
+        if ((SwipeBackLayout.j(SwipeBackLayout.this) < SwipeBackLayout.k(SwipeBackLayout.this)) && (!this.UaU)) {
+          this.UaU = true;
         }
         if ((SwipeBackLayout.c(SwipeBackLayout.this) == null) || (SwipeBackLayout.c(SwipeBackLayout.this).isEmpty())) {
           break;
         }
         paramView = SwipeBackLayout.c(SwipeBackLayout.this).iterator();
         while (paramView.hasNext()) {
-          ((SwipeBackLayout.a)paramView.next()).i(SwipeBackLayout.b(SwipeBackLayout.this).Wk, SwipeBackLayout.j(SwipeBackLayout.this));
+          ((SwipeBackLayout.a)paramView.next()).i(SwipeBackLayout.b(SwipeBackLayout.this).Wx, SwipeBackLayout.j(SwipeBackLayout.this));
         }
         if ((SwipeBackLayout.d(SwipeBackLayout.this) & 0x2) != 0) {
           SwipeBackLayout.a(SwipeBackLayout.this, Math.abs(paramInt1 / (SwipeBackLayout.f(SwipeBackLayout.this).getWidth() + SwipeBackLayout.h(SwipeBackLayout.this).getIntrinsicWidth())));
@@ -748,9 +695,9 @@ public class SwipeBackLayout
           SwipeBackLayout.a(SwipeBackLayout.this, Math.abs(paramInt2 / (SwipeBackLayout.f(SwipeBackLayout.this).getHeight() + SwipeBackLayout.i(SwipeBackLayout.this).getIntrinsicHeight())));
         }
       }
-      if ((SwipeBackLayout.c(SwipeBackLayout.this) != null) && (!SwipeBackLayout.c(SwipeBackLayout.this).isEmpty()) && (SwipeBackLayout.b(SwipeBackLayout.this).Wk == 1) && (SwipeBackLayout.j(SwipeBackLayout.this) >= SwipeBackLayout.k(SwipeBackLayout.this)) && (this.OlY))
+      if ((SwipeBackLayout.c(SwipeBackLayout.this) != null) && (!SwipeBackLayout.c(SwipeBackLayout.this).isEmpty()) && (SwipeBackLayout.b(SwipeBackLayout.this).Wx == 1) && (SwipeBackLayout.j(SwipeBackLayout.this) >= SwipeBackLayout.k(SwipeBackLayout.this)) && (this.UaU))
       {
-        this.OlY = false;
+        this.UaU = false;
         paramView = SwipeBackLayout.c(SwipeBackLayout.this).iterator();
         while (paramView.hasNext()) {
           paramView.next();
@@ -763,17 +710,70 @@ public class SwipeBackLayout
         {
           SwipeBackLayout.a locala = (SwipeBackLayout.a)paramView.next();
           if ((locala instanceof SwipeBackLayout.b)) {
-            ((SwipeBackLayout.b)locala).buF();
+            ((SwipeBackLayout.b)locala).bQF();
           }
         }
       }
       AppMethodBeat.o(140877);
     }
+    
+    public final boolean pv(int paramInt)
+    {
+      int i = 1;
+      AppMethodBeat.i(140874);
+      int j = SwipeBackLayout.b(SwipeBackLayout.this).nf(SwipeBackLayout.a(SwipeBackLayout.this), paramInt);
+      if (j != 0)
+      {
+        if (SwipeBackLayout.b(SwipeBackLayout.this).nf(1, paramInt)) {
+          SwipeBackLayout.a(SwipeBackLayout.this, 1);
+        }
+        while ((SwipeBackLayout.c(SwipeBackLayout.this) != null) && (!SwipeBackLayout.c(SwipeBackLayout.this).isEmpty()))
+        {
+          Iterator localIterator = SwipeBackLayout.c(SwipeBackLayout.this).iterator();
+          while (localIterator.hasNext())
+          {
+            SwipeBackLayout.a locala = (SwipeBackLayout.a)localIterator.next();
+            SwipeBackLayout.d(SwipeBackLayout.this);
+            locala.LN();
+          }
+          if (SwipeBackLayout.b(SwipeBackLayout.this).nf(2, paramInt)) {
+            SwipeBackLayout.a(SwipeBackLayout.this, 2);
+          } else if (SwipeBackLayout.b(SwipeBackLayout.this).nf(8, paramInt)) {
+            SwipeBackLayout.a(SwipeBackLayout.this, 8);
+          }
+        }
+        this.UaU = true;
+      }
+      if ((SwipeBackLayout.a(SwipeBackLayout.this) == 1) || (SwipeBackLayout.a(SwipeBackLayout.this) == 2)) {
+        if (!SwipeBackLayout.b(SwipeBackLayout.this).hl(2, paramInt))
+        {
+          paramInt = 1;
+          i = paramInt;
+        }
+      }
+      for (;;)
+      {
+        boolean bool = SwipeBackLayout.e(SwipeBackLayout.this);
+        AppMethodBeat.o(140874);
+        return j & i & bool;
+        paramInt = 0;
+        break;
+        if (SwipeBackLayout.a(SwipeBackLayout.this) == 8)
+        {
+          if (SwipeBackLayout.b(SwipeBackLayout.this).hl(1, paramInt)) {
+            i = 0;
+          }
+        }
+        else if (SwipeBackLayout.a(SwipeBackLayout.this) != 11) {
+          i = 0;
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     me.imid.swipebacklayout.lib.SwipeBackLayout
  * JD-Core Version:    0.7.0.1
  */

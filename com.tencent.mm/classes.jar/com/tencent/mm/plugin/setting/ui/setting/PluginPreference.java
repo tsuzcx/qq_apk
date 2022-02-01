@@ -14,14 +14,14 @@ import com.tencent.mm.aj.e.a;
 import com.tencent.mm.aj.p;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.contact.c;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.preference.Preference;
 
@@ -29,15 +29,15 @@ public final class PluginPreference
   extends Preference
   implements e.a
 {
-  private MMActivity fNT;
-  private ImageView jgy;
-  int rty;
-  private String xit;
-  String yUs;
-  String yUt;
-  private int yUu;
-  private int yUv;
-  boolean yUw;
+  private String Bgn;
+  String CZi;
+  String CZj;
+  private int CZk;
+  private int CZl;
+  boolean CZm;
+  private MMActivity gte;
+  private ImageView keC;
+  int sUb;
   
   public PluginPreference(Context paramContext)
   {
@@ -53,32 +53,32 @@ public final class PluginPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73911);
-    this.xit = "";
-    this.yUu = -1;
-    this.yUv = 8;
-    this.yUw = false;
-    this.jgy = null;
-    this.rty = 255;
-    this.fNT = ((MMActivity)paramContext);
-    setLayoutResource(2131494804);
-    p.aEA().a(this);
+    this.Bgn = "";
+    this.CZk = -1;
+    this.CZl = 8;
+    this.CZm = false;
+    this.keC = null;
+    this.sUb = 255;
+    this.gte = ((MMActivity)paramContext);
+    setLayoutResource(2131495538);
+    p.aYn().a(this);
     AppMethodBeat.o(73911);
   }
   
-  private void dMP()
+  private void eNP()
   {
     AppMethodBeat.i(73914);
-    if (this.jgy != null) {
-      a.b.c(this.jgy, this.yUs);
+    if (this.keC != null) {
+      a.b.c(this.keC, this.CZi);
     }
     AppMethodBeat.o(73914);
   }
   
-  public final void DG(String paramString)
+  public final void Mr(String paramString)
   {
     AppMethodBeat.i(73917);
-    if ((this.yUs != null) && (this.yUs.equals(paramString))) {
-      new aq(Looper.getMainLooper()).post(new Runnable()
+    if ((this.CZi != null) && (this.CZi.equals(paramString))) {
+      new MMHandler(Looper.getMainLooper()).post(new Runnable()
       {
         public final void run()
         {
@@ -91,29 +91,29 @@ public final class PluginPreference
     AppMethodBeat.o(73917);
   }
   
-  public final boolean ays(String paramString)
+  public final boolean aNc(String paramString)
   {
     AppMethodBeat.i(73912);
-    paramString = ((l)g.ab(l.class)).azF().BH(paramString);
-    if ((paramString == null) || ((int)paramString.ght == 0))
+    paramString = ((l)g.af(l.class)).aSN().Kn(paramString);
+    if ((paramString == null) || ((int)paramString.gMZ == 0))
     {
-      ae.e("MicroMsg.PluginPreference", "plugin do not exist");
+      Log.e("MicroMsg.PluginPreference", "plugin do not exist");
       AppMethodBeat.o(73912);
       return false;
     }
-    this.yUs = paramString.field_username;
-    this.yUt = paramString.adF();
-    setKey("settings_plugins_list_#" + this.yUs);
+    this.CZi = paramString.field_username;
+    this.CZj = paramString.arI();
+    setKey("settings_plugins_list_#" + this.CZi);
     AppMethodBeat.o(73912);
     return true;
   }
   
-  public final boolean jh(String paramString1, String paramString2)
+  public final boolean jT(String paramString1, String paramString2)
   {
     AppMethodBeat.i(73913);
-    this.yUs = paramString1;
-    this.yUt = paramString2;
-    setKey("settings_plugins_list_#" + this.yUs);
+    this.CZi = paramString1;
+    this.CZj = paramString2;
+    setKey("settings_plugins_list_#" + this.CZi);
     AppMethodBeat.o(73913);
     return true;
   }
@@ -122,20 +122,20 @@ public final class PluginPreference
   {
     AppMethodBeat.i(73916);
     super.onBindView(paramView);
-    this.jgy = ((ImageView)paramView.findViewById(2131300943));
-    this.jgy.setAlpha(this.rty);
-    TextView localTextView = (TextView)paramView.findViewById(2131305745);
+    this.keC = ((ImageView)paramView.findViewById(2131302573));
+    this.keC.setAlpha(this.sUb);
+    TextView localTextView = (TextView)paramView.findViewById(2131309014);
     if (localTextView != null)
     {
-      localTextView.setVisibility(this.yUv);
-      localTextView.setText(this.xit);
-      if (this.yUu != -1) {
-        localTextView.setBackgroundDrawable(a.l(this.fNT, this.yUu));
+      localTextView.setVisibility(this.CZl);
+      localTextView.setText(this.Bgn);
+      if (this.CZk != -1) {
+        localTextView.setBackgroundDrawable(a.l(this.gte, this.CZk));
       }
     }
-    paramView = (TextView)paramView.findViewById(2131302741);
+    paramView = (TextView)paramView.findViewById(2131305309);
     if (paramView != null) {
-      if (!this.yUw) {
+      if (!this.CZm) {
         break label125;
       }
     }
@@ -143,7 +143,7 @@ public final class PluginPreference
     for (int i = 0;; i = 8)
     {
       paramView.setVisibility(i);
-      dMP();
+      eNP();
       AppMethodBeat.o(73916);
       return;
     }
@@ -154,16 +154,16 @@ public final class PluginPreference
     AppMethodBeat.i(73915);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131494839, localViewGroup);
+    localLayoutInflater.inflate(2131495574, localViewGroup);
     AppMethodBeat.o(73915);
     return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.PluginPreference
  * JD-Core Version:    0.7.0.1
  */

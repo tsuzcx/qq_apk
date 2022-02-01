@@ -6,11 +6,11 @@ import android.view.WindowInsets;
 import com.tencent.luggage.game.d.a.a.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.n;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import com.tencent.mm.plugin.appbrand.platform.window.a.o;
-import com.tencent.mm.plugin.appbrand.r;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.am;
+import com.tencent.mm.plugin.appbrand.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.ap;
 
 public class a
 {
@@ -48,26 +48,26 @@ public class a
     }
   }
   
-  public static int b(com.tencent.luggage.sdk.b.a.c.c paramc)
+  public static int b(com.tencent.luggage.sdk.b.a.c.d paramd)
   {
-    AppMethodBeat.i(220736);
-    if ((paramc.Eq() != null) && (paramc.Q(com.tencent.luggage.game.d.a.a.a.class) != null)) {
-      if (((b)paramc.Q(b.class) != null) && ((paramc.jDa instanceof o)))
+    AppMethodBeat.i(222892);
+    if ((paramd.NP() != null) && (paramd.S(com.tencent.luggage.game.d.a.a.a.class) != null)) {
+      if (((b)paramd.S(b.class) != null) && ((paramd.kEb instanceof o)))
       {
         int i;
         if (Build.VERSION.SDK_INT >= 21)
         {
-          paramc = paramc.au(Activity.class);
-          if (paramc != null)
+          paramd = paramd.ay(Activity.class);
+          if (paramd != null)
           {
-            paramc = am.bi(paramc);
-            if (paramc != null)
+            paramd = ap.bo(paramd);
+            if (paramd != null)
             {
-              i = paramc.getStableInsetTop();
+              i = paramd.getStableInsetTop();
               if (i > 0)
               {
-                i = g.vM(i);
-                AppMethodBeat.o(220736);
+                i = g.zB(i);
+                AppMethodBeat.o(222892);
                 return i;
               }
             }
@@ -75,21 +75,21 @@ public class a
         }
         else
         {
-          i = n.B(paramc.getContext(), 0);
+          i = n.D(paramd.getContext(), 0);
           if (i > 0)
           {
-            i = g.vM(i);
-            AppMethodBeat.o(220736);
+            i = g.zB(i);
+            AppMethodBeat.o(222892);
             return i;
           }
         }
       }
       else
       {
-        ae.printErrStackTrace("MicroMsg.WAGameCommonUtil", new com.tencent.luggage.game.d.a.a.c(), "hy: not game service", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.WAGameCommonUtil", new com.tencent.luggage.game.d.a.a.d(), "hy: not game service", new Object[0]);
       }
     }
-    AppMethodBeat.o(220736);
+    AppMethodBeat.o(222892);
     return 0;
   }
   
@@ -100,7 +100,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.game.g.a
  * JD-Core Version:    0.7.0.1
  */

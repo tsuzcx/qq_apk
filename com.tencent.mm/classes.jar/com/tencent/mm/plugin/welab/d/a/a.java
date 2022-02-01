@@ -3,13 +3,13 @@ package com.tencent.mm.plugin.welab.d.a;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.dw;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.c.ec;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -18,221 +18,221 @@ import java.util.List;
 import java.util.Map;
 
 public class a
-  extends dw
+  extends ec
 {
-  private static final List<String> EQq;
-  public static c.a info;
-  private Map<String, Field> EQp;
+  private static final List<String> JGd;
+  public static IAutoDBItem.MAutoDBInfo info;
+  private Map<String, Field> JGc;
   
   static
   {
     AppMethodBeat.i(146269);
-    c.a locala = new c.a();
-    locala.IBL = new Field[46];
-    locala.columns = new String[47];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[46];
+    localMAutoDBInfo.columns = new String[47];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "LabsAppId";
-    locala.IBN.put("LabsAppId", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "LabsAppId";
+    localMAutoDBInfo.colsMap.put("LabsAppId", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" LabsAppId TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "LabsAppId";
-    locala.columns[1] = "expId";
-    locala.IBN.put("expId", "TEXT default '' ");
+    localMAutoDBInfo.primaryKey = "LabsAppId";
+    localMAutoDBInfo.columns[1] = "expId";
+    localMAutoDBInfo.colsMap.put("expId", "TEXT default '' ");
     localStringBuilder.append(" expId TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[2] = "Type";
-    locala.IBN.put("Type", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[2] = "Type";
+    localMAutoDBInfo.colsMap.put("Type", "INTEGER default '0' ");
     localStringBuilder.append(" Type INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[3] = "BizType";
-    locala.IBN.put("BizType", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[3] = "BizType";
+    localMAutoDBInfo.colsMap.put("BizType", "INTEGER default '0' ");
     localStringBuilder.append(" BizType INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[4] = "Switch";
-    locala.IBN.put("Switch", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[4] = "Switch";
+    localMAutoDBInfo.colsMap.put("Switch", "INTEGER default '0' ");
     localStringBuilder.append(" Switch INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[5] = "AllVer";
-    locala.IBN.put("AllVer", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[5] = "AllVer";
+    localMAutoDBInfo.colsMap.put("AllVer", "INTEGER default '0' ");
     localStringBuilder.append(" AllVer INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[6] = "DetailURL";
-    locala.IBN.put("DetailURL", "TEXT");
+    localMAutoDBInfo.columns[6] = "DetailURL";
+    localMAutoDBInfo.colsMap.put("DetailURL", "TEXT");
     localStringBuilder.append(" DetailURL TEXT");
     localStringBuilder.append(", ");
-    locala.columns[7] = "WeAppUser";
-    locala.IBN.put("WeAppUser", "TEXT");
+    localMAutoDBInfo.columns[7] = "WeAppUser";
+    localMAutoDBInfo.colsMap.put("WeAppUser", "TEXT");
     localStringBuilder.append(" WeAppUser TEXT");
     localStringBuilder.append(", ");
-    locala.columns[8] = "WeAppPath";
-    locala.IBN.put("WeAppPath", "TEXT");
+    localMAutoDBInfo.columns[8] = "WeAppPath";
+    localMAutoDBInfo.colsMap.put("WeAppPath", "TEXT");
     localStringBuilder.append(" WeAppPath TEXT");
     localStringBuilder.append(", ");
-    locala.columns[9] = "Pos";
-    locala.IBN.put("Pos", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[9] = "Pos";
+    localMAutoDBInfo.colsMap.put("Pos", "INTEGER default '0' ");
     localStringBuilder.append(" Pos INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[10] = "TitleKey_android";
-    locala.IBN.put("TitleKey_android", "TEXT");
+    localMAutoDBInfo.columns[10] = "TitleKey_android";
+    localMAutoDBInfo.colsMap.put("TitleKey_android", "TEXT");
     localStringBuilder.append(" TitleKey_android TEXT");
     localStringBuilder.append(", ");
-    locala.columns[11] = "Title_cn";
-    locala.IBN.put("Title_cn", "TEXT");
+    localMAutoDBInfo.columns[11] = "Title_cn";
+    localMAutoDBInfo.colsMap.put("Title_cn", "TEXT");
     localStringBuilder.append(" Title_cn TEXT");
     localStringBuilder.append(", ");
-    locala.columns[12] = "Title_hk";
-    locala.IBN.put("Title_hk", "TEXT");
+    localMAutoDBInfo.columns[12] = "Title_hk";
+    localMAutoDBInfo.colsMap.put("Title_hk", "TEXT");
     localStringBuilder.append(" Title_hk TEXT");
     localStringBuilder.append(", ");
-    locala.columns[13] = "Title_tw";
-    locala.IBN.put("Title_tw", "TEXT");
+    localMAutoDBInfo.columns[13] = "Title_tw";
+    localMAutoDBInfo.colsMap.put("Title_tw", "TEXT");
     localStringBuilder.append(" Title_tw TEXT");
     localStringBuilder.append(", ");
-    locala.columns[14] = "Title_en";
-    locala.IBN.put("Title_en", "TEXT");
+    localMAutoDBInfo.columns[14] = "Title_en";
+    localMAutoDBInfo.colsMap.put("Title_en", "TEXT");
     localStringBuilder.append(" Title_en TEXT");
     localStringBuilder.append(", ");
-    locala.columns[15] = "Desc_cn";
-    locala.IBN.put("Desc_cn", "TEXT");
+    localMAutoDBInfo.columns[15] = "Desc_cn";
+    localMAutoDBInfo.colsMap.put("Desc_cn", "TEXT");
     localStringBuilder.append(" Desc_cn TEXT");
     localStringBuilder.append(", ");
-    locala.columns[16] = "Desc_hk";
-    locala.IBN.put("Desc_hk", "TEXT");
+    localMAutoDBInfo.columns[16] = "Desc_hk";
+    localMAutoDBInfo.colsMap.put("Desc_hk", "TEXT");
     localStringBuilder.append(" Desc_hk TEXT");
     localStringBuilder.append(", ");
-    locala.columns[17] = "Desc_tw";
-    locala.IBN.put("Desc_tw", "TEXT");
+    localMAutoDBInfo.columns[17] = "Desc_tw";
+    localMAutoDBInfo.colsMap.put("Desc_tw", "TEXT");
     localStringBuilder.append(" Desc_tw TEXT");
     localStringBuilder.append(", ");
-    locala.columns[18] = "Desc_en";
-    locala.IBN.put("Desc_en", "TEXT");
+    localMAutoDBInfo.columns[18] = "Desc_en";
+    localMAutoDBInfo.colsMap.put("Desc_en", "TEXT");
     localStringBuilder.append(" Desc_en TEXT");
     localStringBuilder.append(", ");
-    locala.columns[19] = "Introduce_cn";
-    locala.IBN.put("Introduce_cn", "TEXT");
+    localMAutoDBInfo.columns[19] = "Introduce_cn";
+    localMAutoDBInfo.colsMap.put("Introduce_cn", "TEXT");
     localStringBuilder.append(" Introduce_cn TEXT");
     localStringBuilder.append(", ");
-    locala.columns[20] = "Introduce_hk";
-    locala.IBN.put("Introduce_hk", "TEXT");
+    localMAutoDBInfo.columns[20] = "Introduce_hk";
+    localMAutoDBInfo.colsMap.put("Introduce_hk", "TEXT");
     localStringBuilder.append(" Introduce_hk TEXT");
     localStringBuilder.append(", ");
-    locala.columns[21] = "Introduce_tw";
-    locala.IBN.put("Introduce_tw", "TEXT");
+    localMAutoDBInfo.columns[21] = "Introduce_tw";
+    localMAutoDBInfo.colsMap.put("Introduce_tw", "TEXT");
     localStringBuilder.append(" Introduce_tw TEXT");
     localStringBuilder.append(", ");
-    locala.columns[22] = "Introduce_en";
-    locala.IBN.put("Introduce_en", "TEXT");
+    localMAutoDBInfo.columns[22] = "Introduce_en";
+    localMAutoDBInfo.colsMap.put("Introduce_en", "TEXT");
     localStringBuilder.append(" Introduce_en TEXT");
     localStringBuilder.append(", ");
-    locala.columns[23] = "starttime";
-    locala.IBN.put("starttime", "LONG");
+    localMAutoDBInfo.columns[23] = "starttime";
+    localMAutoDBInfo.colsMap.put("starttime", "LONG");
     localStringBuilder.append(" starttime LONG");
     localStringBuilder.append(", ");
-    locala.columns[24] = "endtime";
-    locala.IBN.put("endtime", "LONG");
+    localMAutoDBInfo.columns[24] = "endtime";
+    localMAutoDBInfo.colsMap.put("endtime", "LONG");
     localStringBuilder.append(" endtime LONG");
     localStringBuilder.append(", ");
-    locala.columns[25] = "sequence";
-    locala.IBN.put("sequence", "LONG");
+    localMAutoDBInfo.columns[25] = "sequence";
+    localMAutoDBInfo.colsMap.put("sequence", "LONG");
     localStringBuilder.append(" sequence LONG");
     localStringBuilder.append(", ");
-    locala.columns[26] = "prioritylevel";
-    locala.IBN.put("prioritylevel", "INTEGER");
+    localMAutoDBInfo.columns[26] = "prioritylevel";
+    localMAutoDBInfo.colsMap.put("prioritylevel", "INTEGER");
     localStringBuilder.append(" prioritylevel INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[27] = "status";
-    locala.IBN.put("status", "INTEGER");
+    localMAutoDBInfo.columns[27] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[28] = "ThumbUrl_cn";
-    locala.IBN.put("ThumbUrl_cn", "TEXT");
+    localMAutoDBInfo.columns[28] = "ThumbUrl_cn";
+    localMAutoDBInfo.colsMap.put("ThumbUrl_cn", "TEXT");
     localStringBuilder.append(" ThumbUrl_cn TEXT");
     localStringBuilder.append(", ");
-    locala.columns[29] = "ThumbUrl_hk";
-    locala.IBN.put("ThumbUrl_hk", "TEXT");
+    localMAutoDBInfo.columns[29] = "ThumbUrl_hk";
+    localMAutoDBInfo.colsMap.put("ThumbUrl_hk", "TEXT");
     localStringBuilder.append(" ThumbUrl_hk TEXT");
     localStringBuilder.append(", ");
-    locala.columns[30] = "ThumbUrl_tw";
-    locala.IBN.put("ThumbUrl_tw", "TEXT");
+    localMAutoDBInfo.columns[30] = "ThumbUrl_tw";
+    localMAutoDBInfo.colsMap.put("ThumbUrl_tw", "TEXT");
     localStringBuilder.append(" ThumbUrl_tw TEXT");
     localStringBuilder.append(", ");
-    locala.columns[31] = "ThumbUrl_en";
-    locala.IBN.put("ThumbUrl_en", "TEXT");
+    localMAutoDBInfo.columns[31] = "ThumbUrl_en";
+    localMAutoDBInfo.colsMap.put("ThumbUrl_en", "TEXT");
     localStringBuilder.append(" ThumbUrl_en TEXT");
     localStringBuilder.append(", ");
-    locala.columns[32] = "ImgUrl_android_cn";
-    locala.IBN.put("ImgUrl_android_cn", "TEXT");
+    localMAutoDBInfo.columns[32] = "ImgUrl_android_cn";
+    localMAutoDBInfo.colsMap.put("ImgUrl_android_cn", "TEXT");
     localStringBuilder.append(" ImgUrl_android_cn TEXT");
     localStringBuilder.append(", ");
-    locala.columns[33] = "ImgUrl_android_hk";
-    locala.IBN.put("ImgUrl_android_hk", "TEXT");
+    localMAutoDBInfo.columns[33] = "ImgUrl_android_hk";
+    localMAutoDBInfo.colsMap.put("ImgUrl_android_hk", "TEXT");
     localStringBuilder.append(" ImgUrl_android_hk TEXT");
     localStringBuilder.append(", ");
-    locala.columns[34] = "ImgUrl_android_tw";
-    locala.IBN.put("ImgUrl_android_tw", "TEXT");
+    localMAutoDBInfo.columns[34] = "ImgUrl_android_tw";
+    localMAutoDBInfo.colsMap.put("ImgUrl_android_tw", "TEXT");
     localStringBuilder.append(" ImgUrl_android_tw TEXT");
     localStringBuilder.append(", ");
-    locala.columns[35] = "ImgUrl_android_en";
-    locala.IBN.put("ImgUrl_android_en", "TEXT");
+    localMAutoDBInfo.columns[35] = "ImgUrl_android_en";
+    localMAutoDBInfo.colsMap.put("ImgUrl_android_en", "TEXT");
     localStringBuilder.append(" ImgUrl_android_en TEXT");
     localStringBuilder.append(", ");
-    locala.columns[36] = "RedPoint";
-    locala.IBN.put("RedPoint", "INTEGER");
+    localMAutoDBInfo.columns[36] = "RedPoint";
+    localMAutoDBInfo.colsMap.put("RedPoint", "INTEGER");
     localStringBuilder.append(" RedPoint INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[37] = "WeAppDebugMode";
-    locala.IBN.put("WeAppDebugMode", "INTEGER");
+    localMAutoDBInfo.columns[37] = "WeAppDebugMode";
+    localMAutoDBInfo.colsMap.put("WeAppDebugMode", "INTEGER");
     localStringBuilder.append(" WeAppDebugMode INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[38] = "idkey";
-    locala.IBN.put("idkey", "INTEGER");
+    localMAutoDBInfo.columns[38] = "idkey";
+    localMAutoDBInfo.colsMap.put("idkey", "INTEGER");
     localStringBuilder.append(" idkey INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[39] = "idkeyValue";
-    locala.IBN.put("idkeyValue", "INTEGER");
+    localMAutoDBInfo.columns[39] = "idkeyValue";
+    localMAutoDBInfo.colsMap.put("idkeyValue", "INTEGER");
     localStringBuilder.append(" idkeyValue INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[40] = "Icon";
-    locala.IBN.put("Icon", "TEXT");
+    localMAutoDBInfo.columns[40] = "Icon";
+    localMAutoDBInfo.colsMap.put("Icon", "TEXT");
     localStringBuilder.append(" Icon TEXT");
     localStringBuilder.append(", ");
-    locala.columns[41] = "ImgUrl_cn";
-    locala.IBN.put("ImgUrl_cn", "TEXT");
+    localMAutoDBInfo.columns[41] = "ImgUrl_cn";
+    localMAutoDBInfo.colsMap.put("ImgUrl_cn", "TEXT");
     localStringBuilder.append(" ImgUrl_cn TEXT");
     localStringBuilder.append(", ");
-    locala.columns[42] = "ImgUrl_hk";
-    locala.IBN.put("ImgUrl_hk", "TEXT");
+    localMAutoDBInfo.columns[42] = "ImgUrl_hk";
+    localMAutoDBInfo.colsMap.put("ImgUrl_hk", "TEXT");
     localStringBuilder.append(" ImgUrl_hk TEXT");
     localStringBuilder.append(", ");
-    locala.columns[43] = "ImgUrl_tw";
-    locala.IBN.put("ImgUrl_tw", "TEXT");
+    localMAutoDBInfo.columns[43] = "ImgUrl_tw";
+    localMAutoDBInfo.colsMap.put("ImgUrl_tw", "TEXT");
     localStringBuilder.append(" ImgUrl_tw TEXT");
     localStringBuilder.append(", ");
-    locala.columns[44] = "ImgUrl_en";
-    locala.IBN.put("ImgUrl_en", "TEXT");
+    localMAutoDBInfo.columns[44] = "ImgUrl_en";
+    localMAutoDBInfo.colsMap.put("ImgUrl_en", "TEXT");
     localStringBuilder.append(" ImgUrl_en TEXT");
     localStringBuilder.append(", ");
-    locala.columns[45] = "bItemFromXExpt";
-    locala.IBN.put("bItemFromXExpt", "INTEGER");
+    localMAutoDBInfo.columns[45] = "bItemFromXExpt";
+    localMAutoDBInfo.colsMap.put("bItemFromXExpt", "INTEGER");
     localStringBuilder.append(" bItemFromXExpt INTEGER");
-    locala.columns[46] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    EQq = Arrays.asList(new String[] { "_cn", "_hk", "_tw", "_en" });
+    localMAutoDBInfo.columns[46] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    JGd = Arrays.asList(new String[] { "_cn", "_hk", "_tw", "_en" });
     AppMethodBeat.o(146269);
   }
   
   public a()
   {
     AppMethodBeat.i(146255);
-    this.EQp = new HashMap();
+    this.JGc = new HashMap();
     AppMethodBeat.o(146255);
   }
   
-  private String VU(String paramString)
+  private String afQ(String paramString)
   {
     AppMethodBeat.i(146265);
-    Object localObject = (Field)this.EQp.get(paramString);
+    Object localObject = (Field)this.JGc.get(paramString);
     if (localObject == null) {
       try
       {
@@ -246,7 +246,7 @@ public class a
         {
           try
           {
-            this.EQp.put(paramString, localObject);
+            this.JGc.put(paramString, localObject);
             if (localObject == null) {
               continue;
             }
@@ -263,10 +263,10 @@ public class a
           }
           catch (IllegalAccessException paramString)
           {
-            ae.w("LabAppInfo", bu.o(paramString));
+            Log.w("LabAppInfo", Util.stackTraceToString(paramString));
           }
           paramString = paramString;
-          ae.w("LabAppInfo", bu.o(paramString));
+          Log.w("LabAppInfo", Util.stackTraceToString(paramString));
         }
         AppMethodBeat.o(146265);
         return "";
@@ -274,14 +274,14 @@ public class a
     }
   }
   
-  private String aLs(String paramString)
+  private String bbI(String paramString)
   {
     AppMethodBeat.i(146264);
-    Iterator localIterator = EQq.iterator();
+    Iterator localIterator = JGd.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      str = VU(paramString + str);
+      str = afQ(paramString + str);
       if (!TextUtils.isEmpty(str))
       {
         AppMethodBeat.o(146264);
@@ -292,55 +292,55 @@ public class a
     return "";
   }
   
-  private String lp(String paramString1, String paramString2)
+  private String mo(String paramString1, String paramString2)
   {
     AppMethodBeat.i(146263);
-    paramString2 = VU(paramString1 + paramString2);
+    paramString2 = afQ(paramString1 + paramString2);
     if (!TextUtils.isEmpty(paramString2))
     {
       AppMethodBeat.o(146263);
       return paramString2;
     }
-    paramString1 = aLs(paramString1);
+    paramString1 = bbI(paramString1);
     AppMethodBeat.o(146263);
     return paramString1;
   }
   
-  public final String aLr(String paramString)
+  public final String bbH(String paramString)
   {
     AppMethodBeat.i(146262);
-    String str1 = VU(paramString + "Key_android");
+    String str1 = afQ(paramString + "Key_android");
     if (!TextUtils.isEmpty(str1))
     {
-      String str2 = ak.getPackageName();
-      int i = ak.getResources().getIdentifier(str1, "string", str2);
-      str1 = ak.getResources().getString(i);
+      String str2 = MMApplicationContext.getPackageName();
+      int i = MMApplicationContext.getResources().getIdentifier(str1, "string", str2);
+      str1 = MMApplicationContext.getResources().getString(i);
       if (!TextUtils.isEmpty(str1))
       {
         AppMethodBeat.o(146262);
         return str1;
       }
     }
-    str1 = ad.iR(ak.getContext());
-    if (ad.foj())
+    str1 = LocaleUtil.getCurrentLanguage(MMApplicationContext.getContext());
+    if (LocaleUtil.isSimplifiedChineseAppLang())
     {
-      paramString = lp(paramString, "_cn");
+      paramString = mo(paramString, "_cn");
       AppMethodBeat.o(146262);
       return paramString;
     }
     if ("zh_HK".equals(str1))
     {
-      paramString = lp(paramString, "_hk");
+      paramString = mo(paramString, "_hk");
       AppMethodBeat.o(146262);
       return paramString;
     }
     if ("zh_TW".equals(str1))
     {
-      paramString = lp(paramString, "_tw");
+      paramString = mo(paramString, "_tw");
       AppMethodBeat.o(146262);
       return paramString;
     }
-    paramString = lp(paramString, "_en");
+    paramString = mo(paramString, "_en");
     AppMethodBeat.o(146262);
     return paramString;
   }
@@ -363,7 +363,12 @@ public class a
     return false;
   }
   
-  public final boolean faj()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
+  }
+  
+  public final boolean gjo()
   {
     AppMethodBeat.i(146267);
     if ((isRunning()) && ((this.field_Switch == 2) || (this.field_Switch == 1)))
@@ -375,19 +380,14 @@ public class a
     return false;
   }
   
-  public final boolean fak()
+  public final boolean gjp()
   {
     return this.field_bItemFromXExpt == 1;
   }
   
-  public final boolean fal()
+  public final boolean gjq()
   {
     return this.field_status == 1;
-  }
-  
-  public c.a getDBInfo()
-  {
-    return info;
   }
   
   public int hashCode()
@@ -450,7 +450,7 @@ public class a
   {
     AppMethodBeat.i(146268);
     if ((this.field_idkey > 0) && (this.field_idkeyValue >= 0)) {
-      g.yxI.idkeyStat(this.field_idkey, this.field_idkeyValue, 1L, false);
+      h.CyF.idkeyStat(this.field_idkey, this.field_idkeyValue, 1L, false);
     }
     AppMethodBeat.o(146268);
   }
@@ -465,7 +465,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.welab.d.a.a
  * JD-Core Version:    0.7.0.1
  */

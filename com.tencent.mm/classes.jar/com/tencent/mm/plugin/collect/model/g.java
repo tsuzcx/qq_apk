@@ -6,27 +6,29 @@ import android.media.MediaPlayer.OnErrorListener;
 import android.os.Build.VERSION;
 import android.os.HandlerThread;
 import android.os.Looper;
-import com.tencent.e.c.d;
+import com.tencent.f.c.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.cg;
-import com.tencent.mm.g.a.cg.a;
-import com.tencent.mm.g.b.a.hd;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.compatible.b.k;
+import com.tencent.mm.g.a.ci;
+import com.tencent.mm.g.a.ci.a;
+import com.tencent.mm.g.b.a.ku;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.plugin.collect.model.voice.a.c;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.protocal.protobuf.uq;
-import com.tencent.mm.protocal.protobuf.uz;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.protocal.protobuf.vx;
+import com.tencent.mm.protocal.protobuf.wg;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.vfs.s;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -37,42 +39,42 @@ import java.util.UUID;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public final class g
-  extends c<cg>
-  implements f, a.c
+  extends IListener<ci>
+  implements com.tencent.mm.ak.i, a.c
 {
-  private static HandlerThread pgJ;
-  private static final com.tencent.mm.bw.b pgy;
-  private boolean lVw;
-  private MediaPlayer pgA;
-  public ConcurrentLinkedQueue<c> pgB;
-  private int pgC;
-  private int pgD;
-  private long pgE;
-  private WeakReference<ArrayList<String>> pgF;
-  private hd pgG;
-  private Map<String, cg> pgH;
-  private final long pgI;
-  private MediaPlayer pgz;
+  private static final com.tencent.mm.bw.b qvJ;
+  private static HandlerThread qvU;
+  private boolean gVd;
+  private MediaPlayer qvK;
+  private MediaPlayer qvL;
+  public ConcurrentLinkedQueue<c> qvM;
+  private int qvN;
+  private int qvO;
+  private long qvP;
+  private WeakReference<ArrayList<String>> qvQ;
+  private ku qvR;
+  private Map<String, ci> qvS;
+  private final long qvT;
   
   static
   {
     AppMethodBeat.i(63818);
-    pgy = com.tencent.mm.bw.b.aPw("元");
-    pgJ = d.hh("syncCreatePlayer", 5);
+    qvJ = com.tencent.mm.bw.b.bfZ("元");
+    qvU = d.hB("syncCreatePlayer", 5);
     AppMethodBeat.o(63818);
   }
   
   public g()
   {
     AppMethodBeat.i(63797);
-    this.lVw = false;
-    this.pgH = new HashMap();
-    this.pgI = 10000L;
-    this.__eventId = cg.class.getName().hashCode();
+    this.gVd = false;
+    this.qvS = new HashMap();
+    this.qvT = 10000L;
+    this.__eventId = ci.class.getName().hashCode();
     AppMethodBeat.o(63797);
   }
   
-  private static int Bu(int paramInt)
+  private static int Fc(int paramInt)
   {
     int i = 2;
     if (paramInt == 1) {
@@ -84,120 +86,120 @@ public final class g
   private void a(int paramInt1, String paramString1, int paramInt2, String paramString2, int paramInt3, String paramString3, int paramInt4)
   {
     AppMethodBeat.i(63810);
-    this.pgG = new hd();
-    this.pgG.dWt = paramInt1;
-    this.pgG.qs(paramString1);
-    if (!bu.jB(paramInt4, 0)) {
-      this.pgG.etl = paramInt4;
+    this.qvR = new ku();
+    this.qvR.erW = paramInt1;
+    this.qvR.ym(paramString1);
+    if (!Util.isEqual(paramInt4, 0)) {
+      this.qvR.eXr = paramInt4;
     }
-    this.pgG.ebQ = paramInt2;
-    this.pgG.qt(paramString2);
-    this.pgG.etp = paramInt3;
-    if (bu.jB(paramInt1, 6)) {
-      this.pgG.qu(paramString3);
+    this.qvR.evl = paramInt2;
+    this.qvR.yn(paramString2);
+    this.qvR.eXv = paramInt3;
+    if (Util.isEqual(paramInt1, 6)) {
+      this.qvR.yo(paramString3);
     }
-    this.pgG.aLH();
+    this.qvR.bfK();
     AppMethodBeat.o(63810);
   }
   
   private void a(int paramInt1, byte[] paramArrayOfByte, int paramInt2, String paramString, int paramInt3, boolean paramBoolean)
   {
     AppMethodBeat.i(63807);
-    Object localObject = new com.tencent.mm.vfs.k(cbF());
-    if ((!((com.tencent.mm.vfs.k)localObject).exists()) && (!((com.tencent.mm.vfs.k)localObject).mkdirs()))
+    Object localObject = new com.tencent.mm.vfs.o(czz());
+    if ((!((com.tencent.mm.vfs.o)localObject).exists()) && (!((com.tencent.mm.vfs.o)localObject).mkdirs()))
     {
-      ae.i("MicroMsg.F2fRcvVoiceListener", "mk dir fail");
+      Log.i("MicroMsg.F2fRcvVoiceListener", "mk dir fail");
       AppMethodBeat.o(63807);
       return;
     }
-    localObject = cbF() + UUID.randomUUID().toString() + ".tmp";
-    ae.i("MicroMsg.F2fRcvVoiceListener", "fileName: %s", new Object[] { localObject });
-    if (n((String)localObject, paramArrayOfByte))
+    localObject = czz() + UUID.randomUUID().toString() + ".tmp";
+    Log.i("MicroMsg.F2fRcvVoiceListener", "fileName: %s", new Object[] { localObject });
+    if (m((String)localObject, paramArrayOfByte))
     {
       paramArrayOfByte = new c((byte)0);
       paramArrayOfByte.fileName = ((String)localObject);
-      paramArrayOfByte.dui = paramInt2;
-      paramArrayOfByte.pgR = paramInt1;
-      paramArrayOfByte.doh = paramString;
-      paramArrayOfByte.pgS = paramInt3;
-      paramArrayOfByte.pgT = paramBoolean;
-      this.pgB.add(paramArrayOfByte);
-      cbC();
+      paramArrayOfByte.dLt = paramInt2;
+      paramArrayOfByte.qwa = paramInt1;
+      paramArrayOfByte.dFw = paramString;
+      paramArrayOfByte.qwb = paramInt3;
+      paramArrayOfByte.qwc = paramBoolean;
+      this.qvM.add(paramArrayOfByte);
+      czw();
       AppMethodBeat.o(63807);
       return;
     }
-    ae.i("MicroMsg.F2fRcvVoiceListener", "save file fail");
+    Log.i("MicroMsg.F2fRcvVoiceListener", "save file fail");
     AppMethodBeat.o(63807);
   }
   
-  private void a(cg paramcg, boolean paramBoolean1, boolean paramBoolean2)
+  private void a(ci paramci, boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(63798);
-    ae.i("MicroMsg.F2fRcvVoiceListener", "callbackImp() tradeNo:%s useOffline:%s", new Object[] { paramcg.doe.doh, Boolean.valueOf(paramBoolean1) });
-    long l = paramcg.doe.gW;
-    if (paramcg.doe.doi.equals("wx_f2f"))
+    Log.i("MicroMsg.F2fRcvVoiceListener", "callbackImp() tradeNo:%s useOffline:%s", new Object[] { paramci.dFt.dFw, Boolean.valueOf(paramBoolean1) });
+    long l = paramci.dFt.gY;
+    if (paramci.dFt.dFx.equals("wx_f2f"))
     {
-      com.tencent.mm.plugin.collect.a.a.cbv();
-      boolean bool = com.tencent.mm.plugin.collect.a.a.cbx();
-      ae.i("MicroMsg.F2fRcvVoiceListener", "on recv, fee: %s, voice open: %B", new Object[] { Integer.valueOf(paramcg.doe.dof), Boolean.valueOf(bool) });
-      if ((paramBoolean2) || (!aaF(paramcg.doe.doh)))
+      com.tencent.mm.plugin.collect.a.a.czp();
+      boolean bool = com.tencent.mm.plugin.collect.a.a.czr();
+      Log.i("MicroMsg.F2fRcvVoiceListener", "on recv, fee: %s, voice open: %B", new Object[] { Integer.valueOf(paramci.dFt.dFu), Boolean.valueOf(bool) });
+      if ((paramBoolean2) || (!akL(paramci.dFt.dFw)))
       {
-        if (paramcg.doe.doj == 0) {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(699L, 8L, 1L, false);
+        if (paramci.dFt.source == 0) {
+          h.CyF.idkeyStat(699L, 8L, 1L, false);
         }
         for (;;)
         {
-          if ((paramBoolean1) && (!com.tencent.mm.plugin.collect.model.voice.a.phJ) && (!bu.isNullOrNil(paramcg.doe.dok)))
+          if ((paramBoolean1) && (!com.tencent.mm.plugin.collect.model.voice.a.qwT) && (!Util.isNullOrNil(paramci.dFt.dFy)))
           {
-            ae.i("MicroMsg.F2fRcvVoiceListener", "init tts");
-            com.tencent.mm.plugin.collect.model.voice.a.cbM().jK(false);
+            Log.i("MicroMsg.F2fRcvVoiceListener", "init tts");
+            com.tencent.mm.plugin.collect.model.voice.a.czG().kN(false);
           }
-          if ((!paramBoolean1) || (!com.tencent.mm.plugin.collect.model.voice.a.phJ) || (bu.isNullOrNil(paramcg.doe.dok))) {
+          if ((!paramBoolean1) || (!com.tencent.mm.plugin.collect.model.voice.a.qwT) || (Util.isNullOrNil(paramci.dFt.dFy))) {
             break;
           }
-          ae.i("MicroMsg.F2fRcvVoiceListener", "useOffline");
-          this.pgH.put(paramcg.doe.doh, paramcg);
-          com.tencent.mm.plugin.collect.model.voice.a.cbM().a(paramcg);
+          Log.i("MicroMsg.F2fRcvVoiceListener", "useOffline");
+          this.qvS.put(paramci.dFt.dFw, paramci);
+          com.tencent.mm.plugin.collect.model.voice.a.czG().a(paramci);
           AppMethodBeat.o(63798);
           return;
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(699L, 9L, 1L, false);
+          h.CyF.idkeyStat(699L, 9L, 1L, false);
         }
-        ae.i("MicroMsg.F2fRcvVoiceListener", "useOnline");
-        paramcg = new i(paramcg.doe.dof, pgy, paramcg.doe.doh, paramcg.doe.doj, l);
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajQ().gDv.a(paramcg, 0);
+        Log.i("MicroMsg.F2fRcvVoiceListener", "useOnline");
+        paramci = new i(paramci.dFt.dFu, qvJ, paramci.dFt.dFw, paramci.dFt.source, l);
+        com.tencent.mm.kernel.g.aAi();
+        com.tencent.mm.kernel.g.aAg().hqi.a(paramci, 0);
       }
       AppMethodBeat.o(63798);
       return;
     }
-    if (paramcg.doe.doi.equals("wx_md"))
+    if (paramci.dFt.dFx.equals("wx_md"))
     {
-      if ((paramBoolean1) && (com.tencent.mm.plugin.collect.model.voice.a.phJ) && (!bu.isNullOrNil(paramcg.doe.dok)))
+      if ((paramBoolean1) && (com.tencent.mm.plugin.collect.model.voice.a.qwT) && (!Util.isNullOrNil(paramci.dFt.dFy)))
       {
-        this.pgH.put(paramcg.doe.doh, paramcg);
-        com.tencent.mm.plugin.collect.model.voice.a.cbM().a(paramcg);
+        this.qvS.put(paramci.dFt.dFw, paramci);
+        com.tencent.mm.plugin.collect.model.voice.a.czG().a(paramci);
         AppMethodBeat.o(63798);
         return;
       }
-      paramcg = new o(paramcg.doe.dof, pgy, paramcg.doe.doh);
-      com.tencent.mm.kernel.g.ajS();
-      com.tencent.mm.kernel.g.ajQ().gDv.a(paramcg, 0);
+      paramci = new o(paramci.dFt.dFu, qvJ, paramci.dFt.dFw);
+      com.tencent.mm.kernel.g.aAi();
+      com.tencent.mm.kernel.g.aAg().hqi.a(paramci, 0);
       AppMethodBeat.o(63798);
       return;
     }
-    ae.w("MicroMsg.F2fRcvVoiceListener", "unknown type: %s", new Object[] { paramcg.doe.doi });
+    Log.w("MicroMsg.F2fRcvVoiceListener", "unknown type: %s", new Object[] { paramci.dFt.dFx });
     AppMethodBeat.o(63798);
   }
   
   private void a(final c paramc)
   {
     AppMethodBeat.i(63804);
-    this.pgA = a.a(paramc.fileName, new MediaPlayer.OnCompletionListener()new MediaPlayer.OnErrorListener
+    this.qvL = a.a(paramc.fileName, new MediaPlayer.OnCompletionListener()new MediaPlayer.OnErrorListener
     {
       public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
       {
         AppMethodBeat.i(63789);
-        ae.i("MicroMsg.F2fRcvVoiceListener", "play done");
+        Log.i("MicroMsg.F2fRcvVoiceListener", "play done");
         g.e(g.this);
         g.i(g.this);
         g.f(g.this);
@@ -207,7 +209,7 @@ public final class g
           AppMethodBeat.o(63789);
           return;
         }
-        g.cbG();
+        g.czA();
         AppMethodBeat.o(63789);
       }
     }, new MediaPlayer.OnErrorListener()new b
@@ -215,10 +217,10 @@ public final class g
       public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(63790);
-        ae.e("MicroMsg.F2fRcvVoiceListener", "play money error: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+        Log.e("MicroMsg.F2fRcvVoiceListener", "play money error: %s, %s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
         g.e(g.this);
         g.i(g.this);
-        com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(3), paramc.doh, Integer.valueOf(7), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramc.pgR) });
+        h.CyF.a(14404, new Object[] { Integer.valueOf(3), paramc.dFw, Integer.valueOf(7), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramc.qwa) });
         g.f(g.this);
         if (!g.g(g.this).isEmpty()) {
           g.h(g.this);
@@ -227,55 +229,55 @@ public final class g
         {
           AppMethodBeat.o(63790);
           return false;
-          g.cbG();
+          g.czA();
         }
       }
     }, new b()
     {
-      public final void cbI()
+      public final void czC()
       {
-        AppMethodBeat.i(189776);
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 41L, 1L, false);
-        if (com.tencent.mm.plugin.collect.a.a.cbv().pgo)
+        AppMethodBeat.i(213145);
+        h.CyF.idkeyStat(1143L, 41L, 1L, false);
+        if (com.tencent.mm.plugin.collect.a.a.czp().qvz)
         {
-          ae.i("MicroMsg.F2fRcvVoiceListener", "play isForground");
-          if (paramc.pgT)
+          Log.i("MicroMsg.F2fRcvVoiceListener", "play isForground");
+          if (paramc.qwc)
           {
-            com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(1), paramc.doh, "", "", Integer.valueOf(paramc.pgR), "", "", "", com.tencent.mm.plugin.collect.model.voice.a.cbM().cbT() });
-            AppMethodBeat.o(189776);
+            h.CyF.a(14404, new Object[] { Integer.valueOf(1), paramc.dFw, "", "", Integer.valueOf(paramc.qwa), "", "", "", com.tencent.mm.plugin.collect.model.voice.a.czG().czN() });
+            AppMethodBeat.o(213145);
             return;
           }
-          com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(1), paramc.doh, "", "", Integer.valueOf(paramc.pgR) });
-          AppMethodBeat.o(189776);
+          h.CyF.a(14404, new Object[] { Integer.valueOf(1), paramc.dFw, "", "", Integer.valueOf(paramc.qwa) });
+          AppMethodBeat.o(213145);
           return;
         }
-        ae.i("MicroMsg.F2fRcvVoiceListener", "play isBackground");
-        if (paramc.pgT)
+        Log.i("MicroMsg.F2fRcvVoiceListener", "play isBackground");
+        if (paramc.qwc)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(2), paramc.doh, "", "", Integer.valueOf(paramc.pgR), "", "", "", com.tencent.mm.plugin.collect.model.voice.a.cbM().cbT() });
-          AppMethodBeat.o(189776);
+          h.CyF.a(14404, new Object[] { Integer.valueOf(2), paramc.dFw, "", "", Integer.valueOf(paramc.qwa), "", "", "", com.tencent.mm.plugin.collect.model.voice.a.czG().czN() });
+          AppMethodBeat.o(213145);
           return;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(2), paramc.doh, "", "", Integer.valueOf(paramc.pgR) });
-        AppMethodBeat.o(189776);
+        h.CyF.a(14404, new Object[] { Integer.valueOf(2), paramc.dFw, "", "", Integer.valueOf(paramc.qwa) });
+        AppMethodBeat.o(213145);
       }
     });
     AppMethodBeat.o(63804);
   }
   
-  private void aJ(int paramInt, String paramString)
+  private void aO(int paramInt, String paramString)
   {
     AppMethodBeat.i(63808);
-    ae.i("MicroMsg.F2fRcvVoiceListener", "play default sound only");
+    Log.i("MicroMsg.F2fRcvVoiceListener", "play default sound only");
     c localc = new c((byte)0);
-    localc.pgR = paramInt;
-    localc.doh = paramString;
-    this.pgB.add(localc);
-    cbC();
+    localc.qwa = paramInt;
+    localc.dFw = paramString;
+    this.qvM.add(localc);
+    czw();
     AppMethodBeat.o(63808);
   }
   
-  private boolean aaF(String paramString)
+  private boolean akL(String paramString)
   {
     for (;;)
     {
@@ -283,20 +285,20 @@ public final class g
       {
         AppMethodBeat.i(63800);
         boolean bool;
-        if (bu.isNullOrNil(paramString))
+        if (Util.isNullOrNil(paramString))
         {
-          ae.w("MicroMsg.F2fRcvVoiceListener", "illegal no: %s, not do play", new Object[] { paramString });
+          Log.w("MicroMsg.F2fRcvVoiceListener", "illegal no: %s, not do play", new Object[] { paramString });
           AppMethodBeat.o(63800);
           bool = true;
           return bool;
         }
-        List localList = cbA();
-        Iterator localIterator = cbA().iterator();
+        List localList = czu();
+        Iterator localIterator = czu().iterator();
         if (localIterator.hasNext())
         {
           if (((String)localIterator.next()).equals(paramString))
           {
-            ae.i("MicroMsg.F2fRcvVoiceListener", "has played tradeno: %s", new Object[] { paramString });
+            Log.i("MicroMsg.F2fRcvVoiceListener", "has played tradeno: %s", new Object[] { paramString });
             AppMethodBeat.o(63800);
             bool = true;
           }
@@ -306,10 +308,10 @@ public final class g
           localList.add(paramString);
           if (localList.size() > 10)
           {
-            ae.i("MicroMsg.F2fRcvVoiceListener", "over max size, do remove");
+            Log.i("MicroMsg.F2fRcvVoiceListener", "over max size, do remove");
             int i = localList.size();
             paramString = localList.subList(i - 10, i);
-            com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IXM, bu.m(paramString, ","));
+            com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Ogj, Util.listToString(paramString, ","));
             AppMethodBeat.o(63800);
             bool = false;
           }
@@ -323,7 +325,7 @@ public final class g
     }
   }
   
-  private static int aaG(String paramString)
+  private static int akM(String paramString)
   {
     AppMethodBeat.i(63809);
     int i = 0;
@@ -340,29 +342,29 @@ public final class g
     }
   }
   
-  private List<String> cbA()
+  private List<String> czu()
   {
     AppMethodBeat.i(63799);
-    if ((this.pgF == null) || (this.pgF.get() == null))
+    if ((this.qvQ == null) || (this.qvQ.get() == null))
     {
-      ae.i("MicroMsg.F2fRcvVoiceListener", "refer is null");
-      this.pgF = new WeakReference(new ArrayList(bu.lV((String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IXM, ""), ",")));
+      Log.i("MicroMsg.F2fRcvVoiceListener", "refer is null");
+      this.qvQ = new WeakReference(new ArrayList(Util.stringToList((String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.Ogj, ""), ",")));
     }
-    List localList = (List)this.pgF.get();
+    List localList = (List)this.qvQ.get();
     AppMethodBeat.o(63799);
     return localList;
   }
   
-  public static boolean cbB()
+  public static boolean czv()
   {
     AppMethodBeat.i(63802);
-    ae.i("MicroMsg.F2fRcvVoiceListener", "delete files");
-    boolean bool = com.tencent.mm.vfs.o.dd(cbF(), true);
+    Log.i("MicroMsg.F2fRcvVoiceListener", "delete files");
+    boolean bool = s.dy(czz(), true);
     AppMethodBeat.o(63802);
     return bool;
   }
   
-  private void cbC()
+  private void czw()
   {
     for (;;)
     {
@@ -371,63 +373,63 @@ public final class g
       {
         AppMethodBeat.i(63803);
         long l1 = System.currentTimeMillis();
-        long l2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qNC, 10000L);
-        ae.i("MicroMsg.F2fRcvVoiceListener", "voiceOvertime: %s", new Object[] { Long.valueOf(l2) });
-        if ((this.lVw) && (l1 - this.pgE > l2))
+        long l2 = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.skA, 10000L);
+        Log.i("MicroMsg.F2fRcvVoiceListener", "voiceOvertime: %s", new Object[] { Long.valueOf(l2) });
+        if ((this.gVd) && (l1 - this.qvP > l2))
         {
-          ae.i("MicroMsg.F2fRcvVoiceListener", "last has outdate: %s", new Object[] { Long.valueOf(this.pgE) });
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1143L, 42L, 1L, false);
-          this.lVw = false;
+          Log.i("MicroMsg.F2fRcvVoiceListener", "last has outdate: %s", new Object[] { Long.valueOf(this.qvP) });
+          h.CyF.idkeyStat(1143L, 42L, 1L, false);
+          this.gVd = false;
         }
-        if (this.lVw)
+        if (this.gVd)
         {
-          ae.i("MicroMsg.F2fRcvVoiceListener", "is playing, return");
+          Log.i("MicroMsg.F2fRcvVoiceListener", "is playing, return");
           AppMethodBeat.o(63803);
           return;
         }
-        this.lVw = true;
-        this.pgE = System.currentTimeMillis();
-        localc = (c)this.pgB.poll();
+        this.gVd = true;
+        this.qvP = System.currentTimeMillis();
+        localc = (c)this.qvM.poll();
         i = com.tencent.mm.plugin.audio.c.a.getStreamMaxVolume(3);
-        this.pgC = com.tencent.mm.plugin.audio.c.a.getStreamVolume(3);
-        this.pgD = Math.round(i * 0.5F);
-        ae.i("MicroMsg.F2fRcvVoiceListener", "curVol: %s, maxVol: %s, minVol: %s", new Object[] { Integer.valueOf(this.pgC), Integer.valueOf(i), Integer.valueOf(this.pgD) });
+        this.qvN = com.tencent.mm.plugin.audio.c.a.getStreamVolume(3);
+        this.qvO = Math.round(i * 0.5F);
+        Log.i("MicroMsg.F2fRcvVoiceListener", "curVol: %s, maxVol: %s, minVol: %s", new Object[] { Integer.valueOf(this.qvN), Integer.valueOf(i), Integer.valueOf(this.qvO) });
         if (Build.VERSION.SDK_INT < 23) {
           break label686;
         }
-        bool = com.tencent.mm.plugin.audio.c.a.bHD();
-        ae.i("MicroMsg.F2fRcvVoiceListener", "isMute: %s", new Object[] { Boolean.valueOf(bool) });
-        if ((this.pgC == 0) || (bool))
+        bool = com.tencent.mm.plugin.audio.c.a.cef();
+        Log.i("MicroMsg.F2fRcvVoiceListener", "isMute: %s", new Object[] { Boolean.valueOf(bool) });
+        if ((this.qvN == 0) || (bool))
         {
-          ae.i("MicroMsg.F2fRcvVoiceListener", "music channel is mute");
+          Log.i("MicroMsg.F2fRcvVoiceListener", "music channel is mute");
           if (localc != null)
           {
-            i = localc.pgR;
-            com.tencent.mm.plugin.report.service.g localg = com.tencent.mm.plugin.report.service.g.yxI;
+            i = localc.qwa;
+            h localh = h.CyF;
             if (localc == null) {
               break label468;
             }
-            String str1 = localc.doh;
-            localg.f(14404, new Object[] { Integer.valueOf(3), str1, Integer.valueOf(5), "", Integer.valueOf(i) });
+            String str1 = localc.dFw;
+            localh.a(14404, new Object[] { Integer.valueOf(3), str1, Integer.valueOf(5), "", Integer.valueOf(i) });
           }
         }
         else
         {
-          if ((this.pgC > 0) && (this.pgC < this.pgD) && (!bool)) {
-            com.tencent.mm.plugin.audio.c.a.eD(3, this.pgD);
+          if ((this.qvN > 0) && (this.qvN < this.qvO) && (!bool)) {
+            com.tencent.mm.plugin.audio.c.a.eQ(3, this.qvO);
           }
           if (localc == null) {
             break label672;
           }
-          ae.i("MicroMsg.F2fRcvVoiceListener", "holder.offLine = %s", new Object[] { Boolean.valueOf(localc.pgT) });
-          if (!localc.pgT) {
+          Log.i("MicroMsg.F2fRcvVoiceListener", "holder.offLine = %s", new Object[] { Boolean.valueOf(localc.qwc) });
+          if (!localc.qwc) {
             break label493;
           }
           a(localc);
-          if ((!this.lVw) || (this.pgA != null)) {
+          if ((!this.gVd) || (this.qvL != null)) {
             break label476;
           }
-          ae.i("MicroMsg.F2fRcvVoiceListener", "isPlaying && moneyPlayer == null");
+          Log.i("MicroMsg.F2fRcvVoiceListener", "isPlaying && moneyPlayer == null");
           AppMethodBeat.o(63803);
           continue;
         }
@@ -439,20 +441,20 @@ public final class g
       String str2 = "";
       continue;
       label476:
-      ae.i("MicroMsg.F2fRcvVoiceListener", "has played");
+      Log.i("MicroMsg.F2fRcvVoiceListener", "has played");
       AppMethodBeat.o(63803);
       continue;
       label493:
-      int i = localc.pgR;
-      if (!bu.isNullOrNil(localc.fileName))
+      int i = localc.qwa;
+      if (!Util.isNullOrNil(localc.fileName))
       {
-        ae.i("MicroMsg.F2fRcvVoiceListener", "play prefix voice: %d", new Object[] { Integer.valueOf(i) });
-        this.pgz = a.a(ak.getContext(), new MediaPlayer.OnCompletionListener()new MediaPlayer.OnErrorListener
+        Log.i("MicroMsg.F2fRcvVoiceListener", "play prefix voice: %d", new Object[] { Integer.valueOf(i) });
+        this.qvK = a.a(MMApplicationContext.getContext(), new MediaPlayer.OnCompletionListener()new MediaPlayer.OnErrorListener
         {
           public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
           {
             AppMethodBeat.i(63784);
-            ae.i("MicroMsg.F2fRcvVoiceListener", "start play money");
+            Log.i("MicroMsg.F2fRcvVoiceListener", "start play money");
             if ((g.a(g.this) != null) && (g.b(g.this)) && (g.c(g.this) == null)) {
               g.a(g.this, localc);
             }
@@ -461,7 +463,7 @@ public final class g
               g.d(g.this);
               AppMethodBeat.o(63784);
               return;
-              ae.i("MicroMsg.F2fRcvVoiceListener", "has played");
+              Log.i("MicroMsg.F2fRcvVoiceListener", "has played");
             }
           }
         }, new MediaPlayer.OnErrorListener()
@@ -469,11 +471,11 @@ public final class g
           public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
           {
             AppMethodBeat.i(63785);
-            ae.e("MicroMsg.F2fRcvVoiceListener", "prefix play error");
+            Log.e("MicroMsg.F2fRcvVoiceListener", "prefix play error");
             g.e(g.this);
             g.d(g.this);
             g.f(g.this);
-            com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(3), localc.doh, Integer.valueOf(7), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(localc.pgR) });
+            h.CyF.a(14404, new Object[] { Integer.valueOf(3), localc.dFw, Integer.valueOf(7), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(localc.qwa) });
             if (!g.g(g.this).isEmpty()) {
               g.h(g.this);
             }
@@ -481,23 +483,23 @@ public final class g
             {
               AppMethodBeat.o(63785);
               return false;
-              g.cbG();
+              g.czA();
             }
           }
         });
-        if (this.pgz != null)
+        if (this.qvK != null)
         {
-          i = this.pgz.getDuration();
-          ae.i("MicroMsg.F2fRcvVoiceListener", "prefix duration: %s", new Object[] { Integer.valueOf(i) });
-          ar.o(new Runnable()
+          i = this.qvK.getDuration();
+          Log.i("MicroMsg.F2fRcvVoiceListener", "prefix duration: %s", new Object[] { Integer.valueOf(i) });
+          MMHandlerThread.postToMainThreadDelayed(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(63786);
               if ((g.a(g.this) != null) && (g.b(g.this)) && (g.c(g.this) == null))
               {
-                ae.i("MicroMsg.F2fRcvVoiceListener", "this play may error");
-                com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(699L, 1L, 1L, false);
+                Log.i("MicroMsg.F2fRcvVoiceListener", "this play may error");
+                h.CyF.idkeyStat(699L, 1L, 1L, false);
               }
               AppMethodBeat.o(63786);
             }
@@ -507,24 +509,24 @@ public final class g
       }
       else
       {
-        this.pgz = a.a(ak.getContext(), new MediaPlayer.OnCompletionListener()new MediaPlayer.OnErrorListener
+        this.qvK = a.a(MMApplicationContext.getContext(), new MediaPlayer.OnCompletionListener()new MediaPlayer.OnErrorListener
         {
           public final void onCompletion(MediaPlayer paramAnonymousMediaPlayer)
           {
             AppMethodBeat.i(63787);
-            ae.i("MicroMsg.F2fRcvVoiceListener", "no need to play money this time");
+            Log.i("MicroMsg.F2fRcvVoiceListener", "no need to play money this time");
             g.f(g.this);
             g.e(g.this);
             g.d(g.this);
-            com.tencent.mm.plugin.collect.a.a.cbv();
-            com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(4), localc.doh, "", "", Integer.valueOf(localc.pgR) });
+            com.tencent.mm.plugin.collect.a.a.czp();
+            h.CyF.a(14404, new Object[] { Integer.valueOf(4), localc.dFw, "", "", Integer.valueOf(localc.qwa) });
             if (!g.g(g.this).isEmpty())
             {
               g.h(g.this);
               AppMethodBeat.o(63787);
               return;
             }
-            g.cbG();
+            g.czA();
             AppMethodBeat.o(63787);
           }
         }, new MediaPlayer.OnErrorListener()
@@ -532,21 +534,21 @@ public final class g
           public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
           {
             AppMethodBeat.i(63788);
-            ae.e("MicroMsg.F2fRcvVoiceListener", "no need play money error");
+            Log.e("MicroMsg.F2fRcvVoiceListener", "no need play money error");
             g.f(g.this);
             g.e(g.this);
             g.d(g.this);
-            com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(3), localc.doh, Integer.valueOf(7), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(localc.pgR) });
+            h.CyF.a(14404, new Object[] { Integer.valueOf(3), localc.dFw, Integer.valueOf(7), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(localc.qwa) });
             AppMethodBeat.o(63788);
             return false;
           }
         });
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(699L, 2L, 1L, false);
+        h.CyF.idkeyStat(699L, 2L, 1L, false);
       }
       AppMethodBeat.o(63803);
       continue;
       label672:
-      this.lVw = false;
+      this.gVd = false;
       AppMethodBeat.o(63803);
       continue;
       label686:
@@ -554,42 +556,42 @@ public final class g
     }
   }
   
-  private static MediaPlayer cbD()
+  private static MediaPlayer czx()
   {
-    AppMethodBeat.i(189779);
+    AppMethodBeat.i(213148);
     final Object localObject1 = Looper.myLooper();
-    ae.i("MicroMsg.F2fRcvVoiceListener", "[syncCreatePlayer] %s", new Object[] { localObject1 });
-    if ((localObject1 != null) && (localObject1 != Looper.getMainLooper()) && (localObject1 != pgJ.getLooper()))
+    Log.i("MicroMsg.F2fRcvVoiceListener", "[syncCreatePlayer] %s", new Object[] { localObject1 });
+    if ((localObject1 != null) && (localObject1 != Looper.getMainLooper()) && (localObject1 != qvU.getLooper()))
     {
-      if (!pgJ.isAlive()) {
-        pgJ.start();
+      if (!qvU.isAlive()) {
+        qvU.start();
       }
-      aq localaq = new aq(pgJ.getLooper());
+      MMHandler localMMHandler = new MMHandler(qvU.getLooper());
       localObject1 = new Object();
       MediaPlayer[] arrayOfMediaPlayer = new MediaPlayer[1];
       arrayOfMediaPlayer[0] = null;
       try
       {
-        localaq.post(new Runnable()
+        localMMHandler.post(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(189777);
-            this.pgM[0] = new com.tencent.mm.compatible.b.k();
+            AppMethodBeat.i(213146);
+            this.qvX[0] = new k();
             try
             {
               synchronized (localObject1)
               {
                 localObject1.notify();
-                AppMethodBeat.o(189777);
+                AppMethodBeat.o(213146);
                 return;
               }
               return;
             }
             catch (Exception localException)
             {
-              ae.printErrStackTrace("MicroMsg.F2fRcvVoiceListener", localException, "", new Object[0]);
-              AppMethodBeat.o(189777);
+              Log.printErrStackTrace("MicroMsg.F2fRcvVoiceListener", localException, "", new Object[0]);
+              AppMethodBeat.o(213146);
             }
           }
         });
@@ -597,31 +599,31 @@ public final class g
         {
           localObject1.wait();
           localObject1 = arrayOfMediaPlayer[0];
-          AppMethodBeat.o(189779);
+          AppMethodBeat.o(213148);
           return localObject1;
         }
         catch (InterruptedException localInterruptedException)
         {
           for (;;)
           {
-            ae.printErrStackTrace("MicroMsg.F2fRcvVoiceListener", localInterruptedException, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.F2fRcvVoiceListener", localInterruptedException, "", new Object[0]);
           }
         }
-        localObject1 = new com.tencent.mm.compatible.b.k();
+        localObject1 = new k();
       }
       finally
       {
-        AppMethodBeat.o(189779);
+        AppMethodBeat.o(213148);
       }
     }
-    AppMethodBeat.o(189779);
+    AppMethodBeat.o(213148);
     return localObject1;
   }
   
-  private static int cbE()
+  private static int czy()
   {
     AppMethodBeat.i(63811);
-    if (com.tencent.mm.plugin.audio.c.a.bHz())
+    if (com.tencent.mm.plugin.audio.c.a.ceb())
     {
       AppMethodBeat.o(63811);
       return 1;
@@ -630,25 +632,25 @@ public final class g
     return 0;
   }
   
-  private static String cbF()
+  private static String czz()
   {
     AppMethodBeat.i(63812);
-    String str = com.tencent.mm.loader.j.b.asj() + "wallet/voice/";
+    String str = com.tencent.mm.loader.j.b.aKJ() + "wallet/voice/";
     AppMethodBeat.o(63812);
     return str;
   }
   
-  private static boolean n(String paramString, byte[] paramArrayOfByte)
+  private static boolean m(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(63801);
-    com.tencent.mm.kernel.g.ajS();
-    if (!com.tencent.mm.kernel.g.ajR().isSDCardAvailable())
+    com.tencent.mm.kernel.g.aAi();
+    if (!com.tencent.mm.kernel.g.aAh().isSDCardAvailable())
     {
-      ae.i("MicroMsg.F2fRcvVoiceListener", "sd card not available");
+      Log.i("MicroMsg.F2fRcvVoiceListener", "sd card not available");
       AppMethodBeat.o(63801);
       return false;
     }
-    if (com.tencent.mm.vfs.o.f(paramString, paramArrayOfByte, paramArrayOfByte.length) == 0)
+    if (s.f(paramString, paramArrayOfByte, paramArrayOfByte.length) == 0)
     {
       AppMethodBeat.o(63801);
       return true;
@@ -660,13 +662,13 @@ public final class g
   public final void a(int paramInt1, String paramString1, String paramString2, String paramString3, int paramInt2, String paramString4, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(63806);
-    ae.i("MicroMsg.F2fRcvVoiceListener", "errorCode:%s outTradeNo:%s type:%s content:%s packId:%s overtimeFlag:%s", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, paramString3, paramString4, Integer.valueOf(0) });
-    int i = aaG(paramString2);
-    paramString2 = (cg)this.pgH.remove(paramString1);
+    Log.i("MicroMsg.F2fRcvVoiceListener", "errorCode:%s outTradeNo:%s type:%s content:%s packId:%s overtimeFlag:%s", new Object[] { Integer.valueOf(paramInt1), paramString1, paramString2, paramString3, paramString4, Integer.valueOf(0) });
+    int i = akM(paramString2);
+    paramString2 = (ci)this.qvS.remove(paramString1);
     if (paramInt1 < 0)
     {
       if (paramString2 != null) {
-        if (paramString2.doe.dom) {
+        if (paramString2.dFt.dFA) {
           a(paramString2, false, true);
         }
       }
@@ -675,9 +677,9 @@ public final class g
         a(6, paramString1, i, paramString3, paramInt2, paramString4, 9);
         AppMethodBeat.o(63806);
         return;
-        ae.i("MicroMsg.F2fRcvVoiceListener", "onGetResult() needFailover:false");
+        Log.i("MicroMsg.F2fRcvVoiceListener", "onGetResult() needFailover:false");
         continue;
-        aJ(i, paramString1);
+        aO(i, paramString1);
       }
     }
     a(i, paramArrayOfByte, 1, paramString1, 0, true);
@@ -685,93 +687,93 @@ public final class g
     AppMethodBeat.o(63806);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(63805);
-    ae.i("MicroMsg.F2fRcvVoiceListener", "errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scenetype:" + paramn.getType());
-    if ((paramn instanceof i))
+    Log.i("MicroMsg.F2fRcvVoiceListener", "errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scenetype:" + paramq.getType());
+    if ((paramq instanceof i))
     {
-      paramn = (i)paramn;
+      paramq = (i)paramq;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        ae.i("MicroMsg.F2fRcvVoiceListener", "overtime: %s retcode: %s", new Object[] { Integer.valueOf(paramn.pgW.GmA), Integer.valueOf(paramn.pgW.dmy) });
-        if (paramn.pgW.GmA == 1)
+        Log.i("MicroMsg.F2fRcvVoiceListener", "overtime: %s retcode: %s", new Object[] { Integer.valueOf(paramq.qwf.Lhe), Integer.valueOf(paramq.qwf.dDN) });
+        if (paramq.qwf.Lhe == 1)
         {
-          ae.w("MicroMsg.F2fRcvVoiceListener", "skip over 10min: %s", new Object[] { Long.valueOf(paramn.gW) });
-          com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(3), paramn.doh, Integer.valueOf(1), "", Integer.valueOf(1) });
+          Log.w("MicroMsg.F2fRcvVoiceListener", "skip over 10min: %s", new Object[] { Long.valueOf(paramq.gY) });
+          h.CyF.a(14404, new Object[] { Integer.valueOf(3), paramq.dFw, Integer.valueOf(1), "", Integer.valueOf(1) });
           AppMethodBeat.o(63805);
           return;
         }
-        if ((paramn.pgW.dmy == 0) && (paramn.pgW.Gmz != null))
+        if ((paramq.qwf.dDN == 0) && (paramq.qwf.Lhd != null))
         {
-          a(1, paramn.pgW.Gmz.zr, paramn.pgW.Ggx, paramn.doh, paramn.pgW.GmA, false);
-          com.tencent.mm.plugin.report.service.g.yxI.f(15763, new Object[] { paramn.doh, Integer.valueOf(1), Integer.valueOf(Bu(paramn.doj)), Long.valueOf(paramn.pgX), Integer.valueOf(cbE()) });
+          a(1, paramq.qwf.Lhd.zy, paramq.qwf.Lba, paramq.dFw, paramq.qwf.Lhe, false);
+          h.CyF.a(15763, new Object[] { paramq.dFw, Integer.valueOf(1), Integer.valueOf(Fc(paramq.source)), Long.valueOf(paramq.qwg), Integer.valueOf(czy()) });
           AppMethodBeat.o(63805);
           return;
         }
-        if (paramn.pgW.dmy <= 100)
+        if (paramq.qwf.dDN <= 100)
         {
-          paramInt1 = paramn.pgW.dmy;
-          if (paramn.pgW.Gmz == null) {}
+          paramInt1 = paramq.qwf.dDN;
+          if (paramq.qwf.Lhd == null) {}
           for (paramString = "null";; paramString = "not null")
           {
-            ae.i("MicroMsg.F2fRcvVoiceListener", "play default sound only %s %s", new Object[] { Integer.valueOf(paramInt1), paramString });
-            aJ(1, paramn.doh);
-            com.tencent.mm.plugin.report.service.g.yxI.f(15763, new Object[] { paramn.doh, Integer.valueOf(2), Integer.valueOf(Bu(paramn.doj)), Long.valueOf(paramn.pgX), Integer.valueOf(cbE()) });
+            Log.i("MicroMsg.F2fRcvVoiceListener", "play default sound only %s %s", new Object[] { Integer.valueOf(paramInt1), paramString });
+            aO(1, paramq.dFw);
+            h.CyF.a(15763, new Object[] { paramq.dFw, Integer.valueOf(2), Integer.valueOf(Fc(paramq.source)), Long.valueOf(paramq.qwg), Integer.valueOf(czy()) });
             AppMethodBeat.o(63805);
             return;
           }
         }
-        ae.w("MicroMsg.F2fRcvVoiceListener", "retcode > 100, don't play");
-        com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(3), paramn.doh, Integer.valueOf(2), "", Integer.valueOf(1) });
-        com.tencent.mm.plugin.report.service.g.yxI.f(15763, new Object[] { paramn.doh, Integer.valueOf(2), Integer.valueOf(Bu(paramn.doj)), Long.valueOf(paramn.pgX), Integer.valueOf(cbE()) });
+        Log.w("MicroMsg.F2fRcvVoiceListener", "retcode > 100, don't play");
+        h.CyF.a(14404, new Object[] { Integer.valueOf(3), paramq.dFw, Integer.valueOf(2), "", Integer.valueOf(1) });
+        h.CyF.a(15763, new Object[] { paramq.dFw, Integer.valueOf(2), Integer.valueOf(Fc(paramq.source)), Long.valueOf(paramq.qwg), Integer.valueOf(czy()) });
         AppMethodBeat.o(63805);
         return;
       }
-      ae.e("MicroMsg.F2fRcvVoiceListener", "net error: %s", new Object[] { paramn });
-      aJ(1, paramn.doh);
-      com.tencent.mm.plugin.report.service.g.yxI.f(15763, new Object[] { paramn.doh, Integer.valueOf(2), Integer.valueOf(Bu(paramn.doj)), Long.valueOf(paramn.pgX), Integer.valueOf(cbE()) });
-      com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(3), paramn.doh, Integer.valueOf(3), "", Integer.valueOf(1) });
+      Log.e("MicroMsg.F2fRcvVoiceListener", "net error: %s", new Object[] { paramq });
+      aO(1, paramq.dFw);
+      h.CyF.a(15763, new Object[] { paramq.dFw, Integer.valueOf(2), Integer.valueOf(Fc(paramq.source)), Long.valueOf(paramq.qwg), Integer.valueOf(czy()) });
+      h.CyF.a(14404, new Object[] { Integer.valueOf(3), paramq.dFw, Integer.valueOf(3), "", Integer.valueOf(1) });
       AppMethodBeat.o(63805);
       return;
     }
-    if ((paramn instanceof o))
+    if ((paramq instanceof o))
     {
-      paramString = (o)paramn;
+      paramString = (o)paramq;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (paramString.phr.dmy == 0)
+        if (paramString.qwA.dDN == 0)
         {
-          paramn = new com.tencent.mm.vfs.k(cbF());
-          if ((!paramn.exists()) && (!paramn.mkdirs()))
+          paramq = new com.tencent.mm.vfs.o(czz());
+          if ((!paramq.exists()) && (!paramq.mkdirs()))
           {
-            ae.i("MicroMsg.F2fRcvVoiceListener", "mk dir fail");
+            Log.i("MicroMsg.F2fRcvVoiceListener", "mk dir fail");
             AppMethodBeat.o(63805);
             return;
           }
-          paramn = cbF() + UUID.randomUUID().toString() + ".tmp";
-          ae.i("MicroMsg.F2fRcvVoiceListener", "fileName: %s", new Object[] { paramn });
-          if (n(paramn, paramString.phr.Gmz.zr))
+          paramq = czz() + UUID.randomUUID().toString() + ".tmp";
+          Log.i("MicroMsg.F2fRcvVoiceListener", "fileName: %s", new Object[] { paramq });
+          if (m(paramq, paramString.qwA.Lhd.zy))
           {
             c localc = new c((byte)0);
-            localc.fileName = paramn;
-            localc.dui = paramString.phr.Ggx;
-            localc.pgR = 2;
-            this.pgB.add(localc);
-            cbC();
+            localc.fileName = paramq;
+            localc.dLt = paramString.qwA.Lba;
+            localc.qwa = 2;
+            this.qvM.add(localc);
+            czw();
             AppMethodBeat.o(63805);
             return;
           }
-          ae.i("MicroMsg.F2fRcvVoiceListener", "save file fail");
+          Log.i("MicroMsg.F2fRcvVoiceListener", "save file fail");
           AppMethodBeat.o(63805);
           return;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(3), paramString.doh, Integer.valueOf(2), "", Integer.valueOf(2) });
+        h.CyF.a(14404, new Object[] { Integer.valueOf(3), paramString.dFw, Integer.valueOf(2), "", Integer.valueOf(2) });
         AppMethodBeat.o(63805);
         return;
       }
-      ae.e("MicroMsg.F2fRcvVoiceListener", "net error: %s", new Object[] { paramString });
-      com.tencent.mm.plugin.report.service.g.yxI.f(14404, new Object[] { Integer.valueOf(3), paramString.doh, Integer.valueOf(3), "", Integer.valueOf(2) });
+      Log.e("MicroMsg.F2fRcvVoiceListener", "net error: %s", new Object[] { paramString });
+      h.CyF.a(14404, new Object[] { Integer.valueOf(3), paramString.dFw, Integer.valueOf(3), "", Integer.valueOf(2) });
     }
     AppMethodBeat.o(63805);
   }
@@ -799,7 +801,7 @@ public final class g
       //   23: ldc 32
       //   25: invokestatic 38	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   28: aastore
-      //   29: invokestatic 44	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   29: invokestatic 44	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   32: ldc 21
       //   34: invokestatic 47	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   37: aconst_null
@@ -808,7 +810,7 @@ public final class g
       //   40: ldc 32
       //   42: invokevirtual 53	android/content/Context:getString	(I)Ljava/lang/String;
       //   45: astore 8
-      //   47: invokestatic 57	com/tencent/mm/plugin/collect/model/g:cbH	()Landroid/media/MediaPlayer;
+      //   47: invokestatic 57	com/tencent/mm/plugin/collect/model/g:czB	()Landroid/media/MediaPlayer;
       //   50: astore 7
       //   52: aload 7
       //   54: iconst_3
@@ -836,7 +838,7 @@ public final class g
       //   88: ldc 32
       //   90: invokestatic 38	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
       //   93: aastore
-      //   94: invokestatic 70	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   94: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   97: aconst_null
       //   98: astore 6
       //   100: aload_0
@@ -904,7 +906,7 @@ public final class g
       //   224: iload 5
       //   226: invokestatic 139	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
       //   229: aastore
-      //   230: invokestatic 70	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   230: invokestatic 70	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   233: aload_0
       //   234: ifnull +7 -> 241
       //   237: aload_0
@@ -925,7 +927,7 @@ public final class g
       //   265: ldc 144
       //   267: iconst_0
       //   268: anewarray 4	java/lang/Object
-      //   271: invokestatic 148	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   271: invokestatic 148	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   274: goto -33 -> 241
       //   277: astore_1
       //   278: aload 6
@@ -944,13 +946,13 @@ public final class g
       //   299: aload_1
       //   300: invokevirtual 154	java/lang/Exception:getMessage	()Ljava/lang/String;
       //   303: aastore
-      //   304: invokestatic 44	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   304: invokestatic 44	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   307: ldc 29
       //   309: aload_1
       //   310: ldc 144
       //   312: iconst_0
       //   313: anewarray 4	java/lang/Object
-      //   316: invokestatic 148	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   316: invokestatic 148	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   319: aload 7
       //   321: ifnull +8 -> 329
       //   324: aload 7
@@ -969,7 +971,7 @@ public final class g
       //   348: ldc 144
       //   350: iconst_0
       //   351: anewarray 4	java/lang/Object
-      //   354: invokestatic 148	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   354: invokestatic 148	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   357: goto -20 -> 337
       //   360: astore_1
       //   361: aconst_null
@@ -988,7 +990,7 @@ public final class g
       //   382: ldc 144
       //   384: iconst_0
       //   385: anewarray 4	java/lang/Object
-      //   388: invokestatic 148	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   388: invokestatic 148	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   391: goto -20 -> 371
       //   394: astore_1
       //   395: goto -32 -> 363
@@ -1026,10 +1028,10 @@ public final class g
     
     public static MediaPlayer a(String paramString, final MediaPlayer.OnCompletionListener paramOnCompletionListener, final MediaPlayer.OnErrorListener paramOnErrorListener, g.b paramb)
     {
-      AppMethodBeat.i(189778);
-      final MediaPlayer localMediaPlayer = g.cbH();
+      AppMethodBeat.i(213147);
+      final MediaPlayer localMediaPlayer = g.czB();
       localMediaPlayer.setAudioStreamType(3);
-      ae.i("MicroMsg.F2fRcvVoiceListener", "play start mp:%d path:%s", new Object[] { Integer.valueOf(localMediaPlayer.hashCode()), paramString });
+      Log.i("MicroMsg.F2fRcvVoiceListener", "play start mp:%d path:%s", new Object[] { Integer.valueOf(localMediaPlayer.hashCode()), paramString });
       try
       {
         localMediaPlayer.setDataSource(paramString);
@@ -1039,13 +1041,13 @@ public final class g
           public final boolean onError(MediaPlayer paramAnonymousMediaPlayer, int paramAnonymousInt1, int paramAnonymousInt2)
           {
             AppMethodBeat.i(63793);
-            ae.i("MicroMsg.F2fRcvVoiceListener", "onError, what: %d, extra: %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+            Log.i("MicroMsg.F2fRcvVoiceListener", "onError, what: %d, extra: %d", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
             if (paramAnonymousMediaPlayer != null) {}
             try
             {
               paramAnonymousMediaPlayer.release();
-              if (this.pgO != null) {
-                this.pgO.release();
+              if (this.val$player != null) {
+                this.val$player.release();
               }
             }
             catch (Exception localException)
@@ -1068,7 +1070,7 @@ public final class g
             if (paramAnonymousMediaPlayer == null) {}
             for (int i = -1;; i = paramAnonymousMediaPlayer.hashCode())
             {
-              ae.i("MicroMsg.F2fRcvVoiceListener", "play completion mp:%d  path:%s", new Object[] { Integer.valueOf(i), this.val$path });
+              Log.i("MicroMsg.F2fRcvVoiceListener", "play completion mp:%d  path:%s", new Object[] { Integer.valueOf(i), this.val$path });
               if (paramAnonymousMediaPlayer != null) {
                 paramAnonymousMediaPlayer.release();
               }
@@ -1085,7 +1087,7 @@ public final class g
         });
         localMediaPlayer.prepare();
         localMediaPlayer.start();
-        paramb.cbI();
+        paramb.czC();
         int i = localMediaPlayer.hashCode();
         boolean bool1;
         if (Looper.myLooper() != null)
@@ -1098,8 +1100,8 @@ public final class g
         label175:
         for (boolean bool2 = true;; bool2 = false)
         {
-          ae.i("MicroMsg.F2fRcvVoiceListener", "play start mp finish [%d], myLooper[%b] mainLooper[%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
-          AppMethodBeat.o(189778);
+          Log.i("MicroMsg.F2fRcvVoiceListener", "play start mp finish [%d], myLooper[%b] mainLooper[%b]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+          AppMethodBeat.o(213147);
           return localMediaPlayer;
           bool1 = false;
           break;
@@ -1108,36 +1110,36 @@ public final class g
       }
       catch (Exception paramOnCompletionListener)
       {
-        ae.e("MicroMsg.F2fRcvVoiceListener", "play failed path:%s e:%s", new Object[] { paramString, paramOnCompletionListener.getMessage() });
-        ae.printErrStackTrace("MicroMsg.F2fRcvVoiceListener", paramOnCompletionListener, "", new Object[0]);
+        Log.e("MicroMsg.F2fRcvVoiceListener", "play failed path:%s e:%s", new Object[] { paramString, paramOnCompletionListener.getMessage() });
+        Log.printErrStackTrace("MicroMsg.F2fRcvVoiceListener", paramOnCompletionListener, "", new Object[0]);
         if (localMediaPlayer != null) {
           localMediaPlayer.release();
         }
-        AppMethodBeat.o(189778);
+        AppMethodBeat.o(213147);
       }
     }
   }
   
   static abstract interface b<T>
   {
-    public abstract void cbI();
+    public abstract void czC();
   }
   
   final class c
   {
-    String doh;
-    int dui;
+    String dFw;
+    int dLt;
     String fileName;
-    int pgR;
-    int pgS = 0;
-    boolean pgT = false;
+    int qwa;
+    int qwb = 0;
+    boolean qwc = false;
     
     private c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.g
  * JD-Core Version:    0.7.0.1
  */

@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.voip.model;
 
 public final class a
 {
-  public int CoY;
-  public int CoZ;
+  public int Bry;
+  public int GSU;
+  public int GSV;
   public int channels;
-  public int xrw;
 }
 
 

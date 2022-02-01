@@ -3,14 +3,14 @@ package com.tencent.mm.plugin.offline.a;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bfh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.brd;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.wallet_core.c.w;
 import java.util.ArrayList;
 import org.json.JSONArray;
@@ -20,16 +20,16 @@ import org.json.JSONObject;
 public final class a
   extends w
 {
-  private f callback;
-  private ArrayList<String> iFA;
-  private final b rr;
-  private String wNC;
-  private String wND;
+  private String AJi;
+  private String AJj;
+  private i callback;
+  private ArrayList<String> jBE;
+  private final d rr;
   
-  private void aH(JSONObject paramJSONObject)
+  private void bd(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(66281);
-    this.wNC = paramJSONObject.optString("micropay_tips");
+    this.AJi = paramJSONObject.optString("micropay_tips");
     try
     {
       paramJSONObject = paramJSONObject.getJSONArray("head_url_list");
@@ -47,7 +47,7 @@ public final class a
       while (i < paramJSONObject.length())
       {
         String str = (String)paramJSONObject.get(i);
-        this.iFA.add(str);
+        this.jBE.add(str);
         i += 1;
       }
       AppMethodBeat.o(66281);
@@ -55,16 +55,16 @@ public final class a
     }
     catch (JSONException paramJSONObject)
     {
-      ae.printErrStackTrace("MicroMsg.NetSceneGetOffLineInfo", paramJSONObject, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.NetSceneGetOffLineInfo", paramJSONObject, "", new Object[0]);
       AppMethodBeat.o(66281);
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(66279);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(66279);
     return i;
   }
@@ -74,42 +74,42 @@ public final class a
     return 606;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(66280);
     if (paramInt2 != 0) {
-      ae.e("MicroMsg.NetSceneGetOffLineInfo", "Cmd : " + getType() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
+      Log.e("MicroMsg.NetSceneGetOffLineInfo", "Cmd : " + getType() + ", errType = " + paramInt2 + ", errCode = " + paramInt3 + ", errMsg = " + paramString);
     }
-    paramArrayOfByte = (bfh)((b)paramq).hQE.hQJ;
+    paramArrayOfByte = (brd)((d)params).iLL.iLR;
     paramInt1 = paramInt2;
     i = paramInt3;
-    paramq = paramString;
+    params = paramString;
     if (paramInt2 == 0)
     {
       paramInt1 = paramInt2;
       i = paramInt3;
-      paramq = paramString;
+      params = paramString;
       if (paramInt3 != 0) {}
     }
     try
     {
-      if (!TextUtils.isEmpty(paramArrayOfByte.GUm))
+      if (!TextUtils.isEmpty(paramArrayOfByte.LYE))
       {
-        paramq = new JSONObject(paramArrayOfByte.GUm);
-        paramInt1 = paramq.optInt("InitValue");
-        i = paramq.optInt("FastChangedLimit");
-        this.wND = paramq.optString("guide_tips");
-        com.tencent.mm.plugin.offline.c.a.MT(paramInt1);
-        com.tencent.mm.plugin.offline.c.a.MU(i);
-        ae.v("MicroMsg.NetSceneGetOffLineInfo", "initValue:" + paramInt1 + " fastChangeValue:" + i);
+        params = new JSONObject(paramArrayOfByte.LYE);
+        paramInt1 = params.optInt("InitValue");
+        i = params.optInt("FastChangedLimit");
+        this.AJj = params.optString("guide_tips");
+        com.tencent.mm.plugin.offline.c.a.Ud(paramInt1);
+        com.tencent.mm.plugin.offline.c.a.Ue(i);
+        Log.v("MicroMsg.NetSceneGetOffLineInfo", "initValue:" + paramInt1 + " fastChangeValue:" + i);
       }
       paramInt1 = paramInt2;
       i = paramInt3;
-      paramq = paramString;
-      if (!TextUtils.isEmpty(paramArrayOfByte.GUn))
+      params = paramString;
+      if (!TextUtils.isEmpty(paramArrayOfByte.LYF))
       {
-        aH(new JSONObject(paramArrayOfByte.GUn));
-        paramq = paramString;
+        bd(new JSONObject(paramArrayOfByte.LYF));
+        params = paramString;
         i = paramInt3;
         paramInt1 = paramInt2;
       }
@@ -118,21 +118,21 @@ public final class a
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.NetSceneGetOffLineInfo", paramString, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.NetSceneGetOffLineInfo", paramString, "", new Object[0]);
         paramInt1 = 1000;
         i = 2;
-        paramq = ak.getContext().getString(2131765224);
+        params = MMApplicationContext.getContext().getString(2131767667);
       }
     }
     if (this.callback != null) {
-      this.callback.onSceneEnd(paramInt1, i, paramq, this);
+      this.callback.onSceneEnd(paramInt1, i, params, this);
     }
     AppMethodBeat.o(66280);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.a
  * JD-Core Version:    0.7.0.1
  */

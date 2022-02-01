@@ -3,11 +3,11 @@ package com.tencent.mm.aq;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.b;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -16,16 +16,16 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static int hZq = 1;
-  private static String hZr = "";
+  public static int iUo = 1;
+  private static String iUp = "";
   
   /* Error */
-  private static boolean Fy(String paramString)
+  private static boolean Oi(String paramString)
   {
     // Byte code:
     //   0: ldc 24
     //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 36	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   5: invokestatic 36	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   8: invokevirtual 42	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   11: astore_2
     //   12: aload_2
@@ -36,7 +36,7 @@ public final class a
     //   20: ifnonnull +35 -> 55
     //   23: ldc 52
     //   25: ldc 54
-    //   27: invokestatic 60	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   27: invokestatic 60	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   30: ldc 24
     //   32: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   35: iconst_0
@@ -47,27 +47,27 @@ public final class a
     //   41: ldc 14
     //   43: iconst_0
     //   44: anewarray 4	java/lang/Object
-    //   47: invokestatic 67	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   47: invokestatic 67	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   50: aconst_null
     //   51: astore_2
     //   52: goto -33 -> 19
-    //   55: new 69	com/tencent/mm/vfs/k
+    //   55: new 69	com/tencent/mm/vfs/o
     //   58: dup
     //   59: aload_0
-    //   60: invokespecial 73	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+    //   60: invokespecial 73	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
     //   63: astore_0
     //   64: aload_0
-    //   65: invokevirtual 77	com/tencent/mm/vfs/k:exists	()Z
+    //   65: invokevirtual 77	com/tencent/mm/vfs/o:exists	()Z
     //   68: ifeq +8 -> 76
     //   71: aload_0
-    //   72: invokevirtual 80	com/tencent/mm/vfs/k:delete	()Z
+    //   72: invokevirtual 80	com/tencent/mm/vfs/o:delete	()Z
     //   75: pop
     //   76: aload_0
-    //   77: invokevirtual 84	com/tencent/mm/vfs/k:fTg	()Lcom/tencent/mm/vfs/k;
-    //   80: invokevirtual 87	com/tencent/mm/vfs/k:mkdirs	()Z
+    //   77: invokevirtual 84	com/tencent/mm/vfs/o:heq	()Lcom/tencent/mm/vfs/o;
+    //   80: invokevirtual 87	com/tencent/mm/vfs/o:mkdirs	()Z
     //   83: pop
     //   84: aload_0
-    //   85: invokestatic 93	com/tencent/mm/vfs/o:aj	(Lcom/tencent/mm/vfs/k;)Ljava/io/OutputStream;
+    //   85: invokestatic 93	com/tencent/mm/vfs/s:ap	(Lcom/tencent/mm/vfs/o;)Ljava/io/OutputStream;
     //   88: astore_0
     //   89: aload_0
     //   90: ifnull +107 -> 197
@@ -93,11 +93,11 @@ public final class a
     //   124: ldc 14
     //   126: iconst_0
     //   127: anewarray 4	java/lang/Object
-    //   130: invokestatic 67	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   130: invokestatic 67	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   133: aload_2
-    //   134: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   134: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   137: aload_0
-    //   138: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   138: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   141: ldc 24
     //   143: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   146: iconst_0
@@ -108,29 +108,29 @@ public final class a
     //   152: ldc 14
     //   154: iconst_0
     //   155: anewarray 4	java/lang/Object
-    //   158: invokestatic 67	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   158: invokestatic 67	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   161: aconst_null
     //   162: astore_0
     //   163: goto -74 -> 89
     //   166: aload_2
-    //   167: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   167: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   170: aload_0
-    //   171: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   171: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   174: ldc 24
     //   176: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   179: iconst_1
     //   180: ireturn
     //   181: astore_3
     //   182: aload_2
-    //   183: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   183: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   186: aload_0
-    //   187: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   187: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   190: ldc 24
     //   192: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   195: aload_3
     //   196: athrow
     //   197: aload_2
-    //   198: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   198: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   201: ldc 24
     //   203: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   206: iconst_0
@@ -158,45 +158,45 @@ public final class a
     //   121	133	181	finally
   }
   
-  private static String aHA()
+  private static String bbt()
   {
     AppMethodBeat.i(104501);
-    if (bu.isNullOrNil(hZr)) {
-      hZr = b.asc().replace("/data/user/0", "/data/data");
+    if (Util.isNullOrNil(iUp)) {
+      iUp = b.aKC().replace("/data/user/0", "/data/data");
     }
-    String str = hZr;
+    String str = iUp;
     AppMethodBeat.o(104501);
     return str;
   }
   
-  public static String aHB()
+  public static String bbu()
   {
     AppMethodBeat.i(104502);
-    Object localObject = new k(aHA(), "emoji/res");
-    if (!((k)localObject).exists()) {
-      ((k)localObject).mkdirs();
+    Object localObject = new o(bbt(), "emoji/res");
+    if (!((o)localObject).exists()) {
+      ((o)localObject).mkdirs();
     }
-    localObject = w.B(((k)localObject).fTh());
+    localObject = aa.z(((o)localObject).her());
     AppMethodBeat.o(104502);
     return localObject;
   }
   
-  public static String aHC()
+  public static String bbv()
   {
     AppMethodBeat.i(104503);
-    String str = aHA() + "emoji/newemoji/";
+    String str = bbt() + "emoji/newemoji/";
     AppMethodBeat.o(104503);
     return str;
   }
   
-  public static int aHD()
+  public static int bbw()
   {
     AppMethodBeat.i(104504);
     Object localObject3 = null;
     Object localObject1 = null;
     try
     {
-      InputStream localInputStream = o.ai(new k(aHB(), "config.conf"));
+      InputStream localInputStream = s.ao(new o(bbu(), "config.conf"));
       localObject1 = localInputStream;
       localObject3 = localInputStream;
       BufferedReader localBufferedReader = new BufferedReader(new InputStreamReader(localInputStream));
@@ -217,33 +217,33 @@ public final class a
       int i = new JSONObject(str1).getInt("version");
       localObject1 = localInputStream;
       localObject3 = localInputStream;
-      ae.d("MicroMsg.emoji.EmojiStoreExportLogic", "config file content:%s version:%d", new Object[] { str1, Integer.valueOf(i) });
+      Log.d("MicroMsg.emoji.EmojiStoreExportLogic", "config file content:%s version:%d", new Object[] { str1, Integer.valueOf(i) });
       return i;
     }
     catch (Exception localException)
     {
       localObject3 = localObject1;
-      ae.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localException, localException.getMessage(), new Object[0]);
+      Log.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localException, localException.getMessage(), new Object[0]);
       return 1;
     }
     finally
     {
-      bu.d(localObject3);
+      Util.qualityClose(localObject3);
       AppMethodBeat.o(104504);
     }
   }
   
   /* Error */
-  private static int aHE()
+  private static int bbx()
   {
     // Byte code:
-    //   0: ldc 216
+    //   0: ldc 217
     //   2: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 36	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   5: invokestatic 36	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   8: invokevirtual 42	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   11: astore_1
     //   12: aload_1
-    //   13: ldc 218
+    //   13: ldc 219
     //   15: invokevirtual 50	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   18: astore_2
     //   19: new 182	java/io/InputStreamReader
@@ -317,14 +317,14 @@ public final class a
     //   144: iload_0
     //   145: invokestatic 208	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   148: aastore
-    //   149: invokestatic 211	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   149: invokestatic 212	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   152: aload_2
-    //   153: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   153: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   156: aload 4
-    //   158: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   158: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   161: aload_1
-    //   162: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
-    //   165: ldc 216
+    //   162: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   165: ldc 217
     //   167: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   170: iload_0
     //   171: ireturn
@@ -344,17 +344,17 @@ public final class a
     //   190: ldc 52
     //   192: aload_3
     //   193: aload_3
-    //   194: invokevirtual 214	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   194: invokevirtual 215	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   197: iconst_0
     //   198: anewarray 4	java/lang/Object
-    //   201: invokestatic 67	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   201: invokestatic 67	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   204: aload_2
-    //   205: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   205: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   208: aload 4
-    //   210: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   210: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   213: aload_1
-    //   214: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
-    //   217: ldc 216
+    //   214: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   217: ldc 217
     //   219: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   222: iconst_1
     //   223: ireturn
@@ -366,12 +366,12 @@ public final class a
     //   230: aconst_null
     //   231: astore_2
     //   232: aload_2
-    //   233: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   233: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   236: aload 4
-    //   238: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   238: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   241: aload_3
-    //   242: invokestatic 111	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
-    //   245: ldc 216
+    //   242: invokestatic 111	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   245: ldc 217
     //   247: invokestatic 63	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   250: aload_1
     //   251: athrow
@@ -445,60 +445,60 @@ public final class a
     //   130	152	296	java/lang/Exception
   }
   
-  public static void eP(boolean paramBoolean)
+  public static void fF(boolean paramBoolean)
   {
     AppMethodBeat.i(104507);
-    k localk = new k(aHB());
-    ae.i("MicroMsg.emoji.EmojiStoreExportLogic", "copy search template file to path: %s", new Object[] { localk.fTi() });
-    if (d.FFK)
+    o localo = new o(bbu());
+    Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "copy search template file to path: %s", new Object[] { localo.hes() });
+    if (d.KyR)
     {
-      ae.i("MicroMsg.emoji.EmojiStoreExportLogic", "need to init search template folder %b", new Object[] { Boolean.valueOf(paramBoolean) });
-      o.dd(w.B(localk.mUri), true);
-      k(localk);
+      Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "need to init search template folder %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      s.dy(aa.z(localo.mUri), true);
+      j(localo);
     }
     for (;;)
     {
-      o.dd(b.asj() + "emoji", true);
+      s.dy(b.aKJ() + "emoji", true);
       AppMethodBeat.o(104507);
       return;
-      hZq = aHD();
+      iUo = bbw();
       if (paramBoolean)
       {
-        int i = aHE();
-        ae.i("MicroMsg.emoji.EmojiStoreExportLogic", "need update assetVersion=%d currentVersion=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(hZq) });
-        if (hZq < i)
+        int i = bbx();
+        Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "need update assetVersion=%d currentVersion=%d", new Object[] { Integer.valueOf(i), Integer.valueOf(iUo) });
+        if (iUo < i)
         {
-          o.dd(w.B(localk.mUri), true);
-          k(localk);
+          s.dy(aa.z(localo.mUri), true);
+          j(localo);
         }
       }
-      else if (hZq == 1)
+      else if (iUo == 1)
       {
-        ae.i("MicroMsg.emoji.EmojiStoreExportLogic", "no need update currentVersion=%d", new Object[] { Integer.valueOf(hZq) });
-        o.dd(w.B(localk.mUri), true);
-        k(localk);
+        Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "no need update currentVersion=%d", new Object[] { Integer.valueOf(iUo) });
+        s.dy(aa.z(localo.mUri), true);
+        j(localo);
       }
     }
   }
   
-  private static void k(k paramk)
+  private static void j(o paramo)
   {
     AppMethodBeat.i(104508);
-    if (!paramk.exists()) {
-      paramk.mkdirs();
+    if (!paramo.exists()) {
+      paramo.mkdirs();
     }
-    k localk = new k(paramk, ".nomedia");
-    if (!localk.exists()) {}
+    o localo = new o(paramo, ".nomedia");
+    if (!localo.exists()) {}
     try
     {
-      localk.createNewFile();
-      paramk = new k(paramk, "emoji_template.zip");
-      if (Fy(w.B(paramk.fTh())))
+      localo.createNewFile();
+      paramo = new o(paramo, "emoji_template.zip");
+      if (Oi(aa.z(paramo.her())))
       {
-        int i = o.fD(w.B(paramk.fTh()), paramk.getParent());
+        int i = s.fW(aa.z(paramo.her()), paramo.getParent());
         if (i < 0)
         {
-          ae.e("MicroMsg.emoji.EmojiStoreExportLogic", "unzip fail, ret = " + i + ", zipFilePath = " + w.B(paramk.fTh()) + ", unzipPath = " + paramk.getParent());
+          Log.e("MicroMsg.emoji.EmojiStoreExportLogic", "unzip fail, ret = " + i + ", zipFilePath = " + aa.z(paramo.her()) + ", unzipPath = " + paramo.getParent());
           AppMethodBeat.o(104508);
           return;
         }
@@ -508,34 +508,34 @@ public final class a
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localIOException, "create nomedia file error", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localIOException, "create nomedia file error", new Object[0]);
       }
-      hZq = aHD();
-      ae.i("MicroMsg.emoji.EmojiStoreExportLogic", "Unzip Path%s version=%d", new Object[] { paramk.getParent(), Integer.valueOf(hZq) });
+      iUo = bbw();
+      Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "Unzip Path%s version=%d", new Object[] { paramo.getParent(), Integer.valueOf(iUo) });
       AppMethodBeat.o(104508);
       return;
     }
-    ae.i("MicroMsg.emoji.EmojiStoreExportLogic", "copy template file from asset fail %s", new Object[] { w.B(paramk.fTh()) });
+    Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "copy template file from asset fail %s", new Object[] { aa.z(paramo.her()) });
     AppMethodBeat.o(104508);
   }
   
-  public static void l(k paramk)
+  public static void k(o paramo)
   {
     AppMethodBeat.i(104509);
-    k localk1 = new k(aHB());
-    o.dd(w.B(localk1.mUri), true);
-    localk1.mkdirs();
-    k localk2 = new k(localk1, ".nomedia");
-    if (!localk2.exists()) {}
+    o localo1 = new o(bbu());
+    s.dy(aa.z(localo1.mUri), true);
+    localo1.mkdirs();
+    o localo2 = new o(localo1, ".nomedia");
+    if (!localo2.exists()) {}
     try
     {
-      localk2.createNewFile();
-      localk1 = new k(localk1, "emoji_template.zip");
-      o.mF(w.B(paramk.mUri), w.B(localk1.mUri));
-      int i = bu.lW(w.B(localk1.mUri), localk1.getParent());
+      localo2.createNewFile();
+      localo1 = new o(localo1, "emoji_template.zip");
+      s.nw(aa.z(paramo.mUri), aa.z(localo1.mUri));
+      int i = Util.UnZipFolder(aa.z(localo1.mUri), localo1.getParent());
       if (i < 0)
       {
-        ae.e("MicroMsg.emoji.EmojiStoreExportLogic", "unzip fail, ret = " + i + ", zipFilePath = " + w.B(localk1.fTh()) + ", unzipPath = " + localk1.getParent());
+        Log.e("MicroMsg.emoji.EmojiStoreExportLogic", "unzip fail, ret = " + i + ", zipFilePath = " + aa.z(localo1.her()) + ", unzipPath = " + localo1.getParent());
         AppMethodBeat.o(104509);
         return;
       }
@@ -544,17 +544,17 @@ public final class a
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localIOException, "create nomedia file error", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.emoji.EmojiStoreExportLogic", localIOException, "create nomedia file error", new Object[0]);
       }
-      hZq = aHD();
-      ae.i("MicroMsg.emoji.EmojiStoreExportLogic", "Unzip Path%s version=%d", new Object[] { localk1.getParent(), Integer.valueOf(hZq) });
+      iUo = bbw();
+      Log.i("MicroMsg.emoji.EmojiStoreExportLogic", "Unzip Path%s version=%d", new Object[] { localo1.getParent(), Integer.valueOf(iUo) });
       AppMethodBeat.o(104509);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.aq.a
  * JD-Core Version:    0.7.0.1
  */

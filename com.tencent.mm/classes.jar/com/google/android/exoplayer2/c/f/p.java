@@ -13,21 +13,21 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class p
   implements e
 {
-  public static final com.google.android.exoplayer2.c.h bio;
-  private final u bnm;
-  private g bpm;
-  private final SparseArray<a> bsl;
-  private final com.google.android.exoplayer2.i.m bsm;
-  private boolean bsn;
-  private boolean bso;
-  private boolean bsp;
+  public static final com.google.android.exoplayer2.c.h bil;
+  private final u bnh;
+  private g bph;
+  private final SparseArray<a> bsg;
+  private final com.google.android.exoplayer2.i.m bsh;
+  private boolean bsi;
+  private boolean bsj;
+  private boolean bsk;
   
   static
   {
     AppMethodBeat.i(92278);
-    bio = new com.google.android.exoplayer2.c.h()
+    bil = new com.google.android.exoplayer2.c.h()
     {
-      public final e[] us()
+      public final e[] ux()
       {
         AppMethodBeat.i(92270);
         p localp = new p();
@@ -48,22 +48,22 @@ public final class p
   private p(u paramu)
   {
     AppMethodBeat.i(92273);
-    this.bnm = paramu;
-    this.bsm = new com.google.android.exoplayer2.i.m(4096);
-    this.bsl = new SparseArray();
+    this.bnh = paramu;
+    this.bsh = new com.google.android.exoplayer2.i.m(4096);
+    this.bsg = new SparseArray();
     AppMethodBeat.o(92273);
   }
   
   public final int a(f paramf, k paramk)
   {
     AppMethodBeat.i(92277);
-    if (!paramf.b(this.bsm.data, 0, 4, true))
+    if (!paramf.b(this.bsh.data, 0, 4, true))
     {
       AppMethodBeat.o(92277);
       return -1;
     }
-    this.bsm.setPosition(0);
-    int i = this.bsm.readInt();
+    this.bsh.setPosition(0);
+    int i = this.bsh.readInt();
     if (i == 441)
     {
       AppMethodBeat.o(92277);
@@ -71,81 +71,81 @@ public final class p
     }
     if (i == 442)
     {
-      paramf.b(this.bsm.data, 0, 10);
-      this.bsm.setPosition(9);
-      paramf.dU((this.bsm.readUnsignedByte() & 0x7) + 14);
+      paramf.b(this.bsh.data, 0, 10);
+      this.bsh.setPosition(9);
+      paramf.dP((this.bsh.readUnsignedByte() & 0x7) + 14);
       AppMethodBeat.o(92277);
       return 0;
     }
     if (i == 443)
     {
-      paramf.b(this.bsm.data, 0, 2);
-      this.bsm.setPosition(0);
-      paramf.dU(this.bsm.readUnsignedShort() + 6);
+      paramf.b(this.bsh.data, 0, 2);
+      this.bsh.setPosition(0);
+      paramf.dP(this.bsh.readUnsignedShort() + 6);
       AppMethodBeat.o(92277);
       return 0;
     }
     if ((i & 0xFFFFFF00) >> 8 != 1)
     {
-      paramf.dU(1);
+      paramf.dP(1);
       AppMethodBeat.o(92277);
       return 0;
     }
     i &= 0xFF;
-    a locala = (a)this.bsl.get(i);
+    a locala = (a)this.bsg.get(i);
     paramk = locala;
     Object localObject;
-    if (!this.bsn)
+    if (!this.bsi)
     {
       localObject = locala;
       if (locala == null)
       {
         localObject = null;
-        if ((this.bso) || (i != 189)) {
+        if ((this.bsj) || (i != 189)) {
           break label422;
         }
         paramk = new b();
-        this.bso = true;
+        this.bsj = true;
         localObject = locala;
         if (paramk != null)
         {
           localObject = new v.d(i, 256);
-          paramk.a(this.bpm, (v.d)localObject);
-          localObject = new a(paramk, this.bnm);
-          this.bsl.put(i, localObject);
+          paramk.a(this.bph, (v.d)localObject);
+          localObject = new a(paramk, this.bnh);
+          this.bsg.put(i, localObject);
         }
       }
-      if ((!this.bso) || (!this.bsp))
+      if ((!this.bsj) || (!this.bsk))
       {
         paramk = (k)localObject;
         if (paramf.getPosition() <= 1048576L) {}
       }
       else
       {
-        this.bsn = true;
-        this.bpm.ut();
+        this.bsi = true;
+        this.bph.uy();
         paramk = (k)localObject;
       }
     }
-    paramf.b(this.bsm.data, 0, 2);
-    this.bsm.setPosition(0);
-    i = this.bsm.readUnsignedShort() + 6;
+    paramf.b(this.bsh.data, 0, 2);
+    this.bsh.setPosition(0);
+    i = this.bsh.readUnsignedShort() + 6;
     if (paramk == null) {
-      paramf.dU(i);
+      paramf.dP(i);
     }
     for (;;)
     {
       AppMethodBeat.o(92277);
       return 0;
       label422:
-      if ((!this.bso) && ((i & 0xE0) == 192))
+      if ((!this.bsj) && ((i & 0xE0) == 192))
       {
         paramk = new m();
-        this.bso = true;
+        this.bsj = true;
         break;
       }
       paramk = (k)localObject;
-      if (this.bsp) {
+      if (this.bsk) {
         break;
       }
       paramk = (k)localObject;
@@ -153,56 +153,56 @@ public final class p
         break;
       }
       paramk = new i();
-      this.bsp = true;
+      this.bsk = true;
       break;
-      this.bsm.reset(i);
-      paramf.readFully(this.bsm.data, 0, i);
-      this.bsm.setPosition(6);
-      paramf = this.bsm;
-      paramf.readBytes(paramk.bse.data, 0, 3);
-      paramk.bse.setPosition(0);
-      paramk.bse.et(8);
-      paramk.bsf = paramk.bse.uD();
-      paramk.bsg = paramk.bse.uD();
-      paramk.bse.et(6);
-      paramk.bsi = paramk.bse.es(8);
-      paramf.readBytes(paramk.bse.data, 0, paramk.bsi);
-      paramk.bse.setPosition(0);
+      this.bsh.reset(i);
+      paramf.readFully(this.bsh.data, 0, i);
+      this.bsh.setPosition(6);
+      paramf = this.bsh;
+      paramf.readBytes(paramk.brZ.data, 0, 3);
+      paramk.brZ.setPosition(0);
+      paramk.brZ.en(8);
+      paramk.bsa = paramk.brZ.uI();
+      paramk.bsb = paramk.brZ.uI();
+      paramk.brZ.en(6);
+      paramk.bsd = paramk.brZ.em(8);
+      paramf.readBytes(paramk.brZ.data, 0, paramk.bsd);
+      paramk.brZ.setPosition(0);
       paramk.timeUs = 0L;
-      if (paramk.bsf)
+      if (paramk.bsa)
       {
-        paramk.bse.et(4);
-        long l1 = paramk.bse.es(3);
-        paramk.bse.et(1);
-        long l2 = paramk.bse.es(15) << 15;
-        paramk.bse.et(1);
-        long l3 = paramk.bse.es(15);
-        paramk.bse.et(1);
-        if ((!paramk.bsh) && (paramk.bsg))
+        paramk.brZ.en(4);
+        long l1 = paramk.brZ.em(3);
+        paramk.brZ.en(1);
+        long l2 = paramk.brZ.em(15) << 15;
+        paramk.brZ.en(1);
+        long l3 = paramk.brZ.em(15);
+        paramk.brZ.en(1);
+        if ((!paramk.bsc) && (paramk.bsb))
         {
-          paramk.bse.et(4);
-          long l4 = paramk.bse.es(3);
-          paramk.bse.et(1);
-          long l5 = paramk.bse.es(15) << 15;
-          paramk.bse.et(1);
-          long l6 = paramk.bse.es(15);
-          paramk.bse.et(1);
-          paramk.bnm.ao(l4 << 30 | l5 | l6);
-          paramk.bsh = true;
+          paramk.brZ.en(4);
+          long l4 = paramk.brZ.em(3);
+          paramk.brZ.en(1);
+          long l5 = paramk.brZ.em(15) << 15;
+          paramk.brZ.en(1);
+          long l6 = paramk.brZ.em(15);
+          paramk.brZ.en(1);
+          paramk.bnh.ao(l4 << 30 | l5 | l6);
+          paramk.bsc = true;
         }
-        paramk.timeUs = paramk.bnm.ao(l1 << 30 | l2 | l3);
+        paramk.timeUs = paramk.bnh.ao(l1 << 30 | l2 | l3);
       }
-      paramk.bsq.c(paramk.timeUs, true);
-      paramk.bsq.t(paramf);
-      paramk.bsq.uG();
-      this.bsm.eZ(this.bsm.capacity());
+      paramk.bsl.c(paramk.timeUs, true);
+      paramk.bsl.t(paramf);
+      paramk.bsl.uL();
+      this.bsh.eY(this.bsh.capacity());
     }
   }
   
   public final void a(g paramg)
   {
     AppMethodBeat.i(92275);
-    this.bpm = paramg;
+    this.bph = paramg;
     paramg.a(new l.a(-9223372036854775807L));
     AppMethodBeat.o(92275);
   }
@@ -242,7 +242,7 @@ public final class p
       AppMethodBeat.o(92274);
       return false;
     }
-    paramf.dV(arrayOfByte[13] & 0x7);
+    paramf.dQ(arrayOfByte[13] & 0x7);
     paramf.b(arrayOfByte, 0, 3);
     int i = arrayOfByte[0];
     int j = arrayOfByte[1];
@@ -258,13 +258,13 @@ public final class p
   public final void f(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(92276);
-    this.bnm.bHp = -9223372036854775807L;
+    this.bnh.bHG = -9223372036854775807L;
     int i = 0;
-    while (i < this.bsl.size())
+    while (i < this.bsg.size())
     {
-      a locala = (a)this.bsl.valueAt(i);
-      locala.bsh = false;
-      locala.bsq.uF();
+      a locala = (a)this.bsg.valueAt(i);
+      locala.bsc = false;
+      locala.bsl.uK();
       i += 1;
     }
     AppMethodBeat.o(92276);
@@ -272,28 +272,28 @@ public final class p
   
   static final class a
   {
-    final u bnm;
-    final l bse;
-    boolean bsf;
-    boolean bsg;
-    boolean bsh;
-    int bsi;
-    final h bsq;
+    final u bnh;
+    final l brZ;
+    boolean bsa;
+    boolean bsb;
+    boolean bsc;
+    int bsd;
+    final h bsl;
     long timeUs;
     
     public a(h paramh, u paramu)
     {
       AppMethodBeat.i(92271);
-      this.bsq = paramh;
-      this.bnm = paramu;
-      this.bse = new l(new byte[64]);
+      this.bsl = paramh;
+      this.bnh = paramu;
+      this.brZ = new l(new byte[64]);
       AppMethodBeat.o(92271);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.f.p
  * JD-Core Version:    0.7.0.1
  */

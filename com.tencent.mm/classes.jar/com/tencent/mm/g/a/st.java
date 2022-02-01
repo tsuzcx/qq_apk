@@ -1,12 +1,16 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.ag.z;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.storage.ca;
+import java.util.List;
 
 public final class st
-  extends b
+  extends IEvent
 {
-  public a dIr;
+  public a dZk;
   
   public st()
   {
@@ -15,22 +19,25 @@ public final class st
   
   private st(byte paramByte)
   {
-    AppMethodBeat.i(197180);
-    this.dIr = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(149887);
+    this.dZk = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(197180);
+    AppMethodBeat.o(149887);
   }
   
   public static final class a
   {
-    public String cUA;
-    public long msgId;
+    public Context context;
+    public List<ca> dXK;
+    public boolean dZl = false;
+    public z dZm;
+    public String talker;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.st
  * JD-Core Version:    0.7.0.1
  */

@@ -1,100 +1,86 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class aho
-  extends cvw
+  extends com.tencent.mm.bw.a
 {
-  public String GxB;
-  public int Scene;
+  public String Cyk;
+  public int Lrq;
+  public String xMX;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(56245);
+    AppMethodBeat.i(197134);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.xMX != null) {
+        paramVarArgs.e(1, this.xMX);
       }
-      if (this.GxB != null) {
-        paramVarArgs.d(2, this.GxB);
+      if (this.Cyk != null) {
+        paramVarArgs.e(2, this.Cyk);
       }
-      paramVarArgs.aS(3, this.Scene);
-      AppMethodBeat.o(56245);
+      paramVarArgs.aM(3, this.Lrq);
+      AppMethodBeat.o(197134);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label414;
+      if (this.xMX == null) {
+        break label318;
       }
     }
-    label414:
-    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label318:
+    for (paramInt = g.a.a.b.b.a.f(1, this.xMX) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.GxB != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.GxB);
+      if (this.Cyk != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.Cyk);
       }
-      paramInt = f.a.a.b.b.a.bz(3, this.Scene);
-      AppMethodBeat.o(56245);
+      paramInt = g.a.a.b.b.a.bu(3, this.Lrq);
+      AppMethodBeat.o(197134);
       return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(56245);
+        AppMethodBeat.o(197134);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         aho localaho = (aho)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(56245);
+          AppMethodBeat.o(197134);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localaho.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(56245);
+          localaho.xMX = locala.UbS.readString();
+          AppMethodBeat.o(197134);
           return 0;
         case 2: 
-          localaho.GxB = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(56245);
+          localaho.Cyk = locala.UbS.readString();
+          AppMethodBeat.o(197134);
           return 0;
         }
-        localaho.Scene = ((f.a.a.a.a)localObject1).OmT.zc();
-        AppMethodBeat.o(56245);
+        localaho.Lrq = locala.UbS.zi();
+        AppMethodBeat.o(197134);
         return 0;
       }
-      AppMethodBeat.o(56245);
+      AppMethodBeat.o(197134);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.aho
  * JD-Core Version:    0.7.0.1
  */

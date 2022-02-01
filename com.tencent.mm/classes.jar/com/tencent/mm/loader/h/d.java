@@ -5,74 +5,82 @@ import com.tencent.mm.memory.a.c;
 
 public final class d<K, V>
 {
-  private f<K, V> hjg;
+  private f<K, V> icd;
   
   public d(int paramInt)
   {
-    this.hjg = new c(paramInt);
+    this.icd = new c(paramInt);
   }
   
-  public final V aL(K paramK)
+  public final V aT(K paramK)
   {
-    if (this.hjg == null) {
+    if (this.icd == null) {
       throw new NullPointerException("mData == null");
     }
-    return this.hjg.aL(paramK);
+    return this.icd.aT(paramK);
   }
   
-  public final boolean aM(K paramK)
+  public final boolean check(K paramK)
   {
     try
     {
-      if (this.hjg == null) {
+      if (this.icd == null) {
         throw new NullPointerException("mData == null");
       }
     }
     finally {}
-    boolean bool = this.hjg.aM(paramK);
+    boolean bool = this.icd.check(paramK);
     return bool;
   }
   
   public final void clear()
   {
-    if (this.hjg == null) {
+    if (this.icd == null) {
       throw new NullPointerException("mData == null");
     }
-    this.hjg.trimToSize(-1);
+    this.icd.trimToSize(-1);
   }
   
   public final V get(K paramK)
   {
-    if (this.hjg == null) {
+    if (this.icd == null) {
       throw new NullPointerException("mData == null");
     }
-    return this.hjg.get(paramK);
+    return this.icd.get(paramK);
   }
   
   public final V put(K paramK, V paramV)
   {
-    if (this.hjg == null) {
+    if (this.icd == null) {
       throw new NullPointerException("mData == null");
     }
-    return this.hjg.put(paramK, paramV);
+    return this.icd.put(paramK, paramV);
+  }
+  
+  public final V remove(K paramK)
+  {
+    if (this.icd == null) {
+      throw new NullPointerException("mData == null");
+    }
+    return this.icd.remove(paramK);
   }
   
   public final String toString()
   {
     try
     {
-      if (this.hjg == null) {
+      if (this.icd == null) {
         throw new NullPointerException("mData == null");
       }
     }
     finally {}
-    String str = this.hjg.toString();
+    String str = this.icd.toString();
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.loader.h.d
  * JD-Core Version:    0.7.0.1
  */

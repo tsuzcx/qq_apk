@@ -10,13 +10,13 @@ public final class AssetReader
   extends AbsReader
 {
   public static final Parcelable.Creator<AssetReader> CREATOR;
-  public static final AssetReader jIn;
-  private final WxaPkgWrappingInfo jIm;
+  public static final AssetReader kKj;
+  private final WxaPkgWrappingInfo kKi;
   
   static
   {
     AppMethodBeat.i(139824);
-    jIn = new AssetReader();
+    kKj = new AssetReader();
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(139824);
   }
@@ -24,11 +24,11 @@ public final class AssetReader
   public AssetReader()
   {
     AppMethodBeat.i(139822);
-    this.jIm = new WxaPkgWrappingInfo();
-    this.jIm.jLX = true;
-    this.jIm.jLV = 0;
-    this.jIm.pkgVersion = ay.VERSION;
-    this.jIm.md5 = "";
+    this.kKi = new WxaPkgWrappingInfo();
+    this.kKi.kNY = true;
+    this.kKi.kNW = 0;
+    this.kKi.pkgVersion = ay.VERSION;
+    this.kKi.md5 = "";
     AppMethodBeat.o(139822);
   }
   
@@ -55,7 +55,7 @@ public final class AssetReader
   public final String toString()
   {
     AppMethodBeat.i(139823);
-    String str = String.format(Locale.ENGLISH, "AssetReader[%d][%s]", new Object[] { Integer.valueOf(aZM()), aZK() });
+    String str = String.format(Locale.ENGLISH, "AssetReader[%d][%s]", new Object[] { Integer.valueOf(bvd()), bvb() });
     AppMethodBeat.o(139823);
     return str;
   }
@@ -64,7 +64,7 @@ public final class AssetReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.AssetReader
  * JD-Core Version:    0.7.0.1
  */

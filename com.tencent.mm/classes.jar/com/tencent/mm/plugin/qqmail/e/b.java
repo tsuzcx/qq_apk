@@ -1,45 +1,44 @@
 package com.tencent.mm.plugin.qqmail.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.kernel.a;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.qqmail.d.aq;
 import com.tencent.mm.plugin.qqmail.d.ar;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public com.tencent.mm.ak.b hZD;
+  private i callback;
+  public d iUB;
   
   public b()
   {
-    AppMethodBeat.i(217997);
-    b.a locala = new b.a();
+    AppMethodBeat.i(198653);
+    d.a locala = new d.a();
     locala.funcId = getType();
     locala.uri = "/cgi-bin/xmmailbroker/mb_getunreadcount";
     aq localaq = new aq();
-    g.ajP();
+    com.tencent.mm.kernel.g.aAf();
     localaq.uin = a.getUin();
-    locala.hQF = localaq;
-    locala.hQG = new ar();
-    this.hZD = locala.aDS();
-    AppMethodBeat.o(217997);
+    locala.iLN = localaq;
+    locala.iLO = new ar();
+    this.iUB = locala.aXF();
+    AppMethodBeat.o(198653);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
-    AppMethodBeat.i(217998);
-    this.callback = paramf;
-    int i = dispatch(parame, this.hZD, this);
-    AppMethodBeat.o(217998);
+    AppMethodBeat.i(198654);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
+    AppMethodBeat.o(198654);
     return i;
   }
   
@@ -48,11 +47,11 @@ public final class b
     return 12213;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(217999);
+    AppMethodBeat.i(198655);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(217999);
+    AppMethodBeat.o(198655);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.fav.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
@@ -12,68 +12,68 @@ import org.json.JSONObject;
 
 public final class i
 {
-  public static List<a> rAU;
-  private static String rAV = "";
-  private static String rAW = "";
-  private static long rAX = 0L;
+  private static String taA = "";
+  private static String taB = "";
+  private static long taC = 0L;
+  public static List<a> taz;
   
   private static void a(String paramString1, long paramLong, int paramInt, String paramString2)
   {
     AppMethodBeat.i(103400);
-    if (rAU == null)
+    if (taz == null)
     {
       AppMethodBeat.o(103400);
       return;
     }
     a locala = new a((byte)0);
     locala.pageId = paramString1;
-    locala.rAY = paramLong;
+    locala.taD = paramLong;
     locala.in = paramInt;
-    if (bu.isNullOrNil(paramString2)) {}
-    for (locala.rfp = "-1";; locala.rfp = paramString2)
+    if (Util.isNullOrNil(paramString2)) {}
+    for (locala.sGF = "-1";; locala.sGF = paramString2)
     {
-      if (rAU != null) {
-        rAU.add(locala);
+      if (taz != null) {
+        taz.add(locala);
       }
       AppMethodBeat.o(103400);
       return;
     }
   }
   
-  public static void ahl(String paramString)
+  public static void arT(String paramString)
   {
     AppMethodBeat.i(103402);
-    gn(paramString, "");
+    gF(paramString, "");
     AppMethodBeat.o(103402);
   }
   
-  public static void ahm(String paramString)
+  public static void arU(String paramString)
   {
     AppMethodBeat.i(103404);
-    go(paramString, "");
+    gG(paramString, "");
     AppMethodBeat.o(103404);
   }
   
-  private static void cwA()
+  private static void cUE()
   {
-    rAV = "";
-    rAW = "";
-    rAX = 0L;
+    taA = "";
+    taB = "";
+    taC = 0L;
   }
   
   public static void end()
   {
     AppMethodBeat.i(103399);
-    if (rAU == null)
+    if (taz == null)
     {
-      rAU = null;
-      cwA();
+      taz = null;
+      cUE();
       AppMethodBeat.o(103399);
       return;
     }
     Object localObject1 = new StringBuilder();
     ((StringBuilder)localObject1).append("[");
-    Object localObject2 = rAU.iterator();
+    Object localObject2 = taz.iterator();
     for (;;)
     {
       if (((Iterator)localObject2).hasNext())
@@ -83,14 +83,14 @@ public final class i
         try
         {
           localJSONObject.put("p", locala.pageId);
-          localJSONObject.put("tbe", locala.rAY);
+          localJSONObject.put("tbe", locala.taD);
           localJSONObject.put("in", locala.in);
-          localJSONObject.put("sid", locala.rfp);
+          localJSONObject.put("sid", locala.sGF);
           ((StringBuilder)localObject1).append(localJSONObject.toString()).append(";");
           if (((StringBuilder)localObject1).length() > 3072)
           {
-            rAU = null;
-            cwA();
+            taz = null;
+            cUE();
             AppMethodBeat.o(103399);
             return;
           }
@@ -99,7 +99,7 @@ public final class i
         {
           for (;;)
           {
-            ae.w("MicroMsg.Fav.FavSearchFlowReportLogic", "end, JSONException");
+            Log.w("MicroMsg.Fav.FavSearchFlowReportLogic", "end, JSONException");
           }
         }
       }
@@ -108,8 +108,8 @@ public final class i
     localObject1 = ((StringBuilder)localObject1).toString();
     if (((String)localObject1).length() > 3072)
     {
-      rAU = null;
-      cwA();
+      taz = null;
+      cUE();
       AppMethodBeat.o(103399);
       return;
     }
@@ -138,53 +138,53 @@ public final class i
       {
         for (;;)
         {
-          ae.w("MicroMsg.Fav.FavSearchFlowReportLogic", "report flow error: " + localThrowable.getMessage());
+          Log.w("MicroMsg.Fav.FavSearchFlowReportLogic", "report flow error: " + localThrowable.getMessage());
         }
       }
-      g.yxI.f(15508, new Object[] { localObject2[0], localObject2[1], localObject2[2] });
-      rAU = null;
-      cwA();
+      h.CyF.a(15508, new Object[] { localObject2[0], localObject2[1], localObject2[2] });
+      taz = null;
+      cUE();
       AppMethodBeat.o(103399);
       return;
       i = 0;
     }
   }
   
-  public static void gn(String paramString1, String paramString2)
+  public static void gF(String paramString1, String paramString2)
   {
     AppMethodBeat.i(103401);
-    if (!bu.isNullOrNil(rAV)) {
-      go(rAV, rAW);
+    if (!Util.isNullOrNil(taA)) {
+      gG(taA, taB);
     }
-    rAV = paramString1;
-    rAW = paramString2;
-    rAX = System.currentTimeMillis();
+    taA = paramString1;
+    taB = paramString2;
+    taC = System.currentTimeMillis();
     AppMethodBeat.o(103401);
   }
   
-  private static void go(String paramString1, String paramString2)
+  private static void gG(String paramString1, String paramString2)
   {
     AppMethodBeat.i(103403);
-    if ((bu.isNullOrNil(paramString1)) || (!paramString1.equals(rAV)))
+    if ((Util.isNullOrNil(paramString1)) || (!paramString1.equals(taA)))
     {
       AppMethodBeat.o(103403);
       return;
     }
-    int i = (int)(System.currentTimeMillis() - rAX);
-    rAX /= 1000L;
+    int i = (int)(System.currentTimeMillis() - taC);
+    taC /= 1000L;
     String str = paramString2;
-    if (bu.isNullOrNil(paramString2)) {
+    if (Util.isNullOrNil(paramString2)) {
       str = "-1";
     }
-    a(paramString1, rAX, i, str);
-    cwA();
+    a(paramString1, taC, i, str);
+    cUE();
     AppMethodBeat.o(103403);
   }
   
   public static void start()
   {
     AppMethodBeat.i(103398);
-    rAU = new Vector();
+    taz = new Vector();
     AppMethodBeat.o(103398);
   }
   
@@ -192,13 +192,13 @@ public final class i
   {
     int in;
     String pageId;
-    long rAY;
-    String rfp;
+    String sGF;
+    long taD;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.a.i
  * JD-Core Version:    0.7.0.1
  */

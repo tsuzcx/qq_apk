@@ -3,37 +3,37 @@ package com.tencent.mm.plugin.card.ui.view;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.card.base.b;
 import com.tencent.mm.plugin.card.d.c;
-import com.tencent.mm.protocal.protobuf.aai;
-import com.tencent.mm.protocal.protobuf.st;
-import com.tencent.mm.protocal.protobuf.tu;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.abz;
+import com.tencent.mm.protocal.protobuf.ty;
+import com.tencent.mm.protocal.protobuf.uz;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class q
   extends g
 {
-  public String oQb = "";
+  public String qdP = "";
   
-  public final ab bZM()
+  public final ab cxB()
   {
     AppMethodBeat.i(113704);
-    s locals = new s(this, this.oDq);
+    s locals = new s(this, this.pQZ);
     AppMethodBeat.o(113704);
     return locals;
   }
   
-  public final ab bZN()
+  public final ab cxC()
   {
     AppMethodBeat.i(113705);
-    p localp = new p(this, this.oDq);
+    p localp = new p(this, this.pQZ);
     AppMethodBeat.o(113705);
     return localp;
   }
   
-  public final ab bZO()
+  public final ab cxD()
   {
     AppMethodBeat.i(113706);
-    r localr = new r(this, this.oDq);
+    r localr = new r(this, this.pQZ);
     AppMethodBeat.o(113706);
     return localr;
   }
@@ -41,19 +41,19 @@ public final class q
   public final String e(c paramc)
   {
     AppMethodBeat.i(113703);
-    if (!bu.isNullOrNil(this.oDm.bVd().Gib))
+    if (!Util.isNullOrNil(this.pQV.csR().LcE))
     {
-      paramc = this.oDm.bVd().Gib;
+      paramc = this.pQV.csR().LcE;
       AppMethodBeat.o(113703);
       return paramc;
     }
-    if ((this.oDm.bUW()) && (!bu.isNullOrNil(this.oQb)))
+    if ((this.pQV.csK()) && (!Util.isNullOrNil(this.qdP)))
     {
-      paramc = this.oQb;
+      paramc = this.qdP;
       AppMethodBeat.o(113703);
       return paramc;
     }
-    paramc = this.oDm.bVd().code;
+    paramc = this.pQV.csR().code;
     AppMethodBeat.o(113703);
     return paramc;
   }
@@ -61,49 +61,49 @@ public final class q
   public final boolean f(b paramb)
   {
     AppMethodBeat.i(113702);
-    if (this.oDm == null)
+    if (this.pQV == null)
     {
-      ae.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain mCardInfo is null！");
+      Log.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain mCardInfo is null！");
       AppMethodBeat.o(113702);
       return true;
     }
     if (paramb == null)
     {
-      ae.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain false  newCardInfo null！");
+      Log.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain false  newCardInfo null！");
       AppMethodBeat.o(113702);
       return false;
     }
-    Object localObject = this.oDm.bVd().code;
-    String str = paramb.bVd().code;
-    if ((!bu.isNullOrNil((String)localObject)) && (!bu.isNullOrNil(str)) && (!((String)localObject).equals(str)))
+    Object localObject = this.pQV.csR().code;
+    String str = paramb.csR().code;
+    if ((!Util.isNullOrNil((String)localObject)) && (!Util.isNullOrNil(str)) && (!((String)localObject).equals(str)))
     {
-      ae.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain   code  is diffrent！");
+      Log.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain   code  is diffrent！");
       AppMethodBeat.o(113702);
       return true;
     }
-    localObject = this.oDm.bVc().GkB;
-    paramb = paramb.bVc().GkB;
+    localObject = this.pQV.csQ().Lfe;
+    paramb = paramb.csQ().Lfe;
     if (((localObject == null) && (paramb != null)) || ((localObject != null) && (paramb == null)))
     {
-      ae.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field  is diffrent！");
+      Log.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field  is diffrent！");
       AppMethodBeat.o(113702);
       return true;
     }
-    if ((localObject != null) && (paramb != null) && (((aai)localObject).title != null) && (paramb.title != null) && (!((aai)localObject).title.equals(paramb.title)))
+    if ((localObject != null) && (paramb != null) && (((abz)localObject).title != null) && (paramb.title != null) && (!((abz)localObject).title.equals(paramb.title)))
     {
-      ae.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field title is diffrent！");
+      Log.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field title is diffrent！");
       AppMethodBeat.o(113702);
       return true;
     }
-    if ((localObject != null) && (paramb != null) && (((aai)localObject).oEq != null) && (paramb.oEq != null) && (!((aai)localObject).oEq.equals(paramb.oEq)))
+    if ((localObject != null) && (paramb != null) && (((abz)localObject).pRZ != null) && (paramb.pRZ != null) && (!((abz)localObject).pRZ.equals(paramb.pRZ)))
     {
-      ae.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field aux_title  is diffrent！");
+      Log.i("MicroMsg.CardCodeView", "isNeedUpdateViewAgain pay_and_qrcode_field aux_title  is diffrent！");
       AppMethodBeat.o(113702);
       return true;
     }
-    if ((this.oDm.bUW()) && (!bu.isNullOrNil(this.oQb)))
+    if ((this.pQV.csK()) && (!Util.isNullOrNil(this.qdP)))
     {
-      ae.i("MicroMsg.CardCodeView", "dynamicCode updated！");
+      Log.i("MicroMsg.CardCodeView", "dynamicCode updated！");
       AppMethodBeat.o(113702);
       return true;
     }
@@ -113,7 +113,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.view.q
  * JD-Core Version:    0.7.0.1
  */

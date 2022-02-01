@@ -5,84 +5,84 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public int cSL;
+  int cSx;
   public long createTime;
-  int dEu;
+  public int djh;
   public String filename;
-  String hKF;
-  String hKG;
-  String iqo;
-  int iwV;
-  long iwX;
+  String iFt;
+  String iFu;
+  String jlz;
+  int jsk;
+  long jsm;
   public int msgType;
   int status;
-  String vTf;
-  public String vTg;
-  public int vTh;
-  public int vTi;
-  int vTj;
-  int vTk;
-  public int vTl;
   public int videoSource;
+  String znl;
+  public String znm;
+  public int znn;
+  public int zno;
+  int znp;
+  int znq;
+  public int znr;
   
   public a()
   {
     AppMethodBeat.i(26343);
-    this.dEu = -1;
-    this.iqo = "";
+    this.cSx = -1;
+    this.jlz = "";
     this.status = 0;
     this.createTime = 0L;
-    this.iwX = 0L;
+    this.jsm = 0L;
     this.filename = "";
-    this.vTf = "";
-    this.vTg = "";
-    this.vTh = 0;
+    this.znl = "";
+    this.znm = "";
+    this.znn = 0;
     this.msgType = 0;
-    this.vTi = 0;
-    this.vTj = 0;
-    this.cSL = 0;
-    this.iwV = 0;
-    this.vTk = 0;
+    this.zno = 0;
+    this.znp = 0;
+    this.djh = 0;
+    this.jsk = 0;
+    this.znq = 0;
     this.videoSource = 0;
-    this.vTl = 0;
-    this.hKF = "";
-    this.hKG = "";
+    this.znr = 0;
+    this.iFt = "";
+    this.iFu = "";
     AppMethodBeat.o(26343);
   }
   
   public final void convertFrom(Cursor paramCursor)
   {
     AppMethodBeat.i(26344);
-    this.iqo = paramCursor.getString(0);
+    this.jlz = paramCursor.getString(0);
     this.status = paramCursor.getInt(1);
     this.createTime = paramCursor.getLong(2);
-    this.iwX = paramCursor.getLong(3);
+    this.jsm = paramCursor.getLong(3);
     this.filename = paramCursor.getString(4);
-    this.vTf = paramCursor.getString(5);
-    this.vTg = paramCursor.getString(6);
-    this.vTh = paramCursor.getInt(7);
+    this.znl = paramCursor.getString(5);
+    this.znm = paramCursor.getString(6);
+    this.znn = paramCursor.getInt(7);
     this.msgType = paramCursor.getInt(8);
-    this.vTi = paramCursor.getInt(9);
-    this.vTj = paramCursor.getInt(10);
-    this.cSL = paramCursor.getInt(11);
-    this.iwV = paramCursor.getInt(12);
-    this.vTk = paramCursor.getInt(13);
+    this.zno = paramCursor.getInt(9);
+    this.znp = paramCursor.getInt(10);
+    this.djh = paramCursor.getInt(11);
+    this.jsk = paramCursor.getInt(12);
+    this.znq = paramCursor.getInt(13);
     this.videoSource = paramCursor.getInt(14);
-    this.vTl = paramCursor.getInt(15);
-    this.hKF = paramCursor.getString(16);
-    this.hKG = paramCursor.getString(17);
+    this.znr = paramCursor.getInt(15);
+    this.iFt = paramCursor.getString(16);
+    this.iFu = paramCursor.getString(17);
     AppMethodBeat.o(26344);
   }
   
-  public final String dnK()
+  public final String ehw()
   {
-    if (this.iqo == null) {
+    if (this.jlz == null) {
       return "";
     }
-    return this.iqo;
+    return this.jlz;
   }
   
-  public final String dnL()
+  public final String ehx()
   {
     if (this.filename == null) {
       return "";
@@ -90,25 +90,25 @@ public final class a
     return this.filename;
   }
   
-  public final String dnM()
+  public final String ehy()
   {
-    if (this.vTf == null) {
+    if (this.znl == null) {
       return "";
     }
-    return this.vTf;
+    return this.znl;
   }
   
-  public final String dnN()
+  public final String ehz()
   {
-    if (this.vTg == null) {
+    if (this.znm == null) {
       return "";
     }
-    return this.vTg;
+    return this.znm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -7,23 +7,23 @@ public class SourceInfoStorageFactory
 {
   public static SourceInfoStorage newEmptySourceInfoStorage()
   {
-    AppMethodBeat.i(195193);
+    AppMethodBeat.i(223220);
     NoSourceInfoStorage localNoSourceInfoStorage = new NoSourceInfoStorage();
-    AppMethodBeat.o(195193);
+    AppMethodBeat.o(223220);
     return localNoSourceInfoStorage;
   }
   
   public static SourceInfoStorage newSourceInfoStorage(Context paramContext)
   {
-    AppMethodBeat.i(195192);
+    AppMethodBeat.i(223219);
     paramContext = new DatabaseSourceInfoStorage(paramContext);
-    AppMethodBeat.o(195192);
+    AppMethodBeat.o(223219);
     return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.danikula.videocache.sourcestorage.SourceInfoStorageFactory
  * JD-Core Version:    0.7.0.1
  */

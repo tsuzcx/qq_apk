@@ -11,17 +11,19 @@ import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ab.i;
 import com.tencent.mm.aj.e.b;
-import com.tencent.mm.g.a.gb;
-import com.tencent.mm.g.a.gb.b;
-import com.tencent.mm.g.a.vs;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.v;
-import com.tencent.mm.modelvoice.q;
+import com.tencent.mm.g.a.ge;
+import com.tencent.mm.g.a.ge.b;
+import com.tencent.mm.g.a.ws;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.z;
+import com.tencent.mm.modelvoice.k;
 import com.tencent.mm.plugin.appbrand.appusage.LocalUsageInfo;
+import com.tencent.mm.plugin.appbrand.appusage.ag;
 import com.tencent.mm.plugin.appbrand.appusage.ah;
-import com.tencent.mm.plugin.appbrand.appusage.ai;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes;
+import com.tencent.mm.plugin.appbrand.service.m;
 import com.tencent.mm.plugin.ext.d.b.b;
 import com.tencent.mm.plugin.ext.d.d.b;
 import com.tencent.mm.plugin.ext.d.e.2;
@@ -29,16 +31,23 @@ import com.tencent.mm.plugin.ext.d.e.a;
 import com.tencent.mm.plugin.ext.provider.ExtContentProviderBase;
 import com.tencent.mm.plugin.ext.ui.RedirectToQrCodeStubUI;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.bz;
-import com.tencent.mm.storage.ca;
-import com.tencent.mm.storage.ck;
-import com.tencent.mm.storage.cl;
+import com.tencent.mm.plugin.sight.base.d;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.cg;
+import com.tencent.mm.storage.ch;
+import com.tencent.mm.storage.cr;
+import com.tencent.mm.storage.cs;
+import com.tencent.mm.vfs.s;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -52,23 +61,23 @@ public class ExtControlProviderOpenApi
   extends ExtContentProviderBase
 {
   public static boolean IS_DEBUG = false;
-  private static final String[] rlb = { "retCode", "selfId" };
-  private static final String[] rlc = { "retCode", "sportConfig" };
-  private static final String[] rld = { "openid", "avatar" };
-  private static final String[] rle = { "voiceType", "sampleRateInHz", "channelConfig", "audioFormat", "filePath" };
-  private static final String[] rlf = { "ssid", "macAddress", "isSupportWechat", "name" };
-  private static final String[] rlg = { "username", "appId", "versionType", "nickname", "shortNickname", "iconURL", "collection", "runningFlag", "wechatPkg", "action", "intentInfo" };
-  private static final String[] rlh = { "token", "nickname", "iconURL" };
+  private static final String[] sMG = { "retCode", "selfId" };
+  private static final String[] sMH = { "retCode", "sportConfig" };
+  private static final String[] sMI = { "openid", "avatar" };
+  private static final String[] sMJ = { "voiceType", "sampleRateInHz", "channelConfig", "audioFormat", "filePath" };
+  private static final String[] sMK = { "ssid", "macAddress", "isSupportWechat", "name" };
+  private static final String[] sML = { "username", "appId", "versionType", "nickname", "shortNickname", "iconURL", "collection", "runningFlag", "wechatPkg", "action", "intentInfo" };
+  private static final String[] sMM = { "token", "nickname", "iconURL" };
   private String appId = "";
   private Context context;
-  private aq handler;
-  private String[] rli = null;
-  private int rlj = -1;
+  private MMHandler handler;
+  private String[] sMN = null;
+  private int sMO = -1;
   
   private ExtControlProviderOpenApi(String[] paramArrayOfString, int paramInt, Context paramContext)
   {
-    this.rli = paramArrayOfString;
-    this.rlj = paramInt;
+    this.sMN = paramArrayOfString;
+    this.sMO = paramInt;
     this.context = paramContext;
   }
   
@@ -78,110 +87,19 @@ public class ExtControlProviderOpenApi
     this.appId = paramString;
   }
   
-  private Cursor Y(String paramString1, String paramString2, String paramString3)
-  {
-    AppMethodBeat.i(24395);
-    ae.i("MicroMsg.ExtControlProviderOpenApi", "doRegisterMsgListener");
-    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)) || (bu.isNullOrNil(paramString3)))
-    {
-      ae.e("MicroMsg.ExtControlProviderOpenApi", "wrong args, scene = %s, msgType = %s, msgState = %s", new Object[] { paramString1, paramString2, paramString3 });
-      fz(3, 2004);
-      paramString1 = com.tencent.mm.pluginsdk.d.a.a.YL(2004);
-      AppMethodBeat.o(24395);
-      return paramString1;
-    }
-    Object localObject = null;
-    try
-    {
-      int i = Integer.parseInt(paramString3);
-      int j = Integer.parseInt(paramString1);
-      int k = Integer.parseInt(paramString2);
-      if (i != 2)
-      {
-        ae.e("MicroMsg.ExtControlProviderOpenApi", "wrong msgState: ".concat(String.valueOf(i)));
-        fz(3, 2005);
-        paramString1 = com.tencent.mm.pluginsdk.d.a.a.YL(2005);
-        AppMethodBeat.o(24395);
-        return paramString1;
-      }
-      if (com.tencent.mm.plugin.ext.b.ctz().aVN(this.rlu) == null)
-      {
-        paramString1 = new bz();
-        paramString1.field_appId = this.rlu;
-        paramString1.field_packageName = ctL();
-        paramString2 = this.rlu;
-        boolean bool;
-        if (bu.isNullOrNil(paramString2))
-        {
-          bool = false;
-          if (!bool) {
-            break label329;
-          }
-        }
-        label329:
-        for (paramString1.field_status = 1;; paramString1.field_status = 0)
-        {
-          paramString1.field_sceneFlag = j;
-          paramString1.field_msgTypeFlag = k;
-          paramString1.field_msgState = i;
-          bool = com.tencent.mm.plugin.ext.b.ctz().insert(paramString1);
-          ae.i("MicroMsg.ExtControlProviderOpenApi", "registerMsgReceiver ret = %s, pkgName = %s, scene = %s, msgType = %s, msgState = %s, appStatus = %s", new Object[] { Boolean.valueOf(bool), ctL(), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(i), Integer.valueOf(paramString1.field_status) });
-          if (bool) {
-            break label415;
-          }
-          paramString1 = com.tencent.mm.pluginsdk.d.a.a.YL(2006);
-          AppMethodBeat.o(24395);
-          return paramString1;
-          bool = com.tencent.mm.pluginsdk.model.app.h.n(com.tencent.mm.pluginsdk.model.app.h.m(paramString2, true, false));
-          break;
-        }
-        ab(1, 4, 12);
-      }
-    }
-    catch (Exception paramString1)
-    {
-      paramString2 = localObject;
-    }
-    for (;;)
-    {
-      ae.e("MicroMsg.ExtControlProviderOpenApi", "exception in doRegisterMsgListener, %s", new Object[] { paramString1.getMessage() });
-      if (paramString2 != null) {
-        paramString2.close();
-      }
-      paramString1 = com.tencent.mm.pluginsdk.d.a.a.YL(12);
-      AppMethodBeat.o(24395);
-      return paramString1;
-      ae.w("MicroMsg.ExtControlProviderOpenApi", "This app had already been registered, appId = %s, pkg = %s", new Object[] { this.rlu, ctL() });
-      label415:
-      paramString1 = new StringBuilder().append(v.aAC());
-      bc.aCg();
-      paramString1 = com.tencent.mm.sdk.platformtools.aj.ej(com.tencent.mm.model.c.getUin());
-      paramString2 = new MatrixCursor(rlb);
-      try
-      {
-        paramString2.addRow(new Object[] { Integer.valueOf(1), bu.nullAsNil(paramString1) });
-        ab(0, 0, 1);
-        ae.i("MicroMsg.ExtControlProviderOpenApi", "return  code =%s ", new Object[] { Integer.valueOf(1) });
-        AppMethodBeat.o(24395);
-        return paramString2;
-      }
-      catch (Exception paramString1) {}
-    }
-  }
-  
   private Cursor a(String[] paramArrayOfString, boolean paramBoolean)
   {
     AppMethodBeat.i(24393);
     if ((paramArrayOfString == null) || (paramArrayOfString.length < 2))
     {
-      ae.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid arg length!");
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(2);
+      Log.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid arg length!");
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(2);
       AppMethodBeat.o(24393);
       return paramArrayOfString;
     }
     MatrixCursor localMatrixCursor;
     if (paramBoolean) {
-      localMatrixCursor = new MatrixCursor(rlh);
+      localMatrixCursor = new MatrixCursor(sMM);
     }
     int j;
     for (;;)
@@ -201,33 +119,33 @@ public class ExtControlProviderOpenApi
         i = Integer.parseInt(paramArrayOfString[1]);
         paramArrayOfString = null;
         if (1 != j) {
-          break label408;
+          break label403;
         }
         if (paramBoolean)
         {
-          paramArrayOfString = ((ai)com.tencent.mm.kernel.g.ab(ai.class)).dE(i, 0);
-          Iterator localIterator = com.tencent.luggage.h.b.C(paramArrayOfString).iterator();
+          paramArrayOfString = ((ah)g.af(ah.class)).dP(i, 0);
+          Iterator localIterator = com.tencent.luggage.h.b.G(paramArrayOfString).iterator();
           if (!localIterator.hasNext()) {
-            break label935;
+            break label930;
           }
           localLocalUsageInfo = (LocalUsageInfo)localIterator.next();
-          localObject1 = ((com.tencent.mm.plugin.appbrand.service.o)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.o.class)).Oc(localLocalUsageInfo.appId);
+          localObject1 = ((com.tencent.mm.plugin.appbrand.service.q)g.af(com.tencent.mm.plugin.appbrand.service.q.class)).Xl(localLocalUsageInfo.appId);
           if (localObject1 == null) {
             continue;
           }
           if (paramBoolean) {
-            break label614;
+            break label609;
           }
           paramArrayOfString = ((WxaAttributes)localObject1).field_roundedSquareIconURL;
           localObject2 = ((WxaAttributes)localObject1).field_brandIconURL;
           localObject3 = ((WxaAttributes)localObject1).field_bigHeadURL;
-          localObject4 = (com.tencent.mm.modelappbrand.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.modelappbrand.b.a.class);
-          localObject5 = ak.getPackageName();
-          i = localLocalUsageInfo.hSZ;
+          localObject4 = (com.tencent.mm.modelappbrand.b.a)g.af(com.tencent.mm.modelappbrand.b.a.class);
+          localObject5 = MMApplicationContext.getPackageName();
+          i = localLocalUsageInfo.iOo;
           localObject6 = ((WxaAttributes)localObject1).field_username;
           String str1 = ((WxaAttributes)localObject1).field_nickname;
           String str2 = ((WxaAttributes)localObject1).field_appId;
-          com.tencent.mm.kernel.g.ajP();
+          g.aAf();
           k = com.tencent.mm.kernel.a.getUin();
           paramArrayOfString = ((com.tencent.mm.modelappbrand.b.a)localObject4).a((String)localObject5, i, (String)localObject6, str1, new String[] { paramArrayOfString, localObject2, localObject3 }, str2, k, 3);
           if (paramArrayOfString == null) {
@@ -240,79 +158,79 @@ public class ExtControlProviderOpenApi
           localObject2 = new HashMap();
           localObject4 = ((Bundle)localObject3).keySet().iterator();
           if (!((Iterator)localObject4).hasNext()) {
-            break label459;
+            break label454;
           }
           localObject5 = (String)((Iterator)localObject4).next();
           ((Map)localObject2).put(localObject5, ((Bundle)localObject3).get((String)localObject5));
           continue;
-          localMatrixCursor = new MatrixCursor(rlg);
+          localMatrixCursor = new MatrixCursor(sML);
           continue;
         }
-        paramArrayOfString = ((ai)com.tencent.mm.kernel.g.ab(ai.class)).sb(i);
+        paramArrayOfString = ((ah)g.af(ah.class)).vW(i);
       }
       catch (NumberFormatException paramArrayOfString)
       {
-        ae.printErrStackTrace("MicroMsg.ExtControlProviderOpenApi", paramArrayOfString, "", new Object[0]);
-        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(2);
+        Log.printErrStackTrace("MicroMsg.ExtControlProviderOpenApi", paramArrayOfString, "", new Object[0]);
+        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(2);
         AppMethodBeat.o(24393);
         return paramArrayOfString;
       }
       continue;
-      label408:
+      label403:
       if (2 == j) {
         if (paramBoolean)
         {
-          paramArrayOfString = ((ah)com.tencent.mm.kernel.g.ab(ah.class)).a(i, null, 0);
+          paramArrayOfString = ((ag)g.af(ag.class)).a(i, null, 0);
         }
         else
         {
-          paramArrayOfString = ((ah)com.tencent.mm.kernel.g.ab(ah.class)).a(i, null);
+          paramArrayOfString = ((ag)g.af(ag.class)).a(i, null);
           continue;
-          label459:
+          label454:
           localObject3 = localLocalUsageInfo.username;
           localObject4 = localLocalUsageInfo.appId;
-          k = localLocalUsageInfo.hSZ;
+          k = localLocalUsageInfo.iOo;
           localObject5 = localLocalUsageInfo.nickname;
-          localObject6 = localLocalUsageInfo.cmF;
+          localObject6 = localLocalUsageInfo.cyB;
           localObject1 = ((WxaAttributes)localObject1).field_brandIconURL;
-          if (localLocalUsageInfo.jTs) {}
+          if (localLocalUsageInfo.kWa) {}
           for (i = 1;; i = 0)
           {
-            localMatrixCursor.addRow(new Object[] { localObject3, localObject4, Integer.valueOf(k), localObject5, localObject6, localObject1, Integer.valueOf(i), Long.valueOf(localLocalUsageInfo.cnj), paramArrayOfString.getPackage(), paramArrayOfString.getAction(), new i((Map)localObject2).toString() });
+            localMatrixCursor.addRow(new Object[] { localObject3, localObject4, Integer.valueOf(k), localObject5, localObject6, localObject1, Integer.valueOf(i), Long.valueOf(localLocalUsageInfo.czf), paramArrayOfString.getPackage(), paramArrayOfString.getAction(), new i((Map)localObject2).toString() });
             break;
           }
-          label614:
+          label609:
           paramArrayOfString = new StringBuilder().append(localLocalUsageInfo.username).append(",");
-          com.tencent.mm.kernel.g.ajP();
-          paramArrayOfString = (com.tencent.mm.kernel.a.getUin() + "," + this.rlu).getBytes();
+          g.aAf();
+          paramArrayOfString = (com.tencent.mm.kernel.a.getUin() + "," + this.sMZ).getBytes();
           try
           {
             localObject2 = MessageDigest.getInstance("SHA-256");
             ((MessageDigest)localObject2).update(paramArrayOfString);
             paramArrayOfString = String.format("%064x", new Object[] { new BigInteger(1, ((MessageDigest)localObject2).digest()) });
-            localObject2 = com.tencent.mm.plugin.ext.b.ctB();
+            localObject2 = com.tencent.mm.plugin.ext.b.cSj();
             localObject3 = localLocalUsageInfo.username;
-            com.tencent.mm.kernel.g.ajP();
+            g.aAf();
             i = com.tencent.mm.kernel.a.getUin();
-            localObject4 = this.rlu;
-            d.g.b.p.h(paramArrayOfString, "token");
-            d.g.b.p.h(localObject3, "userName");
-            d.g.b.p.h(localObject4, "appid");
-            localObject5 = com.tencent.mm.kernel.g.ajR();
-            d.g.b.p.g(localObject5, "MMKernel.storage()");
-            localObject5 = ((com.tencent.mm.kernel.e)localObject5).gDX.query(((com.tencent.mm.plugin.ext.a.a)localObject2).getTableName(), null, null, null, null, null, null);
+            localObject4 = this.sMZ;
+            kotlin.g.b.p.h(paramArrayOfString, "token");
+            kotlin.g.b.p.h(localObject3, "userName");
+            kotlin.g.b.p.h(localObject4, "appid");
+            localObject5 = g.aAh();
+            kotlin.g.b.p.g(localObject5, "MMKernel.storage()");
+            localObject5 = ((com.tencent.mm.kernel.e)localObject5).hqK.query(((com.tencent.mm.plugin.ext.a.a)localObject2).getTableName(), null, null, null, null, null, null);
             localObject6 = new StringBuilder();
-            d.g.b.p.g(localObject5, "query");
+            kotlin.g.b.p.g(localObject5, "query");
             ((StringBuilder)localObject6).append(((Cursor)localObject5).getColumnNames());
-            com.tencent.d.f.h.fYG();
+            com.tencent.e.f.h.hkS();
             localObject5 = new com.tencent.mm.plugin.ext.a.b();
             ((com.tencent.mm.plugin.ext.a.b)localObject5).field_token = paramArrayOfString;
             ((com.tencent.mm.plugin.ext.a.b)localObject5).field_username = ((String)localObject3);
             ((com.tencent.mm.plugin.ext.a.b)localObject5).field_uin = i;
             ((com.tencent.mm.plugin.ext.a.b)localObject5).field_appid = ((String)localObject4);
-            if (((com.tencent.mm.plugin.ext.a.a)localObject2).agC(paramArrayOfString) != null)
+            if (((com.tencent.mm.plugin.ext.a.a)localObject2).arm(paramArrayOfString) != null)
             {
-              ((com.tencent.mm.plugin.ext.a.a)localObject2).update((com.tencent.mm.sdk.e.c)localObject5, new String[0]);
+              ((com.tencent.mm.plugin.ext.a.a)localObject2).update((IAutoDBItem)localObject5, new String[0]);
               localMatrixCursor.addRow(new Object[] { paramArrayOfString, localLocalUsageInfo.nickname, ((WxaAttributes)localObject1).field_brandIconURL });
             }
           }
@@ -322,60 +240,151 @@ public class ExtControlProviderOpenApi
             {
               paramArrayOfString = "";
               continue;
-              ((com.tencent.mm.plugin.ext.a.a)localObject2).insert((com.tencent.mm.sdk.e.c)localObject5);
+              ((com.tencent.mm.plugin.ext.a.a)localObject2).insert((IAutoDBItem)localObject5);
             }
           }
         }
       }
     }
-    label935:
-    com.tencent.mm.plugin.report.service.g.yxI.f(18601, new Object[] { this.rlu, Integer.valueOf(j), Integer.valueOf(localMatrixCursor.getCount()) });
+    label930:
+    com.tencent.mm.plugin.report.service.h.CyF.a(18601, new Object[] { this.sMZ, Integer.valueOf(j), Integer.valueOf(localMatrixCursor.getCount()) });
     AppMethodBeat.o(24393);
     return localMatrixCursor;
   }
   
-  private void ctI()
+  private Cursor ad(String paramString1, String paramString2, String paramString3)
+  {
+    AppMethodBeat.i(24395);
+    Log.i("MicroMsg.ExtControlProviderOpenApi", "doRegisterMsgListener");
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString3)))
+    {
+      Log.e("MicroMsg.ExtControlProviderOpenApi", "wrong args, scene = %s, msgType = %s, msgState = %s", new Object[] { paramString1, paramString2, paramString3 });
+      fP(3, 2004);
+      paramString1 = com.tencent.mm.pluginsdk.d.a.a.ahx(2004);
+      AppMethodBeat.o(24395);
+      return paramString1;
+    }
+    Object localObject = null;
+    try
+    {
+      int i = Integer.parseInt(paramString3);
+      int j = Integer.parseInt(paramString1);
+      int k = Integer.parseInt(paramString2);
+      if (i != 2)
+      {
+        Log.e("MicroMsg.ExtControlProviderOpenApi", "wrong msgState: ".concat(String.valueOf(i)));
+        fP(3, 2005);
+        paramString1 = com.tencent.mm.pluginsdk.d.a.a.ahx(2005);
+        AppMethodBeat.o(24395);
+        return paramString1;
+      }
+      if (com.tencent.mm.plugin.ext.b.cSh().bkL(this.sMZ) == null)
+      {
+        paramString1 = new cg();
+        paramString1.field_appId = this.sMZ;
+        paramString1.field_packageName = cSt();
+        paramString2 = this.sMZ;
+        boolean bool;
+        if (Util.isNullOrNil(paramString2))
+        {
+          bool = false;
+          if (!bool) {
+            break label333;
+          }
+        }
+        label333:
+        for (paramString1.field_status = 1;; paramString1.field_status = 0)
+        {
+          paramString1.field_sceneFlag = j;
+          paramString1.field_msgTypeFlag = k;
+          paramString1.field_msgState = i;
+          bool = com.tencent.mm.plugin.ext.b.cSh().insert(paramString1);
+          Log.i("MicroMsg.ExtControlProviderOpenApi", "registerMsgReceiver ret = %s, pkgName = %s, scene = %s, msgType = %s, msgState = %s, appStatus = %s", new Object[] { Boolean.valueOf(bool), cSt(), Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(i), Integer.valueOf(paramString1.field_status) });
+          if (bool) {
+            break label420;
+          }
+          paramString1 = com.tencent.mm.pluginsdk.d.a.a.ahx(2006);
+          AppMethodBeat.o(24395);
+          return paramString1;
+          bool = com.tencent.mm.pluginsdk.model.app.h.o(com.tencent.mm.pluginsdk.model.app.h.o(paramString2, true, false));
+          break;
+        }
+        ac(1, 4, 12);
+      }
+    }
+    catch (Exception paramString1)
+    {
+      paramString2 = localObject;
+    }
+    for (;;)
+    {
+      Log.e("MicroMsg.ExtControlProviderOpenApi", "exception in doRegisterMsgListener, %s", new Object[] { paramString1.getMessage() });
+      if (paramString2 != null) {
+        paramString2.close();
+      }
+      paramString1 = com.tencent.mm.pluginsdk.d.a.a.ahx(12);
+      AppMethodBeat.o(24395);
+      return paramString1;
+      Log.w("MicroMsg.ExtControlProviderOpenApi", "This app had already been registered, appId = %s, pkg = %s", new Object[] { this.sMZ, cSt() });
+      label420:
+      paramString1 = new StringBuilder().append(z.aTY());
+      bg.aVF();
+      paramString1 = MD5Util.getMD5String(com.tencent.mm.model.c.getUin());
+      paramString2 = new MatrixCursor(sMG);
+      try
+      {
+        paramString2.addRow(new Object[] { Integer.valueOf(1), Util.nullAsNil(paramString1) });
+        ac(0, 0, 1);
+        Log.i("MicroMsg.ExtControlProviderOpenApi", "return  code =%s ", new Object[] { Integer.valueOf(1) });
+        AppMethodBeat.o(24395);
+        return paramString2;
+      }
+      catch (Exception paramString1) {}
+    }
+  }
+  
+  private void cSq()
   {
     AppMethodBeat.i(24398);
-    String str1 = (String)com.tencent.mm.plugin.ext.b.cty().get(am.a.IQt, null);
-    String str2 = ctL();
-    ae.i("MicroMsg.ExtControlProviderOpenApi", "setSportBroadPkg: pkgNames: %s, pkg: %s", new Object[] { str1, str2 });
+    String str1 = (String)com.tencent.mm.plugin.ext.b.cSg().get(ar.a.NYu, null);
+    String str2 = cSt();
+    Log.i("MicroMsg.ExtControlProviderOpenApi", "setSportBroadPkg: pkgNames: %s, pkg: %s", new Object[] { str1, str2 });
     if (str1 != null)
     {
       if (!com.tencent.mm.compatible.loader.a.contains(str1.split(";"), str2)) {
-        com.tencent.mm.plugin.ext.b.cty().set(am.a.IQt, str1 + ";" + ctL());
+        com.tencent.mm.plugin.ext.b.cSg().set(ar.a.NYu, str1 + ";" + cSt());
       }
       AppMethodBeat.o(24398);
       return;
     }
-    com.tencent.mm.plugin.ext.b.cty().set(am.a.IQt, ctL());
+    com.tencent.mm.plugin.ext.b.cSg().set(ar.a.NYu, cSt());
     AppMethodBeat.o(24398);
   }
   
   private Cursor m(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(24394);
-    ae.i("MicroMsg.ExtControlProviderOpenApi", "registerMsgReceiver, op = %s", new Object[] { paramString1 });
+    Log.i("MicroMsg.ExtControlProviderOpenApi", "registerMsgReceiver, op = %s", new Object[] { paramString1 });
     if (this.context == null)
     {
-      ae.e("MicroMsg.ExtControlProviderOpenApi", "context == null return code = 2001");
-      fz(4, 2001);
-      paramString1 = com.tencent.mm.pluginsdk.d.a.a.YL(2001);
+      Log.e("MicroMsg.ExtControlProviderOpenApi", "context == null return code = 2001");
+      fP(4, 2001);
+      paramString1 = com.tencent.mm.pluginsdk.d.a.a.ahx(2001);
       AppMethodBeat.o(24394);
       return paramString1;
     }
-    if (bu.isNullOrNil(paramString1))
+    if (Util.isNullOrNil(paramString1))
     {
-      ae.e("MicroMsg.ExtControlProviderOpenApi", "wrong args, op is null return code = 2002");
-      fz(3, 2002);
-      paramString1 = com.tencent.mm.pluginsdk.d.a.a.YL(2002);
+      Log.e("MicroMsg.ExtControlProviderOpenApi", "wrong args, op is null return code = 2002");
+      fP(3, 2002);
+      paramString1 = com.tencent.mm.pluginsdk.d.a.a.ahx(2002);
       AppMethodBeat.o(24394);
       return paramString1;
     }
     int i = -1;
     try
     {
-      int j = bu.getInt(paramString1, -1);
+      int j = Util.getInt(paramString1, -1);
       i = j;
     }
     catch (Exception paramString1)
@@ -386,59 +395,59 @@ public class ExtControlProviderOpenApi
     }
     if (i == 1)
     {
-      paramString1 = Y(paramString2, paramString3, paramString4);
+      paramString1 = ad(paramString2, paramString3, paramString4);
       AppMethodBeat.o(24394);
       return paramString1;
     }
     if (i == 2)
     {
-      ae.d("MicroMsg.ExtControlProviderOpenApi", "doUnRegisterMsgListener");
-      if (com.tencent.mm.plugin.ext.b.ctz().aVN(this.rlu) == null)
+      Log.d("MicroMsg.ExtControlProviderOpenApi", "doUnRegisterMsgListener");
+      if (com.tencent.mm.plugin.ext.b.cSh().bkL(this.sMZ) == null)
       {
-        ae.w("MicroMsg.ExtControlProviderOpenApi", "This app never been registered, appId = %s, pkg = %s", new Object[] { this.rlu, ctL() });
-        paramString1 = com.tencent.mm.pluginsdk.d.a.a.YL(2007);
+        Log.w("MicroMsg.ExtControlProviderOpenApi", "This app never been registered, appId = %s, pkg = %s", new Object[] { this.sMZ, cSt() });
+        paramString1 = com.tencent.mm.pluginsdk.d.a.a.ahx(2007);
         AppMethodBeat.o(24394);
         return paramString1;
       }
-      paramString1 = com.tencent.mm.plugin.ext.b.ctz();
-      paramString2 = this.rlu;
+      paramString1 = com.tencent.mm.plugin.ext.b.cSh();
+      paramString2 = this.sMZ;
       if ((paramString2 == null) || (paramString2.length() <= 0)) {
         bool = false;
       }
       for (;;)
       {
-        ae.i("MicroMsg.ExtControlProviderOpenApi", "doUnRegisterMsgListener ret = %s, appId = %s, pkg = %s", new Object[] { Boolean.valueOf(bool), this.rlu, ctL() });
+        Log.i("MicroMsg.ExtControlProviderOpenApi", "doUnRegisterMsgListener ret = %s, appId = %s, pkg = %s", new Object[] { Boolean.valueOf(bool), this.sMZ, cSt() });
         if (bool) {
           break;
         }
-        paramString1 = com.tencent.mm.pluginsdk.d.a.a.YL(2008);
+        paramString1 = com.tencent.mm.pluginsdk.d.a.a.ahx(2008);
         AppMethodBeat.o(24394);
         return paramString1;
-        if (paramString1.db.delete("OpenMsgListener", "appId=?", new String[] { bu.aSk(paramString2) }) <= 0) {
+        if (paramString1.db.delete("OpenMsgListener", "appId=?", new String[] { Util.escapeSqlValue(paramString2) }) <= 0) {
           bool = false;
         } else {
           bool = true;
         }
       }
-      ab(0, 0, 1);
-      paramString1 = com.tencent.mm.pluginsdk.d.a.a.YL(1);
+      ac(0, 0, 1);
+      paramString1 = com.tencent.mm.pluginsdk.d.a.a.ahx(1);
       AppMethodBeat.o(24394);
       return paramString1;
     }
-    ae.e("MicroMsg.ExtControlProviderOpenApi", "wrong args, no such op, %s", new Object[] { Integer.valueOf(i) });
-    fz(3, 2003);
-    paramString1 = com.tencent.mm.pluginsdk.d.a.a.YL(2003);
+    Log.e("MicroMsg.ExtControlProviderOpenApi", "wrong args, no such op, %s", new Object[] { Integer.valueOf(i) });
+    fP(3, 2003);
+    paramString1 = com.tencent.mm.pluginsdk.d.a.a.ahx(2003);
     AppMethodBeat.o(24394);
     return paramString1;
   }
   
-  private Cursor v(String[] paramArrayOfString)
+  private Cursor x(String[] paramArrayOfString)
   {
     AppMethodBeat.i(24392);
     if ((paramArrayOfString == null) || (paramArrayOfString.length == 0))
     {
-      ae.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid arg length!");
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(2);
+      Log.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid arg length!");
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(2);
       AppMethodBeat.o(24392);
       return paramArrayOfString;
     }
@@ -447,7 +456,7 @@ public class ExtControlProviderOpenApi
     {
       i = Integer.parseInt(paramArrayOfString[0]);
       if (1 == i) {
-        ((com.tencent.mm.plugin.appbrand.service.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.k.class)).a(this.context, i, this.appId);
+        ((m)g.af(m.class)).a(this.context, i, this.appId);
       }
     }
     catch (NumberFormatException paramArrayOfString)
@@ -456,54 +465,54 @@ public class ExtControlProviderOpenApi
       {
         i = Integer.parseInt(paramArrayOfString[1]);
         if ((1 == i) || (2 == i) || (i == 0)) {
-          break label134;
+          break label133;
         }
-        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(2);
+        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(2);
         AppMethodBeat.o(24392);
         return paramArrayOfString;
       }
       catch (NumberFormatException paramArrayOfString)
       {
-        ae.printErrStackTrace("MicroMsg.ExtControlProviderOpenApi", paramArrayOfString, "", new Object[0]);
-        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(2);
+        Log.printErrStackTrace("MicroMsg.ExtControlProviderOpenApi", paramArrayOfString, "", new Object[0]);
+        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(2);
         AppMethodBeat.o(24392);
         return paramArrayOfString;
       }
       paramArrayOfString = paramArrayOfString;
-      ae.printErrStackTrace("MicroMsg.ExtControlProviderOpenApi", paramArrayOfString, "", new Object[0]);
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(2);
+      Log.printErrStackTrace("MicroMsg.ExtControlProviderOpenApi", paramArrayOfString, "", new Object[0]);
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(2);
       AppMethodBeat.o(24392);
       return paramArrayOfString;
     }
     for (;;)
     {
-      label134:
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(1);
+      label133:
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(1);
       AppMethodBeat.o(24392);
       return paramArrayOfString;
       if (2 != i) {
         break;
       }
-      ((com.tencent.mm.plugin.appbrand.service.k)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.appbrand.service.k.class)).X(this.context, this.appId);
+      ((m)g.af(m.class)).af(this.context, this.appId);
     }
-    paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(2);
+    paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(2);
     AppMethodBeat.o(24392);
     return paramArrayOfString;
   }
   
-  private Cursor w(String[] paramArrayOfString)
+  private Cursor y(String[] paramArrayOfString)
   {
     AppMethodBeat.i(24396);
-    ae.i("MicroMsg.ExtControlProviderOpenApi", "getUserAvatarByOpenId");
+    Log.i("MicroMsg.ExtControlProviderOpenApi", "getUserAvatarByOpenId");
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0))
     {
-      ae.e("MicroMsg.ExtControlProviderOpenApi", "wrong args");
-      fz(3, 3001);
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(3001);
+      Log.e("MicroMsg.ExtControlProviderOpenApi", "wrong args");
+      fP(3, 3001);
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(3001);
       AppMethodBeat.o(24396);
       return paramArrayOfString;
     }
-    MatrixCursor localMatrixCursor = new MatrixCursor(rld);
+    MatrixCursor localMatrixCursor = new MatrixCursor(sMI);
     int i = 0;
     for (;;)
     {
@@ -512,55 +521,55 @@ public class ExtControlProviderOpenApi
         if ((i >= paramArrayOfString.length) || (i >= 5)) {
           break label377;
         }
-        if (bu.isNullOrNil(paramArrayOfString[i])) {
+        if (Util.isNullOrNil(paramArrayOfString[i])) {
           break label397;
         }
-        localObject = com.tencent.mm.plugin.ext.b.ctA().aVZ(paramArrayOfString[i]);
-        if ((localObject == null) || (bu.isNullOrNil(((ck)localObject).field_openId)) || (bu.isNullOrNil(((ck)localObject).field_username)))
+        localObject = com.tencent.mm.plugin.ext.b.cSi().bkX(paramArrayOfString[i]);
+        if ((localObject == null) || (Util.isNullOrNil(((cr)localObject).field_openId)) || (Util.isNullOrNil(((cr)localObject).field_username)))
         {
-          ae.e("MicroMsg.ExtControlProviderOpenApi", "openidInApp is null");
+          Log.e("MicroMsg.ExtControlProviderOpenApi", "openidInApp is null");
         }
         else
         {
-          bc.aCg();
-          localObject = com.tencent.mm.model.c.azF().BH(((ck)localObject).field_username);
-          if ((localObject == null) || (((aw)localObject).field_username == null) || (((aw)localObject).field_username.length() <= 0)) {
-            ae.e("MicroMsg.ExtControlProviderOpenApi", "contact is null");
+          bg.aVF();
+          localObject = com.tencent.mm.model.c.aSN().Kn(((cr)localObject).field_username);
+          if ((localObject == null) || (((ax)localObject).field_username == null) || (((ax)localObject).field_username.length() <= 0)) {
+            Log.e("MicroMsg.ExtControlProviderOpenApi", "contact is null");
           }
         }
       }
       catch (Exception paramArrayOfString)
       {
-        ae.e("MicroMsg.ExtControlProviderOpenApi", "Exception occur, %s", new Object[] { paramArrayOfString.getMessage() });
-        ab(7, 4, 12);
+        Log.e("MicroMsg.ExtControlProviderOpenApi", "Exception occur, %s", new Object[] { paramArrayOfString.getMessage() });
+        ac(7, 4, 12);
         localMatrixCursor.close();
-        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(12);
+        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(12);
         AppMethodBeat.o(24396);
         return paramArrayOfString;
       }
-      com.tencent.mm.aj.p.aEA();
-      Object localObject = com.tencent.mm.aj.e.K(((aw)localObject).field_username, false);
-      if (bu.isNullOrNil((String)localObject))
+      com.tencent.mm.aj.p.aYn();
+      Object localObject = com.tencent.mm.aj.e.M(((ax)localObject).field_username, false);
+      if (Util.isNullOrNil((String)localObject))
       {
-        ae.w("MicroMsg.ExtControlProviderOpenApi", "hy: get avatar sfs path is null or nil");
+        Log.w("MicroMsg.ExtControlProviderOpenApi", "hy: get avatar sfs path is null or nil");
       }
       else
       {
-        if (((String)localObject).startsWith(com.tencent.mm.kernel.g.ajR().cachePath))
+        if (((String)localObject).startsWith(g.aAh().cachePath))
         {
-          int j = com.tencent.mm.kernel.g.ajR().cachePath.length();
-          String str = com.tencent.mm.kernel.g.ajR().gDT + ((String)localObject).substring(j);
-          com.tencent.mm.vfs.o.aZI(com.tencent.mm.vfs.o.aZU(str));
-          com.tencent.mm.vfs.o.mF((String)localObject, str);
+          int j = g.aAh().cachePath.length();
+          String str = g.aAh().hqG + ((String)localObject).substring(j);
+          s.boN(s.boZ(str));
+          s.nw((String)localObject, str);
           localObject = str;
         }
         for (;;)
         {
-          e.b.DH((String)localObject);
+          e.b.Ms((String)localObject);
           localMatrixCursor.addRow(new Object[] { paramArrayOfString[i], localObject });
           break;
           label377:
-          ab(6, 0, 1);
+          ac(6, 0, 1);
           AppMethodBeat.o(24396);
           return localMatrixCursor;
         }
@@ -570,15 +579,15 @@ public class ExtControlProviderOpenApi
     }
   }
   
-  private Cursor x(String[] paramArrayOfString)
+  private Cursor z(String[] paramArrayOfString)
   {
     AppMethodBeat.i(24397);
-    ae.i("MicroMsg.ExtControlProviderOpenApi", "decodeVoice");
+    Log.i("MicroMsg.ExtControlProviderOpenApi", "decodeVoice");
     if ((paramArrayOfString == null) || (paramArrayOfString.length <= 0) || (paramArrayOfString[0].length() <= 0))
     {
-      ae.e("MicroMsg.ExtControlProviderOpenApi", "decodeVoice wrong args");
-      fz(3, 3101);
-      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(3101);
+      Log.e("MicroMsg.ExtControlProviderOpenApi", "decodeVoice wrong args");
+      fP(3, 3101);
+      paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(3101);
       AppMethodBeat.o(24397);
       return paramArrayOfString;
     }
@@ -591,17 +600,17 @@ public class ExtControlProviderOpenApi
       {
         String str2 = paramArrayOfString[i];
         Object localObject4 = localObject3;
-        com.tencent.mm.modelvoice.k localk;
+        k localk;
         for (;;)
         {
           String str1;
           try
           {
             Object localObject1;
-            if (!q.h(str2, 0, true))
+            if (!com.tencent.mm.modelvoice.q.i(str2, 0, true))
             {
               localObject4 = localObject3;
-              ae.w("MicroMsg.ExtControlProviderOpenApi", "wrong args : %s", new Object[] { paramArrayOfString[i] });
+              Log.w("MicroMsg.ExtControlProviderOpenApi", "wrong args : %s", new Object[] { paramArrayOfString[i] });
               localObject1 = localObject3;
             }
             else
@@ -610,58 +619,58 @@ public class ExtControlProviderOpenApi
               if (localObject3 == null)
               {
                 localObject4 = localObject3;
-                localObject1 = new MatrixCursor(rle);
+                localObject1 = new MatrixCursor(sMJ);
               }
               localObject4 = localObject1;
-              localk = new com.tencent.mm.modelvoice.k();
+              localk = new k();
               localObject4 = localObject1;
-              str1 = com.tencent.mm.plugin.ext.b.ctD() + "/" + com.tencent.mm.sdk.platformtools.aj.ej(str2);
+              str1 = com.tencent.mm.plugin.ext.b.cSl() + "/" + MD5Util.getMD5String(str2);
               localObject4 = localObject1;
-              ae.i("MicroMsg.ExtControlProviderOpenApi", "summerpcm pcmPath[%s]", new Object[] { str1 });
+              Log.i("MicroMsg.ExtControlProviderOpenApi", "summerpcm pcmPath[%s]", new Object[] { str1 });
               localObject4 = localObject1;
-              if (com.tencent.mm.vfs.o.aZR(str1) > 0L)
+              if (s.boW(str1) > 0L)
               {
                 localObject4 = localObject1;
-                ae.d("MicroMsg.ExtControlProviderOpenApi", "pcm already exist");
+                Log.d("MicroMsg.ExtControlProviderOpenApi", "pcm already exist");
                 localObject3 = str1;
                 localObject4 = localObject1;
-                if (com.tencent.mm.vfs.o.aZR(str1) == 0L)
+                if (s.boW(str1) == 0L)
                 {
                   localObject4 = localObject1;
-                  localObject3 = localk.bz(str2, str1);
+                  localObject3 = localk.bD(str2, str1);
                 }
                 localObject4 = localObject1;
-                if (!bu.isNullOrNil((String)localObject3)) {
+                if (!Util.isNullOrNil((String)localObject3)) {
                   break;
                 }
                 localObject4 = localObject1;
-                ae.w("MicroMsg.ExtControlProviderOpenApi", "wrong args targetFilePath is null");
+                Log.w("MicroMsg.ExtControlProviderOpenApi", "wrong args targetFilePath is null");
               }
             }
           }
           catch (Exception localException)
           {
-            ae.e("MicroMsg.ExtControlProviderOpenApi", "Exception in decodeVoice, %s", new Object[] { localException.getMessage() });
+            Log.e("MicroMsg.ExtControlProviderOpenApi", "Exception in decodeVoice, %s", new Object[] { localException.getMessage() });
             localObject2 = localObject4;
           }
           localObject4 = localObject2;
-          localObject3 = localk.bz(str2, str1);
+          localObject3 = localk.bD(str2, str1);
         }
         localObject4 = localObject2;
-        ae.d("MicroMsg.ExtControlProviderOpenApi", "decode to pcm success %d", new Object[] { Integer.valueOf(i) });
+        Log.d("MicroMsg.ExtControlProviderOpenApi", "decode to pcm success %d", new Object[] { Integer.valueOf(i) });
         localObject4 = localObject2;
-        localObject2.addRow(new Object[] { Integer.valueOf(1), Integer.valueOf(localk.mSampleRate), Integer.valueOf(localk.din), Integer.valueOf(2), localObject3 });
+        localObject2.addRow(new Object[] { Integer.valueOf(1), Integer.valueOf(localk.mSampleRate), Integer.valueOf(localk.dzz), Integer.valueOf(2), localObject3 });
       }
       else
       {
         if (localObject3 != null)
         {
-          ab(8, 0, 1);
+          ac(8, 0, 1);
           AppMethodBeat.o(24397);
           return localObject3;
         }
-        ab(9, 3, 4);
-        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.YL(4);
+        ac(9, 3, 4);
+        paramArrayOfString = com.tencent.mm.pluginsdk.d.a.a.ahx(4);
         AppMethodBeat.o(24397);
         return paramArrayOfString;
       }
@@ -688,7 +697,7 @@ public class ExtControlProviderOpenApi
   public boolean onCreate()
   {
     AppMethodBeat.i(24390);
-    this.handler = new aq();
+    this.handler = new MMHandler();
     AppMethodBeat.o(24390);
     return true;
   }
@@ -696,55 +705,55 @@ public class ExtControlProviderOpenApi
   public Cursor query(Uri paramUri, String[] paramArrayOfString1, String paramString1, String[] paramArrayOfString2, String paramString2)
   {
     AppMethodBeat.i(24391);
-    ae.i("MicroMsg.ExtControlProviderOpenApi", "query(), ApiId = %s", new Object[] { Integer.valueOf(this.rlj) });
-    a(paramUri, this.context, this.rlj, this.rli);
-    paramArrayOfString1 = this.rlu;
+    Log.i("MicroMsg.ExtControlProviderOpenApi", "query(), ApiId = %s", new Object[] { Integer.valueOf(this.sMO) });
+    a(paramUri, this.context, this.sMO, this.sMN);
+    paramArrayOfString1 = this.sMZ;
     if (paramUri == null)
     {
-      ae.e("MicroMsg.ExtControlProviderOpenApi", "uri == null return code = 5");
-      fz(3, 5);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(5);
+      Log.e("MicroMsg.ExtControlProviderOpenApi", "uri == null return code = 5");
+      fP(3, 5);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(5);
       AppMethodBeat.o(24391);
       return paramUri;
     }
-    if (bu.isNullOrNil(this.rlu))
+    if (Util.isNullOrNil(this.sMZ))
     {
-      ae.e("MicroMsg.ExtControlProviderOpenApi", "AppID == null return code = 7");
-      fz(3, 7);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(7);
+      Log.e("MicroMsg.ExtControlProviderOpenApi", "AppID == null return code = 7");
+      fP(3, 7);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(7);
       AppMethodBeat.o(24391);
       return paramUri;
     }
-    if (bu.isNullOrNil(ctL()))
+    if (Util.isNullOrNil(cSt()))
     {
-      ae.e("MicroMsg.ExtControlProviderOpenApi", "PkgName == null return code = 6");
-      fz(3, 6);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(6);
+      Log.e("MicroMsg.ExtControlProviderOpenApi", "PkgName == null return code = 6");
+      fP(3, 6);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(6);
       AppMethodBeat.o(24391);
       return paramUri;
     }
-    if (!bNl())
+    if (!ckf())
     {
-      ae.e("MicroMsg.ExtControlProviderOpenApi", "not login return code = 3");
-      fz(1, 3);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(3);
+      Log.e("MicroMsg.ExtControlProviderOpenApi", "not login return code = 3");
+      fP(1, 3);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(3);
       AppMethodBeat.o(24391);
       return paramUri;
     }
     int i = 1;
     if (!IS_DEBUG) {
-      i = ctM();
+      i = cSu();
     }
     if (i != 1)
     {
-      ae.e("MicroMsg.ExtControlProviderOpenApi", "invalid appid ! return code = ".concat(String.valueOf(i)));
-      fz(2, i);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(i);
+      Log.e("MicroMsg.ExtControlProviderOpenApi", "invalid appid ! return code = ".concat(String.valueOf(i)));
+      fP(2, i);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(i);
       AppMethodBeat.o(24391);
       return paramUri;
     }
     long l1;
-    switch (this.rlj)
+    switch (this.sMO)
     {
     case 24: 
     case 26: 
@@ -765,7 +774,7 @@ public class ExtControlProviderOpenApi
     case 53: 
     case 55: 
     default: 
-      fz(3, 15);
+      fP(3, 15);
       AppMethodBeat.o(24391);
       return null;
     case 22: 
@@ -773,40 +782,40 @@ public class ExtControlProviderOpenApi
       AppMethodBeat.o(24391);
       return paramUri;
     case 23: 
-      paramUri = w(paramArrayOfString2);
+      paramUri = y(paramArrayOfString2);
       AppMethodBeat.o(24391);
       return paramUri;
     case 25: 
-      paramUri = x(paramArrayOfString2);
+      paramUri = z(paramArrayOfString2);
       AppMethodBeat.o(24391);
       return paramUri;
     case 34: 
-      ae.i("MicroMsg.ExtControlProviderOpenApi", "sendSight ");
+      Log.i("MicroMsg.ExtControlProviderOpenApi", "sendSight ");
       if ((paramArrayOfString2 == null) || (paramArrayOfString2.length <= 0) || (paramArrayOfString2[0].length() <= 0))
       {
         if (paramArrayOfString2 == null) {}
         for (boolean bool = true;; bool = false)
         {
-          ae.e("MicroMsg.ExtControlProviderOpenApi", "sendSight wrong args,args == null:%s", new Object[] { Boolean.valueOf(bool) });
-          fz(3, 3401);
-          paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(3401);
+          Log.e("MicroMsg.ExtControlProviderOpenApi", "sendSight wrong args,args == null:%s", new Object[] { Boolean.valueOf(bool) });
+          fP(3, 3401);
+          paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(3401);
           AppMethodBeat.o(24391);
           return paramUri;
         }
       }
       paramUri = paramArrayOfString2[0];
-      if ((bu.isNullOrNil(paramUri)) || (!com.tencent.mm.vfs.o.fB(paramUri))) {
+      if ((Util.isNullOrNil(paramUri)) || (!s.YS(paramUri))) {
         i = 0;
       }
       while (i == 0)
       {
-        ae.e("MicroMsg.ExtControlProviderOpenApi", "isSightOk wrong args");
-        fz(3, 3402);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(3402);
+        Log.e("MicroMsg.ExtControlProviderOpenApi", "isSightOk wrong args");
+        fP(3, 3402);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(3402);
         AppMethodBeat.o(24391);
         return paramUri;
-        paramArrayOfString1 = new com.tencent.mm.plugin.sight.base.d();
-        if (SightVideoJNI.isSightOkVFS(paramUri, paramArrayOfString1.zhs, paramArrayOfString1.zht, paramArrayOfString1.zhu, paramArrayOfString1.zhw, paramArrayOfString1.zhv, paramArrayOfString1.zhv.length) == 0) {
+        paramArrayOfString1 = new d();
+        if (SightVideoJNI.isSightOkVFS(paramUri, paramArrayOfString1.Dmj, paramArrayOfString1.Dmk, paramArrayOfString1.Dml, paramArrayOfString1.Dmn, paramArrayOfString1.Dmm, paramArrayOfString1.Dmm.length) == 0) {
           i = 1;
         } else {
           i = 0;
@@ -816,97 +825,97 @@ public class ExtControlProviderOpenApi
       paramArrayOfString1.addFlags(268435456);
       paramArrayOfString1.addFlags(67108864);
       paramArrayOfString1.putExtra("sight_local_path", paramUri);
-      com.tencent.mm.br.d.f(this.context, ".ui.transmit.SightForwardUI", paramArrayOfString1);
-      ab(12, 0, 1);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(1);
+      com.tencent.mm.br.c.f(this.context, ".ui.transmit.SightForwardUI", paramArrayOfString1);
+      ac(12, 0, 1);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(1);
       AppMethodBeat.o(24391);
       return paramUri;
     case 35: 
-      ae.i("MicroMsg.ExtControlProviderOpenApi", "hy: start redirect to chatting by phone num");
-      if ((paramArrayOfString2 == null) || (paramArrayOfString2.length <= 0) || (bu.isNullOrNil(paramArrayOfString2[0])))
+      Log.i("MicroMsg.ExtControlProviderOpenApi", "hy: start redirect to chatting by phone num");
+      if ((paramArrayOfString2 == null) || (paramArrayOfString2.length <= 0) || (Util.isNullOrNil(paramArrayOfString2[0])))
       {
-        ae.e("MicroMsg.ExtControlProviderOpenApi", "hy: args error: no phone num or phone num is null or nil");
-        fz(3, 3201);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(3201);
+        Log.e("MicroMsg.ExtControlProviderOpenApi", "hy: args error: no phone num or phone num is null or nil");
+        fP(3, 3201);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(3201);
         AppMethodBeat.o(24391);
         return paramUri;
       }
       paramUri = paramArrayOfString2[0];
-      ae.i("MicroMsg.ExtControlProviderOpenApi", "hy: start searching for phone num: %s", new Object[] { paramUri });
-      i = new com.tencent.mm.plugin.ext.b.c(this.context, paramUri).ctH();
-      ae.i("MicroMsg.ExtControlProviderOpenApi", " ret =  ", new Object[] { Integer.valueOf(i) });
+      Log.i("MicroMsg.ExtControlProviderOpenApi", "hy: start searching for phone num: %s", new Object[] { paramUri });
+      i = new com.tencent.mm.plugin.ext.b.c(this.context, paramUri).cSp();
+      Log.i("MicroMsg.ExtControlProviderOpenApi", " ret =  ", new Object[] { Integer.valueOf(i) });
       if (i != -1)
       {
-        ab(14, 0, i);
+        ac(14, 0, i);
         i = 0;
       }
       for (;;)
       {
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(i);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(i);
         AppMethodBeat.o(24391);
         return paramUri;
-        ab(15, 0, i);
+        ac(15, 0, i);
       }
     case 36: 
-      ae.i("MicroMsg.ExtControlProviderOpenApi", "hy: start redirect to wechat out by phone num");
+      Log.i("MicroMsg.ExtControlProviderOpenApi", "hy: start redirect to wechat out by phone num");
       if ((paramArrayOfString2 == null) || (paramArrayOfString2.length < 3))
       {
-        ae.e("MicroMsg.ExtControlProviderOpenApi", "hy: wechat out args error: args length error");
-        fz(3, 3301);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(3301);
+        Log.e("MicroMsg.ExtControlProviderOpenApi", "hy: wechat out args error: args length error");
+        fP(3, 3301);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(3301);
         AppMethodBeat.o(24391);
         return paramUri;
       }
       paramUri = paramArrayOfString2[0];
-      i = bu.getInt(paramArrayOfString2[1], -1);
+      i = Util.getInt(paramArrayOfString2[1], -1);
       paramArrayOfString1 = paramArrayOfString2[2];
-      ae.i("MicroMsg.ExtControlProviderOpenApi", "hy: start wechat out: contactid: %s, countrycode: %s,  phone num: %s", new Object[] { paramUri, Integer.valueOf(i), paramArrayOfString1 });
-      if ((bu.isNullOrNil(paramUri)) || (i < 0) || (bu.isNullOrNil(paramArrayOfString1)))
+      Log.i("MicroMsg.ExtControlProviderOpenApi", "hy: start wechat out: contactid: %s, countrycode: %s,  phone num: %s", new Object[] { paramUri, Integer.valueOf(i), paramArrayOfString1 });
+      if ((Util.isNullOrNil(paramUri)) || (i < 0) || (Util.isNullOrNil(paramArrayOfString1)))
       {
-        ae.i("MicroMsg.ExtControlProviderOpenApi", "hy: param err");
-        fz(3, 3302);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(3302);
+        Log.i("MicroMsg.ExtControlProviderOpenApi", "hy: param err");
+        fP(3, 3302);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(3302);
         AppMethodBeat.o(24391);
         return paramUri;
       }
-      paramString1 = new vs();
-      paramString1.dLp.dLq = paramUri;
-      paramString1.dLp.dLr = i;
-      paramString1.dLp.dJq = paramArrayOfString1;
-      paramString1.dLp.bVF = com.tencent.mm.pluginsdk.b.i(paramUri, this.context);
-      com.tencent.mm.sdk.b.a.IvT.l(paramString1);
-      ab(16, 0, 1);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(1);
+      paramString1 = new ws();
+      paramString1.ede.edf = paramUri;
+      paramString1.ede.edg = i;
+      paramString1.ede.ebd = paramArrayOfString1;
+      paramString1.ede.nickName = com.tencent.mm.pluginsdk.b.k(paramUri, this.context);
+      EventCenter.instance.publish(paramString1);
+      ac(16, 0, 1);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(1);
       AppMethodBeat.o(24391);
       return paramUri;
     case 37: 
-      ae.d("MicroMsg.ExtControlProviderOpenApi", "getWifiList");
-      this.handler = new aq(Looper.getMainLooper());
-      paramUri = (MatrixCursor)new ExtControlProviderOpenApi.2(this, paramArrayOfString2).b(this.handler);
+      Log.d("MicroMsg.ExtControlProviderOpenApi", "getWifiList");
+      this.handler = new MMHandler(Looper.getMainLooper());
+      paramUri = (MatrixCursor)new ExtControlProviderOpenApi.2(this, paramArrayOfString2).exec(this.handler);
       if (paramUri == null)
       {
-        ab(19, 4, 14);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(14);
+        ac(19, 4, 14);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(14);
         AppMethodBeat.o(24391);
         return paramUri;
       }
-      ab(18, 0, 1);
-      ae.i("MicroMsg.ExtControlProviderOpenApi", "returnMatrix syncTaskCur");
+      ac(18, 0, 1);
+      Log.i("MicroMsg.ExtControlProviderOpenApi", "returnMatrix syncTaskCur");
       AppMethodBeat.o(24391);
       return paramUri;
     case 38: 
-      ae.d("MicroMsg.ExtControlProviderOpenApi", "connectWifi");
-      this.handler = new aq(Looper.getMainLooper());
-      paramUri = (Integer)new ExtControlProviderOpenApi.3(this, paramArrayOfString2).b(this.handler);
+      Log.d("MicroMsg.ExtControlProviderOpenApi", "connectWifi");
+      this.handler = new MMHandler(Looper.getMainLooper());
+      paramUri = (Integer)new ExtControlProviderOpenApi.3(this, paramArrayOfString2).exec(this.handler);
       if (paramUri == null)
       {
-        ab(21, 4, 14);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(14);
+        ac(21, 4, 14);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(14);
         AppMethodBeat.o(24391);
         return paramUri;
       }
-      ab(20, 0, paramUri.intValue());
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(paramUri.intValue());
+      ac(20, 0, paramUri.intValue());
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(paramUri.intValue());
       AppMethodBeat.o(24391);
       return paramUri;
     case 42: 
@@ -915,111 +924,111 @@ public class ExtControlProviderOpenApi
       paramUri.putExtra("key_from_scene", 4);
       if ((paramArrayOfString2 != null) && (paramArrayOfString2.length > 0) && (paramArrayOfString2[0].length() > 0))
       {
-        ae.i("MicroMsg.ExtControlProviderOpenApi", "openOffline business_attach:%s,appid:%s", new Object[] { paramArrayOfString2[0], paramArrayOfString1 });
+        Log.i("MicroMsg.ExtControlProviderOpenApi", "openOffline business_attach:%s,appid:%s", new Object[] { paramArrayOfString2[0], paramArrayOfString1 });
         paramUri.putExtra("key_business_attach", paramArrayOfString2[0]);
       }
       for (;;)
       {
         paramUri.putExtra("key_appid", paramArrayOfString1);
-        com.tencent.mm.br.d.b(this.context, "offline", ".ui.WalletOfflineEntranceUI", paramUri);
-        com.tencent.mm.plugin.report.service.g.yxI.f(12097, new Object[] { Integer.valueOf(9), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
-        ab(24, 0, 1);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(1);
+        com.tencent.mm.br.c.b(this.context, "offline", ".ui.WalletOfflineEntranceUI", paramUri);
+        com.tencent.mm.plugin.report.service.h.CyF.a(12097, new Object[] { Integer.valueOf(9), Integer.valueOf(0), Long.valueOf(System.currentTimeMillis()) });
+        ac(24, 0, 1);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(1);
         AppMethodBeat.o(24391);
         return paramUri;
-        ae.i("MicroMsg.ExtControlProviderOpenApi", "openOffline appid:%s", new Object[] { paramArrayOfString1 });
+        Log.i("MicroMsg.ExtControlProviderOpenApi", "openOffline appid:%s", new Object[] { paramArrayOfString1 });
       }
     case 40: 
-      ae.i("MicroMsg.ExtControlProviderOpenApi", "setSportStep start");
+      Log.i("MicroMsg.ExtControlProviderOpenApi", "setSportStep start");
       if ((paramArrayOfString2 == null) || (paramArrayOfString2.length < 3))
       {
-        ae.e("MicroMsg.ExtControlProviderOpenApi", "args error: args length error");
-        ab(23, 3, 2);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(2);
+        Log.e("MicroMsg.ExtControlProviderOpenApi", "args error: args length error");
+        ac(23, 3, 2);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(2);
         AppMethodBeat.o(24391);
         return paramUri;
       }
-      l1 = bu.getLong(paramArrayOfString2[0], -1L);
-      long l2 = bu.getLong(paramArrayOfString2[1], -1L);
-      long l3 = bu.getLong(paramArrayOfString2[2], -1L);
-      ae.i("MicroMsg.ExtControlProviderOpenApi", "setSportStep: timestampe: %s, stepcount: %s,  version: %s", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l3) });
+      l1 = Util.getLong(paramArrayOfString2[0], -1L);
+      long l2 = Util.getLong(paramArrayOfString2[1], -1L);
+      long l3 = Util.getLong(paramArrayOfString2[2], -1L);
+      Log.i("MicroMsg.ExtControlProviderOpenApi", "setSportStep: timestampe: %s, stepcount: %s,  version: %s", new Object[] { Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l3) });
       if ((l2 < 0L) || (l1 < 0L) || (l3 < 0L))
       {
-        ae.i("MicroMsg.ExtControlProviderOpenApi", "param err");
-        ab(23, 3, 2);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(2);
+        Log.i("MicroMsg.ExtControlProviderOpenApi", "param err");
+        ac(23, 3, 2);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(2);
         AppMethodBeat.o(24391);
         return paramUri;
       }
-      ctI();
-      paramUri = new gb();
-      paramUri.dsE.action = 2;
-      paramUri.dsE.dsG = l2;
-      paramUri.dsE.dsH = l1;
-      paramUri.dsE.bqh = l3;
-      if ((com.tencent.mm.sdk.b.a.IvT.l(paramUri)) && (paramUri.dsF.dsJ))
+      cSq();
+      paramUri = new ge();
+      paramUri.dJP.action = 2;
+      paramUri.dJP.dJR = l2;
+      paramUri.dJP.dJS = l1;
+      paramUri.dJP.bqc = l3;
+      if ((EventCenter.instance.publish(paramUri)) && (paramUri.dJQ.dJT))
       {
-        ab(22, 0, paramUri.dsF.dsK);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(paramUri.dsF.dsK);
+        ac(22, 0, paramUri.dJQ.dJU);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(paramUri.dJQ.dJU);
         AppMethodBeat.o(24391);
         return paramUri;
       }
-      ab(23, 4, 8);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(8);
+      ac(23, 4, 8);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(8);
       AppMethodBeat.o(24391);
       return paramUri;
     case 41: 
-      ae.i("MicroMsg.ExtControlProviderOpenApi", "getSportConfig start");
-      ctI();
-      paramUri = new gb();
-      paramUri.dsE.action = 3;
-      if ((com.tencent.mm.sdk.b.a.IvT.l(paramUri)) && (paramUri.dsF.dsJ))
+      Log.i("MicroMsg.ExtControlProviderOpenApi", "getSportConfig start");
+      cSq();
+      paramUri = new ge();
+      paramUri.dJP.action = 3;
+      if ((EventCenter.instance.publish(paramUri)) && (paramUri.dJQ.dJT))
       {
-        paramArrayOfString1 = paramUri.dsF.dsI;
-        paramString1 = new MatrixCursor(rlc);
-        paramString1.addRow(new Object[] { Integer.valueOf(paramUri.dsF.dsK), bu.nullAsNil(paramArrayOfString1) });
-        ab(22, 0, paramUri.dsF.dsK);
-        ae.i("MicroMsg.ExtControlProviderOpenApi", "return  code =%s ", new Object[] { Integer.valueOf(paramUri.dsF.dsK) });
+        paramArrayOfString1 = paramUri.dJQ.config;
+        paramString1 = new MatrixCursor(sMH);
+        paramString1.addRow(new Object[] { Integer.valueOf(paramUri.dJQ.dJU), Util.nullAsNil(paramArrayOfString1) });
+        ac(22, 0, paramUri.dJQ.dJU);
+        Log.i("MicroMsg.ExtControlProviderOpenApi", "return  code =%s ", new Object[] { Integer.valueOf(paramUri.dJQ.dJU) });
         AppMethodBeat.o(24391);
         return paramString1;
       }
-      ab(23, 4, 8);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(8);
+      ac(23, 4, 8);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(8);
       AppMethodBeat.o(24391);
       return paramUri;
     case 46: 
-      ae.d("MicroMsg.ExtControlProviderOpenApi", "openClean appid:%s", new Object[] { paramArrayOfString1 });
-      bc.aCg();
+      Log.d("MicroMsg.ExtControlProviderOpenApi", "openClean appid:%s", new Object[] { paramArrayOfString1 });
+      bg.aVF();
       if (!com.tencent.mm.model.c.isSDCardAvailable())
       {
-        ab(27, 5, 4);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4101);
+        ac(27, 5, 4);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4101);
         AppMethodBeat.o(24391);
         return paramUri;
       }
       paramUri = new Intent();
       paramUri.putExtra("key_from_openapi", true);
       paramUri.putExtra("key_openapi_appid", paramArrayOfString1);
-      com.tencent.mm.br.d.b(this.context, "clean", ".ui.CleanUI", paramUri);
-      ab(26, 0, 1);
-      paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(1);
+      com.tencent.mm.br.c.b(this.context, "clean", ".ui.CleanUI", paramUri);
+      ac(26, 0, 1);
+      paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(1);
       AppMethodBeat.o(24391);
       return paramUri;
     case 48: 
-      com.tencent.mm.plugin.ext.d.e.ctW().mContext = this.context;
+      com.tencent.mm.plugin.ext.d.e.cSE().mContext = this.context;
       if ((paramArrayOfString2 == null) || (paramArrayOfString2.length <= 0))
       {
-        ae.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid arg length!");
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4201);
+        Log.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid arg length!");
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4201);
         AppMethodBeat.o(24391);
         return paramUri;
       }
-      i = bu.getInt(paramArrayOfString2[0], -1);
+      i = Util.getInt(paramArrayOfString2[0], -1);
       if ((i < 0) || ((i != 0) && (i != 1) && (i != 2)))
       {
-        ae.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid command!");
-        ab(32, 3, 2);
-        paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4201);
+        Log.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid command!");
+        ac(32, 3, 2);
+        paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4201);
         AppMethodBeat.o(24391);
         return paramUri;
       }
@@ -1028,8 +1037,8 @@ public class ExtControlProviderOpenApi
       {
         if (paramArrayOfString2.length < 2)
         {
-          ae.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid arg length when check or open!");
-          paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4205);
+          Log.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid arg length when check or open!");
+          paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4205);
           AppMethodBeat.o(24391);
           return paramUri;
         }
@@ -1038,8 +1047,8 @@ public class ExtControlProviderOpenApi
         {
           if (paramArrayOfString2.length < 3)
           {
-            ae.w("MicroMsg.ExtControlProviderOpenApi", "hy: not providing md5!");
-            paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4208);
+            Log.w("MicroMsg.ExtControlProviderOpenApi", "hy: not providing md5!");
+            paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4208);
             AppMethodBeat.o(24391);
             return paramUri;
           }
@@ -1050,26 +1059,26 @@ public class ExtControlProviderOpenApi
     }
     for (;;)
     {
-      ae.i("MicroMsg.ExtControlProviderOpenApi", "hy: cmdid: %d, yuvHandle: %s", new Object[] { Integer.valueOf(i), paramUri });
+      Log.i("MicroMsg.ExtControlProviderOpenApi", "hy: cmdid: %d, yuvHandle: %s", new Object[] { Integer.valueOf(i), paramUri });
       switch (i)
       {
       default: 
         AppMethodBeat.o(24391);
         return null;
       case 0: 
-        paramString1 = com.tencent.mm.plugin.ext.d.e.ctW();
-        if (bu.isNullOrNil(paramUri))
+        paramString1 = com.tencent.mm.plugin.ext.d.e.cSE();
+        if (Util.isNullOrNil(paramUri))
         {
-          ae.w("MicroMsg.ExtQrCodeHandler", "hy: null handle in doHandleCheckQrCode");
-          com.tencent.mm.plugin.ext.d.e.Y(null, -1, 4205);
-          paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4205);
+          Log.w("MicroMsg.ExtQrCodeHandler", "hy: null handle in doHandleCheckQrCode");
+          com.tencent.mm.plugin.ext.d.e.Z(null, -1, 4205);
+          paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4205);
           AppMethodBeat.o(24391);
           return paramUri;
         }
-        paramArrayOfString1 = com.tencent.mm.plugin.ext.d.c.agJ(paramUri);
-        if ((paramArrayOfString1 != null) && (!bu.isNullOrNil(paramArrayOfString1.url)))
+        paramArrayOfString1 = com.tencent.mm.plugin.ext.d.c.art(paramUri);
+        if ((paramArrayOfString1 != null) && (!Util.isNullOrNil(paramArrayOfString1.url)))
         {
-          ae.i("MicroMsg.ExtQrCodeHandler", "hy: handled previously. yuvhandle: %s, url: %s. direct return", new Object[] { paramUri, paramArrayOfString1 });
+          Log.i("MicroMsg.ExtQrCodeHandler", "hy: handled previously. yuvhandle: %s, url: %s. direct return", new Object[] { paramUri, paramArrayOfString1 });
           paramUri = paramArrayOfString1;
         }
         break;
@@ -1078,166 +1087,166 @@ public class ExtControlProviderOpenApi
       {
         if (paramUri.type == 19)
         {
-          if (com.tencent.mm.plugin.ext.d.c.agL(paramUri.url))
+          if (com.tencent.mm.plugin.ext.d.c.arv(paramUri.url))
           {
-            ae.i("MicroMsg.ExtQrCodeHandler", "hy: fastjudge wechat cannot open: %s", new Object[] { paramUri.url.toUpperCase() });
-            com.tencent.mm.plugin.ext.d.e.Y(paramUri.url, paramUri.type, 4207);
-            paramUri = com.tencent.mm.pluginsdk.d.a.a.aMN(paramUri.url);
+            Log.i("MicroMsg.ExtQrCodeHandler", "hy: fastjudge wechat cannot open: %s", new Object[] { paramUri.url.toUpperCase() });
+            com.tencent.mm.plugin.ext.d.e.Z(paramUri.url, paramUri.type, 4207);
+            paramUri = com.tencent.mm.pluginsdk.d.a.a.bdj(paramUri.url);
             AppMethodBeat.o(24391);
             return paramUri;
-            paramUri = com.tencent.mm.plugin.ext.d.e.ba(paramUri, false);
+            paramUri = com.tencent.mm.plugin.ext.d.e.bc(paramUri, false);
             if (paramUri == null)
             {
-              ae.w("MicroMsg.ExtQrCodeHandler", "hy: not retrieved yuv data in doHandleCheckQrCode");
-              com.tencent.mm.plugin.ext.d.e.Y(null, -1, 4206);
-              paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4206);
+              Log.w("MicroMsg.ExtQrCodeHandler", "hy: not retrieved yuv data in doHandleCheckQrCode");
+              com.tencent.mm.plugin.ext.d.e.Z(null, -1, 4206);
+              paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4206);
               AppMethodBeat.o(24391);
               return paramUri;
             }
             paramUri = paramString1.a(paramUri);
-            if ((paramUri == null) || (bu.isNullOrNil(paramUri.url)))
+            if ((paramUri == null) || (Util.isNullOrNil(paramUri.url)))
             {
-              ae.w("MicroMsg.ExtQrCodeHandler", "hy: not resolved model");
-              paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4203);
+              Log.w("MicroMsg.ExtQrCodeHandler", "hy: not resolved model");
+              paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4203);
               AppMethodBeat.o(24391);
               return paramUri;
             }
           }
           else
           {
-            if (com.tencent.mm.plugin.ext.d.c.agK(paramUri.url))
+            if (com.tencent.mm.plugin.ext.d.c.aru(paramUri.url))
             {
-              ae.i("MicroMsg.ExtQrCodeHandler", "hy: wechat can open: %s", new Object[] { paramUri.url });
-              com.tencent.mm.plugin.ext.d.e.Y(paramUri.url, paramUri.type, 1);
-              paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(1);
+              Log.i("MicroMsg.ExtQrCodeHandler", "hy: wechat can open: %s", new Object[] { paramUri.url });
+              com.tencent.mm.plugin.ext.d.e.Z(paramUri.url, paramUri.type, 1);
+              paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(1);
               AppMethodBeat.o(24391);
               return paramUri;
             }
-            l1 = bu.HQ();
-            paramArrayOfString1 = com.tencent.mm.plugin.ext.d.c.agM(paramUri.url);
-            ae.i("MicroMsg.ExtQrCodeHandler", "hy: resolve config: %s, using: %d ms", new Object[] { paramArrayOfString1.toString(), Long.valueOf(bu.aO(l1)) });
-            if (paramArrayOfString1 == b.b.rmo)
+            l1 = Util.currentTicks();
+            paramArrayOfString1 = com.tencent.mm.plugin.ext.d.c.arw(paramUri.url);
+            Log.i("MicroMsg.ExtQrCodeHandler", "hy: resolve config: %s, using: %d ms", new Object[] { paramArrayOfString1.toString(), Long.valueOf(Util.ticksToNow(l1)) });
+            if (paramArrayOfString1 == b.b.sNT)
             {
-              com.tencent.mm.plugin.ext.d.c.agH(paramUri.url);
-              com.tencent.mm.plugin.ext.d.e.Y(paramUri.url, paramUri.type, 1);
-              paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(1);
+              com.tencent.mm.plugin.ext.d.c.arr(paramUri.url);
+              com.tencent.mm.plugin.ext.d.e.Z(paramUri.url, paramUri.type, 1);
+              paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(1);
               AppMethodBeat.o(24391);
               return paramUri;
             }
-            if (paramArrayOfString1 != b.b.rmn)
+            if (paramArrayOfString1 != b.b.sNS)
             {
               paramArrayOfString1 = paramUri.url;
               i = paramUri.type;
-              int j = paramUri.rmC;
-              ae.i("MicroMsg.ExtQrCodeHandler", "hy: start remote judge url: %s", new Object[] { paramArrayOfString1 });
+              int j = paramUri.sOh;
+              Log.i("MicroMsg.ExtQrCodeHandler", "hy: start remote judge url: %s", new Object[] { paramArrayOfString1 });
               l1 = System.currentTimeMillis();
-              paramArrayOfString1 = (Boolean)new e.2(paramString1, Boolean.TRUE, paramArrayOfString1, i, j).b(com.tencent.mm.plugin.ext.d.e.ctY());
-              ae.i("MicroMsg.ExtQrCodeHandler", "hy: can open: %b, using %d ms", new Object[] { paramArrayOfString1, Long.valueOf(System.currentTimeMillis() - l1) });
+              paramArrayOfString1 = (Boolean)new e.2(paramString1, Boolean.TRUE, paramArrayOfString1, i, j).exec(com.tencent.mm.plugin.ext.d.e.cSG());
+              Log.i("MicroMsg.ExtQrCodeHandler", "hy: can open: %b, using %d ms", new Object[] { paramArrayOfString1, Long.valueOf(System.currentTimeMillis() - l1) });
               if (paramArrayOfString1.booleanValue())
               {
-                com.tencent.mm.plugin.ext.d.c.agH(paramUri.url);
-                com.tencent.mm.plugin.ext.d.e.Y(paramUri.url, paramUri.type, 1);
-                paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(1);
+                com.tencent.mm.plugin.ext.d.c.arr(paramUri.url);
+                com.tencent.mm.plugin.ext.d.e.Z(paramUri.url, paramUri.type, 1);
+                paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(1);
                 AppMethodBeat.o(24391);
                 return paramUri;
               }
             }
-            com.tencent.mm.plugin.ext.d.c.agI(paramUri.url);
-            ae.w("MicroMsg.ExtQrCodeHandler", "hy: remote wechat cannot open: %s", new Object[] { paramUri.url });
-            com.tencent.mm.plugin.ext.d.e.Y(paramUri.url, paramUri.type, 4207);
-            paramUri = com.tencent.mm.pluginsdk.d.a.a.aMN(paramUri.url);
+            com.tencent.mm.plugin.ext.d.c.ars(paramUri.url);
+            Log.w("MicroMsg.ExtQrCodeHandler", "hy: remote wechat cannot open: %s", new Object[] { paramUri.url });
+            com.tencent.mm.plugin.ext.d.e.Z(paramUri.url, paramUri.type, 4207);
+            paramUri = com.tencent.mm.pluginsdk.d.a.a.bdj(paramUri.url);
             AppMethodBeat.o(24391);
             return paramUri;
           }
         }
         else
         {
-          ae.i("MicroMsg.ExtQrCodeHandler", "hy: subapp code. can open");
-          paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(1);
+          Log.i("MicroMsg.ExtQrCodeHandler", "hy: subapp code. can open");
+          paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(1);
           AppMethodBeat.o(24391);
           return paramUri;
-          paramArrayOfString2 = com.tencent.mm.plugin.ext.d.e.ctW();
-          if (bu.isNullOrNil(paramUri))
+          paramArrayOfString2 = com.tencent.mm.plugin.ext.d.e.cSE();
+          if (Util.isNullOrNil(paramUri))
           {
-            ae.w("MicroMsg.ExtQrCodeHandler", "hy: null handle in doHandleOpenQrCode");
-            com.tencent.mm.plugin.ext.d.e.Z(null, -1, 4205);
-            paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4205);
+            Log.w("MicroMsg.ExtQrCodeHandler", "hy: null handle in doHandleOpenQrCode");
+            com.tencent.mm.plugin.ext.d.e.aa(null, -1, 4205);
+            paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4205);
             AppMethodBeat.o(24391);
             return paramUri;
           }
-          paramString1 = com.tencent.mm.plugin.ext.d.c.agJ(paramUri);
-          if ((paramString1 != null) && (!bu.isNullOrNil(paramString1.url))) {
-            ae.i("MicroMsg.ExtQrCodeHandler", "hy: handled previously. yuvhandle: %s, url: %s. direct return", new Object[] { paramUri, paramString1 });
+          paramString1 = com.tencent.mm.plugin.ext.d.c.art(paramUri);
+          if ((paramString1 != null) && (!Util.isNullOrNil(paramString1.url))) {
+            Log.i("MicroMsg.ExtQrCodeHandler", "hy: handled previously. yuvhandle: %s, url: %s. direct return", new Object[] { paramUri, paramString1 });
           }
-          for (paramUri = paramString1; (paramUri.type == 19) && (com.tencent.mm.plugin.ext.d.c.agL(paramUri.url)); paramUri = paramArrayOfString1)
+          for (paramUri = paramString1; (paramUri.type == 19) && (com.tencent.mm.plugin.ext.d.c.arv(paramUri.url)); paramUri = paramArrayOfString1)
           {
-            ae.i("MicroMsg.ExtQrCodeHandler", "hy: fastjudge wechat cannot open: %s", new Object[] { paramUri.url });
-            com.tencent.mm.plugin.ext.d.e.Z(paramUri.url, paramUri.type, 4207);
-            paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4207);
+            Log.i("MicroMsg.ExtQrCodeHandler", "hy: fastjudge wechat cannot open: %s", new Object[] { paramUri.url });
+            com.tencent.mm.plugin.ext.d.e.aa(paramUri.url, paramUri.type, 4207);
+            paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4207);
             AppMethodBeat.o(24391);
             return paramUri;
-            if (bu.isNullOrNil(paramArrayOfString1))
+            if (Util.isNullOrNil(paramArrayOfString1))
             {
-              ae.w("MicroMsg.ExtQrCodeHandler", "hy: md5 not correct!!");
-              com.tencent.mm.plugin.ext.d.e.Z(null, -1, 4208);
-              paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4208);
+              Log.w("MicroMsg.ExtQrCodeHandler", "hy: md5 not correct!!");
+              com.tencent.mm.plugin.ext.d.e.aa(null, -1, 4208);
+              paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4208);
               AppMethodBeat.o(24391);
               return paramUri;
             }
-            paramString1 = com.tencent.mm.plugin.ext.d.e.ba(paramUri, true);
+            paramString1 = com.tencent.mm.plugin.ext.d.e.bc(paramUri, true);
             if (paramString1 == null)
             {
-              ae.w("MicroMsg.ExtQrCodeHandler", "hy: not retrieved yuv data in doHandleOpenQrCode");
-              com.tencent.mm.plugin.ext.d.e.Z(null, -1, 4206);
-              paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4206);
+              Log.w("MicroMsg.ExtQrCodeHandler", "hy: not retrieved yuv data in doHandleOpenQrCode");
+              com.tencent.mm.plugin.ext.d.e.aa(null, -1, 4206);
+              paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4206);
               AppMethodBeat.o(24391);
               return paramUri;
             }
-            if (bu.isNullOrNil(paramString1.md5))
+            if (Util.isNullOrNil(paramString1.md5))
             {
-              ae.w("MicroMsg.ExtQrCodeHandler", "hy: cannot retrieve md5 from yuv!");
-              com.tencent.mm.plugin.ext.d.e.Z(null, -1, 4210);
-              paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4210);
+              Log.w("MicroMsg.ExtQrCodeHandler", "hy: cannot retrieve md5 from yuv!");
+              com.tencent.mm.plugin.ext.d.e.aa(null, -1, 4210);
+              paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4210);
               AppMethodBeat.o(24391);
               return paramUri;
             }
             if (!paramString1.md5.equalsIgnoreCase(paramArrayOfString1))
             {
-              ae.w("MicroMsg.ExtQrCodeHandler", "hy: yuv data not match!!");
-              com.tencent.mm.plugin.ext.d.e.Z(null, -1, 4209);
-              paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4209);
+              Log.w("MicroMsg.ExtQrCodeHandler", "hy: yuv data not match!!");
+              com.tencent.mm.plugin.ext.d.e.aa(null, -1, 4209);
+              paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4209);
               AppMethodBeat.o(24391);
               return paramUri;
             }
             paramArrayOfString1 = paramArrayOfString2.a(paramString1);
-            if ((paramArrayOfString1 == null) || (bu.isNullOrNil(paramArrayOfString1.url)))
+            if ((paramArrayOfString1 == null) || (Util.isNullOrNil(paramArrayOfString1.url)))
             {
-              ae.w("MicroMsg.ExtQrCodeHandler", "hy: not resolved model");
-              com.tencent.mm.plugin.ext.d.e.Z(null, -1, 4203);
-              paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(4203);
+              Log.w("MicroMsg.ExtQrCodeHandler", "hy: not resolved model");
+              com.tencent.mm.plugin.ext.d.e.aa(null, -1, 4203);
+              paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(4203);
               AppMethodBeat.o(24391);
               return paramUri;
             }
             com.tencent.mm.plugin.ext.d.c.a(paramUri, paramArrayOfString1);
           }
-          ae.i("MicroMsg.ExtQrCodeHandler", "hy: do open");
-          ae.i("MicroMsg.ExtQrCodeHandler", "hy: start open: %s", new Object[] { paramUri.toString() });
+          Log.i("MicroMsg.ExtQrCodeHandler", "hy: do open");
+          Log.i("MicroMsg.ExtQrCodeHandler", "hy: start open: %s", new Object[] { paramUri.toString() });
           paramArrayOfString1 = new Intent(paramArrayOfString2.mContext, RedirectToQrCodeStubUI.class);
           paramArrayOfString1.putExtra("K_STR", paramUri.url);
           paramArrayOfString1.putExtra("K_TYPE", paramUri.type);
-          paramArrayOfString1.putExtra("K_VERSION", paramUri.rmC);
+          paramArrayOfString1.putExtra("K_VERSION", paramUri.sOh);
           paramArrayOfString1.addFlags(268435456);
           paramString1 = paramArrayOfString2.mContext;
-          paramArrayOfString1 = new com.tencent.mm.hellhoundlib.b.a().bc(paramArrayOfString1);
-          com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramArrayOfString1.ahE(), "com/tencent/mm/plugin/ext/qrcode/ExtQrCodeHandler", "handleOpen", "(Lcom/tencent/mm/plugin/ext/qrcode/ExtQrCodeHandler$QrCodeModel;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramString1.startActivity((Intent)paramArrayOfString1.mt(0));
+          paramArrayOfString1 = new com.tencent.mm.hellhoundlib.b.a().bl(paramArrayOfString1);
+          com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramArrayOfString1.axQ(), "com/tencent/mm/plugin/ext/qrcode/ExtQrCodeHandler", "handleOpen", "(Lcom/tencent/mm/plugin/ext/qrcode/ExtQrCodeHandler$QrCodeModel;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramString1.startActivity((Intent)paramArrayOfString1.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramString1, "com/tencent/mm/plugin/ext/qrcode/ExtQrCodeHandler", "handleOpen", "(Lcom/tencent/mm/plugin/ext/qrcode/ExtQrCodeHandler$QrCodeModel;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          com.tencent.mm.plugin.ext.d.e.Z(paramUri.url, paramUri.type, 1);
-          paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(1);
+          com.tencent.mm.plugin.ext.d.e.aa(paramUri.url, paramUri.type, 1);
+          paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(1);
           AppMethodBeat.o(24391);
           return paramUri;
-          com.tencent.mm.plugin.ext.d.e.ctW();
-          paramUri = com.tencent.mm.plugin.ext.d.e.ctX();
+          com.tencent.mm.plugin.ext.d.e.cSE();
+          paramUri = com.tencent.mm.plugin.ext.d.e.cSF();
           AppMethodBeat.o(24391);
           return paramUri;
           paramUri = a(paramArrayOfString2, false);
@@ -1245,19 +1254,19 @@ public class ExtControlProviderOpenApi
           return paramUri;
           if ((paramArrayOfString2 == null) || (paramArrayOfString2.length == 0))
           {
-            ae.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid arg length!");
-            paramUri = com.tencent.mm.pluginsdk.d.a.a.YL(2);
+            Log.w("MicroMsg.ExtControlProviderOpenApi", "hy: invalid arg length!");
+            paramUri = com.tencent.mm.pluginsdk.d.a.a.ahx(2);
             AppMethodBeat.o(24391);
             return paramUri;
           }
-          paramUri = v(new String[] { paramArrayOfString2[0], "0" });
+          paramUri = x(new String[] { paramArrayOfString2[0], "0" });
           AppMethodBeat.o(24391);
           return paramUri;
-          paramUri = v(paramArrayOfString2);
+          paramUri = x(paramArrayOfString2);
           AppMethodBeat.o(24391);
           return paramUri;
-          this.handler = new aq(Looper.getMainLooper());
-          paramUri = (Cursor)new ExtControlProviderOpenApi.1(this, com.tencent.mm.pluginsdk.d.a.a.YL(4302), paramArrayOfString2).b(this.handler);
+          this.handler = new MMHandler(Looper.getMainLooper());
+          paramUri = (Cursor)new ExtControlProviderOpenApi.1(this, com.tencent.mm.pluginsdk.d.a.a.ahx(4302), paramArrayOfString2).exec(this.handler);
           AppMethodBeat.o(24391);
           return paramUri;
         }
@@ -1274,7 +1283,7 @@ public class ExtControlProviderOpenApi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.ext.openapi.provider.ExtControlProviderOpenApi
  * JD-Core Version:    0.7.0.1
  */

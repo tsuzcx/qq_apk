@@ -5,25 +5,25 @@ import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
 import com.tencent.mm.memory.a.c;
-import com.tencent.mm.sdk.e.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage;
 import com.tencent.mm.storagebase.h;
 import java.util.List;
 import junit.framework.Assert;
 
 public final class j
-  extends k
+  extends MStorage
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS img_flag ( username VARCHAR(40) PRIMARY KEY , imgflag int , lastupdatetime int , reserved1 text ,reserved2 text ,reserved3 int ,reserved4 int )", "CREATE INDEX IF NOT EXISTS img_flag_small_url_index ON img_flag ( reserved2 )" };
-  h hKK;
-  final f<String, i> hPT;
+  h iFy;
+  final f<String, i> iLa;
   
   public j(h paramh)
   {
     AppMethodBeat.i(150287);
-    this.hPT = new c(800);
-    this.hKK = paramh;
+    this.iLa = new c(800);
+    this.iFy = paramh;
     AppMethodBeat.o(150287);
   }
   
@@ -35,11 +35,11 @@ public final class j
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      parami.hPO = ((int)(System.currentTimeMillis() / 1000L));
-      parami.aEI();
-      parami.dEu = -1;
-      ContentValues localContentValues = parami.aEF();
-      if ((int)this.hKK.a("img_flag", "username", localContentValues) < 0) {
+      parami.iKV = ((int)(System.currentTimeMillis() / 1000L));
+      parami.aYv();
+      parami.cSx = -1;
+      ContentValues localContentValues = parami.aYq();
+      if ((int)this.iFy.insert("img_flag", "username", localContentValues) < 0) {
         break label99;
       }
     }
@@ -64,10 +64,10 @@ public final class j
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      parami.hPO = ((int)(System.currentTimeMillis() / 1000L));
-      parami.dEu |= 0x4;
-      ContentValues localContentValues = parami.aEF();
-      if (this.hKK.update("img_flag", localContentValues, "username=?", new String[] { parami.getUsername() }) <= 0) {
+      parami.iKV = ((int)(System.currentTimeMillis() / 1000L));
+      parami.cSx |= 0x4;
+      ContentValues localContentValues = parami.aYq();
+      if (this.iFy.update("img_flag", localContentValues, "username=?", new String[] { parami.getUsername() }) <= 0) {
         break label123;
       }
     }
@@ -84,17 +84,17 @@ public final class j
     }
   }
   
-  public final i DL(String paramString)
+  public final i Mx(String paramString)
   {
     AppMethodBeat.i(150288);
-    Object localObject = (i)this.hPT.aL(paramString);
+    Object localObject = (i)this.iLa.aT(paramString);
     if ((localObject != null) && (((i)localObject).getUsername().equals(paramString)))
     {
       AppMethodBeat.o(150288);
       return localObject;
     }
-    localObject = "select img_flag.username,img_flag.imgflag,img_flag.lastupdatetime,img_flag.reserved1,img_flag.reserved2,img_flag.reserved3,img_flag.reserved4 from img_flag where img_flag.username=\"" + bu.aSk(paramString) + "\"";
-    Cursor localCursor = this.hKK.a((String)localObject, null, 2);
+    localObject = "select img_flag.username,img_flag.imgflag,img_flag.lastupdatetime,img_flag.reserved1,img_flag.reserved2,img_flag.reserved3,img_flag.reserved4 from img_flag where img_flag.username=\"" + Util.escapeSqlValue(paramString) + "\"";
+    Cursor localCursor = this.iFy.rawQuery((String)localObject, null, 2);
     if (localCursor == null)
     {
       AppMethodBeat.o(150288);
@@ -108,27 +108,27 @@ public final class j
     for (;;)
     {
       localCursor.close();
-      this.hPT.q(paramString, localObject);
+      this.iLa.x(paramString, localObject);
       AppMethodBeat.o(150288);
       return localObject;
       localObject = null;
     }
   }
   
-  public final void DM(String paramString)
+  public final void My(String paramString)
   {
     AppMethodBeat.i(150293);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(150293);
       return;
     }
-    this.hPT.remove(paramString);
-    this.hKK.delete("img_flag", "username=?", new String[] { String.valueOf(paramString) });
+    this.iLa.remove(paramString);
+    this.iFy.delete("img_flag", "username=?", new String[] { String.valueOf(paramString) });
     AppMethodBeat.o(150293);
   }
   
-  public final boolean am(List<i> paramList)
+  public final boolean av(List<i> paramList)
   {
     AppMethodBeat.i(150290);
     if (paramList.size() == 0)
@@ -136,7 +136,7 @@ public final class j
       AppMethodBeat.o(150290);
       return false;
     }
-    long l = this.hKK.yi(Thread.currentThread().getId());
+    long l = this.iFy.beginTransaction(Thread.currentThread().getId());
     int i = 0;
     try
     {
@@ -151,11 +151,11 @@ public final class j
     {
       for (;;)
       {
-        ae.e("MicroMsg.ImgFlagStorage", paramList.getMessage());
+        Log.e("MicroMsg.ImgFlagStorage", paramList.getMessage());
         boolean bool = false;
       }
     }
-    this.hKK.sW(l);
+    this.iFy.endTransaction(l);
     AppMethodBeat.o(150290);
     return bool;
   }
@@ -163,17 +163,17 @@ public final class j
   public final boolean b(i parami)
   {
     AppMethodBeat.i(150289);
-    ae.i("MicroMsg.ImgFlagStorage", "new smallImageUrl = %s, bigImageUrl = %s", new Object[] { parami.aEH(), parami.aEG() });
-    i locali = DL(parami.getUsername());
+    Log.i("MicroMsg.ImgFlagStorage", "new smallImageUrl = %s, bigImageUrl = %s", new Object[] { parami.aYu(), parami.aYt() });
+    i locali = Mx(parami.getUsername());
     if (locali == null)
     {
-      this.hPT.q(parami.getUsername(), parami);
+      this.iLa.x(parami.getUsername(), parami);
       bool = c(parami);
       AppMethodBeat.o(150289);
       return bool;
     }
-    ae.i("MicroMsg.ImgFlagStorage", "old, smallImageUrl = %s, bigImageUrl = %s", new Object[] { locali.aEH(), locali.aEG() });
-    this.hPT.remove(parami.getUsername());
+    Log.i("MicroMsg.ImgFlagStorage", "old, smallImageUrl = %s, bigImageUrl = %s", new Object[] { locali.aYu(), locali.aYt() });
+    this.iLa.remove(parami.getUsername());
     boolean bool = d(parami);
     AppMethodBeat.o(150289);
     return bool;
@@ -181,7 +181,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.aj.j
  * JD-Core Version:    0.7.0.1
  */

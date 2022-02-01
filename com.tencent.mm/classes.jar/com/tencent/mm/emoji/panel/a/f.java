@@ -1,15 +1,15 @@
 package com.tencent.mm.emoji.panel.a;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"TAG", "", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"TAG", "", "plugin-emojisdk_release"})
 public final class f
 {
   private static final String TAG = "MicroMsg.EmojiPanelClickListener";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.f
  * JD-Core Version:    0.7.0.1
  */

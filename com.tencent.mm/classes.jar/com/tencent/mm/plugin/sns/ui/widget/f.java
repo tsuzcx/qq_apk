@@ -9,54 +9,54 @@ import android.view.Display;
 import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.a.b;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class f
 {
-  private static f AVa;
-  private static final int AVd;
-  public int AUz = 0;
-  private com.tencent.mm.kiss.widget.textview.a.a AVb = null;
-  private com.tencent.mm.kiss.widget.textview.a.a AVc = null;
+  private static f FfF;
+  private static final int FfI;
+  private com.tencent.mm.kiss.widget.textview.a.a FfG = null;
+  private com.tencent.mm.kiss.widget.textview.a.a FfH = null;
+  public int Fff = 0;
   
   static
   {
     AppMethodBeat.i(100557);
-    AVa = new f();
-    AVd = com.tencent.mm.cb.a.ay(ak.getContext(), 2131165200);
+    FfF = new f();
+    FfI = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131165203);
     AppMethodBeat.o(100557);
   }
   
-  public static f eiL()
+  public static f fll()
   {
-    return AVa;
+    return FfF;
   }
   
   public static float getTextSize()
   {
     AppMethodBeat.i(100556);
-    float f = (int)(AVd * com.tencent.mm.cb.a.ef(ak.getContext()));
+    float f = (int)(FfI * com.tencent.mm.cb.a.ez(MMApplicationContext.getContext()));
     AppMethodBeat.o(100556);
     return f;
   }
   
   public static void resetConfig()
   {
-    f localf = AVa;
-    localf.AVb = null;
-    localf.AVc = null;
+    f localf = FfF;
+    localf.FfG = null;
+    localf.FfH = null;
   }
   
-  public final com.tencent.mm.kiss.widget.textview.a.a eiM()
+  public final com.tencent.mm.kiss.widget.textview.a.a flm()
   {
     AppMethodBeat.i(100554);
-    int i = (int)(AVd * com.tencent.mm.cb.a.ef(ak.getContext()));
+    int i = (int)(FfI * com.tencent.mm.cb.a.ez(MMApplicationContext.getContext()));
     if (Build.VERSION.SDK_INT == 28) {}
-    for (this.AVc = b.akZ().mW(8388627).mX(ak.getContext().getResources().getColor(2131100711)).aj(i).ala().alb().gHW;; this.AVc = b.akZ().mW(8388627).mX(ak.getContext().getResources().getColor(2131100711)).aj(i).ala().gHW)
+    for (this.FfH = b.aBq().qk(8388627).ql(MMApplicationContext.getContext().getResources().getColor(2131100904)).as(i).aBr().aBs().huK;; this.FfH = b.aBq().qk(8388627).ql(MMApplicationContext.getContext().getResources().getColor(2131100904)).as(i).aBr().huK)
     {
-      com.tencent.mm.kiss.widget.textview.a.a locala = this.AVc;
+      com.tencent.mm.kiss.widget.textview.a.a locala = this.FfH;
       AppMethodBeat.o(100554);
       return locala;
     }
@@ -65,16 +65,16 @@ public final class f
   public final com.tencent.mm.kiss.widget.textview.a.a getTextViewConfig()
   {
     AppMethodBeat.i(100553);
-    int i = (int)(AVd * com.tencent.mm.cb.a.ef(ak.getContext()));
-    if ((this.AVb == null) || ((int)this.AVb.textSize != i)) {
+    int i = (int)(FfI * com.tencent.mm.cb.a.ez(MMApplicationContext.getContext()));
+    if ((this.FfG == null) || ((int)this.FfG.textSize != i)) {
       if (Build.VERSION.SDK_INT != 28) {
         break label94;
       }
     }
     label94:
-    for (this.AVb = b.akZ().mW(8388627).mX(ak.getContext().getResources().getColor(2131100711)).aj(i).alb().gHW;; this.AVb = b.akZ().mW(8388627).mX(ak.getContext().getResources().getColor(2131100711)).aj(i).gHW)
+    for (this.FfG = b.aBq().qk(8388627).ql(MMApplicationContext.getContext().getResources().getColor(2131100904)).as(i).aBs().huK;; this.FfG = b.aBq().qk(8388627).ql(MMApplicationContext.getContext().getResources().getColor(2131100904)).as(i).huK)
     {
-      com.tencent.mm.kiss.widget.textview.a.a locala = this.AVb;
+      com.tencent.mm.kiss.widget.textview.a.a locala = this.FfG;
       AppMethodBeat.o(100553);
       return locala;
     }
@@ -83,31 +83,31 @@ public final class f
   public final int getViewWidth()
   {
     AppMethodBeat.i(100555);
-    if (this.AUz <= 0)
+    if (this.Fff <= 0)
     {
-      i = ah.dpC().x;
-      int j = (int)(ak.getResources().getDimension(2131165516) + ak.getResources().getDimension(2131165516));
-      int k = (int)ak.getResources().getDimension(2131166840);
-      int m = (int)ak.getResources().getDimension(2131165516);
-      this.AUz = (i - k - j);
-      if (this.AUz <= 0)
+      i = aj.ejr().x;
+      int j = (int)(MMApplicationContext.getResources().getDimension(2131165534) + MMApplicationContext.getResources().getDimension(2131165534));
+      int k = (int)MMApplicationContext.getResources().getDimension(2131166967);
+      int m = (int)MMApplicationContext.getResources().getDimension(2131165534);
+      this.Fff = (i - k - j);
+      if (this.Fff <= 0)
       {
         DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-        ((WindowManager)ak.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
+        ((WindowManager)MMApplicationContext.getContext().getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
         i = localDisplayMetrics.widthPixels;
-        this.AUz = (i - k - j);
-        ae.i("MicroMsg.SnsPostDescPreloadTextViewConfig", "try again, screenWidth " + i + " textViewWidth " + this.AUz + " padding: " + j + " marginLeft: " + k + " thisviewPadding: " + m);
+        this.Fff = (i - k - j);
+        Log.i("MicroMsg.SnsPostDescPreloadTextViewConfig", "try again, screenWidth " + i + " textViewWidth " + this.Fff + " padding: " + j + " marginLeft: " + k + " thisviewPadding: " + m);
       }
-      ae.i("MicroMsg.SnsPostDescPreloadTextViewConfig", "finally, screenWidth " + i + " textViewWidth " + this.AUz + " padding: " + j + " marginLeft: " + k + " thisviewPadding: " + m);
+      Log.i("MicroMsg.SnsPostDescPreloadTextViewConfig", "finally, screenWidth " + i + " textViewWidth " + this.Fff + " padding: " + j + " marginLeft: " + k + " thisviewPadding: " + m);
     }
-    int i = this.AUz;
+    int i = this.Fff;
     AppMethodBeat.o(100555);
     return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.widget.f
  * JD-Core Version:    0.7.0.1
  */

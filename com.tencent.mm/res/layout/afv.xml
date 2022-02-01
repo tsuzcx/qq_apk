@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.plugin.finder.live.view.FinderLiveLinkMicStateContainer android:id="@id/ctw" android:background="@drawable/a13" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/ctx" android:layout_width="@dimen/a53" android:layout_height="@dimen/bv" android:layout_centerInParent="true">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_horizontal" android:id="@id/cty" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/cb" app:iconColor="@color/ag2" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/ag2" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/ctz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/ctq" android:layout_width="@dimen/bw" android:layout_height="124.0dip" android:layout_centerInParent="true">
+        <org.libpag.PAGView android:layout_gravity="center_horizontal" android:id="@id/ctv" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginTop="@dimen/cb" />
+        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_9" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/ctt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:maxWidth="@dimen/cr" android:singleLine="true" />
+        <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct">
+            <TextView android:textSize="14.0dip" android:textColor="@color/ag2" android:id="@id/ctu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cue" />
+            <RelativeLayout android:id="@id/cts" android:background="@drawable/a1j" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci">
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ctr" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:src="@raw/icons_filled_call_end" android:layout_centerInParent="true" app:iconColor="@color/ag2" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</com.tencent.mm.plugin.finder.live.view.FinderLiveLinkMicStateContainer>

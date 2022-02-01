@@ -13,123 +13,125 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.live.b.f;
-import com.tencent.mm.ui.al;
-import com.tencent.mm.ui.ar;
+import com.tencent.mm.live.b.o;
+import com.tencent.mm.ui.ao;
+import com.tencent.mm.ui.au;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.b.p;
-import d.l;
+import com.tencent.xweb.z;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/ui/dialog/LiveVisitorGuideView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "actionBtn", "Landroid/widget/Button;", "actionGroup", "Landroid/view/View;", "actionIcon", "Landroid/widget/ImageView;", "actionTv", "Landroid/widget/TextView;", "contentGroup", "isAcceptAgreement", "", "maskView", "onHideListener", "Lkotlin/Function0;", "", "getOnHideListener", "()Lkotlin/jvm/functions/Function0;", "setOnHideListener", "(Lkotlin/jvm/functions/Function0;)V", "onOkListener", "getOnOkListener", "setOnOkListener", "titleIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "webView", "Lcom/tencent/mm/ui/widget/MMWebView;", "setupAction", "setupContentView", "setupMask", "setupTitle", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/ui/dialog/LiveVisitorGuideView;", "Landroid/widget/RelativeLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "style", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "actionBtn", "Landroid/widget/Button;", "actionGroup", "Landroid/view/View;", "actionIcon", "Landroid/widget/ImageView;", "actionTv", "Landroid/widget/TextView;", "contentGroup", "isAcceptAgreement", "", "maskView", "onHideListener", "Lkotlin/Function0;", "", "getOnHideListener", "()Lkotlin/jvm/functions/Function0;", "setOnHideListener", "(Lkotlin/jvm/functions/Function0;)V", "onOkListener", "getOnOkListener", "setOnOkListener", "titleIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "webView", "Lcom/tencent/mm/ui/widget/MMWebView;", "setupAction", "setupContentView", "setupMask", "setupTitle", "plugin-logic_release"})
 public final class LiveVisitorGuideView
   extends RelativeLayout
 {
-  private final MMWebView hcA;
-  private final ImageView hcB;
-  private final TextView hcC;
-  private final Button hcD;
-  private final WeImageView hcE;
-  private final View hcF;
-  private final View hcG;
-  private final View hcH;
-  private boolean hcI;
-  private d.g.a.a<d.z> hcJ;
-  private d.g.a.a<d.z> hcK;
+  private boolean hVA;
+  private kotlin.g.a.a<x> hVB;
+  private kotlin.g.a.a<x> hVC;
+  private final ImageView hVu;
+  private final TextView hVv;
+  private final Button hVw;
+  private final WeImageView hVx;
+  private final View hVy;
+  private final View hVz;
+  private final View maskView;
+  private final MMWebView webView;
   
   public LiveVisitorGuideView(Context paramContext)
   {
     this(paramContext, null, 0);
-    AppMethodBeat.i(216523);
-    AppMethodBeat.o(216523);
+    AppMethodBeat.i(208484);
+    AppMethodBeat.o(208484);
   }
   
   public LiveVisitorGuideView(Context paramContext, AttributeSet paramAttributeSet)
   {
     this(paramContext, paramAttributeSet, 0);
-    AppMethodBeat.i(216524);
-    AppMethodBeat.o(216524);
+    AppMethodBeat.i(208485);
+    AppMethodBeat.o(208485);
   }
   
   public LiveVisitorGuideView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(216522);
-    View.inflate(paramContext, 2131496352, (ViewGroup)this);
-    paramAttributeSet = MMWebView.a.a(paramContext, (View)this, 2131307844);
+    AppMethodBeat.i(208483);
+    View.inflate(paramContext, 2131495292, (ViewGroup)this);
+    paramAttributeSet = MMWebView.a.a(paramContext, (View)this, 2131303632);
     p.g(paramAttributeSet, "MMWebView.Factory.findVi…ve_visitor_guide_content)");
-    this.hcA = paramAttributeSet;
-    paramAttributeSet = findViewById(2131307842);
+    this.webView = paramAttributeSet;
+    paramAttributeSet = findViewById(2131303630);
     p.g(paramAttributeSet, "findViewById(R.id.live_visitor_guide_action_icon)");
-    this.hcB = ((ImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131307843);
+    this.hVu = ((ImageView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131303631);
     p.g(paramAttributeSet, "findViewById(R.id.live_visitor_guide_action_tv)");
-    this.hcC = ((TextView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131307839);
+    this.hVv = ((TextView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131303627);
     p.g(paramAttributeSet, "findViewById(R.id.live_visitor_guide_action_btn)");
-    this.hcD = ((Button)paramAttributeSet);
-    paramAttributeSet = findViewById(2131307848);
+    this.hVw = ((Button)paramAttributeSet);
+    paramAttributeSet = findViewById(2131303636);
     p.g(paramAttributeSet, "findViewById(R.id.live_visitor_guide_title_icon)");
-    this.hcE = ((WeImageView)paramAttributeSet);
-    paramAttributeSet = findViewById(2131307840);
+    this.hVx = ((WeImageView)paramAttributeSet);
+    paramAttributeSet = findViewById(2131303628);
     p.g(paramAttributeSet, "findViewById(R.id.live_v…_guide_action_desc_group)");
-    this.hcF = paramAttributeSet;
-    paramAttributeSet = findViewById(2131307845);
+    this.hVy = paramAttributeSet;
+    paramAttributeSet = findViewById(2131303633);
     p.g(paramAttributeSet, "findViewById(R.id.live_v…itor_guide_content_group)");
-    this.hcG = paramAttributeSet;
-    paramAttributeSet = findViewById(2131307846);
+    this.hVz = paramAttributeSet;
+    paramAttributeSet = findViewById(2131303634);
     p.g(paramAttributeSet, "findViewById(R.id.live_visitor_guide_mask)");
-    this.hcH = paramAttributeSet;
-    this.hcG.getLayoutParams().height = (ar.ck(paramContext).y * 3 / 4);
-    paramContext = this.hcA.getSettings();
+    this.maskView = paramAttributeSet;
+    this.hVz.getLayoutParams().height = (au.az(paramContext).y * 3 / 4);
+    paramContext = this.webView.getSettings();
     p.g(paramContext, "webView.getSettings()");
     paramContext.setJavaScriptEnabled(true);
-    paramContext = this.hcA;
-    paramAttributeSet = f.gPE;
-    paramContext.loadUrl(f.anj());
-    this.hcE.setOnClickListener((View.OnClickListener)new c(this));
-    this.hcB.setImageResource(2131231750);
-    this.hcF.setOnClickListener((View.OnClickListener)new a(this));
-    this.hcD.setEnabled(false);
-    this.hcD.setOnClickListener((View.OnClickListener)new b(this));
-    if (al.isDarkMode())
+    paramContext = this.webView;
+    paramAttributeSet = o.hGl;
+    paramContext.loadUrl(o.aFj());
+    this.hVx.setOnClickListener((View.OnClickListener)new c(this));
+    this.hVu.setImageResource(2131231825);
+    this.hVy.setOnClickListener((View.OnClickListener)new a(this));
+    this.hVw.setEnabled(false);
+    this.hVw.setOnClickListener((View.OnClickListener)new b(this));
+    if (ao.isDarkMode())
     {
-      paramContext = this.hcH;
+      paramContext = this.maskView;
       paramAttributeSet = getContext();
       p.g(paramAttributeSet, "context");
-      paramContext.setBackground(paramAttributeSet.getResources().getDrawable(2131691548));
-      AppMethodBeat.o(216522);
+      paramContext.setBackground(paramAttributeSet.getResources().getDrawable(2131691016));
+      AppMethodBeat.o(208483);
       return;
     }
-    paramContext = this.hcH;
+    paramContext = this.maskView;
     paramAttributeSet = getContext();
     p.g(paramAttributeSet, "context");
-    paramContext.setBackground(paramAttributeSet.getResources().getDrawable(2131691549));
-    AppMethodBeat.o(216522);
+    paramContext.setBackground(paramAttributeSet.getResources().getDrawable(2131691017));
+    AppMethodBeat.o(208483);
   }
   
-  public final d.g.a.a<d.z> getOnHideListener()
+  public final kotlin.g.a.a<x> getOnHideListener()
   {
-    return this.hcJ;
+    return this.hVB;
   }
   
-  public final d.g.a.a<d.z> getOnOkListener()
+  public final kotlin.g.a.a<x> getOnOkListener()
   {
-    return this.hcK;
+    return this.hVC;
   }
   
-  public final void setOnHideListener(d.g.a.a<d.z> parama)
+  public final void setOnHideListener(kotlin.g.a.a<x> parama)
   {
-    this.hcJ = parama;
+    this.hVB = parama;
   }
   
-  public final void setOnOkListener(d.g.a.a<d.z> parama)
+  public final void setOnOkListener(kotlin.g.a.a<x> parama)
   {
-    this.hcK = parama;
+    this.hVC = parama;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
     implements View.OnClickListener
   {
@@ -137,37 +139,37 @@ public final class LiveVisitorGuideView
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(216519);
+      AppMethodBeat.i(208480);
       b localb = new b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveVisitorGuideView$setupAction$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = this.hcL;
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveVisitorGuideView$setupAction$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = this.hVD;
       boolean bool;
-      if (!LiveVisitorGuideView.a(this.hcL))
+      if (!LiveVisitorGuideView.a(this.hVD))
       {
         bool = true;
         LiveVisitorGuideView.a(paramView, bool);
-        if (!LiveVisitorGuideView.a(this.hcL)) {
+        if (!LiveVisitorGuideView.a(this.hVD)) {
           break label112;
         }
-        LiveVisitorGuideView.b(this.hcL).setImageResource(2131689936);
-        LiveVisitorGuideView.c(this.hcL).setEnabled(true);
+        LiveVisitorGuideView.b(this.hVD).setImageResource(2131689951);
+        LiveVisitorGuideView.c(this.hVD).setEnabled(true);
       }
       for (;;)
       {
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/dialog/LiveVisitorGuideView$setupAction$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(216519);
+        AppMethodBeat.o(208480);
         return;
         bool = false;
         break;
         label112:
-        LiveVisitorGuideView.b(this.hcL).setImageResource(2131231750);
-        LiveVisitorGuideView.c(this.hcL).setEnabled(false);
+        LiveVisitorGuideView.b(this.hVD).setImageResource(2131231825);
+        LiveVisitorGuideView.c(this.hVD).setEnabled(false);
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -175,20 +177,20 @@ public final class LiveVisitorGuideView
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(216520);
+      AppMethodBeat.i(208481);
       b localb = new b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveVisitorGuideView$setupAction$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = this.hcL.getOnOkListener();
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveVisitorGuideView$setupAction$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = this.hVD.getOnOkListener();
       if (paramView != null) {
         paramView.invoke();
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/dialog/LiveVisitorGuideView$setupAction$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(216520);
+      AppMethodBeat.o(208481);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -196,22 +198,22 @@ public final class LiveVisitorGuideView
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(216521);
+      AppMethodBeat.i(208482);
       b localb = new b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveVisitorGuideView$setupTitle$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = this.hcL.getOnHideListener();
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/ui/dialog/LiveVisitorGuideView$setupTitle$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = this.hVD.getOnHideListener();
       if (paramView != null) {
         paramView.invoke();
       }
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/ui/dialog/LiveVisitorGuideView$setupTitle$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(216521);
+      AppMethodBeat.o(208482);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.live.ui.dialog.LiveVisitorGuideView
  * JD-Core Version:    0.7.0.1
  */

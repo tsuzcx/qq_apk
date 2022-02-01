@@ -9,9 +9,9 @@ public final class CookieInternal
   {
     public abstract void e(WebView paramWebView);
     
-    public abstract void geZ();
-    
     public abstract String getCookie(String paramString);
+    
+    public abstract void hsq();
     
     public abstract void removeAllCookie();
     

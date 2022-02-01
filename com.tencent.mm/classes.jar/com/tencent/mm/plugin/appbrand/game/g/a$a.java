@@ -6,11 +6,11 @@ import java.lang.ref.WeakReference;
 
 public abstract class a$a
 {
-  protected WeakReference<MagicBrushView> kqX;
+  protected WeakReference<MagicBrushView> luG;
   
   private a$a(MagicBrushView paramMagicBrushView)
   {
-    this.kqX = new WeakReference(paramMagicBrushView);
+    this.luG = new WeakReference(paramMagicBrushView);
   }
   
   abstract void a(b.b paramb);
@@ -21,14 +21,14 @@ public abstract class a$a
   
   abstract void b(d<String> paramd);
   
-  abstract void bik();
+  public abstract VideoTransPara bDA();
   
-  public abstract VideoTransPara bil();
-  
-  public final MagicBrushView bim()
+  public final MagicBrushView bDB()
   {
-    return (MagicBrushView)this.kqX.get();
+    return (MagicBrushView)this.luG.get();
   }
+  
+  abstract void bDz();
   
   abstract void c(d<String> paramd);
   
@@ -36,7 +36,7 @@ public abstract class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.game.g.a.a
  * JD-Core Version:    0.7.0.1
  */

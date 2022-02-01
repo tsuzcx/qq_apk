@@ -1,13 +1,13 @@
 package com.tencent.mm.plugin.aa.ui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.contact.a.a;
 import com.tencent.mm.ui.contact.n;
 import com.tencent.mm.ui.contact.q;
@@ -18,31 +18,31 @@ import java.util.List;
 public final class d
   extends q
 {
-  private List<String> dBf;
-  private ArrayList<String> iYo;
+  private List<String> dSU;
+  private ArrayList<String> jVT;
   
   public d(n paramn, ArrayList<String> paramArrayList)
   {
     super(paramn, null, true, true);
     AppMethodBeat.i(63549);
-    this.iYo = paramArrayList;
-    Zq();
+    this.jVT = paramArrayList;
+    and();
     AppMethodBeat.o(63549);
   }
   
-  public final void Zq()
+  public final void and()
   {
     AppMethodBeat.i(63550);
-    ae.i("MicroMsg.AASelectInitAdapter", "resetData");
-    if (this.dBf == null) {
-      this.dBf = new ArrayList();
+    Log.i("MicroMsg.AASelectInitAdapter", "resetData");
+    if (this.dSU == null) {
+      this.dSU = new ArrayList();
     }
-    this.dBf.clear();
-    Iterator localIterator = this.iYo.iterator();
+    this.dSU.clear();
+    Iterator localIterator = this.jVT.iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      this.dBf.add(str);
+      this.dSU.add(str);
     }
     AppMethodBeat.o(63550);
   }
@@ -50,30 +50,30 @@ public final class d
   public final int getCount()
   {
     AppMethodBeat.i(63552);
-    int i = this.dBf.size();
+    int i = this.dSU.size();
     AppMethodBeat.o(63552);
     return i;
   }
   
-  public final a rk(int paramInt)
+  public final a va(int paramInt)
   {
     AppMethodBeat.i(63551);
-    Object localObject = (String)this.dBf.get(paramInt);
-    g.ajS();
-    an localan = ((l)g.ab(l.class)).azF().BH((String)localObject);
-    if ((localan != null) && (bu.isNullOrNil(localan.field_username))) {
-      localan.setUsername((String)localObject);
+    Object localObject = (String)this.dSU.get(paramInt);
+    g.aAi();
+    as localas = ((l)g.af(l.class)).aSN().Kn((String)localObject);
+    if ((localas != null) && (Util.isNullOrNil(localas.field_username))) {
+      localas.setUsername((String)localObject);
     }
     localObject = new c(paramInt);
-    ((a)localObject).contact = localan;
-    ((a)localObject).KJj = true;
+    ((a)localObject).contact = localas;
+    ((a)localObject).PWh = true;
     AppMethodBeat.o(63551);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.ui.d
  * JD-Core Version:    0.7.0.1
  */

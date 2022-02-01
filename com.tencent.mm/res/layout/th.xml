@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@drawable/fw" android:paddingLeft="@dimen/ha" android:paddingTop="@dimen/i_" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/hj" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:layout_below="@id/ayf" style="@style/gs"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/q" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/a1y" android:paddingBottom="@dimen/hk" android:focusableInTouchMode="true" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="3" android:lineSpacingExtra="2.0dip" />
-    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/jo" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/a1x" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="5" android:lineSpacingExtra="2.0dip" />
+    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gu">
+        <TextView android:layout_gravity="right" android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/ayb" style="@style/h2" />
+            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/j0y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/c5" style="@style/a71" />
+            <ImageView android:layout_gravity="center_vertical" android:id="@id/ayd" android:paddingRight="@dimen/k5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
+            <com.tencent.mm.ui.widget.MMTextView android:id="@id/auk" android:background="@drawable/oq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="@dimen/xb" android:minHeight="@dimen/ad" style="@style/h4" />
+        </LinearLayout>
+    </LinearLayout>
+    <include layout="@layout/qr" />
 </LinearLayout>

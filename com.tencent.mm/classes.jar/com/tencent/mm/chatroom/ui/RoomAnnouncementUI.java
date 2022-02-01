@@ -6,18 +6,15 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.ViewGroup;
 import com.jg.JgClassChecked;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.JsResult;
 import com.tencent.xweb.WebView;
-import com.tencent.xweb.ac;
 import com.tencent.xweb.x;
 import com.tencent.xweb.z;
 
@@ -26,31 +23,31 @@ import com.tencent.xweb.z;
 public class RoomAnnouncementUI
   extends MMActivity
 {
-  private WebView fSD;
-  private boolean fSE;
+  private WebView gxL;
+  private boolean gxM;
   private String roomId;
   
   public int getLayoutId()
   {
-    return 2131493372;
+    return 2131493463;
   }
   
   @SuppressLint({"SetJavaScriptEnabled"})
   public void initView()
   {
     AppMethodBeat.i(12690);
-    setMMTitle(2131762725);
-    this.fSD = MMWebView.a.s(this, 2131306909);
-    this.fSD.getSettings().setJavaScriptEnabled(true);
-    this.fSD.getSettings().gfD();
-    this.fSD.getSettings().setBuiltInZoomControls(true);
-    this.fSD.getSettings().setUseWideViewPort(true);
-    this.fSD.getSettings().setLoadWithOverviewMode(true);
-    this.fSD.getSettings().gfw();
-    this.fSD.getSettings().gfv();
-    this.fSD.getSettings().setGeolocationEnabled(false);
-    this.fSD.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
-    this.fSD.setWebChromeClient(new x()
+    setMMTitle(2131764808);
+    this.gxL = MMWebView.a.r(this, 2131310382);
+    this.gxL.getSettings().setJavaScriptEnabled(true);
+    this.gxL.getSettings().hsU();
+    this.gxL.getSettings().setBuiltInZoomControls(true);
+    this.gxL.getSettings().setUseWideViewPort(true);
+    this.gxL.getSettings().setLoadWithOverviewMode(true);
+    this.gxL.getSettings().hsN();
+    this.gxL.getSettings().hsM();
+    this.gxL.getSettings().setGeolocationEnabled(false);
+    this.gxL.getSettings().setJavaScriptCanOpenWindowsAutomatically(false);
+    this.gxL.setWebChromeClient(new x()
     {
       public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, JsResult paramAnonymousJsResult)
       {
@@ -69,34 +66,10 @@ public class RoomAnnouncementUI
         return true;
       }
     });
-    this.fSD.setWebViewClient(new ac()
-    {
-      public final boolean a(WebView paramAnonymousWebView, String paramAnonymousString)
-      {
-        AppMethodBeat.i(12684);
-        if (paramAnonymousString.equals("weixin://chatroom/upgradeagree"))
-        {
-          b.a(RoomAnnouncementUI.this, RoomAnnouncementUI.b(RoomAnnouncementUI.this), RoomAnnouncementUI.c(RoomAnnouncementUI.this));
-          AppMethodBeat.o(12684);
-          return true;
-        }
-        AppMethodBeat.o(12684);
-        return false;
-      }
-    });
-    setBackBtn(new MenuItem.OnMenuItemClickListener()
-    {
-      public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
-      {
-        AppMethodBeat.i(12685);
-        RoomAnnouncementUI.this.setResult(0);
-        RoomAnnouncementUI.this.finish();
-        AppMethodBeat.o(12685);
-        return true;
-      }
-    });
-    String str = getString(2131757103, new Object[] { ad.fom() });
-    this.fSD.loadUrl(str);
+    this.gxL.setWebViewClient(new RoomAnnouncementUI.2(this));
+    setBackBtn(new RoomAnnouncementUI.3(this));
+    String str = getString(2131757304, new Object[] { LocaleUtil.getApplicationLanguage() });
+    this.gxL.loadUrl(str);
     AppMethodBeat.o(12690);
   }
   
@@ -104,7 +77,7 @@ public class RoomAnnouncementUI
   {
     AppMethodBeat.i(12686);
     super.onCreate(paramBundle);
-    this.fSE = getIntent().getBooleanExtra("need_bind_mobile", false);
+    this.gxM = getIntent().getBooleanExtra("need_bind_mobile", false);
     this.roomId = getIntent().getStringExtra("RoomInfo_Id");
     initView();
     AppMethodBeat.o(12686);
@@ -113,13 +86,13 @@ public class RoomAnnouncementUI
   public void onDestroy()
   {
     AppMethodBeat.i(12689);
-    if (this.fSD != null)
+    if (this.gxL != null)
     {
-      this.fSD.setVisibility(8);
-      ((ViewGroup)this.fSD.getParent()).removeView(this.fSD);
-      this.fSD.removeAllViews();
-      this.fSD.destroy();
-      this.fSD = null;
+      this.gxL.setVisibility(8);
+      ((ViewGroup)this.gxL.getParent()).removeView(this.gxL);
+      this.gxL.removeAllViews();
+      this.gxL.destroy();
+      this.gxL = null;
       System.gc();
     }
     super.onDestroy();
@@ -148,7 +121,7 @@ public class RoomAnnouncementUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.chatroom.ui.RoomAnnouncementUI
  * JD-Core Version:    0.7.0.1
  */

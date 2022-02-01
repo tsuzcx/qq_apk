@@ -5,11 +5,11 @@ import android.animation.TypeEvaluator;
 public final class c
   implements TypeEvaluator<Integer>
 {
-  private static final c gN = new c();
+  private static final c gP = new c();
   
-  public static c aR()
+  public static c aT()
   {
-    return gN;
+    return gP;
   }
 }
 

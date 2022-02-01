@@ -19,7 +19,7 @@ public final class c
     this.application = paramApplication;
   }
   
-  public static void h(Application paramApplication)
+  public static void g(Application paramApplication)
   {
     AppMethodBeat.i(125088);
     if ((Build.MANUFACTURER.equals("samsung")) && (Build.VERSION.SDK_INT >= 19) && (Build.VERSION.SDK_INT <= 24)) {

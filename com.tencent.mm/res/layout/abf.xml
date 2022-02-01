@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="64.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <View android:layout_gravity="center_vertical" android:background="@color/BW_0_Alpha_0_1" android:layout_width="32.0dip" android:layout_height="1.0px" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/km" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ctf" />
-        <View android:layout_gravity="center_vertical" android:background="@color/BW_0_Alpha_0_1" android:layout_width="32.0dip" android:layout_height="1.0px" />
+<com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" app:cornerRadius="@dimen/bt"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <include layout="@layout/abg" />
+        <include layout="@layout/abe" />
     </LinearLayout>
-</FrameLayout>
+</com.tencent.mm.ui.widget.RoundedCornerFrameLayout>

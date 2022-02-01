@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@drawable/az6" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@drawable/az6" />
-    <item android:state_focused="true" android:drawable="@drawable/az6" />
-    <item android:state_focused="false" android:drawable="@drawable/az5" />
-</selector>
+    <corners android:radius="1.0dip" />
+    <solid android:color="@color/ag2" />
+</shape>

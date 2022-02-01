@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.tencent.mm.wallet_core.ui.formview.WalletFormView android:id="@id/fjf" android:paddingLeft="0.0dip" wallet:contentHint="test" wallet:layoutRes="@layout/c_v" wallet:titleText="¥" style="@style/a0x"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto" />

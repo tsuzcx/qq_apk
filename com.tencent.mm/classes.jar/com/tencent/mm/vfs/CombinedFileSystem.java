@@ -14,8 +14,8 @@ public class CombinedFileSystem
   extends AbstractFileSystem
 {
   public static final Parcelable.Creator<CombinedFileSystem> CREATOR;
-  protected final FileSystem[] LFM;
-  protected final a[] LFN;
+  protected final FileSystem[] Rbd;
+  protected final a[] Rbe;
   
   static
   {
@@ -27,9 +27,9 @@ public class CombinedFileSystem
   private CombinedFileSystem(Parcel paramParcel)
   {
     AppMethodBeat.i(13040);
-    w.a(paramParcel, CombinedFileSystem.class, 1);
+    aa.a(paramParcel, CombinedFileSystem.class, 1);
     int k = paramParcel.readInt();
-    this.LFM = new FileSystem[k];
+    this.Rbd = new FileSystem[k];
     int i = 0;
     Object localObject;
     while (i < k)
@@ -41,11 +41,11 @@ public class CombinedFileSystem
         AppMethodBeat.o(13040);
         throw paramParcel;
       }
-      this.LFM[i] = localObject;
+      this.Rbd[i] = localObject;
       i += 1;
     }
     k = paramParcel.readInt();
-    this.LFN = new a[k];
+    this.Rbe = new a[k];
     i = j;
     if (i < k)
     {
@@ -54,7 +54,7 @@ public class CombinedFileSystem
       for (localObject = null;; localObject = Pattern.compile((String)localObject))
       {
         j = paramParcel.readInt();
-        this.LFN[i] = new a((Pattern)localObject, j);
+        this.Rbe[i] = new a((Pattern)localObject, j);
         i += 1;
         break;
       }
@@ -62,21 +62,21 @@ public class CombinedFileSystem
     AppMethodBeat.o(13040);
   }
   
-  public final FileSystem.b cd(Map<String, String> paramMap)
+  public final FileSystem.b cj(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(193358);
-    FileSystem.b[] arrayOfb = new FileSystem.b[this.LFM.length];
+    AppMethodBeat.i(187631);
+    FileSystem.b[] arrayOfb = new FileSystem.b[this.Rbd.length];
     int j = 0;
     int k;
     for (int i = 0; j < arrayOfb.length; i = k | i)
     {
-      FileSystem.b localb = this.LFM[j].cd(paramMap);
-      k = localb.fSL();
+      FileSystem.b localb = this.Rbd[j].cj(paramMap);
+      k = localb.hdR();
       arrayOfb[j] = localb;
       j += 1;
     }
     paramMap = new b(arrayOfb, i);
-    AppMethodBeat.o(193358);
+    AppMethodBeat.o(187631);
     return paramMap;
   }
   
@@ -84,7 +84,7 @@ public class CombinedFileSystem
   {
     AppMethodBeat.i(13045);
     Object localObject = new StringBuilder("CombinedFS [");
-    FileSystem[] arrayOfFileSystem = this.LFM;
+    FileSystem[] arrayOfFileSystem = this.Rbd;
     int j = arrayOfFileSystem.length;
     int i = 0;
     while (i < j)
@@ -101,9 +101,9 @@ public class CombinedFileSystem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(13046);
-    w.b(paramParcel, CombinedFileSystem.class, 1);
-    paramParcel.writeInt(this.LFM.length);
-    Object localObject = this.LFM;
+    aa.b(paramParcel, CombinedFileSystem.class, 1);
+    paramParcel.writeInt(this.Rbd.length);
+    Object localObject = this.Rbd;
     int j = localObject.length;
     int i = 0;
     while (i < j)
@@ -111,18 +111,18 @@ public class CombinedFileSystem
       paramParcel.writeParcelable(localObject[i], paramInt);
       i += 1;
     }
-    paramParcel.writeInt(this.LFN.length);
-    a[] arrayOfa = this.LFN;
+    paramParcel.writeInt(this.Rbe.length);
+    a[] arrayOfa = this.Rbe;
     i = arrayOfa.length;
     paramInt = 0;
     if (paramInt < i)
     {
       a locala = arrayOfa[paramInt];
-      if (locala.kkk == null) {}
-      for (localObject = null;; localObject = locala.kkk.pattern())
+      if (locala.lnT == null) {}
+      for (localObject = null;; localObject = locala.lnT.pattern())
       {
         paramParcel.writeString((String)localObject);
-        paramParcel.writeInt(locala.LFO);
+        paramParcel.writeInt(locala.Rbf);
         paramInt += 1;
         break;
       }
@@ -132,95 +132,95 @@ public class CombinedFileSystem
   
   static final class a
   {
-    final int LFO;
-    final Pattern kkk;
+    final int Rbf;
+    final Pattern lnT;
     
     a(Pattern paramPattern, int paramInt)
     {
-      this.kkk = paramPattern;
-      this.LFO = paramInt;
+      this.lnT = paramPattern;
+      this.Rbf = paramInt;
     }
   }
   
   protected final class b
-    extends b
+    extends c
   {
-    protected final FileSystem.b[] LFP;
-    private final int LFQ;
+    protected final FileSystem.b[] Rbg;
+    private final int Rbh;
     
     b(FileSystem.b[] paramArrayOfb, int paramInt)
     {
-      this.LFP = paramArrayOfb;
-      this.LFQ = paramInt;
+      this.Rbg = paramArrayOfb;
+      this.Rbh = paramInt;
     }
     
-    public final FileSystem.a aZF(String paramString)
+    public final FileSystem.a boK(String paramString)
     {
-      AppMethodBeat.i(193356);
-      paramString = this.LFP[(this.LFP.length - 1)].aZF(paramString);
-      AppMethodBeat.o(193356);
+      AppMethodBeat.i(187629);
+      paramString = this.Rbg[(this.Rbg.length - 1)].boK(paramString);
+      AppMethodBeat.o(187629);
       return paramString;
     }
     
-    public final boolean aZI(String paramString)
+    public final boolean boN(String paramString)
     {
-      AppMethodBeat.i(193357);
-      FileSystem.b[] arrayOfb = this.LFP;
+      AppMethodBeat.i(187630);
+      FileSystem.b[] arrayOfb = this.Rbg;
       int j = arrayOfb.length;
       int i = 0;
       boolean bool2;
       for (boolean bool1 = false; i < j; bool1 = bool2 | bool1)
       {
-        bool2 = arrayOfb[i].aZI(paramString);
+        bool2 = arrayOfb[i].boN(paramString);
         i += 1;
       }
-      AppMethodBeat.o(193357);
+      AppMethodBeat.o(187630);
       return bool1;
     }
     
-    public final FileSystem fSK()
+    public final FileSystem hdQ()
     {
       return CombinedFileSystem.this;
     }
     
-    public final int fSL()
+    public final int hdR()
     {
-      return this.LFQ;
+      return this.Rbh;
     }
     
-    public final List<FileSystem.b> fSM()
+    public final List<FileSystem.b> hdS()
     {
-      AppMethodBeat.i(193355);
-      List localList = Arrays.asList(this.LFP);
-      AppMethodBeat.o(193355);
+      AppMethodBeat.i(187628);
+      List localList = Arrays.asList(this.Rbg);
+      AppMethodBeat.o(187628);
       return localList;
     }
     
-    public final FileSystem.b gU(String paramString, int paramInt)
+    public final FileSystem.b ho(String paramString, int paramInt)
     {
-      AppMethodBeat.i(193354);
-      CombinedFileSystem.a[] arrayOfa = CombinedFileSystem.this.LFN;
+      AppMethodBeat.i(187627);
+      CombinedFileSystem.a[] arrayOfa = CombinedFileSystem.this.Rbe;
       int i = arrayOfa.length;
       paramInt = 0;
       while (paramInt < i)
       {
         CombinedFileSystem.a locala = arrayOfa[paramInt];
-        if ((locala.kkk == null) || (locala.kkk.matcher(paramString).matches()))
+        if ((locala.lnT == null) || (locala.lnT.matcher(paramString).matches()))
         {
-          paramString = this.LFP[locala.LFO];
-          AppMethodBeat.o(193354);
+          paramString = this.Rbg[locala.Rbf];
+          AppMethodBeat.o(187627);
           return paramString;
         }
         paramInt += 1;
       }
-      AppMethodBeat.o(193354);
+      AppMethodBeat.o(187627);
       return null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.CombinedFileSystem
  * JD-Core Version:    0.7.0.1
  */

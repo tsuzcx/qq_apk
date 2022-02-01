@@ -1,18 +1,20 @@
 package com.tencent.mm.audio.mix.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ai.b;
+import com.tencent.mm.audio.mix.h.c;
 
 public final class f
 {
-  public static k a(com.tencent.mm.audio.mix.f.d paramd, com.tencent.mm.audio.mix.g.b paramb, boolean paramBoolean)
+  public static l a(com.tencent.mm.audio.mix.g.d paramd, c paramc, boolean paramBoolean)
   {
     AppMethodBeat.i(136821);
-    if (paramb.PA().ddd) {}
-    for (paramd = new d(paramd, paramb);; paramd = new e(paramd, paramb))
+    if (paramc.ZU().dtU) {}
+    for (paramd = new d(paramd, paramc);; paramd = new e(paramd, paramc))
     {
       paramd.init();
       if (paramBoolean) {
-        paramd.OC();
+        paramd.YU();
       }
       AppMethodBeat.o(136821);
       return paramd;
@@ -21,7 +23,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.d.f
  * JD-Core Version:    0.7.0.1
  */

@@ -6,47 +6,55 @@ import com.tencent.mm.plugin.report.a;
 public final class gr
   extends a
 {
-  public long dQB = 0L;
-  public long dWt = 0L;
-  public long dXy = 0L;
-  public String eqB = "";
+  public long eCt = 0L;
+  public long eKL = 0L;
+  public long eKM = 0L;
+  private String euc = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(149930);
+    AppMethodBeat.i(149916);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dWt);
+    ((StringBuffer)localObject).append(this.euc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dQB);
+    ((StringBuffer)localObject).append(this.eCt);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXy);
+    ((StringBuffer)localObject).append(this.eKL);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eqB);
+    ((StringBuffer)localObject).append(this.eKM);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(149930);
+    aMq((String)localObject);
+    AppMethodBeat.o(149916);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(149931);
+    AppMethodBeat.i(149917);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("Scene:").append(this.dWt);
+    ((StringBuffer)localObject).append("sessionID:").append(this.euc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Action:").append(this.dQB);
+    ((StringBuffer)localObject).append("actionCode:").append(this.eCt);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Status:").append(this.dXy);
+    ((StringBuffer)localObject).append("actionCodeResult:").append(this.eKL);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransferId:").append(this.eqB);
+    ((StringBuffer)localObject).append("clickAddContact:").append(this.eKM);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149931);
+    AppMethodBeat.o(149917);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16440;
+    return 15850;
+  }
+  
+  public final gr ut(String paramString)
+  {
+    AppMethodBeat.i(149915);
+    this.euc = x("sessionID", paramString, true);
+    AppMethodBeat.o(149915);
+    return this;
   }
 }
 

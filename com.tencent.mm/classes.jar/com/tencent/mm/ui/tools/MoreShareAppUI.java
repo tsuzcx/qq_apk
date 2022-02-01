@@ -21,23 +21,23 @@ import java.util.List;
 public class MoreShareAppUI
   extends MMActivity
 {
-  private List<g> JAB;
-  private a Lgq;
-  private DragSortListView pQh;
+  private List<g> OLg;
+  private a Qvo;
+  private DragSortListView rhg;
   
   public int getLayoutId()
   {
-    return 2131494942;
+    return 2131495684;
   }
   
   public void initView()
   {
     AppMethodBeat.i(39083);
-    setMMTitle(2131756732);
-    this.pQh = ((DragSortListView)findViewById(2131301457));
-    this.pQh.setDropListener(new DragSortListView.h()
+    setMMTitle(2131756890);
+    this.rhg = ((DragSortListView)findViewById(2131303242));
+    this.rhg.setDropListener(new DragSortListView.h()
     {
-      public final void ek(int paramAnonymousInt1, int paramAnonymousInt2)
+      public final void ey(int paramAnonymousInt1, int paramAnonymousInt2)
       {
         AppMethodBeat.i(39078);
         g localg = (g)MoreShareAppUI.a(MoreShareAppUI.this).getItem(paramAnonymousInt1);
@@ -65,15 +65,15 @@ public class MoreShareAppUI
         return true;
       }
     });
-    addTextOptionMenu(0, getString(2131758299), new MenuItem.OnMenuItemClickListener()
+    addTextOptionMenu(0, getString(2131758593), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         return false;
       }
     });
-    this.Lgq = new a(this, this.JAB);
-    this.pQh.setAdapter(this.Lgq);
+    this.Qvo = new a(this, this.OLg);
+    this.rhg.setAdapter(this.Qvo);
     AppMethodBeat.o(39082);
   }
   
@@ -87,13 +87,13 @@ public class MoreShareAppUI
     extends ArrayAdapter<g>
   {
     private Context mContext;
-    private List<g> pHD;
+    private List<g> qXp;
     
     public a(Context paramContext, List<g> paramList)
     {
-      super(2131494943, paramList);
+      super(2131495685, paramList);
       this.mContext = paramContext;
-      this.pHD = paramList;
+      this.qXp = paramList;
     }
     
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -101,14 +101,14 @@ public class MoreShareAppUI
       AppMethodBeat.i(39081);
       if (paramView == null)
       {
-        paramView = View.inflate(this.mContext, 2131494943, null);
+        paramView = View.inflate(this.mContext, 2131495685, null);
         paramViewGroup = new a(paramView);
         paramView.setTag(paramViewGroup);
       }
       for (;;)
       {
         g localg = (g)getItem(paramInt);
-        paramViewGroup.iYj.setText(localg.field_appName);
+        paramViewGroup.jVO.setText(localg.field_appName);
         paramView.setVisibility(0);
         AppMethodBeat.o(39081);
         return paramView;
@@ -118,20 +118,20 @@ public class MoreShareAppUI
     
     static final class a
     {
-      TextView iYj;
-      ImageView mdt;
-      View pHE;
-      ImageView pHF;
-      MMSwitchBtn rkq;
+      TextView jVO;
+      ImageView nnL;
+      View qXq;
+      ImageView qXr;
+      MMSwitchBtn sLW;
       
       public a(View paramView)
       {
         AppMethodBeat.i(39080);
-        this.pHF = ((ImageView)paramView.findViewById(2131300760));
-        this.mdt = ((ImageView)paramView.findViewById(2131300880));
-        this.iYj = ((TextView)paramView.findViewById(2131305905));
-        this.rkq = ((MMSwitchBtn)paramView.findViewById(2131305590));
-        this.pHE = paramView.findViewById(2131298736);
+        this.qXr = ((ImageView)paramView.findViewById(2131302349));
+        this.nnL = ((ImageView)paramView.findViewById(2131302475));
+        this.jVO = ((TextView)paramView.findViewById(2131309198));
+        this.sLW = ((MMSwitchBtn)paramView.findViewById(2131308812));
+        this.qXq = paramView.findViewById(2131299174);
         AppMethodBeat.o(39080);
       }
     }
@@ -139,7 +139,7 @@ public class MoreShareAppUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.tools.MoreShareAppUI
  * JD-Core Version:    0.7.0.1
  */

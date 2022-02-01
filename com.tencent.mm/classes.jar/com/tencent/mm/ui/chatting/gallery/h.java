@@ -1,60 +1,60 @@
 package com.tencent.mm.ui.chatting.gallery;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ca;
 import java.util.ArrayList;
 import java.util.Iterator;
 
 public final class h
 {
-  public ArrayList<bv> rKI;
-  public boolean rKJ;
-  ArrayList<b> rKK;
+  public ArrayList<ca> tkt;
+  public boolean tku;
+  ArrayList<b> tkv;
   
   private h()
   {
     AppMethodBeat.i(36079);
-    this.rKI = new ArrayList();
-    this.rKJ = false;
-    this.rKK = new ArrayList();
+    this.tkt = new ArrayList();
+    this.tku = false;
+    this.tkv = new ArrayList();
     AppMethodBeat.o(36079);
   }
   
-  private bv EJ(long paramLong)
+  private ca NO(long paramLong)
   {
     AppMethodBeat.i(36081);
-    Iterator localIterator = this.rKI.iterator();
+    Iterator localIterator = this.tkt.iterator();
     while (localIterator.hasNext())
     {
-      bv localbv = (bv)localIterator.next();
-      if (localbv.field_msgId == paramLong)
+      ca localca = (ca)localIterator.next();
+      if (localca.field_msgId == paramLong)
       {
         AppMethodBeat.o(36081);
-        return localbv;
+        return localca;
       }
     }
     AppMethodBeat.o(36081);
     return null;
   }
   
-  private void cao()
+  private void cyf()
   {
     AppMethodBeat.i(36087);
-    Iterator localIterator = this.rKK.iterator();
+    Iterator localIterator = this.tkv.iterator();
     while (localIterator.hasNext()) {
       ((b)localIterator.next()).clear();
     }
     AppMethodBeat.o(36087);
   }
   
-  private void fKa()
+  private void gSo()
   {
     AppMethodBeat.i(36086);
-    Iterator localIterator = this.rKK.iterator();
+    Iterator localIterator = this.tkv.iterator();
     while (localIterator.hasNext()) {
-      ((b)localIterator.next()).fJY();
+      ((b)localIterator.next()).gSm();
     }
     AppMethodBeat.o(36086);
   }
@@ -62,62 +62,53 @@ public final class h
   public final void a(b paramb)
   {
     AppMethodBeat.i(36088);
-    this.rKK.remove(paramb);
-    this.rKK.add(paramb);
+    this.tkv.remove(paramb);
+    this.tkv.add(paramb);
     AppMethodBeat.o(36088);
   }
   
-  public final void clear()
-  {
-    AppMethodBeat.i(36083);
-    ae.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
-    this.rKI.clear();
-    cao();
-    AppMethodBeat.o(36083);
-  }
-  
-  public final void cm(bv parambv)
+  public final void cC(ca paramca)
   {
     AppMethodBeat.i(36080);
-    if (parambv == null)
+    if (paramca == null)
     {
       AppMethodBeat.o(36080);
       return;
     }
-    ae.i("MicroMsg.ImageGallerySelectedHandle", "add : %s", new Object[] { Long.valueOf(parambv.field_msgId) });
-    this.rKI.remove(parambv);
-    this.rKI.remove(EJ(parambv.field_msgId));
-    this.rKI.add(parambv);
-    fKa();
+    Log.i("MicroMsg.ImageGallerySelectedHandle", "add : %s", new Object[] { Long.valueOf(paramca.field_msgId) });
+    this.tkt.remove(paramca);
+    this.tkt.remove(NO(paramca.field_msgId));
+    this.tkt.add(paramca);
+    gSo();
     AppMethodBeat.o(36080);
   }
   
-  public final void cn(bv parambv)
+  public final void cD(ca paramca)
   {
     AppMethodBeat.i(36082);
-    if (parambv == null)
+    if (paramca == null)
     {
       AppMethodBeat.o(36082);
       return;
     }
-    ae.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { Long.valueOf(parambv.field_msgId) });
-    this.rKI.remove(parambv);
-    this.rKI.remove(EJ(parambv.field_msgId));
-    fKa();
+    Log.i("MicroMsg.ImageGallerySelectedHandle", "remove : %s", new Object[] { Long.valueOf(paramca.field_msgId) });
+    this.tkt.remove(paramca);
+    this.tkt.remove(NO(paramca.field_msgId));
+    gSo();
     AppMethodBeat.o(36082);
   }
   
-  public final boolean co(bv parambv)
+  public final boolean cE(ca paramca)
   {
     AppMethodBeat.i(36085);
-    if (parambv == null)
+    if (paramca == null)
     {
       AppMethodBeat.o(36085);
       return false;
     }
-    Iterator localIterator = this.rKI.iterator();
+    Iterator localIterator = this.tkt.iterator();
     while (localIterator.hasNext()) {
-      if (((bv)localIterator.next()).field_msgId == parambv.field_msgId)
+      if (((ca)localIterator.next()).field_msgId == paramca.field_msgId)
       {
         AppMethodBeat.o(36085);
         return true;
@@ -127,23 +118,32 @@ public final class h
     return false;
   }
   
+  public final void clear()
+  {
+    AppMethodBeat.i(36083);
+    Log.i("MicroMsg.ImageGallerySelectedHandle", "clear..");
+    this.tkt.clear();
+    cyf();
+    AppMethodBeat.o(36083);
+  }
+  
   public final void detach()
   {
     AppMethodBeat.i(36084);
-    this.rKK.clear();
+    this.tkv.clear();
     clear();
-    this.rKJ = false;
+    this.tku = false;
     AppMethodBeat.o(36084);
   }
   
   public static final class a
   {
-    private static final h Kmv;
+    private static final h Pys;
     
     static
     {
       AppMethodBeat.i(36078);
-      Kmv = new h((byte)0);
+      Pys = new h((byte)0);
       AppMethodBeat.o(36078);
     }
   }
@@ -152,12 +152,12 @@ public final class h
   {
     public abstract void clear();
     
-    public abstract void fJY();
+    public abstract void gSm();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.h
  * JD-Core Version:    0.7.0.1
  */

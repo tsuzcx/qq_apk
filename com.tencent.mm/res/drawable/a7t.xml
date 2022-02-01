@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/a_r" />
-    <corners android:radius="3.0dip" />
-</shape>
+    <item android:state_enabled="false" android:color="@color/FG_2" />
+    <item android:color="@color/FG_1" />
+</selector>

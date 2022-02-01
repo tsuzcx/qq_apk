@@ -2,181 +2,128 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.FinderAuthInfo;
-import com.tencent.mm.protocal.protobuf.amj;
-import com.tencent.mm.protocal.protobuf.aqt;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.aoh;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public abstract class cd
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FinderContact_username_index ON FinderContact(username)" };
-  private static final int eGR;
-  private static final int eGY = "username".hashCode();
-  private static final int eGZ = "updateTime".hashCode();
-  private static final int eHT;
-  private static final int eMi;
-  private static final int eMy = "nickname".hashCode();
-  private static final int eQF;
-  private static final int eWO;
-  private static final int eZR = "avatarUrl".hashCode();
-  private static final int eZS;
-  private static final int eZT;
-  private static final int eZU;
-  private static final int eZV;
-  private static final int eZW;
-  private static final int eZX;
-  private static final int eZY;
-  private static final int eZZ;
-  private static final int faa = "retryCount".hashCode();
-  private static final int fab = "originalEntranceFlag".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS Finder_Local_Comment_Id ON FinderAction(localCommentId)", "CREATE INDEX IF NOT EXISTS FinderAction_Feed_Id ON FinderAction(feedId)", "CREATE INDEX IF NOT EXISTS Finder_Feed_CreateTime ON FinderAction(actionTime)", "CREATE INDEX IF NOT EXISTS Finder_Feed_ActionType ON FinderAction(actionType)", "CREATE INDEX IF NOT EXISTS Finder_Reply_state ON FinderAction(state)" };
+  private static final int fBD;
+  private static final int fDb = "localCommentId".hashCode();
+  private static final int fDc = "feedId".hashCode();
+  private static final int fDd = "actionTime".hashCode();
+  private static final int fDe;
+  private static final int fDf = "actionInfo".hashCode();
+  private static final int fDg = "postTime".hashCode();
+  private static final int fDh = "tryCount".hashCode();
+  private static final int fDi = "canRemove".hashCode();
+  private static final int fDj = "lastTryTime".hashCode();
+  private static final int fDk = "failedFlag".hashCode();
+  private static final int fjQ;
+  private static final int fyj;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGA = true;
-  private boolean eGV = true;
-  private boolean eGW = true;
-  private boolean eHO = true;
-  private boolean eLU = true;
-  private boolean eMu = true;
-  private boolean eQn = true;
-  private boolean eWJ = true;
-  private boolean eZG = true;
-  private boolean eZH = true;
-  private boolean eZI = true;
-  private boolean eZJ = true;
-  private boolean eZK = true;
-  private boolean eZL = true;
-  private boolean eZM = true;
-  private boolean eZN = true;
-  private boolean eZO = true;
-  private boolean eZP = true;
-  private boolean eZQ = true;
-  public FinderAuthInfo field_authInfo;
-  public String field_avatarUrl;
-  public String field_coverImg;
-  public int field_extFlag;
-  public amj field_extInfo;
-  public String field_firstPageMD5;
-  public int field_followTime;
-  public int field_follow_Flag;
-  public String field_nickname;
-  public int field_originalEntranceFlag;
-  public int field_originalFlag;
-  public aqt field_originalInfo;
-  public String field_pyInitial;
-  public int field_retryCount;
-  public String field_signature;
-  public int field_spamStatus;
-  public long field_updateTime;
-  public String field_username;
-  public long field_version;
+  private boolean fBt = true;
+  private boolean fCR = true;
+  private boolean fCS = true;
+  private boolean fCT = true;
+  private boolean fCU = true;
+  private boolean fCV = true;
+  private boolean fCW = true;
+  private boolean fCX = true;
+  private boolean fCY = true;
+  private boolean fCZ = true;
+  private boolean fDa = true;
+  public aoh field_actionInfo;
+  public long field_actionTime;
+  public int field_actionType;
+  public int field_canRemove;
+  public int field_failedFlag;
+  public long field_feedId;
+  public long field_lastTryTime;
+  public long field_localCommentId;
+  public String field_objectNonceId;
+  public long field_postTime;
+  public int field_scene;
+  public int field_state;
+  public long field_tryCount;
+  private boolean fjO = true;
+  private boolean fxx = true;
   
   static
   {
-    eHT = "version".hashCode();
-    eZS = "firstPageMD5".hashCode();
-    eGR = "signature".hashCode();
-    eZT = "follow_Flag".hashCode();
-    eQF = "pyInitial".hashCode();
-    eZU = "followTime".hashCode();
-    eZV = "coverImg".hashCode();
-    eZW = "spamStatus".hashCode();
-    eZX = "authInfo".hashCode();
-    eMi = "extInfo".hashCode();
-    eZY = "originalFlag".hashCode();
-    eZZ = "originalInfo".hashCode();
-    eWO = "extFlag".hashCode();
+    fBD = "actionType".hashCode();
+    fDe = "objectNonceId".hashCode();
+    fjQ = "scene".hashCode();
+    fyj = "state".hashCode();
   }
   
-  public static c.a VD()
+  public static IAutoDBItem.MAutoDBInfo ajs()
   {
-    c.a locala = new c.a();
-    locala.IBL = new Field[19];
-    locala.columns = new String[20];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[13];
+    localMAutoDBInfo.columns = new String[14];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "username";
-    locala.IBN.put("username", "TEXT default ''  PRIMARY KEY ");
-    localStringBuilder.append(" username TEXT default ''  PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "localCommentId";
+    localMAutoDBInfo.colsMap.put("localCommentId", "LONG PRIMARY KEY ");
+    localStringBuilder.append(" localCommentId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "username";
-    locala.columns[1] = "nickname";
-    locala.IBN.put("nickname", "TEXT default '' ");
-    localStringBuilder.append(" nickname TEXT default '' ");
+    localMAutoDBInfo.primaryKey = "localCommentId";
+    localMAutoDBInfo.columns[1] = "feedId";
+    localMAutoDBInfo.colsMap.put("feedId", "LONG");
+    localStringBuilder.append(" feedId LONG");
     localStringBuilder.append(", ");
-    locala.columns[2] = "avatarUrl";
-    locala.IBN.put("avatarUrl", "TEXT default '' ");
-    localStringBuilder.append(" avatarUrl TEXT default '' ");
+    localMAutoDBInfo.columns[2] = "actionTime";
+    localMAutoDBInfo.colsMap.put("actionTime", "LONG");
+    localStringBuilder.append(" actionTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[3] = "version";
-    locala.IBN.put("version", "LONG");
-    localStringBuilder.append(" version LONG");
+    localMAutoDBInfo.columns[3] = "actionType";
+    localMAutoDBInfo.colsMap.put("actionType", "INTEGER");
+    localStringBuilder.append(" actionType INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[4] = "firstPageMD5";
-    locala.IBN.put("firstPageMD5", "TEXT default '' ");
-    localStringBuilder.append(" firstPageMD5 TEXT default '' ");
+    localMAutoDBInfo.columns[4] = "objectNonceId";
+    localMAutoDBInfo.colsMap.put("objectNonceId", "TEXT");
+    localStringBuilder.append(" objectNonceId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "signature";
-    locala.IBN.put("signature", "TEXT default '' ");
-    localStringBuilder.append(" signature TEXT default '' ");
+    localMAutoDBInfo.columns[5] = "scene";
+    localMAutoDBInfo.colsMap.put("scene", "INTEGER");
+    localStringBuilder.append(" scene INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[6] = "follow_Flag";
-    locala.IBN.put("follow_Flag", "INTEGER default '0' ");
-    localStringBuilder.append(" follow_Flag INTEGER default '0' ");
+    localMAutoDBInfo.columns[6] = "state";
+    localMAutoDBInfo.colsMap.put("state", "INTEGER");
+    localStringBuilder.append(" state INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[7] = "pyInitial";
-    locala.IBN.put("pyInitial", "TEXT default '' ");
-    localStringBuilder.append(" pyInitial TEXT default '' ");
+    localMAutoDBInfo.columns[7] = "actionInfo";
+    localMAutoDBInfo.colsMap.put("actionInfo", "BLOB");
+    localStringBuilder.append(" actionInfo BLOB");
     localStringBuilder.append(", ");
-    locala.columns[8] = "followTime";
-    locala.IBN.put("followTime", "INTEGER default '0' ");
-    localStringBuilder.append(" followTime INTEGER default '0' ");
+    localMAutoDBInfo.columns[8] = "postTime";
+    localMAutoDBInfo.colsMap.put("postTime", "LONG");
+    localStringBuilder.append(" postTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[9] = "coverImg";
-    locala.IBN.put("coverImg", "TEXT default '' ");
-    localStringBuilder.append(" coverImg TEXT default '' ");
+    localMAutoDBInfo.columns[9] = "tryCount";
+    localMAutoDBInfo.colsMap.put("tryCount", "LONG");
+    localStringBuilder.append(" tryCount LONG");
     localStringBuilder.append(", ");
-    locala.columns[10] = "spamStatus";
-    locala.IBN.put("spamStatus", "INTEGER");
-    localStringBuilder.append(" spamStatus INTEGER");
+    localMAutoDBInfo.columns[10] = "canRemove";
+    localMAutoDBInfo.colsMap.put("canRemove", "INTEGER");
+    localStringBuilder.append(" canRemove INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[11] = "authInfo";
-    locala.IBN.put("authInfo", "BLOB");
-    localStringBuilder.append(" authInfo BLOB");
+    localMAutoDBInfo.columns[11] = "lastTryTime";
+    localMAutoDBInfo.colsMap.put("lastTryTime", "LONG");
+    localStringBuilder.append(" lastTryTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[12] = "extInfo";
-    locala.IBN.put("extInfo", "BLOB");
-    localStringBuilder.append(" extInfo BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[13] = "originalFlag";
-    locala.IBN.put("originalFlag", "INTEGER default '0' ");
-    localStringBuilder.append(" originalFlag INTEGER default '0' ");
-    localStringBuilder.append(", ");
-    locala.columns[14] = "originalInfo";
-    locala.IBN.put("originalInfo", "BLOB");
-    localStringBuilder.append(" originalInfo BLOB");
-    localStringBuilder.append(", ");
-    locala.columns[15] = "extFlag";
-    locala.IBN.put("extFlag", "INTEGER");
-    localStringBuilder.append(" extFlag INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[16] = "updateTime";
-    locala.IBN.put("updateTime", "LONG");
-    localStringBuilder.append(" updateTime LONG");
-    localStringBuilder.append(", ");
-    locala.columns[17] = "retryCount";
-    locala.IBN.put("retryCount", "INTEGER");
-    localStringBuilder.append(" retryCount INTEGER");
-    localStringBuilder.append(", ");
-    locala.columns[18] = "originalEntranceFlag";
-    locala.IBN.put("originalEntranceFlag", "INTEGER default '0' ");
-    localStringBuilder.append(" originalEntranceFlag INTEGER default '0' ");
-    locala.columns[19] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    localMAutoDBInfo.columns[12] = "failedFlag";
+    localMAutoDBInfo.colsMap.put("failedFlag", "INTEGER");
+    localStringBuilder.append(" failedFlag INTEGER");
+    localMAutoDBInfo.columns[13] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -192,11 +139,11 @@ public abstract class cd
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGY != k) {
+      if (fDb != k) {
         break label65;
       }
-      this.field_username = paramCursor.getString(i);
-      this.eGV = true;
+      this.field_localCommentId = paramCursor.getLong(i);
+      this.fCR = true;
     }
     for (;;)
     {
@@ -204,75 +151,41 @@ public abstract class cd
       break label20;
       break;
       label65:
-      if (eMy == k) {
-        this.field_nickname = paramCursor.getString(i);
-      } else if (eZR == k) {
-        this.field_avatarUrl = paramCursor.getString(i);
-      } else if (eHT == k) {
-        this.field_version = paramCursor.getLong(i);
-      } else if (eZS == k) {
-        this.field_firstPageMD5 = paramCursor.getString(i);
-      } else if (eGR == k) {
-        this.field_signature = paramCursor.getString(i);
-      } else if (eZT == k) {
-        this.field_follow_Flag = paramCursor.getInt(i);
-      } else if (eQF == k) {
-        this.field_pyInitial = paramCursor.getString(i);
-      } else if (eZU == k) {
-        this.field_followTime = paramCursor.getInt(i);
-      } else if (eZV == k) {
-        this.field_coverImg = paramCursor.getString(i);
-      } else if (eZW == k) {
-        this.field_spamStatus = paramCursor.getInt(i);
-      } else if (eZX == k) {
+      if (fDc == k) {
+        this.field_feedId = paramCursor.getLong(i);
+      } else if (fDd == k) {
+        this.field_actionTime = paramCursor.getLong(i);
+      } else if (fBD == k) {
+        this.field_actionType = paramCursor.getInt(i);
+      } else if (fDe == k) {
+        this.field_objectNonceId = paramCursor.getString(i);
+      } else if (fjQ == k) {
+        this.field_scene = paramCursor.getInt(i);
+      } else if (fyj == k) {
+        this.field_state = paramCursor.getInt(i);
+      } else if (fDf == k) {
         try
         {
-          byte[] arrayOfByte1 = paramCursor.getBlob(i);
-          if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
+          byte[] arrayOfByte = paramCursor.getBlob(i);
+          if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
             continue;
           }
-          this.field_authInfo = ((FinderAuthInfo)new FinderAuthInfo().parseFrom(arrayOfByte1));
+          this.field_actionInfo = ((aoh)new aoh().parseFrom(arrayOfByte));
         }
-        catch (IOException localIOException1)
+        catch (IOException localIOException)
         {
-          ae.e("MicroMsg.SDK.BaseFinderContact", localIOException1.getMessage());
+          Log.e("MicroMsg.SDK.BaseFinderAction", localIOException.getMessage());
         }
-      } else if (eMi == k) {
-        try
-        {
-          byte[] arrayOfByte2 = paramCursor.getBlob(i);
-          if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
-            continue;
-          }
-          this.field_extInfo = ((amj)new amj().parseFrom(arrayOfByte2));
-        }
-        catch (IOException localIOException2)
-        {
-          ae.e("MicroMsg.SDK.BaseFinderContact", localIOException2.getMessage());
-        }
-      } else if (eZY == k) {
-        this.field_originalFlag = paramCursor.getInt(i);
-      } else if (eZZ == k) {
-        try
-        {
-          byte[] arrayOfByte3 = paramCursor.getBlob(i);
-          if ((arrayOfByte3 == null) || (arrayOfByte3.length <= 0)) {
-            continue;
-          }
-          this.field_originalInfo = ((aqt)new aqt().parseFrom(arrayOfByte3));
-        }
-        catch (IOException localIOException3)
-        {
-          ae.e("MicroMsg.SDK.BaseFinderContact", localIOException3.getMessage());
-        }
-      } else if (eWO == k) {
-        this.field_extFlag = paramCursor.getInt(i);
-      } else if (eGZ == k) {
-        this.field_updateTime = paramCursor.getLong(i);
-      } else if (faa == k) {
-        this.field_retryCount = paramCursor.getInt(i);
-      } else if (fab == k) {
-        this.field_originalEntranceFlag = paramCursor.getInt(i);
+      } else if (fDg == k) {
+        this.field_postTime = paramCursor.getLong(i);
+      } else if (fDh == k) {
+        this.field_tryCount = paramCursor.getLong(i);
+      } else if (fDi == k) {
+        this.field_canRemove = paramCursor.getInt(i);
+      } else if (fDj == k) {
+        this.field_lastTryTime = paramCursor.getLong(i);
+      } else if (fDk == k) {
+        this.field_failedFlag = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -282,119 +195,63 @@ public abstract class cd
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.field_username == null) {
-      this.field_username = "";
+    if (this.fCR) {
+      localContentValues.put("localCommentId", Long.valueOf(this.field_localCommentId));
     }
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
+    if (this.fCS) {
+      localContentValues.put("feedId", Long.valueOf(this.field_feedId));
     }
-    if (this.field_nickname == null) {
-      this.field_nickname = "";
+    if (this.fCT) {
+      localContentValues.put("actionTime", Long.valueOf(this.field_actionTime));
     }
-    if (this.eMu) {
-      localContentValues.put("nickname", this.field_nickname);
+    if (this.fBt) {
+      localContentValues.put("actionType", Integer.valueOf(this.field_actionType));
     }
-    if (this.field_avatarUrl == null) {
-      this.field_avatarUrl = "";
+    if (this.fCU) {
+      localContentValues.put("objectNonceId", this.field_objectNonceId);
     }
-    if (this.eZG) {
-      localContentValues.put("avatarUrl", this.field_avatarUrl);
+    if (this.fjO) {
+      localContentValues.put("scene", Integer.valueOf(this.field_scene));
     }
-    if (this.eHO) {
-      localContentValues.put("version", Long.valueOf(this.field_version));
+    if (this.fxx) {
+      localContentValues.put("state", Integer.valueOf(this.field_state));
     }
-    if (this.field_firstPageMD5 == null) {
-      this.field_firstPageMD5 = "";
-    }
-    if (this.eZH) {
-      localContentValues.put("firstPageMD5", this.field_firstPageMD5);
-    }
-    if (this.field_signature == null) {
-      this.field_signature = "";
-    }
-    if (this.eGA) {
-      localContentValues.put("signature", this.field_signature);
-    }
-    if (this.eZI) {
-      localContentValues.put("follow_Flag", Integer.valueOf(this.field_follow_Flag));
-    }
-    if (this.field_pyInitial == null) {
-      this.field_pyInitial = "";
-    }
-    if (this.eQn) {
-      localContentValues.put("pyInitial", this.field_pyInitial);
-    }
-    if (this.eZJ) {
-      localContentValues.put("followTime", Integer.valueOf(this.field_followTime));
-    }
-    if (this.field_coverImg == null) {
-      this.field_coverImg = "";
-    }
-    if (this.eZK) {
-      localContentValues.put("coverImg", this.field_coverImg);
-    }
-    if (this.eZL) {
-      localContentValues.put("spamStatus", Integer.valueOf(this.field_spamStatus));
-    }
-    if ((this.eZM) && (this.field_authInfo != null)) {}
+    if ((this.fCV) && (this.field_actionInfo != null)) {}
     try
     {
-      localContentValues.put("authInfo", this.field_authInfo.toByteArray());
-      if ((!this.eLU) || (this.field_extInfo == null)) {}
-    }
-    catch (IOException localIOException2)
-    {
-      try
-      {
-        localContentValues.put("extInfo", this.field_extInfo.toByteArray());
-        if (this.eZN) {
-          localContentValues.put("originalFlag", Integer.valueOf(this.field_originalFlag));
-        }
-        if ((!this.eZO) || (this.field_originalInfo == null)) {}
+      localContentValues.put("actionInfo", this.field_actionInfo.toByteArray());
+      if (this.fCW) {
+        localContentValues.put("postTime", Long.valueOf(this.field_postTime));
       }
-      catch (IOException localIOException2)
+      if (this.fCX) {
+        localContentValues.put("tryCount", Long.valueOf(this.field_tryCount));
+      }
+      if (this.fCY) {
+        localContentValues.put("canRemove", Integer.valueOf(this.field_canRemove));
+      }
+      if (this.fCZ) {
+        localContentValues.put("lastTryTime", Long.valueOf(this.field_lastTryTime));
+      }
+      if (this.fDa) {
+        localContentValues.put("failedFlag", Integer.valueOf(this.field_failedFlag));
+      }
+      if (this.systemRowid > 0L) {
+        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+      }
+      return localContentValues;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
       {
-        try
-        {
-          for (;;)
-          {
-            localContentValues.put("originalInfo", this.field_originalInfo.toByteArray());
-            if (this.eWJ) {
-              localContentValues.put("extFlag", Integer.valueOf(this.field_extFlag));
-            }
-            if (this.eGW) {
-              localContentValues.put("updateTime", Long.valueOf(this.field_updateTime));
-            }
-            if (this.eZP) {
-              localContentValues.put("retryCount", Integer.valueOf(this.field_retryCount));
-            }
-            if (this.eZQ) {
-              localContentValues.put("originalEntranceFlag", Integer.valueOf(this.field_originalEntranceFlag));
-            }
-            if (this.systemRowid > 0L) {
-              localContentValues.put("rowid", Long.valueOf(this.systemRowid));
-            }
-            return localContentValues;
-            localIOException1 = localIOException1;
-            ae.e("MicroMsg.SDK.BaseFinderContact", localIOException1.getMessage());
-          }
-          localIOException2 = localIOException2;
-          ae.e("MicroMsg.SDK.BaseFinderContact", localIOException2.getMessage());
-        }
-        catch (IOException localIOException3)
-        {
-          for (;;)
-          {
-            ae.e("MicroMsg.SDK.BaseFinderContact", localIOException3.getMessage());
-          }
-        }
+        Log.e("MicroMsg.SDK.BaseFinderAction", localIOException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.cd
  * JD-Core Version:    0.7.0.1
  */

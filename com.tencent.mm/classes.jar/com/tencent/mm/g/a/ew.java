@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ew
-  extends b
+  extends IEvent
 {
-  public a drd;
-  public b dre;
+  public a dIh;
+  public b dIi;
   
   public ew()
   {
@@ -16,26 +16,29 @@ public final class ew
   
   private ew(byte paramByte)
   {
-    AppMethodBeat.i(116009);
-    this.drd = new a();
-    this.dre = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(116006);
+    this.dIh = new a();
+    this.dIi = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116009);
+    AppMethodBeat.o(116006);
   }
   
   public static final class a
   {
-    public String cVh;
-    public String drf;
-    public int progress;
+    public String brandName;
+    public String dGL;
+    public byte[] data;
   }
   
-  public static final class b {}
+  public static final class b
+  {
+    public boolean dGX;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.ew
  * JD-Core Version:    0.7.0.1
  */

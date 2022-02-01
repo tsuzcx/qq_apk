@@ -20,6 +20,11 @@ public abstract interface s
       attachInterface(this, "com.tencent.mm.plugin.exdevice.service.ISimpleBTOnRecv_AIDL");
     }
     
+    public static s cLu()
+    {
+      return a.rDQ;
+    }
+    
     public IBinder asBinder()
     {
       return this;
@@ -44,6 +49,7 @@ public abstract interface s
     static final class a
       implements s
     {
+      public static s rDQ;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -66,7 +72,11 @@ public abstract interface s
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.exdevice.service.ISimpleBTOnRecv_AIDL");
           localParcel1.writeLong(paramLong);
           localParcel1.writeByteArray(paramArrayOfByte);
-          this.mRemote.transact(1, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (s.a.cLu() != null))
+          {
+            s.a.cLu().c(paramLong, paramArrayOfByte);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -82,7 +92,7 @@ public abstract interface s
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.service.s
  * JD-Core Version:    0.7.0.1
  */

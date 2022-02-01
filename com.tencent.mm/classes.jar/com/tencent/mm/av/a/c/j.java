@@ -5,7 +5,7 @@ import java.util.concurrent.Executor;
 public abstract interface j
   extends Executor
 {
-  public abstract boolean OG();
+  public abstract boolean YY();
   
   public abstract boolean isShutdown();
   

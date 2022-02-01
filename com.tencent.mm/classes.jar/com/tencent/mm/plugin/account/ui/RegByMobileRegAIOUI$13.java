@@ -12,14 +12,14 @@ final class RegByMobileRegAIOUI$13
   
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    AppMethodBeat.i(224318);
+    AppMethodBeat.i(196924);
     paramDialogInterface = new StringBuilder();
-    g.ajP();
-    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.ajd()).append(",").append(this.jsc.getClass().getName()).append(",RE200_200,");
-    g.ajP();
-    com.tencent.mm.plugin.b.a.i(false, com.tencent.mm.kernel.a.xB("RE200_200") + ",2");
-    com.tencent.mm.plugin.b.a.KB("RE200_100");
-    AppMethodBeat.o(224318);
+    g.aAf();
+    paramDialogInterface = paramDialogInterface.append(com.tencent.mm.kernel.a.azt()).append(",").append(this.kqp.getClass().getName()).append(",RE200_200,");
+    g.aAf();
+    com.tencent.mm.plugin.b.a.j(false, com.tencent.mm.kernel.a.FN("RE200_200") + ",2");
+    com.tencent.mm.plugin.b.a.bwV("RE200_100");
+    AppMethodBeat.o(196924);
   }
 }
 

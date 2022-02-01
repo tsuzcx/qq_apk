@@ -1,61 +1,63 @@
 package com.tencent.mm.plugin.address.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.address.a.a;
-import com.tencent.mm.protocal.protobuf.crg;
-import com.tencent.mm.protocal.protobuf.crh;
-import com.tencent.mm.protocal.protobuf.crk;
-import com.tencent.mm.protocal.protobuf.crl;
-import com.tencent.mm.protocal.protobuf.cxn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.address.d.b;
+import com.tencent.mm.protocal.protobuf.djf;
+import com.tencent.mm.protocal.protobuf.djg;
+import com.tencent.mm.protocal.protobuf.djj;
+import com.tencent.mm.protocal.protobuf.djk;
+import com.tencent.mm.protocal.protobuf.dqi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class c
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private com.tencent.mm.ak.b rr;
+  private i callback;
+  private d rr;
   
-  public c(com.tencent.mm.plugin.address.d.b paramb)
+  public c(b paramb)
   {
     AppMethodBeat.i(20771);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new crg();
-    ((b.a)localObject).hQG = new crh();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/rcptinfoadd";
-    ((b.a)localObject).funcId = 415;
-    ((b.a)localObject).hQH = 200;
-    ((b.a)localObject).respCmdId = 1000000200;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (crg)this.rr.hQD.hQJ;
-    ((crg)localObject).HCD = new crl();
-    ((crg)localObject).HCD.HCK = new cxn().aQV(bu.bI(paramb.juU, ""));
-    ((crg)localObject).HCD.HCI = new cxn().aQV(bu.bI(paramb.juS, ""));
-    ((crg)localObject).HCD.HCN = new cxn().aQV(bu.bI(paramb.juX, ""));
-    ((crg)localObject).HCD.HCL = new cxn().aQV(bu.bI(paramb.juV, ""));
-    ((crg)localObject).HCD.HCO = new cxn().aQV(bu.bI(paramb.juY, ""));
-    ((crg)localObject).HCD.HCP = new cxn().aQV(bu.bI(paramb.juZ, ""));
-    ((crg)localObject).HCD.HCJ = new cxn().aQV(bu.bI(paramb.juT, ""));
-    ((crg)localObject).HCD.HCM = new cxn().aQV(bu.bI(paramb.juW, ""));
-    ((crg)localObject).HCD.HCQ = new cxn().aQV(bu.bI(paramb.jva, ""));
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new djf();
+    ((d.a)localObject).iLO = new djg();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/rcptinfoadd";
+    ((d.a)localObject).funcId = 415;
+    ((d.a)localObject).iLP = 200;
+    ((d.a)localObject).respCmdId = 1000000200;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (djf)this.rr.iLK.iLR;
+    ((djf)localObject).MNr = new djk();
+    ((djf)localObject).MNr.MNy = new dqi().bhy(Util.nullAs(paramb.kti, ""));
+    ((djf)localObject).MNr.MNw = new dqi().bhy(Util.nullAs(paramb.ktg, ""));
+    ((djf)localObject).MNr.MNB = new dqi().bhy(Util.nullAs(paramb.ktl, ""));
+    ((djf)localObject).MNr.MNz = new dqi().bhy(Util.nullAs(paramb.ktj, ""));
+    ((djf)localObject).MNr.MNC = new dqi().bhy(Util.nullAs(paramb.ktm, ""));
+    ((djf)localObject).MNr.MND = new dqi().bhy(Util.nullAs(paramb.ktn, ""));
+    ((djf)localObject).MNr.MNx = new dqi().bhy(Util.nullAs(paramb.kth, ""));
+    ((djf)localObject).MNr.MNA = new dqi().bhy(Util.nullAs(paramb.ktk, ""));
+    ((djf)localObject).MNr.MNE = new dqi().bhy(Util.nullAs(paramb.kto, ""));
     AppMethodBeat.o(20771);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(20773);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(20773);
     return i;
   }
@@ -65,20 +67,20 @@ public final class c
     return 415;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(20772);
-    ae.d("MicroMsg.NetSceneRcptInfoAdd", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    Log.d("MicroMsg.NetSceneRcptInfoAdd", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (crh)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
-      if (paramq.HCE.HCH != null)
+      params = (djg)((d)params).iLL.iLR;
+      if (params.MNs.MNv != null)
       {
-        ae.d("MicroMsg.NetSceneRcptInfoAdd", "resp.rImpl.rcptinfolist.rcptinfolist " + paramq.HCE.HCH.size());
-        a.aVq();
-        a.aVs().t(paramq.HCE.HCH);
-        a.aVq();
-        a.aVs().aVu();
+        Log.d("MicroMsg.NetSceneRcptInfoAdd", "resp.rImpl.rcptinfolist.rcptinfolist " + params.MNs.MNv.size());
+        a.bqb();
+        a.bqd().t(params.MNs.MNv);
+        a.bqb();
+        a.bqd().bqf();
       }
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
@@ -87,7 +89,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.address.model.c
  * JD-Core Version:    0.7.0.1
  */

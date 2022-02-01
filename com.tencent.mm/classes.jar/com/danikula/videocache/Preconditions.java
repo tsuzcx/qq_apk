@@ -6,7 +6,7 @@ public final class Preconditions
 {
   public static void checkAllNotNull(Object... paramVarArgs)
   {
-    AppMethodBeat.i(195157);
+    AppMethodBeat.i(223184);
     int j = paramVarArgs.length;
     int i = 0;
     while (i < j)
@@ -14,24 +14,24 @@ public final class Preconditions
       if (paramVarArgs[i] == null)
       {
         paramVarArgs = new NullPointerException();
-        AppMethodBeat.o(195157);
+        AppMethodBeat.o(223184);
         throw paramVarArgs;
       }
       i += 1;
     }
-    AppMethodBeat.o(195157);
+    AppMethodBeat.o(223184);
   }
   
   static void checkArgument(boolean paramBoolean)
   {
-    AppMethodBeat.i(195159);
+    AppMethodBeat.i(223186);
     if (!paramBoolean)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException();
-      AppMethodBeat.o(195159);
+      AppMethodBeat.o(223186);
       throw localIllegalArgumentException;
     }
-    AppMethodBeat.o(195159);
+    AppMethodBeat.o(223186);
   }
   
   static void checkArgument(boolean paramBoolean, String paramString)
@@ -61,20 +61,20 @@ public final class Preconditions
   
   public static <T> T checkNotNull(T paramT, String paramString)
   {
-    AppMethodBeat.i(195158);
+    AppMethodBeat.i(223185);
     if (paramT == null)
     {
       paramT = new NullPointerException(paramString);
-      AppMethodBeat.o(195158);
+      AppMethodBeat.o(223185);
       throw paramT;
     }
-    AppMethodBeat.o(195158);
+    AppMethodBeat.o(223185);
     return paramT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.danikula.videocache.Preconditions
  * JD-Core Version:    0.7.0.1
  */

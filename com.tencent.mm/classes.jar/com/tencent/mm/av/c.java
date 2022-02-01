@@ -4,29 +4,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.i.d;
 import com.tencent.mm.modelmulti.o.d;
 import com.tencent.mm.modelmulti.o.e;
-import com.tencent.mm.protocal.protobuf.dtw;
+import com.tencent.mm.protocal.protobuf.enu;
 
 public final class c
   extends o.e
 {
-  public String gmb;
-  public d gzD;
-  public dtw ibY;
-  public g ibZ;
-  public o.a ica;
+  public String aesKey;
+  public d hmq;
+  public enu iWW;
+  public g iWX;
+  public o.a iWY;
   
-  public static c aIt()
+  public static c bcn()
   {
-    AppMethodBeat.i(218689);
+    AppMethodBeat.i(223571);
     c localc = new c();
-    localc.ijg = o.d.iiS;
-    AppMethodBeat.o(218689);
+    localc.jec = o.d.jdN;
+    AppMethodBeat.o(223571);
     return localc;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.c
  * JD-Core Version:    0.7.0.1
  */

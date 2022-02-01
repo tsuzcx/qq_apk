@@ -17,7 +17,7 @@ import java.util.List;
 public class DetectCodeView
   extends View
 {
-  private List<DetectCode> Mmp;
+  private List<DetectCode> ROM;
   private Paint paint;
   
   public DetectCodeView(Context paramContext)
@@ -48,9 +48,9 @@ public class DetectCodeView
   {
     AppMethodBeat.i(3571);
     super.onDraw(paramCanvas);
-    if ((this.Mmp != null) && (!this.Mmp.isEmpty()))
+    if ((this.ROM != null) && (!this.ROM.isEmpty()))
     {
-      Iterator localIterator = this.Mmp.iterator();
+      Iterator localIterator = this.ROM.iterator();
       while (localIterator.hasNext())
       {
         DetectCode localDetectCode = (DetectCode)localIterator.next();
@@ -65,14 +65,14 @@ public class DetectCodeView
   public void setDetectedCodes(List<DetectCode> paramList)
   {
     AppMethodBeat.i(3570);
-    this.Mmp = paramList;
+    this.ROM = paramList;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
       this.paint.reset();
       this.paint.setColor(-65536);
       this.paint.setStyle(Paint.Style.STROKE);
       this.paint.setAntiAlias(true);
-      this.paint.setStrokeWidth(getResources().getDimension(2131166763));
+      this.paint.setStrokeWidth(getResources().getDimension(2131166883));
     }
     postInvalidate();
     AppMethodBeat.o(3570);
@@ -80,7 +80,7 @@ public class DetectCodeView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.scanlib.ui.DetectCodeView
  * JD-Core Version:    0.7.0.1
  */

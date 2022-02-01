@@ -1,130 +1,106 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import g.a.a.b;
 import java.util.LinkedList;
 
 public final class ce
-  extends cvw
+  extends dpc
 {
-  public b FNc;
-  public int FNd;
-  public String dwb;
-  public String fileid;
-  public String nickname;
+  public String msg;
+  public int ret;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152481);
+    AppMethodBeat.i(125700);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
       {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(125700);
+        throw paramVarArgs;
       }
-      if (this.nickname != null) {
-        paramVarArgs.d(2, this.nickname);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ni(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
       }
-      if (this.FNc != null) {
-        paramVarArgs.c(3, this.FNc);
+      paramVarArgs.aM(2, this.ret);
+      if (this.msg != null) {
+        paramVarArgs.e(3, this.msg);
       }
-      if (this.fileid != null) {
-        paramVarArgs.d(4, this.fileid);
-      }
-      paramVarArgs.aS(5, this.FNd);
-      if (this.dwb != null) {
-        paramVarArgs.d(6, this.dwb);
-      }
-      AppMethodBeat.o(152481);
+      AppMethodBeat.o(125700);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label598;
+      if (this.BaseResponse == null) {
+        break label462;
       }
     }
-    label598:
-    for (int i = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; i = 0)
+    label462:
+    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.ret);
       paramInt = i;
-      if (this.nickname != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.nickname);
+      if (this.msg != null) {
+        paramInt = i + g.a.a.b.b.a.f(3, this.msg);
       }
-      i = paramInt;
-      if (this.FNc != null) {
-        i = paramInt + f.a.a.b.b.a.b(3, this.FNc);
-      }
-      paramInt = i;
-      if (this.fileid != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.fileid);
-      }
-      i = paramInt + f.a.a.b.b.a.bz(5, this.FNd);
-      paramInt = i;
-      if (this.dwb != null) {
-        paramInt = i + f.a.a.b.b.a.e(6, this.dwb);
-      }
-      AppMethodBeat.o(152481);
+      AppMethodBeat.o(125700);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(152481);
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(125700);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(125700);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         ce localce = (ce)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(152481);
+          AppMethodBeat.o(125700);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localce.BaseRequest = ((jc)localObject1);
+            localObject1 = new BaseResponse();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localce.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(152481);
+          AppMethodBeat.o(125700);
           return 0;
         case 2: 
-          localce.nickname = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(152481);
-          return 0;
-        case 3: 
-          localce.FNc = ((f.a.a.a.a)localObject1).OmT.gCk();
-          AppMethodBeat.o(152481);
-          return 0;
-        case 4: 
-          localce.fileid = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(152481);
-          return 0;
-        case 5: 
-          localce.FNd = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(152481);
+          localce.ret = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(125700);
           return 0;
         }
-        localce.dwb = ((f.a.a.a.a)localObject1).OmT.readString();
-        AppMethodBeat.o(152481);
+        localce.msg = ((g.a.a.a.a)localObject1).UbS.readString();
+        AppMethodBeat.o(125700);
         return 0;
       }
-      AppMethodBeat.o(152481);
+      AppMethodBeat.o(125700);
       return -1;
     }
   }

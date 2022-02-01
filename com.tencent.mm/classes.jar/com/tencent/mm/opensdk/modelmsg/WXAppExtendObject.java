@@ -20,18 +20,18 @@ public class WXAppExtendObject
   
   public WXAppExtendObject(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(194082);
+    AppMethodBeat.i(190394);
     this.extInfo = paramString1;
     this.filePath = paramString2;
-    AppMethodBeat.o(194082);
+    AppMethodBeat.o(190394);
   }
   
   public WXAppExtendObject(String paramString, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(194081);
+    AppMethodBeat.i(190393);
     this.extInfo = paramString;
     this.fileData = paramArrayOfByte;
-    AppMethodBeat.o(194081);
+    AppMethodBeat.o(190393);
   }
   
   private int getFileSize(String paramString)

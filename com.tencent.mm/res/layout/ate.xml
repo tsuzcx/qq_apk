@@ -1,15 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/f40" android:background="@color/ki" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:background="@color/ti" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/ea2" android:background="@color/ki" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:id="@id/tg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <android.support.v7.widget.RecyclerView android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/fjc" android:background="@color/ki" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/ea2" android:layout_marginEnd="@dimen/c5" />
-    <ListView android:id="@id/fa_" android:background="@color/ki" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a7c" android:dividerHeight="0.0px" android:layout_below="@id/fjc" />
-    <com.tencent.mm.pluginsdk.ui.MultiSelectContactView android:id="@id/b1m" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/fjc" />
-    <ImageView android:id="@id/feo" android:background="@drawable/bhf" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/b1m" />
-    <LinearLayout android:gravity="center_horizontal" android:id="@id/e4e" android:background="@color/ki" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/b1m">
-        <TextView android:textColor="@color/a_u" android:id="@id/e4d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/dlk" />
-    </LinearLayout>
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/y0" android:gravity="center_vertical" android:id="@id/fa8" android:background="#f2ebebeb" android:padding="@dimen/i_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:drawableRight="@drawable/a9r" android:drawablePadding="@dimen/i_" android:layout_below="@id/b1m" />
-</RelativeLayout>
+    <ListView android:id="@id/djf" android:background="@color/afz" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/ac_" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/c2g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/dty" />
+</FrameLayout>

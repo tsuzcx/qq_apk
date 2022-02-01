@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:id="@id/g1j" android:paddingTop="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/awr" android:background="@drawable/am1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/ax0" android:layout_centerHorizontal="true">
-        <ImageView android:id="@id/aws" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/am4" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <TextView android:id="@id/awz" android:padding="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/aws" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" style="@style/a5t" />
+    <com.tencent.mm.ui.MMImageView android:id="@id/axp" android:layout_width="100.0dip" android:layout_height="@dimen/a9" android:scaleType="centerCrop" />
+    <com.tencent.mm.ui.MMImageView android:id="@id/axq" android:layout_width="@dimen/a9" android:layout_height="@dimen/a9" android:layout_marginRight="@dimen/k5" android:scaleType="centerCrop" />
+    <com.tencent.mm.ui.MMImageView android:id="@id/axr" android:layout_width="@dimen/a9" android:layout_height="@dimen/a9" android:layout_marginRight="@dimen/k5" android:scaleType="centerCrop" />
+    <com.tencent.mm.ui.MMImageView android:id="@id/axs" android:layout_width="@dimen/a9" android:layout_height="@dimen/a9" android:layout_marginRight="@dimen/k5" android:scaleType="centerCrop" />
+    <RelativeLayout android:layout_width="@dimen/a9" android:layout_height="@dimen/a9">
+        <com.tencent.mm.ui.MMImageView android:id="@id/axt" android:layout_width="@dimen/a9" android:layout_height="@dimen/a9" android:scaleType="centerCrop" />
+        <ImageView android:id="@id/axu" android:background="@drawable/mg" android:visibility="gone" android:layout_width="@dimen/a9" android:layout_height="22.0dip" android:scaleType="centerCrop" android:layout_alignParentBottom="true" />
+        <TextView android:textSize="@dimen/is" android:typeface="monospace" android:textColor="@color/ag2" android:id="@id/axo" android:paddingRight="5.0dip" android:paddingBottom="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" android:layout_centerInParent="true" />
     </RelativeLayout>
-    <ImageView android:id="@id/ax0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-10.0dip" android:src="@drawable/am3" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <ImageView android:layout_gravity="bottom|center" android:id="@id/awy" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-13.0dip" android:src="@drawable/am2" android:layout_below="@id/awr" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+</LinearLayout>

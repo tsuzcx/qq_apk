@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/dot" android:visibility="gone" android:layout_width="@dimen/sv" android:layout_height="@dimen/sw" android:layout_alignParentStart="true" />
+    <ImageView android:id="@id/wm" android:layout_width="@dimen/sw" android:layout_height="@dimen/sw" />
+</RelativeLayout>

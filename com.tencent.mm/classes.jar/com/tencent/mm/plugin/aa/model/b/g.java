@@ -1,23 +1,22 @@
 package com.tencent.mm.plugin.aa.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.p;
-import com.tencent.mm.protocal.protobuf.w;
+import com.tencent.mm.protocal.protobuf.r;
+import com.tencent.mm.protocal.protobuf.y;
 import com.tencent.mm.vending.c.b;
-import com.tencent.mm.vending.g.c;
 import com.tencent.mm.vending.h.e;
 import com.tencent.mm.vending.j.d;
 
 public class g
   implements b<f>
 {
-  protected f iXm;
-  public final d iXn;
-  public final a iXo;
-  public final e iXp;
-  public final c iXq;
-  public final b iXr;
-  public final f iXs;
+  protected f jUj;
+  public final d jUk;
+  public final a jUl;
+  public final e jUm;
+  public final c jUn;
+  public final b jUo;
+  public final f jUp;
   
   public g()
   {
@@ -29,24 +28,32 @@ public class g
   private g(f paramf)
   {
     AppMethodBeat.i(63469);
-    this.iXn = new d();
-    this.iXo = new a();
-    this.iXp = new e();
-    this.iXq = new c();
-    this.iXr = new b();
-    this.iXs = new f();
-    this.iXm = paramf;
+    this.jUk = new d();
+    this.jUl = new a();
+    this.jUm = new e();
+    this.jUn = new c();
+    this.jUo = new b();
+    this.jUp = new f();
+    this.jUj = paramf;
     AppMethodBeat.o(63469);
   }
   
   public final class a
-    implements e<p, Long>
+    implements e<r, com.tencent.mm.vending.j.c<Long, String>>
   {
     public a() {}
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
+    }
+    
+    public final com.tencent.mm.vending.g.c<r> j(long paramLong, String paramString)
+    {
+      AppMethodBeat.i(212951);
+      paramString = com.tencent.mm.vending.g.g.O(Long.valueOf(paramLong), paramString).c(this);
+      AppMethodBeat.o(212951);
+      return paramString;
     }
   }
   
@@ -55,7 +62,7 @@ public class g
   {
     public b() {}
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
     }
@@ -66,12 +73,12 @@ public class g
   {
     public c() {}
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
     }
     
-    public final c<Void> b(long paramLong, String paramString1, String paramString2)
+    public final com.tencent.mm.vending.g.c<Void> b(long paramLong, String paramString1, String paramString2)
     {
       AppMethodBeat.i(63461);
       paramString1 = com.tencent.mm.vending.g.g.h(Long.valueOf(paramLong), paramString1, paramString2).c(this);
@@ -81,19 +88,19 @@ public class g
   }
   
   public final class d
-    implements e<w, Void>
+    implements e<y, Void>
   {
     public d() {}
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
     }
     
-    public final c<w> aRL()
+    public final com.tencent.mm.vending.g.c<y> bmq()
     {
       AppMethodBeat.i(63463);
-      c localc = com.tencent.mm.vending.g.g.fSA().c(this);
+      com.tencent.mm.vending.g.c localc = com.tencent.mm.vending.g.g.hdG().c(this);
       AppMethodBeat.o(63463);
       return localc;
     }
@@ -104,12 +111,12 @@ public class g
   {
     public e() {}
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
     }
     
-    public final c<Void> w(String paramString1, String paramString2, String paramString3)
+    public final com.tencent.mm.vending.g.c<Void> w(String paramString1, String paramString2, String paramString3)
     {
       AppMethodBeat.i(63465);
       paramString1 = com.tencent.mm.vending.g.g.h(paramString1, paramString2, paramString3).c(this);
@@ -123,7 +130,7 @@ public class g
   {
     public f() {}
     
-    public final String Wz()
+    public final String akn()
     {
       return "Vending.LOGIC";
     }
@@ -131,7 +138,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.aa.model.b.g
  * JD-Core Version:    0.7.0.1
  */

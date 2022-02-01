@@ -17,92 +17,92 @@ import java.util.UUID;
 public final class i
   extends com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.c.a
 {
-  private final String kIn;
-  private final String kgF;
+  private final String lMR;
+  private final String lko;
   private final String value;
   
   public i(String paramString1, String paramString2, String paramString3)
   {
-    this.kgF = paramString1;
-    this.kIn = paramString2;
+    this.lko = paramString1;
+    this.lMR = paramString2;
     this.value = paramString3;
   }
   
-  public final void bjZ()
+  public final void bFt()
   {
     AppMethodBeat.i(144585);
-    BluetoothGatt localBluetoothGatt = this.kIw.kIc;
+    BluetoothGatt localBluetoothGatt = this.lNb.lMG;
     if (localBluetoothGatt == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, bluetoothGatt is null", new Object[] { this });
-      a(j.kIX);
+      a(j.lNC);
       done();
       AppMethodBeat.o(144585);
       return;
     }
-    if (!c.Qg(this.kgF))
+    if (!c.ZH(this.lko))
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, serviceId is illegal", new Object[] { this });
-      a(j.kIV);
+      a(j.lNA);
       done();
       AppMethodBeat.o(144585);
       return;
     }
-    Object localObject = localBluetoothGatt.getService(UUID.fromString(this.kgF));
+    Object localObject = localBluetoothGatt.getService(UUID.fromString(this.lko));
     if (localObject == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, gattService is null", new Object[] { this });
-      a(j.kIV);
+      a(j.lNA);
       done();
       AppMethodBeat.o(144585);
       return;
     }
-    if (!c.Qg(this.kIn))
+    if (!c.ZH(this.lMR))
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, characteristicId is illegal", new Object[] { this });
-      a(j.kIW);
+      a(j.lNB);
       done();
       AppMethodBeat.o(144585);
       return;
     }
-    localObject = ((BluetoothGattService)localObject).getCharacteristic(UUID.fromString(this.kIn));
+    localObject = ((BluetoothGattService)localObject).getCharacteristic(UUID.fromString(this.lMR));
     if (localObject == null)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, gattCharacteristic is null", new Object[] { this });
-      a(j.kIW);
+      a(j.lNB);
       done();
       AppMethodBeat.o(144585);
       return;
     }
-    if ((!c.sZ(((BluetoothGattCharacteristic)localObject).getProperties())) && (!c.ta(((BluetoothGattCharacteristic)localObject).getProperties())))
+    if ((!c.wV(((BluetoothGattCharacteristic)localObject).getProperties())) && (!c.wW(((BluetoothGattCharacteristic)localObject).getProperties())))
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s, not support write & writeNoResponse", new Object[] { this });
-      a(j.kIY);
+      a(j.lND);
       done();
       AppMethodBeat.o(144585);
       return;
     }
-    byte[] arrayOfByte = c.at(Base64.decode(this.value, 2));
+    byte[] arrayOfByte = c.aK(Base64.decode(this.value, 2));
     ((BluetoothGattCharacteristic)localObject).setValue(arrayOfByte);
     if (arrayOfByte != null) {}
     for (int i = arrayOfByte.length;; i = 0)
     {
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.w("MicroMsg.Ble.Action", "dataToWrite's length:%d", new Object[] { Integer.valueOf(i) });
-      if (this.aXD) {
+      if (this.aXs) {
         com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.Action", "dataToWrite:%s", new Object[] { Arrays.toString(arrayOfByte) });
       }
       if (localBluetoothGatt.writeCharacteristic((BluetoothGattCharacteristic)localObject)) {
         break;
       }
       com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.e("MicroMsg.Ble.Action", "action:%s bluetoothGatt.writeCharacteristic fail", new Object[] { this });
-      a(j.kIZ);
+      a(j.lNE);
       done();
       AppMethodBeat.o(144585);
       return;
     }
-    if ((!c.sZ(((BluetoothGattCharacteristic)localObject).getProperties())) && (c.ta(((BluetoothGattCharacteristic)localObject).getProperties())))
+    if ((!c.wV(((BluetoothGattCharacteristic)localObject).getProperties())) && (c.wW(((BluetoothGattCharacteristic)localObject).getProperties())))
     {
-      a(j.kIP);
+      a(j.lNu);
       done();
     }
     AppMethodBeat.o(144585);
@@ -116,9 +116,9 @@ public final class i
   public final void onCharacteristicWrite(BluetoothGatt paramBluetoothGatt, BluetoothGattCharacteristic paramBluetoothGattCharacteristic, int paramInt)
   {
     AppMethodBeat.i(144586);
-    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.Action", "action:%s onCharacteristicWrite status:%s", new Object[] { this, f.sV(paramInt) });
+    com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.d.a.i("MicroMsg.Ble.Action", "action:%s onCharacteristicWrite status:%s", new Object[] { this, f.wR(paramInt) });
     if (paramInt == 0) {
-      a(j.kIP);
+      a(j.lNu);
     }
     done();
     AppMethodBeat.o(144586);
@@ -127,14 +127,14 @@ public final class i
   public final String toString()
   {
     AppMethodBeat.i(144587);
-    String str = "WriteCharacteristicAction#" + this.kID + "{serviceId='" + this.kgF + '\'' + ", characteristicId='" + this.kIn + '\'' + ", value='" + this.value + '\'' + ", debug=" + this.aXD + ", mainThread=" + this.kHG + ", serial=" + this.kHI + '}';
+    String str = "WriteCharacteristicAction#" + this.lNi + "{serviceId='" + this.lko + '\'' + ", characteristicId='" + this.lMR + '\'' + ", value='" + this.value + '\'' + ", debug=" + this.aXs + ", mainThread=" + this.lMh + ", serial=" + this.lMj + '}';
     AppMethodBeat.o(144587);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.bluetooth.sdk.a.a.i
  * JD-Core Version:    0.7.0.1
  */

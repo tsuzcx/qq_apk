@@ -2,71 +2,77 @@ package com.tencent.mm.ui.conversation;
 
 import android.widget.ListView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.x;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.au;
-import com.tencent.mm.storage.t;
-import d.l;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.v;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/conversation/ConvExposeHelper;", "", "()V", "TAG", "", "isMainTabShow", "", "()Z", "setMainTabShow", "(Z)V", "sFirstVisibleItem", "", "sLastVisibleItem", "checkOfficialAccountShow", "", "conversationLV", "Landroid/widget/ListView;", "adapter", "Lcom/tencent/mm/ui/conversation/ConversationWithCacheAdapter;", "visible", "scroll", "app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/conversation/ConvExposeHelper;", "", "()V", "TAG", "", "isMainTabShow", "", "()Z", "setMainTabShow", "(Z)V", "sFirstVisibleItem", "", "sLastVisibleItem", "checkOfficialAccountShow", "", "conversationLV", "Landroid/widget/ListView;", "adapter", "Lcom/tencent/mm/ui/conversation/ConversationWithCacheAdapter;", "visible", "scroll", "app_release"})
 public final class d
 {
-  private static int KOH;
-  private static boolean KOI;
-  public static final d KOJ;
-  private static int ohw;
+  private static int QbI;
+  private static boolean QbJ;
+  public static final d QbK;
+  private static int psU;
   
   static
   {
-    AppMethodBeat.i(188371);
-    KOJ = new d();
-    ohw = -1;
-    KOH = -1;
-    KOI = true;
-    AppMethodBeat.o(188371);
+    AppMethodBeat.i(231372);
+    QbK = new d();
+    psU = -1;
+    QbI = -1;
+    QbJ = true;
+    AppMethodBeat.o(231372);
+  }
+  
+  public static void Cu(boolean paramBoolean)
+  {
+    QbJ = paramBoolean;
   }
   
   public static void a(ListView paramListView, i parami, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(188370);
-    Object localObject = t.IIz;
-    if (!t.fsT())
+    AppMethodBeat.i(231371);
+    Object localObject = v.NPH;
+    if (!v.gAi())
     {
-      AppMethodBeat.o(188370);
+      AppMethodBeat.o(231371);
       return;
     }
     if ((parami == null) || (paramListView == null))
     {
-      AppMethodBeat.o(188370);
+      AppMethodBeat.o(231371);
       return;
     }
     int i = paramListView.getFirstVisiblePosition();
     int j = paramListView.getLastVisiblePosition();
     int k = paramListView.getHeaderViewsCount();
-    if ((paramBoolean2) && (i == ohw) && (KOH == j))
+    if ((paramBoolean2) && (i == psU) && (QbI == j))
     {
-      AppMethodBeat.o(188370);
+      AppMethodBeat.o(231371);
       return;
     }
-    ae.v("MicroMsg.ConvExposeHelper", "checkOfficialAccountShow headerCount=" + k + ", firstPos=" + i + ", lastPos=" + j + ", visible=" + paramBoolean1 + ", scroll=" + paramBoolean2);
+    Log.v("MicroMsg.ConvExposeHelper", "checkOfficialAccountShow headerCount=" + k + ", firstPos=" + i + ", lastPos=" + j + ", visible=" + paramBoolean1 + ", scroll=" + paramBoolean2);
     if (!paramBoolean1)
     {
-      paramListView = t.IIz;
-      t.aTY("");
-      AppMethodBeat.o(188370);
+      paramListView = v.NPH;
+      v.biU("");
+      AppMethodBeat.o(231371);
       return;
     }
-    ohw = i;
-    KOH = j;
+    psU = i;
+    QbI = j;
     if (i > k)
     {
-      i -= k;
+      i = i - k + 1;
       if (j < k) {
-        break label362;
+        break label376;
       }
-      j -= k;
     }
-    for (;;)
+    label354:
+    label376:
+    for (j = j - k - 1;; j = 0)
     {
       paramListView = "";
       if (i <= j) {}
@@ -74,36 +80,40 @@ public final class d
       {
         try
         {
-          localObject = (au)parami.abR(i);
-          if ((localObject == null) || (!x.AN(((au)localObject).getUsername()))) {
-            break label340;
+          localObject = (az)parami.akz(i);
+          if ((localObject == null) || (!ab.Js(((az)localObject).getUsername()))) {
+            break label354;
           }
-          paramListView = ((au)localObject).getDigest();
-          j = ((au)localObject).VS();
+          paramListView = ((az)localObject).getDigest();
+          j = ((az)localObject).ajG();
           int m = 1;
           k = i;
           i = m;
           if (i != 0) {
-            if (!paramBoolean2)
+            if (paramBoolean2)
             {
-              parami = t.IIz;
-              t.aS(paramListView, k, j);
-              AppMethodBeat.o(188370);
+              parami = v.NPH;
+              if (v.gAg()) {}
+            }
+            else
+            {
+              parami = v.NPH;
+              v.aO(paramListView, k, j);
+              AppMethodBeat.o(231371);
               return;
             }
           }
         }
         catch (Exception paramListView)
         {
-          ae.e("MicroMsg.ConvExposeHelper", "checkOfficialAccountShow ex %s", new Object[] { paramListView.getMessage() });
-          AppMethodBeat.o(188370);
+          Log.e("MicroMsg.ConvExposeHelper", "checkOfficialAccountShow ex %s", new Object[] { paramListView.getMessage() });
+          AppMethodBeat.o(231371);
           return;
         }
-        paramListView = t.IIz;
-        t.aTY("");
-        AppMethodBeat.o(188370);
+        paramListView = v.NPH;
+        v.biU("");
+        AppMethodBeat.o(231371);
         return;
-        label340:
         while (i == j)
         {
           i = 0;
@@ -115,24 +125,17 @@ public final class d
       }
       i = 0;
       break;
-      label362:
-      j = 0;
     }
   }
   
-  public static boolean fMU()
+  public static boolean gVo()
   {
-    return KOI;
-  }
-  
-  public static void yE(boolean paramBoolean)
-  {
-    KOI = paramBoolean;
+    return QbJ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.d
  * JD-Core Version:    0.7.0.1
  */

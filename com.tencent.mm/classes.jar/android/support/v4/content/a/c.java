@@ -225,46 +225,46 @@ public final class c
   public static final class b
     implements c.a
   {
-    public final c.c[] Jv;
+    public final c.c[] JE;
     
     public b(c.c[] paramArrayOfc)
     {
-      this.Jv = paramArrayOfc;
+      this.JE = paramArrayOfc;
     }
   }
   
   public static final class c
   {
-    public int JA;
-    public int Jw;
-    public boolean Jx;
-    public String Jy;
-    public int Jz;
+    public int JF;
+    public boolean JG;
+    public String JH;
+    public int JI;
+    public int JJ;
     public final String mFileName;
     
     public c(String paramString1, int paramInt1, boolean paramBoolean, String paramString2, int paramInt2, int paramInt3)
     {
       this.mFileName = paramString1;
-      this.Jw = paramInt1;
-      this.Jx = paramBoolean;
-      this.Jy = paramString2;
-      this.Jz = paramInt2;
-      this.JA = paramInt3;
+      this.JF = paramInt1;
+      this.JG = paramBoolean;
+      this.JH = paramString2;
+      this.JI = paramInt2;
+      this.JJ = paramInt3;
     }
   }
   
   public static final class d
     implements c.a
   {
-    public final a JB;
-    public final int JC;
-    public final int mTimeoutMs;
+    public final a JK;
+    public final int JL;
+    public final int JM;
     
     public d(a parama, int paramInt1, int paramInt2)
     {
-      this.JB = parama;
-      this.JC = paramInt1;
-      this.mTimeoutMs = paramInt2;
+      this.JK = parama;
+      this.JM = paramInt1;
+      this.JL = paramInt2;
     }
   }
 }

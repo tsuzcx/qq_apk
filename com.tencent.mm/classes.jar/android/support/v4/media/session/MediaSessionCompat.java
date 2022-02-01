@@ -1,17 +1,11 @@
 package android.support.v4.media.session;
 
-import android.media.session.MediaSession.QueueItem;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import android.os.ResultReceiver;
-import android.support.v4.media.MediaDescriptionCompat;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 public class MediaSessionCompat
 {
@@ -22,99 +16,13 @@ public class MediaSessionCompat
     }
   }
   
-  public static final class QueueItem
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<QueueItem> CREATOR = new Parcelable.Creator() {};
-    private final MediaDescriptionCompat Ld;
-    private final long MI;
-    private Object MJ;
-    
-    QueueItem(Parcel paramParcel)
-    {
-      this.Ld = ((MediaDescriptionCompat)MediaDescriptionCompat.CREATOR.createFromParcel(paramParcel));
-      this.MI = paramParcel.readLong();
-    }
-    
-    private QueueItem(Object paramObject, MediaDescriptionCompat paramMediaDescriptionCompat, long paramLong)
-    {
-      if (paramMediaDescriptionCompat == null) {
-        throw new IllegalArgumentException("Description cannot be null.");
-      }
-      if (paramLong == -1L) {
-        throw new IllegalArgumentException("Id cannot be QueueItem.UNKNOWN_ID");
-      }
-      this.Ld = paramMediaDescriptionCompat;
-      this.MI = paramLong;
-      this.MJ = paramObject;
-    }
-    
-    public static List<QueueItem> l(List<?> paramList)
-    {
-      if ((paramList == null) || (Build.VERSION.SDK_INT < 21)) {
-        return null;
-      }
-      ArrayList localArrayList = new ArrayList();
-      Iterator localIterator = paramList.iterator();
-      if (localIterator.hasNext())
-      {
-        paramList = localIterator.next();
-        if ((paramList == null) || (Build.VERSION.SDK_INT < 21)) {}
-        for (paramList = null;; paramList = new QueueItem(paramList, MediaDescriptionCompat.v(((MediaSession.QueueItem)paramList).getDescription()), ((MediaSession.QueueItem)paramList).getQueueId()))
-        {
-          localArrayList.add(paramList);
-          break;
-        }
-      }
-      return localArrayList;
-    }
-    
-    public final int describeContents()
-    {
-      return 0;
-    }
-    
-    public final String toString()
-    {
-      return "MediaSession.QueueItem {Description=" + this.Ld + ", Id=" + this.MI + " }";
-    }
-    
-    public final void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      this.Ld.writeToParcel(paramParcel, paramInt);
-      paramParcel.writeLong(this.MI);
-    }
-  }
-  
-  public static final class ResultReceiverWrapper
-    implements Parcelable
-  {
-    public static final Parcelable.Creator<ResultReceiverWrapper> CREATOR = new Parcelable.Creator() {};
-    ResultReceiver MK;
-    
-    ResultReceiverWrapper(Parcel paramParcel)
-    {
-      this.MK = ((ResultReceiver)ResultReceiver.CREATOR.createFromParcel(paramParcel));
-    }
-    
-    public final int describeContents()
-    {
-      return 0;
-    }
-    
-    public final void writeToParcel(Parcel paramParcel, int paramInt)
-    {
-      this.MK.writeToParcel(paramParcel, paramInt);
-    }
-  }
-  
   public static final class Token
     implements Parcelable
   {
     public static final Parcelable.Creator<Token> CREATOR = new Parcelable.Creator() {};
-    final Object ML;
-    b MM;
-    Bundle MN;
+    final Object MV;
+    b MW;
+    Bundle MX;
     
     Token(Object paramObject)
     {
@@ -128,9 +36,9 @@ public class MediaSessionCompat
     
     private Token(Object paramObject, b paramb, byte paramByte)
     {
-      this.ML = paramObject;
-      this.MM = paramb;
-      this.MN = null;
+      this.MV = paramObject;
+      this.MW = paramb;
+      this.MX = null;
     }
     
     public static Token a(Object paramObject, b paramb)
@@ -161,39 +69,39 @@ public class MediaSessionCompat
           return false;
         }
         paramObject = (Token)paramObject;
-        if (this.ML != null) {
+        if (this.MV != null) {
           break;
         }
-      } while (paramObject.ML == null);
+      } while (paramObject.MV == null);
       return false;
-      if (paramObject.ML == null) {
+      if (paramObject.MV == null) {
         return false;
       }
-      return this.ML.equals(paramObject.ML);
+      return this.MV.equals(paramObject.MV);
     }
     
     public final int hashCode()
     {
-      if (this.ML == null) {
+      if (this.MV == null) {
         return 0;
       }
-      return this.ML.hashCode();
+      return this.MV.hashCode();
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
       if (Build.VERSION.SDK_INT >= 21)
       {
-        paramParcel.writeParcelable((Parcelable)this.ML, paramInt);
+        paramParcel.writeParcelable((Parcelable)this.MV, paramInt);
         return;
       }
-      paramParcel.writeStrongBinder((IBinder)this.ML);
+      paramParcel.writeStrongBinder((IBinder)this.MV);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.media.session.MediaSessionCompat
  * JD-Core Version:    0.7.0.1
  */

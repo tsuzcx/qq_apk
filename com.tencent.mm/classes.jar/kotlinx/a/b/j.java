@@ -1,35 +1,35 @@
 package kotlinx.a.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.d;
-import d.l;
+import kotlin.g.b.d;
+import kotlin.l;
 import kotlinx.a.a.e;
 import kotlinx.a.h;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/serialization/internal/ByteArraySerializer;", "Lkotlinx/serialization/KSerializer;", "", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "", "Lkotlinx/serialization/internal/ByteArrayBuilder;", "()V", "empty", "readElement", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "index", "", "builder", "checkIndex", "", "writeContent", "encoder", "Lkotlinx/serialization/CompositeEncoder;", "content", "size", "collectionSize", "toBuilder", "kotlinx-serialization-runtime"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/serialization/internal/ByteArraySerializer;", "Lkotlinx/serialization/KSerializer;", "", "Lkotlinx/serialization/internal/PrimitiveArraySerializer;", "", "Lkotlinx/serialization/internal/ByteArrayBuilder;", "()V", "empty", "readElement", "", "decoder", "Lkotlinx/serialization/CompositeDecoder;", "index", "", "builder", "checkIndex", "", "writeContent", "encoder", "Lkotlinx/serialization/CompositeEncoder;", "content", "size", "collectionSize", "toBuilder", "kotlinx-serialization-runtime"})
 public final class j
   extends ax<Byte, byte[], i>
   implements h<byte[]>
 {
-  public static final j Ojm;
+  public static final j TYi;
   
   static
   {
-    AppMethodBeat.i(199699);
-    Ojm = new j();
-    AppMethodBeat.o(199699);
+    AppMethodBeat.i(225471);
+    TYi = new j();
+    AppMethodBeat.o(225471);
   }
   
   private j()
   {
-    super(e.a(d.NiB));
-    AppMethodBeat.i(199698);
-    AppMethodBeat.o(199698);
+    super(e.a(d.SYj));
+    AppMethodBeat.i(225470);
+    AppMethodBeat.o(225470);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     kotlinx.a.b.j
  * JD-Core Version:    0.7.0.1
  */

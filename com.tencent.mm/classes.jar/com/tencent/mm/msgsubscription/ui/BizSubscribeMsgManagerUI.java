@@ -7,8 +7,8 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.a;
-import android.support.v7.widget.RecyclerView.i;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
@@ -19,51 +19,139 @@ import com.tencent.mm.msgsubscription.SubscribeMsgTmpItem;
 import com.tencent.mm.msgsubscription.presenter.SubscribeMsgSettingData;
 import com.tencent.mm.msgsubscription.presenter.b.a;
 import com.tencent.mm.msgsubscription.presenter.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.MMSwitchBtn.a;
-import d.g.b.ad;
-import d.g.b.p;
-import d.l;
-import d.v;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashMap;
+import kotlin.g.b.ae;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
 @i
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/msgsubscription/ui/BizSubscribeMsgManagerUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingView;", "()V", "bizUsername", "", "mAdapter", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgListAdapter;", "mDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "Lkotlin/collections/ArrayList;", "mSwitchBtn", "Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "nickname", "presenter", "Lcom/tencent/mm/msgsubscription/presenter/BaseSubscribeMsgSettingPagePresenter;", "applyData", "", "switch", "", "items", "", "exampleTitle", "finish", "getLayoutId", "", "getUserName", "initAdapter", "initData", "initPresenter", "initViews", "loadData", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "showSubscribeMsgList", "show", "updateResult", "result", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "Companion", "plugin-comm_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/msgsubscription/ui/BizSubscribeMsgManagerUI;", "Lcom/tencent/mm/ui/MMActivity;", "Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingView;", "()V", "bizUsername", "", "mAdapter", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgListAdapter;", "mDataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "Lkotlin/collections/ArrayList;", "mSwitchBtn", "Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "nickname", "presenter", "Lcom/tencent/mm/msgsubscription/presenter/BaseSubscribeMsgSettingPagePresenter;", "subscribeMsgList", "Lcom/tencent/mm/msgsubscription/ui/MaxRecyclerView;", "applyData", "", "switch", "", "items", "", "exampleTitle", "finish", "getLayoutId", "", "getUserName", "initAdapter", "initData", "initPresenter", "initViews", "loadData", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "onStart", "onStop", "showSubscribeMsgList", "show", "updateResult", "result", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "Companion", "plugin-comm_release"})
 public final class BizSubscribeMsgManagerUI
   extends MMActivity
   implements c
 {
-  public static final BizSubscribeMsgManagerUI.a iFw;
+  public static final BizSubscribeMsgManagerUI.a jBA;
   private HashMap _$_findViewCache;
-  private String dDG;
-  private a iFt;
-  private MMSwitchBtn iFu;
-  private com.tencent.mm.msgsubscription.presenter.a iFv;
+  private String dVu;
+  private a jBw;
+  private MMSwitchBtn jBx;
+  private com.tencent.mm.msgsubscription.presenter.a jBy;
+  private MaxRecyclerView jBz;
   private ArrayList<SubscribeMsgTmpItem> mDataList;
   private String nickname;
   
   static
   {
     AppMethodBeat.i(149721);
-    iFw = new BizSubscribeMsgManagerUI.a((byte)0);
+    jBA = new BizSubscribeMsgManagerUI.a((byte)0);
     AppMethodBeat.o(149721);
   }
   
   public BizSubscribeMsgManagerUI()
   {
     AppMethodBeat.i(149720);
-    this.dDG = "";
+    this.dVu = "";
     this.nickname = "";
     this.mDataList = new ArrayList();
     AppMethodBeat.o(149720);
   }
   
-  private View _$_findCachedViewById(int paramInt)
+  private final void ga(boolean paramBoolean)
+  {
+    AppMethodBeat.i(149717);
+    Object localObject = this.jBz;
+    if (localObject == null) {
+      p.btv("subscribeMsgList");
+    }
+    int i;
+    label48:
+    TextView localTextView;
+    if (!((Collection)this.mDataList).isEmpty())
+    {
+      i = 1;
+      if ((i == 0) || (!paramBoolean)) {
+        break label228;
+      }
+      i = 0;
+      ((MaxRecyclerView)localObject).setVisibility(i);
+      localTextView = (TextView)findViewById(2131308742);
+      if (((Collection)this.mDataList).isEmpty()) {
+        break label234;
+      }
+      i = 1;
+      label82:
+      if (i == 0) {
+        break label265;
+      }
+      p.g(localTextView, "subscribeMsgTitleWithNickname");
+      localTextView.setVisibility(0);
+      if (!paramBoolean) {
+        break label239;
+      }
+      localObject = getString(2131756741);
+      label111:
+      p.g(localObject, "if (show) getString(R.st…_msg_close_with_nickname)");
+      ae localae = ae.SYK;
+      localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { this.nickname }, 1));
+      p.g(localObject, "java.lang.String.format(format, *args)");
+      localTextView.setText((CharSequence)localObject);
+      int j = localTextView.getPaddingLeft();
+      if (!paramBoolean) {
+        break label251;
+      }
+      i = getResources().getDimensionPixelSize(2131165501);
+      label184:
+      localTextView.setPadding(j, i, localTextView.getPaddingRight(), localTextView.getPaddingBottom());
+    }
+    for (;;)
+    {
+      localObject = this.jBw;
+      if (localObject == null) {
+        break label282;
+      }
+      ((a)localObject).notifyDataSetChanged();
+      AppMethodBeat.o(149717);
+      return;
+      i = 0;
+      break;
+      label228:
+      i = 8;
+      break label48;
+      label234:
+      i = 0;
+      break label82;
+      label239:
+      localObject = getString(2131756739);
+      break label111;
+      label251:
+      i = getResources().getDimensionPixelSize(2131165586);
+      break label184;
+      label265:
+      p.g(localTextView, "subscribeMsgTitleWithNickname");
+      localTextView.setVisibility(8);
+    }
+    label282:
+    AppMethodBeat.o(149717);
+  }
+  
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(223416);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(223416);
+  }
+  
+  public final View _$_findCachedViewById(int paramInt)
   {
     AppMethodBeat.i(149724);
     if (this._$_findViewCache == null) {
@@ -80,96 +168,10 @@ public final class BizSubscribeMsgManagerUI
     return localView1;
   }
   
-  private final void fi(boolean paramBoolean)
-  {
-    AppMethodBeat.i(149717);
-    Object localObject = (MaxRecyclerView)_$_findCachedViewById(2131305522);
-    p.g(localObject, "subscribe_msg_list");
-    int i;
-    if (!((Collection)this.mDataList).isEmpty())
-    {
-      i = 1;
-      if ((i == 0) || (!paramBoolean)) {
-        break label318;
-      }
-      i = 0;
-      label50:
-      ((MaxRecyclerView)localObject).setVisibility(i);
-      if (((Collection)this.mDataList).isEmpty()) {
-        break label324;
-      }
-      i = 1;
-      label73:
-      if (i == 0) {
-        break label355;
-      }
-      localObject = (TextView)_$_findCachedViewById(2131305525);
-      p.g(localObject, "subscribe_msg_title_with_nickname");
-      ((TextView)localObject).setVisibility(0);
-      if (!paramBoolean) {
-        break label329;
-      }
-      localObject = getString(2131756600);
-      label113:
-      TextView localTextView = (TextView)_$_findCachedViewById(2131305525);
-      p.g(localTextView, "subscribe_msg_title_with_nickname");
-      ad localad = ad.Njc;
-      p.g(localObject, "showTips");
-      localObject = String.format((String)localObject, Arrays.copyOf(new Object[] { this.nickname }, 1));
-      p.g(localObject, "java.lang.String.format(format, *args)");
-      localTextView.setText((CharSequence)localObject);
-      localObject = (TextView)_$_findCachedViewById(2131305525);
-      localTextView = (TextView)_$_findCachedViewById(2131305525);
-      p.g(localTextView, "subscribe_msg_title_with_nickname");
-      int j = localTextView.getPaddingLeft();
-      if (!paramBoolean) {
-        break label341;
-      }
-      i = getResources().getDimensionPixelSize(2131165483);
-      label234:
-      localTextView = (TextView)_$_findCachedViewById(2131305525);
-      p.g(localTextView, "subscribe_msg_title_with_nickname");
-      int k = localTextView.getPaddingRight();
-      localTextView = (TextView)_$_findCachedViewById(2131305525);
-      p.g(localTextView, "subscribe_msg_title_with_nickname");
-      ((TextView)localObject).setPadding(j, i, k, localTextView.getPaddingBottom());
-    }
-    for (;;)
-    {
-      localObject = this.iFt;
-      if (localObject == null) {
-        break label383;
-      }
-      ((a)localObject).notifyDataSetChanged();
-      AppMethodBeat.o(149717);
-      return;
-      i = 0;
-      break;
-      label318:
-      i = 8;
-      break label50;
-      label324:
-      i = 0;
-      break label73;
-      label329:
-      localObject = getString(2131756598);
-      break label113;
-      label341:
-      i = getResources().getDimensionPixelSize(2131165568);
-      break label234;
-      label355:
-      localObject = (TextView)_$_findCachedViewById(2131305525);
-      p.g(localObject, "subscribe_msg_title_with_nickname");
-      ((TextView)localObject).setVisibility(8);
-    }
-    label383:
-    AppMethodBeat.o(149717);
-  }
-  
   public final void finish()
   {
     AppMethodBeat.i(149719);
-    com.tencent.mm.msgsubscription.presenter.a locala = this.iFv;
+    com.tencent.mm.msgsubscription.presenter.a locala = this.jBy;
     if (locala != null) {
       locala.y((Activity)this);
     }
@@ -179,12 +181,12 @@ public final class BizSubscribeMsgManagerUI
   
   public final int getLayoutId()
   {
-    return 2131493201;
+    return 2131493247;
   }
   
   public final String getUserName()
   {
-    return this.dDG;
+    return this.dVu;
   }
   
   public final void onCreate(Bundle paramBundle)
@@ -205,30 +207,37 @@ public final class BizSubscribeMsgManagerUI
     }
     try
     {
-      this.iFv = ((com.tencent.mm.msgsubscription.presenter.a)Class.forName(paramBundle).newInstance());
-      paramBundle = this.iFv;
+      this.jBy = ((com.tencent.mm.msgsubscription.presenter.a)Class.forName(paramBundle).newInstance());
+      paramBundle = this.jBy;
       if (paramBundle != null)
       {
         localObject = (c)this;
         p.h(localObject, "<set-?>");
-        paramBundle.iDQ = ((c)localObject);
+        paramBundle.jAh = ((c)localObject);
       }
-      paramBundle = this.iFv;
+      paramBundle = this.jBy;
       if (paramBundle != null) {
         paramBundle.onActivityCreated((Activity)this);
       }
-      setMMTitle(2131756599);
-      this.iFt = new a((Context)this, (a.a)new b(this));
-      paramBundle = (MaxRecyclerView)_$_findCachedViewById(2131305522);
-      p.g(paramBundle, "subscribe_msg_list");
-      paramBundle.setAdapter((RecyclerView.a)this.iFt);
-      paramBundle = (MaxRecyclerView)_$_findCachedViewById(2131305522);
-      p.g(paramBundle, "subscribe_msg_list");
-      paramBundle.setLayoutManager((RecyclerView.i)new LinearLayoutManager(1));
-      paramBundle = _$_findCachedViewById(2131305523);
+      setMMTitle(2131756740);
+      this.jBw = new a((Context)this, (a.b)new b(this));
+      paramBundle = findViewById(2131308739);
+      p.g(paramBundle, "this.findViewById(R.id.subscribe_msg_list)");
+      this.jBz = ((MaxRecyclerView)paramBundle);
+      paramBundle = this.jBz;
+      if (paramBundle == null) {
+        p.btv("subscribeMsgList");
+      }
+      paramBundle.setAdapter((RecyclerView.a)this.jBw);
+      paramBundle = this.jBz;
+      if (paramBundle == null) {
+        p.btv("subscribeMsgList");
+      }
+      paramBundle.setLayoutManager((RecyclerView.LayoutManager)new LinearLayoutManager(1, false));
+      paramBundle = findViewById(2131308740);
       if (paramBundle == null)
       {
-        paramBundle = new v("null cannot be cast to non-null type com.tencent.mm.ui.widget.MMSwitchBtn");
+        paramBundle = new t("null cannot be cast to non-null type com.tencent.mm.ui.widget.MMSwitchBtn");
         AppMethodBeat.o(149712);
         throw paramBundle;
       }
@@ -239,8 +248,8 @@ public final class BizSubscribeMsgManagerUI
       AppMethodBeat.o(149712);
       throw paramBundle;
     }
-    this.iFu = ((MMSwitchBtn)paramBundle);
-    paramBundle = this.iFu;
+    this.jBx = ((MMSwitchBtn)paramBundle);
+    paramBundle = this.jBx;
     if (paramBundle != null) {
       paramBundle.setSwitchListener((MMSwitchBtn.a)new c(this));
     }
@@ -249,17 +258,17 @@ public final class BizSubscribeMsgManagerUI
     if (localObject == null) {
       paramBundle = "";
     }
-    this.dDG = paramBundle;
+    this.dVu = paramBundle;
     localObject = getIntent().getStringExtra("key_biz_nickname");
     paramBundle = (Bundle)localObject;
     if (localObject == null) {
       paramBundle = "";
     }
     this.nickname = paramBundle;
-    ae.d("MicroMsg.BizSubscribeMsgManagerUI", "alvinluo SubscribeMsgManager username: %s, nickname: %s", new Object[] { this.dDG, this.nickname });
-    paramBundle = this.iFv;
+    Log.d("MicroMsg.BizSubscribeMsgManagerUI", "alvinluo SubscribeMsgManager username: %s, nickname: %s", new Object[] { this.dVu, this.nickname });
+    paramBundle = this.jBy;
     if (paramBundle != null) {
-      paramBundle.a(this.dDG, (b.a)new d(this));
+      paramBundle.a(this.dVu, (b.a)new d(this));
     }
     setBackBtn((MenuItem.OnMenuItemClickListener)new e(this));
     AppMethodBeat.o(149712);
@@ -268,18 +277,18 @@ public final class BizSubscribeMsgManagerUI
   public final void onDestroy()
   {
     AppMethodBeat.i(149716);
-    if (this.iFv != null) {
+    if (this.jBy != null) {
       p.h((Activity)this, "activity");
     }
     super.onDestroy();
-    ae.i("MicroMsg.BizSubscribeMsgManagerUI", "alvinluo onDestroy");
+    Log.i("MicroMsg.BizSubscribeMsgManagerUI", "alvinluo onDestroy");
     AppMethodBeat.o(149716);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(149715);
-    com.tencent.mm.msgsubscription.presenter.a locala = this.iFv;
+    com.tencent.mm.msgsubscription.presenter.a locala = this.jBy;
     if (locala != null) {
       locala.onActivityPaused((Activity)this);
     }
@@ -291,7 +300,7 @@ public final class BizSubscribeMsgManagerUI
   {
     AppMethodBeat.i(149714);
     super.onResume();
-    com.tencent.mm.msgsubscription.presenter.a locala = this.iFv;
+    com.tencent.mm.msgsubscription.presenter.a locala = this.jBy;
     if (locala != null)
     {
       locala.onActivityResumed((Activity)this);
@@ -305,7 +314,7 @@ public final class BizSubscribeMsgManagerUI
   {
     AppMethodBeat.i(149713);
     super.onStart();
-    if (this.iFv != null) {
+    if (this.jBy != null) {
       p.h((Activity)this, "activity");
     }
     AppMethodBeat.o(149713);
@@ -315,7 +324,7 @@ public final class BizSubscribeMsgManagerUI
   {
     AppMethodBeat.i(149718);
     super.onStop();
-    if (this.iFv != null) {
+    if (this.jBy != null) {
       p.h((Activity)this, "activity");
     }
     AppMethodBeat.o(149718);
@@ -327,41 +336,41 @@ public final class BizSubscribeMsgManagerUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/ui/BizSubscribeMsgManagerUI$initAdapter$1", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgListAdapter$CheckBoxStateChangedListener;", "getState", "", "item", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "onChanged", "", "check", "plugin-comm_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/msgsubscription/ui/BizSubscribeMsgManagerUI$initAdapter$1", "Lcom/tencent/mm/msgsubscription/ui/SubscribeMsgListAdapter$SubscribeMsgItemOpListener;", "getCheckBoxState", "", "item", "Lcom/tencent/mm/msgsubscription/SubscribeMsgTmpItem;", "onCheckBoxStatusChanged", "", "check", "onItemInfoClick", "view", "Landroid/view/View;", "plugin-comm_release"})
   public static final class b
-    implements a.a
+    implements a.b
   {
-    public final void b(SubscribeMsgTmpItem paramSubscribeMsgTmpItem, boolean paramBoolean)
+    public final boolean a(SubscribeMsgTmpItem paramSubscribeMsgTmpItem)
     {
-      AppMethodBeat.i(149702);
+      AppMethodBeat.i(223415);
       p.h(paramSubscribeMsgTmpItem, "item");
-      com.tencent.mm.msgsubscription.presenter.a locala = BizSubscribeMsgManagerUI.a(this.iFx);
-      if (locala != null)
-      {
-        locala.a(paramSubscribeMsgTmpItem, paramBoolean);
-        AppMethodBeat.o(149702);
-        return;
-      }
-      AppMethodBeat.o(149702);
-    }
-    
-    public final boolean c(SubscribeMsgTmpItem paramSubscribeMsgTmpItem)
-    {
-      AppMethodBeat.i(149703);
-      p.h(paramSubscribeMsgTmpItem, "item");
-      com.tencent.mm.msgsubscription.presenter.a locala = BizSubscribeMsgManagerUI.a(this.iFx);
+      com.tencent.mm.msgsubscription.presenter.a locala = BizSubscribeMsgManagerUI.a(this.jBB);
       if (locala != null)
       {
         boolean bool = locala.a(paramSubscribeMsgTmpItem);
-        AppMethodBeat.o(149703);
+        AppMethodBeat.o(223415);
         return bool;
       }
-      AppMethodBeat.o(149703);
+      AppMethodBeat.o(223415);
       return false;
+    }
+    
+    public final void b(SubscribeMsgTmpItem paramSubscribeMsgTmpItem, boolean paramBoolean)
+    {
+      AppMethodBeat.i(223414);
+      p.h(paramSubscribeMsgTmpItem, "item");
+      com.tencent.mm.msgsubscription.presenter.a locala = BizSubscribeMsgManagerUI.a(this.jBB);
+      if (locala != null)
+      {
+        locala.a(paramSubscribeMsgTmpItem, paramBoolean);
+        AppMethodBeat.o(223414);
+        return;
+      }
+      AppMethodBeat.o(223414);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "onStatusChange"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "onStatusChange"})
   static final class c
     implements MMSwitchBtn.a
   {
@@ -370,42 +379,42 @@ public final class BizSubscribeMsgManagerUI
     public final void onStatusChange(boolean paramBoolean)
     {
       AppMethodBeat.i(149704);
-      Object localObject = BizSubscribeMsgManagerUI.b(this.iFx);
+      Object localObject = BizSubscribeMsgManagerUI.b(this.jBB);
       MMSwitchBtn localMMSwitchBtn;
       if (localObject != null)
       {
-        localObject = Boolean.valueOf(((MMSwitchBtn)localObject).fPP());
-        ae.i("MicroMsg.BizSubscribeMsgManagerUI", "alvinluo SubscribeMsg onSwitchChanged %s", new Object[] { localObject });
-        localObject = BizSubscribeMsgManagerUI.a(this.iFx);
+        localObject = Boolean.valueOf(((MMSwitchBtn)localObject).isCheck());
+        Log.i("MicroMsg.BizSubscribeMsgManagerUI", "alvinluo SubscribeMsg onSwitchChanged %s", new Object[] { localObject });
+        localObject = BizSubscribeMsgManagerUI.a(this.jBB);
         if (localObject != null)
         {
-          localMMSwitchBtn = BizSubscribeMsgManagerUI.b(this.iFx);
+          localMMSwitchBtn = BizSubscribeMsgManagerUI.b(this.jBB);
           if (localMMSwitchBtn == null) {
             break label113;
           }
         }
       }
       label113:
-      for (paramBoolean = localMMSwitchBtn.fPP();; paramBoolean = false)
+      for (paramBoolean = localMMSwitchBtn.isCheck();; paramBoolean = false)
       {
-        ((com.tencent.mm.msgsubscription.presenter.a)localObject).eL(paramBoolean);
-        localObject = BizSubscribeMsgManagerUI.b(this.iFx);
-        if ((localObject == null) || (((MMSwitchBtn)localObject).fPP() != true)) {
+        ((com.tencent.mm.msgsubscription.presenter.a)localObject).fC(paramBoolean);
+        localObject = BizSubscribeMsgManagerUI.b(this.jBB);
+        if ((localObject == null) || (((MMSwitchBtn)localObject).isCheck() != true)) {
           break label118;
         }
-        BizSubscribeMsgManagerUI.a(this.iFx, true);
+        BizSubscribeMsgManagerUI.a(this.jBB, true);
         AppMethodBeat.o(149704);
         return;
         localObject = null;
         break;
       }
       label118:
-      BizSubscribeMsgManagerUI.a(this.iFx, false);
+      BizSubscribeMsgManagerUI.a(this.jBB, false);
       AppMethodBeat.o(149704);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/msgsubscription/ui/BizSubscribeMsgManagerUI$loadData$1", "Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingPagePresenter$LoadDataListener;", "onError", "", "onSuccess", "data", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "plugin-comm_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/msgsubscription/ui/BizSubscribeMsgManagerUI$loadData$1", "Lcom/tencent/mm/msgsubscription/presenter/ISubscribeMsgSettingPagePresenter$LoadDataListener;", "onError", "", "onSuccess", "data", "Lcom/tencent/mm/msgsubscription/presenter/SubscribeMsgSettingData;", "plugin-comm_release"})
   public static final class d
     implements b.a
   {
@@ -413,19 +422,19 @@ public final class BizSubscribeMsgManagerUI
     {
       AppMethodBeat.i(177285);
       p.h(paramSubscribeMsgSettingData, "data");
-      ae.i("MicroMsg.BizSubscribeMsgManagerUI", "alvinluo getSubscribeMsgList onSuccess");
-      this.iFx.runOnUiThread((Runnable)new a(this, paramSubscribeMsgSettingData));
+      Log.i("MicroMsg.BizSubscribeMsgManagerUI", "alvinluo getSubscribeMsgList onSuccess");
+      this.jBB.runOnUiThread((Runnable)new a(this, paramSubscribeMsgSettingData));
       AppMethodBeat.o(177285);
     }
     
     public final void onError()
     {
       AppMethodBeat.i(177284);
-      ae.e("MicroMsg.BizSubscribeMsgManagerUI", "alvinluo getSubscribeMsgList ERROR");
+      Log.e("MicroMsg.BizSubscribeMsgManagerUI", "alvinluo getSubscribeMsgList ERROR");
       AppMethodBeat.o(177284);
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
     static final class a
       implements Runnable
     {
@@ -434,18 +443,18 @@ public final class BizSubscribeMsgManagerUI
       public final void run()
       {
         AppMethodBeat.i(177283);
-        if (this.iFy.iFx.isFinishing())
+        if (this.jBC.jBB.isFinishing())
         {
           AppMethodBeat.o(177283);
           return;
         }
-        BizSubscribeMsgManagerUI.a(this.iFy.iFx, paramSubscribeMsgSettingData);
+        BizSubscribeMsgManagerUI.a(this.jBC.jBB, paramSubscribeMsgSettingData);
         AppMethodBeat.o(177283);
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class e
     implements MenuItem.OnMenuItemClickListener
   {
@@ -454,7 +463,7 @@ public final class BizSubscribeMsgManagerUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(149711);
-      this.iFx.finish();
+      this.jBB.finish();
       AppMethodBeat.o(149711);
       return false;
     }

@@ -4,20 +4,20 @@ import android.graphics.Bitmap;
 import android.opengl.GLES20;
 import android.opengl.GLUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static int ap(Bitmap paramBitmap)
+  public static int aA(Bitmap paramBitmap)
   {
     AppMethodBeat.i(97278);
     if (paramBitmap == null)
     {
-      ae.i("SphereImageView.Utils", "initTexture, bmp==null");
+      Log.i("SphereImageView.Utils", "initTexture, bmp==null");
       AppMethodBeat.o(97278);
       return 0;
     }
-    ae.i("SphereImageView.Utils", "initTexture, bmp.w=" + paramBitmap.getWidth() + ", bmp.h=" + paramBitmap.getHeight());
+    Log.i("SphereImageView.Utils", "initTexture, bmp.w=" + paramBitmap.getWidth() + ", bmp.h=" + paramBitmap.getHeight());
     try
     {
       int[] arrayOfInt = new int[1];
@@ -34,7 +34,7 @@ public final class c
     }
     catch (Throwable paramBitmap)
     {
-      ae.e("SphereImageView.Utils", "initTexture exp:" + paramBitmap.toString());
+      Log.e("SphereImageView.Utils", "initTexture exp:" + paramBitmap.toString());
       AppMethodBeat.o(97278);
     }
     return 0;
@@ -42,7 +42,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.widget.SphereImageView.c
  * JD-Core Version:    0.7.0.1
  */

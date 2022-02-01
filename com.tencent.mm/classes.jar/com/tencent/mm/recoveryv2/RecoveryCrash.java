@@ -8,127 +8,127 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class RecoveryCrash
 {
-  public long InZ;
-  public String Ioa;
-  g Iob;
-  public c Ioc;
+  public c NBA;
+  public long NBx;
+  public String NBy;
+  g NBz;
   final Context mContext;
   
   private RecoveryCrash(Context paramContext)
   {
-    AppMethodBeat.i(195283);
+    AppMethodBeat.i(193771);
     this.mContext = paramContext;
-    this.Iob = new g.a(paramContext, "recovery_crash");
-    AppMethodBeat.o(195283);
+    this.NBz = new g.a(paramContext, "recovery_crash");
+    AppMethodBeat.o(193771);
   }
   
   RecoveryCrash(Context paramContext, long paramLong, String paramString, g paramg, c paramc)
   {
     this.mContext = paramContext;
-    this.InZ = paramLong;
-    this.Ioa = paramString;
-    this.Iob = paramg;
-    this.Ioc = paramc;
+    this.NBx = paramLong;
+    this.NBy = paramString;
+    this.NBz = paramg;
+    this.NBA = paramc;
   }
   
-  private void fkP()
+  private void guA()
   {
-    AppMethodBeat.i(195284);
-    this.Ioc = c.hR(this.mContext);
-    AppMethodBeat.o(195284);
+    AppMethodBeat.i(193772);
+    this.NBA = c.iK(this.mContext);
+    AppMethodBeat.o(193772);
   }
   
-  public static RecoveryCrash hP(Context paramContext)
+  public static RecoveryCrash iI(Context paramContext)
   {
-    AppMethodBeat.i(195281);
+    AppMethodBeat.i(193769);
     paramContext = new RecoveryCrash(paramContext);
-    paramContext.fkP();
-    paramContext.fkQ();
-    AppMethodBeat.o(195281);
+    paramContext.guA();
+    paramContext.guB();
+    AppMethodBeat.o(193769);
     return paramContext;
   }
   
-  public static RecoveryCrash hQ(Context paramContext)
+  public static RecoveryCrash iJ(Context paramContext)
   {
-    AppMethodBeat.i(195282);
+    AppMethodBeat.i(193770);
     paramContext = new RecoveryCrash(paramContext);
-    paramContext.fkP();
-    AppMethodBeat.o(195282);
+    paramContext.guA();
+    AppMethodBeat.o(193770);
     return paramContext;
   }
   
-  public final RecoveryCrash aaC(int paramInt)
+  public final RecoveryCrash ajr(int paramInt)
   {
-    this.Ioc.Ioe = paramInt;
+    this.NBA.NBC = paramInt;
     return this;
   }
   
-  public final void fkQ()
+  public final void guB()
   {
-    AppMethodBeat.i(195285);
-    this.Iob.fkT();
-    if (this.Ioa != null)
+    AppMethodBeat.i(193773);
+    this.NBz.guE();
+    if (this.NBy != null)
     {
-      AppMethodBeat.o(195285);
+      AppMethodBeat.o(193773);
       return;
     }
-    this.Ioa = this.Iob.getString("crash_version", null);
-    this.InZ = Math.max(this.Iob.getLong("crash_time", 0L), 0L);
-    AppMethodBeat.o(195285);
+    this.NBy = this.NBz.getString("crash_version", null);
+    this.NBx = Math.max(this.NBz.getLong("crash_time", 0L), 0L);
+    AppMethodBeat.o(193773);
   }
   
-  public final RecoveryCrash fkR()
+  public final RecoveryCrash guC()
   {
-    this.Ioc.Ioe = 0;
-    this.InZ = 0L;
-    this.Ioa = null;
+    this.NBA.NBC = 0;
+    this.NBx = 0L;
+    this.NBy = null;
     return this;
   }
   
-  public final Record fkS()
+  public final Record guD()
   {
-    AppMethodBeat.i(195287);
-    fkQ();
+    AppMethodBeat.i(193775);
+    guB();
     Record localRecord = new Record();
-    localRecord.crashCount = this.Ioc.Ioe;
-    localRecord.GIb = this.InZ;
-    localRecord.Iod = this.Ioa;
-    AppMethodBeat.o(195287);
+    localRecord.crashCount = this.NBA.NBC;
+    localRecord.LKH = this.NBx;
+    localRecord.NBB = this.NBy;
+    AppMethodBeat.o(193775);
     return localRecord;
   }
   
   public final void save()
   {
-    AppMethodBeat.i(195286);
-    this.Ioc.save();
-    this.Iob.lM("crash_version", this.Ioa).bS("crash_time", this.InZ).fkU();
-    AppMethodBeat.o(195286);
+    AppMethodBeat.i(193774);
+    this.NBA.save();
+    this.NBz.mK("crash_version", this.NBy).bT("crash_time", this.NBx).guF();
+    AppMethodBeat.o(193774);
   }
   
   public static class Record
     implements Parcelable
   {
     public static final Parcelable.Creator<Record> CREATOR;
-    public long GIb;
-    public String Iod;
+    public long LKH;
+    public String NBB;
     public int crashCount;
     
     static
     {
-      AppMethodBeat.i(195280);
+      AppMethodBeat.i(193768);
       CREATOR = new Parcelable.Creator() {};
-      AppMethodBeat.o(195280);
+      AppMethodBeat.o(193768);
     }
     
     Record() {}
     
     protected Record(Parcel paramParcel)
     {
-      AppMethodBeat.i(195278);
+      AppMethodBeat.i(193766);
       this.crashCount = paramParcel.readInt();
-      this.GIb = paramParcel.readLong();
-      this.Iod = paramParcel.readString();
-      AppMethodBeat.o(195278);
+      this.LKH = paramParcel.readLong();
+      this.NBB = paramParcel.readString();
+      AppMethodBeat.o(193766);
     }
     
     public int describeContents()
@@ -138,17 +138,17 @@ public final class RecoveryCrash
     
     public void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(195279);
+      AppMethodBeat.i(193767);
       paramParcel.writeInt(this.crashCount);
-      paramParcel.writeLong(this.GIb);
-      paramParcel.writeString(this.Iod);
-      AppMethodBeat.o(195279);
+      paramParcel.writeLong(this.LKH);
+      paramParcel.writeString(this.NBB);
+      AppMethodBeat.o(193767);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.recoveryv2.RecoveryCrash
  * JD-Core Version:    0.7.0.1
  */

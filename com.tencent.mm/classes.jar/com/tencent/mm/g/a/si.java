@@ -1,13 +1,14 @@
 package com.tencent.mm.g.a;
 
-import android.graphics.Bitmap;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class si
-  extends b
+  extends IEvent
 {
-  public a dHT;
+  public a dYX;
+  public b dYY;
   
   public si()
   {
@@ -16,23 +17,27 @@ public final class si
   
   private si(byte paramByte)
   {
-    AppMethodBeat.i(146075);
-    this.dHT = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(149886);
+    this.dYX = new a();
+    this.dYY = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(146075);
+    AppMethodBeat.o(149886);
   }
   
   public static final class a
   {
-    public int action = 0;
-    public String cardNum;
-    public Bitmap dHU;
+    public Context context;
+  }
+  
+  public static final class b
+  {
+    public boolean dYN;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.si
  * JD-Core Version:    0.7.0.1
  */

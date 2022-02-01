@@ -10,117 +10,117 @@ import oicq.wlogin_sdk.tools.util;
 
 public final class b
 {
-  public i OmX;
-  private j OmY;
-  private f OmZ;
-  private g Ona;
-  private h Onb;
-  private e Onc;
-  public d Ond;
-  private int One;
-  private int Onf;
+  public i UbW;
+  private j UbX;
+  private f UbY;
+  private g UbZ;
+  private h Uca;
+  private e Ucb;
+  public d Ucc;
+  private int Ucd;
+  private int Uce;
   private Context mContext;
   
   public b(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(88047);
-    this.OmX = new i();
-    this.OmY = new j(this.OmX);
-    this.OmZ = new f(this.OmX);
-    this.Ona = new g(this.OmX);
-    this.Onb = new h(this.OmX);
-    this.Onc = new e(this.OmX);
-    this.Ond = null;
+    this.UbW = new i();
+    this.UbX = new j(this.UbW);
+    this.UbY = new f(this.UbW);
+    this.UbZ = new g(this.UbW);
+    this.Uca = new h(this.UbW);
+    this.Ucb = new e(this.UbW);
+    this.Ucc = null;
     this.mContext = null;
-    this.One = 66560;
-    this.Onf = 1404;
+    this.Ucd = 66560;
+    this.Uce = 1404;
     this.mContext = paramContext;
-    i locali = this.OmX;
+    i locali = this.UbW;
     locali._context = paramContext;
-    locali.OnL = paramInt;
-    locali.Oof = new c(paramContext);
+    locali.UcK = paramInt;
+    locali.Ude = new c(paramContext);
     paramContext = new byte[16];
-    locali.OnC.nextBytes(paramContext);
-    System.arraycopy(paramContext, 0, locali.OnF, 0, 16);
-    gCr();
+    locali.UcB.nextBytes(paramContext);
+    System.arraycopy(paramContext, 0, locali.UcE, 0, 16);
+    hPv();
     AppMethodBeat.o(88047);
   }
   
-  private int gCr()
+  private int hPv()
   {
     AppMethodBeat.i(88052);
     for (;;)
     {
       try
       {
-        Object localObject1 = util.mb(this.mContext);
+        Object localObject1 = util.lZ(this.mContext);
         if ((localObject1 == null) || (localObject1.length <= 0))
         {
-          localObject1 = util.lU(this.mContext);
+          localObject1 = util.lS(this.mContext);
           if ((localObject1 == null) || (localObject1.length <= 0))
           {
             localObject1 = new String("%4;7t>;28<fc.5*6").getBytes();
-            this.OmX.OnY = 0;
+            this.UbW.UcX = 0;
             util.b(this.mContext, (byte[])localObject1);
-            this.OmX.OnX = 1;
-            this.OmX.OnZ = 1;
-            this.OmX.OnM = new byte[localObject1.length];
-            System.arraycopy(localObject1, 0, this.OmX.OnM, 0, localObject1.length);
+            this.UbW.UcW = 1;
+            this.UbW.UcY = 1;
+            this.UbW.UcL = new byte[localObject1.length];
+            System.arraycopy(localObject1, 0, this.UbW.UcL, 0, localObject1.length);
             Object localObject3 = new byte[localObject1.length + 1];
             localObject3[0] = 35;
             System.arraycopy(localObject1, 0, localObject3, 1, localObject1.length);
-            this.OmX.OnD = util.dt((byte[])localObject3);
-            i.OnN = (byte[])this.OmX.OnM.clone();
-            this.OmX.OnO = util.lV(this.mContext);
-            i = util.lX(this.mContext);
-            this.OmX.OnP = util.lW(this.mContext);
-            if (i != this.OmX.OnP)
+            this.UbW.UcC = util.dv((byte[])localObject3);
+            i.UcM = (byte[])this.UbW.UcL.clone();
+            this.UbW.UcN = util.lT(this.mContext);
+            i = util.lV(this.mContext);
+            this.UbW.UcO = util.lU(this.mContext);
+            if (i != this.UbW.UcO)
             {
-              util.lY(this.mContext);
-              util.aX(this.mContext, this.OmX.OnP);
+              util.lW(this.mContext);
+              util.aY(this.mContext, this.UbW.UcO);
             }
-            this.OmX.OnR = util.lZ(this.mContext).getBytes();
-            this.OmX.Ooa = util.ma(this.mContext);
-            this.OmX.OnQ = util.mc(this.mContext);
-            this.OmX.OnT = util.cL(this.mContext, new String(this.OmX.OnQ));
-            this.OmX.OnU = util.cM(this.mContext, new String(this.OmX.OnQ));
+            this.UbW.UcQ = util.lX(this.mContext).getBytes();
+            this.UbW.UcZ = util.lY(this.mContext);
+            this.UbW.UcP = util.ma(this.mContext);
+            this.UbW.UcS = util.df(this.mContext, new String(this.UbW.UcP));
+            this.UbW.UcT = util.dg(this.mContext, new String(this.UbW.UcP));
             localObject1 = Build.MODEL;
             if (localObject1 != null) {
               break label492;
             }
-            this.OmX.OnV = new byte[0];
+            this.UbW.UcU = new byte[0];
             if ((util.isFileExist("/system/bin/su")) || (util.isFileExist("/system/xbin/su")) || (util.isFileExist("/sbin/su"))) {
               break label506;
             }
             i = 0;
-            localObject1 = this.OmX;
+            localObject1 = this.UbW;
             if (i == 0) {
               break label511;
             }
             i = 1;
-            ((i)localObject1).OnW = i;
+            ((i)localObject1).UcV = i;
             localObject3 = Build.VERSION.RELEASE;
             localObject1 = localObject3;
             if (localObject3 == null) {
               localObject1 = "";
             }
-            util.bfi("WtloginHelper init ok: android version:" + (String)localObject1 + " release time:" + util.gCI());
+            util.buY("WtloginHelper init ok: android version:" + (String)localObject1 + " release time:" + util.hPM());
             return 0;
           }
-          this.OmX.OnY = 1;
+          this.UbW.UcX = 1;
           continue;
         }
-        this.OmX.OnY = 1;
+        this.UbW.UcX = 1;
       }
       finally
       {
         AppMethodBeat.o(88052);
       }
-      this.OmX.OnX = 0;
-      this.OmX.OnZ = 0;
+      this.UbW.UcW = 0;
+      this.UbW.UcY = 0;
       continue;
       label492:
-      this.OmX.OnV = localObject2.getBytes();
+      this.UbW.UcU = localObject2.getBytes();
       continue;
       label506:
       int i = 1;
@@ -131,7 +131,7 @@ public final class b
   }
   
   /* Error */
-  public final byte[] Gl(long paramLong)
+  public final byte[] Pr(long paramLong)
   {
     // Byte code:
     //   0: ldc_w 309
@@ -139,15 +139,15 @@ public final class b
     //   6: aload_0
     //   7: monitorenter
     //   8: aload_0
-    //   9: getfield 45	oicq/wlogin_sdk/request/b:OmX	Loicq/wlogin_sdk/request/i;
-    //   12: getfield 313	oicq/wlogin_sdk/request/i:OnH	Loicq/wlogin_sdk/a/g;
+    //   9: getfield 45	oicq/wlogin_sdk/request/b:UbW	Loicq/wlogin_sdk/request/i;
+    //   12: getfield 313	oicq/wlogin_sdk/request/i:UcG	Loicq/wlogin_sdk/a/g;
     //   15: astore_3
     //   16: aload_3
-    //   17: getfield 318	oicq/wlogin_sdk/a/g:Oos	I
+    //   17: getfield 318	oicq/wlogin_sdk/a/g:Udr	I
     //   20: newarray byte
     //   22: astore 4
     //   24: aload_3
-    //   25: getfield 318	oicq/wlogin_sdk/a/g:Oos	I
+    //   25: getfield 318	oicq/wlogin_sdk/a/g:Udr	I
     //   28: ifgt +46 -> 74
     //   31: aload_0
     //   32: monitorexit
@@ -163,19 +163,19 @@ public final class b
     //   55: arraylength
     //   56: invokevirtual 328	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   59: invokevirtual 279	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokestatic 282	oicq/wlogin_sdk/tools/util:bfi	(Ljava/lang/String;)V
+    //   62: invokestatic 282	oicq/wlogin_sdk/tools/util:buY	(Ljava/lang/String;)V
     //   65: ldc_w 309
     //   68: invokestatic 123	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   71: aload 4
     //   73: areturn
     //   74: aload_3
-    //   75: getfield 331	oicq/wlogin_sdk/a/g:Ons	[B
+    //   75: getfield 331	oicq/wlogin_sdk/a/g:Ucr	[B
     //   78: aload_3
-    //   79: getfield 334	oicq/wlogin_sdk/a/g:Oou	I
+    //   79: getfield 334	oicq/wlogin_sdk/a/g:Udt	I
     //   82: aload 4
     //   84: iconst_0
     //   85: aload_3
-    //   86: getfield 318	oicq/wlogin_sdk/a/g:Oos	I
+    //   86: getfield 318	oicq/wlogin_sdk/a/g:Udr	I
     //   89: invokestatic 116	java/lang/System:arraycopy	(Ljava/lang/Object;ILjava/lang/Object;II)V
     //   92: goto -61 -> 31
     //   95: astore_3
@@ -200,25 +200,25 @@ public final class b
     //   96	98	95	finally
   }
   
-  public final void Gm(long paramLong)
+  public final void Ps(long paramLong)
   {
     AppMethodBeat.i(88051);
-    util.bfi("user:" + paramLong + " ClearUserSigInfo");
-    this.OmX.j(Long.valueOf(paramLong));
+    util.buY("user:" + paramLong + " ClearUserSigInfo");
+    this.UbW.q(Long.valueOf(paramLong));
     AppMethodBeat.o(88051);
   }
   
   public final byte[] a(long paramLong, a parama, String paramString)
   {
     AppMethodBeat.i(88048);
-    util.bfi("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 ...");
+    util.buY("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 ...");
     String str = paramString;
     if (paramString.length() > 16) {
       str = paramString.substring(0, 16);
     }
     try
     {
-      switch (gCs()[parama.ordinal()])
+      switch (hPw()[parama.ordinal()])
       {
       case 1: 
         return null;
@@ -230,31 +230,31 @@ public final class b
     }
     if ((str == null) || (str.length() == 0))
     {
-      util.bfi("USER_WITH_PWD userPasswd null");
+      util.buY("USER_WITH_PWD userPasswd null");
       AppMethodBeat.o(88048);
       return null;
     }
-    parama = oicq.wlogin_sdk.tools.c.bfg(str);
+    parama = oicq.wlogin_sdk.tools.c.buW(str);
     for (int i = 0;; i = 1)
     {
-      this.OmX.OnP = util.lW(this.mContext);
-      this.OmX.OnR = util.lZ(this.mContext).getBytes();
-      this.OmX._uin = paramLong;
-      this.OmX.OnI = 522017402L;
-      this.OmX.OnJ = 8256;
-      this.OmX.OnG = new oicq.wlogin_sdk.a.f();
-      this.Ond = this.OmY;
+      this.UbW.UcO = util.lU(this.mContext);
+      this.UbW.UcQ = util.lX(this.mContext).getBytes();
+      this.UbW._uin = paramLong;
+      this.UbW.UcH = 522017402L;
+      this.UbW.UcI = 8256;
+      this.UbW.UcF = new oicq.wlogin_sdk.a.f();
+      this.Ucc = this.UbX;
       if (i != 0) {}
-      for (parama = this.OmY.a(paramLong, this.OmX.Ood, parama, this.Onf, this.One, this.OmX.Ooa);; parama = this.OmY.a(paramLong, this.OmX.Ood, paramString, parama, this.Onf, this.One, this.OmX.Ooa))
+      for (parama = this.UbX.a(paramLong, this.UbW.Udc, parama, this.Uce, this.Ucd, this.UbW.UcZ);; parama = this.UbX.a(paramLong, this.UbW.Udc, paramString, parama, this.Uce, this.Ucd, this.UbW.UcZ))
       {
         for (;;)
         {
-          util.bfi("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 end");
+          util.buY("wtlogin login with GetStWithPasswd:user:" + paramLong + " appid:522017402 dwSigMap:8256 end");
           AppMethodBeat.o(88048);
           return parama;
           if ((str == null) || (str.length() == 0))
           {
-            util.bfi("USER_WITH_MD5 userPasswd null");
+            util.buY("USER_WITH_MD5 userPasswd null");
             AppMethodBeat.o(88048);
             return null;
           }
@@ -269,25 +269,25 @@ public final class b
             return null;
           }
         }
-        parama = this.OmX.Go(paramLong);
+        parama = this.UbW.Pu(paramLong);
         if ((parama == null) || (parama._en_A1 == null) || (parama._en_A1.length <= 0)) {
-          util.bfi("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: null");
+          util.buY("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: null");
         }
         for (parama = null; (parama == null) || (parama.length < 16); parama = (byte[])parama._en_A1.clone())
         {
-          util.bfi("USER_WITH_A1 tmp_pwd null");
+          util.buY("USER_WITH_A1 tmp_pwd null");
           AppMethodBeat.o(88048);
           return null;
-          util.bfi("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: not null");
+          util.buY("userAccount:" + paramLong + " appid:522017402 GetA1ByAccount return: not null");
         }
         paramString = new byte[4];
-        util.d(paramString, 0, i.gCv());
+        util.d(paramString, 0, i.hPz());
       }
       break;
     }
   }
   
-  public final byte[] g(long paramLong, byte[] paramArrayOfByte)
+  public final byte[] f(long paramLong, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88049);
     if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0))
@@ -295,12 +295,12 @@ public final class b
       AppMethodBeat.o(88049);
       return null;
     }
-    util.bfi("user:" + paramLong + " CheckPicture ...");
+    util.buY("user:" + paramLong + " CheckPicture ...");
     try
     {
-      this.Ond = this.Ona;
-      paramArrayOfByte = this.Ona.dl(paramArrayOfByte);
-      util.bfi("user:" + paramLong + " CheckPicture end");
+      this.Ucc = this.UbZ;
+      paramArrayOfByte = this.UbZ.dn(paramArrayOfByte);
+      util.buY("user:" + paramLong + " CheckPicture end");
       AppMethodBeat.o(88049);
       return paramArrayOfByte;
     }
@@ -315,10 +315,10 @@ public final class b
     static
     {
       AppMethodBeat.i(88044);
-      Onh = new a("USER_WITH_PWD", 0);
-      Oni = new a("USER_WITH_MD5", 1);
-      Onj = new a("USER_WITH_A1", 2);
-      Onk = new a[] { Onh, Oni, Onj };
+      Ucg = new a("USER_WITH_PWD", 0);
+      Uch = new a("USER_WITH_MD5", 1);
+      Uci = new a("USER_WITH_A1", 2);
+      Ucj = new a[] { Ucg, Uch, Uci };
       AppMethodBeat.o(88044);
     }
   }

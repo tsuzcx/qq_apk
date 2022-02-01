@@ -5,14 +5,14 @@ import android.text.Layout.Alignment;
 
 public class a
 {
-  public final float bAa;
-  public final int bAb;
+  public final Layout.Alignment bAb;
   public final float bAc;
   public final int bAd;
   public final float bAe;
-  public final boolean bAf;
+  public final int bAf;
+  public final float bAg;
+  public final boolean bAh;
   public final Bitmap bitmap;
-  public final Layout.Alignment bzZ;
   public final int lineType;
   public final float size;
   public final CharSequence text;
@@ -41,22 +41,22 @@ public class a
   private a(CharSequence paramCharSequence, Layout.Alignment paramAlignment, Bitmap paramBitmap, float paramFloat1, int paramInt1, int paramInt2, float paramFloat2, int paramInt3, float paramFloat3, float paramFloat4, boolean paramBoolean, int paramInt4)
   {
     this.text = paramCharSequence;
-    this.bzZ = paramAlignment;
+    this.bAb = paramAlignment;
     this.bitmap = paramBitmap;
-    this.bAa = paramFloat1;
+    this.bAc = paramFloat1;
     this.lineType = paramInt1;
-    this.bAb = paramInt2;
-    this.bAc = paramFloat2;
-    this.bAd = paramInt3;
+    this.bAd = paramInt2;
+    this.bAe = paramFloat2;
+    this.bAf = paramInt3;
     this.size = paramFloat3;
-    this.bAe = paramFloat4;
-    this.bAf = paramBoolean;
+    this.bAg = paramFloat4;
+    this.bAh = paramBoolean;
     this.windowColor = paramInt4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.a
  * JD-Core Version:    0.7.0.1
  */

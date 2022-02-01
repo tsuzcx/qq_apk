@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.e.a;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceBandwidthMeter$Companion;", "", "()V", "BYTES_TRANSFERRED_FOR_ESTIMATE", "", "DEFAULT_MAX_WEIGHT", "", "getDEFAULT_MAX_WEIGHT", "()I", "ELAPSED_MILLIS_FOR_ESTIMATE", "luggage-commons-jsapi-video-ext_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/video/player/advance/AdvanceBandwidthMeter$Companion;", "", "()V", "BYTES_TRANSFERRED_FOR_ESTIMATE", "", "DEFAULT_MAX_WEIGHT", "", "getDEFAULT_MAX_WEIGHT", "()I", "ELAPSED_MILLIS_FOR_ESTIMATE", "luggage-commons-jsapi-video-ext_release"})
 public final class a$a {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.e.a.a.a
  * JD-Core Version:    0.7.0.1
  */

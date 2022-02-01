@@ -1,44 +1,44 @@
 package com.tencent.mm.plugin.qmessage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bda;
-import com.tencent.mm.protocal.protobuf.bdb;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bom;
+import com.tencent.mm.protocal.protobuf.bon;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public final b isS;
-  private f xpT;
+  private i Bqf;
+  public final d jof;
   
   public c()
   {
     AppMethodBeat.i(27716);
-    b.a locala = new b.a();
-    locala.hQF = new bda();
-    locala.hQG = new bdb();
+    d.a locala = new d.a();
+    locala.iLN = new bom();
+    locala.iLO = new bon();
     locala.uri = "/cgi-bin/micromsg-bin/getimunreadmsgcount";
     locala.funcId = getType();
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.isS = locala.aDS();
+    this.jof = locala.aXF();
     AppMethodBeat.o(27716);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(27718);
-    ae.d("MicroMsg.NetSceneGetImUnreadMsgCount", "get im unread msg count");
-    this.xpT = paramf;
-    int i = dispatch(parame, this.isS, this);
+    Log.d("MicroMsg.NetSceneGetImUnreadMsgCount", "get im unread msg count");
+    this.Bqf = parami;
+    int i = dispatch(paramg, this.jof, this);
     AppMethodBeat.o(27718);
     return i;
   }
@@ -48,11 +48,11 @@ public final class c
     return 630;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(27717);
-    ae.d("MicroMsg.NetSceneGetImUnreadMsgCount", "end get im unread msg count, errType: %d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.xpT.onSceneEnd(paramInt2, paramInt3, paramString, this);
+    Log.d("MicroMsg.NetSceneGetImUnreadMsgCount", "end get im unread msg count, errType: %d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.Bqf.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(27717);
   }
 }

@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicReference;
 
 public final class c
 {
-  private final d cJl;
+  private final d cZI;
   final Context mContext;
   private final Handler mMainHandler;
   
@@ -29,13 +29,13 @@ public final class c
   private c(Context paramContext, d paramd, Handler paramHandler)
   {
     this.mContext = paramContext;
-    this.cJl = paramd;
+    this.cZI = paramd;
     this.mMainHandler = paramHandler;
   }
   
-  public final File IU()
+  public final File Ti()
   {
-    File localFile = this.cJl.IV();
+    File localFile = this.cZI.Tj();
     if (localFile == null)
     {
       com.tencent.matrix.g.c.w("Matrix.AndroidHeapDumper", "hprof file is null.", new Object[0]);
@@ -60,16 +60,16 @@ public final class c
         final Toast localToast = new Toast(c.this.mContext);
         localToast.setDuration(1);
         localToast.setGravity(16, 0, 0);
-        localToast.setView(LayoutInflater.from(c.this.mContext).inflate(2131495267, null));
+        localToast.setView(LayoutInflater.from(c.this.mContext).inflate(2131496117, null));
         localToast.show();
         Looper.myQueue().addIdleHandler(new MessageQueue.IdleHandler()
         {
           public final boolean queueIdle()
           {
-            a locala = c.1.this.cJu;
+            a locala = c.1.this.cZR;
             Toast localToast = localToast;
-            locala.cJe.set(localToast);
-            locala.cJf.countDown();
+            locala.cZB.set(localToast);
+            locala.cZC.countDown();
             return false;
           }
         });
@@ -83,7 +83,7 @@ public final class c
     try
     {
       Debug.dumpHprofData(localFile.getAbsolutePath());
-      if (((a)localObject).cJf.getCount() > 0L) {
+      if (((a)localObject).cZC.getCount() > 0L) {
         throw new IllegalStateException("Call wait() and check its result");
       }
     }
@@ -92,7 +92,7 @@ public final class c
       com.tencent.matrix.g.c.printErrStackTrace("Matrix.AndroidHeapDumper", localException, "failed to dump heap into file: %s.", new Object[] { localFile.getAbsolutePath() });
       return null;
     }
-    final Toast localToast = (Toast)localException.cJe.get();
+    final Toast localToast = (Toast)localException.cZB.get();
     this.mMainHandler.post(new Runnable()
     {
       public final void run()
@@ -110,7 +110,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.resource.e.c
  * JD-Core Version:    0.7.0.1
  */

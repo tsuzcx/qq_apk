@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ao;
+import com.tencent.mm.model.as;
 import com.tencent.mm.platformtools.r.a;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionRecordTableUpgradeIssueDataTransfer;", "Lcom/tencent/mm/model/IDataTransfer;", "()V", "getTag", "", "needTransfer", "", "sVer", "", "transfer", "", "transferIfNeed", "Companion", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionRecordTableUpgradeIssueDataTransfer;", "Lcom/tencent/mm/model/IDataTransfer;", "()V", "getTag", "", "needTransfer", "", "sVer", "", "transfer", "", "transferIfNeed", "Companion", "plugin-appbrand-integration_release"})
 public final class e
-  extends ao
+  extends as
 {
   @Deprecated
-  public static final a jRA;
+  public static final a kUk;
   
   static
   {
     AppMethodBeat.i(50242);
-    jRA = new a((byte)0);
+    kUk = new a((byte)0);
     AppMethodBeat.o(50242);
   }
   
@@ -30,13 +30,13 @@ public final class e
     return "MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer";
   }
   
-  public final boolean os(int paramInt)
+  public final boolean rT(int paramInt)
   {
     AppMethodBeat.i(50241);
-    com.tencent.mm.kernel.e locale = g.ajR();
+    com.tencent.mm.kernel.e locale = g.aAh();
     p.g(locale, "MMKernel.storage()");
-    boolean bool = locale.ajA().getBoolean(am.a.IQj, false);
-    ae.d("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", "needTransfer doneIssue ".concat(String.valueOf(bool)));
+    boolean bool = locale.azQ().getBoolean(ar.a.NYk, false);
+    Log.d("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", "needTransfer doneIssue ".concat(String.valueOf(bool)));
     if (!bool)
     {
       AppMethodBeat.o(50241);
@@ -51,26 +51,26 @@ public final class e
     AppMethodBeat.i(50240);
     try
     {
-      j.aZi().aZj().execSQL("AppBrandStarApp", "update AppBrandStarApp set orderSequence = updateTime");
-      com.tencent.mm.kernel.e locale = g.ajR();
+      n.buz().buA().execSQL("AppBrandStarApp", "update AppBrandStarApp set orderSequence = updateTime");
+      com.tencent.mm.kernel.e locale = g.aAh();
       p.g(locale, "MMKernel.storage()");
-      locale.ajA().set(am.a.IQj, Boolean.TRUE);
+      locale.azQ().set(ar.a.NYk, Boolean.TRUE);
       AppMethodBeat.o(50240);
       return;
     }
     catch (Throwable localThrowable)
     {
-      ae.printErrStackTrace("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", localThrowable, "transfer failed", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.AppBrandCollectionRecordTableUpgradeIssueDataTransfer", localThrowable, "transfer failed", new Object[0]);
       AppMethodBeat.o(50240);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionRecordTableUpgradeIssueDataTransfer$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/AppBrandCollectionRecordTableUpgradeIssueDataTransfer$Companion;", "", "()V", "TAG", "", "plugin-appbrand-integration_release"})
   static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.e
  * JD-Core Version:    0.7.0.1
  */

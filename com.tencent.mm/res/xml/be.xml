@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto" xmlns:mm="http://schemas.android.com/apk/res-auto">
-    <Preference mm:layout="@layout/aqa" mm:title="@string/dxr" />
-    <com.tencent.mm.ui.base.preference.ChoicePreference mm:entries="@array/af" mm:entryValues="@array/ag" mm:key="settings_sex" mm:layout="@layout/aqo" mm:title="@string/f_v" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference mm:key="settings_district" mm:layout="@layout/aop" mm:title="@string/f5o" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference mm:key="settings_signature" mm:layout="@layout/aop" mm:title="@string/fa3" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <PreferenceTitleCategory android:title="@string/fp4" />
+    <com.tencent.mm.plugin.label.ui.widget.InputClearablePreference android:key="contact_label_name" android:layout="@layout/b_e" />
+    <PreferenceTitleCategory android:title="@string/fp3" />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="contact_label_contact_list" />
+    <PreferenceTitleCategory android:key="contact_label_empty_category" android:title=" " />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_label_delete" android:layout="@layout/b2o" android:title="@string/ebh" />
+    <PreferenceSmallCategory />
 </PreferenceScreen>

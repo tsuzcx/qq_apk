@@ -2,34 +2,34 @@ package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.q;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.o;
 import org.json.JSONObject;
 
 public final class ah
-  extends a
+  extends d
 {
   private static final int CTRL_INDEX = 117;
   private static final String NAME = "removeSavedFile";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
     AppMethodBeat.i(128891);
     paramJSONObject = paramJSONObject.optString("filePath", "");
-    if (bu.isNullOrNil(paramJSONObject)) {
+    if (Util.isNullOrNil(paramJSONObject)) {
       paramJSONObject = "fail:invalid data";
     }
     for (;;)
     {
-      paramc.h(paramInt, e(paramJSONObject, null));
+      paramf.i(paramInt, h(paramJSONObject, null));
       AppMethodBeat.o(128891);
       return;
-      if (!paramc.Fl().MS(paramJSONObject)) {
+      if (!paramf.getFileSystem().Wb(paramJSONObject)) {
         paramJSONObject = "fail not a store filePath";
-      } else if (paramc.Fl().MP(paramJSONObject).delete()) {
+      } else if (paramf.getFileSystem().VY(paramJSONObject).delete()) {
         paramJSONObject = "ok";
       } else {
         paramJSONObject = "fail";

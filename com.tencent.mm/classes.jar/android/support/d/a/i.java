@@ -41,26 +41,26 @@ import org.xmlpull.v1.XmlPullParserException;
 public final class i
   extends h
 {
-  static final PorterDuff.Mode xe = PorterDuff.Mode.SRC_IN;
-  g xf;
-  private PorterDuffColorFilter xg;
-  private ColorFilter xh;
-  private boolean xi;
-  boolean xj = true;
-  private Drawable.ConstantState xk;
-  private final float[] xl = new float[9];
-  private final Matrix xm = new Matrix();
-  private final Rect xn = new Rect();
+  static final PorterDuff.Mode xl = PorterDuff.Mode.SRC_IN;
+  g xm;
+  private PorterDuffColorFilter xn;
+  private ColorFilter xo;
+  private boolean xp;
+  boolean xq = true;
+  private Drawable.ConstantState xr;
+  private final float[] xs = new float[9];
+  private final Matrix xt = new Matrix();
+  private final Rect xu = new Rect();
   
   i()
   {
-    this.xf = new g();
+    this.xm = new g();
   }
   
   i(g paramg)
   {
-    this.xf = paramg;
-    this.xg = a(paramg.ye, paramg.yf);
+    this.xm = paramg;
+    this.xn = a(paramg.yk, paramg.yl);
   }
   
   private PorterDuffColorFilter a(ColorStateList paramColorStateList, PorterDuff.Mode paramMode)
@@ -77,8 +77,8 @@ public final class i
     if (Build.VERSION.SDK_INT >= 24)
     {
       localObject = new i();
-      ((i)localObject).xd = f.c(paramResources, paramInt, paramTheme);
-      ((i)localObject).xk = new h(((i)localObject).xd.getConstantState());
+      ((i)localObject).xk = f.c(paramResources, paramInt, paramTheme);
+      ((i)localObject).xr = new h(((i)localObject).xk.getConstantState());
       return localObject;
     }
     try
@@ -108,11 +108,11 @@ public final class i
   
   private void b(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
   {
-    g localg = this.xf;
-    f localf = localg.yd;
+    g localg = this.xm;
+    f localf = localg.yj;
     int i = 1;
     ArrayDeque localArrayDeque = new ArrayDeque();
-    localArrayDeque.push(localf.xU);
+    localArrayDeque.push(localf.ya);
     int j = paramXmlPullParser.getEventType();
     int k = paramXmlPullParser.getDepth();
     if ((j != 1) && ((paramXmlPullParser.getDepth() >= k + 1) || (j != 3)))
@@ -127,12 +127,12 @@ public final class i
         if ("path".equals(localObject))
         {
           localObject = new b();
-          localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.wF);
+          localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.wM);
           ((b)localObject).a(localTypedArray, paramXmlPullParser, paramTheme);
           localTypedArray.recycle();
           localc.mChildren.add(localObject);
           if (((b)localObject).getPathName() != null) {
-            localf.yc.put(((b)localObject).getPathName(), localObject);
+            localf.yi.put(((b)localObject).getPathName(), localObject);
           }
           i = 0;
           j = localg.mChangingConfigurations;
@@ -148,13 +148,13 @@ public final class i
           localObject = new a();
           if (g.a(paramXmlPullParser, "pathData"))
           {
-            localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.wG);
+            localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.wN);
             ((a)localObject).a(localTypedArray);
             localTypedArray.recycle();
           }
           localc.mChildren.add(localObject);
           if (((a)localObject).getPathName() != null) {
-            localf.yc.put(((a)localObject).getPathName(), localObject);
+            localf.yi.put(((a)localObject).getPathName(), localObject);
           }
           localg.mChangingConfigurations |= ((a)localObject).mChangingConfigurations;
         }
@@ -163,25 +163,25 @@ public final class i
           if ("group".equals(localObject))
           {
             localObject = new c();
-            localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.wE);
-            ((c)localObject).xo = null;
-            ((c)localObject).xC = g.a(localTypedArray, paramXmlPullParser, "rotation", 5, ((c)localObject).xC);
-            ((c)localObject).xD = localTypedArray.getFloat(1, ((c)localObject).xD);
-            ((c)localObject).xE = localTypedArray.getFloat(2, ((c)localObject).xE);
-            ((c)localObject).xF = g.a(localTypedArray, paramXmlPullParser, "scaleX", 3, ((c)localObject).xF);
-            ((c)localObject).xG = g.a(localTypedArray, paramXmlPullParser, "scaleY", 4, ((c)localObject).xG);
-            ((c)localObject).xH = g.a(localTypedArray, paramXmlPullParser, "translateX", 6, ((c)localObject).xH);
-            ((c)localObject).xI = g.a(localTypedArray, paramXmlPullParser, "translateY", 7, ((c)localObject).xI);
+            localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.wL);
+            ((c)localObject).xv = null;
+            ((c)localObject).xI = g.a(localTypedArray, paramXmlPullParser, "rotation", 5, ((c)localObject).xI);
+            ((c)localObject).xJ = localTypedArray.getFloat(1, ((c)localObject).xJ);
+            ((c)localObject).xK = localTypedArray.getFloat(2, ((c)localObject).xK);
+            ((c)localObject).xL = g.a(localTypedArray, paramXmlPullParser, "scaleX", 3, ((c)localObject).xL);
+            ((c)localObject).xM = g.a(localTypedArray, paramXmlPullParser, "scaleY", 4, ((c)localObject).xM);
+            ((c)localObject).xN = g.a(localTypedArray, paramXmlPullParser, "translateX", 6, ((c)localObject).xN);
+            ((c)localObject).xO = g.a(localTypedArray, paramXmlPullParser, "translateY", 7, ((c)localObject).xO);
             String str = localTypedArray.getString(0);
             if (str != null) {
-              ((c)localObject).xK = str;
+              ((c)localObject).xQ = str;
             }
-            ((c)localObject).dy();
+            ((c)localObject).dB();
             localTypedArray.recycle();
             localc.mChildren.add(localObject);
             localArrayDeque.push(localObject);
             if (((c)localObject).getGroupName() != null) {
-              localf.yc.put(((c)localObject).getGroupName(), localObject);
+              localf.yi.put(((c)localObject).getGroupName(), localObject);
             }
             localg.mChangingConfigurations |= ((c)localObject).mChangingConfigurations;
           }
@@ -204,16 +204,16 @@ public final class i
   
   public final boolean canApplyTheme()
   {
-    if (this.xd != null) {
-      android.support.v4.graphics.drawable.a.g(this.xd);
+    if (this.xk != null) {
+      android.support.v4.graphics.drawable.a.g(this.xk);
     }
     return false;
   }
   
   public final void draw(Canvas paramCanvas)
   {
-    if (this.xd != null) {
-      this.xd.draw(paramCanvas);
+    if (this.xk != null) {
+      this.xk.draw(paramCanvas);
     }
     int i;
     int k;
@@ -223,30 +223,30 @@ public final class i
       do
       {
         return;
-        copyBounds(this.xn);
-      } while ((this.xn.width() <= 0) || (this.xn.height() <= 0));
-      if (this.xh != null) {
+        copyBounds(this.xu);
+      } while ((this.xu.width() <= 0) || (this.xu.height() <= 0));
+      if (this.xo != null) {
         break;
       }
-      localObject = this.xg;
-      paramCanvas.getMatrix(this.xm);
-      this.xm.getValues(this.xl);
-      float f2 = Math.abs(this.xl[0]);
-      float f1 = Math.abs(this.xl[4]);
-      float f4 = Math.abs(this.xl[1]);
-      float f3 = Math.abs(this.xl[3]);
+      localObject = this.xn;
+      paramCanvas.getMatrix(this.xt);
+      this.xt.getValues(this.xs);
+      float f2 = Math.abs(this.xs[0]);
+      float f1 = Math.abs(this.xs[4]);
+      float f4 = Math.abs(this.xs[1]);
+      float f3 = Math.abs(this.xs[3]);
       if ((f4 != 0.0F) || (f3 != 0.0F))
       {
         f1 = 1.0F;
         f2 = 1.0F;
       }
-      j = (int)(f2 * this.xn.width());
-      i = (int)(f1 * this.xn.height());
+      j = (int)(f2 * this.xu.width());
+      i = (int)(f1 * this.xu.height());
       k = Math.min(2048, j);
       m = Math.min(2048, i);
     } while ((k <= 0) || (m <= 0));
     int j = paramCanvas.save();
-    paramCanvas.translate(this.xn.left, this.xn.top);
+    paramCanvas.translate(this.xu.left, this.xu.top);
     label244:
     g localg;
     label322:
@@ -258,14 +258,14 @@ public final class i
         i = 1;
         if (i != 0)
         {
-          paramCanvas.translate(this.xn.width(), 0.0F);
+          paramCanvas.translate(this.xu.width(), 0.0F);
           paramCanvas.scale(-1.0F, 1.0F);
         }
-        this.xn.offsetTo(0, 0);
-        localg = this.xf;
-        if (localg.yh != null)
+        this.xu.offsetTo(0, 0);
+        localg = this.xm;
+        if (localg.yn != null)
         {
-          if ((k != localg.yh.getWidth()) || (m != localg.yh.getHeight())) {
+          if ((k != localg.yn.getWidth()) || (m != localg.yn.getHeight())) {
             break label450;
           }
           i = 1;
@@ -273,16 +273,16 @@ public final class i
         }
         else
         {
-          localg.yh = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
-          localg.ym = true;
+          localg.yn = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
+          localg.ys = true;
         }
-        if (this.xj) {
+        if (this.xq) {
           break label456;
         }
-        this.xf.s(k, m);
-        localg = this.xf;
-        localRect = this.xn;
-        if (localg.yd.getRootAlpha() >= 255) {
+        this.xm.s(k, m);
+        localg = this.xm;
+        localRect = this.xu;
+        if (localg.yj.getRootAlpha() >= 255) {
           break label608;
         }
         i = 1;
@@ -292,12 +292,12 @@ public final class i
         }
       }
     }
-    for (Object localObject = null;; localObject = localg.yn)
+    for (Object localObject = null;; localObject = localg.yt)
     {
-      paramCanvas.drawBitmap(localg.yh, null, localRect, (Paint)localObject);
+      paramCanvas.drawBitmap(localg.yn, null, localRect, (Paint)localObject);
       paramCanvas.restoreToCount(j);
       return;
-      localObject = this.xh;
+      localObject = this.xo;
       break;
       i = 0;
       break label244;
@@ -307,20 +307,20 @@ public final class i
       i = 0;
       break label322;
       label456:
-      localg = this.xf;
-      if ((!localg.ym) && (localg.yi == localg.ye) && (localg.yj == localg.yf) && (localg.yl == localg.yg) && (localg.yk == localg.yd.getRootAlpha())) {}
+      localg = this.xm;
+      if ((!localg.ys) && (localg.yo == localg.yk) && (localg.yp == localg.yl) && (localg.yr == localg.ym) && (localg.yq == localg.yj.getRootAlpha())) {}
       for (i = 1;; i = 0)
       {
         if (i != 0) {
           break label606;
         }
-        this.xf.s(k, m);
-        localg = this.xf;
-        localg.yi = localg.ye;
-        localg.yj = localg.yf;
-        localg.yk = localg.yd.getRootAlpha();
-        localg.yl = localg.yg;
-        localg.ym = false;
+        this.xm.s(k, m);
+        localg = this.xm;
+        localg.yo = localg.yk;
+        localg.yp = localg.yl;
+        localg.yq = localg.yj.getRootAlpha();
+        localg.yr = localg.ym;
+        localg.ys = false;
         break;
       }
       label606:
@@ -329,70 +329,70 @@ public final class i
       i = 0;
       break label395;
       label614:
-      if (localg.yn == null)
+      if (localg.yt == null)
       {
-        localg.yn = new Paint();
-        localg.yn.setFilterBitmap(true);
+        localg.yt = new Paint();
+        localg.yt.setFilterBitmap(true);
       }
-      localg.yn.setAlpha(localg.yd.getRootAlpha());
-      localg.yn.setColorFilter((ColorFilter)localObject);
+      localg.yt.setAlpha(localg.yj.getRootAlpha());
+      localg.yt.setColorFilter((ColorFilter)localObject);
     }
   }
   
   public final int getAlpha()
   {
-    if (this.xd != null) {
-      return android.support.v4.graphics.drawable.a.f(this.xd);
+    if (this.xk != null) {
+      return android.support.v4.graphics.drawable.a.f(this.xk);
     }
-    return this.xf.yd.getRootAlpha();
+    return this.xm.yj.getRootAlpha();
   }
   
   public final int getChangingConfigurations()
   {
-    if (this.xd != null) {
-      return this.xd.getChangingConfigurations();
+    if (this.xk != null) {
+      return this.xk.getChangingConfigurations();
     }
-    return super.getChangingConfigurations() | this.xf.getChangingConfigurations();
+    return super.getChangingConfigurations() | this.xm.getChangingConfigurations();
   }
   
   public final Drawable.ConstantState getConstantState()
   {
-    if ((this.xd != null) && (Build.VERSION.SDK_INT >= 24)) {
-      return new h(this.xd.getConstantState());
+    if ((this.xk != null) && (Build.VERSION.SDK_INT >= 24)) {
+      return new h(this.xk.getConstantState());
     }
-    this.xf.mChangingConfigurations = getChangingConfigurations();
-    return this.xf;
+    this.xm.mChangingConfigurations = getChangingConfigurations();
+    return this.xm;
   }
   
   public final int getIntrinsicHeight()
   {
-    if (this.xd != null) {
-      return this.xd.getIntrinsicHeight();
+    if (this.xk != null) {
+      return this.xk.getIntrinsicHeight();
     }
-    return (int)this.xf.yd.xW;
+    return (int)this.xm.yj.yc;
   }
   
   public final int getIntrinsicWidth()
   {
-    if (this.xd != null) {
-      return this.xd.getIntrinsicWidth();
+    if (this.xk != null) {
+      return this.xk.getIntrinsicWidth();
     }
-    return (int)this.xf.yd.xV;
+    return (int)this.xm.yj.yb;
   }
   
   public final int getOpacity()
   {
-    if (this.xd != null) {
-      return this.xd.getOpacity();
+    if (this.xk != null) {
+      return this.xk.getOpacity();
     }
     return -3;
   }
   
   public final void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      this.xd.inflate(paramResources, paramXmlPullParser, paramAttributeSet);
+      this.xk.inflate(paramResources, paramXmlPullParser, paramAttributeSet);
       return;
     }
     inflate(paramResources, paramXmlPullParser, paramAttributeSet, null);
@@ -400,16 +400,16 @@ public final class i
   
   public final void inflate(Resources paramResources, XmlPullParser paramXmlPullParser, AttributeSet paramAttributeSet, Resources.Theme paramTheme)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      android.support.v4.graphics.drawable.a.a(this.xd, paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
+      android.support.v4.graphics.drawable.a.a(this.xk, paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
       return;
     }
-    g localg1 = this.xf;
-    localg1.yd = new f();
-    TypedArray localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.wD);
-    g localg2 = this.xf;
-    f localf = localg2.yd;
+    g localg1 = this.xm;
+    localg1.yj = new f();
+    TypedArray localTypedArray = g.a(paramResources, paramTheme, paramAttributeSet, a.wK);
+    g localg2 = this.xm;
+    f localf = localg2.yj;
     int i = g.a(localTypedArray, paramXmlPullParser, "tintMode", 6, -1);
     PorterDuff.Mode localMode = PorterDuff.Mode.SRC_IN;
     Object localObject = localMode;
@@ -420,15 +420,15 @@ public final class i
     }
     for (;;)
     {
-      localg2.yf = ((PorterDuff.Mode)localObject);
+      localg2.yl = ((PorterDuff.Mode)localObject);
       localObject = localTypedArray.getColorStateList(1);
       if (localObject != null) {
-        localg2.ye = ((ColorStateList)localObject);
+        localg2.yk = ((ColorStateList)localObject);
       }
-      localg2.yg = g.a(localTypedArray, paramXmlPullParser, "autoMirrored", 5, localg2.yg);
-      localf.xX = g.a(localTypedArray, paramXmlPullParser, "viewportWidth", 7, localf.xX);
-      localf.xY = g.a(localTypedArray, paramXmlPullParser, "viewportHeight", 8, localf.xY);
-      if (localf.xX > 0.0F) {
+      localg2.ym = g.a(localTypedArray, paramXmlPullParser, "autoMirrored", 5, localg2.ym);
+      localf.yd = g.a(localTypedArray, paramXmlPullParser, "viewportWidth", 7, localf.yd);
+      localf.ye = g.a(localTypedArray, paramXmlPullParser, "viewportHeight", 8, localf.ye);
+      if (localf.yd > 0.0F) {
         break;
       }
       throw new XmlPullParserException(localTypedArray.getPositionDescription() + "<vector> tag requires viewportWidth > 0");
@@ -444,36 +444,36 @@ public final class i
       continue;
       localObject = PorterDuff.Mode.ADD;
     }
-    if (localf.xY <= 0.0F) {
+    if (localf.ye <= 0.0F) {
       throw new XmlPullParserException(localTypedArray.getPositionDescription() + "<vector> tag requires viewportHeight > 0");
     }
-    localf.xV = localTypedArray.getDimension(3, localf.xV);
-    localf.xW = localTypedArray.getDimension(2, localf.xW);
-    if (localf.xV <= 0.0F) {
+    localf.yb = localTypedArray.getDimension(3, localf.yb);
+    localf.yc = localTypedArray.getDimension(2, localf.yc);
+    if (localf.yb <= 0.0F) {
       throw new XmlPullParserException(localTypedArray.getPositionDescription() + "<vector> tag requires width > 0");
     }
-    if (localf.xW <= 0.0F) {
+    if (localf.yc <= 0.0F) {
       throw new XmlPullParserException(localTypedArray.getPositionDescription() + "<vector> tag requires height > 0");
     }
     localf.setAlpha(g.a(localTypedArray, paramXmlPullParser, "alpha", 4, localf.getAlpha()));
     localObject = localTypedArray.getString(0);
     if (localObject != null)
     {
-      localf.ya = ((String)localObject);
-      localf.yc.put(localObject, localf);
+      localf.yg = ((String)localObject);
+      localf.yi.put(localObject, localf);
     }
     localTypedArray.recycle();
     localg1.mChangingConfigurations = getChangingConfigurations();
-    localg1.ym = true;
+    localg1.ys = true;
     b(paramResources, paramXmlPullParser, paramAttributeSet, paramTheme);
-    this.xg = a(localg1.ye, localg1.yf);
+    this.xn = a(localg1.yk, localg1.yl);
   }
   
   public final void invalidateSelf()
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      this.xd.invalidateSelf();
+      this.xk.invalidateSelf();
       return;
     }
     super.invalidateSelf();
@@ -481,45 +481,45 @@ public final class i
   
   public final boolean isAutoMirrored()
   {
-    if (this.xd != null) {
-      return android.support.v4.graphics.drawable.a.e(this.xd);
+    if (this.xk != null) {
+      return android.support.v4.graphics.drawable.a.e(this.xk);
     }
-    return this.xf.yg;
+    return this.xm.ym;
   }
   
   public final boolean isStateful()
   {
-    if (this.xd != null) {
-      return this.xd.isStateful();
+    if (this.xk != null) {
+      return this.xk.isStateful();
     }
-    return (super.isStateful()) || ((this.xf != null) && ((this.xf.yd.isStateful()) || ((this.xf.ye != null) && (this.xf.ye.isStateful()))));
+    return (super.isStateful()) || ((this.xm != null) && ((this.xm.yj.isStateful()) || ((this.xm.yk != null) && (this.xm.yk.isStateful()))));
   }
   
   public final Drawable mutate()
   {
-    if (this.xd != null) {
-      this.xd.mutate();
+    if (this.xk != null) {
+      this.xk.mutate();
     }
-    while ((this.xi) || (super.mutate() != this)) {
+    while ((this.xp) || (super.mutate() != this)) {
       return this;
     }
-    this.xf = new g(this.xf);
-    this.xi = true;
+    this.xm = new g(this.xm);
+    this.xp = true;
     return this;
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
-    if (this.xd != null) {
-      this.xd.setBounds(paramRect);
+    if (this.xk != null) {
+      this.xk.setBounds(paramRect);
     }
   }
   
   protected final boolean onStateChange(int[] paramArrayOfInt)
   {
     boolean bool2;
-    if (this.xd != null) {
-      bool2 = this.xd.setState(paramArrayOfInt);
+    if (this.xk != null) {
+      bool2 = this.xk.setState(paramArrayOfInt);
     }
     boolean bool3;
     do
@@ -530,22 +530,22 @@ public final class i
       {
         return bool2;
         bool2 = false;
-        localg = this.xf;
+        localg = this.xm;
         bool1 = bool2;
-        if (localg.ye != null)
+        if (localg.yk != null)
         {
           bool1 = bool2;
-          if (localg.yf != null)
+          if (localg.yl != null)
           {
-            this.xg = a(localg.ye, localg.yf);
+            this.xn = a(localg.yk, localg.yl);
             invalidateSelf();
             bool1 = true;
           }
         }
         bool2 = bool1;
-      } while (!localg.yd.isStateful());
-      bool3 = localg.yd.xU.e(paramArrayOfInt);
-      localg.ym |= bool3;
+      } while (!localg.yj.isStateful());
+      bool3 = localg.yj.ya.e(paramArrayOfInt);
+      localg.ys |= bool3;
       bool2 = bool1;
     } while (!bool3);
     invalidateSelf();
@@ -554,9 +554,9 @@ public final class i
   
   public final void scheduleSelf(Runnable paramRunnable, long paramLong)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      this.xd.scheduleSelf(paramRunnable, paramLong);
+      this.xk.scheduleSelf(paramRunnable, paramLong);
       return;
     }
     super.scheduleSelf(paramRunnable, paramLong);
@@ -564,42 +564,42 @@ public final class i
   
   public final void setAlpha(int paramInt)
   {
-    if (this.xd != null) {
-      this.xd.setAlpha(paramInt);
+    if (this.xk != null) {
+      this.xk.setAlpha(paramInt);
     }
-    while (this.xf.yd.getRootAlpha() == paramInt) {
+    while (this.xm.yj.getRootAlpha() == paramInt) {
       return;
     }
-    this.xf.yd.setRootAlpha(paramInt);
+    this.xm.yj.setRootAlpha(paramInt);
     invalidateSelf();
   }
   
   public final void setAutoMirrored(boolean paramBoolean)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      android.support.v4.graphics.drawable.a.a(this.xd, paramBoolean);
+      android.support.v4.graphics.drawable.a.a(this.xk, paramBoolean);
       return;
     }
-    this.xf.yg = paramBoolean;
+    this.xm.ym = paramBoolean;
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      this.xd.setColorFilter(paramColorFilter);
+      this.xk.setColorFilter(paramColorFilter);
       return;
     }
-    this.xh = paramColorFilter;
+    this.xo = paramColorFilter;
     invalidateSelf();
   }
   
   public final void setTint(int paramInt)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      android.support.v4.graphics.drawable.a.a(this.xd, paramInt);
+      android.support.v4.graphics.drawable.a.a(this.xk, paramInt);
       return;
     }
     setTintList(ColorStateList.valueOf(paramInt));
@@ -607,49 +607,49 @@ public final class i
   
   public final void setTintList(ColorStateList paramColorStateList)
   {
-    if (this.xd != null) {
-      android.support.v4.graphics.drawable.a.a(this.xd, paramColorStateList);
+    if (this.xk != null) {
+      android.support.v4.graphics.drawable.a.a(this.xk, paramColorStateList);
     }
     g localg;
     do
     {
       return;
-      localg = this.xf;
-    } while (localg.ye == paramColorStateList);
-    localg.ye = paramColorStateList;
-    this.xg = a(paramColorStateList, localg.yf);
+      localg = this.xm;
+    } while (localg.yk == paramColorStateList);
+    localg.yk = paramColorStateList;
+    this.xn = a(paramColorStateList, localg.yl);
     invalidateSelf();
   }
   
   public final void setTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.xd != null) {
-      android.support.v4.graphics.drawable.a.a(this.xd, paramMode);
+    if (this.xk != null) {
+      android.support.v4.graphics.drawable.a.a(this.xk, paramMode);
     }
     g localg;
     do
     {
       return;
-      localg = this.xf;
-    } while (localg.yf == paramMode);
-    localg.yf = paramMode;
-    this.xg = a(localg.ye, paramMode);
+      localg = this.xm;
+    } while (localg.yl == paramMode);
+    localg.yl = paramMode;
+    this.xn = a(localg.yk, paramMode);
     invalidateSelf();
   }
   
   public final boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.xd != null) {
-      return this.xd.setVisible(paramBoolean1, paramBoolean2);
+    if (this.xk != null) {
+      return this.xk.setVisible(paramBoolean1, paramBoolean2);
     }
     return super.setVisible(paramBoolean1, paramBoolean2);
   }
   
   public final void unscheduleSelf(Runnable paramRunnable)
   {
-    if (this.xd != null)
+    if (this.xk != null)
     {
-      this.xd.unscheduleSelf(paramRunnable);
+      this.xk.unscheduleSelf(paramRunnable);
       return;
     }
     super.unscheduleSelf(paramRunnable);
@@ -669,15 +669,15 @@ public final class i
     {
       String str = paramTypedArray.getString(0);
       if (str != null) {
-        this.xM = str;
+        this.xS = str;
       }
       paramTypedArray = paramTypedArray.getString(1);
       if (paramTypedArray != null) {
-        this.xL = c.x(paramTypedArray);
+        this.xR = c.y(paramTypedArray);
       }
     }
     
-    public final boolean dx()
+    public final boolean dA()
     {
       return true;
     }
@@ -686,64 +686,64 @@ public final class i
   static final class b
     extends i.e
   {
-    float xA = 4.0F;
-    private int[] xo;
-    b xp;
-    float xq = 0.0F;
-    b xr;
-    float xs = 1.0F;
-    int xt = 0;
-    float xu = 1.0F;
-    float xv = 0.0F;
-    float xw = 1.0F;
-    float xx = 0.0F;
-    Paint.Cap xy = Paint.Cap.BUTT;
-    Paint.Join xz = Paint.Join.MITER;
+    float mStrokeWidth = 0.0F;
+    float xA = 1.0F;
+    float xB = 0.0F;
+    float xC = 1.0F;
+    float xD = 0.0F;
+    Paint.Cap xE = Paint.Cap.BUTT;
+    Paint.Join xF = Paint.Join.MITER;
+    float xG = 4.0F;
+    private int[] xv;
+    b xw;
+    b xx;
+    float xy = 1.0F;
+    int xz = 0;
     
     public b() {}
     
     public b(b paramb)
     {
       super();
-      this.xo = paramb.xo;
-      this.xp = paramb.xp;
-      this.xq = paramb.xq;
-      this.xs = paramb.xs;
-      this.xr = paramb.xr;
-      this.xt = paramb.xt;
-      this.xu = paramb.xu;
       this.xv = paramb.xv;
       this.xw = paramb.xw;
-      this.xx = paramb.xx;
+      this.mStrokeWidth = paramb.mStrokeWidth;
       this.xy = paramb.xy;
+      this.xx = paramb.xx;
       this.xz = paramb.xz;
       this.xA = paramb.xA;
+      this.xB = paramb.xB;
+      this.xC = paramb.xC;
+      this.xD = paramb.xD;
+      this.xE = paramb.xE;
+      this.xF = paramb.xF;
+      this.xG = paramb.xG;
     }
     
     final void a(TypedArray paramTypedArray, XmlPullParser paramXmlPullParser, Resources.Theme paramTheme)
     {
-      this.xo = null;
+      this.xv = null;
       if (!g.a(paramXmlPullParser, "pathData")) {
         return;
       }
       Object localObject = paramTypedArray.getString(0);
       if (localObject != null) {
-        this.xM = ((String)localObject);
+        this.xS = ((String)localObject);
       }
       localObject = paramTypedArray.getString(2);
       if (localObject != null) {
-        this.xL = c.x((String)localObject);
+        this.xR = c.y((String)localObject);
       }
-      this.xr = g.a(paramTypedArray, paramXmlPullParser, paramTheme, "fillColor", 1);
-      this.xu = g.a(paramTypedArray, paramXmlPullParser, "fillAlpha", 12, this.xu);
+      this.xx = g.a(paramTypedArray, paramXmlPullParser, paramTheme, "fillColor", 1);
+      this.xA = g.a(paramTypedArray, paramXmlPullParser, "fillAlpha", 12, this.xA);
       int i = g.a(paramTypedArray, paramXmlPullParser, "strokeLineCap", 8, -1);
-      localObject = this.xy;
+      localObject = this.xE;
       switch (i)
       {
       default: 
-        this.xy = ((Paint.Cap)localObject);
+        this.xE = ((Paint.Cap)localObject);
         i = g.a(paramTypedArray, paramXmlPullParser, "strokeLineJoin", 9, -1);
-        localObject = this.xz;
+        localObject = this.xF;
         switch (i)
         {
         }
@@ -751,15 +751,15 @@ public final class i
       }
       for (;;)
       {
-        this.xz = ((Paint.Join)localObject);
-        this.xA = g.a(paramTypedArray, paramXmlPullParser, "strokeMiterLimit", 10, this.xA);
-        this.xp = g.a(paramTypedArray, paramXmlPullParser, paramTheme, "strokeColor", 3);
-        this.xs = g.a(paramTypedArray, paramXmlPullParser, "strokeAlpha", 11, this.xs);
-        this.xq = g.a(paramTypedArray, paramXmlPullParser, "strokeWidth", 4, this.xq);
-        this.xw = g.a(paramTypedArray, paramXmlPullParser, "trimPathEnd", 6, this.xw);
-        this.xx = g.a(paramTypedArray, paramXmlPullParser, "trimPathOffset", 7, this.xx);
-        this.xv = g.a(paramTypedArray, paramXmlPullParser, "trimPathStart", 5, this.xv);
-        this.xt = g.a(paramTypedArray, paramXmlPullParser, "fillType", 13, this.xt);
+        this.xF = ((Paint.Join)localObject);
+        this.xG = g.a(paramTypedArray, paramXmlPullParser, "strokeMiterLimit", 10, this.xG);
+        this.xw = g.a(paramTypedArray, paramXmlPullParser, paramTheme, "strokeColor", 3);
+        this.xy = g.a(paramTypedArray, paramXmlPullParser, "strokeAlpha", 11, this.xy);
+        this.mStrokeWidth = g.a(paramTypedArray, paramXmlPullParser, "strokeWidth", 4, this.mStrokeWidth);
+        this.xC = g.a(paramTypedArray, paramXmlPullParser, "trimPathEnd", 6, this.xC);
+        this.xD = g.a(paramTypedArray, paramXmlPullParser, "trimPathOffset", 7, this.xD);
+        this.xB = g.a(paramTypedArray, paramXmlPullParser, "trimPathStart", 5, this.xB);
+        this.xz = g.a(paramTypedArray, paramXmlPullParser, "fillType", 13, this.xz);
         return;
         localObject = Paint.Cap.BUTT;
         break;
@@ -777,92 +777,92 @@ public final class i
     
     public final boolean e(int[] paramArrayOfInt)
     {
-      return this.xr.e(paramArrayOfInt) | this.xp.e(paramArrayOfInt);
+      return this.xx.e(paramArrayOfInt) | this.xw.e(paramArrayOfInt);
     }
     
     final float getFillAlpha()
     {
-      return this.xu;
+      return this.xA;
     }
     
     final int getFillColor()
     {
-      return this.xr.mColor;
+      return this.xx.mColor;
     }
     
     final float getStrokeAlpha()
     {
-      return this.xs;
+      return this.xy;
     }
     
     final int getStrokeColor()
     {
-      return this.xp.mColor;
+      return this.xw.mColor;
     }
     
     final float getStrokeWidth()
     {
-      return this.xq;
+      return this.mStrokeWidth;
     }
     
     final float getTrimPathEnd()
     {
-      return this.xw;
+      return this.xC;
     }
     
     final float getTrimPathOffset()
     {
-      return this.xx;
+      return this.xD;
     }
     
     final float getTrimPathStart()
     {
-      return this.xv;
+      return this.xB;
     }
     
     public final boolean isStateful()
     {
-      return (this.xr.isStateful()) || (this.xp.isStateful());
+      return (this.xx.isStateful()) || (this.xw.isStateful());
     }
     
     final void setFillAlpha(float paramFloat)
     {
-      this.xu = paramFloat;
+      this.xA = paramFloat;
     }
     
     final void setFillColor(int paramInt)
     {
-      this.xr.mColor = paramInt;
+      this.xx.mColor = paramInt;
     }
     
     final void setStrokeAlpha(float paramFloat)
     {
-      this.xs = paramFloat;
+      this.xy = paramFloat;
     }
     
     final void setStrokeColor(int paramInt)
     {
-      this.xp.mColor = paramInt;
+      this.xw.mColor = paramInt;
     }
     
     final void setStrokeWidth(float paramFloat)
     {
-      this.xq = paramFloat;
+      this.mStrokeWidth = paramFloat;
     }
     
     final void setTrimPathEnd(float paramFloat)
     {
-      this.xw = paramFloat;
+      this.xC = paramFloat;
     }
     
     final void setTrimPathOffset(float paramFloat)
     {
-      this.xx = paramFloat;
+      this.xD = paramFloat;
     }
     
     final void setTrimPathStart(float paramFloat)
     {
-      this.xv = paramFloat;
+      this.xB = paramFloat;
     }
   }
   
@@ -871,17 +871,17 @@ public final class i
   {
     int mChangingConfigurations;
     final ArrayList<i.d> mChildren = new ArrayList();
-    final Matrix xB = new Matrix();
-    float xC = 0.0F;
-    float xD = 0.0F;
-    float xE = 0.0F;
-    float xF = 1.0F;
-    float xG = 1.0F;
-    float xH = 0.0F;
+    final Matrix xH = new Matrix();
     float xI = 0.0F;
-    final Matrix xJ = new Matrix();
-    String xK = null;
-    int[] xo;
+    float xJ = 0.0F;
+    float xK = 0.0F;
+    float xL = 1.0F;
+    float xM = 1.0F;
+    float xN = 0.0F;
+    float xO = 0.0F;
+    final Matrix xP = new Matrix();
+    String xQ = null;
+    int[] xv;
     
     public c()
     {
@@ -891,20 +891,20 @@ public final class i
     public c(c paramc, android.support.v4.e.a<String, Object> parama)
     {
       super();
-      this.xC = paramc.xC;
-      this.xD = paramc.xD;
-      this.xE = paramc.xE;
-      this.xF = paramc.xF;
-      this.xG = paramc.xG;
-      this.xH = paramc.xH;
       this.xI = paramc.xI;
-      this.xo = paramc.xo;
+      this.xJ = paramc.xJ;
       this.xK = paramc.xK;
+      this.xL = paramc.xL;
+      this.xM = paramc.xM;
+      this.xN = paramc.xN;
+      this.xO = paramc.xO;
+      this.xv = paramc.xv;
+      this.xQ = paramc.xQ;
       this.mChangingConfigurations = paramc.mChangingConfigurations;
-      if (this.xK != null) {
-        parama.put(this.xK, this);
+      if (this.xQ != null) {
+        parama.put(this.xQ, this);
       }
-      this.xJ.set(paramc.xJ);
+      this.xP.set(paramc.xP);
       ArrayList localArrayList = paramc.mChildren;
       int i = 0;
       while (i < localArrayList.size())
@@ -922,10 +922,10 @@ public final class i
           for (paramc = new i.b((i.b)paramc);; paramc = new i.a((i.a)paramc))
           {
             this.mChildren.add(paramc);
-            if (paramc.xM == null) {
+            if (paramc.xS == null) {
               break;
             }
-            parama.put(paramc.xM, paramc);
+            parama.put(paramc.xS, paramc);
             break;
             if (!(paramc instanceof i.a)) {
               break label316;
@@ -937,13 +937,13 @@ public final class i
       }
     }
     
-    final void dy()
+    final void dB()
     {
-      this.xJ.reset();
-      this.xJ.postTranslate(-this.xD, -this.xE);
-      this.xJ.postScale(this.xF, this.xG);
-      this.xJ.postRotate(this.xC, 0.0F, 0.0F);
-      this.xJ.postTranslate(this.xH + this.xD, this.xI + this.xE);
+      this.xP.reset();
+      this.xP.postTranslate(-this.xJ, -this.xK);
+      this.xP.postScale(this.xL, this.xM);
+      this.xP.postRotate(this.xI, 0.0F, 0.0F);
+      this.xP.postTranslate(this.xN + this.xJ, this.xO + this.xK);
     }
     
     public final boolean e(int[] paramArrayOfInt)
@@ -960,47 +960,47 @@ public final class i
     
     public final String getGroupName()
     {
-      return this.xK;
+      return this.xQ;
     }
     
     public final Matrix getLocalMatrix()
     {
-      return this.xJ;
+      return this.xP;
     }
     
     public final float getPivotX()
     {
-      return this.xD;
+      return this.xJ;
     }
     
     public final float getPivotY()
     {
-      return this.xE;
+      return this.xK;
     }
     
     public final float getRotation()
     {
-      return this.xC;
+      return this.xI;
     }
     
     public final float getScaleX()
     {
-      return this.xF;
+      return this.xL;
     }
     
     public final float getScaleY()
     {
-      return this.xG;
+      return this.xM;
     }
     
     public final float getTranslateX()
     {
-      return this.xH;
+      return this.xN;
     }
     
     public final float getTranslateY()
     {
-      return this.xI;
+      return this.xO;
     }
     
     public final boolean isStateful()
@@ -1025,64 +1025,64 @@ public final class i
     
     public final void setPivotX(float paramFloat)
     {
-      if (paramFloat != this.xD)
+      if (paramFloat != this.xJ)
       {
-        this.xD = paramFloat;
-        dy();
+        this.xJ = paramFloat;
+        dB();
       }
     }
     
     public final void setPivotY(float paramFloat)
     {
-      if (paramFloat != this.xE)
+      if (paramFloat != this.xK)
       {
-        this.xE = paramFloat;
-        dy();
+        this.xK = paramFloat;
+        dB();
       }
     }
     
     public final void setRotation(float paramFloat)
     {
-      if (paramFloat != this.xC)
+      if (paramFloat != this.xI)
       {
-        this.xC = paramFloat;
-        dy();
+        this.xI = paramFloat;
+        dB();
       }
     }
     
     public final void setScaleX(float paramFloat)
     {
-      if (paramFloat != this.xF)
+      if (paramFloat != this.xL)
       {
-        this.xF = paramFloat;
-        dy();
+        this.xL = paramFloat;
+        dB();
       }
     }
     
     public final void setScaleY(float paramFloat)
     {
-      if (paramFloat != this.xG)
+      if (paramFloat != this.xM)
       {
-        this.xG = paramFloat;
-        dy();
+        this.xM = paramFloat;
+        dB();
       }
     }
     
     public final void setTranslateX(float paramFloat)
     {
-      if (paramFloat != this.xH)
+      if (paramFloat != this.xN)
       {
-        this.xH = paramFloat;
-        dy();
+        this.xN = paramFloat;
+        dB();
       }
     }
     
     public final void setTranslateY(float paramFloat)
     {
-      if (paramFloat != this.xI)
+      if (paramFloat != this.xO)
       {
-        this.xI = paramFloat;
-        dy();
+        this.xO = paramFloat;
+        dB();
       }
     }
   }
@@ -1104,8 +1104,8 @@ public final class i
     extends i.d
   {
     int mChangingConfigurations;
-    protected c.b[] xL = null;
-    String xM;
+    protected c.b[] xR = null;
+    String xS;
     
     public e()
     {
@@ -1115,51 +1115,51 @@ public final class i
     public e(e parame)
     {
       super();
-      this.xM = parame.xM;
+      this.xS = parame.xS;
       this.mChangingConfigurations = parame.mChangingConfigurations;
-      this.xL = c.a(parame.xL);
+      this.xR = c.a(parame.xR);
     }
     
     public final void b(Path paramPath)
     {
       paramPath.reset();
-      if (this.xL != null) {
-        c.b.a(this.xL, paramPath);
+      if (this.xR != null) {
+        c.b.a(this.xR, paramPath);
       }
     }
     
-    public boolean dx()
+    public boolean dA()
     {
       return false;
     }
     
     public c.b[] getPathData()
     {
-      return this.xL;
+      return this.xR;
     }
     
     public String getPathName()
     {
-      return this.xM;
+      return this.xS;
     }
     
     public void setPathData(c.b[] paramArrayOfb)
     {
-      if (!c.a(this.xL, paramArrayOfb)) {
-        this.xL = c.a(paramArrayOfb);
+      if (!c.a(this.xR, paramArrayOfb)) {
+        this.xR = c.a(paramArrayOfb);
       }
       for (;;)
       {
         return;
-        c.b[] arrayOfb = this.xL;
+        c.b[] arrayOfb = this.xR;
         int i = 0;
         while (i < paramArrayOfb.length)
         {
-          arrayOfb[i].JJ = paramArrayOfb[i].JJ;
+          arrayOfb[i].JT = paramArrayOfb[i].JT;
           int j = 0;
-          while (j < paramArrayOfb[i].JK.length)
+          while (j < paramArrayOfb[i].JU.length)
           {
-            arrayOfb[i].JK[j] = paramArrayOfb[i].JK[j];
+            arrayOfb[i].JU[j] = paramArrayOfb[i].JU[j];
             j += 1;
           }
           i += 1;
@@ -1170,60 +1170,60 @@ public final class i
   
   static final class f
   {
-    private static final Matrix xP = new Matrix();
+    private static final Matrix xV = new Matrix();
     private int mChangingConfigurations;
-    private final Path xN;
-    private final Path xO;
-    private final Matrix xQ = new Matrix();
-    Paint xR;
-    Paint xS;
-    private PathMeasure xT;
-    final i.c xU;
-    float xV = 0.0F;
-    float xW = 0.0F;
-    float xX = 0.0F;
-    float xY = 0.0F;
-    int xZ = 255;
-    String ya = null;
-    Boolean yb = null;
-    final android.support.v4.e.a<String, Object> yc = new android.support.v4.e.a();
+    private final Path xT;
+    private final Path xU;
+    private final Matrix xW = new Matrix();
+    Paint xX;
+    Paint xY;
+    private PathMeasure xZ;
+    final i.c ya;
+    float yb = 0.0F;
+    float yc = 0.0F;
+    float yd = 0.0F;
+    float ye = 0.0F;
+    int yf = 255;
+    String yg = null;
+    Boolean yh = null;
+    final android.support.v4.e.a<String, Object> yi = new android.support.v4.e.a();
     
     public f()
     {
-      this.xU = new i.c();
-      this.xN = new Path();
-      this.xO = new Path();
+      this.ya = new i.c();
+      this.xT = new Path();
+      this.xU = new Path();
     }
     
     public f(f paramf)
     {
-      this.xU = new i.c(paramf.xU, this.yc);
-      this.xN = new Path(paramf.xN);
-      this.xO = new Path(paramf.xO);
-      this.xV = paramf.xV;
-      this.xW = paramf.xW;
-      this.xX = paramf.xX;
-      this.xY = paramf.xY;
-      this.mChangingConfigurations = paramf.mChangingConfigurations;
-      this.xZ = paramf.xZ;
-      this.ya = paramf.ya;
-      if (paramf.ya != null) {
-        this.yc.put(paramf.ya, this);
-      }
+      this.ya = new i.c(paramf.ya, this.yi);
+      this.xT = new Path(paramf.xT);
+      this.xU = new Path(paramf.xU);
       this.yb = paramf.yb;
+      this.yc = paramf.yc;
+      this.yd = paramf.yd;
+      this.ye = paramf.ye;
+      this.mChangingConfigurations = paramf.mChangingConfigurations;
+      this.yf = paramf.yf;
+      this.yg = paramf.yg;
+      if (paramf.yg != null) {
+        this.yi.put(paramf.yg, this);
+      }
+      this.yh = paramf.yh;
     }
     
     private void a(i.c paramc, Matrix paramMatrix, Canvas paramCanvas, int paramInt1, int paramInt2, ColorFilter paramColorFilter)
     {
-      paramc.xB.set(paramMatrix);
-      paramc.xB.preConcat(paramc.xJ);
+      paramc.xH.set(paramMatrix);
+      paramc.xH.preConcat(paramc.xP);
       paramCanvas.save();
       int i = 0;
       if (i < paramc.mChildren.size())
       {
         paramMatrix = (i.d)paramc.mChildren.get(i);
         if ((paramMatrix instanceof i.c)) {
-          a((i.c)paramMatrix, paramc.xB, paramCanvas, paramInt1, paramInt2, paramColorFilter);
+          a((i.c)paramMatrix, paramc.xH, paramCanvas, paramInt1, paramInt2, paramColorFilter);
         }
       }
       label903:
@@ -1234,12 +1234,12 @@ public final class i
         if ((paramMatrix instanceof i.e))
         {
           paramMatrix = (i.e)paramMatrix;
-          float f1 = paramInt1 / this.xX;
-          float f3 = paramInt2 / this.xY;
+          float f1 = paramInt1 / this.yd;
+          float f3 = paramInt2 / this.ye;
           float f2 = Math.min(f1, f3);
-          Object localObject1 = paramc.xB;
-          this.xQ.set((Matrix)localObject1);
-          this.xQ.postScale(f1, f3);
+          Object localObject1 = paramc.xH;
+          this.xW.set((Matrix)localObject1);
+          this.xW.postScale(f1, f3);
           Object localObject2 = new float[4];
           tmp163_161 = localObject2;
           tmp163_161[0] = 0.0F;
@@ -1264,109 +1264,109 @@ public final class i
             if (f1 == 0.0F) {
               break label903;
             }
-            paramMatrix.b(this.xN);
-            localObject2 = this.xN;
-            this.xO.reset();
-            if (paramMatrix.dx())
+            paramMatrix.b(this.xT);
+            localObject2 = this.xT;
+            this.xU.reset();
+            if (paramMatrix.dA())
             {
-              this.xO.addPath((Path)localObject2, this.xQ);
-              paramCanvas.clipPath(this.xO);
+              this.xU.addPath((Path)localObject2, this.xW);
+              paramCanvas.clipPath(this.xU);
               break;
             }
             localObject1 = (i.b)paramMatrix;
-            if ((((i.b)localObject1).xv != 0.0F) || (((i.b)localObject1).xw != 1.0F))
+            if ((((i.b)localObject1).xB != 0.0F) || (((i.b)localObject1).xC != 1.0F))
             {
-              f6 = ((i.b)localObject1).xv;
-              f7 = ((i.b)localObject1).xx;
-              f4 = ((i.b)localObject1).xw;
-              f5 = ((i.b)localObject1).xx;
-              if (this.xT == null) {
-                this.xT = new PathMeasure();
+              f6 = ((i.b)localObject1).xB;
+              f7 = ((i.b)localObject1).xD;
+              f4 = ((i.b)localObject1).xC;
+              f5 = ((i.b)localObject1).xD;
+              if (this.xZ == null) {
+                this.xZ = new PathMeasure();
               }
-              this.xT.setPath(this.xN, false);
-              f3 = this.xT.getLength();
+              this.xZ.setPath(this.xT, false);
+              f3 = this.xZ.getLength();
               f6 = (f6 + f7) % 1.0F * f3;
               f4 = (f4 + f5) % 1.0F * f3;
               ((Path)localObject2).reset();
               if (f6 > f4)
               {
-                this.xT.getSegment(f6, f3, (Path)localObject2, true);
-                this.xT.getSegment(0.0F, f4, (Path)localObject2, true);
+                this.xZ.getSegment(f6, f3, (Path)localObject2, true);
+                this.xZ.getSegment(0.0F, f4, (Path)localObject2, true);
                 label497:
                 ((Path)localObject2).rLineTo(0.0F, 0.0F);
               }
             }
             else
             {
-              this.xO.addPath((Path)localObject2, this.xQ);
-              if (((i.b)localObject1).xr.eu())
+              this.xU.addPath((Path)localObject2, this.xW);
+              if (((i.b)localObject1).xx.ey())
               {
-                paramMatrix = ((i.b)localObject1).xr;
-                if (this.xS == null)
+                paramMatrix = ((i.b)localObject1).xx;
+                if (this.xY == null)
                 {
-                  this.xS = new Paint(1);
-                  this.xS.setStyle(Paint.Style.FILL);
+                  this.xY = new Paint(1);
+                  this.xY.setStyle(Paint.Style.FILL);
                 }
-                localObject2 = this.xS;
-                if (!paramMatrix.et()) {
+                localObject2 = this.xY;
+                if (!paramMatrix.ex()) {
                   break label847;
                 }
-                paramMatrix = paramMatrix.Jt;
-                paramMatrix.setLocalMatrix(this.xQ);
+                paramMatrix = paramMatrix.JC;
+                paramMatrix.setLocalMatrix(this.xW);
                 ((Paint)localObject2).setShader(paramMatrix);
-                ((Paint)localObject2).setAlpha(Math.round(((i.b)localObject1).xu * 255.0F));
+                ((Paint)localObject2).setAlpha(Math.round(((i.b)localObject1).xA * 255.0F));
                 label612:
                 ((Paint)localObject2).setColorFilter(paramColorFilter);
-                Path localPath = this.xO;
-                if (((i.b)localObject1).xt != 0) {
+                Path localPath = this.xU;
+                if (((i.b)localObject1).xz != 0) {
                   break label867;
                 }
                 paramMatrix = Path.FillType.WINDING;
                 label638:
                 localPath.setFillType(paramMatrix);
-                paramCanvas.drawPath(this.xO, (Paint)localObject2);
+                paramCanvas.drawPath(this.xU, (Paint)localObject2);
               }
-              if (!((i.b)localObject1).xp.eu()) {
+              if (!((i.b)localObject1).xw.ey()) {
                 break;
               }
-              localObject2 = ((i.b)localObject1).xp;
-              if (this.xR == null)
+              localObject2 = ((i.b)localObject1).xw;
+              if (this.xX == null)
               {
-                this.xR = new Paint(1);
-                this.xR.setStyle(Paint.Style.STROKE);
+                this.xX = new Paint(1);
+                this.xX.setStyle(Paint.Style.STROKE);
               }
-              paramMatrix = this.xR;
-              if (((i.b)localObject1).xz != null) {
-                paramMatrix.setStrokeJoin(((i.b)localObject1).xz);
+              paramMatrix = this.xX;
+              if (((i.b)localObject1).xF != null) {
+                paramMatrix.setStrokeJoin(((i.b)localObject1).xF);
               }
-              if (((i.b)localObject1).xy != null) {
-                paramMatrix.setStrokeCap(((i.b)localObject1).xy);
+              if (((i.b)localObject1).xE != null) {
+                paramMatrix.setStrokeCap(((i.b)localObject1).xE);
               }
-              paramMatrix.setStrokeMiter(((i.b)localObject1).xA);
-              if (!((b)localObject2).et()) {
+              paramMatrix.setStrokeMiter(((i.b)localObject1).xG);
+              if (!((b)localObject2).ex()) {
                 break label874;
               }
-              localObject2 = ((b)localObject2).Jt;
-              ((Shader)localObject2).setLocalMatrix(this.xQ);
+              localObject2 = ((b)localObject2).JC;
+              ((Shader)localObject2).setLocalMatrix(this.xW);
               paramMatrix.setShader((Shader)localObject2);
-              paramMatrix.setAlpha(Math.round(((i.b)localObject1).xs * 255.0F));
+              paramMatrix.setAlpha(Math.round(((i.b)localObject1).xy * 255.0F));
             }
             for (;;)
             {
               paramMatrix.setColorFilter(paramColorFilter);
-              paramMatrix.setStrokeWidth(((i.b)localObject1).xq * (f2 * f1));
-              paramCanvas.drawPath(this.xO, paramMatrix);
+              paramMatrix.setStrokeWidth(((i.b)localObject1).mStrokeWidth * (f2 * f1));
+              paramCanvas.drawPath(this.xU, paramMatrix);
               break;
-              this.xT.getSegment(f6, f4, (Path)localObject2, true);
+              this.xZ.getSegment(f6, f4, (Path)localObject2, true);
               break label497;
               label847:
-              ((Paint)localObject2).setColor(i.d(paramMatrix.mColor, ((i.b)localObject1).xu));
+              ((Paint)localObject2).setColor(i.d(paramMatrix.mColor, ((i.b)localObject1).xA));
               break label612;
               label867:
               paramMatrix = Path.FillType.EVEN_ODD;
               break label638;
               label874:
-              paramMatrix.setColor(i.d(((b)localObject2).mColor, ((i.b)localObject1).xs));
+              paramMatrix.setColor(i.d(((b)localObject2).mColor, ((i.b)localObject1).xy));
             }
             paramCanvas.restore();
             return;
@@ -1377,7 +1377,7 @@ public final class i
     
     public final void a(Canvas paramCanvas, int paramInt1, int paramInt2)
     {
-      a(this.xU, xP, paramCanvas, paramInt1, paramInt2, null);
+      a(this.ya, xV, paramCanvas, paramInt1, paramInt2, null);
     }
     
     public final float getAlpha()
@@ -1387,15 +1387,15 @@ public final class i
     
     public final int getRootAlpha()
     {
-      return this.xZ;
+      return this.yf;
     }
     
     public final boolean isStateful()
     {
-      if (this.yb == null) {
-        this.yb = Boolean.valueOf(this.xU.isStateful());
+      if (this.yh == null) {
+        this.yh = Boolean.valueOf(this.ya.isStateful());
       }
-      return this.yb.booleanValue();
+      return this.yh.booleanValue();
     }
     
     public final void setAlpha(float paramFloat)
@@ -1405,7 +1405,7 @@ public final class i
     
     public final void setRootAlpha(int paramInt)
     {
-      this.xZ = paramInt;
+      this.yf = paramInt;
     }
   }
   
@@ -1413,21 +1413,21 @@ public final class i
     extends Drawable.ConstantState
   {
     int mChangingConfigurations;
-    i.f yd;
-    ColorStateList ye = null;
-    PorterDuff.Mode yf = i.xe;
-    boolean yg;
-    Bitmap yh;
-    ColorStateList yi;
-    PorterDuff.Mode yj;
-    int yk;
-    boolean yl;
+    i.f yj;
+    ColorStateList yk = null;
+    PorterDuff.Mode yl = i.xl;
     boolean ym;
-    Paint yn;
+    Bitmap yn;
+    ColorStateList yo;
+    PorterDuff.Mode yp;
+    int yq;
+    boolean yr;
+    boolean ys;
+    Paint yt;
     
     public g()
     {
-      this.yd = new i.f();
+      this.yj = new i.f();
     }
     
     public g(g paramg)
@@ -1435,16 +1435,16 @@ public final class i
       if (paramg != null)
       {
         this.mChangingConfigurations = paramg.mChangingConfigurations;
-        this.yd = new i.f(paramg.yd);
-        if (paramg.yd.xS != null) {
-          this.yd.xS = new Paint(paramg.yd.xS);
+        this.yj = new i.f(paramg.yj);
+        if (paramg.yj.xY != null) {
+          this.yj.xY = new Paint(paramg.yj.xY);
         }
-        if (paramg.yd.xR != null) {
-          this.yd.xR = new Paint(paramg.yd.xR);
+        if (paramg.yj.xX != null) {
+          this.yj.xX = new Paint(paramg.yj.xX);
         }
-        this.ye = paramg.ye;
-        this.yf = paramg.yf;
-        this.yg = paramg.yg;
+        this.yk = paramg.yk;
+        this.yl = paramg.yl;
+        this.ym = paramg.ym;
       }
     }
     
@@ -1465,50 +1465,50 @@ public final class i
     
     public final void s(int paramInt1, int paramInt2)
     {
-      this.yh.eraseColor(0);
-      Canvas localCanvas = new Canvas(this.yh);
-      this.yd.a(localCanvas, paramInt1, paramInt2);
+      this.yn.eraseColor(0);
+      Canvas localCanvas = new Canvas(this.yn);
+      this.yj.a(localCanvas, paramInt1, paramInt2);
     }
   }
   
   static final class h
     extends Drawable.ConstantState
   {
-    private final Drawable.ConstantState wY;
+    private final Drawable.ConstantState xf;
     
     public h(Drawable.ConstantState paramConstantState)
     {
-      this.wY = paramConstantState;
+      this.xf = paramConstantState;
     }
     
     public final boolean canApplyTheme()
     {
-      return this.wY.canApplyTheme();
+      return this.xf.canApplyTheme();
     }
     
     public final int getChangingConfigurations()
     {
-      return this.wY.getChangingConfigurations();
+      return this.xf.getChangingConfigurations();
     }
     
     public final Drawable newDrawable()
     {
       i locali = new i();
-      locali.xd = ((VectorDrawable)this.wY.newDrawable());
+      locali.xk = ((VectorDrawable)this.xf.newDrawable());
       return locali;
     }
     
     public final Drawable newDrawable(Resources paramResources)
     {
       i locali = new i();
-      locali.xd = ((VectorDrawable)this.wY.newDrawable(paramResources));
+      locali.xk = ((VectorDrawable)this.xf.newDrawable(paramResources));
       return locali;
     }
     
     public final Drawable newDrawable(Resources paramResources, Resources.Theme paramTheme)
     {
       i locali = new i();
-      locali.xd = ((VectorDrawable)this.wY.newDrawable(paramResources, paramTheme));
+      locali.xk = ((VectorDrawable)this.xf.newDrawable(paramResources, paramTheme));
       return locali;
     }
   }

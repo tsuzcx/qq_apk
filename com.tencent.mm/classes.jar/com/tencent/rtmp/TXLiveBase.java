@@ -1,13 +1,11 @@
 package com.tencent.rtmp;
 
 import android.content.Context;
-import com.tencent.liteav.basic.b.e;
-import com.tencent.liteav.basic.b.g;
 import com.tencent.liteav.basic.datareport.TXCDRApi;
+import com.tencent.liteav.basic.license.LicenceCheck;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCCommonUtil;
-import com.tencent.liteav.basic.util.f;
-import com.tencent.liteav.o;
+import com.tencent.liteav.p;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class TXLiveBase
@@ -180,7 +178,7 @@ public class TXLiveBase
   public static String getPituSDKVersion()
   {
     AppMethodBeat.i(14235);
-    String str = o.a();
+    String str = p.a();
     AppMethodBeat.o(14235);
     return str;
   }
@@ -256,7 +254,7 @@ public class TXLiveBase
   public static void setLibraryPath(String paramString)
   {
     AppMethodBeat.i(14231);
-    f.b(paramString);
+    com.tencent.liteav.basic.util.f.b(paramString);
     AppMethodBeat.o(14231);
   }
   
@@ -282,12 +280,19 @@ public class TXLiveBase
     AppMethodBeat.o(14234);
   }
   
+  public static void setUserId(String paramString)
+  {
+    AppMethodBeat.i(222653);
+    TXCCommonUtil.setUserId(paramString);
+    AppMethodBeat.o(222653);
+  }
+  
   public String getLicenceInfo(Context paramContext)
   {
     AppMethodBeat.i(14226);
-    g localg = new g();
-    e.a().a(localg, paramContext);
-    paramContext = localg.a;
+    com.tencent.liteav.basic.license.f localf = new com.tencent.liteav.basic.license.f();
+    LicenceCheck.a().a(localf, paramContext);
+    paramContext = localf.a;
     AppMethodBeat.o(14226);
     return paramContext;
   }
@@ -295,13 +300,13 @@ public class TXLiveBase
   public void setLicence(Context paramContext, String paramString1, String paramString2)
   {
     AppMethodBeat.i(14225);
-    e.a().a(paramContext, paramString1, paramString2);
+    LicenceCheck.a().a(paramContext, paramString1, paramString2);
     AppMethodBeat.o(14225);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.TXLiveBase
  * JD-Core Version:    0.7.0.1
  */

@@ -5,18 +5,18 @@ import com.tencent.mm.plugin.wallet.pwd.a.f.a;
 
 public final class a
 {
-  f.a Deq;
+  f.a HKk;
   Context mContext;
   
   public a(Context paramContext, f.a parama)
   {
     this.mContext = paramContext;
-    this.Deq = parama;
+    this.HKk = parama;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.a
  * JD-Core Version:    0.7.0.1
  */

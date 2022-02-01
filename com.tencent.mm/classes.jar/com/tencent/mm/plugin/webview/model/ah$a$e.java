@@ -3,18 +3,18 @@ package com.tencent.mm.plugin.webview.model;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "invoke"})
 final class ah$a$e<InputType, ResultType>
   implements b<Bundle, Bundle>
 {
-  public static final e ElM;
+  public static final e IYM;
   
   static
   {
     AppMethodBeat.i(182614);
-    ElM = new e();
+    IYM = new e();
     AppMethodBeat.o(182614);
   }
 }

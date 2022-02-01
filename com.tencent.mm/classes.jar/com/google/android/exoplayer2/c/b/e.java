@@ -6,13 +6,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e
 {
-  final m biq;
-  int bkv;
+  final m bin;
+  int bkq;
   
   public e()
   {
     AppMethodBeat.i(92030);
-    this.biq = new m(8);
+    this.bin = new m(8);
     AppMethodBeat.o(92030);
   }
   
@@ -20,8 +20,8 @@ final class e
   {
     int k = 0;
     AppMethodBeat.i(92031);
-    paramf.b(this.biq.data, 0, 1);
-    int m = this.biq.data[0] & 0xFF;
+    paramf.b(this.bin.data, 0, 1);
+    int m = this.bin.data[0] & 0xFF;
     if (m == 0)
     {
       AppMethodBeat.o(92031);
@@ -35,15 +35,15 @@ final class e
       i += 1;
     }
     m = (j ^ 0xFFFFFFFF) & m;
-    paramf.b(this.biq.data, 1, i);
+    paramf.b(this.bin.data, 1, i);
     j = k;
     k = m;
     while (j < i)
     {
-      k = (k << 8) + (this.biq.data[(j + 1)] & 0xFF);
+      k = (k << 8) + (this.bin.data[(j + 1)] & 0xFF);
       j += 1;
     }
-    this.bkv += i + 1;
+    this.bkq += i + 1;
     long l = k;
     AppMethodBeat.o(92031);
     return l;
@@ -51,7 +51,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.b.e
  * JD-Core Version:    0.7.0.1
  */

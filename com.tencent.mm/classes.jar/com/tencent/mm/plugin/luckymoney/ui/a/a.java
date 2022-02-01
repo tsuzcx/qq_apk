@@ -1,76 +1,51 @@
 package com.tencent.mm.plugin.luckymoney.ui.a;
 
-import android.content.Context;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.aa;
-import com.tencent.mm.api.z.a;
-import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import java.util.Random;
 
 public final class a
 {
-  public static void a(ViewGroup paramViewGroup, ChatFooterPanel paramChatFooterPanel, int paramInt, z.a parama)
+  public static boolean bfV()
   {
-    AppMethodBeat.i(65985);
-    paramChatFooterPanel.setEntranceScene(paramInt);
-    paramChatFooterPanel.setVisibility(0);
-    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, aa.bj(paramViewGroup.getContext()));
-    localLayoutParams.gravity = 80;
-    paramViewGroup.removeAllViews();
-    paramViewGroup.addView(paramChatFooterPanel, localLayoutParams);
-    paramViewGroup = aa.Lw();
-    paramViewGroup.cSG = parama;
-    paramChatFooterPanel.setCallback(paramViewGroup);
-    AppMethodBeat.o(65985);
-  }
-  
-  public static boolean a(Context paramContext, ChatFooterPanel paramChatFooterPanel)
-  {
-    AppMethodBeat.i(65984);
-    if (paramChatFooterPanel == null)
+    AppMethodBeat.i(213538);
+    int i = ((Integer)g.aAh().azQ().get(ar.a.OfN, Integer.valueOf(0))).intValue();
+    if (i <= 0)
     {
-      AppMethodBeat.o(65984);
+      AppMethodBeat.o(213538);
       return false;
     }
-    paramChatFooterPanel.onPause();
-    if (paramChatFooterPanel.getVisibility() == 0)
+    if (i >= 100)
     {
-      paramChatFooterPanel.setVisibility(8);
-      paramContext = AnimationUtils.loadAnimation(paramContext, 2130772106);
-      paramContext.setAnimationListener(new Animation.AnimationListener()
-      {
-        public final void onAnimationEnd(Animation paramAnonymousAnimation)
-        {
-          AppMethodBeat.i(65983);
-          if (this.vNJ != null)
-          {
-            this.vNJ.onPause();
-            this.vNJ.setVisibility(8);
-          }
-          AppMethodBeat.o(65983);
-        }
-        
-        public final void onAnimationRepeat(Animation paramAnonymousAnimation) {}
-        
-        public final void onAnimationStart(Animation paramAnonymousAnimation)
-        {
-          AppMethodBeat.i(65982);
-          if (this.vNJ != null) {
-            this.vNJ.setVisibility(0);
-          }
-          AppMethodBeat.o(65982);
-        }
-      });
-      paramChatFooterPanel.startAnimation(paramContext);
-      AppMethodBeat.o(65984);
+      AppMethodBeat.o(213538);
       return true;
     }
-    AppMethodBeat.o(65984);
+    int j = new Random().nextInt(101);
+    Log.i("MicroMsg.GetTimeLimitPromotBlindBox", "random: %s, %s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+    if (j <= i)
+    {
+      AppMethodBeat.o(213538);
+      return true;
+    }
+    AppMethodBeat.o(213538);
     return false;
+  }
+  
+  public static void gW(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(213537);
+    int i = ((Integer)g.aAh().azQ().get(ar.a.OfM, Integer.valueOf(-1))).intValue();
+    Log.i("MicroMsg.GetTimeLimitPromotBlindBox", "new: [%s, %s], old: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), Integer.valueOf(i) });
+    if (paramInt2 > i)
+    {
+      g.aAh().azQ().set(ar.a.OfM, Integer.valueOf(paramInt2));
+      g.aAh().azQ().set(ar.a.OfN, Integer.valueOf(paramInt1));
+    }
+    AppMethodBeat.o(213537);
   }
 }
 

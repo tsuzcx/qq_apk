@@ -1,156 +1,153 @@
 package com.tencent.mm.plugin.radar.b;
 
 import android.content.Context;
-import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
 import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.modelgeo.d;
 import com.tencent.mm.modelstat.o;
 import com.tencent.mm.pluginsdk.model.lbs.Location;
-import com.tencent.mm.protocal.protobuf.cqz;
-import com.tencent.mm.protocal.protobuf.cra;
-import com.tencent.mm.protocal.protobuf.crb;
-import com.tencent.mm.protocal.protobuf.crc;
-import com.tencent.mm.protocal.protobuf.cre;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.protocal.protobuf.diy;
+import com.tencent.mm.protocal.protobuf.diz;
+import com.tencent.mm.protocal.protobuf.dja;
+import com.tencent.mm.protocal.protobuf.djb;
+import com.tencent.mm.protocal.protobuf.djd;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/model/RadarManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "delegate", "Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarDelegate;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarDelegate;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "delayRadarRemove", "com/tencent/mm/plugin/radar/model/RadarManager$delayRadarRemove$1", "Lcom/tencent/mm/plugin/radar/model/RadarManager$delayRadarRemove$1;", "delayRadarSearch", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "encodeUserNameMap", "", "", "getEncodeUserNameMap", "()Ljava/util/Map;", "setEncodeUserNameMap", "(Ljava/util/Map;)V", "isCancel", "", "lastStateTable", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "getLastStateTable", "setLastStateTable", "location", "Lcom/tencent/mm/pluginsdk/model/lbs/Location;", "locationGeo", "Lcom/tencent/mm/modelgeo/LocationGeo;", "mOnLocationGet", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "members", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "radarMemberList", "Lcom/tencent/mm/protocal/protobuf/RadarMember;", "getRadarMemberList", "()Ljava/util/LinkedList;", "setRadarMemberList", "(Ljava/util/LinkedList;)V", "sceneRadarRelationChain", "Lcom/tencent/mm/plugin/radar/model/NetSceneRadarRelationChain;", "sceneRadarSearch", "Lcom/tencent/mm/plugin/radar/model/NetSceneRadarSearch;", "selectedStatusMap", "Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "getSelectedStatusMap", "setSelectedStatusMap", "stateTable", "getStateTable", "setStateTable", "status", "Lcom/tencent/mm/plugin/radar/model/RadarManager$Status;", "tempLatestChangeStatTable", "", "Lcom/tencent/mm/plugin/radar/model/RadarManager$LatestChangeStat;", "getTempLatestChangeStatTable", "setTempLatestChangeStatTable", "ticket", "doRadarRelationChain", "", "memList", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "getChooseStatus", "member", "getState", "old", "username", "getStateImpl", "onCreate", "onDestroy", "onLocationGot", "isOk", "onPause", "onRadarMemberReturn", "errType", "", "errCode", "radarMembers", "count", "onRadarRelationChainReturn", "onResume", "onSceneEnd", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "putState", "state", "radarRemove", "reset", "saveLastState", "name", "setChooseStatus", "startRadarSearch", "stop", "stopRadarSearch", "syncStateToLastState", "ChooseStatus", "Companion", "LatestChangeStat", "RadarDelegate", "RadarStatus", "Status", "plugin-radar_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/model/RadarManager;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "delegate", "Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarDelegate;", "context", "Landroid/content/Context;", "(Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarDelegate;Landroid/content/Context;)V", "getContext", "()Landroid/content/Context;", "delayRadarRemove", "com/tencent/mm/plugin/radar/model/RadarManager$delayRadarRemove$1", "Lcom/tencent/mm/plugin/radar/model/RadarManager$delayRadarRemove$1;", "delayRadarSearch", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "encodeUserNameMap", "", "", "getEncodeUserNameMap", "()Ljava/util/Map;", "setEncodeUserNameMap", "(Ljava/util/Map;)V", "isCancel", "", "lastStateTable", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "getLastStateTable", "setLastStateTable", "location", "Lcom/tencent/mm/pluginsdk/model/lbs/Location;", "locationGeo", "Lcom/tencent/mm/modelgeo/LocationGeo;", "mOnLocationGet", "Lcom/tencent/mm/modelgeo/IGetLocation$IOnLocationGet;", "members", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "radarMemberList", "Lcom/tencent/mm/protocal/protobuf/RadarMember;", "getRadarMemberList", "()Ljava/util/LinkedList;", "setRadarMemberList", "(Ljava/util/LinkedList;)V", "sceneRadarRelationChain", "Lcom/tencent/mm/plugin/radar/model/NetSceneRadarRelationChain;", "sceneRadarSearch", "Lcom/tencent/mm/plugin/radar/model/NetSceneRadarSearch;", "selectedStatusMap", "Lcom/tencent/mm/plugin/radar/model/RadarManager$ChooseStatus;", "getSelectedStatusMap", "setSelectedStatusMap", "stateTable", "getStateTable", "setStateTable", "status", "Lcom/tencent/mm/plugin/radar/model/RadarManager$Status;", "tempLatestChangeStatTable", "", "Lcom/tencent/mm/plugin/radar/model/RadarManager$LatestChangeStat;", "getTempLatestChangeStatTable", "setTempLatestChangeStatTable", "ticket", "doRadarRelationChain", "", "memList", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "getChooseStatus", "member", "getState", "old", "username", "getStateImpl", "onCreate", "onDestroy", "onLocationGot", "isOk", "onPause", "onRadarMemberReturn", "errType", "", "errCode", "radarMembers", "count", "onRadarRelationChainReturn", "onResume", "onSceneEnd", "errMsg", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "putState", "state", "radarRemove", "reset", "saveLastState", "name", "setChooseStatus", "startRadarSearch", "stop", "stopRadarSearch", "syncStateToLastState", "ChooseStatus", "Companion", "LatestChangeStat", "RadarDelegate", "RadarStatus", "Status", "plugin-radar_release"})
 public final class e
-  implements f
+  implements i
 {
+  private static final int ByU = 3000;
+  private static final int ByV = 5000;
+  private static final int ByW = 1;
+  public static final e.b ByX;
   private static final String TAG = "MicroMsg.Radar.RadarManager";
-  private static final int xyT = 3000;
-  private static final int xyU = 5000;
-  private static final int xyV = 1;
-  public static final e.b xyW;
+  private Location ByI;
+  private b ByJ;
+  private f ByK;
+  public LinkedList<diz> ByL;
+  public Map<String, String> ByM;
+  private Map<String, c.e> ByN;
+  private Map<String, c.e> ByO;
+  public Map<Long, c> ByP;
+  public Map<String, e.a> ByQ;
+  private final MTimerHandler ByR;
+  private final e.g ByS;
+  private final d ByT;
   private final Context context;
-  private String dqk;
-  public final b.a fHp;
-  public d hTg;
-  private boolean hmD;
-  private final LinkedList<crc> ikW;
-  private Location xyH;
-  private b xyI;
-  private f xyJ;
-  public LinkedList<cra> xyK;
-  public Map<String, String> xyL;
-  private Map<String, c.e> xyM;
-  private Map<String, c.e> xyN;
-  public Map<Long, e.c> xyO;
-  public Map<String, e.a> xyP;
-  private final aw xyQ;
-  private final g xyR;
-  private final d xyS;
+  private String dHx;
+  public final b.a gmA;
+  public com.tencent.mm.modelgeo.d iOv;
+  private boolean ifz;
+  private final LinkedList<djb> jfV;
   
   static
   {
     AppMethodBeat.i(138582);
-    xyW = new e.b((byte)0);
+    ByX = new e.b((byte)0);
     TAG = "MicroMsg.Radar.RadarManager";
-    xyT = 3000;
-    xyU = 5000;
-    xyV = 1;
+    ByU = 3000;
+    ByV = 5000;
+    ByW = 1;
     AppMethodBeat.o(138582);
   }
   
   public e(d paramd, Context paramContext)
   {
     AppMethodBeat.i(138581);
-    this.xyS = paramd;
+    this.ByT = paramd;
     this.context = paramContext;
-    this.xyJ = f.xzi;
-    this.ikW = new LinkedList();
-    this.xyL = ((Map)new LinkedHashMap());
-    this.xyM = ((Map)new LinkedHashMap());
-    this.xyN = ((Map)new LinkedHashMap());
-    this.xyO = ((Map)new LinkedHashMap());
-    this.xyP = ((Map)new LinkedHashMap());
-    this.xyQ = new aw((aw.a)new h(this), false);
-    this.xyR = new g();
-    this.fHp = ((b.a)new i(this));
+    this.ByK = f.Bzj;
+    this.jfV = new LinkedList();
+    this.ByM = ((Map)new LinkedHashMap());
+    this.ByN = ((Map)new LinkedHashMap());
+    this.ByO = ((Map)new LinkedHashMap());
+    this.ByP = ((Map)new LinkedHashMap());
+    this.ByQ = ((Map)new LinkedHashMap());
+    this.ByR = new MTimerHandler((MTimerHandler.CallBack)new h(this), false);
+    this.ByS = new e.g();
+    this.gmA = ((b.a)new i(this));
     AppMethodBeat.o(138581);
   }
   
-  private final void a(int paramInt1, int paramInt2, LinkedList<crc> paramLinkedList)
+  private final void a(int paramInt1, int paramInt2, LinkedList<djb> paramLinkedList)
   {
     AppMethodBeat.i(138571);
-    this.xyS.a(paramInt1, paramInt2, paramLinkedList);
+    this.ByT.a(paramInt1, paramInt2, paramLinkedList);
     AppMethodBeat.o(138571);
   }
   
-  private final void b(int paramInt1, int paramInt2, LinkedList<cqz> paramLinkedList)
+  private final void b(int paramInt1, int paramInt2, LinkedList<diy> paramLinkedList)
   {
     AppMethodBeat.i(138572);
-    this.xyS.b(paramInt1, paramInt2, paramLinkedList);
+    this.ByT.b(paramInt1, paramInt2, paramLinkedList);
     AppMethodBeat.o(138572);
   }
   
-  private final c.e bH(String paramString, boolean paramBoolean)
+  private final c.e bX(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(138579);
     if (paramBoolean)
     {
-      paramString = (c.e)this.xyN.get(paramString);
+      paramString = (c.e)this.ByO.get(paramString);
       AppMethodBeat.o(138579);
       return paramString;
     }
-    paramString = (c.e)this.xyM.get(paramString);
+    paramString = (c.e)this.ByN.get(paramString);
     AppMethodBeat.o(138579);
     return paramString;
   }
   
-  private final void dGx()
+  private final void eHl()
   {
     AppMethodBeat.i(138568);
-    this.xyR.sendEmptyMessageDelayed(xyV, xyU);
+    this.ByS.sendEmptyMessageDelayed(ByW, ByV);
     AppMethodBeat.o(138568);
   }
   
-  public final c.e a(crc paramcrc, boolean paramBoolean)
+  public final c.e a(djb paramdjb, boolean paramBoolean)
   {
     AppMethodBeat.i(138576);
-    p.h(paramcrc, "member");
-    Object localObject = paramcrc.nIJ;
+    p.h(paramdjb, "member");
+    Object localObject = paramdjb.UserName;
     p.g(localObject, "member.UserName");
-    c.e locale = bH((String)localObject, paramBoolean);
+    c.e locale = bX((String)localObject, paramBoolean);
     localObject = locale;
     if (locale == null)
     {
-      paramcrc = paramcrc.Gzj;
-      p.g(paramcrc, "member.EncodeUserName");
-      localObject = bH(paramcrc, paramBoolean);
+      paramdjb = paramdjb.LuX;
+      p.g(paramdjb, "member.EncodeUserName");
+      localObject = bX(paramdjb, paramBoolean);
     }
     AppMethodBeat.o(138576);
     return localObject;
   }
   
-  public final void a(crc paramcrc)
+  public final void a(djb paramdjb)
   {
     AppMethodBeat.i(138580);
-    if (paramcrc != null)
+    if (paramdjb != null)
     {
-      com.tencent.mm.plugin.radar.ui.g localg = com.tencent.mm.plugin.radar.ui.g.xAX;
-      paramcrc = com.tencent.mm.plugin.radar.ui.g.b(paramcrc);
-      if (this.xyP.containsKey(paramcrc))
+      com.tencent.mm.plugin.radar.ui.g localg = com.tencent.mm.plugin.radar.ui.g.BAY;
+      paramdjb = com.tencent.mm.plugin.radar.ui.g.b(paramdjb);
+      if (this.ByQ.containsKey(paramdjb))
       {
-        this.xyP.remove(paramcrc);
+        this.ByQ.remove(paramdjb);
         AppMethodBeat.o(138580);
         return;
       }
-      this.xyP.put(paramcrc, e.a.xyX);
+      this.ByQ.put(paramdjb, e.a.ByY);
     }
     AppMethodBeat.o(138580);
   }
@@ -158,18 +155,18 @@ public final class e
   public final void a(String paramString, c.e parame)
   {
     AppMethodBeat.i(138574);
-    c.e locale = (c.e)this.xyM.get(paramString);
+    c.e locale = (c.e)this.ByN.get(paramString);
     if ((locale != null) && (locale != parame)) {
-      this.xyN.put(paramString, locale);
+      this.ByO.put(paramString, locale);
     }
     AppMethodBeat.o(138574);
   }
   
-  public final c.e aww(String paramString)
+  public final c.e aKO(String paramString)
   {
     AppMethodBeat.i(138578);
     p.h(paramString, "username");
-    paramString = bH(paramString, false);
+    paramString = bX(paramString, false);
     AppMethodBeat.o(138578);
     return paramString;
   }
@@ -179,59 +176,59 @@ public final class e
     AppMethodBeat.i(138575);
     p.h(paramString, "username");
     p.h(parame, "state");
-    if (!d.n.n.aD((CharSequence)paramString))
+    if (!n.aL((CharSequence)paramString))
     {
       a(paramString, parame);
-      this.xyM.put(paramString, parame);
+      this.ByN.put(paramString, parame);
     }
     AppMethodBeat.o(138575);
   }
   
-  public final void dGv()
+  public final void eHj()
   {
     AppMethodBeat.i(138566);
-    dGw();
-    this.hmD = false;
-    this.xyH = null;
-    this.xyJ = f.xzi;
-    this.xyQ.stopTimer();
-    ae.d(TAG, "start radar");
-    if (this.hTg == null) {
-      this.hTg = d.aIh();
+    eHk();
+    this.ifz = false;
+    this.ByI = null;
+    this.ByK = f.Bzj;
+    this.ByR.stopTimer();
+    Log.d(TAG, "start radar");
+    if (this.iOv == null) {
+      this.iOv = com.tencent.mm.modelgeo.d.bca();
     }
-    this.xyJ = f.xzj;
-    d locald = this.hTg;
+    this.ByK = f.Bzk;
+    com.tencent.mm.modelgeo.d locald = this.iOv;
     if (locald != null) {
-      locald.b(this.fHp);
+      locald.b(this.gmA);
     }
-    ae.d(TAG, "status: %s", new Object[] { this.xyJ });
+    Log.d(TAG, "status: %s", new Object[] { this.ByK });
     AppMethodBeat.o(138566);
   }
   
-  public final void dGw()
+  public final void eHk()
   {
     AppMethodBeat.i(138567);
-    f localf = this.xyJ;
-    switch (f.cqt[localf.ordinal()])
+    f localf = this.ByK;
+    switch (f.$EnumSwitchMapping$0[localf.ordinal()])
     {
     }
     for (;;)
     {
-      ae.d(TAG, "stop radar");
+      Log.d(TAG, "stop radar");
       AppMethodBeat.o(138567);
       return;
       AppMethodBeat.o(138567);
       return;
       stop();
       continue;
-      if (this.xyI != null)
+      if (this.ByJ != null)
       {
         stop();
-        com.tencent.mm.kernel.g.ajj().a((com.tencent.mm.ak.n)this.xyI);
-        dGx();
+        com.tencent.mm.kernel.g.azz().a((q)this.ByJ);
+        eHl();
         continue;
         stop();
-        dGx();
+        eHl();
       }
     }
   }
@@ -239,73 +236,73 @@ public final class e
   public final void onResume()
   {
     AppMethodBeat.i(138569);
-    d locald = this.hTg;
+    com.tencent.mm.modelgeo.d locald = this.iOv;
     if (locald != null)
     {
-      locald.b(this.fHp);
+      locald.b(this.gmA);
       AppMethodBeat.o(138569);
       return;
     }
     AppMethodBeat.o(138569);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    crc localcrc = null;
+    djb localdjb = null;
     AppMethodBeat.i(138573);
-    p.h(paramn, "scene");
-    switch (paramn.getType())
+    p.h(paramq, "scene");
+    switch (paramq.getType())
     {
     }
     for (;;)
     {
       AppMethodBeat.o(138573);
       return;
-      if (this.xyI == paramn)
+      if (this.ByJ == paramq)
       {
-        if (((b)paramn).dsO == 1)
+        if (((b)paramq).dJY == 1)
         {
-          this.xyJ = f.xzl;
+          this.ByK = f.Bzm;
           if ((paramInt1 == 0) && (paramInt2 == 0))
           {
             Object localObject = TAG;
-            paramString = ((b)paramn).rr;
+            paramString = ((b)paramq).rr;
             int i;
             if (paramString != null)
             {
-              paramString = paramString.aEV();
-              paramString = (cre)paramString;
+              paramString = paramString.aYK();
+              paramString = (djd)paramString;
               if (paramString == null) {
                 break label276;
               }
-              i = paramString.fNf;
+              i = paramString.gsq;
               label129:
-              ae.d((String)localObject, "rader members count: %s ticket: %s", new Object[] { Integer.valueOf(i), this.dqk });
-              this.xyQ.Dv(xyT);
-              paramString = ((b)paramn).rr;
+              Log.d((String)localObject, "rader members count: %s ticket: %s", new Object[] { Integer.valueOf(i), this.dHx });
+              this.ByR.startTimer(ByU);
+              paramString = ((b)paramq).rr;
               if (paramString == null) {
                 break label282;
               }
             }
             label276:
             label282:
-            for (paramString = paramString.aEV();; paramString = null)
+            for (paramString = paramString.aYK();; paramString = null)
             {
-              paramn = (cre)paramString;
-              paramString = localcrc;
-              if (paramn != null) {
-                paramString = paramn.FNl;
+              paramq = (djd)paramString;
+              paramString = localdjb;
+              if (paramq != null) {
+                paramString = paramq.KGQ;
               }
               if (paramString == null) {
                 break label287;
               }
-              paramn = paramString.iterator();
-              while (paramn.hasNext())
+              paramq = paramString.iterator();
+              while (paramq.hasNext())
               {
-                localcrc = (crc)paramn.next();
-                localObject = com.tencent.mm.plugin.c.a.aVH();
+                localdjb = (djb)paramq.next();
+                localObject = com.tencent.mm.plugin.c.a.bqE();
                 p.g(localObject, "PinAntispam.instance()");
-                ((com.tencent.mm.plugin.c.a)localObject).aAh().mb(localcrc.nIJ, localcrc.GNI);
+                ((com.tencent.mm.plugin.c.a)localObject).aTp().mP(localdjb.UserName, localdjb.LRO);
               }
               paramString = null;
               break;
@@ -315,11 +312,11 @@ public final class e
             label287:
             if (paramString != null)
             {
-              this.ikW.clear();
-              this.ikW.addAll((Collection)paramString);
+              this.jfV.clear();
+              this.jfV.addAll((Collection)paramString);
             }
-            a(paramInt1, paramInt2, this.ikW);
-            ae.d(TAG, "status: %s", new Object[] { this.xyJ });
+            a(paramInt1, paramInt2, this.jfV);
+            Log.d(TAG, "status: %s", new Object[] { this.ByK });
             AppMethodBeat.o(138573);
             return;
           }
@@ -331,21 +328,21 @@ public final class e
         a(paramInt1, paramInt2, null);
         AppMethodBeat.o(138573);
         return;
-        ae.d(TAG, " MMFunc_MMRadarRelationChain ");
+        Log.d(TAG, " MMFunc_MMRadarRelationChain ");
         if ((paramInt1 == 0) && (paramInt2 == 0))
         {
-          paramString = ((a)paramn).rr.aEV();
+          paramString = ((a)paramq).rr.aYK();
           if (paramString == null)
           {
-            paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RadarRelationChainResponse");
+            paramString = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.RadarRelationChainResponse");
             AppMethodBeat.o(138573);
             throw paramString;
           }
-          paramString = (crb)paramString;
-          this.dqk = paramString.xrf;
-          if (paramString.fNf > 0)
+          paramString = (dja)paramString;
+          this.dHx = paramString.Bri;
+          if (paramString.gsq > 0)
           {
-            b(paramInt1, paramInt2, paramString.FNl);
+            b(paramInt1, paramInt2, paramString.KGQ);
             AppMethodBeat.o(138573);
             return;
           }
@@ -361,130 +358,175 @@ public final class e
   public final void stop()
   {
     AppMethodBeat.i(138570);
-    this.hmD = true;
-    this.xyJ = f.xzi;
-    this.xyQ.stopTimer();
+    this.ifz = true;
+    this.ByK = f.Bzj;
+    this.ByR.stopTimer();
     AppMethodBeat.o(138570);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarDelegate;", "", "onLocationGot", "", "isOk", "", "location", "Lcom/tencent/mm/pluginsdk/model/lbs/Location;", "onRadarMemberReturn", "errType", "", "errCode", "radarMembers", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "count", "onRadarRelationChainReturn", "redarChatMember", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "plugin-radar_release"})
-  public static abstract interface d
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/model/RadarManager$LatestChangeStat;", "", "member", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "state", "Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "(Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;)V", "getMember", "()Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "getState", "()Lcom/tencent/mm/plugin/radar/model/RadarAddContact$Status;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "", "plugin-radar_release"})
+  public static final class c
   {
-    public abstract void a(int paramInt1, int paramInt2, LinkedList<crc> paramLinkedList);
+    public final djb Bzb;
+    public final c.e Bzc;
     
-    public abstract void b(int paramInt1, int paramInt2, LinkedList<cqz> paramLinkedList);
+    public c(djb paramdjb, c.e parame)
+    {
+      AppMethodBeat.i(138552);
+      this.Bzb = paramdjb;
+      this.Bzc = parame;
+      AppMethodBeat.o(138552);
+    }
     
-    public abstract void pK(boolean paramBoolean);
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(138555);
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof c))
+        {
+          paramObject = (c)paramObject;
+          if ((!p.j(this.Bzb, paramObject.Bzb)) || (!p.j(this.Bzc, paramObject.Bzc))) {}
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(138555);
+        return true;
+      }
+      AppMethodBeat.o(138555);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      int j = 0;
+      AppMethodBeat.i(138554);
+      Object localObject = this.Bzb;
+      if (localObject != null) {}
+      for (int i = localObject.hashCode();; i = 0)
+      {
+        localObject = this.Bzc;
+        if (localObject != null) {
+          j = localObject.hashCode();
+        }
+        AppMethodBeat.o(138554);
+        return i * 31 + j;
+      }
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(138553);
+      String str = "LatestChangeStat(member=" + this.Bzb + ", state=" + this.Bzc + ")";
+      AppMethodBeat.o(138553);
+      return str;
+    }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarStatus;", "", "(Ljava/lang/String;I)V", "SEARCHING", "SEARCH_RETRUN", "RALATIONCHAIN", "RALATIONCHAIN_RETRUN", "CREATING_CHAT", "plugin-radar_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarDelegate;", "", "onLocationGot", "", "isOk", "", "location", "Lcom/tencent/mm/pluginsdk/model/lbs/Location;", "onRadarMemberReturn", "errType", "", "errCode", "radarMembers", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/RadarSearchMember;", "count", "onRadarRelationChainReturn", "redarChatMember", "Lcom/tencent/mm/protocal/protobuf/RadarChatRoomMember;", "plugin-radar_release"})
+  public static abstract interface d
+  {
+    public abstract void a(int paramInt1, int paramInt2, LinkedList<djb> paramLinkedList);
+    
+    public abstract void b(int paramInt1, int paramInt2, LinkedList<diy> paramLinkedList);
+    
+    public abstract void sV(boolean paramBoolean);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/model/RadarManager$RadarStatus;", "", "(Ljava/lang/String;I)V", "SEARCHING", "SEARCH_RETRUN", "RALATIONCHAIN", "RALATIONCHAIN_RETRUN", "CREATING_CHAT", "plugin-radar_release"})
   public static enum e
   {
     static
     {
       AppMethodBeat.i(138556);
       e locale1 = new e("SEARCHING", 0);
-      xzc = locale1;
+      Bzd = locale1;
       e locale2 = new e("SEARCH_RETRUN", 1);
-      xzd = locale2;
+      Bze = locale2;
       e locale3 = new e("RALATIONCHAIN", 2);
-      xze = locale3;
+      Bzf = locale3;
       e locale4 = new e("RALATIONCHAIN_RETRUN", 3);
-      xzf = locale4;
+      Bzg = locale4;
       e locale5 = new e("CREATING_CHAT", 4);
-      xzg = locale5;
-      xzh = new e[] { locale1, locale2, locale3, locale4, locale5 };
+      Bzh = locale5;
+      Bzi = new e[] { locale1, locale2, locale3, locale4, locale5 };
       AppMethodBeat.o(138556);
     }
     
     private e() {}
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/radar/model/RadarManager$Status;", "", "(Ljava/lang/String;I)V", "Stopped", "Locating", "RadarSearching", "Waiting", "plugin-radar_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/radar/model/RadarManager$Status;", "", "(Ljava/lang/String;I)V", "Stopped", "Locating", "RadarSearching", "Waiting", "plugin-radar_release"})
   static enum f
   {
     static
     {
       AppMethodBeat.i(138559);
       f localf1 = new f("Stopped", 0);
-      xzi = localf1;
+      Bzj = localf1;
       f localf2 = new f("Locating", 1);
-      xzj = localf2;
+      Bzk = localf2;
       f localf3 = new f("RadarSearching", 2);
-      xzk = localf3;
+      Bzl = localf3;
       f localf4 = new f("Waiting", 3);
-      xzl = localf4;
-      xzm = new f[] { localf1, localf2, localf3, localf4 };
+      Bzm = localf4;
+      Bzn = new f[] { localf1, localf2, localf3, localf4 };
       AppMethodBeat.o(138559);
     }
     
     private f() {}
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/radar/model/RadarManager$delayRadarRemove$1", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "handleMessage", "", "msg", "Landroid/os/Message;", "plugin-radar_release"})
-  public static final class g
-    extends aq
-  {
-    public final void handleMessage(Message paramMessage)
-    {
-      AppMethodBeat.i(138563);
-      p.h(paramMessage, "msg");
-      if (paramMessage.what == e.dGy()) {
-        com.tencent.mm.kernel.g.ajj().b((com.tencent.mm.ak.n)new b());
-      }
-      AppMethodBeat.o(138563);
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onTimerExpired"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onTimerExpired"})
   static final class h
-    implements aw.a
+    implements MTimerHandler.CallBack
   {
     h(e parame) {}
     
     public final boolean onTimerExpired()
     {
       AppMethodBeat.i(138564);
-      if (!e.a(this.xzn))
+      if (!e.a(this.Bzo))
       {
-        e.a(this.xzn, e.f.xzk);
-        ae.d(e.access$getTAG$cp(), "status: %s", new Object[] { e.b(this.xzn) });
-        Object localObject = e.c(this.xzn);
+        e.a(this.Bzo, e.f.Bzl);
+        Log.d(e.access$getTAG$cp(), "status: %s", new Object[] { e.b(this.Bzo) });
+        Object localObject = e.c(this.Bzo);
         if (localObject != null)
         {
-          if (((Location)localObject).fdY())
+          if (((Location)localObject).gnj())
           {
-            ae.e(e.access$getTAG$cp(), "error! location is null!");
+            Log.e(e.access$getTAG$cp(), "error! location is null!");
             AppMethodBeat.o(138564);
             return false;
           }
-          ae.d(e.access$getTAG$cp(), "do once search");
-          e locale = this.xzn;
-          float f1 = ((Location)localObject).iab;
-          float f2 = ((Location)localObject).iac;
+          Log.d(e.access$getTAG$cp(), "do once search");
+          e locale = this.Bzo;
+          float f1 = ((Location)localObject).iUY;
+          float f2 = ((Location)localObject).iUZ;
           int i = ((Location)localObject).accuracy;
-          int j = ((Location)localObject).dBw;
+          int j = ((Location)localObject).dTl;
           String str = ((Location)localObject).mac;
           p.g(str, "it.mac");
-          localObject = ((Location)localObject).dBy;
+          localObject = ((Location)localObject).dTn;
           p.g(localObject, "it.cellId");
           e.a(locale, new b(1, f1, f2, i, j, str, (String)localObject));
-          com.tencent.mm.kernel.g.ajj().b((com.tencent.mm.ak.n)e.d(this.xzn));
+          com.tencent.mm.kernel.g.azz().b((q)e.d(this.Bzo));
         }
       }
       for (;;)
       {
         AppMethodBeat.o(138564);
         return false;
-        ae.e(e.access$getTAG$cp(), "error! location is null!");
+        Log.e(e.access$getTAG$cp(), "error! location is null!");
         AppMethodBeat.o(138564);
         return false;
-        ae.d(e.access$getTAG$cp(), "cancel radar searching");
+        Log.d(e.access$getTAG$cp(), "cancel radar searching");
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "<anonymous parameter 4>", "", "maccuracy", "<anonymous parameter 6>", "onGetLocation"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "isOk", "fLongitude", "", "fLatitude", "locType", "", "<anonymous parameter 4>", "", "maccuracy", "<anonymous parameter 6>", "onGetLocation"})
   static final class i
     implements b.a
   {
@@ -493,13 +535,13 @@ public final class e
     public final boolean a(boolean paramBoolean, float paramFloat1, float paramFloat2, int paramInt, double paramDouble1, double paramDouble2)
     {
       AppMethodBeat.i(138565);
-      if (e.a(this.xzn))
+      if (e.a(this.Bzo))
       {
-        ae.d(e.access$getTAG$cp(), "cancel location");
+        Log.d(e.access$getTAG$cp(), "cancel location");
         AppMethodBeat.o(138565);
         return false;
       }
-      if (e.c(this.xzn) != null)
+      if (e.c(this.Bzo) != null)
       {
         AppMethodBeat.o(138565);
         return false;
@@ -507,29 +549,29 @@ public final class e
       e locale;
       if (paramBoolean)
       {
-        locale = this.xzn;
-        e.c(this.xzn);
+        locale = this.Bzo;
+        e.c(this.Bzo);
         e.a(locale, true);
         o.a(2006, paramFloat1, paramFloat2, (int)paramDouble2);
-        ae.d(e.access$getTAG$cp(), "lat:%f lng:%f accuracy:%f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1), Double.valueOf(paramDouble2) });
-        e.a(this.xzn, new Location(paramFloat2, paramFloat1, (int)paramDouble2, paramInt, "", ""));
-        e.e(this.xzn).Dv(0L);
+        Log.d(e.access$getTAG$cp(), "lat:%f lng:%f accuracy:%f", new Object[] { Float.valueOf(paramFloat2), Float.valueOf(paramFloat1), Double.valueOf(paramDouble2) });
+        e.a(this.Bzo, new Location(paramFloat2, paramFloat1, (int)paramDouble2, paramInt, "", ""));
+        e.e(this.Bzo).startTimer(0L);
       }
       for (;;)
       {
         AppMethodBeat.o(138565);
         return false;
-        locale = this.xzn;
-        e.c(this.xzn);
+        locale = this.Bzo;
+        e.c(this.Bzo);
         e.a(locale, false);
-        e.f(this.xzn);
+        e.f(this.Bzo);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.radar.b.e
  * JD-Core Version:    0.7.0.1
  */

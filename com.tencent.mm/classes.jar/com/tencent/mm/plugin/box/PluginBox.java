@@ -1,38 +1,43 @@
 package com.tencent.mm.plugin.box;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.bp;
+import com.tencent.mm.g.a.lx;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.cf;
+import com.tencent.mm.model.cj;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.messenger.foundation.a.s;
-import com.tencent.mm.plugin.websearch.api.ad;
-import com.tencent.mm.plugin.websearch.api.ao;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.at;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PluginBox
   extends f
   implements com.tencent.mm.kernel.a.b.b, com.tencent.mm.kernel.api.bucket.c, d
 {
   private boolean isLoading;
-  private com.tencent.mm.sdk.b.c jkx;
-  a oaL;
-  private com.tencent.mm.sdk.b.c oaM;
-  private boolean oaN;
+  private IListener kiA;
+  a plH;
+  private IListener plI;
+  private boolean plJ;
   
   public PluginBox()
   {
     AppMethodBeat.i(76320);
-    this.oaL = new a();
-    this.jkx = new PluginBox.1(this);
-    this.oaM = new PluginBox.2(this);
-    this.oaN = false;
+    this.plH = new a();
+    this.kiA = new IListener() {};
+    this.plI = new IListener() {};
+    this.plJ = false;
     this.isLoading = false;
     AppMethodBeat.o(76320);
   }
@@ -40,7 +45,7 @@ public class PluginBox
   public static String getBoxFlightResPath()
   {
     AppMethodBeat.i(76326);
-    String str = w.B(new k(new k(ad.WJ(2).eQf()).fTg(), "flight.txt").fTh());
+    String str = aa.z(new o(new o(ai.afr(2).fYs()).heq(), "flight.txt").her());
     AppMethodBeat.o(76326);
     return str;
   }
@@ -48,19 +53,19 @@ public class PluginBox
   private void loadFlightNumberAsync()
   {
     AppMethodBeat.i(76324);
-    com.tencent.mm.plugin.expt.b.b localb = (com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class);
-    b.a locala = b.a.qLo;
-    com.tencent.mm.util.c localc = com.tencent.mm.util.c.LDf;
-    if (localb.a(locala, com.tencent.mm.util.c.fSe()) == 0)
+    com.tencent.mm.plugin.expt.b.b localb = (com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class);
+    b.a locala = b.a.shF;
+    com.tencent.mm.util.c localc = com.tencent.mm.util.c.QYz;
+    if (localb.a(locala, com.tencent.mm.util.c.hdd()) == 0)
     {
       AppMethodBeat.o(76324);
       return;
     }
-    h.MqF.f(new Runnable()
+    h.RTc.b(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(208296);
+        AppMethodBeat.i(196204);
         long l = System.currentTimeMillis();
         for (;;)
         {
@@ -69,48 +74,48 @@ public class PluginBox
             int i;
             if (!PluginBox.this.isLoading)
             {
-              ae.i("MicroMsg.Box.PluginBox", "start to load flight number");
+              Log.i("MicroMsg.Box.PluginBox", "start to load flight number");
               PluginBox.access$202(PluginBox.this, true);
-              if (!o.fB(PluginBox.getBoxFlightResPath()))
+              if (!com.tencent.mm.vfs.s.YS(PluginBox.getBoxFlightResPath()))
               {
-                ae.i("MicroMsg.Box.PluginBox", "flight number file not exist");
+                Log.i("MicroMsg.Box.PluginBox", "flight number file not exist");
                 return;
               }
-              String[] arrayOfString = new String(o.bb(PluginBox.getBoxFlightResPath(), 0, -1)).split("\n");
-              com.tencent.mm.pluginsdk.ui.span.b localb = com.tencent.mm.pluginsdk.ui.span.b.Fzy;
-              localb.Fzx = null;
-              localb.Fzv = 0;
-              localb.Fzw = 0;
+              String[] arrayOfString = new String(com.tencent.mm.vfs.s.aW(PluginBox.getBoxFlightResPath(), 0, -1)).split("\n");
+              com.tencent.mm.pluginsdk.ui.span.c localc = com.tencent.mm.pluginsdk.ui.span.c.KqA;
+              localc.Kqz = null;
+              localc.Kqx = 0;
+              localc.Kqy = 0;
               i = 0;
               if (i < arrayOfString.length)
               {
-                if (!bu.isNullOrNil(arrayOfString[i])) {
-                  com.tencent.mm.pluginsdk.ui.span.b.Fzy.aOD(arrayOfString[i]);
+                if (!Util.isNullOrNil(arrayOfString[i])) {
+                  com.tencent.mm.pluginsdk.ui.span.c.KqA.bff(arrayOfString[i]);
                 }
               }
               else
               {
                 PluginBox.access$302(PluginBox.this, true);
-                ae.i("MicroMsg.Box.PluginBox", "load flight number success NodeCount：%d CharacterCount：%d useTime: %d", new Object[] { Integer.valueOf(com.tencent.mm.pluginsdk.ui.span.b.Fzy.Fzw), Integer.valueOf(com.tencent.mm.pluginsdk.ui.span.b.Fzy.Fzv), Long.valueOf(System.currentTimeMillis() - l) });
+                Log.i("MicroMsg.Box.PluginBox", "load flight number success NodeCount：%d CharacterCount：%d useTime: %d", new Object[] { Integer.valueOf(com.tencent.mm.pluginsdk.ui.span.c.KqA.Kqy), Integer.valueOf(com.tencent.mm.pluginsdk.ui.span.c.KqA.Kqx), Long.valueOf(System.currentTimeMillis() - l) });
               }
             }
             else
             {
-              ae.i("MicroMsg.Box.PluginBox", "flight number is loading");
+              Log.i("MicroMsg.Box.PluginBox", "flight number is loading");
               continue;
             }
             i += 1;
           }
           catch (Exception localException)
           {
-            com.tencent.mm.plugin.box.a.a.md(0);
-            ae.printErrStackTrace("MicroMsg.Box.PluginBox", localException, localException.getMessage(), new Object[0]);
+            com.tencent.mm.plugin.box.a.a.pl(0);
+            Log.printErrStackTrace("MicroMsg.Box.PluginBox", localException, localException.getMessage(), new Object[0]);
             return;
           }
           finally
           {
             PluginBox.access$202(PluginBox.this, false);
-            AppMethodBeat.o(208296);
+            AppMethodBeat.o(196204);
           }
         }
       }
@@ -120,93 +125,154 @@ public class PluginBox
   
   private void loadWordBankAsync()
   {
-    AppMethodBeat.i(208298);
-    h.MqF.f(c.oaG, "box.HotWordSearchModel");
-    AppMethodBeat.o(208298);
+    AppMethodBeat.i(196206);
+    h.RTc.b(c.plC, "box.HotWordSearchModel");
+    AppMethodBeat.o(196206);
   }
   
   private void updateWordBankRes(final String paramString)
   {
-    AppMethodBeat.i(208297);
-    int i = c.bNV();
-    int j = c.Xv(paramString);
+    AppMethodBeat.i(196205);
+    int i = c.ckV();
+    int j = c.ahs(paramString);
     if (j > i)
     {
-      ae.i("MicroMsg.Box.PluginBox", "[updateWordBankRes] currVersion=%s, recvVersion: %d, start to update", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-      h.MqF.f(new Runnable()
+      Log.i("MicroMsg.Box.PluginBox", "[updateWordBankRes] currVersion=%s, recvVersion: %d, start to update", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+      h.RTc.b(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(208295);
+          AppMethodBeat.i(196203);
           try
           {
-            if (c.Xw(paramString) == 0)
+            if (c.aht(paramString) == 0)
             {
-              c.ji(true);
-              c.Xs(c.jj(false));
+              c.kh(true);
+              c.aho(c.ki(false));
             }
-            AppMethodBeat.o(208295);
+            AppMethodBeat.o(196203);
             return;
           }
           catch (Exception localException)
           {
-            ae.printErrStackTrace("MicroMsg.Box.PluginBox", localException, "[updateWordBankRes]", new Object[0]);
-            AppMethodBeat.o(208295);
+            Log.printErrStackTrace("MicroMsg.Box.PluginBox", localException, "[updateWordBankRes]", new Object[0]);
+            AppMethodBeat.o(196203);
           }
         }
       }, "box.HotWordSearchModel");
-      AppMethodBeat.o(208297);
+      AppMethodBeat.o(196205);
       return;
     }
-    ae.i("MicroMsg.Box.PluginBox", "[updateWordBankRes] currVersion=%s, recvVersion: %d, pass", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
-    AppMethodBeat.o(208297);
+    Log.i("MicroMsg.Box.PluginBox", "[updateWordBankRes] currVersion=%s, recvVersion: %d, pass", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    AppMethodBeat.o(196205);
   }
   
   public String checkAllHotWords(String paramString)
   {
-    AppMethodBeat.i(208300);
-    paramString = c.Xu(paramString);
-    AppMethodBeat.o(208300);
+    AppMethodBeat.i(196208);
+    ArrayList localArrayList = new ArrayList();
+    Object localObject = com.tencent.mm.plugin.box.a.b.plL.matcher(paramString);
+    if (((Matcher)localObject).find())
+    {
+      localObject = ((Matcher)localObject).group();
+      if ((((String)localObject).length() <= 15) && (((String)localObject).length() >= 13)) {
+        localArrayList.add("$Express$");
+      }
+    }
+    localArrayList.addAll(c.ahr(paramString));
+    paramString = Util.listToString(localArrayList, "|");
+    AppMethodBeat.o(196208);
+    return paramString;
+  }
+  
+  public String checkFirstHotWord(String paramString)
+  {
+    AppMethodBeat.i(196209);
+    Object localObject = com.tencent.mm.plugin.box.a.b.plL.matcher(paramString);
+    if (((Matcher)localObject).find())
+    {
+      localObject = ((Matcher)localObject).group();
+      if ((((String)localObject).length() <= 15) && (((String)localObject).length() >= 13))
+      {
+        AppMethodBeat.o(196209);
+        return "$Express$";
+      }
+    }
+    paramString = c.ahq(paramString);
+    AppMethodBeat.o(196209);
     return paramString;
   }
   
   public boolean checkIfHasHotWord(String paramString)
   {
-    AppMethodBeat.i(208299);
-    boolean bool = c.Xt(paramString);
-    AppMethodBeat.o(208299);
+    AppMethodBeat.i(196207);
+    boolean bool = c.ahp(paramString);
+    AppMethodBeat.o(196207);
     return bool;
   }
   
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(76323);
-    if (paramg.akL()) {
-      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.box.a.b.class, new b());
+    if (paramg.aBb()) {
+      com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.box.a.c.class, new b());
     }
     AppMethodBeat.o(76323);
   }
   
+  public String getExposedFingerWord(String paramString)
+  {
+    AppMethodBeat.i(196211);
+    if ("$Express$".equals(paramString))
+    {
+      paramString = ((com.tencent.mm.plugin.websearch.api.c)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.websearch.api.c.class)).getExposedWord("express");
+      AppMethodBeat.o(196211);
+      return paramString;
+    }
+    AppMethodBeat.o(196211);
+    return paramString;
+  }
+  
+  public String getMatchedFingerWord(String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(196210);
+    if ("$Express$".equals(paramString1))
+    {
+      paramString2 = com.tencent.mm.plugin.box.a.b.plL.matcher(paramString2);
+      if (paramString2.find())
+      {
+        paramString2 = paramString2.group();
+        if ((paramString2.length() <= 15) && (paramString2.length() >= 13))
+        {
+          AppMethodBeat.o(196210);
+          return paramString2;
+        }
+      }
+    }
+    AppMethodBeat.o(196210);
+    return paramString1;
+  }
+  
   public int getSearchDuration()
   {
-    AppMethodBeat.i(208302);
+    AppMethodBeat.i(196213);
     int i = c.getSearchDuration();
-    AppMethodBeat.o(208302);
+    AppMethodBeat.o(196213);
     return i;
   }
   
   public String getWordBankVersionForStat()
   {
-    AppMethodBeat.i(208301);
+    AppMethodBeat.i(196212);
     String str = c.getWordBankVersionForStat();
-    AppMethodBeat.o(208301);
+    AppMethodBeat.o(196212);
     return str;
   }
   
   public boolean isInitBox()
   {
     AppMethodBeat.i(76325);
-    if ((this.oaN) && (ad.WL(2) != 1))
+    if ((this.plJ) && (ai.aft(2) != 1))
     {
       AppMethodBeat.o(76325);
       return true;
@@ -218,9 +284,9 @@ public class PluginBox
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(76321);
-    ((s)com.tencent.mm.kernel.g.ad(s.class)).getSysCmdMsgExtension().a("functionmsg", this.oaL.oas);
-    this.jkx.alive();
-    this.oaM.alive();
+    ((com.tencent.mm.plugin.messenger.foundation.a.s)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.messenger.foundation.a.s.class)).getSysCmdMsgExtension().a("functionmsg", this.plH.plo);
+    this.kiA.alive();
+    this.plI.alive();
     loadFlightNumberAsync();
     loadWordBankAsync();
     AppMethodBeat.o(76321);
@@ -229,8 +295,8 @@ public class PluginBox
   public void onAccountRelease()
   {
     AppMethodBeat.i(76322);
-    this.jkx.dead();
-    this.oaM.dead();
+    this.kiA.dead();
+    this.plI.dead();
     AppMethodBeat.o(76322);
   }
   
@@ -238,7 +304,7 @@ public class PluginBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.box.PluginBox
  * JD-Core Version:    0.7.0.1
  */

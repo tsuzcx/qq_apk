@@ -20,19 +20,19 @@ import java.util.Set;
 public final class n
   implements i<Object>
 {
-  private static final Charset Man;
-  public static final n Nde;
-  private static final boolean Ndf;
+  private static final Charset RAF;
+  public static final n SSp;
+  private static final boolean SSq;
   
   static
   {
     AppMethodBeat.i(9865);
-    Nde = new n();
+    SSp = new n();
     if (ByteOrder.nativeOrder() == ByteOrder.LITTLE_ENDIAN) {}
     for (boolean bool = true;; bool = false)
     {
-      Ndf = bool;
-      Man = Charset.forName("UTF8");
+      SSq = bool;
+      RAF = Charset.forName("UTF8");
       AppMethodBeat.o(9865);
       return;
     }
@@ -110,12 +110,12 @@ public final class n
         continue;
         localObject1 = Long.valueOf(paramByteBuffer.getLong());
         continue;
-        localObject1 = new BigInteger(new String(N(paramByteBuffer), Man), 16);
+        localObject1 = new BigInteger(new String(N(paramByteBuffer), RAF), 16);
         continue;
         f(paramByteBuffer, 8);
         localObject1 = Double.valueOf(paramByteBuffer.getDouble());
         continue;
-        localObject1 = new String(N(paramByteBuffer), Man);
+        localObject1 = new String(N(paramByteBuffer), RAF);
         continue;
         localObject1 = N(paramByteBuffer);
         continue;
@@ -184,7 +184,7 @@ public final class n
     if (paramInt <= 65535)
     {
       paramByteArrayOutputStream.write(254);
-      if (Ndf)
+      if (SSq)
       {
         paramByteArrayOutputStream.write(paramInt);
         paramByteArrayOutputStream.write(paramInt >>> 8);
@@ -204,7 +204,7 @@ public final class n
   private static void a(ByteArrayOutputStream paramByteArrayOutputStream, long paramLong)
   {
     AppMethodBeat.i(9855);
-    if (Ndf)
+    if (SSq)
     {
       paramByteArrayOutputStream.write((byte)(int)paramLong);
       paramByteArrayOutputStream.write((byte)(int)(paramLong >>> 8));
@@ -239,7 +239,7 @@ public final class n
   private static void b(ByteArrayOutputStream paramByteArrayOutputStream, int paramInt)
   {
     AppMethodBeat.i(9854);
-    if (Ndf)
+    if (SSq)
     {
       paramByteArrayOutputStream.write(paramInt);
       paramByteArrayOutputStream.write(paramInt >>> 8);
@@ -366,7 +366,7 @@ public final class n
       if ((paramObject instanceof BigInteger))
       {
         paramByteArrayOutputStream.write(5);
-        a(paramByteArrayOutputStream, ((BigInteger)paramObject).toString(16).getBytes(Man));
+        a(paramByteArrayOutputStream, ((BigInteger)paramObject).toString(16).getBytes(RAF));
         AppMethodBeat.o(9859);
         return;
       }
@@ -377,7 +377,7 @@ public final class n
     if ((paramObject instanceof String))
     {
       paramByteArrayOutputStream.write(7);
-      a(paramByteArrayOutputStream, ((String)paramObject).getBytes(Man));
+      a(paramByteArrayOutputStream, ((String)paramObject).getBytes(RAF));
       AppMethodBeat.o(9859);
       return;
     }
@@ -467,7 +467,7 @@ public final class n
     throw paramByteArrayOutputStream;
   }
   
-  public final ByteBuffer eJ(Object paramObject)
+  public final ByteBuffer eP(Object paramObject)
   {
     AppMethodBeat.i(9851);
     if (paramObject == null)
@@ -494,7 +494,7 @@ public final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     io.flutter.plugin.a.n
  * JD-Core Version:    0.7.0.1
  */

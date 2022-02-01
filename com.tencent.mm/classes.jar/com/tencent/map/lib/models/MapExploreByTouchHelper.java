@@ -3,7 +3,7 @@ package com.tencent.map.lib.models;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.v4.view.a.c;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.support.v4.widget.j;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
@@ -87,17 +87,17 @@ public abstract class MapExploreByTouchHelper
   
   public void onTalkBackActivate(View paramView)
   {
-    t.a(paramView, this);
+    u.a(paramView, this);
   }
   
   public void onTalkBackDeActivate(View paramView)
   {
-    t.a(paramView, null);
+    u.a(paramView, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.map.lib.models.MapExploreByTouchHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -10,8 +10,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class RelativePopupWindow
   extends PopupWindow
 {
-  private boolean LpD;
-  private FrameLayout wVM;
+  private FrameLayout ARF;
+  private boolean QEP;
   
   public RelativePopupWindow(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -21,27 +21,27 @@ public class RelativePopupWindow
   public RelativePopupWindow(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(193797);
-    this.LpD = false;
-    this.wVM = new FrameLayout(paramContext);
-    super.setContentView(this.wVM);
-    AppMethodBeat.o(193797);
+    AppMethodBeat.i(205439);
+    this.QEP = false;
+    this.ARF = new FrameLayout(paramContext);
+    super.setContentView(this.ARF);
+    AppMethodBeat.o(205439);
   }
   
   public View getContentView()
   {
-    AppMethodBeat.i(193799);
-    View localView = this.wVM.getChildAt(0);
-    AppMethodBeat.o(193799);
+    AppMethodBeat.i(205441);
+    View localView = this.ARF.getChildAt(0);
+    AppMethodBeat.o(205441);
     return localView;
   }
   
   public void setContentView(View paramView)
   {
-    AppMethodBeat.i(193798);
-    this.wVM.removeAllViews();
-    this.wVM.addView(paramView);
-    AppMethodBeat.o(193798);
+    AppMethodBeat.i(205440);
+    this.ARF.removeAllViews();
+    this.ARF.addView(paramView);
+    AppMethodBeat.o(205440);
   }
 }
 

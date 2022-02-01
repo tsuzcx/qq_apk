@@ -5,10 +5,10 @@ import java.lang.reflect.Field;
 
 public final class a<T>
 {
-  public Field bMM;
+  public Field bUo;
   private String classname;
   private String fieldName;
-  private boolean gff;
+  private boolean gKM;
   public Object obj;
   
   public a(Object paramObject, String paramString)
@@ -26,11 +26,11 @@ public final class a<T>
     AppMethodBeat.o(148753);
   }
   
-  public final boolean abh()
+  public final boolean apg()
   {
     AppMethodBeat.i(148756);
     prepare();
-    if (this.bMM != null)
+    if (this.bUo != null)
     {
       AppMethodBeat.o(148756);
       return true;
@@ -44,7 +44,7 @@ public final class a<T>
     AppMethodBeat.i(148755);
     prepare();
     Object localObject;
-    if (this.bMM == null)
+    if (this.bUo == null)
     {
       localObject = new NoSuchFieldException();
       AppMethodBeat.o(148755);
@@ -52,7 +52,7 @@ public final class a<T>
     }
     try
     {
-      localObject = this.bMM.get(this.obj);
+      localObject = this.bUo.get(this.obj);
       AppMethodBeat.o(148755);
       return localObject;
     }
@@ -67,19 +67,19 @@ public final class a<T>
   public final void prepare()
   {
     AppMethodBeat.i(148754);
-    if (this.gff)
+    if (this.gKM)
     {
       AppMethodBeat.o(148754);
       return;
     }
-    this.gff = true;
+    this.gKM = true;
     Class localClass = this.obj.getClass();
     while (localClass != null) {
       try
       {
         Field localField1 = localClass.getDeclaredField(this.fieldName);
         localField1.setAccessible(true);
-        this.bMM = localField1;
+        this.bUo = localField1;
         return;
       }
       catch (Exception localException1)
@@ -100,7 +100,7 @@ public final class a<T>
                   continue;
                 }
                 localField2.setAccessible(true);
-                this.bMM = localField2;
+                this.bUo = localField2;
               }
             }
           }

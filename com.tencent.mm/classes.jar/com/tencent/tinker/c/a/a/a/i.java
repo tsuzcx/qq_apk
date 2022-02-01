@@ -9,15 +9,15 @@ import java.util.Arrays;
 
 public abstract class i<T extends Comparable<T>>
 {
-  protected final com.tencent.tinker.a.a.i MBu;
-  protected final com.tencent.tinker.c.a.b.a MBw;
-  private final c MBx;
+  protected final com.tencent.tinker.a.a.i Shw;
+  protected final com.tencent.tinker.c.a.b.a Shy;
+  private final c Shz;
   
   public i(com.tencent.tinker.c.a.b.a parama, com.tencent.tinker.a.a.i parami, c paramc)
   {
-    this.MBw = parama;
-    this.MBu = parami;
-    this.MBx = paramc;
+    this.Shy = parama;
+    this.Shw = parami;
+    this.Shz = paramc;
   }
   
   private static int a(int paramInt, T paramT)
@@ -28,14 +28,14 @@ public abstract class i<T extends Comparable<T>>
     return paramInt;
   }
   
-  private int[] aiF(int paramInt)
+  private int[] asf(int paramInt)
   {
     int[] arrayOfInt = new int[paramInt];
     int i = 0;
     int j = 0;
     while (i < paramInt)
     {
-      j = o.a(this.MBw.MCt) + j;
+      j = o.a(this.Shy.Siv) + j;
       arrayOfInt[i] = j;
       i += 1;
     }
@@ -55,19 +55,17 @@ public abstract class i<T extends Comparable<T>>
   
   protected abstract s.a c(com.tencent.tinker.a.a.i parami);
   
-  protected abstract int e(T paramT);
-  
   public final void execute()
   {
-    int[] arrayOfInt1 = aiF(o.b(this.MBw.MCt));
-    int[] arrayOfInt2 = aiF(o.b(this.MBw.MCt));
-    int[] arrayOfInt3 = aiF(o.b(this.MBw.MCt));
-    Object localObject = c(this.MBu);
+    int[] arrayOfInt1 = asf(o.b(this.Shy.Siv));
+    int[] arrayOfInt2 = asf(o.b(this.Shy.Siv));
+    int[] arrayOfInt3 = asf(o.b(this.Shy.Siv));
+    Object localObject = c(this.Shw);
     i.e locale;
     int k;
     if (((s.a)localObject).exists())
     {
-      locale = this.MBu.a((s.a)localObject);
+      locale = this.Shw.a((s.a)localObject);
       k = ((s.a)localObject).size;
     }
     for (;;)
@@ -83,34 +81,34 @@ public abstract class i<T extends Comparable<T>>
       while ((j < k) || (i < k + i3 - i2)) {
         if ((n < i3) && (arrayOfInt2[n] == i))
         {
-          e(a(this.MBw.MCt));
+          f(a(this.Shy.Siv));
           i += 1;
           n += 1;
         }
         else if ((i1 < i4) && (arrayOfInt3[i1] == i))
         {
-          e(a(this.MBw.MCt));
+          f(a(this.Shy.Siv));
           i += 1;
           i1 += 1;
         }
         else if (Arrays.binarySearch(arrayOfInt1, j) >= 0)
         {
           localObject = a(locale);
-          a(this.MBx, j, a(j, (Comparable)localObject));
+          a(this.Shz, j, a(j, (Comparable)localObject));
           j += 1;
           m += 1;
         }
         else if (Arrays.binarySearch(arrayOfInt3, j) >= 0)
         {
           localObject = a(locale);
-          a(this.MBx, j, a(j, (Comparable)localObject));
+          a(this.Shz, j, a(j, (Comparable)localObject));
           j += 1;
         }
         else if (j < k)
         {
-          localObject = a(this.MBx, a(locale));
-          int i5 = e((Comparable)localObject);
-          a(this.MBx, j, a(j, (Comparable)localObject), i, i5);
+          localObject = a(this.Shz, a(locale));
+          int i5 = f((Comparable)localObject);
+          a(this.Shz, j, a(j, (Comparable)localObject), i, i5);
           j += 1;
           i += 1;
         }
@@ -123,10 +121,12 @@ public abstract class i<T extends Comparable<T>>
       locale = null;
     }
   }
+  
+  protected abstract int f(T paramT);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.c.a.a.a.i
  * JD-Core Version:    0.7.0.1
  */

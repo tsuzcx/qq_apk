@@ -5,41 +5,32 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.tbs.reader.ITbsReaderCallback;
 import com.tencent.tbs.reader.ReaderEngine;
-import com.tencent.tbs.reader.ReaderMixerMode;
-import com.tencent.tbs.reader.TbsReaderManager;
+import com.tencent.tbs.reader.TbsFileInterfaceImpl;
 
 public final class av
 {
-  public static av kQG;
-  private TbsReaderManager kQH;
+  public static av lVK;
+  private TbsFileInterfaceImpl lVL;
   
   private av(Context paramContext)
   {
-    AppMethodBeat.i(222526);
-    this.kQH = null;
+    AppMethodBeat.i(226831);
+    this.lVL = null;
     ReaderEngine.getInstance().initReaderEntry(paramContext);
-    this.kQH = new TbsReaderManager();
-    AppMethodBeat.o(222526);
+    this.lVL = new TbsFileInterfaceImpl();
+    AppMethodBeat.o(226831);
   }
   
-  public static boolean canOpenFile(String paramString)
-  {
-    AppMethodBeat.i(222528);
-    boolean bool = ReaderEngine.getInstance().isSupportExt(3, paramString);
-    AppMethodBeat.o(222528);
-    return bool;
-  }
-  
-  public static av du(Context paramContext)
+  public static av dP(Context paramContext)
   {
     try
     {
-      AppMethodBeat.i(222525);
-      if (kQG == null) {
-        kQG = new av(paramContext);
+      AppMethodBeat.i(226830);
+      if (lVK == null) {
+        lVK = new av(paramContext);
       }
-      paramContext = kQG;
-      AppMethodBeat.o(222525);
+      paramContext = lVK;
+      AppMethodBeat.o(226830);
       return paramContext;
     }
     finally {}
@@ -47,29 +38,29 @@ public final class av
   
   public final int a(Context paramContext, Bundle paramBundle, ITbsReaderCallback paramITbsReaderCallback)
   {
-    AppMethodBeat.i(222527);
-    if (this.kQH == null)
+    AppMethodBeat.i(226832);
+    if (this.lVL == null)
     {
-      AppMethodBeat.o(222527);
+      AppMethodBeat.o(226832);
       return -1;
     }
-    int i = this.kQH.createReaderMode(paramContext, paramITbsReaderCallback).openFile(paramBundle, null);
-    AppMethodBeat.o(222527);
+    int i = this.lVL.openFileReader(paramContext, paramBundle, paramITbsReaderCallback, null);
+    AppMethodBeat.o(226832);
     return i;
   }
   
   public final void closeFileReader()
   {
-    AppMethodBeat.i(222529);
-    if (this.kQH != null) {
-      this.kQH.destroy();
+    AppMethodBeat.i(226833);
+    if (this.lVL != null) {
+      this.lVL.closeFileReader();
     }
-    AppMethodBeat.o(222529);
+    AppMethodBeat.o(226833);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.av
  * JD-Core Version:    0.7.0.1
  */

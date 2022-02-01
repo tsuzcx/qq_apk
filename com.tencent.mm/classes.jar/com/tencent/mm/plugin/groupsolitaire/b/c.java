@@ -2,15 +2,14 @@ package com.tencent.mm.plugin.groupsolitaire.b;
 
 import android.content.SharedPreferences.Editor;
 import android.util.Pair;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.groupsolitaire.PluginGroupSolitaire;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -24,34 +23,34 @@ import java.util.regex.Pattern;
 
 public final class c
 {
-  private ConcurrentHashMap<String, a> uMF;
-  private ConcurrentLinkedQueue<a> uMG;
-  private ConcurrentHashMap<String, com.tencent.mm.plugin.groupsolitaire.c.a> uMH;
-  public ConcurrentHashMap<String, com.tencent.mm.plugin.groupsolitaire.c.a> uMI;
-  private ConcurrentHashMap<String, a> uMJ;
-  private Pattern uMK;
-  private Pattern uML;
-  private Pattern uMM;
-  private Pattern uMN;
-  private Pattern uMO;
-  private Pattern uMP;
-  private Pattern uMQ;
+  private ConcurrentHashMap<String, c.a> yfd;
+  private ConcurrentLinkedQueue<c.a> yfe;
+  private ConcurrentHashMap<String, com.tencent.mm.plugin.groupsolitaire.c.a> yff;
+  public ConcurrentHashMap<String, com.tencent.mm.plugin.groupsolitaire.c.a> yfg;
+  private ConcurrentHashMap<String, a> yfh;
+  private Pattern yfi;
+  private Pattern yfj;
+  private Pattern yfk;
+  private Pattern yfl;
+  private Pattern yfm;
+  private Pattern yfn;
+  private Pattern yfo;
   
   public c()
   {
     AppMethodBeat.i(110369);
-    this.uMF = new ConcurrentHashMap();
-    this.uMG = new ConcurrentLinkedQueue();
-    this.uMH = new ConcurrentHashMap();
-    this.uMI = new ConcurrentHashMap();
-    this.uMJ = new ConcurrentHashMap();
-    this.uMK = Pattern.compile(b.ddS());
-    this.uML = Pattern.compile(b.ddY());
-    this.uMM = Pattern.compile(b.ddT());
-    this.uMN = Pattern.compile(b.ddV());
-    this.uMO = Pattern.compile(b.ddU());
-    this.uMP = Pattern.compile(b.ddX());
-    this.uMQ = Pattern.compile(b.ddW());
+    this.yfd = new ConcurrentHashMap();
+    this.yfe = new ConcurrentLinkedQueue();
+    this.yff = new ConcurrentHashMap();
+    this.yfg = new ConcurrentHashMap();
+    this.yfh = new ConcurrentHashMap();
+    this.yfi = Pattern.compile(b.dXC());
+    this.yfj = Pattern.compile(b.dXI());
+    this.yfk = Pattern.compile(b.dXD());
+    this.yfl = Pattern.compile(b.dXF());
+    this.yfm = Pattern.compile(b.dXE());
+    this.yfn = Pattern.compile(b.dXH());
+    this.yfo = Pattern.compile(b.dXG());
     try
     {
       String[] arrayOfString = PluginGroupSolitaire.getKV().getString("analyze_crash_content_num", "").split(";");
@@ -63,7 +62,7 @@ public final class c
         {
           Object localObject = arrayOfString[i];
           j = k;
-          if (!bu.isNullOrNil((String)localObject))
+          if (!Util.isNullOrNil((String)localObject))
           {
             k += 1;
             if (k > 20) {
@@ -76,9 +75,9 @@ public final class c
               j = k;
               if (localObject.length == 2)
               {
-                a locala = new a(localObject[0], bu.getInt(localObject[1], 0));
-                this.uMF.put(localObject[0], locala);
-                this.uMG.add(locala);
+                c.a locala = new c.a(this, localObject[0], Util.getInt(localObject[1], 0));
+                this.yfd.put(localObject[0], locala);
+                this.yfe.add(locala);
                 j = k;
               }
             }
@@ -91,7 +90,7 @@ public final class c
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.groupsolitaire.GroupSolitatireManager", "GroupSolitatireManager %s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+      Log.e("MicroMsg.groupsolitaire.GroupSolitatireManager", "GroupSolitatireManager %s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
       AppMethodBeat.o(110369);
     }
   }
@@ -101,23 +100,23 @@ public final class c
     AppMethodBeat.i(110371);
     ArrayList localArrayList = new ArrayList();
     com.tencent.mm.plugin.groupsolitaire.c.b localb = new com.tencent.mm.plugin.groupsolitaire.c.b();
-    Object localObject = this.uMM.matcher(paramString.trim());
-    paramString = this.uMN.matcher(paramString.trim());
+    Object localObject = this.yfk.matcher(paramString.trim());
+    paramString = this.yfl.matcher(paramString.trim());
     int j;
     int i;
     if (((Matcher)localObject).find())
     {
       paramString = ((Matcher)localObject).group(0);
-      paramString = this.uMN.matcher(paramString.trim());
+      paramString = this.yfl.matcher(paramString.trim());
       if (paramString.find()) {
-        localb.uNk = bu.getInt(paramString.group(0), 0);
+        localb.yfI = Util.getInt(paramString.group(0), 0);
       }
       localb.separator = paramString.replaceFirst("").trim();
       localb.content = ((Matcher)localObject).replaceFirst("").trim();
       if (parama == null) {
         break label465;
       }
-      paramString = this.uMO.matcher(localb.content);
+      paramString = this.yfm.matcher(localb.content);
       if (!paramString.find()) {
         break label452;
       }
@@ -127,15 +126,15 @@ public final class c
         break label439;
       }
       paramString = localb.content.substring(0, j);
-      if ((bu.isNullOrNil(paramString)) || (bu.isNullOrNil(paramString.trim()))) {
+      if ((Util.isNullOrNil(paramString)) || (Util.isNullOrNil(paramString.trim()))) {
         break label426;
       }
       i = 1;
       label203:
-      if (i > parama.uNg.size()) {
+      if (i > parama.yfE.size()) {
         break label486;
       }
-      if (!com.tencent.mm.plugin.groupsolitaire.c.b.hw(((com.tencent.mm.plugin.groupsolitaire.c.b)parama.uNg.get(Integer.valueOf(i))).content, paramString.trim())) {
+      if (!com.tencent.mm.plugin.groupsolitaire.c.b.id(((com.tencent.mm.plugin.groupsolitaire.c.b)parama.yfE.get(Integer.valueOf(i))).content, paramString.trim())) {
         break label406;
       }
     }
@@ -146,7 +145,7 @@ public final class c
     label465:
     label478:
     label486:
-    for (paramString = (com.tencent.mm.plugin.groupsolitaire.c.b)parama.uNg.get(Integer.valueOf(i));; paramString = null)
+    for (paramString = (com.tencent.mm.plugin.groupsolitaire.c.b)parama.yfE.get(Integer.valueOf(i));; paramString = null)
     {
       if (paramString != null)
       {
@@ -154,7 +153,7 @@ public final class c
         localb.content = paramString.content;
         localArrayList.add(localb);
         paramString = ((String)localObject).substring(j);
-        if ((!bu.isNullOrNil(paramString)) && (!bu.isNullOrNil(paramString.trim()))) {
+        if ((!Util.isNullOrNil(paramString)) && (!Util.isNullOrNil(paramString.trim()))) {
           a(localArrayList, parama, paramString.trim());
         }
       }
@@ -168,9 +167,9 @@ public final class c
         if (!paramString.find()) {
           break;
         }
-        localb.uNk = bu.getInt(paramString.group(0), 0);
+        localb.yfI = Util.getInt(paramString.group(0), 0);
         localb.content = paramString.replaceFirst("").trim();
-        if ((!bu.isNullOrNil(localb.content)) && (!bu.isNullOrNil(localb.content.trim()))) {
+        if ((!Util.isNullOrNil(localb.content)) && (!Util.isNullOrNil(localb.content.trim()))) {
           break;
         }
         AppMethodBeat.o(110371);
@@ -195,23 +194,23 @@ public final class c
   private static void a(String paramString, a parama)
   {
     AppMethodBeat.i(110377);
-    ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "updateMatchChatRoomGroupSolitatire() username:%s", new Object[] { paramString });
-    if ((bu.isNullOrNil(paramString)) || (parama == null))
+    Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "updateMatchChatRoomGroupSolitatire() username:%s", new Object[] { paramString });
+    if ((Util.isNullOrNil(paramString)) || (parama == null))
     {
       AppMethodBeat.o(110377);
       return;
     }
-    long l = ch.aDd() - b.deb() * com.tencent.mm.plugin.groupsolitaire.c.c.uNm.longValue();
-    if (parama.uMD)
+    long l = cl.aWB() - b.dXL() * com.tencent.mm.plugin.groupsolitaire.c.c.yfK.longValue();
+    if (parama.yfb)
     {
-      parama.uME = l;
+      parama.yfc = l;
       AppMethodBeat.o(110377);
       return;
     }
-    if (parama.uME < l)
+    if (parama.yfc < l)
     {
-      parama.uMD = true;
-      parama.uME = l;
+      parama.yfb = true;
+      parama.yfc = l;
     }
     AppMethodBeat.o(110377);
   }
@@ -219,26 +218,26 @@ public final class c
   private void a(List<com.tencent.mm.plugin.groupsolitaire.c.b> paramList, com.tencent.mm.plugin.groupsolitaire.c.a parama, String paramString)
   {
     AppMethodBeat.i(110372);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110372);
       return;
     }
     com.tencent.mm.plugin.groupsolitaire.c.b localb = new com.tencent.mm.plugin.groupsolitaire.c.b();
-    paramString = this.uMO.matcher(paramString);
+    paramString = this.yfm.matcher(paramString);
     Object localObject;
     int j;
     int i;
     if (paramString.find())
     {
       localObject = paramString.group(0);
-      localObject = this.uMP.matcher(((String)localObject).trim());
+      localObject = this.yfn.matcher(((String)localObject).trim());
       if (((Matcher)localObject).find()) {
-        localb.uNk = bu.getInt(((Matcher)localObject).group(0), 0);
+        localb.yfI = Util.getInt(((Matcher)localObject).group(0), 0);
       }
       localb.separator = ((Matcher)localObject).replaceFirst("").trim();
       localb.content = paramString.replaceFirst("").trim();
-      paramString = this.uMO.matcher(localb.content);
+      paramString = this.yfm.matcher(localb.content);
       if (paramString.find())
       {
         paramString = paramString.group(0);
@@ -246,20 +245,19 @@ public final class c
         if (j != -1)
         {
           paramString = localb.content.substring(0, j);
-          if ((!bu.isNullOrNil(paramString)) && (!bu.isNullOrNil(paramString.trim())))
+          if ((!Util.isNullOrNil(paramString)) && (!Util.isNullOrNil(paramString.trim())))
           {
             i = 1;
-            label193:
-            if (i > parama.uNg.size()) {
-              break label391;
+            if (i > parama.yfE.size()) {
+              break label393;
             }
-            if (!bu.lX(((com.tencent.mm.plugin.groupsolitaire.c.b)parama.uNg.get(Integer.valueOf(i))).content, paramString.trim())) {}
+            if (!Util.isEqual(((com.tencent.mm.plugin.groupsolitaire.c.b)parama.yfE.get(Integer.valueOf(i))).content, paramString.trim())) {}
           }
         }
       }
     }
-    label391:
-    for (paramString = (com.tencent.mm.plugin.groupsolitaire.c.b)parama.uNg.get(Integer.valueOf(i));; paramString = null)
+    label393:
+    for (paramString = (com.tencent.mm.plugin.groupsolitaire.c.b)parama.yfE.get(Integer.valueOf(i));; paramString = null)
     {
       if (paramString != null)
       {
@@ -267,15 +265,13 @@ public final class c
         localb.content = paramString.content;
         paramList.add(localb);
         paramString = ((String)localObject).substring(j);
-        if ((!bu.isNullOrNil(paramString)) && (!bu.isNullOrNil(paramString.trim())))
-        {
-          paramString = paramString.trim();
-          break;
-          i += 1;
-          break label193;
+        if ((!Util.isNullOrNil(paramString)) && (!Util.isNullOrNil(paramString.trim()))) {
+          a(paramList, parama, paramString.trim());
         }
         AppMethodBeat.o(110372);
         return;
+        i += 1;
+        break;
       }
       paramList.add(localb);
       AppMethodBeat.o(110372);
@@ -292,7 +288,7 @@ public final class c
     }
   }
   
-  private static String anV(String paramString)
+  private static String aBo(String paramString)
   {
     AppMethodBeat.i(110379);
     String str = paramString;
@@ -307,36 +303,36 @@ public final class c
   private static void b(String paramString, a parama)
   {
     AppMethodBeat.i(110378);
-    ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "updateActiveChatRoomGroupSolitatire() username:%s", new Object[] { paramString });
-    if ((bu.isNullOrNil(paramString)) || (parama == null))
+    Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "updateActiveChatRoomGroupSolitatire() username:%s", new Object[] { paramString });
+    if ((Util.isNullOrNil(paramString)) || (parama == null))
     {
       AppMethodBeat.o(110378);
       return;
     }
-    long l = ch.aDd() - b.ddZ() * com.tencent.mm.plugin.groupsolitaire.c.c.uNl.longValue();
-    if (parama.uMB)
+    long l = cl.aWB() - b.dXJ() * com.tencent.mm.plugin.groupsolitaire.c.c.yfJ.longValue();
+    if (parama.yeZ)
     {
-      parama.uMC = l;
+      parama.yfa = l;
       AppMethodBeat.o(110378);
       return;
     }
-    if (parama.uMC < l)
+    if (parama.yfa < l)
     {
-      parama.uMB = true;
-      parama.uMC = l;
+      parama.yeZ = true;
+      parama.yfa = l;
     }
     AppMethodBeat.o(110378);
   }
   
-  private void dej()
+  private void dXT()
   {
     AppMethodBeat.i(110380);
     StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = this.uMG.iterator();
+    Iterator localIterator = this.yfe.iterator();
     while (localIterator.hasNext())
     {
-      a locala = (a)localIterator.next();
-      localStringBuilder.append(locala.key).append(",").append(locala.hiV).append(";");
+      c.a locala = (c.a)localIterator.next();
+      localStringBuilder.append(locala.key).append(",").append(locala.ibS).append(";");
     }
     PluginGroupSolitaire.getKV().edit().putString("analyze_crash_content_num", localStringBuilder.toString());
     AppMethodBeat.o(110380);
@@ -344,7 +340,7 @@ public final class c
   
   private Pair<Boolean, com.tencent.mm.plugin.groupsolitaire.c.a> l(String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(221111);
+    AppMethodBeat.i(194432);
     int j = paramString.length();
     int i = paramArrayOfString.length - 1;
     Object localObject1;
@@ -354,7 +350,7 @@ public final class c
     {
       localObject1 = paramArrayOfString[i];
       j -= ((String)localObject1).length();
-      if (this.uMQ.matcher(((String)localObject1).trim()).find())
+      if (this.yfo.matcher(((String)localObject1).trim()).find())
       {
         m = 1;
         j = paramString.indexOf((String)localObject1, j);
@@ -367,7 +363,7 @@ public final class c
       if (i == 0)
       {
         paramString = new Pair(Boolean.FALSE, null);
-        AppMethodBeat.o(221111);
+        AppMethodBeat.o(194432);
         return paramString;
         j -= 1;
         i -= 1;
@@ -384,11 +380,11 @@ public final class c
           break label436;
         }
         str = paramArrayOfString[i];
-        localObject2 = this.uML.matcher(str.trim());
+        localObject2 = this.yfj.matcher(str.trim());
         if (((Matcher)localObject2).find())
         {
           localObject2 = ((Matcher)localObject2).group(0);
-          if (bu.isNullOrNil((String)localObject2)) {
+          if (Util.isNullOrNil((String)localObject2)) {
             i = paramString.indexOf(str, m);
           }
         }
@@ -404,11 +400,11 @@ public final class c
         label282:
         for (((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).header = paramString.substring(0, j).trim();; ((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).header = paramString.substring(0, i).trim())
         {
-          if (!b.anQ(((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).header)) {
+          if (!b.aBj(((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).header)) {
             break label299;
           }
           paramString = new Pair(Boolean.FALSE, null);
-          AppMethodBeat.o(221111);
+          AppMethodBeat.o(194432);
           return paramString;
           i = paramString.indexOf((String)localObject2, m);
           break label196;
@@ -418,24 +414,24 @@ public final class c
         }
         label299:
         if ((i >= 0) && (i <= j)) {
-          ((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).uNd = paramString.substring(i, j).trim();
+          ((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).yfB = paramString.substring(i, j).trim();
         }
         if ((k >= 0) && (k < paramArrayOfString.length))
         {
           i = paramArrayOfString[k].length() + j;
           if ((i > 0) && (i < paramString.length())) {
-            ((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).ufC = paramString.substring(i).trim();
+            ((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).xxN = paramString.substring(i).trim();
           }
         }
-        if (b.anR(((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).ufC))
+        if (b.aBk(((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).xxN))
         {
           paramString = new Pair(Boolean.FALSE, null);
-          AppMethodBeat.o(221111);
+          AppMethodBeat.o(194432);
           return paramString;
         }
-        ((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).uNi += 1;
+        ((com.tencent.mm.plugin.groupsolitaire.c.a)localObject1).yfG += 1;
         paramString = new Pair(Boolean.TRUE, localObject1);
-        AppMethodBeat.o(221111);
+        AppMethodBeat.o(194432);
         return paramString;
         label436:
         i = -1;
@@ -446,51 +442,51 @@ public final class c
     }
   }
   
-  public final a anT(String paramString)
+  public final a aBm(String paramString)
   {
     AppMethodBeat.i(110375);
-    ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "getChatRoomGroupSolitatire() username:%s", new Object[] { paramString });
-    if (bu.isNullOrNil(paramString))
+    Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "getChatRoomGroupSolitatire() username:%s", new Object[] { paramString });
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110375);
       return null;
     }
-    Object localObject2 = (a)this.uMJ.get(paramString);
+    Object localObject2 = (a)this.yfh.get(paramString);
     Object localObject1;
     if (localObject2 == null)
     {
       localObject1 = new a();
-      ((a)localObject1).ddR();
-      localObject2 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ad(PluginGroupSolitaire.class)).getGroupSolitatireStorage().dZ(paramString, 0);
-      List localList = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ad(PluginGroupSolitaire.class)).getGroupSolitatireStorage().dZ(paramString, 1);
-      if (((List)localObject2).size() > b.dec())
+      ((a)localObject1).dXB();
+      localObject2 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireStorage().eo(paramString, 0);
+      List localList = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireStorage().eo(paramString, 1);
+      if (((List)localObject2).size() > b.dXM())
       {
-        ((a)localObject1).uMD = false;
-        ((a)localObject1).uME = ((com.tencent.mm.plugin.groupsolitaire.c.a)((List)localObject2).get(b.dec() - 1)).field_lastActiveTime;
-        if (localList.size() <= b.dea()) {
+        ((a)localObject1).yfb = false;
+        ((a)localObject1).yfc = ((com.tencent.mm.plugin.groupsolitaire.c.a)((List)localObject2).get(b.dXM() - 1)).field_lastActiveTime;
+        if (localList.size() <= b.dXK()) {
           break label224;
         }
-        ((a)localObject1).uMB = false;
-        ((a)localObject1).uMC = ((com.tencent.mm.plugin.groupsolitaire.c.a)localList.get(b.dea() - 1)).field_lastActiveTime;
+        ((a)localObject1).yeZ = false;
+        ((a)localObject1).yfa = ((com.tencent.mm.plugin.groupsolitaire.c.a)localList.get(b.dXK() - 1)).field_lastActiveTime;
         label178:
-        this.uMJ.put(paramString, localObject1);
+        this.yfh.put(paramString, localObject1);
       }
     }
     for (;;)
     {
       AppMethodBeat.o(110375);
       return localObject1;
-      ((a)localObject1).uMD = true;
-      ((a)localObject1).uME = (ch.aDd() - b.deb() * com.tencent.mm.plugin.groupsolitaire.c.c.uNm.longValue());
+      ((a)localObject1).yfb = true;
+      ((a)localObject1).yfc = (cl.aWB() - b.dXL() * com.tencent.mm.plugin.groupsolitaire.c.c.yfK.longValue());
       break;
       label224:
-      ((a)localObject1).uMB = true;
-      ((a)localObject1).uMC = (ch.aDd() - b.ddZ() * com.tencent.mm.plugin.groupsolitaire.c.c.uNl.longValue());
+      ((a)localObject1).yeZ = true;
+      ((a)localObject1).yfa = (cl.aWB() - b.dXJ() * com.tencent.mm.plugin.groupsolitaire.c.c.yfJ.longValue());
       break label178;
       localObject1 = localObject2;
-      if (((a)localObject2).lastUpdateTime - ch.aDd() > 10L)
+      if (((a)localObject2).lastUpdateTime - cl.aWB() > 10L)
       {
-        ((a)localObject2).ddR();
+        ((a)localObject2).dXB();
         a(paramString, (a)localObject2);
         b(paramString, (a)localObject2);
         localObject1 = localObject2;
@@ -498,64 +494,64 @@ public final class c
     }
   }
   
-  public final void anU(String paramString)
+  public final void aBn(String paramString)
   {
     AppMethodBeat.i(110376);
-    ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "updateChatRoomGroupSolitatire() username:%s", new Object[] { paramString });
-    if (bu.isNullOrNil(paramString))
+    Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "updateChatRoomGroupSolitatire() username:%s", new Object[] { paramString });
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(110376);
       return;
     }
     a locala = new a();
-    locala.ddR();
-    List localList1 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ad(PluginGroupSolitaire.class)).getGroupSolitatireStorage().dZ(paramString, 0);
-    List localList2 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ad(PluginGroupSolitaire.class)).getGroupSolitatireStorage().dZ(paramString, 1);
-    if (localList1.size() > b.dec())
+    locala.dXB();
+    List localList1 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireStorage().eo(paramString, 0);
+    List localList2 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireStorage().eo(paramString, 1);
+    if (localList1.size() > b.dXM())
     {
-      locala.uMD = false;
-      locala.uME = ((com.tencent.mm.plugin.groupsolitaire.c.a)localList1.get(b.dec() - 1)).field_lastActiveTime;
-      if (localList2.size() <= b.dea()) {
+      locala.yfb = false;
+      locala.yfc = ((com.tencent.mm.plugin.groupsolitaire.c.a)localList1.get(b.dXM() - 1)).field_lastActiveTime;
+      if (localList2.size() <= b.dXK()) {
         break label206;
       }
-      locala.uMB = false;
+      locala.yeZ = false;
     }
-    for (locala.uMC = ((com.tencent.mm.plugin.groupsolitaire.c.a)localList2.get(b.dea() - 1)).field_lastActiveTime;; locala.uMC = (ch.aDd() - b.ddZ() * com.tencent.mm.plugin.groupsolitaire.c.c.uNl.longValue()))
+    for (locala.yfa = ((com.tencent.mm.plugin.groupsolitaire.c.a)localList2.get(b.dXK() - 1)).field_lastActiveTime;; locala.yfa = (cl.aWB() - b.dXJ() * com.tencent.mm.plugin.groupsolitaire.c.c.yfJ.longValue()))
     {
-      this.uMJ.put(paramString, locala);
+      this.yfh.put(paramString, locala);
       AppMethodBeat.o(110376);
       return;
-      locala.uMD = true;
-      locala.uME = (ch.aDd() - b.deb() * com.tencent.mm.plugin.groupsolitaire.c.c.uNm.longValue());
+      locala.yfb = true;
+      locala.yfc = (cl.aWB() - b.dXL() * com.tencent.mm.plugin.groupsolitaire.c.c.yfK.longValue());
       break;
       label206:
-      locala.uMB = true;
+      locala.yeZ = true;
     }
   }
   
   public final void c(String paramString, com.tencent.mm.plugin.groupsolitaire.c.a parama)
   {
-    AppMethodBeat.i(221112);
-    if ((parama != null) && (!bu.isNullOrNil(parama.field_key)))
+    AppMethodBeat.i(194433);
+    if ((parama != null) && (!Util.isNullOrNil(parama.field_key)))
     {
-      ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "putTempGroupSolitatireToCache() username:%s key:%s", new Object[] { paramString, parama.field_key });
-      this.uMI.put(paramString + parama.field_key, parama);
+      Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "putTempGroupSolitatireToCache() username:%s key:%s", new Object[] { paramString, parama.field_key });
+      this.yfg.put(paramString + parama.field_key, parama);
     }
-    AppMethodBeat.o(221112);
+    AppMethodBeat.o(194433);
   }
   
-  public final Pair<Integer, com.tencent.mm.plugin.groupsolitaire.c.a> ht(String paramString1, String paramString2)
+  public final Pair<Integer, com.tencent.mm.plugin.groupsolitaire.c.a> ia(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110370);
-    ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire()");
-    if (bu.isNullOrNil(paramString1))
+    Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire()");
+    if (Util.isNullOrNil(paramString1))
     {
       paramString1 = new Pair(Integer.valueOf(0), null);
       AppMethodBeat.o(110370);
       return paramString1;
     }
     String str1 = paramString1.trim();
-    if (bu.isNullOrNil(str1))
+    if (Util.isNullOrNil(str1))
     {
       paramString1 = new Pair(Integer.valueOf(0), null);
       AppMethodBeat.o(110370);
@@ -569,21 +565,21 @@ public final class c
     int k = 0;
     if (arrayOfString.length > 1000)
     {
-      ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() contentArray.length > 1000");
+      Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() contentArray.length > 1000");
       paramString1 = new Pair(Integer.valueOf(0), null);
       AppMethodBeat.o(110370);
       return paramString1;
     }
-    if (!bu.isNullOrNil(str1))
+    if (!Util.isNullOrNil(str1))
     {
-      paramString1 = anV(str1);
-      if (this.uMF.contains(paramString1)) {
-        i = ((a)this.uMF.get(paramString1)).hiV;
+      paramString1 = aBo(str1);
+      if (this.yfd.contains(paramString1)) {
+        i = ((c.a)this.yfd.get(paramString1)).ibS;
       }
     }
     while (i > 3)
     {
-      ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() getCrashNum() > 3");
+      Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() getCrashNum() > 3");
       paramString1 = new Pair(Integer.valueOf(0), null);
       AppMethodBeat.o(110370);
       return paramString1;
@@ -591,7 +587,7 @@ public final class c
       continue;
       i = 0;
     }
-    long l = ch.aDb();
+    long l = cl.aWz();
     com.tencent.mm.plugin.groupsolitaire.c.a locala = new com.tencent.mm.plugin.groupsolitaire.c.a();
     int j;
     Object localObject1;
@@ -600,48 +596,48 @@ public final class c
     {
       try
       {
-        if (bu.isNullOrNil(str1)) {
+        if (Util.isNullOrNil(str1)) {
           break label3408;
         }
-        paramString1 = anV(str1);
-        if (!this.uMF.contains(paramString1)) {
+        paramString1 = aBo(str1);
+        if (!this.yfd.contains(paramString1)) {
           continue;
         }
-        paramString1 = (a)this.uMF.get(paramString1);
-        paramString1.hiV += 1;
-        dej();
+        paramString1 = (c.a)this.yfd.get(paramString1);
+        paramString1.ibS += 1;
+        dXT();
       }
       catch (Exception paramString1)
       {
         label396:
         label431:
-        ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire Exception：%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
+        Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire Exception：%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
         label527:
         paramString1 = new Pair(Integer.valueOf(0), null);
-        l = ch.aDb() - l;
+        l = cl.aWz() - l;
         if (l > 1000L) {
           break label3140;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 0L, 1L, false);
-        ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 0L, 1L, false);
+        Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
         AppMethodBeat.o(110370);
         return paramString1;
         bool2 = bool1;
         if (bool1) {
           break label3392;
         }
-        localObject1 = this.uML.matcher(paramString1.trim());
+        localObject1 = this.yfj.matcher(paramString1.trim());
         bool1 = ((Matcher)localObject1).find();
-        if (!j.DEBUG) {
+        if (!BuildInfo.DEBUG) {
           continue;
         }
-        ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "example str:%s hasExample:%s", new Object[] { paramString1, Boolean.valueOf(bool1) });
+        Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "example str:%s hasExample:%s", new Object[] { paramString1, Boolean.valueOf(bool1) });
         bool2 = bool1;
         if (!bool1) {
           break label3392;
         }
         localObject1 = ((Matcher)localObject1).group(0);
-        if (!bu.isNullOrNil((String)localObject1)) {
+        if (!Util.isNullOrNil((String)localObject1)) {
           continue;
         }
         i = str1.indexOf(paramString1, k);
@@ -651,35 +647,35 @@ public final class c
         i = str1.indexOf((String)localObject1, k);
         continue;
         paramString1 = new Pair(Integer.valueOf(0), null);
-        l = ch.aDb() - l;
+        l = cl.aWz() - l;
         if (l > 1000L) {
           continue;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 0L, 1L, false);
-        ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 0L, 1L, false);
+        Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
         AppMethodBeat.o(110370);
         return paramString1;
         if (l > 2000L) {
           continue;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 1L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 1L, 1L, false);
         continue;
         if (l > 3000L) {
           continue;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 2L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 2L, 1L, false);
         continue;
         if (l > 4000L) {
           continue;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 3L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 3L, 1L, false);
         continue;
         if (l > 5000L) {
           continue;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 4L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 4L, 1L, false);
         continue;
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 5L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 5L, 1L, false);
         continue;
         n = str1.length();
         k = arrayOfString.length - 1;
@@ -688,15 +684,15 @@ public final class c
         }
         paramString1 = arrayOfString[k];
         n -= paramString1.length();
-        if (!j.DEBUG) {
+        if (!BuildInfo.DEBUG) {
           continue;
         }
-        ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "str(last):%s", new Object[] { paramString1 });
-        bool1 = this.uMK.matcher(paramString1.trim()).find();
-        if (!j.DEBUG) {
+        Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "str(last):%s", new Object[] { paramString1 });
+        bool1 = this.yfi.matcher(paramString1.trim()).find();
+        if (!BuildInfo.DEBUG) {
           continue;
         }
-        ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "mainBody(last) result:%s", new Object[] { Boolean.valueOf(bool1) });
+        Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "mainBody(last) result:%s", new Object[] { Boolean.valueOf(bool1) });
         if (!bool1) {
           continue;
         }
@@ -712,16 +708,16 @@ public final class c
           continue;
         }
         locala.header = str1.substring(0, m).trim();
-        if (!b.anQ(locala.header)) {
+        if (!b.aBj(locala.header)) {
           break label1497;
         }
         paramString1 = new Pair(Integer.valueOf(0), null);
-        l = ch.aDb() - l;
+        l = cl.aWz() - l;
         if (l > 1000L) {
           break label1378;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 0L, 1L, false);
-        ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 0L, 1L, false);
+        Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
         AppMethodBeat.o(110370);
         return paramString1;
         n -= 1;
@@ -732,7 +728,7 @@ public final class c
       }
       finally
       {
-        l = ch.aDb() - l;
+        l = cl.aWz() - l;
         if (l > 1000L) {
           break label3259;
         }
@@ -741,13 +737,13 @@ public final class c
         break label3399;
       }
       paramString1 = arrayOfString[j];
-      localObject1 = this.uMK.matcher(paramString1.trim());
-      if (j.DEBUG) {
-        ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "str(first):%s", new Object[] { paramString1 });
+      localObject1 = this.yfi.matcher(paramString1.trim());
+      if (BuildInfo.DEBUG) {
+        Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "str(first):%s", new Object[] { paramString1 });
       }
       bool2 = ((Matcher)localObject1).find();
-      if (j.DEBUG) {
-        ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "mainBody(first) result:%s", new Object[] { Boolean.valueOf(bool2) });
+      if (BuildInfo.DEBUG) {
+        Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "mainBody(first) result:%s", new Object[] { Boolean.valueOf(bool2) });
       }
       if (!bool2) {
         continue;
@@ -763,91 +759,91 @@ public final class c
         continue;
       }
       paramString1 = (com.tencent.mm.plugin.groupsolitaire.c.a)paramString1.second;
-      if ((bu.isNullOrNil(paramString1.separator)) || (bu.isNullOrNil(paramString1.separator.trim()))) {
+      if ((Util.isNullOrNil(paramString1.separator)) || (Util.isNullOrNil(paramString1.separator.trim()))) {
         paramString1.separator = ".";
       }
-      if (!bu.isNullOrNil(str1))
+      if (!Util.isNullOrNil(str1))
       {
-        paramString2 = (a)this.uMF.remove(anV(str1));
-        this.uMG.remove(paramString2);
-        dej();
+        paramString2 = (c.a)this.yfd.remove(aBo(str1));
+        this.yfe.remove(paramString2);
+        dXT();
       }
-      l = ch.aDb() - l;
+      l = cl.aWz() - l;
       if (l > 1000L) {
         break label3021;
       }
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 0L, 1L, false);
-      ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
-      if (j.DEBUG) {
-        ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() groupSolitatire:%s", new Object[] { paramString1 });
+      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 0L, 1L, false);
+      Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
+      if (BuildInfo.DEBUG) {
+        Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() groupSolitatire:%s", new Object[] { paramString1 });
       }
-      paramString1 = new Pair(Integer.valueOf(paramString1.uNg.size()), paramString1);
+      paramString1 = new Pair(Integer.valueOf(paramString1.yfE.size()), paramString1);
       AppMethodBeat.o(110370);
       return paramString1;
-      localObject1 = new a(paramString1, 1);
-      this.uMF.put(paramString1, localObject1);
-      this.uMG.add(localObject1);
+      localObject1 = new c.a(this, paramString1, 1);
+      this.yfd.put(paramString1, localObject1);
+      this.yfe.add(localObject1);
     }
     for (;;)
     {
       label704:
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 0L, 1L, false);
+      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 0L, 1L, false);
       label825:
       label1350:
-      ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
+      Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
       label1166:
       AppMethodBeat.o(110370);
       throw paramString1;
       label1378:
       if (l <= 2000L) {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 1L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 1L, 1L, false);
       } else if (l <= 3000L) {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 2L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 2L, 1L, false);
       } else if (l <= 4000L) {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 3L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 3L, 1L, false);
       } else if (l <= 5000L) {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 4L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 4L, 1L, false);
       } else {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 5L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 5L, 1L, false);
       }
     }
     label1497:
     if ((i >= 0) && (i <= m)) {
-      locala.uNd = str1.substring(i, m).trim();
+      locala.yfB = str1.substring(i, m).trim();
     }
     label1523:
     int i = n + arrayOfString[i1].length();
     if ((i > 0) && (i < str1.length())) {
-      locala.ufC = str1.substring(i).trim();
+      locala.xxN = str1.substring(i).trim();
     }
-    if (b.anR(locala.ufC))
+    if (b.aBk(locala.xxN))
     {
       paramString1 = new Pair(Integer.valueOf(0), null);
-      l = ch.aDb() - l;
+      l = cl.aWz() - l;
       if (l <= 1000L) {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 0L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 0L, 1L, false);
       }
       for (;;)
       {
-        ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
+        Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
         AppMethodBeat.o(110370);
         return paramString1;
         if (l <= 2000L) {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 1L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 1L, 1L, false);
         } else if (l <= 3000L) {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 2L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 2L, 1L, false);
         } else if (l <= 4000L) {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 3L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 3L, 1L, false);
         } else if (l <= 5000L) {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 4L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 4L, 1L, false);
         } else {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 5L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 5L, 1L, false);
         }
       }
     }
     String str2 = b.a(locala);
-    paramString1 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ad(PluginGroupSolitaire.class)).getGroupSolitatireStorage().hx(paramString2, str2);
-    locala.dek();
+    paramString1 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireStorage().ie(paramString2, str2);
+    locala.dXU();
     int i2 = 0;
     ArrayList localArrayList = new ArrayList();
     k = str1.indexOf(arrayOfString[j]);
@@ -860,7 +856,7 @@ public final class c
       while (j <= i1)
       {
         localObject1 = arrayOfString[j];
-        if (this.uMN.matcher(((String)localObject1).trim()).find()) {
+        if (this.yfl.matcher(((String)localObject1).trim()).find()) {
           break;
         }
         n = n + arrayOfString[j].length() + 1;
@@ -879,10 +875,10 @@ public final class c
       {
         n = k + ((String)localObject1).length();
         localObject2 = b.a(locala);
-        if (!bu.lX(str2, (String)localObject2)) {
-          paramString1 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ad(PluginGroupSolitaire.class)).getGroupSolitatireStorage().hx(paramString2, (String)localObject2);
+        if (!Util.isEqual(str2, (String)localObject2)) {
+          paramString1 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireStorage().ie(paramString2, (String)localObject2);
         }
-        locala.dek();
+        locala.dXU();
         localObject1 = a(paramString1, (String)localObject1);
         if (localObject1 != null) {
           break label3417;
@@ -901,56 +897,56 @@ public final class c
         break label3436;
       }
       Object localObject2 = (com.tencent.mm.plugin.groupsolitaire.c.b)((List)localObject1).get(m);
-      if (b.anP(((com.tencent.mm.plugin.groupsolitaire.c.b)localObject2).content))
+      if (b.aBi(((com.tencent.mm.plugin.groupsolitaire.c.b)localObject2).content))
       {
         paramString1 = new Pair(Integer.valueOf(0), null);
-        l = ch.aDb() - l;
+        l = cl.aWz() - l;
         if (l <= 1000L) {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 0L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 0L, 1L, false);
         }
         for (;;)
         {
-          ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
+          Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
           AppMethodBeat.o(110370);
           return paramString1;
           if (l <= 2000L) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 1L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 1L, 1L, false);
           } else if (l <= 3000L) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 2L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 2L, 1L, false);
           } else if (l <= 4000L) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 3L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 3L, 1L, false);
           } else if (l <= 5000L) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 4L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 4L, 1L, false);
           } else {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 5L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 5L, 1L, false);
           }
         }
       }
-      if (locala.uNg.size() == 0) {
+      if (locala.yfE.size() == 0) {
         locala.separator = ((com.tencent.mm.plugin.groupsolitaire.c.b)localObject2).separator;
       }
-      if (((m == 0) && (bu.isNullOrNil(((com.tencent.mm.plugin.groupsolitaire.c.b)localObject2).content))) || (bu.isNullOrNil(((com.tencent.mm.plugin.groupsolitaire.c.b)localObject2).content.trim())))
+      if (((m == 0) && (Util.isNullOrNil(((com.tencent.mm.plugin.groupsolitaire.c.b)localObject2).content))) || (Util.isNullOrNil(((com.tencent.mm.plugin.groupsolitaire.c.b)localObject2).content.trim())))
       {
-        locala.uNi += 1;
-        localArrayList.add(Integer.valueOf(((com.tencent.mm.plugin.groupsolitaire.c.b)localObject2).uNk));
+        locala.yfG += 1;
+        localArrayList.add(Integer.valueOf(((com.tencent.mm.plugin.groupsolitaire.c.b)localObject2).yfI));
       }
       else
       {
-        HashMap localHashMap = locala.uNg;
+        HashMap localHashMap = locala.yfE;
         k += 1;
         localHashMap.put(Integer.valueOf(k), localObject2);
       }
     }
-    else if (locala.uNg.size() + localArrayList.size() >= 4)
+    else if (locala.yfE.size() + localArrayList.size() >= 4)
     {
       paramString1 = new HashSet();
       i = 0;
       j = 1;
-      if (j > locala.uNg.size()) {
+      if (j > locala.yfE.size()) {
         break label3460;
       }
-      paramString2 = (com.tencent.mm.plugin.groupsolitaire.c.b)locala.uNg.get(Integer.valueOf(j));
-      if (paramString1.contains(Integer.valueOf(paramString2.uNk)))
+      paramString2 = (com.tencent.mm.plugin.groupsolitaire.c.b)locala.yfE.get(Integer.valueOf(j));
+      if (paramString1.contains(Integer.valueOf(paramString2.yfI)))
       {
         k = i + 1;
         i = k;
@@ -958,29 +954,29 @@ public final class c
           break label3451;
         }
         paramString1 = new Pair(Integer.valueOf(0), null);
-        l = ch.aDb() - l;
+        l = cl.aWz() - l;
         if (l <= 1000L) {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 0L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 0L, 1L, false);
         }
         for (;;)
         {
-          ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
+          Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
           AppMethodBeat.o(110370);
           return paramString1;
           if (l <= 2000L) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 1L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 1L, 1L, false);
           } else if (l <= 3000L) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 2L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 2L, 1L, false);
           } else if (l <= 4000L) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 3L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 3L, 1L, false);
           } else if (l <= 5000L) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 4L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 4L, 1L, false);
           } else {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 5L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 5L, 1L, false);
           }
         }
       }
-      paramString1.add(Integer.valueOf(paramString2.uNk));
+      paramString1.add(Integer.valueOf(paramString2.yfI));
       break label3451;
     }
     for (;;)
@@ -996,25 +992,25 @@ public final class c
           if (k >= 2)
           {
             paramString1 = new Pair(Integer.valueOf(0), null);
-            l = ch.aDb() - l;
+            l = cl.aWz() - l;
             if (l <= 1000L) {
-              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 0L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 0L, 1L, false);
             }
             for (;;)
             {
-              ae.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
+              Log.i("MicroMsg.groupsolitaire.GroupSolitatireManager", "matchGroupSolitatire() internal:%s", new Object[] { Long.valueOf(l) });
               AppMethodBeat.o(110370);
               return paramString1;
               if (l <= 2000L) {
-                com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 1L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 1L, 1L, false);
               } else if (l <= 3000L) {
-                com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 2L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 2L, 1L, false);
               } else if (l <= 4000L) {
-                com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 3L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 3L, 1L, false);
               } else if (l <= 5000L) {
-                com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 4L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 4L, 1L, false);
               } else {
-                com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 5L, 1L, false);
+                com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 5L, 1L, false);
               }
             }
           }
@@ -1026,79 +1022,79 @@ public final class c
       }
       else
       {
-        if ((bu.isNullOrNil(locala.separator)) && (locala.uNg.size() > 0)) {
-          locala.separator = ((com.tencent.mm.plugin.groupsolitaire.c.b)locala.uNg.get(Integer.valueOf(1))).separator;
+        if ((Util.isNullOrNil(locala.separator)) && (locala.yfE.size() > 0)) {
+          locala.separator = ((com.tencent.mm.plugin.groupsolitaire.c.b)locala.yfE.get(Integer.valueOf(1))).separator;
         }
         paramString1 = locala;
         break label431;
         label3021:
         if (l <= 2000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 1L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 1L, 1L, false);
           break label527;
         }
         if (l <= 3000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 2L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 2L, 1L, false);
           break label527;
         }
         if (l <= 4000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 3L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 3L, 1L, false);
           break label527;
         }
         if (l <= 5000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 4L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 4L, 1L, false);
           break label527;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 5L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 5L, 1L, false);
         break label527;
         label3140:
         if (l <= 2000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 1L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 1L, 1L, false);
           break label704;
         }
         if (l <= 3000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 2L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 2L, 1L, false);
           break label704;
         }
         if (l <= 4000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 3L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 3L, 1L, false);
           break label704;
         }
         if (l <= 5000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 4L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 4L, 1L, false);
           break label704;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 5L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 5L, 1L, false);
         break label704;
         label3259:
         if (l <= 2000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 1L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 1L, 1L, false);
           break label1350;
         }
         if (l <= 3000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 2L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 2L, 1L, false);
           break label1350;
         }
         if (l <= 4000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 3L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 3L, 1L, false);
           break label1350;
         }
         if (l <= 5000L)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 4L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 4L, 1L, false);
           break label1350;
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(1174L, 5L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(1174L, 5L, 1L, false);
         break label1350;
         label3378:
         k = 0;
@@ -1138,24 +1134,24 @@ public final class c
     }
   }
   
-  public final com.tencent.mm.plugin.groupsolitaire.c.a hu(String paramString1, String paramString2)
+  public final com.tencent.mm.plugin.groupsolitaire.c.a ib(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110373);
-    ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "getGroupSolitatireFromCache() username:%s key:%s", new Object[] { paramString1, paramString2 });
-    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
+    Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "getGroupSolitatireFromCache() username:%s key:%s", new Object[] { paramString1, paramString2 });
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
       AppMethodBeat.o(110373);
       return null;
     }
-    com.tencent.mm.plugin.groupsolitaire.c.a locala2 = (com.tencent.mm.plugin.groupsolitaire.c.a)this.uMH.get(paramString1 + paramString2);
+    com.tencent.mm.plugin.groupsolitaire.c.a locala2 = (com.tencent.mm.plugin.groupsolitaire.c.a)this.yff.get(paramString1 + paramString2);
     com.tencent.mm.plugin.groupsolitaire.c.a locala1;
     if (locala2 == null)
     {
-      locala2 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ad(PluginGroupSolitaire.class)).getGroupSolitatireStorage().p(paramString1, paramString2, true);
+      locala2 = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireStorage().r(paramString1, paramString2, true);
       locala1 = locala2;
       if (locala2 != null)
       {
-        this.uMH.put(paramString1 + paramString2, locala2);
+        this.yff.put(paramString1 + paramString2, locala2);
         locala1 = locala2;
       }
     }
@@ -1168,66 +1164,33 @@ public final class c
         {
           AppMethodBeat.o(110373);
           return locala1;
-          locala = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ad(PluginGroupSolitaire.class)).getGroupSolitatireManager().anT(paramString1);
+          locala = ((PluginGroupSolitaire)com.tencent.mm.kernel.g.ah(PluginGroupSolitaire.class)).getGroupSolitatireManager().aBm(paramString1);
           locala1 = locala2;
         } while (locala == null);
-        if ((locala2.field_active == 1) && (locala2.field_lastActiveTime < locala.uMC)) {
+        if ((locala2.field_active == 1) && (locala2.field_lastActiveTime < locala.yfa)) {
           break;
         }
         locala1 = locala2;
       } while (locala2.field_active != 0);
       locala1 = locala2;
-    } while (locala2.field_lastActiveTime >= locala.uME);
-    hv(paramString1, paramString2);
-    h.MqF.aO(new c.1(this, paramString1, paramString2));
+    } while (locala2.field_lastActiveTime >= locala.yfc);
+    ic(paramString1, paramString2);
+    com.tencent.f.h.RTc.aX(new c.1(this, paramString1, paramString2));
     AppMethodBeat.o(110373);
     return null;
   }
   
-  public final void hv(String paramString1, String paramString2)
+  public final void ic(String paramString1, String paramString2)
   {
     AppMethodBeat.i(110374);
-    ae.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "deleteGroupSolitatireInCache() username:%s key:%s", new Object[] { paramString1, paramString2 });
-    this.uMH.remove(paramString1 + paramString2);
+    Log.d("MicroMsg.groupsolitaire.GroupSolitatireManager", "deleteGroupSolitatireInCache() username:%s key:%s", new Object[] { paramString1, paramString2 });
+    this.yff.remove(paramString1 + paramString2);
     AppMethodBeat.o(110374);
-  }
-  
-  final class a
-  {
-    int hiV = 0;
-    String key = "";
-    
-    public a(String paramString, int paramInt)
-    {
-      this.key = paramString;
-      this.hiV = paramInt;
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(110368);
-      paramObject = (a)paramObject;
-      if (bu.lX(this.key, paramObject.key))
-      {
-        AppMethodBeat.o(110368);
-        return true;
-      }
-      AppMethodBeat.o(110368);
-      return false;
-    }
-    
-    public final int hashCode()
-    {
-      AppMethodBeat.i(110367);
-      int i = this.key.hashCode();
-      AppMethodBeat.o(110367);
-      return i;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.groupsolitaire.b.c
  * JD-Core Version:    0.7.0.1
  */

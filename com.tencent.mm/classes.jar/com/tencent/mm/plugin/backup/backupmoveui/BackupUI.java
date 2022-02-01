@@ -15,55 +15,56 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.plugin.backup.b.e;
+import com.tencent.mm.plugin.backup.b.g;
 import com.tencent.mm.plugin.backup.d.a.1;
 import com.tencent.mm.plugin.backup.h.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.ui.MMWizardActivity;
-import com.tencent.mm.ui.base.h;
 
 public class BackupUI
   extends MMWizardActivity
 {
-  private static boolean nCB = false;
-  private aw nBx;
-  private Button nCA;
-  private TextView nCm;
+  private static boolean oNA = false;
+  private MTimerHandler oMw;
+  private TextView oNl;
+  private Button oNz;
   
   public BackupUI()
   {
     AppMethodBeat.i(21490);
-    this.nBx = new aw(Looper.getMainLooper(), new aw.a()
+    this.oMw = new MTimerHandler(Looper.getMainLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(21489);
-        if (bu.isNullOrNil(com.tencent.mm.plugin.backup.b.g.el(BackupUI.this))) {
-          if (BackupUI.nCB)
+        if (Util.isNullOrNil(g.eE(BackupUI.this))) {
+          if (BackupUI.oNA)
           {
-            BackupUI.a(BackupUI.this).setText(2131756267);
-            BackupUI.a(BackupUI.this).setTextColor(BackupUI.this.getResources().getColor(2131099991));
+            BackupUI.a(BackupUI.this).setText(2131756401);
+            BackupUI.a(BackupUI.this).setTextColor(BackupUI.this.getResources().getColor(2131100015));
             BackupUI.b(BackupUI.this).setEnabled(false);
             BackupUI.access$002(false);
-            com.tencent.mm.plugin.report.service.g.yxI.f(11788, new Object[] { Integer.valueOf(2) });
+            com.tencent.mm.plugin.report.service.h.CyF.a(11788, new Object[] { Integer.valueOf(2) });
           }
         }
         for (;;)
         {
           AppMethodBeat.o(21489);
           return true;
-          if (!BackupUI.nCB)
+          if (!BackupUI.oNA)
           {
-            BackupUI.a(BackupUI.this).setText(2131756268);
-            BackupUI.a(BackupUI.this).setTextColor(BackupUI.this.getResources().getColor(2131099992));
+            BackupUI.a(BackupUI.this).setText(2131756402);
+            BackupUI.a(BackupUI.this).setTextColor(BackupUI.this.getResources().getColor(2131100016));
             BackupUI.b(BackupUI.this).setEnabled(true);
             BackupUI.access$002(true);
           }
@@ -75,7 +76,7 @@ public class BackupUI
   
   public int getLayoutId()
   {
-    return 2131493133;
+    return 2131493176;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -87,110 +88,110 @@ public class BackupUI
       AppMethodBeat.o(21491);
       return;
     }
-    setMMTitle(2131756098);
-    com.tencent.mm.plugin.report.service.g.yxI.f(11788, new Object[] { Integer.valueOf(1) });
-    com.tencent.mm.plugin.backup.g.b.bJE();
-    this.nCm = ((TextView)findViewById(2131297059));
-    this.nCA = ((Button)findViewById(2131297055));
-    com.tencent.mm.plugin.backup.d.b.bIE();
-    paramBundle = com.tencent.mm.plugin.backup.d.b.bIa().edit();
+    setMMTitle(2131756232);
+    com.tencent.mm.plugin.report.service.h.CyF.a(11788, new Object[] { Integer.valueOf(1) });
+    com.tencent.mm.plugin.backup.g.b.cgx();
+    this.oNl = ((TextView)findViewById(2131297205));
+    this.oNz = ((Button)findViewById(2131297201));
+    com.tencent.mm.plugin.backup.d.b.cfv();
+    paramBundle = com.tencent.mm.plugin.backup.d.b.ceR().edit();
     paramBundle.putInt("BACKUP_MOVE_CHOOSE_SELECT_TIME_MODE", 0);
     paramBundle.putInt("BACKUP_MOVE_CHOOSE_SELECT_CONTENT_TYPE", 0);
     paramBundle.putLong("BACKUP_MOVE_CHOOSE_SELECT_START_TIME", 0L);
     paramBundle.putLong("BACKUP_MOVE_CHOOSE_SELECT_END_TIME", 0L);
     paramBundle.commit();
-    if (!com.tencent.mm.plugin.backup.d.b.bIE().bII().nAk)
+    if (!com.tencent.mm.plugin.backup.d.b.cfv().cfz().oLi)
     {
-      paramBundle = com.tencent.mm.plugin.backup.d.b.bIE().bII();
-      d.bJW().bJZ();
-      com.tencent.mm.sdk.g.b.c(new a.1(paramBundle), "BakMoveChooseServer.calculateToChoose");
-      if (!bu.isNullOrNil(com.tencent.mm.plugin.backup.b.g.el(this))) {
+      paramBundle = com.tencent.mm.plugin.backup.d.b.cfv().cfz();
+      d.cgP().cgS();
+      ThreadPool.post(new a.1(paramBundle), "BakMoveChooseServer.calculateToChoose");
+      if (!Util.isNullOrNil(g.eE(this))) {
         break label300;
       }
-      this.nCm.setText(2131756267);
-      this.nCm.setTextColor(getResources().getColor(2131099991));
-      this.nCA.setEnabled(false);
-      nCB = false;
-      com.tencent.mm.plugin.report.service.g.yxI.f(11788, new Object[] { Integer.valueOf(2) });
+      this.oNl.setText(2131756401);
+      this.oNl.setTextColor(getResources().getColor(2131100015));
+      this.oNz.setEnabled(false);
+      oNA = false;
+      com.tencent.mm.plugin.report.service.h.CyF.a(11788, new Object[] { Integer.valueOf(2) });
     }
     for (;;)
     {
-      this.nCA.setOnClickListener(new View.OnClickListener()
+      this.oNz.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(21487);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-          bc.aCg();
-          if (((Boolean)c.ajA().get(am.a.IRE, Boolean.FALSE)).booleanValue())
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/backup/backupmoveui/BackupUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+          bg.aVF();
+          if (((Boolean)c.azQ().get(ar.a.NZG, Boolean.FALSE)).booleanValue())
           {
-            if (com.tencent.mm.plugin.backup.d.b.bIE().bHV().nye == -100)
+            if (com.tencent.mm.plugin.backup.d.b.cfv().ceM().oJc == -100)
             {
-              bc.aCg();
-              c.ajA().set(am.a.IRE, Boolean.FALSE);
+              bg.aVF();
+              c.azQ().set(ar.a.NZG, Boolean.FALSE);
             }
           }
           else
           {
-            bc.aCg();
-            if (!((Boolean)c.ajA().get(am.a.IRA, Boolean.FALSE)).booleanValue())
+            bg.aVF();
+            if (!((Boolean)c.azQ().get(ar.a.NZC, Boolean.FALSE)).booleanValue())
             {
-              bc.aCg();
-              if (!((Boolean)c.ajA().get(am.a.IRB, Boolean.FALSE)).booleanValue()) {}
+              bg.aVF();
+              if (!((Boolean)c.azQ().get(ar.a.NZD, Boolean.FALSE)).booleanValue()) {}
             }
             else
             {
-              if (com.tencent.mm.plugin.backup.backuppcmodel.b.bJh().bHV().nye != -100) {
+              if (com.tencent.mm.plugin.backup.backuppcmodel.b.cga().ceM().oJc != -100) {
                 break label393;
               }
-              bc.aCg();
-              c.ajA().set(am.a.IRA, Boolean.FALSE);
-              bc.aCg();
-              c.ajA().set(am.a.IRB, Boolean.FALSE);
+              bg.aVF();
+              c.azQ().set(ar.a.NZC, Boolean.FALSE);
+              bg.aVF();
+              c.azQ().set(ar.a.NZD, Boolean.FALSE);
             }
-            int i = com.tencent.mm.plugin.backup.b.g.bIl();
+            int i = g.cfc();
             if (i >= 50) {
               break label508;
             }
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(485L, 7L, 1L, false);
-            com.tencent.mm.plugin.report.service.g.yxI.f(11787, new Object[] { Integer.valueOf(4) });
-            h.a(BackupUI.this, 2131756120, 2131756119, 2131756270, 2131756090, false, new BackupUI.1.1(this, i), null, 2131099990);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(485L, 7L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.a(11787, new Object[] { Integer.valueOf(4) });
+            com.tencent.mm.ui.base.h.a(BackupUI.this, 2131756254, 2131756253, 2131756404, 2131756224, false, new BackupUI.1.1(this, i), null, 2131100014);
           }
           for (;;)
           {
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backupmoveui/BackupUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(21487);
             return;
-            localObject = new Intent().setClassName(ak.getContext(), "com.tencent.mm.ui.LauncherUI");
+            localObject = new Intent().setClassName(MMApplicationContext.getContext(), "com.tencent.mm.ui.LauncherUI");
             ((Intent)localObject).addFlags(335544320);
             ((Intent)localObject).putExtra("nofification_type", "backup_move_notification");
-            paramAnonymousView = ak.getContext();
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/backup/backupmoveui/BackupUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+            paramAnonymousView = MMApplicationContext.getContext();
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/backup/backupmoveui/BackupUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/backup/backupmoveui/BackupUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backupmoveui/BackupUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(21487);
             return;
             label393:
-            localObject = new Intent().setClassName(ak.getContext(), "com.tencent.mm.ui.LauncherUI");
+            localObject = new Intent().setClassName(MMApplicationContext.getContext(), "com.tencent.mm.ui.LauncherUI");
             ((Intent)localObject).addFlags(335544320);
             ((Intent)localObject).putExtra("nofification_type", "back_to_pcmgr_notification");
-            paramAnonymousView = ak.getContext();
-            localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/backup/backupmoveui/BackupUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+            paramAnonymousView = MMApplicationContext.getContext();
+            localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+            com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/backup/backupmoveui/BackupUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+            paramAnonymousView.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
             com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousView, "com/tencent/mm/plugin/backup/backupmoveui/BackupUI$1", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/backup/backupmoveui/BackupUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(21487);
             return;
             label508:
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(485L, 21L, 1L, false);
-            com.tencent.mm.plugin.report.service.g.yxI.f(11788, new Object[] { Integer.valueOf(3) });
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(485L, 21L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.a(11788, new Object[] { Integer.valueOf(3) });
             paramAnonymousView = new Intent(BackupUI.this, BackupMoveChooseUI.class);
-            MMWizardActivity.al(BackupUI.this, paramAnonymousView);
+            MMWizardActivity.ay(BackupUI.this, paramAnonymousView);
           }
         }
       });
@@ -206,29 +207,29 @@ public class BackupUI
       });
       AppMethodBeat.o(21491);
       return;
-      com.tencent.mm.plugin.backup.d.b.bIE().bII().bIC();
+      com.tencent.mm.plugin.backup.d.b.cfv().cfz().cft();
       break;
       label300:
-      this.nCm.setText(2131756268);
-      this.nCm.setTextColor(getResources().getColor(2131099992));
-      this.nCA.setEnabled(true);
-      nCB = true;
+      this.oNl.setText(2131756402);
+      this.oNl.setTextColor(getResources().getColor(2131100016));
+      this.oNz.setEnabled(true);
+      oNA = true;
     }
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(21494);
-    ae.d("MicroMsg.BackupUI", "BackupUI onDestroy.");
+    Log.d("MicroMsg.BackupUI", "BackupUI onDestroy.");
     super.onDestroy();
-    com.tencent.mm.plugin.backup.d.b.bIE().bII().cancel();
-    com.tencent.mm.plugin.backup.d.a locala = com.tencent.mm.plugin.backup.d.b.bIE().bII();
-    ae.i("MicroMsg.BackupMoveChooseServer", "clearChooseData");
-    locala.nAh = null;
-    locala.nAj = null;
-    locala.nAi = null;
-    locala.nAl = false;
-    locala.nAk = false;
+    com.tencent.mm.plugin.backup.d.b.cfv().cfz().cancel();
+    com.tencent.mm.plugin.backup.d.a locala = com.tencent.mm.plugin.backup.d.b.cfv().cfz();
+    Log.i("MicroMsg.BackupMoveChooseServer", "clearChooseData");
+    locala.oLf = null;
+    locala.oLh = null;
+    locala.oLg = null;
+    locala.oLj = false;
+    locala.oLi = false;
     AppMethodBeat.o(21494);
   }
   
@@ -236,7 +237,7 @@ public class BackupUI
   {
     AppMethodBeat.i(21492);
     super.onStart();
-    this.nBx.ay(5000L, 5000L);
+    this.oMw.startTimer(5000L);
     AppMethodBeat.o(21492);
   }
   
@@ -244,7 +245,7 @@ public class BackupUI
   {
     AppMethodBeat.i(21493);
     super.onStop();
-    this.nBx.stopTimer();
+    this.oMw.stopTimer();
     AppMethodBeat.o(21493);
   }
   
@@ -256,7 +257,7 @@ public class BackupUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.backupmoveui.BackupUI
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.support.design.a.h;
 import android.support.design.a.j;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.CoordinatorLayout.d;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.util.AttributeSet;
 import android.view.View;
 import java.util.HashMap;
@@ -15,7 +15,7 @@ import java.util.Map;
 public class FabTransformationSheetBehavior
   extends FabTransformationBehavior
 {
-  private Map<View, Integer> mP;
+  private Map<View, Integer> mR;
   
   public FabTransformationSheetBehavior() {}
   
@@ -32,14 +32,14 @@ public class FabTransformationSheetBehavior
       localObject = (CoordinatorLayout)localObject;
       int k = ((CoordinatorLayout)localObject).getChildCount();
       if ((Build.VERSION.SDK_INT >= 16) && (paramBoolean1)) {
-        this.mP = new HashMap(k);
+        this.mR = new HashMap(k);
       }
       int i = 0;
       if (i < k)
       {
         View localView = ((CoordinatorLayout)localObject).getChildAt(i);
         int j;
-        if (((localView.getLayoutParams() instanceof CoordinatorLayout.d)) && ((((CoordinatorLayout.d)localView.getLayoutParams()).qA instanceof FabTransformationScrimBehavior)))
+        if (((localView.getLayoutParams() instanceof CoordinatorLayout.d)) && ((((CoordinatorLayout.d)localView.getLayoutParams()).qC instanceof FabTransformationScrimBehavior)))
         {
           j = 1;
           label103:
@@ -48,8 +48,8 @@ public class FabTransformationSheetBehavior
             if (paramBoolean1) {
               break label176;
             }
-            if ((this.mP != null) && (this.mP.containsKey(localView))) {
-              t.p(localView, ((Integer)this.mP.get(localView)).intValue());
+            if ((this.mR != null) && (this.mR.containsKey(localView))) {
+              u.p(localView, ((Integer)this.mR.get(localView)).intValue());
             }
           }
         }
@@ -61,13 +61,13 @@ public class FabTransformationSheetBehavior
           break label103;
           label176:
           if (Build.VERSION.SDK_INT >= 16) {
-            this.mP.put(localView, Integer.valueOf(localView.getImportantForAccessibility()));
+            this.mR.put(localView, Integer.valueOf(localView.getImportantForAccessibility()));
           }
-          t.p(localView, 4);
+          u.p(localView, 4);
         }
       }
       if (!paramBoolean1) {
-        this.mP = null;
+        this.mR = null;
       }
     }
     return super.a(paramView1, paramView2, paramBoolean1, paramBoolean2);
@@ -79,15 +79,15 @@ public class FabTransformationSheetBehavior
     for (int i = 2130837519;; i = 2130837518)
     {
       FabTransformationBehavior.a locala = new FabTransformationBehavior.a();
-      locala.mK = h.k(paramContext, i);
-      locala.mL = new j();
+      locala.mM = h.k(paramContext, i);
+      locala.mN = new j();
       return locala;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.transformation.FabTransformationSheetBehavior
  * JD-Core Version:    0.7.0.1
  */

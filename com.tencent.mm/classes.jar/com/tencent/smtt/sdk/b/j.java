@@ -21,29 +21,29 @@ public class j
   
   public boolean acceptCookie()
   {
-    AppMethodBeat.i(192906);
+    AppMethodBeat.i(188420);
     Object localObject = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_acceptCookie", new Class[0], new Object[0]);
     if (localObject == null)
     {
-      AppMethodBeat.o(192906);
+      AppMethodBeat.o(188420);
       return false;
     }
     boolean bool = ((Boolean)localObject).booleanValue();
-    AppMethodBeat.o(192906);
+    AppMethodBeat.o(188420);
     return bool;
   }
   
   public boolean acceptThirdPartyCookies(Object paramObject)
   {
-    AppMethodBeat.i(192912);
+    AppMethodBeat.i(188426);
     paramObject = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_acceptThirdPartyCookies", new Class[] { Object.class }, new Object[] { paramObject });
     if (paramObject != null)
     {
       boolean bool = ((Boolean)paramObject).booleanValue();
-      AppMethodBeat.o(192912);
+      AppMethodBeat.o(188426);
       return bool;
     }
-    AppMethodBeat.o(192912);
+    AppMethodBeat.o(188426);
     return true;
   }
   
@@ -51,22 +51,22 @@ public class j
   
   public void flush()
   {
-    AppMethodBeat.i(192917);
+    AppMethodBeat.i(188431);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_flush", new Class[0], new Object[0]);
-    AppMethodBeat.o(192917);
+    AppMethodBeat.o(188431);
   }
   
   public String getCookie(String paramString)
   {
-    AppMethodBeat.i(192924);
+    AppMethodBeat.i(188438);
     paramString = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "getCookie", new Class[] { String.class }, new Object[] { paramString });
     if (paramString == null)
     {
-      AppMethodBeat.o(192924);
+      AppMethodBeat.o(188438);
       return null;
     }
     paramString = (String)paramString;
-    AppMethodBeat.o(192924);
+    AppMethodBeat.o(188438);
     return paramString;
   }
   
@@ -82,94 +82,94 @@ public class j
   
   public boolean hasCookies()
   {
-    AppMethodBeat.i(192919);
+    AppMethodBeat.i(188433);
     Object localObject = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_hasCookies", new Class[0], new Object[0]);
     if (localObject == null)
     {
-      AppMethodBeat.o(192919);
+      AppMethodBeat.o(188433);
       return false;
     }
     boolean bool = ((Boolean)localObject).booleanValue();
-    AppMethodBeat.o(192919);
+    AppMethodBeat.o(188433);
     return bool;
   }
   
   public void removeAllCookie()
   {
-    AppMethodBeat.i(192915);
+    AppMethodBeat.i(188429);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeAllCookie", new Class[0], new Object[0]);
-    AppMethodBeat.o(192915);
+    AppMethodBeat.o(188429);
   }
   
   public void removeAllCookies(ValueCallback<Boolean> paramValueCallback)
   {
-    AppMethodBeat.i(192916);
+    AppMethodBeat.i(188430);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeAllCookies", new Class[] { ValueCallback.class }, new Object[] { paramValueCallback });
-    AppMethodBeat.o(192916);
+    AppMethodBeat.o(188430);
   }
   
   public void removeExpiredCookie()
   {
-    AppMethodBeat.i(192918);
+    AppMethodBeat.i(188432);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeExpiredCookie", new Class[0], new Object[0]);
-    AppMethodBeat.o(192918);
+    AppMethodBeat.o(188432);
   }
   
   public void removeSessionCookie()
   {
-    AppMethodBeat.i(192913);
+    AppMethodBeat.i(188427);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeSessionCookie", new Class[0], new Object[0]);
-    AppMethodBeat.o(192913);
+    AppMethodBeat.o(188427);
   }
   
   public void removeSessionCookies(ValueCallback<Boolean> paramValueCallback)
   {
-    AppMethodBeat.i(192914);
+    AppMethodBeat.i(188428);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_removeSessionCookies", new Class[] { ValueCallback.class }, new Object[] { paramValueCallback });
-    AppMethodBeat.o(192914);
+    AppMethodBeat.o(188428);
   }
   
   public void setAcceptCookie(boolean paramBoolean)
   {
-    AppMethodBeat.i(192910);
+    AppMethodBeat.i(188424);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_setAcceptCookie", new Class[] { Boolean.TYPE }, new Object[] { Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(192910);
+    AppMethodBeat.o(188424);
   }
   
   public void setAcceptThirdPartyCookies(Object paramObject, boolean paramBoolean)
   {
-    AppMethodBeat.i(192911);
+    AppMethodBeat.i(188425);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_setAcceptThirdPartyCookies", new Class[] { Object.class, Boolean.TYPE }, new Object[] { paramObject, Boolean.valueOf(paramBoolean) });
-    AppMethodBeat.o(192911);
+    AppMethodBeat.o(188425);
   }
   
   public void setCookie(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(192908);
+    AppMethodBeat.i(188422);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_setCookie", new Class[] { String.class, String.class }, new Object[] { paramString1, paramString2 });
-    AppMethodBeat.o(192908);
+    AppMethodBeat.o(188422);
   }
   
   public void setCookie(String paramString1, String paramString2, ValueCallback<Boolean> paramValueCallback)
   {
-    AppMethodBeat.i(192909);
+    AppMethodBeat.i(188423);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_setCookie", new Class[] { String.class, String.class, ValueCallback.class }, new Object[] { paramString1, paramString2, paramValueCallback });
-    AppMethodBeat.o(192909);
+    AppMethodBeat.o(188423);
   }
   
   public void setCookie(URL paramURL, Map<String, List<String>> paramMap) {}
   
   public boolean setCookies(Map<String, String[]> paramMap)
   {
-    AppMethodBeat.i(192907);
+    AppMethodBeat.i(188421);
     paramMap = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieManager_setCookies", new Class[] { Map.class }, new Object[] { paramMap });
     if (paramMap == null)
     {
-      AppMethodBeat.o(192907);
+      AppMethodBeat.o(188421);
       return false;
     }
     boolean bool = ((Boolean)paramMap).booleanValue();
-    AppMethodBeat.o(192907);
+    AppMethodBeat.o(188421);
     return bool;
   }
   
@@ -179,35 +179,35 @@ public class j
   
   public void syncManagerCreateInstance(Context paramContext)
   {
-    AppMethodBeat.i(192920);
+    AppMethodBeat.i(188434);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_createInstance", new Class[] { Context.class }, new Object[] { paramContext });
-    AppMethodBeat.o(192920);
+    AppMethodBeat.o(188434);
   }
   
   public void syncManagerStartSync()
   {
-    AppMethodBeat.i(192923);
+    AppMethodBeat.i(188437);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_startSync", new Class[0], new Object[0]);
-    AppMethodBeat.o(192923);
+    AppMethodBeat.o(188437);
   }
   
   public void syncManagerStopSync()
   {
-    AppMethodBeat.i(192922);
+    AppMethodBeat.i(188436);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_stopSync", new Class[0], new Object[0]);
-    AppMethodBeat.o(192922);
+    AppMethodBeat.o(188436);
   }
   
   public void syncManagerSync()
   {
-    AppMethodBeat.i(192921);
+    AppMethodBeat.i(188435);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "cookieSyncManager_Sync", new Class[0], new Object[0]);
-    AppMethodBeat.o(192921);
+    AppMethodBeat.o(188435);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.b.j
  * JD-Core Version:    0.7.0.1
  */

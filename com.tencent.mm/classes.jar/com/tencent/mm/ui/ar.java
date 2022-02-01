@@ -1,272 +1,100 @@
 package com.tencent.mm.ui;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Configuration;
+import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.graphics.Point;
-import android.graphics.Rect;
-import android.os.Build.VERSION;
-import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
-import android.view.Display;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
+import android.graphics.Color;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.drawable.Drawable;
+import android.support.v4.graphics.drawable.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public final class ar
 {
-  public static int B(Context paramContext, int paramInt)
+  public static boolean aln(int paramInt)
   {
-    AppMethodBeat.i(159136);
-    int i = aL(paramContext, paramInt);
-    if (i > 0)
+    AppMethodBeat.i(159117);
+    if (1.0D - (0.299D * Color.red(paramInt) + 0.587D * Color.green(paramInt) + 0.114D * Color.blue(paramInt)) / 255.0D >= 0.3D)
     {
-      paramInt = aK(paramContext, i);
-      AppMethodBeat.o(159136);
-      return paramInt;
-    }
-    if (i <= 0) {
-      ap.i("WeUIToolHelper", "[getStatusBarHeight] return default!!!", new Object[0]);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(159136);
-      return paramInt;
-      paramInt = i;
-    }
-  }
-  
-  private static int aK(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(159138);
-    if ((paramContext instanceof Activity))
-    {
-      DisplayMetrics localDisplayMetrics = ((Activity)paramContext).getResources().getDisplayMetrics();
-      Rect localRect = new Rect();
-      ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame(localRect);
-      if ((localDisplayMetrics != null) && (localRect.height() > 0))
-      {
-        int i = localDisplayMetrics.heightPixels - localRect.height();
-        ap.i("WeUIToolHelper", "[fixStatusBarHeight] new statusBar:%s ", new Object[] { Integer.valueOf(i) });
-        if ((i > paramInt) && (i - paramInt < 100))
-        {
-          ap.i("WeUIToolHelper", "[fixStatusBarHeight] return new statusBar:%s ", new Object[] { Integer.valueOf(i) });
-          AppMethodBeat.o(159138);
-          return i;
-        }
-      }
-    }
-    AppMethodBeat.o(159138);
-    return paramInt;
-  }
-  
-  private static int aL(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(159137);
-    try
-    {
-      Class localClass = Class.forName("com.android.internal.R$dimen");
-      Object localObject = localClass.newInstance();
-      int i = as.fe(localClass.getField("status_bar_height").get(localObject).toString());
-      i = paramContext.getResources().getDimensionPixelSize(i);
-      paramInt = i;
-    }
-    catch (Exception paramContext)
-    {
-      for (;;)
-      {
-        ap.printErrStackTrace("WeUIToolHelper", paramContext, "getStatusBarHeightFromSysR", new Object[0]);
-      }
-    }
-    ap.i("WeUIToolHelper", "[getStatusBarHeightFromSysR] :%s ", new Object[] { Integer.valueOf(paramInt) });
-    AppMethodBeat.o(159137);
-    return paramInt;
-  }
-  
-  public static Point ck(Context paramContext)
-  {
-    AppMethodBeat.i(159139);
-    Point localPoint = new Point();
-    paramContext = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    if (Build.VERSION.SDK_INT >= 17) {
-      paramContext.getRealSize(localPoint);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(159139);
-      return localPoint;
-      if (Build.VERSION.SDK_INT >= 14) {
-        try
-        {
-          Method localMethod = Display.class.getMethod("getRawHeight", new Class[0]);
-          localPoint.x = ((Integer)Display.class.getMethod("getRawWidth", new Class[0]).invoke(paramContext, new Object[0])).intValue();
-          localPoint.y = ((Integer)localMethod.invoke(paramContext, new Object[0])).intValue();
-        }
-        catch (NoSuchMethodException paramContext)
-        {
-          ap.printErrStackTrace("WeUIToolHelper", paramContext, "getDisplayRealSize NoSuchMethodException", new Object[0]);
-        }
-        catch (IllegalAccessException paramContext)
-        {
-          ap.printErrStackTrace("WeUIToolHelper", paramContext, "getDisplayRealSize IllegalAccessException", new Object[0]);
-        }
-        catch (InvocationTargetException paramContext)
-        {
-          ap.printErrStackTrace("WeUIToolHelper", paramContext, "getDisplayRealSize InvocationTargetException", new Object[0]);
-        }
-      } else {
-        paramContext.getSize(localPoint);
-      }
-    }
-  }
-  
-  public static int dX(Context paramContext)
-  {
-    AppMethodBeat.i(159133);
-    if (paramContext == null) {
-      ap.w("WeUIToolHelper", "[getActionBarHeight] context is null!", new Object[0]);
-    }
-    int k = paramContext.getResources().getDimensionPixelSize(2131165251);
-    int i;
-    if ((paramContext instanceof AppCompatActivity))
-    {
-      if (((AppCompatActivity)paramContext).getSupportActionBar() == null) {
-        break label129;
-      }
-      i = ((AppCompatActivity)paramContext).getSupportActionBar().getHeight();
-    }
-    for (;;)
-    {
-      int j = i;
-      if (i <= 0) {
-        j = k;
-      }
-      ap.i("WeUIToolHelper", "[getActionBarHeight] real:%s defaultVal:%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k) });
-      AppMethodBeat.o(159133);
-      return j;
-      if (((paramContext instanceof Activity)) && (((Activity)paramContext).getActionBar() != null)) {
-        i = ((Activity)paramContext).getActionBar().getHeight();
-      } else {
-        label129:
-        i = 0;
-      }
-    }
-  }
-  
-  public static int en(Context paramContext)
-  {
-    int i = 0;
-    AppMethodBeat.i(159144);
-    if (jY(paramContext))
-    {
-      int j = Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android");
-      if (j > 0) {
-        i = Resources.getSystem().getDimensionPixelSize(j);
-      }
-      int k = jZ(paramContext);
-      j = i;
-      if (k != 0)
-      {
-        j = i;
-        if (k < i) {
-          j = k;
-        }
-      }
-      AppMethodBeat.o(159144);
-      return j;
-    }
-    AppMethodBeat.o(159144);
-    return 0;
-  }
-  
-  public static int jN(Context paramContext)
-  {
-    AppMethodBeat.i(159135);
-    int i = B(paramContext, aq.fromDPToPix(paramContext, 25));
-    AppMethodBeat.o(159135);
-    return i;
-  }
-  
-  @TargetApi(17)
-  public static boolean jY(Context paramContext)
-  {
-    AppMethodBeat.i(159140);
-    if (jZ(paramContext) > 0)
-    {
-      AppMethodBeat.o(159140);
+      AppMethodBeat.o(159117);
       return true;
     }
-    AppMethodBeat.o(159140);
+    AppMethodBeat.o(159117);
     return false;
   }
   
-  public static int jZ(Context paramContext)
+  private static int c(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(159141);
-    Object localObject2 = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
-    Object localObject1 = new Point();
-    ((Display)localObject2).getSize((Point)localObject1);
-    localObject2 = ck(paramContext);
-    int i = Math.max(((Point)localObject1).y, ((Point)localObject1).x);
-    if (ke(paramContext)) {
-      i = ((Point)localObject1).y;
+    if (paramInt5 == 0) {
+      return 0;
     }
-    int j = Math.max(((Point)localObject2).y, ((Point)localObject2).x);
-    localObject1 = new Rect();
-    if ((paramContext instanceof Activity))
-    {
-      ((Activity)paramContext).getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject1);
-      i = Math.max(((Rect)localObject1).bottom, ((Rect)localObject1).right);
-      if (ke(paramContext)) {
-        i = ((Rect)localObject1).bottom;
-      }
-    }
-    AppMethodBeat.o(159141);
-    return j - i;
+    return (paramInt1 * 255 * paramInt2 + paramInt3 * paramInt4 * (255 - paramInt2)) / (paramInt5 * 255);
   }
   
-  public static int kd(Context paramContext)
+  public static Drawable c(Drawable paramDrawable, ColorStateList paramColorStateList)
   {
-    AppMethodBeat.i(159134);
-    int i = aL(paramContext, aq.fromDPToPix(paramContext, 25));
-    AppMethodBeat.o(159134);
-    return i;
+    AppMethodBeat.i(159116);
+    if (paramDrawable == null)
+    {
+      AppMethodBeat.o(159116);
+      return null;
+    }
+    paramDrawable = a.i(paramDrawable);
+    a.a(paramDrawable, paramColorStateList);
+    AppMethodBeat.o(159116);
+    return paramDrawable;
   }
   
-  private static boolean ke(Context paramContext)
+  public static Drawable e(Drawable paramDrawable, int paramInt)
   {
-    AppMethodBeat.i(159142);
-    if (paramContext.getResources().getConfiguration().orientation == 1)
-    {
-      AppMethodBeat.o(159142);
-      return true;
+    AppMethodBeat.i(159115);
+    if (paramDrawable != null) {
+      paramDrawable.setColorFilter(new PorterDuffColorFilter(paramInt, PorterDuff.Mode.SRC_ATOP));
     }
-    AppMethodBeat.o(159142);
-    return false;
+    AppMethodBeat.o(159115);
+    return paramDrawable;
   }
   
-  public static boolean kf(Context paramContext)
+  public static int fj(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(159143);
-    if ((paramContext instanceof Activity))
+    AppMethodBeat.i(159112);
+    if ((paramInt2 < 0) || (paramInt2 > 100))
     {
-      if ((((Activity)paramContext).getWindow().getAttributes().flags & 0x400) != 1024)
-      {
-        AppMethodBeat.o(159143);
-        return true;
-      }
-      AppMethodBeat.o(159143);
-      return false;
+      as.e("alphaColor", "alpha must be between 0 and 100", new Object[0]);
+      AppMethodBeat.o(159112);
+      return paramInt1;
     }
-    AppMethodBeat.o(159143);
-    return true;
+    paramInt2 = (int)(paramInt2 * 0.01D * 255.0D);
+    AppMethodBeat.o(159112);
+    return 0xFFFFFF & paramInt1 | paramInt2 << 24;
+  }
+  
+  private static int kQ(int paramInt1, int paramInt2)
+  {
+    return 255 - (255 - paramInt2) * (255 - paramInt1) / 255;
+  }
+  
+  public static Drawable m(Context paramContext, int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(159114);
+    paramContext = paramContext.getResources().getDrawable(paramInt1);
+    if (paramContext != null) {
+      paramContext.setColorFilter(new PorterDuffColorFilter(paramInt2, PorterDuff.Mode.SRC_ATOP));
+    }
+    AppMethodBeat.o(159114);
+    return paramContext;
+  }
+  
+  public static int v(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(159113);
+    int i = Color.alpha(paramInt2);
+    int j = Color.alpha(paramInt1);
+    int k = kQ(j, i);
+    paramInt1 = Color.argb(k, c(Color.red(paramInt1), j, Color.red(paramInt2), i, k), c(Color.green(paramInt1), j, Color.green(paramInt2), i, k), c(Color.blue(paramInt1), j, Color.blue(paramInt2), i, k));
+    AppMethodBeat.o(159113);
+    return paramInt1;
   }
 }
 

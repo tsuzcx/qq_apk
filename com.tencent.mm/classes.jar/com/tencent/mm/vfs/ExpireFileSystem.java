@@ -13,8 +13,8 @@ public class ExpireFileSystem
   extends AbstractFileSystem
 {
   public static final Parcelable.Creator<ExpireFileSystem> CREATOR;
-  protected final FileSystem LFX;
-  protected final long lXY;
+  protected final FileSystem Rbo;
+  protected final long nfE;
   
   static
   {
@@ -26,31 +26,31 @@ public class ExpireFileSystem
   protected ExpireFileSystem(Parcel paramParcel)
   {
     AppMethodBeat.i(13094);
-    w.a(paramParcel, ExpireFileSystem.class, 1);
-    this.LFX = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
-    if (this.LFX == null)
+    aa.a(paramParcel, ExpireFileSystem.class, 1);
+    this.Rbo = ((FileSystem)paramParcel.readParcelable(getClass().getClassLoader()));
+    if (this.Rbo == null)
     {
       paramParcel = new IllegalArgumentException("Wrong wrapped filesystem.");
       AppMethodBeat.o(13094);
       throw paramParcel;
     }
-    this.lXY = paramParcel.readLong();
+    this.nfE = paramParcel.readLong();
     AppMethodBeat.o(13094);
   }
   
   public ExpireFileSystem(FileSystem paramFileSystem, long paramLong)
   {
     AppMethodBeat.i(170151);
-    this.LFX = paramFileSystem;
-    this.lXY = paramLong;
+    this.Rbo = paramFileSystem;
+    this.nfE = paramLong;
     AppMethodBeat.o(170151);
   }
   
-  public FileSystem.b cd(Map<String, String> paramMap)
+  public FileSystem.b cj(Map<String, String> paramMap)
   {
-    AppMethodBeat.i(193367);
-    paramMap = new a(this.LFX.cd(paramMap));
-    AppMethodBeat.o(193367);
+    AppMethodBeat.i(187647);
+    paramMap = new a(this.Rbo.cj(paramMap));
+    AppMethodBeat.o(187647);
     return paramMap;
   }
   
@@ -62,7 +62,7 @@ public class ExpireFileSystem
   public String toString()
   {
     AppMethodBeat.i(170152);
-    String str = "Expire [" + this.LFX.toString() + "]";
+    String str = "Expire [" + this.Rbo.toString() + "]";
     AppMethodBeat.o(170152);
     return str;
   }
@@ -70,34 +70,34 @@ public class ExpireFileSystem
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(13096);
-    w.b(paramParcel, ExpireFileSystem.class, 1);
-    paramParcel.writeParcelable(this.LFX, paramInt);
-    paramParcel.writeLong(this.lXY);
+    aa.b(paramParcel, ExpireFileSystem.class, 1);
+    paramParcel.writeParcelable(this.Rbo, paramInt);
+    paramParcel.writeLong(this.nfE);
     AppMethodBeat.o(13096);
   }
   
   protected class a
-    extends b
+    extends c
   {
-    protected final FileSystem.b LFY;
-    protected final List<FileSystem.b> LFZ;
+    protected final List<FileSystem.b> RbF;
+    protected final FileSystem.b Rbp;
     
     public a(FileSystem.b paramb)
     {
-      AppMethodBeat.i(193365);
-      this.LFY = paramb;
-      this.LFZ = Collections.singletonList(paramb);
-      AppMethodBeat.o(193365);
+      AppMethodBeat.i(187645);
+      this.Rbp = paramb;
+      this.RbF = Collections.singletonList(paramb);
+      AppMethodBeat.o(187645);
     }
     
     public void a(CancellationSignal paramCancellationSignal)
     {
-      AppMethodBeat.i(193366);
+      AppMethodBeat.i(187646);
       long l3 = System.currentTimeMillis();
-      long l4 = ExpireFileSystem.this.lXY;
-      Object localObject = this.LFY.dc("", true);
+      long l4 = ExpireFileSystem.this.nfE;
+      Object localObject = this.Rbp.dx("", true);
       long l1;
-      c localc;
+      e locale;
       long l2;
       if (localObject != null)
       {
@@ -108,15 +108,15 @@ public class ExpireFileSystem
           {
             if (((Iterator)localObject).hasNext())
             {
-              localc = (c)((Iterator)localObject).next();
+              locale = (e)((Iterator)localObject).next();
               paramCancellationSignal.throwIfCanceled();
-              if ((!localc.LGd) && (localc.LGc <= l3 - l4))
+              if ((!locale.RbJ) && (locale.RbI <= l3 - l4))
               {
-                if (!localc.delete()) {
+                if (!locale.hdW()) {
                   break label175;
                 }
-                if (localc.LGb < 0L) {
-                  l2 = localc.size;
+                if (locale.RbH < 0L) {
+                  l2 = locale.size;
                 }
               }
             }
@@ -127,28 +127,28 @@ public class ExpireFileSystem
       for (;;)
       {
         break;
-        l2 = localc.LGb;
+        l2 = locale.RbH;
         break label122;
-        ExpireFileSystem.this.k(3, new Object[] { "deleteSize", Long.valueOf(l1) });
+        ExpireFileSystem.this.l(3, new Object[] { "deleteSize", Long.valueOf(l1) });
         super.a(paramCancellationSignal);
-        AppMethodBeat.o(193366);
+        AppMethodBeat.o(187646);
         return;
       }
     }
     
-    public final FileSystem fSK()
+    public final FileSystem hdQ()
     {
       return ExpireFileSystem.this;
     }
     
-    public final List<FileSystem.b> fSM()
+    public final List<FileSystem.b> hdS()
     {
-      return this.LFZ;
+      return this.RbF;
     }
     
-    public final FileSystem.b gU(String paramString, int paramInt)
+    public final FileSystem.b ho(String paramString, int paramInt)
     {
-      return this.LFY;
+      return this.Rbp;
     }
   }
 }

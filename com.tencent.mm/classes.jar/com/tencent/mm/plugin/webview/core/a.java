@@ -1,18 +1,21 @@
 package com.tencent.mm.plugin.webview.core;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import java.util.HashSet;
 import java.util.Set;
 
 public final class a
 {
-  public static final Set<String> DZq;
+  public static final String ILp;
+  public static final Set<String> ILq;
   
   static
   {
-    AppMethodBeat.i(213548);
-    DZq = new HashSet() {};
-    AppMethodBeat.o(213548);
+    AppMethodBeat.i(224211);
+    ILp = WeChatHosts.domainString(2131761748) + ";" + WeChatHosts.domainString(2131761736) + ";" + WeChatHosts.domainString(2131761750) + ";wx-credit-repay.tencent.com;chong.qq.com;qian.tenpay.com;" + WeChatHosts.domainString(2131761732) + ";" + WeChatHosts.domainString(2131761731) + ";wx.tenpay.com";
+    ILq = new HashSet() {};
+    AppMethodBeat.o(224211);
   }
 }
 

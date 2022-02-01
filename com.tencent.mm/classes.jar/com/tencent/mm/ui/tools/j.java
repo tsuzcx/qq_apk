@@ -10,27 +10,45 @@ import android.view.ViewPropertyAnimator;
 import android.view.animation.AnimationUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class j
 {
+  @TargetApi(11)
+  public static final void D(View paramView, float paramFloat)
+  {
+    AppMethodBeat.i(143107);
+    if ((paramView == null) || (d.oE(11)))
+    {
+      AppMethodBeat.o(143107);
+      return;
+    }
+    Animator localAnimator = (Animator)paramView.getTag(2131306306);
+    if (localAnimator != null) {
+      localAnimator.cancel();
+    }
+    paramView.setScaleX(paramFloat);
+    paramView.setScaleY(paramFloat);
+    AppMethodBeat.o(143107);
+  }
+  
   @TargetApi(14)
   public static final void a(View paramView, long paramLong, float paramFloat, a parama)
   {
     AppMethodBeat.i(143109);
-    if ((paramView == null) || (d.lB(14)))
+    if ((paramView == null) || (d.oE(14)))
     {
       AppMethodBeat.o(143109);
       return;
     }
-    Object localObject = (Animator)paramView.getTag(2131303537);
+    Object localObject = (Animator)paramView.getTag(2131306306);
     if (localObject != null) {
       ((Animator)localObject).cancel();
     }
-    ae.i("Changelcai", "[animTran] duration:%s x:%s", new Object[] { Long.valueOf(paramLong), Float.valueOf(paramFloat) });
+    Log.i("Changelcai", "[animTran] duration:%s x:%s", new Object[] { Long.valueOf(paramLong), Float.valueOf(paramFloat) });
     paramView.animate().cancel();
     paramView.animate().setListener(null);
-    localObject = AnimationUtils.loadInterpolator(paramView.getContext(), 2130772074);
+    localObject = AnimationUtils.loadInterpolator(paramView.getContext(), 2130772093);
     if (parama == null)
     {
       paramView.animate().setDuration(paramLong).translationX(paramFloat).translationY(0.0F).setInterpolator((TimeInterpolator)localObject);
@@ -42,14 +60,14 @@ public final class j
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(143106);
-        this.Lfw.bhp();
+        this.Qux.awJ();
         AppMethodBeat.o(143106);
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
         AppMethodBeat.i(143105);
-        this.Lfw.onAnimationEnd();
+        this.Qux.onAnimationEnd();
         AppMethodBeat.o(143105);
       }
       
@@ -64,12 +82,12 @@ public final class j
   public static void a(View paramView, Animator.AnimatorListener paramAnimatorListener)
   {
     AppMethodBeat.i(143110);
-    if ((paramView == null) || (d.lB(11)))
+    if ((paramView == null) || (d.oE(11)))
     {
       AppMethodBeat.o(143110);
       return;
     }
-    Animator localAnimator = (Animator)paramView.getTag(2131303537);
+    Animator localAnimator = (Animator)paramView.getTag(2131306306);
     if (localAnimator != null) {
       localAnimator.cancel();
     }
@@ -79,38 +97,20 @@ public final class j
       localAnimator.addListener(paramAnimatorListener);
     }
     localAnimator.start();
-    paramView.setTag(2131303537, localAnimator);
+    paramView.setTag(2131306306, localAnimator);
     AppMethodBeat.o(143110);
   }
   
-  @TargetApi(11)
-  public static final void x(View paramView, float paramFloat)
-  {
-    AppMethodBeat.i(143107);
-    if ((paramView == null) || (d.lB(11)))
-    {
-      AppMethodBeat.o(143107);
-      return;
-    }
-    Animator localAnimator = (Animator)paramView.getTag(2131303537);
-    if (localAnimator != null) {
-      localAnimator.cancel();
-    }
-    paramView.setScaleX(paramFloat);
-    paramView.setScaleY(paramFloat);
-    AppMethodBeat.o(143107);
-  }
-  
   @TargetApi(14)
-  public static final void y(View paramView, float paramFloat)
+  public static final void q(View paramView, float paramFloat)
   {
     AppMethodBeat.i(143108);
-    if ((paramView == null) || (d.lB(14)))
+    if ((paramView == null) || (d.oE(14)))
     {
       AppMethodBeat.o(143108);
       return;
     }
-    Animator localAnimator = (Animator)paramView.getTag(2131303537);
+    Animator localAnimator = (Animator)paramView.getTag(2131306306);
     if (localAnimator != null) {
       localAnimator.cancel();
     }
@@ -122,7 +122,7 @@ public final class j
   
   public static abstract interface a
   {
-    public abstract void bhp();
+    public abstract void awJ();
     
     public abstract void onAnimationEnd();
   }

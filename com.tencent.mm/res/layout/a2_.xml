@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/zq" style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/btf" android:layout_width="@dimen/e" android:layout_height="@dimen/e" android:scaleType="fitXY" />
-    <TextView android:textColor="@color/a6j" android:layout_gravity="center_horizontal" android:id="@id/bto" android:paddingTop="@dimen/ju" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+<LinearLayout android:orientation="vertical" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="@dimen/c1" android:layout_marginTop="@dimen/cb"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/h5p" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/btf" android:layout_centerHorizontal="true" style="@style/m0" />
+    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/hen" android:paddingBottom="@dimen/ce" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/dt5" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginLeft="@dimen/bt" android:layout_marginRight="@dimen/bt" android:src="@raw/icons_filled_search_logo" android:layout_centerVertical="true" app:iconColor="@color/Red" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/a2x" android:layout_gravity="center_vertical" android:text="@string/h2i" style="@style/mi" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:layout_width="@dimen/ct" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/ct" android:layout_marginRight="@dimen/cb" android:src="@raw/icons_outlined_arrow" />
+    </LinearLayout>
 </LinearLayout>

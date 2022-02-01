@@ -5,8 +5,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 
 final class EnterpriseConversationUI$EnterpriseConversationFmUI$4
   implements View.OnTouchListener
@@ -15,24 +13,19 @@ final class EnterpriseConversationUI$EnterpriseConversationFmUI$4
   
   public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(188071);
-    b localb = new b();
-    localb.bd(paramView);
-    localb.bd(paramMotionEvent);
-    a.b("com/tencent/mm/ui/conversation/EnterpriseConversationUI$EnterpriseConversationFmUI$12", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+    AppMethodBeat.i(234160);
     if (paramMotionEvent.getAction() == 0)
     {
-      this.KSe.x = ((int)paramMotionEvent.getRawX());
-      this.KSe.y = ((int)paramMotionEvent.getRawY());
+      this.Qfk.x = ((int)paramMotionEvent.getRawX());
+      this.Qfk.y = ((int)paramMotionEvent.getRawY());
     }
-    a.a(false, this, "com/tencent/mm/ui/conversation/EnterpriseConversationUI$EnterpriseConversationFmUI$12", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-    AppMethodBeat.o(188071);
+    AppMethodBeat.o(234160);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.EnterpriseConversationUI.EnterpriseConversationFmUI.4
  * JD-Core Version:    0.7.0.1
  */

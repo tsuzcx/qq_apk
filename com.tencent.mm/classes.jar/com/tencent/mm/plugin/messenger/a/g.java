@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.messenger.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
 {
-  public static d vVj;
+  public static d zpo;
   
-  public static d doC()
+  public static d eir()
   {
     AppMethodBeat.i(94806);
-    if (vVj == null) {
-      vVj = new b();
+    if (zpo == null) {
+      zpo = new b();
     }
-    if ((vVj instanceof b)) {
-      ae.w("MicroMsg.SendMsgMgrFactory", "we are using dummy SendMsgMgr!!");
+    if ((zpo instanceof b)) {
+      Log.w("MicroMsg.SendMsgMgrFactory", "we are using dummy SendMsgMgr!!");
     }
-    d locald = vVj;
+    d locald = zpo;
     AppMethodBeat.o(94806);
     return locald;
   }

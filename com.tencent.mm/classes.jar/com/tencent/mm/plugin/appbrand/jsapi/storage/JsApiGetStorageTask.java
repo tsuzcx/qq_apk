@@ -8,7 +8,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.d;
 import com.tencent.mm.plugin.appbrand.appstorage.p.a;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 class JsApiGetStorageTask
   extends MainProcessTask
@@ -16,12 +16,12 @@ class JsApiGetStorageTask
   public static final Parcelable.Creator<JsApiGetStorageTask> CREATOR;
   public String appId;
   public String key;
-  public Runnable kuv;
-  public int lmG;
-  private boolean lmM;
-  private int lmN;
-  private int lmO;
-  private int lmP;
+  public Runnable lyv;
+  public int mtl;
+  private boolean mtr;
+  private int mts;
+  private int mtt;
+  private int mtu;
   public String type;
   public String value;
   
@@ -32,100 +32,100 @@ class JsApiGetStorageTask
     AppMethodBeat.o(147265);
   }
   
-  public final void aOX()
+  public final void bjj()
   {
     AppMethodBeat.i(147261);
-    if ((a)e.K(a.class) == null)
+    if ((a)e.M(a.class) == null)
     {
-      biG();
+      bDU();
       AppMethodBeat.o(147261);
       return;
     }
-    Object localObject1 = ((a)e.K(a.class)).El();
+    Object localObject1 = ((a)e.M(a.class)).NK();
     if (localObject1 == null)
     {
-      biG();
+      bDU();
       AppMethodBeat.o(147261);
       return;
     }
-    Object localObject2 = ((d)localObject1).k(this.lmG, this.appId, this.key);
-    if ((p.a)localObject2[0] == p.a.jQg)
+    Object localObject2 = ((d)localObject1).l(this.mtl, this.appId, this.key);
+    if ((p.a)localObject2[0] == p.a.kSP)
     {
       localObject1 = (String)localObject2[1];
       localObject2 = (String)localObject2[2];
-      if (p.n(new String[] { localObject1, localObject2 }) <= 102400) {
+      if (p.p(new String[] { localObject1, localObject2 }) <= 102400) {
         break label197;
       }
-      this.lmO = p.n(new String[] { localObject1 });
-      this.lmP = p.n(new String[] { localObject2 });
+      this.mtt = p.p(new String[] { localObject1 });
+      this.mtu = p.p(new String[] { localObject2 });
     }
     for (;;)
     {
       try
       {
-        p.g(this.iIu, new String[] { localObject1, localObject2 });
-        this.lmM = true;
-        biG();
+        p.g(this.jEY, new String[] { localObject1, localObject2 });
+        this.mtr = true;
+        bDU();
         AppMethodBeat.o(147261);
         return;
       }
       catch (Exception localException)
       {
-        ae.e("MicroMsg.JsApiGetStorageTask", localException.getMessage());
+        Log.e("MicroMsg.JsApiGetStorageTask", localException.getMessage());
         continue;
       }
       label197:
-      this.lmM = false;
+      this.mtr = false;
       this.value = localException;
       this.type = ((String)localObject2);
     }
   }
   
-  public final void aOY()
+  public final void bjk()
   {
     AppMethodBeat.i(147262);
-    if (this.lmM) {}
+    if (this.mtr) {}
     try
     {
-      String str = p.Rj(this.iIu);
-      if (str.length() == this.lmO + this.lmP)
+      String str = p.aaO(this.jEY);
+      if (str.length() == this.mtt + this.mtu)
       {
-        this.value = str.substring(0, this.lmO);
-        this.type = str.substring(this.lmO, this.lmO + this.lmP);
+        this.value = str.substring(0, this.mtt);
+        this.type = str.substring(this.mtt, this.mtt + this.mtu);
       }
-      p.Rk(this.iIu);
+      p.aaP(this.jEY);
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.e("MicroMsg.JsApiGetStorageTask", localException.getMessage());
-        p.Rk(this.iIu);
+        Log.e("MicroMsg.JsApiGetStorageTask", localException.getMessage());
+        p.aaP(this.jEY);
       }
     }
     finally
     {
-      p.Rk(this.iIu);
+      p.aaP(this.jEY);
       AppMethodBeat.o(147262);
     }
-    if (this.kuv != null) {
-      this.kuv.run();
+    if (this.lyv != null) {
+      this.lyv.run();
     }
     AppMethodBeat.o(147262);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     AppMethodBeat.i(147263);
     this.appId = paramParcel.readString();
-    this.lmG = paramParcel.readInt();
+    this.mtl = paramParcel.readInt();
     if (paramParcel.readByte() != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.lmM = bool;
-      this.lmN = paramParcel.readInt();
-      this.lmO = paramParcel.readInt();
-      this.lmP = paramParcel.readInt();
+      this.mtr = bool;
+      this.mts = paramParcel.readInt();
+      this.mtt = paramParcel.readInt();
+      this.mtu = paramParcel.readInt();
       this.key = paramParcel.readString();
       this.value = paramParcel.readString();
       this.type = paramParcel.readString();
@@ -138,14 +138,14 @@ class JsApiGetStorageTask
   {
     AppMethodBeat.i(147264);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.lmG);
-    if (this.lmM) {}
+    paramParcel.writeInt(this.mtl);
+    if (this.mtr) {}
     for (byte b = 1;; b = 0)
     {
       paramParcel.writeByte(b);
-      paramParcel.writeInt(this.lmN);
-      paramParcel.writeInt(this.lmO);
-      paramParcel.writeInt(this.lmP);
+      paramParcel.writeInt(this.mts);
+      paramParcel.writeInt(this.mtt);
+      paramParcel.writeInt(this.mtu);
       paramParcel.writeString(this.key);
       paramParcel.writeString(this.value);
       paramParcel.writeString(this.type);
@@ -156,7 +156,7 @@ class JsApiGetStorageTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.storage.JsApiGetStorageTask
  * JD-Core Version:    0.7.0.1
  */

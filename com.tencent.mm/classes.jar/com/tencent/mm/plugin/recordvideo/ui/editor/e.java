@@ -9,34 +9,33 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.ao;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.ui.ar;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorMoreDialog;", "Landroid/support/design/widget/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "favorite", "Landroid/view/View;", "favoriteIcon", "Landroid/widget/ImageView;", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isNotifySns", "setNotifySns", "notifySns", "notifySnsIcon", "notifySnsTv", "onNotifySns", "Lkotlin/Function0;", "", "getOnNotifySns", "()Lkotlin/jvm/functions/Function0;", "setOnNotifySns", "(Lkotlin/jvm/functions/Function0;)V", "onSelectRange", "getOnSelectRange", "setOnSelectRange", "onSetFav", "getOnSetFav", "setOnSetFav", "rangeIcon", "rangeTv", "rangeView", "initFavoriteBtn", "initNotifySnsBtn", "initRangeBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/EditorMoreDialog;", "Landroid/support/design/widget/BottomSheetDialog;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "favorite", "Landroid/view/View;", "favoriteIcon", "Landroid/widget/ImageView;", "favoriteTv", "Landroid/widget/TextView;", "isFavorite", "", "()Z", "setFavorite", "(Z)V", "isNotifySns", "setNotifySns", "notifySns", "notifySnsIcon", "notifySnsTv", "onNotifySns", "Lkotlin/Function0;", "", "getOnNotifySns", "()Lkotlin/jvm/functions/Function0;", "setOnNotifySns", "(Lkotlin/jvm/functions/Function0;)V", "onSelectRange", "getOnSelectRange", "setOnSelectRange", "onSetFav", "getOnSetFav", "setOnSetFav", "rangeIcon", "rangeTv", "rangeView", "initFavoriteBtn", "initNotifySnsBtn", "initRangeBtn", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "plugin-recordvideo_release"})
 public final class e
   extends android.support.design.widget.a
 {
-  private View ycf;
-  private TextView ycg;
-  private ImageView ych;
-  private View yci;
-  private TextView ycj;
-  private ImageView yck;
-  private View ycl;
-  private TextView ycm;
-  private ImageView ycn;
-  public d.g.a.a<z> yco;
-  public boolean ycp;
+  private View Cdi;
+  private TextView Cdj;
+  private ImageView Cdk;
+  private View Cdl;
+  private TextView Cdm;
+  private ImageView Cdn;
+  private View Cdo;
+  private TextView Cdp;
+  private ImageView Cdq;
+  public kotlin.g.a.a<x> Cdr;
+  public boolean Cds;
   
   public e(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(76012);
-    this.ycp = true;
-    setContentView(2131495684);
+    this.Cds = true;
+    setContentView(2131496589);
     AppMethodBeat.o(76012);
   }
   
@@ -50,114 +49,92 @@ public final class e
       paramBundle.addFlags(134218752);
       paramBundle.clearFlags(2);
     }
-    this.yci = findViewById(2131305390);
-    this.ycj = ((TextView)findViewById(2131305392));
-    this.yck = ((ImageView)findViewById(2131305391));
-    this.ycf = findViewById(2131305393);
-    this.ycg = ((TextView)findViewById(2131305395));
-    this.ych = ((ImageView)findViewById(2131305394));
-    this.ycl = findViewById(2131305396);
-    this.ycm = ((TextView)findViewById(2131305398));
-    this.ycn = ((ImageView)findViewById(2131305397));
-    if (!com.tencent.mm.plugin.recordvideo.b.a.a.xNF.dIQ())
+    this.Cdl = findViewById(2131308596);
+    this.Cdm = ((TextView)findViewById(2131308598));
+    this.Cdn = ((ImageView)findViewById(2131308597));
+    this.Cdi = findViewById(2131308599);
+    this.Cdj = ((TextView)findViewById(2131308601));
+    this.Cdk = ((ImageView)findViewById(2131308600));
+    this.Cdo = findViewById(2131308602);
+    this.Cdp = ((TextView)findViewById(2131308604));
+    this.Cdq = ((ImageView)findViewById(2131308603));
+    if (!com.tencent.mm.plugin.recordvideo.b.a.a.BNL.eJD())
     {
-      paramBundle = this.ycf;
+      paramBundle = this.Cdi;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
     }
     for (;;)
     {
-      paramBundle = this.yci;
+      paramBundle = this.Cdl;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
-      paramBundle = this.ycl;
+      paramBundle = this.Cdo;
       if (paramBundle != null) {
         paramBundle.setVisibility(8);
       }
-      paramBundle = findViewById(2131299011);
+      paramBundle = findViewById(2131299514);
       if (paramBundle == null) {
         break;
       }
-      paramBundle.setBackgroundResource(2131101053);
+      paramBundle.setBackgroundResource(2131101287);
       AppMethodBeat.o(76011);
       return;
-      paramBundle = this.ycf;
+      paramBundle = this.Cdi;
       if (paramBundle != null) {
         paramBundle.setVisibility(0);
       }
-      paramBundle = this.ycf;
+      paramBundle = this.Cdi;
       if (paramBundle != null) {
-        paramBundle.setOnClickListener((View.OnClickListener)new a(this));
+        paramBundle.setOnClickListener((View.OnClickListener)new e.a(this));
       }
       Context localContext1;
       Context localContext2;
-      if (this.ycp)
+      if (this.Cds)
       {
-        paramBundle = this.ycg;
+        paramBundle = this.Cdj;
         if (paramBundle != null)
         {
           localContext1 = getContext();
           p.g(localContext1, "context");
-          paramBundle.setText((CharSequence)localContext1.getResources().getString(2131764251));
+          paramBundle.setText((CharSequence)localContext1.getResources().getString(2131766508));
         }
-        paramBundle = this.ych;
+        paramBundle = this.Cdk;
         if (paramBundle != null)
         {
           localContext1 = getContext();
           localContext2 = getContext();
           p.g(localContext2, "context");
-          paramBundle.setImageDrawable(ao.k(localContext1, 2131690602, localContext2.getResources().getColor(2131099664)));
+          paramBundle.setImageDrawable(ar.m(localContext1, 2131690842, localContext2.getResources().getColor(2131099669)));
         }
       }
       else
       {
-        paramBundle = this.ycg;
+        paramBundle = this.Cdj;
         if (paramBundle != null)
         {
           localContext1 = getContext();
           p.g(localContext1, "context");
-          paramBundle.setText((CharSequence)localContext1.getResources().getString(2131764252));
+          paramBundle.setText((CharSequence)localContext1.getResources().getString(2131766509));
         }
-        paramBundle = this.ych;
+        paramBundle = this.Cdk;
         if (paramBundle != null)
         {
           localContext1 = getContext();
           localContext2 = getContext();
           p.g(localContext2, "context");
-          paramBundle.setImageDrawable(ao.k(localContext1, 2131690601, localContext2.getResources().getColor(2131099664)));
+          paramBundle.setImageDrawable(ar.m(localContext1, 2131690841, localContext2.getResources().getColor(2131099669)));
         }
       }
     }
     AppMethodBeat.o(76011);
   }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
-  static final class a
-    implements View.OnClickListener
-  {
-    a(e parame) {}
-    
-    public final void onClick(View paramView)
-    {
-      AppMethodBeat.i(76010);
-      b localb = new b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/ui/editor/EditorMoreDialog$initNotifySnsBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = this.ycq.yco;
-      if (paramView != null) {
-        paramView.invoke();
-      }
-      this.ycq.dismiss();
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/ui/editor/EditorMoreDialog$initNotifySnsBtn$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(76010);
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.e
  * JD-Core Version:    0.7.0.1
  */

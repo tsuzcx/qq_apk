@@ -1,13 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a8v" android:paddingLeft="@dimen/o" android:paddingRight="@dimen/o" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:id="@id/gzt" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
-        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/yu">
-            <TextView android:textSize="@dimen/gx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/gli" />
-            <ImageView android:id="@id/aen" android:layout_width="fill_parent" android:layout_height="70.0dip" android:layout_marginTop="@dimen/hd" />
-            <com.tenpay.bankcard.TenpaySegmentEditText android:textSize="@dimen/ia" android:id="@id/bg_" android:layout_width="fill_parent" android:layout_height="@dimen/i5" android:layout_marginTop="@dimen/ha" android:ems="10" />
-            <Button android:id="@id/e3i" android:layout_width="fill_parent" android:layout_marginTop="@dimen/ig" android:text="@string/uw" style="@style/o6" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/gkh" android:background="@drawable/b9w" android:paddingLeft="@dimen/cb" android:paddingTop="60.0dip" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/x1" android:layout_width="@dimen/h" android:layout_height="@dimen/h" />
+        <View android:layout_width="@dimen/hs" style="@style/p7" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/hd" android:textColor="@color/fr" android:id="@id/fzg" android:text="{nick name}" style="@style/mi" />
+            <View style="@style/p7" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textColor="@color/l4" android:id="@id/i5l" android:text="{installed|uninstalled|hide}" style="@style/mi" />
+                <View android:layout_width="fill_parent" android:layout_weight="1.0" style="@style/p7" />
+            </LinearLayout>
         </LinearLayout>
-    </ScrollView>
-    <include android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/bd8" />
+    </LinearLayout>
+    <View android:background="@color/abj" android:layout_width="fill_parent" android:layout_height="@dimen/ct" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:padding="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb">
+        <TextView android:gravity="center|left" android:id="@id/ce_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cb" android:maxWidth="@dimen/el" android:singleLine="true" style="@style/mi" />
+        <TextView android:ellipsize="end" android:gravity="center|left" android:layout_gravity="center|left" android:id="@id/dpj" android:layout_width="fill_parent" android:singleLine="false" style="@style/ml" />
+    </LinearLayout>
 </LinearLayout>

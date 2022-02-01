@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Build.VERSION;
 import dalvik.system.DelegateLastClassLoader;
-import dalvik.system.PathClassLoader;
 import java.io.File;
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -68,7 +67,7 @@ final class NewClassLoaderInjector
       localStringBuilder.append(File.pathSeparator);
     }
     paramVarArgs = localStringBuilder.toString();
-    if ((paramBoolean) && (Build.VERSION.SDK_INT >= 29))
+    if ((paramBoolean) && (Build.VERSION.SDK_INT >= 27))
     {
       paramFile = new DelegateLastClassLoader((String)localObject2, paramVarArgs, ClassLoader.getSystemClassLoader());
       paramVarArgs = ClassLoader.class.getDeclaredField("parent");
@@ -88,21 +87,30 @@ final class NewClassLoaderInjector
   {
     Thread.currentThread().setContextClassLoader(paramClassLoader);
     Object localObject = (Context)findField(paramApplication.getClass(), "mBase").get(paramApplication);
-    localObject = findField(localObject.getClass(), "mPackageInfo").get(localObject);
-    findField(localObject.getClass(), "mClassLoader").set(localObject, paramClassLoader);
-    if (Build.VERSION.SDK_INT < 27) {
-      paramApplication = paramApplication.getResources();
-    }
     try
     {
-      findField(paramApplication.getClass(), "mClassLoader").set(paramApplication, paramClassLoader);
-      paramApplication = findField(paramApplication.getClass(), "mDrawableInflater").get(paramApplication);
-      if (paramApplication != null) {
-        findField(paramApplication.getClass(), "mClassLoader").set(paramApplication, paramClassLoader);
+      findField(localObject.getClass(), "mClassLoader").set(localObject, paramClassLoader);
+      label38:
+      localObject = findField(localObject.getClass(), "mPackageInfo").get(localObject);
+      findField(localObject.getClass(), "mClassLoader").set(localObject, paramClassLoader);
+      if (Build.VERSION.SDK_INT < 27) {
+        paramApplication = paramApplication.getResources();
       }
-      return;
+      try
+      {
+        findField(paramApplication.getClass(), "mClassLoader").set(paramApplication, paramClassLoader);
+        paramApplication = findField(paramApplication.getClass(), "mDrawableInflater").get(paramApplication);
+        if (paramApplication != null) {
+          findField(paramApplication.getClass(), "mClassLoader").set(paramApplication, paramClassLoader);
+        }
+        return;
+      }
+      catch (Throwable paramApplication) {}
     }
-    catch (Throwable paramApplication) {}
+    catch (Throwable localThrowable)
+    {
+      break label38;
+    }
   }
   
   private static Field findField(Class<?> paramClass, String paramString)
@@ -142,30 +150,7 @@ final class NewClassLoaderInjector
   
   public static void triggerDex2Oat(Context paramContext, File paramFile, boolean paramBoolean, String... paramVarArgs)
   {
-    if ((paramBoolean) && (Build.VERSION.SDK_INT >= 29))
-    {
-      createNewClassLoader(paramContext.getClassLoader(), paramFile, paramBoolean, paramVarArgs);
-      return;
-    }
-    paramContext = new StringBuilder();
-    int j = 1;
-    int k = paramVarArgs.length;
-    int i = 0;
-    if (i < k)
-    {
-      paramFile = paramVarArgs[i];
-      if (j != 0) {
-        j = 0;
-      }
-      for (;;)
-      {
-        paramContext.append(paramFile);
-        i += 1;
-        break;
-        paramContext.append(File.pathSeparator);
-      }
-    }
-    new PathClassLoader(paramContext.toString(), ClassLoader.getSystemClassLoader());
+    createNewClassLoader(paramContext.getClassLoader(), paramFile, paramBoolean, paramVarArgs);
   }
 }
 

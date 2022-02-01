@@ -6,37 +6,114 @@ import com.tencent.mm.plugin.wallet_core.d.c;
 import com.tencent.mm.plugin.wallet_core.model.Bankcard;
 import com.tencent.mm.plugin.wallet_core.model.BankcardScene;
 import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public final class d
 {
-  public static boolean Wr(int paramInt)
+  public static boolean E(List<Bankcard> paramList, int paramInt)
+  {
+    AppMethodBeat.i(71636);
+    if (paramList == null)
+    {
+      AppMethodBeat.o(71636);
+      return false;
+    }
+    ArrayList localArrayList;
+    BankcardScene localBankcardScene;
+    if (paramInt == 8)
+    {
+      localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        localBankcardScene = k((Bankcard)paramList.next());
+        localBankcardScene.field_scene = 8;
+        localArrayList.add(localBankcardScene);
+      }
+      t.fQG().ib(localArrayList);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(71636);
+      return true;
+      if (paramInt == 12)
+      {
+        localArrayList = new ArrayList();
+        paramList = paramList.iterator();
+        while (paramList.hasNext())
+        {
+          localBankcardScene = k((Bankcard)paramList.next());
+          localBankcardScene.field_scene = 12;
+          localArrayList.add(localBankcardScene);
+        }
+        t.fQG().ib(localArrayList);
+      }
+      else
+      {
+        t.fQF().ib(paramList);
+      }
+    }
+  }
+  
+  public static boolean a(Bankcard paramBankcard, int paramInt)
+  {
+    AppMethodBeat.i(71637);
+    if (paramBankcard == null)
+    {
+      AppMethodBeat.o(71637);
+      return false;
+    }
+    boolean bool;
+    if (paramInt == 8)
+    {
+      paramBankcard = k(paramBankcard);
+      paramBankcard.field_scene = 8;
+      bool = t.fQG().a(paramBankcard);
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(71637);
+      return bool;
+      if (paramInt == 12)
+      {
+        paramBankcard = k(paramBankcard);
+        paramBankcard.field_scene = 12;
+        bool = t.fQG().a(paramBankcard);
+      }
+      else
+      {
+        bool = t.fQF().g(paramBankcard);
+      }
+    }
+  }
+  
+  public static boolean aeX(int paramInt)
   {
     AppMethodBeat.i(71638);
     if (paramInt == 8) {}
-    for (boolean bool = t.eJd().Wj(paramInt);; bool = t.eJd().aTi())
+    for (boolean bool = t.fQG().aeN(paramInt);; bool = t.fQG().bnU())
     {
       AppMethodBeat.o(71638);
       return bool;
     }
   }
   
-  public static ArrayList<Bankcard> Ws(int paramInt)
+  public static ArrayList<Bankcard> aeY(int paramInt)
   {
-    AppMethodBeat.i(190240);
-    Object localObject1 = t.eJd();
-    Object localObject2 = "select * from WalletBankcardScene where (cardType <= 7 OR cardType & " + BankcardScene.Dmd + " != 0 OR cardType & " + BankcardScene.Dmc + " != 0) and scene=" + paramInt;
-    localObject2 = ((c)localObject1).db.a((String)localObject2, null, 2);
+    AppMethodBeat.i(214262);
+    Object localObject1 = t.fQG();
+    Object localObject2 = "select * from WalletBankcardScene where (cardType <= 7 OR cardType & " + BankcardScene.HVw + " != 0 OR cardType & " + BankcardScene.HVv + " != 0) and scene=" + paramInt;
+    localObject2 = ((c)localObject1).db.rawQuery((String)localObject2, null, 2);
     if (localObject2 == null) {
       localObject1 = null;
     }
     BankcardScene localBankcardScene;
     while (localObject1 == null)
     {
-      AppMethodBeat.o(190240);
+      AppMethodBeat.o(214262);
       return null;
       localObject1 = null;
       if (((Cursor)localObject2).moveToFirst())
@@ -56,7 +133,7 @@ public final class d
     while (((Iterator)localObject1).hasNext())
     {
       localBankcardScene = (BankcardScene)((Iterator)localObject1).next();
-      Bankcard localBankcard = new Bankcard(localBankcardScene.Dme, localBankcardScene.Dmf, localBankcardScene.Dlz, localBankcardScene.Dmg, localBankcardScene.Dmh, localBankcardScene.Dmi, localBankcardScene.Dmj, localBankcardScene.Dmk, localBankcardScene.Dml, localBankcardScene.Dmm, localBankcardScene.Dmn, localBankcardScene.Dmo, localBankcardScene.Dmp, localBankcardScene.Dmq, localBankcardScene.Dmr, localBankcardScene.Dlx, localBankcardScene.Dms, localBankcardScene.Dmt, localBankcardScene.Dmu, localBankcardScene.Dmv, localBankcardScene.Dmw, localBankcardScene.Dmx, localBankcardScene.Dmy, localBankcardScene.Dmz, localBankcardScene.DmA, localBankcardScene.DmB, localBankcardScene.DmC, localBankcardScene.DmD, localBankcardScene.DmE, localBankcardScene.DmF, localBankcardScene.DmG, localBankcardScene.DmH, localBankcardScene.DmI, localBankcardScene.CRv, localBankcardScene.CRw);
+      Bankcard localBankcard = new Bankcard(localBankcardScene.HVx, localBankcardScene.HVy, localBankcardScene.HUS, localBankcardScene.HVz, localBankcardScene.HVA, localBankcardScene.HVB, localBankcardScene.HVC, localBankcardScene.HVD, localBankcardScene.HVE, localBankcardScene.HVF, localBankcardScene.HVG, localBankcardScene.HVH, localBankcardScene.HVI, localBankcardScene.HVJ, localBankcardScene.HVK, localBankcardScene.HUQ, localBankcardScene.HVL, localBankcardScene.dKO, localBankcardScene.HVM, localBankcardScene.HVN, localBankcardScene.HVO, localBankcardScene.HVP, localBankcardScene.HVQ, localBankcardScene.HVR, localBankcardScene.HVS, localBankcardScene.HVT, localBankcardScene.HVU, localBankcardScene.HVV, localBankcardScene.HVW, localBankcardScene.HVX, localBankcardScene.HVY, localBankcardScene.HVZ, localBankcardScene.HWa, localBankcardScene.Hwr, localBankcardScene.Hws);
       localBankcard.field_bindSerial = localBankcardScene.field_bindSerial;
       localBankcard.field_cardType = localBankcardScene.field_cardType;
       localBankcard.field_bankcardState = localBankcardScene.field_bankcardState;
@@ -102,46 +179,14 @@ public final class d
       localBankcard.field_prompt_info_jump_url = localBankcardScene.field_prompt_info_jump_url;
       ((ArrayList)localObject2).add(localBankcard);
     }
-    AppMethodBeat.o(190240);
+    AppMethodBeat.o(214262);
     return localObject2;
   }
   
-  public static boolean a(Bankcard paramBankcard, int paramInt)
-  {
-    AppMethodBeat.i(71637);
-    if (paramBankcard == null)
-    {
-      AppMethodBeat.o(71637);
-      return false;
-    }
-    boolean bool;
-    if (paramInt == 8)
-    {
-      paramBankcard = j(paramBankcard);
-      paramBankcard.field_scene = 8;
-      bool = t.eJd().a(paramBankcard);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(71637);
-      return bool;
-      if (paramInt == 12)
-      {
-        paramBankcard = j(paramBankcard);
-        paramBankcard.field_scene = 12;
-        bool = t.eJd().a(paramBankcard);
-      }
-      else
-      {
-        bool = t.eJc().f(paramBankcard);
-      }
-    }
-  }
-  
-  private static BankcardScene j(Bankcard paramBankcard)
+  private static BankcardScene k(Bankcard paramBankcard)
   {
     AppMethodBeat.i(71640);
-    BankcardScene localBankcardScene = new BankcardScene(paramBankcard.Dme, paramBankcard.Dmf, paramBankcard.Dlz, paramBankcard.Dmg, paramBankcard.Dmh, paramBankcard.Dmi, paramBankcard.Dmj, paramBankcard.Dmk, paramBankcard.Dml, paramBankcard.Dmm, paramBankcard.Dmn, paramBankcard.Dmo, paramBankcard.Dmp, paramBankcard.Dmq, paramBankcard.Dmr, paramBankcard.Dlx, paramBankcard.Dms, paramBankcard.Dmt, paramBankcard.Dmu, paramBankcard.Dmv, paramBankcard.Dmw, paramBankcard.Dmx, paramBankcard.Dmy, paramBankcard.Dmz, paramBankcard.DmA, paramBankcard.DmB, paramBankcard.DmC, paramBankcard.DmD, paramBankcard.DmE, paramBankcard.DmF, paramBankcard.DmG, paramBankcard.DmH, paramBankcard.DmI, paramBankcard.CRv, paramBankcard.CRw);
+    BankcardScene localBankcardScene = new BankcardScene(paramBankcard.HVx, paramBankcard.HVy, paramBankcard.HUS, paramBankcard.HVz, paramBankcard.HVA, paramBankcard.HVB, paramBankcard.HVC, paramBankcard.HVD, paramBankcard.HVE, paramBankcard.HVF, paramBankcard.HVG, paramBankcard.HVH, paramBankcard.HVI, paramBankcard.HVJ, paramBankcard.HVK, paramBankcard.HUQ, paramBankcard.HVL, paramBankcard.dKO, paramBankcard.HVM, paramBankcard.HVN, paramBankcard.HVO, paramBankcard.HVP, paramBankcard.HVQ, paramBankcard.HVR, paramBankcard.HVS, paramBankcard.HVT, paramBankcard.HVU, paramBankcard.HVV, paramBankcard.HVW, paramBankcard.HVX, paramBankcard.HVY, paramBankcard.HVZ, paramBankcard.HWa, paramBankcard.Hwr, paramBankcard.Hws);
     localBankcardScene.field_bindSerial = paramBankcard.field_bindSerial;
     localBankcardScene.field_cardType = paramBankcard.field_cardType;
     localBankcardScene.field_bankcardState = paramBankcard.field_bankcardState;
@@ -188,55 +233,10 @@ public final class d
     AppMethodBeat.o(71640);
     return localBankcardScene;
   }
-  
-  public static boolean y(List<Bankcard> paramList, int paramInt)
-  {
-    AppMethodBeat.i(71636);
-    if (paramList == null)
-    {
-      AppMethodBeat.o(71636);
-      return false;
-    }
-    ArrayList localArrayList;
-    BankcardScene localBankcardScene;
-    if (paramInt == 8)
-    {
-      localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
-      {
-        localBankcardScene = j((Bankcard)paramList.next());
-        localBankcardScene.field_scene = 8;
-        localArrayList.add(localBankcardScene);
-      }
-      t.eJd().gV(localArrayList);
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(71636);
-      return true;
-      if (paramInt == 12)
-      {
-        localArrayList = new ArrayList();
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localBankcardScene = j((Bankcard)paramList.next());
-          localBankcardScene.field_scene = 12;
-          localArrayList.add(localBankcardScene);
-        }
-        t.eJd().gV(localArrayList);
-      }
-      else
-      {
-        t.eJc().gV(paramList);
-      }
-    }
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.utils.d
  * JD-Core Version:    0.7.0.1
  */

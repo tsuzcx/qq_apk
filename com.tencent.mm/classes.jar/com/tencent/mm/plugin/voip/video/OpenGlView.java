@@ -5,64 +5,64 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.ao;
 import java.lang.ref.WeakReference;
 
 public class OpenGlView
   extends GLTextureView
 {
   public static String TAG = "OpenGlView";
-  public boolean CFJ;
-  public boolean CFK;
-  public int CFL;
-  private int CFM;
-  private int CFN;
-  public boolean CFO;
-  WeakReference<OpenGlRender> CFP;
-  public boolean ncj;
+  public boolean HiX;
+  public boolean HiY;
+  public int HiZ;
+  public int Hja;
+  public int Hjb;
+  public boolean Hjc;
+  WeakReference<OpenGlRender> Hjd;
+  public boolean onr;
   
   public OpenGlView(Context paramContext)
   {
     super(paramContext);
-    AppMethodBeat.i(210245);
-    this.CFJ = false;
-    this.CFK = true;
-    this.ncj = false;
-    this.CFL = 1;
-    this.CFM = 0;
-    this.CFN = 0;
-    this.CFO = false;
-    this.CFL = OpenGlRender.getGLVersion();
-    eEm();
-    AppMethodBeat.o(210245);
+    AppMethodBeat.i(235832);
+    this.HiX = false;
+    this.HiY = true;
+    this.onr = false;
+    this.HiZ = 1;
+    this.Hja = 0;
+    this.Hjb = 0;
+    this.Hjc = false;
+    this.HiZ = OpenGlRender.getGLVersion();
+    fKU();
+    AppMethodBeat.o(235832);
   }
   
   public OpenGlView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(115670);
-    this.CFJ = false;
-    this.CFK = true;
-    this.ncj = false;
-    this.CFL = 1;
-    this.CFM = 0;
-    this.CFN = 0;
-    this.CFO = false;
-    this.CFL = OpenGlRender.getGLVersion();
-    eEm();
+    this.HiX = false;
+    this.HiY = true;
+    this.onr = false;
+    this.HiZ = 1;
+    this.Hja = 0;
+    this.Hjb = 0;
+    this.Hjc = false;
+    this.HiZ = OpenGlRender.getGLVersion();
+    fKU();
     AppMethodBeat.o(115670);
   }
   
-  private void eEm()
+  private void fKU()
   {
-    AppMethodBeat.i(210246);
-    if (this.CFL == 2)
+    AppMethodBeat.i(235833);
+    if (this.HiZ == 2)
     {
-      setEGLContextFactory(new c());
-      setEGLConfigChooser(new b());
+      setEGLContextFactory(new b());
+      setEGLConfigChooser(new a());
     }
-    AppMethodBeat.o(210246);
+    AppMethodBeat.o(235833);
   }
   
   public final void a(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2, int paramInt3)
@@ -72,26 +72,26 @@ public class OpenGlView
     AppMethodBeat.o(115674);
   }
   
-  public final void eEl()
+  public final void fKT()
   {
     AppMethodBeat.i(115675);
-    this.CFJ = true;
-    this.CEn.requestRender();
+    this.HiX = true;
+    this.HhI.requestRender();
     AppMethodBeat.o(115675);
   }
   
-  public void iB(int paramInt1, int paramInt2)
+  public void jG(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(115669);
-    this.CFM = paramInt1;
-    this.CFN = paramInt2;
+    this.Hja = paramInt1;
+    this.Hjb = paramInt2;
     RelativeLayout.LayoutParams localLayoutParams;
-    if (al.fBP())
+    if (ao.gJI())
     {
       paramInt1 = paramInt2 * 9 / 16;
       localLayoutParams = new RelativeLayout.LayoutParams(paramInt1, paramInt2);
       localLayoutParams.addRule(13);
-      this.CFM = paramInt1;
+      this.Hja = paramInt1;
     }
     for (;;)
     {
@@ -102,64 +102,64 @@ public class OpenGlView
     }
   }
   
-  public void iC(int paramInt1, int paramInt2) {}
+  public void jH(int paramInt1, int paramInt2) {}
   
-  public final void m(SurfaceTexture paramSurfaceTexture)
+  public final void o(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(115672);
-    ae.i(TAG, "surfaceCreated");
-    super.m(paramSurfaceTexture);
-    paramSurfaceTexture = (OpenGlRender)this.CFP.get();
-    ae.i(OpenGlRender.TAG, "%s surfaceCreated", new Object[] { Integer.valueOf(paramSurfaceTexture.hashCode()) });
+    Log.i(TAG, "surfaceCreated");
+    super.o(paramSurfaceTexture);
+    paramSurfaceTexture = (OpenGlRender)this.Hjd.get();
+    Log.i(OpenGlRender.TAG, "%s surfaceCreated", new Object[] { Integer.valueOf(paramSurfaceTexture.hashCode()) });
     OpenGlRender.getGLVersion();
-    paramSurfaceTexture.CES = true;
-    paramSurfaceTexture.CEO = true;
+    paramSurfaceTexture.Hie = true;
+    paramSurfaceTexture.Hia = true;
     AppMethodBeat.o(115672);
   }
   
-  public final void n(SurfaceTexture paramSurfaceTexture)
+  public final void p(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(115673);
-    ae.i(TAG, "surfaceDestroyed");
-    OpenGlRender localOpenGlRender = (OpenGlRender)this.CFP.get();
-    ae.i(OpenGlRender.TAG, "onSurfaceDestroyed,mRenderMode:%d", new Object[] { Integer.valueOf(localOpenGlRender.mRenderMode) });
-    if (localOpenGlRender.CFh != null)
+    Log.i(TAG, "surfaceDestroyed");
+    OpenGlRender localOpenGlRender = (OpenGlRender)this.Hjd.get();
+    Log.i(OpenGlRender.TAG, "onSurfaceDestroyed,mRenderMode:%d", new Object[] { Integer.valueOf(localOpenGlRender.mRenderMode) });
+    if (localOpenGlRender.Hiu != null)
     {
-      localOpenGlRender.CFG = true;
-      ae.i(OpenGlRender.TAG, "surfaceDestroy call detachGLContext");
-      localOpenGlRender.eEh();
+      localOpenGlRender.HiU = true;
+      Log.i(OpenGlRender.TAG, "surfaceDestroy call detachGLContext");
+      localOpenGlRender.fKP();
     }
-    localOpenGlRender.CEO = false;
-    ae.i(OpenGlRender.TAG, "steve: after Uninit in onSurfaceDestroyed");
-    localOpenGlRender.CEM = 0;
-    localOpenGlRender.CET = 0;
-    localOpenGlRender.CEU = 0;
-    if (localOpenGlRender.CEV != null)
+    localOpenGlRender.Hia = false;
+    Log.i(OpenGlRender.TAG, "steve: after Uninit in onSurfaceDestroyed");
+    localOpenGlRender.HhY = 0;
+    localOpenGlRender.Hif = 0;
+    localOpenGlRender.Hig = 0;
+    if (localOpenGlRender.Hih != null)
     {
-      OpenGlView localOpenGlView = (OpenGlView)localOpenGlRender.CEV.get();
+      OpenGlView localOpenGlView = (OpenGlView)localOpenGlRender.Hih.get();
       if (localOpenGlView != null)
       {
-        ae.i(OpenGlRender.TAG, "onSurfaceDestroyed queue release renderer event");
-        localOpenGlView.queueEvent(new OpenGlRender.3(localOpenGlRender));
+        Log.i(OpenGlRender.TAG, "onSurfaceDestroyed queue release renderer event");
+        localOpenGlView.queueEvent(new OpenGlRender.4(localOpenGlRender));
       }
     }
-    super.n(paramSurfaceTexture);
+    super.p(paramSurfaceTexture);
     AppMethodBeat.o(115673);
   }
   
   public void setRenderer(OpenGlRender paramOpenGlRender)
   {
     AppMethodBeat.i(115671);
-    this.CFP = new WeakReference(paramOpenGlRender);
+    this.Hjd = new WeakReference(paramOpenGlRender);
     super.setRenderer(paramOpenGlRender);
     setRenderMode(0);
     AppMethodBeat.o(115671);
   }
   
-  public final void tN(boolean paramBoolean)
+  public final void xv(boolean paramBoolean)
   {
     AppMethodBeat.i(115676);
-    this.CFO = paramBoolean;
+    this.Hjc = paramBoolean;
     if (paramBoolean)
     {
       setAlpha(0.0F);
@@ -172,7 +172,7 @@ public class OpenGlView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.OpenGlView
  * JD-Core Version:    0.7.0.1
  */

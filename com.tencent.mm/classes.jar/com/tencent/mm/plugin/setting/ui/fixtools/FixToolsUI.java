@@ -9,11 +9,12 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.Toast;
 import com.tencent.matrix.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.setting.ui.setting.SettingsAboutMMHeaderPreference;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.j;
-import com.tencent.mm.sdk.platformtools.k;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.mm.ui.MMWizardActivity;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
@@ -27,7 +28,7 @@ public class FixToolsUI
   
   public int getResourceId()
   {
-    return 2131951682;
+    return 2132017224;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -35,22 +36,22 @@ public class FixToolsUI
     AppMethodBeat.i(73813);
     super.onCreate(paramBundle);
     this.screen = getPreferenceScreen();
-    setMMTitle(2131759422);
-    SettingsAboutMMHeaderPreference localSettingsAboutMMHeaderPreference = (SettingsAboutMMHeaderPreference)this.screen.aXe("fix_tools_micromsg_header");
-    String str = k.aD(getContext(), d.FFH);
-    if (!d.FFK)
+    setMMTitle(2131760711);
+    SettingsAboutMMHeaderPreference localSettingsAboutMMHeaderPreference = (SettingsAboutMMHeaderPreference)this.screen.bmg("fix_tools_micromsg_header");
+    String str = ChannelUtil.formatVersion(getContext(), d.KyO);
+    if (!d.KyR)
     {
       paramBundle = str;
-      if (!j.IS_FLAVOR_BLUE) {}
+      if (!BuildInfo.IS_FLAVOR_BLUE) {}
     }
     else
     {
-      paramBundle = str + " " + com.tencent.mm.cc.g.ix(this);
+      paramBundle = str + " " + com.tencent.mm.cc.h.jr(this);
     }
-    localSettingsAboutMMHeaderPreference.yVv = paramBundle;
+    localSettingsAboutMMHeaderPreference.Dak = paramBundle;
     int i = getIntent().getIntExtra("entry_fix_tools", 2);
-    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(873L, i, 1L, false);
-    com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(873L, 0L, 1L, false);
+    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(873L, i, 1L, false);
+    com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(873L, 0L, 1L, false);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -69,8 +70,8 @@ public class FixToolsUI
     AppMethodBeat.i(73814);
     if (paramPreference.mKey.equals("fix_tools_uplog"))
     {
-      if (com.tencent.mm.plugin.setting.model.a.dQF().ipD) {
-        MMWizardActivity.al(this, new Intent(getContext(), FixToolsUpLogUploadingUI.class));
+      if (com.tencent.mm.plugin.setting.model.a.eSG().jkK) {
+        MMWizardActivity.ay(this, new Intent(getContext(), FixToolsUpLogUploadingUI.class));
       }
       for (;;)
       {
@@ -78,7 +79,7 @@ public class FixToolsUI
         return true;
         paramf = new Intent(getContext(), FixToolsUplogUI.class);
         paramf.putExtra("entry_fix_tools_uplog", 9);
-        MMWizardActivity.al(this, paramf);
+        MMWizardActivity.ay(this, paramf);
       }
     }
     if (paramPreference.mKey.equals("fix_tools_db_recover"))
@@ -86,16 +87,16 @@ public class FixToolsUI
       paramPreference = new Intent().setClassName(getContext(), "com.tencent.mm.plugin.dbbackup.DBRecoveryUI");
       paramPreference.putExtra("scene", 2);
       paramf = getContext();
-      paramPreference = new com.tencent.mm.hellhoundlib.b.a().bc(paramPreference);
-      com.tencent.mm.hellhoundlib.a.a.a(paramf, paramPreference.ahE(), "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUI", "goToRecovery", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramf.startActivity((Intent)paramPreference.mt(0));
+      paramPreference = new com.tencent.mm.hellhoundlib.b.a().bl(paramPreference);
+      com.tencent.mm.hellhoundlib.a.a.a(paramf, paramPreference.axQ(), "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUI", "goToRecovery", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramf.startActivity((Intent)paramPreference.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramf, "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUI", "goToRecovery", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(73814);
       return true;
     }
     if (paramPreference.mKey.endsWith("fix_tools_matrix"))
     {
-      if (!b.HS()) {
+      if (!b.isInstalled()) {
         Toast.makeText(this, "Matrix is never installed", 0).show();
       }
       for (;;)
@@ -103,28 +104,28 @@ public class FixToolsUI
         AppMethodBeat.o(73814);
         return true;
         paramf = new Intent();
-        paramf.setClassName(ak.getContext(), "com.tencent.mm.ui.matrix.MatrixSettingUI");
+        paramf.setClassName(MMApplicationContext.getContext(), "com.tencent.mm.ui.matrix.MatrixSettingUI");
         paramf.addFlags(67108864);
-        paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUI", "goToMatrixUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramf.mt(0));
+        paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
+        com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUI", "goToMatrixUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        startActivity((Intent)paramf.pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUI", "goToMatrixUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       }
     }
     if (paramPreference.mKey.endsWith("fix_tools_search"))
     {
-      paramf = new Intent(ak.getContext(), FixSearchUI.class);
+      paramf = new Intent(MMApplicationContext.getContext(), FixSearchUI.class);
       paramf.addFlags(67108864);
-      paramf = new com.tencent.mm.hellhoundlib.b.a().bc(paramf);
-      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.ahE(), "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUI", "goToSearchUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      startActivity((Intent)paramf.mt(0));
+      paramf = new com.tencent.mm.hellhoundlib.b.a().bl(paramf);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramf.axQ(), "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUI", "goToSearchUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramf.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/setting/ui/fixtools/FixToolsUI", "goToSearchUI", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(73814);
       return true;
     }
     if (paramPreference.mKey.equals("fix_force_update"))
     {
-      ((com.tencent.mm.plugin.updater.a.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.updater.a.a.class)).manualCheckUpdate(1);
+      ((com.tencent.mm.plugin.updater.a.a)g.ah(com.tencent.mm.plugin.updater.a.a.class)).manualCheckUpdate(1);
       AppMethodBeat.o(73814);
       return true;
     }
@@ -140,7 +141,7 @@ public class FixToolsUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.fixtools.FixToolsUI
  * JD-Core Version:    0.7.0.1
  */

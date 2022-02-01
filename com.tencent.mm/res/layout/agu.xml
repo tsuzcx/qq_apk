@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@color/a_r" android:paddingLeft="@dimen/ad4" android:paddingRight="@dimen/ad4" android:layout_width="fill_parent" android:layout_height="@dimen/adf"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/adj" android:textColor="@color/zj" android:gravity="center|left" android:id="@id/ejn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="false" android:layout_alignParentLeft="true" />
-    <TextView android:textSize="@dimen/adj" android:textColor="@color/zj" android:gravity="center" android:id="@id/ejp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_alignParentRight="true" />
-    <TextView android:textSize="@dimen/adj" android:textColor="@color/zj" android:layout_gravity="right" android:id="@id/ejq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
+<RelativeLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:id="@id/f6f" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/h7t" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView android:id="@id/gy2" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </com.tencent.mm.view.RefreshLoadMoreLayout>
+    </android.support.design.widget.CoordinatorLayout>
+    <TextView android:gravity="center" android:id="@id/g01" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip" android:text="@string/d8e" style="@style/zy" />
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/epl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="64.0dip">
+        <ProgressBar android:background="@color/ac_" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:indeterminateDrawable="@drawable/apb" />
+    </LinearLayout>
+    <ListView android:id="@id/dpq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/d0t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/a_" android:textColor="@color/FG_1" android:gravity="start|center" android:id="@id/d0v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/ct" android:text="@string/d8f" android:layout_marginStart="@dimen/cb" />
+        <ListView android:id="@id/d0u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginStart="@dimen/c5" android:layout_marginEnd="@dimen/c5" />
+    </LinearLayout>
 </RelativeLayout>

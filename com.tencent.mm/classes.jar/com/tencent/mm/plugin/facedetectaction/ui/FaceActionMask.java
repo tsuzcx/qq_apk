@@ -16,22 +16,22 @@ public class FaceActionMask
   extends RelativeLayout
 {
   private Rect rect;
-  private Paint rxW;
-  private Paint rxX;
-  private PorterDuffXfermode rxY;
-  private boolean rxZ;
+  private Paint sXU;
+  private Paint sXV;
+  private PorterDuffXfermode sXW;
+  private boolean sXX;
   
   public FaceActionMask(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(104229);
     this.rect = new Rect();
-    this.rxZ = false;
-    this.rxW = new Paint(1);
-    this.rxW.setStyle(Paint.Style.FILL);
-    this.rxX = new Paint(1);
+    this.sXX = false;
+    this.sXU = new Paint(1);
+    this.sXU.setStyle(Paint.Style.FILL);
+    this.sXV = new Paint(1);
     setWillNotDraw(false);
-    this.rxY = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
+    this.sXW = new PorterDuffXfermode(PorterDuff.Mode.CLEAR);
     setLayerType(1, null);
     AppMethodBeat.o(104229);
   }
@@ -47,14 +47,14 @@ public class FaceActionMask
     this.rect.right = getWidth();
     this.rect.top = 0;
     this.rect.bottom = getHeight();
-    this.rxW.setColor(getContext().getResources().getColor(2131101179));
+    this.sXU.setColor(getContext().getResources().getColor(2131101424));
     paramCanvas.drawARGB(255, 0, 0, 0);
-    paramCanvas.drawRect(this.rect, this.rxW);
-    if (!this.rxZ)
+    paramCanvas.drawRect(this.rect, this.sXU);
+    if (!this.sXX)
     {
-      this.rxX.setStyle(Paint.Style.FILL_AND_STROKE);
-      this.rxX.setXfermode(this.rxY);
-      paramCanvas.drawCircle(f2, f3, f1, this.rxX);
+      this.sXV.setStyle(Paint.Style.FILL_AND_STROKE);
+      this.sXV.setXfermode(this.sXW);
+      paramCanvas.drawCircle(f2, f3, f1, this.sXV);
     }
     paramCanvas.restore();
     AppMethodBeat.o(104230);
@@ -62,7 +62,7 @@ public class FaceActionMask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetectaction.ui.FaceActionMask
  * JD-Core Version:    0.7.0.1
  */

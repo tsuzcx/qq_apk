@@ -7,7 +7,7 @@ import android.util.AttributeSet;
 import android.util.Xml;
 import android.view.InflateException;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.util.HashMap;
@@ -16,16 +16,16 @@ import org.xmlpull.v1.XmlPullParserException;
 
 public final class i
 {
-  private static HashMap<String, Constructor<?>> JOf;
-  private static final Class<?>[] JOg;
+  private static HashMap<String, Constructor<?>> OZk;
+  private static final Class<?>[] OZl;
   private final Object[] mConstructorArgs;
   private final Context mContext;
   
   static
   {
     AppMethodBeat.i(142625);
-    JOf = new HashMap();
-    JOg = new Class[] { Context.class, AttributeSet.class };
+    OZk = new HashMap();
+    OZl = new Class[] { Context.class, AttributeSet.class };
     AppMethodBeat.o(142625);
   }
   
@@ -40,18 +40,18 @@ public final class i
   private Preference a(String paramString1, String paramString2, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(142622);
-    Object localObject1 = (Constructor)JOf.get(paramString1);
+    Object localObject1 = (Constructor)OZk.get(paramString1);
     if (localObject1 == null) {}
     for (;;)
     {
       try
       {
-        ae.d("test", "fuck test mContext:%s", new Object[] { this.mContext.getResources().toString() });
+        Log.d("test", "fuck test mContext:%s", new Object[] { this.mContext.getResources().toString() });
         localObject3 = this.mContext.getClassLoader();
         if (paramString2 != null)
         {
           localObject2 = paramString2 + paramString1;
-          localObject2 = ((ClassLoader)localObject3).loadClass((String)localObject2).getConstructor(JOg);
+          localObject2 = ((ClassLoader)localObject3).loadClass((String)localObject2).getConstructor(OZl);
           localObject1 = localObject2;
         }
       }
@@ -76,7 +76,7 @@ public final class i
       catch (Exception paramString2) {}
       try
       {
-        JOf.put(paramString1, localObject2);
+        OZk.put(paramString1, localObject2);
         localObject1 = localObject2;
         localObject3 = this.mConstructorArgs;
         localObject3[1] = paramAttributeSet;
@@ -298,7 +298,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.base.preference.i
  * JD-Core Version:    0.7.0.1
  */

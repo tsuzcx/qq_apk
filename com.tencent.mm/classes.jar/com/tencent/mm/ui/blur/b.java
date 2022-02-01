@@ -5,11 +5,11 @@ import android.graphics.Bitmap.Config;
 
 public abstract interface b
 {
-  public abstract Bitmap d(Bitmap paramBitmap, float paramFloat);
+  public abstract Bitmap b(Bitmap paramBitmap, float paramFloat);
   
   public abstract void destroy();
   
-  public abstract Bitmap.Config fEj();
+  public abstract Bitmap.Config gMq();
 }
 
 

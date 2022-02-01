@@ -144,7 +144,7 @@ public class e
     for (int i9 = this.aEq.width * this.aEq.height;; i9 = paramb1.aDZ * paramb1.aEa)
     {
       if ((this.aEx == null) || (this.aEx.length < i9)) {
-        this.aEx = this.aEt.dk(i9);
+        this.aEx = this.aEt.de(i9);
       }
       paramb2 = this.aEx;
       if (this.aEu == null) {
@@ -159,7 +159,7 @@ public class e
         this.aEw = new byte[4097];
       }
       arrayOfByte = this.aEw;
-      i12 = ok();
+      i12 = oq();
       i13 = 1 << i12;
       m = i13 + 2;
       i3 = -1;
@@ -194,7 +194,7 @@ public class e
         if (n != 0) {
           break label1002;
         }
-        i11 = ok();
+        i11 = oq();
         if (i11 > 0) {
           break label971;
         }
@@ -525,11 +525,11 @@ public class e
                   if ((this.aEB) && ((paramb1.aEd == 0) || (paramb1.aEd == 1)))
                   {
                     if (this.aEA == null) {
-                      this.aEA = ol();
+                      this.aEA = or();
                     }
                     this.aEA.setPixels(arrayOfInt, 0, this.aED, 0, 0, this.aED, this.aEC);
                   }
-                  paramb1 = ol();
+                  paramb1 = or();
                   paramb1.setPixels(arrayOfInt, 0, this.aED, 0, 0, this.aED, this.aEC);
                   AppMethodBeat.o(3484);
                   return paramb1;
@@ -654,12 +654,12 @@ public class e
     this.sampleSize = paramInt;
     this.aED = (paramc.width / paramInt);
     this.aEC = (paramc.height / paramInt);
-    this.aEx = this.aEt.dk(paramc.width * paramc.height);
-    this.aEy = this.aEt.dl(this.aED * this.aEC);
+    this.aEx = this.aEt.de(paramc.width * paramc.height);
+    this.aEy = this.aEt.df(this.aED * this.aEC);
     AppMethodBeat.o(3482);
   }
   
-  private int ok()
+  private int oq()
   {
     AppMethodBeat.i(3485);
     int i = this.aEp.get();
@@ -667,7 +667,7 @@ public class e
     return i & 0xFF;
   }
   
-  private Bitmap ol()
+  private Bitmap or()
   {
     AppMethodBeat.i(3486);
     if ((this.aEE == null) || (this.aEE.booleanValue())) {}
@@ -706,7 +706,7 @@ public class e
       this.aEt.k(this.aEx);
     }
     if (this.aEy != null) {
-      this.aEt.o(this.aEy);
+      this.aEt.p(this.aEy);
     }
     if (this.aEA != null) {
       this.aEt.f(this.aEA);
@@ -730,7 +730,7 @@ public class e
     return this.aEq.frameCount;
   }
   
-  public final int nZ()
+  public final int of()
   {
     AppMethodBeat.i(3478);
     if ((this.aEq.frameCount <= 0) || (this.aEz < 0))
@@ -752,17 +752,17 @@ public class e
     return i;
   }
   
-  public final int oa()
+  public final int og()
   {
     return this.aEz;
   }
   
-  public final void ob()
+  public final void oh()
   {
     this.aEz = -1;
   }
   
-  public final int oc()
+  public final int oi()
   {
     AppMethodBeat.i(3479);
     int i = this.aEp.limit();
@@ -772,7 +772,7 @@ public class e
     return i + j + k * 4;
   }
   
-  public final Bitmap od()
+  public final Bitmap oj()
   {
     for (;;)
     {
@@ -798,7 +798,7 @@ public class e
         }
         this.status = 0;
         if (this.aEo == null) {
-          this.aEo = this.aEt.dk(255);
+          this.aEo = this.aEt.de(255);
         }
         b localb = (b)this.aEq.aEj.get(this.aEz);
         int i = this.aEz - 1;
@@ -845,7 +845,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.b.e
  * JD-Core Version:    0.7.0.1
  */

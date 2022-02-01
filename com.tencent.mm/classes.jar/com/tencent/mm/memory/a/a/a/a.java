@@ -3,63 +3,63 @@ package com.tencent.mm.memory.a.a.a;
 import android.app.ActivityManager;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class a
 {
-  private static a hAb;
-  public static boolean hAc;
-  public String dCl;
-  public int hAd;
-  public int hAe;
-  public int hAf;
-  public double hAg;
-  public int hAh;
+  private static a iui;
+  public static boolean iuj;
+  public String dUb;
+  public int iuk;
+  public int iul;
+  public int ium;
+  public double iun;
+  public int iuo;
   public Class<?> targetClass;
   
   static
   {
     AppMethodBeat.i(156507);
-    hAb = new a();
-    hAc = false;
+    iui = new a();
+    iuj = false;
     AppMethodBeat.o(156507);
   }
   
   public a()
   {
     AppMethodBeat.i(156505);
-    this.hAd = 10485760;
-    this.hAe = 3;
-    this.hAf = 2000;
-    this.hAg = 0.15D;
-    this.hAh = 3;
-    this.dCl = "default";
-    int i = ((ActivityManager)ak.getContext().getSystemService("activity")).getLargeMemoryClass();
-    ae.i("MicroMsg.CacheInvoke", "BitmapPool %dMB", new Object[] { Integer.valueOf(i) });
+    this.iuk = 10485760;
+    this.iul = 3;
+    this.ium = 2000;
+    this.iun = 0.15D;
+    this.iuo = 3;
+    this.dUb = "default";
+    int i = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
+    Log.i("MicroMsg.CacheInvoke", "BitmapPool %dMB", new Object[] { Integer.valueOf(i) });
     if (i >= 512) {
-      this.hAd = 62914560;
+      this.iuk = 62914560;
     }
     for (;;)
     {
       this.targetClass = com.tencent.mm.memory.a.a.a.class;
-      this.hAe = 3;
-      this.hAf = 2000;
-      this.hAh = 3;
-      this.hAg = 0.15D;
+      this.iul = 3;
+      this.ium = 2000;
+      this.iuo = 3;
+      this.iun = 0.15D;
       AppMethodBeat.o(156505);
       return;
       if (i >= 256) {
-        this.hAd = 31457280;
+        this.iuk = 31457280;
       } else {
-        this.hAd = 15728640;
+        this.iuk = 15728640;
       }
     }
   }
   
-  public static a azj()
+  public static a aSp()
   {
-    return hAb;
+    return iui;
   }
   
   public final boolean equals(Object paramObject)
@@ -67,7 +67,7 @@ public final class a
     AppMethodBeat.i(156506);
     if ((paramObject instanceof a))
     {
-      bool = this.dCl.equals(((a)paramObject).dCl);
+      bool = this.dUb.equals(((a)paramObject).dUb);
       AppMethodBeat.o(156506);
       return bool;
     }
@@ -78,7 +78,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.memory.a.a.a.a
  * JD-Core Version:    0.7.0.1
  */

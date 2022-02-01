@@ -2,41 +2,41 @@ package com.tencent.mm.openim.e;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class d
-  extends j<c>
+  extends MAutoStorage<c>
 {
   public static final String[] SQL_CREATE;
-  public h hKK;
+  public h iFy;
   
   static
   {
     AppMethodBeat.i(151333);
-    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "OpenIMAppIdInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "OpenIMAppIdInfo") };
     AppMethodBeat.o(151333);
   }
   
   public d(h paramh)
   {
     super(paramh, c.info, "OpenIMAppIdInfo", null);
-    this.hKK = paramh;
+    this.iFy = paramh;
   }
   
-  public final List<String> Jg(String paramString)
+  public final List<String> Sd(String paramString)
   {
     AppMethodBeat.i(151331);
     LinkedList localLinkedList = new LinkedList();
-    paramString = this.hKK.a("select distinct appid from OpenIMAppIdInfo where appid=? ", new String[] { paramString }, 2);
+    paramString = this.iFy.rawQuery("select distinct appid from OpenIMAppIdInfo where appid=? ", new String[] { paramString }, 2);
     if (paramString.moveToFirst()) {
       do
       {
         String str = paramString.getString(0);
-        if (!bu.isNullOrNil(str)) {
+        if (!Util.isNullOrNil(str)) {
           localLinkedList.add(str);
         }
       } while (paramString.moveToNext());
@@ -49,7 +49,7 @@ public final class d
   public final boolean a(c paramc)
   {
     AppMethodBeat.i(151330);
-    paramc.field_updateTime = bu.aRi();
+    paramc.field_updateTime = Util.nowSecond();
     boolean bool = super.replace(paramc);
     AppMethodBeat.o(151330);
     return bool;

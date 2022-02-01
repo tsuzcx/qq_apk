@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/a14" android:paddingLeft="@dimen/bp" android:paddingRight="@dimen/b" android:layout_width="fill_parent" android:text="@string/bpg" style="@style/n4" />
-    <LinearLayout android:orientation="vertical" android:id="@id/b39" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.media.widget.camerarecordview.preview.CameraPreviewGLSurfaceView android:id="@id/d1e" android:layout_width="fill_parent" android:layout_height="200.0dip" android:layout_marginTop="@dimen/bw" android:layout_alignParentTop="true" />
+    <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/ajd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/d1e" android:layout_alignBottom="@id/d1e" android:layout_alignStart="@id/d1e" android:layout_alignEnd="@id/d1e" />
+    <com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView android:id="@id/ajg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignTop="@id/d1e" android:layout_alignBottom="@id/d1e" android:layout_alignStart="@id/d1e" android:layout_alignEnd="@id/d1e" />
+    <com.tencent.mm.plugin.recordvideo.plugin.progress.HorizontalSubProgressBar android:id="@id/glg" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/bt" android:layout_below="@id/d1e" />
+    <com.tencent.mm.sticker.ui.view.CaptureStickerHint android:id="@id/ckn" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignTop="@id/d1e" android:layout_alignBottom="@id/d1e" android:layout_alignStart="@id/d1e" android:layout_alignEnd="@id/d1e" />
+    <com.tencent.mm.ui.widget.InsectRelativeLayout android:id="@id/gxe" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/ag2" android:id="@id/aje" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/f0x" android:layout_above="@id/d2x" android:layout_centerHorizontal="true" />
+        <include android:id="@id/d2x" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:layout_above="@id/d2y" layout="@layout/aj8" />
+        <include android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d2y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/cn" android:layout_above="@id/gxq" android:layout_alignParentBottom="true" layout="@layout/c5m" />
+        <com.tencent.mm.plugin.finder.video.plugin.view.RecordTypeSelectView android:id="@id/gxq" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct" android:layout_alignParentBottom="true" />
+    </com.tencent.mm.ui.widget.InsectRelativeLayout>
+    <ImageView android:id="@id/if9" android:focusable="true" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="40.0dip" android:layout_marginRight="24.0dip" android:src="@raw/mmsight_camera_navbar_icon_switch" android:layout_alignParentRight="true" android:contentDescription="@string/fwy" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bmj" android:padding="@dimen/bt" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:layout_marginTop="@dimen/ct" android:layout_marginRight="@dimen/ce" android:src="@raw/finder_filled_delete_sub_video" android:layout_below="@id/d1e" android:layout_alignParentRight="true" app:iconColor="@color/am" />
+    <com.tencent.mm.plugin.recordvideo.ui.editor.EditorPanelHolder android:id="@id/bx_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</merge>

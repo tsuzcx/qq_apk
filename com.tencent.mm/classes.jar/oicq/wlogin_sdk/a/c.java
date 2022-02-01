@@ -6,30 +6,30 @@ import oicq.wlogin_sdk.tools.util;
 public final class c
   extends a
 {
-  int Ooo = 1;
-  int Oop = util.Opu;
-  int Ooq = 22;
+  int Udn = 1;
+  int Udo = util.Ues;
+  int Udp = 22;
   
   public c()
   {
-    this.Ony = 256;
+    this.Ucx = 256;
   }
   
-  public final byte[] amH(int paramInt)
+  public final byte[] t(long paramLong, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(88114);
-    byte[] arrayOfByte = new byte[this.Ooq];
-    util.X(arrayOfByte, 0, this.Ooo);
-    util.Y(arrayOfByte, 2, this.Oop);
-    util.Y(arrayOfByte, 6, 522017402);
-    util.Y(arrayOfByte, 10, 1);
-    util.Y(arrayOfByte, 14, paramInt);
-    util.Y(arrayOfByte, 18, 8256);
-    super.amG(this.Ony);
-    super.aj(arrayOfByte, this.Ooq);
-    super.gCx();
-    arrayOfByte = super.gCt();
-    AppMethodBeat.o(88114);
+    AppMethodBeat.i(209828);
+    byte[] arrayOfByte = new byte[this.Udp];
+    util.ah(arrayOfByte, 0, this.Udn);
+    util.ai(arrayOfByte, 2, this.Udo);
+    util.ai(arrayOfByte, 6, 522017402);
+    util.ai(arrayOfByte, 10, 1);
+    util.ai(arrayOfByte, 14, paramInt1);
+    util.ai(arrayOfByte, 18, 8256);
+    super.awj(this.Ucx);
+    super.ak(arrayOfByte, this.Udp);
+    super.hPB();
+    arrayOfByte = super.hPx();
+    AppMethodBeat.o(209828);
     return arrayOfByte;
   }
 }

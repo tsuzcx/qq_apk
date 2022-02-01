@@ -5,89 +5,75 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class cxp
   extends com.tencent.mm.bw.a
 {
-  public int CreateTime;
-  public String FSh;
-  public String Gps;
-  public String Name;
+  public String IconUrl;
+  public int MCa;
+  public String MCb;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(134254);
+    AppMethodBeat.i(50095);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Name != null) {
-        paramVarArgs.d(1, this.Name);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.MCa);
+      if (this.IconUrl != null) {
+        paramVarArgs.e(2, this.IconUrl);
       }
-      if (this.Gps != null) {
-        paramVarArgs.d(2, this.Gps);
+      if (this.MCb != null) {
+        paramVarArgs.e(3, this.MCb);
       }
-      if (this.FSh != null) {
-        paramVarArgs.d(3, this.FSh);
-      }
-      paramVarArgs.aS(4, this.CreateTime);
-      AppMethodBeat.o(134254);
+      AppMethodBeat.o(50095);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.Name == null) {
-        break label378;
-      }
-    }
-    label378:
-    for (int i = f.a.a.b.b.a.e(1, this.Name) + 0;; i = 0)
+    if (paramInt == 1)
     {
+      int i = g.a.a.b.b.a.bu(1, this.MCa) + 0;
       paramInt = i;
-      if (this.Gps != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.Gps);
+      if (this.IconUrl != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.IconUrl);
       }
       i = paramInt;
-      if (this.FSh != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.FSh);
+      if (this.MCb != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.MCb);
       }
-      paramInt = f.a.a.b.b.a.bz(4, this.CreateTime);
-      AppMethodBeat.o(134254);
-      return i + paramInt;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
-          }
-        }
-        AppMethodBeat.o(134254);
-        return 0;
-      }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        cxp localcxp = (cxp)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(134254);
-          return -1;
-        case 1: 
-          localcxp.Name = locala.OmT.readString();
-          AppMethodBeat.o(134254);
-          return 0;
-        case 2: 
-          localcxp.Gps = locala.OmT.readString();
-          AppMethodBeat.o(134254);
-          return 0;
-        case 3: 
-          localcxp.FSh = locala.OmT.readString();
-          AppMethodBeat.o(134254);
-          return 0;
-        }
-        localcxp.CreateTime = locala.OmT.zc();
-        AppMethodBeat.o(134254);
-        return 0;
-      }
-      AppMethodBeat.o(134254);
-      return -1;
+      AppMethodBeat.o(50095);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      AppMethodBeat.o(50095);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      cxp localcxp = (cxp)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(50095);
+        return -1;
+      case 1: 
+        localcxp.MCa = locala.UbS.zi();
+        AppMethodBeat.o(50095);
+        return 0;
+      case 2: 
+        localcxp.IconUrl = locala.UbS.readString();
+        AppMethodBeat.o(50095);
+        return 0;
+      }
+      localcxp.MCb = locala.UbS.readString();
+      AppMethodBeat.o(50095);
+      return 0;
+    }
+    AppMethodBeat.o(50095);
+    return -1;
   }
 }
 

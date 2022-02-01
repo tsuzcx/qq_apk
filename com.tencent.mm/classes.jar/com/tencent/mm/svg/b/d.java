@@ -2,11 +2,11 @@ package com.tencent.mm.svg.b;
 
 public final class d
 {
-  private static a Jls = null;
+  private static a Ovl = null;
   
-  public static void fym() {}
+  public static void gGa() {}
   
-  public static void fyn() {}
+  public static void gGb() {}
   
   public static abstract interface a {}
 }

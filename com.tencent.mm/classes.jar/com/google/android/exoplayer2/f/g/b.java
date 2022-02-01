@@ -9,18 +9,18 @@ import java.util.Collections;
 public final class b
   extends com.google.android.exoplayer2.f.b
 {
-  private static final int bDu;
-  private static final int bDv;
   private static final int bDw;
-  private final e.a bDx;
-  private final m bqr;
+  private static final int bDx;
+  private static final int bDy;
+  private final e.a bDz;
+  private final m bqm;
   
   static
   {
     AppMethodBeat.i(92887);
-    bDu = x.bJ("payl");
-    bDv = x.bJ("sttg");
-    bDw = x.bJ("vttc");
+    bDw = x.bJ("payl");
+    bDx = x.bJ("sttg");
+    bDy = x.bJ("vttc");
     AppMethodBeat.o(92887);
   }
   
@@ -28,8 +28,8 @@ public final class b
   {
     super("Mp4WebvttDecoder");
     AppMethodBeat.i(92884);
-    this.bqr = new m();
-    this.bDx = new e.a();
+    this.bqm = new m();
+    this.bDz = new e.a();
     AppMethodBeat.o(92884);
   }
   
@@ -49,9 +49,9 @@ public final class b
       int j = paramm.readInt();
       i -= 8;
       String str = new String(paramm.data, paramm.position, i);
-      paramm.fa(i);
+      paramm.eZ(i);
       i = paramInt - 8 - i;
-      if (j == bDv)
+      if (j == bDx)
       {
         f.a(str, parama);
         paramInt = i;
@@ -59,21 +59,21 @@ public final class b
       else
       {
         paramInt = i;
-        if (j == bDu)
+        if (j == bDw)
         {
           f.a(null, str.trim(), parama, Collections.emptyList());
           paramInt = i;
         }
       }
     }
-    paramm = parama.wq();
+    paramm = parama.wv();
     AppMethodBeat.o(92885);
     return paramm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.g.b
  * JD-Core Version:    0.7.0.1
  */

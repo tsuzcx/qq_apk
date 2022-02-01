@@ -1,86 +1,82 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import g.a.a.b;
 
 public final class jl
   extends com.tencent.mm.bw.a
 {
-  public int FUF;
-  public LinkedList<String> FUG;
-  public int ReqType;
-  public int uqG;
-  
-  public jl()
-  {
-    AppMethodBeat.i(104755);
-    this.FUG = new LinkedList();
-    AppMethodBeat.o(104755);
-  }
+  public int channel;
+  public String uuid;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(104756);
+    AppMethodBeat.i(91361);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.FUF);
-      paramVarArgs.aS(2, this.ReqType);
-      paramVarArgs.e(3, 1, this.FUG);
-      paramVarArgs.aS(4, this.uqG);
-      AppMethodBeat.o(104756);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.b.b.a.bz(1, this.FUF);
-      int i = f.a.a.b.b.a.bz(2, this.ReqType);
-      int j = f.a.a.a.c(3, 1, this.FUG);
-      int k = f.a.a.b.b.a.bz(4, this.uqG);
-      AppMethodBeat.o(104756);
-      return paramInt + 0 + i + j + k;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.FUG.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
-      }
-      AppMethodBeat.o(104756);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      jl localjl = (jl)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.uuid == null)
       {
-      default: 
-        AppMethodBeat.o(104756);
-        return -1;
-      case 1: 
-        localjl.FUF = locala.OmT.zc();
-        AppMethodBeat.o(104756);
-        return 0;
-      case 2: 
-        localjl.ReqType = locala.OmT.zc();
-        AppMethodBeat.o(104756);
-        return 0;
-      case 3: 
-        localjl.FUG.add(locala.OmT.readString());
-        AppMethodBeat.o(104756);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: uuid");
+        AppMethodBeat.o(91361);
+        throw paramVarArgs;
       }
-      localjl.uqG = locala.OmT.zc();
-      AppMethodBeat.o(104756);
+      if (this.uuid != null) {
+        paramVarArgs.e(1, this.uuid);
+      }
+      paramVarArgs.aM(2, this.channel);
+      AppMethodBeat.o(91361);
       return 0;
     }
-    AppMethodBeat.o(104756);
-    return -1;
+    if (paramInt == 1) {
+      if (this.uuid == null) {
+        break label306;
+      }
+    }
+    label306:
+    for (paramInt = g.a.a.b.b.a.f(1, this.uuid) + 0;; paramInt = 0)
+    {
+      int i = g.a.a.b.b.a.bu(2, this.channel);
+      AppMethodBeat.o(91361);
+      return paramInt + i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
+        }
+        if (this.uuid == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: uuid");
+          AppMethodBeat.o(91361);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(91361);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        jl localjl = (jl)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(91361);
+          return -1;
+        case 1: 
+          localjl.uuid = locala.UbS.readString();
+          AppMethodBeat.o(91361);
+          return 0;
+        }
+        localjl.channel = locala.UbS.zi();
+        AppMethodBeat.o(91361);
+        return 0;
+      }
+      AppMethodBeat.o(91361);
+      return -1;
+    }
   }
 }
 

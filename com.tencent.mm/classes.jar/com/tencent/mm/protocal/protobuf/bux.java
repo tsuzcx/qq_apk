@@ -4,97 +4,78 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.LinkedList;
 
 public final class bux
-  extends cvw
+  extends dop
 {
-  public long FKy;
-  public String FKz;
-  public long count;
+  public int Mbn;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(215575);
+    AppMethodBeat.i(153279);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.BaseRequest != null)
       {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
+        paramVarArgs.ni(1, this.BaseRequest.computeSize());
         this.BaseRequest.writeFields(paramVarArgs);
       }
-      paramVarArgs.aZ(2, this.FKy);
-      if (this.FKz != null) {
-        paramVarArgs.d(3, this.FKz);
-      }
-      paramVarArgs.aZ(4, this.count);
-      AppMethodBeat.o(215575);
+      paramVarArgs.aM(2, this.Mbn);
+      AppMethodBeat.o(153279);
       return 0;
     }
     if (paramInt == 1) {
       if (this.BaseRequest == null) {
-        break label458;
+        break label354;
       }
     }
-    label458:
-    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label354:
+    for (paramInt = g.a.a.a.nh(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.p(2, this.FKy);
-      paramInt = i;
-      if (this.FKz != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.FKz);
-      }
-      i = f.a.a.b.b.a.p(4, this.count);
-      AppMethodBeat.o(215575);
+      int i = g.a.a.b.b.a.bu(2, this.Mbn);
+      AppMethodBeat.o(153279);
       return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dop.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dop.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(215575);
+        AppMethodBeat.o(153279);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         bux localbux = (bux)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(215575);
+          AppMethodBeat.o(153279);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbux.BaseRequest = ((jc)localObject1);
+            localObject1 = new jr();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((jr)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dop.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localbux.BaseRequest = ((jr)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(215575);
-          return 0;
-        case 2: 
-          localbux.FKy = ((f.a.a.a.a)localObject1).OmT.zd();
-          AppMethodBeat.o(215575);
-          return 0;
-        case 3: 
-          localbux.FKz = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(215575);
+          AppMethodBeat.o(153279);
           return 0;
         }
-        localbux.count = ((f.a.a.a.a)localObject1).OmT.zd();
-        AppMethodBeat.o(215575);
+        localbux.Mbn = ((g.a.a.a.a)localObject1).UbS.zi();
+        AppMethodBeat.o(153279);
         return 0;
       }
-      AppMethodBeat.o(215575);
+      AppMethodBeat.o(153279);
       return -1;
     }
   }

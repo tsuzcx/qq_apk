@@ -2,31 +2,29 @@ package com.tencent.mm.plugin.fingerprint.c;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.network.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.wallet_core.tenpay.model.m;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class e
-  extends m
-  implements k
+  extends com.tencent.mm.wallet_core.tenpay.model.m
+  implements com.tencent.mm.network.m
 {
-  public String dwl;
-  public String trI;
-  public String tsE;
+  public String dNS;
+  public String wFp;
+  public String wGk;
   
   public e(String paramString)
   {
     AppMethodBeat.i(64472);
-    this.trI = "";
-    this.dwl = "";
-    this.tsE = "";
+    this.wFp = "";
+    this.dNS = "";
+    this.wGk = "";
     HashMap localHashMap = new HashMap();
     if (TextUtils.isEmpty(paramString)) {
-      ae.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_cert_info is empty");
+      Log.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_cert_info is empty");
     }
     for (;;)
     {
@@ -35,7 +33,7 @@ public final class e
       setRequestData(localHashMap);
       AppMethodBeat.o(64472);
       return;
-      ae.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_cert_info is not empty");
+      Log.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_cert_info is not empty");
     }
   }
   
@@ -59,39 +57,39 @@ public final class e
     AppMethodBeat.i(64473);
     if (paramJSONObject != null)
     {
-      this.trI = paramJSONObject.optString("encrypted_device_info");
-      this.dwl = paramJSONObject.optString("encrypted_rsa_sign");
-      this.tsE = paramJSONObject.optString("cert");
-      if (TextUtils.isEmpty(this.trI))
+      this.wFp = paramJSONObject.optString("encrypted_device_info");
+      this.dNS = paramJSONObject.optString("encrypted_rsa_sign");
+      this.wGk = paramJSONObject.optString("cert");
+      if (TextUtils.isEmpty(this.wFp))
       {
-        ae.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_device_info is empty");
-        if (!TextUtils.isEmpty(this.dwl)) {
+        Log.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_device_info is empty");
+        if (!TextUtils.isEmpty(this.dNS)) {
           break label106;
         }
-        ae.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_rsa_sign is empty");
+        Log.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_rsa_sign is empty");
       }
       for (;;)
       {
-        if (!TextUtils.isEmpty(this.tsE)) {
+        if (!TextUtils.isEmpty(this.wGk)) {
           break label116;
         }
-        ae.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "cert is empty");
+        Log.e("MicroMsg.NetSceneTenpayGetOpenTouchCert", "cert is empty");
         AppMethodBeat.o(64473);
         return;
-        ae.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_device_info is not empty");
+        Log.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_device_info is not empty");
         break;
         label106:
-        ae.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_rsa_sign is not empty");
+        Log.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "encrypted_rsa_sign is not empty");
       }
       label116:
-      ae.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "cert is not empty");
+      Log.i("MicroMsg.NetSceneTenpayGetOpenTouchCert", "cert is not empty");
     }
     AppMethodBeat.o(64473);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.c.e
  * JD-Core Version:    0.7.0.1
  */

@@ -8,19 +8,19 @@ import android.widget.LinearLayout;
 public class ActivityChooserView$InnerLayout
   extends LinearLayout
 {
-  private static final int[] afE = { 16842964 };
+  private static final int[] afR = { 16842964 };
   
   public ActivityChooserView$InnerLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    paramContext = az.a(paramContext, paramAttributeSet, afE);
+    paramContext = az.a(paramContext, paramAttributeSet, afR);
     setBackgroundDrawable(paramContext.getDrawable(0));
-    paramContext.ayA.recycle();
+    paramContext.ayy.recycle();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v7.widget.ActivityChooserView.InnerLayout
  * JD-Core Version:    0.7.0.1
  */

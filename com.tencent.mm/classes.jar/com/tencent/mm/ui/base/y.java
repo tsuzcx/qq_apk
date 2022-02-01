@@ -1,73 +1,57 @@
 package com.tencent.mm.ui.base;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.Process;
+import android.util.SparseArray;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
 
 public final class y
 {
-  public static int JLN = -1;
+  int BCE;
+  View[] OWp;
+  int[] OWq;
+  SparseArray<View>[] OWr;
+  SparseArray<View> OWs;
   
-  public static void activateBroadcast(boolean paramBoolean)
+  public y()
   {
-    AppMethodBeat.i(142454);
-    d(paramBoolean, null);
-    AppMethodBeat.o(142454);
+    AppMethodBeat.i(142451);
+    this.OWp = new View[0];
+    this.OWq = new int[0];
+    AppMethodBeat.o(142451);
   }
   
-  public static void d(boolean paramBoolean, Intent paramIntent)
+  static View d(SparseArray<View> paramSparseArray, int paramInt)
   {
-    AppMethodBeat.i(142455);
-    if (!xL(paramBoolean))
+    AppMethodBeat.i(142452);
+    int j = paramSparseArray.size();
+    if (j > 0)
     {
-      ae.w("MicroMsg.UIStatusUtil", "isRealSend = false,just return!");
-      AppMethodBeat.o(142455);
-      return;
-    }
-    Intent localIntent = paramIntent;
-    if (paramIntent == null) {
-      localIntent = new Intent();
-    }
-    if (paramBoolean) {}
-    for (paramIntent = "com.tencent.mm.ui.ACTION_ACTIVE";; paramIntent = "com.tencent.mm.ui.ACTION_DEACTIVE")
-    {
-      localIntent.setAction(paramIntent);
-      localIntent.putExtra("_application_context_process_", ak.getProcessName());
-      localIntent.putExtra("process_id", Process.myPid());
-      localIntent.putExtra("process_is_mm", ak.cpe());
-      ak.getContext().sendBroadcast(localIntent, "com.tencent.mm.permission.MM_MESSAGE");
-      AppMethodBeat.o(142455);
-      return;
-    }
-  }
-  
-  private static boolean xL(boolean paramBoolean)
-  {
-    boolean bool = true;
-    int i;
-    if (paramBoolean)
-    {
-      i = 1;
-      if (JLN == i) {
-        break label28;
+      int i = 0;
+      while (i < j)
+      {
+        int k = paramSparseArray.keyAt(i);
+        localView = (View)paramSparseArray.get(k);
+        if (k == paramInt)
+        {
+          paramSparseArray.remove(k);
+          AppMethodBeat.o(142452);
+          return localView;
+        }
+        i += 1;
       }
+      paramInt = j - 1;
+      View localView = (View)paramSparseArray.valueAt(paramInt);
+      paramSparseArray.remove(paramSparseArray.keyAt(paramInt));
+      AppMethodBeat.o(142452);
+      return localView;
     }
-    label28:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      JLN = i;
-      return paramBoolean;
-      i = 0;
-      break;
-    }
+    AppMethodBeat.o(142452);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.y
  * JD-Core Version:    0.7.0.1
  */

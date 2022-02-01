@@ -9,31 +9,31 @@ import java.util.Map;
 public abstract interface l
   extends t
 {
-  public abstract i<String> boo();
+  public abstract i<String> bJR();
   
   public abstract Map<String, List<String>> getResponseHeaders();
   
   public static class a
     extends IOException
   {
-    public final g lqN;
+    public final g mxt;
     
     public a(IOException paramIOException, g paramg)
     {
       super();
-      this.lqN = paramg;
+      this.mxt = paramg;
     }
     
     public a(String paramString, g paramg)
     {
       super();
-      this.lqN = paramg;
+      this.mxt = paramg;
     }
     
     public a(String paramString, IOException paramIOException, g paramg)
     {
       super(paramIOException);
-      this.lqN = paramg;
+      this.mxt = paramg;
     }
   }
   
@@ -72,32 +72,32 @@ public abstract interface l
   public static final class e
     extends l.a
   {
+    public final Map<String, List<String>> bFD;
     public final String contentType;
-    public final Map<String, List<String>> headerFields;
     
     public e(String paramString, Map<String, List<String>> paramMap, g paramg)
     {
       super(paramg);
-      AppMethodBeat.i(211088);
+      AppMethodBeat.i(234757);
       this.contentType = paramString;
-      this.headerFields = paramMap;
-      AppMethodBeat.o(211088);
+      this.bFD = paramMap;
+      AppMethodBeat.o(234757);
     }
   }
   
   public static final class f
     extends l.a
   {
-    public final Map<String, List<String>> headerFields;
+    public final Map<String, List<String>> bFD;
     public final int responseCode;
     
     public f(int paramInt, Map<String, List<String>> paramMap, g paramg)
     {
       super(paramg);
-      AppMethodBeat.i(211089);
+      AppMethodBeat.i(234758);
       this.responseCode = paramInt;
-      this.headerFields = paramMap;
-      AppMethodBeat.o(211089);
+      this.bFD = paramMap;
+      AppMethodBeat.o(234758);
     }
   }
   
@@ -121,7 +121,7 @@ public abstract interface l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.b.b.l
  * JD-Core Version:    0.7.0.1
  */

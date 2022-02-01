@@ -1,97 +1,41 @@
 package com.tencent.mm.plugin.finder.storage.data;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.ani;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.platformtools.d;
+import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.protocal.protobuf.bds;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/data/PageCacheList;", "", "array", "", "Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "([Lcom/tencent/mm/plugin/finder/storage/data/CachePage;)V", "[Lcom/tencent/mm/plugin/finder/storage/data/CachePage;", "get", "typeFlag", "", "reset", "", "set", "page", "size", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/data/FinderTopicFollowListPage;", "Lcom/tencent/mm/platformtools/BaseProtoPage;", "Lcom/tencent/mm/protocal/protobuf/FinderTopicInfo;", "fileName", "", "(Ljava/lang/String;)V", "Companion", "plugin-finder_release"})
 public final class m
+  extends d<bds>
 {
-  final a[] sLh;
+  private static final String TAG = "Finder.FinderTopicFollowListPage";
+  public static final a vGz;
   
-  public m(a[] paramArrayOfa)
+  static
   {
-    AppMethodBeat.i(204431);
-    this.sLh = paramArrayOfa;
-    AppMethodBeat.o(204431);
+    AppMethodBeat.i(252024);
+    vGz = new a((byte)0);
+    TAG = "Finder.FinderTopicFollowListPage";
+    AppMethodBeat.o(252024);
   }
   
-  public final a FS(int paramInt)
+  public m(String paramString)
   {
-    AppMethodBeat.i(204428);
-    Object localObject2 = this.sLh;
-    int k = localObject2.length;
-    int i = 0;
-    Object localObject1;
-    int j;
-    if (i < k)
-    {
-      localObject1 = localObject2[i];
-      if (localObject1.type == paramInt)
-      {
-        j = 1;
-        label41:
-        if (j == 0) {
-          break label89;
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = new a(10000, "default_v3", new ani(), (byte)0);
-      }
-      AppMethodBeat.o(204428);
-      return localObject2;
-      j = 0;
-      break label41;
-      label89:
-      i += 1;
-      break;
-      localObject1 = null;
-    }
+    AppMethodBeat.i(252023);
+    StringBuilder localStringBuilder = new StringBuilder();
+    y localy = y.vXH;
+    super.Sg(y.LA(6) + paramString);
+    AppMethodBeat.o(252023);
   }
   
-  public final void a(int paramInt, a parama)
-  {
-    AppMethodBeat.i(204429);
-    p.h(parama, "page");
-    a[] arrayOfa = this.sLh;
-    int k = arrayOfa.length;
-    int j = 0;
-    int i = 0;
-    while (j < k)
-    {
-      if (paramInt == arrayOfa[j].type) {
-        this.sLh[i] = parama;
-      }
-      j += 1;
-      i += 1;
-    }
-    AppMethodBeat.o(204429);
-  }
-  
-  public final void reset()
-  {
-    AppMethodBeat.i(204430);
-    a[] arrayOfa = this.sLh;
-    int j = arrayOfa.length;
-    int i = 0;
-    while (i < j)
-    {
-      a locala = arrayOfa[i];
-      locala.kIG = false;
-      locala.a(new ani());
-      i += 1;
-    }
-    AppMethodBeat.o(204430);
-  }
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/data/FinderTopicFollowListPage$Companion;", "", "()V", "TAG", "", "clearAll", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.data.m
  * JD-Core Version:    0.7.0.1
  */

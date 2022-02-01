@@ -1,16 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:padding="@dimen/i_" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/bj4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/zc" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/bjk" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/i_" android:paddingRight="@dimen/hk" android:paddingBottom="@dimen/i_" android:layout_width="96.0dip" android:layout_height="96.0dip" android:src="@drawable/icon" />
-        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/hk" android:paddingRight="@dimen/i_" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/a" android:layout_gravity="left" android:id="@id/bll" android:paddingBottom="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{小崽子ss剧场}" style="@style/m3" />
-            <TextView android:layout_gravity="left" android:id="@id/blo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{小崽子ss剧场}" style="@style/m2" />
-        </LinearLayout>
-        <FrameLayout android:layout_gravity="center_vertical" android:paddingLeft="@dimen/i_" android:layout_width="wrap_content" android:layout_height="32.0dip">
-            <Button android:id="@id/bja" android:layout_width="wrap_content" android:layout_height="32.0dip" android:maxWidth="100.0dip" android:text="@string/bmg" style="@style/o8" />
-            <ProgressBar android:layout_gravity="center_vertical" android:id="@id/bjc" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="wrap_content" style="@style/lr" />
-        </FrameLayout>
-    </LinearLayout>
-</RelativeLayout>
+<TextView android:ellipsize="end" android:gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="2"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

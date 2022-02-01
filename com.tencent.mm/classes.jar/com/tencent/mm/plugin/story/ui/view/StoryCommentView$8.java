@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.story.ui.view;
 
 import android.graphics.Bitmap;
 import com.tencent.mm.particles.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/story/ui/view/CommentConfetti;", "it", "Ljava/util/Random;", "kotlin.jvm.PlatformType", "generateConfetti"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/story/ui/view/CommentConfetti;", "it", "Ljava/util/Random;", "kotlin.jvm.PlatformType", "generateConfetti"})
 final class StoryCommentView$8
   implements b
 {

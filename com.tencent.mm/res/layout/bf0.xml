@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.sandbox.updater.Updater android:gravity="center" android:orientation="vertical" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:layout_height="fill_parent" android:layout_weight="1.0" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cf7" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="70.0dip">
-        <ProgressBar android:id="@id/giw" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
-        <View style="@style/oh" />
-        <TextView android:textColor="@color/y4" android:gravity="center_vertical" android:autoLink="web" android:id="@id/dpn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g5d" />
-    </LinearLayout>
-</com.tencent.mm.sandbox.updater.Updater>
+    <ListView android:id="@id/fu8" style="@style/np" />
+    <TextView android:ellipsize="none" android:gravity="center" android:id="@id/fu_" android:padding="15.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/f_x" android:singleLine="false" style="@style/mi" />
+    <ScrollView android:id="@id/fu7" android:visibility="gone" android:scrollbars="none" style="@style/om">
+        <LinearLayout android:gravity="center_horizontal" style="@style/lz">
+            <ImageView android:paddingBottom="33.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bgk" />
+            <TextView android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/fa2" style="@style/m0" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -4,13 +4,13 @@ import java.io.PrintWriter;
 
 public abstract interface b
 {
-  public abstract void b(PrintWriter paramPrintWriter);
+  public abstract void a(PrintWriter paramPrintWriter);
   
   public abstract Throwable getCause();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.apache.commons.b.b.b
  * JD-Core Version:    0.7.0.1
  */

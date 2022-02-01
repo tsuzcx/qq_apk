@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.wepkg.utils;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public final class a
 {
-  public static String YG(int paramInt)
+  public static String ahr(int paramInt)
   {
     AppMethodBeat.i(110785);
     Object localObject = new JSONObject();
@@ -37,7 +37,56 @@ public final class a
     }
   }
   
-  public static String aMt(String paramString)
+  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, String paramString5)
+  {
+    AppMethodBeat.i(110781);
+    Log.d("MicroMsg.WePkgReport", "reportWepkgLogicKv, scene = %s, url = %s, pkgId = %s, version = %s, resultCode = %d, costTime = %d, extInfo = %s", new Object[] { paramString1, paramString2, paramString3, paramString4, Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString5 });
+    for (;;)
+    {
+      try
+      {
+        if (Util.isNullOrNil(paramString5))
+        {
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("netType", NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext()));
+          localObject = URLEncoder.encode(((JSONObject)localObject).toString(), "UTF-8");
+          paramString5 = (String)localObject;
+          localObject = paramString5;
+          str3 = paramString2;
+        }
+      }
+      catch (Exception localException1)
+      {
+        Object localObject;
+        String str1 = paramString5;
+        str3 = paramString2;
+        continue;
+      }
+      try
+      {
+        if (!Util.isNullOrNil(paramString2))
+        {
+          str3 = URLEncoder.encode(paramString2, "UTF-8");
+          localObject = paramString5;
+        }
+      }
+      catch (Exception localException2)
+      {
+        String str2 = paramString5;
+        str3 = paramString2;
+        continue;
+      }
+      h.CyF.a(13980, new Object[] { paramString1, str3, paramString3, paramString4, Long.valueOf(paramLong1), localObject, Long.valueOf(paramLong2) });
+      AppMethodBeat.o(110781);
+      return;
+      localObject = new JSONObject(URLDecoder.decode(paramString5, "UTF-8"));
+      ((JSONObject)localObject).put("netType", NetStatusUtil.getFormatedNetType(MMApplicationContext.getContext()));
+      localObject = URLEncoder.encode(((JSONObject)localObject).toString(), "UTF-8");
+      paramString5 = (String)localObject;
+    }
+  }
+  
+  public static String bcN(String paramString)
   {
     AppMethodBeat.i(110784);
     if (paramString == null)
@@ -55,7 +104,7 @@ public final class a
     }
     catch (JSONException paramString)
     {
-      ae.e("MicroMsg.WePkgReport", paramString.getMessage());
+      Log.e("MicroMsg.WePkgReport", paramString.getMessage());
       AppMethodBeat.o(110784);
       return "";
     }
@@ -63,68 +112,19 @@ public final class a
     {
       for (;;)
       {
-        ae.e("MicroMsg.WePkgReport", paramString.getMessage());
+        Log.e("MicroMsg.WePkgReport", paramString.getMessage());
       }
-    }
-  }
-  
-  public static void b(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong1, long paramLong2, String paramString5)
-  {
-    AppMethodBeat.i(110781);
-    ae.d("MicroMsg.WePkgReport", "reportWepkgLogicKv, scene = %s, url = %s, pkgId = %s, version = %s, resultCode = %d, costTime = %d, extInfo = %s", new Object[] { paramString1, paramString2, paramString3, paramString4, Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString5 });
-    for (;;)
-    {
-      try
-      {
-        if (bu.isNullOrNil(paramString5))
-        {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("netType", az.iW(ak.getContext()));
-          localObject = URLEncoder.encode(((JSONObject)localObject).toString(), "UTF-8");
-          paramString5 = (String)localObject;
-          localObject = paramString5;
-          str3 = paramString2;
-        }
-      }
-      catch (Exception localException1)
-      {
-        Object localObject;
-        String str1 = paramString5;
-        str3 = paramString2;
-        continue;
-      }
-      try
-      {
-        if (!bu.isNullOrNil(paramString2))
-        {
-          str3 = URLEncoder.encode(paramString2, "UTF-8");
-          localObject = paramString5;
-        }
-      }
-      catch (Exception localException2)
-      {
-        String str2 = paramString5;
-        str3 = paramString2;
-        continue;
-      }
-      g.yxI.f(13980, new Object[] { paramString1, str3, paramString3, paramString4, Long.valueOf(paramLong1), localObject, Long.valueOf(paramLong2) });
-      AppMethodBeat.o(110781);
-      return;
-      localObject = new JSONObject(URLDecoder.decode(paramString5, "UTF-8"));
-      ((JSONObject)localObject).put("netType", az.iW(ak.getContext()));
-      localObject = URLEncoder.encode(((JSONObject)localObject).toString(), "UTF-8");
-      paramString5 = (String)localObject;
     }
   }
   
   public static void c(String paramString1, int paramInt, String paramString2, long paramLong)
   {
     AppMethodBeat.i(110782);
-    com.tencent.mm.plugin.wepkg.b.a locala = com.tencent.mm.plugin.wepkg.b.b.fbx().aLR(paramString1);
+    com.tencent.mm.plugin.wepkg.b.a locala = com.tencent.mm.plugin.wepkg.b.b.gkD().bcj(paramString1);
     if (locala != null)
     {
       paramString1 = s(new Object[] { paramString1, locala.field_version, Integer.valueOf(0), Integer.valueOf(paramInt), Integer.valueOf(0), Integer.valueOf(0), paramString2, "", locala.field_oldVersion, Integer.valueOf(4), Long.valueOf(paramLong), Integer.valueOf(locala.field_pkgSize) });
-      com.tencent.mm.game.report.api.a.guC.a(new com.tencent.mm.game.report.api.b(14229, paramString1));
+      com.tencent.mm.game.report.api.a.hhr.a(new com.tencent.mm.game.report.api.b(14229, paramString1));
     }
     AppMethodBeat.o(110782);
   }
@@ -147,7 +147,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.utils.a
  * JD-Core Version:    0.7.0.1
  */

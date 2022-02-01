@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.gallery.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public static String amd(String paramString)
+  public static String azg(String paramString)
   {
     AppMethodBeat.i(111740);
     int i = -1;
@@ -17,7 +17,7 @@ public final class b
       switch (i)
       {
       default: 
-        ae.e("MicroMsg.AlbumAdapter.MIMEUtils", "unsupport type: %s", new Object[] { paramString });
+        Log.e("MicroMsg.AlbumAdapter.MIMEUtils", "unsupport type: %s", new Object[] { paramString });
         AppMethodBeat.o(111740);
         return "";
         if (paramString.equals("avc1"))
@@ -61,7 +61,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.a.b
  * JD-Core Version:    0.7.0.1
  */

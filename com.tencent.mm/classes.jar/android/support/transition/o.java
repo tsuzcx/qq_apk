@@ -1,33 +1,33 @@
 package android.support.transition;
 
 import android.graphics.Rect;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.view.ViewGroup;
 
 public final class o
-  extends al
+  extends am
 {
-  private float AJ = 3.0F;
-  int BA = 80;
+  private float AP = 3.0F;
+  int BH = 80;
   
-  public final long a(ViewGroup paramViewGroup, Transition paramTransition, u paramu1, u paramu2)
+  public final long a(ViewGroup paramViewGroup, Transition paramTransition, v paramv1, v paramv2)
   {
-    if ((paramu1 == null) && (paramu2 == null)) {
+    if ((paramv1 == null) && (paramv2 == null)) {
       return 0L;
     }
     int j = 1;
     Rect localRect = paramTransition.getEpicenter();
-    if ((paramu2 == null) || (e(paramu1) == 0))
+    if ((paramv2 == null) || (e(paramv1) == 0))
     {
       j = -1;
-      paramu2 = paramu1;
+      paramv2 = paramv1;
     }
-    int n = al.a(paramu2, 0);
-    int i1 = al.a(paramu2, 1);
-    paramu1 = new int[2];
-    paramViewGroup.getLocationOnScreen(paramu1);
-    int i2 = paramu1[0] + Math.round(paramViewGroup.getTranslationX());
-    int i3 = paramu1[1] + Math.round(paramViewGroup.getTranslationY());
+    int n = am.a(paramv2, 0);
+    int i1 = am.a(paramv2, 1);
+    paramv1 = new int[2];
+    paramViewGroup.getLocationOnScreen(paramv1);
+    int i2 = paramv1[0] + Math.round(paramViewGroup.getTranslationX());
+    int i3 = paramv1[1] + Math.round(paramViewGroup.getTranslationY());
     int i4 = i2 + paramViewGroup.getWidth();
     int i5 = i3 + paramViewGroup.getHeight();
     int k;
@@ -40,10 +40,10 @@ public final class o
     {
       k = localRect.centerX();
       m = localRect.centerY();
-      if (this.BA != 8388611) {
+      if (this.BH != 8388611) {
         break label345;
       }
-      if (t.Y(paramViewGroup) != 1) {
+      if (u.Z(paramViewGroup) != 1) {
         break label333;
       }
       i = 1;
@@ -56,7 +56,7 @@ public final class o
       default: 
         i = 0;
         f = i;
-        switch (this.BA)
+        switch (this.BH)
         {
         }
         break;
@@ -70,7 +70,7 @@ public final class o
       if (l2 < 0L) {
         l1 = 300L;
       }
-      return Math.round((float)(l1 * j) / this.AJ * f);
+      return Math.round((float)(l1 * j) / this.AP * f);
       k = (i2 + i4) / 2;
       m = (i3 + i5) / 2;
       break;
@@ -81,9 +81,9 @@ public final class o
       i = 3;
       break label154;
       label345:
-      if (this.BA == 8388613)
+      if (this.BH == 8388613)
       {
-        if (t.Y(paramViewGroup) == 1)
+        if (u.Z(paramViewGroup) == 1)
         {
           i = 1;
           label365:
@@ -99,7 +99,7 @@ public final class o
           break label365;
         }
       }
-      i = this.BA;
+      i = this.BH;
       break label154;
       i = i4 - n + Math.abs(m - i1);
       break label203;

@@ -2,28 +2,28 @@ package com.tencent.mm.audio.b;
 
 public abstract class f
 {
-  protected int dhY = -123456789;
-  protected int diO = 0;
-  protected a dis;
+  protected a dzD;
+  protected int dzZ = 0;
+  protected int dzk = -123456789;
   protected boolean mIsPause = false;
-  
-  public abstract boolean PO();
-  
-  public final int PR()
-  {
-    return this.diO;
-  }
   
   public final void a(a parama)
   {
-    this.dis = parama;
+    this.dzD = parama;
   }
   
-  public abstract void cw(boolean paramBoolean);
+  public abstract boolean aai();
   
-  public final void hR(int paramInt)
+  public final int aal()
   {
-    this.dhY = paramInt;
+    return this.dzZ;
+  }
+  
+  public abstract void de(boolean paramBoolean);
+  
+  public final void jl(int paramInt)
+  {
+    this.dzk = paramInt;
   }
   
   public abstract void stopRecord();

@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/afz" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="0.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/ael" android:layout_width="fill_parent" android:layout_height="@dimen/jm">
-        <FrameLayout android:layout_width="72.0dip" android:layout_height="fill_parent" android:layout_marginLeft="2.0dip">
-            <ImageView android:layout_gravity="center" android:id="@id/akz" android:layout_width="32.0dip" android:layout_height="32.0dip" android:contentDescription="@string/uo" />
-        </FrameLayout>
-        <TextView android:textSize="@dimen/gx" android:textColor="#ff606062" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/al0" android:layout_width="fill_parent" android:maxLines="1" style="@style/lw" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b1y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip">
+        <com.tencent.mm.plugin.card.ui.v2.CardCdnImageView android:id="@id/b20" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@raw/card_default_merchant_icon" />
+        <LinearLayout android:orientation="vertical" android:id="@id/b23" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip">
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/a2x" android:id="@id/b24" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" />
+                <com.tencent.mm.plugin.card.ui.v2.CardLabelTextView android:textSize="12.0dip" android:textColor="@color/ag2" android:gravity="center" android:id="@id/b21" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="18.0dip" android:layout_marginLeft="10.0dip" android:text="" />
+            </LinearLayout>
+            <TextView android:textSize="12.0dip" android:textColor="#ffb2b2b2" android:id="@id/b1u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="" />
+        </LinearLayout>
+        <ImageView android:layout_gravity="center_vertical" android:visibility="gone" android:layout_width="18.0dip" android:layout_height="18.0dip" android:src="@drawable/c1h" />
     </LinearLayout>
-</FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/b1z" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:minHeight="20.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/b1t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginBottom="16.0dip" android:minHeight="25.0dip" android:dividerPadding="8.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/b1w" android:paddingBottom="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip">
+        <TextView android:textSize="@dimen/bd" android:textColor="@color/u_" android:id="@id/b1x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="aaaa " />
+        <ImageView android:id="@id/b1v" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:src="@drawable/c2_" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,11 +1,13 @@
 package com.tencent.mm.av;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.j;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -14,30 +16,30 @@ import java.util.LinkedList;
 import java.util.List;
 
 public final class e
-  implements f, com.tencent.mm.ak.g
+  implements i, j
 {
-  final List<b> icd;
-  private HashSet<b> ice;
-  b icf;
-  private m icg;
-  public boolean ich;
+  final List<b> iXb;
+  private HashSet<b> iXc;
+  b iXd;
+  private m iXe;
+  public boolean iXf;
   
   public e()
   {
     AppMethodBeat.i(150535);
-    this.icf = null;
-    this.icg = null;
-    this.ich = false;
-    this.icd = Collections.synchronizedList(new LinkedList());
-    this.ice = new HashSet();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(109, this);
+    this.iXd = null;
+    this.iXe = null;
+    this.iXf = false;
+    this.iXb = Collections.synchronizedList(new LinkedList());
+    this.iXc = new HashSet();
+    g.aAg().hqi.a(109, this);
     AppMethodBeat.o(150535);
   }
   
   private boolean a(b paramb)
   {
     AppMethodBeat.i(150542);
-    if ((paramb == null) || (paramb.aIv() > 0))
+    if ((paramb == null) || (paramb.bcp() > 0))
     {
       AppMethodBeat.o(150542);
       return false;
@@ -52,55 +54,63 @@ public final class e
     AppMethodBeat.i(150545);
     if (paramb == null)
     {
-      ae.e("ModelImage.DownloadImgService", "task is null");
+      Log.e("ModelImage.DownloadImgService", "task is null");
       AppMethodBeat.o(150545);
       return;
     }
-    if (paramb.icl == null)
+    if (paramb.iXj == null)
     {
-      ae.e("ModelImage.DownloadImgService", "task callback list is null");
+      Log.e("ModelImage.DownloadImgService", "task callback list is null");
       AppMethodBeat.o(150545);
       return;
     }
-    Iterator localIterator = paramb.icl.iterator();
+    Iterator localIterator = paramb.iXj.iterator();
     while (localIterator.hasNext())
     {
       c localc = (c)localIterator.next();
-      if (localc.icm != null) {
-        localc.icm.a(paramb.ici, paramb.fUe, paramb.icj, paramb.ick, localc.icn);
+      if (localc.iXk != null) {
+        localc.iXk.a(paramb.iXg, paramb.gzl, paramb.iXh, paramb.iXi, localc.iXl);
       }
     }
     AppMethodBeat.o(150545);
   }
   
-  private void po(int paramInt)
+  private void td(int paramInt)
   {
     AppMethodBeat.i(150549);
-    synchronized (this.icd)
+    synchronized (this.iXb)
     {
-      if ((this.icf != null) || (this.icd.size() <= 0) || (true == this.ich))
+      if ((this.iXd != null) || (this.iXb.size() <= 0) || (true == this.iXf))
       {
-        if (this.icf == null) {}
-        for (String str = "mCurTaskInfo is null";; str = this.icf.ici + ", " + this.icf.fUe + ", " + this.icf.icj)
+        if (this.iXd == null) {}
+        for (String str = "mCurTaskInfo is null";; str = this.iXd.iXg + ", " + this.iXd.gzl + ", " + this.iXd.iXh)
         {
-          ae.i("ModelImage.DownloadImgService", "mCurTaskInfo %s mTodoList %s mLockStart %s", new Object[] { str, Integer.valueOf(this.icd.size()), Boolean.valueOf(this.ich) });
+          Log.i("ModelImage.DownloadImgService", "mCurTaskInfo %s mTodoList %s mLockStart %s", new Object[] { str, Integer.valueOf(this.iXb.size()), Boolean.valueOf(this.iXf) });
           AppMethodBeat.o(150549);
           return;
         }
       }
-      this.icf = ((b)this.icd.remove(0));
-      if (this.icf == null)
+      this.iXd = ((b)this.iXb.remove(0));
+      if (this.iXd == null)
       {
-        ae.w("ModelImage.DownloadImgService", "null == mCurTaskInfo");
+        Log.w("ModelImage.DownloadImgService", "null == mCurTaskInfo");
         AppMethodBeat.o(150549);
         return;
       }
     }
-    this.icg = new m(this.icf.ici, this.icf.fUe, this.icf.icj, this, paramInt);
-    this.icg.iea = this.icf.ick;
-    ae.i("ModelImage.DownloadImgService", "do scene, (" + this.icf.ici + ", " + this.icf.fUe + ", " + this.icf.icj + ")");
-    com.tencent.mm.kernel.g.ajQ().gDv.a(this.icg, 0);
+    this.iXe = new m(this.iXd.iXg, this.iXd.gzl, this.iXd.iXh, this, paramInt);
+    this.iXe.iYW = this.iXd.iXi;
+    Log.i("ModelImage.DownloadImgService", "do scene, (" + this.iXd.iXg + ", " + this.iXd.gzl + ", " + this.iXd.iXh + ")");
+    g.aAg().hqi.a(this.iXe, 0);
     AppMethodBeat.o(150549);
+  }
+  
+  public final boolean C(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(150543);
+    boolean bool = b(new b(paramLong1, paramLong2, 1));
+    AppMethodBeat.o(150543);
+    return bool;
   }
   
   public final int a(long paramLong1, long paramLong2, int paramInt1, Object paramObject, int paramInt2, a parama, int paramInt3, boolean paramBoolean)
@@ -108,21 +118,21 @@ public final class e
     AppMethodBeat.i(150538);
     if (parama == null)
     {
-      ae.e("ModelImage.DownloadImgService", "listener is null");
+      Log.e("ModelImage.DownloadImgService", "listener is null");
       AppMethodBeat.o(150538);
       return -1;
     }
     b localb = new b(paramLong1, paramLong2, paramInt1);
-    localb.ick = paramInt2;
-    if (this.ice.contains(localb))
+    localb.iXi = paramInt2;
+    if (this.iXc.contains(localb))
     {
-      ae.e("ModelImage.DownloadImgService", "[" + parama.hashCode() + "] add failed, task already done");
+      Log.e("ModelImage.DownloadImgService", "[" + parama.hashCode() + "] add failed, task already done");
       AppMethodBeat.o(150538);
       return -2;
     }
-    if ((this.icf != null) && (localb.equals(this.icf)))
+    if ((this.iXd != null) && (localb.equals(this.iXd)))
     {
-      if (this.icf.a(parama, paramObject))
+      if (this.iXd.a(parama, paramObject))
       {
         AppMethodBeat.o(150538);
         return 0;
@@ -130,10 +140,10 @@ public final class e
       AppMethodBeat.o(150538);
       return -3;
     }
-    paramInt2 = this.icd.indexOf(localb);
-    if ((paramInt2 >= 0) && (paramInt2 < this.icd.size()))
+    paramInt2 = this.iXb.indexOf(localb);
+    if ((paramInt2 >= 0) && (paramInt2 < this.iXb.size()))
     {
-      if (((b)this.icd.get(paramInt2)).a(parama, paramObject))
+      if (((b)this.iXb.get(paramInt2)).a(parama, paramObject))
       {
         AppMethodBeat.o(150538);
         return 0;
@@ -141,45 +151,45 @@ public final class e
       AppMethodBeat.o(150538);
       return -4;
     }
-    ae.i("ModelImage.DownloadImgService", "[" + parama.hashCode() + "] no found task, create a new task(" + paramLong1 + " " + paramLong2 + " " + paramInt1 + ") mLockStart: %s callbackDuration %s", new Object[] { Boolean.valueOf(this.ich), Integer.valueOf(paramInt3) });
+    Log.i("ModelImage.DownloadImgService", "[" + parama.hashCode() + "] no found task, create a new task(" + paramLong1 + " " + paramLong2 + " " + paramInt1 + ") mLockStart: %s callbackDuration %s", new Object[] { Boolean.valueOf(this.iXf), Integer.valueOf(paramInt3) });
     localb.a(parama, paramObject);
-    if ((paramBoolean) && (this.icd.size() > 0)) {
-      this.icd.add(0, localb);
+    if ((paramBoolean) && (this.iXb.size() > 0)) {
+      this.iXb.add(0, localb);
     }
     for (;;)
     {
-      po(paramInt3);
+      td(paramInt3);
       AppMethodBeat.o(150538);
       return 0;
-      this.icd.add(localb);
+      this.iXb.add(localb);
     }
   }
   
   public final int a(long paramLong1, long paramLong2, Object paramObject, a parama)
   {
     AppMethodBeat.i(150537);
-    int i = a(paramLong1, paramLong2, 1, paramObject, 2131231564, parama, 0, false);
+    int i = a(paramLong1, paramLong2, 1, paramObject, 2131231628, parama, 0, false);
     AppMethodBeat.o(150537);
     return i;
   }
   
-  public final void a(int paramInt1, int paramInt2, n paramn)
+  public final void a(int paramInt1, int paramInt2, q paramq)
   {
     AppMethodBeat.i(150548);
-    if (this.icg != paramn)
+    if (this.iXe != paramq)
     {
-      ae.d("ModelImage.DownloadImgService", "scene changed");
+      Log.d("ModelImage.DownloadImgService", "scene changed");
       AppMethodBeat.o(150548);
       return;
     }
-    if ((this.icf != null) && (this.icf.icl != null))
+    if ((this.iXd != null) && (this.iXd.iXj != null))
     {
-      Iterator localIterator = new ArrayList(this.icf.icl).iterator();
+      Iterator localIterator = new ArrayList(this.iXd.iXj).iterator();
       while (localIterator.hasNext())
       {
         c localc = (c)localIterator.next();
-        if (localc.icm != null) {
-          localc.icm.a(this.icf.ici, this.icf.fUe, this.icf.icj, this.icf.ick, localc.icn, paramInt1, paramInt2, paramn);
+        if (localc.iXk != null) {
+          localc.iXk.a(this.iXd.iXg, this.iXd.gzl, this.iXd.iXh, this.iXd.iXi, localc.iXl, paramInt1, paramInt2, paramq);
         }
       }
     }
@@ -189,23 +199,23 @@ public final class e
   public final void a(a parama)
   {
     AppMethodBeat.i(150541);
-    ae.i("ModelImage.DownloadImgService", "[" + parama.hashCode() + "] cancel all tasks of listener");
-    this.ich = true;
-    if (this.icf != null)
+    Log.i("ModelImage.DownloadImgService", "[" + parama.hashCode() + "] cancel all tasks of listener");
+    this.iXf = true;
+    if (this.iXd != null)
     {
-      if (this.icf != null) {
+      if (this.iXd != null) {
         break label188;
       }
       ??? = "mCurTaskInfo is null";
     }
     for (;;)
     {
-      ae.i("ModelImage.DownloadImgService", "cancelAllTaskByListener CurTaskInfo %s mTodoList %s mLockStart %s", new Object[] { ???, Integer.valueOf(this.icd.size()), Boolean.valueOf(this.ich) });
-      b(this.icf);
+      Log.i("ModelImage.DownloadImgService", "cancelAllTaskByListener CurTaskInfo %s mTodoList %s mLockStart %s", new Object[] { ???, Integer.valueOf(this.iXb.size()), Boolean.valueOf(this.iXf) });
+      b(this.iXd);
       Object localObject2 = new LinkedList();
-      synchronized (this.icd)
+      synchronized (this.iXb)
       {
-        ((List)localObject2).addAll(this.icd);
+        ((List)localObject2).addAll(this.iXb);
         ??? = ((List)localObject2).iterator();
         while (((Iterator)???).hasNext())
         {
@@ -216,17 +226,17 @@ public final class e
             a((b)localObject2);
             continue;
             label188:
-            ??? = this.icf.ici + ", " + this.icf.fUe + ", " + this.icf.icj;
+            ??? = this.iXd.iXg + ", " + this.iXd.gzl + ", " + this.iXd.iXh;
           }
         }
       }
     }
-    aIu();
+    bco();
     int i = parama.hashCode();
-    if (this.icf == null) {}
-    for (parama = "mCurTaskInfo is null";; parama = this.icf.ici + ", " + this.icf.fUe + ", " + this.icf.icj)
+    if (this.iXd == null) {}
+    for (parama = "mCurTaskInfo is null";; parama = this.iXd.iXg + ", " + this.iXd.gzl + ", " + this.iXd.iXh)
     {
-      ae.i("ModelImage.DownloadImgService", "[ %s ] cancelAllTaskByListener done mCurTaskInfo %s", new Object[] { Integer.valueOf(i), parama });
+      Log.i("ModelImage.DownloadImgService", "[ %s ] cancelAllTaskByListener done mCurTaskInfo %s", new Object[] { Integer.valueOf(i), parama });
       AppMethodBeat.o(150541);
       return;
     }
@@ -236,12 +246,12 @@ public final class e
   {
     AppMethodBeat.i(150539);
     b localb = new b(paramLong1, paramLong2, paramInt);
-    if ((this.icf != null) && (this.icf.equals(localb)))
+    if ((this.iXd != null) && (this.iXd.equals(localb)))
     {
       AppMethodBeat.o(150539);
       return true;
     }
-    if (this.icd.indexOf(localb) >= 0)
+    if (this.iXb.indexOf(localb) >= 0)
     {
       AppMethodBeat.o(150539);
       return true;
@@ -252,32 +262,32 @@ public final class e
   
   public final boolean a(long paramLong1, long paramLong2, int paramInt, a parama)
   {
-    AppMethodBeat.i(224406);
+    AppMethodBeat.i(223572);
     if (parama == null)
     {
-      ae.e("ModelImage.DownloadImgService", "listener is null");
-      AppMethodBeat.o(224406);
+      Log.e("ModelImage.DownloadImgService", "listener is null");
+      AppMethodBeat.o(223572);
       return false;
     }
     b localb2 = new b(paramLong1, paramLong2, paramInt);
     b localb1 = null;
-    if ((this.icf != null) && (this.icf.equals(localb2))) {
-      localb1 = this.icf;
+    if ((this.iXd != null) && (this.iXd.equals(localb2))) {
+      localb1 = this.iXd;
     }
     while (localb1 != null)
     {
       localb1.b(parama);
       a(localb1);
-      ae.i("ModelImage.DownloadImgService", "[" + parama.hashCode() + "] task has been canceled, (" + paramLong1 + ", " + paramLong2 + ", " + paramInt + ")");
-      AppMethodBeat.o(224406);
+      Log.i("ModelImage.DownloadImgService", "[" + parama.hashCode() + "] task has been canceled, (" + paramLong1 + ", " + paramLong2 + ", " + paramInt + ")");
+      AppMethodBeat.o(223572);
       return true;
-      int i = this.icd.indexOf(localb2);
+      int i = this.iXb.indexOf(localb2);
       if (-1 != i) {
-        localb1 = (b)this.icd.get(i);
+        localb1 = (b)this.iXb.get(i);
       }
     }
-    ae.e("ModelImage.DownloadImgService", "[" + parama.hashCode() + "] task no found, (" + paramLong1 + ", " + paramLong2 + ", " + paramInt + ")");
-    AppMethodBeat.o(224406);
+    Log.e("ModelImage.DownloadImgService", "[" + parama.hashCode() + "] task no found, (" + paramLong1 + ", " + paramLong2 + ", " + paramInt + ")");
+    AppMethodBeat.o(223572);
     return false;
   }
   
@@ -293,38 +303,30 @@ public final class e
     return false;
   }
   
-  public final void aIu()
-  {
-    AppMethodBeat.i(150546);
-    this.ich = false;
-    po(-1);
-    AppMethodBeat.o(150546);
-  }
-  
   final boolean b(b paramb)
   {
     AppMethodBeat.i(150544);
     if (paramb == null)
     {
-      ae.e("ModelImage.DownloadImgService", "task is null");
+      Log.e("ModelImage.DownloadImgService", "task is null");
       AppMethodBeat.o(150544);
       return false;
     }
-    ae.i("ModelImage.DownloadImgService", "cancel scene, (" + paramb.ici + ", " + paramb.fUe + ", " + paramb.icj + ")");
-    if ((this.icf != null) && (this.icf.equals(paramb)))
+    Log.i("ModelImage.DownloadImgService", "cancel scene, (" + paramb.iXg + ", " + paramb.gzl + ", " + paramb.iXh + ")");
+    if ((this.iXd != null) && (this.iXd.equals(paramb)))
     {
-      com.tencent.mm.kernel.g.ajQ().gDv.a(this.icg);
-      this.icg = null;
-      ae.i("ModelImage.DownloadImgService", "cancelNetScene reset curTaskInfo (%s %s %s)", new Object[] { Long.valueOf(paramb.ici), Long.valueOf(paramb.fUe), Integer.valueOf(paramb.icj) });
-      c(this.icf);
-      this.icf = null;
-      po(-1);
+      g.aAg().hqi.a(this.iXe);
+      this.iXe = null;
+      Log.i("ModelImage.DownloadImgService", "cancelNetScene reset curTaskInfo (%s %s %s)", new Object[] { Long.valueOf(paramb.iXg), Long.valueOf(paramb.gzl), Integer.valueOf(paramb.iXh) });
+      c(this.iXd);
+      this.iXd = null;
+      td(-1);
       AppMethodBeat.o(150544);
       return true;
     }
-    if (this.icd.contains(paramb))
+    if (this.iXb.contains(paramb))
     {
-      if (this.icd.remove(paramb)) {
+      if (this.iXb.remove(paramb)) {
         c(paramb);
       }
       AppMethodBeat.o(150544);
@@ -334,106 +336,106 @@ public final class e
     return false;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void bco()
+  {
+    AppMethodBeat.i(150546);
+    this.iXf = false;
+    td(-1);
+    AppMethodBeat.o(150546);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(150547);
-    if (this.icg != paramn)
+    if (this.iXe != paramq)
     {
-      ae.d("ModelImage.DownloadImgService", "scene changed");
+      Log.d("ModelImage.DownloadImgService", "scene changed");
       AppMethodBeat.o(150547);
       return;
     }
-    if ((this.icf != null) && (this.icf.icl != null))
+    if ((this.iXd != null) && (this.iXd.iXj != null))
     {
-      this.ice.add(new b(this.icf.ici, this.icf.fUe, this.icf.icj));
-      ae.i("ModelImage.DownloadImgService", "scene end, (" + this.icf.ici + ", " + this.icf.fUe + ", " + this.icf.icj + ")");
-      Iterator localIterator = new ArrayList(this.icf.icl).iterator();
+      this.iXc.add(new b(this.iXd.iXg, this.iXd.gzl, this.iXd.iXh));
+      Log.i("ModelImage.DownloadImgService", "scene end, (" + this.iXd.iXg + ", " + this.iXd.gzl + ", " + this.iXd.iXh + ")");
+      Iterator localIterator = new ArrayList(this.iXd.iXj).iterator();
       while (localIterator.hasNext())
       {
         c localc = (c)localIterator.next();
-        if (localc.icm != null) {
-          localc.icm.a(this.icf.ici, this.icf.fUe, this.icf.icj, this.icf.ick, localc.icn, paramInt1, paramInt2, paramString, paramn);
+        if (localc.iXk != null) {
+          localc.iXk.a(this.iXd.iXg, this.iXd.gzl, this.iXd.iXh, this.iXd.iXi, localc.iXl, paramInt1, paramInt2, paramString, paramq);
         }
       }
-      this.icf = null;
-      this.icg = null;
-      po(-1);
+      this.iXd = null;
+      this.iXe = null;
+      td(-1);
     }
     AppMethodBeat.o(150547);
-  }
-  
-  public final boolean x(long paramLong1, long paramLong2)
-  {
-    AppMethodBeat.i(150543);
-    boolean bool = b(new b(paramLong1, paramLong2, 1));
-    AppMethodBeat.o(150543);
-    return bool;
   }
   
   public static abstract interface a
   {
     public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject);
     
-    public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, n paramn);
+    public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, q paramq);
     
-    public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, n paramn);
+    public abstract void a(long paramLong1, long paramLong2, int paramInt1, int paramInt2, Object paramObject, int paramInt3, int paramInt4, String paramString, q paramq);
   }
   
   static final class b
   {
-    private int aHQ = 0;
-    public long fUe;
-    public long ici;
-    public int icj;
-    public int ick;
-    public List<e.c> icl;
+    private int aHK = 0;
+    public long gzl;
+    public long iXg;
+    public int iXh;
+    public int iXi;
+    public List<e.c> iXj;
     
     public b(long paramLong1, long paramLong2, int paramInt)
     {
-      this.ici = paramLong1;
-      this.fUe = paramLong2;
-      this.icj = paramInt;
-      this.ick = 0;
+      this.iXg = paramLong1;
+      this.gzl = paramLong2;
+      this.iXh = paramInt;
+      this.iXi = 0;
     }
     
     public final boolean a(e.a parama, Object paramObject)
     {
       AppMethodBeat.i(150531);
-      if (this.icl == null) {
-        this.icl = Collections.synchronizedList(new LinkedList());
+      if (this.iXj == null) {
+        this.iXj = Collections.synchronizedList(new LinkedList());
       }
       parama = new e.c(parama, paramObject);
-      if (this.icl.contains(parama))
+      if (this.iXj.contains(parama))
       {
-        ae.d("ModelImage.DownloadImgService.Task", "task item already exists");
+        Log.d("ModelImage.DownloadImgService.Task", "task item already exists");
         AppMethodBeat.o(150531);
         return false;
       }
-      this.icl.add(parama);
+      this.iXj.add(parama);
       AppMethodBeat.o(150531);
       return true;
-    }
-    
-    public final int aIv()
-    {
-      AppMethodBeat.i(150533);
-      int i = this.icl.size();
-      AppMethodBeat.o(150533);
-      return i;
     }
     
     public final boolean b(e.a parama)
     {
       AppMethodBeat.i(150532);
       parama = new e.c(parama, null);
-      if (this.icl.contains(parama))
+      if (this.iXj.contains(parama))
       {
-        this.icl.remove(parama);
+        this.iXj.remove(parama);
         AppMethodBeat.o(150532);
         return true;
       }
       AppMethodBeat.o(150532);
       return false;
+    }
+    
+    public final int bcp()
+    {
+      AppMethodBeat.i(150533);
+      int i = this.iXj.size();
+      AppMethodBeat.o(150533);
+      return i;
     }
     
     public final boolean equals(Object paramObject)
@@ -443,17 +445,17 @@ public final class e
       {
         return false;
         paramObject = (b)paramObject;
-      } while ((paramObject.ici != this.ici) || (paramObject.fUe != this.fUe) || (paramObject.icj != this.icj));
+      } while ((paramObject.iXg != this.iXg) || (paramObject.gzl != this.gzl) || (paramObject.iXh != this.iXh));
       return true;
     }
     
     public final int hashCode()
     {
       AppMethodBeat.i(150534);
-      if (this.aHQ == 0) {
-        this.aHQ = (this.ici + "_" + this.fUe + "_" + this.icj).hashCode();
+      if (this.aHK == 0) {
+        this.aHK = (this.iXg + "_" + this.gzl + "_" + this.iXh).hashCode();
       }
-      int i = this.aHQ;
+      int i = this.aHK;
       AppMethodBeat.o(150534);
       return i;
     }
@@ -461,13 +463,13 @@ public final class e
   
   static final class c
   {
-    e.a icm;
-    Object icn;
+    e.a iXk;
+    Object iXl;
     
     public c(e.a parama, Object paramObject)
     {
-      this.icm = parama;
-      this.icn = paramObject;
+      this.iXk = parama;
+      this.iXl = paramObject;
     }
     
     public final boolean equals(Object paramObject)
@@ -477,14 +479,14 @@ public final class e
       {
         return false;
         paramObject = (c)paramObject;
-      } while (this.icm != paramObject.icm);
+      } while (this.iXk != paramObject.iXk);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.e
  * JD-Core Version:    0.7.0.1
  */

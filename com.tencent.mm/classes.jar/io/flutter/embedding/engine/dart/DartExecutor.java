@@ -12,26 +12,26 @@ import java.nio.ByteBuffer;
 public class DartExecutor
   implements c
 {
-  private final a MZV;
-  public final c MZW;
-  public boolean MZX;
-  public String MZY;
-  private c MZZ;
-  private final FlutterJNI MZl;
-  private final c.a Naa;
-  private final AssetManager aFl;
+  private final FlutterJNI SNV;
+  private final a SOG;
+  public final c SOH;
+  public boolean SOI;
+  public String SOJ;
+  private c SOK;
+  private final c.a SOL;
+  private final AssetManager aFb;
   
   public DartExecutor(FlutterJNI paramFlutterJNI, AssetManager paramAssetManager)
   {
     AppMethodBeat.i(10198);
-    this.MZX = false;
-    this.Naa = new c.a()
+    this.SOI = false;
+    this.SOL = new c.a()
     {
       public final void a(ByteBuffer paramAnonymousByteBuffer, c.b paramAnonymousb)
       {
         AppMethodBeat.i(10205);
         paramAnonymousb = DartExecutor.this;
-        p localp = p.Ndi;
+        p localp = p.SSt;
         DartExecutor.a(paramAnonymousb, p.P(paramAnonymousByteBuffer));
         if (DartExecutor.a(DartExecutor.this) != null)
         {
@@ -41,27 +41,27 @@ public class DartExecutor
         AppMethodBeat.o(10205);
       }
     };
-    this.MZl = paramFlutterJNI;
-    this.aFl = paramAssetManager;
-    this.MZV = new a(paramFlutterJNI);
-    this.MZV.a("flutter/isolate", this.Naa);
-    this.MZW = new b(this.MZV, (byte)0);
+    this.SNV = paramFlutterJNI;
+    this.aFb = paramAssetManager;
+    this.SOG = new a(paramFlutterJNI);
+    this.SOG.a("flutter/isolate", this.SOL);
+    this.SOH = new b(this.SOG, (byte)0);
     AppMethodBeat.o(10198);
   }
   
-  public final void a(a parama)
+  public final void a(DartExecutor.a parama)
   {
     AppMethodBeat.i(10201);
-    if (this.MZX)
+    if (this.SOI)
     {
-      io.flutter.a.giG();
+      io.flutter.a.hwf();
       AppMethodBeat.o(10201);
       return;
     }
     new StringBuilder("Executing Dart entrypoint: ").append(parama);
-    io.flutter.a.giD();
-    this.MZl.runBundleAndSnapshotFromLibrary(parama.Nac, parama.Nad, null, this.aFl);
-    this.MZX = true;
+    io.flutter.a.hwd();
+    this.SNV.runBundleAndSnapshotFromLibrary(parama.SON, parama.SOO, null, this.aFb);
+    this.SOI = true;
     AppMethodBeat.o(10201);
   }
   
@@ -69,7 +69,7 @@ public class DartExecutor
   public final void a(String paramString, c.a parama)
   {
     AppMethodBeat.i(10204);
-    this.MZW.a(paramString, parama);
+    this.SOH.a(paramString, parama);
     AppMethodBeat.o(10204);
   }
   
@@ -77,7 +77,7 @@ public class DartExecutor
   public final void a(String paramString, ByteBuffer paramByteBuffer)
   {
     AppMethodBeat.i(10202);
-    this.MZW.a(paramString, paramByteBuffer);
+    this.SOH.a(paramString, paramByteBuffer);
     AppMethodBeat.o(10202);
   }
   
@@ -85,118 +85,64 @@ public class DartExecutor
   public final void a(String paramString, ByteBuffer paramByteBuffer, c.b paramb)
   {
     AppMethodBeat.i(10203);
-    this.MZW.a(paramString, paramByteBuffer, paramb);
+    this.SOH.a(paramString, paramByteBuffer, paramb);
     AppMethodBeat.o(10203);
   }
   
-  public final boolean gjr()
+  public final void notifyLowMemoryWarning()
   {
-    return this.MZX;
+    AppMethodBeat.i(214963);
+    if (this.SNV.isAttached()) {
+      this.SNV.notifyLowMemoryWarning();
+    }
+    AppMethodBeat.o(214963);
   }
   
   public void onAttachedToJNI()
   {
     AppMethodBeat.i(10199);
-    io.flutter.a.giD();
-    this.MZl.setPlatformMessageHandler(this.MZV);
+    io.flutter.a.hwd();
+    this.SNV.setPlatformMessageHandler(this.SOG);
     AppMethodBeat.o(10199);
   }
   
   public void onDetachedFromJNI()
   {
     AppMethodBeat.i(10200);
-    io.flutter.a.giD();
-    this.MZl.setPlatformMessageHandler(null);
+    io.flutter.a.hwd();
+    this.SNV.setPlatformMessageHandler(null);
     AppMethodBeat.o(10200);
-  }
-  
-  public static final class a
-  {
-    public final String Nac;
-    public final String Nad;
-    
-    public a(String paramString1, String paramString2)
-    {
-      this.Nac = paramString1;
-      this.Nad = paramString2;
-    }
-    
-    public a(String paramString1, String paramString2, byte paramByte)
-    {
-      this(paramString1, paramString2);
-    }
-    
-    public final boolean equals(Object paramObject)
-    {
-      AppMethodBeat.i(10213);
-      if (this == paramObject)
-      {
-        AppMethodBeat.o(10213);
-        return true;
-      }
-      if ((paramObject == null) || (getClass() != paramObject.getClass()))
-      {
-        AppMethodBeat.o(10213);
-        return false;
-      }
-      paramObject = (a)paramObject;
-      if (!this.Nac.equals(paramObject.Nac))
-      {
-        AppMethodBeat.o(10213);
-        return false;
-      }
-      boolean bool = this.Nad.equals(paramObject.Nad);
-      AppMethodBeat.o(10213);
-      return bool;
-    }
-    
-    public final int hashCode()
-    {
-      AppMethodBeat.i(10214);
-      int i = this.Nac.hashCode();
-      int j = this.Nad.hashCode();
-      AppMethodBeat.o(10214);
-      return i * 31 + j;
-    }
-    
-    public final String toString()
-    {
-      AppMethodBeat.i(10212);
-      String str = "DartEntrypoint( bundle path: " + this.Nac + ", function: " + this.Nad + " )";
-      AppMethodBeat.o(10212);
-      return str;
-    }
   }
   
   static final class b
     implements c
   {
-    private final a Nae;
+    private final a SOP;
     
     private b(a parama)
     {
-      this.Nae = parama;
+      this.SOP = parama;
     }
     
     public final void a(String paramString, c.a parama)
     {
-      AppMethodBeat.i(197841);
-      this.Nae.a(paramString, parama);
-      AppMethodBeat.o(197841);
+      AppMethodBeat.i(214966);
+      this.SOP.a(paramString, parama);
+      AppMethodBeat.o(214966);
     }
     
     public final void a(String paramString, ByteBuffer paramByteBuffer)
     {
-      AppMethodBeat.i(197839);
-      this.Nae.a(paramString, paramByteBuffer, null);
-      AppMethodBeat.o(197839);
+      AppMethodBeat.i(214964);
+      this.SOP.a(paramString, paramByteBuffer, null);
+      AppMethodBeat.o(214964);
     }
     
     public final void a(String paramString, ByteBuffer paramByteBuffer, c.b paramb)
     {
-      AppMethodBeat.i(197840);
-      this.Nae.a(paramString, paramByteBuffer, paramb);
-      AppMethodBeat.o(197840);
+      AppMethodBeat.i(214965);
+      this.SOP.a(paramString, paramByteBuffer, paramb);
+      AppMethodBeat.o(214965);
     }
   }
   
@@ -204,7 +150,7 @@ public class DartExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.embedding.engine.dart.DartExecutor
  * JD-Core Version:    0.7.0.1
  */

@@ -19,9 +19,9 @@ import java.util.Map;
 public class ChangeImageTransform
   extends Transition
 {
-  private static final TypeEvaluator<Matrix> An = new TypeEvaluator() {};
-  private static final Property<ImageView, Matrix> Ao = new Property(Matrix.class, "animatedTransform") {};
-  private static final String[] zJ = { "android:changeImageTransform:matrix", "android:changeImageTransform:bounds" };
+  private static final TypeEvaluator<Matrix> At = new TypeEvaluator() {};
+  private static final Property<ImageView, Matrix> Au = new Property(Matrix.class, "animatedTransform") {};
+  private static final String[] zP = { "android:changeImageTransform:matrix", "android:changeImageTransform:bounds" };
   
   public ChangeImageTransform() {}
   
@@ -30,9 +30,9 @@ public class ChangeImageTransform
     super(paramContext, paramAttributeSet);
   }
   
-  private static void c(u paramu)
+  private static void c(v paramv)
   {
-    Object localObject = paramu.view;
+    Object localObject = paramv.view;
     if ((!(localObject instanceof ImageView)) || (((View)localObject).getVisibility() != 0)) {}
     ImageView localImageView;
     do
@@ -40,69 +40,69 @@ public class ChangeImageTransform
       return;
       localImageView = (ImageView)localObject;
     } while (localImageView.getDrawable() == null);
-    Map localMap = paramu.values;
+    Map localMap = paramv.values;
     localMap.put("android:changeImageTransform:bounds", new Rect(((View)localObject).getLeft(), ((View)localObject).getTop(), ((View)localObject).getRight(), ((View)localObject).getBottom()));
-    switch (ChangeImageTransform.3.Ap[localImageView.getScaleType().ordinal()])
+    switch (ChangeImageTransform.3.Av[localImageView.getScaleType().ordinal()])
     {
     default: 
-      paramu = new Matrix(localImageView.getImageMatrix());
+      paramv = new Matrix(localImageView.getImageMatrix());
     }
     for (;;)
     {
-      localMap.put("android:changeImageTransform:matrix", paramu);
+      localMap.put("android:changeImageTransform:matrix", paramv);
       return;
       localObject = localImageView.getDrawable();
-      paramu = new Matrix();
-      paramu.postScale(localImageView.getWidth() / ((Drawable)localObject).getIntrinsicWidth(), localImageView.getHeight() / ((Drawable)localObject).getIntrinsicHeight());
+      paramv = new Matrix();
+      paramv.postScale(localImageView.getWidth() / ((Drawable)localObject).getIntrinsicWidth(), localImageView.getHeight() / ((Drawable)localObject).getIntrinsicHeight());
       continue;
-      paramu = localImageView.getDrawable();
-      int j = paramu.getIntrinsicWidth();
+      paramv = localImageView.getDrawable();
+      int j = paramv.getIntrinsicWidth();
       int k = localImageView.getWidth();
       float f1 = k / j;
-      int m = paramu.getIntrinsicHeight();
+      int m = paramv.getIntrinsicHeight();
       int i = localImageView.getHeight();
       f1 = Math.max(f1, i / m);
       float f2 = j;
       float f3 = m;
       j = Math.round((k - f2 * f1) / 2.0F);
       i = Math.round((i - f3 * f1) / 2.0F);
-      paramu = new Matrix();
-      paramu.postScale(f1, f1);
-      paramu.postTranslate(j, i);
+      paramv = new Matrix();
+      paramv.postScale(f1, f1);
+      paramv.postTranslate(j, i);
     }
   }
   
-  public final Animator a(ViewGroup paramViewGroup, u paramu1, u paramu2)
+  public final Animator a(ViewGroup paramViewGroup, v paramv1, v paramv2)
   {
-    if ((paramu1 == null) || (paramu2 == null))
+    if ((paramv1 == null) || (paramv2 == null))
     {
-      paramu1 = null;
-      return paramu1;
+      paramv1 = null;
+      return paramv1;
     }
-    paramViewGroup = (Rect)paramu1.values.get("android:changeImageTransform:bounds");
-    Rect localRect = (Rect)paramu2.values.get("android:changeImageTransform:bounds");
+    paramViewGroup = (Rect)paramv1.values.get("android:changeImageTransform:bounds");
+    Rect localRect = (Rect)paramv2.values.get("android:changeImageTransform:bounds");
     if ((paramViewGroup == null) || (localRect == null)) {
       return null;
     }
-    paramu1 = (Matrix)paramu1.values.get("android:changeImageTransform:matrix");
-    Matrix localMatrix = (Matrix)paramu2.values.get("android:changeImageTransform:matrix");
-    if (((paramu1 == null) && (localMatrix == null)) || ((paramu1 != null) && (paramu1.equals(localMatrix)))) {}
+    paramv1 = (Matrix)paramv1.values.get("android:changeImageTransform:matrix");
+    Matrix localMatrix = (Matrix)paramv2.values.get("android:changeImageTransform:matrix");
+    if (((paramv1 == null) && (localMatrix == null)) || ((paramv1 != null) && (paramv1.equals(localMatrix)))) {}
     for (int i = 1; (paramViewGroup.equals(localRect)) && (i != 0); i = 0) {
       return null;
     }
-    paramu2 = (ImageView)paramu2.view;
-    paramViewGroup = paramu2.getDrawable();
+    paramv2 = (ImageView)paramv2.view;
+    paramViewGroup = paramv2.getDrawable();
     i = paramViewGroup.getIntrinsicWidth();
     int j = paramViewGroup.getIntrinsicHeight();
     if (Build.VERSION.SDK_INT < 21)
     {
-      paramViewGroup = paramu2.getScaleType();
-      paramu2.setTag(2131304287, paramViewGroup);
+      paramViewGroup = paramv2.getScaleType();
+      paramv2.setTag(2131307215, paramViewGroup);
       if (paramViewGroup == ImageView.ScaleType.MATRIX)
       {
-        paramu2.setTag(2131304283, paramu2.getImageMatrix());
+        paramv2.setTag(2131307211, paramv2.getImageMatrix());
         label194:
-        paramu2.setImageMatrix(i.xP);
+        paramv2.setImageMatrix(i.xV);
       }
     }
     else
@@ -111,42 +111,42 @@ public class ChangeImageTransform
         break label268;
       }
     }
-    for (paramViewGroup = ObjectAnimator.ofObject(paramu2, Ao, An, new Matrix[] { null, null });; paramViewGroup = ObjectAnimator.ofObject(paramu2, Ao, new t.a(), new Matrix[] { paramViewGroup, paramu1 }))
+    for (paramViewGroup = ObjectAnimator.ofObject(paramv2, Au, At, new Matrix[] { null, null });; paramViewGroup = ObjectAnimator.ofObject(paramv2, Au, new u.a(), new Matrix[] { paramViewGroup, paramv1 }))
     {
-      paramu1 = paramViewGroup;
+      paramv1 = paramViewGroup;
       if (Build.VERSION.SDK_INT >= 21) {
         break;
       }
-      paramViewGroup.addListener(new h.1(paramu2));
+      paramViewGroup.addListener(new h.1(paramv2));
       return paramViewGroup;
-      paramu2.setScaleType(ImageView.ScaleType.MATRIX);
+      paramv2.setScaleType(ImageView.ScaleType.MATRIX);
       break label194;
       label268:
-      paramViewGroup = paramu1;
-      if (paramu1 == null) {
-        paramViewGroup = i.xP;
+      paramViewGroup = paramv1;
+      if (paramv1 == null) {
+        paramViewGroup = i.xV;
       }
-      paramu1 = localMatrix;
+      paramv1 = localMatrix;
       if (localMatrix == null) {
-        paramu1 = i.xP;
+        paramv1 = i.xV;
       }
-      Ao.set(paramu2, paramViewGroup);
+      Au.set(paramv2, paramViewGroup);
     }
   }
   
-  public final void a(u paramu)
+  public final void a(v paramv)
   {
-    c(paramu);
+    c(paramv);
   }
   
-  public final void b(u paramu)
+  public final void b(v paramv)
   {
-    c(paramu);
+    c(paramv);
   }
   
   public final String[] getTransitionProperties()
   {
-    return zJ;
+    return zP;
   }
 }
 

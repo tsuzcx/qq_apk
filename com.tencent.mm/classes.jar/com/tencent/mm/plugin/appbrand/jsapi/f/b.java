@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.appbrand.jsapi.f;
 
-import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.service.c;
 
 public final class b
-  extends y<z>
+  extends d<c>
 {
-  private static final int CTRL_INDEX = 583;
-  private static final String NAME = "getSelectedTextRange";
+  public static final int CTRL_INDEX = 910;
+  public static final String NAME = "checkHandoffEnabled";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.f.b
  * JD-Core Version:    0.7.0.1
  */

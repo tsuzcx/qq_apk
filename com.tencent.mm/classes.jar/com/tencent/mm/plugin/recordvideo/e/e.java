@@ -1,102 +1,56 @@
 package com.tencent.mm.plugin.recordvideo.e;
 
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.recordvideo.plugin.t;
-import com.tencent.mm.plugin.recordvideo.plugin.t.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.view.SmileyPanelImpl;
+import java.util.ArrayList;
+import java.util.Iterator;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/util/RecordTimeCalculatePlugin;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "()V", "timeStartMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "calculate", "tag", "extra", "mark", "release", "", "Companion", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/util/MemLeakUtil;", "", "()V", "TAG", "", "leakList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/panel/EditorEmojiPanel;", "Lkotlin/collections/ArrayList;", "addLeakObj", "", "panel", "releaseObj", "plugin-recordvideo_release"})
 public final class e
-  implements t
 {
-  public static final e.a yhw;
-  public final HashMap<String, Long> yhv;
+  private static final ArrayList<com.tencent.mm.plugin.recordvideo.ui.editor.a.a> Cis;
+  public static final e Cit;
+  private static final String TAG = "MicroMsg.MemLeakUtil";
   
   static
   {
-    AppMethodBeat.i(207147);
-    yhw = new e.a((byte)0);
-    AppMethodBeat.o(207147);
+    AppMethodBeat.i(76225);
+    Cit = new e();
+    Cis = new ArrayList();
+    TAG = "MicroMsg.MemLeakUtil";
+    AppMethodBeat.o(76225);
   }
   
-  public e()
+  public static void a(com.tencent.mm.plugin.recordvideo.ui.editor.a.a parama)
   {
-    AppMethodBeat.i(207146);
-    this.yhv = new HashMap();
-    AppMethodBeat.o(207146);
+    AppMethodBeat.i(237990);
+    p.h(parama, "panel");
+    Log.i(TAG, "add panel  ".concat(String.valueOf(parama)));
+    Cis.add(parama);
+    AppMethodBeat.o(237990);
   }
   
-  public final boolean aoQ()
+  public static void eMN()
   {
-    return false;
-  }
-  
-  public final void azm() {}
-  
-  public final long iW(String paramString1, String paramString2)
-  {
-    AppMethodBeat.i(207144);
-    p.h(paramString1, "tag");
-    if (this.yhv.get(paramString1) == null)
+    AppMethodBeat.i(76224);
+    Log.i(TAG, "release panel ");
+    Iterator localIterator = ((Iterable)Cis).iterator();
+    while (localIterator.hasNext())
     {
-      ae.e("MicroMsg.RecordTimeCalculatePlugin", paramString1 + " miss start mark!!!");
-      AppMethodBeat.o(207144);
-      return -1L;
+      com.tencent.mm.plugin.recordvideo.ui.editor.a.a locala = (com.tencent.mm.plugin.recordvideo.ui.editor.a.a)localIterator.next();
+      Log.i(TAG, "release panel ".concat(String.valueOf(locala)));
+      locala.hee.destroy();
     }
-    paramString1 = (Long)this.yhv.get(paramString1);
-    if (paramString1 != null)
-    {
-      long l = System.currentTimeMillis();
-      p.g(paramString1, "this");
-      l -= paramString1.longValue();
-      ae.i("MicroMsg.RecordTimeCalculatePlugin", paramString2 + " cost time:" + l);
-      AppMethodBeat.o(207144);
-      return l;
-    }
-    AppMethodBeat.o(207144);
-    return -1L;
+    Cis.clear();
+    AppMethodBeat.o(76224);
   }
-  
-  public final String name()
-  {
-    return null;
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public final void onDetach() {}
-  
-  public final void onPause() {}
-  
-  public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
-  {
-    AppMethodBeat.i(207148);
-    p.h(paramArrayOfString, "permissions");
-    p.h(paramArrayOfInt, "grantResults");
-    t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(207148);
-  }
-  
-  public final void onResume() {}
-  
-  public final void release()
-  {
-    AppMethodBeat.i(207145);
-    this.yhv.clear();
-    AppMethodBeat.o(207145);
-  }
-  
-  public final void reset() {}
-  
-  public final void setVisibility(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.e.e
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,7 @@ import android.app.Activity;
 
 public abstract interface d
 {
-  public abstract boolean fu(String paramString);
+  public abstract boolean gh(String paramString);
   
   public abstract Activity q(Activity paramActivity);
 }

@@ -1,55 +1,38 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.e;
+import com.google.a.a.b;
+import com.google.a.a.e;
 
 public final class a$c
   extends e
 {
-  public a.x[] Mda = a.x.fXz();
+  public a.y[] RDp = a.y.hje();
   
   public a$c()
   {
-    this.bQO = -1;
+    this.cbo = -1;
   }
   
-  public final void a(b paramb)
+  public final int Ig()
   {
-    if ((this.Mda != null) && (this.Mda.length > 0))
-    {
-      int i = 0;
-      while (i < this.Mda.length)
-      {
-        a.x localx = this.Mda[i];
-        if (localx != null) {
-          paramb.a(1, localx);
-        }
-        i += 1;
-      }
-    }
-    super.a(paramb);
-  }
-  
-  public final int zq()
-  {
-    int i = super.zq();
+    int i = super.Ig();
     int k = i;
-    if (this.Mda != null)
+    if (this.RDp != null)
     {
       k = i;
-      if (this.Mda.length > 0)
+      if (this.RDp.length > 0)
       {
         int j = 0;
         for (;;)
         {
           k = i;
-          if (j >= this.Mda.length) {
+          if (j >= this.RDp.length) {
             break;
           }
-          a.x localx = this.Mda[j];
+          a.y localy = this.RDp[j];
           k = i;
-          if (localx != null) {
-            k = i + b.b(1, localx);
+          if (localy != null) {
+            k = i + b.b(1, localy);
           }
           j += 1;
           i = k;
@@ -58,10 +41,27 @@ public final class a$c
     }
     return k;
   }
+  
+  public final void a(b paramb)
+  {
+    if ((this.RDp != null) && (this.RDp.length > 0))
+    {
+      int i = 0;
+      while (i < this.RDp.length)
+      {
+        a.y localy = this.RDp[i];
+        if (localy != null) {
+          paramb.a(1, localy);
+        }
+        i += 1;
+      }
+    }
+    super.a(paramb);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.c
  * JD-Core Version:    0.7.0.1
  */

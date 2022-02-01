@@ -7,11 +7,11 @@ public abstract interface d
 {
   public abstract void destroy(int paramInt);
   
-  public abstract int hw(int paramInt);
+  public abstract int iQ(int paramInt);
   
-  public abstract SharedV8ArrayBuffer hx(int paramInt);
+  public abstract SharedV8ArrayBuffer iR(int paramInt);
   
-  public abstract ByteBuffer hy(int paramInt);
+  public abstract ByteBuffer iS(int paramInt);
 }
 
 

@@ -10,19 +10,19 @@ import java.util.ArrayList;
 final class ExdeviceBindDeviceGuideUI$a
   extends BaseAdapter
 {
-  private ArrayList<String> qoJ;
+  private ArrayList<String> rFQ;
   
   public ExdeviceBindDeviceGuideUI$a(ArrayList<String> paramArrayList)
   {
-    this.qoJ = paramArrayList;
+    this.rFQ = paramArrayList;
   }
   
   private String getItem(int paramInt)
   {
     AppMethodBeat.i(23884);
-    if ((this.qoJ != null) && (this.qoJ.size() > 0))
+    if ((this.rFQ != null) && (this.rFQ.size() > 0))
     {
-      String str = (String)this.qoJ.get(paramInt);
+      String str = (String)this.rFQ.get(paramInt);
       AppMethodBeat.o(23884);
       return str;
     }
@@ -33,9 +33,9 @@ final class ExdeviceBindDeviceGuideUI$a
   public final int getCount()
   {
     AppMethodBeat.i(23883);
-    if (this.qoJ != null)
+    if (this.rFQ != null)
     {
-      int i = this.qoJ.size();
+      int i = this.rFQ.size();
       AppMethodBeat.o(23883);
       return i;
     }
@@ -51,7 +51,7 @@ final class ExdeviceBindDeviceGuideUI$a
   public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(23885);
-    if ((this.qoJ == null) || (this.qoJ.size() <= 0))
+    if ((this.rFQ == null) || (this.rFQ.size() <= 0))
     {
       AppMethodBeat.o(23885);
       return null;
@@ -61,20 +61,20 @@ final class ExdeviceBindDeviceGuideUI$a
     if (paramView == null)
     {
       paramView = new a((byte)0);
-      localView = View.inflate(paramViewGroup.getContext(), 2131493855, null);
-      paramView.qoL = ((TextView)localView.findViewById(2131298744));
-      paramView.qoK = ((TextView)localView.findViewById(2131305215));
-      paramView.qoM = localView.findViewById(2131305995);
-      paramView.qoN = localView.findViewById(2131297431);
+      localView = View.inflate(paramViewGroup.getContext(), 2131494011, null);
+      paramView.rFS = ((TextView)localView.findViewById(2131299186));
+      paramView.rFR = ((TextView)localView.findViewById(2131308412));
+      paramView.rFT = localView.findViewById(2131309302);
+      paramView.rFU = localView.findViewById(2131297660);
       localView.setTag(paramView);
       paramViewGroup = paramView;
-      paramViewGroup.qoK.setText(Integer.toString(paramInt + 1));
-      paramViewGroup.qoL.setText(str);
-      if ((paramInt != 0) || (this.qoJ.size() != 1)) {
+      paramViewGroup.rFR.setText(Integer.toString(paramInt + 1));
+      paramViewGroup.rFS.setText(str);
+      if ((paramInt != 0) || (this.rFQ.size() != 1)) {
         break label197;
       }
-      paramViewGroup.qoM.setVisibility(4);
-      paramViewGroup.qoN.setVisibility(4);
+      paramViewGroup.rFT.setVisibility(4);
+      paramViewGroup.rFU.setVisibility(4);
     }
     for (;;)
     {
@@ -86,28 +86,28 @@ final class ExdeviceBindDeviceGuideUI$a
       label197:
       if (paramInt == 0)
       {
-        paramViewGroup.qoM.setVisibility(4);
-        paramViewGroup.qoN.setVisibility(0);
+        paramViewGroup.rFT.setVisibility(4);
+        paramViewGroup.rFU.setVisibility(0);
       }
-      else if (paramInt == this.qoJ.size() - 1)
+      else if (paramInt == this.rFQ.size() - 1)
       {
-        paramViewGroup.qoN.setVisibility(4);
-        paramViewGroup.qoM.setVisibility(0);
+        paramViewGroup.rFU.setVisibility(4);
+        paramViewGroup.rFT.setVisibility(0);
       }
     }
   }
   
   static final class a
   {
-    TextView qoK;
-    TextView qoL;
-    View qoM;
-    View qoN;
+    TextView rFR;
+    TextView rFS;
+    View rFT;
+    View rFU;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.ui.ExdeviceBindDeviceGuideUI.a
  * JD-Core Version:    0.7.0.1
  */

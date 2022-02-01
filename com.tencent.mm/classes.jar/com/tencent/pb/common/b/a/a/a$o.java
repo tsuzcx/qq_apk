@@ -1,71 +1,69 @@
 package com.tencent.pb.common.b.a.a;
 
-import com.google.b.a.b;
-import com.google.b.a.c;
-import com.google.b.a.e;
-import com.google.b.a.g;
-import java.util.Arrays;
+import com.google.a.a.b;
+import com.google.a.a.c;
+import com.google.a.a.e;
 
 public final class a$o
   extends e
 {
-  private static volatile o[] Mdz;
-  public int MdA = 0;
-  public int MdB = 0;
-  public byte[] dyt = g.bQV;
+  private static volatile o[] RDN;
+  public int KBb = 0;
+  public String RDO = "";
+  public String nickname = "";
   
   public a$o()
   {
-    this.bQO = -1;
+    this.cbo = -1;
   }
   
-  public static o[] fXx()
+  public static o[] hjb()
   {
-    if (Mdz == null) {}
-    synchronized (c.bQN)
+    if (RDN == null) {}
+    synchronized (c.cbn)
     {
-      if (Mdz == null) {
-        Mdz = new o[0];
+      if (RDN == null) {
+        RDN = new o[0];
       }
-      return Mdz;
+      return RDN;
     }
+  }
+  
+  public final int Ig()
+  {
+    int j = super.Ig();
+    int i = j;
+    if (this.KBb != 0) {
+      i = j + b.bC(1, this.KBb);
+    }
+    j = i;
+    if (!this.nickname.equals("")) {
+      j = i + b.f(2, this.nickname);
+    }
+    i = j;
+    if (!this.RDO.equals("")) {
+      i = j + b.f(3, this.RDO);
+    }
+    return i;
   }
   
   public final void a(b paramb)
   {
-    if (this.MdA != 0) {
-      paramb.bx(1, this.MdA);
+    if (this.KBb != 0) {
+      paramb.bB(1, this.KBb);
     }
-    if (!Arrays.equals(this.dyt, g.bQV)) {
-      paramb.b(2, this.dyt);
+    if (!this.nickname.equals("")) {
+      paramb.e(2, this.nickname);
     }
-    if (this.MdB != 0) {
-      paramb.by(3, this.MdB);
+    if (!this.RDO.equals("")) {
+      paramb.e(3, this.RDO);
     }
     super.a(paramb);
-  }
-  
-  public final int zq()
-  {
-    int j = super.zq();
-    int i = j;
-    if (this.MdA != 0) {
-      i = j + b.bz(1, this.MdA);
-    }
-    j = i;
-    if (!Arrays.equals(this.dyt, g.bQV)) {
-      j = i + b.c(2, this.dyt);
-    }
-    i = j;
-    if (this.MdB != 0) {
-      i = j + b.bA(3, this.MdB);
-    }
-    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.pb.common.b.a.a.a.o
  * JD-Core Version:    0.7.0.1
  */

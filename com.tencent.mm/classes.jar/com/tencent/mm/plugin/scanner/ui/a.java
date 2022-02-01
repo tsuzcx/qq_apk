@@ -9,9 +9,9 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.plugin.scanner.util.n;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.scanner.util.q;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
@@ -19,21 +19,21 @@ public final class a
   extends Preference
   implements u.a
 {
-  private ImageView kEm;
-  private f mEx;
+  private TextView CJb;
+  String CJc;
+  private ImageView lIM;
   private View mView;
-  String pMn;
-  private TextView yFj;
-  String yFk;
+  private f nRm;
+  String rcG;
   
   public a(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(51673);
     this.mView = null;
-    this.yFj = null;
-    this.yFk = null;
-    setLayoutResource(2131495301);
+    this.CJb = null;
+    this.CJc = null;
+    setLayoutResource(2131496151);
     u.a(this);
     AppMethodBeat.o(51673);
   }
@@ -53,8 +53,8 @@ public final class a
   public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(51676);
-    if ((!bu.isNullOrNil(paramString)) && (paramString.equals(this.pMn)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.kEm != null)) {
-      ar.f(new Runnable()
+    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.rcG)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.lIM != null)) {
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
@@ -75,33 +75,33 @@ public final class a
   {
     AppMethodBeat.i(51675);
     super.onBindView(paramView);
-    this.yFj = ((TextView)paramView.findViewById(2131299135));
-    this.kEm = ((ImageView)paramView.findViewById(2131296419));
-    if (!bu.isNullOrNil(this.yFk))
+    this.CJb = ((TextView)paramView.findViewById(2131299662));
+    this.lIM = ((ImageView)paramView.findViewById(2131296451));
+    if (!Util.isNullOrNil(this.CJc))
     {
-      this.yFj.setText(this.yFk);
-      this.yFj.setVisibility(0);
+      this.CJb.setText(this.CJc);
+      this.CJb.setVisibility(0);
     }
     for (;;)
     {
-      if (!bu.isNullOrNil(this.pMn))
+      if (!Util.isNullOrNil(this.rcG))
       {
-        paramView = u.a(new n(this.pMn));
+        paramView = u.a(new q(this.rcG));
         if ((paramView != null) && (!paramView.isRecycled()))
         {
-          this.kEm.setImageBitmap(paramView);
-          this.kEm.setVisibility(0);
+          this.lIM.setImageBitmap(paramView);
+          this.lIM.setVisibility(0);
         }
       }
       AppMethodBeat.o(51675);
       return;
-      this.yFj.setVisibility(8);
+      this.CJb.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.a
  * JD-Core Version:    0.7.0.1
  */

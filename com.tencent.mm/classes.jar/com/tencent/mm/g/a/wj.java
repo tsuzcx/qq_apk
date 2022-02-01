@@ -1,10 +1,13 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class wj
-  extends b
+  extends IEvent
 {
+  public a ecv;
+  
   public wj()
   {
     this((byte)0);
@@ -12,8 +15,16 @@ public final class wj
   
   private wj(byte paramByte)
   {
-    this.IvZ = false;
+    AppMethodBeat.i(94817);
+    this.ecv = new a();
+    this.order = false;
     this.callback = null;
+    AppMethodBeat.o(94817);
+  }
+  
+  public static final class a
+  {
+    public String mediaId;
   }
 }
 

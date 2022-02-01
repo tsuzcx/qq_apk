@@ -6,7 +6,7 @@ public abstract interface m
 {
   public abstract boolean a(String paramString, InputStream paramInputStream);
   
-  public abstract boolean bp(String paramString1, String paramString2);
+  public abstract boolean br(String paramString1, String paramString2);
   
   public abstract boolean j(String paramString, byte[] paramArrayOfByte);
 }

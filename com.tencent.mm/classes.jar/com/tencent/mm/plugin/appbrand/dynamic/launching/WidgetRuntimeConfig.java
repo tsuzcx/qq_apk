@@ -10,10 +10,10 @@ public class WidgetRuntimeConfig
 {
   public static final Parcelable.Creator<WidgetRuntimeConfig> CREATOR;
   public String appId;
-  public int kkV;
-  public int klm = 32;
-  public boolean kln = false;
-  public boolean klo = true;
+  public int loG;
+  public int loX = 32;
+  public boolean loY = false;
+  public boolean loZ = true;
   
   static
   {
@@ -32,13 +32,13 @@ public class WidgetRuntimeConfig
     int i = 1;
     AppMethodBeat.i(121411);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.kkV);
-    paramParcel.writeInt(this.klm);
-    if (this.kln)
+    paramParcel.writeInt(this.loG);
+    paramParcel.writeInt(this.loX);
+    if (this.loY)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.klo) {
+      if (!this.loZ) {
         break label70;
       }
     }
@@ -55,7 +55,7 @@ public class WidgetRuntimeConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetRuntimeConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:id="@id/h42" layout="@layout/ms" />
-    <ImageView android:id="@id/pl" android:visibility="visible" android:layout_width="@dimen/u7" android:layout_height="@dimen/u7" android:src="@drawable/bt6" android:scaleType="fitCenter" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <View android:id="@id/aca" android:background="@drawable/pc" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/o" android:layout_marginRight="@dimen/o" android:layout_marginBottom="0.0dip" android:layout_alignBottom="@id/h42" android:layerType="software" />
-    <ImageView android:id="@id/acv" android:background="@drawable/jg" android:padding="4.0dip" android:visibility="gone" android:layout_width="26.599976dip" android:layout_height="26.599976dip" android:layout_marginTop="@dimen/hj" android:layout_marginRight="@dimen/hj" android:src="@drawable/bd7" android:layout_alignTop="@id/h42" android:layout_alignRight="@id/h42" />
-</RelativeLayout>
+<LinearLayout android:orientation="vertical" android:background="@drawable/ib" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/kc" />
+    <LinearLayout android:orientation="vertical" android:id="@id/a6i" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

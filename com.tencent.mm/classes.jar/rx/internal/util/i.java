@@ -13,27 +13,27 @@ import rx.j;
 public final class i
   implements j
 {
-  public List<j> OxM;
-  public volatile boolean OxN;
+  public List<j> UnA;
+  public volatile boolean UnB;
   
   public i() {}
   
   public i(j paramj)
   {
     AppMethodBeat.i(90120);
-    this.OxM = new LinkedList();
-    this.OxM.add(paramj);
+    this.UnA = new LinkedList();
+    this.UnA.add(paramj);
     AppMethodBeat.o(90120);
   }
   
   public i(j... paramVarArgs)
   {
     AppMethodBeat.i(90119);
-    this.OxM = new LinkedList(Arrays.asList(paramVarArgs));
+    this.UnA = new LinkedList(Arrays.asList(paramVarArgs));
     AppMethodBeat.o(90119);
   }
   
-  private static void z(Collection<j> paramCollection)
+  private static void C(Collection<j> paramCollection)
   {
     AppMethodBeat.i(90123);
     if (paramCollection == null)
@@ -52,7 +52,7 @@ public final class i
       localj = (j)localIterator.next();
       try
       {
-        localj.gDs();
+        localj.hQA();
       }
       catch (Throwable localThrowable)
       {
@@ -68,7 +68,7 @@ public final class i
     {
       paramCollection.add(localThrowable);
       break;
-      b.jI(paramCollection);
+      b.kP(paramCollection);
       AppMethodBeat.o(90123);
       return;
     }
@@ -77,27 +77,27 @@ public final class i
   public final void b(j paramj)
   {
     AppMethodBeat.i(90121);
-    if (paramj.gDt())
+    if (paramj.hQB())
     {
       AppMethodBeat.o(90121);
       return;
     }
-    if (!this.OxN) {}
+    if (!this.UnB) {}
     try
     {
-      if (!this.OxN)
+      if (!this.UnB)
       {
-        List localList = this.OxM;
+        List localList = this.UnA;
         Object localObject = localList;
         if (localList == null)
         {
           localObject = new LinkedList();
-          this.OxM = ((List)localObject);
+          this.UnA = ((List)localObject);
         }
         ((List)localObject).add(paramj);
         return;
       }
-      paramj.gDs();
+      paramj.hQA();
       AppMethodBeat.o(90121);
       return;
     }
@@ -107,19 +107,19 @@ public final class i
     }
   }
   
-  public final void gDs()
+  public final void hQA()
   {
     AppMethodBeat.i(90122);
-    if (!this.OxN) {}
+    if (!this.UnB) {}
     try
     {
-      if (this.OxN) {
+      if (this.UnB) {
         return;
       }
-      this.OxN = true;
-      List localList = this.OxM;
-      this.OxM = null;
-      z(localList);
+      this.UnB = true;
+      List localList = this.UnA;
+      this.UnA = null;
+      C(localList);
       AppMethodBeat.o(90122);
       return;
     }
@@ -129,9 +129,9 @@ public final class i
     }
   }
   
-  public final boolean gDt()
+  public final boolean hQB()
   {
-    return this.OxN;
+    return this.UnB;
   }
 }
 

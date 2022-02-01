@@ -24,33 +24,31 @@ import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.b;
 import com.tencent.mm.plugin.recordvideo.plugin.parent.d.c;
-import com.tencent.mm.plugin.recordvideo.plugin.t;
 import com.tencent.mm.plugin.recordvideo.plugin.t.a;
-import com.tencent.mm.ui.ao;
-import d.a.j;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.ui.ar;
 import java.util.ArrayList;
 import java.util.Iterator;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "colorList", "Landroid/widget/GridView;", "imageSizeDP", "", "resourceArray", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$ClickImageViewResource;", "Lkotlin/collections/ArrayList;", "selectType", "status", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "unDoImageView", "Landroid/widget/ImageView;", "hideMosaic", "", "hide", "", "initResourceArray", "msc", "Landroid/graphics/Bitmap;", "brush", "onBackPress", "postFuncType", "type", "resetClickBigImageView", "view", "Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/ClickBigImageView;", "selectClickBigImageView", "setStatus", "setVisibility", "visibility", "ClickImageViewResource", "ClickImageViewResourceAdapter", "Companion", "plugin-recordvideo_release"})
-public final class PhotoDoodlePlugin
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin;", "Landroid/widget/RelativeLayout;", "Lcom/tencent/mm/plugin/recordvideo/plugin/IBaseRecordPlugin;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "colorList", "Landroid/widget/GridView;", "getColorList", "()Landroid/widget/GridView;", "setColorList", "(Landroid/widget/GridView;)V", "imageSizeDP", "", "getImageSizeDP", "()I", "mStatus", "Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "getMStatus", "()Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;", "setMStatus", "(Lcom/tencent/mm/plugin/recordvideo/plugin/parent/IRecordStatus;)V", "resourceArray", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$ClickImageViewResource;", "Lkotlin/collections/ArrayList;", "getResourceArray", "()Ljava/util/ArrayList;", "selectType", "getSelectType", "setSelectType", "(I)V", "unDoImageView", "Landroid/widget/ImageView;", "getUnDoImageView", "()Landroid/widget/ImageView;", "setUnDoImageView", "(Landroid/widget/ImageView;)V", "getLayout", "hideMosaic", "", "hide", "", "initResourceArray", "msc", "Landroid/graphics/Bitmap;", "brush", "initView", "onBackPress", "postFuncType", "type", "resetClickBigImageView", "view", "Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/ClickBigImageView;", "selectClickBigImageView", "setStatus", "status", "setVisibility", "visibility", "ClickImageViewResource", "ClickImageViewResourceAdapter", "Companion", "plugin-recordvideo_release"})
+public class PhotoDoodlePlugin
   extends RelativeLayout
-  implements t
+  implements com.tencent.mm.plugin.recordvideo.plugin.t
 {
-  public static final PhotoDoodlePlugin.c xSF;
-  private int iYs;
-  private d tbP;
-  private final ArrayList<a> xSB;
-  private final ImageView xSC;
-  public final GridView xSD;
-  private final int xSE;
+  public static final PhotoDoodlePlugin.c BTf;
+  private final int BSP;
+  private final ArrayList<a> BSQ;
+  private d BSR;
+  private ImageView BSS;
+  public GridView BST;
+  private int jVX;
   
   static
   {
     AppMethodBeat.i(75733);
-    xSF = new PhotoDoodlePlugin.c((byte)0);
+    BTf = new PhotoDoodlePlugin.c((byte)0);
     AppMethodBeat.o(75733);
   }
   
@@ -58,134 +56,41 @@ public final class PhotoDoodlePlugin
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(75732);
-    this.xSB = new ArrayList();
-    this.iYs = 2;
-    this.xSE = 22;
-    LayoutInflater.from(paramContext).inflate(2131495085, (ViewGroup)this, true);
-    paramAttributeSet = findViewById(2131303804);
-    p.g(paramAttributeSet, "findViewById(R.id.recall)");
-    this.xSC = ((ImageView)paramAttributeSet);
-    this.xSC.setImageDrawable(ao.k(paramContext, 2131690462, -1));
-    this.xSC.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    this.BSQ = new ArrayList();
+    this.jVX = 2;
+    this.BSP = 22;
+    LayoutInflater.from(getContext()).inflate(getLayout(), (ViewGroup)this, true);
+    this.BSS = ((ImageView)findViewById(2131306607));
+    paramContext = this.BSS;
+    if (paramContext != null) {
+      paramContext.setImageDrawable(ar.m(getContext(), 2131690650, -1));
+    }
+    paramContext = this.BSS;
+    if (paramContext != null) {
+      paramContext.setOnClickListener((View.OnClickListener)new d(this));
+    }
+    this.BST = ((GridView)findViewById(2131298912));
+    paramContext = getContext();
+    p.g(paramContext, "context");
+    paramContext = BitmapFactory.decodeResource(paramContext.getResources(), 2131233127);
+    paramAttributeSet = getContext();
+    p.g(paramAttributeSet, "context");
+    b(BitmapFactory.decodeResource(paramAttributeSet.getResources(), 2131233128), paramContext);
+    paramContext = this.BST;
+    if (paramContext != null) {
+      paramContext.setAdapter((ListAdapter)new b(this.BSQ));
+    }
+    paramContext = this.BST;
+    if (paramContext != null)
     {
-      public final void onClick(View paramAnonymousView)
-      {
-        AppMethodBeat.i(75722);
-        b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = PhotoDoodlePlugin.d(this.xSG);
-        if (paramAnonymousView != null) {
-          d.b.a(paramAnonymousView, d.c.xVf);
-        }
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(75722);
-      }
-    });
-    paramAttributeSet = findViewById(2131298493);
-    p.g(paramAttributeSet, "findViewById(R.id.color_list)");
-    this.xSD = ((GridView)paramAttributeSet);
-    paramAttributeSet = BitmapFactory.decodeResource(paramContext.getResources(), 2131232703);
-    b(BitmapFactory.decodeResource(paramContext.getResources(), 2131232704), paramAttributeSet);
-    this.xSD.setAdapter((ListAdapter)new b(this.xSB));
-    this.xSD.setOnItemClickListener((AdapterView.OnItemClickListener)new AdapterView.OnItemClickListener()
-    {
-      public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
-      {
-        AppMethodBeat.i(163441);
-        b localb = new b();
-        localb.bd(paramAnonymousAdapterView);
-        localb.bd(paramAnonymousView);
-        localb.mu(paramAnonymousInt);
-        localb.rl(paramAnonymousLong);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-        if (paramAnonymousView == null)
-        {
-          paramAnonymousAdapterView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
-          AppMethodBeat.o(163441);
-          throw paramAnonymousAdapterView;
-        }
-        if (((ClickBigImageView)paramAnonymousView).getType() == PhotoDoodlePlugin.c(this.xSG))
-        {
-          PhotoDoodlePlugin.b(this.xSG, ((ClickBigImageView)paramAnonymousView).getType());
-          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-          AppMethodBeat.o(163441);
-          return;
-        }
-        PhotoDoodlePlugin.a(this.xSG, ((ClickBigImageView)paramAnonymousView).getType());
-        PhotoDoodlePlugin.b(this.xSG, ((ClickBigImageView)paramAnonymousView).getType());
-        paramAnonymousAdapterView = (Iterable)PhotoDoodlePlugin.e(this.xSG);
-        int i = 0;
-        paramAnonymousAdapterView = paramAnonymousAdapterView.iterator();
-        for (;;)
-        {
-          int j;
-          if (paramAnonymousAdapterView.hasNext())
-          {
-            paramAnonymousAdapterView.next();
-            j = i + 1;
-            if (i < 0) {
-              j.gkd();
-            }
-            if (i == paramAnonymousInt)
-            {
-              paramAnonymousView = PhotoDoodlePlugin.a(this.xSG).getChildAt(i);
-              if (paramAnonymousView == null)
-              {
-                paramAnonymousAdapterView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
-                AppMethodBeat.o(163441);
-                throw paramAnonymousAdapterView;
-              }
-              if (!((ClickBigImageView)paramAnonymousView).vrm)
-              {
-                paramAnonymousView = PhotoDoodlePlugin.a(this.xSG).getChildAt(i);
-                if (paramAnonymousView == null)
-                {
-                  paramAnonymousAdapterView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
-                  AppMethodBeat.o(163441);
-                  throw paramAnonymousAdapterView;
-                }
-                PhotoDoodlePlugin.a((ClickBigImageView)paramAnonymousView);
-                i = j;
-              }
-            }
-            else
-            {
-              paramAnonymousView = PhotoDoodlePlugin.a(this.xSG).getChildAt(i);
-              if (paramAnonymousView == null)
-              {
-                paramAnonymousAdapterView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
-                AppMethodBeat.o(163441);
-                throw paramAnonymousAdapterView;
-              }
-              if (((ClickBigImageView)paramAnonymousView).vrm)
-              {
-                paramAnonymousView = PhotoDoodlePlugin.a(this.xSG).getChildAt(i);
-                if (paramAnonymousView == null)
-                {
-                  paramAnonymousAdapterView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
-                  AppMethodBeat.o(163441);
-                  throw paramAnonymousAdapterView;
-                }
-                PhotoDoodlePlugin.b((ClickBigImageView)paramAnonymousView);
-              }
-              i = j;
-            }
-          }
-          else
-          {
-            com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
-            AppMethodBeat.o(163441);
-            return;
-          }
-          i = j;
-        }
-      }
-    });
+      paramContext.setOnItemClickListener((AdapterView.OnItemClickListener)new e(this));
+      AppMethodBeat.o(75732);
+      return;
+    }
     AppMethodBeat.o(75732);
   }
   
-  private final void Op(int paramInt)
+  protected final void VE(int paramInt)
   {
     AppMethodBeat.i(75731);
     Object localObject;
@@ -194,29 +99,29 @@ public final class PhotoDoodlePlugin
     default: 
       localObject = new Bundle();
       ((Bundle)localObject).putInt("EDIT_PHOTO_DOODLE_PENCIL_INDEX_INT", paramInt);
-      d locald = this.tbP;
+      d locald = this.BSR;
       if (locald != null)
       {
-        locald.a(d.c.xVe, (Bundle)localObject);
+        locald.a(d.c.BVL, (Bundle)localObject);
         AppMethodBeat.o(75731);
         return;
       }
       break;
     case 99: 
-      localObject = this.tbP;
+      localObject = this.BSR;
       if (localObject != null)
       {
-        d.b.a((d)localObject, d.c.xVc);
+        d.b.a((d)localObject, d.c.BVJ);
         AppMethodBeat.o(75731);
         return;
       }
       AppMethodBeat.o(75731);
       return;
     case 100: 
-      localObject = this.tbP;
+      localObject = this.BSR;
       if (localObject != null)
       {
-        d.b.a((d)localObject, d.c.xVd);
+        d.b.a((d)localObject, d.c.BVK);
         AppMethodBeat.o(75731);
         return;
       }
@@ -226,7 +131,110 @@ public final class PhotoDoodlePlugin
     AppMethodBeat.o(75731);
   }
   
-  public final boolean aoQ()
+  public final void aSs() {}
+  
+  public final void b(Bitmap paramBitmap1, Bitmap paramBitmap2)
+  {
+    AppMethodBeat.i(163442);
+    this.BSQ.clear();
+    Object localObject;
+    if (paramBitmap1 != null)
+    {
+      localObject = this.BSQ;
+      a locala = new a();
+      locala.bitmap = paramBitmap1;
+      locala.type = 99;
+      ((ArrayList)localObject).add(locala);
+    }
+    if (paramBitmap2 != null)
+    {
+      paramBitmap1 = this.BSQ;
+      localObject = new a();
+      ((a)localObject).bitmap = paramBitmap2;
+      ((a)localObject).type = 100;
+      paramBitmap1.add(localObject);
+    }
+    paramBitmap1 = this.BSQ;
+    paramBitmap2 = new a();
+    paramBitmap2.color = -1;
+    paramBitmap2.type = 0;
+    paramBitmap1.add(paramBitmap2);
+    paramBitmap1 = this.BSQ;
+    paramBitmap2 = new a();
+    paramBitmap2.color = -16777216;
+    paramBitmap2.type = 1;
+    paramBitmap1.add(paramBitmap2);
+    paramBitmap1 = this.BSQ;
+    paramBitmap2 = new a();
+    paramBitmap2.color = -707825;
+    paramBitmap2.type = 2;
+    paramBitmap1.add(paramBitmap2);
+    paramBitmap1 = this.BSQ;
+    paramBitmap2 = new a();
+    paramBitmap2.color = -17592;
+    paramBitmap2.type = 3;
+    paramBitmap1.add(paramBitmap2);
+    paramBitmap1 = this.BSQ;
+    paramBitmap2 = new a();
+    paramBitmap2.color = -16535286;
+    paramBitmap2.type = 4;
+    paramBitmap1.add(paramBitmap2);
+    paramBitmap1 = this.BSQ;
+    paramBitmap2 = new a();
+    paramBitmap2.color = -15172610;
+    paramBitmap2.type = 5;
+    paramBitmap1.add(paramBitmap2);
+    paramBitmap1 = this.BSQ;
+    paramBitmap2 = new a();
+    paramBitmap2.color = -7054596;
+    paramBitmap2.type = 6;
+    paramBitmap1.add(paramBitmap2);
+    AppMethodBeat.o(163442);
+  }
+  
+  protected final GridView getColorList()
+  {
+    return this.BST;
+  }
+  
+  protected final int getImageSizeDP()
+  {
+    return this.BSP;
+  }
+  
+  public final int getLayout()
+  {
+    return 2131495923;
+  }
+  
+  public final d getMStatus()
+  {
+    return this.BSR;
+  }
+  
+  protected final ArrayList<a> getResourceArray()
+  {
+    return this.BSQ;
+  }
+  
+  protected final int getSelectType()
+  {
+    return this.jVX;
+  }
+  
+  protected final ImageView getUnDoImageView()
+  {
+    return this.BSS;
+  }
+  
+  public final String name()
+  {
+    return null;
+  }
+  
+  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public final boolean onBackPress()
   {
     AppMethodBeat.i(75730);
     if (getVisibility() == 0)
@@ -239,85 +247,17 @@ public final class PhotoDoodlePlugin
     return false;
   }
   
-  public final void azm() {}
-  
-  public final void b(Bitmap paramBitmap1, Bitmap paramBitmap2)
-  {
-    AppMethodBeat.i(163442);
-    this.xSB.clear();
-    Object localObject;
-    if (paramBitmap1 != null)
-    {
-      localObject = this.xSB;
-      a locala = new a();
-      locala.bitmap = paramBitmap1;
-      locala.type = 99;
-      ((ArrayList)localObject).add(locala);
-    }
-    if (paramBitmap2 != null)
-    {
-      paramBitmap1 = this.xSB;
-      localObject = new a();
-      ((a)localObject).bitmap = paramBitmap2;
-      ((a)localObject).type = 100;
-      paramBitmap1.add(localObject);
-    }
-    paramBitmap1 = this.xSB;
-    paramBitmap2 = new a();
-    paramBitmap2.color = -1;
-    paramBitmap2.type = 0;
-    paramBitmap1.add(paramBitmap2);
-    paramBitmap1 = this.xSB;
-    paramBitmap2 = new a();
-    paramBitmap2.color = -16777216;
-    paramBitmap2.type = 1;
-    paramBitmap1.add(paramBitmap2);
-    paramBitmap1 = this.xSB;
-    paramBitmap2 = new a();
-    paramBitmap2.color = -707825;
-    paramBitmap2.type = 2;
-    paramBitmap1.add(paramBitmap2);
-    paramBitmap1 = this.xSB;
-    paramBitmap2 = new a();
-    paramBitmap2.color = -17592;
-    paramBitmap2.type = 3;
-    paramBitmap1.add(paramBitmap2);
-    paramBitmap1 = this.xSB;
-    paramBitmap2 = new a();
-    paramBitmap2.color = -16535286;
-    paramBitmap2.type = 4;
-    paramBitmap1.add(paramBitmap2);
-    paramBitmap1 = this.xSB;
-    paramBitmap2 = new a();
-    paramBitmap2.color = -15172610;
-    paramBitmap2.type = 5;
-    paramBitmap1.add(paramBitmap2);
-    paramBitmap1 = this.xSB;
-    paramBitmap2 = new a();
-    paramBitmap2.color = -7054596;
-    paramBitmap2.type = 6;
-    paramBitmap1.add(paramBitmap2);
-    AppMethodBeat.o(163442);
-  }
-  
-  public final String name()
-  {
-    return null;
-  }
-  
-  public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
-  
   public final void onDetach() {}
   
   public final void onPause() {}
   
   public final void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(206626);
+    AppMethodBeat.i(237391);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
     t.a.a(paramArrayOfString, paramArrayOfInt);
-    AppMethodBeat.o(206626);
+    AppMethodBeat.o(237391);
   }
   
   public final void onResume() {}
@@ -326,99 +266,143 @@ public final class PhotoDoodlePlugin
   
   public final void reset() {}
   
+  protected final void setColorList(GridView paramGridView)
+  {
+    this.BST = paramGridView;
+  }
+  
+  public final void setMStatus(d paramd)
+  {
+    this.BSR = paramd;
+  }
+  
+  protected final void setSelectType(int paramInt)
+  {
+    this.jVX = paramInt;
+  }
+  
   public final void setStatus(d paramd)
   {
     AppMethodBeat.i(75728);
     p.h(paramd, "status");
-    this.tbP = paramd;
+    this.BSR = paramd;
     AppMethodBeat.o(75728);
   }
   
-  public final void setVisibility(int paramInt)
+  protected final void setUnDoImageView(ImageView paramImageView)
+  {
+    this.BSS = paramImageView;
+  }
+  
+  public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(75729);
     super.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      Object localObject = ((Iterable)this.xSB).iterator();
+      Iterator localIterator = ((Iterable)this.BSQ).iterator();
       int i = 0;
-      while (((Iterator)localObject).hasNext())
+      while (localIterator.hasNext())
       {
-        ((Iterator)localObject).next();
+        localIterator.next();
         int j = i + 1;
         if (i < 0) {
-          j.gkd();
+          j.hxH();
         }
-        if (this.xSD.getChildAt(i) != null)
+        localObject = this.BST;
+        if (localObject != null)
         {
-          View localView = this.xSD.getChildAt(i);
-          if (localView == null)
+          localObject = ((GridView)localObject).getChildAt(i);
+          if (localObject == null) {
+            break label281;
+          }
+          localObject = this.BST;
+          if (localObject == null) {
+            break label135;
+          }
+        }
+        label135:
+        for (localObject = ((GridView)localObject).getChildAt(i);; localObject = null)
+        {
+          if (localObject != null) {
+            break label141;
+          }
+          localObject = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
+          AppMethodBeat.o(75729);
+          throw ((Throwable)localObject);
+          localObject = null;
+          break;
+        }
+        label141:
+        if (((a)localObject).getType() != this.jVX)
+        {
+          localObject = this.BST;
+          if (localObject != null) {}
+          for (localObject = ((GridView)localObject).getChildAt(i); localObject == null; localObject = null)
           {
-            localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
+            localObject = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
             AppMethodBeat.o(75729);
             throw ((Throwable)localObject);
           }
-          if (((ClickBigImageView)localView).getType() != this.iYs)
-          {
-            localView = this.xSD.getChildAt(i);
-            if (localView == null)
-            {
-              localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
-              AppMethodBeat.o(75729);
-              throw ((Throwable)localObject);
-            }
-            ((ClickBigImageView)localView).setHasSelected(false);
-            i = j;
-          }
-          else
-          {
-            localView = this.xSD.getChildAt(i);
-            if (localView == null)
-            {
-              localObject = new v("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
-              AppMethodBeat.o(75729);
-              throw ((Throwable)localObject);
-            }
-            ((ClickBigImageView)localView).setHasSelected(true);
-          }
+          ((a)localObject).setHasSelected(false);
+          i = j;
         }
         else
         {
+          localObject = this.BST;
+          if (localObject != null) {}
+          for (localObject = ((GridView)localObject).getChildAt(i); localObject == null; localObject = null)
+          {
+            localObject = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
+            AppMethodBeat.o(75729);
+            throw ((Throwable)localObject);
+          }
+          ((a)localObject).setHasSelected(true);
+          label281:
           i = j;
         }
       }
-      Op(this.iYs);
+      VE(this.jVX);
     }
-    this.xSD.setVisibility(paramInt);
-    this.xSC.setVisibility(paramInt);
+    Object localObject = this.BST;
+    if (localObject != null) {
+      ((GridView)localObject).setVisibility(paramInt);
+    }
+    localObject = this.BSS;
+    if (localObject != null)
+    {
+      ((ImageView)localObject).setVisibility(paramInt);
+      AppMethodBeat.o(75729);
+      return;
+    }
     AppMethodBeat.o(75729);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$ClickImageViewResource;", "", "()V", "bitmap", "Landroid/graphics/Bitmap;", "getBitmap", "()Landroid/graphics/Bitmap;", "setBitmap", "(Landroid/graphics/Bitmap;)V", "color", "", "getColor", "()I", "setColor", "(I)V", "type", "getType", "setType", "plugin-recordvideo_release"})
-  static final class a
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$ClickImageViewResource;", "", "()V", "bitmap", "Landroid/graphics/Bitmap;", "getBitmap", "()Landroid/graphics/Bitmap;", "setBitmap", "(Landroid/graphics/Bitmap;)V", "color", "", "getColor", "()I", "setColor", "(I)V", "type", "getType", "setType", "plugin-recordvideo_release"})
+  public static final class a
   {
     Bitmap bitmap;
     int color;
     int type;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$ClickImageViewResourceAdapter;", "Landroid/widget/BaseAdapter;", "resourceArray", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$ClickImageViewResource;", "Lkotlin/collections/ArrayList;", "(Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin;Ljava/util/ArrayList;)V", "getResourceArray", "()Ljava/util/ArrayList;", "setResourceArray", "(Ljava/util/ArrayList;)V", "getCount", "", "getItem", "", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "plugin-recordvideo_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$ClickImageViewResourceAdapter;", "Landroid/widget/BaseAdapter;", "resourceArray", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$ClickImageViewResource;", "Lkotlin/collections/ArrayList;", "(Lcom/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin;Ljava/util/ArrayList;)V", "getResourceArray", "()Ljava/util/ArrayList;", "setResourceArray", "(Ljava/util/ArrayList;)V", "getCount", "", "getItem", "", "position", "getItemId", "", "getView", "Landroid/view/View;", "convertView", "parent", "Landroid/view/ViewGroup;", "plugin-recordvideo_release"})
   final class b
     extends BaseAdapter
   {
-    private ArrayList<PhotoDoodlePlugin.a> xSB;
+    private ArrayList<PhotoDoodlePlugin.a> BSQ;
     
     public b()
     {
       AppMethodBeat.i(75727);
-      this.xSB = localObject;
+      this.BSQ = localObject;
       AppMethodBeat.o(75727);
     }
     
     public final int getCount()
     {
       AppMethodBeat.i(75726);
-      int i = this.xSB.size();
+      int i = this.BSQ.size();
       AppMethodBeat.o(75726);
       return i;
     }
@@ -426,7 +410,7 @@ public final class PhotoDoodlePlugin
     public final Object getItem(int paramInt)
     {
       AppMethodBeat.i(75725);
-      Object localObject = this.xSB.get(paramInt);
+      Object localObject = this.BSQ.get(paramInt);
       p.g(localObject, "resourceArray[position]");
       AppMethodBeat.o(75725);
       return localObject;
@@ -441,50 +425,183 @@ public final class PhotoDoodlePlugin
     {
       AppMethodBeat.i(75724);
       if (paramViewGroup == null) {
-        p.gkB();
+        p.hyc();
       }
       paramView = paramViewGroup.getContext();
       p.g(paramView, "parent!!.context");
-      paramView = new ClickBigImageView(paramView, null);
-      paramViewGroup = getItem(paramInt);
-      if (paramViewGroup == null)
+      paramViewGroup = new a(paramView);
+      paramView = getItem(paramInt);
+      if (paramView == null)
       {
-        paramView = new v("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.PhotoDoodlePlugin.ClickImageViewResource");
+        paramView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.PhotoDoodlePlugin.ClickImageViewResource");
         AppMethodBeat.o(75724);
         throw paramView;
       }
-      paramViewGroup = (PhotoDoodlePlugin.a)paramViewGroup;
-      if (paramViewGroup.bitmap == null)
+      paramView = (PhotoDoodlePlugin.a)paramView;
+      if (paramView.bitmap == null)
       {
-        paramView.setDrawColor(paramViewGroup.color);
-        paramView.setType(paramViewGroup.type);
-        paramInt = com.tencent.mm.cb.a.fromDPToPix(PhotoDoodlePlugin.a(PhotoDoodlePlugin.this).getContext(), PhotoDoodlePlugin.b(PhotoDoodlePlugin.this));
-        paramView.setLayoutParams((ViewGroup.LayoutParams)new AbsListView.LayoutParams(paramInt, paramInt));
-        if (paramView.getType() != PhotoDoodlePlugin.c(PhotoDoodlePlugin.this)) {
-          break label179;
+        paramViewGroup.setDrawColor(paramView.color);
+        paramViewGroup.setType(paramView.type);
+        paramView = PhotoDoodlePlugin.this.getColorList();
+        if (paramView == null) {
+          break label186;
         }
-        paramView.setHasSelected(true);
+        paramView = paramView.getContext();
+        label104:
+        paramInt = com.tencent.mm.cb.a.fromDPToPix(paramView, PhotoDoodlePlugin.this.getImageSizeDP());
+        paramViewGroup.setLayoutParams((ViewGroup.LayoutParams)new AbsListView.LayoutParams(paramInt, paramInt));
+        if (paramViewGroup.getType() != PhotoDoodlePlugin.this.getSelectType()) {
+          break label191;
+        }
+        paramViewGroup.setHasSelected(true);
       }
       for (;;)
       {
-        paramView = (View)paramView;
+        paramView = (View)paramViewGroup;
         AppMethodBeat.o(75724);
         return paramView;
-        Bitmap localBitmap = paramViewGroup.bitmap;
+        Bitmap localBitmap = paramView.bitmap;
         if (localBitmap == null) {
-          p.gkB();
+          p.hyc();
         }
-        paramView.setBitmap(localBitmap);
+        paramViewGroup.setBitmap(localBitmap);
         break;
-        label179:
-        paramView.setHasSelected(false);
+        label186:
+        paramView = null;
+        break label104;
+        label191:
+        paramViewGroup.setHasSelected(false);
+      }
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  static final class d
+    implements View.OnClickListener
+  {
+    d(PhotoDoodlePlugin paramPhotoDoodlePlugin) {}
+    
+    public final void onClick(View paramView)
+    {
+      AppMethodBeat.i(237389);
+      b localb = new b();
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = this.BTg.getMStatus();
+      if (paramView != null) {
+        d.b.a(paramView, d.c.BVM);
+      }
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      AppMethodBeat.o(237389);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "a", "Landroid/widget/AdapterView;", "kotlin.jvm.PlatformType", "b", "Landroid/view/View;", "position", "", "d", "", "onItemClick"})
+  static final class e
+    implements AdapterView.OnItemClickListener
+  {
+    e(PhotoDoodlePlugin paramPhotoDoodlePlugin) {}
+    
+    public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
+    {
+      AppMethodBeat.i(237390);
+      b localb = new b();
+      localb.bm(paramAdapterView);
+      localb.bm(paramView);
+      localb.pH(paramInt);
+      localb.zo(paramLong);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$initView$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+      if (paramView == null)
+      {
+        paramAdapterView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
+        AppMethodBeat.o(237390);
+        throw paramAdapterView;
+      }
+      if (((a)paramView).getType() == this.BTg.getSelectType())
+      {
+        this.BTg.VE(((a)paramView).getType());
+        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$initView$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+        AppMethodBeat.o(237390);
+        return;
+      }
+      this.BTg.setSelectType(((a)paramView).getType());
+      this.BTg.VE(((a)paramView).getType());
+      paramAdapterView = (Iterable)this.BTg.getResourceArray();
+      int i = 0;
+      paramView = paramAdapterView.iterator();
+      for (;;)
+      {
+        int j;
+        if (paramView.hasNext())
+        {
+          paramView.next();
+          j = i + 1;
+          if (i < 0) {
+            j.hxH();
+          }
+          if (i == paramInt)
+          {
+            paramAdapterView = this.BTg.getColorList();
+            if (paramAdapterView != null) {}
+            for (paramAdapterView = paramAdapterView.getChildAt(i); paramAdapterView == null; paramAdapterView = null)
+            {
+              paramAdapterView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
+              AppMethodBeat.o(237390);
+              throw paramAdapterView;
+            }
+            if (!((a)paramAdapterView).yLb)
+            {
+              paramAdapterView = this.BTg.getColorList();
+              if (paramAdapterView != null) {}
+              for (paramAdapterView = paramAdapterView.getChildAt(i); paramAdapterView == null; paramAdapterView = null)
+              {
+                paramAdapterView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
+                AppMethodBeat.o(237390);
+                throw paramAdapterView;
+              }
+              PhotoDoodlePlugin.c((a)paramAdapterView);
+              i = j;
+            }
+          }
+          else
+          {
+            paramAdapterView = this.BTg.getColorList();
+            if (paramAdapterView != null) {}
+            for (paramAdapterView = paramAdapterView.getChildAt(i); paramAdapterView == null; paramAdapterView = null)
+            {
+              paramAdapterView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
+              AppMethodBeat.o(237390);
+              throw paramAdapterView;
+            }
+            if (((a)paramAdapterView).yLb)
+            {
+              paramAdapterView = this.BTg.getColorList();
+              if (paramAdapterView != null) {}
+              for (paramAdapterView = paramAdapterView.getChildAt(i); paramAdapterView == null; paramAdapterView = null)
+              {
+                paramAdapterView = new kotlin.t("null cannot be cast to non-null type com.tencent.mm.plugin.recordvideo.plugin.doodle.ClickBigImageView");
+                AppMethodBeat.o(237390);
+                throw paramAdapterView;
+              }
+              PhotoDoodlePlugin.d((a)paramAdapterView);
+            }
+            i = j;
+          }
+        }
+        else
+        {
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recordvideo/plugin/doodle/PhotoDoodlePlugin$initView$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
+          AppMethodBeat.o(237390);
+          return;
+        }
+        i = j;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.plugin.doodle.PhotoDoodlePlugin
  * JD-Core Version:    0.7.0.1
  */

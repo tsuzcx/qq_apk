@@ -2,203 +2,126 @@ package com.tencent.mm.plugin.sns.storage;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fy;
-import com.tencent.mm.plugin.sns.b.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storagebase.h;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
 public final class k
-  extends com.tencent.mm.sdk.e.j<j>
-  implements e
+  extends MAutoStorage<j>
 {
+  private static String Eml;
+  public static String Emm;
+  public static String Emn;
   public static final String[] SQL_CREATE;
-  public h hKK;
+  public ISQLiteDatabase db;
   
   static
   {
-    AppMethodBeat.i(97465);
-    SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(j.info, "SnsComment") };
-    AppMethodBeat.o(97465);
+    AppMethodBeat.i(176289);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(j.info, "snsDraft") };
+    Eml = " (snsDraft.extFlag & 2 == 0 ) ";
+    Emm = " (snsDraft.extFlag & 2 != 0 ) ";
+    Emn = " order by snsDraft.timestamp desc";
+    AppMethodBeat.o(176289);
   }
   
-  public k(h paramh)
+  public k(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(paramh, j.info, "SnsComment", fy.INDEX_CREATE);
-    this.hKK = paramh;
+    super(paramISQLiteDatabase, j.info, "snsDraft", null);
+    AppMethodBeat.i(176285);
+    this.db = paramISQLiteDatabase;
+    Log.i("MicroMsg.SnsDraftStorage", "createDraftStorage " + paramISQLiteDatabase + "  " + Thread.currentThread().getId());
+    AppMethodBeat.o(176285);
   }
   
-  public static String ebZ()
+  public final j aQn(String paramString)
   {
-    return "select *, rowid from SnsComment";
-  }
-  
-  public final boolean AB(long paramLong)
-  {
-    AppMethodBeat.i(97460);
-    String str = "delete from SnsComment where snsID = ".concat(String.valueOf(paramLong));
-    boolean bool = this.hKK.execSQL("SnsComment", str);
-    AppMethodBeat.o(97460);
-    return bool;
-  }
-  
-  public final boolean G(long paramLong, boolean paramBoolean)
-  {
-    AppMethodBeat.i(97463);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    Integer localInteger = null;
+    AppMethodBeat.i(176288);
+    j localj = new j();
+    Object localObject = "select *,rowid from snsDraft  where snsDraft.key='" + paramString + "' limit 1";
+    localObject = this.db.rawQuery((String)localObject, null, 2);
+    if (((Cursor)localObject).moveToFirst())
     {
-      String str = " update SnsComment set isSilence = " + i + " where isSilence != " + i + " and  snsID = " + paramLong;
-      ae.i("MicroMsg.SnsCommentStorage", "updateIsSilence ".concat(String.valueOf(str)));
-      paramBoolean = this.hKK.execSQL("SnsComment", str);
-      AppMethodBeat.o(97463);
-      return paramBoolean;
-    }
-  }
-  
-  public final Cursor Rs(int paramInt)
-  {
-    AppMethodBeat.i(97455);
-    Object localObject = "select *, rowid from SnsComment where isSend = 0 order by createTime desc LIMIT ".concat(String.valueOf(paramInt));
-    ae.v("MicroMsg.SnsCommentStorage", "getCursor sql:".concat(String.valueOf(localObject)));
-    localObject = this.hKK.a((String)localObject, null, 0);
-    AppMethodBeat.o(97455);
-    return localObject;
-  }
-  
-  public final boolean a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    AppMethodBeat.i(97457);
-    if (bu.isNullOrNil(paramString2)) {}
-    for (paramString1 = "select count(*) from SnsComment where snsID = " + paramLong + " and createTime = " + paramInt + " and talker = '" + paramString1 + "'";; paramString1 = "select count(*) from SnsComment where snsID = " + paramLong + " and clientId = '" + paramString2 + "'")
-    {
-      paramString1 = rawQuery(paramString1, new String[0]);
-      if (paramString1 == null) {
-        break label144;
-      }
-      paramString1.moveToFirst();
-      paramInt = paramString1.getInt(0);
-      paramString1.close();
-      if (paramInt <= 0) {
-        break;
-      }
-      AppMethodBeat.o(97457);
-      return true;
-    }
-    AppMethodBeat.o(97457);
-    return false;
-    label144:
-    AppMethodBeat.o(97457);
-    return false;
-  }
-  
-  public final int bVY()
-  {
-    int i = 0;
-    AppMethodBeat.i(97454);
-    Cursor localCursor = this.hKK.a(" select count(*) from SnsComment where isRead = ? and isSilence != ? ", new String[] { "0", "1" }, 2);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(97454);
-      return 0;
-    }
-    if (localCursor.moveToFirst()) {
-      i = localCursor.getInt(0);
-    }
-    localCursor.close();
-    AppMethodBeat.o(97454);
-    return i;
-  }
-  
-  public final boolean bVZ()
-  {
-    AppMethodBeat.i(97462);
-    boolean bool = this.hKK.execSQL("SnsComment", " update SnsComment set isRead = 1 where isRead = 0");
-    AppMethodBeat.o(97462);
-    return bool;
-  }
-  
-  public final void dId()
-  {
-    AppMethodBeat.i(97464);
-    this.hKK.aWC("SnsComment");
-    AppMethodBeat.o(97464);
-  }
-  
-  public final Cursor eca()
-  {
-    AppMethodBeat.i(97456);
-    Cursor localCursor = this.hKK.a("select *, rowid from SnsComment where isRead = ?  and isSilence != ?  order by createTime desc", new String[] { "0", "1" }, 0);
-    AppMethodBeat.o(97456);
-    return localCursor;
-  }
-  
-  public final int ecb()
-  {
-    AppMethodBeat.i(97458);
-    Cursor localCursor = rawQuery("select count(*) from SnsComment where isSend = 0", new String[0]);
-    if (localCursor != null)
-    {
-      localCursor.moveToFirst();
-      int i = localCursor.getInt(0);
-      localCursor.close();
-      AppMethodBeat.o(97458);
-      return i;
-    }
-    AppMethodBeat.o(97458);
-    return 0;
-  }
-  
-  public final j h(long paramLong1, long paramLong2, int paramInt)
-  {
-    AppMethodBeat.i(97459);
-    Object localObject1 = "";
-    if (paramInt == 9) {
-      localObject1 = "" + "(2)";
-    }
-    Object localObject2 = localObject1;
-    if (paramInt == 10) {
-      localObject2 = (String)localObject1 + "(8,16)";
-    }
-    localObject2 = rawQuery("select *, rowid from SnsComment where snsID = " + paramLong1 + " and commentSvrID = " + paramLong2 + " and type in " + (String)localObject2, new String[0]);
-    if (localObject2 != null) {
-      if (((Cursor)localObject2).moveToFirst())
-      {
-        localObject1 = new j();
-        ((j)localObject1).convertFrom((Cursor)localObject2);
-        ((Cursor)localObject2).close();
+      localj.convertFrom((Cursor)localObject);
+      ((Cursor)localObject).close();
+      if (localj.field_draft != null) {
+        break label123;
       }
     }
     for (;;)
     {
-      AppMethodBeat.o(97459);
-      return localObject1;
-      localObject1 = null;
-      break;
-      localObject1 = null;
+      Log.i("MicroMsg.SnsDraftStorage", "readDraft: %s, %s", new Object[] { paramString, localInteger });
+      AppMethodBeat.o(176288);
+      return localj;
+      ((Cursor)localObject).close();
+      AppMethodBeat.o(176288);
+      return null;
+      label123:
+      localInteger = Integer.valueOf(localj.field_draft.length);
     }
   }
   
-  public final boolean i(long paramLong1, long paramLong2, int paramInt)
+  public final void b(String paramString, byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(97461);
-    String str1 = "";
-    if (paramInt == 9) {
-      str1 = "" + "(2)";
+    AppMethodBeat.i(176287);
+    if (paramArrayOfByte == null) {}
+    for (Object localObject = null;; localObject = Integer.valueOf(paramArrayOfByte.length))
+    {
+      Log.i("MicroMsg.SnsDraftStorage", "writeDraft: %s, %s", new Object[] { paramString, localObject });
+      localObject = new j();
+      ((j)localObject).field_key = paramString;
+      ((j)localObject).field_timestamp = System.currentTimeMillis();
+      ((j)localObject).field_draft = paramArrayOfByte;
+      ((j)localObject).field_extFlag = paramInt;
+      super.replace((IAutoDBItem)localObject);
+      AppMethodBeat.o(176287);
+      return;
     }
-    String str2 = str1;
-    if (paramInt == 10) {
-      str2 = str1 + "(8,16)";
+  }
+  
+  public final void vk(boolean paramBoolean)
+  {
+    AppMethodBeat.i(176286);
+    Object localObject;
+    if (paramBoolean)
+    {
+      g.aAi();
+      localObject = (String)g.aAh().azQ().get(ar.a.NUW, null);
     }
-    str1 = "delete from SnsComment where snsID = " + paramLong1 + " and commentSvrID = " + paramLong2 + " and type in " + str2;
-    boolean bool = this.hKK.execSQL("SnsComment", str1);
-    AppMethodBeat.o(97461);
-    return bool;
+    while (!Util.isNullOrNil((String)localObject))
+    {
+      localObject = com.tencent.e.f.e.bqe((String)localObject);
+      if (!Util.isNullOrNil((byte[])localObject)) {
+        if (paramBoolean)
+        {
+          g.aAi();
+          g.aAh().azQ().set(ar.a.NUW, "");
+          b("draft_text", (byte[])localObject, 0);
+          AppMethodBeat.o(176286);
+          return;
+          g.aAi();
+          localObject = (String)g.aAh().azQ().get(ar.a.NUV, null);
+        }
+        else
+        {
+          g.aAi();
+          g.aAh().azQ().set(ar.a.NUV, "");
+          b("draft_normal", (byte[])localObject, 0);
+        }
+      }
+    }
+    AppMethodBeat.o(176286);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.k
  * JD-Core Version:    0.7.0.1
  */

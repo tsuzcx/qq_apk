@@ -1,43 +1,27 @@
 package com.tencent.mm.plugin.vlog.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.j;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"enableMagic", "", "enableVideoTemplate", "plugin-vlog_release"})
-public final class p
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/model/ImageAnimType;", "", "(Ljava/lang/String;I)V", "NO_ANIM", "SLOW_SCALE", "plugin-vlog_release"})
+public enum p
 {
-  public static final boolean evD()
+  static
   {
-    AppMethodBeat.i(191203);
-    if (!j.IS_FLAVOR_PURPLE) {
-      boolean bool = j.DEBUG;
-    }
-    if (ay.aRW("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_EDITOR_MAGIC_INT_SYNC", 0) == 1)
-    {
-      AppMethodBeat.o(191203);
-      return true;
-    }
-    AppMethodBeat.o(191203);
-    return false;
+    AppMethodBeat.i(110923);
+    p localp1 = new p("NO_ANIM", 0);
+    Gym = localp1;
+    p localp2 = new p("SLOW_SCALE", 1);
+    Gyn = localp2;
+    Gyo = new p[] { localp1, localp2 };
+    AppMethodBeat.o(110923);
   }
   
-  public static final boolean evE()
-  {
-    AppMethodBeat.i(191204);
-    if (ay.aRW("FINDER_CONFIG_USER_KEY").getInt("USERINFO_FINDER_EDITOR_VIDEO_TEMPLATE_INT_SYNC", 0) == 1)
-    {
-      AppMethodBeat.o(191204);
-      return true;
-    }
-    AppMethodBeat.o(191204);
-    return false;
-  }
+  private p() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.model.p
  * JD-Core Version:    0.7.0.1
  */

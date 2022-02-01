@@ -2,7 +2,7 @@ package com.tencent.mm.openim.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.LinkedList;
 import java.util.List;
 import org.json.JSONArray;
@@ -11,16 +11,16 @@ import org.json.JSONObject;
 
 public final class b
 {
-  public List<a> iKp;
+  public List<a> jGV;
   
   public b()
   {
     AppMethodBeat.i(120689);
-    this.iKp = new LinkedList();
+    this.jGV = new LinkedList();
     AppMethodBeat.o(120689);
   }
   
-  public final b Jd(String paramString)
+  public final b Sa(String paramString)
   {
     AppMethodBeat.i(120690);
     try
@@ -36,32 +36,32 @@ public final class b
       {
         JSONObject localJSONObject = paramString.getJSONObject(i);
         a locala = new a();
-        this.iKp.add(locala.s(localJSONObject));
+        this.jGV.add(locala.z(localJSONObject));
         i += 1;
       }
       return this;
     }
     catch (JSONException paramString)
     {
-      ae.printErrStackTrace("MicroMsg.OpenIMCustomDetail", paramString, "parse", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.OpenIMCustomDetail", paramString, "parse", new Object[0]);
       AppMethodBeat.o(120690);
     }
   }
   
   public static final class a
   {
-    public List<b.b> iKq;
+    public List<b.b> jGW;
     public String title;
     
     public a()
     {
       AppMethodBeat.i(120686);
       this.title = "";
-      this.iKq = new LinkedList();
+      this.jGW = new LinkedList();
       AppMethodBeat.o(120686);
     }
     
-    final a s(JSONObject paramJSONObject)
+    final a z(JSONObject paramJSONObject)
     {
       AppMethodBeat.i(120687);
       this.title = paramJSONObject.optString("title", "");
@@ -76,12 +76,12 @@ public final class b
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
         b.b localb = new b.b();
-        List localList = this.iKq;
-        localb.dEM = localJSONObject.optString("icon");
+        List localList = this.jGW;
+        localb.icon = localJSONObject.optString("icon");
         localb.desc = localJSONObject.optString("desc");
-        localb.iKr = localJSONObject.optInt("desc_type");
+        localb.jGX = localJSONObject.optInt("desc_type");
         localb.action = localJSONObject.optInt("action");
-        localb.iKs = localJSONObject.optString("action_param");
+        localb.jGY = localJSONObject.optString("action_param");
         localList.add(localb);
         i += 1;
       }
@@ -93,17 +93,17 @@ public final class b
   public static final class b
   {
     public int action;
-    public String dEM;
     String desc;
-    public int iKr;
-    public String iKs;
+    public String icon;
+    public int jGX;
+    public String jGY;
     
-    public final String Je(String paramString)
+    public final String Sb(String paramString)
     {
       AppMethodBeat.i(120688);
-      if (this.iKr == 1)
+      if (this.jGX == 1)
       {
-        paramString = ((a)g.ab(a.class)).bC(paramString, this.desc);
+        paramString = ((a)g.af(a.class)).bN(paramString, this.desc);
         AppMethodBeat.o(120688);
         return paramString;
       }
@@ -115,7 +115,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.openim.a.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,58 +1,32 @@
 package com.tencent.mm.api;
 
-import android.content.Context;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.mm.kernel.c.a;
+import com.tencent.mm.plugin.webview.core.BaseWebViewController;
+import com.tencent.mm.plugin.webview.core.BaseWebViewController.c;
+import com.tencent.mm.plugin.webview.d.e;
+import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.ui.widget.MMWebView;
 
-public final class aa
+public abstract interface aa
+  extends a
 {
-  public static a cSH;
+  public abstract BaseWebViewController a(MMWebView paramMMWebView);
   
-  public static z Lw()
-  {
-    AppMethodBeat.i(131335);
-    z localz = cSH.Lx();
-    AppMethodBeat.o(131335);
-    return localz;
-  }
+  public abstract BaseWebViewController a(MMWebView paramMMWebView, BaseWebViewController.c paramc, e parame);
   
-  public static SmileyPanel bi(Context paramContext)
-  {
-    AppMethodBeat.i(131332);
-    paramContext = cSH.bk(paramContext);
-    AppMethodBeat.o(131332);
-    return paramContext;
-  }
+  public abstract boolean a(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent);
   
-  public static int bj(Context paramContext)
-  {
-    AppMethodBeat.i(131334);
-    int i = cSH.bj(paramContext);
-    AppMethodBeat.o(131334);
-    return i;
-  }
+  public abstract h b(MMWebView paramMMWebView);
   
-  public static SmileyPanel k(Context paramContext, boolean paramBoolean)
-  {
-    AppMethodBeat.i(131333);
-    paramContext = cSH.l(paramContext, paramBoolean);
-    AppMethodBeat.o(131333);
-    return paramContext;
-  }
+  public abstract void c(Activity paramActivity, String paramString);
   
-  public static abstract interface a
-  {
-    public abstract z Lx();
-    
-    public abstract int bj(Context paramContext);
-    
-    public abstract SmileyPanel bk(Context paramContext);
-    
-    public abstract SmileyPanel l(Context paramContext, boolean paramBoolean);
-  }
+  public abstract String fM(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.api.aa
  * JD-Core Version:    0.7.0.1
  */

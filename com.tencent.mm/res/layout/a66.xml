@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:paddingBottom="@dimen/c_" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/FG_0" android:id="@id/e4b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/cbl" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    <TextView android:textSize="@dimen/jo" android:textColor="@color/FG_2" android:id="@id/e4_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="@string/cbk" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/e4b" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/a_r" android:gravity="center" android:id="@id/e4a" android:background="@drawable/u0" android:layout_width="184.0dip" android:layout_height="@dimen/cb" android:layout_marginTop="@dimen/cd" android:text="@string/tv" app:layout_constraintLeft_toLeftOf="ea8" app:layout_constraintRight_toRightOf="ea8" app:layout_constraintTop_toBottomOf="@id/e4_" />
-</android.support.constraint.ConstraintLayout>

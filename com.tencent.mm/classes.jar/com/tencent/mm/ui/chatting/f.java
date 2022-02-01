@@ -1,26 +1,31 @@
 package com.tencent.mm.ui.chatting;
 
 import android.content.Context;
+import android.graphics.Paint;
+import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.a.yz;
-import com.tencent.mm.g.a.yz.b;
-import com.tencent.mm.model.v;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ag.c;
+import com.tencent.mm.ag.k.b;
+import com.tencent.mm.cb.a;
+import com.tencent.mm.g.a.aae;
+import com.tencent.mm.g.a.aae.b;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.List;
 
 public final class f
 {
-  private static int jaI = 1;
-  private static int jaJ = 2;
-  private static int jaK = 3;
-  private static int jaL = 4;
+  private static int jYE = 1;
+  private static int jYF = 2;
+  private static int jYG = 3;
+  private static int jYH = 4;
   
-  public static int E(int paramInt1, int paramInt2, boolean paramBoolean)
+  public static int I(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (paramInt1 == 5) {
       if (!paramBoolean) {}
@@ -29,13 +34,13 @@ public final class f
     {
       do
       {
-        return 2131231395;
-        return 2131231389;
+        return 2131231459;
+        return 2131231453;
         if (paramInt1 != 4) {
           break;
         }
       } while (paramBoolean);
-      return 2131231389;
+      return 2131231453;
       if (paramInt1 != 3) {
         break label54;
       }
@@ -43,26 +48,26 @@ public final class f
         break;
       }
     } while (paramBoolean);
-    return 2131231389;
+    return 2131231453;
     if (paramBoolean) {
-      return 2131231390;
+      return 2131231454;
     }
-    return 2131231384;
+    return 2131231448;
     label54:
     if (paramBoolean) {
-      return 2131231390;
+      return 2131231454;
     }
-    return 2131231384;
+    return 2131231448;
   }
   
-  public static int F(int paramInt1, int paramInt2, boolean paramBoolean)
+  public static int J(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (paramInt1 == 5) {}
     do
     {
       do
       {
-        return 2131233101;
+        return 2131233754;
       } while (paramInt1 == 4);
       if (paramInt1 != 3) {
         break label31;
@@ -77,7 +82,7 @@ public final class f
     return -1;
   }
   
-  public static int G(int paramInt1, int paramInt2, boolean paramBoolean)
+  public static int K(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (paramInt1 == 5) {
       if (!paramBoolean) {}
@@ -86,13 +91,13 @@ public final class f
     {
       do
       {
-        return 2131233143;
-        return 2131233022;
+        return 2131233800;
+        return 2131233675;
         if (paramInt1 != 4) {
           break;
         }
       } while (paramBoolean);
-      return 2131233022;
+      return 2131233675;
       if (paramInt1 != 3) {
         break label54;
       }
@@ -100,81 +105,196 @@ public final class f
         break;
       }
     } while (paramBoolean);
-    return 2131233022;
+    return 2131233675;
     if (paramBoolean) {
-      return 2131233142;
+      return 2131233799;
     }
-    return 2131233021;
+    return 2131233674;
     label54:
     if (paramBoolean) {
-      return 2131233142;
+      return 2131233799;
     }
-    return 2131233021;
+    return 2131233674;
   }
   
-  public static int a(k.b paramb, boolean paramBoolean)
+  public static float a(k.b paramb, boolean paramBoolean1, boolean paramBoolean2)
   {
-    AppMethodBeat.i(34308);
-    a locala = h(paramb);
-    switch (paramb.hEu)
+    AppMethodBeat.i(232839);
+    if ((paramb == null) || (paramb.iyA <= 0))
+    {
+      Log.i("MicroMsg.C2CAppMsgUtil", "content == null || content.c2cNewAAType <= 0");
+      AppMethodBeat.o(232839);
+      return 0.3F;
+    }
+    Object localObject = paramb.iyz;
+    aae localaae = new aae();
+    localaae.egS.egU = ((String)localObject);
+    EventCenter.instance.publish(localaae);
+    if ((localaae.egT.status == jYH) && (paramb.iyA == 5))
+    {
+      if (paramBoolean2)
+      {
+        AppMethodBeat.o(232839);
+        return 0.5F;
+      }
+      AppMethodBeat.o(232839);
+      return 0.8F;
+    }
+    if ((localaae.egT.status == jYG) || (localaae.egT.status == jYF) || (localaae.egT.status == jYH))
+    {
+      AppMethodBeat.o(232839);
+      return 0.3F;
+    }
+    localObject = h(paramb);
+    switch (paramb.iyA)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(34308);
-      return 2131689842;
-      if ((paramBoolean) || (locala.role == 1))
-      {
-        if ((locala.JTC <= 0) || (locala.JTD < 0) || (locala.JTE < 0)) {}
+      AppMethodBeat.o(232839);
+      return 0.3F;
+      if ((((a)localObject).role == 1) || (paramBoolean1)) {
+        if ((((a)localObject).PeH <= 0) || (((a)localObject).PeI < 0) || (((a)localObject).PeJ < 0)) {}
       }
-      else {
-        switch (locala.JTC)
+      switch (((a)localObject).PeH)
+      {
+      default: 
+        break;
+      case 1: 
+      case 2: 
+        if (paramBoolean2)
         {
-        default: 
-          break;
-        case 1: 
-        case 2: 
-          AppMethodBeat.o(34308);
-          return 2131689844;
-        case 3: 
-          AppMethodBeat.o(34308);
-          return 2131689842;
-        case 4: 
-          AppMethodBeat.o(34308);
-          return 2131689843;
-          if (locala.role != 2) {
-            break label223;
-          }
-          if ((locala.JTC > 0) && (locala.JTF >= 0L)) {
-            switch (locala.JTC)
-            {
-            }
-          }
-          break;
+          AppMethodBeat.o(232839);
+          return 0.5F;
         }
+        AppMethodBeat.o(232839);
+        return 0.8F;
+      case 3: 
+      case 4: 
+        AppMethodBeat.o(232839);
+        return 0.3F;
+        AppMethodBeat.o(232839);
+        return 0.3F;
+        if (((a)localObject).role == 2)
+        {
+          if ((((a)localObject).PeH > 0) && (((a)localObject).PeK >= 0L)) {}
+          switch (((a)localObject).PeH)
+          {
+          default: 
+            break;
+          case 1: 
+            if (paramBoolean2)
+            {
+              AppMethodBeat.o(232839);
+              return 0.5F;
+            }
+            AppMethodBeat.o(232839);
+            return 0.8F;
+          case 2: 
+          case 3: 
+          case 4: 
+            AppMethodBeat.o(232839);
+            return 0.3F;
+            AppMethodBeat.o(232839);
+            return 0.3F;
+          }
+        }
+        else
+        {
+          if (((a)localObject).role == 3)
+          {
+            AppMethodBeat.o(232839);
+            return 0.3F;
+          }
+          AppMethodBeat.o(232839);
+          return 0.3F;
+          if ((((a)localObject).role == 1) || (paramBoolean1)) {
+            if ((((a)localObject).PeH <= 0) || (((a)localObject).PeI < 0) || (((a)localObject).PeJ < 0)) {}
+          }
+          switch (((a)localObject).PeH)
+          {
+          default: 
+            break;
+          case 1: 
+          case 2: 
+            if (paramBoolean2)
+            {
+              AppMethodBeat.o(232839);
+              return 0.5F;
+            }
+            AppMethodBeat.o(232839);
+            return 0.8F;
+          case 3: 
+          case 4: 
+            AppMethodBeat.o(232839);
+            return 0.3F;
+            AppMethodBeat.o(232839);
+            return 0.3F;
+            if (((a)localObject).role == 2)
+            {
+              if ((((a)localObject).PeH > 0) && (((a)localObject).PeK >= 0L)) {}
+              switch (((a)localObject).PeH)
+              {
+              default: 
+                break;
+              case 1: 
+                if (paramBoolean2)
+                {
+                  AppMethodBeat.o(232839);
+                  return 0.5F;
+                }
+                AppMethodBeat.o(232839);
+                return 0.8F;
+              case 2: 
+              case 3: 
+              case 4: 
+                AppMethodBeat.o(232839);
+                return 0.3F;
+                AppMethodBeat.o(232839);
+                return 0.3F;
+              }
+            }
+            else
+            {
+              paramb = i(paramb);
+              if (paramb.PeH <= 0) {
+                break label711;
+              }
+              switch (paramb.PeH)
+              {
+              }
+            }
+            break;
+          }
+        }
+        break;
       }
     }
-    AppMethodBeat.o(34308);
-    return 2131689844;
-    AppMethodBeat.o(34308);
-    return 2131689842;
-    AppMethodBeat.o(34308);
-    return 2131689843;
-    label223:
-    AppMethodBeat.o(34308);
-    return 2131689842;
+    if (paramBoolean2)
+    {
+      AppMethodBeat.o(232839);
+      return 0.5F;
+    }
+    AppMethodBeat.o(232839);
+    return 0.8F;
+    AppMethodBeat.o(232839);
+    return 0.3F;
+    label711:
+    AppMethodBeat.o(232839);
+    return 0.3F;
   }
   
-  public static String b(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2)
+  public static String a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, String paramString, k.b paramb, TextView paramTextView)
   {
-    AppMethodBeat.i(34310);
-    Object localObject = ak.getContext();
-    ae.d("MicroMsg.C2CAppMsgUtil", "getC2CLuckyMoneyDescByHbStatus() hbType:%s hbStatus:%s receiveStatus:%s isGroupChat:%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean2) });
+    AppMethodBeat.i(232840);
+    Context localContext = MMApplicationContext.getContext();
+    paramb = (c)paramb.as(c.class);
+    Log.d("MicroMsg.C2CAppMsgUtil", "getC2CLuckyMoneyDescByHbStatus() hbType:%s hbStatus:%s receiveStatus:%s isGroupChat:%s exclusiveRecvUsername: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Boolean.valueOf(paramBoolean2), paramb.iwa });
     if (paramInt2 == 5)
     {
-      localObject = ((Context)localObject).getString(2131760834);
-      AppMethodBeat.o(34310);
-      return localObject;
+      paramString = localContext.getString(2131762591);
+      AppMethodBeat.o(232840);
+      return paramString;
     }
     if (paramInt1 == 1)
     {
@@ -182,23 +302,23 @@ public final class f
       {
         if (paramInt3 == 2)
         {
-          localObject = ((Context)localObject).getString(2131760835);
-          AppMethodBeat.o(34310);
-          return localObject;
+          paramString = localContext.getString(2131762592);
+          AppMethodBeat.o(232840);
+          return paramString;
         }
-        localObject = ((Context)localObject).getString(2131760833);
-        AppMethodBeat.o(34310);
-        return localObject;
+        paramString = localContext.getString(2131762587);
+        AppMethodBeat.o(232840);
+        return paramString;
       }
       if (paramInt2 == 3)
       {
         if (paramInt3 == 2)
         {
-          localObject = ((Context)localObject).getString(2131760835);
-          AppMethodBeat.o(34310);
-          return localObject;
+          paramString = localContext.getString(2131762592);
+          AppMethodBeat.o(232840);
+          return paramString;
         }
-        AppMethodBeat.o(34310);
+        AppMethodBeat.o(232840);
         return "";
       }
     }
@@ -208,56 +328,92 @@ public final class f
       {
         if (paramBoolean1)
         {
-          localObject = ((Context)localObject).getString(2131760833);
-          AppMethodBeat.o(34310);
-          return localObject;
+          paramString = localContext.getString(2131762587);
+          AppMethodBeat.o(232840);
+          return paramString;
         }
         if (paramBoolean2)
         {
           if (paramInt3 == 2)
           {
-            localObject = ((Context)localObject).getString(2131760835);
-            AppMethodBeat.o(34310);
-            return localObject;
+            paramString = localContext.getString(2131762592);
+            AppMethodBeat.o(232840);
+            return paramString;
           }
-          localObject = ((Context)localObject).getString(2131760833);
-          AppMethodBeat.o(34310);
-          return localObject;
+          paramString = localContext.getString(2131762587);
+          AppMethodBeat.o(232840);
+          return paramString;
         }
-        localObject = ((Context)localObject).getString(2131760835);
-        AppMethodBeat.o(34310);
-        return localObject;
+        paramString = localContext.getString(2131762592);
+        AppMethodBeat.o(232840);
+        return paramString;
       }
       if (paramInt2 == 3)
       {
         if (paramBoolean1)
         {
-          AppMethodBeat.o(34310);
+          AppMethodBeat.o(232840);
           return "";
         }
         if (paramInt3 == 2)
         {
-          localObject = ((Context)localObject).getString(2131760835);
-          AppMethodBeat.o(34310);
-          return localObject;
+          paramString = localContext.getString(2131762592);
+          AppMethodBeat.o(232840);
+          return paramString;
         }
-        AppMethodBeat.o(34310);
+        AppMethodBeat.o(232840);
         return "";
       }
     }
     else
     {
+      if ((paramInt1 == 3) && (!Util.isNullOrNil(paramb.iwa)))
+      {
+        paramString = aa.getDisplayName(paramb.iwa, paramString);
+        if (paramInt2 == 4)
+        {
+          paramString = localContext.getString(2131762590, new Object[] { paramString });
+          AppMethodBeat.o(232840);
+          return paramString;
+        }
+        paramString = localContext.getString(2131762588, new Object[] { paramString });
+        paramInt1 = paramTextView.getWidth();
+        if (paramInt1 <= 0) {
+          a.fromDPToPix(MMApplicationContext.getContext(), 150);
+        }
+        paramString = a(paramString, localContext.getString(2131762589), "...", paramTextView.getPaint(), paramInt1);
+        AppMethodBeat.o(232840);
+        return paramString;
+      }
+      if (!Util.isNullOrNil(paramb.iwa))
+      {
+        paramString = aa.getDisplayName(paramb.iwa, paramString);
+        if (paramInt2 == 4)
+        {
+          paramString = localContext.getString(2131762590, new Object[] { paramString });
+          AppMethodBeat.o(232840);
+          return paramString;
+        }
+        paramString = localContext.getString(2131762588, new Object[] { paramString });
+        paramInt1 = paramTextView.getWidth();
+        if (paramInt1 <= 0) {
+          a.fromDPToPix(MMApplicationContext.getContext(), 150);
+        }
+        paramString = a(paramString, localContext.getString(2131762589), "...", paramTextView.getPaint(), paramInt1);
+        AppMethodBeat.o(232840);
+        return paramString;
+      }
       if (paramInt2 == 4)
       {
         if ((!paramBoolean2) || ((paramBoolean1) && (paramInt3 == 2)))
         {
-          localObject = ((Context)localObject).getString(2131760835);
-          AppMethodBeat.o(34310);
-          return localObject;
+          paramString = localContext.getString(2131762592);
+          AppMethodBeat.o(232840);
+          return paramString;
         }
-        localObject = ((Context)localObject).getString(2131760833);
-        AppMethodBeat.o(34310);
-        return localObject;
+        paramString = localContext.getString(2131762587);
+        AppMethodBeat.o(232840);
+        return paramString;
       }
       if (paramInt2 == 3)
       {
@@ -265,303 +421,540 @@ public final class f
         {
           if (paramBoolean1)
           {
-            AppMethodBeat.o(34310);
+            AppMethodBeat.o(232840);
             return "";
           }
-          localObject = ((Context)localObject).getString(2131760835);
-          AppMethodBeat.o(34310);
-          return localObject;
+          paramString = localContext.getString(2131762592);
+          AppMethodBeat.o(232840);
+          return paramString;
         }
-        AppMethodBeat.o(34310);
+        AppMethodBeat.o(232840);
         return "";
       }
     }
-    AppMethodBeat.o(34310);
+    AppMethodBeat.o(232840);
     return "";
   }
   
-  public static String b(k.b paramb, boolean paramBoolean)
+  public static String a(k.b paramb, boolean paramBoolean)
   {
     AppMethodBeat.i(34309);
-    for (;;)
+    if ((paramb == null) || (paramb.iyA <= 0))
     {
-      int i1;
-      int i7;
-      long l;
-      int i3;
-      int i2;
-      int n;
-      int i;
-      int j;
-      int k;
-      int m;
-      try
-      {
-        str1 = v.aAC();
-        if (paramb.hEu <= 0)
-        {
-          if (paramBoolean)
-          {
-            str1 = paramb.hEg;
-            AppMethodBeat.o(34309);
-            return str1;
-          }
-          str1 = paramb.hEh;
-          AppMethodBeat.o(34309);
-          return str1;
-        }
-        i1 = 0;
-        int i8 = 0;
-        int i4 = -1;
-        int i5 = -1;
-        int i6 = -1;
-        i7 = 0;
-        l = -1L;
-        Object localObject = paramb.hEt;
-        yz localyz = new yz();
-        localyz.dOW.dOY = ((String)localObject);
-        a.IvT.l(localyz);
-        if (paramb.hEu != 2)
-        {
-          i3 = i6;
-          i2 = i5;
-          n = i4;
-          if (paramb.hEu != 3) {
-            break label905;
-          }
-        }
-        i = i6;
-        j = i5;
-        k = i4;
-        m = i8;
-        if (!bu.ht(paramb.hEy))
-        {
-          localObject = paramb.hEy.iterator();
-          i = i6;
-          j = i5;
-          k = i4;
-          m = i8;
-          if (((Iterator)localObject).hasNext())
-          {
-            arrayOfString = ((String)((Iterator)localObject).next()).split(",");
-            if ((arrayOfString.length != 4) || (!arrayOfString[0].equals(str1))) {
-              continue;
-            }
-            k = bu.getInt(arrayOfString[1], -1);
-            j = bu.getInt(arrayOfString[2], -1);
-            i = bu.getInt(arrayOfString[3], -1);
-            m = 1;
-          }
-        }
-        i3 = i;
-        i2 = j;
-        n = k;
-        i1 = m;
-        if (bu.ht(paramb.hEA)) {
-          break label905;
-        }
-        localObject = paramb.hEA.iterator();
-        i3 = i;
-        i2 = j;
-        n = k;
-        i1 = m;
-        if (!((Iterator)localObject).hasNext()) {
-          break label905;
-        }
-        String[] arrayOfString = ((String)((Iterator)localObject).next()).split(",");
-        if ((arrayOfString.length != 3) || (!arrayOfString[0].equals(str1))) {
-          continue;
-        }
-        l = bu.getLong(arrayOfString[1], -1L);
-        n = bu.getInt(arrayOfString[2], -1);
-        i1 = 1;
-        i2 = j;
-        i3 = i;
-        j = i1;
-        i = n;
-        if (localyz.dOX.status == jaK)
-        {
-          str1 = ak.getContext().getString(2131755055);
-          AppMethodBeat.o(34309);
-          return str1;
-        }
-        if (localyz.dOX.status == jaJ)
-        {
-          str1 = ak.getContext().getString(2131755047);
-          AppMethodBeat.o(34309);
-          return str1;
-        }
-        if (localyz.dOX.status == jaL)
-        {
-          str1 = ak.getContext().getString(2131755053);
-          AppMethodBeat.o(34309);
-          return str1;
-        }
-        n = paramb.hEu;
-        switch (n)
-        {
-        }
-      }
-      catch (Exception localException)
-      {
-        String str1;
-        ae.e("MicroMsg.C2CAppMsgUtil", "getC2CDescFromAppMsgContent, error: %s", new Object[] { localException.getMessage() });
-        continue;
-        str2 = paramb.hEh;
-        AppMethodBeat.o(34309);
-        return str2;
-      }
+      Log.i("MicroMsg.C2CAppMsgUtil", "content == null || content.c2cNewAAType <= 0");
       if (paramBoolean)
       {
-        paramb = paramb.hEg;
+        paramb = paramb.iym;
         AppMethodBeat.o(34309);
         return paramb;
-        if (paramBoolean)
+      }
+      paramb = paramb.iyn;
+      AppMethodBeat.o(34309);
+      return paramb;
+    }
+    a locala = h(paramb);
+    String str = paramb.iyz;
+    aae localaae = new aae();
+    localaae.egS.egU = str;
+    EventCenter.instance.publish(localaae);
+    switch (paramb.iyA)
+    {
+    }
+    while (paramBoolean)
+    {
+      paramb = paramb.iym;
+      AppMethodBeat.o(34309);
+      return paramb;
+      if ((locala.role == 1) || (paramBoolean)) {
+        if ((locala.PeH <= 0) || (locala.PeI < 0) || (locala.PeJ < 0)) {}
+      }
+      switch (locala.PeH)
+      {
+      default: 
+        break;
+      case 1: 
+        paramb = MMApplicationContext.getContext().getString(2131755063);
+        AppMethodBeat.o(34309);
+        return paramb;
+      case 2: 
+        paramb = MMApplicationContext.getContext().getString(2131755060, new Object[] { Integer.valueOf(locala.PeI - locala.PeJ) });
+        AppMethodBeat.o(34309);
+        return paramb;
+      case 3: 
+        paramb = MMApplicationContext.getContext().getString(2131755057);
+        AppMethodBeat.o(34309);
+        return paramb;
+      case 4: 
+        paramb = MMApplicationContext.getContext().getString(2131755062);
+        AppMethodBeat.o(34309);
+        return paramb;
+        paramb = MMApplicationContext.getContext().getString(2131755062);
+        AppMethodBeat.o(34309);
+        return paramb;
+        if (locala.role == 2)
         {
-          str1 = paramb.hEg;
-          AppMethodBeat.o(34309);
-          return str1;
-        }
-        String str2;
-        if ((!str2.equals(paramb.hED)) && (!paramBoolean)) {
-          if (m != 0)
+          if ((locala.PeH > 0) && (locala.PeK >= 0L)) {}
+          switch (locala.PeH)
           {
-            break label921;
-            str2 = ak.getContext().getString(2131755056);
+          default: 
+            break;
+          case 1: 
+            paramb = MMApplicationContext.getContext().getString(2131755054, new Object[] { Float.valueOf((float)locala.PeK / 100.0F) });
             AppMethodBeat.o(34309);
-            return str2;
-            str2 = ak.getContext().getString(2131755054, new Object[] { Integer.valueOf(i2 - i3) });
+            return paramb;
+          case 2: 
+            paramb = MMApplicationContext.getContext().getString(2131755053, new Object[] { Float.valueOf((float)locala.PeK / 100.0F) });
             AppMethodBeat.o(34309);
-            return str2;
-            str2 = ak.getContext().getString(2131755052);
+            return paramb;
+          case 3: 
+            paramb = MMApplicationContext.getContext().getString(2131755056, new Object[] { Float.valueOf((float)locala.PeK / 100.0F) });
             AppMethodBeat.o(34309);
-            return str2;
-            str2 = ak.getContext().getString(2131755055);
+            return paramb;
+          case 4: 
+            paramb = MMApplicationContext.getContext().getString(2131755055);
             AppMethodBeat.o(34309);
-            return str2;
+            return paramb;
+            paramb = MMApplicationContext.getContext().getString(2131755055);
+            AppMethodBeat.o(34309);
+            return paramb;
           }
-          else
+        }
+        else
+        {
+          if (locala.role == 3)
           {
-            if (j != 0)
+            paramb = MMApplicationContext.getContext().getString(2131755055);
+            AppMethodBeat.o(34309);
+            return paramb;
+          }
+          paramb = MMApplicationContext.getContext().getString(2131755055);
+          AppMethodBeat.o(34309);
+          return paramb;
+          if ((locala.role == 1) || (paramBoolean)) {
+            if ((locala.PeH <= 0) || (locala.PeI < 0) || (locala.PeJ < 0)) {}
+          }
+          switch (locala.PeH)
+          {
+          default: 
+            break;
+          case 1: 
+            paramb = MMApplicationContext.getContext().getString(2131755063);
+            AppMethodBeat.o(34309);
+            return paramb;
+          case 2: 
+            paramb = MMApplicationContext.getContext().getString(2131755061, new Object[] { Integer.valueOf(locala.PeI) });
+            AppMethodBeat.o(34309);
+            return paramb;
+          case 3: 
+            paramb = MMApplicationContext.getContext().getString(2131755057);
+            AppMethodBeat.o(34309);
+            return paramb;
+          case 4: 
+            paramb = MMApplicationContext.getContext().getString(2131755062);
+            AppMethodBeat.o(34309);
+            return paramb;
+            paramb = MMApplicationContext.getContext().getString(2131755062);
+            AppMethodBeat.o(34309);
+            return paramb;
+            if (locala.role == 2)
             {
-              if ((i <= 0) || (l < 0L)) {
-                continue;
-              }
-              switch (i)
+              if ((locala.PeH > 0) && (locala.PeK >= 0L)) {}
+              switch (locala.PeH)
               {
               default: 
                 break;
               case 1: 
-                str2 = ak.getContext().getString(2131755049, new Object[] { Float.valueOf((float)l / 100.0F) });
+                paramb = MMApplicationContext.getContext().getString(2131755054, new Object[] { Float.valueOf((float)locala.PeK / 100.0F) });
                 AppMethodBeat.o(34309);
-                return str2;
+                return paramb;
               case 2: 
-                str2 = ak.getContext().getString(2131755048, new Object[] { Float.valueOf((float)l / 100.0F) });
+                paramb = MMApplicationContext.getContext().getString(2131755053, new Object[] { Float.valueOf((float)locala.PeK / 100.0F) });
                 AppMethodBeat.o(34309);
-                return str2;
+                return paramb;
               case 3: 
-                str2 = ak.getContext().getString(2131755051, new Object[] { Float.valueOf((float)l / 100.0F) });
+                paramb = MMApplicationContext.getContext().getString(2131755056, new Object[] { Float.valueOf((float)locala.PeK / 100.0F) });
                 AppMethodBeat.o(34309);
-                return str2;
+                return paramb;
               case 4: 
-                str2 = ak.getContext().getString(2131755050);
+                paramb = MMApplicationContext.getContext().getString(2131755055);
                 AppMethodBeat.o(34309);
-                return str2;
+                return paramb;
+                paramb = MMApplicationContext.getContext().getString(2131755055);
+                AppMethodBeat.o(34309);
+                return paramb;
               }
             }
-            str2 = ak.getContext().getString(2131755050);
-            AppMethodBeat.o(34309);
-            return str2;
+            else
+            {
+              locala = i(paramb);
+              if (locala.PeH > 0)
+              {
+                switch (locala.PeH)
+                {
+                default: 
+                  break;
+                case 1: 
+                case 2: 
+                case 3: 
+                  paramb = MMApplicationContext.getContext().getString(2131755058);
+                  AppMethodBeat.o(34309);
+                  return paramb;
+                case 4: 
+                  paramb = MMApplicationContext.getContext().getString(2131755055);
+                  AppMethodBeat.o(34309);
+                  return paramb;
+                }
+              }
+              else
+              {
+                paramb = MMApplicationContext.getContext().getString(2131755055);
+                AppMethodBeat.o(34309);
+                return paramb;
+              }
+            }
+            break;
           }
         }
-      }
-      else
-      {
-        paramb = paramb.hEh;
-        AppMethodBeat.o(34309);
-        return paramb;
-        label905:
-        i = -1;
-        j = i7;
-        k = n;
-        m = i1;
-        continue;
-      }
-      label921:
-      if ((k > 0) && (i2 >= 0) && (i3 >= 0)) {
-        switch (k)
-        {
-        }
+        break;
       }
     }
+    paramb = paramb.iyn;
+    AppMethodBeat.o(34309);
+    return paramb;
+  }
+  
+  private static String a(CharSequence paramCharSequence1, CharSequence paramCharSequence2, String paramString, Paint paramPaint, int paramInt)
+  {
+    AppMethodBeat.i(232841);
+    String str = paramCharSequence1.toString() + paramCharSequence2.toString();
+    float f = paramPaint.measureText(str);
+    if (paramInt <= 0)
+    {
+      AppMethodBeat.o(232841);
+      return str;
+    }
+    if (f < paramInt)
+    {
+      AppMethodBeat.o(232841);
+      return str;
+    }
+    paramString = paramString + paramCharSequence2;
+    if (paramPaint.measureText(paramString) > paramInt)
+    {
+      AppMethodBeat.o(232841);
+      return str;
+    }
+    paramCharSequence2 = paramCharSequence1 + paramString;
+    f = paramPaint.measureText(paramCharSequence2);
+    int i = 1;
+    while ((f > paramInt) && (i < 100) && (i < paramCharSequence1.length()))
+    {
+      paramCharSequence2 = paramCharSequence1.subSequence(0, paramCharSequence1.length() - i) + paramString;
+      f = paramPaint.measureText(paramCharSequence2);
+      i += 1;
+    }
+    AppMethodBeat.o(232841);
+    return paramCharSequence2;
+  }
+  
+  public static int b(k.b paramb, boolean paramBoolean)
+  {
+    AppMethodBeat.i(34308);
+    if ((paramb == null) || (paramb.iyA <= 0))
+    {
+      Log.i("MicroMsg.C2CAppMsgUtil", "content == null || content.c2cNewAAType <= 0");
+      AppMethodBeat.o(34308);
+      return 2131689858;
+    }
+    a locala = h(paramb);
+    switch (paramb.iyA)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(34308);
+      return 2131689858;
+      if ((locala.role == 1) || (paramBoolean)) {
+        if ((locala.PeH <= 0) || (locala.PeI < 0) || (locala.PeJ < 0)) {}
+      }
+      switch (locala.PeH)
+      {
+      default: 
+        break;
+      case 1: 
+      case 2: 
+        AppMethodBeat.o(34308);
+        return 2131689859;
+      case 3: 
+        AppMethodBeat.o(34308);
+        return 2131689857;
+      case 4: 
+        AppMethodBeat.o(34308);
+        return 2131689858;
+        AppMethodBeat.o(34308);
+        return 2131689858;
+        if (locala.role == 2)
+        {
+          if ((locala.PeH > 0) && (locala.PeK >= 0L)) {}
+          switch (locala.PeH)
+          {
+          default: 
+            break;
+          case 1: 
+            AppMethodBeat.o(34308);
+            return 2131689859;
+          case 2: 
+          case 3: 
+            AppMethodBeat.o(34308);
+            return 2131689857;
+          case 4: 
+            AppMethodBeat.o(34308);
+            return 2131689858;
+            AppMethodBeat.o(34308);
+            return 2131689858;
+          }
+        }
+        else
+        {
+          if (locala.role == 3)
+          {
+            AppMethodBeat.o(34308);
+            return 2131689858;
+          }
+          AppMethodBeat.o(34308);
+          return 2131689858;
+          if ((locala.role == 1) || (paramBoolean)) {
+            if ((locala.PeH <= 0) || (locala.PeI < 0) || (locala.PeJ < 0)) {}
+          }
+          switch (locala.PeH)
+          {
+          default: 
+            break;
+          case 1: 
+          case 2: 
+            AppMethodBeat.o(34308);
+            return 2131689859;
+          case 3: 
+            AppMethodBeat.o(34308);
+            return 2131689857;
+          case 4: 
+            AppMethodBeat.o(34308);
+            return 2131689858;
+            AppMethodBeat.o(34308);
+            return 2131689858;
+            if (locala.role == 2)
+            {
+              if ((locala.PeH > 0) && (locala.PeK >= 0L)) {}
+              switch (locala.PeH)
+              {
+              default: 
+                break;
+              case 1: 
+                AppMethodBeat.o(34308);
+                return 2131689859;
+              case 2: 
+              case 3: 
+                AppMethodBeat.o(34308);
+                return 2131689857;
+              case 4: 
+                AppMethodBeat.o(34308);
+                return 2131689858;
+                AppMethodBeat.o(34308);
+                return 2131689858;
+              }
+            }
+            else
+            {
+              paramb = i(paramb);
+              if (paramb.PeH <= 0) {
+                break label599;
+              }
+              switch (paramb.PeH)
+              {
+              }
+            }
+            break;
+          }
+        }
+        break;
+      }
+    }
+    AppMethodBeat.o(34308);
+    return 2131689859;
+    AppMethodBeat.o(34308);
+    return 2131689858;
+    label599:
+    AppMethodBeat.o(34308);
+    return 2131689858;
   }
   
   public static int c(k.b paramb, boolean paramBoolean)
   {
     AppMethodBeat.i(34311);
-    if (paramb == null)
+    if ((paramb == null) || (paramb.iyA <= 0))
     {
+      Log.i("MicroMsg.C2CAppMsgUtil", "content == null || content.c2cNewAAType <= 0");
       if (paramBoolean)
       {
         AppMethodBeat.o(34311);
-        return 2131230732;
+        return 2131230738;
       }
       AppMethodBeat.o(34311);
-      return 2131230726;
+      return 2131230732;
     }
-    Object localObject = paramb.hEt;
-    yz localyz = new yz();
-    localyz.dOW.dOY = ((String)localObject);
-    a.IvT.l(localyz);
-    if ((localyz.dOX.status == jaK) || (localyz.dOX.status == jaJ) || (localyz.dOX.status == jaL))
+    Object localObject = paramb.iyz;
+    aae localaae = new aae();
+    localaae.egS.egU = ((String)localObject);
+    EventCenter.instance.publish(localaae);
+    if ((localaae.egT.status == jYH) && (paramb.iyA == 5))
     {
       if (paramBoolean)
       {
         AppMethodBeat.o(34311);
-        return 2131230737;
+        return 2131230733;
       }
       AppMethodBeat.o(34311);
-      return 2131230731;
+      return 2131230727;
+    }
+    if ((localaae.egT.status == jYG) || (localaae.egT.status == jYF) || (localaae.egT.status == jYH))
+    {
+      if (paramBoolean)
+      {
+        AppMethodBeat.o(34311);
+        return 2131230738;
+      }
+      AppMethodBeat.o(34311);
+      return 2131230732;
     }
     localObject = h(paramb);
-    switch (paramb.hEu)
+    switch (paramb.iyA)
     {
     }
     while (paramBoolean)
     {
       AppMethodBeat.o(34311);
-      return 2131230732;
-      if ((paramBoolean) || (((a)localObject).role == 1)) {
-        if ((((a)localObject).JTC <= 0) || (((a)localObject).JTD < 0) || (((a)localObject).JTE < 0)) {
-          break;
-        }
-      } else {
-        switch (((a)localObject).JTC)
+      return 2131230738;
+      if ((((a)localObject).role == 1) || (paramBoolean)) {
+        if ((((a)localObject).PeH <= 0) || (((a)localObject).PeI < 0) || (((a)localObject).PeJ < 0)) {}
+      }
+      switch (((a)localObject).PeH)
+      {
+      default: 
+        break;
+      case 1: 
+      case 2: 
+        if (paramBoolean)
         {
-        default: 
-          break;
-        case 1: 
-        case 2: 
-          if (paramBoolean)
+          AppMethodBeat.o(34311);
+          return 2131230733;
+        }
+        AppMethodBeat.o(34311);
+        return 2131230727;
+      case 3: 
+      case 4: 
+        if (paramBoolean)
+        {
+          AppMethodBeat.o(34311);
+          return 2131230738;
+        }
+        AppMethodBeat.o(34311);
+        return 2131230732;
+        if (paramBoolean)
+        {
+          AppMethodBeat.o(34311);
+          return 2131230738;
+        }
+        AppMethodBeat.o(34311);
+        return 2131230732;
+        if (((a)localObject).role == 2)
+        {
+          if ((((a)localObject).PeH > 0) && (((a)localObject).PeK >= 0L)) {}
+          switch (((a)localObject).PeH)
           {
+          default: 
+            break;
+          case 1: 
+            if (paramBoolean)
+            {
+              AppMethodBeat.o(34311);
+              return 2131230733;
+            }
+            AppMethodBeat.o(34311);
+            return 2131230727;
+          case 2: 
+          case 3: 
+          case 4: 
+            if (paramBoolean)
+            {
+              AppMethodBeat.o(34311);
+              return 2131230738;
+            }
+            AppMethodBeat.o(34311);
+            return 2131230732;
+            if (paramBoolean)
+            {
+              AppMethodBeat.o(34311);
+              return 2131230738;
+            }
             AppMethodBeat.o(34311);
             return 2131230732;
           }
-          AppMethodBeat.o(34311);
-          return 2131230726;
-        case 3: 
-        case 4: 
+        }
+        else
+        {
+          if (((a)localObject).role == 3)
+          {
+            if (paramBoolean)
+            {
+              AppMethodBeat.o(34311);
+              return 2131230738;
+            }
+            AppMethodBeat.o(34311);
+            return 2131230732;
+          }
           if (paramBoolean)
           {
             AppMethodBeat.o(34311);
-            return 2131230737;
+            return 2131230738;
           }
           AppMethodBeat.o(34311);
-          return 2131230731;
-          if (((a)localObject).role == 2)
+          return 2131230732;
+          if ((((a)localObject).role == 1) || (paramBoolean)) {
+            if ((((a)localObject).PeH <= 0) || (((a)localObject).PeI < 0) || (((a)localObject).PeJ < 0)) {}
+          }
+          switch (((a)localObject).PeH)
           {
-            if ((((a)localObject).JTC > 0) && (((a)localObject).JTF >= 0L)) {
-              switch (((a)localObject).JTC)
+          default: 
+            break;
+          case 1: 
+          case 2: 
+            if (paramBoolean)
+            {
+              AppMethodBeat.o(34311);
+              return 2131230733;
+            }
+            AppMethodBeat.o(34311);
+            return 2131230727;
+          case 3: 
+          case 4: 
+            if (paramBoolean)
+            {
+              AppMethodBeat.o(34311);
+              return 2131230738;
+            }
+            AppMethodBeat.o(34311);
+            return 2131230732;
+            if (paramBoolean)
+            {
+              AppMethodBeat.o(34311);
+              return 2131230738;
+            }
+            AppMethodBeat.o(34311);
+            return 2131230732;
+            if (((a)localObject).role == 2)
+            {
+              if ((((a)localObject).PeH > 0) && (((a)localObject).PeK >= 0L)) {}
+              switch (((a)localObject).PeH)
               {
               default: 
                 break;
@@ -569,135 +962,247 @@ public final class f
                 if (paramBoolean)
                 {
                   AppMethodBeat.o(34311);
-                  return 2131230732;
+                  return 2131230733;
                 }
                 AppMethodBeat.o(34311);
-                return 2131230726;
+                return 2131230727;
               case 2: 
               case 3: 
               case 4: 
                 if (paramBoolean)
                 {
                   AppMethodBeat.o(34311);
-                  return 2131230737;
+                  return 2131230738;
                 }
                 AppMethodBeat.o(34311);
-                return 2131230731;
+                return 2131230732;
+                if (paramBoolean)
+                {
+                  AppMethodBeat.o(34311);
+                  return 2131230738;
+                }
+                AppMethodBeat.o(34311);
+                return 2131230732;
               }
             }
-          }
-          else
-          {
-            if (paramBoolean)
+            else
             {
-              AppMethodBeat.o(34311);
-              return 2131230732;
+              paramb = i(paramb);
+              if (paramb.PeH > 0)
+              {
+                switch (paramb.PeH)
+                {
+                default: 
+                  break;
+                case 1: 
+                case 2: 
+                case 3: 
+                  if (paramBoolean)
+                  {
+                    AppMethodBeat.o(34311);
+                    return 2131230733;
+                  }
+                  AppMethodBeat.o(34311);
+                  return 2131230727;
+                case 4: 
+                  if (paramBoolean)
+                  {
+                    AppMethodBeat.o(34311);
+                    return 2131230738;
+                  }
+                  AppMethodBeat.o(34311);
+                  return 2131230732;
+                }
+              }
+              else
+              {
+                if (paramBoolean)
+                {
+                  AppMethodBeat.o(34311);
+                  return 2131230738;
+                }
+                AppMethodBeat.o(34311);
+                return 2131230732;
+              }
             }
-            AppMethodBeat.o(34311);
-            return 2131230726;
+            break;
           }
-          break;
         }
+        break;
       }
     }
     AppMethodBeat.o(34311);
-    return 2131230726;
+    return 2131230732;
   }
   
   public static int d(k.b paramb, boolean paramBoolean)
   {
     AppMethodBeat.i(34312);
-    if (paramb == null)
+    if ((paramb == null) || (paramb.iyA <= 0))
+    {
+      Log.i("MicroMsg.C2CAppMsgUtil", "content == null || content.c2cNewAAType <= 0");
+      AppMethodBeat.o(34312);
+      return -8868722;
+    }
+    Object localObject = paramb.iyz;
+    aae localaae = new aae();
+    localaae.egS.egU = ((String)localObject);
+    EventCenter.instance.publish(localaae);
+    if ((localaae.egT.status == jYH) && (paramb.iyA == 5))
     {
       AppMethodBeat.o(34312);
       return -12479656;
     }
-    Object localObject = paramb.hEt;
-    yz localyz = new yz();
-    localyz.dOW.dOY = ((String)localObject);
-    a.IvT.l(localyz);
-    if ((localyz.dOX.status == jaK) || (localyz.dOX.status == jaJ) || (localyz.dOX.status == jaL))
+    if ((localaae.egT.status == jYG) || (localaae.egT.status == jYF) || (localaae.egT.status == jYH))
     {
       AppMethodBeat.o(34312);
       return -8868722;
     }
     localObject = h(paramb);
-    switch (paramb.hEu)
+    switch (paramb.iyA)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(34312);
-      return -12479656;
-      if ((paramBoolean) || (((a)localObject).role == 1))
-      {
-        if ((((a)localObject).JTC <= 0) || (((a)localObject).JTD < 0) || (((a)localObject).JTE < 0)) {}
+      return -8868722;
+      if ((((a)localObject).role == 1) || (paramBoolean)) {
+        if ((((a)localObject).PeH <= 0) || (((a)localObject).PeI < 0) || (((a)localObject).PeJ < 0)) {}
       }
-      else {
-        switch (((a)localObject).JTC)
+      switch (((a)localObject).PeH)
+      {
+      default: 
+        break;
+      case 1: 
+      case 2: 
+        AppMethodBeat.o(34312);
+        return -12479656;
+      case 3: 
+      case 4: 
+        AppMethodBeat.o(34312);
+        return -8868722;
+        AppMethodBeat.o(34312);
+        return -8868722;
+        if (((a)localObject).role == 2)
         {
-        default: 
-          break;
-        case 1: 
-        case 2: 
-          AppMethodBeat.o(34312);
-          return -12479656;
-        case 3: 
-        case 4: 
+          if ((((a)localObject).PeH > 0) && (((a)localObject).PeK >= 0L)) {}
+          switch (((a)localObject).PeH)
+          {
+          default: 
+            break;
+          case 1: 
+            AppMethodBeat.o(34312);
+            return -12479656;
+          case 2: 
+          case 3: 
+          case 4: 
+            AppMethodBeat.o(34312);
+            return -8868722;
+            AppMethodBeat.o(34312);
+            return -8868722;
+          }
+        }
+        else
+        {
+          if (((a)localObject).role == 3)
+          {
+            AppMethodBeat.o(34312);
+            return -8868722;
+          }
           AppMethodBeat.o(34312);
           return -8868722;
-          if (((a)localObject).role != 2) {
-            break label307;
+          if ((((a)localObject).role == 1) || (paramBoolean)) {
+            if ((((a)localObject).PeH <= 0) || (((a)localObject).PeI < 0) || (((a)localObject).PeJ < 0)) {}
           }
-          if ((((a)localObject).JTC > 0) && (((a)localObject).JTF >= 0L)) {
-            switch (((a)localObject).JTC)
+          switch (((a)localObject).PeH)
+          {
+          default: 
+            break;
+          case 1: 
+          case 2: 
+            AppMethodBeat.o(34312);
+            return -12479656;
+          case 3: 
+          case 4: 
+            AppMethodBeat.o(34312);
+            return -8868722;
+            AppMethodBeat.o(34312);
+            return -8868722;
+            if (((a)localObject).role == 2)
             {
+              if ((((a)localObject).PeH > 0) && (((a)localObject).PeK >= 0L)) {}
+              switch (((a)localObject).PeH)
+              {
+              default: 
+                break;
+              case 1: 
+                AppMethodBeat.o(34312);
+                return -12479656;
+              case 2: 
+              case 3: 
+              case 4: 
+                AppMethodBeat.o(34312);
+                return -8868722;
+                AppMethodBeat.o(34312);
+                return -8868722;
+              }
             }
+            else
+            {
+              paramb = i(paramb);
+              if (paramb.PeH <= 0) {
+                break label675;
+              }
+              switch (paramb.PeH)
+              {
+              }
+            }
+            break;
           }
-          break;
         }
+        break;
       }
     }
     AppMethodBeat.o(34312);
     return -12479656;
     AppMethodBeat.o(34312);
     return -8868722;
-    label307:
+    label675:
     AppMethodBeat.o(34312);
-    return -12479656;
+    return -8868722;
   }
   
   public static a h(k.b paramb)
   {
     AppMethodBeat.i(34307);
-    String str = v.aAC();
-    if ((paramb.hEu == 2) || (paramb.hEu == 3))
+    String str = z.aTY();
+    if ((paramb.iyA == 2) || (paramb.iyA == 3) || (paramb.iyA == 5))
     {
       Object localObject;
-      if (!bu.ht(paramb.hEy))
+      if (!Util.isNullOrNil(paramb.iyE))
       {
-        localObject = paramb.hEy.iterator();
+        localObject = paramb.iyE.iterator();
         while (((Iterator)localObject).hasNext())
         {
           String[] arrayOfString = ((String)((Iterator)localObject).next()).split(",");
           if ((arrayOfString.length == 4) && (arrayOfString[0].equals(str)))
           {
-            paramb = new a(bu.getInt(arrayOfString[1], -1), bu.getInt(arrayOfString[2], -1), bu.getInt(arrayOfString[3], -1));
+            paramb = new a(Util.getInt(arrayOfString[1], -1), Util.getInt(arrayOfString[2], -1), Util.getInt(arrayOfString[3], -1));
             AppMethodBeat.o(34307);
             return paramb;
           }
         }
       }
-      if (!bu.ht(paramb.hEA))
+      if (!Util.isNullOrNil(paramb.iyG))
       {
-        paramb = paramb.hEA.iterator();
+        paramb = paramb.iyG.iterator();
         while (paramb.hasNext())
         {
           localObject = ((String)paramb.next()).split(",");
           if ((localObject.length == 3) && (localObject[0].equals(str)))
           {
-            long l = bu.getLong(localObject[1], -1L);
-            paramb = new a(bu.getInt(localObject[2], -1), l);
+            long l = Util.getLong(localObject[1], -1L);
+            paramb = new a(Util.getInt(localObject[2], -1), l);
             AppMethodBeat.o(34307);
             return paramb;
           }
@@ -709,12 +1214,34 @@ public final class f
     return paramb;
   }
   
+  private static a i(k.b paramb)
+  {
+    AppMethodBeat.i(232838);
+    if (((paramb.iyA == 2) || (paramb.iyA == 3) || (paramb.iyA == 5)) && (!Util.isNullOrNil(paramb.iyE)))
+    {
+      paramb = paramb.iyE.iterator();
+      while (paramb.hasNext())
+      {
+        String[] arrayOfString = ((String)paramb.next()).split(",");
+        if (arrayOfString.length == 4)
+        {
+          paramb = new a(Util.getInt(arrayOfString[1], -1), Util.getInt(arrayOfString[2], -1), Util.getInt(arrayOfString[3], -1));
+          AppMethodBeat.o(232838);
+          return paramb;
+        }
+      }
+    }
+    paramb = new a();
+    AppMethodBeat.o(232838);
+    return paramb;
+  }
+  
   public static final class a
   {
-    public int JTC;
-    public int JTD = -1;
-    public int JTE = -1;
-    public long JTF = -1L;
+    public int PeH;
+    public int PeI = -1;
+    public int PeJ = -1;
+    public long PeK = -1L;
     public int role;
     
     public a()
@@ -725,22 +1252,22 @@ public final class f
     public a(int paramInt1, int paramInt2, int paramInt3)
     {
       this.role = 1;
-      this.JTC = paramInt1;
-      this.JTD = paramInt2;
-      this.JTE = paramInt3;
+      this.PeH = paramInt1;
+      this.PeI = paramInt2;
+      this.PeJ = paramInt3;
     }
     
     public a(int paramInt, long paramLong)
     {
       this.role = 2;
-      this.JTC = paramInt;
-      this.JTF = paramLong;
+      this.PeH = paramInt;
+      this.PeK = paramLong;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.f
  * JD-Core Version:    0.7.0.1
  */

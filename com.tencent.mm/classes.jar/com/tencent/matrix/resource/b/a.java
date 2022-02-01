@@ -5,33 +5,33 @@ import java.util.concurrent.TimeUnit;
 
 public final class a
 {
-  private static final long cId = TimeUnit.MINUTES.toMillis(1L);
-  public static final long cIe = TimeUnit.MINUTES.toMillis(20L);
-  private static final b cIf = b.cIm;
-  public final com.tencent.c.a.a cCj;
-  public final b cIg;
-  public final boolean cIh;
-  public final Intent cIi;
+  private static final long cYA = TimeUnit.MINUTES.toMillis(1L);
+  public static final long cYB = TimeUnit.MINUTES.toMillis(20L);
+  private static final b cYC = b.cYJ;
+  public final com.tencent.c.a.a cQF;
+  public final b cYD;
+  public final boolean cYE;
+  public final Intent cYF;
   
   private a(com.tencent.c.a.a parama, b paramb, boolean paramBoolean, Intent paramIntent)
   {
-    this.cCj = parama;
-    this.cIg = paramb;
-    this.cIh = paramBoolean;
-    this.cIi = paramIntent;
+    this.cQF = parama;
+    this.cYD = paramb;
+    this.cYE = paramBoolean;
+    this.cYF = paramIntent;
   }
   
-  public final long IN()
+  public final long Tb()
   {
-    return this.cCj.get(com.tencent.c.a.a.a.Maa.name(), cId);
+    return this.cQF.get(com.tencent.c.a.a.a.RAs.name(), cYA);
   }
   
   public static final class a
   {
-    public com.tencent.c.a.a cET;
-    public boolean cIh = false;
-    public Intent cIi;
-    public a.b cIj = a.IO();
+    public com.tencent.c.a.a cVx;
+    public boolean cYE = false;
+    public Intent cYF;
+    public a.b cYG = a.Tc();
   }
   
   public static enum b
@@ -41,7 +41,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.resource.b.a
  * JD-Core Version:    0.7.0.1
  */

@@ -180,7 +180,7 @@ public class GoogleApiAvailability
       localObject1 = new Notification.Builder(paramContext).setSmallIcon(paramContext.getApplicationInfo().icon).setPriority(2).setAutoCancel(true).setContentTitle(str).setStyle(new Notification.BigTextStyle().bigText((CharSequence)localObject1));
       if (DeviceProperties.isWearableWithoutPlayStore(paramContext))
       {
-        ((Notification.Builder)localObject1).addAction(2131231822, ((Resources)localObject2).getString(2131757549), paramPendingIntent);
+        ((Notification.Builder)localObject1).addAction(2131231903, ((Resources)localObject2).getString(2131757771), paramPendingIntent);
         if ((PlatformVersion.isAtLeastO()) && (PlatformVersion.isAtLeastO())) {
           ((Notification.Builder)localObject1).setChannelId(zza(paramContext, localNotificationManager));
         }
@@ -203,10 +203,10 @@ public class GoogleApiAvailability
       return;
       ((Notification.Builder)localObject1).setContentIntent(paramPendingIntent);
       break;
-      localObject2 = new s.c(paramContext).as(17301642).i(((Resources)localObject2).getString(2131757541)).i(System.currentTimeMillis()).F(true);
-      ((s.c)localObject2).Hl = paramPendingIntent;
+      localObject2 = new s.c(paramContext).as(17301642).i(((Resources)localObject2).getString(2131757763)).i(System.currentTimeMillis()).E(true);
+      ((s.c)localObject2).Hv = paramPendingIntent;
       paramPendingIntent = ((s.c)localObject2).f(str).g((CharSequence)localObject1);
-      paramPendingIntent.HC = true;
+      paramPendingIntent.HM = true;
       paramPendingIntent = paramPendingIntent.a(new s.b().e((CharSequence)localObject1));
       if ((PlatformVersion.isAtLeastO()) && (PlatformVersion.isAtLeastO())) {
         paramPendingIntent.mChannelId = zza(paramContext, localNotificationManager);

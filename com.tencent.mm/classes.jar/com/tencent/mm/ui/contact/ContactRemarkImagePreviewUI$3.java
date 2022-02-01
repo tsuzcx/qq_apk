@@ -16,20 +16,20 @@ final class ContactRemarkImagePreviewUI$3
   {
     AppMethodBeat.i(37739);
     b localb = new b();
-    localb.bd(paramAdapterView);
-    localb.bd(paramView);
-    localb.mu(paramInt);
-    localb.rl(paramLong);
-    a.b("com/tencent/mm/ui/contact/ContactRemarkImagePreviewUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-    if (!this.KHE.isTitleShowing()) {
-      this.KHE.showTitleView();
+    localb.bm(paramAdapterView);
+    localb.bm(paramView);
+    localb.pH(paramInt);
+    localb.zo(paramLong);
+    a.b("com/tencent/mm/ui/contact/ContactRemarkImagePreviewUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+    if (!this.PUD.isTitleShowing()) {
+      this.PUD.showTitleView();
     }
     for (;;)
     {
       a.a(this, "com/tencent/mm/ui/contact/ContactRemarkImagePreviewUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
       AppMethodBeat.o(37739);
       return;
-      this.KHE.hideTitleView();
+      this.PUD.hideTitleView();
     }
   }
 }

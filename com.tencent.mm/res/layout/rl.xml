@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:paddingRight="20.0dip" style="@style/gi"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.FoursquareRelativeLayout android:background="#ff333333" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.ui.MMImageView android:id="@id/b3w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" />
-        <ImageView android:id="@id/ee9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/c0c" android:layout_alignParentBottom="true" />
-        <TextView android:textColor="@color/BW_100_Alpha_0_3" android:ellipsize="middle" android:id="@id/dyh" android:background="#33ffffff" android:padding="2.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
-        <View android:id="@id/fb8" android:background="#7f000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <View android:id="@id/fa6" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-        <CheckBox android:id="@id/fa4" android:background="@drawable/a2s" android:focusable="false" android:clickable="false" android:layout_width="@dimen/ap" android:layout_height="@dimen/an" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/ci" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    </com.tencent.mm.ui.widget.FoursquareRelativeLayout>
-</LinearLayout>
+    <include android:id="@id/au5" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" layout="@layout/qp" style="@style/go" />
+    <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/au5" style="@style/gt">
+        <TextView android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
+        <FrameLayout android:id="@id/auf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_below="@id/ayn">
+            <ImageView android:id="@id/att" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:maxWidth="240.0dip" />
+            <ImageView android:id="@id/aun" android:background="@drawable/mf" android:layout_width="0.0dip" android:layout_height="0.0dip" />
+        </FrameLayout>
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_below="@id/auf">
+            <LinearLayout android:gravity="bottom" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:ellipsize="end" android:id="@id/atq" android:layout_marginLeft="0.0dip" android:text="{source}" android:singleLine="true" style="@style/gj" />
+                </LinearLayout>
+                <RelativeLayout android:id="@id/c7_" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:id="@id/at6" android:visibility="gone" android:text="@string/axz" android:singleLine="true" style="@style/gj" />
+                    <ImageView android:id="@id/atl" android:background="@drawable/ar0" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

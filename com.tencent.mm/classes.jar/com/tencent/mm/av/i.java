@@ -1,16 +1,13 @@
 package com.tencent.mm.av;
 
 import android.content.ContentValues;
-import android.content.Context;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
-import android.graphics.Canvas;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Build.VERSION;
 import android.os.Looper;
 import android.view.View;
@@ -19,27 +16,32 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.f.b;
 import com.tencent.mm.b.p;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.graphics.MMBitmapFactory;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.platformtools.p.b;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.pointers.PInt;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.e.k;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
 import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.ExifHelper;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.MMJpegOptim;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.FilePathGenerator;
+import com.tencent.mm.sdk.platformtools.ImageOptimLib;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.LongBitmapHandler;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.sdk.platformtools.MMNativeJpeg;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ag;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.n;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage;
+import com.tencent.mm.storage.ap;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.vfs.s;
 import com.tencent.wcdb.database.SQLiteDatabase;
 import java.io.IOException;
 import java.lang.ref.SoftReference;
@@ -55,228 +57,249 @@ import java.util.concurrent.atomic.AtomicLong;
 import junit.framework.Assert;
 
 public final class i
-  extends k
+  extends MStorage
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS ImgInfo ( id INTEGER PRIMARY KEY, msgSvrId LONG, offset INT, totalLen INT, bigImgPath TEXT, thumbImgPath TEXT )", "CREATE TABLE IF NOT EXISTS ImgInfo2 ( id INTEGER PRIMARY KEY, msgSvrId LONG, offset INT, totalLen INT, bigImgPath TEXT, thumbImgPath TEXT, createtime INT, msglocalid INT, status INT, nettimes INT, reserved1 int  , reserved2 int  , reserved3 text  , reserved4 text, hashdthumb int DEFAULT 0, iscomplete INT DEFAULT 1, origImgMD5 TEXT, compressType INT DEFAULT 0, midImgPath TEXT, forwardType INT DEFAULT 0, hevcPath TEXT, sendImgType INT DEFAULT 0 )", "CREATE INDEX IF NOT EXISTS  serverImgInfoIndex ON ImgInfo2 ( msgSvrId ) ", "CREATE INDEX IF NOT EXISTS  serverImgInfoHdIndex ON ImgInfo2 ( reserved1 ) ", "CREATE INDEX IF NOT EXISTS  msgLocalIdIndex ON ImgInfo2 ( msglocalid ) ", "insert into imginfo2 (id,msgSvrId , offset , totalLen , bigImgPath , thumbImgPath) select id, msgSvrId, offset ,totallen , bigimgpath , thumbimgpath from imginfo; ", "delete from ImgInfo ; ", "CREATE INDEX IF NOT EXISTS iscomplete_index ON ImgInfo2 ( iscomplete ) ", "CREATE INDEX IF NOT EXISTS origImgMD5_index ON ImgInfo2 ( origImgMD5 ) " };
-  public static int icX = 0;
-  public static int idi = 150;
-  public static long idj = 0L;
-  private aq gKO;
-  public com.tencent.mm.storagebase.h hKK;
-  com.tencent.mm.b.f<String, Bitmap> icY;
-  private com.tencent.mm.b.f<String, String> icZ;
-  private List<b> ida;
-  private Map<Integer, WeakReference<ImageView>> idb;
-  private Map<Integer, WeakReference<ImageView>> idc;
-  private Map<Integer, WeakReference<View>> idd;
-  private Set<Integer> ide;
-  private Map<String, String> idf;
-  private FrameLayout.LayoutParams idg;
-  private SoftReference<ColorDrawable> idh;
+  public static int iXV = 0;
+  public static int iYg = 150;
+  public static long iYh = 0L;
+  private MMHandler hAk;
+  public com.tencent.mm.storagebase.h iFy;
+  com.tencent.mm.b.f<String, Bitmap> iXW;
+  private com.tencent.mm.b.f<String, String> iXX;
+  private List<b> iXY;
+  private Map<Integer, WeakReference<ImageView>> iXZ;
+  private Map<Integer, WeakReference<ImageView>> iYa;
+  private Map<Integer, WeakReference<View>> iYb;
+  private Set<Integer> iYc;
+  private Map<String, String> iYd;
+  private FrameLayout.LayoutParams iYe;
+  private SoftReference<ColorDrawable> iYf;
   
   public i(com.tencent.mm.storagebase.h paramh)
   {
     AppMethodBeat.i(150566);
-    this.icY = new com.tencent.mm.memory.a.b(40, new f.b() {}, getClass());
-    this.icZ = new com.tencent.mm.memory.a.c(40);
-    this.ida = new ArrayList();
-    this.idb = new HashMap();
-    this.idc = new HashMap();
-    this.idd = new HashMap();
-    this.ide = new HashSet();
-    this.gKO = new aq(Looper.getMainLooper());
-    this.idf = new HashMap();
-    this.hKK = null;
-    this.idg = new FrameLayout.LayoutParams(-2, -2);
-    Iterator localIterator = d.idw.iterator();
+    this.iXW = new com.tencent.mm.memory.a.b(40, new i.1(this), getClass());
+    this.iXX = new com.tencent.mm.memory.a.c(40);
+    this.iXY = new ArrayList();
+    this.iXZ = new HashMap();
+    this.iYa = new HashMap();
+    this.iYb = new HashMap();
+    this.iYc = new HashSet();
+    this.hAk = new MMHandler(Looper.getMainLooper());
+    this.iYd = new HashMap();
+    this.iFy = null;
+    this.iYe = new FrameLayout.LayoutParams(-2, -2);
+    Iterator localIterator = d.iYu.iterator();
     while (localIterator.hasNext()) {
       a(paramh, ((c)localIterator.next()).table);
     }
-    this.hKK = paramh;
-    aIE();
+    this.iFy = paramh;
+    bcy();
     AppMethodBeat.o(150566);
   }
   
-  public static String[] FM(String paramString)
+  private g Ax(long paramLong)
   {
-    AppMethodBeat.i(218696);
-    String str1 = "CREATE TABLE IF NOT EXISTS " + paramString + " ( id INTEGER PRIMARY KEY, msgSvrId LONG, offset INT, totalLen INT, bigImgPath TEXT, thumbImgPath TEXT, createtime INT, msglocalid INT, status INT, nettimes INT, reserved1 int  , reserved2 int  , reserved3 text  , reserved4 text, hashdthumb int DEFAULT 0, iscomplete" + " INT DEFAULT 1, origImgMD5 TEXT, compressType INT DEFAULT 0, midImgPath TEXT, forwardType INT DEFAULT 0, hevcPath TEXT, sendImgType INT DEFAULT 0 )";
+    AppMethodBeat.i(150604);
+    g localg = new g();
+    Cursor localCursor = b("ImgInfo2", null, "msgSvrId=?", new String[] { String.valueOf(paramLong) });
+    if (localCursor.moveToFirst()) {
+      localg.convertFrom(localCursor);
+    }
+    localCursor.close();
+    AppMethodBeat.o(150604);
+    return localg;
+  }
+  
+  public static String EX(String paramString)
+  {
+    AppMethodBeat.i(150573);
+    paramString = "THUMBNAIL_DIRPATH://th_".concat(String.valueOf(paramString));
+    AppMethodBeat.o(150573);
+    return paramString;
+  }
+  
+  /* Error */
+  private static String OE(String paramString)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 239
+    //   5: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: invokestatic 245	java/lang/System:currentTimeMillis	()J
+    //   11: lstore_3
+    //   12: getstatic 84	com/tencent/mm/av/i:iYh	J
+    //   15: lstore 5
+    //   17: lload_3
+    //   18: lstore_1
+    //   19: lload 5
+    //   21: lload_3
+    //   22: lcmp
+    //   23: ifne +11 -> 34
+    //   26: lconst_1
+    //   27: invokestatic 251	java/lang/Thread:sleep	(J)V
+    //   30: invokestatic 245	java/lang/System:currentTimeMillis	()J
+    //   33: lstore_1
+    //   34: lload_1
+    //   35: putstatic 84	com/tencent/mm/av/i:iYh	J
+    //   38: new 253	java/lang/StringBuilder
+    //   41: dup
+    //   42: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   45: aload_0
+    //   46: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   49: lload_1
+    //   50: invokevirtual 261	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   53: invokevirtual 265	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: invokevirtual 269	java/lang/String:getBytes	()[B
+    //   59: invokestatic 275	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
+    //   62: astore_0
+    //   63: ldc_w 277
+    //   66: ldc_w 279
+    //   69: iconst_2
+    //   70: anewarray 105	java/lang/Object
+    //   73: dup
+    //   74: iconst_0
+    //   75: aload_0
+    //   76: aastore
+    //   77: dup
+    //   78: iconst_1
+    //   79: lload_1
+    //   80: invokestatic 284	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   83: aastore
+    //   84: invokestatic 289	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   87: ldc 239
+    //   89: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   92: ldc 2
+    //   94: monitorexit
+    //   95: aload_0
+    //   96: areturn
+    //   97: astore 7
+    //   99: goto -69 -> 30
+    //   102: astore_0
+    //   103: ldc 2
+    //   105: monitorexit
+    //   106: aload_0
+    //   107: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	108	0	paramString	String
+    //   18	62	1	l1	long
+    //   11	11	3	l2	long
+    //   15	5	5	l3	long
+    //   97	1	7	localInterruptedException	java.lang.InterruptedException
+    // Exception table:
+    //   from	to	target	type
+    //   26	30	97	java/lang/InterruptedException
+    //   3	17	102	finally
+    //   26	30	102	finally
+    //   30	34	102	finally
+    //   34	92	102	finally
+  }
+  
+  public static String[] Ox(String paramString)
+  {
+    AppMethodBeat.i(223581);
+    String str1 = "CREATE TABLE IF NOT EXISTS " + paramString + " ( id INTEGER PRIMARY KEY, msgSvrId LONG, offset INT, totalLen" + " INT, bigImgPath TEXT, thumbImgPath TEXT, createtime INT, msglocalid" + " INT, status INT, nettimes INT, reserved1 int  , reserved2" + " int  , reserved3 text  , reserved4 text, hashdthumb int DEFAULT 0, iscomplete" + " INT DEFAULT 1, origImgMD5 TEXT, compressType INT DEFAULT 0, midImgPath TEXT, forwardType" + " INT DEFAULT 0, hevcPath TEXT, sendImgType INT DEFAULT 0 )";
     String str2 = "CREATE INDEX IF NOT EXISTS " + paramString + "serverImgInfoIndex ON " + paramString + " ( msgSvrId ) ";
     String str3 = "CREATE INDEX IF NOT EXISTS " + paramString + "serverImgInfoHdIndex ON " + paramString + " ( reserved1 ) ";
     String str4 = "CREATE INDEX IF NOT EXISTS " + paramString + "msgLocalIdIndex ON " + paramString + " ( msglocalid ) ";
     String str5 = "CREATE INDEX IF NOT EXISTS " + paramString + "iscomplete_index ON " + paramString + " ( iscomplete ) ";
     paramString = "CREATE INDEX IF NOT EXISTS " + paramString + "origImgMD5_index ON " + paramString + " ( origImgMD5 ) ";
-    AppMethodBeat.o(218696);
+    AppMethodBeat.o(223581);
     return new String[] { str1, str2, str3, str4, str5, paramString };
   }
   
-  public static long FN(String paramString)
+  public static long Oy(String paramString)
   {
-    AppMethodBeat.i(218697);
-    long l = d.FV(paramString).incrementAndGet();
-    AppMethodBeat.o(218697);
+    AppMethodBeat.i(223582);
+    long l = d.OG(paramString).incrementAndGet();
+    AppMethodBeat.o(223582);
     return l;
   }
   
-  /* Error */
-  private static String FT(String paramString)
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: ldc_w 257
-    //   6: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   9: invokestatic 262	java/lang/System:currentTimeMillis	()J
-    //   12: lstore_3
-    //   13: getstatic 87	com/tencent/mm/av/i:idj	J
-    //   16: lstore 5
-    //   18: lload_3
-    //   19: lstore_1
-    //   20: lload 5
-    //   22: lload_3
-    //   23: lcmp
-    //   24: ifne +11 -> 35
-    //   27: lconst_1
-    //   28: invokestatic 268	java/lang/Thread:sleep	(J)V
-    //   31: invokestatic 262	java/lang/System:currentTimeMillis	()J
-    //   34: lstore_1
-    //   35: lload_1
-    //   36: putstatic 87	com/tencent/mm/av/i:idj	J
-    //   39: new 200	java/lang/StringBuilder
-    //   42: dup
-    //   43: invokespecial 269	java/lang/StringBuilder:<init>	()V
-    //   46: aload_0
-    //   47: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   50: lload_1
-    //   51: invokevirtual 272	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   54: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: invokevirtual 276	java/lang/String:getBytes	()[B
-    //   60: invokestatic 282	com/tencent/mm/b/g:getMessageDigest	([B)Ljava/lang/String;
-    //   63: astore_0
-    //   64: ldc_w 284
-    //   67: ldc_w 286
-    //   70: iconst_2
-    //   71: anewarray 106	java/lang/Object
-    //   74: dup
-    //   75: iconst_0
-    //   76: aload_0
-    //   77: aastore
-    //   78: dup
-    //   79: iconst_1
-    //   80: lload_1
-    //   81: invokestatic 292	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   84: aastore
-    //   85: invokestatic 297	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   88: ldc_w 257
-    //   91: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   94: ldc 2
-    //   96: monitorexit
-    //   97: aload_0
-    //   98: areturn
-    //   99: astore 7
-    //   101: goto -70 -> 31
-    //   104: astore_0
-    //   105: ldc 2
-    //   107: monitorexit
-    //   108: aload_0
-    //   109: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	110	0	paramString	String
-    //   19	62	1	l1	long
-    //   12	11	3	l2	long
-    //   16	5	5	l3	long
-    //   99	1	7	localInterruptedException	java.lang.InterruptedException
-    // Exception table:
-    //   from	to	target	type
-    //   27	31	99	java/lang/InterruptedException
-    //   3	18	104	finally
-    //   27	31	104	finally
-    //   31	35	104	finally
-    //   35	94	104	finally
-  }
-  
-  public static String N(bv parambv)
+  public static String W(ca paramca)
   {
     AppMethodBeat.i(150635);
-    if (parambv == null)
+    if (paramca == null)
     {
-      ae.w("MicroMsg.ImgInfoStorage", "[getBigPicPath] msg is null.");
+      Log.w("MicroMsg.ImgInfoStorage", "[getBigPicPath] msg is null.");
       AppMethodBeat.o(150635);
       return null;
     }
     long l = System.currentTimeMillis();
     Object localObject2;
     Object localObject1;
-    if (parambv.field_isSend == 1)
+    if (paramca.field_isSend == 1)
     {
-      localObject2 = q.aIX().G(parambv.field_talker, parambv.field_msgId);
+      localObject2 = q.bcR().H(paramca.field_talker, paramca.field_msgId);
       localObject1 = localObject2;
-      if (((g)localObject2).doE != 0L) {}
+      if (((g)localObject2).localId != 0L) {}
     }
     else
     {
-      localObject1 = q.aIX().F(parambv.field_talker, parambv.field_msgSvrId);
+      localObject1 = q.bcR().G(paramca.field_talker, paramca.field_msgSvrId);
     }
-    if (com.tencent.mm.kernel.g.ajR().isSDCardAvailable()) {
-      if (parambv.field_isSend == 1)
+    if (com.tencent.mm.kernel.g.aAh().isSDCardAvailable()) {
+      if (paramca.field_isSend == 1)
       {
-        parambv = h.c((g)localObject1);
-        localObject2 = q.aIX().o(parambv, "", "");
-        if ((parambv != null) && (parambv.length() > 0) && (o.fB((String)localObject2)))
+        paramca = h.c((g)localObject1);
+        localObject2 = q.bcR().o(paramca, "", "");
+        if ((paramca != null) && (paramca.length() > 0) && (s.YS((String)localObject2)))
         {
           AppMethodBeat.o(150635);
           return localObject2;
         }
-        parambv = ((g)localObject1).ico;
-        localObject1 = q.aIX().o(parambv, "", "");
-        if ((parambv != null) && (parambv.length() > 0) && (o.fB((String)localObject1)))
+        paramca = ((g)localObject1).iXm;
+        localObject1 = q.bcR().o(paramca, "", "");
+        if ((paramca != null) && (paramca.length() > 0) && (s.YS((String)localObject1)))
         {
           AppMethodBeat.o(150635);
           return localObject1;
         }
       }
-      else if (((g)localObject1).aIA())
+      else if (((g)localObject1).bcu())
       {
-        parambv = ((g)localObject1).ico;
-        if (!((g)localObject1).aIB()) {
+        paramca = ((g)localObject1).iXm;
+        if (!((g)localObject1).bcv()) {
           break label314;
         }
         localObject1 = h.a((g)localObject1);
-        if ((localObject1 == null) || (((g)localObject1).doE <= 0L) || (!((g)localObject1).aIA()) || (!o.fB(q.aIX().o(((g)localObject1).ico, "", "")))) {
+        if ((localObject1 == null) || (((g)localObject1).localId <= 0L) || (!((g)localObject1).bcu()) || (!s.YS(q.bcR().o(((g)localObject1).iXm, "", "")))) {
           break label314;
         }
-        parambv = ((g)localObject1).ico;
+        paramca = ((g)localObject1).iXm;
       }
     }
     label314:
     for (;;)
     {
       AppMethodBeat.o(150635);
-      return parambv;
-      ae.d("MicroMsg.ImgInfoStorage", "getBigPicPath use time:%s", new Object[] { System.currentTimeMillis() - l });
+      return paramca;
+      Log.d("MicroMsg.ImgInfoStorage", "getBigPicPath use time:%s", new Object[] { System.currentTimeMillis() - l });
       AppMethodBeat.o(150635);
       return null;
     }
   }
   
-  private long a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, PString paramPString, PInt paramPInt1, PInt paramPInt2, String paramString4, String paramString5, long paramLong, com.tencent.mm.b.b paramb1, com.tencent.mm.b.b paramb2, p.a parama, boolean paramBoolean)
+  private long a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, PString paramPString, PInt paramPInt1, PInt paramPInt2, String paramString4, String paramString5, long paramLong, com.tencent.mm.b.b paramb1, com.tencent.mm.b.b paramb2, p.a parama, boolean paramBoolean, int paramInt4)
   {
-    AppMethodBeat.i(218707);
+    AppMethodBeat.i(223596);
     if (paramInt1 == 0)
     {
-      paramString2 = a(paramString1, paramString2, 0, true, paramInt2, paramInt3, paramPInt1, paramPInt2, paramPString.value, paramLong, paramString4, paramString5, paramb2, paramb1, parama);
+      paramString2 = a(paramString1, paramString2, 0, true, paramInt2, paramInt3, paramPInt1, paramPInt2, paramPString.value, paramLong, paramString4, paramString5, paramb2, paramb1, parama, paramInt4);
       if (paramString2 == null)
       {
-        AppMethodBeat.o(218707);
+        AppMethodBeat.o(223596);
         return -1L;
       }
-      paramPString.value = paramString2.icq;
-      if (o.fB(paramString3))
+      paramPString.value = paramString2.iXo;
+      if (s.YS(paramString3))
       {
-        paramPString = ((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.emoji.b.c.class)).abV(paramString2.ico);
-        o.mF(paramString3, o(paramPString, "", ""));
-        paramString2.FJ(paramPString);
+        paramPString = ((com.tencent.mm.plugin.emoji.b.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.emoji.b.c.class)).alX(paramString2.iXm);
+        s.nw(paramString3, o(paramPString, "", ""));
+        paramString2.Ou(paramPString);
       }
       if (paramBoolean) {}
       for (paramLong = b(paramString1, paramString2);; paramLong = a(paramString1, "id", paramString2))
@@ -284,168 +307,158 @@ public final class i
         if (paramLong != -1L) {
           doNotify();
         }
-        AppMethodBeat.o(218707);
+        AppMethodBeat.o(223596);
         return paramLong;
       }
     }
     if (paramInt1 == 1)
     {
-      paramString3 = a(paramString1, paramString2, 1, true, paramInt2, paramInt3, paramPInt1, paramPInt2, paramPString.value, paramLong, paramString4, paramString5, paramb2, paramb1, parama);
+      paramString3 = a(paramString1, paramString2, 1, true, paramInt2, paramInt3, paramPInt1, paramPInt2, paramPString.value, paramLong, paramString4, paramString5, paramb2, paramb1, parama, paramInt4);
       if (paramString3 == null)
       {
-        AppMethodBeat.o(218707);
+        AppMethodBeat.o(223596);
         return -1L;
       }
-      paramPString.value = paramString3.icq;
-      paramString3.sq(0L);
-      paramString3.qM(0L);
-      paramString3.pq((int)o.aZR(o(paramString3.ico, "", "")));
-      paramString2 = a(paramString1, paramString2, 0, false, paramInt2, paramInt3, new PInt(), new PInt(), "", paramLong, paramString4, paramString5, paramb2, paramb1, parama);
+      paramPString.value = paramString3.iXo;
+      paramString3.Aw(0L);
+      paramString3.yF(0L);
+      paramString3.tf((int)s.boW(o(paramString3.iXm, "", "")));
+      paramString2 = a(paramString1, paramString2, 0, false, paramInt2, paramInt3, new PInt(), new PInt(), "", paramLong, paramString4, paramString5, paramb2, paramb1, parama, paramInt4);
       if (paramString2 == null)
       {
-        AppMethodBeat.o(218707);
+        AppMethodBeat.o(223596);
         return 0L;
       }
-      paramString2.FF(paramString3.ico);
-      paramString2.FH(paramString3.icq);
-      paramString2.FG(paramString3.icp);
-      paramString2.pq(0);
-      long l = this.hKK.yi(Thread.currentThread().getId());
-      paramString2.pr((int)a(paramString1, "id", paramString3));
+      paramString2.Oq(paramString3.iXm);
+      paramString2.Os(paramString3.iXo);
+      paramString2.Or(paramString3.iXn);
+      paramString2.tf(0);
+      long l = this.iFy.beginTransaction(Thread.currentThread().getId());
+      paramString2.tg((int)a(paramString1, "id", paramString3));
       if (paramBoolean) {}
       for (paramLong = b(paramString1, paramString2);; paramLong = a(paramString1, "id", paramString2))
       {
-        ae.d("MicroMsg.ImgInfoStorage", "summersafecdn insert ret[%d],  getLocalId[%d], getMsgLocalId[%d], getBigImgPath[%s], getMidImgPath[%s], getTotalLen[%d]", new Object[] { Long.valueOf(paramLong), Long.valueOf(paramString2.doE), Long.valueOf(paramString2.icx), paramString2.ico, paramString2.icp, Integer.valueOf(paramString2.hPI) });
+        Log.d("MicroMsg.ImgInfoStorage", "summersafecdn insert ret[%d],  getLocalId[%d], getMsgLocalId[%d], getBigImgPath[%s], getMidImgPath[%s], getTotalLen[%d]", new Object[] { Long.valueOf(paramLong), Long.valueOf(paramString2.localId), Long.valueOf(paramString2.iXv), paramString2.iXm, paramString2.iXn, Integer.valueOf(paramString2.iKP) });
         if (l > 0L) {
-          com.tencent.mm.kernel.g.ajR().gDX.sW(l);
+          com.tencent.mm.kernel.g.aAh().hqK.endTransaction(l);
         }
         if (paramLong != -1L) {
           doNotify();
         }
-        AppMethodBeat.o(218707);
+        AppMethodBeat.o(223596);
         return paramLong;
       }
     }
     Assert.assertTrue(false);
-    AppMethodBeat.o(218707);
+    AppMethodBeat.o(223596);
     return 0L;
   }
   
-  private Bitmap a(String paramString1, String paramString2, int paramInt1, int paramInt2, PInt paramPInt1, PInt paramPInt2, boolean paramBoolean, String paramString3, com.tencent.mm.b.b paramb)
+  private Bitmap a(String paramString1, String paramString2, int paramInt1, int paramInt2, PInt paramPInt1, PInt paramPInt2, boolean paramBoolean, String paramString3, com.tencent.mm.b.b paramb, int paramInt3)
   {
-    AppMethodBeat.i(218711);
-    ae.i("MicroMsg.ImgInfoStorage", "summersafecdn getPreSendBitmap talker[%s] origPath[%s], compressType[%d],needSave[%b], stack[%s], thumbPath: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), bu.fpN(), paramString3 });
-    Object localObject2 = (Bitmap)this.icY.aL(h.FL(paramString2));
-    Object localObject4 = null;
-    Object localObject3;
-    Object localObject1;
-    Object localObject5;
-    if (localObject2 != null)
+    AppMethodBeat.i(223600);
+    Log.i("MicroMsg.ImgInfoStorage", "summersafecdn getPreSendBitmap talker[%s] origPath[%s], compressType[%d],needSave[%b], stack[%s], thumbPath: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Boolean.valueOf(paramBoolean), Util.getStack(), paramString3 });
+    Bitmap localBitmap2 = (Bitmap)this.iXW.aT(h.Ow(paramString2));
+    String str1 = null;
+    String str2;
+    int i;
+    int j;
+    if (localBitmap2 != null)
     {
-      localObject3 = localObject2;
-      if (!((Bitmap)localObject2).isRecycled()) {}
+      localBitmap1 = localBitmap2;
+      if (!localBitmap2.isRecycled()) {}
     }
     else
     {
-      localObject1 = n(paramString1, paramString2, paramInt1);
-      if (bu.isNullOrNil((String)localObject1)) {
-        break label496;
+      str1 = m(paramString1, paramString2, paramInt1);
+      if (Util.isNullOrNil(str1)) {
+        break label500;
       }
-      int i;
-      int j;
-      if (((String)localObject1).endsWith("hd"))
+      if (!str1.endsWith("hd")) {
+        break label358;
+      }
+      str2 = str1;
+      localBitmap1 = localBitmap2;
+      if ((localBitmap1 != null) && (!localBitmap1.isRecycled())) {
+        break label497;
+      }
+      i = LongBitmapHandler.isLongPicture(str2);
+      j = BackwardSupportUtil.ExifHelper.getExifOrientation(str2);
+      if (i <= 0) {
+        break label371;
+      }
+    }
+    label184:
+    label349:
+    label358:
+    label371:
+    for (Bitmap localBitmap1 = BitmapUtil.drawBackgroundInNeed(LongBitmapHandler.createLongPictureBitmap(str2, i, j + paramInt2 * 90), str2, paramInt3);; localBitmap1 = BitmapUtil.createThumbBitmap(str2, 120, 120, true, false, paramInt3))
+    {
+      if (localBitmap1 != null)
       {
-        localObject5 = localObject1;
-        if (localObject2 != null)
+        this.iXW.x(h.Ow(paramString2), localBitmap1);
+        paramPInt1.value = localBitmap1.getWidth();
+        paramPInt2.value = localBitmap1.getHeight();
+        if (paramBoolean)
         {
-          localObject3 = localObject2;
-          localObject4 = localObject1;
-          if (!((Bitmap)localObject2).isRecycled()) {
-            break label485;
+          paramPInt1 = str1;
+          if (str1 == null) {
+            paramPInt1 = m(paramString1, paramString2, paramInt1);
           }
-        }
-        i = ag.aRP((String)localObject5);
-        j = BackwardSupportUtil.ExifHelper.df((String)localObject5);
-        if (i <= 0) {
-          break label357;
-        }
-      }
-      label181:
-      label335:
-      label357:
-      for (localObject2 = ag.aR((String)localObject5, i, j + paramInt2 * 90);; localObject2 = com.tencent.mm.sdk.platformtools.h.aM((String)localObject5, 120, 120))
-      {
-        if (localObject2 != null)
-        {
-          this.icY.q(h.FL(paramString2), localObject2);
-          paramPInt1.value = ((Bitmap)localObject2).getWidth();
-          paramPInt2.value = ((Bitmap)localObject2).getHeight();
-          if (paramBoolean)
+          paramString1 = paramPInt1;
+          if (!Util.isNullOrNil(paramPInt1))
           {
-            if (localObject1 != null) {
-              break label479;
+            paramString1 = paramPInt1;
+            if (paramPInt1.endsWith("hd")) {
+              paramString1 = paramPInt1.substring(0, paramPInt1.length() - 2);
             }
-            paramString1 = n(paramString1, paramString2, paramInt1);
-            label239:
-            paramString2 = paramString1;
-            if (!bu.isNullOrNil(paramString1))
-            {
-              paramString2 = paramString1;
-              if (paramString1.endsWith("hd")) {
-                paramString2 = paramString1.substring(0, paramString1.length() - 2);
-              }
-            }
-            if (paramb != null) {
-              paramb.Ki();
-            }
-            if ((bu.isNullOrNil(paramString2)) || (!o.fB(paramString2)) || (o.aZR(paramString2) <= 0L)) {
-              break label371;
-            }
-            o.mF(paramString2, paramString3);
-            ae.i("MicroMsg.ImgInfoStorage", "copy from old thumbPath %s %s", new Object[] { paramString2, paramString3 });
           }
+          if (paramb != null) {
+            paramb.Ur();
+          }
+          if ((Util.isNullOrNil(paramString1)) || (!s.YS(paramString1)) || (s.boW(paramString1) <= 0L)) {
+            break label389;
+          }
+          s.nw(paramString1, paramString3);
+          Log.i("MicroMsg.ImgInfoStorage", "copy from old thumbPath %s %s", new Object[] { paramString1, paramString3 });
         }
-        AppMethodBeat.o(218711);
-        return localObject2;
-        localObject2 = com.tencent.mm.sdk.platformtools.h.aRC((String)localObject1);
-        localObject5 = paramString2;
-        break;
       }
-      label371:
-      if ((!bu.isNullOrNil(paramString2)) && (o.fB(paramString2))) {
-        ae.i("MicroMsg.ImgInfoStorage", "oldThumbFile Length %s", new Object[] { Long.valueOf(o.aZR(paramString2)) });
-      }
+      AppMethodBeat.o(223600);
+      return localBitmap1;
+      localBitmap1 = BitmapUtil.getBitmapNative(str1);
+      str2 = paramString2;
+      break;
+    }
+    label389:
+    if ((!Util.isNullOrNil(paramString1)) && (s.YS(paramString1))) {
+      Log.i("MicroMsg.ImgInfoStorage", "oldThumbFile Length %s", new Object[] { Long.valueOf(s.boW(paramString1)) });
     }
     for (;;)
     {
-      label430:
+      label448:
       try
       {
-        if ((bu.isNullOrNil(paramString2)) || (!paramString2.endsWith("hd"))) {
-          break label468;
+        if ((Util.isNullOrNil(paramString1)) || (!paramString1.endsWith("hd"))) {
+          break label486;
         }
         paramInt1 = 1;
       }
       catch (IOException paramString1) {}
-      com.tencent.mm.sdk.platformtools.h.a((Bitmap)localObject2, paramInt1, Bitmap.CompressFormat.JPEG, paramString3, false);
-      ae.i("MicroMsg.ImgInfoStorage", "saveBitmapToImage thumbPath %s", new Object[] { paramString3 });
-      break label335;
-      break label335;
-      label468:
+      BitmapUtil.saveBitmapToImage(localBitmap1, paramInt1, Bitmap.CompressFormat.JPEG, paramString3, false);
+      Log.i("MicroMsg.ImgInfoStorage", "saveBitmapToImage thumbPath %s", new Object[] { paramString3 });
+      break label349;
+      break label349;
+      label486:
       paramInt1 = 0;
-      label479:
-      label485:
-      label496:
+      label497:
+      label500:
       while (paramInt1 == 0)
       {
         paramInt1 = 90;
-        break label430;
-        paramString1 = (String)localObject1;
-        break label239;
-        localObject2 = localObject3;
-        localObject1 = localObject4;
-        break label181;
-        localObject5 = paramString2;
+        break label448;
+        break label184;
+        str2 = paramString2;
+        localBitmap1 = localBitmap2;
         break;
       }
       paramInt1 = 80;
@@ -463,19 +476,19 @@ public final class i
   private Bitmap a(String paramString, boolean paramBoolean1, float paramFloat, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt, boolean paramBoolean5, Bitmap paramBitmap)
   {
     AppMethodBeat.i(150591);
-    String str = paramString;
+    String str2 = paramString;
     if (!paramBoolean1) {
-      str = c(paramString, false, true);
+      str2 = d(paramString, false, true);
     }
-    if (str == null)
+    if (str2 == null)
     {
       AppMethodBeat.o(150591);
       return null;
     }
-    Object localObject1 = null;
+    String str1 = null;
     int k;
     label87:
-    Object localObject2;
+    String str3;
     label146:
     long l;
     int m;
@@ -487,35 +500,35 @@ public final class i
       k = 1;
       if (paramBoolean5)
       {
-        paramString = (Bitmap)this.icY.aL(str);
-        localObject1 = paramString;
+        paramString = (Bitmap)this.iXW.aT(str2);
+        str1 = paramString;
         if (paramString == null)
         {
           if (paramString != null) {
-            break label696;
+            break label698;
           }
           paramBoolean1 = true;
-          ae.l("MicroMsg.ImgInfoStorage", "bm is null:%b,  url:%s", new Object[] { Boolean.valueOf(paramBoolean1), str });
-          localObject1 = paramString;
+          Log.printDebugStack("MicroMsg.ImgInfoStorage", "bm is null:%b,  url:%s", new Object[] { Boolean.valueOf(paramBoolean1), str2 });
+          str1 = paramString;
         }
       }
-      if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
+      if ((str1 != null) && (!str1.isRecycled()))
       {
-        localObject2 = localObject1;
+        str3 = str1;
         if (k == 0) {}
       }
       else
       {
-        bu.fpO();
+        Util.nowMilliSecond();
         if (k == 0) {
-          break label701;
+          break label703;
         }
         paramString = paramBitmap;
         if (paramBitmap == null) {
-          paramString = u.Js(str);
+          paramString = u.Sq(str2);
         }
         if (paramString == null) {
-          break label922;
+          break label929;
         }
         l = System.currentTimeMillis();
         m = paramString.getWidth();
@@ -524,22 +537,22 @@ public final class i
         j = m;
         if (paramBoolean3)
         {
-          if (icX == 0) {
-            icX = com.tencent.mm.cb.a.ay(com.tencent.mm.sdk.platformtools.ak.getContext(), 2131166264);
+          if (iXV == 0) {
+            iXV = com.tencent.mm.cb.a.aH(MMApplicationContext.getContext(), 2131166307);
           }
-          if (m <= icX)
+          if (m <= iXV)
           {
             i = n;
             j = m;
-            if (n <= icX) {}
+            if (n <= iXV) {}
           }
           else
           {
             if (m <= n) {
-              break label712;
+              break label714;
             }
-            i = n * icX / m;
-            j = icX;
+            i = n * iXV / m;
+            j = iXV;
           }
         }
         label259:
@@ -547,17 +560,18 @@ public final class i
         m = j;
         if (paramBoolean4)
         {
-          if (str.endsWith("hd")) {
-            break label961;
+          if (str2.endsWith("hd")) {
+            break label968;
           }
           j = (int)(paramString.getWidth() * paramFloat * 1.25F);
           i = (int)(paramString.getHeight() * paramFloat * 1.25F);
         }
       }
     }
-    label696:
-    label701:
-    label961:
+    label512:
+    label698:
+    label703:
+    label968:
     for (;;)
     {
       float f;
@@ -575,29 +589,28 @@ public final class i
         m = j;
         if (j < 60.0F * paramFloat)
         {
-          ae.d("MicroMsg.ImgInfoStorage", "pic to small width is %d ", new Object[] { Integer.valueOf(j) });
+          Log.d("MicroMsg.ImgInfoStorage", "pic to small width is %d ", new Object[] { Integer.valueOf(j) });
           m = (int)(60.0F * paramFloat);
         }
         j = i;
         if (i < 60.0F * paramFloat)
         {
-          ae.d("MicroMsg.ImgInfoStorage", "pic to small height is %d ", new Object[] { Integer.valueOf(i) });
+          Log.d("MicroMsg.ImgInfoStorage", "pic to small height is %d ", new Object[] { Integer.valueOf(i) });
           j = (int)(60.0F * paramFloat);
         }
-        paramBitmap = com.tencent.mm.sdk.platformtools.ak.getContext();
-        localObject1 = new int[2];
+        MMApplicationContext.getContext();
+        paramBitmap = new int[2];
         if (j >= m)
         {
-          paramFloat = j / m;
-          if (paramFloat <= 2.0F)
+          f = j / m;
+          if (f <= 2.0F)
           {
-            i = com.tencent.mm.cb.a.ay(paramBitmap, 2131165213);
-            j = (int)(i / paramFloat);
-            label510:
-            localObject1[0] = j;
-            localObject1[1] = i;
-            m = localObject1[0];
-            n = localObject1[1];
+            i = Math.round(150.0F * paramFloat);
+            j = (int)(i / f);
+            paramBitmap[0] = j;
+            paramBitmap[1] = i;
+            m = paramBitmap[0];
+            n = paramBitmap[1];
           }
         }
         for (;;)
@@ -607,60 +620,60 @@ public final class i
             paramBitmap = Bitmap.createScaledBitmap(paramString, m, n, true);
             if ((paramString != paramBitmap) && (k == 0))
             {
-              ae.i("MicroMsg.ImgInfoStorage", "[bitmapFromUriPath]:bitmap recycle %s", new Object[] { paramString.toString() });
+              Log.i("MicroMsg.ImgInfoStorage", "[bitmapFromUriPath]:bitmap recycle %s", new Object[] { paramString.toString() });
               paramString.recycle();
             }
             if (paramBoolean4)
             {
-              paramString = com.tencent.mm.sdk.platformtools.h.k(paramBitmap, paramInt);
-              localObject1 = System.currentTimeMillis() - l;
+              paramString = BitmapUtil.createChattingImage(paramBitmap, paramInt);
+              str1 = System.currentTimeMillis() - l;
               if (paramString != null) {
                 continue;
               }
               paramBitmap = "";
-              ae.i("MicroMsg.ImgInfoStorage", "cached file :%s bitmap time:%s bitmap:%s", new Object[] { str, localObject1, paramBitmap });
-              localObject2 = paramString;
+              Log.i("MicroMsg.ImgInfoStorage", "cached file :%s bitmap time:%s bitmap:%s", new Object[] { str2, str1, paramBitmap });
+              str3 = paramString;
               if (paramString != null)
               {
-                localObject2 = paramString;
+                str3 = paramString;
                 if (k == 0)
                 {
-                  this.icY.q(str, paramString);
-                  localObject2 = paramString;
+                  this.iXW.x(str2, paramString);
+                  str3 = paramString;
                 }
               }
               AppMethodBeat.o(150591);
-              return localObject2;
+              return str3;
               k = 0;
               break;
               paramBoolean1 = false;
               break label87;
-              paramBitmap = com.tencent.mm.sdk.platformtools.h.q(str, paramFloat);
+              paramBitmap = BitmapUtil.getBitmapNative(str2, paramFloat);
               break label146;
-              label712:
+              label714:
               if (m == n)
               {
-                i = icX;
-                j = icX;
+                i = iXV;
+                j = iXV;
                 break label259;
               }
-              j = m * icX / n;
-              i = icX;
+              j = m * iXV / n;
+              i = iXV;
               break label259;
               f = 160.0F * paramFloat / j;
               break label353;
-              j = com.tencent.mm.cb.a.ay(paramBitmap, 2131165215);
-              i = (int)(j * paramFloat);
-              break label510;
-              paramFloat = m / j;
-              if (paramFloat <= 2.0F)
+              j = Math.round(75.0F * paramFloat);
+              i = (int)(j * f);
+              break label512;
+              f = m / j;
+              if (f <= 2.0F)
               {
-                j = com.tencent.mm.cb.a.ay(paramBitmap, 2131165213);
-                i = (int)(j / paramFloat);
-                break label510;
+                j = Math.round(150.0F * paramFloat);
+                i = (int)(j / f);
+                break label512;
               }
-              i = com.tencent.mm.cb.a.ay(paramBitmap, 2131165215);
-              j = (int)(i * paramFloat);
+              i = Math.round(75.0F * paramFloat);
+              j = (int)(i * f);
             }
           }
           catch (OutOfMemoryError paramBitmap)
@@ -674,8 +687,8 @@ public final class i
             continue;
             if (paramBoolean2)
             {
-              paramString = com.tencent.mm.sdk.platformtools.h.a(paramBitmap, true, com.tencent.mm.cb.a.fromDPToPix(com.tencent.mm.sdk.platformtools.ak.getContext(), 3));
-              ae.i("MicroMsg.ImgInfoStorage", "[bitmapFromUriPath]:bitmap recycle %s", new Object[] { paramBitmap.toString() });
+              paramString = BitmapUtil.getRoundedCornerBitmap(paramBitmap, true, com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 3));
+              Log.i("MicroMsg.ImgInfoStorage", "[bitmapFromUriPath]:bitmap recycle %s", new Object[] { paramBitmap.toString() });
               paramBitmap.recycle();
               continue;
             }
@@ -684,74 +697,74 @@ public final class i
             paramBitmap = paramString.toString();
             continue;
           }
-          ae.e("MicroMsg.ImgInfoStorage", "img maybe delete, %s, %s", new Object[] { str, Boolean.valueOf(o.fB(str)) });
-          localObject2 = localObject1;
+          Log.e("MicroMsg.ImgInfoStorage", "img maybe delete, %s, %s", new Object[] { str2, Boolean.valueOf(s.YS(str2)) });
+          str3 = str1;
         }
       }
     }
   }
   
-  private g a(String paramString1, String paramString2, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2, String paramString3, long paramLong, String paramString4, String paramString5, com.tencent.mm.b.b paramb1, com.tencent.mm.b.b paramb2, p.a parama)
+  private g a(String paramString1, String paramString2, int paramInt1, boolean paramBoolean, int paramInt2, int paramInt3, PInt paramPInt1, PInt paramPInt2, String paramString3, long paramLong, String paramString4, String paramString5, com.tencent.mm.b.b paramb1, com.tencent.mm.b.b paramb2, p.a parama, int paramInt4)
   {
-    AppMethodBeat.i(218715);
-    if (!o.fB(paramString2))
+    AppMethodBeat.i(223604);
+    if (!s.YS(paramString2))
     {
-      AppMethodBeat.o(218715);
+      AppMethodBeat.o(223604);
       return null;
     }
-    String str = h.FL(paramString2);
-    paramb1 = a(paramString1, paramString2, paramInt1, paramBoolean, paramInt3, paramPInt1, paramPInt2, paramString3, paramString4, paramb1);
-    if ((parama != null) && (parama.icr == paramInt1))
+    String str = h.Ow(paramString2);
+    paramb1 = a(paramString1, paramString2, paramInt1, paramBoolean, paramInt3, paramPInt1, paramPInt2, paramString3, paramString4, paramb1, paramInt4);
+    if ((parama != null) && (parama.iXp == paramInt1))
     {
-      paramString5 = parama.aIO();
-      paramPInt2 = paramString5.ieU;
-      paramString3 = paramString5.ieV;
-      paramPInt1 = paramString5.icA;
-      paramString4 = paramString5.ieW;
-      paramString5 = paramString5.ieX;
-      ae.i("MicroMsg.ImgInfoStorage", "summersafecdn found CompressType path %s, source:%d, compressType:%d, pMidImgName[%s], pMidImgPath[%s]", new Object[] { paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramString4.value, paramString5.value });
+      paramString5 = parama.bcI();
+      paramPInt2 = paramString5.iZP;
+      paramString3 = paramString5.iZQ;
+      paramPInt1 = paramString5.iXy;
+      paramString4 = paramString5.iZR;
+      paramString5 = paramString5.iZS;
+      Log.i("MicroMsg.ImgInfoStorage", "summersafecdn found CompressType path %s, source:%d, compressType:%d, pMidImgName[%s], pMidImgPath[%s]", new Object[] { paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramString4.value, paramString5.value });
       paramString5 = new g();
-      paramString5.dEu = -1;
-      paramString5.setLocalId(d.FV(paramString1).incrementAndGet());
-      paramString5.sq(paramLong);
-      if (!bu.isNullOrNil(paramPInt1)) {
-        paramString5.FI(paramPInt1);
+      paramString5.cSx = -1;
+      paramString5.setLocalId(d.OG(paramString1).incrementAndGet());
+      paramString5.Aw(paramLong);
+      if (!Util.isNullOrNil(paramPInt1)) {
+        paramString5.Ot(paramPInt1);
       }
-      paramString5.pu(0);
+      paramString5.tj(0);
       paramString5.setSource(paramInt2);
       if (paramInt2 != 4) {
-        break label576;
+        break label580;
       }
-      if (paramString2.startsWith(com.tencent.mm.storage.ak.azU()))
+      if (paramString2.startsWith(ap.aTc()))
       {
-        paramString5.ps(3);
-        label238:
+        paramString5.th(3);
+        label240:
         if (paramBoolean)
         {
-          paramString5.FF(paramPInt2.value + ".jpg");
-          if (!bu.isNullOrNil(paramString4.value)) {
-            paramString5.FG(paramString4.value + ".jpg");
+          paramString5.Oq(paramPInt2.value + ".jpg");
+          if (!Util.isNullOrNil(paramString4.value)) {
+            paramString5.Or(paramString4.value + ".jpg");
           }
-          if (bu.isNullOrNil(paramString5.icq)) {
-            paramString5.FH(paramb1);
+          if (Util.isNullOrNil(paramString5.iXo)) {
+            paramString5.Os(paramb1);
           }
-          paramString5.pq((int)o.aZR(paramString3.value));
-          if (paramString5.hPI == 0) {
-            ae.i("MicroMsg.ImgInfoStorage", "thumb file totlen is 0 %s", new Object[] { paramString3.value });
+          paramString5.tf((int)s.boW(paramString3.value));
+          if (paramString5.iKP == 0) {
+            Log.i("MicroMsg.ImgInfoStorage", "thumb file totlen is 0 %s", new Object[] { paramString3.value });
           }
-          paramString5.FE(str);
+          paramString5.Op(str);
         }
-        paramString5.setCreateTime((int)bu.aRi());
-        paramString5.pv(paramInt1);
-        ae.d("MicroMsg.ImgInfoStorage", "fromPathToImgInfo insert: compress img size = " + paramString5.hPI);
-        AppMethodBeat.o(218715);
+        paramString5.setCreateTime((int)Util.nowSecond());
+        paramString5.tk(paramInt1);
+        Log.d("MicroMsg.ImgInfoStorage", "fromPathToImgInfo insert: compress img size = " + paramString5.iKP);
+        AppMethodBeat.o(223604);
         return paramString5;
       }
     }
     else
     {
-      if ((parama == null) || (parama.icr == paramInt1)) {
-        break label585;
+      if ((parama == null) || (parama.iXp == paramInt1)) {
+        break label589;
       }
       paramPInt2 = null;
     }
@@ -761,33 +774,33 @@ public final class i
       paramString3 = new PString();
       paramString4 = new PString();
       paramb2 = new PString();
-      paramPInt1 = a(paramString1, paramString2, str, paramInt1, paramBoolean, paramString5, paramString3, paramString4, paramb2, paramPInt1, paramPInt2);
-      ae.i("MicroMsg.ImgInfoStorage", "summersafecdn user change CompressType path %s, source:%d, compressType:%d, pMidImgName[%s], pMidImgPath[%s]", new Object[] { paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramString4.value, paramb2.value });
+      paramPInt1 = a(paramString1, paramString2, str, paramInt1, paramBoolean, paramString5, paramString3, paramString4, paramb2, paramPInt1, paramPInt2, paramInt4);
+      Log.i("MicroMsg.ImgInfoStorage", "summersafecdn user change CompressType path %s, source:%d, compressType:%d, pMidImgName[%s], pMidImgPath[%s]", new Object[] { paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1), paramString4.value, paramb2.value });
       paramPInt2 = paramString5;
       break;
-      paramString5.ps(2);
-      break label238;
-      label576:
-      paramString5.ps(1);
-      break label238;
-      label585:
+      paramString5.th(2);
+      break label240;
+      label580:
+      paramString5.th(1);
+      break label240;
+      label589:
       paramPInt2 = paramb2;
     }
   }
   
-  private String a(String paramString1, String paramString2, int paramInt1, boolean paramBoolean, int paramInt2, PInt paramPInt1, PInt paramPInt2, String paramString3, String paramString4, com.tencent.mm.b.b paramb)
+  private String a(String paramString1, String paramString2, int paramInt1, boolean paramBoolean, int paramInt2, PInt paramPInt1, PInt paramPInt2, String paramString3, String paramString4, com.tencent.mm.b.b paramb, int paramInt3)
   {
-    AppMethodBeat.i(218713);
-    ae.i("MicroMsg.ImgInfoStorage", "genThumbImg, orig:%s", new Object[] { paramString2 });
-    if (!o.fB(paramString2))
+    AppMethodBeat.i(223602);
+    Log.i("MicroMsg.ImgInfoStorage", "genThumbImg, orig:%s", new Object[] { paramString2 });
+    if (!s.YS(paramString2))
     {
-      ae.e("MicroMsg.ImgInfoStorage", "file not exit:%s", new Object[] { paramString2 });
-      AppMethodBeat.o(218713);
+      Log.e("MicroMsg.ImgInfoStorage", "file not exit:%s", new Object[] { paramString2 });
+      AppMethodBeat.o(223602);
       return null;
     }
     String str = paramString4;
-    if (bu.isNullOrNil(paramString4)) {
-      str = aIG();
+    if (Util.isNullOrNil(paramString4)) {
+      str = bcA();
     }
     str = "THUMBNAIL_DIRPATH://th_".concat(String.valueOf(str));
     paramString4 = a(str, "th_", "", false);
@@ -796,87 +809,78 @@ public final class i
     }
     if (paramBoolean)
     {
-      if ((!bu.isNullOrNil(paramString3)) && (o.fB(paramString3))) {
-        break label263;
+      if ((!Util.isNullOrNil(paramString3)) && (s.YS(paramString3))) {
+        break label264;
       }
-      long l = bu.HQ();
-      a(paramString1, paramString2, paramInt1, paramInt2, paramPInt1, paramPInt2, true, paramString4, paramb);
-      if (!o.fB(paramString4)) {
-        break label251;
+      long l = Util.currentTicks();
+      a(paramString1, paramString2, paramInt1, paramInt2, paramPInt1, paramPInt2, true, paramString4, paramb, paramInt3);
+      if (!s.YS(paramString4)) {
+        break label252;
       }
-      com.tencent.mm.plugin.report.service.g.yxI.f(10921, new Object[] { Long.valueOf(o.aZR(paramString4)), Long.valueOf(o.aZR(paramString2)), Integer.valueOf(90), Long.valueOf(bu.aO(l)) });
+      com.tencent.mm.plugin.report.service.h.CyF.a(10921, new Object[] { Long.valueOf(s.boW(paramString4)), Long.valueOf(s.boW(paramString2)), Integer.valueOf(90), Long.valueOf(Util.ticksToNow(l)) });
     }
     for (;;)
     {
-      ae.d("MicroMsg.ImgInfoStorage", "insert: thumbName = ".concat(String.valueOf(str)));
-      AppMethodBeat.o(218713);
+      Log.d("MicroMsg.ImgInfoStorage", "insert: thumbName = ".concat(String.valueOf(str)));
+      AppMethodBeat.o(223602);
       return str;
-      label251:
-      ae.e("MicroMsg.ImgInfoStorage", " thumbImg not exits");
+      label252:
+      Log.e("MicroMsg.ImgInfoStorage", " thumbImg not exits");
       continue;
-      label263:
-      o.mF(paramString3, paramString4);
+      label264:
+      s.nw(paramString3, paramString4);
     }
   }
   
-  private void a(ImageView paramImageView1, ImageView paramImageView2, View paramView, String paramString, float paramFloat)
+  private void a(ImageView paramImageView1, ImageView paramImageView2, View paramView, String paramString, float paramFloat, boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(150586);
-    int k = paramString.hashCode();
-    int m = paramImageView1.hashCode();
-    Iterator localIterator = this.ida.iterator();
+    AppMethodBeat.i(223586);
+    int j = paramString.hashCode();
+    int k = paramImageView1.hashCode();
+    Iterator localIterator = this.iXY.iterator();
     while (localIterator.hasNext())
     {
       b localb = (b)localIterator.next();
-      if (m == localb.idp)
+      if (k == localb.iYn)
       {
-        ae.i("MicroMsg.ImgInfoStorage", "setbitmapFromUri  [%d, %s] ", new Object[] { Integer.valueOf(localb.idp), localb.url });
+        Log.i("MicroMsg.ImgInfoStorage", "setbitmapFromUri  [%d, %s] ", new Object[] { Integer.valueOf(localb.iYn), localb.url });
         localb.url = paramString;
-        if (!this.ide.contains(Integer.valueOf(k)))
+        if (!this.iYc.contains(Integer.valueOf(j)))
         {
-          this.ide.add(Integer.valueOf(k));
-          f(paramString, paramFloat);
+          this.iYc.add(Integer.valueOf(j));
+          a(paramString, paramFloat, true, 2131231628);
         }
-        AppMethodBeat.o(150586);
+        AppMethodBeat.o(223586);
         return;
       }
     }
-    this.idb.put(Integer.valueOf(m), new WeakReference(paramImageView1));
-    int i;
+    this.iXZ.put(Integer.valueOf(k), new WeakReference(paramImageView1));
+    paramInt = 0;
     if (paramImageView2 != null)
     {
-      i = paramImageView2.hashCode();
-      this.idc.put(Integer.valueOf(i), new WeakReference(paramImageView2));
+      paramInt = paramImageView2.hashCode();
+      this.iYa.put(Integer.valueOf(paramInt), new WeakReference(paramImageView2));
     }
-    for (;;)
+    int i = 0;
+    if (paramView != null)
     {
-      int j;
-      if (paramView != null)
-      {
-        j = paramView.hashCode();
-        this.idd.put(Integer.valueOf(j), new WeakReference(paramView));
-      }
-      for (;;)
-      {
-        paramImageView1 = new b(m, paramString, i, j);
-        this.ida.add(paramImageView1);
-        if (!this.ide.contains(Integer.valueOf(k)))
-        {
-          this.ide.add(Integer.valueOf(k));
-          f(paramString, paramFloat);
-        }
-        AppMethodBeat.o(150586);
-        return;
-        j = 0;
-      }
-      i = 0;
+      i = paramView.hashCode();
+      this.iYb.put(Integer.valueOf(i), new WeakReference(paramView));
     }
+    paramImageView1 = new b(k, paramString, paramInt, i);
+    this.iXY.add(paramImageView1);
+    if (!this.iYc.contains(Integer.valueOf(j)))
+    {
+      this.iYc.add(Integer.valueOf(j));
+      a(paramString, paramFloat, true, 2131231628);
+    }
+    AppMethodBeat.o(223586);
   }
   
   private static void a(com.tencent.mm.storagebase.h paramh, String paramString)
   {
-    AppMethodBeat.i(218698);
-    Cursor localCursor = paramh.a("PRAGMA table_info(" + paramString + ")", null, 2);
+    AppMethodBeat.i(223583);
+    Cursor localCursor = paramh.rawQuery("PRAGMA table_info(" + paramString + ")", null, 2);
     int i4 = localCursor.getColumnIndex("name");
     int j = 0;
     int i = 0;
@@ -922,7 +926,7 @@ public final class i
       }
       break;
       localCursor.close();
-      long l = com.tencent.mm.kernel.g.ajR().gDX.yi(Thread.currentThread().getId());
+      long l = com.tencent.mm.kernel.g.aAh().hqK.beginTransaction(Thread.currentThread().getId());
       if (k == 0) {
         paramh.execSQL(paramString, "Alter table " + paramString + " add hashdthumb INT DEFAULT 0");
       }
@@ -948,66 +952,29 @@ public final class i
         paramh.execSQL(paramString, "Alter table " + paramString + " add sendImgType INT DEFAULT 0");
       }
       if (l > 0L) {
-        com.tencent.mm.kernel.g.ajR().gDX.sW(l);
+        com.tencent.mm.kernel.g.aAh().hqK.endTransaction(l);
       }
-      AppMethodBeat.o(218698);
+      AppMethodBeat.o(223583);
       return;
     }
   }
   
-  public static String aIG()
+  private void a(final String paramString, final float paramFloat, final boolean paramBoolean, final int paramInt)
   {
-    try
-    {
-      AppMethodBeat.i(150620);
-      String str = FT("");
-      AppMethodBeat.o(150620);
-      return str;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  private long b(String paramString, g paramg)
-  {
-    AppMethodBeat.i(218709);
-    paramString = d.FW(paramString);
-    long l = this.hKK.fxU().insertOrThrow(paramString, "id", paramg.convertTo());
-    if (l != -1L) {
-      paramg.aID();
-    }
-    ae.i("MicroMsg.ImgInfoStorage", "insert img, table:%s result:%d, localId:%d, msgLocalId:%d, msgSvrId:%d, hdID:%d", new Object[] { paramString, Long.valueOf(l), Long.valueOf(paramg.doE), Long.valueOf(paramg.icx), Long.valueOf(paramg.dCd), Integer.valueOf(paramg.icz) });
-    AppMethodBeat.o(218709);
-    return l;
-  }
-  
-  private Cursor b(String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2)
-  {
-    AppMethodBeat.i(150608);
-    paramString1 = a(paramString1, paramArrayOfString1, paramString2, paramArrayOfString2);
-    AppMethodBeat.o(150608);
-    return paramString1;
-  }
-  
-  private void f(final String paramString, final float paramFloat)
-  {
-    AppMethodBeat.i(150587);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+    AppMethodBeat.i(223587);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(150562);
-        i.this.a(paramString, true, paramFloat, true, false, this.idm, this.idn);
+        i.this.a(paramString, true, paramFloat, true, false, paramBoolean, paramInt);
         i.a(i.this).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(150561);
-            i.a(i.this, i.2.this.idl);
+            i.a(i.this, i.2.this.iYj);
             AppMethodBeat.o(150561);
           }
         });
@@ -1022,74 +989,144 @@ public final class i
         return str;
       }
     });
-    AppMethodBeat.o(150587);
+    AppMethodBeat.o(223587);
   }
   
-  private g m(String paramString1, String paramString2, int paramInt)
+  private long b(String paramString, g paramg)
   {
-    AppMethodBeat.i(218700);
+    AppMethodBeat.i(223598);
+    paramString = d.OH(paramString);
+    long l = this.iFy.gFH().insertOrThrow(paramString, "id", paramg.convertTo());
+    if (l != -1L) {
+      paramg.bcx();
+    }
+    Log.i("MicroMsg.ImgInfoStorage", "insert img, table:%s result:%d, localId:%d, msgLocalId:%d, msgSvrId:%d, hdID:%d", new Object[] { paramString, Long.valueOf(l), Long.valueOf(paramg.localId), Long.valueOf(paramg.iXv), Long.valueOf(paramg.dTS), Integer.valueOf(paramg.iXx) });
+    AppMethodBeat.o(223598);
+    return l;
+  }
+  
+  private Cursor b(String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2)
+  {
+    AppMethodBeat.i(150608);
+    paramString1 = a(paramString1, paramArrayOfString1, paramString2, paramArrayOfString2);
+    AppMethodBeat.o(150608);
+    return paramString1;
+  }
+  
+  public static String bcA()
+  {
+    try
+    {
+      AppMethodBeat.i(150620);
+      String str = OE("");
+      AppMethodBeat.o(150620);
+      return str;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  private g l(String paramString1, String paramString2, int paramInt)
+  {
+    AppMethodBeat.i(223589);
     g localg = new g();
-    paramString1 = a(d.FW(paramString1), null, "origImgMD5=? AND compressType=?", new String[] { String.valueOf(paramString2), String.valueOf(paramInt) });
+    paramString1 = a(d.OH(paramString1), null, "origImgMD5=? AND compressType=?", new String[] { String.valueOf(paramString2), String.valueOf(paramInt) });
     if (paramString1.moveToFirst()) {
       localg.convertFrom(paramString1);
     }
     paramString1.close();
-    AppMethodBeat.o(218700);
+    AppMethodBeat.o(223589);
     return localg;
   }
   
-  private String n(String paramString1, String paramString2, int paramInt)
+  private String m(String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(218710);
-    paramString1 = m(paramString1, h.FL(paramString2), paramInt);
-    if (!bu.isNullOrNil(paramString1.icq))
+    AppMethodBeat.i(223599);
+    paramString1 = l(paramString1, h.Ow(paramString2), paramInt);
+    if (!Util.isNullOrNil(paramString1.iXo))
     {
-      paramString1 = R(paramString1.icq, true);
-      if (o.fB(paramString1))
+      paramString1 = R(paramString1.iXo, true);
+      if (s.YS(paramString1))
       {
-        AppMethodBeat.o(218710);
+        AppMethodBeat.o(223599);
         return paramString1;
       }
     }
-    AppMethodBeat.o(218710);
+    AppMethodBeat.o(223599);
     return null;
   }
   
-  private g sr(long paramLong)
+  public final g G(String paramString, long paramLong)
   {
-    AppMethodBeat.i(150604);
+    AppMethodBeat.i(223591);
     g localg = new g();
-    Cursor localCursor = b("ImgInfo2", null, "msgSvrId=?", new String[] { String.valueOf(paramLong) });
-    if (localCursor.moveToFirst()) {
-      localg.convertFrom(localCursor);
-    }
-    localCursor.close();
-    AppMethodBeat.o(150604);
-    return localg;
-  }
-  
-  public static String wI(String paramString)
-  {
-    AppMethodBeat.i(150573);
-    paramString = "THUMBNAIL_DIRPATH://th_".concat(String.valueOf(paramString));
-    AppMethodBeat.o(150573);
-    return paramString;
-  }
-  
-  public final g F(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(218702);
-    g localg = new g();
-    paramString = b(d.FW(paramString), null, "msgSvrId=?", new String[] { String.valueOf(paramLong) });
+    paramString = b(d.OH(paramString), null, "msgSvrId=?", new String[] { String.valueOf(paramLong) });
     if (paramString.moveToFirst()) {
       localg.convertFrom(paramString);
     }
     paramString.close();
-    AppMethodBeat.o(218702);
+    AppMethodBeat.o(223591);
     return localg;
   }
   
-  public final String FO(String paramString)
+  public final g H(String paramString, long paramLong)
+  {
+    AppMethodBeat.i(223592);
+    g localg = new g();
+    paramString = b(d.OH(paramString), null, "msglocalid=?", new String[] { String.valueOf(paramLong) });
+    if (paramString.moveToLast()) {
+      localg.convertFrom(paramString);
+    }
+    paramString.close();
+    AppMethodBeat.o(223592);
+    return localg;
+  }
+  
+  public final String OA(String paramString)
+  {
+    AppMethodBeat.i(223584);
+    paramString = R(paramString, true);
+    AppMethodBeat.o(223584);
+    return paramString;
+  }
+  
+  public final Bitmap OB(String paramString)
+  {
+    AppMethodBeat.i(150592);
+    float f = com.tencent.mm.cb.a.getDensity(MMApplicationContext.getContext());
+    paramString = BitmapUtil.getBitmapNative(d(paramString, false, true), f);
+    AppMethodBeat.o(150592);
+    return paramString;
+  }
+  
+  public final String OC(String paramString)
+  {
+    AppMethodBeat.i(150615);
+    paramString = a("THUMBNAIL_DIRPATH://th_".concat(String.valueOf(paramString)), "th_", "", false);
+    AppMethodBeat.o(150615);
+    return paramString;
+  }
+  
+  public final String OD(String paramString)
+  {
+    AppMethodBeat.i(150616);
+    paramString = a(paramString, "", ".jpg", false);
+    AppMethodBeat.o(150616);
+    return paramString;
+  }
+  
+  public final String OF(String paramString)
+  {
+    AppMethodBeat.i(258495);
+    paramString = d(paramString, false, true);
+    AppMethodBeat.o(258495);
+    return paramString;
+  }
+  
+  public final String Oz(String paramString)
   {
     AppMethodBeat.i(150574);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -1106,14 +1143,14 @@ public final class i
     {
       try
       {
-        paramString = pw(Integer.valueOf(paramString).intValue()).icq;
+        paramString = tl(Integer.valueOf(paramString).intValue()).iXo;
         paramString = o(paramString, str1, "");
         AppMethodBeat.o(150574);
         return paramString;
       }
       catch (NumberFormatException paramString)
       {
-        ae.e("MicroMsg.ImgInfoStorage", "read img buf failed: " + paramString.getMessage());
+        Log.e("MicroMsg.ImgInfoStorage", "read img buf failed: " + paramString.getMessage());
         AppMethodBeat.o(150574);
         return null;
       }
@@ -1124,112 +1161,6 @@ public final class i
         str1 = "th_";
       }
     }
-  }
-  
-  public final String FP(String paramString)
-  {
-    AppMethodBeat.i(218699);
-    paramString = R(paramString, true);
-    AppMethodBeat.o(218699);
-    return paramString;
-  }
-  
-  public final Bitmap FQ(String paramString)
-  {
-    AppMethodBeat.i(150592);
-    float f = com.tencent.mm.cb.a.getDensity(com.tencent.mm.sdk.platformtools.ak.getContext());
-    paramString = com.tencent.mm.sdk.platformtools.h.q(c(paramString, false, true), f);
-    AppMethodBeat.o(150592);
-    return paramString;
-  }
-  
-  public final String FR(String paramString)
-  {
-    AppMethodBeat.i(150615);
-    paramString = a("THUMBNAIL_DIRPATH://th_".concat(String.valueOf(paramString)), "th_", "", false);
-    AppMethodBeat.o(150615);
-    return paramString;
-  }
-  
-  public final String FS(String paramString)
-  {
-    AppMethodBeat.i(150616);
-    paramString = a(paramString, "", ".jpg", false);
-    AppMethodBeat.o(150616);
-    return paramString;
-  }
-  
-  public final String FU(String paramString)
-  {
-    AppMethodBeat.i(224407);
-    paramString = c(paramString, false, true);
-    AppMethodBeat.o(224407);
-    return paramString;
-  }
-  
-  public final g G(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(218703);
-    g localg = new g();
-    paramString = b(d.FW(paramString), null, "msglocalid=?", new String[] { String.valueOf(paramLong) });
-    if (paramString.moveToLast()) {
-      localg.convertFrom(paramString);
-    }
-    paramString.close();
-    AppMethodBeat.o(218703);
-    return localg;
-  }
-  
-  public final g L(bv parambv)
-  {
-    AppMethodBeat.i(150595);
-    g localg = G(parambv.field_talker, parambv.field_msgId);
-    Object localObject = localg;
-    if (localg.doE == 0L)
-    {
-      parambv = F(parambv.field_talker, parambv.field_msgSvrId);
-      localObject = parambv;
-      if (parambv.doE == 0L)
-      {
-        ae.e("MicroMsg.ImgInfoStorage", "deleteByMsg can't find correspond imgInfo");
-        AppMethodBeat.o(150595);
-        return null;
-      }
-    }
-    AppMethodBeat.o(150595);
-    return localObject;
-  }
-  
-  public final void M(bv parambv)
-  {
-    AppMethodBeat.i(150599);
-    g localg = L(parambv);
-    if ((localg == null) || (localg.doE == 0L))
-    {
-      ae.e("MicroMsg.ImgInfoStorage", "deleteByMsg can't find correspond imgInfo");
-      AppMethodBeat.o(150599);
-      return;
-    }
-    o.deleteFile(o(localg.ico, "", ""));
-    o.deleteFile(o(localg.ict, "", ""));
-    o.deleteFile(o(localg.icq, "", ""));
-    o.deleteFile(o(localg.icq, "", "") + "hd");
-    this.hKK.delete(d.FW(parambv.field_talker), "id=?", new String[] { localg.doE });
-    if (localg.aIB())
-    {
-      localg = pw(localg.icz);
-      if (localg == null)
-      {
-        AppMethodBeat.o(150599);
-        return;
-      }
-      o.deleteFile(o(localg.ico, "", ""));
-      o.deleteFile(o(localg.ict, "", ""));
-      o.deleteFile(o(localg.icq, "", ""));
-      o.deleteFile(o(localg.icq, "", "") + "hd");
-      this.hKK.delete(d.FW(parambv.field_talker), "id=?", new String[] { localg.doE });
-    }
-    AppMethodBeat.o(150599);
   }
   
   public final String R(String paramString, boolean paramBoolean)
@@ -1248,14 +1179,14 @@ public final class i
     {
       try
       {
-        paramString = pw(Integer.valueOf(paramString).intValue()).icq;
+        paramString = tl(Integer.valueOf(paramString).intValue()).iXo;
         paramString = a(paramString, "", "", paramBoolean);
         AppMethodBeat.o(150581);
         return paramString;
       }
       catch (NumberFormatException paramString)
       {
-        ae.e("MicroMsg.ImgInfoStorage", "read img buf failed: " + paramString.getMessage());
+        Log.e("MicroMsg.ImgInfoStorage", "read img buf failed: " + paramString.getMessage());
         AppMethodBeat.o(150581);
         return null;
       }
@@ -1264,6 +1195,58 @@ public final class i
     paramString = a(str.substring(20).substring(3), "th_", "", paramBoolean);
     AppMethodBeat.o(150581);
     return paramString;
+  }
+  
+  public final g U(ca paramca)
+  {
+    AppMethodBeat.i(150595);
+    g localg = H(paramca.field_talker, paramca.field_msgId);
+    Object localObject = localg;
+    if (localg.localId == 0L)
+    {
+      paramca = G(paramca.field_talker, paramca.field_msgSvrId);
+      localObject = paramca;
+      if (paramca.localId == 0L)
+      {
+        Log.e("MicroMsg.ImgInfoStorage", "deleteByMsg can't find correspond imgInfo");
+        AppMethodBeat.o(150595);
+        return null;
+      }
+    }
+    AppMethodBeat.o(150595);
+    return localObject;
+  }
+  
+  public final void V(ca paramca)
+  {
+    AppMethodBeat.i(150599);
+    g localg = U(paramca);
+    if ((localg == null) || (localg.localId == 0L))
+    {
+      Log.e("MicroMsg.ImgInfoStorage", "deleteByMsg can't find correspond imgInfo");
+      AppMethodBeat.o(150599);
+      return;
+    }
+    s.deleteFile(o(localg.iXm, "", ""));
+    s.deleteFile(o(localg.iXr, "", ""));
+    s.deleteFile(o(localg.iXo, "", ""));
+    s.deleteFile(o(localg.iXo, "", "") + "hd");
+    this.iFy.delete(d.OH(paramca.field_talker), "id=?", new String[] { localg.localId });
+    if (localg.bcv())
+    {
+      localg = tl(localg.iXx);
+      if (localg == null)
+      {
+        AppMethodBeat.o(150599);
+        return;
+      }
+      s.deleteFile(o(localg.iXm, "", ""));
+      s.deleteFile(o(localg.iXr, "", ""));
+      s.deleteFile(o(localg.iXo, "", ""));
+      s.deleteFile(o(localg.iXo, "", "") + "hd");
+      this.iFy.delete(d.OH(paramca.field_talker), "id=?", new String[] { localg.localId });
+    }
+    AppMethodBeat.o(150599);
   }
   
   public final int a(int paramInt, g paramg)
@@ -1280,12 +1263,12 @@ public final class i
     long l = System.currentTimeMillis();
     ContentValues localContentValues = paramg.convertTo();
     if (localContentValues.size() == 0) {}
-    for (int i = 1;; i = this.hKK.update(d.ss(paramLong.longValue()), localContentValues, "id=?", new String[] { String.valueOf(paramLong) }))
+    for (int i = 1;; i = this.iFy.update(d.Ay(paramLong.longValue()), localContentValues, "id=?", new String[] { String.valueOf(paramLong) }))
     {
-      ae.i("MicroMsg.ImgInfoStorage", "update last :%d values : %s %s", new Object[] { Long.valueOf(System.currentTimeMillis() - Long.valueOf(l).longValue()), localContentValues.toString(), Integer.valueOf(i) });
+      Log.i("MicroMsg.ImgInfoStorage", "update last :%d values : %s %s", new Object[] { Long.valueOf(System.currentTimeMillis() - Long.valueOf(l).longValue()), localContentValues.toString(), Integer.valueOf(i) });
       if (i != -1)
       {
-        paramg.aID();
+        paramg.bcx();
         doNotify();
       }
       AppMethodBeat.o(150628);
@@ -1293,85 +1276,85 @@ public final class i
     }
   }
   
-  public final long a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, PString paramPString, PInt paramPInt1, PInt paramPInt2, String paramString3, String paramString4, long paramLong, com.tencent.mm.b.b paramb1, com.tencent.mm.b.b paramb2, p.a parama)
+  public final long a(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, PString paramPString, PInt paramPInt1, PInt paramPInt2, String paramString3, String paramString4, long paramLong, com.tencent.mm.b.b paramb1, com.tencent.mm.b.b paramb2, p.a parama, int paramInt4)
   {
-    AppMethodBeat.i(218706);
-    paramLong = a(paramString1, paramString2, null, paramInt1, paramInt2, paramInt3, paramPString, paramPInt1, paramPInt2, paramString3, paramString4, paramLong, paramb1, paramb2, parama, false);
-    AppMethodBeat.o(218706);
+    AppMethodBeat.i(223595);
+    paramLong = a(paramString1, paramString2, null, paramInt1, paramInt2, paramInt3, paramPString, paramPInt1, paramPInt2, paramString3, paramString4, paramLong, paramb1, paramb2, parama, false, paramInt4);
+    AppMethodBeat.o(223595);
     return paramLong;
   }
   
   public final long a(String paramString1, String paramString2, int paramInt1, int paramInt2, PString paramPString, PInt paramPInt1, PInt paramPInt2)
   {
-    AppMethodBeat.i(218705);
-    long l = a(paramString1, paramString2, paramInt1, paramInt2, 0, paramPString, paramPInt1, paramPInt2, "", "", -1L, null, null, null);
-    AppMethodBeat.o(218705);
+    AppMethodBeat.i(223594);
+    long l = a(paramString1, paramString2, paramInt1, paramInt2, 0, paramPString, paramPInt1, paramPInt2, "", "", -1L, null, null, null, 0);
+    AppMethodBeat.o(223594);
     return l;
   }
   
   public final long a(String paramString1, String paramString2, g paramg)
   {
-    AppMethodBeat.i(218708);
-    paramString1 = d.FW(paramString1);
-    long l = this.hKK.a(paramString1, paramString2, paramg.convertTo());
+    AppMethodBeat.i(223597);
+    paramString1 = d.OH(paramString1);
+    long l = this.iFy.insert(paramString1, paramString2, paramg.convertTo());
     if (l != -1L) {
-      paramg.aID();
+      paramg.bcx();
     }
-    ae.i("MicroMsg.ImgInfoStorage", "insert img,table:%s result:%d, localId:%d, msgLocalId:%d, msgSvrId:%d, hdID:%d", new Object[] { paramString1, Long.valueOf(l), Long.valueOf(paramg.doE), Long.valueOf(paramg.icx), Long.valueOf(paramg.dCd), Integer.valueOf(paramg.icz) });
-    AppMethodBeat.o(218708);
+    Log.i("MicroMsg.ImgInfoStorage", "insert img,table:%s result:%d, localId:%d, msgLocalId:%d, msgSvrId:%d, hdID:%d", new Object[] { paramString1, Long.valueOf(l), Long.valueOf(paramg.localId), Long.valueOf(paramg.iXv), Long.valueOf(paramg.dTS), Integer.valueOf(paramg.iXx) });
+    AppMethodBeat.o(223597);
     return l;
   }
   
   public final long a(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, PString paramPString, PInt paramPInt1, PInt paramPInt2)
   {
-    AppMethodBeat.i(218704);
-    long l = a(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramPString, paramPInt1, paramPInt2, "", "", -1L, null, null, null, true);
-    AppMethodBeat.o(218704);
+    AppMethodBeat.i(223593);
+    long l = a(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramInt3, paramPString, paramPInt1, paramPInt2, "", "", -1L, null, null, null, true, 0);
+    AppMethodBeat.o(223593);
     return l;
   }
   
   public final long a(String paramString1, byte[] paramArrayOfByte, long paramLong, boolean paramBoolean, String paramString2, int paramInt, String paramString3, PString paramPString, PInt paramPInt1, PInt paramPInt2)
   {
-    AppMethodBeat.i(218717);
+    AppMethodBeat.i(223606);
     String str1 = "SERVERID://".concat(String.valueOf(paramLong));
     String str2 = com.tencent.mm.b.g.getMessageDigest(str1.getBytes());
     String str3 = o(str2, "th_", "");
     Bitmap localBitmap;
     if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= 0))
     {
-      localBitmap = com.tencent.mm.sdk.platformtools.h.cu(paramArrayOfByte);
+      localBitmap = BitmapUtil.decodeByteArray(paramArrayOfByte);
       if (localBitmap == null) {
-        ae.e("MicroMsg.ImgInfoStorage", "create decodeByteArray failed: " + new String(paramArrayOfByte));
+        Log.e("MicroMsg.ImgInfoStorage", "create decodeByteArray failed: " + new String(paramArrayOfByte));
       }
       if ((paramBoolean) || (localBitmap == null)) {}
     }
     try
     {
-      localBitmap = com.tencent.mm.sdk.platformtools.h.aA(localBitmap);
+      localBitmap = BitmapUtil.extractThumeNail(localBitmap, 120, 120, false);
       paramPInt1.value = localBitmap.getWidth();
       paramPInt2.value = localBitmap.getHeight();
-      com.tencent.mm.sdk.platformtools.h.a(localBitmap, 90, Bitmap.CompressFormat.JPEG, str3, true);
+      BitmapUtil.saveBitmapToImage(localBitmap, 90, Bitmap.CompressFormat.JPEG, str3, true);
       paramArrayOfByte = new g();
-      if (!bu.isNullOrNil(paramString2))
+      if (!Util.isNullOrNil(paramString2))
       {
         paramArrayOfByte.setOffset(paramInt);
-        paramArrayOfByte.pq(paramInt);
-        paramArrayOfByte.dEu = -1;
-        paramArrayOfByte.setLocalId(d.FV(paramString1).incrementAndGet());
-        paramArrayOfByte.FF(paramString2);
-        paramArrayOfByte.FH("THUMBNAIL_DIRPATH://th_".concat(String.valueOf(str2)));
-        paramPString.value = paramArrayOfByte.icq;
+        paramArrayOfByte.tf(paramInt);
+        paramArrayOfByte.cSx = -1;
+        paramArrayOfByte.setLocalId(d.OG(paramString1).incrementAndGet());
+        paramArrayOfByte.Oq(paramString2);
+        paramArrayOfByte.Os("THUMBNAIL_DIRPATH://th_".concat(String.valueOf(str2)));
+        paramPString.value = paramArrayOfByte.iXo;
         if (paramBoolean)
         {
-          paramArrayOfByte.qM(0L);
-          paramArrayOfByte.pv(1);
-          paramArrayOfByte.FI(paramString3);
-          paramArrayOfByte.setCreateTime((int)bu.aRi());
+          paramArrayOfByte.yF(0L);
+          paramArrayOfByte.tk(1);
+          paramArrayOfByte.Ot(paramString3);
+          paramArrayOfByte.setCreateTime((int)Util.nowSecond());
           paramLong = a(paramString1, "id", paramArrayOfByte);
           if (paramLong != -1L) {
             doNotify();
           }
-          AppMethodBeat.o(218717);
+          AppMethodBeat.o(223606);
           return paramLong;
         }
       }
@@ -1380,10 +1363,10 @@ public final class i
     {
       for (;;)
       {
-        ae.e("MicroMsg.ImgInfoStorage", "create thumbnail from byte failed: " + str2 + " " + new String(paramArrayOfByte));
+        Log.e("MicroMsg.ImgInfoStorage", "create thumbnail from byte failed: " + str2 + " " + new String(paramArrayOfByte));
         continue;
-        paramArrayOfByte.qM(paramLong);
-        paramArrayOfByte.pv(0);
+        paramArrayOfByte.yF(paramLong);
+        paramArrayOfByte.tk(0);
         continue;
         paramString2 = str1;
       }
@@ -1392,16 +1375,16 @@ public final class i
   
   public final long a(String paramString1, byte[] paramArrayOfByte, long paramLong, boolean paramBoolean, String paramString2, PString paramPString, PInt paramPInt1, PInt paramPInt2)
   {
-    AppMethodBeat.i(218716);
+    AppMethodBeat.i(223605);
     paramLong = a(paramString1, paramArrayOfByte, paramLong, paramBoolean, "", 0, paramString2, paramPString, paramPInt1, paramPInt2);
-    AppMethodBeat.o(218716);
+    AppMethodBeat.o(223605);
     return paramLong;
   }
   
   public final Cursor a(String paramString1, String[] paramArrayOfString1, String paramString2, String[] paramArrayOfString2)
   {
     AppMethodBeat.i(150607);
-    paramString1 = this.hKK.query(paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, null, null, null);
+    paramString1 = this.iFy.query(paramString1, paramArrayOfString1, paramString2, paramArrayOfString2, null, null, null);
     AppMethodBeat.o(150607);
     return paramString1;
   }
@@ -1412,7 +1395,7 @@ public final class i
     if (paramBoolean) {}
     for (String str = "location_backgroup_key_from".concat(String.valueOf(paramLong));; str = "location_backgroup_key_tor".concat(String.valueOf(paramLong)))
     {
-      Bitmap localBitmap2 = (Bitmap)this.icY.aL(str);
+      Bitmap localBitmap2 = (Bitmap)this.iXW.aT(str);
       Bitmap localBitmap1;
       if (localBitmap2 != null)
       {
@@ -1421,97 +1404,92 @@ public final class i
       }
       else
       {
-        localBitmap1 = com.tencent.mm.sdk.platformtools.h.s(paramString, paramInt1, paramInt2, paramInt3);
-        this.icY.q(str, localBitmap1);
+        localBitmap1 = BitmapUtil.createLocation(paramString, paramInt1, paramInt2, paramInt3);
+        this.iXW.x(str, localBitmap1);
       }
       AppMethodBeat.o(150630);
       return localBitmap1;
     }
   }
   
-  public final Bitmap a(String paramString, float paramFloat, Context paramContext)
+  public final Bitmap a(String paramString, float paramFloat, int paramInt)
   {
-    AppMethodBeat.i(150593);
-    paramString = a(paramString, paramFloat, paramContext, -1);
-    AppMethodBeat.o(150593);
-    return paramString;
-  }
-  
-  public final Bitmap a(String paramString, float paramFloat, Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(150594);
+    AppMethodBeat.i(223588);
     if ((paramString == null) || (paramString.length() <= 0))
     {
-      AppMethodBeat.o(150594);
+      AppMethodBeat.o(223588);
       return null;
     }
     String str = paramString.trim();
-    Bitmap localBitmap = (Bitmap)this.icY.aL(str);
+    paramString = (Bitmap)this.iXW.aT(str);
+    Object localObject;
+    Bitmap localBitmap;
     int k;
     int m;
     int j;
     int i;
-    if (localBitmap != null)
+    if (paramString != null)
     {
-      paramString = localBitmap;
-      if (!localBitmap.isRecycled()) {}
+      localObject = paramString;
+      if (!paramString.isRecycled()) {}
     }
     else
     {
-      localBitmap = BackwardSupportUtil.b.p(str, paramFloat);
+      localBitmap = BackwardSupportUtil.BitmapFactory.decodeFile(str, paramFloat);
       if (localBitmap == null) {
         break label359;
       }
       k = localBitmap.getWidth();
       m = localBitmap.getHeight();
       if (k < m) {
-        break label278;
+        break label277;
       }
-      j = BackwardSupportUtil.b.h(paramContext, idi);
+      j = Math.round(iYg * paramFloat);
       i = (int)(m / k * j);
       if ((j > 0) && (i > 0) && (j <= 2048) && (i <= 2048)) {
         break label305;
       }
-      ae.e("MicroMsg.ImgInfoStorage", "getVideoThumb, error Scale Size %d*%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 188L, 1L, false);
+      Log.e("MicroMsg.ImgInfoStorage", "getVideoThumb, error Scale Size %d*%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i) });
+      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 188L, 1L, false);
       paramString = null;
-      label192:
-      paramContext = paramString;
+      label190:
+      localObject = paramString;
       if (paramInt != -1) {
-        paramContext = com.tencent.mm.sdk.platformtools.h.k(paramString, paramInt);
+        localObject = BitmapUtil.createChattingImage(paramString, paramInt);
       }
-      if (localBitmap != paramContext)
+      if (localBitmap != localObject)
       {
-        ae.i("MicroMsg.ImgInfoStorage", "[getVideoThumb] bitmap:%s", new Object[] { localBitmap.toString() });
+        Log.i("MicroMsg.ImgInfoStorage", "[getVideoThumb] bitmap:%s", new Object[] { localBitmap.toString() });
         localBitmap.recycle();
       }
-      ae.d("MicroMsg.ImgInfoStorage", "cached file ".concat(String.valueOf(str)));
-      this.icY.q(str, paramContext);
+      Log.d("MicroMsg.ImgInfoStorage", "cached file ".concat(String.valueOf(str)));
+      this.iXW.x(str, localObject);
     }
-    label278:
-    label305:
-    label359:
-    for (paramString = paramContext;; paramString = localBitmap)
+    for (;;)
     {
       for (;;)
       {
-        AppMethodBeat.o(150594);
-        return paramString;
-        i = BackwardSupportUtil.b.h(paramContext, idi);
+        AppMethodBeat.o(223588);
+        return localObject;
+        label277:
+        i = Math.round(iYg * paramFloat);
         j = (int)(k / m * i);
         break;
         try
         {
+          label305:
           paramString = Bitmap.createScaledBitmap(localBitmap, j, i, true);
         }
         catch (Exception paramString)
         {
-          ae.e("MicroMsg.ImgInfoStorage", "getVideoThumb, Bitmap.createScaledBitmap Exception:%s", new Object[] { paramString.getMessage() });
+          Log.e("MicroMsg.ImgInfoStorage", "getVideoThumb, Bitmap.createScaledBitmap Exception:%s", new Object[] { paramString.getMessage() });
           paramString = null;
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 188L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 188L, 1L, false);
         }
       }
-      break label192;
+      break label190;
+      label359:
+      localObject = localBitmap;
     }
   }
   
@@ -1534,50 +1512,50 @@ public final class i
   public final String a(String paramString, g paramg)
   {
     Object localObject = null;
-    AppMethodBeat.i(218701);
+    AppMethodBeat.i(223590);
     if (paramg == null)
     {
-      AppMethodBeat.o(218701);
+      AppMethodBeat.o(223590);
       return null;
     }
-    if (paramg.aIB())
+    if (paramg.bcv())
     {
-      paramString = d.FW(paramString);
-      paramg = paramg.icz;
+      paramString = d.OH(paramString);
+      paramg = paramg.iXx;
       paramg = b(paramString, new String[] { "bigImgPath" }, "id=? and totalLen = offset", new String[] { paramg });
       paramString = localObject;
       if (paramg.moveToFirst()) {
         paramString = paramg.getString(0);
       }
       paramg.close();
-      AppMethodBeat.o(218701);
+      AppMethodBeat.o(223590);
       return paramString;
     }
-    AppMethodBeat.o(218701);
+    AppMethodBeat.o(223590);
     return null;
   }
   
-  public final String a(String paramString1, String paramString2, int paramInt1, PString paramPString, PInt paramPInt1, PInt paramPInt2, int paramInt2, String paramString3)
+  public final String a(String paramString1, String paramString2, int paramInt1, PString paramPString, PInt paramPInt1, PInt paramPInt2, int paramInt2, int paramInt3, String paramString3)
   {
-    AppMethodBeat.i(218712);
-    if (!o.fB(paramString2))
+    AppMethodBeat.i(223601);
+    if (!s.YS(paramString2))
     {
-      ae.e("MicroMsg.ImgInfoStorage", "file not exit:%s", new Object[] { paramString2 });
-      AppMethodBeat.o(218712);
+      Log.e("MicroMsg.ImgInfoStorage", "file not exit:%s", new Object[] { paramString2 });
+      AppMethodBeat.o(223601);
       return null;
     }
     String str1 = paramString3;
-    if (bu.isNullOrNil(paramString3)) {
-      str1 = aIG();
+    if (Util.isNullOrNil(paramString3)) {
+      str1 = bcA();
     }
     String str2 = "THUMBNAIL_DIRPATH://th_".concat(String.valueOf(str1));
     paramString3 = a(str2, "th_", "", false);
     paramPString.value = str2;
-    long l = bu.HQ();
-    paramPInt1 = a(paramString1, paramString2, paramInt1, paramInt2, paramPInt1, paramPInt2, false, null, null);
-    paramString1 = (String)this.icZ.get(paramString2);
+    long l = Util.currentTicks();
+    paramPInt1 = a(paramString1, paramString2, paramInt1, paramInt2, paramPInt1, paramPInt2, false, null, null, -1);
+    paramString1 = (String)this.iXX.get(paramString2);
     if (paramString1 != null) {}
-    for (paramString1 = (Bitmap)this.icY.get(paramString1);; paramString1 = null)
+    for (paramString1 = (Bitmap)this.iXW.get(paramString1);; paramString1 = null)
     {
       if (paramString1 != null)
       {
@@ -1586,77 +1564,79 @@ public final class i
       }
       else
       {
-        paramPString = a(paramString2, true, com.tencent.mm.cb.a.getDensity(com.tencent.mm.sdk.platformtools.ak.getContext()), false, false, true, 2131231564, true, paramPInt1);
-        this.icZ.put(paramString2, paramString3);
+        paramPString = a(paramString2, true, com.tencent.mm.cb.a.getDensity(MMApplicationContext.getContext()), false, false, true, 2131231628, true, paramPInt1);
+        this.iXX.put(paramString2, paramString3);
       }
       if (paramPString != null) {
-        this.icY.q(paramString3, paramPString);
+        this.iXW.x(paramString3, paramPString);
       }
-      ae.i("MicroMsg.ImgInfoStorage", "test decode thumb img:%d", new Object[] { Long.valueOf(bu.aO(l)) });
-      AppMethodBeat.o(218712);
+      Log.i("MicroMsg.ImgInfoStorage", "test decode thumb img:%d", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+      AppMethodBeat.o(223601);
       return str1;
     }
   }
   
-  public final String a(String paramString1, String paramString2, String paramString3, int paramInt, boolean paramBoolean, PString paramPString1, PString paramPString2, PString paramPString3, PString paramPString4, String paramString4, com.tencent.mm.b.b paramb)
+  public final String a(String paramString1, String paramString2, String paramString3, int paramInt1, boolean paramBoolean, PString paramPString1, PString paramPString2, PString paramPString3, PString paramPString4, String paramString4, com.tencent.mm.b.b paramb, int paramInt2)
   {
-    AppMethodBeat.i(218714);
+    AppMethodBeat.i(223603);
     String str = paramString4;
-    if (bu.isNullOrNil(paramString4))
+    if (Util.isNullOrNil(paramString4))
     {
-      str = FT(paramString2);
-      ae.i("MicroMsg.ImgInfoStorage", "generateMd5: %s, %s", new Object[] { str, paramString2 });
+      str = OE(paramString2);
+      Log.i("MicroMsg.ImgInfoStorage", "generateMd5: %s, %s", new Object[] { str, paramString2 });
     }
     paramString4 = a(str, "", ".jpg", false);
     if (paramb == null) {
       paramString4 = a(str, "", ".jpg", true);
     }
-    ae.i("MicroMsg.ImgInfoStorage", "fullPath is %s", new Object[] { paramString4 });
-    if (o.aZR(paramString4) > 0L)
+    Log.i("MicroMsg.ImgInfoStorage", "fullPath is %s", new Object[] { paramString4 });
+    if (s.boW(paramString4) > 0L)
     {
-      ae.i("MicroMsg.ImgInfoStorage", "genBigImg file already exist!");
-      com.tencent.mm.plugin.report.service.g.yxI.dD(944, 8);
+      Log.i("MicroMsg.ImgInfoStorage", "genBigImg file already exist!");
+      com.tencent.mm.plugin.report.service.h.CyF.dN(944, 8);
     }
     paramPString1.value = str;
     paramPString2.value = paramString4;
-    if ((paramBoolean) && (!bu.isNullOrNil(paramString3)) && (paramInt == 0))
+    if ((paramBoolean) && (!Util.isNullOrNil(paramString3)) && (paramInt1 == 0))
     {
-      paramString1 = m(paramString1, paramString3, paramInt);
-      if (!bu.isNullOrNil(paramString1.ico))
+      paramString1 = l(paramString1, paramString3, paramInt1);
+      if (!Util.isNullOrNil(paramString1.iXm))
       {
-        paramString3 = o(paramString1.ico, "", "");
+        paramString3 = o(paramString1.iXm, "", "");
         if (paramb != null) {
-          paramb.Ki();
+          paramb.Ur();
         }
-        o.mF(paramString3, paramString4);
-        if (o.aZR(paramString3) > 0L)
+        s.nw(paramString3, paramString4);
+        if (s.boW(paramString3) > 0L)
         {
-          if (!bu.isNullOrNil(paramString1.icA))
+          if (!Util.isNullOrNil(paramString1.iXy))
           {
-            paramString1 = paramString1.icA;
-            AppMethodBeat.o(218714);
+            paramString1 = paramString1.iXy;
+            AppMethodBeat.o(223603);
             return paramString1;
           }
-          AppMethodBeat.o(218714);
+          AppMethodBeat.o(223603);
           return null;
         }
-        ae.w("MicroMsg.ImgInfoStorage", "ERR: copy old match file failed ,:%s ,%s ", new Object[] { paramString2, paramString4 });
+        Log.w("MicroMsg.ImgInfoStorage", "ERR: copy old match file failed ,:%s ,%s ", new Object[] { paramString2, paramString4 });
       }
     }
     label1164:
     label1223:
-    label3529:
-    label3532:
+    label1229:
+    label3405:
+    label3534:
+    label3537:
     try
     {
-      if (az.isWifi(com.tencent.mm.sdk.platformtools.ak.getContext())) {
-        i = bu.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("CompressPicLevelForWifi"), 60);
+      if (NetStatusUtil.isWifi(MMApplicationContext.getContext())) {
+        i = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("CompressPicLevelForWifi"), 60);
       }
       for (;;)
       {
-        ae.i("MicroMsg.ImgInfoStorage", "genBigImg CompressPicLevel-level:%d", new Object[] { Integer.valueOf(i) });
+        Log.i("MicroMsg.ImgInfoStorage", "genBigImg CompressPicLevel-level:%d", new Object[] { Integer.valueOf(i) });
         if ((i > 10) && (i <= 100)) {
-          break label3546;
+          break label3551;
         }
         n = 70;
         j = 0;
@@ -1665,15 +1645,15 @@ public final class i
         i = j;
         try
         {
-          if (!az.isWifi(com.tencent.mm.sdk.platformtools.ak.getContext())) {
+          if (!NetStatusUtil.isWifi(MMApplicationContext.getContext())) {
             break;
           }
           i = j;
-          paramString1 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("CompressResolutionForWifi");
+          paramString1 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("CompressResolutionForWifi");
           i = j;
           i1 = paramString1.indexOf("*");
           if (-1 == i1) {
-            break label3538;
+            break label3543;
           }
           i = j;
           m = Integer.valueOf(paramString1.substring(0, i1)).intValue();
@@ -1690,9 +1670,12 @@ public final class i
             continue;
             continue;
             continue;
-            continue;
             i = m;
             continue;
+            paramString1 = paramString2;
+            continue;
+            paramInt2 = i1;
+            k = i;
             continue;
             paramBoolean = bool1;
             continue;
@@ -1708,14 +1691,14 @@ public final class i
         k = i;
         try
         {
-          i = bu.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("UseOptImage"), 0);
-          com.tencent.mm.kernel.g.ajP();
+          i = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("UseOptImage"), 0);
+          com.tencent.mm.kernel.g.aAf();
           paramString1 = new p(com.tencent.mm.kernel.a.getUin());
           if ((int)(paramString1.longValue() / 100L) % 100 + 1 > i) {
-            break label3532;
+            break label3537;
           }
           bool1 = true;
-          ae.i("MicroMsg.ImgInfoStorage", "fromPathToImgInfo useOpt:%b opt:%d uin:(%d,%d) debug:%b sdk:%d", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i), Long.valueOf(paramString1.longValue()), Long.valueOf(paramString1.longValue() / 100L), Boolean.valueOf(com.tencent.mm.sdk.a.b.fnF()), Integer.valueOf(Build.VERSION.SDK_INT) });
+          Log.i("MicroMsg.ImgInfoStorage", "fromPathToImgInfo useOpt:%b opt:%d uin:(%d,%d) debug:%b sdk:%d", new Object[] { Boolean.valueOf(bool1), Integer.valueOf(i), Long.valueOf(paramString1.longValue()), Long.valueOf(paramString1.longValue() / 100L), Boolean.valueOf(CrashReportFactory.hasDebuger()), Integer.valueOf(Build.VERSION.SDK_INT) });
         }
         catch (Exception paramString1)
         {
@@ -1723,7 +1706,7 @@ public final class i
           int i4;
           for (;;)
           {
-            ae.e("MicroMsg.ImgInfoStorage", "get useopt :%s", new Object[] { bu.o(paramString1) });
+            Log.e("MicroMsg.ImgInfoStorage", "get useopt :%s", new Object[] { Util.stackTraceToString(paramString1) });
             bool1 = false;
             continue;
             if (k >= 2160)
@@ -1752,93 +1735,94 @@ public final class i
           int i5 = paramString3.outWidth;
           int i6 = paramString3.outHeight;
           if (paramString3.outWidth <= paramString3.outHeight) {
-            break label1823;
+            break label1831;
           }
           k = paramString3.outWidth;
           if (paramString3.outWidth >= paramString3.outHeight) {
-            break label1832;
+            break label1840;
           }
           int i2 = paramString3.outWidth;
           if (i <= 0) {
-            break label1859;
+            break label1867;
           }
           int i3 = i2 / i;
           if (paramString3.outHeight <= i) {
-            break label1841;
+            break label1849;
           }
           j = paramString3.outHeight * i / i2;
           if (paramString3.outWidth <= i) {
-            break label1850;
+            break label1858;
           }
           i = i * paramString3.outWidth / i2;
           k = i;
           i = j;
           if (i * k <= 10240000) {
-            break label3519;
+            break label3524;
           }
           double d = Math.sqrt(i * k / 10240000.0D);
           j = (int)(i / d);
           k = (int)(k / d);
-          ae.i("MicroMsg.ImgInfoStorage", "genBigImg [%d, %d] -> target:[h,w]:[%d,%d]", new Object[] { Integer.valueOf(paramString3.outHeight), Integer.valueOf(paramString3.outWidth), Integer.valueOf(j), Integer.valueOf(k) });
+          Log.i("MicroMsg.ImgInfoStorage", "genBigImg [%d, %d] -> target:[h,w]:[%d,%d]", new Object[] { Integer.valueOf(paramString3.outHeight), Integer.valueOf(paramString3.outWidth), Integer.valueOf(j), Integer.valueOf(k) });
           if (paramString3 == null) {
-            break label1933;
+            break label1941;
           }
           paramString1 = paramString3.outMimeType;
-          long l2 = o.aZR(paramString2);
-          boolean bool2 = MMNativeJpeg.IsJpegFile(paramString2);
+          long l2 = s.boW(paramString2);
+          boolean bool3 = MMNativeJpeg.IsJpegFile(paramString2);
           if ((paramString1 == null) || ((!paramString1.endsWith("jpeg")) && (!paramString1.endsWith("jpg")) && (!paramString1.endsWith("bmp")) && (!paramString1.endsWith("png")) && (!paramString1.endsWith("gif")))) {
-            break label1940;
+            break label1948;
           }
           i2 = 1;
-          if ((paramInt != 0) || ((m == 0) && (l2 <= 204800L) && ((paramString3 == null) || (i3 <= 0))) || (l2 <= i7)) {
-            break label1953;
+          if ((paramInt1 != 0) || ((i1 == 0) && (l2 <= 204800L) && ((paramString3 == null) || (i3 <= 0))) || (l2 <= i7)) {
+            break label1961;
           }
-          if ((i4 >= 55) && (bool2)) {
-            break label3512;
+          if ((i4 >= 55) && (bool3)) {
+            break label3517;
           }
           paramBoolean = false;
           if (!paramBoolean) {
-            break label1946;
+            break label1954;
           }
           long l1;
           long l3;
           for (i = 18;; i = 8)
           {
-            l1 = bu.fpO();
-            m = com.tencent.mm.sdk.platformtools.h.a(paramBoolean, paramString2, j, k, Bitmap.CompressFormat.JPEG, n, paramString4, paramb);
-            if ((m == 1) || (!paramBoolean)) {
-              break label3509;
+            l1 = Util.nowMilliSecond();
+            i1 = BitmapUtil.createThumbNailMayUseOpt(paramBoolean, paramString2, j, k, Bitmap.CompressFormat.JPEG, n, paramString4, paramb, paramInt2);
+            if ((i1 == 1) || (!paramBoolean)) {
+              break label3506;
             }
             i = 28;
-            m = com.tencent.mm.sdk.platformtools.h.a(false, paramString2, j, k, Bitmap.CompressFormat.JPEG, n, paramString4, paramb);
+            paramInt2 = BitmapUtil.createThumbNailMayUseOpt(false, paramString2, j, k, Bitmap.CompressFormat.JPEG, n, paramString4, paramb, paramInt2);
             paramBoolean = false;
-            l3 = o.aZR(paramString4);
-            ae.i("MicroMsg.ImgInfoStorage", "genBigImg check use orig , orig:%d aftercomp:%d diff percent:[%d] picCompressAvoidanceRemainderPerc:%d  %s ", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(100L * l3 / l2), Integer.valueOf(i1), paramString4 });
-            k = m;
+            k = i;
+            l3 = s.boW(paramString4);
+            Log.i("MicroMsg.ImgInfoStorage", "genBigImg check use orig , orig:%d aftercomp:%d diff percent:[%d] picCompressAvoidanceRemainderPerc:%d  %s ", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(100L * l3 / l2), Integer.valueOf(m), paramString4 });
+            j = paramInt2;
             bool1 = paramBoolean;
-            j = i;
+            i = k;
             if (i2 != 0)
             {
-              k = m;
+              j = paramInt2;
               bool1 = paramBoolean;
-              j = i;
-              if ((l2 - l3) * 100L < i1 * l2)
+              i = k;
+              if ((l2 - l3) * 100L < m * l2)
               {
-                o.mF(paramString2, paramString4);
+                s.nw(paramString2, paramString4);
                 bool1 = false;
-                j = 48;
-                k = 1;
+                i = 48;
+                j = 1;
               }
             }
-            l1 = bu.fpO() - l1;
-            i = k;
+            l1 = Util.nowMilliSecond() - l1;
+            paramInt2 = j;
             paramBoolean = bool1;
-            if (k == 1) {
-              break label2364;
+            if (j == 1) {
+              break label2399;
             }
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 187L, 1L, false);
-            ae.e("MicroMsg.ImgInfoStorage", "createThumbNail big pic fail: %s", new Object[] { paramString2 });
-            AppMethodBeat.o(218714);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 187L, 1L, false);
+            Log.e("MicroMsg.ImgInfoStorage", "createThumbNail big pic fail: %s", new Object[] { paramString2 });
+            AppMethodBeat.o(223603);
             return null;
             k = paramString3.outHeight;
             break;
@@ -1853,7 +1837,7 @@ public final class i
             {
               i = paramString3.outHeight * j / k;
               if (paramString3.outWidth <= j) {
-                break label1924;
+                break label1932;
               }
             }
             for (j = j * paramString3.outWidth / k;; j = paramString3.outWidth)
@@ -1861,24 +1845,32 @@ public final class i
               k = j;
               break;
               i = paramString3.outHeight;
-              break label1887;
+              break label1895;
             }
             paramString1 = "";
             break label1439;
             i2 = 0;
             break label1508;
           }
-          ae.i("MicroMsg.ImgInfoStorage", "summersafecdn createThumbNail big pic no compress, calculatedQuality:%d, origLen:%d oriWidth:%d oriHeight:%d", new Object[] { Integer.valueOf(i4), Long.valueOf(l2), Integer.valueOf(i5), Integer.valueOf(i6) });
+          Log.i("MicroMsg.ImgInfoStorage", "summersafecdn createThumbNail big pic no compress, calculatedQuality:%d, origLen:%d oriWidth:%d oriHeight:%d", new Object[] { Integer.valueOf(i4), Long.valueOf(l2), Integer.valueOf(i5), Integer.valueOf(i6) });
           if (i2 == 0) {
-            break label3204;
+            break label3228;
           }
-          o.mF(paramString2, paramString4);
-          com.tencent.mm.an.f.aGZ();
-          if (!com.tencent.mm.an.b.pd(256)) {
-            break label3379;
+          if (Build.VERSION.SDK_INT < 30) {
+            break label3501;
           }
-          if (paramInt != 1) {
-            break label3388;
+          paramString1 = p.b.O(MMApplicationContext.getContext(), paramString2);
+          if (paramString1 == null) {
+            break label3501;
+          }
+          paramString1 = paramString1.toString();
+          s.nw(paramString1, paramString4);
+          com.tencent.mm.an.f.baQ();
+          if (!com.tencent.mm.an.b.sS(256)) {
+            break label3405;
+          }
+          if (paramInt1 != 1) {
+            break label3414;
           }
           i = 0;
           for (;;)
@@ -1887,7 +1879,7 @@ public final class i
             {
               try
               {
-                m = Integer.valueOf(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("CompressMidPicLevel")).intValue();
+                m = Integer.valueOf(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("CompressMidPicLevel")).intValue();
                 i = m;
               }
               catch (Exception paramString1)
@@ -1896,8 +1888,8 @@ public final class i
               }
               try
               {
-                m = Integer.valueOf(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("CompressMidPicSize")).intValue();
-                ae.i("MicroMsg.ImgInfoStorage", "summersafecdn CompressMidPicLevel-level:%d size:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
+                m = Integer.valueOf(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("CompressMidPicSize")).intValue();
+                Log.i("MicroMsg.ImgInfoStorage", "summersafecdn CompressMidPicLevel-level:%d size:%d", new Object[] { Integer.valueOf(i), Integer.valueOf(m) });
                 if (i > 10)
                 {
                   i1 = i;
@@ -1908,15 +1900,15 @@ public final class i
                   i1 = 52;
                 }
                 if ((m > 0) && (m <= 800)) {
-                  break label3502;
+                  break label3494;
                 }
                 i = 800;
                 if (k <= i) {
-                  break label3499;
+                  break label3491;
                 }
                 k = i;
                 if (j <= i) {
-                  break label3496;
+                  break label3488;
                 }
                 j = i;
                 bool1 = true;
@@ -1930,82 +1922,80 @@ public final class i
                 }
                 if ((paramBoolean) || (l2 > 800L) || ((paramString3 != null) && ((i6 > i) || (i5 > i))))
                 {
-                  paramPString3.value = FT(paramString2);
+                  paramPString3.value = OE(paramString2);
                   paramPString4.value = a(paramPString3.value, "", ".jpg", false);
-                  i = com.tencent.mm.sdk.platformtools.h.a(false, paramString2, j, k, Bitmap.CompressFormat.JPEG, i1, paramPString4.value, paramb);
-                  ae.d("MicroMsg.ImgInfoStorage", "summersafecdn pMidImgName[%s], pMidImgPath[%s], useOpt[%b], ret[%b] [%d, %d]", new Object[] { paramPString3.value, paramPString4.value, Boolean.FALSE, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(k) });
+                  paramInt2 = BitmapUtil.createThumbNailMayUseOpt(false, paramString2, j, k, Bitmap.CompressFormat.JPEG, i1, paramPString4.value, paramb, paramInt2);
+                  Log.d("MicroMsg.ImgInfoStorage", "summersafecdn pMidImgName[%s], pMidImgPath[%s], useOpt[%b], ret[%b] [%d, %d]", new Object[] { paramPString3.value, paramPString4.value, Boolean.FALSE, Integer.valueOf(paramInt2), Integer.valueOf(j), Integer.valueOf(k) });
                   l1 = 0L;
-                  j = 38;
+                  i = 38;
                   paramBoolean = false;
-                  paramString1 = com.tencent.mm.sdk.platformtools.h.aRz(paramString4);
+                  paramString1 = BitmapUtil.getImageOptions(paramString4);
                   if (paramString1 == null) {
                     continue;
                   }
-                  k = paramString1.outWidth;
+                  j = paramString1.outWidth;
                   if (paramString1 == null) {
                     continue;
                   }
-                  m = paramString1.outHeight;
-                  l3 = o.aZR(paramString4);
-                  i2 = MMNativeJpeg.queryQuality(paramString4);
-                  boolean bool3 = MMNativeJpeg.IsJpegFile(paramString4);
-                  paramString1 = com.tencent.mm.plugin.report.service.g.yxI;
-                  if (!bool2) {
+                  k = paramString1.outHeight;
+                  l3 = s.boW(paramString4);
+                  i1 = MMNativeJpeg.queryQuality(paramString4);
+                  boolean bool4 = MMNativeJpeg.IsJpegFile(paramString4);
+                  paramString1 = com.tencent.mm.plugin.report.service.h.CyF;
+                  if (!bool3) {
                     continue;
                   }
-                  i1 = 1;
-                  paramString1.f(11713, new Object[] { Integer.valueOf(i), Long.valueOf(l1), Integer.valueOf(j), Integer.valueOf(i1), Long.valueOf(l2), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(paramInt), Long.valueOf(l3), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i4), Integer.valueOf(i2) });
-                  ae.i("MicroMsg.ImgInfoStorage", "genBigImg ret:%d useOpt:%b scene:%d [%d,%d,%d,%d,%b]->[%d,%d,%d,%d,%b] [%s]->[%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(paramBoolean), Integer.valueOf(j), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i4), Long.valueOf(l2), Boolean.valueOf(bool2), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i2), Long.valueOf(l3), Boolean.valueOf(bool3), paramString2, paramString4 });
-                  if ((paramInt == 0) && (l3 >= 40960L) && (bool3) && (!MMNativeJpeg.isProgressive(paramString4)))
+                  m = 1;
+                  paramString1.a(11713, new Object[] { Integer.valueOf(paramInt2), Long.valueOf(l1), Integer.valueOf(i), Integer.valueOf(m), Long.valueOf(l2), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(paramInt1), Long.valueOf(l3), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i4), Integer.valueOf(i1) });
+                  Log.i("MicroMsg.ImgInfoStorage", "genBigImg ret:%d useOpt:%b scene:%d [%d,%d,%d,%d,%b]->[%d,%d,%d,%d,%b] [%s]->[%s]", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean), Integer.valueOf(i), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i4), Long.valueOf(l2), Boolean.valueOf(bool3), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i1), Long.valueOf(l3), Boolean.valueOf(bool4), paramString2, paramString4 });
+                  if ((paramInt1 == 0) && (l3 >= 40960L) && (bool4) && (!MMNativeJpeg.isProgressive(paramString4)))
                   {
-                    paramString1 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("EnableCDNUploadImg");
-                    if ((!bu.isNullOrNil(paramString1)) && (paramString1.equals("1")))
+                    paramString1 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("EnableCDNUploadImg");
+                    if ((!Util.isNullOrNil(paramString1)) && (paramString1.equals("1")))
                     {
-                      l1 = bu.fpO();
+                      l1 = Util.nowMilliSecond();
                       if (!paramBoolean) {
                         continue;
                       }
-                      j = 19;
+                      i = 19;
                       paramString1 = paramString4 + ".prog";
-                      o.mF(paramString4, paramString1);
-                      if ((!bu.isNullOrNil(paramString1)) && (!bu.isNullOrNil(paramString4)) && (o.fB(paramString1))) {
-                        continue;
+                      s.nw(paramString4, paramString1);
+                      boolean bool2 = ImageOptimLib.convertToProgressive(paramString1, paramString4, n);
+                      s.deleteFile(paramString1);
+                      bool1 = bool2;
+                      if (!bool2)
+                      {
+                        i = 29;
+                        bool1 = MMNativeJpeg.convertToProgressive(paramString4, n);
                       }
-                      bool1 = false;
-                      o.deleteFile(paramString1);
-                      if (bool1) {
-                        break label3493;
-                      }
-                      bool1 = MMNativeJpeg.convertToProgressive(paramString4, n);
-                      j = 29;
-                      long l4 = bu.fpO();
-                      long l5 = o.aZR(paramString4);
-                      paramString1 = com.tencent.mm.plugin.report.service.g.yxI;
+                      long l4 = Util.nowMilliSecond();
+                      long l5 = s.boW(paramString4);
+                      paramString1 = com.tencent.mm.plugin.report.service.h.CyF;
                       if (!bool1) {
                         continue;
                       }
-                      n = 1;
-                      if (!bool2) {
+                      m = 1;
+                      if (!bool3) {
                         continue;
                       }
-                      i1 = 1;
-                      paramString1.f(11713, new Object[] { Integer.valueOf(n), Long.valueOf(l4 - l1), Integer.valueOf(j), Integer.valueOf(i1), Long.valueOf(l2), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(paramInt), Long.valueOf(l3), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i4), Integer.valueOf(i2), Long.valueOf(l5) });
-                      ae.i("MicroMsg.ImgInfoStorage", "genBigImg PROGRESS ret:%d progret:%b size:%d useOpt:%b scene:%d [%d,%d,%d,%d,%b]->[%d,%d,%d,%d,%b] [%s]->[%s]", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool1), Long.valueOf(l5), Boolean.valueOf(paramBoolean), Integer.valueOf(j), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i4), Long.valueOf(l2), Boolean.valueOf(bool2), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(i2), Long.valueOf(l3), Boolean.valueOf(bool3), paramString2, paramString4 });
+                      n = 1;
+                      paramString1.a(11713, new Object[] { Integer.valueOf(m), Long.valueOf(l4 - l1), Integer.valueOf(i), Integer.valueOf(n), Long.valueOf(l2), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(paramInt1), Long.valueOf(l3), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i4), Integer.valueOf(i1), Long.valueOf(l5) });
+                      Log.i("MicroMsg.ImgInfoStorage", "genBigImg PROGRESS ret:%d progret:%b size:%d useOpt:%b scene:%d [%d,%d,%d,%d,%b]->[%d,%d,%d,%d,%b] [%s]->[%s]", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(bool1), Long.valueOf(l5), Boolean.valueOf(paramBoolean), Integer.valueOf(i), Integer.valueOf(i5), Integer.valueOf(i6), Integer.valueOf(i4), Long.valueOf(l2), Boolean.valueOf(bool3), Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i1), Long.valueOf(l3), Boolean.valueOf(bool4), paramString2, paramString4 });
                       if (!bool1)
                       {
-                        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 186L, 1L, false);
-                        ae.e("MicroMsg.ImgInfoStorage", "genBigImg convert to progressive failed %s", new Object[] { paramString4 });
+                        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 186L, 1L, false);
+                        Log.e("MicroMsg.ImgInfoStorage", "genBigImg convert to progressive failed %s", new Object[] { paramString4 });
                       }
                     }
                   }
-                  AppMethodBeat.o(218714);
+                  AppMethodBeat.o(223603);
                   return null;
-                  if (com.tencent.mm.sdk.platformtools.h.a(false, paramString2, i5, i6, Bitmap.CompressFormat.JPEG, 100, paramString4, paramb) == 1) {
+                  if (BitmapUtil.createThumbNailMayUseOpt(false, paramString2, i5, i6, Bitmap.CompressFormat.JPEG, 100, paramString4, paramb, paramInt2) == 1) {
                     break;
                   }
-                  com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(111L, 187L, 1L, false);
-                  ae.e("MicroMsg.ImgInfoStorage", "createThumbNail big pic fail (for cvrt to jpg): %s", new Object[] { paramString2 });
-                  AppMethodBeat.o(218714);
+                  com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(111L, 187L, 1L, false);
+                  Log.e("MicroMsg.ImgInfoStorage", "createThumbNail big pic fail (for cvrt to jpg): %s", new Object[] { paramString2 });
+                  AppMethodBeat.o(223603);
                   return null;
                 }
               }
@@ -2015,81 +2005,72 @@ public final class i
                 continue;
                 paramPString3.value = paramPString1.value;
                 paramPString4.value = paramPString2.value;
-                ae.d("MicroMsg.ImgInfoStorage", "summersafecdn not need to compress mid pic needCompressByQuality[%b], [%d, %d; %d, %d] use big pMidImgName[%s], pMidImgPath[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i6), Integer.valueOf(i5), Integer.valueOf(j), Integer.valueOf(k), paramPString3.value, paramPString4.value });
+                Log.d("MicroMsg.ImgInfoStorage", "summersafecdn not need to compress mid pic needCompressByQuality[%b], [%d, %d; %d, %d] use big pMidImgName[%s], pMidImgPath[%s]", new Object[] { Boolean.valueOf(paramBoolean), Integer.valueOf(i6), Integer.valueOf(i5), Integer.valueOf(j), Integer.valueOf(k), paramPString3.value, paramPString4.value });
                 l1 = 0L;
-                i = 1;
-                j = 38;
+                paramInt2 = 1;
+                i = 38;
                 paramBoolean = false;
               }
             }
-            ae.d("MicroMsg.ImgInfoStorage", "summersafecdn not use CDNNEWPROTO");
+            Log.d("MicroMsg.ImgInfoStorage", "summersafecdn not use CDNNEWPROTO");
             l1 = 0L;
-            i = 1;
-            j = 38;
+            paramInt2 = 1;
+            i = 38;
             paramBoolean = false;
+            continue;
+            j = -1;
             continue;
             k = -1;
             continue;
+            m = 2;
+            continue;
+            i = 9;
+            bool1 = MMNativeJpeg.convertToProgressive(paramString4, n);
+            continue;
             m = -1;
             continue;
-            i1 = 2;
-            continue;
-            if (MMJpegOptim.convertToProgressive(com.tencent.mm.b.q.k(paramString1, false), com.tencent.mm.b.q.k(paramString4, false), n) == 0)
-            {
-              bool1 = true;
-            }
-            else
-            {
-              bool1 = false;
-              continue;
-              j = 9;
-              bool1 = MMNativeJpeg.convertToProgressive(paramString4, n);
-              continue;
-              n = -1;
-              continue;
-              i1 = 2;
-            }
+            n = 2;
           }
         }
-        if (com.tencent.mm.sdk.a.b.fnF()) {
+        if (CrashReportFactory.hasDebuger()) {
           bool1 = true;
         }
-        if (!com.tencent.mm.compatible.util.d.lB(16)) {
-          break label3529;
+        if (!com.tencent.mm.compatible.util.d.oE(16)) {
+          break label3534;
         }
         bool1 = false;
-        ae.i("MicroMsg.ImgInfoStorage", "genBigImg configLong:%d configShort:%d", new Object[] { Integer.valueOf(m), Integer.valueOf(k) });
+        Log.i("MicroMsg.ImgInfoStorage", "genBigImg configLong:%d configShort:%d", new Object[] { Integer.valueOf(m), Integer.valueOf(k) });
         if ((m > 0) || (k > 0)) {
           break label1164;
         }
         j = 0;
         i = 1080;
-        m = bu.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("PicCompressAvoidanceActiveSizeNormal"), 100);
+        m = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("PicCompressAvoidanceActiveSizeNormal"), 100);
         k = m;
         if (m <= 0) {
           k = 100;
         }
         i7 = k * 1024;
-        i1 = bu.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("PicCompressAvoidanceRemainderPerc"), 10);
-        if ((i1 > 0) && (i1 < 100)) {
-          break label3526;
+        m = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("PicCompressAvoidanceRemainderPerc"), 10);
+        if ((m > 0) && (m < 100)) {
+          break label3531;
         }
-        i1 = 10;
+        m = 10;
         i4 = MMNativeJpeg.queryQuality(paramString2);
         k = 1;
-        m = k;
+        i1 = k;
         if (i4 != 0)
         {
-          m = k;
+          i1 = k;
           if (i4 <= n) {
-            m = 0;
+            i1 = 0;
           }
         }
-        ae.d("MicroMsg.ImgInfoStorage", "genBigImg insert : original img path: %s, fullpath:%s, needimg:%b,comresstype:%d Avoidance[%d,%d] ", new Object[] { paramString2, paramString4, Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt), Integer.valueOf(i7), Integer.valueOf(i1) });
+        Log.d("MicroMsg.ImgInfoStorage", "genBigImg insert : original img path: %s, fullpath:%s, needimg:%b,comresstype:%d Avoidance[%d,%d] ", new Object[] { paramString2, paramString4, Boolean.valueOf(paramBoolean), Integer.valueOf(paramInt1), Integer.valueOf(i7), Integer.valueOf(m) });
         if (!paramBoolean) {
-          break label3196;
+          break label3220;
         }
-        paramString3 = com.tencent.mm.sdk.platformtools.h.aRz(paramString2);
+        paramString3 = BitmapUtil.getImageOptions(paramString2);
         if ((paramString3 != null) && (paramString3.outWidth != 0) && (paramString3.outHeight != 0)) {
           break label1229;
         }
@@ -2097,23 +2078,23 @@ public final class i
           break label1223;
         }
         paramBoolean = true;
-        ae.w("MicroMsg.ImgInfoStorage", "genBigImg getImageOptions error:%s, origOptions_null:%b", new Object[] { paramString2, Boolean.valueOf(paramBoolean) });
-        AppMethodBeat.o(218714);
+        Log.w("MicroMsg.ImgInfoStorage", "genBigImg getImageOptions error:%s, origOptions_null:%b", new Object[] { paramString2, Boolean.valueOf(paramBoolean) });
+        AppMethodBeat.o(223603);
         return null;
-        if (az.is2G(com.tencent.mm.sdk.platformtools.ak.getContext())) {
-          i = bu.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("CompressPicLevelFor2G"), 40);
-        } else if (az.is3G(com.tencent.mm.sdk.platformtools.ak.getContext())) {
-          i = bu.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("CompressPicLevelFor3G"), 40);
+        if (NetStatusUtil.is2G(MMApplicationContext.getContext())) {
+          i = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("CompressPicLevelFor2G"), 40);
+        } else if (NetStatusUtil.is3G(MMApplicationContext.getContext())) {
+          i = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("CompressPicLevelFor3G"), 40);
         } else {
-          i = bu.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("CompressPicLevelFor4G"), 60);
+          i = Util.getInt(((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("CompressPicLevelFor4G"), 60);
         }
       }
     }
     catch (Exception paramString1)
     {
-      label1229:
-      label3538:
-      label3546:
+      label3414:
+      label3543:
+      label3551:
       for (;;)
       {
         int n;
@@ -2123,28 +2104,28 @@ public final class i
         int i = 0;
         continue;
         i = j;
-        label1887:
-        if (az.is2G(com.tencent.mm.sdk.platformtools.ak.getContext()))
+        label2399:
+        if (NetStatusUtil.is2G(MMApplicationContext.getContext()))
         {
           i = j;
-          paramString1 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("CompressResolutionFor2G");
+          paramString1 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("CompressResolutionFor2G");
         }
         else
         {
           i = j;
           label1508:
-          if (az.is3G(com.tencent.mm.sdk.platformtools.ak.getContext()))
+          label1895:
+          if (NetStatusUtil.is3G(MMApplicationContext.getContext()))
           {
             i = j;
-            paramString1 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("CompressResolutionFor3G");
+            paramString1 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("CompressResolutionFor3G");
           }
           else
           {
             i = j;
-            paramString1 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getValue("CompressResolutionFor4G");
+            paramString1 = ((com.tencent.mm.plugin.zero.b.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getValue("CompressResolutionFor4G");
             continue;
             label1275:
-            label3196:
             n = i;
           }
         }
@@ -2155,7 +2136,7 @@ public final class i
   public final String a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
   {
     AppMethodBeat.i(150570);
-    if (bu.isNullOrNil(paramString1))
+    if (Util.isNullOrNil(paramString1))
     {
       AppMethodBeat.o(150570);
       return null;
@@ -2166,25 +2147,25 @@ public final class i
       {
         try
         {
-          str1 = sr(Long.valueOf(str1).longValue()).ico;
+          str1 = Ax(Long.valueOf(str1).longValue()).iXm;
           if (paramString1.startsWith("THUMBNAIL_DIRPATH://"))
           {
             paramString1 = paramString1.substring(23);
             paramString2 = "th_";
-            String str3 = com.tencent.mm.plugin.image.d.azQ();
-            String str4 = com.tencent.mm.plugin.image.d.azR();
+            String str3 = com.tencent.mm.plugin.image.d.aSY();
+            String str4 = com.tencent.mm.plugin.image.d.aSZ();
             String str2 = str1;
-            if (bu.isNullOrNil(str1)) {
+            if (Util.isNullOrNil(str1)) {
               str2 = paramString1;
             }
-            paramString1 = n.b(str3, str4, paramString2, str2, paramString3, paramBoolean);
+            paramString1 = FilePathGenerator.defGenPathWithOld(str3, str4, paramString2, str2, paramString3, 1, paramBoolean);
             AppMethodBeat.o(150570);
             return paramString1;
           }
         }
         catch (NumberFormatException paramString1)
         {
-          ae.e("MicroMsg.ImgInfoStorage", "read img buf failed: " + paramString1.getMessage());
+          Log.e("MicroMsg.ImgInfoStorage", "read img buf failed: " + paramString1.getMessage());
           AppMethodBeat.o(150570);
           return null;
         }
@@ -2195,32 +2176,32 @@ public final class i
   public final String a(byte[] paramArrayOfByte, Bitmap.CompressFormat paramCompressFormat)
   {
     AppMethodBeat.i(150576);
-    if (bu.cF(paramArrayOfByte))
+    if (Util.isNullOrNil(paramArrayOfByte))
     {
-      ae.e("MicroMsg.ImgInfoStorage", "save dir thumb error, thumbBuf is null");
+      Log.e("MicroMsg.ImgInfoStorage", "save dir thumb error, thumbBuf is null");
       AppMethodBeat.o(150576);
       return null;
     }
-    String str1 = aIG();
+    String str1 = bcA();
     String str2 = o(str1, "th_", "");
-    ae.d("MicroMsg.ImgInfoStorage", "saveDirThumb, fullPath = %s", new Object[] { str2 });
+    Log.d("MicroMsg.ImgInfoStorage", "saveDirThumb, fullPath = %s", new Object[] { str2 });
     try
     {
-      com.tencent.mm.sdk.platformtools.h.a(BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length), 100, paramCompressFormat, str2, true);
+      BitmapUtil.saveBitmapToImage(BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length), 100, paramCompressFormat, str2, true);
       paramArrayOfByte = "THUMBNAIL_DIRPATH://th_".concat(String.valueOf(str1));
       AppMethodBeat.o(150576);
       return paramArrayOfByte;
     }
     catch (IOException localIOException)
     {
-      ae.e("MicroMsg.ImgInfoStorage", "save bitmap to image error, %s", new Object[] { localIOException });
+      Log.e("MicroMsg.ImgInfoStorage", "save bitmap to image error, %s", new Object[] { localIOException });
       paramArrayOfByte = a(paramArrayOfByte, true, paramCompressFormat);
       AppMethodBeat.o(150576);
       return paramArrayOfByte;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.ImgInfoStorage", "save bitmap to image error, %s", new Object[] { localException });
+      Log.e("MicroMsg.ImgInfoStorage", "save bitmap to image error, %s", new Object[] { localException });
       paramArrayOfByte = a(paramArrayOfByte, true, paramCompressFormat);
       AppMethodBeat.o(150576);
     }
@@ -2231,81 +2212,81 @@ public final class i
   public final String a(byte[] paramArrayOfByte, Bitmap.CompressFormat paramCompressFormat, int paramInt1, int paramInt2, String paramString, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc_w 1544
-    //   3: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 1561
+    //   3: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
-    //   7: invokestatic 1527	com/tencent/mm/sdk/platformtools/bu:cF	([B)Z
+    //   7: invokestatic 1545	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	([B)Z
     //   10: ifeq +20 -> 30
-    //   13: ldc_w 284
-    //   16: ldc_w 1529
-    //   19: invokestatic 813	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   22: ldc_w 1544
+    //   13: ldc_w 277
+    //   16: ldc_w 1547
+    //   19: invokestatic 860	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: ldc_w 1561
     //   25: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: aconst_null
     //   29: areturn
-    //   30: invokestatic 262	java/lang/System:currentTimeMillis	()J
+    //   30: invokestatic 245	java/lang/System:currentTimeMillis	()J
     //   33: lstore 10
-    //   35: invokestatic 776	com/tencent/mm/av/i:aIG	()Ljava/lang/String;
+    //   35: invokestatic 832	com/tencent/mm/av/i:bcA	()Ljava/lang/String;
     //   38: astore 16
     //   40: aload_0
     //   41: aload 16
-    //   43: ldc_w 786
-    //   46: ldc_w 356
-    //   49: invokevirtual 359	com/tencent/mm/av/i:o	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   43: ldc_w 834
+    //   46: ldc_w 400
+    //   49: invokevirtual 403	com/tencent/mm/av/i:o	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   52: astore 17
-    //   54: new 200	java/lang/StringBuilder
+    //   54: new 253	java/lang/StringBuilder
     //   57: dup
-    //   58: invokespecial 269	java/lang/StringBuilder:<init>	()V
+    //   58: invokespecial 254	java/lang/StringBuilder:<init>	()V
     //   61: aload 17
-    //   63: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: ldc_w 1546
-    //   69: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   63: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: ldc_w 1563
+    //   69: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: invokevirtual 265	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   75: astore 15
-    //   77: ldc_w 284
-    //   80: ldc_w 1548
+    //   77: ldc_w 277
+    //   80: ldc_w 1565
     //   83: aload 17
-    //   85: invokestatic 781	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   88: invokevirtual 784	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   91: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   85: invokestatic 232	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   88: invokevirtual 235	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   91: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   94: aload_1
     //   95: arraylength
     //   96: istore 9
-    //   98: new 1368	android/graphics/BitmapFactory$Options
+    //   98: new 1381	android/graphics/BitmapFactory$Options
     //   101: dup
-    //   102: invokespecial 1549	android/graphics/BitmapFactory$Options:<init>	()V
+    //   102: invokespecial 1566	android/graphics/BitmapFactory$Options:<init>	()V
     //   105: astore 18
     //   107: aload 18
     //   109: iconst_1
-    //   110: putfield 1553	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   110: putfield 1570	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   113: aload_1
     //   114: iconst_0
     //   115: aload_1
     //   116: arraylength
     //   117: aload 18
-    //   119: invokestatic 1556	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   119: invokestatic 1573	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   122: pop
     //   123: aconst_null
     //   124: astore 13
     //   126: aload 15
     //   128: iconst_0
-    //   129: invokestatic 1560	com/tencent/mm/vfs/o:db	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   129: invokestatic 1577	com/tencent/mm/vfs/s:dw	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   132: astore 12
     //   134: aload 12
     //   136: astore 13
     //   138: aload 12
     //   140: aload_1
-    //   141: invokevirtual 1565	java/io/OutputStream:write	([B)V
+    //   141: invokevirtual 1582	java/io/OutputStream:write	([B)V
     //   144: aload 12
     //   146: astore 13
     //   148: aload 12
-    //   150: invokevirtual 1568	java/io/OutputStream:flush	()V
+    //   150: invokevirtual 1585	java/io/OutputStream:flush	()V
     //   153: aload 12
     //   155: astore 13
     //   157: aload_1
     //   158: iload_3
     //   159: iload 4
-    //   161: invokestatic 1569	com/tencent/mm/sdk/platformtools/h:decodeByteArray	([BII)Landroid/graphics/Bitmap;
+    //   161: invokestatic 1586	com/tencent/mm/sdk/platformtools/BitmapUtil:decodeByteArray	([BII)Landroid/graphics/Bitmap;
     //   164: astore 19
     //   166: aload 12
     //   168: astore 13
@@ -2322,11 +2303,11 @@ public final class i
     //   188: arraylength
     //   189: istore_3
     //   190: iload_3
-    //   191: ldc_w 1570
-    //   194: if_icmple +535 -> 729
-    //   197: new 1572	java/io/ByteArrayOutputStream
+    //   191: ldc_w 1587
+    //   194: if_icmple +534 -> 728
+    //   197: new 1589	java/io/ByteArrayOutputStream
     //   200: dup
-    //   201: invokespecial 1573	java/io/ByteArrayOutputStream:<init>	()V
+    //   201: invokespecial 1590	java/io/ByteArrayOutputStream:<init>	()V
     //   204: astore 14
     //   206: aload 14
     //   208: astore 13
@@ -2334,12 +2315,12 @@ public final class i
     //   212: aload_2
     //   213: bipush 100
     //   215: aload 14
-    //   217: invokevirtual 1577	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   217: invokevirtual 1594	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   220: pop
     //   221: aload 14
     //   223: astore 13
     //   225: aload 14
-    //   227: invokevirtual 1580	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   227: invokevirtual 1597	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   230: arraylength
     //   231: istore 4
     //   233: bipush 100
@@ -2349,9 +2330,9 @@ public final class i
     //   240: iload_3
     //   241: istore 7
     //   243: aload 14
-    //   245: invokevirtual 1580	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   245: invokevirtual 1597	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   248: arraylength
-    //   249: ldc_w 1570
+    //   249: ldc_w 1587
     //   252: if_icmple +64 -> 316
     //   255: iload_3
     //   256: bipush 15
@@ -2361,7 +2342,7 @@ public final class i
     //   265: iload_3
     //   266: istore 7
     //   268: aload 14
-    //   270: invokevirtual 1583	java/io/ByteArrayOutputStream:reset	()V
+    //   270: invokevirtual 1600	java/io/ByteArrayOutputStream:reset	()V
     //   273: iload_3
     //   274: iconst_5
     //   275: isub
@@ -2374,14 +2355,14 @@ public final class i
     //   286: aload_2
     //   287: iload_3
     //   288: aload 14
-    //   290: invokevirtual 1577	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   290: invokevirtual 1594	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   293: pop
     //   294: aload 14
     //   296: astore 13
     //   298: iload_3
     //   299: istore 7
     //   301: aload 14
-    //   303: invokevirtual 1580	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   303: invokevirtual 1597	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   306: arraylength
     //   307: istore 8
     //   309: iload 8
@@ -2390,7 +2371,7 @@ public final class i
     //   316: aload 12
     //   318: astore 13
     //   320: aload 14
-    //   322: invokevirtual 1584	java/io/ByteArrayOutputStream:close	()V
+    //   322: invokevirtual 1601	java/io/ByteArrayOutputStream:close	()V
     //   325: aload 12
     //   327: astore 13
     //   329: aload 19
@@ -2398,14 +2379,14 @@ public final class i
     //   332: aload_2
     //   333: aload 17
     //   335: iconst_1
-    //   336: invokestatic 598	com/tencent/mm/sdk/platformtools/h:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
+    //   336: invokestatic 648	com/tencent/mm/sdk/platformtools/BitmapUtil:saveBitmapToImage	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
     //   339: pop
     //   340: aload 12
     //   342: astore 13
-    //   344: ldc_w 284
-    //   347: ldc_w 1586
+    //   344: ldc_w 277
+    //   347: ldc_w 1603
     //   350: iconst_3
-    //   351: anewarray 106	java/lang/Object
+    //   351: anewarray 105	java/lang/Object
     //   354: dup
     //   355: iconst_0
     //   356: aload 15
@@ -2417,455 +2398,455 @@ public final class i
     //   364: dup
     //   365: iconst_2
     //   366: iload_3
-    //   367: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   367: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   370: aastore
-    //   371: invokestatic 385	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   371: invokestatic 429	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   374: aload 12
     //   376: astore 13
-    //   378: getstatic 800	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
+    //   378: getstatic 848	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
     //   381: sipush 16498
     //   384: bipush 10
-    //   386: anewarray 106	java/lang/Object
+    //   386: anewarray 105	java/lang/Object
     //   389: dup
     //   390: iconst_0
     //   391: aload 5
-    //   393: invokestatic 1589	com/tencent/mm/sdk/platformtools/bu:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
-    //   396: ldc_w 1591
-    //   399: invokestatic 1597	com/tencent/mm/compatible/util/q:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   393: invokestatic 1606	com/tencent/mm/sdk/platformtools/Util:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
+    //   396: ldc_w 1608
+    //   399: invokestatic 1614	com/tencent/mm/compatible/util/q:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   402: aastore
     //   403: dup
     //   404: iconst_1
     //   405: iload 6
-    //   407: invokestatic 507	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   407: invokestatic 551	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
     //   410: aastore
     //   411: dup
     //   412: iconst_2
     //   413: iload 9
-    //   415: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   415: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   418: aastore
     //   419: dup
     //   420: iconst_3
     //   421: aload 18
-    //   423: getfield 1374	android/graphics/BitmapFactory$Options:outHeight	I
-    //   426: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   423: getfield 1387	android/graphics/BitmapFactory$Options:outHeight	I
+    //   426: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   429: aastore
     //   430: dup
     //   431: iconst_4
     //   432: aload 18
-    //   434: getfield 1371	android/graphics/BitmapFactory$Options:outWidth	I
-    //   437: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   434: getfield 1384	android/graphics/BitmapFactory$Options:outWidth	I
+    //   437: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   440: aastore
     //   441: dup
     //   442: iconst_5
     //   443: iload 4
-    //   445: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   445: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   448: aastore
     //   449: dup
     //   450: bipush 6
     //   452: aload 19
-    //   454: invokevirtual 566	android/graphics/Bitmap:getHeight	()I
-    //   457: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   454: invokevirtual 616	android/graphics/Bitmap:getHeight	()I
+    //   457: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   460: aastore
     //   461: dup
     //   462: bipush 7
     //   464: aload 19
-    //   466: invokevirtual 561	android/graphics/Bitmap:getWidth	()I
-    //   469: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   466: invokevirtual 611	android/graphics/Bitmap:getWidth	()I
+    //   469: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   472: aastore
     //   473: dup
     //   474: bipush 8
     //   476: iconst_0
-    //   477: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   477: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   480: aastore
     //   481: dup
     //   482: bipush 9
-    //   484: invokestatic 262	java/lang/System:currentTimeMillis	()J
+    //   484: invokestatic 245	java/lang/System:currentTimeMillis	()J
     //   487: lload 10
     //   489: lsub
-    //   490: invokestatic 292	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   490: invokestatic 284	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   493: aastore
-    //   494: invokevirtual 807	com/tencent/mm/plugin/report/service/g:f	(I[Ljava/lang/Object;)V
+    //   494: invokevirtual 854	com/tencent/mm/plugin/report/service/h:a	(I[Ljava/lang/Object;)V
     //   497: aload 15
-    //   499: invokestatic 369	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
+    //   499: invokestatic 413	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
     //   502: ifeq +18 -> 520
-    //   505: ldc_w 284
-    //   508: ldc_w 1599
-    //   511: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   505: ldc_w 277
+    //   508: ldc_w 1616
+    //   511: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   514: aload 15
-    //   516: invokestatic 1121	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
+    //   516: invokestatic 1143	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
     //   519: pop
     //   520: aload 12
     //   522: ifnull +8 -> 530
     //   525: aload 12
-    //   527: invokevirtual 1600	java/io/OutputStream:close	()V
-    //   530: ldc_w 778
-    //   533: aload 16
-    //   535: invokestatic 781	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   538: invokevirtual 784	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   541: astore_1
-    //   542: ldc_w 1544
-    //   545: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   548: aload_1
-    //   549: areturn
-    //   550: astore 13
-    //   552: goto -227 -> 325
-    //   555: astore 13
-    //   557: aconst_null
-    //   558: astore 14
-    //   560: aload 14
-    //   562: astore 13
-    //   564: ldc_w 284
-    //   567: ldc_w 1602
-    //   570: invokestatic 813	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   573: iload 7
-    //   575: istore_3
-    //   576: iload 8
-    //   578: istore 4
-    //   580: aload 14
-    //   582: ifnull -257 -> 325
-    //   585: aload 12
-    //   587: astore 13
-    //   589: aload 14
-    //   591: invokevirtual 1584	java/io/ByteArrayOutputStream:close	()V
-    //   594: iload 7
-    //   596: istore_3
-    //   597: iload 8
-    //   599: istore 4
-    //   601: goto -276 -> 325
-    //   604: astore 13
-    //   606: iload 7
-    //   608: istore_3
-    //   609: iload 8
-    //   611: istore 4
-    //   613: goto -288 -> 325
-    //   616: astore 5
-    //   618: aconst_null
-    //   619: astore 14
-    //   621: aload 14
-    //   623: ifnull +12 -> 635
-    //   626: aload 12
-    //   628: astore 13
-    //   630: aload 14
-    //   632: invokevirtual 1584	java/io/ByteArrayOutputStream:close	()V
-    //   635: aload 12
-    //   637: astore 13
-    //   639: ldc_w 1544
-    //   642: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   645: aload 12
-    //   647: astore 13
-    //   649: aload 5
-    //   651: athrow
-    //   652: astore 13
-    //   654: aload 12
-    //   656: astore 5
-    //   658: aload 13
-    //   660: astore 12
-    //   662: ldc_w 284
-    //   665: ldc_w 1539
-    //   668: iconst_1
-    //   669: anewarray 106	java/lang/Object
-    //   672: dup
-    //   673: iconst_0
-    //   674: aload 12
-    //   676: aastore
-    //   677: invokestatic 678	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   680: aload_0
-    //   681: aload_1
-    //   682: iconst_1
-    //   683: aload_2
-    //   684: invokevirtual 1542	com/tencent/mm/av/i:a	([BZLandroid/graphics/Bitmap$CompressFormat;)Ljava/lang/String;
-    //   687: astore_1
-    //   688: aload 15
-    //   690: invokestatic 369	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
-    //   693: ifeq +18 -> 711
-    //   696: ldc_w 284
-    //   699: ldc_w 1599
-    //   702: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   705: aload 15
-    //   707: invokestatic 1121	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
-    //   710: pop
-    //   711: aload 5
-    //   713: ifnull +8 -> 721
-    //   716: aload 5
-    //   718: invokevirtual 1600	java/io/OutputStream:close	()V
-    //   721: ldc_w 1544
-    //   724: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   727: aload_1
-    //   728: areturn
-    //   729: aload 12
-    //   731: astore 13
-    //   733: aload 15
-    //   735: aload 17
-    //   737: invokestatic 1605	com/tencent/mm/vfs/o:mG	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   740: pop
-    //   741: iload 7
-    //   743: istore_3
-    //   744: iload 8
-    //   746: istore 4
-    //   748: goto -408 -> 340
-    //   751: astore 5
-    //   753: aload 12
-    //   755: astore 13
-    //   757: ldc_w 284
-    //   760: ldc_w 1539
-    //   763: iconst_1
-    //   764: anewarray 106	java/lang/Object
-    //   767: dup
-    //   768: iconst_0
-    //   769: aload 5
-    //   771: aastore
-    //   772: invokestatic 678	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   775: aload 12
-    //   777: astore 13
-    //   779: aload_0
-    //   780: aload_1
-    //   781: iconst_1
-    //   782: aload_2
-    //   783: invokevirtual 1542	com/tencent/mm/av/i:a	([BZLandroid/graphics/Bitmap$CompressFormat;)Ljava/lang/String;
-    //   786: astore_1
-    //   787: aload 15
-    //   789: invokestatic 369	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
-    //   792: ifeq +18 -> 810
-    //   795: ldc_w 284
-    //   798: ldc_w 1599
-    //   801: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   804: aload 15
-    //   806: invokestatic 1121	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
-    //   809: pop
-    //   810: aload 12
-    //   812: ifnull +8 -> 820
-    //   815: aload 12
-    //   817: invokevirtual 1600	java/io/OutputStream:close	()V
-    //   820: ldc_w 1544
-    //   823: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   826: aload_1
-    //   827: areturn
-    //   828: astore_1
-    //   829: aconst_null
-    //   830: astore 13
-    //   832: aload 15
-    //   834: invokestatic 369	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
-    //   837: ifeq +18 -> 855
-    //   840: ldc_w 284
-    //   843: ldc_w 1599
-    //   846: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   849: aload 15
-    //   851: invokestatic 1121	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
-    //   854: pop
-    //   855: aload 13
-    //   857: ifnull +8 -> 865
-    //   860: aload 13
-    //   862: invokevirtual 1600	java/io/OutputStream:close	()V
-    //   865: ldc_w 1544
-    //   868: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   871: aload_1
-    //   872: athrow
-    //   873: astore 13
-    //   875: goto -240 -> 635
-    //   878: astore_1
-    //   879: goto -349 -> 530
-    //   882: astore_2
-    //   883: goto -162 -> 721
-    //   886: astore_2
-    //   887: goto -67 -> 820
-    //   890: astore_2
-    //   891: goto -26 -> 865
-    //   894: astore_1
-    //   895: goto -63 -> 832
-    //   898: astore_1
-    //   899: aload 5
-    //   901: astore 13
-    //   903: goto -71 -> 832
-    //   906: astore 5
-    //   908: aconst_null
-    //   909: astore 12
-    //   911: goto -158 -> 753
-    //   914: astore 12
-    //   916: aload 13
-    //   918: astore 5
-    //   920: goto -258 -> 662
-    //   923: astore 5
-    //   925: aload 13
-    //   927: astore 14
-    //   929: goto -308 -> 621
-    //   932: astore 13
-    //   934: goto -374 -> 560
-    //   937: astore 13
-    //   939: iload 4
-    //   941: istore 8
-    //   943: goto -383 -> 560
+    //   527: invokevirtual 1617	java/io/OutputStream:close	()V
+    //   530: ldc 229
+    //   532: aload 16
+    //   534: invokestatic 232	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   537: invokevirtual 235	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   540: astore_1
+    //   541: ldc_w 1561
+    //   544: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   547: aload_1
+    //   548: areturn
+    //   549: astore 13
+    //   551: goto -226 -> 325
+    //   554: astore 13
+    //   556: aconst_null
+    //   557: astore 14
+    //   559: aload 14
+    //   561: astore 13
+    //   563: ldc_w 277
+    //   566: ldc_w 1619
+    //   569: invokestatic 860	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   572: iload 7
+    //   574: istore_3
+    //   575: iload 8
+    //   577: istore 4
+    //   579: aload 14
+    //   581: ifnull -256 -> 325
+    //   584: aload 12
+    //   586: astore 13
+    //   588: aload 14
+    //   590: invokevirtual 1601	java/io/ByteArrayOutputStream:close	()V
+    //   593: iload 7
+    //   595: istore_3
+    //   596: iload 8
+    //   598: istore 4
+    //   600: goto -275 -> 325
+    //   603: astore 13
+    //   605: iload 7
+    //   607: istore_3
+    //   608: iload 8
+    //   610: istore 4
+    //   612: goto -287 -> 325
+    //   615: astore 5
+    //   617: aconst_null
+    //   618: astore 14
+    //   620: aload 14
+    //   622: ifnull +12 -> 634
+    //   625: aload 12
+    //   627: astore 13
+    //   629: aload 14
+    //   631: invokevirtual 1601	java/io/ByteArrayOutputStream:close	()V
+    //   634: aload 12
+    //   636: astore 13
+    //   638: ldc_w 1561
+    //   641: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   644: aload 12
+    //   646: astore 13
+    //   648: aload 5
+    //   650: athrow
+    //   651: astore 13
+    //   653: aload 12
+    //   655: astore 5
+    //   657: aload 13
+    //   659: astore 12
+    //   661: ldc_w 277
+    //   664: ldc_w 1556
+    //   667: iconst_1
+    //   668: anewarray 105	java/lang/Object
+    //   671: dup
+    //   672: iconst_0
+    //   673: aload 12
+    //   675: aastore
+    //   676: invokestatic 735	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   679: aload_0
+    //   680: aload_1
+    //   681: iconst_1
+    //   682: aload_2
+    //   683: invokevirtual 1559	com/tencent/mm/av/i:a	([BZLandroid/graphics/Bitmap$CompressFormat;)Ljava/lang/String;
+    //   686: astore_1
+    //   687: aload 15
+    //   689: invokestatic 413	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   692: ifeq +18 -> 710
+    //   695: ldc_w 277
+    //   698: ldc_w 1616
+    //   701: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   704: aload 15
+    //   706: invokestatic 1143	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
+    //   709: pop
+    //   710: aload 5
+    //   712: ifnull +8 -> 720
+    //   715: aload 5
+    //   717: invokevirtual 1617	java/io/OutputStream:close	()V
+    //   720: ldc_w 1561
+    //   723: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   726: aload_1
+    //   727: areturn
+    //   728: aload 12
+    //   730: astore 13
+    //   732: aload 15
+    //   734: aload 17
+    //   736: invokestatic 1622	com/tencent/mm/vfs/s:nx	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   739: pop
+    //   740: iload 7
+    //   742: istore_3
+    //   743: iload 8
+    //   745: istore 4
+    //   747: goto -407 -> 340
+    //   750: astore 5
+    //   752: aload 12
+    //   754: astore 13
+    //   756: ldc_w 277
+    //   759: ldc_w 1556
+    //   762: iconst_1
+    //   763: anewarray 105	java/lang/Object
+    //   766: dup
+    //   767: iconst_0
+    //   768: aload 5
+    //   770: aastore
+    //   771: invokestatic 735	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   774: aload 12
+    //   776: astore 13
+    //   778: aload_0
+    //   779: aload_1
+    //   780: iconst_1
+    //   781: aload_2
+    //   782: invokevirtual 1559	com/tencent/mm/av/i:a	([BZLandroid/graphics/Bitmap$CompressFormat;)Ljava/lang/String;
+    //   785: astore_1
+    //   786: aload 15
+    //   788: invokestatic 413	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   791: ifeq +18 -> 809
+    //   794: ldc_w 277
+    //   797: ldc_w 1616
+    //   800: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   803: aload 15
+    //   805: invokestatic 1143	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
+    //   808: pop
+    //   809: aload 12
+    //   811: ifnull +8 -> 819
+    //   814: aload 12
+    //   816: invokevirtual 1617	java/io/OutputStream:close	()V
+    //   819: ldc_w 1561
+    //   822: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   825: aload_1
+    //   826: areturn
+    //   827: astore_1
+    //   828: aconst_null
+    //   829: astore 13
+    //   831: aload 15
+    //   833: invokestatic 413	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   836: ifeq +18 -> 854
+    //   839: ldc_w 277
+    //   842: ldc_w 1616
+    //   845: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   848: aload 15
+    //   850: invokestatic 1143	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
+    //   853: pop
+    //   854: aload 13
+    //   856: ifnull +8 -> 864
+    //   859: aload 13
+    //   861: invokevirtual 1617	java/io/OutputStream:close	()V
+    //   864: ldc_w 1561
+    //   867: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   870: aload_1
+    //   871: athrow
+    //   872: astore 13
+    //   874: goto -240 -> 634
+    //   877: astore_1
+    //   878: goto -348 -> 530
+    //   881: astore_2
+    //   882: goto -162 -> 720
+    //   885: astore_2
+    //   886: goto -67 -> 819
+    //   889: astore_2
+    //   890: goto -26 -> 864
+    //   893: astore_1
+    //   894: goto -63 -> 831
+    //   897: astore_1
+    //   898: aload 5
+    //   900: astore 13
+    //   902: goto -71 -> 831
+    //   905: astore 5
+    //   907: aconst_null
+    //   908: astore 12
+    //   910: goto -158 -> 752
+    //   913: astore 12
+    //   915: aload 13
+    //   917: astore 5
+    //   919: goto -258 -> 661
+    //   922: astore 5
+    //   924: aload 13
+    //   926: astore 14
+    //   928: goto -308 -> 620
+    //   931: astore 13
+    //   933: goto -374 -> 559
+    //   936: astore 13
+    //   938: iload 4
+    //   940: istore 8
+    //   942: goto -383 -> 559
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	946	0	this	i
-    //   0	946	1	paramArrayOfByte	byte[]
-    //   0	946	2	paramCompressFormat	Bitmap.CompressFormat
-    //   0	946	3	paramInt1	int
-    //   0	946	4	paramInt2	int
-    //   0	946	5	paramString	String
-    //   0	946	6	paramBoolean	boolean
-    //   181	561	7	i	int
-    //   172	770	8	j	int
+    //   0	945	0	this	i
+    //   0	945	1	paramArrayOfByte	byte[]
+    //   0	945	2	paramCompressFormat	Bitmap.CompressFormat
+    //   0	945	3	paramInt1	int
+    //   0	945	4	paramInt2	int
+    //   0	945	5	paramString	String
+    //   0	945	6	paramBoolean	boolean
+    //   181	560	7	i	int
+    //   172	769	8	j	int
     //   96	318	9	k	int
     //   33	455	10	l	long
-    //   132	778	12	localObject1	Object
-    //   914	1	12	localIOException1	IOException
+    //   132	777	12	localObject1	Object
+    //   913	1	12	localIOException1	IOException
     //   124	253	13	localObject2	Object
-    //   550	1	13	localException1	Exception
-    //   555	1	13	localException2	Exception
-    //   562	26	13	localObject3	Object
-    //   604	1	13	localException3	Exception
-    //   628	20	13	localObject4	Object
-    //   652	7	13	localIOException2	IOException
-    //   731	130	13	localObject5	Object
-    //   873	1	13	localException4	Exception
-    //   901	25	13	str1	String
-    //   932	1	13	localException5	Exception
-    //   937	1	13	localException6	Exception
-    //   204	724	14	localObject6	Object
-    //   75	775	15	str2	String
-    //   38	496	16	str3	String
-    //   52	684	17	str4	String
+    //   549	1	13	localException1	Exception
+    //   554	1	13	localException2	Exception
+    //   561	26	13	localObject3	Object
+    //   603	1	13	localException3	Exception
+    //   627	20	13	localObject4	Object
+    //   651	7	13	localIOException2	IOException
+    //   730	130	13	localObject5	Object
+    //   872	1	13	localException4	Exception
+    //   900	25	13	str1	String
+    //   931	1	13	localException5	Exception
+    //   936	1	13	localException6	Exception
+    //   204	723	14	localObject6	Object
+    //   75	774	15	str2	String
+    //   38	495	16	str3	String
+    //   52	683	17	str4	String
     //   105	328	18	localOptions	BitmapFactory.Options
     //   164	301	19	localBitmap	Bitmap
     // Exception table:
     //   from	to	target	type
-    //   320	325	550	java/lang/Exception
-    //   197	206	555	java/lang/Exception
-    //   589	594	604	java/lang/Exception
-    //   197	206	616	finally
-    //   138	144	652	java/io/IOException
-    //   148	153	652	java/io/IOException
-    //   157	166	652	java/io/IOException
-    //   170	174	652	java/io/IOException
-    //   187	190	652	java/io/IOException
-    //   320	325	652	java/io/IOException
-    //   329	340	652	java/io/IOException
-    //   344	374	652	java/io/IOException
-    //   378	497	652	java/io/IOException
-    //   589	594	652	java/io/IOException
-    //   630	635	652	java/io/IOException
-    //   639	645	652	java/io/IOException
-    //   649	652	652	java/io/IOException
-    //   733	741	652	java/io/IOException
-    //   138	144	751	java/lang/Exception
-    //   148	153	751	java/lang/Exception
-    //   157	166	751	java/lang/Exception
-    //   170	174	751	java/lang/Exception
-    //   187	190	751	java/lang/Exception
-    //   329	340	751	java/lang/Exception
-    //   344	374	751	java/lang/Exception
-    //   378	497	751	java/lang/Exception
-    //   639	645	751	java/lang/Exception
-    //   649	652	751	java/lang/Exception
-    //   733	741	751	java/lang/Exception
-    //   126	134	828	finally
-    //   630	635	873	java/lang/Exception
-    //   525	530	878	java/lang/Exception
-    //   716	721	882	java/lang/Exception
-    //   815	820	886	java/lang/Exception
-    //   860	865	890	java/lang/Exception
-    //   138	144	894	finally
-    //   148	153	894	finally
-    //   157	166	894	finally
-    //   170	174	894	finally
-    //   187	190	894	finally
-    //   320	325	894	finally
-    //   329	340	894	finally
-    //   344	374	894	finally
-    //   378	497	894	finally
-    //   589	594	894	finally
-    //   630	635	894	finally
-    //   639	645	894	finally
-    //   649	652	894	finally
-    //   733	741	894	finally
-    //   757	775	894	finally
-    //   779	787	894	finally
-    //   662	688	898	finally
-    //   126	134	906	java/lang/Exception
-    //   126	134	914	java/io/IOException
-    //   210	221	923	finally
-    //   225	233	923	finally
-    //   243	255	923	finally
-    //   268	273	923	finally
-    //   284	294	923	finally
-    //   301	309	923	finally
-    //   564	573	923	finally
-    //   210	221	932	java/lang/Exception
-    //   225	233	932	java/lang/Exception
-    //   243	255	937	java/lang/Exception
-    //   268	273	937	java/lang/Exception
-    //   284	294	937	java/lang/Exception
-    //   301	309	937	java/lang/Exception
+    //   320	325	549	java/lang/Exception
+    //   197	206	554	java/lang/Exception
+    //   588	593	603	java/lang/Exception
+    //   197	206	615	finally
+    //   138	144	651	java/io/IOException
+    //   148	153	651	java/io/IOException
+    //   157	166	651	java/io/IOException
+    //   170	174	651	java/io/IOException
+    //   187	190	651	java/io/IOException
+    //   320	325	651	java/io/IOException
+    //   329	340	651	java/io/IOException
+    //   344	374	651	java/io/IOException
+    //   378	497	651	java/io/IOException
+    //   588	593	651	java/io/IOException
+    //   629	634	651	java/io/IOException
+    //   638	644	651	java/io/IOException
+    //   648	651	651	java/io/IOException
+    //   732	740	651	java/io/IOException
+    //   138	144	750	java/lang/Exception
+    //   148	153	750	java/lang/Exception
+    //   157	166	750	java/lang/Exception
+    //   170	174	750	java/lang/Exception
+    //   187	190	750	java/lang/Exception
+    //   329	340	750	java/lang/Exception
+    //   344	374	750	java/lang/Exception
+    //   378	497	750	java/lang/Exception
+    //   638	644	750	java/lang/Exception
+    //   648	651	750	java/lang/Exception
+    //   732	740	750	java/lang/Exception
+    //   126	134	827	finally
+    //   629	634	872	java/lang/Exception
+    //   525	530	877	java/lang/Exception
+    //   715	720	881	java/lang/Exception
+    //   814	819	885	java/lang/Exception
+    //   859	864	889	java/lang/Exception
+    //   138	144	893	finally
+    //   148	153	893	finally
+    //   157	166	893	finally
+    //   170	174	893	finally
+    //   187	190	893	finally
+    //   320	325	893	finally
+    //   329	340	893	finally
+    //   344	374	893	finally
+    //   378	497	893	finally
+    //   588	593	893	finally
+    //   629	634	893	finally
+    //   638	644	893	finally
+    //   648	651	893	finally
+    //   732	740	893	finally
+    //   756	774	893	finally
+    //   778	786	893	finally
+    //   661	687	897	finally
+    //   126	134	905	java/lang/Exception
+    //   126	134	913	java/io/IOException
+    //   210	221	922	finally
+    //   225	233	922	finally
+    //   243	255	922	finally
+    //   268	273	922	finally
+    //   284	294	922	finally
+    //   301	309	922	finally
+    //   563	572	922	finally
+    //   210	221	931	java/lang/Exception
+    //   225	233	931	java/lang/Exception
+    //   243	255	936	java/lang/Exception
+    //   268	273	936	java/lang/Exception
+    //   284	294	936	java/lang/Exception
+    //   301	309	936	java/lang/Exception
   }
   
   /* Error */
   public final String a(byte[] paramArrayOfByte, Bitmap.CompressFormat paramCompressFormat, String paramString, boolean paramBoolean)
   {
     // Byte code:
-    //   0: ldc_w 1607
-    //   3: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 1624
+    //   3: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
-    //   7: invokestatic 1527	com/tencent/mm/sdk/platformtools/bu:cF	([B)Z
+    //   7: invokestatic 1545	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	([B)Z
     //   10: ifeq +20 -> 30
-    //   13: ldc_w 284
-    //   16: ldc_w 1529
-    //   19: invokestatic 813	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   22: ldc_w 1607
+    //   13: ldc_w 277
+    //   16: ldc_w 1547
+    //   19: invokestatic 860	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: ldc_w 1624
     //   25: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: aconst_null
     //   29: areturn
-    //   30: invokestatic 262	java/lang/System:currentTimeMillis	()J
+    //   30: invokestatic 245	java/lang/System:currentTimeMillis	()J
     //   33: lstore 10
-    //   35: invokestatic 776	com/tencent/mm/av/i:aIG	()Ljava/lang/String;
+    //   35: invokestatic 832	com/tencent/mm/av/i:bcA	()Ljava/lang/String;
     //   38: astore 17
     //   40: aload_0
     //   41: aload 17
-    //   43: ldc_w 786
-    //   46: ldc_w 356
-    //   49: invokevirtual 359	com/tencent/mm/av/i:o	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   43: ldc_w 834
+    //   46: ldc_w 400
+    //   49: invokevirtual 403	com/tencent/mm/av/i:o	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   52: astore 19
-    //   54: new 200	java/lang/StringBuilder
+    //   54: new 253	java/lang/StringBuilder
     //   57: dup
-    //   58: invokespecial 269	java/lang/StringBuilder:<init>	()V
+    //   58: invokespecial 254	java/lang/StringBuilder:<init>	()V
     //   61: aload 19
-    //   63: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   66: ldc_w 1546
-    //   69: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   63: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   66: ldc_w 1563
+    //   69: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: invokevirtual 265	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   75: astore 16
-    //   77: ldc_w 284
-    //   80: ldc_w 1548
+    //   77: ldc_w 277
+    //   80: ldc_w 1565
     //   83: aload 19
-    //   85: invokestatic 781	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   88: invokevirtual 784	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   91: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   85: invokestatic 232	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   88: invokevirtual 235	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   91: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   94: aload_1
     //   95: arraylength
     //   96: istore 9
-    //   98: new 1368	android/graphics/BitmapFactory$Options
+    //   98: new 1381	android/graphics/BitmapFactory$Options
     //   101: dup
-    //   102: invokespecial 1549	android/graphics/BitmapFactory$Options:<init>	()V
+    //   102: invokespecial 1566	android/graphics/BitmapFactory$Options:<init>	()V
     //   105: astore 18
     //   107: aload 18
     //   109: iconst_1
-    //   110: putfield 1553	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   110: putfield 1570	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   113: aload_1
     //   114: iconst_0
     //   115: aload_1
     //   116: arraylength
     //   117: aload 18
-    //   119: invokestatic 1556	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   119: invokestatic 1573	android/graphics/BitmapFactory:decodeByteArray	([BIILandroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   122: pop
     //   123: aload 18
-    //   125: getfield 1371	android/graphics/BitmapFactory$Options:outWidth	I
+    //   125: getfield 1384	android/graphics/BitmapFactory$Options:outWidth	I
     //   128: istore 7
     //   130: aload 18
-    //   132: getfield 1374	android/graphics/BitmapFactory$Options:outHeight	I
+    //   132: getfield 1387	android/graphics/BitmapFactory$Options:outHeight	I
     //   135: istore 6
     //   137: sipush 720
     //   140: iload 7
     //   142: if_icmpgt +13 -> 155
-    //   145: ldc_w 1608
+    //   145: ldc_w 1625
     //   148: iload 6
     //   150: i2f
     //   151: fcmpl
@@ -2876,29 +2857,29 @@ public final class i
     //   160: astore 13
     //   162: aload 16
     //   164: iconst_0
-    //   165: invokestatic 1560	com/tencent/mm/vfs/o:db	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   165: invokestatic 1577	com/tencent/mm/vfs/s:dw	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   168: astore 12
     //   170: aload 12
     //   172: astore 13
     //   174: aload 12
     //   176: aload_1
-    //   177: invokevirtual 1565	java/io/OutputStream:write	([B)V
+    //   177: invokevirtual 1582	java/io/OutputStream:write	([B)V
     //   180: aload 12
     //   182: astore 13
     //   184: aload 12
-    //   186: invokevirtual 1568	java/io/OutputStream:flush	()V
+    //   186: invokevirtual 1585	java/io/OutputStream:flush	()V
     //   189: aload 12
     //   191: astore 13
     //   193: aload_1
     //   194: iload 5
     //   196: iload 6
-    //   198: invokestatic 1569	com/tencent/mm/sdk/platformtools/h:decodeByteArray	([BII)Landroid/graphics/Bitmap;
+    //   198: invokestatic 1586	com/tencent/mm/sdk/platformtools/BitmapUtil:decodeByteArray	([BII)Landroid/graphics/Bitmap;
     //   201: astore 14
     //   203: aload 12
     //   205: astore 13
     //   207: iload 5
     //   209: aload 14
-    //   211: invokevirtual 561	android/graphics/Bitmap:getWidth	()I
+    //   211: invokevirtual 611	android/graphics/Bitmap:getWidth	()I
     //   214: if_icmpeq +240 -> 454
     //   217: aload 12
     //   219: astore 13
@@ -2906,17 +2887,17 @@ public final class i
     //   223: iload 5
     //   225: iload 6
     //   227: iconst_1
-    //   228: invokestatic 651	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   228: invokestatic 707	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
     //   231: astore 14
     //   233: aload 12
     //   235: astore 13
     //   237: aload 14
-    //   239: invokevirtual 566	android/graphics/Bitmap:getHeight	()I
+    //   239: invokevirtual 616	android/graphics/Bitmap:getHeight	()I
     //   242: i2f
     //   243: aload 14
-    //   245: invokevirtual 561	android/graphics/Bitmap:getWidth	()I
+    //   245: invokevirtual 611	android/graphics/Bitmap:getWidth	()I
     //   248: i2f
-    //   249: ldc_w 1609
+    //   249: ldc_w 1626
     //   252: fmul
     //   253: fcmpl
     //   254: ifle +203 -> 457
@@ -2926,14 +2907,14 @@ public final class i
     //   263: iconst_0
     //   264: iconst_0
     //   265: aload 14
-    //   267: invokevirtual 561	android/graphics/Bitmap:getWidth	()I
+    //   267: invokevirtual 611	android/graphics/Bitmap:getWidth	()I
     //   270: aload 14
-    //   272: invokevirtual 561	android/graphics/Bitmap:getWidth	()I
+    //   272: invokevirtual 611	android/graphics/Bitmap:getWidth	()I
     //   275: i2f
-    //   276: ldc_w 1609
+    //   276: ldc_w 1626
     //   279: fmul
     //   280: f2i
-    //   281: invokestatic 1613	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+    //   281: invokestatic 1630	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
     //   284: astore 15
     //   286: aload 12
     //   288: astore 13
@@ -2944,9 +2925,9 @@ public final class i
     //   296: ifnull +405 -> 701
     //   299: bipush 70
     //   301: istore 5
-    //   303: new 1572	java/io/ByteArrayOutputStream
+    //   303: new 1589	java/io/ByteArrayOutputStream
     //   306: dup
-    //   307: invokespecial 1573	java/io/ByteArrayOutputStream:<init>	()V
+    //   307: invokespecial 1590	java/io/ByteArrayOutputStream:<init>	()V
     //   310: astore 14
     //   312: aload 14
     //   314: astore 13
@@ -2954,12 +2935,12 @@ public final class i
     //   318: aload_2
     //   319: bipush 70
     //   321: aload 14
-    //   323: invokevirtual 1577	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   323: invokevirtual 1594	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   326: pop
     //   327: aload 14
     //   329: astore 13
     //   331: aload 14
-    //   333: invokevirtual 1580	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   333: invokevirtual 1597	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   336: arraylength
     //   337: istore 7
     //   339: bipush 70
@@ -2971,9 +2952,9 @@ public final class i
     //   351: iload 5
     //   353: istore 7
     //   355: aload 14
-    //   357: invokevirtual 1580	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   357: invokevirtual 1597	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   360: arraylength
-    //   361: ldc_w 1570
+    //   361: ldc_w 1587
     //   364: if_icmple +125 -> 489
     //   367: iload 5
     //   369: bipush 15
@@ -2983,7 +2964,7 @@ public final class i
     //   378: iload 5
     //   380: istore 7
     //   382: aload 14
-    //   384: invokevirtual 1583	java/io/ByteArrayOutputStream:reset	()V
+    //   384: invokevirtual 1600	java/io/ByteArrayOutputStream:reset	()V
     //   387: iload 5
     //   389: iconst_5
     //   390: isub
@@ -2996,14 +2977,14 @@ public final class i
     //   403: aload_2
     //   404: iload 5
     //   406: aload 14
-    //   408: invokevirtual 1577	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   408: invokevirtual 1594	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
     //   411: pop
     //   412: aload 14
     //   414: astore 13
     //   416: iload 5
     //   418: istore 7
     //   420: aload 14
-    //   422: invokevirtual 1580	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   422: invokevirtual 1597	java/io/ByteArrayOutputStream:toByteArray	()[B
     //   425: arraylength
     //   426: istore 8
     //   428: iload 8
@@ -3025,20 +3006,20 @@ public final class i
     //   463: iconst_0
     //   464: iconst_0
     //   465: aload 14
-    //   467: invokevirtual 566	android/graphics/Bitmap:getHeight	()I
+    //   467: invokevirtual 616	android/graphics/Bitmap:getHeight	()I
     //   470: i2f
-    //   471: ldc_w 1609
+    //   471: ldc_w 1626
     //   474: fdiv
     //   475: f2i
     //   476: aload 14
-    //   478: invokevirtual 566	android/graphics/Bitmap:getHeight	()I
-    //   481: invokestatic 1613	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
+    //   478: invokevirtual 616	android/graphics/Bitmap:getHeight	()I
+    //   481: invokestatic 1630	android/graphics/Bitmap:createBitmap	(Landroid/graphics/Bitmap;IIII)Landroid/graphics/Bitmap;
     //   484: astore 15
     //   486: goto -200 -> 286
     //   489: aload 12
     //   491: astore 13
     //   493: aload 14
-    //   495: invokevirtual 1584	java/io/ByteArrayOutputStream:close	()V
+    //   495: invokevirtual 1601	java/io/ByteArrayOutputStream:close	()V
     //   498: iload 6
     //   500: istore 8
     //   502: iload 5
@@ -3050,14 +3031,14 @@ public final class i
     //   514: aload_2
     //   515: aload 19
     //   517: iconst_1
-    //   518: invokestatic 598	com/tencent/mm/sdk/platformtools/h:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
+    //   518: invokestatic 648	com/tencent/mm/sdk/platformtools/BitmapUtil:saveBitmapToImage	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
     //   521: pop
     //   522: aload 12
     //   524: astore 13
-    //   526: ldc_w 284
-    //   529: ldc_w 1586
+    //   526: ldc_w 277
+    //   529: ldc_w 1603
     //   532: iconst_3
-    //   533: anewarray 106	java/lang/Object
+    //   533: anewarray 105	java/lang/Object
     //   536: dup
     //   537: iconst_0
     //   538: aload 16
@@ -3069,22 +3050,22 @@ public final class i
     //   546: dup
     //   547: iconst_2
     //   548: iload 7
-    //   550: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   550: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   553: aastore
-    //   554: invokestatic 385	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   554: invokestatic 429	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   557: aload 12
     //   559: astore 13
-    //   561: getstatic 800	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
+    //   561: getstatic 848	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
     //   564: astore 14
     //   566: aload 12
     //   568: astore 13
     //   570: aload_3
-    //   571: invokestatic 1589	com/tencent/mm/sdk/platformtools/bu:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
-    //   574: ldc_w 1591
-    //   577: invokestatic 1597	com/tencent/mm/compatible/util/q:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   571: invokestatic 1606	com/tencent/mm/sdk/platformtools/Util:nullAsNil	(Ljava/lang/String;)Ljava/lang/String;
+    //   574: ldc_w 1608
+    //   577: invokestatic 1614	com/tencent/mm/compatible/util/q:encode	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   580: astore_3
     //   581: iload 4
-    //   583: ifeq +356 -> 939
+    //   583: ifeq +355 -> 938
     //   586: iconst_1
     //   587: istore 5
     //   589: aload 12
@@ -3092,7 +3073,7 @@ public final class i
     //   593: aload 14
     //   595: sipush 16498
     //   598: bipush 10
-    //   600: anewarray 106	java/lang/Object
+    //   600: anewarray 105	java/lang/Object
     //   603: dup
     //   604: iconst_0
     //   605: aload_3
@@ -3100,377 +3081,377 @@ public final class i
     //   607: dup
     //   608: iconst_1
     //   609: iload 5
-    //   611: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   611: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   614: aastore
     //   615: dup
     //   616: iconst_2
     //   617: iload 9
-    //   619: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   619: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   622: aastore
     //   623: dup
     //   624: iconst_3
     //   625: aload 18
-    //   627: getfield 1374	android/graphics/BitmapFactory$Options:outHeight	I
-    //   630: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   627: getfield 1387	android/graphics/BitmapFactory$Options:outHeight	I
+    //   630: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   633: aastore
     //   634: dup
     //   635: iconst_4
     //   636: aload 18
-    //   638: getfield 1371	android/graphics/BitmapFactory$Options:outWidth	I
-    //   641: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   638: getfield 1384	android/graphics/BitmapFactory$Options:outWidth	I
+    //   641: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   644: aastore
     //   645: dup
     //   646: iconst_5
     //   647: iload 8
-    //   649: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   649: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   652: aastore
     //   653: dup
     //   654: bipush 6
     //   656: aload 15
-    //   658: invokevirtual 566	android/graphics/Bitmap:getHeight	()I
-    //   661: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   658: invokevirtual 616	android/graphics/Bitmap:getHeight	()I
+    //   661: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   664: aastore
     //   665: dup
     //   666: bipush 7
     //   668: aload 15
-    //   670: invokevirtual 561	android/graphics/Bitmap:getWidth	()I
-    //   673: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   670: invokevirtual 611	android/graphics/Bitmap:getWidth	()I
+    //   673: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   676: aastore
     //   677: dup
     //   678: bipush 8
     //   680: iconst_1
-    //   681: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   681: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   684: aastore
     //   685: dup
     //   686: bipush 9
-    //   688: invokestatic 262	java/lang/System:currentTimeMillis	()J
+    //   688: invokestatic 245	java/lang/System:currentTimeMillis	()J
     //   691: lload 10
     //   693: lsub
-    //   694: invokestatic 292	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   694: invokestatic 284	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   697: aastore
-    //   698: invokevirtual 807	com/tencent/mm/plugin/report/service/g:f	(I[Ljava/lang/Object;)V
+    //   698: invokevirtual 854	com/tencent/mm/plugin/report/service/h:a	(I[Ljava/lang/Object;)V
     //   701: aload 16
-    //   703: invokestatic 369	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
+    //   703: invokestatic 413	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
     //   706: ifeq +18 -> 724
-    //   709: ldc_w 284
-    //   712: ldc_w 1599
-    //   715: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   709: ldc_w 277
+    //   712: ldc_w 1616
+    //   715: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   718: aload 16
-    //   720: invokestatic 1121	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
+    //   720: invokestatic 1143	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
     //   723: pop
     //   724: aload 12
     //   726: ifnull +8 -> 734
     //   729: aload 12
-    //   731: invokevirtual 1600	java/io/OutputStream:close	()V
-    //   734: ldc_w 778
-    //   737: aload 17
-    //   739: invokestatic 781	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   742: invokevirtual 784	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   745: astore_1
-    //   746: ldc_w 1607
-    //   749: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   752: aload_1
-    //   753: areturn
-    //   754: astore 13
-    //   756: iload 5
-    //   758: istore 7
-    //   760: iload 6
-    //   762: istore 8
-    //   764: goto -258 -> 506
-    //   767: astore 13
-    //   769: aconst_null
-    //   770: astore 14
-    //   772: aload 14
-    //   774: astore 13
-    //   776: ldc_w 284
-    //   779: ldc_w 1602
-    //   782: invokestatic 813	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   785: iload 5
-    //   787: istore 7
-    //   789: iload 6
-    //   791: istore 8
-    //   793: aload 14
-    //   795: ifnull -289 -> 506
-    //   798: aload 12
-    //   800: astore 13
-    //   802: aload 14
-    //   804: invokevirtual 1584	java/io/ByteArrayOutputStream:close	()V
-    //   807: iload 5
-    //   809: istore 7
-    //   811: iload 6
-    //   813: istore 8
-    //   815: goto -309 -> 506
-    //   818: astore 13
-    //   820: iload 5
-    //   822: istore 7
-    //   824: iload 6
-    //   826: istore 8
-    //   828: goto -322 -> 506
-    //   831: astore_3
-    //   832: aconst_null
-    //   833: astore 14
-    //   835: aload 14
-    //   837: ifnull +12 -> 849
-    //   840: aload 12
-    //   842: astore 13
-    //   844: aload 14
-    //   846: invokevirtual 1584	java/io/ByteArrayOutputStream:close	()V
-    //   849: aload 12
-    //   851: astore 13
-    //   853: ldc_w 1607
-    //   856: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   859: aload 12
-    //   861: astore 13
-    //   863: aload_3
-    //   864: athrow
-    //   865: astore 13
-    //   867: aload 12
-    //   869: astore_3
-    //   870: aload 13
-    //   872: astore 12
-    //   874: ldc_w 284
-    //   877: ldc_w 1539
-    //   880: iconst_1
-    //   881: anewarray 106	java/lang/Object
-    //   884: dup
-    //   885: iconst_0
-    //   886: aload 12
-    //   888: aastore
-    //   889: invokestatic 678	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   892: aload_0
-    //   893: aload_1
-    //   894: iconst_1
-    //   895: aload_2
-    //   896: invokevirtual 1542	com/tencent/mm/av/i:a	([BZLandroid/graphics/Bitmap$CompressFormat;)Ljava/lang/String;
-    //   899: astore_1
-    //   900: aload 16
-    //   902: invokestatic 369	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
-    //   905: ifeq +18 -> 923
-    //   908: ldc_w 284
-    //   911: ldc_w 1599
-    //   914: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   917: aload 16
-    //   919: invokestatic 1121	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
-    //   922: pop
-    //   923: aload_3
-    //   924: ifnull +7 -> 931
-    //   927: aload_3
-    //   928: invokevirtual 1600	java/io/OutputStream:close	()V
-    //   931: ldc_w 1607
-    //   934: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   937: aload_1
-    //   938: areturn
-    //   939: iconst_0
-    //   940: istore 5
-    //   942: goto -353 -> 589
-    //   945: astore_3
-    //   946: aconst_null
-    //   947: astore 12
-    //   949: aload 12
-    //   951: astore 13
-    //   953: ldc_w 284
-    //   956: ldc_w 1539
-    //   959: iconst_1
-    //   960: anewarray 106	java/lang/Object
-    //   963: dup
-    //   964: iconst_0
-    //   965: aload_3
-    //   966: aastore
-    //   967: invokestatic 678	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   970: aload 12
-    //   972: astore 13
-    //   974: aload_0
-    //   975: aload_1
-    //   976: iconst_1
-    //   977: aload_2
-    //   978: invokevirtual 1542	com/tencent/mm/av/i:a	([BZLandroid/graphics/Bitmap$CompressFormat;)Ljava/lang/String;
-    //   981: astore_1
-    //   982: aload 16
-    //   984: invokestatic 369	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
-    //   987: ifeq +18 -> 1005
-    //   990: ldc_w 284
-    //   993: ldc_w 1599
-    //   996: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   999: aload 16
-    //   1001: invokestatic 1121	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
-    //   1004: pop
-    //   1005: aload 12
-    //   1007: ifnull +8 -> 1015
-    //   1010: aload 12
-    //   1012: invokevirtual 1600	java/io/OutputStream:close	()V
-    //   1015: ldc_w 1607
-    //   1018: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1021: aload_1
-    //   1022: areturn
-    //   1023: astore_1
-    //   1024: aconst_null
-    //   1025: astore 13
-    //   1027: aload 16
-    //   1029: invokestatic 369	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
-    //   1032: ifeq +18 -> 1050
-    //   1035: ldc_w 284
-    //   1038: ldc_w 1599
-    //   1041: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   1044: aload 16
-    //   1046: invokestatic 1121	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
-    //   1049: pop
-    //   1050: aload 13
-    //   1052: ifnull +8 -> 1060
-    //   1055: aload 13
-    //   1057: invokevirtual 1600	java/io/OutputStream:close	()V
-    //   1060: ldc_w 1607
-    //   1063: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   1066: aload_1
-    //   1067: athrow
-    //   1068: astore 13
-    //   1070: goto -221 -> 849
-    //   1073: astore_1
-    //   1074: goto -340 -> 734
-    //   1077: astore_2
-    //   1078: goto -147 -> 931
-    //   1081: astore_2
-    //   1082: goto -67 -> 1015
-    //   1085: astore_2
-    //   1086: goto -26 -> 1060
-    //   1089: astore_1
-    //   1090: goto -63 -> 1027
-    //   1093: astore_1
-    //   1094: aload_3
-    //   1095: astore 13
-    //   1097: goto -70 -> 1027
-    //   1100: astore_3
-    //   1101: goto -152 -> 949
-    //   1104: astore 12
-    //   1106: aload 13
-    //   1108: astore_3
-    //   1109: goto -235 -> 874
-    //   1112: astore_3
-    //   1113: aload 13
-    //   1115: astore 14
-    //   1117: goto -282 -> 835
-    //   1120: astore 13
-    //   1122: goto -350 -> 772
-    //   1125: astore 13
-    //   1127: iload 7
-    //   1129: istore 5
-    //   1131: goto -359 -> 772
+    //   731: invokevirtual 1617	java/io/OutputStream:close	()V
+    //   734: ldc 229
+    //   736: aload 17
+    //   738: invokestatic 232	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   741: invokevirtual 235	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   744: astore_1
+    //   745: ldc_w 1624
+    //   748: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   751: aload_1
+    //   752: areturn
+    //   753: astore 13
+    //   755: iload 5
+    //   757: istore 7
+    //   759: iload 6
+    //   761: istore 8
+    //   763: goto -257 -> 506
+    //   766: astore 13
+    //   768: aconst_null
+    //   769: astore 14
+    //   771: aload 14
+    //   773: astore 13
+    //   775: ldc_w 277
+    //   778: ldc_w 1619
+    //   781: invokestatic 860	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   784: iload 5
+    //   786: istore 7
+    //   788: iload 6
+    //   790: istore 8
+    //   792: aload 14
+    //   794: ifnull -288 -> 506
+    //   797: aload 12
+    //   799: astore 13
+    //   801: aload 14
+    //   803: invokevirtual 1601	java/io/ByteArrayOutputStream:close	()V
+    //   806: iload 5
+    //   808: istore 7
+    //   810: iload 6
+    //   812: istore 8
+    //   814: goto -308 -> 506
+    //   817: astore 13
+    //   819: iload 5
+    //   821: istore 7
+    //   823: iload 6
+    //   825: istore 8
+    //   827: goto -321 -> 506
+    //   830: astore_3
+    //   831: aconst_null
+    //   832: astore 14
+    //   834: aload 14
+    //   836: ifnull +12 -> 848
+    //   839: aload 12
+    //   841: astore 13
+    //   843: aload 14
+    //   845: invokevirtual 1601	java/io/ByteArrayOutputStream:close	()V
+    //   848: aload 12
+    //   850: astore 13
+    //   852: ldc_w 1624
+    //   855: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   858: aload 12
+    //   860: astore 13
+    //   862: aload_3
+    //   863: athrow
+    //   864: astore 13
+    //   866: aload 12
+    //   868: astore_3
+    //   869: aload 13
+    //   871: astore 12
+    //   873: ldc_w 277
+    //   876: ldc_w 1556
+    //   879: iconst_1
+    //   880: anewarray 105	java/lang/Object
+    //   883: dup
+    //   884: iconst_0
+    //   885: aload 12
+    //   887: aastore
+    //   888: invokestatic 735	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   891: aload_0
+    //   892: aload_1
+    //   893: iconst_1
+    //   894: aload_2
+    //   895: invokevirtual 1559	com/tencent/mm/av/i:a	([BZLandroid/graphics/Bitmap$CompressFormat;)Ljava/lang/String;
+    //   898: astore_1
+    //   899: aload 16
+    //   901: invokestatic 413	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   904: ifeq +18 -> 922
+    //   907: ldc_w 277
+    //   910: ldc_w 1616
+    //   913: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   916: aload 16
+    //   918: invokestatic 1143	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
+    //   921: pop
+    //   922: aload_3
+    //   923: ifnull +7 -> 930
+    //   926: aload_3
+    //   927: invokevirtual 1617	java/io/OutputStream:close	()V
+    //   930: ldc_w 1624
+    //   933: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   936: aload_1
+    //   937: areturn
+    //   938: iconst_0
+    //   939: istore 5
+    //   941: goto -352 -> 589
+    //   944: astore_3
+    //   945: aconst_null
+    //   946: astore 12
+    //   948: aload 12
+    //   950: astore 13
+    //   952: ldc_w 277
+    //   955: ldc_w 1556
+    //   958: iconst_1
+    //   959: anewarray 105	java/lang/Object
+    //   962: dup
+    //   963: iconst_0
+    //   964: aload_3
+    //   965: aastore
+    //   966: invokestatic 735	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   969: aload 12
+    //   971: astore 13
+    //   973: aload_0
+    //   974: aload_1
+    //   975: iconst_1
+    //   976: aload_2
+    //   977: invokevirtual 1559	com/tencent/mm/av/i:a	([BZLandroid/graphics/Bitmap$CompressFormat;)Ljava/lang/String;
+    //   980: astore_1
+    //   981: aload 16
+    //   983: invokestatic 413	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   986: ifeq +18 -> 1004
+    //   989: ldc_w 277
+    //   992: ldc_w 1616
+    //   995: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   998: aload 16
+    //   1000: invokestatic 1143	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
+    //   1003: pop
+    //   1004: aload 12
+    //   1006: ifnull +8 -> 1014
+    //   1009: aload 12
+    //   1011: invokevirtual 1617	java/io/OutputStream:close	()V
+    //   1014: ldc_w 1624
+    //   1017: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1020: aload_1
+    //   1021: areturn
+    //   1022: astore_1
+    //   1023: aconst_null
+    //   1024: astore 13
+    //   1026: aload 16
+    //   1028: invokestatic 413	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   1031: ifeq +18 -> 1049
+    //   1034: ldc_w 277
+    //   1037: ldc_w 1616
+    //   1040: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   1043: aload 16
+    //   1045: invokestatic 1143	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
+    //   1048: pop
+    //   1049: aload 13
+    //   1051: ifnull +8 -> 1059
+    //   1054: aload 13
+    //   1056: invokevirtual 1617	java/io/OutputStream:close	()V
+    //   1059: ldc_w 1624
+    //   1062: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   1065: aload_1
+    //   1066: athrow
+    //   1067: astore 13
+    //   1069: goto -221 -> 848
+    //   1072: astore_1
+    //   1073: goto -339 -> 734
+    //   1076: astore_2
+    //   1077: goto -147 -> 930
+    //   1080: astore_2
+    //   1081: goto -67 -> 1014
+    //   1084: astore_2
+    //   1085: goto -26 -> 1059
+    //   1088: astore_1
+    //   1089: goto -63 -> 1026
+    //   1092: astore_1
+    //   1093: aload_3
+    //   1094: astore 13
+    //   1096: goto -70 -> 1026
+    //   1099: astore_3
+    //   1100: goto -152 -> 948
+    //   1103: astore 12
+    //   1105: aload 13
+    //   1107: astore_3
+    //   1108: goto -235 -> 873
+    //   1111: astore_3
+    //   1112: aload 13
+    //   1114: astore 14
+    //   1116: goto -282 -> 834
+    //   1119: astore 13
+    //   1121: goto -350 -> 771
+    //   1124: astore 13
+    //   1126: iload 7
+    //   1128: istore 5
+    //   1130: goto -359 -> 771
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1134	0	this	i
-    //   0	1134	1	paramArrayOfByte	byte[]
-    //   0	1134	2	paramCompressFormat	Bitmap.CompressFormat
-    //   0	1134	3	paramString	String
-    //   0	1134	4	paramBoolean	boolean
-    //   157	973	5	i	int
-    //   135	690	6	j	int
-    //   128	1000	7	k	int
-    //   426	401	8	m	int
+    //   0	1133	0	this	i
+    //   0	1133	1	paramArrayOfByte	byte[]
+    //   0	1133	2	paramCompressFormat	Bitmap.CompressFormat
+    //   0	1133	3	paramString	String
+    //   0	1133	4	paramBoolean	boolean
+    //   157	972	5	i	int
+    //   135	689	6	j	int
+    //   128	999	7	k	int
+    //   426	400	8	m	int
     //   96	522	9	n	int
     //   33	659	10	l	long
-    //   168	843	12	localObject1	Object
-    //   1104	1	12	localIOException1	IOException
+    //   168	842	12	localObject1	Object
+    //   1103	1	12	localIOException1	IOException
     //   160	432	13	localObject2	Object
-    //   754	1	13	localException1	Exception
-    //   767	1	13	localException2	Exception
-    //   774	27	13	localObject3	Object
-    //   818	1	13	localException3	Exception
-    //   842	20	13	localObject4	Object
-    //   865	6	13	localIOException2	IOException
-    //   951	105	13	localObject5	Object
-    //   1068	1	13	localException4	Exception
-    //   1095	19	13	str1	String
-    //   1120	1	13	localException5	Exception
-    //   1125	1	13	localException6	Exception
-    //   201	915	14	localObject6	Object
+    //   753	1	13	localException1	Exception
+    //   766	1	13	localException2	Exception
+    //   773	27	13	localObject3	Object
+    //   817	1	13	localException3	Exception
+    //   841	20	13	localObject4	Object
+    //   864	6	13	localIOException2	IOException
+    //   950	105	13	localObject5	Object
+    //   1067	1	13	localException4	Exception
+    //   1094	19	13	str1	String
+    //   1119	1	13	localException5	Exception
+    //   1124	1	13	localException6	Exception
+    //   201	914	14	localObject6	Object
     //   284	385	15	localBitmap	Bitmap
-    //   75	970	16	str2	String
-    //   38	700	17	str3	String
+    //   75	969	16	str2	String
+    //   38	699	17	str3	String
     //   105	532	18	localOptions	BitmapFactory.Options
     //   52	492	19	str4	String
     // Exception table:
     //   from	to	target	type
-    //   493	498	754	java/lang/Exception
-    //   303	312	767	java/lang/Exception
-    //   802	807	818	java/lang/Exception
-    //   303	312	831	finally
-    //   174	180	865	java/io/IOException
-    //   184	189	865	java/io/IOException
-    //   193	203	865	java/io/IOException
-    //   207	217	865	java/io/IOException
-    //   221	233	865	java/io/IOException
-    //   237	257	865	java/io/IOException
-    //   261	286	865	java/io/IOException
-    //   290	294	865	java/io/IOException
-    //   461	486	865	java/io/IOException
-    //   493	498	865	java/io/IOException
-    //   510	522	865	java/io/IOException
-    //   526	557	865	java/io/IOException
-    //   561	566	865	java/io/IOException
-    //   570	581	865	java/io/IOException
-    //   593	701	865	java/io/IOException
-    //   802	807	865	java/io/IOException
-    //   844	849	865	java/io/IOException
-    //   853	859	865	java/io/IOException
-    //   863	865	865	java/io/IOException
-    //   162	170	945	java/lang/Exception
-    //   162	170	1023	finally
-    //   844	849	1068	java/lang/Exception
-    //   729	734	1073	java/lang/Exception
-    //   927	931	1077	java/lang/Exception
-    //   1010	1015	1081	java/lang/Exception
-    //   1055	1060	1085	java/lang/Exception
-    //   174	180	1089	finally
-    //   184	189	1089	finally
-    //   193	203	1089	finally
-    //   207	217	1089	finally
-    //   221	233	1089	finally
-    //   237	257	1089	finally
-    //   261	286	1089	finally
-    //   290	294	1089	finally
-    //   461	486	1089	finally
-    //   493	498	1089	finally
-    //   510	522	1089	finally
-    //   526	557	1089	finally
-    //   561	566	1089	finally
-    //   570	581	1089	finally
-    //   593	701	1089	finally
-    //   802	807	1089	finally
-    //   844	849	1089	finally
-    //   853	859	1089	finally
-    //   863	865	1089	finally
-    //   953	970	1089	finally
-    //   974	982	1089	finally
-    //   874	900	1093	finally
-    //   174	180	1100	java/lang/Exception
-    //   184	189	1100	java/lang/Exception
-    //   193	203	1100	java/lang/Exception
-    //   207	217	1100	java/lang/Exception
-    //   221	233	1100	java/lang/Exception
-    //   237	257	1100	java/lang/Exception
-    //   261	286	1100	java/lang/Exception
-    //   290	294	1100	java/lang/Exception
-    //   461	486	1100	java/lang/Exception
-    //   510	522	1100	java/lang/Exception
-    //   526	557	1100	java/lang/Exception
-    //   561	566	1100	java/lang/Exception
-    //   570	581	1100	java/lang/Exception
-    //   593	701	1100	java/lang/Exception
-    //   853	859	1100	java/lang/Exception
-    //   863	865	1100	java/lang/Exception
-    //   162	170	1104	java/io/IOException
-    //   316	327	1112	finally
-    //   331	339	1112	finally
-    //   355	367	1112	finally
-    //   382	387	1112	finally
-    //   401	412	1112	finally
-    //   420	428	1112	finally
-    //   776	785	1112	finally
-    //   316	327	1120	java/lang/Exception
-    //   331	339	1120	java/lang/Exception
-    //   355	367	1125	java/lang/Exception
-    //   382	387	1125	java/lang/Exception
-    //   401	412	1125	java/lang/Exception
-    //   420	428	1125	java/lang/Exception
+    //   493	498	753	java/lang/Exception
+    //   303	312	766	java/lang/Exception
+    //   801	806	817	java/lang/Exception
+    //   303	312	830	finally
+    //   174	180	864	java/io/IOException
+    //   184	189	864	java/io/IOException
+    //   193	203	864	java/io/IOException
+    //   207	217	864	java/io/IOException
+    //   221	233	864	java/io/IOException
+    //   237	257	864	java/io/IOException
+    //   261	286	864	java/io/IOException
+    //   290	294	864	java/io/IOException
+    //   461	486	864	java/io/IOException
+    //   493	498	864	java/io/IOException
+    //   510	522	864	java/io/IOException
+    //   526	557	864	java/io/IOException
+    //   561	566	864	java/io/IOException
+    //   570	581	864	java/io/IOException
+    //   593	701	864	java/io/IOException
+    //   801	806	864	java/io/IOException
+    //   843	848	864	java/io/IOException
+    //   852	858	864	java/io/IOException
+    //   862	864	864	java/io/IOException
+    //   162	170	944	java/lang/Exception
+    //   162	170	1022	finally
+    //   843	848	1067	java/lang/Exception
+    //   729	734	1072	java/lang/Exception
+    //   926	930	1076	java/lang/Exception
+    //   1009	1014	1080	java/lang/Exception
+    //   1054	1059	1084	java/lang/Exception
+    //   174	180	1088	finally
+    //   184	189	1088	finally
+    //   193	203	1088	finally
+    //   207	217	1088	finally
+    //   221	233	1088	finally
+    //   237	257	1088	finally
+    //   261	286	1088	finally
+    //   290	294	1088	finally
+    //   461	486	1088	finally
+    //   493	498	1088	finally
+    //   510	522	1088	finally
+    //   526	557	1088	finally
+    //   561	566	1088	finally
+    //   570	581	1088	finally
+    //   593	701	1088	finally
+    //   801	806	1088	finally
+    //   843	848	1088	finally
+    //   852	858	1088	finally
+    //   862	864	1088	finally
+    //   952	969	1088	finally
+    //   973	981	1088	finally
+    //   873	899	1092	finally
+    //   174	180	1099	java/lang/Exception
+    //   184	189	1099	java/lang/Exception
+    //   193	203	1099	java/lang/Exception
+    //   207	217	1099	java/lang/Exception
+    //   221	233	1099	java/lang/Exception
+    //   237	257	1099	java/lang/Exception
+    //   261	286	1099	java/lang/Exception
+    //   290	294	1099	java/lang/Exception
+    //   461	486	1099	java/lang/Exception
+    //   510	522	1099	java/lang/Exception
+    //   526	557	1099	java/lang/Exception
+    //   561	566	1099	java/lang/Exception
+    //   570	581	1099	java/lang/Exception
+    //   593	701	1099	java/lang/Exception
+    //   852	858	1099	java/lang/Exception
+    //   862	864	1099	java/lang/Exception
+    //   162	170	1103	java/io/IOException
+    //   316	327	1111	finally
+    //   331	339	1111	finally
+    //   355	367	1111	finally
+    //   382	387	1111	finally
+    //   401	412	1111	finally
+    //   420	428	1111	finally
+    //   775	784	1111	finally
+    //   316	327	1119	java/lang/Exception
+    //   331	339	1119	java/lang/Exception
+    //   355	367	1124	java/lang/Exception
+    //   382	387	1124	java/lang/Exception
+    //   401	412	1124	java/lang/Exception
+    //   420	428	1124	java/lang/Exception
   }
   
   public final String a(byte[] paramArrayOfByte, boolean paramBoolean, Bitmap.CompressFormat paramCompressFormat)
@@ -3485,60 +3466,60 @@ public final class i
   public final String a(byte[] paramArrayOfByte, boolean paramBoolean1, Bitmap.CompressFormat paramCompressFormat, boolean paramBoolean2)
   {
     // Byte code:
-    //   0: ldc_w 1618
-    //   3: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 1635
+    //   3: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
-    //   7: invokestatic 1527	com/tencent/mm/sdk/platformtools/bu:cF	([B)Z
+    //   7: invokestatic 1545	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	([B)Z
     //   10: ifeq +20 -> 30
-    //   13: ldc_w 284
-    //   16: ldc_w 1529
-    //   19: invokestatic 813	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   22: ldc_w 1618
+    //   13: ldc_w 277
+    //   16: ldc_w 1547
+    //   19: invokestatic 860	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: ldc_w 1635
     //   25: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   28: aconst_null
     //   29: areturn
-    //   30: invokestatic 776	com/tencent/mm/av/i:aIG	()Ljava/lang/String;
+    //   30: invokestatic 832	com/tencent/mm/av/i:bcA	()Ljava/lang/String;
     //   33: astore 9
     //   35: aload_0
     //   36: aload 9
-    //   38: ldc_w 786
-    //   41: ldc_w 356
-    //   44: invokevirtual 359	com/tencent/mm/av/i:o	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   38: ldc_w 834
+    //   41: ldc_w 400
+    //   44: invokevirtual 403	com/tencent/mm/av/i:o	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
     //   47: astore 10
-    //   49: new 200	java/lang/StringBuilder
+    //   49: new 253	java/lang/StringBuilder
     //   52: dup
-    //   53: invokespecial 269	java/lang/StringBuilder:<init>	()V
+    //   53: invokespecial 254	java/lang/StringBuilder:<init>	()V
     //   56: aload 10
-    //   58: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: ldc_w 1546
-    //   64: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   58: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: ldc_w 1563
+    //   64: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: invokevirtual 265	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   70: astore 8
-    //   72: ldc_w 284
-    //   75: ldc_w 1548
+    //   72: ldc_w 277
+    //   75: ldc_w 1565
     //   78: aload 10
-    //   80: invokestatic 781	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   83: invokevirtual 784	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   86: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   80: invokestatic 232	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   83: invokevirtual 235	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   86: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   89: aload 8
     //   91: iconst_0
-    //   92: invokestatic 1560	com/tencent/mm/vfs/o:db	(Ljava/lang/String;Z)Ljava/io/OutputStream;
+    //   92: invokestatic 1577	com/tencent/mm/vfs/s:dw	(Ljava/lang/String;Z)Ljava/io/OutputStream;
     //   95: astore 7
     //   97: aload 7
     //   99: aload_1
-    //   100: invokevirtual 1565	java/io/OutputStream:write	([B)V
+    //   100: invokevirtual 1582	java/io/OutputStream:write	([B)V
     //   103: aload 7
-    //   105: invokevirtual 1568	java/io/OutputStream:flush	()V
+    //   105: invokevirtual 1585	java/io/OutputStream:flush	()V
     //   108: iload_2
-    //   109: ifeq +114 -> 223
+    //   109: ifeq +113 -> 222
     //   112: sipush 128
     //   115: istore 5
-    //   117: goto +299 -> 416
+    //   117: goto +298 -> 415
     //   120: iload 4
-    //   122: ifeq +115 -> 237
+    //   122: ifeq +114 -> 236
     //   125: aload 8
     //   127: aconst_null
-    //   128: invokestatic 1622	com/tencent/mm/sdk/platformtools/h:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   128: invokestatic 1638	com/tencent/mm/sdk/platformtools/BitmapUtil:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   131: astore_1
     //   132: aload_1
     //   133: ifnull +37 -> 170
@@ -3547,12 +3528,12 @@ public final class i
     //   139: aload_3
     //   140: aload 10
     //   142: iconst_1
-    //   143: invokestatic 598	com/tencent/mm/sdk/platformtools/h:a	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
+    //   143: invokestatic 648	com/tencent/mm/sdk/platformtools/BitmapUtil:saveBitmapToImage	(Landroid/graphics/Bitmap;ILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Z)Z
     //   146: pop
-    //   147: ldc_w 284
-    //   150: ldc_w 1624
+    //   147: ldc_w 277
+    //   150: ldc_w 1640
     //   153: iconst_2
-    //   154: anewarray 106	java/lang/Object
+    //   154: anewarray 105	java/lang/Object
     //   157: dup
     //   158: iconst_0
     //   159: aload 8
@@ -3561,152 +3542,152 @@ public final class i
     //   163: iconst_1
     //   164: aload 10
     //   166: aastore
-    //   167: invokestatic 385	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   167: invokestatic 429	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   170: aload 8
-    //   172: invokestatic 369	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
+    //   172: invokestatic 413	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
     //   175: ifeq +18 -> 193
-    //   178: ldc_w 284
-    //   181: ldc_w 1599
-    //   184: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   178: ldc_w 277
+    //   181: ldc_w 1616
+    //   184: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   187: aload 8
-    //   189: invokestatic 1121	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
+    //   189: invokestatic 1143	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
     //   192: pop
     //   193: aload 7
     //   195: ifnull +8 -> 203
     //   198: aload 7
-    //   200: invokevirtual 1600	java/io/OutputStream:close	()V
-    //   203: ldc_w 778
-    //   206: aload 9
-    //   208: invokestatic 781	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   211: invokevirtual 784	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   214: astore_1
-    //   215: ldc_w 1618
-    //   218: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   221: aload_1
-    //   222: areturn
-    //   223: bipush 120
-    //   225: istore 5
-    //   227: goto +189 -> 416
-    //   230: bipush 120
-    //   232: istore 6
-    //   234: goto -114 -> 120
-    //   237: aload 8
-    //   239: iload 5
-    //   241: iload 6
-    //   243: iconst_0
-    //   244: invokestatic 1627	com/tencent/mm/sdk/platformtools/h:d	(Ljava/lang/String;IIZ)Landroid/graphics/Bitmap;
-    //   247: astore_1
-    //   248: goto -116 -> 132
-    //   251: astore_3
-    //   252: aconst_null
-    //   253: astore_1
-    //   254: getstatic 800	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
-    //   257: ldc2_w 1233
-    //   260: ldc2_w 1628
-    //   263: lconst_1
-    //   264: iconst_0
-    //   265: invokevirtual 1240	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
-    //   268: ldc_w 284
-    //   271: new 200	java/lang/StringBuilder
-    //   274: dup
-    //   275: ldc_w 1631
-    //   278: invokespecial 205	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   281: aload 9
-    //   283: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   286: ldc_w 1633
-    //   289: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   292: aload_3
-    //   293: invokevirtual 1247	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   296: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   299: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   302: invokestatic 813	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   305: aload 8
-    //   307: invokestatic 369	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
-    //   310: ifeq +18 -> 328
-    //   313: ldc_w 284
-    //   316: ldc_w 1599
-    //   319: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   322: aload 8
-    //   324: invokestatic 1121	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
-    //   327: pop
-    //   328: aload_1
-    //   329: ifnull +7 -> 336
-    //   332: aload_1
-    //   333: invokevirtual 1600	java/io/OutputStream:close	()V
-    //   336: ldc_w 1618
-    //   339: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   342: aconst_null
-    //   343: areturn
-    //   344: astore_3
-    //   345: aconst_null
-    //   346: astore_1
-    //   347: aload 8
-    //   349: invokestatic 369	com/tencent/mm/vfs/o:fB	(Ljava/lang/String;)Z
-    //   352: ifeq +18 -> 370
-    //   355: ldc_w 284
-    //   358: ldc_w 1599
-    //   361: invokestatic 761	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   364: aload 8
-    //   366: invokestatic 1121	com/tencent/mm/vfs/o:deleteFile	(Ljava/lang/String;)Z
-    //   369: pop
-    //   370: aload_1
-    //   371: ifnull +7 -> 378
-    //   374: aload_1
-    //   375: invokevirtual 1600	java/io/OutputStream:close	()V
-    //   378: ldc_w 1618
-    //   381: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   384: aload_3
-    //   385: athrow
-    //   386: astore_1
-    //   387: goto -184 -> 203
-    //   390: astore_1
-    //   391: goto -55 -> 336
-    //   394: astore_1
-    //   395: goto -17 -> 378
-    //   398: astore_3
-    //   399: aload 7
-    //   401: astore_1
-    //   402: goto -55 -> 347
-    //   405: astore_3
-    //   406: goto -59 -> 347
-    //   409: astore_3
-    //   410: aload 7
-    //   412: astore_1
-    //   413: goto -159 -> 254
-    //   416: iload_2
-    //   417: ifeq -187 -> 230
-    //   420: sipush 128
-    //   423: istore 6
-    //   425: goto -305 -> 120
+    //   200: invokevirtual 1617	java/io/OutputStream:close	()V
+    //   203: ldc 229
+    //   205: aload 9
+    //   207: invokestatic 232	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+    //   210: invokevirtual 235	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   213: astore_1
+    //   214: ldc_w 1635
+    //   217: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   220: aload_1
+    //   221: areturn
+    //   222: bipush 120
+    //   224: istore 5
+    //   226: goto +189 -> 415
+    //   229: bipush 120
+    //   231: istore 6
+    //   233: goto -113 -> 120
+    //   236: aload 8
+    //   238: iload 5
+    //   240: iload 6
+    //   242: iconst_0
+    //   243: invokestatic 1644	com/tencent/mm/sdk/platformtools/BitmapUtil:extractThumbNail	(Ljava/lang/String;IIZ)Landroid/graphics/Bitmap;
+    //   246: astore_1
+    //   247: goto -115 -> 132
+    //   250: astore_3
+    //   251: aconst_null
+    //   252: astore_1
+    //   253: getstatic 848	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+    //   256: ldc2_w 1246
+    //   259: ldc2_w 1645
+    //   262: lconst_1
+    //   263: iconst_0
+    //   264: invokevirtual 1253	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   267: ldc_w 277
+    //   270: new 253	java/lang/StringBuilder
+    //   273: dup
+    //   274: ldc_w 1648
+    //   277: invokespecial 297	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   280: aload 9
+    //   282: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   285: ldc_w 1650
+    //   288: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   291: aload_3
+    //   292: invokevirtual 1260	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   295: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   298: invokevirtual 265	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   301: invokestatic 860	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   304: aload 8
+    //   306: invokestatic 413	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   309: ifeq +18 -> 327
+    //   312: ldc_w 277
+    //   315: ldc_w 1616
+    //   318: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   321: aload 8
+    //   323: invokestatic 1143	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
+    //   326: pop
+    //   327: aload_1
+    //   328: ifnull +7 -> 335
+    //   331: aload_1
+    //   332: invokevirtual 1617	java/io/OutputStream:close	()V
+    //   335: ldc_w 1635
+    //   338: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   341: aconst_null
+    //   342: areturn
+    //   343: astore_3
+    //   344: aconst_null
+    //   345: astore_1
+    //   346: aload 8
+    //   348: invokestatic 413	com/tencent/mm/vfs/s:YS	(Ljava/lang/String;)Z
+    //   351: ifeq +18 -> 369
+    //   354: ldc_w 277
+    //   357: ldc_w 1616
+    //   360: invokestatic 817	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   363: aload 8
+    //   365: invokestatic 1143	com/tencent/mm/vfs/s:deleteFile	(Ljava/lang/String;)Z
+    //   368: pop
+    //   369: aload_1
+    //   370: ifnull +7 -> 377
+    //   373: aload_1
+    //   374: invokevirtual 1617	java/io/OutputStream:close	()V
+    //   377: ldc_w 1635
+    //   380: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   383: aload_3
+    //   384: athrow
+    //   385: astore_1
+    //   386: goto -183 -> 203
+    //   389: astore_1
+    //   390: goto -55 -> 335
+    //   393: astore_1
+    //   394: goto -17 -> 377
+    //   397: astore_3
+    //   398: aload 7
+    //   400: astore_1
+    //   401: goto -55 -> 346
+    //   404: astore_3
+    //   405: goto -59 -> 346
+    //   408: astore_3
+    //   409: aload 7
+    //   411: astore_1
+    //   412: goto -159 -> 253
+    //   415: iload_2
+    //   416: ifeq -187 -> 229
+    //   419: sipush 128
+    //   422: istore 6
+    //   424: goto -304 -> 120
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	428	0	this	i
-    //   0	428	1	paramArrayOfByte	byte[]
-    //   0	428	2	paramBoolean1	boolean
-    //   0	428	3	paramCompressFormat	Bitmap.CompressFormat
-    //   0	428	4	paramBoolean2	boolean
-    //   115	125	5	i	int
-    //   232	192	6	j	int
-    //   95	316	7	localOutputStream	java.io.OutputStream
-    //   70	295	8	str1	String
-    //   33	249	9	str2	String
+    //   0	427	0	this	i
+    //   0	427	1	paramArrayOfByte	byte[]
+    //   0	427	2	paramBoolean1	boolean
+    //   0	427	3	paramCompressFormat	Bitmap.CompressFormat
+    //   0	427	4	paramBoolean2	boolean
+    //   115	124	5	i	int
+    //   231	192	6	j	int
+    //   95	315	7	localOutputStream	java.io.OutputStream
+    //   70	294	8	str1	String
+    //   33	248	9	str2	String
     //   47	118	10	str3	String
     // Exception table:
     //   from	to	target	type
-    //   89	97	251	java/lang/Exception
-    //   89	97	344	finally
-    //   198	203	386	java/lang/Exception
-    //   332	336	390	java/lang/Exception
-    //   374	378	394	java/lang/Exception
-    //   97	108	398	finally
-    //   125	132	398	finally
-    //   136	170	398	finally
-    //   237	248	398	finally
-    //   254	305	405	finally
-    //   97	108	409	java/lang/Exception
-    //   125	132	409	java/lang/Exception
-    //   136	170	409	java/lang/Exception
-    //   237	248	409	java/lang/Exception
+    //   89	97	250	java/lang/Exception
+    //   89	97	343	finally
+    //   198	203	385	java/lang/Exception
+    //   331	335	389	java/lang/Exception
+    //   373	377	393	java/lang/Exception
+    //   97	108	397	finally
+    //   125	132	397	finally
+    //   136	170	397	finally
+    //   236	247	397	finally
+    //   253	304	404	finally
+    //   97	108	408	java/lang/Exception
+    //   125	132	408	java/lang/Exception
+    //   136	170	408	java/lang/Exception
+    //   236	247	408	java/lang/Exception
   }
   
   public final HashMap<Long, g> a(Long... paramVarArgs)
@@ -3736,7 +3717,7 @@ public final class i
     {
       localObject2 = new g();
       ((g)localObject2).convertFrom(paramVarArgs);
-      ((HashMap)localObject1).put(Long.valueOf(((g)localObject2).dCd), localObject2);
+      ((HashMap)localObject1).put(Long.valueOf(((g)localObject2).dTS), localObject2);
     }
     paramVarArgs.close();
     AppMethodBeat.o(150601);
@@ -3754,25 +3735,26 @@ public final class i
   public final boolean a(ImageView paramImageView1, String paramString, boolean paramBoolean, float paramFloat, int paramInt1, int paramInt2, ImageView paramImageView2, int paramInt3, int paramInt4, View paramView)
   {
     AppMethodBeat.i(150585);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.ImgInfoStorage", "invalid uri is %s", new Object[] { paramString });
+      Log.e("MicroMsg.ImgInfoStorage", "invalid uri is %s", new Object[] { paramString });
       AppMethodBeat.o(150585);
       return false;
     }
-    label590:
-    label602:
-    label617:
-    label1129:
+    label594:
+    label606:
+    label621:
+    label750:
+    label1137:
     for (;;)
     {
-      synchronized (this.idf)
+      synchronized (this.iYd)
       {
-        boolean bool = this.idf.containsKey(paramString);
-        String str = c(paramString, paramBoolean, false);
-        if (bu.isNullOrNil(str))
+        boolean bool = this.iYd.containsKey(paramString);
+        String str = d(paramString, paramBoolean, false);
+        if (Util.isNullOrNil(str))
         {
-          ae.e("MicroMsg.ImgInfoStorage", "getFullThumbPathByCache uri is null, uri:%s", new Object[] { bu.nullAsNil(paramString) });
+          Log.e("MicroMsg.ImgInfoStorage", "getFullThumbPathByCache uri is null, uri:%s", new Object[] { Util.nullAsNil(paramString) });
           AppMethodBeat.o(150585);
           return false;
         }
@@ -3783,47 +3765,47 @@ public final class i
           if (!str.endsWith("hd"))
           {
             localObject = str;
-            if (o.fB(str + "hd"))
+            if (s.YS(str + "hd"))
             {
-              this.idf.put(paramString, str + "hd");
+              this.iYd.put(paramString, str + "hd");
               localObject = str + "hd";
             }
           }
         }
         if (!((String)localObject).endsWith("hd")) {
-          break label1132;
+          break label1140;
         }
-        paramString = (Bitmap)this.icY.aL(localObject);
+        paramString = (Bitmap)this.iXW.aT(localObject);
         if (paramString == null)
         {
-          a(paramImageView1, paramImageView2, paramView, (String)localObject, paramFloat);
+          a(paramImageView1, paramImageView2, paramView, (String)localObject, paramFloat, true, 2131231628);
           localObject = ((String)localObject).substring(0, ((String)localObject).length() - 2);
           i = 1;
           if (paramString != null) {
-            break label1129;
+            break label1137;
           }
-          paramString = (Bitmap)this.icY.aL(localObject);
+          paramString = (Bitmap)this.iXW.aT(localObject);
           if ((paramString == null) || (paramString.isRecycled())) {
-            break label657;
+            break label661;
           }
-          ae.i("MicroMsg.ImgInfoStorage", "[setbitmapFromUri] bitmap width %d,height %d", new Object[] { Integer.valueOf(paramString.getWidth()), Integer.valueOf(paramString.getHeight()) });
+          Log.i("MicroMsg.ImgInfoStorage", "[setbitmapFromUri] bitmap width %d,height %d", new Object[] { Integer.valueOf(paramString.getWidth()), Integer.valueOf(paramString.getHeight()) });
           paramImageView1.setBackgroundDrawable(null);
-          a.a(paramString, paramImageView1);
+          i.a.a(paramString, paramImageView1);
           if (paramImageView1.getLayoutParams().width == -2) {
-            break label590;
+            break label594;
           }
-          localObject = this.idg;
+          localObject = this.iYe;
           if (paramInt4 != 0) {
-            break label602;
+            break label606;
           }
           ((FrameLayout.LayoutParams)localObject).gravity = 5;
           paramImageView1.setLayoutParams((ViewGroup.LayoutParams)localObject);
           if (paramString.getWidth() < paramString.getHeight() * 2.5D) {
-            break label617;
+            break label621;
           }
           paramInt1 = 1;
           if (paramString.getHeight() < paramString.getWidth() * 2.5D) {
-            break label623;
+            break label627;
           }
           paramInt2 = 1;
           if ((paramInt1 != 0) || (paramInt2 != 0)) {
@@ -3833,7 +3815,7 @@ public final class i
           {
             paramImageView1 = new FrameLayout.LayoutParams(paramString.getWidth(), paramString.getHeight());
             if (paramInt4 != 0) {
-              break label629;
+              break label633;
             }
             paramImageView1.gravity = 5;
             paramImageView2.setLayoutParams(paramImageView1);
@@ -3842,7 +3824,7 @@ public final class i
           {
             paramImageView1 = new FrameLayout.LayoutParams(paramString.getWidth(), paramString.getHeight());
             if (paramInt4 != 0) {
-              break label643;
+              break label647;
             }
             paramImageView1.gravity = 5;
             paramView.setLayoutParams(paramImageView1);
@@ -3851,25 +3833,24 @@ public final class i
           return true;
         }
       }
-      if (this.icY.remove(((String)localObject).substring(0, ((String)localObject).length() - 2)) != null) {
-        ae.d("MicroMsg.ImgInfoStorage", "remove low quality thumb from cacheMap, path: ".concat(String.valueOf(localObject)));
+      if (this.iXW.remove(((String)localObject).substring(0, ((String)localObject).length() - 2)) != null) {
+        Log.d("MicroMsg.ImgInfoStorage", "remove low quality thumb from cacheMap, path: ".concat(String.valueOf(localObject)));
       }
       int i = 0;
       continue;
       Object localObject = (FrameLayout.LayoutParams)paramImageView1.getLayoutParams();
       continue;
-      label746:
-      label1132:
+      label627:
+      label1140:
       if (paramInt4 == 1)
       {
         ((FrameLayout.LayoutParams)localObject).gravity = 3;
         continue;
         paramInt1 = 0;
         continue;
-        label623:
         paramInt2 = 0;
         continue;
-        label629:
+        label633:
         if (paramInt4 == 1)
         {
           paramImageView1.gravity = 3;
@@ -3890,19 +3871,19 @@ public final class i
                   paramInt1 = (int)(paramInt1 * f);
                   paramInt2 = (int)(f * paramInt2);
                   if (paramInt1 <= 0) {
-                    break label925;
+                    break label933;
                   }
                   paramInt3 = (int)(paramInt1 * paramFloat);
                   if (paramInt2 <= 0) {
-                    break label932;
+                    break label940;
                   }
                   paramInt1 = paramInt2;
                   paramInt1 = (int)(paramInt1 * paramFloat);
                   paramInt2 = paramInt3;
                   if (paramInt2 >= 60.0F * paramFloat) {
-                    break label1126;
+                    break label1134;
                   }
-                  ae.d("MicroMsg.ImgInfoStorage", "pic to small width is %d ", new Object[] { Integer.valueOf(paramInt2) });
+                  Log.d("MicroMsg.ImgInfoStorage", "pic to small width is %d ", new Object[] { Integer.valueOf(paramInt2) });
                   paramInt2 = (int)(60.0F * paramFloat);
                 }
               }
@@ -3912,7 +3893,7 @@ public final class i
               paramInt3 = paramInt1;
               if (paramInt1 < 60.0F * paramFloat)
               {
-                ae.d("MicroMsg.ImgInfoStorage", "pic to small height is %d ", new Object[] { Integer.valueOf(paramInt1) });
+                Log.d("MicroMsg.ImgInfoStorage", "pic to small height is %d ", new Object[] { Integer.valueOf(paramInt1) });
                 paramInt3 = (int)(60.0F * paramFloat);
               }
               paramString = new FrameLayout.LayoutParams(paramInt2, paramInt3);
@@ -3920,7 +3901,7 @@ public final class i
               {
                 paramString.gravity = 5;
                 if (paramView == null) {
-                  break label1123;
+                  break label1131;
                 }
                 paramView.setLayoutParams(paramString);
               }
@@ -3928,21 +3909,21 @@ public final class i
               {
                 paramImageView1.setLayoutParams(paramString);
                 if (i == 0) {
-                  a(paramImageView1, paramImageView2, paramView, (String)localObject, paramFloat);
+                  a(paramImageView1, paramImageView2, paramView, (String)localObject, paramFloat, true, 2131231628);
                 }
                 AppMethodBeat.o(150585);
                 return false;
                 f = 160.0F / paramInt1;
                 break;
                 paramInt1 = 120;
-                break label728;
+                break label732;
                 paramInt1 = 75;
-                break label746;
+                break label750;
                 if (paramInt1 > 0)
                 {
                   paramInt3 = (int)(paramInt1 * paramFloat * 1.25F);
                   if (paramInt2 <= 0) {
-                    break label989;
+                    break label997;
                   }
                 }
                 for (;;)
@@ -3951,23 +3932,23 @@ public final class i
                   paramInt2 = paramInt3;
                   break;
                   paramInt1 = 120;
-                  break label944;
+                  break label952;
                   paramInt2 = 75;
                 }
                 if (paramInt4 != 1) {
-                  break label871;
+                  break label875;
                 }
                 paramString.gravity = 3;
-                break label871;
-                if ((this.idh == null) || (this.idh.get() == null)) {
-                  this.idh = new SoftReference(new ColorDrawable(-1118482));
+                break label875;
+                if ((this.iYf == null) || (this.iYf.get() == null)) {
+                  this.iYf = new SoftReference(new ColorDrawable(-1118482));
                 }
-                paramImageView1.setImageDrawable((ColorDrawable)this.idh.get());
+                paramImageView1.setImageDrawable((ColorDrawable)this.iYf.get());
                 if (paramInt1 > 0)
                 {
                   paramInt1 = (int)(paramInt1 * paramFloat * 1.25F);
                   if (paramInt2 <= 0) {
-                    break label1116;
+                    break label1124;
                   }
                 }
                 for (;;)
@@ -3975,7 +3956,7 @@ public final class i
                   paramString = new FrameLayout.LayoutParams(paramInt1, (int)(paramInt2 * paramFloat * 1.25F));
                   break;
                   paramInt1 = 120;
-                  break label1067;
+                  break label1075;
                   paramInt2 = 75;
                 }
               }
@@ -3989,17 +3970,17 @@ public final class i
     }
   }
   
-  public final boolean a(bv parambv, int paramInt1, int paramInt2)
+  public final boolean a(ca paramca, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(150631);
-    String str = N(parambv);
-    if (!bu.isNullOrNil(str))
+    AppMethodBeat.i(223607);
+    String str = W(paramca);
+    if (!Util.isNullOrNil(str))
     {
-      boolean bool = a(str, parambv.field_imgPath, paramInt1, paramInt2, 0, 0);
-      AppMethodBeat.o(150631);
+      boolean bool = a(str, paramca.field_imgPath, paramInt1, paramInt2, 0, 0);
+      AppMethodBeat.o(223607);
       return bool;
     }
-    AppMethodBeat.o(150631);
+    AppMethodBeat.o(223607);
     return false;
   }
   
@@ -4007,12 +3988,12 @@ public final class i
   public final boolean a(String arg1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     // Byte code:
-    //   0: ldc_w 1713
-    //   3: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc_w 284
-    //   9: ldc_w 1715
+    //   0: ldc_w 1730
+    //   3: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc_w 277
+    //   9: ldc_w 1732
     //   12: iconst_5
-    //   13: anewarray 106	java/lang/Object
+    //   13: anewarray 105	java/lang/Object
     //   16: dup
     //   17: iconst_0
     //   18: aload_1
@@ -4024,30 +4005,30 @@ public final class i
     //   24: dup
     //   25: iconst_2
     //   26: iload_3
-    //   27: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   27: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   30: aastore
     //   31: dup
     //   32: iconst_3
     //   33: iload 4
-    //   35: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   35: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   38: aastore
     //   39: dup
     //   40: iconst_4
-    //   41: invokestatic 513	com/tencent/mm/sdk/platformtools/bu:fpN	()Lcom/tencent/mm/sdk/platformtools/au;
+    //   41: invokestatic 557	com/tencent/mm/sdk/platformtools/Util:getStack	()Lcom/tencent/mm/sdk/platformtools/MMStack;
     //   44: aastore
-    //   45: invokestatic 385	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   48: invokestatic 262	java/lang/System:currentTimeMillis	()J
+    //   45: invokestatic 429	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   48: invokestatic 245	java/lang/System:currentTimeMillis	()J
     //   51: lstore 10
-    //   53: invokestatic 632	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
-    //   56: invokestatic 1096	com/tencent/mm/cb/a:getDensity	(Landroid/content/Context;)F
+    //   53: invokestatic 682	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   56: invokestatic 1095	com/tencent/mm/cb/a:getDensity	(Landroid/content/Context;)F
     //   59: fstore 7
     //   61: aload_1
-    //   62: invokestatic 534	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   62: invokestatic 578	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   65: ifne +10 -> 75
     //   68: aload_2
-    //   69: invokestatic 534	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   69: invokestatic 578	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   72: ifeq +11 -> 83
-    //   75: ldc_w 1713
+    //   75: ldc_w 1730
     //   78: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   81: iconst_0
     //   82: ireturn
@@ -4055,422 +4036,360 @@ public final class i
     //   84: aload_2
     //   85: iconst_0
     //   86: iconst_1
-    //   87: invokevirtual 613	com/tencent/mm/av/i:c	(Ljava/lang/String;ZZ)Ljava/lang/String;
+    //   87: invokevirtual 663	com/tencent/mm/av/i:d	(Ljava/lang/String;ZZ)Ljava/lang/String;
     //   90: astore 13
     //   92: aload 13
-    //   94: invokestatic 534	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   94: invokestatic 578	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   97: ifeq +11 -> 108
-    //   100: ldc_w 1713
+    //   100: ldc_w 1730
     //   103: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   106: iconst_0
     //   107: ireturn
     //   108: aload 13
-    //   110: ldc_w 536
-    //   113: invokevirtual 539	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   110: ldc_w 580
+    //   113: invokevirtual 583	java/lang/String:endsWith	(Ljava/lang/String;)Z
     //   116: ifne +98 -> 214
-    //   119: new 200	java/lang/StringBuilder
+    //   119: new 253	java/lang/StringBuilder
     //   122: dup
-    //   123: invokespecial 269	java/lang/StringBuilder:<init>	()V
+    //   123: invokespecial 254	java/lang/StringBuilder:<init>	()V
     //   126: aload 13
-    //   128: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: ldc_w 536
-    //   134: invokevirtual 209	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   128: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: ldc_w 580
+    //   134: invokevirtual 258	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: invokevirtual 265	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   140: astore 15
     //   142: aload 13
     //   144: astore 14
     //   146: aload 15
     //   148: astore 13
     //   150: aload 14
-    //   152: invokestatic 1366	com/tencent/mm/sdk/platformtools/h:aRz	(Ljava/lang/String;)Landroid/graphics/BitmapFactory$Options;
+    //   152: invokestatic 1379	com/tencent/mm/sdk/platformtools/BitmapUtil:getImageOptions	(Ljava/lang/String;)Landroid/graphics/BitmapFactory$Options;
     //   155: astore 16
     //   157: aload 16
     //   159: ifnull +23 -> 182
     //   162: aload 16
-    //   164: getfield 1371	android/graphics/BitmapFactory$Options:outWidth	I
+    //   164: getfield 1384	android/graphics/BitmapFactory$Options:outWidth	I
     //   167: ifle +15 -> 182
     //   170: aload 16
     //   172: astore 15
     //   174: aload 16
-    //   176: getfield 1374	android/graphics/BitmapFactory$Options:outHeight	I
-    //   179: ifgt +119 -> 298
-    //   182: getstatic 800	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
-    //   185: ldc2_w 1233
-    //   188: ldc2_w 1716
+    //   176: getfield 1387	android/graphics/BitmapFactory$Options:outHeight	I
+    //   179: ifgt +121 -> 300
+    //   182: getstatic 848	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+    //   185: ldc2_w 1246
+    //   188: ldc2_w 1733
     //   191: lconst_1
     //   192: iconst_0
-    //   193: invokevirtual 1240	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
+    //   193: invokevirtual 1253	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
     //   196: aload 14
-    //   198: invokestatic 436	com/tencent/mm/vfs/o:aZR	(Ljava/lang/String;)J
+    //   198: invokestatic 480	com/tencent/mm/vfs/s:boW	(Ljava/lang/String;)J
     //   201: lconst_0
     //   202: lcmp
     //   203: ifle +29 -> 232
-    //   206: ldc_w 1713
+    //   206: ldc_w 1730
     //   209: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   212: iconst_0
     //   213: ireturn
     //   214: aload 13
     //   216: iconst_0
     //   217: aload 13
-    //   219: invokevirtual 363	java/lang/String:length	()I
+    //   219: invokevirtual 407	java/lang/String:length	()I
     //   222: iconst_2
     //   223: isub
-    //   224: invokevirtual 570	java/lang/String:substring	(II)Ljava/lang/String;
+    //   224: invokevirtual 620	java/lang/String:substring	(II)Ljava/lang/String;
     //   227: astore 14
     //   229: goto -79 -> 150
-    //   232: new 1368	android/graphics/BitmapFactory$Options
+    //   232: new 1381	android/graphics/BitmapFactory$Options
     //   235: dup
-    //   236: invokespecial 1549	android/graphics/BitmapFactory$Options:<init>	()V
+    //   236: invokespecial 1566	android/graphics/BitmapFactory$Options:<init>	()V
     //   239: astore 15
-    //   241: invokestatic 1720	com/tencent/mm/sdk/platformtools/h:fnS	()V
-    //   244: ldc_w 284
-    //   247: ldc_w 1722
-    //   250: iconst_3
-    //   251: anewarray 106	java/lang/Object
-    //   254: dup
-    //   255: iconst_0
-    //   256: aload 15
-    //   258: aastore
-    //   259: dup
-    //   260: iconst_1
-    //   261: aload 15
-    //   263: getfield 1371	android/graphics/BitmapFactory$Options:outWidth	I
-    //   266: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   269: aastore
-    //   270: dup
-    //   271: iconst_2
-    //   272: aload 15
-    //   274: getfield 1374	android/graphics/BitmapFactory$Options:outHeight	I
-    //   277: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   280: aastore
-    //   281: invokestatic 297	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   284: getstatic 800	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
-    //   287: ldc2_w 1233
-    //   290: ldc2_w 1723
-    //   293: lconst_1
-    //   294: iconst_0
-    //   295: invokevirtual 1240	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
-    //   298: aload 15
-    //   300: getfield 1371	android/graphics/BitmapFactory$Options:outWidth	I
-    //   303: ifne +10 -> 313
-    //   306: aload 15
-    //   308: iload 5
-    //   310: putfield 1371	android/graphics/BitmapFactory$Options:outWidth	I
-    //   313: aload 15
-    //   315: getfield 1374	android/graphics/BitmapFactory$Options:outHeight	I
-    //   318: ifne +10 -> 328
-    //   321: aload 15
-    //   323: iload 6
-    //   325: putfield 1374	android/graphics/BitmapFactory$Options:outHeight	I
-    //   328: aload 15
-    //   330: getfield 1371	android/graphics/BitmapFactory$Options:outWidth	I
-    //   333: i2f
-    //   334: fload 7
-    //   336: fmul
-    //   337: ldc_w 640
-    //   340: fmul
-    //   341: f2i
-    //   342: istore 9
-    //   344: aload 15
-    //   346: getfield 1374	android/graphics/BitmapFactory$Options:outHeight	I
-    //   349: i2f
-    //   350: fload 7
-    //   352: fmul
-    //   353: ldc_w 640
-    //   356: fmul
-    //   357: f2i
-    //   358: istore 8
-    //   360: iload 9
-    //   362: i2f
-    //   363: ldc_w 641
-    //   366: fload 7
-    //   368: fmul
-    //   369: fcmpl
-    //   370: ifge +24 -> 394
-    //   373: iload 8
-    //   375: istore 6
-    //   377: iload 9
-    //   379: istore 5
-    //   381: iload 8
-    //   383: i2f
-    //   384: ldc_w 641
-    //   387: fload 7
-    //   389: fmul
-    //   390: fcmpl
-    //   391: iflt +40 -> 431
-    //   394: iload 8
-    //   396: iload 9
-    //   398: if_icmple +216 -> 614
-    //   401: ldc_w 641
-    //   404: fload 7
-    //   406: fmul
-    //   407: iload 8
-    //   409: i2f
-    //   410: fdiv
-    //   411: fstore 7
-    //   413: iload 9
-    //   415: i2f
-    //   416: fload 7
-    //   418: fmul
-    //   419: f2i
-    //   420: istore 5
-    //   422: fload 7
-    //   424: iload 8
-    //   426: i2f
-    //   427: fmul
-    //   428: f2i
-    //   429: istore 6
-    //   431: iload 4
-    //   433: ifne +196 -> 629
-    //   436: aload_1
-    //   437: iload 6
-    //   439: iload 5
-    //   441: getstatic 595	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   444: aload 13
-    //   446: new 441	com/tencent/mm/pointers/PInt
-    //   449: dup
-    //   450: invokespecial 442	com/tencent/mm/pointers/PInt:<init>	()V
-    //   453: new 441	com/tencent/mm/pointers/PInt
-    //   456: dup
-    //   457: invokespecial 442	com/tencent/mm/pointers/PInt:<init>	()V
-    //   460: invokestatic 1727	com/tencent/mm/sdk/platformtools/h:a	(Ljava/lang/String;IILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Lcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;)Z
-    //   463: istore 12
-    //   465: ldc_w 284
-    //   468: ldc_w 1729
-    //   471: iconst_4
-    //   472: anewarray 106	java/lang/Object
-    //   475: dup
-    //   476: iconst_0
-    //   477: new 200	java/lang/StringBuilder
-    //   480: dup
-    //   481: invokespecial 269	java/lang/StringBuilder:<init>	()V
-    //   484: invokestatic 262	java/lang/System:currentTimeMillis	()J
-    //   487: lload 10
-    //   489: lsub
-    //   490: invokevirtual 272	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   493: invokevirtual 217	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   496: aastore
-    //   497: dup
-    //   498: iconst_1
-    //   499: iload 6
-    //   501: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   504: aastore
-    //   505: dup
-    //   506: iconst_2
-    //   507: iload 5
-    //   509: invokestatic 483	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   512: aastore
-    //   513: dup
-    //   514: iconst_3
-    //   515: iload 12
-    //   517: invokestatic 507	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   520: aastore
-    //   521: invokestatic 385	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   524: aload_0
-    //   525: aload 14
-    //   527: iconst_1
-    //   528: invokestatic 632	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
-    //   531: invokestatic 1096	com/tencent/mm/cb/a:getDensity	(Landroid/content/Context;)F
+    //   241: aload 15
+    //   243: invokestatic 1738	com/tencent/mm/sdk/platformtools/BitmapUtil:bindlowMemeryOption	(Landroid/graphics/BitmapFactory$Options;)V
+    //   246: ldc_w 277
+    //   249: ldc_w 1740
+    //   252: iconst_3
+    //   253: anewarray 105	java/lang/Object
+    //   256: dup
+    //   257: iconst_0
+    //   258: aload 15
+    //   260: aastore
+    //   261: dup
+    //   262: iconst_1
+    //   263: aload 15
+    //   265: getfield 1384	android/graphics/BitmapFactory$Options:outWidth	I
+    //   268: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   271: aastore
+    //   272: dup
+    //   273: iconst_2
+    //   274: aload 15
+    //   276: getfield 1387	android/graphics/BitmapFactory$Options:outHeight	I
+    //   279: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   282: aastore
+    //   283: invokestatic 289	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   286: getstatic 848	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+    //   289: ldc2_w 1246
+    //   292: ldc2_w 1741
+    //   295: lconst_1
+    //   296: iconst_0
+    //   297: invokevirtual 1253	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   300: aload 15
+    //   302: getfield 1384	android/graphics/BitmapFactory$Options:outWidth	I
+    //   305: ifne +10 -> 315
+    //   308: aload 15
+    //   310: iload 5
+    //   312: putfield 1384	android/graphics/BitmapFactory$Options:outWidth	I
+    //   315: aload 15
+    //   317: getfield 1387	android/graphics/BitmapFactory$Options:outHeight	I
+    //   320: ifne +10 -> 330
+    //   323: aload 15
+    //   325: iload 6
+    //   327: putfield 1387	android/graphics/BitmapFactory$Options:outHeight	I
+    //   330: aload 15
+    //   332: getfield 1384	android/graphics/BitmapFactory$Options:outWidth	I
+    //   335: i2f
+    //   336: fload 7
+    //   338: fmul
+    //   339: ldc_w 690
+    //   342: fmul
+    //   343: f2i
+    //   344: istore 9
+    //   346: aload 15
+    //   348: getfield 1387	android/graphics/BitmapFactory$Options:outHeight	I
+    //   351: i2f
+    //   352: fload 7
+    //   354: fmul
+    //   355: ldc_w 690
+    //   358: fmul
+    //   359: f2i
+    //   360: istore 8
+    //   362: iload 9
+    //   364: i2f
+    //   365: ldc_w 691
+    //   368: fload 7
+    //   370: fmul
+    //   371: fcmpl
+    //   372: ifge +24 -> 396
+    //   375: iload 8
+    //   377: istore 6
+    //   379: iload 9
+    //   381: istore 5
+    //   383: iload 8
+    //   385: i2f
+    //   386: ldc_w 691
+    //   389: fload 7
+    //   391: fmul
+    //   392: fcmpl
+    //   393: iflt +40 -> 433
+    //   396: iload 8
+    //   398: iload 9
+    //   400: if_icmple +221 -> 621
+    //   403: ldc_w 691
+    //   406: fload 7
+    //   408: fmul
+    //   409: iload 8
+    //   411: i2f
+    //   412: fdiv
+    //   413: fstore 7
+    //   415: iload 9
+    //   417: i2f
+    //   418: fload 7
+    //   420: fmul
+    //   421: f2i
+    //   422: istore 5
+    //   424: fload 7
+    //   426: iload 8
+    //   428: i2f
+    //   429: fmul
+    //   430: f2i
+    //   431: istore 6
+    //   433: iload 4
+    //   435: ifne +201 -> 636
+    //   438: aload_1
+    //   439: iload 6
+    //   441: iload 5
+    //   443: getstatic 644	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   446: bipush 80
+    //   448: aload 13
+    //   450: iconst_1
+    //   451: new 485	com/tencent/mm/pointers/PInt
+    //   454: dup
+    //   455: invokespecial 486	com/tencent/mm/pointers/PInt:<init>	()V
+    //   458: new 485	com/tencent/mm/pointers/PInt
+    //   461: dup
+    //   462: invokespecial 486	com/tencent/mm/pointers/PInt:<init>	()V
+    //   465: iconst_1
+    //   466: iconst_m1
+    //   467: invokestatic 1746	com/tencent/mm/sdk/platformtools/BitmapUtil:createThumbNail	(Ljava/lang/String;IILandroid/graphics/Bitmap$CompressFormat;ILjava/lang/String;ZLcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;ZI)Z
+    //   470: istore 12
+    //   472: ldc_w 277
+    //   475: ldc_w 1748
+    //   478: iconst_4
+    //   479: anewarray 105	java/lang/Object
+    //   482: dup
+    //   483: iconst_0
+    //   484: new 253	java/lang/StringBuilder
+    //   487: dup
+    //   488: invokespecial 254	java/lang/StringBuilder:<init>	()V
+    //   491: invokestatic 245	java/lang/System:currentTimeMillis	()J
+    //   494: lload 10
+    //   496: lsub
+    //   497: invokevirtual 261	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   500: invokevirtual 265	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   503: aastore
+    //   504: dup
+    //   505: iconst_1
+    //   506: iload 6
+    //   508: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   511: aastore
+    //   512: dup
+    //   513: iconst_2
+    //   514: iload 5
+    //   516: invokestatic 527	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   519: aastore
+    //   520: dup
+    //   521: iconst_3
+    //   522: iload 12
+    //   524: invokestatic 551	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   527: aastore
+    //   528: invokestatic 429	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   531: aload_0
+    //   532: aload 14
     //   534: iconst_1
-    //   535: iconst_0
-    //   536: iconst_1
-    //   537: iload_3
-    //   538: iconst_0
-    //   539: invokespecial 1255	com/tencent/mm/av/i:a	(Ljava/lang/String;ZFZZZIZ)Landroid/graphics/Bitmap;
-    //   542: pop
-    //   543: iload 12
-    //   545: ifeq +170 -> 715
-    //   548: aload_0
-    //   549: getfield 155	com/tencent/mm/av/i:idf	Ljava/util/Map;
-    //   552: astore_1
-    //   553: aload_1
-    //   554: monitorenter
+    //   535: invokestatic 682	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   538: invokestatic 1095	com/tencent/mm/cb/a:getDensity	(Landroid/content/Context;)F
+    //   541: iconst_1
+    //   542: iconst_0
+    //   543: iconst_1
+    //   544: iload_3
+    //   545: iconst_0
+    //   546: invokespecial 1268	com/tencent/mm/av/i:a	(Ljava/lang/String;ZFZZZIZ)Landroid/graphics/Bitmap;
+    //   549: pop
+    //   550: iload 12
+    //   552: ifeq +176 -> 728
     //   555: aload_0
-    //   556: getfield 155	com/tencent/mm/av/i:idf	Ljava/util/Map;
-    //   559: aload_2
-    //   560: invokeinterface 1658 2 0
-    //   565: ifeq +38 -> 603
-    //   568: aload_0
-    //   569: getfield 155	com/tencent/mm/av/i:idf	Ljava/util/Map;
-    //   572: aload_2
-    //   573: invokeinterface 870 2 0
-    //   578: checkcast 61	java/lang/String
-    //   581: ldc_w 536
-    //   584: invokevirtual 539	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   587: ifne +16 -> 603
-    //   590: aload_0
-    //   591: getfield 155	com/tencent/mm/av/i:idf	Ljava/util/Map;
-    //   594: aload_2
-    //   595: aload 13
-    //   597: invokeinterface 853 3 0
-    //   602: pop
-    //   603: aload_1
-    //   604: monitorexit
-    //   605: ldc_w 1713
-    //   608: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   611: iload 12
-    //   613: ireturn
-    //   614: ldc_w 641
-    //   617: fload 7
-    //   619: fmul
-    //   620: iload 9
-    //   622: i2f
-    //   623: fdiv
-    //   624: fstore 7
-    //   626: goto -213 -> 413
-    //   629: aload_1
-    //   630: iload 6
-    //   632: iload 5
-    //   634: getstatic 595	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   637: aload 13
-    //   639: new 441	com/tencent/mm/pointers/PInt
-    //   642: dup
-    //   643: invokespecial 442	com/tencent/mm/pointers/PInt:<init>	()V
-    //   646: new 441	com/tencent/mm/pointers/PInt
-    //   649: dup
-    //   650: invokespecial 442	com/tencent/mm/pointers/PInt:<init>	()V
-    //   653: invokestatic 1731	com/tencent/mm/sdk/platformtools/h:b	(Ljava/lang/String;IILandroid/graphics/Bitmap$CompressFormat;Ljava/lang/String;Lcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;)Z
-    //   656: istore 12
-    //   658: goto -193 -> 465
-    //   661: astore_1
-    //   662: getstatic 800	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
-    //   665: ldc2_w 1233
-    //   668: ldc2_w 1732
-    //   671: lconst_1
-    //   672: iconst_0
-    //   673: invokevirtual 1240	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
-    //   676: ldc_w 284
-    //   679: ldc_w 1735
-    //   682: iconst_1
-    //   683: anewarray 106	java/lang/Object
-    //   686: dup
-    //   687: iconst_0
-    //   688: aload_1
-    //   689: invokevirtual 1736	java/lang/Exception:toString	()Ljava/lang/String;
-    //   692: aastore
-    //   693: invokestatic 678	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   696: ldc_w 1713
-    //   699: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   702: iconst_0
-    //   703: ireturn
-    //   704: astore_2
-    //   705: aload_1
-    //   706: monitorexit
-    //   707: ldc_w 1713
-    //   710: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   713: aload_2
-    //   714: athrow
-    //   715: getstatic 800	com/tencent/mm/plugin/report/service/g:yxI	Lcom/tencent/mm/plugin/report/service/g;
-    //   718: ldc2_w 1233
-    //   721: ldc2_w 1732
-    //   724: lconst_1
-    //   725: iconst_0
-    //   726: invokevirtual 1240	com/tencent/mm/plugin/report/service/g:idkeyStat	(JJJZ)V
-    //   729: goto -124 -> 605
+    //   556: getfield 154	com/tencent/mm/av/i:iYd	Ljava/util/Map;
+    //   559: astore_1
+    //   560: aload_1
+    //   561: monitorenter
+    //   562: aload_0
+    //   563: getfield 154	com/tencent/mm/av/i:iYd	Ljava/util/Map;
+    //   566: aload_2
+    //   567: invokeinterface 1675 2 0
+    //   572: ifeq +38 -> 610
+    //   575: aload_0
+    //   576: getfield 154	com/tencent/mm/av/i:iYd	Ljava/util/Map;
+    //   579: aload_2
+    //   580: invokeinterface 918 2 0
+    //   585: checkcast 58	java/lang/String
+    //   588: ldc_w 580
+    //   591: invokevirtual 583	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   594: ifne +16 -> 610
+    //   597: aload_0
+    //   598: getfield 154	com/tencent/mm/av/i:iYd	Ljava/util/Map;
+    //   601: aload_2
+    //   602: aload 13
+    //   604: invokeinterface 901 3 0
+    //   609: pop
+    //   610: aload_1
+    //   611: monitorexit
+    //   612: ldc_w 1730
+    //   615: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   618: iload 12
+    //   620: ireturn
+    //   621: ldc_w 691
+    //   624: fload 7
+    //   626: fmul
+    //   627: iload 9
+    //   629: i2f
+    //   630: fdiv
+    //   631: fstore 7
+    //   633: goto -218 -> 415
+    //   636: aload_1
+    //   637: iload 6
+    //   639: iload 5
+    //   641: getstatic 644	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   644: bipush 80
+    //   646: aload 13
+    //   648: iconst_1
+    //   649: new 485	com/tencent/mm/pointers/PInt
+    //   652: dup
+    //   653: invokespecial 486	com/tencent/mm/pointers/PInt:<init>	()V
+    //   656: new 485	com/tencent/mm/pointers/PInt
+    //   659: dup
+    //   660: invokespecial 486	com/tencent/mm/pointers/PInt:<init>	()V
+    //   663: iconst_1
+    //   664: iconst_1
+    //   665: iconst_m1
+    //   666: invokestatic 1751	com/tencent/mm/sdk/platformtools/BitmapUtil:createThumbNail	(Ljava/lang/String;IILandroid/graphics/Bitmap$CompressFormat;ILjava/lang/String;ZLcom/tencent/mm/pointers/PInt;Lcom/tencent/mm/pointers/PInt;ZZI)Z
+    //   669: istore 12
+    //   671: goto -199 -> 472
+    //   674: astore_1
+    //   675: getstatic 848	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+    //   678: ldc2_w 1246
+    //   681: ldc2_w 1752
+    //   684: lconst_1
+    //   685: iconst_0
+    //   686: invokevirtual 1253	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   689: ldc_w 277
+    //   692: ldc_w 1755
+    //   695: iconst_1
+    //   696: anewarray 105	java/lang/Object
+    //   699: dup
+    //   700: iconst_0
+    //   701: aload_1
+    //   702: invokevirtual 1756	java/lang/Exception:toString	()Ljava/lang/String;
+    //   705: aastore
+    //   706: invokestatic 735	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   709: ldc_w 1730
+    //   712: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   715: iconst_0
+    //   716: ireturn
+    //   717: astore_2
+    //   718: aload_1
+    //   719: monitorexit
+    //   720: ldc_w 1730
+    //   723: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   726: aload_2
+    //   727: athrow
+    //   728: getstatic 848	com/tencent/mm/plugin/report/service/h:CyF	Lcom/tencent/mm/plugin/report/service/h;
+    //   731: ldc2_w 1246
+    //   734: ldc2_w 1752
+    //   737: lconst_1
+    //   738: iconst_0
+    //   739: invokevirtual 1253	com/tencent/mm/plugin/report/service/h:idkeyStat	(JJJZ)V
+    //   742: goto -130 -> 612
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	732	0	this	i
-    //   0	732	2	paramString2	String
-    //   0	732	3	paramInt1	int
-    //   0	732	4	paramInt2	int
-    //   0	732	5	paramInt3	int
-    //   0	732	6	paramInt4	int
-    //   59	566	7	f	float
-    //   358	67	8	i	int
-    //   342	279	9	j	int
-    //   51	437	10	l	long
-    //   463	194	12	bool	boolean
-    //   90	548	13	localObject1	Object
-    //   144	382	14	localObject2	Object
-    //   140	205	15	localObject3	Object
+    //   0	745	0	this	i
+    //   0	745	2	paramString2	String
+    //   0	745	3	paramInt1	int
+    //   0	745	4	paramInt2	int
+    //   0	745	5	paramInt3	int
+    //   0	745	6	paramInt4	int
+    //   59	573	7	f	float
+    //   360	67	8	i	int
+    //   344	284	9	j	int
+    //   51	444	10	l	long
+    //   470	200	12	bool	boolean
+    //   90	557	13	localObject1	Object
+    //   144	389	14	localObject2	Object
+    //   140	207	15	localObject3	Object
     //   155	20	16	localOptions	BitmapFactory.Options
     // Exception table:
     //   from	to	target	type
-    //   436	465	661	java/lang/Exception
-    //   629	658	661	java/lang/Exception
-    //   555	603	704	finally
-    //   603	605	704	finally
-    //   705	707	704	finally
+    //   438	472	674	java/lang/Exception
+    //   636	671	674	java/lang/Exception
+    //   562	610	717	finally
+    //   610	612	717	finally
+    //   718	720	717	finally
   }
   
-  public final void aIE()
-  {
-    AppMethodBeat.i(150567);
-    Iterator localIterator = d.idw.iterator();
-    while (localIterator.hasNext())
-    {
-      c localc = (c)localIterator.next();
-      Cursor localCursor = this.hKK.a("SELECT max(id) FROM " + localc.table, null, 2);
-      AtomicLong localAtomicLong = localc.idv;
-      long l;
-      if (localCursor.moveToFirst()) {
-        l = localCursor.getLong(0);
-      }
-      try
-      {
-        if (l > localAtomicLong.get()) {
-          localAtomicLong.set(l);
-        }
-        localCursor.close();
-        ae.i("MicroMsg.ImgInfoStorage", "[updateLatestImgID] table=%s, loading new img id=%s", new Object[] { localc.table, Long.valueOf(localAtomicLong.get()) });
-      }
-      finally
-      {
-        AppMethodBeat.o(150567);
-      }
-    }
-    AppMethodBeat.o(150567);
-  }
-  
-  public final List<g> aIF()
-  {
-    AppMethodBeat.i(150598);
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = d.idw.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (c)localIterator.next();
-      localObject = "select * " + " FROM " + ((c)localObject).table;
-      localObject = (String)localObject + " WHERE iscomplete= 0 AND totalLen != 0 ";
-      localObject = this.hKK.a((String)localObject, null, 0);
-      if (!((Cursor)localObject).moveToFirst()) {
-        ((Cursor)localObject).close();
-      } else {
-        label229:
-        for (;;)
-        {
-          g localg1 = new g();
-          localg1.convertFrom((Cursor)localObject);
-          g localg2 = py((int)localg1.doE);
-          if (localg2 != null) {
-            if ((localg2.dCd != 0L) || (localg2.icx != 0L)) {
-              localArrayList.add(localg1);
-            }
-          }
-          for (;;)
-          {
-            if (((Cursor)localObject).moveToNext()) {
-              break label229;
-            }
-            ((Cursor)localObject).close();
-            break;
-            if ((localg1.dCd != 0L) || (localg1.icx != 0L)) {
-              localArrayList.add(localg1);
-            }
-          }
-        }
-      }
-    }
-    AppMethodBeat.o(150598);
-    return localArrayList;
-  }
-  
-  public final String aa(byte[] paramArrayOfByte)
+  public final String ap(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(150580);
-    if (bu.cF(paramArrayOfByte))
+    if (Util.isNullOrNil(paramArrayOfByte))
     {
-      ae.e("MicroMsg.ImgInfoStorage", "save dir thumb error, thumbBuf is null");
+      Log.e("MicroMsg.ImgInfoStorage", "save dir thumb error, thumbBuf is null");
       AppMethodBeat.o(150580);
       return null;
     }
@@ -4479,15 +4398,15 @@ public final class i
     MMBitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramArrayOfByte.length, (BitmapFactory.Options)localObject);
     if ((((BitmapFactory.Options)localObject).outWidth < 0) || (((BitmapFactory.Options)localObject).outHeight < 0))
     {
-      ae.e("MicroMsg.ImgInfoStorage", "Bad thumbBuf, perhaps it's not complete or damaged ??");
+      Log.e("MicroMsg.ImgInfoStorage", "Bad thumbBuf, perhaps it's not complete or damaged ??");
       AppMethodBeat.o(150580);
       return null;
     }
-    localObject = aIG();
+    localObject = bcA();
     String str = o((String)localObject, "th_", "");
-    ae.d("MicroMsg.ImgInfoStorage", "saveDirThumb, fullPath = ".concat(String.valueOf(str)));
-    o.deleteFile(str);
-    o.f(str, paramArrayOfByte, paramArrayOfByte.length);
+    Log.d("MicroMsg.ImgInfoStorage", "saveDirThumb, fullPath = ".concat(String.valueOf(str)));
+    s.deleteFile(str);
+    s.f(str, paramArrayOfByte, paramArrayOfByte.length);
     paramArrayOfByte = "THUMBNAIL_DIRPATH://th_".concat(String.valueOf(localObject));
     AppMethodBeat.o(150580);
     return paramArrayOfByte;
@@ -4528,18 +4447,98 @@ public final class i
     {
       localObject2 = new g();
       ((g)localObject2).convertFrom(paramVarArgs);
-      ((HashMap)localObject1).put(Long.valueOf(((g)localObject2).dCd), localObject2);
+      ((HashMap)localObject1).put(Long.valueOf(((g)localObject2).dTS), localObject2);
     }
     paramVarArgs.close();
     AppMethodBeat.o(150602);
     return localObject1;
   }
   
+  public final void bcy()
+  {
+    AppMethodBeat.i(150567);
+    Iterator localIterator = d.iYu.iterator();
+    while (localIterator.hasNext())
+    {
+      c localc = (c)localIterator.next();
+      Cursor localCursor = this.iFy.rawQuery("SELECT max(id) FROM " + localc.table, null, 2);
+      AtomicLong localAtomicLong = localc.iYt;
+      long l;
+      if (localCursor.moveToFirst()) {
+        l = localCursor.getLong(0);
+      }
+      try
+      {
+        if (l > localAtomicLong.get()) {
+          localAtomicLong.set(l);
+        }
+        localCursor.close();
+        Log.i("MicroMsg.ImgInfoStorage", "[updateLatestImgID] table=%s, loading new img id=%s", new Object[] { localc.table, Long.valueOf(localAtomicLong.get()) });
+      }
+      finally
+      {
+        AppMethodBeat.o(150567);
+      }
+    }
+    AppMethodBeat.o(150567);
+  }
+  
+  public final List<g> bcz()
+  {
+    AppMethodBeat.i(150598);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = d.iYu.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (c)localIterator.next();
+      localObject = "select * " + " FROM " + ((c)localObject).table;
+      localObject = (String)localObject + " WHERE iscomplete= 0 AND totalLen != 0 ";
+      localObject = this.iFy.rawQuery((String)localObject, null);
+      if (!((Cursor)localObject).moveToFirst()) {
+        ((Cursor)localObject).close();
+      } else {
+        label228:
+        for (;;)
+        {
+          g localg1 = new g();
+          localg1.convertFrom((Cursor)localObject);
+          g localg2 = tm((int)localg1.localId);
+          if (localg2 != null) {
+            if ((localg2.dTS != 0L) || (localg2.iXv != 0L)) {
+              localArrayList.add(localg1);
+            }
+          }
+          for (;;)
+          {
+            if (((Cursor)localObject).moveToNext()) {
+              break label228;
+            }
+            ((Cursor)localObject).close();
+            break;
+            if ((localg1.dTS != 0L) || (localg1.iXv != 0L)) {
+              localArrayList.add(localg1);
+            }
+          }
+        }
+      }
+    }
+    AppMethodBeat.o(150598);
+    return localArrayList;
+  }
+  
+  public final Bitmap c(String paramString, float paramFloat)
+  {
+    AppMethodBeat.i(223585);
+    paramString = a(paramString, paramFloat, true);
+    AppMethodBeat.o(223585);
+    return paramString;
+  }
+  
   public final g c(Long paramLong)
   {
     AppMethodBeat.i(150596);
     g localg = new g();
-    paramLong = a(d.ss(paramLong.longValue()), null, "id=?", new String[] { String.valueOf(paramLong) });
+    paramLong = a(d.Ay(paramLong.longValue()), null, "id=?", new String[] { String.valueOf(paramLong) });
     if ((paramLong != null) && (paramLong.moveToFirst())) {
       localg.convertFrom(paramLong);
     }
@@ -4548,30 +4547,7 @@ public final class i
     return localg;
   }
   
-  public final String c(String paramString, boolean paramBoolean1, boolean paramBoolean2)
-  {
-    AppMethodBeat.i(150633);
-    Object localObject;
-    if ((paramString != null) && (this.idf.containsKey(paramString)))
-    {
-      localObject = (String)this.idf.get(paramString);
-      AppMethodBeat.o(150633);
-      return localObject;
-    }
-    if (paramBoolean1) {}
-    for (String str = paramString;; str = R(paramString, paramBoolean2))
-    {
-      localObject = str;
-      if (bu.isNullOrNil(str)) {
-        break;
-      }
-      this.idf.put(paramString, str);
-      localObject = str;
-      break;
-    }
-  }
-  
-  public final Bitmap e(String paramString, float paramFloat)
+  public final Bitmap d(String paramString, float paramFloat)
   {
     AppMethodBeat.i(150582);
     paramString = a(paramString, paramFloat, false);
@@ -4579,49 +4555,68 @@ public final class i
     return paramString;
   }
   
+  public final String d(String paramString, boolean paramBoolean1, boolean paramBoolean2)
+  {
+    AppMethodBeat.i(150633);
+    Object localObject;
+    if ((paramString != null) && (this.iYd.containsKey(paramString)))
+    {
+      localObject = (String)this.iYd.get(paramString);
+      AppMethodBeat.o(150633);
+      return localObject;
+    }
+    if (paramBoolean1) {}
+    for (String str = paramString;; str = R(paramString, paramBoolean2))
+    {
+      localObject = str;
+      if (Util.isNullOrNil(str)) {
+        break;
+      }
+      this.iYd.put(paramString, str);
+      localObject = str;
+      break;
+    }
+  }
+  
   public final String getFullPath(String paramString)
   {
     AppMethodBeat.i(150572);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(150572);
       return null;
     }
-    String str1 = "";
-    if (paramString.startsWith("SERVERID://")) {
-      str1 = paramString.substring(11);
-    }
-    for (;;)
-    {
+    if (paramString.startsWith("SERVERID://")) {}
+    for (String str1 = paramString.substring(11);; str1 = "") {
       try
       {
-        str1 = sr(Long.valueOf(str1).longValue()).ico;
-        String str2 = com.tencent.mm.plugin.image.d.azQ();
-        String str3 = com.tencent.mm.plugin.image.d.azR();
-        if (bu.isNullOrNil(str1))
-        {
-          paramString = n.j(str2, str3, "th_", paramString, "");
-          AppMethodBeat.o(150572);
-          return paramString;
+        str1 = Ax(Long.valueOf(str1).longValue()).iXm;
+        String str3 = com.tencent.mm.plugin.image.d.aSY();
+        String str4 = com.tencent.mm.plugin.image.d.aSZ();
+        String str2 = str1;
+        if (Util.isNullOrNil(str1)) {
+          str2 = paramString;
         }
+        paramString = FilePathGenerator.defGenPathWithOld(str3, str4, "th_", str2, "", 1);
+        AppMethodBeat.o(150572);
+        return paramString;
       }
       catch (NumberFormatException paramString)
       {
-        ae.e("MicroMsg.ImgInfoStorage", "read img buf failed: " + paramString.getMessage());
+        Log.e("MicroMsg.ImgInfoStorage", "read img buf failed: " + paramString.getMessage());
         AppMethodBeat.o(150572);
         return null;
       }
-      paramString = str1;
     }
   }
   
-  public final Bitmap l(int paramInt1, int paramInt2, boolean paramBoolean)
+  public final Bitmap m(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     AppMethodBeat.i(150629);
     if (paramBoolean) {}
     for (String str = "location_backgroup_key_from";; str = "location_backgroup_key_tor")
     {
-      Bitmap localBitmap2 = (Bitmap)this.icY.aL(str);
+      Bitmap localBitmap2 = (Bitmap)this.iXW.aT(str);
       Bitmap localBitmap1;
       if (localBitmap2 != null)
       {
@@ -4630,8 +4625,8 @@ public final class i
       }
       else
       {
-        localBitmap1 = com.tencent.mm.sdk.platformtools.h.jy(paramInt1, paramInt2);
-        this.icY.q(str, localBitmap1);
+        localBitmap1 = BitmapUtil.createLocation(2131233533, 2131233886, paramInt1, paramInt2);
+        this.iXW.x(str, localBitmap1);
       }
       AppMethodBeat.o(150629);
       return localBitmap1;
@@ -4646,7 +4641,7 @@ public final class i
     return paramString1;
   }
   
-  public final g pw(int paramInt)
+  public final g tl(int paramInt)
   {
     AppMethodBeat.i(150603);
     g localg = c(Long.valueOf(paramInt));
@@ -4655,55 +4650,55 @@ public final class i
   }
   
   /* Error */
-  public final g py(int paramInt)
+  public final g tm(int paramInt)
   {
     // Byte code:
-    //   0: ldc_w 1804
-    //   3: invokestatic 99	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 1829
+    //   3: invokestatic 96	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: iload_1
     //   7: i2l
     //   8: lstore_2
     //   9: aload_0
     //   10: lload_2
-    //   11: invokestatic 1151	com/tencent/mm/av/i$d:ss	(J)Ljava/lang/String;
+    //   11: invokestatic 1172	com/tencent/mm/av/i$d:Ay	(J)Ljava/lang/String;
     //   14: aconst_null
-    //   15: ldc_w 1806
+    //   15: ldc_w 1831
     //   18: iconst_1
-    //   19: anewarray 61	java/lang/String
+    //   19: anewarray 58	java/lang/String
     //   22: dup
     //   23: iconst_0
     //   24: iload_1
-    //   25: invokestatic 1031	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   25: invokestatic 1073	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   28: aastore
-    //   29: invokespecial 1057	com/tencent/mm/av/i:b	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
+    //   29: invokespecial 212	com/tencent/mm/av/i:b	(Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)Landroid/database/Cursor;
     //   32: astore 5
     //   34: aload 5
     //   36: ifnull +170 -> 206
     //   39: aload 5
     //   41: astore 6
     //   43: aload 5
-    //   45: invokeinterface 1034 1 0
+    //   45: invokeinterface 217 1 0
     //   50: ifeq +156 -> 206
     //   53: aload 5
     //   55: astore 6
-    //   57: new 329	com/tencent/mm/av/g
+    //   57: new 200	com/tencent/mm/av/g
     //   60: dup
-    //   61: invokespecial 712	com/tencent/mm/av/g:<init>	()V
+    //   61: invokespecial 201	com/tencent/mm/av/g:<init>	()V
     //   64: astore 4
     //   66: aload 5
     //   68: astore 6
     //   70: aload 4
     //   72: aload 5
-    //   74: invokevirtual 1038	com/tencent/mm/av/g:convertFrom	(Landroid/database/Cursor;)V
+    //   74: invokevirtual 221	com/tencent/mm/av/g:convertFrom	(Landroid/database/Cursor;)V
     //   77: aload 4
     //   79: astore 6
     //   81: aload 5
     //   83: ifnull +14 -> 97
     //   86: aload 5
-    //   88: invokeinterface 947 1 0
+    //   88: invokeinterface 224 1 0
     //   93: aload 4
     //   95: astore 6
-    //   97: ldc_w 1804
+    //   97: ldc_w 1829
     //   100: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   103: aload 6
     //   105: areturn
@@ -4714,22 +4709,22 @@ public final class i
     //   112: astore 5
     //   114: aload 5
     //   116: astore 6
-    //   118: ldc_w 284
-    //   121: ldc_w 1808
+    //   118: ldc_w 277
+    //   121: ldc_w 1833
     //   124: iconst_1
-    //   125: anewarray 106	java/lang/Object
+    //   125: anewarray 105	java/lang/Object
     //   128: dup
     //   129: iconst_0
     //   130: aload 7
-    //   132: invokevirtual 1736	java/lang/Exception:toString	()Ljava/lang/String;
+    //   132: invokevirtual 1756	java/lang/Exception:toString	()Ljava/lang/String;
     //   135: aastore
-    //   136: invokestatic 1282	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   136: invokestatic 1295	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   139: aload 4
     //   141: astore 6
     //   143: aload 5
     //   145: ifnull -48 -> 97
     //   148: aload 5
-    //   150: invokeinterface 947 1 0
+    //   150: invokeinterface 224 1 0
     //   155: aload 4
     //   157: astore 6
     //   159: goto -62 -> 97
@@ -4739,8 +4734,8 @@ public final class i
     //   167: aload 6
     //   169: ifnull +10 -> 179
     //   172: aload 6
-    //   174: invokeinterface 947 1 0
-    //   179: ldc_w 1804
+    //   174: invokeinterface 224 1 0
+    //   179: ldc_w 1829
     //   182: invokestatic 195	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   185: aload 4
     //   187: athrow
@@ -4782,187 +4777,145 @@ public final class i
     //   70	77	201	java/lang/Exception
   }
   
-  public static final class a
-    extends BitmapDrawable
-  {
-    private a(Resources paramResources, Bitmap paramBitmap)
-    {
-      super(paramBitmap);
-    }
-    
-    public static void a(Bitmap paramBitmap, ImageView paramImageView)
-    {
-      AppMethodBeat.i(150564);
-      if ((paramImageView == null) || (paramImageView.getResources() == null))
-      {
-        AppMethodBeat.o(150564);
-        return;
-      }
-      paramBitmap = new a(paramImageView.getResources(), paramBitmap);
-      if (paramImageView.getLayerType() == 1)
-      {
-        paramImageView.destroyDrawingCache();
-        paramImageView.setLayerType(0, null);
-      }
-      paramImageView.setImageDrawable(paramBitmap);
-      AppMethodBeat.o(150564);
-    }
-    
-    public final void draw(Canvas paramCanvas)
-    {
-      AppMethodBeat.i(150565);
-      if ((getBitmap() != null) && (!getBitmap().isRecycled()))
-      {
-        super.draw(paramCanvas);
-        AppMethodBeat.o(150565);
-        return;
-      }
-      if (getBitmap() != null) {
-        ae.e("MicroMsg.ImgInfoStorage", "Cannot draw recycled bitmaps:%s", new Object[] { getBitmap().toString() });
-      }
-      AppMethodBeat.o(150565);
-    }
-  }
-  
   static final class b
   {
-    int idp;
-    int idq;
-    int idr;
+    int iYn;
+    int iYo;
+    int iYp;
     String url;
     
     b(int paramInt1, String paramString, int paramInt2, int paramInt3)
     {
-      this.idp = paramInt1;
+      this.iYn = paramInt1;
       this.url = paramString;
-      this.idq = paramInt2;
-      this.idr = paramInt3;
+      this.iYo = paramInt2;
+      this.iYp = paramInt3;
     }
   }
   
   public static final class c
   {
-    String ids;
-    String[] idt;
-    long[] idu;
-    AtomicLong idv;
+    String iYq;
+    String[] iYr;
+    long[] iYs;
+    AtomicLong iYt;
     String table;
     
     public c(String paramString1, String paramString2, String[] paramArrayOfString, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(218690);
-      this.idu = new long[2];
-      this.idv = new AtomicLong(0L);
+      AppMethodBeat.i(223575);
+      this.iYs = new long[2];
+      this.iYt = new AtomicLong(0L);
       this.table = paramString2;
-      this.ids = paramString1;
-      this.idt = paramArrayOfString;
-      this.idu[0] = paramLong1;
-      this.idu[1] = paramLong2;
-      this.idv.set(paramLong1);
-      AppMethodBeat.o(218690);
+      this.iYq = paramString1;
+      this.iYr = paramArrayOfString;
+      this.iYs[0] = paramLong1;
+      this.iYs[1] = paramLong2;
+      this.iYt.set(paramLong1);
+      AppMethodBeat.o(223575);
     }
   }
   
   public static final class d
   {
-    public static final ArrayList<i.c> idw;
+    public static final ArrayList<i.c> iYu;
     
     static
     {
-      AppMethodBeat.i(218695);
-      idw = new ArrayList(3);
+      AppMethodBeat.i(223580);
+      iYu = new ArrayList(3);
       a("", "ImgInfo2", i.SQL_CREATE, 1L, 1000000000L);
-      a("@findermsg", "finder_img_info_table", i.FM("finder_img_info_table"), 1000000001L, 1001000001L);
-      a("@gamelifesess", "gamelife_img_info_table", i.FM("gamelife_img_info_table"), 1001000002L, 1002000002L);
-      AppMethodBeat.o(218695);
+      a("@findermsg", "finder_img_info_table", i.Ox("finder_img_info_table"), 1000000001L, 1001000001L);
+      a("@gamelifesess", "gamelife_img_info_table", i.Ox("gamelife_img_info_table"), 1001000002L, 1002000002L);
+      AppMethodBeat.o(223580);
     }
     
-    public static AtomicLong FV(String paramString)
+    public static String Ay(long paramLong)
     {
-      AppMethodBeat.i(218692);
+      AppMethodBeat.i(223579);
+      Object localObject = iYu.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        i.c localc = (i.c)((Iterator)localObject).next();
+        if ((localc.iYs[0] <= paramLong) && (paramLong <= localc.iYs[1]))
+        {
+          localObject = localc.table;
+          AppMethodBeat.o(223579);
+          return localObject;
+        }
+      }
+      Log.i("MicroMsg.ImgInfoStorage", "[getTableById] table=%s id=%s", new Object[] { ((i.c)iYu.get(0)).table, Long.valueOf(paramLong) });
+      localObject = ((i.c)iYu.get(0)).table;
+      AppMethodBeat.o(223579);
+      return localObject;
+    }
+    
+    public static AtomicLong OG(String paramString)
+    {
+      AppMethodBeat.i(223577);
       if (paramString == null)
       {
-        ae.e("MicroMsg.ImgInfoStorage", "[getIdCreator] talker is null %s", new Object[] { bu.fpN() });
-        paramString = ((i.c)idw.get(0)).idv;
-        AppMethodBeat.o(218692);
+        Log.e("MicroMsg.ImgInfoStorage", "[getIdCreator] talker is null %s", new Object[] { Util.getStack() });
+        paramString = ((i.c)iYu.get(0)).iYt;
+        AppMethodBeat.o(223577);
         return paramString;
       }
-      Iterator localIterator = idw.iterator();
+      Iterator localIterator = iYu.iterator();
       while (localIterator.hasNext())
       {
         i.c localc = (i.c)localIterator.next();
-        if ((!localc.ids.isEmpty()) && (paramString.toLowerCase().endsWith(localc.ids)))
+        if ((!localc.iYq.isEmpty()) && (paramString.toLowerCase().endsWith(localc.iYq)))
         {
-          ae.i("MicroMsg.ImgInfoStorage", "[getIdCreator] table=%s talker=%s", new Object[] { localc.table, paramString });
-          paramString = localc.idv;
-          AppMethodBeat.o(218692);
+          Log.i("MicroMsg.ImgInfoStorage", "[getIdCreator] table=%s talker=%s", new Object[] { localc.table, paramString });
+          paramString = localc.iYt;
+          AppMethodBeat.o(223577);
           return paramString;
         }
       }
-      ae.i("MicroMsg.ImgInfoStorage", "[getIdCreator] table=%s talker=%s", new Object[] { ((i.c)idw.get(0)).table, paramString });
-      paramString = ((i.c)idw.get(0)).idv;
-      AppMethodBeat.o(218692);
+      Log.i("MicroMsg.ImgInfoStorage", "[getIdCreator] table=%s talker=%s", new Object[] { ((i.c)iYu.get(0)).table, paramString });
+      paramString = ((i.c)iYu.get(0)).iYt;
+      AppMethodBeat.o(223577);
       return paramString;
     }
     
-    public static String FW(String paramString)
+    public static String OH(String paramString)
     {
-      AppMethodBeat.i(218693);
+      AppMethodBeat.i(223578);
       if (paramString == null)
       {
-        ae.e("MicroMsg.ImgInfoStorage", "[getTableByTalker] talker is null %s", new Object[] { bu.fpN() });
-        paramString = ((i.c)idw.get(0)).table;
-        AppMethodBeat.o(218693);
+        Log.e("MicroMsg.ImgInfoStorage", "[getTableByTalker] talker is null %s", new Object[] { Util.getStack() });
+        paramString = ((i.c)iYu.get(0)).table;
+        AppMethodBeat.o(223578);
         return paramString;
       }
-      Iterator localIterator = idw.iterator();
+      Iterator localIterator = iYu.iterator();
       while (localIterator.hasNext())
       {
         i.c localc = (i.c)localIterator.next();
-        if ((!localc.ids.isEmpty()) && (paramString.toLowerCase().endsWith(localc.ids)))
+        if ((!localc.iYq.isEmpty()) && (paramString.toLowerCase().endsWith(localc.iYq)))
         {
           paramString = localc.table;
-          AppMethodBeat.o(218693);
+          AppMethodBeat.o(223578);
           return paramString;
         }
       }
-      ae.i("MicroMsg.ImgInfoStorage", "[getTableByTalker] table=%s talker=%s", new Object[] { ((i.c)idw.get(0)).table, paramString });
-      paramString = ((i.c)idw.get(0)).table;
-      AppMethodBeat.o(218693);
+      Log.i("MicroMsg.ImgInfoStorage", "[getTableByTalker] table=%s talker=%s", new Object[] { ((i.c)iYu.get(0)).table, paramString });
+      paramString = ((i.c)iYu.get(0)).table;
+      AppMethodBeat.o(223578);
       return paramString;
     }
     
     private static void a(String paramString1, String paramString2, String[] paramArrayOfString, long paramLong1, long paramLong2)
     {
-      AppMethodBeat.i(218691);
-      idw.add(new i.c(paramString1.toLowerCase(), paramString2, paramArrayOfString, paramLong1, paramLong2));
-      AppMethodBeat.o(218691);
-    }
-    
-    public static String ss(long paramLong)
-    {
-      AppMethodBeat.i(218694);
-      Object localObject = idw.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        i.c localc = (i.c)((Iterator)localObject).next();
-        if ((localc.idu[0] <= paramLong) && (paramLong <= localc.idu[1]))
-        {
-          localObject = localc.table;
-          AppMethodBeat.o(218694);
-          return localObject;
-        }
-      }
-      ae.i("MicroMsg.ImgInfoStorage", "[getTableById] table=%s id=%s", new Object[] { ((i.c)idw.get(0)).table, Long.valueOf(paramLong) });
-      localObject = ((i.c)idw.get(0)).table;
-      AppMethodBeat.o(218694);
-      return localObject;
+      AppMethodBeat.i(223576);
+      iYu.add(new i.c(paramString1.toLowerCase(), paramString2, paramArrayOfString, paramLong1, paramLong2));
+      AppMethodBeat.o(223576);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.i
  * JD-Core Version:    0.7.0.1
  */

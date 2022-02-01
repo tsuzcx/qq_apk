@@ -15,33 +15,33 @@ import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.l;
 import com.tencent.mm.plugin.account.friend.a.l.a;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class BindMContactStatusUI
   extends MMWizardActivity
 {
-  private Button gXc;
-  private TextView jcQ;
-  private TextView jcR;
-  private ImageView jcy;
+  private Button hPX;
+  private ImageView kaB;
+  private TextView kaT;
+  private TextView kaU;
   
   public int getLayoutId()
   {
-    return 2131493181;
+    return 2131493227;
   }
   
   public void initView()
   {
     AppMethodBeat.i(109883);
-    this.jcy = ((ImageView)findViewById(2131297240));
-    this.jcQ = ((TextView)findViewById(2131297238));
-    this.jcR = ((TextView)findViewById(2131297236));
-    this.gXc = ((Button)findViewById(2131297239));
-    if (l.aTn() == l.a.jgH)
+    this.kaB = ((ImageView)findViewById(2131297395));
+    this.kaT = ((TextView)findViewById(2131297393));
+    this.kaU = ((TextView)findViewById(2131297391));
+    this.hPX = ((Button)findViewById(2131297394));
+    if (l.bnZ() == l.a.keL)
     {
-      this.jcy.setImageResource(2131690819);
-      String str2 = (String)g.ajR().ajA().get(6, null);
+      this.kaB.setImageResource(2131691105);
+      String str2 = (String)g.aAh().azQ().get(6, null);
       String str1;
       if (str2 != null)
       {
@@ -50,21 +50,21 @@ public class BindMContactStatusUI
       }
       else
       {
-        str1 = (String)g.ajR().ajA().get(4097, null);
+        str1 = (String)g.aAh().azQ().get(4097, null);
       }
-      this.jcR.setText(getString(2131756485));
-      this.jcQ.setText(getString(2131756511, new Object[] { str1 }));
+      this.kaU.setText(getString(2131756621));
+      this.kaT.setText(getString(2131756647, new Object[] { str1 }));
     }
     for (;;)
     {
-      this.gXc.setOnClickListener(new View.OnClickListener()
+      this.hPX.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(109881);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/account/bind/ui/BindMContactStatusUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/account/bind/ui/BindMContactStatusUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           BindMContactStatusUI.a(BindMContactStatusUI.this);
           a.a(this, "com/tencent/mm/plugin/account/bind/ui/BindMContactStatusUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(109881);
@@ -72,10 +72,10 @@ public class BindMContactStatusUI
       });
       AppMethodBeat.o(109883);
       return;
-      this.jcy.setImageResource(2131690820);
-      this.jcR.setText(2131756497);
-      this.jcQ.setText(2131756497);
-      this.jcR.setVisibility(8);
+      this.kaB.setImageResource(2131691106);
+      this.kaU.setText(2131756633);
+      this.kaT.setText(2131756633);
+      this.kaU.setVisibility(8);
     }
   }
   
@@ -83,7 +83,7 @@ public class BindMContactStatusUI
   {
     AppMethodBeat.i(109882);
     super.onCreate(paramBundle);
-    setMMTitle(2131756489);
+    setMMTitle(2131756625);
     initView();
     AppMethodBeat.o(109882);
   }
@@ -93,7 +93,7 @@ public class BindMContactStatusUI
     AppMethodBeat.i(109884);
     if (paramInt == 4)
     {
-      acs(1);
+      ala(1);
       AppMethodBeat.o(109884);
       return true;
     }
@@ -110,7 +110,7 @@ public class BindMContactStatusUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.BindMContactStatusUI
  * JD-Core Version:    0.7.0.1
  */

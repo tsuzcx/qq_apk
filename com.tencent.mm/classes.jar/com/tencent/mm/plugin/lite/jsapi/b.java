@@ -1,85 +1,125 @@
 package com.tencent.mm.plugin.lite.jsapi;
 
+import android.os.Bundle;
+import com.tencent.liteapp.jsapi.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.lite.LiteAppCenter;
-import com.tencent.mm.sdk.platformtools.ae;
-import org.json.JSONException;
+import com.tencent.mm.ipcinvoker.d;
+import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import java.util.HashMap;
+import java.util.Map;
 import org.json.JSONObject;
 
-public final class b
+public abstract class b
+  extends a
+  implements com.tencent.mm.ipcinvoker.b<Bundle, IPCCallbackData>
 {
-  private String mAppId;
-  private long vkt;
-  private long vku;
-  private long vkv;
+  private com.tencent.liteapp.jsapi.b yEm = null;
+  public a yEn = null;
+  private Map<String, Integer> yEo = new HashMap() {};
+  private Map<String, Integer> yEp = new HashMap() {};
   
-  public b(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  public final void a(com.tencent.liteapp.jsapi.b paramb)
   {
-    this.mAppId = paramString;
-    this.vkt = paramLong1;
-    this.vku = paramLong2;
-    this.vkv = paramLong3;
+    this.yEm = paramb;
   }
   
-  public final void aB(JSONObject paramJSONObject)
+  protected final int aU(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(212374);
-    if (this.vkv < 0L)
+    if (!paramJSONObject.has("nextAnimIn")) {}
+    do
     {
-      AppMethodBeat.o(212374);
-      return;
-    }
-    JSONObject localJSONObject = new JSONObject();
-    for (;;)
-    {
-      try
-      {
-        localJSONObject.put("result", true);
-        localJSONObject.put("errMsg", "");
-        if (paramJSONObject == null) {
-          continue;
-        }
-        localJSONObject.put("data", paramJSONObject);
-      }
-      catch (JSONException paramJSONObject)
-      {
-        ae.printErrStackTrace("liteApp.LiteAppJsApiCallback", paramJSONObject, "callback", new Object[0]);
-        continue;
-      }
-      LiteAppCenter.jsApiCallback(this.mAppId, this.vkt, this.vku, this.vkv, localJSONObject.toString(), false);
-      AppMethodBeat.o(212374);
-      return;
-      localJSONObject.put("data", new JSONObject());
-    }
+      return 2130772169;
+      paramJSONObject = paramJSONObject.getString("nextAnimIn");
+    } while (!this.yEo.containsKey(paramJSONObject));
+    return ((Integer)this.yEo.get(paramJSONObject)).intValue();
   }
   
-  public final void apy(String paramString)
+  protected final int aV(JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(212375);
-    JSONObject localJSONObject;
-    if (this.vkv >= 0L) {
-      localJSONObject = new JSONObject();
-    }
-    for (;;)
+    if (!paramJSONObject.has("currentAnimOut")) {}
+    do
     {
-      try
-      {
-        localJSONObject.put("result", false);
-        localJSONObject.put("data", new JSONObject());
-        if (paramString == null) {
-          continue;
-        }
-        localJSONObject.put("errMsg", paramString);
-      }
-      catch (JSONException paramString)
-      {
-        ae.printErrStackTrace("liteApp.LiteAppJsApiCallback", paramString, "callback", new Object[0]);
-        continue;
-      }
-      LiteAppCenter.jsApiCallback(this.mAppId, this.vkt, this.vku, this.vkv, localJSONObject.toString(), false);
-      AppMethodBeat.o(212375);
+      return 2130772166;
+      paramJSONObject = paramJSONObject.getString("currentAnimOut");
+    } while (!this.yEo.containsKey(paramJSONObject));
+    return ((Integer)this.yEp.get(paramJSONObject)).intValue();
+  }
+  
+  public final void b(String paramString, JSONObject paramJSONObject)
+  {
+    if (dTw() == 0)
+    {
+      this.yEn = new a();
+      this.yEn.yEm = this.yEm;
+      a(paramString, paramJSONObject);
       return;
-      localJSONObject.put("errMsg", "");
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("data", paramJSONObject.toString());
+    localBundle.putString("appId", paramString);
+    paramString = new d() {};
+    h.a(MMApplicationContext.getPackageName(), localBundle, getClass(), paramString);
+  }
+  
+  public int dTw()
+  {
+    return 0;
+  }
+  
+  public static final class a
+  {
+    public com.tencent.liteapp.jsapi.b yEm;
+    public d<IPCCallbackData> yEr = null;
+    
+    public final void aCS(String paramString)
+    {
+      AppMethodBeat.i(198832);
+      if (this.yEm != null)
+      {
+        this.yEm.h(paramString, false);
+        AppMethodBeat.o(198832);
+        return;
+      }
+      IPCCallbackData localIPCCallbackData = new IPCCallbackData();
+      localIPCCallbackData.cqT = false;
+      localIPCCallbackData.yEe = false;
+      localIPCCallbackData.cqU = paramString;
+      this.yEr.bn(localIPCCallbackData);
+      AppMethodBeat.o(198832);
+    }
+    
+    public final void aW(JSONObject paramJSONObject)
+    {
+      AppMethodBeat.i(198835);
+      if (this.yEm != null)
+      {
+        this.yEm.a(paramJSONObject, false);
+        AppMethodBeat.o(198835);
+        return;
+      }
+      IPCCallbackData localIPCCallbackData = new IPCCallbackData();
+      localIPCCallbackData.cqT = true;
+      localIPCCallbackData.yEe = false;
+      if (paramJSONObject != null) {
+        localIPCCallbackData.cqV = paramJSONObject.toString();
+      }
+      this.yEr.bn(localIPCCallbackData);
+      AppMethodBeat.o(198835);
+    }
+    
+    public final void aq(Map<String, Object> paramMap)
+    {
+      AppMethodBeat.i(198834);
+      aW(new JSONObject(paramMap));
+      AppMethodBeat.o(198834);
+    }
+    
+    public final void ecz()
+    {
+      AppMethodBeat.i(198833);
+      aW(new JSONObject());
+      AppMethodBeat.o(198833);
     }
   }
 }

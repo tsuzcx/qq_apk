@@ -6,45 +6,45 @@ import android.os.Message;
 import android.util.SparseBooleanArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.reflect.Field;
 import java.util.Timer;
 import java.util.TimerTask;
 
 public final class a
 {
-  private static boolean aLU = false;
-  private static int cOH = 0;
-  private static Timer cOI = new Timer();
-  private static TimerTask cOJ;
-  private static String cOK = "";
-  private static volatile SparseBooleanArray cOL = new SparseBooleanArray(5);
-  private static int cOM = -1;
-  private static volatile boolean cON = true;
+  private static int dfg = 0;
+  private static Timer dfh = new Timer();
+  private static TimerTask dfi;
+  private static String dfj = "";
+  private static volatile SparseBooleanArray dfk = new SparseBooleanArray(5);
+  private static int dfl = -1;
+  private static volatile boolean dfm = true;
+  private static boolean isStarted = false;
   
   private static void F(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (cOL.get(paramInt1)) {
+    if (dfk.get(paramInt1)) {
       return;
     }
-    cOL.put(paramInt1, true);
-    e.ywz.idkeyStat(1470L, paramInt2, 1L, true);
+    dfk.put(paramInt1, true);
+    e.Cxv.idkeyStat(1470L, paramInt2, 1L, true);
     String str2 = AppMethodBeat.getVisibleScene();
     String str1 = str2;
     if (str2 == null) {
       str1 = "";
     }
-    ae.i("SyncBarrierWatchDogPlus", "sync barrier leak happens in scene : %s, type : %d", new Object[] { str1, Integer.valueOf(paramInt3) });
-    e.ywz.f(20739, new Object[] { str1, Integer.valueOf(paramInt3) });
+    Log.i("SyncBarrierWatchDogPlus", "sync barrier leak happens in scene : %s, type : %d", new Object[] { str1, Integer.valueOf(paramInt3) });
+    e.Cxv.a(20739, new Object[] { str1, Integer.valueOf(paramInt3) });
   }
   
-  public static void JE()
+  public static void TR()
   {
-    ae.i("SyncBarrierWatchDogPlus", "startDetect sync barrier, isStarted =%b , oncCheckFinished = %b", new Object[] { Boolean.valueOf(aLU), Boolean.valueOf(cON) });
-    if (!aLU)
+    Log.i("SyncBarrierWatchDogPlus", "startDetect sync barrier, isStarted =%b , oncCheckFinished = %b", new Object[] { Boolean.valueOf(isStarted), Boolean.valueOf(dfm) });
+    if (!isStarted)
     {
-      aLU = true;
-      cOJ = new TimerTask()
+      isStarted = true;
+      dfi = new TimerTask()
       {
         /* Error */
         public final void run()
@@ -53,17 +53,17 @@ public final class a
           //   0: invokestatic 20	com/tencent/matrix/h/a:access$000	()Z
           //   3: ifne +4 -> 7
           //   6: return
-          //   7: getstatic 26	com/tencent/matrix/a:cBz	Lcom/tencent/matrix/a;
-          //   10: getfield 30	com/tencent/matrix/a:cBB	Z
+          //   7: getstatic 26	com/tencent/matrix/a:cPA	Lcom/tencent/matrix/a;
+          //   10: getfield 30	com/tencent/matrix/a:cPB	Z
           //   13: istore_3
           //   14: iload_3
           //   15: ifne +8 -> 23
-          //   18: invokestatic 33	com/tencent/matrix/h/a:JG	()Z
+          //   18: invokestatic 33	com/tencent/matrix/h/a:TT	()Z
           //   21: pop
           //   22: return
           //   23: ldc 35
           //   25: ldc 37
-          //   27: invokestatic 43	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+          //   27: invokestatic 43	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
           //   30: invokestatic 49	android/os/Looper:getMainLooper	()Landroid/os/Looper;
           //   33: invokevirtual 53	android/os/Looper:getQueue	()Landroid/os/MessageQueue;
           //   36: astore 4
@@ -84,7 +84,7 @@ public final class a
           //   70: ifnull +152 -> 222
           //   73: aload 4
           //   75: invokevirtual 83	android/os/Message:toString	()Ljava/lang/String;
-          //   78: invokestatic 87	com/tencent/matrix/h/a:el	(Ljava/lang/String;)Ljava/lang/String;
+          //   78: invokestatic 87	com/tencent/matrix/h/a:eU	(Ljava/lang/String;)Ljava/lang/String;
           //   81: pop
           //   82: ldc 35
           //   84: ldc 89
@@ -94,7 +94,7 @@ public final class a
           //   91: iconst_0
           //   92: invokestatic 92	com/tencent/matrix/h/a:access$100	()Ljava/lang/String;
           //   95: aastore
-          //   96: invokestatic 95	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+          //   96: invokestatic 95	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
           //   99: aload 4
           //   101: invokevirtual 99	android/os/Message:getWhen	()J
           //   104: invokestatic 104	android/os/SystemClock:uptimeMillis	()J
@@ -108,17 +108,17 @@ public final class a
           //   123: aload 4
           //   125: getfield 114	android/os/Message:arg1	I
           //   128: istore_1
-          //   129: invokestatic 118	com/tencent/matrix/h/a:access$200	()I
+          //   129: invokestatic 118	com/tencent/matrix/h/a:Tp	()I
           //   132: istore_2
           //   133: iload_1
           //   134: iload_2
           //   135: if_icmpne +61 -> 196
-          //   138: invokestatic 33	com/tencent/matrix/h/a:JG	()Z
+          //   138: invokestatic 33	com/tencent/matrix/h/a:TT	()Z
           //   141: pop
           //   142: return
           //   143: astore 5
           //   145: ldc 120
-          //   147: invokestatic 87	com/tencent/matrix/h/a:el	(Ljava/lang/String;)Ljava/lang/String;
+          //   147: invokestatic 87	com/tencent/matrix/h/a:eU	(Ljava/lang/String;)Ljava/lang/String;
           //   150: pop
           //   151: ldc 35
           //   153: new 122	java/lang/StringBuilder
@@ -129,14 +129,14 @@ public final class a
           //   164: invokevirtual 130	java/lang/Exception:getMessage	()Ljava/lang/String;
           //   167: invokevirtual 134	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
           //   170: invokevirtual 135	java/lang/StringBuilder:toString	()Ljava/lang/String;
-          //   173: invokestatic 138	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   173: invokestatic 138	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
           //   176: goto -77 -> 99
           //   179: astore 4
           //   181: ldc 140
           //   183: aload 4
           //   185: invokevirtual 130	java/lang/Exception:getMessage	()Ljava/lang/String;
-          //   188: invokestatic 138	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-          //   191: invokestatic 33	com/tencent/matrix/h/a:JG	()Z
+          //   188: invokestatic 138	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+          //   191: invokestatic 33	com/tencent/matrix/h/a:TT	()Z
           //   194: pop
           //   195: return
           //   196: invokestatic 92	com/tencent/matrix/h/a:access$100	()Ljava/lang/String;
@@ -146,19 +146,19 @@ public final class a
           //   207: invokevirtual 148	java/lang/String:contains	(Ljava/lang/CharSequence;)Z
           //   210: ifeq +12 -> 222
           //   213: iload_1
-          //   214: invokestatic 152	com/tencent/matrix/h/a:he	(I)V
+          //   214: invokestatic 152	com/tencent/matrix/h/a:iy	(I)V
           //   217: iload_1
-          //   218: invokestatic 156	com/tencent/matrix/h/a:hf	(I)I
+          //   218: invokestatic 156	com/tencent/matrix/h/a:iz	(I)I
           //   221: pop
-          //   222: invokestatic 33	com/tencent/matrix/h/a:JG	()Z
+          //   222: invokestatic 33	com/tencent/matrix/h/a:TT	()Z
           //   225: pop
           //   226: return
           //   227: ldc 35
           //   229: ldc 158
-          //   231: invokestatic 43	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+          //   231: invokestatic 43	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
           //   234: goto -12 -> 222
           //   237: astore 4
-          //   239: invokestatic 33	com/tencent/matrix/h/a:JG	()Z
+          //   239: invokestatic 33	com/tencent/matrix/h/a:TT	()Z
           //   242: pop
           //   243: aload 4
           //   245: athrow
@@ -192,11 +192,11 @@ public final class a
           //   227	234	237	finally
         }
       };
-      cOI.schedule(cOJ, 4500L, 4500L);
+      dfh.schedule(dfi, 4500L, 4500L);
     }
   }
   
-  private static int JF()
+  private static int TS()
   {
     try
     {
@@ -217,7 +217,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.h.a
  * JD-Core Version:    0.7.0.1
  */

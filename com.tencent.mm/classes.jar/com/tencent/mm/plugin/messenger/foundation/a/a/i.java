@@ -3,15 +3,15 @@ package com.tencent.mm.plugin.messenger.foundation.a.a;
 import android.database.Cursor;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.sdk.e.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.storage.bv.a;
-import com.tencent.mm.storage.bv.b;
-import com.tencent.mm.storage.bv.c;
-import com.tencent.mm.storage.bv.d;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.storage.ca.a;
+import com.tencent.mm.storage.ca.b;
+import com.tencent.mm.storage.ca.c;
+import com.tencent.mm.storage.ca.d;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -19,41 +19,51 @@ import java.util.List;
 import junit.framework.Assert;
 
 public abstract interface i
-  extends g
+  extends IStorage
 {
-  public abstract Cursor A(String paramString, long paramLong1, long paramLong2);
-  
   public abstract Cursor B(String paramString, long paramLong1, long paramLong2);
   
-  public abstract int BO(String paramString);
-  
-  public abstract boolean BP(String paramString);
-  
-  public abstract int C(String paramString, long paramLong1, long paramLong2);
+  public abstract Cursor C(String paramString, long paramLong1, long paramLong2);
   
   public abstract int D(String paramString, long paramLong1, long paramLong2);
   
-  public abstract Cursor E(String paramString, long paramLong1, long paramLong2);
+  public abstract int E(String paramString, long paramLong1, long paramLong2);
   
-  public abstract int F(String paramString, long paramLong1, long paramLong2);
+  public abstract Cursor F(String paramString, long paramLong1, long paramLong2);
   
   public abstract int G(String paramString, long paramLong1, long paramLong2);
   
+  public abstract Cursor G(String paramString, int paramInt, long paramLong);
+  
+  public abstract int H(String paramString, long paramLong1, long paramLong2);
+  
   public abstract Cursor H(String paramString, int paramInt, long paramLong);
   
-  public abstract Cursor H(String paramString, long paramLong1, long paramLong2);
+  public abstract ca Hb(long paramLong);
   
-  public abstract Cursor I(String paramString, int paramInt, long paramLong);
+  public abstract int Hc(long paramLong);
   
-  public abstract List<bv> I(String paramString, long paramLong1, long paramLong2);
+  public abstract boolean Hd(long paramLong);
   
-  public abstract bv Km(int paramInt);
+  public abstract boolean He(long paramLong);
   
-  public abstract List<bv> Kn(int paramInt);
+  public abstract void Hf(long paramLong);
+  
+  public abstract Cursor I(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract List<ca> J(String paramString, long paramLong1, long paramLong2);
+  
+  public abstract int Ku(String paramString);
+  
+  public abstract boolean Kv(String paramString);
+  
+  public abstract ca Qo(int paramInt);
+  
+  public abstract List<ca> Qp(int paramInt);
   
   public abstract Cursor a(String paramString, long paramLong1, long paramLong2, boolean paramBoolean);
   
-  public abstract void a(long paramLong, bv parambv);
+  public abstract void a(long paramLong, ca paramca);
   
   public abstract void a(a parama);
   
@@ -65,23 +75,93 @@ public abstract interface i
   
   public abstract void a(com.tencent.mm.storage.e parame);
   
-  public abstract void aCq();
+  public abstract int aB(ca paramca);
+  
+  public abstract long aC(ca paramca);
+  
+  public abstract void aD(ca paramca);
+  
+  public abstract int aE(ca paramca);
+  
+  public abstract ca aEA(String paramString);
+  
+  public abstract List<ca> aEB(String paramString);
+  
+  public abstract Cursor aEC(String paramString);
+  
+  public abstract void aED(String paramString);
+  
+  public abstract int aEE(String paramString);
+  
+  public abstract int aEF(String paramString);
+  
+  public abstract Cursor aEG(String paramString);
+  
+  public abstract Cursor aEH(String paramString);
+  
+  public abstract ca.c aEI(String paramString);
+  
+  public abstract ca.d aEJ(String paramString);
+  
+  public abstract ca.a aEK(String paramString);
+  
+  public abstract ca.b aEL(String paramString);
+  
+  public abstract int aEM(String paramString);
+  
+  public abstract int aEN(String paramString);
+  
+  public abstract String aEO(String paramString);
+  
+  public abstract long aEP(String paramString);
+  
+  public abstract long aEQ(String paramString);
+  
+  public abstract long aER(String paramString);
+  
+  public abstract ca aES(String paramString);
+  
+  public abstract int aET(String paramString);
+  
+  public abstract List<ca> aEU(String paramString);
+  
+  public abstract long aEV(String paramString);
+  
+  public abstract Cursor aEW(String paramString);
+  
+  public abstract long aEX(String paramString);
+  
+  public abstract void aEs(String paramString);
+  
+  public abstract void aEt(String paramString);
+  
+  public abstract void aEu(String paramString);
+  
+  public abstract Cursor aEv(String paramString);
+  
+  public abstract ca aEw(String paramString);
+  
+  public abstract ca aEx(String paramString);
+  
+  public abstract ca aEy(String paramString);
+  
+  public abstract ca aEz(String paramString);
   
   public abstract void aI(String paramString, long paramLong);
   
-  public abstract bv aJ(String paramString, long paramLong);
+  public abstract ca aJ(String paramString, long paramLong);
   
-  public abstract bv aK(String paramString, long paramLong);
+  public abstract ca aK(String paramString, long paramLong);
   
-  public abstract bv aL(String paramString, long paramLong);
+  public abstract ca aL(String paramString, long paramLong);
   
-  public abstract bv aM(String paramString, long paramLong);
+  public abstract ca aM(String paramString, long paramLong);
   
-  public abstract bv aN(String paramString, long paramLong);
+  public abstract ca aN(String paramString, long paramLong);
   
   public abstract boolean aO(String paramString, long paramLong);
   
-  public abstract bv aP(String paramString, long paramLong);
+  public abstract ca aP(String paramString, long paramLong);
   
   public abstract Cursor aQ(String paramString, long paramLong);
   
@@ -95,97 +175,29 @@ public abstract interface i
   
   public abstract int aV(String paramString, long paramLong);
   
+  public abstract void aVO();
+  
   public abstract String aW(String paramString, long paramLong);
   
-  public abstract bv aX(String paramString, long paramLong);
+  public abstract ca aX(String paramString, long paramLong);
   
-  public abstract bv aY(String paramString, long paramLong);
+  public abstract Cursor aY(String paramString, long paramLong);
   
-  public abstract Cursor ab(String paramString1, String paramString2, int paramInt);
+  public abstract ca aZ(String paramString, long paramLong);
   
-  public abstract void ak(ArrayList<Long> paramArrayList);
+  public abstract Cursor ae(String paramString1, String paramString2, int paramInt);
   
-  public abstract List<bv> ap(String paramString, int paramInt1, int paramInt2);
+  public abstract List<ca> as(String paramString, int paramInt1, int paramInt2);
   
-  public abstract int aq(bv parambv);
+  public abstract Cursor at(String paramString, int paramInt1, int paramInt2);
   
-  public abstract Cursor aq(String paramString, int paramInt1, int paramInt2);
-  
-  public abstract void aqX(String paramString);
-  
-  public abstract void aqY(String paramString);
-  
-  public abstract void aqZ(String paramString);
-  
-  public abstract long ar(bv parambv);
-  
-  public abstract long arA(String paramString);
-  
-  public abstract Cursor arB(String paramString);
-  
-  public abstract long arC(String paramString);
-  
-  public abstract Cursor ara(String paramString);
-  
-  public abstract bv arb(String paramString);
-  
-  public abstract bv arc(String paramString);
-  
-  public abstract bv ard(String paramString);
-  
-  public abstract bv are(String paramString);
-  
-  public abstract bv arf(String paramString);
-  
-  public abstract List<bv> arg(String paramString);
-  
-  public abstract Cursor arh(String paramString);
-  
-  public abstract void ari(String paramString);
-  
-  public abstract int arj(String paramString);
-  
-  public abstract int ark(String paramString);
-  
-  public abstract Cursor arl(String paramString);
-  
-  public abstract Cursor arm(String paramString);
-  
-  public abstract bv.c arn(String paramString);
-  
-  public abstract bv.d aro(String paramString);
-  
-  public abstract bv.a arp(String paramString);
-  
-  public abstract bv.b arq(String paramString);
-  
-  public abstract int arr(String paramString);
-  
-  public abstract int ars(String paramString);
-  
-  public abstract String art(String paramString);
-  
-  public abstract long aru(String paramString);
-  
-  public abstract long arv(String paramString);
-  
-  public abstract long arw(String paramString);
-  
-  public abstract bv arx(String paramString);
-  
-  public abstract int ary(String paramString);
-  
-  public abstract List<bv> arz(String paramString);
-  
-  public abstract void as(bv parambv);
-  
-  public abstract int at(bv parambv);
+  public abstract void ay(ArrayList<Long> paramArrayList);
   
   public abstract Cursor b(String paramString, long paramLong1, long paramLong2, int paramInt);
   
-  public abstract void b(long paramLong, bv parambv);
+  public abstract void b(long paramLong, ca paramca);
   
-  public abstract long c(bv parambv, boolean paramBoolean);
+  public abstract long c(ca paramca, boolean paramBoolean);
   
   public abstract Cursor c(String paramString, long paramLong1, long paramLong2, int paramInt);
   
@@ -193,89 +205,81 @@ public abstract interface i
   
   public abstract Cursor d(String paramString, long paramLong1, long paramLong2, int paramInt);
   
-  public abstract void d(h paramh, String paramString);
+  public abstract void e(h paramh, String paramString);
   
-  public abstract void doS();
+  public abstract Cursor eA(String paramString, int paramInt);
   
-  public abstract void doT();
+  public abstract Cursor eB(String paramString, int paramInt);
   
-  public abstract void doU();
+  public abstract int eC(String paramString, int paramInt);
   
-  public abstract ArrayList<bv> doV();
+  public abstract Cursor eD(String paramString, int paramInt);
   
-  public abstract List<bv> doW();
+  public abstract Cursor eE(String paramString, int paramInt);
   
-  public abstract Cursor doX();
+  public abstract int eF(String paramString, int paramInt);
   
-  public abstract String doY();
+  public abstract Cursor eG(String paramString, int paramInt);
   
-  public abstract String doZ();
+  public abstract ca[] eH(String paramString, int paramInt);
   
-  public abstract int dpa();
+  public abstract Cursor eI(String paramString, int paramInt);
   
-  public abstract List<bv> dpb();
+  public abstract void eiH();
   
-  public abstract List<bv> eB(List<String> paramList);
+  public abstract void eiI();
   
-  public abstract List<bv> ei(String paramString, int paramInt);
+  public abstract void eiJ();
   
-  public abstract List<bv> ej(String paramString, int paramInt);
+  public abstract ArrayList<ca> eiK();
   
-  public abstract List<bv> ek(String paramString, int paramInt);
+  public abstract List<ca> eiL();
   
-  public abstract Cursor el(String paramString, int paramInt);
+  public abstract Cursor eiM();
   
-  public abstract Cursor em(String paramString, int paramInt);
+  public abstract String eiN();
   
-  public abstract Cursor en(String paramString, int paramInt);
+  public abstract String eiO();
   
-  public abstract int eo(String paramString, int paramInt);
+  public abstract int eiP();
   
-  public abstract Cursor ep(String paramString, int paramInt);
+  public abstract List<ca> eiQ();
   
-  public abstract Cursor eq(String paramString, int paramInt);
+  public abstract List<ca> ew(String paramString, int paramInt);
   
-  public abstract int er(String paramString, int paramInt);
+  public abstract List<ca> ex(String paramString, int paramInt);
   
-  public abstract Cursor es(String paramString, int paramInt);
+  public abstract List<ca> ey(String paramString, int paramInt);
   
-  public abstract bv[] et(String paramString, int paramInt);
+  public abstract Cursor ez(String paramString, int paramInt);
   
-  public abstract Cursor eu(String paramString, int paramInt);
+  public abstract List<ca> f(String paramString, long paramLong, int paramInt);
   
-  public abstract List<bv> f(String paramString, long paramLong, int paramInt);
+  public abstract List<ca> f(String paramString, long paramLong, boolean paramBoolean);
   
-  public abstract List<bv> f(String paramString, long paramLong, boolean paramBoolean);
+  public abstract List<ca> fw(List<String> paramList);
   
-  public abstract List<bv> g(String paramString, long paramLong, int paramInt);
+  public abstract List<ca> g(String paramString, long paramLong, int paramInt);
   
   public abstract h getDB();
   
   public abstract int h(String paramString, long paramLong, int paramInt);
   
-  public abstract bv hX(String paramString1, String paramString2);
-  
-  public abstract Cursor hY(String paramString1, String paramString2);
-  
-  public abstract int hZ(String paramString1, String paramString2);
-  
   public abstract long i(String paramString, long paramLong, int paramInt);
   
-  public abstract LinkedList<bv> ia(String paramString1, String paramString2);
+  public abstract ca iG(String paramString1, String paramString2);
+  
+  public abstract Cursor iH(String paramString1, String paramString2);
+  
+  public abstract int iI(String paramString1, String paramString2);
+  
+  public abstract LinkedList<ca> iJ(String paramString1, String paramString2);
   
   public abstract long j(String paramString, long paramLong, int paramInt);
   
   public abstract Cursor k(String paramString, long paramLong, int paramInt);
   
-  public abstract bv ys(long paramLong);
-  
-  public abstract int yt(long paramLong);
-  
-  public abstract boolean yu(long paramLong);
-  
-  public abstract boolean yv(long paramLong);
-  
-  public abstract void yw(long paramLong);
+  public abstract List<ca> k(String paramString, ArrayList<Long> paramArrayList);
   
   public static abstract interface a
   {
@@ -284,10 +288,10 @@ public abstract interface i
   
   public static final class b
   {
-    public long icx;
+    public long iXv;
     public String name;
-    private a[] vWe;
-    public int vWf;
+    private a[] zqj;
+    public int zqk;
     
     public b(int paramInt, String paramString, a[] paramArrayOfa)
     {
@@ -303,19 +307,19 @@ public abstract interface i
         bool1 = true;
         label41:
         Assert.assertTrue(bool1);
-        if (paramArrayOfa[0].vWh < paramArrayOfa[0].vWg) {
+        if (paramArrayOfa[0].zqm < paramArrayOfa[0].zql) {
           break label157;
         }
         bool1 = true;
         label65:
         Assert.assertTrue(bool1);
-        if (paramArrayOfa[1].vWh < paramArrayOfa[1].vWg) {
+        if (paramArrayOfa[1].zqm < paramArrayOfa[1].zql) {
           break label163;
         }
         bool1 = true;
         label89:
         Assert.assertTrue(bool1);
-        if (paramArrayOfa[1].vWg < paramArrayOfa[0].vWh) {
+        if (paramArrayOfa[1].zql < paramArrayOfa[0].zqm) {
           break label169;
         }
       }
@@ -326,9 +330,9 @@ public abstract interface i
       for (boolean bool1 = bool2;; bool1 = false)
       {
         Assert.assertTrue(bool1);
-        this.vWe = paramArrayOfa;
-        this.vWf = paramInt;
-        this.icx = paramArrayOfa[0].vWg;
+        this.zqj = paramArrayOfa;
+        this.zqk = paramInt;
+        this.iXv = paramArrayOfa[0].zql;
         AppMethodBeat.o(43076);
         return;
         bool1 = false;
@@ -346,91 +350,108 @@ public abstract interface i
     {
       AppMethodBeat.i(43079);
       a locala1 = new a((byte)0);
-      locala1.vWg = paramLong1;
-      locala1.vWh = paramLong2;
+      locala1.zql = paramLong1;
+      locala1.zqm = paramLong2;
       a locala2 = new a((byte)0);
-      locala2.vWg = paramLong3;
-      locala2.vWh = paramLong4;
+      locala2.zql = paramLong3;
+      locala2.zqm = paramLong4;
       AppMethodBeat.o(43079);
       return new a[] { locala1, locala2 };
     }
     
-    public final void Ko(int paramInt)
+    public final boolean Hg(long paramLong)
+    {
+      a[] arrayOfa = this.zqj;
+      int k = arrayOfa.length;
+      int i = 0;
+      while (i < k)
+      {
+        a locala = arrayOfa[i];
+        if ((paramLong >= locala.zql) && (paramLong <= locala.zqm)) {}
+        for (int j = 1; j != 0; j = 0) {
+          return true;
+        }
+        i += 1;
+      }
+      return false;
+    }
+    
+    public final void Qq(int paramInt)
     {
       AppMethodBeat.i(43077);
-      ae.i("MicroMsg.MsgTable", "summermsg setMsgLocalId [%d, %d]  regions[%d, %d] stack[%s]", new Object[] { Long.valueOf(this.icx), Integer.valueOf(paramInt), Long.valueOf(this.vWe[0].vWh), Long.valueOf(this.vWe[1].vWg), bu.fpN() });
-      if ((paramInt > this.vWe[0].vWh) && (paramInt < this.vWe[1].vWg))
+      Log.i("MicroMsg.MsgTable", "summermsg setMsgLocalId [%d, %d]  regions[%d, %d] stack[%s]", new Object[] { Long.valueOf(this.iXv), Integer.valueOf(paramInt), Long.valueOf(this.zqj[0].zqm), Long.valueOf(this.zqj[1].zql), Util.getStack() });
+      if ((paramInt > this.zqj[0].zqm) && (paramInt < this.zqj[1].zql))
       {
-        ae.i("MicroMsg.MsgTable", "summermsg setMsgLocalId revised msgLocalId to %d", new Object[] { Long.valueOf(this.vWe[1].vWg) });
-        this.icx = this.vWe[1].vWg;
-        com.tencent.mm.plugin.report.e.ywz.idkeyStat(111L, 169L, 1L, false);
+        Log.i("MicroMsg.MsgTable", "summermsg setMsgLocalId revised msgLocalId to %d", new Object[] { Long.valueOf(this.zqj[1].zql) });
+        this.iXv = this.zqj[1].zql;
+        com.tencent.mm.plugin.report.e.Cxv.idkeyStat(111L, 169L, 1L, false);
         AppMethodBeat.o(43077);
         return;
       }
-      this.icx = paramInt;
+      this.iXv = paramInt;
       AppMethodBeat.o(43077);
     }
     
     /* Error */
-    public final void au(bv parambv)
+    public final void aF(ca paramca)
     {
       // Byte code:
       //   0: aload_0
       //   1: monitorenter
-      //   2: ldc 112
+      //   2: ldc 114
       //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   7: aload_0
-      //   8: getfield 52	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:vWe	[Lcom/tencent/mm/plugin/messenger/foundation/a/a/i$b$a;
+      //   8: getfield 52	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:zqj	[Lcom/tencent/mm/plugin/messenger/foundation/a/a/i$b$a;
       //   11: iconst_0
       //   12: aaload
       //   13: astore_2
       //   14: aload_0
-      //   15: getfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:icx	J
+      //   15: getfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:iXv	J
       //   18: aload_2
-      //   19: getfield 47	com/tencent/mm/plugin/messenger/foundation/a/a/i$b$a:vWh	J
+      //   19: getfield 47	com/tencent/mm/plugin/messenger/foundation/a/a/i$b$a:zqm	J
       //   22: lcmp
       //   23: ifne +73 -> 96
       //   26: aload_0
       //   27: aload_0
-      //   28: getfield 52	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:vWe	[Lcom/tencent/mm/plugin/messenger/foundation/a/a/i$b$a;
+      //   28: getfield 52	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:zqj	[Lcom/tencent/mm/plugin/messenger/foundation/a/a/i$b$a;
       //   31: iconst_1
       //   32: aaload
-      //   33: getfield 50	com/tencent/mm/plugin/messenger/foundation/a/a/i$b$a:vWg	J
-      //   36: putfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:icx	J
-      //   39: getstatic 101	com/tencent/mm/plugin/report/e:ywz	Lcom/tencent/mm/plugin/report/e;
-      //   42: ldc2_w 102
-      //   45: ldc2_w 113
+      //   33: getfield 50	com/tencent/mm/plugin/messenger/foundation/a/a/i$b$a:zql	J
+      //   36: putfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:iXv	J
+      //   39: getstatic 103	com/tencent/mm/plugin/report/e:Cxv	Lcom/tencent/mm/plugin/report/e;
+      //   42: ldc2_w 104
+      //   45: ldc2_w 115
       //   48: lconst_1
       //   49: iconst_0
-      //   50: invokevirtual 109	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
-      //   53: invokestatic 120	com/tencent/mm/sdk/a/b:fnH	()Z
+      //   50: invokevirtual 111	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
+      //   53: invokestatic 122	com/tencent/mm/sdk/crash/CrashReportFactory:isBackupMerge	()Z
       //   56: ifne +24 -> 80
-      //   59: ldc 69
-      //   61: ldc 122
+      //   59: ldc 71
+      //   61: ldc 124
       //   63: iconst_1
       //   64: anewarray 4	java/lang/Object
       //   67: dup
       //   68: iconst_0
       //   69: aload_0
-      //   70: getfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:icx	J
-      //   73: invokestatic 77	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+      //   70: getfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:iXv	J
+      //   73: invokestatic 79	java/lang/Long:valueOf	(J)Ljava/lang/Long;
       //   76: aastore
-      //   77: invokestatic 93	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   77: invokestatic 95	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   80: aload_1
       //   81: aload_0
-      //   82: getfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:icx	J
-      //   85: invokevirtual 128	com/tencent/mm/storage/bv:setMsgId	(J)V
-      //   88: ldc 112
+      //   82: getfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:iXv	J
+      //   85: invokevirtual 130	com/tencent/mm/storage/ca:setMsgId	(J)V
+      //   88: ldc 114
       //   90: invokestatic 59	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   93: aload_0
       //   94: monitorexit
       //   95: return
       //   96: aload_0
       //   97: aload_0
-      //   98: getfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:icx	J
+      //   98: getfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:iXv	J
       //   101: lconst_1
       //   102: ladd
-      //   103: putfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:icx	J
+      //   103: putfield 56	com/tencent/mm/plugin/messenger/foundation/a/a/i$b:iXv	J
       //   106: goto -53 -> 53
       //   109: astore_1
       //   110: aload_0
@@ -440,7 +461,7 @@ public abstract interface i
       // Local variable table:
       //   start	length	slot	name	signature
       //   0	114	0	this	b
-      //   0	114	1	parambv	bv
+      //   0	114	1	paramca	ca
       //   13	6	2	locala	a
       // Exception table:
       //   from	to	target	type
@@ -450,76 +471,59 @@ public abstract interface i
       //   96	106	109	finally
     }
     
-    public final boolean yx(long paramLong)
-    {
-      a[] arrayOfa = this.vWe;
-      int k = arrayOfa.length;
-      int i = 0;
-      while (i < k)
-      {
-        a locala = arrayOfa[i];
-        if ((paramLong >= locala.vWg) && (paramLong <= locala.vWh)) {}
-        for (int j = 1; j != 0; j = 0) {
-          return true;
-        }
-        i += 1;
-      }
-      return false;
-    }
-    
     public static final class a
     {
-      long vWg;
-      long vWh;
+      long zql;
+      long zqm;
     }
   }
   
   public static final class c
   {
-    public ArrayList<bv> gQn;
-    public long oex;
-    public int slP;
+    public ArrayList<ca> hIs;
+    public long ppv;
+    public int tYD;
     public String talker;
-    public String vWi;
-    public int vWj;
-    public int vWk;
-    public long vWl;
+    public String zqn;
+    public int zqo;
+    public int zqp;
+    public long zqq;
     
-    public c(String paramString1, String paramString2, bv parambv)
+    public c(String paramString1, String paramString2, ca paramca)
     {
-      this(paramString1, paramString2, parambv, 0);
+      this(paramString1, paramString2, paramca, 0);
     }
     
-    public c(String paramString1, String paramString2, bv parambv, int paramInt)
+    public c(String paramString1, String paramString2, ca paramca, int paramInt)
     {
       AppMethodBeat.i(43080);
-      this.gQn = new ArrayList();
-      this.vWj = 0;
-      this.vWk = 0;
-      this.vWl = 0L;
-      this.oex = -1L;
+      this.hIs = new ArrayList();
+      this.zqo = 0;
+      this.zqp = 0;
+      this.zqq = 0L;
+      this.ppv = -1L;
       this.talker = paramString1;
-      this.vWi = paramString2;
-      this.slP = paramInt;
-      if (parambv != null) {
-        l = parambv.field_bizChatId;
+      this.zqn = paramString2;
+      this.tYD = paramInt;
+      if (paramca != null) {
+        l = paramca.field_bizChatId;
       }
-      this.oex = l;
-      if (parambv != null) {
-        this.gQn.add(parambv);
+      this.ppv = l;
+      if (paramca != null) {
+        this.hIs.add(paramca);
       }
       AppMethodBeat.o(43080);
     }
     
-    public c(String paramString1, String paramString2, bv parambv, int paramInt, byte paramByte)
+    public c(String paramString1, String paramString2, ca paramca, int paramInt, byte paramByte)
     {
-      this(paramString1, paramString2, parambv, 0);
-      this.vWk = paramInt;
+      this(paramString1, paramString2, paramca, 0);
+      this.zqp = paramInt;
     }
     
-    public static boolean av(bv parambv)
+    public static boolean aG(ca paramca)
     {
-      return (parambv != null) && (parambv.field_isSend == 0) && (parambv.field_status == 3);
+      return (paramca != null) && (paramca.field_isSend == 0) && (paramca.field_status == 3);
     }
   }
 }

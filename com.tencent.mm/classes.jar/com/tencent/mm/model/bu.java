@@ -1,63 +1,89 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.az.a;
-import com.tencent.mm.az.a.a;
-import com.tencent.mm.storage.bv;
-import java.util.LinkedList;
-import java.util.Map;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class bu
-  extends a
+  extends q
+  implements m
 {
-  public bu(Map<String, String> paramMap, bv parambv)
+  private long begin;
+  private i callback;
+  private final a iFh;
+  private final String iFi;
+  
+  public bu(a parama)
   {
-    super(paramMap, parambv);
+    this(parama, null);
   }
   
-  public static void aAt()
+  public bu(a parama, String paramString)
   {
-    AppMethodBeat.i(123974);
-    a.a.a("reportbizlocation", new a.a()
+    AppMethodBeat.i(132255);
+    Log.i("MicroMsg.NetSceneLocalProxy", "init LocalProxy task:%s [%s] ", new Object[] { paramString, Util.getStack() });
+    this.iFh = parama;
+    this.iFi = paramString;
+    AppMethodBeat.o(132255);
+  }
+  
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
+  {
+    AppMethodBeat.i(132256);
+    prepareDispatcher(paramg);
+    this.callback = parami;
+    this.begin = Util.currentTicks();
+    com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
     {
-      public final a a(Map<String, String> paramAnonymousMap, bv paramAnonymousbv)
+      public final void run()
       {
-        AppMethodBeat.i(123972);
-        paramAnonymousMap = new bu(paramAnonymousMap, paramAnonymousbv);
-        AppMethodBeat.o(123972);
-        return paramAnonymousMap;
+        AppMethodBeat.i(132253);
+        bu.this.onGYNetEnd(0, 0, 0, null, null, null);
+        AppMethodBeat.o(132253);
+      }
+      
+      public final String toString()
+      {
+        AppMethodBeat.i(132254);
+        String str = super.toString() + "|doScene";
+        AppMethodBeat.o(132254);
+        return str;
       }
     });
-    AppMethodBeat.o(123974);
+    AppMethodBeat.o(132256);
+    return 0;
   }
   
-  public final boolean aAs()
+  public final int getType()
   {
-    AppMethodBeat.i(123973);
-    if (this.values == null)
+    return 0;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(132257);
+    if (this.iFh != null)
     {
-      AppMethodBeat.o(123973);
-      return false;
+      Log.d("MicroMsg.NetSceneLocalProxy", "local proxy [%s] end, cost=%d", new Object[] { this.iFi, Long.valueOf(Util.ticksToNow(this.begin)) });
+      this.iFh.a(super.dispatcher());
     }
-    if (!this.TYPE.equals("reportbizlocation"))
-    {
-      AppMethodBeat.o(123973);
-      return false;
-    }
-    String str2 = (String)this.values.get(".sysmsg.reportbizlocation.text");
-    String str1 = (String)this.values.get(".sysmsg.reportbizlocation.link.text");
-    str2 = str2 + str1;
-    this.ikJ.add(str1);
-    this.ikK.addFirst(Integer.valueOf(str2.length() - str1.length()));
-    this.ikL.add(Integer.valueOf(str2.length()));
-    this.ikH = str2;
-    AppMethodBeat.o(123973);
-    return false;
+    this.callback.onSceneEnd(0, 0, null, this);
+    AppMethodBeat.o(132257);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(com.tencent.mm.network.g paramg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.model.bu
  * JD-Core Version:    0.7.0.1
  */

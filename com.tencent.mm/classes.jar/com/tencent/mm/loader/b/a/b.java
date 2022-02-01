@@ -3,19 +3,19 @@ package com.tencent.mm.loader.b.a;
 import android.graphics.Bitmap;
 import com.tencent.mm.loader.c.e;
 import com.tencent.mm.loader.f.g;
-import com.tencent.mm.vfs.n;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.vfs.r;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/loader/cache/disk/DefaultImageDiskCache;", "Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "", "Landroid/graphics/Bitmap;", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "clear", "", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "delete", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "exists", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "Companion", "libimageloader_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/loader/cache/disk/DefaultImageDiskCache;", "Lcom/tencent/mm/loader/cache/disk/IDiskCache;", "", "Landroid/graphics/Bitmap;", "()V", "mFileNameCreator", "Lcom/tencent/mm/loader/listener/ILoadFileNameCreator;", "clear", "", "opts", "Lcom/tencent/mm/loader/cfg/ImageLoaderOptions;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "delete", "", "url", "Lcom/tencent/mm/loader/model/data/DataItem;", "exists", "get", "Lcom/tencent/mm/loader/model/datasource/DataSource;", "onSaveCompleted", "diskResource", "Lcom/tencent/mm/loader/model/Resource;", "onSaveStarted", "httpResponse", "Lcom/tencent/mm/loader/model/Response;", "resource", "save", "source", "Companion", "libimageloader_release"})
 public final class b
   extends d<String, Bitmap>
 {
   private static final String TAG = "MicroMsg.Loader.imageloader.DefaultImageDiskCache";
-  public static final b.a hfN = new b.a((byte)0);
-  private g hfL = (g)new com.tencent.mm.loader.e.a();
+  public static final a hYI = new a((byte)0);
+  private g hYG = (g)new com.tencent.mm.loader.e.a();
   
   public final boolean a(com.tencent.mm.loader.h.a.a<String> parama, e parame, com.tencent.mm.loader.f<?, Bitmap> paramf)
   {
@@ -42,19 +42,19 @@ public final class b
     //   1: astore 8
     //   3: aload_1
     //   4: ldc 73
-    //   6: invokestatic 79	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   6: invokestatic 79	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   9: aload_2
     //   10: ldc 85
-    //   12: invokestatic 79	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   12: invokestatic 79	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   15: aload_3
     //   16: ldc 90
-    //   18: invokestatic 79	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   18: invokestatic 79	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   21: aload 5
     //   23: ldc 80
-    //   25: invokestatic 79	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   25: invokestatic 79	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   28: aload 6
     //   30: ldc 81
-    //   32: invokestatic 79	d/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   32: invokestatic 79	kotlin/g/b/p:h	(Ljava/lang/Object;Ljava/lang/String;)V
     //   35: aload_0
     //   36: aload_1
     //   37: aload_2
@@ -68,7 +68,7 @@ public final class b
     //   52: aload 6
     //   54: invokevirtual 96	com/tencent/mm/loader/b/a/b:c	(Lcom/tencent/mm/loader/h/a/a;Lcom/tencent/mm/loader/c/e;Lcom/tencent/mm/loader/f;)Ljava/lang/String;
     //   57: astore_3
-    //   58: getstatic 60	com/tencent/mm/loader/b/a/b:TAG	Ljava/lang/String;
+    //   58: getstatic 61	com/tencent/mm/loader/b/a/b:TAG	Ljava/lang/String;
     //   61: new 98	java/lang/StringBuilder
     //   64: dup
     //   65: ldc 100
@@ -80,11 +80,11 @@ public final class b
     //   79: aload_3
     //   80: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   83: invokevirtual 116	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   86: invokestatic 122	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   89: getstatic 128	com/tencent/mm/loader/b/a/c:hfO	Lcom/tencent/mm/loader/b/a/c;
+    //   86: invokestatic 122	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: getstatic 128	com/tencent/mm/loader/b/a/c:hYJ	Lcom/tencent/mm/loader/b/a/c;
     //   92: astore 9
     //   94: aload_3
-    //   95: invokestatic 132	com/tencent/mm/loader/b/a/c:yH	(Ljava/lang/String;)Ljava/io/OutputStream;
+    //   95: invokestatic 132	com/tencent/mm/loader/b/a/c:Hg	(Ljava/lang/String;)Ljava/io/OutputStream;
     //   98: astore 9
     //   100: aload 9
     //   102: ifnull +80 -> 182
@@ -95,14 +95,14 @@ public final class b
     //   112: istore 7
     //   114: aload 4
     //   116: ifnull +36 -> 152
-    //   119: getstatic 128	com/tencent/mm/loader/b/a/c:hfO	Lcom/tencent/mm/loader/b/a/c;
+    //   119: getstatic 128	com/tencent/mm/loader/b/a/c:hYJ	Lcom/tencent/mm/loader/b/a/c;
     //   122: astore 10
     //   124: aload 4
     //   126: invokevirtual 140	com/tencent/mm/loader/h/e:value	()Ljava/lang/Object;
     //   129: astore 4
     //   131: aload 4
     //   133: ldc 142
-    //   135: invokestatic 145	d/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
+    //   135: invokestatic 145	kotlin/g/b/p:g	(Ljava/lang/Object;Ljava/lang/String;)V
     //   138: aload 4
     //   140: checkcast 147	android/graphics/Bitmap
     //   143: aload 9
@@ -121,11 +121,11 @@ public final class b
     //   167: aload 6
     //   169: invokevirtual 158	com/tencent/mm/loader/b/a/b:a	(Lcom/tencent/mm/loader/h/a/a;Lcom/tencent/mm/loader/c/e;Lcom/tencent/mm/loader/f;)Z
     //   172: pop
-    //   173: getstatic 164	d/z:Nhr	Ld/z;
+    //   173: getstatic 164	kotlin/x:SXb	Lkotlin/x;
     //   176: astore_1
     //   177: aload_3
     //   178: aconst_null
-    //   179: invokestatic 169	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   179: invokestatic 169	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   182: iconst_1
     //   183: ireturn
     //   184: astore_2
@@ -134,7 +134,7 @@ public final class b
     //   187: astore_1
     //   188: aload_3
     //   189: aload_2
-    //   190: invokestatic 169	d/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
+    //   190: invokestatic 169	kotlin/f/b:a	(Ljava/io/Closeable;Ljava/lang/Throwable;)V
     //   193: aload_1
     //   194: athrow
     //   195: astore_1
@@ -151,8 +151,8 @@ public final class b
     //   0	202	5	parame	e
     //   0	202	6	paramf1	com.tencent.mm.loader.f<?, Bitmap>
     //   112	41	7	i	int
-    //   1	196	8	localObject1	java.lang.Object
-    //   92	67	9	localObject2	java.lang.Object
+    //   1	196	8	localObject1	Object
+    //   92	67	9	localObject2	Object
     //   122	1	10	localc	c
     // Exception table:
     //   from	to	target	type
@@ -172,12 +172,12 @@ public final class b
     p.h(paramf, "reaper");
     try
     {
-      if (parama.arS() == com.tencent.mm.loader.h.a.b.hjk) {
-        return com.tencent.mm.loader.h.b.a.yM(parama.arT());
+      if (parama.aKr() == com.tencent.mm.loader.h.a.b.ich) {
+        return com.tencent.mm.loader.h.b.a.Hl(parama.aKs());
       }
-      if (parama.arS() == com.tencent.mm.loader.h.a.b.hjl)
+      if (parama.aKr() == com.tencent.mm.loader.h.a.b.ici)
       {
-        com.tencent.mm.loader.h.b.a locala = com.tencent.mm.loader.h.b.a.j(parama.arT(), com.tencent.mm.vending.j.b.el(parama.arT()));
+        com.tencent.mm.loader.h.b.a locala = com.tencent.mm.loader.h.b.a.j(parama.aKs(), com.tencent.mm.vending.j.b.ep(parama.aKs()));
         return locala;
       }
     }
@@ -200,7 +200,7 @@ public final class b
       {
         return null;
       }
-      parama = com.tencent.mm.loader.h.b.a.a((InputStream)new n(parama), (InputStream)new n(parama));
+      parama = com.tencent.mm.loader.h.b.a.a((InputStream)new r(parama), (InputStream)new r(parama));
       return parama;
       label127:
       for (int i = 1; i != 0; i = 0) {
@@ -208,10 +208,13 @@ public final class b
       }
     }
   }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/loader/cache/disk/DefaultImageDiskCache$Companion;", "", "()V", "TAG", "", "libimageloader_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.b.a.b
  * JD-Core Version:    0.7.0.1
  */

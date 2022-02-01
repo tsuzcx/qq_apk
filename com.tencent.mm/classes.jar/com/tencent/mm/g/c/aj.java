@@ -2,64 +2,53 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class aj
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eFM = "userName".hashCode();
-  private static final int eLA = "qyUin".hashCode();
-  private static final int eLB = "userUin".hashCode();
-  private static final int eLC = "userFlag".hashCode();
-  private static final int eLD = "wwExposeTimes".hashCode();
-  private static final int eLE = "wwMaxExposeTimes".hashCode();
-  private static final int eLF = "wwCorpId".hashCode();
-  private static final int eLG = "wwUserVid".hashCode();
-  private static final int eLH = "userType".hashCode();
-  private static final int eLI = "chatOpen".hashCode();
-  private static final int eLJ = "wwUnreadCnt".hashCode();
-  private static final int eLK = "show_confirm".hashCode();
-  private static final int eLL = "use_preset_banner_tips".hashCode();
-  private static final int eLM = "hide_create_chat".hashCode();
-  private static final int eLN = "hide_mod_chat_member".hashCode();
-  private static final int eLO = "hide_colleage_invite".hashCode();
-  private static final int eLP = "raw_attrs".hashCode();
+  private static final int fnU;
+  private static final int foB;
+  private static final int foC = "bitFlag".hashCode();
+  private static final int foG = "addMemberUrl".hashCode();
+  private static final int foJ = "userId".hashCode();
+  private static final int foN;
+  private static final int foO;
+  private static final int foP;
+  private static final int fox;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eFp = true;
-  private boolean eLk = true;
-  private boolean eLl = true;
-  private boolean eLm = true;
-  private boolean eLn = true;
-  private boolean eLo = true;
-  private boolean eLp = true;
-  private boolean eLq = true;
-  private boolean eLr = true;
-  private boolean eLs = true;
-  private boolean eLt = true;
-  private boolean eLu = true;
-  private boolean eLv = true;
-  private boolean eLw = true;
-  private boolean eLx = true;
-  private boolean eLy = true;
-  private boolean eLz = true;
-  public boolean field_chatOpen;
-  public boolean field_hide_colleage_invite;
-  public boolean field_hide_create_chat;
-  public boolean field_hide_mod_chat_member;
-  public int field_qyUin;
-  public byte[] field_raw_attrs;
-  public boolean field_show_confirm;
-  public boolean field_use_preset_banner_tips;
-  public int field_userFlag;
+  private static final int userName_HASHCODE = "userName".hashCode();
+  private boolean __hadSetuserName = true;
+  public int field_UserVersion;
+  public String field_addMemberUrl;
+  public int field_bitFlag;
+  public String field_brandUserName;
+  public String field_headImageUrl;
+  public boolean field_needToUpdate;
+  public String field_profileUrl;
+  public String field_userId;
   public String field_userName;
-  public int field_userType;
-  public int field_userUin;
-  public long field_wwCorpId;
-  public int field_wwExposeTimes;
-  public int field_wwMaxExposeTimes;
-  public int field_wwUnreadCnt;
-  public long field_wwUserVid;
+  public String field_userNamePY;
+  private boolean fnF = true;
+  private boolean foI = true;
+  private boolean foK = true;
+  private boolean foL = true;
+  private boolean foM = true;
+  private boolean fok = true;
+  private boolean foo = true;
+  private boolean fop = true;
+  private boolean fot = true;
+  
+  static
+  {
+    foN = "userNamePY".hashCode();
+    fnU = "brandUserName".hashCode();
+    foO = "UserVersion".hashCode();
+    foB = "needToUpdate".hashCode();
+    fox = "headImageUrl".hashCode();
+    foP = "profileUrl".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -74,11 +63,11 @@ public abstract class aj
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eFM != k) {
+      if (foJ != k) {
         break label65;
       }
-      this.field_userName = paramCursor.getString(i);
-      this.eFp = true;
+      this.field_userId = paramCursor.getString(i);
+      this.foI = true;
     }
     for (;;)
     {
@@ -86,106 +75,43 @@ public abstract class aj
       break label20;
       break;
       label65:
-      if (eLA == k)
+      if (userName_HASHCODE == k)
       {
-        this.field_qyUin = paramCursor.getInt(i);
+        this.field_userName = paramCursor.getString(i);
       }
-      else if (eLB == k)
+      else if (foN == k)
       {
-        this.field_userUin = paramCursor.getInt(i);
+        this.field_userNamePY = paramCursor.getString(i);
       }
-      else if (eLC == k)
+      else if (fnU == k)
       {
-        this.field_userFlag = paramCursor.getInt(i);
+        this.field_brandUserName = paramCursor.getString(i);
       }
-      else if (eLD == k)
+      else if (foO == k)
       {
-        this.field_wwExposeTimes = paramCursor.getInt(i);
-      }
-      else if (eLE == k)
-      {
-        this.field_wwMaxExposeTimes = paramCursor.getInt(i);
-      }
-      else if (eLF == k)
-      {
-        this.field_wwCorpId = paramCursor.getLong(i);
-      }
-      else if (eLG == k)
-      {
-        this.field_wwUserVid = paramCursor.getLong(i);
-      }
-      else if (eLH == k)
-      {
-        this.field_userType = paramCursor.getInt(i);
+        this.field_UserVersion = paramCursor.getInt(i);
       }
       else
       {
-        boolean bool;
-        if (eLI == k)
+        if (foB == k)
         {
           if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
+          for (boolean bool = true;; bool = false)
           {
-            this.field_chatOpen = bool;
+            this.field_needToUpdate = bool;
             break;
           }
         }
-        if (eLJ == k)
-        {
-          this.field_wwUnreadCnt = paramCursor.getInt(i);
-        }
-        else
-        {
-          if (eLK == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_show_confirm = bool;
-              break;
-            }
-          }
-          if (eLL == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_use_preset_banner_tips = bool;
-              break;
-            }
-          }
-          if (eLM == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_hide_create_chat = bool;
-              break;
-            }
-          }
-          if (eLN == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_hide_mod_chat_member = bool;
-              break;
-            }
-          }
-          if (eLO == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_hide_colleage_invite = bool;
-              break;
-            }
-          }
-          if (eLP == k) {
-            this.field_raw_attrs = paramCursor.getBlob(i);
-          } else if (rowid_HASHCODE == k) {
-            this.systemRowid = paramCursor.getLong(i);
-          }
+        if (fox == k) {
+          this.field_headImageUrl = paramCursor.getString(i);
+        } else if (foP == k) {
+          this.field_profileUrl = paramCursor.getString(i);
+        } else if (foC == k) {
+          this.field_bitFlag = paramCursor.getInt(i);
+        } else if (foG == k) {
+          this.field_addMemberUrl = paramCursor.getString(i);
+        } else if (rowid_HASHCODE == k) {
+          this.systemRowid = paramCursor.getLong(i);
         }
       }
     }
@@ -194,56 +120,44 @@ public abstract class aj
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eFp) {
+    if (this.foI) {
+      localContentValues.put("userId", this.field_userId);
+    }
+    if (this.field_userName == null) {
+      this.field_userName = "";
+    }
+    if (this.__hadSetuserName) {
       localContentValues.put("userName", this.field_userName);
     }
-    if (this.eLk) {
-      localContentValues.put("qyUin", Integer.valueOf(this.field_qyUin));
+    if (this.field_userNamePY == null) {
+      this.field_userNamePY = "";
     }
-    if (this.eLl) {
-      localContentValues.put("userUin", Integer.valueOf(this.field_userUin));
+    if (this.foK) {
+      localContentValues.put("userNamePY", this.field_userNamePY);
     }
-    if (this.eLm) {
-      localContentValues.put("userFlag", Integer.valueOf(this.field_userFlag));
+    if (this.field_brandUserName == null) {
+      this.field_brandUserName = "";
     }
-    if (this.eLn) {
-      localContentValues.put("wwExposeTimes", Integer.valueOf(this.field_wwExposeTimes));
+    if (this.fnF) {
+      localContentValues.put("brandUserName", this.field_brandUserName);
     }
-    if (this.eLo) {
-      localContentValues.put("wwMaxExposeTimes", Integer.valueOf(this.field_wwMaxExposeTimes));
+    if (this.foL) {
+      localContentValues.put("UserVersion", Integer.valueOf(this.field_UserVersion));
     }
-    if (this.eLp) {
-      localContentValues.put("wwCorpId", Long.valueOf(this.field_wwCorpId));
+    if (this.foo) {
+      localContentValues.put("needToUpdate", Boolean.valueOf(this.field_needToUpdate));
     }
-    if (this.eLq) {
-      localContentValues.put("wwUserVid", Long.valueOf(this.field_wwUserVid));
+    if (this.fok) {
+      localContentValues.put("headImageUrl", this.field_headImageUrl);
     }
-    if (this.eLr) {
-      localContentValues.put("userType", Integer.valueOf(this.field_userType));
+    if (this.foM) {
+      localContentValues.put("profileUrl", this.field_profileUrl);
     }
-    if (this.eLs) {
-      localContentValues.put("chatOpen", Boolean.valueOf(this.field_chatOpen));
+    if (this.fop) {
+      localContentValues.put("bitFlag", Integer.valueOf(this.field_bitFlag));
     }
-    if (this.eLt) {
-      localContentValues.put("wwUnreadCnt", Integer.valueOf(this.field_wwUnreadCnt));
-    }
-    if (this.eLu) {
-      localContentValues.put("show_confirm", Boolean.valueOf(this.field_show_confirm));
-    }
-    if (this.eLv) {
-      localContentValues.put("use_preset_banner_tips", Boolean.valueOf(this.field_use_preset_banner_tips));
-    }
-    if (this.eLw) {
-      localContentValues.put("hide_create_chat", Boolean.valueOf(this.field_hide_create_chat));
-    }
-    if (this.eLx) {
-      localContentValues.put("hide_mod_chat_member", Boolean.valueOf(this.field_hide_mod_chat_member));
-    }
-    if (this.eLy) {
-      localContentValues.put("hide_colleage_invite", Boolean.valueOf(this.field_hide_colleage_invite));
-    }
-    if (this.eLz) {
-      localContentValues.put("raw_attrs", this.field_raw_attrs);
+    if (this.fot) {
+      localContentValues.put("addMemberUrl", this.field_addMemberUrl);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));

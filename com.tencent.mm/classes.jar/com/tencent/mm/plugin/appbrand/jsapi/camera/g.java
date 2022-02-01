@@ -4,31 +4,31 @@ import android.graphics.SurfaceTexture;
 import android.util.Size;
 import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 
 public abstract interface g
   extends f
 {
-  public static final g kLr = new g()
+  public static final g lQd = new g()
   {
-    public final void ap(String paramAnonymousString, boolean paramAnonymousBoolean) {}
-    
-    public final float az(float paramAnonymousFloat)
+    public final float aJ(float paramAnonymousFloat)
     {
       return 0.0F;
     }
     
-    public final void bko() {}
+    public final void ar(String paramAnonymousString, boolean paramAnonymousBoolean) {}
     
-    public final void bkq() {}
+    public final void bFK() {}
     
-    public final void bkr() {}
+    public final void bFM() {}
     
-    public final void bkx() {}
+    public final void bFN() {}
     
-    public final void bky() {}
+    public final void bFT() {}
     
-    public final boolean dO(int paramAnonymousInt1, int paramAnonymousInt2)
+    public final void bFU() {}
+    
+    public final boolean dZ(int paramAnonymousInt1, int paramAnonymousInt2)
     {
       return false;
     }
@@ -45,9 +45,9 @@ public abstract interface g
     
     public final void initView() {}
     
-    public final void l(MotionEvent paramAnonymousMotionEvent) {}
+    public final void o(MotionEvent paramAnonymousMotionEvent) {}
     
-    public final void o(com.tencent.mm.plugin.appbrand.jsapi.c paramAnonymousc) {}
+    public final void o(com.tencent.mm.plugin.appbrand.jsapi.f paramAnonymousf) {}
     
     public final void onBackground() {}
     
@@ -79,7 +79,9 @@ public abstract interface g
     
     public final void setOutPutCallBack(b paramAnonymousb) {}
     
-    public final void setPage(e paramAnonymouse) {}
+    public final void setPage(h paramAnonymoush) {}
+    
+    public final void setPageOrientation(boolean paramAnonymousBoolean) {}
     
     public final void setPreviewCenterCrop(boolean paramAnonymousBoolean) {}
     
@@ -92,13 +94,13 @@ public abstract interface g
     public final void x(int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3, int paramAnonymousInt4) {}
   };
   
-  public abstract void l(MotionEvent paramMotionEvent);
+  public abstract void o(MotionEvent paramMotionEvent);
   
   public abstract void setCustomSurfaceTexture(SurfaceTexture paramSurfaceTexture);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.camera.g
  * JD-Core Version:    0.7.0.1
  */

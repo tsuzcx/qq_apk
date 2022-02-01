@@ -1,98 +1,39 @@
 package com.tencent.mm.plugin.appbrand.jsapi.ui;
 
-import android.app.Activity;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import org.json.JSONObject;
+import com.tencent.mm.plugin.appbrand.jsapi.p.k;
+import com.tencent.mm.plugin.appbrand.page.a.h;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/JsApiShowStatusBar;", "Lcom/tencent/mm/plugin/appbrand/jsapi/page/JsApiPageExtensionBased;", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "Lcom/tencent/mm/plugin/appbrand/page/extensions/AppBrandPageViewStatusBarExtension;", "()V", "invokeByExt", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "ext", "Companion", "luggage-wxa-app-jsapi_release"})
 public final class d
-  extends com.tencent.mm.plugin.appbrand.jsapi.a
+  extends k<com.tencent.mm.plugin.appbrand.d, h>
 {
-  private static final int CTRL_INDEX = 580;
-  private static final String NAME = "hideVirtualBottomNavigationBar";
+  private static final int CTRL_INDEX = 470;
+  private static final String NAME = "showStatusBar";
+  @Deprecated
+  public static final a muZ;
   
-  private void D(final c paramc)
+  static
   {
-    AppMethodBeat.i(138278);
-    paramc = com.tencent.mm.sdk.f.a.jw(paramc.getContext());
-    if (paramc == null)
-    {
-      ae.i("JsApiHideVirtualBottomNavigationBar", "null == activity");
-      AppMethodBeat.o(138278);
-      return;
-    }
-    paramc = paramc.getWindow();
-    if (paramc == null)
-    {
-      ae.i("JsApiHideVirtualBottomNavigationBar", "null == window");
-      AppMethodBeat.o(138278);
-      return;
-    }
-    int j = paramc.getDecorView().getSystemUiVisibility();
-    final int i = j;
-    if (Build.VERSION.SDK_INT >= 20) {
-      i = j | 0x200 | 0x2;
-    }
-    j = i;
-    if (Build.VERSION.SDK_INT >= 19) {
-      j = i | 0x1000;
-    }
-    i = j | 0x100;
-    paramc.getDecorView().setSystemUiVisibility(i);
-    paramc.getDecorView().setOnSystemUiVisibilityChangeListener(new View.OnSystemUiVisibilityChangeListener()
-    {
-      public final void onSystemUiVisibilityChange(int paramAnonymousInt)
-      {
-        AppMethodBeat.i(138275);
-        if ((paramAnonymousInt & 0x4) == 0) {
-          paramc.getDecorView().setSystemUiVisibility(i);
-        }
-        AppMethodBeat.o(138275);
-      }
-    });
-    AppMethodBeat.o(138278);
+    AppMethodBeat.i(138294);
+    muZ = new a((byte)0);
+    NAME = "showStatusBar";
+    CTRL_INDEX = 470;
+    AppMethodBeat.o(138294);
   }
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public d()
   {
-    AppMethodBeat.i(138276);
-    d(paramc, paramInt);
-    AppMethodBeat.o(138276);
+    super(h.class);
   }
   
-  final void d(final c paramc, final int paramInt)
-  {
-    AppMethodBeat.i(138277);
-    if (!ar.isMainThread())
-    {
-      ar.f(new Runnable()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(138274);
-          d.this.d(paramc, paramInt);
-          AppMethodBeat.o(138274);
-        }
-      });
-      AppMethodBeat.o(138277);
-      return;
-    }
-    ae.i("JsApiHideVirtualBottomNavigationBar", "hide");
-    D(paramc);
-    paramc.h(paramInt, e("ok", null));
-    AppMethodBeat.o(138277);
-  }
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/ui/JsApiShowStatusBar$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "luggage-wxa-app-jsapi_release"})
+  static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.ui.d
  * JD-Core Version:    0.7.0.1
  */

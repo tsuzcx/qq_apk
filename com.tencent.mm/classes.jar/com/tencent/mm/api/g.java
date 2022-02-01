@@ -1,25 +1,18 @@
 package com.tencent.mm.api;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.WeChatAuthorities;
 
-public enum g
+public final class g
 {
+  public static final String AUTHORITY;
+  
   static
   {
-    AppMethodBeat.i(149427);
-    cSm = new g("DEFAULT", 0);
-    cSn = new g("DOODLE", 1);
-    cSo = new g("TEXT", 2);
-    cSp = new g("EMOJI", 3);
-    cSq = new g("MOSAIC", 4);
-    cSr = new g("CROP_PHOTO", 5);
-    cSs = new g("CROP_VIDEO", 6);
-    cSt = new g("FILTER", 7);
-    cSu = new g[] { cSm, cSn, cSo, cSp, cSq, cSr, cSs, cSt };
-    AppMethodBeat.o(149427);
+    AppMethodBeat.i(219123);
+    AUTHORITY = WeChatAuthorities.AUTHORITIES_STORAGE_PROVIDER_EMOTION();
+    AppMethodBeat.o(219123);
   }
-  
-  private g() {}
 }
 
 

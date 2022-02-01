@@ -3,46 +3,54 @@ package com.tencent.mm.plugin.gamelife.h;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.game.d.du;
-import com.tencent.mm.plugin.game.d.h;
-import com.tencent.mm.plugin.game.d.k;
-import com.tencent.mm.plugin.game.d.u;
+import com.tencent.mm.plugin.game.protobuf.du;
+import com.tencent.mm.plugin.game.protobuf.h;
+import com.tencent.mm.plugin.game.protobuf.k;
+import com.tencent.mm.plugin.game.protobuf.u;
+import com.tencent.mm.plugin.game.protobuf.z;
 import com.tencent.mm.plugin.gamelife.a.d;
+import com.tencent.mm.plugin.gamelife.a.e;
 import com.tencent.mm.plugin.gamelife.a.f;
 import com.tencent.mm.plugin.gamelife.b.c;
-import com.tencent.mm.sdk.platformtools.ad;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.ApplicationGlobal;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
 import java.util.Collection;
 import java.util.Iterator;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/panel/GameLifePanelControlService;", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifePanelControlService;", "()V", "shouldShowAttachButton", "", "shouldShowCamera", "shouldShowSendPic", "wordForCameraIfDisabled", "", "sessionId", "wordForDynamicPanelIfDisabled", "panelType", "", "wordForSendPicIfDisabled", "wordForStaticPanelIfDisabled", "plugin-gamelife_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/panel/GameLifePanelControlService;", "Lcom/tencent/mm/plugin/gamelife/api/IGameLifePanelControlService;", "()V", "enableAttachButton", "", "enableCamera", "enableEmoji", "enablePic", "setButtonConfig", "", "shouldShowAttachButton", "shouldShowCamera", "shouldShowEmoji", "shouldShowSendPic", "wordForCameraIfDisabled", "", "sessionId", "wordForDynamicPanelIfDisabled", "panelType", "", "wordForSendPicIfDisabled", "wordForStaticPanelIfDisabled", "plugin-gamelife_release"})
 public final class a
   implements d
 {
-  private static String dW(String paramString, int paramInt)
+  private boolean ycn;
+  private boolean yco;
+  private boolean ycp;
+  private boolean ycq;
+  
+  private static String el(String paramString, int paramInt)
   {
-    AppMethodBeat.i(212171);
+    AppMethodBeat.i(241412);
     if (paramString == null)
     {
-      AppMethodBeat.o(212171);
+      AppMethodBeat.o(241412);
       return null;
     }
-    paramString = ((f)g.ab(f.class)).anD(paramString);
+    paramString = ((f)g.af(f.class)).aAW(paramString);
     if (paramString != null)
     {
-      paramString = paramString.ddw();
+      paramString = paramString.dXh();
       if (paramString != null)
       {
-        if ((paramString.uIN & 1 << paramInt - 1) == 0L)
+        if ((paramString.ybb & 1 << paramInt - 1) == 0L)
         {
-          AppMethodBeat.o(212171);
+          AppMethodBeat.o(241412);
           return null;
         }
-        paramString = com.tencent.mm.plugin.game.commlib.a.cZz();
+        paramString = com.tencent.mm.plugin.game.commlib.a.dSZ();
         if (paramString != null)
         {
-          paramString = paramString.uqR;
+          paramString = paramString.xJj;
           if (paramString != null)
           {
             Iterator localIterator = ((Iterable)paramString).iterator();
@@ -50,7 +58,7 @@ public final class a
             if (localIterator.hasNext())
             {
               paramString = localIterator.next();
-              if (((du)paramString).uqG == paramInt)
+              if (((du)paramString).xIY == paramInt)
               {
                 i = 1;
                 label125:
@@ -62,7 +70,7 @@ public final class a
                 if (paramString == null) {
                   break label225;
                 }
-                paramString = paramString.uqM;
+                paramString = paramString.xJe;
                 if (paramString == null) {
                   break label225;
                 }
@@ -73,7 +81,7 @@ public final class a
                     break;
                   }
                   paramString = localIterator.next();
-                } while (!p.i(((u)paramString).qkN, ad.fom()));
+                } while (!p.j(((u)paramString).rBI, LocaleUtil.getApplicationLanguage()));
               }
             }
             for (;;)
@@ -82,8 +90,8 @@ public final class a
               if (paramString == null) {
                 break label225;
               }
-              paramString = paramString.urq;
-              AppMethodBeat.o(212171);
+              paramString = paramString.xJH;
+              AppMethodBeat.o(241412);
               return paramString;
               i = 0;
               break label125;
@@ -96,54 +104,183 @@ public final class a
           }
         }
         label225:
-        paramString = com.tencent.mm.cb.a.az((Context)com.tencent.mm.sdk.platformtools.e.fnL(), 2131767102);
-        AppMethodBeat.o(212171);
+        paramString = com.tencent.mm.cb.a.aI((Context)ApplicationGlobal.context(), 2131761388);
+        AppMethodBeat.o(241412);
         return paramString;
       }
     }
-    AppMethodBeat.o(212171);
+    AppMethodBeat.o(241412);
     return null;
   }
   
-  public final String anB(String paramString)
+  public final String aAU(String paramString)
   {
-    AppMethodBeat.i(212168);
-    paramString = dW(paramString, 1);
-    AppMethodBeat.o(212168);
+    AppMethodBeat.i(241409);
+    paramString = el(paramString, 1);
+    AppMethodBeat.o(241409);
     return paramString;
   }
   
-  public final String anC(String paramString)
+  public final String aAV(String paramString)
   {
-    AppMethodBeat.i(212169);
-    paramString = dW(paramString, 2);
-    AppMethodBeat.o(212169);
+    AppMethodBeat.i(241410);
+    paramString = el(paramString, 2);
+    AppMethodBeat.o(241410);
     return paramString;
   }
   
-  public final String dV(String paramString, int paramInt)
+  public final void dXc()
   {
-    AppMethodBeat.i(212170);
+    AppMethodBeat.i(241408);
+    Object localObject2 = com.tencent.mm.plugin.game.commlib.a.dSZ();
+    Object localObject1;
+    int i;
+    if (localObject2 != null)
+    {
+      localObject1 = (Collection)((k)localObject2).xJj;
+      if ((localObject1 != null) && (!((Collection)localObject1).isEmpty())) {
+        break label243;
+      }
+      i = 1;
+      if (i != 0)
+      {
+        localObject1 = (Collection)((k)localObject2).xJi;
+        if ((localObject1 != null) && (!((Collection)localObject1).isEmpty())) {
+          break label248;
+        }
+        i = 1;
+        label63:
+        if (i != 0) {}
+      }
+      else
+      {
+        this.ycq = true;
+      }
+      localObject1 = ((k)localObject2).xJj;
+      Object localObject3;
+      if (localObject1 != null)
+      {
+        localObject3 = ((Iterable)localObject1).iterator();
+        label92:
+        if (!((Iterator)localObject3).hasNext()) {
+          break label258;
+        }
+        localObject1 = ((Iterator)localObject3).next();
+        du localdu = (du)localObject1;
+        if ((localdu == null) || (localdu.xIY != 2)) {
+          break label253;
+        }
+        i = 1;
+        label132:
+        if (i == 0) {
+          break label256;
+        }
+        label136:
+        if ((du)localObject1 != null) {
+          this.ycn = true;
+        }
+      }
+      localObject1 = ((k)localObject2).xJj;
+      if (localObject1 != null)
+      {
+        localObject2 = ((Iterable)localObject1).iterator();
+        label167:
+        if (!((Iterator)localObject2).hasNext()) {
+          break label268;
+        }
+        localObject1 = ((Iterator)localObject2).next();
+        localObject3 = (du)localObject1;
+        if ((localObject3 == null) || (((du)localObject3).xIY != 1)) {
+          break label263;
+        }
+        i = 1;
+        label205:
+        if (i == 0) {
+          break label266;
+        }
+      }
+    }
+    for (;;)
+    {
+      if ((du)localObject1 != null) {
+        this.yco = true;
+      }
+      localObject1 = com.tencent.mm.plugin.game.commlib.a.dTa();
+      if (localObject1 == null) {
+        break label273;
+      }
+      this.ycp = ((z)localObject1).xJV;
+      AppMethodBeat.o(241408);
+      return;
+      label243:
+      i = 0;
+      break;
+      label248:
+      i = 0;
+      break label63;
+      label253:
+      i = 0;
+      break label132;
+      label256:
+      break label92;
+      label258:
+      localObject1 = null;
+      break label136;
+      label263:
+      i = 0;
+      break label205;
+      label266:
+      break label167;
+      label268:
+      localObject1 = null;
+    }
+    label273:
+    AppMethodBeat.o(241408);
+  }
+  
+  public final boolean dXd()
+  {
+    return this.ycq;
+  }
+  
+  public final boolean dXe()
+  {
+    return this.yco;
+  }
+  
+  public final boolean dXf()
+  {
+    return this.ycn;
+  }
+  
+  public final boolean dXg()
+  {
+    return this.ycp;
+  }
+  
+  public final String ek(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(241411);
     if (paramString == null)
     {
-      AppMethodBeat.o(212170);
+      AppMethodBeat.o(241411);
       return null;
     }
-    paramString = ((f)g.ab(f.class)).anD(paramString);
+    paramString = ((f)g.af(f.class)).aAW(paramString);
     if (paramString != null)
     {
-      paramString = paramString.ddw();
+      paramString = paramString.dXh();
       if (paramString != null)
       {
-        if ((paramString.uIO & 1 << paramInt - 1) == 0L)
+        if ((paramString.ybc & 1 << paramInt - 1) == 0L)
         {
-          AppMethodBeat.o(212170);
+          AppMethodBeat.o(241411);
           return null;
         }
-        paramString = com.tencent.mm.plugin.game.commlib.a.cZz();
+        paramString = com.tencent.mm.plugin.game.commlib.a.dSZ();
         if (paramString != null)
         {
-          paramString = paramString.uqQ;
+          paramString = paramString.xJi;
           if (paramString != null)
           {
             Iterator localIterator = ((Iterable)paramString).iterator();
@@ -151,7 +288,7 @@ public final class a
             if (localIterator.hasNext())
             {
               paramString = localIterator.next();
-              if (((h)paramString).uqG == paramInt)
+              if (((h)paramString).xIY == paramInt)
               {
                 i = 1;
                 label128:
@@ -163,7 +300,7 @@ public final class a
                 if (paramString == null) {
                   break label231;
                 }
-                paramString = paramString.uqM;
+                paramString = paramString.xJe;
                 if (paramString == null) {
                   break label231;
                 }
@@ -174,7 +311,7 @@ public final class a
                     break;
                   }
                   paramString = localIterator.next();
-                } while (!p.i(((u)paramString).qkN, ad.fom()));
+                } while (!p.j(((u)paramString).rBI, LocaleUtil.getApplicationLanguage()));
               }
             }
             for (;;)
@@ -183,8 +320,8 @@ public final class a
               if (paramString == null) {
                 break label231;
               }
-              paramString = paramString.urq;
-              AppMethodBeat.o(212170);
+              paramString = paramString.xJH;
+              AppMethodBeat.o(241411);
               return paramString;
               i = 0;
               break label128;
@@ -197,136 +334,13 @@ public final class a
           }
         }
         label231:
-        paramString = com.tencent.mm.cb.a.az((Context)com.tencent.mm.sdk.platformtools.e.fnL(), 2131767102);
-        AppMethodBeat.o(212170);
+        paramString = com.tencent.mm.cb.a.aI((Context)ApplicationGlobal.context(), 2131761388);
+        AppMethodBeat.o(241411);
         return paramString;
       }
     }
-    AppMethodBeat.o(212170);
+    AppMethodBeat.o(241411);
     return null;
-  }
-  
-  public final boolean ddt()
-  {
-    AppMethodBeat.i(212165);
-    Object localObject = com.tencent.mm.plugin.game.commlib.a.cZz();
-    if (localObject != null)
-    {
-      Collection localCollection = (Collection)((k)localObject).uqR;
-      if ((localCollection == null) || (localCollection.isEmpty()))
-      {
-        i = 1;
-        if (i != 0)
-        {
-          localObject = (Collection)((k)localObject).uqQ;
-          if ((localObject != null) && (!((Collection)localObject).isEmpty())) {
-            break label79;
-          }
-        }
-      }
-      label79:
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          break label84;
-        }
-        AppMethodBeat.o(212165);
-        return true;
-        i = 0;
-        break;
-      }
-    }
-    label84:
-    AppMethodBeat.o(212165);
-    return false;
-  }
-  
-  public final boolean ddu()
-  {
-    AppMethodBeat.i(212166);
-    Object localObject = com.tencent.mm.plugin.game.commlib.a.cZz();
-    if (localObject != null)
-    {
-      localObject = ((k)localObject).uqR;
-      if (localObject != null)
-      {
-        Iterator localIterator = ((Iterable)localObject).iterator();
-        int i;
-        if (localIterator.hasNext())
-        {
-          localObject = localIterator.next();
-          du localdu = (du)localObject;
-          if ((localdu != null) && (localdu.uqG == 1))
-          {
-            i = 1;
-            label70:
-            if (i == 0) {
-              break label91;
-            }
-          }
-        }
-        for (;;)
-        {
-          if ((du)localObject == null) {
-            break label98;
-          }
-          AppMethodBeat.o(212166);
-          return true;
-          i = 0;
-          break label70;
-          label91:
-          break;
-          localObject = null;
-        }
-      }
-    }
-    label98:
-    AppMethodBeat.o(212166);
-    return false;
-  }
-  
-  public final boolean ddv()
-  {
-    AppMethodBeat.i(212167);
-    Object localObject = com.tencent.mm.plugin.game.commlib.a.cZz();
-    if (localObject != null)
-    {
-      localObject = ((k)localObject).uqR;
-      if (localObject != null)
-      {
-        Iterator localIterator = ((Iterable)localObject).iterator();
-        int i;
-        if (localIterator.hasNext())
-        {
-          localObject = localIterator.next();
-          du localdu = (du)localObject;
-          if ((localdu != null) && (localdu.uqG == 2))
-          {
-            i = 1;
-            label70:
-            if (i == 0) {
-              break label91;
-            }
-          }
-        }
-        for (;;)
-        {
-          if ((du)localObject == null) {
-            break label98;
-          }
-          AppMethodBeat.o(212167);
-          return true;
-          i = 0;
-          break label70;
-          label91:
-          break;
-          localObject = null;
-        }
-      }
-    }
-    label98:
-    AppMethodBeat.o(212167);
-    return false;
   }
 }
 

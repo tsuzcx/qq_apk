@@ -1,22 +1,28 @@
 package kotlinx.coroutines.internal;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={"kotlinx/coroutines/internal/SystemPropsKt__SystemPropsKt", "kotlinx/coroutines/internal/SystemPropsKt__SystemProps_commonKt"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/internal/Symbol;", "", "symbol", "", "(Ljava/lang/String;)V", "getSymbol", "()Ljava/lang/String;", "toString", "unbox", "T", "value", "(Ljava/lang/Object;)Ljava/lang/Object;", "kotlinx-coroutines-core"})
 public final class u
 {
-  private static long e(String paramString, long paramLong1, long paramLong2, long paramLong3)
+  private final String SLK;
+  
+  public u(String paramString)
   {
-    AppMethodBeat.i(118123);
-    paramLong1 = w.e(paramString, paramLong1, paramLong2, paramLong3);
-    AppMethodBeat.o(118123);
-    return paramLong1;
+    AppMethodBeat.i(118071);
+    this.SLK = paramString;
+    AppMethodBeat.o(118071);
+  }
+  
+  public final String toString()
+  {
+    return this.SLK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.internal.u
  * JD-Core Version:    0.7.0.1
  */

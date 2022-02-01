@@ -6,48 +6,48 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
 import com.tencent.mm.plugin.appbrand.service.c;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiRemoveSplashScreenshot;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "RemoveParams", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiRemoveSplashScreenshot;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/service/AppBrandServiceWC;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "RemoveParams", "plugin-appbrand-integration_release"})
 public final class JsApiRemoveSplashScreenshot
-  extends a<c>
+  extends d<c>
 {
   public static final int CTRL_INDEX = -2;
   public static final String NAME = "removeSplashScreenshot";
   @Deprecated
-  public static final a kPr;
+  public static final a lUp;
   
   static
   {
-    AppMethodBeat.i(223394);
-    kPr = new a((byte)0);
-    AppMethodBeat.o(223394);
+    AppMethodBeat.i(228409);
+    lUp = new a((byte)0);
+    AppMethodBeat.o(228409);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiRemoveSplashScreenshot$RemoveParams;", "Landroid/os/Parcelable;", "appId", "", "versionType", "", "(Ljava/lang/String;I)V", "getAppId", "()Ljava/lang/String;", "getVersionType", "()I", "component1", "component2", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiRemoveSplashScreenshot$RemoveParams;", "Landroid/os/Parcelable;", "appId", "", "versionType", "", "(Ljava/lang/String;I)V", "getAppId", "()Ljava/lang/String;", "getVersionType", "()I", "component1", "component2", "copy", "describeContents", "equals", "", "other", "", "hashCode", "toString", "writeToParcel", "", "parcel", "Landroid/os/Parcel;", "flags", "plugin-appbrand-integration_release"})
   static final class RemoveParams
     implements Parcelable
   {
     public static final Parcelable.Creator CREATOR;
     final String appId;
-    final int hSZ;
+    final int iOo;
     
     static
     {
-      AppMethodBeat.i(223390);
+      AppMethodBeat.i(228405);
       CREATOR = new a();
-      AppMethodBeat.o(223390);
+      AppMethodBeat.o(228405);
     }
     
     public RemoveParams(String paramString, int paramInt)
     {
-      AppMethodBeat.i(223385);
+      AppMethodBeat.i(228400);
       this.appId = paramString;
-      this.hSZ = paramInt;
-      AppMethodBeat.o(223385);
+      this.iOo = paramInt;
+      AppMethodBeat.o(228400);
     }
     
     public final int describeContents()
@@ -57,64 +57,64 @@ public final class JsApiRemoveSplashScreenshot
     
     public final boolean equals(Object paramObject)
     {
-      AppMethodBeat.i(223388);
+      AppMethodBeat.i(228403);
       if (this != paramObject)
       {
         if ((paramObject instanceof RemoveParams))
         {
           paramObject = (RemoveParams)paramObject;
-          if ((!p.i(this.appId, paramObject.appId)) || (this.hSZ != paramObject.hSZ)) {}
+          if ((!p.j(this.appId, paramObject.appId)) || (this.iOo != paramObject.iOo)) {}
         }
       }
       else
       {
-        AppMethodBeat.o(223388);
+        AppMethodBeat.o(228403);
         return true;
       }
-      AppMethodBeat.o(223388);
+      AppMethodBeat.o(228403);
       return false;
     }
     
     public final int hashCode()
     {
-      AppMethodBeat.i(223387);
+      AppMethodBeat.i(228402);
       String str = this.appId;
       if (str != null) {}
       for (int i = str.hashCode();; i = 0)
       {
-        int j = this.hSZ;
-        AppMethodBeat.o(223387);
+        int j = this.iOo;
+        AppMethodBeat.o(228402);
         return i * 31 + j;
       }
     }
     
     public final String toString()
     {
-      AppMethodBeat.i(223386);
-      String str = "RemoveParams(appId=" + this.appId + ", versionType=" + this.hSZ + ")";
-      AppMethodBeat.o(223386);
+      AppMethodBeat.i(228401);
+      String str = "RemoveParams(appId=" + this.appId + ", versionType=" + this.iOo + ")";
+      AppMethodBeat.o(228401);
       return str;
     }
     
     public final void writeToParcel(Parcel paramParcel, int paramInt)
     {
-      AppMethodBeat.i(223389);
+      AppMethodBeat.i(228404);
       p.h(paramParcel, "parcel");
       paramParcel.writeString(this.appId);
-      paramParcel.writeInt(this.hSZ);
-      AppMethodBeat.o(223389);
+      paramParcel.writeInt(this.iOo);
+      AppMethodBeat.o(228404);
     }
     
-    @l(gjZ={1, 1, 16})
+    @l(hxD={1, 1, 16})
     public static final class a
       implements Parcelable.Creator
     {
       public final Object createFromParcel(Parcel paramParcel)
       {
-        AppMethodBeat.i(223384);
+        AppMethodBeat.i(228399);
         p.h(paramParcel, "in");
         paramParcel = new JsApiRemoveSplashScreenshot.RemoveParams(paramParcel.readString(), paramParcel.readInt());
-        AppMethodBeat.o(223384);
+        AppMethodBeat.o(228399);
         return paramParcel;
       }
       
@@ -125,26 +125,26 @@ public final class JsApiRemoveSplashScreenshot
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiRemoveSplashScreenshot$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiRemoveSplashScreenshot$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
   static final class a {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "params", "Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiRemoveSplashScreenshot$RemoveParams;", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "params", "Lcom/tencent/mm/plugin/appbrand/jsapi/fakenative/JsApiRemoveSplashScreenshot$RemoveParams;", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
   static final class b<InputType, ResultType>
     implements b<JsApiRemoveSplashScreenshot.RemoveParams, IPCVoid>
   {
-    public static final b kPs;
+    public static final b lUq;
     
     static
     {
-      AppMethodBeat.i(223392);
-      kPs = new b();
-      AppMethodBeat.o(223392);
+      AppMethodBeat.i(228407);
+      lUq = new b();
+      AppMethodBeat.o(228407);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.fakenative.JsApiRemoveSplashScreenshot
  * JD-Core Version:    0.7.0.1
  */

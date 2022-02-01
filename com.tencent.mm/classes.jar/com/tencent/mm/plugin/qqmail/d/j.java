@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -17,29 +17,29 @@ import javax.crypto.spec.IvParameterSpec;
 
 public final class j
 {
-  public static int xrt = 100;
+  public static int Brw = 100;
+  public String Brx;
   private int maxCount;
-  public String xru;
   
   public j(String paramString, int paramInt)
   {
     AppMethodBeat.i(122667);
-    this.xru = null;
-    this.maxCount = xrt;
-    ae.i("Msg.Plugin.HttpRequestCache", "HttpRequestCache constructor, path = " + paramString + ", maxCount = " + paramInt);
-    this.xru = paramString;
-    o.aZI(this.xru);
+    this.Brx = null;
+    this.maxCount = Brw;
+    Log.i("Msg.Plugin.HttpRequestCache", "HttpRequestCache constructor, path = " + paramString + ", maxCount = " + paramInt);
+    this.Brx = paramString;
+    s.boN(this.Brx);
     if (paramInt > 0) {}
     for (;;)
     {
       this.maxCount = paramInt;
       AppMethodBeat.o(122667);
       return;
-      paramInt = xrt;
+      paramInt = Brw;
     }
   }
   
-  static String E(String paramString, Map<String, String> paramMap)
+  static String J(String paramString, Map<String, String> paramMap)
   {
     AppMethodBeat.i(122670);
     StringBuffer localStringBuffer = new StringBuffer();
@@ -61,7 +61,7 @@ public final class j
     return paramString;
   }
   
-  static byte[] awk(String paramString)
+  static byte[] aKC(String paramString)
   {
     AppMethodBeat.i(122671);
     paramString = g.getMessageDigest(paramString.toString().getBytes()).substring(8, 16).getBytes();
@@ -86,7 +86,7 @@ public final class j
     {
       for (;;)
       {
-        ae.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
+        Log.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
         paramArrayOfByte1 = null;
       }
     }
@@ -109,7 +109,7 @@ public final class j
     {
       for (;;)
       {
-        ae.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
+        Log.printErrStackTrace("Msg.Plugin.HttpRequestCache", paramArrayOfByte1, "", new Object[0]);
         paramArrayOfByte1 = null;
       }
     }
@@ -118,15 +118,15 @@ public final class j
   public static byte[] readFromFile(String paramString)
   {
     AppMethodBeat.i(185979);
-    paramString = o.bb(paramString, 0, -1);
+    paramString = s.aW(paramString, 0, -1);
     AppMethodBeat.o(185979);
     return paramString;
   }
   
-  public static boolean u(String paramString, byte[] paramArrayOfByte)
+  public static boolean writeToFile(String paramString, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(122677);
-    if (bu.jB(o.f(paramString, paramArrayOfByte, paramArrayOfByte.length), 0))
+    if (Util.isEqual(s.f(paramString, paramArrayOfByte, paramArrayOfByte.length), 0))
     {
       AppMethodBeat.o(122677);
       return true;
@@ -135,36 +135,36 @@ public final class j
     return false;
   }
   
-  public final void dFx()
+  public final void eGm()
   {
     int j = 0;
     AppMethodBeat.i(122673);
-    Object localObject = new k(this.xru).list();
+    Object localObject = new o(this.Brx).list();
     if (localObject != null) {}
     for (int i = localObject.length; i < this.maxCount; i = 0)
     {
       AppMethodBeat.o(122673);
       return;
     }
-    String[] arrayOfString = new k(this.xru).list();
+    String[] arrayOfString = new o(this.Brx).list();
     localObject = null;
     int k = arrayOfString.length;
     i = j;
     while (i < k)
     {
-      localObject = new k(arrayOfString[i]);
-      ((k)localObject).lastModified();
+      localObject = new o(arrayOfString[i]);
+      ((o)localObject).lastModified();
       i += 1;
     }
-    if (((k)localObject).exists()) {
-      ((k)localObject).delete();
+    if (((o)localObject).exists()) {
+      ((o)localObject).delete();
     }
     AppMethodBeat.o(122673);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d.j
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,8 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -27,33 +27,33 @@ public final class d
   implements Filterable
 {
   private static String TAG = "MicroMsg.MobileHistoryAdapter";
+  private AutoCompleteTextView BDD;
+  List<String[]> BDG;
+  public List<com.tencent.mm.plugin.recharge.model.a> BDM;
+  public boolean BDN;
+  private List<com.tencent.mm.plugin.recharge.model.a> BDO;
+  private String BDQ;
+  private MallFormView BFp;
+  private b BGc;
+  public d BGd;
+  public a BGe;
   private Context mContext;
-  private AutoCompleteTextView xDE;
-  List<String[]> xDH;
-  public List<com.tencent.mm.plugin.recharge.model.a> xDN;
-  public boolean xDO;
-  private List<com.tencent.mm.plugin.recharge.model.a> xDP;
-  private String xDR;
-  private MallFormView xFr;
-  private b xGd;
-  public d xGe;
-  public a xGf;
   
   public d(MallFormView paramMallFormView, List<String[]> paramList)
   {
     AppMethodBeat.i(67321);
-    this.xDN = new ArrayList();
-    this.xDO = false;
-    this.xGe = null;
-    this.xGf = null;
+    this.BDM = new ArrayList();
+    this.BDN = false;
+    this.BGd = null;
+    this.BGe = null;
     this.mContext = paramMallFormView.getContext();
-    this.xFr = paramMallFormView;
-    this.xDE = ((AutoCompleteTextView)paramMallFormView.getContentEditText());
-    this.xDH = paramList;
+    this.BFp = paramMallFormView;
+    this.BDD = ((AutoCompleteTextView)paramMallFormView.getContentEditText());
+    this.BDG = paramList;
     AppMethodBeat.o(67321);
   }
   
-  public final com.tencent.mm.plugin.recharge.model.a Oa(int paramInt)
+  public final com.tencent.mm.plugin.recharge.model.a Vp(int paramInt)
   {
     com.tencent.mm.plugin.recharge.model.a locala1 = null;
     for (;;)
@@ -61,7 +61,7 @@ public final class d
       try
       {
         AppMethodBeat.i(67325);
-        if (!this.xDO) {
+        if (!this.BDN) {
           break label79;
         }
         if (paramInt == 0)
@@ -69,9 +69,9 @@ public final class d
           AppMethodBeat.o(67325);
           return locala1;
         }
-        if (paramInt <= this.xDN.size())
+        if (paramInt <= this.BDM.size())
         {
-          locala1 = (com.tencent.mm.plugin.recharge.model.a)this.xDN.get(paramInt - 1);
+          locala1 = (com.tencent.mm.plugin.recharge.model.a)this.BDM.get(paramInt - 1);
           AppMethodBeat.o(67325);
           continue;
         }
@@ -80,9 +80,9 @@ public final class d
       finally {}
       continue;
       label79:
-      if (paramInt < this.xDN.size())
+      if (paramInt < this.BDM.size())
       {
-        com.tencent.mm.plugin.recharge.model.a locala2 = (com.tencent.mm.plugin.recharge.model.a)this.xDN.get(paramInt);
+        com.tencent.mm.plugin.recharge.model.a locala2 = (com.tencent.mm.plugin.recharge.model.a)this.BDM.get(paramInt);
         AppMethodBeat.o(67325);
       }
       else
@@ -92,14 +92,12 @@ public final class d
     }
   }
   
-  public final void fe(List<com.tencent.mm.plugin.recharge.model.a> paramList)
+  public final void ga(List<com.tencent.mm.plugin.recharge.model.a> paramList)
   {
     try
     {
       AppMethodBeat.i(67322);
-      this.xDP = paramList;
-      this.xDN.clear();
-      this.xDO = false;
+      this.BDO = paramList;
       notifyDataSetChanged();
       AppMethodBeat.o(67322);
       return;
@@ -115,15 +113,15 @@ public final class d
   {
     AppMethodBeat.i(67324);
     int i;
-    if (this.xDO)
+    if (this.BDN)
     {
-      i = this.xDN.size();
+      i = this.BDM.size();
       AppMethodBeat.o(67324);
       return i + 2;
     }
-    if (this.xDN.size() > 0)
+    if (this.BDM.size() > 0)
     {
-      i = this.xDN.size();
+      i = this.BDM.size();
       AppMethodBeat.o(67324);
       return i + 1;
     }
@@ -134,11 +132,11 @@ public final class d
   public final Filter getFilter()
   {
     AppMethodBeat.i(67323);
-    ae.d(TAG, "getFilter");
-    if (this.xGd == null) {
-      this.xGd = new b((byte)0);
+    Log.d(TAG, "getFilter");
+    if (this.BGc == null) {
+      this.BGc = new b((byte)0);
     }
-    b localb = this.xGd;
+    b localb = this.BGc;
     AppMethodBeat.o(67323);
     return localb;
   }
@@ -151,14 +149,14 @@ public final class d
   public final int getItemViewType(int paramInt)
   {
     AppMethodBeat.i(67327);
-    if (this.xDO)
+    if (this.BDN)
     {
       if (paramInt == 0)
       {
         AppMethodBeat.o(67327);
         return 2;
       }
-      if (paramInt <= this.xDN.size())
+      if (paramInt <= this.BDM.size())
       {
         AppMethodBeat.o(67327);
         return 0;
@@ -166,7 +164,7 @@ public final class d
       AppMethodBeat.o(67327);
       return 3;
     }
-    if (paramInt < this.xDN.size())
+    if (paramInt < this.BDM.size())
     {
       AppMethodBeat.o(67327);
       return 0;
@@ -194,20 +192,20 @@ public final class d
       int j;
       if (paramView == null)
       {
-        paramViewGroup = View.inflate(this.mContext, 2131495205, null);
+        paramViewGroup = View.inflate(this.mContext, 2131496048, null);
         localc = new c((byte)0);
-        localc.xDV = ((TextView)paramViewGroup.findViewById(2131302023));
-        localc.fSj = ((TextView)paramViewGroup.findViewById(2131302022));
-        localc.xGi = ((ImageView)paramViewGroup.findViewById(2131306004));
+        localc.BDU = ((TextView)paramViewGroup.findViewById(2131304362));
+        localc.gxs = ((TextView)paramViewGroup.findViewById(2131304361));
+        localc.BGh = ((ImageView)paramViewGroup.findViewById(2131309313));
         paramViewGroup.setTag(localc);
-        if ((localc != null) && (localc.xGi != null))
+        if ((localc != null) && (localc.BGh != null))
         {
           if (paramInt != 0) {
             break label367;
           }
-          localc.xGi.setVisibility(0);
+          localc.BGh.setVisibility(0);
         }
-        locala = Oa(paramInt);
+        locala = Vp(paramInt);
         paramView = paramViewGroup;
         if (locala == null) {
           continue;
@@ -217,20 +215,20 @@ public final class d
           continue;
         }
         paramView = paramViewGroup;
-        if (localc.xDV == null) {
+        if (localc.BDU == null) {
           continue;
         }
         paramView = paramViewGroup;
-        if (localc.fSj == null) {
+        if (localc.gxs == null) {
           continue;
         }
-        paramView = com.tencent.mm.plugin.recharge.model.b.awz(locala.xCY);
-        ae.d(TAG, "record.record " + paramView + ", record.name " + locala.name + "，record.location " + locala.kgf);
-        if (com.tencent.mm.plugin.recharge.model.a.xCW.equals(locala.xCZ)) {
+        paramView = com.tencent.mm.plugin.recharge.model.b.aKR(locala.BCX);
+        Log.d(TAG, "record.record " + paramView + ", record.name " + locala.name + "，record.location " + locala.ljO);
+        if (com.tencent.mm.plugin.recharge.model.a.BCV.equals(locala.BCY)) {
           break label590;
         }
         paramView = new SpannableStringBuilder(paramView);
-        int[] arrayOfInt = locala.xCZ;
+        int[] arrayOfInt = locala.BCY;
         int k = arrayOfInt.length;
         i = 0;
         if (i >= k) {
@@ -247,14 +245,14 @@ public final class d
       }
       for (;;)
       {
-        paramView.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(2131100792)), paramInt, paramInt + 1, 34);
+        paramView.setSpan(new ForegroundColorSpan(this.mContext.getResources().getColor(2131100988)), paramInt, paramInt + 1, 34);
         i += 1;
         break label283;
         localc = (c)paramView.getTag();
         paramViewGroup = paramView;
         break;
         label367:
-        localc.xGi.setVisibility(8);
+        localc.BGh.setVisibility(8);
         break label147;
         label380:
         paramInt = j;
@@ -262,92 +260,92 @@ public final class d
           paramInt = j + 1;
         }
       }
-      localc.xDV.setTextSize(24.0F);
-      localc.xDV.setTextColor(this.mContext.getResources().getColor(2131100711));
-      localc.fSj.setTextColor(this.mContext.getResources().getColor(2131100711));
-      localc.xDV.setText(paramView);
+      localc.BDU.setTextSize(24.0F);
+      localc.BDU.setTextColor(this.mContext.getResources().getColor(2131100904));
+      localc.gxs.setTextColor(this.mContext.getResources().getColor(2131100904));
+      localc.BDU.setText(paramView);
       label459:
-      if ((locala.name != null) && (!bu.isNullOrNil(locala.name.trim())))
+      if ((locala.name != null) && (!Util.isNullOrNil(locala.name.trim())))
       {
-        if (!bu.isNullOrNil(locala.kgf)) {
-          localc.fSj.setText(locala.name + this.mContext.getString(2131765779, new Object[] { locala.kgf }));
+        if (!Util.isNullOrNil(locala.ljO)) {
+          localc.gxs.setText(locala.name + this.mContext.getString(2131768232, new Object[] { locala.ljO }));
         }
         for (;;)
         {
-          if (!locala.name.equals(this.mContext.getString(2131765787))) {
+          if (!locala.name.equals(this.mContext.getString(2131768240))) {
             break label671;
           }
-          localc.fSj.setTextColor(this.mContext.getResources().getColor(2131100789));
+          localc.gxs.setTextColor(this.mContext.getResources().getColor(2131100985));
           paramView = paramViewGroup;
           break;
           label590:
-          localc.xDV.setTextSize(16.0F);
-          localc.xDV.setTextColor(this.mContext.getResources().getColor(2131100490));
-          localc.fSj.setTextColor(this.mContext.getResources().getColor(2131100490));
-          localc.xDV.setText(paramView);
+          localc.BDU.setTextSize(16.0F);
+          localc.BDU.setTextColor(this.mContext.getResources().getColor(2131100594));
+          localc.gxs.setTextColor(this.mContext.getResources().getColor(2131100594));
+          localc.BDU.setText(paramView);
           break label459;
-          localc.fSj.setText(locala.name);
+          localc.gxs.setText(locala.name);
         }
-        localc.fSj.setTextColor(this.mContext.getResources().getColor(2131100707));
+        localc.gxs.setTextColor(this.mContext.getResources().getColor(2131100900));
         paramView = paramViewGroup;
       }
-      else if (!bu.isNullOrNil(locala.kgf))
+      else if (!Util.isNullOrNil(locala.ljO))
       {
-        localc.fSj.setText(this.mContext.getString(2131765789) + this.mContext.getString(2131765779, new Object[] { locala.kgf }));
+        localc.gxs.setText(this.mContext.getString(2131768242) + this.mContext.getString(2131768232, new Object[] { locala.ljO }));
         paramView = paramViewGroup;
       }
       else
       {
-        localc.fSj.setText(this.mContext.getString(2131765789));
+        localc.gxs.setText(this.mContext.getString(2131768242));
         paramView = paramViewGroup;
         continue;
-        paramView = View.inflate(this.mContext, 2131495204, null);
+        paramView = View.inflate(this.mContext, 2131496047, null);
         paramView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(67314);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/form/MobileHistoryAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/form/MobileHistoryAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
             d.a(d.this).dismissDropDown();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recharge/ui/form/MobileHistoryAdapter$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(67314);
           }
         });
         continue;
-        paramView = View.inflate(this.mContext, 2131495206, null);
+        paramView = View.inflate(this.mContext, 2131496049, null);
         paramView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(67315);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/form/MobileHistoryAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-            com.tencent.mm.plugin.recharge.a.a.dGX().fe(null);
-            d.b(d.this).dHv();
-            d.this.fe(new LinkedList());
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/form/MobileHistoryAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            com.tencent.mm.plugin.recharge.a.a.eHL().ga(null);
+            d.b(d.this).eIj();
+            d.this.ga(new LinkedList());
             if (d.c(d.this) != null) {
-              d.c(d.this).dHk();
+              d.c(d.this).eHY();
             }
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recharge/ui/form/MobileHistoryAdapter$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(67315);
           }
         });
         continue;
-        paramView = View.inflate(this.mContext, 2131495206, null);
-        ((TextView)paramView.findViewById(2131303835)).setText(2131761154);
+        paramView = View.inflate(this.mContext, 2131496049, null);
+        ((TextView)paramView.findViewById(2131306642)).setText(2131762941);
         paramView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(67316);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/form/MobileHistoryAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/recharge/ui/form/MobileHistoryAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
             d.a(d.this).dismissDropDown();
-            d.b(d.this).dHu();
+            d.b(d.this).eIi();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/recharge/ui/form/MobileHistoryAdapter$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(67316);
           }
@@ -363,7 +361,7 @@ public final class d
   
   public static abstract interface a
   {
-    public abstract void dHk();
+    public abstract void eHY();
   }
   
   final class b
@@ -371,12 +369,12 @@ public final class d
   {
     private b() {}
     
-    private static int[] iL(String paramString1, String paramString2)
+    private static int[] jy(String paramString1, String paramString2)
     {
       AppMethodBeat.i(67320);
       if (paramString1.equals(paramString2))
       {
-        paramString1 = com.tencent.mm.plugin.recharge.model.a.xCW;
+        paramString1 = com.tencent.mm.plugin.recharge.model.a.BCV;
         AppMethodBeat.o(67320);
         return paramString1;
       }
@@ -417,7 +415,7 @@ public final class d
           return arrayOfInt;
         }
       }
-      paramString1 = com.tencent.mm.plugin.recharge.model.a.xCX;
+      paramString1 = com.tencent.mm.plugin.recharge.model.a.BCW;
       AppMethodBeat.o(67320);
       return paramString1;
     }
@@ -434,7 +432,7 @@ public final class d
         localFilterResults = new Filter.FilterResults();
         localArrayList = new ArrayList();
         if (paramCharSequence != null) {}
-        for (localObject1 = com.tencent.mm.plugin.recharge.model.b.Ku(paramCharSequence.toString()); (((String)localObject1).equals(d.d(d.this))) && (!((String)localObject1).equals("")); localObject1 = "")
+        for (localObject1 = com.tencent.mm.plugin.recharge.model.b.Ts(paramCharSequence.toString()); (((String)localObject1).equals(d.d(d.this))) && (!((String)localObject1).equals("")); localObject1 = "")
         {
           d.a(d.this).post(new Runnable()
           {
@@ -444,8 +442,8 @@ public final class d
               AppMethodBeat.o(67317);
             }
           });
-          localFilterResults.count = d.this.xDN.size();
-          localFilterResults.values = d.this.xDN;
+          localFilterResults.count = d.this.BDM.size();
+          localFilterResults.values = d.this.BDM;
           AppMethodBeat.o(67318);
           return localFilterResults;
         }
@@ -454,103 +452,98 @@ public final class d
         {
           localObject2 = d.e(d.this).iterator();
           while (((Iterator)localObject2).hasNext()) {
-            ((com.tencent.mm.plugin.recharge.model.a)((Iterator)localObject2).next()).xCZ = com.tencent.mm.plugin.recharge.model.a.xCW;
+            ((com.tencent.mm.plugin.recharge.model.a)((Iterator)localObject2).next()).BCY = com.tencent.mm.plugin.recharge.model.a.BCV;
           }
         }
-        if (d.b(d.this).aVz()) {
-          break label394;
+        if (d.b(d.this).bql()) {
+          break label373;
         }
       }
       finally {}
-      if (!bu.isNullOrNil(d.d(d.this)))
+      if (!Util.isNullOrNil(d.d(d.this)))
       {
-        ae.i(d.TAG, "performFiltering1 ".concat(String.valueOf(paramCharSequence)));
+        Log.i(d.TAG, "performFiltering1 ".concat(String.valueOf(paramCharSequence)));
         paramCharSequence = d.e(d.this).iterator();
         while (paramCharSequence.hasNext())
         {
           localObject1 = (com.tencent.mm.plugin.recharge.model.a)paramCharSequence.next();
-          if (((com.tencent.mm.plugin.recharge.model.a)localObject1).xCY.startsWith(d.d(d.this))) {
+          if (((com.tencent.mm.plugin.recharge.model.a)localObject1).BCX.startsWith(d.d(d.this))) {
             localArrayList.add(localObject1);
           }
         }
       }
       for (;;)
       {
-        label318:
         localFilterResults.count = localArrayList.size();
         localFilterResults.values = localArrayList;
-        d.this.xDO = bool;
-        if (localArrayList.size() == 0) {}
-        for (d.b(d.this).xGa = true;; d.b(d.this).xGa = false)
+        d.this.BDN = bool;
+        AppMethodBeat.o(67318);
+        break;
+        localArrayList.addAll(d.e(d.this));
+        boolean bool = false;
+        continue;
+        label373:
+        long l = System.currentTimeMillis();
+        Log.i(d.TAG, "performFiltering2 ".concat(String.valueOf(paramCharSequence)));
+        paramCharSequence = com.tencent.mm.plugin.recharge.a.a.eHN();
+        if ((paramCharSequence != null) && (((String)localObject1).equals(paramCharSequence.BCX)))
         {
           AppMethodBeat.o(67318);
           break;
-          localArrayList.addAll(d.e(d.this));
-          bool = false;
-          break label318;
-          label394:
-          long l = System.currentTimeMillis();
-          ae.i(d.TAG, "performFiltering2 ".concat(String.valueOf(paramCharSequence)));
-          paramCharSequence = com.tencent.mm.plugin.recharge.a.a.dGZ();
-          if ((paramCharSequence != null) && (((String)localObject1).equals(paramCharSequence.xCY)))
-          {
-            AppMethodBeat.o(67318);
-            break;
-          }
-          if ((d.f(d.this) == null) || (d.f(d.this).isEmpty())) {
-            d.a(d.this, com.tencent.mm.pluginsdk.b.dt(d.g(d.this)));
-          }
-          if (d.f(d.this) != null)
-          {
-            paramCharSequence = d.f(d.this).iterator();
-            for (;;)
-            {
-              if (!paramCharSequence.hasNext()) {
-                break label627;
-              }
-              localObject2 = (String[])paramCharSequence.next();
-              String str = com.tencent.mm.plugin.recharge.model.b.Ku(localObject2[2]);
-              localObject1 = iL(d.d(d.this), str);
-              if (com.tencent.mm.plugin.recharge.model.a.xCW.equals(localObject1))
-              {
-                AppMethodBeat.o(67318);
-                break;
-              }
-              if ((!com.tencent.mm.plugin.recharge.model.a.xCX.equals(localObject1)) && (localArrayList.size() < 4))
-              {
-                localObject2 = new com.tencent.mm.plugin.recharge.model.a(str, localObject2[1], 1);
-                ((com.tencent.mm.plugin.recharge.model.a)localObject2).xCZ = ((int[])localObject1);
-                localArrayList.add(localObject2);
-              }
-            }
-          }
-          label627:
-          paramCharSequence = com.tencent.mm.plugin.recharge.a.a.dGX().dGY().iterator();
+        }
+        if ((d.f(d.this) == null) || (d.f(d.this).isEmpty())) {
+          d.a(d.this, com.tencent.mm.pluginsdk.b.dO(d.g(d.this)));
+        }
+        if (d.f(d.this) != null)
+        {
+          paramCharSequence = d.f(d.this).iterator();
           for (;;)
           {
             if (!paramCharSequence.hasNext()) {
-              break label744;
+              break label606;
             }
-            localObject1 = (com.tencent.mm.plugin.recharge.model.a)paramCharSequence.next();
-            localObject2 = com.tencent.mm.plugin.recharge.model.b.Ku(((com.tencent.mm.plugin.recharge.model.a)localObject1).xCY);
-            localObject2 = iL(d.d(d.this), (String)localObject2);
-            if (com.tencent.mm.plugin.recharge.model.a.xCW.equals(localObject2))
+            localObject2 = (String[])paramCharSequence.next();
+            String str = com.tencent.mm.plugin.recharge.model.b.Ts(localObject2[2]);
+            localObject1 = jy(d.d(d.this), str);
+            if (com.tencent.mm.plugin.recharge.model.a.BCV.equals(localObject1))
             {
               AppMethodBeat.o(67318);
               break;
             }
-            if ((!com.tencent.mm.plugin.recharge.model.a.xCX.equals(localObject2)) && (localArrayList.size() < 4))
+            if ((!com.tencent.mm.plugin.recharge.model.a.BCW.equals(localObject1)) && (localArrayList.size() < 4))
             {
-              ((com.tencent.mm.plugin.recharge.model.a)localObject1).xCZ = ((int[])localObject2);
-              localArrayList.add(localObject1);
+              localObject2 = new com.tencent.mm.plugin.recharge.model.a(str, localObject2[1], 1);
+              ((com.tencent.mm.plugin.recharge.model.a)localObject2).BCY = ((int[])localObject1);
+              localArrayList.add(localObject2);
             }
           }
-          label744:
-          ae.d(d.TAG, " search phone number cost " + (System.currentTimeMillis() - l) + " ms ");
-          bool = true;
-          break label318;
         }
-        boolean bool = false;
+        label606:
+        paramCharSequence = com.tencent.mm.plugin.recharge.a.a.eHL().eHM().iterator();
+        for (;;)
+        {
+          if (!paramCharSequence.hasNext()) {
+            break label723;
+          }
+          localObject1 = (com.tencent.mm.plugin.recharge.model.a)paramCharSequence.next();
+          localObject2 = com.tencent.mm.plugin.recharge.model.b.Ts(((com.tencent.mm.plugin.recharge.model.a)localObject1).BCX);
+          localObject2 = jy(d.d(d.this), (String)localObject2);
+          if (com.tencent.mm.plugin.recharge.model.a.BCV.equals(localObject2))
+          {
+            AppMethodBeat.o(67318);
+            break;
+          }
+          if ((!com.tencent.mm.plugin.recharge.model.a.BCW.equals(localObject2)) && (localArrayList.size() < 4))
+          {
+            ((com.tencent.mm.plugin.recharge.model.a)localObject1).BCY = ((int[])localObject2);
+            localArrayList.add(localObject1);
+          }
+        }
+        label723:
+        Log.d(d.TAG, " search phone number cost " + (System.currentTimeMillis() - l) + " ms ");
+        bool = true;
+        continue;
+        bool = false;
       }
     }
     
@@ -559,21 +552,21 @@ public final class d
       AppMethodBeat.i(67319);
       if (paramFilterResults.values == null)
       {
-        d.this.xDN = new ArrayList();
+        d.this.BDM = new ArrayList();
         if (paramFilterResults.count != 0) {
           break label109;
         }
       }
       label109:
-      for (d.b(d.this).xGa = true;; d.b(d.this).xGa = false)
+      for (d.b(d.this).BFZ = true;; d.b(d.this).BFZ = false)
       {
-        ae.i(d.TAG, "results.count " + paramFilterResults.count);
+        Log.i(d.TAG, "results.count " + paramFilterResults.count);
         if (paramFilterResults.count > 0) {
           d.this.notifyDataSetChanged();
         }
         AppMethodBeat.o(67319);
         return;
-        d.this.xDN = ((List)paramFilterResults.values);
+        d.this.BDM = ((List)paramFilterResults.values);
         break;
       }
     }
@@ -581,9 +574,9 @@ public final class d
   
   final class c
   {
-    TextView fSj;
-    TextView xDV;
-    ImageView xGi;
+    TextView BDU;
+    ImageView BGh;
+    TextView gxs;
     
     private c() {}
   }
@@ -592,7 +585,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.recharge.ui.form.d
  * JD-Core Version:    0.7.0.1
  */

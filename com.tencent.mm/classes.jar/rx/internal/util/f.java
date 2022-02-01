@@ -9,30 +9,30 @@ import rx.j;
 public final class f
   implements j
 {
-  public static final d<Queue<Object>> OxA;
-  public static final d<Queue<Object>> OxB;
-  private static final c<Object> Oxy;
   public static final int SIZE;
-  static int uGO;
-  private final d<Queue<Object>> Oxz;
-  private Queue<Object> dga;
+  private static final c<Object> Unm;
+  public static final d<Queue<Object>> Uno;
+  public static final d<Queue<Object>> Unp;
+  static int xZa;
+  private final d<Queue<Object>> Unn;
+  private Queue<Object> dxk;
   
   static
   {
     AppMethodBeat.i(90197);
-    Oxy = c.gDy();
-    uGO = 128;
+    Unm = c.hQG();
+    xZa = 128;
     if (e.isAndroid()) {
-      uGO = 16;
+      xZa = 16;
     }
     String str = System.getProperty("rx.ring-buffer.size");
     if (str != null) {}
     try
     {
-      uGO = Integer.parseInt(str);
-      SIZE = uGO;
-      OxA = new d() {};
-      OxB = new d() {};
+      xZa = Integer.parseInt(str);
+      SIZE = xZa;
+      Uno = new d() {};
+      Unp = new d() {};
       AppMethodBeat.o(90197);
       return;
     }
@@ -45,25 +45,25 @@ public final class f
     }
   }
   
-  public final void gDs()
+  public final void hQA()
   {
     AppMethodBeat.i(90196);
-    Queue localQueue = this.dga;
-    d locald = this.Oxz;
+    Queue localQueue = this.dxk;
+    d locald = this.Unn;
     if ((locald != null) && (localQueue != null))
     {
       localQueue.clear();
-      this.dga = null;
+      this.dxk = null;
       if (localQueue != null) {
-        locald.aJa.offer(localQueue);
+        locald.aIT.offer(localQueue);
       }
     }
     AppMethodBeat.o(90196);
   }
   
-  public final boolean gDt()
+  public final boolean hQB()
   {
-    return this.dga == null;
+    return this.dxk == null;
   }
 }
 

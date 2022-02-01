@@ -33,7 +33,7 @@ public abstract interface ITPNativePlayerMessageCallback
   public static final int INFO_LONG0_BUFFERING_START = 200;
   public static final int INFO_LONG0_CURRENT_LOOP_END = 151;
   public static final int INFO_LONG0_CURRENT_LOOP_START = 150;
-  public static final int INFO_LONG0_EOS = 153;
+  public static final int INFO_LONG0_EOS = 154;
   public static final int INFO_LONG0_FIRST_AUDIO_DECODER_START = 103;
   public static final int INFO_LONG0_FIRST_AUDIO_FRAME_RENDERED = 105;
   public static final int INFO_LONG0_FIRST_CLIP_OPENED = 101;
@@ -43,11 +43,15 @@ public abstract interface ITPNativePlayerMessageCallback
   public static final int INFO_LONG0_KEY_PACKET_READ = 102;
   public static final int INFO_LONG0_VIDEO_HW_DECODING_SLOW = 208;
   public static final int INFO_LONG0_VIDEO_SW_DECODING_SLOW = 207;
+  public static final int INFO_LONG1_ADAPTIVE_SWITCH_DEF_END = 252;
+  public static final int INFO_LONG1_ADAPTIVE_SWITCH_DEF_START = 251;
   public static final int INFO_LONG1_AUDIO_DECODER_TYPE = 203;
-  public static final int INFO_LONG1_CLIP_EOS = 152;
+  public static final int INFO_LONG1_CLIP_EOS = 153;
+  public static final int INFO_LONG1_CLIP_START = 152;
   public static final int INFO_LONG1_VIDEO_DECODER_TYPE = 204;
   public static final int INFO_LONG2_VIDEO_DROP_FRAME_EVENT = 209;
   public static final int INFO_LONG2_VIDEO_RESOLUTION_CHANGE = 250;
+  public static final int INFO_OBJECT_MEDIA_CODEC_INFO = 504;
   public static final int INFO_OBJECT_PRIVATE_HLS_TAG = 501;
   public static final int INFO_OBJECT_SUBTITLE_TEXT = 502;
   public static final int INFO_OBJECT_VIDEO_CROP = 500;
@@ -61,6 +65,16 @@ public abstract interface ITPNativePlayerMessageCallback
   
   public abstract void onInfoObject(int paramInt, Object paramObject);
   
+  public static class MediaCodecInfo
+  {
+    public static final int INFO_MEDIA_CODEC_EXCEPTION = 1;
+    public static final int INFO_MEDIA_CODEC_READY = 0;
+    public static final int INFO_UNKNOWN = -1;
+    public int infoType;
+    public int mediaType;
+    public String msg;
+  }
+  
   public static class VideoCropInfo
   {
     public int cropBottom;
@@ -73,7 +87,7 @@ public abstract interface ITPNativePlayerMessageCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.thumbplayer.core.player.ITPNativePlayerMessageCallback
  * JD-Core Version:    0.7.0.1
  */

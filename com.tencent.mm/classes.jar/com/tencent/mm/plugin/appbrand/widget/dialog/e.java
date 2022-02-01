@@ -11,7 +11,6 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Looper;
 import android.support.v4.e.b;
-import android.util.Log;
 import android.view.Display;
 import android.view.MotionEvent;
 import android.view.View;
@@ -24,10 +23,9 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.luggage.h.f;
+import com.tencent.luggage.h.g;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Set;
@@ -36,31 +34,31 @@ public final class e
   extends RelativeLayout
   implements m
 {
-  private boolean cNB;
-  private final aq lIB;
+  private final j Atv;
+  private final LinkedList<k> Atw;
+  private final Runnable Atx;
+  private k GcY;
+  private final Set<Object> GdC;
+  private final Set<Object> GdH;
+  private boolean GdI;
+  private k Gdg;
+  private Set<l> Gdi;
+  private boolean GfG;
+  private boolean ddZ;
   private final View.OnClickListener mOnClickListener;
+  private final MMHandler mQp;
   private int mRotation;
-  private final Runnable ngA;
-  private k ngB;
-  private k ngG;
-  private Set<l> ngH;
-  private final Set<Object> ngI;
-  private final Set<Object> ngJ;
-  private boolean ngK;
-  private boolean ngL;
-  private final j ngy;
-  private final LinkedList<k> ngz;
   
   public e(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(131483);
     this.mRotation = 0;
-    this.lIB = new aq(Looper.getMainLooper());
-    this.ngy = new j(this);
-    this.ngz = new LinkedList();
+    this.mQp = new MMHandler(Looper.getMainLooper());
+    this.Atv = new j(this);
+    this.Atw = new LinkedList();
     this.mOnClickListener = new e.1(this);
-    this.ngA = new Runnable()
+    this.Atx = new Runnable()
     {
       public final void run()
       {
@@ -71,12 +69,12 @@ public final class e
         AppMethodBeat.o(131478);
       }
     };
-    this.cNB = false;
-    this.ngH = new b();
-    this.ngI = new b();
-    this.ngJ = new b();
-    this.ngK = false;
-    this.ngL = true;
+    this.ddZ = false;
+    this.Gdi = new b();
+    this.GdC = new b();
+    this.GdH = new b();
+    this.GdI = false;
+    this.GfG = true;
     setVisibility(4);
     setBackgroundColor(0);
     setOnClickListener(this.mOnClickListener);
@@ -87,7 +85,7 @@ public final class e
     AppMethodBeat.o(131483);
   }
   
-  private static Animator Q(View paramView, int paramInt)
+  private static Animator P(View paramView, int paramInt)
   {
     AppMethodBeat.i(131490);
     if (paramInt == 2)
@@ -100,8 +98,8 @@ public final class e
       AppMethodBeat.o(131490);
       return localAnimatorSet;
     }
-    Interpolator localInterpolator = AnimationUtils.loadInterpolator(paramView.getContext(), 2130772015);
-    Object localObject = AnimationUtils.loadInterpolator(paramView.getContext(), 2130772014);
+    Interpolator localInterpolator = AnimationUtils.loadInterpolator(paramView.getContext(), 2130772021);
+    Object localObject = AnimationUtils.loadInterpolator(paramView.getContext(), 2130772020);
     AnimatorSet localAnimatorSet = new AnimatorSet();
     ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(paramView, "scaleX", new float[] { 1.0F, 0.9F }).setDuration(220L);
     localObjectAnimator1.setInterpolator(localInterpolator);
@@ -114,7 +112,7 @@ public final class e
     return localAnimatorSet;
   }
   
-  private static void cZ(View paramView)
+  private static void cS(View paramView)
   {
     AppMethodBeat.i(131487);
     if ((paramView == null) || (paramView.getParent() == null))
@@ -129,7 +127,7 @@ public final class e
   public final void a(l paraml)
   {
     AppMethodBeat.i(176008);
-    this.ngH.add(paraml);
+    this.Gdi.add(paraml);
     AppMethodBeat.o(176008);
   }
   
@@ -141,10 +139,10 @@ public final class e
       AppMethodBeat.o(131484);
       return;
     }
-    ae.i("MicroMsg.AppBrandDialogContainerLayout", "showDialog dialog[%s] tid[%d]", new Object[] { paramk.getClass().getName(), Long.valueOf(Thread.currentThread().getId()) });
+    com.tencent.mm.sdk.platformtools.Log.i("MicroMsg.AppBrandDialogContainerLayout", "showDialog dialog[%s] tid[%d]", new Object[] { paramk.getClass().getName(), Long.valueOf(Thread.currentThread().getId()) });
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      this.lIB.post(new Runnable()
+      this.mQp.post(new Runnable()
       {
         public final void run()
         {
@@ -156,21 +154,21 @@ public final class e
       AppMethodBeat.o(131484);
       return;
     }
-    f.aD(getContext());
-    if (this.ngy.isRunning()) {
-      this.ngy.cancel();
+    g.aM(getContext());
+    if (this.Atv.isRunning()) {
+      this.Atv.cancel();
     }
     View localView = paramk.getContentView();
     if (localView == null)
     {
-      ae.w("MicroMsg.AppBrandDialogContainerLayout", "showDialog NULL dialogView from dialog[%s], stack=%s", new Object[] { paramk, Log.getStackTraceString(new Throwable()) });
+      com.tencent.mm.sdk.platformtools.Log.w("MicroMsg.AppBrandDialogContainerLayout", "showDialog NULL dialogView from dialog[%s], stack=%s", new Object[] { paramk, android.util.Log.getStackTraceString(new Throwable()) });
       AppMethodBeat.o(131484);
       return;
     }
     RelativeLayout.LayoutParams localLayoutParams;
     if (localView.getParent() != this)
     {
-      cZ(localView);
+      cS(localView);
       if (paramk.getPosition() != 2) {
         break label358;
       }
@@ -178,30 +176,30 @@ public final class e
       localLayoutParams.addRule(12);
       localLayoutParams.addRule(14);
       addView(localView, localLayoutParams);
-      if (this.ngG != paramk)
+      if (this.Gdg != paramk)
       {
         localView.clearAnimation();
         if (paramk.getPosition() != 2) {
           break label379;
         }
-        localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772064));
+        localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772076));
       }
     }
     for (;;)
     {
-      this.ngG = paramk;
+      this.Gdg = paramk;
       localView.setOnClickListener(this.mOnClickListener);
-      this.ngz.add(paramk);
+      this.Atw.add(paramk);
       paramk.a(this);
       setVisibility(0);
-      if (this.ngL) {
+      if (this.GfG) {
         bringToFront();
       }
-      this.ngy.c(Color.argb(127, 0, 0, 0), null);
-      if ((this.ngH.isEmpty()) || (this.cNB)) {
+      this.Atv.c(Color.argb(127, 0, 0, 0), null);
+      if ((this.Gdi.isEmpty()) || (this.ddZ)) {
         break label396;
       }
-      paramk = this.ngH.iterator();
+      paramk = this.Gdi.iterator();
       while (paramk.hasNext()) {
         ((l)paramk.next()).h(Boolean.TRUE);
       }
@@ -210,42 +208,18 @@ public final class e
       localLayoutParams.addRule(13);
       break;
       label379:
-      localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130771999));
+      localView.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772004));
     }
     label396:
-    this.cNB = true;
+    this.ddZ = true;
     AppMethodBeat.o(131484);
   }
   
   public final void b(l paraml)
   {
     AppMethodBeat.i(176009);
-    this.ngH.remove(paraml);
+    this.Gdi.remove(paraml);
     AppMethodBeat.o(176009);
-  }
-  
-  public final void bEI()
-  {
-    AppMethodBeat.i(183778);
-    if (this.ngy.isRunning()) {
-      this.ngy.cancel();
-    }
-    if (!this.ngz.isEmpty())
-    {
-      a local6 = new a() {};
-      while (!this.ngz.isEmpty()) {
-        local6.apply(this.ngz.pollFirst());
-      }
-    }
-    this.ngB = null;
-    this.ngG = null;
-    this.ngK = false;
-    this.ngI.clear();
-    this.ngJ.clear();
-    removeAllViewsInLayout();
-    this.lIB.removeCallbacksAndMessages(null);
-    this.ngA.run();
-    AppMethodBeat.o(183778);
   }
   
   public final void c(final k paramk)
@@ -258,13 +232,13 @@ public final class e
     }
     if (Looper.getMainLooper() != Looper.myLooper())
     {
-      this.lIB.post(new Runnable()
+      this.mQp.post(new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(200132);
+          AppMethodBeat.i(204428);
           e.this.c(paramk);
-          AppMethodBeat.o(200132);
+          AppMethodBeat.o(204428);
         }
       });
       AppMethodBeat.o(131485);
@@ -275,31 +249,31 @@ public final class e
       AppMethodBeat.o(131485);
       return;
     }
-    if (this.ngB == paramk)
+    if (this.GcY == paramk)
     {
       AppMethodBeat.o(131485);
       return;
     }
-    this.ngB = paramk;
-    if (this.ngG == paramk) {
-      this.ngG = null;
+    this.GcY = paramk;
+    if (this.Gdg == paramk) {
+      this.Gdg = null;
     }
     final View localView = paramk.getContentView();
     localView.animate().cancel();
     localView.clearAnimation();
-    Animator localAnimator = Q(localView, paramk.getPosition());
+    Animator localAnimator = P(localView, paramk.getPosition());
     localAnimator.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(200134);
+        AppMethodBeat.i(204430);
         onAnimationEnd(paramAnonymousAnimator);
-        AppMethodBeat.o(200134);
+        AppMethodBeat.o(204430);
       }
       
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
-        AppMethodBeat.i(200135);
+        AppMethodBeat.i(204431);
         localView.setVisibility(8);
         e.b(e.this).remove(paramk);
         e.c(e.this);
@@ -307,8 +281,8 @@ public final class e
         {
           public final void run()
           {
-            AppMethodBeat.i(200133);
-            e.this.removeView(e.5.this.ngE);
+            AppMethodBeat.i(204429);
+            e.this.removeView(e.5.this.oqr);
             e.a(e.this, true);
             Iterator localIterator = e.d(e.this).iterator();
             while (localIterator.hasNext()) {
@@ -320,25 +294,49 @@ public final class e
               e.d(e.this).removeAll(e.e(e.this));
               e.e(e.this).clear();
             }
-            AppMethodBeat.o(200133);
+            AppMethodBeat.o(204429);
           }
         });
-        AppMethodBeat.o(200135);
+        AppMethodBeat.o(204431);
       }
     });
     localAnimator.start();
-    if (this.ngz.size() <= 1) {
-      this.ngy.c(0, this.ngA);
+    if (this.Atw.size() <= 1) {
+      this.Atv.c(0, this.Atx);
     }
-    if ((!this.ngH.isEmpty()) && (this.cNB))
+    if ((!this.Gdi.isEmpty()) && (this.ddZ))
     {
-      paramk = this.ngH.iterator();
+      paramk = this.Gdi.iterator();
       while (paramk.hasNext()) {
         ((l)paramk.next()).h(Boolean.FALSE);
       }
     }
-    this.cNB = false;
+    this.ddZ = false;
     AppMethodBeat.o(131485);
+  }
+  
+  public final void caW()
+  {
+    AppMethodBeat.i(183778);
+    if (this.Atv.isRunning()) {
+      this.Atv.cancel();
+    }
+    if (!this.Atw.isEmpty())
+    {
+      a local6 = new a() {};
+      while (!this.Atw.isEmpty()) {
+        local6.apply(this.Atw.pollFirst());
+      }
+    }
+    this.GcY = null;
+    this.Gdg = null;
+    this.GdI = false;
+    this.GdC.clear();
+    this.GdH.clear();
+    removeAllViewsInLayout();
+    this.mQp.removeCallbacksAndMessages(null);
+    this.Atx.run();
+    AppMethodBeat.o(183778);
   }
   
   public final boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -357,7 +355,7 @@ public final class e
   public final k getCurrentDialog()
   {
     AppMethodBeat.i(131486);
-    k localk = (k)this.ngz.peekLast();
+    k localk = (k)this.Atw.peekLast();
     AppMethodBeat.o(131486);
     return localk;
   }
@@ -365,14 +363,14 @@ public final class e
   public final boolean onBackPressed()
   {
     AppMethodBeat.i(131489);
-    k localk = (k)this.ngz.peekLast();
+    k localk = (k)this.Atw.peekLast();
     if (localk == null)
     {
       setVisibility(8);
       AppMethodBeat.o(131489);
       return false;
     }
-    if ((!localk.aOS()) && (localk.isCancelable()))
+    if ((!localk.bjb()) && (localk.isCancelable()))
     {
       localk.onCancel();
       c(localk);
@@ -392,9 +390,9 @@ public final class e
       if (this.mRotation != i)
       {
         this.mRotation = i;
-        paramConfiguration = this.ngz.iterator();
+        paramConfiguration = this.Atw.iterator();
         while (paramConfiguration.hasNext()) {
-          ((k)paramConfiguration.next()).qB(this.mRotation);
+          ((k)paramConfiguration.next()).ut(this.mRotation);
         }
       }
     }
@@ -403,17 +401,17 @@ public final class e
   
   public final void onViewRemoved(View paramView)
   {
-    AppMethodBeat.i(200137);
+    AppMethodBeat.i(204433);
     super.onViewRemoved(paramView);
-    if (this.ngz.size() == 0) {
-      this.ngy.c(0, this.ngA);
+    if (this.Atw.size() == 0) {
+      this.Atv.c(0, this.Atx);
     }
-    AppMethodBeat.o(200137);
+    AppMethodBeat.o(204433);
   }
   
   public final void setShouldBringSelfToFrontWhenDialogShown(boolean paramBoolean)
   {
-    this.ngL = paramBoolean;
+    this.GfG = paramBoolean;
   }
 }
 

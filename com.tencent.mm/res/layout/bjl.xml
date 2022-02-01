@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.wallet_core.ui.CustomerScrollView android:id="@id/e7a" android:background="@color/a98" android:fitsSystemWindows="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true" android:overScrollMode="never"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <TextView android:textSize="@dimen/jv" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="left" android:id="@id/yf" android:background="#1a000000" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/i_" android:paddingRight="@dimen/i_" android:paddingBottom="@dimen/i_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" />
-        <include android:id="@id/gxt" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/bjk" />
-    </LinearLayout>
-</com.tencent.mm.wallet_core.ui.CustomerScrollView>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:gravity="center_vertical" android:id="@id/bck" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/r" android:layout_marginRight="@dimen/i2" android:maxWidth="@dimen/c_" android:minWidth="@dimen/em" style="@style/ob" />
+    <View android:layout_width="0.0dip" android:layout_height="1.0dip" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/bcj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" android:layout_marginRight="@dimen/cb" android:layout_marginBottom="@dimen/ir" android:maxWidth="@dimen/c8" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h6o" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/cb" android:src="@raw/icons_outlined_arrow" android:layout_centerVertical="true" app:iconColor="@color/FG_2" />
+</LinearLayout>

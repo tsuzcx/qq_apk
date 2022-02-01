@@ -4,8 +4,8 @@ import android.annotation.TargetApi;
 import android.media.MediaCodec.BufferInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.sight.base.SightVideoJNI;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.nio.ByteBuffer;
 
 @TargetApi(16)
@@ -27,11 +27,11 @@ public final class r
     AppMethodBeat.o(89585);
   }
   
-  public final int gz(int paramInt1, int paramInt2)
+  public final int ha(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(89583);
     this.bufId = paramInt1;
-    paramInt1 = super.gz(paramInt1, paramInt2);
+    paramInt1 = super.ha(paramInt1, paramInt2);
     AppMethodBeat.o(89583);
     return paramInt1;
   }
@@ -41,16 +41,16 @@ public final class r
     AppMethodBeat.i(89584);
     if ((this.bufId >= 0) && (paramByteBuffer != null) && (paramBufferInfo != null) && (paramBufferInfo.size == paramByteBuffer.limit() - paramByteBuffer.position()))
     {
-      long l = bu.HQ();
+      long l = Util.currentTicks();
       SightVideoJNI.writeH264DataLock(this.bufId, paramByteBuffer, paramBufferInfo.size, paramBufferInfo.presentationTimeUs);
-      ae.i("MicroMsg.MMSightYUVMediaCodecBufIdRecorder", "writeH264Data used %sms, size: %s %s", new Object[] { Long.valueOf(bu.aO(l)), Integer.valueOf(paramBufferInfo.size), Integer.valueOf(paramByteBuffer.capacity()) });
+      Log.i("MicroMsg.MMSightYUVMediaCodecBufIdRecorder", "writeH264Data used %sms, size: %s %s", new Object[] { Long.valueOf(Util.ticksToNow(l)), Integer.valueOf(paramBufferInfo.size), Integer.valueOf(paramByteBuffer.capacity()) });
     }
     AppMethodBeat.o(89584);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.model.a.r
  * JD-Core Version:    0.7.0.1
  */

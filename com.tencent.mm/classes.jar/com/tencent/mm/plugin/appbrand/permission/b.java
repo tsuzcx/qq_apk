@@ -4,109 +4,109 @@ import android.content.res.Resources;
 import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.page.q;
+import com.tencent.mm.plugin.appbrand.ac.m;
+import com.tencent.mm.plugin.appbrand.page.ac;
 import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.plugin.appbrand.widget.e.a;
-import com.tencent.mm.plugin.appbrand.widget.e.b.a;
-import com.tencent.mm.plugin.appbrand.widget.e.f;
-import com.tencent.mm.plugin.appbrand.y.m;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.page.w;
+import com.tencent.mm.plugin.appbrand.widget.f.a;
+import com.tencent.mm.plugin.appbrand.widget.f.b.a;
+import com.tencent.mm.plugin.appbrand.widget.f.f;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashSet;
 import java.util.Set;
 
 final class b
 {
-  private static final SparseIntArray mmH;
-  private static final Set<String> mmI;
+  private static final SparseIntArray nxh;
+  private static final Set<String> nxi;
   
   static
   {
     AppMethodBeat.i(47994);
-    mmH = new SparseIntArray()
+    nxh = new SparseIntArray()
     {
       public final int get(int paramAnonymousInt)
       {
         AppMethodBeat.i(47991);
-        paramAnonymousInt = super.get(paramAnonymousInt, 2131755480);
+        paramAnonymousInt = super.get(paramAnonymousInt, 2131755518);
         AppMethodBeat.o(47991);
         return paramAnonymousInt;
       }
     };
-    mmI = new HashSet();
-    mmH.put("requestPayment".hashCode(), 2131755476);
-    mmH.put("requestVirtualPayment".hashCode(), 2131755476);
-    mmH.put("playVoice".hashCode(), 2131755477);
-    mmH.put("operateMusicPlayer".hashCode(), 2131755477);
-    mmH.put("shareAppMessage".hashCode(), 2131755478);
-    mmH.put("onShareAppMessage".hashCode(), 2131755478);
-    mmH.put("shareAppMessageDirectly".hashCode(), 2131755478);
-    mmH.put("shareTimeline".hashCode(), 2131755478);
-    mmH.put("onShareTimeline".hashCode(), 2131755478);
-    mmH.put("launchMiniProgram".hashCode(), 2131755475);
-    mmI.add("requestPayment");
-    mmI.add("requestVirtualPayment");
-    mmI.add("playVoice");
-    mmI.add("operateMusicPlayer");
-    mmI.add("shareAppMessage");
-    mmI.add("onShareAppMessage");
-    mmI.add("shareAppMessageDirectly");
-    mmI.add("shareTimeline");
-    mmI.add("onShareTimeline");
-    mmI.add("launchMiniProgram");
-    mmI.add("makeVoIPCall");
-    mmI.add("addCard");
-    mmI.add("chooseContact");
-    mmI.add("openCard");
-    mmI.add("openOfflinePayView");
-    mmI.add("openWCPayLQTDepositPlan");
-    mmI.add("openWCPayLQTDepositPlanAdd");
-    mmI.add("openWCPayLQTDetail");
-    mmI.add("openWCPayLQTSave");
-    mmI.add("loadPaySpeechDialectConfig");
-    mmI.add("setCurrentPaySpeech");
-    mmI.add("openWCCardHomePage");
-    mmI.add("openWCCertHomePage");
-    mmI.add("requestBizSplitBillPayment");
+    nxi = new HashSet();
+    nxh.put("requestPayment".hashCode(), 2131755514);
+    nxh.put("requestVirtualPayment".hashCode(), 2131755514);
+    nxh.put("playVoice".hashCode(), 2131755515);
+    nxh.put("operateMusicPlayer".hashCode(), 2131755515);
+    nxh.put("shareAppMessage".hashCode(), 2131755516);
+    nxh.put("onShareAppMessage".hashCode(), 2131755516);
+    nxh.put("shareAppMessageDirectly".hashCode(), 2131755516);
+    nxh.put("shareTimeline".hashCode(), 2131755516);
+    nxh.put("onShareTimeline".hashCode(), 2131755516);
+    nxh.put("launchMiniProgram".hashCode(), 2131755513);
+    nxi.add("requestPayment");
+    nxi.add("requestVirtualPayment");
+    nxi.add("playVoice");
+    nxi.add("operateMusicPlayer");
+    nxi.add("shareAppMessage");
+    nxi.add("onShareAppMessage");
+    nxi.add("shareAppMessageDirectly");
+    nxi.add("shareTimeline");
+    nxi.add("onShareTimeline");
+    nxi.add("launchMiniProgram");
+    nxi.add("makeVoIPCall");
+    nxi.add("addCard");
+    nxi.add("chooseContact");
+    nxi.add("openCard");
+    nxi.add("openOfflinePayView");
+    nxi.add("openWCPayLQTDepositPlan");
+    nxi.add("openWCPayLQTDepositPlanAdd");
+    nxi.add("openWCPayLQTDetail");
+    nxi.add("openWCPayLQTSave");
+    nxi.add("loadPaySpeechDialectConfig");
+    nxi.add("setCurrentPaySpeech");
+    nxi.add("openWCCardHomePage");
+    nxi.add("openWCCertHomePage");
+    nxi.add("requestBizSplitBillPayment");
     AppMethodBeat.o(47994);
   }
   
   static void n(AppBrandRuntime paramAppBrandRuntime, String paramString)
   {
     AppMethodBeat.i(47993);
-    if ((paramAppBrandRuntime == null) || (bu.isNullOrNil(paramString)))
+    if ((paramAppBrandRuntime == null) || (Util.isNullOrNil(paramString)))
     {
       AppMethodBeat.o(47993);
       return;
     }
-    paramString = ak.getResources().getString(mmH.get(paramString.hashCode()));
+    paramString = MMApplicationContext.getResources().getString(nxh.get(paramString.hashCode()));
     m.runOnUiThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(47992);
-        Object localObject = this.jBu.aWm();
+        Object localObject = this.cBo.brh();
         if (localObject != null)
         {
-          localObject = ((t)localObject).getCurrentPage();
+          localObject = ((w)localObject).getCurrentPage();
           if (localObject != null)
           {
-            localObject = ((q)localObject).getCurrentPageView();
+            localObject = ((t)localObject).getCurrentPageView();
             if (localObject != null)
             {
-              localObject = ((z)localObject).mgu;
+              localObject = ((ac)localObject).nqT;
               String str = this.val$message;
-              if (((com.tencent.mm.plugin.appbrand.widget.e.b)localObject).nrR.isRunning())
+              if (((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).nnq.isRunning())
               {
-                b.a locala = ((com.tencent.mm.plugin.appbrand.widget.e.b)localObject).bGs();
-                ((com.tencent.mm.plugin.appbrand.widget.e.b)localObject).bGt();
-                if (((com.tencent.mm.plugin.appbrand.widget.e.b)localObject).nrT == null)
+                b.a locala = ((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).ccI();
+                ((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).ccJ();
+                if (((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).oBy == null)
                 {
-                  ((com.tencent.mm.plugin.appbrand.widget.e.b)localObject).nrT = new a(((com.tencent.mm.plugin.appbrand.widget.e.b)localObject).nrR.getContext());
-                  ((com.tencent.mm.plugin.appbrand.widget.e.b)localObject).nrT.b(locala);
+                  ((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).oBy = new a(((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).nnq.getContext());
+                  ((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).oBy.c(locala);
                 }
-                ((com.tencent.mm.plugin.appbrand.widget.e.b)localObject).nrT.Wm(str);
+                ((com.tencent.mm.plugin.appbrand.widget.f.b)localObject).oBy.agi(str);
               }
             }
           }
@@ -119,7 +119,7 @@ final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,127 +1,62 @@
 package com.tencent.mm.plugin.scanner.util;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.model.z;
+import com.tencent.mm.pluginsdk.cmd.a;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/util/ScanRetryManager;", "", "()V", "canRetryReopenCamera", "", "canRetryUsingTexture", "enterTimestamp", "", "exitTimestamp", "isRetry", "isScanSuccess", "isUpdated", "mRetryType", "", "mTextureScaledFactor", "", "mTimeout", "mTimeoutFactor", "maxTimeout", "minTimeout", "mmkv", "Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;", "onPreviewFrameCalled", "stayTime", "canRetry", "retryType", "cancelRetryType", "", "checkAndResetTimeout", "enterScanUI", "exitScanUI", "getMMKVKey", "", "getRetryType", "getSavedTimeout", "getTextureScaleFactor", "getTimeout", "init", "initMMKV", "saveTimeout", "timeout", "setIsRetry", "setOnPreviewFrameCalled", "setScanSuccess", "updateTimeout", "time", "Companion", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/util/ScanProcessorCommand;", "Lcom/tencent/mm/pluginsdk/cmd/ProcessorCommand;", "()V", "processCommand", "", "context", "Landroid/content/Context;", "args", "", "", "username", "(Landroid/content/Context;[Ljava/lang/String;Ljava/lang/String;)Z", "Companion", "scan-sdk_release"})
 public final class g
+  implements a
 {
-  public static final g.a yPR;
-  private ay cCf;
-  public long dCI;
-  public boolean isRetry;
-  public long mTimeout;
-  public long xgd;
-  public boolean yJQ;
-  public long yPH;
-  public long yPI;
-  public float yPJ;
-  public boolean yPK;
-  public int yPL;
-  public boolean yPM;
-  public boolean yPN;
-  public float yPO;
-  public long yPP;
-  public boolean yPQ;
+  public static final a CTH;
   
   static
   {
-    AppMethodBeat.i(161061);
-    yPR = new g.a((byte)0);
-    AppMethodBeat.o(161061);
+    AppMethodBeat.i(194778);
+    CTH = new a((byte)0);
+    AppMethodBeat.o(194778);
   }
   
-  public g()
+  public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
-    AppMethodBeat.i(161060);
-    this.yPH = 5000L;
-    this.yPI = 1000L;
-    this.yPJ = 2.0F;
-    this.yPO = 0.8F;
-    Object localObject = new StringBuilder();
-    p.g(com.tencent.mm.kernel.g.ajP(), "MMKernel.account()");
-    this.cCf = ay.aRX(a.aiF() + "_scan_code_retry");
-    localObject = this.cCf;
-    long l;
-    int i;
-    int j;
-    if (localObject != null)
+    boolean bool = false;
+    AppMethodBeat.i(194777);
+    if ((paramArrayOfString != null) && (p.j("//scan", paramArrayOfString[0])) && (p.j("showDebug", paramArrayOfString[1])) && (paramArrayOfString.length > 2))
     {
-      l = ((ay)localObject).getLong("scan_code_retry_timeout", 5000L);
-      this.mTimeout = l;
-      this.yPL = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qIS, 0);
-      this.yPH = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qIU, 5000L);
-      this.yPI = 1000L;
-      i = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qIV, 200);
-      this.yPJ = (i / 100.0F);
-      this.mTimeout = Math.max(this.yPI, this.mTimeout);
-      this.mTimeout = Math.min(this.yPH, this.mTimeout);
-      j = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qIW, 80);
-      if (j != 0)
-      {
-        this.yPO = (j / 100.0F);
-        this.yPO = Math.min(1.0F, this.yPO);
+      paramContext = MultiProcessMMKV.getSingleMMKV("ScanDebug");
+      if (Util.getInt(paramArrayOfString[2], 0) == 1) {
+        bool = true;
       }
-      if (this.yPL != 1) {
-        break label396;
-      }
-      this.yPM = true;
-      this.yPN = false;
+      paramContext.putBoolean("scan_debug_show_debug_view", bool);
+      paramContext.apply();
+      AppMethodBeat.o(194777);
+      return true;
     }
-    for (;;)
+    if ((paramArrayOfString != null) && (p.j("//scan", paramArrayOfString[0])) && (p.j("clearSearch", paramArrayOfString[1])) && (paramArrayOfString.length > 1))
     {
-      ae.i("MicroMsg.ScanRetryManager", "alvinluo init retryType: %d, maxTimeout: %d, minTimeout: %d, timeout: %d, timeoutFactor config: %d, factor: %f, textureScaleFactor: %d, factor: %f, canRetry: %b, %b", new Object[] { Integer.valueOf(this.yPL), Long.valueOf(this.yPH), Long.valueOf(this.yPI), Long.valueOf(this.mTimeout), Integer.valueOf(i), Float.valueOf(this.yPJ), Integer.valueOf(j), Float.valueOf(this.yPO), Boolean.valueOf(this.yPM), Boolean.valueOf(this.yPN) });
-      AppMethodBeat.o(161060);
-      return;
-      l = 5000L;
-      break;
-      label396:
-      if (this.yPL == 2)
-      {
-        this.yPM = false;
-        this.yPN = true;
+      paramContext = z.aTY();
+      paramContext = MultiProcessMMKV.getMMKV(paramContext + "__image_gallery_search_preview_slot_mmkv_key__");
+      if (paramContext != null) {
+        paramContext.clearAll();
       }
+      AppMethodBeat.o(194777);
+      return true;
     }
-  }
-  
-  public final boolean PC(int paramInt)
-  {
-    if (paramInt == 1) {
-      return this.yPM;
-    }
-    if (paramInt == 2) {
-      return this.yPN;
-    }
+    AppMethodBeat.o(194777);
     return false;
   }
   
-  public final void zA(long paramLong)
-  {
-    AppMethodBeat.i(161059);
-    ae.i("MicroMsg.ScanRetryManager", "alvinluo saveTimeout %d", new Object[] { Long.valueOf(paramLong) });
-    ay localay = this.cCf;
-    if (localay != null) {
-      localay.putLong("scan_code_retry_timeout", paramLong);
-    }
-    localay = this.cCf;
-    if (localay != null)
-    {
-      localay.apply();
-      AppMethodBeat.o(161059);
-      return;
-    }
-    AppMethodBeat.o(161059);
-  }
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/util/ScanProcessorCommand$Companion;", "", "()V", "COMMAND_SCAN", "", "SCAN_DEBUG", "SCAN_DEBUG_SHOW_DEBUG_VIEW", "init", "", "scan-sdk_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.util.g
  * JD-Core Version:    0.7.0.1
  */

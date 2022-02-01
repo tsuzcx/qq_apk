@@ -1,163 +1,76 @@
 package com.tencent.mm.plugin.eggspring.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.bw.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bbm;
-import com.tencent.mm.protocal.protobuf.bbn;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
-import d.v;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/eggspring/net/NetSceneHasLuckyBag;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "keyWord", "", "appId", "queryTicket", "", "(Ljava/lang/String;Ljava/lang/String;J)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "luckyBagInfo", "Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "getLuckyBagInfo", "()Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "setLuckyBagInfo", "(Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;)V", "getQueryTicket", "()J", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "irr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-eggspring_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo;", "", "keyword", "", "traceId", "appId", "hasLuckyBag", "", "interval", "", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZI)V", "getAppId", "()Ljava/lang/String;", "setAppId", "(Ljava/lang/String;)V", "getHasLuckyBag", "()Z", "getInterval", "()I", "getKeyword", "getTraceId", "component1", "component2", "component3", "component4", "component5", "copy", "equals", "other", "hashCode", "toString", "Companion", "plugin-eggspring_release"})
 public final class c
-  extends n
-  implements k
 {
-  public static final a pFV;
-  private final String appId;
-  private f callback;
-  private final String ilP;
-  public com.tencent.mm.plugin.eggspring.b.c pFT;
-  public final long pFU;
-  private b rr;
+  public static final a qVf;
+  public String appId;
+  public final String dDv;
+  public final int gTn;
+  public final String kZe;
+  private final boolean qVe;
   
   static
   {
-    AppMethodBeat.i(108164);
-    pFV = new a((byte)0);
-    AppMethodBeat.o(108164);
+    AppMethodBeat.i(108152);
+    qVf = new a((byte)0);
+    AppMethodBeat.o(108152);
   }
   
-  public c(String paramString1, String paramString2, long paramLong)
+  public c(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(108163);
-    this.ilP = paramString1;
-    this.appId = paramString2;
-    this.pFU = paramLong;
-    paramString1 = new b.a();
-    paramString1.c((a)new bbm());
-    paramString1.d((a)new bbn());
-    paramString1.DN("/cgi-bin/mmoc-bin/expressionad/getexpression");
-    paramString1.oS(2757);
-    paramString1.oU(0);
-    paramString1.oV(0);
-    paramString1 = paramString1.aDS();
-    p.g(paramString1, "builder.buildInstance()");
-    this.rr = paramString1;
-    paramString1 = this.rr.aEU();
-    if (paramString1 == null)
+    AppMethodBeat.i(194571);
+    this.dDv = paramString1;
+    this.kZe = paramString2;
+    this.appId = paramString3;
+    this.qVe = true;
+    this.gTn = paramInt;
+    AppMethodBeat.o(194571);
+  }
+  
+  public final boolean equals(Object paramObject)
+  {
+    AppMethodBeat.i(194573);
+    if (this != paramObject)
     {
-      paramString1 = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetExpressionReq");
-      AppMethodBeat.o(108163);
-      throw paramString1;
-    }
-    paramString1 = (bbm)paramString1;
-    paramString1.dmf = this.ilP;
-    paramString1.dwb = this.appId;
-    AppMethodBeat.o(108163);
-  }
-  
-  public final int doScene(e parame, f paramf)
-  {
-    AppMethodBeat.i(108161);
-    p.h(parame, "dispatcher");
-    p.h(paramf, "callback");
-    this.callback = paramf;
-    int i = dispatch(parame, (q)this.rr, (k)this);
-    AppMethodBeat.o(108161);
-    return i;
-  }
-  
-  public final int getType()
-  {
-    return 2757;
-  }
-  
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(108162);
-    ae.i("MicroMsg.NetSceneHasLuckyBag", "onGYNetEnd errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 == 0) && (paramInt3 == 0))
-    {
-      paramq = this.rr.aEV();
-      if (paramq == null)
+      if ((paramObject instanceof c))
       {
-        paramString = new v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.GetExpressionResp");
-        AppMethodBeat.o(108162);
-        throw paramString;
-      }
-      paramq = (bbn)paramq;
-      ae.i("MicroMsg.NetSceneHasLuckyBag", "ret[%s] msg[%s] hasLuckyBag[%s] traceId[%s] interval[%s].", new Object[] { Integer.valueOf(paramq.ret), paramq.msg, Integer.valueOf(paramq.GRv), paramq.GRl, Integer.valueOf(paramq.gxu) });
-      if (paramq.ret == 0)
-      {
-        this.pFT = new com.tencent.mm.plugin.eggspring.b.c();
-        switch (paramq.GRv)
-        {
-        default: 
-          ae.e("MicroMsg.NetSceneHasLuckyBag", "err!!![%s].", new Object[] { Integer.valueOf(paramq.GRv) });
-        }
+        paramObject = (c)paramObject;
+        if ((!p.j(this.dDv, paramObject.dDv)) || (!p.j(this.kZe, paramObject.kZe)) || (!p.j(this.appId, paramObject.appId)) || (this.qVe != paramObject.qVe) || (this.gTn != paramObject.gTn)) {}
       }
     }
-    for (;;)
+    else
     {
-      if (paramq.gxu > 0)
-      {
-        paramArrayOfByte = this.pFT;
-        if (paramArrayOfByte == null) {
-          p.gkB();
-        }
-        paramArrayOfByte.gxu = paramq.gxu;
-      }
-      paramq = this.callback;
-      if (paramq == null) {
-        p.bdF("callback");
-      }
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(108162);
-      return;
-      paramArrayOfByte = this.pFT;
-      if (paramArrayOfByte == null) {
-        p.gkB();
-      }
-      paramArrayOfByte.pFM = true;
-      paramArrayOfByte = this.pFT;
-      if (paramArrayOfByte == null) {
-        p.gkB();
-      }
-      paramArrayOfByte.jWi = paramq.GRl;
-      paramArrayOfByte = this.pFT;
-      if (paramArrayOfByte == null) {
-        p.gkB();
-      }
-      paramArrayOfByte.ilP = this.ilP;
-      paramArrayOfByte = this.pFT;
-      if (paramArrayOfByte == null) {
-        p.gkB();
-      }
-      paramArrayOfByte.appId = this.appId;
-      continue;
-      paramArrayOfByte = this.pFT;
-      if (paramArrayOfByte == null) {
-        p.gkB();
-      }
-      paramArrayOfByte.pFM = false;
+      AppMethodBeat.o(194573);
+      return true;
     }
+    AppMethodBeat.o(194573);
+    return false;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/eggspring/net/NetSceneHasLuckyBag$Companion;", "", "()V", "TAG", "", "plugin-eggspring_release"})
+  public final int hashCode()
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(108151);
+    String str = "LuckyBagInfo(keyword=" + this.dDv + ", traceId=" + this.kZe + ", appId=" + this.appId + ", hasLuckyBag=" + this.qVe + ", interval=" + this.gTn + ")";
+    AppMethodBeat.o(108151);
+    return str;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/model/LuckyBagInfo$Companion;", "", "()V", "HAS_LUCKY_BAG", "", "NO_LUCKY_BAG", "plugin-eggspring_release"})
   public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.c.c
  * JD-Core Version:    0.7.0.1
  */

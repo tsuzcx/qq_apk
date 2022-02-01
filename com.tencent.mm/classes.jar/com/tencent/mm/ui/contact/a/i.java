@@ -12,35 +12,35 @@ import com.tencent.mm.plugin.fts.ui.n;
 public final class i
   extends a
 {
-  private b KNI;
-  a.a KNJ;
-  private CharSequence tMs;
+  private b QaI;
+  a.a QaJ;
+  private CharSequence xds;
   
   public i(int paramInt)
   {
     super(6, paramInt);
     AppMethodBeat.i(102963);
-    this.KNI = new b();
-    this.KNJ = new a();
+    this.QaI = new b();
+    this.QaJ = new a();
     AppMethodBeat.o(102963);
   }
   
   public final void a(Context paramContext, a.a parama)
   {
     AppMethodBeat.i(102964);
-    this.tMs = com.tencent.mm.plugin.fts.a.f.a(paramContext.getString(2131762920), paramContext.getString(2131762919), e.c(this.query, this.query)).tFv;
+    this.xds = com.tencent.mm.plugin.fts.a.f.a(paramContext.getString(2131765056), paramContext.getString(2131765055), e.c(this.query, this.query)).wWu;
     AppMethodBeat.o(102964);
   }
   
-  public final a.b aRR()
+  public final a.b bmx()
   {
-    return this.KNI;
+    return this.QaI;
   }
   
   public final class a
     extends a.a
   {
-    public TextView tLW;
+    public TextView xcX;
     
     public a()
     {
@@ -59,9 +59,9 @@ public final class i
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(102961);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131495363, paramViewGroup, false);
-      paramViewGroup = (i.a)i.this.KNJ;
-      paramViewGroup.tLW = ((TextView)paramContext.findViewById(2131301013));
+      paramContext = LayoutInflater.from(paramContext).inflate(2131496224, paramViewGroup, false);
+      paramViewGroup = (i.a)i.this.QaJ;
+      paramViewGroup.xcX = ((TextView)paramContext.findViewById(2131302657));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102961);
       return paramContext;
@@ -71,11 +71,11 @@ public final class i
     {
       AppMethodBeat.i(102962);
       paramContext = (i.a)parama;
-      n.a(i.a(i.this), paramContext.tLW);
+      n.a(i.a(i.this), paramContext.xcX);
       AppMethodBeat.o(102962);
     }
     
-    public final boolean aRS()
+    public final boolean bmy()
     {
       return false;
     }
@@ -83,7 +83,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.i
  * JD-Core Version:    0.7.0.1
  */

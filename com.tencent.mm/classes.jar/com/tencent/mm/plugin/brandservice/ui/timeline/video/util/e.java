@@ -3,33 +3,35 @@ package com.tencent.mm.plugin.brandservice.ui.timeline.video.util;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.v;
-import com.tencent.mm.ah.x;
-import com.tencent.mm.g.a.cw;
+import com.tencent.mm.ag.v;
+import com.tencent.mm.ag.x;
+import com.tencent.mm.g.a.cz;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.model.w;
-import com.tencent.mm.model.z;
-import com.tencent.mm.model.z.b;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.model.aa;
+import com.tencent.mm.model.ad;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.plugin.webview.model.c;
 import com.tencent.mm.plugin.webview.model.c.a;
-import com.tencent.mm.protocal.protobuf.akf;
-import com.tencent.mm.protocal.protobuf.byj;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.amt;
+import com.tencent.mm.protocal.protobuf.cmb;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoMsgFav;", "", "()V", "TAG", "", "doFav", "", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "controller", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "data", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "IPCInvoke_Fav", "plugin-brandservice_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoMsgFav;", "", "()V", "TAG", "", "doFav", "", "msgInfo", "Lcom/tencent/mm/message/MPMsgInfo;", "controller", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/BizNativePageController;", "data", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "IPCInvoke_Fav", "plugin-brandservice_release"})
 public final class e
 {
   private static final String TAG = "MicroMsg.BizVideoMsgFav";
-  public static final e oxc;
+  public static final e pKG;
   
   static
   {
     AppMethodBeat.i(7291);
-    oxc = new e();
+    pKG = new e();
     TAG = "MicroMsg.BizVideoMsgFav";
     AppMethodBeat.o(7291);
   }
@@ -41,38 +43,38 @@ public final class e
     p.h(paramb, "controller");
     AppMsgDataParcelable localAppMsgDataParcelable = new AppMsgDataParcelable();
     localAppMsgDataParcelable.url = paramb.url;
-    localAppMsgDataParcelable.otY = paramx;
+    localAppMsgDataParcelable.pHv = paramx;
     int i;
-    if (paramb.bSm())
+    if (paramb.cpW())
     {
       i = 1;
-      localAppMsgDataParcelable.owB = i;
-      paramx = paramb.oue;
+      localAppMsgDataParcelable.pKf = i;
+      paramx = paramb.pHB;
       if (paramx == null) {
-        break label135;
+        break label136;
       }
       paramx = paramx.title;
       label67:
-      localAppMsgDataParcelable.owC = paramx;
-      paramx = paramb.oue;
+      localAppMsgDataParcelable.pKg = paramx;
+      paramx = paramb.pHB;
       if (paramx == null) {
-        break label140;
+        break label141;
       }
-      paramx = paramx.hGg;
+      paramx = paramx.iAq;
       label86:
-      localAppMsgDataParcelable.owD = paramx;
-      paramx = paramb.oue;
+      localAppMsgDataParcelable.pKh = paramx;
+      paramx = paramb.pHB;
       if (paramx == null) {
-        break label145;
+        break label146;
       }
     }
-    label135:
-    label140:
-    label145:
-    for (paramx = paramx.hGe;; paramx = null)
+    label136:
+    label141:
+    label146:
+    for (paramx = paramx.iAo;; paramx = null)
     {
-      localAppMsgDataParcelable.owE = paramx;
-      h.a("com.tencent.mm", (Parcelable)localAppMsgDataParcelable, a.class, null);
+      localAppMsgDataParcelable.pKi = paramx;
+      h.a(MainProcessIPCService.dkO, (Parcelable)localAppMsgDataParcelable, a.class, null);
       AppMethodBeat.o(7289);
       return;
       i = 0;
@@ -88,75 +90,75 @@ public final class e
   {
     AppMethodBeat.i(7290);
     p.h(paramAppMsgDataParcelable, "data");
-    x localx = paramAppMsgDataParcelable.otY;
+    x localx = paramAppMsgDataParcelable.pHv;
     if (localx == null)
     {
-      ae.w(TAG, "doFav msgInfo is null");
+      Log.w(TAG, "doFav msgInfo is null");
       AppMethodBeat.o(7290);
       return;
     }
     int i;
-    cw localcw;
+    cz localcz;
     c.a locala;
-    if (paramAppMsgDataParcelable.owB == 1)
+    if (paramAppMsgDataParcelable.pKf == 1)
     {
       i = 1;
-      localcw = new cw();
+      localcz = new cz();
       locala = new c.a();
       locala.url = paramAppMsgDataParcelable.url;
-      locala.Ekw = new akf();
-      locala.Ekw.hBX = 1;
-      locala.Ekw.hBV = localx.hFY.type;
-      locala.Ekw.hCa = localx.hFY.hCa;
-      locala.Ekw.videoWidth = localx.hFY.videoWidth;
-      locala.Ekw.videoHeight = localx.hFY.videoHeight;
-      locala.Ekw.duration = localx.hFY.hGi;
-      locala.Ekw.hBW = ((int)localx.hFY.time);
-      locala.Ekw.hBZ = localx.hBZ;
-      if (!bu.isNullOrNil(localx.dpP)) {
-        break label425;
+      locala.IXu = new amt();
+      locala.IXu.iwe = 1;
+      locala.IXu.iwc = localx.iAi.type;
+      locala.IXu.vid = localx.iAi.vid;
+      locala.IXu.videoWidth = localx.iAi.videoWidth;
+      locala.IXu.videoHeight = localx.iAi.videoHeight;
+      locala.IXu.duration = localx.iAi.iAs;
+      locala.IXu.iwd = ((int)localx.iAi.time);
+      locala.IXu.iwg = localx.iwg;
+      if (!Util.isNullOrNil(localx.dHc)) {
+        break label427;
       }
-      locala.Ekw.dpP = localx.Wa();
-      locala.Ekw.hFW = w.zP(localx.Wa());
+      locala.IXu.dHc = localx.ajO();
+      locala.IXu.iAg = aa.getDisplayName(localx.ajO());
       label233:
       if (i == 0) {
-        break label452;
+        break label454;
       }
-      locala.thumbUrl = paramAppMsgDataParcelable.owE;
-      locala.title = paramAppMsgDataParcelable.owC;
+      locala.thumbUrl = paramAppMsgDataParcelable.pKi;
+      locala.title = paramAppMsgDataParcelable.pKg;
     }
-    for (locala.desc = paramAppMsgDataParcelable.owD;; locala.desc = localx.hFY.hGg)
+    for (locala.desc = paramAppMsgDataParcelable.pKh;; locala.desc = localx.iAi.iAq)
     {
-      locala.Ekw.hGe = locala.thumbUrl;
-      Object localObject = z.Br(bu.nullAsNil(localx.hFX));
-      localObject = z.aBG().F((String)localObject, true);
+      locala.IXu.iAo = locala.thumbUrl;
+      Object localObject = ad.JX(Util.nullAsNil(localx.iAh));
+      localObject = ad.aVe().G((String)localObject, true);
       if (localObject == null) {
-        p.gkB();
+        p.hyc();
       }
-      ((z.b)localObject).k("sendAppMsgScene", Integer.valueOf(2));
-      ((z.b)localObject).k("preChatName", localx.Wa());
-      ((z.b)localObject).k("preMsgIndex", Integer.valueOf(localx.hFV));
-      ((z.b)localObject).k("prePublishId", localx.hFX);
-      ((z.b)localObject).k("preUsername", localx.Wa());
-      ((z.b)localObject).k("referUrl", paramAppMsgDataParcelable.url);
-      localcw.doL.doR = 36;
-      c.a(localcw, locala);
-      a.IvT.l((com.tencent.mm.sdk.b.b)localcw);
+      ((ad.b)localObject).l("sendAppMsgScene", Integer.valueOf(2));
+      ((ad.b)localObject).l("preChatName", localx.ajO());
+      ((ad.b)localObject).l("preMsgIndex", Integer.valueOf(localx.iAf));
+      ((ad.b)localObject).l("prePublishId", localx.iAh);
+      ((ad.b)localObject).l("preUsername", localx.ajO());
+      ((ad.b)localObject).l("referUrl", paramAppMsgDataParcelable.url);
+      localcz.dFZ.dGf = 36;
+      c.a(localcz, locala);
+      EventCenter.instance.publish((IEvent)localcz);
       AppMethodBeat.o(7290);
       return;
       i = 0;
       break;
-      label425:
-      locala.Ekw.dpP = localx.dpP;
-      locala.Ekw.hFW = localx.hFW;
+      label427:
+      locala.IXu.dHc = localx.dHc;
+      locala.IXu.iAg = localx.iAg;
       break label233;
-      label452:
-      locala.thumbUrl = localx.hFY.hGe;
-      locala.title = localx.hFY.title;
+      label454:
+      locala.thumbUrl = localx.iAi.iAo;
+      locala.title = localx.iAi.title;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoMsgFav$IPCInvoke_Fav;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-brandservice_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/BizVideoMsgFav$IPCInvoke_Fav;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/video/util/AppMsgDataParcelable;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-brandservice_release"})
   static final class a
     implements com.tencent.mm.ipcinvoker.b<AppMsgDataParcelable, Bundle>
   {}

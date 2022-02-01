@@ -1,15 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import java.lang.ref.WeakReference;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class dd
-  extends b
+  extends IEvent
 {
-  public a doX;
-  public b doY;
-  
   public dd()
   {
     this((byte)0);
@@ -17,34 +12,8 @@ public final class dd
   
   private dd(byte paramByte)
   {
-    AppMethodBeat.i(130926);
-    this.doX = new a();
-    this.doY = new b();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(130926);
-  }
-  
-  public static final class a
-  {
-    public WeakReference aWN;
-    public String appId;
-    public String cVJ;
-    public Runnable callback;
-    public String doZ;
-    public String dpa;
-    public String dpb;
-    public int dpc = 0;
-    public String nonceStr;
-    public String packageExt;
-    public String signType;
-    public String signature;
-    public String token;
-  }
-  
-  public static final class b
-  {
-    public int retCode = 0;
   }
 }
 

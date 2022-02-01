@@ -2,36 +2,36 @@ package com.tencent.mm.audio.d.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.media.record.a.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public b djV;
-  private d djW;
-  private Object djX;
+  public b dBf;
+  private d dBg;
+  private Object dBh;
   
-  public final boolean PF()
+  public final boolean ZZ()
   {
     AppMethodBeat.i(146311);
-    if (this.djV == null) {
-      ae.e("MicroMsg.RecorderPcm", "stopRecord fail, recorder is null, return");
+    if (this.dBf == null) {
+      Log.e("MicroMsg.RecorderPcm", "stopRecord fail, recorder is null, return");
     }
     for (int i = 1; i != 0; i = 0)
     {
       AppMethodBeat.o(146311);
       return false;
     }
-    boolean bool = this.djV.PF();
-    synchronized (this.djX)
+    boolean bool = this.dBf.ZZ();
+    synchronized (this.dBh)
     {
-      if (this.djW != null)
+      if (this.dBg != null)
       {
-        this.djW.flush();
-        this.djW.close();
-        this.djW = null;
+        this.dBg.flush();
+        this.dBg.close();
+        this.dBg = null;
       }
-      this.djV.release();
-      ae.i("MicroMsg.RecorderPcm", "stopRecord:%b", new Object[] { Boolean.valueOf(bool) });
+      this.dBf.release();
+      Log.i("MicroMsg.RecorderPcm", "stopRecord:%b", new Object[] { Boolean.valueOf(bool) });
       AppMethodBeat.o(146311);
       return bool;
     }
@@ -39,7 +39,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.d.a.a
  * JD-Core Version:    0.7.0.1
  */

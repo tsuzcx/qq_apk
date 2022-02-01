@@ -134,7 +134,7 @@ public class AutomaticAnalyticsLogger
       return;
     }
     String str = FacebookSdk.getApplicationId();
-    switch (1.$SwitchMap$com$facebook$appevents$internal$SubscriptionType[paramSubscriptionType.ordinal()])
+    switch (AutomaticAnalyticsLogger.1.$SwitchMap$com$facebook$appevents$internal$SubscriptionType[paramSubscriptionType.ordinal()])
     {
     }
     for (;;)
@@ -181,7 +181,7 @@ public class AutomaticAnalyticsLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.appevents.internal.AutomaticAnalyticsLogger
  * JD-Core Version:    0.7.0.1
  */

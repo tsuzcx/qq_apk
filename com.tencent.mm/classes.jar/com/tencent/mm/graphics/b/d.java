@@ -2,7 +2,7 @@ package com.tencent.mm.graphics.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 import java.util.Collection;
 import java.util.HashMap;
@@ -10,42 +10,42 @@ import java.util.Iterator;
 
 public enum d
 {
-  public HashMap<Integer, a> gxA;
-  public com.tencent.e.i.b gxB;
-  public final Object gxC;
-  public WeakReference<Context> gxz;
+  public WeakReference<Context> hkm;
+  public HashMap<Integer, a> hkn;
+  public com.tencent.f.i.b hko;
+  public final Object hkp;
   public boolean isRunning;
   
   static
   {
     AppMethodBeat.i(136211);
-    gxy = new d("INSTANCE");
-    gxD = new d[] { gxy };
+    hkl = new d("INSTANCE");
+    hkq = new d[] { hkl };
     AppMethodBeat.o(136211);
   }
   
   private d()
   {
     AppMethodBeat.i(136208);
-    this.gxz = null;
-    this.gxA = new HashMap();
+    this.hkm = null;
+    this.hkn = new HashMap();
     this.isRunning = false;
-    this.gxB = null;
-    this.gxC = new Object();
+    this.hko = null;
+    this.hkp = new Object();
     AppMethodBeat.o(136208);
   }
   
-  public final b ahu()
+  public final b axG()
   {
     AppMethodBeat.i(136209);
-    synchronized (this.gxC)
+    synchronized (this.hkp)
     {
-      if (this.gxA != null)
+      if (this.hkn != null)
       {
-        Object localObject2 = (a)this.gxA.get(Integer.valueOf(2));
+        Object localObject2 = (a)this.hkn.get(Integer.valueOf(2));
         if ((localObject2 != null) && ((localObject2 instanceof b)))
         {
-          ((a)localObject2).ahr();
+          ((a)localObject2).axD();
           localObject2 = (b)localObject2;
           AppMethodBeat.o(136209);
           return localObject2;
@@ -56,22 +56,22 @@ public enum d
     }
   }
   
-  public final void ahv()
+  public final void axH()
   {
     AppMethodBeat.i(136210);
-    synchronized (this.gxC)
+    synchronized (this.hkp)
     {
       if (!this.isRunning)
       {
         AppMethodBeat.o(136210);
         return;
       }
-      if (this.gxB != null) {
-        this.gxB.cancel();
+      if (this.hko != null) {
+        this.hko.cancel();
       }
       this.isRunning = false;
-      if (this.gxA != null) {
-        this.gxA.clear();
+      if (this.hkn != null) {
+        this.hkn.clear();
       }
       AppMethodBeat.o(136210);
       return;
@@ -80,7 +80,7 @@ public enum d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.graphics.b.d
  * JD-Core Version:    0.7.0.1
  */

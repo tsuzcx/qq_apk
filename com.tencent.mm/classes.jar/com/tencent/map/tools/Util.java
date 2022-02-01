@@ -23,6 +23,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.net.URLEncoder;
+import java.security.MessageDigest;
+import java.util.Iterator;
 
 public class Util
 {
@@ -113,46 +115,37 @@ public class Util
     return localObject;
   }
   
+  public static <T> void foreach(Iterable<T> paramIterable, Callback<T> paramCallback)
+  {
+    AppMethodBeat.i(193524);
+    if ((paramIterable == null) || (paramCallback == null))
+    {
+      AppMethodBeat.o(193524);
+      return;
+    }
+    paramIterable = paramIterable.iterator();
+    while (paramIterable.hasNext()) {
+      paramCallback.callback(paramIterable.next());
+    }
+    AppMethodBeat.o(193524);
+  }
+  
   public static String getAppName(Context paramContext)
   {
     AppMethodBeat.i(180761);
-    if (paramContext == null)
-    {
-      AppMethodBeat.o(180761);
-      return "";
-    }
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    Object localObject = null;
+    paramContext = getRawAppName(paramContext);
     try
     {
-      paramContext = localPackageManager.getApplicationInfo(paramContext.getPackageName(), 128);
-      if (paramContext != null)
-      {
-        paramContext = paramContext.loadLabel(localPackageManager);
-        try
-        {
-          paramContext = URLEncoder.encode(paramContext.toString(), "utf-8");
-          AppMethodBeat.o(180761);
-          return paramContext;
-        }
-        catch (Exception paramContext)
-        {
-          for (;;)
-          {
-            paramContext = "";
-          }
-        }
-      }
+      String str = URLEncoder.encode(paramContext, "utf-8");
+      paramContext = str;
     }
-    catch (PackageManager.NameNotFoundException paramContext)
+    catch (Exception localException)
     {
-      for (;;)
-      {
-        paramContext = localObject;
-        continue;
-        paramContext = "can't find app name";
-      }
+      label19:
+      break label19;
     }
+    AppMethodBeat.o(180761);
+    return paramContext;
   }
   
   public static String getAppVersion(Context paramContext)
@@ -242,9 +235,9 @@ public class Util
     if (Build.VERSION.SDK_INT >= 23)
     {
       if (paramContext.checkSelfPermission("android.permission.READ_PHONE_STATE") != 0) {
-        break label159;
+        break label168;
       }
-      if (Build.VERSION.SDK_INT >= 29) {
+      if ((Build.VERSION.SDK_INT >= 29) && (paramContext.checkSelfPermission("android.permission.READ_PRIVILEGED_PHONE_STATE") == 0)) {
         if (i != 1) {}
       }
     }
@@ -291,8 +284,92 @@ public class Util
       }
       else
       {
-        label159:
+        label168:
         Object localObject2 = null;
+      }
+    }
+  }
+  
+  public static String getMD5String(String paramString)
+  {
+    AppMethodBeat.i(193522);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(193522);
+      return "";
+    }
+    paramString = getMD5String(paramString.getBytes());
+    AppMethodBeat.o(193522);
+    return paramString;
+  }
+  
+  public static String getMD5String(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(193523);
+    char[] arrayOfChar = new char[16];
+    char[] tmp14_12 = arrayOfChar;
+    tmp14_12[0] = 48;
+    char[] tmp20_14 = tmp14_12;
+    tmp20_14[1] = 49;
+    char[] tmp26_20 = tmp20_14;
+    tmp26_20[2] = 50;
+    char[] tmp32_26 = tmp26_20;
+    tmp32_26[3] = 51;
+    char[] tmp38_32 = tmp32_26;
+    tmp38_32[4] = 52;
+    char[] tmp44_38 = tmp38_32;
+    tmp44_38[5] = 53;
+    char[] tmp50_44 = tmp44_38;
+    tmp50_44[6] = 54;
+    char[] tmp57_50 = tmp50_44;
+    tmp57_50[7] = 55;
+    char[] tmp64_57 = tmp57_50;
+    tmp64_57[8] = 56;
+    char[] tmp71_64 = tmp64_57;
+    tmp71_64[9] = 57;
+    char[] tmp78_71 = tmp71_64;
+    tmp78_71[10] = 97;
+    char[] tmp85_78 = tmp78_71;
+    tmp85_78[11] = 98;
+    char[] tmp92_85 = tmp85_78;
+    tmp92_85[12] = 99;
+    char[] tmp99_92 = tmp92_85;
+    tmp99_92[13] = 100;
+    char[] tmp106_99 = tmp99_92;
+    tmp106_99[14] = 101;
+    char[] tmp113_106 = tmp106_99;
+    tmp113_106[15] = 102;
+    tmp113_106;
+    for (;;)
+    {
+      Object localObject;
+      int i;
+      int j;
+      try
+      {
+        localObject = MessageDigest.getInstance("MD5");
+        ((MessageDigest)localObject).update(paramArrayOfByte);
+        paramArrayOfByte = ((MessageDigest)localObject).digest();
+        localObject = new char[32];
+        i = 0;
+        j = 0;
+      }
+      catch (Exception paramArrayOfByte)
+      {
+        paramArrayOfByte = null;
+        continue;
+      }
+      paramArrayOfByte = new String((char[])localObject);
+      AppMethodBeat.o(193523);
+      return paramArrayOfByte;
+      while (i < 16)
+      {
+        int m = paramArrayOfByte[i];
+        int k = j + 1;
+        localObject[j] = arrayOfChar[(m >>> 4 & 0xF)];
+        localObject[k] = arrayOfChar[(m & 0xF)];
+        i += 1;
+        j = k + 1;
       }
     }
   }
@@ -370,6 +447,38 @@ public class Util
     }
     AppMethodBeat.o(180756);
     return 65537;
+  }
+  
+  public static String getRawAppName(Context paramContext)
+  {
+    AppMethodBeat.i(193520);
+    if (paramContext == null)
+    {
+      AppMethodBeat.o(193520);
+      return "";
+    }
+    PackageManager localPackageManager = paramContext.getPackageManager();
+    Object localObject = null;
+    try
+    {
+      paramContext = localPackageManager.getApplicationInfo(paramContext.getPackageName(), 128);
+      if (paramContext != null)
+      {
+        paramContext = paramContext.loadLabel(localPackageManager);
+        paramContext = paramContext.toString();
+        AppMethodBeat.o(193520);
+        return paramContext;
+      }
+    }
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      for (;;)
+      {
+        paramContext = localObject;
+        continue;
+        paramContext = "can't find app name";
+      }
+    }
   }
   
   public static String getResolution(Context paramContext)
@@ -486,10 +595,10 @@ public class Util
   
   public static Object invokeStaticMethod(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(209786);
+    AppMethodBeat.i(193521);
     if (paramClass == null)
     {
-      AppMethodBeat.o(209786);
+      AppMethodBeat.o(193521);
       return null;
     }
     try
@@ -499,19 +608,19 @@ public class Util
       {
         paramString.setAccessible(true);
         paramClass = paramString.invoke(paramClass, paramArrayOfObject);
-        AppMethodBeat.o(209786);
+        AppMethodBeat.o(193521);
         return paramClass;
       }
     }
     catch (InvocationTargetException paramClass)
     {
       paramClass = new RuntimeException(paramClass.getTargetException());
-      AppMethodBeat.o(209786);
+      AppMethodBeat.o(193521);
       throw paramClass;
     }
     catch (IllegalAccessException paramClass)
     {
-      AppMethodBeat.o(209786);
+      AppMethodBeat.o(193521);
     }
     return null;
   }
@@ -630,10 +739,30 @@ public class Util
       AppMethodBeat.o(180766);
     }
   }
+  
+  public static <T> void where(Iterable<T> paramIterable, ReturnCallback<Boolean, T> paramReturnCallback)
+  {
+    AppMethodBeat.i(193525);
+    if ((paramIterable == null) || (paramReturnCallback == null))
+    {
+      AppMethodBeat.o(193525);
+      return;
+    }
+    paramIterable = paramIterable.iterator();
+    while (paramIterable.hasNext()) {
+      if (((Boolean)paramReturnCallback.callback(paramIterable.next())).booleanValue())
+      {
+        AppMethodBeat.o(193525);
+        return;
+      }
+    }
+    paramReturnCallback.callback(null);
+    AppMethodBeat.o(193525);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.Util
  * JD-Core Version:    0.7.0.1
  */

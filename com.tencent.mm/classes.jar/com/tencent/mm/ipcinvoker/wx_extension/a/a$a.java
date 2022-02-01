@@ -4,12 +4,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a$a
 {
-  public static a gAX;
+  public static a hnM;
   
   static
   {
     AppMethodBeat.i(153086);
-    gAX = new a();
+    hnM = new a();
     AppMethodBeat.o(153086);
   }
 }

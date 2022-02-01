@@ -5,20 +5,20 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
   extends com.tencent.mm.bw.a
 {
+  public String APy;
   public String ThumbUrl;
-  public String wTF;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(91263);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.ThumbUrl != null) {
-        paramVarArgs.d(1, this.ThumbUrl);
+        paramVarArgs.e(1, this.ThumbUrl);
       }
-      if (this.wTF != null) {
-        paramVarArgs.d(2, this.wTF);
+      if (this.APy != null) {
+        paramVarArgs.e(2, this.APy);
       }
       AppMethodBeat.o(91263);
       return 0;
@@ -29,20 +29,20 @@ public final class k
       }
     }
     label274:
-    for (paramInt = f.a.a.b.b.a.e(1, this.ThumbUrl) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.ThumbUrl) + 0;; paramInt = 0)
     {
       int i = paramInt;
-      if (this.wTF != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.wTF);
+      if (this.APy != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.APy);
       }
       AppMethodBeat.o(91263);
       return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(91263);
@@ -50,7 +50,7 @@ public final class k
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         k localk = (k)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -58,11 +58,11 @@ public final class k
           AppMethodBeat.o(91263);
           return -1;
         case 1: 
-          localk.ThumbUrl = locala.OmT.readString();
+          localk.ThumbUrl = locala.UbS.readString();
           AppMethodBeat.o(91263);
           return 0;
         }
-        localk.wTF = locala.OmT.readString();
+        localk.APy = locala.UbS.readString();
         AppMethodBeat.o(91263);
         return 0;
       }

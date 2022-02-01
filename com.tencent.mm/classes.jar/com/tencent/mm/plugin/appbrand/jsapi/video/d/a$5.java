@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.appbrand.jsapi.video.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.e.a;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.h.a;
 import com.tencent.mm.plugin.appbrand.jsapi.video.AppBrandVideoView.a;
-import com.tencent.mm.plugin.appbrand.page.bo;
+import com.tencent.mm.plugin.appbrand.page.bu;
 
 final class a$5
   implements AppBrandVideoView.a
 {
-  a$5(a parama, e parame, boolean paramBoolean, int paramInt, bo parambo) {}
+  a$5(a parama, h paramh, boolean paramBoolean, int paramInt, bu parambu) {}
   
-  public final void blp()
+  public final void bGL()
   {
-    AppMethodBeat.i(211250);
-    this.kFs.fF(this.kFv).sK(this.kFw);
-    AppMethodBeat.o(211250);
+    AppMethodBeat.i(234919);
+    this.lJT.gA(this.lJW).wG(this.lJX);
+    AppMethodBeat.o(234919);
   }
   
   public final boolean isFullScreen()
   {
-    AppMethodBeat.i(211251);
-    boolean bool = this.kFs.fF(this.kFv).sL(this.kFw);
-    AppMethodBeat.o(211251);
+    AppMethodBeat.i(234920);
+    boolean bool = this.lJT.gA(this.lJW).wH(this.lJX);
+    AppMethodBeat.o(234920);
     return bool;
   }
   
-  public final void th(int paramInt)
+  public final void xd(int paramInt)
   {
-    AppMethodBeat.i(211249);
-    this.kFs.fF(this.kFv).a(this.kFw, this.kSK, paramInt);
-    AppMethodBeat.o(211249);
+    AppMethodBeat.i(234918);
+    this.lJT.gA(this.lJW).a(this.lJX, this.lXP, paramInt);
+    AppMethodBeat.o(234918);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.video.d.a.5
  * JD-Core Version:    0.7.0.1
  */

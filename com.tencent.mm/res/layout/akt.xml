@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center|right" android:orientation="horizontal" android:background="@drawable/ajp" android:paddingLeft="@dimen/a93" android:paddingRight="@dimen/a93" android:layout_width="fill_parent" android:layout_height="72.0dip" android:minHeight="72.0dip"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/df0" android:focusable="false" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dj6" android:singleLine="true" />
-    <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/i" android:textColor="@color/y4" android:textColorHint="@color/fe" android:ellipsize="end" android:gravity="center|left" android:id="@id/dez" android:background="@null" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/a93" android:maxLines="3" android:maxLength="25" android:layout_weight="1.0" />
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/dax" android:visibility="visible" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_centerVertical="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/day" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/zz" android:scaleType="fitXY" />
-        <com.tencent.mm.emoji.view.BaseEmojiView android:id="@id/daw" android:background="@drawable/a0c" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/hu" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/cl">
+        <TextView android:textSize="@dimen/c5" android:textColor="@color/wr" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:text="@string/dai" />
     </LinearLayout>
-</LinearLayout>
+    <ScrollView android:id="@id/itx" android:layout_width="fill_parent" android:layout_height="318.0dip">
+        <LinearLayout android:orientation="vertical" android:id="@id/ity" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </ScrollView>
+</merge>

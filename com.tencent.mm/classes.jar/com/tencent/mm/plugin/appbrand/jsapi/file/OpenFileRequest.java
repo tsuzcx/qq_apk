@@ -11,9 +11,9 @@ public final class OpenFileRequest
 {
   public static final Parcelable.Creator<OpenFileRequest> CREATOR;
   public String appId;
-  public String fXl;
   public String filePath;
-  public boolean showMenu;
+  public String gCr;
+  public boolean lwF;
   
   static
   {
@@ -29,12 +29,12 @@ public final class OpenFileRequest
     super(paramParcel);
   }
   
-  public final Class<? extends AppBrandProxyUIProcessTask> bhv()
+  public final Class<? extends AppBrandProxyUIProcessTask> bCJ()
   {
     return OpenFileRequest.a.class;
   }
   
-  public final String biB()
+  public final String bDO()
   {
     return "QbDocumentReader";
   }
@@ -44,18 +44,18 @@ public final class OpenFileRequest
     return 0;
   }
   
-  public final void j(Parcel paramParcel)
+  public final void k(Parcel paramParcel)
   {
     boolean bool = true;
     AppMethodBeat.i(174834);
-    super.j(paramParcel);
+    super.k(paramParcel);
     this.filePath = paramParcel.readString();
-    this.fXl = paramParcel.readString();
+    this.gCr = paramParcel.readString();
     this.appId = paramParcel.readString();
     if (paramParcel.readInt() == 1) {}
     for (;;)
     {
-      this.showMenu = bool;
+      this.lwF = bool;
       AppMethodBeat.o(174834);
       return;
       bool = false;
@@ -67,9 +67,9 @@ public final class OpenFileRequest
     AppMethodBeat.i(174835);
     super.writeToParcel(paramParcel, paramInt);
     paramParcel.writeString(this.filePath);
-    paramParcel.writeString(this.fXl);
+    paramParcel.writeString(this.gCr);
     paramParcel.writeString(this.appId);
-    if (this.showMenu) {}
+    if (this.lwF) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
@@ -80,7 +80,7 @@ public final class OpenFileRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.OpenFileRequest
  * JD-Core Version:    0.7.0.1
  */

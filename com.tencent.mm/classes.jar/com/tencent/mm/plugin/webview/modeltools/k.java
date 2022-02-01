@@ -2,116 +2,122 @@ package com.tencent.mm.plugin.webview.modeltools;
 
 import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
 import com.tencent.mm.ipcinvoker.type.IPCString;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
 import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.plugin.webview.c.l.a;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.d.n.a;
 import com.tencent.mm.plugin.webview.ui.tools.video.a;
-import com.tencent.mm.protocal.protobuf.ahk;
-import com.tencent.mm.protocal.protobuf.ahl;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.ajw;
+import com.tencent.mm.protocal.protobuf.ajx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import com.tencent.mm.ui.widget.MMWebView;
 import java.net.URL;
 import java.util.HashMap;
+import org.apache.commons.b.f;
 import org.json.JSONObject;
 
 public final class k
 {
-  public static boolean a(com.tencent.mm.plugin.webview.c.f paramf, MMWebView paramMMWebView)
+  public static boolean a(h paramh, MMWebView paramMMWebView)
   {
-    AppMethodBeat.i(198169);
-    if (paramf == null)
+    AppMethodBeat.i(211030);
+    if (paramh == null)
     {
-      ae.w("MicroMsg.WebViewReportOnLeaveHelper", "handler is null");
-      AppMethodBeat.o(198169);
+      Log.w("MicroMsg.WebViewReportOnLeaveHelper", "handler is null");
+      AppMethodBeat.o(211030);
       return false;
     }
     String str = paramMMWebView.getUrl();
-    if (!bu.isNullOrNil(str))
+    if (!Util.isNullOrNil(str))
     {
       try
       {
-        boolean bool = new URL(str).getHost().equals("mp.weixin.qq.com");
+        boolean bool = new URL(str).getHost().equals(WeChatHosts.domainString(2131761726));
         if (bool) {
-          break label102;
+          break label105;
         }
-        AppMethodBeat.o(198169);
+        AppMethodBeat.o(211030);
         return false;
       }
-      catch (Exception paramf)
+      catch (Exception paramh)
       {
-        ae.e("MicroMsg.WebViewReportOnLeaveHelper", "create url fail : " + paramf.getLocalizedMessage());
-        AppMethodBeat.o(198169);
+        Log.e("MicroMsg.WebViewReportOnLeaveHelper", "create url fail : " + paramh.getLocalizedMessage());
+        AppMethodBeat.o(211030);
         return false;
       }
     }
     else
     {
-      AppMethodBeat.o(198169);
+      AppMethodBeat.o(211030);
       return false;
     }
-    label102:
+    label105:
     paramMMWebView = new ValueCallback() {};
-    if (!paramf.BZx) {
+    if (!paramh.GBl) {
       paramMMWebView.onReceiveValue(null);
     }
     for (;;)
     {
-      AppMethodBeat.o(198169);
+      AppMethodBeat.o(211030);
       return true;
-      str = l.a.b("reportOnLeaveForMP", new HashMap(), paramf.EeC, paramf.vVT);
-      paramf.Eet.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", paramMMWebView);
+      str = n.a.b("reportOnLeaveForMP", new HashMap(), paramh.IRj, paramh.zpY);
+      paramh.IRa.evaluateJavascript("javascript:WeixinJSBridge._handleMessageFromWeixin(" + str + ")", paramMMWebView);
     }
   }
   
-  public static int aJq(String paramString)
+  public static int aZv(String paramString)
   {
-    AppMethodBeat.i(198170);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(211031);
+    if (Util.isNullOrNil(paramString))
     {
-      ae.i("MicroMsg.WebViewReportOnLeaveHelper", "doReport invalid reportData %s", new Object[] { paramString });
-      AppMethodBeat.o(198170);
+      Log.i("MicroMsg.WebViewReportOnLeaveHelper", "doReport invalid reportData %s", new Object[] { paramString });
+      AppMethodBeat.o(211031);
       return -1;
     }
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new ahk();
-    ((b.a)localObject).hQG = new ahl();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/exitreport";
-    ((b.a)localObject).funcId = 1642;
-    localObject = ((b.a)localObject).aDS();
-    ((ahk)((com.tencent.mm.ak.b)localObject).hQD.hQJ).GxA = paramString;
-    IPCRunCgi.a((com.tencent.mm.ak.b)localObject, new IPCRunCgi.a()
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new ajw();
+    ((d.a)localObject).iLO = new ajx();
+    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/exitreport";
+    ((d.a)localObject).funcId = 1642;
+    localObject = ((d.a)localObject).aXF();
+    ((ajw)((d)localObject).iLK.iLR).Ltj = paramString;
+    IPCRunCgi.a((d)localObject, new IPCRunCgi.a()
     {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.b paramAnonymousb)
+      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, d paramAnonymousd)
       {
         AppMethodBeat.i(79215);
-        ae.i("MicroMsg.WebViewReportOnLeaveHelper", "doReport callback errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+        Log.i("MicroMsg.WebViewReportOnLeaveHelper", "doReport callback errType:%d errCode:%d msg:%s", new Object[] { Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
         AppMethodBeat.o(79215);
       }
     });
-    AppMethodBeat.o(198170);
+    AppMethodBeat.o(211031);
     return 0;
   }
   
-  public static void aJr(String paramString)
+  public static void aZw(String paramString)
   {
-    AppMethodBeat.i(198171);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(211032);
+    if (Util.isNullOrNil(paramString))
     {
-      ae.i("MicroMsg.WebViewReportOnLeaveHelper", "doReportMusic invalid reportData %s", new Object[] { paramString });
-      AppMethodBeat.o(198171);
+      Log.i("MicroMsg.WebViewReportOnLeaveHelper", "doReportMusic invalid reportData %s", new Object[] { paramString });
+      AppMethodBeat.o(211032);
       return;
     }
-    XIPCInvoker.a("com.tencent.mm", new IPCString(paramString), a.class, null);
-    AppMethodBeat.o(198171);
+    XIPCInvoker.a(MainProcessIPCService.dkO, new IPCString(paramString), a.class, null);
+    AppMethodBeat.o(211032);
   }
   
   static class a
-    implements com.tencent.mm.ipcinvoker.b<IPCString, IPCString>
+    implements b<IPCString, IPCString>
   {}
 }
 

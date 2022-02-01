@@ -3,188 +3,188 @@ package com.tencent.mm.plugin.expt.h;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pointers.PString;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
 public final class b
 {
-  private static b rjL;
-  private String rjJ = null;
-  private String rjK = null;
+  private static b sLn;
+  private String sLl = null;
+  private String sLm = null;
   
-  private int agy(String paramString)
+  private int ari(String paramString)
   {
-    AppMethodBeat.i(196724);
+    AppMethodBeat.i(215266);
     try
     {
-      int i = ctd().getInt(paramString, 0);
-      AppMethodBeat.o(196724);
+      int i = cRK().getInt(paramString, 0);
+      AppMethodBeat.o(215266);
       return i;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(196724);
+      AppMethodBeat.o(215266);
     }
     return 0;
   }
   
-  public static b ctb()
+  public static b cRI()
   {
-    AppMethodBeat.i(196717);
-    if (rjL == null) {
-      rjL = new b();
+    AppMethodBeat.i(215259);
+    if (sLn == null) {
+      sLn = new b();
     }
-    b localb = rjL;
-    AppMethodBeat.o(196717);
+    b localb = sLn;
+    AppMethodBeat.o(215259);
     return localb;
   }
   
   private String info()
   {
-    AppMethodBeat.i(196725);
+    AppMethodBeat.i(215267);
     String str = hashCode();
-    AppMethodBeat.o(196725);
+    AppMethodBeat.o(215267);
     return str;
   }
   
-  public final a DN(int paramInt)
+  public final a HA(int paramInt)
   {
-    AppMethodBeat.i(196722);
-    Object localObject = ctc();
+    AppMethodBeat.i(215264);
+    Object localObject = cRJ();
     if (localObject == null)
     {
-      AppMethodBeat.o(196722);
+      AppMethodBeat.o(215264);
       return null;
     }
-    localObject = ((ay)localObject).getString(String.valueOf(paramInt), "");
-    if (!bu.isNullOrNil((String)localObject))
+    localObject = ((MultiProcessMMKV)localObject).getString(String.valueOf(paramInt), "");
+    if (!Util.isNullOrNil((String)localObject))
     {
       a locala = new a();
-      if (locala.agx((String)localObject))
+      if (locala.TN((String)localObject))
       {
-        AppMethodBeat.o(196722);
+        AppMethodBeat.o(215264);
         return locala;
       }
     }
-    AppMethodBeat.o(196722);
+    AppMethodBeat.o(215264);
     return null;
   }
   
   public final int a(String paramString1, String paramString2, PString paramPString)
   {
-    AppMethodBeat.i(196723);
-    int i = agy(paramString1);
+    AppMethodBeat.i(215265);
+    int i = ari(paramString1);
     a locala;
     if (i > 0)
     {
-      locala = DN(i);
+      locala = HA(i);
       if ((locala != null) && (locala.isReady()))
       {
-        HashMap localHashMap = locala.cta();
+        HashMap localHashMap = locala.cRH();
         if ((localHashMap != null) && (!localHashMap.isEmpty()))
         {
           paramPString.value = ((String)localHashMap.get(paramString1));
-          if (bu.isNullOrNil(paramPString.value)) {}
+          if (Util.isNullOrNil(paramPString.value)) {}
         }
       }
     }
-    for (i = locala.rjD;; i = 0)
+    for (i = locala.sLf;; i = 0)
     {
       if (i <= 0) {
         paramPString.value = paramString2;
       }
-      AppMethodBeat.o(196723);
+      AppMethodBeat.o(215265);
       return i;
     }
   }
   
-  public final ay ctc()
+  public final MultiProcessMMKV cRJ()
   {
-    AppMethodBeat.i(196718);
-    d.ctr();
+    AppMethodBeat.i(215260);
+    d.cRY();
     int i = d.getUin();
     if (i == 0)
     {
-      AppMethodBeat.o(196718);
+      AppMethodBeat.o(215260);
       return null;
     }
     Object localObject = i + "_WxExptAppIdMmkv";
-    if (!bu.lX(this.rjJ, (String)localObject))
+    if (!Util.isEqual(this.sLl, (String)localObject))
     {
-      ae.i("MicroMsg.ExptAppManager", "%s get exptId mmkv change uin old[%s] new[%s]", new Object[] { info(), this.rjJ, localObject });
-      this.rjJ = ((String)localObject);
+      Log.i("MicroMsg.ExptAppManager", "%s get exptId mmkv change uin old[%s] new[%s]", new Object[] { info(), this.sLl, localObject });
+      this.sLl = ((String)localObject);
     }
-    localObject = ay.aRW(this.rjJ);
-    AppMethodBeat.o(196718);
+    localObject = MultiProcessMMKV.getMMKV(this.sLl);
+    AppMethodBeat.o(215260);
     return localObject;
   }
   
-  public final ay ctd()
+  public MultiProcessMMKV cRK()
   {
-    AppMethodBeat.i(196719);
-    d.ctr();
+    AppMethodBeat.i(215261);
+    d.cRY();
     int i = d.getUin();
     if (i == 0)
     {
-      AppMethodBeat.o(196719);
+      AppMethodBeat.o(215261);
       return null;
     }
     Object localObject = i + "_WxExptAppKeyMmkv";
-    if (!bu.lX(this.rjK, (String)localObject))
+    if (!Util.isEqual(this.sLm, (String)localObject))
     {
-      ae.i("MicroMsg.ExptAppManager", "%s get exptKey mmkv change uin old[%s] new[%s]", new Object[] { info(), this.rjK, localObject });
-      this.rjK = ((String)localObject);
+      Log.i("MicroMsg.ExptAppManager", "%s get exptKey mmkv change uin old[%s] new[%s]", new Object[] { info(), this.sLm, localObject });
+      this.sLm = ((String)localObject);
     }
-    localObject = ay.aRW(this.rjK);
-    AppMethodBeat.o(196719);
+    localObject = MultiProcessMMKV.getMMKV(this.sLm);
+    AppMethodBeat.o(215261);
     return localObject;
   }
   
-  public final List<a> cte()
+  public final List<a> cRL()
   {
-    AppMethodBeat.i(196721);
+    AppMethodBeat.i(215263);
     ArrayList localArrayList = new ArrayList();
-    ay localay = ctc();
-    if (localay == null)
+    MultiProcessMMKV localMultiProcessMMKV = cRJ();
+    if (localMultiProcessMMKV == null)
     {
-      AppMethodBeat.o(196721);
+      AppMethodBeat.o(215263);
       return localArrayList;
     }
-    String[] arrayOfString = localay.allKeys();
+    String[] arrayOfString = localMultiProcessMMKV.allKeys();
     if ((arrayOfString != null) && (arrayOfString.length > 0))
     {
       int j = arrayOfString.length;
       int i = 0;
       while (i < j)
       {
-        String str = localay.getString(arrayOfString[i], "");
-        if (!bu.isNullOrNil(str))
+        String str = localMultiProcessMMKV.getString(arrayOfString[i], "");
+        if (!Util.isNullOrNil(str))
         {
           a locala = new a();
-          if (locala.agx(str)) {
+          if (locala.TN(str)) {
             localArrayList.add(locala);
           }
         }
         i += 1;
       }
     }
-    AppMethodBeat.o(196721);
+    AppMethodBeat.o(215263);
     return localArrayList;
   }
   
   public final boolean removeAll()
   {
-    AppMethodBeat.i(196720);
+    AppMethodBeat.i(215262);
     try
     {
-      ctc().clear().commit();
-      ctd().clear().commit();
+      cRJ().clear().commit();
+      cRK().clear().commit();
       label31:
-      AppMethodBeat.o(196720);
+      AppMethodBeat.o(215262);
       return true;
     }
     catch (Exception localException)

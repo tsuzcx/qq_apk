@@ -25,7 +25,7 @@ public final class d
   
   public final CharSequence b(final Map<String, String> paramMap, String paramString, final Bundle paramBundle, final WeakReference<Context> paramWeakReference, final WeakReference<NeatTextView> paramWeakReference1)
   {
-    AppMethodBeat.i(187652);
+    AppMethodBeat.i(233528);
     String str = (String)paramMap.get(paramString + ".title");
     final b.a locala = new b.a(this);
     locala.username = ((String)paramMap.get(paramString + ".username"));
@@ -35,21 +35,21 @@ public final class d
     {
       public final void onClickImp(View paramAnonymousView)
       {
-        AppMethodBeat.i(187651);
+        AppMethodBeat.i(233527);
         d locald = d.this;
         b.a locala = locala;
-        if ((locald.vWJ != null) && (locald.vWJ.get() != null)) {
-          ((b.b)locald.vWJ.get()).a(paramAnonymousView, locala);
+        if ((locald.zqO != null) && (locald.zqO.get() != null)) {
+          ((b.b)locald.zqO.get()).a(paramAnonymousView, locala);
         }
-        ((e)g.ab(e.class)).a("link_revoke_qrcode", paramMap, paramBundle);
-        AppMethodBeat.o(187651);
+        ((e)g.af(e.class)).a("link_revoke_qrcode", paramMap, paramBundle);
+        AppMethodBeat.o(233527);
       }
     }, 0, str.length(), 33);
-    AppMethodBeat.o(187652);
+    AppMethodBeat.o(233528);
     return paramString;
   }
   
-  public final String dpe()
+  public final String eiT()
   {
     return "link_revoke_qrcode";
   }

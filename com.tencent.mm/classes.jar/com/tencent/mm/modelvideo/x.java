@@ -1,12 +1,12 @@
 package com.tencent.mm.modelvideo;
 
-import com.tencent.mm.sdk.e.e;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
 import com.tencent.mm.storagebase.h;
 
 public final class x
 {
   public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS VideoPlayHistory ( filename text PRIMARY KEY, starttime int, playduration int, downloadway int );" };
-  e db;
+  ISQLiteDatabase db;
   
   public x(h paramh)
   {
@@ -14,13 +14,13 @@ public final class x
   }
   
   /* Error */
-  public final boolean Ii(String paramString)
+  public final boolean QU(String paramString)
   {
     // Byte code:
     //   0: ldc 28
     //   2: invokestatic 34	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_1
-    //   6: invokestatic 39	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+    //   6: invokestatic 39	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
     //   9: ifeq +10 -> 19
     //   12: ldc 28
     //   14: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -29,10 +29,10 @@ public final class x
     //   19: aconst_null
     //   20: astore_3
     //   21: aload_0
-    //   22: getfield 23	com/tencent/mm/modelvideo/x:db	Lcom/tencent/mm/sdk/e/e;
+    //   22: getfield 23	com/tencent/mm/modelvideo/x:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   25: astore 4
     //   27: aload_1
-    //   28: invokestatic 46	com/tencent/mm/sdk/platformtools/bu:aSk	(Ljava/lang/String;)Ljava/lang/String;
+    //   28: invokestatic 46	com/tencent/mm/sdk/platformtools/Util:escapeSqlValue	(Ljava/lang/String;)Ljava/lang/String;
     //   31: astore_1
     //   32: aload 4
     //   34: ldc 48
@@ -91,7 +91,7 @@ public final class x
     //   130: ldc 54
     //   132: iconst_0
     //   133: anewarray 4	java/lang/Object
-    //   136: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   136: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   139: aload_3
     //   140: ifnull -27 -> 113
     //   143: aload_3
@@ -120,7 +120,7 @@ public final class x
     //   0	185	1	paramString	String
     //   81	2	2	bool	boolean
     //   20	154	3	str	String
-    //   25	8	4	locale	e
+    //   25	8	4	localISQLiteDatabase	ISQLiteDatabase
     //   120	9	4	localException1	java.lang.Exception
     //   170	5	4	localObject	Object
     //   180	1	4	localException2	java.lang.Exception
@@ -142,10 +142,10 @@ public final class x
     //   5: aconst_null
     //   6: astore 6
     //   8: aload_0
-    //   9: getfield 23	com/tencent/mm/modelvideo/x:db	Lcom/tencent/mm/sdk/e/e;
+    //   9: getfield 23	com/tencent/mm/modelvideo/x:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   12: astore 7
     //   14: aload_1
-    //   15: invokestatic 46	com/tencent/mm/sdk/platformtools/bu:aSk	(Ljava/lang/String;)Ljava/lang/String;
+    //   15: invokestatic 46	com/tencent/mm/sdk/platformtools/Util:escapeSqlValue	(Ljava/lang/String;)Ljava/lang/String;
     //   18: astore_1
     //   19: aload 7
     //   21: ldc 48
@@ -170,7 +170,7 @@ public final class x
     //   49: ldc 54
     //   51: ldc 54
     //   53: iconst_2
-    //   54: invokeinterface 88 9 0
+    //   54: invokeinterface 87 9 0
     //   59: astore_1
     //   60: aload_1
     //   61: astore 6
@@ -187,18 +187,18 @@ public final class x
     //   85: aload 6
     //   87: aload 6
     //   89: ldc 82
-    //   91: invokeinterface 92 2 0
-    //   96: invokeinterface 96 2 0
-    //   101: putfield 102	com/tencent/mm/pointers/PInt:value	I
+    //   91: invokeinterface 91 2 0
+    //   96: invokeinterface 95 2 0
+    //   101: putfield 101	com/tencent/mm/pointers/PInt:value	I
     //   104: aload 6
     //   106: astore_1
     //   107: aload_3
     //   108: aload 6
     //   110: aload 6
     //   112: ldc 84
-    //   114: invokeinterface 92 2 0
-    //   119: invokeinterface 96 2 0
-    //   124: putfield 102	com/tencent/mm/pointers/PInt:value	I
+    //   114: invokeinterface 91 2 0
+    //   119: invokeinterface 95 2 0
+    //   124: putfield 101	com/tencent/mm/pointers/PInt:value	I
     //   127: iconst_1
     //   128: istore 4
     //   130: iload 4
@@ -210,24 +210,24 @@ public final class x
     //   146: iload 4
     //   148: istore 5
     //   150: ldc 71
-    //   152: new 104	java/lang/StringBuilder
+    //   152: new 103	java/lang/StringBuilder
     //   155: dup
-    //   156: ldc 106
-    //   158: invokespecial 109	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   156: ldc 105
+    //   158: invokespecial 108	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   161: iload 5
-    //   163: invokevirtual 113	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   166: ldc 115
-    //   168: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: invokevirtual 112	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   166: ldc 114
+    //   168: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   171: aload_2
-    //   172: getfield 102	com/tencent/mm/pointers/PInt:value	I
-    //   175: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   178: ldc 123
-    //   180: invokevirtual 118	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   172: getfield 101	com/tencent/mm/pointers/PInt:value	I
+    //   175: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   178: ldc 122
+    //   180: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   183: aload_3
-    //   184: getfield 102	com/tencent/mm/pointers/PInt:value	I
-    //   187: invokevirtual 121	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   190: invokevirtual 127	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   193: invokestatic 130	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   184: getfield 101	com/tencent/mm/pointers/PInt:value	I
+    //   187: invokevirtual 120	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   190: invokevirtual 126	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   193: invokestatic 129	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
     //   196: ldc 80
     //   198: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   201: iload 5
@@ -242,7 +242,7 @@ public final class x
     //   216: ldc 54
     //   218: iconst_0
     //   219: anewarray 4	java/lang/Object
-    //   222: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   222: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   225: aload 6
     //   227: ifnull +50 -> 277
     //   230: aload 6
@@ -284,7 +284,7 @@ public final class x
     //   128	157	4	bool1	boolean
     //   132	147	5	bool2	boolean
     //   6	239	6	str	String
-    //   12	8	7	locale	e
+    //   12	8	7	localISQLiteDatabase	ISQLiteDatabase
     //   204	11	7	localException1	java.lang.Exception
     //   272	1	7	localException2	java.lang.Exception
     // Exception table:
@@ -302,7 +302,7 @@ public final class x
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelvideo.x
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@drawable/b1g" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.downloader_app.ui.TaskManagerHeaderView android:id="@id/cj_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <com.tencent.mm.plugin.downloader_app.ui.DeleteTaskFooterView android:id="@id/b_3" android:background="@color/a_r" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <com.tencent.mm.plugin.downloader_app.ui.TaskListView android:id="@id/d2f" android:background="@color/ly" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/b_3" android:layout_below="@id/cj_" />
-    <ViewStub android:id="@id/e4h" android:layout="@layout/aun" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ViewStub android:id="@id/d4c" android:layout="@layout/we" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/eo" android:layout_gravity="center_horizontal" android:id="@id/a6a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:layout_marginBottom="@dimen/cc" android:text="@string/ahl" />
+    <android.support.v7.widget.RecyclerView android:id="@id/a64" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</LinearLayout>

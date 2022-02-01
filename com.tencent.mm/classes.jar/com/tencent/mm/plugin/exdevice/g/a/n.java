@@ -1,72 +1,68 @@
 package com.tencent.mm.plugin.exdevice.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dsb;
-import com.tencent.mm.protocal.protobuf.dsc;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.elx;
+import com.tencent.mm.protocal.protobuf.ely;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class n
-  extends com.tencent.mm.ak.n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public int opType;
-  public int qlY;
-  public int qlZ;
-  private b rr;
+  private i callback;
+  public String coverUrl;
+  public String rCp;
+  private d rr;
   
-  public n(int paramInt1, int paramInt2)
+  public n(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(23540);
+    AppMethodBeat.i(23537);
     this.callback = null;
     this.rr = null;
-    this.opType = paramInt1;
-    this.qlY = paramInt2;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new dsb();
-    ((b.a)localObject).hQG = new dsc();
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/rank/updateranksetting";
-    ((b.a)localObject).funcId = 1044;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (dsb)this.rr.hQD.hQJ;
-    ((dsb)localObject).dGO = this.opType;
-    ((dsb)localObject).dEu = this.qlY;
-    AppMethodBeat.o(23540);
+    this.coverUrl = paramString1;
+    this.rCp = paramString2;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new elx();
+    ((d.a)localObject).iLO = new ely();
+    ((d.a)localObject).uri = "/cgi-bin/mmbiz-bin/rank/updatecover";
+    ((d.a)localObject).funcId = 1040;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (elx)this.rr.iLK.iLR;
+    ((elx)localObject).McL = paramString1;
+    ((elx)localObject).rCp = paramString2;
+    AppMethodBeat.o(23537);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(23541);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
-    AppMethodBeat.o(23541);
+    AppMethodBeat.i(23538);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
+    AppMethodBeat.o(23538);
     return i;
   }
   
   public final int getType()
   {
-    return 1044;
+    return 1040;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(23542);
-    ae.d("MicroMsg.NetSceneUpdateRankSetting", "hy: scene end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    if ((paramInt2 == 0) && (paramInt3 == 0)) {
-      this.qlZ = ((dsc)this.rr.hQE.hQJ).dEu;
-    }
+    AppMethodBeat.i(23539);
+    Log.d("MicroMsg.NetSceneUpdateRankCoverAndMotto", "hy: scene end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(23542);
+    AppMethodBeat.o(23539);
   }
 }
 

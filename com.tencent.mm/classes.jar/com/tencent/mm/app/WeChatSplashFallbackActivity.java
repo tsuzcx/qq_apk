@@ -12,7 +12,7 @@ public class WeChatSplashFallbackActivity
   {
     AppMethodBeat.i(160094);
     super.onCreate(paramBundle);
-    setContentView(2131496094);
+    setContentView(2131497082);
     AppMethodBeat.o(160094);
   }
   

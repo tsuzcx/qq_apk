@@ -14,48 +14,48 @@ import android.view.WindowManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.platform.window.e.a;
 import com.tencent.mm.plugin.appbrand.platform.window.e.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.f;
-import d.g;
-import d.g.a.a;
-import d.g.a.b;
-import d.g.b.p;
-import d.g.b.q;
-import d.g.b.y.d;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.g.b.z.d;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandlerProxyImpl;", "Lcom/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandler;", "windowActivity", "Lcom/tencent/mm/plugin/appbrand/platform/window/activity/WindowAndroidActivityImpl;", "(Lcom/tencent/mm/plugin/appbrand/platform/window/activity/WindowAndroidActivityImpl;)V", "activity", "Landroid/app/Activity;", "getActivity", "()Landroid/app/Activity;", "handler", "getHandler", "()Lcom/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandler;", "handler$delegate", "Lkotlin/Lazy;", "getCurrentOrientation", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "hasExecutingOrPendingRequests", "", "onConfigurationChanged", "", "newConfig", "Landroid/content/res/Configuration;", "onPause", "onResume", "release", "requestDeviceOrientation", "reqOrientation", "listener", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$OnOrientationChangedListener;", "Companion", "luggage-wxa-app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandlerProxyImpl;", "Lcom/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandler;", "windowActivity", "Lcom/tencent/mm/plugin/appbrand/platform/window/activity/WindowAndroidActivityImpl;", "(Lcom/tencent/mm/plugin/appbrand/platform/window/activity/WindowAndroidActivityImpl;)V", "activity", "Landroid/app/Activity;", "getActivity", "()Landroid/app/Activity;", "handler", "getHandler", "()Lcom/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandler;", "handler$delegate", "Lkotlin/Lazy;", "getCurrentOrientation", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "hasExecutingOrPendingRequests", "", "onConfigurationChanged", "", "newConfig", "Landroid/content/res/Configuration;", "onPause", "onResume", "release", "requestDeviceOrientation", "reqOrientation", "listener", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$OnOrientationChangedListener;", "Companion", "luggage-wxa-app_release"})
 public final class d
   implements c
 {
   @Deprecated
-  public static final d.a mtW;
+  public static final a nEF;
   final Activity activity;
-  private final f keb;
-  private final o mtV;
+  private final f lhN;
+  private final o nEE;
   
   static
   {
     AppMethodBeat.i(176483);
-    mtW = new d.a((byte)0);
+    nEF = new a((byte)0);
     AppMethodBeat.o(176483);
   }
   
   public d(o paramo)
   {
     AppMethodBeat.i(177602);
-    this.mtV = paramo;
-    this.keb = g.O((a)new b(this));
-    this.activity = this.mtV.getActivity();
+    this.nEE = paramo;
+    this.lhN = g.ah((a)new b(this));
+    this.activity = this.nEE.getActivity();
     AppMethodBeat.o(177602);
   }
   
-  private final c bxD()
+  private final c bTO()
   {
     AppMethodBeat.i(177601);
-    c localc = (c)this.keb.getValue();
+    c localc = (c)this.lhN.getValue();
     AppMethodBeat.o(177601);
     return localc;
   }
@@ -73,10 +73,10 @@ public final class d
     }
     if ((this.activity.isFinishing()) || (this.activity.isDestroyed()))
     {
-      ae.e("Luggage.WXA.ActivityWindowOrientationHandlerProxyImpl", "requestDeviceOrientation but activity(" + this.activity + ") destroyed");
+      Log.e("Luggage.WXA.ActivityWindowOrientationHandlerProxyImpl", "requestDeviceOrientation but activity(" + this.activity + ") destroyed");
       if (parama != null)
       {
-        parama.a(bxD().aYg(), false);
+        parama.a(bTO().btm(), false);
         AppMethodBeat.o(176476);
         return;
       }
@@ -85,7 +85,7 @@ public final class d
     }
     if ((Build.VERSION.SDK_INT >= 26) && (this.activity.isInPictureInPictureMode()))
     {
-      localObject2 = this.mtV;
+      localObject2 = this.nEE;
       if (paramb != null) {
         localObject1 = paramb.name();
       }
@@ -95,10 +95,10 @@ public final class d
         if (parama == null) {
           break label266;
         }
-        parama.a(bxD().aYg(), false);
+        parama.a(bTO().btm(), false);
         AppMethodBeat.o(176476);
       }
-      switch (e.cqt[paramb.ordinal()])
+      switch (e.$EnumSwitchMapping$0[paramb.ordinal()])
       {
       default: 
         this.activity.enterPictureInPictureMode(new PictureInPictureParams.Builder().setAspectRatio(new Rational(16, 9)).build());
@@ -137,31 +137,31 @@ public final class d
           break;
         }
       }
-      bxD().a(paramb, parama);
+      bTO().a(paramb, parama);
       AppMethodBeat.o(176476);
       return;
     }
     Object localObject3 = new AtomicBoolean(true);
-    o localo = this.mtV;
+    o localo = this.nEE;
     if (paramb != null) {
       localObject2 = paramb.name();
     }
     localo.setSoftOrientation((String)localObject2);
-    bxD().a(paramb, (e.a)new d(this, parama, (AtomicBoolean)localObject3, (View)localObject1));
+    bTO().a(paramb, (e.a)new d(this, parama, (AtomicBoolean)localObject3, (View)localObject1));
     ((AtomicBoolean)localObject3).set(false);
     AppMethodBeat.o(176476);
   }
   
-  public final e.b aYg()
+  public final e.b btm()
   {
     AppMethodBeat.i(176481);
     if (this.activity != null)
     {
-      localObject = bxD().aYg();
+      localObject = bTO().btm();
       AppMethodBeat.o(176481);
       return localObject;
     }
-    Object localObject = this.mtV.bxM();
+    Object localObject = this.nEE.bTX();
     if (localObject != null)
     {
       localObject = ((WindowManager)localObject).getDefaultDisplay();
@@ -198,7 +198,7 @@ public final class d
       }
       for (;;)
       {
-        localObject = e.b.mtD;
+        localObject = e.b.nEl;
         AppMethodBeat.o(176481);
         return localObject;
         if (((Integer)localObject).intValue() != 2) {
@@ -208,12 +208,12 @@ public final class d
       if (((Integer)localObject).intValue() != 1) {
         break label74;
       }
-      localObject = e.b.mtH;
+      localObject = e.b.nEp;
       AppMethodBeat.o(176481);
       return localObject;
     }
     label141:
-    localObject = e.b.mtI;
+    localObject = e.b.nEq;
     AppMethodBeat.o(176481);
     return localObject;
   }
@@ -221,21 +221,21 @@ public final class d
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
     AppMethodBeat.i(176477);
-    bxD().onConfigurationChanged(paramConfiguration);
+    bTO().onConfigurationChanged(paramConfiguration);
     AppMethodBeat.o(176477);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(176479);
-    bxD().onPause();
+    bTO().onPause();
     AppMethodBeat.o(176479);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(176478);
-    bxD().onResume();
+    bTO().onResume();
     AppMethodBeat.o(176478);
   }
   
@@ -243,15 +243,18 @@ public final class d
   {
     AppMethodBeat.i(176480);
     if ((this.activity == null) || (this.activity.isDestroyed()) || (this.activity.isFinishing())) {
-      bxD().release();
+      bTO().release();
     }
-    if (p.i(this.mtV.muN, (d)this)) {
-      this.mtV.muN = null;
+    if (p.j(this.nEE.nFw, (d)this)) {
+      this.nEE.nFw = null;
     }
     AppMethodBeat.o(176480);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandler;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandlerProxyImpl$Companion;", "", "()V", "TAG", "", "luggage-wxa-app_release"})
+  static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandler;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
     implements a<c>
@@ -262,10 +265,10 @@ public final class d
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class c
     extends q
-    implements a<z>
+    implements a<x>
   {
     c(d paramd, e.a parama)
     {
@@ -273,7 +276,7 @@ public final class d
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "orientation", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "success", "", "onOrientationChanged"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "orientation", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "success", "", "onOrientationChanged"})
   static final class d
     implements e.a
   {
@@ -282,59 +285,59 @@ public final class d
     public final void a(final e.b paramb, final boolean paramBoolean)
     {
       AppMethodBeat.i(176475);
-      d.bxE();
-      ae.i("Luggage.WXA.ActivityWindowOrientationHandlerProxyImpl", "requestDeviceOrientation, callback from AppBrandDeviceOrientationHandler, orientation:" + paramb + ", success:" + paramBoolean);
+      d.bTP();
+      Log.i("Luggage.WXA.ActivityWindowOrientationHandlerProxyImpl", "requestDeviceOrientation, callback from AppBrandDeviceOrientationHandler, orientation:" + paramb + ", success:" + paramBoolean);
       paramb = new a(this, paramb, paramBoolean);
-      if ((!paramBoolean) || (this.mtY.get()))
+      if ((!paramBoolean) || (this.nEH.get()))
       {
         paramb.invoke("syncReturn");
         AppMethodBeat.o(176475);
         return;
       }
-      View localView = this.mtZ;
+      View localView = this.nEI;
       a locala = (a)new q(paramb) {};
-      y.d locald = new y.d();
-      locald.NiW = 0;
+      z.d locald = new z.d();
+      locald.SYE = 0;
       localView.getViewTreeObserver().addOnGlobalLayoutListener((ViewTreeObserver.OnGlobalLayoutListener)new f.a(localView, locald, locala));
-      this.mtZ.postDelayed((Runnable)new Runnable()
+      this.nEI.postDelayed((Runnable)new Runnable()
       {
         public final void run()
         {
-          AppMethodBeat.i(208158);
-          this.mua.invoke("timeout");
-          AppMethodBeat.o(208158);
+          AppMethodBeat.i(219776);
+          this.nEJ.invoke("timeout");
+          AppMethodBeat.o(219776);
         }
       }, 100L);
       AppMethodBeat.o(176475);
     }
     
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandlerProxyImpl$requestDeviceOrientation$2$callback$1", "Lkotlin/Function1;", "", "", "antiReentryGuard", "Ljava/util/concurrent/atomic/AtomicBoolean;", "invoke", "reason", "luggage-wxa-app_release"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/platform/window/activity/ActivityWindowOrientationHandlerProxyImpl$requestDeviceOrientation$2$callback$1", "Lkotlin/Function1;", "", "", "antiReentryGuard", "Ljava/util/concurrent/atomic/AtomicBoolean;", "invoke", "reason", "luggage-wxa-app_release"})
     public static final class a
-      implements b<String, z>
+      implements b<String, x>
     {
-      private final AtomicBoolean mub;
+      private final AtomicBoolean nEK;
       
       a(e.b paramb, boolean paramBoolean)
       {
-        AppMethodBeat.i(208161);
-        this.mub = new AtomicBoolean(true);
-        AppMethodBeat.o(208161);
+        AppMethodBeat.i(219779);
+        this.nEK = new AtomicBoolean(true);
+        AppMethodBeat.o(219779);
       }
       
       public final void invoke(String paramString)
       {
-        AppMethodBeat.i(208159);
+        AppMethodBeat.i(219777);
         p.h(paramString, "reason");
         o localo;
-        if (this.mub.getAndSet(false))
+        if (this.nEK.getAndSet(false))
         {
-          d.bxE();
-          ae.i("Luggage.WXA.ActivityWindowOrientationHandlerProxyImpl", "requestDeviceOrientation, will invoke outer listener reason:[" + paramString + "], orientation:" + paramb + " success:" + paramBoolean);
-          paramString = this.muc.jDG;
+          d.bTP();
+          Log.i("Luggage.WXA.ActivityWindowOrientationHandlerProxyImpl", "requestDeviceOrientation, will invoke outer listener reason:[" + paramString + "], orientation:" + paramb + " success:" + paramBoolean);
+          paramString = this.nEL.kEO;
           if (paramString != null) {
             paramString.a(paramb, paramBoolean);
           }
-          localo = d.a(this.muc.mtX);
+          localo = d.a(this.nEL.nEG);
           paramString = paramb;
           if (paramString == null) {
             break label133;
@@ -344,7 +347,7 @@ public final class d
         for (paramString = paramString.name();; paramString = null)
         {
           localo.setSoftOrientation(paramString);
-          AppMethodBeat.o(208159);
+          AppMethodBeat.o(219777);
           return;
         }
       }
@@ -353,7 +356,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.a.d
  * JD-Core Version:    0.7.0.1
  */

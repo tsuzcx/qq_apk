@@ -6,28 +6,28 @@ import java.util.Arrays;
 
 final class k
 {
-  float bdQ;
+  float bdN;
+  final int bgE;
+  private final int bgF;
+  private final int bgG;
   final int bgH;
-  private final int bgI;
-  private final int bgJ;
-  final int bgK;
-  private final short[] bgL;
-  private int bgM;
-  short[] bgN;
-  private int bgO;
-  short[] bgP;
+  private final short[] bgI;
+  private int bgJ;
+  short[] bgK;
+  private int bgL;
+  short[] bgM;
+  private int bgN;
+  private short[] bgO;
+  private int bgP;
   private int bgQ;
-  private short[] bgR;
-  private int bgS;
-  private int bgT;
+  int bgR;
+  int bgS;
+  int bgT;
   int bgU;
-  int bgV;
-  int bgW;
-  int bgX;
+  private int bgV;
+  private int bgW;
+  private int bgX;
   private int bgY;
-  private int bgZ;
-  private int bha;
-  private int bhb;
   float pitch;
   private final int sampleRate;
   
@@ -35,21 +35,21 @@ final class k
   {
     AppMethodBeat.i(91833);
     this.sampleRate = paramInt1;
-    this.bgH = paramInt2;
-    this.bgI = (paramInt1 / 400);
-    this.bgJ = (paramInt1 / 65);
-    this.bgK = (this.bgJ * 2);
-    this.bgL = new short[this.bgK];
-    this.bgM = this.bgK;
-    this.bgN = new short[this.bgK * paramInt2];
-    this.bgO = this.bgK;
-    this.bgP = new short[this.bgK * paramInt2];
-    this.bgQ = this.bgK;
-    this.bgR = new short[this.bgK * paramInt2];
-    this.bgS = 0;
-    this.bgT = 0;
-    this.bgY = 0;
-    this.bdQ = 1.0F;
+    this.bgE = paramInt2;
+    this.bgF = (paramInt1 / 400);
+    this.bgG = (paramInt1 / 65);
+    this.bgH = (this.bgG * 2);
+    this.bgI = new short[this.bgH];
+    this.bgJ = this.bgH;
+    this.bgK = new short[this.bgH * paramInt2];
+    this.bgL = this.bgH;
+    this.bgM = new short[this.bgH * paramInt2];
+    this.bgN = this.bgH;
+    this.bgO = new short[this.bgH * paramInt2];
+    this.bgP = 0;
+    this.bgQ = 0;
+    this.bgV = 0;
+    this.bdN = 1.0F;
     this.pitch = 1.0F;
     AppMethodBeat.o(91833);
   }
@@ -61,7 +61,7 @@ final class k
     int j = 255;
     int m = 1;
     int i = 0;
-    int i2 = paramInt1 * this.bgH;
+    int i2 = paramInt1 * this.bgE;
     paramInt1 = paramInt2;
     int n;
     int i1;
@@ -93,8 +93,8 @@ final class k
       m = i1;
       k = n;
       break;
-      this.bha = (m / k);
-      this.bhb = (i / j);
+      this.bgX = (m / k);
+      this.bgY = (i / j);
       AppMethodBeat.o(91837);
       return k;
       label161:
@@ -126,17 +126,17 @@ final class k
   private void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(91836);
-    dN(paramInt2);
-    System.arraycopy(paramArrayOfShort, this.bgH * paramInt1, this.bgP, this.bgV * this.bgH, this.bgH * paramInt2);
-    this.bgV += paramInt2;
+    dI(paramInt2);
+    System.arraycopy(paramArrayOfShort, this.bgE * paramInt1, this.bgM, this.bgS * this.bgE, this.bgE * paramInt2);
+    this.bgS += paramInt2;
     AppMethodBeat.o(91836);
   }
   
   private void b(short[] paramArrayOfShort, int paramInt1, int paramInt2)
   {
-    int k = this.bgK / paramInt2;
-    int m = this.bgH * paramInt2;
-    int n = this.bgH;
+    int k = this.bgH / paramInt2;
+    int m = this.bgE * paramInt2;
+    int n = this.bgE;
     paramInt2 = 0;
     while (paramInt2 < k)
     {
@@ -148,38 +148,38 @@ final class k
         i += 1;
       }
       i = j / m;
-      this.bgL[paramInt2] = ((short)i);
+      this.bgI[paramInt2] = ((short)i);
       paramInt2 += 1;
     }
   }
   
-  private void dN(int paramInt)
+  private void dI(int paramInt)
   {
     AppMethodBeat.i(91834);
-    if (this.bgV + paramInt > this.bgO)
+    if (this.bgS + paramInt > this.bgL)
     {
-      this.bgO += this.bgO / 2 + paramInt;
-      this.bgP = Arrays.copyOf(this.bgP, this.bgO * this.bgH);
+      this.bgL += this.bgL / 2 + paramInt;
+      this.bgM = Arrays.copyOf(this.bgM, this.bgL * this.bgE);
     }
     AppMethodBeat.o(91834);
   }
   
-  final void dO(int paramInt)
+  final void dJ(int paramInt)
   {
     AppMethodBeat.i(91835);
-    if (this.bgU + paramInt > this.bgM)
+    if (this.bgR + paramInt > this.bgJ)
     {
-      this.bgM += this.bgM / 2 + paramInt;
-      this.bgN = Arrays.copyOf(this.bgN, this.bgM * this.bgH);
+      this.bgJ += this.bgJ / 2 + paramInt;
+      this.bgK = Arrays.copyOf(this.bgK, this.bgJ * this.bgE);
     }
     AppMethodBeat.o(91835);
   }
   
-  final void tW()
+  final void ub()
   {
     AppMethodBeat.i(91838);
-    int n = this.bgV;
-    float f = this.bdQ / this.pitch;
+    int n = this.bgS;
+    float f = this.bdN / this.pitch;
     int i1;
     int k;
     int i;
@@ -188,30 +188,30 @@ final class k
     short[] arrayOfShort1;
     if ((f > 1.00001D) || (f < 0.9999900000000001D))
     {
-      if (this.bgU >= this.bgK)
+      if (this.bgR >= this.bgH)
       {
-        i1 = this.bgU;
+        i1 = this.bgR;
         k = 0;
         do
         {
-          if (this.bgX <= 0) {
+          if (this.bgU <= 0) {
             break;
           }
-          i = Math.min(this.bgK, this.bgX);
-          a(this.bgN, k, i);
-          this.bgX -= i;
+          i = Math.min(this.bgH, this.bgU);
+          a(this.bgK, k, i);
+          this.bgU -= i;
           i = k + i;
           k = i;
-        } while (this.bgK + i <= i1);
-        j = this.bgU - i;
-        System.arraycopy(this.bgN, this.bgH * i, this.bgN, 0, this.bgH * j);
-        this.bgU = j;
+        } while (this.bgH + i <= i1);
+        j = this.bgR - i;
+        System.arraycopy(this.bgK, this.bgE * i, this.bgK, 0, this.bgE * j);
+        this.bgR = j;
       }
       if (this.pitch == 1.0F) {
         break label1163;
       }
       f = this.pitch;
-      if (this.bgV == n) {
+      if (this.bgS == n) {
         break label1163;
       }
       j = (int)(this.sampleRate / f);
@@ -221,85 +221,85 @@ final class k
         j /= 2;
         i /= 2;
       }
-      arrayOfShort1 = this.bgN;
+      arrayOfShort1 = this.bgK;
       if (this.sampleRate > 4000)
       {
         i = this.sampleRate / 4000;
         label241:
-        if ((this.bgH != 1) || (i != 1)) {
+        if ((this.bgE != 1) || (i != 1)) {
           break label400;
         }
-        i = a(arrayOfShort1, k, this.bgI, this.bgJ);
+        i = a(arrayOfShort1, k, this.bgF, this.bgG);
       }
     }
     for (;;)
     {
       label271:
-      j = this.bha;
-      int m = this.bhb;
-      if ((j == 0) || (this.bgY == 0))
+      j = this.bgX;
+      int m = this.bgY;
+      if ((j == 0) || (this.bgV == 0))
       {
         j = 0;
         label295:
         if (j == 0) {
           break label561;
         }
-        j = this.bgY;
+        j = this.bgV;
         label304:
-        this.bgZ = this.bha;
-        this.bgY = i;
+        this.bgW = this.bgX;
+        this.bgV = i;
         if (f <= 1.0D) {
           break label586;
         }
-        arrayOfShort1 = this.bgN;
+        arrayOfShort1 = this.bgK;
         if (f < 2.0F) {
           break label566;
         }
         i = (int)(j / (f - 1.0F));
         label344:
-        dN(i);
-        a(i, this.bgH, this.bgP, this.bgV, arrayOfShort1, k, arrayOfShort1, k + j);
-        this.bgV += i;
+        dI(i);
+        a(i, this.bgE, this.bgM, this.bgS, arrayOfShort1, k, arrayOfShort1, k + j);
+        this.bgS += i;
         i = k + (i + j);
         break;
         i = 1;
         break label241;
         label400:
         b(arrayOfShort1, k, i);
-        j = a(this.bgL, 0, this.bgI / i, this.bgJ / i);
+        j = a(this.bgI, 0, this.bgF / i, this.bgG / i);
         if (i == 1) {
           break label1178;
         }
         j *= i;
         m = j - i * 4;
         j += i * 4;
-        if (m >= this.bgI) {
+        if (m >= this.bgF) {
           break label1172;
         }
       }
       label1163:
       label1172:
-      for (i = this.bgI;; i = m)
+      for (i = this.bgF;; i = m)
       {
-        if (j > this.bgJ) {
-          j = this.bgJ;
+        if (j > this.bgG) {
+          j = this.bgG;
         }
         for (;;)
         {
-          if (this.bgH == 1)
+          if (this.bgE == 1)
           {
             i = a(arrayOfShort1, k, i, j);
             break label271;
           }
           b(arrayOfShort1, k, 1);
-          i = a(this.bgL, 0, i, j);
+          i = a(this.bgI, 0, i, j);
           break label271;
           if (m > j * 3)
           {
             j = 0;
             break label295;
           }
-          if (j * 2 <= this.bgZ * 3)
+          if (j * 2 <= this.bgW * 3)
           {
             j = 0;
             break label295;
@@ -310,66 +310,66 @@ final class k
           j = i;
           break label304;
           label566:
-          this.bgX = ((int)(j * (2.0F - f) / (f - 1.0F)));
+          this.bgU = ((int)(j * (2.0F - f) / (f - 1.0F)));
           i = j;
           break label344;
           label586:
-          arrayOfShort1 = this.bgN;
+          arrayOfShort1 = this.bgK;
           if (f < 0.5F) {}
           for (i = (int)(j * f / (1.0F - f));; i = j)
           {
-            dN(j + i);
-            System.arraycopy(arrayOfShort1, this.bgH * k, this.bgP, this.bgV * this.bgH, this.bgH * j);
-            a(i, this.bgH, this.bgP, this.bgV + j, arrayOfShort1, k + j, arrayOfShort1, k);
-            this.bgV += j + i;
+            dI(j + i);
+            System.arraycopy(arrayOfShort1, this.bgE * k, this.bgM, this.bgS * this.bgE, this.bgE * j);
+            a(i, this.bgE, this.bgM, this.bgS + j, arrayOfShort1, k + j, arrayOfShort1, k);
+            this.bgS += j + i;
             i = k + i;
             break;
-            this.bgX = ((int)(j * (2.0F * f - 1.0F) / (1.0F - f)));
+            this.bgU = ((int)(j * (2.0F * f - 1.0F) / (1.0F - f)));
           }
-          a(this.bgN, 0, this.bgU);
-          this.bgU = 0;
+          a(this.bgK, 0, this.bgR);
+          this.bgR = 0;
           break label154;
-          k = this.bgV - n;
-          if (this.bgW + k > this.bgQ)
+          k = this.bgS - n;
+          if (this.bgT + k > this.bgN)
           {
-            this.bgQ += this.bgQ / 2 + k;
-            this.bgR = Arrays.copyOf(this.bgR, this.bgQ * this.bgH);
+            this.bgN += this.bgN / 2 + k;
+            this.bgO = Arrays.copyOf(this.bgO, this.bgN * this.bgE);
           }
-          System.arraycopy(this.bgP, this.bgH * n, this.bgR, this.bgW * this.bgH, this.bgH * k);
-          this.bgV = n;
-          this.bgW = (k + this.bgW);
+          System.arraycopy(this.bgM, this.bgE * n, this.bgO, this.bgT * this.bgE, this.bgE * k);
+          this.bgS = n;
+          this.bgT = (k + this.bgT);
           k = 0;
-          if (k < this.bgW - 1)
+          if (k < this.bgT - 1)
           {
-            while ((this.bgS + 1) * j > this.bgT * i)
+            while ((this.bgP + 1) * j > this.bgQ * i)
             {
-              dN(1);
+              dI(1);
               m = 0;
-              while (m < this.bgH)
+              while (m < this.bgE)
               {
-                arrayOfShort1 = this.bgP;
-                n = this.bgV;
-                i1 = this.bgH;
-                short[] arrayOfShort2 = this.bgR;
-                int i3 = this.bgH * k + m;
+                arrayOfShort1 = this.bgM;
+                n = this.bgS;
+                i1 = this.bgE;
+                short[] arrayOfShort2 = this.bgO;
+                int i3 = this.bgE * k + m;
                 int i2 = arrayOfShort2[i3];
-                i3 = arrayOfShort2[(i3 + this.bgH)];
-                int i6 = this.bgT;
-                int i4 = this.bgS;
-                int i5 = (this.bgS + 1) * j;
+                i3 = arrayOfShort2[(i3 + this.bgE)];
+                int i6 = this.bgQ;
+                int i4 = this.bgP;
+                int i5 = (this.bgP + 1) * j;
                 i6 = i5 - i6 * i;
                 i4 = i5 - i4 * j;
                 arrayOfShort1[(n * i1 + m)] = ((short)((i3 * (i4 - i6) + i2 * i6) / i4));
                 m += 1;
               }
-              this.bgT += 1;
-              this.bgV += 1;
+              this.bgQ += 1;
+              this.bgS += 1;
             }
-            this.bgS += 1;
-            if (this.bgS == i)
+            this.bgP += 1;
+            if (this.bgP == i)
             {
-              this.bgS = 0;
-              if (this.bgT != j) {
+              this.bgP = 0;
+              if (this.bgQ != j) {
                 break label1107;
               }
             }
@@ -377,16 +377,16 @@ final class k
             for (boolean bool = true;; bool = false)
             {
               a.checkState(bool);
-              this.bgT = 0;
+              this.bgQ = 0;
               k += 1;
               break;
             }
           }
-          i = this.bgW - 1;
+          i = this.bgT - 1;
           if (i != 0)
           {
-            System.arraycopy(this.bgR, this.bgH * i, this.bgR, 0, (this.bgW - i) * this.bgH);
-            this.bgW -= i;
+            System.arraycopy(this.bgO, this.bgE * i, this.bgO, 0, (this.bgT - i) * this.bgE);
+            this.bgT -= i;
           }
           AppMethodBeat.o(91838);
           return;
@@ -399,7 +399,7 @@ final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.google.android.exoplayer2.a.k
  * JD-Core Version:    0.7.0.1
  */

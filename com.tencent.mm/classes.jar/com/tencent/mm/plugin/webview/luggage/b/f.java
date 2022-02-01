@@ -10,26 +10,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.fav.ui.e;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.webview.luggage.FavUrlTask;
-import com.tencent.mm.plugin.webview.luggage.jsapi.ba;
+import com.tencent.mm.plugin.webview.luggage.g;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bb;
 import com.tencent.mm.plugin.webview.luggage.q.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.l;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.base.m;
 import com.tencent.mm.ui.widget.snackbar.a.b;
 import org.json.JSONObject;
 
 public final class f
   extends a
 {
-  private a.b ufz;
+  private a.b xxK;
   
   public f()
   {
     super(3);
     AppMethodBeat.i(78691);
-    this.ufz = new a.b()
+    this.xxK = new a.b()
     {
-      public final void biY()
+      public final void bDZ()
       {
         AppMethodBeat.i(78690);
         FavUrlTask localFavUrlTask = new FavUrlTask();
@@ -41,7 +43,7 @@ public final class f
     AppMethodBeat.o(78691);
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg)
+  public final void a(Context paramContext, g paramg)
   {
     AppMethodBeat.i(78693);
     Bundle localBundle = new Bundle();
@@ -51,12 +53,12 @@ public final class f
     localBundle.putString("news_svr_tweetid", paramg.mParams.getString("news_svr_tweetid"));
     localBundle.putInt("message_index", paramg.mParams.getInt("message_index", 0));
     Object localObject = paramg.getUrl();
-    String str = paramg.bRn();
+    String str = paramg.coX();
     localBundle.putString("rawUrl", str);
-    if ((!bu.isNullOrNil(str)) && (str.endsWith("#rd")))
+    if ((!Util.isNullOrNil(str)) && (str.endsWith("#rd")))
     {
       str = str.substring(0, str.length() - 3);
-      if ((!bu.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
+      if ((!Util.isNullOrNil((String)localObject)) && (!((String)localObject).startsWith(str)))
       {
         localBundle.putString("rawUrl", (String)localObject);
         localBundle.putLong("msg_id", -9223372036854775808L);
@@ -67,16 +69,16 @@ public final class f
       localBundle.putString("preUsername", paramg.mParams.getString("preUsername"));
       localObject = new FavUrlTask();
       ((FavUrlTask)localObject).actionType = 1;
-      ((FavUrlTask)localObject).dyY = localBundle;
+      ((FavUrlTask)localObject).dQL = localBundle;
       AppBrandMainProcessService.b((MainProcessTask)localObject);
-      if (!((FavUrlTask)localObject).Egc) {
+      if (!((FavUrlTask)localObject).ISL) {
         break label367;
       }
-      ba.Xq(1);
-      paramg.eSV().aIs("sendAppMessage");
-      paramg.chX.a(new d()
+      bb.afY(1);
+      paramg.gbG().aYu("sendAppMessage");
+      paramg.ctS.a(new d()
       {
-        public final JSONObject BP()
+        public final JSONObject Ld()
         {
           return null;
         }
@@ -89,10 +91,10 @@ public final class f
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.service.g.yxI.dD(982, 2);
+      h.CyF.dN(982, 2);
       AppMethodBeat.o(78693);
       return;
-      if ((bu.isNullOrNil((String)localObject)) || (((String)localObject).startsWith(str))) {
+      if ((Util.isNullOrNil((String)localObject)) || (((String)localObject).startsWith(str))) {
         break;
       }
       localBundle.putString("rawUrl", (String)localObject);
@@ -100,15 +102,15 @@ public final class f
       localBundle.putString("sns_local_id", "");
       break;
       label367:
-      e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.ufz);
+      e.a(((FavUrlTask)localObject).ret, (Activity)paramContext, this.xxK);
     }
   }
   
-  public final void a(Context paramContext, com.tencent.mm.plugin.webview.luggage.g paramg, l paraml)
+  public final void a(Context paramContext, g paramg, m paramm)
   {
     AppMethodBeat.i(78692);
     if (!paramg.mParams.getBoolean("is_favorite_item", false)) {
-      paraml.a(3, paramContext.getString(2131761941), 2131689808);
+      paramm.b(3, paramContext.getString(2131763947), 2131689821);
     }
     AppMethodBeat.o(78692);
   }

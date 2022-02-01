@@ -16,20 +16,20 @@ public class TAVEmptyResource
   
   public TAVEmptyResource(CMTime paramCMTime, boolean paramBoolean)
   {
-    AppMethodBeat.i(200916);
+    AppMethodBeat.i(197586);
     this.insertTimeRange = paramBoolean;
     this.duration = paramCMTime;
     this.sourceTimeRange = new CMTimeRange(CMTime.CMTimeZero, paramCMTime);
-    AppMethodBeat.o(200916);
+    AppMethodBeat.o(197586);
   }
   
   public TAVResource clone()
   {
-    AppMethodBeat.i(200918);
+    AppMethodBeat.i(197588);
     TAVEmptyResource localTAVEmptyResource = new TAVEmptyResource(this.duration.clone());
     localTAVEmptyResource.sourceTimeRange = this.sourceTimeRange.clone();
     localTAVEmptyResource.scaledDuration = this.scaledDuration.clone();
-    AppMethodBeat.o(200918);
+    AppMethodBeat.o(197588);
     return localTAVEmptyResource;
   }
   
@@ -40,20 +40,20 @@ public class TAVEmptyResource
   
   public TrackInfo trackInfoForType(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200917);
+    AppMethodBeat.i(197587);
     if (this.insertTimeRange)
     {
       TrackInfo localTrackInfo = super.trackInfoForType(paramInt1, paramInt2);
-      AppMethodBeat.o(200917);
+      AppMethodBeat.o(197587);
       return localTrackInfo;
     }
-    AppMethodBeat.o(200917);
+    AppMethodBeat.o(197587);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tavkit.composition.resource.TAVEmptyResource
  * JD-Core Version:    0.7.0.1
  */

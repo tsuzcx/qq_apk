@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/bng" android:background="@color/afz" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <CheckBox android:layout_gravity="center_vertical" android:id="@id/bu8" android:focusable="false" android:visibility="visible" android:clickable="false" android:layout_width="@dimen/ap" android:layout_height="@dimen/an" android:layout_marginLeft="@dimen/d" />
-</merge>
+    <include android:id="@id/bnj" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/a2v" />
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir">
+        <TextView android:textSize="@dimen/c" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/bnl" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mp" />
+    </LinearLayout>
+    <TextView android:textSize="14.0sp" android:textColor="@color/l4" android:id="@id/bnh" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ir" android:lineSpacingMultiplier="1.1" />
+    <View android:id="@id/bnf" android:background="@drawable/qa" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/ir" />
+    <include android:id="@id/bne" layout="@layout/a2t" />
+    <include android:id="@id/bnn" layout="@layout/a2x" />
+    <TextView android:textColor="@color/a2x" android:id="@id/bnv" android:background="@color/a74" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/i1" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/bw5" style="@style/o2" />
+</LinearLayout>

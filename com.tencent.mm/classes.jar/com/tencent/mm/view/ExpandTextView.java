@@ -12,19 +12,19 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.widget.MMNeat7extView;
 
 public class ExpandTextView
   extends FrameLayout
   implements View.OnClickListener
 {
-  private TextView LKP;
-  private MMNeat7extView LKQ;
-  private String LKR;
-  private int LKS;
-  private a LKT = null;
-  private boolean vuQ = false;
+  private TextView RiJ;
+  private MMNeat7extView RiK;
+  private String RiL;
+  private int RiM;
+  private a RiN = null;
+  private boolean yPa = false;
   
   public ExpandTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -38,25 +38,25 @@ public class ExpandTextView
   
   public TextView getExpandTextView()
   {
-    return this.LKP;
+    return this.RiJ;
   }
   
   public MMNeat7extView getTextView()
   {
-    return this.LKQ;
+    return this.RiK;
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(164249);
     b localb = new b();
-    localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/ExpandTextView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    if (!this.vuQ)
+    localb.bm(paramView);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/view/ExpandTextView", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    if (!this.yPa)
     {
-      this.vuQ = true;
-      this.LKQ.setMaxLines(2147483647);
-      this.LKP.animate().alpha(0.0F).setDuration(300L).setListener(new Animator.AnimatorListener()
+      this.yPa = true;
+      this.RiK.setMaxLines(2147483647);
+      this.RiJ.animate().alpha(0.0F).setDuration(300L).setListener(new Animator.AnimatorListener()
       {
         public final void onAnimationCancel(Animator paramAnonymousAnimator) {}
         
@@ -81,14 +81,14 @@ public class ExpandTextView
   {
     AppMethodBeat.i(164241);
     super.onFinishInflate();
-    this.LKQ = new MMNeat7extView(getContext());
+    this.RiK = new MMNeat7extView(getContext());
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-    addView(this.LKQ, localLayoutParams);
-    this.LKP = new TextView(getContext());
+    addView(this.RiK, localLayoutParams);
+    this.RiJ = new TextView(getContext());
     localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 85;
-    addView(this.LKP, localLayoutParams);
-    this.LKP.setOnClickListener(this);
+    addView(this.RiJ, localLayoutParams);
+    this.RiJ.setOnClickListener(this);
     AppMethodBeat.o(164241);
   }
   
@@ -96,76 +96,76 @@ public class ExpandTextView
   {
     AppMethodBeat.i(164248);
     super.onMeasure(paramInt1, paramInt2);
-    if (!this.vuQ)
+    if (!this.yPa)
     {
-      com.tencent.neattextview.textview.layout.a locala = this.LKQ.kR(getMeasuredWidth(), getMeasuredHeight());
+      com.tencent.neattextview.textview.layout.a locala = this.RiK.mq(getMeasuredWidth(), getMeasuredHeight());
       if (locala != null)
       {
-        if (locala.fXb() > this.LKS)
+        if (locala.hiG() > this.RiM)
         {
-          this.LKP.setVisibility(0);
+          this.RiJ.setVisibility(0);
           AppMethodBeat.o(164248);
           return;
         }
-        this.LKP.setVisibility(8);
+        this.RiJ.setVisibility(8);
         AppMethodBeat.o(164248);
         return;
       }
-      ae.e("MicroMsg.ExpandTextView", "layout is null!");
-      this.LKP.setVisibility(8);
+      Log.e("MicroMsg.ExpandTextView", "layout is null!");
+      this.RiJ.setVisibility(8);
     }
     AppMethodBeat.o(164248);
   }
   
   public void setExpandIconText(String paramString)
   {
-    this.LKR = paramString;
+    this.RiL = paramString;
   }
   
   public void setExpandTextColor(int paramInt)
   {
     AppMethodBeat.i(164242);
-    this.LKP.setTextColor(paramInt);
+    this.RiJ.setTextColor(paramInt);
     AppMethodBeat.o(164242);
   }
   
   public void setExpandTextSize(float paramFloat)
   {
     AppMethodBeat.i(164244);
-    this.LKP.setTextSize(0, paramFloat);
+    this.RiJ.setTextSize(0, paramFloat);
     AppMethodBeat.o(164244);
   }
   
   public void setLineSpacingExtra(int paramInt)
   {
     AppMethodBeat.i(164245);
-    this.LKQ.setSpacingAdd(paramInt);
+    this.RiK.setSpacingAdd(paramInt);
     AppMethodBeat.o(164245);
   }
   
   public void setMaxLines(int paramInt)
   {
     AppMethodBeat.i(164247);
-    this.LKQ.setMaxLines(paramInt);
+    this.RiK.setMaxLines(paramInt);
     AppMethodBeat.o(164247);
   }
   
   public void setOnExpandListener(a parama)
   {
-    this.LKT = parama;
+    this.RiN = parama;
   }
   
   public void setTextColor(int paramInt)
   {
     AppMethodBeat.i(164243);
-    this.LKQ.setTextColor(paramInt);
+    this.RiK.setTextColor(paramInt);
     AppMethodBeat.o(164243);
   }
   
   public void setTextSize(float paramFloat)
   {
     AppMethodBeat.i(164246);
-    this.LKQ.setTextSize(0, paramFloat);
+    this.RiK.setTextSize(0, paramFloat);
     AppMethodBeat.o(164246);
   }
   
@@ -173,7 +173,7 @@ public class ExpandTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.view.ExpandTextView
  * JD-Core Version:    0.7.0.1
  */

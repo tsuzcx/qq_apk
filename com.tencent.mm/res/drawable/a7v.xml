@@ -1,8 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:state_checked="true" android:drawable="@drawable/bw2" />
-    <item android:state_enabled="false" android:state_checked="false" android:drawable="@drawable/bw1" />
-    <item android:state_checked="true" android:drawable="@drawable/bw0" />
-    <item android:drawable="@drawable/bw1" />
+    <item android:state_enabled="false">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/uq" />
+        </shape>
+    </item>
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/uo" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="@dimen/a0" />
+            <solid android:color="@color/up" />
+        </shape>
+    </item>
 </selector>

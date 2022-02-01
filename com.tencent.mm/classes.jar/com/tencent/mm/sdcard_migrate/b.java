@@ -5,14 +5,14 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.app.d;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import java.io.File;
 
 public final class b
 {
-  private static final Boolean[] Iuc = { null };
+  private static final Boolean[] NHz = { null };
   
-  private static String Ni(String paramString)
+  private static String Wr(String paramString)
   {
     AppMethodBeat.i(176869);
     File localFile = new File(paramString);
@@ -24,124 +24,117 @@ public final class b
     }
     catch (Throwable localThrowable)
     {
-      ExtStorageMigrateMonitor.fmX().printErrStackTrace("MicroMsg.ExtStorageMigrateStatus", localThrowable, "[-] Fail to get canonical path for: %s", new Object[] { paramString });
+      ExtStorageMigrateMonitor.gwK().printErrStackTrace("MicroMsg.ExtStorageMigrateStatus", localThrowable, "[-] Fail to get canonical path for: %s", new Object[] { paramString });
       paramString = localFile.getAbsolutePath();
       AppMethodBeat.o(176869);
     }
     return paramString;
   }
   
-  public static boolean aRn(String paramString)
+  public static boolean bhQ(String paramString)
   {
     AppMethodBeat.i(176862);
-    paramString = "key_is_migrated_" + Ni(paramString);
-    boolean bool = ay.aRW("extmig_status_memo_storage").getBoolean(paramString, false);
+    paramString = "key_is_migrated_" + Wr(paramString);
+    boolean bool = MultiProcessMMKV.getMMKV("extmig_status_memo_storage").getBoolean(paramString, false);
     AppMethodBeat.o(176862);
     return bool;
   }
   
-  static void aRo(String paramString)
+  static void bhR(String paramString)
   {
     AppMethodBeat.i(176863);
-    paramString = "key_is_migrated_" + Ni(paramString);
-    ay.aRW("extmig_status_memo_storage").encode(paramString, true);
+    paramString = "key_is_migrated_" + Wr(paramString);
+    MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode(paramString, true);
     AppMethodBeat.o(176863);
   }
   
-  public static boolean fnl()
+  public static boolean gwY()
   {
     AppMethodBeat.i(176864);
-    boolean bool = ay.aRW("extmig_status_memo_storage").getBoolean("key_is_olddata_ignored_v2", false);
+    boolean bool = MultiProcessMMKV.getMMKV("extmig_status_memo_storage").getBoolean("key_is_olddata_ignored_v2", false);
     AppMethodBeat.o(176864);
     return bool;
   }
   
-  public static boolean fnm()
+  public static boolean gwZ()
   {
-    AppMethodBeat.i(193603);
-    boolean bool = ay.aRW("extmig_status_memo_storage").getBoolean("key_indicate_goon_by_migrate_routine", false);
-    AppMethodBeat.o(193603);
+    AppMethodBeat.i(197161);
+    boolean bool = MultiProcessMMKV.getMMKV("extmig_status_memo_storage").getBoolean("key_indicate_goon_by_migrate_routine", false);
+    AppMethodBeat.o(197161);
     return bool;
   }
   
-  static void fnn()
+  static void gxa()
   {
-    AppMethodBeat.i(193604);
-    ay.aRW("extmig_status_memo_storage").encode("key_indicate_goon_by_migrate_routine", true);
-    AppMethodBeat.o(193604);
+    AppMethodBeat.i(197162);
+    MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_goon_by_migrate_routine", true);
+    AppMethodBeat.o(197162);
   }
   
-  static void fno()
+  static void gxb()
   {
-    AppMethodBeat.i(193605);
-    ay.aRW("extmig_status_memo_storage").encode("key_indicate_goon_by_migrate_routine", false);
-    AppMethodBeat.o(193605);
+    AppMethodBeat.i(197163);
+    MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_goon_by_migrate_routine", false);
+    AppMethodBeat.o(197163);
   }
   
-  static void fnp()
+  static void gxc()
   {
-    AppMethodBeat.i(193606);
-    ay.aRW("extmig_status_memo_storage").encode("key_indicate_migrating_by_migrate_routine", true);
-    AppMethodBeat.o(193606);
+    AppMethodBeat.i(197164);
+    MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_migrating_by_migrate_routine", true);
+    AppMethodBeat.o(197164);
   }
   
-  static void fnq()
+  static void gxd()
   {
-    AppMethodBeat.i(193607);
-    ay.aRW("extmig_status_memo_storage").encode("key_indicate_migrating_by_migrate_routine", false);
-    AppMethodBeat.o(193607);
+    AppMethodBeat.i(197165);
+    MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_migrating_by_migrate_routine", false);
+    AppMethodBeat.o(197165);
   }
   
-  public static boolean fnr()
+  public static boolean gxe()
   {
-    AppMethodBeat.i(193608);
-    boolean bool = ay.aRW("extmig_status_memo_storage").getBoolean("key_indicate_rescan_needed_by_migrate_routine", false);
-    AppMethodBeat.o(193608);
+    AppMethodBeat.i(197166);
+    boolean bool = MultiProcessMMKV.getMMKV("extmig_status_memo_storage").getBoolean("key_indicate_rescan_needed_by_migrate_routine", false);
+    AppMethodBeat.o(197166);
     return bool;
   }
   
-  static void fns()
+  static void gxf()
   {
-    AppMethodBeat.i(193609);
-    ay.aRW("extmig_status_memo_storage").encode("key_indicate_rescan_needed_by_migrate_routine", true);
-    AppMethodBeat.o(193609);
+    AppMethodBeat.i(197167);
+    MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_rescan_needed_by_migrate_routine", true);
+    AppMethodBeat.o(197167);
   }
   
-  static void fnt()
+  static void gxg()
   {
-    AppMethodBeat.i(193610);
-    ay.aRW("extmig_status_memo_storage").encode("key_indicate_rescan_needed_by_migrate_routine", false);
-    AppMethodBeat.o(193610);
+    AppMethodBeat.i(197168);
+    MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_indicate_rescan_needed_by_migrate_routine", false);
+    AppMethodBeat.o(197168);
   }
   
-  public static boolean fnu()
-  {
-    AppMethodBeat.i(176867);
-    AppMethodBeat.o(176867);
-    return true;
-  }
-  
-  public static void fnv()
+  public static void gxh()
   {
     AppMethodBeat.i(176868);
     AppMethodBeat.o(176868);
   }
   
-  static void iA(Context paramContext)
+  static void ju(Context paramContext)
   {
     AppMethodBeat.i(176865);
-    if (iB(paramContext))
+    if (jv(paramContext))
     {
-      ExtStorageMigrateMonitor.fmX().i("MicroMsg.ExtStorageMigrateStatus", "[+] Mark newly installed in process: %s", new Object[] { d.cEw });
-      ay.aRW("extmig_status_memo_storage").encode("key_is_olddata_ignored_v2", true);
+      ExtStorageMigrateMonitor.gwK().i("MicroMsg.ExtStorageMigrateStatus", "[+] Mark newly installed in process: %s", new Object[] { d.cQi });
+      MultiProcessMMKV.getMMKV("extmig_status_memo_storage").encode("key_is_olddata_ignored_v2", true);
     }
     AppMethodBeat.o(176865);
   }
   
-  private static boolean iB(Context paramContext)
+  private static boolean jv(Context paramContext)
   {
     AppMethodBeat.i(176866);
-    if (new File(com.tencent.mm.loader.j.b.asb(), "version_history.cfg").exists())
+    if (new File(com.tencent.mm.loader.j.b.aKB(), "version_history.cfg").exists())
     {
       AppMethodBeat.o(176866);
       return false;

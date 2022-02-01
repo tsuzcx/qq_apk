@@ -11,23 +11,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class k
   extends a
 {
-  private a KNN;
-  b KNO;
+  private a QaN;
+  b QaO;
   
   public k(int paramInt)
   {
     super(7, paramInt);
     AppMethodBeat.i(102970);
-    this.KNN = new a();
-    this.KNO = new b();
+    this.QaN = new a();
+    this.QaO = new b();
     AppMethodBeat.o(102970);
   }
   
   public final void a(Context paramContext, a.a parama) {}
   
-  public final a.b aRR()
+  public final a.b bmx()
   {
-    return this.KNN;
+    return this.QaN;
   }
   
   public final class a
@@ -41,11 +41,11 @@ public final class k
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(102968);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131495365, paramViewGroup, false);
-      paramViewGroup = (k.b)k.this.KNO;
-      paramViewGroup.iYj = ((TextView)paramContext.findViewById(2131305948));
-      paramViewGroup.contentView = paramContext.findViewById(2131304518);
-      paramViewGroup.KNQ = ((ImageView)paramContext.findViewById(2131304538));
+      paramContext = LayoutInflater.from(paramContext).inflate(2131496226, paramViewGroup, false);
+      paramViewGroup = (k.b)k.this.QaO;
+      paramViewGroup.jVO = ((TextView)paramContext.findViewById(2131309249));
+      paramViewGroup.contentView = paramContext.findViewById(2131307533);
+      paramViewGroup.QaQ = ((ImageView)paramContext.findViewById(2131307561));
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(102968);
       return paramContext;
@@ -55,20 +55,20 @@ public final class k
     {
       AppMethodBeat.i(102969);
       paramContext = (k.b)parama;
-      paramContext.iYj.setText(2131762992);
+      paramContext.jVO.setText(2131765129);
       if (paramBoolean2) {
-        paramContext.KNQ.setVisibility(0);
+        paramContext.QaQ.setVisibility(0);
       }
       for (;;)
       {
-        paramContext.contentView.setBackgroundResource(2131231820);
+        paramContext.contentView.setBackgroundResource(2131231901);
         AppMethodBeat.o(102969);
         return;
-        paramContext.KNQ.setVisibility(8);
+        paramContext.QaQ.setVisibility(8);
       }
     }
     
-    public final boolean aRS()
+    public final boolean bmy()
     {
       return false;
     }
@@ -77,9 +77,9 @@ public final class k
   public final class b
     extends a.a
   {
-    public ImageView KNQ;
+    public ImageView QaQ;
     public View contentView;
-    public TextView iYj;
+    public TextView jVO;
     
     public b()
     {
@@ -89,7 +89,7 @@ public final class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.contact.a.k
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:id="@id/dkk" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout style="@style/kb"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center" android:id="@id/d4u" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginBottom="5.0dip" style="@style/a5o" />
-    <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:background="@drawable/bn5" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jn" android:maxWidth="230.0dip" android:minWidth="40.0dip" android:layout_weight="1.0">
-            <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/a_u" android:id="@id/d4z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:maxLines="4" />
-            <TextView android:textColor="@color/a_u" android:id="@id/d57" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="200.0dip" android:minWidth="40.0dip" android:maxLines="4" />
-        </LinearLayout>
-        <TextView android:textSize="@dimen/jv" android:textColor="@color/a_u" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/cfh" android:background="@drawable/zk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/dc5" />
-    </LinearLayout>
-</FrameLayout>
+    <Button android:textSize="10.0dip" android:id="@id/da5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="toast" />
+    <Button android:textSize="10.0dip" android:id="@id/da6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="alert" />
+</LinearLayout>

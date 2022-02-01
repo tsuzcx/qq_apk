@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen
+<RelativeLayout android:focusable="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.tools.ZonePreference />
-</PreferenceScreen>
+    <com.tencent.mm.plugin.patmsg.ui.AvatarPatTipImageView android:gravity="center_horizontal" android:id="@id/h8t" android:src="@drawable/bcb" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/t3" />
+    <ImageView android:gravity="center" android:id="@id/h84" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ei" android:layout_alignLeft="@id/h8t" android:layout_alignTop="@id/h8t" />
+    <ImageView android:id="@id/h86" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_alignRight="@id/h8t" android:layout_alignBottom="@id/h8t" />
+    <ImageView android:id="@id/h85" android:visibility="gone" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/bmp" android:layout_alignRight="@id/h8t" android:layout_alignBottom="@id/h8t" />
+    <RelativeLayout android:id="@id/h8r" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/h8t" android:layout_centerHorizontal="true">
+        <TextView android:id="@id/h8p" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/t4" />
+        <TextView android:id="@id/h8q" android:paddingTop="@dimen/g" android:visibility="gone" android:layout_centerHorizontal="true" style="@style/t4" />
+    </RelativeLayout>
+    <TextView android:textColor="@color/Orange" android:id="@id/h8s" android:visibility="gone" android:layout_below="@id/h8r" android:layout_centerHorizontal="true" style="@style/t4" />
+</RelativeLayout>

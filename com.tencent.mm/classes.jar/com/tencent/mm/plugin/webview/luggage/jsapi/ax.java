@@ -1,89 +1,65 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import com.tencent.e.h;
-import com.tencent.e.i;
-import com.tencent.luggage.d.a;
-import com.tencent.luggage.d.b;
+import com.tencent.luggage.bridge.k;
+import com.tencent.luggage.d.b.a;
+import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import java.security.cert.X509Certificate;
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLContext;
-import javax.net.ssl.SSLSession;
-import javax.net.ssl.TrustManager;
-import javax.net.ssl.X509TrustManager;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class ax<T extends a>
-  extends bq<T>
+public class ax
+  extends br
 {
-  private static TrustManager Eju;
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
-  static
+  public final void b(b.a parama)
   {
-    AppMethodBeat.i(198096);
-    Eju = new X509TrustManager()
+    AppMethodBeat.i(78611);
+    JSONArray localJSONArray = parama.ctb.csi.optJSONArray("idKeyDataInfo");
+    if ((localJSONArray == null) || (localJSONArray.length() == 0))
     {
-      public final void checkClientTrusted(X509Certificate[] paramAnonymousArrayOfX509Certificate, String paramAnonymousString)
-      {
-        AppMethodBeat.i(198091);
-        ae.i("MicroMsg.JsApiRequest", "checkClientTrusted");
-        AppMethodBeat.o(198091);
-      }
-      
-      public final void checkServerTrusted(X509Certificate[] paramAnonymousArrayOfX509Certificate, String paramAnonymousString)
-      {
-        AppMethodBeat.i(198092);
-        ae.i("MicroMsg.JsApiRequest", "checkServerTrusted");
-        AppMethodBeat.o(198092);
-      }
-      
-      public final X509Certificate[] getAcceptedIssuers()
-      {
-        return new X509Certificate[0];
-      }
-    };
-    AppMethodBeat.o(198096);
-  }
-  
-  private static SSLContext aIx(String paramString)
-  {
-    AppMethodBeat.i(198094);
-    try
-    {
-      paramString = SSLContext.getInstance(paramString);
-      AppMethodBeat.o(198094);
-      return paramString;
+      Log.e("MicroMsg.JsApiReportIDKey", "idkey data is null");
+      parama.c("invaild_parms", null);
+      AppMethodBeat.o(78611);
+      return;
     }
-    catch (Exception paramString)
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < localJSONArray.length())
     {
-      AppMethodBeat.o(198094);
+      JSONObject localJSONObject = localJSONArray.optJSONObject(i);
+      IDKey localIDKey = new IDKey();
+      localIDKey.SetID(Util.getInt(localJSONObject.optString("id"), 0));
+      localIDKey.SetKey(Util.getInt(localJSONObject.optString("key"), 0));
+      localIDKey.SetValue(Util.getInt(localJSONObject.optString("value"), 0));
+      localArrayList.add(localIDKey);
+      i += 1;
     }
-    return null;
+    if (localArrayList.size() > 0) {
+      h.CyF.b(localArrayList, true);
+    }
+    parama.c("", null);
+    AppMethodBeat.o(78611);
   }
   
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
-  
-  public final void b(b<T>.a paramb)
-  {
-    AppMethodBeat.i(198093);
-    h.MqF.aO(new ax.1(this, paramb));
-    AppMethodBeat.o(198093);
-  }
-  
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "request";
+    return "reportIDKey";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.luggage.jsapi.ax
  * JD-Core Version:    0.7.0.1
  */

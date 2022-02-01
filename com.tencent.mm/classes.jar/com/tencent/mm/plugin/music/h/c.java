@@ -5,18 +5,18 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ay.f;
 import com.tencent.mm.plugin.music.e.a;
 import com.tencent.mm.plugin.music.e.k;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static boolean Mi(int paramInt)
+  public static boolean Th(int paramInt)
   {
     AppMethodBeat.i(137449);
     switch (paramInt)
     {
     default: 
-      a locala = k.dwp().wzU;
-      if ((locala != null) && (locala.LP(paramInt)))
+      a locala = k.euj().AjC;
+      if ((locala != null) && (locala.gEZ()))
       {
         AppMethodBeat.o(137449);
         return true;
@@ -31,7 +31,7 @@ public final class c
     return false;
   }
   
-  public static boolean Q(f paramf)
+  public static boolean U(f paramf)
   {
     AppMethodBeat.i(137450);
     if (paramf == null)
@@ -44,7 +44,7 @@ public final class c
       AppMethodBeat.o(137450);
       return false;
     }
-    ae.d("MicroMsg.Music.MusicPlayerSupport", "protocol:%s", new Object[] { paramf.protocol });
+    Log.d("MicroMsg.Music.MusicPlayerSupport", "protocol:%s", new Object[] { paramf.protocol });
     if ("hls".equalsIgnoreCase(paramf.protocol))
     {
       AppMethodBeat.o(137450);
@@ -56,7 +56,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.h.c
  * JD-Core Version:    0.7.0.1
  */

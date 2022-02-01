@@ -11,15 +11,15 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.mmsight.segment.RecyclerThumbSeekBar;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.ui.aa;
 
 public class VideoSeekBarEditorView
   extends LinearLayout
 {
-  private Button rti;
-  private LinearLayout wjA;
-  public RecyclerThumbSeekBar wjy;
-  private Button wjz;
+  private Button sTL;
+  public RecyclerThumbSeekBar zDX;
+  private Button zDY;
+  private LinearLayout zDZ;
   
   public VideoSeekBarEditorView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -40,24 +40,24 @@ public class VideoSeekBarEditorView
   private void init(Context paramContext)
   {
     AppMethodBeat.i(94756);
-    this.wjA = ((LinearLayout)z.jV(paramContext).inflate(2131495841, this, true));
-    this.wjy = ((RecyclerThumbSeekBar)findViewById(2131306400));
-    this.rti = ((Button)findViewById(2131299263));
-    this.wjz = ((Button)findViewById(2131299265));
+    this.zDZ = ((LinearLayout)aa.jQ(paramContext).inflate(2131496810, this, true));
+    this.zDX = ((RecyclerThumbSeekBar)findViewById(2131309831));
+    this.sTL = ((Button)findViewById(2131299840));
+    this.zDY = ((Button)findViewById(2131299843));
     AppMethodBeat.o(94756);
   }
   
-  public final void drk()
+  public final void ele()
   {
     AppMethodBeat.i(94760);
-    this.wjy.release();
-    ViewParent localViewParent = this.wjy.getParent();
+    this.zDX.release();
+    ViewParent localViewParent = this.zDX.getParent();
     if ((localViewParent instanceof LinearLayout))
     {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.wjy.getLayoutParams();
-      ((LinearLayout)localViewParent).removeView(this.wjy);
-      this.wjy = new RecyclerThumbSeekBar(getContext());
-      ((LinearLayout)localViewParent).addView(this.wjy, 0, localLayoutParams);
+      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.zDX.getLayoutParams();
+      ((LinearLayout)localViewParent).removeView(this.zDX);
+      this.zDX = new RecyclerThumbSeekBar(getContext());
+      ((LinearLayout)localViewParent).addView(this.zDX, 0, localLayoutParams);
     }
     AppMethodBeat.o(94760);
   }
@@ -65,14 +65,14 @@ public class VideoSeekBarEditorView
   public void setCancelButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(94759);
-    this.rti.setOnClickListener(paramOnClickListener);
+    this.sTL.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(94759);
   }
   
   public void setFinishButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(94758);
-    this.wjz.setOnClickListener(paramOnClickListener);
+    this.zDY.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(94758);
   }
   
@@ -80,14 +80,14 @@ public class VideoSeekBarEditorView
   {
     AppMethodBeat.i(94757);
     if (paramString != null) {
-      this.wjz.setTextColor(Color.parseColor(paramString));
+      this.zDY.setTextColor(Color.parseColor(paramString));
     }
     AppMethodBeat.o(94757);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.ui.VideoSeekBarEditorView
  * JD-Core Version:    0.7.0.1
  */

@@ -5,50 +5,51 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.exdevice.g.b.a;
 import com.tencent.mm.plugin.exdevice.g.b.d;
 import com.tencent.mm.plugin.exdevice.model.ad;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.Iterator;
 import junit.framework.Assert;
 
 public final class e
-  extends j<com.tencent.mm.plugin.exdevice.g.b.a.e>
+  extends MAutoStorage<com.tencent.mm.plugin.exdevice.g.b.a.e>
 {
   public static final String[] SQL_CREATE;
-  private com.tencent.mm.sdk.e.e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(23586);
-    SQL_CREATE = new String[] { j.getCreateSQLs(com.tencent.mm.plugin.exdevice.g.b.a.e.info, "HardDeviceLikeUser") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(com.tencent.mm.plugin.exdevice.g.b.a.e.info, "HardDeviceLikeUser") };
     AppMethodBeat.o(23586);
   }
   
-  public e(com.tencent.mm.sdk.e.e parame)
+  public e(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, com.tencent.mm.plugin.exdevice.g.b.a.e.info, "HardDeviceLikeUser", null);
+    super(paramISQLiteDatabase, com.tencent.mm.plugin.exdevice.g.b.a.e.info, "HardDeviceLikeUser", null);
     AppMethodBeat.i(23583);
-    this.db = parame;
-    parame.execSQL("HardDeviceLikeUser", "CREATE INDEX IF NOT EXISTS ExdeviceRankLikeInfoRankIdAppNameIndex ON HardDeviceLikeUser ( rankID, appusername )");
+    this.db = paramISQLiteDatabase;
+    paramISQLiteDatabase.execSQL("HardDeviceLikeUser", "CREATE INDEX IF NOT EXISTS ExdeviceRankLikeInfoRankIdAppNameIndex ON HardDeviceLikeUser ( rankID, appusername )");
     AppMethodBeat.o(23583);
   }
   
-  public final ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> adx(String paramString)
+  public final ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> anG(String paramString)
   {
     com.tencent.mm.plugin.exdevice.g.b.a.e locale = null;
     AppMethodBeat.i(23584);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.ExdeviceRankLikeUserStg", "hy: param error");
+      Log.e("MicroMsg.ExdeviceRankLikeUserStg", "hy: param error");
       AppMethodBeat.o(23584);
       return null;
     }
     Object localObject = String.format("select *, rowid from %s where %s = ? order by %s desc", new Object[] { "HardDeviceLikeUser", "rankID", "timestamp" });
-    localObject = this.db.a((String)localObject, new String[] { bu.bI(paramString, "") }, 2);
+    localObject = this.db.rawQuery((String)localObject, new String[] { Util.nullAs(paramString, "") }, 2);
     if (localObject == null)
     {
-      ae.e("MicroMsg.ExdeviceRankLikeUserStg", "Get no rank in DB");
+      Log.e("MicroMsg.ExdeviceRankLikeUserStg", "Get no rank in DB");
       AppMethodBeat.o(23584);
       return null;
     }
@@ -71,14 +72,14 @@ public final class e
   public final void b(String paramString1, String paramString2, ArrayList<com.tencent.mm.plugin.exdevice.g.b.a.e> paramArrayList)
   {
     AppMethodBeat.i(23585);
-    if (!bu.isNullOrNil(paramString1)) {}
+    if (!Util.isNullOrNil(paramString1)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
       if (paramArrayList != null) {
         break;
       }
-      ae.i("MicroMsg.ExdeviceRankLikeUserStg", "batchInsertOrUpdate failed, data is null.");
+      Log.i("MicroMsg.ExdeviceRankLikeUserStg", "batchInsertOrUpdate failed, data is null.");
       AppMethodBeat.o(23585);
       return;
     }
@@ -93,23 +94,23 @@ public final class e
         if (!update(locale, new String[] { "rankID", "username" })) {
           break label122;
         }
-        ae.d("MicroMsg.ExdeviceRankLikeUserStg", "hy: update success");
+        Log.d("MicroMsg.ExdeviceRankLikeUserStg", "hy: update success");
         break;
       }
       label122:
       if (insert(locale)) {
-        ae.d("MicroMsg.ExdeviceRankLikeUserStg", "hy: insert success");
+        Log.d("MicroMsg.ExdeviceRankLikeUserStg", "hy: insert success");
       } else {
-        ae.w("MicroMsg.ExdeviceRankLikeUserStg", "hy: insert or update failed");
+        Log.w("MicroMsg.ExdeviceRankLikeUserStg", "hy: insert or update failed");
       }
     }
-    ad.cmS().a("HardDeviceLikeUser", new d(paramString1, paramString2, null));
+    ad.cKU().a("HardDeviceLikeUser", new d(paramString1, paramString2, null));
     AppMethodBeat.o(23585);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.g.b.b.e
  * JD-Core Version:    0.7.0.1
  */

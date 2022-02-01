@@ -5,21 +5,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  public static CharSequence G(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(20677);
-    if (paramInt <= 0)
-    {
-      paramContext = paramContext.getString(2131758996, new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
-      AppMethodBeat.o(20677);
-      return paramContext;
-    }
-    paramContext = paramContext.getString(2131758996, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
-    AppMethodBeat.o(20677);
-    return paramContext;
-  }
-  
-  public static float sI(long paramLong)
+  public static float AO(long paramLong)
   {
     float f1 = 1.0F;
     AppMethodBeat.i(20676);
@@ -33,10 +19,24 @@ public final class a
       f1 = f2;
     }
   }
+  
+  public static CharSequence J(Context paramContext, int paramInt)
+  {
+    AppMethodBeat.i(20677);
+    if (paramInt <= 0)
+    {
+      paramContext = paramContext.getString(2131759321, new Object[] { Integer.valueOf(0), Integer.valueOf(0) });
+      AppMethodBeat.o(20677);
+      return paramContext;
+    }
+    paramContext = paramContext.getString(2131759321, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
+    AppMethodBeat.o(20677);
+    return paramContext;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.bl.a
  * JD-Core Version:    0.7.0.1
  */

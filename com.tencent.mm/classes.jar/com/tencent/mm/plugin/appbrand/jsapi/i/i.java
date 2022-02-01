@@ -1,96 +1,69 @@
 package com.tencent.mm.plugin.appbrand.jsapi.i;
 
-import android.graphics.Color;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.ab;
-import com.tencent.mm.plugin.appbrand.jsapi.i.a.b.i;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.y.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.ArrayList;
-import java.util.List;
-import org.json.JSONArray;
+import com.tencent.mm.ipcinvoker.extension.XIPCInvoker;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.type.IPCInteger;
+import com.tencent.mm.ipcinvoker.type.IPCVoid;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.plugin.appbrand.backgroundrunning.AppBrandBackgroundRunningMonitor;
+import com.tencent.mm.plugin.appbrand.backgroundrunning.c;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class i
-  extends b
+  extends j
 {
-  public static final int CTRL_INDEX = 492;
-  public static final String NAME = "addMapPolygons";
+  private static final int CTRL_INDEX = 586;
+  private static final String NAME = "enableLocationUpdateBackground";
   
-  public final void a(c paramc, JSONObject paramJSONObject, int paramInt)
+  public final void b(com.tencent.mm.plugin.appbrand.s params, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(143662);
-    super.a(paramc, paramJSONObject, paramInt);
-    if (paramJSONObject == null)
+    AppMethodBeat.i(46378);
+    this.lXb = ((s)params.aw(s.class));
+    if ((this.lXb instanceof t))
     {
-      ae.e("MicroMsg.JsApiAddMapPolygons", "data is null");
-      paramc.h(paramInt, e("fail:invalid data", null));
-      AppMethodBeat.o(143662);
-      return;
-    }
-    ae.i("MicroMsg.JsApiAddMapPolygons", "data:%s", new Object[] { paramJSONObject });
-    com.tencent.mm.plugin.appbrand.jsapi.i.a.b localb = h(paramc, paramJSONObject);
-    if (localb == null)
-    {
-      ae.e("MicroMsg.JsApiAddMapPolygons", "mapView is null, return");
-      paramc.h(paramInt, e("fail:mapview is null", null));
-      AppMethodBeat.o(143662);
-      return;
-    }
-    try
-    {
-      if (paramJSONObject.has("polygons"))
+      localObject = (t)this.lXb;
+      if ((((s)localObject).kYn) && (((s)localObject).lXu))
       {
-        localb.blI();
-        paramJSONObject = new JSONArray(paramJSONObject.optString("polygons"));
-        int i = 0;
-        while (i < paramJSONObject.length())
-        {
-          JSONObject localJSONObject1 = (JSONObject)paramJSONObject.get(i);
-          ArrayList localArrayList = new ArrayList();
-          Object localObject = new JSONArray(localJSONObject1.optString("points"));
-          int j = 0;
-          while (j < ((JSONArray)localObject).length())
-          {
-            JSONObject localJSONObject2 = ((JSONArray)localObject).getJSONObject(j);
-            localArrayList.add(new b.i(bu.getDouble(localJSONObject2.optString("latitude"), 0.0D), bu.getDouble(localJSONObject2.optString("longitude"), 0.0D)) {});
-            j += 1;
-          }
-          j = g.ck(localJSONObject1.optString("fillColor", ""), Color.parseColor("#000000"));
-          int k = g.ck(localJSONObject1.optString("strokeColor", ""), Color.parseColor("#000000"));
-          int m = g.a(localJSONObject1, "strokeWidth", 0);
-          int n = localJSONObject1.optInt("zIndex", 0);
-          localObject = new b.ab();
-          ((b.ab)localObject).kVx = new ArrayList();
-          ((b.ab)localObject).kVx.addAll(localArrayList);
-          ((b.ab)localObject).fillColor = j;
-          ((b.ab)localObject).strokeWidth = m;
-          ((b.ab)localObject).strokeColor = k;
-          ((b.ab)localObject).zIndex = n;
-          ((b.ab)localObject).kVm = localJSONObject1.optString("level");
-          localb.a((b.ab)localObject);
-          i += 1;
-        }
+        Log.i("MicroMsg.JsApiEnableLocationUpdateBackgroundWxImp", "already in location background mode");
+        params.i(paramInt, h("ok", null));
+        AppMethodBeat.o(46378);
+        return;
       }
-      ae.e("MicroMsg.JsApiAddMapPolygons", "data has not lines info");
-      a(paramc, paramInt, e("ok", null), true, localb.blB());
-      AppMethodBeat.o(143662);
+    }
+    Object localObject = (IPCInteger)XIPCInvoker.a(MainProcessIPCService.dkO, new IPCVoid(), a.class);
+    AppBrandGlobalSystemConfig localAppBrandGlobalSystemConfig = AppBrandGlobalSystemConfig.bzP();
+    if ((localObject != null) && (((IPCInteger)localObject).value >= localAppBrandGlobalSystemConfig.lcK))
+    {
+      Log.w("MicroMsg.JsApiEnableLocationUpdateBackgroundWxImp", "enableLocationBackground: fail reach max concurrent background count");
+      params.i(paramInt, h("fail reach max concurrent background count", null));
+      AppMethodBeat.o(46378);
       return;
     }
-    catch (Exception paramJSONObject)
+    super.b(params, paramJSONObject, paramInt);
+    if (!(this.lXb instanceof t))
     {
-      ae.e("MicroMsg.JsApiAddMapPolygons", "parse lines error, exception : %s", new Object[] { paramJSONObject });
-      a(paramc, paramInt, e("fail:internal error", null), false, localb.blB());
-      AppMethodBeat.o(143662);
+      Log.w("MicroMsg.JsApiEnableLocationUpdateBackgroundWxImp", "state manager not RuntimeLocationUpdateStateManagerWxa");
+      params.i(paramInt, h("fail:system error", null));
+      AppMethodBeat.o(46378);
+      return;
     }
+    if ((this.lXb != null) && (this.lXb.lXu)) {
+      AppBrandBackgroundRunningMonitor.a(params, 1, c.kYp.beL);
+    }
+    AppMethodBeat.o(46378);
   }
+  
+  static class a
+    implements k<IPCVoid, IPCInteger>
+  {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.i.i
  * JD-Core Version:    0.7.0.1
  */

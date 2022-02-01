@@ -1,8 +1,8 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -14,13 +14,13 @@ import org.json.JSONObject;
 
 public final class k
 {
-  public static String hTa = "menu_click";
-  public static String hTb = "menu_action_start";
-  public static String hTc = "menu_action_success";
+  public static String iOp = "menu_click";
+  public static String iOq = "menu_action_start";
+  public static String iOr = "menu_action_success";
   public String content;
-  public String dPb;
-  public List<k> hTd = null;
-  public int hTe;
+  public String egX;
+  public List<k> iOs = null;
+  public int iOt;
   public int id;
   public String key;
   public String name;
@@ -28,7 +28,7 @@ public final class k
   public int type;
   public String value;
   
-  public static LinkedList<k> C(Map<String, String> paramMap)
+  public static LinkedList<k> E(Map<String, String> paramMap)
   {
     AppMethodBeat.i(116433);
     if (paramMap == null)
@@ -36,12 +36,12 @@ public final class k
       AppMethodBeat.o(116433);
       return null;
     }
-    int j = bu.getInt((String)paramMap.get(".msg.appmsg.buttonlist.$count"), 0);
+    int j = Util.getInt((String)paramMap.get(".msg.appmsg.buttonlist.$count"), 0);
     if (j > 0) {
       try
       {
         LinkedList localLinkedList = new LinkedList();
-        ae.v("MicroMsg.BizMenuItem", "menuItem.jsonArray.length : ".concat(String.valueOf(j)));
+        Log.v("MicroMsg.BizMenuItem", "menuItem.jsonArray.length : ".concat(String.valueOf(j)));
         int i = 0;
         if (i < j)
         {
@@ -51,12 +51,12 @@ public final class k
           for (String str = "";; str = String.valueOf(i))
           {
             str = str;
-            localk.id = bu.getInt((String)paramMap.get(str + ".id"), 0);
-            localk.type = bu.getInt((String)paramMap.get(str + ".type"), 0);
+            localk.id = Util.getInt((String)paramMap.get(str + ".id"), 0);
+            localk.type = Util.getInt((String)paramMap.get(str + ".type"), 0);
             localk.name = ((String)paramMap.get(str + ".name"));
             localk.key = ((String)paramMap.get(str + ".key"));
             localk.value = ((String)paramMap.get(str + ".value"));
-            localk.hTe = bu.getInt((String)paramMap.get(str + ".acttype"), 0);
+            localk.iOt = Util.getInt((String)paramMap.get(str + ".acttype"), 0);
             localLinkedList.add(localk);
             i += 1;
             break;
@@ -67,7 +67,7 @@ public final class k
       }
       catch (Exception paramMap)
       {
-        ae.e("MicroMsg.BizMenuItem", "exception:%s", new Object[] { bu.o(paramMap) });
+        Log.e("MicroMsg.BizMenuItem", "exception:%s", new Object[] { Util.stackTraceToString(paramMap) });
         AppMethodBeat.o(116433);
         return null;
       }
@@ -99,10 +99,10 @@ public final class k
           localk.name = ((JSONObject)localObject).getString("name");
           localk.key = ((JSONObject)localObject).getString("key");
           localk.value = ((JSONObject)localObject).optString("value");
-          localk.dPb = ((JSONObject)localObject).optString("native_url");
-          ae.d("MicroMsg.BizMenuItem", "menuItem.nativeurl : " + localk.dPb);
-          localk.hTd = e(((JSONObject)localObject).optJSONArray("sub_button_list"));
-          localk.hTe = ((JSONObject)localObject).optInt("acttype");
+          localk.egX = ((JSONObject)localObject).optString("native_url");
+          Log.d("MicroMsg.BizMenuItem", "menuItem.nativeurl : " + localk.egX);
+          localk.iOs = e(((JSONObject)localObject).optJSONArray("sub_button_list"));
+          localk.iOt = ((JSONObject)localObject).optInt("acttype");
           localArrayList.add(localk);
           i += 1;
         }
@@ -110,7 +110,7 @@ public final class k
       }
       catch (JSONException paramJSONArray)
       {
-        ae.e("MicroMsg.BizMenuItem", "exception:%s", new Object[] { bu.o(paramJSONArray) });
+        Log.e("MicroMsg.BizMenuItem", "exception:%s", new Object[] { Util.stackTraceToString(paramJSONArray) });
         AppMethodBeat.o(116432);
         return null;
       }
@@ -133,21 +133,21 @@ public final class k
       paramString1 = new JSONObject();
       paramString1.put("location", localJSONObject);
       this.content = paramString1.toString();
-      ae.v("MicroMsg.BizMenuItem", this.content);
+      Log.v("MicroMsg.BizMenuItem", this.content);
       AppMethodBeat.o(116429);
       return;
     }
     catch (JSONException paramString1)
     {
-      ae.e("MicroMsg.BizMenuItem", paramString1.toString());
+      Log.e("MicroMsg.BizMenuItem", paramString1.toString());
       AppMethodBeat.o(116429);
     }
   }
   
-  public final void bb(String paramString1, String paramString2)
+  public final void bf(String paramString1, String paramString2)
   {
     AppMethodBeat.i(116427);
-    ae.v("MicroMsg.BizMenuItem", "type is %s , result is %s", new Object[] { paramString1, paramString2 });
+    Log.v("MicroMsg.BizMenuItem", "type is %s , result is %s", new Object[] { paramString1, paramString2 });
     try
     {
       JSONObject localJSONObject = new JSONObject();
@@ -156,13 +156,13 @@ public final class k
       paramString1 = new JSONObject();
       paramString1.put("scan_code", localJSONObject);
       this.content = paramString1.toString();
-      ae.v("MicroMsg.BizMenuItem", "content: %s", new Object[] { this.content });
+      Log.v("MicroMsg.BizMenuItem", "content: %s", new Object[] { this.content });
       AppMethodBeat.o(116427);
       return;
     }
     catch (JSONException paramString1)
     {
-      ae.e("MicroMsg.BizMenuItem", paramString1.toString());
+      Log.e("MicroMsg.BizMenuItem", paramString1.toString());
       AppMethodBeat.o(116427);
     }
   }
@@ -179,7 +179,7 @@ public final class k
       }
     }
     label97:
-    for (this.state = hTb;; this.state = hTa)
+    for (this.state = iOq;; this.state = iOp)
     {
       String str = String.format("%s<info><id><![CDATA[%d]]></id><key><![CDATA[%s]]></key><status><![CDATA[%s]]></status><content><![CDATA[%s]]></content></info>", new Object[] { "#bizmenu#", Integer.valueOf(this.id), this.key, this.state, this.content });
       AppMethodBeat.o(116430);
@@ -187,46 +187,11 @@ public final class k
     }
   }
   
-  public final void q(ArrayList<String> paramArrayList)
-  {
-    AppMethodBeat.i(116428);
-    if (paramArrayList.size() == 0)
-    {
-      ae.e("MicroMsg.BizMenuItem", "value null!");
-      AppMethodBeat.o(116428);
-      return;
-    }
-    JSONArray localJSONArray;
-    try
-    {
-      localJSONArray = new JSONArray();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        String str = (String)paramArrayList.next();
-        JSONObject localJSONObject = new JSONObject();
-        localJSONObject.put("pic_md5", str);
-        localJSONArray.put(localJSONObject);
-      }
-      paramArrayList = new JSONObject();
-    }
-    catch (JSONException paramArrayList)
-    {
-      ae.e("MicroMsg.BizMenuItem", paramArrayList.toString());
-      AppMethodBeat.o(116428);
-      return;
-    }
-    paramArrayList.put("pics", localJSONArray);
-    this.content = paramArrayList.toString();
-    ae.v("MicroMsg.BizMenuItem", this.content);
-    AppMethodBeat.o(116428);
-  }
-  
   public final String toString()
   {
     AppMethodBeat.i(116431);
     int i = this.id;
-    int j = this.hTe;
+    int j = this.iOt;
     int k = this.type;
     String str1;
     String str2;
@@ -264,10 +229,45 @@ public final class k
       break label54;
     }
   }
+  
+  public final void u(ArrayList<String> paramArrayList)
+  {
+    AppMethodBeat.i(116428);
+    if (paramArrayList.size() == 0)
+    {
+      Log.e("MicroMsg.BizMenuItem", "value null!");
+      AppMethodBeat.o(116428);
+      return;
+    }
+    JSONArray localJSONArray;
+    try
+    {
+      localJSONArray = new JSONArray();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext())
+      {
+        String str = (String)paramArrayList.next();
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("pic_md5", str);
+        localJSONArray.put(localJSONObject);
+      }
+      paramArrayList = new JSONObject();
+    }
+    catch (JSONException paramArrayList)
+    {
+      Log.e("MicroMsg.BizMenuItem", paramArrayList.toString());
+      AppMethodBeat.o(116428);
+      return;
+    }
+    paramArrayList.put("pics", localJSONArray);
+    this.content = paramArrayList.toString();
+    Log.v("MicroMsg.BizMenuItem", this.content);
+    AppMethodBeat.o(116428);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.al.k
  * JD-Core Version:    0.7.0.1
  */

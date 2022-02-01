@@ -23,10 +23,8 @@ import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.View.OnTouchListener;
 import android.view.ViewGroup.LayoutParams;
 import android.view.Window;
 import android.view.WindowManager;
@@ -66,7 +64,7 @@ public class WebDialog
 {
   private static final int API_EC_DIALOG_CANCEL = 4201;
   private static final int BACKGROUND_GRAY = -872415232;
-  private static final int DEFAULT_THEME = 2131821694;
+  private static final int DEFAULT_THEME = 2131821742;
   static final boolean DISABLE_SSL_CHECK_FOR_TESTING = false;
   private static final String DISPLAY_TOUCH = "touch";
   private static final String LOG_TAG = "FacebookSDK.WebDialog";
@@ -153,7 +151,7 @@ public class WebDialog
         AppMethodBeat.o(7680);
       }
     });
-    Drawable localDrawable = getContext().getResources().getDrawable(2131231805);
+    Drawable localDrawable = getContext().getResources().getDrawable(2131231885);
     this.crossImageView.setImageDrawable(localDrawable);
     this.crossImageView.setVisibility(4);
     AppMethodBeat.o(7716);
@@ -254,18 +252,7 @@ public class WebDialog
     this.webView.getSettings().setSaveFormData(false);
     this.webView.setFocusable(true);
     this.webView.setFocusableInTouchMode(true);
-    this.webView.setOnTouchListener(new View.OnTouchListener()
-    {
-      public boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
-      {
-        AppMethodBeat.i(7682);
-        if (!paramAnonymousView.hasFocus()) {
-          paramAnonymousView.requestFocus();
-        }
-        AppMethodBeat.o(7682);
-        return false;
-      }
-    });
+    this.webView.setOnTouchListener(new WebDialog.4(this));
     localLinearLayout.setPadding(paramInt, paramInt, paramInt, paramInt);
     localLinearLayout.addView(this.webView);
     localLinearLayout.setBackgroundColor(-872415232);
@@ -345,7 +332,7 @@ public class WebDialog
     super.onCreate(paramBundle);
     this.spinner = new ProgressDialog(getContext());
     this.spinner.requestWindowFeature(1);
-    this.spinner.setMessage(getContext().getString(2131757508));
+    this.spinner.setMessage(getContext().getString(2131757728));
     this.spinner.setCanceledOnTouchOutside(false);
     this.spinner.setOnCancelListener(new DialogInterface.OnCancelListener()
     {
@@ -742,9 +729,9 @@ public class WebDialog
         {
           paramWebView = WebDialog.this.getContext();
           paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-          paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-          com.tencent.mm.hellhoundlib.a.a.a(paramWebView, paramString.ahE(), "com/facebook/internal/WebDialog$DialogWebViewClient", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramWebView.startActivity((Intent)paramString.mt(0));
+          paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+          com.tencent.mm.hellhoundlib.a.a.a(paramWebView, paramString.axQ(), "com/facebook/internal/WebDialog$DialogWebViewClient", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          paramWebView.startActivity((Intent)paramString.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(paramWebView, "com/facebook/internal/WebDialog$DialogWebViewClient", "shouldOverrideUrlLoading", "(Landroid/webkit/WebView;Ljava/lang/String;)Z", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           AppMethodBeat.o(7687);
           return true;
@@ -928,7 +915,7 @@ public class WebDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.internal.WebDialog
  * JD-Core Version:    0.7.0.1
  */

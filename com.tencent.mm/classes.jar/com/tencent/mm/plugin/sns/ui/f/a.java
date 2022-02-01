@@ -3,43 +3,43 @@ package com.tencent.mm.plugin.sns.ui.f;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.background.VideoMixer.MixConfig;
-import com.tencent.mm.plugin.recordvideo.background.c;
+import com.tencent.mm.plugin.recordvideo.background.b;
 import com.tencent.mm.plugin.recordvideo.background.e;
 import com.tencent.mm.plugin.recordvideo.jumper.CaptureDataManager.CaptureVideoNormalModel;
-import com.tencent.mm.protocal.protobuf.agh;
-import com.tencent.mm.protocal.protobuf.aip;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.aio;
+import com.tencent.mm.protocal.protobuf.ald;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 
 public final class a
-  implements com.tencent.mm.plugin.recordvideo.background.b
+  implements b
 {
-  public agh ATh;
-  public VideoMixer.MixConfig ATi;
-  public aip ATj;
-  private a ATk;
-  private MMActivity fNT;
+  public boolean CsL;
+  public aio FdN;
+  public VideoMixer.MixConfig FdO;
+  public ald FdP;
+  private a FdQ;
+  private MMActivity gte;
   public String taskId;
-  public boolean yrU;
   
   public a(MMActivity paramMMActivity, a parama)
   {
     AppMethodBeat.i(100444);
-    this.yrU = true;
-    ae.i("MicroMsg.SnsFakeVLogHelper", "SnsFakeVLogHelper");
-    this.fNT = paramMMActivity;
-    this.ATk = parama;
+    this.CsL = true;
+    Log.i("MicroMsg.SnsFakeVLogHelper", "SnsFakeVLogHelper");
+    this.gte = paramMMActivity;
+    this.FdQ = parama;
     AppMethodBeat.o(100444);
   }
   
-  public final boolean L(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public final boolean M(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(100449);
-    if (this.ATh == null) {}
+    if (this.FdN == null) {}
     for (boolean bool = true;; bool = false)
     {
-      ae.i("MicroMsg.SnsFakeVLogHelper", "doClick %b", new Object[] { Boolean.valueOf(bool) });
-      if (this.ATh != null) {
+      Log.i("MicroMsg.SnsFakeVLogHelper", "doClick %b", new Object[] { Boolean.valueOf(bool) });
+      if (this.FdN != null) {
         break;
       }
       AppMethodBeat.o(100449);
@@ -47,16 +47,16 @@ public final class a
     }
     try
     {
-      Intent localIntent = new Intent(this.fNT, Class.forName("com.tencent.mm.plugin.vlog.ui.fake.VLogFakePlayActivity"));
+      Intent localIntent = new Intent(this.gte, Class.forName("com.tencent.mm.plugin.vlog.ui.fake.VLogFakePlayActivity"));
       localIntent.putExtra("intent_taskid", this.taskId);
-      localIntent.putExtra("intent_thumbpath", this.ATh.thumbPath);
+      localIntent.putExtra("intent_thumbpath", this.FdN.thumbPath);
       localIntent.putExtra("sns_video_scene", 6);
       localIntent.putExtra("img_gallery_left", paramInt1);
       localIntent.putExtra("img_gallery_top", paramInt2);
       localIntent.putExtra("img_gallery_width", paramInt3);
       localIntent.putExtra("img_gallery_height", paramInt4);
-      this.fNT.startActivityForResult(localIntent, 12);
-      this.fNT.overridePendingTransition(0, 0);
+      this.gte.startActivityForResult(localIntent, 12);
+      this.gte.overridePendingTransition(0, 0);
       label166:
       AppMethodBeat.o(100449);
       return true;
@@ -70,48 +70,48 @@ public final class a
   public final void a(String paramString, boolean paramBoolean, CaptureDataManager.CaptureVideoNormalModel paramCaptureVideoNormalModel)
   {
     AppMethodBeat.i(100448);
-    ae.i("MicroMsg.SnsFakeVLogHelper", "onFinish,success:%b taskId:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
+    Log.i("MicroMsg.SnsFakeVLogHelper", "onFinish,success:%b taskId:%s", new Object[] { Boolean.valueOf(paramBoolean), paramString });
     if ((paramString != null) && (paramString.equals(this.taskId)))
     {
-      this.yrU = true;
-      paramString = com.tencent.mm.plugin.recordvideo.background.a.xJX;
+      this.CsL = true;
+      paramString = com.tencent.mm.plugin.recordvideo.background.a.BKb;
       com.tencent.mm.plugin.recordvideo.background.a.b(7, this);
-      paramString = com.tencent.mm.plugin.recordvideo.e.b.yhe;
-      com.tencent.mm.plugin.recordvideo.e.b.c(paramCaptureVideoNormalModel);
-      this.ATk.d(paramCaptureVideoNormalModel);
+      paramString = com.tencent.mm.plugin.recordvideo.e.c.Cic;
+      com.tencent.mm.plugin.recordvideo.e.c.c(paramCaptureVideoNormalModel);
+      this.FdQ.d(paramCaptureVideoNormalModel);
     }
     AppMethodBeat.o(100448);
   }
   
-  public final void amO(String paramString)
+  public final void aAd(String paramString)
   {
     AppMethodBeat.i(100445);
-    ae.i("MicroMsg.SnsFakeVLogHelper", "onInit, taskId:%s", new Object[] { paramString });
-    e locale = e.xKl;
-    e.awN(paramString).dHX();
-    locale = e.xKl;
-    e.dIj();
+    Log.i("MicroMsg.SnsFakeVLogHelper", "onInit, taskId:%s", new Object[] { paramString });
+    e locale = e.BKp;
+    e.aLf(paramString).eIK();
+    locale = e.BKp;
+    e.eIW();
     this.taskId = paramString;
     AppMethodBeat.o(100445);
   }
   
-  public final void amP(String paramString)
+  public final void aAe(String paramString)
   {
     AppMethodBeat.i(100447);
-    ae.i("MicroMsg.SnsFakeVLogHelper", "onWait, taskId:%s", new Object[] { paramString });
+    Log.i("MicroMsg.SnsFakeVLogHelper", "onWait, taskId:%s", new Object[] { paramString });
     AppMethodBeat.o(100447);
   }
   
-  public final void dS(String paramString, int paramInt)
+  public final void eh(String paramString, int paramInt)
   {
     AppMethodBeat.i(100446);
-    ae.i("MicroMsg.SnsFakeVLogHelper", "onRun, taskId:%s", new Object[] { paramString });
+    Log.i("MicroMsg.SnsFakeVLogHelper", "onRun, taskId:%s", new Object[] { paramString });
     AppMethodBeat.o(100446);
   }
   
-  public final boolean eiy()
+  public final boolean fkY()
   {
-    return !this.yrU;
+    return !this.CsL;
   }
   
   public static abstract interface a
@@ -121,7 +121,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.f.a
  * JD-Core Version:    0.7.0.1
  */

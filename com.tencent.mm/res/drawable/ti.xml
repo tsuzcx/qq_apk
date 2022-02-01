@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="oval"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="false" android:state_pressed="false" android:drawable="@drawable/tg" />
-</selector>
+    <stroke android:width="@dimen/iu" android:color="@color/afp" />
+    <size android:height="@dimen/c" android:width="@dimen/c" />
+</shape>

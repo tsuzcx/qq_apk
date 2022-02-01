@@ -3,44 +3,43 @@ package com.tencent.mm.plugin.expt.hellhound.core.b.c;
 import android.util.Pair;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.jz;
+import com.tencent.mm.g.b.a.nx;
 import com.tencent.mm.plugin.expt.hellhound.a.f.c.k;
 import com.tencent.mm.plugin.expt.hellhound.a.f.e.d;
 import com.tencent.mm.plugin.expt.hellhound.a.f.e.d.a;
 import com.tencent.mm.plugin.expt.hellhound.a.f.f.l.a;
-import com.tencent.mm.protocal.protobuf.bou;
-import com.tencent.mm.protocal.protobuf.dwx;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.f;
-import d.g;
-import d.g.b.p;
+import com.tencent.mm.protocal.protobuf.cbm;
+import com.tencent.mm.protocal.protobuf.erd;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import kotlin.g;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewMonitor;", "", "()V", "TAG", "", "mGestureCallback", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/GestureCallback;", "getMGestureCallback", "()Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/GestureCallback;", "mGestureCallback$delegate", "Lkotlin/Lazy;", "mHorizontalCallback", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/HorizontalViewPagerCallback;", "getMHorizontalCallback", "()Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/HorizontalViewPagerCallback;", "mHorizontalCallback$delegate", "mListener", "com/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewMonitor$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewMonitor$mListener$1;", "mViewMap", "", "Ljava/lang/ref/WeakReference;", "Landroid/view/View;", "mViewOpCallback", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewOpCallback;", "getMViewOpCallback", "()Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewOpCallback;", "mViewOpCallback$delegate", "addView2PageFlow", "", "pageItem", "Lcom/tencent/mm/protocal/protobuf/HellPageFlowItem;", "index", "", "viewNode", "Lcom/tencent/mm/protocal/protobuf/ViewNode;", "callback", "view", "monitor", "monitorHorizontalScroll", "onMonitorCallback", "unmonitorHorizontalScroll", "plugin-expt_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewMonitor;", "", "()V", "TAG", "", "mGestureCallback", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/GestureCallback;", "getMGestureCallback", "()Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/GestureCallback;", "mGestureCallback$delegate", "Lkotlin/Lazy;", "mHorizontalCallback", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/HorizontalViewPagerCallback;", "getMHorizontalCallback", "()Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/HorizontalViewPagerCallback;", "mHorizontalCallback$delegate", "mListener", "com/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewMonitor$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewMonitor$mListener$1;", "mViewMap", "", "Ljava/lang/ref/WeakReference;", "Landroid/view/View;", "mViewOpCallback", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewOpCallback;", "getMViewOpCallback", "()Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewOpCallback;", "mViewOpCallback$delegate", "addView2PageFlow", "", "pageItem", "Lcom/tencent/mm/protocal/protobuf/HellPageFlowItem;", "index", "", "viewNode", "Lcom/tencent/mm/protocal/protobuf/ViewNode;", "callback", "view", "monitor", "monitorHorizontalScroll", "onMonitorCallback", "unmonitorHorizontalScroll", "plugin-expt_release"})
 public final class e
 {
   private static final Map<String, WeakReference<View>> mViewMap;
-  public static final f raA;
-  private static final f raB;
-  public static final c raC;
-  public static final e raD;
-  public static final f raz;
+  public static final kotlin.f sAQ;
+  public static final kotlin.f sAR;
+  private static final kotlin.f sAS;
+  public static final c sAT;
+  public static final e sAU;
   
   static
   {
-    AppMethodBeat.i(196327);
-    raD = new e();
+    AppMethodBeat.i(220775);
+    sAU = new e();
     mViewMap = (Map)new LinkedHashMap();
-    raz = g.O((d.g.a.a)e.d.raG);
-    raA = g.O((d.g.a.a)e.a.raE);
-    raB = g.O((d.g.a.a)e.b.raF);
-    raC = new c();
-    AppMethodBeat.o(196327);
+    sAQ = g.ah((kotlin.g.a.a)d.sAX);
+    sAR = g.ah((kotlin.g.a.a)a.sAV);
+    sAS = g.ah((kotlin.g.a.a)b.sAW);
+    sAT = new c();
+    AppMethodBeat.o(220775);
   }
   
   private e()
@@ -49,62 +48,62 @@ public final class e
     AppMethodBeat.o(184341);
   }
   
-  public static void a(dwx paramdwx)
+  public static void a(erd paramerd)
   {
-    AppMethodBeat.i(196325);
-    raC.a(null, paramdwx);
-    AppMethodBeat.o(196325);
+    AppMethodBeat.i(220773);
+    sAT.a(null, paramerd);
+    AppMethodBeat.o(220773);
   }
   
-  public static final void b(dwx paramdwx)
+  public static final void b(erd paramerd)
   {
     Object localObject3 = null;
-    AppMethodBeat.i(196326);
-    if (paramdwx == null)
+    AppMethodBeat.i(220774);
+    if (paramerd == null)
     {
-      AppMethodBeat.o(196326);
+      AppMethodBeat.o(220774);
       return;
     }
     Object localObject1;
     int i;
     Object localObject2;
-    label92:
-    label118:
+    label88:
+    label114:
     int j;
-    if (paramdwx.duQ != null)
+    if (paramerd.dMl != null)
     {
-      localObject1 = paramdwx.duQ;
+      localObject1 = paramerd.dMl;
       p.g(localObject1, "viewNode.pageName");
       if (((CharSequence)localObject1).length() == 0)
       {
         i = 1;
-        if ((i == 0) && (paramdwx.Icp != -1) && (paramdwx.Icp != 0)) {
-          break label634;
+        if ((i == 0) && (paramerd.NoN != -1) && (paramerd.NoN != 0)) {
+          break label520;
         }
       }
     }
     else
     {
-      localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.csb();
+      localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.cQJ();
       if (localObject2 == null) {
-        break label561;
+        break label452;
       }
-      localObject1 = (bou)((Pair)localObject2).first;
+      localObject1 = (cbm)((Pair)localObject2).first;
       if (localObject2 == null) {
-        break label567;
+        break label457;
       }
       localObject2 = (Integer)((Pair)localObject2).second;
       if (localObject2 == null) {
-        break label567;
+        break label457;
       }
       i = ((Integer)localObject2).intValue();
       j = i;
       localObject2 = localObject1;
       if (localObject1 != null)
       {
-        paramdwx.duQ = com.tencent.mm.plugin.expt.hellhound.core.b.aer(((bou)localObject1).duQ);
-        paramdwx.Icp = ((bou)localObject1).aHQ;
-        paramdwx.GEY = i;
+        paramerd.dMl = com.tencent.mm.plugin.expt.hellhound.core.b.aoE(((cbm)localObject1).dMl);
+        paramerd.NoN = ((cbm)localObject1).aHK;
+        paramerd.LCp = i;
         localObject2 = localObject1;
         j = i;
       }
@@ -113,152 +112,210 @@ public final class e
     {
       if ((localObject2 == null) || (j < 0))
       {
-        localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.csb();
+        localObject2 = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.cQJ();
         if (localObject2 != null)
         {
-          localObject1 = (bou)((Pair)localObject2).first;
-          label190:
+          localObject1 = (cbm)((Pair)localObject2).first;
+          label180:
           if (localObject2 == null) {
-            break label578;
+            break label467;
           }
           localObject2 = (Integer)((Pair)localObject2).second;
           if (localObject2 == null) {
-            break label578;
+            break label467;
           }
           i = ((Integer)localObject2).intValue();
         }
       }
       for (;;)
       {
-        label216:
-        localObject2 = paramdwx.id + "|" + paramdwx.aHQ + "|" + paramdwx.timestamp;
+        label206:
+        localObject2 = paramerd.id + "|" + paramerd.aHK + "|" + paramerd.timestamp;
         localObject2 = (WeakReference)mViewMap.get(localObject2);
         if (localObject2 != null) {}
         for (localObject2 = (View)((WeakReference)localObject2).get();; localObject2 = null)
         {
-          d.a locala = d.rhs;
-          d.a.b((View)localObject2, paramdwx);
+          d.a locala = d.sIO;
+          d.a.b((View)localObject2, paramerd);
           if ((localObject1 == null) || (i < 0))
           {
-            ae.e("HABBYGE-MALI.ViewMonitor", "ViewMonitor, addView2PageFlow illegal !!!");
-            label316:
+            label298:
             localObject2 = localObject3;
             if (localObject1 != null) {
-              localObject2 = ((bou)localObject1).duQ;
+              localObject2 = ((cbm)localObject1).dMl;
             }
-            k.a(paramdwx, (String)localObject2);
-            localObject1 = d.rhs;
-            d.a.c(paramdwx);
-            localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.rhv;
-            p.h(paramdwx, "viewNode");
-            if (!p.i(paramdwx.id, "-1")) {
-              break label601;
+            k.a(paramerd, (String)localObject2);
+            localObject1 = d.sIO;
+            d.a.c(paramerd);
+            localObject1 = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.sIR;
+            p.h(paramerd, "viewNode");
+            if (!p.j(paramerd.id, "-1")) {
+              break label488;
             }
-            l.a.tn(115L);
-            label378:
-            if (paramdwx.Icq <= 10L) {
-              break label610;
+            l.a.Bt(115L);
+            label355:
+            if (paramerd.NoO <= 10L) {
+              break label497;
             }
-            l.a.tn(117L);
+            l.a.Bt(117L);
           }
           for (;;)
           {
-            localObject1 = new jz();
-            localObject2 = ((jz)localObject1).sQ(paramdwx.duQ).sR(paramdwx.typeName).sP(paramdwx.id).jW(paramdwx.duP).qD(paramdwx.Icq);
+            localObject1 = new nx();
+            localObject2 = ((nx)localObject1).Bb(paramerd.dMl).Bc(paramerd.typeName).Ba(paramerd.id).mY(paramerd.eventId).ys(paramerd.NoO);
             p.g(localObject2, "struct.setPageId(viewNod…g(viewNode.timeConsuming)");
-            ((jz)localObject2).sS(paramdwx.Icn);
-            boolean bool = ((jz)localObject1).aLH();
-            ae.i("HABBYGE-MALI.QualityReport", "reportKv: page=" + ((jz)localObject1).getPageId() + ", viewId=" + ((jz)localObject1).getViewId() + ", resName=" + ((jz)localObject1).VC() + ',' + " time=" + paramdwx.Icq + ", reportRet=" + bool);
-            AppMethodBeat.o(196326);
+            ((nx)localObject2).Bd(paramerd.NoL);
+            ((nx)localObject1).bfK();
+            AppMethodBeat.o(220774);
             return;
             i = 0;
             break;
-            label561:
+            label452:
             localObject1 = null;
-            break label92;
-            label567:
+            break label88;
+            label457:
             i = -1;
-            break label118;
+            break label114;
             localObject1 = null;
-            break label190;
-            label578:
+            break label180;
+            label467:
             i = -1;
-            break label216;
-            ((bou)localObject1).GLD.addLast(paramdwx);
-            com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((bou)localObject1, i);
-            break label316;
-            label601:
-            l.a.tn(116L);
-            break label378;
-            label610:
-            l.a.tn(118L);
+            break label206;
+            ((cbm)localObject1).LPH.addLast(paramerd);
+            com.tencent.mm.plugin.expt.hellhound.a.f.d.b.a((cbm)localObject1, i);
+            break label298;
+            label488:
+            l.a.Bt(116L);
+            break label355;
+            label497:
+            l.a.Bt(118L);
           }
         }
         i = j;
         localObject1 = localObject2;
       }
-      label634:
+      label520:
       j = -1;
       localObject2 = null;
     }
   }
   
-  private static b cpV()
+  private static b cOo()
   {
-    AppMethodBeat.i(196322);
-    b localb = (b)raB.getValue();
-    AppMethodBeat.o(196322);
+    AppMethodBeat.i(220770);
+    b localb = (b)sAS.getValue();
+    AppMethodBeat.o(220770);
     return localb;
   }
   
-  public static final void cpW()
+  public static final void cOp()
   {
-    AppMethodBeat.i(196323);
-    b localb = cpV();
-    localb.raa = ((c)raC);
-    localb.afo = -1;
+    AppMethodBeat.i(220771);
+    b localb = cOo();
+    localb.sAr = ((c)sAT);
+    localb.afB = -1;
     List localList = (List)new ArrayList();
     Pair localPair = Pair.create("onPageChange", "(IZ)V");
     p.g(localPair, "Pair.create(METHOD_NAME, METHOD_DESC)");
     localList.add(localPair);
-    localb.rai.put("com/tencent/mm/view/RecyclerHorizontalViewPager", localList);
-    com.tencent.mm.hellhoundlib.a.ahD();
-    com.tencent.mm.hellhoundlib.a.a(localb.rai, (com.tencent.mm.hellhoundlib.a.c)localb.raj);
-    AppMethodBeat.o(196323);
+    localb.sAz.put("com/tencent/mm/view/RecyclerHorizontalViewPager", localList);
+    com.tencent.mm.hellhoundlib.a.axP();
+    com.tencent.mm.hellhoundlib.a.a(localb.sAz, (com.tencent.mm.hellhoundlib.a.c)localb.sAA);
+    AppMethodBeat.o(220771);
   }
   
-  public static final void cpX()
+  public static final void cOq()
   {
-    AppMethodBeat.i(196324);
-    b localb = cpV();
-    localb.afo = -1;
-    localb.raa = null;
-    com.tencent.mm.hellhoundlib.a.ahD();
-    com.tencent.mm.hellhoundlib.a.b(localb.rai, (com.tencent.mm.hellhoundlib.a.c)localb.raj);
-    AppMethodBeat.o(196324);
+    AppMethodBeat.i(220772);
+    b localb = cOo();
+    localb.afB = -1;
+    localb.sAr = null;
+    com.tencent.mm.hellhoundlib.a.axP();
+    com.tencent.mm.hellhoundlib.a.b(localb.sAz, (com.tencent.mm.hellhoundlib.a.c)localb.sAA);
+    AppMethodBeat.o(220772);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewMonitor$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/IViewOpListener;", "onEvent", "", "view", "Landroid/view/View;", "viewNode", "Lcom/tencent/mm/protocal/protobuf/ViewNode;", "plugin-expt_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/GestureCallback;", "invoke"})
+  static final class a
+    extends q
+    implements kotlin.g.a.a<a>
+  {
+    public static final a sAV;
+    
+    static
+    {
+      AppMethodBeat.i(220764);
+      sAV = new a();
+      AppMethodBeat.o(220764);
+    }
+    
+    a()
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/HorizontalViewPagerCallback;", "invoke"})
+  static final class b
+    extends q
+    implements kotlin.g.a.a<b>
+  {
+    public static final b sAW;
+    
+    static
+    {
+      AppMethodBeat.i(220766);
+      sAW = new b();
+      AppMethodBeat.o(220766);
+    }
+    
+    b()
+    {
+      super();
+    }
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewMonitor$mListener$1", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/IViewOpListener;", "onEvent", "", "view", "Landroid/view/View;", "viewNode", "Lcom/tencent/mm/protocal/protobuf/ViewNode;", "plugin-expt_release"})
   public static final class c
     implements c
   {
-    public final void a(View paramView, dwx paramdwx)
+    public final void a(View paramView, erd paramerd)
     {
-      AppMethodBeat.i(196319);
-      if (paramdwx == null)
+      AppMethodBeat.i(220767);
+      if (paramerd == null)
       {
-        AppMethodBeat.o(196319);
+        AppMethodBeat.o(220767);
         return;
       }
       if (paramView != null)
       {
-        String str = paramdwx.id + "|" + paramdwx.aHQ + "|" + paramdwx.timestamp;
-        e locale = e.raD;
-        e.cpY().put(str, new WeakReference(paramView));
+        String str = paramerd.id + "|" + paramerd.aHK + "|" + paramerd.timestamp;
+        e locale = e.sAU;
+        e.cOr().put(str, new WeakReference(paramView));
       }
-      paramdwx.Icq = (System.currentTimeMillis() - paramdwx.timestamp);
-      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cpq().l(800, paramdwx);
-      AppMethodBeat.o(196319);
+      paramerd.NoO = (System.currentTimeMillis() - paramerd.timestamp);
+      com.tencent.mm.plugin.expt.hellhound.core.a.a.c.cNJ().m(800, paramerd);
+      AppMethodBeat.o(220767);
+    }
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/plugin/expt/hellhound/core/v2/view/ViewOpCallback;", "invoke"})
+  static final class d
+    extends q
+    implements kotlin.g.a.a<f>
+  {
+    public static final d sAX;
+    
+    static
+    {
+      AppMethodBeat.i(220769);
+      sAX = new d();
+      AppMethodBeat.o(220769);
+    }
+    
+    d()
+    {
+      super();
     }
   }
 }

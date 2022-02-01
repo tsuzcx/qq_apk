@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<merge
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/em5" android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="56.0dip">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:id="@id/em6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/m3" />
-            <TextView android:id="@id/em3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        </LinearLayout>
-        <CheckBox android:id="@id/em7" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" />
+    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tenpay.android.wechat.TenpaySecureEditText android:textSize="@dimen/l_" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center|right" android:id="@id/jf4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textCursorDrawable="@drawable/r9" />
     </LinearLayout>
-</LinearLayout>
+</merge>

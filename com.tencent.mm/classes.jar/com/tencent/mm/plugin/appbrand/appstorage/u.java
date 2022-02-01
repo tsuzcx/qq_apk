@@ -1,15 +1,17 @@
 package com.tencent.mm.plugin.appbrand.appstorage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsruntime.i;
-import com.tencent.mm.plugin.appbrand.y.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.n;
+import com.tencent.mm.plugin.appbrand.ac.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.m.i;
+import com.tencent.mm.plugin.appbrand.m.k;
+import com.tencent.mm.sdk.platformtools.FilePathGenerator;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vending.j.a;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.nio.ByteBuffer;
 import java.util.Collection;
 import java.util.Collections;
@@ -20,53 +22,53 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class u
 {
-  private static final y jQt;
-  private com.tencent.mm.plugin.appbrand.jsruntime.k jDt;
-  private final String jPH;
-  private final String jPI;
-  private final String jPJ;
-  private c jQp;
-  private i.a jQq;
-  private final Collection<a> jQr;
-  private final Map<String, com.tencent.mm.vfs.k> jQs;
+  private static final y kTc;
+  private k kEy;
+  private f kSY;
+  private i.a kSZ;
+  private final String kSp;
+  private final String kSq;
+  private final String kSr;
+  private final Collection<a> kTa;
+  private final Map<String, o> kTb;
   
   static
   {
-    AppMethodBeat.i(195087);
-    jQt = new y()
+    AppMethodBeat.i(196177);
+    kTc = new y()
     {
       public final String toString()
       {
         return "AppBrandLocalMediaObject::Nil";
       }
     };
-    AppMethodBeat.o(195087);
+    AppMethodBeat.o(196177);
   }
   
   u(String paramString1, String paramString2, String paramString3, i.a parama)
   {
-    AppMethodBeat.i(195079);
-    this.jQs = new ConcurrentHashMap();
-    this.jPJ = (w.B(new com.tencent.mm.vfs.k(paramString1).fTh()) + "/");
-    this.jPH = paramString2;
-    this.jPI = paramString3;
-    this.jQq = parama;
+    AppMethodBeat.i(196169);
+    this.kTb = new ConcurrentHashMap();
+    this.kSr = (aa.z(new o(paramString1).her()) + "/");
+    this.kSp = paramString2;
+    this.kSq = paramString3;
+    this.kSZ = parama;
     paramString1 = new LinkedList();
     paramString1.add(new b((byte)0));
-    this.jQr = Collections.unmodifiableCollection(paramString1);
-    AppMethodBeat.o(195079);
+    this.kTa = Collections.unmodifiableCollection(paramString1);
+    AppMethodBeat.o(196169);
   }
   
-  private String bce()
+  private String bxt()
   {
-    AppMethodBeat.i(195082);
-    n.aMy(this.jPJ);
+    AppMethodBeat.i(196172);
+    FilePathGenerator.checkMkdir(this.kSr);
     try
     {
-      new com.tencent.mm.vfs.k(this.jPJ, ".nomedia").createNewFile();
+      new o(this.kSr, ".nomedia").createNewFile();
       label30:
-      String str = this.jPJ;
-      AppMethodBeat.o(195082);
+      String str = this.kSr;
+      AppMethodBeat.o(196172);
       return str;
     }
     catch (Exception localException)
@@ -75,37 +77,37 @@ public final class u
     }
   }
   
-  public final com.tencent.mm.vfs.k MZ(String paramString)
+  public final o Wi(String paramString)
   {
-    AppMethodBeat.i(195081);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(196171);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(195081);
+      AppMethodBeat.o(196171);
       return null;
     }
-    ByteBuffer localByteBuffer = cK(paramString);
-    boolean bool = this.jQs.containsKey(paramString);
+    ByteBuffer localByteBuffer = dI(paramString);
+    boolean bool = this.kTb.containsKey(paramString);
     if ((localByteBuffer == null) && (bool))
     {
-      paramString = (com.tencent.mm.vfs.k)this.jQs.remove(paramString);
+      paramString = (o)this.kTb.remove(paramString);
       if ((paramString != null) && (paramString.exists())) {
         paramString.delete();
       }
-      AppMethodBeat.o(195081);
+      AppMethodBeat.o(196171);
       return null;
     }
-    Object localObject1 = (com.tencent.mm.vfs.k)this.jQs.get(paramString);
-    if ((bool) && (localObject1 != null) && (((com.tencent.mm.vfs.k)localObject1).exists()))
+    Object localObject1 = (o)this.kTb.get(paramString);
+    if ((bool) && (localObject1 != null) && (((o)localObject1).exists()))
     {
-      AppMethodBeat.o(195081);
+      AppMethodBeat.o(196171);
       return localObject1;
     }
-    Iterator localIterator = this.jQr.iterator();
+    Iterator localIterator = this.kTa.iterator();
     localObject1 = null;
     Object localObject2;
     while (localIterator.hasNext())
     {
-      localObject2 = ((a)localIterator.next()).cu(paramString, "unknown");
+      localObject2 = ((a)localIterator.next()).cI(paramString, "unknown");
       localObject1 = localObject2;
       if (localObject2 != null) {
         localObject1 = localObject2;
@@ -116,87 +118,87 @@ public final class u
       if (localObject1 == null) {}
       for (int i = -1;; i = ((a)localObject1).size())
       {
-        ae.e("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "createTempLocalFile, no handler return correct info, attach.size = %d", new Object[] { Integer.valueOf(i) });
-        AppMethodBeat.o(195081);
+        Log.e("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "createTempLocalFile, no handler return correct info, attach.size = %d", new Object[] { Integer.valueOf(i) });
+        AppMethodBeat.o(196171);
         return null;
       }
     }
     try
     {
       localObject1 = (String)((a)localObject1).get(1);
-      if (bu.isNullOrNil((String)localObject1))
+      if (Util.isNullOrNil((String)localObject1))
       {
-        ae.e("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "createTempLocalFile appId %s, Null Or Nil fileFullPath");
-        AppMethodBeat.o(195081);
+        Log.e("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "createTempLocalFile appId %s, Null Or Nil fileFullPath");
+        AppMethodBeat.o(196171);
         return null;
       }
       if (localByteBuffer != null)
       {
-        ae.i("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "get buffer success");
+        Log.i("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "get buffer success");
         localObject2 = d.p(localByteBuffer);
-        o.f((String)localObject1, (byte[])localObject2, localObject2.length);
-        localObject1 = new com.tencent.mm.vfs.k((String)localObject1);
-        this.jQs.put(paramString, localObject1);
-        AppMethodBeat.o(195081);
+        s.f((String)localObject1, (byte[])localObject2, localObject2.length);
+        localObject1 = new o((String)localObject1);
+        this.kTb.put(paramString, localObject1);
+        AppMethodBeat.o(196171);
         return localObject1;
       }
-      ae.e("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "get buffer fail");
-      AppMethodBeat.o(195081);
+      Log.e("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "get buffer fail");
+      AppMethodBeat.o(196171);
       return null;
     }
     catch (Exception paramString)
     {
-      ae.printErrStackTrace("MicroMsg.AppBrand.LuggageBlobFileObjectManager", paramString, "", new Object[0]);
-      AppMethodBeat.o(195081);
+      Log.printErrStackTrace("MicroMsg.AppBrand.LuggageBlobFileObjectManager", paramString, "", new Object[0]);
+      AppMethodBeat.o(196171);
     }
     return null;
   }
   
-  public final ByteBuffer cK(String paramString)
+  public final void clear()
   {
-    AppMethodBeat.i(195083);
-    if (this.jDt == null)
+    AppMethodBeat.i(196170);
+    this.kTb.clear();
+    s.dy(this.kSr, true);
+    AppMethodBeat.o(196170);
+  }
+  
+  public final ByteBuffer dI(String paramString)
+  {
+    AppMethodBeat.i(196173);
+    if (this.kEy == null)
     {
-      if (this.jQp == null)
+      if (this.kSY == null)
       {
-        if (this.jQq != null) {
-          this.jQp = this.jQq.bcc();
+        if (this.kSZ != null) {
+          this.kSY = this.kSZ.bxr();
         }
-        if (this.jQp == null)
+        if (this.kSY == null)
         {
-          ae.e("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "service is null");
-          AppMethodBeat.o(195083);
+          Log.e("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "service is null");
+          AppMethodBeat.o(196173);
           return null;
         }
       }
-      this.jDt = ((com.tencent.mm.plugin.appbrand.jsruntime.k)this.jQp.aYB().P(com.tencent.mm.plugin.appbrand.jsruntime.k.class));
+      this.kEy = ((k)this.kSY.getJsRuntime().R(k.class));
     }
-    if ((this.jDt == null) || (this.jDt.bqT() == null))
+    if ((this.kEy == null) || (this.kEy.bMF() == null))
     {
-      if (this.jDt == null) {}
+      if (this.kEy == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ae.e("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "getBuffer failed, mBufferAddon == null?: [%b]", new Object[] { Boolean.valueOf(bool) });
-        AppMethodBeat.o(195083);
+        Log.e("MicroMsg.AppBrand.LuggageBlobFileObjectManager", "getBuffer failed, mBufferAddon == null?: [%b]", new Object[] { Boolean.valueOf(bool) });
+        AppMethodBeat.o(196173);
         return null;
       }
     }
-    paramString = this.jDt.bqT().cK(paramString);
-    AppMethodBeat.o(195083);
+    paramString = this.kEy.bMF().dI(paramString);
+    AppMethodBeat.o(196173);
     return paramString;
-  }
-  
-  public final void clear()
-  {
-    AppMethodBeat.i(195080);
-    this.jQs.clear();
-    o.dd(this.jPJ, true);
-    AppMethodBeat.o(195080);
   }
   
   static abstract interface a
   {
-    public abstract a cu(String paramString1, String paramString2);
+    public abstract a cI(String paramString1, String paramString2);
   }
   
   final class b
@@ -205,7 +207,7 @@ public final class u
     private b() {}
     
     /* Error */
-    public final a cu(String paramString1, String paramString2)
+    public final a cI(String paramString1, String paramString2)
     {
       // Byte code:
       //   0: ldc 27
@@ -213,12 +215,12 @@ public final class u
       //   5: aload_2
       //   6: astore 5
       //   8: aload_2
-      //   9: invokestatic 39	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+      //   9: invokestatic 39	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
       //   12: ifeq +8 -> 20
-      //   15: invokestatic 43	com/tencent/mm/plugin/appbrand/appstorage/u:bcf	()Ljava/lang/String;
+      //   15: invokestatic 43	com/tencent/mm/plugin/appbrand/appstorage/u:bxu	()Ljava/lang/String;
       //   18: astore 5
       //   20: aload_0
-      //   21: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/u$b:jQu	Lcom/tencent/mm/plugin/appbrand/appstorage/u;
+      //   21: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/u$b:kTd	Lcom/tencent/mm/plugin/appbrand/appstorage/u;
       //   24: aload_1
       //   25: invokestatic 47	com/tencent/mm/plugin/appbrand/appstorage/u:a	(Lcom/tencent/mm/plugin/appbrand/appstorage/u;Ljava/lang/String;)J
       //   28: lstore_3
@@ -245,15 +247,15 @@ public final class u
       //   63: iconst_0
       //   64: aload_1
       //   65: aastore
-      //   66: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   66: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   69: aload_1
       //   70: aload_0
-      //   71: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/u$b:jQu	Lcom/tencent/mm/plugin/appbrand/appstorage/u;
+      //   71: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/u$b:kTd	Lcom/tencent/mm/plugin/appbrand/appstorage/u;
       //   74: invokestatic 80	com/tencent/mm/plugin/appbrand/appstorage/u:a	(Lcom/tencent/mm/plugin/appbrand/appstorage/u;)Ljava/lang/String;
-      //   77: invokestatic 84	com/tencent/mm/plugin/appbrand/appstorage/u:ct	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      //   77: invokestatic 84	com/tencent/mm/plugin/appbrand/appstorage/u:cH	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
       //   80: astore_1
       //   81: aload_1
-      //   82: invokestatic 39	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+      //   82: invokestatic 39	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
       //   85: ifeq +54 -> 139
       //   88: ldc 27
       //   90: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -267,9 +269,9 @@ public final class u
       //   104: dup
       //   105: iconst_0
       //   106: aload_1
-      //   107: invokestatic 92	com/tencent/mm/sdk/platformtools/bu:o	(Ljava/lang/Throwable;)Ljava/lang/String;
+      //   107: invokestatic 93	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
       //   110: aastore
-      //   111: invokestatic 95	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   111: invokestatic 96	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   114: ldc 27
       //   116: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   119: aconst_null
@@ -277,51 +279,51 @@ public final class u
       //   121: astore_1
       //   122: ldc 69
       //   124: aload_1
-      //   125: ldc 97
+      //   125: ldc 98
       //   127: iconst_0
       //   128: anewarray 4	java/lang/Object
-      //   131: invokestatic 101	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   131: invokestatic 102	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   134: aconst_null
       //   135: astore_1
       //   136: goto -55 -> 81
-      //   139: ldc 103
+      //   139: ldc 104
       //   141: aload_1
-      //   142: invokestatic 106	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-      //   145: invokevirtual 110	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+      //   142: invokestatic 107	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   145: invokevirtual 111	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
       //   148: astore_1
-      //   149: new 112	java/lang/StringBuilder
+      //   149: new 113	java/lang/StringBuilder
       //   152: dup
-      //   153: invokespecial 113	java/lang/StringBuilder:<init>	()V
+      //   153: invokespecial 114	java/lang/StringBuilder:<init>	()V
       //   156: aload_0
-      //   157: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/u$b:jQu	Lcom/tencent/mm/plugin/appbrand/appstorage/u;
-      //   160: invokestatic 115	com/tencent/mm/plugin/appbrand/appstorage/u:b	(Lcom/tencent/mm/plugin/appbrand/appstorage/u;)Ljava/lang/String;
-      //   163: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   157: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/u$b:kTd	Lcom/tencent/mm/plugin/appbrand/appstorage/u;
+      //   160: invokestatic 116	com/tencent/mm/plugin/appbrand/appstorage/u:b	(Lcom/tencent/mm/plugin/appbrand/appstorage/u;)Ljava/lang/String;
+      //   163: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   166: aload_1
-      //   167: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   170: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   167: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   170: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   173: astore_2
-      //   174: new 112	java/lang/StringBuilder
+      //   174: new 113	java/lang/StringBuilder
       //   177: dup
-      //   178: invokespecial 113	java/lang/StringBuilder:<init>	()V
+      //   178: invokespecial 114	java/lang/StringBuilder:<init>	()V
       //   181: aload_0
-      //   182: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/u$b:jQu	Lcom/tencent/mm/plugin/appbrand/appstorage/u;
-      //   185: invokestatic 125	com/tencent/mm/plugin/appbrand/appstorage/u:c	(Lcom/tencent/mm/plugin/appbrand/appstorage/u;)Ljava/lang/String;
-      //   188: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   182: getfield 15	com/tencent/mm/plugin/appbrand/appstorage/u$b:kTd	Lcom/tencent/mm/plugin/appbrand/appstorage/u;
+      //   185: invokestatic 126	com/tencent/mm/plugin/appbrand/appstorage/u:c	(Lcom/tencent/mm/plugin/appbrand/appstorage/u;)Ljava/lang/String;
+      //   188: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   191: aload_1
-      //   192: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   192: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   195: astore 6
       //   197: aload 5
-      //   199: invokestatic 39	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+      //   199: invokestatic 39	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
       //   202: ifeq +50 -> 252
-      //   205: ldc 127
+      //   205: ldc 128
       //   207: astore_1
       //   208: aload 6
       //   210: aload_1
-      //   211: invokevirtual 119	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   214: invokevirtual 122	java/lang/StringBuilder:toString	()Ljava/lang/String;
+      //   211: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+      //   214: invokevirtual 123	java/lang/StringBuilder:toString	()Ljava/lang/String;
       //   217: astore_1
       //   218: ldc 69
-      //   220: ldc 129
+      //   220: ldc 130
       //   222: iconst_2
       //   223: anewarray 4	java/lang/Object
       //   226: dup
@@ -332,20 +334,20 @@ public final class u
       //   231: iconst_1
       //   232: aload_2
       //   233: aastore
-      //   234: invokestatic 77	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   234: invokestatic 77	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
       //   237: aload_1
       //   238: aload_2
       //   239: aload 5
-      //   241: invokestatic 134	com/tencent/mm/vending/j/a:i	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/tencent/mm/vending/j/d;
+      //   241: invokestatic 135	com/tencent/mm/vending/j/a:i	(Ljava/lang/Object;Ljava/lang/Object;Ljava/lang/Object;)Lcom/tencent/mm/vending/j/d;
       //   244: astore_1
       //   245: ldc 27
       //   247: invokestatic 87	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   250: aload_1
       //   251: areturn
-      //   252: ldc 136
+      //   252: ldc 137
       //   254: aload 5
-      //   256: invokestatic 106	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-      //   259: invokevirtual 110	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+      //   256: invokestatic 107	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   259: invokevirtual 111	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
       //   262: astore_1
       //   263: goto -55 -> 208
       // Local variable table:
@@ -370,7 +372,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appstorage.u
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,90 @@
 package com.tencent.mm.plugin.appbrand.launching;
 
+import com.tencent.luggage.sdk.launching.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
-import com.tencent.mm.protocal.protobuf.xi;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.compatible.loader.a;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.plugin.appbrand.appcache.bd;
+import com.tencent.mm.plugin.appbrand.appcache.bh;
+import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchFromNotifyReferrer;
+import com.tencent.mm.plugin.appbrand.config.AppBrandLaunchReferrer;
+import com.tencent.mm.plugin.appbrand.report.quality.QualitySession;
+import java.util.concurrent.Callable;
 
-public final class bb
-  extends j<ba>
+public class bb
+  extends aw<ap>
 {
-  public static final String[] hGX;
+  final String appId;
+  final int appVersion;
+  final AppBrandLaunchReferrer cys;
+  final b cyz;
+  final int ecU;
+  final int enterScene;
+  final int iOo;
+  final AppBrandLaunchFromNotifyReferrer kHI;
+  final String kHw;
+  final QualitySession ldW;
+  final String mRZ;
+  private final String mRk;
+  final ICommLibReader mWR;
+  final String userName;
   
-  static
+  bb(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, AppBrandLaunchReferrer paramAppBrandLaunchReferrer, String paramString3, ICommLibReader paramICommLibReader, QualitySession paramQualitySession, String paramString4, AppBrandLaunchFromNotifyReferrer paramAppBrandLaunchFromNotifyReferrer, String paramString5, b paramb)
   {
-    AppMethodBeat.i(222781);
-    hGX = new String[] { j.getCreateSQLs(ba.jJU, "WxaJsApiPluginInfo") };
-    AppMethodBeat.o(222781);
+    AppMethodBeat.i(227109);
+    this.appId = paramString1;
+    this.iOo = paramInt1;
+    this.ecU = paramInt2;
+    this.enterScene = paramInt3;
+    this.kHw = paramString2;
+    this.cys = paramAppBrandLaunchReferrer;
+    this.mRZ = paramString3;
+    this.userName = paramString4;
+    this.kHI = paramAppBrandLaunchFromNotifyReferrer;
+    this.mRk = paramString5;
+    this.cyz = paramb;
+    paramString1 = n.buL().a(paramString1, paramInt1, new String[] { "version" });
+    if (paramString1 == null) {}
+    for (paramInt1 = 0;; paramInt1 = paramString1.field_version)
+    {
+      this.appVersion = paramInt1;
+      this.mWR = paramICommLibReader;
+      this.ldW = paramQualitySession;
+      AppMethodBeat.o(227109);
+      return;
+    }
   }
   
-  public bb(e parame)
+  public static boolean b(ap paramap)
   {
-    super(parame, ba.jJU, "WxaJsApiPluginInfo", ba.INDEX_CREATE);
+    return (paramap != null) && (paramap.field_jsapiInfo != null);
   }
   
-  public final xi SD(String paramString)
+  public static boolean yl(int paramInt)
   {
-    AppMethodBeat.i(222780);
-    try
+    AppMethodBeat.i(47351);
+    int[] arrayOfInt = AppBrandGlobalSystemConfig.bzP().lcT;
+    if ((arrayOfInt != null) && (a.contains(arrayOfInt, paramInt)))
     {
-      ba localba = new ba();
-      localba.field_appId = paramString;
-      if (get(localba, new String[0]))
-      {
-        ae.i("MicroMsg.LaunchWxaJsApiPluginInfoStorage", "found info with appId(%s)", new Object[] { paramString });
-        xi localxi = new xi();
-        localxi.parseFrom(localba.field_permissionProtoBlob);
-        int i = localxi.Gph.zr.length;
-        if (i > 0)
-        {
-          AppMethodBeat.o(222780);
-          return localxi;
-        }
-        ae.i("MicroMsg.LaunchWxaJsApiPluginInfoStorage", "found info with appId(%s) but jsapi_control_bytes invalid", new Object[] { paramString });
-      }
-      AppMethodBeat.o(222780);
-      return null;
+      AppMethodBeat.o(47351);
+      return true;
     }
-    catch (Exception localException)
-    {
-      ae.printErrStackTrace("MicroMsg.LaunchWxaJsApiPluginInfoStorage", localException, "get with appId(%s)", new Object[] { paramString });
-      AppMethodBeat.o(222780);
-    }
-    return null;
+    AppMethodBeat.o(47351);
+    return false;
+  }
+  
+  void bsQ() {}
+  
+  final String getTag()
+  {
+    return "MicroMsg.AppBrand.PrepareStepCheckLaunchInfo";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.launching.bb
  * JD-Core Version:    0.7.0.1
  */

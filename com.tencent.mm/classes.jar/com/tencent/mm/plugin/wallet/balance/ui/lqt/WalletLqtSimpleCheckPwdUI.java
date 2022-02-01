@@ -8,10 +8,10 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.v;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.wallet_core.c.w;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView;
 import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
@@ -20,15 +20,15 @@ import com.tencent.mm.wallet_core.ui.formview.EditHintPasswdView.a;
 public class WalletLqtSimpleCheckPwdUI
   extends WalletBaseUI
 {
-  private w CWK;
-  private EditHintPasswdView uSv;
+  private w HCq;
+  private EditHintPasswdView ykY;
   
   public void cleanUiData(int paramInt)
   {
     AppMethodBeat.i(69050);
     super.cleanUiData(paramInt);
-    if (this.uSv != null) {
-      this.uSv.dHv();
+    if (this.ykY != null) {
+      this.ykY.eIj();
     }
     AppMethodBeat.o(69050);
   }
@@ -40,15 +40,15 @@ public class WalletLqtSimpleCheckPwdUI
   
   public int getLayoutId()
   {
-    return 2131495979;
+    return 2131496959;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(69048);
     super.onCreate(paramBundle);
-    if (v.aAR()) {}
-    for (paramBundle = getString(2131765207);; paramBundle = getString(2131765205))
+    if (z.aUo()) {}
+    for (paramBundle = getString(2131767650);; paramBundle = getString(2131767648))
     {
       setMMTitle(paramBundle);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
@@ -61,10 +61,10 @@ public class WalletLqtSimpleCheckPwdUI
           return false;
         }
       });
-      ((TextView)findViewById(2131301034)).setText(2131765203);
-      this.uSv = ((EditHintPasswdView)findViewById(2131301026));
-      com.tencent.mm.wallet_core.ui.formview.a.a(this.uSv);
-      this.uSv.setOnInputValidListener(new EditHintPasswdView.a()
+      ((TextView)findViewById(2131302684)).setText(2131767646);
+      this.ykY = ((EditHintPasswdView)findViewById(2131302674));
+      com.tencent.mm.wallet_core.ui.formview.a.a(this.ykY);
+      this.ykY.setOnInputValidListener(new EditHintPasswdView.a()
       {
         public final void onInputValidChange(boolean paramAnonymousBoolean)
         {
@@ -77,30 +77,30 @@ public class WalletLqtSimpleCheckPwdUI
           AppMethodBeat.o(69047);
         }
       });
-      setEditFocusListener(this.uSv, 0, false);
+      setEditFocusListener(this.ykY, 0, false);
       AppMethodBeat.o(69048);
       return;
     }
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(69049);
-    ae.d("MicroMsg.WalletLqtSimpleCheckPwdUI", "scene end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if ((paramn instanceof w))
+    Log.d("MicroMsg.WalletLqtSimpleCheckPwdUI", "scene end. errType: %d, errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if ((paramq instanceof w))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = this.uSv.getText();
-        paramn = new Intent();
-        paramn.putExtra("lqt_enc_pwd", paramString);
-        setResult(-1, paramn);
+        paramString = this.ykY.getText();
+        paramq = new Intent();
+        paramq.putExtra("lqt_enc_pwd", paramString);
+        setResult(-1, paramq);
         finish();
         AppMethodBeat.o(69049);
         return true;
       }
-      if (this.uSv != null) {
-        this.uSv.dHv();
+      if (this.ykY != null) {
+        this.ykY.eIj();
       }
     }
     AppMethodBeat.o(69049);
@@ -115,7 +115,7 @@ public class WalletLqtSimpleCheckPwdUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.balance.ui.lqt.WalletLqtSimpleCheckPwdUI
  * JD-Core Version:    0.7.0.1
  */

@@ -7,27 +7,27 @@ import rx.d.a;
 public enum b
   implements d.a<Object>
 {
-  static final d<Object> OuJ;
+  static final d<Object> Ukx;
   
   static
   {
     AppMethodBeat.i(90248);
-    OuI = new b("INSTANCE");
-    OuK = new b[] { OuI };
-    OuJ = d.a(OuI);
+    Ukw = new b("INSTANCE");
+    Uky = new b[] { Ukw };
+    Ukx = d.a(Ukw);
     AppMethodBeat.o(90248);
   }
   
   private b() {}
   
-  public static <T> d<T> gDx()
+  public static <T> d<T> hQF()
   {
-    return OuJ;
+    return Ukx;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     rx.internal.a.b
  * JD-Core Version:    0.7.0.1
  */

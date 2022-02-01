@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/bun" android:layout_width="@dimen/c4" android:layout_height="@dimen/c4" android:layout_marginTop="@dimen/cn" android:scaleType="centerCrop" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/cf" android:ellipsize="end" android:id="@id/bu8" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hv" android:layout_marginTop="@dimen/ci" android:layout_marginRight="@dimen/hv" android:layout_marginBottom="@dimen/ct" android:layout_below="@id/bun" android:layout_centerHorizontal="true" style="@style/p_" />
+    <TextView android:textSize="14.0dip" android:id="@id/bur" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/bu8" android:layout_centerHorizontal="true" style="@style/m0" />
+    <TextView android:textSize="14.0dip" android:id="@id/btw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/bur" android:layout_centerHorizontal="true" style="@style/m0" />
+    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_above="@id/rz" android:layout_centerHorizontal="true">
+        <TextView android:id="@id/buo" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginBottom="14.0dip" android:text="@string/iyu" style="@style/m0" />
+        <Button android:id="@id/bu9" android:text="@string/iym" style="@style/ov" />
+        <Button android:id="@id/btq" android:visibility="gone" android:text="@string/iyk" style="@style/p3" />
+    </LinearLayout>
+    <TextView android:textSize="14.0dip" android:id="@id/rz" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cr" android:layout_marginBottom="@dimen/ce" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ez
-  extends b
+  extends IEvent
 {
-  public a drj;
-  public b drk;
+  public a dIp;
+  public b dIq;
   
   public ez()
   {
@@ -16,29 +16,26 @@ public final class ez
   
   private ez(byte paramByte)
   {
-    AppMethodBeat.i(19795);
-    this.drj = new a();
-    this.drk = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(116009);
+    this.dIp = new a();
+    this.dIq = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19795);
+    AppMethodBeat.o(116009);
   }
   
   public static final class a
   {
-    public String drl;
-    public long drm;
-    public String mac;
+    public String dGL;
+    public String dIr;
+    public int progress;
   }
   
-  public static final class b
-  {
-    public boolean dpK;
-  }
+  public static final class b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.g.a.ez
  * JD-Core Version:    0.7.0.1
  */

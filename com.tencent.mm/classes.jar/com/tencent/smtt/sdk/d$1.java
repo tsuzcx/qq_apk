@@ -15,22 +15,22 @@ final class d$1
   
   public final void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    AppMethodBeat.i(192688);
+    AppMethodBeat.i(188066);
     try
     {
       paramString2 = new Intent("android.intent.action.VIEW", Uri.parse(paramString1));
       paramString2.setFlags(268435456);
       paramString1 = this.a;
-      paramString2 = new com.tencent.mm.hellhoundlib.b.a().bc(paramString2);
-      com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString2.ahE(), "com/tencent/smtt/sdk/d$1", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramString1.startActivity((Intent)paramString2.mt(0));
+      paramString2 = new com.tencent.mm.hellhoundlib.b.a().bl(paramString2);
+      com.tencent.mm.hellhoundlib.a.a.a(paramString1, paramString2.axQ(), "com/tencent/smtt/sdk/d$1", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramString1.startActivity((Intent)paramString2.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramString1, "com/tencent/smtt/sdk/d$1", "onDownloadStart", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;J)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(192688);
+      AppMethodBeat.o(188066);
       return;
     }
     catch (ActivityNotFoundException paramString1)
     {
-      AppMethodBeat.o(192688);
+      AppMethodBeat.o(188066);
     }
   }
 }

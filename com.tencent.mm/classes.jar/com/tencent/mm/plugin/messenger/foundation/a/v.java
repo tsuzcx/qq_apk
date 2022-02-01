@@ -6,7 +6,7 @@ import java.util.Map;
 public abstract interface v
   extends a
 {
-  public abstract void Kk(int paramInt);
+  public abstract void Qm(int paramInt);
   
   public abstract void a(long paramLong, Map<String, String> paramMap, String paramString);
   
@@ -16,7 +16,7 @@ public abstract interface v
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.messenger.foundation.a.v
  * JD-Core Version:    0.7.0.1
  */

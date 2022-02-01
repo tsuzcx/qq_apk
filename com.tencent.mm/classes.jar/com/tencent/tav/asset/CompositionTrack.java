@@ -15,17 +15,17 @@ public class CompositionTrack
   
   CompositionTrack()
   {
-    AppMethodBeat.i(214315);
+    AppMethodBeat.i(217647);
     this.segments = new ArrayList();
-    AppMethodBeat.o(214315);
+    AppMethodBeat.o(217647);
   }
   
   CompositionTrack(Asset paramAsset, int paramInt1, int paramInt2, CMTimeRange paramCMTimeRange)
   {
     super(paramAsset, paramInt1, paramInt2, paramCMTimeRange);
-    AppMethodBeat.i(214316);
+    AppMethodBeat.i(217648);
     this.segments = new ArrayList();
-    AppMethodBeat.o(214316);
+    AppMethodBeat.o(217648);
   }
   
   public List<CompositionTrackSegment> getSegments()
@@ -35,7 +35,7 @@ public class CompositionTrack
   
   public CompositionTrackSegment segmentForTrackTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(214317);
+    AppMethodBeat.i(217649);
     if (this.segments != null)
     {
       Iterator localIterator = this.segments.iterator();
@@ -48,27 +48,27 @@ public class CompositionTrack
           if ((localCMTimeRange != null) && (localCMTimeRange.containsTime(paramCMTime)) && ((localAssetTrackSegment instanceof CompositionTrackSegment)))
           {
             paramCMTime = (CompositionTrackSegment)localAssetTrackSegment;
-            AppMethodBeat.o(214317);
+            AppMethodBeat.o(217649);
             return paramCMTime;
           }
         }
       }
     }
-    AppMethodBeat.o(214317);
+    AppMethodBeat.o(217649);
     return null;
   }
   
   public String toString()
   {
-    AppMethodBeat.i(214318);
+    AppMethodBeat.i(217650);
     String str = "CompositionTrack{segments=" + this.segments + ", trackID=" + this.trackID + ", mediaType=" + this.mediaType + '}';
-    AppMethodBeat.o(214318);
+    AppMethodBeat.o(217650);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.asset.CompositionTrack
  * JD-Core Version:    0.7.0.1
  */

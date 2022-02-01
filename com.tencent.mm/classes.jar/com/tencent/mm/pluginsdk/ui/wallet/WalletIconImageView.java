@@ -12,13 +12,13 @@ import com.tencent.mm.ui.widget.imageview.WeImageView;
 public class WalletIconImageView
   extends WeImageView
 {
-  private int Cnc = -1;
-  private int FEe = -1;
-  private int FEf = 0;
-  private int FEg = 4;
-  private int FEh = -1;
-  private Drawable FEi;
-  private View.OnClickListener FEj = null;
+  private int GRb = -1;
+  private int Kxi = -1;
+  private int Kxj = 0;
+  private int Kxk = 4;
+  private int Kxl = -1;
+  private Drawable Kxm;
+  private View.OnClickListener Kxn = null;
   
   public WalletIconImageView(Context paramContext)
   {
@@ -35,33 +35,33 @@ public class WalletIconImageView
     super(paramContext, paramAttributeSet);
   }
   
-  public final void fjp()
+  public final void gsP()
   {
     AppMethodBeat.i(72413);
-    super.setVisibility(this.FEg);
-    setImageResource(this.FEe);
-    if (this.FEf != -1)
+    super.setVisibility(this.Kxk);
+    setImageResource(this.Kxi);
+    if (this.Kxj != -1)
     {
-      super.setColorFilter(this.FEf, PorterDuff.Mode.SRC_ATOP);
-      setIconColor(this.FEf);
+      super.setColorFilter(this.Kxj, PorterDuff.Mode.SRC_ATOP);
+      setIconColor(this.Kxj);
     }
-    if (this.FEj != null) {
-      super.setOnClickListener(this.FEj);
+    if (this.Kxn != null) {
+      super.setOnClickListener(this.Kxn);
     }
     AppMethodBeat.o(72413);
   }
   
   public final void setClearBtnDrawableId$255f295(int paramInt)
   {
-    this.Cnc = 2131690372;
-    this.FEh = paramInt;
+    this.GRb = 2131690515;
+    this.Kxl = paramInt;
   }
   
   public void setImageResource(int paramInt)
   {
     AppMethodBeat.i(72410);
-    this.FEe = paramInt;
-    if (this.FEe != -1) {
+    this.Kxi = paramInt;
+    if (this.Kxi != -1) {
       super.setImageResource(paramInt);
     }
     AppMethodBeat.o(72410);
@@ -69,49 +69,49 @@ public class WalletIconImageView
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
-    this.FEj = paramOnClickListener;
+    this.Kxn = paramOnClickListener;
   }
   
   public void setToClearState(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(72412);
     super.setVisibility(0);
-    if (this.FEi != null)
+    if (this.Kxm != null)
     {
-      if (this.FEh != -1)
+      if (this.Kxl != -1)
       {
-        super.setColorFilter(this.FEh, PorterDuff.Mode.SRC_ATOP);
-        setIconColor(this.FEh);
+        super.setColorFilter(this.Kxl, PorterDuff.Mode.SRC_ATOP);
+        setIconColor(this.Kxl);
       }
-      setImageDrawable(this.FEi);
+      setImageDrawable(this.Kxm);
     }
     for (;;)
     {
-      super.setContentDescription(getContext().getString(2131757419));
+      super.setContentDescription(getContext().getString(2131757636));
       super.setOnClickListener(paramOnClickListener);
       AppMethodBeat.o(72412);
       return;
-      if (this.Cnc != -1)
+      if (this.GRb != -1)
       {
-        super.setImageResource(this.Cnc);
-        if (this.FEh != -1)
+        super.setImageResource(this.GRb);
+        if (this.Kxl != -1)
         {
-          super.setColorFilter(this.FEh, PorterDuff.Mode.SRC_ATOP);
-          setIconColor(this.FEh);
+          super.setColorFilter(this.Kxl, PorterDuff.Mode.SRC_ATOP);
+          setIconColor(this.Kxl);
         }
       }
       else
       {
-        super.setImageResource(2131232862);
-        if (this.FEh != -1)
+        super.setImageResource(2131233321);
+        if (this.Kxl != -1)
         {
-          super.setColorFilter(this.FEh, PorterDuff.Mode.SRC_ATOP);
-          setIconColor(this.FEh);
+          super.setColorFilter(this.Kxl, PorterDuff.Mode.SRC_ATOP);
+          setIconColor(this.Kxl);
         }
         else
         {
-          super.setColorFilter(getResources().getColor(2131099735), PorterDuff.Mode.SRC_ATOP);
-          setIconColor(getResources().getColor(2131099735));
+          super.setColorFilter(getResources().getColor(2131099749), PorterDuff.Mode.SRC_ATOP);
+          setIconColor(getResources().getColor(2131099749));
         }
       }
     }
@@ -120,7 +120,7 @@ public class WalletIconImageView
   public void setVisibility(int paramInt)
   {
     AppMethodBeat.i(72411);
-    this.FEg = paramInt;
+    this.Kxk = paramInt;
     super.setVisibility(paramInt);
     AppMethodBeat.o(72411);
   }
@@ -128,7 +128,7 @@ public class WalletIconImageView
   public void setmUserSetImageIconColor(int paramInt)
   {
     AppMethodBeat.i(174532);
-    this.FEf = paramInt;
+    this.Kxj = paramInt;
     if (paramInt != -1) {
       setIconColor(paramInt);
     }
@@ -137,7 +137,7 @@ public class WalletIconImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.wallet.WalletIconImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -21,16 +21,16 @@ public final class e
   public final void a(int paramInt, j paramj)
   {
     AppMethodBeat.i(27864);
-    dHM();
+    eIz();
     AppMethodBeat.o(27864);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(27863);
-    this.xHQ = parama;
-    this.xHu.clear();
-    this.xHu.addAll(parama.xHu);
+    this.BHQ = parama;
+    this.BHs.clear();
+    this.BHs.addAll(parama.BHs);
     notifyDataSetChanged();
     AppMethodBeat.o(27863);
   }
@@ -39,13 +39,14 @@ public final class e
   {
     paramb.dataType = 0;
     paramb.fromScene = this.fromScene;
-    paramb.msgId = ((f)this.xHQ).msgId;
-    paramb.dFU = ((f)this.xHQ).dFU;
+    paramb.BHS = this.BHS;
+    paramb.msgId = ((f)this.BHQ).msgId;
+    paramb.dXH = ((f)this.BHQ).dXH;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.record.ui.e
  * JD-Core Version:    0.7.0.1
  */

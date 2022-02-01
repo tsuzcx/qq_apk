@@ -16,10 +16,10 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
+import com.tencent.mm.br.c;
 import com.tencent.mm.modelappbrand.a.g;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaEntryInfo;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -28,12 +28,12 @@ import java.util.List;
 public class WxaBindBizInfoUI
   extends MMActivity
 {
+  private TextView Bdb;
   private ListView mListView;
-  private TextView xfv;
   
   public int getLayoutId()
   {
-    return 2131496112;
+    return 2131497105;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -55,21 +55,21 @@ public class WxaBindBizInfoUI
         AppMethodBeat.o(50058);
         return false;
       }
-    }, 2131689490);
-    setMMTitle(2131755587);
+    }, 2131689492);
+    setMMTitle(2131755631);
     setActionbarColor(getActionbarColor());
     ArrayList localArrayList = getIntent().getParcelableArrayListExtra("wxa_entry_info_list");
     paramBundle = getIntent().getStringExtra("register");
-    View localView = getLayoutInflater().inflate(2131493190, null);
-    this.xfv = ((TextView)localView.findViewById(2131305906));
-    TextView localTextView = this.xfv;
-    if (bu.isNullOrNil(paramBundle)) {
-      paramBundle = getString(2131755587);
+    View localView = getLayoutInflater().inflate(2131493236, null);
+    this.Bdb = ((TextView)localView.findViewById(2131309199));
+    TextView localTextView = this.Bdb;
+    if (Util.isNullOrNil(paramBundle)) {
+      paramBundle = getString(2131755631);
     }
     for (;;)
     {
       localTextView.setText(paramBundle);
-      this.mListView = ((ListView)findViewById(2131298924));
+      this.mListView = ((ListView)findViewById(2131299408));
       this.mListView.addHeaderView(localView);
       this.mListView.setAdapter(new a(getLayoutInflater(), localArrayList));
       this.mListView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -78,11 +78,11 @@ public class WxaBindBizInfoUI
         {
           AppMethodBeat.i(50059);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousAdapterView);
-          localb.bd(paramAnonymousView);
-          localb.mu(paramAnonymousInt);
-          localb.rl(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/WxaBindBizInfoUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+          localb.bm(paramAnonymousAdapterView);
+          localb.bm(paramAnonymousView);
+          localb.pH(paramAnonymousInt);
+          localb.zo(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/profile/ui/WxaBindBizInfoUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
           paramAnonymousAdapterView = (WxaAttributes.WxaEntryInfo)paramAnonymousAdapterView.getAdapter().getItem(paramAnonymousInt);
           if (paramAnonymousAdapterView == null)
           {
@@ -95,12 +95,12 @@ public class WxaBindBizInfoUI
           paramAnonymousView.putExtra("key_start_biz_profile_from_app_brand_profile", true);
           paramAnonymousView.putExtra("key_use_new_contact_profile", true);
           paramAnonymousView.putExtra("force_get_contact", true);
-          d.b(WxaBindBizInfoUI.this, "profile", ".ui.ContactInfoUI", paramAnonymousView);
+          c.b(WxaBindBizInfoUI.this, "profile", ".ui.ContactInfoUI", paramAnonymousView);
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/profile/ui/WxaBindBizInfoUI$2", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
           AppMethodBeat.o(50059);
         }
       });
-      getContentView().setBackgroundResource(2131100860);
+      getContentView().setBackgroundResource(2131101059);
       AppMethodBeat.o(50065);
       return;
     }
@@ -116,23 +116,23 @@ public class WxaBindBizInfoUI
     extends BaseAdapter
   {
     private LayoutInflater mInflater;
-    private List<WxaAttributes.WxaEntryInfo> ndS;
+    private List<WxaAttributes.WxaEntryInfo> opg;
     
     public a(LayoutInflater paramLayoutInflater, List<WxaAttributes.WxaEntryInfo> paramList)
     {
       AppMethodBeat.i(50060);
       this.mInflater = paramLayoutInflater;
-      this.ndS = new LinkedList();
+      this.opg = new LinkedList();
       if (paramList != null) {
-        this.ndS.addAll(paramList);
+        this.opg.addAll(paramList);
       }
       AppMethodBeat.o(50060);
     }
     
-    private WxaAttributes.WxaEntryInfo Nm(int paramInt)
+    private WxaAttributes.WxaEntryInfo Uz(int paramInt)
     {
       AppMethodBeat.i(50062);
-      WxaAttributes.WxaEntryInfo localWxaEntryInfo = (WxaAttributes.WxaEntryInfo)this.ndS.get(paramInt);
+      WxaAttributes.WxaEntryInfo localWxaEntryInfo = (WxaAttributes.WxaEntryInfo)this.opg.get(paramInt);
       AppMethodBeat.o(50062);
       return localWxaEntryInfo;
     }
@@ -140,7 +140,7 @@ public class WxaBindBizInfoUI
     public final int getCount()
     {
       AppMethodBeat.i(50061);
-      int i = this.ndS.size();
+      int i = this.opg.size();
       AppMethodBeat.o(50061);
       return i;
     }
@@ -156,25 +156,25 @@ public class WxaBindBizInfoUI
       WxaAttributes.WxaEntryInfo localWxaEntryInfo;
       if (paramView == null)
       {
-        paramView = this.mInflater.inflate(2131493027, paramViewGroup, false);
+        paramView = this.mInflater.inflate(2131493066, paramViewGroup, false);
         paramViewGroup = new a((byte)0);
-        paramViewGroup.fWT = ((ImageView)paramView.findViewById(2131300874));
-        paramViewGroup.titleTv = ((TextView)paramView.findViewById(2131303405));
-        paramViewGroup.gXb = ((TextView)paramView.findViewById(2131304468));
-        paramViewGroup.iYM = paramView.findViewById(2131299154);
+        paramViewGroup.gBZ = ((ImageView)paramView.findViewById(2131302468));
+        paramViewGroup.titleTv = ((TextView)paramView.findViewById(2131306126));
+        paramViewGroup.hPW = ((TextView)paramView.findViewById(2131307446));
+        paramViewGroup.jWr = paramView.findViewById(2131299682);
         paramView.setTag(paramViewGroup);
-        localWxaEntryInfo = Nm(paramInt);
-        com.tencent.mm.modelappbrand.a.b.aEl().a(paramViewGroup.fWT, localWxaEntryInfo.iconUrl, com.tencent.mm.modelappbrand.a.a.aEk(), g.hOv);
-        paramViewGroup.titleTv.setText(bu.nullAsNil(localWxaEntryInfo.title));
-        if (!bu.isNullOrNil(localWxaEntryInfo.kdj)) {
+        localWxaEntryInfo = Uz(paramInt);
+        com.tencent.mm.modelappbrand.a.b.aXY().a(paramViewGroup.gBZ, localWxaEntryInfo.iconUrl, com.tencent.mm.modelappbrand.a.a.aXX(), g.iJB);
+        paramViewGroup.titleTv.setText(Util.nullAsNil(localWxaEntryInfo.title));
+        if (!Util.isNullOrNil(localWxaEntryInfo.lgO)) {
           break label201;
         }
-        paramViewGroup.gXb.setVisibility(8);
+        paramViewGroup.hPW.setVisibility(8);
         label148:
-        if (this.ndS != null)
+        if (this.opg != null)
         {
-          paramViewGroup = paramViewGroup.iYM;
-          if (this.ndS.size() - 1 != paramInt) {
+          paramViewGroup = paramViewGroup.jWr;
+          if (this.opg.size() - 1 != paramInt) {
             break label224;
           }
         }
@@ -188,17 +188,17 @@ public class WxaBindBizInfoUI
         return paramView;
         paramViewGroup = (a)paramView.getTag();
         break;
-        paramViewGroup.gXb.setVisibility(0);
-        paramViewGroup.gXb.setText(localWxaEntryInfo.kdj);
+        paramViewGroup.hPW.setVisibility(0);
+        paramViewGroup.hPW.setText(localWxaEntryInfo.lgO);
         break label148;
       }
     }
     
     static final class a
     {
-      ImageView fWT;
-      TextView gXb;
-      View iYM;
+      ImageView gBZ;
+      TextView hPW;
+      View jWr;
       TextView titleTv;
     }
   }

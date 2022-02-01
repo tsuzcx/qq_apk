@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.offline.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -16,7 +16,7 @@ public final class g
     HashMap localHashMap = new HashMap();
     localHashMap.put("buss_type", paramString1);
     localHashMap.put("method", paramString2);
-    if (az.isWifi(ak.getContext())) {
+    if (NetStatusUtil.isWifi(MMApplicationContext.getContext())) {
       paramString1 = "wifi";
     }
     for (;;)
@@ -26,13 +26,13 @@ public final class g
       setRequestData(localHashMap);
       AppMethodBeat.o(66295);
       return;
-      if (az.is3G(ak.getContext())) {
+      if (NetStatusUtil.is3G(MMApplicationContext.getContext())) {
         paramString1 = "3g";
-      } else if (az.is2G(ak.getContext())) {
+      } else if (NetStatusUtil.is2G(MMApplicationContext.getContext())) {
         paramString1 = "2g";
-      } else if (az.isWap(ak.getContext())) {
+      } else if (NetStatusUtil.isWap(MMApplicationContext.getContext())) {
         paramString1 = "wap";
-      } else if (az.is4G(ak.getContext())) {
+      } else if (NetStatusUtil.is4G(MMApplicationContext.getContext())) {
         paramString1 = "4g";
       } else {
         paramString1 = "unknown";
@@ -59,7 +59,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.offline.a.g
  * JD-Core Version:    0.7.0.1
  */

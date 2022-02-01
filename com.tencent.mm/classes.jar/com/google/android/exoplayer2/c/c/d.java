@@ -6,11 +6,11 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class d
   implements b.a
 {
-  private final long bdM;
-  private final long bkK;
-  private final long[] bkL;
-  private final long bkM;
-  private final int bkN;
+  private final long bdJ;
+  private final long bkF;
+  private final long[] bkG;
+  private final long bkH;
+  private final int bkI;
   private final long firstFramePosition;
   
   d(long paramLong1, long paramLong2, long paramLong3)
@@ -21,16 +21,16 @@ final class d
   d(long paramLong1, long paramLong2, long paramLong3, long[] paramArrayOfLong, long paramLong4, int paramInt)
   {
     this.firstFramePosition = paramLong1;
-    this.bdM = paramLong2;
-    this.bkK = paramLong3;
-    this.bkL = paramArrayOfLong;
-    this.bkM = paramLong4;
-    this.bkN = paramInt;
+    this.bdJ = paramLong2;
+    this.bkF = paramLong3;
+    this.bkG = paramArrayOfLong;
+    this.bkH = paramLong4;
+    this.bkI = paramInt;
   }
   
-  private long eh(int paramInt)
+  private long eb(int paramInt)
   {
-    return this.bdM * paramInt / 100L;
+    return this.bdJ * paramInt / 100L;
   }
   
   public final long L(long paramLong)
@@ -38,27 +38,27 @@ final class d
     float f2 = 256.0F;
     float f3 = 0.0F;
     AppMethodBeat.i(92048);
-    if (!up())
+    if (!uu())
     {
       paramLong = this.firstFramePosition;
       AppMethodBeat.o(92048);
       return paramLong;
     }
-    float f4 = (float)paramLong * 100.0F / (float)this.bdM;
+    float f4 = (float)paramLong * 100.0F / (float)this.bdJ;
     float f1;
     long l1;
     long l2;
     if (f4 <= 0.0F)
     {
       f1 = 0.0F;
-      l1 = Math.round(f1 * 0.00390625D * this.bkM);
+      l1 = Math.round(f1 * 0.00390625D * this.bkH);
       l2 = this.firstFramePosition;
-      if (this.bkK == -1L) {
+      if (this.bkF == -1L) {
         break label183;
       }
     }
     label183:
-    for (paramLong = this.bkK - 1L;; paramLong = this.firstFramePosition - this.bkN + this.bkM - 1L)
+    for (paramLong = this.bkF - 1L;; paramLong = this.firstFramePosition - this.bkI + this.bkH - 1L)
     {
       paramLong = Math.min(l2 + l1, paramLong);
       AppMethodBeat.o(92048);
@@ -69,10 +69,10 @@ final class d
       }
       int i = (int)f4;
       if (i == 0) {}
-      for (f1 = f3;; f1 = (float)this.bkL[(i - 1)])
+      for (f1 = f3;; f1 = (float)this.bkG[(i - 1)])
       {
         if (i < 99) {
-          f2 = (float)this.bkL[i];
+          f2 = (float)this.bkG[i];
         }
         f1 = (f2 - f1) * (f4 - i) + f1;
         break;
@@ -83,14 +83,14 @@ final class d
   public final long N(long paramLong)
   {
     AppMethodBeat.i(92049);
-    if ((!up()) || (paramLong < this.firstFramePosition))
+    if ((!uu()) || (paramLong < this.firstFramePosition))
     {
       AppMethodBeat.o(92049);
       return 0L;
     }
-    double d1 = 256.0D * (paramLong - this.firstFramePosition) / this.bkM;
-    int i = x.a(this.bkL, d1, false) + 1;
-    long l2 = eh(i);
+    double d1 = 256.0D * (paramLong - this.firstFramePosition) / this.bkH;
+    int i = x.a(this.bkG, d1, false) + 1;
+    long l2 = eb(i);
     long l1;
     label87:
     long l3;
@@ -101,7 +101,7 @@ final class d
         break label129;
       }
       l1 = 256L;
-      l3 = eh(i + 1);
+      l3 = eb(i + 1);
       if (l1 != paramLong) {
         break label141;
       }
@@ -113,9 +113,9 @@ final class d
     {
       AppMethodBeat.o(92049);
       return paramLong + l2;
-      paramLong = this.bkL[(i - 1)];
+      paramLong = this.bkG[(i - 1)];
       break;
-      l1 = this.bkL[i];
+      l1 = this.bkG[i];
       break label87;
       d2 = l3 - l2;
     }
@@ -123,17 +123,17 @@ final class d
   
   public final long getDurationUs()
   {
-    return this.bdM;
+    return this.bdJ;
   }
   
-  public final boolean up()
+  public final boolean uu()
   {
-    return this.bkL != null;
+    return this.bkG != null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.c.c.d
  * JD-Core Version:    0.7.0.1
  */

@@ -5,12 +5,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ri;
-import com.tencent.mm.g.a.ri.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.g.a.se;
+import com.tencent.mm.g.a.se.b;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.base.a;
 
-@com.tencent.mm.ui.base.a(3)
+@a(3)
 public class FaceTransStubUI
   extends MMActivity
 {
@@ -32,7 +34,7 @@ public class FaceTransStubUI
   {
     AppMethodBeat.i(104270);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ae.i("MicroMsg.FaceTransStubUI", "carson : on activity result in FaceTransStubUI");
+    Log.i("MicroMsg.FaceTransStubUI", "carson : on activity result in FaceTransStubUI");
     setResult(paramInt2, paramIntent);
     finish();
     AppMethodBeat.o(104270);
@@ -42,26 +44,26 @@ public class FaceTransStubUI
   {
     AppMethodBeat.i(104269);
     super.onCreate(paramBundle);
-    ae.i("MicroMsg.FaceTransStubUI", "carson: start FaceTransStubUI ");
-    paramBundle = new ri();
-    paramBundle.dGW.scene = getIntent().getIntExtra("scene", 0);
-    paramBundle.dGW.packageName = getIntent().getStringExtra("package");
-    paramBundle.dGW.dGY = getIntent().getStringExtra("packageSign");
-    paramBundle.dGW.dGZ = getIntent().getStringExtra("otherVerifyTitle");
-    paramBundle.dGW.dHa = getIntent().getStringExtra("needFrontPage");
-    paramBundle.dGW.requestCode = 63;
+    Log.i("MicroMsg.FaceTransStubUI", "carson: start FaceTransStubUI ");
+    paramBundle = new se();
+    paramBundle.dYI.scene = getIntent().getIntExtra("scene", 0);
+    paramBundle.dYI.packageName = getIntent().getStringExtra("package");
+    paramBundle.dYI.dYK = getIntent().getStringExtra("packageSign");
+    paramBundle.dYI.dYL = getIntent().getStringExtra("otherVerifyTitle");
+    paramBundle.dYI.dYM = getIntent().getStringExtra("needFrontPage");
+    paramBundle.dYI.requestCode = 63;
     if ((this.context instanceof Activity)) {
-      paramBundle.dGW.dtg = ((Activity)this.context);
+      paramBundle.dYI.dKq = ((Activity)this.context);
     }
-    com.tencent.mm.sdk.b.a.IvT.l(paramBundle);
-    ae.i("MicroMsg.FaceTransStubUI", "carson: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.dGX.dHb) });
-    if (!paramBundle.dGX.dHb)
+    EventCenter.instance.publish(paramBundle);
+    Log.i("MicroMsg.FaceTransStubUI", "carson: start face detect event result: %b", new Object[] { Boolean.valueOf(paramBundle.dYJ.dYN) });
+    if (!paramBundle.dYJ.dYN)
     {
-      if (paramBundle.dGX.extras == null) {
+      if (paramBundle.dYJ.extras == null) {
         break label227;
       }
       Intent localIntent = new Intent();
-      localIntent.putExtras(paramBundle.dGX.extras);
+      localIntent.putExtras(paramBundle.dYJ.extras);
       setResult(1, localIntent);
     }
     for (;;)

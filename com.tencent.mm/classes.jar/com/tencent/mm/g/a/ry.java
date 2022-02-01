@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.SnsObject;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ry
-  extends b
+  extends IEvent
 {
-  public a dHC;
+  public a dYw;
   
   public ry()
   {
@@ -16,16 +16,27 @@ public final class ry
   
   private ry(byte paramByte)
   {
-    AppMethodBeat.i(125630);
-    this.dHC = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(116044);
+    this.dYw = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125630);
+    AppMethodBeat.o(116044);
   }
   
   public static final class a
   {
-    public SnsObject dxv;
+    public Context context;
+    public String dCw;
+    public String dNI;
+    public String dRL;
+    public long dTS;
+    public int dYx;
+    public String dYy;
+    public int dYz;
+    public String mediaTagName;
+    public int msgType;
+    public String packageName;
+    public int scene;
   }
 }
 

@@ -6,21 +6,21 @@ import java.security.PrivilegedAction;
 public final class h
   implements PrivilegedAction
 {
-  private String gfJ;
-  private String gfK;
+  private String gLo;
+  private String gLp;
   
   public h(String paramString)
   {
-    this.gfJ = paramString;
+    this.gLo = paramString;
   }
   
   public final Object run()
   {
     AppMethodBeat.i(155902);
-    String str = System.getProperty(this.gfJ);
+    String str = System.getProperty(this.gLo);
     if (str == null)
     {
-      str = this.gfK;
+      str = this.gLp;
       AppMethodBeat.o(155902);
       return str;
     }
@@ -30,7 +30,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.compatible.util.h
  * JD-Core Version:    0.7.0.1
  */

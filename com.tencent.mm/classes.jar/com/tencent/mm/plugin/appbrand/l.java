@@ -1,293 +1,190 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.util.Log;
+import android.os.Build.VERSION;
+import android.os.StatFs;
+import android.system.ErrnoException;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfig;
-import com.tencent.mm.plugin.appbrand.page.ad;
-import com.tencent.mm.plugin.appbrand.report.quality.i;
-import com.tencent.mm.plugin.appbrand.step.KSProcessWeAppLaunch;
-import com.tencent.mm.plugin.appbrand.utils.k;
-import com.tencent.mm.plugin.expansions.a.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vending.g.d.a;
-import com.tencent.mm.vending.g.d.b;
-import com.tencent.xweb.WebView;
-import com.tencent.xweb.WebView.c;
-import d.z;
-import java.util.Locale;
-import java.util.concurrent.atomic.AtomicBoolean;
+import com.tencent.mm.g.b.a.lq;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.kernel.e.c;
+import com.tencent.mm.loader.j.b;
+import com.tencent.mm.plugin.appbrand.appcache.az;
+import com.tencent.mm.plugin.appbrand.appcache.bp;
+import com.tencent.mm.plugin.appbrand.appcache.n.b;
+import com.tencent.mm.plugin.appbrand.appcache.n.c;
+import com.tencent.mm.plugin.appbrand.appcache.n.e;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig;
+import com.tencent.mm.plugin.appbrand.config.AppBrandGlobalSystemConfig.PackageManager;
+import com.tencent.mm.plugin.appbrand.m.ab;
+import com.tencent.mm.plugin.appbrand.m.ae;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 
-final class l
-  extends AppBrandRuntime.b
+public final class l
 {
-  final p jAF;
-  private final k jAG;
-  volatile boolean jAH;
-  private volatile boolean jAI;
-  private volatile a jAJ;
-  volatile ad jAK;
-  volatile com.tencent.mm.plugin.appbrand.service.c jAL;
-  private final AtomicBoolean jAM;
-  private final AtomicBoolean jAN;
-  com.tencent.mm.vending.g.e<com.tencent.mm.plugin.appbrand.service.c> jAO;
-  com.tencent.mm.vending.g.e<ad> jAP;
+  private static final IListener<com.tencent.mm.g.a.d> kAj;
   
-  l(p paramp)
+  static
   {
-    AppMethodBeat.i(43832);
-    this.jAH = false;
-    this.jAI = false;
-    this.jAM = new AtomicBoolean(false);
-    this.jAN = new AtomicBoolean(false);
-    this.jAF = paramp;
-    this.jAG = new k(new Runnable()
+    AppMethodBeat.i(43798);
+    kAj = new IListener() {};
+    AppMethodBeat.o(43798);
+  }
+  
+  public static void brc()
+  {
+    AppMethodBeat.i(226134);
+    h.RTc.b(new a(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(43799);
-        if ((l.this.jAH) || (l.this.jAK == null)) {}
-        try
+        AppMethodBeat.i(226133);
+        if (!com.tencent.mm.kernel.g.aAf().hpY)
         {
-          com.tencent.mm.plugin.appbrand.report.quality.a.Ve(l.this.jAF.mAppId).mAv = i.mzM;
-          label44:
-          l.this.n("countDown == 0, notify process ready", new Object[0]);
-          l.this.BJ();
-          AppMethodBeat.o(43799);
+          AppMethodBeat.o(226133);
           return;
         }
-        catch (Exception localException)
+        long l1 = AppBrandGlobalSystemConfig.bzP().ldk.ldB;
+        long l2 = ((Long)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NXL, Long.valueOf(0L))).longValue();
+        long l3 = Util.nowSecond();
+        if (l3 >= l2)
         {
-          break label44;
-        }
-      }
-    }, 2);
-    AppMethodBeat.o(43832);
-  }
-  
-  private String aWU()
-  {
-    AppMethodBeat.i(43835);
-    String str = String.format(Locale.US, "Runtime[%s %d %s]~~%d~~ ", new Object[] { this.jAF.mAppId, Integer.valueOf(this.jAF.jzC.dQv), com.tencent.mm.plugin.appbrand.task.e.hB(this.jAF.Ee()).name(), Integer.valueOf(hashCode()) });
-    AppMethodBeat.o(43835);
-    return str;
-  }
-  
-  final f<Void> KX(final String paramString)
-  {
-    AppMethodBeat.i(221986);
-    paramString = new f()
-    {
-      public final f<Void> a(com.tencent.mm.vending.e.b paramAnonymousb)
-      {
-        AppMethodBeat.i(221984);
-        paramAnonymousb.keep(new com.tencent.mm.vending.e.a()
-        {
-          public final void dead()
+          com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NXL, Long.valueOf(l1 + l3));
+          ((bp)com.tencent.mm.kernel.g.af(bp.class)).bvD();
+          n.c.bvr().run();
+          if (com.tencent.mm.plugin.appbrand.app.n.buy() == null)
           {
-            AppMethodBeat.i(221983);
-            l.this.n("pipeline(%s) will be stopped", new Object[] { l.9.this.cqH });
-            AppMethodBeat.o(221983);
+            Log.e("MicroMsg.AppBrand.IPkgCleanupLogic.Report", "reportStorageUsage, db not ready");
+            ab.bMJ();
+            ae.bMJ();
+            com.tencent.mm.plugin.appbrand.appstorage.g.kSf.run();
+            ((com.tencent.mm.plugin.appbrand.appcache.predownload.d.a)com.tencent.mm.plugin.appbrand.app.n.W(com.tencent.mm.plugin.appbrand.appcache.predownload.d.a.class)).bwV();
+            com.tencent.mm.plugin.appbrand.page.web_renderingcache.d.bSG();
           }
-        });
-        paramAnonymousb = super.a(paramAnonymousb);
-        AppMethodBeat.o(221984);
-        return paramAnonymousb;
-      }
-    }.a(this.jAF).K(new Object[0]);
-    AppMethodBeat.o(221986);
-    return paramString;
-  }
-  
-  final void a(final a parama)
-  {
-    AppMethodBeat.i(43838);
-    if ((this.jAP == null) || (this.jAH))
-    {
-      n("tryPreloadBeforeResourceDone mPageViewPipeline null || mProcessExpired", new Object[0]);
-      AppMethodBeat.o(43838);
-      return;
-    }
-    if (this.jAI)
-    {
-      n("tryPreloadBeforeResourceDone function already appended by reason[%s]", new Object[] { this.jAJ });
-      AppMethodBeat.o(43838);
-      return;
-    }
-    n("tryPreloadBeforeResourceDone tryDoAheadPreloadPageView by reason[%s]", new Object[] { parama });
-    this.jAI = true;
-    this.jAJ = parama;
-    if (this.jAP.LEy)
-    {
-      n("mPageViewPipeline has stopped", new Object[0]);
-      AppMethodBeat.o(43838);
-      return;
-    }
-    this.jAP.c(new com.tencent.mm.vending.c.a() {});
-    AppMethodBeat.o(43838);
-  }
-  
-  final void aWS()
-  {
-    AppMethodBeat.i(174647);
-    if (!this.jAN.getAndSet(true)) {
-      this.jAG.countDown();
-    }
-    AppMethodBeat.o(174647);
-  }
-  
-  final void aWT()
-  {
-    AppMethodBeat.i(174648);
-    if (!this.jAM.getAndSet(true)) {
-      this.jAG.countDown();
-    }
-    AppMethodBeat.o(174648);
-  }
-  
-  final com.tencent.mm.plugin.appbrand.service.c aWV()
-  {
-    com.tencent.mm.plugin.appbrand.service.c localc = this.jAL;
-    this.jAL = null;
-    return localc;
-  }
-  
-  final ad aWW()
-  {
-    ad localad = this.jAK;
-    this.jAK = null;
-    return localad;
-  }
-  
-  public final void interrupt()
-  {
-    AppMethodBeat.i(43836);
-    o("interrupt()", new Object[0]);
-    this.jAH = true;
-    Object localObject = aWV();
-    if (localObject != null) {}
-    try
-    {
-      ((com.tencent.mm.plugin.appbrand.service.c)localObject).cleanup();
-      if (this.jAO != null) {
-        this.jAO.zm(true);
-      }
-      localObject = aWW();
-      if (localObject == null) {}
-    }
-    catch (Throwable localThrowable1)
-    {
-      try
-      {
-        ((ad)localObject).cleanup();
-        if (this.jAP != null) {
-          this.jAP.zm(true);
         }
-        AppMethodBeat.o(43836);
-        return;
-        localThrowable1 = localThrowable1;
-        o("interrupt() cleanup service e=%s", new Object[] { localThrowable1 });
-      }
-      catch (Throwable localThrowable2)
-      {
-        for (;;)
+        else
         {
-          o("interrupt() cleanup page e=%s", new Object[] { localThrowable2 });
-        }
-      }
-    }
-  }
-  
-  final void n(String paramString, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(43833);
-    ae.i("MicroMsg.AppBrand.AppBrandRuntimeBoostStrategy[preload]", aWU() + paramString, paramVarArgs);
-    AppMethodBeat.o(43833);
-  }
-  
-  final void o(String paramString, Object... paramVarArgs)
-  {
-    AppMethodBeat.i(43834);
-    ae.e("MicroMsg.AppBrand.AppBrandRuntimeBoostStrategy[preload]", aWU() + paramString, paramVarArgs);
-    AppMethodBeat.o(43834);
-  }
-  
-  public final void prepare()
-  {
-    AppMethodBeat.i(43837);
-    final k localk = new k(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(43818);
-        l locall;
-        if (!l.this.jAH)
-        {
-          locall = l.this;
-          if (!locall.jAF.Fj()) {
-            break label111;
-          }
-          locall.n("service countDown by remoteDebug", new Object[0]);
-          locall.jAO = null;
-          locall.aWS();
-          if (!locall.jAF.Ee()) {
-            break label179;
-          }
-          locall.n("tryPreloadPageView ignore for game, countdown", new Object[0]);
-          locall.jAP = null;
-          locall.aWT();
-        }
-        for (;;)
-        {
-          if (((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qBO, 0) > 0) {
-            locall.a(l.a.jBg);
-          }
-          AppMethodBeat.o(43818);
+          AppMethodBeat.o(226133);
           return;
-          label111:
-          locall.jAO = ((com.tencent.mm.vending.g.e)locall.KX("preloadAppService").h(new l.16(locall)).g(new l.15(locall)).a(com.tencent.mm.vending.h.d.LFo, new l.14(locall)).a(com.tencent.mm.vending.h.d.LFo, new l.13(locall)));
+        }
+        lq locallq = new lq();
+        StatFs localStatFs = new StatFs(az.bwm());
+        if (Build.VERSION.SDK_INT >= 18)
+        {
+          l1 = localStatFs.getBlockCountLong();
+          label189:
+          l3 = n.b.bvq();
+          if (Build.VERSION.SDK_INT < 18) {
+            break label351;
+          }
+          l2 = localStatFs.getBlockSizeLong();
+          label209:
+          double d = l3 / l2 / l1;
+          locallq.eZm = l3;
+          locallq.eZn = Math.round(d * 100.0D);
+          localStatFs = new StatFs(b.aKB());
+          if (Build.VERSION.SDK_INT < 18) {
+            break label362;
+          }
+          l1 = localStatFs.getBlockCountLong();
+          label265:
+          if (Build.VERSION.SDK_INT < 18) {
+            break label372;
+          }
+        }
+        label351:
+        label362:
+        label372:
+        for (l2 = localStatFs.getAvailableBlocksLong();; l2 = localStatFs.getAvailableBlocks())
+        {
+          locallq.eZo = Math.round(l2 / l1 * 100.0D);
+          locallq.eZp = 1L;
+          locallq.eZq = n.e.bvx();
+          Log.i("MicroMsg.AppBrand.IPkgCleanupLogic.Report", "reportStorageUsage %s", new Object[] { locallq.abW() });
+          locallq.bfK();
           break;
-          label179:
-          locall.jAP = locall.KX("tryPreloadPageView").h(new l.2(locall)).g(new l.17(locall));
+          l1 = localStatFs.getBlockCount();
+          break label189;
+          l2 = localStatFs.getBlockSize();
+          break label209;
+          l1 = localStatFs.getBlockCount();
+          break label265;
         }
       }
-    }, 2);
-    com.tencent.mm.plugin.appbrand.keylogger.c.a(this.jAF.mAppId, KSProcessWeAppLaunch.stepInstallLibraries);
-    com.tencent.mm.plugin.expansions.a.a(new a.b()
-    {
-      public final void a(com.tencent.mm.toolkit.frontia.a.c.a paramAnonymousa)
-      {
-        AppMethodBeat.i(43819);
-        localk.countDown();
-        com.tencent.mm.plugin.appbrand.keylogger.c.b(l.this.jAF.mAppId, KSProcessWeAppLaunch.stepInstallLibraries);
-        AppMethodBeat.o(43819);
-      }
-    });
-    com.tencent.mm.plugin.appbrand.launching.g.a(this.jAF, new d.g.a.b() {});
-    AppMethodBeat.o(43837);
+    }), "MicroMsg.AppBrandPruner");
+    AppMethodBeat.o(226134);
   }
   
-  public static enum a
+  public static void release()
   {
-    static
+    AppMethodBeat.i(43797);
+    kAj.dead();
+    AppMethodBeat.o(43797);
+  }
+  
+  public static void setup()
+  {
+    AppMethodBeat.i(43796);
+    kAj.alive();
+    AppMethodBeat.o(43796);
+  }
+  
+  final class a
+    implements com.tencent.mm.kernel.api.c, Runnable
+  {
+    private volatile boolean kAk;
+    
+    a()
     {
-      AppMethodBeat.i(43831);
-      jBd = new a("SYNC_LAUNCH", 0);
-      jBe = new a("SYNC_GET_CODE", 1);
-      jBf = new a("SYNC_JSAPIINFO", 2);
-      jBg = new a("X_CONFIG", 3);
-      jBh = new a[] { jBd, jBe, jBf, jBg };
-      AppMethodBeat.o(43831);
+      AppMethodBeat.i(226131);
+      this.kAk = false;
+      com.tencent.mm.kernel.a.c.aAu().add(this);
+      AppMethodBeat.o(226131);
     }
     
-    private a() {}
+    public final void onAccountInitialized(e.c paramc) {}
+    
+    public final void onAccountRelease()
+    {
+      this.kAk = true;
+    }
+    
+    public final void run()
+    {
+      AppMethodBeat.i(226132);
+      try
+      {
+        l.this.run();
+        AppMethodBeat.o(226132);
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        if ((localThrowable instanceof ErrnoException))
+        {
+          AppMethodBeat.o(226132);
+          return;
+        }
+        Log.printErrStackTrace("MicroMsg.AppBrandPruner", localThrowable, "caught exception while prune", new Object[0]);
+        if ((!com.tencent.mm.kernel.g.aAf().hpY) || (this.kAk))
+        {
+          AppMethodBeat.o(226132);
+          return;
+        }
+        AppMethodBeat.o(226132);
+        throw localThrowable;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.l
  * JD-Core Version:    0.7.0.1
  */

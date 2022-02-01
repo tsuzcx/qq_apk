@@ -6,7 +6,7 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.config.AppBrandInitConfigWC;
 import com.tencent.mm.plugin.appbrand.report.AppBrandStatObject;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class QualitySession
   implements Parcelable
@@ -14,11 +14,11 @@ public class QualitySession
   public static final Parcelable.Creator<QualitySession> CREATOR;
   public String appId;
   public int apptype;
-  public final String lIU;
-  public int mAf;
-  public long mAg;
-  public boolean mAh;
-  public int myD;
+  public final String kEY;
+  public int nJE;
+  public int nLk;
+  public long nLl;
+  public boolean nLm;
   public int scene;
   
   static
@@ -31,20 +31,20 @@ public class QualitySession
   protected QualitySession(Parcel paramParcel)
   {
     AppMethodBeat.i(48228);
-    this.mAg = 0L;
-    this.mAh = false;
-    this.lIU = paramParcel.readString();
+    this.nLl = 0L;
+    this.nLm = false;
+    this.kEY = paramParcel.readString();
     this.appId = paramParcel.readString();
-    this.myD = paramParcel.readInt();
+    this.nJE = paramParcel.readInt();
     this.apptype = paramParcel.readInt();
     this.scene = paramParcel.readInt();
-    this.mAf = paramParcel.readInt();
-    this.mAg = paramParcel.readLong();
+    this.nLk = paramParcel.readInt();
+    this.nLl = paramParcel.readLong();
     if (paramParcel.readByte() > 0) {}
     for (boolean bool = true;; bool = false)
     {
-      this.mAh = bool;
-      ae.i("MicroMsg.AppBrand.QualitySession", "secondary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d] UIReadyT[%d] isNewUser[%b]", new Object[] { this.lIU, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.mAf), Long.valueOf(this.mAg), Boolean.valueOf(this.mAh) });
+      this.nLm = bool;
+      Log.i("MicroMsg.AppBrand.QualitySession", "secondary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d] UIReadyT[%d] isNewUser[%b]", new Object[] { this.kEY, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.nLk), Long.valueOf(this.nLl), Boolean.valueOf(this.nLm) });
       AppMethodBeat.o(48228);
       return;
     }
@@ -53,26 +53,26 @@ public class QualitySession
   public QualitySession(String paramString, AppBrandInitConfigWC paramAppBrandInitConfigWC, AppBrandStatObject paramAppBrandStatObject)
   {
     AppMethodBeat.i(48226);
-    this.mAg = 0L;
-    this.mAh = false;
-    this.lIU = paramString;
+    this.nLl = 0L;
+    this.nLm = false;
+    this.kEY = paramString;
     this.appId = paramAppBrandInitConfigWC.appId;
-    switch (paramAppBrandInitConfigWC.dQv)
+    switch (paramAppBrandInitConfigWC.eix)
     {
     }
     for (;;)
     {
-      this.apptype = (paramAppBrandInitConfigWC.cmt + 1000);
+      this.apptype = (paramAppBrandInitConfigWC.cyo + 1000);
       this.scene = paramAppBrandStatObject.scene;
-      this.mAf = paramAppBrandInitConfigWC.aDD;
-      ae.i("MicroMsg.AppBrand.QualitySession", "primary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d]", new Object[] { this.lIU, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.mAf) });
+      this.nLk = paramAppBrandInitConfigWC.appVersion;
+      Log.i("MicroMsg.AppBrand.QualitySession", "primary <init> instanceId[%s] apptype[%d] scene[%d] appversion[%d]", new Object[] { this.kEY, Integer.valueOf(this.apptype), Integer.valueOf(this.scene), Integer.valueOf(this.nLk) });
       AppMethodBeat.o(48226);
       return;
-      this.myD = 1;
+      this.nJE = 1;
       continue;
-      this.myD = 2;
+      this.nJE = 2;
       continue;
-      this.myD = 3;
+      this.nJE = 3;
     }
   }
   
@@ -84,14 +84,14 @@ public class QualitySession
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(48227);
-    paramParcel.writeString(this.lIU);
+    paramParcel.writeString(this.kEY);
     paramParcel.writeString(this.appId);
-    paramParcel.writeInt(this.myD);
+    paramParcel.writeInt(this.nJE);
     paramParcel.writeInt(this.apptype);
     paramParcel.writeInt(this.scene);
-    paramParcel.writeInt(this.mAf);
-    paramParcel.writeLong(this.mAg);
-    if (this.mAh) {}
+    paramParcel.writeInt(this.nLk);
+    paramParcel.writeLong(this.nLl);
+    if (this.nLm) {}
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
@@ -102,7 +102,7 @@ public class QualitySession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.report.quality.QualitySession
  * JD-Core Version:    0.7.0.1
  */

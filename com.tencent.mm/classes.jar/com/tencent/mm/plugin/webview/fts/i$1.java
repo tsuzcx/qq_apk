@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qg;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.ra;
+import com.tencent.mm.sdk.event.IListener;
 
 final class i$1
-  extends c<qg>
+  extends IListener<ra>
 {
   i$1(i parami)
   {
-    AppMethodBeat.i(160416);
-    this.__eventId = qg.class.getName().hashCode();
-    AppMethodBeat.o(160416);
+    AppMethodBeat.i(160415);
+    this.__eventId = ra.class.getName().hashCode();
+    AppMethodBeat.o(160415);
   }
 }
 

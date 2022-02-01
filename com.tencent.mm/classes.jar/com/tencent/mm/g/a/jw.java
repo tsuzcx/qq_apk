@@ -1,14 +1,12 @@
 package com.tencent.mm.g.a;
 
-import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class jw
-  extends b
+  extends IEvent
 {
-  public a dxT;
-  public b dxU;
+  public a dOP;
   
   public jw()
   {
@@ -17,29 +15,21 @@ public final class jw
   
   private jw(byte paramByte)
   {
-    AppMethodBeat.i(93325);
-    this.dxT = new a();
-    this.dxU = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(149864);
+    this.dOP = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(93325);
+    AppMethodBeat.o(149864);
   }
   
   public static final class a
   {
-    public Context context;
-    public int enterScene = 0;
-    public int scene = 0;
-  }
-  
-  public static final class b
-  {
-    public String targetActivity;
+    public String url;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.jw
  * JD-Core Version:    0.7.0.1
  */

@@ -2,9 +2,9 @@ package com.tencent.mm.kernel.c;
 
 public abstract interface b
 {
-  public abstract void akM();
+  public abstract void aBc();
   
-  public abstract void akN();
+  public abstract void aBd();
 }
 
 

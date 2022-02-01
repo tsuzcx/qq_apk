@@ -14,350 +14,351 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.live.b.f.f;
-import com.tencent.mm.protocal.protobuf.bvk;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.live.b.r;
+import com.tencent.mm.live.b.x;
+import com.tencent.mm.protocal.protobuf.civ;
 import com.tencent.mm.ui.ar;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
-import com.tencent.mm.ui.base.t;
+import com.tencent.mm.ui.au;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.u;
 import com.tencent.mm.ui.widget.a.e.b;
-import d.g.b.p;
-import d.v;
 import java.util.ArrayList;
 import java.util.Collection;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/plugin/LiveBanCommentPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "banCommentBtn", "Landroid/widget/ImageView;", "banCommentClickArea", "Landroid/widget/RelativeLayout;", "banCommentDescTv", "Landroid/widget/TextView;", "banCommentLoadingView", "Landroid/widget/ProgressBar;", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "bottomSheetItemClickListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "enableComment", "", "getEnableComment", "()Z", "setEnableComment", "(Z)V", "mount", "", "onSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showBanCommentBottomSheet", "enable", "showBanCommentBtn", "showLoading", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/LiveBanCommentPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "root", "Landroid/view/ViewGroup;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/view/ViewGroup;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "banCommentBtn", "Landroid/widget/ImageView;", "banCommentClickArea", "Landroid/widget/RelativeLayout;", "banCommentDescTv", "Landroid/widget/TextView;", "banCommentLoadingView", "Landroid/widget/ProgressBar;", "bottomSheet", "Lcom/tencent/mm/ui/widget/dialog/MMBottomSheet;", "bottomSheetItemClickListener", "Lcom/tencent/mm/ui/base/MMMenuListener$OnMMMenuItemSelectedListener;", "context", "Landroid/content/Context;", "kotlin.jvm.PlatformType", "enableComment", "", "getEnableComment", "()Z", "setEnableComment", "(Z)V", "mount", "", "onSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "showBanCommentBottomSheet", "enable", "showBanCommentBtn", "showLoading", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "unMount", "plugin-logic_release"})
 public final class i
   extends a
-  implements f
+  implements com.tencent.mm.ak.i
 {
   Context context;
-  com.tencent.mm.ui.widget.a.e gVB;
-  final n.e gVD;
-  private final ImageView gVX;
-  private final RelativeLayout gVY;
-  private final TextView gVZ;
-  private final b gVv;
-  private final ProgressBar gWa;
-  public boolean gWb;
+  private final ImageView hOR;
+  private final RelativeLayout hOS;
+  private final TextView hOT;
+  private final ProgressBar hOU;
+  public boolean hOV;
+  private final b hOp;
+  com.tencent.mm.ui.widget.a.e hOv;
+  final com.tencent.mm.ui.base.o.g hOx;
   
   public i(ViewGroup paramViewGroup, b paramb)
   {
     super(paramViewGroup, paramb);
-    AppMethodBeat.i(215967);
-    this.gVv = paramb;
+    AppMethodBeat.i(207929);
+    this.hOp = paramb;
     this.context = paramViewGroup.getContext();
-    paramb = paramViewGroup.findViewById(2131307578);
+    paramb = paramViewGroup.findViewById(2131303338);
     p.g(paramb, "root.findViewById(R.id.live_ban_comment_icon)");
-    this.gVX = ((ImageView)paramb);
-    paramb = paramViewGroup.findViewById(2131307579);
+    this.hOR = ((ImageView)paramb);
+    paramb = paramViewGroup.findViewById(2131303339);
     p.g(paramb, "root.findViewById(R.id.l…_comment_icon_click_area)");
-    this.gVY = ((RelativeLayout)paramb);
-    paramb = paramViewGroup.findViewById(2131307580);
+    this.hOS = ((RelativeLayout)paramb);
+    paramb = paramViewGroup.findViewById(2131303340);
     p.g(paramb, "root.findViewById(R.id.l…ban_comment_icon_desc_tv)");
-    this.gVZ = ((TextView)paramb);
-    paramb = paramViewGroup.findViewById(2131307582);
+    this.hOT = ((TextView)paramb);
+    paramb = paramViewGroup.findViewById(2131303342);
     p.g(paramb, "root.findViewById(R.id.live_ban_comment_loading)");
-    this.gWa = ((ProgressBar)paramb);
-    this.gWb = true;
-    this.gVD = ((n.e)new a(this));
-    paramb = this.gVX;
+    this.hOU = ((ProgressBar)paramb);
+    this.hOV = true;
+    this.hOx = ((com.tencent.mm.ui.base.o.g)new a(this));
+    paramb = this.hOR;
     Context localContext = paramViewGroup.getContext();
     p.g(localContext, "root.context");
-    paramb.setImageDrawable(ao.e(localContext.getResources().getDrawable(2131691513), -1));
-    this.gVY.setOnClickListener((View.OnClickListener)new View.OnClickListener()
+    paramb.setImageDrawable(ar.e(localContext.getResources().getDrawable(2131690508), -1));
+    this.hOS.setOnClickListener((View.OnClickListener)new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(215958);
+        AppMethodBeat.i(207920);
         Object localObject1 = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveBanCommentPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).ahF());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject1).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveBanCommentPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject1).axR());
         Object localObject2;
         Object localObject3;
-        if (this.gWc.gWb)
+        if (this.hOW.hOV)
         {
-          paramAnonymousView = this.gWc;
-          boolean bool = this.gWc.gWb;
+          paramAnonymousView = this.hOW;
+          boolean bool = this.hOW.hOV;
           localObject1 = new ArrayList();
           localObject2 = new ArrayList();
           if (bool)
           {
             localObject3 = paramAnonymousView.context;
             p.g(localObject3, "context");
-            ((ArrayList)localObject1).add(((Context)localObject3).getResources().getString(2131766640));
-            localObject3 = f.f.gPX;
-            ((ArrayList)localObject2).add(Integer.valueOf(f.f.anu()));
+            ((ArrayList)localObject1).add(((Context)localObject3).getResources().getString(2131762333));
+            localObject3 = com.tencent.mm.live.b.o.g.hHa;
+            ((ArrayList)localObject2).add(Integer.valueOf(com.tencent.mm.live.b.o.g.aFF()));
             if (!bool) {
               break label390;
             }
-            paramAnonymousView.gVB = new com.tencent.mm.ui.widget.a.e(paramAnonymousView.context, 1, true);
-            Object localObject4 = View.inflate(paramAnonymousView.context, 2131496305, null);
-            localObject3 = (TextView)((View)localObject4).findViewById(2131307596);
-            com.tencent.mm.ui.widget.a.e locale = paramAnonymousView.gVB;
+            paramAnonymousView.hOv = new com.tencent.mm.ui.widget.a.e(paramAnonymousView.context, 1, true);
+            Object localObject4 = View.inflate(paramAnonymousView.context, 2131495244, null);
+            localObject3 = (TextView)((View)localObject4).findViewById(2131303357);
+            com.tencent.mm.ui.widget.a.e locale = paramAnonymousView.hOv;
             if (locale != null) {
-              locale.hf((View)localObject4);
+              locale.setTitleView((View)localObject4);
             }
             p.g(localObject3, "bottomSheetTitleTv");
-            localObject4 = paramAnonymousView.gJt.getContext();
+            localObject4 = paramAnonymousView.hwr.getContext();
             p.g(localObject4, "root.context");
-            ((TextView)localObject3).setText((CharSequence)((Context)localObject4).getResources().getString(2131766577));
+            ((TextView)localObject3).setText((CharSequence)((Context)localObject4).getResources().getString(2131762265));
             label232:
-            localObject3 = paramAnonymousView.gVB;
+            localObject3 = paramAnonymousView.hOv;
             if (localObject3 != null) {
-              ((com.tencent.mm.ui.widget.a.e)localObject3).a((n.d)new i.b(paramAnonymousView, (ArrayList)localObject1, (ArrayList)localObject2));
+              ((com.tencent.mm.ui.widget.a.e)localObject3).a((o.f)new i.b(paramAnonymousView, (ArrayList)localObject1, (ArrayList)localObject2));
             }
-            localObject1 = paramAnonymousView.gVB;
+            localObject1 = paramAnonymousView.hOv;
             if (localObject1 != null) {
-              ((com.tencent.mm.ui.widget.a.e)localObject1).fQx();
+              ((com.tencent.mm.ui.widget.a.e)localObject1).hbr();
             }
-            localObject1 = paramAnonymousView.gVB;
+            localObject1 = paramAnonymousView.hOv;
             if (localObject1 != null) {
-              ((com.tencent.mm.ui.widget.a.e)localObject1).a(paramAnonymousView.gVD);
+              ((com.tencent.mm.ui.widget.a.e)localObject1).a(paramAnonymousView.hOx);
             }
-            localObject1 = paramAnonymousView.gVB;
+            localObject1 = paramAnonymousView.hOv;
             if (localObject1 != null) {
               ((com.tencent.mm.ui.widget.a.e)localObject1).b((e.b)new i.c(paramAnonymousView));
             }
-            paramAnonymousView = paramAnonymousView.gVB;
+            paramAnonymousView = paramAnonymousView.hOv;
             if (paramAnonymousView != null) {
-              paramAnonymousView.cPF();
+              paramAnonymousView.dGm();
             }
           }
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveBanCommentPlugin$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-          AppMethodBeat.o(215958);
+          AppMethodBeat.o(207920);
           return;
           localObject3 = paramAnonymousView.context;
           p.g(localObject3, "context");
-          ((ArrayList)localObject1).add(((Context)localObject3).getResources().getString(2131766639));
+          ((ArrayList)localObject1).add(((Context)localObject3).getResources().getString(2131762332));
           break;
           label390:
-          paramAnonymousView.gVB = new com.tencent.mm.ui.widget.a.e(paramAnonymousView.context, 1, false);
+          paramAnonymousView.hOv = new com.tencent.mm.ui.widget.a.e(paramAnonymousView.context, 1, false);
           break label232;
-          paramAnonymousView = com.tencent.mm.live.b.i.gRP;
-          com.tencent.mm.live.b.i.dT(true);
-          paramAnonymousView = com.tencent.mm.live.b.g.gQZ;
-          paramAnonymousView = com.tencent.mm.live.b.g.anC();
-          localObject1 = com.tencent.mm.live.b.g.gQZ;
-          long l = com.tencent.mm.live.b.g.anH().FKy;
-          localObject1 = com.tencent.mm.live.b.g.gQZ;
-          localObject1 = com.tencent.mm.live.b.g.anJ();
-          localObject2 = com.tencent.mm.live.b.g.gQZ;
-          com.tencent.mm.live.d.e.a(paramAnonymousView, l, (String)localObject1, 4, 0, com.tencent.mm.live.b.g.anH().GTv);
-          com.tencent.mm.live.d.a.apA();
-          i.a(this.gWc);
+          paramAnonymousView = r.hIg;
+          r.eF(true);
+          paramAnonymousView = x.hJf;
+          paramAnonymousView = x.aGm();
+          localObject1 = x.hJf;
+          long l = x.aGr().hyH;
+          localObject1 = x.hJf;
+          localObject1 = x.aGt();
+          localObject2 = x.hJf;
+          com.tencent.mm.live.d.e.a(paramAnonymousView, l, (String)localObject1, 4, 0, x.aGr().LIa);
+          com.tencent.mm.live.d.a.aHZ();
+          i.a(this.hOW);
         }
       }
     });
-    if ((!aoA()) && (paramViewGroup.getLayoutParams() != null) && ((paramViewGroup.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
+    if ((!isLandscape()) && (paramViewGroup.getLayoutParams() != null) && ((paramViewGroup.getLayoutParams() instanceof ViewGroup.MarginLayoutParams)))
     {
       paramb = paramViewGroup.getLayoutParams();
       if (paramb == null)
       {
-        paramViewGroup = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
-        AppMethodBeat.o(215967);
+        paramViewGroup = new kotlin.t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+        AppMethodBeat.o(207929);
         throw paramViewGroup;
       }
       paramb = (ViewGroup.MarginLayoutParams)paramb;
-      paramb.bottomMargin += ar.en(paramViewGroup.getContext());
+      paramb.bottomMargin += au.aD(paramViewGroup.getContext());
     }
-    AppMethodBeat.o(215967);
+    AppMethodBeat.o(207929);
   }
   
-  public final void a(b.c paramc, Bundle paramBundle)
+  public final void aHu()
   {
-    AppMethodBeat.i(215965);
-    p.h(paramc, "status");
-    super.a(paramc, paramBundle);
-    switch (j.cqt[paramc.ordinal()])
+    AppMethodBeat.i(207924);
+    this.hOR.setVisibility(0);
+    this.hOT.setVisibility(0);
+    this.hOU.setVisibility(8);
+    this.hOS.setClickable(true);
+    if (this.hOV)
     {
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(215965);
-      return;
-      nL(8);
-      AppMethodBeat.o(215965);
-      return;
-      nL(0);
-    }
-  }
-  
-  public final void aoO()
-  {
-    AppMethodBeat.i(215963);
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajQ();
-    p.g(localb, "MMKernel.network()");
-    localb.ajj().a(3664, (f)this);
-    AppMethodBeat.o(215963);
-  }
-  
-  public final void aoP()
-  {
-    AppMethodBeat.i(215964);
-    com.tencent.mm.kernel.b localb = com.tencent.mm.kernel.g.ajQ();
-    p.g(localb, "MMKernel.network()");
-    localb.ajj().b(3664, (f)this);
-    AppMethodBeat.o(215964);
-  }
-  
-  public final void aoV()
-  {
-    AppMethodBeat.i(215962);
-    this.gVX.setVisibility(0);
-    this.gVZ.setVisibility(0);
-    this.gWa.setVisibility(8);
-    this.gVY.setClickable(true);
-    if (this.gWb)
-    {
-      localObject = this.gVX;
-      localContext = this.gJt.getContext();
+      localObject = this.hOR;
+      localContext = this.hwr.getContext();
       p.g(localContext, "root.context");
-      ((ImageView)localObject).setImageDrawable(ao.e(localContext.getResources().getDrawable(2131691513), -1));
-      localObject = this.gVZ;
-      localContext = this.gJt.getContext();
+      ((ImageView)localObject).setImageDrawable(ar.e(localContext.getResources().getDrawable(2131690508), -1));
+      localObject = this.hOT;
+      localContext = this.hwr.getContext();
       p.g(localContext, "root.context");
-      ((TextView)localObject).setText((CharSequence)localContext.getResources().getString(2131766570));
-      AppMethodBeat.o(215962);
+      ((TextView)localObject).setText((CharSequence)localContext.getResources().getString(2131762257));
+      AppMethodBeat.o(207924);
       return;
     }
-    Object localObject = this.gVX;
-    Context localContext = this.gJt.getContext();
+    Object localObject = this.hOR;
+    Context localContext = this.hwr.getContext();
     p.g(localContext, "root.context");
-    ((ImageView)localObject).setImageDrawable(ao.e(localContext.getResources().getDrawable(2131691512), -1));
-    localObject = this.gVZ;
-    localContext = this.gJt.getContext();
+    ((ImageView)localObject).setImageDrawable(ar.e(localContext.getResources().getDrawable(2131690488), -1));
+    localObject = this.hOT;
+    localContext = this.hwr.getContext();
     p.g(localContext, "root.context");
-    ((TextView)localObject).setText((CharSequence)localContext.getResources().getString(2131766569));
-    AppMethodBeat.o(215962);
+    ((TextView)localObject).setText((CharSequence)localContext.getResources().getString(2131762256));
+    AppMethodBeat.o(207924);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void mount()
   {
-    AppMethodBeat.i(215966);
-    if ((paramn instanceof com.tencent.mm.live.b.a.i))
+    AppMethodBeat.i(207925);
+    com.tencent.mm.kernel.b localb = g.aAg();
+    p.g(localb, "MMKernel.network()");
+    localb.azz().a(3664, (com.tencent.mm.ak.i)this);
+    AppMethodBeat.o(207925);
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
+  {
+    AppMethodBeat.i(207928);
+    if ((paramq instanceof com.tencent.mm.live.b.a.i))
     {
       if ((paramInt1 != 0) || (paramInt2 != 0)) {
         break label55;
       }
-      if (this.gWb) {
+      if (this.hOV) {
         break label49;
       }
     }
     label49:
     for (boolean bool = true;; bool = false)
     {
-      this.gWb = bool;
-      aoV();
-      AppMethodBeat.o(215966);
+      this.hOV = bool;
+      aHu();
+      AppMethodBeat.o(207928);
       return;
     }
     label55:
-    if (this.gWb)
+    if (this.hOV)
     {
-      paramString = this.gJt.getContext();
+      paramString = this.hwr.getContext();
       p.g(paramString, "root.context");
     }
-    for (paramString = paramString.getResources().getString(2131766572);; paramString = paramString.getResources().getString(2131766571))
+    for (paramString = paramString.getResources().getString(2131762259);; paramString = paramString.getResources().getString(2131762258))
     {
-      t.makeText(this.gJt.getContext(), (CharSequence)paramString, 0).show();
+      p.g(paramString, "if (enableComment) {\n   …il_tip)\n                }");
+      u.makeText(this.hwr.getContext(), (CharSequence)paramString, 0).show();
       break;
-      paramString = this.gJt.getContext();
+      paramString = this.hwr.getContext();
       p.g(paramString, "root.context");
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  public final void statusChange(b.c paramc, Bundle paramBundle)
+  {
+    AppMethodBeat.i(207927);
+    p.h(paramc, "status");
+    super.statusChange(paramc, paramBundle);
+    switch (j.$EnumSwitchMapping$0[paramc.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(207927);
+      return;
+      rg(8);
+      AppMethodBeat.o(207927);
+      return;
+      rg(0);
+    }
+  }
+  
+  public final void unMount()
+  {
+    AppMethodBeat.i(207926);
+    com.tencent.mm.kernel.b localb = g.aAg();
+    p.g(localb, "MMKernel.network()");
+    localb.azz().b(3664, (com.tencent.mm.ak.i)this);
+    AppMethodBeat.o(207926);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
   static final class a
-    implements n.e
+    implements com.tencent.mm.ui.base.o.g
   {
     a(i parami) {}
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
-      AppMethodBeat.i(215960);
+      AppMethodBeat.i(207922);
       p.g(paramMenuItem, "menuItem");
       paramInt = paramMenuItem.getItemId();
-      paramMenuItem = f.f.gPX;
+      paramMenuItem = com.tencent.mm.live.b.o.g.hHa;
       Object localObject;
       long l;
-      com.tencent.mm.live.b.g localg;
-      if (paramInt == f.f.anu())
+      x localx;
+      if (paramInt == com.tencent.mm.live.b.o.g.aFF())
       {
-        if (!this.gWc.gWb) {
+        if (!this.hOW.hOV) {
           break label113;
         }
-        paramMenuItem = com.tencent.mm.live.b.i.gRP;
-        com.tencent.mm.live.b.i.dT(false);
-        paramMenuItem = com.tencent.mm.live.b.g.gQZ;
-        paramMenuItem = com.tencent.mm.live.b.g.anC();
-        localObject = com.tencent.mm.live.b.g.gQZ;
-        l = com.tencent.mm.live.b.g.anH().FKy;
-        localObject = com.tencent.mm.live.b.g.gQZ;
-        localObject = com.tencent.mm.live.b.g.anJ();
-        localg = com.tencent.mm.live.b.g.gQZ;
-        com.tencent.mm.live.d.e.a(paramMenuItem, l, (String)localObject, 4, 1, com.tencent.mm.live.b.g.anH().GTv);
-        com.tencent.mm.live.d.a.apz();
+        paramMenuItem = r.hIg;
+        r.eF(false);
+        paramMenuItem = x.hJf;
+        paramMenuItem = x.aGm();
+        localObject = x.hJf;
+        l = x.aGr().hyH;
+        localObject = x.hJf;
+        localObject = x.aGt();
+        localx = x.hJf;
+        com.tencent.mm.live.d.e.a(paramMenuItem, l, (String)localObject, 4, 1, x.aGr().LIa);
+        com.tencent.mm.live.d.a.aHY();
       }
       for (;;)
       {
-        i.a(this.gWc);
-        AppMethodBeat.o(215960);
+        i.a(this.hOW);
+        AppMethodBeat.o(207922);
         return;
         label113:
-        paramMenuItem = com.tencent.mm.live.b.i.gRP;
-        com.tencent.mm.live.b.i.dT(true);
-        paramMenuItem = com.tencent.mm.live.b.g.gQZ;
-        paramMenuItem = com.tencent.mm.live.b.g.anC();
-        localObject = com.tencent.mm.live.b.g.gQZ;
-        l = com.tencent.mm.live.b.g.anH().FKy;
-        localObject = com.tencent.mm.live.b.g.gQZ;
-        localObject = com.tencent.mm.live.b.g.anJ();
-        localg = com.tencent.mm.live.b.g.gQZ;
-        com.tencent.mm.live.d.e.a(paramMenuItem, l, (String)localObject, 4, 0, com.tencent.mm.live.b.g.anH().GTv);
-        com.tencent.mm.live.d.a.apA();
+        paramMenuItem = r.hIg;
+        r.eF(true);
+        paramMenuItem = x.hJf;
+        paramMenuItem = x.aGm();
+        localObject = x.hJf;
+        l = x.aGr().hyH;
+        localObject = x.hJf;
+        localObject = x.aGt();
+        localx = x.hJf;
+        com.tencent.mm.live.d.e.a(paramMenuItem, l, (String)localObject, 4, 0, x.aGr().LIa);
+        com.tencent.mm.live.d.a.aHZ();
       }
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
   static final class b
-    implements n.d
+    implements o.f
   {
     b(i parami, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
     
-    public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
+    public final void onCreateMMMenu(m paramm)
     {
-      AppMethodBeat.i(215961);
-      Object localObject = this.gWc.gVB;
+      AppMethodBeat.i(207923);
+      Object localObject = this.hOW.hOv;
       if (localObject != null) {
         ((com.tencent.mm.ui.widget.a.e)localObject).setFooterView(null);
       }
-      paraml.clear();
+      paramm.clear();
       int i = 0;
-      int j = ((Collection)this.gVH).size();
+      int j = ((Collection)this.hOB).size();
       while (i < j)
       {
-        localObject = this.gVI.get(i);
+        localObject = this.hOC.get(i);
         p.g(localObject, "ids[i]");
         int k = ((Number)localObject).intValue();
-        localObject = this.gWc.context;
+        localObject = this.hOW.context;
         p.g(localObject, "context");
-        paraml.a(k, ((Context)localObject).getResources().getColor(2131101209), (CharSequence)this.gVH.get(i));
+        paramm.a(k, ((Context)localObject).getResources().getColor(2131100712), (CharSequence)this.hOB.get(i));
         i += 1;
       }
-      AppMethodBeat.o(215961);
+      AppMethodBeat.o(207923);
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "onDismiss"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "onDismiss"})
   static final class c
     implements e.b
   {
@@ -365,13 +366,13 @@ public final class i
     
     public final void onDismiss()
     {
-      this.gWc.gVB = null;
+      this.hOW.hOv = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.c.i
  * JD-Core Version:    0.7.0.1
  */

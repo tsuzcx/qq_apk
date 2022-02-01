@@ -1,8 +1,8 @@
 package com.tencent.mm.live.c;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/plugin/ShareRoomsLoader;", "", "()V", "load", "", "UIcallback", "Lkotlin/Function1;", "", "Lcom/tencent/mm/live/view/adapter/ShareRoomItem;", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/ShareRoomsLoader;", "", "()V", "load", "", "UIcallback", "Lkotlin/Function1;", "", "Lcom/tencent/mm/live/view/adapter/ShareRoomItem;", "plugin-logic_release"})
 public final class bm {}
 
 

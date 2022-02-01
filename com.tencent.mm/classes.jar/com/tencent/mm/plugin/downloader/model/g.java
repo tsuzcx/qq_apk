@@ -6,170 +6,187 @@ import java.util.LinkedList;
 
 public final class g
 {
-  public String jKY = "";
-  String kwk;
-  public boolean kxt = false;
-  boolean kyF = true;
+  public String kMX = "";
+  String lAo;
+  public boolean lBG = false;
+  boolean lCY = true;
   public String mAppId = "";
   int mDownloadType = 1;
   String mFileName = "";
   long mFileSize = 0L;
   String mPackageName = "";
   int mScene = 0;
-  String pta = "";
-  String ptb = "";
-  int ptc = 1;
-  public boolean ptd = false;
-  public boolean pte = false;
-  boolean ptf = false;
-  private boolean ptg = false;
-  public boolean pth = false;
-  boolean pti = false;
-  boolean ptj = false;
-  boolean ptk = false;
-  private boolean ptl = false;
-  int ptm = 0;
-  int ptn = 0;
-  int pto = 0;
-  LinkedList<a> ptp;
-  public String ptq;
-  boolean ptt;
+  String qIE = "";
+  String qIF = "";
+  int qIG = 1;
+  public boolean qIH = false;
+  public boolean qII = false;
+  boolean qIJ = false;
+  private boolean qIK = false;
+  public boolean qIL = false;
+  boolean qIM = false;
+  boolean qIN = false;
+  boolean qIO = false;
+  boolean qIP = false;
+  int qIQ = 0;
+  int qIR = 0;
+  int qIS = 0;
+  LinkedList<a> qIT;
+  public String qIU;
+  boolean qIV;
+  String qIW;
+  String qIX;
   
   public static final class a
   {
-    public g ptu;
+    public g qIY;
     
     public a()
     {
       AppMethodBeat.i(89007);
-      this.ptu = new g((byte)0);
+      this.qIY = new g((byte)0);
       AppMethodBeat.o(89007);
     }
     
-    public final void BB(int paramInt)
+    public final void Fl(int paramInt)
     {
-      this.ptu.ptc = paramInt;
+      this.qIY.qIG = paramInt;
     }
     
-    public final void BC(int paramInt)
+    public final void Fm(int paramInt)
     {
-      this.ptu.ptm = paramInt;
+      this.qIY.qIQ = paramInt;
     }
     
-    public final void BD(int paramInt)
+    public final void Fn(int paramInt)
     {
-      this.ptu.pto = paramInt;
+      this.qIY.qIS = paramInt;
     }
     
-    public final void BE(int paramInt)
+    public final void Fo(int paramInt)
     {
-      this.ptu.ptn = paramInt;
+      this.qIY.qIR = paramInt;
     }
     
-    public final void BF(int paramInt)
+    public final void Fp(int paramInt)
     {
-      this.ptu.mDownloadType = paramInt;
+      this.qIY.mDownloadType = paramInt;
     }
     
-    public final void T(LinkedList<a> paramLinkedList)
+    public final void Rv(String paramString)
     {
-      this.ptu.ptp = paramLinkedList;
+      this.qIY.lAo = paramString;
     }
     
-    public final void abb(String paramString)
+    public final void V(LinkedList<a> paramLinkedList)
     {
-      this.ptu.jKY = paramString;
+      this.qIY.qIT = paramLinkedList;
     }
     
-    public final void abc(String paramString)
+    public final void alj(String paramString)
     {
-      this.ptu.pta = paramString;
+      this.qIY.kMX = paramString;
     }
     
-    public final void abd(String paramString)
+    public final void alk(String paramString)
     {
-      this.ptu.mFileName = paramString;
+      this.qIY.qIE = paramString;
     }
     
-    public final void abe(String paramString)
+    public final void all(String paramString)
     {
-      this.ptu.ptb = paramString;
+      this.qIY.mFileName = paramString;
     }
     
-    public final void abf(String paramString)
+    public final void alm(String paramString)
     {
-      this.ptu.kwk = paramString;
+      this.qIY.qIU = paramString;
     }
     
-    public final void abg(String paramString)
+    public final void aln(String paramString)
     {
-      this.ptu.ptq = paramString;
+      this.qIY.qIW = paramString;
     }
     
-    public final void cdI()
+    public final void alo(String paramString)
     {
-      this.ptu.pti = true;
+      this.qIY.qIX = paramString;
     }
     
-    public final void cdJ()
+    public final void cBD()
     {
-      this.ptu.ptk = true;
+      this.qIY.qIM = true;
     }
     
-    public final g cdK()
+    public final void cBE()
     {
-      return this.ptu;
+      this.qIY.qIO = true;
     }
     
-    public final void cdL()
+    public final void cBF()
     {
-      this.ptu.ptt = true;
+      this.qIY.qIP = true;
     }
     
-    public final void fz(String paramString)
+    public final g cBG()
     {
-      this.ptu.mPackageName = paramString;
+      return this.qIY;
     }
     
-    public final void jP(boolean paramBoolean)
+    public final void cBH()
     {
-      this.ptu.ptd = paramBoolean;
+      this.qIY.qIV = true;
     }
     
-    public final void jQ(boolean paramBoolean)
+    public final void gm(String paramString)
     {
-      this.ptu.kyF = paramBoolean;
+      this.qIY.mPackageName = paramString;
     }
     
-    public final void jR(boolean paramBoolean)
+    public final void kS(boolean paramBoolean)
     {
-      this.ptu.ptf = paramBoolean;
+      this.qIY.qIH = paramBoolean;
     }
     
-    public final void jS(boolean paramBoolean)
+    public final void kT(boolean paramBoolean)
     {
-      this.ptu.kxt = paramBoolean;
+      this.qIY.lCY = paramBoolean;
+    }
+    
+    public final void kU(boolean paramBoolean)
+    {
+      this.qIY.qIJ = paramBoolean;
+    }
+    
+    public final void kV(boolean paramBoolean)
+    {
+      this.qIY.lBG = paramBoolean;
     }
     
     public final void setAppId(String paramString)
     {
-      this.ptu.mAppId = paramString;
+      this.qIY.mAppId = paramString;
+    }
+    
+    public final void setFileMD5(String paramString)
+    {
+      this.qIY.qIF = paramString;
+    }
+    
+    public final void setFileSize(long paramLong)
+    {
+      this.qIY.mFileSize = paramLong;
     }
     
     public final void setScene(int paramInt)
     {
-      this.ptu.mScene = paramInt;
-    }
-    
-    public final void uz(long paramLong)
-    {
-      this.ptu.mFileSize = paramLong;
+      this.qIY.mScene = paramInt;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.model.g
  * JD-Core Version:    0.7.0.1
  */

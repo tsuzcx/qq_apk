@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.masssend.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.xp;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.yq;
+import com.tencent.mm.sdk.event.IListener;
 
 public final class i
-  extends c<xp>
+  extends IListener<yq>
 {
   public i()
   {
     AppMethodBeat.i(161393);
-    this.__eventId = xp.class.getName().hashCode();
+    this.__eventId = yq.class.getName().hashCode();
     AppMethodBeat.o(161393);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.masssend.a.i
  * JD-Core Version:    0.7.0.1
  */

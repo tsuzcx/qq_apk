@@ -1,61 +1,61 @@
 package com.tencent.mm.plugin.remittance.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.vo;
-import com.tencent.mm.protocal.protobuf.vp;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ww;
+import com.tencent.mm.protocal.protobuf.wx;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.r;
 
 public final class e
   extends r
 {
+  public wx Cos;
   private final String TAG;
-  public vp ynC;
   
   public e(String paramString)
   {
     AppMethodBeat.i(67838);
     this.TAG = "MicroMsg.NetSceneBeforeTransfer";
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new vo();
-    ((b.a)localObject).hQG = new vp();
-    ((b.a)localObject).funcId = 2783;
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/beforetransfer";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (vo)this.rr.hQD.hQJ;
-    ((vo)localObject).iWC = paramString;
-    if (!com.tencent.mm.pluginsdk.wallet.e.fjq()) {
-      ((vo)localObject).Gnp = com.tencent.mm.pluginsdk.wallet.e.fjr();
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new ww();
+    ((d.a)localObject).iLO = new wx();
+    ((d.a)localObject).funcId = 2783;
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/beforetransfer";
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (ww)this.rr.iLK.iLR;
+    ((ww)localObject).jTz = paramString;
+    if (!com.tencent.mm.pluginsdk.wallet.e.gsQ()) {
+      ((ww)localObject).LhT = com.tencent.mm.pluginsdk.wallet.e.gsR();
     }
-    ae.d("MicroMsg.NetSceneBeforeTransfer", "rcver name: %s", new Object[] { paramString });
+    Log.d("MicroMsg.NetSceneBeforeTransfer", "rcver name: %s", new Object[] { paramString });
     AppMethodBeat.o(67838);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
     AppMethodBeat.i(67839);
-    ae.i("MicroMsg.NetSceneBeforeTransfer", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.ynC = ((vp)((b)paramq).hQE.hQJ);
-    ae.i("MicroMsg.NetSceneBeforeTransfer", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.ynC.dmy), this.ynC.phe });
+    Log.i("MicroMsg.NetSceneBeforeTransfer", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.Cos = ((wx)((d)params).iLL.iLR);
+    Log.i("MicroMsg.NetSceneBeforeTransfer", "ret_code: %s, ret_msg: %s", new Object[] { Integer.valueOf(this.Cos.dDN), this.Cos.qwn });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(67839);
   }
   
-  public final void e(q paramq)
+  public final void e(s params)
   {
-    paramq = (vp)((b)paramq).hQE.hQJ;
-    this.LVj = paramq.dmy;
-    this.LVk = paramq.phe;
+    params = (wx)((d)params).iLL.iLR;
+    this.RtZ = params.dDN;
+    this.Rua = params.qwn;
   }
   
   public final int getType()

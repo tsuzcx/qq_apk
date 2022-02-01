@@ -1,128 +1,127 @@
 package com.tencent.mm.ui.chatting.viewitems;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.span.g;
-import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.l;
+import com.tencent.mm.ag.k.b;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.pluginsdk.model.app.ao;
+import com.tencent.mm.pluginsdk.model.app.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.base.m;
 import com.tencent.mm.ui.chatting.e.a;
-import com.tencent.mm.ui.widget.MMNeat7extView;
-import com.tencent.neattextview.textview.view.NeatTextView;
 
 public final class au
   extends c
 {
-  private av KCa;
-  private as KCb;
-  private aw KCc;
-  private bf KCd;
-  
-  public au()
-  {
-    AppMethodBeat.i(37376);
-    this.KCa = new av();
-    this.KCb = new as();
-    this.KCc = new aw();
-    this.KCd = new bf();
-    AppMethodBeat.o(37376);
-  }
-  
   public final View a(LayoutInflater paramLayoutInflater, View paramView)
   {
-    AppMethodBeat.i(37377);
-    View localView;
+    AppMethodBeat.i(37316);
+    Object localObject;
     if (paramView != null)
     {
-      localView = paramView;
+      localObject = paramView;
       if (paramView.getTag() != null) {}
     }
     else
     {
-      localView = paramLayoutInflater.inflate(2131493474, null);
-      paramLayoutInflater = new b();
-      paramLayoutInflater.uan = localView;
-      paramLayoutInflater.fVV = ((TextView)localView.findViewById(2131298178));
-      paramLayoutInflater.KuK = localView.findViewById(2131308258);
-      paramLayoutInflater.KCe = ((MMNeat7extView)localView.findViewById(2131298073));
-      paramLayoutInflater.KCe.setOnTouchListener(new g(paramLayoutInflater.KCe, new n(paramLayoutInflater.KCe.getContext())));
-      localView.setTag(paramLayoutInflater);
+      localObject = new an(paramLayoutInflater, 2131493570);
+      ((View)localObject).setTag(new a().hg((View)localObject));
     }
-    AppMethodBeat.o(37377);
-    return localView;
+    AppMethodBeat.o(37316);
+    return localObject;
   }
   
-  public final void a(c.a parama, int paramInt, a parama1, bv parambv, String paramString)
+  public final void a(c.a parama, int paramInt, a parama1, ca paramca, String paramString)
   {
-    AppMethodBeat.i(37378);
-    if (parambv.getType() == 10002) {
-      paramString = this.KCb;
-    }
-    for (;;)
+    AppMethodBeat.i(37317);
+    a locala = (a)parama;
+    com.tencent.mm.ag.k localk = ao.gnf().GL(paramca.field_msgId);
+    String str = paramca.field_content;
+    if ((localk != null) && (str != null))
     {
-      paramString.b(parama, paramInt, parama1, parambv);
-      AppMethodBeat.o(37378);
-      return;
-      if (parambv.getType() == 570425393) {
-        paramString = this.KCc;
-      } else if (parambv.getType() == 603979825) {
-        paramString = this.KCd;
-      } else {
-        paramString = this.KCa;
+      paramString = k.b.aD(str, paramca.field_reserved);
+      paramca = new bq(paramca, parama1.gRM(), paramInt, null, '\000');
+      if ((paramString != null) && ((paramString.dDG == 3) || (paramString.ixF == 3)))
+      {
+        locala.keC.setImageResource(2131233024);
+        locala.POc.setText(paramString.ixK);
       }
+      parama.clickArea.setOnLongClickListener(c(parama1));
+      parama.clickArea.setOnTouchListener(((com.tencent.mm.ui.chatting.d.b.k)parama1.bh(com.tencent.mm.ui.chatting.d.b.k.class)).gOC());
+      parama.clickArea.setTag(paramca);
+      AppMethodBeat.o(37317);
+      return;
+    }
+    if (localk == null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      Log.e("MicroMsg.ChattingItemHardDeviceMsgPush", "amessage:%b, %s, %d, %s", new Object[] { Boolean.valueOf(bool), str, Long.valueOf(paramca.field_msgId), paramString });
+      paramString = null;
+      break;
     }
   }
   
-  public final boolean a(MenuItem paramMenuItem, a parama, bv parambv)
+  public final boolean a(MenuItem paramMenuItem, a parama, ca paramca)
+  {
+    AppMethodBeat.i(37319);
+    paramMenuItem.getItemId();
+    AppMethodBeat.o(37319);
+    return false;
+  }
+  
+  public final boolean a(m paramm, View paramView, ca paramca)
+  {
+    AppMethodBeat.i(233909);
+    paramm.a(((bq)paramView.getTag()).position, 100, paramView.getContext().getString(2131757433), 2131690529);
+    AppMethodBeat.o(233909);
+    return false;
+  }
+  
+  public final boolean bM(int paramInt, boolean paramBoolean)
+  {
+    return paramInt == -1879048176;
+  }
+  
+  public final boolean c(View paramView, a parama, ca paramca)
   {
     return false;
   }
   
-  public final boolean a(l paraml, View paramView, bv parambv)
+  public final boolean gTT()
   {
     return false;
   }
   
-  public final boolean b(View paramView, a parama, bv parambv)
-  {
-    return false;
-  }
-  
-  public final boolean br(int paramInt, boolean paramBoolean)
-  {
-    return (paramInt == 10000) || (paramInt == 10002) || (paramInt == 570425393) || (paramInt == 64) || (paramInt == 603979825);
-  }
-  
-  protected final boolean fLy()
-  {
-    return false;
-  }
-  
-  public final boolean fLz()
-  {
-    return false;
-  }
-  
-  static abstract interface a
-  {
-    public abstract void b(c.a parama, int paramInt, a parama1, bv parambv);
-  }
-  
-  final class b
+  final class a
     extends c.a
   {
-    NeatTextView KCe;
-    View uan;
+    protected TextView POc;
+    protected ImageView keC;
     
-    b() {}
+    a() {}
+    
+    public final a hg(View paramView)
+    {
+      AppMethodBeat.i(37315);
+      super.create(paramView);
+      this.checkBox = ((CheckBox)paramView.findViewById(2131298410));
+      this.keC = ((ImageView)paramView.findViewById(2131306322));
+      this.POc = ((TextView)paramView.findViewById(2131309157));
+      AppMethodBeat.o(37315);
+      return this;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.au
  * JD-Core Version:    0.7.0.1
  */

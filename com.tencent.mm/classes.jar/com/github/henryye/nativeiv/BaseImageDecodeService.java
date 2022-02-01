@@ -101,11 +101,11 @@ public class BaseImageDecodeService
     AppMethodBeat.i(127317);
     if (this.mHttpImageStreamFetcher.accept(paramObject))
     {
-      d.baG.baI.execute(paramRunnable);
+      d.baC.baE.execute(paramRunnable);
       AppMethodBeat.o(127317);
       return;
     }
-    d.baG.baJ.execute(paramRunnable);
+    d.baC.baF.execute(paramRunnable);
     AppMethodBeat.o(127317);
   }
   
@@ -210,7 +210,7 @@ public class BaseImageDecodeService
   public Bitmap getBitmap(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(127306);
-    Bitmap localBitmap = e.sO().baO.bd(paramInt1, paramInt2);
+    Bitmap localBitmap = e.sR().baK.aX(paramInt1, paramInt2);
     AppMethodBeat.o(127306);
     return localBitmap;
   }
@@ -250,47 +250,40 @@ public class BaseImageDecodeService
   public IBitmap loadBitmapSync(Object paramObject, ImageDecodeConfig paramImageDecodeConfig)
   {
     AppMethodBeat.i(127311);
-    Object localObject = paramImageDecodeConfig;
+    ImageDecodeConfig localImageDecodeConfig = paramImageDecodeConfig;
     if (paramImageDecodeConfig == null) {
-      localObject = new ImageDecodeConfig();
+      localImageDecodeConfig = new ImageDecodeConfig();
     }
-    Iterator localIterator = this.mImageStreamFetcherList.iterator();
+    Object localObject = this.mImageStreamFetcherList.iterator();
     do
     {
-      if (!localIterator.hasNext()) {
+      if (!((Iterator)localObject).hasNext()) {
         break;
       }
-      paramImageDecodeConfig = (com.github.henryye.nativeiv.b.b)localIterator.next();
+      paramImageDecodeConfig = (com.github.henryye.nativeiv.b.b)((Iterator)localObject).next();
     } while (!paramImageDecodeConfig.accept(paramObject));
     for (;;)
     {
+      localObject = paramImageDecodeConfig;
       if (paramImageDecodeConfig == null) {
-        paramImageDecodeConfig = this.mFallbackImageStreamFetcher;
+        localObject = this.mFallbackImageStreamFetcher;
       }
-      for (;;)
+      if (localObject == null)
       {
-        if (paramImageDecodeConfig == null)
-        {
-          com.github.henryye.nativeiv.a.b.e("BaseImageDecodeService", "No fit image stream fetcher found for %s", new Object[] { paramObject.toString() });
-          AppMethodBeat.o(127311);
-          return null;
-        }
-        try
-        {
-          localObject = this.mDecodeSlave.a(paramObject.toString(), paramObject, paramImageDecodeConfig, (ImageDecodeConfig)localObject);
-          paramObject = localObject;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            com.github.henryye.nativeiv.a.b.e("BaseImageDecodeService", "ImageDecoder(%s) decode path[%s] error %s", new Object[] { paramImageDecodeConfig, paramObject.toString(), localException.toString() });
-            paramObject = null;
-          }
-        }
+        com.github.henryye.nativeiv.a.b.e("BaseImageDecodeService", "No fit image stream fetcher found for %s", new Object[] { paramObject.toString() });
         AppMethodBeat.o(127311);
-        return paramObject;
+        return null;
       }
+      paramImageDecodeConfig = this.mDecodeSlave;
+      if ((paramImageDecodeConfig == null) || (paramImageDecodeConfig.isDestroyed()))
+      {
+        com.github.henryye.nativeiv.a.b.w("BaseImageDecodeService", "BitmapDecodeSlave destroyed", new Object[0]);
+        AppMethodBeat.o(127311);
+        return null;
+      }
+      paramObject = paramImageDecodeConfig.a(paramObject.toString(), paramObject, (com.github.henryye.nativeiv.b.b)localObject, localImageDecodeConfig);
+      AppMethodBeat.o(127311);
+      return paramObject;
       paramImageDecodeConfig = null;
     }
   }
@@ -319,19 +312,12 @@ public class BaseImageDecodeService
   public void release()
   {
     AppMethodBeat.i(127305);
-    try
+    if (this.mDecodeSlave != null)
     {
-      if (this.mDecodeSlave != null)
-      {
-        this.mDecodeSlave.destroy();
-        this.mDecodeSlave = null;
-      }
-      return;
+      this.mDecodeSlave.destroy();
+      this.mDecodeSlave = null;
     }
-    finally
-    {
-      AppMethodBeat.o(127305);
-    }
+    AppMethodBeat.o(127305);
   }
   
   public void releaseBitmap(Bitmap paramBitmap)
@@ -383,7 +369,7 @@ public class BaseImageDecodeService
   public void setMaxDecodeDimension(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(127323);
-    this.mDecodeSlave.bc(paramInt1, paramInt2);
+    this.mDecodeSlave.aW(paramInt1, paramInt2);
     AppMethodBeat.o(127323);
   }
   
@@ -396,8 +382,8 @@ public class BaseImageDecodeService
       AppMethodBeat.o(127324);
       return;
     }
-    locala.bbx = paramInt1;
-    locala.bby = paramInt2;
+    locala.bbs = paramInt1;
+    locala.bbt = paramInt2;
     com.github.henryye.nativeiv.a.b.i("NativeImageHttpFetcher", "Http Timeout Set: connection[%d] read[%d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(127324);
   }
@@ -444,38 +430,38 @@ public class BaseImageDecodeService
   static final class c
     implements Runnable
   {
-    private Object baq;
-    private ImageDecodeConfig bar;
-    private WeakReference<BaseImageDecodeService> bas;
-    private final BaseImageDecodeService.b bat;
-    private volatile boolean tX;
+    private Object bam;
+    private ImageDecodeConfig ban;
+    private WeakReference<BaseImageDecodeService> bao;
+    private final BaseImageDecodeService.b bap;
+    private volatile boolean ue;
     
     c(BaseImageDecodeService paramBaseImageDecodeService, Object paramObject, ImageDecodeConfig paramImageDecodeConfig)
     {
       AppMethodBeat.i(127302);
-      this.tX = false;
-      this.bat = new BaseImageDecodeService.b();
-      this.baq = paramObject;
-      this.bar = paramImageDecodeConfig;
-      this.bas = new WeakReference(paramBaseImageDecodeService);
+      this.ue = false;
+      this.bap = new BaseImageDecodeService.b();
+      this.bam = paramObject;
+      this.ban = paramImageDecodeConfig;
+      this.bao = new WeakReference(paramBaseImageDecodeService);
       AppMethodBeat.o(127302);
     }
     
     public final void run()
     {
       AppMethodBeat.i(127303);
-      if (this.tX)
+      if (this.ue)
       {
         AppMethodBeat.o(127303);
         return;
       }
-      if (this.bas.get() == null)
+      if (this.bao.get() == null)
       {
         AppMethodBeat.o(127303);
         return;
       }
-      IBitmap localIBitmap = ((BaseImageDecodeService)this.bas.get()).loadBitmapSync(this.baq, this.bar);
-      if (this.tX)
+      IBitmap localIBitmap = ((BaseImageDecodeService)this.bao.get()).loadBitmapSync(this.bam, this.ban);
+      if (this.ue)
       {
         if (localIBitmap != null) {
           localIBitmap.recycle();
@@ -483,14 +469,14 @@ public class BaseImageDecodeService
         AppMethodBeat.o(127303);
         return;
       }
-      ((BaseImageDecodeService)this.bas.get()).mCompactDecodeEventListener.a(this.baq.toString(), localIBitmap, this.bat, this.bar);
+      ((BaseImageDecodeService)this.bao.get()).mCompactDecodeEventListener.a(this.bam.toString(), localIBitmap, this.bap, this.ban);
       AppMethodBeat.o(127303);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.github.henryye.nativeiv.BaseImageDecodeService
  * JD-Core Version:    0.7.0.1
  */

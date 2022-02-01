@@ -5,7 +5,7 @@ public final class p
 {
   public p()
   {
-    this.Ony = 270;
+    this.Ucx = 270;
   }
 }
 

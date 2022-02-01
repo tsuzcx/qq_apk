@@ -9,8 +9,8 @@ public class Location
   implements Parcelable
 {
   public static final Parcelable.Creator<Location> CREATOR;
-  public final float dBu;
-  public final float dzE;
+  public final float dTj;
+  public final float latitude;
   
   static
   {
@@ -21,15 +21,15 @@ public class Location
   
   public Location(float paramFloat1, float paramFloat2)
   {
-    this.dzE = paramFloat1;
-    this.dBu = paramFloat2;
+    this.latitude = paramFloat1;
+    this.dTj = paramFloat2;
   }
   
   protected Location(Parcel paramParcel)
   {
     AppMethodBeat.i(169196);
-    this.dzE = paramParcel.readFloat();
-    this.dBu = paramParcel.readFloat();
+    this.latitude = paramParcel.readFloat();
+    this.dTj = paramParcel.readFloat();
     AppMethodBeat.o(169196);
   }
   
@@ -41,14 +41,14 @@ public class Location
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(169197);
-    paramParcel.writeFloat(this.dzE);
-    paramParcel.writeFloat(this.dBu);
+    paramParcel.writeFloat(this.latitude);
+    paramParcel.writeFloat(this.dTj);
     AppMethodBeat.o(169197);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.location.Location
  * JD-Core Version:    0.7.0.1
  */

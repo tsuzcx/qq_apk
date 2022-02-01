@@ -5,41 +5,43 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.dd;
-import com.tencent.mm.g.a.dd.a;
-import com.tencent.mm.g.a.oc;
-import com.tencent.mm.model.az;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.a.dg;
+import com.tencent.mm.g.a.dg.a;
+import com.tencent.mm.g.a.ou;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.c.d;
 import com.tencent.mm.pluginsdk.wallet.e;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storagebase.h.b;
 import com.tencent.mm.wallet_core.d.a;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
 public class a
-  implements az
+  implements bd
 {
-  private d.a DFR;
-  private c<dd> DFS;
-  private c<oc> DFT;
+  private d.a Ipd;
+  private IListener<dg> Ipe;
+  private IListener<ou> Ipf;
   
   public a()
   {
     AppMethodBeat.i(71678);
-    this.DFS = new c()
+    this.Ipe = new IListener()
     {
-      private boolean a(final dd paramAnonymousdd)
+      private boolean a(final dg paramAnonymousdg)
       {
         AppMethodBeat.i(71674);
-        final dd.a locala = paramAnonymousdd.doX;
+        final dg.a locala = paramAnonymousdg.dGm;
         Object localObject1 = new HashMap();
-        if (!bu.isNullOrNil(locala.packageExt))
+        if (!Util.isNullOrNil(locala.packageExt))
         {
           localObject2 = locala.packageExt.split("&");
           if ((localObject2 != null) && (localObject2.length > 0))
@@ -47,10 +49,10 @@ public class a
             int i = 0;
             while (i < localObject2.length)
             {
-              if (!bu.isNullOrNil(localObject2[i]))
+              if (!Util.isNullOrNil(localObject2[i]))
               {
                 String[] arrayOfString = localObject2[i].split("=");
-                if ((arrayOfString.length == 2) && (!bu.isNullOrNil(arrayOfString[0]))) {
+                if ((arrayOfString.length == 2) && (!Util.isNullOrNil(arrayOfString[0]))) {
                   ((HashMap)localObject1).put(arrayOfString[0], arrayOfString[1]);
                 }
               }
@@ -59,46 +61,46 @@ public class a
           }
         }
         Object localObject2 = (String)((HashMap)localObject1).get("extradata");
-        ae.i("MicroMsg.SubCoreECard", "start openECard, extraData: %s, packageExt: %s", new Object[] { localObject2, localObject1 });
-        localObject1 = new d(locala.appId, locala.cVJ, locala.nonceStr, locala.packageExt, locala.signType, locala.signature, locala.doZ, 15, "openECard", locala.dpc);
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajQ().gDv.a(580, new f()
+        Log.i("MicroMsg.SubCoreECard", "start openECard, extraData: %s, packageExt: %s", new Object[] { localObject2, localObject1 });
+        localObject1 = new d(locala.appId, locala.dmc, locala.nonceStr, locala.packageExt, locala.signType, locala.signature, locala.dGo, 15, "openECard", locala.payChannel);
+        g.aAi();
+        g.aAg().hqi.a(580, new i()
         {
-          public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
+          public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, q paramAnonymous2q)
           {
             AppMethodBeat.i(71673);
-            com.tencent.mm.kernel.g.ajS();
-            com.tencent.mm.kernel.g.ajQ().gDv.b(580, this);
+            g.aAi();
+            g.aAg().hqi.b(580, this);
             if ((paramAnonymous2Int1 == 0) && (paramAnonymous2Int2 == 0))
             {
-              ae.i("MicroMsg.SubCoreECard", "jsapi check success");
-              e.aPm(((d)paramAnonymous2n).eIm());
-              paramAnonymous2String = (Context)locala.aWN.get();
+              Log.i("MicroMsg.SubCoreECard", "jsapi check success");
+              e.bfP(((d)paramAnonymous2q).fPP());
+              paramAnonymous2String = (Context)locala.aWF.get();
               if ((paramAnonymous2String != null) && ((paramAnonymous2String instanceof Activity)))
               {
-                a.a(a.this, new a.a(a.this, paramAnonymousdd));
-                com.tencent.mm.plugin.wallet_ecard.a.b.a(bu.getInt(paramAnonymousdd.doX.dpb, 0), paramAnonymousdd.doX.token, paramAnonymousdd.doX.dpa, this.DFX, paramAnonymous2String, a.a(a.this));
+                a.a(a.this, new a.a(a.this, paramAnonymousdg));
+                com.tencent.mm.plugin.wallet_ecard.a.b.a(Util.getInt(paramAnonymousdg.dGm.dGq, 0), paramAnonymousdg.dGm.token, paramAnonymousdg.dGm.dGp, this.Ipj, paramAnonymous2String, a.a(a.this));
                 AppMethodBeat.o(71673);
                 return;
               }
-              paramAnonymousdd.doY.retCode = -1;
-              paramAnonymousdd.doX.callback.run();
+              paramAnonymousdg.dGn.retCode = -1;
+              paramAnonymousdg.dGm.callback.run();
               AppMethodBeat.o(71673);
               return;
             }
-            ae.e("MicroMsg.SubCoreECard", "jsapi check fail");
-            paramAnonymousdd.doY.retCode = -1;
-            paramAnonymousdd.doX.callback.run();
+            Log.e("MicroMsg.SubCoreECard", "jsapi check fail");
+            paramAnonymousdg.dGn.retCode = -1;
+            paramAnonymousdg.dGm.callback.run();
             AppMethodBeat.o(71673);
           }
         });
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajQ().gDv.a((n)localObject1, 0);
+        g.aAi();
+        g.aAg().hqi.a((q)localObject1, 0);
         AppMethodBeat.o(71674);
         return false;
       }
     };
-    this.DFT = new c() {};
+    this.Ipf = new IListener() {};
     AppMethodBeat.o(71678);
   }
   
@@ -112,16 +114,16 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(71679);
-    this.DFS.alive();
-    this.DFT.alive();
+    this.Ipe.alive();
+    this.Ipf.alive();
     AppMethodBeat.o(71679);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(71680);
-    this.DFS.dead();
-    this.DFT.dead();
+    this.Ipe.dead();
+    this.Ipf.dead();
     AppMethodBeat.o(71680);
   }
   
@@ -130,36 +132,36 @@ public class a
   final class a
     implements d.a
   {
-    private dd DFZ;
+    private dg Ipl;
     
-    public a(dd paramdd)
+    public a(dg paramdg)
     {
-      this.DFZ = paramdd;
+      this.Ipl = paramdg;
     }
     
-    public final Intent s(int paramInt, Bundle paramBundle)
+    public final Intent q(int paramInt, Bundle paramBundle)
     {
       AppMethodBeat.i(71677);
-      ae.i("MicroMsg.SubCoreECard", "open process end: %s", new Object[] { Integer.valueOf(paramInt) });
+      Log.i("MicroMsg.SubCoreECard", "open process end: %s", new Object[] { Integer.valueOf(paramInt) });
       if (paramInt == -1)
       {
-        this.DFZ.doY.retCode = 0;
-        com.tencent.mm.plugin.report.service.g.yxI.f(14954, new Object[] { e.fjr(), "openEcard:ok" });
+        this.Ipl.dGn.retCode = 0;
+        h.CyF.a(14954, new Object[] { e.gsR(), "openEcard:ok" });
       }
       for (;;)
       {
-        this.DFZ.doX.callback.run();
-        if (!e.fjq()) {
-          e.fjs();
+        this.Ipl.dGm.callback.run();
+        if (!e.gsQ()) {
+          e.gsS();
         }
         a.a(a.this, null);
         Intent localIntent = new Intent();
         localIntent.putExtras(paramBundle);
         AppMethodBeat.o(71677);
         return localIntent;
-        this.DFZ.doY.retCode = -1;
-        if (!e.fjq()) {
-          com.tencent.mm.plugin.report.service.g.yxI.f(14954, new Object[] { e.fjr(), "openEcard:fail" });
+        this.Ipl.dGn.retCode = -1;
+        if (!e.gsQ()) {
+          h.CyF.a(14954, new Object[] { e.gsR(), "openEcard:fail" });
         }
       }
     }

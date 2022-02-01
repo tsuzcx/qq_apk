@@ -1,12 +1,14 @@
 package com.tencent.mm.plugin.chatroom;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.ad;
+import com.tencent.mm.model.ap;
+import com.tencent.mm.n.f;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.ai;
 import com.tencent.mm.storagebase.h;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
@@ -16,17 +18,17 @@ public final class a
   implements com.tencent.mm.kernel.api.bucket.a, com.tencent.mm.kernel.api.c, com.tencent.mm.kernel.c.a, com.tencent.mm.plugin.chatroom.a.c
 {
   private boolean isDebugMode;
-  private ad oYe;
-  private HashMap<String, Boolean> oYf;
+  private ai qnb;
+  private HashMap<String, Boolean> qnc;
   
   public a()
   {
     AppMethodBeat.i(116862);
-    this.oYf = new HashMap();
+    this.qnc = new HashMap();
     AppMethodBeat.o(116862);
   }
   
-  public final boolean aar(String paramString)
+  public final boolean akx(String paramString)
   {
     AppMethodBeat.i(116864);
     if (this.isDebugMode)
@@ -39,28 +41,28 @@ public final class a
     {
       try
       {
-        if (this.oYf.containsKey(paramString))
+        if (this.qnc.containsKey(paramString))
         {
-          bool = ((Boolean)this.oYf.get(paramString)).booleanValue();
+          bool = ((Boolean)this.qnc.get(paramString)).booleanValue();
           AppMethodBeat.o(116864);
           return bool;
         }
-        ac localac = this.oYe.Bx(paramString);
-        if ((localac.field_chatroomStatus & 0x4000) != 0L)
+        ah localah = this.qnb.Kd(paramString);
+        if ((localah.field_chatroomStatus & 0x4000) != 0L)
         {
           bool = true;
-          int i = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getInt("ChatRoomAdminSwitch", -1);
-          int j = ((com.tencent.mm.plugin.zero.b.a)g.ab(com.tencent.mm.plugin.zero.b.a.class)).acL().getInt("ChatRoomAdminMinMemberCount", -1);
-          ae.i("MicroMsg.ChatroomService", "[isEnableRoomManager] chatroomName:%s isStatusEnable:%s switchFlag:%s minCount:%d memberCount:%d", new Object[] { paramString, Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localac.aGE().size()) });
+          int i = ((com.tencent.mm.plugin.zero.b.a)g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getInt("ChatRoomAdminSwitch", -1);
+          int j = ((com.tencent.mm.plugin.zero.b.a)g.af(com.tencent.mm.plugin.zero.b.a.class)).aqJ().getInt("ChatRoomAdminMinMemberCount", -1);
+          Log.i("MicroMsg.ChatroomService", "[isEnableRoomManager] chatroomName:%s isStatusEnable:%s switchFlag:%s minCount:%d memberCount:%d", new Object[] { paramString, Boolean.valueOf(bool), Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(localah.bax().size()) });
           if (i > 0)
           {
             if (bool) {
               break label255;
             }
-            if (j <= localac.aGE().size())
+            if (j <= localah.bax().size())
             {
               break label255;
-              this.oYf.put(paramString, Boolean.valueOf(bool));
+              this.qnc.put(paramString, Boolean.valueOf(bool));
               AppMethodBeat.o(116864);
               return bool;
             }
@@ -77,17 +79,17 @@ public final class a
       }
       catch (Exception paramString)
       {
-        ae.printErrStackTrace("MicroMsg.ChatroomService", paramString, "[isEnableRoomManager]", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ChatroomService", paramString, "[isEnableRoomManager]", new Object[0]);
         AppMethodBeat.o(116864);
         return false;
       }
     }
   }
   
-  public final al b(h paramh)
+  public final ap b(h paramh)
   {
     AppMethodBeat.i(116863);
-    paramh = new ad(paramh);
+    paramh = new ai(paramh);
     AppMethodBeat.o(116863);
     return paramh;
   }
@@ -100,7 +102,7 @@ public final class a
     {
       public final String[] getSQLs()
       {
-        return ad.SQL_CREATE;
+        return ai.SQL_CREATE;
       }
     });
     AppMethodBeat.o(116865);
@@ -110,7 +112,7 @@ public final class a
   public final void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(116866);
-    this.oYe = new ad(g.ajR().gDX);
+    this.qnb = new ai(g.aAh().hqK);
     AppMethodBeat.o(116866);
   }
   
@@ -123,7 +125,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.chatroom.a
  * JD-Core Version:    0.7.0.1
  */

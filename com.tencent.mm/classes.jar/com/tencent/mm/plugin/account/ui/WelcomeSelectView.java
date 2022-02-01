@@ -9,29 +9,27 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.bq.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bu;
+import com.tencent.mm.model.bu.a;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 public class WelcomeSelectView
   extends WelcomeView
 {
   private Context context;
-  protected View joC;
-  protected Button juo;
-  protected Button jup;
-  protected TextView juq;
+  protected View kmM;
+  protected Button ksD;
+  protected Button ksE;
+  protected TextView ksF;
   
   public WelcomeSelectView(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(128823);
-    aN(paramContext);
+    bh(paramContext);
     AppMethodBeat.o(128823);
   }
   
@@ -40,40 +38,40 @@ public class WelcomeSelectView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(128822);
-    aN(paramContext);
+    bh(paramContext);
     AppMethodBeat.o(128822);
   }
   
-  private void aN(Context paramContext)
+  private void bh(Context paramContext)
   {
     AppMethodBeat.i(128826);
     this.context = paramContext;
-    View localView = LayoutInflater.from(paramContext).inflate(2131496101, this);
-    this.joC = localView.findViewById(2131304522);
-    this.juo = ((Button)localView.findViewById(2131304521));
-    this.jup = ((Button)localView.findViewById(2131304531));
-    this.juq = ((TextView)localView.findViewById(2131306968));
-    this.joC.setVisibility(8);
-    this.juq.setVisibility(8);
-    this.juq.setText(ad.iS(paramContext));
+    View localView = LayoutInflater.from(paramContext).inflate(2131497089, this);
+    this.kmM = localView.findViewById(2131307537);
+    this.ksD = ((Button)localView.findViewById(2131307536));
+    this.ksE = ((Button)localView.findViewById(2131307554));
+    this.ksF = ((TextView)localView.findViewById(2131310468));
+    this.kmM.setVisibility(8);
+    this.ksF.setVisibility(8);
+    this.ksF.setText(LocaleUtil.getLanguageName(paramContext, 2130903056, 2131755881));
     AppMethodBeat.o(128826);
   }
   
-  public final void aVn()
+  public final void bpY()
   {
     AppMethodBeat.i(128827);
-    cB(this.joC);
-    cB(this.juq);
-    this.joC.setVisibility(0);
-    this.juq.setVisibility(0);
-    ar.f(new Runnable()
+    cs(this.kmM);
+    cs(this.ksF);
+    this.kmM.setVisibility(0);
+    this.ksF.setVisibility(0);
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(128821);
-        g.ajj().a(new bq(new bq.a()
+        com.tencent.mm.kernel.g.azz().a(new bu(new bu.a()
         {
-          public final void a(e paramAnonymous2e) {}
+          public final void a(com.tencent.mm.network.g paramAnonymous2g) {}
         }, "launch normal"), 0);
         AppMethodBeat.o(128821);
       }
@@ -91,19 +89,19 @@ public class WelcomeSelectView
   final void init()
   {
     AppMethodBeat.i(128825);
-    String str = ad.g(this.context.getSharedPreferences(ak.fow(), 0));
-    this.juq.setText(ad.iS(this.context));
+    String str = LocaleUtil.loadApplicationLanguageSettings(this.context.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0), this.context);
+    this.ksF.setText(LocaleUtil.getLanguageName(this.context, 2130903056, 2131755881));
     if ((str != null) && (str.equals("language_default"))) {
-      this.juq.setText(this.context.getString(2131760773));
+      this.ksF.setText(this.context.getString(2131762524));
     }
-    this.juo.setText(2131760346);
-    this.jup.setText(2131760345);
+    this.ksD.setText(2131761791);
+    this.ksE.setText(2131761790);
     AppMethodBeat.o(128825);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.ui.WelcomeSelectView
  * JD-Core Version:    0.7.0.1
  */

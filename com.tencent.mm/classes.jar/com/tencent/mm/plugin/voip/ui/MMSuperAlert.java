@@ -9,25 +9,25 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.activities.HellActivity;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.base.h;
 
 @com.tencent.mm.ui.base.a(3)
 public class MMSuperAlert
   extends HellActivity
 {
-  public static void ak(Context paramContext, int paramInt)
+  public static void at(Context paramContext, int paramInt)
   {
     AppMethodBeat.i(115307);
     Object localObject = new Intent(paramContext, MMSuperAlert.class);
-    ((Intent)localObject).putExtra("MMSuperAlert_title", 2131755906);
+    ((Intent)localObject).putExtra("MMSuperAlert_title", 2131755998);
     ((Intent)localObject).putExtra("MMSuperAlert_msg", paramInt);
     ((Intent)localObject).putExtra("MMSuperAlert_cancelable", false);
     ((Intent)localObject).setFlags(268435456);
-    localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/voip/ui/MMSuperAlert", "show", "(Landroid/content/Context;IIZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+    localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+    com.tencent.mm.hellhoundlib.a.a.a(paramContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/voip/ui/MMSuperAlert", "show", "(Landroid/content/Context;IIZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/voip/ui/MMSuperAlert", "show", "(Landroid/content/Context;IIZ)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(115307);
   }
@@ -35,9 +35,9 @@ public class MMSuperAlert
   public Resources getResources()
   {
     AppMethodBeat.i(115308);
-    if ((getAssets() != null) && (ak.getResources() != null))
+    if ((getAssets() != null) && (MMApplicationContext.getResources() != null))
     {
-      localResources = ak.getResources();
+      localResources = MMApplicationContext.getResources();
       AppMethodBeat.o(115308);
       return localResources;
     }
@@ -50,11 +50,11 @@ public class MMSuperAlert
   {
     AppMethodBeat.i(115306);
     super.onCreate(paramBundle);
-    setContentView(2131494906);
+    setContentView(2131495645);
     final int i = getIntent().getIntExtra("MMSuperAlert_msg", 0);
     final int j = getIntent().getIntExtra("MMSuperAlert_title", 0);
     final boolean bool = getIntent().getBooleanExtra("MMSuperAlert_cancelable", true);
-    new aq().postDelayed(new Runnable()
+    new MMHandler().postDelayed(new Runnable()
     {
       public final void run()
       {

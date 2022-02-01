@@ -8,6 +8,8 @@ import com.tencent.tav.coremedia.TextureInfo;
 public abstract interface IVideoDecoder
   extends IDecoder
 {
+  public abstract long getPreReadCost();
+  
   public abstract TextureInfo getTextureInfo();
   
   public abstract void init(String paramString, CGSize paramCGSize, IDecoderTrack.SurfaceCreator paramSurfaceCreator);
@@ -26,7 +28,7 @@ public abstract interface IVideoDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.decoder.IVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -5,15 +5,15 @@ import android.view.View;
 
 public abstract interface g
 {
-  public abstract g.a CE();
+  public abstract a Ma();
   
   public abstract void a(g.b paramb);
   
-  public abstract void aw(Context paramContext);
-  
-  public abstract void cQ(String paramString);
+  public abstract void aF(Context paramContext);
   
   public abstract void destroy();
+  
+  public abstract void dp(String paramString);
   
   public abstract View getView();
   
@@ -24,10 +24,15 @@ public abstract interface g
   public abstract void setTranslationY(float paramFloat);
   
   public abstract void setVisibility(int paramInt);
+  
+  public static abstract interface a
+  {
+    public abstract void Mb();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.luggage.game.c.g
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.os.Bundle;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class kv
-  extends b
+  extends IEvent
 {
-  public a dyW;
-  public b dyX;
+  public a dPV;
   
   public kv()
   {
@@ -17,30 +16,23 @@ public final class kv
   
   private kv(byte paramByte)
   {
-    AppMethodBeat.i(208247);
-    this.dyW = new a();
-    this.dyX = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(114792);
+    this.dPV = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(208247);
+    AppMethodBeat.o(114792);
   }
   
   public static final class a
   {
-    public Runnable cEv;
-    public Bundle dyY;
-    public String dyZ;
-    public int type = 0;
-  }
-  
-  public static final class b
-  {
-    public Bundle dza;
+    public Context dPW;
+    public long dPX;
+    public boolean dPY;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.kv
  * JD-Core Version:    0.7.0.1
  */

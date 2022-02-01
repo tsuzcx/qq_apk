@@ -12,71 +12,71 @@ import android.view.WindowManager.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.protocal.protobuf.dpa;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.i;
 
 public final class d
   extends i
 {
-  private View BQb;
-  private View BQc;
-  private View BQo;
-  private View BQp;
+  private View GqJ;
+  private View GqK;
+  private View GqW;
+  private View GqX;
   private View contentView;
   
-  public d(Context paramContext, final dpa paramdpa, final a parama)
+  public d(Context paramContext, final eiw parameiw, final a parama)
   {
-    super(paramContext, 2131821484);
+    super(paramContext, 2131821530);
     AppMethodBeat.i(126644);
-    this.contentView = LayoutInflater.from(paramContext).inflate(2131495796, null, false);
-    this.BQb = this.contentView.findViewById(2131302465);
-    this.BQc = this.contentView.findViewById(2131302484);
-    this.BQo = this.contentView.findViewById(2131306192);
-    this.BQp = this.contentView.findViewById(2131299865);
-    this.BQo.setOnClickListener(new View.OnClickListener()
+    this.contentView = LayoutInflater.from(paramContext).inflate(2131496754, null, false);
+    this.GqJ = this.contentView.findViewById(2131304875);
+    this.GqK = this.contentView.findViewById(2131304909);
+    this.GqW = this.contentView.findViewById(2131309586);
+    this.GqX = this.contentView.findViewById(2131300545);
+    this.GqW.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(126641);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/topstory/ui/widget/MorePopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        ae.i("MicroMsg.TopStory.MorePopupWindow", "onClick unlike");
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/topstory/ui/widget/MorePopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        Log.i("MicroMsg.TopStory.MorePopupWindow", "onClick unlike");
         if (parama != null) {
-          parama.e(paramdpa);
+          parama.e(parameiw);
         }
         a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/MorePopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(126641);
       }
     });
-    this.BQp.setOnClickListener(new View.OnClickListener()
+    this.GqX.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(126642);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/topstory/ui/widget/MorePopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        ae.i("MicroMsg.TopStory.MorePopupWindow", "onClick favorite");
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/topstory/ui/widget/MorePopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        Log.i("MicroMsg.TopStory.MorePopupWindow", "onClick favorite");
         if (parama != null) {
-          parama.f(paramdpa);
+          parama.f(parameiw);
         }
         a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/MorePopupWindow$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(126642);
       }
     });
-    this.BQp.setOnLongClickListener(new View.OnLongClickListener()
+    this.GqX.setOnLongClickListener(new View.OnLongClickListener()
     {
       public final boolean onLongClick(View paramAnonymousView)
       {
         AppMethodBeat.i(164130);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/topstory/ui/widget/MorePopupWindow$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
-        ae.i("MicroMsg.TopStory.MorePopupWindow", "onLongClick favorite");
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/topstory/ui/widget/MorePopupWindow$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+        Log.i("MicroMsg.TopStory.MorePopupWindow", "onLongClick favorite");
         if (parama != null) {
-          parama.g(paramdpa);
+          parama.g(parameiw);
         }
         a.a(false, this, "com/tencent/mm/plugin/topstory/ui/widget/MorePopupWindow$3", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(164130);
@@ -106,8 +106,8 @@ public final class d
     paramView = e.a(paramView.getContext(), paramView, this.contentView, paramBoolean);
     if (paramBoolean)
     {
-      this.BQc.setVisibility(0);
-      this.BQb.setVisibility(8);
+      this.GqK.setVisibility(0);
+      this.GqJ.setVisibility(8);
     }
     for (;;)
     {
@@ -124,18 +124,18 @@ public final class d
       localWindow.setAttributes(localLayoutParams);
       AppMethodBeat.o(126645);
       return;
-      this.BQc.setVisibility(8);
-      this.BQb.setVisibility(0);
+      this.GqK.setVisibility(8);
+      this.GqJ.setVisibility(0);
     }
   }
   
   public static abstract interface a
   {
-    public abstract void e(dpa paramdpa);
+    public abstract void e(eiw parameiw);
     
-    public abstract void f(dpa paramdpa);
+    public abstract void f(eiw parameiw);
     
-    public abstract void g(dpa paramdpa);
+    public abstract void g(eiw parameiw);
     
     public abstract void onDismiss();
   }

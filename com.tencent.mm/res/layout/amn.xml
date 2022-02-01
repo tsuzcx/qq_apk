@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" style="@style/lz">
+        <ImageView android:src="@drawable/bdv" style="@style/k6" />
+        <TextView android:text="即将连接Wi-Fi" style="@style/k8" />
+        <TextView android:id="@id/d_p" android:text="本Wi-Fi由星巴克提供" style="@style/k7" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip">
+        <Button android:textSize="14.0dip" android:textColor="@color/Brand" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/d_q" android:background="@drawable/a4y" android:layout_width="136.0dip" android:layout_height="30.0dip" android:layout_marginBottom="60.0dip" android:minHeight="@dimen/im" android:text="确认" />
+        <LinearLayout android:gravity="center" style="@style/nl">
+            <TextView android:text="@string/diq" style="@style/kk" />
+            <Button android:id="@id/d_r" android:layout_height="20.0dip" android:text="@string/dit" style="@style/kj" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:layout_marginTop="0.0dip" style="@style/nl">
+        <TextView android:textSize="10.0dip" android:text="@string/dis" style="@style/kk" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="28.0dip" />
+</LinearLayout>

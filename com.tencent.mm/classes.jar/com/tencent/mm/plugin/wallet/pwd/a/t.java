@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.wallet.pwd.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.q;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.util.HashMap;
 import org.json.JSONObject;
@@ -10,26 +10,26 @@ import org.json.JSONObject;
 public final class t
   extends m
 {
-  public String DcL;
-  public int DcM;
-  public int DcN;
-  public int DcO;
-  public String dGY;
-  public String dOf;
+  public int HIA;
+  public int HIB;
+  public int HIC;
+  public String HIz;
+  public String dYK;
+  public String ega;
   public String packageName;
   public int scene;
   
   public t(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(69576);
-    this.DcN = -1;
+    this.HIB = -1;
     this.scene = -1;
     this.packageName = "";
-    this.DcO = -1;
-    this.dGY = "";
-    this.DcL = paramString1;
-    this.DcM = paramInt;
-    this.dOf = paramString2;
+    this.HIC = -1;
+    this.dYK = "";
+    this.HIz = paramString1;
+    this.HIA = paramInt;
+    this.ega = paramString2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("cre_id", q.encode(paramString1));
     localHashMap.put("cre_type", q.encode(String.valueOf(paramInt)));
@@ -57,23 +57,23 @@ public final class t
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(69577);
-    ae.i("MicroMsg.NetSceneVerifyUserRealNameInfo", "onGYNetEnd, errCode: %s, errMsg: %s, json: %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
+    Log.i("MicroMsg.NetSceneVerifyUserRealNameInfo", "onGYNetEnd, errCode: %s, errMsg: %s, json: %s", new Object[] { Integer.valueOf(paramInt), paramString, paramJSONObject });
     if (paramInt == 0)
     {
       paramJSONObject.optString("retcode");
       paramJSONObject.optString("retmsg");
-      this.DcN = paramJSONObject.optInt("is_support_face", 0);
+      this.HIB = paramJSONObject.optInt("is_support_face", 0);
       this.scene = paramJSONObject.optInt("scene", 0);
       this.packageName = paramJSONObject.optString("package");
-      this.DcO = paramJSONObject.optInt("is_need_cert");
-      this.dGY = paramJSONObject.optString("packagesign");
+      this.HIC = paramJSONObject.optInt("is_need_cert");
+      this.dYK = paramJSONObject.optString("packagesign");
     }
     AppMethodBeat.o(69577);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.a.t
  * JD-Core Version:    0.7.0.1
  */

@@ -17,31 +17,29 @@ import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.al.o;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.au.a;
-import com.tencent.mm.model.au.c;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ap;
+import com.tencent.mm.model.ay.a;
+import com.tencent.mm.model.ay.c;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.x;
-import com.tencent.mm.plugin.messenger.foundation.a.a.l;
+import com.tencent.mm.model.z;
 import com.tencent.mm.pluginsdk.ui.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.cb;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.ci;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MaskLayout;
 import com.tencent.mm.ui.base.MaskLayout.a;
-import com.tencent.mm.ui.tools.r.b;
+import com.tencent.mm.ui.tools.s.b;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -50,32 +48,32 @@ import java.util.List;
 public class AtSomeoneUI
   extends MMActivity
 {
-  private static boolean JPb = false;
-  private a JSZ;
-  private ac fNS;
-  private String fUG;
-  private String fUH;
-  private com.tencent.mm.ui.tools.r fUI;
-  private ListView jsM;
+  private static boolean Pah = false;
+  private a Pee;
+  private ah gtd;
+  private String gzN;
+  private String gzO;
+  private com.tencent.mm.ui.tools.s gzP;
+  private ListView krb;
   private String mTitle;
   private String talker;
   
-  protected static String a(ac paramac, String paramString)
+  public static String a(ah paramah, String paramString)
   {
     AppMethodBeat.i(34253);
-    if (paramac == null)
+    if (paramah == null)
     {
       AppMethodBeat.o(34253);
       return null;
     }
-    paramac = paramac.zP(paramString);
+    paramah = paramah.getDisplayName(paramString);
     AppMethodBeat.o(34253);
-    return paramac;
+    return paramah;
   }
   
   public int getLayoutId()
   {
-    return 2131493116;
+    return 2131493158;
   }
   
   public void initView()
@@ -94,32 +92,36 @@ public class AtSomeoneUI
         return true;
       }
     });
-    this.fUI = new com.tencent.mm.ui.tools.r((byte)0);
-    this.fUI.Lhk = new r.b()
+    this.gzP = new com.tencent.mm.ui.tools.s((byte)0);
+    this.gzP.Qwi = new s.b()
     {
-      public final boolean JO(String paramAnonymousString)
+      public final boolean SN(String paramAnonymousString)
       {
         return false;
       }
       
-      public final void JP(String paramAnonymousString)
+      public final void SO(String paramAnonymousString)
       {
         AppMethodBeat.i(34239);
-        AtSomeoneUI.a(AtSomeoneUI.this).vx(paramAnonymousString);
+        AtSomeoneUI.a(AtSomeoneUI.this).DO(paramAnonymousString);
         AppMethodBeat.o(34239);
       }
       
-      public final void aSL()
+      public final void bnA() {}
+      
+      public final void bnB() {}
+      
+      public final void bny()
       {
         AppMethodBeat.i(34240);
-        ae.d("MicroMsg.AtSomeoneUI", "onQuitSearch()");
-        ar.f(new Runnable()
+        Log.d("MicroMsg.AtSomeoneUI", "onQuitSearch()");
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(34238);
             if (AtSomeoneUI.a(AtSomeoneUI.this) != null) {
-              AtSomeoneUI.a(AtSomeoneUI.this).vx("");
+              AtSomeoneUI.a(AtSomeoneUI.this).DO("");
             }
             AppMethodBeat.o(34238);
           }
@@ -127,65 +129,61 @@ public class AtSomeoneUI
         AppMethodBeat.o(34240);
       }
       
-      public final void aSM() {}
-      
-      public final void aSN() {}
-      
-      public final void aSO() {}
+      public final void bnz() {}
     };
-    addSearchMenu(true, this.fUI);
-    this.jsM = ((ListView)findViewById(2131297967));
-    an localan = new an();
-    ac localac = this.fNS;
+    addSearchMenu(true, this.gzP);
+    this.krb = ((ListView)findViewById(2131298305));
+    as localas = new as();
+    ah localah = this.gtd;
     Object localObject1 = null;
-    if (!bu.isNullOrNil(this.fUH))
+    if (!Util.isNullOrNil(this.gzO))
     {
-      localObject1 = this.fUH.split(",");
-      ae.d("MicroMsg.AtSomeoneUI", "chatroom members name=[%s]", new Object[] { Arrays.toString((Object[])localObject1) });
+      localObject1 = this.gzO.split(",");
+      Log.d("MicroMsg.AtSomeoneUI", "chatroom members name=[%s]", new Object[] { Arrays.toString((Object[])localObject1) });
     }
     Object localObject2 = localObject1;
     if (localObject1 == null)
     {
       localObject2 = localObject1;
-      if (this.fNS != null)
+      if (this.gtd != null)
       {
-        ae.w("MicroMsg.AtSomeoneUI", "[getChatroomMember] chatroomMemberList is null!");
-        localObject2 = bu.m(this.fNS.aGE(), ",").split(",");
+        Log.w("MicroMsg.AtSomeoneUI", "[getChatroomMember] chatroomMemberList is null!");
+        localObject2 = Util.listToString(this.gtd.bax(), ",").split(",");
       }
     }
     if (localObject2 == null) {
-      if (this.fNS != null) {
+      if (this.gtd != null) {
         break label314;
       }
     }
     for (;;)
     {
-      ae.e("MicroMsg.AtSomeoneUI", "WTF! member is null? %s", new Object[] { Boolean.valueOf(bool) });
+      Log.e("MicroMsg.AtSomeoneUI", "WTF! member is null? %s", new Object[] { Boolean.valueOf(bool) });
       localObject1 = new LinkedList();
-      if (!bu.isNullOrNil(this.fUG)) {
-        localObject1 = bu.U(this.fUG.split(","));
+      if (!Util.isNullOrNil(this.gzN)) {
+        localObject1 = Util.stringsToList(this.gzN.split(","));
       }
-      bc.aCg();
-      cb localcb = c.azO().arD("@t.qq.com");
-      if (localcb != null) {
-        ((List)localObject1).add(localcb.name);
+      bg.aVF();
+      ci localci = c.aSW().aEY("@t.qq.com");
+      if (localci != null) {
+        ((List)localObject1).add(localci.name);
       }
-      this.JSZ = new a(this, localan, localac, (String[])localObject2, (List)localObject1);
-      this.jsM.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.Pee = new a(this, localas, localah, (String[])localObject2, (List)localObject1);
+      this.krb.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(34241);
           Object localObject = new b();
-          ((b)localObject).bd(paramAnonymousAdapterView);
-          ((b)localObject).bd(paramAnonymousView);
-          ((b)localObject).mu(paramAnonymousInt);
-          ((b)localObject).rl(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AtSomeoneUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).ahF());
+          ((b)localObject).bm(paramAnonymousAdapterView);
+          ((b)localObject).bm(paramAnonymousView);
+          ((b)localObject).pH(paramAnonymousInt);
+          ((b)localObject).zo(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/AtSomeoneUI$3", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, ((b)localObject).axR());
           localObject = new Intent();
-          if ((paramAnonymousInt == 0) && (AtSomeoneUI.JPb))
+          if ((paramAnonymousInt == 0) && (AtSomeoneUI.Pah))
           {
-            ((Intent)localObject).putExtra("Select_Conv_User", AtSomeoneUI.this.getString(2131756080, new Object[] { "" }));
+            ((Intent)localObject).putExtra("Select_Conv_User", AtSomeoneUI.this.getString(2131756210, new Object[] { "" }));
             ((Intent)localObject).putExtra("select_raw_user_name", "notify@all");
             AtSomeoneUI.this.setResult(-1, (Intent)localObject);
             AtSomeoneUI.this.finish();
@@ -194,22 +192,22 @@ public class AtSomeoneUI
             return;
           }
           paramAnonymousAdapterView = AtSomeoneUI.a(AtSomeoneUI.this);
-          if (AtSomeoneUI.JPb) {}
+          if (AtSomeoneUI.Pah) {}
           for (int i = 1;; i = 0)
           {
-            an localan = (an)paramAnonymousAdapterView.getItem(paramAnonymousInt - i);
-            paramAnonymousView = AtSomeoneUI.a(AtSomeoneUI.b(AtSomeoneUI.this), localan.field_username);
+            as localas = (as)paramAnonymousAdapterView.getItem(paramAnonymousInt - i);
+            paramAnonymousView = AtSomeoneUI.a(AtSomeoneUI.b(AtSomeoneUI.this), localas.field_username);
             paramAnonymousAdapterView = paramAnonymousView;
-            if (bu.isNullOrNil(paramAnonymousView)) {
-              paramAnonymousAdapterView = localan.adF();
+            if (Util.isNullOrNil(paramAnonymousView)) {
+              paramAnonymousAdapterView = localas.arI();
             }
-            ((Intent)localObject).putExtra("select_raw_user_name", localan.field_username);
+            ((Intent)localObject).putExtra("select_raw_user_name", localas.field_username);
             ((Intent)localObject).putExtra("Select_Conv_User", paramAnonymousAdapterView);
             break;
           }
         }
       });
-      this.jsM.setAdapter(this.JSZ);
+      this.krb.setAdapter(this.Pee);
       AppMethodBeat.o(34250);
       return;
       label314:
@@ -221,14 +219,14 @@ public class AtSomeoneUI
   {
     AppMethodBeat.i(34249);
     super.onCreate(paramBundle);
-    this.fUG = getIntent().getStringExtra("Block_list");
-    this.fUH = getIntent().getStringExtra("Chatroom_member_list");
+    this.gzN = getIntent().getStringExtra("Block_list");
+    this.gzO = getIntent().getStringExtra("Chatroom_member_list");
     this.talker = getIntent().getStringExtra("Chat_User");
     this.mTitle = getIntent().getStringExtra("Add_address_titile");
-    bc.aCg();
-    this.fNS = c.azP().Bx(this.talker);
-    if ((this.fNS != null) && (this.fNS.field_roomowner.equals(v.aAC()))) {
-      JPb = false;
+    bg.aVF();
+    this.gtd = c.aSX().Kd(this.talker);
+    if ((this.gtd != null) && (this.gtd.field_roomowner != null) && (this.gtd.field_roomowner.equals(z.aTY()))) {
+      Pah = false;
     }
     initView();
     AppMethodBeat.o(34249);
@@ -237,7 +235,7 @@ public class AtSomeoneUI
   public void onDestroy()
   {
     AppMethodBeat.i(34252);
-    this.JSZ.dhl();
+    this.Pee.ebf();
     super.onDestroy();
     AppMethodBeat.o(34252);
   }
@@ -246,8 +244,8 @@ public class AtSomeoneUI
   {
     AppMethodBeat.i(34251);
     super.onPause();
-    if (this.fUI != null) {
-      this.fUI.fOV();
+    if (this.gzP != null) {
+      this.gzP.gXP();
     }
     AppMethodBeat.o(34251);
   }
@@ -259,49 +257,57 @@ public class AtSomeoneUI
   }
   
   static final class a
-    extends com.tencent.mm.ui.r<an>
+    extends com.tencent.mm.ui.s<as>
   {
-    private String[] JPd;
-    private Bitmap JPe;
-    private ac fNS;
-    private List<String> fUR;
-    private String fUS;
+    private String[] Paj;
+    private Bitmap Pak;
+    private ah gtd;
+    private List<String> gzY;
+    private String gzZ;
     
-    public a(Context paramContext, an paraman, ac paramac, String[] paramArrayOfString, List<String> paramList)
+    public a(Context paramContext, as paramas, ah paramah, String[] paramArrayOfString, List<String> paramList)
     {
-      super(paraman);
+      super(paramas);
       AppMethodBeat.i(34242);
-      this.fNS = paramac;
-      this.JPd = paramArrayOfString;
-      this.fUR = paramList;
-      this.JPe = h.B(paramContext.getResources().getDrawable(2131689712));
+      this.gtd = paramah;
+      this.Paj = paramArrayOfString;
+      this.gzY = paramList;
+      this.Pak = BitmapUtil.transformDrawableToBitmap(paramContext.getResources().getDrawable(2131689719));
       AppMethodBeat.o(34242);
     }
     
-    public final boolean Iw(int paramInt)
+    public final void DO(String paramString)
+    {
+      AppMethodBeat.i(34247);
+      this.gzZ = paramString;
+      onNotifyChange(null, null);
+      AppMethodBeat.o(34247);
+    }
+    
+    public final boolean Ox(int paramInt)
     {
       return false;
     }
     
-    public final void ZD()
+    public final void anp()
     {
       AppMethodBeat.i(34245);
-      bc.aCg();
-      bq localbq = c.azF();
-      String[] arrayOfString1 = this.JPd;
-      String str1 = this.fUS;
-      String str2 = this.fUS;
+      bg.aVF();
+      bv localbv = c.aSN();
+      String[] arrayOfString1 = this.Paj;
+      String str1 = this.gzZ;
+      String str2 = this.gzZ;
       Object localObject;
-      if ((this.fNS == null) || (str2 == null) || (this.JPd == null))
+      if ((this.gtd == null) || (str2 == null) || (this.Paj == null))
       {
         localObject = null;
-        setCursor(localbq.a(arrayOfString1, "@all.chatroom", str1, (List)localObject, this.fUR));
+        setCursor(localbv.a(arrayOfString1, "@all.chatroom", str1, (List)localObject, this.gzY));
         super.notifyDataSetChanged();
         AppMethodBeat.o(34245);
         return;
       }
       ArrayList localArrayList = new ArrayList();
-      String[] arrayOfString2 = this.JPd;
+      String[] arrayOfString2 = this.Paj;
       int j = arrayOfString2.length;
       int i = 0;
       for (;;)
@@ -311,7 +317,7 @@ public class AtSomeoneUI
           break;
         }
         localObject = arrayOfString2[i];
-        String str3 = this.fNS.zP((String)localObject);
+        String str3 = this.gtd.getDisplayName((String)localObject);
         if ((str3 != null) && (str3.contains(str2))) {
           localArrayList.add(localObject);
         }
@@ -319,18 +325,18 @@ public class AtSomeoneUI
       }
     }
     
-    public final void ZE()
+    public final void anq()
     {
       AppMethodBeat.i(34246);
-      dhl();
-      ZD();
+      ebf();
+      anp();
       AppMethodBeat.o(34246);
     }
     
-    public final int dcN()
+    public final int dWu()
     {
       AppMethodBeat.i(34243);
-      if (AtSomeoneUI.JPb)
+      if (AtSomeoneUI.Pah)
       {
         AppMethodBeat.o(34243);
         return 1;
@@ -345,59 +351,59 @@ public class AtSomeoneUI
       View localView;
       if (paramView == null)
       {
-        localView = View.inflate(this.context, 2131493115, null);
+        localView = View.inflate(this.context, 2131493157, null);
         paramViewGroup = new AtSomeoneUI.b((byte)0);
-        paramViewGroup.fVG = ((MaskLayout)localView.findViewById(2131296957));
-        paramViewGroup.fRI = ((TextView)localView.findViewById(2131296958));
-        paramViewGroup.JPf = ((ImageView)localView.findViewById(2131298739));
+        paramViewGroup.gAN = ((MaskLayout)localView.findViewById(2131297066));
+        paramViewGroup.gwR = ((TextView)localView.findViewById(2131297067));
+        paramViewGroup.Pal = ((ImageView)localView.findViewById(2131299180));
         localView.setTag(paramViewGroup);
       }
-      while ((paramInt == 0) && (AtSomeoneUI.JPb))
+      while ((paramInt == 0) && (AtSomeoneUI.Pah))
       {
-        paramViewGroup.JPf.setImageBitmap(this.JPe);
-        paramViewGroup.fRI.setText(this.context.getResources().getString(2131756080, new Object[] { "@" }));
+        paramViewGroup.Pal.setImageBitmap(this.Pak);
+        paramViewGroup.gwR.setText(this.context.getResources().getString(2131756210, new Object[] { "@" }));
         AppMethodBeat.o(34244);
         return localView;
         paramViewGroup = (AtSomeoneUI.b)paramView.getTag();
         localView = paramView;
       }
       int i;
-      an localan;
-      if (AtSomeoneUI.JPb)
+      as localas;
+      if (AtSomeoneUI.Pah)
       {
         i = 1;
-        localan = (an)getItem(paramInt - i);
-        paramView = paramViewGroup.fRI;
+        localas = (as)getItem(paramInt - i);
+        paramView = paramViewGroup.gwR;
         Context localContext = this.context;
-        if (x.AZ(localan.field_username)) {
+        if (ab.JE(localas.field_username)) {
           break label371;
         }
-        paramInt = 2131100638;
+        paramInt = 2131100808;
         label196:
         paramView.setTextColor(com.tencent.mm.cb.a.m(localContext, paramInt));
-        a.b.c((ImageView)paramViewGroup.fVG.getContentView(), localan.field_username);
-        if (localan.field_verifyFlag == 0) {
+        a.b.c((ImageView)paramViewGroup.gAN.getContentView(), localas.field_username);
+        if (localas.field_verifyFlag == 0) {
           break label400;
         }
-        if (au.a.hII == null) {
+        if (ay.a.iDs == null) {
           break label389;
         }
-        paramView = au.a.hII.ov(localan.field_verifyFlag);
+        paramView = ay.a.iDs.rW(localas.field_verifyFlag);
         if (paramView == null) {
           break label378;
         }
-        paramView = o.EI(paramView);
-        paramViewGroup.fVG.a(paramView, MaskLayout.a.JJQ);
+        paramView = o.Nw(paramView);
+        paramViewGroup.gAN.a(paramView, MaskLayout.a.OUJ);
         label272:
-        if (bu.isNullOrNil(localan.field_conRemark)) {
+        if (Util.isNullOrNil(localas.field_conRemark)) {
           break label411;
         }
-        paramView = localan.field_conRemark;
+        paramView = localas.field_conRemark;
         label289:
-        if (!bu.isNullOrNil(paramView)) {
+        if (!Util.isNullOrNil(paramView)) {
           break label452;
         }
-        paramView = localan.adF();
+        paramView = localas.arI();
       }
       label389:
       label400:
@@ -405,8 +411,8 @@ public class AtSomeoneUI
       label452:
       for (;;)
       {
-        if (an.aUq(localan.field_username)) {
-          ((com.tencent.mm.openim.a.a)g.ab(com.tencent.mm.openim.a.a.class)).a(paramViewGroup.fRI.getContext(), paramViewGroup.fRI, paramView, localan.field_openImAppid, localan.field_descWordingId, (int)paramViewGroup.fRI.getTextSize());
+        if (as.bjp(localas.field_username)) {
+          ((com.tencent.mm.openim.a.a)g.af(com.tencent.mm.openim.a.a.class)).a(paramViewGroup.gwR.getContext(), paramViewGroup.gwR, paramView, localas.field_openImAppid, localas.field_descWordingId, (int)paramViewGroup.gwR.getTextSize());
         }
         for (;;)
         {
@@ -415,41 +421,33 @@ public class AtSomeoneUI
           i = 0;
           break;
           label371:
-          paramInt = 2131100639;
+          paramInt = 2131100809;
           break label196;
           label378:
-          paramViewGroup.fVG.setMaskDrawable(null);
+          paramViewGroup.gAN.setMaskDrawable(null);
           break label272;
-          paramViewGroup.fVG.setMaskDrawable(null);
+          paramViewGroup.gAN.setMaskDrawable(null);
           break label272;
-          paramViewGroup.fVG.setMaskDrawable(null);
+          paramViewGroup.gAN.setMaskDrawable(null);
           break label272;
-          paramView = AtSomeoneUI.a(this.fNS, localan.field_username);
+          paramView = AtSomeoneUI.a(this.gtd, localas.field_username);
           break label289;
-          paramViewGroup.fRI.setText(k.b(this.context, paramView, paramViewGroup.fRI.getTextSize()));
+          paramViewGroup.gwR.setText(com.tencent.mm.pluginsdk.ui.span.l.b(this.context, paramView, paramViewGroup.gwR.getTextSize()));
         }
       }
-    }
-    
-    public final void vx(String paramString)
-    {
-      AppMethodBeat.i(34247);
-      this.fUS = paramString;
-      a(null, null);
-      AppMethodBeat.o(34247);
     }
   }
   
   static final class b
   {
-    public ImageView JPf;
-    public TextView fRI;
-    public MaskLayout fVG;
+    public ImageView Pal;
+    public MaskLayout gAN;
+    public TextView gwR;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.AtSomeoneUI
  * JD-Core Version:    0.7.0.1
  */

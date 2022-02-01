@@ -16,15 +16,15 @@ import android.view.MenuItem;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.ball.model.BallInfo;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.l;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
-import com.tencent.mm.ui.q;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.r;
 import com.tencent.mm.ui.widget.a.e;
 import com.tencent.mm.ui.widget.a.e.b;
 
@@ -32,19 +32,58 @@ import com.tencent.mm.ui.widget.a.e.b;
 public class FloatBallProxyUI
   extends MMActivity
 {
-  private com.tencent.mm.ui.widget.a.d mHN;
-  private BallInfo nLK = null;
-  private e nMW;
-  private int nMX = 0;
-  private boolean nMY = false;
-  private boolean nMZ = false;
-  private boolean nNa = false;
+  private com.tencent.mm.ui.widget.a.d nUK;
+  private BallInfo oWE = null;
+  private e oXS;
+  private int oXT = 0;
+  private boolean oXU = false;
+  private boolean oXV = false;
+  private boolean oXW = false;
   
-  public static void a(Context paramContext, BallInfo paramBallInfo, boolean paramBoolean, final a parama)
+  private void BJ(int paramInt)
   {
-    AppMethodBeat.i(209496);
+    AppMethodBeat.i(217051);
+    String str1 = getResources().getString(paramInt);
+    String str2 = getResources().getString(2131760759);
+    this.oXV = false;
+    this.nUK = h.a(this, str1, "", str2, new DialogInterface.OnClickListener()
+    {
+      public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(106286);
+        Log.i("MicroMsg.FloatBallProxyUI", "click ok");
+        FloatBallProxyUI.a(FloatBallProxyUI.this);
+        FloatBallProxyUI.a(FloatBallProxyUI.this, 1);
+        FloatBallProxyUI.this.finish();
+        AppMethodBeat.o(106286);
+      }
+    });
+    this.nUK.setOnDismissListener(new DialogInterface.OnDismissListener()
+    {
+      public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
+      {
+        AppMethodBeat.i(106287);
+        Log.i("MicroMsg.FloatBallProxyUI", "dismiss dialog");
+        FloatBallProxyUI.a(FloatBallProxyUI.this, 2);
+        FloatBallProxyUI.this.finish();
+        AppMethodBeat.o(106287);
+      }
+    });
+    AppMethodBeat.o(217051);
+  }
+  
+  public static void a(int paramInt, a parama)
+  {
+    AppMethodBeat.i(217048);
+    a(null, paramInt, null, false, parama);
+    AppMethodBeat.o(217048);
+  }
+  
+  public static void a(Context paramContext, final int paramInt, BallInfo paramBallInfo, boolean paramBoolean, final a parama)
+  {
+    AppMethodBeat.i(217049);
     if (paramContext == null) {
-      paramContext = ak.getContext();
+      paramContext = MMApplicationContext.getContext();
     }
     for (;;)
     {
@@ -53,14 +92,14 @@ public class FloatBallProxyUI
         localIntent.putExtra("key_ball_info", paramBallInfo);
       }
       localIntent.putExtra("key_can_message_ball", paramBoolean);
-      localIntent.putExtra("key_proxy_mode", 1);
-      localIntent.putExtra("key_result_callback", new ResultReceiver(aq.createFreeHandler(Looper.getMainLooper()))
+      localIntent.putExtra("key_proxy_mode", paramInt);
+      localIntent.putExtra("key_result_callback", new ResultReceiver(MMHandler.createFreeHandler(Looper.getMainLooper()))
       {
         protected final void onReceiveResult(int paramAnonymousInt, Bundle paramAnonymousBundle)
         {
           AppMethodBeat.i(106282);
           if (parama != null) {
-            parama.eH(this.nNc, paramAnonymousInt);
+            parama.eU(paramInt, paramAnonymousInt);
           }
           AppMethodBeat.o(106282);
         }
@@ -68,20 +107,13 @@ public class FloatBallProxyUI
       if (!(paramContext instanceof Activity)) {
         localIntent.addFlags(268435456);
       }
-      paramBallInfo = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramBallInfo.ahE(), "com/tencent/mm/plugin/ball/ui/FloatBallProxyUI", "showFloatBallProxyUI", "(Landroid/content/Context;ILcom/tencent/mm/plugin/ball/model/BallInfo;ZLcom/tencent/mm/plugin/ball/ui/FloatBallProxyUI$OnFloatBallProxyUIResultCallback;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramContext.startActivity((Intent)paramBallInfo.mt(0));
+      paramBallInfo = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+      com.tencent.mm.hellhoundlib.a.a.a(paramContext, paramBallInfo.axQ(), "com/tencent/mm/plugin/ball/ui/FloatBallProxyUI", "showFloatBallProxyUI", "(Landroid/content/Context;ILcom/tencent/mm/plugin/ball/model/BallInfo;ZLcom/tencent/mm/plugin/ball/ui/FloatBallProxyUI$OnFloatBallProxyUIResultCallback;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramContext.startActivity((Intent)paramBallInfo.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramContext, "com/tencent/mm/plugin/ball/ui/FloatBallProxyUI", "showFloatBallProxyUI", "(Landroid/content/Context;ILcom/tencent/mm/plugin/ball/model/BallInfo;ZLcom/tencent/mm/plugin/ball/ui/FloatBallProxyUI$OnFloatBallProxyUIResultCallback;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      AppMethodBeat.o(209496);
+      AppMethodBeat.o(217049);
       return;
     }
-  }
-  
-  public static void a(a parama)
-  {
-    AppMethodBeat.i(209495);
-    a(null, null, false, parama);
-    AppMethodBeat.o(209495);
   }
   
   public void finish()
@@ -102,96 +134,71 @@ public class FloatBallProxyUI
     AppMethodBeat.i(106290);
     super.onCreate(paramBundle);
     overridePendingTransition(0, 0);
-    q.b(getWindow());
-    q.c(getWindow(), false);
+    r.e(getWindow());
+    r.d(getWindow(), false);
     getWindow().setBackgroundDrawable(new ColorDrawable(0));
     if (getIntent() == null) {
       finish();
     }
-    this.nMX = getIntent().getIntExtra("key_proxy_mode", 1);
-    if (this.nMX == 1)
+    this.oXT = getIntent().getIntExtra("key_proxy_mode", 1);
+    switch (this.oXT)
     {
-      paramBundle = getResources().getString(2131759445);
-      String str = getResources().getString(2131759446);
-      this.nMZ = false;
-      this.mHN = h.a(this, paramBundle, "", str, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(106286);
-          ae.i("MicroMsg.FloatBallProxyUI", "click ok");
-          FloatBallProxyUI.a(FloatBallProxyUI.this);
-          FloatBallProxyUI.a(FloatBallProxyUI.this, 1);
-          FloatBallProxyUI.this.finish();
-          AppMethodBeat.o(106286);
-        }
-      });
-      this.mHN.setOnDismissListener(new DialogInterface.OnDismissListener()
-      {
-        public final void onDismiss(DialogInterface paramAnonymousDialogInterface)
-        {
-          AppMethodBeat.i(106287);
-          ae.i("MicroMsg.FloatBallProxyUI", "dismiss dialog");
-          FloatBallProxyUI.a(FloatBallProxyUI.this, 2);
-          FloatBallProxyUI.this.finish();
-          AppMethodBeat.o(106287);
-        }
-      });
     }
     for (;;)
     {
-      this.nLK = ((BallInfo)getIntent().getParcelableExtra("key_ball_info"));
-      this.nNa = getIntent().getBooleanExtra("key_can_message_ball", false);
+      this.oWE = ((BallInfo)getIntent().getParcelableExtra("key_ball_info"));
+      this.oXW = getIntent().getBooleanExtra("key_can_message_ball", false);
       AppMethodBeat.o(106290);
       return;
-      if (this.nMX == 2)
+      BJ(2131760758);
+      continue;
+      this.oXS = new e(this, 1, true);
+      paramBundle = getString(2131760774);
+      this.oXS.o(paramBundle, 17);
+      this.oXS.HLX = new o.f()
       {
-        this.nMW = new e(this, 1, true);
-        paramBundle = getString(2131759460);
-        this.nMW.p(paramBundle, 17);
-        this.nMW.LfS = new n.d()
+        public final void onCreateMMMenu(m paramAnonymousm)
         {
-          public final void onCreateMMMenu(l paramAnonymousl)
-          {
-            AppMethodBeat.i(106283);
-            paramAnonymousl.clear();
-            paramAnonymousl.a(0, -65536, FloatBallProxyUI.this.getString(2131759449));
-            paramAnonymousl.a(1, -16777216, FloatBallProxyUI.this.getString(2131759448));
-            AppMethodBeat.o(106283);
-          }
-        };
-        this.nMW.LfT = new n.e()
+          AppMethodBeat.i(106283);
+          paramAnonymousm.clear();
+          paramAnonymousm.a(0, -65536, FloatBallProxyUI.this.getString(2131760763));
+          paramAnonymousm.a(1, -16777216, FloatBallProxyUI.this.getString(2131760761));
+          AppMethodBeat.o(106283);
+        }
+      };
+      this.oXS.HLY = new o.g()
+      {
+        public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
-          public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
+          AppMethodBeat.i(106284);
+          if (paramAnonymousMenuItem.getItemId() == 0)
           {
-            AppMethodBeat.i(106284);
-            if (paramAnonymousMenuItem.getItemId() == 0)
-            {
-              ae.i("MicroMsg.FloatBallProxyUI", "click remove all balls");
-              FloatBallProxyUI.a(FloatBallProxyUI.this, 1);
-              FloatBallProxyUI.this.finish();
-              AppMethodBeat.o(106284);
-              return;
-            }
-            ae.i("MicroMsg.FloatBallProxyUI", "click cancel remove all balls");
-            FloatBallProxyUI.a(FloatBallProxyUI.this, 2);
+            Log.i("MicroMsg.FloatBallProxyUI", "click remove all balls");
+            FloatBallProxyUI.a(FloatBallProxyUI.this, 1);
             FloatBallProxyUI.this.finish();
             AppMethodBeat.o(106284);
+            return;
           }
-        };
-        this.nMW.KtV = new e.b()
+          Log.i("MicroMsg.FloatBallProxyUI", "click cancel remove all balls");
+          FloatBallProxyUI.a(FloatBallProxyUI.this, 2);
+          FloatBallProxyUI.this.finish();
+          AppMethodBeat.o(106284);
+        }
+      };
+      this.oXS.PGl = new e.b()
+      {
+        public final void onDismiss()
         {
-          public final void onDismiss()
-          {
-            AppMethodBeat.i(106285);
-            ae.i("MicroMsg.FloatBallProxyUI", "dismiss bottom sheet");
-            FloatBallProxyUI.a(FloatBallProxyUI.this, 2);
-            FloatBallProxyUI.this.finish();
-            AppMethodBeat.o(106285);
-          }
-        };
-        this.nMW.cPF();
-      }
+          AppMethodBeat.i(106285);
+          Log.i("MicroMsg.FloatBallProxyUI", "dismiss bottom sheet");
+          FloatBallProxyUI.a(FloatBallProxyUI.this, 2);
+          FloatBallProxyUI.this.finish();
+          AppMethodBeat.o(106285);
+        }
+      };
+      this.oXS.dGm();
+      continue;
+      BJ(2131760775);
     }
   }
   
@@ -207,28 +214,28 @@ public class FloatBallProxyUI
   {
     AppMethodBeat.i(106292);
     super.onDestroy();
-    if ((this.mHN != null) && (this.mHN.isShowing()))
+    if ((this.nUK != null) && (this.nUK.isShowing()))
     {
-      this.mHN.dismiss();
-      this.mHN = null;
+      this.nUK.dismiss();
+      this.nUK = null;
     }
-    if ((this.nMW != null) && (this.nMW.isShowing()))
+    if ((this.oXS != null) && (this.oXS.isShowing()))
     {
-      this.nMW.bqD();
-      this.nMW = null;
+      this.oXS.bMo();
+      this.oXS = null;
     }
     AppMethodBeat.o(106292);
   }
   
   public void onPause()
   {
-    AppMethodBeat.i(209497);
+    AppMethodBeat.i(217050);
     super.onPause();
-    ae.i("MicroMsg.FloatBallProxyUI", "alvinluo onPause proxyType: %d, hasConfirmed: %b, canAddMessageBall: %b, ballInfo: %s", new Object[] { Integer.valueOf(this.nMX), Boolean.valueOf(this.nMZ), Boolean.valueOf(this.nNa), this.nLK });
-    if ((this.nMX == 1) && (!this.nMZ) && (this.nNa) && (this.nLK != null)) {
-      com.tencent.mm.plugin.ball.service.d.bLK().u(this.nLK);
+    Log.i("MicroMsg.FloatBallProxyUI", "alvinluo onPause proxyType: %d, hasConfirmed: %b, canAddMessageBall: %b, ballInfo: %s", new Object[] { Integer.valueOf(this.oXT), Boolean.valueOf(this.oXV), Boolean.valueOf(this.oXW), this.oWE });
+    if ((this.oXT == 1) && (!this.oXV) && (this.oXW) && (this.oWE != null)) {
+      com.tencent.mm.plugin.ball.service.d.ciB().t(this.oWE);
     }
-    AppMethodBeat.o(209497);
+    AppMethodBeat.o(217050);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -239,12 +246,12 @@ public class FloatBallProxyUI
   
   public static abstract interface a
   {
-    public abstract void eH(int paramInt1, int paramInt2);
+    public abstract void eU(int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ball.ui.FloatBallProxyUI
  * JD-Core Version:    0.7.0.1
  */

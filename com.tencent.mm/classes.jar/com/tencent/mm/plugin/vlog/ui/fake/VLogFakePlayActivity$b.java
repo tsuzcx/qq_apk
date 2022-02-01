@@ -1,15 +1,15 @@
 package com.tencent.mm.plugin.vlog.ui.fake;
 
-import d.g.a.a;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.a;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
 final class VLogFakePlayActivity$b
   extends q
-  implements b<Boolean, z>
+  implements b<Boolean, x>
 {
   VLogFakePlayActivity$b(VLogFakePlayActivity paramVLogFakePlayActivity)
   {

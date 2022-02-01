@@ -58,7 +58,7 @@ public class TAVPlayer
   
   public TAVPlayer()
   {
-    AppMethodBeat.i(200715);
+    AppMethodBeat.i(197385);
     this.TAG = ("GameTemplatePlayer@" + Integer.toHexString(hashCode()));
     this.isAllowInterrupt = true;
     this.isAutoPlay = true;
@@ -74,23 +74,23 @@ public class TAVPlayer
     {
       public void onAudioFocusChange(int paramAnonymousInt)
       {
-        AppMethodBeat.i(200702);
+        AppMethodBeat.i(197372);
         switch (paramAnonymousInt)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(200702);
+          AppMethodBeat.o(197372);
           return;
           if (!TAVPlayer.this.isAllowInterrupt)
           {
-            AppMethodBeat.o(200702);
+            AppMethodBeat.o(197372);
             return;
           }
           if (TAVPlayer.this.player != null)
           {
             TAVPlayer.this.player.pause();
-            AppMethodBeat.o(200702);
+            AppMethodBeat.o(197372);
             return;
             if (TAVPlayer.this.player != null) {
               TAVPlayer.this.player.play();
@@ -99,12 +99,12 @@ public class TAVPlayer
         }
       }
     };
-    AppMethodBeat.o(200715);
+    AppMethodBeat.o(197385);
   }
   
   public TAVPlayer(Surface paramSurface, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200716);
+    AppMethodBeat.i(197386);
     this.TAG = ("GameTemplatePlayer@" + Integer.toHexString(hashCode()));
     this.isAllowInterrupt = true;
     this.isAutoPlay = true;
@@ -120,23 +120,23 @@ public class TAVPlayer
     {
       public void onAudioFocusChange(int paramAnonymousInt)
       {
-        AppMethodBeat.i(200702);
+        AppMethodBeat.i(197372);
         switch (paramAnonymousInt)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(200702);
+          AppMethodBeat.o(197372);
           return;
           if (!TAVPlayer.this.isAllowInterrupt)
           {
-            AppMethodBeat.o(200702);
+            AppMethodBeat.o(197372);
             return;
           }
           if (TAVPlayer.this.player != null)
           {
             TAVPlayer.this.player.pause();
-            AppMethodBeat.o(200702);
+            AppMethodBeat.o(197372);
             return;
             if (TAVPlayer.this.player != null) {
               TAVPlayer.this.player.play();
@@ -146,12 +146,12 @@ public class TAVPlayer
       }
     };
     onSurfaceCreate(paramSurface, paramInt2, paramInt1);
-    AppMethodBeat.o(200716);
+    AppMethodBeat.o(197386);
   }
   
   public TAVPlayer(FrameLayout paramFrameLayout)
   {
-    AppMethodBeat.i(200717);
+    AppMethodBeat.i(197387);
     this.TAG = ("GameTemplatePlayer@" + Integer.toHexString(hashCode()));
     this.isAllowInterrupt = true;
     this.isAutoPlay = true;
@@ -167,23 +167,23 @@ public class TAVPlayer
     {
       public void onAudioFocusChange(int paramAnonymousInt)
       {
-        AppMethodBeat.i(200702);
+        AppMethodBeat.i(197372);
         switch (paramAnonymousInt)
         {
         }
         for (;;)
         {
-          AppMethodBeat.o(200702);
+          AppMethodBeat.o(197372);
           return;
           if (!TAVPlayer.this.isAllowInterrupt)
           {
-            AppMethodBeat.o(200702);
+            AppMethodBeat.o(197372);
             return;
           }
           if (TAVPlayer.this.player != null)
           {
             TAVPlayer.this.player.pause();
-            AppMethodBeat.o(200702);
+            AppMethodBeat.o(197372);
             return;
             if (TAVPlayer.this.player != null) {
               TAVPlayer.this.player.play();
@@ -195,24 +195,24 @@ public class TAVPlayer
     this.context = paramFrameLayout.getContext();
     this.mPlayerLayout = paramFrameLayout;
     initContentView();
-    AppMethodBeat.o(200717);
+    AppMethodBeat.o(197387);
   }
   
   private void abandonAudioFocus()
   {
-    AppMethodBeat.i(200744);
+    AppMethodBeat.i(197414);
     if (this.audioManager == null)
     {
-      AppMethodBeat.o(200744);
+      AppMethodBeat.o(197414);
       return;
     }
     this.audioManager.abandonAudioFocus(this.audioFocusChangeListener);
-    AppMethodBeat.o(200744);
+    AppMethodBeat.o(197414);
   }
   
   private PlayerItem buildPlayerItem(TAVComposition paramTAVComposition)
   {
-    AppMethodBeat.i(200741);
+    AppMethodBeat.i(197411);
     Logger.d(this.TAG, "buildPlayerItem() called with: tavComposition = [" + paramTAVComposition + "]");
     paramTAVComposition = new TAVCompositionBuilder(paramTAVComposition);
     paramTAVComposition.setVideoTracksMerge(this.videoTracksMerge);
@@ -221,16 +221,16 @@ public class TAVPlayer
     PlayerItem localPlayerItem = new PlayerItem(paramTAVComposition.getAsset());
     localPlayerItem.setVideoComposition(paramTAVComposition.getVideoComposition());
     localPlayerItem.setAudioMix(paramTAVComposition.getAudioMix());
-    AppMethodBeat.o(200741);
+    AppMethodBeat.o(197411);
     return localPlayerItem;
   }
   
   private void initContentView()
   {
-    AppMethodBeat.i(200718);
+    AppMethodBeat.i(197388);
     if (this.mPlayerLayout == null)
     {
-      AppMethodBeat.o(200718);
+      AppMethodBeat.o(197388);
       return;
     }
     this.mPlayerLayout.removeAllViews();
@@ -243,35 +243,35 @@ public class TAVPlayer
       
       public void onSurfaceTextureAvailable(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(200696);
+        AppMethodBeat.i(197366);
         paramAnonymousSurfaceTexture = new Surface(paramAnonymousSurfaceTexture);
         TAVPlayer.this.onSurfaceCreate(paramAnonymousSurfaceTexture, paramAnonymousInt2, paramAnonymousInt1);
-        AppMethodBeat.o(200696);
+        AppMethodBeat.o(197366);
       }
       
       public boolean onSurfaceTextureDestroyed(SurfaceTexture paramAnonymousSurfaceTexture)
       {
-        AppMethodBeat.i(200698);
+        AppMethodBeat.i(197368);
         TAVPlayer.this.onSurfaceDestory();
-        AppMethodBeat.o(200698);
+        AppMethodBeat.o(197368);
         return false;
       }
       
       public void onSurfaceTextureSizeChanged(SurfaceTexture paramAnonymousSurfaceTexture, int paramAnonymousInt1, int paramAnonymousInt2)
       {
-        AppMethodBeat.i(200697);
+        AppMethodBeat.i(197367);
         TAVPlayer.this.onSurfaceSizeChanged(paramAnonymousInt1, paramAnonymousInt2);
-        AppMethodBeat.o(200697);
+        AppMethodBeat.o(197367);
       }
       
       public void onSurfaceTextureUpdated(SurfaceTexture paramAnonymousSurfaceTexture) {}
     });
-    AppMethodBeat.o(200718);
+    AppMethodBeat.o(197388);
   }
   
   private Player newPlayer(PlayerItem paramPlayerItem, CMTime paramCMTime, boolean paramBoolean)
   {
-    AppMethodBeat.i(200742);
+    AppMethodBeat.i(197412);
     Logger.d(this.TAG, "newPlayer() called with: playerItem = [" + paramPlayerItem + "], position = [" + paramCMTime + "], autoPlay = [" + paramBoolean + "]");
     paramPlayerItem = new Player(paramPlayerItem);
     paramPlayerItem.setPlayerListener(this.playerListener);
@@ -289,16 +289,16 @@ public class TAVPlayer
       this.compositionUpdateListener.onUpdated(paramPlayerItem, false);
     }
     this.isResetting = false;
-    AppMethodBeat.o(200742);
+    AppMethodBeat.o(197412);
     return paramPlayerItem;
   }
   
   private boolean requestAudioFocus()
   {
-    AppMethodBeat.i(200743);
+    AppMethodBeat.i(197413);
     if (this.context == null)
     {
-      AppMethodBeat.o(200743);
+      AppMethodBeat.o(197413);
       return true;
     }
     if (this.audioManager == null) {
@@ -306,22 +306,22 @@ public class TAVPlayer
     }
     if (this.audioManager.requestAudioFocus(this.audioFocusChangeListener, 3, 1) == 1)
     {
-      AppMethodBeat.o(200743);
+      AppMethodBeat.o(197413);
       return true;
     }
-    AppMethodBeat.o(200743);
+    AppMethodBeat.o(197413);
     return false;
   }
   
   private void setPlayerListener(IPlayer.PlayerListener paramPlayerListener)
   {
-    AppMethodBeat.i(200723);
+    AppMethodBeat.i(197393);
     Logger.d(this.TAG, "setPlayerListener() called with: playerListener = [" + paramPlayerListener + "],player = " + this.player);
     this.playerListener = paramPlayerListener;
     if (this.player != null) {
       this.player.setPlayerListener(paramPlayerListener);
     }
-    AppMethodBeat.o(200723);
+    AppMethodBeat.o(197393);
   }
   
   /* Error */
@@ -513,33 +513,33 @@ public class TAVPlayer
   
   public void onSurfaceCreate(Surface paramSurface, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200719);
+    AppMethodBeat.i(197389);
     this.surfaceWidth = paramInt2;
     this.surfaceHeight = paramInt1;
     this.surface = paramSurface;
     updateComposition(this.tavComposition, this.position, this.isAutoPlay, this.compositionUpdateListener);
-    AppMethodBeat.o(200719);
+    AppMethodBeat.o(197389);
   }
   
   public void onSurfaceDestory()
   {
-    AppMethodBeat.i(200721);
+    AppMethodBeat.i(197391);
     if ((this.player != null) && (!this.player.isReleased()))
     {
       this.position = this.player.position();
       this.player.release();
     }
     this.surface = null;
-    AppMethodBeat.o(200721);
+    AppMethodBeat.o(197391);
   }
   
   public void onSurfaceSizeChanged(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(200720);
+    AppMethodBeat.i(197390);
     if (this.player != null) {
       this.player.updateViewport(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(200720);
+    AppMethodBeat.o(197390);
   }
   
   /* Error */
@@ -654,14 +654,14 @@ public class TAVPlayer
   {
     try
     {
-      AppMethodBeat.i(200746);
+      AppMethodBeat.i(197416);
       if (this.postUpdateThread == null)
       {
         this.postUpdateThread = new PostUpdateThread("PostUpdateThread", null);
         this.postUpdateThread.start();
       }
       PostUpdateThread.access$400(this.postUpdateThread, paramICompositionBuilder, paramBoolean);
-      AppMethodBeat.o(200746);
+      AppMethodBeat.o(197416);
       return;
     }
     finally {}
@@ -671,7 +671,7 @@ public class TAVPlayer
   {
     try
     {
-      AppMethodBeat.i(200745);
+      AppMethodBeat.i(197415);
       postUpdate(new ICompositionBuilder()
       {
         public TAVComposition buildComposition()
@@ -681,7 +681,7 @@ public class TAVPlayer
         
         public void onUpdated(Player paramAnonymousPlayer, boolean paramAnonymousBoolean) {}
       }, paramBoolean);
-      AppMethodBeat.o(200745);
+      AppMethodBeat.o(197415);
       return;
     }
     finally
@@ -695,7 +695,7 @@ public class TAVPlayer
   {
     try
     {
-      AppMethodBeat.i(200737);
+      AppMethodBeat.i(197407);
       Logger.d(this.TAG, "release: player = " + this.player);
       if (this.player != null)
       {
@@ -710,7 +710,7 @@ public class TAVPlayer
         this.postUpdateThread = null;
       }
       this.isResetting = false;
-      AppMethodBeat.o(200737);
+      AppMethodBeat.o(197407);
       return;
     }
     finally {}
@@ -720,10 +720,10 @@ public class TAVPlayer
   {
     try
     {
-      AppMethodBeat.i(200736);
+      AppMethodBeat.i(197406);
       this.isResetting = true;
       initContentView();
-      AppMethodBeat.o(200736);
+      AppMethodBeat.o(197406);
       return;
     }
     finally
@@ -735,12 +735,12 @@ public class TAVPlayer
   
   public void seekToTime(CMTime paramCMTime)
   {
-    AppMethodBeat.i(200729);
+    AppMethodBeat.i(197399);
     Logger.d(this.TAG, "seekToTime() called with: cmTime = [" + paramCMTime + "],player = " + this.player);
     if (this.player != null) {
       this.player.seekToTime(paramCMTime);
     }
-    AppMethodBeat.o(200729);
+    AppMethodBeat.o(197399);
   }
   
   public void setAllowInterrupt(boolean paramBoolean)
@@ -769,25 +769,25 @@ public class TAVPlayer
   
   public void setBgColor(int paramInt)
   {
-    AppMethodBeat.i(200726);
+    AppMethodBeat.i(197396);
     this.bgColor = paramInt;
     if (this.player != null) {
       this.player.setBgColor(paramInt);
     }
-    AppMethodBeat.o(200726);
+    AppMethodBeat.o(197396);
   }
   
   public void setLoopPlay(boolean paramBoolean)
   {
     try
     {
-      AppMethodBeat.i(200724);
+      AppMethodBeat.i(197394);
       Logger.d(this.TAG, "setLoopPlay() called with: loopPlay = [" + paramBoolean + "],player = " + this.player);
       this.loopPlay = paramBoolean;
       if (this.player != null) {
         this.player.setLoop(paramBoolean);
       }
-      AppMethodBeat.o(200724);
+      AppMethodBeat.o(197394);
       return;
     }
     finally {}
@@ -797,13 +797,13 @@ public class TAVPlayer
   {
     try
     {
-      AppMethodBeat.i(200727);
+      AppMethodBeat.i(197397);
       Logger.d(this.TAG, "setPlayRange() called with: playRange = [" + paramCMTimeRange + "],player = " + this.player);
       this.playRange = paramCMTimeRange;
       if (this.player != null) {
         this.player.setPlayRange(paramCMTimeRange);
       }
-      AppMethodBeat.o(200727);
+      AppMethodBeat.o(197397);
       return;
     }
     finally {}
@@ -811,42 +811,42 @@ public class TAVPlayer
   
   public void setPlayerListener(final PlayerListener paramPlayerListener)
   {
-    AppMethodBeat.i(200722);
+    AppMethodBeat.i(197392);
     Logger.d(this.TAG, "setPlayerListener() called with: playerListener = [" + paramPlayerListener + "],player = " + this.player);
     setPlayerListener(new IPlayer.PlayerListener()
     {
       public void onPositionChanged(CMTime paramAnonymousCMTime)
       {
-        AppMethodBeat.i(200699);
+        AppMethodBeat.i(197369);
         if ((paramPlayerListener != null) && (TAVPlayer.this.player != null)) {
           paramPlayerListener.onPositionChanged(paramAnonymousCMTime, TAVPlayer.this.player.duration());
         }
-        AppMethodBeat.o(200699);
+        AppMethodBeat.o(197369);
       }
       
       public void onStatusChanged(IPlayer.PlayerStatus paramAnonymousPlayerStatus)
       {
-        AppMethodBeat.i(200700);
+        AppMethodBeat.i(197370);
         if ((paramPlayerListener != null) && (TAVPlayer.this.player != null)) {
           paramPlayerListener.onStatusChanged(paramAnonymousPlayerStatus, TAVPlayer.this.player);
         }
-        AppMethodBeat.o(200700);
+        AppMethodBeat.o(197370);
       }
     });
-    AppMethodBeat.o(200722);
+    AppMethodBeat.o(197392);
   }
   
   public void setRate(float paramFloat)
   {
     try
     {
-      AppMethodBeat.i(200725);
+      AppMethodBeat.i(197395);
       Logger.d(this.TAG, "setLoopPlay() called with: loopPlay = [" + this.loopPlay + "],player = " + this.player);
       this.rate = paramFloat;
       if (this.player != null) {
         this.player.setRate(paramFloat);
       }
-      AppMethodBeat.o(200725);
+      AppMethodBeat.o(197395);
       return;
     }
     finally {}
@@ -861,13 +861,13 @@ public class TAVPlayer
   {
     try
     {
-      AppMethodBeat.i(200728);
+      AppMethodBeat.i(197398);
       Logger.d(this.TAG, "setVolume() called with: volume = [" + paramFloat + "],player = " + this.player);
       this.volume = paramFloat;
       if (this.player != null) {
         this.player.setVolume(paramFloat);
       }
-      AppMethodBeat.o(200728);
+      AppMethodBeat.o(197398);
       return;
     }
     finally {}
@@ -875,14 +875,14 @@ public class TAVPlayer
   
   public void updateComposition(TAVComposition paramTAVComposition, CMTime paramCMTime, boolean paramBoolean)
   {
-    AppMethodBeat.i(200739);
+    AppMethodBeat.i(197409);
     updateComposition(paramTAVComposition, paramCMTime, paramBoolean, null);
-    AppMethodBeat.o(200739);
+    AppMethodBeat.o(197409);
   }
   
   public void updateComposition(TAVComposition paramTAVComposition, final CMTime paramCMTime, final boolean paramBoolean, OnCompositionUpdateListener paramOnCompositionUpdateListener)
   {
-    AppMethodBeat.i(200740);
+    AppMethodBeat.i(197410);
     Logger.d(this.TAG, "updateComposition() called with: tavComposition = [" + paramTAVComposition + "], position = [" + paramCMTime + "], autoPlay = [" + paramBoolean + "]");
     this.tavComposition = paramTAVComposition;
     this.position = paramCMTime;
@@ -890,21 +890,21 @@ public class TAVPlayer
     if (paramTAVComposition == null)
     {
       this.isResetting = false;
-      AppMethodBeat.o(200740);
+      AppMethodBeat.o(197410);
       return;
     }
     if (this.surface == null)
     {
       this.isAutoPlay = paramBoolean;
       this.isResetting = false;
-      AppMethodBeat.o(200740);
+      AppMethodBeat.o(197410);
       return;
     }
     paramTAVComposition = buildPlayerItem(paramTAVComposition);
     if ((this.player == null) || (this.player.isReleased()))
     {
       this.player = newPlayer(paramTAVComposition, paramCMTime, paramBoolean);
-      AppMethodBeat.o(200740);
+      AppMethodBeat.o(197410);
       return;
     }
     Player localPlayer = this.player;
@@ -913,19 +913,19 @@ public class TAVPlayer
     {
       localPlayer.update(paramTAVComposition, paramCMTime, paramOnCompositionUpdateListener);
       this.compositionUpdateListener = null;
-      AppMethodBeat.o(200740);
+      AppMethodBeat.o(197410);
       return;
       paramOnCompositionUpdateListener = new OnCompositionUpdateListener()
       {
         public void onUpdated(Player paramAnonymousPlayer, boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(200701);
+          AppMethodBeat.i(197371);
           TAVPlayer.this.seekToTime(paramCMTime);
           if ((paramBoolean) && (paramAnonymousBoolean)) {
             TAVPlayer.this.play();
           }
           TAVPlayer.access$102(TAVPlayer.this, false);
-          AppMethodBeat.o(200701);
+          AppMethodBeat.o(197371);
         }
       };
     }
@@ -933,9 +933,9 @@ public class TAVPlayer
   
   public void updateComposition(TAVComposition paramTAVComposition, boolean paramBoolean)
   {
-    AppMethodBeat.i(200738);
+    AppMethodBeat.i(197408);
     updateComposition(paramTAVComposition, CMTime.CMTimeZero, paramBoolean);
-    AppMethodBeat.o(200738);
+    AppMethodBeat.o(197408);
   }
   
   public static abstract interface ICompositionBuilder
@@ -969,7 +969,7 @@ public class TAVPlayer
     
     private void doUnlockMsg()
     {
-      AppMethodBeat.i(200710);
+      AppMethodBeat.i(197380);
       if (this.msgLock)
       {
         this.msgLock = false;
@@ -977,30 +977,30 @@ public class TAVPlayer
           update(this.templateSource, this.autoPlay);
         }
       }
-      AppMethodBeat.o(200710);
+      AppMethodBeat.o(197380);
     }
     
     private void doUpdateComposition(final TAVPlayer.ICompositionBuilder paramICompositionBuilder, boolean paramBoolean)
     {
-      AppMethodBeat.i(200711);
+      AppMethodBeat.i(197381);
       unlockMsg(1000);
       TAVComposition localTAVComposition = paramICompositionBuilder.buildComposition();
       TAVPlayer.this.updateComposition(localTAVComposition, CMTime.CMTimeZero, paramBoolean, new OnCompositionUpdateListener()
       {
         public void onUpdated(Player paramAnonymousPlayer, boolean paramAnonymousBoolean)
         {
-          AppMethodBeat.i(200703);
+          AppMethodBeat.i(197373);
           paramICompositionBuilder.onUpdated(paramAnonymousPlayer, paramAnonymousBoolean);
           TAVPlayer.PostUpdateThread.access$600(TAVPlayer.PostUpdateThread.this, 0);
-          AppMethodBeat.o(200703);
+          AppMethodBeat.o(197373);
         }
       });
-      AppMethodBeat.o(200711);
+      AppMethodBeat.o(197381);
     }
     
     private void doUpdateMsg()
     {
-      AppMethodBeat.i(200709);
+      AppMethodBeat.i(197379);
       if ((!this.msgLock) && (this.templateSource != null))
       {
         this.msgLock = true;
@@ -1008,18 +1008,18 @@ public class TAVPlayer
         this.templateSource = null;
         this.autoPlay = false;
       }
-      AppMethodBeat.o(200709);
+      AppMethodBeat.o(197379);
     }
     
     private void unlockMsg(int paramInt)
     {
       try
       {
-        AppMethodBeat.i(200707);
+        AppMethodBeat.i(197377);
         Logger.d(TAVPlayer.this.TAG, "unlockMsg() called thread = " + Thread.currentThread().getName());
         this.handler.removeMessages(95);
         this.handler.sendEmptyMessageDelayed(95, paramInt);
-        AppMethodBeat.o(200707);
+        AppMethodBeat.o(197377);
         return;
       }
       finally
@@ -1033,13 +1033,13 @@ public class TAVPlayer
     {
       try
       {
-        AppMethodBeat.i(200706);
+        AppMethodBeat.i(197376);
         Logger.d(TAVPlayer.this.TAG, "update() called with: thread = " + Thread.currentThread().getName() + ", templateSource = [" + paramICompositionBuilder + "], autoPlay = [" + paramBoolean + "]");
         this.templateSource = paramICompositionBuilder;
         this.autoPlay = paramBoolean;
         this.handler.removeMessages(223);
         this.handler.sendEmptyMessage(223);
-        AppMethodBeat.o(200706);
+        AppMethodBeat.o(197376);
         return;
       }
       finally
@@ -1051,14 +1051,14 @@ public class TAVPlayer
     
     public boolean handleMessage(Message paramMessage)
     {
-      AppMethodBeat.i(200708);
+      AppMethodBeat.i(197378);
       Logger.d(TAVPlayer.this.TAG, "handleMessage() called with: msg = [" + paramMessage + "] msgLock = " + this.msgLock + ",templateSource = " + this.templateSource);
       switch (paramMessage.what)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(200708);
+        AppMethodBeat.o(197378);
         return true;
         doUpdateMsg();
         continue;
@@ -1068,14 +1068,14 @@ public class TAVPlayer
     
     protected void onLooperPrepared()
     {
-      AppMethodBeat.i(200704);
+      AppMethodBeat.i(197374);
       super.onLooperPrepared();
-      AppMethodBeat.o(200704);
+      AppMethodBeat.o(197374);
     }
     
     public void release()
     {
-      AppMethodBeat.i(200712);
+      AppMethodBeat.i(197382);
       this.templateSource = null;
       if (this.handler != null)
       {
@@ -1083,17 +1083,17 @@ public class TAVPlayer
         this.handler = null;
       }
       quit();
-      AppMethodBeat.o(200712);
+      AppMethodBeat.o(197382);
     }
     
     public void start()
     {
       try
       {
-        AppMethodBeat.i(200705);
+        AppMethodBeat.i(197375);
         super.start();
         this.handler = new Handler(getLooper(), this);
-        AppMethodBeat.o(200705);
+        AppMethodBeat.o(197375);
         return;
       }
       finally
@@ -1106,7 +1106,7 @@ public class TAVPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" style="@style/qp"
+<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <EditText android:textSize="18.0dip" android:id="@id/g6w" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="10.0dip" style="@style/n_" />
-        </LinearLayout>
-    </ScrollView>
-    <TextView android:textColor="@color/y4" android:gravity="right" android:id="@id/fsr" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:text="@string/ge" />
-</LinearLayout>
+    <View android:id="@id/c1r" android:background="@drawable/emoji_sticker_select_frame" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ProgressBar android:layout_gravity="center" android:id="@id/c1s" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a71" />
+</merge>

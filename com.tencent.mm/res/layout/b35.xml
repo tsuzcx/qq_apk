@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/al4" android:background="@color/a_r" style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/f40" android:background="@drawable/bm8" android:paddingLeft="@dimen/o" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/o" android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip">
-        <ImageView android:id="@id/dxf" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/searchbar_icon" />
-        <com.tencent.mm.ui.widget.MMEditText android:textSize="@dimen/ia" android:textColor="@color/y4" android:textColorHint="@color/s4" android:gravity="center_vertical" android:id="@id/dxe" android:background="@null" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/d" android:minHeight="@dimen/h4" android:hint="@string/wa" android:singleLine="true" android:layout_weight="1.0" />
-    </LinearLayout>
-    <GridView android:id="@id/aie" android:background="@color/xo" android:paddingLeft="@dimen/hj" android:paddingTop="@dimen/hu" android:paddingRight="@dimen/hj" android:paddingBottom="@dimen/hu" android:scrollbars="vertical" android:numColumns="5" style="@style/n3" />
-</LinearLayout>
+<RelativeLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="@dimen/cs"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:wallet="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/t" android:textColor="@color/a2x" android:id="@id/bko" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_marginStart="32.0dip" />
+    <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/t" android:textColor="@color/a2x" android:id="@id/fjh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:text="" android:layout_marginEnd="32.0dip" android:layout_alignParentEnd="true" wallet:walletTypeFace="i5r" />
+</RelativeLayout>

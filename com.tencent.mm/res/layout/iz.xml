@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ImageView android:id="@id/a34" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <ImageView android:id="@id/a35" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/sj" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/sj">
-        <ImageView android:id="@id/a36" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <ImageView android:id="@id/a37" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/sj" />
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.mm.ui.widget.MMWebView android:id="@id/djk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <TextView android:gravity="center" android:layout_gravity="center" android:id="@id/c2g" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/dty" />
+</FrameLayout>

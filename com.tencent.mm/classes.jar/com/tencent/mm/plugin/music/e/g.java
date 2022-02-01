@@ -1,48 +1,48 @@
 package com.tencent.mm.plugin.music.e;
 
 import com.tencent.mm.ay.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.net.URL;
 import java.util.List;
 
 public abstract class g
   implements a
 {
-  protected f lVz;
-  protected c wzO;
-  
-  public boolean LP(int paramInt)
-  {
-    return true;
-  }
-  
-  public String YI(String paramString)
-  {
-    return paramString;
-  }
+  protected c Ajw;
+  protected f nda;
   
   public void a(f paramf, int paramInt) {}
   
   public final void a(c paramc)
   {
-    this.wzO = paramc;
+    this.Ajw = paramc;
   }
   
-  public URL atO(String paramString)
+  public URL aHK(String paramString)
   {
     return new URL(paramString);
   }
   
-  public f dwa()
+  public String aiK(String paramString)
   {
-    return this.lVz;
+    return paramString;
   }
   
-  public void e(List<f> paramList, boolean paramBoolean) {}
+  public f etU()
+  {
+    return this.nda;
+  }
+  
+  public boolean gEZ()
+  {
+    return true;
+  }
+  
+  public void i(List<f> paramList, boolean paramBoolean) {}
   
   public boolean i(f paramf)
   {
-    this.lVz = paramf;
+    this.nda = paramf;
     return true;
   }
   
@@ -60,39 +60,40 @@ public abstract class g
   
   public void l(f paramf)
   {
-    this.lVz = paramf;
+    this.nda = paramf;
   }
   
   public void m(f paramf)
   {
-    if ((this.lVz != null) && (this.lVz.f(paramf)))
+    if ((this.nda != null) && (this.nda.f(paramf)))
     {
-      f localf = this.lVz;
-      localf.ikb = paramf.ikb;
-      localf.ikc = paramf.ikc;
-      localf.ikd = paramf.ikd;
-      localf.ike = paramf.ike;
-      localf.iki = paramf.iki;
-      localf.ikj = paramf.ikj;
-      localf.ikk = paramf.ikk;
-      localf.ikl = paramf.ikl;
-      localf.ikq = paramf.ikq;
-      localf.ikm = paramf.ikm;
-      localf.dez = paramf.dez;
+      f localf = this.nda;
+      localf.jeX = paramf.jeX;
+      localf.jeY = paramf.jeY;
+      localf.jeZ = paramf.jeZ;
+      localf.jfa = paramf.jfa;
+      localf.jfe = paramf.jfe;
+      localf.jff = paramf.jff;
+      localf.jfg = paramf.jfg;
+      localf.jfh = paramf.jfh;
+      localf.jfm = paramf.jfm;
+      localf.jfi = paramf.jfi;
+      localf.dvv = paramf.dvv;
       localf.protocol = paramf.protocol;
-      localf.hOB = paramf.hOB;
+      localf.iJH = paramf.iJH;
       localf.volume = paramf.volume;
-      localf.ikl = paramf.ikl;
-      localf.hOK = paramf.hOJ;
-      localf.hOK = paramf.hOK;
-      localf.ikw = paramf.ikw;
-      localf.ikx = paramf.ikx;
-      localf.dIt = paramf.dIt;
-      localf.ikz = paramf.ikz;
-      localf.iky = paramf.iky;
+      localf.jfh = paramf.jfh;
+      localf.iJQ = paramf.iJP;
+      localf.iJQ = paramf.iJQ;
+      localf.jfs = paramf.jfs;
+      localf.jft = paramf.jft;
+      localf.eag = paramf.eag;
+      localf.jfv = paramf.jfv;
+      localf.jfu = paramf.jfu;
+      localf.jfx = paramf.jfx;
       return;
     }
-    this.lVz = paramf;
+    this.nda = paramf;
   }
   
   public void n(f paramf) {}
@@ -105,21 +106,21 @@ public abstract class g
   
   public void r(f paramf) {}
   
-  public f u(List<f> paramList, int paramInt)
+  public f y(List<f> paramList, int paramInt)
   {
     if ((paramList == null) || (paramList.size() == 0) || (paramInt >= paramList.size()))
     {
-      ae.i("MicroMsg.Music.MusicBaseLogic", "music wrapper list error");
+      Log.i("MicroMsg.Music.MusicBaseLogic", "music wrapper list error");
       return null;
     }
-    this.lVz = ((f)paramList.get(paramInt));
-    ae.i("MicroMsg.Music.MusicBaseLogic", "startPlayNewMusicList:%d", new Object[] { Integer.valueOf(paramInt) });
-    return this.lVz;
+    this.nda = ((f)paramList.get(paramInt));
+    Log.i("MicroMsg.Music.MusicBaseLogic", "startPlayNewMusicList:%d", new Object[] { Integer.valueOf(paramInt) });
+    return this.nda;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.e.g
  * JD-Core Version:    0.7.0.1
  */

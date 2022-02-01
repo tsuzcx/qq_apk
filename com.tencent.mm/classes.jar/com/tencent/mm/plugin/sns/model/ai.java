@@ -1,33 +1,16 @@
 package com.tencent.mm.plugin.sns.model;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.j.b;
+import com.tencent.mm.plugin.sns.k.b;
 
-public final class ai
-  implements ag
+public abstract interface ai
 {
-  private int scene = 0;
-  private b zCa;
+  public abstract b fat();
   
-  public final b dXi()
-  {
-    AppMethodBeat.i(95844);
-    if (this.zCa == null) {
-      this.zCa = new b();
-    }
-    b localb = this.zCa;
-    AppMethodBeat.o(95844);
-    return localb;
-  }
-  
-  public final int getScene()
-  {
-    return this.scene;
-  }
+  public abstract int getScene();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.ai
  * JD-Core Version:    0.7.0.1
  */

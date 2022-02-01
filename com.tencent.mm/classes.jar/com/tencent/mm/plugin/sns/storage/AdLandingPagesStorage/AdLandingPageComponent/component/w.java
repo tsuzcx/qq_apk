@@ -7,7 +7,7 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.aj;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.al;
 import com.tencent.mm.ui.widget.MMWebView;
 import com.tencent.mm.ui.widget.MMWebView.a;
 import com.tencent.xweb.z;
@@ -15,43 +15,43 @@ import com.tencent.xweb.z;
 public final class w
   extends m
 {
-  MMWebView hLV;
-  FrameLayout zWD;
+  FrameLayout EeM;
+  MMWebView iGY;
   
-  public w(Context paramContext, aj paramaj, ViewGroup paramViewGroup)
+  public w(Context paramContext, al paramal, ViewGroup paramViewGroup)
   {
-    super(paramContext, paramaj, paramViewGroup);
+    super(paramContext, paramal, paramViewGroup);
   }
   
-  public final void dUI()
-  {
-    AppMethodBeat.i(96614);
-    this.zWD = ((FrameLayout)this.contentView);
-    this.hLV = MMWebView.a.kO(this.context);
-    this.zWD.addView(this.hLV);
-    AppMethodBeat.o(96614);
-  }
-  
-  protected final void dUJ()
+  protected final void eWT()
   {
     AppMethodBeat.i(96613);
-    this.hLV.setVerticalScrollBarEnabled(false);
-    this.hLV.setHorizontalScrollBarEnabled(false);
-    this.hLV.getSettings().setJavaScriptEnabled(true);
-    this.hLV.loadUrl(((aj)this.zUP).uEo);
-    this.hLV.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    this.hLV.setVisibility(0);
-    this.zWD.setPadding(this.zWD.getPaddingLeft(), (int)((aj)this.zUP).paddingTop, this.zWD.getPaddingRight(), (int)((aj)this.zUP).paddingBottom);
-    this.zWD.setLayoutParams(new LinearLayout.LayoutParams(this.lxZ, this.lya));
+    this.iGY.setVerticalScrollBarEnabled(false);
+    this.iGY.setHorizontalScrollBarEnabled(false);
+    this.iGY.getSettings().setJavaScriptEnabled(true);
+    this.iGY.loadUrl(((al)this.EcX).h5Url);
+    this.iGY.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
+    this.iGY.setVisibility(0);
+    this.EeM.setPadding(this.EeM.getPaddingLeft(), (int)((al)this.EcX).paddingTop, this.EeM.getPaddingRight(), (int)((al)this.EcX).paddingBottom);
+    this.EeM.setLayoutParams(new LinearLayout.LayoutParams(this.mEX, this.mEY));
     AppMethodBeat.o(96613);
   }
   
-  protected final View eae()
+  protected final View eWY()
   {
     AppMethodBeat.i(96615);
     FrameLayout localFrameLayout = new FrameLayout(this.context);
     AppMethodBeat.o(96615);
     return localFrameLayout;
+  }
+  
+  public final void eXe()
+  {
+    AppMethodBeat.i(96614);
+    this.EeM = ((FrameLayout)this.contentView);
+    this.iGY = MMWebView.a.kL(this.context);
+    this.EeM.addView(this.iGY);
+    AppMethodBeat.o(96614);
   }
   
   protected final int getLayout()

@@ -1,11 +1,11 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gu;
+import com.tencent.mm.g.c.hf;
 import com.tencent.mm.plugin.wallet_core.d.e;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -15,42 +15,42 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public final class y
-  extends gu
+  extends hf
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(70415);
-    c.a locala = new c.a();
-    locala.IBL = new Field[3];
-    locala.columns = new String[4];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[3];
+    localMAutoDBInfo.columns = new String[4];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "bulletin_scene";
-    locala.IBN.put("bulletin_scene", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "bulletin_scene";
+    localMAutoDBInfo.colsMap.put("bulletin_scene", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" bulletin_scene TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "bulletin_scene";
-    locala.columns[1] = "bulletin_content";
-    locala.IBN.put("bulletin_content", "TEXT");
+    localMAutoDBInfo.primaryKey = "bulletin_scene";
+    localMAutoDBInfo.columns[1] = "bulletin_content";
+    localMAutoDBInfo.colsMap.put("bulletin_content", "TEXT");
     localStringBuilder.append(" bulletin_content TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "bulletin_url";
-    locala.IBN.put("bulletin_url", "TEXT");
+    localMAutoDBInfo.columns[2] = "bulletin_url";
+    localMAutoDBInfo.colsMap.put("bulletin_url", "TEXT");
     localStringBuilder.append(" bulletin_url TEXT");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[3] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(70415);
   }
   
-  public static void bn(JSONObject paramJSONObject)
+  public static void bN(JSONObject paramJSONObject)
   {
     boolean bool3 = true;
     boolean bool2 = true;
     int j = 0;
     AppMethodBeat.i(70414);
-    Object localObject1 = t.eJj();
+    Object localObject1 = t.fQM();
     if ((paramJSONObject != null) && (localObject1 != null))
     {
       Object localObject3 = paramJSONObject.optJSONArray("banner_map");
@@ -70,11 +70,11 @@ public final class y
           {
             str = ((JSONObject)localObject4).optString("banner_type");
             localObject4 = ((JSONObject)localObject4).optString("banner_template_id");
-            ae.i("MicroMsg.WalletBulletin", "sceneid=" + str + "; contentid=" + (String)localObject4);
-            if ((!bu.isNullOrNil(str)) && (!bu.isNullOrNil((String)localObject4)))
+            Log.i("MicroMsg.WalletBulletin", "sceneid=" + str + "; contentid=" + (String)localObject4);
+            if ((!Util.isNullOrNil(str)) && (!Util.isNullOrNil((String)localObject4)))
             {
               ((Map)localObject2).put(str, localObject4);
-              ae.i("MicroMsg.WalletBulletin", "sceneid:" + str + " map contentid:" + (String)localObject4);
+              Log.i("MicroMsg.WalletBulletin", "sceneid:" + str + " map contentid:" + (String)localObject4);
             }
           }
           i += 1;
@@ -98,7 +98,7 @@ public final class y
             localObject4 = (String)((Map)localObject2).get(str);
             if (localHashMap.containsKey(localObject4))
             {
-              ae.i("MicroMsg.WalletBulletin", "find contentid:" + (String)localObject4 + "in contentMap");
+              Log.i("MicroMsg.WalletBulletin", "find contentid:" + (String)localObject4 + "in contentMap");
               localObject4 = paramJSONObject.optJSONObject(((Integer)localHashMap.get(localObject4)).intValue());
               y localy = new y();
               localy.field_bulletin_scene = str;
@@ -108,7 +108,7 @@ public final class y
             }
             else
             {
-              ae.e("MicroMsg.WalletBulletin", "can not find contentid:" + (String)localObject4 + "in contentMap");
+              Log.e("MicroMsg.WalletBulletin", "can not find contentid:" + (String)localObject4 + "in contentMap");
             }
           }
         }
@@ -127,7 +127,7 @@ public final class y
       label537:
       for (bool1 = bool2;; bool1 = false)
       {
-        ae.e("MicroMsg.WalletBulletin", bool1);
+        Log.e("MicroMsg.WalletBulletin", bool1);
         AppMethodBeat.o(70414);
         return;
         bool1 = false;
@@ -146,7 +146,7 @@ public final class y
     label609:
     for (boolean bool1 = bool3;; bool1 = false)
     {
-      ae.e("MicroMsg.WalletBulletin", bool1);
+      Log.e("MicroMsg.WalletBulletin", bool1);
       AppMethodBeat.o(70414);
       return;
       bool1 = false;
@@ -154,7 +154,7 @@ public final class y
     }
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

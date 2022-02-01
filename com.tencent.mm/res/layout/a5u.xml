@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/a5t" android:background="@drawable/c4s" android:layout_width="fill_parent" android:layout_height="fill_parent" android:fillViewport="true"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/a5r" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</LinearLayout>
+<RelativeLayout android:orientation="vertical" android:id="@id/gyb" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/hd" android:textStyle="bold" android:textColor="@color/fo" android:gravity="center" android:id="@id/c9n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cs" />
+    <RelativeLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="@dimen/c_" android:layout_marginTop="@dimen/cn" android:layout_below="@id/c9n" android:layout_centerHorizontal="true">
+        <ImageView android:id="@id/c9l" android:layout_width="@dimen/bu" android:layout_height="@dimen/bu" android:layout_centerInParent="true" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/c9m" android:layout_width="@dimen/cm" android:layout_height="@dimen/cm" android:layout_centerInParent="true" app:iconColor="@color/afz" />
+    </RelativeLayout>
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/Link" android:id="@id/c9i" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ce" android:text="@string/c5c" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <Button android:textStyle="bold" android:id="@id/c9h" android:visibility="invisible" android:layout_marginBottom="@dimen/bx" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/p3" />
+    <Button android:textStyle="bold" android:id="@id/c9j" android:layout_marginBottom="11.0dip" android:layout_above="@id/c9h" android:layout_centerHorizontal="true" style="@style/ov" />
+</RelativeLayout>

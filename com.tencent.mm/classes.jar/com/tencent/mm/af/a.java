@@ -6,9 +6,9 @@ public abstract interface a
 {
   public abstract void a(f paramf);
   
-  public abstract void ak(float paramFloat);
+  public abstract void aBB();
   
-  public abstract void ali();
+  public abstract void at(float paramFloat);
   
   public abstract void onHide();
   
@@ -16,7 +16,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.af.a
  * JD-Core Version:    0.7.0.1
  */

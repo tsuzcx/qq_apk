@@ -10,17 +10,17 @@ public abstract interface g
   
   public static final class a
   {
-    public String Fdj;
-    public String Fdq;
+    public String JTZ;
+    public String JUg;
+    public String aesKey;
     public String fileId;
-    public String gmb;
-    public long iTe;
-    public String nZM;
+    public long jPY;
+    public String pkL;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.f.g
  * JD-Core Version:    0.7.0.1
  */

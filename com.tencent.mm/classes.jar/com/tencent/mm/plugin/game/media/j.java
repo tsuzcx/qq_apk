@@ -6,16 +6,16 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore.Video.Media;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class j
 {
   private static Object lock;
-  private static j uiQ;
-  ContentResolver gJw;
+  private static j xBj;
+  ContentResolver hwt;
   
   static
   {
@@ -27,19 +27,19 @@ public final class j
   private j()
   {
     AppMethodBeat.i(41030);
-    this.gJw = ak.getContext().getContentResolver();
+    this.hwt = MMApplicationContext.getContext().getContentResolver();
     AppMethodBeat.o(41030);
   }
   
   public static String a(LinkedList<String> paramLinkedList, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(41031);
-    if (bu.ht(paramLinkedList)) {}
+    if (Util.isNullOrNil(paramLinkedList)) {}
     StringBuilder localStringBuilder;
     for (paramLinkedList = "()";; paramLinkedList = localStringBuilder.toString())
     {
       paramLinkedList = String.format("%s in %s and %s<=%d AND %s>=%d", new Object[] { "bucket_display_name", paramLinkedList, "datetaken", Long.valueOf(paramLong1), "datetaken", Long.valueOf(paramLong2) });
-      ae.d("MicroMsg.GameLocalVideoQuery", "where %s", new Object[] { paramLinkedList });
+      Log.d("MicroMsg.GameLocalVideoQuery", "where %s", new Object[] { paramLinkedList });
       AppMethodBeat.o(41031);
       return paramLinkedList;
       localStringBuilder = new StringBuilder();
@@ -48,34 +48,34 @@ public final class j
       int i = 0;
       while (i < j - 1)
       {
-        localStringBuilder.append("\"" + (String)paramLinkedList.get(i) + "\"").append(",");
+        localStringBuilder.append("'" + (String)paramLinkedList.get(i) + "'").append(",");
         i += 1;
       }
-      localStringBuilder.append("\"" + (String)paramLinkedList.get(j - 1) + "\"").append(")");
+      localStringBuilder.append("'" + (String)paramLinkedList.get(j - 1) + "'").append(")");
     }
   }
   
-  public static j daH()
+  public static j dUp()
   {
     AppMethodBeat.i(41029);
-    if (uiQ == null) {}
+    if (xBj == null) {}
     synchronized (lock)
     {
-      if (uiQ == null) {
-        uiQ = new j();
+      if (xBj == null) {
+        xBj = new j();
       }
-      ??? = uiQ;
+      ??? = xBj;
       AppMethodBeat.o(41029);
       return ???;
     }
   }
   
-  public static Uri daI()
+  public static Uri dUq()
   {
     return MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
   }
   
-  public static String daJ()
+  public static String dUr()
   {
     return "datetaken desc";
   }
@@ -88,10 +88,10 @@ public final class j
   public final int b(LinkedList<String> paramLinkedList, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(41032);
-    ContentResolver localContentResolver = this.gJw;
+    ContentResolver localContentResolver = this.hwt;
     Uri localUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
     paramLinkedList = a(paramLinkedList, paramLong1, paramLong2);
-    paramLinkedList = localContentResolver.query(localUri, new String[] { "count(*)" }, paramLinkedList, null, null);
+    paramLinkedList = localContentResolver.query(localUri, new String[] { "_id" }, paramLinkedList, null, null);
     if ((paramLinkedList == null) || (!paramLinkedList.moveToNext()))
     {
       AppMethodBeat.o(41032);
@@ -105,7 +105,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.j
  * JD-Core Version:    0.7.0.1
  */

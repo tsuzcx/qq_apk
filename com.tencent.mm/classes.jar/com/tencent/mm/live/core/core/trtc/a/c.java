@@ -10,13 +10,13 @@ import java.io.File;
 
 public final class c
 {
-  public static final String gLz;
-  private TRTCCloud gLA;
-  private boolean gLB;
-  private int gLC;
-  private int gLD;
-  private int gLE;
-  private a gLF;
+  public static final String hAX;
+  private TRTCCloud hAY;
+  private boolean hAZ;
+  private int hBa;
+  private int hBb;
+  private int hBc;
+  private a hBd;
   private int mAppScene;
   private int mBeautyLevel;
   private int mRuddyLevel;
@@ -25,87 +25,87 @@ public final class c
   
   static
   {
-    AppMethodBeat.i(197089);
-    gLz = Environment.getExternalStorageDirectory().getPath() + "/test/record/record.aac";
-    AppMethodBeat.o(197089);
+    AppMethodBeat.i(196277);
+    hAX = Environment.getExternalStorageDirectory().getPath() + "/test/record/record.aac";
+    AppMethodBeat.o(196277);
   }
   
   public c()
   {
-    this.gLB = true;
-    this.gLC = 0;
+    this.hAZ = true;
+    this.hBa = 0;
     this.mBeautyLevel = 5;
     this.mWhiteningLevel = 3;
     this.mRuddyLevel = 2;
-    this.gLE = 0;
+    this.hBc = 0;
   }
   
   public c(TRTCCloud paramTRTCCloud, TRTCCloudDef.TRTCParams paramTRTCParams)
   {
-    AppMethodBeat.i(197076);
-    this.gLB = true;
-    this.gLC = 0;
+    AppMethodBeat.i(196263);
+    this.hAZ = true;
+    this.hBa = 0;
     this.mBeautyLevel = 5;
     this.mWhiteningLevel = 3;
     this.mRuddyLevel = 2;
-    this.gLE = 0;
-    this.gLA = paramTRTCCloud;
+    this.hBc = 0;
+    this.hAY = paramTRTCCloud;
     this.mTRTCParams = paramTRTCParams;
     this.mAppScene = 1;
     if (paramTRTCParams == null) {}
     for (int i = 21;; i = this.mTRTCParams.role)
     {
-      this.gLD = i;
-      AppMethodBeat.o(197076);
+      this.hBb = i;
+      AppMethodBeat.o(196263);
       return;
     }
   }
   
-  private void amh()
+  private void aDL()
   {
-    AppMethodBeat.i(197081);
-    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.amd().alZ();
+    AppMethodBeat.i(196268);
+    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.aDH().aDD();
     TRTCCloudDef.TRTCVideoEncParam localTRTCVideoEncParam = new TRTCCloudDef.TRTCVideoEncParam();
-    localTRTCVideoEncParam.videoResolution = locald.gLU;
-    localTRTCVideoEncParam.videoFps = locald.gLV;
+    localTRTCVideoEncParam.videoResolution = locald.hBu;
+    localTRTCVideoEncParam.videoFps = locald.hBv;
     localTRTCVideoEncParam.videoBitrate = locald.mVideoBitrate;
-    if (locald.gLW) {}
+    if (locald.hBw) {}
     for (int i = 1;; i = 0)
     {
       localTRTCVideoEncParam.videoResolutionMode = i;
-      this.gLA.setVideoEncoderParam(localTRTCVideoEncParam);
-      AppMethodBeat.o(197081);
+      this.hAY.setVideoEncoderParam(localTRTCVideoEncParam);
+      AppMethodBeat.o(196268);
       return;
     }
   }
   
-  private void ami()
+  private void aDM()
   {
-    AppMethodBeat.i(197082);
-    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.amd().alZ();
+    AppMethodBeat.i(196269);
+    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.aDH().aDD();
     TRTCCloudDef.TRTCNetworkQosParam localTRTCNetworkQosParam = new TRTCCloudDef.TRTCNetworkQosParam();
     localTRTCNetworkQosParam.controlMode = locald.mQosMode;
     localTRTCNetworkQosParam.preference = locald.mQosPreference;
-    this.gLA.setNetworkQosParam(localTRTCNetworkQosParam);
-    AppMethodBeat.o(197082);
+    this.hAY.setNetworkQosParam(localTRTCNetworkQosParam);
+    AppMethodBeat.o(196269);
   }
   
-  private void amj()
+  private void aDN()
   {
     int j = 1;
-    AppMethodBeat.i(197083);
-    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.amd().alZ();
+    AppMethodBeat.i(196270);
+    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.aDH().aDD();
     Object localObject = new TRTCCloudDef.TRTCVideoEncParam();
     ((TRTCCloudDef.TRTCVideoEncParam)localObject).videoResolution = 100;
-    ((TRTCCloudDef.TRTCVideoEncParam)localObject).videoFps = locald.gLV;
+    ((TRTCCloudDef.TRTCVideoEncParam)localObject).videoFps = locald.hBv;
     ((TRTCCloudDef.TRTCVideoEncParam)localObject).videoBitrate = 100;
-    if (locald.gLW)
+    if (locald.hBw)
     {
       i = 1;
       ((TRTCCloudDef.TRTCVideoEncParam)localObject).videoResolutionMode = i;
-      this.gLA.enableEncSmallVideoStream(locald.gMb, (TRTCCloudDef.TRTCVideoEncParam)localObject);
-      localObject = this.gLA;
-      if (!locald.gMc) {
+      this.hAY.enableEncSmallVideoStream(locald.hBB, (TRTCCloudDef.TRTCVideoEncParam)localObject);
+      localObject = this.hAY;
+      if (!locald.hBC) {
         break label108;
       }
     }
@@ -113,156 +113,165 @@ public final class c
     for (int i = j;; i = 0)
     {
       ((TRTCCloud)localObject).setPriorRemoteVideoStreamType(i);
-      AppMethodBeat.o(197083);
+      AppMethodBeat.o(196270);
       return;
       i = 0;
       break;
     }
   }
   
+  private void setSystemVolumeType(int paramInt)
+  {
+    AppMethodBeat.i(196272);
+    this.hAY.setSystemVolumeType(paramInt);
+    AppMethodBeat.o(196272);
+  }
+  
   public final void a(a parama)
   {
-    this.gLF = parama;
+    this.hBd = parama;
   }
   
   public final void a(d paramd)
   {
-    AppMethodBeat.i(197077);
-    this.gLA.setListener(new b(paramd));
-    AppMethodBeat.o(197077);
+    AppMethodBeat.i(196264);
+    this.hAY.setListener(new b(paramd));
+    AppMethodBeat.o(196264);
   }
   
-  public final void ame()
+  public final void aDI()
   {
-    AppMethodBeat.i(197078);
-    com.tencent.mm.live.core.core.trtc.a.a.a locala = a.a.amd().ama();
-    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.amd().alZ();
-    this.gLA.enableCustomVideoCapture(true);
-    this.gLA.setDefaultStreamRecvMode(true, true);
+    AppMethodBeat.i(196265);
+    com.tencent.mm.live.core.core.trtc.a.a.a locala = a.a.aDH().aDE();
+    com.tencent.mm.live.core.core.trtc.a.a.d locald = a.a.aDH().aDD();
+    this.hAY.enableCustomVideoCapture(true);
+    this.hAY.setDefaultStreamRecvMode(true, true);
     int i;
-    if (locald.gLX)
+    if (locald.hBx)
     {
-      this.gLA.setLocalViewFillMode(0);
-      i = locald.gMf;
-      this.gLA.setLocalViewRotation(i);
-      if (!locala.gLM) {
-        break label160;
+      this.hAY.setLocalViewFillMode(0);
+      i = locald.hBF;
+      this.hAY.setLocalViewRotation(i);
+      if (!locala.hBk) {
+        break label155;
       }
-      this.gLA.setAudioRoute(0);
+      this.hAY.setAudioRoute(0);
       label82:
-      if (!locald.gMd) {
-        break label171;
+      if (!locald.hBD) {
+        break label166;
       }
-      this.gLA.setGSensorMode(2);
+      this.hAY.setGSensorMode(2);
     }
     for (;;)
     {
-      i = locala.gLH;
-      this.gLA.setSystemVolumeType(i);
-      boolean bool = locald.cuD;
-      this.gLA.setVideoEncoderMirror(bool);
-      i = locald.gLY;
-      this.gLA.setLocalViewMirror(i);
-      amg();
-      AppMethodBeat.o(197078);
+      setSystemVolumeType(locala.hBf);
+      boolean bool = locald.cIw;
+      this.hAY.setVideoEncoderMirror(bool);
+      i = locald.hBy;
+      this.hAY.setLocalViewMirror(i);
+      aDK();
+      AppMethodBeat.o(196265);
       return;
-      this.gLA.setLocalViewFillMode(1);
+      this.hAY.setLocalViewFillMode(1);
       break;
-      label160:
-      this.gLA.setAudioRoute(1);
+      label155:
+      this.hAY.setAudioRoute(1);
       break label82;
-      label171:
-      this.gLA.setGSensorMode(0);
+      label166:
+      this.hAY.setGSensorMode(0);
     }
   }
   
-  public final void amf()
+  public final void aDJ()
   {
-    AppMethodBeat.i(197079);
-    boolean bool = a.a.amd().ama().gLN;
+    AppMethodBeat.i(196266);
+    int i = a.a.aDH().aDE().hBo;
+    this.hAY.setAudioQuality(i);
+    setSystemVolumeType(a.a.aDH().aDE().hBf);
+    boolean bool = a.a.aDH().aDE().hBl;
     if (bool) {
-      this.gLA.enableAudioVolumeEvaluation(300);
+      this.hAY.enableAudioVolumeEvaluation(300);
     }
     for (;;)
     {
-      if (this.gLF != null) {
-        this.gLF.dF(bool);
+      if (this.hBd != null) {
+        this.hBd.ex(bool);
       }
-      this.gLA.enterRoom(this.mTRTCParams, this.mAppScene);
-      AppMethodBeat.o(197079);
+      this.hAY.enterRoom(this.mTRTCParams, this.mAppScene);
+      AppMethodBeat.o(196266);
       return;
-      this.gLA.enableAudioVolumeEvaluation(0);
+      this.hAY.enableAudioVolumeEvaluation(0);
     }
   }
   
-  public final void amg()
+  public final void aDK()
   {
-    AppMethodBeat.i(197080);
-    amh();
-    ami();
-    amj();
-    AppMethodBeat.o(197080);
+    AppMethodBeat.i(196267);
+    aDL();
+    aDM();
+    aDN();
+    AppMethodBeat.o(196267);
   }
   
-  public final int amk()
+  public final int aDO()
   {
     int i = 20;
-    AppMethodBeat.i(197085);
-    if (this.gLD == 20) {
+    AppMethodBeat.i(196273);
+    if (this.hBb == 20) {
       i = 21;
     }
-    if (this.gLA != null) {
-      this.gLA.switchRole(i);
+    if (this.hAY != null) {
+      this.hAY.switchRole(i);
     }
-    this.gLD = i;
-    i = this.gLD;
-    AppMethodBeat.o(197085);
+    this.hBb = i;
+    i = this.hBb;
+    AppMethodBeat.o(196273);
     return i;
   }
   
-  public final int aml()
+  public final int aDP()
   {
-    return this.gLD;
-  }
-  
-  public final void dG(boolean paramBoolean)
-  {
-    AppMethodBeat.i(197088);
-    this.gLA.enableAudioEarMonitoring(paramBoolean);
-    AppMethodBeat.o(197088);
+    return this.hBb;
   }
   
   public final void exitRoom()
   {
-    AppMethodBeat.i(197084);
-    if (this.gLA != null) {
-      this.gLA.exitRoom();
+    AppMethodBeat.i(196271);
+    if (this.hAY != null) {
+      this.hAY.exitRoom();
     }
-    AppMethodBeat.o(197084);
+    AppMethodBeat.o(196271);
+  }
+  
+  public final void ey(boolean paramBoolean)
+  {
+    AppMethodBeat.i(196276);
+    this.hAY.enableAudioEarMonitoring(paramBoolean);
+    AppMethodBeat.o(196276);
   }
   
   public final void startLocalAudio()
   {
-    AppMethodBeat.i(197086);
-    this.gLA.startLocalAudio();
-    AppMethodBeat.o(197086);
+    AppMethodBeat.i(196274);
+    this.hAY.startLocalAudio();
+    AppMethodBeat.o(196274);
   }
   
   public final void stopLocalAudio()
   {
-    AppMethodBeat.i(197087);
-    this.gLA.stopLocalAudio();
-    AppMethodBeat.o(197087);
+    AppMethodBeat.i(196275);
+    this.hAY.stopLocalAudio();
+    AppMethodBeat.o(196275);
   }
   
   public static abstract interface a
   {
-    public abstract void dF(boolean paramBoolean);
+    public abstract void ex(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.core.trtc.a.c
  * JD-Core Version:    0.7.0.1
  */

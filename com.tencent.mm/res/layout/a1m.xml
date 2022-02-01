@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/u9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <com.tencent.mm.plugin.facedetectlight.ui.PreviewFrameLayout android:gravity="center" android:id="@id/bs0" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true">
-        <com.tencent.mm.ui.base.MMTextureView android:id="@id/brz" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
-    </com.tencent.mm.plugin.facedetectlight.ui.PreviewFrameLayout>
-    <com.tencent.mm.plugin.facedetectlight.ui.FaceReflectMask android:id="@id/bs1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/brg" android:visibility="invisible" android:layout_width="320.0dip" android:layout_height="320.0dip" android:layout_marginTop="135.0dip" android:src="@drawable/bin" android:layout_centerHorizontal="true" />
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/bs3" android:visibility="invisible" android:layout_width="278.0dip" android:layout_height="278.0dip" android:layout_marginTop="145.0dip" android:src="@drawable/bi2" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="24.0dip" android:textColor="@color/a_u" android:id="@id/bs2" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/by6" android:layout_below="@id/brg" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/a2n" android:textColor="@color/a_u" android:id="@id/cjj" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-90.0dip" android:layout_above="@id/brg" android:layout_centerHorizontal="true" android:fontFamily="sans-serif-thin" />
-</merge>
+    <ImageView android:id="@id/bze" android:padding="@dimen/ct" android:layout_width="@dimen/a1y" android:layout_height="@dimen/a1y" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/n1" android:gravity="center_horizontal" android:id="@id/bzf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ct" android:maxLines="2" android:layout_below="@id/bze" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.plugin.emojicapture.ui.capture.StickerSelectFrame android:id="@id/bzk" android:visibility="gone" android:layout_width="@dimen/a1y" android:layout_height="@dimen/a1y" android:layout_centerHorizontal="true" />
+</RelativeLayout>

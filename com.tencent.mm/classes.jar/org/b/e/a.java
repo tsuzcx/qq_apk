@@ -14,39 +14,39 @@ import org.b.d.k;
 public final class a
   implements b
 {
-  private org.b.d.a OtJ;
-  private org.b.a.a.b OtK;
+  private org.b.d.a UiG;
+  private org.b.a.a.b UiH;
   
   public a(org.b.a.a.b paramb, org.b.d.a parama)
   {
-    this.OtK = paramb;
-    this.OtJ = parama;
+    this.UiH = paramb;
+    this.UiG = parama;
   }
   
   private void a(org.b.d.c paramc, i parami)
   {
     AppMethodBeat.i(40562);
-    paramc.nS("oauth_timestamp", new org.b.f.d().gDk());
-    paramc.nS("oauth_nonce", new org.b.f.d().getNonce());
-    paramc.nS("oauth_consumer_key", this.OtJ.Ote);
-    paramc.nS("oauth_signature_method", new org.b.f.a().gDj());
-    paramc.nS("oauth_version", "1.0");
-    if (this.OtJ.gCW()) {
-      paramc.nS("scope", this.OtJ.scope);
+    paramc.oK("oauth_timestamp", new org.b.f.d().hQo());
+    paramc.oK("oauth_nonce", new org.b.f.d().getNonce());
+    paramc.oK("oauth_consumer_key", this.UiG.Uib);
+    paramc.oK("oauth_signature_method", new org.b.f.a().hQn());
+    paramc.oK("oauth_version", "1.0");
+    if (this.UiG.hQa()) {
+      paramc.oK("scope", this.UiG.scope);
     }
-    paramc.nS("oauth_signature", b(paramc, parami));
-    this.OtJ.log("appended additional OAuth parameters: " + org.b.g.b.J(paramc.Otn));
+    paramc.oK("oauth_signature", b(paramc, parami));
+    this.UiG.log("appended additional OAuth parameters: " + org.b.g.b.M(paramc.Uik));
     AppMethodBeat.o(40562);
   }
   
   private String b(org.b.d.c paramc, i parami)
   {
     AppMethodBeat.i(40566);
-    this.OtJ.log("generating signature...");
+    this.UiG.log("generating signature...");
     paramc = new org.b.c.c().a(paramc);
-    parami = new org.b.f.a().bv(paramc, this.OtJ.Otf, parami.HmQ);
-    this.OtJ.log("base string is: ".concat(String.valueOf(paramc)));
-    this.OtJ.log("signature is: ".concat(String.valueOf(parami)));
+    parami = new org.b.f.a().bD(paramc, this.UiG.Uic, parami.Mte);
+    this.UiG.log("base string is: ".concat(String.valueOf(paramc)));
+    this.UiG.log("signature is: ".concat(String.valueOf(parami)));
     AppMethodBeat.o(40566);
     return parami;
   }
@@ -54,23 +54,23 @@ public final class a
   private void b(org.b.d.c paramc)
   {
     AppMethodBeat.i(40567);
-    switch (gDi()[this.OtJ.Oti.ordinal()])
+    switch (hQm()[this.UiG.Uif.ordinal()])
     {
     }
     for (;;)
     {
       AppMethodBeat.o(40567);
       return;
-      this.OtJ.log("using Http Header signature");
+      this.UiG.log("using Http Header signature");
       paramc.addHeader("Authorization", new e().a(paramc));
       AppMethodBeat.o(40567);
       return;
-      this.OtJ.log("using Querystring signature");
-      Iterator localIterator = paramc.Otn.entrySet().iterator();
+      this.UiG.log("using Querystring signature");
+      Iterator localIterator = paramc.Uik.entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        paramc.nT((String)localEntry.getKey(), (String)localEntry.getValue());
+        paramc.oL((String)localEntry.getKey(), (String)localEntry.getValue());
       }
     }
   }
@@ -78,15 +78,15 @@ public final class a
   public final i a(i parami, k paramk)
   {
     AppMethodBeat.i(40563);
-    this.OtJ.log("obtaining access token from " + this.OtK.gCV());
-    org.b.d.c localc = new org.b.d.c(j.OtB, this.OtK.gCV());
-    localc.nS("oauth_token", parami.token);
-    localc.nS("oauth_verifier", paramk.value);
-    this.OtJ.log("setting token to: " + parami + " and verifier to: " + paramk);
+    this.UiG.log("obtaining access token from " + this.UiH.hPZ());
+    org.b.d.c localc = new org.b.d.c(j.Uiy, this.UiH.hPZ());
+    localc.oK("oauth_token", parami.token);
+    localc.oK("oauth_verifier", paramk.value);
+    this.UiG.log("setting token to: " + parami + " and verifier to: " + paramk);
     a(localc, parami);
     b(localc);
-    parami = localc.gDb();
-    parami = new org.b.c.g().bfE(parami.getBody());
+    parami = localc.hQf();
+    parami = new org.b.c.g().bvu(parami.getBody());
     AppMethodBeat.o(40563);
     return parami;
   }
@@ -94,14 +94,14 @@ public final class a
   public final void a(i parami, org.b.d.c paramc)
   {
     AppMethodBeat.i(40564);
-    this.OtJ.log("signing request: " + paramc.gCZ());
-    if (("".equals(parami.token)) && ("".equals(parami.HmQ))) {}
+    this.UiG.log("signing request: " + paramc.hQd());
+    if (("".equals(parami.token)) && ("".equals(parami.Mte))) {}
     for (int i = 1;; i = 0)
     {
       if (i == 0) {
-        paramc.nS("oauth_token", parami.token);
+        paramc.oK("oauth_token", parami.token);
       }
-      this.OtJ.log("setting token to: ".concat(String.valueOf(parami)));
+      this.UiG.log("setting token to: ".concat(String.valueOf(parami)));
       a(paramc, parami);
       b(paramc);
       AppMethodBeat.o(40564);
@@ -112,33 +112,33 @@ public final class a
   public final String b(i parami)
   {
     AppMethodBeat.i(40565);
-    parami = this.OtK.b(parami);
+    parami = this.UiH.b(parami);
     AppMethodBeat.o(40565);
     return parami;
   }
   
-  public final i gDh()
+  public final i hQl()
   {
     AppMethodBeat.i(40561);
-    this.OtJ.log("obtaining request token from " + this.OtK.gCU());
-    Object localObject = new org.b.d.c(j.OtB, this.OtK.gCU());
-    this.OtJ.log("setting oauth_callback to " + this.OtJ.Otg);
-    ((org.b.d.c)localObject).nS("oauth_callback", this.OtJ.Otg);
-    a((org.b.d.c)localObject, org.b.d.b.Otm);
+    this.UiG.log("obtaining request token from " + this.UiH.hPY());
+    Object localObject = new org.b.d.c(j.Uiy, this.UiH.hPY());
+    this.UiG.log("setting oauth_callback to " + this.UiG.Uid);
+    ((org.b.d.c)localObject).oK("oauth_callback", this.UiG.Uid);
+    a((org.b.d.c)localObject, org.b.d.b.Uij);
     b((org.b.d.c)localObject);
-    this.OtJ.log("sending request...");
-    localObject = ((org.b.d.c)localObject).gDb();
+    this.UiG.log("sending request...");
+    localObject = ((org.b.d.c)localObject).hQf();
     String str = ((org.b.d.g)localObject).getBody();
-    this.OtJ.log("response status code: " + ((org.b.d.g)localObject).code);
-    this.OtJ.log("response body: ".concat(String.valueOf(str)));
-    localObject = new org.b.c.g().bfE(str);
+    this.UiG.log("response status code: " + ((org.b.d.g)localObject).code);
+    this.UiG.log("response body: ".concat(String.valueOf(str)));
+    localObject = new org.b.c.g().bvu(str);
     AppMethodBeat.o(40561);
     return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.b.e.a
  * JD-Core Version:    0.7.0.1
  */

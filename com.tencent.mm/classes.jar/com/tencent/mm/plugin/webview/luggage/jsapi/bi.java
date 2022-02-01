@@ -1,76 +1,50 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
-import android.os.Bundle;
+import android.content.res.Resources;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
-import com.tencent.luggage.d.s;
+import com.tencent.luggage.d.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.webview.ui.tools.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class bi
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
-    int j = 1;
-    AppMethodBeat.i(78628);
-    ae.i("MicroMsg.JsApiSetScreenOrientation", "invoke");
-    Object localObject = paramb.chh.cgn.optString("orientation");
-    if (bu.isNullOrNil((String)localObject))
+    AppMethodBeat.i(78627);
+    Log.i("MicroMsg.JsApiSetPageTitle", "invokeInOwn");
+    String str = paramb.ctb.csi.optString("title");
+    if (!Util.isNullOrNil(paramb.ctb.csi.optString("color")))
     {
-      ae.e("MicroMsg.JsApiSetScreenOrientation", "data is null");
-      paramb.a("invalid_data", null);
-      AppMethodBeat.o(78628);
-      return;
-    }
-    int i;
-    if (((String)localObject).equals("horizontal")) {
-      i = 0;
+      int i = e.gw(paramb.ctb.csi.optString("color"), ((g)paramb.cta).mContext.getResources().getColor(2131099892));
+      ((g)paramb.cta).ec(str, i);
     }
     for (;;)
     {
-      localObject = (g)paramb.chg;
-      ((s)localObject).mParams.putInt("screen_orientation", i);
-      ((g)localObject).eSN();
-      paramb.a("", null);
-      AppMethodBeat.o(78628);
+      paramb.c("", null);
+      AppMethodBeat.o(78627);
       return;
-      i = j;
-      if (!((String)localObject).equals("vertical")) {
-        if (((String)localObject).equals("sensor"))
-        {
-          i = 4;
-        }
-        else if (((String)localObject).equals("horizontal_unforced"))
-        {
-          i = 0;
-        }
-        else
-        {
-          i = j;
-          if (!((String)localObject).equals("vertical_unforced")) {
-            i = -1;
-          }
-        }
-      }
+      ((g)paramb.cta).ec(str, 0);
     }
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setScreenOrientation";
+    return "setPageTitle";
   }
 }
 

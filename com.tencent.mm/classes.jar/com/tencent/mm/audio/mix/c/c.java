@@ -1,252 +1,269 @@
 package com.tencent.mm.audio.mix.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.mix.a.e;
-import java.lang.reflect.Array;
+import com.tencent.mm.audio.mix.i.b;
+import java.nio.ByteOrder;
+import java.util.Arrays;
 
-public class c
-  implements g
+public final class c
 {
-  protected static long ddK;
-  protected static long ddL;
-  protected static Object ddM;
-  protected int ddA;
-  protected int ddB;
-  protected int ddC;
-  protected int ddD;
-  protected int ddE;
-  protected boolean ddF;
-  protected boolean ddG;
-  protected boolean ddH;
-  protected String ddI;
-  protected String ddJ;
-  protected byte[][] ddN;
-  protected h ddO;
-  protected h ddy;
-  protected int ddz;
+  public static boolean duu = false;
   
-  static
+  public static void YP()
   {
-    AppMethodBeat.i(136766);
-    ddK = 0L;
-    ddL = 0L;
-    ddM = new Object();
-    AppMethodBeat.o(136766);
+    AppMethodBeat.i(136756);
+    if (ByteOrder.nativeOrder() == ByteOrder.BIG_ENDIAN)
+    {
+      duu = true;
+      AppMethodBeat.o(136756);
+      return;
+    }
+    duu = false;
+    AppMethodBeat.o(136756);
   }
   
-  public c()
+  public static void a(int paramInt, byte[] paramArrayOfByte, byte[][] paramArrayOfByte1)
   {
-    AppMethodBeat.i(136761);
-    this.ddz = 0;
-    this.ddA = 0;
-    this.ddB = 0;
-    this.ddC = 44100;
-    this.ddD = 2;
-    this.ddE = 2;
-    this.ddF = false;
-    this.ddG = false;
-    this.ddH = false;
-    this.ddN = new byte[2][];
-    AppMethodBeat.o(136761);
-  }
-  
-  public final void G(int paramInt1, int paramInt2, int paramInt3)
-  {
-    AppMethodBeat.i(136763);
-    int i = this.ddz;
-    this.ddz = paramInt1;
-    this.ddA = paramInt2;
-    this.ddB = paramInt3;
-    if (this.ddC != this.ddz) {
-      if (this.ddy == null)
-      {
-        this.ddy = Ox();
-        this.ddy.l(this.ddJ, this.ddz, this.ddC);
-        if ((this.ddA == 2) && (this.ddD == 2))
-        {
-          if (this.ddO != null) {
-            break label247;
-          }
-          this.ddO = Ox();
-          this.ddO.l(this.ddJ + "RResample", this.ddz, this.ddC);
-        }
-        label145:
-        this.ddH = true;
-      }
+    AppMethodBeat.i(136759);
+    if (paramArrayOfByte1.length <= 1)
+    {
+      AppMethodBeat.o(136759);
+      return;
+    }
+    int j = paramArrayOfByte.length / 2;
+    Arrays.fill(paramArrayOfByte1[0], 0, paramArrayOfByte1[0].length, (byte)0);
+    Arrays.fill(paramArrayOfByte1[1], 0, paramArrayOfByte1[1].length, (byte)0);
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      if (this.ddE != this.ddB) {
-        this.ddG = true;
-      }
-      if (this.ddD != this.ddA) {
-        this.ddF = true;
-      }
-      AppMethodBeat.o(136763);
+      AppMethodBeat.o(136759);
       return;
-      if ((this.ddy == null) || (i == this.ddz)) {
-        break;
-      }
-      this.ddy.release();
-      this.ddy = Ox();
-      this.ddy.l(this.ddJ, this.ddz, this.ddC);
-      break;
-      label247:
-      if ((this.ddO == null) || (i == this.ddz)) {
-        break label145;
-      }
-      this.ddO.release();
-      this.ddO = Ox();
-      this.ddO.l(this.ddJ + "RResample", this.ddz, this.ddC);
-      break label145;
-      this.ddH = false;
-      if (this.ddy != null)
+      int i = 0;
+      paramInt = 0;
+      while (paramInt < j)
       {
-        this.ddy.release();
-        this.ddy = null;
+        paramArrayOfByte1[0][i] = paramArrayOfByte[paramInt];
+        paramArrayOfByte1[1][i] = paramArrayOfByte[(paramInt + 1)];
+        i += 1;
+        paramInt += 2;
+      }
+      AppMethodBeat.o(136759);
+      return;
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        paramArrayOfByte1[0][paramInt] = paramArrayOfByte[(paramInt * 2)];
+        paramArrayOfByte1[0][(paramInt + 1)] = paramArrayOfByte[(paramInt * 2 + 1)];
+        paramArrayOfByte1[1][paramInt] = paramArrayOfByte[(paramInt * 2 + 2)];
+        paramArrayOfByte1[1][(paramInt + 1)] = paramArrayOfByte[(paramInt * 2 + 3)];
+        paramInt += 2;
       }
     }
   }
   
-  public byte[] J(byte[] paramArrayOfByte)
+  public static byte[] a(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(136764);
-    if (paramArrayOfByte == null)
+    int i = 0;
+    AppMethodBeat.i(136757);
+    if (paramInt1 == paramInt2)
     {
-      AppMethodBeat.o(136764);
+      AppMethodBeat.o(136757);
       return paramArrayOfByte;
     }
-    if (this.ddG)
+    int j = paramArrayOfByte.length;
+    switch (paramInt1)
     {
-      ??? = b.a(this.ddB, this.ddE, paramArrayOfByte);
-      if (??? == null) {}
     }
     for (;;)
     {
-      if (??? == null) {
-        ??? = paramArrayOfByte;
-      }
-      for (;;)
+      AppMethodBeat.o(136757);
+      return paramArrayOfByte;
+      switch (paramInt2)
       {
-        if ((this.ddA == 1) && (this.ddD == 2) && (this.ddH))
+      default: 
+        break;
+      case 2: 
+        arrayOfByte1 = new byte[j * 2];
+        paramInt1 = 0;
+        while (paramInt1 < j)
         {
-          paramArrayOfByte = this.ddy.J((byte[])???);
-          if (paramArrayOfByte != null) {
-            ??? = paramArrayOfByte;
-          }
-          paramArrayOfByte = b.b(this.ddA, this.ddD, this.ddE, (byte[])???);
-          if (paramArrayOfByte != null) {
-            ??? = paramArrayOfByte;
-          }
-          AppMethodBeat.o(136764);
-          return ???;
+          byte[] arrayOfByte2 = a.getBytes((short)(paramArrayOfByte[paramInt1] * 256), duu);
+          arrayOfByte1[(paramInt1 * 2)] = arrayOfByte2[0];
+          arrayOfByte1[(paramInt1 * 2 + 1)] = arrayOfByte2[1];
+          paramInt1 += 1;
         }
-        byte[] arrayOfByte;
-        if ((this.ddA == 2) && (this.ddD == 2) && (this.ddH))
+        AppMethodBeat.o(136757);
+        return arrayOfByte1;
+        switch (paramInt2)
         {
-          if ((this.ddy instanceof i)) {
-            if (this.ddD == 2)
-            {
-              int i = ???.length / 2;
-              if ((this.ddN == null) || (i != this.ddN.length)) {
-                this.ddN = ((byte[][])Array.newInstance(Byte.TYPE, new int[] { 2, i }));
-              }
-              b.a(this.ddE, (byte[])???, this.ddN);
-              paramArrayOfByte = this.ddy.J(this.ddN[0]);
-              arrayOfByte = this.ddO.J(this.ddN[1]);
-              if ((paramArrayOfByte == null) || (arrayOfByte == null)) {
-                paramArrayOfByte = (byte[])???;
-              }
-            }
-          }
-          for (;;)
-          {
-            if (paramArrayOfByte != null) {
-              ??? = paramArrayOfByte;
-            }
-            AppMethodBeat.o(136764);
-            return ???;
-            paramArrayOfByte = b.a(this.ddE, paramArrayOfByte, arrayOfByte);
-            continue;
-            paramArrayOfByte = this.ddy.J((byte[])???);
-            continue;
-            paramArrayOfByte = this.ddy.J((byte[])???);
-          }
         }
-        if (this.ddF)
+        break;
+      }
+    }
+    paramInt2 = j / 2;
+    byte[] arrayOfByte1 = new byte[paramInt2];
+    paramInt1 = i;
+    while (paramInt1 < paramInt2)
+    {
+      arrayOfByte1[paramInt1] = ((byte)(a.a(paramArrayOfByte[(paramInt1 * 2)], paramArrayOfByte[(paramInt1 * 2 + 1)], duu) / 256));
+      paramInt1 += 1;
+    }
+    AppMethodBeat.o(136757);
+    return arrayOfByte1;
+  }
+  
+  public static byte[] a(int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    int j = 0;
+    int i = 0;
+    AppMethodBeat.i(136760);
+    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null) || (paramArrayOfByte1.length == 0) || (paramArrayOfByte2.length == 0))
+    {
+      b.e("MicroMsg.Mix.AudioConvertHelper", "sourceFirstByteArray or sourceSecondByteArray is null");
+      AppMethodBeat.o(136760);
+      return null;
+    }
+    if (paramArrayOfByte1.length != paramArrayOfByte2.length)
+    {
+      b.e("MicroMsg.Mix.AudioConvertHelper", "sourceFirstByteArray and sourceSecondByteArray length is not same");
+      AppMethodBeat.o(136760);
+      return null;
+    }
+    int k = paramArrayOfByte1.length;
+    byte[] arrayOfByte = new byte[k * 2];
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(136760);
+      return arrayOfByte;
+      while (i < k)
+      {
+        arrayOfByte[i] = paramArrayOfByte1[i];
+        arrayOfByte[(i + 1)] = paramArrayOfByte2[i];
+        i += 2;
+      }
+      while (j < k)
+      {
+        arrayOfByte[(j * 2)] = paramArrayOfByte1[j];
+        arrayOfByte[(j * 2 + 1)] = paramArrayOfByte1[(j + 1)];
+        arrayOfByte[(j * 2 + 2)] = paramArrayOfByte2[j];
+        arrayOfByte[(j * 2 + 3)] = paramArrayOfByte2[(j + 1)];
+        j += 2;
+      }
+    }
+  }
+  
+  public static byte[] b(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte)
+  {
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    AppMethodBeat.i(136758);
+    if (paramArrayOfByte == null)
+    {
+      AppMethodBeat.o(136758);
+      return paramArrayOfByte;
+    }
+    if (paramInt1 == paramInt2)
+    {
+      AppMethodBeat.o(136758);
+      return paramArrayOfByte;
+    }
+    switch (paramInt3)
+    {
+    default: 
+      AppMethodBeat.o(136758);
+      return paramArrayOfByte;
+    }
+    int m = paramArrayOfByte.length;
+    switch (paramInt1)
+    {
+    }
+    byte b1;
+    byte b2;
+    for (;;)
+    {
+      AppMethodBeat.o(136758);
+      return paramArrayOfByte;
+      switch (paramInt2)
+      {
+      default: 
+        break;
+      case 2: 
+        arrayOfByte1 = new byte[m * 2];
+        paramInt1 = k;
+        paramInt2 = i;
+        switch (paramInt3)
         {
-          arrayOfByte = b.b(this.ddA, this.ddD, this.ddE, (byte[])???);
-          if (arrayOfByte != null) {
-            ??? = arrayOfByte;
-          }
         }
         for (;;)
         {
-          if (??? == null) {}
-          for (;;)
+          AppMethodBeat.o(136758);
+          return arrayOfByte1;
+          while (paramInt1 < m)
           {
-            ??? = paramArrayOfByte;
-            if (this.ddH) {}
-            synchronized (ddM)
-            {
-              ddK += 1L;
-              System.nanoTime();
-              ??? = this.ddy.J(paramArrayOfByte);
-              if (??? != null) {
-                paramArrayOfByte = (byte[])???;
-              }
-              synchronized (ddM)
-              {
-                ??? = paramArrayOfByte;
-              }
-            }
-            paramArrayOfByte = finally;
-            AppMethodBeat.o(136764);
-            throw paramArrayOfByte;
-            paramArrayOfByte = (byte[])???;
+            b1 = paramArrayOfByte[paramInt1];
+            arrayOfByte1[(paramInt1 * 2)] = b1;
+            arrayOfByte1[(paramInt1 * 2 + 1)] = b1;
+            paramInt1 += 1;
+          }
+          while (paramInt2 < m)
+          {
+            b1 = paramArrayOfByte[paramInt2];
+            b2 = paramArrayOfByte[(paramInt2 + 1)];
+            arrayOfByte1[(paramInt2 * 2)] = b1;
+            arrayOfByte1[(paramInt2 * 2 + 1)] = b2;
+            arrayOfByte1[(paramInt2 * 2 + 2)] = b1;
+            arrayOfByte1[(paramInt2 * 2 + 3)] = b2;
+            paramInt2 += 2;
           }
         }
+        switch (paramInt2)
+        {
+        }
+        break;
       }
-      ??? = null;
     }
-  }
-  
-  public h Ox()
-  {
-    AppMethodBeat.i(136762);
-    i locali = new i();
-    AppMethodBeat.o(136762);
-    return locali;
-  }
-  
-  public void Oy() {}
-  
-  public e Oz()
-  {
-    return null;
-  }
-  
-  public void flushCache() {}
-  
-  public void release()
-  {
-    AppMethodBeat.i(136765);
-    if (this.ddy != null)
+    paramInt2 = m / 2;
+    byte[] arrayOfByte1 = new byte[paramInt2];
+    paramInt1 = j;
+    switch (paramInt3)
     {
-      this.ddy.release();
-      this.ddy = null;
     }
-    if (this.ddO != null)
+    for (;;)
     {
-      this.ddO.release();
-      this.ddO = null;
+      AppMethodBeat.o(136758);
+      return arrayOfByte1;
+      while (paramInt1 < paramInt2)
+      {
+        arrayOfByte1[paramInt1] = ((byte)((short)((short)paramArrayOfByte[(paramInt1 * 2)] + (short)paramArrayOfByte[(paramInt1 * 2 + 1)]) >> 1));
+        paramInt1 += 2;
+      }
+      paramInt1 = 0;
+      while (paramInt1 < paramInt2)
+      {
+        b1 = paramArrayOfByte[(paramInt1 * 2)];
+        b2 = paramArrayOfByte[(paramInt1 * 2 + 1)];
+        byte b3 = paramArrayOfByte[(paramInt1 * 2 + 2)];
+        byte b4 = paramArrayOfByte[(paramInt1 * 2 + 3)];
+        boolean bool = duu;
+        paramInt3 = a.a(b1, b2, bool);
+        i = a.a(b3, b4, bool);
+        byte[] arrayOfByte2 = a.getBytes((short)(paramInt3 / 2 + i / 2), bool);
+        arrayOfByte1[paramInt1] = arrayOfByte2[0];
+        arrayOfByte1[(paramInt1 + 1)] = arrayOfByte2[1];
+        paramInt1 += 2;
+      }
     }
-    AppMethodBeat.o(136765);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.audio.mix.c.c
  * JD-Core Version:    0.7.0.1
  */

@@ -3,43 +3,43 @@ package com.tencent.mm.graphics.b;
 import android.view.Choreographer;
 import android.view.Choreographer.FrameCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.concurrent.TimeUnit;
 
 public enum c
   implements Choreographer.FrameCallback
 {
   private Choreographer choreographer;
-  private long gxr;
-  private int gxs;
-  double gxt;
-  private int gxu;
-  public boolean gxv;
+  private int gTn;
+  private long hkf;
+  private int hkg;
+  double hkh;
+  public boolean hki;
   private final Object lock;
   
   static
   {
     AppMethodBeat.i(136204);
-    gxq = new c("INSTANCE");
-    gxw = new c[] { gxq };
+    hke = new c("INSTANCE");
+    hkj = new c[] { hke };
     AppMethodBeat.o(136204);
   }
   
   private c()
   {
     AppMethodBeat.i(136201);
-    this.gxr = 0L;
-    this.gxs = 0;
-    this.gxt = 0.0D;
-    this.gxu = 500;
+    this.hkf = 0L;
+    this.hkg = 0;
+    this.hkh = 0.0D;
+    this.gTn = 500;
     this.lock = new Object();
-    this.gxv = false;
+    this.hki = false;
     AppMethodBeat.o(136201);
   }
   
   /* Error */
-  public final Choreographer aht()
+  public final Choreographer axF()
   {
     // Byte code:
     //   0: ldc 94
@@ -129,34 +129,34 @@ public enum c
   {
     AppMethodBeat.i(136203);
     paramLong = TimeUnit.NANOSECONDS.toMillis(paramLong);
-    if (this.gxr > 0L)
+    if (this.hkf > 0L)
     {
-      long l = paramLong - this.gxr;
-      this.gxs += 1;
-      if (l > this.gxu)
+      long l = paramLong - this.hkf;
+      this.hkg += 1;
+      if (l > this.gTn)
       {
-        this.gxt = (this.gxs * 1000 / l);
-        this.gxr = paramLong;
-        this.gxs = 0;
+        this.hkh = (this.hkg * 1000 / l);
+        this.hkf = paramLong;
+        this.hkg = 0;
       }
     }
     for (;;)
     {
-      aht().postFrameCallback(this);
+      axF().postFrameCallback(this);
       AppMethodBeat.o(136203);
       return;
-      this.gxr = paramLong;
+      this.hkf = paramLong;
     }
   }
   
   public final void stop()
   {
     AppMethodBeat.i(136202);
-    this.gxr = 0L;
-    this.gxs = 0;
-    this.gxv = false;
-    ae.i("MicroMsg.Metronome", "[stop] stack:%s", new Object[] { bu.fpN() });
-    aht().removeFrameCallback(this);
+    this.hkf = 0L;
+    this.hkg = 0;
+    this.hki = false;
+    Log.i("MicroMsg.Metronome", "[stop] stack:%s", new Object[] { Util.getStack() });
+    axF().removeFrameCallback(this);
     AppMethodBeat.o(136202);
   }
 }

@@ -69,6 +69,7 @@ public class PolylineOptions
     this.mAboveMaskLayer = false;
     this.mIsRoad = true;
     this.mArrowTexture = null;
+    this.mClickable = true;
     this.colorType = PolylineOptions.ColorType.LINE_COLOR_NONE;
     this.iLevel = OverlayLevel.OverlayLevelAboveRoads;
     this.strCustomerTextName = sDefaultColorTexture;
@@ -564,7 +565,7 @@ public class PolylineOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.PolylineOptions
  * JD-Core Version:    0.7.0.1
  */

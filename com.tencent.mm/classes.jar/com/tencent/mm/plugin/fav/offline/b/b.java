@@ -2,41 +2,41 @@ package com.tencent.mm.plugin.fav.offline.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] INDEX_CREATE;
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(73573);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "FavOffline") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "FavOffline") };
     INDEX_CREATE = new String[0];
     AppMethodBeat.o(73573);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "FavOffline", INDEX_CREATE);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "FavOffline", INDEX_CREATE);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final boolean ahB(String paramString)
+  public final boolean asj(String paramString)
   {
     AppMethodBeat.i(73569);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.i("MicroMsg.offline.FavOfflineStorage", "url is null!");
+      Log.i("MicroMsg.offline.FavOfflineStorage", "url is null!");
       AppMethodBeat.o(73569);
       return true;
     }
@@ -53,7 +53,7 @@ public final class b
     {
       for (;;)
       {
-        ae.e("MicroMsg.offline.FavOfflineStorage", "deleteByUrl url:%s Exception:%s %s", new Object[] { paramString, localException.getClass().getSimpleName(), localException.getMessage() });
+        Log.e("MicroMsg.offline.FavOfflineStorage", "deleteByUrl url:%s Exception:%s %s", new Object[] { paramString, localException.getClass().getSimpleName(), localException.getMessage() });
         int i = 0;
       }
       AppMethodBeat.o(73569);
@@ -61,10 +61,10 @@ public final class b
     return false;
   }
   
-  public final a ahC(String paramString)
+  public final a ask(String paramString)
   {
     AppMethodBeat.i(73570);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(73570);
       return null;
@@ -99,7 +99,7 @@ public final class b
     AppMethodBeat.i(73568);
     if (parama == null)
     {
-      ae.e("MicroMsg.offline.FavOfflineStorage", "update() item is null");
+      Log.e("MicroMsg.offline.FavOfflineStorage", "update() item is null");
       AppMethodBeat.o(73568);
       return false;
     }
@@ -108,7 +108,7 @@ public final class b
     return bool;
   }
   
-  public final List<a> cxt()
+  public final List<a> cVx()
   {
     AppMethodBeat.i(73567);
     ArrayList localArrayList = new ArrayList();
@@ -128,7 +128,7 @@ public final class b
     return localArrayList;
   }
   
-  public final List<a> cxu()
+  public final List<a> cVy()
   {
     AppMethodBeat.i(73571);
     Cursor localCursor = this.db.query("FavOffline", a.info.columns, "status!=? and failNum<?", new String[] { "2", "5" }, null, null, "rowid");

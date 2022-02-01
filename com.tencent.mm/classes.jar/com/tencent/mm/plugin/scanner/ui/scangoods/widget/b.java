@@ -2,18 +2,18 @@ package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/DefaultScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController;", "context", "Landroid/content/Context;", "scanDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "startAnimation", "", "stopAnimation", "Companion", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/DefaultScanDotsAnimationController;", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/BaseScanDotsAnimationController;", "context", "Landroid/content/Context;", "scanDotsView", "Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;)V", "startAnimation", "", "stopAnimation", "Companion", "plugin-scan_release"})
 public final class b
   extends a
 {
-  public static final b.a yLz;
+  public static final b.a CPs;
   
   static
   {
     AppMethodBeat.i(52254);
-    yLz = new b.a((byte)0);
+    CPs = new b.a((byte)0);
     AppMethodBeat.o(52254);
   }
   

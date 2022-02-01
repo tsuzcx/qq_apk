@@ -6,276 +6,104 @@ import com.tencent.mm.plugin.report.a;
 public final class gh
   extends a
 {
-  private long efB = 0L;
-  private long efC = 0L;
-  private long efF = 0L;
-  private String env = "";
-  private String eoR = "";
-  private String eoS = "";
-  private long eoT = 0L;
-  private long eoU = 0L;
-  private long eoV = 0L;
-  private long eoW = 0L;
-  private long eoX = 0L;
-  private long eoY = 0L;
-  private long eoZ = 0L;
-  private long epa = 0L;
-  private long epb = 0L;
-  private long epc = 0L;
-  private long epd = 0L;
-  private long epe = 0L;
-  private long epf = 0L;
-  private long epg = 0L;
-  private long eph = 0L;
-  private long epi = 0L;
+  private long eJn;
+  private String eJp = "";
+  private long eJr;
+  private String eoz = "";
+  private long ete;
+  private String evo = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(118526);
+    AppMethodBeat.i(200252);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eoR);
+    ((StringBuffer)localObject).append(this.evo);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eoS);
+    ((StringBuffer)localObject).append(this.eJn);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.env);
+    ((StringBuffer)localObject).append(this.eJr);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eoT);
+    ((StringBuffer)localObject).append(this.ete);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eoU);
+    ((StringBuffer)localObject).append(this.eoz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efF);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eoV);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eoW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eoX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eoY);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efB);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.efC);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eoZ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.epa);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.epb);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.epc);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.epd);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.epe);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.epf);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.epg);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eph);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.epi);
+    ((StringBuffer)localObject).append(this.eJp);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(118526);
+    aMq((String)localObject);
+    AppMethodBeat.o(200252);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(118527);
+    AppMethodBeat.i(200253);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("FileUrl:").append(this.eoR);
+    ((StringBuffer)localObject).append("ItemId:").append(this.evo);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoMd5:").append(this.eoS);
+    ((StringBuffer)localObject).append("ItemType:").append(this.eJn);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Tid:").append(this.env);
+    ((StringBuffer)localObject).append("AddType:").append(this.eJr);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadStartTime:").append(this.eoT);
+    ((StringBuffer)localObject).append("Status:").append(this.ete);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadEndTime:").append(this.eoU);
+    ((StringBuffer)localObject).append("ContextId:").append(this.eoz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OriginSize:").append(this.efF);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OriginDuration:").append(this.eoV);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OriginVideoBitrate:").append(this.eoW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OriginAudioBitrate:").append(this.eoX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OriginFps:").append(this.eoY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OriginWidth:").append(this.efB);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OriginHeight:").append(this.efC);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CPSize:").append(this.eoZ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CPDuration:").append(this.epa);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CPVideoBitrate:").append(this.epb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CPAudioBitrate:").append(this.epc);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CPFps:").append(this.epd);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CPWidth:").append(this.epe);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CPHight:").append(this.epf);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SendSource:").append(this.epg);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OriginAudioChannel:").append(this.eph);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NetWorkType:").append(this.epi);
+    ((StringBuffer)localObject).append("ItemSubId:").append(this.eJp);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118527);
+    AppMethodBeat.o(200253);
     return localObject;
-  }
-  
-  public final String Ue()
-  {
-    return this.eoR;
-  }
-  
-  public final String Uf()
-  {
-    return this.eoS;
-  }
-  
-  public final String Ug()
-  {
-    return this.env;
-  }
-  
-  public final long Uh()
-  {
-    return this.eoT;
-  }
-  
-  public final long Ui()
-  {
-    return this.eoU;
-  }
-  
-  public final long Uj()
-  {
-    return this.efF;
-  }
-  
-  public final long Uk()
-  {
-    return this.eoV;
-  }
-  
-  public final long Ul()
-  {
-    return this.eoW;
-  }
-  
-  public final long Um()
-  {
-    return this.eoY;
-  }
-  
-  public final long Un()
-  {
-    return this.efB;
-  }
-  
-  public final long Uo()
-  {
-    return this.efC;
-  }
-  
-  public final long Up()
-  {
-    return this.eoZ;
-  }
-  
-  public final long Uq()
-  {
-    return this.epa;
-  }
-  
-  public final long Ur()
-  {
-    return this.epb;
-  }
-  
-  public final long Us()
-  {
-    return this.epd;
-  }
-  
-  public final long Ut()
-  {
-    return this.epe;
-  }
-  
-  public final long Uu()
-  {
-    return this.epf;
-  }
-  
-  public final long Uv()
-  {
-    return this.epg;
-  }
-  
-  public final long Uw()
-  {
-    return this.eph;
-  }
-  
-  public final long Ux()
-  {
-    return this.epi;
   }
   
   public final int getId()
   {
-    return 16664;
+    return 21935;
   }
   
-  public final gh lU(long paramLong)
+  public final gh qc(long paramLong)
   {
-    this.eoT = paramLong;
+    this.eJn = paramLong;
     return this;
   }
   
-  public final gh lV(long paramLong)
+  public final gh qd(long paramLong)
   {
-    this.eoU = paramLong;
+    this.eJr = paramLong;
     return this;
   }
   
-  public final gh lW(long paramLong)
+  public final gh qe(long paramLong)
   {
-    this.epi = paramLong;
+    this.ete = paramLong;
     return this;
   }
   
-  public final gh py(String paramString)
+  public final gh tP(String paramString)
   {
-    AppMethodBeat.i(118524);
-    this.eoR = t("FileUrl", paramString, true);
-    AppMethodBeat.o(118524);
+    AppMethodBeat.i(200249);
+    this.evo = x("ItemId", paramString, true);
+    AppMethodBeat.o(200249);
     return this;
   }
   
-  public final gh pz(String paramString)
+  public final gh tQ(String paramString)
   {
-    AppMethodBeat.i(118525);
-    this.env = t("Tid", paramString, true);
-    AppMethodBeat.o(118525);
+    AppMethodBeat.i(200250);
+    this.eoz = x("ContextId", paramString, true);
+    AppMethodBeat.o(200250);
+    return this;
+  }
+  
+  public final gh tR(String paramString)
+  {
+    AppMethodBeat.i(200251);
+    this.eJp = x("ItemSubId", paramString, true);
+    AppMethodBeat.o(200251);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.g.b.a.gh
  * JD-Core Version:    0.7.0.1
  */

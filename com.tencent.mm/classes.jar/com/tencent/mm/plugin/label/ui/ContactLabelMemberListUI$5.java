@@ -16,12 +16,12 @@ final class ContactLabelMemberListUI$5
   {
     AppMethodBeat.i(26265);
     b localb = new b();
-    localb.bd(paramAdapterView);
-    localb.bd(paramView);
-    localb.mu(paramInt);
-    localb.rl(paramLong);
-    a.b("com/tencent/mm/plugin/label/ui/ContactLabelMemberListUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-    ContactLabelMemberListUI.a(this.viU, paramInt);
+    localb.bm(paramAdapterView);
+    localb.bm(paramView);
+    localb.pH(paramInt);
+    localb.zo(paramLong);
+    a.b("com/tencent/mm/plugin/label/ui/ContactLabelMemberListUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+    ContactLabelMemberListUI.a(this.yCX, paramInt);
     a.a(this, "com/tencent/mm/plugin/label/ui/ContactLabelMemberListUI$5", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
     AppMethodBeat.o(26265);
   }

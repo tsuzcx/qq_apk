@@ -1,103 +1,163 @@
 package com.tencent.mm.plugin.appbrand.config;
 
+import android.text.TextUtils;
+import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.plugin.appbrand.app.j;
-import com.tencent.mm.plugin.appbrand.networking.b;
-import com.tencent.mm.protocal.protobuf.eie;
-import com.tencent.mm.protocal.protobuf.ku;
-import com.tencent.mm.protocal.protobuf.kv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Log;
 
-public class n
-  extends b<kv>
+public enum n
 {
-  public n(String paramString)
+  private static final a leP;
+  private static final a leQ;
+  
+  static
   {
-    super((byte)0);
-    AppMethodBeat.i(222220);
-    ku localku = new ku();
-    localku.Scene = a.kbZ.intValue;
-    eie localeie = new eie();
-    localeie.phf = paramString;
-    localku.FUO.add(localeie);
-    a(localku);
-    AppMethodBeat.o(222220);
+    AppMethodBeat.i(147003);
+    leR = new n[0];
+    leP = new a((byte)0);
+    leQ = new a((byte)0);
+    AppMethodBeat.o(147003);
   }
   
-  n(List<String> paramList, a parama)
+  public static int Xg(String paramString)
   {
-    super((byte)0);
-    AppMethodBeat.i(44852);
-    ae.i("MicroMsg.AppBrand.CgiBatchWxaAttrSync", "create sync request, list_size %d, scene %s(%d)", new Object[] { Integer.valueOf(paramList.size()), parama.name(), Integer.valueOf(parama.intValue) });
-    ku localku = new ku();
-    localku.Scene = parama.intValue;
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    AppMethodBeat.i(147000);
+    int j = leP.Xi(paramString);
+    i = j;
+    if (j <= 0) {
+      localObject = null;
+    }
+    try
     {
-      parama = (String)paramList.next();
-      if (!bu.isNullOrNil(parama))
+      ab.bAu();
+      WxaAttributes localWxaAttributes = ab.e(paramString, new String[] { "dynamicInfo" });
+      localObject = localWxaAttributes;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        eie localeie = new eie();
-        localeie.Hhh = parama;
-        localeie.FZb = j.aZl().Oe(parama);
-        localku.FUO.add(localeie);
+        Log.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localException, "queryWithAppId(%s)", new Object[] { paramString });
+        continue;
+        i = localObject.bAo().lgD.cza;
+        continue;
+        i = 5;
       }
     }
-    a(localku);
-    AppMethodBeat.o(44852);
-  }
-  
-  private void a(ku paramku)
-  {
-    AppMethodBeat.i(222221);
-    b.a locala = new b.a();
-    locala.hQF = paramku;
-    locala.hQG = new kv();
-    locala.funcId = 1192;
-    locala.uri = "/cgi-bin/mmbiz-bin/wxaattr/batchwxaattrsync";
-    c(locala.aDS());
-    AppMethodBeat.o(222221);
-  }
-  
-  public static enum a
-  {
-    final int intValue;
-    
-    static
+    if (localObject == null)
     {
-      AppMethodBeat.i(44851);
-      kbM = new a("DEFAULT", 0, 100);
-      kbN = new a("RECENTS_LIST", 1, 101);
-      kbO = new a("TASK_BAR", 2, 102);
-      kbP = new a("STAR_LIST", 3, 103);
-      kbQ = new a("MP_PRELOAD", 4, 104);
-      kbR = new a("BIZ_BIND_WXA", 5, 105);
-      kbS = new a("WXA_CUSTOMER_SERVICE", 6, 106);
-      kbT = new a("WXA_PLUGIN_JSAPI", 7, 107);
-      kbU = new a("WXA_RECOMMEND_LIST", 8, 108);
-      kbV = new a("WXA_RECOMMEND_CARD_LIST", 9, 109);
-      kbW = new a("WALLET_MALL_INDEX", 10, 110);
-      kbX = new a("CHATTING", 11, 111);
-      kbY = new a("QRCODE", 12, 112);
-      kbZ = new a("QRCODE_PRE", 13, 113);
-      kca = new a[] { kbM, kbN, kbO, kbP, kbQ, kbR, kbS, kbT, kbU, kbV, kbW, kbX, kbY, kbZ };
-      AppMethodBeat.o(44851);
+      i = -1;
+      Log.i("MicroMsg.AppServiceSettingsResolver", "readAppFileStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
+      if (localObject == null) {
+        break label137;
+      }
+      i = localObject.bAo().lgD.cza;
+      bw(paramString, i);
+      AppMethodBeat.o(147000);
+      return i * 1048576;
+    }
+  }
+  
+  public static int Xh(String paramString)
+  {
+    AppMethodBeat.i(147002);
+    int j = leQ.Xi(paramString);
+    i = j;
+    if (j <= 0) {
+      localObject = null;
+    }
+    try
+    {
+      ab.bAu();
+      WxaAttributes localWxaAttributes = ab.e(paramString, new String[] { "dynamicInfo" });
+      localObject = localWxaAttributes;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localException, "queryWithAppId(%s)", new Object[] { paramString });
+        continue;
+        i = localObject.bAo().lgD.lgF;
+        continue;
+        i = 5;
+      }
+    }
+    if (localObject == null)
+    {
+      i = -1;
+      Log.i("MicroMsg.AppServiceSettingsResolver", "readAppOpendataLocalStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
+      if (localObject == null) {
+        break label137;
+      }
+      i = localObject.bAo().lgD.lgF;
+      bx(paramString, i);
+      AppMethodBeat.o(147002);
+      return i * 1048576;
+    }
+  }
+  
+  public static void bw(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(146999);
+    leP.put(paramString, paramInt);
+    AppMethodBeat.o(146999);
+  }
+  
+  public static void bx(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(147001);
+    leQ.put(paramString, paramInt);
+    AppMethodBeat.o(147001);
+  }
+  
+  static final class a
+  {
+    private final SparseIntArray leS;
+    
+    private a()
+    {
+      AppMethodBeat.i(146994);
+      this.leS = new SparseIntArray();
+      AppMethodBeat.o(146994);
     }
     
-    private a(int paramInt)
+    public final int Xi(String paramString)
     {
-      this.intValue = paramInt;
+      AppMethodBeat.i(146996);
+      if (TextUtils.isEmpty(paramString))
+      {
+        AppMethodBeat.o(146996);
+        return -1;
+      }
+      synchronized (this.leS)
+      {
+        int i = this.leS.get(paramString.hashCode(), -1);
+        AppMethodBeat.o(146996);
+        return i;
+      }
+    }
+    
+    public final void put(String paramString, int paramInt)
+    {
+      AppMethodBeat.i(146995);
+      if (TextUtils.isEmpty(paramString))
+      {
+        AppMethodBeat.o(146995);
+        return;
+      }
+      synchronized (this.leS)
+      {
+        this.leS.put(paramString.hashCode(), paramInt);
+        AppMethodBeat.o(146995);
+        return;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.n
  * JD-Core Version:    0.7.0.1
  */

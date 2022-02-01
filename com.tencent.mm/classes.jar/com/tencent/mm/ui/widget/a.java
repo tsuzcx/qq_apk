@@ -11,7 +11,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class a
   extends ImageSpan
 {
-  public int LmE = 0;
+  public int QBM = 0;
   
   public a(Drawable paramDrawable)
   {
@@ -23,11 +23,17 @@ public class a
     AppMethodBeat.i(143319);
     paramCharSequence = getDrawable();
     paramCanvas.save();
-    paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt2 = paramPaint.ascent;
-    paramCanvas.translate(paramFloat, paramPaint.descent + paramInt4 - (paramInt1 - paramInt2) / 2 - (paramCharSequence.getBounds().bottom - paramCharSequence.getBounds().top) / 2);
+    Paint.FontMetricsInt localFontMetricsInt = paramPaint.getFontMetricsInt();
+    paramInt1 = localFontMetricsInt.descent;
+    paramInt2 = localFontMetricsInt.ascent;
+    paramCanvas.translate(paramFloat, localFontMetricsInt.descent + paramInt4 - (paramInt1 - paramInt2) / 2 - (paramCharSequence.getBounds().bottom - paramCharSequence.getBounds().top) / 2);
+    paramInt1 = paramPaint.getAlpha();
+    paramInt2 = paramCharSequence.getAlpha();
+    if ((paramInt1 == 0) && (paramInt2 != paramInt1)) {
+      paramCharSequence.setAlpha(paramInt1);
+    }
     paramCharSequence.draw(paramCanvas);
+    paramCharSequence.setAlpha(paramInt2);
     paramCanvas.restore();
     AppMethodBeat.o(143319);
   }

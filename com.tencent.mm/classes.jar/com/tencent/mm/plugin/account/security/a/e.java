@@ -2,31 +2,32 @@ package com.tencent.mm.plugin.account.security.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class e
-  extends j<d>
+  extends MAutoStorage<d>
 {
   public static final String[] SQL_CREATE;
-  h jkL;
+  h kiO;
   
   static
   {
     AppMethodBeat.i(125526);
-    SQL_CREATE = new String[] { j.getCreateSQLs(d.info, "SafeDeviceInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(d.info, "SafeDeviceInfo") };
     AppMethodBeat.o(125526);
   }
   
-  public e(com.tencent.mm.sdk.e.e parame)
+  public e(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, d.info, "SafeDeviceInfo", null);
+    super(paramISQLiteDatabase, d.info, "SafeDeviceInfo", null);
     AppMethodBeat.i(125521);
-    this.jkL = null;
-    if ((parame instanceof h)) {
-      this.jkL = ((h)parame);
+    this.kiO = null;
+    if ((paramISQLiteDatabase instanceof h)) {
+      this.kiO = ((h)paramISQLiteDatabase);
     }
     AppMethodBeat.o(125521);
   }
@@ -39,7 +40,7 @@ public final class e
     return bool;
   }
   
-  public final List<d> aUc()
+  public final List<d> boO()
   {
     AppMethodBeat.i(125523);
     LinkedList localLinkedList = new LinkedList();
@@ -60,7 +61,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.security.a.e
  * JD-Core Version:    0.7.0.1
  */

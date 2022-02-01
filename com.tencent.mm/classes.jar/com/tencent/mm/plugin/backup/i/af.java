@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.backup.i;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 import java.util.LinkedList;
 
 public final class af
   extends com.tencent.mm.bw.a
 {
-  public String nIB;
-  public LinkedList<Long> nJW;
-  public LinkedList<String> nJX;
-  public LinkedList<String> nJY;
+  public String oTx;
+  public LinkedList<Long> oUR;
+  public LinkedList<String> oUS;
+  public LinkedList<String> oUT;
   
   public af()
   {
     AppMethodBeat.i(22138);
-    this.nJW = new LinkedList();
-    this.nJX = new LinkedList();
-    this.nJY = new LinkedList();
+    this.oUR = new LinkedList();
+    this.oUS = new LinkedList();
+    this.oUT = new LinkedList();
     AppMethodBeat.o(22138);
   }
   
@@ -26,28 +26,28 @@ public final class af
     AppMethodBeat.i(22139);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.nIB == null)
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.oTx == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
         AppMethodBeat.o(22139);
         throw paramVarArgs;
       }
-      paramVarArgs.e(1, 3, this.nJW);
-      paramVarArgs.e(2, 1, this.nJX);
-      paramVarArgs.e(3, 1, this.nJY);
-      if (this.nIB != null) {
-        paramVarArgs.d(4, this.nIB);
+      paramVarArgs.e(1, 3, this.oUR);
+      paramVarArgs.e(2, 1, this.oUS);
+      paramVarArgs.e(3, 1, this.oUT);
+      if (this.oTx != null) {
+        paramVarArgs.e(4, this.oTx);
       }
       AppMethodBeat.o(22139);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.a.c(1, 3, this.nJW) + 0 + f.a.a.a.c(2, 1, this.nJX) + f.a.a.a.c(3, 1, this.nJY);
+      int i = g.a.a.a.c(1, 3, this.oUR) + 0 + g.a.a.a.c(2, 1, this.oUS) + g.a.a.a.c(3, 1, this.oUT);
       paramInt = i;
-      if (this.nIB != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.nIB);
+      if (this.oTx != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.oTx);
       }
       AppMethodBeat.o(22139);
       return paramInt;
@@ -55,16 +55,16 @@ public final class af
     if (paramInt == 2)
     {
       paramVarArgs = (byte[])paramVarArgs[0];
-      this.nJW.clear();
-      this.nJX.clear();
-      this.nJY.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
+      this.oUR.clear();
+      this.oUS.clear();
+      this.oUT.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
-      if (this.nIB == null)
+      if (this.oTx == null)
       {
         paramVarArgs = new b("Not all required fields were included: BakChatName");
         AppMethodBeat.o(22139);
@@ -75,7 +75,7 @@ public final class af
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       af localaf = (af)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -83,19 +83,19 @@ public final class af
         AppMethodBeat.o(22139);
         return -1;
       case 1: 
-        localaf.nJW.add(Long.valueOf(locala.OmT.zd()));
+        localaf.oUR.add(Long.valueOf(locala.UbS.zl()));
         AppMethodBeat.o(22139);
         return 0;
       case 2: 
-        localaf.nJX.add(locala.OmT.readString());
+        localaf.oUS.add(locala.UbS.readString());
         AppMethodBeat.o(22139);
         return 0;
       case 3: 
-        localaf.nJY.add(locala.OmT.readString());
+        localaf.oUT.add(locala.UbS.readString());
         AppMethodBeat.o(22139);
         return 0;
       }
-      localaf.nIB = locala.OmT.readString();
+      localaf.oTx = locala.UbS.readString();
       AppMethodBeat.o(22139);
       return 0;
     }
@@ -105,7 +105,7 @@ public final class af
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.af
  * JD-Core Version:    0.7.0.1
  */

@@ -46,21 +46,7 @@ public class CustomTabLoginMethodHandler
   {
     AppMethodBeat.i(7734);
     CHROME_PACKAGES = new String[] { "com.android.chrome", "com.chrome.beta", "com.chrome.dev" };
-    CREATOR = new Parcelable.Creator()
-    {
-      public final CustomTabLoginMethodHandler createFromParcel(Parcel paramAnonymousParcel)
-      {
-        AppMethodBeat.i(7719);
-        paramAnonymousParcel = new CustomTabLoginMethodHandler(paramAnonymousParcel);
-        AppMethodBeat.o(7719);
-        return paramAnonymousParcel;
-      }
-      
-      public final CustomTabLoginMethodHandler[] newArray(int paramAnonymousInt)
-      {
-        return new CustomTabLoginMethodHandler[paramAnonymousInt];
-      }
-    };
+    CREATOR = new CustomTabLoginMethodHandler.1();
     AppMethodBeat.o(7734);
   }
   
@@ -319,7 +305,7 @@ public class CustomTabLoginMethodHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.login.CustomTabLoginMethodHandler
  * JD-Core Version:    0.7.0.1
  */

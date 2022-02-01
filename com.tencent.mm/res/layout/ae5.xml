@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:id="@id/cfr" android:background="@drawable/b0n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/h"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.MMImageView android:id="@id/ffe" android:layout_width="28.0dip" android:layout_height="28.0dip" android:src="@raw/default_avatar" android:scaleType="centerCrop" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/a_u" android:layout_gravity="center_vertical" android:id="@id/ff9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:singleLine="true" />
-</LinearLayout>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:paddingTop="@dimen/c5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerVertical="true">
+        <com.tencent.mm.ui.widget.MMRoundCornerImageView android:id="@id/csb" android:layout_width="@dimen/cl" android:layout_height="@dimen/cl" android:layout_marginStart="@dimen/cb" app:radius="@dimen/bt" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_100_Alpha_0_8" android:ellipsize="end" android:id="@id/csd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_centerVertical="true" android:layout_marginStart="@dimen/c5" android:layout_toEndOf="@id/csb" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cse" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_centerVertical="true" android:layout_marginStart="@dimen/bt" android:layout_toEndOf="@id/csd" app:iconColor="@color/BW_100_Alpha_0_2" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/BW_0_Alpha_0_8" android:id="@id/csa" android:background="@drawable/a20" android:paddingTop="@dimen/bt" android:paddingBottom="@dimen/bt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ctr" android:layout_centerVertical="true" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct" android:layout_marginEnd="@dimen/cb" android:layout_alignParentEnd="true" />
+        <View android:id="@id/csc" android:background="@color/BW_100_Alpha_0_0_5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="@dimen/c5" android:layout_below="@id/csb" android:layout_marginStart="@dimen/c5" android:layout_toEndOf="@id/csb" />
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/a7t" />
+            <corners android:topRightRadius="8.0dip" android:bottomRightRadius="8.0dip" />
+        </shape>
+    </item>
+    <item android:drawable="@color/ac_" />
+</selector>

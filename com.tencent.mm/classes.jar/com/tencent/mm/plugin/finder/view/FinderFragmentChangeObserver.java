@@ -2,21 +2,18 @@ package com.tencent.mm.plugin.finder.view;
 
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import com.tencent.mm.plugin.finder.ui.fragment.FinderHomeTabFragment;
-import com.tencent.mm.sdk.platformtools.ae;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.component.UIComponentFragment;
-import com.tencent.mm.ui.component.UIComponentFragment.b;
-import d.a.j;
-import d.l;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeObserver;", "Landroid/support/v4/view/ViewPager$OnPageChangeListener;", "Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeListener;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "fragments", "", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "(Lcom/tencent/mm/ui/MMActivity;Ljava/util/List;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "lastIndex", "", "lastType", "onPageScrollStateChanged", "", "position", "onPageScrolled", "p0", "p1", "", "p2", "onPageSelected", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeObserver;", "Landroid/support/v4/view/ViewPager$OnPageChangeListener;", "Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeListener;", "activity", "Lcom/tencent/mm/ui/MMActivity;", "fragments", "", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "(Lcom/tencent/mm/ui/MMActivity;Ljava/util/List;)V", "getActivity", "()Lcom/tencent/mm/ui/MMActivity;", "lastIndex", "", "lastType", "onPageScrollStateChanged", "", "state", "onPageScrolled", "position", "positionOffset", "", "positionOffsetPixels", "onPageSelected", "Companion", "plugin-finder_release"})
 public abstract class FinderFragmentChangeObserver
   implements ViewPager.OnPageChangeListener, h
 {
-  public static final FinderFragmentChangeObserver.a Companion = new FinderFragmentChangeObserver.a((byte)0);
+  public static final a Companion = new a((byte)0);
   public static final String TAG = "Finder.FragmentChangeObserver";
   private final MMActivity activity;
   private final List<FinderHomeTabFragment> fragments;
@@ -37,9 +34,13 @@ public abstract class FinderFragmentChangeObserver
   
   public void onPageSelected(int paramInt)
   {
-    ae.i("Finder.FragmentChangeObserver", "onPageSelected=" + paramInt + " lastIndex=" + this.lastIndex);
     Object localObject1;
-    Object localObject2;
+    if ((paramInt >= 0) && (paramInt < this.fragments.size()))
+    {
+      localObject1 = ((FinderHomeTabFragment)this.fragments.get(paramInt)).getClass().getName();
+      p.g(localObject1, "fragments[position].javaClass.name");
+      com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sEs = (String)localObject1;
+    }
     if (this.lastIndex != paramInt)
     {
       Iterator localIterator = ((Iterable)this.fragments).iterator();
@@ -47,10 +48,10 @@ public abstract class FinderFragmentChangeObserver
       localObject1 = null;
       while (localIterator.hasNext())
       {
-        localObject2 = localIterator.next();
+        Object localObject2 = localIterator.next();
         int j = i + 1;
         if (i < 0) {
-          j.gkd();
+          j.hxH();
         }
         localObject2 = (FinderHomeTabFragment)localObject2;
         if (paramInt == i)
@@ -62,40 +63,29 @@ public abstract class FinderFragmentChangeObserver
         {
           if (this.lastIndex == i)
           {
-            ((FinderHomeTabFragment)localObject2).cNe();
+            ((FinderHomeTabFragment)localObject2).onUserVisibleUnFocused();
             a(false, i, (FinderHomeTabFragment)localObject2);
           }
           i = j;
         }
       }
-      D(this.lastIndex, paramInt, this.lastType, ((FinderHomeTabFragment)this.fragments.get(paramInt)).dvm);
-      if (localObject1 != null) {
-        if (localObject1.KFc != 1)
-        {
-          localObject2 = (Runnable)new UIComponentFragment.b(localObject1);
-          if (localObject1.isResumed()) {
-            break label260;
-          }
-          ae.w("MicroMsg.UIComponentFragment", "[onUserVisibleFocused] wait to fragment resume.");
-          localObject1.KFe.add(localObject2);
-        }
+      D(this.lastIndex, paramInt, this.lastType, ((FinderHomeTabFragment)this.fragments.get(paramInt)).dLS);
+      if (localObject1 != null)
+      {
+        ((FinderHomeTabFragment)localObject1).onUserVisibleFocused();
+        a(true, paramInt, (FinderHomeTabFragment)localObject1);
       }
     }
-    for (;;)
-    {
-      localObject1.KFc = 1;
-      a(true, paramInt, localObject1);
-      this.lastIndex = paramInt;
-      this.lastType = ((FinderHomeTabFragment)this.fragments.get(paramInt)).dvm;
-      return;
-      label260:
-      ((Runnable)localObject2).run();
-    }
+    this.lastIndex = paramInt;
+    this.lastType = ((FinderHomeTabFragment)this.fragments.get(paramInt)).dLS;
   }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderFragmentChangeObserver$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderFragmentChangeObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -5,60 +5,60 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class l
   extends com.tencent.mm.bw.a
 {
-  public String prA;
-  public String prB;
-  public int prC;
-  public boolean prD;
-  public boolean pry;
-  public String prz;
+  public boolean qHd;
+  public String qHe;
+  public String qHf;
+  public String qHg;
+  public int qHh;
+  public boolean qHi;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(153072);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.bC(1, this.pry);
-      if (this.prz != null) {
-        paramVarArgs.d(2, this.prz);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.cc(1, this.qHd);
+      if (this.qHe != null) {
+        paramVarArgs.e(2, this.qHe);
       }
-      if (this.prA != null) {
-        paramVarArgs.d(3, this.prA);
+      if (this.qHf != null) {
+        paramVarArgs.e(3, this.qHf);
       }
-      if (this.prB != null) {
-        paramVarArgs.d(4, this.prB);
+      if (this.qHg != null) {
+        paramVarArgs.e(4, this.qHg);
       }
-      paramVarArgs.aS(5, this.prC);
-      paramVarArgs.bC(6, this.prD);
+      paramVarArgs.aM(5, this.qHh);
+      paramVarArgs.cc(6, this.qHi);
       AppMethodBeat.o(153072);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.amF(1) + 0;
+      int i = g.a.a.b.b.a.fS(1) + 1 + 0;
       paramInt = i;
-      if (this.prz != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.prz);
+      if (this.qHe != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.qHe);
       }
       i = paramInt;
-      if (this.prA != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.prA);
+      if (this.qHf != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.qHf);
       }
       paramInt = i;
-      if (this.prB != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.prB);
+      if (this.qHg != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.qHg);
       }
-      i = f.a.a.b.b.a.bz(5, this.prC);
-      int j = f.a.a.b.b.a.amF(6);
+      i = g.a.a.b.b.a.bu(5, this.qHh);
+      int j = g.a.a.b.b.a.fS(6);
       AppMethodBeat.o(153072);
-      return paramInt + i + j;
+      return paramInt + i + (j + 1);
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(153072);
@@ -66,7 +66,7 @@ public final class l
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       l locall = (l)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -74,27 +74,27 @@ public final class l
         AppMethodBeat.o(153072);
         return -1;
       case 1: 
-        locall.pry = locala.OmT.gvY();
+        locall.qHd = locala.UbS.yZ();
         AppMethodBeat.o(153072);
         return 0;
       case 2: 
-        locall.prz = locala.OmT.readString();
+        locall.qHe = locala.UbS.readString();
         AppMethodBeat.o(153072);
         return 0;
       case 3: 
-        locall.prA = locala.OmT.readString();
+        locall.qHf = locala.UbS.readString();
         AppMethodBeat.o(153072);
         return 0;
       case 4: 
-        locall.prB = locala.OmT.readString();
+        locall.qHg = locala.UbS.readString();
         AppMethodBeat.o(153072);
         return 0;
       case 5: 
-        locall.prC = locala.OmT.zc();
+        locall.qHh = locala.UbS.zi();
         AppMethodBeat.o(153072);
         return 0;
       }
-      locall.prD = locala.OmT.gvY();
+      locall.qHi = locala.UbS.yZ();
       AppMethodBeat.o(153072);
       return 0;
     }

@@ -1,27 +1,21 @@
 package com.tencent.mm.plugin.sns.data;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import android.view.View;
 
 public final class g
 {
-  public int zMa;
-  public String zMb;
-  public String zMc;
-  public LinkedList<String> zMd;
-  public String zMe;
-  public String zMf;
+  public View DDJ;
+  public String dHp;
   
-  public g()
+  public g(View paramView, String paramString)
   {
-    AppMethodBeat.i(224103);
-    this.zMd = new LinkedList();
-    AppMethodBeat.o(224103);
+    this.DDJ = paramView;
+    this.dHp = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.data.g
  * JD-Core Version:    0.7.0.1
  */

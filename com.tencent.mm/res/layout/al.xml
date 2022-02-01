@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.FitWindowsLinearLayout android:orientation="vertical" android:id="@id/br" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.ViewStubCompat android:id="@id/cf" android:layout="@layout/a5" android:inflatedId="@id/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <include layout="@layout/ak" />
-</android.support.v7.widget.FitWindowsLinearLayout>
+<android.support.v7.widget.ActionBarContextView android:theme="?a5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="?am"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

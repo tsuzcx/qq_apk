@@ -2,10 +2,10 @@ package com.tencent.mm.y;
 
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -14,45 +14,65 @@ import java.util.Set;
 
 public final class b
 {
-  SparseArray<a> gzk;
-  HashMap<am.a, a> gzl;
-  SparseArray<b> gzm;
-  HashMap<am.a, b> gzn;
-  private Random gzo;
-  aj gzp;
+  SparseArray<a> hlX;
+  HashMap<ar.a, a> hlY;
+  SparseArray<b> hlZ;
+  HashMap<ar.a, b> hma;
+  private Random hmb;
+  ao hmc;
   
   public b()
   {
     AppMethodBeat.i(150060);
-    this.gzk = new SparseArray();
-    this.gzl = new HashMap();
-    this.gzm = new SparseArray();
-    this.gzn = new HashMap();
-    this.gzo = new Random();
-    this.gzp = null;
+    this.hlX = new SparseArray();
+    this.hlY = new HashMap();
+    this.hlZ = new SparseArray();
+    this.hma = new HashMap();
+    this.hmb = new Random();
+    this.hmc = null;
     AppMethodBeat.o(150060);
+  }
+  
+  private static String Fl(String paramString)
+  {
+    AppMethodBeat.i(150061);
+    paramString = paramString.replaceAll("\\|", "%7C");
+    AppMethodBeat.o(150061);
+    return paramString;
+  }
+  
+  private static boolean Fm(String paramString)
+  {
+    AppMethodBeat.i(150067);
+    if ((!Util.isNullOrNil(paramString)) && (paramString.matches("^[\\d]+$")))
+    {
+      AppMethodBeat.o(150067);
+      return true;
+    }
+    AppMethodBeat.o(150067);
+    return false;
   }
   
   private a a(int paramInt1, int paramInt2, String paramString1, String paramString2)
   {
     AppMethodBeat.i(150073);
     a locala = new a();
-    locala.gzg = paramInt1;
+    locala.hlT = paramInt1;
     locala.type = paramInt2;
     locala.value = paramString1;
-    locala.dqk = paramString2;
+    locala.dHx = paramString2;
     AppMethodBeat.o(150073);
     return locala;
   }
   
-  private a a(am.a parama, int paramInt, String paramString1, String paramString2)
+  private a a(ar.a parama, int paramInt, String paramString1, String paramString2)
   {
     AppMethodBeat.i(150074);
     a locala = new a();
-    locala.gzh = parama;
+    locala.hlU = parama;
     locala.type = paramInt;
     locala.value = paramString1;
-    locala.dqk = paramString2;
+    locala.dHx = paramString2;
     AppMethodBeat.o(150074);
     return locala;
   }
@@ -63,23 +83,23 @@ public final class b
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append(parama.type);
     localStringBuffer.append("|");
-    localStringBuffer.append(wX(parama.value));
+    localStringBuffer.append(Fl(parama.value));
     localStringBuffer.append("|");
-    localStringBuffer.append(wX(parama.dqk));
-    if (parama.gzh != null)
+    localStringBuffer.append(Fl(parama.dHx));
+    if (parama.hlU != null)
     {
-      this.gzp.set(parama.gzh, localStringBuffer.toString());
+      this.hmc.set(parama.hlU, localStringBuffer.toString());
       AppMethodBeat.o(150063);
       return;
     }
-    this.gzp.set(parama.gzg, localStringBuffer.toString());
+    this.hmc.set(parama.hlT, localStringBuffer.toString());
     AppMethodBeat.o(150063);
   }
   
-  private a c(am.a parama)
+  private a c(ar.a parama)
   {
     AppMethodBeat.i(150066);
-    String str = (String)this.gzp.get(parama, null);
+    String str = (String)this.hmc.get(parama, null);
     if (str == null)
     {
       AppMethodBeat.o(150066);
@@ -88,7 +108,7 @@ public final class b
     String[] arrayOfString = str.split("\\|");
     if (arrayOfString.length != 3)
     {
-      ae.e("MicroMsg.NewBadgeDecoder", "loadDataSource array.length != 3 content %s", new Object[] { str });
+      Log.e("MicroMsg.NewBadgeDecoder", "loadDataSource array.length != 3 content %s", new Object[] { str });
       AppMethodBeat.o(150066);
       return null;
     }
@@ -100,14 +120,14 @@ public final class b
     }
     catch (Exception parama)
     {
-      ae.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bu.o(parama) });
-      ae.e("MicroMsg.NewBadgeDecoder", "loadDataSource exception content %s", new Object[] { str });
+      Log.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { Util.stackTraceToString(parama) });
+      Log.e("MicroMsg.NewBadgeDecoder", "loadDataSource exception content %s", new Object[] { str });
       AppMethodBeat.o(150066);
     }
     return null;
   }
   
-  private a c(am.a parama, int paramInt)
+  private a c(ar.a parama, int paramInt)
   {
     AppMethodBeat.i(150076);
     a locala2 = f(parama);
@@ -115,32 +135,32 @@ public final class b
     if (locala2 == null)
     {
       locala1 = a(parama, paramInt, "", "");
-      this.gzl.put(parama, locala1);
+      this.hlY.put(parama, locala1);
       a(locala1);
     }
     AppMethodBeat.o(150076);
     return locala1;
   }
   
-  private a cL(int paramInt1, int paramInt2)
+  private a cR(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(150075);
-    a locala2 = my(paramInt1);
+    a locala2 = pL(paramInt1);
     a locala1 = locala2;
     if (locala2 == null)
     {
       locala1 = a(paramInt1, paramInt2, "", "");
-      this.gzk.put(paramInt1, locala1);
+      this.hlX.put(paramInt1, locala1);
       a(locala1);
     }
     AppMethodBeat.o(150075);
     return locala1;
   }
   
-  private b d(am.a parama)
+  private b d(ar.a parama)
   {
     AppMethodBeat.i(150069);
-    String str = (String)this.gzp.get(parama, null);
+    String str = (String)this.hmc.get(parama, null);
     if (str == null)
     {
       parama = e(parama);
@@ -150,7 +170,7 @@ public final class b
     String[] arrayOfString = str.split("\\|");
     if (arrayOfString.length % 2 != 0)
     {
-      ae.e("MicroMsg.NewBadgeDecoder", "loadWatcher array.length %% 2 != 0 content %s", new Object[] { str });
+      Log.e("MicroMsg.NewBadgeDecoder", "loadWatcher array.length %% 2 != 0 content %s", new Object[] { str });
       AppMethodBeat.o(150069);
       return null;
     }
@@ -162,17 +182,17 @@ public final class b
         parama = e(parama);
         i = 0;
         if (i < arrayOfString.length) {
-          if (wY(arrayOfString[i])) {
-            parama.gzs.put(Integer.valueOf(arrayOfString[i]).intValue(), unescape(arrayOfString[(i + 1)]));
+          if (Fm(arrayOfString[i])) {
+            parama.hmf.put(Integer.valueOf(arrayOfString[i]).intValue(), unescape(arrayOfString[(i + 1)]));
           } else {
-            parama.gzt.put(arrayOfString[i], unescape(arrayOfString[(i + 1)]));
+            parama.hmg.put(arrayOfString[i], unescape(arrayOfString[(i + 1)]));
           }
         }
       }
       catch (Exception parama)
       {
-        ae.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bu.o(parama) });
-        ae.e("MicroMsg.NewBadgeDecoder", "loadWatcher exception content %s", new Object[] { str });
+        Log.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { Util.stackTraceToString(parama) });
+        Log.e("MicroMsg.NewBadgeDecoder", "loadWatcher exception content %s", new Object[] { str });
         AppMethodBeat.o(150069);
         return null;
       }
@@ -182,39 +202,39 @@ public final class b
     }
   }
   
-  private b e(am.a parama)
+  private b e(ar.a parama)
   {
     AppMethodBeat.i(150072);
     b localb = new b();
-    localb.gzj = parama;
+    localb.hlW = parama;
     AppMethodBeat.o(150072);
     return localb;
   }
   
-  private b g(am.a parama)
+  private b g(ar.a parama)
   {
     AppMethodBeat.i(150080);
-    b localb2 = (b)this.gzn.get(parama);
+    b localb2 = (b)this.hma.get(parama);
     b localb1 = localb2;
     if (localb2 == null)
     {
       localb1 = d(parama);
       if (localb1 == null)
       {
-        ae.e("MicroMsg.NewBadgeDecoder", "[carl] loadWatcher watcher == null");
+        Log.e("MicroMsg.NewBadgeDecoder", "[carl] loadWatcher watcher == null");
         AppMethodBeat.o(150080);
         return null;
       }
-      this.gzn.put(parama, localb1);
+      this.hma.put(parama, localb1);
     }
     AppMethodBeat.o(150080);
     return localb1;
   }
   
-  private a mv(int paramInt)
+  private a pI(int paramInt)
   {
     AppMethodBeat.i(150065);
-    String str = (String)this.gzp.get(paramInt, null);
+    String str = (String)this.hmc.get(paramInt, null);
     if (str == null)
     {
       AppMethodBeat.o(150065);
@@ -223,7 +243,7 @@ public final class b
     Object localObject = str.split("\\|");
     if (localObject.length != 3)
     {
-      ae.e("MicroMsg.NewBadgeDecoder", "loadDataSource array.length != 3 content %s", new Object[] { str });
+      Log.e("MicroMsg.NewBadgeDecoder", "loadDataSource array.length != 3 content %s", new Object[] { str });
       AppMethodBeat.o(150065);
       return null;
     }
@@ -235,27 +255,27 @@ public final class b
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bu.o(localException) });
-      ae.e("MicroMsg.NewBadgeDecoder", "loadDataSource exception content %s", new Object[] { str });
+      Log.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+      Log.e("MicroMsg.NewBadgeDecoder", "loadDataSource exception content %s", new Object[] { str });
       AppMethodBeat.o(150065);
     }
     return null;
   }
   
-  private b mw(int paramInt)
+  private b pJ(int paramInt)
   {
     AppMethodBeat.i(150068);
-    Object localObject = (String)this.gzp.get(paramInt, null);
+    Object localObject = (String)this.hmc.get(paramInt, null);
     if (localObject == null)
     {
-      localObject = mx(paramInt);
+      localObject = pK(paramInt);
       AppMethodBeat.o(150068);
       return localObject;
     }
     String[] arrayOfString = ((String)localObject).split("\\|");
     if (arrayOfString.length % 2 != 0)
     {
-      ae.e("MicroMsg.NewBadgeDecoder", "loadWatcher array.length %% 2 != 0 content %s", new Object[] { localObject });
+      Log.e("MicroMsg.NewBadgeDecoder", "loadWatcher array.length %% 2 != 0 content %s", new Object[] { localObject });
       AppMethodBeat.o(150068);
       return null;
     }
@@ -264,20 +284,20 @@ public final class b
       b localb;
       try
       {
-        localb = mx(paramInt);
+        localb = pK(paramInt);
         paramInt = 0;
         if (paramInt < arrayOfString.length) {
-          if (wY(arrayOfString[paramInt])) {
-            localb.gzs.put(Integer.valueOf(arrayOfString[paramInt]).intValue(), unescape(arrayOfString[(paramInt + 1)]));
+          if (Fm(arrayOfString[paramInt])) {
+            localb.hmf.put(Integer.valueOf(arrayOfString[paramInt]).intValue(), unescape(arrayOfString[(paramInt + 1)]));
           } else {
-            localb.gzt.put(arrayOfString[paramInt], unescape(arrayOfString[(paramInt + 1)]));
+            localb.hmg.put(arrayOfString[paramInt], unescape(arrayOfString[(paramInt + 1)]));
           }
         }
       }
       catch (Exception localException)
       {
-        ae.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { bu.o(localException) });
-        ae.e("MicroMsg.NewBadgeDecoder", "loadWatcher exception content %s", new Object[] { localObject });
+        Log.e("MicroMsg.NewBadgeDecoder", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
+        Log.e("MicroMsg.NewBadgeDecoder", "loadWatcher exception content %s", new Object[] { localObject });
         AppMethodBeat.o(150068);
         return null;
       }
@@ -295,102 +315,82 @@ public final class b
     return paramString;
   }
   
-  private static String wX(String paramString)
-  {
-    AppMethodBeat.i(150061);
-    paramString = paramString.replaceAll("\\|", "%7C");
-    AppMethodBeat.o(150061);
-    return paramString;
-  }
-  
-  private static boolean wY(String paramString)
-  {
-    AppMethodBeat.i(150067);
-    if ((!bu.isNullOrNil(paramString)) && (paramString.matches("^[\\d]+$")))
-    {
-      AppMethodBeat.o(150067);
-      return true;
-    }
-    AppMethodBeat.o(150067);
-    return false;
-  }
-  
   public final a K(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(150083);
-    ae.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSourceId %d, watcherId %d, type %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    a locala = my(paramInt1);
+    Log.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSourceId %d, watcherId %d, type %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    a locala = pL(paramInt1);
     if (locala == null)
     {
-      ae.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSource == null");
+      Log.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSource == null");
       AppMethodBeat.o(150083);
       return null;
     }
     if ((locala.type & paramInt3) == 0)
     {
-      ae.d("MicroMsg.NewBadgeDecoder", "[alex] peek, dataSource.type is wrong");
+      Log.d("MicroMsg.NewBadgeDecoder", "[alex] peek, dataSource.type is wrong");
       AppMethodBeat.o(150083);
       return null;
     }
-    b localb = mz(paramInt2);
+    b localb = pM(paramInt2);
     if (localb != null)
     {
-      String str = (String)localb.gzs.get(paramInt1);
-      if ((str != null) && (str.equals(locala.dqk)))
+      String str = (String)localb.hmf.get(paramInt1);
+      if ((str != null) && (str.equals(locala.dHx)))
       {
         AppMethodBeat.o(150083);
         return null;
       }
       if (str == null)
       {
-        str = ahG();
-        localb.gzs.put(paramInt1, str);
+        str = axT();
+        localb.hmf.put(paramInt1, str);
         a(localb);
       }
       AppMethodBeat.o(150083);
       return locala;
     }
-    ae.e("MicroMsg.NewBadgeDecoder", "[carl] peek, watcher == null");
+    Log.e("MicroMsg.NewBadgeDecoder", "[carl] peek, watcher == null");
     AppMethodBeat.o(150083);
     return null;
   }
   
-  public final a a(am.a parama1, am.a parama2, int paramInt)
+  public final a a(ar.a parama1, ar.a parama2, int paramInt)
   {
     AppMethodBeat.i(150084);
-    ae.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSourceKey %s, watcherKey %s, type %d", new Object[] { parama1, parama2, Integer.valueOf(paramInt) });
+    Log.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSourceKey %s, watcherKey %s, type %d", new Object[] { parama1, parama2, Integer.valueOf(paramInt) });
     a locala = f(parama1);
     if (locala == null)
     {
-      ae.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSource == null");
+      Log.d("MicroMsg.NewBadgeDecoder", "[carl] peek, dataSource == null");
       AppMethodBeat.o(150084);
       return null;
     }
     if ((locala.type & paramInt) == 0)
     {
-      ae.d("MicroMsg.NewBadgeDecoder", "[alex] peek, dataSource.type is wrong");
+      Log.d("MicroMsg.NewBadgeDecoder", "[alex] peek, dataSource.type is wrong");
       AppMethodBeat.o(150084);
       return null;
     }
     parama2 = g(parama2);
     if (parama2 != null)
     {
-      String str = (String)parama2.gzt.get(parama1.name());
-      if ((str != null) && (str.equals(locala.dqk)))
+      String str = (String)parama2.hmg.get(parama1.name());
+      if ((str != null) && (str.equals(locala.dHx)))
       {
         AppMethodBeat.o(150084);
         return null;
       }
       if (str == null)
       {
-        str = ahG();
-        parama2.gzt.put(parama1.name(), str);
+        str = axT();
+        parama2.hmg.put(parama1.name(), str);
         a(parama2);
       }
       AppMethodBeat.o(150084);
       return locala;
     }
-    ae.e("MicroMsg.NewBadgeDecoder", "[carl] peek, watcher == null");
+    Log.e("MicroMsg.NewBadgeDecoder", "[carl] peek, watcher == null");
     AppMethodBeat.o(150084);
     return null;
   }
@@ -400,7 +400,7 @@ public final class b
     int m = 0;
     AppMethodBeat.i(150064);
     StringBuffer localStringBuffer = new StringBuffer();
-    Object localObject1 = paramb.gzt.entrySet().iterator();
+    Object localObject1 = paramb.hmg.entrySet().iterator();
     int i = 0;
     int j;
     int k;
@@ -419,60 +419,60 @@ public final class b
       }
       localStringBuffer.append(str);
       localStringBuffer.append("|");
-      localStringBuffer.append(wX((String)localObject2));
+      localStringBuffer.append(Fl((String)localObject2));
       i += 1;
     }
-    while (k < paramb.gzs.size())
+    while (k < paramb.hmf.size())
     {
-      i = paramb.gzs.keyAt(k);
-      localObject1 = (String)paramb.gzs.get(i);
+      i = paramb.hmf.keyAt(k);
+      localObject1 = (String)paramb.hmf.get(i);
       if (j != 0) {
         localStringBuffer.append("|");
       }
       localStringBuffer.append(i);
       localStringBuffer.append("|");
-      localStringBuffer.append(wX((String)localObject1));
+      localStringBuffer.append(Fl((String)localObject1));
       j += 1;
       k += 1;
     }
-    if (paramb.gzj != null)
+    if (paramb.hlW != null)
     {
-      this.gzp.set(paramb.gzj, localStringBuffer.toString());
+      this.hmc.set(paramb.hlW, localStringBuffer.toString());
       AppMethodBeat.o(150064);
       return;
     }
-    this.gzp.set(paramb.gzr, localStringBuffer.toString());
+    this.hmc.set(paramb.hme, localStringBuffer.toString());
     AppMethodBeat.o(150064);
   }
   
-  final String ahG()
+  final String axT()
   {
     AppMethodBeat.i(150070);
-    String str = String.format("%d%04d", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(this.gzo.nextInt(Math.abs(this.gzo.nextInt(2147483647))) % 10000) });
+    String str = String.format("%d%04d", new Object[] { Long.valueOf(System.currentTimeMillis()), Integer.valueOf(this.hmb.nextInt(Math.abs(this.hmb.nextInt(2147483647))) % 10000) });
     AppMethodBeat.o(150070);
     return str;
   }
   
-  public final void b(am.a parama, int paramInt, String paramString)
+  public final void b(ar.a parama, int paramInt, String paramString)
   {
     AppMethodBeat.i(150082);
-    ae.d("MicroMsg.NewBadgeDecoder", "[carl] updateDataSourceValue, dataSourceKey %s, type %d, value %s", new Object[] { parama, Integer.valueOf(paramInt), paramString });
+    Log.d("MicroMsg.NewBadgeDecoder", "[carl] updateDataSourceValue, dataSourceKey %s, type %d, value %s", new Object[] { parama, Integer.valueOf(paramInt), paramString });
     parama = c(parama, paramInt);
     parama.value = paramString;
     parama.type = paramInt;
-    parama.dqk = ahG();
+    parama.dHx = axT();
     a(parama);
     AppMethodBeat.o(150082);
   }
   
-  public final void d(am.a parama1, am.a parama2)
+  public final void d(ar.a parama1, ar.a parama2)
   {
     AppMethodBeat.i(150085);
-    ae.d("MicroMsg.NewBadgeDecoder", "[carl] doWatch, doWatch %s, watcherKey %s", new Object[] { parama1, parama2 });
+    Log.d("MicroMsg.NewBadgeDecoder", "[carl] doWatch, doWatch %s, watcherKey %s", new Object[] { parama1, parama2 });
     a locala = f(parama1);
     if (locala == null)
     {
-      ae.d("MicroMsg.NewBadgeDecoder", "[carl] doWatch, dataSource == null");
+      Log.d("MicroMsg.NewBadgeDecoder", "[carl] doWatch, dataSource == null");
       AppMethodBeat.o(150085);
       return;
     }
@@ -480,19 +480,19 @@ public final class b
     b localb1 = localb2;
     if (localb2 == null)
     {
-      ae.e("MicroMsg.NewBadgeDecoder", "[carl] doWatch, watcher == null, do some fix");
+      Log.e("MicroMsg.NewBadgeDecoder", "[carl] doWatch, watcher == null, do some fix");
       localb1 = e(parama2);
-      this.gzn.put(parama2, localb1);
+      this.hma.put(parama2, localb1);
     }
-    localb1.gzt.put(parama1.name(), locala.dqk);
+    localb1.hmg.put(parama1.name(), locala.dHx);
     a(localb1);
     AppMethodBeat.o(150085);
   }
   
-  public final a f(am.a parama)
+  public final a f(ar.a parama)
   {
     AppMethodBeat.i(150078);
-    a locala2 = (a)this.gzl.get(parama);
+    a locala2 = (a)this.hlY.get(parama);
     a locala1 = locala2;
     if (locala2 == null)
     {
@@ -500,7 +500,7 @@ public final class b
       locala1 = locala2;
       if (locala2 != null)
       {
-        this.gzl.put(parama, locala2);
+        this.hlY.put(parama, locala2);
         locala1 = locala2;
       }
     }
@@ -511,36 +511,36 @@ public final class b
   public final void g(int paramInt1, int paramInt2, String paramString)
   {
     AppMethodBeat.i(150081);
-    ae.d("MicroMsg.NewBadgeDecoder", "[carl] updateDataSourceValue, dataSourceId %d, type %d, value %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    a locala = cL(paramInt1, paramInt2);
+    Log.d("MicroMsg.NewBadgeDecoder", "[carl] updateDataSourceValue, dataSourceId %d, type %d, value %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    a locala = cR(paramInt1, paramInt2);
     locala.value = paramString;
     locala.type = paramInt2;
-    locala.dqk = ahG();
+    locala.dHx = axT();
     a(locala);
     AppMethodBeat.o(150081);
   }
   
-  final b mx(int paramInt)
+  final b pK(int paramInt)
   {
     AppMethodBeat.i(150071);
     b localb = new b();
-    localb.gzr = paramInt;
+    localb.hme = paramInt;
     AppMethodBeat.o(150071);
     return localb;
   }
   
-  public final a my(int paramInt)
+  public final a pL(int paramInt)
   {
     AppMethodBeat.i(150077);
-    a locala2 = (a)this.gzk.get(paramInt);
+    a locala2 = (a)this.hlX.get(paramInt);
     a locala1 = locala2;
     if (locala2 == null)
     {
-      locala2 = mv(paramInt);
+      locala2 = pI(paramInt);
       locala1 = locala2;
       if (locala2 != null)
       {
-        this.gzk.put(paramInt, locala2);
+        this.hlX.put(paramInt, locala2);
         locala1 = locala2;
       }
     }
@@ -548,21 +548,21 @@ public final class b
     return locala1;
   }
   
-  final b mz(int paramInt)
+  final b pM(int paramInt)
   {
     AppMethodBeat.i(150079);
-    b localb2 = (b)this.gzm.get(paramInt);
+    b localb2 = (b)this.hlZ.get(paramInt);
     b localb1 = localb2;
     if (localb2 == null)
     {
-      localb1 = mw(paramInt);
+      localb1 = pJ(paramInt);
       if (localb1 == null)
       {
-        ae.e("MicroMsg.NewBadgeDecoder", "[carl] loadWatcher watcher == null");
+        Log.e("MicroMsg.NewBadgeDecoder", "[carl] loadWatcher watcher == null");
         AppMethodBeat.o(150079);
         return null;
       }
-      this.gzm.put(paramInt, localb1);
+      this.hlZ.put(paramInt, localb1);
     }
     AppMethodBeat.o(150079);
     return localb1;
@@ -570,9 +570,9 @@ public final class b
   
   public final class a
   {
-    String dqk;
-    int gzg;
-    am.a gzh;
+    String dHx;
+    int hlT;
+    ar.a hlU;
     int type;
     public String value;
     
@@ -581,23 +581,23 @@ public final class b
   
   public final class b
   {
-    am.a gzj;
-    int gzr;
-    SparseArray<String> gzs;
-    HashMap<String, String> gzt;
+    ar.a hlW;
+    int hme;
+    SparseArray<String> hmf;
+    HashMap<String, String> hmg;
     
     public b()
     {
       AppMethodBeat.i(150059);
-      this.gzs = new SparseArray();
-      this.gzt = new HashMap();
+      this.hmf = new SparseArray();
+      this.hmg = new HashMap();
       AppMethodBeat.o(150059);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.y.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <include layout="@layout/a1w" />
+    <LinearLayout android:orientation="vertical" android:background="@drawable/asu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/k4"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout android:orientation="horizontal" android:id="@id/fen" android:background="@drawable/qd" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_height="@dimen/k4" style="@style/nr">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/e2f" android:background="@null" android:layout_width="@dimen/ba" android:layout_height="@dimen/ba" android:layout_marginRight="@dimen/cb" android:src="@raw/emoticonstore_custom_icon" />
+            <TextView android:id="@android:id/title" style="@style/mi" />
+        </LinearLayout>
+        <View android:layout_gravity="center_vertical" android:background="@drawable/b9w" android:layout_width="fill_parent" android:layout_height="1.0sp" android:layout_marginLeft="52.0dip" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/c0f" android:background="@drawable/qd" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:layout_height="@dimen/k4" style="@style/nr">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/c0g" android:background="@null" android:layout_width="@dimen/ba" android:layout_height="@dimen/ba" android:layout_marginRight="@dimen/cb" android:src="@raw/emoticonstore_capture_icon" />
+            <TextView android:id="@id/c0h" style="@style/mi" />
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:gravity="bottom|center|left" android:id="@id/ips" android:layout_marginLeft="@dimen/jv" android:layout_marginRight="@dimen/jv" style="@style/or" />
+</LinearLayout>

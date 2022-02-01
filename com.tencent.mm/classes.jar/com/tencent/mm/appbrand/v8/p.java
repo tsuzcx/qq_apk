@@ -7,16 +7,16 @@ import com.eclipsesource.v8.V8ArrayBuffer;
 import com.eclipsesource.v8.V8Context;
 import com.eclipsesource.v8.V8Object;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 final class p
   extends o
 {
-  e cYr;
+  e doV;
   
   p(e parame)
   {
-    this.cYr = parame;
+    this.doV = parame;
   }
   
   protected final void a(final m paramm, V8Object paramV8Object)
@@ -27,8 +27,8 @@ final class p
       public final Object invoke(V8Object paramAnonymousV8Object, V8Array paramAnonymousV8Array)
       {
         AppMethodBeat.i(144073);
-        paramAnonymousV8Object = Integer.valueOf(p.this.cYr.generateId());
-        ae.d("V8DirectApiBuffer", "generateId:%d", new Object[] { paramAnonymousV8Object });
+        paramAnonymousV8Object = Integer.valueOf(p.this.doV.generateId());
+        Log.d("V8DirectApiBuffer", "generateId:%d", new Object[] { paramAnonymousV8Object });
         AppMethodBeat.o(144073);
         return paramAnonymousV8Object;
       }
@@ -40,19 +40,19 @@ final class p
         AppMethodBeat.i(144074);
         if ((paramAnonymousV8Array.length() <= 0) || (paramAnonymousV8Array.getType(0) != 1))
         {
-          ae.w("V8DirectApiBuffer", "getNativeBuffer invalid parameters");
+          Log.w("V8DirectApiBuffer", "getNativeBuffer invalid parameters");
           AppMethodBeat.o(144074);
           return null;
         }
-        ae.d("V8DirectApiBuffer", "getNativeBuffer, id:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.getInteger(0)) });
-        paramAnonymousV8Object = p.this.cYr.getBuffer(paramAnonymousV8Array.getInteger(0), false);
+        Log.d("V8DirectApiBuffer", "getNativeBuffer, id:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.getInteger(0)) });
+        paramAnonymousV8Object = p.this.doV.getBuffer(paramAnonymousV8Array.getInteger(0), false);
         if (paramAnonymousV8Object == null)
         {
-          ae.w("V8DirectApiBuffer", "getNativeBuffer bb null");
+          Log.w("V8DirectApiBuffer", "getNativeBuffer bb null");
           AppMethodBeat.o(144074);
           return null;
         }
-        paramAnonymousV8Object = paramm.Ny().newV8ArrayBuffer(paramAnonymousV8Object);
+        paramAnonymousV8Object = paramm.XJ().newV8ArrayBuffer(paramAnonymousV8Object);
         AppMethodBeat.o(144074);
         return paramAnonymousV8Object;
       }
@@ -64,20 +64,20 @@ final class p
         AppMethodBeat.i(144075);
         if ((paramAnonymousV8Array.length() < 2) || (paramAnonymousV8Array.getType(0) != 1) || (paramAnonymousV8Array.getType(1) != 10))
         {
-          ae.w("V8DirectApiBuffer", "setNativeBuffer invalid parameters");
+          Log.w("V8DirectApiBuffer", "setNativeBuffer invalid parameters");
           AppMethodBeat.o(144075);
           return;
         }
-        ae.d("V8DirectApiBuffer", "setNativeBuffer, id:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.getInteger(0)) });
+        Log.d("V8DirectApiBuffer", "setNativeBuffer, id:%d", new Object[] { Integer.valueOf(paramAnonymousV8Array.getInteger(0)) });
         paramAnonymousV8Object = (V8ArrayBuffer)paramAnonymousV8Array.get(1);
         if (paramAnonymousV8Object != null)
         {
-          p.this.cYr.setBuffer(paramAnonymousV8Array.getInteger(0), paramAnonymousV8Object.getBackingStore());
+          p.this.doV.setBuffer(paramAnonymousV8Array.getInteger(0), paramAnonymousV8Object.getBackingStore());
           paramAnonymousV8Object.release();
           AppMethodBeat.o(144075);
           return;
         }
-        ae.w("V8DirectApiBuffer", "setNativeBuffer buffer null");
+        Log.w("V8DirectApiBuffer", "setNativeBuffer buffer null");
         AppMethodBeat.o(144075);
       }
     }, "setNativeBuffer");

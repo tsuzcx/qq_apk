@@ -14,9 +14,9 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class BridgedAndroidWebView
   extends BridgedAndroidWebViewBase
 {
-  private o cgI;
-  private WebViewClient cgX;
-  private WebChromeClient cgY;
+  private o csD;
+  private WebChromeClient csS;
+  private WebViewClient mWebViewClient;
   
   public BridgedAndroidWebView(Context paramContext)
   {
@@ -32,12 +32,12 @@ public class BridgedAndroidWebView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(140352);
-    this.cgX = new WebViewClient()
+    this.mWebViewClient = new WebViewClient()
     {
       public final void onPageFinished(WebView paramAnonymousWebView, String paramAnonymousString)
       {
         AppMethodBeat.i(140350);
-        BridgedAndroidWebView.a(BridgedAndroidWebView.this).cgP.onReady();
+        BridgedAndroidWebView.a(BridgedAndroidWebView.this).csK.onReady();
         AppMethodBeat.o(140350);
       }
       
@@ -48,12 +48,12 @@ public class BridgedAndroidWebView
         AppMethodBeat.o(140349);
       }
     };
-    this.cgY = new WebChromeClient()
+    this.csS = new WebChromeClient()
     {
       public boolean onJsPrompt(WebView paramAnonymousWebView, String paramAnonymousString1, String paramAnonymousString2, String paramAnonymousString3, JsPromptResult paramAnonymousJsPromptResult)
       {
         AppMethodBeat.i(140351);
-        paramAnonymousWebView = BridgedAndroidWebView.a(BridgedAndroidWebView.this).cgP.cx(paramAnonymousString2);
+        paramAnonymousWebView = BridgedAndroidWebView.a(BridgedAndroidWebView.this).csK.cO(paramAnonymousString2);
         if (paramAnonymousWebView != null)
         {
           paramAnonymousJsPromptResult.confirm(paramAnonymousWebView);
@@ -64,15 +64,15 @@ public class BridgedAndroidWebView
         return false;
       }
     };
-    this.cgI = new o(this);
-    setWebViewClient(this.cgX);
-    setWebChromeClient(this.cgY);
+    this.csD = new o(this);
+    setWebViewClient(this.mWebViewClient);
+    setWebChromeClient(this.csS);
     AppMethodBeat.o(140352);
   }
   
   public o getBridge()
   {
-    return this.cgI;
+    return this.csD;
   }
 }
 

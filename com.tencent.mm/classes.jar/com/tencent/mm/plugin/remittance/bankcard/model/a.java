@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.remittance.bankcard.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.SpellMap;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.math.BigDecimal;
 
 public final class a
 {
-  public static double OC(int paramInt)
+  public static double VX(int paramInt)
   {
     AppMethodBeat.i(67397);
-    double d = iY(String.valueOf(paramInt), "100");
+    double d = jJ(String.valueOf(paramInt), "100");
     AppMethodBeat.o(67397);
     return d;
   }
   
-  public static char axu(String paramString)
+  public static char aLU(String paramString)
   {
     AppMethodBeat.i(67398);
     paramString = SpellMap.x(paramString.charAt(0));
-    ae.d("MicroMsg.BankRemitUtil", "pinyin: %s", new Object[] { paramString });
-    if (!bu.isNullOrNil(paramString))
+    Log.d("MicroMsg.BankRemitUtil", "pinyin: %s", new Object[] { paramString });
+    if (!Util.isNullOrNil(paramString))
     {
       char c = paramString.toUpperCase().charAt(0);
       AppMethodBeat.o(67398);
@@ -31,12 +31,12 @@ public final class a
     return '#';
   }
   
-  public static long iX(String paramString1, String paramString2)
+  public static long jI(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67394);
     try
     {
-      if (bu.getDouble(paramString1.trim(), 0.0D) == 0.0D) {}
+      if (Util.getDouble(paramString1.trim(), 0.0D) == 0.0D) {}
       for (paramString1 = "0";; paramString1 = paramString1.trim())
       {
         long l = new BigDecimal(paramString1).divide(new BigDecimal(paramString2.trim()), 0, 4).longValue();
@@ -47,17 +47,17 @@ public final class a
     }
     catch (Exception paramString1)
     {
-      ae.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
       AppMethodBeat.o(67394);
     }
   }
   
-  public static double iY(String paramString1, String paramString2)
+  public static double jJ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67395);
     try
     {
-      if (bu.getDouble(paramString1.trim(), 0.0D) == 0.0D) {}
+      if (Util.getDouble(paramString1.trim(), 0.0D) == 0.0D) {}
       for (paramString1 = "0";; paramString1 = paramString1.trim())
       {
         double d = new BigDecimal(paramString1).divide(new BigDecimal(paramString2.trim()), 2, 4).doubleValue();
@@ -68,18 +68,18 @@ public final class a
     }
     catch (Exception paramString1)
     {
-      ae.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
       AppMethodBeat.o(67395);
     }
   }
   
-  public static double iZ(String paramString1, String paramString2)
+  public static double jK(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67396);
     try
     {
-      double d1 = bu.getDouble(paramString1, 0.0D);
-      double d2 = bu.getDouble(paramString2, 0.0D);
+      double d1 = Util.getDouble(paramString1, 0.0D);
+      double d2 = Util.getDouble(paramString2, 0.0D);
       if (d1 == 0.0D) {
         paramString1 = "0";
       }
@@ -93,7 +93,7 @@ public final class a
     }
     catch (Exception paramString1)
     {
-      ae.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.BankRemitUtil", paramString1, "", new Object[0]);
       AppMethodBeat.o(67396);
     }
     return 0.0D;
@@ -101,7 +101,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.bankcard.model.a
  * JD-Core Version:    0.7.0.1
  */

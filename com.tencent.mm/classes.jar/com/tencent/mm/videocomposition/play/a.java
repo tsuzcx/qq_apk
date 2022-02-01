@@ -4,7 +4,7 @@ import android.graphics.SurfaceTexture;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.videocomposition.c.b;
-import com.tencent.mm.videocomposition.h;
+import com.tencent.mm.videocomposition.n;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.player.Callback;
@@ -15,54 +15,68 @@ import com.tencent.tav.player.Player;
 import com.tencent.tav.player.PlayerItem;
 import com.tencent.tav.player.PlayerLayer;
 import com.tencent.tavkit.composition.TAVSource;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer;", "", "composition", "Lcom/tencent/mm/videocomposition/VideoComposition;", "(Lcom/tencent/mm/videocomposition/VideoComposition;)V", "flushSurfaceTick", "", "hasPlaySurface", "", "isLoop", "isStarted", "isUpdatingComposition", "player", "Lcom/tencent/tav/player/Player;", "playerCallback", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerCallback;", "playerItem", "Lcom/tencent/tav/player/PlayerItem;", "playerLayer", "Lcom/tencent/tav/player/PlayerLayer;", "profileCallback", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerProfileCallback;", "source", "Lcom/tencent/tavkit/composition/TAVSource;", "surface", "Landroid/view/Surface;", "surfaceHeight", "", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "surfaceWidth", "createPlayer", "", "createPlayerLayerBySurface", "width", "height", "createPlayerLayerBySurfaceTexture", "currentPositionTimeMs", "initPlayerCallback", "isPlaying", "muteOrigin", "mute", "normalUpdateComposition", "newPosition", "Lcom/tencent/tav/coremedia/CMTime;", "playAfterUpdate", "originPosition", "pause", "refreshSurface", "release", "seekTo", "timeMs", "setLoop", "loop", "setPlayRange", "start", "end", "setPlayerCallback", "callback", "setProfileCallback", "setSurface", "setSurfaceTexture", "stop", "updateComposition", "seekToOriginPosition", "updateCompositionByRecreatePlayer", "updateDisplaySize", "videoDurationMs", "Companion", "video_composition_release"})
+@l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer;", "", "composition", "Lcom/tencent/mm/videocomposition/VideoComposition;", "(Lcom/tencent/mm/videocomposition/VideoComposition;)V", "flushSurfaceTick", "", "hasPlaySurface", "", "isLoop", "isStarted", "isUpdatingComposition", "player", "Lcom/tencent/tav/player/Player;", "playerCallback", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerCallback;", "playerItem", "Lcom/tencent/tav/player/PlayerItem;", "playerLayer", "Lcom/tencent/tav/player/PlayerLayer;", "profileCallback", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerProfileCallback;", "source", "Lcom/tencent/tavkit/composition/TAVSource;", "surface", "Landroid/view/Surface;", "surfaceHeight", "", "surfaceTexture", "Landroid/graphics/SurfaceTexture;", "surfaceWidth", "createPlayer", "", "createPlayerLayerBySurface", "width", "height", "createPlayerLayerBySurfaceTexture", "currentPositionTimeMs", "getLaggingTime", "initPlayerCallback", "isPlaying", "muteOrigin", "mute", "normalUpdateComposition", "newPosition", "Lcom/tencent/tav/coremedia/CMTime;", "playAfterUpdate", "originPosition", "pause", "refreshSurface", "release", "seekTo", "timeMs", "setLoop", "loop", "setPlayRange", "start", "end", "setPlayerCallback", "callback", "setProfileCallback", "setSurface", "setSurfaceTexture", "stop", "updateComposition", "seekToOriginPosition", "updateCompositionByRecreatePlayer", "updateDisplaySize", "videoDurationMs", "Companion", "video_composition_release"})
 public final class a
 {
-  public static final a.a LJS;
-  private h BXI;
-  a.a.c LJL;
-  private TAVSource LJN;
-  private a.a LJO;
-  boolean LJP;
-  private boolean LJQ;
-  private long LJR;
-  boolean aLU;
-  private boolean iuX;
+  public static final a.a RhL;
+  private n Gez;
+  public a.c RhE;
+  private TAVSource RhG;
+  private a.a RhH;
+  public boolean RhI;
+  private boolean RhJ;
+  private long RhK;
+  private boolean isStarted;
+  private boolean jqj;
   Player player;
-  private PlayerItem playerItem;
-  PlayerLayer playerLayer;
-  int surfaceHeight;
-  SurfaceTexture surfaceTexture;
-  int surfaceWidth;
+  PlayerItem playerItem;
+  private PlayerLayer playerLayer;
+  private int surfaceHeight;
+  private SurfaceTexture surfaceTexture;
+  private int surfaceWidth;
   
   static
   {
-    AppMethodBeat.i(195035);
-    LJS = new a.a((byte)0);
-    AppMethodBeat.o(195035);
+    AppMethodBeat.i(216842);
+    RhL = new a.a((byte)0);
+    AppMethodBeat.o(216842);
   }
   
-  public a(h paramh)
+  public a(n paramn)
   {
-    AppMethodBeat.i(195034);
-    this.BXI = paramh;
-    this.LJN = this.BXI.buildSource();
-    this.playerItem = new PlayerItem(this.LJN.getAsset());
-    this.playerItem.setVideoComposition(this.LJN.getVideoComposition());
-    this.playerItem.setAudioMix(this.LJN.getAudioMix());
-    a(this.playerItem);
-    b.i("VideoCompositionPlayer", "create player, composition:" + this.BXI, new Object[0]);
-    AppMethodBeat.o(195034);
+    AppMethodBeat.i(216841);
+    this.Gez = paramn;
+    this.RhG = this.Gez.buildSource();
+    this.playerItem = new PlayerItem(this.RhG.getAsset());
+    this.playerItem.setVideoComposition(this.RhG.getVideoComposition());
+    this.playerItem.setAudioMix(this.RhG.getAudioMix());
+    this.player = new Player(this.playerItem);
+    paramn = this.player;
+    if (paramn != null) {
+      paramn.setPlayRange(this.Gez.hfo());
+    }
+    if (this.Gez.QEl)
+    {
+      paramn = this.player;
+      if (paramn != null) {
+        paramn.setRate(-1.0F);
+      }
+    }
+    this.isStarted = false;
+    this.RhJ = false;
+    hfs();
+    b.i("VideoCompositionPlayer", "create player, composition:" + this.Gez, new Object[0]);
+    AppMethodBeat.o(216841);
   }
   
   private final void a(final CMTime paramCMTime1, boolean paramBoolean, CMTime paramCMTime2)
   {
-    AppMethodBeat.i(195024);
+    AppMethodBeat.i(216826);
     final long l1 = SystemClock.elapsedRealtime();
-    this.LJQ = true;
+    this.RhJ = true;
     Player localPlayer = this.player;
     if (localPlayer != null) {
       localPlayer.pause();
@@ -75,119 +89,143 @@ public final class a
     paramCMTime1 = this.player;
     if (paramCMTime1 != null)
     {
-      paramCMTime1.setPlayRange(this.BXI.evI());
-      AppMethodBeat.o(195024);
+      paramCMTime1.setPlayRange(this.Gez.hfo());
+      AppMethodBeat.o(216826);
       return;
     }
-    AppMethodBeat.o(195024);
+    AppMethodBeat.o(216826);
   }
   
-  private final void a(PlayerItem paramPlayerItem)
+  private final void d(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(195021);
-    this.player = new Player(paramPlayerItem);
-    paramPlayerItem = this.player;
-    if (paramPlayerItem != null) {
-      paramPlayerItem.setPlayRange(this.BXI.evI());
-    }
-    if (this.BXI.LJC)
+    AppMethodBeat.i(216831);
+    b.i("VideoCompositionPlayer", "createPlayerLayerBySurfaceTexture: " + paramSurfaceTexture + ", size:[" + paramInt1 + ", " + paramInt2 + ']', new Object[0]);
+    this.playerLayer = new PlayerLayer(paramSurfaceTexture, paramInt1, paramInt2);
+    paramSurfaceTexture = this.playerLayer;
+    if (paramSurfaceTexture != null)
     {
-      paramPlayerItem = this.player;
-      if (paramPlayerItem != null) {
-        paramPlayerItem.setRate(-1.0F);
-      }
+      paramSurfaceTexture.setPlayer(this.player);
+      AppMethodBeat.o(216831);
+      return;
     }
-    this.aLU = false;
-    this.LJQ = false;
-    fUd();
-    AppMethodBeat.o(195021);
+    AppMethodBeat.o(216831);
   }
   
-  private final void fUd()
+  private final void hfs()
   {
-    AppMethodBeat.i(195020);
+    AppMethodBeat.i(216823);
     Player localPlayer = this.player;
     if (localPlayer != null)
     {
       localPlayer.setPlayerListener((IPlayer.PlayerListener)new b(this));
-      AppMethodBeat.o(195020);
+      AppMethodBeat.o(216823);
       return;
     }
-    AppMethodBeat.o(195020);
+    AppMethodBeat.o(216823);
   }
   
-  public final void a(h paramh, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  public final void DB(boolean paramBoolean)
   {
-    AppMethodBeat.i(195022);
-    p.h(paramh, "composition");
-    b.i("VideoCompositionPlayer", "updateComposition, surfaceWidth:" + this.surfaceWidth + ", surfaceHeight:" + this.surfaceHeight + ", playAfterUpdate:" + paramBoolean1 + ", seekToOriginPosition:" + paramBoolean2 + ", seekTo:" + paramLong + ", isStarted:" + this.aLU, new Object[0]);
-    this.LJN = paramh.buildSource();
-    this.playerItem = new PlayerItem(this.LJN.getAsset());
-    this.playerItem.setVideoComposition(this.LJN.getVideoComposition());
-    this.playerItem.setAudioMix(this.LJN.getAudioMix());
-    this.BXI = paramh;
-    paramh = this.player;
-    Object localObject;
-    if (paramh != null)
+    AppMethodBeat.i(216828);
+    Player localPlayer = this.player;
+    if (localPlayer != null)
     {
-      paramh = paramh.position();
-      b.i("VideoCompositionPlayer", "updateComposition, originPosition:".concat(String.valueOf(paramh)), new Object[0]);
-      if (paramLong == -1L) {
-        break label263;
+      if (paramBoolean) {}
+      for (float f = 0.0F;; f = 1.0F)
+      {
+        localPlayer.setVolume(f);
+        AppMethodBeat.o(216828);
+        return;
       }
-      localObject = CMTime.fromMs(paramLong);
+    }
+    AppMethodBeat.o(216828);
+  }
+  
+  public final void a(n paramn, boolean paramBoolean1, boolean paramBoolean2, long paramLong)
+  {
+    AppMethodBeat.i(216824);
+    p.h(paramn, "composition");
+    b.i("VideoCompositionPlayer", "updateComposition, surfaceWidth:" + this.surfaceWidth + ", surfaceHeight:" + this.surfaceHeight + ", playAfterUpdate:" + paramBoolean1 + ", seekToOriginPosition:" + paramBoolean2 + ", seekTo:" + paramLong + ", isStarted:" + this.isStarted, new Object[0]);
+    this.RhG = paramn.buildSource();
+    this.playerItem = new PlayerItem(this.RhG.getAsset());
+    this.playerItem.setVideoComposition(this.RhG.getVideoComposition());
+    this.playerItem.setAudioMix(this.RhG.getAudioMix());
+    this.Gez = paramn;
+    paramn = this.player;
+    Object localObject;
+    if (paramn != null)
+    {
+      paramn = paramn.position();
+      b.i("VideoCompositionPlayer", "updateComposition, originPosition:".concat(String.valueOf(paramn)), new Object[0]);
+      if (paramLong == -1L) {
+        break label270;
+      }
+      localObject = new CMTime(paramLong, 1000);
     }
     for (;;)
     {
-      b.i("VideoCompositionPlayer", "updateComposition, originPosition:" + paramh + ", newPosition:" + localObject, new Object[0]);
-      a((CMTime)localObject, paramBoolean1, paramh);
-      AppMethodBeat.o(195022);
+      b.i("VideoCompositionPlayer", "updateComposition, originPosition:" + paramn + ", newPosition:" + localObject, new Object[0]);
+      a((CMTime)localObject, paramBoolean1, paramn);
+      AppMethodBeat.o(216824);
       return;
-      paramh = null;
+      paramn = null;
       break;
-      label263:
+      label270:
       if (paramBoolean2) {
-        localObject = paramh;
+        localObject = paramn;
       } else {
         localObject = CMTime.CMTimeZero;
       }
     }
   }
   
-  public final void aq(long paramLong1, long paramLong2)
+  public final void at(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(195025);
+    AppMethodBeat.i(216827);
     Player localPlayer = this.player;
     if (localPlayer != null)
     {
-      localPlayer.setPlayRange(CMTimeRange.fromMs(paramLong1, paramLong2 - paramLong1));
-      AppMethodBeat.o(195025);
+      localPlayer.setPlayRange(new CMTimeRange(new CMTime(paramLong1, 1000), new CMTime(paramLong2 - paramLong1, 1000)));
+      AppMethodBeat.o(216827);
       return;
     }
-    AppMethodBeat.o(195025);
+    AppMethodBeat.o(216827);
   }
   
-  public final void fUe()
+  public final void c(SurfaceTexture paramSurfaceTexture, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(195032);
-    b.i("VideoCompositionPlayer", "refreshSurface isStarted:" + this.aLU, new Object[0]);
-    if (!this.aLU)
+    AppMethodBeat.i(216830);
+    p.h(paramSurfaceTexture, "surfaceTexture");
+    this.surfaceWidth = paramInt1;
+    this.surfaceHeight = paramInt2;
+    this.surfaceTexture = paramSurfaceTexture;
+    d(paramSurfaceTexture, paramInt1, paramInt2);
+    this.RhI = true;
+    b.i("VideoCompositionPlayer", "setSurfaceTexture: " + paramSurfaceTexture + ", width:" + paramInt1 + ", height:" + paramInt2, new Object[0]);
+    AppMethodBeat.o(216830);
+  }
+  
+  public final void hft()
+  {
+    AppMethodBeat.i(216839);
+    b.i("VideoCompositionPlayer", "refreshSurface isStarted:" + this.isStarted, new Object[0]);
+    if (!this.isStarted)
     {
-      this.LJR = SystemClock.elapsedRealtime();
+      this.RhK = SystemClock.elapsedRealtime();
       Player localPlayer = this.player;
       if (localPlayer != null)
       {
         localPlayer.refreshSurface(null);
-        AppMethodBeat.o(195032);
+        AppMethodBeat.o(216839);
         return;
       }
     }
-    AppMethodBeat.o(195032);
+    AppMethodBeat.o(216839);
   }
   
-  public final long fUf()
+  public final long hfu()
   {
-    AppMethodBeat.i(195033);
+    AppMethodBeat.i(216840);
     Object localObject = this.player;
     if (localObject != null)
     {
@@ -197,14 +235,40 @@ public final class a
     for (long l = ((CMTime)localObject).getTimeUs();; l = 0L)
     {
       l /= 1000L;
-      AppMethodBeat.o(195033);
+      AppMethodBeat.o(216840);
       return l;
     }
   }
   
+  public final void lX(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(216832);
+    b.i("VideoCompositionPlayer", "updateDisplaySize:[" + paramInt1 + ", " + paramInt2 + ']', new Object[0]);
+    Player localPlayer = this.player;
+    if (localPlayer != null)
+    {
+      localPlayer.updateViewport(paramInt1, paramInt2);
+      AppMethodBeat.o(216832);
+      return;
+    }
+    AppMethodBeat.o(216832);
+  }
+  
+  public final void pause()
+  {
+    AppMethodBeat.i(216834);
+    b.i("VideoCompositionPlayer", "pause", new Object[0]);
+    Player localPlayer = this.player;
+    if (localPlayer != null) {
+      localPlayer.pause();
+    }
+    this.isStarted = false;
+    AppMethodBeat.o(216834);
+  }
+  
   public final void release()
   {
-    AppMethodBeat.i(195029);
+    AppMethodBeat.i(216836);
     b.i("VideoCompositionPlayer", "release", new Object[0]);
     Player localPlayer = this.player;
     if (localPlayer != null) {
@@ -212,114 +276,110 @@ public final class a
     }
     this.playerLayer = null;
     this.player = null;
-    this.aLU = false;
-    AppMethodBeat.o(195029);
+    this.isStarted = false;
+    AppMethodBeat.o(216836);
   }
   
   public final void seekTo(long paramLong)
   {
-    AppMethodBeat.i(195030);
-    b.i("VideoCompositionPlayer", "seekTo:" + paramLong + ", isUpdatingComposition:" + this.LJQ, new Object[0]);
-    if (!this.LJQ)
+    AppMethodBeat.i(216837);
+    b.i("VideoCompositionPlayer", "seekTo:" + paramLong + ", isUpdatingComposition:" + this.RhJ, new Object[0]);
+    if (!this.RhJ)
     {
-      long l = System.currentTimeMillis();
+      final long l = System.currentTimeMillis();
       Player localPlayer = this.player;
       if (localPlayer != null)
       {
-        localPlayer.seekToTime(CMTime.fromMs(paramLong), (Callback)new a.d(l, paramLong));
-        AppMethodBeat.o(195030);
+        localPlayer.seekToTime(new CMTime(paramLong, 1000), (Callback)new d(this, l, paramLong));
+        AppMethodBeat.o(216837);
         return;
       }
     }
-    AppMethodBeat.o(195030);
+    AppMethodBeat.o(216837);
   }
   
   public final void setLoop(boolean paramBoolean)
   {
-    AppMethodBeat.i(195031);
+    AppMethodBeat.i(216838);
     b.i("VideoCompositionPlayer", "setLoop:".concat(String.valueOf(paramBoolean)), new Object[0]);
-    this.iuX = paramBoolean;
+    this.jqj = paramBoolean;
     Player localPlayer = this.player;
     if (localPlayer != null)
     {
       localPlayer.setLoop(paramBoolean);
-      AppMethodBeat.o(195031);
+      AppMethodBeat.o(216838);
       return;
     }
-    AppMethodBeat.o(195031);
+    AppMethodBeat.o(216838);
   }
   
   public final void setPlayerCallback(a.a parama)
   {
-    AppMethodBeat.i(195027);
-    this.LJO = parama;
-    fUd();
-    AppMethodBeat.o(195027);
+    AppMethodBeat.i(216829);
+    this.RhH = parama;
+    hfs();
+    AppMethodBeat.o(216829);
   }
   
   public final void start()
   {
-    AppMethodBeat.i(195028);
-    b.i("VideoCompositionPlayer", "start, isUpdatingComposition:" + this.LJQ, new Object[0]);
-    if (!this.LJQ)
+    AppMethodBeat.i(216833);
+    b.i("VideoCompositionPlayer", "start, isUpdatingComposition:" + this.RhJ, new Object[0]);
+    if (!this.RhJ)
     {
       Player localPlayer = this.player;
       if (localPlayer != null) {
         localPlayer.play();
       }
     }
-    this.aLU = true;
-    AppMethodBeat.o(195028);
+    this.isStarted = true;
+    AppMethodBeat.o(216833);
   }
   
-  public final void zq(boolean paramBoolean)
+  public final void stop()
   {
-    AppMethodBeat.i(195026);
+    AppMethodBeat.i(216835);
+    b.i("VideoCompositionPlayer", "stop", new Object[0]);
     Player localPlayer = this.player;
-    if (localPlayer != null)
-    {
-      if (paramBoolean) {}
-      for (float f = 0.0F;; f = 1.0F)
-      {
-        localPlayer.setVolume(f);
-        AppMethodBeat.o(195026);
-        return;
-      }
+    if (localPlayer != null) {
+      localPlayer.stop();
     }
-    AppMethodBeat.o(195026);
+    this.isStarted = false;
+    AppMethodBeat.o(216835);
   }
   
-  @l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerCallback;", "", "onPlayCompleted", "", "onPlayError", "onPlayFirstFrame", "onPlayProgress", "timeMs", "", "onPlayStarted", "onPlayStop", "video_composition_release"})
+  @l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerCallback;", "", "onPlayCompleted", "", "onPlayError", "onPlayFirstFrame", "onPlayProgress", "timeMs", "", "onPlayStarted", "onPlayStop", "video_composition_release"})
   public static abstract interface a$a
   {
-    public abstract void cOE();
+    public abstract void Go(long paramLong);
     
-    public abstract void cOF();
+    public abstract void dER();
     
-    public abstract void cOG();
+    public abstract void dES();
     
-    public abstract void cOH();
+    public abstract void dET();
     
-    public abstract void cOI();
+    public abstract void dEU();
     
-    public abstract void xH(long paramLong);
+    public abstract void dEV();
   }
   
-  @l(gjZ={1, 1, 15}, gka={""}, gkb={"Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerFrameCallback;", "Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerCallback;", "onFrame", "", "video_composition_release"})
-  public static abstract interface a$b
-    extends a.a.a
+  @l(hxD={1, 1, 15}, hxE={""}, hxF={"Lcom/tencent/mm/videocomposition/play/VideoCompositionPlayer$Companion$PlayerProfileCallback;", "", "onSeek", "", "cost", "", "onUpdateComposition", "video_composition_release"})
+  public static abstract interface a$c
   {
-    public abstract void cOJ();
+    public abstract void Lc(long paramLong);
+    
+    public abstract void Ld(long paramLong);
   }
   
-  @l(gjZ={1, 1, 15}, gka={""}, gkb={"com/tencent/mm/videocomposition/play/VideoCompositionPlayer$initPlayerCallback$1", "Lcom/tencent/tav/player/IPlayer$PlayerListener;", "onPositionChanged", "", "position", "Lcom/tencent/tav/coremedia/CMTime;", "onStatusChanged", "status", "Lcom/tencent/tav/player/IPlayer$PlayerStatus;", "video_composition_release"})
+  @l(hxD={1, 1, 15}, hxE={""}, hxF={"com/tencent/mm/videocomposition/play/VideoCompositionPlayer$initPlayerCallback$1", "Lcom/tencent/tav/player/IPlayer$PlayerListener;", "onPositionChanged", "", "position", "Lcom/tencent/tav/coremedia/CMTime;", "onStatusChanged", "status", "Lcom/tencent/tav/player/IPlayer$PlayerStatus;", "video_composition_release"})
   public static final class b
     implements IPlayer.PlayerListener
   {
     public final void onPositionChanged(CMTime paramCMTime)
     {
-      AppMethodBeat.i(195017);
-      a.a.a locala = a.a(this.LJT);
+      AppMethodBeat.i(216820);
+      a.a.a locala = a.a(this.RhM);
       if (locala != null) {
         if (paramCMTime == null) {
           break label89;
@@ -328,82 +388,82 @@ public final class a
       label89:
       for (long l = paramCMTime.getTimeUs();; l = 0L)
       {
-        locala.xH(l / 1000L);
+        locala.Go(l / 1000L);
         if (paramCMTime == null) {
           break;
         }
-        if (paramCMTime.getTimeUs() != a.b(this.LJT).evI().getStartUs()) {
+        if (paramCMTime.getTimeUs() != a.b(this.RhM).hfo().getStartUs()) {
           break label100;
         }
-        paramCMTime = a.a(this.LJT);
+        paramCMTime = a.a(this.RhM);
         if (paramCMTime == null) {
           break label100;
         }
-        paramCMTime.cOE();
-        AppMethodBeat.o(195017);
+        paramCMTime.dER();
+        AppMethodBeat.o(216820);
         return;
       }
-      AppMethodBeat.o(195017);
+      AppMethodBeat.o(216820);
       return;
       label100:
-      AppMethodBeat.o(195017);
+      AppMethodBeat.o(216820);
     }
     
     public final void onStatusChanged(IPlayer.PlayerStatus paramPlayerStatus)
     {
-      AppMethodBeat.i(195016);
+      AppMethodBeat.i(216819);
       b.i("VideoCompositionPlayer", "onStatusChanged:".concat(String.valueOf(paramPlayerStatus)), new Object[0]);
       if (paramPlayerStatus == IPlayer.PlayerStatus.PLAYING)
       {
-        paramPlayerStatus = a.a(this.LJT);
+        paramPlayerStatus = a.a(this.RhM);
         if (paramPlayerStatus != null)
         {
-          paramPlayerStatus.cOE();
-          AppMethodBeat.o(195016);
+          paramPlayerStatus.dER();
+          AppMethodBeat.o(216819);
           return;
         }
-        AppMethodBeat.o(195016);
+        AppMethodBeat.o(216819);
         return;
       }
       if (paramPlayerStatus == IPlayer.PlayerStatus.STOPPED)
       {
-        paramPlayerStatus = a.a(this.LJT);
+        paramPlayerStatus = a.a(this.RhM);
         if (paramPlayerStatus != null)
         {
-          paramPlayerStatus.cOF();
-          AppMethodBeat.o(195016);
+          paramPlayerStatus.dES();
+          AppMethodBeat.o(216819);
           return;
         }
-        AppMethodBeat.o(195016);
+        AppMethodBeat.o(216819);
         return;
       }
       if (paramPlayerStatus == IPlayer.PlayerStatus.FINISHED)
       {
-        paramPlayerStatus = a.a(this.LJT);
+        paramPlayerStatus = a.a(this.RhM);
         if (paramPlayerStatus != null)
         {
-          paramPlayerStatus.cOG();
-          AppMethodBeat.o(195016);
+          paramPlayerStatus.dET();
+          AppMethodBeat.o(216819);
           return;
         }
-        AppMethodBeat.o(195016);
+        AppMethodBeat.o(216819);
         return;
       }
       if (paramPlayerStatus == IPlayer.PlayerStatus.ERROR)
       {
-        paramPlayerStatus = a.a(this.LJT);
+        paramPlayerStatus = a.a(this.RhM);
         if (paramPlayerStatus != null)
         {
-          paramPlayerStatus.cOI();
-          AppMethodBeat.o(195016);
+          paramPlayerStatus.dEV();
+          AppMethodBeat.o(216819);
           return;
         }
       }
-      AppMethodBeat.o(195016);
+      AppMethodBeat.o(216819);
     }
   }
   
-  @l(gjZ={1, 1, 15}, gka={""}, gkb={"<anonymous>", "", "player", "Lcom/tencent/tav/player/Player;", "kotlin.jvm.PlatformType", "success", "", "onUpdated"})
+  @l(hxD={1, 1, 15}, hxE={""}, hxF={"<anonymous>", "", "player", "Lcom/tencent/tav/player/Player;", "kotlin.jvm.PlatformType", "success", "", "onUpdated"})
   static final class c
     implements OnCompositionUpdateListener
   {
@@ -411,28 +471,56 @@ public final class a
     
     public final void onUpdated(Player paramPlayer, boolean paramBoolean)
     {
-      AppMethodBeat.i(195018);
-      System.currentTimeMillis();
-      StringBuilder localStringBuilder = new StringBuilder("on composition update, success:").append(paramBoolean).append(", position:");
+      AppMethodBeat.i(216821);
+      long l1 = System.currentTimeMillis();
+      long l2 = l2;
+      Object localObject = a.c(this.RhM);
+      if (localObject != null) {
+        ((a.a.c)localObject).Lc(l1 - l2);
+      }
+      localObject = new StringBuilder("on composition update, success:").append(paramBoolean).append(", position:");
       CMTime localCMTime = paramPlayer.position();
       p.g(localCMTime, "player.position()");
-      localStringBuilder = localStringBuilder.append(localCMTime.getTimeUs() / 1000L).append(", originPosition:").append(l1).append(", isStarted:").append(a.c(this.LJT)).append(", cost:");
-      long l = paramCMTime1;
-      b.i("VideoCompositionPlayer", SystemClock.elapsedRealtime() - l, new Object[0]);
+      localObject = ((StringBuilder)localObject).append(localCMTime.getTimeUs() / 1000L).append(", originPosition:").append(l1).append(", isStarted:").append(a.d(this.RhM)).append(", cost:");
+      l1 = paramCMTime1;
+      b.i("VideoCompositionPlayer", SystemClock.elapsedRealtime() - l1, new Object[0]);
       if (paramPlayer != null) {
-        paramPlayer.seekToTime(this.LJW);
+        paramPlayer.seekToTime(this.RhP);
       }
-      if (((this.LJX) || (a.c(this.LJT))) && (paramPlayer != null)) {
+      if (((this.RhQ) || (a.d(this.RhM))) && (paramPlayer != null)) {
         paramPlayer.play();
       }
-      a.d(this.LJT);
-      AppMethodBeat.o(195018);
+      a.e(this.RhM);
+      AppMethodBeat.o(216821);
+    }
+  }
+  
+  @l(hxD={1, 1, 15}, hxE={""}, hxF={"<anonymous>", "", "call"})
+  static final class d
+    implements Callback
+  {
+    d(a parama, long paramLong1, long paramLong2) {}
+    
+    public final void call()
+    {
+      AppMethodBeat.i(216822);
+      long l1 = System.currentTimeMillis();
+      long l2 = l;
+      b.i("VideoCompositionPlayer", "seekTo:" + this.wfK + " completed", new Object[0]);
+      a.a.c localc = a.c(this.RhM);
+      if (localc != null)
+      {
+        localc.Ld(l1 - l2);
+        AppMethodBeat.o(216822);
+        return;
+      }
+      AppMethodBeat.o(216822);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.videocomposition.play.a
  * JD-Core Version:    0.7.0.1
  */

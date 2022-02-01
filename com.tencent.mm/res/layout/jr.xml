@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:ellipsize="end" android:gravity="center" android:id="@id/ac0" android:layout_width="wrap_content" android:layout_height="55.0dip" android:layout_marginLeft="@dimen/o" android:layout_marginRight="@dimen/o" android:singleLine="true" android:drawableRight="@drawable/bd9" android:drawablePadding="@dimen/d" />
+    <com.tencent.mm.plugin.bizui.widget.StoryListView android:id="@id/a8k" android:background="#00000000" style="@style/np" />
+    <TextView android:id="@id/c30" android:visibility="gone" style="@style/mh" />
 </LinearLayout>

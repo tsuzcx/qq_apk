@@ -5,7 +5,7 @@ import android.graphics.SurfaceTexture;
 import android.util.AttributeSet;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView;
-import com.tencent.mm.pluginsdk.ui.tools.h.a;
+import com.tencent.mm.pluginsdk.ui.tools.j.a;
 
 public class GameFakeVideoView
   extends VideoPlayerTextureView
@@ -25,12 +25,12 @@ public class GameFakeVideoView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public final void k(SurfaceTexture paramSurfaceTexture)
+  public final void l(SurfaceTexture paramSurfaceTexture)
   {
     AppMethodBeat.i(41208);
-    super.k(paramSurfaceTexture);
-    if (this.qbr != null) {
-      this.qbr.eU(getCurrentPosition(), getDuration());
+    super.l(paramSurfaceTexture);
+    if (this.rso != null) {
+      this.rso.fh(getCurrentPosition(), getDuration());
     }
     AppMethodBeat.o(41208);
   }
@@ -44,7 +44,7 @@ public class GameFakeVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.background.GameFakeVideoView
  * JD-Core Version:    0.7.0.1
  */

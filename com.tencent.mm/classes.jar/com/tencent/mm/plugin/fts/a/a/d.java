@@ -1,74 +1,74 @@
 package com.tencent.mm.plugin.fts.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ca;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.cb;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class d
-  extends ca
+  extends cb
 {
-  public static c.a info;
+  public static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(131673);
-    c.a locala = new c.a();
-    locala.IBL = new Field[12];
-    locala.columns = new String[13];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[12];
+    localMAutoDBInfo.columns = new String[13];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "featureId";
-    locala.IBN.put("featureId", "INTEGER PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "featureId";
+    localMAutoDBInfo.colsMap.put("featureId", "INTEGER PRIMARY KEY ");
     localStringBuilder.append(" featureId INTEGER PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "featureId";
-    locala.columns[1] = "title";
-    locala.IBN.put("title", "TEXT");
+    localMAutoDBInfo.primaryKey = "featureId";
+    localMAutoDBInfo.columns[1] = "title";
+    localMAutoDBInfo.colsMap.put("title", "TEXT");
     localStringBuilder.append(" title TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "titlePY";
-    locala.IBN.put("titlePY", "TEXT");
+    localMAutoDBInfo.columns[2] = "titlePY";
+    localMAutoDBInfo.colsMap.put("titlePY", "TEXT");
     localStringBuilder.append(" titlePY TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "titleShortPY";
-    locala.IBN.put("titleShortPY", "TEXT");
+    localMAutoDBInfo.columns[3] = "titleShortPY";
+    localMAutoDBInfo.colsMap.put("titleShortPY", "TEXT");
     localStringBuilder.append(" titleShortPY TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "tag";
-    locala.IBN.put("tag", "TEXT");
+    localMAutoDBInfo.columns[4] = "tag";
+    localMAutoDBInfo.colsMap.put("tag", "TEXT");
     localStringBuilder.append(" tag TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "actionType";
-    locala.IBN.put("actionType", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[5] = "actionType";
+    localMAutoDBInfo.colsMap.put("actionType", "INTEGER default '0' ");
     localStringBuilder.append(" actionType INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[6] = "url";
-    locala.IBN.put("url", "TEXT");
+    localMAutoDBInfo.columns[6] = "url";
+    localMAutoDBInfo.colsMap.put("url", "TEXT");
     localStringBuilder.append(" url TEXT");
     localStringBuilder.append(", ");
-    locala.columns[7] = "helpUrl";
-    locala.IBN.put("helpUrl", "TEXT");
+    localMAutoDBInfo.columns[7] = "helpUrl";
+    localMAutoDBInfo.colsMap.put("helpUrl", "TEXT");
     localStringBuilder.append(" helpUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[8] = "updateUrl";
-    locala.IBN.put("updateUrl", "TEXT");
+    localMAutoDBInfo.columns[8] = "updateUrl";
+    localMAutoDBInfo.colsMap.put("updateUrl", "TEXT");
     localStringBuilder.append(" updateUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[9] = "androidUrl";
-    locala.IBN.put("androidUrl", "TEXT");
+    localMAutoDBInfo.columns[9] = "androidUrl";
+    localMAutoDBInfo.colsMap.put("androidUrl", "TEXT");
     localStringBuilder.append(" androidUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[10] = "iconPath";
-    locala.IBN.put("iconPath", "TEXT");
+    localMAutoDBInfo.columns[10] = "iconPath";
+    localMAutoDBInfo.colsMap.put("iconPath", "TEXT");
     localStringBuilder.append(" iconPath TEXT");
     localStringBuilder.append(", ");
-    locala.columns[11] = "timestamp";
-    locala.IBN.put("timestamp", "LONG default '0' ");
+    localMAutoDBInfo.columns[11] = "timestamp";
+    localMAutoDBInfo.colsMap.put("timestamp", "LONG default '0' ");
     localStringBuilder.append(" timestamp LONG default '0' ");
-    locala.columns[12] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[12] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(131673);
   }
   
@@ -87,7 +87,7 @@ public final class d
     this.field_iconPath = "";
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
@@ -102,7 +102,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.a.d
  * JD-Core Version:    0.7.0.1
  */

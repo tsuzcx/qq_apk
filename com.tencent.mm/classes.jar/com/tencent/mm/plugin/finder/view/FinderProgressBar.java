@@ -16,28 +16,28 @@ import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.f;
-import d.g;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderProgressBar;", "Landroid/widget/FrameLayout;", "Landroid/widget/SeekBar$OnSeekBarChangeListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isEnableSeek", "", "lastX", "", "listener", "getListener", "()Landroid/widget/SeekBar$OnSeekBarChangeListener;", "setListener", "(Landroid/widget/SeekBar$OnSeekBarChangeListener;)V", "seekBar", "Landroid/widget/SeekBar;", "kotlin.jvm.PlatformType", "getSeekBar", "()Landroid/widget/SeekBar;", "seekBar$delegate", "Lkotlin/Lazy;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "onProgressChanged", "", "progress", "fromUser", "onStartTrackingTouch", "onStopTrackingTouch", "showSeekBar", "isShow", "delay", "", "Companion", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderProgressBar;", "Landroid/widget/FrameLayout;", "Landroid/widget/SeekBar$OnSeekBarChangeListener;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "isEnableSeek", "", "lastX", "", "listener", "getListener", "()Landroid/widget/SeekBar$OnSeekBarChangeListener;", "setListener", "(Landroid/widget/SeekBar$OnSeekBarChangeListener;)V", "seekBar", "Landroid/widget/SeekBar;", "kotlin.jvm.PlatformType", "getSeekBar", "()Landroid/widget/SeekBar;", "seekBar$delegate", "Lkotlin/Lazy;", "dispatchTouchEvent", "event", "Landroid/view/MotionEvent;", "onProgressChanged", "", "progress", "fromUser", "onStartTrackingTouch", "onStopTrackingTouch", "showSeekBar", "isShow", "delay", "", "Companion", "plugin-finder_release"})
 public final class FinderProgressBar
   extends FrameLayout
   implements SeekBar.OnSeekBarChangeListener
 {
-  public static final FinderProgressBar.b tgJ;
-  private float aTL;
-  private boolean tgG;
-  private final f tgH;
-  private SeekBar.OnSeekBarChangeListener tgI;
+  public static final b woC;
+  private float aTD;
+  private final f vMb;
+  private boolean woA;
+  private SeekBar.OnSeekBarChangeListener woB;
   
   static
   {
     AppMethodBeat.i(168407);
-    tgJ = new FinderProgressBar.b((byte)0);
+    woC = new b((byte)0);
     AppMethodBeat.o(168407);
   }
   
@@ -45,12 +45,12 @@ public final class FinderProgressBar
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(168414);
-    LayoutInflater.from(getContext()).inflate(2131494125, (ViewGroup)this, true);
-    paramContext = (SeekBar)findViewById(2131304485);
+    LayoutInflater.from(getContext()).inflate(2131494673, (ViewGroup)this, true);
+    paramContext = (SeekBar)findViewById(2131307482);
     if (paramContext != null)
     {
       setAlpha(0.0F);
-      paramContext.setOnTouchListener((View.OnTouchListener)FinderProgressBar.a.tgK);
+      paramContext.setOnTouchListener((View.OnTouchListener)a.woD);
     }
     setOnLongClickListener((View.OnLongClickListener)new View.OnLongClickListener()
     {
@@ -58,17 +58,17 @@ public final class FinderProgressBar
       {
         AppMethodBeat.i(168402);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderProgressBar$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
-        ae.i("Finder.ProgressBar", "onLongClick...");
-        FinderProgressBar.b(this.tgL);
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderProgressBar$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+        Log.i("Finder.ProgressBar", "onLongClick...");
+        FinderProgressBar.b(this.woE);
         paramAnonymousView.performHapticFeedback(0, 2);
         com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/finder/view/FinderProgressBar$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(168402);
         return false;
       }
     });
-    this.tgH = g.O((d.g.a.a)new c(this));
+    this.vMb = g.ah((kotlin.g.a.a)new c(this));
     AppMethodBeat.o(168414);
   }
   
@@ -76,12 +76,12 @@ public final class FinderProgressBar
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(168415);
-    LayoutInflater.from(getContext()).inflate(2131494125, (ViewGroup)this, true);
-    paramContext = (SeekBar)findViewById(2131304485);
+    LayoutInflater.from(getContext()).inflate(2131494673, (ViewGroup)this, true);
+    paramContext = (SeekBar)findViewById(2131307482);
     if (paramContext != null)
     {
       setAlpha(0.0F);
-      paramContext.setOnTouchListener((View.OnTouchListener)FinderProgressBar.a.tgK);
+      paramContext.setOnTouchListener((View.OnTouchListener)a.woD);
     }
     setOnLongClickListener((View.OnLongClickListener)new View.OnLongClickListener()
     {
@@ -89,34 +89,34 @@ public final class FinderProgressBar
       {
         AppMethodBeat.i(168402);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderProgressBar$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.ahF());
-        ae.i("Finder.ProgressBar", "onLongClick...");
-        FinderProgressBar.b(this.tgL);
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/finder/view/FinderProgressBar$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z", this, localb.axR());
+        Log.i("Finder.ProgressBar", "onLongClick...");
+        FinderProgressBar.b(this.woE);
         paramAnonymousView.performHapticFeedback(0, 2);
         com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/plugin/finder/view/FinderProgressBar$2", "android/view/View$OnLongClickListener", "onLongClick", "(Landroid/view/View;)Z");
         AppMethodBeat.o(168402);
         return false;
       }
     });
-    this.tgH = g.O((d.g.a.a)new c(this));
+    this.vMb = g.ah((kotlin.g.a.a)new c(this));
     AppMethodBeat.o(168415);
   }
   
   private final SeekBar getSeekBar()
   {
     AppMethodBeat.i(168409);
-    SeekBar localSeekBar = (SeekBar)this.tgH.getValue();
+    SeekBar localSeekBar = (SeekBar)this.vMb.getValue();
     AppMethodBeat.o(168409);
     return localSeekBar;
   }
   
-  private final void mw(boolean paramBoolean)
+  private final void oZ(boolean paramBoolean)
   {
     AppMethodBeat.i(168410);
     if (paramBoolean)
     {
-      localOnSeekBarChangeListener = this.tgI;
+      localOnSeekBarChangeListener = this.woB;
       if (localOnSeekBarChangeListener != null) {
         localOnSeekBarChangeListener.onStartTrackingTouch(getSeekBar());
       }
@@ -125,7 +125,7 @@ public final class FinderProgressBar
       AppMethodBeat.o(168410);
       return;
     }
-    SeekBar.OnSeekBarChangeListener localOnSeekBarChangeListener = this.tgI;
+    SeekBar.OnSeekBarChangeListener localOnSeekBarChangeListener = this.woB;
     if (localOnSeekBarChangeListener != null) {
       localOnSeekBarChangeListener.onStopTrackingTouch(getSeekBar());
     }
@@ -138,7 +138,7 @@ public final class FinderProgressBar
   {
     AppMethodBeat.i(168408);
     p.h(paramMotionEvent, "event");
-    if ((this.tgG) && (paramMotionEvent.getAction() == 0))
+    if ((this.woA) && (paramMotionEvent.getAction() == 0))
     {
       animate().cancel();
       setAlpha(1.0F);
@@ -147,19 +147,19 @@ public final class FinderProgressBar
     {
       for (;;)
       {
-        this.aTL = paramMotionEvent.getX();
+        this.aTD = paramMotionEvent.getX();
         boolean bool = super.dispatchTouchEvent(paramMotionEvent);
         AppMethodBeat.o(168408);
         return bool;
         if ((paramMotionEvent.getAction() != 1) && (paramMotionEvent.getAction() != 3)) {
           break;
         }
-        if (this.tgG) {
-          mw(false);
+        if (this.woA) {
+          oZ(false);
         }
       }
-    } while ((paramMotionEvent.getAction() != 2) || (!this.tgG));
-    float f3 = this.aTL - paramMotionEvent.getX();
+    } while ((paramMotionEvent.getAction() != 2) || (!this.woA));
+    float f3 = this.aTD - paramMotionEvent.getX();
     float f1 = Math.abs(f3);
     SeekBar localSeekBar = getSeekBar();
     p.g(localSeekBar, "seekBar");
@@ -177,14 +177,14 @@ public final class FinderProgressBar
   
   public final SeekBar.OnSeekBarChangeListener getListener()
   {
-    return this.tgI;
+    return this.woB;
   }
   
   public final void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(168411);
     p.h(paramSeekBar, "seekBar");
-    SeekBar.OnSeekBarChangeListener localOnSeekBarChangeListener = this.tgI;
+    SeekBar.OnSeekBarChangeListener localOnSeekBarChangeListener = this.woB;
     if (localOnSeekBarChangeListener != null)
     {
       localOnSeekBarChangeListener.onProgressChanged(paramSeekBar, paramInt, paramBoolean);
@@ -210,13 +210,35 @@ public final class FinderProgressBar
   
   public final void setListener(SeekBar.OnSeekBarChangeListener paramOnSeekBarChangeListener)
   {
-    this.tgI = paramOnSeekBarChangeListener;
+    this.woB = paramOnSeekBarChangeListener;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/SeekBar;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "event", "Landroid/view/MotionEvent;", "onTouch"})
+  static final class a
+    implements View.OnTouchListener
+  {
+    public static final a woD;
+    
+    static
+    {
+      AppMethodBeat.i(168401);
+      woD = new a();
+      AppMethodBeat.o(168401);
+    }
+    
+    public final boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+    {
+      return true;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderProgressBar$Companion;", "", "()V", "ANIMATION_DURATION", "", "DISMISS_DELAY", "TAG", "", "plugin-finder_release"})
+  public static final class b {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/SeekBar;", "kotlin.jvm.PlatformType", "invoke"})
   static final class c
     extends q
-    implements d.g.a.a<SeekBar>
+    implements kotlin.g.a.a<SeekBar>
   {
     c(FinderProgressBar paramFinderProgressBar)
     {
@@ -224,7 +246,7 @@ public final class FinderProgressBar
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class d
     implements Runnable
   {
@@ -233,14 +255,14 @@ public final class FinderProgressBar
     public final void run()
     {
       AppMethodBeat.i(168404);
-      this.tgL.setAlpha(0.0F);
-      this.tgL.setVisibility(0);
-      FinderProgressBar.a(this.tgL, true);
+      this.woE.setAlpha(0.0F);
+      this.woE.setVisibility(0);
+      FinderProgressBar.a(this.woE, true);
       AppMethodBeat.o(168404);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/view/FinderProgressBar$showSeekBar$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderProgressBar$showSeekBar$2", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
   public static final class e
     implements Animator.AnimatorListener
   {
@@ -248,11 +270,11 @@ public final class FinderProgressBar
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(205816);
-      paramAnimator = FinderProgressBar.a(this.tgL);
+      AppMethodBeat.i(254905);
+      paramAnimator = FinderProgressBar.a(this.woE);
       p.g(paramAnimator, "seekBar");
       paramAnimator.setAlpha(1.0F);
-      AppMethodBeat.o(205816);
+      AppMethodBeat.o(254905);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
@@ -260,7 +282,7 @@ public final class FinderProgressBar
     public final void onAnimationStart(Animator paramAnimator) {}
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/view/FinderProgressBar$showSeekBar$3", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/view/FinderProgressBar$showSeekBar$3", "Landroid/animation/Animator$AnimatorListener;", "onAnimationCancel", "", "animation", "Landroid/animation/Animator;", "onAnimationEnd", "onAnimationRepeat", "onAnimationStart", "plugin-finder_release"})
   public static final class f
     implements Animator.AnimatorListener
   {
@@ -268,10 +290,10 @@ public final class FinderProgressBar
     
     public final void onAnimationEnd(Animator paramAnimator)
     {
-      AppMethodBeat.i(205817);
-      this.tgL.setAlpha(0.0F);
-      FinderProgressBar.a(this.tgL, false);
-      AppMethodBeat.o(205817);
+      AppMethodBeat.i(254906);
+      this.woE.setAlpha(0.0F);
+      FinderProgressBar.a(this.woE, false);
+      AppMethodBeat.o(254906);
     }
     
     public final void onAnimationRepeat(Animator paramAnimator) {}
@@ -281,7 +303,7 @@ public final class FinderProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderProgressBar
  * JD-Core Version:    0.7.0.1
  */

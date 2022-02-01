@@ -9,11 +9,11 @@ public enum l$b
   static
   {
     AppMethodBeat.i(48147);
-    myn = new b("DESKTOP_SEARCH", 0, 1);
-    myo = new b("RESUME_FROM_WEAPP_EXIT", 1, 2);
-    myp = new b("BOTTOM_ENTRANCE_IN_DESKTOP", 2, 3);
-    myq = new b("TOP_ENTRANCE_IN_DESKTOP", 3, 4);
-    myr = new b[] { myn, myo, myp, myq };
+    nJo = new b("DESKTOP_SEARCH", 0, 1);
+    nJp = new b("RESUME_FROM_WEAPP_EXIT", 1, 2);
+    nJq = new b("BOTTOM_ENTRANCE_IN_DESKTOP", 2, 3);
+    nJr = new b("TOP_ENTRANCE_IN_DESKTOP", 3, 4);
+    nJs = new b[] { nJo, nJp, nJq, nJr };
     AppMethodBeat.o(48147);
   }
   

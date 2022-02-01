@@ -5,6 +5,7 @@ import android.os.Looper;
 import android.os.Process;
 import android.view.MotionEvent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 public final class c$p
@@ -25,7 +26,7 @@ public final class c$p
       public final void run()
       {
         AppMethodBeat.i(62425);
-        System.loadLibrary(this.iJZ);
+        System.loadLibrary(this.jGF);
         localCountDownLatch.countDown();
         AppMethodBeat.o(62425);
       }
@@ -42,7 +43,7 @@ public final class c$p
     }
   }
   
-  public static native byte[] aa(int paramInt);
+  public static native byte[] aa(int paramInt1, int paramInt2);
   
   public static native boolean ab();
   
@@ -66,9 +67,9 @@ public final class c$p
   
   public static native boolean al();
   
-  public static native String ba(int paramInt);
+  static native String ba(int paramInt);
   
-  public static native String bb(int paramInt);
+  static native String bb(int paramInt);
   
   static native boolean bc(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, PValue<Integer> paramPValue1, PValue<Integer> paramPValue2, PValue<byte[]> paramPValue);
   
@@ -90,7 +91,7 @@ public final class c$p
   
   public static native byte[] de(String paramString);
   
-  public static native void df(String paramString1, String paramString2);
+  public static native void df(String paramString1, String paramString2, String paramString3);
   
   public static native void dg(String paramString, MotionEvent paramMotionEvent);
   
@@ -100,7 +101,9 @@ public final class c$p
   
   public static native byte[] dj(String paramString);
   
-  public static native byte[] ea(int paramInt);
+  public static native String dk(String paramString);
+  
+  public static native byte[] ea(int paramInt1, int paramInt2);
   
   public static native boolean eb(byte[] paramArrayOfByte, int paramInt1, int paramInt2);
   
@@ -115,10 +118,34 @@ public final class c$p
   public static native String eg();
   
   public static native String eh();
+  
+  public static native void fa(String paramString, int paramInt1, int paramInt2);
+  
+  public static native void fb(int paramInt, List<b> paramList);
+  
+  public static native boolean fc();
+  
+  public static native void fd();
+  
+  public static native void fe(int paramInt);
+  
+  public static native void ff(int paramInt);
+  
+  public static native boolean fg(String paramString);
+  
+  public static native void fh(String paramString);
+  
+  public static native byte[] fi(String paramString);
+  
+  public static native void fj(String paramString);
+  
+  public static native void fk();
+  
+  public static native int fl(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.normsg.c.p
  * JD-Core Version:    0.7.0.1
  */

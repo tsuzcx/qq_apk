@@ -4,71 +4,73 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.collect.model.j;
-import com.tencent.mm.protocal.protobuf.dv;
-import com.tencent.mm.protocal.protobuf.ug;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.eh;
+import com.tencent.mm.protocal.protobuf.vn;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.ui.f;
 import java.util.Iterator;
 import java.util.List;
 
 final class CollectBillUI$1
-  implements com.tencent.mm.ak.f
+  implements i
 {
   CollectBillUI$1(CollectBillUI paramCollectBillUI) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, final q paramq)
   {
     AppMethodBeat.i(64072);
-    if ((paramn instanceof j))
+    if ((paramq instanceof j))
     {
-      paramString = (j)paramn;
+      paramString = (j)paramq;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = paramString.pgZ.GlX;
+        paramString = paramString.qwi.LgB;
         if ((paramString == null) || (paramString.isEmpty()))
         {
-          CollectBillUI.a(this.pkT).setVisibility(8);
+          CollectBillUI.a(this.qAe).setVisibility(8);
           AppMethodBeat.o(64072);
           return;
         }
         paramString = paramString.iterator();
         while (paramString.hasNext())
         {
-          paramn = (dv)paramString.next();
-          if ((paramn.type == 1) && (!bu.isNullOrNil(paramn.dyI)))
+          paramq = (eh)paramString.next();
+          if ((paramq.type == 1) && (!Util.isNullOrNil(paramq.dQx)))
           {
-            ae.i("MicroMsg.CollectBillUI", "show notice");
-            CollectBillUI.a(this.pkT).setText(paramn.dyI);
-            CollectBillUI.a(this.pkT).setOnClickListener(new View.OnClickListener()
+            Log.i("MicroMsg.CollectBillUI", "show notice");
+            CollectBillUI.a(this.qAe).setText(paramq.dQx);
+            CollectBillUI.a(this.qAe).setOnClickListener(new View.OnClickListener()
             {
               public final void onClick(View paramAnonymousView)
               {
                 AppMethodBeat.i(64071);
                 b localb = new b();
-                localb.bd(paramAnonymousView);
-                a.b("com/tencent/mm/plugin/collect/ui/CollectBillUI$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                if (!bu.isNullOrNil(paramn.url)) {
-                  com.tencent.mm.wallet_core.ui.f.p(CollectBillUI.1.this.pkT.getContext(), paramn.url, true);
+                localb.bm(paramAnonymousView);
+                a.b("com/tencent/mm/plugin/collect/ui/CollectBillUI$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+                if (!Util.isNullOrNil(paramq.url)) {
+                  f.p(CollectBillUI.1.this.qAe.getContext(), paramq.url, true);
                 }
                 a.a(this, "com/tencent/mm/plugin/collect/ui/CollectBillUI$1$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(64071);
               }
             });
-            CollectBillUI.a(this.pkT).setVisibility(0);
+            CollectBillUI.a(this.qAe).setVisibility(0);
             AppMethodBeat.o(64072);
             return;
           }
         }
-        CollectBillUI.a(this.pkT).setVisibility(8);
+        CollectBillUI.a(this.qAe).setVisibility(8);
         AppMethodBeat.o(64072);
         return;
       }
-      ae.e("MicroMsg.CollectBillUI", "net error: %s", new Object[] { paramString });
-      CollectBillUI.a(this.pkT).setVisibility(8);
+      Log.e("MicroMsg.CollectBillUI", "net error: %s", new Object[] { paramString });
+      CollectBillUI.a(this.qAe).setVisibility(8);
     }
     AppMethodBeat.o(64072);
   }

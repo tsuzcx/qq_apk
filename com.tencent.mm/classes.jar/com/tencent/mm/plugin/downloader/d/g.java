@@ -2,24 +2,26 @@ package com.tencent.mm.plugin.downloader.d;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.d.k;
 import com.tencent.mm.d.l;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.io.RandomAccessFile;
 
 public final class g
 {
-  private static final com.tencent.mm.d.k cSX;
+  private static final k djp;
   
   static
   {
     AppMethodBeat.i(88881);
-    cSX = new com.tencent.mm.d.k(101010256L);
+    djp = new k(101010256L);
     AppMethodBeat.o(88881);
   }
   
-  public static byte[] aaT(String paramString)
+  public static byte[] ala(String paramString)
   {
     AppMethodBeat.i(88880);
     if ((paramString == null) || (paramString.length() <= 0))
@@ -27,11 +29,11 @@ public final class g
       AppMethodBeat.o(88880);
       return null;
     }
-    RandomAccessFile localRandomAccessFile1 = o.dg(paramString, false);
+    RandomAccessFile localRandomAccessFile1 = s.dB(paramString, false);
     if (localRandomAccessFile1.length() == 0L)
     {
       localRandomAccessFile1.close();
-      ae.i("MicroMsg.Channel.ZipEocdCommentTool", "apk file length is zero");
+      Log.i("MicroMsg.Channel.ZipEocdCommentTool", "apk file length is zero");
       AppMethodBeat.o(88880);
       return null;
     }
@@ -39,9 +41,9 @@ public final class g
     {
       try
       {
-        paramString = new com.tencent.mm.vfs.k(paramString);
-        localRandomAccessFile2 = o.dg(w.B(paramString.mUri), false);
-        localRandomAccessFile2.seek(((Long)e.H(paramString).second).longValue() + 22L - 2L);
+        paramString = new o(paramString);
+        localRandomAccessFile2 = s.dB(aa.z(paramString.mUri), false);
+        localRandomAccessFile2.seek(((Long)e.L(paramString).second).longValue() + 22L - 2L);
         paramString = new byte[2];
         localRandomAccessFile2.readFully(paramString);
         i = new l(paramString).value;
@@ -55,7 +57,7 @@ public final class g
       {
         RandomAccessFile localRandomAccessFile2;
         int i;
-        ae.e("MicroMsg.Channel.ZipEocdCommentTool", "readComment, error: %s", new Object[] { paramString.getMessage() });
+        Log.e("MicroMsg.Channel.ZipEocdCommentTool", "readComment, error: %s", new Object[] { paramString.getMessage() });
         paramString = null;
         continue;
       }
@@ -70,7 +72,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.g
  * JD-Core Version:    0.7.0.1
  */

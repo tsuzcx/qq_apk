@@ -1,16 +1,16 @@
 package com.tencent.mm.ui.chatting;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.rs;
-import com.tencent.mm.g.a.rt;
-import com.tencent.mm.g.a.sx;
-import com.tencent.mm.g.a.sz;
-import com.tencent.mm.g.a.xv;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.x;
+import com.tencent.mm.g.a.so;
+import com.tencent.mm.g.a.sp;
+import com.tencent.mm.g.a.tv;
+import com.tencent.mm.g.a.tx;
+import com.tencent.mm.g.a.yx;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.model.z;
 import com.tencent.mm.modelmulti.o;
 import com.tencent.mm.modelmulti.o.b;
 import com.tencent.mm.modelmulti.o.d;
@@ -19,161 +19,161 @@ import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.pluginsdk.model.app.an.a;
 import com.tencent.mm.pluginsdk.model.app.ao;
 import com.tencent.mm.pluginsdk.model.app.d;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ca;
 
 public final class ak
 {
-  public static void br(bv parambv)
+  public static void bG(ca paramca)
   {
     AppMethodBeat.i(34859);
-    ae.i("MicroMsg.ResendMsgLogic", "resendVoiceMsg, msgId:%d", new Object[] { Long.valueOf(parambv.field_msgId) });
-    if (x.AK(parambv.field_talker))
+    Log.i("MicroMsg.ResendMsgLogic", "resendVoiceMsg, msgId:%d", new Object[] { Long.valueOf(paramca.field_msgId) });
+    if (ab.Jp(paramca.field_talker))
     {
-      localObject = new rt();
-      ((rt)localObject).dHv.dlw = parambv;
-      a.IvT.l((b)localObject);
+      localObject = new sp();
+      ((sp)localObject).dZg.dCM = paramca;
+      EventCenter.instance.publish((IEvent)localObject);
       AppMethodBeat.o(34859);
       return;
     }
-    Object localObject = new rs();
-    ((rs)localObject).dHu.dlw = parambv;
-    a.IvT.l((b)localObject);
+    Object localObject = new so();
+    ((so)localObject).dZf.dCM = paramca;
+    EventCenter.instance.publish((IEvent)localObject);
     AppMethodBeat.o(34859);
   }
   
-  public static void bs(bv parambv)
+  public static void bH(ca paramca)
   {
     AppMethodBeat.i(34860);
-    sx localsx = new sx();
-    long l2 = bl.BQ(parambv.field_talker);
-    ae.i("MicroMsg.ResendMsgLogic", "resendMsgImage, msgId:%d, time[%d - > %d]", new Object[] { Long.valueOf(parambv.field_msgId), Long.valueOf(parambv.field_createTime), Long.valueOf(l2) });
+    tv localtv = new tv();
+    long l2 = bp.Kw(paramca.field_talker);
+    Log.i("MicroMsg.ResendMsgLogic", "resendMsgImage, msgId:%d, time[%d - > %d]", new Object[] { Long.valueOf(paramca.field_msgId), Long.valueOf(paramca.field_createTime), Long.valueOf(l2) });
     long l1 = l2;
-    if (l2 == parambv.field_createTime) {
+    if (l2 == paramca.field_createTime) {
       l1 = l2 + 1L;
     }
-    parambv.qN(l1);
-    bc.aCg();
-    com.tencent.mm.model.c.azI().a(parambv.field_msgId, parambv);
-    localsx.dIC.dlw = parambv;
-    a.IvT.l(localsx);
+    paramca.setCreateTime(l1);
+    bg.aVF();
+    com.tencent.mm.model.c.aSQ().a(paramca.field_msgId, paramca);
+    localtv.eap.dCM = paramca;
+    EventCenter.instance.publish(localtv);
     AppMethodBeat.o(34860);
   }
   
-  public static void bt(bv parambv)
+  public static void bI(ca paramca)
   {
     AppMethodBeat.i(34861);
-    ae.i("MicroMsg.ResendMsgLogic", "resendEmoji, msgId:%d", new Object[] { Long.valueOf(parambv.field_msgId) });
-    xv localxv = new xv();
-    localxv.dNp.dlw = parambv;
-    a.IvT.l(localxv);
+    Log.i("MicroMsg.ResendMsgLogic", "resendEmoji, msgId:%d", new Object[] { Long.valueOf(paramca.field_msgId) });
+    yx localyx = new yx();
+    localyx.efh.dCM = paramca;
+    EventCenter.instance.publish(localyx);
     AppMethodBeat.o(34861);
   }
   
-  public static void bu(bv parambv)
+  public static void bJ(ca paramca)
   {
     AppMethodBeat.i(34862);
-    ae.i("MicroMsg.ResendMsgLogic", "resendAppMsgEmoji, msgId:%d", new Object[] { Long.valueOf(parambv.field_msgId) });
-    long l2 = bl.BQ(parambv.field_talker);
+    Log.i("MicroMsg.ResendMsgLogic", "resendAppMsgEmoji, msgId:%d", new Object[] { Long.valueOf(paramca.field_msgId) });
+    long l2 = bp.Kw(paramca.field_talker);
     long l1 = l2;
-    if (l2 == parambv.field_createTime) {
+    if (l2 == paramca.field_createTime) {
       l1 = l2 + 1L;
     }
-    parambv.qN(l1);
-    bc.aCg();
-    com.tencent.mm.model.c.azI().a(parambv.field_msgId, parambv);
-    com.tencent.mm.pluginsdk.model.app.c localc = ao.bJV().CZ(parambv.field_msgId);
-    if ((localc != null) && (localc.field_msgInfoId == parambv.field_msgId))
+    paramca.setCreateTime(l1);
+    bg.aVF();
+    com.tencent.mm.model.c.aSQ().a(paramca.field_msgId, paramca);
+    com.tencent.mm.pluginsdk.model.app.c localc = ao.cgO().Mp(paramca.field_msgId);
+    if ((localc != null) && (localc.field_msgInfoId == paramca.field_msgId))
     {
-      ae.d("MicroMsg.ResendMsgLogic", "resendAppMsgEmoji, upload app attach first");
+      Log.d("MicroMsg.ResendMsgLogic", "resendAppMsgEmoji, upload app attach first");
       localc.field_status = 101L;
       localc.field_offset = 0L;
       localc.field_lastModifyTime = (System.currentTimeMillis() / 1000L);
-      ao.bJV().a(localc, new String[0]);
-      ao.fdW().run();
+      ao.cgO().a(localc, new String[0]);
+      ao.gnh().run();
       AppMethodBeat.o(34862);
       return;
     }
-    ae.d("MicroMsg.ResendMsgLogic", "resendAppMsgEmoji, directly send app mag");
-    ao.fdW();
-    an.a.zb(parambv.field_msgId);
+    Log.d("MicroMsg.ResendMsgLogic", "resendAppMsgEmoji, directly send app mag");
+    ao.gnh();
+    an.a.HR(paramca.field_msgId);
     AppMethodBeat.o(34862);
   }
   
-  public static void bv(bv parambv)
+  public static void bK(ca paramca)
   {
     AppMethodBeat.i(34863);
-    ae.i("MicroMsg.ResendMsgLogic", "resendTextMsg, msgId:%d", new Object[] { Long.valueOf(parambv.field_msgId) });
-    by(parambv);
+    Log.i("MicroMsg.ResendMsgLogic", "resendTextMsg, msgId:%d", new Object[] { Long.valueOf(paramca.field_msgId) });
+    bN(paramca);
     AppMethodBeat.o(34863);
   }
   
-  public static void bw(bv parambv)
+  public static void bL(ca paramca)
   {
     AppMethodBeat.i(34864);
-    ae.i("MicroMsg.ResendMsgLogic", "resendLocation, msgId:%d", new Object[] { Long.valueOf(parambv.field_msgId) });
-    by(parambv);
+    Log.i("MicroMsg.ResendMsgLogic", "resendLocation, msgId:%d", new Object[] { Long.valueOf(paramca.field_msgId) });
+    bN(paramca);
     AppMethodBeat.o(34864);
   }
   
-  public static void bx(bv parambv)
+  public static void bM(ca paramca)
   {
     AppMethodBeat.i(34865);
-    ae.i("MicroMsg.ResendMsgLogic", "resendCardMsg, msgId:%d", new Object[] { Long.valueOf(parambv.field_msgId) });
-    by(parambv);
+    Log.i("MicroMsg.ResendMsgLogic", "resendCardMsg, msgId:%d", new Object[] { Long.valueOf(paramca.field_msgId) });
+    bN(paramca);
     AppMethodBeat.o(34865);
   }
   
-  private static void by(bv parambv)
+  private static void bN(ca paramca)
   {
     AppMethodBeat.i(34866);
-    long l1 = parambv.field_msgId;
+    long l1 = paramca.field_msgId;
     if (l1 == -1L)
     {
-      ae.e("MicroMsg.ResendMsgLogic", "sendMsgInternal failed msgId ".concat(String.valueOf(l1)));
+      Log.e("MicroMsg.ResendMsgLogic", "sendMsgInternal failed msgId ".concat(String.valueOf(l1)));
       AppMethodBeat.o(34866);
       return;
     }
-    if ((parambv.field_talker.equals("medianote")) && ((v.aAG() & 0x4000) == 0))
+    if ((paramca.field_talker.equals("medianote")) && ((z.aUc() & 0x4000) == 0))
     {
       AppMethodBeat.o(34866);
       return;
     }
-    ae.d("MicroMsg.ResendMsgLogic", "sendMsgInternal, start send msgId: %d", new Object[] { Long.valueOf(l1) });
-    Object localObject = o.a(o.d.iiP);
+    Log.d("MicroMsg.ResendMsgLogic", "sendMsgInternal, start send msgId: %d", new Object[] { Long.valueOf(l1) });
+    Object localObject = o.a(o.d.jdK);
     ((o.e)localObject).msgId = l1;
-    ((o.e)localObject).content = parambv.field_content;
-    ((o.e)localObject).toUser = parambv.field_talker;
-    ((o.e)localObject).dEu = 0;
-    ((o.e)localObject).iiV = 2;
-    if (!((o.e)localObject).aJO().execute())
+    ((o.e)localObject).content = paramca.field_content;
+    ((o.e)localObject).toUser = paramca.field_talker;
+    ((o.e)localObject).cSx = 0;
+    ((o.e)localObject).jdR = 2;
+    if (!((o.e)localObject).bdQ().execute())
     {
-      ae.e("MicroMsg.ResendMsgLogic", "sendMsgInternal, doScene return false, directly mark msg to failed");
-      parambv.setStatus(5);
-      bc.aCg();
-      com.tencent.mm.model.c.azI().a(parambv.field_msgId, parambv);
-      localObject = new sz();
-      ((sz)localObject).dIE.dlw = parambv;
-      a.IvT.l((b)localObject);
+      Log.e("MicroMsg.ResendMsgLogic", "sendMsgInternal, doScene return false, directly mark msg to failed");
+      paramca.setStatus(5);
+      bg.aVF();
+      com.tencent.mm.model.c.aSQ().a(paramca.field_msgId, paramca);
+      localObject = new tx();
+      ((tx)localObject).ear.dCM = paramca;
+      EventCenter.instance.publish((IEvent)localObject);
       AppMethodBeat.o(34866);
       return;
     }
-    long l2 = bl.BQ(parambv.field_talker);
+    long l2 = bp.Kw(paramca.field_talker);
     l1 = l2;
-    if (l2 == parambv.field_createTime) {
+    if (l2 == paramca.field_createTime) {
       l1 = l2 + 1L;
     }
-    parambv.qN(l1);
-    bc.aCg();
-    com.tencent.mm.model.c.azI().a(parambv.field_msgId, parambv);
+    paramca.setCreateTime(l1);
+    bg.aVF();
+    com.tencent.mm.model.c.aSQ().a(paramca.field_msgId, paramca);
     AppMethodBeat.o(34866);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.ak
  * JD-Core Version:    0.7.0.1
  */

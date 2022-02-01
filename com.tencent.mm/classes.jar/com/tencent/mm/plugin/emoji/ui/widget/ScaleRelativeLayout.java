@@ -12,16 +12,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class ScaleRelativeLayout
   extends RelativeLayout
 {
-  public float aXE = 3.0F;
-  private float aXF = 0.5F;
-  public float pWA = 6.0F;
-  private float pWB = 0.3F;
-  private boolean pWC = false;
-  private ValueAnimator pWD;
-  private float pWw = 1.0F;
-  private float pWx = 1.0F;
-  private float pWy = 0.0F;
-  private float pWz = 0.0F;
+  public float aXt = 3.0F;
+  private float aXu = 0.5F;
+  private float rnA = 0.3F;
+  private boolean rnB = false;
+  private ValueAnimator rnC;
+  private float rnv = 1.0F;
+  private float rnw = 1.0F;
+  private float rnx = 0.0F;
+  private float rny = 0.0F;
+  public float rnz = 6.0F;
   
   public ScaleRelativeLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -49,11 +49,11 @@ public class ScaleRelativeLayout
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(109436);
-    if ((!this.pWC) && (paramMotionEvent.getPointerCount() == 2))
+    if ((!this.rnB) && (paramMotionEvent.getPointerCount() == 2))
     {
-      this.pWC = true;
-      this.pWy = ((float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1)));
-      this.pWx = this.pWw;
+      this.rnB = true;
+      this.rnx = ((float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1)));
+      this.rnw = this.rnv;
     }
     switch (paramMotionEvent.getActionMasked())
     {
@@ -65,65 +65,65 @@ public class ScaleRelativeLayout
     case 6: 
       for (;;)
       {
-        if (this.pWy <= 0.0F) {
-          this.pWy = 0.1F;
+        if (this.rnx <= 0.0F) {
+          this.rnx = 0.1F;
         }
         int i = 0;
         while (i < getChildCount())
         {
           paramMotionEvent = getChildAt(i);
-          paramMotionEvent.setScaleX(this.pWw);
-          paramMotionEvent.setScaleY(this.pWw);
+          paramMotionEvent.setScaleX(this.rnv);
+          paramMotionEvent.setScaleY(this.rnv);
           i += 1;
         }
         if (paramMotionEvent.getPointerCount() == 2)
         {
           f2 = (float)Math.hypot(paramMotionEvent.getX(0) - paramMotionEvent.getX(1), paramMotionEvent.getY(0) - paramMotionEvent.getY(1));
-          f1 = this.pWx * f2 / this.pWy;
-          if (f1 > this.pWA)
+          f1 = this.rnw * f2 / this.rnx;
+          if (f1 > this.rnz)
           {
-            f1 = this.pWA;
-            this.pWz = (this.pWy * f1);
+            f1 = this.rnz;
+            this.rny = (this.rnx * f1);
           }
           for (;;)
           {
-            this.pWw = f1;
-            if (this.pWD == null) {
+            this.rnv = f1;
+            if (this.rnC == null) {
               break;
             }
-            this.pWD.cancel();
+            this.rnC.cancel();
             break;
-            if (f1 < this.pWB)
+            if (f1 < this.rnA)
             {
-              f1 = this.pWB;
-              this.pWz = (this.pWy * f1);
+              f1 = this.rnA;
+              this.rny = (this.rnx * f1);
             }
             else
             {
-              this.pWz = f2;
+              this.rny = f2;
             }
           }
           if (paramMotionEvent.getPointerCount() == 2)
           {
-            this.pWy = this.pWz;
-            this.pWx = this.pWw;
-            this.pWC = false;
+            this.rnx = this.rny;
+            this.rnw = this.rnv;
+            this.rnB = false;
           }
         }
       }
     }
-    float f2 = this.pWw;
-    float f1 = this.pWw;
-    if (this.pWw < this.aXF) {
-      f1 = this.aXF;
+    float f2 = this.rnv;
+    float f1 = this.rnv;
+    if (this.rnv < this.aXu) {
+      f1 = this.aXu;
     }
     for (;;)
     {
-      if (this.pWD != null) {
-        this.pWD.cancel();
+      if (this.rnC != null) {
+        this.rnC.cancel();
       }
-      this.pWD = ValueAnimator.ofFloat(new float[] { f2, f1 });
-      this.pWD.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+      this.rnC = ValueAnimator.ofFloat(new float[] { f2, f1 });
+      this.rnC.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
         public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
         {
@@ -140,10 +140,10 @@ public class ScaleRelativeLayout
           AppMethodBeat.o(109434);
         }
       });
-      this.pWD.start();
+      this.rnC.start();
       break;
-      if (this.pWw > this.aXE) {
-        f1 = this.aXE;
+      if (this.rnv > this.aXt) {
+        f1 = this.aXt;
       }
     }
     AppMethodBeat.o(109436);

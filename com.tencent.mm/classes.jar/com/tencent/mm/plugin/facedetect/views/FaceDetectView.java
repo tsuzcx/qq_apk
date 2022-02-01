@@ -21,37 +21,38 @@ import com.tencent.mm.plugin.facedetect.model.FaceCharacteristicsResult;
 import com.tencent.mm.plugin.facedetect.model.f;
 import com.tencent.mm.plugin.facedetect.model.p;
 import com.tencent.mm.plugin.facedetect.model.q;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.thread.ThreadPool;
 
 public class FaceDetectView
   extends RelativeLayout
 {
-  public static long rwi = 100L;
-  public static int rwj = 1;
-  public volatile boolean hkx;
+  public static long sWf = 100L;
+  public static int sWg = 1;
+  public volatile boolean idt;
   public boolean isPaused;
-  public long rpz;
-  public String rsD;
-  private TextView rth;
-  public FaceDetectCameraView rvS;
-  public FaceDetectDecorView rvT;
-  public ViewGroup rvU;
-  public ViewGroup rvV;
-  private a rvW;
-  public com.tencent.mm.plugin.facedetect.d.b rvX;
-  public boolean rvY;
-  public boolean rvZ;
-  public String rwa;
-  public boolean rwb;
-  public boolean rwc;
-  public long rwd;
-  private long rwe;
-  private final int rwf;
-  private Animation rwg;
-  private View rwh;
+  public long sQX;
+  private TextView sTK;
+  public String sTT;
+  public FaceDetectCameraView sVP;
+  public FaceDetectDecorView sVQ;
+  public ViewGroup sVR;
+  public ViewGroup sVS;
+  private a sVT;
+  public com.tencent.mm.plugin.facedetect.d.b sVU;
+  public boolean sVV;
+  public boolean sVW;
+  public String sVX;
+  public boolean sVY;
+  public boolean sVZ;
+  public long sWa;
+  private long sWb;
+  private final int sWc;
+  private Animation sWd;
+  private View sWe;
   
   public FaceDetectView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -67,49 +68,49 @@ public class FaceDetectView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(104145);
-    this.rvS = null;
-    this.rvT = null;
-    this.rth = null;
-    this.rvU = null;
-    this.rvV = null;
-    this.rvW = null;
-    this.rvY = false;
-    this.hkx = false;
+    this.sVP = null;
+    this.sVQ = null;
+    this.sTK = null;
+    this.sVR = null;
+    this.sVS = null;
+    this.sVT = null;
+    this.sVV = false;
+    this.idt = false;
     this.isPaused = false;
-    this.rvZ = false;
-    this.rwa = ak.getContext().getString(2131764084);
-    this.rwb = true;
-    this.rwc = false;
-    this.rpz = -1L;
-    this.rwd = -1L;
-    this.rwe = -1L;
-    this.rwf = 1500;
-    this.rwh = null;
-    paramContext = LayoutInflater.from(paramContext).inflate(2131495634, null, false);
+    this.sVW = false;
+    this.sVX = MMApplicationContext.getContext().getString(2131766326);
+    this.sVY = true;
+    this.sVZ = false;
+    this.sQX = -1L;
+    this.sWa = -1L;
+    this.sWb = -1L;
+    this.sWc = 1500;
+    this.sWe = null;
+    paramContext = LayoutInflater.from(paramContext).inflate(2131496535, null, false);
     addView(paramContext);
-    this.rvS = ((FaceDetectCameraView)paramContext.findViewById(2131297685));
-    this.rvT = ((FaceDetectDecorView)paramContext.findViewById(2131300738));
-    this.rwh = paramContext.findViewById(2131300571);
-    this.rvS.rvj = new b()
+    this.sVP = ((FaceDetectCameraView)paramContext.findViewById(2131297957));
+    this.sVQ = ((FaceDetectDecorView)paramContext.findViewById(2131302323));
+    this.sWe = paramContext.findViewById(2131302106);
+    this.sVP.sVg = new b()
     {
       public final void a(int paramAnonymousInt, CharSequence paramAnonymousCharSequence)
       {
         AppMethodBeat.i(104137);
-        ae.e("MicroMsg.FaceDetectView", "hy: onDetectError: %d, %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousCharSequence });
+        Log.e("MicroMsg.FaceDetectView", "hy: onDetectError: %d, %s", new Object[] { Integer.valueOf(paramAnonymousInt), paramAnonymousCharSequence });
         if ((FaceDetectView.a(FaceDetectView.this)) || (FaceDetectView.b(FaceDetectView.this)))
         {
-          ae.w("MicroMsg.FaceDetectView", "hy: already end or paused");
+          Log.w("MicroMsg.FaceDetectView", "hy: already end or paused");
           AppMethodBeat.o(104137);
           return;
         }
-        if ((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).cuV()))
+        if ((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).cTr()))
         {
-          ae.e("MicroMsg.FaceDetectView", "hy: motion eat result");
-          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).cuY());
+          Log.e("MicroMsg.FaceDetectView", "hy: motion eat result");
+          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).cTu());
           AppMethodBeat.o(104137);
           return;
         }
-        FaceDetectView.this.lt(false);
+        FaceDetectView.this.mv(false);
         FaceDetectView.a(FaceDetectView.this, true);
         FaceDetectView localFaceDetectView = FaceDetectView.this;
         Object localObject;
@@ -126,12 +127,12 @@ public class FaceDetectView
           }
         }
         label216:
-        for (paramAnonymousCharSequence = paramAnonymousCharSequence.toString();; paramAnonymousCharSequence = FaceDetectView.this.getContext().getString(2131758686))
+        for (paramAnonymousCharSequence = paramAnonymousCharSequence.toString();; paramAnonymousCharSequence = FaceDetectView.this.getContext().getString(2131759001))
         {
-          ((a)localObject).y(paramAnonymousInt, paramAnonymousCharSequence);
+          ((a)localObject).A(paramAnonymousInt, paramAnonymousCharSequence);
           AppMethodBeat.o(104137);
           return;
-          localObject = FaceDetectView.this.getContext().getString(2131758686);
+          localObject = FaceDetectView.this.getContext().getString(2131759001);
           break;
         }
       }
@@ -141,17 +142,17 @@ public class FaceDetectView
         AppMethodBeat.i(104138);
         int i = paramAnonymousFaceCharacteristicsResult.errCode;
         String str = paramAnonymousFaceCharacteristicsResult.errMsg;
-        ae.v("MicroMsg.FaceDetectView", "hy: onDetectHelp: %d, %s", new Object[] { Integer.valueOf(i), str });
+        Log.v("MicroMsg.FaceDetectView", "hy: onDetectHelp: %d, %s", new Object[] { Integer.valueOf(i), str });
         if ((FaceDetectView.a(FaceDetectView.this)) || (FaceDetectView.b(FaceDetectView.this)))
         {
-          ae.w("MicroMsg.FaceDetectView", "hy: already end");
+          Log.w("MicroMsg.FaceDetectView", "hy: already end");
           AppMethodBeat.o(104138);
           return;
         }
         if ((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).a(paramAnonymousFaceCharacteristicsResult)))
         {
-          ae.e("MicroMsg.FaceDetectView", "hy: motion eat result");
-          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).cuY());
+          Log.e("MicroMsg.FaceDetectView", "hy: motion eat result");
+          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).cTu());
           AppMethodBeat.o(104138);
           return;
         }
@@ -166,7 +167,7 @@ public class FaceDetectView
           AppMethodBeat.o(104138);
           return;
         }
-        FaceDetectView.a(FaceDetectView.this, FaceCharacteristicsResult.DU(i));
+        FaceDetectView.a(FaceDetectView.this, FaceCharacteristicsResult.HG(i));
         FaceDetectView localFaceDetectView = FaceDetectView.this;
         if (str != null) {}
         for (paramAnonymousFaceCharacteristicsResult = str;; paramAnonymousFaceCharacteristicsResult = "")
@@ -180,22 +181,22 @@ public class FaceDetectView
       public final void d(FaceCharacteristicsResult paramAnonymousFaceCharacteristicsResult)
       {
         AppMethodBeat.i(104139);
-        ae.d("MicroMsg.FaceDetectView", "hy: onDetectSucceed: %s", new Object[] { paramAnonymousFaceCharacteristicsResult.toString() });
+        Log.d("MicroMsg.FaceDetectView", "hy: onDetectSucceed: %s", new Object[] { paramAnonymousFaceCharacteristicsResult.toString() });
         if ((FaceDetectView.a(FaceDetectView.this)) || (FaceDetectView.b(FaceDetectView.this)))
         {
-          ae.w("MicroMsg.FaceDetectView", "hy: already end pr paused");
+          Log.w("MicroMsg.FaceDetectView", "hy: already end pr paused");
           AppMethodBeat.o(104139);
           return;
         }
         if ((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).b(paramAnonymousFaceCharacteristicsResult)))
         {
-          ae.e("MicroMsg.FaceDetectView", "hy: motion eat result");
-          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).cuY());
+          Log.e("MicroMsg.FaceDetectView", "hy: motion eat result");
+          FaceDetectView.a(FaceDetectView.this, FaceDetectView.c(FaceDetectView.this).cTu());
           AppMethodBeat.o(104139);
           return;
         }
         FaceDetectView.a(FaceDetectView.this, false);
-        if (((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).cuU())) || (FaceDetectView.f(FaceDetectView.this)))
+        if (((FaceDetectView.c(FaceDetectView.this) != null) && (FaceDetectView.c(FaceDetectView.this).cTq())) || (FaceDetectView.f(FaceDetectView.this)))
         {
           FaceDetectView.h(FaceDetectView.this);
           FaceDetectView.e(FaceDetectView.this);
@@ -206,46 +207,46 @@ public class FaceDetectView
     paramContext = getContext();
     if (paramContext == null)
     {
-      ae.e("MicroMsg.MMAnimationEffectLoader", "hy: context is null.");
+      Log.e("MicroMsg.MMAnimationEffectLoader", "hy: context is null.");
       paramContext = null;
     }
     for (;;)
     {
-      this.rwg = paramContext;
+      this.sWd = paramContext;
       AppMethodBeat.o(104145);
       return;
-      paramContext = AnimationUtils.loadAnimation(paramContext, 2130771989);
-      paramContext.setInterpolator(new com.tencent.mm.ui.c.a.c());
+      paramContext = AnimationUtils.loadAnimation(paramContext, 2130771993);
+      paramContext.setInterpolator(new com.tencent.mm.ui.c.b.c());
     }
   }
   
-  private void agV(String paramString)
+  private void arE(String paramString)
   {
     AppMethodBeat.i(104148);
-    if (bu.nullAsNil(paramString).equals(this.rth.getText().toString()))
+    if (Util.nullAsNil(paramString).equals(this.sTK.getText().toString()))
     {
-      ae.v("MicroMsg.FaceDetectView", "hy: same error. ignore");
+      Log.v("MicroMsg.FaceDetectView", "hy: same error. ignore");
       AppMethodBeat.o(104148);
       return;
     }
-    this.rth.setText(paramString);
-    this.rth.setVisibility(0);
-    this.rth.setAnimation(this.rwg);
+    this.sTK.setText(paramString);
+    this.sTK.setVisibility(0);
+    this.sTK.setAnimation(this.sWd);
     AppMethodBeat.o(104148);
   }
   
-  private void cvH()
+  private void cTR()
   {
     AppMethodBeat.i(104147);
-    this.rth.setText("");
-    this.rth.setVisibility(4);
+    this.sTK.setText("");
+    this.sTK.setVisibility(4);
     AppMethodBeat.o(104147);
   }
   
   public int getCameraBestHeight()
   {
     AppMethodBeat.i(104153);
-    int i = this.rvS.getEncodeVideoBestSize().y;
+    int i = this.sVP.getEncodeVideoBestSize().y;
     AppMethodBeat.o(104153);
     return i;
   }
@@ -253,7 +254,7 @@ public class FaceDetectView
   public int getCameraBestWidth()
   {
     AppMethodBeat.i(104152);
-    int i = this.rvS.getEncodeVideoBestSize().x;
+    int i = this.sVP.getEncodeVideoBestSize().x;
     AppMethodBeat.o(104152);
     return i;
   }
@@ -261,7 +262,7 @@ public class FaceDetectView
   public int getCameraPreivewWidth()
   {
     AppMethodBeat.i(104150);
-    int i = this.rvS.rvy.getPreviewWidth();
+    int i = this.sVP.sVv.getPreviewWidth();
     AppMethodBeat.o(104150);
     return i;
   }
@@ -269,7 +270,7 @@ public class FaceDetectView
   public int getCameraPreviewHeight()
   {
     AppMethodBeat.i(104151);
-    int i = this.rvS.rvy.getPreviewHeight();
+    int i = this.sVP.sVv.getPreviewHeight();
     AppMethodBeat.o(104151);
     return i;
   }
@@ -277,7 +278,7 @@ public class FaceDetectView
   public int getCameraRotation()
   {
     AppMethodBeat.i(104149);
-    int i = this.rvS.rvy.getRotation();
+    int i = this.sVP.sVv.getRotation();
     AppMethodBeat.o(104149);
     return i;
   }
@@ -285,9 +286,9 @@ public class FaceDetectView
   public b.b getCurrentMotionCancelInfo()
   {
     AppMethodBeat.i(104154);
-    if (this.rvX != null)
+    if (this.sVU != null)
     {
-      localb = this.rvX.cuX();
+      localb = this.sVU.cTt();
       AppMethodBeat.o(104154);
       return localb;
     }
@@ -299,32 +300,32 @@ public class FaceDetectView
   public Bitmap getPreviewBm()
   {
     AppMethodBeat.i(104156);
-    Bitmap localBitmap = this.rvS.getBitmap();
+    Bitmap localBitmap = this.sVP.getBitmap();
     AppMethodBeat.o(104156);
     return localBitmap;
   }
   
-  public final void lt(boolean paramBoolean)
+  public final void mv(boolean paramBoolean)
   {
     AppMethodBeat.i(104155);
-    if (this.rvX != null) {
-      this.rvX.cuW();
+    if (this.sVU != null) {
+      this.sVU.cTs();
     }
-    if (!this.hkx)
+    if (!this.idt)
     {
-      this.hkx = true;
+      this.idt = true;
       if (paramBoolean) {
-        if (this.rvS != null) {
-          f.ai(new Runnable()
+        if (this.sVP != null) {
+          f.ao(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(104144);
-              FaceDetectView.this.rvS.cvC();
-              if (this.rrx != null)
+              FaceDetectView.this.sVP.cTL();
+              if (this.sSU != null)
               {
-                FaceProNative.FaceResult localFaceResult = FaceDetectView.j(FaceDetectView.this).cvE();
-                this.rrx.b(localFaceResult);
+                FaceProNative.FaceResult localFaceResult = FaceDetectView.j(FaceDetectView.this).cTN();
+                this.sSU.b(localFaceResult);
               }
               AppMethodBeat.o(104144);
             }
@@ -333,33 +334,33 @@ public class FaceDetectView
       }
       for (;;)
       {
-        ae.i("MicroMsg.FaceDetectView", "hy: stopped capture face");
-        this.rvZ = false;
-        cvH();
+        Log.i("MicroMsg.FaceDetectView", "hy: stopped capture face");
+        this.sVW = false;
+        cTR();
         AppMethodBeat.o(104155);
         return;
-        if (this.rvS != null) {
-          this.rvS.cvB();
+        if (this.sVP != null) {
+          this.sVP.cTK();
         }
       }
     }
-    ae.w("MicroMsg.FaceDetectView", "hy: already end");
+    Log.w("MicroMsg.FaceDetectView", "hy: already end");
     AppMethodBeat.o(104155);
   }
   
   public void setBusinessTip(String paramString)
   {
-    this.rsD = paramString;
+    this.sTT = paramString;
   }
   
   public void setCallback(a parama)
   {
-    this.rvW = parama;
+    this.sVT = parama;
   }
   
   public void setErrTextView(TextView paramTextView)
   {
-    this.rth = paramTextView;
+    this.sTK = paramTextView;
   }
   
   public final void u(boolean paramBoolean, final String paramString)
@@ -367,18 +368,18 @@ public class FaceDetectView
     AppMethodBeat.i(104146);
     if (paramBoolean)
     {
-      com.tencent.mm.sdk.g.b.c(new Runnable()
+      ThreadPool.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(104141);
-          ar.f(new Runnable()
+          MMHandlerThread.postToMainThread(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(104140);
               FaceDetectView.i(FaceDetectView.this).setVisibility(0);
-              FaceDetectView.i(FaceDetectView.this).setBackgroundDrawable(new BitmapDrawable(this.rwl));
+              FaceDetectView.i(FaceDetectView.this).setBackgroundDrawable(new BitmapDrawable(this.sWi));
               AppMethodBeat.o(104140);
             }
           });
@@ -392,13 +393,13 @@ public class FaceDetectView
     paramString.setInterpolator(new LinearInterpolator());
     paramString.setDuration(500L);
     paramString.setFillAfter(true);
-    this.rwh.startAnimation(paramString);
+    this.sWe.startAnimation(paramString);
     AppMethodBeat.o(104146);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.facedetect.views.FaceDetectView
  * JD-Core Version:    0.7.0.1
  */

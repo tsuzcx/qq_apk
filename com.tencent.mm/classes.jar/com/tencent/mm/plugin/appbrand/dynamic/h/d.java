@@ -2,11 +2,9 @@ package com.tencent.mm.plugin.appbrand.dynamic.h;
 
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.collector.CollectSession;
 import com.tencent.mm.plugin.appbrand.collector.c;
-import com.tencent.mm.sdk.platformtools.ae;
 import java.util.HashSet;
 import java.util.Set;
 import org.json.JSONException;
@@ -14,22 +12,30 @@ import org.json.JSONObject;
 
 public final class d
 {
-  private static Set<String> klv;
+  private static Set<String> lpg;
   
   static
   {
     AppMethodBeat.i(121439);
-    klv = new HashSet();
+    lpg = new HashSet();
     if (!TextUtils.isEmpty("drawCanvas")) {
-      klv.add("drawCanvas");
+      lpg.add("drawCanvas");
     }
     AppMethodBeat.o(121439);
   }
   
-  public static boolean NH(String paramString)
+  public static String G(JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(121438);
+    paramJSONObject = paramJSONObject.optString("__session_id");
+    AppMethodBeat.o(121438);
+    return paramJSONObject;
+  }
+  
+  public static boolean WP(String paramString)
   {
     AppMethodBeat.i(121436);
-    boolean bool = klv.contains(paramString);
+    boolean bool = lpg.contains(paramString);
     AppMethodBeat.o(121436);
     return bool;
   }
@@ -41,31 +47,23 @@ public final class d
     {
       paramJSONObject.put("__session_id", paramString1);
       paramJSONObject.put("__invoke_jsapi_timestamp", System.nanoTime());
-      paramString1 = c.NB(paramString1);
+      paramString1 = c.WJ(paramString1);
       if (paramString1 != null) {
-        paramString1.dwo.putInt("__invoke_jsapi_data_size", paramString2.length());
+        paramString1.dNV.putInt("__invoke_jsapi_data_size", paramString2.length());
       }
       AppMethodBeat.o(121437);
       return;
     }
     catch (JSONException paramString1)
     {
-      ae.e("MicroMsg.JsApiCostTimeStrategy", "%s", new Object[] { Log.getStackTraceString(paramString1) });
+      com.tencent.mm.sdk.platformtools.Log.e("MicroMsg.JsApiCostTimeStrategy", "%s", new Object[] { android.util.Log.getStackTraceString(paramString1) });
       AppMethodBeat.o(121437);
     }
-  }
-  
-  public static String z(JSONObject paramJSONObject)
-  {
-    AppMethodBeat.i(121438);
-    paramJSONObject = paramJSONObject.optString("__session_id");
-    AppMethodBeat.o(121438);
-    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.h.d
  * JD-Core Version:    0.7.0.1
  */

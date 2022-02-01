@@ -12,23 +12,23 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.ui.aa;
 
 public class ScannerFlashSwitcher
   extends LinearLayout
 {
-  public boolean Vp;
-  boolean cNB;
-  private ImageView yKn;
-  private TextView yKo;
-  private boolean yKp;
+  private ImageView COa;
+  private TextView COb;
+  private boolean COc;
+  public boolean VC;
+  boolean ddZ;
   
   public ScannerFlashSwitcher(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(91061);
-    this.yKp = false;
+    this.COc = false;
     init();
     AppMethodBeat.o(91061);
   }
@@ -37,7 +37,7 @@ public class ScannerFlashSwitcher
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(91062);
-    this.yKp = false;
+    this.COc = false;
     init();
     AppMethodBeat.o(91062);
   }
@@ -45,41 +45,41 @@ public class ScannerFlashSwitcher
   private void init()
   {
     AppMethodBeat.i(91063);
-    z.jV(getContext()).inflate(2131495308, this, true);
-    this.yKn = ((ImageView)findViewById(2131300127));
-    this.yKo = ((TextView)findViewById(2131300126));
-    this.yKp = true;
+    aa.jQ(getContext()).inflate(2131496158, this, true);
+    this.COa = ((ImageView)findViewById(2131301575));
+    this.COb = ((TextView)findViewById(2131301571));
+    this.COc = true;
     AppMethodBeat.o(91063);
   }
   
-  public final void dPB()
+  public final void eRm()
   {
     AppMethodBeat.i(91066);
-    ae.i("MicroMsg.ScannerFlashSwitcher", "openFlashStatus");
-    this.Vp = true;
-    this.yKn.setImageResource(2131691128);
-    this.yKo.setText(2131762814);
+    Log.i("MicroMsg.ScannerFlashSwitcher", "openFlashStatus");
+    this.VC = true;
+    this.COa.setImageResource(2131691436);
+    this.COb.setText(2131764911);
     AppMethodBeat.o(91066);
   }
   
-  public final void dPC()
+  public final void eRn()
   {
     AppMethodBeat.i(91067);
-    ae.i("MicroMsg.ScannerFlashSwitcher", "closeFlashStatus");
-    this.Vp = false;
-    this.yKn.setImageResource(2131691127);
-    this.yKo.setText(2131762815);
+    Log.i("MicroMsg.ScannerFlashSwitcher", "closeFlashStatus");
+    this.VC = false;
+    this.COa.setImageResource(2131691435);
+    this.COb.setText(2131764912);
     AppMethodBeat.o(91067);
   }
   
   public final void hide()
   {
     AppMethodBeat.i(91065);
-    ae.i("MicroMsg.ScannerFlashSwitcher", "hide");
+    Log.i("MicroMsg.ScannerFlashSwitcher", "hide");
     setEnabled(false);
-    this.cNB = false;
-    this.yKn.animate().alpha(0.0F).setDuration(500L);
-    this.yKo.animate().alpha(0.0F).setDuration(500L).setListener(new AnimatorListenerAdapter()
+    this.ddZ = false;
+    this.COa.animate().alpha(0.0F).setDuration(500L);
+    this.COb.animate().alpha(0.0F).setDuration(500L).setListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -88,21 +88,21 @@ public class ScannerFlashSwitcher
         AppMethodBeat.o(91060);
       }
     });
-    this.Vp = false;
+    this.VC = false;
     AppMethodBeat.o(91065);
   }
   
   public final void show()
   {
     AppMethodBeat.i(91064);
-    ae.i("MicroMsg.ScannerFlashSwitcher", "show, isFirstShow: %s", new Object[] { Boolean.valueOf(this.yKp) });
-    this.cNB = true;
-    if (this.yKp)
+    Log.i("MicroMsg.ScannerFlashSwitcher", "show, isFirstShow: %s", new Object[] { Boolean.valueOf(this.COc) });
+    this.ddZ = true;
+    if (this.COc)
     {
-      this.yKn.setAlpha(0.0F);
-      this.yKo.setAlpha(0.0F);
+      this.COa.setAlpha(0.0F);
+      this.COb.setAlpha(0.0F);
       setVisibility(0);
-      this.yKo.animate().alpha(1.0F).setListener(null).setDuration(500L);
+      this.COb.animate().alpha(1.0F).setListener(null).setDuration(500L);
       ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
       localValueAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
       {
@@ -127,7 +127,7 @@ public class ScannerFlashSwitcher
         }
       });
       localValueAnimator.start();
-      this.yKp = false;
+      this.COc = false;
     }
     for (;;)
     {
@@ -135,8 +135,8 @@ public class ScannerFlashSwitcher
       AppMethodBeat.o(91064);
       return;
       setVisibility(0);
-      this.yKo.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
-      this.yKn.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
+      this.COb.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
+      this.COa.animate().alpha(1.0F).setDuration(500L).setListener(null).start();
     }
   }
 }

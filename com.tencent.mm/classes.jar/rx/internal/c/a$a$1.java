@@ -11,7 +11,7 @@ final class a$a$1
   public final Thread newThread(Runnable paramRunnable)
   {
     AppMethodBeat.i(90310);
-    paramRunnable = this.OvS.newThread(paramRunnable);
+    paramRunnable = this.UlG.newThread(paramRunnable);
     paramRunnable.setName(paramRunnable.getName() + " (Evictor)");
     AppMethodBeat.o(90310);
     return paramRunnable;
@@ -19,7 +19,7 @@ final class a$a$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     rx.internal.c.a.a.1
  * JD-Core Version:    0.7.0.1
  */

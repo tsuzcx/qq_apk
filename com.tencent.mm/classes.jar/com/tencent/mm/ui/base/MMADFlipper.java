@@ -15,26 +15,26 @@ import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class MMADFlipper
   extends ViewGroup
 {
-  private int JEo;
-  private Interpolator JEp;
-  private int JEq;
-  private int JEr;
-  private boolean JEs;
-  private boolean JEt;
-  private a JEu;
-  private View agn;
+  private int OPg;
+  private Interpolator OPh;
+  private int OPi;
+  private int OPj;
+  private boolean OPk;
+  private boolean OPl;
+  private a OPm;
+  private View agA;
   private Context mContext;
   private float mLastMotionX;
   private float mLastMotionY;
   private Scroller mScroller;
   private int mTouchSlop;
   private VelocityTracker mVelocityTracker;
-  private View pPh;
+  private View rfF;
   
   public MMADFlipper(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -45,39 +45,39 @@ public class MMADFlipper
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(141755);
-    this.JEo = 0;
-    this.JEs = false;
-    this.JEt = true;
+    this.OPg = 0;
+    this.OPk = false;
+    this.OPl = true;
     this.mContext = paramContext;
-    this.JEp = getInterpolator();
-    this.mScroller = new Scroller(this.mContext, this.JEp);
+    this.OPh = getInterpolator();
+    this.mScroller = new Scroller(this.mContext, this.OPh);
     this.mTouchSlop = ViewConfiguration.get(this.mContext).getScaledDoubleTapSlop();
     AppMethodBeat.o(141755);
   }
   
-  private void acJ(int paramInt)
+  private void alt(int paramInt)
   {
     AppMethodBeat.i(141765);
-    acK(paramInt);
-    ae.d("MicroMsg.MMFlipper", "mCurScreen:%d, mLastScreen:%d, whichScreen:%d", new Object[] { Integer.valueOf(this.JEq), Integer.valueOf(this.JEr), Integer.valueOf(paramInt) });
-    this.JEr = paramInt;
+    alu(paramInt);
+    Log.d("MicroMsg.MMFlipper", "mCurScreen:%d, mLastScreen:%d, whichScreen:%d", new Object[] { Integer.valueOf(this.OPi), Integer.valueOf(this.OPj), Integer.valueOf(paramInt) });
+    this.OPj = paramInt;
     AppMethodBeat.o(141765);
   }
   
-  private void acK(int paramInt)
+  private void alu(int paramInt)
   {
     AppMethodBeat.i(141766);
     paramInt = Math.max(0, Math.min(paramInt, getChildCount() - 1));
     if (getScrollX() != getWidth() * paramInt)
     {
       paramInt = paramInt * getWidth() - getScrollX();
-      this.mScroller.startScroll(getScrollX(), 0, paramInt, 0, a.aA(getContext(), Math.abs(paramInt) * 2));
+      this.mScroller.startScroll(getScrollX(), 0, paramInt, 0, a.E(getContext(), Math.abs(paramInt) * 2));
       invalidate();
     }
     AppMethodBeat.o(141766);
   }
   
-  private boolean fCD()
+  private boolean gKC()
   {
     AppMethodBeat.i(141762);
     if (getChildCount() > 1)
@@ -107,20 +107,20 @@ public class MMADFlipper
       AppMethodBeat.o(141767);
       return;
     }
-    if (this.JEs)
+    if (this.OPk)
     {
-      this.JEs = false;
-      if (this.JEq <= 0)
+      this.OPk = false;
+      if (this.OPi <= 0)
       {
-        this.JEq = getRealChildCount();
-        setScrollXOffest(this.JEq * getWidth());
+        this.OPi = getRealChildCount();
+        setScrollXOffest(this.OPi * getWidth());
         AppMethodBeat.o(141767);
         return;
       }
-      if (this.JEq >= getChildCount() - 1)
+      if (this.OPi >= getChildCount() - 1)
       {
-        this.JEq = 1;
-        setScrollXOffest(this.JEq * getWidth());
+        this.OPi = 1;
+        setScrollXOffest(this.OPi * getWidth());
       }
     }
     AppMethodBeat.o(141767);
@@ -128,7 +128,7 @@ public class MMADFlipper
   
   public int getCurScreen()
   {
-    return this.JEq;
+    return this.OPi;
   }
   
   public int getRealChildCount()
@@ -150,11 +150,11 @@ public class MMADFlipper
     AppMethodBeat.i(141764);
     if (getChildCount() > 1)
     {
-      i = this.JEq;
+      i = this.OPi;
       AppMethodBeat.o(141764);
       return i - 1;
     }
-    int i = this.JEq;
+    int i = this.OPi;
     AppMethodBeat.o(141764);
     return i;
   }
@@ -170,7 +170,7 @@ public class MMADFlipper
   {
     AppMethodBeat.i(141759);
     boolean bool;
-    if (!this.JEt)
+    if (!this.OPl)
     {
       bool = super.onInterceptTouchEvent(paramMotionEvent);
       AppMethodBeat.o(141759);
@@ -183,7 +183,7 @@ public class MMADFlipper
       return bool;
     }
     int i = paramMotionEvent.getAction();
-    if ((i == 2) && (this.JEo != 0))
+    if ((i == 2) && (this.OPg != 0))
     {
       AppMethodBeat.o(141759);
       return true;
@@ -193,7 +193,7 @@ public class MMADFlipper
     switch (i)
     {
     }
-    while (this.JEo != 0)
+    while (this.OPg != 0)
     {
       AppMethodBeat.o(141759);
       return true;
@@ -205,21 +205,21 @@ public class MMADFlipper
         if (i == 0) {
           break label198;
         }
-        this.JEo = 1;
+        this.OPg = 1;
         break;
       }
       label198:
-      this.JEo = 0;
+      this.OPg = 0;
       continue;
       this.mLastMotionX = f1;
       this.mLastMotionY = f2;
       if (this.mScroller.isFinished()) {}
       for (i = 0;; i = 1)
       {
-        this.JEo = i;
+        this.OPg = i;
         break;
       }
-      this.JEo = 0;
+      this.OPg = 0;
     }
     AppMethodBeat.o(141759);
     return false;
@@ -300,12 +300,12 @@ public class MMADFlipper
     i = (int)paramMotionEvent.getXVelocity();
     if (i > 600)
     {
-      if (fCD())
+      if (gKC())
       {
-        this.JEq -= 1;
-        acJ(this.JEq);
+        this.OPi -= 1;
+        alt(this.OPi);
       }
-      this.JEs = true;
+      this.OPk = true;
     }
     for (;;)
     {
@@ -314,45 +314,45 @@ public class MMADFlipper
         this.mVelocityTracker.recycle();
         this.mVelocityTracker = null;
       }
-      this.JEo = 0;
+      this.OPg = 0;
       this.mLastMotionX = 0.0F;
       this.mLastMotionY = 0.0F;
       break;
       if (i < -600)
       {
-        if (fCD())
+        if (gKC())
         {
-          this.JEq += 1;
-          acJ(this.JEq);
+          this.OPi += 1;
+          alt(this.OPi);
         }
-        this.JEs = true;
+        this.OPk = true;
       }
       else
       {
         i = getWidth();
-        acJ((getScrollX() + i / 2) / i);
+        alt((getScrollX() + i / 2) / i);
       }
     }
   }
   
   public void setFooterView(View paramView)
   {
-    this.pPh = paramView;
+    this.rfF = paramView;
   }
   
   public void setHeaderView(View paramView)
   {
-    this.agn = paramView;
+    this.agA = paramView;
   }
   
   public void setOnScreenChangedListener(a parama)
   {
-    this.JEu = parama;
+    this.OPm = parama;
   }
   
   public void setScrollEnable(boolean paramBoolean)
   {
-    this.JEt = paramBoolean;
+    this.OPl = paramBoolean;
   }
   
   @TargetApi(14)
@@ -375,7 +375,7 @@ public class MMADFlipper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.base.MMADFlipper
  * JD-Core Version:    0.7.0.1
  */

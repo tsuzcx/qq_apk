@@ -2,23 +2,26 @@ package com.tencent.mm.plugin.hp.b;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.plugin.boots.a.c;
+import com.tencent.mm.plugin.hp.d.b;
 import com.tencent.mm.plugin.hp.net.SimpleHttpLogic;
 import com.tencent.mm.plugin.hp.net.SimpleHttpLogic.Request;
 import com.tencent.mm.plugin.hp.net.SimpleHttpLogic.TaskCallback;
 import com.tencent.mm.pointers.PByteArray;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.chn;
-import com.tencent.mm.protocal.protobuf.cho;
-import com.tencent.mm.protocal.protobuf.chp;
-import com.tencent.mm.protocal.protobuf.chq;
-import com.tencent.mm.protocal.protobuf.chs;
-import com.tencent.mm.protocal.protobuf.cwf;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.cxu;
+import com.tencent.mm.protocal.protobuf.cxv;
+import com.tencent.mm.protocal.protobuf.cxw;
+import com.tencent.mm.protocal.protobuf.cxx;
+import com.tencent.mm.protocal.protobuf.cxz;
+import com.tencent.mm.protocal.protobuf.doy;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,45 +29,45 @@ import java.util.List;
 public final class g
   implements com.tencent.mm.pluginsdk.cmd.a
 {
-  private static void dfi()
+  private static void dZc()
   {
     AppMethodBeat.i(117440);
-    Object localObject = ((c)com.tencent.mm.kernel.g.ab(c.class)).bNR();
+    Object localObject = ((c)com.tencent.mm.kernel.g.af(c.class)).ckR();
     if (!((List)localObject).isEmpty())
     {
-      ae.e("MicroMsg.Tinker.TinkerBootsCommand", "start day active keys");
+      Log.e("MicroMsg.Tinker.TinkerBootsCommand", "start day active keys");
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         com.tencent.mm.plugin.boots.a.a locala = (com.tencent.mm.plugin.boots.a.a)((Iterator)localObject).next();
-        ae.i("MicroMsg.Tinker.TinkerBootsCommand", "key:%s active:%d", new Object[] { Integer.toHexString(locala.field_key), Integer.valueOf(locala.field_dau) });
+        Log.i("MicroMsg.Tinker.TinkerBootsCommand", "key:%s active:%d", new Object[] { Integer.toHexString(locala.field_key), Integer.valueOf(locala.field_dau) });
       }
     }
     AppMethodBeat.o(117440);
   }
   
-  public static void dfj()
+  public static void dZd()
   {
-    AppMethodBeat.i(196766);
-    com.tencent.e.h.MqF.aO(new Runnable()
+    AppMethodBeat.i(196774);
+    com.tencent.f.h.RTc.aX(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(196765);
+        AppMethodBeat.i(196773);
         SimpleHttpLogic.Request localRequest = new SimpleHttpLogic.Request();
         localRequest.cgi = "/cgi-bin/micromsg-bin/mmtlsprconfig";
         localRequest.host = "short.weixin.qq.com";
-        cho localcho = new cho();
-        localcho.HtK = "tinker_id_834582c31727099da72312e81eb61c550d05bdfa_arm64-v8a-Test";
-        Object localObject = new chn();
-        ((chn)localObject).key = "";
-        ((chn)localObject).value = "";
-        localcho.HtL.add(localObject);
-        localcho.wTE = "";
+        cxv localcxv = new cxv();
+        localcxv.MCI = "tinker_id_834582c31727099da72312e81eb61c550d05bdfa_arm64-v8a-Test";
+        Object localObject = new cxu();
+        ((cxu)localObject).key = "";
+        ((cxu)localObject).value = "";
+        localcxv.MCJ.add(localObject);
+        localcxv.APx = "";
         localObject = new PByteArray();
         try
         {
-          ae.i("simple", "pack result ".concat(String.valueOf(SimpleHttpLogic.packRequest(localcho.toByteArray(), (PByteArray)localObject))));
+          Log.i("simple", "pack result ".concat(String.valueOf(SimpleHttpLogic.packRequest(localcxv.toByteArray(), (PByteArray)localObject))));
         }
         catch (Exception localException1)
         {
@@ -74,17 +77,17 @@ public final class g
             {
               localRequest.body = ((PByteArray)localObject).value;
               SimpleHttpLogic.startRequest(localRequest, new a(), "101.227.131.113");
-              AppMethodBeat.o(196765);
+              AppMethodBeat.o(196773);
               return;
               localException1 = localException1;
-              ae.e("simple", "pack failed " + localException1.getLocalizedMessage());
+              Log.e("simple", "pack failed " + localException1.getLocalizedMessage());
             }
           }
           catch (Exception localException2)
           {
             for (;;)
             {
-              ae.e("simple", localException2.getLocalizedMessage());
+              Log.e("simple", localException2.getLocalizedMessage());
             }
           }
         }
@@ -97,35 +100,35 @@ public final class g
         
         public final void onCompleted(int paramInt1, int paramInt2, byte[] paramArrayOfByte)
         {
-          AppMethodBeat.i(196764);
-          ae.i("simple", "errorType: %d, errorCode:%d, result is %s , length %d ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayOfByte, Integer.valueOf(paramArrayOfByte.length) });
+          AppMethodBeat.i(196772);
+          Log.i("simple", "errorType: %d, errorCode:%d, result is %s , length %d ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayOfByte, Integer.valueOf(paramArrayOfByte.length) });
           try
           {
             PByteArray localPByteArray = new PByteArray();
             boolean bool = SimpleHttpLogic.unpackResponse(paramArrayOfByte, localPByteArray);
-            ae.e("simple", "unpack result ".concat(String.valueOf(bool)));
+            Log.e("simple", "unpack result ".concat(String.valueOf(bool)));
             if (bool)
             {
-              paramArrayOfByte = new chp();
+              paramArrayOfByte = new cxw();
               paramArrayOfByte.parseFrom(localPByteArray.value);
-              if ((paramArrayOfByte.BaseResponse != null) && (paramArrayOfByte.HtK != null) && (paramArrayOfByte.wTE != null))
+              if ((paramArrayOfByte.BaseResponse != null) && (paramArrayOfByte.MCI != null) && (paramArrayOfByte.APx != null))
               {
-                ae.e("simple", "response is " + paramArrayOfByte.BaseResponse.Ret + " error msg " + paramArrayOfByte.BaseResponse.ErrMsg);
-                ae.e("simple", "response base id is " + paramArrayOfByte.HtK + " error msg " + paramArrayOfByte.wTE);
+                Log.e("simple", "response is " + paramArrayOfByte.BaseResponse.Ret + " error msg " + paramArrayOfByte.BaseResponse.ErrMsg);
+                Log.e("simple", "response base id is " + paramArrayOfByte.MCI + " error msg " + paramArrayOfByte.APx);
               }
             }
-            AppMethodBeat.o(196764);
+            AppMethodBeat.o(196772);
             return;
           }
           catch (Exception paramArrayOfByte)
           {
-            ae.e("simple", "unpack failed. " + paramArrayOfByte.getLocalizedMessage());
-            AppMethodBeat.o(196764);
+            Log.e("simple", "unpack failed. " + paramArrayOfByte.getLocalizedMessage());
+            AppMethodBeat.o(196772);
           }
         }
       }
     });
-    AppMethodBeat.o(196766);
+    AppMethodBeat.o(196774);
   }
   
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
@@ -133,13 +136,13 @@ public final class g
     AppMethodBeat.i(117439);
     if (paramArrayOfString.length < 2)
     {
-      ae.d("MicroMsg.Tinker.TinkerBootsCommand", "no args input.");
+      Log.d("MicroMsg.Tinker.TinkerBootsCommand", "no args input.");
       AppMethodBeat.o(117439);
       return false;
     }
     paramContext = paramArrayOfString[1];
     int i;
-    if (com.tencent.mm.sdk.a.b.fnF()) {
+    if (CrashReportFactory.hasDebuger()) {
       i = -1;
     }
     switch (paramContext.hashCode())
@@ -149,7 +152,7 @@ public final class g
       {
       default: 
         label116:
-        ae.d("MicroMsg.Tinker.TinkerBootsCommand", "%s i not a debugger command.", new Object[] { paramContext });
+        Log.d("MicroMsg.Tinker.TinkerBootsCommand", "%s i not a debugger command.", new Object[] { paramContext });
         i = -1;
         switch (paramContext.hashCode())
         {
@@ -163,7 +166,7 @@ public final class g
       switch (i)
       {
       default: 
-        ae.d("MicroMsg.Tinker.TinkerBootsCommand", "%s is not a release command.", new Object[] { paramContext });
+        Log.d("MicroMsg.Tinker.TinkerBootsCommand", "%s is not a release command.", new Object[] { paramContext });
         AppMethodBeat.o(117439);
         return false;
         if (!paramContext.equals("update")) {
@@ -206,88 +209,88 @@ public final class g
         }
         i = 7;
         break label116;
-        ae.d("MicroMsg.Tinker.TinkerBootsCommand", "command checkout update.");
+        Log.d("MicroMsg.Tinker.TinkerBootsCommand", "command checkout update.");
         new LinkedList();
-        paramContext = com.tencent.mm.plugin.hp.net.e.dfk();
+        paramContext = com.tencent.mm.plugin.hp.net.e.dZe();
         paramArrayOfString = new StringBuilder();
         paramString = paramContext.iterator();
         while (paramString.hasNext())
         {
-          chn localchn = (chn)paramString.next();
-          paramArrayOfString.append(localchn.key).append(":").append(localchn.value).append("\n");
+          cxu localcxu = (cxu)paramString.next();
+          paramArrayOfString.append(localcxu.key).append(":").append(localcxu.value).append("\n");
         }
-        ae.d("MicroMsg.Tinker.TinkerBootsCommand", "BaseID:%s PatchID:%s %s", new Object[] { "tinker_id_2468c5efe7670b901f7738f7a699d3843acc3651_arm64-v8a", "", paramArrayOfString.toString() });
+        Log.d("MicroMsg.Tinker.TinkerBootsCommand", "BaseID:%s PatchID:%s %s", new Object[] { "tinker_id_2468c5efe7670b901f7738f7a699d3843acc3651_arm64-v8a", "", paramArrayOfString.toString() });
         paramContext = new com.tencent.mm.plugin.hp.net.d("tinker_id_2468c5efe7670b901f7738f7a699d3843acc3651_arm64-v8a", "", paramContext);
-        com.tencent.mm.kernel.g.ajj().a(paramContext, 0);
+        com.tencent.mm.kernel.g.azz().a(paramContext, 0);
         AppMethodBeat.o(117439);
         return true;
-        i.a(ak.getContext().getString(2131759571), ak.getContext().getString(2131759571), ak.getContext().getString(2131760343), new g.1(this), ak.getContext().getString(2131764569), null);
+        i.a(MMApplicationContext.getContext().getString(2131760888), MMApplicationContext.getContext().getString(2131760888), MMApplicationContext.getContext().getString(2131761788), new g.1(this), MMApplicationContext.getContext().getString(2131766915), null);
         AppMethodBeat.o(117439);
         return true;
-        com.tencent.mm.kernel.g.ajU().aw(new g.2(this, paramArrayOfString));
+        com.tencent.mm.kernel.g.aAk().postToWorker(new g.2(this, paramArrayOfString));
         AppMethodBeat.o(117439);
         return true;
-        paramContext = new chs();
-        paramContext.HtW = 1000;
-        paramContext.HtT = 2;
-        paramContext.HtU = 2;
+        paramContext = new cxz();
+        paramContext.MCU = 1000;
+        paramContext.MCR = 2;
+        paramContext.MCS = 2;
         paramContext.state = 2;
-        paramContext.wTE = "android_tinker_id_123123131231231";
-        paramArrayOfString = new cwf();
+        paramContext.APx = "android_tinker_id_123123131231231";
+        paramArrayOfString = new doy();
         paramArrayOfString.MD5 = "c3282ad2467fad9561227bc9b5b6712c";
         paramArrayOfString.FileSize = 118617;
-        paramArrayOfString.Url = "http://dldir1.qq.com/weixin/checkresupdate/0x2605136d.3144f5.0x26051334.bf52fb_1510754399.apk";
-        paramContext.HtT = 3;
+        paramArrayOfString.Url = ("http://" + WeChatHosts.domainString(2131761706) + "/weixin/checkresupdate/0x2605136d.3144f5.0x26051334.bf52fb_1510754399.apk");
+        paramContext.MCR = 3;
         paramArrayOfString.MD5 = "3ba62fdbd98df2bdf5da7d726010d867";
         paramArrayOfString.FileSize = 33338711;
-        paramArrayOfString.Url = "http://dldir1.qq.com/weixin/checkresupdate/0x26051363.6cc887.0x26051087.a44d04_1510750804.apk";
-        paramContext.HtV = paramArrayOfString;
-        new e(new com.tencent.mm.plugin.hp.d.b(paramContext)).nB(false);
+        paramArrayOfString.Url = ("http://" + WeChatHosts.domainString(2131761706) + "/weixin/checkresupdate/0x26051363.6cc887.0x26051087.a44d04_1510750804.apk");
+        paramContext.MCT = paramArrayOfString;
+        new e(new b(paramContext)).qk(false);
         AppMethodBeat.o(117439);
         return true;
         if (paramArrayOfString.length >= 6) {
-          bu.aSC(paramArrayOfString[5]);
+          Util.safeParseLong(paramArrayOfString[5]);
         }
         AppMethodBeat.o(117439);
         return true;
-        com.tencent.mm.plugin.hp.tinker.h.aI(ak.getContext(), "");
-        com.tencent.mm.plugin.hp.tinker.h.aL(ak.getContext(), "");
-        com.tencent.mm.plugin.hp.tinker.h.ac(ak.getContext(), 0);
-        ak.getContext();
-        com.tencent.mm.plugin.hp.d.d.dfG();
+        com.tencent.mm.plugin.hp.tinker.h.aV(MMApplicationContext.getContext(), "");
+        com.tencent.mm.plugin.hp.tinker.h.aY(MMApplicationContext.getContext(), "");
+        com.tencent.mm.plugin.hp.tinker.h.aj(MMApplicationContext.getContext(), 0);
+        MMApplicationContext.getContext();
+        com.tencent.mm.plugin.hp.d.d.dZA();
         AppMethodBeat.o(117439);
         return true;
-        paramContext = new chs();
-        paramContext.HtW = 1000;
-        paramContext.HtT = 3;
-        paramContext.HtU = 2;
+        paramContext = new cxz();
+        paramContext.MCU = 1000;
+        paramContext.MCR = 3;
+        paramContext.MCS = 2;
         paramContext.state = 2;
-        paramContext.wTE = "android_tinker_id_123123131231231";
-        paramArrayOfString = new cwf();
+        paramContext.APx = "android_tinker_id_123123131231231";
+        paramArrayOfString = new doy();
         paramArrayOfString.MD5 = "3ba62fdbd98df2bdf5da7d726010d867";
         paramArrayOfString.FileSize = 33338711;
-        paramArrayOfString.Url = "http://dldir1.qq.com/weixin/checkresupdate/0x26051363.6cc887.0x26051087.a44d04_1510750804.apk";
-        paramContext.HtV = paramArrayOfString;
-        paramArrayOfString = new chq();
+        paramArrayOfString.Url = ("http://" + WeChatHosts.domainString(2131761706) + "/weixin/checkresupdate/0x26051363.6cc887.0x26051087.a44d04_1510750804.apk");
+        paramContext.MCT = paramArrayOfString;
+        paramArrayOfString = new cxx();
         paramArrayOfString.key = "clientVersion";
         paramArrayOfString.value = "0x26060510";
-        paramContext.HtX.add(paramArrayOfString);
-        paramArrayOfString = new chq();
+        paramContext.MCV.add(paramArrayOfString);
+        paramArrayOfString = new cxx();
         paramArrayOfString.key = "alphaTitle";
         paramArrayOfString.value = "叫你更新你就更新";
-        paramContext.HtX.add(paramArrayOfString);
-        paramArrayOfString = new chq();
+        paramContext.MCV.add(paramArrayOfString);
+        paramArrayOfString = new cxx();
         paramArrayOfString.key = "alphaContent";
         paramArrayOfString.value = "这个包可以抢到的红包最大，抢红包速度最快。";
-        paramContext.HtX.add(paramArrayOfString);
-        paramArrayOfString = new chq();
+        paramContext.MCV.add(paramArrayOfString);
+        paramArrayOfString = new cxx();
         paramArrayOfString.key = "alphaUrl";
         paramArrayOfString.value = "www.qq.com";
-        paramContext.HtX.add(paramArrayOfString);
-        new e(new com.tencent.mm.plugin.hp.d.b(paramContext)).nB(true);
+        paramContext.MCV.add(paramArrayOfString);
+        new e(new b(paramContext)).qk(true);
         AppMethodBeat.o(117439);
         return true;
-        dfi();
+        dZc();
         AppMethodBeat.o(117439);
         return true;
         if (paramContext.equals("check")) {
@@ -298,7 +301,7 @@ public final class g
     }
     try
     {
-      com.tinkerboots.sdk.a.gix().Ai(true);
+      com.tinkerboots.sdk.a.hvX().Ey(true);
       AppMethodBeat.o(117439);
       return true;
     }
@@ -306,14 +309,14 @@ public final class g
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Tinker.TinkerBootsCommand", paramContext, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Tinker.TinkerBootsCommand", paramContext, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.hp.b.g
  * JD-Core Version:    0.7.0.1
  */

@@ -5,14 +5,14 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class ah
   extends a
 {
-  public int OoP = 0;
+  public int UdO = 0;
   
   public ah()
   {
-    this.Ony = 325;
+    this.Ucx = 325;
   }
   
-  public final byte[] dq(byte[] paramArrayOfByte)
+  public final byte[] ds(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(88118);
     if (paramArrayOfByte != null) {}
@@ -22,11 +22,11 @@ public final class ah
       if (arrayOfByte.length > 0) {
         System.arraycopy(paramArrayOfByte, 0, arrayOfByte, 0, i);
       }
-      this.OoP = arrayOfByte.length;
-      super.amG(this.Ony);
-      super.aj(arrayOfByte, arrayOfByte.length);
-      super.gCx();
-      paramArrayOfByte = super.gCt();
+      this.UdO = arrayOfByte.length;
+      super.awj(this.Ucx);
+      super.ak(arrayOfByte, arrayOfByte.length);
+      super.hPB();
+      paramArrayOfByte = super.hPx();
       AppMethodBeat.o(88118);
       return paramArrayOfByte;
     }

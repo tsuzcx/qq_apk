@@ -1,16 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:padding="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/i" android:textColor="@color/s5" android:id="@id/ce7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:background="@drawable/a_c" android:padding="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/r3" android:id="@id/ce6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/hk" />
-        <TextView android:textSize="@dimen/jv" android:textColor="@color/r2" android:ellipsize="end" android:id="@id/ce4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-    </LinearLayout>
-    <LinearLayout android:background="@drawable/a_c" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:background="@drawable/amv" android:paddingTop="@dimen/i_" android:paddingBottom="@dimen/i_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:id="@id/ce5" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:id="@id/cos" android:background="@drawable/a0f" android:paddingTop="1.0dip" android:paddingBottom="1.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingStart="@dimen/c5" android:paddingEnd="@dimen/c5"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="15.0dip" android:textColor="@color/ag2" android:gravity="center" android:id="@id/afi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:includeFontPadding="false" android:layout_centerVertical="true" />
+</RelativeLayout>

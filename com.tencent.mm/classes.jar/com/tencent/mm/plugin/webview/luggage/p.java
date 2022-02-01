@@ -3,20 +3,20 @@ package com.tencent.mm.plugin.webview.luggage;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.br.c;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class p
 {
-  public static void ae(Context paramContext, Intent paramIntent)
+  public static void ar(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(78414);
-    if (bu.isNullOrNil(paramIntent.getStringExtra("rawUrl")))
+    if (Util.isNullOrNil(paramIntent.getStringExtra("rawUrl")))
     {
       AppMethodBeat.o(78414);
       return;
     }
-    d.b(paramContext, "webview", ".ui.tools.WebViewUI", paramIntent);
+    c.b(paramContext, "webview", ".ui.tools.WebViewUI", paramIntent);
     AppMethodBeat.o(78414);
   }
 }

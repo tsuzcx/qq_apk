@@ -4,23 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.ViewStub;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bl;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bp;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.q;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.x;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.model.u;
+import com.tencent.mm.model.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.MMFragment;
 import com.tencent.mm.ui.chatting.d.b.d;
 import com.tencent.mm.ui.chatting.e.a;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 
 public final class l
 {
@@ -35,31 +35,61 @@ public final class l
     return paramMMFragment;
   }
   
-  public static void a(a parama, bv parambv, Intent paramIntent)
+  private static String a(a parama, ca paramca)
+  {
+    AppMethodBeat.i(35190);
+    String str = parama.GUe.field_username;
+    boolean bool = ((d)parama.bh(d.class)).gOP();
+    if ((!parama.gRL()) && (!bool))
+    {
+      AppMethodBeat.o(35190);
+      return str;
+    }
+    if (parama.gRL())
+    {
+      parama = bp.Ks(paramca.field_content);
+      if ((str == null) || (parama == null) || (parama.length() <= 0)) {
+        break label95;
+      }
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(35190);
+      return parama;
+      if (paramca != null) {
+        parama = paramca.field_bizChatUserId;
+      } else {
+        label95:
+        parama = str;
+      }
+    }
+  }
+  
+  public static void a(a parama, ca paramca, Intent paramIntent)
   {
     AppMethodBeat.i(35189);
-    if ((parama == null) || (parambv == null))
+    if ((parama == null) || (paramca == null))
     {
       AppMethodBeat.o(35189);
       return;
     }
     String str1 = parama.getTalkerUserName();
-    String str2 = b(parama, parambv);
+    String str2 = a(parama, paramca);
     Bundle localBundle = new Bundle();
     int i;
-    if (parama.fJB()) {
+    if (parama.gRL()) {
       i = 2;
     }
     for (;;)
     {
       localBundle.putInt("stat_scene", i);
-      localBundle.putString("stat_msg_id", "msg_" + Long.toString(parambv.field_msgSvrId));
+      localBundle.putString("stat_msg_id", "msg_" + Long.toString(paramca.field_msgSvrId));
       localBundle.putString("stat_chat_talker_username", str1);
       localBundle.putString("stat_send_msg_user", str2);
       paramIntent.putExtra("_stat_obj", localBundle);
       AppMethodBeat.o(35189);
       return;
-      if (x.Ao(str1)) {
+      if (ab.IT(str1)) {
         i = 7;
       } else {
         i = 1;
@@ -67,29 +97,41 @@ public final class l
     }
   }
   
-  public static boolean aXE(String paramString)
+  public static boolean at(as paramas)
+  {
+    AppMethodBeat.i(35192);
+    if ((paramas.field_username.equals("medianote")) && ((z.aUc() & 0x4000) == 0))
+    {
+      AppMethodBeat.o(35192);
+      return true;
+    }
+    AppMethodBeat.o(35192);
+    return false;
+  }
+  
+  public static boolean bmI(String paramString)
   {
     AppMethodBeat.i(35194);
     int j;
     int i;
-    if ((!x.An(paramString)) && (q.zp(paramString)) && (!v.zK(paramString)))
+    if ((!ab.IS(paramString)) && (u.HR(paramString)) && (!z.Im(paramString)))
     {
-      bc.aCg();
-      an localan = c.azF().BH(paramString);
-      if (localan == null) {
+      bg.aVF();
+      as localas = c.aSN().Kn(paramString);
+      if (localas == null) {
         break label123;
       }
-      j = localan.field_type;
-      bc.aCg();
-      localan = c.azF().BH(localan.field_encryptUsername);
-      if (localan == null) {
+      j = localas.field_type;
+      bg.aVF();
+      localas = c.aSN().Kn(localas.field_encryptUsername);
+      if (localas == null) {
         break label118;
       }
-      i = localan.field_type;
+      i = localas.field_type;
     }
     for (;;)
     {
-      ae.i("MicroMsg.ChattingUI.ChattingLogic", "isStranger:%s type:%d etype:%d", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(i) });
+      Log.i("MicroMsg.ChattingUI.ChattingLogic", "isStranger:%s type:%d etype:%d", new Object[] { paramString, Integer.valueOf(j), Integer.valueOf(i) });
       AppMethodBeat.o(35194);
       return true;
       AppMethodBeat.o(35194);
@@ -103,52 +145,10 @@ public final class l
     }
   }
   
-  public static boolean ar(an paraman)
-  {
-    AppMethodBeat.i(35192);
-    if ((paraman.field_username.equals("medianote")) && ((v.aAG() & 0x4000) == 0))
-    {
-      AppMethodBeat.o(35192);
-      return true;
-    }
-    AppMethodBeat.o(35192);
-    return false;
-  }
-  
-  private static String b(a parama, bv parambv)
-  {
-    AppMethodBeat.i(35190);
-    String str = parama.Cqh.field_username;
-    boolean bool = ((d)parama.bh(d.class)).fGJ();
-    if ((!parama.fJB()) && (!bool))
-    {
-      AppMethodBeat.o(35190);
-      return str;
-    }
-    if (parama.fJB())
-    {
-      parama = bl.BM(parambv.field_content);
-      if ((str == null) || (parama == null) || (parama.length() <= 0)) {
-        break label95;
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(35190);
-      return parama;
-      if (parambv != null) {
-        parama = parambv.field_bizChatUserId;
-      } else {
-        label95:
-        parama = str;
-      }
-    }
-  }
-  
-  public static boolean f(bv parambv, String paramString)
+  public static boolean h(ca paramca, String paramString)
   {
     AppMethodBeat.i(35191);
-    if ((System.currentTimeMillis() - parambv.field_createTime > 259200000L) && ((bu.isNullOrNil(paramString)) || (!o.fB(paramString))))
+    if ((System.currentTimeMillis() - paramca.field_createTime > 259200000L) && ((Util.isNullOrNil(paramString)) || (!s.YS(paramString))))
     {
       AppMethodBeat.o(35191);
       return true;
@@ -159,7 +159,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.d.l
  * JD-Core Version:    0.7.0.1
  */

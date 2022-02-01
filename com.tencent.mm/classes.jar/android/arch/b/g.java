@@ -5,23 +5,23 @@ import java.util.List;
 
 final class g<T>
 {
-  private static final g eA = new g(Collections.EMPTY_LIST);
-  public final List<T> eB;
+  private static final g ez = new g(Collections.EMPTY_LIST);
+  public final List<T> eA;
+  public final int eB;
   public final int eC;
   public final int eD;
-  public final int eE;
   
   private g(List<T> paramList)
   {
-    this.eB = paramList;
+    this.eA = paramList;
+    this.eB = 0;
     this.eC = 0;
     this.eD = 0;
-    this.eE = 0;
   }
   
   public final String toString()
   {
-    return "Result " + this.eC + ", " + this.eB + ", " + this.eD + ", offset " + this.eE;
+    return "Result " + this.eB + ", " + this.eA + ", " + this.eC + ", offset " + this.eD;
   }
 }
 

@@ -43,16 +43,16 @@ public class MMKV
     AppMethodBeat.i(13527);
     EnumMap localEnumMap = new EnumMap(c.class);
     recoverIndex = localEnumMap;
-    localEnumMap.put(c.LZl, Integer.valueOf(0));
-    recoverIndex.put(c.LZm, Integer.valueOf(1));
+    localEnumMap.put(c.RzD, Integer.valueOf(0));
+    recoverIndex.put(c.RzE, Integer.valueOf(1));
     localEnumMap = new EnumMap(b.class);
     logLevel2Index = localEnumMap;
-    localEnumMap.put(b.LZf, Integer.valueOf(0));
-    logLevel2Index.put(b.LZg, Integer.valueOf(1));
-    logLevel2Index.put(b.LZh, Integer.valueOf(2));
-    logLevel2Index.put(b.LZi, Integer.valueOf(3));
-    logLevel2Index.put(b.LZj, Integer.valueOf(4));
-    index2LogLevel = new b[] { b.LZf, b.LZg, b.LZh, b.LZi, b.LZj };
+    localEnumMap.put(b.Rzx, Integer.valueOf(0));
+    logLevel2Index.put(b.Rzy, Integer.valueOf(1));
+    logLevel2Index.put(b.Rzz, Integer.valueOf(2));
+    logLevel2Index.put(b.RzA, Integer.valueOf(3));
+    logLevel2Index.put(b.RzB, Integer.valueOf(4));
+    index2LogLevel = new b[] { b.Rzx, b.Rzy, b.Rzz, b.RzA, b.RzB };
     rootDir = null;
     mCreators = new HashMap();
     gWantLogReDirecting = false;
@@ -133,7 +133,7 @@ public class MMKV
   public static void destroyNativeBuffer(d paramd)
   {
     AppMethodBeat.i(13519);
-    destroyNB(paramd.IyU, paramd.size);
+    destroyNB(paramd.pointer, paramd.size);
     AppMethodBeat.o(13519);
   }
   
@@ -210,11 +210,11 @@ public class MMKV
     AppMethodBeat.i(13525);
     if ((gCallbackHandler != null) && (gWantLogReDirecting))
     {
-      gCallbackHandler.l(paramString1, paramInt2, paramString2, paramString3);
+      gCallbackHandler.mmkvLog(index2LogLevel[paramInt1], paramString1, paramInt2, paramString2, paramString3);
       AppMethodBeat.o(13525);
       return;
     }
-    paramString1 = 1.LZd;
+    paramString1 = 1.Rzv;
     index2LogLevel[paramInt1].ordinal();
     AppMethodBeat.o(13525);
   }
@@ -236,23 +236,23 @@ public class MMKV
       AppMethodBeat.o(13459);
       throw paramContext;
     }
-    Object localObject = MMKVContentProvider.aS(paramContext, Process.myPid());
+    Object localObject = MMKVContentProvider.aT(paramContext, Process.myPid());
     if ((localObject == null) || (((String)localObject).length() == 0))
     {
-      simpleLog(b.LZi, "process name detect fail, try again later");
+      simpleLog(b.RzA, "process name detect fail, try again later");
       AppMethodBeat.o(13459);
       return null;
     }
     if (((String)localObject).contains(":"))
     {
-      localObject = MMKVContentProvider.kY(paramContext);
+      localObject = MMKVContentProvider.kU(paramContext);
       if (localObject == null)
       {
-        simpleLog(b.LZi, "MMKVContentProvider has invalid authority");
+        simpleLog(b.RzA, "MMKVContentProvider has invalid authority");
         AppMethodBeat.o(13459);
         return null;
       }
-      simpleLog(b.LZg, "getting parcelable mmkv in process, Uri = ".concat(String.valueOf(localObject)));
+      simpleLog(b.Rzy, "getting parcelable mmkv in process, Uri = ".concat(String.valueOf(localObject)));
       Bundle localBundle = new Bundle();
       localBundle.putInt("KEY_SIZE", paramInt1);
       localBundle.putInt("KEY_MODE", paramInt2);
@@ -266,11 +266,11 @@ public class MMKV
         paramContext = (ParcelableMMKV)paramContext.getParcelable("KEY");
         if (paramContext != null)
         {
-          if ((paramContext.LZp >= 0) && (paramContext.LZq >= 0)) {}
-          for (paramContext = mmkvWithAshmemFD(paramContext.LZo, paramContext.LZp, paramContext.LZq, paramContext.LZr);; paramContext = null)
+          if ((paramContext.RzH >= 0) && (paramContext.RzI >= 0)) {}
+          for (paramContext = mmkvWithAshmemFD(paramContext.RzG, paramContext.RzH, paramContext.RzI, paramContext.RzJ);; paramContext = null)
           {
             if (paramContext != null) {
-              simpleLog(b.LZg, paramContext.mmapID() + " fd = " + paramContext.ashmemFD() + ", meta fd = " + paramContext.ashmemMetaFD());
+              simpleLog(b.Rzy, paramContext.mmapID() + " fd = " + paramContext.ashmemFD() + ", meta fd = " + paramContext.ashmemMetaFD());
             }
             AppMethodBeat.o(13459);
             return paramContext;
@@ -280,7 +280,7 @@ public class MMKV
     }
     else
     {
-      simpleLog(b.LZg, "getting mmkv in main process");
+      simpleLog(b.Rzy, "getting mmkv in main process");
       paramContext = new MMKV(getMMKVWithIDAndSize(paramString1, paramInt1, paramInt2 | 0x8, paramString2));
       AppMethodBeat.o(13459);
       return paramContext;
@@ -376,11 +376,11 @@ public class MMKV
   private static int onMMKVCRCCheckFail(String paramString)
   {
     AppMethodBeat.i(13523);
-    c localc = c.LZl;
+    c localc = c.RzD;
     if (gCallbackHandler != null) {
-      localc = gCallbackHandler.aSa(paramString);
+      localc = gCallbackHandler.onMMKVCRCCheckFail(paramString);
     }
-    simpleLog(b.LZg, "Recover strategic for " + paramString + " is " + localc);
+    simpleLog(b.Rzy, "Recover strategic for " + paramString + " is " + localc);
     int i = ((Integer)recoverIndex.get(localc)).intValue();
     AppMethodBeat.o(13523);
     return i;
@@ -389,11 +389,11 @@ public class MMKV
   private static int onMMKVFileLengthError(String paramString)
   {
     AppMethodBeat.i(13524);
-    c localc = c.LZl;
+    c localc = c.RzD;
     if (gCallbackHandler != null) {
-      localc = gCallbackHandler.aSb(paramString);
+      localc = gCallbackHandler.onMMKVFileLengthError(paramString);
     }
-    simpleLog(b.LZg, "Recover strategic for " + paramString + " is " + localc);
+    simpleLog(b.Rzy, "Recover strategic for " + paramString + " is " + localc);
     int i = ((Integer)recoverIndex.get(localc)).intValue();
     AppMethodBeat.o(13524);
     return i;
@@ -405,8 +405,15 @@ public class MMKV
   {
     AppMethodBeat.i(13521);
     gCallbackHandler = parama;
-    setLogReDirecting(true);
-    gWantLogReDirecting = true;
+    if (parama.wantLogRedirecting())
+    {
+      setLogReDirecting(true);
+      gWantLogReDirecting = true;
+      AppMethodBeat.o(13521);
+      return;
+    }
+    setLogReDirecting(false);
+    gWantLogReDirecting = false;
     AppMethodBeat.o(13521);
   }
   
@@ -419,7 +426,7 @@ public class MMKV
     int j = 1;
     AppMethodBeat.i(13453);
     int i = j;
-    switch (1.LZd[paramb.ordinal()])
+    switch (1.Rzv[paramb.ordinal()])
     {
     default: 
       i = j;
@@ -649,7 +656,7 @@ public class MMKV
     //   19: aload_0
     //   20: getfield 115	com/tencent/mmkv/MMKV:nativeHandle	J
     //   23: aload_1
-    //   24: invokespecial 500	com/tencent/mmkv/MMKV:decodeBytes	(JLjava/lang/String;)[B
+    //   24: invokespecial 501	com/tencent/mmkv/MMKV:decodeBytes	(JLjava/lang/String;)[B
     //   27: astore_1
     //   28: aload_1
     //   29: ifnonnull +11 -> 40
@@ -657,19 +664,19 @@ public class MMKV
     //   35: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: aload_3
     //   39: areturn
-    //   40: invokestatic 530	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   40: invokestatic 531	android/os/Parcel:obtain	()Landroid/os/Parcel;
     //   43: astore 5
     //   45: aload 5
     //   47: aload_1
     //   48: iconst_0
     //   49: aload_1
     //   50: arraylength
-    //   51: invokevirtual 534	android/os/Parcel:unmarshall	([BII)V
+    //   51: invokevirtual 535	android/os/Parcel:unmarshall	([BII)V
     //   54: aload 5
     //   56: iconst_0
-    //   57: invokevirtual 537	android/os/Parcel:setDataPosition	(I)V
+    //   57: invokevirtual 538	android/os/Parcel:setDataPosition	(I)V
     //   60: aload_2
-    //   61: invokevirtual 538	java/lang/Class:toString	()Ljava/lang/String;
+    //   61: invokevirtual 539	java/lang/Class:toString	()Ljava/lang/String;
     //   64: astore 7
     //   66: getstatic 105	com/tencent/mmkv/MMKV:mCreators	Ljava/util/HashMap;
     //   69: astore 6
@@ -677,19 +684,19 @@ public class MMKV
     //   73: monitorenter
     //   74: getstatic 105	com/tencent/mmkv/MMKV:mCreators	Ljava/util/HashMap;
     //   77: aload 7
-    //   79: invokevirtual 539	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   82: checkcast 541	android/os/Parcelable$Creator
+    //   79: invokevirtual 540	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   82: checkcast 542	android/os/Parcelable$Creator
     //   85: astore 4
     //   87: aload 4
     //   89: astore_1
     //   90: aload 4
     //   92: ifnonnull +36 -> 128
     //   95: aload_2
-    //   96: ldc_w 543
-    //   99: invokevirtual 547	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
+    //   96: ldc_w 544
+    //   99: invokevirtual 548	java/lang/Class:getField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
     //   102: aconst_null
-    //   103: invokevirtual 550	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   106: checkcast 541	android/os/Parcelable$Creator
+    //   103: invokevirtual 551	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   106: checkcast 542	android/os/Parcelable$Creator
     //   109: astore_2
     //   110: aload_2
     //   111: astore_1
@@ -698,7 +705,7 @@ public class MMKV
     //   116: getstatic 105	com/tencent/mmkv/MMKV:mCreators	Ljava/util/HashMap;
     //   119: aload 7
     //   121: aload_2
-    //   122: invokevirtual 553	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   122: invokevirtual 554	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   125: pop
     //   126: aload_2
     //   127: astore_1
@@ -708,11 +715,11 @@ public class MMKV
     //   132: ifnull +64 -> 196
     //   135: aload_1
     //   136: aload 5
-    //   138: invokeinterface 557 2 0
-    //   143: checkcast 559	android/os/Parcelable
+    //   138: invokeinterface 558 2 0
+    //   143: checkcast 560	android/os/Parcelable
     //   146: astore_1
     //   147: aload 5
-    //   149: invokevirtual 562	android/os/Parcel:recycle	()V
+    //   149: invokevirtual 563	android/os/Parcel:recycle	()V
     //   152: sipush 13487
     //   155: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   158: aload_1
@@ -725,23 +732,23 @@ public class MMKV
     //   170: aload_1
     //   171: athrow
     //   172: astore_1
-    //   173: getstatic 92	com/tencent/mmkv/b:LZi	Lcom/tencent/mmkv/b;
+    //   173: getstatic 92	com/tencent/mmkv/b:RzA	Lcom/tencent/mmkv/b;
     //   176: aload_1
-    //   177: invokevirtual 563	java/lang/Exception:toString	()Ljava/lang/String;
+    //   177: invokevirtual 564	java/lang/Exception:toString	()Ljava/lang/String;
     //   180: invokestatic 292	com/tencent/mmkv/MMKV:simpleLog	(Lcom/tencent/mmkv/b;Ljava/lang/String;)V
     //   183: aload 5
-    //   185: invokevirtual 562	android/os/Parcel:recycle	()V
+    //   185: invokevirtual 563	android/os/Parcel:recycle	()V
     //   188: sipush 13487
     //   191: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   194: aload_3
     //   195: areturn
-    //   196: new 524	java/lang/Exception
+    //   196: new 525	java/lang/Exception
     //   199: dup
-    //   200: ldc_w 565
+    //   200: ldc_w 566
     //   203: aload 7
     //   205: invokestatic 309	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   208: invokevirtual 312	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   211: invokespecial 566	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   211: invokespecial 567	java/lang/Exception:<init>	(Ljava/lang/String;)V
     //   214: astore_1
     //   215: sipush 13487
     //   218: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
@@ -749,7 +756,7 @@ public class MMKV
     //   222: athrow
     //   223: astore_1
     //   224: aload 5
-    //   226: invokevirtual 562	android/os/Parcel:recycle	()V
+    //   226: invokevirtual 563	android/os/Parcel:recycle	()V
     //   229: sipush 13487
     //   232: invokestatic 110	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   235: aload_1
@@ -1003,7 +1010,7 @@ public class MMKV
         } else if ((localObject instanceof Set)) {
           encode(str, (Set)localObject);
         } else {
-          simpleLog(b.LZi, "unknown type: " + localObject.getClass());
+          simpleLog(b.RzA, "unknown type: " + localObject.getClass());
         }
       }
     }
@@ -1123,7 +1130,7 @@ public class MMKV
   public int writeValueToNativeBuffer(String paramString, d paramd)
   {
     AppMethodBeat.i(13520);
-    int i = writeValueToNB(this.nativeHandle, paramString, paramd.IyU, paramd.size);
+    int i = writeValueToNB(this.nativeHandle, paramString, paramd.pointer, paramd.size);
     AppMethodBeat.o(13520);
     return i;
   }

@@ -597,23 +597,23 @@ public class WebSettings
     }
   }
   
-  public WebSettings.LayoutAlgorithm getLayoutAlgorithm()
+  public LayoutAlgorithm getLayoutAlgorithm()
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(54428);
-        WebSettings.LayoutAlgorithm localLayoutAlgorithm;
+        LayoutAlgorithm localLayoutAlgorithm;
         if ((this.c) && (this.a != null))
         {
-          localLayoutAlgorithm = WebSettings.LayoutAlgorithm.valueOf(this.a.getLayoutAlgorithm().name());
+          localLayoutAlgorithm = LayoutAlgorithm.valueOf(this.a.getLayoutAlgorithm().name());
           AppMethodBeat.o(54428);
           return localLayoutAlgorithm;
         }
         if ((!this.c) && (this.b != null))
         {
-          localLayoutAlgorithm = WebSettings.LayoutAlgorithm.valueOf(this.b.getLayoutAlgorithm().name());
+          localLayoutAlgorithm = LayoutAlgorithm.valueOf(this.b.getLayoutAlgorithm().name());
           AppMethodBeat.o(54428);
           continue;
         }
@@ -781,62 +781,62 @@ public class WebSettings
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 291
-    //   5: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 293
+    //   5: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 42	com/tencent/smtt/sdk/WebSettings:c	Z
+    //   9: getfield 44	com/tencent/smtt/sdk/WebSettings:c	Z
     //   12: ifeq +44 -> 56
     //   15: aload_0
-    //   16: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   16: getfield 40	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   19: astore_2
     //   20: aload_2
     //   21: ifnull +35 -> 56
     //   24: aload_0
-    //   25: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   28: invokeinterface 293 1 0
+    //   25: getfield 40	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   28: invokeinterface 295 1 0
     //   33: istore_1
-    //   34: ldc_w 291
-    //   37: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   34: ldc_w 293
+    //   37: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   40: aload_0
     //   41: monitorexit
     //   42: iload_1
     //   43: ireturn
     //   44: astore_2
-    //   45: ldc_w 291
-    //   48: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: ldc_w 293
+    //   48: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: iconst_m1
     //   52: istore_1
     //   53: goto -13 -> 40
-    //   56: getstatic 88	android/os/Build$VERSION:SDK_INT	I
+    //   56: getstatic 90	android/os/Build$VERSION:SDK_INT	I
     //   59: bipush 21
     //   61: if_icmpge +14 -> 75
-    //   64: ldc_w 291
-    //   67: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: ldc_w 293
+    //   67: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: iconst_m1
     //   71: istore_1
     //   72: goto -32 -> 40
     //   75: aload_0
-    //   76: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
-    //   79: ldc_w 294
+    //   76: getfield 42	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   79: ldc_w 296
     //   82: iconst_0
-    //   83: anewarray 93	java/lang/Class
+    //   83: anewarray 95	java/lang/Class
     //   86: iconst_0
     //   87: anewarray 4	java/lang/Object
-    //   90: invokestatic 297	com/tencent/smtt/utils/k:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   90: invokestatic 299	com/tencent/smtt/utils/k:a	(Ljava/lang/Object;Ljava/lang/String;[Ljava/lang/Class;[Ljava/lang/Object;)Ljava/lang/Object;
     //   93: astore_2
     //   94: aload_2
     //   95: ifnonnull +14 -> 109
-    //   98: ldc_w 291
-    //   101: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   98: ldc_w 293
+    //   101: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   104: iconst_m1
     //   105: istore_1
     //   106: goto -66 -> 40
     //   109: aload_2
-    //   110: checkcast 299	java/lang/Integer
-    //   113: invokevirtual 302	java/lang/Integer:intValue	()I
+    //   110: checkcast 301	java/lang/Integer
+    //   113: invokevirtual 304	java/lang/Integer:intValue	()I
     //   116: istore_1
-    //   117: ldc_w 291
-    //   120: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   117: ldc_w 293
+    //   120: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   123: goto -83 -> 40
     //   126: astore_2
     //   127: aload_0
@@ -1182,44 +1182,44 @@ public class WebSettings
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc_w 388
-    //   5: invokestatic 56	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   2: ldc_w 390
+    //   5: invokestatic 58	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 42	com/tencent/smtt/sdk/WebSettings:c	Z
+    //   9: getfield 44	com/tencent/smtt/sdk/WebSettings:c	Z
     //   12: ifeq +30 -> 42
     //   15: aload_0
-    //   16: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   16: getfield 40	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
     //   19: ifnull +23 -> 42
     //   22: aload_0
-    //   23: getfield 38	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
-    //   26: invokeinterface 390 1 0
+    //   23: getfield 40	com/tencent/smtt/sdk/WebSettings:a	Lcom/tencent/smtt/export/external/interfaces/IX5WebSettings;
+    //   26: invokeinterface 392 1 0
     //   31: istore_1
-    //   32: ldc_w 388
-    //   35: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   32: ldc_w 390
+    //   35: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   38: aload_0
     //   39: monitorexit
     //   40: iload_1
     //   41: ireturn
     //   42: aload_0
-    //   43: getfield 42	com/tencent/smtt/sdk/WebSettings:c	Z
+    //   43: getfield 44	com/tencent/smtt/sdk/WebSettings:c	Z
     //   46: ifne +95 -> 141
     //   49: aload_0
-    //   50: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   50: getfield 42	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
     //   53: ifnull +88 -> 141
-    //   56: getstatic 88	android/os/Build$VERSION:SDK_INT	I
+    //   56: getstatic 90	android/os/Build$VERSION:SDK_INT	I
     //   59: bipush 14
     //   61: if_icmpge +14 -> 75
-    //   64: ldc_w 388
-    //   67: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   64: ldc_w 390
+    //   67: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   70: iconst_0
     //   71: istore_1
     //   72: goto -34 -> 38
     //   75: aload_0
-    //   76: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
-    //   79: invokevirtual 391	android/webkit/WebSettings:getTextZoom	()I
+    //   76: getfield 42	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   79: invokevirtual 393	android/webkit/WebSettings:getTextZoom	()I
     //   82: istore_1
-    //   83: ldc_w 388
-    //   86: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   83: ldc_w 390
+    //   86: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   89: goto -51 -> 38
     //   92: astore_2
     //   93: aload_0
@@ -1228,26 +1228,26 @@ public class WebSettings
     //   96: athrow
     //   97: astore_2
     //   98: aload_0
-    //   99: getfield 40	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
-    //   102: ldc_w 392
-    //   105: invokestatic 114	com/tencent/smtt/utils/k:a	(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
+    //   99: getfield 42	com/tencent/smtt/sdk/WebSettings:b	Landroid/webkit/WebSettings;
+    //   102: ldc_w 394
+    //   105: invokestatic 116	com/tencent/smtt/utils/k:a	(Ljava/lang/Object;Ljava/lang/String;)Ljava/lang/Object;
     //   108: astore_2
     //   109: aload_2
     //   110: ifnonnull +14 -> 124
-    //   113: ldc_w 388
-    //   116: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   113: ldc_w 390
+    //   116: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   119: iconst_0
     //   120: istore_1
     //   121: goto -83 -> 38
     //   124: aload_2
-    //   125: checkcast 299	java/lang/Integer
-    //   128: invokevirtual 302	java/lang/Integer:intValue	()I
+    //   125: checkcast 301	java/lang/Integer
+    //   128: invokevirtual 304	java/lang/Integer:intValue	()I
     //   131: istore_1
-    //   132: ldc_w 388
-    //   135: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   132: ldc_w 390
+    //   135: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   138: goto -100 -> 38
-    //   141: ldc_w 388
-    //   144: invokestatic 83	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   141: ldc_w 390
+    //   144: invokestatic 85	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   147: iconst_0
     //   148: istore_1
     //   149: goto -111 -> 38
@@ -1949,7 +1949,7 @@ public class WebSettings
     AppMethodBeat.o(54455);
   }
   
-  public void setLayoutAlgorithm(WebSettings.LayoutAlgorithm paramLayoutAlgorithm)
+  public void setLayoutAlgorithm(LayoutAlgorithm paramLayoutAlgorithm)
   {
     AppMethodBeat.i(54427);
     if ((this.c) && (this.a != null))
@@ -2237,7 +2237,7 @@ public class WebSettings
     }
   }
   
-  public void setRenderPriority(WebSettings.RenderPriority paramRenderPriority)
+  public void setRenderPriority(RenderPriority paramRenderPriority)
   {
     AppMethodBeat.i(54484);
     if ((this.c) && (this.a != null))
@@ -2564,10 +2564,40 @@ public class WebSettings
     AppMethodBeat.o(54392);
     return false;
   }
+  
+  public static enum LayoutAlgorithm
+  {
+    static
+    {
+      AppMethodBeat.i(55044);
+      NORMAL = new LayoutAlgorithm("NORMAL", 0);
+      SINGLE_COLUMN = new LayoutAlgorithm("SINGLE_COLUMN", 1);
+      NARROW_COLUMNS = new LayoutAlgorithm("NARROW_COLUMNS", 2);
+      $VALUES = new LayoutAlgorithm[] { NORMAL, SINGLE_COLUMN, NARROW_COLUMNS };
+      AppMethodBeat.o(55044);
+    }
+    
+    private LayoutAlgorithm() {}
+  }
+  
+  public static enum RenderPriority
+  {
+    static
+    {
+      AppMethodBeat.i(54366);
+      NORMAL = new RenderPriority("NORMAL", 0);
+      HIGH = new RenderPriority("HIGH", 1);
+      LOW = new RenderPriority("LOW", 2);
+      $VALUES = new RenderPriority[] { NORMAL, HIGH, LOW };
+      AppMethodBeat.o(54366);
+    }
+    
+    private RenderPriority() {}
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebSettings
  * JD-Core Version:    0.7.0.1
  */

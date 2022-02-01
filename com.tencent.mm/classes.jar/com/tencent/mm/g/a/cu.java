@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class cu
-  extends b
+  extends IEvent
 {
+  public a dFU;
+  public b dFV;
+  
   public cu()
   {
     this((byte)0);
@@ -12,8 +16,22 @@ public final class cu
   
   private cu(byte paramByte)
   {
-    this.IvZ = false;
+    AppMethodBeat.i(127401);
+    this.dFU = new a();
+    this.dFV = new b();
+    this.order = false;
     this.callback = null;
+    AppMethodBeat.o(127401);
+  }
+  
+  public static final class a
+  {
+    public long dFW = 0L;
+  }
+  
+  public static final class b
+  {
+    public boolean dFE = false;
   }
 }
 

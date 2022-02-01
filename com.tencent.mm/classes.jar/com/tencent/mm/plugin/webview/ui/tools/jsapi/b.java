@@ -1,67 +1,73 @@
 package com.tencent.mm.plugin.webview.ui.tools.jsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.c.d;
-import com.tencent.mm.plugin.webview.c.f;
-import d.g.b.p;
-import d.u;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.f;
+import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.sdk.platformtools.ClipboardHelper;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
+import kotlin.a.ae;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.s;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiGetPasteboardContent;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/jsapi/JsApiGetPasteboardContent;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class b
-  extends com.tencent.mm.plugin.webview.c.c.a
+  extends a
 {
-  private static final int ECX = 364;
-  public static final b ECY;
+  private static final int CDJ = 364;
+  public static final b JsA;
   private static final String TAG = "MicroMsg.JsApiGetPasteboardContent";
-  private static final String dLB = "getPasteboardContent";
+  private static final String edq = "getPasteboardContent";
   
   static
   {
     AppMethodBeat.i(164014);
-    ECY = new b();
+    JsA = new b();
     TAG = "MicroMsg.JsApiGetPasteboardContent";
-    ECX = 364;
-    dLB = "getPasteboardContent";
+    CDJ = 364;
+    edq = "getPasteboardContent";
     AppMethodBeat.o(164014);
   }
   
-  public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(f paramf, n paramn)
   {
-    AppMethodBeat.i(199355);
-    p.h(paramd, "env");
-    p.h(paraml, "msg");
-    Object localObject = com.tencent.mm.pluginsdk.i.a.fee();
-    com.tencent.mm.sdk.platformtools.ae.i(TAG, "do get pasteboard content: " + (CharSequence)localObject);
+    AppMethodBeat.i(210547);
+    p.h(paramf, "env");
+    p.h(paramn, "msg");
+    Object localObject = ClipboardHelper.getText(paramf.context);
+    Log.i(TAG, "do get pasteboard content: " + (CharSequence)localObject);
     int i;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0))
     {
       i = 1;
       if (i == 0) {
-        break label114;
+        break label118;
       }
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":fail nocontent", d.a.ae.emptyMap());
+      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":fail nocontent", ae.emptyMap());
     }
     for (;;)
     {
-      AppMethodBeat.o(199355);
+      AppMethodBeat.o(210547);
       return true;
       i = 0;
       break;
-      label114:
-      localObject = d.a.ae.c(u.R("content", localObject));
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":ok", (Map)localObject);
+      label118:
+      localObject = ae.b(s.U("content", localObject));
+      paramf.IQZ.h(paramn.ISe, paramn.mhO + ":ok", (Map)localObject);
     }
   }
   
-  public final int eSw()
+  public final int ePA()
   {
-    return ECX;
+    return CDJ;
   }
   
-  public final String eSx()
+  public final String ePz()
   {
-    return dLB;
+    return edq;
   }
 }
 

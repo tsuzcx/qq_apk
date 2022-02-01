@@ -58,6 +58,8 @@ public abstract interface Marker
   
   public abstract void setInfoWindowHideAnimation(Animation paramAnimation);
   
+  public abstract void setInfoWindowOffset(int paramInt1, int paramInt2);
+  
   public abstract void setInfoWindowShowAnimation(Animation paramAnimation);
   
   public abstract void setLevel(int paramInt);
@@ -82,7 +84,7 @@ public abstract interface Marker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mapsdk.raster.model.Marker
  * JD-Core Version:    0.7.0.1
  */

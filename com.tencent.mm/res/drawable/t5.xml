@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:width="2.0dip" android:color="#ff1aad19" />
-    <size android:height="8.0dip" android:width="8.0dip" />
-</shape>
+    <item android:state_pressed="true" android:drawable="@raw/editor_toolbar_voice" />
+    <item android:drawable="@raw/editor_toolbar_voice" />
+</selector>

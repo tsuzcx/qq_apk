@@ -18,45 +18,45 @@ import android.graphics.drawable.Drawable;
 final class ao
   extends Drawable
 {
-  static a auV;
-  private static final double ti = Math.cos(Math.toRadians(45.0D));
-  float Kn;
-  ColorStateList auT;
-  private final int auU;
-  private Paint auW;
-  private Paint auX;
-  private final RectF auY;
-  private Path auZ;
+  static a auT;
+  private static final double tn = Math.cos(Math.toRadians(45.0D));
+  float Kx;
+  ColorStateList auR;
+  private final int auS;
+  private Paint auU;
+  private Paint auV;
+  private final RectF auW;
+  private Path auX;
+  float auY;
+  private float auZ;
   float ava;
-  private float avb;
-  float avc;
-  boolean avd = true;
-  private final int ave;
-  private final int avf;
-  private boolean avh = true;
-  private boolean avi = false;
+  boolean avb = true;
+  private final int avc;
+  private final int avd;
+  private boolean ave = true;
+  private boolean avf = false;
   private Paint mPaint;
   
   ao(Resources paramResources, ColorStateList paramColorStateList, float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    this.ave = paramResources.getColor(2131100121);
-    this.avf = paramResources.getColor(2131100120);
-    this.auU = paramResources.getDimensionPixelSize(2131166002);
+    this.avc = paramResources.getColor(2131100152);
+    this.avd = paramResources.getColor(2131100151);
+    this.auS = paramResources.getDimensionPixelSize(2131166034);
     this.mPaint = new Paint(5);
     g(paramColorStateList);
-    this.auW = new Paint(5);
-    this.auW.setStyle(Paint.Style.FILL);
-    this.Kn = ((int)(0.5F + paramFloat1));
-    this.auY = new RectF();
-    this.auX = new Paint(this.auW);
-    this.auX.setAntiAlias(false);
+    this.auU = new Paint(5);
+    this.auU.setStyle(Paint.Style.FILL);
+    this.Kx = ((int)(0.5F + paramFloat1));
+    this.auW = new RectF();
+    this.auV = new Paint(this.auU);
+    this.auV.setAntiAlias(false);
     f(paramFloat2, paramFloat3);
   }
   
   static float a(float paramFloat1, float paramFloat2, boolean paramBoolean)
   {
     if (paramBoolean) {
-      return (float)(1.5F * paramFloat1 + (1.0D - ti) * paramFloat2);
+      return (float)(1.5F * paramFloat1 + (1.0D - tn) * paramFloat2);
     }
     return 1.5F * paramFloat1;
   }
@@ -65,7 +65,7 @@ final class ao
   {
     float f = paramFloat1;
     if (paramBoolean) {
-      f = (float)(paramFloat1 + (1.0D - ti) * paramFloat2);
+      f = (float)(paramFloat1 + (1.0D - tn) * paramFloat2);
     }
     return f;
   }
@@ -80,9 +80,9 @@ final class ao
     return i;
   }
   
-  final void ay(boolean paramBoolean)
+  final void aw(boolean paramBoolean)
   {
-    this.avh = paramBoolean;
+    this.ave = paramBoolean;
     invalidateSelf();
   }
   
@@ -95,100 +95,100 @@ final class ao
     int i;
     int k;
     float f4;
-    if (this.avd)
+    if (this.avb)
     {
       Object localObject1 = getBounds();
-      f1 = this.ava * 1.5F;
-      this.auY.set(((Rect)localObject1).left + this.ava, ((Rect)localObject1).top + f1, ((Rect)localObject1).right - this.ava, ((Rect)localObject1).bottom - f1);
-      localObject1 = new RectF(-this.Kn, -this.Kn, this.Kn, this.Kn);
+      f1 = this.auY * 1.5F;
+      this.auW.set(((Rect)localObject1).left + this.auY, ((Rect)localObject1).top + f1, ((Rect)localObject1).right - this.auY, ((Rect)localObject1).bottom - f1);
+      localObject1 = new RectF(-this.Kx, -this.Kx, this.Kx, this.Kx);
       Object localObject2 = new RectF((RectF)localObject1);
-      ((RectF)localObject2).inset(-this.avb, -this.avb);
-      if (this.auZ == null)
+      ((RectF)localObject2).inset(-this.auZ, -this.auZ);
+      if (this.auX == null)
       {
-        this.auZ = new Path();
-        this.auZ.setFillType(Path.FillType.EVEN_ODD);
-        this.auZ.moveTo(-this.Kn, 0.0F);
-        this.auZ.rLineTo(-this.avb, 0.0F);
-        this.auZ.arcTo((RectF)localObject2, 180.0F, 90.0F, false);
-        this.auZ.arcTo((RectF)localObject1, 270.0F, -90.0F, false);
-        this.auZ.close();
-        f1 = this.Kn / (this.Kn + this.avb);
-        localObject1 = this.auW;
-        f2 = this.Kn;
-        f3 = this.avb;
-        i = this.ave;
-        k = this.ave;
-        int m = this.avf;
+        this.auX = new Path();
+        this.auX.setFillType(Path.FillType.EVEN_ODD);
+        this.auX.moveTo(-this.Kx, 0.0F);
+        this.auX.rLineTo(-this.auZ, 0.0F);
+        this.auX.arcTo((RectF)localObject2, 180.0F, 90.0F, false);
+        this.auX.arcTo((RectF)localObject1, 270.0F, -90.0F, false);
+        this.auX.close();
+        f1 = this.Kx / (this.Kx + this.auZ);
+        localObject1 = this.auU;
+        f2 = this.Kx;
+        f3 = this.auZ;
+        i = this.avc;
+        k = this.avc;
+        int m = this.avd;
         localObject2 = Shader.TileMode.CLAMP;
         ((Paint)localObject1).setShader(new RadialGradient(0.0F, 0.0F, f2 + f3, new int[] { i, k, m }, new float[] { 0.0F, f1, 1.0F }, (Shader.TileMode)localObject2));
-        localObject1 = this.auX;
-        f1 = -this.Kn;
-        f2 = this.avb;
-        f3 = -this.Kn;
-        f4 = this.avb;
-        i = this.ave;
-        k = this.ave;
-        m = this.avf;
+        localObject1 = this.auV;
+        f1 = -this.Kx;
+        f2 = this.auZ;
+        f3 = -this.Kx;
+        f4 = this.auZ;
+        i = this.avc;
+        k = this.avc;
+        m = this.avd;
         localObject2 = Shader.TileMode.CLAMP;
         ((Paint)localObject1).setShader(new LinearGradient(0.0F, f1 + f2, 0.0F, f3 - f4, new int[] { i, k, m }, new float[] { 0.0F, 0.5F, 1.0F }, (Shader.TileMode)localObject2));
-        this.auX.setAntiAlias(false);
-        this.avd = false;
+        this.auV.setAntiAlias(false);
+        this.avb = false;
       }
     }
     else
     {
-      paramCanvas.translate(0.0F, this.avc / 2.0F);
-      f1 = -this.Kn - this.avb;
-      f2 = this.Kn + this.auU + this.avc / 2.0F;
-      if (this.auY.width() - 2.0F * f2 <= 0.0F) {
+      paramCanvas.translate(0.0F, this.ava / 2.0F);
+      f1 = -this.Kx - this.auZ;
+      f2 = this.Kx + this.auS + this.ava / 2.0F;
+      if (this.auW.width() - 2.0F * f2 <= 0.0F) {
         break label903;
       }
       i = 1;
       label504:
-      if (this.auY.height() - 2.0F * f2 <= 0.0F) {
+      if (this.auW.height() - 2.0F * f2 <= 0.0F) {
         break label909;
       }
     }
     for (;;)
     {
       k = paramCanvas.save();
-      paramCanvas.translate(this.auY.left + f2, this.auY.top + f2);
-      paramCanvas.drawPath(this.auZ, this.auW);
+      paramCanvas.translate(this.auW.left + f2, this.auW.top + f2);
+      paramCanvas.drawPath(this.auX, this.auU);
       if (i != 0) {
-        paramCanvas.drawRect(0.0F, f1, this.auY.width() - 2.0F * f2, -this.Kn, this.auX);
+        paramCanvas.drawRect(0.0F, f1, this.auW.width() - 2.0F * f2, -this.Kx, this.auV);
       }
       paramCanvas.restoreToCount(k);
       k = paramCanvas.save();
-      paramCanvas.translate(this.auY.right - f2, this.auY.bottom - f2);
+      paramCanvas.translate(this.auW.right - f2, this.auW.bottom - f2);
       paramCanvas.rotate(180.0F);
-      paramCanvas.drawPath(this.auZ, this.auW);
+      paramCanvas.drawPath(this.auX, this.auU);
       if (i != 0)
       {
-        f3 = this.auY.width();
-        f4 = -this.Kn;
-        paramCanvas.drawRect(0.0F, f1, f3 - 2.0F * f2, this.avb + f4, this.auX);
+        f3 = this.auW.width();
+        f4 = -this.Kx;
+        paramCanvas.drawRect(0.0F, f1, f3 - 2.0F * f2, this.auZ + f4, this.auV);
       }
       paramCanvas.restoreToCount(k);
       i = paramCanvas.save();
-      paramCanvas.translate(this.auY.left + f2, this.auY.bottom - f2);
+      paramCanvas.translate(this.auW.left + f2, this.auW.bottom - f2);
       paramCanvas.rotate(270.0F);
-      paramCanvas.drawPath(this.auZ, this.auW);
+      paramCanvas.drawPath(this.auX, this.auU);
       if (j != 0) {
-        paramCanvas.drawRect(0.0F, f1, this.auY.height() - 2.0F * f2, -this.Kn, this.auX);
+        paramCanvas.drawRect(0.0F, f1, this.auW.height() - 2.0F * f2, -this.Kx, this.auV);
       }
       paramCanvas.restoreToCount(i);
       i = paramCanvas.save();
-      paramCanvas.translate(this.auY.right - f2, this.auY.top + f2);
+      paramCanvas.translate(this.auW.right - f2, this.auW.top + f2);
       paramCanvas.rotate(90.0F);
-      paramCanvas.drawPath(this.auZ, this.auW);
+      paramCanvas.drawPath(this.auX, this.auU);
       if (j != 0) {
-        paramCanvas.drawRect(0.0F, f1, this.auY.height() - 2.0F * f2, -this.Kn, this.auX);
+        paramCanvas.drawRect(0.0F, f1, this.auW.height() - 2.0F * f2, -this.Kx, this.auV);
       }
       paramCanvas.restoreToCount(i);
-      paramCanvas.translate(0.0F, -this.avc / 2.0F);
-      auV.a(paramCanvas, this.auY, this.Kn, this.mPaint);
+      paramCanvas.translate(0.0F, -this.ava / 2.0F);
+      auT.a(paramCanvas, this.auW, this.Kx, this.mPaint);
       return;
-      this.auZ.reset();
+      this.auX.reset();
       break;
       label903:
       i = 0;
@@ -211,18 +211,18 @@ final class ao
     paramFloat1 = f;
     if (f > paramFloat2)
     {
-      if (!this.avi) {
-        this.avi = true;
+      if (!this.avf) {
+        this.avf = true;
       }
       paramFloat1 = paramFloat2;
     }
-    if ((this.avc == paramFloat1) && (this.ava == paramFloat2)) {
+    if ((this.ava == paramFloat1) && (this.auY == paramFloat2)) {
       return;
     }
-    this.avc = paramFloat1;
-    this.ava = paramFloat2;
-    this.avb = ((int)(paramFloat1 * 1.5F + this.auU + 0.5F));
-    this.avd = true;
+    this.ava = paramFloat1;
+    this.auY = paramFloat2;
+    this.auZ = ((int)(paramFloat1 * 1.5F + this.auS + 0.5F));
+    this.avb = true;
     invalidateSelf();
   }
   
@@ -232,18 +232,18 @@ final class ao
     if (paramColorStateList == null) {
       localColorStateList = ColorStateList.valueOf(0);
     }
-    this.auT = localColorStateList;
-    this.mPaint.setColor(this.auT.getColorForState(getState(), this.auT.getDefaultColor()));
+    this.auR = localColorStateList;
+    this.mPaint.setColor(this.auR.getColorForState(getState(), this.auR.getDefaultColor()));
   }
   
   final float getMinHeight()
   {
-    return Math.max(this.ava, this.Kn + this.auU + this.ava * 1.5F / 2.0F) * 2.0F + (this.ava * 1.5F + this.auU) * 2.0F;
+    return Math.max(this.auY, this.Kx + this.auS + this.auY * 1.5F / 2.0F) * 2.0F + (this.auY * 1.5F + this.auS) * 2.0F;
   }
   
   final float getMinWidth()
   {
-    return Math.max(this.ava, this.Kn + this.auU + this.ava / 2.0F) * 2.0F + (this.ava + this.auU) * 2.0F;
+    return Math.max(this.auY, this.Kx + this.auS + this.auY / 2.0F) * 2.0F + (this.auY + this.auS) * 2.0F;
   }
   
   public final int getOpacity()
@@ -253,31 +253,31 @@ final class ao
   
   public final boolean getPadding(Rect paramRect)
   {
-    int i = (int)Math.ceil(a(this.ava, this.Kn, this.avh));
-    int j = (int)Math.ceil(b(this.ava, this.Kn, this.avh));
+    int i = (int)Math.ceil(a(this.auY, this.Kx, this.ave));
+    int j = (int)Math.ceil(b(this.auY, this.Kx, this.ave));
     paramRect.set(j, i, j, i);
     return true;
   }
   
   public final boolean isStateful()
   {
-    return ((this.auT != null) && (this.auT.isStateful())) || (super.isStateful());
+    return ((this.auR != null) && (this.auR.isStateful())) || (super.isStateful());
   }
   
   protected final void onBoundsChange(Rect paramRect)
   {
     super.onBoundsChange(paramRect);
-    this.avd = true;
+    this.avb = true;
   }
   
   protected final boolean onStateChange(int[] paramArrayOfInt)
   {
-    int i = this.auT.getColorForState(paramArrayOfInt, this.auT.getDefaultColor());
+    int i = this.auR.getColorForState(paramArrayOfInt, this.auR.getDefaultColor());
     if (this.mPaint.getColor() == i) {
       return false;
     }
     this.mPaint.setColor(i);
-    this.avd = true;
+    this.avb = true;
     invalidateSelf();
     return true;
   }
@@ -285,8 +285,8 @@ final class ao
   public final void setAlpha(int paramInt)
   {
     this.mPaint.setAlpha(paramInt);
-    this.auW.setAlpha(paramInt);
-    this.auX.setAlpha(paramInt);
+    this.auU.setAlpha(paramInt);
+    this.auV.setAlpha(paramInt);
   }
   
   public final void setColorFilter(ColorFilter paramColorFilter)

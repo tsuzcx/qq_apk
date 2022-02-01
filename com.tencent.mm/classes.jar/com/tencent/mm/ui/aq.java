@@ -1,117 +1,67 @@
 package com.tencent.mm.ui;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.content.res.Resources;
-import android.content.res.Resources.Theme;
-import android.content.res.TypedArray;
-import android.graphics.drawable.Drawable;
-import android.support.v4.content.b;
-import android.util.DisplayMetrics;
-import android.util.SparseIntArray;
-import android.util.TypedValue;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffXfermode;
+import android.graphics.Rect;
+import android.graphics.RectF;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class aq
 {
-  private static SparseIntArray Ips;
-  private static float density;
-  private static float scale;
-  
-  static
+  public static Bitmap a(Bitmap paramBitmap, float paramFloat)
   {
-    AppMethodBeat.i(159132);
-    density = -1.0F;
-    scale = 0.0F;
-    Ips = new SparseIntArray();
-    AppMethodBeat.o(159132);
-  }
-  
-  public static Drawable aM(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(159129);
-    paramContext = paramContext.obtainStyledAttributes(new int[] { paramInt });
-    Drawable localDrawable = paramContext.getDrawable(0);
-    paramContext.recycle();
-    AppMethodBeat.o(159129);
-    return localDrawable;
-  }
-  
-  public static int aN(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(159130);
-    TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(paramInt, localTypedValue, true);
-    paramInt = localTypedValue.data;
-    AppMethodBeat.o(159130);
-    return paramInt;
-  }
-  
-  public static int ay(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(159126);
-    if (paramContext == null)
+    AppMethodBeat.i(159110);
+    if ((paramBitmap == null) || (paramBitmap.isRecycled()))
     {
-      ap.e("WeUIResHelper", "get dimension pixel size, resId %d, but context is null".concat(String.valueOf(paramInt)), new Object[0]);
-      AppMethodBeat.o(159126);
-      return 0;
+      as.e("WeUIBitmapUtil", "getRoundedCornerBitmap in bitmap is null", new Object[0]);
+      AppMethodBeat.o(159110);
+      return null;
     }
-    int j = Ips.get(paramInt, 0);
-    int i = j;
-    if (j == 0)
+    Bitmap localBitmap = j(paramBitmap.getWidth(), paramBitmap.getHeight(), Bitmap.Config.ARGB_8888);
+    if (localBitmap == null)
     {
-      i = paramContext.getResources().getDimensionPixelSize(paramInt);
-      Ips.put(paramInt, i);
+      AppMethodBeat.o(159110);
+      return null;
     }
-    AppMethodBeat.o(159126);
-    return i;
+    Canvas localCanvas = new Canvas(localBitmap);
+    Paint localPaint = new Paint();
+    Rect localRect = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
+    RectF localRectF = new RectF(localRect);
+    localPaint.setAntiAlias(true);
+    localPaint.setDither(true);
+    localPaint.setFilterBitmap(true);
+    localCanvas.drawARGB(0, 0, 0, 0);
+    localPaint.setColor(-4144960);
+    localCanvas.drawRoundRect(localRectF, paramFloat, paramFloat, localPaint);
+    localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+    localCanvas.drawBitmap(paramBitmap, localRect, localRect, localPaint);
+    as.i("WeUIBitmapUtil", "getRoundedCornerBitmap bitmap recycle %s", new Object[] { paramBitmap });
+    paramBitmap.recycle();
+    AppMethodBeat.o(159110);
+    return localBitmap;
   }
   
-  public static float ef(Context paramContext)
+  private static Bitmap j(int paramInt1, int paramInt2, Bitmap.Config paramConfig)
   {
-    AppMethodBeat.i(159128);
-    if (scale == 0.0F) {
-      if (paramContext != null) {
-        break label32;
+    AppMethodBeat.i(159111);
+    Object localObject = null;
+    try
+    {
+      paramConfig = Bitmap.createBitmap(paramInt1, paramInt2, paramConfig);
+      AppMethodBeat.o(159111);
+      return paramConfig;
+    }
+    catch (Throwable paramConfig)
+    {
+      for (;;)
+      {
+        paramConfig = localObject;
       }
     }
-    label32:
-    for (scale = 1.0F;; scale = paramContext.getSharedPreferences("com.tencent.mm_preferences", 0).getFloat("text_size_scale_key", 1.0F))
-    {
-      float f = scale;
-      AppMethodBeat.o(159128);
-      return f;
-    }
-  }
-  
-  public static int fromDPToPix(Context paramContext, int paramInt)
-  {
-    AppMethodBeat.i(159125);
-    paramInt = Math.round(getDensity(paramContext) * paramInt);
-    AppMethodBeat.o(159125);
-    return paramInt;
-  }
-  
-  public static float getDensity(Context paramContext)
-  {
-    AppMethodBeat.i(159127);
-    if ((paramContext != null) && (density < 0.0F)) {
-      density = paramContext.getResources().getDisplayMetrics().density;
-    }
-    float f = density;
-    AppMethodBeat.o(159127);
-    return f;
-  }
-  
-  public static ColorStateList kc(Context paramContext)
-  {
-    AppMethodBeat.i(159131);
-    TypedValue localTypedValue = new TypedValue();
-    paramContext.getTheme().resolveAttribute(2130969126, localTypedValue, true);
-    paramContext = b.m(paramContext, localTypedValue.resourceId);
-    AppMethodBeat.o(159131);
-    return paramContext;
   }
 }
 

@@ -2,33 +2,35 @@ package com.tencent.mm.plugin.finder.search;
 
 import com.tencent.mm.plugin.finder.model.BaseFinderFeed;
 import com.tencent.mm.plugin.finder.presenter.base.a;
-import com.tencent.mm.protocal.protobuf.ars;
-import d.l;
+import com.tencent.mm.protocal.protobuf.bbz;
 import java.util.List;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUIContract$ViewCallback;", "addExposeItem", "", "id", "", "position", "", "type", "", "getContactList", "", "Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;", "getFeedList", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "onContactItemClick", "finderSearchInfo", "onContactMoreClick", "onFeedItemClick", "finderFeedObj", "onLoadMoreData", "", "startSearchQuery", "query", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUIContract$Presenter;", "Lcom/tencent/mm/plugin/finder/presenter/base/IPresenter;", "Lcom/tencent/mm/plugin/finder/search/FinderMixSearchUIContract$ViewCallback;", "addExposeItem", "", "id", "", "position", "", "type", "", "getContactList", "", "Lcom/tencent/mm/protocal/protobuf/FinderSearchInfo;", "getFeedList", "Lcom/tencent/mm/plugin/finder/model/BaseFinderFeed;", "jumpToLive", "feed", "onContactItemClick", "finderSearchInfo", "onContactMoreClick", "onFeedItemClick", "finderFeedObj", "onLoadMoreData", "", "startSearchQuery", "query", "isFromHistory", "isFromHot", "sessionBuffer", "Lcom/tencent/mm/protobuf/ByteString;", "plugin-finder_release"})
 public abstract interface e$a
   extends a<e.b>
 {
-  public abstract void L(long paramLong, int paramInt);
+  public abstract void K(long paramLong, int paramInt);
   
-  public abstract void a(ars paramars, int paramInt);
+  public abstract void a(bbz parambbz, int paramInt);
   
-  public abstract void ac(String paramString, int paramInt1, int paramInt2);
+  public abstract void ae(String paramString, int paramInt1, int paramInt2);
   
-  public abstract List<ars> cGC();
+  public abstract List<BaseFinderFeed> cYD();
   
-  public abstract void cGD();
+  public abstract List<bbz> dpA();
   
-  public abstract boolean cGE();
+  public abstract void dpB();
   
-  public abstract List<BaseFinderFeed> czU();
+  public abstract boolean dpC();
   
-  public abstract void m(BaseFinderFeed paramBaseFinderFeed);
+  public abstract void q(BaseFinderFeed paramBaseFinderFeed);
+  
+  public abstract void r(BaseFinderFeed paramBaseFinderFeed);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.search.e.a
  * JD-Core Version:    0.7.0.1
  */

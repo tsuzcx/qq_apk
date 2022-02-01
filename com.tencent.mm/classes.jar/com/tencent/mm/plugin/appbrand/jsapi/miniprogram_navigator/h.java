@@ -1,16 +1,26 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
-public final class h
-  extends g
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.d;
+import org.json.JSONObject;
+
+public class h
+  extends a
 {
-  protected final c bkP()
+  public static final int CTRL_INDEX = 251;
+  public static final String NAME = "navigateToMiniProgram";
+  
+  protected c.c b(d paramd, JSONObject paramJSONObject, int paramInt)
   {
-    return l.kZX;
+    AppMethodBeat.i(229904);
+    paramd = new h.1(this, paramd, paramInt);
+    AppMethodBeat.o(229904);
+    return paramd;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.h
  * JD-Core Version:    0.7.0.1
  */

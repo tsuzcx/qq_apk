@@ -11,25 +11,25 @@ public abstract interface d
   
   public abstract void a(com.tencent.luggage.xweb_ext.extendplugin.component.video.a parama);
   
-  public abstract void aL(long paramLong);
+  public abstract void aX(long paramLong);
   
   public abstract void b(c paramc);
   
-  public abstract void bJ(boolean paramBoolean);
+  public abstract void ci(boolean paramBoolean);
   
-  public abstract void bK(boolean paramBoolean);
+  public abstract void cj(boolean paramBoolean);
   
-  public abstract void bL(boolean paramBoolean);
+  public abstract void ck(boolean paramBoolean);
   
-  public abstract void dC(String paramString);
+  public abstract void dV(String paramString);
   
   public abstract void destroy();
   
-  public abstract void gO(int paramInt);
-  
-  public abstract void gP(int paramInt);
-  
   public abstract void h(String paramString, int paramInt1, int paramInt2);
+  
+  public abstract void ie(int paramInt);
+  
+  public abstract void jdMethod_if(int paramInt);
   
   public abstract void m(com.tencent.luggage.xweb_ext.extendplugin.a parama);
   
@@ -39,7 +39,7 @@ public abstract interface d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.component.video.b.d
  * JD-Core Version:    0.7.0.1
  */

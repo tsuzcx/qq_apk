@@ -12,13 +12,13 @@ final class q$1
   public final void run()
   {
     AppMethodBeat.i(151760);
-    Toast.makeText(this.val$context, this.val$context.getString(2131761809), 1).show();
+    Toast.makeText(this.val$context, this.val$context.getString(2131763783), 1).show();
     AppMethodBeat.o(151760);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.model.app.q.1
  * JD-Core Version:    0.7.0.1
  */

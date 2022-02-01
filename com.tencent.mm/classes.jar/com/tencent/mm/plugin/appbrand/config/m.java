@@ -1,163 +1,106 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import android.text.TextUtils;
-import android.util.SparseIntArray;
+import android.content.SharedPreferences.Editor;
+import com.tencent.luggage.a.e;
+import com.tencent.luggage.sdk.d.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.performance.a;
+import com.tencent.mm.plugin.appbrand.permission.i;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
-public enum m
+public final class m
 {
-  private static final a kbI;
-  private static final a kbJ;
+  private static final MultiProcessMMKV cQe;
   
   static
   {
-    AppMethodBeat.i(147003);
-    kbK = new m[0];
-    kbI = new a((byte)0);
-    kbJ = new a((byte)0);
-    AppMethodBeat.o(147003);
+    AppMethodBeat.i(146993);
+    cQe = MultiProcessMMKV.getMMKV("com.tencent.mm.plugin.appbrand.config.AppDebugInfoHelper");
+    AppMethodBeat.o(146993);
   }
   
-  public static int NX(String paramString)
+  public static void WY(String paramString)
   {
-    AppMethodBeat.i(147000);
-    int j = kbI.NZ(paramString);
-    i = j;
-    if (j <= 0) {
-      localObject = null;
-    }
-    try
-    {
-      y.bfa();
-      WxaAttributes localWxaAttributes = y.e(paramString, new String[] { "dynamicInfo" });
-      localObject = localWxaAttributes;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ae.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localException, "queryWithAppId(%s)", new Object[] { paramString });
-        continue;
-        i = localObject.beU().kcY.cne;
-        continue;
-        i = 5;
-      }
-    }
-    if (localObject == null)
-    {
-      i = -1;
-      ae.i("MicroMsg.AppServiceSettingsResolver", "readAppFileStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
-      if (localObject == null) {
-        break label137;
-      }
-      i = localObject.beU().kcY.cne;
-      br(paramString, i);
-      AppMethodBeat.o(147000);
-      return i * 1048576;
-    }
+    AppMethodBeat.i(146991);
+    cQe.remove(paramString + "_AppDebugEnabled").commit();
+    AppMethodBeat.o(146991);
   }
   
-  public static int NY(String paramString)
+  public static boolean Xc(String paramString)
   {
-    AppMethodBeat.i(147002);
-    int j = kbJ.NZ(paramString);
-    i = j;
-    if (j <= 0) {
-      localObject = null;
-    }
-    try
-    {
-      y.bfa();
-      WxaAttributes localWxaAttributes = y.e(paramString, new String[] { "dynamicInfo" });
-      localObject = localWxaAttributes;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ae.printErrStackTrace("MicroMsg.AppServiceSettingsResolver", localException, "queryWithAppId(%s)", new Object[] { paramString });
-        continue;
-        i = localObject.beU().kcY.kda;
-        continue;
-        i = 5;
-      }
-    }
-    if (localObject == null)
-    {
-      i = -1;
-      ae.i("MicroMsg.AppServiceSettingsResolver", "readAppOpendataLocalStorageMaxSizeInBytes, appId = %s, MaxLocalstorageSize = %d", new Object[] { paramString, Integer.valueOf(i) });
-      if (localObject == null) {
-        break label137;
-      }
-      i = localObject.beU().kcY.kda;
-      bs(paramString, i);
-      AppMethodBeat.o(147002);
-      return i * 1048576;
-    }
+    AppMethodBeat.i(146990);
+    boolean bool = cQe.getBoolean(paramString + "_AppDebugEnabled", false);
+    AppMethodBeat.o(146990);
+    return bool;
   }
   
-  public static void br(String paramString, int paramInt)
+  public static boolean Xd(String paramString)
   {
-    AppMethodBeat.i(146999);
-    kbI.put(paramString, paramInt);
-    AppMethodBeat.o(146999);
+    AppMethodBeat.i(229881);
+    boolean bool = cQe.contains(paramString + "_AppDebugEnabled");
+    AppMethodBeat.o(229881);
+    return bool;
   }
   
-  public static void bs(String paramString, int paramInt)
+  public static void Xe(String paramString)
   {
-    AppMethodBeat.i(147001);
-    kbJ.put(paramString, paramInt);
-    AppMethodBeat.o(147001);
+    AppMethodBeat.i(229882);
+    cQe.putString("V8DebugFlags", paramString);
+    AppMethodBeat.o(229882);
   }
   
-  static final class a
+  public static boolean Xf(String paramString)
   {
-    private final SparseIntArray kbL;
-    
-    private a()
+    AppMethodBeat.i(229885);
+    boolean bool = ((i)e.M(i.class)).aeo(paramString);
+    AppMethodBeat.o(229885);
+    return bool;
+  }
+  
+  public static void an(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(146989);
+    cQe.putBoolean(paramString + "_AppDebugEnabled", paramBoolean).commit();
+    AppMethodBeat.o(146989);
+  }
+  
+  public static String bAc()
+  {
+    AppMethodBeat.i(229883);
+    String str = cQe.getString("V8DebugFlags", "");
+    AppMethodBeat.o(229883);
+    return str;
+  }
+  
+  public static void bAd()
+  {
+    AppMethodBeat.i(229884);
+    cQe.remove("V8DebugFlags");
+    AppMethodBeat.o(229884);
+  }
+  
+  public static boolean c(d paramd)
+  {
+    AppMethodBeat.i(146992);
+    a locala = (a)paramd.d(a.class, false);
+    if (locala == null)
     {
-      AppMethodBeat.i(146994);
-      this.kbL = new SparseIntArray();
-      AppMethodBeat.o(146994);
+      AppMethodBeat.o(146992);
+      return false;
     }
-    
-    public final int NZ(String paramString)
+    if (paramd.OQ())
     {
-      AppMethodBeat.i(146996);
-      if (TextUtils.isEmpty(paramString))
-      {
-        AppMethodBeat.o(146996);
-        return -1;
-      }
-      synchronized (this.kbL)
-      {
-        int i = this.kbL.get(paramString.hashCode(), -1);
-        AppMethodBeat.o(146996);
-        return i;
-      }
+      AppMethodBeat.o(146992);
+      return false;
     }
-    
-    public final void put(String paramString, int paramInt)
-    {
-      AppMethodBeat.i(146995);
-      if (TextUtils.isEmpty(paramString))
-      {
-        AppMethodBeat.o(146995);
-        return;
-      }
-      synchronized (this.kbL)
-      {
-        this.kbL.put(paramString.hashCode(), paramInt);
-        AppMethodBeat.o(146995);
-        return;
-      }
-    }
+    boolean bool = locala.nwz;
+    AppMethodBeat.o(146992);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.m
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,5 @@
 package com.tencent.mm.plugin.topstory.ui.video.list;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.a;
 import android.support.v7.widget.RecyclerView.b;
@@ -9,16 +7,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.topstory.ui.video.n;
 import com.tencent.mm.plugin.topstory.ui.video.o;
-import com.tencent.mm.protocal.protobuf.dpa;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.widget.a.f.a;
-import com.tencent.mm.ui.widget.a.f.c;
+import com.tencent.mm.protocal.protobuf.eiw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.Map;
@@ -26,21 +20,21 @@ import java.util.Map;
 public final class e
   extends com.tencent.mm.plugin.topstory.ui.video.e
 {
-  boolean BOJ;
-  private boolean BOK;
-  boolean BOU;
-  private h BOV;
+  boolean GpB;
+  private h GpC;
+  boolean Gpq;
+  private boolean Gpr;
   
   public e(b paramb)
   {
     super(paramb);
   }
   
-  public final int TI(int paramInt)
+  public final int abY(int paramInt)
   {
     AppMethodBeat.i(126426);
     int i = getHeadersCount();
-    if (bu.ht(((b)this.BLm).ets().TN(paramInt - i).uda))
+    if (Util.isNullOrNil(((b)this.GlS).fyO().acd(paramInt - i).xuO))
     {
       AppMethodBeat.o(126426);
       return 0;
@@ -49,45 +43,45 @@ public final class e
     return 1;
   }
   
-  public final void o(final List<dpa> paramList, final boolean paramBoolean)
+  public final void t(final List<eiw> paramList, final boolean paramBoolean)
   {
     AppMethodBeat.i(126425);
-    super.o(paramList, paramBoolean);
-    ar.f(new Runnable()
+    super.t(paramList, paramBoolean);
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(126424);
         for (;;)
         {
-          synchronized (e.a(e.this).ets())
+          synchronized (e.a(e.this).fyO())
           {
-            List localList = ???.cPU();
-            ae.i("MicroMsg.TopStory.TopStoryListVideoAdapter", "callbackToSuccess originSize: %d insertSize %d", new Object[] { Integer.valueOf(localList.size()), Integer.valueOf(paramList.size()) });
+            List localList = ???.GW();
+            Log.i("MicroMsg.TopStory.TopStoryListVideoAdapter", "callbackToSuccess originSize: %d insertSize %d", new Object[] { Integer.valueOf(localList.size()), Integer.valueOf(paramList.size()) });
             if (!paramBoolean) {
               break label498;
             }
             int j = localList.size();
             if (localList.size() > 0)
             {
-              if (!((dpa)localList.get(0)).udb.equals(((dpa)paramList.get(0)).udb))
+              if (!((eiw)localList.get(0)).psI.equals(((eiw)paramList.get(0)).psI))
               {
                 paramList.remove(0);
                 i = 0;
                 localList.addAll(paramList);
                 if (i != 0)
                 {
-                  localObject2 = (dpa)paramList.get(0);
+                  localObject2 = (eiw)paramList.get(0);
                   localList.set(0, localObject2);
-                  com.tencent.mm.plugin.topstory.ui.video.h localh = e.this.b((dpa)localObject2);
+                  com.tencent.mm.plugin.topstory.ui.video.h localh = e.this.b((eiw)localObject2);
                   if (localh != null) {
-                    localh.d((dpa)localObject2);
+                    localh.d((eiw)localObject2);
                   }
                 }
                 if (e.b(e.this))
                 {
-                  e.this.asY.notifyChanged();
-                  e.a(e.this).ete().i((dpa)localList.get(0));
+                  e.this.atj.notifyChanged();
+                  e.a(e.this).fyB().j((eiw)localList.get(0));
                   AppMethodBeat.o(126424);
                 }
               }
@@ -99,48 +93,26 @@ public final class e
               }
               if ((e.c(e.this) != null) && (localList != null) && (localList.get(0) != null))
               {
-                localObject2 = (dpa)localList.get(0);
-                e.c(e.this).d((dpa)localObject2);
-                e.d(e.this).put(((dpa)localObject2).udb, new WeakReference(e.c(e.this)));
+                localObject2 = (eiw)localList.get(0);
+                e.c(e.this).d((eiw)localObject2);
+                e.d(e.this).put(((eiw)localObject2).psI, new WeakReference(e.c(e.this)));
                 e.e(e.this);
-                if (((((dpa)localObject2).HWq & 0x80) > 0) && (g.ajR().ajA().getInt(am.a.IXE, 0) <= 0)) {
-                  e.g(e.this).getRecyclerView().postDelayed(new Runnable()
-                  {
-                    public final void run()
-                    {
-                      AppMethodBeat.i(126423);
-                      ae.i("MicroMsg.TopStory.TopStoryListVideoAdapter", "show education pop window");
-                      f.a locala = new f.a(ak.getContext());
-                      locala.aZq(e.f(e.this).dkN().getString(2131764516)).zi(true);
-                      locala.afY(2131755793).b(new f.c()
-                      {
-                        public final void d(boolean paramAnonymous3Boolean, String paramAnonymous3String) {}
-                      }).b(new DialogInterface.OnDismissListener()
-                      {
-                        public final void onDismiss(DialogInterface paramAnonymous3DialogInterface)
-                        {
-                          AppMethodBeat.i(126422);
-                          g.ajR().ajA().set(am.a.IXE, Integer.valueOf(1));
-                          AppMethodBeat.o(126422);
-                        }
-                      }).show();
-                      AppMethodBeat.o(126423);
-                    }
-                  }, 1000L);
+                if (((((eiw)localObject2).Nix & 0x80) > 0) && (g.aAh().azQ().getInt(ar.a.Oga, 0) <= 0)) {
+                  e.g(e.this).getRecyclerView().postDelayed(new e.1.1(this), 1000L);
                 }
               }
               Object localObject2 = e.this;
-              ((e)localObject2).ar(((e)localObject2).getHeadersCount() + j, paramList.size() - j);
+              ((e)localObject2).as(((e)localObject2).getHeadersCount() + j, paramList.size() - j);
             }
           }
           localObject1.addAll(paramList);
-          e.this.ar(e.this.getHeadersCount(), paramList.size());
+          e.this.as(e.this.getHeadersCount(), paramList.size());
           continue;
           label498:
           int i = localObject1.size();
           localObject1.addAll(paramList);
           e locale = e.this;
-          locale.ar(i + locale.getHeadersCount(), paramList.size());
+          locale.as(i + locale.getHeadersCount(), paramList.size());
         }
       }
     });

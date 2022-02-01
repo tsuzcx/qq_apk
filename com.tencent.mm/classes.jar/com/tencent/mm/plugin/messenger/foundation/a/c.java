@@ -9,18 +9,13 @@ public abstract interface c
 {
   public abstract void a(Context paramContext, b paramb);
   
-  public abstract void a(Context paramContext, b paramb, a parama);
+  public abstract void a(Context paramContext, b paramb, c.a parama);
   
-  public abstract void a(Context paramContext, b paramb, c paramc);
+  public abstract void a(Context paramContext, b paramb, c.c paramc);
   
-  public abstract void a(Context paramContext, b paramb, String paramString, c paramc);
+  public abstract void a(Context paramContext, b paramb, String paramString, c.c paramc);
   
-  public abstract void b(Context paramContext, b paramb, a parama);
-  
-  public static abstract interface a
-  {
-    public abstract void a(boolean paramBoolean, String paramString1, String paramString2);
-  }
+  public abstract void b(Context paramContext, b paramb, c.a parama);
   
   public static final class b
     implements Serializable
@@ -28,17 +23,12 @@ public abstract interface c
     public String appId;
     public String appName;
     public String signature;
-    public String vVS;
-    public String vVT;
-    public String vVU;
-    public String vVV;
-    public int vVW;
-    public int vVX;
-  }
-  
-  public static abstract interface c
-  {
-    public abstract void e(boolean paramBoolean, String paramString);
+    public String zpX;
+    public String zpY;
+    public String zpZ;
+    public String zqa;
+    public int zqb;
+    public int zqc;
   }
 }
 

@@ -1,39 +1,32 @@
 package com.tencent.mm.plugin.brandservice.ui.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.i.e;
-import d.l;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
 final class MPExoVideoWrapper$b
-  implements Runnable
+  extends q
+  implements a<Boolean>
 {
-  MPExoVideoWrapper$b(MPExoVideoWrapper paramMPExoVideoWrapper) {}
+  public static final b pNC;
   
-  public final void run()
+  static
   {
-    AppMethodBeat.i(7387);
-    MPExoVideoTextureView localMPExoVideoTextureView = MPExoVideoWrapper.h(this.ozS);
-    if (localMPExoVideoTextureView != null) {
-      localMPExoVideoTextureView.setVideoSize(MPExoVideoWrapper.y(this.ozS), MPExoVideoWrapper.z(this.ozS));
-    }
-    localMPExoVideoTextureView = MPExoVideoWrapper.h(this.ozS);
-    if (localMPExoVideoTextureView != null) {
-      localMPExoVideoTextureView.bTA();
-    }
-    localMPExoVideoTextureView = MPExoVideoWrapper.h(this.ozS);
-    if (localMPExoVideoTextureView != null)
-    {
-      localMPExoVideoTextureView.setScaleType(i.e.Flj);
-      AppMethodBeat.o(7387);
-      return;
-    }
-    AppMethodBeat.o(7387);
+    AppMethodBeat.i(196008);
+    pNC = new b();
+    AppMethodBeat.o(196008);
+  }
+  
+  MPExoVideoWrapper$b()
+  {
+    super(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.widget.MPExoVideoWrapper.b
  * JD-Core Version:    0.7.0.1
  */

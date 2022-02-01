@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.ipcall.model.b.a;
 import com.tencent.mm.plugin.ipcall.model.b.c;
 import com.tencent.mm.plugin.ipcall.model.e.k;
@@ -10,20 +10,20 @@ import com.tencent.mm.plugin.ipcall.model.e.k;
 public final class f
   extends a
 {
-  public final void Dg() {}
+  public final void MC() {}
   
   public final void b(c paramc)
   {
     AppMethodBeat.i(25523);
     if (paramc != null)
     {
-      paramc = new k(paramc.roomId, paramc.uXg, paramc.uXh);
-      bc.ajj().a(paramc, 0);
+      paramc = new k(paramc.roomId, paramc.ypH, paramc.ypI);
+      bg.azz().a(paramc, 0);
     }
     AppMethodBeat.o(25523);
   }
   
-  public final int[] dgL()
+  public final int[] eaF()
   {
     return new int[] { 726 };
   }

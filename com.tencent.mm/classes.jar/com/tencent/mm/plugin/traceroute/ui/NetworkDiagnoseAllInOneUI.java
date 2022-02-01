@@ -12,138 +12,140 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.mt;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bq;
-import com.tencent.mm.model.bq.a;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.br.c;
+import com.tencent.mm.g.a.nk;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bu;
+import com.tencent.mm.model.bu.a;
 import com.tencent.mm.modelgeo.b.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.modelgeo.d;
+import com.tencent.mm.network.g;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.ui.base.q;
 
 public class NetworkDiagnoseAllInOneUI
   extends MMActivity
   implements View.OnClickListener
 {
-  private int BQU;
-  private TextView BQV;
-  private TextView BQW;
-  private TextView BQX;
-  private TextView BQY;
-  private p BQZ;
-  private int BRa;
-  private String BRb;
-  private c<mt> BRc;
-  private boolean BRd;
-  private boolean BRe;
-  private boolean BRf;
-  private aw cji;
-  private ImageView dtJ;
-  private b.a fHp;
-  private Button gXc;
-  private boolean vsk;
-  private com.tencent.mm.modelgeo.d vtI;
+  private int GrC;
+  private TextView GrD;
+  private TextView GrE;
+  private TextView GrF;
+  private TextView GrG;
+  private q GrH;
+  private int GrI;
+  private String GrJ;
+  private IListener<nk> GrK;
+  private boolean GrL;
+  private boolean GrM;
+  private boolean GrN;
+  private MTimerHandler cve;
+  private ImageView dKU;
+  private b.a gmA;
+  private Button hPX;
+  private boolean uSu;
+  private d yNv;
   
-  private void aUA()
+  private void bpn()
   {
     AppMethodBeat.i(29687);
-    ae.i("MicroMsg.NetworkDiagnoseAllInOneUI", "refreshUI, state:%d", new Object[] { Integer.valueOf(this.BQU) });
-    switch (this.BQU)
+    Log.i("MicroMsg.NetworkDiagnoseAllInOneUI", "refreshUI, state:%d", new Object[] { Integer.valueOf(this.GrC) });
+    switch (this.GrC)
     {
     }
     for (;;)
     {
       AppMethodBeat.o(29687);
       return;
-      this.dtJ.setImageResource(2131690932);
-      this.BQX.setText(getString(2131758055, new Object[] { Integer.valueOf(this.BRa) }));
-      this.BQY.setText(2131758047);
-      this.gXc.setVisibility(4);
-      this.BQW.setVisibility(4);
+      this.dKU.setImageResource(2131691229);
+      this.GrF.setText(getString(2131758315, new Object[] { Integer.valueOf(this.GrI) }));
+      this.GrG.setText(2131758307);
+      this.hPX.setVisibility(4);
+      this.GrE.setVisibility(4);
       AppMethodBeat.o(29687);
       return;
-      this.dtJ.setImageResource(2131690932);
-      this.BQX.setText(2131758059);
-      this.BQY.setText(2131758050);
-      this.gXc.setVisibility(0);
-      this.BQW.setVisibility(4);
+      this.dKU.setImageResource(2131691229);
+      this.GrF.setText(2131758319);
+      this.GrG.setText(2131758310);
+      this.hPX.setVisibility(0);
+      this.GrE.setVisibility(4);
       AppMethodBeat.o(29687);
       return;
-      this.dtJ.setImageResource(2131690930);
-      this.BQX.setText(2131758058);
-      this.BQY.setText(2131758048);
-      this.gXc.setVisibility(0);
-      this.gXc.setText(2131758044);
-      this.BQW.setVisibility(0);
+      this.dKU.setImageResource(2131691227);
+      this.GrF.setText(2131758318);
+      this.GrG.setText(2131758308);
+      this.hPX.setVisibility(0);
+      this.hPX.setText(2131758304);
+      this.GrE.setVisibility(0);
       AppMethodBeat.o(29687);
       return;
-      this.dtJ.setImageResource(2131690930);
-      this.BQX.setText(2131758056);
-      this.BQY.setText(2131758048);
-      this.gXc.setVisibility(0);
-      this.gXc.setText(2131758044);
-      this.BQW.setVisibility(0);
+      this.dKU.setImageResource(2131691227);
+      this.GrF.setText(2131758316);
+      this.GrG.setText(2131758308);
+      this.hPX.setVisibility(0);
+      this.hPX.setText(2131758304);
+      this.GrE.setVisibility(0);
       AppMethodBeat.o(29687);
       return;
       Intent localIntent = new Intent();
-      localIntent.putExtra("title", 2131761535);
-      localIntent.putExtra("rawUrl", getString(2131761532));
+      localIntent.putExtra("title", 2131763501);
+      localIntent.putExtra("rawUrl", getString(2131763498));
       localIntent.putExtra("showShare", false);
-      com.tencent.mm.br.d.b(this, "webview", ".ui.tools.WebViewUI", localIntent);
-      sV(false);
+      c.b(this, "webview", ".ui.tools.WebViewUI", localIntent);
+      wz(false);
       finish();
       AppMethodBeat.o(29687);
       return;
-      this.dtJ.setImageResource(2131690931);
-      this.BQX.setText(2131758057);
-      this.BQY.setText(2131758049);
-      this.gXc.setVisibility(0);
-      this.gXc.setText(2131758043);
-      this.BQW.setVisibility(4);
+      this.dKU.setImageResource(2131691228);
+      this.GrF.setText(2131758317);
+      this.GrG.setText(2131758309);
+      this.hPX.setVisibility(0);
+      this.hPX.setText(2131758303);
+      this.GrE.setVisibility(4);
     }
   }
   
-  private void bZr()
+  private void cxh()
   {
     AppMethodBeat.i(29688);
-    if (this.vtI == null) {
-      this.vtI = com.tencent.mm.modelgeo.d.aIh();
+    if (this.yNv == null) {
+      this.yNv = d.bca();
     }
-    this.vtI.a(this.fHp, true);
+    this.yNv.a(this.gmA, true);
     AppMethodBeat.o(29688);
   }
   
-  private void sV(boolean paramBoolean)
+  private void wz(boolean paramBoolean)
   {
     AppMethodBeat.i(29689);
-    if (bu.isNullOrNil(this.BRb))
+    if (Util.isNullOrNil(this.GrJ))
     {
       AppMethodBeat.o(29689);
       return;
     }
-    ae.i("MicroMsg.NetworkDiagnoseAllInOneUI", "submit action, bSendLoaction:%b", new Object[] { Boolean.valueOf(paramBoolean) });
+    Log.i("MicroMsg.NetworkDiagnoseAllInOneUI", "submit action, bSendLoaction:%b", new Object[] { Boolean.valueOf(paramBoolean) });
     if (paramBoolean)
     {
-      if (com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.ACCESS_COARSE_LOCATION", 71, "", ""))
+      if (com.tencent.mm.pluginsdk.permission.b.a(this, "android.permission.ACCESS_FINE_LOCATION", 71, "", ""))
       {
-        getString(2131755906);
-        this.BQZ = h.b(this, getString(2131758061), true, null);
-        this.gXc.setEnabled(false);
-        bZr();
+        getString(2131755998);
+        this.GrH = com.tencent.mm.ui.base.h.a(this, getString(2131758321), true, null);
+        this.hPX.setEnabled(false);
+        cxh();
       }
       AppMethodBeat.o(29689);
       return;
     }
-    g.yxI.kvStat(14533, "," + this.BRb);
+    com.tencent.mm.plugin.report.service.h.CyF.kvStat(14533, "," + this.GrJ);
     AppMethodBeat.o(29689);
   }
   
@@ -151,30 +153,30 @@ public class NetworkDiagnoseAllInOneUI
   {
     AppMethodBeat.i(29686);
     super.finish();
-    overridePendingTransition(2130771986, 2130772106);
+    overridePendingTransition(2130771986, 2130772130);
     AppMethodBeat.o(29686);
   }
   
   public int getLayoutId()
   {
-    return 2131495009;
+    return 2131495839;
   }
   
   public void onClick(View paramView)
   {
     AppMethodBeat.i(29690);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bd(paramView);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseAllInOneUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    if (((this.BQU == 5) || (this.BQU == 4)) && (paramView == this.gXc)) {
-      sV(true);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseAllInOneUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    if (((this.GrC == 5) || (this.GrC == 4)) && (paramView == this.hPX)) {
+      wz(true);
     }
     for (;;)
     {
-      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseAllInOneUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+      a.a(this, "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseAllInOneUI", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(29690);
       return;
-      sV(false);
+      wz(false);
       finish();
     }
   }
@@ -183,63 +185,63 @@ public class NetworkDiagnoseAllInOneUI
   {
     AppMethodBeat.i(29685);
     super.onCreate(paramBundle);
-    overridePendingTransition(2130772108, 2130771986);
+    overridePendingTransition(2130772132, 2130771986);
     setMMTitle("");
     getSupportActionBar().hide();
     paramBundle = getIntent();
-    this.BQU = paramBundle.getIntExtra("diagnose_state", 0);
-    this.BRa = paramBundle.getIntExtra("diagnose_percent", 1);
-    this.BRb = paramBundle.getStringExtra("diagnose_kvInfo");
-    ae.i("MicroMsg.NetworkDiagnoseAllInOneUI", "get state: %d percent: %d, kv: %s", new Object[] { Integer.valueOf(this.BQU), Integer.valueOf(this.BRa), this.BRb });
-    if (this.BQU == 0)
+    this.GrC = paramBundle.getIntExtra("diagnose_state", 0);
+    this.GrI = paramBundle.getIntExtra("diagnose_percent", 1);
+    this.GrJ = paramBundle.getStringExtra("diagnose_kvInfo");
+    Log.i("MicroMsg.NetworkDiagnoseAllInOneUI", "get state: %d percent: %d, kv: %s", new Object[] { Integer.valueOf(this.GrC), Integer.valueOf(this.GrI), this.GrJ });
+    if (this.GrC == 0)
     {
-      this.BQU = 1;
-      ae.i("MicroMsg.NetworkDiagnoseAllInOneUI", "start diagnose");
-      bc.ajj().a(new bq(new bq.a()
+      this.GrC = 1;
+      Log.i("MicroMsg.NetworkDiagnoseAllInOneUI", "start diagnose");
+      bg.azz().a(new bu(new bu.a()
       {
-        public final void a(e paramAnonymouse)
+        public final void a(g paramAnonymousg)
         {
           AppMethodBeat.i(29682);
-          if (paramAnonymouse == null)
+          if (paramAnonymousg == null)
           {
             AppMethodBeat.o(29682);
             return;
           }
           try
           {
-            paramAnonymouse.aFv();
+            paramAnonymousg.aZk();
             AppMethodBeat.o(29682);
             return;
           }
-          catch (Exception paramAnonymouse)
+          catch (Exception paramAnonymousg)
           {
             AppMethodBeat.o(29682);
           }
         }
       }), 0);
     }
-    this.gXc = ((Button)findViewById(2131299090));
-    this.BQV = ((TextView)findViewById(2131299088));
-    this.BQW = ((TextView)findViewById(2131299087));
-    this.dtJ = ((ImageView)findViewById(2131299092));
-    this.BQX = ((TextView)findViewById(2131299093));
-    this.BQY = ((TextView)findViewById(2131299089));
-    this.BQV.setOnClickListener(this);
-    this.gXc.setOnClickListener(this);
-    this.BQW.setOnClickListener(this);
-    aUA();
-    this.BRc = new c() {};
-    com.tencent.mm.sdk.b.a.IvT.b(this.BRc);
-    this.fHp = new b.a()
+    this.hPX = ((Button)findViewById(2131299610));
+    this.GrD = ((TextView)findViewById(2131299608));
+    this.GrE = ((TextView)findViewById(2131299607));
+    this.dKU = ((ImageView)findViewById(2131299612));
+    this.GrF = ((TextView)findViewById(2131299613));
+    this.GrG = ((TextView)findViewById(2131299609));
+    this.GrD.setOnClickListener(this);
+    this.hPX.setOnClickListener(this);
+    this.GrE.setOnClickListener(this);
+    bpn();
+    this.GrK = new IListener() {};
+    EventCenter.instance.add(this.GrK);
+    this.gmA = new b.a()
     {
       public final boolean a(boolean paramAnonymousBoolean, float paramAnonymousFloat1, float paramAnonymousFloat2, int paramAnonymousInt, double paramAnonymousDouble1, double paramAnonymousDouble2)
       {
         AppMethodBeat.i(29680);
-        ae.i("MicroMsg.NetworkDiagnoseAllInOneUI", "get location, isOK:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
+        Log.i("MicroMsg.NetworkDiagnoseAllInOneUI", "get location, isOK:%b", new Object[] { Boolean.valueOf(paramAnonymousBoolean) });
         if (NetworkDiagnoseAllInOneUI.f(NetworkDiagnoseAllInOneUI.this) != null) {
           NetworkDiagnoseAllInOneUI.f(NetworkDiagnoseAllInOneUI.this).c(NetworkDiagnoseAllInOneUI.g(NetworkDiagnoseAllInOneUI.this));
         }
-        ar.f(new Runnable()
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
@@ -259,47 +261,47 @@ public class NetworkDiagnoseAllInOneUI
         }
         for (String str = str + "," + NetworkDiagnoseAllInOneUI.j(NetworkDiagnoseAllInOneUI.this);; str = "," + NetworkDiagnoseAllInOneUI.j(NetworkDiagnoseAllInOneUI.this))
         {
-          g.yxI.kvStat(14533, str);
+          com.tencent.mm.plugin.report.service.h.CyF.kvStat(14533, str);
           AppMethodBeat.o(29680);
           return false;
-          if ((!NetworkDiagnoseAllInOneUI.k(NetworkDiagnoseAllInOneUI.this)) && (!com.tencent.mm.modelgeo.d.aIi()))
+          if ((!NetworkDiagnoseAllInOneUI.k(NetworkDiagnoseAllInOneUI.this)) && (!d.bcc()))
           {
             NetworkDiagnoseAllInOneUI.l(NetworkDiagnoseAllInOneUI.this);
-            h.a(NetworkDiagnoseAllInOneUI.this, NetworkDiagnoseAllInOneUI.this.getString(2131760082), NetworkDiagnoseAllInOneUI.this.getString(2131755906), NetworkDiagnoseAllInOneUI.this.getString(2131760598), NetworkDiagnoseAllInOneUI.this.getString(2131755691), false, new DialogInterface.OnClickListener()
+            com.tencent.mm.ui.base.h.a(NetworkDiagnoseAllInOneUI.this, NetworkDiagnoseAllInOneUI.this.getString(2131761461), NetworkDiagnoseAllInOneUI.this.getString(2131755998), NetworkDiagnoseAllInOneUI.this.getString(2131762043), NetworkDiagnoseAllInOneUI.this.getString(2131755761), false, new DialogInterface.OnClickListener()
             {
               public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
               {
                 AppMethodBeat.i(29679);
-                com.tencent.mm.modelgeo.d.cD(NetworkDiagnoseAllInOneUI.this);
+                d.cZ(NetworkDiagnoseAllInOneUI.this);
                 AppMethodBeat.o(29679);
               }
             }, null);
           }
-          ae.e("MicroMsg.NetworkDiagnoseAllInOneUI", "get geolocation fail");
+          Log.e("MicroMsg.NetworkDiagnoseAllInOneUI", "get geolocation fail");
         }
       }
     };
-    this.cji = new aw(new aw.a()
+    this.cve = new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(29681);
         NetworkDiagnoseAllInOneUI.a(NetworkDiagnoseAllInOneUI.this, NetworkDiagnoseAllInOneUI.m(NetworkDiagnoseAllInOneUI.this) + 1);
-        ae.v("MicroMsg.NetworkDiagnoseAllInOneUI", "timer fired, percent:%d", new Object[] { Integer.valueOf(NetworkDiagnoseAllInOneUI.m(NetworkDiagnoseAllInOneUI.this)) });
+        Log.v("MicroMsg.NetworkDiagnoseAllInOneUI", "timer fired, percent:%d", new Object[] { Integer.valueOf(NetworkDiagnoseAllInOneUI.m(NetworkDiagnoseAllInOneUI.this)) });
         if (NetworkDiagnoseAllInOneUI.m(NetworkDiagnoseAllInOneUI.this) > 99)
         {
           AppMethodBeat.o(29681);
           return false;
         }
         if (NetworkDiagnoseAllInOneUI.a(NetworkDiagnoseAllInOneUI.this) == 1) {
-          NetworkDiagnoseAllInOneUI.n(NetworkDiagnoseAllInOneUI.this).setText(NetworkDiagnoseAllInOneUI.this.getString(2131758055, new Object[] { Integer.valueOf(NetworkDiagnoseAllInOneUI.m(NetworkDiagnoseAllInOneUI.this)) }));
+          NetworkDiagnoseAllInOneUI.n(NetworkDiagnoseAllInOneUI.this).setText(NetworkDiagnoseAllInOneUI.this.getString(2131758315, new Object[] { Integer.valueOf(NetworkDiagnoseAllInOneUI.m(NetworkDiagnoseAllInOneUI.this)) }));
         }
         AppMethodBeat.o(29681);
         return true;
       }
     }, true);
-    if ((this.BQU == 0) || (this.BQU == 1)) {
-      this.cji.ay(1000L, 1000L);
+    if ((this.GrC == 0) || (this.GrC == 1)) {
+      this.cve.startTimer(1000L);
     }
     AppMethodBeat.o(29685);
   }
@@ -308,16 +310,16 @@ public class NetworkDiagnoseAllInOneUI
   {
     AppMethodBeat.i(29691);
     super.onDestroy();
-    com.tencent.mm.sdk.b.a.IvT.d(this.BRc);
-    if (this.vtI != null)
+    EventCenter.instance.removeListener(this.GrK);
+    if (this.yNv != null)
     {
-      this.vtI.c(this.fHp);
-      this.vtI = null;
+      this.yNv.c(this.gmA);
+      this.yNv = null;
     }
-    if (this.cji != null)
+    if (this.cve != null)
     {
-      this.cji.stopTimer();
-      this.cji = null;
+      this.cve.stopTimer();
+      this.cve = null;
     }
     AppMethodBeat.o(29691);
   }
@@ -325,7 +327,7 @@ public class NetworkDiagnoseAllInOneUI
   public void onRequestPermissionsResult(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     AppMethodBeat.i(29692);
-    ae.i("MicroMsg.NetworkDiagnoseAllInOneUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
+    Log.i("MicroMsg.NetworkDiagnoseAllInOneUI", "onRequestPermissionsResult requestCode[%d],grantResults[%d] tid[%d]", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(paramArrayOfInt[0]), Long.valueOf(Thread.currentThread().getId()) });
     switch (paramInt)
     {
     }
@@ -335,32 +337,11 @@ public class NetworkDiagnoseAllInOneUI
       return;
       if (paramArrayOfInt[0] == 0)
       {
-        sV(true);
+        wz(true);
         AppMethodBeat.o(29692);
         return;
       }
-      h.a(this, getString(2131761869), getString(2131761885), getString(2131760598), getString(2131761861), false, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(29683);
-          paramAnonymousDialogInterface = NetworkDiagnoseAllInOneUI.this;
-          Object localObject = new Intent("android.settings.MANAGE_APPLICATIONS_SETTINGS");
-          localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseAllInOneUI$5", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          paramAnonymousDialogInterface.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
-          com.tencent.mm.hellhoundlib.a.a.a(paramAnonymousDialogInterface, "com/tencent/mm/plugin/traceroute/ui/NetworkDiagnoseAllInOneUI$5", "onClick", "(Landroid/content/DialogInterface;I)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          AppMethodBeat.o(29683);
-        }
-      }, new DialogInterface.OnClickListener()
-      {
-        public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
-        {
-          AppMethodBeat.i(29684);
-          paramAnonymousDialogInterface.dismiss();
-          AppMethodBeat.o(29684);
-        }
-      });
+      com.tencent.mm.ui.base.h.a(this, getString(2131763874), getString(2131763890), getString(2131762043), getString(2131763865), false, new NetworkDiagnoseAllInOneUI.5(this), new NetworkDiagnoseAllInOneUI.6(this));
     }
   }
   
@@ -372,7 +353,7 @@ public class NetworkDiagnoseAllInOneUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.traceroute.ui.NetworkDiagnoseAllInOneUI
  * JD-Core Version:    0.7.0.1
  */

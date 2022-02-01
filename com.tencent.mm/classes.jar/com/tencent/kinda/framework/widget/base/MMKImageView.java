@@ -17,8 +17,9 @@ import com.tencent.kinda.gen.KImageView;
 import com.tencent.kinda.gen.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.wallet_core.c;
 
 public class MMKImageView
   extends MMKView<CdnImageView>
@@ -41,7 +42,7 @@ public class MMKImageView
   
   private void setIconColor(int paramInt, Drawable paramDrawable)
   {
-    AppMethodBeat.i(224169);
+    AppMethodBeat.i(214538);
     if (paramDrawable != null) {
       if (paramInt == 0) {
         break label65;
@@ -56,7 +57,7 @@ public class MMKImageView
       if (paramInt != 0) {
         paramDrawable.setAlpha(j);
       }
-      AppMethodBeat.o(224169);
+      AppMethodBeat.o(214538);
       return;
     }
   }
@@ -67,6 +68,7 @@ public class MMKImageView
     paramContext = new CdnImageView(paramContext);
     paramContext.setScaleType(ImageView.ScaleType.FIT_CENTER);
     paramContext.setAdjustViewBounds(true);
+    paramContext.setImgSavedPath(c.hgG());
     this.image.setNeedGetNetworkImageImmediately(false);
     this.defaultImage.setNeedGetNetworkImageImmediately(false);
     paramContext.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
@@ -76,7 +78,10 @@ public class MMKImageView
   
   public String getDarkModeUrl()
   {
-    return null;
+    AppMethodBeat.i(214537);
+    String str = this.image.getDarkUrl();
+    AppMethodBeat.o(214537);
+    return str;
   }
   
   public String getDefaultUrl()
@@ -115,7 +120,13 @@ public class MMKImageView
     return str;
   }
   
-  public void setDarkModeUrl(String paramString) {}
+  public void setDarkModeUrl(String paramString)
+  {
+    AppMethodBeat.i(214536);
+    this.image.setDarkModeUrl(paramString);
+    setImage(this.image);
+    AppMethodBeat.o(214536);
+  }
   
   public void setDefaultUrl(String paramString)
   {
@@ -124,7 +135,7 @@ public class MMKImageView
       this.defaultImage = new MMKImage();
     }
     this.defaultImage.setUrl(paramString);
-    if (((this.image == null) || (bu.isNullOrNil(this.image.getUrl()))) && (!bu.isNullOrNil(this.defaultImage.getUrl())))
+    if (((this.image == null) || (Util.isNullOrNil(this.image.getUrl()))) && (!Util.isNullOrNil(this.defaultImage.getUrl())))
     {
       if (!this.defaultImage.isNetworkImage()) {
         break label104;
@@ -160,7 +171,7 @@ public class MMKImageView
       label63:
       if (this.image.getBitmap() != null)
       {
-        paramKImage = new BitmapDrawable(ak.getContext().getResources(), this.image.getBitmap());
+        paramKImage = new BitmapDrawable(MMApplicationContext.getContext().getResources(), this.image.getBitmap());
         if (ColorUtil.getColorByMode(this.tintColor) != 0L)
         {
           paramKImage.setColorFilter((int)ColorUtil.getColorByMode(this.tintColor), PorterDuff.Mode.SRC_ATOP);
@@ -237,46 +248,14 @@ public class MMKImageView
   public void setUrl(String paramString)
   {
     AppMethodBeat.i(19054);
-    if (paramString != null)
-    {
-      this.image.setSvgUrl(paramString, this.tintColor);
-      if (!this.image.isNetworkImage()) {
-        break label60;
-      }
-      ((CdnImageView)getView()).setUrl(this.image.getUrl());
-    }
-    for (;;)
-    {
-      notifyChanged();
-      AppMethodBeat.o(19054);
-      return;
-      label60:
-      if (this.image.getBitmap() != null)
-      {
-        paramString = new BitmapDrawable(ak.getContext().getResources(), this.image.getBitmap());
-        if (ColorUtil.getColorByMode(this.tintColor) != 0L)
-        {
-          paramString.setColorFilter((int)ColorUtil.getColorByMode(this.tintColor), PorterDuff.Mode.SRC_ATOP);
-          setIconColor((int)ColorUtil.getColorByMode(this.tintColor), paramString);
-        }
-        ((CdnImageView)getView()).setImageDrawable(paramString);
-      }
-      else if (this.image.getDrawable() != null)
-      {
-        paramString = this.image.getDrawable();
-        if (ColorUtil.getColorByMode(this.tintColor) != 0L)
-        {
-          paramString.setColorFilter((int)ColorUtil.getColorByMode(this.tintColor), PorterDuff.Mode.SRC_ATOP);
-          setIconColor((int)ColorUtil.getColorByMode(this.tintColor), paramString);
-        }
-        ((CdnImageView)getView()).setImageDrawable(paramString);
-      }
-    }
+    this.image.setSvgUrl(paramString, this.tintColor);
+    setImage(this.image);
+    AppMethodBeat.o(19054);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKImageView
  * JD-Core Version:    0.7.0.1
  */

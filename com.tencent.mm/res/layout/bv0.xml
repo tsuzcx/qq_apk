@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <android.support.constraint.ConstraintLayout android:background="@drawable/oc" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/ch" android:paddingStart="@dimen/c5">
-        <ImageView android:id="@id/tc" android:layout_width="@dimen/cd" android:layout_height="@dimen/cd" android:src="@drawable/aq8" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-        <TextView android:id="@id/i08" android:visibility="gone" android:layout_marginTop="@dimen/bq" android:minWidth="18.0dip" android:minHeight="18.0dip" android:layout_marginEnd="@dimen/bq" app:layout_constraintEnd_toStartOf="@id/hwc" app:layout_constraintTop_toTopOf="ea8" style="@style/yi" />
-        <TextView android:ellipsize="end" android:id="@id/i09" android:visibility="visible" android:layout_marginTop="@dimen/jn" android:singleLine="true" android:layout_marginEnd="@dimen/bq" app:layout_constraintEnd_toStartOf="@id/hwc" app:layout_constraintTop_toTopOf="ea8" style="@style/yj" />
-        <TextView android:textSize="@dimen/q" android:textColor="@color/fg" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hwc" android:layout_width="0.0dip" android:layout_height="wrap_content" android:minWidth="@dimen/cd" android:maxLines="1" android:singleLine="true" android:layout_marginStart="@dimen/c0" android:layout_marginEnd="@dimen/ha" app:layout_constraintEnd_toStartOf="@id/g97" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toEndOf="@id/tc" app:layout_constraintTop_toTopOf="@id/tc" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hwl" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/js" android:maxLines="1" android:singleLine="true" app:layout_constraintEnd_toEndOf="@id/hwc" app:layout_constraintStart_toStartOf="@id/hwc" app:layout_constraintTop_toBottomOf="@id/hwc" />
-        <TextView android:textSize="@dimen/jv" android:textColor="@color/s5" android:id="@id/g97" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="@dimen/c5" app:layout_constraintBottom_toBottomOf="@id/hwc" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintTop_toTopOf="@id/hwc" />
-        <View android:id="@id/hwv" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginStart="@dimen/cf" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hze" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/icons_outlined_arrow" android:paddingEnd="@dimen/c5" app:iconColor="@color/FG_2" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    </android.support.constraint.ConstraintLayout>
-    <View android:id="@id/hww" android:background="@color/a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="@dimen/jn" />
-</LinearLayout>
+<merge android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:id="@id/hu4" android:layout_width="wrap_content" android:paddingStart="3.0dip" android:paddingEnd="3.0dip" style="@style/hq" />
+    <TextView android:id="@id/hu5" android:text="@string/h3f" style="@style/hp" />
+    <TextView android:id="@id/hu6" style="@style/hq" />
+    <TextView android:id="@id/hu9" android:text="@string/h3g" style="@style/hp" />
+    <TextView android:id="@id/hu7" style="@style/hq" />
+    <TextView android:id="@id/hu_" android:text="@string/h3g" style="@style/hp" />
+    <TextView android:id="@id/hu8" android:layout_marginEnd="0.0dip" style="@style/hq" />
+</merge>

@@ -9,30 +9,30 @@ import com.tencent.mm.vending.app.c;
 public abstract class MMPresenterActivity
   extends MMActivity
 {
-  private c gGT = new c();
+  private c htH = new c();
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.gGT.B(getIntent(), this);
+    this.htH.A(getIntent(), this);
   }
   
   public void onDestroy()
   {
     super.onDestroy();
-    this.gGT.onDestroy();
+    this.htH.onDestroy();
   }
   
   public void onPause()
   {
     super.onPause();
-    this.gGT.agy(3);
+    this.htH.apB(3);
   }
   
   public void onResume()
   {
     super.onResume();
-    this.gGT.agy(2);
+    this.htH.apB(2);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -43,7 +43,7 @@ public abstract class MMPresenterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.kiss.MMPresenterActivity
  * JD-Core Version:    0.7.0.1
  */

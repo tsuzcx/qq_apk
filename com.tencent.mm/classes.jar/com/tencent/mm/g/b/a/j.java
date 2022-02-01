@@ -2,539 +2,101 @@ package com.tencent.mm.g.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Arrays;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class j
   extends a
 {
-  private int dRK;
-  private long dRL;
-  private long dRM;
-  private long dRN;
-  private long dRO;
-  private long dRP;
-  private long dRQ;
-  private long dRR;
-  private long dRS;
-  private String dRT;
-  private long dRU;
-  private String dRV;
-  private long dRW;
-  private long dRX;
-  private long dRY;
-  private long dRZ;
-  private long dSA;
-  private long dSB;
-  private long dSC;
-  private long dSD;
-  private long dSE;
-  private int dSF;
-  private String dSG;
-  private long dSH;
-  private String dSI;
-  private long dSJ;
-  private String dSK;
-  private long dSL;
-  private String dSM;
-  private long dSN;
-  private long dSO;
-  private long dSP;
-  private long dSQ;
-  private long dSa;
-  private long dSb;
-  private long dSc;
-  private long dSd;
-  private long dSe;
-  private long dSf;
-  private long dSg;
-  private long dSh;
-  private long dSi;
-  private String dSj;
-  private long dSk;
-  private long dSl;
-  private long dSm;
-  private long dSn;
-  private long dSo;
-  private long dSp;
-  private long dSq;
-  private long dSr;
-  private long dSs;
-  private long dSt;
-  private long dSu;
-  private long dSv;
-  private long dSw;
-  private long dSx;
-  private long dSy;
-  private long dSz;
+  public long ekc = 0L;
+  private long ekd = 0L;
+  public long eke = 0L;
+  public long ekf = 0L;
+  public long ekg = 0L;
+  public long ekh = 0L;
   
-  public j()
+  public final String abV()
   {
-    this.dRK = 0;
-    this.dRL = 0L;
-    this.dRM = 0L;
-    this.dRN = 0L;
-    this.dRO = 0L;
-    this.dRP = 0L;
-    this.dRQ = 0L;
-    this.dRR = 0L;
-    this.dRS = 0L;
-    this.dRT = "";
-    this.dRU = 0L;
-    this.dRV = "";
-    this.dRW = 0L;
-    this.dRX = 0L;
-    this.dRY = 0L;
-    this.dRZ = 0L;
-    this.dSa = 0L;
-    this.dSb = 0L;
-    this.dSc = 0L;
-    this.dSd = 0L;
-    this.dSe = 0L;
-    this.dSf = 0L;
-    this.dSg = 0L;
-    this.dSh = 0L;
-    this.dSi = 0L;
-    this.dSj = "";
-    this.dSk = 0L;
-    this.dSl = 0L;
-    this.dSm = 0L;
-    this.dSn = 0L;
-    this.dSo = 0L;
-    this.dSp = 0L;
-    this.dSq = 0L;
-    this.dSr = 0L;
-    this.dSs = 0L;
-    this.dSt = 0L;
-    this.dSu = 0L;
-    this.dSv = 0L;
-    this.dSw = 0L;
-    this.dSx = 0L;
-    this.dSy = 0L;
-    this.dSz = 0L;
-    this.dSA = 0L;
-    this.dSB = 0L;
-    this.dSC = 0L;
-    this.dSD = 0L;
-    this.dSE = 0L;
-    this.dSF = 0;
-    this.dSG = "";
-    this.dSH = 0L;
-    this.dSI = "";
-    this.dSJ = 0L;
-    this.dSK = "";
-    this.dSL = 0L;
-    this.dSM = "";
-    this.dSN = 0L;
-    this.dSO = 0L;
-    this.dSP = 0L;
-    this.dSQ = 0L;
-  }
-  
-  public j(String paramString)
-  {
-    AppMethodBeat.i(149900);
-    this.dRK = 0;
-    this.dRL = 0L;
-    this.dRM = 0L;
-    this.dRN = 0L;
-    this.dRO = 0L;
-    this.dRP = 0L;
-    this.dRQ = 0L;
-    this.dRR = 0L;
-    this.dRS = 0L;
-    this.dRT = "";
-    this.dRU = 0L;
-    this.dRV = "";
-    this.dRW = 0L;
-    this.dRX = 0L;
-    this.dRY = 0L;
-    this.dRZ = 0L;
-    this.dSa = 0L;
-    this.dSb = 0L;
-    this.dSc = 0L;
-    this.dSd = 0L;
-    this.dSe = 0L;
-    this.dSf = 0L;
-    this.dSg = 0L;
-    this.dSh = 0L;
-    this.dSi = 0L;
-    this.dSj = "";
-    this.dSk = 0L;
-    this.dSl = 0L;
-    this.dSm = 0L;
-    this.dSn = 0L;
-    this.dSo = 0L;
-    this.dSp = 0L;
-    this.dSq = 0L;
-    this.dSr = 0L;
-    this.dSs = 0L;
-    this.dSt = 0L;
-    this.dSu = 0L;
-    this.dSv = 0L;
-    this.dSw = 0L;
-    this.dSx = 0L;
-    this.dSy = 0L;
-    this.dSz = 0L;
-    this.dSA = 0L;
-    this.dSB = 0L;
-    this.dSC = 0L;
-    this.dSD = 0L;
-    this.dSE = 0L;
-    this.dSF = 0;
-    this.dSG = "";
-    this.dSH = 0L;
-    this.dSI = "";
-    this.dSJ = 0L;
-    this.dSK = "";
-    this.dSL = 0L;
-    this.dSM = "";
-    this.dSN = 0L;
-    this.dSO = 0L;
-    this.dSP = 0L;
-    this.dSQ = 0L;
-    if (paramString != null)
-    {
-      paramString = paramString.split(",");
-      if (paramString != null)
-      {
-        if (paramString.length >= 59) {
-          break label1088;
-        }
-        String[] arrayOfString = new String[59];
-        Arrays.fill(arrayOfString, 0, 59, "");
-        System.arraycopy(paramString, 0, arrayOfString, 0, paramString.length);
-        paramString = arrayOfString;
-      }
-    }
-    label1088:
-    for (;;)
-    {
-      this.dRK = bu.getInt(paramString[0], 0);
-      this.dRL = bu.getLong(paramString[1], 0L);
-      this.dRM = bu.getLong(paramString[2], 0L);
-      this.dRN = bu.getLong(paramString[3], 0L);
-      this.dRO = bu.getLong(paramString[4], 0L);
-      this.dRP = bu.getLong(paramString[5], 0L);
-      this.dRQ = bu.getLong(paramString[6], 0L);
-      this.dRR = bu.getLong(paramString[7], 0L);
-      this.dRS = bu.getLong(paramString[8], 0L);
-      this.dRT = t("SvrIP", paramString[9], true);
-      this.dRU = bu.getLong(paramString[10], 0L);
-      this.dRV = t("FileKey", paramString[11], true);
-      this.dRW = bu.getLong(paramString[12], 0L);
-      this.dRX = bu.getLong(paramString[13], 0L);
-      this.dRY = bu.getLong(paramString[14], 0L);
-      this.dRZ = bu.getLong(paramString[15], 0L);
-      this.dSa = bu.getLong(paramString[16], 0L);
-      this.dSb = bu.getLong(paramString[17], 0L);
-      this.dSc = bu.getLong(paramString[18], 0L);
-      this.dSd = bu.getLong(paramString[19], 0L);
-      this.dSe = bu.getLong(paramString[20], 0L);
-      this.dSf = bu.getLong(paramString[21], 0L);
-      this.dSg = bu.getLong(paramString[22], 0L);
-      this.dSh = bu.getLong(paramString[23], 0L);
-      this.dSi = bu.getLong(paramString[24], 0L);
-      this.dSj = t("UUID", paramString[25], true);
-      this.dSk = bu.getLong(paramString[26], 0L);
-      this.dSl = bu.getLong(paramString[27], 0L);
-      this.dSm = bu.getLong(paramString[28], 0L);
-      this.dSn = bu.getLong(paramString[29], 0L);
-      this.dSo = bu.getLong(paramString[30], 0L);
-      this.dSp = bu.getLong(paramString[31], 0L);
-      this.dSq = bu.getLong(paramString[32], 0L);
-      this.dSr = bu.getLong(paramString[33], 0L);
-      this.dSs = bu.getLong(paramString[34], 0L);
-      this.dSt = bu.getLong(paramString[35], 0L);
-      this.dSu = bu.getLong(paramString[36], 0L);
-      this.dSv = bu.getLong(paramString[37], 0L);
-      this.dSw = bu.getLong(paramString[38], 0L);
-      this.dSx = bu.getLong(paramString[39], 0L);
-      this.dSy = bu.getLong(paramString[40], 0L);
-      this.dSz = bu.getLong(paramString[41], 0L);
-      this.dSA = bu.getLong(paramString[42], 0L);
-      this.dSB = bu.getLong(paramString[43], 0L);
-      this.dSC = bu.getLong(paramString[44], 0L);
-      this.dSD = bu.getLong(paramString[45], 0L);
-      this.dSE = bu.getLong(paramString[46], 0L);
-      this.dSF = bu.getInt(paramString[47], 0);
-      this.dSG = t("UsedIp1", paramString[48], true);
-      this.dSH = bu.getLong(paramString[49], 0L);
-      this.dSI = t("UsedIp2", paramString[50], true);
-      this.dSJ = bu.getLong(paramString[51], 0L);
-      this.dSK = t("UsedIp3", paramString[52], true);
-      this.dSL = bu.getLong(paramString[53], 0L);
-      this.dSM = t("UsedIp4", paramString[54], true);
-      this.dSN = bu.getLong(paramString[55], 0L);
-      this.dSO = bu.getLong(paramString[56], 0L);
-      this.dSP = bu.getLong(paramString[57], 0L);
-      this.dSQ = bu.getLong(paramString[58], 0L);
-      AppMethodBeat.o(149900);
-      return;
-    }
-  }
-  
-  public final String RC()
-  {
-    AppMethodBeat.i(149901);
+    AppMethodBeat.i(19855);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dRK);
+    ((StringBuffer)localObject).append(this.ekc);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRL);
+    ((StringBuffer)localObject).append(this.ekd);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRM);
+    ((StringBuffer)localObject).append(this.eke);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRN);
+    ((StringBuffer)localObject).append(this.ekf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRO);
+    ((StringBuffer)localObject).append(this.ekg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRQ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRT);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRU);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRV);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRY);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRZ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSa);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSb);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSc);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSd);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSe);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSf);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSg);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSh);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSi);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSj);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSk);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSl);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSm);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSn);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSo);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSp);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSq);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSr);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSs);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSt);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSu);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSv);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSw);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSx);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSy);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSz);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSA);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSB);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSC);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSD);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSE);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSF);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSG);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSI);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSJ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSK);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSL);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSM);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSN);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSO);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSP);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dSQ);
+    ((StringBuffer)localObject).append(this.ekh);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(149901);
+    aMq((String)localObject);
+    AppMethodBeat.o(19855);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(149902);
+    AppMethodBeat.i(19856);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("CientErrNo:").append(this.dRK);
+    ((StringBuffer)localObject).append("FirstInputTimeStampMs:").append(this.ekc);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OpType:").append(this.dRL);
+    ((StringBuffer)localObject).append("LastInputTimeStampMs:").append(this.ekd);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OpStartTs:").append(this.dRM);
+    ((StringBuffer)localObject).append("SendStampMs:").append(this.eke);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("OpEndTs:").append(this.dRN);
+    ((StringBuffer)localObject).append("ClickCount:").append(this.ekf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NetType:").append(this.dRO);
+    ((StringBuffer)localObject).append("TextLength:").append(this.ekg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FileType:").append(this.dRP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FileSize:").append(this.dRQ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CDNErrNo:").append(this.dRR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CDNOpType:").append(this.dRS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SvrIP:").append(this.dRT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IPCount:").append(this.dRU);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("FileKey:").append(this.dRV);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SliceCount:").append(this.dRW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransportSize:").append(this.dRX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ConnTotalCost:").append(this.dRY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ConnTryTimes:").append(this.dRZ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CDNTransfStartTs:").append(this.dSa);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CDNTransfEndTs:").append(this.dSb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsHitCache:").append(this.dSc);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CompressPicLevel:").append(this.dSd);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SrcFileSize:").append(this.dSe);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ImgSource:").append(this.dSf);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ResolutionX:").append(this.dSg);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ResolutionY:").append(this.dSh);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ReportCode:").append(this.dSi);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UUID:").append(this.dSj);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ETLTime:").append(this.dSk);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PTLTime:").append(this.dSl);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ETLSize:").append(this.dSm);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PTLSize:").append(this.dSn);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SkeyFailCount:").append(this.dSo);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("SKeyTimeoutCount:").append(this.dSp);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ConnectCount:").append(this.dSq);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ConnectTotalMS:").append(this.dSr);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ConnectAvgMS:").append(this.dSs);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ConnectVarianceMS:").append(this.dSt);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ConnectMinMS:").append(this.dSu);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ConnectMaxMS:").append(this.dSv);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransforCount:").append(this.dSw);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransforTotalMS:").append(this.dSx);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransforAvgMS:").append(this.dSy);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransforVarianceMS:").append(this.dSz);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransforMinMS:").append(this.dSA);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransforMaxMS:").append(this.dSB);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("IsProgressiveJPEG:").append(this.dSC);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("WaitSec:").append(this.dSD);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LastPort:").append(this.dSE);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ConnErrorCode:").append(this.dSF);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UsedIp1:").append(this.dSG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UsedPort1:").append(this.dSH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UsedIp2:").append(this.dSI);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UsedPort2:").append(this.dSJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UsedIp3:").append(this.dSK);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UsedPort3:").append(this.dSL);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UsedIp4:").append(this.dSM);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UsedPort4:").append(this.dSN);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LogCreateTime:").append(this.dSO);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LogReportTime:").append(this.dSP);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("LogReportSvrTime:").append(this.dSQ);
+    ((StringBuffer)localObject).append("EmojiCount:").append(this.ekh);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(149902);
+    AppMethodBeat.o(19856);
     return localObject;
+  }
+  
+  public final j abX()
+  {
+    AppMethodBeat.i(19852);
+    j localj = bK(Util.nowMilliSecond());
+    AppMethodBeat.o(19852);
+    return localj;
+  }
+  
+  public final j abY()
+  {
+    AppMethodBeat.i(19854);
+    j localj = bL(Util.nowMilliSecond());
+    AppMethodBeat.o(19854);
+    return localj;
+  }
+  
+  public final j bK(long paramLong)
+  {
+    AppMethodBeat.i(19851);
+    this.ekc = paramLong;
+    super.bj("FirstInputTimeStampMs", this.ekc);
+    AppMethodBeat.o(19851);
+    return this;
+  }
+  
+  public final j bL(long paramLong)
+  {
+    AppMethodBeat.i(19853);
+    this.ekd = paramLong;
+    super.bj("LastInputTimeStampMs", this.ekd);
+    AppMethodBeat.o(19853);
+    return this;
   }
   
   public final int getId()
   {
-    return 10421;
+    return 16113;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.j
  * JD-Core Version:    0.7.0.1
  */

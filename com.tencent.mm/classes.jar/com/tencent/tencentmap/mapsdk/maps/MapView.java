@@ -6,8 +6,9 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.SurfaceHolder;
+import android.view.ViewParent;
 import com.tencent.map.internal.a;
-import com.tencent.map.internal.a.2;
+import com.tencent.map.internal.a.1;
 import com.tencent.map.tools.Callback;
 import com.tencent.map.tools.sheet.SheetManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
@@ -35,15 +36,29 @@ public class MapView
   
   public MapView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 0);
+    this(paramContext, paramAttributeSet, 0, new TencentMapOptions());
+    AppMethodBeat.i(193597);
+    AppMethodBeat.o(193597);
   }
   
   public MapView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(paramContext, paramAttributeSet, paramInt);
+    this(paramContext, paramAttributeSet, paramInt, new TencentMapOptions());
     AppMethodBeat.i(181010);
-    this.mMap = getMap(new TencentMapOptions());
     AppMethodBeat.o(181010);
+  }
+  
+  public MapView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, TencentMapOptions paramTencentMapOptions)
+  {
+    super(paramContext, paramAttributeSet, paramInt);
+    AppMethodBeat.i(193598);
+    this.mMap = getMap(paramTencentMapOptions);
+    AppMethodBeat.o(193598);
+  }
+  
+  public MapView(Context paramContext, AttributeSet paramAttributeSet, TencentMapOptions paramTencentMapOptions)
+  {
+    this(paramContext, paramAttributeSet, 0, paramTencentMapOptions);
   }
   
   public MapView(Context paramContext, TencentMapOptions paramTencentMapOptions)
@@ -97,7 +112,7 @@ public class MapView
         break label217;
       }
       localObject = new Callback() {};
-      SheetManager.getInstance().initAsync(paramTencentMapOptions.b, paramTencentMapOptions.a, new a.2(paramTencentMapOptions, this, localTencentMapOptions, (Callback)localObject));
+      SheetManager.getInstance().initAsync(paramTencentMapOptions.b, paramTencentMapOptions.a, new a.1(paramTencentMapOptions, this, localTencentMapOptions, (Callback)localObject));
     }
     for (;;)
     {
@@ -160,6 +175,21 @@ public class MapView
     this.mMapOptions = null;
     this.mMap = null;
     AppMethodBeat.o(181021);
+  }
+  
+  public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
+  {
+    AppMethodBeat.i(193599);
+    if ((this.mMapDelegate != null) && (this.mMapDelegate.isTouchable()))
+    {
+      bool = this.mMapDelegate.onInterceptTouchEvent(paramMotionEvent);
+      getParent().requestDisallowInterceptTouchEvent(bool);
+      AppMethodBeat.o(193599);
+      return bool;
+    }
+    boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
+    AppMethodBeat.o(193599);
+    return bool;
   }
   
   public void onPause()
@@ -263,7 +293,7 @@ public class MapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.MapView
  * JD-Core Version:    0.7.0.1
  */

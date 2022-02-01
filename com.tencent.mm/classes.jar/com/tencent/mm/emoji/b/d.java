@@ -1,67 +1,40 @@
 package com.tencent.mm.emoji.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.y;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.l;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.bw.a;
+import com.tencent.mm.protocal.protobuf.GetEmotionDetailRequest;
+import com.tencent.mm.protocal.protobuf.GetEmotionDetailResponse;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/report/EmojiPopupReport;", "", "()V", "ActionAddInDetail", "", "ActionDelete", "ActionDeleteConfirm", "ActionLongClick", "ActionTop", "ActionViewDetail", "SceneCapture", "SceneCustom", "SceneSimilar", "SceneStore", "TAG", "", "struct", "Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonFastManagementStruct;", "getStruct", "()Lcom/tencent/mm/autogen/mmdata/rpt/EmoticonFastManagementStruct;", "report", "", "action", "setSceneFromType", "type", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/model/CgiGetEmotionDetail;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/protocal/protobuf/GetEmotionDetailResponse;", "productId", "", "(Ljava/lang/String;)V", "getProductId", "()Ljava/lang/String;", "plugin-emojisdk_release"})
 public final class d
+  extends c<GetEmotionDetailResponse>
 {
-  private static final String TAG = "MicroMsg.EmojiPopupReport";
-  private static final y gra;
-  public static final d grb;
+  private final String productId;
   
-  static
+  public d(String paramString)
   {
-    AppMethodBeat.i(183966);
-    grb = new d();
-    TAG = "MicroMsg.EmojiPopupReport";
-    gra = new y();
-    AppMethodBeat.o(183966);
-  }
-  
-  public static y ago()
-  {
-    return gra;
-  }
-  
-  public static void md(int paramInt)
-  {
-    AppMethodBeat.i(183964);
-    gra.im(paramInt);
-    gra.aLH();
-    AppMethodBeat.o(183964);
-  }
-  
-  public static void mi(int paramInt)
-  {
-    int j = 1;
-    AppMethodBeat.i(183965);
-    y localy = gra;
-    int i = j;
-    switch (paramInt)
-    {
-    default: 
-      ae.e(TAG, "type scene mismatch");
-      i = j;
-    }
-    for (;;)
-    {
-      localy.in(i);
-      AppMethodBeat.o(183965);
-      return;
-      i = 2;
-      continue;
-      i = 4;
-      continue;
-      i = 3;
-    }
+    AppMethodBeat.i(183954);
+    this.productId = paramString;
+    paramString = new GetEmotionDetailRequest();
+    GetEmotionDetailResponse localGetEmotionDetailResponse = new GetEmotionDetailResponse();
+    paramString.ProductID = this.productId;
+    paramString.Version = -1;
+    paramString.Scene = 3;
+    d.a locala = new d.a();
+    locala.c((a)paramString);
+    locala.d((a)localGetEmotionDetailResponse);
+    locala.MB("/cgi-bin/micromsg-bin/getemotiondetail");
+    locala.sG(412);
+    c(locala.aXF());
+    AppMethodBeat.o(183954);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.b.d
  * JD-Core Version:    0.7.0.1
  */

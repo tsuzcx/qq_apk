@@ -4,21 +4,21 @@ import java.io.InputStream;
 
 public abstract interface o
 {
-  public abstract String LD(String paramString);
+  public abstract String UM(String paramString);
   
-  public abstract String aZK();
+  public abstract String bvb();
   
-  public abstract String aZL();
+  public abstract String bvc();
   
-  public abstract int aZM();
+  public abstract int bvd();
   
-  public abstract IPkgInfo aZN();
+  public abstract IPkgInfo bve();
   
   public abstract InputStream openRead(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.o
  * JD-Core Version:    0.7.0.1
  */

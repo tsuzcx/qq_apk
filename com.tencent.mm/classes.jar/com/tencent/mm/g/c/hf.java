@@ -2,36 +2,22 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class hf
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGD;
-  private static final int eHA = "recordId".hashCode();
-  private static final int fCB;
-  private static final int key_HASHCODE;
+  private static final int geP = "bulletin_scene".hashCode();
+  private static final int geQ = "bulletin_content".hashCode();
+  private static final int geR = "bulletin_url".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private static final int value_HASHCODE;
-  private boolean __hadSetkey = true;
-  private boolean __hadSetvalue = true;
-  private boolean eGm = true;
-  private boolean eHw = true;
-  private boolean fCA = true;
-  public String field_appId;
-  public String field_domin;
-  public String field_key;
-  public int field_recordId;
-  public String field_value;
-  
-  static
-  {
-    eGD = "appId".hashCode();
-    fCB = "domin".hashCode();
-    key_HASHCODE = "key".hashCode();
-    value_HASHCODE = "value".hashCode();
-  }
+  public String field_bulletin_content;
+  public String field_bulletin_scene;
+  public String field_bulletin_url;
+  private boolean geM = true;
+  private boolean geN = true;
+  private boolean geO = true;
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -46,11 +32,11 @@ public abstract class hf
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eHA != k) {
+      if (geP != k) {
         break label65;
       }
-      this.field_recordId = paramCursor.getInt(i);
-      this.eHw = true;
+      this.field_bulletin_scene = paramCursor.getString(i);
+      this.geM = true;
     }
     for (;;)
     {
@@ -58,14 +44,10 @@ public abstract class hf
       break label20;
       break;
       label65:
-      if (eGD == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (fCB == k) {
-        this.field_domin = paramCursor.getString(i);
-      } else if (key_HASHCODE == k) {
-        this.field_key = paramCursor.getString(i);
-      } else if (value_HASHCODE == k) {
-        this.field_value = paramCursor.getString(i);
+      if (geQ == k) {
+        this.field_bulletin_content = paramCursor.getString(i);
+      } else if (geR == k) {
+        this.field_bulletin_url = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -75,20 +57,14 @@ public abstract class hf
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eHw) {
-      localContentValues.put("recordId", Integer.valueOf(this.field_recordId));
+    if (this.geM) {
+      localContentValues.put("bulletin_scene", this.field_bulletin_scene);
     }
-    if (this.eGm) {
-      localContentValues.put("appId", this.field_appId);
+    if (this.geN) {
+      localContentValues.put("bulletin_content", this.field_bulletin_content);
     }
-    if (this.fCA) {
-      localContentValues.put("domin", this.field_domin);
-    }
-    if (this.__hadSetkey) {
-      localContentValues.put("key", this.field_key);
-    }
-    if (this.__hadSetvalue) {
-      localContentValues.put("value", this.field_value);
+    if (this.geO) {
+      localContentValues.put("bulletin_url", this.field_bulletin_url);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -98,7 +74,7 @@ public abstract class hf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.hf
  * JD-Core Version:    0.7.0.1
  */

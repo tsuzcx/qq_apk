@@ -1,6 +1,6 @@
 package com.tencent.mm.sandbox;
 
-import com.tencent.mm.protocal.protobuf.cwj;
+import com.tencent.mm.protocal.protobuf.dpc;
 
 public abstract interface b
 {
@@ -11,9 +11,9 @@ public abstract interface b
   public static abstract interface a
     extends a
   {
-    public abstract void b(int paramInt1, int paramInt2, cwj paramcwj);
+    public abstract void b(int paramInt1, int paramInt2, dpc paramdpc);
     
-    public abstract void fa(int paramInt1, int paramInt2);
+    public abstract void fn(int paramInt1, int paramInt2);
   }
 }
 

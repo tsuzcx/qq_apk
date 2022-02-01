@@ -19,18 +19,19 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.account.friend.a.ac;
-import com.tencent.mm.protocal.protobuf.auf;
-import com.tencent.mm.protocal.protobuf.cdc;
-import com.tencent.mm.protocal.protobuf.cdf;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.bfo;
+import com.tencent.mm.protocal.protobuf.cti;
+import com.tencent.mm.protocal.protobuf.ctl;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.SmoothScrollFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
 import java.util.LinkedList;
@@ -38,52 +39,52 @@ import junit.framework.Assert;
 
 public class RecommendFriendUI
   extends MMActivity
-  implements f
+  implements i
 {
-  private ProgressDialog fOC;
-  private LinkedList<auf> gnJ;
-  private boolean jiA;
-  private b jjs;
-  private ListView jjt;
-  private TextView jju;
-  private LinkedList<cdf> jjv;
-  private boolean jjw;
+  private LinkedList<bfo> gYE;
+  private ProgressDialog gtM;
+  private boolean kgC;
+  private b khu;
+  private ListView khv;
+  private TextView khw;
+  private LinkedList<ctl> khx;
+  private boolean khy;
   private int recommendType;
   
   public RecommendFriendUI()
   {
     AppMethodBeat.i(131295);
-    this.fOC = null;
-    this.jjv = new LinkedList();
-    this.gnJ = new LinkedList();
+    this.gtM = null;
+    this.khx = new LinkedList();
+    this.gYE = new LinkedList();
     this.recommendType = -1;
-    this.jjw = false;
+    this.khy = false;
     AppMethodBeat.o(131295);
   }
   
-  private void aTX()
+  private void boJ()
   {
     AppMethodBeat.i(131302);
-    this.jju.setVisibility(0);
-    this.jjt.setVisibility(8);
+    this.khw.setVisibility(0);
+    this.khv.setVisibility(8);
     AppMethodBeat.o(131302);
   }
   
-  private void aTY()
+  private void boK()
   {
     AppMethodBeat.i(131304);
     if (this.recommendType == 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue("dealGetInviteFriendGroupSuccess just only qq", bool);
-      ae.i("MicroMsg.RecommendFriendUI", "dealGetInviteFriendGroupSuccess  respList.size:" + this.gnJ.size());
-      this.jjs.gnJ = this.gnJ;
-      this.jjt.setAdapter(this.jjs);
+      Log.i("MicroMsg.RecommendFriendUI", "dealGetInviteFriendGroupSuccess  respList.size:" + this.gYE.size());
+      this.khu.gYE = this.gYE;
+      this.khv.setAdapter(this.khu);
       showOptionMenu(false);
-      this.jiA = true;
-      setMMTitle(2131763248);
-      this.jjs.jiA = this.jiA;
-      this.jjs.notifyDataSetChanged();
+      this.kgC = true;
+      setMMTitle(2131765418);
+      this.khu.kgC = this.kgC;
+      this.khu.notifyDataSetChanged();
       AppMethodBeat.o(131304);
       return;
     }
@@ -98,35 +99,35 @@ public class RecommendFriendUI
       AppMethodBeat.o(131298);
       return;
     }
-    if ((this.jiA) || (this.jjw))
+    if ((this.kgC) || (this.khy))
     {
       finish();
       AppMethodBeat.o(131298);
       return;
     }
-    aTY();
+    boK();
     AppMethodBeat.o(131298);
   }
   
-  private void rw(int paramInt)
+  private void vm(int paramInt)
   {
     AppMethodBeat.i(131303);
-    ae.i("MicroMsg.RecommendFriendUI", "dealGetInviteFriendSuccess  respList.size:" + this.jjv.size());
-    this.jjs.a(this.jjv, paramInt);
-    this.jjt.setAdapter(this.jjs);
-    this.jiA = false;
+    Log.i("MicroMsg.RecommendFriendUI", "dealGetInviteFriendSuccess  respList.size:" + this.khx.size());
+    this.khu.a(this.khx, paramInt);
+    this.khv.setAdapter(this.khu);
+    this.kgC = false;
     String str;
     int i;
     if (this.recommendType == 0)
     {
       str = "";
       i = 0;
-      if (i < this.gnJ.size())
+      if (i < this.gYE.size())
       {
-        if (paramInt != ((auf)this.gnJ.get(i)).GxI) {
+        if (paramInt != ((bfo)this.gYE.get(i)).Ltr) {
           break label153;
         }
-        str = ((auf)this.gnJ.get(i)).GLc;
+        str = ((bfo)this.gYE.get(i)).LPg;
       }
     }
     label153:
@@ -135,8 +136,8 @@ public class RecommendFriendUI
       i += 1;
       break;
       setMMTitle(str);
-      this.jjs.jiA = this.jiA;
-      this.jjs.notifyDataSetChanged();
+      this.khu.kgC = this.kgC;
+      this.khu.notifyDataSetChanged();
       AppMethodBeat.o(131303);
       return;
     }
@@ -144,37 +145,37 @@ public class RecommendFriendUI
   
   public int getLayoutId()
   {
-    return 2131494490;
+    return 2131495082;
   }
   
   public void initView()
   {
     AppMethodBeat.i(131297);
-    this.jju = ((TextView)findViewById(2131299475));
+    this.khw = ((TextView)findViewById(2131300105));
     if (this.recommendType == 1)
     {
-      setMMTitle(2131763376);
-      this.jju.setText(2131763380);
+      setMMTitle(2131765558);
+      this.khw.setText(2131765562);
     }
     for (;;)
     {
-      this.jjs = new b(getLayoutInflater());
-      this.jjt = ((ListView)findViewById(2131301076));
-      this.jjt.setOnItemClickListener(new AdapterView.OnItemClickListener()
+      this.khu = new b(getLayoutInflater());
+      this.khv = ((ListView)findViewById(2131302730));
+      this.khv.setOnItemClickListener(new AdapterView.OnItemClickListener()
       {
         public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong)
         {
           AppMethodBeat.i(131288);
           com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-          localb.bd(paramAnonymousAdapterView);
-          localb.bd(paramAnonymousView);
-          localb.mu(paramAnonymousInt);
-          localb.rl(paramAnonymousLong);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/RecommendFriendUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
+          localb.bm(paramAnonymousAdapterView);
+          localb.bm(paramAnonymousView);
+          localb.pH(paramAnonymousInt);
+          localb.zo(paramAnonymousLong);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/RecommendFriendUI$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
           if (!RecommendFriendUI.a(RecommendFriendUI.this))
           {
-            RecommendFriendUI.b(RecommendFriendUI.this).rv(paramAnonymousInt);
-            if (RecommendFriendUI.b(RecommendFriendUI.this).aTW().length > 0) {
+            RecommendFriendUI.b(RecommendFriendUI.this).vl(paramAnonymousInt);
+            if (RecommendFriendUI.b(RecommendFriendUI.this).boI().length > 0) {
               RecommendFriendUI.this.showOptionMenu(true);
             }
             for (;;)
@@ -187,22 +188,22 @@ public class RecommendFriendUI
           }
           paramAnonymousAdapterView = RecommendFriendUI.this;
           paramAnonymousView = RecommendFriendUI.b(RecommendFriendUI.this);
-          if (!paramAnonymousView.jiA) {}
-          for (paramAnonymousInt = 0;; paramAnonymousInt = ((auf)paramAnonymousView.gnJ.get(paramAnonymousInt)).GxI)
+          if (!paramAnonymousView.kgC) {}
+          for (paramAnonymousInt = 0;; paramAnonymousInt = ((bfo)paramAnonymousView.gYE.get(paramAnonymousInt)).Ltr)
           {
             RecommendFriendUI.a(paramAnonymousAdapterView, paramAnonymousInt);
             break;
           }
         }
       });
-      this.jjt.setAdapter(this.jjs);
-      addTextOptionMenu(0, getString(2131760374), new MenuItem.OnMenuItemClickListener()
+      this.khv.setAdapter(this.khu);
+      addTextOptionMenu(0, getString(2131761819), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
           AppMethodBeat.i(131290);
-          int i = RecommendFriendUI.b(RecommendFriendUI.this).aTW().length;
-          h.a(RecommendFriendUI.this.getContext(), RecommendFriendUI.this.getContext().getResources().getQuantityString(2131623954, i, new Object[] { Integer.valueOf(i) }), RecommendFriendUI.this.getString(2131755906), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          int i = RecommendFriendUI.b(RecommendFriendUI.this).boI().length;
+          h.a(RecommendFriendUI.this.getContext(), RecommendFriendUI.this.getContext().getResources().getQuantityString(2131623954, i, new Object[] { Integer.valueOf(i) }), RecommendFriendUI.this.getString(2131755998), new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -219,17 +220,17 @@ public class RecommendFriendUI
         }
       });
       showOptionMenu(false);
-      this.jjw = true;
+      this.khy = true;
       final ac localac = new ac(this.recommendType);
-      g.ajj().a(localac, 0);
+      g.azz().a(localac, 0);
       AppCompatActivity localAppCompatActivity = getContext();
-      getString(2131755906);
-      this.fOC = h.b(localAppCompatActivity, getString(2131760377), true, new DialogInterface.OnCancelListener()
+      getString(2131755998);
+      this.gtM = h.a(localAppCompatActivity, getString(2131761822), true, new DialogInterface.OnCancelListener()
       {
         public final void onCancel(DialogInterface paramAnonymousDialogInterface)
         {
           AppMethodBeat.i(131293);
-          g.ajj().a(localac);
+          g.azz().a(localac);
           RecommendFriendUI.this.finish();
           AppMethodBeat.o(131293);
         }
@@ -250,13 +251,13 @@ public class RecommendFriendUI
         {
           AppMethodBeat.i(131292);
           Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-          ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/RecommendFriendUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+          ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/friend/ui/RecommendFriendUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
           paramAnonymousView = RecommendFriendUI.e(RecommendFriendUI.this);
-          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bc(paramAnonymousView);
+          paramAnonymousView = new com.tencent.mm.hellhoundlib.b.a().bl(paramAnonymousView);
           localObject = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.ahE(), "com/tencent/mm/plugin/account/friend/ui/RecommendFriendUI$4", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
-          BackwardSupportUtil.c.b((ListView)paramAnonymousView.mt(0));
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, paramAnonymousView.axQ(), "com/tencent/mm/plugin/account/friend/ui/RecommendFriendUI$4", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
+          BackwardSupportUtil.SmoothScrollFactory.scrollToTop((ListView)paramAnonymousView.pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/account/friend/ui/RecommendFriendUI$4", "onClick", "(Landroid/view/View;)V", "com/tencent/mm/sdk/platformtools/BackwardSupportUtil$SmoothScrollFactory_EXEC_", "scrollToTop", "(Landroid/widget/ListView;)V");
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/account/friend/ui/RecommendFriendUI$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(131292);
@@ -266,13 +267,13 @@ public class RecommendFriendUI
       return;
       if (this.recommendType == 2)
       {
-        setMMTitle(2131763375);
-        this.jju.setText(2131763379);
+        setMMTitle(2131765557);
+        this.khw.setText(2131765561);
       }
       else
       {
-        setMMTitle(2131763248);
-        this.jju.setText(2131763381);
+        setMMTitle(2131765418);
+        this.khw.setText(2131765563);
       }
     }
   }
@@ -281,9 +282,9 @@ public class RecommendFriendUI
   {
     AppMethodBeat.i(131296);
     super.onCreate(paramBundle);
-    this.recommendType = bu.getInt(getIntent().getStringExtra("recommend_type"), 0);
-    this.jiA = false;
-    g.ajj().a(135, this);
+    this.recommendType = Util.getInt(getIntent().getStringExtra("recommend_type"), 0);
+    this.kgC = false;
+    g.azz().a(135, this);
     initView();
     AppMethodBeat.o(131296);
   }
@@ -291,7 +292,7 @@ public class RecommendFriendUI
   public void onDestroy()
   {
     AppMethodBeat.i(131300);
-    g.ajj().b(135, this);
+    g.azz().b(135, this);
     super.onDestroy();
     AppMethodBeat.o(131300);
   }
@@ -310,43 +311,43 @@ public class RecommendFriendUI
     return bool;
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(131301);
-    ae.i("MicroMsg.RecommendFriendUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
-    if (this.fOC != null)
+    Log.i("MicroMsg.RecommendFriendUI", "onSceneEnd: errType = " + paramInt1 + " errCode = " + paramInt2 + " errMsg = " + paramString);
+    if (this.gtM != null)
     {
-      this.fOC.dismiss();
-      this.fOC = null;
+      this.gtM.dismiss();
+      this.gtM = null;
     }
-    if ((paramInt1 != 0) || (paramInt2 != 0) || (paramn.getType() != 135))
+    if ((paramInt1 != 0) || (paramInt2 != 0) || (paramq.getType() != 135))
     {
-      aTX();
+      boJ();
       AppMethodBeat.o(131301);
       return;
     }
-    this.jjv = ((cdc)((ac)paramn).rr.hQE.hQJ).uuU;
-    this.gnJ = ((cdc)((ac)paramn).rr.hQE.hQJ).GroupList;
-    this.jjw = false;
-    if (this.jjv.size() <= 0)
+    this.khx = ((cti)((ac)paramq).rr.iLL.iLR).xMV;
+    this.gYE = ((cti)((ac)paramq).rr.iLL.iLR).GroupList;
+    this.khy = false;
+    if (this.khx.size() <= 0)
     {
-      aTX();
+      boJ();
       AppMethodBeat.o(131301);
       return;
     }
-    if ((this.recommendType == 0) && (this.gnJ.size() <= 0))
+    if ((this.recommendType == 0) && (this.gYE.size() <= 0))
     {
-      aTX();
+      boJ();
       AppMethodBeat.o(131301);
       return;
     }
     if (this.recommendType != 0)
     {
-      rw(-1);
+      vm(-1);
       AppMethodBeat.o(131301);
       return;
     }
-    aTY();
+    boK();
     AppMethodBeat.o(131301);
   }
   
@@ -358,7 +359,7 @@ public class RecommendFriendUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.ui.RecommendFriendUI
  * JD-Core Version:    0.7.0.1
  */

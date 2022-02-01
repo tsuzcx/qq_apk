@@ -10,31 +10,36 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class h$a
   extends c.a
 {
-  public TextView KxA;
-  public ImageView KxB;
-  public ImageView KxC;
-  public RelativeLayout Kxz;
+  public RelativeLayout PJP;
+  public TextView PJQ;
+  public ImageView PJR;
+  public ImageView PJS;
   
-  public final a gy(View paramView)
+  public final a gO(View paramView)
   {
     AppMethodBeat.i(36875);
-    super.gs(paramView);
-    this.fVV = ((TextView)this.uan.findViewById(2131298178));
-    this.iFD = ((CheckBox)this.uan.findViewById(2131298068));
-    this.hcH = this.uan.findViewById(2131298147);
-    this.yUp = ((TextView)this.uan.findViewById(2131298185));
-    this.olI = this.uan.findViewById(2131296918);
-    this.Kxz = ((RelativeLayout)this.uan.findViewById(2131296917));
-    this.KxA = ((TextView)this.uan.findViewById(2131296914));
-    this.KxB = ((ImageView)this.uan.findViewById(2131296915));
-    this.KxC = ((ImageView)this.uan.findViewById(2131296916));
+    super.create(paramView);
+    this.timeTV = ((TextView)this.convertView.findViewById(2131298558));
+    this.checkBox = ((CheckBox)this.convertView.findViewById(2131298410));
+    this.maskView = this.convertView.findViewById(2131298508);
+    this.userTV = ((TextView)this.convertView.findViewById(2131298566));
+    this.clickArea = this.convertView.findViewById(2131297022);
+    this.PJP = ((RelativeLayout)this.convertView.findViewById(2131297021));
+    this.PJQ = ((TextView)this.convertView.findViewById(2131297018));
+    this.PJR = ((ImageView)this.convertView.findViewById(2131297019));
+    this.PJS = ((ImageView)this.convertView.findViewById(2131297020));
     AppMethodBeat.o(36875);
     return this;
+  }
+  
+  public final View getMainContainerView()
+  {
+    return this.PJP;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.viewitems.h.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@null" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/ha" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.chatting.HardDeviceChattingItemView android:orientation="vertical" android:id="@id/al7" android:background="@drawable/aju" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/ha" android:paddingRight="@dimen/jn" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="0.0dip">
-                <TextView android:textSize="42.0dip" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center" android:id="@id/eq1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="50.0dip" android:singleLine="true" android:layout_centerHorizontal="true" />
-                <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:gravity="center" android:id="@id/eq2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="50.0dip" android:singleLine="true" android:layout_below="@id/eq1" android:layout_alignLeft="@id/eq1" android:layout_alignRight="@id/eq1" android:layout_centerHorizontal="true" />
-            </RelativeLayout>
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="15.0dip">
-                <TextView android:textSize="42.0dip" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="left" android:id="@id/fte" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxWidth="220.0dip" android:singleLine="true" android:layout_alignParentRight="true" />
-                <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:gravity="left" android:id="@id/ftf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/fte" android:layout_alignParentRight="true" />
-            </RelativeLayout>
-        </LinearLayout>
-        <TextView android:id="@id/chp" android:background="@color/FG_3" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="@dimen/h" android:layout_marginTop="32.0dip" android:layout_marginRight="@dimen/h" />
-        <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:layout_marginRight="@dimen/h">
-            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cfg" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginLeft="@dimen/i_" android:src="@raw/arrow_right" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/ee" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/h" android:layout_toLeftOf="@id/cfg" android:layout_alignParentLeft="true" android:layout_centerVertical="true">
-                <ImageView android:id="@id/gor" android:layout_width="@dimen/i2" android:layout_height="@dimen/i2" android:layout_marginRight="@dimen/h" android:src="@drawable/aq8" />
-                <TextView android:textSize="15.0dip" android:textColor="@color/y4" android:gravity="left" android:layout_gravity="center_vertical" android:id="@id/gp1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            </LinearLayout>
-        </RelativeLayout>
-    </com.tencent.mm.ui.chatting.HardDeviceChattingItemView>
-</LinearLayout>
+<RelativeLayout style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/fcs" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent" android:divider="@null" style="@style/np" />
+</RelativeLayout>

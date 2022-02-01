@@ -12,7 +12,7 @@ public final class PluginCardCompat
   public final void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(22758);
-    if (paramg.akL()) {
+    if (paramg.aBb()) {
       com.tencent.mm.kernel.g.a(com.tencent.mm.plugin.card.compat.a.a.class, new e(new a()));
     }
     AppMethodBeat.o(22758);
@@ -28,7 +28,7 @@ public final class PluginCardCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.card.compat.PluginCardCompat
  * JD-Core Version:    0.7.0.1
  */

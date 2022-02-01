@@ -2,6 +2,7 @@ package com.tencent.mm.pointers;
 
 public class PChar
 {
+  private byte _hellAccFlag_;
   public char value;
 }
 

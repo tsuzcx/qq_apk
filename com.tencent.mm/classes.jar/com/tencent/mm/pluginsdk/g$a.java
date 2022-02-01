@@ -1,10 +1,10 @@
 package com.tencent.mm.pluginsdk;
 
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 
 public abstract interface g$a
 {
-  public abstract void a(int paramInt1, int paramInt2, String paramString, n paramn, boolean paramBoolean);
+  public abstract void a(int paramInt1, int paramInt2, String paramString, q paramq, boolean paramBoolean);
 }
 
 

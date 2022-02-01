@@ -1,38 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.MiniProgramNavigationBackResult;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
+import android.os.Bundle;
+import com.tencent.luggage.sdk.launching.a;
 import org.json.JSONObject;
 
 public class f
-  extends a<h>
+  extends com.tencent.mm.plugin.appbrand.jsapi.d<com.tencent.luggage.sdk.b.a.c.d>
 {
-  public static final int CTRL_INDEX = 252;
-  public static final String NAME = "navigateBackMiniProgram";
+  public static final int CTRL_INDEX = 166;
+  public static final String NAME = "launchMiniProgram";
   
-  public void a(final h paramh, JSONObject paramJSONObject, final int paramInt)
+  protected boolean a(com.tencent.luggage.sdk.b.a.c.d paramd, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(147181);
-    paramh.K(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(147180);
-        paramh.getRuntime().R(MiniProgramNavigationBackResult.a(this.kZF, this.kZG));
-        paramh.h(paramInt, f.this.e("ok", null));
-        AppMethodBeat.o(147180);
-      }
-    });
-    AppMethodBeat.o(147181);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.miniprogram_navigator.f
  * JD-Core Version:    0.7.0.1
  */

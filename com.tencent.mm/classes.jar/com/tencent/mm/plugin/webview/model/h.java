@@ -1,39 +1,39 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bqp;
-import com.tencent.mm.protocal.protobuf.btf;
-import com.tencent.mm.sdk.platformtools.bh;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.cdi;
+import com.tencent.mm.protocal.protobuf.cfy;
+import com.tencent.mm.sdk.platformtools.RWCache;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class h
 {
-  public int EkF;
-  public int EkG;
-  public int EkH;
-  public final List<btf> EkI;
-  public int EkJ;
-  public long EkK;
+  public int IXD;
+  public int IXE;
+  public int IXF;
+  public final List<cfy> IXG;
+  public int IXH;
+  public long IXI;
   
   private h()
   {
     AppMethodBeat.i(78862);
-    this.EkF = 20480;
-    this.EkG = 30720;
-    this.EkH = 51200;
-    this.EkI = new LinkedList();
-    this.EkJ = 0;
-    this.EkK = 0L;
+    this.IXD = 20480;
+    this.IXE = 30720;
+    this.IXF = 51200;
+    this.IXG = new LinkedList();
+    this.IXH = 0;
+    this.IXI = 0L;
     AppMethodBeat.o(78862);
   }
   
-  public static void hd(List<bqp> paramList)
+  public static void ii(List<cdi> paramList)
   {
     AppMethodBeat.i(78863);
-    if (bu.ht(paramList))
+    if (Util.isNullOrNil(paramList))
     {
       AppMethodBeat.o(78863);
       return;
@@ -41,25 +41,25 @@ public final class h
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      bqp localbqp = (bqp)paramList.next();
-      g localg = com.tencent.mm.plugin.webview.modeltools.g.eUI();
-      int i = localbqp.HdZ;
-      long l1 = bu.aRi();
-      long l2 = localbqp.Hea;
-      localg.EkD.I(Integer.valueOf(i), Long.valueOf(l1 + l2));
+      cdi localcdi = (cdi)paramList.next();
+      g localg = com.tencent.mm.plugin.webview.modeltools.g.gdx();
+      int i = localcdi.Mjf;
+      long l1 = Util.nowSecond();
+      long l2 = localcdi.Mjg;
+      localg.IXB.set(Integer.valueOf(i), Long.valueOf(l1 + l2));
     }
-    com.tencent.mm.plugin.webview.modeltools.g.eUI().eTG();
+    com.tencent.mm.plugin.webview.modeltools.g.gdx().gct();
     AppMethodBeat.o(78863);
   }
   
   public static final class a
   {
-    private static final h EkL;
+    private static final h IXJ;
     
     static
     {
       AppMethodBeat.i(78861);
-      EkL = new h((byte)0);
+      IXJ = new h((byte)0);
       AppMethodBeat.o(78861);
     }
   }

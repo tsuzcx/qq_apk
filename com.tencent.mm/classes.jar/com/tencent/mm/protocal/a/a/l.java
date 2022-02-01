@@ -5,13 +5,13 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class l
   extends com.tencent.mm.bw.a
 {
-  public int FHJ;
-  public int FHK;
-  public int FHL;
-  public int FHM;
-  public int FHN;
-  public int FHO;
-  public int FHP;
+  public int KAX;
+  public int KAY;
+  public int KAZ;
+  public int KBa;
+  public int KBb;
+  public int KBc;
+  public int KBd;
   public int action;
   
   public final int op(int paramInt, Object... paramVarArgs)
@@ -19,37 +19,37 @@ public final class l
     AppMethodBeat.i(143955);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.FHJ);
-      paramVarArgs.aS(2, this.action);
-      paramVarArgs.aS(3, this.FHK);
-      paramVarArgs.aS(4, this.FHL);
-      paramVarArgs.aS(5, this.FHM);
-      paramVarArgs.aS(6, this.FHN);
-      paramVarArgs.aS(7, this.FHO);
-      paramVarArgs.aS(8, this.FHP);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.KAX);
+      paramVarArgs.aM(2, this.action);
+      paramVarArgs.aM(3, this.KAY);
+      paramVarArgs.aM(4, this.KAZ);
+      paramVarArgs.aM(5, this.KBa);
+      paramVarArgs.aM(6, this.KBb);
+      paramVarArgs.aM(7, this.KBc);
+      paramVarArgs.aM(8, this.KBd);
       AppMethodBeat.o(143955);
       return 0;
     }
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.FHJ);
-      int i = f.a.a.b.b.a.bz(2, this.action);
-      int j = f.a.a.b.b.a.bz(3, this.FHK);
-      int k = f.a.a.b.b.a.bz(4, this.FHL);
-      int m = f.a.a.b.b.a.bz(5, this.FHM);
-      int n = f.a.a.b.b.a.bz(6, this.FHN);
-      int i1 = f.a.a.b.b.a.bz(7, this.FHO);
-      int i2 = f.a.a.b.b.a.bz(8, this.FHP);
+      paramInt = g.a.a.b.b.a.bu(1, this.KAX);
+      int i = g.a.a.b.b.a.bu(2, this.action);
+      int j = g.a.a.b.b.a.bu(3, this.KAY);
+      int k = g.a.a.b.b.a.bu(4, this.KAZ);
+      int m = g.a.a.b.b.a.bu(5, this.KBa);
+      int n = g.a.a.b.b.a.bu(6, this.KBb);
+      int i1 = g.a.a.b.b.a.bu(7, this.KBc);
+      int i2 = g.a.a.b.b.a.bu(8, this.KBd);
       AppMethodBeat.o(143955);
       return paramInt + 0 + i + j + k + m + n + i1 + i2;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(143955);
@@ -57,7 +57,7 @@ public final class l
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       l locall = (l)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -65,35 +65,35 @@ public final class l
         AppMethodBeat.o(143955);
         return -1;
       case 1: 
-        locall.FHJ = locala.OmT.zc();
+        locall.KAX = locala.UbS.zi();
         AppMethodBeat.o(143955);
         return 0;
       case 2: 
-        locall.action = locala.OmT.zc();
+        locall.action = locala.UbS.zi();
         AppMethodBeat.o(143955);
         return 0;
       case 3: 
-        locall.FHK = locala.OmT.zc();
+        locall.KAY = locala.UbS.zi();
         AppMethodBeat.o(143955);
         return 0;
       case 4: 
-        locall.FHL = locala.OmT.zc();
+        locall.KAZ = locala.UbS.zi();
         AppMethodBeat.o(143955);
         return 0;
       case 5: 
-        locall.FHM = locala.OmT.zc();
+        locall.KBa = locala.UbS.zi();
         AppMethodBeat.o(143955);
         return 0;
       case 6: 
-        locall.FHN = locala.OmT.zc();
+        locall.KBb = locala.UbS.zi();
         AppMethodBeat.o(143955);
         return 0;
       case 7: 
-        locall.FHO = locala.OmT.zc();
+        locall.KBc = locala.UbS.zi();
         AppMethodBeat.o(143955);
         return 0;
       }
-      locall.FHP = locala.OmT.zc();
+      locall.KBd = locala.UbS.zi();
       AppMethodBeat.o(143955);
       return 0;
     }
@@ -103,7 +103,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.a.a.l
  * JD-Core Version:    0.7.0.1
  */

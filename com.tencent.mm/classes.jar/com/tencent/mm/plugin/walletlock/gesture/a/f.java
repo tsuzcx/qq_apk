@@ -5,21 +5,21 @@ import java.lang.reflect.Array;
 
 public final class f
 {
-  private static f[][] DMl;
-  public int DMj = 0;
-  public int DMk = 0;
+  private static f[][] IvA;
+  public int Ivy = 0;
+  public int Ivz = 0;
   
   static
   {
     AppMethodBeat.i(129788);
-    DMl = (f[][])Array.newInstance(f.class, new int[] { 3, 3 });
+    IvA = (f[][])Array.newInstance(f.class, new int[] { 3, 3 });
     int i = 0;
     while (i < 3)
     {
       int j = 0;
       while (j < 3)
       {
-        DMl[i][j] = new f(i, j);
+        IvA[i][j] = new f(i, j);
         j += 1;
       }
       i += 1;
@@ -29,11 +29,11 @@ public final class f
   
   private f(int paramInt1, int paramInt2)
   {
-    this.DMj = paramInt1;
-    this.DMk = paramInt2;
+    this.Ivy = paramInt1;
+    this.Ivz = paramInt2;
   }
   
-  public static f iQ(int paramInt1, int paramInt2)
+  public static f jW(int paramInt1, int paramInt2)
   {
     try
     {
@@ -52,7 +52,7 @@ public final class f
       AppMethodBeat.o(129786);
       throw ((Throwable)localObject2);
     }
-    Object localObject2 = DMl[paramInt1][paramInt2];
+    Object localObject2 = IvA[paramInt1][paramInt2];
     AppMethodBeat.o(129786);
     return localObject2;
   }
@@ -60,14 +60,14 @@ public final class f
   public final String toString()
   {
     AppMethodBeat.i(129787);
-    String str = String.format("{row: %d, col: %d}", new Object[] { Integer.valueOf(this.DMj), Integer.valueOf(this.DMk) });
+    String str = String.format("{row: %d, col: %d}", new Object[] { Integer.valueOf(this.Ivy), Integer.valueOf(this.Ivz) });
     AppMethodBeat.o(129787);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.walletlock.gesture.a.f
  * JD-Core Version:    0.7.0.1
  */

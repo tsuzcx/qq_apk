@@ -13,11 +13,11 @@ import com.tencent.mm.pluginsdk.ui.a.b;
 public class SwitchContactDialogCustomView
   extends LinearLayout
 {
-  private TextView Xl;
-  private TextView vVd;
-  private ImageView vVe;
-  private TextView vVf;
-  private TextView vVg;
+  private TextView Xy;
+  private TextView zpj;
+  private ImageView zpk;
+  private TextView zpl;
+  private TextView zpm;
   
   public SwitchContactDialogCustomView(Context paramContext)
   {
@@ -28,34 +28,34 @@ public class SwitchContactDialogCustomView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(90742);
-    LayoutInflater.from(paramContext).inflate(2131492955, this);
-    this.Xl = ((TextView)findViewById(2131305902));
-    this.vVd = ((TextView)findViewById(2131298739));
-    this.vVe = ((ImageView)findViewById(2131303240));
-    this.vVf = ((TextView)findViewById(2131298996));
-    this.vVg = ((TextView)findViewById(2131305506));
+    LayoutInflater.from(paramContext).inflate(2131492988, this);
+    this.Xy = ((TextView)findViewById(2131309195));
+    this.zpj = ((TextView)findViewById(2131299180));
+    this.zpk = ((ImageView)findViewById(2131305908));
+    this.zpl = ((TextView)findViewById(2131299495));
+    this.zpm = ((TextView)findViewById(2131308715));
     AppMethodBeat.o(90742);
   }
   
   public void setContent(String paramString)
   {
     AppMethodBeat.i(90744);
-    this.vVd.setText(paramString);
+    this.zpj.setText(paramString);
     AppMethodBeat.o(90744);
   }
   
   public void setDesc(String paramString)
   {
     AppMethodBeat.i(90745);
-    this.vVf.setText(paramString);
+    this.zpl.setText(paramString);
     AppMethodBeat.o(90745);
   }
   
   public void setOnPhotoOnClick(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(90748);
-    if (this.vVe != null) {
-      this.vVe.setOnClickListener(paramOnClickListener);
+    if (this.zpk != null) {
+      this.zpk.setOnClickListener(paramOnClickListener);
     }
     AppMethodBeat.o(90748);
   }
@@ -63,21 +63,21 @@ public class SwitchContactDialogCustomView
   public void setPhoto(String paramString)
   {
     AppMethodBeat.i(90747);
-    a.b.c(this.vVe, paramString);
+    a.b.c(this.zpk, paramString);
     AppMethodBeat.o(90747);
   }
   
   public void setSubDesc(String paramString)
   {
     AppMethodBeat.i(90746);
-    this.vVg.setText(paramString);
+    this.zpm.setText(paramString);
     AppMethodBeat.o(90746);
   }
   
   public void setTilte(String paramString)
   {
     AppMethodBeat.i(90743);
-    this.Xl.setText(paramString);
+    this.Xy.setText(paramString);
     AppMethodBeat.o(90743);
   }
 }

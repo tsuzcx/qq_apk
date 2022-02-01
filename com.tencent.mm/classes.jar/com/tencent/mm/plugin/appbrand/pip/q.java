@@ -2,39 +2,37 @@ package com.tencent.mm.plugin.appbrand.pip;
 
 import android.graphics.Point;
 import com.tencent.luggage.a.b;
-import com.tencent.luggage.a.e;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.config.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.f;
-import d.g;
-import d.g.b.p;
-import d.l;
-import d.n.n;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.List;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.n.n;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask;", "", "()V", "storage", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "getStorage", "()Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "storage$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask;", "", "()V", "storage", "Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "getStorage", "()Lcom/tencent/mm/plugin/appbrand/pip/PipStablePosStorage;", "storage$delegate", "Lkotlin/Lazy;", "plugin-appbrand-integration_release"})
 abstract class q
 {
-  private final f mto = g.O((d.g.a.a)a.mtp);
+  private final f nDW = g.ah((kotlin.g.a.a)a.nDX);
   
-  protected final o bxy()
+  protected final o bTJ()
   {
-    return (o)this.mto.getValue();
+    return (o)this.nDW.getValue();
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "com/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1", "invoke", "()Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1;"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "com/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1", "invoke", "()Lcom/tencent/mm/plugin/appbrand/pip/StablePosTask$storage$2$1;"})
   static final class a
-    extends d.g.b.q
-    implements d.g.a.a<1>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<1>
   {
-    public static final a mtp;
+    public static final a nDX;
     
     static
     {
-      AppMethodBeat.i(223852);
-      mtp = new a();
-      AppMethodBeat.o(223852);
+      AppMethodBeat.i(229284);
+      nDX = new a();
+      AppMethodBeat.o(229284);
     }
     
     a()
@@ -45,7 +43,7 @@ abstract class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.pip.q
  * JD-Core Version:    0.7.0.1
  */

@@ -8,8 +8,8 @@ import android.os.Build.VERSION;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.graphics.MMBitmapFactory;
 import com.tencent.mm.plugin.appbrand.platform.window.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 final class n
 {
@@ -18,30 +18,30 @@ final class n
     AppMethodBeat.i(176758);
     int i = parama.colorPrimary;
     i = Color.rgb(Color.red(i), Color.green(i), Color.blue(i));
-    if (parama.mdM > 0)
+    if (parama.noe > 0)
     {
       if (Build.VERSION.SDK_INT >= 28)
       {
-        parama = new ActivityManager.TaskDescription(parama.label, parama.mdM, i);
+        parama = new ActivityManager.TaskDescription(parama.label, parama.noe, i);
         AppMethodBeat.o(176758);
         return parama;
       }
       try
       {
-        Object localObject = MMBitmapFactory.decodeResource(ak.getResources(), parama.mdM);
+        Object localObject = MMBitmapFactory.decodeResource(MMApplicationContext.getResources(), parama.noe);
         localObject = new ActivityManager.TaskDescription(parama.label, (Bitmap)localObject, i);
         AppMethodBeat.o(176758);
         return localObject;
       }
       catch (Exception localException)
       {
-        ae.e("Luggage.WXA.WindowAndroidActivityFactory", "decode bitmap failed e=%s", new Object[] { localException });
+        Log.e("Luggage.WXA.WindowAndroidActivityFactory", "decode bitmap failed e=%s", new Object[] { localException });
         parama = new ActivityManager.TaskDescription(parama.label, null, i);
         AppMethodBeat.o(176758);
         return parama;
       }
     }
-    parama = new ActivityManager.TaskDescription(parama.label, parama.mtC, i);
+    parama = new ActivityManager.TaskDescription(parama.label, parama.nEk, i);
     AppMethodBeat.o(176758);
     return parama;
   }
@@ -57,7 +57,7 @@ final class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.platform.window.a.n
  * JD-Core Version:    0.7.0.1
  */

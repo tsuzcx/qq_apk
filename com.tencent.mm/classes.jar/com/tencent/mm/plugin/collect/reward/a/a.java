@@ -3,31 +3,31 @@ package com.tencent.mm.plugin.collect.reward.a;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.ui.base.h;
 import java.lang.ref.WeakReference;
 
 public abstract class a
-  extends n
-  implements k
+  extends q
+  implements m
 {
   protected int errCode = 0;
   protected String errMsg;
   protected int errType = 0;
-  protected WeakReference<Activity> kwC;
-  protected boolean pil = false;
-  protected boolean pim = false;
+  protected WeakReference<Activity> lAM;
+  protected boolean qxx = false;
+  protected boolean qxy = false;
   
-  public final void O(Activity paramActivity)
+  public final void M(Activity paramActivity)
   {
-    this.kwC = new WeakReference(paramActivity);
+    this.lAM = new WeakReference(paramActivity);
   }
   
   public final a a(a parama)
   {
-    if ((!this.pil) && (!this.pim)) {
+    if ((!this.qxx) && (!this.qxy)) {
       parama.g(this);
     }
     return this;
@@ -35,37 +35,37 @@ public abstract class a
   
   public final a b(a parama)
   {
-    if (this.pim) {
+    if (this.qxy) {
       parama.g(this);
     }
     return this;
   }
   
-  protected abstract void b(int paramInt1, int paramInt2, String paramString, q paramq);
+  protected abstract void b(int paramInt1, int paramInt2, String paramString, s params);
   
   public final a c(a parama)
   {
-    if (this.pil) {
+    if (this.qxx) {
       parama.g(this);
     }
     return this;
   }
   
-  protected boolean cbV()
+  protected boolean czP()
   {
     return true;
   }
   
-  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      this.pil = true;
-      if ((cbV()) && (this.kwC != null))
+      this.qxx = true;
+      if ((czP()) && (this.lAM != null))
       {
-        paramArrayOfByte = (Activity)this.kwC.get();
+        paramArrayOfByte = (Activity)this.lAM.get();
         if (paramArrayOfByte != null) {
-          h.a(paramArrayOfByte, paramArrayOfByte.getString(2131765901), null, false, new DialogInterface.OnClickListener()
+          h.a(paramArrayOfByte, paramArrayOfByte.getString(2131768354), null, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt) {}
           });
@@ -75,12 +75,12 @@ public abstract class a
     this.errCode = paramInt3;
     this.errType = paramInt2;
     this.errMsg = paramString;
-    b(paramInt2, paramInt3, paramString, paramq);
+    b(paramInt2, paramInt3, paramString, params);
   }
   
   public static abstract interface a
   {
-    public abstract void g(n paramn);
+    public abstract void g(q paramq);
   }
 }
 

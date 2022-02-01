@@ -1,56 +1,55 @@
 package com.tencent.mm.openim.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bfs;
-import com.tencent.mm.protocal.protobuf.bft;
-import com.tencent.mm.protocal.protobuf.cfp;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.protocal.protobuf.bro;
+import com.tencent.mm.protocal.protobuf.brp;
+import com.tencent.mm.protocal.protobuf.cvw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class h
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private String iKt;
-  private String iKu;
-  public cfp iKv;
+  private i callback;
+  private String jGZ;
+  private String jHa;
+  public cvw jHb;
   private int ret;
-  private final b rr;
+  private final d rr;
   
   public h(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(151199);
-    b.a locala = new b.a();
-    locala.hQF = new bfs();
-    locala.hQG = new bft();
+    d.a locala = new d.a();
+    locala.iLN = new bro();
+    locala.iLO = new brp();
     locala.uri = "/cgi-bin/micromsg-bin/getopenimcontact";
     locala.funcId = 881;
-    this.rr = locala.aDS();
-    this.iKt = paramString1;
-    this.iKu = bu.bI(paramString2, "");
-    ae.i("MicroMsg.Openim.NetSceneGetOpenIMContact", "get openim username: %s, roomname: %s, ticket:%s", new Object[] { paramString1, this.iKu, paramString3 });
-    paramString2 = (bfs)this.rr.hQD.hQJ;
-    paramString2.iKt = paramString1;
-    paramString2.dwx = this.iKu;
-    paramString2.dqk = paramString3;
+    this.rr = locala.aXF();
+    this.jGZ = paramString1;
+    this.jHa = Util.nullAs(paramString2, "");
+    Log.i("MicroMsg.Openim.NetSceneGetOpenIMContact", "get openim username: %s, roomname: %s, ticket:%s", new Object[] { paramString1, this.jHa, paramString3 });
+    paramString2 = (bro)this.rr.iLK.iLR;
+    paramString2.jGZ = paramString1;
+    paramString2.dOe = this.jHa;
+    paramString2.dHx = paramString3;
     AppMethodBeat.o(151199);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(151200);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(151200);
     return i;
   }
@@ -60,26 +59,26 @@ public final class h
     return 881;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151201);
-    ae.i("MicroMsg.Openim.NetSceneGetOpenIMContact", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.iKt });
+    Log.i("MicroMsg.Openim.NetSceneGetOpenIMContact", "onGYNetEnd : errType : %d, errCode : %d, errMsg : %s, tp_username = %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString, this.jGZ });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(151201);
       return;
     }
-    paramq = (bft)this.rr.hQE.hQJ;
-    this.iKv = paramq.GUA;
-    this.ret = s.a(paramq);
+    params = (brp)this.rr.iLL.iLR;
+    this.jHb = params.LYS;
+    this.ret = s.a(params);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(151201);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.openim.b.h
  * JD-Core Version:    0.7.0.1
  */

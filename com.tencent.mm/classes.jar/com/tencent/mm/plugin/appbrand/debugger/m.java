@@ -4,14 +4,13 @@ import android.util.Pair;
 import android.webkit.ValueCallback;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
-import com.tencent.luggage.sdk.d.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.o.a;
-import com.tencent.mm.protocal.protobuf.ear;
-import com.tencent.mm.protocal.protobuf.eaz;
-import com.tencent.mm.protocal.protobuf.ebg;
-import com.tencent.mm.protocal.protobuf.ebl;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.plugin.appbrand.s.a;
+import com.tencent.mm.protocal.protobuf.euy;
+import com.tencent.mm.protocal.protobuf.evg;
+import com.tencent.mm.protocal.protobuf.evn;
+import com.tencent.mm.protocal.protobuf.evs;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -20,56 +19,56 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class m
 {
-  final HashMap<Integer, c> keA;
-  int keB;
-  long keC;
-  com.tencent.luggage.sdk.b.a.c.c kee;
-  final ear kef;
-  private String keg;
-  private int keh;
-  private int kei;
-  ebl kej;
-  n kek;
-  AtomicInteger kel;
-  long kem;
-  long ken;
-  long keo;
-  long kep;
-  AtomicInteger keq;
-  private boolean ker;
-  private boolean kes;
-  private final HashMap<String, Method> ket;
-  private final HashMap<String, ebg> keu;
-  LinkedList<Pair<String, ValueCallback<String>>> kev;
-  final LinkedList<p> kew;
-  final Map<String, l> kex;
-  final LinkedList<eaz> kez;
+  com.tencent.luggage.sdk.b.a.c.d lhP;
+  final euy lhQ;
+  private String lhR;
+  private int lhS;
+  private int lhT;
+  evs lhU;
+  n lhV;
+  AtomicInteger lhW;
+  long lhX;
+  long lhY;
+  long lhZ;
+  long lia;
+  AtomicInteger lib;
+  private boolean lic;
+  private boolean lid;
+  private final HashMap<String, Method> lie;
+  private final HashMap<String, evn> lif;
+  LinkedList<Pair<String, ValueCallback<String>>> lig;
+  final LinkedList<p> lih;
+  final Map<String, l> lii;
+  final LinkedList<evg> lij;
+  final HashMap<Integer, c> lik;
+  int lil;
+  long lim;
   final Object mLock;
   private int mStatus;
   
   public m()
   {
     AppMethodBeat.i(147009);
-    this.keh = 0;
-    this.kei = 0;
+    this.lhS = 0;
+    this.lhT = 0;
     this.mStatus = 0;
-    this.kel = new AtomicInteger(0);
-    this.kem = 0L;
-    this.ken = 0L;
-    this.kep = System.currentTimeMillis();
-    this.keq = new AtomicInteger(0);
-    this.ket = new HashMap();
-    this.keu = new HashMap();
-    this.kev = new LinkedList();
-    this.kew = new LinkedList();
-    this.kex = new HashMap();
-    this.kez = new LinkedList();
-    this.keA = new HashMap();
+    this.lhW = new AtomicInteger(0);
+    this.lhX = 0L;
+    this.lhY = 0L;
+    this.lia = System.currentTimeMillis();
+    this.lib = new AtomicInteger(0);
+    this.lie = new HashMap();
+    this.lif = new HashMap();
+    this.lig = new LinkedList();
+    this.lih = new LinkedList();
+    this.lii = new HashMap();
+    this.lij = new LinkedList();
+    this.lik = new HashMap();
     this.mLock = new Object();
-    this.keB = 0;
-    this.keC = 0L;
-    this.kef = new ear();
-    this.kef.FMa = j.IwD;
+    this.lil = 0;
+    this.lim = 0L;
+    this.lhQ = new euy();
+    this.lhQ.KFC = BuildInfo.CLIENT_VERSION_INT;
     AppMethodBeat.o(147009);
   }
   
@@ -87,11 +86,11 @@ public final class m
     }
   }
   
-  public final void OH(String paramString)
+  public final void XS(String paramString)
   {
     try
     {
-      this.keg = paramString;
+      this.lhR = paramString;
       return;
     }
     finally
@@ -101,28 +100,28 @@ public final class m
     }
   }
   
-  public final void a(com.tencent.luggage.sdk.b.a.c.c paramc, String paramString)
+  public final void a(com.tencent.luggage.sdk.b.a.c.d paramd, String paramString)
   {
     boolean bool = true;
     AppMethodBeat.i(147010);
-    this.kee = paramc;
-    v.setUin(this.kee.Eq().Fg().uin);
-    this.kek = v.OO(paramString);
-    paramString = this.kee.Eq().Ff();
+    this.lhP = paramd;
+    v.setUin(this.lhP.NP().ON().uin);
+    this.lhV = v.XZ(paramString);
+    paramString = this.lhP.NP().OM();
     if (paramString != null)
     {
-      paramString.cmJ = this.kek.cmJ;
-      paramString.cmu = true;
-      paramc = (a)paramc.Eq().ar(a.class);
-      if (paramc != null) {
-        if (paramString.cmJ) {
+      paramString.cyF = this.lhV.cyF;
+      paramString.cyp = true;
+      paramd = (a)paramd.NP().av(a.class);
+      if (paramd != null) {
+        if (paramString.cyF) {
           break label102;
         }
       }
     }
     for (;;)
     {
-      paramc.lZO = bool;
+      paramd.nhD = bool;
       AppMethodBeat.o(147010);
       return;
       label102:
@@ -130,11 +129,11 @@ public final class m
     }
   }
   
-  public final String bfm()
+  public final String bAF()
   {
     try
     {
-      String str = this.keg;
+      String str = this.lhR;
       return str;
     }
     finally
@@ -144,11 +143,11 @@ public final class m
     }
   }
   
-  public final int bfn()
+  public final int bAG()
   {
     try
     {
-      int i = this.keh;
+      int i = this.lhS;
       return i;
     }
     finally
@@ -158,11 +157,11 @@ public final class m
     }
   }
   
-  public final int bfo()
+  public final int bAH()
   {
     try
     {
-      int i = this.kei;
+      int i = this.lhT;
       return i;
     }
     finally
@@ -172,11 +171,11 @@ public final class m
     }
   }
   
-  public final boolean bfp()
+  public final boolean bAI()
   {
     try
     {
-      boolean bool = this.kes;
+      boolean bool = this.lid;
       return bool;
     }
     finally
@@ -186,7 +185,7 @@ public final class m
     }
   }
   
-  public final boolean bfq()
+  public final boolean bAJ()
   {
     AppMethodBeat.i(147013);
     if (getStatus() == 5)
@@ -198,17 +197,17 @@ public final class m
     return false;
   }
   
-  public final boolean bfr()
+  public final boolean bAK()
   {
-    return this.kek.keG == 3;
+    return this.lhV.liq == 3;
   }
   
-  public final void dH(int paramInt1, int paramInt2)
+  public final void dS(int paramInt1, int paramInt2)
   {
     try
     {
-      if ((this.kei >= paramInt1) && (this.kei <= paramInt2)) {
-        this.kei = paramInt2;
+      if ((this.lhT >= paramInt1) && (this.lhT <= paramInt2)) {
+        this.lhT = paramInt2;
       }
       return;
     }
@@ -219,11 +218,11 @@ public final class m
     }
   }
   
-  public final void fZ(boolean paramBoolean)
+  public final void gW(boolean paramBoolean)
   {
     try
     {
-      this.ker = paramBoolean;
+      this.lic = paramBoolean;
       return;
     }
     finally
@@ -233,11 +232,11 @@ public final class m
     }
   }
   
-  public final void ga(boolean paramBoolean)
+  public final void gX(boolean paramBoolean)
   {
     try
     {
-      this.kes = paramBoolean;
+      this.lid = paramBoolean;
       return;
     }
     finally
@@ -251,7 +250,7 @@ public final class m
   {
     try
     {
-      boolean bool = this.ker;
+      boolean bool = this.lic;
       return bool;
     }
     finally
@@ -329,11 +328,11 @@ public final class m
     }
   }
   
-  public final void sm(int paramInt)
+  public final void wi(int paramInt)
   {
     try
     {
-      this.keh = paramInt;
+      this.lhS = paramInt;
       return;
     }
     finally
@@ -343,12 +342,12 @@ public final class m
     }
   }
   
-  public final void sn(int paramInt)
+  public final void wj(int paramInt)
   {
     try
     {
-      if (this.kei < paramInt) {
-        this.kei = paramInt;
+      if (this.lhT < paramInt) {
+        this.lhT = paramInt;
       }
       return;
     }
@@ -359,14 +358,14 @@ public final class m
     }
   }
   
-  public final void so(int paramInt)
+  public final void wk(int paramInt)
   {
-    this.keC += paramInt;
+    this.lim += paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.debugger.m
  * JD-Core Version:    0.7.0.1
  */

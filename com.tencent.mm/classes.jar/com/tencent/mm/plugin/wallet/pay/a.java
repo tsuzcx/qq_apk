@@ -18,7 +18,7 @@ public class a
     AppMethodBeat.o(69202);
   }
   
-  public final String cSH()
+  public final String dKC()
   {
     return "BindCardForPayProcess";
   }
@@ -34,7 +34,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pay.a
  * JD-Core Version:    0.7.0.1
  */

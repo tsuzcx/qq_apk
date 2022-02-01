@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.brandservice.ui.EnterpriseBizContactListView android:id="@id/bn0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:ellipsize="none" android:gravity="center" android:id="@id/bn2" android:padding="@dimen/ha" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/bpu" android:singleLine="false" android:layout_centerInParent="true" android:lineSpacingExtra="4.0dip" style="@style/lw" />
-</RelativeLayout>

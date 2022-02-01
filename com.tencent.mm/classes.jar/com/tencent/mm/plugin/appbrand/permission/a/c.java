@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.appbrand.permission.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.d;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/permission/jsauth/JsAuthExecuteContext;", "", "env", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "api", "", "args", "callbackId", "", "(Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;Ljava/lang/String;Ljava/lang/String;I)V", "getApi", "()Ljava/lang/String;", "getArgs", "getCallbackId", "()I", "getEnv", "()Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "toString", "luggage-wechat-full-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/permission/jsauth/JsAuthExecuteContext;", "", "env", "Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "api", "", "args", "callbackId", "", "(Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;Ljava/lang/String;Ljava/lang/String;I)V", "getApi", "()Ljava/lang/String;", "getArgs", "getCallbackId", "()I", "getEnv", "()Lcom/tencent/mm/plugin/appbrand/AppBrandComponentWxaShared;", "toString", "luggage-wechat-full-sdk_release"})
 public final class c
 {
-  private final int kmu;
-  private final String lTz;
-  final d mnP;
-  final String mnQ;
+  private final int lqe;
+  private final String nbc;
+  final d nyB;
+  final String nyC;
   
   public c(d paramd, String paramString, byte paramByte)
   {
@@ -19,25 +19,25 @@ public final class c
   
   public c(d paramd, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(220991);
-    this.mnP = paramd;
-    this.mnQ = paramString1;
-    this.lTz = paramString2;
-    this.kmu = paramInt;
-    AppMethodBeat.o(220991);
+    AppMethodBeat.i(230131);
+    this.nyB = paramd;
+    this.nyC = paramString1;
+    this.nbc = paramString2;
+    this.lqe = paramInt;
+    AppMethodBeat.o(230131);
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(220990);
-    String str = "JsAuthExecuteContext(appId='" + this.mnP.getAppId() + "', api='" + this.mnQ + "', callbackId=" + this.kmu + ')';
-    AppMethodBeat.o(220990);
+    AppMethodBeat.i(230130);
+    String str = "JsAuthExecuteContext(appId='" + this.nyB.getAppId() + "', api='" + this.nyC + "', callbackId=" + this.lqe + ')';
+    AppMethodBeat.o(230130);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.permission.a.c
  * JD-Core Version:    0.7.0.1
  */

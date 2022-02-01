@@ -4,12 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ag.k.b;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.plugin.fav.a.ab;
 import com.tencent.mm.plugin.fav.a.g;
 import com.tencent.mm.pluginsdk.model.app.m;
-import com.tencent.mm.pluginsdk.model.q;
+import com.tencent.mm.pluginsdk.model.r;
 import com.tencent.mm.pluginsdk.ui.applet.o.a;
 import com.tencent.mm.pluginsdk.ui.applet.y.a;
 import com.tencent.mm.pluginsdk.ui.tools.a;
@@ -37,17 +37,17 @@ public final class e
   {
     AppMethodBeat.i(24608);
     o.a locala = new o.a(paramContext);
-    locala.dQ(paramString);
+    locala.ea(paramString);
     d.a(locala, paramContext, paramg);
     d.b(locala, paramContext, paramg);
-    locala.l(Boolean.valueOf(paramBoolean)).Zx(2131755884).a(parama).jfl.show();
+    locala.p(Boolean.valueOf(paramBoolean)).aii(2131755976).a(parama).kdo.show();
     AppMethodBeat.o(24608);
   }
   
-  public final int ahv(String paramString)
+  public final int asd(String paramString)
   {
     AppMethodBeat.i(24607);
-    int i = q.aMX(paramString);
+    int i = r.bdt(paramString);
     AppMethodBeat.o(24607);
     return i;
   }
@@ -62,13 +62,13 @@ public final class e
   public final void c(Activity paramActivity, int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(24606);
-    a.a(paramActivity, paramInt1, paramInt2, paramIntent, true, 2131761623, 2131761624, 2);
+    a.a(paramActivity, paramInt1, paramInt2, paramIntent, true, 2131763591, 2131763592, 2);
     AppMethodBeat.o(24606);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.favorite.e
  * JD-Core Version:    0.7.0.1
  */

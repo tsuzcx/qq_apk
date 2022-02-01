@@ -6,34 +6,44 @@ import com.tencent.mm.kernel.a.a;
 public abstract class g
 {
   public Application ca;
-  public a gDL;
-  private Boolean gGA;
-  public a gGB = new a();
+  public a hqy;
+  private Boolean hto;
+  public a htp = new a();
   public String mProcessName;
   
   public g(String paramString, Application paramApplication)
   {
     this.mProcessName = paramString;
-    this.gDL = new a();
+    this.hqy = new a();
     this.ca = paramApplication;
   }
   
-  public final Application akJ()
+  public final boolean FY(String paramString)
+  {
+    return (this.mProcessName != null) && (this.mProcessName.equals(getPackageName() + paramString));
+  }
+  
+  public final boolean FZ(String paramString)
+  {
+    return (this.mProcessName != null) && (this.mProcessName.contains(getPackageName() + paramString));
+  }
+  
+  public final Application aAZ()
   {
     return this.ca;
   }
   
-  public final a akK()
+  public final a aBa()
   {
-    return this.gGB;
+    return this.htp;
   }
   
-  public final boolean akL()
+  public final boolean aBb()
   {
-    if (this.gGA == null) {
-      this.gGA = Boolean.valueOf(xO(""));
+    if (this.hto == null) {
+      this.hto = Boolean.valueOf(FY(""));
     }
-    return this.gGA.booleanValue();
+    return this.hto.booleanValue();
   }
   
   public abstract String getPackageName();
@@ -51,27 +61,17 @@ public abstract class g
     return super.toString();
   }
   
-  public final boolean xO(String paramString)
-  {
-    return (this.mProcessName != null) && (this.mProcessName.equals(getPackageName() + paramString));
-  }
-  
-  public final boolean xP(String paramString)
-  {
-    return (this.mProcessName != null) && (this.mProcessName.contains(getPackageName() + paramString));
-  }
-  
   public static final class a
   {
-    public long gGC;
-    public long gGD;
-    public long gGE;
-    public long gGF;
-    public long gGG;
-    public long gGH;
-    public long gGI;
-    public long gGJ;
-    public long gGK;
+    public long htq;
+    public long htr;
+    public long hts;
+    public long htt;
+    public long htu;
+    public long htv;
+    public long htw;
+    public long htx;
+    public long hty;
   }
 }
 

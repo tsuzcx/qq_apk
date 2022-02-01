@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingRight="@dimen/c0" android:layout_width="@dimen/cb" android:layout_height="wrap_content"
+<android.support.v7.widget.FitWindowsLinearLayout android:orientation="vertical" android:id="@id/cc" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cn1" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:scaleType="center" android:layout_centerVertical="true" />
-    <ImageView android:id="@id/ga5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:src="@drawable/afx" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-</RelativeLayout>
+    <android.support.v7.widget.ViewStubCompat android:id="@id/d4" android:layout="@layout/al" android:inflatedId="@id/d3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <include layout="@layout/b1" />
+</android.support.v7.widget.FitWindowsLinearLayout>

@@ -13,13 +13,13 @@ public abstract interface b
   
   public abstract SpannableString a(Context paramContext, CharSequence paramCharSequence, float paramFloat);
   
-  public abstract a uB(int paramInt);
+  public abstract a ys(int paramInt);
   
   public static final class a
   {
-    public int nna;
-    public int nnb;
-    public int nnc;
+    public int owH;
+    public int owI;
+    public int owJ;
   }
 }
 

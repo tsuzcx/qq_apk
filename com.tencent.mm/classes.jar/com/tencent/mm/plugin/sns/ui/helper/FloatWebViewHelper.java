@@ -11,124 +11,124 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class FloatWebViewHelper
   implements LifecycleObserver
 {
-  public com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e AMd;
-  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e AMe;
-  private ViewGroup AMf;
+  public com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e EWp;
+  private com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e EWq;
+  private ViewGroup EWr;
   
   private FloatWebViewHelper(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e parame, ViewGroup paramViewGroup)
   {
-    this.AMd = parame;
-    this.AMf = paramViewGroup;
+    this.EWp = parame;
+    this.EWr = paramViewGroup;
   }
   
   public static FloatWebViewHelper a(com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.e parame, ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(220076);
+    AppMethodBeat.i(203903);
     parame = new FloatWebViewHelper(parame, paramViewGroup);
-    AppMethodBeat.o(220076);
+    AppMethodBeat.o(203903);
     return parame;
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
   public final void onCreate(LifecycleOwner paramLifecycleOwner)
   {
-    AppMethodBeat.i(220077);
+    AppMethodBeat.i(203904);
     try
     {
-      if (this.AMd != null)
+      if (this.EWp != null)
       {
-        paramLifecycleOwner = this.AMd;
-        ViewGroup localViewGroup = this.AMf;
+        paramLifecycleOwner = this.EWp;
+        ViewGroup localViewGroup = this.EWr;
         if ((localViewGroup != null) && (paramLifecycleOwner != null))
         {
-          this.AMe = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e(localViewGroup.getContext(), paramLifecycleOwner, localViewGroup);
-          if (this.AMe != null)
+          this.EWq = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.component.e(localViewGroup.getContext(), paramLifecycleOwner, localViewGroup);
+          if (this.EWq != null)
           {
-            paramLifecycleOwner = this.AMe.getView();
-            if ((paramLifecycleOwner != null) && (this.AMf != null))
+            paramLifecycleOwner = this.EWq.getView();
+            if ((paramLifecycleOwner != null) && (this.EWr != null))
             {
               localViewGroup = (ViewGroup)paramLifecycleOwner.getParent();
               if (localViewGroup == null)
               {
-                this.AMf.addView(paramLifecycleOwner, this.AMf.getChildCount() - 1);
-                AppMethodBeat.o(220077);
+                this.EWr.addView(paramLifecycleOwner, this.EWr.getChildCount() - 1);
+                AppMethodBeat.o(203904);
                 return;
               }
-              if (localViewGroup != this.AMf)
+              if (localViewGroup != this.EWr)
               {
                 localViewGroup.removeView(paramLifecycleOwner);
-                this.AMf.addView(paramLifecycleOwner, this.AMf.getChildCount() - 1);
+                this.EWr.addView(paramLifecycleOwner, this.EWr.getChildCount() - 1);
               }
             }
           }
         }
       }
-      AppMethodBeat.o(220077);
+      AppMethodBeat.o(203904);
       return;
     }
     catch (Throwable paramLifecycleOwner)
     {
-      AppMethodBeat.o(220077);
+      AppMethodBeat.o(203904);
     }
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
   public final void onDestroy(LifecycleOwner paramLifecycleOwner)
   {
-    AppMethodBeat.i(220080);
+    AppMethodBeat.i(203907);
     try
     {
-      if (this.AMe != null) {
-        this.AMe.dUM();
+      if (this.EWq != null) {
+        this.EWq.eXd();
       }
-      AppMethodBeat.o(220080);
+      AppMethodBeat.o(203907);
       return;
     }
     catch (Throwable paramLifecycleOwner)
     {
-      AppMethodBeat.o(220080);
+      AppMethodBeat.o(203907);
     }
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_PAUSE)
   public final void onPause(LifecycleOwner paramLifecycleOwner)
   {
-    AppMethodBeat.i(220079);
+    AppMethodBeat.i(203906);
     try
     {
-      if (this.AMe != null) {
-        this.AMe.dUL();
+      if (this.EWq != null) {
+        this.EWq.eXa();
       }
-      AppMethodBeat.o(220079);
+      AppMethodBeat.o(203906);
       return;
     }
     catch (Throwable paramLifecycleOwner)
     {
-      AppMethodBeat.o(220079);
+      AppMethodBeat.o(203906);
     }
   }
   
   @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
   public final void onResume(LifecycleOwner paramLifecycleOwner)
   {
-    AppMethodBeat.i(220078);
+    AppMethodBeat.i(203905);
     try
     {
-      if (this.AMe != null) {
-        this.AMe.dUK();
+      if (this.EWq != null) {
+        this.EWq.eWZ();
       }
-      AppMethodBeat.o(220078);
+      AppMethodBeat.o(203905);
       return;
     }
     catch (Throwable paramLifecycleOwner)
     {
-      AppMethodBeat.o(220078);
+      AppMethodBeat.o(203905);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.helper.FloatWebViewHelper
  * JD-Core Version:    0.7.0.1
  */

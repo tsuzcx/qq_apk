@@ -7,30 +7,30 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.ui.base.p;
 
 public final class a
 {
-  private static final int[] iCh = { 2131230925, 2131230926, 2131230927, 2131230928, 2131230929, 2131230930, 2131230931 };
-  private static final int[] rFy = { 0, 15, 30, 45, 60, 75, 90, 100 };
-  private o BGb;
-  private TextView BGc;
-  private ImageView BGd;
-  private View BGe;
-  private int Bip;
+  private static final int[] jxw = { 2131230948, 2131230949, 2131230950, 2131230951, 2131230952, 2131230953, 2131230954 };
+  private static final int[] tfe = { 0, 15, 30, 45, 60, 75, 90, 100 };
+  private p FQS;
+  private TextView FQT;
+  private ImageView FQU;
+  private View FQV;
+  private int Ftf;
   private Context context;
-  private final aq pAg;
-  private View rFs;
-  private View rFt;
-  private ImageView rFu;
-  private View rFw;
+  private final MMHandler qPx;
+  private View teY;
+  private View teZ;
+  private ImageView tfa;
+  private View tfc;
   
   public a(Context paramContext)
   {
     AppMethodBeat.i(29571);
-    this.pAg = new aq()
+    this.qPx = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
@@ -41,21 +41,21 @@ public final class a
       }
     };
     this.context = paramContext;
-    this.Bip = BackwardSupportUtil.b.h(paramContext, 180.0F);
-    this.BGb = new o(((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131495869, null), -1, -2);
-    this.rFu = ((ImageView)this.BGb.getContentView().findViewById(2131306518));
-    this.rFw = this.BGb.getContentView().findViewById(2131306521);
-    this.BGc = ((TextView)this.BGb.getContentView().findViewById(2131306523));
-    this.BGd = ((ImageView)this.BGb.getContentView().findViewById(2131306522));
-    this.BGe = this.BGb.getContentView().findViewById(2131306524);
-    this.rFs = this.BGb.getContentView().findViewById(2131306525);
-    this.rFt = this.BGb.getContentView().findViewById(2131306526);
+    this.Ftf = BackwardSupportUtil.BitmapFactory.fromDPToPix(paramContext, 180.0F);
+    this.FQS = new p(((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2131496849, null), -1, -2);
+    this.tfa = ((ImageView)this.FQS.getContentView().findViewById(2131309978));
+    this.tfc = this.FQS.getContentView().findViewById(2131309981);
+    this.FQT = ((TextView)this.FQS.getContentView().findViewById(2131309983));
+    this.FQU = ((ImageView)this.FQS.getContentView().findViewById(2131309982));
+    this.FQV = this.FQS.getContentView().findViewById(2131309984);
+    this.teY = this.FQS.getContentView().findViewById(2131309985);
+    this.teZ = this.FQS.getContentView().findViewById(2131309986);
     AppMethodBeat.o(29571);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.ui.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.appbrand.h;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public final class a
@@ -32,7 +32,7 @@ public final class a
     }
     catch (Exception paramJSONObject)
     {
-      ae.e("MicroMsg.SameLayer.AppBrandExtendPluginUtil", "build json object fail", new Object[] { paramJSONObject });
+      Log.e("MicroMsg.SameLayer.AppBrandExtendPluginUtil", "build json object fail", new Object[] { paramJSONObject });
       AppMethodBeat.o(139381);
     }
   }
@@ -74,14 +74,21 @@ public final class a
   
   public static void h(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    AppMethodBeat.i(220548);
+    AppMethodBeat.i(215761);
     c(paramJSONObject, "abtestXWebCameraEnable", Boolean.valueOf(paramBoolean));
-    AppMethodBeat.o(220548);
+    AppMethodBeat.o(215761);
+  }
+  
+  public static void i(boolean paramBoolean, JSONObject paramJSONObject)
+  {
+    AppMethodBeat.i(215762);
+    c(paramJSONObject, "useXWebVoipRoom", Boolean.valueOf(paramBoolean));
+    AppMethodBeat.o(215762);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,57 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
 import com.tencent.mm.platformtools.z;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.eg;
-import com.tencent.mm.protocal.protobuf.eh;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.et;
+import com.tencent.mm.protocal.protobuf.eu;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ab
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  int FfF;
-  aa FfG;
-  private f callback;
-  private b rr;
+  int JWw;
+  aa JWx;
+  private i callback;
+  private d rr;
   
   public ab(int paramInt, aa paramaa)
   {
     AppMethodBeat.i(151804);
-    this.FfF = paramInt;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new eg();
-    ((b.a)localObject).hQG = new eh();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/appcenter";
-    ((b.a)localObject).funcId = 452;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (eg)this.rr.hQD.hQJ;
-    byte[] arrayOfByte = paramaa.fdr();
+    this.JWw = paramInt;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new et();
+    ((d.a)localObject).iLO = new eu();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/appcenter";
+    ((d.a)localObject).funcId = 452;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (et)this.rr.iLK.iLR;
+    byte[] arrayOfByte = paramaa.gmB();
     if (arrayOfByte != null) {
-      ((eg)localObject).ReqBuf = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
+      ((et)localObject).ReqBuf = new SKBuiltinBuffer_t().setBuffer(arrayOfByte);
     }
-    ((eg)localObject).nJA = paramInt;
-    this.FfG = paramaa;
+    ((et)localObject).oUv = paramInt;
+    this.JWx = paramaa;
     AppMethodBeat.o(151804);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(151806);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(151806);
     return i;
   }
@@ -61,19 +61,19 @@ public final class ab
     return 452;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151805);
-    ae.d("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    Log.d("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ae.e("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+      Log.e("MicroMsg.NetSceneAppCenter", "errType = " + paramInt2 + ", errCode = " + paramInt3);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(151805);
       return;
     }
-    this.FfG.ck(z.a(((eh)this.rr.hQE.hQJ).FOC));
-    this.FfG.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, this.rr, paramArrayOfByte);
+    this.JWx.cB(z.a(((eu)this.rr.iLL.iLR).KIk));
+    this.JWx.onGYNetEnd(paramInt1, paramInt2, paramInt3, paramString, this.rr, paramArrayOfByte);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(151805);
   }

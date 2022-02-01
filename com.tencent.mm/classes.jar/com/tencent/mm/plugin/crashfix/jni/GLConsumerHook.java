@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.crashfix.jni;
 
 import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class GLConsumerHook
 {
@@ -14,17 +14,17 @@ public class GLConsumerHook
     AppMethodBeat.i(145625);
     if (paramLong == -1L)
     {
-      ae.i("MicroMsg.GLConsumerHook", "test succ");
+      Log.i("MicroMsg.GLConsumerHook", "test succ");
       AppMethodBeat.o(145625);
       return;
     }
     if (paramLong == 0L)
     {
-      ae.e("MicroMsg.GLConsumerHook", "null pointer");
+      Log.e("MicroMsg.GLConsumerHook", "null pointer");
       AppMethodBeat.o(145625);
       return;
     }
-    ae.i("MicroMsg.GLConsumerHook", "pointer addr " + Long.toHexString(paramLong));
+    Log.i("MicroMsg.GLConsumerHook", "pointer addr " + Long.toHexString(paramLong));
     AppMethodBeat.o(145625);
   }
 }

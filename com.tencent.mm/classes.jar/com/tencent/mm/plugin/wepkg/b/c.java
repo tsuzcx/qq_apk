@@ -1,93 +1,93 @@
 package com.tencent.mm.plugin.wepkg.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hg;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.hs;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class c
-  extends hg
+  extends hs
 {
-  public static final c.a hGW;
+  public static final IAutoDBItem.MAutoDBInfo iBg;
   
   static
   {
     AppMethodBeat.i(110562);
-    c.a locala = new c.a();
-    locala.IBL = new Field[14];
-    locala.columns = new String[15];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[14];
+    localMAutoDBInfo.columns = new String[15];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "key";
-    locala.IBN.put("key", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "key";
+    localMAutoDBInfo.colsMap.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "key";
-    locala.columns[1] = "pkgId";
-    locala.IBN.put("pkgId", "TEXT");
+    localMAutoDBInfo.primaryKey = "key";
+    localMAutoDBInfo.columns[1] = "pkgId";
+    localMAutoDBInfo.colsMap.put("pkgId", "TEXT");
     localStringBuilder.append(" pkgId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "version";
-    locala.IBN.put("version", "TEXT");
+    localMAutoDBInfo.columns[2] = "version";
+    localMAutoDBInfo.colsMap.put("version", "TEXT");
     localStringBuilder.append(" version TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "filePath";
-    locala.IBN.put("filePath", "TEXT");
+    localMAutoDBInfo.columns[3] = "filePath";
+    localMAutoDBInfo.colsMap.put("filePath", "TEXT");
     localStringBuilder.append(" filePath TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "rid";
-    locala.IBN.put("rid", "TEXT");
+    localMAutoDBInfo.columns[4] = "rid";
+    localMAutoDBInfo.colsMap.put("rid", "TEXT");
     localStringBuilder.append(" rid TEXT");
     localStringBuilder.append(", ");
-    locala.columns[5] = "mimeType";
-    locala.IBN.put("mimeType", "TEXT");
+    localMAutoDBInfo.columns[5] = "mimeType";
+    localMAutoDBInfo.colsMap.put("mimeType", "TEXT");
     localStringBuilder.append(" mimeType TEXT");
     localStringBuilder.append(", ");
-    locala.columns[6] = "md5";
-    locala.IBN.put("md5", "TEXT");
+    localMAutoDBInfo.columns[6] = "md5";
+    localMAutoDBInfo.colsMap.put("md5", "TEXT");
     localStringBuilder.append(" md5 TEXT");
     localStringBuilder.append(", ");
-    locala.columns[7] = "downloadUrl";
-    locala.IBN.put("downloadUrl", "TEXT");
+    localMAutoDBInfo.columns[7] = "downloadUrl";
+    localMAutoDBInfo.colsMap.put("downloadUrl", "TEXT");
     localStringBuilder.append(" downloadUrl TEXT");
     localStringBuilder.append(", ");
-    locala.columns[8] = "size";
-    locala.IBN.put("size", "INTEGER");
+    localMAutoDBInfo.columns[8] = "size";
+    localMAutoDBInfo.colsMap.put("size", "INTEGER");
     localStringBuilder.append(" size INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[9] = "downloadNetType";
-    locala.IBN.put("downloadNetType", "INTEGER");
+    localMAutoDBInfo.columns[9] = "downloadNetType";
+    localMAutoDBInfo.colsMap.put("downloadNetType", "INTEGER");
     localStringBuilder.append(" downloadNetType INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[10] = "completeDownload";
-    locala.IBN.put("completeDownload", "INTEGER default 'false' ");
+    localMAutoDBInfo.columns[10] = "completeDownload";
+    localMAutoDBInfo.colsMap.put("completeDownload", "INTEGER default 'false' ");
     localStringBuilder.append(" completeDownload INTEGER default 'false' ");
     localStringBuilder.append(", ");
-    locala.columns[11] = "createTime";
-    locala.IBN.put("createTime", "LONG");
+    localMAutoDBInfo.columns[11] = "createTime";
+    localMAutoDBInfo.colsMap.put("createTime", "LONG");
     localStringBuilder.append(" createTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[12] = "autoDownloadCount";
-    locala.IBN.put("autoDownloadCount", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[12] = "autoDownloadCount";
+    localMAutoDBInfo.colsMap.put("autoDownloadCount", "INTEGER default '0' ");
     localStringBuilder.append(" autoDownloadCount INTEGER default '0' ");
     localStringBuilder.append(", ");
-    locala.columns[13] = "fileDownloadCount";
-    locala.IBN.put("fileDownloadCount", "INTEGER default '0' ");
+    localMAutoDBInfo.columns[13] = "fileDownloadCount";
+    localMAutoDBInfo.colsMap.put("fileDownloadCount", "INTEGER default '0' ");
     localStringBuilder.append(" fileDownloadCount INTEGER default '0' ");
-    locala.columns[14] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    hGW = locala;
+    localMAutoDBInfo.columns[14] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    iBg = localMAutoDBInfo;
     AppMethodBeat.o(110562);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    return hGW;
+    return iBg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wepkg.b.c
  * JD-Core Version:    0.7.0.1
  */

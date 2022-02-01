@@ -1,261 +1,286 @@
 package com.tencent.magicbrush;
 
-import com.github.henryye.nativeiv.BaseImageDecodeService;
-import com.github.henryye.nativeiv.ImageDecodeConfig;
-import com.github.henryye.nativeiv.api.IImageDecodeService.b;
-import com.github.henryye.nativeiv.api.IImageDecodeService.b.a;
-import com.github.henryye.nativeiv.api.IImageDecodeService.c;
-import com.tencent.magicbrush.a.c.c;
-import com.tencent.magicbrush.internal.EventDispatcher;
-import com.tencent.magicbrush.ui.MBViewManager;
-import com.tencent.magicbrush.ui.a.a;
-import com.tencent.magicbrush.ui.a.b;
+import android.os.Handler;
+import android.util.SparseLongArray;
 import com.tencent.magicbrush.utils.h;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.appbrand.v8.BufferURLManager;
-import d.ac;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
+import java.util.LinkedList;
+import java.util.Queue;
 
-@l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/MagicBrush;", "Lcom/tencent/magicbrush/MBRuntime;", "builder", "Lcom/tencent/magicbrush/MagicBrushBuilder;", "(Lcom/tencent/magicbrush/MagicBrushBuilder;)V", "bufferURLManager", "Lcom/tencent/mm/appbrand/v8/BufferURLManager;", "getBufferURLManager", "()Lcom/tencent/mm/appbrand/v8/BufferURLManager;", "canvasHandler", "Lcom/tencent/magicbrush/MBCanvasHandler;", "getCanvasHandler", "()Lcom/tencent/magicbrush/MBCanvasHandler;", "config", "Lcom/tencent/magicbrush/MagicBrushConfig;", "getConfig", "()Lcom/tencent/magicbrush/MagicBrushConfig;", "firstFrameListeners", "Lcom/tencent/magicbrush/utils/ListenerList;", "Lcom/tencent/magicbrush/MagicBrush$FirstFrameListener;", "getFirstFrameListeners", "()Lcom/tencent/magicbrush/utils/ListenerList;", "jsStuffListeners", "Lcom/tencent/magicbrush/MagicBrush$JSStuffListener;", "getJSStuffListeners", "viewManager", "Lcom/tencent/magicbrush/ui/MBViewManager;", "getViewManager", "()Lcom/tencent/magicbrush/ui/MBViewManager;", "bindTo", "", "fn", "Lkotlin/Function0;", "Lcom/tencent/magicbrush/V8RawPointer;", "isolatePtr", "", "contextPtr", "uvLoopPtr", "destroy", "lazyLoadBox2D", "setAnimationFrameHandler", "strategy", "Lcom/tencent/magicbrush/ui/AnimationFrameHandler$Strategy;", "Companion", "FirstFrameListener", "ImageDecodeListener", "JSStuffListener", "lib-magicbrush-nano_release"})
 public final class d
-  extends MBRuntime
 {
-  public static final a cxt;
-  public final f cxn;
-  public final BufferURLManager cxo;
-  public final com.tencent.magicbrush.utils.c<d> cxp;
-  public final com.tencent.magicbrush.utils.c<b> cxq;
-  public final MBViewManager cxr;
-  public final b cxs;
+  private final MBRuntime cKJ;
+  public SparseLongArray cKL;
+  private a cKM;
+  final b cKN;
+  private int cKO;
+  private int cKP;
+  private float cKQ;
+  private Queue<Float> cKR;
+  private float cKS;
+  private int cKT;
+  private int cKU;
+  private boolean cKV;
+  private a cKW;
+  private a cKX;
+  Handler handler;
+  private boolean hasInit;
   
-  static
+  d(MBRuntime paramMBRuntime)
   {
-    AppMethodBeat.i(140097);
-    cxt = new a((byte)0);
-    AppMethodBeat.o(140097);
+    AppMethodBeat.i(139930);
+    this.cKL = new SparseLongArray();
+    this.cKM = new a((byte)0);
+    this.cKN = new b((byte)0);
+    this.cKR = new LinkedList();
+    this.cKW = new a();
+    this.cKX = new a();
+    this.cKJ = paramMBRuntime;
+    this.hasInit = false;
+    AppMethodBeat.o(139930);
   }
   
-  private d(e parame)
+  final void QO()
   {
-    AppMethodBeat.i(140096);
-    this.cxn = ((f)parame);
-    this.cxo = new BufferURLManager();
-    this.cxp = new com.tencent.magicbrush.utils.c();
-    this.cxq = new com.tencent.magicbrush.utils.c();
-    this.cxr = new MBViewManager();
-    this.cxs = new b(this);
-    this.cwT = parame.cyk;
-    this.mNativeInst = nativeCreate(this.cwT);
-    nativeSetEventListener(this.mNativeInst, new EventDispatcher(this));
-    Object localObject = parame.cxB;
-    if (localObject == null) {
-      p.gkB();
-    }
-    a((com.tencent.magicbrush.handler.a)localObject);
-    localObject = parame.cxI.cyq;
-    if (localObject != null) {
-      ((BaseImageDecodeService)localObject).addDecodeEventListener((IImageDecodeService.b)new c());
-    }
-    a((BaseImageDecodeService)localObject);
-    a(parame.cxJ);
-    Hi();
-    parame = parame.cxC;
-    if (parame == null) {
-      p.gkB();
-    }
-    d(parame);
-    parame = (CharSequence)this.cxn.cyi;
-    if ((parame == null) || (parame.length() == 0)) {}
-    for (int i = 1;; i = 0)
+    AppMethodBeat.i(139931);
+    if (this.handler != null)
     {
-      if (i == 0) {
-        m((Runnable)new g(this));
-      }
-      AppMethodBeat.o(140096);
-      return;
+      this.handler.removeCallbacks(this.cKN);
+      this.handler = null;
+    }
+    AppMethodBeat.o(139931);
+  }
+  
+  public final a QP()
+  {
+    synchronized (this.cKJ)
+    {
+      a locala = this.cKM;
+      return locala;
     }
   }
   
-  protected final b Hq()
+  public final a QQ()
   {
-    return this.cxs;
-  }
-  
-  protected final MBViewManager Hr()
-  {
-    return this.cxr;
-  }
-  
-  public final void a(a.b paramb)
-  {
-    AppMethodBeat.i(140095);
-    p.h(paramb, "strategy");
-    if (this.cxa != null) {}
-    for (int i = 1; (ac.Nhs) && (i == 0); i = 0)
+    synchronized (this.cKJ)
     {
-      paramb = (Throwable)new AssertionError("Assertion failed");
-      AppMethodBeat.o(140095);
-      throw paramb;
+      this.cKX.cKZ = this.cKW.cKZ;
+      this.cKX.cKY = this.cKW.cKY;
+      this.cKW.cKZ = 0;
+      this.cKW.cKY = 0;
+      a locala = this.cKX;
+      return locala;
     }
-    if (this.cxa.HM() == paramb)
+  }
+  
+  public final int QR()
+  {
+    synchronized (this.cKJ)
     {
-      AppMethodBeat.o(140095);
-      return;
+      int i = this.cKW.cKY;
+      return i;
     }
-    c.c.i("MagicBrush", "MagicBrush is changing AnimationFrameHandler strategy from " + this.cxa.HM() + ' ' + "to " + paramb, new Object[0]);
-    Object localObject = com.tencent.magicbrush.ui.a.cAr;
-    localObject = (MBRuntime)this;
-    com.tencent.magicbrush.handler.c localc = Ht();
-    p.g(localc, "jsThreadHandler");
-    m((Runnable)new h(this, a.a.a((MBRuntime)localObject, localc, paramb)));
-    AppMethodBeat.o(140095);
   }
   
-  public final void d(final d.g.a.a<ai> parama)
+  public final int QS()
   {
-    AppMethodBeat.i(140093);
-    p.h(parama, "fn");
-    m((Runnable)new e(this, parama));
-    AppMethodBeat.o(140093);
-  }
-  
-  public final void destroy()
-  {
-    AppMethodBeat.i(140094);
-    c.c.i("MagicBrush", "MagicBrush is destroying...", new Object[0]);
-    super.destroy();
-    this.cxr.clear$lib_magicbrush_nano_release();
-    this.cxp.clear();
-    this.cxq.clear();
-    this.cxo.destroy();
-    c.c.i("MagicBrush", "MagicBrush is destroying...[done]", new Object[0]);
-    AppMethodBeat.o(140094);
-  }
-  
-  @l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/MagicBrush$Companion;", "", "()V", "DEFAULT_WINDOW_ID", "", "TAG", "", "create", "Lcom/tencent/magicbrush/MagicBrush;", "builder", "Lcom/tencent/magicbrush/MagicBrushBuilder;", "dls", "Lkotlin/Function1;", "", "Lkotlin/ExtensionFunctionType;", "lib-magicbrush-nano_release"})
-  public static final class a
-  {
-    public static d b(e parame)
+    synchronized (this.cKJ)
     {
-      AppMethodBeat.i(213323);
-      p.h(parame, "builder");
-      if (!com.tencent.magicbrush.internal.a.d(parame))
+      int i = this.cKW.cKZ;
+      return i;
+    }
+  }
+  
+  public final float QT()
+  {
+    AppMethodBeat.i(139933);
+    synchronized (this.cKJ)
+    {
+      if (this.cKJ.mNativeInst == 0L)
       {
-        AppMethodBeat.o(213323);
-        return null;
+        AppMethodBeat.o(139933);
+        return -1.0F;
       }
-      parame = new d(parame, (byte)0);
-      AppMethodBeat.o(213323);
-      return parame;
+      float f = this.cKJ.nativeGetCurrentFpsVariance(this.cKJ.mNativeInst);
+      AppMethodBeat.o(139933);
+      return f;
     }
   }
   
-  @l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/MagicBrush$FirstFrameListener;", "", "onFirstFrame", "", "lib-magicbrush-nano_release"})
-  public static abstract interface b
+  public final void QU()
   {
-    public abstract void onFirstFrame();
-  }
-  
-  @l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/MagicBrush$ImageDecodeListener;", "Lcom/github/henryye/nativeiv/api/IImageDecodeService$IDecodeEventListener;", "(Lcom/tencent/magicbrush/MagicBrush;)V", "onDecodeEvent", "", "path", "", "event", "Lcom/github/henryye/nativeiv/api/IImageDecodeService$IDecodeEventListener$Event;", "decodeInfo", "Lcom/github/henryye/nativeiv/api/DecodeInfo;", "onDecodeResult", "image", "", "recycleHandler", "Lcom/github/henryye/nativeiv/api/IImageDecodeService$IRecycleHandler;", "config", "Lcom/github/henryye/nativeiv/ImageDecodeConfig;", "lib-magicbrush-nano_release"})
-  final class c
-    implements IImageDecodeService.b
-  {
-    public final void a(String paramString, IImageDecodeService.b.a parama, com.github.henryye.nativeiv.api.a parama1)
+    AppMethodBeat.i(139934);
+    synchronized (this.cKJ)
     {
-      AppMethodBeat.i(140088);
-      p.h(paramString, "path");
-      p.h(parama, "event");
-      p.h(parama1, "decodeInfo");
-      AppMethodBeat.o(140088);
-    }
-    
-    public final void a(String paramString, Object paramObject, IImageDecodeService.c paramc, ImageDecodeConfig paramImageDecodeConfig)
-    {
-      AppMethodBeat.i(140089);
-      p.h(paramString, "path");
-      p.h(paramc, "recycleHandler");
-      p.h(paramImageDecodeConfig, "config");
-      this.cxu.b(paramString, paramObject, paramc, paramImageDecodeConfig);
-      AppMethodBeat.o(140089);
+      if (this.cKJ.mNativeInst == 0L)
+      {
+        AppMethodBeat.o(139934);
+        return;
+      }
+      this.cKJ.nativeSetEnableInspectFpsVariance(this.cKJ.mNativeInst, true);
+      AppMethodBeat.o(139934);
+      return;
     }
   }
   
-  @l(gjZ={1, 1, 13}, gka={""}, gkb={"Lcom/tencent/magicbrush/MagicBrush$JSStuffListener;", "", "onConsole", "", "output", "", "onJSError", "exception", "stack", "contextId", "", "lib-magicbrush-nano_release"})
-  public static abstract interface d
+  public final int QV()
   {
-    public abstract void onConsole(String paramString);
-    
-    public abstract void onJSError(String paramString1, String paramString2, int paramInt);
+    AppMethodBeat.i(139935);
+    synchronized (this.cKJ)
+    {
+      if (this.cKJ.mNativeInst == 0L)
+      {
+        AppMethodBeat.o(139935);
+        return -1;
+      }
+      int i = this.cKJ.nativeGetFrameCounter(this.cKJ.mNativeInst);
+      AppMethodBeat.o(139935);
+      return i;
+    }
   }
   
-  @l(gjZ={1, 1, 13}, gka={""}, gkb={"<anonymous>", "", "run"})
-  static final class e
+  public final int QW()
+  {
+    AppMethodBeat.i(139936);
+    synchronized (this.cKJ)
+    {
+      if (this.cKJ.mNativeInst == 0L)
+      {
+        AppMethodBeat.o(139936);
+        return 0;
+      }
+      int i = this.cKJ.nativeGetDrawCalls(this.cKJ.mNativeInst);
+      AppMethodBeat.o(139936);
+      return i;
+    }
+  }
+  
+  public final int QX()
+  {
+    AppMethodBeat.i(139937);
+    synchronized (this.cKJ)
+    {
+      if (this.cKJ.mNativeInst == 0L)
+      {
+        AppMethodBeat.o(139937);
+        return 0;
+      }
+      int i = this.cKJ.nativeGetVertexes(this.cKJ.mNativeInst);
+      AppMethodBeat.o(139937);
+      return i;
+    }
+  }
+  
+  public final int QY()
+  {
+    AppMethodBeat.i(139938);
+    synchronized (this.cKJ)
+    {
+      if (this.cKJ.mNativeInst == 0L)
+      {
+        AppMethodBeat.o(139938);
+        return 0;
+      }
+      int i = this.cKJ.nativeGetTriangles(this.cKJ.mNativeInst);
+      AppMethodBeat.o(139938);
+      return i;
+    }
+  }
+  
+  public final void QZ()
+  {
+    AppMethodBeat.i(139939);
+    synchronized (this.cKJ)
+    {
+      if (this.cKJ.mNativeInst == 0L)
+      {
+        AppMethodBeat.o(139939);
+        return;
+      }
+      Object localObject1 = this.cKJ.nativeGetCurrentFps(this.cKJ.mNativeInst);
+      this.cKM.cKu = localObject1[0];
+      this.cKM.cKv = localObject1[1];
+      if (this.hasInit)
+      {
+        this.cKT += 1;
+        if (this.cKT > this.cKU)
+        {
+          this.cKT = 1;
+          if (this.cKV)
+          {
+            this.cKW.cKZ = 0;
+            this.cKW.cKY = 0;
+          }
+        }
+        if (this.cKM.cKu < this.cKQ)
+        {
+          localObject1 = this.cKW;
+          ((a)localObject1).cKZ += 1;
+        }
+        if ((this.cKR.size() >= this.cKO) && (this.cKO > 0))
+        {
+          if (this.cKM.cKu * this.cKO + this.cKP < this.cKS)
+          {
+            localObject1 = this.cKW;
+            ((a)localObject1).cKY += 1;
+          }
+          this.cKS -= ((Float)this.cKR.remove()).floatValue();
+        }
+        this.cKR.add(Float.valueOf(this.cKM.cKu));
+        this.cKS += this.cKM.cKu;
+      }
+      AppMethodBeat.o(139939);
+      return;
+    }
+  }
+  
+  public final void a(int paramInt1, int paramInt2, float paramFloat, int paramInt3, boolean paramBoolean)
+  {
+    synchronized (this.cKJ)
+    {
+      this.cKO = paramInt1;
+      this.cKQ = paramFloat;
+      this.cKP = (paramInt1 * paramInt2);
+      this.cKU = paramInt3;
+      this.cKV = paramBoolean;
+      this.hasInit = true;
+      return;
+    }
+  }
+  
+  public final float ii(int paramInt)
+  {
+    AppMethodBeat.i(139932);
+    float f = (QV() - paramInt) * 1000.0F / (float)h.ticksToNow(this.cKL.get(paramInt));
+    AppMethodBeat.o(139932);
+    return f;
+  }
+  
+  public final class a
+  {
+    public int cKY;
+    public int cKZ;
+    
+    public a() {}
+  }
+  
+  final class b
     implements Runnable
   {
-    e(d paramd, d.g.a.a parama) {}
+    private b() {}
     
     public final void run()
     {
-      AppMethodBeat.i(140090);
-      ai localai = (ai)parama.invoke();
-      this.cxu.nativeBindTo(this.cxu.mNativeInst, localai.cys, localai.cyt, localai.cyu);
-      this.cxu.cxo.bindTo(localai.cys, localai.cyt);
-      AppMethodBeat.o(140090);
-    }
-  }
-  
-  @l(gjZ={1, 1, 13}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/magicbrush/V8RawPointer;", "invoke"})
-  public static final class f
-    extends q
-    implements d.g.a.a<ai>
-  {
-    public f(long paramLong1, long paramLong2, long paramLong3)
-    {
-      super();
-    }
-  }
-  
-  @l(gjZ={1, 1, 13}, gka={""}, gkb={"<anonymous>", "", "run"})
-  static final class g
-    implements Runnable
-  {
-    g(d paramd) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(213324);
-      long l1 = h.HQ();
-      com.tencent.magicbrush.a.b.loadLibrary("mmbox2d");
-      long l2 = h.HQ();
-      this.cxu.nativeLazyLoadBox2D(this.cxu.mNativeInst, this.cxu.cxn.cyi);
-      c.c.i("MagicBrush", "lazy load box2d loadCost: %d bindCost: %d", new Object[] { Long.valueOf(l2 - l1), Long.valueOf(h.aO(l2)) });
-      AppMethodBeat.o(213324);
-    }
-  }
-  
-  @l(gjZ={1, 1, 13}, gka={""}, gkb={"<anonymous>", "", "run"})
-  static final class h
-    implements Runnable
-  {
-    h(d paramd, com.tencent.magicbrush.ui.a parama) {}
-    
-    public final void run()
-    {
-      AppMethodBeat.i(140092);
-      com.tencent.magicbrush.ui.a locala = this.cxu.cxa;
-      this.cxu.cxa.pause();
-      this.cxu.cxa = this.cxz;
-      this.cxu.cxa.resume();
-      locala.destroy();
-      AppMethodBeat.o(140092);
+      AppMethodBeat.i(139929);
+      d.this.QZ();
+      d.this.handler.postDelayed(d.this.cKN, 1000L);
+      AppMethodBeat.o(139929);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.d
  * JD-Core Version:    0.7.0.1
  */

@@ -2,40 +2,42 @@ package com.tencent.mm.plugin.qqmail.c;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.qqmail.e.f;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class k
-  implements com.tencent.mm.ak.f, b<Bundle, Bundle>
+  implements i, b<Bundle, Bundle>
 {
-  private d<Bundle> gAJ;
-  private String xqW;
+  private String BqZ;
+  private d<Bundle> hny;
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    AppMethodBeat.i(217938);
-    ae.i("MicroMsg.UpdateMailStatusTask", "read mail, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    if (!((com.tencent.mm.plugin.qqmail.e.f)paramn).xqW.equals(this.xqW))
+    AppMethodBeat.i(198592);
+    Log.i("MicroMsg.UpdateMailStatusTask", "read mail, errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    if (!((f)paramq).BqZ.equals(this.BqZ))
     {
-      ae.w("MicroMsg.UpdateMailStatusTask", "not my scene, ignore");
-      AppMethodBeat.o(217938);
+      Log.w("MicroMsg.UpdateMailStatusTask", "not my scene, ignore");
+      AppMethodBeat.o(198592);
       return;
     }
-    g.ajj().b(11480, this);
-    if (this.gAJ != null)
+    g.azz().b(11480, this);
+    if (this.hny != null)
     {
-      paramn = new Bundle();
-      paramn.putInt("err_type", paramInt1);
-      paramn.putInt("err_code", paramInt2);
-      paramn.putString("err_msg", paramString);
-      paramn.putString("mail_id", this.xqW);
-      this.gAJ.be(paramn);
+      paramq = new Bundle();
+      paramq.putInt("err_type", paramInt1);
+      paramq.putInt("err_code", paramInt2);
+      paramq.putString("err_msg", paramString);
+      paramq.putString("mail_id", this.BqZ);
+      this.hny.bn(paramq);
     }
-    AppMethodBeat.o(217938);
+    AppMethodBeat.o(198592);
   }
 }
 

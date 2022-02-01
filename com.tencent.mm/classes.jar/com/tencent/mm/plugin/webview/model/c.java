@@ -1,116 +1,116 @@
 package com.tencent.mm.plugin.webview.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cw;
-import com.tencent.mm.model.v;
-import com.tencent.mm.protocal.protobuf.ajx;
-import com.tencent.mm.protocal.protobuf.ajy;
-import com.tencent.mm.protocal.protobuf.akf;
-import com.tencent.mm.protocal.protobuf.akn;
-import com.tencent.mm.protocal.protobuf.akt;
-import com.tencent.mm.protocal.protobuf.alc;
-import com.tencent.mm.protocal.protobuf.jb;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.a.cz;
+import com.tencent.mm.model.z;
+import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.protocal.protobuf.amm;
+import com.tencent.mm.protocal.protobuf.amt;
+import com.tencent.mm.protocal.protobuf.anb;
+import com.tencent.mm.protocal.protobuf.anh;
+import com.tencent.mm.protocal.protobuf.anq;
+import com.tencent.mm.protocal.protobuf.jo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class c
 {
-  public static boolean a(cw paramcw, c.a parama)
+  public static boolean a(cz paramcz, c.a parama)
   {
     AppMethodBeat.i(78837);
     if (!parama.valid())
     {
-      ae.w("MicroMsg.GetFavDataSource", "fill favorite event fail, event is null or wrapper is invalid");
-      paramcw.doL.doQ = 2131758885;
+      Log.w("MicroMsg.GetFavDataSource", "fill favorite event fail, event is null or wrapper is invalid");
+      paramcz.dFZ.dGe = 2131759209;
       AppMethodBeat.o(78837);
       return false;
     }
-    akn localakn = new akn();
-    akt localakt = new akt();
-    ajx localajx = new ajx();
-    localajx.aPI(parama.url);
-    localajx.aPC(parama.title);
-    localajx.aPD(parama.desc);
-    localajx.aPL(parama.thumbUrl);
-    localajx.aQa(parama.dIA);
-    localajx.ws(true);
-    localajx.wt(true);
-    localajx.aao(5);
-    alc localalc = new alc();
-    localalc.aQS(parama.thumbUrl);
-    localalc.aQP(parama.title);
-    localalc.aQQ(parama.desc);
-    localakn.b(localalc);
-    localakn.f(parama.Ekw);
-    localakt.aQC(v.aAC());
-    localakt.aQD(v.aAC());
-    localakt.aax(3);
-    localakt.Dk(bu.fpO());
-    localakt.aQI(parama.dwb);
-    localakt.aQJ(parama.url);
-    paramcw.doL.title = localajx.title;
-    paramcw.doL.doN = localakn;
-    paramcw.doL.type = 5;
-    localakn.a(localakt);
-    localakn.oeJ.add(localajx);
+    anb localanb = new anb();
+    anh localanh = new anh();
+    aml localaml = new aml();
+    localaml.bgl(parama.url);
+    localaml.bgf(parama.title);
+    localaml.bgg(parama.desc);
+    localaml.bgo(parama.thumbUrl);
+    localaml.bgD(parama.ean);
+    localaml.As(true);
+    localaml.At(true);
+    localaml.ajd(5);
+    anq localanq = new anq();
+    localanq.bhv(parama.thumbUrl);
+    localanq.bhs(parama.title);
+    localanq.bht(parama.desc);
+    localanb.b(localanq);
+    localanb.f(parama.IXu);
+    localanh.bhf(z.aTY());
+    localanh.bhg(z.aTY());
+    localanh.ajm(3);
+    localanh.MA(Util.nowMilliSecond());
+    localanh.bhl(parama.dNI);
+    localanh.bhm(parama.url);
+    paramcz.dFZ.title = localaml.title;
+    paramcz.dFZ.dGb = localanb;
+    paramcz.dFZ.type = 5;
+    localanb.a(localanh);
+    localanb.ppH.add(localaml);
     AppMethodBeat.o(78837);
     return true;
   }
   
-  public static boolean a(cw paramcw, jb paramjb)
+  public static boolean a(cz paramcz, jo paramjo)
   {
-    AppMethodBeat.i(198112);
-    if (paramjb == null)
+    AppMethodBeat.i(210971);
+    if (paramjo == null)
     {
-      ae.w("MicroMsg.GetFavDataSource", "fillMpVideoEventInfo mpMsgItem is null");
-      AppMethodBeat.o(198112);
+      Log.w("MicroMsg.GetFavDataSource", "fillMpVideoEventInfo mpMsgItem is null");
+      AppMethodBeat.o(210971);
       return false;
     }
-    akn localakn = new akn();
-    Object localObject = new akt();
-    ((akt)localObject).aQC(v.aAC());
-    ((akt)localObject).aQD(v.aAC());
-    ((akt)localObject).aax(4);
-    ((akt)localObject).Dk(bu.fpO());
-    ((akt)localObject).aQJ(paramjb.url);
-    localakn.a((akt)localObject);
-    localObject = new ajx();
-    ((ajx)localObject).aPQ("");
-    ((ajx)localObject).aPL(paramjb.hGe);
-    ((ajx)localObject).aPU(aj.ej(paramjb.FUx + paramjb.FUw));
-    ((ajx)localObject).aan(paramjb.videoDuration);
-    ((ajx)localObject).aPC(paramjb.title);
-    ((ajx)localObject).aPI(paramjb.url);
-    ((ajx)localObject).ws(true);
-    ((ajx)localObject).wt(true);
-    akf localakf = new akf();
-    localakf.hCa = paramjb.FUx;
-    localakf.videoUrl = paramjb.videoUrl;
-    localakf.FUw = paramjb.FUw;
-    localakf.dpP = paramjb.dpP;
-    localakf.hFW = paramjb.hFW;
-    localakf.hGe = paramjb.hGe;
-    localakf.videoWidth = paramjb.width;
-    localakf.videoHeight = paramjb.height;
-    localakf.duration = paramjb.videoDuration;
-    paramjb = new ajy();
-    paramjb.e(localakf);
-    ((ajx)localObject).a(paramjb);
-    paramjb = new LinkedList();
-    paramjb.add(localObject);
-    localakn.bm(paramjb);
-    paramcw.doL.doN = localakn;
-    paramcw.doL.type = 4;
-    ((ajx)localObject).aao(4);
-    AppMethodBeat.o(198112);
+    anb localanb = new anb();
+    Object localObject = new anh();
+    ((anh)localObject).bhf(z.aTY());
+    ((anh)localObject).bhg(z.aTY());
+    ((anh)localObject).ajm(4);
+    ((anh)localObject).MA(Util.nowMilliSecond());
+    ((anh)localObject).bhm(paramjo.url);
+    localanb.a((anh)localObject);
+    localObject = new aml();
+    ((aml)localObject).bgt("");
+    ((aml)localObject).bgo(paramjo.iAo);
+    ((aml)localObject).bgx(MD5Util.getMD5String(paramjo.KOf + paramjo.KOe));
+    ((aml)localObject).ajc(paramjo.videoDuration);
+    ((aml)localObject).bgf(paramjo.title);
+    ((aml)localObject).bgl(paramjo.url);
+    ((aml)localObject).As(true);
+    ((aml)localObject).At(true);
+    amt localamt = new amt();
+    localamt.vid = paramjo.KOf;
+    localamt.videoUrl = paramjo.videoUrl;
+    localamt.KOe = paramjo.KOe;
+    localamt.dHc = paramjo.dHc;
+    localamt.iAg = paramjo.iAg;
+    localamt.iAo = paramjo.iAo;
+    localamt.videoWidth = paramjo.width;
+    localamt.videoHeight = paramjo.height;
+    localamt.duration = paramjo.videoDuration;
+    paramjo = new amm();
+    paramjo.e(localamt);
+    ((aml)localObject).a(paramjo);
+    paramjo = new LinkedList();
+    paramjo.add(localObject);
+    localanb.bH(paramjo);
+    paramcz.dFZ.dGb = localanb;
+    paramcz.dFZ.type = 4;
+    ((aml)localObject).ajd(4);
+    AppMethodBeat.o(210971);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.model.c
  * JD-Core Version:    0.7.0.1
  */

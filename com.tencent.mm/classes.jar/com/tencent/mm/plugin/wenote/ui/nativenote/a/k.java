@@ -10,19 +10,19 @@ import com.tencent.mm.plugin.wenote.model.a.c;
 public final class k
   extends j
 {
-  private ImageView EVh;
-  private TextView EVi;
+  private ImageView JLa;
+  private TextView JLb;
   
   public k(View paramView, com.tencent.mm.plugin.wenote.model.nativenote.manager.k paramk)
   {
     super(paramView, paramk);
     AppMethodBeat.i(30870);
-    this.pzb.setVisibility(8);
-    this.dtJ.setVisibility(8);
-    this.jnX.setVisibility(8);
-    this.pzb.setOnClickListener(null);
-    this.EVh = ((ImageView)paramView.findViewById(2131302935));
-    this.EVi = ((TextView)paramView.findViewById(2131302937));
+    this.qOs.setVisibility(8);
+    this.dKU.setVisibility(8);
+    this.kmg.setVisibility(8);
+    this.qOs.setOnClickListener(null);
+    this.JLa = ((ImageView)paramView.findViewById(2131305522));
+    this.JLb = ((TextView)paramView.findViewById(2131305524));
     AppMethodBeat.o(30870);
   }
   
@@ -35,18 +35,18 @@ public final class k
       AppMethodBeat.o(30871);
       return;
     }
-    this.pzi.setVisibility(0);
+    this.qOz.setVisibility(0);
     AppMethodBeat.o(30871);
   }
   
-  public final int cfi()
+  public final int cCY()
   {
     return -4;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.k
  * JD-Core Version:    0.7.0.1
  */

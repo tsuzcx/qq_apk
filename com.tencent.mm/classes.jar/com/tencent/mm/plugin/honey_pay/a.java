@@ -1,25 +1,27 @@
 package com.tencent.mm.plugin.honey_pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.h;
-import com.tencent.mm.g.a.px;
+import com.tencent.mm.co.c;
+import com.tencent.mm.co.h;
+import com.tencent.mm.g.a.qr;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.cj;
+import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.honey_pay.model.b;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
 import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.sdk.event.IListener;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class a
-  implements az
+  implements bd
 {
   private static HashMap<Integer, h.b> baseDBFactories;
-  private h<b> uQP;
-  private com.tencent.mm.sdk.b.c<px> uQQ;
-  private q uQR;
+  private h<b> yjt;
+  private IListener<qr> yju;
+  private q yjv;
   
   static
   {
@@ -39,26 +41,26 @@ public class a
   public a()
   {
     AppMethodBeat.i(64607);
-    this.uQP = new h(new com.tencent.mm.cm.c() {});
-    this.uQQ = new com.tencent.mm.sdk.b.c() {};
-    this.uQR = new a.4(this);
+    this.yjt = new h(new c() {});
+    this.yju = new a.3(this);
+    this.yjv = new a.4(this);
     AppMethodBeat.o(64607);
   }
   
-  public static a deS()
+  public static a dYM()
   {
     AppMethodBeat.i(64606);
-    a locala = (a)u.ap(a.class);
+    a locala = (a)y.at(a.class);
     AppMethodBeat.o(64606);
     return locala;
   }
   
   public void clearPluginData(int paramInt) {}
   
-  public final b deT()
+  public final b dYN()
   {
     AppMethodBeat.i(64610);
-    b localb = (b)this.uQP.get();
+    b localb = (b)this.yjt.get();
     AppMethodBeat.o(64610);
     return localb;
   }
@@ -71,16 +73,16 @@ public class a
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(64608);
-    this.uQQ.alive();
-    ((s)g.ad(s.class)).getSysCmdMsgExtension().a("paymsg", this.uQR);
+    this.yju.alive();
+    ((s)g.ah(s.class)).getSysCmdMsgExtension().a("paymsg", this.yjv);
     AppMethodBeat.o(64608);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(64609);
-    this.uQQ.dead();
-    ((s)g.ad(s.class)).getSysCmdMsgExtension().b("paymsg", this.uQR);
+    this.yju.dead();
+    ((s)g.ah(s.class)).getSysCmdMsgExtension().b("paymsg", this.yjv);
     AppMethodBeat.o(64609);
   }
   
@@ -88,7 +90,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.honey_pay.a
  * JD-Core Version:    0.7.0.1
  */

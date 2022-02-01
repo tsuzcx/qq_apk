@@ -1,33 +1,35 @@
 package com.tencent.mm.plugin.appbrand.dynamic;
 
 import android.os.Bundle;
+import com.tencent.luggage.h.l;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.b.a.el;
+import com.tencent.mm.g.b.a.hr;
 import com.tencent.mm.ipcinvoker.type.IPCBoolean;
 import com.tencent.mm.modelappbrand.u;
 import com.tencent.mm.plugin.appbrand.collector.CollectSession;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.dynamic.f.g;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 import junit.framework.Assert;
 
 public final class a
 {
-  public String gcZ;
-  public String khM;
-  h khN;
+  public String gIx;
+  public String llv;
+  h llw;
   
   public a(h paramh)
   {
-    this.khN = paramh;
+    this.llw = paramh;
   }
   
-  public final void bz(String paramString, int paramInt)
+  public final void bE(String paramString, int paramInt)
   {
     AppMethodBeat.i(121136);
-    if ((this.gcZ == null) || (this.gcZ.length() == 0))
+    if ((this.gIx == null) || (this.gIx.length() == 0))
     {
       AppMethodBeat.o(121136);
       return;
@@ -35,7 +37,7 @@ public final class a
     Bundle localBundle = new Bundle();
     localBundle.putString("id", paramString);
     localBundle.putInt("widgetState", paramInt);
-    com.tencent.mm.ipcinvoker.h.a(i.bgs().Pc(paramString), localBundle, f.a.class, null);
+    com.tencent.mm.ipcinvoker.h.a(i.bBL().Yn(paramString), localBundle, f.a.class, null);
     AppMethodBeat.o(121136);
   }
   
@@ -69,7 +71,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.a
  * JD-Core Version:    0.7.0.1
  */

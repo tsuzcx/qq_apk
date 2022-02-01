@@ -4,57 +4,57 @@ import android.content.Context;
 import com.tencent.luggage.xweb_ext.extendplugin.a;
 import com.tencent.luggage.xweb_ext.extendplugin.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.plugin.appbrand.jsapi.f.b;
-import com.tencent.mm.plugin.appbrand.jsapi.f.c;
-import com.tencent.mm.plugin.appbrand.jsapi.f.d;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.jsapi.y;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.ab;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.i.b;
+import com.tencent.mm.plugin.appbrand.jsapi.i.c;
+import com.tencent.mm.plugin.appbrand.jsapi.i.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Map;
 import org.json.JSONObject;
 
 public final class b
   implements a
 {
-  public JSONObject kkm;
-  public int kmu;
-  public m kmv;
-  public c kmw;
-  private f.d kmx;
-  private f.b kmy;
-  private f.c kmz;
+  public JSONObject lnV;
+  public int lqe;
+  public p lqf;
+  public f lqg;
+  private i.d lqh;
+  private i.b lqi;
+  private i.c lqj;
   
-  public b(int paramInt, JSONObject paramJSONObject, c paramc, m paramm)
+  public b(int paramInt, JSONObject paramJSONObject, f paramf, p paramp)
   {
-    this.kmu = paramInt;
-    this.kkm = paramJSONObject;
-    this.kmw = paramc;
-    this.kmv = paramm;
+    this.lqe = paramInt;
+    this.lnV = paramJSONObject;
+    this.lqg = paramf;
+    this.lqf = paramp;
   }
   
-  public final JSONObject BI()
+  public final JSONObject KX()
   {
-    return this.kkm;
+    return this.lnV;
   }
   
-  public final c Eo()
+  public final f NN()
   {
-    return this.kmw;
+    return this.lqg;
   }
   
-  public final boolean FI()
+  public final boolean Pr()
   {
-    return this.kmv instanceof y;
+    return this.lqf instanceof ab;
   }
   
-  public final JSONObject FJ()
+  public final JSONObject Ps()
   {
     AppMethodBeat.i(139387);
-    if (this.kkm != null)
+    if (this.lnV != null)
     {
-      localJSONObject = this.kkm;
+      localJSONObject = this.lnV;
       AppMethodBeat.o(139387);
       return localJSONObject;
     }
@@ -63,12 +63,12 @@ public final class b
     return localJSONObject;
   }
   
-  public final String FK()
+  public final String Pt()
   {
     AppMethodBeat.i(139388);
-    if (this.kmv != null)
+    if (this.lqf != null)
     {
-      String str = this.kmv.getName();
+      String str = this.lqf.getName();
       AppMethodBeat.o(139388);
       return str;
     }
@@ -76,27 +76,27 @@ public final class b
     return null;
   }
   
-  public final void FL()
+  public final void Pu()
   {
     AppMethodBeat.i(139392);
-    if ((this.kmw instanceof e))
+    if ((this.lqg instanceof h))
     {
-      ae.i("MicroMsg.AppBrand.AppBrandInvokeContext", "removeLifecycleListener");
-      e locale = (e)this.kmw;
-      if (this.kmx != null)
+      Log.i("MicroMsg.AppBrand.AppBrandInvokeContext", "removeLifecycleListener");
+      h localh = (h)this.lqg;
+      if (this.lqh != null)
       {
-        locale.b(this.kmx);
-        this.kmx = null;
+        localh.b(this.lqh);
+        this.lqh = null;
       }
-      if (this.kmy != null)
+      if (this.lqi != null)
       {
-        locale.b(this.kmy);
-        this.kmy = null;
+        localh.b(this.lqi);
+        this.lqi = null;
       }
-      if (this.kmz != null)
+      if (this.lqj != null)
       {
-        locale.b(this.kmz);
-        this.kmz = null;
+        localh.b(this.lqj);
+        this.lqj = null;
       }
     }
     AppMethodBeat.o(139392);
@@ -105,35 +105,35 @@ public final class b
   public final void a(final a.a parama)
   {
     AppMethodBeat.i(139391);
-    if ((this.kmw instanceof e))
+    if ((this.lqg instanceof h))
     {
-      ae.i("MicroMsg.AppBrand.AppBrandInvokeContext", "addLifecycleListener");
-      e locale = (e)this.kmw;
-      this.kmx = new f.d()
+      Log.i("MicroMsg.AppBrand.AppBrandInvokeContext", "addLifecycleListener");
+      h localh = (h)this.lqg;
+      this.lqh = new i.d()
       {
         public final void onForeground()
         {
           AppMethodBeat.i(139382);
-          ae.i("MicroMsg.AppBrand.AppBrandInvokeContext", "onForeground");
+          Log.i("MicroMsg.AppBrand.AppBrandInvokeContext", "onForeground");
           if (parama != null) {
             parama.onForeground();
           }
           AppMethodBeat.o(139382);
         }
       };
-      this.kmy = new f.b()
+      this.lqi = new i.b()
       {
         public final void onBackground()
         {
           AppMethodBeat.i(139383);
-          ae.i("MicroMsg.AppBrand.AppBrandInvokeContext", "onBackground");
+          Log.i("MicroMsg.AppBrand.AppBrandInvokeContext", "onBackground");
           if (parama != null) {
-            parama.gF(com.tencent.mm.plugin.appbrand.jsapi.ad.b.Sg(b.this.kmw.getAppId()));
+            parama.hU(com.tencent.mm.plugin.appbrand.jsapi.ag.b.abL(b.this.lqg.getAppId()));
           }
           AppMethodBeat.o(139383);
         }
       };
-      this.kmz = new f.c()
+      this.lqj = new i.c()
       {
         public final void onDestroy()
         {
@@ -144,30 +144,30 @@ public final class b
           AppMethodBeat.o(139384);
         }
       };
-      locale.a(this.kmx);
-      locale.a(this.kmy);
-      locale.a(this.kmz);
+      localh.a(this.lqh);
+      localh.a(this.lqi);
+      localh.a(this.lqj);
     }
     AppMethodBeat.o(139391);
   }
   
   public final void b(a.a parama) {}
   
-  public final int bhd()
+  public final int bCw()
   {
-    return this.kmu;
+    return this.lqe;
   }
   
-  public final m bhe()
+  public final p bCx()
   {
-    return this.kmv;
+    return this.lqf;
   }
   
-  public final String dw(String paramString)
+  public final String dP(String paramString)
   {
     AppMethodBeat.i(139389);
-    if ((this.kmw != null) && (this.kmv != null)) {
-      this.kmw.h(this.kmu, this.kmv.e(paramString, null));
+    if ((this.lqg != null) && (this.lqf != null)) {
+      this.lqg.i(this.lqe, this.lqf.h(paramString, null));
     }
     AppMethodBeat.o(139389);
     return null;
@@ -176,8 +176,8 @@ public final class b
   public final String f(String paramString, Map<String, ? extends Object> paramMap)
   {
     AppMethodBeat.i(139390);
-    if ((this.kmw != null) && (this.kmv != null)) {
-      this.kmw.h(this.kmu, this.kmv.n(paramString, paramMap));
+    if ((this.lqg != null) && (this.lqf != null)) {
+      this.lqg.i(this.lqe, this.lqf.n(paramString, paramMap));
     }
     AppMethodBeat.o(139390);
     return null;
@@ -186,9 +186,9 @@ public final class b
   public final String getAppId()
   {
     AppMethodBeat.i(139385);
-    if (this.kmw != null)
+    if (this.lqg != null)
     {
-      String str = this.kmw.getAppId();
+      String str = this.lqg.getAppId();
       AppMethodBeat.o(139385);
       return str;
     }
@@ -199,9 +199,9 @@ public final class b
   public final Context getContext()
   {
     AppMethodBeat.i(139386);
-    if (this.kmw != null)
+    if (this.lqg != null)
     {
-      Context localContext = this.kmw.getContext();
+      Context localContext = this.lqg.getContext();
       AppMethodBeat.o(139386);
       return localContext;
     }
@@ -211,7 +211,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h.b
  * JD-Core Version:    0.7.0.1
  */

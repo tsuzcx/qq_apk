@@ -1,57 +1,108 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gr;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.g.c.gv;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class cn
-  extends gr
+  extends gv
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
-    AppMethodBeat.i(148673);
-    c.a locala = new c.a();
-    locala.IBL = new Field[3];
-    locala.columns = new String[4];
+    AppMethodBeat.i(43306);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[5];
+    localMAutoDBInfo.columns = new String[6];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "msgId";
-    locala.IBN.put("msgId", "LONG PRIMARY KEY ");
-    localStringBuilder.append(" msgId LONG PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "encryptUsername";
+    localMAutoDBInfo.colsMap.put("encryptUsername", "TEXT default ''  PRIMARY KEY ");
+    localStringBuilder.append(" encryptUsername TEXT default ''  PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "msgId";
-    locala.columns[1] = "cmsgId";
-    locala.IBN.put("cmsgId", "TEXT");
-    localStringBuilder.append(" cmsgId TEXT");
+    localMAutoDBInfo.primaryKey = "encryptUsername";
+    localMAutoDBInfo.columns[1] = "conRemark";
+    localMAutoDBInfo.colsMap.put("conRemark", "TEXT default '' ");
+    localStringBuilder.append(" conRemark TEXT default '' ");
     localStringBuilder.append(", ");
-    locala.columns[2] = "content";
-    locala.IBN.put("content", "TEXT default '' ");
-    localStringBuilder.append(" content TEXT default '' ");
-    locala.columns[3] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
-    AppMethodBeat.o(148673);
+    localMAutoDBInfo.columns[2] = "contactLabels";
+    localMAutoDBInfo.colsMap.put("contactLabels", "TEXT default '' ");
+    localStringBuilder.append(" contactLabels TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[3] = "conDescription";
+    localMAutoDBInfo.colsMap.put("conDescription", "TEXT default '' ");
+    localStringBuilder.append(" conDescription TEXT default '' ");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[4] = "conPhone";
+    localMAutoDBInfo.colsMap.put("conPhone", "TEXT default '' ");
+    localStringBuilder.append(" conPhone TEXT default '' ");
+    localMAutoDBInfo.columns[5] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(43306);
   }
   
-  public final void aWa(String paramString)
+  public cn()
   {
-    AppMethodBeat.i(148672);
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(148672);
-      return;
+    AppMethodBeat.i(43304);
+    this.field_encryptUsername = "";
+    this.field_conRemark = "";
+    AppMethodBeat.o(43304);
+  }
+  
+  public cn(String paramString)
+  {
+    this();
+    AppMethodBeat.i(43302);
+    this.field_conRemark = "";
+    String str = paramString;
+    if (paramString == null) {
+      str = "";
     }
-    this.field_cmsgId = paramString;
-    AppMethodBeat.o(148672);
+    this.field_encryptUsername = str;
+    AppMethodBeat.o(43302);
   }
   
-  public final c.a getDBInfo()
+  public cn(String paramString1, String paramString2)
   {
-    return null;
+    this();
+    AppMethodBeat.i(43303);
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "";
+    }
+    this.field_encryptUsername = str;
+    paramString1 = paramString2;
+    if (paramString2 == null) {
+      paramString1 = "";
+    }
+    this.field_conRemark = paramString1;
+    AppMethodBeat.o(43303);
+  }
+  
+  public final String ajB()
+  {
+    return this.field_encryptUsername;
+  }
+  
+  public final String ajy()
+  {
+    return this.field_conRemark;
+  }
+  
+  protected final Object clone()
+  {
+    AppMethodBeat.i(43305);
+    Object localObject = super.clone();
+    AppMethodBeat.o(43305);
+    return localObject;
+  }
+  
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
+  {
+    return info;
   }
 }
 

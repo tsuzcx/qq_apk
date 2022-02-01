@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<LinearLayout style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout style="@style/ld">
-        <EditText android:id="@id/a0j" android:hint="@string/acn" android:inputType="number" style="@style/n1" />
-        <View style="@style/mx" />
-        <EditText android:id="@id/a0i" android:hint="@string/acm" style="@style/n0" />
+    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hi" android:layout_marginRight="@dimen/hs">
+        <ImageView android:layout_width="wrap_content" android:layout_height="@dimen/hu" android:src="@drawable/bry" />
     </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hv" android:layout_marginRight="@dimen/hs">
+        <TextView android:textSize="18.0dip" android:textColor="@color/a2x" android:id="@id/zf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/a_o" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/zg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i2" android:text="@string/a_p" />
+    </LinearLayout>
+    <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
 </LinearLayout>

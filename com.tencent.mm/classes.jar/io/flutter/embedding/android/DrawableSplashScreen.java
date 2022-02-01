@@ -12,11 +12,11 @@ import android.widget.ImageView.ScaleType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class DrawableSplashScreen
-  implements h
+  implements j
 {
-  private final ImageView.ScaleType MYi;
-  private final long MYj;
-  private DrawableSplashScreenView MYk;
+  private final ImageView.ScaleType SMv;
+  private final long SMw;
+  private DrawableSplashScreenView SMx;
   private final Drawable drawable;
   
   public DrawableSplashScreen(Drawable paramDrawable)
@@ -27,20 +27,20 @@ public final class DrawableSplashScreen
   private DrawableSplashScreen(Drawable paramDrawable, ImageView.ScaleType paramScaleType)
   {
     this.drawable = paramDrawable;
-    this.MYi = paramScaleType;
-    this.MYj = 500L;
+    this.SMv = paramScaleType;
+    this.SMw = 500L;
   }
   
-  public final void aS(final Runnable paramRunnable)
+  public final void bc(final Runnable paramRunnable)
   {
     AppMethodBeat.i(10068);
-    if (this.MYk == null)
+    if (this.SMx == null)
     {
       paramRunnable.run();
       AppMethodBeat.o(10068);
       return;
     }
-    this.MYk.animate().alpha(0.0F).setDuration(this.MYj).setListener(new Animator.AnimatorListener()
+    this.SMx.animate().alpha(0.0F).setDuration(this.SMw).setListener(new Animator.AnimatorListener()
     {
       public final void onAnimationCancel(Animator paramAnonymousAnimator)
       {
@@ -63,12 +63,12 @@ public final class DrawableSplashScreen
     AppMethodBeat.o(10068);
   }
   
-  public final View lN(Context paramContext)
+  public final View lM(Context paramContext)
   {
     AppMethodBeat.i(10067);
-    this.MYk = new DrawableSplashScreenView(paramContext);
-    this.MYk.a(this.drawable, this.MYi);
-    paramContext = this.MYk;
+    this.SMx = new DrawableSplashScreenView(paramContext);
+    this.SMx.a(this.drawable, this.SMv);
+    paramContext = this.SMx;
     AppMethodBeat.o(10067);
     return paramContext;
   }
@@ -109,7 +109,7 @@ public final class DrawableSplashScreen
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     io.flutter.embedding.android.DrawableSplashScreen
  * JD-Core Version:    0.7.0.1
  */

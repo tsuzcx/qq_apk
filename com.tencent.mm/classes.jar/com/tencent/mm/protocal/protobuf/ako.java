@@ -5,94 +5,101 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class ako
   extends com.tencent.mm.bw.a
 {
-  public String Desc;
-  public int FNy;
-  public String FNz;
-  public String Title;
+  public int Lty;
+  public String key;
+  public String oxJ;
+  public String title;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(138174);
+    AppMethodBeat.i(215275);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Title != null) {
-        paramVarArgs.d(1, this.Title);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.key != null) {
+        paramVarArgs.e(1, this.key);
       }
-      if (this.Desc != null) {
-        paramVarArgs.d(2, this.Desc);
+      if (this.title != null) {
+        paramVarArgs.e(2, this.title);
       }
-      paramVarArgs.aS(3, this.FNy);
-      if (this.FNz != null) {
-        paramVarArgs.d(4, this.FNz);
+      if (this.oxJ != null) {
+        paramVarArgs.e(3, this.oxJ);
       }
-      AppMethodBeat.o(138174);
+      paramVarArgs.aM(4, this.Lty);
+      paramVarArgs.aM(5, this.type);
+      AppMethodBeat.o(215275);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Title == null) {
-        break label378;
+      if (this.key == null) {
+        break label426;
       }
     }
-    label378:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Title) + 0;; paramInt = 0)
+    label426:
+    for (int i = g.a.a.b.b.a.f(1, this.key) + 0;; i = 0)
     {
-      int i = paramInt;
-      if (this.Desc != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.Desc);
-      }
-      i += f.a.a.b.b.a.bz(3, this.FNy);
       paramInt = i;
-      if (this.FNz != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.FNz);
+      if (this.title != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.title);
       }
-      AppMethodBeat.o(138174);
-      return paramInt;
+      i = paramInt;
+      if (this.oxJ != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.oxJ);
+      }
+      paramInt = g.a.a.b.b.a.bu(4, this.Lty);
+      int j = g.a.a.b.b.a.bu(5, this.type);
+      AppMethodBeat.o(215275);
+      return i + paramInt + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(138174);
+        AppMethodBeat.o(215275);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         ako localako = (ako)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(138174);
+          AppMethodBeat.o(215275);
           return -1;
         case 1: 
-          localako.Title = locala.OmT.readString();
-          AppMethodBeat.o(138174);
+          localako.key = locala.UbS.readString();
+          AppMethodBeat.o(215275);
           return 0;
         case 2: 
-          localako.Desc = locala.OmT.readString();
-          AppMethodBeat.o(138174);
+          localako.title = locala.UbS.readString();
+          AppMethodBeat.o(215275);
           return 0;
         case 3: 
-          localako.FNy = locala.OmT.zc();
-          AppMethodBeat.o(138174);
+          localako.oxJ = locala.UbS.readString();
+          AppMethodBeat.o(215275);
+          return 0;
+        case 4: 
+          localako.Lty = locala.UbS.zi();
+          AppMethodBeat.o(215275);
           return 0;
         }
-        localako.FNz = locala.OmT.readString();
-        AppMethodBeat.o(138174);
+        localako.type = locala.UbS.zi();
+        AppMethodBeat.o(215275);
         return 0;
       }
-      AppMethodBeat.o(138174);
+      AppMethodBeat.o(215275);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.ako
  * JD-Core Version:    0.7.0.1
  */

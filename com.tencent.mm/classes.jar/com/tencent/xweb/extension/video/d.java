@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
 import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
@@ -21,8 +20,6 @@ import android.view.GestureDetector.OnGestureListener;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.ScaleGestureDetector.OnScaleGestureListener;
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -43,7 +40,7 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.u;
-import com.tencent.xweb.util.g;
+import com.tencent.xweb.util.h;
 import com.tencent.xweb.v;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -53,81 +50,181 @@ import org.xwalk.core.ReflectMethod;
 public final class d
   implements GestureDetector.OnGestureListener, ScaleGestureDetector.OnScaleGestureListener, b, u
 {
-  WebView DXF;
-  private int EGr = -3;
-  ScaleGestureDetector LMc;
-  ImageView MOA;
-  c MOB;
-  private WebChromeClient.CustomViewCallback MOC;
-  private boolean MOD;
-  private long MOE;
-  private double MOF;
-  private double MOG;
-  private final int MOH = 0;
-  private final int MOI = 1;
-  private final int MOJ = 2;
-  private final int MOK = 3;
-  private boolean MOL = false;
-  private v MOM;
-  private int MON = 0;
-  private double MOO = 0.0D;
-  private float MOP = 0.0F;
-  private float MOQ = 0.0F;
-  private a MOR;
-  String MOS;
-  private Timer MOT;
-  private boolean MOU;
-  private int MOV = 0;
-  private double MOW;
-  private int MOX = 200;
-  private Drawable MOY;
-  private boolean MOZ;
-  private ViewGroup MOo;
-  SurfaceView MOp;
-  private View MOq;
-  ViewGroup MOr;
-  VideoStatusLayout MOs;
-  ProgressBar MOt;
-  TextView MOu;
-  TextView MOv;
-  ClickableFrameLayout MOw;
-  LinearLayout MOx;
-  ImageView MOy;
-  ImageView MOz;
-  private boolean MPa;
-  private boolean MPb = false;
-  private int MPc;
-  GestureDetector PC;
-  private Window WM;
-  private WindowManager.LayoutParams azK;
-  private double lDw;
+  WebView IJw;
+  private int JvV = -3;
+  GestureDetector PO;
+  ScaleGestureDetector Rkr;
+  private long SBA;
+  private double SBB;
+  private double SBC;
+  private final int SBD = 0;
+  private final int SBE = 1;
+  private final int SBF = 2;
+  private final int SBG = 3;
+  private boolean SBH = false;
+  private v SBI;
+  private int SBJ = 0;
+  private double SBK = 0.0D;
+  private float SBL = 0.0F;
+  private float SBM = 0.0F;
+  private a SBN;
+  String SBO;
+  private Timer SBP;
+  private boolean SBQ;
+  private int SBR = 0;
+  private double SBS;
+  private int SBT = 200;
+  private Drawable SBU;
+  private boolean SBV;
+  private boolean SBW;
+  private boolean SBX = false;
+  private int SBY;
+  private ViewGroup SBk;
+  SurfaceView SBl;
+  private View SBm;
+  ViewGroup SBn;
+  VideoStatusLayout SBo;
+  ProgressBar SBp;
+  TextView SBq;
+  TextView SBr;
+  ClickableFrameLayout SBs;
+  LinearLayout SBt;
+  ImageView SBu;
+  ImageView SBv;
+  ImageView SBw;
+  c SBx;
+  private WebChromeClient.CustomViewCallback SBy;
+  private boolean SBz;
+  private Window WZ;
+  private WindowManager.LayoutParams azI;
   Activity mActivity;
   private AudioManager mAudioManager;
   private float mBrightness = 1.0F;
   private int mCurrentOrientation;
+  private double mLe;
   private int mMode = 0;
   FrameLayout mRootView;
   
-  private void as(Runnable paramRunnable)
+  private void En(final boolean paramBoolean)
+  {
+    AppMethodBeat.i(153609);
+    aC(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(153573);
+        if (paramBoolean)
+        {
+          d.k(d.this).setImageResource(2131235810);
+          AppMethodBeat.o(153573);
+          return;
+        }
+        d.k(d.this).setImageResource(2131235812);
+        AppMethodBeat.o(153573);
+      }
+    });
+    AppMethodBeat.o(153609);
+  }
+  
+  private void Eo(boolean paramBoolean)
+  {
+    AppMethodBeat.i(153632);
+    Activity localActivity = htk();
+    if (localActivity == null)
+    {
+      AppMethodBeat.o(153632);
+      return;
+    }
+    if (paramBoolean)
+    {
+      if ((localActivity.getWindow().getAttributes().flags & 0x800) != 0)
+      {
+        this.SBW = true;
+        localActivity.getWindow().clearFlags(2048);
+        if (this.SBX) {
+          break label171;
+        }
+        if ((localActivity.getWindow().getAttributes().flags & 0x400) == 0) {
+          break label104;
+        }
+        this.SBV = true;
+      }
+      for (;;)
+      {
+        this.SBX = true;
+        AppMethodBeat.o(153632);
+        return;
+        this.SBW = false;
+        break;
+        label104:
+        this.SBV = false;
+        localActivity.getWindow().addFlags(1024);
+      }
+    }
+    else
+    {
+      if (this.SBW) {
+        localActivity.getWindow().addFlags(2048);
+      }
+      if (!this.SBV) {
+        localActivity.getWindow().clearFlags(1024);
+      }
+      this.SBY = 0;
+      this.SBX = false;
+      this.SBz = false;
+    }
+    label171:
+    AppMethodBeat.o(153632);
+  }
+  
+  private void aC(Runnable paramRunnable)
   {
     AppMethodBeat.i(153601);
-    if (this.MOL)
+    if (this.SBH)
     {
       AppMethodBeat.o(153601);
       return;
     }
-    Activity localActivity = gfS();
+    Activity localActivity = htk();
     if (localActivity != null)
     {
       localActivity.runOnUiThread(paramRunnable);
       AppMethodBeat.o(153601);
       return;
     }
-    this.DXF.getView().post(paramRunnable);
+    this.IJw.getView().post(paramRunnable);
     AppMethodBeat.o(153601);
   }
   
-  private Activity gfS()
+  private SurfaceView hQ(View paramView)
+  {
+    AppMethodBeat.i(153631);
+    if ((paramView instanceof SurfaceView))
+    {
+      paramView = (SurfaceView)paramView;
+      AppMethodBeat.o(153631);
+      return paramView;
+    }
+    if ((paramView instanceof ViewGroup))
+    {
+      paramView = (ViewGroup)paramView;
+      int i = 0;
+      while (i < paramView.getChildCount())
+      {
+        SurfaceView localSurfaceView = hQ(paramView.getChildAt(i));
+        if (localSurfaceView != null)
+        {
+          AppMethodBeat.o(153631);
+          return localSurfaceView;
+        }
+        i += 1;
+      }
+    }
+    AppMethodBeat.o(153631);
+    return null;
+  }
+  
+  private Activity htk()
   {
     AppMethodBeat.i(153593);
     if (this.mActivity != null)
@@ -136,13 +233,13 @@ public final class d
       AppMethodBeat.o(153593);
       return localObject;
     }
-    Object localObject = this.DXF.getContext();
+    Object localObject = this.IJw.getContext();
     if ((localObject instanceof Activity))
     {
       localObject = (Activity)localObject;
-      label44:
+      label46:
       if (localObject == null) {
-        break label95;
+        break label98;
       }
       this.mActivity = ((Activity)localObject);
     }
@@ -159,81 +256,81 @@ public final class d
           break;
         }
         localObject = null;
-        break label44;
+        break label46;
       }
       localObject = null;
-      break label44;
-      label95:
+      break label46;
+      label98:
       Log.e("XWebNativeInterface", "royle:tryGetActivity but no Activity");
     }
   }
   
   /* Error */
-  public static String gfT()
+  public static String htl()
   {
     // Byte code:
-    //   0: ldc_w 275
-    //   3: invokestatic 197	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: ldc_w 277
-    //   9: invokestatic 283	com/tencent/xweb/xwalk/a/g:bcp	(Ljava/lang/String;)Lcom/tencent/xweb/xwalk/a/f;
+    //   0: ldc_w 329
+    //   3: invokestatic 189	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   6: ldc_w 331
+    //   9: invokestatic 337	com/tencent/xweb/xwalk/a/h:brX	(Ljava/lang/String;)Lcom/tencent/xweb/xwalk/a/g;
     //   12: astore_1
     //   13: aload_1
     //   14: ifnull +436 -> 450
     //   17: aload_1
-    //   18: getfield 288	com/tencent/xweb/xwalk/a/f:MUN	I
+    //   18: getfield 342	com/tencent/xweb/xwalk/a/g:SHU	I
     //   21: iconst_m1
     //   22: if_icmpeq +428 -> 450
     //   25: aload_1
-    //   26: getfield 288	com/tencent/xweb/xwalk/a/f:MUN	I
+    //   26: getfield 342	com/tencent/xweb/xwalk/a/g:SHU	I
     //   29: istore_0
-    //   30: new 290	java/io/File
+    //   30: new 344	java/io/File
     //   33: dup
     //   34: aload_1
     //   35: aload_1
-    //   36: getfield 288	com/tencent/xweb/xwalk/a/f:MUN	I
+    //   36: getfield 342	com/tencent/xweb/xwalk/a/g:SHU	I
     //   39: iconst_0
-    //   40: invokevirtual 294	com/tencent/xweb/xwalk/a/f:bz	(IZ)Ljava/lang/String;
-    //   43: invokespecial 297	java/io/File:<init>	(Ljava/lang/String;)V
+    //   40: invokevirtual 348	com/tencent/xweb/xwalk/a/g:ca	(IZ)Ljava/lang/String;
+    //   43: invokespecial 351	java/io/File:<init>	(Ljava/lang/String;)V
     //   46: astore_2
     //   47: aload_2
-    //   48: invokevirtual 301	java/io/File:isFile	()Z
+    //   48: invokevirtual 355	java/io/File:isFile	()Z
     //   51: ifeq +239 -> 290
     //   54: aload_2
-    //   55: invokevirtual 304	java/io/File:exists	()Z
+    //   55: invokevirtual 358	java/io/File:exists	()Z
     //   58: ifeq +232 -> 290
-    //   61: new 306	java/io/FileInputStream
+    //   61: new 360	java/io/FileInputStream
     //   64: dup
     //   65: aload_2
-    //   66: invokespecial 309	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   66: invokespecial 363	java/io/FileInputStream:<init>	(Ljava/io/File;)V
     //   69: astore_1
     //   70: aload_1
     //   71: ifnull +374 -> 445
-    //   74: new 311	java/io/InputStreamReader
+    //   74: new 365	java/io/InputStreamReader
     //   77: dup
     //   78: aload_1
-    //   79: ldc_w 313
-    //   82: invokespecial 316	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   79: ldc_w 367
+    //   82: invokespecial 370	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
     //   85: astore_3
-    //   86: new 318	java/io/BufferedReader
+    //   86: new 372	java/io/BufferedReader
     //   89: dup
     //   90: aload_3
-    //   91: invokespecial 321	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   91: invokespecial 375	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
     //   94: astore_2
     //   95: aload_3
     //   96: astore 5
     //   98: aload_2
     //   99: astore 4
-    //   101: new 323	java/lang/StringBuffer
+    //   101: new 377	java/lang/StringBuffer
     //   104: dup
-    //   105: ldc_w 325
-    //   108: invokespecial 326	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
+    //   105: ldc_w 379
+    //   108: invokespecial 380	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
     //   111: astore 6
     //   113: aload_3
     //   114: astore 5
     //   116: aload_2
     //   117: astore 4
     //   119: aload_2
-    //   120: invokevirtual 329	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   120: invokevirtual 383	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   123: astore 7
     //   125: aload 7
     //   127: ifnull +174 -> 301
@@ -243,15 +340,15 @@ public final class d
     //   134: astore 4
     //   136: aload 6
     //   138: aload 7
-    //   140: invokevirtual 333	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   140: invokevirtual 387	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   143: pop
     //   144: aload_3
     //   145: astore 5
     //   147: aload_2
     //   148: astore 4
     //   150: aload 6
-    //   152: ldc_w 335
-    //   155: invokevirtual 333	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   152: ldc_w 389
+    //   155: invokevirtual 387	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   158: pop
     //   159: goto -46 -> 113
     //   162: astore 6
@@ -259,62 +356,62 @@ public final class d
     //   165: astore 5
     //   167: aload_2
     //   168: astore 4
-    //   170: ldc_w 259
-    //   173: new 337	java/lang/StringBuilder
+    //   170: ldc_w 313
+    //   173: new 391	java/lang/StringBuilder
     //   176: dup
-    //   177: ldc_w 339
-    //   180: invokespecial 340	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   177: ldc_w 393
+    //   180: invokespecial 394	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   183: aload 6
-    //   185: invokevirtual 343	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   188: invokevirtual 346	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   191: invokevirtual 349	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   194: invokestatic 266	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   185: invokevirtual 397	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   188: invokevirtual 400	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   191: invokevirtual 403	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   194: invokestatic 320	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   197: aload_3
     //   198: ifnull +7 -> 205
     //   201: aload_3
-    //   202: invokevirtual 352	java/io/InputStreamReader:close	()V
+    //   202: invokevirtual 406	java/io/InputStreamReader:close	()V
     //   205: aload_2
     //   206: ifnull +7 -> 213
     //   209: aload_2
-    //   210: invokevirtual 353	java/io/BufferedReader:close	()V
+    //   210: invokevirtual 407	java/io/BufferedReader:close	()V
     //   213: aload_1
     //   214: ifnull +7 -> 221
     //   217: aload_1
-    //   218: invokevirtual 356	java/io/InputStream:close	()V
+    //   218: invokevirtual 410	java/io/InputStream:close	()V
     //   221: aconst_null
     //   222: astore_1
     //   223: aload_1
     //   224: ifnull +10 -> 234
     //   227: aload_1
-    //   228: invokevirtual 361	java/lang/String:isEmpty	()Z
+    //   228: invokevirtual 415	java/lang/String:isEmpty	()Z
     //   231: ifeq +158 -> 389
-    //   234: ldc_w 259
-    //   237: ldc_w 363
-    //   240: invokestatic 365	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   243: ldc_w 367
+    //   234: ldc_w 313
+    //   237: ldc_w 417
+    //   240: invokestatic 419	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   243: ldc_w 421
     //   246: astore_1
-    //   247: invokestatic 372	com/tencent/xweb/util/g:ghj	()V
-    //   250: ldc_w 275
-    //   253: invokestatic 204	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   247: invokestatic 426	com/tencent/xweb/util/h:huD	()V
+    //   250: ldc_w 329
+    //   253: invokestatic 199	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   256: aload_1
     //   257: areturn
     //   258: astore_1
-    //   259: ldc_w 259
-    //   262: new 337	java/lang/StringBuilder
+    //   259: ldc_w 313
+    //   262: new 391	java/lang/StringBuilder
     //   265: dup
-    //   266: ldc_w 374
-    //   269: invokespecial 340	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   266: ldc_w 428
+    //   269: invokespecial 394	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   272: aload_1
-    //   273: invokevirtual 375	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
-    //   276: invokevirtual 346	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   279: invokevirtual 349	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   282: invokestatic 266	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   273: invokevirtual 429	java/io/FileNotFoundException:getMessage	()Ljava/lang/String;
+    //   276: invokevirtual 400	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   279: invokevirtual 403	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   282: invokestatic 320	org/xwalk/core/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
     //   285: aconst_null
     //   286: astore_1
     //   287: goto -217 -> 70
     //   290: aload_1
     //   291: iconst_m1
-    //   292: invokevirtual 379	com/tencent/xweb/xwalk/a/f:ajt	(I)Z
+    //   292: invokevirtual 433	com/tencent/xweb/xwalk/a/g:atc	(I)Z
     //   295: pop
     //   296: aconst_null
     //   297: astore_1
@@ -324,16 +421,16 @@ public final class d
     //   304: aload_2
     //   305: astore 4
     //   307: aload 6
-    //   309: invokevirtual 380	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   309: invokevirtual 434	java/lang/StringBuffer:toString	()Ljava/lang/String;
     //   312: astore 6
     //   314: aload_3
-    //   315: invokevirtual 352	java/io/InputStreamReader:close	()V
+    //   315: invokevirtual 406	java/io/InputStreamReader:close	()V
     //   318: aload_2
-    //   319: invokevirtual 353	java/io/BufferedReader:close	()V
+    //   319: invokevirtual 407	java/io/BufferedReader:close	()V
     //   322: aload_1
     //   323: ifnull +7 -> 330
     //   326: aload_1
-    //   327: invokevirtual 356	java/io/InputStream:close	()V
+    //   327: invokevirtual 410	java/io/InputStream:close	()V
     //   330: aload 6
     //   332: astore_1
     //   333: goto -110 -> 223
@@ -353,26 +450,26 @@ public final class d
     //   355: aload_3
     //   356: ifnull +7 -> 363
     //   359: aload_3
-    //   360: invokevirtual 352	java/io/InputStreamReader:close	()V
+    //   360: invokevirtual 406	java/io/InputStreamReader:close	()V
     //   363: aload 4
     //   365: ifnull +8 -> 373
     //   368: aload 4
-    //   370: invokevirtual 353	java/io/BufferedReader:close	()V
+    //   370: invokevirtual 407	java/io/BufferedReader:close	()V
     //   373: aload_1
     //   374: ifnull +7 -> 381
     //   377: aload_1
-    //   378: invokevirtual 356	java/io/InputStream:close	()V
-    //   381: ldc_w 275
-    //   384: invokestatic 204	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   378: invokevirtual 410	java/io/InputStream:close	()V
+    //   381: ldc_w 329
+    //   384: invokestatic 199	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   387: aload_2
     //   388: athrow
-    //   389: ldc_w 259
-    //   392: ldc_w 382
+    //   389: ldc_w 313
+    //   392: ldc_w 436
     //   395: iload_0
-    //   396: invokestatic 386	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   399: invokevirtual 390	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   402: invokestatic 365	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   405: invokestatic 393	com/tencent/xweb/util/g:ghi	()V
+    //   396: invokestatic 440	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   399: invokevirtual 444	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+    //   402: invokestatic 419	org/xwalk/core/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   405: invokestatic 447	com/tencent/xweb/util/h:huC	()V
     //   408: goto -158 -> 250
     //   411: astore_1
     //   412: goto -31 -> 381
@@ -456,34 +553,6 @@ public final class d
     //   86	95	438	java/io/IOException
   }
   
-  private SurfaceView hx(View paramView)
-  {
-    AppMethodBeat.i(153631);
-    if ((paramView instanceof SurfaceView))
-    {
-      paramView = (SurfaceView)paramView;
-      AppMethodBeat.o(153631);
-      return paramView;
-    }
-    if ((paramView instanceof ViewGroup))
-    {
-      paramView = (ViewGroup)paramView;
-      int i = 0;
-      while (i < paramView.getChildCount())
-      {
-        SurfaceView localSurfaceView = hx(paramView.getChildAt(i));
-        if (localSurfaceView != null)
-        {
-          AppMethodBeat.o(153631);
-          return localSurfaceView;
-        }
-        i += 1;
-      }
-    }
-    AppMethodBeat.o(153631);
-    return null;
-  }
-  
   private static String q(double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(153611);
@@ -502,30 +571,30 @@ public final class d
   {
     AppMethodBeat.i(153597);
     if (this.mAudioManager == null) {
-      this.mAudioManager = ((AudioManager)this.DXF.getContext().getSystemService("audio"));
+      this.mAudioManager = ((AudioManager)this.IJw.getContext().getSystemService("audio"));
     }
-    this.MON = this.mAudioManager.getStreamMaxVolume(3);
-    this.MOO = this.mAudioManager.getStreamVolume(3);
-    if (this.MOR == null) {
-      this.MOR = new a(this.DXF.getContext());
+    this.SBJ = this.mAudioManager.getStreamMaxVolume(3);
+    this.SBK = this.mAudioManager.getStreamVolume(3);
+    if (this.SBN == null) {
+      this.SBN = new a(this.IJw.getContext());
     }
-    if (this.WM == null)
+    if (this.WZ == null)
     {
-      Activity localActivity = gfS();
+      Activity localActivity = htk();
       if (localActivity != null) {
-        this.WM = localActivity.getWindow();
+        this.WZ = localActivity.getWindow();
       }
     }
-    if ((this.WM != null) && (this.azK == null)) {
-      this.azK = this.WM.getAttributes();
+    if ((this.WZ != null) && (this.azI == null)) {
+      this.azI = this.WZ.getAttributes();
     }
-    if (this.azK != null)
+    if (this.azI != null)
     {
-      this.mBrightness = this.azK.screenBrightness;
+      this.mBrightness = this.azI.screenBrightness;
       if (this.mBrightness == -1.0F) {
         try
         {
-          this.mBrightness = ((float)(Settings.System.getInt(this.DXF.getContext().getContentResolver(), "screen_brightness") / 256.0D));
+          this.mBrightness = ((float)(Settings.System.getInt(this.IJw.getContext().getContentResolver(), "screen_brightness") / 256.0D));
           AppMethodBeat.o(153597);
           return;
         }
@@ -538,113 +607,49 @@ public final class d
     AppMethodBeat.o(153597);
   }
   
-  private void u(Activity paramActivity, int paramInt)
+  private void t(Activity paramActivity, int paramInt)
   {
-    AppMethodBeat.i(207520);
-    if ((this.MOM != null) && (this.MOM.tL(paramInt)))
+    AppMethodBeat.i(207177);
+    if ((this.SBI != null) && (this.SBI.xJ(paramInt)))
     {
       Log.i("XWebNativeInterface", "setRequestedOrientation by wechat client");
-      AppMethodBeat.o(207520);
+      AppMethodBeat.o(207177);
       return;
     }
     if (paramActivity != null) {
       paramActivity.setRequestedOrientation(paramInt);
     }
-    AppMethodBeat.o(207520);
+    AppMethodBeat.o(207177);
   }
   
-  private void zX(final boolean paramBoolean)
+  public final void Em(boolean paramBoolean)
   {
-    AppMethodBeat.i(153609);
-    as(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(153573);
-        if (paramBoolean)
-        {
-          d.k(d.this).setImageResource(2131234818);
-          AppMethodBeat.o(153573);
-          return;
-        }
-        d.k(d.this).setImageResource(2131234820);
-        AppMethodBeat.o(153573);
-      }
-    });
-    AppMethodBeat.o(153609);
+    AppMethodBeat.i(153600);
+    Log.i("XWebNativeInterface", "disableJsCallback:".concat(String.valueOf(paramBoolean)));
+    this.SBH = paramBoolean;
+    AppMethodBeat.o(153600);
   }
   
-  private void zY(boolean paramBoolean)
-  {
-    AppMethodBeat.i(153632);
-    Activity localActivity = gfS();
-    if (localActivity == null)
-    {
-      AppMethodBeat.o(153632);
-      return;
-    }
-    if (paramBoolean)
-    {
-      if ((localActivity.getWindow().getAttributes().flags & 0x800) != 0)
-      {
-        this.MPa = true;
-        localActivity.getWindow().clearFlags(2048);
-        if (this.MPb) {
-          break label174;
-        }
-        if ((localActivity.getWindow().getAttributes().flags & 0x400) == 0) {
-          break label107;
-        }
-        this.MOZ = true;
-      }
-      for (;;)
-      {
-        this.MPb = true;
-        AppMethodBeat.o(153632);
-        return;
-        this.MPa = false;
-        break;
-        label107:
-        this.MOZ = false;
-        localActivity.getWindow().addFlags(1024);
-      }
-    }
-    else
-    {
-      if (this.MPa) {
-        localActivity.getWindow().addFlags(2048);
-      }
-      if (!this.MOZ) {
-        localActivity.getWindow().clearFlags(1024);
-      }
-      this.MPc = 0;
-      this.MPb = false;
-      this.MOD = false;
-    }
-    label174:
-    AppMethodBeat.o(153632);
-  }
-  
-  public final void G(double paramDouble)
+  public final void F(double paramDouble)
   {
     AppMethodBeat.i(153614);
-    this.DXF.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_Seek(%f);", new Object[] { Double.valueOf(paramDouble) }), new ValueCallback() {});
+    this.IJw.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_Seek(%f);", new Object[] { Double.valueOf(paramDouble) }), new ValueCallback() {});
     AppMethodBeat.o(153614);
   }
   
-  public final void ba(boolean paramBoolean1, boolean paramBoolean2)
+  public final void bk(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(153595);
-    if ((this.DXF != null) && (paramBoolean2) && (this.MOS != null))
+    if ((this.IJw != null) && (paramBoolean2) && (this.SBO != null))
     {
       Log.i("XWebNativeInterface", "evaluteJavascript:".concat(String.valueOf(paramBoolean1)));
-      String str = this.MOS;
+      String str = this.SBO;
       if (paramBoolean1)
       {
-        str = this.MOS;
+        str = this.SBO;
         str = "window.addEventListener('DOMContentLoaded', function() {" + str + "});this.xwebReturn = function (){return \"1\";};this.xwebReturn()";
       }
-      this.DXF.evaluateJavascript(str, new ValueCallback() {});
+      this.IJw.evaluateJavascript(str, new d.20(this));
     }
     AppMethodBeat.o(153595);
   }
@@ -652,7 +657,7 @@ public final class d
   public final void e(final double paramDouble, final boolean paramBoolean)
   {
     AppMethodBeat.i(153610);
-    as(new Runnable()
+    aC(new Runnable()
     {
       public final void run()
       {
@@ -668,116 +673,30 @@ public final class d
     AppMethodBeat.o(153610);
   }
   
-  public final void eD(Object paramObject)
+  public final void eJ(Object paramObject)
   {
     AppMethodBeat.i(153594);
     new ReflectMethod(paramObject, "addJavascriptInterface", new Class[] { Object.class, String.class }).invoke(new Object[] { this, "xwebToNative" });
     AppMethodBeat.o(153594);
   }
   
-  public final boolean eE(Object paramObject)
+  public final boolean eK(Object paramObject)
   {
-    this.MOM = ((v)paramObject);
+    this.SBI = ((v)paramObject);
     return true;
   }
   
-  public final void ewR()
-  {
-    AppMethodBeat.i(153613);
-    this.DXF.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPause();", new Object[0]), new ValueCallback() {});
-    AppMethodBeat.o(153613);
-  }
-  
-  public final void gfU()
-  {
-    AppMethodBeat.i(153602);
-    if (this.MOT != null)
-    {
-      this.MOT.cancel();
-      this.MOT.purge();
-      this.MOT = null;
-    }
-    this.MOT = new Timer();
-    this.MOT.schedule(new TimerTask()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(153590);
-        d.this.gfX();
-        AppMethodBeat.o(153590);
-      }
-    }, 4000L);
-    AppMethodBeat.o(153602);
-  }
-  
-  public final void gfV()
-  {
-    AppMethodBeat.i(153603);
-    if (this.MOT != null)
-    {
-      this.MOT.cancel();
-      this.MOT.purge();
-      this.MOT = null;
-    }
-    AppMethodBeat.o(153603);
-  }
-  
-  public final void gfW()
-  {
-    AppMethodBeat.i(153607);
-    as(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(153591);
-        d.a(d.this, true);
-        d.j(d.this).setVisibility(0);
-        d.this.gfU();
-        AppMethodBeat.o(153591);
-      }
-    });
-    AppMethodBeat.o(153607);
-  }
-  
-  public final void gfX()
-  {
-    AppMethodBeat.i(153608);
-    as(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(153592);
-        d.a(d.this, false);
-        d.j(d.this).setVisibility(4);
-        AppMethodBeat.o(153592);
-      }
-    });
-    AppMethodBeat.o(153608);
-  }
-  
-  public final void gfi()
-  {
-    AppMethodBeat.i(153612);
-    this.DXF.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPlay();", new Object[0]), new ValueCallback() {});
-    AppMethodBeat.o(153612);
-  }
-  
-  public final boolean gfj()
-  {
-    return true;
-  }
-  
-  public final void ln(int paramInt1, int paramInt2)
+  public final void eq(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(153633);
-    Object localObject = gfS();
+    Object localObject = htk();
     if (localObject == null)
     {
       AppMethodBeat.o(153633);
       return;
     }
-    if ((this.EGr == -3) && (localObject != null)) {
-      this.EGr = ((Activity)localObject).getRequestedOrientation();
+    if ((this.JvV == -3) && (localObject != null)) {
+      this.JvV = ((Activity)localObject).getRequestedOrientation();
     }
     int i;
     Point localPoint;
@@ -786,13 +705,13 @@ public final class d
     double d1;
     if (paramInt1 <= paramInt2)
     {
-      u((Activity)localObject, 1);
+      t((Activity)localObject, 1);
       i = 1;
       this.mCurrentOrientation = i;
-      if (this.MOq != null)
+      if (this.SBm != null)
       {
-        localObject = this.MOq;
-        Display localDisplay = ((WindowManager)this.DXF.getContext().getSystemService("window")).getDefaultDisplay();
+        localObject = this.SBm;
+        Display localDisplay = ((WindowManager)this.IJw.getContext().getSystemService("window")).getDefaultDisplay();
         localPoint = new Point(0, 0);
         localDisplay.getSize(localPoint);
         if (i != 0) {
@@ -813,7 +732,7 @@ public final class d
       ((View)localObject).setLayoutParams(new FrameLayout.LayoutParams(j, i, 17));
       AppMethodBeat.o(153633);
       return;
-      u((Activity)localObject, 0);
+      t((Activity)localObject, 0);
       i = 0;
       break;
       label231:
@@ -825,9 +744,95 @@ public final class d
     }
   }
   
+  public final void fDd()
+  {
+    AppMethodBeat.i(153613);
+    this.IJw.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPause();", new Object[0]), new ValueCallback() {});
+    AppMethodBeat.o(153613);
+  }
+  
+  public final boolean hsA()
+  {
+    return true;
+  }
+  
+  public final void hsz()
+  {
+    AppMethodBeat.i(153612);
+    this.IJw.evaluateJavascript(String.format("xwebVideoBridge.xwebToJS_Video_NewPlay();", new Object[0]), new ValueCallback() {});
+    AppMethodBeat.o(153612);
+  }
+  
+  public final void htm()
+  {
+    AppMethodBeat.i(153602);
+    if (this.SBP != null)
+    {
+      this.SBP.cancel();
+      this.SBP.purge();
+      this.SBP = null;
+    }
+    this.SBP = new Timer();
+    this.SBP.schedule(new TimerTask()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(153590);
+        d.this.htp();
+        AppMethodBeat.o(153590);
+      }
+    }, 4000L);
+    AppMethodBeat.o(153602);
+  }
+  
+  public final void htn()
+  {
+    AppMethodBeat.i(153603);
+    if (this.SBP != null)
+    {
+      this.SBP.cancel();
+      this.SBP.purge();
+      this.SBP = null;
+    }
+    AppMethodBeat.o(153603);
+  }
+  
+  public final void hto()
+  {
+    AppMethodBeat.i(153607);
+    aC(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(153591);
+        d.a(d.this, true);
+        d.j(d.this).setVisibility(0);
+        d.this.htm();
+        AppMethodBeat.o(153591);
+      }
+    });
+    AppMethodBeat.o(153607);
+  }
+  
+  public final void htp()
+  {
+    AppMethodBeat.i(153608);
+    aC(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(153592);
+        d.a(d.this, false);
+        d.j(d.this).setVisibility(4);
+        AppMethodBeat.o(153592);
+      }
+    });
+    AppMethodBeat.o(153608);
+  }
+  
   public final boolean onDown(MotionEvent paramMotionEvent)
   {
-    this.MOV = 0;
+    this.SBR = 0;
     return true;
   }
   
@@ -839,23 +844,23 @@ public final class d
   public final void onHideCustomView()
   {
     AppMethodBeat.i(153599);
-    if (this.MOC != null) {
-      this.MOC.onCustomViewHidden();
+    if (this.SBy != null) {
+      this.SBy.onCustomViewHidden();
     }
     Log.i("XWebNativeInterface", "detach");
-    if (!this.MPb)
+    if (!this.SBX)
     {
       Log.i("XWebNativeInterface", "detach has exited fullscreen");
       AppMethodBeat.o(153599);
       return;
     }
-    Activity localActivity = gfS();
+    Activity localActivity = htk();
     if (localActivity != null)
     {
-      if (this.MOY != null)
+      if (this.SBU != null)
       {
-        this.DXF.getView().setBackground(this.MOY);
-        this.MOY = null;
+        this.IJw.getView().setBackground(this.SBU);
+        this.SBU = null;
       }
       for (;;)
       {
@@ -865,24 +870,24 @@ public final class d
         }
         AppMethodBeat.o(153599);
         return;
-        this.DXF.getView().setBackground(new ColorDrawable(0));
+        this.IJw.getView().setBackground(new ColorDrawable(0));
       }
-      if (this.DXF.isXWalkKernel())
+      if (this.IJw.isXWalkKernel())
       {
-        this.mRootView.removeView(this.DXF);
-        this.MOo.addView(this.DXF, 0);
+        this.mRootView.removeView(this.IJw);
+        this.SBk.addView(this.IJw, 0);
       }
-      if (this.MOq != null) {
-        this.mRootView.removeView(this.MOq);
+      if (this.SBm != null) {
+        this.mRootView.removeView(this.SBm);
       }
-      this.mRootView.removeView(this.MOr);
-      this.MOr.setVisibility(8);
-      if (this.EGr != -3)
+      this.mRootView.removeView(this.SBn);
+      this.SBn.setVisibility(8);
+      if (this.JvV != -3)
       {
-        u(localActivity, this.EGr);
-        this.EGr = -3;
+        t(localActivity, this.JvV);
+        this.JvV = -3;
       }
-      zY(false);
+      Eo(false);
       if ((this.mRootView.getParent() instanceof ViewGroup)) {
         ((ViewGroup)this.mRootView.getParent()).removeView(this.mRootView);
       }
@@ -892,31 +897,31 @@ public final class d
   
   public final void onLongPress(MotionEvent paramMotionEvent)
   {
-    AppMethodBeat.i(207519);
+    AppMethodBeat.i(207176);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.ahF());
+    localb.bm(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V", this, localb.axR());
     com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onLongPress", "(Landroid/view/MotionEvent;)V");
-    AppMethodBeat.o(207519);
+    AppMethodBeat.o(207176);
   }
   
   public final boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
     AppMethodBeat.i(153606);
-    if ((this.mMode == 1) && (this.MOq != null))
+    if ((this.mMode == 1) && (this.SBm != null))
     {
       float f = paramScaleGestureDetector.getScaleFactor();
-      this.MOq.getLeft();
-      this.MOq.getTop();
-      this.MOq.getBottom();
-      this.MOq.getRight();
-      int i = (int)(this.MOq.getWidth() * f);
-      int j = (int)(f * this.MOq.getHeight());
+      this.SBm.getLeft();
+      this.SBm.getTop();
+      this.SBm.getBottom();
+      this.SBm.getRight();
+      int i = (int)(this.SBm.getWidth() * f);
+      int j = (int)(f * this.SBm.getHeight());
       paramScaleGestureDetector = new FrameLayout.LayoutParams(-2, -2, 17);
       paramScaleGestureDetector.width = i;
       paramScaleGestureDetector.height = j;
-      if (this.MOq != null) {
-        this.MOq.setLayoutParams(paramScaleGestureDetector);
+      if (this.SBm != null) {
+        this.SBm.setLayoutParams(paramScaleGestureDetector);
       }
       AppMethodBeat.o(153606);
       return true;
@@ -943,13 +948,13 @@ public final class d
     float f1 = paramMotionEvent2.getX();
     float f2 = paramMotionEvent1.getX();
     float f3 = paramMotionEvent2.getY() - paramMotionEvent1.getY();
-    if (this.MOr.getHeight() > this.MOr.getWidth())
+    if (this.SBn.getHeight() > this.SBn.getWidth())
     {
-      paramFloat2 = this.MOr.getWidth();
-      paramFloat1 = this.MOr.getHeight();
+      paramFloat2 = this.SBn.getWidth();
+      paramFloat1 = this.SBn.getHeight();
     }
     double d1;
-    switch (this.MOV)
+    switch (this.SBR)
     {
     default: 
     case 0: 
@@ -957,29 +962,29 @@ public final class d
       {
         AppMethodBeat.o(153605);
         return true;
-        paramFloat2 = this.MOr.getHeight();
-        paramFloat1 = this.MOr.getWidth();
+        paramFloat2 = this.SBn.getHeight();
+        paramFloat1 = this.SBn.getWidth();
         break;
         if (Math.abs(f1 - f2) - Math.abs(f3) > 1.0F)
         {
-          this.MOV = 3;
+          this.SBR = 3;
         }
         else
         {
           reset();
-          d1 = Math.ceil(25.0F * this.DXF.getContext().getResources().getDisplayMetrics().density);
-          if ((paramMotionEvent1.getY() < 2.0D * d1) || (paramMotionEvent1.getY() > this.MOr.getHeight() - d1 * 2.0D)) {
-            this.MOV = 0;
-          } else if (paramMotionEvent1.getX() < this.MOr.getWidth() / 2.0F) {
-            this.MOV = 2;
+          d1 = Math.ceil(25.0F * this.IJw.getContext().getResources().getDisplayMetrics().density);
+          if ((paramMotionEvent1.getY() < 2.0D * d1) || (paramMotionEvent1.getY() > this.SBn.getHeight() - d1 * 2.0D)) {
+            this.SBR = 0;
+          } else if (paramMotionEvent1.getX() < this.SBn.getWidth() / 2.0F) {
+            this.SBR = 2;
           } else {
-            this.MOV = 1;
+            this.SBR = 1;
           }
         }
       }
     case 1: 
       paramFloat1 = f3 * -1.0F;
-      d1 = this.MON * paramFloat1 / paramFloat2 * 1.2F;
+      d1 = this.SBJ * paramFloat1 / paramFloat2 * 1.2F;
       int j = (int)d1;
       int i = j;
       if (j == 0)
@@ -993,17 +998,17 @@ public final class d
           i = 1;
         }
       }
-      d1 = this.MOO;
+      d1 = this.SBK;
       double d2 = i + d1;
-      if (d2 > this.MON) {
-        d1 = this.MON;
+      if (d2 > this.SBJ) {
+        d1 = this.SBJ;
       }
       for (;;)
       {
         this.mAudioManager.setStreamVolume(3, (int)d1, 4);
-        i = (int)(d1 / this.MON * 100.0D);
-        this.MOs.setVolumnProgress(i);
-        this.MOs.show();
+        i = (int)(d1 / this.SBJ * 100.0D);
+        this.SBo.setVolumnProgress(i);
+        this.SBo.show();
         break;
         i = j;
         if (paramFloat1 >= 0.0F) {
@@ -1025,10 +1030,10 @@ public final class d
       }
       for (;;)
       {
-        this.azK.screenBrightness = paramFloat1;
-        this.WM.setAttributes(this.azK);
-        this.MOs.setBrightProgress((int)(paramFloat1 * 100.0F));
-        this.MOs.show();
+        this.azI.screenBrightness = paramFloat1;
+        this.WZ.setAttributes(this.azI);
+        this.SBo.setBrightProgress((int)(paramFloat1 * 100.0F));
+        this.SBo.show();
         break;
         paramFloat1 = paramFloat2;
         if (paramFloat2 > 1.0F) {
@@ -1037,26 +1042,26 @@ public final class d
       }
     }
     paramFloat2 = paramMotionEvent2.getX() - paramMotionEvent1.getX();
-    this.MOQ = this.MOB.mProgress;
+    this.SBM = this.SBx.mProgress;
     if (paramFloat2 > 0.0F)
     {
-      f1 = this.MOQ;
-      this.MOP = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
-      if (this.MOP > 100.0F) {
-        this.MOP = 100.0F;
+      f1 = this.SBM;
+      this.SBL = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
+      if (this.SBL > 100.0F) {
+        this.SBL = 100.0F;
       }
     }
     for (;;)
     {
-      d1 = this.lDw * this.MOP / 100.0D;
-      this.MOs.setVideoTimeProgress(q(d1, this.lDw) + "/" + q(this.lDw, this.lDw));
-      this.MOs.show();
-      this.MOW = d1;
+      d1 = this.mLe * this.SBL / 100.0D;
+      this.SBo.setVideoTimeProgress(q(d1, this.mLe) + "/" + q(this.mLe, this.mLe));
+      this.SBo.show();
+      this.SBS = d1;
       break;
-      f1 = this.MOQ;
-      this.MOP = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
-      if (this.MOP < 0.0F) {
-        this.MOP = 0.0F;
+      f1 = this.SBM;
+      this.SBL = ((int)(paramFloat2 / paramFloat1 * 100.0F + f1));
+      if (this.SBL < 0.0F) {
+        this.SBL = 0.0F;
       }
     }
   }
@@ -1065,72 +1070,72 @@ public final class d
   {
     AppMethodBeat.i(153598);
     Log.i("XWebNativeInterface", "onShowCustomView");
-    this.MOq = paramView;
-    this.MOC = paramCustomViewCallback;
-    if ((this.MOq != null) || (this.DXF.isXWalkKernel()))
+    this.SBm = paramView;
+    this.SBy = paramCustomViewCallback;
+    if ((this.SBm != null) || (this.IJw.isXWalkKernel()))
     {
-      if (!this.DXF.isXWalkKernel()) {
+      if (!this.IJw.isXWalkKernel()) {
         break label95;
       }
-      g.ggL();
+      h.hue();
       Log.i("XWebNativeInterface", "attach");
-      if (!this.MPb) {
+      if (!this.SBX) {
         break label111;
       }
       Log.i("XWebNativeInterface", "attach has entered fullscreen");
     }
     for (;;)
     {
-      this.DXF.requestFocus();
+      this.IJw.requestFocus();
       AppMethodBeat.o(153598);
       return;
       label95:
-      if (!this.DXF.isSysKernel()) {
+      if (!this.IJw.isSysKernel()) {
         break;
       }
-      g.ggP();
+      h.hui();
       break;
       label111:
-      paramView = gfS();
+      paramView = htk();
       if (paramView != null)
       {
         reset();
-        zY(true);
+        Eo(true);
         paramView = (FrameLayout)paramView.getWindow().getDecorView();
-        if ((this.DXF.isXWalkKernel()) && (this.mRootView.getParent() == paramView) && (this.MOq != null))
+        if ((this.IJw.isXWalkKernel()) && (this.mRootView.getParent() == paramView) && (this.SBm != null))
         {
-          this.mRootView.addView(this.MOq, 0, new FrameLayout.LayoutParams(-1, -1, 17));
+          this.mRootView.addView(this.SBm, 0, new FrameLayout.LayoutParams(-1, -1, 17));
         }
         else if (this.mRootView.getParent() != paramView)
         {
           paramView.addView(this.mRootView, new FrameLayout.LayoutParams(-1, -1, 17));
-          if (this.MOq != null)
+          if (this.SBm != null)
           {
-            this.mRootView.addView(this.MOq, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
-            if (this.DXF.isSysKernel()) {
-              this.MOq.setVisibility(4);
+            this.mRootView.addView(this.SBm, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
+            if (this.IJw.isSysKernel()) {
+              this.SBm.setVisibility(4);
             }
           }
-          if (this.DXF.isSysKernel())
+          if (this.IJw.isSysKernel())
           {
-            paramView = hx(this.MOq);
+            paramView = hQ(this.SBm);
             if (paramView != null) {
               paramView.setZOrderMediaOverlay(true);
             }
           }
-          if (this.DXF.isXWalkKernel())
+          if (this.IJw.isXWalkKernel())
           {
-            this.MOo = ((ViewGroup)this.DXF.getParent());
-            this.MOo.removeView(this.DXF);
-            this.mRootView.addView(this.DXF, this.mRootView.getChildCount());
+            this.SBk = ((ViewGroup)this.IJw.getParent());
+            this.SBk.removeView(this.IJw);
+            this.mRootView.addView(this.IJw, this.mRootView.getChildCount());
           }
-          this.mRootView.addView(this.MOr, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
-          this.MOY = this.DXF.getView().getBackground();
-          if (this.MOY != null) {
-            this.MOY = this.MOY.getConstantState().newDrawable().mutate();
+          this.mRootView.addView(this.SBn, this.mRootView.getChildCount(), new FrameLayout.LayoutParams(-1, -1, 17));
+          this.SBU = this.IJw.getView().getBackground();
+          if (this.SBU != null) {
+            this.SBU = this.SBU.getConstantState().newDrawable().mutate();
           }
-          this.DXF.getView().setBackground(new ColorDrawable(-16777216));
-          if (this.DXF.isSysKernel()) {
+          this.IJw.getView().setBackground(new ColorDrawable(-16777216));
+          if (this.IJw.isSysKernel()) {
             this.mRootView.postDelayed(new Runnable()
             {
               public final void run()
@@ -1141,7 +1146,7 @@ public final class d
                 }
                 AppMethodBeat.o(153585);
               }
-            }, this.MOX);
+            }, this.SBT);
           }
         }
       }
@@ -1154,18 +1159,18 @@ public final class d
   {
     AppMethodBeat.i(153604);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bd(paramMotionEvent);
-    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.ahF());
-    gfV();
-    if (this.MOU) {
-      gfX();
+    localb.bm(paramMotionEvent);
+    com.tencent.mm.hellhoundlib.a.a.b("com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z", this, localb.axR());
+    htn();
+    if (this.SBQ) {
+      htp();
     }
     for (;;)
     {
       com.tencent.mm.hellhoundlib.a.a.a(true, this, "com/tencent/xweb/extension/video/XWebNativeInterface", "android/view/GestureDetector$OnGestureListener", "onSingleTapUp", "(Landroid/view/MotionEvent;)Z");
       AppMethodBeat.o(153604);
       return true;
-      gfW();
+      hto();
     }
   }
   
@@ -1175,7 +1180,7 @@ public final class d
   {
     AppMethodBeat.i(153629);
     Log.i("XWebNativeInterface", "onSpecialVideoEnterFullscreen:".concat(String.valueOf(paramInt)));
-    g.bx(paramInt, this.DXF.isXWalkKernel());
+    h.bY(paramInt, this.IJw.isXWalkKernel());
     AppMethodBeat.o(153629);
   }
   
@@ -1185,7 +1190,7 @@ public final class d
   {
     AppMethodBeat.i(153630);
     Log.i("XWebNativeInterface", "onSpecialVideoHook:".concat(String.valueOf(paramInt)));
-    g.by(paramInt, this.DXF.isXWalkKernel());
+    h.bZ(paramInt, this.IJw.isXWalkKernel());
     AppMethodBeat.o(153630);
   }
   
@@ -1194,9 +1199,9 @@ public final class d
   {
     AppMethodBeat.i(153623);
     Log.i("XWebNativeInterface", "onVideoEmptied");
-    if (this.MOM != null)
+    if (this.SBI != null)
     {
-      this.MOM.bpR();
+      this.SBI.bLx();
       AppMethodBeat.o(153623);
       return true;
     }
@@ -1209,8 +1214,8 @@ public final class d
   {
     AppMethodBeat.i(153622);
     Log.i("XWebNativeInterface", "onVideoEnded");
-    if (this.MOM != null) {
-      this.MOM.onVideoEnded();
+    if (this.SBI != null) {
+      this.SBI.onVideoEnded();
     }
     AppMethodBeat.o(153622);
   }
@@ -1221,25 +1226,25 @@ public final class d
   {
     AppMethodBeat.i(153625);
     Log.i("XWebNativeInterface", "onVideoEnterFullscreen:isVideoTag:" + paramBoolean1 + ",width:" + paramDouble1 + ",height:" + paramDouble2 + ",pause:" + paramBoolean2 + ",seeking:" + paramBoolean3 + ",currentTime:" + paramDouble3 + ",duration:" + paramDouble4);
-    if (this.MOM != null) {
-      this.MOM.onVideoEnterFullscreen(paramBoolean1, paramLong, paramDouble1, paramDouble2, paramBoolean2, paramBoolean3, paramDouble3, paramDouble4, paramArrayOfDouble);
+    if (this.SBI != null) {
+      this.SBI.onVideoEnterFullscreen(paramBoolean1, paramLong, paramDouble1, paramDouble2, paramBoolean2, paramBoolean3, paramDouble3, paramDouble4, paramArrayOfDouble);
     }
-    if (this.DXF.isXWalkKernel())
+    if (this.IJw.isXWalkKernel())
     {
-      g.ggM();
+      h.huf();
       if (paramBoolean1)
       {
-        if (!this.DXF.isXWalkKernel()) {
+        if (!this.IJw.isXWalkKernel()) {
           break label250;
         }
-        g.ggN();
+        h.hug();
         label157:
-        this.MOD = true;
+        this.SBz = true;
       }
-      this.MOE = paramLong;
-      this.lDw = paramDouble4;
-      this.MOF = paramDouble1;
-      this.MOG = paramDouble2;
+      this.SBA = paramLong;
+      this.mLe = paramDouble4;
+      this.SBB = paramDouble1;
+      this.SBC = paramDouble2;
       if (!paramBoolean3) {
         break label266;
       }
@@ -1247,7 +1252,7 @@ public final class d
     }
     for (;;)
     {
-      as(new Runnable()
+      aC(new Runnable()
       {
         public final void run()
         {
@@ -1255,24 +1260,24 @@ public final class d
           if (paramBoolean1) {
             d.q(d.this).setVisibility(0);
           }
-          d.this.ln((int)paramDouble1, (int)this.MPm);
+          d.this.eq((int)paramDouble1, (int)this.SCi);
           AppMethodBeat.o(153582);
         }
       });
       onVideoTimeUpdate(paramDouble3, paramDouble4, paramArrayOfDouble);
-      zX(paramBoolean2);
+      En(paramBoolean2);
       AppMethodBeat.o(153625);
       return;
-      if (!this.DXF.isSysKernel()) {
+      if (!this.IJw.isSysKernel()) {
         break;
       }
-      g.ggQ();
+      h.huj();
       break;
       label250:
-      if (!this.DXF.isSysKernel()) {
+      if (!this.IJw.isSysKernel()) {
         break label157;
       }
-      g.ggR();
+      h.huk();
       break label157;
       label266:
       onVideoSeeked();
@@ -1284,8 +1289,8 @@ public final class d
   {
     AppMethodBeat.i(153624);
     Log.i("XWebNativeInterface", "onVideoError");
-    if (this.MOM != null) {
-      this.MOM.onVideoError(paramInt, paramString);
+    if (this.SBI != null) {
+      this.SBI.onVideoError(paramInt, paramString);
     }
     AppMethodBeat.o(153624);
   }
@@ -1296,11 +1301,11 @@ public final class d
   {
     AppMethodBeat.i(153626);
     Log.i("XWebNativeInterface", "onVideoExitFullscreen");
-    if (this.MOM != null) {
-      this.MOM.onVideoExitFullscreen();
+    if (this.SBI != null) {
+      this.SBI.onVideoExitFullscreen();
     }
-    this.MOD = false;
-    as(new Runnable()
+    this.SBz = false;
+    aC(new Runnable()
     {
       public final void run()
       {
@@ -1317,12 +1322,12 @@ public final class d
   public final void onVideoGetFrame(long paramLong, double paramDouble, String paramString)
   {
     AppMethodBeat.i(153615);
-    if ((paramLong == this.MOE) && (this.MOW == paramDouble) && (paramString != null) && (paramString.startsWith("data:image/png;base64,")))
+    if ((paramLong == this.SBA) && (this.SBS == paramDouble) && (paramString != null) && (paramString.startsWith("data:image/png;base64,")))
     {
       paramString = Base64.decode(paramString.substring(22), 0);
       paramString = BitmapFactory.decodeByteArray(paramString, 0, paramString.length);
-      this.MOy.setImageBitmap(paramString);
-      this.MOy.setVisibility(0);
+      this.SBu.setImageBitmap(paramString);
+      this.SBu.setVisibility(0);
     }
     AppMethodBeat.o(153615);
   }
@@ -1333,10 +1338,10 @@ public final class d
   {
     AppMethodBeat.i(153621);
     Log.i("XWebNativeInterface", "onVideoPause");
-    if (this.MOM != null) {
-      this.MOM.onVideoPause();
+    if (this.SBI != null) {
+      this.SBI.onVideoPause();
     }
-    zX(true);
+    En(true);
     AppMethodBeat.o(153621);
   }
   
@@ -1346,10 +1351,10 @@ public final class d
   {
     AppMethodBeat.i(153620);
     Log.i("XWebNativeInterface", "onVideoPlay");
-    if (this.MOM != null) {
-      this.MOM.onVideoPlay();
+    if (this.SBI != null) {
+      this.SBI.onVideoPlay();
     }
-    zX(false);
+    En(false);
     AppMethodBeat.o(153620);
   }
   
@@ -1359,10 +1364,10 @@ public final class d
   {
     AppMethodBeat.i(153616);
     Log.i("XWebNativeInterface", "onVideoPlaying");
-    if (this.MOM != null) {
-      this.MOM.onVideoPlaying();
+    if (this.SBI != null) {
+      this.SBI.onVideoPlaying();
     }
-    as(new Runnable()
+    aC(new Runnable()
     {
       public final void run()
       {
@@ -1380,10 +1385,10 @@ public final class d
   {
     AppMethodBeat.i(153619);
     Log.i("XWebNativeInterface", "onVideoSeeked");
-    if (this.MOM != null) {
-      this.MOM.onVideoSeeked();
+    if (this.SBI != null) {
+      this.SBI.onVideoSeeked();
     }
-    as(new Runnable()
+    aC(new Runnable()
     {
       public final void run()
       {
@@ -1401,10 +1406,10 @@ public final class d
   {
     AppMethodBeat.i(153618);
     Log.i("XWebNativeInterface", "onVideoSeeking");
-    if (this.MOM != null) {
-      this.MOM.onVideoSeeking();
+    if (this.SBI != null) {
+      this.SBI.onVideoSeeking();
     }
-    as(new Runnable()
+    aC(new Runnable()
     {
       public final void run()
       {
@@ -1421,20 +1426,20 @@ public final class d
   public final void onVideoSizeUpdate(final double paramDouble1, double paramDouble2)
   {
     AppMethodBeat.i(153628);
-    if (this.MOM != null) {
-      this.MOM.onVideoSizeUpdate(paramDouble1, paramDouble2);
+    if (this.SBI != null) {
+      this.SBI.onVideoSizeUpdate(paramDouble1, paramDouble2);
     }
-    if ((this.MOG != paramDouble2) || (this.MOF != paramDouble1))
+    if ((this.SBC != paramDouble2) || (this.SBB != paramDouble1))
     {
-      this.MOF = paramDouble1;
-      this.MOG = paramDouble2;
+      this.SBB = paramDouble1;
+      this.SBC = paramDouble2;
       Log.i("XWebNativeInterface", "onVideoSizeUpdate width:" + paramDouble1 + ", height:" + paramDouble2);
-      as(new Runnable()
+      aC(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(153584);
-          d.this.ln((int)paramDouble1, (int)this.MPm);
+          d.this.eq((int)paramDouble1, (int)this.SCi);
           AppMethodBeat.o(153584);
         }
       });
@@ -1447,19 +1452,19 @@ public final class d
   public final void onVideoTimeUpdate(double paramDouble1, final double paramDouble2, double[] paramArrayOfDouble)
   {
     AppMethodBeat.i(153627);
-    if (this.MOM != null) {
-      this.MOM.onVideoTimeUpdate(paramDouble1, paramDouble2, paramArrayOfDouble);
+    if (this.SBI != null) {
+      this.SBI.onVideoTimeUpdate(paramDouble1, paramDouble2, paramArrayOfDouble);
     }
-    this.lDw = paramDouble2;
+    this.mLe = paramDouble2;
     e(paramDouble1, true);
-    as(new Runnable()
+    aC(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(153575);
         c localc = d.l(d.this);
         double d3 = paramDouble2;
-        Object localObject = this.MPi;
+        Object localObject = this.SCe;
         double d1 = 0.0D;
         int i = 0;
         while (i < localObject.length)
@@ -1479,10 +1484,10 @@ public final class d
           i += 2;
           d1 = d2;
         }
-        localObject = (FrameLayout.LayoutParams)localc.lwj.getLayoutParams();
-        ((FrameLayout.LayoutParams)localObject).width = ((int)(d1 / 100.0D * localc.lvS.getWidth()));
-        localc.lwj.setLayoutParams((ViewGroup.LayoutParams)localObject);
-        localc.lwj.requestLayout();
+        localObject = (FrameLayout.LayoutParams)localc.mDf.getLayoutParams();
+        ((FrameLayout.LayoutParams)localObject).width = ((int)(d1 / 100.0D * localc.mCN.getWidth()));
+        localc.mDf.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        localc.mDf.requestLayout();
         AppMethodBeat.o(153575);
       }
     });
@@ -1495,10 +1500,10 @@ public final class d
   {
     AppMethodBeat.i(153617);
     Log.i("XWebNativeInterface", "onVideoWaiting");
-    if (this.MOM != null) {
-      this.MOM.onVideoWaiting();
+    if (this.SBI != null) {
+      this.SBI.onVideoWaiting();
     }
-    as(new Runnable()
+    aC(new Runnable()
     {
       public final void run()
       {
@@ -1509,18 +1514,10 @@ public final class d
     });
     AppMethodBeat.o(153617);
   }
-  
-  public final void zW(boolean paramBoolean)
-  {
-    AppMethodBeat.i(153600);
-    Log.i("XWebNativeInterface", "disableJsCallback:".concat(String.valueOf(paramBoolean)));
-    this.MOL = paramBoolean;
-    AppMethodBeat.o(153600);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.extension.video.d
  * JD-Core Version:    0.7.0.1
  */

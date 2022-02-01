@@ -5,28 +5,28 @@ import com.tencent.mm.plugin.exdevice.f.e;
 
 public abstract class c
 {
-  public long nZd = -1L;
-  public short qgB = -1;
-  public e qgC = null;
-  protected a qgD = null;
+  public long pkb = -1L;
+  public short rxx = -1;
+  public e rxy = null;
+  protected a rxz = null;
   
-  protected final e aL(int paramInt, String paramString)
+  protected final e aQ(int paramInt, String paramString)
   {
-    this.qgC = new e();
-    this.qgC.qkQ = paramInt;
-    this.qgC.qkR = paramString;
-    return this.qgC;
+    this.rxy = new e();
+    this.rxy.rBL = paramInt;
+    this.rxy.rBM = paramString;
+    return this.rxy;
   }
   
-  public abstract short cme();
+  public abstract short cKg();
   
-  public abstract short cmf();
+  public abstract short cKh();
   
-  public abstract byte[] cmg();
+  public abstract byte[] cKi();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.exdevice.c.c
  * JD-Core Version:    0.7.0.1
  */

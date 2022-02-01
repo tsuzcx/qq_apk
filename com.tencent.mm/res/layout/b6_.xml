@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/asv" android:background="@color/a_r" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.sight.decode.ui.SightPlayImageView android:id="@id/co4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="fitXY" />
-    <ViewStub android:id="@id/fii" android:layout="@layout/b69" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <ImageView android:id="@id/fsv" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    <com.tencent.mm.ui.widget.MMPinProgressBtn android:id="@id/ekf" android:visibility="gone" android:layout_width="@dimen/act" android:layout_height="@dimen/act" android:layout_centerInParent="true" />
-</RelativeLayout>

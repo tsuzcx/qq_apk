@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="@dimen/a0s" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@drawable/emoji_capture_sticker_bg" android:layout_width="@dimen/a0s" android:layout_height="@dimen/a0s" />
-    <ImageView android:id="@id/biv" android:padding="@dimen/c5" android:layout_width="@dimen/a0s" android:layout_height="@dimen/a0s" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="@dimen/jo" android:textColor="?zw" android:gravity="center_horizontal" android:id="@id/biw" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/bk6" android:maxLines="2" android:layout_below="@id/biv" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/gkh" android:background="@drawable/b9w" android:paddingLeft="@dimen/cb" android:paddingTop="60.0dip" android:paddingRight="@dimen/cb" android:paddingBottom="@dimen/ci" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/baa" android:layout_width="@dimen/h" android:layout_height="@dimen/h" android:scaleType="centerCrop" />
+        <View android:layout_width="@dimen/hs" style="@style/p7" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:id="@id/bb8" style="@style/mj" />
+            <View style="@style/p7" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <TextView android:id="@id/bbn" style="@style/mk" />
+                <View android:layout_width="fill_parent" android:layout_weight="1.0" style="@style/p7" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+    <TextView android:gravity="center|left" android:id="@id/bau" android:background="@color/afz" android:paddingLeft="@dimen/jv" android:paddingTop="@dimen/k5" android:paddingRight="@dimen/jv" android:paddingBottom="@dimen/k5" android:minHeight="@dimen/k4" android:singleLine="false" style="@style/m0" />
+</LinearLayout>

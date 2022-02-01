@@ -1,24 +1,34 @@
 package com.tencent.mm.plugin.appbrand.widget;
 
 import android.graphics.drawable.Drawable;
-import com.tencent.luggage.a.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.modelappbrand.a.a;
+import kotlin.l;
 
-public abstract interface h
-  extends b
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/widget/IconProviderWC;", "Lcom/tencent/mm/plugin/appbrand/widget/IconProvider;", "()V", "getDefaultAppIcon", "Landroid/graphics/drawable/Drawable;", "plugin-appbrand-integration_release"})
+public final class h
+  implements g
 {
-  public static final h mYm = new h()
-  {
-    public final Drawable bDa()
-    {
-      return null;
-    }
-  };
+  public static final h ols;
   
-  public abstract Drawable bDa();
+  static
+  {
+    AppMethodBeat.i(51406);
+    ols = new h();
+    AppMethodBeat.o(51406);
+  }
+  
+  public final Drawable cab()
+  {
+    AppMethodBeat.i(51405);
+    Drawable localDrawable = a.aXX();
+    AppMethodBeat.o(51405);
+    return localDrawable;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.h
  * JD-Core Version:    0.7.0.1
  */

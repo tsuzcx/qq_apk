@@ -3,30 +3,33 @@ package com.tencent.mm.plugin.webview.ui.tools.media;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.y;
-import com.tencent.mm.g.a.cw;
+import com.tencent.mm.ag.y;
+import com.tencent.mm.g.a.cz;
+import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.d;
 import com.tencent.mm.ipcinvoker.h;
-import com.tencent.mm.model.z;
-import com.tencent.mm.model.z.b;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
+import com.tencent.mm.model.ad;
+import com.tencent.mm.model.ad.b;
 import com.tencent.mm.plugin.webview.model.c;
-import com.tencent.mm.protocal.protobuf.jb;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.jo;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpShareVideoMsgFav;", "", "()V", "TAG", "", "doFav", "", "msgInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "data", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "mpShareVideoInfo", "Lcom/tencent/mm/protocal/protobuf/BaseMpShareVideoInfo;", "IPCInvoke_Fav", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpShareVideoMsgFav;", "", "()V", "TAG", "", "doFav", "", "msgInfo", "Lcom/tencent/mm/message/MPShareVideoInfo;", "data", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "mpShareVideoInfo", "Lcom/tencent/mm/protocal/protobuf/BaseMpShareVideoInfo;", "IPCInvoke_Fav", "plugin-webview_release"})
 public final class f
 {
-  public static final f EGX;
+  public static final f JwB;
   private static final String TAG = "MicroMsg.MpShareVideoMsgFav";
   
   static
   {
     AppMethodBeat.i(82666);
-    EGX = new f();
+    JwB = new f();
     TAG = "MicroMsg.MpShareVideoMsgFav";
     AppMethodBeat.o(82666);
   }
@@ -36,52 +39,52 @@ public final class f
     AppMethodBeat.i(82664);
     p.h(paramy, "msgInfo");
     MpVideoDataParcelable localMpVideoDataParcelable = new MpVideoDataParcelable();
-    localMpVideoDataParcelable.EGZ = paramy;
-    h.a("com.tencent.mm", (Parcelable)localMpVideoDataParcelable, a.class, (d)b.EGY);
+    localMpVideoDataParcelable.JwD = paramy;
+    h.a(MainProcessIPCService.dkO, (Parcelable)localMpVideoDataParcelable, a.class, (d)b.JwC);
     AppMethodBeat.o(82664);
   }
   
-  public static void d(jb paramjb)
+  public static void d(jo paramjo)
   {
-    AppMethodBeat.i(199370);
-    if (paramjb == null)
+    AppMethodBeat.i(210562);
+    if (paramjo == null)
     {
-      ae.w(TAG, "doFav msgInfo is null");
-      AppMethodBeat.o(199370);
+      Log.w(TAG, "doFav msgInfo is null");
+      AppMethodBeat.o(210562);
       return;
     }
-    cw localcw = new cw();
-    Object localObject = z.Br(bu.nullAsNil(paramjb.hFX));
-    localObject = z.aBG().F((String)localObject, true);
+    cz localcz = new cz();
+    Object localObject = ad.JX(Util.nullAsNil(paramjo.iAh));
+    localObject = ad.aVe().G((String)localObject, true);
     if (localObject == null) {
-      p.gkB();
+      p.hyc();
     }
-    ((z.b)localObject).k("sendAppMsgScene", Integer.valueOf(2));
-    ((z.b)localObject).k("preChatName", paramjb.dPO);
-    ((z.b)localObject).k("prePublishId", paramjb.hFX);
-    ((z.b)localObject).k("preUsername", paramjb.dPN);
-    ((z.b)localObject).k("referUrl", paramjb.url);
-    localcw.doL.doR = 36;
-    c.a(localcw, paramjb);
-    a.IvT.l((com.tencent.mm.sdk.b.b)localcw);
-    AppMethodBeat.o(199370);
+    ((ad.b)localObject).l("sendAppMsgScene", Integer.valueOf(2));
+    ((ad.b)localObject).l("preChatName", paramjo.ehR);
+    ((ad.b)localObject).l("prePublishId", paramjo.iAh);
+    ((ad.b)localObject).l("preUsername", paramjo.ehQ);
+    ((ad.b)localObject).l("referUrl", paramjo.url);
+    localcz.dFZ.dGf = 36;
+    c.a(localcz, paramjo);
+    EventCenter.instance.publish((IEvent)localcz);
+    AppMethodBeat.o(210562);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpShareVideoMsgFav$IPCInvoke_Fav;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-webview_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/media/MpShareVideoMsgFav$IPCInvoke_Fav;", "Lcom/tencent/mm/ipcinvoker/IPCAsyncInvokeTask;", "Lcom/tencent/mm/plugin/webview/ui/tools/media/MpVideoDataParcelable;", "Landroid/os/Bundle;", "()V", "invoke", "", "data", "callback", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "plugin-webview_release"})
   static final class a
-    implements com.tencent.mm.ipcinvoker.b<MpVideoDataParcelable, Bundle>
+    implements b<MpVideoDataParcelable, Bundle>
   {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "bundle", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "bundle", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "onCallback"})
   static final class b<T>
     implements d<ResultType>
   {
-    public static final b EGY;
+    public static final b JwC;
     
     static
     {
       AppMethodBeat.i(82663);
-      EGY = new b();
+      JwC = new b();
       AppMethodBeat.o(82663);
     }
   }

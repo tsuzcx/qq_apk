@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/f40" android:paddingLeft="@dimen/hu" android:paddingRight="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="56.0dip"
+<LinearLayout android:background="@drawable/axy" android:layout_height="@dimen/k4" android:minHeight="@dimen/k4" style="@style/nr"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:gravity="bottom" android:orientation="horizontal" android:background="@color/fc" android:layout_height="wrap_content" android:minHeight="50.0dip" style="@style/m4">
-        <ImageButton android:id="@id/hg" android:background="@null" android:layout_width="@dimen/i8" android:layout_height="@dimen/i8" android:src="@raw/sight_icon_emoji" android:minWidth="0.0dip" android:layout_centerVertical="true" android:contentDescription="@string/apz" style="@style/o4" />
-        <com.tencent.mm.plugin.sns.ui.SightLocationWidget android:id="@id/d58" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_toRightOf="@id/hg" />
-        <com.tencent.mm.plugin.sns.ui.SightRangeWidget android:id="@id/epw" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" />
-    </RelativeLayout>
+    <TextView android:textColor="@color/a2x" android:id="@id/ijq" android:layout_width="0.0dip" android:layout_marginLeft="@dimen/ir" android:layout_marginRight="@dimen/k5" android:layout_weight="1.0" style="@style/mi" />
+    <RadioButton android:textSize="0.0dip" android:id="@id/gqn" android:background="@drawable/arh" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" android:button="@null" android:text="" android:drawablePadding="0.0dip" />
+    <CheckBox android:id="@id/azg" android:focusable="false" android:focusableInTouchMode="false" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_marginRight="@dimen/k5" />
 </LinearLayout>

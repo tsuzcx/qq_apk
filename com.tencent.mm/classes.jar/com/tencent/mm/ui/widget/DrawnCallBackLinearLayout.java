@@ -13,8 +13,8 @@ public class DrawnCallBackLinearLayout
   extends LinearLayout
 {
   public final boolean DEBUG = true;
-  private a LmB;
-  private b LmC;
+  private a QBJ;
+  private b QBK;
   public final String TAG = "MicroMsg.TestTimeForChatting";
   
   public DrawnCallBackLinearLayout(Context paramContext)
@@ -37,10 +37,10 @@ public class DrawnCallBackLinearLayout
   {
     AppMethodBeat.i(143316);
     super.dispatchDraw(paramCanvas);
-    if (this.LmB != null)
+    if (this.QBJ != null)
     {
-      this.LmB.fIU();
-      this.LmB = null;
+      this.QBJ.gRe();
+      this.QBJ = null;
     }
     AppMethodBeat.o(143316);
   }
@@ -48,8 +48,8 @@ public class DrawnCallBackLinearLayout
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(143314);
-    if (this.LmC != null) {
-      this.LmC = null;
+    if (this.QBK != null) {
+      this.QBK = null;
     }
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
     AppMethodBeat.o(143314);
@@ -67,24 +67,24 @@ public class DrawnCallBackLinearLayout
   
   public void setListener(a parama)
   {
-    this.LmB = parama;
+    this.QBJ = parama;
   }
   
   public void setTouchedCallback(b paramb)
   {
-    this.LmC = paramb;
+    this.QBK = paramb;
   }
   
   public static abstract interface a
   {
-    public abstract void fIU();
+    public abstract void gRe();
   }
   
   public static abstract interface b {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.widget.DrawnCallBackLinearLayout
  * JD-Core Version:    0.7.0.1
  */

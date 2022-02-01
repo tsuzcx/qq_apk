@@ -1,20 +1,20 @@
 package com.tencent.mm.plugin.scanner.ui.widget;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$ScanTabInfo;", "", "scanTabId", "", "scanTabTitle", "", "(ILjava/lang/String;)V", "getScanTabId", "()I", "getScanTabTitle", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScanScrollTabController$ScanTabInfo;", "", "scanTabId", "", "scanTabTitle", "", "(ILjava/lang/String;)V", "getScanTabId", "()I", "getScanTabTitle", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "plugin-scan_release"})
 public final class b$b
 {
-  public final int yOD;
-  final String yOE;
+  final int CSu;
+  final String CSv;
   
   public b$b(int paramInt, String paramString)
   {
     AppMethodBeat.i(52428);
-    this.yOD = paramInt;
-    this.yOE = paramString;
+    this.CSu = paramInt;
+    this.CSv = paramString;
     AppMethodBeat.o(52428);
   }
   
@@ -26,7 +26,7 @@ public final class b$b
       if ((paramObject instanceof b))
       {
         paramObject = (b)paramObject;
-        if ((this.yOD != paramObject.yOD) || (!p.i(this.yOE, paramObject.yOE))) {}
+        if ((this.CSu != paramObject.CSu) || (!p.j(this.CSv, paramObject.CSv))) {}
       }
     }
     else
@@ -41,8 +41,8 @@ public final class b$b
   public final int hashCode()
   {
     AppMethodBeat.i(52430);
-    int j = this.yOD;
-    String str = this.yOE;
+    int j = this.CSu;
+    String str = this.CSv;
     if (str != null) {}
     for (int i = str.hashCode();; i = 0)
     {
@@ -54,7 +54,7 @@ public final class b$b
   public final String toString()
   {
     AppMethodBeat.i(52429);
-    String str = "ScanTabInfo(scanTabId=" + this.yOD + ", scanTabTitle=" + this.yOE + ")";
+    String str = "ScanTabInfo(scanTabId=" + this.CSu + ", scanTabTitle=" + this.CSv + ")";
     AppMethodBeat.o(52429);
     return str;
   }

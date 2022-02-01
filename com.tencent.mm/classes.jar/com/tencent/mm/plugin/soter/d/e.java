@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.soter.d;
 
 public final class e
 {
-  public String AXb = "";
-  public String AXc = "";
+  public String FhU = "";
+  public String hFF = "";
   
   public e() {}
   
   public e(String paramString1, String paramString2)
   {
-    this.AXb = paramString1;
-    this.AXc = paramString2;
+    this.FhU = paramString1;
+    this.hFF = paramString2;
   }
 }
 

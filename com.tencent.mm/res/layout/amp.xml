@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_width="fill_parent" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <TextView android:textSize="17.0dip" android:textColor="@android:color/darker_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Leak Activity：" />
-        <TextView android:textSize="17.0dip" android:textColor="@android:color/black" android:id="@id/d0l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
-            <TextView android:textSize="17.0dip" android:textColor="@android:color/darker_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Hprof path：" />
-            <TextView android:textSize="17.0dip" android:textColor="@android:color/black" android:id="@id/cmn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="null" />
-        </LinearLayout>
-        <TextView android:textSize="17.0dip" android:textColor="@android:color/darker_gray" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="Reference：" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <ProgressBar android:id="@id/ekf" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" style="@style/a4p" />
-            <TextView android:textSize="14.0dip" android:textColor="@android:color/black" android:id="@id/d0m" android:background="@drawable/oc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
-        </LinearLayout>
-        <Button android:textSize="16.0dip" android:textColor="@android:color/white" android:background="@android:color/holo_green_dark" android:layout_width="fill_parent" android:layout_height="66.0dip" android:layout_marginTop="20.0dip" android:text="@string/bi4" android:onClick="onClick" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/y4" android:gravity="center" android:layout_gravity="center_horizontal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="@string/bi5" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" style="@style/lz">
+        <com.tencent.mm.plugin.freewifi.ui.FreeWifiStateView android:id="@id/d_4" style="@style/jx" />
+        <TextView android:id="@id/d_5" style="@style/jy" />
+        <TextView android:id="@id/d_6" style="@style/jz" />
+        <Button android:id="@id/gs5" android:visibility="gone" android:text="@string/dil" style="@style/js" />
     </LinearLayout>
-</ScrollView>
+    <Button android:id="@id/dp6" android:text="@string/di7" style="@style/k1" />
+</LinearLayout>

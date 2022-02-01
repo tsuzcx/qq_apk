@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.canvas.action.arg;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.y.g;
+import com.tencent.mm.plugin.appbrand.ac.g;
 import java.util.Arrays;
 import java.util.Objects;
 import org.json.JSONArray;
@@ -14,8 +14,8 @@ public class SetLineDashActionArg
   extends BaseDrawActionArg
 {
   public static final Parcelable.Creator<SetLineDashActionArg> CREATOR;
-  public float[] jWP = null;
-  public float jWQ = 1.4E-45F;
+  public float[] kZL = null;
+  public float kZM = 1.4E-45F;
   
   static
   {
@@ -55,7 +55,7 @@ public class SetLineDashActionArg
       return false;
     }
     paramObject = (SetLineDashActionArg)paramObject;
-    if ((Float.compare(paramObject.jWQ, this.jWQ) == 0) && (Arrays.equals(this.jWP, paramObject.jWP)))
+    if ((Float.compare(paramObject.kZM, this.kZM) == 0) && (Arrays.equals(this.kZL, paramObject.kZL)))
     {
       AppMethodBeat.o(145200);
       return true;
@@ -64,27 +64,27 @@ public class SetLineDashActionArg
     return false;
   }
   
-  public final void h(Parcel paramParcel)
-  {
-    AppMethodBeat.i(145197);
-    super.h(paramParcel);
-    int i = paramParcel.readInt();
-    if (i > 0)
-    {
-      this.jWP = new float[i];
-      paramParcel.readFloatArray(this.jWP);
-    }
-    this.jWQ = paramParcel.readFloat();
-    AppMethodBeat.o(145197);
-  }
-  
   public int hashCode()
   {
     AppMethodBeat.i(145201);
-    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.jWQ) });
-    int j = Arrays.hashCode(this.jWP);
+    int i = Objects.hash(new Object[] { Integer.valueOf(super.hashCode()), Float.valueOf(this.kZM) });
+    int j = Arrays.hashCode(this.kZL);
     AppMethodBeat.o(145201);
     return i * 31 + j;
+  }
+  
+  public final void i(Parcel paramParcel)
+  {
+    AppMethodBeat.i(145197);
+    super.i(paramParcel);
+    int i = paramParcel.readInt();
+    if (i > 0)
+    {
+      this.kZL = new float[i];
+      paramParcel.readFloatArray(this.kZL);
+    }
+    this.kZM = paramParcel.readFloat();
+    AppMethodBeat.o(145197);
   }
   
   public final void parse(JSONObject paramJSONObject)
@@ -106,13 +106,13 @@ public class SetLineDashActionArg
         AppMethodBeat.o(145198);
         return;
       }
-      this.jWP = new float[localJSONArray.length()];
-      while (i < this.jWP.length)
+      this.kZL = new float[localJSONArray.length()];
+      while (i < this.kZL.length)
       {
-        this.jWP[i] = g.f(localJSONArray, i);
+        this.kZL[i] = g.f(localJSONArray, i);
         i += 1;
       }
-      this.jWQ = g.f(paramJSONObject, 1);
+      this.kZM = g.f(paramJSONObject, 1);
       AppMethodBeat.o(145198);
       return;
     }
@@ -126,18 +126,18 @@ public class SetLineDashActionArg
   {
     AppMethodBeat.i(145199);
     super.writeToParcel(paramParcel, paramInt);
-    if (this.jWP != null)
+    if (this.kZL != null)
     {
-      paramParcel.writeInt(this.jWP.length);
-      paramParcel.writeFloatArray(this.jWP);
+      paramParcel.writeInt(this.kZL.length);
+      paramParcel.writeFloatArray(this.kZL);
     }
-    paramParcel.writeFloat(this.jWQ);
+    paramParcel.writeFloat(this.kZM);
     AppMethodBeat.o(145199);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.canvas.action.arg.SetLineDashActionArg
  * JD-Core Version:    0.7.0.1
  */

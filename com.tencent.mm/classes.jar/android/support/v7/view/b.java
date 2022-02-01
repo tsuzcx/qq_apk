@@ -7,7 +7,7 @@ import android.view.View;
 
 public abstract class b
 {
-  boolean adr;
+  boolean adE;
   Object mTag;
   
   public abstract void finish();
@@ -41,7 +41,7 @@ public abstract class b
   
   public void setTitleOptionalHint(boolean paramBoolean)
   {
-    this.adr = paramBoolean;
+    this.adE = paramBoolean;
   }
   
   public static abstract interface a

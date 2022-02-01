@@ -1,7 +1,7 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
 import junit.framework.Assert;
 
@@ -13,32 +13,32 @@ public final class i
   public i(com.tencent.mm.plugin.messenger.foundation.a.a.i parami)
   {
     super(parami);
-    AppMethodBeat.i(186859);
-    d(getDB(), "appbrandnotifymessage");
+    AppMethodBeat.i(232416);
+    e(getDB(), "appbrandnotifymessage");
     a(new i.b(32, "appbrandnotifymessage", i.b.a(3500001L, 4000000L, 105000001L, 108000000L)));
-    AppMethodBeat.o(186859);
+    AppMethodBeat.o(232416);
   }
   
-  public final String ajr(String paramString)
+  public final String avu(String paramString)
   {
-    AppMethodBeat.i(186860);
+    AppMethodBeat.i(232417);
     if ((paramString != null) && (paramString.length() > 0)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      if (!x.AX(paramString)) {
+      if (!ab.JC(paramString)) {
         break;
       }
-      AppMethodBeat.o(186860);
+      AppMethodBeat.o(232417);
       return "appbrandnotifymessage";
     }
-    AppMethodBeat.o(186860);
+    AppMethodBeat.o(232417);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.storage.i
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,45 @@
 package com.tencent.mm.plugin.finder.storage.config;
 
-import d.l;
-import java.util.LinkedList;
-import java.util.List;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.g.a.ck;
+import com.tencent.mm.sdk.event.IListener;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/config/IFinderFakeConfig;", "", "title", "", "(Ljava/lang/String;)V", "chosenIndex", "", "getChosenIndex", "()I", "setChosenIndex", "(I)V", "getTitle", "()Ljava/lang/String;", "setTitle", "itemNameList", "", "onItemClick", "", "index", "reset", "svrValue", "plugin-finder_release"})
-public abstract class d
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/config/FinderSvrConfigMonitor;", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/ConfigUpdatedEvent;", "()V", "TAG", "", "keyItemMap", "Ljava/util/HashMap;", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/finder/storage/config/item/IConfigItem;", "Lkotlin/collections/HashMap;", "callback", "", "event", "register", "", "key", "item", "plugin-finder_release"})
+public final class d
+  extends IListener<ck>
 {
-  public int sKs;
-  public String title;
+  private static HashMap<String, WeakReference<com.tencent.mm.plugin.finder.storage.config.item.d>> vFG;
+  public static final d vFH;
   
-  public d(String paramString)
+  static
   {
-    this.title = paramString;
-    this.sKs = -1;
+    AppMethodBeat.i(251927);
+    d locald = new d();
+    vFH = locald;
+    locald.alive();
+    vFG = new HashMap();
+    AppMethodBeat.o(251927);
   }
   
-  public abstract void FN(int paramInt);
-  
-  public List<String> cLy()
+  public static void a(String paramString, com.tencent.mm.plugin.finder.storage.config.item.d paramd)
   {
-    return (List)new LinkedList();
+    AppMethodBeat.i(251925);
+    p.h(paramString, "key");
+    p.h(paramd, "item");
+    if (!vFG.containsKey(paramString)) {
+      ((Map)vFG).put(paramString, new WeakReference(paramd));
+    }
+    AppMethodBeat.o(251925);
   }
-  
-  public abstract String cLz();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.storage.config.d
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mm.plugin.wallet_core.ui;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.br.c;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.xweb.WebView;
 import com.tencent.xweb.ac;
 
@@ -23,8 +23,8 @@ public final class i
     AppMethodBeat.i(70681);
     paramWebView = new Intent();
     paramWebView.putExtra("rawUrl", paramString);
-    ae.d("MicroMsg.ProtoColWebViewClient", "raw url: %s", new Object[] { paramWebView.getStringExtra("rawUrl") });
-    d.b(this.context, "webview", ".ui.tools.WebViewUI", paramWebView);
+    Log.d("MicroMsg.ProtoColWebViewClient", "raw url: %s", new Object[] { paramWebView.getStringExtra("rawUrl") });
+    c.b(this.context, "webview", ".ui.tools.WebViewUI", paramWebView);
     AppMethodBeat.o(70681);
     return true;
   }

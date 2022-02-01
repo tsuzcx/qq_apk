@@ -8,79 +8,99 @@ import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.card.base.b;
+import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.plugin.card.d.l;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.MMVerticalTextView;
-import com.tencent.mm.ui.base.o;
+import com.tencent.mm.ui.base.p;
 import java.util.ArrayList;
 
 public final class j
 {
-  View.OnClickListener jwB;
-  public Bitmap jww;
-  public o jwx;
-  ImageView jwy;
-  View jwz;
-  b oDm;
-  public Bitmap oIG;
-  float oIO;
-  boolean oLY;
-  MMActivity oPS;
-  Bitmap oPT;
-  TextView oPU;
-  TextView oPV;
-  View oPW;
-  ImageView oPX;
-  MMVerticalTextView oPY;
-  MMVerticalTextView oPZ;
-  ArrayList<Bitmap> oQa;
-  String oQb;
+  public Bitmap kuJ;
+  public p kuK;
+  ImageView kuL;
+  View kuM;
+  View.OnClickListener kuO;
+  com.tencent.mm.plugin.card.base.b pQV;
+  float pWC;
+  public Bitmap pWu;
+  boolean pZM;
+  MMActivity qdG;
+  Bitmap qdH;
+  TextView qdI;
+  TextView qdJ;
+  View qdK;
+  ImageView qdL;
+  MMVerticalTextView qdM;
+  MMVerticalTextView qdN;
+  ArrayList<Bitmap> qdO;
+  String qdP;
   
   public j(MMActivity paramMMActivity)
   {
     AppMethodBeat.i(113550);
-    this.oLY = true;
-    this.oPT = null;
-    this.jwx = null;
-    this.oIO = 0.0F;
-    this.oQa = new ArrayList();
-    this.oQb = "";
-    this.jwB = new j.1(this);
-    this.oPS = paramMMActivity;
+    this.pZM = true;
+    this.qdH = null;
+    this.kuK = null;
+    this.pWC = 0.0F;
+    this.qdO = new ArrayList();
+    this.qdP = "";
+    this.kuO = new View.OnClickListener()
+    {
+      public final void onClick(View paramAnonymousView)
+      {
+        AppMethodBeat.i(113548);
+        com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/card/ui/CardPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        if ((paramAnonymousView.getId() == 2131306037) || (paramAnonymousView.getId() == 2131306033))
+        {
+          if ((j.this.kuK != null) && (j.this.kuK.isShowing())) {
+            j.this.kuK.dismiss();
+          }
+          if (!j.this.pQV.csz()) {
+            j.this.cwj();
+          }
+        }
+        a.a(this, "com/tencent/mm/plugin/card/ui/CardPopupWindow$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+        AppMethodBeat.o(113548);
+      }
+    };
+    this.qdG = paramMMActivity;
     AppMethodBeat.o(113550);
   }
   
-  private void aW(float paramFloat)
+  private void bd(float paramFloat)
   {
     AppMethodBeat.i(113551);
-    WindowManager.LayoutParams localLayoutParams = this.oPS.getWindow().getAttributes();
+    WindowManager.LayoutParams localLayoutParams = this.qdG.getWindow().getAttributes();
     localLayoutParams.screenBrightness = paramFloat;
-    this.oPS.getWindow().setAttributes(localLayoutParams);
+    this.qdG.getWindow().setAttributes(localLayoutParams);
     AppMethodBeat.o(113551);
   }
   
-  public final void bYs()
+  public final void cwi()
   {
     AppMethodBeat.i(113552);
-    if (this.oIO < 0.8F) {
-      aW(0.8F);
+    if (this.pWC < 0.8F) {
+      bd(0.8F);
     }
     AppMethodBeat.o(113552);
   }
   
-  public final void bYt()
+  public final void cwj()
   {
     AppMethodBeat.i(113553);
-    aW(this.oIO);
+    bd(this.pWC);
     AppMethodBeat.o(113553);
   }
   
-  public final void bYu()
+  public final void cwk()
   {
     AppMethodBeat.i(113554);
-    if ((this.jwx != null) && (this.jwx.isShowing())) {
-      this.jwy.setImageBitmap(this.jww);
+    if ((this.kuK != null) && (this.kuK.isShowing())) {
+      this.kuL.setImageBitmap(this.kuJ);
     }
     AppMethodBeat.o(113554);
   }
@@ -88,12 +108,12 @@ public final class j
   final void recycleBmpList()
   {
     AppMethodBeat.i(113555);
-    if (this.oQa.size() > 2)
+    if (this.qdO.size() > 2)
     {
-      int i = this.oQa.size() - 1;
+      int i = this.qdO.size() - 1;
       while (i > 1)
       {
-        l.U((Bitmap)this.oQa.remove(i));
+        l.Z((Bitmap)this.qdO.remove(i));
         i -= 1;
       }
     }
@@ -102,7 +122,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.ui.j
  * JD-Core Version:    0.7.0.1
  */

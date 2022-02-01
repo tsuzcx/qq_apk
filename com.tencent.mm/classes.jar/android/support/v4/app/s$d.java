@@ -12,8 +12,8 @@ import java.util.List;
 public final class s$d
   implements s.e
 {
-  public a HP;
-  private Bitmap Ho;
+  public a HZ;
+  private Bitmap Hy;
   private int mColor = 0;
   
   private static Bundle a(a parama)
@@ -22,31 +22,31 @@ public final class s$d
     Bundle localBundle1 = new Bundle();
     Parcelable[] arrayOfParcelable = null;
     Object localObject = arrayOfParcelable;
-    if (parama.HU != null)
+    if (parama.If != null)
     {
       localObject = arrayOfParcelable;
-      if (parama.HU.length > 1) {
-        localObject = parama.HU[0];
+      if (parama.If.length > 1) {
+        localObject = parama.If[0];
       }
     }
-    arrayOfParcelable = new Parcelable[parama.HQ.length];
+    arrayOfParcelable = new Parcelable[parama.Ia.length];
     while (i < arrayOfParcelable.length)
     {
       Bundle localBundle2 = new Bundle();
-      localBundle2.putString("text", parama.HQ[i]);
+      localBundle2.putString("text", parama.Ia[i]);
       localBundle2.putString("author", (String)localObject);
       arrayOfParcelable[i] = localBundle2;
       i += 1;
     }
     localBundle1.putParcelableArray("messages", arrayOfParcelable);
-    localObject = parama.HR;
+    localObject = parama.Ib;
     if (localObject != null) {
-      localBundle1.putParcelable("remote_input", new RemoteInput.Builder(((x)localObject).Ix).setLabel(((x)localObject).Iy).setChoices(((x)localObject).Iz).setAllowFreeFormInput(((x)localObject).IA).addExtras(((x)localObject).mExtras).build());
+      localBundle1.putParcelable("remote_input", new RemoteInput.Builder(((x)localObject).II).setLabel(((x)localObject).IJ).setChoices(((x)localObject).IK).setAllowFreeFormInput(((x)localObject).IL).addExtras(((x)localObject).mExtras).build());
     }
-    localBundle1.putParcelable("on_reply", parama.HS);
-    localBundle1.putParcelable("on_read", parama.HT);
-    localBundle1.putStringArray("participants", parama.HU);
-    localBundle1.putLong("timestamp", parama.HV);
+    localBundle1.putParcelable("on_reply", parama.Ic);
+    localBundle1.putParcelable("on_read", parama.Ie);
+    localBundle1.putStringArray("participants", parama.If);
+    localBundle1.putLong("timestamp", parama.Ig);
     return localBundle1;
   }
   
@@ -56,14 +56,14 @@ public final class s$d
       return paramc;
     }
     Bundle localBundle = new Bundle();
-    if (this.Ho != null) {
-      localBundle.putParcelable("large_icon", this.Ho);
+    if (this.Hy != null) {
+      localBundle.putParcelable("large_icon", this.Hy);
     }
     if (this.mColor != 0) {
       localBundle.putInt("app_color", this.mColor);
     }
-    if (this.HP != null) {
-      localBundle.putBundle("car_conversation", a(this.HP));
+    if (this.HZ != null) {
+      localBundle.putBundle("car_conversation", a(this.HZ));
     }
     paramc.getExtras().putBundle("android.car.EXTENSIONS", localBundle);
     return paramc;
@@ -71,42 +71,42 @@ public final class s$d
   
   public static final class a
   {
-    final String[] HQ;
-    final x HR;
-    final PendingIntent HS;
-    final PendingIntent HT;
-    final String[] HU;
-    final long HV;
+    final String[] Ia;
+    final x Ib;
+    final PendingIntent Ic;
+    final PendingIntent Ie;
+    final String[] If;
+    final long Ig;
     
     public a(String[] paramArrayOfString1, x paramx, PendingIntent paramPendingIntent1, PendingIntent paramPendingIntent2, String[] paramArrayOfString2, long paramLong)
     {
-      this.HQ = paramArrayOfString1;
-      this.HR = paramx;
-      this.HT = paramPendingIntent2;
-      this.HS = paramPendingIntent1;
-      this.HU = paramArrayOfString2;
-      this.HV = paramLong;
+      this.Ia = paramArrayOfString1;
+      this.Ib = paramx;
+      this.Ie = paramPendingIntent2;
+      this.Ic = paramPendingIntent1;
+      this.If = paramArrayOfString2;
+      this.Ig = paramLong;
     }
     
     public static final class a
     {
-      public x HR;
-      public PendingIntent HS;
-      public PendingIntent HT;
-      public long HV;
-      public final List<String> HW = new ArrayList();
-      public final String HX;
+      public x Ib;
+      public PendingIntent Ic;
+      public PendingIntent Ie;
+      public long Ig;
+      public final List<String> Ih = new ArrayList();
+      public final String Ii;
       
       public a(String paramString)
       {
-        this.HX = paramString;
+        this.Ii = paramString;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     android.support.v4.app.s.d
  * JD-Core Version:    0.7.0.1
  */

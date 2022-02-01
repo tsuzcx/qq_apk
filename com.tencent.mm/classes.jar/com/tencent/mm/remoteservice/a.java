@@ -3,8 +3,8 @@ package com.tencent.mm.remoteservice;
 import android.os.Bundle;
 import android.os.Parcelable;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
@@ -13,13 +13,13 @@ import java.util.List;
 public class a
   extends b.a
 {
-  protected RemoteService IoY;
-  public b IoZ;
-  private final d gkS;
+  protected RemoteService NCu;
+  public b NCv;
+  private final d gVN;
   
   public a(d paramd)
   {
-    this.gkS = paramd;
+    this.gVN = paramd;
   }
   
   public Object CLIENT_CALL(String paramString, Object... paramVarArgs)
@@ -28,7 +28,7 @@ public class a
     paramVarArgs = objectsToBundle(paramVarArgs);
     try
     {
-      this.IoZ.onCallback(paramString, paramVarArgs, true);
+      this.NCv.onCallback(paramString, paramVarArgs, true);
       paramString = paramVarArgs.get("result_key");
       AppMethodBeat.o(152736);
       return paramString;
@@ -37,7 +37,7 @@ public class a
     {
       for (;;)
       {
-        ae.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { bu.o(paramString) });
+        Log.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
       }
     }
   }
@@ -45,16 +45,16 @@ public class a
   public Object REMOTE_CALL(final String paramString, final Object... paramVarArgs)
   {
     AppMethodBeat.i(152735);
-    if (this.gkS.isConnected())
+    if (this.gVN.isConnected())
     {
       paramVarArgs = objectsToBundle(paramVarArgs);
-      this.gkS.a(this, paramString, paramVarArgs);
+      this.gVN.a(this, paramString, paramVarArgs);
       paramVarArgs.setClassLoader(getClass().getClassLoader());
       paramString = paramVarArgs.get("result_key");
       AppMethodBeat.o(152735);
       return paramString;
     }
-    this.gkS.connect(new Runnable()
+    this.gVN.connect(new Runnable()
     {
       public final void run()
       {
@@ -116,7 +116,7 @@ public class a
   public void onCallback(String paramString, Bundle paramBundle, boolean paramBoolean)
   {
     AppMethodBeat.i(152734);
-    ae.d("MicroMsg.BaseClientRequest", "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
+    Log.d("MicroMsg.BaseClientRequest", "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
     Object localObject2 = null;
     for (;;)
     {
@@ -155,7 +155,7 @@ public class a
       }
       catch (Exception paramString)
       {
-        ae.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { bu.o(paramString) });
+        Log.e("MicroMsg.BaseClientRequest", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
         AppMethodBeat.o(152734);
         return;
       }

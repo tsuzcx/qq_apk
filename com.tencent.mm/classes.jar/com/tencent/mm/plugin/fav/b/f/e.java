@@ -3,29 +3,32 @@ package com.tencent.mm.plugin.fav.b.f;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.fav.a.aa;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.fav.a.j;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.List<Ljava.lang.String;>;
 
 public final class e
-  extends com.tencent.mm.sdk.e.j<com.tencent.mm.plugin.fav.a.j>
+  extends MAutoStorage<j>
   implements aa
 {
-  private com.tencent.mm.sdk.e.e db;
+  private ISQLiteDatabase db;
   
-  public e(com.tencent.mm.sdk.e.e parame)
+  public e(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, com.tencent.mm.plugin.fav.a.j.info, "FavSearchInfo", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, j.info, "FavSearchInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  private static List<Integer> dr(List<Integer> paramList)
+  private static List<Integer> dF(List<Integer> paramList)
   {
     AppMethodBeat.i(101721);
-    if (bu.ht(paramList))
+    if (Util.isNullOrNil(paramList))
     {
       AppMethodBeat.o(101721);
       return null;
@@ -59,6 +62,7 @@ public final class e
         break;
       case 7: 
         localArrayList.add(Integer.valueOf(7));
+        localArrayList.add(Integer.valueOf(21));
         break;
       case 8: 
         localArrayList.add(Integer.valueOf(8));
@@ -105,10 +109,10 @@ public final class e
     return localArrayList;
   }
   
-  private static List<Integer> ds(List<Integer> paramList)
+  private static List<Integer> dG(List<Integer> paramList)
   {
     AppMethodBeat.i(101722);
-    if (bu.ht(paramList))
+    if (Util.isNullOrNil(paramList))
     {
       AppMethodBeat.o(101722);
       return null;
@@ -143,6 +147,7 @@ public final class e
         break;
       case 7: 
         localArrayList.add(Integer.valueOf(7));
+        localArrayList.add(Integer.valueOf(29));
         break;
       case 8: 
         localArrayList.add(Integer.valueOf(8));
@@ -186,17 +191,46 @@ public final class e
     return localArrayList;
   }
   
-  public final boolean ahu(String paramString)
+  public final void Ea(long paramLong)
+  {
+    AppMethodBeat.i(101724);
+    String str = "delete from FavSearchInfo where localId = ".concat(String.valueOf(paramLong));
+    this.db.execSQL("FavSearchInfo", str);
+    AppMethodBeat.o(101724);
+  }
+  
+  public final j Eb(long paramLong)
+  {
+    j localj = null;
+    AppMethodBeat.i(101725);
+    Object localObject = "select * from FavSearchInfo where localId = ".concat(String.valueOf(paramLong));
+    localObject = this.db.rawQuery((String)localObject, null, 2);
+    if (localObject == null)
+    {
+      AppMethodBeat.o(101725);
+      return null;
+    }
+    if (((Cursor)localObject).moveToFirst())
+    {
+      localj = new j();
+      localj.convertFrom((Cursor)localObject);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(101725);
+    return localj;
+  }
+  
+  public final boolean asc(String paramString)
   {
     AppMethodBeat.i(101723);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(101723);
       return false;
     }
     paramString = "select count(localId) from FavSearchInfo where tagContent like '%" + paramString + "%'";
-    ae.d("MicroMsg.FavSearchStorage", "is tag exist sql {%s}", new Object[] { paramString });
-    paramString = this.db.a(paramString, null, 2);
+    Log.d("MicroMsg.FavSearchStorage", "is tag exist sql {%s}", new Object[] { paramString });
+    paramString = this.db.rawQuery(paramString, null, 2);
     if ((paramString != null) && (paramString.moveToFirst())) {}
     for (int i = paramString.getInt(0);; i = 0)
     {
@@ -244,12 +278,12 @@ public final class e
       }
     }
     paramList2 = "select localId from FavSearchInfo" + " where " + paramList1;
-    localObject = dr(paramList);
-    paramList = ds(paramList);
-    if (bu.ht((List)localObject))
+    localObject = dF(paramList);
+    paramList = dG(paramList);
+    if (Util.isNullOrNil((List)localObject))
     {
       paramList1 = paramList2;
-      if (bu.ht(paramList)) {}
+      if (Util.isNullOrNil(paramList)) {}
     }
     else
     {
@@ -257,7 +291,7 @@ public final class e
       paramList1 = paramList2;
       int i;
       int j;
-      if (!bu.ht((List)localObject))
+      if (!Util.isNullOrNil((List)localObject))
       {
         paramList2 = paramList2 + "type = " + ((List)localObject).get(0);
         i = 1;
@@ -273,13 +307,13 @@ public final class e
         }
       }
       paramList2 = paramList1;
-      if (!bu.ht(paramList))
+      if (!Util.isNullOrNil(paramList))
       {
         paramList2 = paramList1;
-        if (!bu.ht((List)localObject)) {
+        if (!Util.isNullOrNil((List)localObject)) {
           paramList2 = paramList1 + " or ";
         }
-        paramList1 = paramList2 + "subtype & " + com.tencent.mm.plugin.fav.a.j.Ek(((Integer)paramList.get(0)).intValue()) + " != 0";
+        paramList1 = paramList2 + "subtype & " + j.HV(((Integer)paramList.get(0)).intValue()) + " != 0";
         i = 1;
         for (;;)
         {
@@ -288,15 +322,15 @@ public final class e
             break;
           }
           j = ((Integer)paramList.get(i)).intValue();
-          paramList1 = paramList1 + " or subtype & " + com.tencent.mm.plugin.fav.a.j.Ek(j) + " != 0";
+          paramList1 = paramList1 + " or subtype & " + j.HV(j) + " != 0";
           i += 1;
         }
       }
       paramList1 = paramList2 + ")";
     }
     paramList1 = paramList1 + " order by time desc";
-    ae.d("MicroMsg.FavSearchStorage", "search id sql {%s}", new Object[] { paramList1 });
-    paramList1 = this.db.a(paramList1, null, 2);
+    Log.d("MicroMsg.FavSearchStorage", "search id sql {%s}", new Object[] { paramList1 });
+    paramList1 = this.db.rawQuery(paramList1, null, 2);
     if (paramList1 == null)
     {
       AppMethodBeat.o(101720);
@@ -309,39 +343,10 @@ public final class e
     AppMethodBeat.o(101720);
     return localArrayList;
   }
-  
-  public final void vW(long paramLong)
-  {
-    AppMethodBeat.i(101724);
-    String str = "delete from FavSearchInfo where localId = ".concat(String.valueOf(paramLong));
-    this.db.execSQL("FavSearchInfo", str);
-    AppMethodBeat.o(101724);
-  }
-  
-  public final com.tencent.mm.plugin.fav.a.j vX(long paramLong)
-  {
-    com.tencent.mm.plugin.fav.a.j localj = null;
-    AppMethodBeat.i(101725);
-    Object localObject = "select * from FavSearchInfo where localId = ".concat(String.valueOf(paramLong));
-    localObject = this.db.a((String)localObject, null, 2);
-    if (localObject == null)
-    {
-      AppMethodBeat.o(101725);
-      return null;
-    }
-    if (((Cursor)localObject).moveToFirst())
-    {
-      localj = new com.tencent.mm.plugin.fav.a.j();
-      localj.convertFrom((Cursor)localObject);
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(101725);
-    return localj;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.fav.b.f.e
  * JD-Core Version:    0.7.0.1
  */

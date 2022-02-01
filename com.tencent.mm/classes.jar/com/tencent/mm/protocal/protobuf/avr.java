@@ -2,82 +2,102 @@ package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
-public class avr
+public final class avr
   extends com.tencent.mm.bw.a
 {
-  public String GMJ;
-  public int GMK;
-  public int GML;
-  public long GMM;
+  public String LGp;
+  public String dQx;
+  public String jumpUrl;
+  public String title;
+  public int type;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152542);
+    AppMethodBeat.i(209511);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.GMJ != null) {
-        paramVarArgs.d(1, this.GMJ);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.type);
+      if (this.dQx != null) {
+        paramVarArgs.e(2, this.dQx);
       }
-      paramVarArgs.aS(2, this.GMK);
-      paramVarArgs.aS(3, this.GML);
-      paramVarArgs.aZ(99, this.GMM);
-      AppMethodBeat.o(152542);
+      if (this.title != null) {
+        paramVarArgs.e(3, this.title);
+      }
+      if (this.jumpUrl != null) {
+        paramVarArgs.e(4, this.jumpUrl);
+      }
+      if (this.LGp != null) {
+        paramVarArgs.e(5, this.LGp);
+      }
+      AppMethodBeat.o(209511);
       return 0;
     }
-    if (paramInt == 1) {
-      if (this.GMJ == null) {
-        break label366;
-      }
-    }
-    label366:
-    for (paramInt = f.a.a.b.b.a.e(1, this.GMJ) + 0;; paramInt = 0)
+    if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(2, this.GMK);
-      int j = f.a.a.b.b.a.bz(3, this.GML);
-      int k = f.a.a.b.b.a.p(99, this.GMM);
-      AppMethodBeat.o(152542);
-      return paramInt + i + j + k;
-      if (paramInt == 2)
-      {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
-          }
-        }
-        AppMethodBeat.o(152542);
-        return 0;
+      int i = g.a.a.b.b.a.bu(1, this.type) + 0;
+      paramInt = i;
+      if (this.dQx != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.dQx);
       }
-      if (paramInt == 3)
-      {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-        avr localavr = (avr)paramVarArgs[1];
-        switch (((Integer)paramVarArgs[2]).intValue())
-        {
-        default: 
-          AppMethodBeat.o(152542);
-          return -1;
-        case 1: 
-          localavr.GMJ = locala.OmT.readString();
-          AppMethodBeat.o(152542);
-          return 0;
-        case 2: 
-          localavr.GMK = locala.OmT.zc();
-          AppMethodBeat.o(152542);
-          return 0;
-        case 3: 
-          localavr.GML = locala.OmT.zc();
-          AppMethodBeat.o(152542);
-          return 0;
-        }
-        localavr.GMM = locala.OmT.zd();
-        AppMethodBeat.o(152542);
-        return 0;
+      i = paramInt;
+      if (this.title != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.title);
       }
-      AppMethodBeat.o(152542);
-      return -1;
+      paramInt = i;
+      if (this.jumpUrl != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.jumpUrl);
+      }
+      i = paramInt;
+      if (this.LGp != null) {
+        i = paramInt + g.a.a.b.b.a.f(5, this.LGp);
+      }
+      AppMethodBeat.o(209511);
+      return i;
     }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      AppMethodBeat.o(209511);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      avr localavr = (avr)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(209511);
+        return -1;
+      case 1: 
+        localavr.type = locala.UbS.zi();
+        AppMethodBeat.o(209511);
+        return 0;
+      case 2: 
+        localavr.dQx = locala.UbS.readString();
+        AppMethodBeat.o(209511);
+        return 0;
+      case 3: 
+        localavr.title = locala.UbS.readString();
+        AppMethodBeat.o(209511);
+        return 0;
+      case 4: 
+        localavr.jumpUrl = locala.UbS.readString();
+        AppMethodBeat.o(209511);
+        return 0;
+      }
+      localavr.LGp = locala.UbS.readString();
+      AppMethodBeat.o(209511);
+      return 0;
+    }
+    AppMethodBeat.o(209511);
+    return -1;
   }
 }
 

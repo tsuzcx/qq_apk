@@ -5,34 +5,36 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 
 public final class g
   extends com.tencent.mm.plugin.topstory.ui.video.g
 {
-  aw BOn;
-  private View BPf;
-  private a BPg;
+  MTimerHandler GoU;
+  private View GpM;
+  private a GpN;
   
   public g(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(126476);
-    this.BPf = this.contentView.findViewById(2131300326);
+    this.GpM = this.contentView.findViewById(2131301833);
     AppMethodBeat.o(126476);
   }
   
-  public final void bTU()
+  public final void bJB()
   {
-    AppMethodBeat.i(126481);
-    if (this.BOn != null) {
-      this.BOn.stopTimer();
+    AppMethodBeat.i(126482);
+    if (this.GoU != null)
+    {
+      this.GoU.stopTimer();
+      this.GoU.startTimer(2000L);
     }
-    AppMethodBeat.o(126481);
+    AppMethodBeat.o(126482);
   }
   
-  public final boolean bnS()
+  public final boolean bJw()
   {
     AppMethodBeat.i(126478);
     if (getVisibility() == 0)
@@ -44,71 +46,69 @@ public final class g
     return false;
   }
   
-  public final void bnY()
-  {
-    AppMethodBeat.i(126482);
-    if (this.BOn != null)
-    {
-      this.BOn.stopTimer();
-      this.BOn.ay(2000L, 2000L);
-    }
-    AppMethodBeat.o(126482);
-  }
-  
-  public final void bpi()
+  public final void bKO()
   {
     AppMethodBeat.i(126487);
-    super.bpi();
-    if (this.BPg != null) {
-      this.BPg.update(this.mPosition, getVideoTotalTime());
+    super.bKO();
+    if (this.GpN != null) {
+      this.GpN.update(this.mPosition, getVideoTotalTime());
     }
     AppMethodBeat.o(126487);
   }
   
-  public final void eur()
+  public final void crH()
+  {
+    AppMethodBeat.i(126481);
+    if (this.GoU != null) {
+      this.GoU.stopTimer();
+    }
+    AppMethodBeat.o(126481);
+  }
+  
+  public final void fzM()
   {
     AppMethodBeat.i(126484);
-    this.lvU.setVisibility(8);
+    this.mCP.setVisibility(8);
     AppMethodBeat.o(126484);
   }
   
-  public final void eus()
+  public final void fzN()
   {
     AppMethodBeat.i(126485);
-    this.lvU.setVisibility(0);
+    this.mCP.setVisibility(0);
     AppMethodBeat.o(126485);
   }
   
   public final int getBarPointWidth()
   {
     AppMethodBeat.i(126483);
-    int i = this.lvT.getWidth();
+    int i = this.mCO.getWidth();
     AppMethodBeat.o(126483);
     return i;
   }
   
   public final int getLayoutId()
   {
-    return 2131495791;
+    return 2131496749;
   }
   
   public final void hide()
   {
-    AppMethodBeat.i(224390);
+    AppMethodBeat.i(258729);
     setVisibility(8);
-    AppMethodBeat.o(224390);
+    AppMethodBeat.o(258729);
   }
   
   public final void setFullScreenBtnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(126477);
-    this.BPf.setOnClickListener(paramOnClickListener);
+    this.GpM.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(126477);
   }
   
   public final void setOnUpdateProgressLenListener(a parama)
   {
-    this.BPg = parama;
+    this.GpN = parama;
   }
   
   public final void setVisibility(int paramInt)
@@ -117,14 +117,14 @@ public final class g
     super.setVisibility(paramInt);
     if ((paramInt == 8) || (paramInt == 4))
     {
-      if (this.BPg != null)
+      if (this.GpN != null)
       {
-        this.BPg.euq();
+        this.GpN.fzL();
         AppMethodBeat.o(126486);
       }
     }
-    else if ((paramInt == 0) && (this.BPg != null)) {
-      this.BPg.eup();
+    else if ((paramInt == 0) && (this.GpN != null)) {
+      this.GpN.fzK();
     }
     AppMethodBeat.o(126486);
   }
@@ -133,9 +133,9 @@ public final class g
   {
     AppMethodBeat.i(126480);
     setVisibility(0);
-    eus();
-    if (this.BOn == null) {
-      this.BOn = new aw(new aw.a()
+    fzN();
+    if (this.GoU == null) {
+      this.GoU = new MTimerHandler(new MTimerHandler.CallBack()
       {
         public final boolean onTimerExpired()
         {
@@ -147,16 +147,16 @@ public final class g
         }
       }, false);
     }
-    this.BOn.stopTimer();
-    this.BOn.ay(2000L, 2000L);
+    this.GoU.stopTimer();
+    this.GoU.startTimer(2000L);
     AppMethodBeat.o(126480);
   }
   
   public static abstract interface a
   {
-    public abstract void eup();
+    public abstract void fzK();
     
-    public abstract void euq();
+    public abstract void fzL();
     
     public abstract void update(int paramInt1, int paramInt2);
   }

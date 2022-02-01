@@ -1,22 +1,24 @@
 package com.tencent.mm.plugin.wear.model.f;
 
-import com.tencent.mm.g.a.zi;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.g.a.aap;
+import com.tencent.mm.plugin.wear.model.a;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public abstract class c
   extends d
 {
   protected final void execute()
   {
-    if (com.tencent.mm.plugin.wear.model.a.eOd().eOn())
+    if (a.fVM().fVW())
     {
-      zi localzi = new zi();
-      localzi.dPz.dlO = 11;
-      com.tencent.mm.sdk.b.a.IvT.l(localzi);
+      aap localaap = new aap();
+      localaap.ehC.dDe = 11;
+      EventCenter.instance.publish(localaap);
       send();
       return;
     }
-    ae.i("MicroMsg.WearBaseSendTask", "can not send message to wear");
+    Log.i("MicroMsg.WearBaseSendTask", "can not send message to wear");
   }
   
   protected abstract void send();

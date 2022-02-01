@@ -5,14 +5,14 @@ import android.net.NetworkInfo.State;
 import android.os.Bundle;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.freewifi.m;
 import com.tencent.mm.plugin.freewifi.model.d;
 import com.tencent.mm.plugin.freewifi.model.g.b;
 import com.tencent.mm.plugin.freewifi.model.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 @Deprecated
 public class FreeWifiActivateAuthStateUI
@@ -21,38 +21,38 @@ public class FreeWifiActivateAuthStateUI
   public final void a(NetworkInfo.State paramState)
   {
     AppMethodBeat.i(24965);
-    ae.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "now network state : %s", new Object[] { paramState.toString() });
-    if ((paramState == NetworkInfo.State.CONNECTED) && (d.akO(this.ssid)))
+    Log.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "now network state : %s", new Object[] { paramState.toString() });
+    if ((paramState == NetworkInfo.State.CONNECTED) && (d.axS(this.ssid)))
     {
-      cUK();
-      cUM();
+      dNT();
+      dNV();
     }
     AppMethodBeat.o(24965);
   }
   
-  protected final void aUs()
+  protected final void bpf()
   {
     AppMethodBeat.i(24966);
-    j.cUj().a(this.ssid, new g.b()
+    j.dNs().a(this.ssid, new g.b()
     {
-      public final void dG(String paramAnonymousString, int paramAnonymousInt)
+      public final void dV(String paramAnonymousString, int paramAnonymousInt)
       {
         AppMethodBeat.i(24961);
-        String str = d.cTS();
-        ae.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "get ap auth data : %s, url : %s, mac : %s", new Object[] { paramAnonymousString, FreeWifiActivateAuthStateUI.this.osm, str });
-        if (!bu.isNullOrNil(paramAnonymousString)) {
-          new com.tencent.mm.plugin.freewifi.d.a(FreeWifiActivateAuthStateUI.this.osm, FreeWifiActivateAuthStateUI.this.ssid, str, FreeWifiActivateAuthStateUI.this.tzM, paramAnonymousString, "", paramAnonymousInt, m.ap(FreeWifiActivateAuthStateUI.this.getIntent())).c(new f()
+        String str = d.dNb();
+        Log.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "get ap auth data : %s, url : %s, mac : %s", new Object[] { paramAnonymousString, FreeWifiActivateAuthStateUI.this.pFJ, str });
+        if (!Util.isNullOrNil(paramAnonymousString)) {
+          new com.tencent.mm.plugin.freewifi.d.a(FreeWifiActivateAuthStateUI.this.pFJ, FreeWifiActivateAuthStateUI.this.ssid, str, FreeWifiActivateAuthStateUI.this.wQO, paramAnonymousString, "", paramAnonymousInt, m.aw(FreeWifiActivateAuthStateUI.this.getIntent())).c(new i()
           {
-            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, n paramAnonymous2n)
+            public final void onSceneEnd(int paramAnonymous2Int1, int paramAnonymous2Int2, String paramAnonymous2String, q paramAnonymous2q)
             {
               AppMethodBeat.i(24960);
-              ae.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "errType : %d, errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String });
-              FreeWifiActivateAuthStateUI.this.tzO = false;
+              Log.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "errType : %d, errCode : %d, errMsg : %s", new Object[] { Integer.valueOf(paramAnonymous2Int1), Integer.valueOf(paramAnonymous2Int2), paramAnonymous2String });
+              FreeWifiActivateAuthStateUI.this.wQQ = false;
               if ((paramAnonymous2Int1 == 0) && (paramAnonymous2Int2 == 0))
               {
-                paramAnonymous2String = ((com.tencent.mm.plugin.freewifi.d.a)paramAnonymous2n).cUm();
-                ae.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "authUrl : %s", new Object[] { paramAnonymous2String });
-                j.cUj().a(FreeWifiActivateAuthStateUI.this.ssid, paramAnonymous2String, FreeWifiActivateAuthStateUI.this.getIntent());
+                paramAnonymous2String = ((com.tencent.mm.plugin.freewifi.d.a)paramAnonymous2q).dNv();
+                Log.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "authUrl : %s", new Object[] { paramAnonymous2String });
+                j.dNs().a(FreeWifiActivateAuthStateUI.this.ssid, paramAnonymous2String, FreeWifiActivateAuthStateUI.this.getIntent());
                 AppMethodBeat.o(24960);
                 return;
               }
@@ -69,23 +69,23 @@ public class FreeWifiActivateAuthStateUI
         }
         AppMethodBeat.o(24961);
       }
-    }, this.cSM, getIntent());
+    }, this.channelId, getIntent());
     AppMethodBeat.o(24966);
   }
   
-  protected final void cUF()
+  protected final void dNO()
   {
     AppMethodBeat.i(24967);
-    cUJ();
-    d.akP(this.ssid);
+    dNS();
+    d.axT(this.ssid);
     AppMethodBeat.o(24967);
   }
   
-  protected final int cUG()
+  protected final int dNP()
   {
     AppMethodBeat.i(24968);
-    j.cUd();
-    int i = d.akN(this.ssid);
+    j.dNm();
+    int i = d.axR(this.ssid);
     AppMethodBeat.o(24968);
     return i;
   }
@@ -94,9 +94,9 @@ public class FreeWifiActivateAuthStateUI
   {
     AppMethodBeat.i(24963);
     super.initView();
-    this.tzL = ((Button)findViewById(2131300737));
-    this.tzL.setOnClickListener(new FreeWifiActivateAuthStateUI.1(this));
-    setMMTitle(2131759653);
+    this.wQN = ((Button)findViewById(2131302321));
+    this.wQN.setOnClickListener(new FreeWifiActivateAuthStateUI.1(this));
+    setMMTitle(2131760974);
     AppMethodBeat.o(24963);
   }
   
@@ -104,10 +104,10 @@ public class FreeWifiActivateAuthStateUI
   {
     AppMethodBeat.i(24962);
     super.onCreate(paramBundle);
-    if (this.doj != 2) {
+    if (this.source != 2) {
       d.a(this.ssid, 1, getIntent());
     }
-    ae.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "now it is from qrcode, try to auth");
+    Log.i("MicroMsg.FreeWifi.FreeWifiActivateAuthStateUI", "now it is from qrcode, try to auth");
     AppMethodBeat.o(24962);
   }
   
@@ -126,7 +126,7 @@ public class FreeWifiActivateAuthStateUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiActivateAuthStateUI
  * JD-Core Version:    0.7.0.1
  */

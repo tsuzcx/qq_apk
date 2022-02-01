@@ -5,40 +5,41 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
 import com.tencent.mm.ipcinvoker.b;
 import com.tencent.mm.ipcinvoker.type.IPCVoid;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/model/TopStoryWebViewVisitReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "enterTime", "", "getEnterTime", "()J", "lastResumeTime", "maxScrollY", "", "publishId", "", "scene", "stayTime", "totalScrollY", "onPause", "", "onResume", "report", "setMaxScrollY", "setPublishId", "setScene", "setTotalScrollY", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/model/TopStoryWebViewVisitReporter;", "Lcom/tencent/mm/plugin/webview/model/IWebviewReporter;", "()V", "enterTime", "", "getEnterTime", "()J", "lastResumeTime", "maxScrollY", "", "publishId", "", "scene", "stayTime", "totalScrollY", "onPause", "", "onResume", "report", "setMaxScrollY", "setPublishId", "setScene", "setTotalScrollY", "plugin-webview_release"})
 public final class ak
 {
-  public int AFq;
-  public int Emc;
-  public long dCI;
+  public int EOU;
+  public int IZc;
+  public long dUy;
   public final long enterTime;
-  public String hFX;
+  public String iAh;
   public long lastResumeTime;
   public int scene;
   
   public ak()
   {
-    AppMethodBeat.i(199343);
+    AppMethodBeat.i(210353);
     this.lastResumeTime = -1L;
     this.enterTime = System.currentTimeMillis();
-    this.Emc = a.iv(com.tencent.mm.sdk.platformtools.ak.getContext());
-    this.AFq = a.iv(com.tencent.mm.sdk.platformtools.ak.getContext());
-    AppMethodBeat.o(199343);
+    this.IZc = a.jo(MMApplicationContext.getContext());
+    this.EOU = a.jo(MMApplicationContext.getContext());
+    AppMethodBeat.o(210353);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
-  static final class a<InputType, ResultType>
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "data", "Landroid/os/Bundle;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "Lcom/tencent/mm/ipcinvoker/IPCInvokeCallback;", "Lcom/tencent/mm/ipcinvoker/type/IPCVoid;", "invoke"})
+  public static final class a<InputType, ResultType>
     implements b<Bundle, IPCVoid>
   {
-    public static final a Emd;
+    public static final a IZd;
     
     static
     {
-      AppMethodBeat.i(199342);
-      Emd = new a();
-      AppMethodBeat.o(199342);
+      AppMethodBeat.i(210352);
+      IZd = new a();
+      AppMethodBeat.o(210352);
     }
   }
 }

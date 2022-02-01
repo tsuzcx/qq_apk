@@ -1,80 +1,80 @@
 package com.tencent.mm.plugin.exdevice.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.eb;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.protocal.protobuf.bcs;
-import com.tencent.mm.protocal.protobuf.bct;
-import com.tencent.mm.protocal.protobuf.bob;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.a.ee;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.protocal.protobuf.boe;
+import com.tencent.mm.protocal.protobuf.bof;
+import com.tencent.mm.protocal.protobuf.cat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 final class e$36
-  implements f
+  implements i
 {
-  e$36(e parame, eb parameb) {}
+  e$36(e parame, ee paramee) {}
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(23268);
-    if ((paramn != null) && (paramn.getType() == 543))
+    if ((paramq != null) && (paramq.getType() == 543))
     {
-      bc.ajj().b(543, this);
+      bg.azz().b(543, this);
       if ((paramInt1 != 0) || (paramInt2 != 0))
       {
-        ae.e("MicroMsg.exdevice.ExdeviceEventManager", "getTicketSceneEndImpl errType = [%s], errCode = [%s]， errMsg = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-        this.qip.dqh.dqj = true;
-        this.qip.dqh.dqk = null;
-        if (this.qip.callback != null) {
-          this.qip.callback.run();
+        Log.e("MicroMsg.exdevice.ExdeviceEventManager", "getTicketSceneEndImpl errType = [%s], errCode = [%s]， errMsg = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+        this.rzl.dHu.dHw = true;
+        this.rzl.dHu.dHx = null;
+        if (this.rzl.callback != null) {
+          this.rzl.callback.run();
         }
         AppMethodBeat.o(23268);
         return;
       }
-      ae.i("MicroMsg.exdevice.ExdeviceEventManager", "getTicketSceneEndImpl errType = [%s], errCode = [%s]， errMsg = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-      paramString = (z)paramn;
-      if ((paramString.gux == null) || (paramString.gux.hQE.hQJ == null)) {}
-      bct localbct;
-      for (paramString = null;; paramString = (bcs)paramString.gux.hQE.hQJ)
+      Log.i("MicroMsg.exdevice.ExdeviceEventManager", "getTicketSceneEndImpl errType = [%s], errCode = [%s]， errMsg = [%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      paramString = (z)paramq;
+      if ((paramString.hhm == null) || (paramString.hhm.iLL.iLR == null)) {}
+      bof localbof;
+      for (paramString = null;; paramString = (boe)paramString.hhm.iLL.iLR)
       {
-        Iterator localIterator = paramString.GSq.iterator();
+        Iterator localIterator = paramString.LWv.iterator();
         paramInt1 = 0;
         for (;;)
         {
           if (!localIterator.hasNext()) {
             break label413;
           }
-          localbct = (bct)localIterator.next();
-          if (localbct != null)
+          localbof = (bof)localIterator.next();
+          if (localbof != null)
           {
-            paramn = null;
+            paramq = null;
             paramString = null;
-            if (localbct.FVo != null)
+            if (localbof.KOZ != null)
             {
-              paramn = localbct.FVo.nIM;
-              paramString = localbct.FVo.FSh;
+              paramq = localbof.KOZ.oTH;
+              paramString = localbof.KOZ.KLO;
             }
-            if ((localbct.Ret == 0) && (!bu.isNullOrNil(localbct.xrf))) {
+            if ((localbof.Ret == 0) && (!Util.isNullOrNil(localbof.Bri))) {
               break;
             }
-            ae.e("MicroMsg.exdevice.ExdeviceEventManager", "deviceId(%s) get ticket fail. ret=%d, ticket=%s", new Object[] { paramn, Integer.valueOf(localbct.Ret), localbct.xrf });
+            Log.e("MicroMsg.exdevice.ExdeviceEventManager", "deviceId(%s) get ticket fail. ret=%d, ticket=%s", new Object[] { paramq, Integer.valueOf(localbof.Ret), localbof.Bri });
           }
         }
       }
-      ae.i("MicroMsg.exdevice.ExdeviceEventManager", "GetHardDeviceOperTicket end. deviceId=%s, deviceType=%s, ticket=%s, oper=%d", new Object[] { paramn, paramString, localbct.xrf, Integer.valueOf(localbct.GSm) });
-      this.qip.dqh.dqj = true;
-      this.qip.dqh.dqk = localbct.xrf;
-      if (this.qip.callback == null) {
+      Log.i("MicroMsg.exdevice.ExdeviceEventManager", "GetHardDeviceOperTicket end. deviceId=%s, deviceType=%s, ticket=%s, oper=%d", new Object[] { paramq, paramString, localbof.Bri, Integer.valueOf(localbof.LWr) });
+      this.rzl.dHu.dHw = true;
+      this.rzl.dHu.dHx = localbof.Bri;
+      if (this.rzl.callback == null) {
         break label519;
       }
-      this.qip.callback.run();
+      this.rzl.callback.run();
       paramInt1 = 1;
     }
     label519:
@@ -84,18 +84,18 @@ final class e$36
       label413:
       if (paramInt1 == 0)
       {
-        this.qip.dqh.dqj = true;
-        this.qip.dqh.dqk = null;
-        if (this.qip.callback != null) {
-          this.qip.callback.run();
+        this.rzl.dHu.dHw = true;
+        this.rzl.dHu.dHx = null;
+        if (this.rzl.callback != null) {
+          this.rzl.callback.run();
         }
       }
       AppMethodBeat.o(23268);
       return;
-      this.qip.dqh.dqj = true;
-      this.qip.dqh.dqk = null;
-      if (this.qip.callback != null) {
-        this.qip.callback.run();
+      this.rzl.dHu.dHw = true;
+      this.rzl.dHu.dHx = null;
+      if (this.rzl.callback != null) {
+        this.rzl.callback.run();
       }
       AppMethodBeat.o(23268);
       return;

@@ -1,141 +1,149 @@
 package com.tencent.mm.compatible.deviceinfo;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
 {
-  public int fYA;
-  public int fYB;
-  public int fYC;
-  public int fYD;
-  public int fYE;
-  public int fYF;
-  public int fYG;
-  public int fYH;
-  public int fYI;
-  public int fYJ;
-  public int fYK;
-  public int fYL;
-  public int fYM;
-  public int fYN;
-  public int fYO;
-  public int fYP;
-  public int fYQ;
-  public int fYR;
-  public boolean fYS;
-  public int fYT;
-  public int fYU;
-  public int fYV;
-  public int fYW;
-  public int fYX;
-  public int fYY;
-  public int fYZ;
-  public boolean fYn;
-  public int fYo;
-  public int fYp;
-  public int fYq;
-  public int fYr;
-  public int fYs;
-  public int fYt;
-  public int fYu;
-  public int fYv;
-  public int fYw;
-  public int fYx;
-  public int fYy;
-  public int fYz;
-  public int fZA;
-  public boolean fZB;
-  public int fZC;
-  public int fZD;
-  public int fZE;
-  public int fZF;
-  public int fZG;
-  public int fZH;
-  public int fZI;
-  public int fZJ;
-  public int fZK;
-  public int fZL;
-  public int fZM;
-  public int fZN;
-  public int fZO;
-  public int fZP;
-  public int fZQ;
-  public int fZR;
-  public int fZS;
-  public int fZT;
-  public int fZU;
-  public int fZV;
-  public int fZW;
-  public int fZX;
-  public int fZY;
-  public int fZZ;
-  public int fZa;
-  public int fZb;
-  public int fZc;
-  public int fZd;
-  public int fZe;
-  public int fZf;
-  public int fZg;
-  public int fZh;
-  public int fZi;
-  public int fZj;
-  public int fZk;
-  public int fZl;
-  public int fZm;
-  public int fZn;
-  public int fZo;
-  public int fZp;
-  public int fZq;
-  public int fZr;
-  public int fZs;
-  public int fZt;
-  public int fZu;
-  public int fZv;
-  public int fZw;
-  public short[] fZx;
-  public short[] fZy;
-  public boolean fZz;
-  public int gaa;
-  public int gab;
-  public int gac;
-  public int gad;
-  public int gae;
-  public int gaf;
+  public boolean gDA;
+  public int gDB;
+  public int gDC;
+  public int gDD;
+  public int gDE;
+  public int gDF;
+  public int gDG;
+  public int gDH;
+  public int gDI;
+  public int gDJ;
+  public int gDK;
+  public int gDL;
+  public int gDM;
+  public int gDN;
+  public int gDO;
+  public int gDP;
+  public int gDQ;
+  public int gDR;
+  public int gDS;
+  public int gDT;
+  public int gDU;
+  public int gDV;
+  public int gDW;
+  public int gDX;
+  public int gDY;
+  public int gDZ;
+  public int gEA;
+  public int gEB;
+  public int gEC;
+  public int gED;
+  public int gEE;
+  public int gEF;
+  public int gEG;
+  public int gEH;
+  public int gEI;
+  public int gEJ;
+  public int gEK;
+  public int gEL;
+  public int gEM;
+  public int gEN;
+  public short[] gEO;
+  public short[] gEP;
+  public boolean gEQ;
+  public int gER;
+  public boolean gES;
+  public int gET;
+  public int gEU;
+  public int gEV;
+  public int gEW;
+  public int gEX;
+  public int gEY;
+  public int gEZ;
+  public int gEa;
+  public int gEb;
+  public int gEc;
+  public int gEd;
+  public int gEe;
+  public int gEf;
+  public int gEg;
+  public int gEh;
+  public int gEi;
+  public boolean gEj;
+  public int gEk;
+  public int gEl;
+  public int gEm;
+  public int gEn;
+  public int gEo;
+  public int gEp;
+  public int gEq;
+  public int gEr;
+  public int gEs;
+  public int gEt;
+  public int gEu;
+  public int gEv;
+  public int gEw;
+  public int gEx;
+  public int gEy;
+  public int gEz;
+  public int gFa;
+  public int gFb;
+  public int gFc;
+  public int gFd;
+  public int gFe;
+  public int gFf;
+  public int gFg;
+  public int gFh;
+  public int gFi;
+  public int gFj;
+  public int gFk;
+  public int gFl;
+  public int gFm;
+  public int gFn;
+  public int gFo;
+  public int gFp;
+  public int gFq;
+  public int gFr;
+  public int gFs;
+  public int gFt;
+  public int gFu;
+  public int gFv;
+  public int gFw;
   
   public b()
   {
     AppMethodBeat.i(155632);
-    this.fYn = false;
-    this.fZx = new short[15];
-    this.fZy = new short[2];
-    this.fZB = false;
+    this.gDA = false;
+    this.gDT = -1;
+    this.gDU = -1;
+    this.gDV = -1;
+    this.gDW = -1;
+    this.gEO = new short[15];
+    this.gEP = new short[2];
+    this.gES = false;
     reset();
     AppMethodBeat.o(155632);
   }
   
-  public final boolean ZW()
+  public final boolean anV()
   {
-    return ((this.fYp >= 0) && (this.fYq < 0)) || ((this.fYp < 0) && (this.fYq >= 0)) || (this.fYr > 0);
+    return ((this.gDC >= 0) && (this.gDD < 0)) || ((this.gDC < 0) && (this.gDD >= 0)) || (this.gDE > 0);
   }
   
-  public final boolean ZX()
+  public final boolean anW()
   {
-    return this.fYs >= 0;
+    return this.gDF >= 0;
   }
   
-  public final boolean ZY()
+  public final boolean anX()
   {
-    return this.fYt >= 0;
+    return this.gDG >= 0;
   }
   
-  public final int ZZ()
+  public final int anY()
   {
     AppMethodBeat.i(155633);
-    if (ZX())
+    if (anW())
     {
-      int i = (this.fYs & 0xE0) >> 5;
-      ae.d("VoipAudioInfo", "getEnableMode ".concat(String.valueOf(i)));
+      int i = (this.gDF & 0xE0) >> 5;
+      Log.d("VoipAudioInfo", "getEnableMode ".concat(String.valueOf(i)));
       if (i == 7)
       {
         AppMethodBeat.o(155633);
@@ -148,17 +156,17 @@ public final class b
     return -1;
   }
   
-  public final boolean aaa()
+  public final boolean anZ()
   {
     AppMethodBeat.i(155634);
-    if (ZX())
+    if (anW())
     {
-      int i = this.fYs & 0x10;
+      int i = this.gDF & 0x10;
       StringBuilder localStringBuilder = new StringBuilder("enableSpeaker ");
       if (i > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        ae.d("VoipAudioInfo", bool);
+        Log.d("VoipAudioInfo", bool);
         if (i <= 0) {
           break;
         }
@@ -172,13 +180,13 @@ public final class b
     return false;
   }
   
-  public final int aab()
+  public final int aoa()
   {
     AppMethodBeat.i(155635);
-    if (ZX())
+    if (anW())
     {
-      int i = (this.fYs & 0xE) >> 1;
-      ae.d("VoipAudioInfo", "getDisableMode ".concat(String.valueOf(i)));
+      int i = (this.gDF & 0xE) >> 1;
+      Log.d("VoipAudioInfo", "getDisableMode ".concat(String.valueOf(i)));
       if (i == 7)
       {
         AppMethodBeat.o(155635);
@@ -191,17 +199,17 @@ public final class b
     return -1;
   }
   
-  public final boolean aac()
+  public final boolean aob()
   {
     AppMethodBeat.i(155636);
-    if (ZX())
+    if (anW())
     {
-      int i = this.fYs & 0x1;
+      int i = this.gDF & 0x1;
       StringBuilder localStringBuilder = new StringBuilder("disableSpeaker ");
       if (i > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        ae.d("VoipAudioInfo", bool);
+        Log.d("VoipAudioInfo", bool);
         if (i <= 0) {
           break;
         }
@@ -215,13 +223,13 @@ public final class b
     return false;
   }
   
-  public final int aad()
+  public final int aoc()
   {
     AppMethodBeat.i(155637);
-    if (ZY())
+    if (anX())
     {
-      int i = (this.fYt & 0xE0) >> 5;
-      ae.d("VoipAudioInfo", "getEnableMode ".concat(String.valueOf(i)));
+      int i = (this.gDG & 0xE0) >> 5;
+      Log.d("VoipAudioInfo", "getEnableMode ".concat(String.valueOf(i)));
       if (i == 7)
       {
         AppMethodBeat.o(155637);
@@ -234,17 +242,17 @@ public final class b
     return -1;
   }
   
-  public final boolean aae()
+  public final boolean aod()
   {
     AppMethodBeat.i(155638);
-    if (ZY())
+    if (anX())
     {
-      int i = this.fYt & 0x10;
+      int i = this.gDG & 0x10;
       StringBuilder localStringBuilder = new StringBuilder("enableSpeaker ");
       if (i > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        ae.d("VoipAudioInfo", bool);
+        Log.d("VoipAudioInfo", bool);
         if (i <= 0) {
           break;
         }
@@ -258,13 +266,13 @@ public final class b
     return false;
   }
   
-  public final int aaf()
+  public final int aoe()
   {
     AppMethodBeat.i(155639);
-    if (ZY())
+    if (anX())
     {
-      int i = (this.fYt & 0xE) >> 1;
-      ae.d("VoipAudioInfo", "getDisableMode ".concat(String.valueOf(i)));
+      int i = (this.gDG & 0xE) >> 1;
+      Log.d("VoipAudioInfo", "getDisableMode ".concat(String.valueOf(i)));
       if (i == 7)
       {
         AppMethodBeat.o(155639);
@@ -277,17 +285,17 @@ public final class b
     return -1;
   }
   
-  public final boolean aag()
+  public final boolean aof()
   {
     AppMethodBeat.i(155640);
-    if (ZY())
+    if (anX())
     {
-      int i = this.fYt & 0x1;
+      int i = this.gDG & 0x1;
       StringBuilder localStringBuilder = new StringBuilder("disableSpeaker ");
       if (i > 0) {}
       for (boolean bool = true;; bool = false)
       {
-        ae.d("VoipAudioInfo", bool);
+        Log.d("VoipAudioInfo", bool);
         if (i <= 0) {
           break;
         }
@@ -304,188 +312,188 @@ public final class b
   public final void dump()
   {
     AppMethodBeat.i(155641);
-    ae.d("VoipAudioInfo", "streamtype " + this.fYo);
-    ae.d("VoipAudioInfo", "smode " + this.fYp);
-    ae.d("VoipAudioInfo", "omode " + this.fYq);
-    ae.d("VoipAudioInfo", "ospeaker " + this.fYr);
-    ae.d("VoipAudioInfo", "operating" + this.fYs);
-    ae.d("VoipAudioInfo", "moperating" + this.fYt);
-    ae.d("VoipAudioInfo", "mstreamtype" + this.fYu);
-    ae.d("VoipAudioInfo", "mVoiceRecordMode" + this.fYv);
-    ae.d("VoipAudioInfo", "agcMode :" + this.fZc);
-    ae.d("VoipAudioInfo", "nsMode:" + this.fYy);
-    ae.d("VoipAudioInfo", "aecMode:" + this.fYx);
-    ae.d("VoipAudioInfo", "volumMode:" + this.fYz);
-    ae.d("VoipAudioInfo", "micMode:" + this.fYL);
-    ae.d("VoipAudioInfo", "sourceMode:" + this.fYM);
-    ae.d("VoipAudioInfo", "speakerMode:" + this.fYN);
-    ae.d("VoipAudioInfo", "phoneMode:" + this.fYO);
-    ae.d("VoipAudioInfo", "voipstreamType:" + this.fYP);
-    ae.d("VoipAudioInfo", "speakerstreamtype:" + this.fYQ);
-    ae.d("VoipAudioInfo", "phonestreamtype:" + this.fYR);
-    ae.d("VoipAudioInfo", "ringphonestream:" + this.fYT);
-    ae.d("VoipAudioInfo", "ringphonemode:" + this.fYU);
-    ae.d("VoipAudioInfo", "ringspeakerstream:" + this.fYV);
-    ae.d("VoipAudioInfo", "ringspeakermode:" + this.fYW);
-    ae.d("VoipAudioInfo", "agcModeNew :" + this.fZb);
-    ae.d("VoipAudioInfo", "nsModeNew:" + this.fYY);
-    ae.d("VoipAudioInfo", "nsModeNewMulti:" + this.fYZ);
-    ae.d("VoipAudioInfo", "voipfullbandcfg:" + this.fZa);
-    ae.d("VoipAudioInfo", "aecModeNew:" + this.fYX);
-    ae.d("VoipAudioInfo", "agctargetdb:" + this.fZd);
-    ae.d("VoipAudioInfo", "agcgaindb:" + this.fZe);
-    ae.d("VoipAudioInfo", "agcflag:" + this.fZf);
-    ae.d("VoipAudioInfo", "agclimiter:" + this.fZg);
-    ae.d("VoipAudioInfo", "agcCompRatio:" + this.fZh);
-    ae.d("VoipAudioInfo", "agcDnGainThr:" + this.fZi);
-    ae.d("VoipAudioInfo", "inputVolumeScale:" + this.fYA);
-    ae.d("VoipAudioInfo", "outputVolumeScale:" + this.fYB);
-    ae.d("VoipAudioInfo", "inputVolumeScaleForSpeaker:" + this.fYC);
-    ae.d("VoipAudioInfo", "outputVolumeScaleForSpeaker:" + this.fYD);
-    ae.d("VoipAudioInfo", "ehanceHeadsetEC:" + this.fYG);
-    ae.d("VoipAudioInfo", "setECModeLevelForHeadSet:" + this.fYH);
-    ae.d("VoipAudioInfo", "setECModeLevelForSpeaker:" + this.fYI);
-    ae.d("VoipAudioInfo", "enableSpeakerEnhanceEC:" + this.fYJ);
-    ae.d("VoipAudioInfo", "enableRecTimer:" + this.fZu);
-    ae.d("VoipAudioInfo", "enablePlayTimer:" + this.fZv);
-    ae.d("VoipAudioInfo", "setPlayerPrecorrectCofOnOrOff:" + this.fZw);
-    ae.d("VoipAudioInfo", "outputVolumeGainForPhone:" + this.fYE);
-    ae.d("VoipAudioInfo", "outputVolumeGainForSpeaker:" + this.fYF);
-    ae.d("VoipAudioInfo", "noisegateon" + this.fZz);
-    ae.d("VoipAudioInfo", "noisegatestrength[0]" + this.fZy[0]);
-    ae.d("VoipAudioInfo", "noisegatestrength[1]" + this.fZy[1]);
-    ae.d("VoipAudioInfo", "spkecenable:" + this.fZA);
-    ae.d("VoipAudioInfo", "agcRxFlag:" + this.fZI);
-    ae.d("VoipAudioInfo", "agcRxTargetdb:" + this.fZJ);
-    ae.d("VoipAudioInfo", "agcRxGaindb:" + this.fZK);
-    ae.d("VoipAudioInfo", "agcRxLimiter:" + this.fZL);
-    ae.d("VoipAudioInfo", "enableXnoiseSup:" + this.fYK);
-    ae.d("VoipAudioInfo", "mt3dFlag:" + this.fZM);
-    ae.d("VoipAudioInfo", "mt3dAzim1:" + this.fZN);
-    ae.d("VoipAudioInfo", "mt3dAzim2:" + this.fZO);
-    ae.d("VoipAudioInfo", "mt3dAzim3:" + this.fZP);
-    ae.d("VoipAudioInfo", "mt3dAzim4:" + this.fZQ);
-    ae.d("VoipAudioInfo", "mt3dAzim5:" + this.fZR);
-    ae.d("VoipAudioInfo", "mt3dAzim6:" + this.fZS);
-    ae.d("VoipAudioInfo", "mt3dAzim7:" + this.fZT);
-    ae.d("VoipAudioInfo", "mt3dAzim8:" + this.fZU);
-    ae.d("VoipAudioInfo", "mt3dElvl1:" + this.fZV);
-    ae.d("VoipAudioInfo", "mt3dElvl2:" + this.fZW);
-    ae.d("VoipAudioInfo", "mt3dElvl3:" + this.fZX);
-    ae.d("VoipAudioInfo", "mt3dElvl4:" + this.fZY);
-    ae.d("VoipAudioInfo", "mt3dElvl5:" + this.fZZ);
-    ae.d("VoipAudioInfo", "mt3dElvl6:" + this.gaa);
-    ae.d("VoipAudioInfo", "mt3dElvl7:" + this.gab);
-    ae.d("VoipAudioInfo", "mt3dElvl8:" + this.gac);
-    ae.d("VoipAudioInfo", "mt3dPhi:" + this.gad);
-    ae.d("VoipAudioInfo", "mt3dtheta1:" + this.gae);
-    ae.d("VoipAudioInfo", "mt3dTheta2:" + this.gaf);
-    ae.d("VoipAudioInfo", "waveAgcMode" + this.fZj);
-    ae.d("VoipAudioInfo", "waveAgcSpkGain" + this.fZk);
-    ae.d("VoipAudioInfo", "waveAgcPhnGain" + this.fZl);
-    ae.d("VoipAudioInfo", "waveAgcHeadsetGain" + this.fZm);
-    ae.d("VoipAudioInfo", "waveAgcTarget" + this.fZn);
-    ae.d("VoipAudioInfo", "waveAgcCRatio" + this.fZo);
-    ae.d("VoipAudioInfo", "waveAgcDnTHR" + this.fZp);
-    ae.d("VoipAudioInfo", "waveAgcBase" + this.fZq);
-    ae.d("VoipAudioInfo", "waveAgcGainTHR" + this.fZr);
-    ae.d("VoipAudioInfo", "waveAgcDampTHR" + this.fZs);
-    ae.d("VoipAudioInfo", "waveAgcDamper" + this.fZt);
+    Log.d("VoipAudioInfo", "streamtype " + this.gDB);
+    Log.d("VoipAudioInfo", "smode " + this.gDC);
+    Log.d("VoipAudioInfo", "omode " + this.gDD);
+    Log.d("VoipAudioInfo", "ospeaker " + this.gDE);
+    Log.d("VoipAudioInfo", "operating" + this.gDF);
+    Log.d("VoipAudioInfo", "moperating" + this.gDG);
+    Log.d("VoipAudioInfo", "mstreamtype" + this.gDH);
+    Log.d("VoipAudioInfo", "mVoiceRecordMode" + this.gDI);
+    Log.d("VoipAudioInfo", "agcMode :" + this.gEt);
+    Log.d("VoipAudioInfo", "nsMode:" + this.gDL);
+    Log.d("VoipAudioInfo", "aecMode:" + this.gDK);
+    Log.d("VoipAudioInfo", "volumMode:" + this.gDM);
+    Log.d("VoipAudioInfo", "micMode:" + this.gEc);
+    Log.d("VoipAudioInfo", "sourceMode:" + this.gEd);
+    Log.d("VoipAudioInfo", "speakerMode:" + this.gEe);
+    Log.d("VoipAudioInfo", "phoneMode:" + this.gEf);
+    Log.d("VoipAudioInfo", "voipstreamType:" + this.gEg);
+    Log.d("VoipAudioInfo", "speakerstreamtype:" + this.gEh);
+    Log.d("VoipAudioInfo", "phonestreamtype:" + this.gEi);
+    Log.d("VoipAudioInfo", "ringphonestream:" + this.gEk);
+    Log.d("VoipAudioInfo", "ringphonemode:" + this.gEl);
+    Log.d("VoipAudioInfo", "ringspeakerstream:" + this.gEm);
+    Log.d("VoipAudioInfo", "ringspeakermode:" + this.gEn);
+    Log.d("VoipAudioInfo", "agcModeNew :" + this.gEs);
+    Log.d("VoipAudioInfo", "nsModeNew:" + this.gEp);
+    Log.d("VoipAudioInfo", "nsModeNewMulti:" + this.gEq);
+    Log.d("VoipAudioInfo", "voipfullbandcfg:" + this.gEr);
+    Log.d("VoipAudioInfo", "aecModeNew:" + this.gEo);
+    Log.d("VoipAudioInfo", "agctargetdb:" + this.gEu);
+    Log.d("VoipAudioInfo", "agcgaindb:" + this.gEv);
+    Log.d("VoipAudioInfo", "agcflag:" + this.gEw);
+    Log.d("VoipAudioInfo", "agclimiter:" + this.gEx);
+    Log.d("VoipAudioInfo", "agcCompRatio:" + this.gEy);
+    Log.d("VoipAudioInfo", "agcDnGainThr:" + this.gEz);
+    Log.d("VoipAudioInfo", "inputVolumeScale:" + this.gDN);
+    Log.d("VoipAudioInfo", "outputVolumeScale:" + this.gDO);
+    Log.d("VoipAudioInfo", "inputVolumeScaleForSpeaker:" + this.gDP);
+    Log.d("VoipAudioInfo", "outputVolumeScaleForSpeaker:" + this.gDQ);
+    Log.d("VoipAudioInfo", "ehanceHeadsetEC:" + this.gDX);
+    Log.d("VoipAudioInfo", "setECModeLevelForHeadSet:" + this.gDY);
+    Log.d("VoipAudioInfo", "setECModeLevelForSpeaker:" + this.gDZ);
+    Log.d("VoipAudioInfo", "enableSpeakerEnhanceEC:" + this.gEa);
+    Log.d("VoipAudioInfo", "enableRecTimer:" + this.gEL);
+    Log.d("VoipAudioInfo", "enablePlayTimer:" + this.gEM);
+    Log.d("VoipAudioInfo", "setPlayerPrecorrectCofOnOrOff:" + this.gEN);
+    Log.d("VoipAudioInfo", "outputVolumeGainForPhone:" + this.gDR);
+    Log.d("VoipAudioInfo", "outputVolumeGainForSpeaker:" + this.gDS);
+    Log.d("VoipAudioInfo", "noisegateon" + this.gEQ);
+    Log.d("VoipAudioInfo", "noisegatestrength[0]" + this.gEP[0]);
+    Log.d("VoipAudioInfo", "noisegatestrength[1]" + this.gEP[1]);
+    Log.d("VoipAudioInfo", "spkecenable:" + this.gER);
+    Log.d("VoipAudioInfo", "agcRxFlag:" + this.gEZ);
+    Log.d("VoipAudioInfo", "agcRxTargetdb:" + this.gFa);
+    Log.d("VoipAudioInfo", "agcRxGaindb:" + this.gFb);
+    Log.d("VoipAudioInfo", "agcRxLimiter:" + this.gFc);
+    Log.d("VoipAudioInfo", "enableXnoiseSup:" + this.gEb);
+    Log.d("VoipAudioInfo", "mt3dFlag:" + this.gFd);
+    Log.d("VoipAudioInfo", "mt3dAzim1:" + this.gFe);
+    Log.d("VoipAudioInfo", "mt3dAzim2:" + this.gFf);
+    Log.d("VoipAudioInfo", "mt3dAzim3:" + this.gFg);
+    Log.d("VoipAudioInfo", "mt3dAzim4:" + this.gFh);
+    Log.d("VoipAudioInfo", "mt3dAzim5:" + this.gFi);
+    Log.d("VoipAudioInfo", "mt3dAzim6:" + this.gFj);
+    Log.d("VoipAudioInfo", "mt3dAzim7:" + this.gFk);
+    Log.d("VoipAudioInfo", "mt3dAzim8:" + this.gFl);
+    Log.d("VoipAudioInfo", "mt3dElvl1:" + this.gFm);
+    Log.d("VoipAudioInfo", "mt3dElvl2:" + this.gFn);
+    Log.d("VoipAudioInfo", "mt3dElvl3:" + this.gFo);
+    Log.d("VoipAudioInfo", "mt3dElvl4:" + this.gFp);
+    Log.d("VoipAudioInfo", "mt3dElvl5:" + this.gFq);
+    Log.d("VoipAudioInfo", "mt3dElvl6:" + this.gFr);
+    Log.d("VoipAudioInfo", "mt3dElvl7:" + this.gFs);
+    Log.d("VoipAudioInfo", "mt3dElvl8:" + this.gFt);
+    Log.d("VoipAudioInfo", "mt3dPhi:" + this.gFu);
+    Log.d("VoipAudioInfo", "mt3dtheta1:" + this.gFv);
+    Log.d("VoipAudioInfo", "mt3dTheta2:" + this.gFw);
+    Log.d("VoipAudioInfo", "waveAgcMode" + this.gEA);
+    Log.d("VoipAudioInfo", "waveAgcSpkGain" + this.gEB);
+    Log.d("VoipAudioInfo", "waveAgcPhnGain" + this.gEC);
+    Log.d("VoipAudioInfo", "waveAgcHeadsetGain" + this.gED);
+    Log.d("VoipAudioInfo", "waveAgcTarget" + this.gEE);
+    Log.d("VoipAudioInfo", "waveAgcCRatio" + this.gEF);
+    Log.d("VoipAudioInfo", "waveAgcDnTHR" + this.gEG);
+    Log.d("VoipAudioInfo", "waveAgcBase" + this.gEH);
+    Log.d("VoipAudioInfo", "waveAgcGainTHR" + this.gEI);
+    Log.d("VoipAudioInfo", "waveAgcDampTHR" + this.gEJ);
+    Log.d("VoipAudioInfo", "waveAgcDamper" + this.gEK);
     AppMethodBeat.o(155641);
   }
   
   public final void reset()
   {
-    this.fYn = false;
-    this.fYo = -1;
-    this.fYp = -1;
-    this.fYq = -1;
-    this.fYr = -1;
-    this.fYs = -1;
-    this.fYt = -1;
-    this.fYu = -1;
-    this.fYw = -1;
-    this.fYv = -1;
-    this.fZc = -1;
-    this.fYx = -1;
-    this.fYy = -1;
-    this.fYz = -1;
-    this.fYL = -1;
-    this.fYM = -1;
-    this.fYN = -1;
-    this.fYO = -1;
-    this.fYP = -1;
-    this.fYQ = -1;
-    this.fYR = -1;
-    this.fYS = false;
-    this.fYT = -1;
-    this.fYU = -1;
-    this.fYW = -1;
-    this.fYV = -1;
-    this.fZb = -1;
-    this.fYX = -1;
-    this.fYY = -1;
-    this.fYZ = -1;
-    this.fZa = -1;
-    this.fZd = -1;
-    this.fZe = -1;
-    this.fZf = -1;
-    this.fZg = -1;
-    this.fZh = -1;
-    this.fZi = -1;
-    this.fZj = -1;
-    this.fZk = -1;
-    this.fZl = -1;
-    this.fZm = -1;
-    this.fZn = -1;
-    this.fZo = -1;
-    this.fZp = -1;
-    this.fZq = -1;
-    this.fZr = -1;
-    this.fZs = -1;
-    this.fZt = -1;
-    this.fYA = -1;
-    this.fYB = -1;
-    this.fYC = -1;
-    this.fYD = -1;
-    this.fYG = -1;
-    this.fYH = -1;
-    this.fYI = -1;
-    this.fYJ = -1;
-    this.fZu = 0;
-    this.fZv = 0;
-    this.fZw = -1;
-    this.fYF = -1;
-    this.fYE = -1;
-    this.fZz = false;
-    this.fZy[0] = -1;
-    this.fZy[1] = -1;
-    this.fZA = -1;
-    this.fZI = -1;
-    this.fZJ = -1;
-    this.fZK = -1;
-    this.fZL = -1;
-    this.fYK = -1;
-    this.fZM = -1;
-    this.fZN = -1;
-    this.fZO = -1;
-    this.fZP = -1;
-    this.fZQ = -1;
-    this.fZR = -1;
-    this.fZS = -1;
-    this.fZT = -1;
-    this.fZU = -1;
-    this.fZV = -1;
-    this.fZW = -1;
-    this.fZX = -1;
-    this.fZY = -1;
-    this.fZZ = -1;
-    this.gaa = -1;
-    this.gab = -1;
-    this.gac = -1;
-    this.gad = -1;
-    this.gae = -1;
-    this.gaf = -1;
+    this.gDA = false;
+    this.gDB = -1;
+    this.gDC = -1;
+    this.gDD = -1;
+    this.gDE = -1;
+    this.gDF = -1;
+    this.gDG = -1;
+    this.gDH = -1;
+    this.gDJ = -1;
+    this.gDI = -1;
+    this.gEt = -1;
+    this.gDK = -1;
+    this.gDL = -1;
+    this.gDM = -1;
+    this.gEc = -1;
+    this.gEd = -1;
+    this.gEe = -1;
+    this.gEf = -1;
+    this.gEg = -1;
+    this.gEh = -1;
+    this.gEi = -1;
+    this.gEj = false;
+    this.gEk = -1;
+    this.gEl = -1;
+    this.gEn = -1;
+    this.gEm = -1;
+    this.gEs = -1;
+    this.gEo = -1;
+    this.gEp = -1;
+    this.gEq = -1;
+    this.gEr = -1;
+    this.gEu = -1;
+    this.gEv = -1;
+    this.gEw = -1;
+    this.gEx = -1;
+    this.gEy = -1;
+    this.gEz = -1;
+    this.gEA = -1;
+    this.gEB = -1;
+    this.gEC = -1;
+    this.gED = -1;
+    this.gEE = -1;
+    this.gEF = -1;
+    this.gEG = -1;
+    this.gEH = -1;
+    this.gEI = -1;
+    this.gEJ = -1;
+    this.gEK = -1;
+    this.gDN = -1;
+    this.gDO = -1;
+    this.gDP = -1;
+    this.gDQ = -1;
+    this.gDX = -1;
+    this.gDY = -1;
+    this.gDZ = -1;
+    this.gEa = -1;
+    this.gEL = 0;
+    this.gEM = 0;
+    this.gEN = -1;
+    this.gDS = -1;
+    this.gDR = -1;
+    this.gEQ = false;
+    this.gEP[0] = -1;
+    this.gEP[1] = -1;
+    this.gER = -1;
+    this.gEZ = -1;
+    this.gFa = -1;
+    this.gFb = -1;
+    this.gFc = -1;
+    this.gEb = -1;
+    this.gFd = -1;
+    this.gFe = -1;
+    this.gFf = -1;
+    this.gFg = -1;
+    this.gFh = -1;
+    this.gFi = -1;
+    this.gFj = -1;
+    this.gFk = -1;
+    this.gFl = -1;
+    this.gFm = -1;
+    this.gFn = -1;
+    this.gFo = -1;
+    this.gFp = -1;
+    this.gFq = -1;
+    this.gFr = -1;
+    this.gFs = -1;
+    this.gFt = -1;
+    this.gFu = -1;
+    this.gFv = -1;
+    this.gFw = -1;
   }
 }
 

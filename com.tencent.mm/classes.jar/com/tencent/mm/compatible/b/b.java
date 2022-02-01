@@ -5,38 +5,38 @@ import java.util.concurrent.locks.Lock;
 
 public final class b
 {
-  public int fXA = 0;
-  public byte[] fXB = null;
-  public int fXC = 0;
-  public int fXD = 0;
-  public boolean fXE = false;
-  public Lock fXF = null;
-  public int fXz = 0;
+  public int gCF = 0;
+  public int gCG = 0;
+  public byte[] gCH = null;
+  public int gCI = 0;
+  public int gCJ = 0;
+  public boolean gCK = false;
+  public Lock gCL = null;
   
-  public final int ZQ()
+  public final int anD()
   {
     AppMethodBeat.i(155548);
-    if (this.fXE) {
-      this.fXF.lock();
+    if (this.gCK) {
+      this.gCL.lock();
     }
-    if (this.fXC == this.fXD)
+    if (this.gCI == this.gCJ)
     {
       AppMethodBeat.o(155548);
       return 0;
     }
-    if (this.fXC < this.fXD) {
-      this.fXA = (this.fXD - this.fXC);
+    if (this.gCI < this.gCJ) {
+      this.gCG = (this.gCJ - this.gCI);
     }
     for (;;)
     {
-      if (this.fXE) {
-        this.fXF.unlock();
+      if (this.gCK) {
+        this.gCL.unlock();
       }
-      int i = this.fXA;
+      int i = this.gCG;
       AppMethodBeat.o(155548);
       return i;
-      if (this.fXC > this.fXD) {
-        this.fXA = (this.fXD + this.fXz - this.fXC);
+      if (this.gCI > this.gCJ) {
+        this.gCG = (this.gCJ + this.gCF - this.gCI);
       }
     }
   }

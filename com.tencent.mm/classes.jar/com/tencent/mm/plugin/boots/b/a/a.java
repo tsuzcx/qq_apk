@@ -2,146 +2,74 @@ package com.tencent.mm.plugin.boots.b.a;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class a
-  extends j<com.tencent.mm.plugin.boots.a.a>
+  extends MAutoStorage<com.tencent.mm.plugin.boots.a.a>
   implements g.a
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(117376);
-    SQL_CREATE = new String[] { j.getCreateSQLs(com.tencent.mm.plugin.boots.a.a.info, "ActiveInfo") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(com.tencent.mm.plugin.boots.a.a.info, "ActiveInfo") };
     AppMethodBeat.o(117376);
   }
   
-  public a(e parame)
+  public a(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, com.tencent.mm.plugin.boots.a.a.info, "ActiveInfo", null);
-    this.db = parame;
-  }
-  
-  public final int a(g paramg)
-  {
-    this.db = paramg;
-    return 0;
-  }
-  
-  public final List<com.tencent.mm.plugin.boots.a.a> bNR()
-  {
-    AppMethodBeat.i(117375);
-    ArrayList localArrayList = new ArrayList();
-    long l = bu.fpJ();
-    localObject3 = null;
-    localObject1 = null;
-    try
-    {
-      Cursor localCursor = this.db.a("select * from ActiveInfo where useTime >= ?", new String[] { String.valueOf(l - 86400000L) }, 2);
-      if (localCursor != null)
-      {
-        localObject1 = localCursor;
-        localObject3 = localCursor;
-        if (localCursor.moveToFirst())
-        {
-          boolean bool;
-          do
-          {
-            localObject1 = localCursor;
-            localObject3 = localCursor;
-            com.tencent.mm.plugin.boots.a.a locala = new com.tencent.mm.plugin.boots.a.a();
-            localObject1 = localCursor;
-            localObject3 = localCursor;
-            locala.convertFrom(localCursor);
-            localObject1 = localCursor;
-            localObject3 = localCursor;
-            localArrayList.add(locala);
-            localObject1 = localCursor;
-            localObject3 = localCursor;
-            bool = localCursor.moveToNext();
-          } while (bool);
-        }
-      }
-      if (localCursor != null) {
-        localCursor.close();
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localObject3 = localObject1;
-        ae.printErrStackTrace("MicroMsg.Tinker.ActiveInfoStorage", localException, "getDayActiveFeature failed.", new Object[0]);
-        if (localObject1 != null) {
-          localObject1.close();
-        }
-      }
-    }
-    finally
-    {
-      if (localObject3 == null) {
-        break label214;
-      }
-      localObject3.close();
-      AppMethodBeat.o(117375);
-    }
-    AppMethodBeat.o(117375);
-    return localArrayList;
-  }
-  
-  public final String getTableName()
-  {
-    return "ActiveInfo";
+    super(paramISQLiteDatabase, com.tencent.mm.plugin.boots.a.a.info, "ActiveInfo", null);
+    this.db = paramISQLiteDatabase;
   }
   
   /* Error */
-  public final int zi(int paramInt)
+  public final int CO(int paramInt)
   {
     // Byte code:
-    //   0: ldc 119
+    //   0: ldc 52
     //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 24	com/tencent/mm/plugin/boots/a/a
     //   8: dup
-    //   9: invokespecial 84	com/tencent/mm/plugin/boots/a/a:<init>	()V
+    //   9: invokespecial 54	com/tencent/mm/plugin/boots/a/a:<init>	()V
     //   12: astore 9
     //   14: aload_0
-    //   15: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/e/e;
+    //   15: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   18: ldc 30
     //   20: aconst_null
-    //   21: ldc 121
+    //   21: ldc 56
     //   23: iconst_1
     //   24: anewarray 22	java/lang/String
     //   27: dup
     //   28: iconst_0
     //   29: iload_1
-    //   30: invokestatic 124	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   30: invokestatic 60	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   33: aastore
     //   34: aconst_null
     //   35: aconst_null
     //   36: aconst_null
-    //   37: invokeinterface 128 8 0
+    //   37: invokeinterface 66 8 0
     //   42: astore 7
     //   44: aload 7
     //   46: ifnull +147 -> 193
     //   49: aload 7
     //   51: astore 6
     //   53: aload 7
-    //   55: invokeinterface 83 1 0
+    //   55: invokeinterface 72 1 0
     //   60: ifeq +133 -> 193
     //   63: aload 7
     //   65: astore 6
     //   67: aload 9
     //   69: aload 7
-    //   71: invokevirtual 88	com/tencent/mm/plugin/boots/a/a:convertFrom	(Landroid/database/Cursor;)V
+    //   71: invokevirtual 76	com/tencent/mm/plugin/boots/a/a:convertFrom	(Landroid/database/Cursor;)V
     //   74: iconst_0
     //   75: istore_2
     //   76: iload_2
@@ -149,53 +77,53 @@ public final class a
     //   78: aload 7
     //   80: ifnull +12 -> 92
     //   83: aload 7
-    //   85: invokeinterface 100 1 0
+    //   85: invokeinterface 79 1 0
     //   90: iload_2
     //   91: istore_3
     //   92: aload 9
-    //   94: getfield 132	com/tencent/mm/plugin/boots/a/a:field_useTime	J
-    //   97: invokestatic 64	com/tencent/mm/sdk/platformtools/bu:fpJ	()J
-    //   100: ldc2_w 67
+    //   94: getfield 83	com/tencent/mm/plugin/boots/a/a:field_useTime	J
+    //   97: invokestatic 89	com/tencent/mm/sdk/platformtools/Util:getBeginTimeOfToday	()J
+    //   100: ldc2_w 90
     //   103: lsub
     //   104: lcmp
     //   105: iflt +170 -> 275
     //   108: aload 9
-    //   110: getfield 132	com/tencent/mm/plugin/boots/a/a:field_useTime	J
-    //   113: invokestatic 64	com/tencent/mm/sdk/platformtools/bu:fpJ	()J
+    //   110: getfield 83	com/tencent/mm/plugin/boots/a/a:field_useTime	J
+    //   113: invokestatic 89	com/tencent/mm/sdk/platformtools/Util:getBeginTimeOfToday	()J
     //   116: lcmp
     //   117: ifgt +158 -> 275
     //   120: aload 9
-    //   122: getfield 136	com/tencent/mm/plugin/boots/a/a:field_dau	I
+    //   122: getfield 95	com/tencent/mm/plugin/boots/a/a:field_dau	I
     //   125: iconst_1
     //   126: iadd
     //   127: istore_2
     //   128: aload 9
-    //   130: invokestatic 141	java/lang/System:currentTimeMillis	()J
-    //   133: putfield 132	com/tencent/mm/plugin/boots/a/a:field_useTime	J
+    //   130: invokestatic 100	java/lang/System:currentTimeMillis	()J
+    //   133: putfield 83	com/tencent/mm/plugin/boots/a/a:field_useTime	J
     //   136: aload 9
     //   138: iload_2
-    //   139: putfield 136	com/tencent/mm/plugin/boots/a/a:field_dau	I
+    //   139: putfield 95	com/tencent/mm/plugin/boots/a/a:field_dau	I
     //   142: aload 9
     //   144: iconst_1
-    //   145: putfield 144	com/tencent/mm/plugin/boots/a/a:field_mau	I
+    //   145: putfield 103	com/tencent/mm/plugin/boots/a/a:field_mau	I
     //   148: iload_3
     //   149: ifeq +169 -> 318
     //   152: aload_0
-    //   153: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/e/e;
+    //   153: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   156: ldc 30
-    //   158: ldc 146
+    //   158: ldc 105
     //   160: aload 9
-    //   162: invokevirtual 150	com/tencent/mm/plugin/boots/a/a:convertTo	()Landroid/content/ContentValues;
-    //   165: invokeinterface 154 4 0
+    //   162: invokevirtual 109	com/tencent/mm/plugin/boots/a/a:convertTo	()Landroid/content/ContentValues;
+    //   165: invokeinterface 113 4 0
     //   170: lstore 4
     //   172: lload 4
     //   174: lconst_0
     //   175: lcmp
     //   176: ifge +10 -> 186
-    //   179: ldc 102
-    //   181: ldc 156
-    //   183: invokestatic 160	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   186: ldc 119
+    //   179: ldc 115
+    //   181: ldc 117
+    //   183: invokestatic 123	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   186: ldc 52
     //   188: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   191: iload_2
     //   192: ireturn
@@ -207,25 +135,25 @@ public final class a
     //   199: astore 6
     //   201: aload 9
     //   203: iload_1
-    //   204: putfield 163	com/tencent/mm/plugin/boots/a/a:field_key	I
+    //   204: putfield 126	com/tencent/mm/plugin/boots/a/a:field_key	I
     //   207: goto -131 -> 76
     //   210: astore 8
     //   212: iload_3
     //   213: istore_2
     //   214: aload 7
     //   216: astore 6
-    //   218: ldc 102
+    //   218: ldc 115
     //   220: aload 8
-    //   222: ldc 165
+    //   222: ldc 128
     //   224: iconst_0
-    //   225: anewarray 106	java/lang/Object
-    //   228: invokestatic 112	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   225: anewarray 130	java/lang/Object
+    //   228: invokestatic 134	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   231: iload_2
     //   232: istore_3
     //   233: aload 7
     //   235: ifnull -143 -> 92
     //   238: aload 7
-    //   240: invokeinterface 100 1 0
+    //   240: invokeinterface 79 1 0
     //   245: iload_2
     //   246: istore_3
     //   247: goto -155 -> 92
@@ -235,23 +163,23 @@ public final class a
     //   255: aload 6
     //   257: ifnull +10 -> 267
     //   260: aload 6
-    //   262: invokeinterface 100 1 0
-    //   267: ldc 119
+    //   262: invokeinterface 79 1 0
+    //   267: ldc 52
     //   269: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   272: aload 7
     //   274: athrow
     //   275: aload 9
-    //   277: getfield 132	com/tencent/mm/plugin/boots/a/a:field_useTime	J
-    //   280: invokestatic 64	com/tencent/mm/sdk/platformtools/bu:fpJ	()J
-    //   283: ldc2_w 67
+    //   277: getfield 83	com/tencent/mm/plugin/boots/a/a:field_useTime	J
+    //   280: invokestatic 89	com/tencent/mm/sdk/platformtools/Util:getBeginTimeOfToday	()J
+    //   283: ldc2_w 90
     //   286: lsub
     //   287: lcmp
     //   288: iflt +25 -> 313
     //   291: aload 9
-    //   293: getfield 136	com/tencent/mm/plugin/boots/a/a:field_dau	I
+    //   293: getfield 95	com/tencent/mm/plugin/boots/a/a:field_dau	I
     //   296: ifle +12 -> 308
     //   299: aload 9
-    //   301: getfield 136	com/tencent/mm/plugin/boots/a/a:field_dau	I
+    //   301: getfield 95	com/tencent/mm/plugin/boots/a/a:field_dau	I
     //   304: istore_2
     //   305: goto -177 -> 128
     //   308: iconst_1
@@ -261,19 +189,19 @@ public final class a
     //   314: istore_2
     //   315: goto -187 -> 128
     //   318: aload_0
-    //   319: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/e/e;
+    //   319: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   322: ldc 30
     //   324: aload 9
-    //   326: invokevirtual 150	com/tencent/mm/plugin/boots/a/a:convertTo	()Landroid/content/ContentValues;
-    //   329: ldc 121
+    //   326: invokevirtual 109	com/tencent/mm/plugin/boots/a/a:convertTo	()Landroid/content/ContentValues;
+    //   329: ldc 56
     //   331: iconst_1
     //   332: anewarray 22	java/lang/String
     //   335: dup
     //   336: iconst_0
     //   337: iload_1
-    //   338: invokestatic 124	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   338: invokestatic 60	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   341: aastore
-    //   342: invokeinterface 169 5 0
+    //   342: invokeinterface 138 5 0
     //   347: i2l
     //   348: lstore 4
     //   350: goto -178 -> 172
@@ -319,49 +247,49 @@ public final class a
   }
   
   /* Error */
-  public final com.tencent.mm.plugin.boots.a.a zj(int paramInt)
+  public final com.tencent.mm.plugin.boots.a.a CP(int paramInt)
   {
     // Byte code:
-    //   0: ldc 172
+    //   0: ldc 141
     //   2: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: new 24	com/tencent/mm/plugin/boots/a/a
     //   8: dup
-    //   9: invokespecial 84	com/tencent/mm/plugin/boots/a/a:<init>	()V
+    //   9: invokespecial 54	com/tencent/mm/plugin/boots/a/a:<init>	()V
     //   12: astore 5
     //   14: aload_0
-    //   15: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/e/e;
+    //   15: getfield 47	com/tencent/mm/plugin/boots/b/a/a:db	Lcom/tencent/mm/sdk/storage/ISQLiteDatabase;
     //   18: ldc 30
     //   20: aconst_null
-    //   21: ldc 174
+    //   21: ldc 143
     //   23: iconst_1
     //   24: anewarray 22	java/lang/String
     //   27: dup
     //   28: iconst_0
     //   29: iload_1
-    //   30: invokestatic 124	java/lang/String:valueOf	(I)Ljava/lang/String;
+    //   30: invokestatic 60	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   33: aastore
     //   34: aconst_null
     //   35: aconst_null
     //   36: aconst_null
-    //   37: invokeinterface 128 8 0
+    //   37: invokeinterface 66 8 0
     //   42: astore_3
     //   43: aload_3
     //   44: ifnull +22 -> 66
     //   47: aload_3
     //   48: astore_2
     //   49: aload_3
-    //   50: invokeinterface 83 1 0
+    //   50: invokeinterface 72 1 0
     //   55: ifeq +11 -> 66
     //   58: aload_3
     //   59: astore_2
     //   60: aload 5
     //   62: aload_3
-    //   63: invokevirtual 88	com/tencent/mm/plugin/boots/a/a:convertFrom	(Landroid/database/Cursor;)V
+    //   63: invokevirtual 76	com/tencent/mm/plugin/boots/a/a:convertFrom	(Landroid/database/Cursor;)V
     //   66: aload_3
     //   67: ifnull +9 -> 76
     //   70: aload_3
-    //   71: invokeinterface 100 1 0
-    //   76: ldc 172
+    //   71: invokeinterface 79 1 0
+    //   76: ldc 141
     //   78: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   81: aload 5
     //   83: areturn
@@ -370,21 +298,21 @@ public final class a
     //   87: astore_3
     //   88: aload_3
     //   89: astore_2
-    //   90: ldc 102
+    //   90: ldc 115
     //   92: aload 4
-    //   94: ldc 176
+    //   94: ldc 145
     //   96: iconst_1
-    //   97: anewarray 106	java/lang/Object
+    //   97: anewarray 130	java/lang/Object
     //   100: dup
     //   101: iconst_0
     //   102: iload_1
-    //   103: invokestatic 181	java/lang/Integer:toHexString	(I)Ljava/lang/String;
+    //   103: invokestatic 150	java/lang/Integer:toHexString	(I)Ljava/lang/String;
     //   106: aastore
-    //   107: invokestatic 112	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   107: invokestatic 134	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   110: aload_3
     //   111: ifnull -35 -> 76
     //   114: aload_3
-    //   115: invokeinterface 100 1 0
+    //   115: invokeinterface 79 1 0
     //   120: goto -44 -> 76
     //   123: astore_3
     //   124: aconst_null
@@ -392,8 +320,8 @@ public final class a
     //   126: aload_2
     //   127: ifnull +9 -> 136
     //   130: aload_2
-    //   131: invokeinterface 100 1 0
-    //   136: ldc 172
+    //   131: invokeinterface 79 1 0
+    //   136: ldc 141
     //   138: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   141: aload_3
     //   142: athrow
@@ -422,10 +350,82 @@ public final class a
     //   49	58	147	java/lang/Exception
     //   60	66	147	java/lang/Exception
   }
+  
+  public final int a(g paramg)
+  {
+    this.db = paramg;
+    return 0;
+  }
+  
+  public final List<com.tencent.mm.plugin.boots.a.a> ckR()
+  {
+    AppMethodBeat.i(117375);
+    ArrayList localArrayList = new ArrayList();
+    long l = Util.getBeginTimeOfToday();
+    localObject3 = null;
+    localObject1 = null;
+    try
+    {
+      Cursor localCursor = this.db.rawQuery("select * from ActiveInfo where useTime >= ?", new String[] { String.valueOf(l - 86400000L) }, 2);
+      if (localCursor != null)
+      {
+        localObject1 = localCursor;
+        localObject3 = localCursor;
+        if (localCursor.moveToFirst())
+        {
+          boolean bool;
+          do
+          {
+            localObject1 = localCursor;
+            localObject3 = localCursor;
+            com.tencent.mm.plugin.boots.a.a locala = new com.tencent.mm.plugin.boots.a.a();
+            localObject1 = localCursor;
+            localObject3 = localCursor;
+            locala.convertFrom(localCursor);
+            localObject1 = localCursor;
+            localObject3 = localCursor;
+            localArrayList.add(locala);
+            localObject1 = localCursor;
+            localObject3 = localCursor;
+            bool = localCursor.moveToNext();
+          } while (bool);
+        }
+      }
+      if (localCursor != null) {
+        localCursor.close();
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localObject3 = localObject1;
+        Log.printErrStackTrace("MicroMsg.Tinker.ActiveInfoStorage", localException, "getDayActiveFeature failed.", new Object[0]);
+        if (localObject1 != null) {
+          localObject1.close();
+        }
+      }
+    }
+    finally
+    {
+      if (localObject3 == null) {
+        break label214;
+      }
+      localObject3.close();
+      AppMethodBeat.o(117375);
+    }
+    AppMethodBeat.o(117375);
+    return localArrayList;
+  }
+  
+  public final String getTableName()
+  {
+    return "ActiveInfo";
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.boots.b.a.a
  * JD-Core Version:    0.7.0.1
  */

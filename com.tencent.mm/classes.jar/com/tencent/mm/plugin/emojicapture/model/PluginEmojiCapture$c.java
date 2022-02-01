@@ -5,10 +5,10 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import d.l;
+import com.tencent.mm.br.c;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "<anonymous parameter 1>", "", "onClick"})
 final class PluginEmojiCapture$c
   implements DialogInterface.OnClickListener
 {
@@ -19,7 +19,7 @@ final class PluginEmojiCapture$c
     AppMethodBeat.i(192);
     paramDialogInterface = new Intent();
     paramDialogInterface.putExtra("key_emoji_panel_type", 1);
-    d.b(this.crf, "emoji", ".ui.EmojiCustomUI", paramDialogInterface);
+    c.b(this.$context, "emoji", ".ui.EmojiCustomUI", paramDialogInterface);
     AppMethodBeat.o(192);
   }
 }

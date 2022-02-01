@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:gravity="left" android:id="@id/u7" android:background="#fff3f3f3" style="@style/qp"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jd"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/a_u" android:id="@id/c2l" android:background="@drawable/byv" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/c8l" style="@style/le" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/ee" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j6">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <ImageView android:id="@id/cc_" android:src="@raw/fav_list_img_default" style="@style/j5" />
+            <include layout="@layout/a7h" />
+            <include layout="@layout/a7g" />
+        </LinearLayout>
+        <include layout="@layout/a7e" />
+    </LinearLayout>
+</FrameLayout>

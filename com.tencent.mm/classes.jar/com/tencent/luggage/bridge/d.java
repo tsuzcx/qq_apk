@@ -10,7 +10,7 @@ public final class d
 {
   public d(String paramString, JSONObject paramJSONObject)
   {
-    super(b.cgs);
+    super(b.csn);
     AppMethodBeat.i(140316);
     if (TextUtils.isEmpty(paramString))
     {

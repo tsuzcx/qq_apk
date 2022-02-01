@@ -5,47 +5,47 @@ import java.util.UUID;
 
 public final class z
 {
-  private static boolean LVo = false;
-  private static int LVp = -1;
-  private static String LVq = "";
+  private static boolean Rue = false;
+  private static int Ruf = -1;
+  private static String Rug = "";
   
-  public static void agV(int paramInt)
+  public static void aqh(int paramInt)
   {
     AppMethodBeat.i(72805);
-    if (!LVo)
+    if (!Rue)
     {
-      LVo = true;
-      LVp = paramInt;
-      LVq = UUID.randomUUID().toString();
+      Rue = true;
+      Ruf = paramInt;
+      Rug = UUID.randomUUID().toString();
     }
     AppMethodBeat.o(72805);
   }
   
-  public static boolean fVT()
-  {
-    return LVo;
-  }
-  
-  public static int fVU()
-  {
-    return LVp;
-  }
-  
-  public static void fVV()
-  {
-    LVo = false;
-    LVp = -1;
-    LVq = "";
-  }
-  
   public static String getBindCardUuid()
   {
-    return LVq;
+    return Rug;
+  }
+  
+  public static boolean hhq()
+  {
+    return Rue;
+  }
+  
+  public static int hhr()
+  {
+    return Ruf;
+  }
+  
+  public static void hhs()
+  {
+    Rue = false;
+    Ruf = -1;
+    Rug = "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.z
  * JD-Core Version:    0.7.0.1
  */

@@ -3,26 +3,27 @@ package com.tencent.mm.plugin.mall.a;
 import android.database.Cursor;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.e.c;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.c;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.cf;
-import com.tencent.mm.model.cf.a;
-import com.tencent.mm.model.u;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.cj;
+import com.tencent.mm.model.cj.a;
+import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.messenger.foundation.a.s;
+import com.tencent.mm.plugin.wallet_core.d.f;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallFunction;
 import com.tencent.mm.plugin.wallet_core.model.mall.MallNews;
 import com.tencent.mm.plugin.wallet_core.model.mall.d;
-import com.tencent.mm.plugin.wallet_core.model.t;
-import com.tencent.mm.protocal.protobuf.cv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.protocal.protobuf.de;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.storagebase.h.b;
 import com.tencent.mm.y.a;
 import java.util.ArrayList;
@@ -31,79 +32,79 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class k
-  implements com.tencent.mm.ak.f, az
+  implements i, bd
 {
-  private aq mHandler;
-  private boolean vPA;
-  private cf.a vPB;
-  private cf.a vPC;
-  ConcurrentHashMap<Integer, com.tencent.mm.plugin.wallet_core.model.z> vPz;
+  private MMHandler mHandler;
+  ConcurrentHashMap<Integer, com.tencent.mm.plugin.wallet_core.model.z> zjD;
+  private boolean zjE;
+  private cj.a zjF;
+  private cj.a zjG;
   
   public k()
   {
     AppMethodBeat.i(66016);
-    this.vPz = new ConcurrentHashMap();
-    this.mHandler = new aq(Looper.getMainLooper());
-    this.vPA = false;
-    this.vPB = new cf.a()
+    this.zjD = new ConcurrentHashMap();
+    this.mHandler = new MMHandler(Looper.getMainLooper());
+    this.zjE = false;
+    this.zjF = new cj.a()
     {
-      public final void a(final e.a paramAnonymousa)
+      public final void a(final h.a paramAnonymousa)
       {
         AppMethodBeat.i(66013);
-        paramAnonymousa = com.tencent.mm.platformtools.z.a(paramAnonymousa.gte.FNI);
-        ae.d("MicroMsg.SubCoreMall", "WalletNotifyConfXml:".concat(String.valueOf(paramAnonymousa)));
+        paramAnonymousa = com.tencent.mm.platformtools.z.a(paramAnonymousa.heO.KHn);
+        Log.d("MicroMsg.SubCoreMall", "WalletNotifyConfXml:".concat(String.valueOf(paramAnonymousa)));
         k.a(k.this).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(66012);
-            com.tencent.mm.plugin.wallet_core.model.mall.c localc = com.tencent.mm.plugin.wallet_core.model.mall.c.eKB();
+            com.tencent.mm.plugin.wallet_core.model.mall.c localc = com.tencent.mm.plugin.wallet_core.model.mall.c.fSg();
             Object localObject = paramAnonymousa;
-            MallNews localMallNews = com.tencent.mm.plugin.wallet_core.model.mall.c.aFX((String)localObject);
+            MallNews localMallNews = com.tencent.mm.plugin.wallet_core.model.mall.c.aVw((String)localObject);
             if (localMallNews != null)
             {
               if (!"2".equals(localMallNews.type))
               {
-                localc.Dtk.put(localMallNews.hQM, localMallNews);
-                ae.i("MicroMsg.MallNewsManager", "onRecieveMsg : ".concat(String.valueOf(localObject)));
-                localc.dDe();
+                localc.Icv.put(localMallNews.iLU, localMallNews);
+                Log.i("MicroMsg.MallNewsManager", "onRecieveMsg : ".concat(String.valueOf(localObject)));
+                localc.eDw();
                 if (com.tencent.mm.plugin.wallet_core.model.mall.c.a(localMallNews))
                 {
-                  ae.i("MicroMsg.MallNewsManager", "set OutOfDateRedDot");
+                  Log.i("MicroMsg.MallNewsManager", "set OutOfDateRedDot");
                   AppMethodBeat.o(66012);
                   return;
                 }
-                if (localMallNews.dmr == 0)
+                if (localMallNews.dDG == 0)
                 {
-                  ae.d("MicroMsg.MallNewsManager", "showType New");
-                  com.tencent.mm.y.c.ahI().w(262156, true);
-                  g.ajS();
-                  g.ajR().ajA().set(am.a.IUw, Long.valueOf(System.currentTimeMillis()));
+                  Log.d("MicroMsg.MallNewsManager", "showType New");
+                  com.tencent.mm.y.c.axV().A(262156, true);
+                  g.aAi();
+                  g.aAh().azQ().set(ar.a.OcK, Long.valueOf(System.currentTimeMillis()));
                 }
                 for (;;)
                 {
-                  com.tencent.mm.plugin.wallet_core.model.mall.c.eKD();
+                  com.tencent.mm.plugin.wallet_core.model.mall.c.fSi();
                   AppMethodBeat.o(66012);
                   return;
-                  if (localMallNews.dmr == 1)
+                  if (localMallNews.dDG == 1)
                   {
-                    ae.d("MicroMsg.MallNewsManager", "showType Dot");
-                    com.tencent.mm.y.c.ahI().x(262156, true);
-                    g.ajS();
-                    g.ajR().ajA().set(am.a.IUw, Long.valueOf(System.currentTimeMillis()));
+                    Log.d("MicroMsg.MallNewsManager", "showType Dot");
+                    com.tencent.mm.y.c.axV().B(262156, true);
+                    g.aAi();
+                    g.aAh().azQ().set(ar.a.OcK, Long.valueOf(System.currentTimeMillis()));
                   }
                 }
               }
-              ae.d("MicroMsg.MallNewsManager", "removeNews : ".concat(String.valueOf(localMallNews)));
-              localObject = (MallNews)localc.Dtk.get(localMallNews.hQM);
-              if ((localObject != null) && (((MallNews)localObject).ByB.equals(localMallNews.ByB)) && (((MallNews)localObject).dqk.equals(localMallNews.dqk)))
+              Log.d("MicroMsg.MallNewsManager", "removeNews : ".concat(String.valueOf(localMallNews)));
+              localObject = (MallNews)localc.Icv.get(localMallNews.iLU);
+              if ((localObject != null) && (((MallNews)localObject).FJm.equals(localMallNews.FJm)) && (((MallNews)localObject).dHx.equals(localMallNews.dHx)))
               {
-                ae.i("MicroMsg.MallNewsManager", "onRecieveMsg remove : " + localMallNews.hQM);
-                localc.Dtk.remove(localMallNews.hQM);
+                Log.i("MicroMsg.MallNewsManager", "onRecieveMsg remove : " + localMallNews.iLU);
+                localc.Icv.remove(localMallNews.iLU);
                 AppMethodBeat.o(66012);
                 return;
               }
-              ae.i("MicroMsg.MallNewsManager", "onRecieveMsg cancel not found!");
+              Log.i("MicroMsg.MallNewsManager", "onRecieveMsg cancel not found!");
             }
             AppMethodBeat.o(66012);
           }
@@ -111,53 +112,53 @@ public class k
         AppMethodBeat.o(66013);
       }
       
-      public final void a(e.c paramAnonymousc) {}
+      public final void a(h.c paramAnonymousc) {}
     };
-    this.vPC = new cf.a()
+    this.zjG = new cj.a()
     {
-      public final void a(final e.a paramAnonymousa)
+      public final void a(final h.a paramAnonymousa)
       {
         AppMethodBeat.i(66015);
-        paramAnonymousa = com.tencent.mm.platformtools.z.a(paramAnonymousa.gte.FNI);
-        ae.d("MicroMsg.SubCoreMall", "receive pay msg: %s", new Object[] { paramAnonymousa });
+        paramAnonymousa = com.tencent.mm.platformtools.z.a(paramAnonymousa.heO.KHn);
+        Log.d("MicroMsg.SubCoreMall", "receive pay msg: %s", new Object[] { paramAnonymousa });
         k.a(k.this).post(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(66014);
-            com.tencent.mm.plugin.wallet_core.model.mall.c.eKB();
-            com.tencent.mm.plugin.wallet_core.model.mall.c.aFU(paramAnonymousa);
+            com.tencent.mm.plugin.wallet_core.model.mall.c.fSg();
+            com.tencent.mm.plugin.wallet_core.model.mall.c.aVt(paramAnonymousa);
             AppMethodBeat.o(66014);
           }
         });
         AppMethodBeat.o(66015);
       }
       
-      public final void a(e.c paramAnonymousc) {}
+      public final void a(h.c paramAnonymousc) {}
     };
     AppMethodBeat.o(66016);
   }
   
-  public static k dmZ()
+  public static k egL()
   {
     AppMethodBeat.i(66017);
-    k localk = (k)u.ap(k.class);
+    k localk = (k)y.at(k.class);
     AppMethodBeat.o(66017);
     return localk;
   }
   
-  public final com.tencent.mm.plugin.wallet_core.model.z Kb(int paramInt)
+  public final com.tencent.mm.plugin.wallet_core.model.z Qd(int paramInt)
   {
     Object localObject2 = null;
     Object localObject1 = null;
     AppMethodBeat.i(66018);
     Object localObject3;
-    if (!this.vPz.contains(Integer.valueOf(paramInt)))
+    if (!this.zjD.contains(Integer.valueOf(paramInt)))
     {
-      localObject3 = t.eJk();
+      localObject3 = com.tencent.mm.plugin.wallet_core.model.t.fQN();
       String str = "select * from WalletFunciontList where wallet_region = ".concat(String.valueOf(paramInt));
-      localObject3 = ((com.tencent.mm.plugin.wallet_core.d.f)localObject3).db.a(str, null, 2);
-      ae.i("MicroMsg.WalletFunctionListStg", "getWalletFunciontListInfo ".concat(String.valueOf(str)));
+      localObject3 = ((f)localObject3).db.rawQuery(str, null, 2);
+      Log.i("MicroMsg.WalletFunctionListStg", "getWalletFunciontListInfo ".concat(String.valueOf(str)));
       if (localObject3 != null) {
         break label126;
       }
@@ -165,9 +166,9 @@ public class k
     for (;;)
     {
       if (localObject1 != null) {
-        this.vPz.put(Integer.valueOf(paramInt), localObject1);
+        this.zjD.put(Integer.valueOf(paramInt), localObject1);
       }
-      localObject1 = (com.tencent.mm.plugin.wallet_core.model.z)this.vPz.get(Integer.valueOf(paramInt));
+      localObject1 = (com.tencent.mm.plugin.wallet_core.model.z)this.zjD.get(Integer.valueOf(paramInt));
       if (localObject1 != null) {
         break;
       }
@@ -187,10 +188,10 @@ public class k
     return localObject1;
   }
   
-  public final ArrayList<MallFunction> Kc(int paramInt)
+  public final ArrayList<MallFunction> Qe(int paramInt)
   {
     AppMethodBeat.i(66019);
-    ArrayList localArrayList = Kb(paramInt).vPk;
+    ArrayList localArrayList = Qd(paramInt).zjo;
     AppMethodBeat.o(66019);
     return localArrayList;
   }
@@ -205,40 +206,40 @@ public class k
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(66020);
-    ((s)g.ad(s.class)).getSysCmdMsgExtension().a("mallactivity", this.vPB, true);
-    ((s)g.ad(s.class)).getSysCmdMsgExtension().a("paymsg", this.vPC, true);
-    com.tencent.mm.plugin.wallet_core.model.mall.c.eKB().Zm();
-    d.eKF().Zm();
-    if ((v.aAR()) && (v.aAM())) {
-      com.tencent.mm.plugin.wallet_core.model.mall.b.Wi(com.tencent.mm.plugin.wallet_core.model.mall.b.DsY);
+    ((s)g.ah(s.class)).getSysCmdMsgExtension().a("mallactivity", this.zjF, true);
+    ((s)g.ah(s.class)).getSysCmdMsgExtension().a("paymsg", this.zjG, true);
+    com.tencent.mm.plugin.wallet_core.model.mall.c.fSg().amZ();
+    d.fSk().amZ();
+    if ((com.tencent.mm.model.z.aUo()) && (com.tencent.mm.model.z.aUj())) {
+      com.tencent.mm.plugin.wallet_core.model.mall.b.aeM(com.tencent.mm.plugin.wallet_core.model.mall.b.Ick);
     }
     for (;;)
     {
-      g.ajS();
-      g.ajQ().gDv.a(302, this);
+      g.aAi();
+      g.aAg().hqi.a(302, this);
       AppMethodBeat.o(66020);
       return;
-      com.tencent.mm.plugin.wallet_core.model.mall.b.Wi(com.tencent.mm.plugin.wallet_core.model.mall.b.DsX);
+      com.tencent.mm.plugin.wallet_core.model.mall.b.aeM(com.tencent.mm.plugin.wallet_core.model.mall.b.Icj);
     }
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(66021);
-    ((s)g.ad(s.class)).getSysCmdMsgExtension().b("mallactivity", this.vPB, true);
-    ((s)g.ad(s.class)).getSysCmdMsgExtension().b("paymsg", this.vPC, true);
-    g.ajS();
-    g.ajQ().gDv.b(302, this);
+    ((s)g.ah(s.class)).getSysCmdMsgExtension().b("mallactivity", this.zjF, true);
+    ((s)g.ah(s.class)).getSysCmdMsgExtension().b("paymsg", this.zjG, true);
+    g.aAi();
+    g.aAg().hqi.b(302, this);
     AppMethodBeat.o(66021);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(66022);
-    if ((paramInt2 == 0) && (paramInt1 == 0) && (!this.vPA) && (v.aAR()))
+    if ((paramInt2 == 0) && (paramInt1 == 0) && (!this.zjE) && (com.tencent.mm.model.z.aUo()))
     {
-      this.vPA = true;
-      com.tencent.mm.plugin.wallet_core.model.mall.b.Wi(com.tencent.mm.plugin.wallet_core.model.mall.b.DsY);
+      this.zjE = true;
+      com.tencent.mm.plugin.wallet_core.model.mall.b.aeM(com.tencent.mm.plugin.wallet_core.model.mall.b.Ick);
     }
     AppMethodBeat.o(66022);
   }
@@ -247,7 +248,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.mall.a.k
  * JD-Core Version:    0.7.0.1
  */

@@ -24,24 +24,22 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.jb;
-import com.tencent.mm.g.a.jb.b;
+import com.tencent.mm.g.a.jq;
+import com.tencent.mm.g.a.jq.b;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.luckymoney.model.ah;
+import com.tencent.mm.plugin.luckymoney.model.ad;
+import com.tencent.mm.plugin.luckymoney.model.af;
 import com.tencent.mm.plugin.luckymoney.model.ao;
-import com.tencent.mm.plugin.luckymoney.model.at;
-import com.tencent.mm.plugin.luckymoney.model.au;
-import com.tencent.mm.plugin.luckymoney.model.l;
-import com.tencent.mm.plugin.luckymoney.model.u;
-import com.tencent.mm.plugin.luckymoney.model.y;
+import com.tencent.mm.plugin.luckymoney.model.ax;
+import com.tencent.mm.plugin.luckymoney.model.bf;
+import com.tencent.mm.plugin.luckymoney.model.bg;
 import com.tencent.mm.plugin.luckymoney.model.z;
-import com.tencent.mm.plugin.report.service.g;
 import com.tencent.mm.plugin.wallet_core.id_verify.util.RealnameGuideHelper;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.MMEditText;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -52,58 +50,58 @@ import java.util.Map;
 public class LuckyMoneyBusiDetailUI
   extends LuckyMoneyBaseUI
 {
-  private View agn;
-  private int fq;
-  private TextView lHT;
-  private boolean lpM;
-  private TextView mpP;
-  private View pPh;
-  private TextView uSM;
-  private String vHa;
-  private LuckyMoneyWishFooter vHf;
-  private ImageView vHg;
-  private View vHh;
-  private ImageView vHi;
-  private boolean vHj;
-  private int vHk;
-  private String vHl;
-  private String vHm;
-  private String vHn;
-  private int vHo;
-  private Map<String, Integer> vHp;
-  private i vHq;
-  private String vHr;
-  private boolean vHs;
-  private List<y> vvQ;
-  private TextView vvW;
-  private ListView vwe;
-  private ImageView vwf;
-  private TextView vwg;
-  private View vwi;
-  private View vwj;
-  AbsListView.OnScrollListener vwl;
+  private View agA;
+  private int fs;
+  private TextView jVn;
+  private boolean mwr;
+  private TextView nAB;
+  private View rfF;
+  private List<ad> yQe;
+  private TextView yQk;
+  private ListView yQs;
+  private ImageView yQt;
+  private TextView yQu;
+  private View yQw;
+  private View yQx;
+  AbsListView.OnScrollListener yQz;
+  private String yUc;
+  private String yUq;
+  private TextView yln;
+  private LuckyMoneyWishFooter zce;
+  private ImageView zcf;
+  private View zcg;
+  private ImageView zch;
+  private boolean zci;
+  private int zcj;
+  private String zck;
+  private String zcl;
+  private int zcm;
+  private Map<String, Integer> zcn;
+  private j zco;
+  private String zcp;
+  private boolean zcq;
   
   public LuckyMoneyBusiDetailUI()
   {
     AppMethodBeat.i(65464);
-    this.fq = 0;
-    this.vHj = true;
-    this.lpM = false;
-    this.vHo = 0;
-    this.vvQ = new LinkedList();
-    this.vHp = new HashMap();
-    this.vHr = "";
-    this.vHs = false;
-    this.vwl = new AbsListView.OnScrollListener()
+    this.fs = 0;
+    this.zci = true;
+    this.mwr = false;
+    this.zcm = 0;
+    this.yQe = new LinkedList();
+    this.zcn = new HashMap();
+    this.zcp = "";
+    this.zcq = false;
+    this.yQz = new AbsListView.OnScrollListener()
     {
-      private boolean vwm = false;
-      private boolean vwn;
+      private boolean yQA = false;
+      private boolean yQB;
       
       public final void onScroll(AbsListView paramAnonymousAbsListView, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         boolean bool = true;
         AppMethodBeat.i(65450);
-        if ((paramAnonymousInt3 == 0) || (!this.vwm))
+        if ((paramAnonymousInt3 == 0) || (!this.yQA))
         {
           AppMethodBeat.o(65450);
           return;
@@ -112,12 +110,12 @@ public class LuckyMoneyBusiDetailUI
         label101:
         for (;;)
         {
-          if (this.vwn != bool)
+          if (this.yQB != bool)
           {
             if (bool) {
-              LuckyMoneyBusiDetailUI.this.getResources().getDrawable(2131232950);
+              LuckyMoneyBusiDetailUI.this.getResources().getDrawable(2131233600);
             }
-            this.vwn = bool;
+            this.yQB = bool;
           }
           AppMethodBeat.o(65450);
           return;
@@ -151,24 +149,24 @@ public class LuckyMoneyBusiDetailUI
           return;
           if (paramAnonymousAbsListView.getLastVisiblePosition() == paramAnonymousAbsListView.getCount() - 1)
           {
-            if (!LuckyMoneyBusiDetailUI.this.vGY.isProcessing()) {
+            if (!LuckyMoneyBusiDetailUI.this.zbX.isProcessing()) {
               LuckyMoneyBusiDetailUI.a(LuckyMoneyBusiDetailUI.this);
             }
             if ((LuckyMoneyBusiDetailUI.b(LuckyMoneyBusiDetailUI.this)) && (!LuckyMoneyBusiDetailUI.c(LuckyMoneyBusiDetailUI.this))) {
               LuckyMoneyBusiDetailUI.d(LuckyMoneyBusiDetailUI.this);
             }
           }
-          this.vwm = false;
+          this.yQA = false;
           AppMethodBeat.o(65449);
           return;
-          this.vwm = true;
+          this.yQA = true;
         }
       }
     };
     AppMethodBeat.o(65464);
   }
   
-  private static int JN(int paramInt)
+  private static int PP(int paramInt)
   {
     if (paramInt == 2) {
       return 13;
@@ -176,130 +174,130 @@ public class LuckyMoneyBusiDetailUI
     return 7;
   }
   
-  private void a(l paraml)
+  private void a(com.tencent.mm.plugin.luckymoney.model.q paramq)
   {
     AppMethodBeat.i(65472);
-    if (paraml == null)
+    if (paramq == null)
     {
       AppMethodBeat.o(65472);
       return;
     }
-    if (paraml.vAt == 1) {}
+    if (paramq.yVn == 1) {}
     LinkedList localLinkedList;
     for (boolean bool = true;; bool = false)
     {
-      this.vHj = bool;
-      if (this.fq == 0)
+      this.zci = bool;
+      if (this.fs == 0)
       {
-        this.vHl = paraml.vAq;
-        this.vHq.vvR = this.vHl;
-        this.vHq.vvT = paraml.vAB;
-        b(paraml);
-        d(paraml);
-        g.yxI.f(11701, new Object[] { Integer.valueOf(JN(paraml.vAB)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
+        this.zck = paramq.yVk;
+        this.zco.yQf = this.zck;
+        this.zco.yQh = paramq.yVv;
+        b(paramq);
+        d(paramq);
+        com.tencent.mm.plugin.report.service.h.CyF.a(11701, new Object[] { Integer.valueOf(PP(paramq.yVv)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1) });
       }
-      c(paraml);
-      localLinkedList = paraml.vAC;
+      c(paramq);
+      localLinkedList = paramq.yVw;
       if (localLinkedList == null) {
         break label271;
       }
       int i = 0;
       while (i < localLinkedList.size())
       {
-        y localy = (y)localLinkedList.get(i);
-        if (!this.vHp.containsKey(localy.vAq))
+        ad localad = (ad)localLinkedList.get(i);
+        if (!this.zcn.containsKey(localad.yVk))
         {
-          this.vvQ.add(localLinkedList.get(i));
-          this.vHp.put(localy.vAq, Integer.valueOf(1));
+          this.yQe.add(localLinkedList.get(i));
+          this.zcn.put(localad.yVk, Integer.valueOf(1));
         }
         i += 1;
       }
     }
-    this.fq += localLinkedList.size();
-    this.lpM = false;
-    this.vHq.ew(this.vvQ);
+    this.fs += localLinkedList.size();
+    this.mwr = false;
+    this.zco.fq(this.yQe);
     label271:
-    hT(paraml.vAA, paraml.vAD);
-    g.yxI.f(13051, new Object[] { Integer.valueOf(this.vHo), Integer.valueOf(1), paraml.vAA, z.ex(paraml.vAx), "", "", "", "", paraml.vAj, Integer.valueOf(paraml.resourceId) });
+    iD(paramq.yVu, paramq.yVx);
+    com.tencent.mm.plugin.report.service.h.CyF.a(13051, new Object[] { Integer.valueOf(this.zcm), Integer.valueOf(1), paramq.yVu, af.fr(paramq.yVr), "", "", "", "", paramq.yVd, Integer.valueOf(paramq.resourceId) });
     AppMethodBeat.o(65472);
   }
   
-  private void b(final l paraml)
+  private void b(final com.tencent.mm.plugin.luckymoney.model.q paramq)
   {
     AppMethodBeat.i(65473);
-    if (paraml != null)
+    if (paramq != null)
     {
       final AppCompatActivity localAppCompatActivity = getContext();
-      if (paraml.vAB == 2)
+      if (paramq.yVv == 2)
       {
-        this.vwf.setImageResource(2131232967);
-        if (paraml.resourceId != 0)
+        this.yQt.setImageResource(2131233617);
+        if (paramq.resourceId != 0)
         {
-          ae.i("MicroMsg.LuckyMoneyDetailUI", "busi logo load from file:" + paraml.resourceId);
-          final jb localjb = new jb();
-          localjb.dwP.dwR = paraml.resourceId;
-          localjb.callback = new Runnable()
+          Log.i("MicroMsg.LuckyMoneyDetailUI", "busi logo load from file:" + paramq.resourceId);
+          final jq localjq = new jq();
+          localjq.dOw.dOy = paramq.resourceId;
+          localjq.callback = new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(65452);
-              if (localjb.dwQ.dwS)
+              if (localjq.dOx.dOz)
               {
-                ae.i("MicroMsg.LuckyMoneyDetailUI", "Get res Ok, path=" + localjb.dwQ.dwT);
+                Log.i("MicroMsg.LuckyMoneyDetailUI", "Get res Ok, path=" + localjq.dOx.dOA);
                 LuckyMoneyBusiDetailUI.this.getContext();
-                z.p(LuckyMoneyBusiDetailUI.i(LuckyMoneyBusiDetailUI.this), localjb.dwQ.dwT);
+                af.s(LuckyMoneyBusiDetailUI.i(LuckyMoneyBusiDetailUI.this), localjq.dOx.dOA);
                 AppMethodBeat.o(65452);
                 return;
               }
-              ae.i("MicroMsg.LuckyMoneyDetailUI", "Get res fail & load from url.");
-              if (!bu.isNullOrNil(paraml.vAk)) {
-                z.b(LuckyMoneyBusiDetailUI.i(LuckyMoneyBusiDetailUI.this), paraml.vAk, paraml.vAE);
+              Log.i("MicroMsg.LuckyMoneyDetailUI", "Get res fail & load from url.");
+              if (!Util.isNullOrNil(paramq.yVe)) {
+                af.a(LuckyMoneyBusiDetailUI.i(LuckyMoneyBusiDetailUI.this), paramq.yVe, paramq.yVy);
               }
               AppMethodBeat.o(65452);
             }
           };
-          com.tencent.mm.sdk.b.a.IvT.a(localjb, Looper.myLooper());
-          z.a(localAppCompatActivity, this.vwg, paraml.vAj);
-          z.a(localAppCompatActivity, this.uSM, paraml.vvw);
-          if ((paraml.dPe != 2) || (this.vHk == 3)) {
+          EventCenter.instance.asyncPublish(localjq, Looper.myLooper());
+          af.a(localAppCompatActivity, this.yQu, paramq.yVd);
+          af.a(localAppCompatActivity, this.yln, paramq.yPK);
+          if ((paramq.eha != 2) || (this.zcj == 3)) {
             break label339;
           }
-          this.vvW.setText(com.tencent.mm.wallet_core.ui.f.C(paraml.dPq / 100.0D));
-          if (paraml.vAr == 1) {
+          this.yQk.setText(com.tencent.mm.wallet_core.ui.f.formatMoney2f(paramq.eht / 100.0D));
+          if (paramq.yVl == 1) {
             break label328;
           }
-          this.vHq.vvS = true;
+          this.zco.yQg = true;
           label180:
-          this.vwi.setVisibility(0);
+          this.yQw.setVisibility(0);
           label188:
-          if (bu.isNullOrNil(paraml.vxB)) {
+          if (Util.isNullOrNil(paramq.yRP)) {
             break label391;
           }
-          this.vwj.setVisibility(0);
-          this.mpP.setText(paraml.vxB);
-          if (paraml.vxz != 1) {
+          this.yQx.setVisibility(0);
+          this.nAB.setText(paramq.yRP);
+          if (paramq.yRN != 1) {
             break label363;
           }
-          if ((TextUtils.isEmpty(paraml.vxA)) || (paraml.vxA.startsWith("weixin://wxpay"))) {
+          if ((TextUtils.isEmpty(paramq.yRO)) || (paramq.yRO.startsWith("weixin://wxpay"))) {
             break label351;
           }
-          this.vHg.setVisibility(0);
+          this.zcf.setVisibility(0);
           label256:
-          this.mpP.setOnClickListener(new View.OnClickListener()
+          this.nAB.setOnClickListener(new View.OnClickListener()
           {
             public final void onClick(View paramAnonymousView)
             {
               AppMethodBeat.i(65453);
               b localb = new b();
-              localb.bd(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBusiDetailUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-              if (!TextUtils.isEmpty(paraml.vxA))
+              localb.bm(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBusiDetailUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+              if (!TextUtils.isEmpty(paramq.yRO))
               {
-                ae.i("MicroMsg.LuckyMoneyDetailUI", "detail.changeUrl:" + paraml.vxA);
-                if (paraml.vxA.startsWith("weixin://wxpay"))
+                Log.i("MicroMsg.LuckyMoneyDetailUI", "detail.changeUrl:" + paramq.yRO);
+                if (paramq.yRO.startsWith("weixin://wxpay"))
                 {
-                  com.tencent.mm.wallet_core.ui.f.aha(12);
-                  com.tencent.mm.pluginsdk.wallet.f.aw(LuckyMoneyBusiDetailUI.this.getContext(), 1);
+                  com.tencent.mm.wallet_core.ui.f.aqm(12);
+                  com.tencent.mm.pluginsdk.wallet.f.aF(LuckyMoneyBusiDetailUI.this.getContext(), 1);
                 }
               }
               for (;;)
@@ -307,12 +305,12 @@ public class LuckyMoneyBusiDetailUI
                 com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyBusiDetailUI$12", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
                 AppMethodBeat.o(65453);
                 return;
-                com.tencent.mm.wallet_core.ui.f.aha(7);
-                com.tencent.mm.wallet_core.ui.f.aY(localAppCompatActivity, paraml.vxA);
+                com.tencent.mm.wallet_core.ui.f.aqm(7);
+                com.tencent.mm.wallet_core.ui.f.bn(localAppCompatActivity, paramq.yRO);
                 continue;
-                com.tencent.mm.wallet_core.ui.f.aha(12);
-                com.tencent.mm.pluginsdk.wallet.f.aw(LuckyMoneyBusiDetailUI.this.getContext(), 1);
-                ae.e("MicroMsg.LuckyMoneyDetailUI", "detail.changeUrl is empty");
+                com.tencent.mm.wallet_core.ui.f.aqm(12);
+                com.tencent.mm.pluginsdk.wallet.f.aF(LuckyMoneyBusiDetailUI.this.getContext(), 1);
+                Log.e("MicroMsg.LuckyMoneyDetailUI", "detail.changeUrl is empty");
               }
             }
           });
@@ -320,44 +318,44 @@ public class LuckyMoneyBusiDetailUI
       }
       for (;;)
       {
-        if (bu.isNullOrNil(paraml.vAu)) {
+        if (Util.isNullOrNil(paramq.yVo)) {
           break label411;
         }
-        this.lHT.setText(paraml.vAu);
+        this.jVn.setText(paramq.yVo);
         AppMethodBeat.o(65473);
         return;
-        if (bu.isNullOrNil(paraml.vAk)) {
+        if (Util.isNullOrNil(paramq.yVe)) {
           break;
         }
-        z.b(this.vwf, paraml.vAk, paraml.vAE);
+        af.a(this.yQt, paramq.yVe, paramq.yVy);
         break;
         label328:
-        this.vHq.vvS = false;
+        this.zco.yQg = false;
         break label180;
         label339:
-        this.vwi.setVisibility(8);
+        this.yQw.setVisibility(8);
         break label188;
         label351:
-        this.vHg.setVisibility(8);
+        this.zcf.setVisibility(8);
         break label256;
         label363:
-        ae.e("MicroMsg.LuckyMoneyDetailUI", "detail.jumpChange is false");
-        this.mpP.setTextColor(getResources().getColor(2131100598));
+        Log.e("MicroMsg.LuckyMoneyDetailUI", "detail.jumpChange is false");
+        this.nAB.setTextColor(getResources().getColor(2131100766));
         continue;
         label391:
-        ae.e("MicroMsg.LuckyMoneyDetailUI", "detail.changeWording is empty");
-        this.vwj.setVisibility(8);
+        Log.e("MicroMsg.LuckyMoneyDetailUI", "detail.changeWording is empty");
+        this.yQx.setVisibility(8);
       }
       label411:
-      this.lHT.setText(null);
+      this.jVn.setText(null);
     }
     AppMethodBeat.o(65473);
   }
   
-  private void c(l paraml)
+  private void c(com.tencent.mm.plugin.luckymoney.model.q paramq)
   {
     AppMethodBeat.i(65476);
-    if (paraml == null)
+    if (paramq == null)
     {
       AppMethodBeat.o(65476);
       return;
@@ -368,38 +366,38 @@ public class LuckyMoneyBusiDetailUI
     TextView localTextView1;
     label215:
     TextView localTextView2;
-    if (((paraml.dPd == 3) || (paraml.dPd == 2)) && (paraml.vAs == 1) && (!this.vHj) && (paraml.vAv == 1))
+    if (((paramq.egZ == 3) || (paramq.egZ == 2)) && (paramq.yVm == 1) && (!this.zci) && (paramq.yVp == 1))
     {
       i = 1;
-      if ((paraml.vAw == null) || (paraml.vAw.gaV != 1) || (bu.isNullOrNil(paraml.vAw.vzR))) {
+      if ((paramq.yVq == null) || (paramq.yVq.gGn != 1) || (Util.isNullOrNil(paramq.yVq.yUG))) {
         break label309;
       }
       j = 1;
-      localTextView1 = (TextView)this.pPh.findViewById(2131297623);
+      localTextView1 = (TextView)this.rfF.findViewById(2131297885);
       if ((i == 0) && (j == 0)) {
         break label314;
       }
-      localTextView1.setOnClickListener(new LuckyMoneyBusiDetailUI.5(this, paraml));
+      localTextView1.setOnClickListener(new LuckyMoneyBusiDetailUI.5(this, paramq));
       if (j != 0)
       {
-        this.vHn = paraml.vAw.vzR;
-        localTextView1.setText(paraml.vAw.vzS);
+        this.zcl = paramq.yVq.yUG;
+        localTextView1.setText(paramq.yVq.yUH);
       }
-      g.yxI.f(11701, new Object[] { Integer.valueOf(JN(paraml.vAB)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
+      com.tencent.mm.plugin.report.service.h.CyF.a(11701, new Object[] { Integer.valueOf(PP(paramq.yVv)), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2) });
       localTextView1.setVisibility(0);
-      localTextView2 = (TextView)this.pPh.findViewById(2131297620);
-      if ((this.vHk == 1) || (this.vHk == 3) || (localTextView1.getVisibility() == 0)) {
+      localTextView2 = (TextView)this.rfF.findViewById(2131297882);
+      if ((this.zcj == 1) || (this.zcj == 3) || (localTextView1.getVisibility() == 0)) {
         break label324;
       }
-      localTextView2.setOnClickListener(new LuckyMoneyBusiDetailUI.6(this, paraml));
+      localTextView2.setOnClickListener(new LuckyMoneyBusiDetailUI.6(this, paramq));
       localTextView2.setVisibility(0);
     }
     for (;;)
     {
-      if (!this.vHs)
+      if (!this.zcq)
       {
-        this.vwe.addFooterView(this.pPh);
-        this.vHs = true;
+        this.yQs.addFooterView(this.rfF);
+        this.zcq = true;
       }
       AppMethodBeat.o(65476);
       return;
@@ -416,40 +414,40 @@ public class LuckyMoneyBusiDetailUI
     }
   }
   
-  private void d(l paraml)
+  private void d(com.tencent.mm.plugin.luckymoney.model.q paramq)
   {
     AppMethodBeat.i(65477);
-    if (paraml != null)
+    if (paramq != null)
     {
-      Object localObject1 = paraml.vAx;
+      Object localObject1 = paramq.yVr;
       if ((localObject1 != null) && (((List)localObject1).size() > 0))
       {
-        localObject2 = this.agn.findViewById(2131297616);
-        View localView1 = this.agn.findViewById(2131297617);
-        View localView2 = this.agn.findViewById(2131297618);
-        ViewGroup localViewGroup1 = (ViewGroup)this.agn.findViewById(2131297613);
-        ViewGroup localViewGroup2 = (ViewGroup)this.agn.findViewById(2131297614);
-        ViewGroup localViewGroup3 = (ViewGroup)this.agn.findViewById(2131297615);
-        View localView3 = this.agn.findViewById(2131297608);
-        View localView4 = this.agn.findViewById(2131297609);
-        h.c localc = new h.c();
-        localc.textColor = getResources().getColor(2131100574);
-        localc.vLt = true;
-        localc.resourceId = paraml.resourceId;
-        localc.vLu = this.vHo;
+        localObject2 = this.agA.findViewById(2131297878);
+        View localView1 = this.agA.findViewById(2131297879);
+        View localView2 = this.agA.findViewById(2131297880);
+        ViewGroup localViewGroup1 = (ViewGroup)this.agA.findViewById(2131297875);
+        ViewGroup localViewGroup2 = (ViewGroup)this.agA.findViewById(2131297876);
+        ViewGroup localViewGroup3 = (ViewGroup)this.agA.findViewById(2131297877);
+        View localView3 = this.agA.findViewById(2131297870);
+        View localView4 = this.agA.findViewById(2131297871);
+        i.c localc = new i.c();
+        localc.textColor = getResources().getColor(2131100742);
+        localc.zgx = true;
+        localc.resourceId = paramq.resourceId;
+        localc.zgy = this.zcm;
         if (((List)localObject1).size() > 0)
         {
-          h.a(this, localViewGroup1, (au)((List)localObject1).get(0), localc);
+          i.a(this, localViewGroup1, (bg)((List)localObject1).get(0), localc);
           ((View)localObject2).setVisibility(0);
         }
         if (((List)localObject1).size() > 1)
         {
-          h.a(this, localViewGroup2, (au)((List)localObject1).get(1), localc);
+          i.a(this, localViewGroup2, (bg)((List)localObject1).get(1), localc);
           localView1.setVisibility(0);
         }
         if (((List)localObject1).size() > 2)
         {
-          h.a(this, localViewGroup3, (au)((List)localObject1).get(2), localc);
+          i.a(this, localViewGroup3, (bg)((List)localObject1).get(2), localc);
           localView2.setVisibility(0);
         }
         if ((((View)localObject2).getVisibility() == 0) && ((localView1.getVisibility() == 0) || (localView2.getVisibility() == 0))) {
@@ -460,56 +458,56 @@ public class LuckyMoneyBusiDetailUI
         }
         if ((((View)localObject2).getVisibility() == 0) || (localView1.getVisibility() == 0) || (localView2.getVisibility() == 0))
         {
-          this.vHh.requestLayout();
-          this.vHh.setVisibility(0);
+          this.zcg.requestLayout();
+          this.zcg.setVisibility(0);
         }
       }
-      localObject1 = (ViewGroup)this.pPh.findViewById(2131297610);
-      Object localObject2 = new h.c();
-      ((h.c)localObject2).textColor = getResources().getColor(2131100574);
-      ((h.c)localObject2).textSize = getResources().getDimensionPixelSize(2131165574);
-      h.a(this, (ViewGroup)localObject1, paraml.vAy, (h.c)localObject2);
+      localObject1 = (ViewGroup)this.rfF.findViewById(2131297872);
+      Object localObject2 = new i.c();
+      ((i.c)localObject2).textColor = getResources().getColor(2131100742);
+      ((i.c)localObject2).textSize = getResources().getDimensionPixelSize(2131165592);
+      i.a(this, (ViewGroup)localObject1, paramq.yVs, (i.c)localObject2);
     }
     AppMethodBeat.o(65477);
   }
   
-  private void dmh()
+  private void egc()
   {
     AppMethodBeat.i(65471);
-    this.lpM = true;
-    if ((this.fq > 0) && (this.vvQ.size() > 0) && (this.vvQ.get(this.vvQ.size() - 1) != null))
+    this.mwr = true;
+    if ((this.fs > 0) && (this.yQe.size() > 0) && (this.yQe.get(this.yQe.size() - 1) != null))
     {
-      doSceneProgress(new ah(this.vHa, this.fq, this.vHm, bu.getLong(((y)this.vvQ.get(this.vvQ.size() - 1)).vBt, 0L), "v1.0", this.vHr));
+      doSceneProgress(new ao(this.yUc, this.fs, this.yUq, Util.getLong(((ad)this.yQe.get(this.yQe.size() - 1)).yWp, 0L), "v1.0", this.zcp));
       AppMethodBeat.o(65471);
       return;
     }
-    this.vHr = "";
-    doSceneProgress(new ah(this.vHa, 11, this.fq, this.vHm, "v1.0", this.vHr));
+    this.zcp = "";
+    doSceneProgress(new ao(this.yUc, 11, this.fs, this.yUq, "v1.0", this.zcp));
     AppMethodBeat.o(65471);
   }
   
-  private void dmi()
+  private void egd()
   {
     AppMethodBeat.i(65475);
     new DisplayMetrics();
-    Object localObject = ak.getContext().getResources().getDisplayMetrics();
+    Object localObject = MMApplicationContext.getContext().getResources().getDisplayMetrics();
     if (localObject == null)
     {
       AppMethodBeat.o(65475);
       return;
     }
-    int i = (int)((((DisplayMetrics)localObject).widthPixels - getResources().getDimensionPixelSize(2131166496) * 2 - getResources().getDimensionPixelSize(2131166495) * 2) * 0.75F);
-    localObject = this.vHi.getLayoutParams();
+    int i = (int)((((DisplayMetrics)localObject).widthPixels - getResources().getDimensionPixelSize(2131166611) * 2 - getResources().getDimensionPixelSize(2131166610) * 2) * 0.75F);
+    localObject = this.zch.getLayoutParams();
     ((ViewGroup.LayoutParams)localObject).height = i;
-    this.vHi.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.zch.setLayoutParams((ViewGroup.LayoutParams)localObject);
     AppMethodBeat.o(65475);
   }
   
-  private void dmj()
+  private void ege()
   {
     AppMethodBeat.i(65478);
-    if ((this.vHf != null) && (this.vHf.getVisibility() != 8)) {
-      this.vHf.setVisibility(8);
+    if ((this.zce != null) && (this.zce.getVisibility() != 8)) {
+      this.zce.setVisibility(8);
     }
     AppMethodBeat.o(65478);
   }
@@ -539,29 +537,29 @@ public class LuckyMoneyBusiDetailUI
     AppMethodBeat.o(65466);
   }
   
-  private void hT(String paramString1, String paramString2)
+  private void iD(String paramString1, String paramString2)
   {
     AppMethodBeat.i(65474);
-    this.vHi.setImageResource(2131232966);
-    if (bu.isNullOrNil(paramString1))
+    this.zch.setImageResource(2131233616);
+    if (Util.isNullOrNil(paramString1))
     {
-      ae.i("MicroMsg.LuckyMoneyDetailUI", "renderAdImage: no adImage");
-      this.vHi.setVisibility(8);
+      Log.i("MicroMsg.LuckyMoneyDetailUI", "renderAdImage: no adImage");
+      this.zch.setVisibility(8);
       AppMethodBeat.o(65474);
       return;
     }
-    dmi();
-    z.a(this.vHi, paramString1, paramString2);
-    this.vHi.setVisibility(0);
+    egd();
+    af.b(this.zch, paramString1, paramString2, false);
+    this.zch.setVisibility(0);
     AppMethodBeat.o(65474);
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(65467);
-    if ((paramKeyEvent.getKeyCode() == 4) && (this.vHf.getVisibility() == 0))
+    if ((paramKeyEvent.getKeyCode() == 4) && (this.zce.getVisibility() == 0))
     {
-      this.vHf.setVisibility(8);
+      this.zce.setVisibility(8);
       AppMethodBeat.o(65467);
       return true;
     }
@@ -593,7 +591,7 @@ public class LuckyMoneyBusiDetailUI
   
   public int getLayoutId()
   {
-    return 2131494630;
+    return 2131495352;
   }
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -610,11 +608,11 @@ public class LuckyMoneyBusiDetailUI
       if ((paramInt2 == -1) && (paramIntent != null))
       {
         String str = paramIntent.getStringExtra("Select_Conv_User");
-        if (!bu.isNullOrNil(str)) {
-          if ((this.vHn != null) && (this.vHn.startsWith("wxpay://c2cbizmessagehandler/hongbao/festivalhongbao"))) {
-            ae.i("MicroMsg.LuckyMoneyDetailUI", "Not expected branch since 2015 fesitval");
+        if (!Util.isNullOrNil(str)) {
+          if ((this.zcl != null) && (this.zcl.startsWith("wxpay://c2cbizmessagehandler/hongbao/festivalhongbao"))) {
+            Log.i("MicroMsg.LuckyMoneyDetailUI", "Not expected branch since 2015 fesitval");
           } else {
-            doSceneProgress(new at(str.replaceAll(",", "|"), this.vHa, "v1.0"));
+            doSceneProgress(new bf(str.replaceAll(",", "|"), this.yUc, "v1.0"));
           }
         }
       }
@@ -625,61 +623,61 @@ public class LuckyMoneyBusiDetailUI
   {
     AppMethodBeat.i(65465);
     super.onCreate(paramBundle);
-    this.vwe = ((ListView)findViewById(2131297621));
-    this.vHq = new i(getContext());
-    this.agn = LayoutInflater.from(this).inflate(2131494629, null);
-    this.vwe.addHeaderView(this.agn);
-    this.vwe.setAdapter(this.vHq);
-    this.agn.setOnClickListener(new LuckyMoneyBusiDetailUI.7(this));
-    this.vwe.setOnScrollListener(this.vwl);
-    this.vwe.setOnItemClickListener(new LuckyMoneyBusiDetailUI.8(this));
-    this.pPh = LayoutInflater.from(this).inflate(2131494628, null);
-    this.vwf = ((ImageView)this.agn.findViewById(2131297604));
-    this.vwg = ((TextView)this.agn.findViewById(2131297625));
-    this.uSM = ((TextView)this.agn.findViewById(2131297627));
-    this.vwi = this.agn.findViewById(2131297603);
-    this.vvW = ((TextView)this.agn.findViewById(2131297602));
-    this.vwj = this.agn.findViewById(2131297611);
-    this.mpP = ((TextView)this.agn.findViewById(2131297624));
-    this.vHg = ((ImageView)this.agn.findViewById(2131297612));
-    this.lHT = ((TextView)this.agn.findViewById(2131297607));
-    this.vHh = this.agn.findViewById(2131297619);
-    this.vHi = ((ImageView)this.agn.findViewById(2131297601));
-    paramBundle = (ImageView)findViewById(2131297606);
-    this.vHf = ((LuckyMoneyWishFooter)findViewById(2131297626));
-    Object localObject = this.vHf;
+    this.yQs = ((ListView)findViewById(2131297883));
+    this.zco = new j(getContext());
+    this.agA = LayoutInflater.from(this).inflate(2131495351, null);
+    this.yQs.addHeaderView(this.agA);
+    this.yQs.setAdapter(this.zco);
+    this.agA.setOnClickListener(new LuckyMoneyBusiDetailUI.7(this));
+    this.yQs.setOnScrollListener(this.yQz);
+    this.yQs.setOnItemClickListener(new LuckyMoneyBusiDetailUI.8(this));
+    this.rfF = LayoutInflater.from(this).inflate(2131495350, null);
+    this.yQt = ((ImageView)this.agA.findViewById(2131297866));
+    this.yQu = ((TextView)this.agA.findViewById(2131297887));
+    this.yln = ((TextView)this.agA.findViewById(2131297889));
+    this.yQw = this.agA.findViewById(2131297865);
+    this.yQk = ((TextView)this.agA.findViewById(2131297864));
+    this.yQx = this.agA.findViewById(2131297873);
+    this.nAB = ((TextView)this.agA.findViewById(2131297886));
+    this.zcf = ((ImageView)this.agA.findViewById(2131297874));
+    this.jVn = ((TextView)this.agA.findViewById(2131297869));
+    this.zcg = this.agA.findViewById(2131297881);
+    this.zch = ((ImageView)this.agA.findViewById(2131297863));
+    paramBundle = (ImageView)findViewById(2131297868);
+    this.zce = ((LuckyMoneyWishFooter)findViewById(2131297888));
+    Object localObject = this.zce;
     LuckyMoneyBusiDetailUI.9 local9 = new LuckyMoneyBusiDetailUI.9(this);
-    if (((LuckyMoneyWishFooter)localObject).vNt != null) {
-      ((LuckyMoneyWishFooter)localObject).vNt.setBackListener(local9);
+    if (((LuckyMoneyWishFooter)localObject).ziR != null) {
+      ((LuckyMoneyWishFooter)localObject).ziR.setBackListener(local9);
     }
-    this.vHf.setOnWishSendImp(new LuckyMoneyWishFooter.b()
+    this.zce.setOnWishSendImp(new LuckyMoneyWishFooter.b()
     {
-      public final void aqg(String paramAnonymousString)
+      public final void aDC(String paramAnonymousString)
       {
         AppMethodBeat.i(65459);
-        if ((!bu.isNullOrNil(paramAnonymousString)) && (!bu.isNullOrNil(LuckyMoneyBusiDetailUI.g(LuckyMoneyBusiDetailUI.this))))
+        if ((!Util.isNullOrNil(paramAnonymousString)) && (!Util.isNullOrNil(LuckyMoneyBusiDetailUI.g(LuckyMoneyBusiDetailUI.this))))
         {
-          paramAnonymousString = new ao(LuckyMoneyBusiDetailUI.h(LuckyMoneyBusiDetailUI.this), paramAnonymousString, LuckyMoneyBusiDetailUI.g(LuckyMoneyBusiDetailUI.this), "v1.0");
+          paramAnonymousString = new ax(LuckyMoneyBusiDetailUI.h(LuckyMoneyBusiDetailUI.this), paramAnonymousString, LuckyMoneyBusiDetailUI.g(LuckyMoneyBusiDetailUI.this), "v1.0");
           LuckyMoneyBusiDetailUI.this.doSceneProgress(paramAnonymousString);
           LuckyMoneyBusiDetailUI.e(LuckyMoneyBusiDetailUI.this);
         }
         AppMethodBeat.o(65459);
       }
     });
-    this.vHf.post(new LuckyMoneyBusiDetailUI.11(this));
-    this.vHf.setOnkbdStateListener(new LuckyMoneyBusiDetailUI.12(this));
-    this.vHq.vNf = new LuckyMoneyBusiDetailUI.13(this);
-    localObject = this.vHq;
-    ((i)localObject).vNg = new i.a((i)localObject);
-    this.vHf.setMaxLength(25);
+    this.zce.post(new LuckyMoneyBusiDetailUI.11(this));
+    this.zce.setOnkbdStateListener(new LuckyMoneyBusiDetailUI.12(this));
+    this.zco.ziC = new LuckyMoneyBusiDetailUI.13(this);
+    localObject = this.zco;
+    ((j)localObject).ziD = new j.a((j)localObject);
+    this.zce.setMaxLength(25);
     paramBundle.setOnClickListener(new LuckyMoneyBusiDetailUI.14(this));
-    fixBackgroundRepeat(findViewById(2131297605));
-    this.vHa = getIntent().getStringExtra("key_sendid");
-    this.vHm = getIntent().getStringExtra("key_native_url");
-    this.vHk = getIntent().getIntExtra("key_jump_from", 2);
-    this.vHo = getIntent().getIntExtra("key_static_from_scene", 0);
-    ae.i("MicroMsg.LuckyMoneyDetailUI", "initData: sendid=%s , nativeurl=%s, jumpFrom=%d", new Object[] { this.vHa, this.vHm, Integer.valueOf(this.vHk) });
-    if (this.vHk == 2) {}
+    fixBackgroundRepeat(findViewById(2131297867));
+    this.yUc = getIntent().getStringExtra("key_sendid");
+    this.yUq = getIntent().getStringExtra("key_native_url");
+    this.zcj = getIntent().getIntExtra("key_jump_from", 2);
+    this.zcm = getIntent().getIntExtra("key_static_from_scene", 0);
+    Log.i("MicroMsg.LuckyMoneyDetailUI", "initData: sendid=%s , nativeurl=%s, jumpFrom=%d", new Object[] { this.yUc, this.yUq, Integer.valueOf(this.zcj) });
+    if (this.zcj == 2) {}
     for (;;)
     {
       try
@@ -687,12 +685,12 @@ public class LuckyMoneyBusiDetailUI
         paramBundle = getIntent().getByteArrayExtra("key_detail_info");
         if (paramBundle != null)
         {
-          paramBundle = (l)new l().parseFrom(paramBundle);
+          paramBundle = (com.tencent.mm.plugin.luckymoney.model.q)new com.tencent.mm.plugin.luckymoney.model.q().parseFrom(paramBundle);
           if (paramBundle != null)
           {
             a(paramBundle);
             if (getIntent().getBooleanExtra("play_sound", false)) {
-              k.a(this, k.a.vND);
+              l.a(this, l.a.zjb);
             }
             AppMethodBeat.o(65465);
             return;
@@ -701,25 +699,25 @@ public class LuckyMoneyBusiDetailUI
       }
       catch (Exception paramBundle)
       {
-        ae.w("MicroMsg.LuckyMoneyDetailUI", "initData: parse LuckyMoneyDetail fail!" + paramBundle.getLocalizedMessage());
+        Log.w("MicroMsg.LuckyMoneyDetailUI", "initData: parse LuckyMoneyDetail fail!" + paramBundle.getLocalizedMessage());
       }
-      if ((bu.isNullOrNil(this.vHa)) && (!bu.isNullOrNil(this.vHm))) {
-        paramBundle = Uri.parse(this.vHm);
+      if ((Util.isNullOrNil(this.yUc)) && (!Util.isNullOrNil(this.yUq))) {
+        paramBundle = Uri.parse(this.yUq);
       }
       try
       {
-        this.vHa = paramBundle.getQueryParameter("sendid");
-        if (!bu.isNullOrNil(this.vHa)) {
-          dmh();
+        this.yUc = paramBundle.getQueryParameter("sendid");
+        if (!Util.isNullOrNil(this.yUc)) {
+          egc();
         }
       }
       catch (Exception paramBundle)
       {
         for (;;)
         {
-          ae.w("MicroMsg.LuckyMoneyDetailUI", "initData: parse uri exp:" + paramBundle.getLocalizedMessage());
+          Log.w("MicroMsg.LuckyMoneyDetailUI", "initData: parse uri exp:" + paramBundle.getLocalizedMessage());
         }
-        ae.w("MicroMsg.LuckyMoneyDetailUI", "sendid null or nil, finish");
+        Log.w("MicroMsg.LuckyMoneyDetailUI", "sendid null or nil, finish");
       }
     }
   }
@@ -728,57 +726,57 @@ public class LuckyMoneyBusiDetailUI
   {
     AppMethodBeat.i(65479);
     super.onDestroy();
-    if (this.vHf != null)
+    if (this.zce != null)
     {
-      LuckyMoneyWishFooter localLuckyMoneyWishFooter = this.vHf;
-      if (localLuckyMoneyWishFooter.qdo != null)
+      LuckyMoneyWishFooter localLuckyMoneyWishFooter = this.zce;
+      if (localLuckyMoneyWishFooter.rum != null)
       {
-        ae.i("MicroMsg.SnsCommentFooter", "commentfooter release");
-        localLuckyMoneyWishFooter.qdo.ffs();
-        localLuckyMoneyWishFooter.qdo.destroy();
+        Log.i("MicroMsg.SnsCommentFooter", "commentfooter release");
+        localLuckyMoneyWishFooter.rum.goC();
+        localLuckyMoneyWishFooter.rum.destroy();
       }
     }
     AppMethodBeat.o(65479);
   }
   
-  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(65468);
-    if ((paramn instanceof ah))
+    if ((paramq instanceof ao))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramString = (ah)paramn;
-        paramn = paramString.vBT;
-        this.vHr = paramString.vCf;
-        a(paramn);
+        paramString = (ao)paramq;
+        paramq = paramString.yWT;
+        this.zcp = paramString.yXg;
+        a(paramq);
         AppMethodBeat.o(65468);
         return true;
       }
-      com.tencent.mm.ui.base.h.cm(this, paramString);
+      com.tencent.mm.ui.base.h.cD(this, paramString);
       AppMethodBeat.o(65468);
       return true;
     }
-    if ((paramn instanceof ao))
+    if ((paramq instanceof ax))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        com.tencent.mm.ui.base.h.cm(this, getString(2131760233));
-        this.vHq.vvS = false;
-        dmj();
-        paramString = (ao)paramn;
-        if (this.vvQ != null) {
+        com.tencent.mm.ui.base.h.cD(this, getString(2131761619));
+        this.zco.yQg = false;
+        ege();
+        paramString = (ax)paramq;
+        if (this.yQe != null) {
           paramInt1 = 0;
         }
         for (;;)
         {
-          if (paramInt1 < this.vvQ.size())
+          if (paramInt1 < this.yQe.size())
           {
-            paramn = (y)this.vvQ.get(paramInt1);
-            if (paramn.vAq.equalsIgnoreCase(paramString.vAq))
+            paramq = (ad)this.yQe.get(paramInt1);
+            if (paramq.yVk.equalsIgnoreCase(paramString.yVk))
             {
-              paramn.vBH = paramString.vvw;
-              this.vHq.notifyDataSetChanged();
+              paramq.yWF = paramString.yPK;
+              this.zco.notifyDataSetChanged();
             }
           }
           else
@@ -789,19 +787,19 @@ public class LuckyMoneyBusiDetailUI
           paramInt1 += 1;
         }
       }
-      com.tencent.mm.ui.base.h.cm(this, paramString);
+      com.tencent.mm.ui.base.h.cD(this, paramString);
       AppMethodBeat.o(65468);
       return true;
     }
-    if ((paramn instanceof at))
+    if ((paramq instanceof bf))
     {
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        com.tencent.mm.ui.base.h.cm(this, getString(2131760233));
+        com.tencent.mm.ui.base.h.cD(this, getString(2131761619));
         AppMethodBeat.o(65468);
         return true;
       }
-      com.tencent.mm.ui.base.h.cm(this, paramString);
+      com.tencent.mm.ui.base.h.cD(this, paramString);
       AppMethodBeat.o(65468);
       return true;
     }
@@ -817,7 +815,7 @@ public class LuckyMoneyBusiDetailUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.LuckyMoneyBusiDetailUI
  * JD-Core Version:    0.7.0.1
  */

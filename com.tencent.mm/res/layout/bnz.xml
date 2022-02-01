@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/f" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0dip" android:textColor="@color/FG_1" android:gravity="left" android:layout_gravity="left" android:id="@id/chm" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="" android:singleLine="false" />
-</LinearLayout>
+    <View android:id="@id/hag" android:layout_width="334.0dip" android:layout_height="190.0dip" android:layout_centerInParent="true" />
+    <TextView android:textSize="@dimen/kc" android:textColor="@color/BW_90" android:id="@id/abi" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:text="@string/gb9" android:layout_below="@id/hag" android:layout_centerHorizontal="true" />
+    <com.tencent.mm.plugin.scanner.ui.ScannerFlashSwitcher android:id="@id/hb4" android:visibility="gone" android:layout_width="@dimen/cr" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cr" android:layout_below="@id/abi" android:layout_centerHorizontal="true" />
+</RelativeLayout>

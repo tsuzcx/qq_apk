@@ -1,14 +1,17 @@
 package com.tencent.mm.pluginsdk.ui;
 
+import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.aj.b;
 import com.tencent.mm.aj.e.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bv;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.WeChatEnvironment;
 import com.tencent.mm.ui.tools.MaskImageButton;
 import junit.framework.Assert;
 
@@ -16,7 +19,7 @@ public class a
   extends j
   implements e.a
 {
-  public static float oeP = 0.1F;
+  public static float ppN = 0.1F;
   protected boolean pressed;
   
   public a(j.a parama, String paramString)
@@ -24,10 +27,15 @@ public class a
     super(parama, paramString);
   }
   
-  public void DG(String paramString)
+  private a(String paramString)
+  {
+    super(b.Boe, paramString);
+  }
+  
+  public void Mr(String paramString)
   {
     AppMethodBeat.i(152110);
-    super.DG(paramString);
+    super.Mr(paramString);
     AppMethodBeat.o(152110);
   }
   
@@ -47,14 +55,40 @@ public class a
   
   public static final class b
   {
-    public static j.a xnS;
+    public static j.a Boe;
+    
+    public static void A(ImageView paramImageView, String paramString)
+    {
+      AppMethodBeat.i(152107);
+      if (paramImageView == null)
+      {
+        Log.e("MicroMsg.AvatarDrawable", "imageView is null");
+        AppMethodBeat.o(152107);
+        return;
+      }
+      a(paramImageView, paramString, a.ppN, false);
+      AppMethodBeat.o(152107);
+    }
+    
+    private static void B(ImageView paramImageView, String paramString)
+    {
+      AppMethodBeat.i(152109);
+      if ((WeChatEnvironment.hasDebugger()) && (paramImageView != null) && (!paramImageView.isLongClickable()) && (!(paramImageView instanceof NotCopyUserNameImageView)))
+      {
+        paramImageView.setOnLongClickListener(new a.b.1(paramImageView, paramString));
+        if (!paramImageView.isClickable()) {
+          paramImageView.setOnClickListener(new a.b.2(paramImageView));
+        }
+      }
+      AppMethodBeat.o(152109);
+    }
     
     public static void a(ImageView paramImageView, String paramString, float paramFloat, boolean paramBoolean)
     {
       AppMethodBeat.i(152106);
       if (paramImageView == null)
       {
-        ae.e("MicroMsg.AvatarDrawable", "imageView is null");
+        Log.e("MicroMsg.AvatarDrawable", "imageView is null");
         AppMethodBeat.o(152106);
         return;
       }
@@ -67,34 +101,46 @@ public class a
         ((c)localObject).setTag(paramString);
         paramImageView.setImageDrawable((Drawable)localObject);
         paramImageView.invalidate();
-        x(paramImageView, paramString);
-        l(paramImageView);
+        B(paramImageView, paramString);
+        n(paramImageView);
         AppMethodBeat.o(152106);
         return;
         localObject = new c(paramString, paramFloat);
-        ((c)localObject).vQ(paramBoolean);
+        ((c)localObject).zO(paramBoolean);
       }
     }
     
-    public static void a(ImageView paramImageView, String paramString, int paramInt, com.tencent.mm.aj.b paramb)
+    public static void a(ImageView paramImageView, String paramString, b paramb)
     {
-      AppMethodBeat.i(218881);
+      AppMethodBeat.i(223829);
       if (paramImageView == null)
       {
-        AppMethodBeat.o(218881);
+        AppMethodBeat.o(223829);
         return;
       }
       Object localObject = paramImageView.getDrawable();
       if ((localObject != null) && ((localObject instanceof d))) {}
       for (localObject = (d)localObject;; localObject = new d(paramString))
       {
-        ((d)localObject).a(paramb);
-        ((d)localObject).Zq(paramInt);
+        if (((d)localObject).Kbi != null) {
+          ((d)localObject).Kbi.Kbk = paramb;
+        }
+        if ((((d)localObject).Kbj != 2131231260) || (((d)localObject).Kbi == null) || (((d)localObject).Kbi.pqA == null) || (((d)localObject).Kbi.pqA.isRecycled()))
+        {
+          ((d)localObject).Kbj = 2131231260;
+          paramb = BitmapUtil.getBitmapNative(2131231260);
+          if (((d)localObject).Kbi != null)
+          {
+            d.a locala = ((d)localObject).Kbi;
+            locala.pqA = paramb;
+            locala.pqA = locala.aJ(locala.pqA);
+          }
+        }
         ((d)localObject).setTag(paramString);
         paramImageView.setImageDrawable((Drawable)localObject);
         paramImageView.invalidate();
-        x(paramImageView, paramString);
-        AppMethodBeat.o(218881);
+        B(paramImageView, paramString);
+        AppMethodBeat.o(223829);
         return;
       }
     }
@@ -104,11 +150,11 @@ public class a
       AppMethodBeat.i(152102);
       if (paramImageView == null)
       {
-        ae.e("MicroMsg.AvatarDrawable", "imageView is null");
+        Log.e("MicroMsg.AvatarDrawable", "imageView is null");
         AppMethodBeat.o(152102);
         return;
       }
-      a(paramImageView, paramString, a.oeP, false);
+      a(paramImageView, paramString, a.ppN, false);
       AppMethodBeat.o(152102);
     }
     
@@ -121,27 +167,27 @@ public class a
     
     public static void d(ImageView paramImageView, String paramString, float paramFloat)
     {
-      AppMethodBeat.i(224410);
+      AppMethodBeat.i(258498);
       a(paramImageView, paramString, paramFloat, false);
-      AppMethodBeat.o(224410);
+      AppMethodBeat.o(258498);
     }
     
-    public static j.a ffl()
+    public static j.a gov()
     {
       AppMethodBeat.i(152101);
-      if (xnS != null) {}
+      if (Boe != null) {}
       for (boolean bool = true;; bool = false)
       {
         Assert.assertTrue(bool);
-        j.a locala = xnS;
+        j.a locala = Boe;
         AppMethodBeat.o(152101);
         return locala;
       }
     }
     
-    private static void l(ImageView paramImageView)
+    private static void n(ImageView paramImageView)
     {
-      AppMethodBeat.i(218882);
+      AppMethodBeat.i(223830);
       if ((paramImageView != null) && (!(paramImageView instanceof MaskImageButton)) && ((paramImageView.isClickable()) || (paramImageView.isLongClickable()))) {
         try
         {
@@ -149,81 +195,70 @@ public class a
           {
             public final boolean onTouch(View paramAnonymousView, MotionEvent paramAnonymousMotionEvent)
             {
-              AppMethodBeat.i(218879);
-              com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-              localb.bd(paramAnonymousView);
-              localb.bd(paramAnonymousMotionEvent);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z", this, localb.ahF());
+              AppMethodBeat.i(223826);
               int i = paramAnonymousMotionEvent.getActionMasked();
-              ae.d("MicroMsg.AvatarDrawable", "touch view %s, event %s", new Object[] { paramAnonymousView, Integer.valueOf(i) });
+              Log.d("MicroMsg.AvatarDrawable", "touch view %s, event %s", new Object[] { paramAnonymousView, Integer.valueOf(i) });
               if (i == 0) {
-                if ((this.qlp.getDrawable() != null) && ((this.qlp.getDrawable() instanceof a)))
+                if ((this.rCk.getDrawable() != null) && ((this.rCk.getDrawable() instanceof a)))
                 {
-                  ((a)this.qlp.getDrawable()).setIsPressed(true);
-                  this.qlp.invalidate();
+                  ((a)this.rCk.getDrawable()).setIsPressed(true);
+                  this.rCk.invalidate();
                 }
               }
               for (;;)
               {
-                com.tencent.mm.hellhoundlib.a.a.a(false, this, "com/tencent/mm/pluginsdk/ui/AvatarDrawable$Factory$3", "android/view/View$OnTouchListener", "onTouch", "(Landroid/view/View;Landroid/view/MotionEvent;)Z");
-                AppMethodBeat.o(218879);
+                AppMethodBeat.o(223826);
                 return false;
-                if (((i == 1) || (i == 3)) && (this.qlp.getDrawable() != null) && ((this.qlp.getDrawable() instanceof a)))
+                if (((i == 1) || (i == 3)) && (this.rCk.getDrawable() != null) && ((this.rCk.getDrawable() instanceof a)))
                 {
-                  ((a)this.qlp.getDrawable()).setIsPressed(false);
-                  this.qlp.invalidate();
+                  ((a)this.rCk.getDrawable()).setIsPressed(false);
+                  this.rCk.invalidate();
                 }
               }
             }
           });
-          AppMethodBeat.o(218882);
+          AppMethodBeat.o(223830);
           return;
         }
         catch (Exception paramImageView)
         {
-          ae.printErrStackTrace("MicroMsg.AvatarDrawable", paramImageView, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.AvatarDrawable", paramImageView, "", new Object[0]);
         }
       }
-      AppMethodBeat.o(218882);
+      AppMethodBeat.o(223830);
     }
     
-    public static void v(ImageView paramImageView, String paramString)
+    public static void y(ImageView paramImageView, String paramString)
+    {
+      AppMethodBeat.i(223827);
+      Object localObject = paramImageView.getDrawable();
+      if ((localObject != null) && ((localObject instanceof a))) {
+        localObject = (a)localObject;
+      }
+      for (;;)
+      {
+        ((a)localObject).setTag(paramString);
+        paramImageView.setImageDrawable((Drawable)localObject);
+        paramImageView.invalidate();
+        B(paramImageView, paramString);
+        AppMethodBeat.o(223827);
+        return;
+        localObject = new a(paramString, (byte)0);
+        ((a)localObject).zO(true);
+      }
+    }
+    
+    public static void z(ImageView paramImageView, String paramString)
     {
       AppMethodBeat.i(152105);
       a(paramImageView, paramString, 0.5F, true);
       AppMethodBeat.o(152105);
     }
-    
-    public static void w(ImageView paramImageView, String paramString)
-    {
-      AppMethodBeat.i(152107);
-      if (paramImageView == null)
-      {
-        ae.e("MicroMsg.AvatarDrawable", "imageView is null");
-        AppMethodBeat.o(152107);
-        return;
-      }
-      a(paramImageView, paramString, a.oeP, false);
-      AppMethodBeat.o(152107);
-    }
-    
-    private static void x(ImageView paramImageView, String paramString)
-    {
-      AppMethodBeat.i(152109);
-      if ((bv.fpT()) && (paramImageView != null) && (!paramImageView.isLongClickable()) && (!(paramImageView instanceof NotCopyUserNameImageView)))
-      {
-        paramImageView.setOnLongClickListener(new a.b.1(paramImageView, paramString));
-        if (!paramImageView.isClickable()) {
-          paramImageView.setOnClickListener(new a.b.2(paramImageView));
-        }
-      }
-      AppMethodBeat.o(152109);
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.a
  * JD-Core Version:    0.7.0.1
  */

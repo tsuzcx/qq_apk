@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="32.0dip"
+<LinearLayout android:orientation="vertical" android:id="@id/cr1" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0dip" android:textColor="@color/km" android:id="@id/g9f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="今天" />
+    <include android:id="@id/cqz" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="-4.0dip" layout="@layout/ado" />
+    <include android:id="@id/cr0" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-4.0dip" android:layout_marginBottom="-4.0dip" layout="@layout/ado" />
+    <include android:id="@id/cqy" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-4.0dip" layout="@layout/ado" />
 </LinearLayout>

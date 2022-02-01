@@ -1,46 +1,45 @@
 package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cqe;
-import com.tencent.mm.protocal.protobuf.dug;
-import com.tencent.mm.protocal.protobuf.dya;
-import com.tencent.mm.protocal.protobuf.dyf;
-import com.tencent.mm.protocal.protobuf.ym;
-import com.tencent.mm.protocal.protobuf.yn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.aaa;
+import com.tencent.mm.protocal.protobuf.aab;
+import com.tencent.mm.protocal.protobuf.did;
+import com.tencent.mm.protocal.protobuf.eoe;
+import com.tencent.mm.protocal.protobuf.esg;
+import com.tencent.mm.protocal.protobuf.esm;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class a
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public static int BCS = 1;
-  public static int BCT = 2;
-  public static int BCU = 3;
-  private String BCO;
-  private int BCP;
-  private dya BCQ;
-  private long BCR;
-  public dyf BCV;
-  public dug BCW;
-  public cqe BCX;
-  int BCY;
+  public static int FNE = 1;
+  public static int FNF = 2;
+  public static int FNG = 3;
+  private i AAQ;
+  private String FNA;
+  private int FNB;
+  private esg FNC;
+  private long FND;
+  public esm FNH;
+  public eoe FNI;
+  public did FNJ;
+  int FNK;
   private int Scene;
-  private String cUA;
-  private String cUB;
-  private b hQy;
+  private String dkU;
+  private String dkV;
+  private com.tencent.mm.ak.d iLF;
   private String mFileName;
   public int mState;
-  private f wFF;
   
   public a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2)
   {
@@ -77,51 +76,51 @@ public final class a
   private void a(String paramString1, int paramInt1, int paramInt2, long paramLong, String paramString2, int paramInt3, String paramString3, String paramString4)
   {
     AppMethodBeat.i(29266);
-    b.a locala = new b.a();
-    locala.hQF = new ym();
-    locala.hQG = new yn();
+    d.a locala = new d.a();
+    locala.iLN = new aaa();
+    locala.iLO = new aab();
     locala.uri = "/cgi-bin/micromsg-bin/checkvoicetrans";
     locala.funcId = 546;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
     this.mFileName = paramString2;
-    this.hQy = locala.aDS();
-    ae.i("MicroMsg.NetSceneCheckVoiceTrans", "voiceId:%s, totalLen:%d, encodeType: %d, svrMsgId: %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
+    this.iLF = locala.aXF();
+    Log.i("MicroMsg.NetSceneCheckVoiceTrans", "voiceId:%s, totalLen:%d, encodeType: %d, svrMsgId: %s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Long.valueOf(paramLong) });
     if (paramInt2 >= 0) {
-      this.BCQ = d.ci(paramInt2, paramString2);
+      this.FNC = d.cz(paramInt2, paramString2);
     }
     if (paramLong > 0L) {
-      this.BCR = paramLong;
+      this.FND = paramLong;
     }
-    this.BCO = paramString1;
-    this.BCP = paramInt1;
+    this.FNA = paramString1;
+    this.FNB = paramInt1;
     this.Scene = paramInt3;
-    this.cUA = paramString3;
-    this.cUB = paramString4;
+    this.dkU = paramString3;
+    this.dkV = paramString4;
     AppMethodBeat.o(29266);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(29267);
-    this.wFF = paramf;
-    paramf = (ym)this.hQy.hQD.hQJ;
-    paramf.Gdc = this.BCO;
-    paramf.xsB = this.BCP;
-    paramf.Gqr = this.BCQ;
-    paramf.xrk = this.BCR;
-    paramf.Scene = this.Scene;
-    paramf.uvG = this.cUA;
-    paramf.uvF = this.cUB;
-    int i = dispatch(parame, this.hQy, this);
+    this.AAQ = parami;
+    parami = (aaa)this.iLF.iLK.iLR;
+    parami.KXr = this.FNA;
+    parami.BsF = this.FNB;
+    parami.Llj = this.FNC;
+    parami.Brn = this.FND;
+    parami.Scene = this.Scene;
+    parami.xNH = this.dkU;
+    parami.xNG = this.dkV;
+    int i = dispatch(paramg, this.iLF, this);
     AppMethodBeat.o(29267);
     return i;
   }
   
-  public final boolean eqW()
+  public final boolean ftu()
   {
     AppMethodBeat.i(29269);
-    if ((this.BCV != null) && (!bu.isNullOrNil(this.BCV.Idg)))
+    if ((this.FNH != null) && (!Util.isNullOrNil(this.FNH.NpE)))
     {
       AppMethodBeat.o(29269);
       return true;
@@ -135,35 +134,35 @@ public final class a
     return 546;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29268);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (yn)this.hQy.hQE.hQJ;
-      if (paramq == null)
+      params = (aab)this.iLF.iLL.iLR;
+      if (params == null)
       {
         AppMethodBeat.o(29268);
         return;
       }
-      this.BCV = paramq.Gqs;
-      this.mState = paramq.nJb;
-      this.BCW = paramq.Gqt;
-      this.BCX = paramq.Gqu;
-      this.BCY = paramq.Gqv;
+      this.FNH = params.Llk;
+      this.mState = params.oTW;
+      this.FNI = params.Lll;
+      this.FNJ = params.Llm;
+      this.FNK = params.Lln;
     }
     for (;;)
     {
-      this.wFF.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      this.AAQ.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(29268);
       return;
-      ae.i("MicroMsg.NetSceneCheckVoiceTrans", "end checkVoiceTrans, & errType:%d, errCode:%d, voiceId: %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this.BCO });
+      Log.i("MicroMsg.NetSceneCheckVoiceTrans", "end checkVoiceTrans, & errType:%d, errCode:%d, voiceId: %s ", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), this.FNA });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.a
  * JD-Core Version:    0.7.0.1
  */

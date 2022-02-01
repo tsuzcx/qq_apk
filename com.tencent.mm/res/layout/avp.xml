@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView android:orientation="vertical" android:id="@id/dpr" android:paddingLeft="5.0dip" android:paddingRight="5.0dip" android:layout_width="wrap_content" android:layout_height="20.0dip" android:src="@drawable/ye" android:scaleType="fitEnd"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.MultiTouchImageView android:layout_gravity="center" android:id="@id/dup" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <com.tencent.mm.ui.base.WxImageView android:layout_gravity="center" android:id="@id/jrc" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerInParent="true" />
+    <ImageView android:id="@id/j5b" android:layout_width="@dimen/bu" android:layout_height="@dimen/bu" android:src="@raw/shortvideo_play_btn" android:layout_centerInParent="true" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:id="@id/fbq" android:background="@drawable/b1m" android:padding="3.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="60.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/caq" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/acs" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+</RelativeLayout>

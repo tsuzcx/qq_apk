@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="60.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include android:layout_width="fill_parent" android:layout_height="56.0dip" layout="@layout/a3u" />
-    <View android:id="@id/gs2" android:background="#1a000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="56.0dip" />
-</FrameLayout>
+<TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="left" android:autoLink="phone" android:padding="@dimen/hs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

@@ -18,17 +18,17 @@ import com.tencent.mm.plugin.ipcall.model.h.d;
 import com.tencent.mm.plugin.ipcall.model.h.k;
 import com.tencent.mm.plugin.ipcall.model.h.l;
 import com.tencent.mm.plugin.ipcall.model.i;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.s;
 
 public class IPCallAllRecordUI
   extends MMActivity
 {
-  private String dJq;
-  private String dLq;
-  private ListView vbV;
-  private boolean vbW = false;
+  private String ebd;
+  private String edf;
+  private ListView yuv;
+  private boolean yuw = false;
   
   public int getForceOrientation()
   {
@@ -37,17 +37,17 @@ public class IPCallAllRecordUI
   
   public int getLayoutId()
   {
-    return 2131494500;
+    return 2131495092;
   }
   
   public void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(25686);
     super.onCreate(paramBundle);
-    this.dJq = getIntent().getStringExtra("IPCallAllRecordUI_phoneNumber");
-    this.dLq = getIntent().getStringExtra("IPCallAllRecordUI_contactId");
-    this.vbW = getIntent().getBooleanExtra("IPCallAllRecordUI_isSinglePhoneNumber", false);
-    setMMTitle(2131760483);
+    this.ebd = getIntent().getStringExtra("IPCallAllRecordUI_phoneNumber");
+    this.edf = getIntent().getStringExtra("IPCallAllRecordUI_contactId");
+    this.yuw = getIntent().getBooleanExtra("IPCallAllRecordUI_isSinglePhoneNumber", false);
+    setMMTitle(2131761928);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -58,8 +58,8 @@ public class IPCallAllRecordUI
         return true;
       }
     });
-    this.vbV = ((ListView)findViewById(2131296645));
-    this.vbV.setAdapter(new a(this));
+    this.yuv = ((ListView)findViewById(2131296722));
+    this.yuv.setAdapter(new a(this));
     AppMethodBeat.o(25686);
   }
   
@@ -70,28 +70,28 @@ public class IPCallAllRecordUI
   }
   
   final class a
-    extends r<k>
+    extends s<k>
   {
     public a(Context paramContext)
     {
       super(null);
       AppMethodBeat.i(25681);
-      xs(true);
+      Bh(true);
       AppMethodBeat.o(25681);
     }
     
-    public final void ZD()
+    public final void anp()
     {
       Object localObject2 = null;
       AppMethodBeat.i(25682);
       Object localObject1;
-      if (!bu.isNullOrNil(IPCallAllRecordUI.a(IPCallAllRecordUI.this)))
+      if (!Util.isNullOrNil(IPCallAllRecordUI.a(IPCallAllRecordUI.this)))
       {
         Object localObject3 = IPCallAllRecordUI.a(IPCallAllRecordUI.this);
         localObject1 = localObject2;
-        if (!bu.isNullOrNil((String)localObject3))
+        if (!Util.isNullOrNil((String)localObject3))
         {
-          localObject3 = i.dgE().aoB((String)localObject3);
+          localObject3 = i.eay().aBV((String)localObject3);
           localObject1 = localObject2;
           if (localObject3 != null)
           {
@@ -99,7 +99,7 @@ public class IPCallAllRecordUI
             if (((com.tencent.mm.plugin.ipcall.model.h.c)localObject3).systemRowid != -1L)
             {
               long l = ((com.tencent.mm.plugin.ipcall.model.h.c)localObject3).systemRowid;
-              localObject1 = i.dgF().yk(l);
+              localObject1 = i.eaz().GT(l);
             }
           }
         }
@@ -110,17 +110,17 @@ public class IPCallAllRecordUI
         AppMethodBeat.o(25682);
         return;
         localObject1 = localObject2;
-        if (!bu.isNullOrNil(IPCallAllRecordUI.b(IPCallAllRecordUI.this))) {
-          localObject1 = i.dgF().aoG(IPCallAllRecordUI.b(IPCallAllRecordUI.this));
+        if (!Util.isNullOrNil(IPCallAllRecordUI.b(IPCallAllRecordUI.this))) {
+          localObject1 = i.eaz().aCa(IPCallAllRecordUI.b(IPCallAllRecordUI.this));
         }
       }
     }
     
-    public final void ZE()
+    public final void anq()
     {
       AppMethodBeat.i(25683);
-      dhl();
-      ZD();
+      ebf();
+      anp();
       AppMethodBeat.o(25683);
     }
     
@@ -130,33 +130,33 @@ public class IPCallAllRecordUI
       View localView = paramView;
       if (paramView == null)
       {
-        localView = IPCallAllRecordUI.this.getLayoutInflater().inflate(2131494513, paramViewGroup, false);
+        localView = IPCallAllRecordUI.this.getLayoutInflater().inflate(2131495105, paramViewGroup, false);
         paramView = new a();
-        paramView.vbY = ((TextView)localView.findViewById(2131303486));
-        paramView.vbZ = ((TextView)localView.findViewById(2131303488));
-        paramView.fWX = ((TextView)localView.findViewById(2131303489));
+        paramView.yuy = ((TextView)localView.findViewById(2131306244));
+        paramView.yuz = ((TextView)localView.findViewById(2131306246));
+        paramView.gCd = ((TextView)localView.findViewById(2131306247));
         localView.setTag(paramView);
       }
       paramView = (k)getItem(paramInt);
       paramViewGroup = (a)localView.getTag();
-      paramViewGroup.vbZ.setText(a.aph(paramView.field_phonenumber));
+      paramViewGroup.yuz.setText(a.aCA(paramView.field_phonenumber));
       if (paramView.field_duration > 0L) {
-        paramViewGroup.fWX.setText(com.tencent.mm.plugin.ipcall.a.c.yp(paramView.field_duration));
+        paramViewGroup.gCd.setText(com.tencent.mm.plugin.ipcall.a.c.GY(paramView.field_duration));
       }
       for (;;)
       {
-        paramViewGroup.vbY.setText(com.tencent.mm.plugin.ipcall.a.c.yl(paramView.field_calltime));
+        paramViewGroup.yuy.setText(com.tencent.mm.plugin.ipcall.a.c.GU(paramView.field_calltime));
         AppMethodBeat.o(25684);
         return localView;
-        paramViewGroup.fWX.setText(com.tencent.mm.plugin.ipcall.a.c.Jo(paramView.field_status));
+        paramViewGroup.gCd.setText(com.tencent.mm.plugin.ipcall.a.c.Pr(paramView.field_status));
       }
     }
     
     final class a
     {
-      TextView fWX;
-      TextView vbY;
-      TextView vbZ;
+      TextView gCd;
+      TextView yuy;
+      TextView yuz;
       
       a() {}
     }
@@ -164,7 +164,7 @@ public class IPCallAllRecordUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.ui.IPCallAllRecordUI
  * JD-Core Version:    0.7.0.1
  */

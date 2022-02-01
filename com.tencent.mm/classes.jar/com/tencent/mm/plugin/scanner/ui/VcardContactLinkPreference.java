@@ -32,7 +32,7 @@ public class VcardContactLinkPreference
   {
     AppMethodBeat.i(52001);
     super.onBindView(paramView);
-    ((TextView)paramView.findViewById(16908304)).setTextColor(a.n(this.mContext, 2131100192));
+    ((TextView)paramView.findViewById(16908304)).setTextColor(a.n(this.mContext, 2131100225));
     AppMethodBeat.o(52001);
   }
   
@@ -46,7 +46,7 @@ public class VcardContactLinkPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.VcardContactLinkPreference
  * JD-Core Version:    0.7.0.1
  */

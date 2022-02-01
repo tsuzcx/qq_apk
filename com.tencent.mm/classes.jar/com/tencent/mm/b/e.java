@@ -1,7 +1,7 @@
 package com.tencent.mm.b;
 
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.o;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,21 +9,21 @@ import java.io.OutputStream;
 
 public final class e
 {
-  public static final boolean a(k paramk)
+  public static final boolean a(o paramo)
   {
     int i = 0;
-    if (!paramk.exists()) {}
+    if (!paramo.exists()) {}
     do
     {
       do
       {
         return false;
-      } while (!paramk.isDirectory());
-      paramk = paramk.fTj();
-    } while (paramk == null);
-    while (i < paramk.length)
+      } while (!paramo.isDirectory());
+      paramo = paramo.het();
+    } while (paramo == null);
+    while (i < paramo.length)
     {
-      paramk[i].delete();
+      paramo[i].delete();
       i += 1;
     }
     return true;
@@ -55,7 +55,7 @@ public final class e
       }
       catch (Exception paramInputStream)
       {
-        ae.w("MicroMsg.FileOperation", "copyStream error: %s", new Object[] { paramInputStream.getMessage() });
+        Log.w("MicroMsg.FileOperation", "copyStream error: %s", new Object[] { paramInputStream.getMessage() });
       }
     }
   }
@@ -66,9 +66,9 @@ public final class e
     while (i <= 0)
     {
       String str = paramVarArgs[0];
-      k localk = new k(str);
-      if ((!localk.exists()) && ((!localk.mkdirs()) || (!localk.isDirectory()))) {
-        ae.e("MicroMsg.FileOperation", "batchMkDirs mkdir error. %s", new Object[] { str });
+      o localo = new o(str);
+      if ((!localo.exists()) && ((!localo.mkdirs()) || (!localo.isDirectory()))) {
+        Log.e("MicroMsg.FileOperation", "batchMkDirs mkdir error. %s", new Object[] { str });
       }
       i += 1;
     }

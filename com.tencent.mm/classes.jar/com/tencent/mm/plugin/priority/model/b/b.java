@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.priority.model.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.model.bl.b;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.model.bp.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.priority.PluginPriority;
 import com.tencent.mm.plugin.priority.model.a.c.d;
-import com.tencent.mm.pluginsdk.i.i;
-import com.tencent.mm.protocal.protobuf.wa;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.pluginsdk.i.f;
+import com.tencent.mm.protocal.protobuf.xi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
 
 public final class b
   extends a
 {
-  private bv dCi;
+  private ca dTX;
   
-  public b(bv parambv)
+  public b(ca paramca)
   {
-    this.dCi = parambv;
+    this.dTX = paramca;
   }
   
-  private static void a(bv parambv, int paramInt, double paramDouble)
+  private static void a(ca paramca, int paramInt, double paramDouble)
   {
     AppMethodBeat.i(87867);
-    if (((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic() != null)
+    if (((PluginPriority)g.ah(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic() != null)
     {
-      ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic();
-      com.tencent.mm.plugin.priority.model.a.c.b.a(parambv, paramInt, paramDouble);
+      ((PluginPriority)g.ah(PluginPriority.class)).getC2CMsgAutoDownloadImgLogic();
+      com.tencent.mm.plugin.priority.model.a.c.b.a(paramca, paramInt, paramDouble);
     }
     AppMethodBeat.o(87867);
   }
@@ -44,15 +44,15 @@ public final class b
   public final void run()
   {
     AppMethodBeat.i(87866);
-    if (this.dCi.field_createTime <= ((PluginPriority)g.ad(PluginPriority.class)).getInstallPriorityTime())
+    if (this.dTX.field_createTime <= ((PluginPriority)g.ah(PluginPriority.class)).getInstallPriorityTime())
     {
-      ae.i("MicroMsg.Priority.C2CImgReceiveTask", "onC2CImgReceive time condition not support %s", new Object[] { i.formatTime("yyyy-MM-dd HH:mm:ss", this.dCi.field_createTime / 1000L) });
+      Log.i("MicroMsg.Priority.C2CImgReceiveTask", "onC2CImgReceive time condition not support %s", new Object[] { f.formatTime("yyyy-MM-dd HH:mm:ss", this.dTX.field_createTime / 1000L) });
       AppMethodBeat.o(87866);
       return;
     }
-    if (((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgAutoDownloadImgStorage().yV(this.dCi.field_msgId))
+    if (((PluginPriority)g.ah(PluginPriority.class)).getC2CMsgAutoDownloadImgStorage().HL(this.dTX.field_msgId))
     {
-      ae.i("MicroMsg.Priority.C2CImgReceiveTask", "img already exist msg %d", new Object[] { Long.valueOf(this.dCi.field_msgId) });
+      Log.i("MicroMsg.Priority.C2CImgReceiveTask", "img already exist msg %d", new Object[] { Long.valueOf(this.dTX.field_msgId) });
       AppMethodBeat.o(87866);
       return;
     }
@@ -61,13 +61,13 @@ public final class b
     int k;
     int i;
     int j;
-    if (x.wb(this.dCi.field_talker))
+    if (ab.Eq(this.dTX.field_talker))
     {
-      localObject1 = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().iF(this.dCi.field_talker, "@all");
+      localObject1 = ((PluginPriority)g.ah(PluginPriority.class)).getC2CMsgImgUsageStorage().jr(this.dTX.field_talker, "@all");
       d = Math.max(Math.max(localObject1[0], localObject1[1]), localObject1[2]);
       k = 1;
       i = 0;
-      localObject1 = bl.BS(this.dCi.eNd);
+      localObject1 = bp.Ky(this.dTX.fqK);
       if (localObject1 != null) {
         break label442;
       }
@@ -79,18 +79,18 @@ public final class b
         k = 0;
       }
       j = i;
-      if (!com.tencent.mm.plugin.priority.a.a.a.a.dCA())
+      if (!com.tencent.mm.plugin.priority.a.a.a.a.eCS())
       {
         j = i | 0x2;
         k = 0;
       }
       i = j;
-      if (!com.tencent.mm.plugin.priority.a.a.a.a.dCB())
+      if (!com.tencent.mm.plugin.priority.a.a.a.a.eCT())
       {
         i = j | 0x10;
         k = 0;
       }
-      if (!com.tencent.mm.plugin.priority.a.a.a.a.avJ(this.dCi.field_talker)) {
+      if (!com.tencent.mm.plugin.priority.a.a.a.a.aKb(this.dTX.field_talker)) {
         break label1260;
       }
       i |= 0x8;
@@ -99,25 +99,25 @@ public final class b
     label1260:
     for (;;)
     {
-      localObject1 = (com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class);
-      Object localObject2 = b.a.qzJ;
-      com.tencent.mm.util.c localc = com.tencent.mm.util.c.LDf;
-      if (!((com.tencent.mm.plugin.expt.b.b)localObject1).a((b.a)localObject2, com.tencent.mm.util.c.fSf()))
+      localObject1 = (com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class);
+      Object localObject2 = b.a.rRU;
+      com.tencent.mm.util.c localc = com.tencent.mm.util.c.QYz;
+      if (!((com.tencent.mm.plugin.expt.b.b)localObject1).a((b.a)localObject2, com.tencent.mm.util.c.hde()))
       {
-        if (d >= ((PluginPriority)g.ad(PluginPriority.class)).getImgBorderPriority())
+        if (d >= ((PluginPriority)g.ah(PluginPriority.class)).getImgBorderPriority())
         {
           if (k != 0)
           {
             i |= 0x1;
-            ae.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Start To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dCi.field_msgId) });
-            a(this.dCi, i, d);
-            ((PluginPriority)g.ad(PluginPriority.class)).getC2CImgAutoDownloader().start();
+            Log.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Start To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dTX.field_msgId) });
+            a(this.dTX, i, d);
+            ((PluginPriority)g.ah(PluginPriority.class)).getC2CImgAutoDownloader().start();
             AppMethodBeat.o(87866);
             return;
-            localObject1 = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().iF(this.dCi.field_talker, this.dCi.field_talker);
+            localObject1 = ((PluginPriority)g.ah(PluginPriority.class)).getC2CMsgImgUsageStorage().jr(this.dTX.field_talker, this.dTX.field_talker);
             break;
-            localObject1 = ((bl.b)localObject1).hJT;
-            if ((!bu.isNullOrNil((String)localObject1)) && (com.tencent.mm.modelcontrol.b.Fv((String)localObject1)))
+            localObject1 = ((bp.b)localObject1).iED;
+            if ((!Util.isNullOrNil((String)localObject1)) && (com.tencent.mm.modelcontrol.b.Of((String)localObject1)))
             {
               j = 0;
               break label200;
@@ -125,72 +125,72 @@ public final class b
             j = 1;
             break label200;
           }
-          ae.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Not To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dCi.field_msgId) });
-          a(this.dCi, i, d);
+          Log.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Not To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dTX.field_msgId) });
+          a(this.dTX, i, d);
           AppMethodBeat.o(87866);
           return;
         }
-        if ((k != 0) && (!x.wb(this.dCi.field_talker)))
+        if ((k != 0) && (!ab.Eq(this.dTX.field_talker)))
         {
-          j = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().iG(this.dCi.field_talker, this.dCi.field_talker);
+          j = ((PluginPriority)g.ah(PluginPriority.class)).getC2CMsgImgUsageStorage().js(this.dTX.field_talker, this.dTX.field_talker);
           if (j < 2)
           {
             i |= 0x80;
-            ae.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Start To Auto Download %d MsgId %d receiveCount %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dCi.field_msgId), Integer.valueOf(j) });
-            a(this.dCi, i, d);
-            ((PluginPriority)g.ad(PluginPriority.class)).getC2CImgAutoDownloader().start();
+            Log.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Start To Auto Download %d MsgId %d receiveCount %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dTX.field_msgId), Integer.valueOf(j) });
+            a(this.dTX, i, d);
+            ((PluginPriority)g.ah(PluginPriority.class)).getC2CImgAutoDownloader().start();
             AppMethodBeat.o(87866);
             return;
           }
         }
-        ae.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Not To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dCi.field_msgId) });
-        a(this.dCi, i | 0x40, d);
+        Log.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Not To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dTX.field_msgId) });
+        a(this.dTX, i | 0x40, d);
         AppMethodBeat.o(87866);
         return;
       }
-      ((PluginPriority)g.ad(PluginPriority.class)).getC2CChatUsageLogic();
-      localObject1 = this.dCi.field_talker;
-      localObject2 = ((PluginPriority)g.ad(PluginPriority.class)).getC2CChatUsageResultStorage().avO((String)localObject1);
-      j = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzK, 10);
-      float f = ((com.tencent.mm.plugin.expt.b.b)g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qzL, 10.0F);
-      ae.i("MicroMsg.Priority.C2CChatUsageLogic", "getAutoDownloadImgFlag %s %s %.2f", new Object[] { localObject1, Integer.valueOf(j), Float.valueOf(f) });
-      if ((localObject2 != null) && (((wa)localObject2).uvb <= j) && (((wa)localObject2).GnY > f)) {
+      ((PluginPriority)g.ah(PluginPriority.class)).getC2CChatUsageLogic();
+      localObject1 = this.dTX.field_talker;
+      localObject2 = ((PluginPriority)g.ah(PluginPriority.class)).getC2CChatUsageResultStorage().aKg((String)localObject1);
+      j = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rRV, 10);
+      float f = ((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rRW, 10.0F);
+      Log.i("MicroMsg.Priority.C2CChatUsageLogic", "getAutoDownloadImgFlag %s %s %.2f", new Object[] { localObject1, Integer.valueOf(j), Float.valueOf(f) });
+      if ((localObject2 != null) && (((xi)localObject2).xNc <= j) && (((xi)localObject2).LiL > f)) {
         j = 1;
       }
       while (j != 0) {
         if (k != 0)
         {
           i |= 0x1;
-          ae.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Start To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dCi.field_msgId) });
-          a(this.dCi, i, d);
-          ((PluginPriority)g.ad(PluginPriority.class)).getC2CImgAutoDownloader().start();
+          Log.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Start To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dTX.field_msgId) });
+          a(this.dTX, i, d);
+          ((PluginPriority)g.ah(PluginPriority.class)).getC2CImgAutoDownloader().start();
           AppMethodBeat.o(87866);
           return;
           j = 0;
         }
         else
         {
-          ae.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Not To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dCi.field_msgId) });
-          a(this.dCi, i, d);
+          Log.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Not To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dTX.field_msgId) });
+          a(this.dTX, i, d);
           AppMethodBeat.o(87866);
           return;
         }
       }
-      if ((k != 0) && (!x.wb(this.dCi.field_talker)))
+      if ((k != 0) && (!ab.Eq(this.dTX.field_talker)))
       {
-        j = ((PluginPriority)g.ad(PluginPriority.class)).getC2CMsgImgUsageStorage().iG(this.dCi.field_talker, this.dCi.field_talker);
+        j = ((PluginPriority)g.ah(PluginPriority.class)).getC2CMsgImgUsageStorage().js(this.dTX.field_talker, this.dTX.field_talker);
         if (j < 2)
         {
           i |= 0x80;
-          ae.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Start To Auto Download %d MsgId %d receiveCount %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dCi.field_msgId), Integer.valueOf(j) });
-          a(this.dCi, i, d);
-          ((PluginPriority)g.ad(PluginPriority.class)).getC2CImgAutoDownloader().start();
+          Log.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Start To Auto Download %d MsgId %d receiveCount %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dTX.field_msgId), Integer.valueOf(j) });
+          a(this.dTX, i, d);
+          ((PluginPriority)g.ah(PluginPriority.class)).getC2CImgAutoDownloader().start();
           AppMethodBeat.o(87866);
           return;
         }
       }
-      ae.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Not To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dCi.field_msgId) });
-      a(this.dCi, i | 0x200, d);
+      Log.i("MicroMsg.Priority.C2CImgReceiveTask", "C2CImgReceiveTask Click Rate %.2f %d Not To Auto Download %d MsgId %d", new Object[] { Double.valueOf(d), Integer.valueOf(1), Integer.valueOf(i), Long.valueOf(this.dTX.field_msgId) });
+      a(this.dTX, i | 0x200, d);
       AppMethodBeat.o(87866);
       return;
     }

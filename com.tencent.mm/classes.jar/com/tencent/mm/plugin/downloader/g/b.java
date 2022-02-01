@@ -2,33 +2,33 @@ package com.tencent.mm.plugin.downloader.g;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import java.util.LinkedList;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
   
   static
   {
     AppMethodBeat.i(89097);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "FileDownloadInfo"), "CREATE INDEX IF NOT EXISTS filedownloadinfo_appId  on FileDownloadInfo  (  appId )", "CREATE INDEX IF NOT EXISTS filedownloadinfo_status  on FileDownloadInfo  (  status )" };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "FileDownloadInfo"), "CREATE INDEX IF NOT EXISTS filedownloadinfo_appId  on FileDownloadInfo  (  appId )", "CREATE INDEX IF NOT EXISTS filedownloadinfo_status  on FileDownloadInfo  (  status )" };
     AppMethodBeat.o(89097);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "FileDownloadInfo", null);
+    super(paramISQLiteDatabase, a.info, "FileDownloadInfo", null);
   }
   
-  public static String U(LinkedList<String> paramLinkedList)
+  public static String W(LinkedList<String> paramLinkedList)
   {
     AppMethodBeat.i(89089);
-    if (bu.ht(paramLinkedList))
+    if (Util.isNullOrNil(paramLinkedList))
     {
       AppMethodBeat.o(89089);
       return "";
@@ -47,13 +47,41 @@ public final class b
     return paramLinkedList;
   }
   
-  public final a aaU(String paramString)
+  public final a CH(long paramLong)
+  {
+    a locala = null;
+    AppMethodBeat.i(89090);
+    if (paramLong < 0L)
+    {
+      Log.e("MicroMsg.FileDownloadInfoStorage", "download id is not avaiable");
+      AppMethodBeat.o(89090);
+      return null;
+    }
+    Cursor localCursor = rawQuery("select * from FileDownloadInfo where downloadId=".concat(String.valueOf(paramLong)), new String[0]);
+    if (localCursor == null)
+    {
+      AppMethodBeat.o(89090);
+      return null;
+    }
+    if (localCursor.moveToFirst())
+    {
+      locala = new a();
+      locala.convertFrom(localCursor);
+    }
+    if (localCursor != null) {
+      localCursor.close();
+    }
+    AppMethodBeat.o(89090);
+    return locala;
+  }
+  
+  public final a alb(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(89088);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.FileDownloadInfoStorage", "appId is null");
+      Log.e("MicroMsg.FileDownloadInfoStorage", "appId is null");
       AppMethodBeat.o(89088);
       return null;
     }
@@ -76,12 +104,12 @@ public final class b
     return paramString;
   }
   
-  public final boolean aaV(String paramString)
+  public final boolean alc(String paramString)
   {
     AppMethodBeat.i(89093);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, url is null");
+      Log.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, url is null");
       AppMethodBeat.o(89093);
       return false;
     }
@@ -90,12 +118,12 @@ public final class b
     return bool;
   }
   
-  public final boolean aaW(String paramString)
+  public final boolean ald(String paramString)
   {
     AppMethodBeat.i(89094);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, appId is null");
+      Log.e("MicroMsg.FileDownloadInfoStorage", "deledonloadinfo failed, appId is null");
       AppMethodBeat.o(89094);
       return false;
     }
@@ -104,13 +132,13 @@ public final class b
     return bool;
   }
   
-  public final a aaX(String paramString)
+  public final a ale(String paramString)
   {
     Object localObject = null;
     AppMethodBeat.i(89091);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.FileDownloadInfoStorage", "Null or nil url");
+      Log.e("MicroMsg.FileDownloadInfoStorage", "Null or nil url");
       AppMethodBeat.o(89091);
       return null;
     }
@@ -133,7 +161,7 @@ public final class b
     return paramString;
   }
   
-  public final boolean aaY(String paramString)
+  public final boolean alf(String paramString)
   {
     AppMethodBeat.i(89096);
     paramString = rawQuery(String.format("select count(*) from %s where %s=\"%s\"", new Object[] { "FileDownloadInfo", "downloadUrl", paramString }), new String[0]);
@@ -153,17 +181,7 @@ public final class b
     return false;
   }
   
-  public final boolean cR(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(89095);
-    String str = String.format("update %s set %s=%d where %s=\"%s\"", new Object[] { "FileDownloadInfo", "status", Integer.valueOf(paramInt), "downloadUrl", paramString });
-    boolean bool = execSQL("FileDownloadInfo", str);
-    ae.i("MicroMsg.FileDownloadInfoStorage", "updateDownloadState, sql : %s\ndownloadUrl : %s, status : %d, ret : %s", new Object[] { str, paramString, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
-    AppMethodBeat.o(89095);
-    return bool;
-  }
-  
-  public final boolean cdP()
+  public final boolean cBL()
   {
     AppMethodBeat.i(89092);
     boolean bool = execSQL("FileDownloadInfo", "delete from FileDownloadInfo");
@@ -171,15 +189,15 @@ public final class b
     return bool;
   }
   
-  public final LinkedList<a> cdy()
+  public final LinkedList<a> cBt()
   {
-    AppMethodBeat.i(207168);
-    ae.i("MicroMsg.FileDownloadInfoStorage", "getAllTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo")));
+    AppMethodBeat.i(192273);
+    Log.i("MicroMsg.FileDownloadInfoStorage", "getAllTasks, sql = ".concat(String.valueOf("select * from FileDownloadInfo")));
     Cursor localCursor = rawQuery("select * from FileDownloadInfo", new String[0]);
     LinkedList localLinkedList = new LinkedList();
     if (localCursor == null)
     {
-      AppMethodBeat.o(207168);
+      AppMethodBeat.o(192273);
       return localLinkedList;
     }
     while (localCursor.moveToNext())
@@ -189,41 +207,23 @@ public final class b
       localLinkedList.add(locala);
     }
     localCursor.close();
-    AppMethodBeat.o(207168);
+    AppMethodBeat.o(192273);
     return localLinkedList;
   }
   
-  public final a uD(long paramLong)
+  public final boolean cW(String paramString, int paramInt)
   {
-    a locala = null;
-    AppMethodBeat.i(89090);
-    if (paramLong < 0L)
-    {
-      ae.e("MicroMsg.FileDownloadInfoStorage", "download id is not avaiable");
-      AppMethodBeat.o(89090);
-      return null;
-    }
-    Cursor localCursor = rawQuery("select * from FileDownloadInfo where downloadId=".concat(String.valueOf(paramLong)), new String[0]);
-    if (localCursor == null)
-    {
-      AppMethodBeat.o(89090);
-      return null;
-    }
-    if (localCursor.moveToFirst())
-    {
-      locala = new a();
-      locala.convertFrom(localCursor);
-    }
-    if (localCursor != null) {
-      localCursor.close();
-    }
-    AppMethodBeat.o(89090);
-    return locala;
+    AppMethodBeat.i(89095);
+    String str = String.format("update %s set %s=%d where %s=\"%s\"", new Object[] { "FileDownloadInfo", "status", Integer.valueOf(paramInt), "downloadUrl", paramString });
+    boolean bool = execSQL("FileDownloadInfo", str);
+    Log.i("MicroMsg.FileDownloadInfoStorage", "updateDownloadState, sql : %s\ndownloadUrl : %s, status : %d, ret : %s", new Object[] { str, paramString, Integer.valueOf(paramInt), Boolean.valueOf(bool) });
+    AppMethodBeat.o(89095);
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.g.b
  * JD-Core Version:    0.7.0.1
  */

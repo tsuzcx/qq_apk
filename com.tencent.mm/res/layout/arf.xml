@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/an2" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.ui.widget.FoursquareRelativeLayout android:id="@id/h9a" android:background="@color/a3k" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/i" android:textColor="@color/a_j" android:gravity="center_vertical" android:id="@id/gam" android:paddingLeft="@dimen/i_" android:paddingTop="@dimen/jn" android:paddingRight="@dimen/i_" android:paddingBottom="@dimen/jn" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/i9" />
-</LinearLayout>
+    <ImageView android:id="@id/fbw" android:background="@color/a3k" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="center" />
+    <ImageView android:id="@id/fc1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/j5b" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/j5c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/en" android:src="@raw/video_icon_in_gird" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/j5d" android:paddingTop="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="--:--" android:maxLines="1" android:layout_toRightOf="@id/j5c" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <ImageView android:id="@id/bvx" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/en" android:layout_marginBottom="@dimen/en" android:src="@raw/photo_edit_mark" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/fbr" android:background="@color/vt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <View android:id="@id/fbf" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+    <CheckBox android:id="@id/fbe" android:background="@drawable/a90" android:focusable="false" android:clickable="false" android:layout_width="@dimen/at" android:layout_height="@dimen/aq" android:layout_marginTop="@dimen/i2" android:layout_marginRight="@dimen/i2" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</com.tencent.mm.ui.widget.FoursquareRelativeLayout>

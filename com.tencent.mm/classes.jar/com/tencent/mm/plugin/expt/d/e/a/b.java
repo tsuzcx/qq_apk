@@ -5,24 +5,49 @@ import java.util.List;
 
 public final class b
 {
-  public String qXW;
-  public int qXZ;
-  public int qYa;
-  public int qYb;
-  public List<a> qYc;
-  public int qYd;
-  public int qYe;
-  public int qYf;
-  public int qYg;
-  public String qYh;
   public String script;
+  public String syg;
+  public int syj;
+  public int syk;
+  public int syl;
+  public List<a> sym;
+  public int syn;
+  public int syo;
+  public int syp;
+  public int syq;
+  public String syr;
+  public String sys;
   
   public final String toString()
   {
-    AppMethodBeat.i(195923);
-    String str = "EdgeComputingScriptConfigModel{configID='" + this.qXW + '\'' + ", dataSourceType=" + this.qXZ + ", dataSourceID=" + this.qYa + ", reportID=" + this.qYb + ", fieldConfigModels=" + this.qYc + ", isInstantReport=" + this.qYd + ", isRepeat=" + this.qYe + ", runPeriod=" + this.qYf + ", dbExpireTime=" + this.qYg + ", script='" + this.script + '\'' + ", originalJson='" + this.qYh + '\'' + '}';
-    AppMethodBeat.o(195923);
-    return str;
+    AppMethodBeat.i(220345);
+    StringBuilder localStringBuilder = new StringBuilder("EdgeComputingScriptConfigModel{configID='").append(this.syg).append('\'').append(", dataSourceType=").append(this.syj).append(", dataSourceID=").append(this.syk).append(", reportID=").append(this.syl).append(", fieldConfigModels=").append(this.sym).append(", isInstantReport=").append(this.syn).append(", isRepeat=").append(this.syo).append(", runPeriod=").append(this.syp).append(", dbExpireTime=").append(this.syq).append(", script='");
+    if (com.tencent.mm.plugin.expt.d.b.KB())
+    {
+      str = this.script;
+      localStringBuilder = localStringBuilder.append(str).append('\'').append(", scriptMD5='");
+      if (!com.tencent.mm.plugin.expt.d.b.KB()) {
+        break label225;
+      }
+      str = this.sys;
+      label166:
+      localStringBuilder = localStringBuilder.append(str).append('\'').append(", originalJson='");
+      if (!com.tencent.mm.plugin.expt.d.b.KB()) {
+        break label231;
+      }
+    }
+    label225:
+    label231:
+    for (String str = this.syr;; str = "originalJson")
+    {
+      str = str + '\'' + '}';
+      AppMethodBeat.o(220345);
+      return str;
+      str = "script";
+      break;
+      str = "scriptMD5";
+      break label166;
+    }
   }
 }
 

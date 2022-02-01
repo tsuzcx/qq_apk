@@ -2,103 +2,66 @@ package com.tencent.mm.plugin.topstory.ui.widget;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.k;
-import android.support.v7.widget.RecyclerView.m;
-import android.support.v7.widget.RecyclerView.s.a;
-import android.support.v7.widget.RecyclerView.s.b;
-import android.support.v7.widget.RecyclerView.t;
+import android.support.v7.widget.RecyclerView.LayoutManager;
+import android.support.v7.widget.RecyclerView.j;
+import android.support.v7.widget.RecyclerView.l;
+import android.support.v7.widget.RecyclerView.r.a;
+import android.support.v7.widget.RecyclerView.r.b;
+import android.support.v7.widget.RecyclerView.s;
 import android.support.v7.widget.ae;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.Scroller;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
 
 public abstract class f
-  extends RecyclerView.k
+  extends RecyclerView.j
 {
-  public RecyclerView anl;
-  private final RecyclerView.m asH = new RecyclerView.m()
+  private final RecyclerView.l asS = new f.1(this);
+  protected Scroller awJ;
+  public RecyclerView mRecyclerView;
+  
+  public abstract int a(RecyclerView.LayoutManager paramLayoutManager, int paramInt1, int paramInt2);
+  
+  public abstract View a(RecyclerView.LayoutManager paramLayoutManager);
+  
+  public abstract int[] a(RecyclerView.LayoutManager paramLayoutManager, View paramView);
+  
+  public final boolean av(int paramInt1, int paramInt2)
   {
-    boolean awM = false;
-    
-    public final void a(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt1, int paramAnonymousInt2)
-    {
-      AppMethodBeat.i(220252);
-      b localb = new b();
-      localb.bd(paramAnonymousRecyclerView);
-      localb.mu(paramAnonymousInt1);
-      localb.mu(paramAnonymousInt2);
-      a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryVideoSnapHelper$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V", this, localb.ahF());
-      if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
-        this.awM = true;
-      }
-      a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/TopStoryVideoSnapHelper$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrolled", "(Landroid/support/v7/widget/RecyclerView;II)V");
-      AppMethodBeat.o(220252);
-    }
-    
-    public final void b(RecyclerView paramAnonymousRecyclerView, int paramAnonymousInt)
-    {
-      AppMethodBeat.i(126674);
-      b localb = new b();
-      localb.bd(paramAnonymousRecyclerView);
-      localb.mu(paramAnonymousInt);
-      a.b("com/tencent/mm/plugin/topstory/ui/widget/TopStoryVideoSnapHelper$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V", this, localb.ahF());
-      super.b(paramAnonymousRecyclerView, paramAnonymousInt);
-      if ((paramAnonymousInt == 0) && (this.awM))
-      {
-        this.awM = false;
-        f.this.mv();
-      }
-      a.a(this, "com/tencent/mm/plugin/topstory/ui/widget/TopStoryVideoSnapHelper$1", "android/support/v7/widget/RecyclerView$OnScrollListener", "onScrollStateChanged", "(Landroid/support/v7/widget/RecyclerView;I)V");
-      AppMethodBeat.o(126674);
-    }
-  };
-  protected Scroller awL;
-  
-  public abstract int a(RecyclerView.i parami, int paramInt1, int paramInt2);
-  
-  public abstract View a(RecyclerView.i parami);
-  
-  public abstract int[] a(RecyclerView.i parami, View paramView);
-  
-  public final boolean aB(int paramInt1, int paramInt2)
-  {
-    RecyclerView.i locali = this.anl.getLayoutManager();
-    if (locali == null) {}
+    RecyclerView.LayoutManager localLayoutManager = this.mRecyclerView.getLayoutManager();
+    if (localLayoutManager == null) {}
     for (;;)
     {
       return false;
-      if (this.anl.getAdapter() != null)
+      if (this.mRecyclerView.getAdapter() != null)
       {
-        int i = this.anl.getMinFlingVelocity();
+        int i = this.mRecyclerView.getMinFlingVelocity();
         if ((Math.abs(paramInt2) > i) || (Math.abs(paramInt1) > i))
         {
-          if (!(locali instanceof RecyclerView.s.b)) {
+          if (!(localLayoutManager instanceof RecyclerView.r.b)) {
             paramInt1 = 0;
           }
           while (paramInt1 != 0)
           {
             return true;
-            ae localae = f(locali);
+            ae localae = f(localLayoutManager);
             if (localae == null)
             {
               paramInt1 = 0;
             }
             else
             {
-              paramInt1 = a(locali, paramInt1, paramInt2);
+              paramInt1 = a(localLayoutManager, paramInt1, paramInt2);
               if (paramInt1 == -1)
               {
                 paramInt1 = 0;
               }
               else
               {
-                localae.atQ = paramInt1;
-                locali.a(localae);
+                localae.atO = paramInt1;
+                localLayoutManager.startSmoothScroll(localae);
                 paramInt1 = 1;
               }
             }
@@ -109,63 +72,63 @@ public abstract class f
   }
   
   @Deprecated
-  protected ae f(RecyclerView.i parami)
+  protected ae f(RecyclerView.LayoutManager paramLayoutManager)
   {
-    if (!(parami instanceof RecyclerView.s.b)) {
+    if (!(paramLayoutManager instanceof RecyclerView.r.b)) {
       return null;
     }
-    new ae(this.anl.getContext())
+    new ae(this.mRecyclerView.getContext())
     {
       public final float a(DisplayMetrics paramAnonymousDisplayMetrics)
       {
         return 100.0F / paramAnonymousDisplayMetrics.densityDpi;
       }
       
-      public final void a(View paramAnonymousView, RecyclerView.t paramAnonymoust, RecyclerView.s.a paramAnonymousa)
+      public final void a(View paramAnonymousView, RecyclerView.s paramAnonymouss, RecyclerView.r.a paramAnonymousa)
       {
         AppMethodBeat.i(126675);
-        if (f.this.anl == null)
+        if (f.this.mRecyclerView == null)
         {
           AppMethodBeat.o(126675);
           return;
         }
-        paramAnonymousView = f.this.a(f.this.anl.getLayoutManager(), paramAnonymousView);
+        paramAnonymousView = f.this.a(f.this.mRecyclerView.getLayoutManager(), paramAnonymousView);
         int i = paramAnonymousView[0];
         int j = paramAnonymousView[1];
-        int k = cd(Math.max(Math.abs(i), Math.abs(j)));
+        int k = cc(Math.max(Math.abs(i), Math.abs(j)));
         if (k > 0) {
-          paramAnonymousa.a(i, j, k, this.VD);
+          paramAnonymousa.a(i, j, k, this.VQ);
         }
         AppMethodBeat.o(126675);
       }
     };
   }
   
-  public final void j(RecyclerView paramRecyclerView)
+  public final void f(RecyclerView paramRecyclerView)
   {
-    if (this.anl == paramRecyclerView) {}
+    if (this.mRecyclerView == paramRecyclerView) {}
     do
     {
       return;
-      if (this.anl != null)
+      if (this.mRecyclerView != null)
       {
-        this.anl.b(this.asH);
-        this.anl.setOnFlingListener(null);
+        this.mRecyclerView.b(this.asS);
+        this.mRecyclerView.setOnFlingListener(null);
       }
-      this.anl = paramRecyclerView;
-    } while (this.anl == null);
-    if (this.anl.getOnFlingListener() != null) {
+      this.mRecyclerView = paramRecyclerView;
+    } while (this.mRecyclerView == null);
+    if (this.mRecyclerView.getOnFlingListener() != null) {
       throw new IllegalStateException("An instance of OnFlingListener already set.");
     }
-    this.anl.a(this.asH);
-    this.anl.setOnFlingListener(this);
-    this.awL = new Scroller(this.anl.getContext(), new DecelerateInterpolator());
-    mv();
+    this.mRecyclerView.a(this.asS);
+    this.mRecyclerView.setOnFlingListener(this);
+    this.awJ = new Scroller(this.mRecyclerView.getContext(), new DecelerateInterpolator());
+    mz();
   }
   
-  final void mv()
+  final void mz()
   {
-    if (this.anl == null) {}
+    if (this.mRecyclerView == null) {}
     Object localObject;
     do
     {
@@ -175,18 +138,18 @@ public abstract class f
         do
         {
           return;
-          localObject = this.anl.getLayoutManager();
+          localObject = this.mRecyclerView.getLayoutManager();
         } while (localObject == null);
-        localView = a((RecyclerView.i)localObject);
+        localView = a((RecyclerView.LayoutManager)localObject);
       } while (localView == null);
-      localObject = a((RecyclerView.i)localObject, localView);
+      localObject = a((RecyclerView.LayoutManager)localObject, localView);
     } while ((localObject[0] == 0) && (localObject[1] == 0));
-    this.anl.a(localObject[0], localObject[1], null);
+    this.mRecyclerView.a(localObject[0], localObject[1], null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.topstory.ui.widget.f
  * JD-Core Version:    0.7.0.1
  */

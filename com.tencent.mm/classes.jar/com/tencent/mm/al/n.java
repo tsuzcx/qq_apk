@@ -1,57 +1,57 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.ecl;
-import com.tencent.mm.protocal.protobuf.ecm;
-import com.tencent.mm.protocal.protobuf.eco;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.protocal.protobuf.ewt;
+import com.tencent.mm.protocal.protobuf.ewu;
+import com.tencent.mm.protocal.protobuf.eww;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class n
 {
-  public static eco EF(String paramString)
+  public static eww Nt(String paramString)
   {
-    AppMethodBeat.i(188883);
+    AppMethodBeat.i(212176);
     try
     {
-      paramString = ay.gq("brandService", 1).decodeBytes(EH(paramString));
-      eco localeco = new eco();
-      localeco.parseFrom(paramString);
-      AppMethodBeat.o(188883);
-      return localeco;
+      paramString = MultiProcessMMKV.getMMKV("brandService", 1).decodeBytes(Nv(paramString));
+      eww localeww = new eww();
+      localeww.parseFrom(paramString);
+      AppMethodBeat.o(212176);
+      return localeww;
     }
     catch (Throwable paramString)
     {
-      AppMethodBeat.o(188883);
+      AppMethodBeat.o(212176);
     }
     return null;
   }
   
-  public static void EG(final String paramString)
+  public static void Nu(final String paramString)
   {
-    AppMethodBeat.i(188884);
-    ecl localecl = new ecl();
-    localecl.IhJ = 0;
-    g.ajQ().gDv.a(new v(paramString, localecl, new v.a(new ecm()) {}), 0);
-    AppMethodBeat.o(188884);
+    AppMethodBeat.i(212177);
+    ewt localewt = new ewt();
+    localewt.Nun = 0;
+    g.aAg().hqi.a(new v(paramString, localewt, new v.a(new ewu()) {}), 0);
+    AppMethodBeat.o(212177);
   }
   
-  static String EH(String paramString)
+  static String Nv(String paramString)
   {
-    AppMethodBeat.i(188885);
+    AppMethodBeat.i(212178);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("mmkv_biztransfer").append(paramString);
     localStringBuilder.append("_2");
     paramString = localStringBuilder.toString();
-    AppMethodBeat.o(188885);
+    AppMethodBeat.o(212178);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.al.n
  * JD-Core Version:    0.7.0.1
  */

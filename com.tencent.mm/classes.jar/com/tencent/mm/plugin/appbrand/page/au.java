@@ -1,41 +1,23 @@
 package com.tencent.mm.plugin.appbrand.page;
 
-import android.content.Context;
-import android.content.MutableContextWrapper;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.webkit.JavascriptInterface;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
 
-class au
-  extends MutableContextWrapper
+public class au
 {
-  public au(Context paramContext)
+  public h bRH()
   {
-    super(paramContext);
+    return null;
   }
   
-  @JavascriptInterface
-  public float getPixelRatio()
+  public f bxr()
   {
-    AppMethodBeat.i(147442);
-    float f = getResources().getDisplayMetrics().density;
-    AppMethodBeat.o(147442);
-    return f;
-  }
-  
-  @JavascriptInterface
-  public float getWidth()
-  {
-    AppMethodBeat.i(147443);
-    float f = (float)Math.ceil(getResources().getDisplayMetrics().widthPixels / getPixelRatio());
-    AppMethodBeat.o(147443);
-    return f;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.au
  * JD-Core Version:    0.7.0.1
  */

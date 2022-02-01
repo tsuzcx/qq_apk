@@ -1,30 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/ha" android:paddingRight="@dimen/ha" android:paddingBottom="@dimen/ha" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/ea_" android:background="@drawable/mj" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <LinearLayout android:orientation="vertical" android:id="@id/b3x" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="@dimen/ha" android:layout_marginRight="@dimen/ha" android:layout_marginBottom="20.0dip">
-            <TextView android:textSize="14.0sp" android:textColor="@color/y4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/bhm" />
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip">
-                <ImageView android:id="@id/pe" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/b5k" android:scaleType="fitXY" />
-                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <TextView android:textSize="16.0sp" android:textColor="@color/y4" android:id="@id/pr" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                    <TextView android:textSize="14.0sp" android:textColor="@color/y0" android:id="@id/py" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha">
-                <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:src="@drawable/bxv" android:scaleType="fitXY" />
-                <TextView android:textSize="14.0sp" android:textColor="@color/y0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/bhw" />
-            </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/anc" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ib" android:layout_marginTop="@dimen/hs" android:layout_marginRight="@dimen/ib" android:layout_marginBottom="@dimen/g">
+        <TextView android:textSize="@dimen/ka" android:textColor="#ff6a6a6a" android:ellipsize="end" android:id="@id/and" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/ang" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/anf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k_" android:src="@drawable/c21" />
+            <TextView android:textSize="@dimen/ka" android:textColor="@color/tx" android:ellipsize="end" android:id="@id/anh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" android:singleLine="true" />
         </LinearLayout>
-        <LinearLayout android:orientation="vertical" android:id="@id/h3g" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <RelativeLayout android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_marginLeft="@dimen/ha" android:layout_marginRight="@dimen/ha">
-                <ImageView android:id="@id/eev" android:layout_width="25.0dip" android:layout_height="25.0dip" android:scaleType="fitXY" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-                <TextView android:textSize="16.0sp" android:textColor="@color/y4" android:id="@id/ef7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_toRightOf="@id/eev" android:layout_centerVertical="true" />
-            </RelativeLayout>
-            <ImageView android:visibility="gone" android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/hp" />
-            <TextView android:textSize="18.0dip" android:textColor="@color/y4" android:id="@id/h3d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ha" android:layout_marginTop="20.0dip" android:layout_marginRight="@dimen/ha" android:layout_marginBottom="20.0dip" android:singleLine="false" />
-        </LinearLayout>
-        <ImageView android:layout_width="fill_parent" android:layout_height="1.0px" style="@style/hp" />
-        <TextView android:textSize="16.0sp" android:textColor="@color/Brand" android:gravity="center" android:id="@id/a4u" android:layout_width="fill_parent" android:layout_height="48.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/le" android:clickable="false" android:layout_width="fill_parent" android:layout_height="110.0dip" android:layout_marginTop="@dimen/i2">
+        <TextView android:textSize="@dimen/l" android:textColor="@color/i_" android:ellipsize="end" android:text="@string/ask" android:singleLine="true" style="@style/fz" />
     </LinearLayout>
 </LinearLayout>

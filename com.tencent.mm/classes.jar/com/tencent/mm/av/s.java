@@ -9,22 +9,22 @@ public final class s
   extends o.e
 {
   public String fileName;
-  public int ifG;
-  public d ifH;
-  public f ifI;
+  public int jaB;
+  public d jaC;
+  public f jaD;
   
-  public static s aJe()
+  public static s bcY()
   {
-    AppMethodBeat.i(218740);
+    AppMethodBeat.i(223633);
     s locals = new s();
-    locals.ijg = o.d.iiR;
-    AppMethodBeat.o(218740);
+    locals.jec = o.d.jdM;
+    AppMethodBeat.o(223633);
     return locals;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.s
  * JD-Core Version:    0.7.0.1
  */

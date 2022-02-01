@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/b9h" />
-    <item android:drawable="@drawable/b9g" />
-</selector>
+    <item>
+        <shape>
+            <solid android:color="@color/FG_3" />
+            <corners android:bottomLeftRadius="@dimen/t3" android:bottomRightRadius="@dimen/t3" />
+        </shape>
+    </item>
+    <item android:left="@dimen/t5" android:right="@dimen/t5" android:bottom="@dimen/t5">
+        <shape>
+            <solid android:color="@color/c" />
+            <corners android:bottomLeftRadius="@dimen/t3" android:bottomRightRadius="@dimen/t3" />
+        </shape>
+    </item>
+</layer-list>

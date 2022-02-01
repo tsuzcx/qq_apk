@@ -1,122 +1,37 @@
 package com.tencent.mm.plugin.cloudvoip.cloudvoice.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi;
-import com.tencent.mm.ipcinvoker.wx_extension.IPCRunCgi.a;
-import com.tencent.mm.protocal.protobuf.baa;
-import com.tencent.mm.protocal.protobuf.bab;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.mm.sdk.platformtools.Util;
 
 final class r
 {
-  final Map<String, q> pfW;
+  String quX = null;
+  long quY = -1L;
+  long quZ = -1L;
   
-  r()
+  public final boolean isValid()
   {
-    AppMethodBeat.i(90935);
-    this.pfW = new ConcurrentHashMap(1);
-    AppMethodBeat.o(90935);
-  }
-  
-  private void b(final String paramString1, String paramString2, final a parama)
-  {
-    AppMethodBeat.i(184491);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new baa();
-    ((b.a)localObject).hQG = new bab();
-    ((b.a)localObject).funcId = 2985;
-    ((b.a)localObject).uri = "/cgi-bin/mmbiz-bin/wxabusiness/getcloudimsession";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    localObject = ((b.a)localObject).aDS();
-    baa localbaa = (baa)((b)localObject).hQD.hQJ;
-    localbaa.dwb = paramString1;
-    localbaa.GQj = paramString2;
-    IPCRunCgi.a((b)localObject, new IPCRunCgi.a()
+    AppMethodBeat.i(90931);
+    if ((!Util.isNullOrNil(this.quX)) && (Util.ticksToNow(this.quZ + 3600L) / 1000L < this.quY))
     {
-      public final void a(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, b paramAnonymousb)
-      {
-        AppMethodBeat.i(90934);
-        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousb.hQE.hQJ == null))
-        {
-          ae.e("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: get sessionkey fail,errType:" + paramAnonymousInt1 + ",errCode:" + paramAnonymousInt2);
-          r.a(r.this, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousString, null, false, parama);
-          AppMethodBeat.o(90934);
-          return;
-        }
-        paramAnonymousString = (bab)paramAnonymousb.hQE.hQJ;
-        paramAnonymousb = new q();
-        paramAnonymousb.pfT = paramAnonymousString.FXs;
-        paramAnonymousb.pfV = bu.HQ();
-        paramAnonymousb.pfU = paramAnonymousString.GQk;
-        ae.i("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: getSession sessionKey: %s", new Object[] { paramAnonymousb });
-        r.this.pfW.put(paramString1, paramAnonymousb);
-        r.a(r.this, 0, 0, "", paramAnonymousb, true, parama);
-        AppMethodBeat.o(90934);
-      }
-    });
-    AppMethodBeat.o(184491);
-  }
-  
-  final void a(final int paramInt1, final int paramInt2, final String paramString, final q paramq, final boolean paramBoolean, final a parama)
-  {
-    AppMethodBeat.i(90937);
-    p.pdY.ad(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(90933);
-        parama.a(paramInt1, paramInt2, paramString, paramq, paramBoolean);
-        AppMethodBeat.o(90933);
-      }
-    });
-    AppMethodBeat.o(90937);
-  }
-  
-  public final void a(String paramString1, String paramString2, a parama)
-  {
-    AppMethodBeat.i(184490);
-    q localq = (q)this.pfW.get(paramString1);
-    if ((localq != null) && (localq.isValid()))
-    {
-      ae.d("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: has valid sessionKey");
-      a(0, 0, "", localq, false, parama);
-      AppMethodBeat.o(184490);
-      return;
+      AppMethodBeat.o(90931);
+      return true;
     }
-    this.pfW.remove(paramString1);
-    b(paramString1, paramString2, parama);
-    AppMethodBeat.o(184490);
+    AppMethodBeat.o(90931);
+    return false;
   }
   
-  public final void aaB(String paramString)
+  public final String toString()
   {
-    AppMethodBeat.i(90939);
-    ae.i("MicroMsg.OpenVoice.OpenVoiceSessionMgr", "hy: on exit");
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(90939);
-      return;
-    }
-    this.pfW.remove(paramString);
-    AppMethodBeat.o(90939);
-  }
-  
-  public static abstract interface a
-  {
-    public abstract void a(int paramInt1, int paramInt2, String paramString, q paramq, boolean paramBoolean);
+    AppMethodBeat.i(90932);
+    String str = "OpenVoiceSessionKey{sessionKey='" + this.quX + '\'' + ", expireTicks=" + this.quY + ", initTicks=" + this.quZ + '}';
+    AppMethodBeat.o(90932);
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.cloudvoip.cloudvoice.d.r
  * JD-Core Version:    0.7.0.1
  */

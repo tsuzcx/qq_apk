@@ -77,7 +77,7 @@ public final class j
     }
     if ((paramObject instanceof Integer))
     {
-      paramb.dG(((Integer)paramObject).intValue());
+      paramb.dB(((Integer)paramObject).intValue());
       AppMethodBeat.o(158632);
       return;
     }
@@ -89,7 +89,7 @@ public final class j
     }
     if ((paramObject instanceof Boolean))
     {
-      paramb.aN(((Boolean)paramObject).booleanValue());
+      paramb.aM(((Boolean)paramObject).booleanValue());
       AppMethodBeat.o(158632);
       return;
     }
@@ -107,7 +107,7 @@ public final class j
     }
     if ((paramObject instanceof Integer))
     {
-      paramb.dG(((Integer)paramObject).intValue());
+      paramb.dB(((Integer)paramObject).intValue());
       AppMethodBeat.o(158632);
       return;
     }
@@ -152,19 +152,19 @@ public final class j
     }
     if ((paramObject instanceof Boolean))
     {
-      parame.e(paramString, ((Boolean)paramObject).booleanValue());
+      parame.c(paramString, ((Boolean)paramObject).booleanValue());
       AppMethodBeat.o(158633);
       return;
     }
     if ((paramObject instanceof Long))
     {
-      parame.b(paramString, ((Long)paramObject).longValue());
+      parame.c(paramString, ((Long)paramObject).longValue());
       AppMethodBeat.o(158633);
       return;
     }
     if ((paramObject instanceof Float))
     {
-      parame.d(paramString, ((Float)paramObject).floatValue());
+      parame.a(paramString, ((Float)paramObject).floatValue());
       AppMethodBeat.o(158633);
       return;
     }
@@ -180,7 +180,7 @@ public final class j
     AppMethodBeat.o(158633);
   }
   
-  public static e u(Map paramMap)
+  public static e w(Map paramMap)
   {
     AppMethodBeat.i(158629);
     e locale = new e();
@@ -202,7 +202,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.ab.j
  * JD-Core Version:    0.7.0.1
  */

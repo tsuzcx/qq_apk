@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMBaseActivity;
 
 public class WebWXPopupUnlockUI
@@ -30,21 +30,21 @@ public class WebWXPopupUnlockUI
       {
         final com.tencent.mm.plugin.crashfix.b.a locala = new com.tencent.mm.plugin.crashfix.b.a(this);
         locala.requestWindowFeature(1);
-        View localView = View.inflate(this, 2131493898, null);
-        TextView localTextView = (TextView)localView.findViewById(2131299070);
-        ((TextView)localView.findViewById(2131306193)).setOnClickListener(new View.OnClickListener()
+        View localView = View.inflate(this, 2131494053, null);
+        TextView localTextView = (TextView)localView.findViewById(2131299576);
+        ((TextView)localView.findViewById(2131309591)).setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(30241);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webwx/ui/WebWXPopupUnlockUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/webwx/ui/WebWXPopupUnlockUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
             paramAnonymousView = new com.tencent.mm.plugin.webwx.a.b(2);
-            bc.ajj().a(paramAnonymousView, 0);
-            ae.d("MicroMsg.WebWxPopUnlockUI", "doScene netSceneExtDeviceControl : UNLOCK");
-            com.tencent.mm.plugin.webwx.a.iUA.hu(1);
-            ae.d("MicroMsg.WebWxPopUnlockUI", "trigger netSceneSync notify");
+            bg.azz().a(paramAnonymousView, 0);
+            Log.d("MicroMsg.WebWxPopUnlockUI", "doScene netSceneExtDeviceControl : UNLOCK");
+            com.tencent.mm.plugin.webwx.a.jRu.iO(1);
+            Log.d("MicroMsg.WebWxPopUnlockUI", "trigger netSceneSync notify");
             locala.dismiss();
             com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/webwx/ui/WebWXPopupUnlockUI$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
             AppMethodBeat.o(30241);
@@ -65,7 +65,7 @@ public class WebWXPopupUnlockUI
         AppMethodBeat.o(30243);
         return;
       }
-      ae.w("MicroMsg.WebWxPopUnlockUI", "Mac WeChat request to unlock,the deviceName is null");
+      Log.w("MicroMsg.WebWxPopUnlockUI", "Mac WeChat request to unlock,the deviceName is null");
     }
     AppMethodBeat.o(30243);
   }

@@ -4,10 +4,10 @@ import android.content.Context;
 import android.content.pm.PackageInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.q;
-import com.tencent.mm.plugin.appbrand.y.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.ac.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.math.BigInteger;
 import java.net.URLEncoder;
 import java.util.Iterator;
@@ -20,7 +20,7 @@ public final class a
 {
   private static String uuid = null;
   
-  public static int F(Context paramContext, String paramString)
+  public static int E(Context paramContext, String paramString)
   {
     AppMethodBeat.i(108277);
     paramContext = b.getPackageInfo(paramContext, paramString);
@@ -34,12 +34,36 @@ public final class a
     return i;
   }
   
-  public static String agU()
+  public static String Fh(String paramString)
+  {
+    AppMethodBeat.i(108275);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(108275);
+      return "";
+    }
+    try
+    {
+      paramString = URLEncoder.encode(paramString, "UTF-8");
+      AppMethodBeat.o(108275);
+      return paramString;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        paramString = "";
+        Log.e("MicroMsg.GameReportUtil", localException.getMessage());
+      }
+    }
+  }
+  
+  public static String axg()
   {
     AppMethodBeat.i(108276);
     if (uuid == null)
     {
-      str = q.aaH();
+      str = q.aoG();
       StringBuilder localStringBuilder = new StringBuilder();
       int i = 0;
       while (i < str.length() - 1)
@@ -58,17 +82,17 @@ public final class a
   public static int getNetworkType(Context paramContext)
   {
     AppMethodBeat.i(108274);
-    if (az.is3G(paramContext))
+    if (NetStatusUtil.is3G(paramContext))
     {
       AppMethodBeat.o(108274);
       return 4;
     }
-    if (az.is4G(paramContext))
+    if (NetStatusUtil.is4G(paramContext))
     {
       AppMethodBeat.o(108274);
       return 5;
     }
-    switch (az.getNetType(paramContext))
+    switch (NetStatusUtil.getNetType(paramContext))
     {
     case 1: 
     case 2: 
@@ -91,16 +115,7 @@ public final class a
     return 3;
   }
   
-  public static String rk(long paramLong)
-  {
-    AppMethodBeat.i(108278);
-    String str = new BigInteger("00FFFFFFFFFFFFFFFF", 16).and(BigInteger.valueOf(paramLong)).toString();
-    ae.d("MicroMsg.GameReportUtil", "reportReadMsg, unsignedlonglong = ".concat(String.valueOf(str)));
-    AppMethodBeat.o(108278);
-    return str;
-  }
-  
-  public static String s(Map<String, String> paramMap)
+  public static String u(Map<String, String> paramMap)
   {
     AppMethodBeat.i(108279);
     if ((paramMap == null) || (paramMap.size() == 0))
@@ -119,7 +134,7 @@ public final class a
       }
       catch (Exception paramMap)
       {
-        ae.e("MicroMsg.GameReportUtil", paramMap.getMessage());
+        Log.e("MicroMsg.GameReportUtil", paramMap.getMessage());
         AppMethodBeat.o(108279);
         return "";
       }
@@ -132,34 +147,19 @@ public final class a
     }
     catch (Exception paramMap)
     {
-      ae.e("MicroMsg.GameReportUtil", paramMap.getMessage());
+      Log.e("MicroMsg.GameReportUtil", paramMap.getMessage());
       AppMethodBeat.o(108279);
     }
     return "";
   }
   
-  public static String wT(String paramString)
+  public static String zn(long paramLong)
   {
-    AppMethodBeat.i(108275);
-    if (bu.isNullOrNil(paramString))
-    {
-      AppMethodBeat.o(108275);
-      return "";
-    }
-    try
-    {
-      paramString = URLEncoder.encode(paramString, "UTF-8");
-      AppMethodBeat.o(108275);
-      return paramString;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        paramString = "";
-        ae.e("MicroMsg.GameReportUtil", localException.getMessage());
-      }
-    }
+    AppMethodBeat.i(108278);
+    String str = new BigInteger("00FFFFFFFFFFFFFFFF", 16).and(BigInteger.valueOf(paramLong)).toString();
+    Log.d("MicroMsg.GameReportUtil", "reportReadMsg, unsignedlonglong = ".concat(String.valueOf(str)));
+    AppMethodBeat.o(108278);
+    return str;
   }
 }
 

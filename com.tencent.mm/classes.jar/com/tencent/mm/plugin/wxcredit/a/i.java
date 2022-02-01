@@ -1,48 +1,47 @@
 package com.tencent.mm.plugin.wxcredit.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
 import com.tencent.mm.plugin.wallet_core.model.k;
-import com.tencent.mm.protocal.protobuf.cud;
-import com.tencent.mm.protocal.protobuf.cue;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.dmw;
+import com.tencent.mm.protocal.protobuf.dmx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.c.w;
 
 public final class i
   extends w
 {
-  private f callback;
-  private b rr;
+  private com.tencent.mm.ak.i callback;
+  private d rr;
   
   public i(String paramString1, String paramString2)
   {
     AppMethodBeat.i(72312);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cud();
-    ((b.a)localObject).hQG = new cue();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/removevirtualbankcard";
-    ((b.a)localObject).funcId = 600;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (cud)this.rr.hQD.hQJ;
-    ((cud)localObject).HFd = paramString1;
-    ((cud)localObject).HFc = bu.getInt(paramString2, 0);
-    ((cud)localObject).Ghz = k.eIV();
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new dmw();
+    ((d.a)localObject).iLO = new dmx();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/removevirtualbankcard";
+    ((d.a)localObject).funcId = 600;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (dmw)this.rr.iLK.iLR;
+    ((dmw)localObject).MQl = paramString1;
+    ((dmw)localObject).MQk = Util.getInt(paramString2, 0);
+    ((dmw)localObject).Lcc = k.fQy();
     AppMethodBeat.o(72312);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, com.tencent.mm.ak.i parami)
   {
     AppMethodBeat.i(72314);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(72314);
     return i;
   }
@@ -52,10 +51,10 @@ public final class i
     return 600;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte, long paramLong)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte, long paramLong)
   {
     AppMethodBeat.i(72313);
-    ae.d("MicroMsg.NetSceneRemoveVirtualBankCard", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
+    Log.d("MicroMsg.NetSceneRemoveVirtualBankCard", "errType:" + paramInt2 + ",errCode:" + paramInt3 + ",errMsg" + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(72313);
   }

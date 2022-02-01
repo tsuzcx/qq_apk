@@ -7,9 +7,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.IBinder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.compatible.util.g;
 import com.tencent.mm.loader.j.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.j;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -18,24 +20,24 @@ public abstract class RubbishBinService
   extends Service
   implements Runnable
 {
+  private boolean Czr = false;
+  private b Czs = null;
+  private String Czt = "";
+  private IBinder Czu = null;
+  private int Czv = 8;
   private Context context = this;
-  int gwI = 1000;
-  private int gwJ = 0;
-  Thread gwK;
-  private String gwM = null;
+  private String hjA = null;
+  int hjw = 1000;
+  private int hjx = 0;
+  Thread hjy;
   private int repeatMode = 1;
-  private int uow = 7;
-  private boolean yyt = false;
-  private b yyu = null;
-  private String yyv = "";
-  private IBinder yyw = null;
-  private int yyx = 8;
+  private int xGO = 7;
   
   public IBinder onBind(Intent paramIntent)
   {
-    this.yyw = new a.a()
+    this.Czu = new a.a()
     {
-      public final void G(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
+      public final void F(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString)
       {
         AppMethodBeat.i(146674);
         RubbishBinService.a(RubbishBinService.this, paramAnonymousInt2);
@@ -58,19 +60,19 @@ public abstract class RubbishBinService
         }
       }
     };
-    return this.yyw;
+    return this.Czu;
   }
   
   public void onCreate()
   {
     super.onCreate();
     this.context = this;
-    if (this.yyu == null) {
-      this.yyu = new b(this);
+    if (this.Czs == null) {
+      this.Czs = new b(this);
     }
-    Thread.setDefaultUncaughtExceptionHandler(this.yyu);
-    this.gwK = new Thread(this);
-    JNIExceptionHandlerImpl.initJNIExceptionHandler(this, this.gwM);
+    Thread.setDefaultUncaughtExceptionHandler(this.Czs);
+    this.hjy = new Thread(this);
+    JNIExceptionHandlerImpl.initJNIExceptionHandler(this, this.hjA);
     JNIExceptionHandler.init();
   }
   
@@ -78,35 +80,35 @@ public abstract class RubbishBinService
   {
     if (paramIntent != null)
     {
-      this.gwJ = paramIntent.getIntExtra("exec_time", 0);
-      this.gwI = paramIntent.getIntExtra("interval", -1);
-      this.gwM = paramIntent.getStringExtra("exec_tag");
+      this.hjx = paramIntent.getIntExtra("exec_time", 0);
+      this.hjw = paramIntent.getIntExtra("interval", -1);
+      this.hjA = paramIntent.getStringExtra("exec_tag");
     }
-    if (this.gwM == null) {
-      this.gwM = "Default";
+    if (this.hjA == null) {
+      this.hjA = "Default";
     }
-    this.gwK.setName(this.gwM);
-    JNIExceptionHandler.INSTANCE.setReportExecutionTag(this.gwM);
-    switch (this.gwJ)
+    this.hjy.setName(this.hjA);
+    JNIExceptionHandler.INSTANCE.setReportExecutionTag(this.hjA);
+    switch (this.hjx)
     {
     }
-    for (this.repeatMode = 1; this.gwI == -1; this.repeatMode = this.gwJ)
+    for (this.repeatMode = 1; this.hjw == -1; this.repeatMode = this.hjx)
     {
       stopSelf();
       return super.onStartCommand(paramIntent, paramInt1, paramInt2);
     }
-    if (!this.gwK.isAlive())
+    if (!this.hjy.isAlive())
     {
-      this.gwK = new Thread(this);
-      this.gwK.setName(this.gwM);
-      this.gwK.start();
+      this.hjy = new Thread(this);
+      this.hjy.setName(this.hjA);
+      this.hjy.start();
     }
     return super.onStartCommand(paramIntent, paramInt1, paramInt2);
   }
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = getSharedPreferences("system_config_prefs", com.tencent.mm.compatible.util.g.abv());
+    SharedPreferences localSharedPreferences = getSharedPreferences("system_config_prefs", g.aps());
     Object localObject = Calendar.getInstance().getTime();
     String str1 = new SimpleDateFormat("yyyyMMdd").format((Date)localObject);
     String str2 = localSharedPreferences.getString("LastExecDate", "00000000");
@@ -116,20 +118,20 @@ public abstract class RubbishBinService
       localSharedPreferences.edit().putString("RubbishTag", "N/A").putString("LastExecDate", str1).apply();
       localObject = "N/A";
     }
-    if ((!this.yyt) && (((String)localObject).equals(this.gwM)) && (this.repeatMode != -1))
+    if ((!this.Czr) && (((String)localObject).equals(this.hjA)) && (this.repeatMode != -1))
     {
-      if (localSharedPreferences.getInt("RubbishCount", this.gwJ) <= 0)
+      if (localSharedPreferences.getInt("RubbishCount", this.hjx) <= 0)
       {
         this.repeatMode = 0;
         stopSelf();
       }
     }
     else {
-      localSharedPreferences.edit().putInt("RubbishCount", this.gwJ).apply();
+      localSharedPreferences.edit().putInt("RubbishCount", this.hjx).apply();
     }
-    localSharedPreferences.edit().putString("RubbishTag", this.gwM).apply();
-    this.gwJ = localSharedPreferences.getInt("RubbishCount", this.gwJ);
-    ae.i("RubbishBinService", "[sunny]dt:%s,cnt:%d,t:%s", new Object[] { str1, Integer.valueOf(this.gwJ), this.gwM });
+    localSharedPreferences.edit().putString("RubbishTag", this.hjA).apply();
+    this.hjx = localSharedPreferences.getInt("RubbishCount", this.hjx);
+    Log.i("RubbishBinService", "[sunny]dt:%s,cnt:%d,t:%s", new Object[] { str1, Integer.valueOf(this.hjx), this.hjA });
     for (;;)
     {
       if (this.repeatMode == 0) {
@@ -139,14 +141,14 @@ public abstract class RubbishBinService
       {
         stopSelf();
         return;
-        this.gwJ -= 1;
-        localSharedPreferences.edit().putInt("RubbishCount", this.gwJ).apply();
-        ae.i("RubbishBinService", "e!");
-        com.tencent.mm.plugin.report.service.g.yxI.f(17910, new Object[] { a.hju, j.hju, this.gwM, Integer.valueOf(1), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(System.nanoTime()) });
-      } while ((this.gwJ == 0) && (this.repeatMode != -1));
+        this.hjx -= 1;
+        localSharedPreferences.edit().putInt("RubbishCount", this.hjx).apply();
+        Log.i("RubbishBinService", "e!");
+        h.CyF.a(17910, new Object[] { a.CLIENT_VERSION, BuildInfo.CLIENT_VERSION, this.hjA, Integer.valueOf(1), "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(System.nanoTime()) });
+      } while ((this.hjx == 0) && (this.repeatMode != -1));
       try
       {
-        Thread.sleep(this.gwI);
+        Thread.sleep(this.hjw);
       }
       catch (InterruptedException localInterruptedException) {}
     }
@@ -154,7 +156,7 @@ public abstract class RubbishBinService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.rubbishbin.RubbishBinService
  * JD-Core Version:    0.7.0.1
  */

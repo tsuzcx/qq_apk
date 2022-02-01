@@ -11,43 +11,43 @@ import java.util.ArrayList;
 
 final class a
 {
-  public static final ThreadLocal<a> fu = new ThreadLocal();
-  boolean fA = false;
-  final n<b, Long> fv = new n();
-  final ArrayList<b> fw = new ArrayList();
-  private final a fx = new a();
-  private c fy;
-  long fz = 0L;
+  public static final ThreadLocal<a> fw = new ThreadLocal();
+  private c fA;
+  long fB = 0L;
+  boolean fC = false;
+  final n<b, Long> fx = new n();
+  final ArrayList<b> fy = new ArrayList();
+  private final a fz = new a();
   
-  public static a aB()
+  public static a aD()
   {
-    if (fu.get() == null) {
-      fu.set(new a());
+    if (fw.get() == null) {
+      fw.set(new a());
     }
-    return (a)fu.get();
+    return (a)fw.get();
   }
   
   public final void a(b paramb)
   {
-    this.fv.remove(paramb);
-    int i = this.fw.indexOf(paramb);
+    this.fx.remove(paramb);
+    int i = this.fy.indexOf(paramb);
     if (i >= 0)
     {
-      this.fw.set(i, null);
-      this.fA = true;
+      this.fy.set(i, null);
+      this.fC = true;
     }
   }
   
-  final c aC()
+  final c aE()
   {
-    if (this.fy == null) {
+    if (this.fA == null) {
       if (Build.VERSION.SDK_INT < 16) {
         break label35;
       }
     }
     label35:
-    for (this.fy = new e(this.fx);; this.fy = new d(this.fx)) {
-      return this.fy;
+    for (this.fA = new e(this.fz);; this.fA = new d(this.fz)) {
+      return this.fA;
     }
   }
   
@@ -55,21 +55,21 @@ final class a
   {
     a() {}
     
-    final void aD()
+    final void aF()
     {
-      a.this.fz = SystemClock.uptimeMillis();
+      a.this.fB = SystemClock.uptimeMillis();
       a locala = a.this;
-      long l1 = a.this.fz;
+      long l1 = a.this.fB;
       long l2 = SystemClock.uptimeMillis();
       int j = 0;
       int i;
-      if (j < locala.fw.size())
+      if (j < locala.fy.size())
       {
-        a.b localb = (a.b)locala.fw.get(j);
+        a.b localb = (a.b)locala.fy.get(j);
         Long localLong;
         if (localb != null)
         {
-          localLong = (Long)locala.fv.get(localb);
+          localLong = (Long)locala.fx.get(localb);
           if (localLong != null) {
             break label104;
           }
@@ -85,7 +85,7 @@ final class a
           label104:
           if (localLong.longValue() < l2)
           {
-            locala.fv.remove(localb);
+            locala.fx.remove(localb);
             i = 1;
           }
           else
@@ -94,20 +94,20 @@ final class a
           }
         }
       }
-      if (locala.fA)
+      if (locala.fC)
       {
-        i = locala.fw.size() - 1;
+        i = locala.fy.size() - 1;
         while (i >= 0)
         {
-          if (locala.fw.get(i) == null) {
-            locala.fw.remove(i);
+          if (locala.fy.get(i) == null) {
+            locala.fy.remove(i);
           }
           i -= 1;
         }
-        locala.fA = false;
+        locala.fC = false;
       }
-      if (a.this.fw.size() > 0) {
-        a.this.aC().aE();
+      if (a.this.fy.size() > 0) {
+        a.this.aE().aG();
       }
     }
   }
@@ -119,27 +119,27 @@ final class a
   
   static abstract class c
   {
-    final a.a fC;
+    final a.a fE;
     
     c(a.a parama)
     {
-      this.fC = parama;
+      this.fE = parama;
     }
     
-    abstract void aE();
+    abstract void aG();
   }
   
   static final class d
     extends a.c
   {
-    long fD = -1L;
+    long fF = -1L;
     private final Handler mHandler = new Handler(Looper.myLooper());
     private final Runnable mRunnable = new Runnable()
     {
       public final void run()
       {
-        a.d.this.fD = SystemClock.uptimeMillis();
-        a.d.this.fC.aD();
+        a.d.this.fF = SystemClock.uptimeMillis();
+        a.d.this.fE.aF();
       }
     };
     
@@ -148,9 +148,9 @@ final class a
       super();
     }
     
-    final void aE()
+    final void aG()
     {
-      long l = Math.max(10L - (SystemClock.uptimeMillis() - this.fD), 0L);
+      long l = Math.max(10L - (SystemClock.uptimeMillis() - this.fF), 0L);
       this.mHandler.postDelayed(this.mRunnable, l);
     }
   }
@@ -158,12 +158,12 @@ final class a
   static final class e
     extends a.c
   {
-    private final Choreographer fF = Choreographer.getInstance();
-    private final Choreographer.FrameCallback fG = new Choreographer.FrameCallback()
+    private final Choreographer fH = Choreographer.getInstance();
+    private final Choreographer.FrameCallback fI = new Choreographer.FrameCallback()
     {
       public final void doFrame(long paramAnonymousLong)
       {
-        a.e.this.fC.aD();
+        a.e.this.fE.aF();
       }
     };
     
@@ -172,9 +172,9 @@ final class a
       super();
     }
     
-    final void aE()
+    final void aG()
     {
-      this.fF.postFrameCallback(this.fG);
+      this.fH.postFrameCallback(this.fI);
     }
   }
 }

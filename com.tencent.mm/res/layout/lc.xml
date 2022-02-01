@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/hp" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.MMLoadMoreListView android:id="@android:id/list" style="@style/fy" />
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/isv" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="@dimen/k5" />
+    <FrameLayout android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/e9u" android:background="@drawable/asf" android:paddingTop="@dimen/hs" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="84.0dip" android:paddingStart="@dimen/u0" android:paddingEnd="@dimen/u0">
+            <TextView android:textSize="@dimen/amj" android:textColor="@color/BW_0_Alpha_0_3" android:layout_gravity="center_horizontal" android:id="@id/iyo" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <FrameLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5">
+                <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/ct" android:layout_marginEnd="@dimen/ct">
+                    <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/e4p" android:layout_width="@dimen/u1" android:layout_height="@dimen/u1" android:scaleType="fitCenter" app:roundHeight="2.399994dip" app:roundWidth="2.399994dip" />
+                    <TextView android:textSize="@dimen/u4" android:textColor="@color/g0" android:ellipsize="end" android:id="@id/iyx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:maxLines="1" android:layout_marginStart="@dimen/k5" />
+                    <TextView android:textSize="@dimen/amj" android:textColor="@color/abp" android:id="@id/ixd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="@dimen/g" />
+                </LinearLayout>
+                <ImageView android:layout_gravity="center" android:id="@id/e4r" android:padding="@dimen/bt" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/bottom_sheet_loading_icon" />
+            </FrameLayout>
+        </LinearLayout>
+        <TextView android:textSize="@dimen/u4" android:textColor="@color/g0" android:ellipsize="end" android:layout_gravity="center" android:id="@id/ixe" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:text="@string/aln" android:maxLines="1" />
+    </FrameLayout>
 </LinearLayout>

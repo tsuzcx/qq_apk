@@ -1,31 +1,25 @@
 package com.tencent.mm.plugin.appbrand.page;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.loader.a;
+import kotlin.l;
 
-final class bs
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/page/MonkeyTestAppPageView;", "Lcom/tencent/mm/plugin/appbrand/page/AppBrandPageViewWC;", "waAutoWebViewJs", "", "(Ljava/lang/String;)V", "getWaAutoWebViewJs", "()Ljava/lang/String;", "plugin-appbrand-integration_release"})
+public final class bs
+  extends ag
 {
-  static boolean b(br parambr)
-  {
-    return (parambr != br.mkg) && (parambr != br.mkn) && (parambr != br.mkj) && (parambr != br.mkk) && (parambr != br.mkl) && (parambr != br.mkm);
-  }
+  public final String nuB;
   
-  static boolean c(br parambr)
+  public bs(String paramString)
   {
-    return (parambr == br.mkj) || (parambr == br.mkk) || (parambr == br.mkn) || (parambr == br.mkl) || (parambr == br.mkm);
-  }
-  
-  static boolean d(br parambr)
-  {
-    AppMethodBeat.i(207860);
-    boolean bool = a.contains(new br[] { br.mkn, br.mkl, br.mkm }, parambr);
-    AppMethodBeat.o(207860);
-    return bool;
+    super(bt.class);
+    AppMethodBeat.i(229243);
+    this.nuB = paramString;
+    AppMethodBeat.o(229243);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.page.bs
  * JD-Core Version:    0.7.0.1
  */

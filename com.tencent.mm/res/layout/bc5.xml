@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/e2x" android:background="@drawable/asf" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/g07" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:layout_marginStart="14.0dip" android:layout_marginEnd="14.0dip">
-        <com.tencent.mm.plugin.story.ui.view.CommentAvatarImageView android:id="@id/g06" android:layout_width="48.0dip" android:layout_height="48.0dip" />
-        <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="@color/ry" android:ellipsize="end" android:id="@id/g08" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ci" android:maxLines="1" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/tz">
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/u4" android:textColor="@color/a2x" android:id="@id/e40" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/u0" />
+            <TextView android:textSize="@dimen/u3" android:textColor="@color/g2" android:id="@id/e28" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/u0" android:layout_marginTop="2.0dip" />
+        </LinearLayout>
+        <CheckBox android:gravity="right" android:id="@id/e21" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="@dimen/u0" style="@style/m6" />
     </LinearLayout>
+    <ImageView android:layout_gravity="bottom" android:id="@id/brt" android:layout_marginLeft="@dimen/u0" style="@style/hx" />
 </LinearLayout>

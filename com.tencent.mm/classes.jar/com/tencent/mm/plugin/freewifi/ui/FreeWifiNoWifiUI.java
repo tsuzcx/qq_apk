@@ -17,7 +17,7 @@ public class FreeWifiNoWifiUI
   
   public int getLayoutId()
   {
-    return 2131494174;
+    return 2131494728;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -45,7 +45,7 @@ public class FreeWifiNoWifiUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.ui.FreeWifiNoWifiUI
  * JD-Core Version:    0.7.0.1
  */

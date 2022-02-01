@@ -9,63 +9,63 @@ import com.tencent.mm.plugin.card.model.am;
 import com.tencent.mm.plugin.card.model.n.a;
 import com.tencent.mm.plugin.card.sharecard.model.ShareCardInfo;
 import com.tencent.mm.plugin.card.sharecard.model.k;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.ui.s;
 
 public final class c
-  extends r<ShareCardInfo>
+  extends s<ShareCardInfo>
 {
   private final String TAG;
   long beginTime;
   long endTime;
-  com.tencent.mm.plugin.card.base.c oJA;
-  private int oJB;
-  private int oJz;
+  private int pXn;
+  com.tencent.mm.plugin.card.base.c pXo;
+  private int pXp;
   
   public c(Context paramContext)
   {
     super(paramContext, new ShareCardInfo());
     AppMethodBeat.i(113074);
     this.TAG = "MicroMsg.ShareCardAdatper";
-    this.oJz = 0;
-    this.oJB = -1;
+    this.pXn = 0;
+    this.pXp = -1;
     this.beginTime = 0L;
     this.endTime = 0L;
-    xs(true);
-    this.oJA = new j(paramContext, this);
+    Bh(true);
+    this.pXo = new j(paramContext, this);
     AppMethodBeat.o(113074);
   }
   
-  public final void AJ(int paramInt)
+  public final void Eo(int paramInt)
   {
     AppMethodBeat.i(113078);
-    this.oJB = paramInt;
-    a(null, null);
+    this.pXp = paramInt;
+    onNotifyChange(null, null);
     AppMethodBeat.o(113078);
   }
   
-  public final void ZD()
+  public final void anp()
   {
     AppMethodBeat.i(113076);
     this.beginTime = System.currentTimeMillis();
     Object localObject1;
     Object localObject2;
     Object localObject3;
-    if (this.oJB == -1)
+    if (this.pXp == -1)
     {
-      localObject1 = am.bWk();
-      localObject2 = n.a.oGk;
+      localObject1 = am.ctY();
+      localObject2 = n.a.pTQ;
       localObject3 = new StringBuilder();
-      switch (com.tencent.mm.plugin.card.sharecard.model.k.1.oFE[localObject2.ordinal()])
+      switch (com.tencent.mm.plugin.card.sharecard.model.k.1.pTm[localObject2.ordinal()])
       {
       default: 
         localObject2 = "select * from ShareCardInfo" + ((StringBuilder)localObject3).toString() + " order by status asc , share_time desc";
         localObject1 = ((k)localObject1).db.rawQuery((String)localObject2, null);
         if (localObject1 != null)
         {
-          this.oJz = ((Cursor)localObject1).getCount();
-          ae.i("MicroMsg.ShareCardAdatper", "resetCursor showType %s, card count:%s", new Object[] { Integer.valueOf(this.oJB), Integer.valueOf(this.oJz) });
+          this.pXn = ((Cursor)localObject1).getCount();
+          Log.i("MicroMsg.ShareCardAdatper", "resetCursor showType %s, card count:%s", new Object[] { Integer.valueOf(this.pXp), Integer.valueOf(this.pXn) });
         }
         break;
       }
@@ -79,12 +79,12 @@ public final class c
       return;
       ((StringBuilder)localObject3).append(" where (status=0 OR status=5)");
       break;
-      ((StringBuilder)localObject3).append(" where (status=1 OR status=2 OR status=3 OR status=4 OR status=6)");
+      ((StringBuilder)localObject3).append(" where (status=1 OR status=2 OR status").append("=3 OR status=4 OR status=6)");
       break;
-      ((StringBuilder)localObject3).append(" where (status=0 OR status=5) and (block_mask= '1' OR block_mask= '0' )");
+      ((StringBuilder)localObject3).append(" where (status=0 OR status=5) and (block_mask").append("= '1' OR block_mask= '0' )");
       break;
-      localObject3 = am.bWk();
-      int i = this.oJB;
+      localObject3 = am.ctY();
+      int i = this.pXp;
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append(" where ( status=0) ");
       localObject2 = "";
@@ -101,11 +101,11 @@ public final class c
         break;
         localStringBuilder.append(" AND (");
         localStringBuilder.append(" (");
-        localStringBuilder.append(k.AF(1));
+        localStringBuilder.append(k.Ek(1));
         localStringBuilder.append(" categoryType= '10' ");
         localStringBuilder.append(") ");
         localStringBuilder.append(" OR (");
-        localStringBuilder.append(k.AF(2));
+        localStringBuilder.append(k.Ek(2));
         localStringBuilder.append(" categoryType= '0' ");
         localStringBuilder.append(") ");
         localStringBuilder.append(" )");
@@ -113,14 +113,14 @@ public final class c
         continue;
         localStringBuilder.append(" AND ");
         localStringBuilder.append(" (");
-        localStringBuilder.append(k.AF(1));
+        localStringBuilder.append(k.Ek(1));
         localStringBuilder.append(" categoryType= '10' ");
         localStringBuilder.append(") ");
         localObject1 = " order by categoryType desc , itemIndex asc";
         continue;
         localStringBuilder.append(" AND ");
         localStringBuilder.append(" (");
-        localStringBuilder.append(k.AF(2));
+        localStringBuilder.append(k.Ek(2));
         localStringBuilder.append(" categoryType= '0' ");
         localStringBuilder.append(") ");
         localObject1 = " order by categoryType desc , itemIndex asc";
@@ -128,15 +128,15 @@ public final class c
         localStringBuilder.append(" AND 1 != 1 ");
         localObject1 = localObject2;
       }
-      ae.e("MicroMsg.ShareCardAdatper", "resetCursor cursor is null, showType %s", new Object[] { Integer.valueOf(this.oJB) });
+      Log.e("MicroMsg.ShareCardAdatper", "resetCursor cursor is null, showType %s", new Object[] { Integer.valueOf(this.pXp) });
     }
   }
   
-  public final void ZE()
+  public final void anq()
   {
     AppMethodBeat.i(113077);
-    dhl();
-    ZD();
+    ebf();
+    anp();
     AppMethodBeat.o(113077);
   }
   
@@ -144,14 +144,14 @@ public final class c
   {
     AppMethodBeat.i(113075);
     paramViewGroup = (ShareCardInfo)getItem(paramInt);
-    paramView = this.oJA.a(paramInt, paramView, paramViewGroup);
+    paramView = this.pXo.a(paramInt, paramView, paramViewGroup);
     AppMethodBeat.o(113075);
     return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.sharecard.ui.c
  * JD-Core Version:    0.7.0.1
  */

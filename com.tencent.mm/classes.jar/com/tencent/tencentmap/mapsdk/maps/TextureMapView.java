@@ -22,6 +22,16 @@ public class TextureMapView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  public TextureMapView(Context paramContext, AttributeSet paramAttributeSet, int paramInt, TencentMapOptions paramTencentMapOptions)
+  {
+    super(paramContext, paramAttributeSet, paramInt, paramTencentMapOptions);
+  }
+  
+  public TextureMapView(Context paramContext, AttributeSet paramAttributeSet, TencentMapOptions paramTencentMapOptions)
+  {
+    this(paramContext, paramAttributeSet, 0, paramTencentMapOptions);
+  }
+  
   public TextureMapView(Context paramContext, TencentMapOptions paramTencentMapOptions)
   {
     super(paramContext, paramTencentMapOptions);
@@ -34,7 +44,7 @@ public class TextureMapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TextureMapView
  * JD-Core Version:    0.7.0.1
  */

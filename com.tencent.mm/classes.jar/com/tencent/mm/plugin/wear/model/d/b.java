@@ -1,51 +1,52 @@
 package com.tencent.mm.plugin.wear.model.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.efi;
-import com.tencent.mm.protocal.protobuf.efj;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.ezq;
+import com.tencent.mm.protocal.protobuf.ezr;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private com.tencent.mm.ak.b hZD;
+  private i callback;
+  private d iUB;
   
   public b(String paramString)
   {
     AppMethodBeat.i(30057);
-    Object localObject = new b.a();
-    ((b.a)localObject).funcId = 976;
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/sendyo";
-    ((b.a)localObject).hQF = new efi();
-    ((b.a)localObject).hQG = new efj();
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.hZD = ((b.a)localObject).aDS();
-    localObject = (efi)this.hZD.hQD.hQJ;
-    ((efi)localObject).uvF = paramString;
-    ((efi)localObject).HnF = ((efi)localObject).CreateTime;
-    ((efi)localObject).CreateTime = ((int)bl.BQ(paramString));
-    ((efi)localObject).nJA = 63;
-    ((efi)localObject).Ijk = 1;
-    ((efi)localObject).nID = 1;
+    Object localObject = new d.a();
+    ((d.a)localObject).funcId = 976;
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/sendyo";
+    ((d.a)localObject).iLN = new ezq();
+    ((d.a)localObject).iLO = new ezr();
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.iUB = ((d.a)localObject).aXF();
+    localObject = (ezq)this.iUB.iLK.iLR;
+    ((ezq)localObject).xNG = paramString;
+    ((ezq)localObject).MuU = ((ezq)localObject).CreateTime;
+    ((ezq)localObject).CreateTime = ((int)bp.Kw(paramString));
+    ((ezq)localObject).oUv = 63;
+    ((ezq)localObject).NvO = 1;
+    ((ezq)localObject).oTz = 1;
     AppMethodBeat.o(30057);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(30059);
-    this.callback = paramf;
-    int i = dispatch(parame, this.hZD, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
     AppMethodBeat.o(30059);
     return i;
   }
@@ -55,10 +56,10 @@ public final class b
     return 976;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30058);
-    ae.i("MicroMsg.Wear.NetSceneSendYo", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
+    Log.i("MicroMsg.Wear.NetSceneSendYo", "onGYNetEnd netId = " + paramInt1 + " errType = " + paramInt2 + " errCode = " + paramInt3 + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(30058);
   }

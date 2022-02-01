@@ -6,15 +6,15 @@ import java.util.Map;
 
 public final class a
 {
-  public static final Map<String, Integer> MpS;
+  public static final Map<String, Integer> RSp;
   
   static
   {
     AppMethodBeat.i(55501);
     HashMap local1 = new HashMap() {};
-    MpS = local1;
+    RSp = local1;
     local1.put("x5webview", Integer.valueOf(43804));
-    MpS.put("file", Integer.valueOf(200002));
+    RSp.put("file", Integer.valueOf(200002));
     AppMethodBeat.o(55501);
   }
 }

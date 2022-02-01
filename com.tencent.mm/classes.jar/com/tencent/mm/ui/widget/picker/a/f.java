@@ -6,74 +6,74 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class f
   extends d
 {
-  private c LyF;
-  public boolean LyH;
-  private int iNj;
-  private int iNk;
+  private c QUv;
+  public boolean QUx;
+  private int jJW;
+  private int jJX;
   private Context mContext;
   
   public f(int paramInt1, int paramInt2, Context paramContext)
   {
     super(paramInt1, paramInt2);
-    AppMethodBeat.i(200550);
+    AppMethodBeat.i(198508);
     this.mContext = paramContext;
-    this.LyF = this.LyF;
-    if (this.LyF == null) {
-      this.LyF = new a();
+    this.QUv = this.QUv;
+    if (this.QUv == null) {
+      this.QUv = new a();
     }
-    this.iNj = paramInt1;
-    this.iNk = paramInt2;
-    AppMethodBeat.o(200550);
+    this.jJW = paramInt1;
+    this.jJX = paramInt2;
+    AppMethodBeat.o(198508);
   }
   
   public final int getItemsCount()
   {
-    if (this.LyH) {
-      return this.iNk - this.iNj + 1 + 1;
+    if (this.QUx) {
+      return this.jJX - this.jJW + 1 + 1;
     }
-    return this.iNk - this.iNj + 1;
+    return this.jJX - this.jJW + 1;
   }
   
   public final int getMaxValue()
   {
-    return this.iNk;
+    return this.jJX;
   }
   
   public final int getMinValue()
   {
-    return this.iNj;
+    return this.jJW;
   }
   
-  public final String qO(int paramInt)
+  public final String uG(int paramInt)
   {
-    AppMethodBeat.i(200552);
-    if ((paramInt == 0) && (this.LyH))
+    AppMethodBeat.i(198510);
+    if ((paramInt == 0) && (this.QUx))
     {
-      str = this.mContext.getString(2131766375);
-      AppMethodBeat.o(200552);
+      str = this.mContext.getString(2131763917);
+      AppMethodBeat.o(198510);
       return str;
     }
-    String str = super.qO(paramInt);
-    AppMethodBeat.o(200552);
+    String str = super.uG(paramInt);
+    AppMethodBeat.o(198510);
     return str;
   }
   
-  public final Integer qP(int paramInt)
+  public final Integer uH(int paramInt)
   {
-    AppMethodBeat.i(200551);
+    AppMethodBeat.i(198509);
     if ((paramInt >= 0) && (paramInt < getItemsCount()))
     {
-      if (this.LyH)
+      if (this.QUx)
       {
-        i = this.iNj;
-        AppMethodBeat.o(200551);
+        i = this.jJW;
+        AppMethodBeat.o(198509);
         return Integer.valueOf(i + paramInt - 1);
       }
-      int i = this.iNj;
-      AppMethodBeat.o(200551);
+      int i = this.jJW;
+      AppMethodBeat.o(198509);
       return Integer.valueOf(i + paramInt);
     }
-    AppMethodBeat.o(200551);
+    AppMethodBeat.o(198509);
     return null;
   }
   
@@ -82,7 +82,7 @@ public final class f
   {
     a() {}
     
-    public final String Ji(String paramString)
+    public final String Sf(String paramString)
     {
       return paramString;
     }
@@ -90,7 +90,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.a.f
  * JD-Core Version:    0.7.0.1
  */

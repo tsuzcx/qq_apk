@@ -17,28 +17,33 @@ public class FileSchemeResolver
     AppMethodBeat.o(13101);
   }
   
-  static i fSO()
+  static m hdX()
   {
-    return a.LFU;
+    return a.Rbl;
   }
   
-  public final Pair<FileSystem.b, String> a(g paramg, Uri paramUri)
+  public final Pair<FileSystem.b, String> a(k paramk, Uri paramUri)
   {
-    AppMethodBeat.i(193370);
-    paramg = paramg.aZP(paramUri.getPath());
-    AppMethodBeat.o(193370);
-    return paramg;
+    AppMethodBeat.i(187651);
+    String str = paramUri.getPath();
+    paramUri = str;
+    if (str == null) {
+      paramUri = "";
+    }
+    paramk = paramk.boU(paramUri);
+    AppMethodBeat.o(187651);
+    return paramk;
   }
   
   static final class a
     implements Parcelable.Creator<FileSchemeResolver>
   {
-    static final i LFU;
+    static final m Rbl;
     
     static
     {
       AppMethodBeat.i(13098);
-      LFU = new i(new FileSchemeResolver((byte)0));
+      Rbl = new m(new FileSchemeResolver((byte)0));
       AppMethodBeat.o(13098);
     }
   }

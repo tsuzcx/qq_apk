@@ -1,12 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class nu
-  extends b
+  extends IEvent
 {
-  public a dCJ;
+  public a dTV;
   
   public nu()
   {
@@ -15,27 +15,21 @@ public final class nu
   
   private nu(byte paramByte)
   {
-    AppMethodBeat.i(117613);
-    this.dCJ = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(181500);
+    this.dTV = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(117613);
+    AppMethodBeat.o(181500);
   }
   
   public static final class a
   {
-    public String appId;
-    public String dCK;
-    public String dCL;
-    public int scene;
-    public int type;
-    public String url;
-    public int version;
+    public String dOe;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.nu
  * JD-Core Version:    0.7.0.1
  */

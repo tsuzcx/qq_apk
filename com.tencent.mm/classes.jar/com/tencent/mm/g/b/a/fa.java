@@ -6,57 +6,67 @@ import com.tencent.mm.plugin.report.a;
 public final class fa
   extends a
 {
-  public String elg = "";
-  public String elh = "";
-  public String eli = "";
-  public String elj = "";
-  public String elk = "";
+  public long eEP;
+  public long eEQ;
+  public long eER;
+  public long eES;
+  public long eET;
+  public String emL = "";
+  public long etp = 0L;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(94834);
+    AppMethodBeat.i(231475);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.elg);
+    ((StringBuffer)localObject).append(this.etp);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elh);
+    ((StringBuffer)localObject).append(this.emL);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eli);
+    ((StringBuffer)localObject).append(this.eEP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elj);
+    ((StringBuffer)localObject).append(this.eEQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.elk);
+    ((StringBuffer)localObject).append(this.eER);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eES);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eET);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(94834);
+    aMq((String)localObject);
+    AppMethodBeat.o(231475);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(94835);
+    AppMethodBeat.i(231476);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PublishId:").append(this.elg);
+    ((StringBuffer)localObject).append("EnterScene:").append(this.etp);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CommentIdList:").append(this.elh);
+    ((StringBuffer)localObject).append("ChatName:").append(this.emL);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EmojiIdList:").append(this.eli);
+    ((StringBuffer)localObject).append("EnterTimeStamp:").append(this.eEP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickEmojiIconIdList:").append(this.elj);
+    ((StringBuffer)localObject).append("ExitTimeStamp:").append(this.eEQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ClickEmojiIdList:").append(this.elk);
+    ((StringBuffer)localObject).append("EnterChatType:").append(this.eER);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ExitChatType:").append(this.eES);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ExitHiddenStatus:").append(this.eET);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(94835);
+    AppMethodBeat.o(231476);
     return localObject;
   }
   
   public final int getId()
   {
-    return 18670;
+    return 21169;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fa
  * JD-Core Version:    0.7.0.1
  */

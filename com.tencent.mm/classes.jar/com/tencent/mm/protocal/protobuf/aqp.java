@@ -1,76 +1,74 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class aqp
   extends com.tencent.mm.bw.a
 {
-  public LinkedList<aqo> GHA;
-  
-  public aqp()
-  {
-    AppMethodBeat.i(189387);
-    this.GHA = new LinkedList();
-    AppMethodBeat.o(189387);
-  }
+  public String link;
+  public String title;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(189388);
+    AppMethodBeat.i(168952);
     if (paramInt == 0)
     {
-      ((f.a.a.c.a)paramVarArgs[0]).e(1, 8, this.GHA);
-      AppMethodBeat.o(189388);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.link != null) {
+        paramVarArgs.e(1, this.link);
+      }
+      if (this.title != null) {
+        paramVarArgs.e(2, this.title);
+      }
+      AppMethodBeat.o(168952);
       return 0;
     }
-    if (paramInt == 1)
-    {
-      paramInt = f.a.a.a.c(1, 8, this.GHA);
-      AppMethodBeat.o(189388);
-      return paramInt + 0;
+    if (paramInt == 1) {
+      if (this.link == null) {
+        break label274;
+      }
     }
-    if (paramInt == 2)
+    label274:
+    for (paramInt = g.a.a.b.b.a.f(1, this.link) + 0;; paramInt = 0)
     {
-      paramVarArgs = (byte[])paramVarArgs[0];
-      this.GHA.clear();
-      paramVarArgs = new f.a.a.a.a(paramVarArgs, unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+      int i = paramInt;
+      if (this.title != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.title);
+      }
+      AppMethodBeat.o(168952);
+      return i;
+      if (paramInt == 2)
+      {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
         }
+        AppMethodBeat.o(168952);
+        return 0;
       }
-      AppMethodBeat.o(189388);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
-      aqp localaqp = (aqp)paramVarArgs[1];
-      paramInt = ((Integer)paramVarArgs[2]).intValue();
-      switch (paramInt)
+      if (paramInt == 3)
       {
-      default: 
-        AppMethodBeat.o(189388);
-        return -1;
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+        aqp localaqp = (aqp)paramVarArgs[1];
+        switch (((Integer)paramVarArgs[2]).intValue())
+        {
+        default: 
+          AppMethodBeat.o(168952);
+          return -1;
+        case 1: 
+          localaqp.link = locala.UbS.readString();
+          AppMethodBeat.o(168952);
+          return 0;
+        }
+        localaqp.title = locala.UbS.readString();
+        AppMethodBeat.o(168952);
+        return 0;
       }
-      paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-      int i = paramVarArgs.size();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-        localObject1 = new aqo();
-        localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-        for (boolean bool = true; bool; bool = ((aqo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-        localaqp.GHA.add(localObject1);
-        paramInt += 1;
-      }
-      AppMethodBeat.o(189388);
-      return 0;
+      AppMethodBeat.o(168952);
+      return -1;
     }
-    AppMethodBeat.o(189388);
-    return -1;
   }
 }
 

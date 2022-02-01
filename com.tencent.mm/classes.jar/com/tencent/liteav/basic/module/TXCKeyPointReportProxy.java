@@ -28,6 +28,13 @@ public class TXCKeyPointReportProxy
     AppMethodBeat.o(14430);
   }
   
+  public static void a(int paramInt1, int paramInt2, int paramInt3)
+  {
+    AppMethodBeat.i(222021);
+    nativeSetLocalQuality(paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(222021);
+  }
+  
   public static void a(Context paramContext)
   {
     AppMethodBeat.i(182421);
@@ -63,25 +70,25 @@ public class TXCKeyPointReportProxy
     AppMethodBeat.o(182421);
   }
   
-  public static void a(String paramString, int paramInt)
+  public static void a(a parama)
   {
-    AppMethodBeat.i(14433);
-    nativeTagKeyPoint(paramString, paramInt);
-    AppMethodBeat.o(14433);
+    AppMethodBeat.i(222019);
+    nativeSetDeviceInfo(parama.a, parama.b, parama.c, parama.d, parama.e, parama.f, parama.g, parama.h);
+    AppMethodBeat.o(222019);
   }
   
-  public static void a(String paramString, int paramInt1, int paramInt2)
+  public static void a(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
-    AppMethodBeat.i(14434);
-    nativeSetQuality(paramString, paramInt1, paramInt2);
-    AppMethodBeat.o(14434);
+    AppMethodBeat.i(222020);
+    nativesetRemoteQuality(paramString, paramInt1, paramLong, paramInt2);
+    AppMethodBeat.o(222020);
   }
   
-  public static void a(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  public static void b(int paramInt)
   {
-    AppMethodBeat.i(14429);
-    nativeSetDeviceInfo(paramString1, paramString2, paramInt, paramString3, paramString4);
-    AppMethodBeat.o(14429);
+    AppMethodBeat.i(222023);
+    nativeSetErrorCode(paramInt);
+    AppMethodBeat.o(222023);
   }
   
   public static void b(int paramInt1, int paramInt2)
@@ -91,25 +98,48 @@ public class TXCKeyPointReportProxy
     AppMethodBeat.o(14432);
   }
   
+  public static void c(int paramInt1, int paramInt2)
+  {
+    AppMethodBeat.i(222022);
+    nativeSetBasicInfo(paramInt1, paramInt2);
+    AppMethodBeat.o(222022);
+  }
+  
   private static native void nativeInit(String paramString);
   
   private static native void nativeSendCacheReport();
   
+  private static native void nativeSetBasicInfo(int paramInt1, int paramInt2);
+  
   private static native void nativeSetCpu(int paramInt1, int paramInt2);
   
-  private static native void nativeSetDeviceInfo(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4);
+  private static native void nativeSetDeviceInfo(int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString1, String paramString2, String paramString3, String paramString4);
   
-  private static native void nativeSetQuality(String paramString, int paramInt1, int paramInt2);
+  private static native void nativeSetErrorCode(int paramInt);
   
-  private static native void nativeTagKeyPoint(String paramString, int paramInt);
+  private static native void nativeSetLocalQuality(int paramInt1, int paramInt2, int paramInt3);
   
   private static native void nativeTagKeyPointEnd(int paramInt1, int paramInt2);
   
   private static native void nativeTagKeyPointStart(int paramInt);
+  
+  private static native void nativesetRemoteQuality(String paramString, int paramInt1, long paramLong, int paramInt2);
+  
+  public static class a
+  {
+    public int a;
+    public int b;
+    public int c;
+    public int d;
+    public String e;
+    public String f;
+    public String g;
+    public String h;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.basic.module.TXCKeyPointReportProxy
  * JD-Core Version:    0.7.0.1
  */

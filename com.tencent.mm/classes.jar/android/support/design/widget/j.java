@@ -10,7 +10,7 @@ import android.content.res.Resources;
 import android.graphics.Typeface;
 import android.support.design.a.a;
 import android.support.design.a.b;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.support.v4.widget.Space;
 import android.support.v4.widget.q;
 import android.text.TextUtils;
@@ -27,54 +27,54 @@ import java.util.List;
 final class j
 {
   final Context context;
-  final TextInputLayout sf;
-  private LinearLayout sg;
-  private int sh;
-  private FrameLayout si;
-  private int sj;
-  Animator sk;
-  private final float sl;
-  int sm;
-  int sn;
-  CharSequence so;
-  boolean sq;
-  TextView sr;
-  int ss;
-  CharSequence st;
-  boolean su;
-  TextView sv;
-  int sw;
-  Typeface sx;
+  int sA;
+  Typeface sB;
+  final TextInputLayout si;
+  private LinearLayout sj;
+  private int sk;
+  private FrameLayout sl;
+  private int sm;
+  Animator sn;
+  private final float so;
+  int sq;
+  int sr;
+  CharSequence ss;
+  boolean st;
+  TextView su;
+  int sv;
+  CharSequence sx;
+  boolean sy;
+  TextView sz;
   
   public j(TextInputLayout paramTextInputLayout)
   {
     this.context = paramTextInputLayout.getContext();
-    this.sf = paramTextInputLayout;
-    this.sl = this.context.getResources().getDimensionPixelSize(2131166135);
+    this.si = paramTextInputLayout;
+    this.so = this.context.getResources().getDimensionPixelSize(2131166176);
   }
   
-  private static boolean X(int paramInt)
+  private static boolean W(int paramInt)
   {
     return (paramInt == 0) || (paramInt == 1);
   }
   
-  private TextView Y(int paramInt)
+  private TextView X(int paramInt)
   {
     switch (paramInt)
     {
     default: 
       return null;
     case 1: 
-      return this.sr;
+      return this.su;
     }
-    return this.sv;
+    return this.sz;
   }
   
   private ObjectAnimator a(TextView paramTextView)
   {
-    paramTextView = ObjectAnimator.ofFloat(paramTextView, View.TRANSLATION_Y, new float[] { -this.sl, 0.0F });
+    paramTextView = ObjectAnimator.ofFloat(paramTextView, View.TRANSLATION_Y, new float[] { -this.so, 0.0F });
     paramTextView.setDuration(217L);
-    paramTextView.setInterpolator(a.gL);
+    paramTextView.setInterpolator(a.gN);
     return paramTextView;
   }
   
@@ -85,7 +85,7 @@ final class j
     {
       paramTextView = ObjectAnimator.ofFloat(paramTextView, View.ALPHA, new float[] { f });
       paramTextView.setDuration(167L);
-      paramTextView.setInterpolator(a.gI);
+      paramTextView.setInterpolator(a.gK);
       return paramTextView;
     }
   }
@@ -133,7 +133,7 @@ final class j
     TextView localTextView;
     if (paramInt2 != 0)
     {
-      localTextView = Y(paramInt2);
+      localTextView = X(paramInt2);
       if (localTextView != null)
       {
         localTextView.setVisibility(0);
@@ -142,7 +142,7 @@ final class j
     }
     if (paramInt1 != 0)
     {
-      localTextView = Y(paramInt1);
+      localTextView = X(paramInt1);
       if (localTextView != null)
       {
         localTextView.setVisibility(4);
@@ -151,14 +151,14 @@ final class j
         }
       }
     }
-    this.sm = paramInt2;
+    this.sq = paramInt2;
   }
   
-  final void Z(int paramInt)
+  final void Y(int paramInt)
   {
-    this.sw = paramInt;
-    if (this.sv != null) {
-      q.d(this.sv, paramInt);
+    this.sA = paramInt;
+    if (this.sz != null) {
+      q.d(this.sz, paramInt);
     }
   }
   
@@ -167,30 +167,30 @@ final class j
     if (paramBoolean)
     {
       AnimatorSet localAnimatorSet = new AnimatorSet();
-      this.sk = localAnimatorSet;
+      this.sn = localAnimatorSet;
       ArrayList localArrayList = new ArrayList();
-      a(localArrayList, this.su, this.sv, 2, paramInt1, paramInt2);
-      a(localArrayList, this.sq, this.sr, 1, paramInt1, paramInt2);
+      a(localArrayList, this.sy, this.sz, 2, paramInt1, paramInt2);
+      a(localArrayList, this.st, this.su, 1, paramInt1, paramInt2);
       b.a(localAnimatorSet, localArrayList);
       localAnimatorSet.addListener(new AnimatorListenerAdapter()
       {
         public final void onAnimationEnd(Animator paramAnonymousAnimator)
         {
-          j.this.sm = paramInt2;
-          j.this.sk = null;
-          if (this.sz != null)
+          j.this.sq = paramInt2;
+          j.this.sn = null;
+          if (this.sD != null)
           {
-            this.sz.setVisibility(4);
-            if ((paramInt1 == 1) && (j.this.sr != null)) {
-              j.this.sr.setText(null);
+            this.sD.setVisibility(4);
+            if ((paramInt1 == 1) && (j.this.su != null)) {
+              j.this.su.setText(null);
             }
           }
         }
         
         public final void onAnimationStart(Animator paramAnonymousAnimator)
         {
-          if (this.sB != null) {
-            this.sB.setVisibility(0);
+          if (this.sF != null) {
+            this.sF.setVisibility(0);
           }
         }
       });
@@ -198,9 +198,9 @@ final class j
     }
     for (;;)
     {
-      this.sf.dk();
-      this.sf.d(paramBoolean, false);
-      this.sf.dt();
+      this.si.dn();
+      this.si.d(paramBoolean, false);
+      this.si.dw();
       return;
       p(paramInt1, paramInt2);
     }
@@ -208,128 +208,128 @@ final class j
   
   final void a(TextView paramTextView, int paramInt)
   {
-    if ((this.sg == null) && (this.si == null))
+    if ((this.sj == null) && (this.sl == null))
     {
-      this.sg = new LinearLayout(this.context);
-      this.sg.setOrientation(0);
-      this.sf.addView(this.sg, -1, -2);
-      this.si = new FrameLayout(this.context);
-      this.sg.addView(this.si, -1, new FrameLayout.LayoutParams(-2, -2));
+      this.sj = new LinearLayout(this.context);
+      this.sj.setOrientation(0);
+      this.si.addView(this.sj, -1, -2);
+      this.sl = new FrameLayout(this.context);
+      this.sj.addView(this.sl, -1, new FrameLayout.LayoutParams(-2, -2));
       Space localSpace = new Space(this.context);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, 0, 1.0F);
-      this.sg.addView(localSpace, localLayoutParams);
-      if (this.sf.getEditText() != null) {
-        cO();
+      this.sj.addView(localSpace, localLayoutParams);
+      if (this.si.getEditText() != null) {
+        cQ();
       }
     }
-    if (X(paramInt))
+    if (W(paramInt))
     {
-      this.si.setVisibility(0);
-      this.si.addView(paramTextView);
-      this.sj += 1;
+      this.sl.setVisibility(0);
+      this.sl.addView(paramTextView);
+      this.sm += 1;
     }
     for (;;)
     {
-      this.sg.setVisibility(0);
-      this.sh += 1;
+      this.sj.setVisibility(0);
+      this.sk += 1;
       return;
-      this.sg.addView(paramTextView, paramInt);
+      this.sj.addView(paramTextView, paramInt);
     }
   }
   
   final boolean a(TextView paramTextView, CharSequence paramCharSequence)
   {
-    return (t.ay(this.sf)) && (this.sf.isEnabled()) && ((this.sn != this.sm) || (paramTextView == null) || (!TextUtils.equals(paramTextView.getText(), paramCharSequence)));
+    return (u.az(this.si)) && (this.si.isEnabled()) && ((this.sr != this.sq) || (paramTextView == null) || (!TextUtils.equals(paramTextView.getText(), paramCharSequence)));
   }
   
   final void b(TextView paramTextView, int paramInt)
   {
-    if (this.sg == null) {
+    if (this.sj == null) {
       return;
     }
-    if ((X(paramInt)) && (this.si != null))
+    if ((W(paramInt)) && (this.sl != null))
     {
-      this.sj -= 1;
-      b(this.si, this.sj);
-      this.si.removeView(paramTextView);
+      this.sm -= 1;
+      b(this.sl, this.sm);
+      this.sl.removeView(paramTextView);
     }
     for (;;)
     {
-      this.sh -= 1;
-      b(this.sg, this.sh);
+      this.sk -= 1;
+      b(this.sj, this.sk);
       return;
-      this.sg.removeView(paramTextView);
-    }
-  }
-  
-  final void cM()
-  {
-    this.so = null;
-    cN();
-    if (this.sm == 1) {
-      if ((!this.su) || (TextUtils.isEmpty(this.st))) {
-        break label61;
-      }
-    }
-    label61:
-    for (this.sn = 2;; this.sn = 0)
-    {
-      a(this.sm, this.sn, a(this.sr, null));
-      return;
-    }
-  }
-  
-  final void cN()
-  {
-    if (this.sk != null) {
-      this.sk.cancel();
+      this.sj.removeView(paramTextView);
     }
   }
   
   final void cO()
   {
-    if ((this.sg != null) && (this.sf.getEditText() != null)) {}
+    this.ss = null;
+    cP();
+    if (this.sq == 1) {
+      if ((!this.sy) || (TextUtils.isEmpty(this.sx))) {
+        break label61;
+      }
+    }
+    label61:
+    for (this.sr = 2;; this.sr = 0)
+    {
+      a(this.sq, this.sr, a(this.su, null));
+      return;
+    }
+  }
+  
+  final void cP()
+  {
+    if (this.sn != null) {
+      this.sn.cancel();
+    }
+  }
+  
+  final void cQ()
+  {
+    if ((this.sj != null) && (this.si.getEditText() != null)) {}
     for (int i = 1;; i = 0)
     {
       if (i != 0) {
-        t.d(this.sg, t.ab(this.sf.getEditText()), 0, t.ac(this.sf.getEditText()), 0);
+        u.d(this.sj, u.ac(this.si.getEditText()), 0, u.ad(this.si.getEditText()), 0);
       }
       return;
     }
   }
   
-  final boolean cP()
+  final boolean cR()
   {
-    return (this.sn == 1) && (this.sr != null) && (!TextUtils.isEmpty(this.so));
+    return (this.sr == 1) && (this.su != null) && (!TextUtils.isEmpty(this.ss));
   }
   
-  final int cQ()
+  final int cS()
   {
-    if (this.sr != null) {
-      return this.sr.getCurrentTextColor();
+    if (this.su != null) {
+      return this.su.getCurrentTextColor();
     }
     return -1;
   }
   
-  final ColorStateList cR()
+  final ColorStateList cT()
   {
-    if (this.sr != null) {
-      return this.sr.getTextColors();
+    if (this.su != null) {
+      return this.su.getTextColors();
     }
     return null;
   }
   
   final void setErrorTextAppearance(int paramInt)
   {
-    this.ss = paramInt;
-    if (this.sr != null) {
-      this.sf.c(this.sr, paramInt);
+    this.sv = paramInt;
+    if (this.su != null) {
+      this.si.c(this.su, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.widget.j
  * JD-Core Version:    0.7.0.1
  */

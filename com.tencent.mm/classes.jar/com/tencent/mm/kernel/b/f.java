@@ -19,11 +19,11 @@ public abstract class f
   
   private void checkIfNeedDefaultDependency()
   {
-    Object localObject = h.ajV().ajN();
+    Object localObject = h.aAl().aAd();
     Class localClass = getClass();
-    if (!((com.tencent.mm.kernel.c)localObject).gDH.bx(localClass))
+    if (!((com.tencent.mm.kernel.c)localObject).hqu.bF(localClass))
     {
-      localObject = h.ajV().ajN().gDK;
+      localObject = h.aAl().aAd().hqx;
       if (localObject != null)
       {
         dependsOn((Class)localObject);
@@ -51,7 +51,7 @@ public abstract class f
   {
     Assert.assertNotNull(paramClass);
     Assert.assertTrue(paramClass.isInstance(this));
-    h.ajV().ajN().k(getClass(), paramClass);
+    h.aAl().aAd().k(getClass(), paramClass);
   }
   
   public void configure(g paramg) {}
@@ -65,7 +65,7 @@ public abstract class f
       j.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
       return;
     }
-    h.ajV().ajN().l(getClass(), paramClass);
+    h.aAl().aAd().l(getClass(), paramClass);
   }
   
   protected void dependsOnRoot()
@@ -75,7 +75,7 @@ public abstract class f
       j.w("MMKernel.Plugin", "Ignore this dependency. It's not dependency phase now!", new Object[0]);
       return;
     }
-    h.ajV().ajN().l(getClass(), getClass());
+    h.aAl().aAd().l(getClass(), getClass());
   }
   
   public int hashCode()
@@ -149,7 +149,7 @@ public abstract class f
       if (!this.mPins.contains(paramc))
       {
         this.mPins.add(paramc);
-        h.ajV().ajN().a(paramc.getClass(), new e(paramc));
+        h.aAl().aAd().a(paramc.getClass(), new e(paramc));
       }
       return;
     }
@@ -178,7 +178,7 @@ public abstract class f
       if (this.mPins.contains(paramc))
       {
         this.mPins.remove(paramc);
-        h.ajV().ajN().ac(paramc.getClass());
+        h.aAl().aAd().ag(paramc.getClass());
       }
       return;
     }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:background="@color/afz" android:paddingLeft="@dimen/ir" android:paddingRight="@dimen/ir" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="56.0dip">
+            <ImageView android:gravity="center_horizontal" android:id="@id/h8t" android:padding="@dimen/g" android:layout_width="@dimen/h" android:layout_height="@dimen/h" android:src="@drawable/bcb" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/t3" />
+            <TextView android:textColor="@color/a2x" android:id="@id/h8q" android:layout_width="wrap_content" android:layout_below="@id/h8t" android:layout_centerHorizontal="true" style="@style/t4" />
+            <TextView android:textColor="#fffd8f44" android:id="@id/h8s" android:visibility="gone" android:text="blablablablablablablablablablablablablabla" android:layout_below="@id/h8r" android:layout_centerHorizontal="true" style="@style/t4" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/hp" android:textColor="@color/a2x" android:gravity="center" android:id="@id/e04" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/hv" android:text="邀请4位好友进群" />
+        <TextView android:textSize="@dimen/hp" android:textColor="@color/a2x" android:gravity="center" android:id="@id/e03" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="@dimen/ib" />
+        <View android:background="#ffd8d8d8" android:paddingLeft="@dimen/c" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_marginTop="@dimen/hv" android:layout_marginBottom="@dimen/hv" />
+        <GridView android:gravity="center" android:id="@id/a2l" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:verticalSpacing="@dimen/k" android:numColumns="4" />
+        <TextView android:id="@id/bi" android:layout_marginTop="@dimen/ke" android:layout_marginBottom="@dimen/ke" android:text="@string/cg" style="@style/ou" />
+    </LinearLayout>
+</ScrollView>

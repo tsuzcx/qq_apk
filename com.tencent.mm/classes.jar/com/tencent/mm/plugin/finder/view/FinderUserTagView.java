@@ -7,10 +7,10 @@ import android.util.AttributeSet;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewGroup.MarginLayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderUserTagView;", "Landroid/support/v7/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderUserTagView;", "Landroid/support/v7/widget/AppCompatTextView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "plugin-finder_release"})
 public final class FinderUserTagView
   extends AppCompatTextView
 {
@@ -22,13 +22,13 @@ public final class FinderUserTagView
     setLayoutParams((ViewGroup.LayoutParams)paramContext);
     paramAttributeSet = getContext();
     p.g(paramAttributeSet, "context");
-    paramContext.rightMargin = ((int)paramAttributeSet.getResources().getDimension(2131165303));
+    paramContext.rightMargin = ((int)paramAttributeSet.getResources().getDimension(2131165314));
     paramContext = getContext();
     p.g(paramContext, "context");
-    setTextColor(paramContext.getResources().getColor(2131099662));
+    setTextColor(paramContext.getResources().getColor(2131099665));
     paramContext = getContext();
     p.g(paramContext, "context");
-    setTextSize(0, paramContext.getResources().getDimension(2131165569));
+    setTextSize(0, paramContext.getResources().getDimension(2131165587));
     AppMethodBeat.o(168426);
   }
   
@@ -40,19 +40,19 @@ public final class FinderUserTagView
     setLayoutParams((ViewGroup.LayoutParams)paramContext);
     paramAttributeSet = getContext();
     p.g(paramAttributeSet, "context");
-    paramContext.rightMargin = ((int)paramAttributeSet.getResources().getDimension(2131165303));
+    paramContext.rightMargin = ((int)paramAttributeSet.getResources().getDimension(2131165314));
     paramContext = getContext();
     p.g(paramContext, "context");
-    setTextColor(paramContext.getResources().getColor(2131099662));
+    setTextColor(paramContext.getResources().getColor(2131099665));
     paramContext = getContext();
     p.g(paramContext, "context");
-    setTextSize(0, paramContext.getResources().getDimension(2131165569));
+    setTextSize(0, paramContext.getResources().getDimension(2131165587));
     AppMethodBeat.o(168427);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.view.FinderUserTagView
  * JD-Core Version:    0.7.0.1
  */

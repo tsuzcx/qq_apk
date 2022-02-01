@@ -18,41 +18,41 @@ import java.util.Locale;
 
 public final class e
 {
-  public static DateFormat iPb;
+  public static DateFormat dateFormat;
   Context ctx;
   int endYear;
   int gravity;
-  private int iNG;
-  float iOF;
-  WheelView.b iOH;
-  boolean[] iOi;
-  WheelView iPc;
-  WheelView iPd;
-  WheelView iPe;
-  WheelView iPf;
-  WheelView iPg;
-  WheelView iPh;
-  int iPi;
-  int iPj;
-  int iPk;
-  int iPl;
-  int iPm;
-  int iPn;
-  int iPo;
-  int iPp;
-  int iPq;
-  a iPr;
-  private String[] iPs;
-  private String[] iPt;
-  final List<String> iPu;
-  final List<String> iPw;
+  boolean[] jKX;
+  private int jKu;
+  WheelView jLQ;
+  WheelView jLR;
+  WheelView jLS;
+  WheelView jLT;
+  WheelView jLU;
+  WheelView jLV;
+  int jLW;
+  int jLX;
+  int jLY;
+  int jLZ;
+  float jLu;
+  WheelView.b jLw;
+  int jMa;
+  int jMb;
+  int jMc;
+  int jMd;
+  int jMe;
+  a jMf;
+  private String[] jMg;
+  private String[] jMh;
+  final List<String> jMi;
+  final List<String> jMj;
   int startYear;
   View view;
   
   static
   {
     AppMethodBeat.i(175380);
-    iPb = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+    dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
     AppMethodBeat.o(175380);
   }
   
@@ -61,23 +61,23 @@ public final class e
     AppMethodBeat.i(175371);
     this.startYear = 1900;
     this.endYear = 2100;
-    this.iPi = 1;
-    this.iPj = 12;
-    this.iPk = 1;
-    this.iPl = 31;
-    this.iPm = 0;
-    this.iPn = 0;
-    this.iPo = 23;
-    this.iPp = 59;
-    this.iPs = new String[] { "1", "3", "5", "7", "8", "10", "12" };
-    this.iPt = new String[] { "4", "6", "9", "11" };
-    this.iPu = Arrays.asList(this.iPs);
-    this.iPw = Arrays.asList(this.iPt);
+    this.jLW = 1;
+    this.jLX = 12;
+    this.jLY = 1;
+    this.jLZ = 31;
+    this.jMa = 0;
+    this.jMb = 0;
+    this.jMc = 23;
+    this.jMd = 59;
+    this.jMg = new String[] { "1", "3", "5", "7", "8", "10", "12" };
+    this.jMh = new String[] { "4", "6", "9", "11" };
+    this.jMi = Arrays.asList(this.jMg);
+    this.jMj = Arrays.asList(this.jMh);
     this.ctx = paramContext;
     AppMethodBeat.o(175371);
   }
   
-  static void aH(List<WheelView> paramList)
+  static void aP(List<WheelView> paramList)
   {
     AppMethodBeat.i(175373);
     paramList = paramList.iterator();
@@ -87,15 +87,15 @@ public final class e
     AppMethodBeat.o(175373);
   }
   
-  private void aQE()
+  private void blj()
   {
     AppMethodBeat.i(175375);
-    this.iPe.setDividerColor(this.iNG);
-    this.iPd.setDividerColor(this.iNG);
-    this.iPc.setDividerColor(this.iNG);
-    this.iPf.setDividerColor(this.iNG);
-    this.iPg.setDividerColor(this.iNG);
-    this.iPh.setDividerColor(this.iNG);
+    this.jLS.setDividerColor(this.jKu);
+    this.jLR.setDividerColor(this.jKu);
+    this.jLQ.setDividerColor(this.jKu);
+    this.jLT.setDividerColor(this.jKu);
+    this.jLU.setDividerColor(this.jKu);
+    this.jLV.setDividerColor(this.jKu);
     AppMethodBeat.o(175375);
   }
   
@@ -116,7 +116,24 @@ public final class e
     return 0;
   }
   
-  public final List<WheelView> aQG()
+  final void b(WheelView paramWheelView)
+  {
+    AppMethodBeat.i(175374);
+    if (this.jMf != null) {
+      paramWheelView.setOnItemSelectedListener(new com.tencent.mm.picker.base.b.b()
+      {
+        public final void onItemSelected(int paramAnonymousInt)
+        {
+          AppMethodBeat.i(175370);
+          e.k(e.this).bla();
+          AppMethodBeat.o(175370);
+        }
+      });
+    }
+    AppMethodBeat.o(175374);
+  }
+  
+  public final List<WheelView> bll()
   {
     AppMethodBeat.i(175372);
     ArrayList localArrayList = new ArrayList();
@@ -131,75 +148,75 @@ public final class e
         i += 1;
         break;
       case 0: 
-        localWheelView = this.iPc;
-        if (this.iOi[i] != 0) {}
+        localWheelView = this.jLQ;
+        if (this.jKX[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.iOi[i] == 0) {
+          if (this.jKX[i] == 0) {
             break;
           }
-          localArrayList.add(this.iPc);
+          localArrayList.add(this.jLQ);
           break;
         }
       case 1: 
-        localWheelView = this.iPd;
-        if (this.iOi[i] != 0) {}
+        localWheelView = this.jLR;
+        if (this.jKX[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.iOi[i] == 0) {
+          if (this.jKX[i] == 0) {
             break;
           }
-          localArrayList.add(this.iPd);
+          localArrayList.add(this.jLR);
           break;
         }
       case 2: 
-        localWheelView = this.iPe;
-        if (this.iOi[i] != 0) {}
+        localWheelView = this.jLS;
+        if (this.jKX[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.iOi[i] == 0) {
+          if (this.jKX[i] == 0) {
             break;
           }
-          localArrayList.add(this.iPe);
+          localArrayList.add(this.jLS);
           break;
         }
       case 3: 
-        localWheelView = this.iPf;
-        if (this.iOi[i] != 0) {}
+        localWheelView = this.jLT;
+        if (this.jKX[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.iOi[i] == 0) {
+          if (this.jKX[i] == 0) {
             break;
           }
-          localArrayList.add(this.iPf);
+          localArrayList.add(this.jLT);
           break;
         }
       case 4: 
-        localWheelView = this.iPg;
-        if (this.iOi[i] != 0) {}
+        localWheelView = this.jLU;
+        if (this.jKX[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.iOi[i] == 0) {
+          if (this.jKX[i] == 0) {
             break;
           }
-          localArrayList.add(this.iPg);
+          localArrayList.add(this.jLU);
           break;
         }
       case 5: 
-        localWheelView = this.iPh;
-        if (this.iOi[i] != 0) {}
+        localWheelView = this.jLV;
+        if (this.jKX[i] != 0) {}
         for (j = 0;; j = 8)
         {
           localWheelView.setVisibility(j);
-          if (this.iOi[i] == 0) {
+          if (this.jKX[i] == 0) {
             break;
           }
-          localArrayList.add(this.iPh);
+          localArrayList.add(this.jLV);
           break;
         }
       }
@@ -208,42 +225,25 @@ public final class e
     return localArrayList;
   }
   
-  public final String aQH()
+  public final String getTime()
   {
     AppMethodBeat.i(175376);
-    String str = String.valueOf(c(this.iPc) + "-" + c(this.iPd) + "-" + c(this.iPe) + " " + c(this.iPf) + ":" + c(this.iPg) + ":" + c(this.iPh));
+    String str = String.valueOf(c(this.jLQ) + "-" + c(this.jLR) + "-" + c(this.jLS) + " " + c(this.jLT) + ":" + c(this.jLU) + ":" + c(this.jLV));
     AppMethodBeat.o(175376);
     return str;
-  }
-  
-  final void b(WheelView paramWheelView)
-  {
-    AppMethodBeat.i(175374);
-    if (this.iPr != null) {
-      paramWheelView.setOnItemSelectedListener(new com.tencent.mm.picker.base.b.b()
-      {
-        public final void onItemSelected(int paramAnonymousInt)
-        {
-          AppMethodBeat.i(175370);
-          e.k(e.this).aQv();
-          AppMethodBeat.o(175370);
-        }
-      });
-    }
-    AppMethodBeat.o(175374);
   }
   
   public final void setDividerColor(int paramInt)
   {
     AppMethodBeat.i(175378);
-    this.iNG = paramInt;
-    aQE();
+    this.jKu = paramInt;
+    blj();
     AppMethodBeat.o(175378);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.picker.f.e
  * JD-Core Version:    0.7.0.1
  */

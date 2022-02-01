@@ -1,50 +1,51 @@
 package com.tencent.mm.plugin.game.luggage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.game.luggage.h.a;
-import com.tencent.mm.plugin.game.luggage.h.a.3;
-import com.tencent.mm.plugin.game.luggage.h.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aw;
+import com.tencent.mm.plugin.game.luggage.i.a;
+import com.tencent.mm.plugin.game.luggage.i.a.3;
+import com.tencent.mm.plugin.game.luggage.i.a.a;
+import com.tencent.mm.plugin.wepkg.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public final class f
 {
-  private static AtomicInteger uef;
+  private static AtomicInteger xwf;
   
   static
   {
-    AppMethodBeat.i(192975);
-    uef = new AtomicInteger(0);
-    AppMethodBeat.o(192975);
+    AppMethodBeat.i(186829);
+    xwf = new AtomicInteger(0);
+    AppMethodBeat.o(186829);
   }
   
-  public static void cal()
+  public static void cyc()
   {
-    AppMethodBeat.i(192973);
-    uef.getAndIncrement();
-    AppMethodBeat.o(192973);
+    AppMethodBeat.i(186827);
+    xwf.getAndIncrement();
+    AppMethodBeat.o(186827);
   }
   
   public static void remove()
   {
-    AppMethodBeat.i(192974);
-    int i = uef.decrementAndGet();
-    ae.i("MicroMsg.LuggageGameWebViewActivityStack", "remove count = ".concat(String.valueOf(i)));
+    AppMethodBeat.i(186828);
+    int i = xwf.decrementAndGet();
+    Log.i("MicroMsg.LuggageGameWebViewActivityStack", "remove count = ".concat(String.valueOf(i)));
     if (i <= 0)
     {
-      if (a.dao() != null)
+      if (a.dTW() != null)
       {
-        a locala = a.dao();
-        ae.i("MicroMsg.GameJsCore", "stop");
-        locala.ugU = a.a.uhe;
-        locala.amD("onStop");
-        locala.cji = new aw(new a.3(locala), false);
-        locala.cji.ay(300000L, 300000L);
+        a locala = a.dTW();
+        Log.i("MicroMsg.GameJsCore", "stop");
+        locala.xzp = a.a.xzA;
+        locala.azS("onStop");
+        locala.cve = new MTimerHandler(new a.3(locala), false);
+        locala.cve.startTimer(300000L);
       }
-      ae.i("MicroMsg.GameJsServerCommLibPkg", "load");
+      b.vC();
     }
-    AppMethodBeat.o(192974);
+    AppMethodBeat.o(186828);
   }
 }
 

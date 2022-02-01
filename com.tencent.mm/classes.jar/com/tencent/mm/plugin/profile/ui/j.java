@@ -7,77 +7,130 @@ import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.bl.a;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.model.bp.a;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.v;
-import com.tencent.mm.model.x;
-import com.tencent.mm.n.e;
-import com.tencent.mm.n.g;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.profile.b;
 import com.tencent.mm.pluginsdk.b.a;
 import com.tencent.mm.pluginsdk.m;
 import com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.ui.base.p;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.ui.base.preference.CheckBoxPreference;
-import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.r;
+import com.tencent.mm.ui.base.q;
+import com.tencent.mm.ui.s;
 import java.util.Timer;
 import java.util.TimerTask;
 import junit.framework.Assert;
 
 public final class j
-  implements a, n.b
+  implements a, MStorageEx.IOnStorageChange
 {
   private static boolean isDeleteCancel = false;
-  private an contact;
+  private as contact;
   private Context context;
-  private f screen;
+  private com.tencent.mm.ui.base.preference.f screen;
   
   public j(Context paramContext)
   {
     this.context = paramContext;
   }
   
-  private void ceD()
+  public static void C(final Context paramContext, boolean paramBoolean)
+  {
+    AppMethodBeat.i(27176);
+    if (paramBoolean) {}
+    for (Object localObject = paramContext.getString(2131765544);; localObject = paramContext.getString(2131765552))
+    {
+      paramContext.getString(2131755998);
+      localObject = com.tencent.mm.ui.base.h.a(paramContext, (String)localObject, true, null);
+      paramContext = new MMHandler()
+      {
+        public final void handleMessage(Message paramAnonymousMessage)
+        {
+          AppMethodBeat.i(27166);
+          if (this.qNu) {
+            j.sI(true);
+          }
+          int i = z.aUl();
+          if (this.qNu) {
+            i &= 0xFFFFFFEF;
+          }
+          for (;;)
+          {
+            bg.aVF();
+            c.azQ().set(34, Integer.valueOf(i));
+            bg.aVF();
+            c.aSM().d(new com.tencent.mm.ba.l("", "", "", "", "", "", "", "", i, "", ""));
+            if (!this.qNu) {
+              j.access$100(paramContext);
+            }
+            if (this.znB != null) {
+              this.znB.onNotifyChange(null, null);
+            }
+            AppMethodBeat.o(27166);
+            return;
+            i |= 0x10;
+          }
+        }
+      };
+      new Timer().schedule(new TimerTask()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(27167);
+          if (this.qDi != null)
+          {
+            this.qDi.dismiss();
+            paramContext.sendEmptyMessage(0);
+          }
+          AppMethodBeat.o(27167);
+        }
+      }, 1500L);
+      AppMethodBeat.o(27176);
+      return;
+    }
+  }
+  
+  private void cCt()
   {
     boolean bool2 = true;
     AppMethodBeat.i(27175);
     boolean bool3 = isOpen();
-    boolean bool4 = dEe();
-    Object localObject = (HelperHeaderPreference)this.screen.aXe("contact_info_header_helper");
-    ((HelperHeaderPreference)localObject).ba(this.contact.field_username, this.contact.adG(), this.context.getString(2131757726));
+    boolean bool4 = eEx();
+    Object localObject = (HelperHeaderPreference)this.screen.bmg("contact_info_header_helper");
+    ((HelperHeaderPreference)localObject).bk(this.contact.field_username, this.contact.arJ(), this.context.getString(2131757957));
     int i;
     boolean bool1;
     if (bool3)
     {
       i = 1;
       ((HelperHeaderPreference)localObject).updateStatus(i);
-      this.screen.cT("contact_info_medianote_install", bool3);
+      this.screen.jdMethod_do("contact_info_medianote_install", bool3);
       localObject = this.screen;
       if (bool3) {
         break label251;
       }
       bool1 = true;
       label102:
-      ((f)localObject).cT("contact_info_medianote_view", bool1);
-      if ((!bool3) || (v.aBp())) {
+      ((com.tencent.mm.ui.base.preference.f)localObject).jdMethod_do("contact_info_medianote_view", bool1);
+      if ((!bool3) || (z.aUM())) {
         break label276;
       }
-      if (bu.getInt(g.acL().getValue("BindQQSwitch"), 1) != 1) {
+      if (Util.getInt(com.tencent.mm.n.h.aqJ().getValue("BindQQSwitch"), 1) != 1) {
         break label256;
       }
       bool1 = true;
       label142:
-      ae.i("MicroMsg.ContactWidgetMediaNote", "summerqq BindQQSwitch off");
+      Log.i("MicroMsg.ContactWidgetMediaNote", "summerqq BindQQSwitch off");
     }
     for (;;)
     {
@@ -86,14 +139,14 @@ public final class j
       {
         bool1 = true;
         label161:
-        ((f)localObject).cT("contact_info_medianote_sync_to_qqmail", bool1);
+        ((com.tencent.mm.ui.base.preference.f)localObject).jdMethod_do("contact_info_medianote_sync_to_qqmail", bool1);
         localObject = this.screen;
         if (bool3) {
           break label266;
         }
         bool1 = true;
         label185:
-        ((f)localObject).cT("contact_info_medianote_clear_data", bool1);
+        ((com.tencent.mm.ui.base.preference.f)localObject).jdMethod_do("contact_info_medianote_clear_data", bool1);
         localObject = this.screen;
         if (bool3) {
           break label271;
@@ -104,8 +157,8 @@ public final class j
       label271:
       for (bool1 = bool2;; bool1 = false)
       {
-        ((f)localObject).cT("contact_info_medianote_uninstall", bool1);
-        ((CheckBoxPreference)this.screen.aXe("contact_info_medianote_sync_to_qqmail")).setChecked(bool4);
+        ((com.tencent.mm.ui.base.preference.f)localObject).jdMethod_do("contact_info_medianote_uninstall", bool1);
+        ((CheckBoxPreference)this.screen.bmg("contact_info_medianote_sync_to_qqmail")).setChecked(bool4);
         AppMethodBeat.o(27175);
         return;
         i = 0;
@@ -125,16 +178,16 @@ public final class j
     }
   }
   
-  private static boolean dEe()
+  private static boolean eEx()
   {
     AppMethodBeat.i(27173);
-    int i = v.aAG();
-    if (!v.aBp())
+    int i = z.aUc();
+    if (!z.aUM())
     {
       if ((i & 0x4000) != 0)
       {
-        bc.aCg();
-        c.ajA().set(7, Integer.valueOf(i & 0xFFFFBFFF));
+        bg.aVF();
+        c.azQ().set(7, Integer.valueOf(i & 0xFFFFBFFF));
       }
       AppMethodBeat.o(27173);
       return false;
@@ -151,7 +204,7 @@ public final class j
   private static boolean isOpen()
   {
     AppMethodBeat.i(27172);
-    if ((v.aAO() & 0x10) == 0)
+    if ((z.aUl() & 0x10) == 0)
     {
       AppMethodBeat.o(27172);
       return true;
@@ -160,15 +213,15 @@ public final class j
     return false;
   }
   
-  static void pA(boolean paramBoolean)
+  static void sI(boolean paramBoolean)
   {
     AppMethodBeat.i(27179);
-    int i = v.aAG();
+    int i = z.aUc();
     if (paramBoolean)
     {
       i |= 0x4000;
-      bc.aCg();
-      c.ajA().set(7, Integer.valueOf(i));
+      bg.aVF();
+      c.azQ().set(7, Integer.valueOf(i));
       if (!paramBoolean) {
         break label80;
       }
@@ -176,8 +229,8 @@ public final class j
     label80:
     for (i = 1;; i = 2)
     {
-      bc.aCg();
-      c.azE().d(new com.tencent.mm.ba.h(13, i));
+      bg.aVF();
+      c.aSM().d(new com.tencent.mm.ba.h(13, i));
       AppMethodBeat.o(27179);
       return;
       i &= 0xFFFFBFFF;
@@ -185,84 +238,7 @@ public final class j
     }
   }
   
-  public static void z(final Context paramContext, boolean paramBoolean)
-  {
-    AppMethodBeat.i(27176);
-    if (paramBoolean) {}
-    for (Object localObject = paramContext.getString(2131763362);; localObject = paramContext.getString(2131763370))
-    {
-      paramContext.getString(2131755906);
-      localObject = com.tencent.mm.ui.base.h.b(paramContext, (String)localObject, true, null);
-      paramContext = new aq()
-      {
-        public final void handleMessage(Message paramAnonymousMessage)
-        {
-          AppMethodBeat.i(27166);
-          if (this.pyd) {
-            j.pA(true);
-          }
-          int i = v.aAO();
-          if (this.pyd) {
-            i &= 0xFFFFFFEF;
-          }
-          for (;;)
-          {
-            bc.aCg();
-            c.ajA().set(34, Integer.valueOf(i));
-            bc.aCg();
-            c.azE().d(new com.tencent.mm.ba.l("", "", "", "", "", "", "", "", i, "", ""));
-            if (!this.pyd) {
-              j.access$100(paramContext);
-            }
-            if (this.vTv != null) {
-              this.vTv.a(null, null);
-            }
-            AppMethodBeat.o(27166);
-            return;
-            i |= 0x10;
-          }
-        }
-      };
-      new Timer().schedule(new TimerTask()
-      {
-        public final void run()
-        {
-          AppMethodBeat.i(27167);
-          if (this.pnC != null)
-          {
-            this.pnC.dismiss();
-            paramContext.sendEmptyMessage(0);
-          }
-          AppMethodBeat.o(27167);
-        }
-      }, 1500L);
-      AppMethodBeat.o(27176);
-      return;
-    }
-  }
-  
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(27178);
-    int i = bu.m(paramObject, 0);
-    ae.d("MicroMsg.ContactWidgetMediaNote", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramn });
-    bc.aCg();
-    if ((paramn != c.ajA()) || (i <= 0))
-    {
-      ae.e("MicroMsg.ContactWidgetMediaNote", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramn });
-      AppMethodBeat.o(27178);
-      return;
-    }
-    if ((i != 40) && (i != 34) && (i != 7))
-    {
-      AppMethodBeat.o(27178);
-      return;
-    }
-    ceD();
-    AppMethodBeat.o(27178);
-  }
-  
-  public final boolean a(f paramf, an paraman, boolean paramBoolean, int paramInt)
+  public final boolean a(com.tencent.mm.ui.base.preference.f paramf, as paramas, boolean paramBoolean, int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(27174);
@@ -271,27 +247,27 @@ public final class j
     {
       Assert.assertTrue(paramBoolean);
       paramBoolean = bool;
-      if (paraman != null) {
+      if (paramas != null) {
         paramBoolean = true;
       }
       Assert.assertTrue(paramBoolean);
-      Assert.assertTrue(x.AD(paraman.field_username));
-      bc.aCg();
-      c.ajA().a(this);
-      this.contact = paraman;
+      Assert.assertTrue(ab.Ji(paramas.field_username));
+      bg.aVF();
+      c.azQ().add(this);
+      this.contact = paramas;
       this.screen = paramf;
-      paramf.addPreferencesFromResource(2131951646);
-      ceD();
+      paramf.addPreferencesFromResource(2132017183);
+      cCt();
       AppMethodBeat.o(27174);
       return true;
     }
   }
   
-  public final boolean abx(String paramString)
+  public final boolean alD(String paramString)
   {
     AppMethodBeat.i(27171);
-    ae.d("MicroMsg.ContactWidgetMediaNote", "handleEvent : key = ".concat(String.valueOf(paramString)));
-    if (bu.nullAsNil(paramString).length() <= 0)
+    Log.d("MicroMsg.ContactWidgetMediaNote", "handleEvent : key = ".concat(String.valueOf(paramString)));
+    if (Util.nullAsNil(paramString).length() <= 0)
     {
       AppMethodBeat.o(27171);
       return false;
@@ -300,36 +276,36 @@ public final class j
     {
       paramString = new Intent();
       paramString.putExtra("Chat_User", "medianote");
-      b.iUz.d(paramString, this.context);
-      b.iUA.MM();
+      b.jRt.d(paramString, this.context);
+      b.jRu.WZ();
       AppMethodBeat.o(27171);
       return true;
     }
     if (paramString.equals("contact_info_medianote_sync_to_qqmail"))
     {
-      if (!v.aBp())
+      if (!z.aUM())
       {
-        com.tencent.mm.ui.base.h.a(this.context, 2131757725, 2131757724, new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(this.context, 2131757956, 2131757955, new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
             AppMethodBeat.i(27163);
-            b.iUz.g(new Intent(), j.a(j.this));
+            b.jRt.g(new Intent(), j.a(j.this));
             AppMethodBeat.o(27163);
           }
         }, null);
-        ceD();
+        cCt();
       }
       for (;;)
       {
         AppMethodBeat.o(27171);
         return true;
-        pA(((CheckBoxPreference)this.screen.aXe(paramString)).isChecked());
+        sI(((CheckBoxPreference)this.screen.bmg(paramString)).isChecked());
       }
     }
     if (paramString.equals("contact_info_medianote_clear_data"))
     {
-      com.tencent.mm.ui.base.h.e(this.context, this.context.getString(2131757630), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.c(this.context, this.context.getString(2131757858), "", this.context.getString(2131755764), this.context.getString(2131755761), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -343,44 +319,65 @@ public final class j
     }
     if (paramString.equals("contact_info_medianote_install"))
     {
-      z(this.context, true);
+      C(this.context, true);
       AppMethodBeat.o(27171);
       return true;
     }
     if (paramString.equals("contact_info_medianote_uninstall"))
     {
-      com.tencent.mm.ui.base.h.e(this.context, this.context.getString(2131763366), "", this.context.getString(2131755694), this.context.getString(2131755691), new DialogInterface.OnClickListener()
+      com.tencent.mm.ui.base.h.c(this.context, this.context.getString(2131765548), "", this.context.getString(2131755764), this.context.getString(2131755761), new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(27165);
-          j.z(j.a(j.this), false);
+          j.C(j.a(j.this), false);
           AppMethodBeat.o(27165);
         }
       }, null);
       AppMethodBeat.o(27171);
       return true;
     }
-    ae.e("MicroMsg.ContactWidgetMediaNote", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
+    Log.e("MicroMsg.ContactWidgetMediaNote", "handleEvent : unExpected key = ".concat(String.valueOf(paramString)));
     AppMethodBeat.o(27171);
     return false;
   }
   
-  public final boolean ceC()
+  public final boolean cCs()
   {
     AppMethodBeat.i(27177);
-    bc.aCg();
-    c.ajA().b(this);
-    b.iUA.MM();
+    bg.aVF();
+    c.azQ().remove(this);
+    b.jRu.WZ();
     AppMethodBeat.o(27177);
     return true;
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent) {}
+  
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
+  {
+    AppMethodBeat.i(27178);
+    int i = Util.nullAsInt(paramObject, 0);
+    Log.d("MicroMsg.ContactWidgetMediaNote", "onNotifyChange event:%d obj:%d stg:%s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i), paramMStorageEx });
+    bg.aVF();
+    if ((paramMStorageEx != c.azQ()) || (i <= 0))
+    {
+      Log.e("MicroMsg.ContactWidgetMediaNote", "onNotifyChange error obj:%d stg:%s", new Object[] { Integer.valueOf(i), paramMStorageEx });
+      AppMethodBeat.o(27178);
+      return;
+    }
+    if ((i != 40) && (i != 34) && (i != 7))
+    {
+      AppMethodBeat.o(27178);
+      return;
+    }
+    cCt();
+    AppMethodBeat.o(27178);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.profile.ui.j
  * JD-Core Version:    0.7.0.1
  */

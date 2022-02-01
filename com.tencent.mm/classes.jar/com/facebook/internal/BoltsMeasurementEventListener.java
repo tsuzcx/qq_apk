@@ -31,7 +31,7 @@ public class BoltsMeasurementEventListener
   private void close()
   {
     AppMethodBeat.i(17682);
-    d.V(this.applicationContext).unregisterReceiver(this);
+    d.W(this.applicationContext).unregisterReceiver(this);
     AppMethodBeat.o(17682);
   }
   
@@ -55,7 +55,7 @@ public class BoltsMeasurementEventListener
   private void open()
   {
     AppMethodBeat.i(17681);
-    d.V(this.applicationContext).a(this, new IntentFilter("com.parse.bolts.measurement_event"));
+    d.W(this.applicationContext).a(this, new IntentFilter("com.parse.bolts.measurement_event"));
     AppMethodBeat.o(17681);
   }
   
@@ -93,7 +93,7 @@ public class BoltsMeasurementEventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.internal.BoltsMeasurementEventListener
  * JD-Core Version:    0.7.0.1
  */

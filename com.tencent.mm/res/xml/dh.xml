@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
+  xmlns:android1="http://schemas.android.com/apk/res/android">
+    <Preference android:key="wallet_modify_password" android:layout="@layout/b8j" android:title="@string/imj" />
+    <Preference android:key="wallet_forget_password" android:layout="@layout/b8j" android:title="@string/imd" />
+    <PreferenceCategory />
+    <CheckBoxPreference android:key="wallet_open_gesture_password" android:layout="@layout/b8j" android:title="@string/imk" />
+    <Preference android:key="wallet_modify_gesture_password" android:layout="@layout/b8j" android:title="@string/imi" />
+    <PreferenceCategory />
+</PreferenceScreen>

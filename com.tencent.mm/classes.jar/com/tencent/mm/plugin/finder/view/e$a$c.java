@@ -1,63 +1,63 @@
 package com.tencent.mm.plugin.finder.view;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.model.n;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.finder.model.s;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerResultData;", "", "commentCount", "", "data", "", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "(ILjava/util/List;)V", "getCommentCount", "()I", "getData", "()Ljava/util/List;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/view/FinderCommentComponent$Companion$DrawerResultData;", "", "commentCount", "", "data", "", "Lcom/tencent/mm/plugin/finder/model/FinderFeedComment;", "(ILjava/util/List;)V", "getCommentCount", "()I", "getData", "()Ljava/util/List;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "toString", "", "plugin-finder_release"})
 public final class e$a$c
 {
   final int commentCount;
-  final List<n> pkh;
+  final List<s> qzs;
   
-  public e$a$c(int paramInt, List<? extends n> paramList)
+  public e$a$c(int paramInt, List<? extends s> paramList)
   {
-    AppMethodBeat.i(205700);
+    AppMethodBeat.i(254715);
     this.commentCount = paramInt;
-    this.pkh = paramList;
-    AppMethodBeat.o(205700);
+    this.qzs = paramList;
+    AppMethodBeat.o(254715);
   }
   
   public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(205703);
+    AppMethodBeat.i(254718);
     if (this != paramObject)
     {
       if ((paramObject instanceof c))
       {
         paramObject = (c)paramObject;
-        if ((this.commentCount != paramObject.commentCount) || (!p.i(this.pkh, paramObject.pkh))) {}
+        if ((this.commentCount != paramObject.commentCount) || (!p.j(this.qzs, paramObject.qzs))) {}
       }
     }
     else
     {
-      AppMethodBeat.o(205703);
+      AppMethodBeat.o(254718);
       return true;
     }
-    AppMethodBeat.o(205703);
+    AppMethodBeat.o(254718);
     return false;
   }
   
   public final int hashCode()
   {
-    AppMethodBeat.i(205702);
+    AppMethodBeat.i(254717);
     int j = this.commentCount;
-    List localList = this.pkh;
+    List localList = this.qzs;
     if (localList != null) {}
     for (int i = localList.hashCode();; i = 0)
     {
-      AppMethodBeat.o(205702);
+      AppMethodBeat.o(254717);
       return i + j * 31;
     }
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(205701);
-    String str = "DrawerResultData(commentCount=" + this.commentCount + ", data=" + this.pkh + ")";
-    AppMethodBeat.o(205701);
+    AppMethodBeat.i(254716);
+    String str = "DrawerResultData(commentCount=" + this.commentCount + ", data=" + this.qzs + ")";
+    AppMethodBeat.o(254716);
     return str;
   }
 }

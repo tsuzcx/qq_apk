@@ -6,14 +6,14 @@ import android.graphics.Bitmap.Config;
 final class d
   implements b
 {
-  public final Bitmap d(Bitmap paramBitmap, float paramFloat)
+  public final Bitmap b(Bitmap paramBitmap, float paramFloat)
   {
     return paramBitmap;
   }
   
   public final void destroy() {}
   
-  public final Bitmap.Config fEj()
+  public final Bitmap.Config gMq()
   {
     return Bitmap.Config.ARGB_8888;
   }

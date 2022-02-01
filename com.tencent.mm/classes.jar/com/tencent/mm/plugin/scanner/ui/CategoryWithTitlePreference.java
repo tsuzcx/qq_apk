@@ -9,11 +9,11 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.u;
 import com.tencent.mm.platformtools.u.a;
-import com.tencent.mm.plugin.scanner.util.n;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.scanner.util.q;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.f;
 
@@ -22,7 +22,7 @@ public final class CategoryWithTitlePreference
   implements u.a
 {
   private Context context;
-  private ImageView fWT;
+  private ImageView gBZ;
   private int iconHeight;
   private String iconUrl;
   private int iconWidth;
@@ -47,7 +47,7 @@ public final class CategoryWithTitlePreference
     this.title = "";
     this.iconWidth = 34;
     this.iconHeight = 34;
-    setLayoutResource(2131494810);
+    setLayoutResource(2131495544);
     this.context = paramContext;
     u.a(this);
     AppMethodBeat.o(51780);
@@ -56,9 +56,9 @@ public final class CategoryWithTitlePreference
   public final void k(String paramString, final Bitmap paramBitmap)
   {
     AppMethodBeat.i(51784);
-    ae.d("MicroMsg.scanner.CategoryWithTitlePreference", "get pic:" + paramString + ", iconurl:" + this.iconUrl);
-    if ((!bu.isNullOrNil(paramString)) && (paramString.equals(this.iconUrl)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.fWT != null)) {
-      ar.f(new Runnable()
+    Log.d("MicroMsg.scanner.CategoryWithTitlePreference", "get pic:" + paramString + ", iconurl:" + this.iconUrl);
+    if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.iconUrl)) && (paramBitmap != null) && (!paramBitmap.isRecycled()) && (this.gBZ != null)) {
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
@@ -80,24 +80,24 @@ public final class CategoryWithTitlePreference
     AppMethodBeat.i(51783);
     super.onBindView(paramView);
     this.titleTv = ((TextView)paramView.findViewById(16908310));
-    this.fWT = ((ImageView)paramView.findViewById(2131300874));
-    paramView = this.fWT.getLayoutParams();
-    paramView.width = BackwardSupportUtil.b.h(this.context, this.iconWidth / 2);
-    paramView.height = BackwardSupportUtil.b.h(this.context, this.iconHeight / 2);
-    this.fWT.setLayoutParams(paramView);
+    this.gBZ = ((ImageView)paramView.findViewById(2131302468));
+    paramView = this.gBZ.getLayoutParams();
+    paramView.width = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, this.iconWidth / 2);
+    paramView.height = BackwardSupportUtil.BitmapFactory.fromDPToPix(this.context, this.iconHeight / 2);
+    this.gBZ.setLayoutParams(paramView);
     if ((this.title != null) && (this.title.length() > 0) && (this.titleTv != null))
     {
       this.titleTv.setVisibility(0);
       this.titleTv.setText(this.title);
-      ae.v("MicroMsg.scanner.CategoryWithTitlePreference", "onBindView title : " + this.titleTv.getText());
+      Log.v("MicroMsg.scanner.CategoryWithTitlePreference", "onBindView title : " + this.titleTv.getText());
     }
-    if (!bu.isNullOrNil(this.iconUrl))
+    if (!Util.isNullOrNil(this.iconUrl))
     {
-      paramView = u.a(new n(this.iconUrl));
+      paramView = u.a(new q(this.iconUrl));
       if ((paramView != null) && (!paramView.isRecycled()))
       {
-        this.fWT.setImageBitmap(paramView);
-        this.fWT.setVisibility(0);
+        this.gBZ.setImageBitmap(paramView);
+        this.gBZ.setVisibility(0);
       }
     }
     AppMethodBeat.o(51783);
@@ -111,7 +111,7 @@ public final class CategoryWithTitlePreference
       if (this.context != null) {
         this.title = this.context.getString(paramInt);
       }
-      if (bu.isNullOrNil(this.title)) {
+      if (Util.isNullOrNil(this.title)) {
         break label71;
       }
       this.titleTv.setVisibility(0);
@@ -137,7 +137,7 @@ public final class CategoryWithTitlePreference
       {
         this.titleTv.setVisibility(0);
         this.titleTv.setText(paramCharSequence);
-        ae.v("MicroMsg.scanner.CategoryWithTitlePreference", "title : " + this.titleTv.getText());
+        Log.v("MicroMsg.scanner.CategoryWithTitlePreference", "title : " + this.titleTv.getText());
       }
     }
     for (;;)
@@ -153,7 +153,7 @@ public final class CategoryWithTitlePreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.CategoryWithTitlePreference
  * JD-Core Version:    0.7.0.1
  */

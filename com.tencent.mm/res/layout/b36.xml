@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="@dimen/as" android:layout_height="@dimen/as"
+<LinearLayout android:orientation="vertical" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/ta" android:layout_width="@dimen/as" android:layout_height="@dimen/as" />
-    <ImageView android:id="@id/dkt" android:background="@color/ry" android:visibility="gone" android:layout_width="@dimen/as" android:layout_height="@dimen/as" />
-</FrameLayout>
+    <ListView android:id="@id/bod" android:background="@color/c" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@drawable/b3q" android:dividerHeight="0.5dip" style="@style/ns" />
+    <View android:layout_gravity="center_horizontal" android:id="@id/evz" android:background="@color/a7t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.30000007dip" android:layout_marginStart="32.0dip" android:layout_marginEnd="32.0dip" />
+</LinearLayout>

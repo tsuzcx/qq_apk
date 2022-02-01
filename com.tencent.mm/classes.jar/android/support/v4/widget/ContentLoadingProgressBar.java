@@ -7,22 +7,22 @@ import android.widget.ProgressBar;
 public class ContentLoadingProgressBar
   extends ProgressBar
 {
-  boolean SV = false;
-  boolean SW = false;
-  private final Runnable SX = new Runnable()
+  boolean Th = false;
+  boolean Ti = false;
+  private final Runnable Tj = new Runnable()
   {
     public final void run()
     {
-      ContentLoadingProgressBar.this.SV = false;
+      ContentLoadingProgressBar.this.Th = false;
       ContentLoadingProgressBar.this.mStartTime = -1L;
       ContentLoadingProgressBar.this.setVisibility(8);
     }
   };
-  private final Runnable SY = new Runnable()
+  private final Runnable Tk = new Runnable()
   {
     public final void run()
     {
-      ContentLoadingProgressBar.this.SW = false;
+      ContentLoadingProgressBar.this.Ti = false;
       if (!ContentLoadingProgressBar.this.mDismissed)
       {
         ContentLoadingProgressBar.this.mStartTime = System.currentTimeMillis();
@@ -38,27 +38,27 @@ public class ContentLoadingProgressBar
     super(paramContext, paramAttributeSet, 0);
   }
   
-  private void fL()
+  private void fS()
   {
-    removeCallbacks(this.SX);
-    removeCallbacks(this.SY);
+    removeCallbacks(this.Tj);
+    removeCallbacks(this.Tk);
   }
   
   public void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    fL();
+    fS();
   }
   
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    fL();
+    fS();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     android.support.v4.widget.ContentLoadingProgressBar
  * JD-Core Version:    0.7.0.1
  */

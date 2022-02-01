@@ -16,23 +16,23 @@ final class d$1
   {
     AppMethodBeat.i(66956);
     b localb = new b();
-    localb.bd(paramAdapterView);
-    localb.bd(paramView);
-    localb.mu(paramInt);
-    localb.rl(paramLong);
-    a.b("com/tencent/mm/plugin/product/ui/MallListDialog$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.ahF());
-    if (this.xdd != null) {
-      this.xdd.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
+    localb.bm(paramAdapterView);
+    localb.bm(paramView);
+    localb.pH(paramInt);
+    localb.zo(paramLong);
+    a.b("com/tencent/mm/plugin/product/ui/MallListDialog$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V", this, localb.axR());
+    if (this.BaF != null) {
+      this.BaF.onItemClick(paramAdapterView, paramView, paramInt, paramLong);
     }
-    this.xde.xdf = paramInt;
-    this.xde.notifyDataSetChanged();
+    this.BaG.BaH = paramInt;
+    this.BaG.notifyDataSetChanged();
     a.a(this, "com/tencent/mm/plugin/product/ui/MallListDialog$1", "android/widget/AdapterView$OnItemClickListener", "onItemClick", "(Landroid/widget/AdapterView;Landroid/view/View;IJ)V");
     AppMethodBeat.o(66956);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.d.1
  * JD-Core Version:    0.7.0.1
  */

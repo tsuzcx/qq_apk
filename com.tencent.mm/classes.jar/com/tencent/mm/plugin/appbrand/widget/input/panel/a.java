@@ -5,15 +5,17 @@ import android.view.View;
 
 public abstract class a
 {
-  Context nnh;
-  protected c nni;
-  int nnj = 0;
+  Context owO;
+  protected c owP;
+  int owQ = 0;
   
-  public abstract int bFP();
+  public abstract View Ap(int paramInt);
   
-  public abstract int bFQ();
+  public abstract int ccf();
   
-  public abstract int bFR();
+  public abstract int ccg();
+  
+  public abstract int cch();
   
   public abstract int getPageCount();
   
@@ -23,14 +25,12 @@ public abstract class a
   
   public final void setPanelManager(c paramc)
   {
-    this.nni = paramc;
+    this.owP = paramc;
   }
-  
-  public abstract View wH(int paramInt);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.panel.a
  * JD-Core Version:    0.7.0.1
  */

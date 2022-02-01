@@ -1,65 +1,64 @@
 package com.tencent.mm.plugin.ipcall.model.e;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.blt;
-import com.tencent.mm.protocal.protobuf.blu;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bye;
+import com.tencent.mm.protocal.protobuf.byf;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.io.IOException;
 
 public final class g
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private b rr;
-  private blt uZa;
-  public blu uZb;
+  private i callback;
+  private d rr;
+  private bye yrA;
+  public byf yrB;
   
   public g(int paramInt)
   {
     AppMethodBeat.i(25469);
     this.rr = null;
-    this.uZa = null;
-    this.uZb = null;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new blt();
-    ((b.a)localObject).hQG = new blu();
-    ((b.a)localObject).funcId = 257;
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getwechatoutcoupons";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    this.uZa = ((blt)this.rr.hQD.hQJ);
-    this.uZa.Scene = paramInt;
-    localObject = this.uZa;
-    bc.aCg();
-    ((blt)localObject).GYM = ((Integer)c.ajA().get(am.a.INv, Integer.valueOf(0))).intValue();
-    localObject = this.uZa;
-    bc.aCg();
-    ((blt)localObject).GYN = ((Integer)c.ajA().get(am.a.INj, Integer.valueOf(0))).intValue();
-    ae.i("MicroMsg.NetSceneIPCallGetWeChatOutCoupons", "NetSceneIPCallGetWeChatOutCoupons Scene:%d, RechargeWordingVersion:%d,AccountActivityWordingVersion:%d", new Object[] { Integer.valueOf(this.uZa.Scene), Integer.valueOf(this.uZa.GYM), Integer.valueOf(this.uZa.GYN) });
+    this.yrA = null;
+    this.yrB = null;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bye();
+    ((d.a)localObject).iLO = new byf();
+    ((d.a)localObject).funcId = 257;
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getwechatoutcoupons";
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    this.yrA = ((bye)this.rr.iLK.iLR);
+    this.yrA.Scene = paramInt;
+    localObject = this.yrA;
+    bg.aVF();
+    ((bye)localObject).MdE = ((Integer)c.azQ().get(ar.a.NVy, Integer.valueOf(0))).intValue();
+    localObject = this.yrA;
+    bg.aVF();
+    ((bye)localObject).MdF = ((Integer)c.azQ().get(ar.a.NVm, Integer.valueOf(0))).intValue();
+    Log.i("MicroMsg.NetSceneIPCallGetWeChatOutCoupons", "NetSceneIPCallGetWeChatOutCoupons Scene:%d, RechargeWordingVersion:%d,AccountActivityWordingVersion:%d", new Object[] { Integer.valueOf(this.yrA.Scene), Integer.valueOf(this.yrA.MdE), Integer.valueOf(this.yrA.MdF) });
     AppMethodBeat.o(25469);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(25470);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(25470);
     return i;
   }
@@ -69,33 +68,33 @@ public final class g
     return 257;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(25471);
-    ae.i("MicroMsg.NetSceneIPCallGetWeChatOutCoupons", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    this.uZb = ((blu)((b)paramq).hQE.hQJ);
+    Log.i("MicroMsg.NetSceneIPCallGetWeChatOutCoupons", "onGYNetEnd, errType: %d, errCode: %d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    this.yrB = ((byf)((d)params).iLL.iLR);
     if (((paramInt2 == 0) || (paramInt3 == 0)) && (paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = this.uZb;
-      if (paramq != null) {
-        ae.i("MicroMsg.IPCallUtil", "[royle]begin save response,Balance:%s,PVWording:%s,Coupons:%s,Wording:%s,Title:%s,Desc:%s,ImgPath:%s,UrlPath:%s,SmsDesc:%s,PackageMsg:%s", new Object[] { paramq.GYR, paramq.GYS, paramq.GYO, paramq.urq, paramq.Title, paramq.Desc, paramq.GYP, paramq.GYQ, paramq.GYT, paramq.GYZ });
+      params = this.yrB;
+      if (params != null) {
+        Log.i("MicroMsg.IPCallUtil", "[royle]begin save response,Balance:%s,PVWording:%s,Coupons:%s,Wording:%s,Title:%s,Desc:%s,ImgPath:%s,UrlPath:%s,SmsDesc:%s,PackageMsg:%s", new Object[] { params.MdJ, params.MdK, params.MdG, params.xJH, params.Title, params.Desc, params.MdH, params.MdI, params.MdL, params.MdR });
       }
     }
     try
     {
-      bc.aCg();
-      c.ajA().set(am.a.IOr, bu.cH(paramq.toByteArray()));
+      bg.aVF();
+      c.azQ().set(ar.a.NWt, Util.encodeHexString(params.toByteArray()));
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
       AppMethodBeat.o(25471);
       return;
     }
-    catch (IOException paramq)
+    catch (IOException params)
     {
       for (;;)
       {
-        ae.i("MicroMsg.IPCallUtil", "[royle]save exception:%s", new Object[] { paramq.getMessage() });
+        Log.i("MicroMsg.IPCallUtil", "[royle]save exception:%s", new Object[] { params.getMessage() });
       }
     }
   }

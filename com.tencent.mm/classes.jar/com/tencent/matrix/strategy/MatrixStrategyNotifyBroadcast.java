@@ -7,9 +7,10 @@ import android.text.TextUtils;
 import com.tencent.matrix.d;
 import com.tencent.matrix.e;
 import com.tencent.matrix.g.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.WeChatPermissions;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,8 @@ import java.util.Map;
 public class MatrixStrategyNotifyBroadcast
   extends BroadcastReceiver
 {
+  public static final String dag = ;
+  
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     boolean bool2 = false;
@@ -26,11 +29,11 @@ public class MatrixStrategyNotifyBroadcast
       return;
     }
     paramContext = paramIntent.getAction();
-    Object localObject1 = z.getStringExtra(paramIntent, "strategy");
-    c.i("Matrix.StrategyNotifyBroadcast", "receive MatrixStrategyNotifyBroadcast, process: %s, strategy:%s action:%s", new Object[] { ak.getProcessName(), localObject1, paramContext });
+    Object localObject1 = IntentUtil.getStringExtra(paramIntent, "strategy");
+    c.i("Matrix.StrategyNotifyBroadcast", "receive MatrixStrategyNotifyBroadcast, process: %s, strategy:%s action:%s", new Object[] { MMApplicationContext.getProcessName(), localObject1, paramContext });
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
-      b.IZ();
+      b.Tn();
       return;
     }
     if (paramContext.equals("statusNotify"))
@@ -47,13 +50,13 @@ public class MatrixStrategyNotifyBroadcast
           if (paramIntent == null) {
             bool2 = true;
           }
-          ae.w("Matrix.StrategyNotifyBroadcast", "keys=%s values=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+          Log.w("Matrix.StrategyNotifyBroadcast", "keys=%s values=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
           return;
         }
       }
       if (((List)localObject1).size() != paramIntent.size())
       {
-        ae.w("Matrix.StrategyNotifyBroadcast", "keys.size(%s) != values.size(%s)", new Object[] { Integer.valueOf(((List)localObject1).size()), Integer.valueOf(paramIntent.size()) });
+        Log.w("Matrix.StrategyNotifyBroadcast", "keys.size(%s) != values.size(%s)", new Object[] { Integer.valueOf(((List)localObject1).size()), Integer.valueOf(paramIntent.size()) });
         return;
       }
       int i = 0;
@@ -68,7 +71,7 @@ public class MatrixStrategyNotifyBroadcast
           break;
         }
       }
-      d.cBK.cBO.n(paramContext);
+      d.cPI.cPM.p(paramContext);
       return;
     }
     e.j(paramIntent);
@@ -76,7 +79,7 @@ public class MatrixStrategyNotifyBroadcast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.strategy.MatrixStrategyNotifyBroadcast
  * JD-Core Version:    0.7.0.1
  */

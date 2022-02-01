@@ -11,33 +11,50 @@ import com.tencent.mm.emoji.loader.d.j;
 import com.tencent.mm.emoji.loader.d.j.a;
 import com.tencent.mm.emoji.view.BaseEmojiView;
 import com.tencent.mm.pluginsdk.ui.emoji.ChattingEmojiView;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.p;
-import d.l;
 import java.util.HashMap;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/EmojiLoader;", "", "()V", "MockDownloadFail", "", "getMockDownloadFail", "()Z", "setMockDownloadFail", "(Z)V", "TAG", "", "callback", "com/tencent/mm/emoji/loader/EmojiLoader$callback$1", "Lcom/tencent/mm/emoji/loader/EmojiLoader$callback$1;", "taskMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "Lkotlin/collections/HashMap;", "taskQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "addTask", "", "key", "task", "async", "buildCoverTask", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "buildTask", "cancel", "view", "Landroid/view/View;", "load", "Lcom/tencent/mm/emoji/loader/request/EmojiViewRequest;", "emojiView", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "Lcom/tencent/mm/emoji/loader/request/ChatEmojiViewRequest;", "Lcom/tencent/mm/pluginsdk/ui/emoji/ChattingEmojiView;", "cacheKey", "loadCover", "Lcom/tencent/mm/emoji/loader/request/EmojiCoverRequest;", "Landroid/widget/ImageView;", "Lcom/tencent/mm/emoji/loader/request/EmojiCoverBitmapRequest;", "Lcom/tencent/mm/emoji/loader/request/Request$StateCallback;", "Landroid/graphics/Bitmap;", "loadFile", "Lcom/tencent/mm/emoji/loader/request/EmojiFileRequest;", "loadForRemote", "Lcom/tencent/mm/emoji/loader/request/ProcessRequest;", "notifyTaskResult", "md5", "success", "removeTask", "EmojiLoaderRetryStrategy", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/EmojiLoader;", "", "()V", "MockDownloadFail", "", "getMockDownloadFail", "()Z", "setMockDownloadFail", "(Z)V", "TAG", "", "callback", "com/tencent/mm/emoji/loader/EmojiLoader$callback$1", "Lcom/tencent/mm/emoji/loader/EmojiLoader$callback$1;", "taskMap", "Ljava/util/HashMap;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "Lkotlin/collections/HashMap;", "taskQueue", "Lcom/tencent/mm/loader/loader/LoaderCore;", "addTask", "", "key", "task", "async", "buildCoverTask", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "buildTask", "cancel", "view", "Landroid/view/View;", "load", "Lcom/tencent/mm/emoji/loader/request/EmojiViewRequest;", "emojiView", "Lcom/tencent/mm/emoji/view/BaseEmojiView;", "Lcom/tencent/mm/emoji/loader/request/Request$Callback;", "Lcom/tencent/mm/emoji/loader/request/ChatEmojiViewRequest;", "Lcom/tencent/mm/pluginsdk/ui/emoji/ChattingEmojiView;", "cacheKey", "loadCover", "Lcom/tencent/mm/emoji/loader/request/EmojiCoverRequest;", "Landroid/widget/ImageView;", "Lcom/tencent/mm/emoji/loader/request/EmojiCoverBitmapRequest;", "Lcom/tencent/mm/emoji/loader/request/Request$StateCallback;", "Landroid/graphics/Bitmap;", "loadFile", "Lcom/tencent/mm/emoji/loader/request/EmojiFileRequest;", "loadForRemote", "Lcom/tencent/mm/emoji/loader/request/ProcessRequest;", "notifyTaskResult", "md5", "success", "removeTask", "EmojiLoaderRetryStrategy", "plugin-emojisdk_release"})
 public final class e
 {
   private static final String TAG = "MicroMsg.EmojiLoader";
-  private static final HashMap<String, com.tencent.mm.emoji.loader.e.c> gkN;
-  private static final com.tencent.mm.loader.g.d<com.tencent.mm.emoji.loader.e.c> gkO;
-  private static final b gkP;
-  private static boolean gkQ;
-  public static final e gkR;
+  private static final HashMap<String, com.tencent.mm.emoji.loader.e.c> gVI;
+  private static final com.tencent.mm.loader.g.d<com.tencent.mm.emoji.loader.e.c> gVJ;
+  private static final b gVK;
+  private static boolean gVL;
+  public static final e gVM;
   
   static
   {
     AppMethodBeat.i(105402);
-    gkR = new e();
+    gVM = new e();
     TAG = "MicroMsg.EmojiLoader";
-    gkN = new HashMap();
-    gkO = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new a(), new com.tencent.mm.loader.g.a.g(2, (byte)0), 2, "EmojiLoader"));
-    gkP = new b();
-    gkO.a((com.tencent.mm.loader.g.f)gkP);
+    gVI = new HashMap();
+    gVJ = new com.tencent.mm.loader.g.d((com.tencent.mm.loader.g.a.d)new com.tencent.mm.loader.g.a.f((com.tencent.mm.loader.g.a.c)new a(), new com.tencent.mm.loader.g.a.g(2, (byte)0), 2, "EmojiLoader"));
+    gVK = new b();
+    gVJ.a((com.tencent.mm.loader.g.f)gVK);
     AppMethodBeat.o(105402);
+  }
+  
+  public static void EN(String paramString)
+  {
+    AppMethodBeat.i(105401);
+    p.h(paramString, "key");
+    Log.i(TAG, "removeTask: ".concat(String.valueOf(paramString)));
+    paramString = (com.tencent.mm.emoji.loader.e.c)gVI.remove(paramString);
+    if (paramString != null)
+    {
+      com.tencent.mm.loader.g.d locald = gVJ;
+      p.g(paramString, "it");
+      locald.d((com.tencent.mm.loader.g.c)paramString);
+      AppMethodBeat.o(105401);
+      return;
+    }
+    AppMethodBeat.o(105401);
   }
   
   public static com.tencent.mm.emoji.loader.d.a a(EmojiInfo paramEmojiInfo, ChattingEmojiView paramChattingEmojiView, String paramString)
@@ -46,7 +63,7 @@ public final class e
     p.h(paramEmojiInfo, "emojiInfo");
     p.h(paramChattingEmojiView, "emojiView");
     p.h(paramString, "cacheKey");
-    ae.d(TAG, "load emoji " + paramEmojiInfo.Lj());
+    Log.d(TAG, "load emoji " + paramEmojiInfo.getMd5());
     paramEmojiInfo = new com.tencent.mm.emoji.loader.d.a(paramEmojiInfo, paramChattingEmojiView, paramString);
     i.a(paramEmojiInfo);
     AppMethodBeat.o(105392);
@@ -87,7 +104,7 @@ public final class e
   {
     AppMethodBeat.i(105394);
     p.h(paramEmojiInfo, "emojiInfo");
-    ae.i(TAG, "load emoji file " + paramEmojiInfo.Lj());
+    Log.i(TAG, "load emoji file " + paramEmojiInfo.getMd5());
     paramEmojiInfo = new com.tencent.mm.emoji.loader.d.e(paramEmojiInfo, parama);
     paramEmojiInfo.start(paramBoolean);
     AppMethodBeat.o(105394);
@@ -99,7 +116,7 @@ public final class e
     AppMethodBeat.i(105391);
     p.h(paramEmojiInfo, "emojiInfo");
     p.h(paramBaseEmojiView, "emojiView");
-    ae.d(TAG, "load emoji " + paramEmojiInfo.Lj());
+    Log.d(TAG, "load emoji " + paramEmojiInfo.getMd5());
     paramEmojiInfo = new com.tencent.mm.emoji.loader.d.f(paramEmojiInfo, paramBaseEmojiView, parama);
     i.a(paramEmojiInfo);
     AppMethodBeat.o(105391);
@@ -111,11 +128,11 @@ public final class e
     AppMethodBeat.i(105400);
     p.h(paramString, "key");
     p.h(paramc, "task");
-    ae.i(TAG, "addTask: " + paramString + ' ' + paramBoolean);
-    ((Map)gkN).put(paramString, paramc);
+    Log.i(TAG, "addTask: " + paramString + ' ' + paramBoolean);
+    ((Map)gVI).put(paramString, paramc);
     if (paramBoolean)
     {
-      gkO.b((com.tencent.mm.loader.g.c)paramc);
+      gVJ.c((com.tencent.mm.loader.g.c)paramc);
       AppMethodBeat.o(105400);
       return;
     }
@@ -123,22 +140,22 @@ public final class e
     AppMethodBeat.o(105400);
   }
   
-  public static boolean aeN()
+  public static boolean auB()
   {
-    return gkQ;
+    return gVL;
   }
   
   public static com.tencent.mm.emoji.loader.e.c c(EmojiInfo paramEmojiInfo)
   {
     AppMethodBeat.i(105389);
     p.h(paramEmojiInfo, "emojiInfo");
-    com.tencent.mm.emoji.loader.e.c localc = (com.tencent.mm.emoji.loader.e.c)gkN.get(paramEmojiInfo.Lj());
+    com.tencent.mm.emoji.loader.e.c localc = (com.tencent.mm.emoji.loader.e.c)gVI.get(paramEmojiInfo.getMd5());
     Object localObject = localc;
     if (localc == null)
     {
-      localObject = com.tencent.mm.kernel.g.ajO().ajq();
+      localObject = com.tencent.mm.kernel.g.aAe().azG();
       p.g(localObject, "MMKernel.process().current()");
-      if (!((com.tencent.mm.kernel.b.h)localObject).akL()) {
+      if (!((com.tencent.mm.kernel.b.h)localObject).aBb()) {
         break label76;
       }
     }
@@ -150,13 +167,13 @@ public final class e
     }
   }
   
-  public static void cv(View paramView)
+  public static void cl(View paramView)
   {
     AppMethodBeat.i(105399);
     p.h(paramView, "view");
-    ae.i(TAG, "cancel: ".concat(String.valueOf(paramView)));
-    j.a locala = j.glS;
-    paramView = (i)paramView.getTag(j.aeU());
+    Log.i(TAG, "cancel: ".concat(String.valueOf(paramView)));
+    j.a locala = j.gWJ;
+    paramView = (i)paramView.getTag(j.auI());
     if (paramView != null)
     {
       paramView.cancel();
@@ -170,8 +187,8 @@ public final class e
   {
     AppMethodBeat.i(105390);
     p.h(paramEmojiInfo, "emojiInfo");
-    Object localObject = paramEmojiInfo.Lj() + "_cover";
-    com.tencent.mm.emoji.loader.e.c localc = (com.tencent.mm.emoji.loader.e.c)gkN.get(localObject);
+    Object localObject = paramEmojiInfo.getMd5() + "_cover";
+    com.tencent.mm.emoji.loader.e.c localc = (com.tencent.mm.emoji.loader.e.c)gVI.get(localObject);
     localObject = localc;
     if (localc == null) {
       localObject = (com.tencent.mm.emoji.loader.e.c)new com.tencent.mm.emoji.loader.e.a(paramEmojiInfo);
@@ -180,9 +197,9 @@ public final class e
     return localObject;
   }
   
-  public static void de(boolean paramBoolean)
+  public static void dO(boolean paramBoolean)
   {
-    gkQ = paramBoolean;
+    gVL = paramBoolean;
   }
   
   public static com.tencent.mm.emoji.loader.d.h e(EmojiInfo paramEmojiInfo)
@@ -199,34 +216,17 @@ public final class e
   {
     AppMethodBeat.i(105398);
     p.h(paramString, "md5");
-    paramString = (com.tencent.mm.emoji.loader.e.c)gkN.get(paramString);
+    paramString = (com.tencent.mm.emoji.loader.e.c)gVI.get(paramString);
     if (paramString != null)
     {
-      paramString.dg(paramBoolean);
+      paramString.dQ(paramBoolean);
       AppMethodBeat.o(105398);
       return;
     }
     AppMethodBeat.o(105398);
   }
   
-  public static void wy(String paramString)
-  {
-    AppMethodBeat.i(105401);
-    p.h(paramString, "key");
-    ae.i(TAG, "removeTask: ".concat(String.valueOf(paramString)));
-    paramString = (com.tencent.mm.emoji.loader.e.c)gkN.remove(paramString);
-    if (paramString != null)
-    {
-      com.tencent.mm.loader.g.d locald = gkO;
-      p.g(paramString, "it");
-      locald.c((com.tencent.mm.loader.g.c)paramString);
-      AppMethodBeat.o(105401);
-      return;
-    }
-    AppMethodBeat.o(105401);
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/EmojiLoader$EmojiLoaderRetryStrategy;", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "()V", "canRetry", "", "task", "Lcom/tencent/mm/loader/loader/IWorkTask;", "plugin-emojisdk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/EmojiLoader$EmojiLoaderRetryStrategy;", "Lcom/tencent/mm/loader/loader/cfg/ILoaderRetryStrategy;", "()V", "canRetry", "", "task", "Lcom/tencent/mm/loader/loader/IWorkTask;", "plugin-emojisdk_release"})
   public static final class a
     implements com.tencent.mm.loader.g.a.c
   {
@@ -239,14 +239,14 @@ public final class e
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/emoji/loader/EmojiLoader$callback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojisdk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/emoji/loader/EmojiLoader$callback$1", "Lcom/tencent/mm/loader/loader/LoaderCoreCallback;", "Lcom/tencent/mm/emoji/loader/task/IEmojiLoadTask;", "onLoaderFin", "", "task", "status", "Lcom/tencent/mm/loader/loader/WorkStatus;", "plugin-emojisdk_release"})
   public static final class b
     implements com.tencent.mm.loader.g.f<com.tencent.mm.emoji.loader.e.c>
   {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.e
  * JD-Core Version:    0.7.0.1
  */

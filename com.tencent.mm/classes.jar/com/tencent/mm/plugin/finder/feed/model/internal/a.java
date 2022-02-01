@@ -1,27 +1,35 @@
 package com.tencent.mm.plugin.finder.feed.model.internal;
 
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.plugin.finder.model.am;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.plugin.finder.model.bo;
+import java.util.Iterator;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "map", "", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "alive", "", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "dead", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "fetch", "netscene", "", "callback", "fetchInit", "fetchLoadMore", "fetchRefresh", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdId", "onSceneEnd", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/internal/DataFetchNetscene;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "()V", "map", "", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "alive", "", "callInit", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "dead", "dealOnSceneEnd", "errType", "", "errCode", "errMsg", "", "scene", "fetch", "netscene", "", "callback", "fetchInit", "fetchLoadMore", "fetchPreload", "fetchRefresh", "genLoadMoreNetScene", "genRefreshNetScene", "getCmdIds", "", "onSceneEnd", "plugin-finder_release"})
 public abstract class a
-  extends g<am>
-  implements com.tencent.mm.ak.f
+  extends g<bo>
+  implements i
 {
-  private final Map<n, f<am>> map = (Map)new LinkedHashMap();
+  private final Map<q, f<bo>> map = (Map)new LinkedHashMap();
   
   public void alive()
   {
     super.alive();
-    com.tencent.mm.kernel.g.ajj().a(getCmdId(), (com.tencent.mm.ak.f)this);
+    Iterator localIterator = ((Iterable)getCmdIds()).iterator();
+    while (localIterator.hasNext())
+    {
+      int i = ((Number)localIterator.next()).intValue();
+      com.tencent.mm.kernel.g.azz().a(i, (i)this);
+    }
   }
   
-  public IResponse<am> callInit()
+  public IResponse<bo> callInit()
   {
     return (IResponse)new c();
   }
@@ -29,22 +37,27 @@ public abstract class a
   public void dead()
   {
     super.dead();
-    com.tencent.mm.kernel.g.ajj().b(getCmdId(), (com.tencent.mm.ak.f)this);
-  }
-  
-  public abstract IResponse<am> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn);
-  
-  public void fetch(Object paramObject, f<am> paramf)
-  {
-    p.h(paramf, "callback");
-    if ((paramObject != null) && ((paramObject instanceof n)))
+    Iterator localIterator = ((Iterable)getCmdIds()).iterator();
+    while (localIterator.hasNext())
     {
-      this.map.put(paramObject, paramf);
-      com.tencent.mm.kernel.g.ajj().b((n)paramObject);
+      int i = ((Number)localIterator.next()).intValue();
+      com.tencent.mm.kernel.g.azz().b(i, (i)this);
     }
   }
   
-  public void fetchInit(f<am> paramf)
+  public abstract IResponse<bo> dealOnSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq);
+  
+  public void fetch(Object paramObject, f<bo> paramf)
+  {
+    p.h(paramf, "callback");
+    if ((paramObject != null) && ((paramObject instanceof q)))
+    {
+      this.map.put(paramObject, paramf);
+      com.tencent.mm.kernel.g.azz().b((q)paramObject);
+    }
+  }
+  
+  public void fetchInit(f<bo> paramf)
   {
     p.h(paramf, "callback");
     IResponse localIResponse = callInit();
@@ -52,32 +65,39 @@ public abstract class a
     paramf.onFetchDone(localIResponse);
   }
   
-  public void fetchLoadMore(f<am> paramf)
+  public void fetchLoadMore(f<bo> paramf)
   {
     p.h(paramf, "callback");
     fetch(genLoadMoreNetScene(), paramf);
   }
   
-  public void fetchRefresh(f<am> paramf)
+  public void fetchPreload(f<bo> paramf)
+  {
+    p.h(paramf, "callback");
+    super.fetchPreload(paramf);
+    fetch(genRefreshNetScene(), paramf);
+  }
+  
+  public void fetchRefresh(f<bo> paramf)
   {
     p.h(paramf, "callback");
     fetch(genRefreshNetScene(), paramf);
   }
   
-  public abstract n genLoadMoreNetScene();
+  public abstract q genLoadMoreNetScene();
   
-  public abstract n genRefreshNetScene();
+  public abstract q genRefreshNetScene();
   
-  public abstract int getCmdId();
+  public abstract List<Integer> getCmdIds();
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
-    p.h(paramn, "scene");
-    f localf = (f)this.map.get(paramn);
+    p.h(paramq, "scene");
+    f localf = (f)this.map.get(paramq);
     if (localf != null)
     {
-      this.map.remove(paramn);
-      paramString = dealOnSceneEnd(paramInt1, paramInt2, paramString, paramn);
+      this.map.remove(paramq);
+      paramString = dealOnSceneEnd(paramInt1, paramInt2, paramString, paramq);
       if (paramString != null) {
         localf.onFetchDone(paramString);
       }

@@ -1,46 +1,28 @@
 package com.tencent.mm.plugin.audio.d;
 
-import android.media.AudioDeviceInfo;
-import android.media.AudioManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.plugin.audio.c.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Stack;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/audio/util/HeadSetPlugUtil;", "", "()V", "TAG", "", "mIsPlugged", "", "getMIsPlugged", "()Z", "setMIsPlugged", "(Z)V", "initResource", "", "isHeadsetPlugged", "audioManager", "Landroid/media/AudioManager;", "isWireHeadsetPluggedNew", "releaseHeadSetResource", "mDeviceQueue", "Ljava/util/Stack;", "", "requestHeadSetResource", "plugin-audio_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/audio/util/EarPieceUtil;", "", "()V", "TAG", "", "releaseEarPieceResource", "", "mDeviceQueue", "Ljava/util/Stack;", "", "requestEarPieceResource", "", "plugin-audio_release"})
 public final class c
 {
-  private static boolean nxp;
-  public static final c nxt;
+  public static final c oIp;
   
   static
   {
-    AppMethodBeat.i(201122);
-    nxt = new c();
-    AppMethodBeat.o(201122);
+    AppMethodBeat.i(224025);
+    oIp = new c();
+    AppMethodBeat.o(224025);
   }
   
-  public static boolean bHH()
+  public static final boolean c(Stack<Integer> paramStack)
   {
-    return nxp;
-  }
-  
-  public static final void bHI()
-  {
-    AppMethodBeat.i(201118);
-    a.a locala = com.tencent.mm.plugin.audio.c.a.nxo;
-    nxp = a.a.bHy().bHt();
-    AppMethodBeat.o(201118);
-  }
-  
-  public static final boolean d(Stack<Integer> paramStack)
-  {
-    AppMethodBeat.i(201119);
+    AppMethodBeat.i(224024);
     p.h(paramStack, "mDeviceQueue");
-    ae.i("MicroMsg.HeadSetPlugUtil", " request the headset resource");
+    Log.i("MicroMsg.EarPieceUtil", " request the earpiece resource");
     Integer localInteger;
     if (!paramStack.isEmpty())
     {
@@ -50,75 +32,17 @@ public final class c
       }
     }
     label73:
-    while (localInteger.intValue() != 3)
+    while (localInteger.intValue() != 2)
     {
-      if (paramStack.contains(Integer.valueOf(3))) {
-        paramStack.removeElement(Integer.valueOf(3));
+      if (paramStack.contains(Integer.valueOf(2))) {
+        paramStack.removeElement(Integer.valueOf(2));
       }
-      paramStack.push(Integer.valueOf(3));
-      AppMethodBeat.o(201119);
+      paramStack.push(Integer.valueOf(2));
+      AppMethodBeat.o(224024);
       return true;
     }
-    AppMethodBeat.o(201119);
+    AppMethodBeat.o(224024);
     return false;
-  }
-  
-  public static final void e(Stack<Integer> paramStack)
-  {
-    AppMethodBeat.i(201120);
-    p.h(paramStack, "mDeviceQueue");
-    ae.i("MicroMsg.HeadSetPlugUtil", " release the headset resource");
-    paramStack.removeElement(Integer.valueOf(3));
-    AppMethodBeat.o(201120);
-  }
-  
-  public static boolean f(AudioManager paramAudioManager)
-  {
-    boolean bool2 = true;
-    AppMethodBeat.i(201121);
-    p.h(paramAudioManager, "audioManager");
-    boolean bool1 = paramAudioManager.isWiredHeadsetOn();
-    int i;
-    if ((!bool1) && (d.lA(23))) {
-      if (d.lA(23))
-      {
-        paramAudioManager = paramAudioManager.getDevices(3);
-        int j = paramAudioManager.length;
-        i = 0;
-        if (i < j)
-        {
-          Object localObject = paramAudioManager[i];
-          p.g(localObject, "deviceInfo");
-          ae.i("MicroMsg.HeadSetPlugUtil", "isWireHeadsetPluggedNew, deviceInfo type: %s", new Object[] { Integer.valueOf(localObject.getType()) });
-          bool1 = bool2;
-          if (localObject.getType() != 4)
-          {
-            bool1 = bool2;
-            if (localObject.getType() != 3)
-            {
-              if (localObject.getType() != 11) {
-                break label133;
-              }
-              bool1 = bool2;
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      AppMethodBeat.o(201121);
-      return bool1;
-      label133:
-      i += 1;
-      break;
-      bool1 = false;
-    }
-  }
-  
-  public static void iw(boolean paramBoolean)
-  {
-    nxp = paramBoolean;
   }
 }
 

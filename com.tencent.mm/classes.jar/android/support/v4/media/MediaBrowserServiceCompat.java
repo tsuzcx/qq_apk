@@ -27,19 +27,19 @@ public abstract class MediaBrowserServiceCompat
   extends Service
 {
   static final boolean DEBUG = Log.isLoggable("MBServiceCompat", 3);
-  final a<IBinder, b> Lm = new a();
-  b Ln;
-  final g Lo = new g();
-  MediaSessionCompat.Token Lp;
+  final a<IBinder, b> Lw = new a();
+  b Lx;
+  final g Ly = new g();
+  MediaSessionCompat.Token Lz;
   
-  static List<MediaBrowserCompat.MediaItem> eJ()
+  static List<MediaBrowserCompat.MediaItem> a(List<MediaBrowserCompat.MediaItem> paramList, Bundle paramBundle)
   {
     return null;
   }
   
   final void a(final String paramString, final b paramb, IBinder paramIBinder, final Bundle paramBundle)
   {
-    Object localObject = (List)paramb.LA.get(paramString);
+    Object localObject = (List)paramb.LK.get(paramString);
     if (localObject == null) {
       localObject = new ArrayList();
     }
@@ -54,18 +54,18 @@ public abstract class MediaBrowserServiceCompat
         }
       }
       ((List)localObject).add(new k(paramIBinder, paramBundle));
-      paramb.LA.put(paramString, localObject);
+      paramb.LK.put(paramString, localObject);
       paramIBinder = new c(paramString) {};
-      this.Ln = paramb;
+      this.Lx = paramb;
       if (paramBundle != null) {
-        paramIBinder.FL = 1;
+        paramIBinder.FV = 1;
       }
-      this.Ln = null;
+      this.Lx = null;
       if (!paramIBinder.isDone()) {
-        throw new IllegalStateException("onLoadChildren must call detach() or sendResult() before returning for package=" + paramb.Lw + " id=" + paramString);
+        throw new IllegalStateException("onLoadChildren must call detach() or sendResult() before returning for package=" + paramb.LG + " id=" + paramString);
       }
-      this.Ln = paramb;
-      this.Ln = null;
+      this.Lx = paramb;
+      this.Lx = null;
       return;
     }
   }
@@ -76,12 +76,12 @@ public abstract class MediaBrowserServiceCompat
     if (paramIBinder == null) {}
     try
     {
-      paramString = paramb.LA.remove(paramString);
+      paramString = paramb.LK.remove(paramString);
       if (paramString != null) {}
       for (bool = true;; bool = false) {
         return bool;
       }
-      List localList = (List)paramb.LA.get(paramString);
+      List localList = (List)paramb.LK.get(paramString);
       if (localList != null)
       {
         Iterator localIterator = localList.iterator();
@@ -94,55 +94,55 @@ public abstract class MediaBrowserServiceCompat
           }
         }
         if (localList.size() == 0) {
-          paramb.LA.remove(paramString);
+          paramb.LK.remove(paramString);
         }
       }
       return bool;
     }
     finally
     {
-      this.Ln = paramb;
-      this.Ln = null;
+      this.Lx = paramb;
+      this.Lx = null;
     }
   }
   
-  public abstract a eI();
+  public abstract a eM();
   
   public static final class a
   {
-    final String KZ;
+    final String Lj;
     final Bundle mExtras;
   }
   
   final class b
     implements IBinder.DeathRecipient
   {
-    public final HashMap<String, List<k<IBinder, Bundle>>> LA = new HashMap();
-    public MediaBrowserServiceCompat.a LB;
-    public final String Lw;
-    public final d.a Lx;
-    public final Bundle Ly;
-    public final MediaBrowserServiceCompat.e Lz;
+    public final String LG;
+    public final d.a LH;
+    public final Bundle LI;
+    public final MediaBrowserServiceCompat.e LJ;
+    public final HashMap<String, List<k<IBinder, Bundle>>> LK = new HashMap();
+    public MediaBrowserServiceCompat.a LL;
     public final int pid;
     public final int uid;
     
     b(String paramString, int paramInt1, int paramInt2, Bundle paramBundle, MediaBrowserServiceCompat.e parame)
     {
-      this.Lw = paramString;
+      this.LG = paramString;
       this.pid = paramInt1;
       this.uid = paramInt2;
-      this.Lx = new d.a(paramString, paramInt1, paramInt2);
-      this.Ly = paramBundle;
-      this.Lz = parame;
+      this.LH = new d.a(paramString, paramInt1, paramInt2);
+      this.LI = paramBundle;
+      this.LJ = parame;
     }
     
     public final void binderDied()
     {
-      MediaBrowserServiceCompat.this.Lo.post(new Runnable()
+      MediaBrowserServiceCompat.this.Ly.post(new Runnable()
       {
         public final void run()
         {
-          MediaBrowserServiceCompat.this.Lm.remove(MediaBrowserServiceCompat.b.this.Lz.asBinder());
+          MediaBrowserServiceCompat.this.Lw.remove(MediaBrowserServiceCompat.b.this.LJ.asBinder());
         }
       });
     }
@@ -150,36 +150,36 @@ public abstract class MediaBrowserServiceCompat
   
   public static class c<T>
   {
-    int FL;
-    final Object LD;
-    private boolean LE;
-    boolean LF;
-    boolean LG;
+    int FV;
+    final Object LN;
+    private boolean LO;
+    boolean LP;
+    boolean LQ;
     
     c(Object paramObject)
     {
-      this.LD = paramObject;
+      this.LN = paramObject;
     }
     
-    void eK() {}
+    void eN() {}
     
-    void eL()
+    void eO()
     {
-      throw new UnsupportedOperationException("It is not supported to send an error for " + this.LD);
+      throw new UnsupportedOperationException("It is not supported to send an error for " + this.LN);
     }
     
-    public final void eM()
+    public final void eP()
     {
-      if ((this.LF) || (this.LG)) {
-        throw new IllegalStateException("sendResult() called when either sendResult() or sendError() had already been called for: " + this.LD);
+      if ((this.LP) || (this.LQ)) {
+        throw new IllegalStateException("sendResult() called when either sendResult() or sendError() had already been called for: " + this.LN);
       }
-      this.LF = true;
-      eK();
+      this.LP = true;
+      eN();
     }
     
     final boolean isDone()
     {
-      return (this.LE) || (this.LF) || (this.LG);
+      return (this.LO) || (this.LP) || (this.LQ);
     }
   }
   
@@ -196,17 +196,17 @@ public abstract class MediaBrowserServiceCompat
     
     public abstract IBinder asBinder();
     
-    public abstract void eN();
+    public abstract void eQ();
   }
   
   static final class f
     implements MediaBrowserServiceCompat.e
   {
-    final Messenger LQ;
+    final Messenger Ma;
     
     f(Messenger paramMessenger)
     {
-      this.LQ = paramMessenger;
+      this.Ma = paramMessenger;
     }
     
     private void c(int paramInt, Bundle paramBundle)
@@ -215,7 +215,7 @@ public abstract class MediaBrowserServiceCompat
       localMessage.what = paramInt;
       localMessage.arg1 = 2;
       localMessage.setData(paramBundle);
-      this.LQ.send(localMessage);
+      this.Ma.send(localMessage);
     }
     
     public final void a(String paramString, MediaSessionCompat.Token paramToken, Bundle paramBundle)
@@ -234,19 +234,30 @@ public abstract class MediaBrowserServiceCompat
     
     public final void a(String paramString, List<MediaBrowserCompat.MediaItem> paramList, Bundle paramBundle1, Bundle paramBundle2)
     {
-      paramList = new Bundle();
-      paramList.putString("data_media_item_id", paramString);
-      paramList.putBundle("data_options", paramBundle1);
-      paramList.putBundle("data_notify_children_changed_options", paramBundle2);
-      c(3, paramList);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("data_media_item_id", paramString);
+      localBundle.putBundle("data_options", paramBundle1);
+      localBundle.putBundle("data_notify_children_changed_options", paramBundle2);
+      if (paramList != null) {
+        if (!(paramList instanceof ArrayList)) {
+          break label66;
+        }
+      }
+      label66:
+      for (paramString = (ArrayList)paramList;; paramString = new ArrayList(paramList))
+      {
+        localBundle.putParcelableArrayList("data_media_item_list", paramString);
+        c(3, localBundle);
+        return;
+      }
     }
     
     public final IBinder asBinder()
     {
-      return this.LQ.getBinder();
+      return this.Ma.getBinder();
     }
     
-    public final void eN()
+    public final void eQ()
     {
       c(2, null);
     }
@@ -255,11 +266,11 @@ public abstract class MediaBrowserServiceCompat
   final class g
     extends Handler
   {
-    private final MediaBrowserServiceCompat.d LR = new MediaBrowserServiceCompat.d(MediaBrowserServiceCompat.this);
+    private final MediaBrowserServiceCompat.d Mb = new MediaBrowserServiceCompat.d(MediaBrowserServiceCompat.this);
     
     g() {}
     
-    private void g(Runnable paramRunnable)
+    private void f(Runnable paramRunnable)
     {
       if (Thread.currentThread() == getLooper().getThread())
       {
@@ -290,12 +301,12 @@ public abstract class MediaBrowserServiceCompat
             return;
             localObject2 = ((Bundle)localObject1).getBundle("data_root_hints");
             MediaSessionCompat.d((Bundle)localObject2);
-            localObject3 = this.LR;
+            localObject3 = this.Mb;
             str = ((Bundle)localObject1).getString("data_package_name");
             int m = ((Bundle)localObject1).getInt("data_calling_pid");
             int n = ((Bundle)localObject1).getInt("data_calling_uid");
             paramMessage = new MediaBrowserServiceCompat.f(paramMessage.replyTo);
-            localObject1 = ((MediaBrowserServiceCompat.d)localObject3).Lu;
+            localObject1 = ((MediaBrowserServiceCompat.d)localObject3).LE;
             j = k;
             int i1;
             if (str != null)
@@ -322,63 +333,63 @@ public abstract class MediaBrowserServiceCompat
               }
               i += 1;
             }
-            ((MediaBrowserServiceCompat.d)localObject3).Lu.Lo.g(new MediaBrowserServiceCompat.d.1((MediaBrowserServiceCompat.d)localObject3, paramMessage, str, m, n, (Bundle)localObject2));
+            ((MediaBrowserServiceCompat.d)localObject3).LE.Ly.f(new MediaBrowserServiceCompat.d.1((MediaBrowserServiceCompat.d)localObject3, paramMessage, str, m, n, (Bundle)localObject2));
             return;
-            localObject1 = this.LR;
+            localObject1 = this.Mb;
             paramMessage = new MediaBrowserServiceCompat.f(paramMessage.replyTo);
-            ((MediaBrowserServiceCompat.d)localObject1).Lu.Lo.g(new MediaBrowserServiceCompat.d.2((MediaBrowserServiceCompat.d)localObject1, paramMessage));
+            ((MediaBrowserServiceCompat.d)localObject1).LE.Ly.f(new MediaBrowserServiceCompat.d.2((MediaBrowserServiceCompat.d)localObject1, paramMessage));
             return;
             localObject2 = ((Bundle)localObject1).getBundle("data_options");
             MediaSessionCompat.d((Bundle)localObject2);
-            localObject3 = this.LR;
+            localObject3 = this.Mb;
             str = ((Bundle)localObject1).getString("data_media_item_id");
             localObject1 = android.support.v4.app.c.b((Bundle)localObject1, "data_callback_token");
             paramMessage = new MediaBrowserServiceCompat.f(paramMessage.replyTo);
-            ((MediaBrowserServiceCompat.d)localObject3).Lu.Lo.g(new MediaBrowserServiceCompat.d.3((MediaBrowserServiceCompat.d)localObject3, paramMessage, str, (IBinder)localObject1, (Bundle)localObject2));
+            ((MediaBrowserServiceCompat.d)localObject3).LE.Ly.f(new MediaBrowserServiceCompat.d.3((MediaBrowserServiceCompat.d)localObject3, paramMessage, str, (IBinder)localObject1, (Bundle)localObject2));
             return;
-            localObject2 = this.LR;
+            localObject2 = this.Mb;
             localObject3 = ((Bundle)localObject1).getString("data_media_item_id");
             localObject1 = android.support.v4.app.c.b((Bundle)localObject1, "data_callback_token");
             paramMessage = new MediaBrowserServiceCompat.f(paramMessage.replyTo);
-            ((MediaBrowserServiceCompat.d)localObject2).Lu.Lo.g(new MediaBrowserServiceCompat.d.4((MediaBrowserServiceCompat.d)localObject2, paramMessage, (String)localObject3, (IBinder)localObject1));
+            ((MediaBrowserServiceCompat.d)localObject2).LE.Ly.f(new MediaBrowserServiceCompat.d.4((MediaBrowserServiceCompat.d)localObject2, paramMessage, (String)localObject3, (IBinder)localObject1));
             return;
-            localObject2 = this.LR;
+            localObject2 = this.Mb;
             localObject3 = ((Bundle)localObject1).getString("data_media_item_id");
             localObject1 = (ResultReceiver)((Bundle)localObject1).getParcelable("data_result_receiver");
             paramMessage = new MediaBrowserServiceCompat.f(paramMessage.replyTo);
           } while ((TextUtils.isEmpty((CharSequence)localObject3)) || (localObject1 == null));
-          ((MediaBrowserServiceCompat.d)localObject2).Lu.Lo.g(new MediaBrowserServiceCompat.d.5((MediaBrowserServiceCompat.d)localObject2, paramMessage, (String)localObject3, (ResultReceiver)localObject1));
+          ((MediaBrowserServiceCompat.d)localObject2).LE.Ly.f(new MediaBrowserServiceCompat.d.5((MediaBrowserServiceCompat.d)localObject2, paramMessage, (String)localObject3, (ResultReceiver)localObject1));
           return;
           localObject2 = ((Bundle)localObject1).getBundle("data_root_hints");
           MediaSessionCompat.d((Bundle)localObject2);
-          localObject3 = this.LR;
+          localObject3 = this.Mb;
           paramMessage = new MediaBrowserServiceCompat.f(paramMessage.replyTo);
           str = ((Bundle)localObject1).getString("data_package_name");
           int i = ((Bundle)localObject1).getInt("data_calling_pid");
           int j = ((Bundle)localObject1).getInt("data_calling_uid");
-          ((MediaBrowserServiceCompat.d)localObject3).Lu.Lo.g(new MediaBrowserServiceCompat.d.6((MediaBrowserServiceCompat.d)localObject3, paramMessage, str, i, j, (Bundle)localObject2));
+          ((MediaBrowserServiceCompat.d)localObject3).LE.Ly.f(new MediaBrowserServiceCompat.d.6((MediaBrowserServiceCompat.d)localObject3, paramMessage, str, i, j, (Bundle)localObject2));
           return;
-          localObject1 = this.LR;
+          localObject1 = this.Mb;
           paramMessage = new MediaBrowserServiceCompat.f(paramMessage.replyTo);
-          ((MediaBrowserServiceCompat.d)localObject1).Lu.Lo.g(new MediaBrowserServiceCompat.d.7((MediaBrowserServiceCompat.d)localObject1, paramMessage));
+          ((MediaBrowserServiceCompat.d)localObject1).LE.Ly.f(new MediaBrowserServiceCompat.d.7((MediaBrowserServiceCompat.d)localObject1, paramMessage));
           return;
           localObject2 = ((Bundle)localObject1).getBundle("data_search_extras");
           MediaSessionCompat.d((Bundle)localObject2);
-          localObject3 = this.LR;
+          localObject3 = this.Mb;
           str = ((Bundle)localObject1).getString("data_search_query");
           localObject1 = (ResultReceiver)((Bundle)localObject1).getParcelable("data_result_receiver");
           paramMessage = new MediaBrowserServiceCompat.f(paramMessage.replyTo);
         } while ((TextUtils.isEmpty(str)) || (localObject1 == null));
-        ((MediaBrowserServiceCompat.d)localObject3).Lu.Lo.g(new MediaBrowserServiceCompat.d.8((MediaBrowserServiceCompat.d)localObject3, paramMessage, str, (Bundle)localObject2, (ResultReceiver)localObject1));
+        ((MediaBrowserServiceCompat.d)localObject3).LE.Ly.f(new MediaBrowserServiceCompat.d.8((MediaBrowserServiceCompat.d)localObject3, paramMessage, str, (Bundle)localObject2, (ResultReceiver)localObject1));
         return;
         localObject2 = ((Bundle)localObject1).getBundle("data_custom_action_extras");
         MediaSessionCompat.d((Bundle)localObject2);
-        localObject3 = this.LR;
+        localObject3 = this.Mb;
         str = ((Bundle)localObject1).getString("data_custom_action");
         localObject1 = (ResultReceiver)((Bundle)localObject1).getParcelable("data_result_receiver");
         paramMessage = new MediaBrowserServiceCompat.f(paramMessage.replyTo);
       } while ((TextUtils.isEmpty(str)) || (localObject1 == null));
-      ((MediaBrowserServiceCompat.d)localObject3).Lu.Lo.g(new MediaBrowserServiceCompat.d.9((MediaBrowserServiceCompat.d)localObject3, paramMessage, str, (Bundle)localObject2, (ResultReceiver)localObject1));
+      ((MediaBrowserServiceCompat.d)localObject3).LE.Ly.f(new MediaBrowserServiceCompat.d.9((MediaBrowserServiceCompat.d)localObject3, paramMessage, str, (Bundle)localObject2, (ResultReceiver)localObject1));
     }
     
     public final boolean sendMessageAtTime(Message paramMessage, long paramLong)
@@ -393,7 +404,7 @@ public abstract class MediaBrowserServiceCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.v4.media.MediaBrowserServiceCompat
  * JD-Core Version:    0.7.0.1
  */

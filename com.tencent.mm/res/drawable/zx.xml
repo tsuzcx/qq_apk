@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_focused="true" android:state_pressed="true" android:drawable="@raw/friendactivity_comment_writeicon_golden_pressed" />
-    <item android:state_focused="false" android:state_pressed="true" android:drawable="@raw/friendactivity_comment_writeicon_golden_pressed" />
-    <item android:state_focused="false" android:drawable="@raw/friendactivity_comment_writeicon_golden_normal" />
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/BW_97" />
+            <corners android:radius="4.0dip" />
+        </shape>
+    </item>
 </selector>

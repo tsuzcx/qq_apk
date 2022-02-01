@@ -8,164 +8,182 @@ import android.os.Build.VERSION;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.magicbrush.d;
+import com.tencent.luggage.game.b.c;
+import com.tencent.magicbrush.e;
 import com.tencent.magicbrush.ui.MBViewManager;
 import com.tencent.magicbrush.ui.MagicBrushView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.appstorage.ICommLibReader;
-import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
 import com.tencent.mm.plugin.appbrand.utils.r;
+import com.tencent.mm.sdk.platformtools.WeChatHosts;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class b
 {
-  public g ciU;
-  h ciV;
-  boolean ciW;
-  public View ciX;
-  LinkedList<String> ciY;
-  boolean ciZ;
-  private d cja;
+  private static final String cuR;
+  public g cuP;
+  private k cuQ;
+  boolean cuS;
+  public View cuT;
+  private LinkedList<String> cuU;
+  private boolean cuV;
+  private e cuW;
   private Context mContext;
   
-  public b(g paramg, d paramd, Context paramContext, h paramh)
+  static
+  {
+    AppMethodBeat.i(222876);
+    cuR = "wagame://" + WeChatHosts.domainString(2131761738) + "/WAGameVConsole.html";
+    AppMethodBeat.o(222876);
+  }
+  
+  private b(g paramg, e parame, Context paramContext, k paramk)
   {
     AppMethodBeat.i(130495);
-    this.ciW = false;
-    this.ciZ = false;
-    this.ciV = paramh;
-    this.ciU = paramg;
+    this.cuS = false;
+    this.cuV = false;
+    this.cuQ = paramk;
+    this.cuP = paramg;
     this.mContext = paramContext;
-    this.cja = paramd;
-    this.ciU.aw(paramContext);
-    this.ciU.CE().CF();
-    this.ciX = new a(this.mContext);
-    this.ciX.setOnClickListener(new View.OnClickListener()
+    this.cuW = parame;
+    this.cuP.aF(paramContext);
+    this.cuP.Ma().Mb();
+    this.cuT = new a(this.mContext);
+    this.cuT.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(130487);
         Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-        ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/luggage/game/inspector/ConsoleViewWrapper$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
+        ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/luggage/game/inspector/ConsoleViewWrapper$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
         paramAnonymousView = b.this;
-        if (paramAnonymousView.ciW)
+        if (paramAnonymousView.cuS)
         {
           localObject = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
           ((ValueAnimator)localObject).addUpdateListener(new b.3(paramAnonymousView));
           ((ValueAnimator)localObject).start();
         }
-        for (paramAnonymousView.ciW = false;; paramAnonymousView.ciW = true)
+        for (paramAnonymousView.cuS = false;; paramAnonymousView.cuS = true)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/luggage/game/inspector/ConsoleViewWrapper$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(130487);
           return;
-          paramAnonymousView.ciU.setTranslationY(paramAnonymousView.getDisplayHeight());
-          paramAnonymousView.ciU.setVisibility(0);
+          paramAnonymousView.cuP.setTranslationY(paramAnonymousView.getDisplayHeight());
+          paramAnonymousView.cuP.setVisibility(0);
           localObject = ValueAnimator.ofFloat(new float[] { 1.0F, 0.0F });
           ((ValueAnimator)localObject).addUpdateListener(new b.4(paramAnonymousView));
           ((ValueAnimator)localObject).start();
         }
       }
     });
-    this.ciU.a(new g.b()
+    this.cuP.a(new g.b()
     {
-      public final void CD()
+      public final void LZ()
       {
         AppMethodBeat.i(130489);
-        b.this.ciZ = true;
-        if ((b.this.ciY != null) && (!b.this.ciY.isEmpty()))
+        b.a(b.this);
+        if ((b.b(b.this) != null) && (!b.b(b.this).isEmpty()))
         {
-          Iterator localIterator = b.this.ciY.iterator();
+          Iterator localIterator = b.b(b.this).iterator();
           while (localIterator.hasNext())
           {
             String str = (String)localIterator.next();
-            b.this.cN(str);
+            b.a(b.this, str);
           }
         }
         AppMethodBeat.o(130489);
       }
       
-      public final boolean cO(String paramAnonymousString)
+      public final boolean dn(String paramAnonymousString)
       {
         AppMethodBeat.i(130488);
-        boolean bool = "wagame://servicewechat.com/WAGameVConsole.html".equals(paramAnonymousString);
+        boolean bool = b.cuR.equals(paramAnonymousString);
         AppMethodBeat.o(130488);
         return bool;
       }
       
-      public final InputStream cP(String paramAnonymousString)
+      public final InputStream jdMethod_do(String paramAnonymousString)
       {
         AppMethodBeat.i(130490);
-        paramAnonymousString = b.this.ciV.aWe().openRead(paramAnonymousString);
+        paramAnonymousString = b.c(b.this).bqZ().openRead(paramAnonymousString);
         AppMethodBeat.o(130490);
         return paramAnonymousString;
       }
     });
-    this.ciU.loadUrl("wagame://servicewechat.com/WAGameVConsole.html");
-    this.ciU.setTranslationY(100000.0F);
-    this.ciU.setVisibility(8);
+    this.cuP.loadUrl(cuR);
+    this.cuP.setTranslationY(100000.0F);
+    this.cuP.setVisibility(8);
     AppMethodBeat.o(130495);
   }
   
-  final void cN(String paramString)
+  public static b a(e parame, Context paramContext, k paramk)
+  {
+    AppMethodBeat.i(222872);
+    parame = new b(c.LV().cuE, parame, paramContext, paramk);
+    AppMethodBeat.o(222872);
+    return parame;
+  }
+  
+  private void dm(String paramString)
   {
     AppMethodBeat.i(130498);
-    paramString = r.VN(paramString);
+    paramString = r.afJ(paramString);
     if (Build.VERSION.SDK_INT >= 19)
     {
-      this.ciU.cQ("console._log('" + paramString + "')");
+      this.cuP.dp("console._log('" + paramString + "')");
       AppMethodBeat.o(130498);
       return;
     }
-    this.ciU.loadUrl("javascript:console._log('" + paramString + "')");
+    this.cuP.loadUrl("javascript:console._log('" + paramString + "')");
     AppMethodBeat.o(130498);
   }
   
   final int getDisplayHeight()
   {
     AppMethodBeat.i(130496);
-    int i = (int)(this.cja.cxr.find(0).getWidth() * this.mContext.getResources().getDisplayMetrics().density);
+    int i = (int)(this.cuW.cLz.find(0).getWidth() * this.mContext.getResources().getDisplayMetrics().density);
     AppMethodBeat.o(130496);
     return i + 1;
   }
   
   public final View getView()
   {
-    AppMethodBeat.i(220715);
-    View localView = this.ciU.getView();
-    AppMethodBeat.o(220715);
+    AppMethodBeat.i(222873);
+    View localView = this.cuP.getView();
+    AppMethodBeat.o(222873);
     return localView;
   }
   
   public final void log(String paramString)
   {
     AppMethodBeat.i(130497);
-    if (this.ciZ)
+    if (this.cuV)
     {
-      cN(paramString);
+      dm(paramString);
       AppMethodBeat.o(130497);
       return;
     }
-    if (this.ciY == null) {
-      this.ciY = new LinkedList();
+    if (this.cuU == null) {
+      this.cuU = new LinkedList();
     }
-    this.ciY.add(paramString);
+    this.cuU.add(paramString);
     AppMethodBeat.o(130497);
   }
   
   public final void post(Runnable paramRunnable)
   {
     AppMethodBeat.i(130499);
-    this.ciU.getView().post(paramRunnable);
+    this.cuP.getView().post(paramRunnable);
     AppMethodBeat.o(130499);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.luggage.game.c.b
  * JD-Core Version:    0.7.0.1
  */

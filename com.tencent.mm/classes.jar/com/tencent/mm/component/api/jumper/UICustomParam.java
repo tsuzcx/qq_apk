@@ -14,21 +14,21 @@ public class UICustomParam
   implements Parcelable
 {
   public static final Parcelable.Creator<UICustomParam> CREATOR;
-  public int aXs;
-  public int aXt;
-  public float ggd;
-  public float gge;
-  public float ggf;
-  public float ggg;
-  public Map<String, Boolean> ggh;
-  public int ggi;
-  public int ggj;
-  public int ggk;
-  public String ggl;
-  public int ggm;
-  public float ggn;
-  public int ggo;
-  public float ggp;
+  public float gLH;
+  public float gLI;
+  public float gLJ;
+  public float gLK;
+  public Map<String, Boolean> gLL;
+  public int gLM;
+  public int gLN;
+  public int gLO;
+  public String gLP;
+  public int gLQ;
+  public float gLR;
+  public int gLS;
+  public float gLT;
+  public int previewHeight;
+  public int previewWidth;
   public String text;
   
   static
@@ -41,68 +41,68 @@ public class UICustomParam
   private UICustomParam()
   {
     AppMethodBeat.i(101481);
-    this.ggd = 0.0F;
-    this.gge = 0.0F;
-    this.ggf = 0.0F;
-    this.ggg = 0.0F;
-    this.ggi = 0;
-    this.ggj = 0;
-    this.ggk = 0;
+    this.gLH = 0.0F;
+    this.gLI = 0.0F;
+    this.gLJ = 0.0F;
+    this.gLK = 0.0F;
+    this.gLM = 0;
+    this.gLN = 0;
+    this.gLO = 0;
     this.text = "";
-    this.ggl = "";
-    this.ggm = 0;
-    this.ggn = 0.0F;
-    this.ggo = 0;
-    this.aXs = -1;
-    this.aXt = -1;
-    this.ggp = -1.0F;
-    this.ggh = new HashMap();
+    this.gLP = "";
+    this.gLQ = 0;
+    this.gLR = 0.0F;
+    this.gLS = 0;
+    this.previewWidth = -1;
+    this.previewHeight = -1;
+    this.gLT = -1.0F;
+    this.gLL = new HashMap();
     AppMethodBeat.o(101481);
   }
   
   protected UICustomParam(Parcel paramParcel)
   {
     AppMethodBeat.i(101482);
-    this.ggd = 0.0F;
-    this.gge = 0.0F;
-    this.ggf = 0.0F;
-    this.ggg = 0.0F;
-    this.ggi = 0;
-    this.ggj = 0;
-    this.ggk = 0;
+    this.gLH = 0.0F;
+    this.gLI = 0.0F;
+    this.gLJ = 0.0F;
+    this.gLK = 0.0F;
+    this.gLM = 0;
+    this.gLN = 0;
+    this.gLO = 0;
     this.text = "";
-    this.ggl = "";
-    this.ggm = 0;
-    this.ggn = 0.0F;
-    this.ggo = 0;
-    this.aXs = -1;
-    this.aXt = -1;
-    this.ggp = -1.0F;
-    this.ggd = paramParcel.readFloat();
-    this.gge = paramParcel.readFloat();
-    this.ggf = paramParcel.readFloat();
-    this.ggg = paramParcel.readFloat();
+    this.gLP = "";
+    this.gLQ = 0;
+    this.gLR = 0.0F;
+    this.gLS = 0;
+    this.previewWidth = -1;
+    this.previewHeight = -1;
+    this.gLT = -1.0F;
+    this.gLH = paramParcel.readFloat();
+    this.gLI = paramParcel.readFloat();
+    this.gLJ = paramParcel.readFloat();
+    this.gLK = paramParcel.readFloat();
     int j = paramParcel.readInt();
-    this.ggh = new HashMap(j);
+    this.gLL = new HashMap(j);
     int i = 0;
     while (i < j)
     {
       String str = paramParcel.readString();
       Boolean localBoolean = (Boolean)paramParcel.readValue(Boolean.class.getClassLoader());
-      this.ggh.put(str, localBoolean);
+      this.gLL.put(str, localBoolean);
       i += 1;
     }
-    this.ggi = paramParcel.readInt();
-    this.ggj = paramParcel.readInt();
-    this.ggk = paramParcel.readInt();
+    this.gLM = paramParcel.readInt();
+    this.gLN = paramParcel.readInt();
+    this.gLO = paramParcel.readInt();
     this.text = paramParcel.readString();
-    this.ggl = paramParcel.readString();
-    this.ggm = paramParcel.readInt();
-    this.ggn = paramParcel.readFloat();
-    this.ggo = paramParcel.readInt();
-    this.aXs = paramParcel.readInt();
-    this.aXt = paramParcel.readInt();
-    this.ggp = paramParcel.readFloat();
+    this.gLP = paramParcel.readString();
+    this.gLQ = paramParcel.readInt();
+    this.gLR = paramParcel.readFloat();
+    this.gLS = paramParcel.readInt();
+    this.previewWidth = paramParcel.readInt();
+    this.previewHeight = paramParcel.readInt();
+    this.gLT = paramParcel.readFloat();
     AppMethodBeat.o(101482);
   }
   
@@ -114,179 +114,179 @@ public class UICustomParam
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(101483);
-    paramParcel.writeFloat(this.ggd);
-    paramParcel.writeFloat(this.gge);
-    paramParcel.writeFloat(this.ggf);
-    paramParcel.writeFloat(this.ggg);
-    paramParcel.writeInt(this.ggh.size());
-    Iterator localIterator = this.ggh.entrySet().iterator();
+    paramParcel.writeFloat(this.gLH);
+    paramParcel.writeFloat(this.gLI);
+    paramParcel.writeFloat(this.gLJ);
+    paramParcel.writeFloat(this.gLK);
+    paramParcel.writeInt(this.gLL.size());
+    Iterator localIterator = this.gLL.entrySet().iterator();
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
       paramParcel.writeString((String)localEntry.getKey());
       paramParcel.writeValue(localEntry.getValue());
     }
-    paramParcel.writeInt(this.ggi);
-    paramParcel.writeInt(this.ggj);
-    paramParcel.writeInt(this.ggk);
+    paramParcel.writeInt(this.gLM);
+    paramParcel.writeInt(this.gLN);
+    paramParcel.writeInt(this.gLO);
     paramParcel.writeString(this.text);
-    paramParcel.writeString(this.ggl);
-    paramParcel.writeInt(this.ggm);
-    paramParcel.writeFloat(this.ggn);
-    paramParcel.writeInt(this.ggo);
-    paramParcel.writeInt(this.aXs);
-    paramParcel.writeInt(this.aXt);
-    paramParcel.writeFloat(this.ggp);
+    paramParcel.writeString(this.gLP);
+    paramParcel.writeInt(this.gLQ);
+    paramParcel.writeFloat(this.gLR);
+    paramParcel.writeInt(this.gLS);
+    paramParcel.writeInt(this.previewWidth);
+    paramParcel.writeInt(this.previewHeight);
+    paramParcel.writeFloat(this.gLT);
     AppMethodBeat.o(101483);
   }
   
   public static final class a
   {
-    public UICustomParam ggq;
+    public UICustomParam gLU;
     
     public a()
     {
       AppMethodBeat.i(101475);
-      this.ggq = new UICustomParam((byte)0);
-      this.ggq.ggh.put("plugin_filter", Boolean.TRUE);
+      this.gLU = new UICustomParam((byte)0);
+      this.gLU.gLL.put("plugin_filter", Boolean.TRUE);
       AppMethodBeat.o(101475);
     }
     
-    public static a abC()
+    public static a apz()
     {
       AppMethodBeat.i(101476);
       a locala = new a();
-      locala.abH();
-      locala.abG();
-      locala.cP(true);
+      locala.apE();
+      locala.apD();
+      locala.dz(true);
       AppMethodBeat.o(101476);
       return locala;
     }
     
-    public final a K(String paramString, int paramInt)
+    public final a L(String paramString, int paramInt)
     {
-      this.ggq.ggl = paramString;
-      this.ggq.ggm = paramInt;
-      this.ggq.ggn = 17.0F;
+      this.gLU.gLP = paramString;
+      this.gLU.gLQ = paramInt;
+      this.gLU.gLR = 17.0F;
       return this;
     }
     
     public final a a(int paramInt1, int paramInt2, String paramString, int paramInt3)
     {
-      this.ggq.ggi = paramInt1;
-      this.ggq.ggj = paramInt2;
-      this.ggq.text = paramString;
-      this.ggq.ggk = paramInt3;
+      this.gLU.gLM = paramInt1;
+      this.gLU.gLN = paramInt2;
+      this.gLU.text = paramString;
+      this.gLU.gLO = paramInt3;
       return this;
     }
     
-    public final a abD()
+    public final a ai(float paramFloat)
     {
-      this.ggq.ggd = 0.6F;
-      this.ggq.gge = 0.6F;
+      this.gLU.gLT = paramFloat;
       return this;
     }
     
-    public final a abE()
+    public final a apA()
     {
-      this.ggq.ggf = 0.5F;
-      this.ggq.ggg = 0.5F;
+      this.gLU.gLH = 0.6F;
+      this.gLU.gLI = 0.6F;
       return this;
     }
     
-    public final a abF()
+    public final a apB()
+    {
+      this.gLU.gLJ = 0.5F;
+      this.gLU.gLK = 0.5F;
+      return this;
+    }
+    
+    public final a apC()
     {
       AppMethodBeat.i(168709);
-      this.ggq.ggh.put("plugin_photo_crop", Boolean.TRUE);
+      this.gLU.gLL.put("plugin_photo_crop", Boolean.TRUE);
       AppMethodBeat.o(168709);
       return this;
     }
     
-    public final a abG()
+    public final a apD()
     {
       AppMethodBeat.i(101478);
-      this.ggq.ggh.put("plugin_tip", Boolean.TRUE);
+      this.gLU.gLL.put("plugin_tip", Boolean.TRUE);
       AppMethodBeat.o(101478);
       return this;
     }
     
-    public final a abH()
+    public final a apE()
     {
       AppMethodBeat.i(101479);
-      this.ggq.ggh.put("plugin_poi", Boolean.TRUE);
+      this.gLU.gLL.put("plugin_poi", Boolean.TRUE);
       AppMethodBeat.o(101479);
       return this;
     }
     
-    public final a abI()
+    public final a apF()
     {
       AppMethodBeat.i(168711);
-      this.ggq.ggh.put("plugin_filter", Boolean.TRUE);
+      this.gLU.gLL.put("plugin_filter", Boolean.TRUE);
       AppMethodBeat.o(168711);
       return this;
     }
     
-    public final UICustomParam abJ()
+    public final UICustomParam apG()
     {
-      return this.ggq;
+      return this.gLU;
     }
     
-    public final a ah(float paramFloat)
+    public final a dv(boolean paramBoolean)
     {
-      this.ggq.ggp = paramFloat;
+      AppMethodBeat.i(207033);
+      this.gLU.gLL.put("plugin_emoji", Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(207033);
       return this;
     }
     
-    public final a cL(boolean paramBoolean)
+    public final a dw(boolean paramBoolean)
     {
-      AppMethodBeat.i(218350);
-      this.ggq.ggh.put("plugin_emoji", Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(218350);
+      AppMethodBeat.i(207034);
+      this.gLU.gLL.put("plugin_text", Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(207034);
       return this;
     }
     
-    public final a cM(boolean paramBoolean)
+    public final a dx(boolean paramBoolean)
     {
-      AppMethodBeat.i(218351);
-      this.ggq.ggh.put("plugin_text", Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(218351);
+      AppMethodBeat.i(207035);
+      this.gLU.gLL.put("plugin_music", Boolean.valueOf(paramBoolean));
+      AppMethodBeat.o(207035);
       return this;
     }
     
-    public final a cN(boolean paramBoolean)
-    {
-      AppMethodBeat.i(218352);
-      this.ggq.ggh.put("plugin_music", Boolean.valueOf(paramBoolean));
-      AppMethodBeat.o(218352);
-      return this;
-    }
-    
-    public final a cO(boolean paramBoolean)
+    public final a dy(boolean paramBoolean)
     {
       AppMethodBeat.i(168708);
-      this.ggq.ggh.put("plugin_video_crop", Boolean.valueOf(paramBoolean));
+      this.gLU.gLL.put("plugin_video_crop", Boolean.valueOf(paramBoolean));
       AppMethodBeat.o(168708);
       return this;
     }
     
-    public final a cP(boolean paramBoolean)
+    public final a dz(boolean paramBoolean)
     {
       AppMethodBeat.i(168710);
-      this.ggq.ggh.put("plugin_menu", Boolean.valueOf(paramBoolean));
+      this.gLU.gLL.put("plugin_menu", Boolean.valueOf(paramBoolean));
       AppMethodBeat.o(168710);
       return this;
     }
     
-    public final a lD(int paramInt)
+    public final a oG(int paramInt)
     {
-      this.ggq.ggo = paramInt;
+      this.gLU.gLS = paramInt;
       return this;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.component.api.jumper.UICustomParam
  * JD-Core Version:    0.7.0.1
  */

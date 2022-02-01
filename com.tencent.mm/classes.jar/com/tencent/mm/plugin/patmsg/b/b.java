@@ -2,27 +2,26 @@ package com.tencent.mm.plugin.patmsg.b;
 
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.b.a.em;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dau;
-import com.tencent.mm.protocal.protobuf.dav;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.b.a.hu;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dty;
+import com.tencent.mm.protocal.protobuf.dtz;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public com.tencent.mm.ak.b hZD;
-  public Pair<Long, Long> wVv;
-  public em wVw;
+  public Pair<Long, Long> ARo;
+  public hu ARp;
+  private i callback;
+  public d iUB;
   
   public b(Pair<Long, Long> paramPair, String paramString1, String paramString2)
   {
@@ -31,29 +30,29 @@ public final class b
   
   public b(Pair<Long, Long> paramPair, String paramString1, String paramString2, int paramInt)
   {
-    AppMethodBeat.i(220348);
-    dau localdau = new dau();
-    localdau.HzT = v.aAC();
-    localdau.HJV = paramString1;
-    localdau.HJW = paramString2;
-    localdau.FOR = ((com.tencent.mm.plugin.patmsg.a.b)g.ab(com.tencent.mm.plugin.patmsg.a.b.class)).d(paramPair);
-    localdau.Scene = paramInt;
-    this.wVv = paramPair;
-    paramPair = new b.a();
-    paramPair.hQF = localdau;
+    AppMethodBeat.i(206970);
+    dty localdty = new dty();
+    localdty.MKC = z.aTY();
+    localdty.MVH = paramString1;
+    localdty.MVI = paramString2;
+    localdty.KIz = ((com.tencent.mm.plugin.patmsg.a.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.patmsg.a.b.class)).d(paramPair);
+    localdty.Scene = paramInt;
+    this.ARo = paramPair;
+    paramPair = new d.a();
+    paramPair.iLN = localdty;
     paramPair.uri = "/cgi-bin/micromsg-bin/sendpat";
     paramPair.funcId = getType();
-    paramPair.hQG = new dav();
-    this.hZD = paramPair.aDS();
-    AppMethodBeat.o(220348);
+    paramPair.iLO = new dtz();
+    this.iUB = paramPair.aXF();
+    AppMethodBeat.o(206970);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
-    AppMethodBeat.i(220349);
-    this.callback = paramf;
-    int i = dispatch(parame, this.hZD, this);
-    AppMethodBeat.o(220349);
+    AppMethodBeat.i(206971);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
+    AppMethodBeat.o(206971);
     return i;
   }
   
@@ -62,17 +61,17 @@ public final class b
     return 849;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(220350);
-    ae.i("MicroMsg.NetSceneSendPat", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    AppMethodBeat.i(206972);
+    Log.i("MicroMsg.NetSceneSendPat", "errType %d, errCode %d, errMsg %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-    AppMethodBeat.o(220350);
+    AppMethodBeat.o(206972);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.patmsg.b.b
  * JD-Core Version:    0.7.0.1
  */

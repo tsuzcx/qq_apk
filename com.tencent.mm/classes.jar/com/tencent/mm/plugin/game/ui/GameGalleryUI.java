@@ -17,14 +17,14 @@ public class GameGalleryUI
   implements ViewPager.OnPageChangeListener
 {
   private String appId = "";
-  private MMDotView nnw;
-  private ViewPager pRH;
-  private int roH = -1;
-  private int uAR = 0;
+  private MMDotView oxc;
+  private ViewPager riH;
+  private int sQn = -1;
+  private int xSP = 0;
   
   public int getLayoutId()
   {
-    return 2131494310;
+    return 2131494872;
   }
   
   public void onCreate(Bundle paramBundle)
@@ -32,8 +32,8 @@ public class GameGalleryUI
     AppMethodBeat.i(42151);
     super.onCreate(paramBundle);
     hideTitleView();
-    this.pRH = ((ViewPager)findViewById(2131300450));
-    this.nnw = ((MMDotView)findViewById(2131300454));
+    this.riH = ((ViewPager)findViewById(2131301973));
+    this.oxc = ((MMDotView)findViewById(2131301977));
     paramBundle = getIntent().getStringArrayExtra("URLS");
     if (paramBundle == null)
     {
@@ -53,17 +53,17 @@ public class GameGalleryUI
       i = 0;
     }
     this.appId = getIntent().getStringExtra("REPORT_APPID");
-    this.roH = getIntent().getIntExtra("REPORT_SCENE", -1);
-    this.uAR = getIntent().getIntExtra("SOURCE_SCENE", 0);
+    this.sQn = getIntent().getIntExtra("REPORT_SCENE", -1);
+    this.xSP = getIntent().getIntExtra("SOURCE_SCENE", 0);
     GameGalleryUI.a locala = new GameGalleryUI.a(this, paramBundle);
-    this.pRH.setAdapter(locala);
-    this.pRH.setOnPageChangeListener(this);
-    this.pRH.setCurrentItem(i, false);
-    this.nnw.setInvertedStyle(true);
-    this.nnw.setDotCount(paramBundle.length);
-    this.nnw.setSelectedDot(i);
+    this.riH.setAdapter(locala);
+    this.riH.setOnPageChangeListener(this);
+    this.riH.setCurrentItem(i, false);
+    this.oxc.setInvertedStyle(true);
+    this.oxc.setDotCount(paramBundle.length);
+    this.oxc.setSelectedDot(i);
     if (i == 0) {
-      f.a(this, this.roH, 1202, 1, 12, this.appId, this.uAR, null);
+      f.a(this, this.sQn, 1202, 1, 12, this.appId, this.xSP, null);
     }
     AppMethodBeat.o(42151);
   }
@@ -75,8 +75,8 @@ public class GameGalleryUI
   public void onPageSelected(int paramInt)
   {
     AppMethodBeat.i(42152);
-    this.nnw.setSelectedDot(paramInt);
-    f.a(this, this.roH, 1202, paramInt + 1, 12, this.appId, this.uAR, null);
+    this.oxc.setSelectedDot(paramInt);
+    f.a(this, this.sQn, 1202, paramInt + 1, 12, this.appId, this.xSP, null);
     AppMethodBeat.o(42152);
   }
   
@@ -88,7 +88,7 @@ public class GameGalleryUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameGalleryUI
  * JD-Core Version:    0.7.0.1
  */

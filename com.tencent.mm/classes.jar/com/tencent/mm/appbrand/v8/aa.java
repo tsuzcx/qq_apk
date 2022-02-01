@@ -4,34 +4,34 @@ import android.content.ComponentCallbacks2;
 import android.content.res.Configuration;
 import com.eclipsesource.v8.MultiContextV8;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class aa
 {
   private static final String TAG;
-  private final MultiContextV8 cYm;
-  private final int daX;
-  private Integer daY;
-  private boolean daZ;
-  private int dba;
-  private final Runnable dbb;
-  private final ComponentCallbacks2 dbc;
+  private final MultiContextV8 doQ;
+  private final int drC;
+  private Integer drD;
+  private boolean drE;
+  private int drF;
+  private final Runnable drG;
+  private final ComponentCallbacks2 drH;
   
   static
   {
     AppMethodBeat.i(144153);
-    TAG = "MicroMsg.V8MemoryPressureMonitor" + ak.getProcessName().replace("com.tencent.mm", "");
+    TAG = "MicroMsg.V8MemoryPressureMonitor" + MMApplicationContext.getProcessName().replace(MMApplicationContext.getApplicationId(), "");
     AppMethodBeat.o(144153);
   }
   
   public aa(MultiContextV8 paramMultiContextV8)
   {
     AppMethodBeat.i(144147);
-    this.daX = 1000;
-    this.daY = null;
-    this.dba = 0;
-    this.dbb = new Runnable()
+    this.drC = 1000;
+    this.drD = null;
+    this.drF = 0;
+    this.drG = new Runnable()
     {
       public final void run()
       {
@@ -40,27 +40,27 @@ public final class aa
         AppMethodBeat.o(144144);
       }
     };
-    this.cYm = paramMultiContextV8;
-    this.dbc = new ComponentCallbacks2()
+    this.doQ = paramMultiContextV8;
+    this.drH = new ComponentCallbacks2()
     {
       public final void onConfigurationChanged(Configuration paramAnonymousConfiguration) {}
       
       public final void onLowMemory()
       {
         AppMethodBeat.i(144146);
-        ae.i(aa.TAG, "onLowMemory");
-        aa.this.hB(2);
-        ae.i(aa.TAG, "onLowMemory notification with CRITICAL end");
+        Log.i(aa.TAG, "onLowMemory");
+        aa.this.iV(2);
+        Log.i(aa.TAG, "onLowMemory notification with CRITICAL end");
         AppMethodBeat.o(144146);
       }
       
       public final void onTrimMemory(int paramAnonymousInt)
       {
         AppMethodBeat.i(144145);
-        ae.i(aa.TAG, "onTrimMemory level = [%d]", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        Integer localInteger = aa.hD(paramAnonymousInt);
+        Log.i(aa.TAG, "onTrimMemory level = [%d]", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        Integer localInteger = aa.iX(paramAnonymousInt);
         if (localInteger != null) {
-          aa.this.hB(localInteger.intValue());
+          aa.this.iV(localInteger.intValue());
         }
         AppMethodBeat.o(144145);
       }
@@ -68,26 +68,26 @@ public final class aa
     AppMethodBeat.o(144147);
   }
   
-  private static void NF()
+  private static void XR()
   {
     AppMethodBeat.i(144150);
-    ae.i(TAG, "startThrottlingInterval");
+    Log.i(TAG, "startThrottlingInterval");
     AppMethodBeat.o(144150);
   }
   
-  private void hC(int paramInt)
+  private void iW(int paramInt)
   {
     AppMethodBeat.i(144149);
-    NF();
-    this.dba = paramInt;
+    XR();
+    this.drF = paramInt;
     String str;
     if (paramInt == 2) {
       str = "CRITICAL";
     }
     for (;;)
     {
-      ae.i(TAG, "reportPressure [%s]", new Object[] { str });
-      this.cYm.memoryPressureNotification(paramInt);
+      Log.i(TAG, "reportPressure [%s]", new Object[] { str });
+      this.doQ.memoryPressureNotification(paramInt);
       AppMethodBeat.o(144149);
       return;
       if (paramInt == 1) {
@@ -98,17 +98,17 @@ public final class aa
     }
   }
   
-  public final void hB(int paramInt)
+  public final void iV(int paramInt)
   {
     AppMethodBeat.i(144148);
-    if (this.daZ)
+    if (this.drE)
     {
-      ae.i(TAG, "notifyPressure but throttle");
-      this.daY = Integer.valueOf(paramInt);
+      Log.i(TAG, "notifyPressure but throttle");
+      this.drD = Integer.valueOf(paramInt);
       AppMethodBeat.o(144148);
       return;
     }
-    hC(paramInt);
+    iW(paramInt);
     AppMethodBeat.o(144148);
   }
 }

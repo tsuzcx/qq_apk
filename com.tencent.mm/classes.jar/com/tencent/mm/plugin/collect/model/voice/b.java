@@ -5,45 +5,45 @@ import android.os.Bundle;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expansions.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 
 public final class b
 {
-  float MU;
+  float Ne;
   @SuppressLint({"HandlerLeak"})
-  aq mHandler;
+  MMHandler mHandler;
   private boolean mIsInit;
   String mText;
   float mVolume;
-  c pia;
-  private a pib;
-  private Thread pic;
-  SynthesizerNative pie;
-  boolean pif;
-  int pig;
-  byte[] pih;
+  c qxn;
+  private a qxo;
+  private Thread qxp;
+  SynthesizerNative qxq;
+  boolean qxr;
+  int qxs;
+  byte[] qxt;
   
   public b()
   {
     AppMethodBeat.i(63887);
-    this.pib = new a((byte)0);
-    this.pic = null;
-    this.pie = new SynthesizerNative();
+    this.qxo = new a((byte)0);
+    this.qxp = null;
+    this.qxq = new SynthesizerNative();
     this.mIsInit = false;
-    this.pif = false;
-    this.pig = 256000;
-    this.pih = new byte[this.pig];
+    this.qxr = false;
+    this.qxs = 256000;
+    this.qxt = new byte[this.qxs];
     this.mVolume = 1.0F;
-    this.MU = 1.0F;
-    this.mHandler = new aq("InnerSynthesizer")
+    this.Ne = 1.0F;
+    this.mHandler = new MMHandler("InnerSynthesizer")
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(63885);
-        if (b.this.pia != null) {
+        if (b.this.qxn != null) {
           switch (paramAnonymousMessage.what)
           {
           }
@@ -53,10 +53,10 @@ public final class b
           AppMethodBeat.o(63885);
           return;
           paramAnonymousMessage = paramAnonymousMessage.getData().getByteArray("data");
-          b.this.pia.o(0, paramAnonymousMessage);
+          b.this.qxn.o(0, paramAnonymousMessage);
           AppMethodBeat.o(63885);
           return;
-          b.this.pia.o(-203, null);
+          b.this.qxn.o(-203, null);
         }
       }
     };
@@ -66,11 +66,11 @@ public final class b
   public final void destroy()
   {
     AppMethodBeat.i(63890);
-    this.pif = true;
-    if (this.pic != null) {}
+    this.qxr = true;
+    if (this.qxp != null) {}
     try
     {
-      this.pic.join();
+      this.qxp.join();
     }
     catch (InterruptedException localInterruptedException)
     {
@@ -78,25 +78,25 @@ public final class b
       {
         for (;;)
         {
-          this.pie.release();
+          this.qxq.release();
           this.mIsInit = false;
           AppMethodBeat.o(63890);
           return;
           localInterruptedException = localInterruptedException;
-          ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "stop() Exception:%s %s", new Object[] { localInterruptedException.getClass().getSimpleName(), localInterruptedException.getMessage() });
+          Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "stop() Exception:%s %s", new Object[] { localInterruptedException.getClass().getSimpleName(), localInterruptedException.getMessage() });
         }
       }
       catch (Exception localException)
       {
         for (;;)
         {
-          ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "destroy() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+          Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "destroy() Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         }
       }
     }
   }
   
-  public final int fn(String paramString1, String paramString2)
+  public final int fE(String paramString1, String paramString2)
   {
     AppMethodBeat.i(63888);
     if (this.mIsInit)
@@ -105,23 +105,23 @@ public final class b
       return 0;
     }
     paramString1 = paramString1 + paramString2 + ".pos";
-    ae.d("MicroMsg.OfflineVoice.InnerSynthesizer", "resFilePath:%s soFilePath:%s", new Object[] { paramString1, null });
-    if (!o.fB(paramString1))
+    Log.d("MicroMsg.OfflineVoice.InnerSynthesizer", "resFilePath:%s soFilePath:%s", new Object[] { paramString1, null });
+    if (!s.YS(paramString1))
     {
-      ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_RESOURCE_ERROR ");
+      Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_RESOURCE_ERROR ");
       AppMethodBeat.o(63888);
       return -101;
     }
-    a.cof();
+    a.cMr();
     for (;;)
     {
       try
       {
-        if (!bu.isNullOrNil(null))
+        if (!Util.isNullOrNil(null))
         {
-          if (!o.fB(null))
+          if (!s.YS(null))
           {
-            ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed: file not exist - ErrorCode.TTS_SO_ERROR ");
+            Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed: file not exist - ErrorCode.TTS_SO_ERROR ");
             AppMethodBeat.o(63888);
             return -103;
           }
@@ -131,15 +131,15 @@ public final class b
       catch (Throwable paramString1)
       {
         int i;
-        ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init() Throwable:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
+        Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init() Throwable:%s %s", new Object[] { paramString1.getClass().getSimpleName(), paramString1.getMessage() });
         AppMethodBeat.o(63888);
         return -207;
       }
       try
       {
-        bu.isNullOrNil(paramString2);
-        i = this.pie.init(paramString1.getBytes());
-        ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init ret：%s", new Object[] { Integer.valueOf(i) });
+        Util.isNullOrNil(paramString2);
+        i = this.qxq.init(paramString1.getBytes());
+        Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init ret：%s", new Object[] { Integer.valueOf(i) });
         if (i >= 0) {
           break label231;
         }
@@ -148,11 +148,11 @@ public final class b
       }
       catch (Exception paramString1)
       {
-        ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_INIT_ERROR ");
+        Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "init failed:ErrorCode.TTS_INIT_ERROR ");
         AppMethodBeat.o(63888);
         return -201;
       }
-      a.adR("readMoney");
+      a.aoa("readMoney");
     }
     label231:
     this.mIsInit = true;
@@ -165,26 +165,26 @@ public final class b
     AppMethodBeat.i(63889);
     if (!this.mIsInit)
     {
-      ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
+      Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
       AppMethodBeat.o(63889);
       return -202;
     }
-    if ((this.pic != null) && (this.pic.isAlive()))
+    if ((this.qxp != null) && (this.qxp.isAlive()))
     {
-      ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
+      Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:ErrorCode.TTS_START_ERROR ");
       AppMethodBeat.o(63889);
       return -202;
     }
     if ((paramString == null) || (paramString.length() > 1024))
     {
-      ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:TTS_TEXT_ERROR");
+      Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "start failed:TTS_TEXT_ERROR");
       AppMethodBeat.o(63889);
       return -102;
     }
     this.mText = paramString;
-    this.pif = false;
-    this.pic = new Thread(this.pib);
-    this.pic.start();
+    this.qxr = false;
+    this.qxp = new Thread(this.qxo);
+    this.qxp.start();
     AppMethodBeat.o(63889);
     return 0;
   }
@@ -200,32 +200,32 @@ public final class b
       try
       {
         b.this.mText = b.this.mText.replaceAll("[^0-9a-zA-Z一-龥.?!,;:。？！，、；：@%&/]+", "");
-        ae.d("MicroMsg.OfflineVoice.InnerSynthesizer", "mText = %s  mVolume = %s mSpeed = %s", new Object[] { b.this.mText, Float.valueOf(b.this.mVolume), Float.valueOf(b.this.MU) });
-        int i = b.this.pie.readmoney(b.this.mText.getBytes("UTF-8"), b.this.pih, b.this.pig, b.this.mVolume, b.this.MU);
+        Log.d("MicroMsg.OfflineVoice.InnerSynthesizer", "mText = %s  mVolume = %s mSpeed = %s", new Object[] { b.this.mText, Float.valueOf(b.this.mVolume), Float.valueOf(b.this.Ne) });
+        int i = b.this.qxq.readmoney(b.this.mText.getBytes("UTF-8"), b.this.qxt, b.this.qxs, b.this.mVolume, b.this.Ne);
         if (i != -1)
         {
           byte[] arrayOfByte = new byte[i];
-          System.arraycopy(b.this.pih, 0, arrayOfByte, 0, i);
-          if (!b.this.pif)
+          System.arraycopy(b.this.qxt, 0, arrayOfByte, 0, i);
+          if (!b.this.qxr)
           {
             Message localMessage = b.this.mHandler.obtainMessage(0);
             Bundle localBundle = new Bundle();
             localBundle.putByteArray("data", arrayOfByte);
             localMessage.setData(localBundle);
             b.this.mHandler.sendMessage(localMessage);
-            ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "Synthesizer run success");
+            Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "Synthesizer run success");
           }
           AppMethodBeat.o(63886);
           return;
         }
-        ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "Synthesizer run fail");
+        Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "Synthesizer run fail");
         b.this.mHandler.sendMessage(b.this.mHandler.obtainMessage(-1));
         AppMethodBeat.o(63886);
         return;
       }
       catch (Exception localException)
       {
-        ae.i("MicroMsg.OfflineVoice.InnerSynthesizer", "SynthesizerRunnable Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
+        Log.i("MicroMsg.OfflineVoice.InnerSynthesizer", "SynthesizerRunnable Exception:%s %s", new Object[] { localException.getClass().getSimpleName(), localException.getMessage() });
         b.this.mHandler.sendMessage(b.this.mHandler.obtainMessage(-1));
         AppMethodBeat.o(63886);
       }
@@ -234,7 +234,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.voice.b
  * JD-Core Version:    0.7.0.1
  */

@@ -1,107 +1,84 @@
 package android.support.transition;
 
-import android.graphics.Matrix;
 import android.view.View;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 class ai
-  extends ah
+  extends al
 {
-  private static Method DI;
-  private static boolean DJ;
-  private static Method DK;
-  private static boolean DL;
-  private static Method DM;
-  private static boolean DN;
+  private static Method DN;
+  private static boolean DO;
+  private static Method DP;
+  private static boolean DQ;
   
-  public final void a(View paramView, Matrix paramMatrix)
+  public final float P(View paramView)
   {
-    if (!DJ) {}
+    if (!DQ) {}
     try
     {
-      Method localMethod = View.class.getDeclaredMethod("transformMatrixToGlobal", new Class[] { Matrix.class });
-      DI = localMethod;
+      Method localMethod = View.class.getDeclaredMethod("getTransitionAlpha", new Class[0]);
+      DP = localMethod;
       localMethod.setAccessible(true);
-      label32:
-      DJ = true;
-      if (DI != null) {}
+      label27:
+      DQ = true;
+      if (DP != null) {
+        try
+        {
+          float f = ((Float)DP.invoke(paramView, new Object[0])).floatValue();
+          return f;
+        }
+        catch (InvocationTargetException paramView)
+        {
+          throw new RuntimeException(paramView.getCause());
+        }
+        catch (IllegalAccessException localIllegalAccessException) {}
+      }
+      return super.P(paramView);
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label27;
+    }
+  }
+  
+  public final void Q(View paramView) {}
+  
+  public final void R(View paramView) {}
+  
+  public final void d(View paramView, float paramFloat)
+  {
+    if (!DO) {}
+    try
+    {
+      Method localMethod = View.class.getDeclaredMethod("setTransitionAlpha", new Class[] { Float.TYPE });
+      DN = localMethod;
+      localMethod.setAccessible(true);
+      label33:
+      DO = true;
+      if (DN != null) {}
       try
       {
-        DI.invoke(paramView, new Object[] { paramMatrix });
+        DN.invoke(paramView, new Object[] { Float.valueOf(paramFloat) });
         return;
       }
       catch (InvocationTargetException paramView)
       {
         throw new RuntimeException(paramView.getCause());
+        paramView.setAlpha(paramFloat);
+        return;
       }
       catch (IllegalAccessException paramView) {}
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      break label32;
-    }
-  }
-  
-  public final void b(View paramView, Matrix paramMatrix)
-  {
-    if (!DL) {}
-    try
-    {
-      Method localMethod = View.class.getDeclaredMethod("transformMatrixToLocal", new Class[] { Matrix.class });
-      DK = localMethod;
-      localMethod.setAccessible(true);
-      label32:
-      DL = true;
-      if (DK != null) {}
-      try
-      {
-        DK.invoke(paramView, new Object[] { paramMatrix });
-        return;
-      }
-      catch (InvocationTargetException paramView)
-      {
-        throw new RuntimeException(paramView.getCause());
-      }
-      catch (IllegalAccessException paramView) {}
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      break label32;
-    }
-  }
-  
-  public final void c(View paramView, Matrix paramMatrix)
-  {
-    if (!DN) {}
-    try
-    {
-      Method localMethod = View.class.getDeclaredMethod("setAnimationMatrix", new Class[] { Matrix.class });
-      DM = localMethod;
-      localMethod.setAccessible(true);
-      label32:
-      DN = true;
-      if (DM != null) {}
-      try
-      {
-        DM.invoke(paramView, new Object[] { paramMatrix });
-        return;
-      }
-      catch (IllegalAccessException paramView)
-      {
-        throw new RuntimeException(paramView.getCause());
-      }
-      catch (InvocationTargetException paramView) {}
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      break label32;
+      break label33;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     android.support.transition.ai
  * JD-Core Version:    0.7.0.1
  */

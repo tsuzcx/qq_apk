@@ -2,90 +2,90 @@ package com.tencent.mm.plugin.topstory.ui.video;
 
 import android.graphics.Point;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.i;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.aj;
 import android.view.View;
-import com.tencent.mm.protocal.protobuf.dfc;
-import com.tencent.mm.protocal.protobuf.dox;
-import com.tencent.mm.protocal.protobuf.dpa;
+import com.tencent.mm.protocal.protobuf.dyi;
+import com.tencent.mm.protocal.protobuf.eit;
+import com.tencent.mm.protocal.protobuf.eiw;
 import com.tencent.mm.ui.MMActivity;
 import java.util.List;
 
 public abstract interface b
 {
-  public abstract boolean Pd();
+  public abstract void KC();
   
-  public abstract boolean TE(int paramInt);
+  public abstract boolean Zx();
   
-  public abstract void TF(int paramInt);
+  public abstract void a(dyi paramdyi);
   
-  public abstract void TG(int paramInt);
+  public abstract void a(eiw parameiw);
   
-  public abstract void a(dfc paramdfc);
+  public abstract void a(eiw parameiw, int paramInt1, int paramInt2);
   
-  public abstract void a(dpa paramdpa);
+  public abstract void a(eiw parameiw, View paramView);
   
-  public abstract void a(dpa paramdpa, int paramInt1, int paramInt2);
+  public abstract void a(eiw parameiw, f paramf, int paramInt);
   
-  public abstract void a(dpa paramdpa, View paramView);
+  public abstract void aTE(String paramString);
   
-  public abstract void a(dpa paramdpa, f paramf, int paramInt);
+  public abstract void aTF(String paramString);
   
-  public abstract void aEo(String paramString);
+  public abstract boolean abU(int paramInt);
   
-  public abstract void aEp(String paramString);
+  public abstract void abV(int paramInt);
   
-  public abstract void at(View paramView, int paramInt);
+  public abstract void abW(int paramInt);
   
-  public abstract void diF();
+  public abstract void ay(View paramView, int paramInt);
   
-  public abstract MMActivity dkN();
+  public abstract Point cZM();
   
-  public abstract void eta();
+  public abstract MMActivity eeF();
   
-  public abstract void etb();
+  public abstract l fyA();
   
-  public abstract l etd();
+  public abstract o fyB();
   
-  public abstract o ete();
+  public abstract String fyC();
   
-  public abstract String etf();
+  public abstract eit fyD();
   
-  public abstract dox etg();
+  public abstract m fyE();
   
-  public abstract m eth();
+  public abstract r fyF();
   
-  public abstract r eti();
+  public abstract aj fyG();
   
-  public abstract Point etj();
+  public abstract int fyH();
   
-  public abstract aj etk();
+  public abstract boolean fyI();
   
-  public abstract int etl();
+  public abstract boolean fyJ();
   
-  public abstract boolean etm();
+  public abstract e fyK();
   
-  public abstract boolean etn();
+  public abstract boolean fyL();
   
-  public abstract e eto();
+  public abstract void fyM();
   
-  public abstract boolean etp();
+  public abstract int fyN();
   
-  public abstract void etq();
+  public abstract n fyO();
   
-  public abstract int etr();
+  public abstract String fyP();
   
-  public abstract n ets();
+  public abstract int fyQ();
   
-  public abstract String ett();
+  public abstract void fyR();
   
-  public abstract int etu();
+  public abstract int fyS();
   
-  public abstract void etv();
+  public abstract void fyx();
   
-  public abstract int etw();
+  public abstract void fyy();
   
-  public abstract RecyclerView.i getLayoutManager();
+  public abstract RecyclerView.LayoutManager getLayoutManager();
   
   public abstract RecyclerView getRecyclerView();
   
@@ -95,7 +95,7 @@ public abstract interface b
   
   public abstract boolean isFullscreenMode();
   
-  public abstract void n(List<dpa> paramList, boolean paramBoolean);
+  public abstract void s(List<eiw> paramList, boolean paramBoolean);
 }
 
 

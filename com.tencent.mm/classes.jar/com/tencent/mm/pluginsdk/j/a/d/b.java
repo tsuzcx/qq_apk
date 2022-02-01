@@ -1,7 +1,7 @@
 package com.tencent.mm.pluginsdk.j.a.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -10,7 +10,7 @@ import java.util.Set;
 
 public enum b
 {
-  public static String bM(Map<String, List<String>> paramMap)
+  public static String bR(Map<String, List<String>> paramMap)
   {
     AppMethodBeat.i(152092);
     if (paramMap == null)
@@ -23,14 +23,14 @@ public enum b
     while (paramMap.hasNext())
     {
       Object localObject = (Map.Entry)paramMap.next();
-      localStringBuilder.append(bu.bI((String)((Map.Entry)localObject).getKey(), "null"));
+      localStringBuilder.append(Util.nullAs((String)((Map.Entry)localObject).getKey(), "null"));
       localStringBuilder.append(" : ");
       localObject = (List)((Map.Entry)localObject).getValue();
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
         while (((Iterator)localObject).hasNext()) {
-          localStringBuilder.append(bu.nullAsNil((String)((Iterator)localObject).next())).append("|");
+          localStringBuilder.append(Util.nullAsNil((String)((Iterator)localObject).next())).append("|");
         }
       }
       localStringBuilder.append("\n");

@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cnh" android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginTop="100.0dip" android:src="@raw/icons_filled_error" app:iconColor="@color/Red" />
-    <TextView android:textSize="@dimen/gw" android:textColor="@color/fc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:text="@string/cdg" />
-    <TextView android:textSize="@dimen/q" android:textColor="@color/fc" android:gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="@string/cdh" android:lineSpacingExtra="5.0dip" />
+<LinearLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/be3" android:background="@drawable/qa" android:padding="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/bm_" android:visibility="gone" android:layout_width="@dimen/k3" android:layout_height="@dimen/k3" android:layout_marginRight="@dimen/k5" android:src="@drawable/ei" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/dtb" android:layout_width="@dimen/ij" android:layout_height="@dimen/ij" android:src="@drawable/bd0" android:layout_toRightOf="@id/bm_" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="left" android:id="@id/ft9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_toRightOf="@id/dtb" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
 </LinearLayout>

@@ -1,20 +1,23 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
 
 public final class u
 {
   public int backgroundColor;
   public String chatroomName;
+  public ca dTX = null;
   public Object data;
   public int end;
-  public int fmC;
+  public int fRg;
+  public int fromScene = 0;
   public int linkColor;
   public String mSessionId;
-  public String seP;
-  public Object skU;
   public int start;
+  public String tOw;
+  public Object tXF;
   public int type;
   public String url;
   public String username;
@@ -36,7 +39,7 @@ public final class u
     this.type = paramInt;
   }
   
-  public final <T> T aY(Class<T> paramClass)
+  public final <T> T ba(Class<T> paramClass)
   {
     AppMethodBeat.i(152234);
     if (paramClass.isInstance(this.data))
@@ -72,7 +75,7 @@ public final class u
     AppMethodBeat.i(152235);
     int j = super.hashCode();
     int i = j;
-    if (!bu.isNullOrNil(this.url)) {
+    if (!Util.isNullOrNil(this.url)) {
       i = j + this.url.hashCode();
     }
     j = i + this.type + this.end + this.start;
@@ -86,7 +89,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.applet.u
  * JD-Core Version:    0.7.0.1
  */

@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.d.a.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g
   extends j
 {
-  private byte nVr = 0;
+  private byte pgo = 0;
   
-  final boolean aF(byte[] paramArrayOfByte)
+  final boolean aW(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(22467);
-    if (bu.cF(paramArrayOfByte))
+    if (Util.isNullOrNil(paramArrayOfByte))
     {
-      ae.e("MicroMsg.exdevice.IBeaconTLVSectionA", "valueByte is null or nil");
+      Log.e("MicroMsg.exdevice.IBeaconTLVSectionA", "valueByte is null or nil");
       AppMethodBeat.o(22467);
       return false;
     }
     if (2 != this.mLength)
     {
-      ae.d("MicroMsg.exdevice.IBeaconTLVSectionA", "IBEACON_TLV_SECTION_A_LENGTH != mLength(%d)", new Object[] { Integer.valueOf(this.mLength) });
+      Log.d("MicroMsg.exdevice.IBeaconTLVSectionA", "IBEACON_TLV_SECTION_A_LENGTH != mLength(%d)", new Object[] { Integer.valueOf(this.mLength) });
       AppMethodBeat.o(22467);
       return false;
     }
-    this.nVr = paramArrayOfByte[0];
+    this.pgo = paramArrayOfByte[0];
     AppMethodBeat.o(22467);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.d.a.a.g
  * JD-Core Version:    0.7.0.1
  */

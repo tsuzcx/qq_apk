@@ -11,40 +11,40 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.aj.j;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.ak;
-import com.tencent.mm.g.a.xn;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.a.am;
+import com.tencent.mm.g.a.yo;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.account.friend.a.ar;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.ui.MMWizardActivity;
 
 public class StartUnbindQQ
   extends MMWizardActivity
-  implements f
+  implements i
 {
-  private String jcG = null;
-  private View jfw;
-  private com.tencent.mm.ui.widget.a.d jfx;
-  private com.tencent.mm.ui.base.p tipDialog;
+  private String kaJ = null;
+  private com.tencent.mm.ui.widget.a.d kdA;
+  private View kdz;
+  private com.tencent.mm.ui.base.q tipDialog;
   
   public int getLayoutId()
   {
-    return 2131495640;
+    return 2131496545;
   }
   
   public void initView()
   {
     AppMethodBeat.i(110193);
-    setMMTitle(2131764550);
-    this.jfw = findViewById(2131304632);
+    setMMTitle(2131766895);
+    this.kdz = findViewById(2131307684);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -55,26 +55,26 @@ public class StartUnbindQQ
         return true;
       }
     });
-    this.jfw.setOnClickListener(new View.OnClickListener()
+    this.kdz.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(110188);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/StartUnbindQQ$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/account/bind/ui/StartUnbindQQ$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (StartUnbindQQ.a(StartUnbindQQ.this) == null) {
-          StartUnbindQQ.a(StartUnbindQQ.this, com.tencent.mm.ui.base.h.a(StartUnbindQQ.this, StartUnbindQQ.this.getString(2131763141), null, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
+          StartUnbindQQ.a(StartUnbindQQ.this, com.tencent.mm.ui.base.h.a(StartUnbindQQ.this, StartUnbindQQ.this.getString(2131765307), null, new DialogInterface.OnClickListener()new DialogInterface.OnClickListener
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
               AppMethodBeat.i(110187);
               paramAnonymous2DialogInterface = new com.tencent.mm.plugin.account.bind.a.d("");
-              g.ajj().a(paramAnonymous2DialogInterface, 0);
+              g.azz().a(paramAnonymous2DialogInterface, 0);
               paramAnonymous2DialogInterface = StartUnbindQQ.this;
               StartUnbindQQ localStartUnbindQQ = StartUnbindQQ.this;
-              StartUnbindQQ.this.getString(2131755906);
-              StartUnbindQQ.a(paramAnonymous2DialogInterface, com.tencent.mm.ui.base.h.b(localStartUnbindQQ, StartUnbindQQ.this.getString(2131763142), true, null));
+              StartUnbindQQ.this.getString(2131755998);
+              StartUnbindQQ.a(paramAnonymous2DialogInterface, com.tencent.mm.ui.base.h.a(localStartUnbindQQ, StartUnbindQQ.this.getString(2131765308), true, null));
               AppMethodBeat.o(110187);
             }
           }, new DialogInterface.OnClickListener()
@@ -98,15 +98,15 @@ public class StartUnbindQQ
   {
     AppMethodBeat.i(110190);
     super.onCreate(paramBundle);
-    g.ajj().a(253, this);
-    this.jcG = getIntent().getStringExtra("notice");
+    g.azz().a(253, this);
+    this.kaJ = getIntent().getStringExtra("notice");
     AppMethodBeat.o(110190);
   }
   
   public void onDestroy()
   {
     AppMethodBeat.i(110191);
-    g.ajj().b(253, this);
+    g.azz().b(253, this);
     super.onDestroy();
     AppMethodBeat.o(110191);
   }
@@ -119,11 +119,11 @@ public class StartUnbindQQ
     AppMethodBeat.o(110192);
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(110194);
-    ae.d("MicroMsg.StartUnbindQQ", "onSceneEnd " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString + "  " + paramn.getType());
-    if (paramn.getType() == 253)
+    Log.d("MicroMsg.StartUnbindQQ", "onSceneEnd " + paramInt1 + " errCode " + paramInt2 + " errMsg " + paramString + "  " + paramq.getType());
+    if (paramq.getType() == 253)
     {
       if (this.tipDialog != null)
       {
@@ -132,59 +132,59 @@ public class StartUnbindQQ
       }
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        paramInt1 = bu.a((Integer)g.ajR().ajA().get(9, null), 0);
-        ae.d("MicroMsg.StartUnbindQQ", "iBindUin ".concat(String.valueOf(paramInt1)));
+        paramInt1 = Util.nullAs((Integer)g.aAh().azQ().get(9, null), 0);
+        Log.d("MicroMsg.StartUnbindQQ", "iBindUin ".concat(String.valueOf(paramInt1)));
         if (paramInt1 != 0) {
-          ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azO().delete(new com.tencent.mm.b.p(paramInt1) + "@qqim");
+          ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSW().delete(new com.tencent.mm.b.p(paramInt1) + "@qqim");
         }
-        paramn = g.ajR().ajA().get(102407, null);
-        if ((paramn != null) && (((String)paramn).length() > 0)) {
-          g.ajR().ajA().set(102407, null);
+        paramq = g.aAh().azQ().get(102407, null);
+        if ((paramq != null) && (((String)paramq).length() > 0)) {
+          g.aAh().azQ().set(102407, null);
         }
       }
       try
       {
-        com.tencent.mm.sdk.b.a.IvT.l(new ak());
-        paramInt1 = bu.a((Integer)g.ajR().ajA().get(9, null), 0);
-        paramn = new com.tencent.mm.b.p(paramInt1) + "@qqim";
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azO().delete(paramn);
-        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().aUS(paramn);
-        com.tencent.mm.aj.p.aEN().DM(paramn);
-        String str = v.aAC() + "@qqim";
-        com.tencent.mm.aj.p.aEN().DM(str);
-        com.tencent.mm.aj.p.aEA();
-        com.tencent.mm.aj.e.L(paramn, false);
-        com.tencent.mm.aj.p.aEA();
-        com.tencent.mm.aj.e.L(paramn, true);
-        com.tencent.mm.aj.p.aEA();
-        com.tencent.mm.aj.e.L(str, false);
-        com.tencent.mm.aj.p.aEA();
-        com.tencent.mm.aj.e.L(str, true);
-        paramn = (ar)((com.tencent.mm.plugin.account.a.a.a)g.ad(com.tencent.mm.plugin.account.a.a.a.class)).getQQGroupStg();
-        ae.d("MicroMsg.QQGroupStorage", "delete all");
-        if (paramn.hKK.delete("qqgroup", null, null) > 0) {
-          paramn.doNotify();
+        EventCenter.instance.publish(new am());
+        paramInt1 = Util.nullAs((Integer)g.aAh().azQ().get(9, null), 0);
+        paramq = new com.tencent.mm.b.p(paramInt1) + "@qqim";
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSW().delete(paramq);
+        ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().aNa(paramq);
+        com.tencent.mm.aj.p.aYB().My(paramq);
+        String str = z.aTY() + "@qqim";
+        com.tencent.mm.aj.p.aYB().My(str);
+        com.tencent.mm.aj.p.aYn();
+        com.tencent.mm.aj.e.N(paramq, false);
+        com.tencent.mm.aj.p.aYn();
+        com.tencent.mm.aj.e.N(paramq, true);
+        com.tencent.mm.aj.p.aYn();
+        com.tencent.mm.aj.e.N(str, false);
+        com.tencent.mm.aj.p.aYn();
+        com.tencent.mm.aj.e.N(str, true);
+        paramq = (ar)((com.tencent.mm.plugin.account.a.a.a)g.ah(com.tencent.mm.plugin.account.a.a.a.class)).getQQGroupStg();
+        Log.d("MicroMsg.QQGroupStorage", "delete all");
+        if (paramq.iFy.delete("qqgroup", null, null) > 0) {
+          paramq.doNotify();
         }
-        com.tencent.mm.plugin.account.a.a.iUA.MM();
+        com.tencent.mm.plugin.account.a.a.jRu.WZ();
       }
-      catch (Exception paramn)
+      catch (Exception paramq)
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.StartUnbindQQ", paramn, "", new Object[0]);
-          ae.printErrStackTrace("MicroMsg.StartUnbindQQ", paramn, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.StartUnbindQQ", paramq, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.StartUnbindQQ", paramq, "", new Object[0]);
           continue;
-          acs(1);
+          ala(1);
         }
       }
-      g.ajR().ajA().set(9, Integer.valueOf(0));
-      paramn = new xn();
-      paramn.dMV.dMW = false;
-      paramn.dMV.dMX = true;
-      com.tencent.mm.sdk.b.a.IvT.l(paramn);
-      if (!bu.isNullOrNil(this.jcG))
+      g.aAh().azQ().set(9, Integer.valueOf(0));
+      paramq = new yo();
+      paramq.eeN.eeO = false;
+      paramq.eeN.eeP = true;
+      EventCenter.instance.publish(paramq);
+      if (!Util.isNullOrNil(this.kaJ))
       {
-        com.tencent.mm.ui.base.h.a(this, this.jcG, "", getString(2131755793), new DialogInterface.OnClickListener()
+        com.tencent.mm.ui.base.h.a(this, this.kaJ, "", getString(2131755874), new DialogInterface.OnClickListener()
         {
           public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
           {
@@ -193,7 +193,7 @@ public class StartUnbindQQ
             AppMethodBeat.o(110189);
           }
         });
-        paramString = com.tencent.mm.h.a.uU(paramString);
+        paramString = com.tencent.mm.h.a.Dk(paramString);
         if (paramString == null) {
           break label614;
         }
@@ -213,7 +213,7 @@ public class StartUnbindQQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.StartUnbindQQ
  * JD-Core Version:    0.7.0.1
  */

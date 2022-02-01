@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/rs" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:id="@id/hee" style="@style/ir">
+        <com.tencent.mm.ui.MMImageView android:id="@id/x1" android:layout_width="@dimen/dr" android:layout_height="@dimen/dq" android:layout_marginTop="12.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" android:scaleType="centerCrop" />
+        <LinearLayout android:orientation="vertical" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="16.0dip">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="54.0dip">
+                <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:ellipsize="end" android:id="@id/ir3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="{title}" />
+                <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:ellipsize="end" android:id="@id/b4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="{abstract}" android:layout_below="@id/ir3" />
+            </RelativeLayout>
+            <TextView android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/i5l" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="{status}" android:singleLine="true" style="@style/mo" />
+        </LinearLayout>
+    </LinearLayout>
+    <View android:id="@id/brt" android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="16.0dip" />
+</LinearLayout>

@@ -3,94 +3,123 @@ package com.tencent.mm.plugin.brandservice.ui;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
-import android.text.ClipboardManager;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.ClipboardHelper;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.ui.base.m;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.ui.widget.a.e;
-import d.g.b.q;
-import d.v;
+import java.util.HashMap;
+import kotlin.g.b.p;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/ShowAppMsgContentUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "MENU_ID_COPY", "", "getMENU_ID_COPY", "()I", "TAG", "", "contentTV", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getContentTV", "()Landroid/widget/TextView;", "contentTV$delegate", "Lkotlin/Lazy;", "msgId", "", "getMsgId", "()J", "msgId$delegate", "msgInfo", "Lcom/tencent/mm/storage/MsgInfo;", "tipDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getLayoutId", "getMoreInfo", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-brandservice_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/ShowAppMsgContentUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "MENU_ID_COPY", "", "getMENU_ID_COPY", "()I", "TAG", "", "contentTV", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "getContentTV", "()Landroid/widget/TextView;", "contentTV$delegate", "Lkotlin/Lazy;", "msgId", "", "getMsgId", "()J", "msgId$delegate", "msgInfo", "Lcom/tencent/mm/storage/MsgInfo;", "tipDialog", "Lcom/tencent/mm/ui/base/MMProgressDialog;", "getLayoutId", "getMoreInfo", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "plugin-brandservice_release"})
 public final class ShowAppMsgContentUI
   extends MMActivity
 {
   private final String TAG;
-  private bv dCi;
-  final int ofk;
-  private final d.f ofl;
-  private final d.f ofm;
-  private com.tencent.mm.ui.base.p tipDialog;
+  private HashMap _$_findViewCache;
+  private ca dTX;
+  final int pqh;
+  private final kotlin.f pqi;
+  private final kotlin.f pqj;
+  private com.tencent.mm.ui.base.q tipDialog;
   
   public ShowAppMsgContentUI()
   {
     AppMethodBeat.i(6526);
     this.TAG = "MicroMsg.ShowAppMsgContentUI";
-    this.ofk = 1;
-    this.ofl = d.g.O((d.g.a.a)new a(this));
-    this.ofm = d.g.O((d.g.a.a)new b(this));
+    this.pqh = 1;
+    this.pqi = kotlin.g.ah((kotlin.g.a.a)new a(this));
+    this.pqj = kotlin.g.ah((kotlin.g.a.a)new b(this));
     AppMethodBeat.o(6526);
   }
   
-  private final long VX()
+  private final long ajL()
   {
     AppMethodBeat.i(6523);
-    long l = ((Number)this.ofm.getValue()).longValue();
+    long l = ((Number)this.pqj.getValue()).longValue();
     AppMethodBeat.o(6523);
     return l;
   }
   
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(195150);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(195150);
+  }
+  
+  public final View _$_findCachedViewById(int paramInt)
+  {
+    AppMethodBeat.i(195149);
+    if (this._$_findViewCache == null) {
+      this._$_findViewCache = new HashMap();
+    }
+    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = findViewById(paramInt);
+      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+    }
+    AppMethodBeat.o(195149);
+    return localView1;
+  }
+  
   public final int getLayoutId()
   {
-    return 2131495437;
+    return 2131496309;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(6524);
     super.onCreate(paramBundle);
-    paramBundle = com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class);
-    d.g.b.p.g(paramBundle, "MMKernel.service(IMessengerStorage::class.java)");
-    paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramBundle).doJ().ys(VX());
-    d.g.b.p.g(paramBundle, "MMKernel.service(IMessen…msgInfoStg.getById(msgId)");
-    this.dCi = paramBundle;
-    paramBundle = this.dCi;
+    paramBundle = com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class);
+    p.g(paramBundle, "MMKernel.service(IMessengerStorage::class.java)");
+    paramBundle = ((com.tencent.mm.plugin.messenger.foundation.a.l)paramBundle).eiy().Hb(ajL());
+    p.g(paramBundle, "MMKernel.service(IMessen…msgInfoStg.getById(msgId)");
+    this.dTX = paramBundle;
+    paramBundle = this.dTX;
     if (paramBundle == null) {
-      d.g.b.p.bdF("msgInfo");
+      p.btv("msgInfo");
     }
     if (paramBundle != null)
     {
-      paramBundle = this.dCi;
+      paramBundle = this.dTX;
       if (paramBundle == null) {
-        d.g.b.p.bdF("msgInfo");
+        p.btv("msgInfo");
       }
-      if (paramBundle.VX() > 0L) {}
+      if (paramBundle.ajL() > 0L) {}
     }
     else
     {
-      ae.w(this.TAG, "onCreate msg is invalid %d", new Object[] { Long.valueOf(VX()) });
+      Log.w(this.TAG, "onCreate msg is invalid %d", new Object[] { Long.valueOf(ajL()) });
       finish();
       AppMethodBeat.o(6524);
       return;
     }
     paramBundle = (Context)getContext();
-    getContext().getString(2131755906);
-    this.tipDialog = h.b(paramBundle, getContext().getString(2131755936), true, null);
-    com.tencent.mm.cm.g.fWL().j((com.tencent.mm.vending.c.a)new c(this)).b((com.tencent.mm.vending.c.a)new d(this));
+    getContext().getString(2131755998);
+    this.tipDialog = h.a(paramBundle, getContext().getString(2131756029), true, null);
+    com.tencent.mm.co.g.hio().j((com.tencent.mm.vending.c.a)new c(this)).b((com.tencent.mm.vending.c.a)new d(this));
     setBackBtn((MenuItem.OnMenuItemClickListener)new e(this));
-    setMMTitle(2131761225);
-    addIconOptionMenu(0, getString(2131755815), 2131689493, (MenuItem.OnMenuItemClickListener)new f(this));
+    setMMTitle(2131763040);
+    addIconOptionMenu(0, getString(2131755899), 2131689495, (MenuItem.OnMenuItemClickListener)new f(this));
     AppMethodBeat.o(6524);
   }
   
@@ -98,11 +127,11 @@ public final class ShowAppMsgContentUI
   {
     AppMethodBeat.i(6525);
     super.onDestroy();
-    com.tencent.mm.ui.base.p localp = this.tipDialog;
-    if (localp != null)
+    com.tencent.mm.ui.base.q localq = this.tipDialog;
+    if (localq != null)
     {
-      if (localp.isShowing()) {
-        localp.dismiss();
+      if (localq.isShowing()) {
+        localq.dismiss();
       }
       AppMethodBeat.o(6525);
       return;
@@ -116,10 +145,10 @@ public final class ShowAppMsgContentUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class a
-    extends q
-    implements d.g.a.a<TextView>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<TextView>
   {
     a(ShowAppMsgContentUI paramShowAppMsgContentUI)
     {
@@ -127,10 +156,10 @@ public final class ShowAppMsgContentUI
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class b
-    extends q
-    implements d.g.a.a<Long>
+    extends kotlin.g.b.q
+    implements kotlin.g.a.a<Long>
   {
     b(ShowAppMsgContentUI paramShowAppMsgContentUI)
     {
@@ -138,22 +167,22 @@ public final class ShowAppMsgContentUI
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "kotlin.jvm.PlatformType", "it", "Ljava/lang/Void;", "call"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "kotlin.jvm.PlatformType", "it", "Ljava/lang/Void;", "call"})
   static final class c<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     c(ShowAppMsgContentUI paramShowAppMsgContentUI) {}
     
-    private CharSequence bPc()
+    private CharSequence cmi()
     {
       AppMethodBeat.i(175479);
       try
       {
-        Object localObject = (Context)this.ofn;
-        CharSequence localCharSequence2 = (CharSequence)(ShowAppMsgContentUI.a(this.ofn) + "\n" + ShowAppMsgContentUI.b(this.ofn).getContent());
-        TextView localTextView = ShowAppMsgContentUI.c(this.ofn);
-        d.g.b.p.g(localTextView, "contentTV");
-        localObject = (CharSequence)k.a((Context)localObject, localCharSequence2, (int)localTextView.getTextSize(), 1, null, null);
+        Object localObject = (Context)this.pqk;
+        CharSequence localCharSequence2 = (CharSequence)(ShowAppMsgContentUI.a(this.pqk) + "\n" + ShowAppMsgContentUI.b(this.pqk).getContent());
+        TextView localTextView = ShowAppMsgContentUI.c(this.pqk);
+        p.g(localTextView, "contentTV");
+        localObject = (CharSequence)com.tencent.mm.pluginsdk.ui.span.l.a((Context)localObject, localCharSequence2, (int)localTextView.getTextSize(), 1, null, null);
         AppMethodBeat.o(175479);
         return localObject;
       }
@@ -161,21 +190,21 @@ public final class ShowAppMsgContentUI
       {
         for (;;)
         {
-          ae.e(ShowAppMsgContentUI.d(this.ofn), "spanForTextViewWithExtra ex: " + localException.getMessage());
+          Log.e(ShowAppMsgContentUI.d(this.pqk), "spanForTextViewWithExtra ex: " + localException.getMessage());
           CharSequence localCharSequence1 = (CharSequence)"";
         }
       }
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "str", "", "kotlin.jvm.PlatformType", "call", "(Ljava/lang/CharSequence;)Lkotlin/Unit;"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "str", "", "kotlin.jvm.PlatformType", "call", "(Ljava/lang/CharSequence;)Lkotlin/Unit;"})
   static final class d<_Ret, _Var>
     implements com.tencent.mm.vending.c.a<_Ret, _Var>
   {
     d(ShowAppMsgContentUI paramShowAppMsgContentUI) {}
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class e
     implements MenuItem.OnMenuItemClickListener
   {
@@ -184,14 +213,14 @@ public final class ShowAppMsgContentUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(6518);
-      this.ofn.hideVKB();
-      this.ofn.finish();
+      this.pqk.hideVKB();
+      this.pqk.finish();
       AppMethodBeat.o(6518);
       return true;
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class f
     implements MenuItem.OnMenuItemClickListener
   {
@@ -200,41 +229,34 @@ public final class ShowAppMsgContentUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(6521);
-      paramMenuItem = new e((Context)this.ofn, 1, false);
-      paramMenuItem.a((n.d)new n.d()
+      paramMenuItem = new e((Context)this.pqk, 1, false);
+      paramMenuItem.a((o.f)new o.f()
       {
-        public final void onCreateMMMenu(com.tencent.mm.ui.base.l paramAnonymousl)
+        public final void onCreateMMMenu(m paramAnonymousm)
         {
           AppMethodBeat.i(6519);
-          paramAnonymousl.jM(this.ofo.ofn.ofk, 2131755701);
+          paramAnonymousm.kV(this.pql.pqk.pqh, 2131755772);
           AppMethodBeat.o(6519);
         }
       });
-      paramMenuItem.a((n.e)new n.e()
+      paramMenuItem.a((o.g)new o.g()
       {
         public final void onMMMenuItemSelected(MenuItem paramAnonymousMenuItem, int paramAnonymousInt)
         {
           AppMethodBeat.i(6520);
-          d.g.b.p.g(paramAnonymousMenuItem, "menuItem");
-          if (paramAnonymousMenuItem.getItemId() == this.ofo.ofn.ofk)
+          p.g(paramAnonymousMenuItem, "menuItem");
+          if (paramAnonymousMenuItem.getItemId() == this.pql.pqk.pqh)
           {
-            paramAnonymousMenuItem = ak.getContext().getSystemService("clipboard");
-            if (paramAnonymousMenuItem == null)
-            {
-              paramAnonymousMenuItem = new v("null cannot be cast to non-null type android.text.ClipboardManager");
-              AppMethodBeat.o(6520);
-              throw paramAnonymousMenuItem;
-            }
-            ((ClipboardManager)paramAnonymousMenuItem).setText((CharSequence)ShowAppMsgContentUI.b(this.ofo.ofn).getContent());
-            h.cj((Context)this.ofo.ofn.getContext(), this.ofo.ofn.getContext().getString(2131755702));
+            ClipboardHelper.setText(MMApplicationContext.getContext(), null, (CharSequence)ShowAppMsgContentUI.b(this.pql.pqk).getContent());
+            h.cA((Context)this.pql.pqk.getContext(), this.pql.pqk.getContext().getString(2131755773));
             AppMethodBeat.o(6520);
             return;
           }
-          ae.w(ShowAppMsgContentUI.d(this.ofo.ofn), "default onMMMenuItemSelected err");
+          Log.w(ShowAppMsgContentUI.d(this.pql.pqk), "default onMMMenuItemSelected err");
           AppMethodBeat.o(6520);
         }
       });
-      paramMenuItem.cPF();
+      paramMenuItem.dGm();
       AppMethodBeat.o(6521);
       return true;
     }
@@ -242,7 +264,7 @@ public final class ShowAppMsgContentUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.ShowAppMsgContentUI
  * JD-Core Version:    0.7.0.1
  */

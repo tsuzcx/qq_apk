@@ -1,107 +1,136 @@
 package com.tencent.mm.live.core.mini;
 
-import android.content.Context;
-import android.content.Intent;
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
+import android.graphics.Point;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.view.WindowManager;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.g.b.p;
-import d.l;
-import d.v;
+import com.tencent.mm.plugin.ball.f.b;
+import com.tencent.mm.plugin.ball.model.BallInfo;
+import com.tencent.mm.plugin.ball.model.BallReportInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.at;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/core/mini/LiveMiniManager;", "", "()V", "intent", "Landroid/content/Intent;", "mWakeLock", "Landroid/os/PowerManager$WakeLock;", "Landroid/os/PowerManager;", "miniLayout", "Lcom/tencent/mm/live/core/mini/LiveMiniView;", "resumeActivityName", "", "addRenderView", "", "view", "Landroid/view/View;", "addViewToWindow", "size", "Landroid/graphics/Point;", "release", "removeViewFromWindow", "setup", "activityName", "clickListener", "Landroid/view/View$OnClickListener;", "updateState", "state", "Companion", "plugin-core_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/mini/LiveFloatBallHelper;", "Lcom/tencent/mm/plugin/ball/service/FloatBallHelper;", "()V", "timeWhenRemoveView", "", "addVoipView", "", "state", "", "view", "Landroid/view/View;", "reportDataInfo", "Lcom/tencent/mm/live/core/mini/ReportDataInfo;", "size", "Landroid/graphics/Point;", "clickFloatBall", "init", "initReportInfo", "removeVoipView", "Landroid/widget/FrameLayout;", "setLiveViewSize", "updateReportInfo", "Companion", "Holder", "plugin-core_release"})
 public final class a
+  extends com.tencent.mm.plugin.ball.service.a
 {
-  public static final a.a gNe;
-  public final PowerManager.WakeLock gNb;
-  public final LiveMiniView gNc;
-  public String gNd;
-  public Intent intent;
+  public static final a hCD;
+  public long hCC;
   
   static
   {
-    AppMethodBeat.i(196924);
-    gNe = new a.a((byte)0);
-    AppMethodBeat.o(196924);
+    AppMethodBeat.i(196577);
+    hCD = new a((byte)0);
+    AppMethodBeat.o(196577);
   }
   
-  public a()
+  private a()
   {
-    AppMethodBeat.i(196923);
-    this.intent = new Intent();
-    Object localObject = ak.getContext();
-    p.g(localObject, "MMApplicationContext.getContext()");
-    this.gNc = new LiveMiniView((Context)localObject, null, 2);
-    this.gNd = "";
-    localObject = ak.getContext().getSystemService("power");
-    if (localObject == null)
-    {
-      localObject = new v("null cannot be cast to non-null type android.os.PowerManager");
-      AppMethodBeat.o(196923);
-      throw ((Throwable)localObject);
-    }
-    localObject = ((PowerManager)localObject).newWakeLock(536870922, "MicroMsg.LiveCoreMini");
-    p.g(localObject, "pm.newWakeLock(PowerMana…er.ON_AFTER_RELEASE, TAG)");
-    this.gNb = ((PowerManager.WakeLock)localObject);
-    if (!this.gNb.isHeld())
-    {
-      ae.i("MicroMsg.LiveCoreMini", "alvinluo acquire wakeLock");
-      this.gNb.acquire();
-    }
-    AppMethodBeat.o(196923);
+    AppMethodBeat.i(196576);
+    G(21, b.cjf());
+    ciw().hDa = 15;
+    civ();
+    AppMethodBeat.o(196576);
   }
   
-  public static void yj(String paramString)
+  public final void a(f paramf)
   {
-    AppMethodBeat.i(196922);
-    p.h(paramString, "state");
-    AppMethodBeat.o(196922);
-  }
-  
-  public final void amy()
-  {
-    AppMethodBeat.i(196920);
-    Object localObject = b.gNf;
-    b.amz();
-    localObject = ak.getContext().getSystemService("window");
-    if (localObject == null)
+    AppMethodBeat.i(196573);
+    this.oWE.oWs.hDa = paramf.hDa;
+    this.oWE.oWs.dPJ = String.valueOf(paramf.liveId);
+    BallReportInfo localBallReportInfo = this.oWE.oWs;
+    if (paramf.dMz) {}
+    for (String str = "1";; str = "2")
     {
-      localObject = new v("null cannot be cast to non-null type android.view.WindowManager");
-      AppMethodBeat.o(196920);
-      throw ((Throwable)localObject);
-    }
-    localObject = (WindowManager)localObject;
-    try
-    {
-      ((WindowManager)localObject).removeView((View)this.gNc);
-      AppMethodBeat.o(196920);
+      localBallReportInfo.oWy = str;
+      this.oWE.oWs.hCZ = paramf.hCZ;
+      this.oWE.oWs.opType = paramf.opType;
+      Log.v("MicroMsg.LiveFloatBallHelper", "addVoipView updateReportInfo bizScene: %d, bizId: %s, bizSubId: %s, generateType: %s", new Object[] { Integer.valueOf(this.oWE.oWs.hDa), this.oWE.oWs.dPJ, this.oWE.oWs.oWy, Integer.valueOf(this.oWE.oWs.hCZ) });
+      AppMethodBeat.o(196573);
       return;
     }
-    catch (IllegalArgumentException localIllegalArgumentException)
+  }
+  
+  public final void aEh()
+  {
+    AppMethodBeat.i(196575);
+    if (this.oWE.oWm == null) {
+      this.oWE.oWm = new Point();
+    }
+    int i = at.aH(MMApplicationContext.getContext(), 2131165314);
+    this.oWE.oWm.x = (at.aH(MMApplicationContext.getContext(), 2131166448) + i * 2);
+    this.oWE.oWm.y = (at.aH(MMApplicationContext.getContext(), 2131166446) + i * 2);
+    Log.v("MicroMsg.LiveFloatBallHelper", "setLiveViewSize %s, margin: %d", new Object[] { this.oWE.oWm, Integer.valueOf(i) });
+    AppMethodBeat.o(196575);
+  }
+  
+  public final void b(FrameLayout paramFrameLayout)
+  {
+    AppMethodBeat.i(196574);
+    if (ciq())
     {
-      ae.e("MicroMsg.LiveCoreMini", "remove failed", new Object[] { localIllegalArgumentException });
-      AppMethodBeat.o(196920);
+      Log.i("MicroMsg.LiveFloatBallHelper", "removeVoipView, has ball, view:%s", new Object[] { paramFrameLayout });
+      this.hCC = Util.nowMilliSecond();
+      cir();
+      AppMethodBeat.o(196574);
+      return;
+    }
+    Log.i("MicroMsg.LiveFloatBallHelper", "removeVoipView, no ball, view:%s", new Object[] { paramFrameLayout });
+    AppMethodBeat.o(196574);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/mini/LiveFloatBallHelper$Companion;", "", "()V", "INTERVAL_REMOVE_THEN_ADD", "", "TAG", "", "instance", "Lcom/tencent/mm/live/core/mini/LiveFloatBallHelper;", "getInstance", "()Lcom/tencent/mm/live/core/mini/LiveFloatBallHelper;", "plugin-core_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/core/mini/LiveFloatBallHelper$Holder;", "", "()V", "sHelper", "Lcom/tencent/mm/live/core/mini/LiveFloatBallHelper;", "getSHelper", "()Lcom/tencent/mm/live/core/mini/LiveFloatBallHelper;", "setSHelper", "(Lcom/tencent/mm/live/core/mini/LiveFloatBallHelper;)V", "plugin-core_release"})
+  public static final class b
+  {
+    private static a hCE;
+    public static final b hCF;
+    
+    static
+    {
+      AppMethodBeat.i(196571);
+      hCF = new b();
+      hCE = new a((byte)0);
+      AppMethodBeat.o(196571);
+    }
+    
+    public static a aEi()
+    {
+      return hCE;
     }
   }
   
-  public final void cx(View paramView)
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  public static final class c
+    implements Runnable
   {
-    AppMethodBeat.i(196921);
-    p.h(paramView, "view");
-    this.gNc.removeAllViews();
-    this.gNc.addView(paramView, (ViewGroup.LayoutParams)new RelativeLayout.LayoutParams(-1, -1));
-    AppMethodBeat.o(196921);
+    public c(a parama, View paramView, boolean paramBoolean, f paramf, Point paramPoint) {}
+    
+    public final void run()
+    {
+      AppMethodBeat.i(196572);
+      Log.i("MicroMsg.LiveFloatBallHelper", "addVoipView, no ball, state:%s, view:%s", new Object[] { Integer.valueOf(this.hCH), this.hCI });
+      a.a(this.hCG).oWr = true;
+      a.a(this.hCG).nno = false;
+      a.a(this.hCG).state = this.hCH;
+      a.a(this.hCG).vk = this.hCI;
+      a.a(this.hCG).oWq = true;
+      a.a(this.hCG).gqx = this.hCJ;
+      a.a(this.hCG, this.hCK);
+      a.b(this.hCG);
+      this.hCG.cis();
+      AppMethodBeat.o(196572);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.core.mini.a
  * JD-Core Version:    0.7.0.1
  */

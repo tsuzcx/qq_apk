@@ -1,30 +1,28 @@
 package com.tencent.mm.plugin.emoji;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.pluginsdk.l;
+import com.tencent.mm.pluginsdk.m;
+import com.tencent.mm.pluginsdk.n;
 
 public final class c
+  implements n
 {
-  public static void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, int paramInt4, String paramString3)
+  public static m jRt;
+  public static l jRu;
+  
+  public final void a(l paraml)
   {
-    AppMethodBeat.i(104533);
-    ae.i("MicroMsg.emoji.EmojiReportHepler", "report kv stat md5:%s, downType:%d donwloadResult:%d verifyResult:%d productID:%s", new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString2 });
-    g.yxI.f(12007, new Object[] { paramString1, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString2, Integer.valueOf(paramInt4), paramString3 });
-    AppMethodBeat.o(104533);
+    jRu = paraml;
   }
   
-  public static void uG(long paramLong)
+  public final void a(m paramm)
   {
-    AppMethodBeat.i(104532);
-    ae.i("MicroMsg.emoji.EmojiReportHepler", "report id stat key:%d, value:%d", new Object[] { Long.valueOf(paramLong), Long.valueOf(1L) });
-    g.yxI.idkeyStat(96L, paramLong, 1L, false);
-    AppMethodBeat.o(104532);
+    jRt = paramm;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.c
  * JD-Core Version:    0.7.0.1
  */

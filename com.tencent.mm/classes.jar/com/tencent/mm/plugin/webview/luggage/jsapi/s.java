@@ -11,39 +11,39 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
 import com.tencent.mm.pluginsdk.wallet.WalletJsapiData;
 import com.tencent.mm.pluginsdk.wallet.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.MMActivity.a;
-import com.tencent.mm.ui.e.m;
+import com.tencent.mm.ui.e.p;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class s
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(final b<g>.a paramb)
   {
     AppMethodBeat.i(78553);
-    ae.i("MicroMsg.JsApiGetBrandWCPayRequest", "invokeInOwn");
-    MMActivity localMMActivity = (MMActivity)((g)paramb.chg).mContext;
+    Log.i("MicroMsg.JsApiGetBrandWCPayRequest", "invokeInOwn");
+    MMActivity localMMActivity = (MMActivity)((g)paramb.cta).mContext;
     Object localObject = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("url", ((g)paramb.chg).getUrl());
+      ((JSONObject)localObject).put("url", ((g)paramb.cta).getUrl());
       ((JSONObject)localObject).put("pay_scene", 3);
       label59:
-      localObject = new WalletJsapiData(paramb.chh.cgn);
-      ((WalletJsapiData)localObject).FEC = 1;
-      ((WalletJsapiData)localObject).FEJ = ((g)paramb.chg).mParams.getString(e.m.JpH);
-      ae.i("MicroMsg.JsApiGetBrandWCPayRequest", "pay channel: %s, scene: %s, adUxInfo: %s", new Object[] { Integer.valueOf(((WalletJsapiData)localObject).dpc), Integer.valueOf(((WalletJsapiData)localObject).dDH), ((WalletJsapiData)localObject).FEJ });
+      localObject = new WalletJsapiData(paramb.ctb.csi);
+      ((WalletJsapiData)localObject).KxH = 1;
+      ((WalletJsapiData)localObject).KxO = ((g)paramb.cta).mParams.getString(e.p.OzI);
+      Log.i("MicroMsg.JsApiGetBrandWCPayRequest", "pay channel: %s, scene: %s, adUxInfo: %s", new Object[] { Integer.valueOf(((WalletJsapiData)localObject).payChannel), Integer.valueOf(((WalletJsapiData)localObject).dVv), ((WalletJsapiData)localObject).KxO });
       MMActivity.a local1 = new MMActivity.a()
       {
-        public final void c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+        public final void d(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
         {
           AppMethodBeat.i(78552);
           if (paramAnonymousInt1 != (s.this.hashCode() & 0xFFFF))
@@ -53,7 +53,7 @@ public class s
           }
           if (paramAnonymousInt2 == -1)
           {
-            paramb.a("", null);
+            paramb.c("", null);
             AppMethodBeat.o(78552);
             return;
           }
@@ -61,20 +61,20 @@ public class s
           {
             HashMap localHashMap = new HashMap();
             paramAnonymousInt1 = paramAnonymousIntent.getIntExtra("key_jsapi_pay_err_code", 0);
-            paramAnonymousIntent = bu.nullAsNil(paramAnonymousIntent.getStringExtra("key_jsapi_pay_err_msg"));
+            paramAnonymousIntent = Util.nullAsNil(paramAnonymousIntent.getStringExtra("key_jsapi_pay_err_msg"));
             localHashMap.put("err_code", Integer.valueOf(paramAnonymousInt1));
             localHashMap.put("err_desc", paramAnonymousIntent);
-            ae.e("MicroMsg.JsApiGetBrandWCPayRequest", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousIntent });
+            Log.e("MicroMsg.JsApiGetBrandWCPayRequest", "errCode: %d, errMsg: %s", new Object[] { Integer.valueOf(paramAnonymousInt1), paramAnonymousIntent });
             paramb.e("fail", localHashMap);
             AppMethodBeat.o(78552);
             return;
           }
-          paramb.a("cancel", null);
+          paramb.c("cancel", null);
           AppMethodBeat.o(78552);
         }
       };
       if (!f.a(localMMActivity, (WalletJsapiData)localObject, hashCode() & 0xFFFF, local1)) {
-        paramb.a("fail", null);
+        paramb.c("fail", null);
       }
       AppMethodBeat.o(78553);
       return;
@@ -85,7 +85,7 @@ public class s
     }
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

@@ -7,12 +7,12 @@ final class a
 {
   public static void a(c paramc, int paramInt, String paramString)
   {
-    AppMethodBeat.i(188990);
-    paramc = paramc.JlJ;
+    AppMethodBeat.i(196802);
+    paramc = paramc.OvC;
     if (paramc != null) {
-      paramc.cL(paramInt, paramString);
+      paramc.df(paramInt, paramString);
     }
-    AppMethodBeat.o(188990);
+    AppMethodBeat.o(196802);
   }
 }
 

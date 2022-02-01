@@ -6,16 +6,16 @@ import android.content.SharedPreferences.Editor;
 import android.content.pm.ApplicationInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.j.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMUncaughtExceptionHandler;
+import com.tencent.mm.sdk.platformtools.MMUncaughtExceptionHandler.IOnUncaughtExceptionListener;
 import com.tencent.tinker.entry.ApplicationLike;
 
 public final class ag
 {
-  volatile boolean cWb;
-  boolean cWc;
-  private av.c cWd;
+  private MMUncaughtExceptionHandler.IOnUncaughtExceptionListener dmA;
+  volatile boolean dmy;
+  boolean dmz;
   ApplicationLike mAppLike;
   private volatile boolean mInstalled;
   
@@ -24,18 +24,18 @@ public final class ag
     AppMethodBeat.i(125030);
     this.mAppLike = null;
     this.mInstalled = false;
-    this.cWb = false;
-    this.cWc = false;
-    this.cWd = new av.c()
+    this.dmy = false;
+    this.dmz = false;
+    this.dmA = new MMUncaughtExceptionHandler.IOnUncaughtExceptionListener()
     {
       /* Error */
-      public final void a(av arg1, String paramAnonymousString, Throwable paramAnonymousThrowable)
+      public final void uncaughtException(MMUncaughtExceptionHandler arg1, String paramAnonymousString, Throwable paramAnonymousThrowable)
       {
         // Byte code:
         //   0: ldc 23
         //   2: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   5: aload_0
-        //   6: getfield 14	com/tencent/mm/app/ag$1:cWe	Lcom/tencent/mm/app/ag;
+        //   6: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
         //   9: getfield 33	com/tencent/mm/app/ag:mAppLike	Lcom/tencent/tinker/entry/ApplicationLike;
         //   12: invokestatic 39	com/tencent/tinker/lib/e/b:c	(Lcom/tencent/tinker/entry/ApplicationLike;)Z
         //   15: ifne +9 -> 24
@@ -58,14 +58,14 @@ public final class ag
         //   54: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   57: return
         //   58: aload_0
-        //   59: getfield 14	com/tencent/mm/app/ag$1:cWe	Lcom/tencent/mm/app/ag;
-        //   62: getfield 54	com/tencent/mm/app/ag:cWc	Z
+        //   59: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
+        //   62: getfield 54	com/tencent/mm/app/ag:dmz	Z
         //   65: ifne +9 -> 74
         //   68: ldc 23
         //   70: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   73: return
         //   74: aload_0
-        //   75: getfield 14	com/tencent/mm/app/ag$1:cWe	Lcom/tencent/mm/app/ag;
+        //   75: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
         //   78: getfield 33	com/tencent/mm/app/ag:mAppLike	Lcom/tencent/tinker/entry/ApplicationLike;
         //   81: invokevirtual 60	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
         //   84: ldc 62
@@ -73,13 +73,13 @@ public final class ag
         //   87: invokevirtual 68	android/app/Application:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
         //   90: astore_2
         //   91: aload_0
-        //   92: getfield 14	com/tencent/mm/app/ag$1:cWe	Lcom/tencent/mm/app/ag;
+        //   92: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
         //   95: astore_1
         //   96: aload_1
         //   97: monitorenter
         //   98: aload_0
-        //   99: getfield 14	com/tencent/mm/app/ag$1:cWe	Lcom/tencent/mm/app/ag;
-        //   102: getfield 71	com/tencent/mm/app/ag:cWb	Z
+        //   99: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
+        //   102: getfield 71	com/tencent/mm/app/ag:dmy	Z
         //   105: ifne +102 -> 207
         //   108: aload_2
         //   109: ldc 73
@@ -92,7 +92,7 @@ public final class ag
         //   125: new 81	java/lang/StringBuilder
         //   128: dup
         //   129: invokespecial 82	java/lang/StringBuilder:<init>	()V
-        //   132: getstatic 88	com/tencent/mm/loader/j/a:hju	Ljava/lang/String;
+        //   132: getstatic 88	com/tencent/mm/loader/j/a:CLIENT_VERSION	Ljava/lang/String;
         //   135: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
         //   138: ldc 94
         //   140: invokevirtual 92	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -116,13 +116,13 @@ public final class ag
         //   181: invokeinterface 112 1 0
         //   186: pop
         //   187: aload_0
-        //   188: getfield 14	com/tencent/mm/app/ag$1:cWe	Lcom/tencent/mm/app/ag;
+        //   188: getfield 14	com/tencent/mm/app/ag$1:dmB	Lcom/tencent/mm/app/ag;
         //   191: getfield 33	com/tencent/mm/app/ag:mAppLike	Lcom/tencent/tinker/entry/ApplicationLike;
         //   194: invokestatic 116	com/tencent/tinker/lib/e/b:e	(Lcom/tencent/tinker/entry/ApplicationLike;)V
         //   197: ldc 118
         //   199: ldc 120
-        //   201: invokestatic 126	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
-        //   204: invokestatic 129	com/tencent/mm/sdk/platformtools/ae:fop	()V
+        //   201: invokestatic 126	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+        //   204: invokestatic 129	com/tencent/mm/sdk/platformtools/Log:appenderFlushSync	()V
         //   207: aload_1
         //   208: monitorexit
         //   209: ldc 23
@@ -134,8 +134,8 @@ public final class ag
         //   219: ldc 131
         //   221: iconst_0
         //   222: anewarray 4	java/lang/Object
-        //   225: invokestatic 135	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
-        //   228: invokestatic 129	com/tencent/mm/sdk/platformtools/ae:fop	()V
+        //   225: invokestatic 135	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   228: invokestatic 129	com/tencent/mm/sdk/platformtools/Log:appenderFlushSync	()V
         //   231: ldc 23
         //   233: invokestatic 42	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   236: return
@@ -177,7 +177,12 @@ public final class ag
     AppMethodBeat.o(125030);
   }
   
-  private boolean MA()
+  public static ag WK()
+  {
+    return a.dmC;
+  }
+  
+  private boolean WO()
   {
     boolean bool2 = false;
     boolean bool1 = false;
@@ -188,30 +193,30 @@ public final class ag
         AppMethodBeat.i(125033);
         if (!this.mInstalled)
         {
-          ae.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, isCleanPatchTriggered will return false.");
+          Log.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, isCleanPatchTriggered will return false.");
           AppMethodBeat.o(125033);
           return bool1;
         }
-        int i = this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.hju + "_clean_patch_count", 0);
+        int i = this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.CLIENT_VERSION + "_clean_patch_count", 0);
         bool1 = bool2;
         if (i > 0) {
           bool1 = true;
         }
         if (bool1)
         {
-          ae.w("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: we have cleaned patch by %s times !!", new Object[] { Integer.valueOf(i) });
+          Log.w("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: we have cleaned patch by %s times !!", new Object[] { Integer.valueOf(i) });
           AppMethodBeat.o(125033);
         }
         else
         {
-          ae.i("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: clean patch logic is not being triggered.");
+          Log.i("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: clean patch logic is not being triggered.");
         }
       }
       finally {}
     }
   }
   
-  private boolean MB()
+  private boolean WP()
   {
     boolean bool = false;
     for (;;)
@@ -221,11 +226,11 @@ public final class ag
         AppMethodBeat.i(125034);
         if (!this.mInstalled)
         {
-          ae.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, isCleanPatchReported will return false.");
+          Log.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, isCleanPatchReported will return false.");
           AppMethodBeat.o(125034);
           return bool;
         }
-        if (this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.hju + "_clean_patch_reported", 0) != 0)
+        if (this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.CLIENT_VERSION + "_clean_patch_reported", 0) != 0)
         {
           bool = true;
           AppMethodBeat.o(125034);
@@ -239,7 +244,7 @@ public final class ag
     }
   }
   
-  private boolean MC()
+  private boolean WQ()
   {
     boolean bool = false;
     for (;;)
@@ -249,11 +254,11 @@ public final class ag
         AppMethodBeat.i(125035);
         if (!this.mInstalled)
         {
-          ae.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, isBlockApplyPatchReported will return false.");
+          Log.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, isBlockApplyPatchReported will return false.");
           AppMethodBeat.o(125035);
           return bool;
         }
-        if (this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.hju + "_block_apply_patch_reported", 0) != 0)
+        if (this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.CLIENT_VERSION + "_block_apply_patch_reported", 0) != 0)
         {
           bool = true;
           AppMethodBeat.o(125035);
@@ -267,88 +272,145 @@ public final class ag
     }
   }
   
-  public static ag Mw()
+  public final void WL()
   {
-    return a.cWf;
+    try
+    {
+      this.dmy = false;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final void WM()
+  {
+    try
+    {
+      this.dmy = true;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public final boolean WN()
+  {
+    boolean bool2 = true;
+    boolean bool1 = true;
+    for (;;)
+    {
+      try
+      {
+        AppMethodBeat.i(125032);
+        if (!this.mInstalled)
+        {
+          Log.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, canApplyPatch will return true.");
+          AppMethodBeat.o(125032);
+          return bool1;
+        }
+        if (this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.CLIENT_VERSION + "_clean_patch_count", 0) <= 3)
+        {
+          bool1 = bool2;
+          if (!bool1) {
+            break label109;
+          }
+          Log.i("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: we can apply patch.");
+          AppMethodBeat.o(125032);
+          continue;
+        }
+        bool1 = false;
+      }
+      finally {}
+      continue;
+      label109:
+      Log.w("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: we CANNOT apply patch !!");
+    }
   }
   
   /* Error */
-  public final void MD()
+  public final void WR()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 132
+    //   2: ldc 142
     //   4: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: getfield 32	com/tencent/mm/app/ag:mInstalled	Z
     //   11: ifne +18 -> 29
-    //   14: ldc 50
-    //   16: ldc 134
-    //   18: invokestatic 58	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   21: ldc 132
+    //   14: ldc 56
+    //   16: ldc 144
+    //   18: invokestatic 64	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   21: ldc 142
     //   23: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   26: aload_0
     //   27: monitorexit
     //   28: return
     //   29: aload_0
     //   30: getfield 30	com/tencent/mm/app/ag:mAppLike	Lcom/tencent/tinker/entry/ApplicationLike;
-    //   33: invokevirtual 64	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
-    //   36: ldc 66
+    //   33: invokevirtual 70	com/tencent/tinker/entry/ApplicationLike:getApplication	()Landroid/app/Application;
+    //   36: ldc 72
     //   38: iconst_4
-    //   39: invokevirtual 72	android/app/Application:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   39: invokevirtual 78	android/app/Application:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
     //   42: astore_1
     //   43: aload_0
-    //   44: invokespecial 136	com/tencent/mm/app/ag:MB	()Z
+    //   44: invokespecial 146	com/tencent/mm/app/ag:WP	()Z
     //   47: ifne +62 -> 109
     //   50: aload_0
-    //   51: invokespecial 138	com/tencent/mm/app/ag:MA	()Z
+    //   51: invokespecial 148	com/tencent/mm/app/ag:WO	()Z
     //   54: ifeq +55 -> 109
-    //   57: getstatic 144	com/tencent/mm/plugin/report/e:ywz	Lcom/tencent/mm/plugin/report/e;
-    //   60: ldc2_w 145
-    //   63: ldc2_w 147
+    //   57: getstatic 154	com/tencent/mm/plugin/report/e:Cxv	Lcom/tencent/mm/plugin/report/e;
+    //   60: ldc2_w 155
+    //   63: ldc2_w 157
     //   66: lconst_1
     //   67: iconst_0
-    //   68: invokevirtual 152	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
+    //   68: invokevirtual 162	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
     //   71: aload_1
-    //   72: invokeinterface 156 1 0
-    //   77: new 74	java/lang/StringBuilder
+    //   72: invokeinterface 166 1 0
+    //   77: new 80	java/lang/StringBuilder
     //   80: dup
-    //   81: invokespecial 75	java/lang/StringBuilder:<init>	()V
-    //   84: getstatic 81	com/tencent/mm/loader/j/a:hju	Ljava/lang/String;
-    //   87: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   90: ldc 118
-    //   92: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   95: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   81: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   84: getstatic 87	com/tencent/mm/loader/j/a:CLIENT_VERSION	Ljava/lang/String;
+    //   87: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: ldc 124
+    //   92: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   98: iconst_1
-    //   99: invokeinterface 162 3 0
-    //   104: invokeinterface 165 1 0
+    //   99: invokeinterface 172 3 0
+    //   104: invokeinterface 175 1 0
     //   109: aload_0
-    //   110: invokespecial 167	com/tencent/mm/app/ag:MC	()Z
+    //   110: invokespecial 177	com/tencent/mm/app/ag:WQ	()Z
     //   113: ifne +62 -> 175
     //   116: aload_0
-    //   117: invokevirtual 170	com/tencent/mm/app/ag:Mz	()Z
+    //   117: invokevirtual 179	com/tencent/mm/app/ag:WN	()Z
     //   120: ifne +55 -> 175
-    //   123: getstatic 144	com/tencent/mm/plugin/report/e:ywz	Lcom/tencent/mm/plugin/report/e;
-    //   126: ldc2_w 145
-    //   129: ldc2_w 171
+    //   123: getstatic 154	com/tencent/mm/plugin/report/e:Cxv	Lcom/tencent/mm/plugin/report/e;
+    //   126: ldc2_w 155
+    //   129: ldc2_w 180
     //   132: lconst_1
     //   133: iconst_0
-    //   134: invokevirtual 152	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
+    //   134: invokevirtual 162	com/tencent/mm/plugin/report/e:idkeyStat	(JJJZ)V
     //   137: aload_1
-    //   138: invokeinterface 156 1 0
-    //   143: new 74	java/lang/StringBuilder
+    //   138: invokeinterface 166 1 0
+    //   143: new 80	java/lang/StringBuilder
     //   146: dup
-    //   147: invokespecial 75	java/lang/StringBuilder:<init>	()V
-    //   150: getstatic 81	com/tencent/mm/loader/j/a:hju	Ljava/lang/String;
-    //   153: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   156: ldc 124
-    //   158: invokevirtual 85	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   161: invokevirtual 91	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   147: invokespecial 81	java/lang/StringBuilder:<init>	()V
+    //   150: getstatic 87	com/tencent/mm/loader/j/a:CLIENT_VERSION	Ljava/lang/String;
+    //   153: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   156: ldc 130
+    //   158: invokevirtual 91	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   161: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   164: iconst_1
-    //   165: invokeinterface 162 3 0
-    //   170: invokeinterface 165 1 0
-    //   175: ldc 132
+    //   165: invokeinterface 172 3 0
+    //   170: invokeinterface 175 1 0
+    //   175: ldc 142
     //   177: invokestatic 44	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   180: goto -154 -> 26
     //   183: astore_1
@@ -367,68 +429,6 @@ public final class ag
     //   29	109	183	finally
     //   109	175	183	finally
     //   175	180	183	finally
-  }
-  
-  public final void Mx()
-  {
-    try
-    {
-      this.cWb = false;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void My()
-  {
-    try
-    {
-      this.cWb = true;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final boolean Mz()
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    for (;;)
-    {
-      try
-      {
-        AppMethodBeat.i(125032);
-        if (!this.mInstalled)
-        {
-          ae.w("MicroMsg.TinkerEnsuranceOnFault", "[!] Uninitialized or install failed, canApplyPatch will return true.");
-          AppMethodBeat.o(125032);
-          return bool1;
-        }
-        if (this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4).getInt(a.hju + "_clean_patch_count", 0) <= 3)
-        {
-          bool1 = bool2;
-          if (!bool1) {
-            break label109;
-          }
-          ae.i("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: we can apply patch.");
-          AppMethodBeat.o(125032);
-          continue;
-        }
-        bool1 = false;
-      }
-      finally {}
-      continue;
-      label109:
-      ae.w("MicroMsg.TinkerEnsuranceOnFault", "[tomys] ensurance logic says: we CANNOT apply patch !!");
-    }
   }
   
   public final void b(ApplicationLike paramApplicationLike)
@@ -450,7 +450,7 @@ public final class ag
     }
     catch (Throwable paramApplicationLike)
     {
-      ae.printErrStackTrace("MicroMsg.TinkerEnsuranceOnFault", paramApplicationLike, "[-] Exception occurred.", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.TinkerEnsuranceOnFault", paramApplicationLike, "[-] Exception occurred.", new Object[0]);
       this.mInstalled = false;
       AppMethodBeat.o(125031);
       break label21;
@@ -458,32 +458,32 @@ public final class ag
     return;
     label24:
     this.mAppLike = paramApplicationLike;
-    this.cWc = this.mAppLike.getApplication().getPackageName().equals(this.mAppLike.getApplication().getApplicationInfo().processName);
+    this.dmz = this.mAppLike.getApplication().getPackageName().equals(this.mAppLike.getApplication().getApplicationInfo().processName);
     paramApplicationLike = this.mAppLike.getApplication().getSharedPreferences("tinker_ensurance_info", 4);
     String str = paramApplicationLike.getString("tinker_last_clientversion", null);
     if (str == null) {
-      paramApplicationLike.edit().putString("tinker_last_clientversion", a.hju).commit();
+      paramApplicationLike.edit().putString("tinker_last_clientversion", a.CLIENT_VERSION).commit();
     }
     for (;;)
     {
-      av.a(this.cWd);
+      MMUncaughtExceptionHandler.addOnUncaughtExceptionListener(this.dmA);
       this.mInstalled = true;
       AppMethodBeat.o(125031);
       break;
-      if (!a.hju.equals(str)) {
-        paramApplicationLike.edit().remove(str + "_clean_patch_count").putString("tinker_last_clientversion", a.hju).commit();
+      if (!a.CLIENT_VERSION.equals(str)) {
+        paramApplicationLike.edit().remove(str + "_clean_patch_count").putString("tinker_last_clientversion", a.CLIENT_VERSION).commit();
       }
     }
   }
   
   public static final class a
   {
-    public static final ag cWf;
+    public static final ag dmC;
     
     static
     {
       AppMethodBeat.i(125029);
-      cWf = new ag();
+      dmC = new ag();
       AppMethodBeat.o(125029);
     }
   }

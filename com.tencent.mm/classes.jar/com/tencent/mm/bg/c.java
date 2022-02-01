@@ -6,45 +6,45 @@ import android.os.MessageQueue.IdleHandler;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.audio.b.g.a;
 import com.tencent.mm.audio.e.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bf.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.QueueWorkerThread.ThreadObject;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.o;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
 public final class c
-  implements bf.a
+  implements QueueWorkerThread.ThreadObject
 {
-  public BlockingQueue<g.a> iqt;
+  public BlockingQueue<g.a> jlE;
   public String mFileName;
   
   public c()
   {
     AppMethodBeat.i(148377);
     this.mFileName = null;
-    this.iqt = new ArrayBlockingQueue(1024);
+    this.jlE = new ArrayBlockingQueue(1024);
     AppMethodBeat.o(148377);
   }
   
-  public final boolean aEC()
+  public final boolean doInBackground()
   {
     AppMethodBeat.i(148378);
-    ae.d("MicroMsg.SpeexEncoderWorker", "doEncode");
+    Log.d("MicroMsg.SpeexEncoderWorker", "doEncode");
     d locald = new d();
-    String str = b.aLL();
+    String str = b.bfO();
     try
     {
-      ae.i("MicroMsg.SpeexEncoderWorker", "path ".concat(String.valueOf(str)));
-      Object localObject = new k(str);
-      if (!((k)localObject).exists()) {
-        ((k)localObject).mkdirs();
+      Log.i("MicroMsg.SpeexEncoderWorker", "path ".concat(String.valueOf(str)));
+      Object localObject = new o(str);
+      if (!((o)localObject).exists()) {
+        ((o)localObject).mkdirs();
       }
-      locald.gI(str + this.mFileName + ".temp");
-      while (this.iqt.size() > 0)
+      locald.hz(str + this.mFileName + ".temp");
+      while (this.jlE.size() > 0)
       {
-        localObject = (g.a)this.iqt.poll();
-        if ((((g.a)localObject).buf != null) && (((g.a)localObject).diR > 0))
+        localObject = (g.a)this.jlE.poll();
+        if ((((g.a)localObject).buf != null) && (((g.a)localObject).dAc > 0))
         {
           locald.a((g.a)localObject, 0, false);
           continue;
@@ -54,35 +54,35 @@ public final class c
     }
     catch (Exception localException1)
     {
-      ae.e("MicroMsg.SpeexEncoderWorker", "filename open failed, ", new Object[] { localException1 });
+      Log.e("MicroMsg.SpeexEncoderWorker", "filename open failed, ", new Object[] { localException1 });
     }
     for (;;)
     {
       return true;
-      localException1.Rx();
+      localException1.abP();
       try
       {
-        new k(str + this.mFileName + ".temp").ag(new k(str + this.mFileName + ".spx"));
-        e.aLU().start();
+        new o(str + this.mFileName + ".temp").am(new o(str + this.mFileName + ".spx"));
+        e.bfX().start();
       }
       catch (Exception localException2)
       {
         for (;;)
         {
-          ae.e("MicroMsg.SpeexEncoderWorker", "exception:%s", new Object[] { bu.o(localException2) });
+          Log.e("MicroMsg.SpeexEncoderWorker", "exception:%s", new Object[] { Util.stackTraceToString(localException2) });
         }
       }
     }
   }
   
-  public final boolean aED()
+  public final boolean onPostExecute()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.bg.c
  * JD-Core Version:    0.7.0.1
  */

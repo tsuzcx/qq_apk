@@ -1,52 +1,35 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.widget.recentview.d;
-import com.tencent.mm.protocal.protobuf.bit;
-import java.util.concurrent.TimeUnit;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.protocal.protobuf.bzk;
+import com.tencent.mm.protocal.protobuf.bzl;
 
-public final class z
-  extends com.tencent.mm.ak.a<bit>
+class z
+  extends c<bzl>
 {
-  private static final long jSV;
-  
-  static
+  z(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    AppMethodBeat.i(44638);
-    jSV = TimeUnit.MINUTES.toSeconds(5L);
-    AppMethodBeat.o(44638);
-  }
-  
-  public static void bdd()
-  {
-    AppMethodBeat.i(44635);
-    if (!g.ajP().gDk)
-    {
-      AppMethodBeat.o(44635);
-      return;
-    }
-    g.ab(d.class);
-    AppMethodBeat.o(44635);
-  }
-  
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(44634);
-      jSW = new a("DAILY", 0);
-      jSX = new a("SEARCH", 1);
-      jSY = new a[] { jSW, jSX };
-      AppMethodBeat.o(44634);
-    }
-    
-    private a() {}
+    AppMethodBeat.i(44639);
+    d.a locala = new d.a();
+    bzk localbzk = new bzk();
+    localbzk.bDZ = paramInt1;
+    localbzk.Mfd = paramInt2;
+    localbzk.condition = paramInt3;
+    localbzk.Mfb = paramInt4;
+    localbzk.Mfc = paramInt5;
+    locala.iLN = localbzk;
+    locala.iLO = new bzl();
+    locala.uri = "/cgi-bin/mmbiz-bin/wxaapp/getwxausagerecord";
+    locala.funcId = 1148;
+    c(locala.aXF());
+    AppMethodBeat.o(44639);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.z
  * JD-Core Version:    0.7.0.1
  */

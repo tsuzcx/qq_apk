@@ -8,16 +8,16 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.preference.Preference;
 
 public class SelfVuserPreference
   extends Preference
 {
+  private String CZJ;
   Drawable drawable;
   String text;
-  private String yUT;
   
   public SelfVuserPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -28,7 +28,7 @@ public class SelfVuserPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(73979);
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(73979);
   }
   
@@ -36,16 +36,16 @@ public class SelfVuserPreference
   {
     AppMethodBeat.i(73981);
     super.onBindView(paramView);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131300943);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131302573);
     if (localImageView != null)
     {
       localImageView.setImageDrawable(this.drawable);
-      ae.d("MicroMsg.SelfVuserPreference", "onBindView set icon=" + this.drawable);
-      if (!bu.isNullOrNil(this.yUT)) {
-        localImageView.setContentDescription(this.yUT);
+      Log.d("MicroMsg.SelfVuserPreference", "onBindView set icon=" + this.drawable);
+      if (!Util.isNullOrNil(this.CZJ)) {
+        localImageView.setContentDescription(this.CZJ);
       }
     }
-    paramView = (TextView)paramView.findViewById(2131305744);
+    paramView = (TextView)paramView.findViewById(2131309013);
     if (paramView != null)
     {
       paramView.setVisibility(0);
@@ -58,9 +58,9 @@ public class SelfVuserPreference
   {
     AppMethodBeat.i(73980);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    View.inflate(this.mContext, 2131494883, localViewGroup);
+    View.inflate(this.mContext, 2131495620, localViewGroup);
     AppMethodBeat.o(73980);
     return paramViewGroup;
   }

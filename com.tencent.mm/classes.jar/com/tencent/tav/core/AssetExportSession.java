@@ -7,6 +7,7 @@ import com.tencent.tav.core.compositing.VideoCompositing;
 import com.tencent.tav.core.composition.VideoComposition;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.coremedia.CMTimeRange;
+import com.tencent.tav.decoder.AssetWriterVideoEncoder;
 import com.tencent.tav.decoder.EncoderWriter.OutputConfig;
 import com.tencent.tav.decoder.RenderContextParams;
 import com.tencent.tav.decoder.logger.Logger;
@@ -34,17 +35,18 @@ public class AssetExportSession
   CMTimeRange timeRange;
   VideoCompositing videoCompositing;
   VideoComposition videoComposition;
+  private AssetWriterVideoEncoder videoEncoder;
   
   public AssetExportSession(Asset paramAsset, ExportConfig paramExportConfig)
   {
     this(paramAsset, paramExportConfig, new AssetExtension("export"));
-    AppMethodBeat.i(214362);
-    AppMethodBeat.o(214362);
+    AppMethodBeat.i(217694);
+    AppMethodBeat.o(217694);
   }
   
   public AssetExportSession(Asset paramAsset, ExportConfig paramExportConfig, AssetExtension paramAssetExtension)
   {
-    AppMethodBeat.i(214363);
+    AppMethodBeat.i(217695);
     this.outputFileType = "mp4";
     this.revertMode = false;
     this.appliesPreferredTrackTransform = false;
@@ -61,34 +63,35 @@ public class AssetExportSession
       paramAssetExtension = new ExportConfig((int)paramAsset.getNaturalSize().width, (int)paramAsset.getNaturalSize().height);
     }
     this.exportConfig = paramAssetExtension;
-    AppMethodBeat.o(214363);
+    AppMethodBeat.o(217695);
   }
   
   @Deprecated
   public AssetExportSession(Asset paramAsset, EncoderWriter.OutputConfig paramOutputConfig)
   {
     this(paramAsset, new ExportConfig(paramOutputConfig), new AssetExtension("export"));
-    AppMethodBeat.i(214361);
-    AppMethodBeat.o(214361);
+    AppMethodBeat.i(217693);
+    AppMethodBeat.o(217693);
   }
   
   public void cancelExport()
   {
-    AppMethodBeat.i(214365);
+    AppMethodBeat.i(217697);
     Logger.i("AssetExportSession", "cancelExport");
     if (this.exportThread != null) {
       this.exportThread.cancel();
     }
-    AppMethodBeat.o(214365);
+    AppMethodBeat.o(217697);
   }
   
   public void exportAsynchronouslyWithCompletionHandler(ExportCallbackHandler paramExportCallbackHandler)
   {
-    AppMethodBeat.i(214364);
+    AppMethodBeat.i(217696);
     this.exportThread = new AssetExportThread(this, paramExportCallbackHandler, this.audioMix, this.exportConfig);
     this.exportThread.setRenderContextParams(this.renderContextParams);
+    this.exportThread.setVideoEncoder(this.videoEncoder);
     this.exportThread.startExport();
-    AppMethodBeat.o(214364);
+    AppMethodBeat.o(217696);
   }
   
   public Asset getAsset()
@@ -184,13 +187,13 @@ public class AssetExportSession
   
   void release()
   {
-    AppMethodBeat.i(214366);
+    AppMethodBeat.i(217698);
     if (this.audioMix != null)
     {
       this.audioMix.release();
       this.audioMix = null;
     }
-    AppMethodBeat.o(214366);
+    AppMethodBeat.o(217698);
   }
   
   public void setAppliesPreferredTrackTransform(boolean paramBoolean)
@@ -220,12 +223,12 @@ public class AssetExportSession
   
   public void setRenderContextParams(RenderContextParams paramRenderContextParams)
   {
-    AppMethodBeat.i(214360);
+    AppMethodBeat.i(217692);
     this.renderContextParams = paramRenderContextParams;
     if (this.exportThread != null) {
       this.exportThread.setRenderContextParams(paramRenderContextParams);
     }
-    AppMethodBeat.o(214360);
+    AppMethodBeat.o(217692);
   }
   
   public void setRevertMode(boolean paramBoolean)
@@ -240,26 +243,31 @@ public class AssetExportSession
   
   public void setVideoComposition(VideoComposition paramVideoComposition)
   {
-    AppMethodBeat.i(214359);
+    AppMethodBeat.i(217691);
     this.videoComposition = paramVideoComposition;
     if (paramVideoComposition != null) {
       this.videoCompositing = paramVideoComposition.getCustomVideoCompositor();
     }
-    AppMethodBeat.o(214359);
+    AppMethodBeat.o(217691);
+  }
+  
+  public void setVideoEncoder(AssetWriterVideoEncoder paramAssetWriterVideoEncoder)
+  {
+    this.videoEncoder = paramAssetWriterVideoEncoder;
   }
   
   public static enum AssetExportSessionStatus
   {
     static
     {
-      AppMethodBeat.i(214358);
+      AppMethodBeat.i(217690);
       AssetExportSessionStatusUnknown = new AssetExportSessionStatus("AssetExportSessionStatusUnknown", 0);
       AssetExportSessionStatusExporting = new AssetExportSessionStatus("AssetExportSessionStatusExporting", 1);
       AssetExportSessionStatusCompleted = new AssetExportSessionStatus("AssetExportSessionStatusCompleted", 2);
       AssetExportSessionStatusFailed = new AssetExportSessionStatus("AssetExportSessionStatusFailed", 3);
       AssetExportSessionStatusCancelled = new AssetExportSessionStatus("AssetExportSessionStatusCancelled", 4);
       $VALUES = new AssetExportSessionStatus[] { AssetExportSessionStatusUnknown, AssetExportSessionStatusExporting, AssetExportSessionStatusCompleted, AssetExportSessionStatusFailed, AssetExportSessionStatusCancelled };
-      AppMethodBeat.o(214358);
+      AppMethodBeat.o(217690);
     }
     
     private AssetExportSessionStatus() {}
@@ -272,7 +280,7 @@ public class AssetExportSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.core.AssetExportSession
  * JD-Core Version:    0.7.0.1
  */

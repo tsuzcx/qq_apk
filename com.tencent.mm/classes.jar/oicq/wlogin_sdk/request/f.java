@@ -5,9 +5,9 @@ public final class f
 {
   public f(i parami)
   {
-    this.Ony = 2064;
-    this.Onz = 10;
-    this.OnB = parami;
+    this.Ucx = 2064;
+    this.Ucy = 10;
+    this.UcA = parami;
   }
 }
 

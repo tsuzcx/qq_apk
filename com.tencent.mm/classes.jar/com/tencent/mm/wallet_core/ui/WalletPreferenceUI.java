@@ -5,8 +5,8 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.a;
 import com.tencent.mm.ui.base.h;
 import com.tencent.mm.ui.base.preference.MMPreference;
@@ -23,9 +23,9 @@ public abstract class WalletPreferenceUI
   protected i mNetSceneMgr = null;
   protected d mProcess = null;
   
-  public abstract boolean e(int paramInt1, int paramInt2, String paramString, n paramn);
+  public abstract boolean e(int paramInt1, int paramInt2, String paramString, q paramq);
   
-  public final i fWy()
+  public final i hhW()
   {
     if (this.mNetSceneMgr == null) {
       this.mNetSceneMgr = new i(this, this);
@@ -42,7 +42,7 @@ public abstract class WalletPreferenceUI
     this.mNetSceneMgr.addSceneEndListener(385);
     this.mNetSceneMgr.addSceneEndListener(1518);
     if (getLayoutId() > 0) {
-      f.fWv();
+      f.hhT();
     }
   }
   
@@ -54,15 +54,15 @@ public abstract class WalletPreferenceUI
     super.onDestroy();
   }
   
-  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn, boolean paramBoolean)
+  public void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq, boolean paramBoolean)
   {
-    if ((!e(paramInt1, paramInt2, paramString, paramn)) && (paramInt2 != 0))
+    if ((!e(paramInt1, paramInt2, paramString, paramq)) && (paramInt2 != 0))
     {
-      paramn = paramString;
-      if (bu.isNullOrNil(paramString)) {
-        paramn = getString(2131765224);
+      paramq = paramString;
+      if (Util.isNullOrNil(paramString)) {
+        paramq = getString(2131767667);
       }
-      h.a(this, paramn, null, false, new DialogInterface.OnClickListener()
+      h.a(this, paramq, null, false, new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
@@ -87,7 +87,7 @@ public abstract class WalletPreferenceUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.ui.WalletPreferenceUI
  * JD-Core Version:    0.7.0.1
  */

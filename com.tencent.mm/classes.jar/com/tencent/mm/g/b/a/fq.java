@@ -6,79 +6,107 @@ import com.tencent.mm.plugin.report.a;
 public final class fq
   extends a
 {
-  private long ehx = 0L;
-  private long emQ = 0L;
-  private long emR = 0L;
-  private long emS = 0L;
-  private String emT = "";
-  private String emU = "";
+  private long eFF;
+  private String eGP = "";
+  private long eGQ;
+  private String eGR = "";
+  private long eGS;
+  private long erw;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(118483);
+    AppMethodBeat.i(196236);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.emQ);
+    ((StringBuffer)localObject).append(this.eGP);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emR);
+    ((StringBuffer)localObject).append(this.eGQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehx);
+    ((StringBuffer)localObject).append(this.eGR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emS);
+    ((StringBuffer)localObject).append(this.eFF);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emT);
+    ((StringBuffer)localObject).append(this.erw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.emU);
+    ((StringBuffer)localObject).append(this.eGS);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(118483);
+    aMq((String)localObject);
+    AppMethodBeat.o(196236);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(118484);
+    AppMethodBeat.i(196237);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("ComposeTime:").append(this.emQ);
+    ((StringBuffer)localObject).append("moduleName:").append(this.eGP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ComposeErrorType:").append(this.emR);
+    ((StringBuffer)localObject).append("eventCode:").append(this.eGQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadTime:").append(this.ehx);
+    ((StringBuffer)localObject).append("eventMsg:").append(this.eGR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadErrorType:").append(this.emS);
+    ((StringBuffer)localObject).append("liveId:").append(this.eFF);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ComposeErrorTypeStr:").append(this.emT);
+    ((StringBuffer)localObject).append("scene:").append(this.erw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("UploadErrorTypeStr:").append(this.emU);
+    ((StringBuffer)localObject).append("mode:").append(this.eGS);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118484);
+    AppMethodBeat.o(196237);
     return localObject;
   }
   
-  public final long Tf()
+  public final long agC()
   {
-    return this.ehx;
+    return this.erw;
   }
   
   public final int getId()
   {
-    return 16688;
+    return 21505;
   }
   
-  public final fq kq(long paramLong)
+  public final fq pg(long paramLong)
   {
-    this.ehx = paramLong;
+    this.eGQ = paramLong;
     return this;
   }
   
-  public final fq kr(long paramLong)
+  public final fq ph(long paramLong)
   {
-    this.emS = paramLong;
+    this.eFF = paramLong;
+    return this;
+  }
+  
+  public final fq pi(long paramLong)
+  {
+    this.erw = paramLong;
+    return this;
+  }
+  
+  public final fq pj(long paramLong)
+  {
+    this.eGS = paramLong;
+    return this;
+  }
+  
+  public final fq sD(String paramString)
+  {
+    AppMethodBeat.i(196234);
+    this.eGP = x("moduleName", paramString, true);
+    AppMethodBeat.o(196234);
+    return this;
+  }
+  
+  public final fq sE(String paramString)
+  {
+    AppMethodBeat.i(196235);
+    this.eGR = x("eventMsg", paramString, true);
+    AppMethodBeat.o(196235);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fq
  * JD-Core Version:    0.7.0.1
  */

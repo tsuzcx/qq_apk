@@ -10,13 +10,13 @@ import android.content.Intent;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.x;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.plugin.auto.a.a;
 import com.tencent.mm.plugin.auto.a.b;
 import com.tencent.mm.plugin.messenger.a.d;
 import com.tencent.mm.plugin.messenger.a.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class MMAutoMessageReplyReceiver
   extends BroadcastReceiver
@@ -24,7 +24,7 @@ public class MMAutoMessageReplyReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(21162);
-    String str = z.getStringExtra(paramIntent, "key_username");
+    String str = IntentUtil.getStringExtra(paramIntent, "key_username");
     if (str == null)
     {
       AppMethodBeat.o(21162);
@@ -44,7 +44,7 @@ public class MMAutoMessageReplyReceiver
       if (paramContext != null) {
         break label171;
       }
-      ae.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply null", new Object[] { str });
+      Log.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply null", new Object[] { str });
       AppMethodBeat.o(21162);
       return;
       if (Build.VERSION.SDK_INT >= 16)
@@ -74,33 +74,33 @@ public class MMAutoMessageReplyReceiver
       break;
     }
     label171:
-    if (!a.bHK())
+    if (!a.ceB())
     {
       AppMethodBeat.o(21162);
       return;
     }
-    if (!a.bHL())
+    if (!a.ceC())
     {
-      ae.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "not open car mode");
+      Log.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "not open car mode");
       AppMethodBeat.o(21162);
       return;
     }
-    if (!a.bHM())
+    if (!a.ceD())
     {
-      ae.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "not install auto app");
+      Log.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "not install auto app");
       AppMethodBeat.o(21162);
       return;
     }
-    paramIntent = b.nxI;
-    b.tn(1L);
-    ae.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
-    g.doC().aa(str, paramContext.toString(), x.Bb(str));
+    paramIntent = b.oIG;
+    b.Bt(1L);
+    Log.i("MicroMsg.auto.MMAutoMessageReplyReceiver", "username %s reply %s", new Object[] { str, paramContext.toString() });
+    g.eir().ad(str, paramContext.toString(), ab.JG(str));
     AppMethodBeat.o(21162);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.auto.service.MMAutoMessageReplyReceiver
  * JD-Core Version:    0.7.0.1
  */

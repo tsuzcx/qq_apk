@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.collect.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.ag;
 import com.tencent.mm.wallet_core.tenpay.model.m;
 import java.io.UnsupportedEncodingException;
@@ -13,24 +13,24 @@ import org.json.JSONObject;
 public final class t
   extends m
 {
+  public String dFv;
   public String desc;
-  public String dog;
-  public int phA;
-  public String phy;
-  public double phz;
+  public String qwI;
+  public double qwJ;
+  public int qwK;
   
   public t(double paramDouble, String paramString1, String paramString2)
   {
     AppMethodBeat.i(63848);
-    this.phy = null;
+    this.qwI = null;
     HashMap localHashMap = new HashMap();
     try
     {
       localHashMap.put("fee", Math.round(100.0D * paramDouble));
       localHashMap.put("fee_type", paramString1);
       localHashMap.put("desc", URLEncoder.encode(paramString2, "UTF-8"));
-      this.phz = paramDouble;
-      this.dog = paramString1;
+      this.qwJ = paramDouble;
+      this.dFv = paramString1;
       this.desc = paramString2;
       setRequestData(localHashMap);
       AppMethodBeat.o(63848);
@@ -40,7 +40,7 @@ public final class t
     {
       for (;;)
       {
-        ae.printErrStackTrace("Micromsg.NetSceneTenpayRemittanceQuery", localUnsupportedEncodingException, "", new Object[0]);
+        Log.printErrStackTrace("Micromsg.NetSceneTenpayRemittanceQuery", localUnsupportedEncodingException, "", new Object[0]);
       }
     }
   }
@@ -63,21 +63,21 @@ public final class t
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(63849);
-    ae.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
+    Log.d("Micromsg.NetSceneTenpayRemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(63849);
       return;
     }
-    this.phy = paramJSONObject.optString("pay_url");
-    this.phA = ag.agX(paramJSONObject.optInt("qrcode_level"));
-    ae.i("Micromsg.NetSceneTenpayRemittanceQuery", "qrcodeLevel:%s ", new Object[] { Integer.valueOf(this.phA) });
+    this.qwI = paramJSONObject.optString("pay_url");
+    this.qwK = ag.aqj(paramJSONObject.optInt("qrcode_level"));
+    Log.i("Micromsg.NetSceneTenpayRemittanceQuery", "qrcodeLevel:%s ", new Object[] { Integer.valueOf(this.qwK) });
     AppMethodBeat.o(63849);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.collect.model.t
  * JD-Core Version:    0.7.0.1
  */

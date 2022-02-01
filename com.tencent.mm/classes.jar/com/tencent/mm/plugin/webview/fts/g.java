@@ -1,21 +1,21 @@
 package com.tencent.mm.plugin.webview.fts;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.websearch.api.ad;
-import com.tencent.mm.plugin.websearch.api.s;
-import com.tencent.mm.protocal.protobuf.ege;
-import com.tencent.mm.protocal.protobuf.egi;
-import com.tencent.mm.protocal.protobuf.egj;
-import com.tencent.mm.protocal.protobuf.ejs;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.websearch.api.ai;
+import com.tencent.mm.plugin.websearch.api.v;
+import com.tencent.mm.protocal.protobuf.fap;
+import com.tencent.mm.protocal.protobuf.fau;
+import com.tencent.mm.protocal.protobuf.fav;
+import com.tencent.mm.protocal.protobuf.fel;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.util.LinkedList;
@@ -23,27 +23,27 @@ import org.json.JSONArray;
 
 public final class g
   extends com.tencent.mm.plugin.websearch.api.b
-  implements k
+  implements m
 {
-  private s DTs;
-  private egj Ecp;
-  private f callback;
-  private com.tencent.mm.ak.b hZD;
+  private fav IDA;
+  private v IDt;
+  private i callback;
+  private d iUB;
   
-  public g(s params)
+  public g(v paramv)
   {
     AppMethodBeat.i(77934);
-    this.DTs = params;
-    this.Nl = params.dmf;
-    this.mScene = params.scene;
-    this.DSQ = params.dDY;
+    this.IDt = paramv;
+    this.Nv = paramv.dDv;
+    this.mScene = paramv.scene;
+    this.IDq = paramv.dVL;
     Object localObject;
     int i;
-    if (!bu.isNullOrNil(params.dmf))
+    if (!Util.isNullOrNil(paramv.dDv))
     {
-      ae.i("MicroMsg.WebSearch.NetSceneWebSuggest", "Constructors: query=%s", new Object[] { params.dmf });
-      localObject = new b.a();
-      if ((params.scene == 201) || (params.DTi == 1)) {
+      Log.i("MicroMsg.WebSearch.NetSceneWebSuggest", "Constructors: query=%s", new Object[] { paramv.dDv });
+      localObject = new d.a();
+      if ((paramv.scene == 201) || (paramv.IDQ == 1)) {
         i = 1;
       }
     }
@@ -51,91 +51,92 @@ public final class g
     {
       if (i != 0)
       {
-        ((b.a)localObject).funcId = 1747;
-        ((b.a)localObject).uri = "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_weappsuggestion";
+        ((d.a)localObject).funcId = 1747;
+        ((d.a)localObject).uri = "/cgi-bin/mmux-bin/wxaapp/mmuxwxa_weappsuggestion";
         label114:
-        ((b.a)localObject).hQF = new egi();
-        ((b.a)localObject).hQG = new egj();
-        this.hZD = ((b.a)localObject).aDS();
-        localObject = (egi)this.hZD.hQD.hQJ;
-        ((egi)localObject).GLP = params.dmf;
-        ((egi)localObject).GeP = params.businessType;
-        ((egi)localObject).IjW = ad.WL(0);
-        ((egi)localObject).HFR = params.DSW;
-        ((egi)localObject).HkU = ad.bOD();
-        ((egi)localObject).Scene = params.scene;
-        ((egi)localObject).IjI = params.sessionId;
-        if (params.DTk == null) {}
+        ((d.a)localObject).iLN = new fau();
+        ((d.a)localObject).iLO = new fav();
+        this.iUB = ((d.a)localObject).aXF();
+        localObject = (fau)this.iUB.iLK.iLR;
+        ((fau)localObject).LPT = paramv.dDv;
+        ((fau)localObject).KZg = paramv.businessType;
+        ((fau)localObject).NwV = ai.aft(0);
+        ((fau)localObject).MRb = paramv.IDE;
+        ((fau)localObject).MlQ = ai.clJ();
+        ((fau)localObject).Scene = paramv.scene;
+        ((fau)localObject).NwH = paramv.sessionId;
+        ((fau)localObject).MlR = ai.fYd();
+        if (paramv.IDS == null) {}
       }
       try
       {
-        ((egi)localObject).Ikd = new com.tencent.mm.bw.b(params.DTk.toByteArray());
-        label251:
-        if (params.DTj != null) {}
+        ((fau)localObject).Nxc = new com.tencent.mm.bw.b(paramv.IDS.toByteArray());
+        label259:
+        if (paramv.IDR != null) {}
         try
         {
-          ((egi)localObject).Ikc = new com.tencent.mm.bw.b(params.DTj.toByteArray());
+          ((fau)localObject).Nxb = new com.tencent.mm.bw.b(paramv.IDR.toByteArray());
           try
           {
-            label277:
-            JSONArray localJSONArray = new JSONArray(params.DTb);
-            ((egi)localObject).Ika = new LinkedList();
+            label285:
+            JSONArray localJSONArray = new JSONArray(paramv.IDJ);
+            ((fau)localObject).NwZ = new LinkedList();
             i = 0;
             while (i < localJSONArray.length())
             {
               String str = URLDecoder.decode(localJSONArray.getString(i), "UTF-8");
-              ((egi)localObject).Ika.add(str);
+              ((fau)localObject).NwZ.add(str);
               i += 1;
             }
             i = 0;
           }
           catch (Exception localException1)
           {
-            ae.printErrStackTrace("MicroMsg.WebSearch.NetSceneWebSuggest", localException1, "decode json error", new Object[0]);
-            i = params.businessType;
-            if (((egi)localObject).HkU == null) {
-              break label469;
+            Log.printErrStackTrace("MicroMsg.WebSearch.NetSceneWebSuggest", localException1, "decode json error", new Object[0]);
+            i = paramv.businessType;
+            if (((fau)localObject).MlQ == null) {
+              break label477;
             }
           }
-          ((b.a)localObject).funcId = 1161;
-          ((b.a)localObject).uri = "/cgi-bin/mmsearch-bin/searchsuggestion";
+          ((d.a)localObject).funcId = 1161;
+          ((d.a)localObject).uri = "/cgi-bin/mmsearch-bin/searchsuggestion";
           break label114;
-          label469:
+          label477:
           for (boolean bool = true;; bool = false)
           {
-            ae.i("MicroMsg.WebSearch.NetSceneWebSuggest", "businessTypeList is %d | contains location = %b | scene=%d | businessType=%d | isHomePage=%b | webViewId=%d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(params.scene), Integer.valueOf(params.businessType), Integer.valueOf(params.DSW), Integer.valueOf(params.dDY) });
+            Log.i("MicroMsg.WebSearch.NetSceneWebSuggest", "businessTypeList is %d | contains location = %b | scene=%d | businessType=%d | isHomePage=%b | webViewId=%d", new Object[] { Integer.valueOf(i), Boolean.valueOf(bool), Integer.valueOf(paramv.scene), Integer.valueOf(paramv.businessType), Integer.valueOf(paramv.IDE), Integer.valueOf(paramv.dVL) });
             AppMethodBeat.o(77934);
             return;
           }
-          ae.e("MicroMsg.WebSearch.NetSceneWebSuggest", "keyword is unavailable");
+          Log.e("MicroMsg.WebSearch.NetSceneWebSuggest", "keyword is unavailable");
           AppMethodBeat.o(77934);
           return;
         }
         catch (IOException localIOException)
         {
-          break label277;
+          break label285;
         }
       }
       catch (Exception localException2)
       {
-        break label251;
+        break label259;
       }
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(77936);
-    this.callback = paramf;
-    int i = dispatch(parame, this.hZD, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.iUB, this);
     AppMethodBeat.o(77936);
     return i;
   }
   
-  public final String ePw()
+  public final String fXC()
   {
-    if (this.Ecp != null) {
-      return this.Ecp.GWB;
+    if (this.IDA != null) {
+      return this.IDA.MaZ;
     }
     return "";
   }
@@ -145,19 +146,19 @@ public final class g
     return 1161;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(77935);
-    ae.i("MicroMsg.WebSearch.NetSceneWebSuggest", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    Log.i("MicroMsg.WebSearch.NetSceneWebSuggest", "netId %d | errType %d | errCode %d | errMsg %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(77935);
       return;
     }
-    this.Ecp = ((egj)this.hZD.hQE.hQJ);
-    if (this.Ecp != null) {
-      ae.v("MicroMsg.WebSearch.NetSceneWebSuggest", "return data\n%s", new Object[] { this.Ecp.GWB });
+    this.IDA = ((fav)this.iUB.iLL.iLR);
+    if (this.IDA != null) {
+      Log.v("MicroMsg.WebSearch.NetSceneWebSuggest", "return data\n%s", new Object[] { this.IDA.MaZ });
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(77935);

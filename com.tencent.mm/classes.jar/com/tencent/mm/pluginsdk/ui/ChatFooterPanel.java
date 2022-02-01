@@ -8,42 +8,44 @@ import com.tencent.mm.pluginsdk.ui.chat.f;
 public abstract class ChatFooterPanel
   extends LinearLayout
 {
-  public static int FkJ = 0;
-  public static int FkK = 1;
-  public static int FkL;
-  public static int FkM;
-  public static int FkN;
-  public static int FkO;
-  public static int FkP;
-  public static int FkQ;
-  public static int FkR;
-  public static int FkS;
-  public static int FkT;
-  public static int FkU;
-  public static int FkV;
-  public static int FkW = 14;
-  public static int rRG;
-  public static int xKI = 2;
-  public static int xKJ;
-  protected int DUO;
-  protected ChatFooterPanel.a FkH;
-  protected f FkI;
+  public static int BKM;
+  public static int BKN;
+  public static int KbB = 0;
+  public static int KbC = 1;
+  public static int KbD;
+  public static int KbE;
+  public static int KbF;
+  public static int KbG;
+  public static int KbH;
+  public static int KbI;
+  public static int KbJ;
+  public static int KbK;
+  public static int KbL;
+  public static int KbM;
+  public static int KbN;
+  public static int KbO = 14;
+  public static int KbP = 15;
+  public static int tvw;
+  protected int IFI;
+  protected f KbA;
+  protected ChatFooterPanel.a Kbz;
   
   static
   {
-    FkL = 3;
-    FkM = 4;
-    FkN = 5;
-    FkO = 6;
-    xKJ = FkJ;
-    FkP = 12;
-    FkQ = 7;
-    FkR = 8;
-    FkS = 9;
-    FkT = 10;
-    FkU = 11;
-    FkV = 12;
-    rRG = 13;
+    BKM = 2;
+    KbD = 3;
+    KbE = 4;
+    KbF = 5;
+    KbG = 6;
+    BKN = KbB;
+    KbH = 12;
+    KbI = 7;
+    KbJ = 8;
+    KbK = 9;
+    KbL = 10;
+    KbM = 11;
+    KbN = 12;
+    tvw = 13;
   }
   
   public ChatFooterPanel(Context paramContext, AttributeSet paramAttributeSet)
@@ -53,18 +55,15 @@ public abstract class ChatFooterPanel
   
   public void destroy() {}
   
-  public abstract void ffs();
+  public abstract void goC();
   
   @Deprecated
-  public abstract void fft();
+  public abstract void goD();
   
   @Deprecated
-  public abstract void ffu();
+  public abstract void goE();
   
-  @Deprecated
-  public abstract void ffv();
-  
-  public abstract void ffw();
+  public abstract void goF();
   
   public abstract void onPause();
   
@@ -72,7 +71,7 @@ public abstract class ChatFooterPanel
   
   public void setCallback(f paramf)
   {
-    this.FkI = paramf;
+    this.KbA = paramf;
   }
   
   public abstract void setDefaultEmojiByDetail(String paramString);
@@ -81,12 +80,12 @@ public abstract class ChatFooterPanel
   
   public void setFooterType(int paramInt)
   {
-    this.DUO = paramInt;
+    this.IFI = paramInt;
   }
   
   public void setOnTextOperationListener(ChatFooterPanel.a parama)
   {
-    this.FkH = parama;
+    this.Kbz = parama;
   }
   
   @Deprecated
@@ -103,10 +102,15 @@ public abstract class ChatFooterPanel
   public abstract void setShowStore(boolean paramBoolean);
   
   public abstract void setTalkerName(String paramString);
+  
+  public abstract void setToSendText(String paramString);
+  
+  @Deprecated
+  public abstract void zN(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.ui.ChatFooterPanel
  * JD-Core Version:    0.7.0.1
  */

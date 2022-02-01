@@ -2,18 +2,18 @@ package com.tencent.mm.loader.d;
 
 import com.tencent.mm.loader.e.b.g;
 import com.tencent.mm.loader.h.e;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/loader/common/ITranscoderProducer;", "INPUT", "RESOURCE", "", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "asResourceName", "", "source", "whenDecode", "whenDownload", "whenLoad", "libimageloader_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/loader/common/ITranscoderProducer;", "INPUT", "RESOURCE", "", "asResource", "Lcom/tencent/mm/loader/model/Resource;", "targetView", "Lcom/tencent/mm/loader/impr/target/ViewWeakHolder;", "reaper", "Lcom/tencent/mm/loader/Reaper;", "input", "asResourceName", "", "source", "whenDecode", "whenDownload", "whenLoad", "libimageloader_release"})
 public abstract interface f<INPUT, RESOURCE>
 {
-  public abstract e<? extends RESOURCE> a(g<?> paramg, com.tencent.mm.loader.f<?, RESOURCE> paramf, e<INPUT> parame);
+  public abstract String Hi(String paramString);
   
-  public abstract String yJ(String paramString);
+  public abstract e<? extends RESOURCE> a(g<?> paramg, com.tencent.mm.loader.f<?, RESOURCE> paramf, e<INPUT> parame);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.d.f
  * JD-Core Version:    0.7.0.1
  */

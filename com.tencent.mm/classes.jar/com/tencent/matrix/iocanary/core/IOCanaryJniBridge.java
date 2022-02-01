@@ -46,20 +46,20 @@ public class IOCanaryJniBridge
     if (parama != null) {}
     try
     {
-      if (parama.Iw())
+      if (parama.St())
       {
         enableDetector(0);
-        setConfig(0, parama.cCj.get(a.a.LZG.name(), 500) * 1000L);
+        setConfig(0, parama.cQF.get(a.a.RzY.name(), 500) * 1000L);
       }
-      if (parama.Iy())
+      if (parama.Sv())
       {
         enableDetector(1);
-        setConfig(1, parama.cCj.get(a.a.LZI.name(), 4096));
+        setConfig(1, parama.cQF.get(a.a.RAa.name(), 4096));
       }
-      if (parama.Ix())
+      if (parama.Su())
       {
         enableDetector(2);
-        setConfig(2, parama.cCj.get(a.a.LZL.name(), 5));
+        setConfig(2, parama.cQF.get(a.a.RAd.name(), 5));
       }
       doHook();
       sIsTryInstall = true;
@@ -124,7 +124,7 @@ public class IOCanaryJniBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.iocanary.core.IOCanaryJniBridge
  * JD-Core Version:    0.7.0.1
  */

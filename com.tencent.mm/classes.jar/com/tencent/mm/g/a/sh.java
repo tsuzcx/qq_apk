@@ -1,13 +1,15 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
+import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class sh
-  extends b
+  extends IEvent
 {
-  public a dHR;
-  public b dHS;
+  public a dYV;
+  public b dYW;
   
   public sh()
   {
@@ -16,24 +18,30 @@ public final class sh
   
   private sh(byte paramByte)
   {
-    AppMethodBeat.i(19833);
-    this.dHR = new a();
-    this.dHS = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(149885);
+    this.dYV = new a();
+    this.dYW = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19833);
+    AppMethodBeat.o(149885);
   }
   
   public static final class a
   {
-    public String userName;
+    public Context context;
+    public int dYQ;
+    public Bundle extras;
   }
   
-  public static final class b {}
+  public static final class b
+  {
+    public boolean dYN;
+    public Bundle extras;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.g.a.sh
  * JD-Core Version:    0.7.0.1
  */

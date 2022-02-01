@@ -6,24 +6,24 @@ import com.tencent.luggage.a.e;
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.plugin.appbrand.s.a;
-import com.tencent.mm.plugin.appbrand.s.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.plugin.appbrand.w.a;
+import com.tencent.mm.plugin.appbrand.w.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class WcWss
 {
-  private static HashMap<Pair<String, Integer>, a> lzy;
+  private static HashMap<Pair<String, Integer>, a> mGM;
   
   static
   {
     AppMethodBeat.i(144293);
     WcWss.class.getClassLoader();
-    j.vN("wcwss");
-    lzy = new HashMap();
+    j.Ed("wcwss");
+    mGM = new HashMap();
     AppMethodBeat.o(144293);
   }
   
@@ -33,24 +33,24 @@ public class WcWss
     int i = connectSocket(paramString1, paramString2, paramArrayOfObject1, paramArrayOfObject2, null, paramObject, paramArrayOfObject3);
     if (i > 0)
     {
-      ae.i("MicroMsg.WcWss", "connect wss pair(%s, %d)", new Object[] { paramString1, Integer.valueOf(i) });
+      Log.i("MicroMsg.WcWss", "connect wss pair(%s, %d)", new Object[] { paramString1, Integer.valueOf(i) });
       paramString2 = new Pair(paramString1, Integer.valueOf(i));
-      if (lzy.containsKey(paramString2))
+      if (mGM.containsKey(paramString2))
       {
-        ae.e("MicroMsg.WcWss", "already exists pair(%s, %d)", new Object[] { paramString1, Integer.valueOf(i) });
+        Log.e("MicroMsg.WcWss", "already exists pair(%s, %d)", new Object[] { paramString1, Integer.valueOf(i) });
         AppMethodBeat.o(144283);
         return -1;
       }
-      lzy.put(paramString2, parama);
+      mGM.put(paramString2, parama);
     }
     AppMethodBeat.o(144283);
     return i;
   }
   
-  public static void bpI()
+  public static void bLo()
   {
     AppMethodBeat.i(144282);
-    ae.i("MicroMsg.WcWss", "initWcWss");
+    Log.i("MicroMsg.WcWss", "initWcWss");
     init();
     AppMethodBeat.o(144282);
   }
@@ -63,15 +63,15 @@ public class WcWss
   public static int doCertificateVerify(String paramString1, int paramInt, String paramString2, byte[][] paramArrayOfByte)
   {
     AppMethodBeat.i(144291);
-    ae.i("MicroMsg.WcWss", "doCertificateVerify group:%s,wssId:%s,hostname:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
+    Log.i("MicroMsg.WcWss", "doCertificateVerify group:%s,wssId:%s,hostname:%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
     paramString1 = new Pair(paramString1, Integer.valueOf(paramInt));
-    if (lzy.containsKey(paramString1))
+    if (mGM.containsKey(paramString1))
     {
-      paramInt = ((a)lzy.get(paramString1)).doCertificateVerify(paramString2, paramArrayOfByte);
+      paramInt = ((a)mGM.get(paramString1)).doCertificateVerify(paramString2, paramArrayOfByte);
       AppMethodBeat.o(144291);
       return paramInt;
     }
-    ae.e("MicroMsg.WcWss", "onMessage callback is null");
+    Log.e("MicroMsg.WcWss", "onMessage callback is null");
     AppMethodBeat.o(144291);
     return -1;
   }
@@ -90,37 +90,37 @@ public class WcWss
     AppMethodBeat.i(144292);
     try
     {
-      int i = az.getNetType(ak.getContext());
+      int i = NetStatusUtil.getNetType(MMApplicationContext.getContext());
       if (i == -1)
       {
         AppMethodBeat.o(144292);
         return -1;
       }
-      boolean bool = az.is2G(ak.getContext());
+      boolean bool = NetStatusUtil.is2G(MMApplicationContext.getContext());
       if (bool)
       {
         AppMethodBeat.o(144292);
         return 3;
       }
-      bool = az.is3G(ak.getContext());
+      bool = NetStatusUtil.is3G(MMApplicationContext.getContext());
       if (bool)
       {
         AppMethodBeat.o(144292);
         return 4;
       }
-      bool = az.is4G(ak.getContext());
+      bool = NetStatusUtil.is4G(MMApplicationContext.getContext());
       if (bool)
       {
         AppMethodBeat.o(144292);
         return 5;
       }
-      bool = az.isWifi(i);
+      bool = NetStatusUtil.isWifi(i);
       if (bool)
       {
         AppMethodBeat.o(144292);
         return 1;
       }
-      bool = az.isWap(i);
+      bool = NetStatusUtil.isWap(i);
       if (bool)
       {
         AppMethodBeat.o(144292);
@@ -131,7 +131,7 @@ public class WcWss
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("MicroMsg.WcWss", localException, "getStatisticsNetType_", new Object[0]);
+      Log.printErrStackTrace("MicroMsg.WcWss", localException, "getStatisticsNetType_", new Object[0]);
       AppMethodBeat.o(144292);
     }
     return -1;
@@ -143,16 +143,16 @@ public class WcWss
   public static void onClose(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     AppMethodBeat.i(144287);
-    ae.i("MicroMsg.WcWss", "onClose group:%s,id:%s, reason:%s, code:%s", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2) });
+    Log.i("MicroMsg.WcWss", "onClose group:%s,id:%s, reason:%s, code:%s", new Object[] { paramString1, Integer.valueOf(paramInt1), paramString2, Integer.valueOf(paramInt2) });
     Pair localPair = new Pair(paramString1, Integer.valueOf(paramInt1));
-    if (lzy.containsKey(localPair))
+    if (mGM.containsKey(localPair))
     {
-      ((a)lzy.get(localPair)).onClose(paramString1, paramInt1, paramInt2, paramString2);
-      lzy.remove(localPair);
+      ((a)mGM.get(localPair)).onClose(paramString1, paramInt1, paramInt2, paramString2);
+      mGM.remove(localPair);
       AppMethodBeat.o(144287);
       return;
     }
-    ae.e("MicroMsg.WcWss", "onClose callback is null");
+    Log.e("MicroMsg.WcWss", "onClose callback is null");
     AppMethodBeat.o(144287);
   }
   
@@ -160,15 +160,15 @@ public class WcWss
   public static void onHandShake(String paramString, int paramInt, String[] paramArrayOfString1, String[] paramArrayOfString2)
   {
     AppMethodBeat.i(144284);
-    ae.i("MicroMsg.WcWss", "onHandShake group:%s, wssId:%s", new Object[] { paramString, Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.WcWss", "onHandShake group:%s, wssId:%s", new Object[] { paramString, Integer.valueOf(paramInt) });
     Pair localPair = new Pair(paramString, Integer.valueOf(paramInt));
-    if (lzy.containsKey(localPair))
+    if (mGM.containsKey(localPair))
     {
-      ((a)lzy.get(localPair)).onHandShake(paramString, paramInt, paramArrayOfString1, paramArrayOfString2);
+      ((a)mGM.get(localPair)).onHandShake(paramString, paramInt, paramArrayOfString1, paramArrayOfString2);
       AppMethodBeat.o(144284);
       return;
     }
-    ae.e("MicroMsg.WcWss", "onHandShake callback is null");
+    Log.e("MicroMsg.WcWss", "onHandShake callback is null");
     AppMethodBeat.o(144284);
   }
   
@@ -176,7 +176,7 @@ public class WcWss
   public static void onIdKeyStat(int[] paramArrayOfInt1, int[] paramArrayOfInt2, int[] paramArrayOfInt3)
   {
     AppMethodBeat.i(144289);
-    ae.v("MicroMsg.WcWss", "onIdKeyStat");
+    Log.v("MicroMsg.WcWss", "onIdKeyStat");
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramArrayOfInt1.length)
@@ -184,7 +184,7 @@ public class WcWss
       localArrayList.add(new IDKey(paramArrayOfInt1[i], paramArrayOfInt2[i], paramArrayOfInt3[i]));
       i += 1;
     }
-    ((a)e.L(a.class)).b(localArrayList, false);
+    ((a)e.N(a.class)).b(localArrayList, false);
     AppMethodBeat.o(144289);
   }
   
@@ -192,8 +192,8 @@ public class WcWss
   public static void onKvStat(int paramInt, String paramString)
   {
     AppMethodBeat.i(144288);
-    ae.i("MicroMsg.WcWss", "onKvStat logId:%s", new Object[] { Integer.valueOf(paramInt) });
-    ((b)e.L(b.class)).kvStat(paramInt, paramString);
+    Log.i("MicroMsg.WcWss", "onKvStat logId:%s", new Object[] { Integer.valueOf(paramInt) });
+    ((b)e.N(b.class)).kvStat(paramInt, paramString);
     AppMethodBeat.o(144288);
   }
   
@@ -201,15 +201,15 @@ public class WcWss
   public static void onMessage(String paramString, int paramInt, byte[] paramArrayOfByte, boolean paramBoolean)
   {
     AppMethodBeat.i(144286);
-    ae.d("MicroMsg.WcWss", "onMessage group:%s,wssId:%s,isText:%s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
+    Log.d("MicroMsg.WcWss", "onMessage group:%s,wssId:%s,isText:%s", new Object[] { paramString, Integer.valueOf(paramInt), Boolean.valueOf(paramBoolean) });
     Pair localPair = new Pair(paramString, Integer.valueOf(paramInt));
-    if (lzy.containsKey(localPair))
+    if (mGM.containsKey(localPair))
     {
-      ((a)lzy.get(localPair)).onMessage(paramString, paramInt, paramArrayOfByte, paramBoolean);
+      ((a)mGM.get(localPair)).onMessage(paramString, paramInt, paramArrayOfByte, paramBoolean);
       AppMethodBeat.o(144286);
       return;
     }
-    ae.e("MicroMsg.WcWss", "onMessage callback is null");
+    Log.e("MicroMsg.WcWss", "onMessage callback is null");
     AppMethodBeat.o(144286);
   }
   
@@ -217,20 +217,20 @@ public class WcWss
   public static void onOpen(String paramString1, int paramInt1, boolean paramBoolean, String[] paramArrayOfString1, String[] paramArrayOfString2, int paramInt2, String paramString2, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, long paramLong8)
   {
     AppMethodBeat.i(175389);
-    ae.i("MicroMsg.WcWss", "onOpen group:%s,isSuc:%s, msg:%s, code:%s, wssId:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
+    Log.i("MicroMsg.WcWss", "onOpen group:%s,isSuc:%s, msg:%s, code:%s, wssId:%s", new Object[] { paramString1, Boolean.valueOf(paramBoolean), paramString2, Integer.valueOf(paramInt2), Integer.valueOf(paramInt1) });
     Pair localPair = new Pair(paramString1, Integer.valueOf(paramInt1));
-    if (lzy.containsKey(localPair))
+    if (mGM.containsKey(localPair))
     {
-      ((a)lzy.get(localPair)).onOpen(paramString1, paramInt1, paramBoolean, paramArrayOfString1, paramArrayOfString2, paramInt2, paramString2, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramLong6, paramLong7, paramLong8);
+      ((a)mGM.get(localPair)).onOpen(paramString1, paramInt1, paramBoolean, paramArrayOfString1, paramArrayOfString2, paramInt2, paramString2, paramLong1, paramLong2, paramLong3, paramLong4, paramLong5, paramLong6, paramLong7, paramLong8);
       if (!paramBoolean)
       {
-        lzy.remove(localPair);
+        mGM.remove(localPair);
         AppMethodBeat.o(175389);
       }
     }
     else
     {
-      ae.e("MicroMsg.WcWss", "onOpen callback is null");
+      Log.e("MicroMsg.WcWss", "onOpen callback is null");
     }
     AppMethodBeat.o(175389);
   }
@@ -254,7 +254,7 @@ public class WcWss
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.websocket.WcWss
  * JD-Core Version:    0.7.0.1
  */

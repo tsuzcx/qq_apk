@@ -9,7 +9,7 @@ import java.nio.channels.FileChannel;
 public final class c
   extends FilterInputStream
 {
-  private long bbz = 0L;
+  private long mMarkPosition = 0L;
   
   public c(FileInputStream paramFileInputStream)
   {
@@ -21,7 +21,7 @@ public final class c
     AppMethodBeat.i(127395);
     try
     {
-      this.bbz = ((FileInputStream)this.in).getChannel().position();
+      this.mMarkPosition = ((FileInputStream)this.in).getChannel().position();
       AppMethodBeat.o(127395);
       return;
     }
@@ -40,13 +40,13 @@ public final class c
   public final void reset()
   {
     AppMethodBeat.i(127396);
-    ((FileInputStream)this.in).getChannel().position(this.bbz);
+    ((FileInputStream)this.in).getChannel().position(this.mMarkPosition);
     AppMethodBeat.o(127396);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.github.henryye.nativeiv.c.c
  * JD-Core Version:    0.7.0.1
  */

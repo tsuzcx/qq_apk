@@ -6,8 +6,8 @@ import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e.c;
 import com.tencent.mm.plugin.forcenotify.c.d;
 import com.tencent.mm.plugin.messenger.foundation.a.s;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
@@ -21,12 +21,12 @@ public class PluginForceNotify
   {
     AppMethodBeat.i(149133);
     baseDBFactories = new HashMap();
-    String str = j.getCreateSQLs(d.info, "ForceNotifyData");
+    String str = MAutoStorage.getCreateSQLs(d.info, "ForceNotifyData");
     baseDBFactories.put(Integer.valueOf("ForceNotifyData".hashCode()), new h.b()
     {
       public final String[] getSQLs()
       {
-        return this.tuu;
+        return this.wLB;
       }
     });
     AppMethodBeat.o(149133);
@@ -59,24 +59,24 @@ public class PluginForceNotify
   {
     AppMethodBeat.i(149131);
     long l = SystemClock.uptimeMillis();
-    ae.i("MicroMsg.PluginForceNotify", "[transformOldData] count:%s cost:%s", new Object[] { Integer.valueOf(com.tencent.mm.plugin.forcenotify.d.a.tuN.cTi()), Long.valueOf(SystemClock.uptimeMillis() - l) });
-    com.tencent.mm.plugin.forcenotify.b.c.tuL.start();
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.forcenotify.a.b.class, com.tencent.mm.plugin.forcenotify.b.c.tuL);
-    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.forcenotify.a.a.class, com.tencent.mm.plugin.forcenotify.b.b.tuH);
+    Log.i("MicroMsg.PluginForceNotify", "[transformOldData] count:%s cost:%s", new Object[] { Integer.valueOf(com.tencent.mm.plugin.forcenotify.d.a.wLU.dMr()), Long.valueOf(SystemClock.uptimeMillis() - l) });
+    com.tencent.mm.plugin.forcenotify.b.c.wLS.start();
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.forcenotify.a.b.class, com.tencent.mm.plugin.forcenotify.b.c.wLS);
+    com.tencent.mm.kernel.g.b(com.tencent.mm.plugin.forcenotify.a.a.class, com.tencent.mm.plugin.forcenotify.b.b.wLO);
     AppMethodBeat.o(149131);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(149132);
-    com.tencent.mm.plugin.forcenotify.b.c.tuL.release();
-    com.tencent.mm.kernel.g.ac(com.tencent.mm.plugin.forcenotify.a.b.class);
+    com.tencent.mm.plugin.forcenotify.b.c.wLS.release();
+    com.tencent.mm.kernel.g.ag(com.tencent.mm.plugin.forcenotify.a.b.class);
     AppMethodBeat.o(149132);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.forcenotify.PluginForceNotify
  * JD-Core Version:    0.7.0.1
  */

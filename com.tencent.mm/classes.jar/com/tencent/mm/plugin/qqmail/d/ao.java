@@ -5,99 +5,99 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class ao
   extends com.tencent.mm.bw.a
 {
+  public String Btb;
   public String md5;
   public String name;
   public int size;
   public long uin;
-  public String xsY;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(217977);
+    AppMethodBeat.i(198633);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aZ(1, this.uin);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bb(1, this.uin);
       if (this.name != null) {
-        paramVarArgs.d(2, this.name);
+        paramVarArgs.e(2, this.name);
       }
-      paramVarArgs.aS(3, this.size);
-      if (this.xsY != null) {
-        paramVarArgs.d(4, this.xsY);
+      paramVarArgs.aM(3, this.size);
+      if (this.Btb != null) {
+        paramVarArgs.e(4, this.Btb);
       }
       if (this.md5 != null) {
-        paramVarArgs.d(5, this.md5);
+        paramVarArgs.e(5, this.md5);
       }
-      AppMethodBeat.o(217977);
+      AppMethodBeat.o(198633);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.p(1, this.uin) + 0;
+      int i = g.a.a.b.b.a.r(1, this.uin) + 0;
       paramInt = i;
       if (this.name != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.name);
+        paramInt = i + g.a.a.b.b.a.f(2, this.name);
       }
-      i = paramInt + f.a.a.b.b.a.bz(3, this.size);
+      i = paramInt + g.a.a.b.b.a.bu(3, this.size);
       paramInt = i;
-      if (this.xsY != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.xsY);
+      if (this.Btb != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.Btb);
       }
       i = paramInt;
       if (this.md5 != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.md5);
+        i = paramInt + g.a.a.b.b.a.f(5, this.md5);
       }
-      AppMethodBeat.o(217977);
+      AppMethodBeat.o(198633);
       return i;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
-      AppMethodBeat.o(217977);
+      AppMethodBeat.o(198633);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       ao localao = (ao)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
       default: 
-        AppMethodBeat.o(217977);
+        AppMethodBeat.o(198633);
         return -1;
       case 1: 
-        localao.uin = locala.OmT.zd();
-        AppMethodBeat.o(217977);
+        localao.uin = locala.UbS.zl();
+        AppMethodBeat.o(198633);
         return 0;
       case 2: 
-        localao.name = locala.OmT.readString();
-        AppMethodBeat.o(217977);
+        localao.name = locala.UbS.readString();
+        AppMethodBeat.o(198633);
         return 0;
       case 3: 
-        localao.size = locala.OmT.zc();
-        AppMethodBeat.o(217977);
+        localao.size = locala.UbS.zi();
+        AppMethodBeat.o(198633);
         return 0;
       case 4: 
-        localao.xsY = locala.OmT.readString();
-        AppMethodBeat.o(217977);
+        localao.Btb = locala.UbS.readString();
+        AppMethodBeat.o(198633);
         return 0;
       }
-      localao.md5 = locala.OmT.readString();
-      AppMethodBeat.o(217977);
+      localao.md5 = locala.UbS.readString();
+      AppMethodBeat.o(198633);
       return 0;
     }
-    AppMethodBeat.o(217977);
+    AppMethodBeat.o(198633);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.qqmail.d.ao
  * JD-Core Version:    0.7.0.1
  */

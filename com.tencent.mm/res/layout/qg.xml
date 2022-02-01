@@ -1,29 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="right" android:layout_gravity="right" style="@style/go"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/ao3" android:paddingRight="@dimen/jn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@raw/chatting_status_tick" />
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/ao1" android:src="@drawable/ac7" style="@style/gy" />
-    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/gq">
-        <TextView android:id="@id/aob" android:visibility="gone" style="@style/gu" />
-        <FrameLayout android:id="@id/al7" android:layout_width="@dimen/w5" android:layout_height="@dimen/w4">
-            <LinearLayout android:orientation="vertical" android:background="@drawable/n1" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <FrameLayout android:layout_width="fill_parent" android:layout_height="54.0dip">
-                    <LinearLayout android:orientation="vertical" android:id="@id/an8" android:paddingLeft="@dimen/hu" android:paddingTop="@dimen/hu" android:paddingRight="@dimen/hu" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/an9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/w5" android:text="abcdefg" android:maxLines="1" />
-                        <TextView android:textSize="@dimen/jv" android:textColor="@color/s5" android:ellipsize="end" android:id="@id/an7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/w5" android:text="abcdefg" android:maxLines="1" />
-                    </LinearLayout>
-                    <ProgressBar android:layout_gravity="center" android:id="@id/an5" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
-                </FrameLayout>
-                <ImageView android:layout_gravity="center_vertical" android:layout_width="fill_parent" android:layout_marginRight="5.0dip" style="@style/hp" />
-                <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginRight="5.0dip">
-                    <ImageView android:id="@id/an6" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-                    <ImageView android:layout_gravity="center" android:id="@id/ale" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/gx" android:src="@drawable/bmz" android:scaleType="fitCenter" />
-                    <ProgressBar android:layout_gravity="center" android:id="@id/an4" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
-                    <View android:id="@id/dkl" android:background="@color/vk" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-                </FrameLayout>
-            </LinearLayout>
-            <ImageView android:id="@id/ald" android:background="@drawable/l6" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </FrameLayout>
+<RelativeLayout android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/ct" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/is0" android:layout_width="@dimen/cr" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/is4" android:background="@color/ac_" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:src="@drawable/ob" android:scaleType="centerCrop" />
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center" android:id="@id/is6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:maxWidth="@dimen/cr" android:singleLine="true" android:lineSpacingMultiplier="1.4" />
     </LinearLayout>
-    <include layout="@layout/o7" style="@style/gl" />
-</LinearLayout>
+</RelativeLayout>

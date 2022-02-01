@@ -1,33 +1,33 @@
 package com.tencent.mm.plugin.choosemsgfile.b.b;
 
 import android.content.Context;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.plugin.choosemsgfile.b.c.g;
 import com.tencent.mm.plugin.choosemsgfile.ui.c;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.ca;
 
-public abstract class a<T extends RecyclerView.w>
+public abstract class a<T extends RecyclerView.v>
 {
-  protected int apW;
-  protected int fq;
-  g oYF;
-  protected int oYG = 0;
-  public bv oYw;
+  protected int aqi;
+  protected int fs;
+  g qnE;
+  protected int qnF = 0;
+  public ca qnv;
   
   public a(g paramg)
   {
-    this.oYF = paramg;
+    this.qnE = paramg;
   }
   
-  public a(g paramg, bv parambv)
+  public a(g paramg, ca paramca)
   {
-    this.oYF = paramg;
-    this.oYw = parambv;
+    this.qnE = paramg;
+    this.qnv = paramca;
   }
   
-  public void T(T paramT) {}
+  public void V(T paramT) {}
   
   public void a(T paramT, int paramInt, a parama) {}
   
@@ -35,29 +35,24 @@ public abstract class a<T extends RecyclerView.w>
   
   public final void a(boolean paramBoolean, a parama, T paramT)
   {
-    this.oYF.a(paramBoolean, parama, paramT);
+    this.qnE.a(paramBoolean, parama, paramT);
   }
   
-  protected final com.tencent.mm.plugin.choosemsgfile.b.d.a caB()
+  protected final com.tencent.mm.plugin.choosemsgfile.b.d.a cys()
   {
-    return this.oYF.caM().caB();
+    return this.qnE.cyC().cys();
   }
   
-  public String caC()
-  {
-    return "";
-  }
-  
-  public int caD()
+  public int cyt()
   {
     return 0;
   }
   
-  public final void caE()
+  public final void cyu()
   {
     try
     {
-      this.oYG = 1;
+      this.qnF = 1;
       return;
     }
     finally
@@ -67,11 +62,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void caF()
+  public final void cyv()
   {
     try
     {
-      this.oYG = 3;
+      this.qnF = 3;
       return;
     }
     finally
@@ -81,11 +76,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void caG()
+  public final void cyw()
   {
     try
     {
-      this.oYG = 4;
+      this.qnF = 4;
       return;
     }
     finally
@@ -95,11 +90,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void caH()
+  public final void cyx()
   {
     try
     {
-      this.oYG = 5;
+      this.qnF = 5;
       return;
     }
     finally
@@ -109,27 +104,11 @@ public abstract class a<T extends RecyclerView.w>
     }
   }
   
-  public final void caI()
+  public final void cyy()
   {
     try
     {
-      this.oYG = 0;
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  public final void eZ(int paramInt1, int paramInt2)
-  {
-    try
-    {
-      this.oYG = 2;
-      this.fq = paramInt1;
-      this.apW = paramInt2;
+      this.qnF = 0;
       return;
     }
     finally
@@ -141,15 +120,36 @@ public abstract class a<T extends RecyclerView.w>
   
   public boolean equals(Object paramObject)
   {
-    if ((this.oYw != null) && ((paramObject instanceof bv)) && (paramObject != null)) {
-      return this.oYw.field_msgId == ((bv)paramObject).field_msgId;
+    if ((this.qnv != null) && ((paramObject instanceof ca)) && (paramObject != null)) {
+      return this.qnv.field_msgId == ((ca)paramObject).field_msgId;
     }
     return super.equals(paramObject);
   }
   
+  public final void fm(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      this.qnF = 2;
+      this.fs = paramInt1;
+      this.aqi = paramInt2;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
   protected final Context getContext()
   {
-    return this.oYF.caM().getContext();
+    return this.qnE.cyC().getContext();
+  }
+  
+  public String getFileExt()
+  {
+    return "";
   }
   
   public String getFileName()
@@ -159,29 +159,29 @@ public abstract class a<T extends RecyclerView.w>
   
   public long getTimeStamp()
   {
-    return this.oYw.field_createTime;
+    return this.qnv.field_createTime;
   }
   
   public abstract int getType();
   
   public final boolean isEnable()
   {
-    return (!this.oYF.caM().caB().isInvalid()) || (this.oYF.caM().caB().tT(this.oYw.field_msgId));
+    return (!this.qnE.cyC().cys().isInvalid()) || (this.qnE.cyC().cys().BY(this.qnv.field_msgId));
   }
   
   public final boolean isInvalid()
   {
-    return (this.oYG == 4) || (this.oYG == 5);
+    return (this.qnF == 4) || (this.qnF == 5);
   }
   
   public String toString()
   {
-    return "MsgItem{msgInfo=" + this.oYw.field_msgId + '}';
+    return "MsgItem{msgInfo=" + this.qnv.field_msgId + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.a
  * JD-Core Version:    0.7.0.1
  */

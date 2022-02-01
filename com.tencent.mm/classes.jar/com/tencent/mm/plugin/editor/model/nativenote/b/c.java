@@ -5,7 +5,7 @@ import com.tencent.mm.plugin.editor.model.nativenote.manager.WXRTEditText;
 
 public abstract interface c
 {
-  public abstract void BL(int paramInt);
+  public abstract void Fv(int paramInt);
   
   public abstract void a(WXRTEditText paramWXRTEditText, int paramInt1, int paramInt2);
   
@@ -15,13 +15,13 @@ public abstract interface c
   
   public abstract void b(WXRTEditText paramWXRTEditText);
   
-  public abstract void cft();
+  public abstract void cDj();
   
   public abstract void e(boolean paramBoolean, long paramLong);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.b.c
  * JD-Core Version:    0.7.0.1
  */

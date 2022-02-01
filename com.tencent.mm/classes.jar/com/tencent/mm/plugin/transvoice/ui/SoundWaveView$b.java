@@ -7,10 +7,10 @@ public enum SoundWaveView$b
   static
   {
     AppMethodBeat.i(185283);
-    BUl = new b("WAITING", 0);
-    BUm = new b("REACTING", 1);
-    BUn = new b("JUDGING", 2);
-    BUo = new b[] { BUl, BUm, BUn };
+    GuR = new b("WAITING", 0);
+    GuS = new b("REACTING", 1);
+    GuT = new b("JUDGING", 2);
+    GuU = new b[] { GuR, GuS, GuT };
     AppMethodBeat.o(185283);
   }
   
@@ -18,7 +18,7 @@ public enum SoundWaveView$b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.transvoice.ui.SoundWaveView.b
  * JD-Core Version:    0.7.0.1
  */

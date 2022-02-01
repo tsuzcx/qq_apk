@@ -72,15 +72,6 @@ public class TXRecordCommon
   public static final int VIDOE_VOICECHANGER_TYPE_7 = 7;
   public static final int VIDOE_VOICECHANGER_TYPE_8 = 8;
   public static final int VIDOE_VOICECHANGER_TYPE_9 = 9;
-  
-  public static abstract interface ITXBGMNotify
-  {
-    public abstract void onBGMComplete(int paramInt);
-    
-    public abstract void onBGMProgress(long paramLong1, long paramLong2);
-    
-    public abstract void onBGMStart();
-  }
 }
 
 

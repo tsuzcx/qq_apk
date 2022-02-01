@@ -5,56 +5,56 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  public a gHW;
+  public a huK;
   
-  public static b akZ()
+  public static b aBq()
   {
     AppMethodBeat.i(141136);
     b localb = new b();
-    localb.gHW = new a();
+    localb.huK = new a();
     AppMethodBeat.o(141136);
     return localb;
   }
   
-  public final b a(TextUtils.TruncateAt paramTruncateAt)
+  public final b aBr()
   {
-    this.gHW.gHJ = paramTruncateAt;
+    this.huK.maxLines = 6;
     return this;
   }
   
-  public final b aj(float paramFloat)
+  public final b aBs()
   {
-    this.gHW.textSize = paramFloat;
+    this.huK.breakStrategy = 1;
     return this;
   }
   
-  public final b ala()
+  public final b as(float paramFloat)
   {
-    this.gHW.maxLines = 6;
+    this.huK.textSize = paramFloat;
     return this;
   }
   
-  public final b alb()
+  public final b b(TextUtils.TruncateAt paramTruncateAt)
   {
-    this.gHW.breakStrategy = 1;
+    this.huK.hux = paramTruncateAt;
     return this;
   }
   
-  public final b mW(int paramInt)
+  public final b qk(int paramInt)
   {
-    this.gHW.gravity = paramInt;
+    this.huK.gravity = paramInt;
     return this;
   }
   
-  public final b mX(int paramInt)
+  public final b ql(int paramInt)
   {
-    this.gHW.textColor = paramInt;
+    this.huK.textColor = paramInt;
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.a.b
  * JD-Core Version:    0.7.0.1
  */

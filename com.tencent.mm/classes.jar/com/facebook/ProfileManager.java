@@ -33,7 +33,7 @@ public final class ProfileManager
     try
     {
       if (instance == null) {
-        instance = new ProfileManager(d.V(FacebookSdk.getApplicationContext()), new ProfileCache());
+        instance = new ProfileManager(d.W(FacebookSdk.getApplicationContext()), new ProfileCache());
       }
       ProfileManager localProfileManager = instance;
       AppMethodBeat.o(17262);
@@ -107,7 +107,7 @@ public final class ProfileManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.ProfileManager
  * JD-Core Version:    0.7.0.1
  */

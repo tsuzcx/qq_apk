@@ -1,391 +1,446 @@
 package com.tencent.mm.plugin.multitalk.b;
 
 import android.content.Context;
+import android.net.ConnectivityManager;
 import android.os.Build;
 import android.os.Build.VERSION;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import android.telephony.TelephonyManager;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.deviceinfo.n;
 import com.tencent.mm.compatible.deviceinfo.q;
 import com.tencent.mm.compatible.util.j;
-import com.tencent.mm.protocal.protobuf.aaw;
-import com.tencent.mm.protocal.protobuf.aax;
-import com.tencent.mm.protocal.protobuf.dlv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.misc.a.a;
+import com.tencent.mm.protocal.protobuf.acu;
+import com.tencent.mm.protocal.protobuf.acv;
+import com.tencent.mm.protocal.protobuf.acy;
+import com.tencent.mm.protocal.protobuf.efi;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.wxmm.IConfCallBack;
 import com.tencent.wxmm.v2conference;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.LinkedList;
 
 public class m
 {
-  private static final String[] pcy;
-  private static v2conference pdB;
+  private static final String[] qrx;
+  private static v2conference qsB;
   
   static
   {
     int i = 0;
-    AppMethodBeat.i(190506);
-    pcy = new String[] { "ilink_network", "ilink_xlog", "confService" };
-    Context localContext = ak.getContext();
-    ae.i("MicroMsg.Multitalk.ILinkNativeEngine", "hy: load so");
-    String[] arrayOfString = pcy;
+    AppMethodBeat.i(239085);
+    qrx = new String[] { "ilink_network", "ilink_xlog", "confService" };
+    Context localContext = MMApplicationContext.getContext();
+    Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "hy: load so");
+    String[] arrayOfString = qrx;
     int j = arrayOfString.length;
     while (i < j)
     {
       String str = arrayOfString[i];
       m.class.getClassLoader();
-      j.vN(str);
+      j.Ed(str);
       i += 1;
     }
-    h.MqF.aN(new m.1(localContext));
-    pdB = new v2conference();
-    AppMethodBeat.o(190506);
+    Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "load so end");
+    h.RTc.aW(new m.1(localContext));
+    qsB = new v2conference();
+    AppMethodBeat.o(239085);
   }
   
-  public static int Bm(int paramInt)
+  public static int EU(int paramInt)
   {
-    AppMethodBeat.i(190491);
-    paramInt = pdB.GetVoiceActivity(paramInt);
-    AppMethodBeat.o(190491);
+    AppMethodBeat.i(239070);
+    paramInt = qsB.GetVoiceActivity(paramInt);
+    AppMethodBeat.o(239070);
     return paramInt;
   }
   
-  static int Bn(int paramInt)
+  static int EV(int paramInt)
   {
-    AppMethodBeat.i(190492);
-    paramInt = pdB.ExitRoom(paramInt);
-    ae.i("MicroMsg.Multitalk.ILinkNativeEngine", "exitRoom ret:".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(190492);
+    AppMethodBeat.i(239071);
+    paramInt = qsB.ExitRoom(paramInt);
+    Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "exitRoom ret:".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(239071);
     return paramInt;
   }
   
-  public static void Bo(int paramInt)
+  public static void EW(int paramInt)
   {
-    AppMethodBeat.i(190496);
-    pdB.OnNetworkChange(paramInt);
-    AppMethodBeat.o(190496);
+    AppMethodBeat.i(239075);
+    String str = elH();
+    qsB.OnNetworkChange(paramInt, str.getBytes());
+    AppMethodBeat.o(239075);
   }
   
-  public static int KY(int paramInt)
+  public static int F(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(190493);
-    paramInt = pdB.Hangup(paramInt);
-    ae.i("MicroMsg.Multitalk.ILinkNativeEngine", "Hangup ret:".concat(String.valueOf(paramInt)));
-    AppMethodBeat.o(190493);
-    return paramInt;
+    AppMethodBeat.i(239066);
+    paramInt1 = qsB.SendAudioData(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.o(239066);
+    return paramInt1;
   }
   
-  public static int KZ(int paramInt)
+  public static void H(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(190505);
-    paramInt = pdB.Accept(paramInt);
-    AppMethodBeat.o(190505);
-    return paramInt;
+    AppMethodBeat.i(239083);
+    qsB.RecvNotify(paramArrayOfByte, paramInt1, paramInt2);
+    AppMethodBeat.o(239083);
   }
   
-  public static void N(boolean paramBoolean, int paramInt)
+  public static void Q(boolean paramBoolean, int paramInt)
   {
-    AppMethodBeat.i(190497);
-    v2conference localv2conference = pdB;
+    AppMethodBeat.i(239076);
+    v2conference localv2conference = qsB;
     if (paramBoolean) {}
     for (int i = 1;; i = 0)
     {
       localv2conference.SwitchAV(1, i, paramInt);
-      AppMethodBeat.o(190497);
+      AppMethodBeat.o(239076);
       return;
     }
   }
   
-  public static int P(byte[] paramArrayOfByte, int paramInt)
+  public static int QZ(int paramInt)
   {
-    AppMethodBeat.i(190488);
-    paramInt = pdB.GetAudioData(paramArrayOfByte, paramInt);
-    AppMethodBeat.o(190488);
+    AppMethodBeat.i(239072);
+    paramInt = qsB.Hangup(paramInt);
+    Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "Hangup ret:".concat(String.valueOf(paramInt)));
+    AppMethodBeat.o(239072);
     return paramInt;
   }
   
-  public static int U(byte[] paramArrayOfByte, int paramInt)
+  public static int R(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(190490);
-    paramInt = pdB.GetDecodeVideoData(paramArrayOfByte, paramInt);
-    AppMethodBeat.o(190490);
+    AppMethodBeat.i(239067);
+    paramInt = qsB.GetAudioData(paramArrayOfByte, paramInt);
+    AppMethodBeat.o(239067);
     return paramInt;
   }
   
-  public static int V(byte[] paramArrayOfByte, int paramInt)
+  public static int W(byte[] paramArrayOfByte, int paramInt)
   {
-    AppMethodBeat.i(190501);
-    paramInt = pdB.SetAppCmd(10, paramArrayOfByte, paramInt);
-    AppMethodBeat.o(190501);
+    AppMethodBeat.i(239069);
+    paramInt = qsB.GetDecodeVideoData(paramArrayOfByte, paramInt);
+    AppMethodBeat.o(239069);
     return paramInt;
   }
   
-  public static int a(dlv paramdlv)
+  public static int X(byte[] paramArrayOfByte, int paramInt)
+  {
+    AppMethodBeat.i(239080);
+    paramInt = qsB.SetAppCmd(10, paramArrayOfByte, paramInt);
+    AppMethodBeat.o(239080);
+    return paramInt;
+  }
+  
+  public static int a(efi paramefi)
   {
     int j = -1;
-    AppMethodBeat.i(190500);
-    if (paramdlv == null)
+    AppMethodBeat.i(239079);
+    if (paramefi == null)
     {
-      ae.e("MicroMsg.Multitalk.ILinkNativeEngine", "steve: videoResParam is null");
-      AppMethodBeat.o(190500);
+      Log.e("MicroMsg.Multitalk.ILinkNativeEngine", "steve: videoResParam is null");
+      AppMethodBeat.o(239079);
       return -1;
     }
     int i = j;
     try
     {
-      ae.i("MicroMsg.Multitalk.ILinkNativeEngine", "videoResParam:" + paramdlv + ",length:" + paramdlv.toByteArray().length);
+      Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "videoResParam:" + paramefi + ",length:" + paramefi.toByteArray().length);
       i = j;
-      j = pdB.SubscribeVideo(paramdlv.toByteArray(), paramdlv.toByteArray().length);
+      j = qsB.SubscribeVideo(paramefi.toByteArray(), paramefi.toByteArray().length);
       i = j;
-      ae.i("MicroMsg.Multitalk.ILinkNativeEngine", "steve: subScribeVideoAndResList ret:".concat(String.valueOf(j)));
+      Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "steve: subScribeVideoAndResList ret:".concat(String.valueOf(j)));
       i = j;
     }
-    catch (IOException paramdlv)
+    catch (IOException paramefi)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Multitalk.ILinkNativeEngine", paramdlv, "SetVideoResolution exception", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Multitalk.ILinkNativeEngine", paramefi, "SetVideoResolution exception", new Object[0]);
       }
     }
-    AppMethodBeat.o(190500);
+    AppMethodBeat.o(239079);
     return i;
   }
   
   public static int a(String paramString, int paramInt1, int paramInt2, int paramInt3, IConfCallBack paramIConfCallBack)
   {
-    AppMethodBeat.i(190483);
-    ae.i("MicroMsg.Multitalk.ILinkNativeEngine", "hy: init voip");
-    int j = -1;
-    i = j;
+    AppMethodBeat.i(239062);
+    Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "hy: init voip");
     for (;;)
     {
       try
       {
-        aaw localaaw = new aaw();
-        i = j;
-        localaaw.app_id = "wechat";
-        i = j;
-        localaaw.Gsp = paramString;
-        i = j;
-        localaaw.Gsq = (com.tencent.mm.loader.j.b.asa() + "/ilink");
-        i = j;
-        localaaw.GsC = 1;
-        i = j;
-        localaaw.Gsr = 0;
-        i = j;
-        localaaw.Gst = 1;
-        i = j;
-        localaaw.Gsu = s.cbh();
-        i = j;
-        localaaw.Gsv = paramInt1;
-        i = j;
-        localaaw.Gsx = paramInt2;
-        i = j;
-        localaaw.Gsy = paramInt3;
-        i = j;
-        localaaw.GsD = n.getNumCores();
-        i = j;
-        localaaw.GsE = bu.getInt(com.tencent.mm.compatible.deviceinfo.m.aaq(), 0);
-        i = j;
-        localaaw.GsF = com.tencent.mm.compatible.deviceinfo.m.aao();
-        i = j;
-        localaaw.Gsw = 2;
-        i = j;
-        localaaw.GsG = Build.MANUFACTURER;
-        i = j;
-        localaaw.GsH = Build.MODEL;
-        i = j;
-        localaaw.GsI = Build.VERSION.RELEASE;
-        i = j;
-        localaaw.GsJ = Build.VERSION.INCREMENTAL;
-        i = j;
-        localaaw.GsK = Build.DISPLAY;
-        i = j;
-        paramString = q.cH(false);
-        if (paramString == null) {
-          continue;
+        acu localacu = new acu();
+        localacu.app_id = "wechat";
+        localacu.LnF = paramString;
+        localacu.LnG = (com.tencent.mm.loader.j.b.aKA() + "/ilink");
+        localacu.LnR = 1;
+        localacu.LnH = 0;
+        localacu.LnJ = 1;
+        localacu.LnK = s.cyW();
+        localacu.LnL = paramInt1;
+        localacu.LnM = paramInt2;
+        localacu.LnN = paramInt3;
+        localacu.LnS = n.getNumCores();
+        localacu.LnT = Util.getInt(com.tencent.mm.compatible.deviceinfo.m.aop(), 0);
+        localacu.LnU = com.tencent.mm.compatible.deviceinfo.m.aon();
+        localacu.LnV = Build.MANUFACTURER;
+        localacu.LnW = Build.MODEL;
+        localacu.LnX = Build.VERSION.RELEASE;
+        localacu.LnY = Build.VERSION.INCREMENTAL;
+        localacu.LnZ = Build.DISPLAY;
+        localacu.Loc = elH();
+        localacu.LnQ = 2;
+        paramInt2 = ((a)g.af(a.class)).Qr(2);
+        paramInt1 = paramInt2;
+        if (paramInt2 == 3) {
+          paramInt1 = 1;
         }
-        i = j;
-        if (paramString.isEmpty()) {
-          continue;
+        localacu.Lod = paramInt1;
+        paramString = q.dr(false);
+        if ((paramString != null) && (!paramString.isEmpty()))
+        {
+          localacu.Loa = com.tencent.mm.bw.b.cD(MD5Util.getMD5String(paramString).getBytes());
+          localacu.Lob = Build.VERSION.RELEASE;
+          Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "envInfo:" + new String(localacu.toByteArray()) + ",length:" + localacu.toByteArray().length);
+          paramInt1 = qsB.InitSDK(localacu.toByteArray(), localacu.toByteArray().length, paramIConfCallBack);
         }
-        i = j;
-        localaaw.GsL = com.tencent.mm.bw.b.cm(aj.ej(paramString).getBytes());
-        i = j;
-        localaaw.GsM = Build.VERSION.RELEASE;
-        i = j;
-        ae.i("MicroMsg.Multitalk.ILinkNativeEngine", "envInfo:" + new String(localaaw.toByteArray()) + ",length:" + localaaw.toByteArray().length);
-        i = j;
-        paramInt1 = pdB.InitSDK(localaaw.toByteArray(), localaaw.toByteArray().length, paramIConfCallBack);
-        i = paramInt1;
-        ae.v("MicroMsg.Multitalk.ILinkNativeEngine", "init ret:".concat(String.valueOf(paramInt1)));
       }
       catch (IOException paramString)
       {
-        ae.printErrStackTrace("MicroMsg.Multitalk.ILinkNativeEngine", paramString, "envInfo exception", new Object[0]);
-        paramInt1 = i;
-        continue;
+        paramInt1 = -1;
       }
-      AppMethodBeat.o(190483);
-      return paramInt1;
-      i = j;
-      ae.e("MicroMsg.Multitalk.ILinkNativeEngine", "getDeviceId failed");
+      try
+      {
+        Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "init ret:".concat(String.valueOf(paramInt1)));
+        AppMethodBeat.o(239062);
+        return paramInt1;
+      }
+      catch (IOException paramString)
+      {
+        break label359;
+      }
+      Log.e("MicroMsg.Multitalk.ILinkNativeEngine", "getDeviceId failed");
+      continue;
+      label359:
+      Log.printErrStackTrace("MicroMsg.Multitalk.ILinkNativeEngine", paramString, "envInfo exception", new Object[0]);
     }
   }
   
   public static int a(LinkedList<String> paramLinkedList, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(190486);
+    AppMethodBeat.i(239065);
     int i = -1;
-    aax localaax = new aax();
-    localaax.GsN = paramLinkedList;
-    localaax.GsO = paramInt1;
-    localaax.GsP = paramInt2;
+    acv localacv = new acv();
+    localacv.Loe = paramLinkedList;
+    localacv.Lof = paramInt1;
+    localacv.Log = true;
+    localacv.Loh = paramInt2;
     paramInt1 = i;
     try
     {
-      paramInt2 = pdB.Invite(localaax.toByteArray(), localaax.toByteArray().length);
+      paramInt2 = qsB.Invite(localacv.toByteArray(), localacv.toByteArray().length);
       paramInt1 = paramInt2;
-      ae.i("MicroMsg.Multitalk.ILinkNativeEngine", "steve: invite ret:".concat(String.valueOf(paramInt2)));
+      Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "steve: invite ret:".concat(String.valueOf(paramInt2)));
       paramInt1 = paramInt2;
     }
     catch (IOException paramLinkedList)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Multitalk.ILinkNativeEngine", paramLinkedList, "Invite exception", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Multitalk.ILinkNativeEngine", paramLinkedList, "Invite exception", new Object[0]);
       }
     }
-    AppMethodBeat.o(190486);
+    AppMethodBeat.o(239065);
     return paramInt1;
   }
   
   public static u a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(190499);
-    if ((paramArrayOfByte != null) && (pdB != null))
+    AppMethodBeat.i(239078);
+    if ((paramArrayOfByte != null) && (qsB != null))
     {
-      paramInt1 = pdB.videoTrans(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt);
+      paramInt1 = qsB.videoTrans(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfInt);
       paramArrayOfByte = new u();
-      paramArrayOfByte.wpx = paramArrayOfInt;
-      paramArrayOfByte.wpy = pdB.field_localImgWidth;
-      paramArrayOfByte.wpz = pdB.field_localImgHeight;
+      paramArrayOfByte.zKJ = paramArrayOfInt;
+      paramArrayOfByte.zKK = qsB.field_localImgWidth;
+      paramArrayOfByte.zKL = qsB.field_localImgHeight;
       paramArrayOfByte.ret = paramInt1;
-      AppMethodBeat.o(190499);
+      AppMethodBeat.o(239078);
       return paramArrayOfByte;
     }
-    ae.e("MicroMsg.Multitalk.ILinkNativeEngine", "steve:videoTrans null,  engine:" + pdB);
-    AppMethodBeat.o(190499);
+    Log.e("MicroMsg.Multitalk.ILinkNativeEngine", "steve:videoTrans null,  engine:" + qsB);
+    AppMethodBeat.o(239078);
     return null;
   }
   
-  public static int aaz(String paramString)
+  private static boolean a(ConnectivityManager paramConnectivityManager)
   {
-    AppMethodBeat.i(190484);
-    int i = pdB.UpdateAuthKey(paramString.getBytes(), paramString.getBytes().length);
-    AppMethodBeat.o(190484);
+    AppMethodBeat.i(239060);
+    try
+    {
+      Method localMethod = ConnectivityManager.class.getDeclaredMethod("getMobileDataEnabled", new Class[0]);
+      localMethod.setAccessible(true);
+      boolean bool = ((Boolean)localMethod.invoke(paramConnectivityManager, new Object[0])).booleanValue();
+      AppMethodBeat.o(239060);
+      return bool;
+    }
+    catch (Exception paramConnectivityManager)
+    {
+      AppMethodBeat.o(239060);
+    }
+    return false;
+  }
+  
+  public static int akF(String paramString)
+  {
+    AppMethodBeat.i(239063);
+    int i = qsB.UpdateAuthKey(paramString.getBytes(), paramString.getBytes().length);
+    AppMethodBeat.o(239063);
     return i;
   }
   
-  public static int as(String paramString, int paramInt1, int paramInt2)
+  public static int av(String paramString, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(190485);
-    paramInt1 = pdB.JoinRoomWithGroupID(paramString, paramInt1, paramInt2);
-    ae.i("MicroMsg.Multitalk.ILinkNativeEngine", "joinRoom ret:" + paramInt1 + ", groupId:" + paramString);
-    AppMethodBeat.o(190485);
+    AppMethodBeat.i(239064);
+    acy localacy = new acy();
+    localacy.KBt = paramString;
+    localacy.Lof = paramInt1;
+    localacy.Loh = paramInt2;
+    localacy.Log = true;
+    paramInt1 = -1;
+    try
+    {
+      paramInt2 = qsB.JoinRoom(localacy.toByteArray(), localacy.toByteArray().length);
+      paramInt1 = paramInt2;
+    }
+    catch (IOException localIOException)
+    {
+      for (;;)
+      {
+        Log.printErrStackTrace("MicroMsg.Multitalk.ILinkNativeEngine", localIOException, "JoinRoom exception", new Object[0]);
+      }
+    }
+    Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "joinRoom ret:" + paramInt1 + ", groupId:" + paramString);
+    AppMethodBeat.o(239064);
     return paramInt1;
   }
   
   public static int b(LinkedList<String> paramLinkedList, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(190502);
+    AppMethodBeat.i(239081);
     int i = -1;
-    aax localaax = new aax();
-    localaax.GsN = paramLinkedList;
-    localaax.GsO = paramInt1;
-    localaax.GsP = paramInt2;
+    acv localacv = new acv();
+    localacv.Loe = paramLinkedList;
+    localacv.Lof = paramInt1;
+    localacv.Loh = paramInt2;
     paramInt1 = i;
     try
     {
-      paramInt2 = pdB.Add(localaax.toByteArray(), localaax.toByteArray().length);
+      paramInt2 = qsB.Add(localacv.toByteArray(), localacv.toByteArray().length);
       paramInt1 = paramInt2;
-      ae.i("MicroMsg.Multitalk.ILinkNativeEngine", "steve: addmember ret:".concat(String.valueOf(paramInt2)));
+      Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "steve: addmember ret:".concat(String.valueOf(paramInt2)));
       paramInt1 = paramInt2;
     }
     catch (IOException paramLinkedList)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.Multitalk.ILinkNativeEngine", paramLinkedList, "Invite exception", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Multitalk.ILinkNativeEngine", paramLinkedList, "Invite exception", new Object[0]);
       }
     }
-    AppMethodBeat.o(190502);
+    AppMethodBeat.o(239081);
     return paramInt1;
   }
   
   public static int c(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    AppMethodBeat.i(190489);
-    paramInt1 = pdB.SendVideoData(paramArrayOfByte, paramArrayOfByte.length, paramInt1, paramInt2, paramInt3);
-    AppMethodBeat.o(190489);
+    AppMethodBeat.i(239068);
+    paramInt1 = qsB.SendVideoData(paramArrayOfByte, paramArrayOfByte.length, paramInt1, paramInt2, paramInt3);
+    AppMethodBeat.o(239068);
     return paramInt1;
   }
   
-  public static v2conference cbn()
+  public static void czc()
   {
-    return pdB;
+    AppMethodBeat.i(239059);
+    Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "preloadInit");
+    AppMethodBeat.o(239059);
   }
   
-  public static int cbo()
+  public static v2conference czd()
   {
-    AppMethodBeat.i(190494);
-    int i = pdB.UnInit();
-    ae.i("MicroMsg.Multitalk.ILinkNativeEngine", "unInit ret:".concat(String.valueOf(i)));
-    AppMethodBeat.o(190494);
+    return qsB;
+  }
+  
+  public static int cze()
+  {
+    AppMethodBeat.i(239073);
+    int i = qsB.UnInit();
+    Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "unInit ret:".concat(String.valueOf(i)));
+    AppMethodBeat.o(239073);
     return i;
-  }
-  
-  public static void drK()
-  {
-    AppMethodBeat.i(190503);
-    pdB.Ack();
-    AppMethodBeat.o(190503);
   }
   
   public static int e(int paramInt1, byte[] paramArrayOfByte, int paramInt2)
   {
-    AppMethodBeat.i(190495);
-    paramInt1 = pdB.SetAppCmd(paramInt1, paramArrayOfByte, paramInt2);
-    AppMethodBeat.o(190495);
+    AppMethodBeat.i(239074);
+    paramInt1 = qsB.SetAppCmd(paramInt1, paramArrayOfByte, paramInt2);
+    AppMethodBeat.o(239074);
     return paramInt1;
   }
   
-  public static int v(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  private static String elH()
   {
-    AppMethodBeat.i(190487);
-    paramInt1 = pdB.SendAudioData(paramArrayOfByte, paramInt1, paramInt2);
-    AppMethodBeat.o(190487);
-    return paramInt1;
+    AppMethodBeat.i(239061);
+    if (!a((ConnectivityManager)MMApplicationContext.getContext().getSystemService("connectivity")))
+    {
+      Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "mobile network not connectedorconnecting");
+      AppMethodBeat.o(239061);
+      return "";
+    }
+    String str = ((TelephonyManager)MMApplicationContext.getContext().getSystemService("phone")).getSimOperator();
+    if ((str == null) || (str.length() < 3))
+    {
+      Log.i("MicroMsg.Multitalk.ILinkNativeEngine", "nic_op NULL");
+      AppMethodBeat.o(239061);
+      return "";
+    }
+    str = str.substring(0, 3) + ":" + str.substring(3, str.length());
+    AppMethodBeat.o(239061);
+    return str;
+  }
+  
+  public static void elI()
+  {
+    AppMethodBeat.i(239082);
+    qsB.Ack();
+    AppMethodBeat.o(239082);
+  }
+  
+  public static int elJ()
+  {
+    AppMethodBeat.i(239084);
+    int i = qsB.Accept(1);
+    AppMethodBeat.o(239084);
+    return i;
   }
   
   public static int videoHWProcess(byte[] paramArrayOfByte1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte2, int paramInt5, int paramInt6)
   {
-    AppMethodBeat.i(190498);
-    paramInt1 = pdB.videoHWProcess(paramArrayOfByte1, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte2, paramInt5, paramInt6);
-    AppMethodBeat.o(190498);
+    AppMethodBeat.i(239077);
+    paramInt1 = qsB.videoHWProcess(paramArrayOfByte1, paramInt1, paramInt2, paramInt3, paramInt4, paramArrayOfByte2, paramInt5, paramInt6);
+    AppMethodBeat.o(239077);
     return paramInt1;
-  }
-  
-  public static void x(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    AppMethodBeat.i(190504);
-    pdB.RecvNotify(paramArrayOfByte, paramInt1, paramInt2);
-    AppMethodBeat.o(190504);
   }
 }
 

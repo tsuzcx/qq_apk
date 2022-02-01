@@ -11,22 +11,22 @@ import java.util.concurrent.TimeUnit;
 public class n
   implements Thread.UncaughtExceptionHandler
 {
-  private static final String a;
-  private Context b;
-  private volatile boolean c = false;
-  private CountDownLatch d;
-  private ModuleUncaughtListener e;
+  private static final String c;
+  public volatile boolean a = false;
+  public ModuleUncaughtListener b;
+  private Context d;
+  private CountDownLatch e;
   
   static
   {
     AppMethodBeat.i(180832);
-    a = n.class.getSimpleName();
+    c = n.class.getSimpleName();
     AppMethodBeat.o(180832);
   }
   
   public n(Context paramContext)
   {
-    this.b = paramContext;
+    this.d = paramContext;
   }
   
   private static String a(Throwable paramThrowable)
@@ -52,18 +52,6 @@ public class n
     paramThrowable = localStringBuffer.toString();
     AppMethodBeat.o(180831);
     return paramThrowable;
-  }
-  
-  public final void a(ModuleUncaughtListener paramModuleUncaughtListener)
-  {
-    AppMethodBeat.i(224092);
-    if (!this.c)
-    {
-      this.e = paramModuleUncaughtListener;
-      Thread.setDefaultUncaughtExceptionHandler(this);
-      this.c = true;
-    }
-    AppMethodBeat.o(224092);
   }
   
   public void uncaughtException(Thread paramThread, Throwable paramThrowable)
@@ -92,7 +80,7 @@ public class n
     }
     for (;;)
     {
-      if ((i != 0) && (this.b != null))
+      if ((i != 0) && (this.d != null))
       {
         localObject1 = a(paramThrowable);
         if ((a.h != null) && (a.h.length > 0))
@@ -120,10 +108,10 @@ public class n
         int k = 0;
         if (k == 0)
         {
-          x.a(this.b, t.v, x.f);
-          x.a(this.b, t.y, Long.valueOf(System.currentTimeMillis() - y.a));
-          if (this.e != null) {
-            bool = this.e.onModuleSDKCrashed(paramThrowable);
+          x.a(this.d, t.v, x.f);
+          x.a(this.d, t.y, Long.valueOf(System.currentTimeMillis() - y.a));
+          if (this.b != null) {
+            bool = this.b.onModuleSDKCrashed(paramThrowable);
           }
           if (bool)
           {
@@ -135,17 +123,17 @@ public class n
           if (((String)localObject2).contains("\n")) {
             localObject1 = ((String)localObject2).replaceAll("\\n", "\\$");
           }
-          this.d = new CountDownLatch(1);
+          this.e = new CountDownLatch(1);
           new a((String)localObject1).start();
         }
       }
     }
     try
     {
-      this.d.await(3000L, TimeUnit.MILLISECONDS);
+      this.e.await(3000L, TimeUnit.MILLISECONDS);
       label316:
-      if (this.e != null) {
-        this.e.uncaughtException(paramThread, paramThrowable);
+      if (this.b != null) {
+        this.b.uncaughtException(paramThread, paramThrowable);
       }
       AppMethodBeat.o(180830);
       return;
@@ -192,7 +180,16 @@ public class n
     public final void run()
     {
       AppMethodBeat.i(180827);
-      g.a(n.a(n.this)).a(this.b);
+      Object localObject2 = g.a(n.a(n.this));
+      Object localObject1 = this.b;
+      if ((a.i) && (((g)localObject2).e != null))
+      {
+        localObject2 = ((g)localObject2).e;
+        localObject1 = ((String)localObject1).getBytes();
+        if (a.i) {
+          ((k)localObject2).b.a((byte[])localObject1);
+        }
+      }
       n.b(n.this).countDown();
       AppMethodBeat.o(180827);
     }
@@ -200,7 +197,7 @@ public class n
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.internal.n
  * JD-Core Version:    0.7.0.1
  */

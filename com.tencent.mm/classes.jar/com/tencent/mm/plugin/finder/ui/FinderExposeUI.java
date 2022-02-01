@@ -7,18 +7,27 @@ import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
 import java.util.HashMap;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/FinderExposeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/FinderExposeUI;", "Lcom/tencent/mm/plugin/finder/ui/MMFinderUI;", "()V", "getLayoutId", "", "onCreate", "", "savedInstanceState", "Landroid/os/Bundle;", "plugin-finder_release"})
 public final class FinderExposeUI
   extends MMFinderUI
 {
   private HashMap _$_findViewCache;
   
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(252312);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(252312);
+  }
+  
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(204552);
+    AppMethodBeat.i(252311);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -29,13 +38,13 @@ public final class FinderExposeUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(204552);
+    AppMethodBeat.o(252311);
     return localView1;
   }
   
   public final int getLayoutId()
   {
-    return 2131494029;
+    return 2131494243;
   }
   
   public final void onCreate(Bundle paramBundle)
@@ -53,7 +62,7 @@ public final class FinderExposeUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class a
     implements MenuItem.OnMenuItemClickListener
   {
@@ -62,7 +71,7 @@ public final class FinderExposeUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(167237);
-      this.sNr.finish();
+      this.vJM.finish();
       AppMethodBeat.o(167237);
       return false;
     }
@@ -70,7 +79,7 @@ public final class FinderExposeUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.FinderExposeUI
  * JD-Core Version:    0.7.0.1
  */

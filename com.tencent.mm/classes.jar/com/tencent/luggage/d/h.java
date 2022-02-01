@@ -10,46 +10,51 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public abstract class h
 {
-  protected l chl;
-  public j chm;
-  protected a chn;
+  protected l ctf;
+  public j ctg;
+  protected a cth;
   public Context mContext;
   
   public h(j paramj)
   {
     this.mContext = paramj.getContext();
-    this.chl = new l();
-    this.chm = paramj;
+    this.ctf = new l();
+    this.ctg = paramj;
   }
   
-  protected abstract View BR();
+  protected abstract View Lf();
   
-  final void BS()
+  public final j Lg()
   {
-    this.chl.O(l.e.class);
+    return this.ctg;
   }
   
-  public final void BT()
+  final void Lh()
+  {
+    this.ctf.Q(l.e.class);
+  }
+  
+  public final void Li()
   {
     onForeground();
-    this.chl.O(l.d.class);
+    this.ctf.Q(l.d.class);
   }
   
-  public final void BU()
+  public final void Lj()
   {
     onBackground();
-    this.chl.O(l.b.class);
+    this.ctf.Q(l.b.class);
   }
   
-  final boolean BV()
+  public final boolean Lk()
   {
-    return (this.chl.O(l.a.class)) || (onBackPressed());
+    return (this.ctf.Q(l.a.class)) || (onBackPressed());
   }
   
-  final void BW()
+  final void Ll()
   {
     onDestroy();
-    this.chl.O(l.c.class);
+    this.ctf.Q(l.c.class);
   }
   
   final void a(Animator paramAnimator, final Runnable paramRunnable)
@@ -70,10 +75,17 @@ public abstract class h
   
   public void a(a parama)
   {
-    this.chn = parama;
+    this.cth = parama;
   }
   
   protected abstract void destroy();
+  
+  final void g(Runnable paramRunnable)
+  {
+    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(getContentView(), "translationX", new float[] { -(getContentView().getWidth() * 0.25F), 0.0F });
+    localObjectAnimator.setDuration(250L);
+    a(localObjectAnimator, paramRunnable);
+  }
   
   public abstract void g(String paramString, Bundle paramBundle);
   
@@ -85,13 +97,6 @@ public abstract class h
   }
   
   final void h(Runnable paramRunnable)
-  {
-    ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(getContentView(), "translationX", new float[] { -(getContentView().getWidth() * 0.25F), 0.0F });
-    localObjectAnimator.setDuration(250L);
-    a(localObjectAnimator, paramRunnable);
-  }
-  
-  final void i(Runnable paramRunnable)
   {
     ObjectAnimator localObjectAnimator = ObjectAnimator.ofFloat(getContentView(), "translationX", new float[] { 0.0F, getContentView().getWidth() });
     localObjectAnimator.setDuration(250L);
@@ -111,13 +116,13 @@ public abstract class h
   
   public static class a
   {
-    protected a chp;
+    protected a ctj;
     
     public a() {}
     
     protected a(a parama)
     {
-      this.chp = parama;
+      this.ctj = parama;
     }
   }
 }

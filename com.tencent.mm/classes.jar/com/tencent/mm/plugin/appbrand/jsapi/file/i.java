@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.appbrand.jsapi.file;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.m.a;
+import com.tencent.mm.plugin.appbrand.jsapi.p.a;
 import java.util.Map;
 
 public abstract interface i
 {
   public static final class a
-    extends m.a
+    extends p.a
   {
     public a(String paramString, Object... paramVarArgs)
     {
       super(paramVarArgs);
     }
     
-    public final a K(Map<String, Object> paramMap)
+    public final a N(Map<String, Object> paramMap)
     {
       AppMethodBeat.i(140673);
-      paramMap = (a)super.F(paramMap);
+      paramMap = (a)super.I(paramMap);
       AppMethodBeat.o(140673);
       return paramMap;
     }
@@ -33,7 +33,7 @@ public abstract interface i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.file.i
  * JD-Core Version:    0.7.0.1
  */

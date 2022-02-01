@@ -1,114 +1,53 @@
 package com.tencent.mm.plugin.appbrand.x;
 
-import android.content.ContentValues;
-import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.i;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.jsapi.t.b.a;
+import java.util.HashMap;
+import java.util.Map;
 
 public final class a
-  extends j<a>
 {
-  public static final String[] hGX;
+  private static final Map<Integer, Object> hno;
   
   static
   {
-    AppMethodBeat.i(48359);
-    hGX = new String[] { j.getCreateSQLs(a.jJU, "AppBrandCommonKVBinaryData") };
-    AppMethodBeat.o(48359);
+    AppMethodBeat.i(48006);
+    hno = new HashMap();
+    AppMethodBeat.o(48006);
   }
   
-  public a(e parame)
+  public static void bUc()
   {
-    super(parame, a.jJU, "AppBrandCommonKVBinaryData", null);
+    AppMethodBeat.i(48004);
+    hno.clear();
+    AppMethodBeat.o(48004);
   }
   
-  public final void clear(String paramString)
+  public static void bUd()
   {
-    AppMethodBeat.i(48355);
-    a locala = new a();
-    locala.field_key = paramString;
-    locala.field_value = new byte[0];
-    super.replace(locala);
-    AppMethodBeat.o(48355);
-  }
-  
-  public final byte[] get(String paramString)
-  {
-    AppMethodBeat.i(48357);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(48005);
+    com.tencent.mm.plugin.appbrand.jsapi.t.b.mnM = new b.a()
     {
-      AppMethodBeat.o(48357);
-      return null;
-    }
-    a locala = new a();
-    locala.field_key = paramString;
-    if (super.get(locala, new String[0]))
-    {
-      paramString = locala.field_value;
-      AppMethodBeat.o(48357);
-      return paramString;
-    }
-    AppMethodBeat.o(48357);
-    return null;
+      public final void xl(int paramAnonymousInt)
+      {
+        AppMethodBeat.i(48002);
+        a.zc(paramAnonymousInt);
+        AppMethodBeat.o(48002);
+      }
+    };
+    AppMethodBeat.o(48005);
   }
   
-  public final void l(String paramString, byte[] paramArrayOfByte)
+  public static void zc(int paramInt)
   {
-    AppMethodBeat.i(48356);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(48003);
+    if (!hno.containsKey(Integer.valueOf(paramInt)))
     {
-      AppMethodBeat.o(48356);
+      AppMethodBeat.o(48003);
       return;
     }
-    a locala = new a();
-    locala.field_key = paramString;
-    locala.field_value = paramArrayOfByte;
-    super.replace(locala);
-    AppMethodBeat.o(48356);
-  }
-  
-  static final class a
-    extends c
-  {
-    static final c.a jJU;
-    @i(fqf="$$invalid", fqg=1)
-    public String field_key;
-    public byte[] field_value;
-    
-    static
-    {
-      AppMethodBeat.i(48354);
-      jJU = initAutoDBInfo(a.class);
-      AppMethodBeat.o(48354);
-    }
-    
-    public final void convertFrom(Cursor paramCursor)
-    {
-      AppMethodBeat.i(48352);
-      this.field_key = paramCursor.getString(0);
-      this.field_value = paramCursor.getBlob(1);
-      AppMethodBeat.o(48352);
-    }
-    
-    public final ContentValues convertTo()
-    {
-      AppMethodBeat.i(48353);
-      ContentValues localContentValues = new ContentValues(2);
-      localContentValues.put("key", this.field_key);
-      localContentValues.put("value", this.field_value);
-      AppMethodBeat.o(48353);
-      return localContentValues;
-    }
-    
-    public final c.a getDBInfo()
-    {
-      return jJU;
-    }
+    hno.get(Integer.valueOf(paramInt));
+    AppMethodBeat.o(48003);
   }
 }
 

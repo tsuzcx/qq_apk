@@ -7,21 +7,21 @@ import java.util.Map;
 
 public final class a<K, V>
 {
-  public f<K, V> hjg;
+  public f<K, V> icd;
   
   public a(int paramInt)
   {
     AppMethodBeat.i(130425);
-    this.hjg = new c(paramInt);
+    this.icd = new c(paramInt);
     AppMethodBeat.o(130425);
   }
   
-  public final boolean aM(K paramK)
+  public final boolean check(K paramK)
   {
     try
     {
       AppMethodBeat.i(130426);
-      if (this.hjg == null)
+      if (this.icd == null)
       {
         paramK = new NullPointerException("mData == null");
         AppMethodBeat.o(130426);
@@ -29,7 +29,7 @@ public final class a<K, V>
       }
     }
     finally {}
-    boolean bool = this.hjg.aM(paramK);
+    boolean bool = this.icd.check(paramK);
     AppMethodBeat.o(130426);
     return bool;
   }
@@ -37,13 +37,13 @@ public final class a<K, V>
   public final V get(K paramK)
   {
     AppMethodBeat.i(130427);
-    if (this.hjg == null)
+    if (this.icd == null)
     {
       paramK = new NullPointerException("mData == null");
       AppMethodBeat.o(130427);
       throw paramK;
     }
-    paramK = this.hjg.get(paramK);
+    paramK = this.icd.get(paramK);
     AppMethodBeat.o(130427);
     return paramK;
   }
@@ -51,13 +51,13 @@ public final class a<K, V>
   public final V put(K paramK, V paramV)
   {
     AppMethodBeat.i(130428);
-    if (this.hjg == null)
+    if (this.icd == null)
     {
       paramK = new NullPointerException("mData == null");
       AppMethodBeat.o(130428);
       throw paramK;
     }
-    paramK = this.hjg.put(paramK, paramV);
+    paramK = this.icd.put(paramK, paramV);
     AppMethodBeat.o(130428);
     return paramK;
   }
@@ -67,7 +67,7 @@ public final class a<K, V>
     try
     {
       AppMethodBeat.i(130429);
-      if (this.hjg == null)
+      if (this.icd == null)
       {
         NullPointerException localNullPointerException = new NullPointerException("mData == null");
         AppMethodBeat.o(130429);
@@ -75,7 +75,7 @@ public final class a<K, V>
       }
     }
     finally {}
-    Map localMap = this.hjg.snapshot();
+    Map localMap = this.icd.snapshot();
     AppMethodBeat.o(130429);
     return localMap;
   }
@@ -85,7 +85,7 @@ public final class a<K, V>
     try
     {
       AppMethodBeat.i(130430);
-      if (this.hjg == null)
+      if (this.icd == null)
       {
         NullPointerException localNullPointerException = new NullPointerException("mData == null");
         AppMethodBeat.o(130430);
@@ -93,14 +93,14 @@ public final class a<K, V>
       }
     }
     finally {}
-    String str = this.hjg.toString();
+    String str = this.icd.toString();
     AppMethodBeat.o(130430);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.av.a.d.a
  * JD-Core Version:    0.7.0.1
  */

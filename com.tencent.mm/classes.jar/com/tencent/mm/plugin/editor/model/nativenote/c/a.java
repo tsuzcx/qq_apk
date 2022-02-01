@@ -14,15 +14,15 @@ public final class a
   private int mPadding;
   private Paint mPaint;
   private int mType;
-  private RectF pCC;
-  private RectF pCD;
-  private RectF pCE;
-  private RectF pCF;
-  private int pCG;
-  private int pCH;
-  private int pCI;
-  private int pCJ;
-  private a pCK;
+  private RectF qRU;
+  private RectF qRV;
+  private RectF qRW;
+  private RectF qRX;
+  private int qRY;
+  private int qRZ;
+  private int qSa;
+  private int qSb;
+  private a qSc;
   
   public a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, int paramInt4, a parama)
   {
@@ -30,24 +30,24 @@ public final class a
     AppMethodBeat.i(181845);
     this.mType = 2;
     this.mType = paramInt1;
-    this.pCH = paramInt2;
-    this.pCI = paramInt3;
-    this.pCG = (this.pCH * 2 / 5);
-    this.mPadding = this.pCG;
-    this.pCJ = (this.pCG * 3 / 4);
+    this.qRZ = paramInt2;
+    this.qSa = paramInt3;
+    this.qRY = (this.qRZ * 2 / 5);
+    this.mPadding = this.qRY;
+    this.qSb = (this.qRY * 3 / 4);
     this.mPaint = new Paint(1);
     this.mPaint.setColor(paramInt4);
-    this.pCK = parama;
-    this.pCC = new RectF(this.mPadding, this.pCH, this.mPadding + this.pCG * 2, this.pCH + this.pCG * 2);
-    this.pCD = new RectF(this.pCJ - this.pCG, this.pCH, this.pCJ + this.pCG, this.pCH + this.pCG * 2);
-    this.pCE = new RectF(this.mPadding, this.pCH, this.mPadding + this.pCG * 2, this.pCH + this.pCG * 2);
-    this.pCF = new RectF(this.mPadding + this.pCI, this.pCH, this.mPadding + this.pCI + this.pCG * 2, this.pCH + this.pCG * 2);
+    this.qSc = parama;
+    this.qRU = new RectF(this.mPadding, this.qRZ, this.mPadding + this.qRY * 2, this.qRZ + this.qRY * 2);
+    this.qRV = new RectF(this.qSb - this.qRY, this.qRZ, this.qSb + this.qRY, this.qRZ + this.qRY * 2);
+    this.qRW = new RectF(this.mPadding, this.qRZ, this.mPadding + this.qRY * 2, this.qRZ + this.qRY * 2);
+    this.qRX = new RectF(this.mPadding + this.qSa, this.qRZ, this.mPadding + this.qSa + this.qRY * 2, this.qRZ + this.qRY * 2);
     AppMethodBeat.o(181845);
   }
   
   public final int getOffsetForCursorMid()
   {
-    return this.mPadding + this.pCG + 1;
+    return this.mPadding + this.qRY + 1;
   }
   
   public final int getType()
@@ -57,7 +57,7 @@ public final class a
   
   public final int getViewHeight()
   {
-    return this.pCH + this.pCG * 2 + this.mPadding;
+    return this.qRZ + this.qRY * 2 + this.mPadding;
   }
   
   public final int getViewPadding()
@@ -68,9 +68,9 @@ public final class a
   public final int getViewWidth()
   {
     if ((this.mType == 3) || (this.mType == 4)) {
-      return this.mPadding + this.pCG + this.pCJ;
+      return this.mPadding + this.qRY + this.qSb;
     }
-    return this.pCI + (this.mPadding + this.pCG) * 2;
+    return this.qSa + (this.mPadding + this.qRY) * 2;
   }
   
   protected final void onDraw(Canvas paramCanvas)
@@ -83,27 +83,27 @@ public final class a
     {
       AppMethodBeat.o(181846);
       return;
-      paramCanvas.drawRect(this.mPadding + this.pCG, 0.0F, this.mPadding + this.pCG + this.pCI, this.pCH + this.pCG * 2, this.mPaint);
-      paramCanvas.drawArc(this.pCE, 90.0F, 180.0F, true, this.mPaint);
-      paramCanvas.drawArc(this.pCF, 270.0F, 180.0F, true, this.mPaint);
+      paramCanvas.drawRect(this.mPadding + this.qRY, 0.0F, this.mPadding + this.qRY + this.qSa, this.qRZ + this.qRY * 2, this.mPaint);
+      paramCanvas.drawArc(this.qRW, 90.0F, 180.0F, true, this.mPaint);
+      paramCanvas.drawArc(this.qRX, 270.0F, 180.0F, true, this.mPaint);
       AppMethodBeat.o(181846);
       return;
-      paramCanvas.drawRect(this.mPadding + this.pCG + this.pCJ - this.pCI, 0.0F, this.mPadding + this.pCG + this.pCJ, this.pCH, this.mPaint);
-      paramCanvas.drawArc(this.pCC, 90.0F, 180.0F, true, this.mPaint);
-      paramCanvas.drawRect(this.mPadding + this.pCG, this.pCH, this.mPadding + this.pCG + this.pCJ, this.pCH + this.pCG * 2, this.mPaint);
+      paramCanvas.drawRect(this.mPadding + this.qRY + this.qSb - this.qSa, 0.0F, this.mPadding + this.qRY + this.qSb, this.qRZ, this.mPaint);
+      paramCanvas.drawArc(this.qRU, 90.0F, 180.0F, true, this.mPaint);
+      paramCanvas.drawRect(this.mPadding + this.qRY, this.qRZ, this.mPadding + this.qRY + this.qSb, this.qRZ + this.qRY * 2, this.mPaint);
       AppMethodBeat.o(181846);
       return;
-      paramCanvas.drawRect(0.0F, 0.0F, this.pCI, this.pCH, this.mPaint);
-      paramCanvas.drawRect(0.0F, this.pCH, this.pCJ, this.pCH + this.pCG * 2, this.mPaint);
-      paramCanvas.drawArc(this.pCD, 270.0F, 180.0F, true, this.mPaint);
+      paramCanvas.drawRect(0.0F, 0.0F, this.qSa, this.qRZ, this.mPaint);
+      paramCanvas.drawRect(0.0F, this.qRZ, this.qSb, this.qRZ + this.qRY * 2, this.mPaint);
+      paramCanvas.drawArc(this.qRV, 270.0F, 180.0F, true, this.mPaint);
     }
   }
   
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(181847);
-    if (this.pCK != null) {
-      this.pCK.a(this.mType, paramMotionEvent);
+    if (this.qSc != null) {
+      this.qSc.a(this.mType, paramMotionEvent);
     }
     AppMethodBeat.o(181847);
     return true;
@@ -116,7 +116,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -34,105 +34,117 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.ui.an;
-import com.tencent.mm.ui.ap;
 import com.tencent.mm.ui.aq;
+import com.tencent.mm.ui.as;
+import com.tencent.mm.ui.at;
 import com.tencent.mm.ui.widget.edittext.PasterEditText;
 
 public class d
   extends Dialog
   implements DialogInterface
 {
-  private Button Dim;
-  private LinearLayout Ivb;
-  private TextView Ivc;
-  public TextView Ivd;
-  private TextView Ivf;
-  private TextView Ivg;
-  private TextView Ivh;
-  private ImageView Ivi;
-  private View Ivj;
-  private LinearLayout Ivk;
-  private ViewStub Ivl;
-  public LinearLayout Ivm;
-  private ViewGroup Ivn;
-  private LinearLayout Ivo;
-  private ViewGroup Ivp;
-  private View Ivq;
-  private boolean Ivr;
-  private Animation Ivs;
-  private Animation Ivt;
-  private Animation Ivu;
-  private Animation Ivv;
-  public DialogInterface.OnDismissListener Ivx;
-  private d.a.d LsJ;
-  CheckBox afH;
-  private View ahw;
+  private Button FNQ;
+  private Button HRF;
+  private LinearLayout NIA;
+  private TextView NIB;
+  public TextView NIC;
+  private TextView NIE;
+  private TextView NIF;
+  private TextView NIG;
+  private ImageView NIH;
+  private View NII;
+  private ViewStub NIJ;
+  public LinearLayout NIK;
+  private ViewGroup NIL;
+  private LinearLayout NIM;
+  private ViewGroup NIN;
+  private View NIO;
+  private boolean NIP;
+  private Animation NIQ;
+  private Animation NIR;
+  private Animation NIS;
+  private Animation NIT;
+  public DialogInterface.OnDismissListener NIV;
+  private d.a.d QNz;
+  CheckBox afU;
+  private View ahJ;
   public c iOnDialogDismissListener;
+  private TextView jUu;
   private Context mContext;
-  private EditText mEditText;
+  public EditText mEditText;
   private boolean needEdit;
-  private TextView jdField_new;
-  private boolean ov;
-  private Button rse;
+  private LinearLayout nmr;
+  private boolean ox;
   
   public d(Context paramContext)
   {
-    super(paramContext, 2131821723);
+    super(paramContext, 2131821772);
     AppMethodBeat.i(159314);
-    this.Ivr = false;
+    this.NIP = false;
     this.needEdit = false;
     this.mContext = paramContext;
-    fQr();
+    hbj();
     AppMethodBeat.o(159314);
   }
   
   public d(Context paramContext, byte paramByte)
   {
-    super(paramContext, 2131821723);
-    AppMethodBeat.i(200351);
-    this.Ivr = false;
+    super(paramContext, 2131821772);
+    AppMethodBeat.i(198217);
+    this.NIP = false;
     this.needEdit = false;
     this.mContext = paramContext;
-    fQr();
-    AppMethodBeat.o(200351);
+    hbj();
+    AppMethodBeat.o(198217);
   }
   
-  private void aJ(View paramView, int paramInt)
+  private void AH(boolean paramBoolean)
+  {
+    AppMethodBeat.i(159320);
+    if (paramBoolean)
+    {
+      int i = at.fromDPToPix(this.mContext, 8);
+      this.NIK.setVisibility(0);
+      this.NIK.setPadding(i, i, i, i);
+    }
+    AppMethodBeat.o(159320);
+  }
+  
+  private void aN(View paramView, int paramInt)
   {
     AppMethodBeat.i(159325);
-    this.ahw = paramView;
-    if (this.ahw != null)
+    this.ahJ = paramView;
+    if (this.ahJ != null)
     {
-      this.Ivm.setVisibility(0);
-      this.Ivo.setVisibility(0);
-      this.Ivo.removeAllViews();
-      this.Ivo.setGravity(1);
-      this.Ivo.addView(this.ahw, new LinearLayout.LayoutParams(paramInt, paramInt));
+      this.NIK.setVisibility(0);
+      this.NIM.setVisibility(0);
+      this.NIM.removeAllViews();
+      this.NIM.setGravity(1);
+      this.NIM.addView(this.ahJ, new LinearLayout.LayoutParams(paramInt, paramInt));
     }
     AppMethodBeat.o(159325);
   }
   
-  private void aaU(int paramInt)
+  private void ajJ(int paramInt)
   {
     AppMethodBeat.i(159318);
-    if (this.Ivd != null) {
-      this.Ivd.setTextColor(paramInt);
+    if (this.NIC != null) {
+      this.NIC.setTextColor(paramInt);
     }
     AppMethodBeat.o(159318);
   }
   
-  private void aaV(int paramInt)
+  private void ajK(int paramInt)
   {
     AppMethodBeat.i(159324);
-    if (this.Ivm != null) {
-      this.Ivm.setVisibility(paramInt);
+    if (this.NIK != null) {
+      this.NIK.setVisibility(paramInt);
     }
-    if (this.Ivo != null) {
-      this.Ivo.setVisibility(paramInt);
+    if (this.NIM != null) {
+      this.NIM.setVisibility(paramInt);
     }
-    if ((this.Ivh != null) && (this.Ivr)) {
-      this.Ivh.setVisibility(paramInt);
+    if ((this.NIG != null) && (this.NIP)) {
+      this.NIG.setVisibility(paramInt);
     }
     if (this.mEditText != null)
     {
@@ -150,58 +162,66 @@ public class d
   private void b(View paramView, ViewGroup.LayoutParams paramLayoutParams)
   {
     AppMethodBeat.i(159334);
-    this.Ivq.setVisibility(8);
-    this.Ivn.removeAllViews();
-    this.Ivn.addView(paramView, paramLayoutParams);
+    this.NIO.setVisibility(8);
+    this.NIL.removeAllViews();
+    this.NIL.addView(paramView, paramLayoutParams);
     AppMethodBeat.o(159334);
   }
   
-  private void fQr()
+  private void hbj()
   {
-    AppMethodBeat.i(200352);
-    this.Ivb = ((LinearLayout)View.inflate(this.mContext, 2131494764, null));
-    this.Dim = ((Button)this.Ivb.findViewById(2131302314));
-    this.rse = ((Button)this.Ivb.findViewById(2131302301));
-    this.jdField_new = ((TextView)this.Ivb.findViewById(2131302315));
-    this.Ivc = ((TextView)this.Ivb.findViewById(2131302317));
-    this.Ivd = ((TextView)this.Ivb.findViewById(2131302307));
-    this.Ivf = ((TextView)this.Ivb.findViewById(2131302312));
-    this.Ivg = ((TextView)this.Ivb.findViewById(2131302311));
-    this.Ivh = ((TextView)this.Ivb.findViewById(2131298564));
-    this.mEditText = ((EditText)this.Ivb.findViewById(2131298569));
-    this.afH = ((CheckBox)this.Ivb.findViewById(2131298561));
-    this.Ivi = ((ImageView)this.Ivb.findViewById(2131302310));
-    this.Ivk = ((LinearLayout)this.Ivb.findViewById(2131302316));
-    this.Ivl = ((ViewStub)this.Ivb.findViewById(2131305933));
-    this.Ivm = ((LinearLayout)this.Ivb.findViewById(2131302308));
-    this.Ivn = ((ViewGroup)this.Ivb.findViewById(2131302295));
-    this.Ivq = this.Ivb.findViewById(2131302300);
-    this.Ivo = ((LinearLayout)this.Ivb.findViewById(2131302303));
-    this.Ivp = ((ViewGroup)this.Ivb.findViewById(2131305932));
+    AppMethodBeat.i(198218);
+    this.NIA = ((LinearLayout)View.inflate(this.mContext, 2131495498, null));
+    this.HRF = ((Button)this.NIA.findViewById(2131304709));
+    this.FNQ = ((Button)this.NIA.findViewById(2131304695));
+    this.jUu = ((TextView)this.NIA.findViewById(2131304710));
+    this.NIB = ((TextView)this.NIA.findViewById(2131304712));
+    this.NIC = ((TextView)this.NIA.findViewById(2131304701));
+    this.NIE = ((TextView)this.NIA.findViewById(2131304707));
+    this.NIF = ((TextView)this.NIA.findViewById(2131304706));
+    this.NIG = ((TextView)this.NIA.findViewById(2131298999));
+    this.mEditText = ((EditText)this.NIA.findViewById(2131299004));
+    this.afU = ((CheckBox)this.NIA.findViewById(2131298996));
+    this.NIH = ((ImageView)this.NIA.findViewById(2131304705));
+    this.nmr = ((LinearLayout)this.NIA.findViewById(2131304711));
+    this.NIJ = ((ViewStub)this.NIA.findViewById(2131309231));
+    this.NIK = ((LinearLayout)this.NIA.findViewById(2131304703));
+    this.NIL = ((ViewGroup)this.NIA.findViewById(2131304689));
+    this.NIO = this.NIA.findViewById(2131304694);
+    this.NIM = ((LinearLayout)this.NIA.findViewById(2131304697));
+    this.NIN = ((ViewGroup)this.NIA.findViewById(2131309230));
     setCanceledOnTouchOutside(true);
-    this.Ivs = AnimationUtils.loadAnimation(this.mContext, 2130771981);
-    this.Ivt = AnimationUtils.loadAnimation(this.mContext, 2130771981);
-    this.Ivu = AnimationUtils.loadAnimation(this.mContext, 2130771982);
-    this.Ivv = AnimationUtils.loadAnimation(this.mContext, 2130771982);
-    AppMethodBeat.o(200352);
+    this.NIQ = AnimationUtils.loadAnimation(this.mContext, 2130771981);
+    this.NIR = AnimationUtils.loadAnimation(this.mContext, 2130771981);
+    this.NIS = AnimationUtils.loadAnimation(this.mContext, 2130771982);
+    this.NIT = AnimationUtils.loadAnimation(this.mContext, 2130771982);
+    AppMethodBeat.o(198218);
   }
   
-  private void wH(boolean paramBoolean)
+  public final void Dg(boolean paramBoolean)
   {
-    AppMethodBeat.i(159320);
+    AppMethodBeat.i(198222);
     if (paramBoolean)
     {
-      int i = aq.fromDPToPix(this.mContext, 8);
-      this.Ivm.setVisibility(0);
-      this.Ivm.setPadding(i, i, i, i);
+      this.mEditText.setVisibility(0);
+      AppMethodBeat.o(198222);
+      return;
     }
-    AppMethodBeat.o(159320);
+    this.mEditText.setVisibility(8);
+    AppMethodBeat.o(198222);
+  }
+  
+  public final void Dh(boolean paramBoolean)
+  {
+    AppMethodBeat.i(159333);
+    super.setCancelable(paramBoolean);
+    AppMethodBeat.o(159333);
   }
   
   public final void a(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(159329);
-    a(this.mContext.getString(paramInt), true, paramOnClickListener);
+    a(com.tencent.mm.ui.e.a.kn(this.mContext).getString(paramInt), true, paramOnClickListener);
     AppMethodBeat.o(159329);
   }
   
@@ -210,181 +230,181 @@ public class d
     AppMethodBeat.i(159335);
     if ((parama.title != null) && (parama.title.length() > 0))
     {
-      afL(parama.IuT);
+      aoM(parama.NIs);
       setTitle(parama.title);
     }
     Object localObject3;
     Object localObject1;
-    if ((parama.Iul != null) && (parama.Iul.length() > 0))
+    if ((parama.NHK != null) && (parama.NHK.length() > 0))
     {
-      localObject3 = parama.Iul;
-      this.Ivk.setVisibility(0);
-      this.Ivc.setVisibility(0);
+      localObject3 = parama.NHK;
+      this.nmr.setVisibility(0);
+      this.NIB.setVisibility(0);
       localObject1 = localObject3;
-      if (this.LsJ != null) {
-        localObject1 = this.LsJ.a(((CharSequence)localObject3).toString(), this.jdField_new.getTextSize());
+      if (this.QNz != null) {
+        localObject1 = this.QNz.a(((CharSequence)localObject3).toString(), this.jUu.getTextSize());
       }
-      this.Ivc.setText((CharSequence)localObject1);
+      this.NIB.setText((CharSequence)localObject1);
     }
     int i;
-    if (parama.FjE != 0)
+    if (parama.Kaw != 0)
     {
-      i = parama.FjE;
-      this.jdField_new.setTextColor(ColorStateList.valueOf(i));
+      i = parama.Kaw;
+      this.jUu.setTextColor(ColorStateList.valueOf(i));
     }
-    if (parama.IuQ != 0)
+    if (parama.NIp != 0)
     {
-      i = parama.IuQ;
-      this.jdField_new.setMaxLines(i);
+      i = parama.NIp;
+      this.jUu.setMaxLines(i);
     }
-    if (parama.IuR != 0)
+    if (parama.NIq != 0)
     {
-      i = parama.IuR;
-      this.Ivd.setMaxLines(i);
+      i = parama.NIq;
+      this.NIC.setMaxLines(i);
     }
-    if (parama.vd != null) {
-      aJ(parama.vd, -1);
+    if (parama.vk != null) {
+      aN(parama.vk, -1);
     }
-    if (parama.IuO != null)
+    if (parama.NIn != null)
     {
-      localObject3 = parama.IuO;
-      this.Ivk.setVisibility(0);
-      this.Ivl.setLayoutResource(2131493580);
+      localObject3 = parama.NIn;
+      this.nmr.setVisibility(0);
+      this.NIJ.setLayoutResource(2131493697);
     }
     try
     {
-      localObject1 = (LinearLayout)this.Ivl.inflate();
+      localObject1 = (LinearLayout)this.NIJ.inflate();
       ((LinearLayout)localObject1).addView((View)localObject3);
-      if (parama.IuP != null)
+      if (parama.NIo != null)
       {
-        this.Ivj = parama.IuP;
-        if (this.Ivj != null)
+        this.NII = parama.NIo;
+        if (this.NII != null)
         {
-          this.Ivm.setVisibility(8);
-          this.Ivh.setVisibility(8);
+          this.NIK.setVisibility(8);
+          this.NIG.setVisibility(8);
           this.mEditText.setVisibility(8);
-          this.Ivp.removeAllViews();
-          this.Ivp.addView(this.Ivj, new LinearLayout.LayoutParams(-1, -1));
-          this.Ivp.setVisibility(8);
+          this.NIN.removeAllViews();
+          this.NIN.addView(this.NII, new LinearLayout.LayoutParams(-1, -1));
+          this.NIN.setVisibility(8);
         }
       }
-      if (parama.Iuw != null)
+      if (parama.NHV != null)
       {
-        localObject1 = parama.Iuw;
-        if (this.ahw == null)
+        localObject1 = parama.NHV;
+        if (this.ahJ == null)
         {
-          this.Ivm.setVisibility(0);
-          this.Ivi.setVisibility(0);
-          this.Ivi.setBackgroundDrawable((Drawable)localObject1);
+          this.NIK.setVisibility(0);
+          this.NIH.setVisibility(0);
+          this.NIH.setBackgroundDrawable((Drawable)localObject1);
         }
       }
-      if ((parama.Iuy != null) && (parama.Iuy.length() > 0)) {
-        setMessage(parama.Iuy);
+      if ((parama.NHX != null) && (parama.NHX.length() > 0)) {
+        setMessage(parama.NHX);
       }
-      wH(parama.IuH);
+      AH(parama.NIg);
       if (parama.thumbPath != null)
       {
         localObject1 = parama.thumbPath;
-        i = aq.fromDPToPix(this.mContext, 120);
-        this.Ivm.setVisibility(0);
-        this.Ivi.setVisibility(0);
-        if ((this.Ivi instanceof com.tencent.mm.ui.f.a)) {
-          ((com.tencent.mm.ui.f.a)this.Ivi).aK((String)localObject1, i, i);
+        i = at.fromDPToPix(this.mContext, 120);
+        this.NIK.setVisibility(0);
+        this.NIH.setVisibility(0);
+        if ((this.NIH instanceof com.tencent.mm.ui.g.a)) {
+          ((com.tencent.mm.ui.g.a)this.NIH).aM((String)localObject1, i, i);
         }
-        i = parama.IuV;
-        this.Ivm.setVisibility(i);
-        this.Ivi.setVisibility(i);
+        i = parama.NIu;
+        this.NIK.setVisibility(i);
+        this.NIH.setVisibility(i);
       }
-      if ((!parama.IuZ) && (!parama.Iva))
+      if ((!parama.NIy) && (!parama.NIz))
       {
-        if ((parama.Iuy != null) && (parama.Iuy.length() > 0)) {
-          setMessage(parama.Iuy);
+        if ((parama.NHX != null) && (parama.NHX.length() > 0)) {
+          setMessage(parama.NHX);
         }
-        if ((parama.Iuz == null) || (parama.Iuz.length() <= 0)) {
-          break label2254;
+        if ((parama.NHY == null) || (parama.NHY.length() <= 0)) {
+          break label2234;
         }
-        localObject1 = parama.Iuz;
-        this.Ivm.setVisibility(0);
-        this.Ivf.setVisibility(0);
-        this.Ivf.setMaxLines(2);
-        this.Ivf.setText((CharSequence)localObject1);
-        if ((parama.IuA != null) && (parama.IuA.length() > 0))
+        localObject1 = parama.NHY;
+        this.NIK.setVisibility(0);
+        this.NIE.setVisibility(0);
+        this.NIE.setMaxLines(2);
+        this.NIE.setText((CharSequence)localObject1);
+        if ((parama.NHZ != null) && (parama.NHZ.length() > 0))
         {
-          localObject3 = parama.IuA;
+          localObject3 = parama.NHZ;
           if (localObject3 != null)
           {
-            this.Ivm.setVisibility(0);
-            this.Ivg.setVisibility(0);
+            this.NIK.setVisibility(0);
+            this.NIF.setVisibility(0);
             localObject1 = localObject3;
-            if (this.LsJ != null)
+            if (this.QNz != null)
             {
-              localObject1 = this.LsJ;
-              this.Ivg.getContext();
-              localObject1 = ((d.a.d)localObject1).a(((CharSequence)localObject3).toString(), this.Ivg.getTextSize());
+              localObject1 = this.QNz;
+              this.NIF.getContext();
+              localObject1 = ((d.a.d)localObject1).a(((CharSequence)localObject3).toString(), this.NIF.getTextSize());
             }
-            this.Ivg.setText((CharSequence)localObject1);
+            this.NIF.setText((CharSequence)localObject1);
           }
         }
-        if (parama.Iux != null)
+        if (parama.NHW != null)
         {
-          localObject1 = parama.Iux;
-          if (this.ahw == null)
+          localObject1 = parama.NHW;
+          if (this.ahJ == null)
           {
-            this.Ivm.setVisibility(0);
-            this.Ivi.setVisibility(0);
-            this.Ivi.setImageBitmap((Bitmap)localObject1);
+            this.NIK.setVisibility(0);
+            this.NIH.setVisibility(0);
+            this.NIH.setImageBitmap((Bitmap)localObject1);
           }
         }
       }
       boolean bool;
       d.a.a locala;
-      if (parama.IuZ)
+      if (parama.NIy)
       {
-        localObject1 = parama.Iux;
-        localObject4 = parama.Iuz;
-        localObject3 = parama.IuA;
-        localObject5 = View.inflate(this.mContext, 2131493583, null);
+        localObject1 = parama.NHW;
+        localObject4 = parama.NHY;
+        localObject3 = parama.NHZ;
+        localObject5 = View.inflate(this.mContext, 2131493700, null);
         if (localObject1 != null)
         {
-          localObject6 = (ImageView)((View)localObject5).findViewById(2131302310);
+          localObject6 = (ImageView)((View)localObject5).findViewById(2131304705);
           ((ImageView)localObject6).setVisibility(0);
           ((ImageView)localObject6).setImageBitmap((Bitmap)localObject1);
         }
         if (localObject4 != null)
         {
-          localObject6 = (TextView)((View)localObject5).findViewById(2131302312);
+          localObject6 = (TextView)((View)localObject5).findViewById(2131304707);
           ((TextView)localObject6).setVisibility(0);
           localObject1 = localObject4;
-          if (this.LsJ != null) {
-            localObject1 = this.LsJ.a(((CharSequence)localObject4).toString(), ((TextView)localObject6).getTextSize());
+          if (this.QNz != null) {
+            localObject1 = this.QNz.a(((CharSequence)localObject4).toString(), ((TextView)localObject6).getTextSize());
           }
           ((TextView)localObject6).setText((CharSequence)localObject1);
         }
         if (localObject3 != null)
         {
-          localObject4 = (TextView)((View)localObject5).findViewById(2131302311);
+          localObject4 = (TextView)((View)localObject5).findViewById(2131304706);
           ((TextView)localObject4).setVisibility(0);
-          if (this.LsJ == null) {
-            break label2638;
+          if (this.QNz == null) {
+            break label2607;
           }
-          localObject1 = this.LsJ.a(((CharSequence)localObject3).toString(), ((TextView)localObject4).getTextSize());
+          localObject1 = this.QNz.a(((CharSequence)localObject3).toString(), ((TextView)localObject4).getTextSize());
           ((TextView)localObject4).setText((CharSequence)localObject1);
         }
-        aJ((View)localObject5, -1);
-        if ((parama.Iup != null) || (parama.Iuq != null))
+        aN((View)localObject5, -1);
+        if ((parama.NHO != null) || (parama.NHP != null))
         {
-          localObject6 = parama.Iup;
-          localObject4 = parama.Iuq;
-          bool = parama.Iur;
-          localObject5 = parama.LsD;
-          locala = parama.LsE;
-          this.Ivl.setLayoutResource(2131493593);
+          localObject6 = parama.NHO;
+          localObject4 = parama.NHP;
+          bool = parama.NHQ;
+          localObject5 = parama.QNt;
+          locala = parama.QNu;
+          this.NIJ.setLayoutResource(2131493710);
           localObject1 = null;
         }
       }
       try
       {
-        localObject3 = (LinearLayout)this.Ivl.inflate();
+        localObject3 = (LinearLayout)this.NIJ.inflate();
         localObject1 = localObject3;
       }
       catch (Exception localException2)
@@ -398,7 +418,7 @@ public class d
           int m;
           int i1;
           int k;
-          this.Ivl.setVisibility(0);
+          this.NIJ.setVisibility(0);
           continue;
           if ((f >= 0.5D) && (f < 1.0F))
           {
@@ -424,13 +444,11 @@ public class d
             ((ImageView)localObject2).setVisibility(0);
             if (i2 == 1)
             {
-              ((ImageView)localObject2).setImageResource(2131691174);
+              ((ImageView)localObject2).setImageResource(2131691490);
             }
             else if (i2 == 2)
             {
-              ((ImageView)localObject2).setImageResource(2131691361);
-              continue;
-              this.mEditText.setVisibility(8);
+              ((ImageView)localObject2).setImageResource(2131691695);
               continue;
               localObject2 = localException2;
               continue;
@@ -441,39 +459,39 @@ public class d
       }
       if ((localObject1 != null) && (localObject6 != null))
       {
-        localObject3 = (ImageView)((LinearLayout)localObject1).findViewById(2131305922);
+        localObject3 = (ImageView)((LinearLayout)localObject1).findViewById(2131309220);
         ((ImageView)localObject3).setVisibility(0);
         if (locala != null) {
-          locala.y((ImageView)localObject3, (String)localObject6);
+          locala.C((ImageView)localObject3, (String)localObject6);
         }
       }
       if ((localObject1 != null) && (localObject4 != null))
       {
-        localObject6 = (TextView)((LinearLayout)localObject1).findViewById(2131305945);
+        localObject6 = (TextView)((LinearLayout)localObject1).findViewById(2131309245);
         ((TextView)localObject6).setVisibility(0);
         localObject3 = localObject4;
-        if (this.LsJ != null) {
-          localObject3 = this.LsJ.a(((CharSequence)localObject4).toString(), this.jdField_new.getTextSize());
+        if (this.QNz != null) {
+          localObject3 = this.QNz.a(((CharSequence)localObject4).toString(), this.jUu.getTextSize());
         }
         ((TextView)localObject6).setText((CharSequence)localObject3);
       }
       if ((Boolean.valueOf(bool).booleanValue()) && (localObject1 != null))
       {
-        localObject3 = (ImageView)((LinearLayout)localObject1).findViewById(2131300962);
+        localObject3 = (ImageView)((LinearLayout)localObject1).findViewById(2131302598);
         ((ImageView)localObject3).setVisibility(0);
-        aaV(0);
+        ajK(0);
         ((LinearLayout)localObject1).setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(159297);
             b localb = new b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-            if (this.LsK != null) {
-              this.LsK.fgn();
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            if (this.QNA != null) {
+              this.QNA.gpw();
             }
-            if (this.Ivz.isSelected())
+            if (this.NIX.isSelected())
             {
               d.e(d.this).startAnimation(d.d(d.this));
               d.d(d.this).setAnimationListener(new Animation.AnimationListener()
@@ -495,8 +513,8 @@ public class d
                   AppMethodBeat.o(159293);
                 }
               });
-              ObjectAnimator.ofFloat(this.Ivz, "rotation", new float[] { 180.0F, 0.0F }).setDuration(200L).start();
-              this.Ivz.setSelected(false);
+              ObjectAnimator.ofFloat(this.NIX, "rotation", new float[] { 180.0F, 0.0F }).setDuration(200L).start();
+              this.NIX.setSelected(false);
             }
             for (;;)
             {
@@ -523,30 +541,30 @@ public class d
                   AppMethodBeat.o(159295);
                 }
               });
-              ObjectAnimator.ofFloat(this.Ivz, "rotation", new float[] { 0.0F, 180.0F }).setDuration(200L).start();
-              this.Ivz.setSelected(true);
+              ObjectAnimator.ofFloat(this.NIX, "rotation", new float[] { 0.0F, 180.0F }).setDuration(200L).start();
+              this.NIX.setSelected(true);
             }
           }
         });
       }
-      if (parama.LsF != null) {
-        b(parama.LsF);
+      if (parama.QNv != null) {
+        b(parama.QNv);
       }
-      if ((parama.LsH != null) && (!parama.LsH.isRecycled()))
+      if ((parama.QNx != null) && (!parama.QNx.isRecycled()))
       {
-        localObject3 = parama.LsH;
-        bool = parama.IuI;
-        i2 = parama.IuU;
+        localObject3 = parama.QNx;
+        bool = parama.NIh;
+        i2 = parama.NIt;
         if (localObject3 != null)
         {
-          wH(false);
-          this.Ivm.setVisibility(0);
-          this.Ivm.setGravity(1);
-          this.Ivm.setPadding(0, 0, 0, 0);
-          localObject5 = View.inflate(this.mContext, 2131493585, null);
-          localObject6 = (ImageView)((View)localObject5).findViewById(2131302310);
+          AH(false);
+          this.NIK.setVisibility(0);
+          this.NIK.setGravity(1);
+          this.NIK.setPadding(0, 0, 0, 0);
+          localObject5 = View.inflate(this.mContext, 2131493702, null);
+          localObject6 = (ImageView)((View)localObject5).findViewById(2131304705);
           if (!bool) {
-            break label2624;
+            break label2593;
           }
           i = ((Bitmap)localObject3).getWidth();
           j = ((Bitmap)localObject3).getHeight();
@@ -554,12 +572,12 @@ public class d
           f = j / i;
           n = 0;
           m = 0;
-          i1 = aq.ay(this.mContext, 2131165260);
-          i = aq.ay(this.mContext, 2131165259);
+          i1 = at.aH(this.mContext, 2131165264);
+          i = at.aH(this.mContext, 2131165263);
           k = 0;
           j = 0;
           if ((f <= 0.0F) || (f >= 0.5D)) {
-            break label2477;
+            break label2458;
           }
           m = (int)(i1 / f);
           j = i1;
@@ -579,169 +597,161 @@ public class d
               }
             }
           }
-          localObject1 = an.c((Bitmap)localObject1, aq.fromDPToPix(this.mContext, 3));
+          localObject1 = aq.a((Bitmap)localObject1, at.fromDPToPix(this.mContext, 3));
           ((ImageView)localObject6).setImageBitmap((Bitmap)localObject1);
-          localObject1 = (ImageView)((View)localObject5).findViewById(2131300961);
+          localObject1 = (ImageView)((View)localObject5).findViewById(2131302597);
           if (i2 != 0) {
-            break label2572;
+            break label2553;
           }
           ((ImageView)localObject1).setVisibility(8);
-          aJ((View)localObject5, -2);
+          aN((View)localObject5, -2);
         }
       }
-      if ((parama.Ium != null) && (parama.Ium.length() > 0))
+      if ((parama.NHL != null) && (parama.NHL.length() > 0))
       {
-        localObject1 = parama.Ium;
+        localObject1 = parama.NHL;
         if (localObject1 != null)
         {
-          this.Ivh.setVisibility(0);
-          this.Ivh.setText((CharSequence)localObject1);
+          this.NIG.setVisibility(0);
+          this.NIG.setText((CharSequence)localObject1);
         }
-        this.Ivr = true;
-        afM(parama.IuS);
+        this.NIP = true;
+        aoN(parama.NIr);
       }
-      if ((parama.Iun != null) && (parama.Iun.length() > 0))
-      {
-        localObject1 = parama.Iun;
-        this.mEditText.setVisibility(0);
-        this.mEditText.setHint((CharSequence)localObject1);
+      if ((parama.NHM != null) && (parama.NHM.length() > 0)) {
+        ay(parama.NHM);
       }
-      if ((parama.LsC != null) && (parama.LsC.length() > 0))
+      if ((parama.QNs != null) && (parama.QNs.length() > 0))
       {
-        localObject1 = parama.LsC;
-        this.afH.setVisibility(0);
-        this.afH.setText((CharSequence)localObject1);
+        localObject1 = parama.QNs;
+        this.afU.setVisibility(0);
+        this.afU.setText((CharSequence)localObject1);
       }
-      if (parama.Iuo)
+      if (parama.NHN)
       {
-        this.needEdit = parama.Iuo;
-        if (parama.Iuo) {
-          this.mEditText.setVisibility(0);
-        }
+        this.needEdit = parama.NHN;
+        Dg(parama.NHN);
       }
-      else
+      if ((parama.NIa != null) && (parama.NIa.length() > 0)) {
+        a(parama.NIa, parama.NIx, parama.NIi);
+      }
+      if ((parama.NIb != null) && (parama.NIb.length() > 0)) {
+        b(parama.NIb, true, parama.NIj);
+      }
+      if (parama.NIw != 0) {
+        ajL(parama.NIw);
+      }
+      if (parama.NIv != 0) {
+        ajM(parama.NIv);
+      }
+      if (parama.XY != null) {
+        setOnCancelListener(parama.XY);
+      }
+      if (parama.XZ != null)
       {
-        if ((parama.IuB != null) && (parama.IuB.length() > 0)) {
-          a(parama.IuB, parama.IuY, parama.IuJ);
-        }
-        if ((parama.IuC != null) && (parama.IuC.length() > 0)) {
-          b(parama.IuC, true, parama.IuK);
-        }
-        if (parama.IuX != 0) {
-          aaW(parama.IuX);
-        }
-        if (parama.IuW != 0) {
-          aaX(parama.IuW);
-        }
-        if (parama.XL != null) {
-          setOnCancelListener(parama.XL);
-        }
-        if (parama.XM != null)
+        this.NIV = parama.XZ;
+        setOnDismissListener(parama.XZ);
+      }
+      if (parama.QNw != null) {
+        this.QNz = parama.QNw;
+      }
+      setCancelable(parama.ox);
+      this.ox = parama.ox;
+      if (!this.ox) {
+        super.setCancelable(parama.NIf);
+      }
+      if ((parama.NIc != null) || (parama.NId != null) || (parama.NIe != null))
+      {
+        localObject1 = View.inflate(this.mContext, 2131493709, null);
+        localObject3 = (Button)((View)localObject1).findViewById(2131304691);
+        localObject4 = (Button)((View)localObject1).findViewById(2131304692);
+        localObject5 = (Button)((View)localObject1).findViewById(2131304693);
+        if (parama.NIc != null)
         {
-          this.Ivx = parama.XM;
-          setOnDismissListener(parama.XM);
+          ((Button)localObject3).setVisibility(0);
+          ((Button)localObject3).setText(parama.NIc);
+          ((Button)localObject3).setOnClickListener(new View.OnClickListener()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(159302);
+              b localb = new b();
+              localb.bm(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+              if (parama.NIk != null) {
+                parama.NIk.onClick(d.this, -1);
+              }
+              d.this.dismiss();
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMAlertDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(159302);
+            }
+          });
         }
-        if (parama.LsG != null) {
-          this.LsJ = parama.LsG;
-        }
-        setCancelable(parama.ov);
-        this.ov = parama.ov;
-        if (!this.ov) {
-          super.setCancelable(parama.IuG);
-        }
-        if ((parama.IuD != null) || (parama.IuE != null) || (parama.IuF != null))
+        if (parama.NId != null)
         {
-          localObject1 = View.inflate(this.mContext, 2131493592, null);
-          localObject3 = (Button)((View)localObject1).findViewById(2131302297);
-          localObject4 = (Button)((View)localObject1).findViewById(2131302298);
-          localObject5 = (Button)((View)localObject1).findViewById(2131302299);
-          if (parama.IuD != null)
+          ((Button)localObject4).setVisibility(0);
+          ((Button)localObject4).setText(parama.NId);
+          ((Button)localObject4).setOnClickListener(new View.OnClickListener()
           {
-            ((Button)localObject3).setVisibility(0);
-            ((Button)localObject3).setText(parama.IuD);
-            ((Button)localObject3).setOnClickListener(new View.OnClickListener()
+            public final void onClick(View paramAnonymousView)
             {
-              public final void onClick(View paramAnonymousView)
-              {
-                AppMethodBeat.i(159302);
-                b localb = new b();
-                localb.bd(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                if (parama.IuL != null) {
-                  parama.IuL.onClick(d.this, -1);
-                }
-                d.this.dismiss();
-                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMAlertDialog$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                AppMethodBeat.o(159302);
+              AppMethodBeat.i(159303);
+              b localb = new b();
+              localb.bm(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+              if (parama.NIl != null) {
+                parama.NIl.onClick(d.this, -2);
               }
-            });
-          }
-          if (parama.IuE != null)
-          {
-            ((Button)localObject4).setVisibility(0);
-            ((Button)localObject4).setText(parama.IuE);
-            ((Button)localObject4).setOnClickListener(new View.OnClickListener()
-            {
-              public final void onClick(View paramAnonymousView)
-              {
-                AppMethodBeat.i(159303);
-                b localb = new b();
-                localb.bd(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                if (parama.IuM != null) {
-                  parama.IuM.onClick(d.this, -2);
-                }
-                d.this.dismiss();
-                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMAlertDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                AppMethodBeat.o(159303);
-              }
-            });
-          }
-          if (parama.IuF != null)
-          {
-            ((Button)localObject5).setVisibility(0);
-            ((Button)localObject5).setText(parama.IuF);
-            ((Button)localObject5).setOnClickListener(new View.OnClickListener()
-            {
-              public final void onClick(View paramAnonymousView)
-              {
-                AppMethodBeat.i(159304);
-                b localb = new b();
-                localb.bd(paramAnonymousView);
-                com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-                if (parama.IuN != null) {
-                  parama.IuN.onClick(d.this, -3);
-                }
-                d.this.dismiss();
-                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMAlertDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                AppMethodBeat.o(159304);
-              }
-            });
-          }
-          b((View)localObject1, new LinearLayout.LayoutParams(-1, -1));
+              d.this.dismiss();
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMAlertDialog$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(159303);
+            }
+          });
         }
-        if (parama.Ius)
+        if (parama.NIe != null)
         {
-          localObject1 = View.inflate(this.mContext, 2131493579, null);
-          this.rse = ((Button)((View)localObject1).findViewById(2131302301));
-          this.Dim = ((Button)((View)localObject1).findViewById(2131302314));
-          if (parama.IuX != 0) {
-            aaW(parama.IuX);
-          }
-          if (parama.IuW != 0) {
-            aaX(parama.IuW);
-          }
-          if ((parama.IuB != null) && (parama.IuB.length() > 0)) {
-            a(parama.IuB, parama.IuY, parama.IuJ);
-          }
-          if ((parama.IuC != null) && (parama.IuC.length() > 0)) {
-            b(parama.IuC, true, parama.IuK);
-          }
-          b((View)localObject1, new LinearLayout.LayoutParams(-1, -1));
+          ((Button)localObject5).setVisibility(0);
+          ((Button)localObject5).setText(parama.NIe);
+          ((Button)localObject5).setOnClickListener(new View.OnClickListener()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(159304);
+              b localb = new b();
+              localb.bm(paramAnonymousView);
+              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+              if (parama.NIm != null) {
+                parama.NIm.onClick(d.this, -3);
+              }
+              d.this.dismiss();
+              com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMAlertDialog$8", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+              AppMethodBeat.o(159304);
+            }
+          });
         }
-        AppMethodBeat.o(159335);
-        return;
+        b((View)localObject1, new LinearLayout.LayoutParams(-1, -1));
       }
+      if (parama.NHR)
+      {
+        localObject1 = View.inflate(this.mContext, 2131493696, null);
+        this.FNQ = ((Button)((View)localObject1).findViewById(2131304695));
+        this.HRF = ((Button)((View)localObject1).findViewById(2131304709));
+        if (parama.NIw != 0) {
+          ajL(parama.NIw);
+        }
+        if (parama.NIv != 0) {
+          ajM(parama.NIv);
+        }
+        if ((parama.NIa != null) && (parama.NIa.length() > 0)) {
+          a(parama.NIa, parama.NIx, parama.NIi);
+        }
+        if ((parama.NIb != null) && (parama.NIb.length() > 0)) {
+          b(parama.NIb, true, parama.NIj);
+        }
+        b((View)localObject1, new LinearLayout.LayoutParams(-1, -1));
+      }
+      AppMethodBeat.o(159335);
+      return;
     }
     catch (Exception localException1)
     {
@@ -750,53 +760,53 @@ public class d
         Object localObject4;
         Object localObject5;
         Object localObject6;
-        this.Ivl.setVisibility(0);
+        this.NIJ.setVisibility(0);
         Object localObject2 = null;
         continue;
-        label2254:
-        wH(false);
+        label2234:
+        AH(false);
         continue;
-        label2572:
-        if (parama.Iva)
+        label2458:
+        label2593:
+        label2607:
+        if (parama.NIz)
         {
-          localObject2 = parama.Iux;
-          localObject4 = parama.Iuz;
-          localObject3 = parama.IuA;
-          localObject5 = View.inflate(this.mContext, 2131493584, null);
+          localObject2 = parama.NHW;
+          localObject4 = parama.NHY;
+          localObject3 = parama.NHZ;
+          localObject5 = View.inflate(this.mContext, 2131493701, null);
           if (localObject2 != null)
           {
-            localObject6 = (ImageView)((View)localObject5).findViewById(2131302310);
+            localObject6 = (ImageView)((View)localObject5).findViewById(2131304705);
             ((ImageView)localObject6).setVisibility(0);
             ((ImageView)localObject6).setImageBitmap((Bitmap)localObject2);
           }
           if (localObject4 != null)
           {
-            localObject6 = (TextView)((View)localObject5).findViewById(2131302312);
+            localObject6 = (TextView)((View)localObject5).findViewById(2131304707);
             ((TextView)localObject6).setVisibility(0);
             localObject2 = localObject4;
-            if (this.LsJ != null) {
-              localObject2 = this.LsJ.a(((CharSequence)localObject4).toString(), ((TextView)localObject6).getTextSize());
+            if (this.QNz != null) {
+              localObject2 = this.QNz.a(((CharSequence)localObject4).toString(), ((TextView)localObject6).getTextSize());
             }
             ((TextView)localObject6).setText((CharSequence)localObject2);
           }
           if (localObject3 != null)
           {
-            localObject4 = (TextView)((View)localObject5).findViewById(2131302311);
+            localObject4 = (TextView)((View)localObject5).findViewById(2131304706);
             ((TextView)localObject4).setVisibility(0);
-            if (this.LsJ != null)
+            if (this.QNz != null)
             {
-              localObject2 = this.LsJ.a(((CharSequence)localObject3).toString(), ((TextView)localObject4).getTextSize());
+              localObject2 = this.QNz.a(((CharSequence)localObject3).toString(), ((TextView)localObject4).getTextSize());
               ((TextView)localObject4).setText((CharSequence)localObject2);
             }
           }
           else
           {
-            aJ((View)localObject5, -1);
+            aN((View)localObject5, -1);
             continue;
           }
-          label2477:
-          label2624:
-          label2638:
+          label2553:
           localObject2 = localException2;
         }
       }
@@ -806,21 +816,21 @@ public class d
   public final void a(CharSequence paramCharSequence, final boolean paramBoolean, final DialogInterface.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(159326);
-    if (this.Dim == null)
+    if (this.HRF == null)
     {
       AppMethodBeat.o(159326);
       return;
     }
-    this.Dim.setVisibility(0);
-    this.Dim.setText(paramCharSequence);
-    this.Dim.setOnClickListener(new View.OnClickListener()
+    this.HRF.setVisibility(0);
+    this.HRF.setText(paramCharSequence);
+    this.HRF.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(159300);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (paramOnClickListener != null) {
           paramOnClickListener.onClick(d.this, -1);
         }
@@ -834,60 +844,68 @@ public class d
     AppMethodBeat.o(159326);
   }
   
-  public final void aaW(int paramInt)
+  public final void ajL(int paramInt)
   {
     AppMethodBeat.i(159327);
-    this.Dim.setTextColor(paramInt);
+    this.HRF.setTextColor(paramInt);
     AppMethodBeat.o(159327);
   }
   
-  public final void aaX(int paramInt)
+  public final void ajM(int paramInt)
   {
     AppMethodBeat.i(159328);
-    this.rse.setTextColor(paramInt);
+    this.FNQ.setTextColor(paramInt);
     AppMethodBeat.o(159328);
   }
   
-  public final void afL(int paramInt)
+  public final void aoM(int paramInt)
   {
-    AppMethodBeat.i(200353);
-    if (this.jdField_new != null) {
-      this.jdField_new.setGravity(paramInt);
+    AppMethodBeat.i(198219);
+    if (this.jUu != null) {
+      this.jUu.setGravity(paramInt);
     }
-    AppMethodBeat.o(200353);
+    AppMethodBeat.o(198219);
   }
   
-  public final void afM(int paramInt)
+  public final void aoN(int paramInt)
   {
-    AppMethodBeat.i(200354);
-    if (this.Ivh != null) {
-      this.Ivh.setGravity(paramInt);
+    AppMethodBeat.i(198220);
+    if (this.NIG != null) {
+      this.NIG.setGravity(paramInt);
     }
-    AppMethodBeat.o(200354);
+    AppMethodBeat.o(198220);
+  }
+  
+  public final void ay(CharSequence paramCharSequence)
+  {
+    AppMethodBeat.i(198221);
+    this.mEditText.setVisibility(0);
+    this.mEditText.setHint(paramCharSequence);
+    AppMethodBeat.o(198221);
   }
   
   public final void b(int paramInt, DialogInterface.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(159331);
-    b(this.mContext.getString(paramInt), true, paramOnClickListener);
+    b(com.tencent.mm.ui.e.a.kn(this.mContext).getString(paramInt), true, paramOnClickListener);
     AppMethodBeat.o(159331);
   }
   
   public final void b(final d.a.b paramb)
   {
     AppMethodBeat.i(159323);
-    if ((this.Ivm != null) && (this.Ivm.getVisibility() == 0))
+    if ((this.NIK != null) && (this.NIK.getVisibility() == 0))
     {
-      this.Ivm.setOnClickListener(new View.OnClickListener()
+      this.NIK.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(159298);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           if (paramb != null) {
-            paramb.cza();
+            paramb.cXd();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMAlertDialog$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(159298);
@@ -896,17 +914,17 @@ public class d
       AppMethodBeat.o(159323);
       return;
     }
-    if (this.Ivo != null) {
-      this.Ivo.setOnClickListener(new View.OnClickListener()
+    if (this.NIM != null) {
+      this.NIM.setOnClickListener(new View.OnClickListener()
       {
         public final void onClick(View paramAnonymousView)
         {
           AppMethodBeat.i(159299);
           b localb = new b();
-          localb.bd(paramAnonymousView);
-          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
           if (paramb != null) {
-            paramb.cza();
+            paramb.cXd();
           }
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/dialog/MMAlertDialog$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(159299);
@@ -919,21 +937,21 @@ public class d
   public final void b(CharSequence paramCharSequence, final boolean paramBoolean, final DialogInterface.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(159330);
-    if (this.rse == null)
+    if (this.FNQ == null)
     {
       AppMethodBeat.o(159330);
       return;
     }
-    this.rse.setVisibility(0);
-    this.rse.setText(paramCharSequence);
-    this.rse.setOnClickListener(new View.OnClickListener()
+    this.FNQ.setVisibility(0);
+    this.FNQ.setText(paramCharSequence);
+    this.FNQ.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(159301);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/dialog/MMAlertDialog$5", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (paramOnClickListener != null) {
           paramOnClickListener.onClick(d.this, -2);
         }
@@ -947,32 +965,32 @@ public class d
     AppMethodBeat.o(159330);
   }
   
-  public final void bu(int paramInt, boolean paramBoolean)
+  public final void bT(int paramInt, boolean paramBoolean)
   {
-    AppMethodBeat.i(200355);
+    AppMethodBeat.i(198223);
     switch (paramInt)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(200355);
+      AppMethodBeat.o(198223);
       return;
       if (paramBoolean)
       {
-        this.Dim.setVisibility(0);
-        AppMethodBeat.o(200355);
+        this.HRF.setVisibility(0);
+        AppMethodBeat.o(198223);
         return;
       }
-      this.Dim.setVisibility(8);
-      AppMethodBeat.o(200355);
+      this.HRF.setVisibility(8);
+      AppMethodBeat.o(198223);
       return;
       if (paramBoolean)
       {
-        this.rse.setVisibility(0);
-        AppMethodBeat.o(200355);
+        this.FNQ.setVisibility(0);
+        AppMethodBeat.o(198223);
         return;
       }
-      this.rse.setVisibility(8);
+      this.FNQ.setVisibility(8);
     }
   }
   
@@ -990,7 +1008,7 @@ public class d
           AppMethodBeat.o(159305);
         }
       });
-      ap.e("MicroMsg.MMAlertDialog", "dialog dismiss error!", new Object[0]);
+      as.e("MicroMsg.MMAlertDialog", "dialog dismiss error!", new Object[0]);
       AppMethodBeat.o(159337);
       return;
     }
@@ -1015,12 +1033,29 @@ public class d
     {
       for (;;)
       {
-        ap.e("MicroMsg.MMAlertDialog", "dismiss exception, e = " + localException.getMessage(), new Object[0]);
+        as.e("MicroMsg.MMAlertDialog", "dismiss exception, e = " + localException.getMessage(), new Object[0]);
       }
     }
   }
   
-  public final String fQs()
+  public final Button getButton(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    case -1: 
+      return this.HRF;
+    }
+    return this.FNQ;
+  }
+  
+  public View getContentView()
+  {
+    return this.NIA;
+  }
+  
+  public final String hbk()
   {
     AppMethodBeat.i(159321);
     if (this.mEditText == null)
@@ -1033,7 +1068,7 @@ public class d
     return str;
   }
   
-  public final int fQt()
+  public final int hbl()
   {
     AppMethodBeat.i(159322);
     if ((this.mEditText instanceof PasterEditText))
@@ -1046,33 +1081,16 @@ public class d
     return 0;
   }
   
-  public final ImageView fQu()
+  public final ImageView hbm()
   {
-    return this.Ivi;
-  }
-  
-  public final Button getButton(int paramInt)
-  {
-    switch (paramInt)
-    {
-    default: 
-      return null;
-    case -1: 
-      return this.Dim;
-    }
-    return this.rse;
-  }
-  
-  public View getContentView()
-  {
-    return this.Ivb;
+    return this.NIH;
   }
   
   protected void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(159315);
     super.onCreate(paramBundle);
-    setContentView(this.Ivb);
+    setContentView(this.NIA);
     AppMethodBeat.o(159315);
   }
   
@@ -1080,52 +1098,52 @@ public class d
   {
     AppMethodBeat.i(159332);
     super.setCancelable(paramBoolean);
-    this.ov = paramBoolean;
-    setCanceledOnTouchOutside(this.ov);
+    this.ox = paramBoolean;
+    setCanceledOnTouchOutside(this.ox);
     AppMethodBeat.o(159332);
   }
   
   public final void setMessage(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(159319);
-    this.Ivm.setVisibility(0);
-    this.Ivd.setVisibility(0);
+    this.NIK.setVisibility(0);
+    this.NIC.setVisibility(0);
     Object localObject = paramCharSequence;
-    if (this.LsJ != null)
+    if (this.QNz != null)
     {
-      localObject = this.LsJ;
-      this.Ivd.getContext();
-      localObject = ((d.a.d)localObject).a(paramCharSequence.toString(), this.Ivd.getTextSize());
+      localObject = this.QNz;
+      this.NIC.getContext();
+      localObject = ((d.a.d)localObject).a(paramCharSequence.toString(), this.NIC.getTextSize());
     }
-    this.Ivd.setText((CharSequence)localObject);
+    this.NIC.setText((CharSequence)localObject);
     AppMethodBeat.o(159319);
   }
   
   public void setTitle(int paramInt)
   {
     AppMethodBeat.i(159317);
-    this.Ivk.setVisibility(0);
-    this.jdField_new.setVisibility(0);
-    this.jdField_new.setMaxLines(2);
-    this.jdField_new.setText(paramInt);
-    this.jdField_new.getPaint().setFakeBoldText(true);
-    aaU(this.mContext.getResources().getColor(2131099734));
+    this.nmr.setVisibility(0);
+    this.jUu.setVisibility(0);
+    this.jUu.setMaxLines(2);
+    this.jUu.setText(paramInt);
+    this.jUu.getPaint().setFakeBoldText(true);
+    ajJ(this.mContext.getResources().getColor(2131099748));
     AppMethodBeat.o(159317);
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(159316);
-    this.Ivk.setVisibility(0);
-    this.jdField_new.setVisibility(0);
+    this.nmr.setVisibility(0);
+    this.jUu.setVisibility(0);
     CharSequence localCharSequence = paramCharSequence;
-    if (this.LsJ != null) {
-      localCharSequence = this.LsJ.a(paramCharSequence.toString(), this.jdField_new.getTextSize());
+    if (this.QNz != null) {
+      localCharSequence = this.QNz.a(paramCharSequence.toString(), this.jUu.getTextSize());
     }
-    this.jdField_new.setMaxLines(2);
-    this.jdField_new.setText(localCharSequence);
-    this.jdField_new.getPaint().setFakeBoldText(true);
-    aaU(this.mContext.getResources().getColor(2131099734));
+    this.jUu.setMaxLines(2);
+    this.jUu.setText(localCharSequence);
+    this.jUu.getPaint().setFakeBoldText(true);
+    ajJ(this.mContext.getResources().getColor(2131099748));
     AppMethodBeat.o(159316);
   }
   
@@ -1140,311 +1158,304 @@ public class d
     }
     catch (Exception localException)
     {
-      ap.printErrStackTrace("MicroMsg.MMAlertDialog", localException, "", new Object[0]);
+      as.printErrStackTrace("MicroMsg.MMAlertDialog", localException, "", new Object[0]);
       AppMethodBeat.o(159336);
     }
   }
   
-  public final void zc(boolean paramBoolean)
-  {
-    AppMethodBeat.i(159333);
-    super.setCancelable(paramBoolean);
-    AppMethodBeat.o(159333);
-  }
-  
   public static final class a
   {
-    public a LsP;
+    public a QNF;
     public Context mContext;
     
     public a(Context paramContext)
     {
       AppMethodBeat.i(159306);
       this.mContext = paramContext;
-      this.LsP = new a();
+      this.QNF = new a();
       AppMethodBeat.o(159306);
+    }
+    
+    public final a Di(boolean paramBoolean)
+    {
+      this.QNF.NIg = paramBoolean;
+      return this;
+    }
+    
+    public final a Dj(boolean paramBoolean)
+    {
+      this.QNF.NHN = paramBoolean;
+      return this;
+    }
+    
+    public final a Dk(boolean paramBoolean)
+    {
+      this.QNF.ox = paramBoolean;
+      return this;
+    }
+    
+    public final a Dl(boolean paramBoolean)
+    {
+      this.QNF.NIf = paramBoolean;
+      return this;
     }
     
     public final a a(DialogInterface.OnDismissListener paramOnDismissListener)
     {
-      this.LsP.XM = paramOnDismissListener;
-      return this;
-    }
-    
-    public final a a(Bitmap paramBitmap, boolean paramBoolean, int paramInt)
-    {
-      this.LsP.LsH = paramBitmap;
-      this.LsP.IuI = paramBoolean;
-      this.LsP.IuU = paramInt;
+      this.QNF.XZ = paramOnDismissListener;
       return this;
     }
     
     public final a a(d paramd)
     {
-      this.LsP.LsG = paramd;
+      this.QNF.QNw = paramd;
       return this;
     }
     
     public final a a(String paramString, CharSequence paramCharSequence, Boolean paramBoolean, c paramc, a parama)
     {
       AppMethodBeat.i(159309);
-      this.LsP.Iup = paramString;
-      this.LsP.Iuq = paramCharSequence;
-      this.LsP.Iur = paramBoolean.booleanValue();
-      this.LsP.LsD = paramc;
-      this.LsP.LsE = parama;
+      this.QNF.NHO = paramString;
+      this.QNF.NHP = paramCharSequence;
+      this.QNF.NHQ = paramBoolean.booleanValue();
+      this.QNF.QNt = paramc;
+      this.QNF.QNu = parama;
       AppMethodBeat.o(159309);
       return this;
     }
     
     public final a a(boolean paramBoolean, DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.LsP.IuJ = paramOnClickListener;
-      this.LsP.IuY = paramBoolean;
+      this.QNF.NIi = paramOnClickListener;
+      this.QNF.NIx = paramBoolean;
       return this;
     }
     
-    public final a aK(Bitmap paramBitmap)
+    public final a aA(CharSequence paramCharSequence)
     {
-      this.LsP.Iux = paramBitmap;
+      this.QNF.NHK = paramCharSequence;
       return this;
     }
     
-    public final a aZh(String paramString)
+    public final a aB(CharSequence paramCharSequence)
     {
-      this.LsP.title = paramString;
+      this.QNF.NHY = paramCharSequence;
       return this;
     }
     
-    public final a aZi(String paramString)
+    public final a aN(Bitmap paramBitmap)
     {
-      this.LsP.Iuy = paramString;
+      this.QNF.NHW = paramBitmap;
       return this;
     }
     
-    public final a aZj(String paramString)
-    {
-      this.LsP.IuA = paramString;
-      return this;
-    }
-    
-    public final a aZk(String paramString)
-    {
-      this.LsP.thumbPath = paramString;
-      return this;
-    }
-    
-    public final a aZl(String paramString)
-    {
-      this.LsP.Ium = paramString;
-      return this;
-    }
-    
-    public final a aZm(String paramString)
-    {
-      this.LsP.Iun = paramString;
-      return this;
-    }
-    
-    public final a aZn(String paramString)
-    {
-      this.LsP.LsC = paramString;
-      return this;
-    }
-    
-    public final a aZo(String paramString)
-    {
-      this.LsP.IuB = paramString;
-      return this;
-    }
-    
-    public final a aZp(String paramString)
-    {
-      this.LsP.IuC = paramString;
-      return this;
-    }
-    
-    public final a afN(int paramInt)
+    public final a aoO(int paramInt)
     {
       AppMethodBeat.i(159307);
-      this.LsP.title = this.mContext.getString(paramInt);
+      this.QNF.title = com.tencent.mm.ui.e.a.kn(this.mContext).getString(paramInt);
       AppMethodBeat.o(159307);
       return this;
     }
     
-    public final a afO(int paramInt)
+    public final a aoP(int paramInt)
     {
-      this.LsP.FjE = paramInt;
+      this.QNF.Kaw = paramInt;
       return this;
     }
     
-    public final a afP(int paramInt)
+    public final a aoQ(int paramInt)
     {
-      this.LsP.IuQ = paramInt;
+      this.QNF.NIp = paramInt;
       return this;
     }
     
-    public final a afQ(int paramInt)
+    public final a aoR(int paramInt)
     {
-      this.LsP.IuT = paramInt;
+      this.QNF.NIs = paramInt;
       return this;
     }
     
-    public final a afR(int paramInt)
+    public final a aoS(int paramInt)
     {
       AppMethodBeat.i(159308);
-      this.LsP.Iuy = this.mContext.getString(paramInt);
+      this.QNF.NHX = com.tencent.mm.ui.e.a.kn(this.mContext).getString(paramInt);
       AppMethodBeat.o(159308);
       return this;
     }
     
-    public final a afS(int paramInt)
+    public final a aoT(int paramInt)
     {
-      this.LsP.IuR = paramInt;
+      this.QNF.NIq = paramInt;
       return this;
     }
     
-    public final a afT(int paramInt)
+    public final a aoU(int paramInt)
     {
-      this.LsP.IuS = paramInt;
+      this.QNF.NIr = paramInt;
       return this;
     }
     
-    public final a afU(int paramInt)
+    public final a aoV(int paramInt)
     {
       AppMethodBeat.i(159310);
-      this.LsP.IuB = this.mContext.getString(paramInt);
+      this.QNF.NIa = com.tencent.mm.ui.e.a.kn(this.mContext).getString(paramInt);
       AppMethodBeat.o(159310);
       return this;
     }
     
-    public final a afV(int paramInt)
+    public final a aoW(int paramInt)
     {
       AppMethodBeat.i(159311);
-      this.LsP.IuC = this.mContext.getString(paramInt);
+      this.QNF.NIb = com.tencent.mm.ui.e.a.kn(this.mContext).getString(paramInt);
       AppMethodBeat.o(159311);
       return this;
     }
     
-    public final a afW(int paramInt)
+    public final a aoX(int paramInt)
     {
-      this.LsP.IuX = paramInt;
+      this.QNF.NIw = paramInt;
       return this;
     }
     
-    public final a afX(int paramInt)
+    public final a aoY(int paramInt)
     {
-      this.LsP.IuW = paramInt;
+      this.QNF.NIv = paramInt;
       return this;
     }
     
-    public final a ar(CharSequence paramCharSequence)
+    public final a az(CharSequence paramCharSequence)
     {
-      this.LsP.title = paramCharSequence;
+      this.QNF.title = paramCharSequence;
       return this;
     }
     
-    public final a as(CharSequence paramCharSequence)
+    public final a b(Bitmap paramBitmap, boolean paramBoolean, int paramInt)
     {
-      this.LsP.Iul = paramCharSequence;
+      this.QNF.QNx = paramBitmap;
+      this.QNF.NIh = paramBoolean;
+      this.QNF.NIt = paramInt;
       return this;
     }
     
-    public final a at(CharSequence paramCharSequence)
+    public final a bon(String paramString)
     {
-      this.LsP.Iuz = paramCharSequence;
+      this.QNF.title = paramString;
+      return this;
+    }
+    
+    public final a boo(String paramString)
+    {
+      this.QNF.NHX = paramString;
+      return this;
+    }
+    
+    public final a bop(String paramString)
+    {
+      this.QNF.NHZ = paramString;
+      return this;
+    }
+    
+    public final a boq(String paramString)
+    {
+      this.QNF.thumbPath = paramString;
+      return this;
+    }
+    
+    public final a bor(String paramString)
+    {
+      this.QNF.NHL = paramString;
+      return this;
+    }
+    
+    public final a bos(String paramString)
+    {
+      this.QNF.NHM = paramString;
+      return this;
+    }
+    
+    public final a bot(String paramString)
+    {
+      this.QNF.QNs = paramString;
+      return this;
+    }
+    
+    public final a bou(String paramString)
+    {
+      this.QNF.NIa = paramString;
+      return this;
+    }
+    
+    public final a bov(String paramString)
+    {
+      this.QNF.NIb = paramString;
       return this;
     }
     
     public final a c(DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.LsP.IuJ = paramOnClickListener;
+      this.QNF.NIi = paramOnClickListener;
       return this;
     }
     
     public final a c(b paramb)
     {
-      this.LsP.LsF = paramb;
+      this.QNF.QNv = paramb;
       return this;
     }
     
     public final a d(DialogInterface.OnClickListener paramOnClickListener)
     {
-      this.LsP.IuK = paramOnClickListener;
+      this.QNF.NIj = paramOnClickListener;
       return this;
     }
     
-    public final a e(DialogInterface.OnCancelListener paramOnCancelListener)
+    public final a f(DialogInterface.OnCancelListener paramOnCancelListener)
     {
-      this.LsP.XL = paramOnCancelListener;
+      this.QNF.XY = paramOnCancelListener;
       return this;
     }
     
-    public final d fQv()
+    public final d hbn()
     {
       AppMethodBeat.i(159312);
       d locald = new d(this.mContext, (byte)0);
-      locald.a(this.LsP);
+      locald.a(this.QNF);
       AppMethodBeat.o(159312);
       return locald;
     }
     
-    public final a hd(View paramView)
+    public final a hs(View paramView)
     {
-      this.LsP.vd = paramView;
+      this.QNF.vk = paramView;
       return this;
     }
     
-    public final a he(View paramView)
+    public final a ht(View paramView)
     {
-      this.LsP.IuO = paramView;
+      this.QNF.NIn = paramView;
       return this;
     }
     
     public final void show()
     {
-      AppMethodBeat.i(224515);
-      fQv().show();
-      AppMethodBeat.o(224515);
-    }
-    
-    public final a zd(boolean paramBoolean)
-    {
-      this.LsP.IuH = paramBoolean;
-      return this;
-    }
-    
-    public final a ze(boolean paramBoolean)
-    {
-      this.LsP.Iuo = paramBoolean;
-      return this;
-    }
-    
-    public final a zf(boolean paramBoolean)
-    {
-      this.LsP.ov = paramBoolean;
-      return this;
-    }
-    
-    public final a zg(boolean paramBoolean)
-    {
-      this.LsP.IuG = paramBoolean;
-      return this;
+      AppMethodBeat.i(258310);
+      hbn().show();
+      AppMethodBeat.o(258310);
     }
     
     public static abstract interface a
     {
-      public abstract void y(ImageView paramImageView, String paramString);
+      public abstract void C(ImageView paramImageView, String paramString);
     }
     
     public static abstract interface b
     {
-      public abstract void cza();
+      public abstract void cXd();
     }
     
     public static abstract interface c
     {
-      public abstract void fgn();
+      public abstract void gpw();
     }
     
     public static abstract interface d

@@ -4,23 +4,23 @@ import com.tencent.mm.plugin.notification.ui.FailSendMsgNotification;
 
 public abstract interface c
 {
-  public abstract void dyS();
+  public abstract void eyE();
   
-  public abstract void dyX();
+  public abstract FailSendMsgNotification eyG();
   
-  public abstract FailSendMsgNotification dyZ();
+  public abstract void eyP();
   
-  public abstract void dzi();
+  public abstract void eyQ();
   
-  public abstract void dzj();
+  public abstract void eyR();
   
-  public abstract void dzk();
+  public abstract void eyS();
   
-  public abstract void dzl();
+  public abstract void eyz();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.c.c
  * JD-Core Version:    0.7.0.1
  */

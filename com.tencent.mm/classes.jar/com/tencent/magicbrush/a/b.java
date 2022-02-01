@@ -7,19 +7,27 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class b
 {
-  private static a cyw;
+  private static a cMD;
   private static boolean sLibraryLoaded;
   
   static
   {
     AppMethodBeat.i(139960);
     sLibraryLoaded = false;
-    cyw = new a()
+    cMD = new a()
     {
+      public final String dZ(String paramAnonymousString)
+      {
+        AppMethodBeat.i(206805);
+        paramAnonymousString = h.findLibPath(paramAnonymousString);
+        AppMethodBeat.o(206805);
+        return paramAnonymousString;
+      }
+      
       public final void loadLibrary(String paramAnonymousString)
       {
         AppMethodBeat.i(139955);
-        h.dK(paramAnonymousString);
+        h.ef(paramAnonymousString);
         AppMethodBeat.o(139955);
       }
     };
@@ -29,17 +37,25 @@ public final class b
   public static void a(a parama)
   {
     AppMethodBeat.i(139957);
-    cyw = parama;
+    cMD = parama;
     a.a(new a.a()
     {
       public final void loadLibrary(String paramAnonymousString)
       {
         AppMethodBeat.i(139956);
-        this.cyx.loadLibrary(paramAnonymousString);
+        this.cME.loadLibrary(paramAnonymousString);
         AppMethodBeat.o(139956);
       }
     });
     AppMethodBeat.o(139957);
+  }
+  
+  public static String dZ(String paramString)
+  {
+    AppMethodBeat.i(206806);
+    paramString = cMD.dZ(paramString);
+    AppMethodBeat.o(206806);
+    return paramString;
   }
   
   public static void loadLibraries()
@@ -47,35 +63,38 @@ public final class b
     AppMethodBeat.i(139959);
     if (sLibraryLoaded)
     {
+      c.c.i("MagicBrush", "library already loaded", new Object[0]);
       AppMethodBeat.o(139959);
       return;
     }
+    long l1 = h.currentTicks();
     c.c.i("MagicBrush", "start loadLibraries", new Object[0]);
-    cyw.loadLibrary("mmphysx");
-    long l1 = h.HQ();
-    cyw.loadLibrary("mmv8");
-    long l2 = h.HQ();
-    cyw.loadLibrary("magicbrush");
+    long l2 = h.currentTicks();
+    cMD.loadLibrary("mmv8");
+    long l3 = h.currentTicks();
+    cMD.loadLibrary("magicbrush");
     sLibraryLoaded = true;
-    c.c.i("MagicBrush", "load mmv8 cost [%d]ms, load magicbrush cost [%d]ms", new Object[] { Long.valueOf(l2 - l1), Long.valueOf(h.aO(l2)) });
+    c.c.i("MagicBrush", "total[%d]ms load mmv8 cost [%d]ms, load magicbrush cost [%d]ms", new Object[] { Long.valueOf(h.ticksToNow(l1)), Long.valueOf(l3 - l2), Long.valueOf(h.ticksToNow(l3)) });
     AppMethodBeat.o(139959);
   }
   
   public static void loadLibrary(String paramString)
   {
     AppMethodBeat.i(139958);
-    cyw.loadLibrary(paramString);
+    cMD.loadLibrary(paramString);
     AppMethodBeat.o(139958);
   }
   
   public static abstract interface a
   {
+    public abstract String dZ(String paramString);
+    
     public abstract void loadLibrary(String paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.magicbrush.a.b
  * JD-Core Version:    0.7.0.1
  */

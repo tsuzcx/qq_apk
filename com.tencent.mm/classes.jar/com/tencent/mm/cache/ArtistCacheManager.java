@@ -4,7 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -14,85 +15,102 @@ import java.util.Set;
 public class ArtistCacheManager
   extends BroadcastReceiver
 {
-  private static ArtistCacheManager fKb;
-  private static HashMap<String, a> fKc;
-  private static HashSet<com.tencent.mm.e.a> fKd;
-  private String fKe;
+  private static ArtistCacheManager gpq;
+  public static HashMap<String, a> gpr;
+  private static HashSet<com.tencent.mm.e.a> gps;
+  public String gpt;
   
   static
   {
     AppMethodBeat.i(9186);
-    fKc = new HashMap();
-    fKd = new HashSet();
+    gpr = new HashMap();
+    gps = new HashSet();
     AppMethodBeat.o(9186);
   }
   
-  public static ArtistCacheManager XN()
+  public static ArtistCacheManager alA()
   {
     AppMethodBeat.i(9181);
-    if (fKb == null) {
-      fKb = new ArtistCacheManager();
+    if (gpq == null) {
+      gpq = new ArtistCacheManager();
     }
-    ArtistCacheManager localArtistCacheManager = fKb;
+    ArtistCacheManager localArtistCacheManager = gpq;
     AppMethodBeat.o(9181);
     return localArtistCacheManager;
   }
   
-  public static <T extends f> T a(String paramString, com.tencent.mm.e.a parama)
+  public final void Dn(String paramString)
   {
-    AppMethodBeat.i(195424);
-    if (fKc.containsKey(paramString))
-    {
-      paramString = ((a)fKc.get(paramString)).c(parama);
-      AppMethodBeat.o(195424);
-      return paramString;
+    AppMethodBeat.i(204745);
+    this.gpt = paramString;
+    if (!gpr.containsKey(paramString)) {
+      gpr.put(paramString, new a());
     }
-    ae.e("MicroMsg.ArtistCacheManager", "[getArtistCache] id is not contains! %s", new Object[] { paramString });
-    AppMethodBeat.o(195424);
-    return null;
+    AppMethodBeat.o(204745);
   }
   
-  public final void XO()
+  public final void Do(String paramString)
   {
-    AppMethodBeat.i(9185);
-    ae.i("MicroMsg.ArtistCacheManager", "[clearAllCache]");
-    Iterator localIterator = fKc.entrySet().iterator();
-    while (localIterator.hasNext()) {
-      ((a)((Map.Entry)localIterator.next()).getValue()).clearAll();
+    AppMethodBeat.i(204746);
+    this.gpt = null;
+    if (gpr.containsKey(paramString))
+    {
+      ((a)gpr.get(paramString)).clearAll();
+      gpr.remove(paramString);
     }
-    fKd.clear();
-    fKb = null;
-    com.tencent.mm.sdk.g.b.c(new Runnable()
+    ThreadPool.post(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(9177);
-        com.tencent.mm.cl.a.aZz(com.tencent.mm.loader.j.b.ass());
-        AppMethodBeat.o(9177);
+        AppMethodBeat.i(9176);
+        com.tencent.mm.cl.a.boE(com.tencent.mm.loader.j.b.aKS());
+        AppMethodBeat.o(9176);
       }
     }, "MicroMsg.ArtistCacheManager[clearAllCache]");
-    c.XS().cEm.clear();
-    AppMethodBeat.o(9185);
+    AppMethodBeat.o(204746);
   }
   
   public final <T extends f> T a(com.tencent.mm.e.a parama)
   {
     AppMethodBeat.i(9182);
-    if (fKc.containsKey(this.fKe))
+    if (gpr.containsKey(this.gpt))
     {
-      parama = ((a)fKc.get(this.fKe)).c(parama);
+      parama = ((a)gpr.get(this.gpt)).c(parama);
       AppMethodBeat.o(9182);
       return parama;
     }
-    ae.e("MicroMsg.ArtistCacheManager", "[getArtistCache] id is not contains! %s", new Object[] { this.fKe });
+    Log.e("MicroMsg.ArtistCacheManager", "[getArtistCache] id is not contains! %s", new Object[] { this.gpt });
     AppMethodBeat.o(9182);
     return null;
+  }
+  
+  public final void alB()
+  {
+    AppMethodBeat.i(9185);
+    Log.i("MicroMsg.ArtistCacheManager", "[clearAllCache]");
+    Iterator localIterator = gpr.entrySet().iterator();
+    while (localIterator.hasNext()) {
+      ((a)((Map.Entry)localIterator.next()).getValue()).clearAll();
+    }
+    gps.clear();
+    gpq = null;
+    ThreadPool.post(new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(9177);
+        com.tencent.mm.cl.a.boE(com.tencent.mm.loader.j.b.aKS());
+        AppMethodBeat.o(9177);
+      }
+    }, "MicroMsg.ArtistCacheManager[clearAllCache]");
+    c.alF().map.clear();
+    AppMethodBeat.o(9185);
   }
   
   public final boolean b(com.tencent.mm.e.a parama)
   {
     AppMethodBeat.i(9183);
-    if ((fKc.containsKey(this.fKe)) && (((a)fKc.get(this.fKe)).fKh.containsKey(parama)))
+    if ((gpr.containsKey(this.gpt)) && (((a)gpr.get(this.gpt)).gpw.containsKey(parama)))
     {
       AppMethodBeat.o(9183);
       return true;
@@ -105,60 +123,29 @@ public class ArtistCacheManager
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     AppMethodBeat.i(9184);
-    ae.i("MicroMsg.ArtistCacheManager", "[onReceive]");
+    Log.i("MicroMsg.ArtistCacheManager", "[onReceive]");
     if ((paramIntent != null) && (paramIntent.getAction().equals("com.tencent.mm.plugin.photoedit.action.clear"))) {
-      XO();
+      alB();
     }
     AppMethodBeat.o(9184);
   }
   
-  public final void uX(String paramString)
+  public final class a
   {
-    AppMethodBeat.i(195422);
-    this.fKe = paramString;
-    if (!fKc.containsKey(paramString)) {
-      fKc.put(paramString, new a());
-    }
-    AppMethodBeat.o(195422);
-  }
-  
-  public final void uY(String paramString)
-  {
-    AppMethodBeat.i(195423);
-    this.fKe = null;
-    if (fKc.containsKey(paramString))
-    {
-      ((a)fKc.get(paramString)).clearAll();
-      fKc.remove(paramString);
-    }
-    com.tencent.mm.sdk.g.b.c(new Runnable()
-    {
-      public final void run()
-      {
-        AppMethodBeat.i(9176);
-        com.tencent.mm.cl.a.aZz(com.tencent.mm.loader.j.b.ass());
-        AppMethodBeat.o(9176);
-      }
-    }, "MicroMsg.ArtistCacheManager[clearAllCache]");
-    AppMethodBeat.o(195423);
-  }
-  
-  final class a
-  {
-    HashMap<com.tencent.mm.e.a, f> fKh;
+    HashMap<com.tencent.mm.e.a, f> gpw;
     
     a()
     {
       AppMethodBeat.i(9179);
-      this.fKh = new HashMap();
+      this.gpw = new HashMap();
       AppMethodBeat.o(9179);
     }
     
     private static f d(com.tencent.mm.e.a parama)
     {
-      AppMethodBeat.i(195421);
+      AppMethodBeat.i(204744);
       Object localObject = null;
-      switch (ArtistCacheManager.3.fKg[parama.ordinal()])
+      switch (ArtistCacheManager.3.gpv[parama.ordinal()])
       {
       default: 
         parama = localObject;
@@ -168,7 +155,7 @@ public class ArtistCacheManager
         if (parama != null) {
           parama.onCreate();
         }
-        AppMethodBeat.o(195421);
+        AppMethodBeat.o(204744);
         return parama;
         parama = new b();
         continue;
@@ -184,23 +171,23 @@ public class ArtistCacheManager
     
     public final f c(com.tencent.mm.e.a parama)
     {
-      AppMethodBeat.i(195420);
-      if (!this.fKh.containsKey(parama))
+      AppMethodBeat.i(204743);
+      if (!this.gpw.containsKey(parama))
       {
         f localf = d(parama);
-        if ((localf != null) && (!this.fKh.containsKey(parama))) {
-          this.fKh.put(parama, localf);
+        if ((localf != null) && (!this.gpw.containsKey(parama))) {
+          this.gpw.put(parama, localf);
         }
       }
-      parama = (f)this.fKh.get(parama);
-      AppMethodBeat.o(195420);
+      parama = (f)this.gpw.get(parama);
+      AppMethodBeat.o(204743);
       return parama;
     }
     
     public final void clearAll()
     {
       AppMethodBeat.i(9180);
-      Iterator localIterator = this.fKh.entrySet().iterator();
+      Iterator localIterator = this.gpw.entrySet().iterator();
       while (localIterator.hasNext()) {
         ((f)((Map.Entry)localIterator.next()).getValue()).onDestroy();
       }
@@ -210,7 +197,7 @@ public class ArtistCacheManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.cache.ArtistCacheManager
  * JD-Core Version:    0.7.0.1
  */

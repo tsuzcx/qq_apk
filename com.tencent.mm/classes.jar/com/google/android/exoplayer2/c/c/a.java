@@ -6,7 +6,7 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 final class a
   implements b.a
 {
-  private final long bdM;
+  private final long bdJ;
   private final int bitrate;
   private final long firstFramePosition;
   
@@ -18,7 +18,7 @@ final class a
     if (paramLong2 == -1L) {}
     for (paramLong1 = -9223372036854775807L;; paramLong1 = N(paramLong2))
     {
-      this.bdM = paramLong1;
+      this.bdJ = paramLong1;
       AppMethodBeat.o(92034);
       return;
     }
@@ -27,12 +27,12 @@ final class a
   public final long L(long paramLong)
   {
     AppMethodBeat.i(92035);
-    if (this.bdM == -9223372036854775807L)
+    if (this.bdJ == -9223372036854775807L)
     {
       AppMethodBeat.o(92035);
       return 0L;
     }
-    long l = x.l(paramLong, this.bdM);
+    long l = x.l(paramLong, this.bdJ);
     paramLong = this.firstFramePosition;
     l = l * this.bitrate / 8000000L;
     AppMethodBeat.o(92035);
@@ -49,17 +49,17 @@ final class a
   
   public final long getDurationUs()
   {
-    return this.bdM;
+    return this.bdJ;
   }
   
-  public final boolean up()
+  public final boolean uu()
   {
-    return this.bdM != -9223372036854775807L;
+    return this.bdJ != -9223372036854775807L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.c.c.a
  * JD-Core Version:    0.7.0.1
  */

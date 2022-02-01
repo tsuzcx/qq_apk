@@ -1,69 +1,59 @@
 package com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi;
 
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
-import d.g.a.b;
-import d.g.b.p;
-import d.v;
-import d.z;
+import com.tencent.mm.plugin.appbrand.jsapi.cl;
+import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.MMActivity.a;
+import kotlin.g.a.b;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.x;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/ProxyTask;", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask;", "()V", "TAG", "", "errorReturn", "", "reason", "handleRequest", "_req", "Lcom/tencent/mm/plugin/appbrand/ipc/AppBrandProxyUIProcessTask$ProcessRequest;", "plugin-appbrand-integration_release"})
-final class l
-  extends AppBrandProxyUIProcessTask
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalPrivateOpenUrl;", "Lcom/tencent/mm/plugin/appbrand/jsapi/JsApiPrivateOpenUrl;", "()V", "startWebViewUI", "", "context", "Landroid/content/Context;", "intent", "Landroid/content/Intent;", "component", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponentWithExtra;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+public final class l
+  extends cl
 {
-  private final String TAG = "MicroMsg.AppBrand.FunctionalDirectApi.ProxyTask";
+  public static final int CTRL_INDEX = 406;
+  public static final String NAME = "private_openUrl";
+  @Deprecated
+  public static final a nbG;
   
-  private final void SQ(String paramString)
+  static
   {
-    AppMethodBeat.i(223707);
-    com.tencent.mm.sdk.platformtools.ae.e(this.TAG, "errorReturn reason:".concat(String.valueOf(paramString)));
-    b(null);
-    AppMethodBeat.o(223707);
+    AppMethodBeat.i(228925);
+    nbG = new a((byte)0);
+    AppMethodBeat.o(228925);
   }
   
-  public final void a(AppBrandProxyUIProcessTask.ProcessRequest paramProcessRequest)
+  public final void a(Context paramContext, final Intent paramIntent, final k paramk, final int paramInt)
   {
-    AppMethodBeat.i(223706);
-    if (!(paramProcessRequest instanceof ProxyRequest)) {
-      paramProcessRequest = null;
-    }
-    for (;;)
+    AppMethodBeat.i(228924);
+    p.h(paramIntent, "intent");
+    p.h(paramk, "component");
+    d.b(paramContext, (b)new b(this, paramk, paramInt, paramIntent));
+    AppMethodBeat.o(228924);
+  }
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/luggage/export/functionalpage/jsapi/FunctionalPrivateOpenUrl$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "plugin-appbrand-integration_release"})
+  static final class a {}
+  
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "activity", "Lcom/tencent/mm/ui/MMActivity;", "invoke"})
+  static final class b
+    extends q
+    implements b<MMActivity, x>
+  {
+    b(l paraml, k paramk, int paramInt, Intent paramIntent)
     {
-      paramProcessRequest = (ProxyRequest)paramProcessRequest;
-      if (paramProcessRequest == null)
-      {
-        SQ("Invalid ProxyRequest");
-        AppMethodBeat.o(223706);
-        return;
-      }
-      Object localObject = a.lTE;
-      localObject = a.lTE;
-      localObject = (b)a.c(a.btc(), paramProcessRequest.lUc);
-      paramProcessRequest = (AppBrandProxyUIProcessTask.ProcessRequest)localObject;
-      if (localObject == null)
-      {
-        SQ("Invalid functionHash");
-        paramProcessRequest = z.Nhr;
-      }
-      if (paramProcessRequest == null)
-      {
-        paramProcessRequest = new v("null cannot be cast to non-null type com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi.ProxyFunction /* = (com.tencent.mm.ui.MMActivity) -> kotlin.Unit */");
-        AppMethodBeat.o(223706);
-        throw paramProcessRequest;
-      }
-      paramProcessRequest = (b)d.g.b.ae.p(paramProcessRequest, 1);
-      localObject = bis();
-      p.g(localObject, "activityContext");
-      paramProcessRequest.invoke(localObject);
-      AppMethodBeat.o(223706);
-      return;
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.export.functionalpage.jsapi.l
  * JD-Core Version:    0.7.0.1
  */

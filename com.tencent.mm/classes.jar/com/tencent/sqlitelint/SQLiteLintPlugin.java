@@ -37,10 +37,10 @@ public class SQLiteLintPlugin
     com.tencent.matrix.report.c localc = new com.tencent.matrix.report.c(paramSQLiteLintIssue.type);
     localc.key = paramSQLiteLintIssue.id;
     JSONObject localJSONObject = new JSONObject();
-    localc.cFG = localJSONObject;
+    localc.cWe = localJSONObject;
     try
     {
-      localJSONObject.put("machine", a.aP(getApplication()));
+      localJSONObject.put("machine", a.bj(getApplication()));
       localJSONObject.put("id", paramSQLiteLintIssue.id);
       localJSONObject.put("dbPath", paramSQLiteLintIssue.dbPath);
       localJSONObject.put("level", paramSQLiteLintIssue.level);
@@ -104,6 +104,7 @@ public class SQLiteLintPlugin
   {
     AppMethodBeat.i(52868);
     super.init(paramApplication, paramc);
+    SQLiteLint.init();
     SQLiteLint.setPackageName(paramApplication);
     this.mContext = paramApplication.getApplicationContext();
     AppMethodBeat.o(52868);
@@ -181,7 +182,7 @@ public class SQLiteLintPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.sqlitelint.SQLiteLintPlugin
  * JD-Core Version:    0.7.0.1
  */

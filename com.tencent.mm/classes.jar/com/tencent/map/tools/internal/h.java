@@ -11,14 +11,14 @@ import java.util.List;
 
 public class h
 {
-  private final String a;
-  private Context b;
+  Context a;
+  private final String b;
   
   public h(Context paramContext)
   {
     AppMethodBeat.i(180795);
-    this.a = h.class.getSimpleName();
-    this.b = paramContext;
+    this.b = h.class.getSimpleName();
+    this.a = paramContext;
     AppMethodBeat.o(180795);
   }
   
@@ -31,7 +31,7 @@ public class h
       AppMethodBeat.o(180797);
       return 0;
     }
-    Object localObject2 = this.b;
+    Object localObject2 = this.a;
     paramContext = new ArrayList();
     new ArrayList();
     new ArrayList();
@@ -41,7 +41,7 @@ public class h
       paramContext.addAll((Collection)localObject3);
       if (y.e == 1)
       {
-        i = s.a(this.b).a();
+        i = s.a(this.a).a;
         localObject2 = x.b(x.a((Context)localObject2, x.c + File.separator + t.F[i]));
         if (localObject2 != null) {
           paramContext.addAll((Collection)localObject2);
@@ -50,11 +50,11 @@ public class h
     }
     if (paramContext.size() == 0)
     {
-      g.a(this.b).a("DLC", "localComp file error");
+      g.a(this.a).a("DLC", "localComp file error");
       AppMethodBeat.o(180797);
       return 1;
     }
-    localObject2 = x.b(this.b, t.v, "preference_default");
+    localObject2 = x.b(this.a, t.v, "preference_default");
     localObject3 = x.a((String)localObject2);
     if ((!((String)localObject2).equals("preference_default")) && (!((List)localObject3).isEmpty()) && (x.a((List)localObject1, (List)localObject3)))
     {
@@ -98,7 +98,7 @@ public class h
   private void a(String paramString)
   {
     AppMethodBeat.i(180798);
-    paramString = new File(x.b(this.b, paramString));
+    paramString = new File(x.b(this.a, paramString));
     if (paramString.exists()) {
       paramString.delete();
     }
@@ -108,27 +108,7 @@ public class h
   public final boolean a()
   {
     AppMethodBeat.i(180796);
-    s.a(this.b);
-    x.a(this.b, x.a);
-    x.a(this.b, x.b);
-    x.a(this.b, x.c);
-    String str1 = t.k;
-    String str2 = x.b(this.b, t.C, "");
-    g.a(this.b).a("DCV", str2 + "_" + str1);
-    if (!str1.equals(str2))
-    {
-      boolean bool = l.a(this.b, str1);
-      AppMethodBeat.o(180796);
-      return bool;
-    }
-    AppMethodBeat.o(180796);
-    return true;
-  }
-  
-  public final boolean b()
-  {
-    AppMethodBeat.i(224079);
-    Object localObject1 = this.b;
+    Object localObject1 = this.a;
     int i = x.d((Context)localObject1);
     if (i <= 3) {
       x.a((Context)localObject1, t.A, "default");
@@ -147,7 +127,7 @@ public class h
     {
       if (i == 0)
       {
-        AppMethodBeat.o(224079);
+        AppMethodBeat.o(180796);
         return false;
         if (y.e == -1) {
           y.e = x.b((List)localObject3);
@@ -170,14 +150,14 @@ public class h
           }
           else if (i <= 3)
           {
-            localObject2 = this.b;
+            localObject2 = this.a;
             if ((x.b((Context)localObject2, t.u, "default").equals(t.k)) && (!((List)localObject5).isEmpty()))
             {
               localObject1 = x.b((Context)localObject2, t.v, "preference_default");
               localObject4 = x.a((String)localObject1);
               if ((((String)localObject1).equals("preference_default")) || (((List)localObject4).isEmpty()) || (!x.a((List)localObject5, (List)localObject4)))
               {
-                j = s.a((Context)localObject2).a();
+                j = s.a((Context)localObject2).a;
                 localObject4 = new ArrayList();
                 localArrayList1 = new ArrayList();
                 localArrayList2 = new ArrayList();
@@ -298,20 +278,20 @@ public class h
       break;
       i = 4;
       break;
-      i = a(this.b);
+      i = a(this.a);
       if ((i >= 0) && (i < 4))
       {
-        AppMethodBeat.o(224079);
+        AppMethodBeat.o(180796);
         return false;
       }
-      AppMethodBeat.o(224079);
+      AppMethodBeat.o(180796);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.internal.h
  * JD-Core Version:    0.7.0.1
  */

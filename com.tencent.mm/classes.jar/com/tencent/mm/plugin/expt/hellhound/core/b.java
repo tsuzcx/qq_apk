@@ -11,13 +11,14 @@ import android.text.TextUtils;
 import android.util.Pair;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bou;
-import com.tencent.mm.protocal.protobuf.cia;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.protocal.protobuf.cbm;
+import com.tencent.mm.protocal.protobuf.cyh;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.lang.reflect.Method;
 import java.math.BigInteger;
 import java.util.Iterator;
@@ -26,36 +27,167 @@ import java.util.regex.Pattern;
 
 public final class b
 {
-  public static String qYF = "com.tencent.mm.ui.conversation.MainUI";
-  public static String qYG = "com.tencent.mm.ui.contact.AddressUI.AddressUIFragment";
-  public static String qYH = "com.tencent.mm.ui.FindMoreFriendsUI";
-  public static String qYI = "com.tencent.mm.ui.MoreTabUI";
-  public static String qYJ = "com.tencent.mm.ui.chatting.ChattingUIFragment";
-  public static String qYK = "MainUI";
-  public static String qYL = "AddressUIFragment";
-  public static String qYM = "FindMoreFriendsUI";
-  public static String qYN = "MoreTabUI";
-  public static String qYO = "ChattingUIFragment";
+  public static String syW = "com.tencent.mm.ui.conversation.MainUI";
+  public static String syX = "com.tencent.mm.ui.contact.AddressUI.AddressUIFragment";
+  public static String syY = "com.tencent.mm.ui.FindMoreFriendsUI";
+  public static String syZ = "com.tencent.mm.ui.MoreTabUI";
+  public static String sza = "com.tencent.mm.ui.chatting.ChattingUIFragment";
+  public static String szb = "MainUI";
+  public static String szc = "AddressUIFragment";
+  public static String szd = "FindMoreFriendsUI";
+  public static String sze = "MoreTabUI";
+  public static String szf = "ChattingUIFragment";
   
-  public static float Q(Activity paramActivity)
+  public static float O(Activity paramActivity)
   {
-    AppMethodBeat.i(195978);
+    AppMethodBeat.i(220405);
     if (paramActivity == null)
     {
-      AppMethodBeat.o(195978);
+      AppMethodBeat.o(220405);
       return 0.0F;
     }
     paramActivity = paramActivity.getResources();
     float f2 = paramActivity.getDimensionPixelSize(paramActivity.getIdentifier("status_bar_height", "dimen", "android"));
     float f1 = f2;
     if (f2 <= 0.0F) {
-      f1 = paramActivity.getDimensionPixelSize(2131166269);
+      f1 = paramActivity.getDimensionPixelSize(2131166312);
     }
-    AppMethodBeat.o(195978);
+    AppMethodBeat.o(220405);
     return f1;
   }
   
-  public static boolean aeA(String paramString)
+  public static boolean aoA(String paramString)
+  {
+    AppMethodBeat.i(169260);
+    boolean bool = "com.tencent.mm.ui.contact.GroupCardSelectUI".equals(paramString);
+    AppMethodBeat.o(169260);
+    return bool;
+  }
+  
+  public static boolean aoB(String paramString)
+  {
+    AppMethodBeat.i(169261);
+    boolean bool = "com.tencent.mm.ui.contact.SelectContactUI".equals(paramString);
+    AppMethodBeat.o(169261);
+    return bool;
+  }
+  
+  public static boolean aoC(String paramString)
+  {
+    AppMethodBeat.i(169262);
+    boolean bool = "com.tencent.mm.app.WeChatSplashActivity".equals(paramString);
+    AppMethodBeat.o(169262);
+    return bool;
+  }
+  
+  public static boolean aoD(String paramString)
+  {
+    AppMethodBeat.i(169263);
+    if ((paramString != null) && (paramString.startsWith("com.tencent.mm.splash.")))
+    {
+      AppMethodBeat.o(169263);
+      return true;
+    }
+    AppMethodBeat.o(169263);
+    return false;
+  }
+  
+  public static String aoE(String paramString)
+  {
+    AppMethodBeat.i(121846);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(121846);
+      return null;
+    }
+    paramString = paramString.replace("/", ".");
+    int i = paramString.lastIndexOf(".");
+    if ((i < 0) || (i >= paramString.length() - 1))
+    {
+      AppMethodBeat.o(121846);
+      return paramString;
+    }
+    paramString = paramString.substring(i + 1);
+    AppMethodBeat.o(121846);
+    return paramString;
+  }
+  
+  public static cbm aoF(String paramString)
+  {
+    AppMethodBeat.i(220401);
+    paramString = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.aqQ(paramString);
+    if ((paramString == null) || (paramString.isEmpty()))
+    {
+      AppMethodBeat.o(220401);
+      return null;
+    }
+    paramString = (cbm)paramString.get(paramString.size() - 1);
+    AppMethodBeat.o(220401);
+    return paramString;
+  }
+  
+  public static boolean aoG(String paramString)
+  {
+    AppMethodBeat.i(169264);
+    boolean bool = "com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI".equals(paramString);
+    AppMethodBeat.o(169264);
+    return bool;
+  }
+  
+  public static boolean aoH(String paramString)
+  {
+    AppMethodBeat.i(169265);
+    boolean bool = "com.tencent.mm.plugin.account.ui.LoginPasswordUI".equals(paramString);
+    AppMethodBeat.o(169265);
+    return bool;
+  }
+  
+  public static boolean aoI(String paramString)
+  {
+    AppMethodBeat.i(121850);
+    boolean bool = Pattern.matches("^(" + "com.tencent.mm.plugin.appbrand.ui.AppBrandUI" + ")[0-9]*$", paramString);
+    AppMethodBeat.o(121850);
+    return bool;
+  }
+  
+  public static boolean aoJ(String paramString)
+  {
+    AppMethodBeat.i(121851);
+    if (TextUtils.isEmpty(paramString))
+    {
+      AppMethodBeat.o(121851);
+      return false;
+    }
+    boolean bool = Pattern.matches("^(" + "AppBrandUI" + ")[0-9]*$", paramString);
+    AppMethodBeat.o(121851);
+    return bool;
+  }
+  
+  public static boolean aoK(String paramString)
+  {
+    AppMethodBeat.i(121852);
+    boolean bool = "AppBrandLauncherUI".equals(aoE(paramString));
+    AppMethodBeat.o(121852);
+    return bool;
+  }
+  
+  public static boolean aoL(String paramString)
+  {
+    AppMethodBeat.i(169266);
+    boolean bool = "com.tencent.mm.plugin.base.stub.WXShortcutEntryActivity".equals(paramString);
+    AppMethodBeat.o(169266);
+    return bool;
+  }
+  
+  public static boolean aoM(String paramString)
+  {
+    AppMethodBeat.i(169267);
+    boolean bool = "com.tencent.mm.plugin.base.stub.WXEntryActivity".equals(paramString);
+    AppMethodBeat.o(169267);
+    return bool;
+  }
+  
+  public static boolean aoN(String paramString)
   {
     AppMethodBeat.i(169268);
     boolean bool = "com.tencent.mm.plugin.setting.ui.setting.FakeSwitchAccountUI".equals(paramString);
@@ -63,7 +195,7 @@ public final class b
     return bool;
   }
   
-  public static boolean aeB(String paramString)
+  public static boolean aoO(String paramString)
   {
     AppMethodBeat.i(169269);
     boolean bool = "com.tencent.mm.plugin.voip.ui.VideoActivity".equals(paramString);
@@ -71,7 +203,7 @@ public final class b
     return bool;
   }
   
-  public static boolean aeC(String paramString)
+  public static boolean aoP(String paramString)
   {
     AppMethodBeat.i(169270);
     boolean bool = "com.tencent.mm.plugin.sns.ui.SnsOnlineVideoActivity".equals(paramString);
@@ -79,10 +211,10 @@ public final class b
     return bool;
   }
   
-  public static Fragment aeD(String paramString)
+  public static Fragment aoQ(String paramString)
   {
     AppMethodBeat.i(121854);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.h.c(cph());
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.h.c(cNA());
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -100,7 +232,7 @@ public final class b
     return null;
   }
   
-  public static boolean aeE(String paramString)
+  public static boolean aoR(String paramString)
   {
     AppMethodBeat.i(169271);
     boolean bool = "com.tencent.mm.plugin.scanner.ui.BaseScanUI".equals(paramString);
@@ -108,34 +240,34 @@ public final class b
     return bool;
   }
   
-  public static boolean aeF(String paramString)
+  public static boolean aoS(String paramString)
   {
-    AppMethodBeat.i(195975);
+    AppMethodBeat.i(220402);
     if (paramString == null)
     {
-      AppMethodBeat.o(195975);
+      AppMethodBeat.o(220402);
       return false;
     }
     if (paramString.contains("."))
     {
-      if ((qYF.equals(paramString)) || (qYG.equals(paramString)) || (qYH.equals(paramString)) || (qYI.equals(paramString)) || (qYJ.equals(paramString)))
+      if ((syW.equals(paramString)) || (syX.equals(paramString)) || (syY.equals(paramString)) || (syZ.equals(paramString)) || (sza.equals(paramString)))
       {
-        AppMethodBeat.o(195975);
+        AppMethodBeat.o(220402);
         return true;
       }
-      AppMethodBeat.o(195975);
+      AppMethodBeat.o(220402);
       return false;
     }
-    if ((qYK.equals(paramString)) || (qYL.equals(paramString)) || (qYM.equals(paramString)) || (qYN.equals(paramString)) || (qYO.equals(paramString)))
+    if ((szb.equals(paramString)) || (szc.equals(paramString)) || (szd.equals(paramString)) || (sze.equals(paramString)) || (szf.equals(paramString)))
     {
-      AppMethodBeat.o(195975);
+      AppMethodBeat.o(220402);
       return true;
     }
-    AppMethodBeat.o(195975);
+    AppMethodBeat.o(220402);
     return false;
   }
   
-  public static boolean aeG(String paramString)
+  public static boolean aoT(String paramString)
   {
     AppMethodBeat.i(177356);
     if (paramString == null)
@@ -145,7 +277,7 @@ public final class b
     }
     if (paramString.contains("."))
     {
-      if ((qYF.equals(paramString)) || (qYG.equals(paramString)) || (qYH.equals(paramString)) || (qYI.equals(paramString)))
+      if ((syW.equals(paramString)) || (syX.equals(paramString)) || (syY.equals(paramString)) || (syZ.equals(paramString)))
       {
         AppMethodBeat.o(177356);
         return true;
@@ -153,7 +285,7 @@ public final class b
       AppMethodBeat.o(177356);
       return false;
     }
-    if ((qYK.equals(paramString)) || (qYL.equals(paramString)) || (qYM.equals(paramString)) || (qYN.equals(paramString)))
+    if ((szb.equals(paramString)) || (szc.equals(paramString)) || (szd.equals(paramString)) || (sze.equals(paramString)))
     {
       AppMethodBeat.o(177356);
       return true;
@@ -162,25 +294,80 @@ public final class b
     return false;
   }
   
-  public static String aeH(String paramString)
+  public static String aoU(String paramString)
   {
-    AppMethodBeat.i(195979);
+    AppMethodBeat.i(220406);
     if (paramString == null)
     {
-      AppMethodBeat.o(195979);
+      AppMethodBeat.o(220406);
       return null;
     }
     paramString = paramString.replace(",", ".");
-    AppMethodBeat.o(195979);
+    AppMethodBeat.o(220406);
     return paramString;
   }
   
-  public static String aeI(String paramString)
+  public static void aoV(String paramString)
   {
-    AppMethodBeat.i(195985);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(220410);
+    try
     {
-      AppMethodBeat.o(195985);
+      boolean bool = com.tencent.mm.kernel.g.aAc();
+      if (!bool)
+      {
+        AppMethodBeat.o(220410);
+        return;
+      }
+      bool = TextUtils.isEmpty(paramString);
+      if (bool)
+      {
+        AppMethodBeat.o(220410);
+        return;
+      }
+      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.Onc, paramString);
+      AppMethodBeat.o(220410);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      Log.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", paramString, "setFinderCurTabContextId crash: %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(220410);
+    }
+  }
+  
+  public static void aoW(String paramString)
+  {
+    AppMethodBeat.i(220413);
+    try
+    {
+      boolean bool = com.tencent.mm.kernel.g.aAc();
+      if (!bool)
+      {
+        AppMethodBeat.o(220413);
+        return;
+      }
+      bool = TextUtils.isEmpty(paramString);
+      if (bool)
+      {
+        AppMethodBeat.o(220413);
+        return;
+      }
+      com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.One, paramString);
+      AppMethodBeat.o(220413);
+      return;
+    }
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(220413);
+    }
+  }
+  
+  public static String aoX(String paramString)
+  {
+    AppMethodBeat.i(220414);
+    if (Util.isNullOrNil(paramString))
+    {
+      AppMethodBeat.o(220414);
       return "";
     }
     int i = -1;
@@ -192,7 +379,7 @@ public final class b
       switch (i)
       {
       default: 
-        AppMethodBeat.o(195985);
+        AppMethodBeat.o(220414);
         return paramString;
         if (paramString.equals("FinderFollowTabFragment"))
         {
@@ -235,30 +422,38 @@ public final class b
         break;
       }
     }
-    AppMethodBeat.o(195985);
+    AppMethodBeat.o(220414);
     return "0";
-    AppMethodBeat.o(195985);
+    AppMethodBeat.o(220414);
     return "1";
-    AppMethodBeat.o(195985);
+    AppMethodBeat.o(220414);
     return "2";
-    AppMethodBeat.o(195985);
+    AppMethodBeat.o(220414);
     return "3";
   }
   
-  public static String aeJ(String paramString)
+  public static String aoY(String paramString)
   {
-    AppMethodBeat.i(195986);
+    AppMethodBeat.i(220415);
     if (paramString == null)
     {
-      AppMethodBeat.o(195986);
+      AppMethodBeat.o(220415);
       return null;
     }
     paramString = paramString.replace(",", ".");
-    AppMethodBeat.o(195986);
+    AppMethodBeat.o(220415);
     return paramString;
   }
   
-  public static boolean ael(String paramString)
+  public static boolean aoZ(String paramString)
+  {
+    AppMethodBeat.i(220416);
+    boolean bool = Util.isEqual(paramString, z.aUg());
+    AppMethodBeat.o(220416);
+    return bool;
+  }
+  
+  public static boolean aoy(String paramString)
   {
     AppMethodBeat.i(169258);
     boolean bool = "com.tencent.mm.ui.chatting.ChattingUI".equals(paramString);
@@ -266,7 +461,7 @@ public final class b
     return bool;
   }
   
-  public static boolean aem(String paramString)
+  public static boolean aoz(String paramString)
   {
     AppMethodBeat.i(169259);
     boolean bool = "com.tencent.mm.ui.LauncherUI".equals(paramString);
@@ -274,221 +469,7 @@ public final class b
     return bool;
   }
   
-  public static boolean aen(String paramString)
-  {
-    AppMethodBeat.i(169260);
-    boolean bool = "com.tencent.mm.ui.contact.GroupCardSelectUI".equals(paramString);
-    AppMethodBeat.o(169260);
-    return bool;
-  }
-  
-  public static boolean aeo(String paramString)
-  {
-    AppMethodBeat.i(169261);
-    boolean bool = "com.tencent.mm.ui.contact.SelectContactUI".equals(paramString);
-    AppMethodBeat.o(169261);
-    return bool;
-  }
-  
-  public static boolean aep(String paramString)
-  {
-    AppMethodBeat.i(169262);
-    boolean bool = "com.tencent.mm.app.WeChatSplashActivity".equals(paramString);
-    AppMethodBeat.o(169262);
-    return bool;
-  }
-  
-  public static boolean aeq(String paramString)
-  {
-    AppMethodBeat.i(169263);
-    if ((paramString != null) && (paramString.startsWith("com.tencent.mm.splash.")))
-    {
-      AppMethodBeat.o(169263);
-      return true;
-    }
-    AppMethodBeat.o(169263);
-    return false;
-  }
-  
-  public static String aer(String paramString)
-  {
-    AppMethodBeat.i(121846);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(121846);
-      return null;
-    }
-    paramString = paramString.replace("/", ".");
-    int i = paramString.lastIndexOf(".");
-    if ((i < 0) || (i >= paramString.length() - 1))
-    {
-      AppMethodBeat.o(121846);
-      return paramString;
-    }
-    paramString = paramString.substring(i + 1);
-    AppMethodBeat.o(121846);
-    return paramString;
-  }
-  
-  public static bou aes(String paramString)
-  {
-    AppMethodBeat.i(195974);
-    paramString = com.tencent.mm.plugin.expt.hellhound.a.f.d.b.agf(paramString);
-    if ((paramString == null) || (paramString.isEmpty()))
-    {
-      AppMethodBeat.o(195974);
-      return null;
-    }
-    paramString = (bou)paramString.get(paramString.size() - 1);
-    AppMethodBeat.o(195974);
-    return paramString;
-  }
-  
-  public static boolean aet(String paramString)
-  {
-    AppMethodBeat.i(169264);
-    boolean bool = "com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI".equals(paramString);
-    AppMethodBeat.o(169264);
-    return bool;
-  }
-  
-  public static boolean aeu(String paramString)
-  {
-    AppMethodBeat.i(169265);
-    boolean bool = "com.tencent.mm.plugin.account.ui.LoginPasswordUI".equals(paramString);
-    AppMethodBeat.o(169265);
-    return bool;
-  }
-  
-  public static boolean aev(String paramString)
-  {
-    AppMethodBeat.i(121850);
-    boolean bool = Pattern.matches("^(" + "com.tencent.mm.plugin.appbrand.ui.AppBrandUI" + ")[0-9]*$", paramString);
-    AppMethodBeat.o(121850);
-    return bool;
-  }
-  
-  public static boolean aew(String paramString)
-  {
-    AppMethodBeat.i(121851);
-    if (TextUtils.isEmpty(paramString))
-    {
-      AppMethodBeat.o(121851);
-      return false;
-    }
-    boolean bool = Pattern.matches("^(" + "AppBrandUI" + ")[0-9]*$", paramString);
-    AppMethodBeat.o(121851);
-    return bool;
-  }
-  
-  public static boolean aex(String paramString)
-  {
-    AppMethodBeat.i(121852);
-    boolean bool = "AppBrandLauncherUI".equals(aer(paramString));
-    AppMethodBeat.o(121852);
-    return bool;
-  }
-  
-  public static boolean aey(String paramString)
-  {
-    AppMethodBeat.i(169266);
-    boolean bool = "com.tencent.mm.plugin.base.stub.WXShortcutEntryActivity".equals(paramString);
-    AppMethodBeat.o(169266);
-    return bool;
-  }
-  
-  public static boolean aez(String paramString)
-  {
-    AppMethodBeat.i(169267);
-    boolean bool = "com.tencent.mm.plugin.base.stub.WXEntryActivity".equals(paramString);
-    AppMethodBeat.o(169267);
-    return bool;
-  }
-  
-  public static boolean cpe()
-  {
-    AppMethodBeat.i(121845);
-    Context localContext = ak.getContext();
-    String str = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.ajO().ajq()).mProcessName;
-    if (str == null)
-    {
-      AppMethodBeat.o(121845);
-      return false;
-    }
-    boolean bool = localContext.getPackageName().equals(str);
-    AppMethodBeat.o(121845);
-    return bool;
-  }
-  
-  public static String cpf()
-  {
-    AppMethodBeat.i(121847);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Dh(106);
-    if (localObject == null)
-    {
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cpF().qZz.cpD();
-      ae.i("HABBYGE-MALI.HellhoundUtil", "FuzzyMatch._getPrePage by activityJumpSrc: %s", new Object[] { localObject });
-      if (localObject != null)
-      {
-        AppMethodBeat.o(121847);
-        return localObject;
-      }
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.cpP();
-      AppMethodBeat.o(121847);
-      return localObject;
-    }
-    ae.i("HABBYGE-MALI.HellhoundUtil", "FuzzyMatch._getPrePage by key_pause: %s, %b, %s", new Object[] { ((com.tencent.mm.vending.j.b)localObject).get(0), ((com.tencent.mm.vending.j.c)localObject).get(1), ((com.tencent.mm.vending.j.d)localObject).get(2) });
-    if (((Boolean)((com.tencent.mm.vending.j.c)localObject).get(1)).booleanValue())
-    {
-      localObject = (String)((com.tencent.mm.vending.j.d)localObject).get(2);
-      if (localObject != null)
-      {
-        AppMethodBeat.o(121847);
-        return localObject;
-      }
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.cpP();
-      AppMethodBeat.o(121847);
-      return localObject;
-    }
-    localObject = (String)((com.tencent.mm.vending.j.b)localObject).get(0);
-    if (localObject != null)
-    {
-      AppMethodBeat.o(121847);
-      return localObject;
-    }
-    localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.cpP();
-    AppMethodBeat.o(121847);
-    return localObject;
-  }
-  
-  public static Pair<String, Integer> cpg()
-  {
-    AppMethodBeat.i(195973);
-    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.crJ();
-    if (localObject == null)
-    {
-      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.Dh(105);
-      if (localObject == null)
-      {
-        AppMethodBeat.o(195973);
-        return null;
-      }
-      if (((Boolean)((com.tencent.mm.vending.j.c)localObject).get(1)).booleanValue())
-      {
-        localObject = Pair.create(((com.tencent.mm.vending.j.d)localObject).get(2), Integer.valueOf(0));
-        AppMethodBeat.o(195973);
-        return localObject;
-      }
-      localObject = Pair.create(((com.tencent.mm.vending.j.b)localObject).get(0), Integer.valueOf(0));
-      AppMethodBeat.o(195973);
-      return localObject;
-    }
-    localObject = Pair.create(((cia)localObject).duQ, Integer.valueOf(((cia)localObject).aHQ));
-    AppMethodBeat.o(195973);
-    return localObject;
-  }
-  
-  public static FragmentActivity cph()
+  public static FragmentActivity cNA()
   {
     AppMethodBeat.i(121853);
     try
@@ -506,105 +487,173 @@ public final class b
     return null;
   }
   
-  public static String cpi()
+  public static String cNB()
   {
-    AppMethodBeat.i(195982);
+    AppMethodBeat.i(220409);
     try
     {
-      if (!com.tencent.mm.kernel.g.ajM())
+      if (!com.tencent.mm.kernel.g.aAc())
       {
-        AppMethodBeat.o(195982);
+        AppMethodBeat.o(220409);
         return "";
       }
-      String str = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.Jdz, "");
-      AppMethodBeat.o(195982);
+      String str = (String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.Onc, "");
+      AppMethodBeat.o(220409);
       return str;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", localException, "getFinderCurTabContextId crash: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(195982);
+      Log.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", localException, "getFinderCurTabContextId crash: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(220409);
     }
     return "";
   }
   
-  public static String cpj()
+  public static String cNC()
   {
-    AppMethodBeat.i(195983);
+    AppMethodBeat.i(220411);
     try
     {
-      if (!com.tencent.mm.kernel.g.ajM())
+      if (!com.tencent.mm.kernel.g.aAc())
       {
-        AppMethodBeat.o(195983);
+        AppMethodBeat.o(220411);
         return "";
       }
-      String str = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.JdA, "");
-      AppMethodBeat.o(195983);
+      String str = (String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.Ond, "");
+      AppMethodBeat.o(220411);
       return str;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", localException, "getFinderReportTabContextId crash: %s", new Object[] { localException.getMessage() });
-      AppMethodBeat.o(195983);
+      Log.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", localException, "getFinderReportTabContextId crash: %s", new Object[] { localException.getMessage() });
+      AppMethodBeat.o(220411);
     }
     return "";
   }
   
-  public static String cpk()
+  public static String cND()
   {
-    AppMethodBeat.i(195984);
+    AppMethodBeat.i(220412);
     try
     {
-      if (!com.tencent.mm.kernel.g.ajM())
+      if (!com.tencent.mm.kernel.g.aAc())
       {
-        AppMethodBeat.o(195984);
+        AppMethodBeat.o(220412);
         return "";
       }
-      String str = (String)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.JdB, "");
-      AppMethodBeat.o(195984);
+      String str = (String)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.One, "");
+      AppMethodBeat.o(220412);
       return str;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(195984);
+      AppMethodBeat.o(220412);
     }
     return "";
   }
   
-  public static String cpl()
+  public static String cNE()
   {
-    if (com.tencent.mm.loader.j.a.hjw == null) {
+    if (com.tencent.mm.loader.j.a.ict == null) {
       return com.tencent.mm.loader.j.a.REV;
     }
-    return com.tencent.mm.loader.j.a.hjw;
+    return com.tencent.mm.loader.j.a.ict;
   }
   
-  public static Pair<Integer, Integer> dR(View paramView)
+  public static String cNy()
   {
-    AppMethodBeat.i(195980);
+    AppMethodBeat.i(121847);
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.GS(106);
+    if (localObject == null)
+    {
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.c.cNY().szQ.cNW();
+      Log.i("HABBYGE-MALI.HellhoundUtil", "FuzzyMatch._getPrePage by activityJumpSrc: %s", new Object[] { localObject });
+      if (localObject != null)
+      {
+        AppMethodBeat.o(121847);
+        return localObject;
+      }
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.cOi();
+      AppMethodBeat.o(121847);
+      return localObject;
+    }
+    Log.i("HABBYGE-MALI.HellhoundUtil", "FuzzyMatch._getPrePage by key_pause: %s, %b, %s", new Object[] { ((com.tencent.mm.vending.j.b)localObject).get(0), ((com.tencent.mm.vending.j.c)localObject).get(1), ((com.tencent.mm.vending.j.d)localObject).get(2) });
+    if (((Boolean)((com.tencent.mm.vending.j.c)localObject).get(1)).booleanValue())
+    {
+      localObject = (String)((com.tencent.mm.vending.j.d)localObject).get(2);
+      if (localObject != null)
+      {
+        AppMethodBeat.o(121847);
+        return localObject;
+      }
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.cOi();
+      AppMethodBeat.o(121847);
+      return localObject;
+    }
+    localObject = (String)((com.tencent.mm.vending.j.b)localObject).get(0);
+    if (localObject != null)
+    {
+      AppMethodBeat.o(121847);
+      return localObject;
+    }
+    localObject = com.tencent.mm.plugin.expt.hellhound.core.b.b.d.cOi();
+    AppMethodBeat.o(121847);
+    return localObject;
+  }
+  
+  public static Pair<String, Integer> cNz()
+  {
+    AppMethodBeat.i(220400);
+    Object localObject = com.tencent.mm.plugin.expt.hellhound.a.f.c.c.cQr();
+    if (localObject == null)
+    {
+      localObject = com.tencent.mm.plugin.expt.hellhound.core.b.a.a.e.GS(105);
+      if (localObject == null)
+      {
+        AppMethodBeat.o(220400);
+        return null;
+      }
+      if (((Boolean)((com.tencent.mm.vending.j.c)localObject).get(1)).booleanValue())
+      {
+        localObject = Pair.create(((com.tencent.mm.vending.j.d)localObject).get(2), Integer.valueOf(0));
+        AppMethodBeat.o(220400);
+        return localObject;
+      }
+      localObject = Pair.create(((com.tencent.mm.vending.j.b)localObject).get(0), Integer.valueOf(0));
+      AppMethodBeat.o(220400);
+      return localObject;
+    }
+    localObject = Pair.create(((cyh)localObject).dMl, Integer.valueOf(((cyh)localObject).aHK));
+    AppMethodBeat.o(220400);
+    return localObject;
+  }
+  
+  public static Pair<Integer, Integer> dJ(View paramView)
+  {
+    AppMethodBeat.i(220407);
     int[] arrayOfInt = new int[2];
     paramView.getLocationOnScreen(arrayOfInt);
     paramView = Pair.create(Integer.valueOf(arrayOfInt[0]), Integer.valueOf(arrayOfInt[1]));
-    AppMethodBeat.o(195980);
+    AppMethodBeat.o(220407);
     return paramView;
   }
   
-  public static Pair<Float, Float> dS(View paramView)
+  public static Pair<Float, Float> dK(View paramView)
   {
-    AppMethodBeat.i(195981);
+    AppMethodBeat.i(220408);
     int i = paramView.getMeasuredWidth();
     float f1 = paramView.getWidth();
     int j = paramView.getMeasuredHeight();
     float f2 = paramView.getHeight();
     paramView = Pair.create(Float.valueOf(Math.max(i, f1)), Float.valueOf(Math.max(j, f2)));
-    AppMethodBeat.o(195981);
+    AppMethodBeat.o(220408);
     return paramView;
   }
   
   public static int getUin()
   {
     AppMethodBeat.i(121855);
-    com.tencent.mm.plugin.expt.h.d.ctr();
+    com.tencent.mm.plugin.expt.h.d.cRY();
     int i = com.tencent.mm.plugin.expt.h.d.getUin();
     if (i == 0)
     {
@@ -613,6 +662,21 @@ public final class b
     }
     AppMethodBeat.o(121855);
     return i;
+  }
+  
+  public static boolean isMMProcess()
+  {
+    AppMethodBeat.i(121845);
+    Context localContext = MMApplicationContext.getContext();
+    String str = ((com.tencent.mm.kernel.b.h)com.tencent.mm.kernel.g.aAe().azG()).mProcessName;
+    if (str == null)
+    {
+      AppMethodBeat.o(121845);
+      return false;
+    }
+    boolean bool = localContext.getPackageName().equals(str);
+    AppMethodBeat.o(121845);
+    return bool;
   }
   
   public static boolean isNumeric(String paramString)
@@ -627,33 +691,25 @@ public final class b
     return false;
   }
   
-  public static String rp(long paramLong)
-  {
-    AppMethodBeat.i(169272);
-    String str = new BigInteger(Long.toBinaryString(paramLong), 2).toString();
-    AppMethodBeat.o(169272);
-    return str;
-  }
-  
   public static String toHexString(int paramInt)
   {
-    AppMethodBeat.i(195976);
+    AppMethodBeat.i(220403);
     if (paramInt == -1)
     {
-      AppMethodBeat.o(195976);
+      AppMethodBeat.o(220403);
       return "-1";
     }
     String str = "0x" + Integer.toHexString(paramInt);
-    AppMethodBeat.o(195976);
+    AppMethodBeat.o(220403);
     return str;
   }
   
   public static int u(Activity paramActivity)
   {
-    AppMethodBeat.i(195977);
+    AppMethodBeat.i(220404);
     if (paramActivity == null)
     {
-      AppMethodBeat.o(195977);
+      AppMethodBeat.o(220404);
       return 0;
     }
     try
@@ -664,17 +720,25 @@ public final class b
         if (paramActivity != null)
         {
           int i = paramActivity.getCustomView().getHeight();
-          AppMethodBeat.o(195977);
+          AppMethodBeat.o(220404);
           return i;
         }
       }
     }
     catch (Exception paramActivity)
     {
-      ae.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", paramActivity, "initBarHeight", new Object[0]);
-      AppMethodBeat.o(195977);
+      Log.printErrStackTrace("HABBYGE-MALI.HellhoundUtil", paramActivity, "initBarHeight", new Object[0]);
+      AppMethodBeat.o(220404);
     }
     return 0;
+  }
+  
+  public static String zs(long paramLong)
+  {
+    AppMethodBeat.i(169272);
+    String str = new BigInteger(Long.toBinaryString(paramLong), 2).toString();
+    AppMethodBeat.o(169272);
+    return str;
   }
 }
 

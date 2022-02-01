@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.websearch.widget.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  private e db;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(116653);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "WidgetSafeMode") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "WidgetSafeMode") };
     AppMethodBeat.o(116653);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "WidgetSafeMode", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "WidgetSafeMode", null);
+    this.db = paramISQLiteDatabase;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.websearch.widget.a.b
  * JD-Core Version:    0.7.0.1
  */

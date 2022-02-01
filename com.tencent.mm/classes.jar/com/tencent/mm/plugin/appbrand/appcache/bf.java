@@ -7,23 +7,23 @@ import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.luggage.wxa.storage.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class bf
 {
   private static final Uri CONTENT_URI;
-  private static final bf jLD;
+  private static final bf kND;
   
   static
   {
     AppMethodBeat.i(146008);
-    jLD = new bf();
+    kND = new bf();
     CONTENT_URI = Uri.parse("content://" + a.AUTHORITY + "/AppBrandWxaPkgManifestRecord");
     AppMethodBeat.o(146008);
   }
   
-  public static void Mg(String paramString)
+  public static void Vp(String paramString)
   {
     AppMethodBeat.i(146006);
     if (TextUtils.isEmpty(paramString))
@@ -36,21 +36,21 @@ public final class bf
       ContentValues localContentValues = new ContentValues();
       localContentValues.put("CONTENT_KEY_ACTION", "ACTION_UPDATE_PLUGINCODE_LIST");
       localContentValues.put("CONTENT_KEY_PLUGINCODE_LIST", paramString);
-      ak.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
+      MMApplicationContext.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
       AppMethodBeat.o(146006);
       return;
     }
     catch (Exception paramString)
     {
-      ae.printErrStackTrace("Luggage.DevPkgLaunchExtInfoContentResolver", paramString, "updatePluginCodeList", new Object[0]);
+      Log.printErrStackTrace("Luggage.DevPkgLaunchExtInfoContentResolver", paramString, "updatePluginCodeList", new Object[0]);
       AppMethodBeat.o(146006);
     }
   }
   
-  public static boolean aQ(String paramString, int paramInt)
+  public static boolean aV(String paramString, int paramInt)
   {
-    AppMethodBeat.i(220747);
-    ae.i("Luggage.DevPkgLaunchExtInfoContentResolver", "deleteModuleList appId:%s, pkgType:%d, pkgVersion:%d", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(-1) });
+    AppMethodBeat.i(229807);
+    Log.i("Luggage.DevPkgLaunchExtInfoContentResolver", "deleteModuleList appId:%s, pkgType:%d, pkgVersion:%d", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(-1) });
     try
     {
       ContentValues localContentValues = new ContentValues();
@@ -58,15 +58,15 @@ public final class bf
       localContentValues.put("CONTENT_KEY_APPID", paramString);
       localContentValues.put("CONTENT_KEY_PKG_TYPE", Integer.valueOf(paramInt));
       localContentValues.put("CONTENT_KEY_PKG_VERSION", Integer.valueOf(-1));
-      ak.getContext().getContentResolver().update(CONTENT_URI, localContentValues, null, null);
-      AppMethodBeat.o(220747);
+      MMApplicationContext.getContext().getContentResolver().update(CONTENT_URI, localContentValues, null, null);
+      AppMethodBeat.o(229807);
       return true;
     }
     catch (Exception localException)
     {
       for (;;)
       {
-        ae.e("Luggage.DevPkgLaunchExtInfoContentResolver", "deleteModuleList failed, appId:%s, pkgType:%d, pkgVersion:%d, exception:%s", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(-1), localException });
+        Log.e("Luggage.DevPkgLaunchExtInfoContentResolver", "deleteModuleList failed, appId:%s, pkgType:%d, pkgVersion:%d, exception:%s", new Object[] { paramString, Integer.valueOf(paramInt), Integer.valueOf(-1), localException });
       }
     }
   }
@@ -84,20 +84,20 @@ public final class bf
       localContentValues.put("CONTENT_KEY_CODE_TYPE", Integer.valueOf(paramInt));
       localContentValues.put("CONTENT_KEY_PKG_VERSION_MD5", paramString3);
       localContentValues.put("CONTENT_KEY_PKG_TYPE", Integer.valueOf(12));
-      ak.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
+      MMApplicationContext.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
       AppMethodBeat.o(146007);
       return;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("Luggage.DevPkgLaunchExtInfoContentResolver", localException, "updateWithoutPluginCodeInfo, appId[%s] module[%s], version[%d], codeType[%d], md5[%s], pkgType[%d]", new Object[] { paramString1, paramString2, Integer.valueOf(0), Integer.valueOf(paramInt), paramString3, Integer.valueOf(12) });
+      Log.printErrStackTrace("Luggage.DevPkgLaunchExtInfoContentResolver", localException, "updateWithoutPluginCodeInfo, appId[%s] module[%s], version[%d], codeType[%d], md5[%s], pkgType[%d]", new Object[] { paramString1, paramString2, Integer.valueOf(0), Integer.valueOf(paramInt), paramString3, Integer.valueOf(12) });
       AppMethodBeat.o(146007);
     }
   }
   
-  public static bf bbk()
+  public static bf bwx()
   {
-    return jLD;
+    return kND;
   }
   
   public static void c(String paramString1, String paramString2, int paramInt, String paramString3)
@@ -117,21 +117,21 @@ public final class bf
       localContentValues.put("CONTENT_KEY_PKG_VERSION", Integer.valueOf(0));
       localContentValues.put("CONTENT_KEY_CODE_TYPE", Integer.valueOf(paramInt));
       localContentValues.put("CONTENT_KEY_PKGINFO_LIST", paramString3);
-      ak.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
+      MMApplicationContext.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
       AppMethodBeat.o(177310);
       return;
     }
     catch (Exception paramString1)
     {
-      ae.printErrStackTrace("Luggage.DevPkgLaunchExtInfoContentResolver", paramString1, "updatePkgInfoList", new Object[0]);
+      Log.printErrStackTrace("Luggage.DevPkgLaunchExtInfoContentResolver", paramString1, "updatePkgInfoList", new Object[0]);
       AppMethodBeat.o(177310);
     }
   }
   
-  public static boolean n(String paramString1, int paramInt, String paramString2)
+  public static boolean q(String paramString1, int paramInt, String paramString2)
   {
     AppMethodBeat.i(146005);
-    ae.i("Luggage.DevPkgLaunchExtInfoContentResolver", "updateModuleList appId:%s, pkgType:%d, pkgVersion:%d", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(-1) });
+    Log.i("Luggage.DevPkgLaunchExtInfoContentResolver", "updateModuleList appId:%s, pkgType:%d, pkgVersion:%d", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(-1) });
     try
     {
       ContentValues localContentValues = new ContentValues();
@@ -140,13 +140,13 @@ public final class bf
       localContentValues.put("CONTENT_KEY_PKG_TYPE", Integer.valueOf(paramInt));
       localContentValues.put("CONTENT_KEY_PKG_VERSION", Integer.valueOf(-1));
       localContentValues.put("CONTENT_KEY_MODULE_LIST_JSON", paramString2);
-      ak.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
+      MMApplicationContext.getContext().getContentResolver().insert(CONTENT_URI, localContentValues);
       AppMethodBeat.o(146005);
       return true;
     }
     catch (Exception paramString2)
     {
-      ae.e("Luggage.DevPkgLaunchExtInfoContentResolver", "updateModuleList failed appId:%s, pkgType:%d, pkgVersion:%d, exception:%s", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(-1), paramString2 });
+      Log.e("Luggage.DevPkgLaunchExtInfoContentResolver", "updateModuleList failed appId:%s, pkgType:%d, pkgVersion:%d, exception:%s", new Object[] { paramString1, Integer.valueOf(paramInt), Integer.valueOf(-1), paramString2 });
       AppMethodBeat.o(146005);
     }
     return false;
@@ -154,7 +154,7 @@ public final class bf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appcache.bf
  * JD-Core Version:    0.7.0.1
  */

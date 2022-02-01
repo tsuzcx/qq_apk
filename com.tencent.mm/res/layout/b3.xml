@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<android.support.v7.widget.FitWindowsFrameLayout android:id="@id/cc" android:fitsSystemWindows="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/d2f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="#ffd9d9d9" android:dividerHeight="1.0px" android:headerDividersEnabled="true" android:footerDividersEnabled="false" />
-</LinearLayout>
+    <include layout="@layout/b1" />
+    <android.support.v7.widget.ViewStubCompat android:id="@id/d4" android:layout="@layout/al" android:inflatedId="@id/d3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</android.support.v7.widget.FitWindowsFrameLayout>

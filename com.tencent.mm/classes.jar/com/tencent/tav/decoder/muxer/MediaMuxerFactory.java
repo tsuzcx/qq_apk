@@ -9,23 +9,23 @@ public class MediaMuxerFactory
   
   static
   {
-    AppMethodBeat.i(215116);
+    AppMethodBeat.i(218467);
     defaultMuxerCreator = new DefaultMediaMuxerCreator(null);
     muxerCreator = null;
-    AppMethodBeat.o(215116);
+    AppMethodBeat.o(218467);
   }
   
   public static IMediaMuxer createMediaMuxer(String paramString, int paramInt)
   {
-    AppMethodBeat.i(215115);
+    AppMethodBeat.i(218466);
     if (muxerCreator == null)
     {
       paramString = defaultMuxerCreator.createMediaMuxer(paramString, paramInt);
-      AppMethodBeat.o(215115);
+      AppMethodBeat.o(218466);
       return paramString;
     }
     paramString = muxerCreator.createMediaMuxer(paramString, paramInt);
-    AppMethodBeat.o(215115);
+    AppMethodBeat.o(218466);
     return paramString;
   }
   
@@ -39,9 +39,9 @@ public class MediaMuxerFactory
   {
     public IMediaMuxer createMediaMuxer(String paramString, int paramInt)
     {
-      AppMethodBeat.i(215114);
+      AppMethodBeat.i(218465);
       paramString = new DefaultMediaMuxer(paramString, paramInt);
-      AppMethodBeat.o(215114);
+      AppMethodBeat.o(218465);
       return paramString;
     }
   }
@@ -53,7 +53,7 @@ public class MediaMuxerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.decoder.muxer.MediaMuxerFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,14 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
+import java.lang.ref.WeakReference;
 
 public final class tk
-  extends b
+  extends IEvent
 {
-  public a dIU;
+  public a dZQ;
+  public b dZR;
   
   public tk()
   {
@@ -15,23 +17,33 @@ public final class tk
   
   private tk(byte paramByte)
   {
-    AppMethodBeat.i(195262);
-    this.dIU = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(91219);
+    this.dZQ = new a();
+    this.dZR = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(195262);
+    AppMethodBeat.o(91219);
   }
   
   public static final class a
   {
-    public Boolean dIM;
-    public long dIO;
-    public String dvT;
+    public WeakReference aWF;
+    public Runnable callback;
+    public String dZS;
+    public int scene;
+    public int type;
+  }
+  
+  public static final class b
+  {
+    public int actionType;
+    public String dZT;
+    public String errMsg;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.tk
  * JD-Core Version:    0.7.0.1
  */

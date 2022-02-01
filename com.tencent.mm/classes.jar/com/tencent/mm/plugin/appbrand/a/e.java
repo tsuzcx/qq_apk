@@ -5,17 +5,17 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.lang.ref.WeakReference;
 
 public abstract class e
 {
-  private final WeakReference<Activity> jOO;
+  private final WeakReference<Activity> kRw;
   public final BroadcastReceiver receiver = new BroadcastReceiver()
   {
-    final String jOP = "reason";
-    final String jOQ = "homekey";
-    final String jOR = "recentapps";
+    final String kRx = "reason";
+    final String kRy = "homekey";
+    final String kRz = "recentapps";
     
     public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
     {
@@ -30,15 +30,15 @@ public abstract class e
         paramAnonymousContext = paramAnonymousIntent.getStringExtra("reason");
         if (paramAnonymousContext != null)
         {
-          ae.i("MicroMsg.BaseAppBrandUIHomePressReceiver", "[home_pressed] action: %s, reason: %s", new Object[] { paramAnonymousIntent.getAction(), paramAnonymousContext });
+          Log.i("MicroMsg.BaseAppBrandUIHomePressReceiver", "[home_pressed] action: %s, reason: %s", new Object[] { paramAnonymousIntent.getAction(), paramAnonymousContext });
           if (paramAnonymousContext.equals("homekey"))
           {
-            e.this.bbM();
+            e.this.bxc();
             AppMethodBeat.o(139837);
             return;
           }
           if (paramAnonymousContext.equals("recentapps")) {
-            e.this.bbN();
+            e.this.bxd();
           }
         }
       }
@@ -48,16 +48,16 @@ public abstract class e
   
   public e(Activity paramActivity)
   {
-    this.jOO = new WeakReference(paramActivity);
+    this.kRw = new WeakReference(paramActivity);
   }
   
-  protected abstract void bbM();
+  protected abstract void bxc();
   
-  protected abstract void bbN();
+  protected abstract void bxd();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.e
  * JD-Core Version:    0.7.0.1
  */

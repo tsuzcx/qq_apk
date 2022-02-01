@@ -5,23 +5,23 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class m
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
     AppMethodBeat.i(78545);
-    ae.i("MicroMsg.JsApiCloseWindow", "invokeInOwn");
-    ((g)paramb.chg).eSZ();
-    paramb.a("", null);
+    Log.i("MicroMsg.JsApiCloseWindow", "invokeInOwn");
+    ((g)paramb.cta).gbL();
+    paramb.c("", null);
     AppMethodBeat.o(78545);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }

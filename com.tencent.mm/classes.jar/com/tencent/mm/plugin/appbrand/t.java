@@ -1,78 +1,69 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.text.TextUtils;
+import android.util.SparseArray;
+import android.util.SparseIntArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.b.g;
-import com.tencent.mm.modelappbrand.b.a;
-import com.tencent.mm.plugin.base.model.c;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.List;
 
 public final class t
-  implements a
 {
-  public static t aYb()
+  public final SparseArray<List<b>> kEp;
+  final SparseIntArray kEq;
+  
+  private t()
   {
-    return a.jDr;
+    AppMethodBeat.i(134601);
+    this.kEp = new SparseArray();
+    this.kEq = new SparseIntArray();
+    AppMethodBeat.o(134601);
   }
   
-  public final Intent a(String paramString1, int paramInt1, String paramString2, String paramString3, String[] paramArrayOfString, String paramString4, int paramInt2, int paramInt3)
+  public final void e(int paramInt, List<b> paramList)
   {
-    int i = 0;
-    AppMethodBeat.i(43960);
-    if (Build.VERSION.SDK_INT >= 26) {}
-    String str;
-    for (boolean bool = true;; bool = false)
+    AppMethodBeat.i(134605);
+    if (this.kEq.size() <= 0)
     {
-      str = c.aE(paramString2, bool);
-      if (!bu.isNullOrNil(str)) {
-        break;
-      }
-      AppMethodBeat.o(43960);
-      return null;
+      AppMethodBeat.o(134605);
+      return;
     }
-    if (TextUtils.isEmpty(paramString3)) {}
-    for (;;)
+    Log.i("MicroMsg.AppBrandServiceOnRuntimeReadyListenerMgr", "notify pending : %d", new Object[] { Integer.valueOf(paramInt) });
+    if (this.kEq.indexOfKey(paramInt) < 0)
     {
-      paramString3 = new StringBuilder();
-      int j = paramArrayOfString.length;
-      while (i < j)
-      {
-        paramString3.append(paramArrayOfString[i]);
-        i += 1;
-      }
-      paramString2 = paramString3;
+      Log.i("MicroMsg.AppBrandServiceOnRuntimeReadyListenerMgr", "not in pending notify");
+      AppMethodBeat.o(134605);
+      return;
     }
-    paramString2 = g.getMessageDigest((paramString2 + paramString3.toString()).getBytes());
-    paramString3 = new Intent("com.tencent.mm.action.WX_SHORTCUT");
-    paramString3.putExtra("type", paramInt3);
-    paramString3.putExtra("id", str);
-    paramString3.putExtra("ext_info", c.aE(paramString4, bool));
-    paramString3.putExtra("token", c.eH(paramString4, String.valueOf(paramInt2)));
-    paramString3.putExtra("digest", paramString2);
-    paramString3.putExtra("ext_info_1", paramInt1);
-    paramString3.setPackage(paramString1);
-    paramString3.addFlags(67108864);
-    AppMethodBeat.o(43960);
-    return paramString3;
+    this.kEq.delete(paramInt);
+    paramInt = 0;
+    while (paramInt < paramList.size())
+    {
+      ((b)paramList.get(paramInt)).btg();
+      paramInt += 1;
+    }
+    AppMethodBeat.o(134605);
   }
   
-  static final class a
+  public static final class a
   {
-    static t jDr;
+    public static t kEr;
     
     static
     {
-      AppMethodBeat.i(43959);
-      jDr = new t();
-      AppMethodBeat.o(43959);
+      AppMethodBeat.i(134600);
+      kEr = new t((byte)0);
+      AppMethodBeat.o(134600);
     }
+  }
+  
+  public static abstract interface b
+  {
+    public abstract void btg();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.t
  * JD-Core Version:    0.7.0.1
  */

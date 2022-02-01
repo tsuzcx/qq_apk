@@ -4,19 +4,19 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.loader.j.b;
-import com.tencent.mm.sdk.platformtools.bj;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.SdcardUtil;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.File;
 import java.util.Set;
 
 public final class ao
 {
-  private static String hZr = "";
-  public static Set<String> rCe;
-  public static int rCf = 1;
+  private static String iUp = "";
+  public static Set<String> tbJ;
+  public static int tbK = 1;
   
   /* Error */
-  public static int aHD()
+  public static int bbw()
   {
     // Byte code:
     //   0: ldc 25
@@ -25,7 +25,7 @@ public final class ao
     //   8: dup
     //   9: new 35	java/io/File
     //   12: dup
-    //   13: invokestatic 39	com/tencent/mm/plugin/fav/a/ao:cxd	()Ljava/lang/String;
+    //   13: invokestatic 39	com/tencent/mm/plugin/fav/a/ao:cVh	()Ljava/lang/String;
     //   16: ldc 41
     //   18: invokespecial 45	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: invokespecial 48	java/io/FileInputStream:<init>	(Ljava/io/File;)V
@@ -85,11 +85,11 @@ public final class ao
     //   118: iload_0
     //   119: invokestatic 93	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   122: aastore
-    //   123: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   123: invokestatic 99	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   126: aload_2
-    //   127: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   127: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   130: ldc 25
-    //   132: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   132: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   135: iload_0
     //   136: ireturn
     //   137: astore_3
@@ -100,23 +100,23 @@ public final class ao
     //   142: ldc 85
     //   144: aload_3
     //   145: aload_3
-    //   146: invokevirtual 110	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   146: invokevirtual 111	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   149: iconst_0
     //   150: anewarray 4	java/lang/Object
-    //   153: invokestatic 114	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   153: invokestatic 115	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   156: aload_2
-    //   157: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   157: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   160: ldc 25
-    //   162: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   162: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   165: iconst_1
     //   166: ireturn
     //   167: astore_2
     //   168: aconst_null
     //   169: astore_1
     //   170: aload_1
-    //   171: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   171: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   174: ldc 25
-    //   176: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   176: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   179: aload_2
     //   180: athrow
     //   181: astore_2
@@ -153,17 +153,17 @@ public final class ao
   }
   
   /* Error */
-  public static int aHE()
+  public static int bbx()
   {
     // Byte code:
-    //   0: ldc 116
+    //   0: ldc 117
     //   2: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   5: invokestatic 122	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
-    //   8: invokevirtual 128	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
+    //   5: invokestatic 123	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+    //   8: invokevirtual 129	android/content/Context:getAssets	()Landroid/content/res/AssetManager;
     //   11: astore_1
     //   12: aload_1
-    //   13: ldc 130
-    //   15: invokevirtual 136	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
+    //   13: ldc 131
+    //   15: invokevirtual 137	android/content/res/AssetManager:open	(Ljava/lang/String;)Ljava/io/InputStream;
     //   18: astore_2
     //   19: new 52	java/io/InputStreamReader
     //   22: dup
@@ -236,15 +236,15 @@ public final class ao
     //   144: iload_0
     //   145: invokestatic 93	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   148: aastore
-    //   149: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   149: invokestatic 99	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   152: aload_2
-    //   153: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   153: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   156: aload 4
-    //   158: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   158: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   161: aload_1
-    //   162: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
-    //   165: ldc 116
-    //   167: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   162: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   165: ldc 117
+    //   167: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   170: iload_0
     //   171: ireturn
     //   172: astore_3
@@ -263,18 +263,18 @@ public final class ao
     //   190: ldc 85
     //   192: aload_3
     //   193: aload_3
-    //   194: invokevirtual 110	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   194: invokevirtual 111	java/lang/Exception:getMessage	()Ljava/lang/String;
     //   197: iconst_0
     //   198: anewarray 4	java/lang/Object
-    //   201: invokestatic 114	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   201: invokestatic 115	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
     //   204: aload_2
-    //   205: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   205: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   208: aload 4
-    //   210: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   210: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   213: aload_1
-    //   214: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
-    //   217: ldc 116
-    //   219: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   214: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   217: ldc 117
+    //   219: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   222: iconst_1
     //   223: ireturn
     //   224: astore_1
@@ -285,13 +285,13 @@ public final class ao
     //   230: aconst_null
     //   231: astore_2
     //   232: aload_2
-    //   233: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   233: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   236: aload 4
-    //   238: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
+    //   238: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
     //   241: aload_3
-    //   242: invokestatic 104	com/tencent/mm/sdk/platformtools/bu:d	(Ljava/io/Closeable;)V
-    //   245: ldc 116
-    //   247: invokestatic 107	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   242: invokestatic 105	com/tencent/mm/sdk/platformtools/Util:qualityClose	(Ljava/io/Closeable;)V
+    //   245: ldc 117
+    //   247: invokestatic 108	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   250: aload_1
     //   251: athrow
     //   252: astore_1
@@ -364,11 +364,11 @@ public final class ao
     //   130	152	296	java/lang/Exception
   }
   
-  public static String cxc()
+  public static String cVg()
   {
     AppMethodBeat.i(127421);
-    if (bj.fpu() > 1048576L) {}
-    for (Object localObject = new File(lw(false), "wenote/res");; localObject = new File(b.asj(), "wenote/res"))
+    if (SdcardUtil.getAvailableInternalMemorySize() > 1048576L) {}
+    for (Object localObject = new File(my(false), "wenote/res");; localObject = new File(b.aKJ(), "wenote/res"))
     {
       localObject = ((File)localObject).getAbsolutePath();
       AppMethodBeat.o(127421);
@@ -376,17 +376,17 @@ public final class ao
     }
   }
   
-  public static String cxd()
+  public static String cVh()
   {
     AppMethodBeat.i(127422);
-    Object localObject = new File(lw(false), "wenote/res");
+    Object localObject = new File(my(false), "wenote/res");
     if (new File((File)localObject, "WNNote.zip").exists())
     {
       localObject = ((File)localObject).getAbsolutePath();
       AppMethodBeat.o(127422);
       return localObject;
     }
-    localObject = new File(b.asj(), "wenote/res");
+    localObject = new File(b.aKJ(), "wenote/res");
     if (new File((File)localObject, "WNNote.zip").exists())
     {
       localObject = ((File)localObject).getAbsolutePath();
@@ -397,10 +397,10 @@ public final class ao
     return "";
   }
   
-  public static String cxe()
+  public static String cVi()
   {
     AppMethodBeat.i(127423);
-    Object localObject = new File(lw(true), "wenote/loc/data");
+    Object localObject = new File(my(true), "wenote/loc/data");
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -409,11 +409,11 @@ public final class ao
     return localObject;
   }
   
-  public static String cxf()
+  public static String cVj()
   {
     AppMethodBeat.i(127424);
     Object localObject = new StringBuilder();
-    File localFile = new File(lw(false), "wenote/html/upload");
+    File localFile = new File(my(false), "wenote/html/upload");
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
@@ -422,10 +422,10 @@ public final class ao
     return localObject;
   }
   
-  public static String cxg()
+  public static String cVk()
   {
     AppMethodBeat.i(127425);
-    Object localObject = new File(lw(true), "wenote/image/localpath");
+    Object localObject = new File(my(true), "wenote/image/localpath");
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -434,10 +434,10 @@ public final class ao
     return localObject;
   }
   
-  public static String cxh()
+  public static String cVl()
   {
     AppMethodBeat.i(127426);
-    Object localObject = new File(lw(true), "wenote/voice/data");
+    Object localObject = new File(my(true), "wenote/voice/data");
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
@@ -446,19 +446,19 @@ public final class ao
     return localObject;
   }
   
-  private static String lw(boolean paramBoolean)
+  private static String my(boolean paramBoolean)
   {
     AppMethodBeat.i(127420);
     if (paramBoolean)
     {
-      str = g.ajR().gDT;
+      str = g.aAh().hqG;
       AppMethodBeat.o(127420);
       return str;
     }
-    if (bu.isNullOrNil(hZr)) {
-      hZr = b.asc().replace("/data/user/0", "/data/data");
+    if (Util.isNullOrNil(iUp)) {
+      iUp = b.aKC().replace("/data/user/0", "/data/data");
     }
-    String str = hZr;
+    String str = iUp;
     AppMethodBeat.o(127420);
     return str;
   }

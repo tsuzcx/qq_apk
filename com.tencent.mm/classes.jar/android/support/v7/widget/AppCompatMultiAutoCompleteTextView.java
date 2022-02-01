@@ -16,53 +16,53 @@ public class AppCompatMultiAutoCompleteTextView
   extends MultiAutoCompleteTextView
   implements s
 {
-  private static final int[] afE = { 16843126 };
-  private final e ajP;
-  private final l ajQ;
+  private static final int[] afR = { 16843126 };
+  private final e akc;
+  private final l akd;
   
   public AppCompatMultiAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130968660);
+    this(paramContext, paramAttributeSet, 2130968665);
   }
   
   public AppCompatMultiAutoCompleteTextView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
-    super(aw.ad(paramContext), paramAttributeSet, paramInt);
-    paramContext = az.a(getContext(), paramAttributeSet, afE, paramInt, 0);
+    super(aw.ae(paramContext), paramAttributeSet, paramInt);
+    paramContext = az.a(getContext(), paramAttributeSet, afR, paramInt, 0);
     if (paramContext.hasValue(0)) {
       setDropDownBackgroundDrawable(paramContext.getDrawable(0));
     }
-    paramContext.ayA.recycle();
-    this.ajP = new e(this);
-    this.ajP.a(paramAttributeSet, paramInt);
-    this.ajQ = new l(this);
-    this.ajQ.a(paramAttributeSet, paramInt);
-    this.ajQ.jf();
+    paramContext.ayy.recycle();
+    this.akc = new e(this);
+    this.akc.a(paramAttributeSet, paramInt);
+    this.akd = new l(this);
+    this.akd.a(paramAttributeSet, paramInt);
+    this.akd.jo();
   }
   
   protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (this.ajP != null) {
-      this.ajP.iX();
+    if (this.akc != null) {
+      this.akc.jg();
     }
-    if (this.ajQ != null) {
-      this.ajQ.jf();
+    if (this.akd != null) {
+      this.akd.jo();
     }
   }
   
   public ColorStateList getSupportBackgroundTintList()
   {
-    if (this.ajP != null) {
-      return this.ajP.getSupportBackgroundTintList();
+    if (this.akc != null) {
+      return this.akc.getSupportBackgroundTintList();
     }
     return null;
   }
   
   public PorterDuff.Mode getSupportBackgroundTintMode()
   {
-    if (this.ajP != null) {
-      return this.ajP.getSupportBackgroundTintMode();
+    if (this.akc != null) {
+      return this.akc.getSupportBackgroundTintMode();
     }
     return null;
   }
@@ -75,16 +75,16 @@ public class AppCompatMultiAutoCompleteTextView
   public void setBackgroundDrawable(Drawable paramDrawable)
   {
     super.setBackgroundDrawable(paramDrawable);
-    if (this.ajP != null) {
-      this.ajP.iW();
+    if (this.akc != null) {
+      this.akc.jf();
     }
   }
   
   public void setBackgroundResource(int paramInt)
   {
     super.setBackgroundResource(paramInt);
-    if (this.ajP != null) {
-      this.ajP.bG(paramInt);
+    if (this.akc != null) {
+      this.akc.bH(paramInt);
     }
   }
   
@@ -95,23 +95,23 @@ public class AppCompatMultiAutoCompleteTextView
   
   public void setSupportBackgroundTintList(ColorStateList paramColorStateList)
   {
-    if (this.ajP != null) {
-      this.ajP.setSupportBackgroundTintList(paramColorStateList);
+    if (this.akc != null) {
+      this.akc.setSupportBackgroundTintList(paramColorStateList);
     }
   }
   
   public void setSupportBackgroundTintMode(PorterDuff.Mode paramMode)
   {
-    if (this.ajP != null) {
-      this.ajP.setSupportBackgroundTintMode(paramMode);
+    if (this.akc != null) {
+      this.akc.setSupportBackgroundTintMode(paramMode);
     }
   }
   
   public void setTextAppearance(Context paramContext, int paramInt)
   {
     super.setTextAppearance(paramContext, paramInt);
-    if (this.ajQ != null) {
-      this.ajQ.u(paramContext, paramInt);
+    if (this.akd != null) {
+      this.akd.u(paramContext, paramInt);
     }
   }
 }

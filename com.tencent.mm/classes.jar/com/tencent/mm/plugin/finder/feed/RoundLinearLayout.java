@@ -7,56 +7,56 @@ import android.graphics.Path.Direction;
 import android.util.AttributeSet;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/RoundLinearLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "radiusPercent", "", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "setRadius", "percent", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/RoundLinearLayout;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "defStyleRes", "(Landroid/content/Context;Landroid/util/AttributeSet;II)V", "radiusPercent", "", "dispatchDraw", "", "canvas", "Landroid/graphics/Canvas;", "setRadius", "percent", "plugin-finder_release"})
 public class RoundLinearLayout
   extends LinearLayout
 {
-  private float sjD;
+  private float tUd;
   
   public RoundLinearLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(202773);
-    this.sjD = 0.5F;
-    AppMethodBeat.o(202773);
+    AppMethodBeat.i(244509);
+    this.tUd = 0.5F;
+    AppMethodBeat.o(244509);
   }
   
   public RoundLinearLayout(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(202774);
-    this.sjD = 0.5F;
-    AppMethodBeat.o(202774);
+    AppMethodBeat.i(244510);
+    this.tUd = 0.5F;
+    AppMethodBeat.o(244510);
   }
   
   protected void dispatchDraw(Canvas paramCanvas)
   {
-    AppMethodBeat.i(202772);
+    AppMethodBeat.i(244508);
     p.h(paramCanvas, "canvas");
     Path localPath = new Path();
     float f1 = getWidth();
     float f2 = getHeight();
     float f3 = getWidth();
-    float f4 = this.sjD;
+    float f4 = this.tUd;
     float f5 = getHeight();
-    localPath.addRoundRect(0.0F, 0.0F, f1, f2, f4 * f3, this.sjD * f5, Path.Direction.CW);
+    localPath.addRoundRect(0.0F, 0.0F, f1, f2, f4 * f3, this.tUd * f5, Path.Direction.CW);
     paramCanvas.clipPath(localPath);
     super.dispatchDraw(paramCanvas);
-    AppMethodBeat.o(202772);
+    AppMethodBeat.o(244508);
   }
   
   public final void setRadius(float paramFloat)
   {
-    AppMethodBeat.i(202771);
+    AppMethodBeat.i(244507);
     if ((paramFloat >= 0.0F) && (paramFloat <= 0.5F))
     {
-      this.sjD = paramFloat;
+      this.tUd = paramFloat;
       invalidate();
     }
-    AppMethodBeat.o(202771);
+    AppMethodBeat.o(244507);
   }
 }
 

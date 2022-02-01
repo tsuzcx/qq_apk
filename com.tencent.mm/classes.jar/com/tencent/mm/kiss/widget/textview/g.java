@@ -16,58 +16,58 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kiss.widget.textview.a.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.au;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMStack;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class g
 {
-  protected f gHV;
-  public a gHW;
-  protected StaticLayout gHX;
-  protected boolean gHY = false;
-  int gHZ;
-  int gIa;
-  private boolean gIb = false;
-  boolean gIc = false;
-  boolean gId = false;
-  private boolean gIe = false;
-  private View gIf;
-  private int gIg = 0;
-  private int gIh = 0;
+  protected f huJ;
+  public a huK;
+  protected StaticLayout huL;
+  protected boolean huM = false;
+  int huN;
+  int huO;
+  private boolean huP = false;
+  boolean huQ = false;
+  boolean huR = false;
+  private boolean huS = false;
+  private View huT;
+  private int huU = 0;
+  private int huV = 0;
   protected CharSequence text = null;
   
   public g(View paramView, a parama)
   {
-    this.gIf = paramView;
-    this.gHW = parama;
+    this.huT = paramView;
+    this.huK = parama;
   }
   
-  private boolean mV(int paramInt)
+  private boolean qj(int paramInt)
   {
     AppMethodBeat.i(141094);
-    if ((this.gHY) || (this.gHV == null) || (this.gHX == null))
+    if ((this.huM) || (this.huJ == null) || (this.huL == null))
     {
-      if (this.gHW == null)
+      if (this.huK == null)
       {
         AppMethodBeat.o(141094);
         return false;
       }
       if (paramInt > 0)
       {
-        akX();
+        aBo();
         long l1 = 0L;
         if (h.DEBUG) {
           l1 = System.nanoTime();
         }
-        this.gHV = d.a(this.text, paramInt, this.gHW).akU();
-        this.gHX = this.gHV.gHT;
-        this.gHY = false;
+        this.huJ = d.a(this.text, paramInt, this.huK).aBl();
+        this.huL = this.huJ.huH;
+        this.huM = false;
         if (h.DEBUG)
         {
           long l2 = System.nanoTime();
-          ae.d("MicroMsg.StaticTextViewHolder", "recreateLayoutIfNeed, width: %d, hasCode: %d, used: %fms, text: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()), Double.valueOf((l2 - l1) / 1000000.0D), this.text });
+          Log.d("MicroMsg.StaticTextViewHolder", "recreateLayoutIfNeed, width: %d, hasCode: %d, used: %fms, text: %s", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(hashCode()), Double.valueOf((l2 - l1) / 1000000.0D), this.text });
         }
         AppMethodBeat.o(141094);
         return true;
@@ -80,26 +80,26 @@ public final class g
   private void setRawTextSize(float paramFloat)
   {
     AppMethodBeat.i(141079);
-    if ((paramFloat != 0.0F) && (this.gHW != null) && (paramFloat != this.gHW.textSize))
+    if ((paramFloat != 0.0F) && (this.huK != null) && (paramFloat != this.huK.textSize))
     {
-      this.gHW.textSize = paramFloat;
-      this.gHY = true;
+      this.huK.textSize = paramFloat;
+      this.huM = true;
       if (h.DEBUG) {
-        ae.i("MicroMsg.StaticTextViewHolder", "setRawTextSize isNeedRecreateLayout");
+        Log.i("MicroMsg.StaticTextViewHolder", "setRawTextSize isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141079);
   }
   
-  final void akX()
+  final void aBo()
   {
-    this.gIh = 0;
-    this.gIg = 0;
-    this.gHZ = 0;
-    this.gIa = 0;
+    this.huV = 0;
+    this.huU = 0;
+    this.huN = 0;
+    this.huO = 0;
   }
   
-  public final Point cP(int paramInt1, int paramInt2)
+  public final Point cV(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(141095);
     long l = 0L;
@@ -110,8 +110,8 @@ public final class g
     int m = View.MeasureSpec.getMode(paramInt2);
     int i = View.MeasureSpec.getSize(paramInt1);
     int j = View.MeasureSpec.getSize(paramInt2);
-    mV(i);
-    if (this.gHX != null) {
+    qj(i);
+    if (this.huL != null) {
       if (n == 1073741824) {
         paramInt1 = i;
       }
@@ -136,28 +136,28 @@ public final class g
           }
           localObject2 = "";
           label126:
-          ae.d("MicroMsg.StaticTextViewHolder", "onMeasure used: %fms, hashCode: %d, text: %s result: %s", new Object[] { Double.valueOf(d), Integer.valueOf(paramInt1), localCharSequence, localObject2 });
+          Log.d("MicroMsg.StaticTextViewHolder", "onMeasure used: %fms, hashCode: %d, text: %s result: %s", new Object[] { Double.valueOf(d), Integer.valueOf(paramInt1), localCharSequence, localObject2 });
         }
         AppMethodBeat.o(141095);
         return localObject1;
         paramInt1 = 0;
-        if (this.gHW.gHJ == null)
+        if (this.huK.hux == null)
         {
-          localObject1 = this.gHX;
-          if (this.gIg == 0) {
+          localObject1 = this.huL;
+          if (this.huU == 0) {
             break label293;
           }
-          paramInt1 = this.gIg;
+          paramInt1 = this.huU;
         }
         for (;;)
         {
-          k = (int)Math.ceil(Layout.getDesiredWidth(this.gHX.getText(), this.gHX.getPaint()));
+          k = (int)Math.ceil(Layout.getDesiredWidth(this.huL.getText(), this.huL.getPaint()));
           paramInt2 = paramInt1;
           if (k > paramInt1) {
             paramInt2 = k;
           }
           if (h.DEBUG) {
-            ae.d("MicroMsg.StaticTextViewHolder", "onMeasure  hashCode: %d, des: %d newdes: %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(k) });
+            Log.d("MicroMsg.StaticTextViewHolder", "onMeasure  hashCode: %d, des: %d newdes: %d", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(paramInt2), Integer.valueOf(k) });
           }
           if (n != -2147483648) {
             break label614;
@@ -188,15 +188,15 @@ public final class g
             f = Math.max(f, ((Layout)localObject1).getLineWidth(paramInt1));
             paramInt1 += 1;
           }
-          this.gIg = ((int)Math.ceil(f));
-          this.gIg += this.gIf.getPaddingLeft() + this.gIf.getPaddingRight();
-          paramInt1 = this.gIg;
+          this.huU = ((int)Math.ceil(f));
+          this.huU += this.huT.getPaddingLeft() + this.huT.getPaddingRight();
+          paramInt1 = this.huU;
         }
-        localObject1 = this.gHX;
-        if (this.gIh == 0) {
+        localObject1 = this.huL;
+        if (this.huV == 0) {
           break label460;
         }
-        i = this.gIh;
+        i = this.huV;
         label439:
         paramInt2 = i;
         if (m == -2147483648) {
@@ -206,24 +206,24 @@ public final class g
       label460:
       i = ((Layout)localObject1).getLineCount();
       paramInt2 = i;
-      if (this.gHV.maxLines > 0)
+      if (this.huJ.maxLines > 0)
       {
         paramInt2 = i;
-        if (this.gHV.maxLines < i) {
-          paramInt2 = this.gHV.maxLines;
+        if (this.huJ.maxLines < i) {
+          paramInt2 = this.huJ.maxLines;
         }
       }
-      int k = this.gIf.getPaddingTop();
-      n = this.gIf.getPaddingBottom();
+      int k = this.huT.getPaddingTop();
+      n = this.huT.getPaddingBottom();
       i = ((Layout)localObject1).getLineTop(paramInt2);
       int i1;
-      if ((this.gHW.minLines > 0) && (paramInt2 < this.gHW.minLines)) {
+      if ((this.huK.minLines > 0) && (paramInt2 < this.huK.minLines)) {
         i1 = getLineHeight();
       }
-      for (paramInt2 = (this.gHW.minLines - paramInt2) * i1 + i;; paramInt2 = i)
+      for (paramInt2 = (this.huK.minLines - paramInt2) * i1 + i;; paramInt2 = i)
       {
-        this.gIh = (paramInt2 + (k + n));
-        i = this.gIh;
+        this.huV = (paramInt2 + (k + n));
+        i = this.huV;
         break label439;
         localObject1 = null;
         break;
@@ -238,18 +238,18 @@ public final class g
   
   public final f getLayoutWrapper()
   {
-    return this.gHV;
+    return this.huJ;
   }
   
   public final int getLineCount()
   {
     AppMethodBeat.i(141089);
-    if (this.gHX == null)
+    if (this.huL == null)
     {
       AppMethodBeat.o(141089);
       return 0;
     }
-    int i = this.gHX.getLineCount();
+    int i = this.huL.getLineCount();
     AppMethodBeat.o(141089);
     return i;
   }
@@ -257,20 +257,20 @@ public final class g
   public final int getLineHeight()
   {
     AppMethodBeat.i(141085);
-    TextPaint localTextPaint2 = this.gHV.gHT.getPaint();
+    TextPaint localTextPaint2 = this.huJ.huH.getPaint();
     TextPaint localTextPaint1 = localTextPaint2;
     if (localTextPaint2 == null) {
-      localTextPaint1 = this.gHW.iU;
+      localTextPaint1 = this.huK.iW;
     }
-    int i = Math.round(localTextPaint1.getFontMetricsInt(null) * this.gHW.gHN + this.gHW.gHM);
+    int i = Math.round(localTextPaint1.getFontMetricsInt(null) * this.huK.huB + this.huK.huA);
     AppMethodBeat.o(141085);
     return i;
   }
   
   public final int getMaxLines()
   {
-    if (this.gHW != null) {
-      return this.gHW.maxLines;
+    if (this.huK != null) {
+      return this.huK.maxLines;
     }
     return -1;
   }
@@ -309,18 +309,18 @@ public final class g
   public final int getTextColor()
   {
     AppMethodBeat.i(141088);
-    if (this.gHV == null)
+    if (this.huJ == null)
     {
-      if (this.gHW != null)
+      if (this.huK != null)
       {
-        i = this.gHW.textColor;
+        i = this.huK.textColor;
         AppMethodBeat.o(141088);
         return i;
       }
       AppMethodBeat.o(141088);
       return 0;
     }
-    int i = this.gHV.iU.getColor();
+    int i = this.huJ.iW.getColor();
     AppMethodBeat.o(141088);
     return i;
   }
@@ -328,48 +328,48 @@ public final class g
   public final float getTextSize()
   {
     AppMethodBeat.i(141087);
-    if (this.gHV == null)
+    if (this.huJ == null)
     {
-      if (this.gHW != null)
+      if (this.huK != null)
       {
-        f = this.gHW.textSize;
+        f = this.huK.textSize;
         AppMethodBeat.o(141087);
         return f;
       }
       AppMethodBeat.o(141087);
       return 0.0F;
     }
-    float f = this.gHV.iU.getTextSize();
+    float f = this.huJ.iW.getTextSize();
     AppMethodBeat.o(141087);
     return f;
   }
   
   public final Layout getTvLayout()
   {
-    return this.gHX;
+    return this.huL;
   }
   
   public final void init()
   {
     AppMethodBeat.i(141075);
     this.text = "";
-    this.gIf.setWillNotDraw(false);
+    this.huT.setWillNotDraw(false);
     AppMethodBeat.o(141075);
   }
   
   protected final void onDraw(Canvas paramCanvas)
   {
     AppMethodBeat.i(141093);
-    if ((this.gHX == null) || (this.gHV == null))
+    if ((this.huL == null) || (this.huJ == null))
     {
-      boolean bool = mV(this.gIf.getMeasuredWidth());
+      boolean bool = qj(this.huT.getMeasuredWidth());
       if (h.DEBUG) {
-        ae.d("MicroMsg.StaticTextViewHolder", "onDraw, textLayout==null:%b, layoutWrapper==null:%b recreate:%b", new Object[] { this.gHX, this.gHV, Boolean.valueOf(bool) });
+        Log.d("MicroMsg.StaticTextViewHolder", "onDraw, textLayout==null:%b, layoutWrapper==null:%b recreate:%b", new Object[] { this.huL, this.huJ, Boolean.valueOf(bool) });
       }
       if (bool)
       {
-        this.gIf.requestLayout();
-        this.gIf.invalidate();
+        this.huT.requestLayout();
+        this.huT.invalidate();
       }
       AppMethodBeat.o(141093);
       return;
@@ -379,47 +379,47 @@ public final class g
       l = System.nanoTime();
     }
     paramCanvas.save();
-    int k = this.gIf.getPaddingLeft();
-    int m = this.gIf.getPaddingTop();
-    int n = this.gIf.getRight() - this.gIf.getLeft() - this.gIf.getPaddingRight();
-    int i1 = this.gIf.getBottom() - this.gIf.getTop() - this.gIf.getPaddingBottom();
+    int k = this.huT.getPaddingLeft();
+    int m = this.huT.getPaddingTop();
+    int n = this.huT.getRight() - this.huT.getLeft() - this.huT.getPaddingRight();
+    int i1 = this.huT.getBottom() - this.huT.getTop() - this.huT.getPaddingBottom();
     paramCanvas.clipRect(k, m, n, i1);
     int j;
     int i;
     int i2;
     int i3;
-    if ((this.gHZ == 0) || (this.gIa == 0))
+    if ((this.huN == 0) || (this.huO == 0))
     {
-      j = this.gIf.getPaddingLeft();
-      i = this.gIf.getRight() - this.gIf.getLeft() - this.gIf.getPaddingLeft() - this.gIf.getPaddingRight();
-      i2 = this.gHX.getWidth();
+      j = this.huT.getPaddingLeft();
+      i = this.huT.getRight() - this.huT.getLeft() - this.huT.getPaddingLeft() - this.huT.getPaddingRight();
+      i2 = this.huL.getWidth();
       if (i2 > i)
       {
         i = j;
-        this.gHZ = i;
-        j = this.gIf.getPaddingTop();
-        i2 = this.gIf.getBottom() - this.gIf.getTop() - this.gIf.getPaddingTop() - this.gIf.getPaddingBottom();
+        this.huN = i;
+        j = this.huT.getPaddingTop();
+        i2 = this.huT.getBottom() - this.huT.getTop() - this.huT.getPaddingTop() - this.huT.getPaddingBottom();
         i = 0;
-        i3 = this.gHX.getHeight();
+        i3 = this.huL.getHeight();
         if (i3 <= i2) {
           break label566;
         }
         i = j;
-        this.gIa = i;
+        this.huO = i;
       }
     }
     else
     {
-      paramCanvas.translate(this.gHZ, this.gIa);
-      this.gHX.draw(paramCanvas, null, null, 0);
+      paramCanvas.translate(this.huN, this.huO);
+      this.huL.draw(paramCanvas, null, null, 0);
       paramCanvas.restore();
       if (h.DEBUG) {
-        ae.d("MicroMsg.StaticTextViewHolder", "onDraw used: %fms, hashCode: %d, text: %s clipLeft:%d clipTop:%d clipRight:%d clipBottom:%d", new Object[] { Double.valueOf((System.nanoTime() - l) / 1000000.0D), Integer.valueOf(hashCode()), this.text, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1) });
+        Log.d("MicroMsg.StaticTextViewHolder", "onDraw used: %fms, hashCode: %d, text: %s clipLeft:%d clipTop:%d clipRight:%d clipBottom:%d", new Object[] { Double.valueOf((System.nanoTime() - l) / 1000000.0D), Integer.valueOf(hashCode()), this.text, Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Integer.valueOf(i1) });
       }
       AppMethodBeat.o(141093);
       return;
     }
-    switch (this.gHV.gravity & 0x800007)
+    switch (this.huJ.gravity & 0x800007)
     {
     default: 
       i = 0;
@@ -435,7 +435,7 @@ public final class g
       i -= i2;
     }
     label566:
-    switch (this.gHV.gravity & 0x70)
+    switch (this.huJ.gravity & 0x70)
     {
     }
     for (;;)
@@ -452,78 +452,18 @@ public final class g
   
   public final boolean performClick()
   {
-    return (!this.gIe) && (this.gIc);
-  }
-  
-  public final boolean s(MotionEvent paramMotionEvent)
-  {
-    boolean bool2 = false;
-    AppMethodBeat.i(141092);
-    int i;
-    boolean bool1;
-    float f2;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-    {
-      i = 1;
-      bool1 = bool2;
-      if (this.gIf.isEnabled())
-      {
-        bool1 = bool2;
-        if (this.gIb)
-        {
-          com.tencent.mm.kiss.widget.textview.b.b.alc();
-          bool1 = com.tencent.mm.kiss.widget.textview.b.b.a(this.gIf, this.gHX, (Spannable)this.text, paramMotionEvent);
-          this.gIe = bool1;
-          if ((!this.gId) || (i == 0)) {
-            break label250;
-          }
-          float f1 = paramMotionEvent.getX();
-          f2 = paramMotionEvent.getY();
-          if ((f1 >= this.gHZ) && (f1 <= this.gHX.getWidth() + this.gHZ)) {
-            break label210;
-          }
-          i = 0;
-          label137:
-          if (i == 0) {
-            break label250;
-          }
-          paramMotionEvent = (ClickableSpan[])((Spannable)this.text).getSpans(getSelectionStart(), getSelectionEnd(), ClickableSpan.class);
-          if (paramMotionEvent.length <= 0) {
-            break label250;
-          }
-          ae.d("MicroMsg.StaticTextViewHolder", "perform clickable span click");
-          paramMotionEvent[0].onClick(this.gIf);
-          bool1 = true;
-        }
-      }
-    }
-    label210:
-    label250:
-    for (;;)
-    {
-      AppMethodBeat.o(141092);
-      return bool1;
-      i = 0;
-      break;
-      if ((f2 < this.gIa) || (f2 > this.gHX.getHeight() + this.gIa))
-      {
-        i = 0;
-        break label137;
-      }
-      i = 1;
-      break label137;
-    }
+    return (!this.huS) && (this.huQ);
   }
   
   public final void setGravity(int paramInt)
   {
     AppMethodBeat.i(141082);
-    if ((this.gHW != null) && (paramInt != this.gHW.gravity))
+    if ((this.huK != null) && (paramInt != this.huK.gravity))
     {
-      this.gHW.gravity = paramInt;
-      this.gHY = true;
+      this.huK.gravity = paramInt;
+      this.huM = true;
       if (h.DEBUG) {
-        ae.i("MicroMsg.StaticTextViewHolder", "setGravity isNeedRecreateLayout");
+        Log.i("MicroMsg.StaticTextViewHolder", "setGravity isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141082);
@@ -532,16 +472,16 @@ public final class g
   public final void setLines(int paramInt)
   {
     AppMethodBeat.i(141077);
-    if ((this.gHW.maxLines != paramInt) || (this.gHW.minLines != paramInt))
+    if ((this.huK.maxLines != paramInt) || (this.huK.minLines != paramInt))
     {
-      this.gHY = true;
-      akX();
-      this.gHW.maxLines = paramInt;
-      this.gHW.minLines = paramInt;
-      this.gIf.requestLayout();
-      this.gIf.invalidate();
+      this.huM = true;
+      aBo();
+      this.huK.maxLines = paramInt;
+      this.huK.minLines = paramInt;
+      this.huT.requestLayout();
+      this.huT.invalidate();
       if (h.DEBUG) {
-        ae.i("MicroMsg.StaticTextViewHolder", "setLines isNeedRecreateLayout");
+        Log.i("MicroMsg.StaticTextViewHolder", "setLines isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141077);
@@ -550,16 +490,16 @@ public final class g
   public final void setMaxLines(int paramInt)
   {
     AppMethodBeat.i(141083);
-    if ((this.gHW != null) && (paramInt != this.gHW.maxLines))
+    if ((this.huK != null) && (paramInt != this.huK.maxLines))
     {
-      this.gHW.maxLines = paramInt;
-      this.gHY = true;
-      akX();
+      this.huK.maxLines = paramInt;
+      this.huM = true;
+      aBo();
       if (h.DEBUG) {
-        ae.i("MicroMsg.StaticTextViewHolder", "setMaxLines isNeedRecreateLayout");
+        Log.i("MicroMsg.StaticTextViewHolder", "setMaxLines isNeedRecreateLayout");
       }
-      this.gIf.requestLayout();
-      this.gIf.invalidate();
+      this.huT.requestLayout();
+      this.huT.invalidate();
     }
     AppMethodBeat.o(141083);
   }
@@ -567,12 +507,12 @@ public final class g
   public final void setMinLines(int paramInt)
   {
     AppMethodBeat.i(141084);
-    if (this.gHW.minLines != paramInt)
+    if (this.huK.minLines != paramInt)
     {
-      this.gHW.minLines = paramInt;
-      akX();
-      this.gIf.requestLayout();
-      this.gIf.invalidate();
+      this.huK.minLines = paramInt;
+      aBo();
+      this.huT.requestLayout();
+      this.huT.invalidate();
     }
     AppMethodBeat.o(141084);
   }
@@ -583,13 +523,13 @@ public final class g
     if (paramBoolean) {}
     for (int i = 1;; i = 2147483647)
     {
-      if (this.gHW.maxLines != i)
+      if (this.huK.maxLines != i)
       {
-        this.gHW.maxLines = i;
-        this.gHY = true;
-        akX();
-        this.gIf.requestLayout();
-        this.gIf.invalidate();
+        this.huK.maxLines = i;
+        this.huM = true;
+        aBo();
+        this.huT.requestLayout();
+        this.huT.invalidate();
       }
       AppMethodBeat.o(141076);
       return;
@@ -604,14 +544,14 @@ public final class g
       AppMethodBeat.o(141086);
       return;
     }
-    if ((this.text == null) || (!this.text.equals(paramCharSequence)) || (paramBoolean))
+    if ((this.text == null) || (!paramCharSequence.equals(this.text)) || (paramBoolean))
     {
       this.text = paramCharSequence;
-      this.gHY = true;
-      this.gIf.requestLayout();
-      this.gIf.invalidate();
+      this.huM = true;
+      this.huT.requestLayout();
+      this.huT.invalidate();
       if (h.DEBUG) {
-        ae.i("MicroMsg.StaticTextViewHolder", "setText isNeedRecreateLayout " + paramCharSequence + " hashcode " + hashCode() + " " + bu.fpN().toString());
+        Log.i("MicroMsg.StaticTextViewHolder", "setText isNeedRecreateLayout " + paramCharSequence + " hashcode " + hashCode() + " " + Util.getStack().toString());
       }
     }
     AppMethodBeat.o(141086);
@@ -620,12 +560,12 @@ public final class g
   public final void setTextColor(int paramInt)
   {
     AppMethodBeat.i(141081);
-    if ((this.gHW != null) && (paramInt != this.gHW.textColor))
+    if ((this.huK != null) && (paramInt != this.huK.textColor))
     {
-      this.gHW.textColor = paramInt;
-      this.gHY = true;
+      this.huK.textColor = paramInt;
+      this.huM = true;
       if (h.DEBUG) {
-        ae.i("MicroMsg.StaticTextViewHolder", "setTextColor isNeedRecreateLayout");
+        Log.i("MicroMsg.StaticTextViewHolder", "setTextColor isNeedRecreateLayout");
       }
     }
     AppMethodBeat.o(141081);
@@ -633,49 +573,64 @@ public final class g
   
   public final void setTextLayout(f paramf)
   {
+    boolean bool2 = false;
     AppMethodBeat.i(141080);
-    if ((paramf == null) || (paramf.gHT == null))
+    if ((paramf == null) || (paramf.huH == null))
     {
-      this.gHV = null;
+      this.huJ = null;
       AppMethodBeat.o(141080);
       return;
     }
-    if (this.gHW == null)
+    if (this.huK == null)
     {
       com.tencent.mm.kiss.widget.textview.a.b localb = new com.tencent.mm.kiss.widget.textview.a.b();
-      localb.gHW = new a();
-      localb.gHW.maxLines = paramf.maxLines;
-      localb.gHW.maxLength = paramf.maxLength;
-      localb.gHW.iU = paramf.iU;
-      localb.gHW.gHI = paramf.gHI;
-      localb.gHW.gHJ = paramf.gHJ;
-      localb.gHW.gravity = paramf.gravity;
-      localb.gHW.textSize = paramf.iU.getTextSize();
-      localb.gHW.textColor = paramf.iU.getColor();
-      localb.gHW.breakStrategy = paramf.breakStrategy;
-      this.gHW = localb.gHW;
+      localb.huK = new a();
+      localb.huK.maxLines = paramf.maxLines;
+      localb.huK.maxLength = paramf.maxLength;
+      localb.huK.iW = paramf.iW;
+      localb.huK.huw = paramf.huw;
+      localb.huK.hux = paramf.hux;
+      localb.huK.gravity = paramf.gravity;
+      localb.huK.textSize = paramf.iW.getTextSize();
+      localb.huK.textColor = paramf.iW.getColor();
+      localb.huK.breakStrategy = paramf.breakStrategy;
+      this.huK = localb.huK;
     }
-    akX();
-    this.gIf.setWillNotDraw(false);
-    this.gHV = paramf;
-    this.gHX = paramf.gHT;
+    aBo();
+    this.huT.setWillNotDraw(false);
+    this.huJ = paramf;
+    this.huL = paramf.huH;
     this.text = paramf.text;
-    this.gIb = (this.text instanceof Spannable);
-    if (this.gIb)
+    this.huP = (this.text instanceof Spannable);
+    if (this.huP)
     {
-      this.text = this.gHV.text;
-      com.tencent.mm.kiss.widget.textview.b.b.alc();
+      this.text = this.huJ.text;
+      com.tencent.mm.kiss.widget.textview.b.b.aBv();
       com.tencent.mm.kiss.widget.textview.b.b.a((Spannable)this.text);
     }
-    this.gIf.requestLayout();
-    this.gIf.invalidate();
-    AppMethodBeat.o(141080);
+    if (this.text == null) {
+      if (paramf.text != null) {
+        break label339;
+      }
+    }
+    label339:
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      if (this.huJ.text == null) {
+        bool2 = true;
+      }
+      Log.e("MicroMsg.StaticTextViewHolder", "text is null, [%b, %b, %s]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Util.getStack() });
+      this.huT.requestLayout();
+      this.huT.invalidate();
+      AppMethodBeat.o(141080);
+      return;
+    }
   }
   
   public final void setTextSize(int paramInt, float paramFloat)
   {
     AppMethodBeat.i(141078);
-    Object localObject = ak.getContext();
+    Object localObject = MMApplicationContext.getContext();
     if (localObject == null) {}
     for (localObject = Resources.getSystem();; localObject = ((Context)localObject).getResources())
     {
@@ -684,10 +639,70 @@ public final class g
       return;
     }
   }
+  
+  public final boolean w(MotionEvent paramMotionEvent)
+  {
+    boolean bool2 = false;
+    AppMethodBeat.i(141092);
+    int i;
+    boolean bool1;
+    float f2;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
+    {
+      i = 1;
+      bool1 = bool2;
+      if (this.huT.isEnabled())
+      {
+        bool1 = bool2;
+        if (this.huP)
+        {
+          com.tencent.mm.kiss.widget.textview.b.b.aBv();
+          bool1 = com.tencent.mm.kiss.widget.textview.b.b.a(this.huT, this.huL, (Spannable)this.text, paramMotionEvent);
+          this.huS = bool1;
+          if ((!this.huR) || (i == 0)) {
+            break label250;
+          }
+          float f1 = paramMotionEvent.getX();
+          f2 = paramMotionEvent.getY();
+          if ((f1 >= this.huN) && (f1 <= this.huL.getWidth() + this.huN)) {
+            break label210;
+          }
+          i = 0;
+          label137:
+          if (i == 0) {
+            break label250;
+          }
+          paramMotionEvent = (ClickableSpan[])((Spannable)this.text).getSpans(getSelectionStart(), getSelectionEnd(), ClickableSpan.class);
+          if (paramMotionEvent.length <= 0) {
+            break label250;
+          }
+          Log.d("MicroMsg.StaticTextViewHolder", "perform clickable span click");
+          paramMotionEvent[0].onClick(this.huT);
+          bool1 = true;
+        }
+      }
+    }
+    label210:
+    label250:
+    for (;;)
+    {
+      AppMethodBeat.o(141092);
+      return bool1;
+      i = 0;
+      break;
+      if ((f2 < this.huO) || (f2 > this.huL.getHeight() + this.huO))
+      {
+        i = 0;
+        break label137;
+      }
+      i = 1;
+      break label137;
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.kiss.widget.textview.g
  * JD-Core Version:    0.7.0.1
  */

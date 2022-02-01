@@ -3,94 +3,94 @@ package com.tencent.mm.plugin.expt.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.h.a;
 import com.tencent.mm.plugin.expt.h.d;
-import com.tencent.mm.protocal.protobuf.ahw;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.aki;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b
 {
   static String TAG = "MicroMsg.ExptIdMMKV";
-  private static b qwc;
+  private static b rNJ;
   private String name = null;
   
-  public static b coo()
+  public static b cMz()
   {
-    AppMethodBeat.i(195833);
-    if (qwc == null) {
-      qwc = new b();
+    AppMethodBeat.i(220253);
+    if (rNJ == null) {
+      rNJ = new b();
     }
-    b localb = qwc;
-    AppMethodBeat.o(195833);
+    b localb = rNJ;
+    AppMethodBeat.o(220253);
     return localb;
   }
   
   private String info()
   {
-    AppMethodBeat.i(195837);
+    AppMethodBeat.i(220257);
     String str = hashCode();
-    AppMethodBeat.o(195837);
+    AppMethodBeat.o(220257);
     return str;
   }
   
-  public final ay bOc()
+  public final MultiProcessMMKV aTI()
   {
-    AppMethodBeat.i(195834);
-    d.ctr();
+    AppMethodBeat.i(220254);
+    d.cRY();
     int i = d.getUin();
     if (i == 0)
     {
-      ae.e(TAG, "uin err [%d]", new Object[] { Integer.valueOf(i) });
-      AppMethodBeat.o(195834);
+      Log.e(TAG, "uin err [%d]", new Object[] { Integer.valueOf(i) });
+      AppMethodBeat.o(220254);
       return null;
     }
     Object localObject = i + "_WxExptIdmmkv";
-    if (!bu.lX(this.name, (String)localObject))
+    if (!Util.isEqual(this.name, (String)localObject))
     {
-      ae.i(TAG, "%s get mmkv change uin old[%s] new[%s]", new Object[] { info(), this.name, localObject });
+      Log.i(TAG, "%s get mmkv change uin old[%s] new[%s]", new Object[] { info(), this.name, localObject });
       this.name = ((String)localObject);
     }
-    localObject = ay.aRW(this.name);
-    AppMethodBeat.o(195834);
+    localObject = MultiProcessMMKV.getMMKV(this.name);
+    AppMethodBeat.o(220254);
     return localObject;
   }
   
-  public final List<ahw> cop()
+  public final List<aki> cMA()
   {
-    AppMethodBeat.i(195835);
+    AppMethodBeat.i(220255);
     LinkedList localLinkedList = new LinkedList();
-    ay localay = bOc();
-    if (localay != null)
+    MultiProcessMMKV localMultiProcessMMKV = aTI();
+    if (localMultiProcessMMKV != null)
     {
-      String[] arrayOfString = localay.allKeys();
+      String[] arrayOfString = localMultiProcessMMKV.allKeys();
       if ((arrayOfString != null) && (arrayOfString.length > 0))
       {
-        ae.i(TAG, "mmkv keys length is [%d] ", new Object[] { Integer.valueOf(arrayOfString.length) });
+        Log.i(TAG, "mmkv keys length is [%d] ", new Object[] { Integer.valueOf(arrayOfString.length) });
         int i = 0;
         while (i < arrayOfString.length)
         {
-          ahw localahw = new ahw();
-          a locala = com.tencent.mm.plugin.expt.h.b.ctb().DN(bu.getInt(arrayOfString[i], 0));
+          aki localaki = new aki();
+          a locala = com.tencent.mm.plugin.expt.h.b.cRI().HA(Util.getInt(arrayOfString[i], 0));
           if (locala != null)
           {
-            localahw.GxH = locala.rjD;
-            localahw.GxI = locala.adG;
-            localahw.GxJ = locala.rjE;
-            localahw.count = localay.decodeInt(arrayOfString[i]);
-            localLinkedList.add(localahw);
+            localaki.Ltq = locala.sLf;
+            localaki.Ltr = locala.adT;
+            localaki.Lts = locala.sLg;
+            localaki.count = localMultiProcessMMKV.decodeInt(arrayOfString[i]);
+            localLinkedList.add(localaki);
           }
           i += 1;
         }
       }
     }
-    AppMethodBeat.o(195835);
+    AppMethodBeat.o(220255);
     return localLinkedList;
   }
   
   /* Error */
-  final void coq()
+  final void cMB()
   {
     // Byte code:
     //   0: aload_0
@@ -98,7 +98,7 @@ public final class b
     //   2: ldc 171
     //   4: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
-    //   8: invokevirtual 110	com/tencent/mm/plugin/expt/a/b:bOc	()Lcom/tencent/mm/sdk/platformtools/ay;
+    //   8: invokevirtual 110	com/tencent/mm/plugin/expt/a/b:aTI	()Lcom/tencent/mm/sdk/platformtools/MultiProcessMMKV;
     //   11: astore_1
     //   12: aload_1
     //   13: ifnonnull +11 -> 24
@@ -108,7 +108,7 @@ public final class b
     //   22: monitorexit
     //   23: return
     //   24: aload_1
-    //   25: invokevirtual 175	com/tencent/mm/sdk/platformtools/ay:clear	()Landroid/content/SharedPreferences$Editor;
+    //   25: invokevirtual 175	com/tencent/mm/sdk/platformtools/MultiProcessMMKV:clear	()Landroid/content/SharedPreferences$Editor;
     //   28: invokeinterface 181 1 0
     //   33: pop
     //   34: ldc 171
@@ -122,7 +122,7 @@ public final class b
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	47	0	this	b
-    //   11	14	1	localay	ay
+    //   11	14	1	localMultiProcessMMKV	MultiProcessMMKV
     //   42	4	1	localObject	Object
     // Exception table:
     //   from	to	target	type
@@ -133,7 +133,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.a.b
  * JD-Core Version:    0.7.0.1
  */

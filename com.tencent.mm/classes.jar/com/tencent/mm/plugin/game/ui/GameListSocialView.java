@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.pluginsdk.ui.span.k;
+import com.tencent.mm.pluginsdk.ui.span.l;
 import java.util.LinkedList;
 
 public class GameListSocialView
@@ -41,7 +41,7 @@ public class GameListSocialView
       i = 0;
       while (i < j - k)
       {
-        inflate(getContext(), 2131494339, this);
+        inflate(getContext(), 2131494904, this);
         i += 1;
       }
     }
@@ -62,10 +62,10 @@ public class GameListSocialView
     while (i < paramLinkedList.size() / 2)
     {
       Object localObject = getChildAt(i);
-      TextView localTextView = (TextView)((View)localObject).findViewById(2131300551);
-      localObject = (TextView)((View)localObject).findViewById(2131300552);
-      localTextView.setText(k.b(getContext(), (CharSequence)paramLinkedList.get(i * 2), localTextView.getTextSize()));
-      ((TextView)localObject).setText(k.b(getContext(), (CharSequence)paramLinkedList.get(i * 2 + 1), ((TextView)localObject).getTextSize()));
+      TextView localTextView = (TextView)((View)localObject).findViewById(2131302083);
+      localObject = (TextView)((View)localObject).findViewById(2131302084);
+      localTextView.setText(l.b(getContext(), (CharSequence)paramLinkedList.get(i * 2), localTextView.getTextSize()));
+      ((TextView)localObject).setText(l.b(getContext(), (CharSequence)paramLinkedList.get(i * 2 + 1), ((TextView)localObject).getTextSize()));
       i += 1;
     }
     AppMethodBeat.o(42253);

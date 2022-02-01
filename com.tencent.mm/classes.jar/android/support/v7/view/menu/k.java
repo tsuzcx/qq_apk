@@ -20,7 +20,7 @@ public class k
   extends c<android.support.v4.a.a.b>
   implements MenuItem
 {
-  public Method agK;
+  public Method agX;
   
   k(Context paramContext, android.support.v4.a.a.b paramb)
   {
@@ -34,151 +34,151 @@ public class k
   
   public boolean collapseActionView()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).collapseActionView();
+    return ((android.support.v4.a.a.b)this.afm).collapseActionView();
   }
   
   public boolean expandActionView()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).expandActionView();
+    return ((android.support.v4.a.a.b)this.afm).expandActionView();
   }
   
   public ActionProvider getActionProvider()
   {
-    android.support.v4.view.b localb = ((android.support.v4.a.a.b)this.aeZ).eF();
+    android.support.v4.view.b localb = ((android.support.v4.a.a.b)this.afm).eJ();
     if ((localb instanceof a)) {
-      return ((a)localb).agL;
+      return ((a)localb).agY;
     }
     return null;
   }
   
   public View getActionView()
   {
-    View localView2 = ((android.support.v4.a.a.b)this.aeZ).getActionView();
+    View localView2 = ((android.support.v4.a.a.b)this.afm).getActionView();
     View localView1 = localView2;
     if ((localView2 instanceof b)) {
-      localView1 = (View)((b)localView2).agN;
+      localView1 = (View)((b)localView2).aha;
     }
     return localView1;
   }
   
   public int getAlphabeticModifiers()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getAlphabeticModifiers();
+    return ((android.support.v4.a.a.b)this.afm).getAlphabeticModifiers();
   }
   
   public char getAlphabeticShortcut()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getAlphabeticShortcut();
+    return ((android.support.v4.a.a.b)this.afm).getAlphabeticShortcut();
   }
   
   public CharSequence getContentDescription()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getContentDescription();
+    return ((android.support.v4.a.a.b)this.afm).getContentDescription();
   }
   
   public int getGroupId()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getGroupId();
+    return ((android.support.v4.a.a.b)this.afm).getGroupId();
   }
   
   public Drawable getIcon()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getIcon();
+    return ((android.support.v4.a.a.b)this.afm).getIcon();
   }
   
   public ColorStateList getIconTintList()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getIconTintList();
+    return ((android.support.v4.a.a.b)this.afm).getIconTintList();
   }
   
   public PorterDuff.Mode getIconTintMode()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getIconTintMode();
+    return ((android.support.v4.a.a.b)this.afm).getIconTintMode();
   }
   
   public Intent getIntent()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getIntent();
+    return ((android.support.v4.a.a.b)this.afm).getIntent();
   }
   
   public int getItemId()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getItemId();
+    return ((android.support.v4.a.a.b)this.afm).getItemId();
   }
   
   public ContextMenu.ContextMenuInfo getMenuInfo()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getMenuInfo();
+    return ((android.support.v4.a.a.b)this.afm).getMenuInfo();
   }
   
   public int getNumericModifiers()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getNumericModifiers();
+    return ((android.support.v4.a.a.b)this.afm).getNumericModifiers();
   }
   
   public char getNumericShortcut()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getNumericShortcut();
+    return ((android.support.v4.a.a.b)this.afm).getNumericShortcut();
   }
   
   public int getOrder()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getOrder();
+    return ((android.support.v4.a.a.b)this.afm).getOrder();
   }
   
   public SubMenu getSubMenu()
   {
-    return a(((android.support.v4.a.a.b)this.aeZ).getSubMenu());
+    return a(((android.support.v4.a.a.b)this.afm).getSubMenu());
   }
   
   public CharSequence getTitle()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getTitle();
+    return ((android.support.v4.a.a.b)this.afm).getTitle();
   }
   
   public CharSequence getTitleCondensed()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getTitleCondensed();
+    return ((android.support.v4.a.a.b)this.afm).getTitleCondensed();
   }
   
   public CharSequence getTooltipText()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).getTooltipText();
+    return ((android.support.v4.a.a.b)this.afm).getTooltipText();
   }
   
   public boolean hasSubMenu()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).hasSubMenu();
+    return ((android.support.v4.a.a.b)this.afm).hasSubMenu();
   }
   
   public boolean isActionViewExpanded()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).isActionViewExpanded();
+    return ((android.support.v4.a.a.b)this.afm).isActionViewExpanded();
   }
   
   public boolean isCheckable()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).isCheckable();
+    return ((android.support.v4.a.a.b)this.afm).isCheckable();
   }
   
   public boolean isChecked()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).isChecked();
+    return ((android.support.v4.a.a.b)this.afm).isChecked();
   }
   
   public boolean isEnabled()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).isEnabled();
+    return ((android.support.v4.a.a.b)this.afm).isEnabled();
   }
   
   public boolean isVisible()
   {
-    return ((android.support.v4.a.a.b)this.aeZ).isVisible();
+    return ((android.support.v4.a.a.b)this.afm).isVisible();
   }
   
   public MenuItem setActionProvider(ActionProvider paramActionProvider)
   {
-    android.support.v4.a.a.b localb = (android.support.v4.a.a.b)this.aeZ;
+    android.support.v4.a.a.b localb = (android.support.v4.a.a.b)this.afm;
     if (paramActionProvider != null) {}
     for (paramActionProvider = a(paramActionProvider);; paramActionProvider = null)
     {
@@ -189,10 +189,10 @@ public class k
   
   public MenuItem setActionView(int paramInt)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setActionView(paramInt);
-    View localView = ((android.support.v4.a.a.b)this.aeZ).getActionView();
+    ((android.support.v4.a.a.b)this.afm).setActionView(paramInt);
+    View localView = ((android.support.v4.a.a.b)this.afm).getActionView();
     if ((localView instanceof CollapsibleActionView)) {
-      ((android.support.v4.a.a.b)this.aeZ).setActionView(new b(localView));
+      ((android.support.v4.a.a.b)this.afm).setActionView(new b(localView));
     }
     return this;
   }
@@ -203,91 +203,91 @@ public class k
     if ((paramView instanceof CollapsibleActionView)) {
       localObject = new b(paramView);
     }
-    ((android.support.v4.a.a.b)this.aeZ).setActionView((View)localObject);
+    ((android.support.v4.a.a.b)this.afm).setActionView((View)localObject);
     return this;
   }
   
   public MenuItem setAlphabeticShortcut(char paramChar)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setAlphabeticShortcut(paramChar);
+    ((android.support.v4.a.a.b)this.afm).setAlphabeticShortcut(paramChar);
     return this;
   }
   
   public MenuItem setAlphabeticShortcut(char paramChar, int paramInt)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setAlphabeticShortcut(paramChar, paramInt);
+    ((android.support.v4.a.a.b)this.afm).setAlphabeticShortcut(paramChar, paramInt);
     return this;
   }
   
   public MenuItem setCheckable(boolean paramBoolean)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setCheckable(paramBoolean);
+    ((android.support.v4.a.a.b)this.afm).setCheckable(paramBoolean);
     return this;
   }
   
   public MenuItem setChecked(boolean paramBoolean)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setChecked(paramBoolean);
+    ((android.support.v4.a.a.b)this.afm).setChecked(paramBoolean);
     return this;
   }
   
   public MenuItem setContentDescription(CharSequence paramCharSequence)
   {
-    ((android.support.v4.a.a.b)this.aeZ).k(paramCharSequence);
+    ((android.support.v4.a.a.b)this.afm).k(paramCharSequence);
     return this;
   }
   
   public MenuItem setEnabled(boolean paramBoolean)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setEnabled(paramBoolean);
+    ((android.support.v4.a.a.b)this.afm).setEnabled(paramBoolean);
     return this;
   }
   
   public MenuItem setIcon(int paramInt)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setIcon(paramInt);
+    ((android.support.v4.a.a.b)this.afm).setIcon(paramInt);
     return this;
   }
   
   public MenuItem setIcon(Drawable paramDrawable)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setIcon(paramDrawable);
+    ((android.support.v4.a.a.b)this.afm).setIcon(paramDrawable);
     return this;
   }
   
   public MenuItem setIconTintList(ColorStateList paramColorStateList)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setIconTintList(paramColorStateList);
+    ((android.support.v4.a.a.b)this.afm).setIconTintList(paramColorStateList);
     return this;
   }
   
   public MenuItem setIconTintMode(PorterDuff.Mode paramMode)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setIconTintMode(paramMode);
+    ((android.support.v4.a.a.b)this.afm).setIconTintMode(paramMode);
     return this;
   }
   
   public MenuItem setIntent(Intent paramIntent)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setIntent(paramIntent);
+    ((android.support.v4.a.a.b)this.afm).setIntent(paramIntent);
     return this;
   }
   
   public MenuItem setNumericShortcut(char paramChar)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setNumericShortcut(paramChar);
+    ((android.support.v4.a.a.b)this.afm).setNumericShortcut(paramChar);
     return this;
   }
   
   public MenuItem setNumericShortcut(char paramChar, int paramInt)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setNumericShortcut(paramChar, paramInt);
+    ((android.support.v4.a.a.b)this.afm).setNumericShortcut(paramChar, paramInt);
     return this;
   }
   
   public MenuItem setOnActionExpandListener(MenuItem.OnActionExpandListener paramOnActionExpandListener)
   {
-    android.support.v4.a.a.b localb = (android.support.v4.a.a.b)this.aeZ;
+    android.support.v4.a.a.b localb = (android.support.v4.a.a.b)this.afm;
     if (paramOnActionExpandListener != null) {}
     for (paramOnActionExpandListener = new c(paramOnActionExpandListener);; paramOnActionExpandListener = null)
     {
@@ -298,7 +298,7 @@ public class k
   
   public MenuItem setOnMenuItemClickListener(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener)
   {
-    android.support.v4.a.a.b localb = (android.support.v4.a.a.b)this.aeZ;
+    android.support.v4.a.a.b localb = (android.support.v4.a.a.b)this.afm;
     if (paramOnMenuItemClickListener != null) {}
     for (paramOnMenuItemClickListener = new d(paramOnMenuItemClickListener);; paramOnMenuItemClickListener = null)
     {
@@ -309,85 +309,85 @@ public class k
   
   public MenuItem setShortcut(char paramChar1, char paramChar2)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setShortcut(paramChar1, paramChar2);
+    ((android.support.v4.a.a.b)this.afm).setShortcut(paramChar1, paramChar2);
     return this;
   }
   
   public MenuItem setShortcut(char paramChar1, char paramChar2, int paramInt1, int paramInt2)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setShortcut(paramChar1, paramChar2, paramInt1, paramInt2);
+    ((android.support.v4.a.a.b)this.afm).setShortcut(paramChar1, paramChar2, paramInt1, paramInt2);
     return this;
   }
   
   public void setShowAsAction(int paramInt)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setShowAsAction(paramInt);
+    ((android.support.v4.a.a.b)this.afm).setShowAsAction(paramInt);
   }
   
   public MenuItem setShowAsActionFlags(int paramInt)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setShowAsActionFlags(paramInt);
+    ((android.support.v4.a.a.b)this.afm).setShowAsActionFlags(paramInt);
     return this;
   }
   
   public MenuItem setTitle(int paramInt)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setTitle(paramInt);
+    ((android.support.v4.a.a.b)this.afm).setTitle(paramInt);
     return this;
   }
   
   public MenuItem setTitle(CharSequence paramCharSequence)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setTitle(paramCharSequence);
+    ((android.support.v4.a.a.b)this.afm).setTitle(paramCharSequence);
     return this;
   }
   
   public MenuItem setTitleCondensed(CharSequence paramCharSequence)
   {
-    ((android.support.v4.a.a.b)this.aeZ).setTitleCondensed(paramCharSequence);
+    ((android.support.v4.a.a.b)this.afm).setTitleCondensed(paramCharSequence);
     return this;
   }
   
   public MenuItem setTooltipText(CharSequence paramCharSequence)
   {
-    ((android.support.v4.a.a.b)this.aeZ).l(paramCharSequence);
+    ((android.support.v4.a.a.b)this.afm).l(paramCharSequence);
     return this;
   }
   
   public MenuItem setVisible(boolean paramBoolean)
   {
-    return ((android.support.v4.a.a.b)this.aeZ).setVisible(paramBoolean);
+    return ((android.support.v4.a.a.b)this.afm).setVisible(paramBoolean);
   }
   
   class a
     extends android.support.v4.view.b
   {
-    final ActionProvider agL;
+    final ActionProvider agY;
     
     public a(Context paramContext, ActionProvider paramActionProvider)
     {
       super();
-      this.agL = paramActionProvider;
+      this.agY = paramActionProvider;
     }
     
     public final boolean hasSubMenu()
     {
-      return this.agL.hasSubMenu();
+      return this.agY.hasSubMenu();
     }
     
     public final View onCreateActionView()
     {
-      return this.agL.onCreateActionView();
+      return this.agY.onCreateActionView();
     }
     
     public final boolean onPerformDefaultAction()
     {
-      return this.agL.onPerformDefaultAction();
+      return this.agY.onPerformDefaultAction();
     }
     
     public final void onPrepareSubMenu(SubMenu paramSubMenu)
     {
-      this.agL.onPrepareSubMenu(k.this.a(paramSubMenu));
+      this.agY.onPrepareSubMenu(k.this.a(paramSubMenu));
     }
   }
   
@@ -395,23 +395,23 @@ public class k
     extends FrameLayout
     implements android.support.v7.view.c
   {
-    final CollapsibleActionView agN;
+    final CollapsibleActionView aha;
     
     b(View paramView)
     {
       super();
-      this.agN = ((CollapsibleActionView)paramView);
+      this.aha = ((CollapsibleActionView)paramView);
       addView(paramView);
     }
     
     public final void onActionViewCollapsed()
     {
-      this.agN.onActionViewCollapsed();
+      this.aha.onActionViewCollapsed();
     }
     
     public final void onActionViewExpanded()
     {
-      this.agN.onActionViewExpanded();
+      this.aha.onActionViewExpanded();
     }
   }
   
@@ -426,12 +426,12 @@ public class k
     
     public final boolean onMenuItemActionCollapse(MenuItem paramMenuItem)
     {
-      return ((MenuItem.OnActionExpandListener)this.aeZ).onMenuItemActionCollapse(k.this.b(paramMenuItem));
+      return ((MenuItem.OnActionExpandListener)this.afm).onMenuItemActionCollapse(k.this.b(paramMenuItem));
     }
     
     public final boolean onMenuItemActionExpand(MenuItem paramMenuItem)
     {
-      return ((MenuItem.OnActionExpandListener)this.aeZ).onMenuItemActionExpand(k.this.b(paramMenuItem));
+      return ((MenuItem.OnActionExpandListener)this.afm).onMenuItemActionExpand(k.this.b(paramMenuItem));
     }
   }
   
@@ -446,7 +446,7 @@ public class k
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      return ((MenuItem.OnMenuItemClickListener)this.aeZ).onMenuItemClick(k.this.b(paramMenuItem));
+      return ((MenuItem.OnMenuItemClickListener)this.afm).onMenuItemClick(k.this.b(paramMenuItem));
     }
   }
 }

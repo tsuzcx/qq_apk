@@ -477,7 +477,7 @@ public class d
     //   13: aload_0
     //   14: getfield 64	com/tencent/liteav/muxer/d:g	Ljava/lang/String;
     //   17: invokestatic 347	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   20: ifne +59 -> 79
+    //   20: ifne +68 -> 88
     //   23: new 349	java/io/File
     //   26: dup
     //   27: aload_0
@@ -508,27 +508,32 @@ public class d
     //   76: monitorexit
     //   77: return
     //   78: astore_1
-    //   79: sipush 14919
-    //   82: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   85: goto -10 -> 75
-    //   88: astore_1
-    //   89: aload_0
-    //   90: monitorexit
-    //   91: aload_1
-    //   92: athrow
+    //   79: ldc 107
+    //   81: ldc_w 368
+    //   84: aload_1
+    //   85: invokestatic 371	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   88: sipush 14919
+    //   91: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   94: goto -19 -> 75
+    //   97: astore_1
+    //   98: aload_0
+    //   99: monitorexit
+    //   100: aload_1
+    //   101: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	93	0	this	d
-    //   0	93	1	paramString	String
+    //   0	102	0	this	d
+    //   0	102	1	paramString	String
     //   39	9	2	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
     //   64	69	78	java/io/IOException
-    //   2	52	88	finally
-    //   52	64	88	finally
-    //   64	69	88	finally
-    //   69	75	88	finally
-    //   79	85	88	finally
+    //   2	52	97	finally
+    //   52	64	97	finally
+    //   64	69	97	finally
+    //   69	75	97	finally
+    //   79	88	97	finally
+    //   88	94	97	finally
   }
   
   public void a(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
@@ -599,20 +604,20 @@ public class d
     //   11: getfield 212	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
     //   14: ifnull +132 -> 146
     //   17: aload_0
-    //   18: invokespecial 386	com/tencent/liteav/muxer/d:h	()V
+    //   18: invokespecial 391	com/tencent/liteav/muxer/d:h	()V
     //   21: ldc 107
     //   23: new 183	java/lang/StringBuilder
     //   26: dup
-    //   27: ldc_w 388
+    //   27: ldc_w 393
     //   30: invokespecial 188	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   33: aload_0
     //   34: getfield 74	com/tencent/liteav/muxer/d:l	Z
-    //   37: invokevirtual 391	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   40: ldc_w 393
+    //   37: invokevirtual 396	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   40: ldc_w 398
     //   43: invokevirtual 197	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   46: aload_0
     //   47: getfield 76	com/tencent/liteav/muxer/d:m	Z
-    //   50: invokevirtual 391	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   50: invokevirtual 396	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   53: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   56: invokestatic 274	com/tencent/liteav/basic/log/TXCLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   59: aload_0
@@ -623,11 +628,11 @@ public class d
     //   70: ifeq +11 -> 81
     //   73: aload_0
     //   74: getfield 212	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
-    //   77: invokevirtual 395	com/tencent/liteav/muxer/jni/TXSWMuxerJNI:b	()I
+    //   77: invokevirtual 400	com/tencent/liteav/muxer/jni/TXSWMuxerJNI:b	()I
     //   80: pop
     //   81: aload_0
     //   82: getfield 212	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
-    //   85: invokevirtual 397	com/tencent/liteav/muxer/jni/TXSWMuxerJNI:c	()V
+    //   85: invokevirtual 402	com/tencent/liteav/muxer/jni/TXSWMuxerJNI:c	()V
     //   88: aload_0
     //   89: aconst_null
     //   90: putfield 212	com/tencent/liteav/muxer/d:f	Lcom/tencent/liteav/muxer/jni/TXSWMuxerJNI;
@@ -666,7 +671,7 @@ public class d
     //   155: ireturn
     //   156: astore_2
     //   157: ldc 107
-    //   159: ldc_w 399
+    //   159: ldc_w 404
     //   162: aload_2
     //   163: invokestatic 225	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   166: invokevirtual 229	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
@@ -879,7 +884,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.muxer.d
  * JD-Core Version:    0.7.0.1
  */

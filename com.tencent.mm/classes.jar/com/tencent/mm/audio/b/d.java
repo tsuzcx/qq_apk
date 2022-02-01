@@ -4,20 +4,20 @@ import android.media.AudioRecord;
 import android.media.AudioRecord.OnRecordPositionUpdateListener;
 import android.os.HandlerThread;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import java.util.Arrays;
 
 public final class d
   extends f
 {
-  boolean dhU;
-  AudioRecord dii;
-  c.a dij;
-  byte[] diu;
-  private int div;
-  int diw;
-  private AudioRecord.OnRecordPositionUpdateListener dix;
+  byte[] dzF;
+  private int dzG;
+  int dzH;
+  private AudioRecord.OnRecordPositionUpdateListener dzI;
+  boolean dzg;
+  AudioRecord dzu;
+  c.a dzv;
   private HandlerThread mHandlerThread;
   boolean mIsMute;
   
@@ -25,8 +25,8 @@ public final class d
   {
     AppMethodBeat.i(129995);
     this.mHandlerThread = null;
-    this.diu = null;
-    this.dix = new AudioRecord.OnRecordPositionUpdateListener()
+    this.dzF = null;
+    this.dzI = new AudioRecord.OnRecordPositionUpdateListener()
     {
       public final void onMarkerReached(AudioRecord paramAnonymousAudioRecord) {}
       
@@ -38,64 +38,64 @@ public final class d
           AppMethodBeat.o(129994);
           return;
         }
-        if (d.this.dii != null)
+        if (d.this.dzu != null)
         {
-          if ((d.this.dhU) || (d.this.diu == null)) {
-            d.this.diu = new byte[d.this.diw];
+          if ((d.this.dzg) || (d.this.dzF == null)) {
+            d.this.dzF = new byte[d.this.dzH];
           }
-          int j = d.this.dii.read(d.this.diu, 0, d.this.diw);
-          ae.d("MicroMsg.RecordModeAsyncCallback", "OnRecordPositionUpdateListener, read ret: ".concat(String.valueOf(j)));
-          if (d.this.dis != null) {
-            d.this.dis.d(j, d.this.diu);
+          int j = d.this.dzu.read(d.this.dzF, 0, d.this.dzH);
+          Log.d("MicroMsg.RecordModeAsyncCallback", "OnRecordPositionUpdateListener, read ret: ".concat(String.valueOf(j)));
+          if (d.this.dzD != null) {
+            d.this.dzD.d(j, d.this.dzF);
           }
           int i = j;
-          if (j > d.this.diu.length) {
-            i = d.this.diu.length;
+          if (j > d.this.dzF.length) {
+            i = d.this.dzF.length;
           }
           if ((d.this.mIsMute) && (i > 0)) {
-            Arrays.fill(d.this.diu, 0, i, (byte)0);
+            Arrays.fill(d.this.dzF, 0, i, (byte)0);
           }
-          if ((d.this.dij != null) && (i > 0)) {
-            d.this.dij.u(d.this.diu, i);
+          if ((d.this.dzv != null) && (i > 0)) {
+            d.this.dzv.w(d.this.dzF, i);
           }
         }
         AppMethodBeat.o(129994);
       }
     };
-    this.dii = paramAudioRecord;
-    this.dij = parama;
-    this.dhU = paramBoolean;
-    this.div = paramInt1;
-    this.diw = paramInt2;
+    this.dzu = paramAudioRecord;
+    this.dzv = parama;
+    this.dzg = paramBoolean;
+    this.dzG = paramInt1;
+    this.dzH = paramInt2;
     AppMethodBeat.o(129995);
   }
   
-  public final boolean PO()
+  public final boolean aai()
   {
     AppMethodBeat.i(129996);
     if (this.mHandlerThread != null)
     {
-      ae.e("MicroMsg.RecordModeAsyncCallback", "alreay started record");
+      Log.e("MicroMsg.RecordModeAsyncCallback", "alreay started record");
       AppMethodBeat.o(129996);
       return false;
     }
-    this.mHandlerThread = com.tencent.e.c.d.hg("RecordModeAsyncCallback_handlerThread", 10);
+    this.mHandlerThread = com.tencent.f.c.d.hA("RecordModeAsyncCallback_handlerThread", 10);
     this.mHandlerThread.start();
-    this.dii.setRecordPositionUpdateListener(this.dix, aq.createFreeHandler(this.mHandlerThread.getLooper()));
-    this.dii.setPositionNotificationPeriod(this.div);
-    if ((this.dhU) || (this.diu == null)) {
-      this.diu = new byte[this.diw];
+    this.dzu.setRecordPositionUpdateListener(this.dzI, MMHandler.createFreeHandler(this.mHandlerThread.getLooper()));
+    this.dzu.setPositionNotificationPeriod(this.dzG);
+    if ((this.dzg) || (this.dzF == null)) {
+      this.dzF = new byte[this.dzH];
     }
-    int i = this.dii.read(this.diu, 0, this.diw);
-    ae.d("MicroMsg.RecordModeAsyncCallback", "startRecord, read ret: ".concat(String.valueOf(i)));
-    if ((this.dij != null) && (i > 0)) {
-      this.dij.u(this.diu, i);
+    int i = this.dzu.read(this.dzF, 0, this.dzH);
+    Log.d("MicroMsg.RecordModeAsyncCallback", "startRecord, read ret: ".concat(String.valueOf(i)));
+    if ((this.dzv != null) && (i > 0)) {
+      this.dzv.w(this.dzF, i);
     }
     AppMethodBeat.o(129996);
     return true;
   }
   
-  public final void cw(boolean paramBoolean)
+  public final void de(boolean paramBoolean)
   {
     this.mIsMute = paramBoolean;
   }
@@ -103,8 +103,8 @@ public final class d
   public final void stopRecord()
   {
     AppMethodBeat.i(129997);
-    this.dii.setRecordPositionUpdateListener(null);
-    this.dii = null;
+    this.dzu.setRecordPositionUpdateListener(null);
+    this.dzu = null;
     this.mHandlerThread.quit();
     this.mHandlerThread = null;
     AppMethodBeat.o(129997);

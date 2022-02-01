@@ -57,7 +57,7 @@ public final class ConnectionErrorMessages
   public static String getDefaultNotificationChannelName(Context paramContext)
   {
     AppMethodBeat.i(11824);
-    paramContext = paramContext.getResources().getString(2131757540);
+    paramContext = paramContext.getResources().getString(2131757762);
     AppMethodBeat.o(11824);
     return paramContext;
   }
@@ -73,15 +73,15 @@ public final class ConnectionErrorMessages
       AppMethodBeat.o(11820);
       return paramContext;
     case 1: 
-      paramContext = paramContext.getString(2131757537);
+      paramContext = paramContext.getString(2131757759);
       AppMethodBeat.o(11820);
       return paramContext;
     case 3: 
-      paramContext = paramContext.getString(2131757534);
+      paramContext = paramContext.getString(2131757756);
       AppMethodBeat.o(11820);
       return paramContext;
     }
-    paramContext = paramContext.getString(2131757544);
+    paramContext = paramContext.getString(2131757766);
     AppMethodBeat.o(11820);
     return paramContext;
   }
@@ -104,33 +104,33 @@ public final class ConnectionErrorMessages
     case 15: 
     case 19: 
     default: 
-      paramContext = localResources.getString(2131757542, new Object[] { str });
+      paramContext = localResources.getString(2131757764, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 1: 
-      paramContext = localResources.getString(2131757538, new Object[] { str });
+      paramContext = localResources.getString(2131757760, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 3: 
-      paramContext = localResources.getString(2131757535, new Object[] { str });
+      paramContext = localResources.getString(2131757757, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 18: 
-      paramContext = localResources.getString(2131757547, new Object[] { str });
+      paramContext = localResources.getString(2131757769, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 2: 
       if (DeviceProperties.isWearableWithoutPlayStore(paramContext))
       {
-        paramContext = localResources.getString(2131757548);
+        paramContext = localResources.getString(2131757770);
         AppMethodBeat.o(11818);
         return paramContext;
       }
-      paramContext = localResources.getString(2131757545, new Object[] { str });
+      paramContext = localResources.getString(2131757767, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 9: 
-      paramContext = localResources.getString(2131757543, new Object[] { str });
+      paramContext = localResources.getString(2131757765, new Object[] { str });
       AppMethodBeat.o(11818);
       return paramContext;
     case 7: 
@@ -177,7 +177,7 @@ public final class ConnectionErrorMessages
     {
       String str2 = str1;
       if (str1 == null) {
-        str2 = paramContext.getResources().getString(2131757541);
+        str2 = paramContext.getResources().getString(2131757763);
       }
       AppMethodBeat.o(11817);
       return str2;
@@ -205,15 +205,15 @@ public final class ConnectionErrorMessages
       AppMethodBeat.o(11816);
       return null;
     case 1: 
-      paramContext = localResources.getString(2131757539);
+      paramContext = localResources.getString(2131757761);
       AppMethodBeat.o(11816);
       return paramContext;
     case 3: 
-      paramContext = localResources.getString(2131757536);
+      paramContext = localResources.getString(2131757758);
       AppMethodBeat.o(11816);
       return paramContext;
     case 2: 
-      paramContext = localResources.getString(2131757546);
+      paramContext = localResources.getString(2131757768);
       AppMethodBeat.o(11816);
       return paramContext;
     case 9: 
@@ -256,7 +256,7 @@ public final class ConnectionErrorMessages
     paramString1 = zzb(paramContext, paramString1);
     paramContext = paramString1;
     if (paramString1 == null) {
-      paramContext = localResources.getString(2131757542);
+      paramContext = localResources.getString(2131757764);
     }
     paramContext = String.format(localResources.getConfiguration().locale, paramContext, new Object[] { paramString2 });
     AppMethodBeat.o(11822);

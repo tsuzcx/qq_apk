@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.downloader_app.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class c
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
   
   static
   {
     AppMethodBeat.i(8965);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "DownloadTaskItem") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "DownloadTaskItem") };
     AppMethodBeat.o(8965);
   }
   
-  public c(e parame)
+  public c(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "DownloadTaskItem", null);
+    super(paramISQLiteDatabase, a.info, "DownloadTaskItem", null);
   }
   
   public final boolean a(a parama)
@@ -31,7 +31,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.c.c
  * JD-Core Version:    0.7.0.1
  */

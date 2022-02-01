@@ -2,7 +2,7 @@ package com.tencent.mm.wallet_core.tenpay.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONObject;
@@ -10,23 +10,23 @@ import org.json.JSONObject;
 public class g
   extends p
 {
-  protected JSONObject LVT;
-  public boolean LVU;
-  public int LVV;
-  public boolean LVW;
+  protected JSONObject RuJ;
+  public boolean RuK;
+  public int RuL;
+  public boolean RuM;
   
   public g(Map<String, String> paramMap)
   {
     AppMethodBeat.i(72891);
-    this.LVU = false;
-    this.LVV = 0;
-    this.LVW = false;
-    ae.i("MicroMsg.NetSceneDelayQueryOrder", "NetSceneDelayQueryOrder call");
+    this.RuK = false;
+    this.RuL = 0;
+    this.RuM = false;
+    Log.i("MicroMsg.NetSceneDelayQueryOrder", "NetSceneDelayQueryOrder call");
     setRequestData(paramMap);
     AppMethodBeat.o(72891);
   }
   
-  public final void ae(boolean paramBoolean, int paramInt)
+  public final void ag(boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(72892);
     HashMap localHashMap = new HashMap();
@@ -40,11 +40,6 @@ public class g
       AppMethodBeat.o(72892);
       return;
     }
-  }
-  
-  public final JSONObject fWn()
-  {
-    return this.LVT;
   }
   
   public int getFuncId()
@@ -62,20 +57,25 @@ public class g
     return "/cgi-bin/mmpay-bin/tenpay/payorderquery";
   }
   
+  public final JSONObject hhL()
+  {
+    return this.RuJ;
+  }
+  
   public void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72893);
     super.onGYNetEnd(paramInt, paramString, paramJSONObject);
     JSONObject localJSONObject1 = paramJSONObject;
-    if (ac.iSH) {}
+    if (ac.jPC) {}
     try
     {
       localJSONObject1 = new JSONObject("{\"retcode\":268447844,\"retmsg\":\"系统麻烦请稍后再试\",\"can_pay_retry\":1,\"show_retmsg_type\":1}");
-      ae.i("MicroMsg.NetSceneDelayQueryOrder", "errCode = " + paramInt + "errMsg=" + paramString);
-      this.LVT = localJSONObject1;
+      Log.i("MicroMsg.NetSceneDelayQueryOrder", "errCode = " + paramInt + "errMsg=" + paramString);
+      this.RuJ = localJSONObject1;
       if (localJSONObject1 != null)
       {
-        ae.d("MicroMsg.NetSceneDelayQueryOrder", "ret json: %s", new Object[] { localJSONObject1.toString() });
+        Log.d("MicroMsg.NetSceneDelayQueryOrder", "ret json: %s", new Object[] { localJSONObject1.toString() });
         if (localJSONObject1.optInt("can_pay_retry") != 1) {
           break label129;
         }
@@ -83,8 +83,8 @@ public class g
       label129:
       for (boolean bool = true;; bool = false)
       {
-        this.LVU = bool;
-        this.LVV = localJSONObject1.optInt("show_retmsg_type");
+        this.RuK = bool;
+        this.RuL = localJSONObject1.optInt("show_retmsg_type");
         AppMethodBeat.o(72893);
         return;
       }
@@ -100,7 +100,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.wallet_core.tenpay.model.g
  * JD-Core Version:    0.7.0.1
  */

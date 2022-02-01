@@ -2,34 +2,70 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import java.lang.reflect.Field;
+import java.util.Map;
 
 public abstract class ea
-  extends c
+  extends IAutoDBItem
 {
+  public static final String COL_EXPIRE_AT = "expire_at";
+  public static final String COL_KEY = "key";
+  public static final String COL_TYPE = "type";
+  public static final String COL_VALUE = "value";
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eUQ = "thumbUrl".hashCode();
-  private static final int fkV = "liveId".hashCode();
-  private static final int fkW = "hostRoomId".hashCode();
-  private static final int fkX = "liveName".hashCode();
-  private static final int fkY = "anchorUsername".hashCode();
-  private static final int fkZ = "isSender".hashCode();
-  private static final int fla = "timeStamp".hashCode();
+  public static final String TABLE_NAME = "KindaConfigCache";
+  private static final String TAG = "MicroMsg.SDK.BaseKindaConfigCache";
+  private static final int expire_at_HASHCODE = "expire_at".hashCode();
+  private static final int key_HASHCODE = "key".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eUe = true;
-  public String field_anchorUsername;
-  public String field_hostRoomId;
-  public boolean field_isSender;
-  public long field_liveId;
-  public String field_liveName;
-  public String field_thumbUrl;
-  public long field_timeStamp;
-  private boolean fkP = true;
-  private boolean fkQ = true;
-  private boolean fkR = true;
-  private boolean fkS = true;
-  private boolean fkT = true;
-  private boolean fkU = true;
+  private static final int type_HASHCODE;
+  private static final int value_HASHCODE = "value".hashCode();
+  private boolean __hadSetexpire_at = true;
+  private boolean __hadSetkey = true;
+  private boolean __hadSettype = true;
+  private boolean __hadSetvalue = true;
+  public long field_expire_at;
+  public String field_key;
+  public int field_type;
+  public String field_value;
+  
+  static
+  {
+    type_HASHCODE = "type".hashCode();
+  }
+  
+  private final void buildBuff() {}
+  
+  public static IAutoDBItem.MAutoDBInfo initAutoDBInfo(Class<?> paramClass)
+  {
+    paramClass = new IAutoDBItem.MAutoDBInfo();
+    paramClass.fields = new Field[4];
+    paramClass.columns = new String[5];
+    StringBuilder localStringBuilder = new StringBuilder();
+    paramClass.columns[0] = "key";
+    paramClass.colsMap.put("key", "TEXT PRIMARY KEY ");
+    localStringBuilder.append(" key TEXT PRIMARY KEY ");
+    localStringBuilder.append(", ");
+    paramClass.primaryKey = "key";
+    paramClass.columns[1] = "value";
+    paramClass.colsMap.put("value", "TEXT");
+    localStringBuilder.append(" value TEXT");
+    localStringBuilder.append(", ");
+    paramClass.columns[2] = "type";
+    paramClass.colsMap.put("type", "INTEGER");
+    localStringBuilder.append(" type INTEGER");
+    localStringBuilder.append(", ");
+    paramClass.columns[3] = "expire_at";
+    paramClass.colsMap.put("expire_at", "LONG");
+    localStringBuilder.append(" expire_at LONG");
+    paramClass.columns[4] = "rowid";
+    paramClass.sql = localStringBuilder.toString();
+    return paramClass;
+  }
+  
+  private final void parseBuff() {}
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -37,18 +73,18 @@ public abstract class ea
     if (arrayOfString == null) {
       return;
     }
-    int j = arrayOfString.length;
     int i = 0;
+    int j = arrayOfString.length;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fkV != k) {
+      if (key_HASHCODE != k) {
         break label65;
       }
-      this.field_liveId = paramCursor.getLong(i);
-      this.fkP = true;
+      this.field_key = paramCursor.getString(i);
+      this.__hadSetkey = true;
     }
     for (;;)
     {
@@ -56,87 +92,45 @@ public abstract class ea
       break label20;
       break;
       label65:
-      if (fkW == k)
-      {
-        this.field_hostRoomId = paramCursor.getString(i);
-      }
-      else if (fkX == k)
-      {
-        this.field_liveName = paramCursor.getString(i);
-      }
-      else if (eUQ == k)
-      {
-        this.field_thumbUrl = paramCursor.getString(i);
-      }
-      else if (fkY == k)
-      {
-        this.field_anchorUsername = paramCursor.getString(i);
-      }
-      else
-      {
-        if (fkZ == k)
-        {
-          if (paramCursor.getInt(i) != 0) {}
-          for (boolean bool = true;; bool = false)
-          {
-            this.field_isSender = bool;
-            break;
-          }
-        }
-        if (fla == k) {
-          this.field_timeStamp = paramCursor.getLong(i);
-        } else if (rowid_HASHCODE == k) {
-          this.systemRowid = paramCursor.getLong(i);
-        }
+      if (value_HASHCODE == k) {
+        this.field_value = paramCursor.getString(i);
+      } else if (type_HASHCODE == k) {
+        this.field_type = paramCursor.getInt(i);
+      } else if (expire_at_HASHCODE == k) {
+        this.field_expire_at = paramCursor.getLong(i);
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
   
   public ContentValues convertTo()
   {
+    buildBuff();
     ContentValues localContentValues = new ContentValues();
-    if (this.fkP) {
-      localContentValues.put("liveId", Long.valueOf(this.field_liveId));
+    if (this.__hadSetkey) {
+      localContentValues.put("key", this.field_key);
     }
-    if (this.field_hostRoomId == null) {
-      this.field_hostRoomId = "";
+    if (this.__hadSetvalue) {
+      localContentValues.put("value", this.field_value);
     }
-    if (this.fkQ) {
-      localContentValues.put("hostRoomId", this.field_hostRoomId);
+    if (this.__hadSettype) {
+      localContentValues.put("type", Integer.valueOf(this.field_type));
     }
-    if (this.field_liveName == null) {
-      this.field_liveName = "";
-    }
-    if (this.fkR) {
-      localContentValues.put("liveName", this.field_liveName);
-    }
-    if (this.field_thumbUrl == null) {
-      this.field_thumbUrl = "";
-    }
-    if (this.eUe) {
-      localContentValues.put("thumbUrl", this.field_thumbUrl);
-    }
-    if (this.field_anchorUsername == null) {
-      this.field_anchorUsername = "";
-    }
-    if (this.fkS) {
-      localContentValues.put("anchorUsername", this.field_anchorUsername);
-    }
-    if (this.fkT) {
-      localContentValues.put("isSender", Boolean.valueOf(this.field_isSender));
-    }
-    if (this.fkU) {
-      localContentValues.put("timeStamp", Long.valueOf(this.field_timeStamp));
+    if (this.__hadSetexpire_at) {
+      localContentValues.put("expire_at", Long.valueOf(this.field_expire_at));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
     }
     return localContentValues;
   }
+  
+  public void reset() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.ea
  * JD-Core Version:    0.7.0.1
  */

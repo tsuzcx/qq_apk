@@ -6,192 +6,320 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
+import android.widget.ImageView.ScaleType;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.luckymoney.model.y;
-import com.tencent.mm.plugin.luckymoney.model.z;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.hellhoundlib.a.a;
+import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.luckymoney.a.c;
+import com.tencent.mm.plugin.luckymoney.model.af;
+import com.tencent.mm.plugin.luckymoney.model.bg;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.pluginsdk.ui.applet.v;
+import com.tencent.mm.pluginsdk.ui.applet.w;
+import com.tencent.mm.protocal.protobuf.cbe;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.ui.f;
-import java.util.LinkedList;
-import java.util.List;
 
 public final class i
-  extends BaseAdapter
 {
-  private Context mContext;
-  private LayoutInflater mInflater;
-  View.OnClickListener vNf;
-  b vNg;
-  private List<y> vvQ;
-  String vvR;
-  boolean vvS;
-  int vvT;
-  
-  public i(Context paramContext)
+  public static void a(Context paramContext, ViewGroup paramViewGroup, bg parambg, c paramc)
   {
-    AppMethodBeat.i(65925);
-    this.vvQ = new LinkedList();
-    this.vvT = 1;
-    this.vNg = null;
-    this.mContext = paramContext;
-    this.mInflater = LayoutInflater.from(paramContext);
-    AppMethodBeat.o(65925);
-  }
-  
-  private y JZ(int paramInt)
-  {
-    AppMethodBeat.i(65928);
-    y localy = (y)this.vvQ.get(paramInt);
-    AppMethodBeat.o(65928);
-    return localy;
-  }
-  
-  public final void ew(List<y> paramList)
-  {
-    AppMethodBeat.i(65926);
-    if (paramList == null) {
-      new LinkedList();
-    }
-    for (;;)
+    AppMethodBeat.i(65785);
+    if (parambg == null)
     {
-      notifyDataSetChanged();
-      AppMethodBeat.o(65926);
+      AppMethodBeat.o(65785);
       return;
-      this.vvQ = paramList;
     }
+    a(paramContext, paramViewGroup, parambg, paramc, parambg.type);
+    AppMethodBeat.o(65785);
   }
   
-  public final int getCount()
+  public static void a(Context paramContext, ViewGroup paramViewGroup, bg parambg, c paramc, String paramString)
   {
-    AppMethodBeat.i(65927);
-    int i = this.vvQ.size();
-    AppMethodBeat.o(65927);
-    return i;
-  }
-  
-  public final long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    AppMethodBeat.i(65929);
-    if (paramView == null)
+    AppMethodBeat.i(65786);
+    if ((paramViewGroup == null) || (parambg == null))
     {
-      paramView = this.mInflater.inflate(2131494658, paramViewGroup, false);
-      paramViewGroup = new c();
-      paramViewGroup.jFG = paramView.findViewById(2131304239);
-      paramViewGroup.pjj = ((ImageView)paramView.findViewById(2131301935));
-      paramViewGroup.uAJ = ((TextView)paramView.findViewById(2131301938));
-      paramViewGroup.vvV = ((TextView)paramView.findViewById(2131301939));
-      paramViewGroup.vvW = ((TextView)paramView.findViewById(2131301933));
-      paramViewGroup.vvX = ((TextView)paramView.findViewById(2131301934));
-      paramViewGroup.vvY = ((TextView)paramView.findViewById(2131301940));
-      paramViewGroup.vvZ = ((ImageView)paramView.findViewById(2131301936));
-      paramViewGroup.vwa = ((TextView)paramView.findViewById(2131301937));
-      if (this.vNg != null) {
-        this.vNg.a(paramViewGroup, this.mContext);
+      AppMethodBeat.o(65786);
+      return;
+    }
+    if (parambg.gGn == 0)
+    {
+      Log.i("MicroMsg.LuckyMoneyOperationViewMgr", "operInfo enable:" + parambg.gGn);
+      paramViewGroup.setVisibility(8);
+      AppMethodBeat.o(65786);
+      return;
+    }
+    if (!parambg.type.equalsIgnoreCase(paramString))
+    {
+      Log.i("MicroMsg.LuckyMoneyOperationViewMgr", "not match type:" + parambg.type + ", " + paramString);
+      paramViewGroup.setVisibility(8);
+      AppMethodBeat.o(65786);
+      return;
+    }
+    if ((paramString.equalsIgnoreCase("Text")) || (paramString.equalsIgnoreCase("Native")))
+    {
+      paramString = new e();
+      paramString.zgs = paramc;
+      paramString.a(paramContext, paramViewGroup, parambg);
+      AppMethodBeat.o(65786);
+      return;
+    }
+    if (paramString.equalsIgnoreCase("Pic"))
+    {
+      paramString = new a();
+      paramString.zgs = paramc;
+      paramString.a(paramContext, paramViewGroup, parambg);
+      AppMethodBeat.o(65786);
+      return;
+    }
+    if (paramString.equalsIgnoreCase("Appid"))
+    {
+      paramString = new b();
+      paramString.zgs = paramc;
+      paramString.a(paramContext, paramViewGroup, parambg);
+    }
+    AppMethodBeat.o(65786);
+  }
+  
+  static final class a
+    implements i.d
+  {
+    i.c zgs;
+    
+    public final void a(final Context paramContext, ViewGroup paramViewGroup, final bg parambg)
+    {
+      AppMethodBeat.i(65779);
+      if (Util.isNullOrNil(parambg.name))
+      {
+        Log.w("MicroMsg.LuckyMoneyOperationViewMgr", "BannerPicOperationView attach iconUrl null");
+        paramViewGroup.setVisibility(8);
+        AppMethodBeat.o(65779);
+        return;
       }
-      paramView.setTag(paramViewGroup);
+      ImageView localImageView = new ImageView(paramContext);
+      localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+      af.o(localImageView, parambg.name);
+      if (!Util.isNullOrNil(parambg.content)) {
+        localImageView.setOnClickListener(new View.OnClickListener()
+        {
+          public final void onClick(View paramAnonymousView)
+          {
+            AppMethodBeat.i(65778);
+            b localb = new b();
+            localb.bm(paramAnonymousView);
+            a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyOperationViewMgr$BannerPicOperationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+            h.CyF.a(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(parambg.yXT) });
+            if (i.a.this.zgs != null) {
+              com.tencent.mm.protocal.g.gH(i.a.this.zgs.zgy, 1);
+            }
+            f.p(paramContext, parambg.content, true);
+            a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyOperationViewMgr$BannerPicOperationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+            AppMethodBeat.o(65778);
+          }
+        });
+      }
+      localImageView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+      paramViewGroup.addView(localImageView);
+      paramViewGroup.setVisibility(0);
+      h.CyF.a(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(parambg.yXT) });
+      if (this.zgs != null) {
+        com.tencent.mm.protocal.g.gH(this.zgs.zgy, 0);
+      }
+      AppMethodBeat.o(65779);
     }
-    y localy;
-    for (;;)
+  }
+  
+  static final class b
+    implements i.d
+  {
+    i.c zgs;
+    
+    public final void a(final Context paramContext, ViewGroup paramViewGroup, final bg parambg)
     {
-      localy = JZ(paramInt);
-      z.b(paramViewGroup.pjj, localy.vBG, localy.userName);
-      if ((!bu.nullAsNil(localy.vAq).equals(this.vvR)) || (!this.vvS)) {
+      AppMethodBeat.i(65782);
+      if (Util.isNullOrNil(parambg.name))
+      {
+        AppMethodBeat.o(65782);
+        return;
+      }
+      TextView localTextView = new TextView(paramContext);
+      if ((this.zgs != null) && (this.zgs.textColor != -2147483648))
+      {
+        localTextView.setTextColor(this.zgs.textColor);
+        if ((this.zgs == null) || (this.zgs.textSize == -2147483648)) {
+          break label241;
+        }
+        localTextView.setTextSize(0, this.zgs.textSize);
+      }
+      for (;;)
+      {
+        localTextView.setGravity(17);
+        localTextView.setText(parambg.name);
+        if (!Util.isNullOrNil(parambg.content)) {
+          localTextView.setOnClickListener(new View.OnClickListener()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(65781);
+              b localb = new b();
+              localb.bm(paramAnonymousView);
+              a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyOperationViewMgr$BizOperationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+              h.CyF.a(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(parambg.yXT) });
+              if (parambg.yXU != 1) {
+                ((com.tencent.mm.pluginsdk.i)com.tencent.mm.kernel.g.af(com.tencent.mm.pluginsdk.i.class)).a(paramContext, parambg.content, new v()
+                {
+                  public final void wK(int paramAnonymous2Int)
+                  {
+                    AppMethodBeat.i(65780);
+                    switch (paramAnonymous2Int)
+                    {
+                    }
+                    for (;;)
+                    {
+                      AppMethodBeat.o(65780);
+                      return;
+                      f.ao(i.b.1.this.val$context, i.b.1.this.zgt.content);
+                    }
+                  }
+                }).show();
+              }
+              for (;;)
+              {
+                a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyOperationViewMgr$BizOperationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                AppMethodBeat.o(65781);
+                return;
+                f.am(paramContext, parambg.content);
+              }
+            }
+          });
+        }
+        paramViewGroup.addView(localTextView, new ViewGroup.LayoutParams(-2, -2));
+        paramViewGroup.setVisibility(0);
+        h.CyF.a(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(parambg.yXT) });
+        AppMethodBeat.o(65782);
+        return;
+        localTextView.setTextColor(paramContext.getResources().getColor(2131101357));
         break;
+        label241:
+        localTextView.setTextSize(0, paramContext.getResources().getDimensionPixelSize(2131165482));
       }
-      paramViewGroup.vvY.setOnClickListener(this.vNf);
-      paramViewGroup.vvY.setVisibility(0);
-      paramViewGroup.vvX.setVisibility(8);
-      paramViewGroup.vvV.setVisibility(8);
-      z.a(this.mContext, paramViewGroup.uAJ, localy.vBF);
-      String str = this.mContext.getString(2131760940, new Object[] { f.C(localy.vBs / 100.0D) });
-      paramViewGroup.vvW.setText(str);
-      if (!bu.isNullOrNil(localy.vBI)) {
-        break label453;
+    }
+  }
+  
+  public static final class c
+  {
+    public int resourceId = 0;
+    public int textColor = -2147483648;
+    public int textSize = -2147483648;
+    public boolean zgx = false;
+    public int zgy = 0;
+    public cbe zgz;
+  }
+  
+  static abstract interface d
+  {
+    public abstract void a(Context paramContext, ViewGroup paramViewGroup, bg parambg);
+  }
+  
+  static final class e
+    implements i.d
+  {
+    i.c zgs;
+    
+    public final void a(final Context paramContext, ViewGroup paramViewGroup, final bg parambg)
+    {
+      AppMethodBeat.i(65784);
+      if (Util.isNullOrNil(parambg.name))
+      {
+        AppMethodBeat.o(65784);
+        return;
       }
-      paramViewGroup.vvZ.setVisibility(8);
-      paramViewGroup.vwa.setVisibility(8);
-      AppMethodBeat.o(65929);
-      return paramView;
-      paramViewGroup = (c)paramView.getTag();
+      Object localObject = LayoutInflater.from(paramContext).inflate(2131495386, paramViewGroup, true);
+      TextView localTextView = (TextView)((View)localObject).findViewById(2131304272);
+      localObject = (ImageView)((View)localObject).findViewById(2131304271);
+      if (!Util.isNullOrNil(parambg.iconUrl))
+      {
+        af.o((ImageView)localObject, parambg.iconUrl);
+        ((ImageView)localObject).setVisibility(0);
+        if ((this.zgs == null) || (this.zgs.textSize == -2147483648)) {
+          break label303;
+        }
+        localTextView.setTextSize(0, this.zgs.textSize);
+      }
+      for (;;)
+      {
+        localTextView.setGravity(17);
+        localTextView.setText(parambg.name);
+        if (!Util.isNullOrNil(parambg.content))
+        {
+          localTextView.setTextColor(MMApplicationContext.getContext().getResources().getColor(2131100685));
+          localTextView.setOnClickListener(new View.OnClickListener()
+          {
+            public final void onClick(View paramAnonymousView)
+            {
+              AppMethodBeat.i(65783);
+              Object localObject = new b();
+              ((b)localObject).bm(paramAnonymousView);
+              a.b("com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyOperationViewMgr$TextOperationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+              h.CyF.a(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(2), Integer.valueOf(parambg.yXT) });
+              if (i.e.this.zgs != null) {
+                com.tencent.mm.protocal.g.gH(i.e.this.zgs.zgy, 1);
+              }
+              if ((i.e.this.zgs != null) && (i.e.this.zgs.zgx)) {
+                h.CyF.a(13051, new Object[] { Integer.valueOf(i.e.this.zgs.zgy), Integer.valueOf(2), "", "", "", parambg.content, parambg.type, "", "", Integer.valueOf(i.e.this.zgs.resourceId) });
+              }
+              String str;
+              if (parambg.type.equals("Native"))
+              {
+                Log.i("MicroMsg.LuckyMoneyOperationViewMgr", "go native:" + parambg.content);
+                if ("weixin://festival/gotoshake".equalsIgnoreCase(parambg.content)) {
+                  Log.i("MicroMsg.LuckyMoneyOperationViewMgr", " go new year shake");
+                }
+                localObject = h.CyF;
+                str = parambg.content;
+                if (i.e.this.zgs.zgz == null) {
+                  break label431;
+                }
+              }
+              label431:
+              for (paramAnonymousView = i.e.this.zgs.zgz.MgB;; paramAnonymousView = "")
+              {
+                ((h)localObject).a(16589, new Object[] { Integer.valueOf(2), str, paramAnonymousView, c.yOW, Integer.valueOf(0), c.openId });
+                a.a(this, "com/tencent/mm/plugin/luckymoney/ui/LuckyMoneyOperationViewMgr$TextOperationView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+                AppMethodBeat.o(65783);
+                return;
+                f.p(paramContext, parambg.content, true);
+                break;
+              }
+            }
+          });
+        }
+        if ((this.zgs != null) && (this.zgs.textColor != -2147483648)) {
+          localTextView.setTextColor(this.zgs.textColor);
+        }
+        paramViewGroup.setVisibility(0);
+        h.CyF.a(11701, new Object[] { Integer.valueOf(14), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(parambg.yXT) });
+        if (this.zgs != null) {
+          com.tencent.mm.protocal.g.gH(this.zgs.zgy, 0);
+        }
+        AppMethodBeat.o(65784);
+        return;
+        ((ImageView)localObject).setVisibility(8);
+        break;
+        label303:
+        localTextView.setTextSize(0, paramContext.getResources().getDimensionPixelSize(2131165482));
+      }
     }
-    if (bu.isNullOrNil(localy.vBH)) {
-      paramViewGroup.vvX.setVisibility(8);
-    }
-    for (;;)
-    {
-      paramViewGroup.vvV.setText(z.o(this.mContext, bu.getLong(localy.vBt, 0L) * 1000L));
-      paramViewGroup.vvV.setVisibility(0);
-      paramViewGroup.vvY.setVisibility(8);
-      break;
-      z.a(this.mContext, paramViewGroup.vvX, localy.vBH);
-      paramViewGroup.vvX.setVisibility(0);
-    }
-    label453:
-    paramViewGroup.vwa.setText(localy.vBI);
-    if (this.vvT == 2) {
-      paramViewGroup.vvZ.setImageResource(2131233018);
-    }
-    for (;;)
-    {
-      paramViewGroup.vvZ.setVisibility(0);
-      paramViewGroup.vwa.setVisibility(0);
-      break;
-      paramViewGroup.vvZ.setImageResource(2131232964);
-    }
-  }
-  
-  final class a
-    implements i.b
-  {
-    a() {}
-    
-    public final void a(i.c paramc, Context paramContext)
-    {
-      AppMethodBeat.i(65924);
-      int i = paramContext.getResources().getColor(2131100571);
-      int j = paramContext.getResources().getColor(2131100572);
-      int k = paramContext.getResources().getColor(2131100586);
-      paramc.jFG.setBackgroundResource(2131101053);
-      paramc.jFG.setPadding(0, paramContext.getResources().getDimensionPixelOffset(2131165500), 0, paramContext.getResources().getDimensionPixelOffset(2131165500));
-      paramc.uAJ.setTextColor(i);
-      paramc.vvV.setTextColor(j);
-      paramc.vvW.setTextColor(i);
-      paramc.vvX.setTextColor(i);
-      paramc.vvY.setTextColor(k);
-      AppMethodBeat.o(65924);
-    }
-  }
-  
-  static abstract interface b
-  {
-    public abstract void a(i.c paramc, Context paramContext);
-  }
-  
-  final class c
-  {
-    View jFG;
-    ImageView pjj;
-    TextView uAJ;
-    TextView vvV;
-    TextView vvW;
-    TextView vvX;
-    TextView vvY;
-    ImageView vvZ;
-    TextView vwa;
-    
-    c() {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.luckymoney.ui.i
  * JD-Core Version:    0.7.0.1
  */

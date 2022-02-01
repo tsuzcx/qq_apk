@@ -1,10 +1,10 @@
 package com.tencent.mm.kernel.api;
 
-import com.tencent.mm.network.e;
+import com.tencent.mm.network.g;
 
 public abstract interface d
 {
-  public abstract void b(e parame);
+  public abstract void b(g paramg);
 }
 
 

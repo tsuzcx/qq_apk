@@ -4,39 +4,39 @@ import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.i;
 import com.tencent.mm.av.q;
-import com.tencent.mm.g.c.ei;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.g.c.eo;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.vfs.s;
 
 public class g
   extends d
 {
-  private String oYI;
+  private String qnH;
   
-  public g(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, bv parambv)
+  public g(com.tencent.mm.plugin.choosemsgfile.b.c.g paramg, ca paramca)
   {
-    super(paramg, parambv);
+    super(paramg, paramca);
   }
   
   public final void a(View paramView, a parama)
   {
     AppMethodBeat.i(123275);
-    com.tencent.mm.plugin.choosemsgfile.b.d.c.a(this.oYF.caM().getContext(), paramView, parama);
+    com.tencent.mm.plugin.choosemsgfile.b.d.c.a(this.qnE.cyC().getContext(), paramView, parama);
     AppMethodBeat.o(123275);
   }
   
-  protected String aCF()
+  protected String aWd()
   {
     AppMethodBeat.i(123274);
-    if (this.oYI == null)
+    if (this.qnH == null)
     {
-      this.oYI = q.aIX().c(this.oYw.field_imgPath, false, false);
-      if ((!bu.isNullOrNil(this.oYI)) && (!this.oYI.endsWith("hd")) && (o.fB(this.oYI + "hd"))) {
-        this.oYI += "hd";
+      this.qnH = q.bcR().d(this.qnv.field_imgPath, false, false);
+      if ((!Util.isNullOrNil(this.qnH)) && (!this.qnH.endsWith("hd")) && (s.YS(this.qnH + "hd"))) {
+        this.qnH += "hd";
       }
     }
-    String str = this.oYI;
+    String str = this.qnH;
     AppMethodBeat.o(123274);
     return str;
   }
@@ -48,7 +48,7 @@ public class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.b.g
  * JD-Core Version:    0.7.0.1
  */

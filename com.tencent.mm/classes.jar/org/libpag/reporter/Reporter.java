@@ -21,19 +21,19 @@ public class Reporter
   
   static
   {
-    AppMethodBeat.i(217064);
+    AppMethodBeat.i(237038);
     TAG = Reporter.class.getSimpleName() + "-" + Integer.toHexString(Reporter.class.hashCode());
-    AppMethodBeat.o(217064);
+    AppMethodBeat.o(237038);
   }
   
   public Reporter(File paramFile, Boolean paramBoolean, Looper paramLooper)
   {
-    AppMethodBeat.i(217058);
+    AppMethodBeat.i(237032);
     this.uploadRunnable = new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(217057);
+        AppMethodBeat.i(237031);
         for (;;)
         {
           int i;
@@ -67,7 +67,7 @@ public class Reporter
           catch (Throwable localThrowable)
           {
             Reporter.access$200(Reporter.this);
-            AppMethodBeat.o(217057);
+            AppMethodBeat.o(237031);
             return;
           }
           localStringBuilder.append(new String(arrayOfByte, 0, m));
@@ -100,12 +100,12 @@ public class Reporter
     }
     this.ioHandler = new Handler(paramFile);
     schedule();
-    AppMethodBeat.o(217058);
+    AppMethodBeat.o(237032);
   }
   
   private void report(String paramString)
   {
-    AppMethodBeat.i(217060);
+    AppMethodBeat.i(237034);
     try
     {
       HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL("https://h.trace.qq.com/kv").openConnection();
@@ -118,38 +118,38 @@ public class Reporter
       localBufferedWriter.flush();
       localBufferedWriter.close();
       localHttpURLConnection.disconnect();
-      AppMethodBeat.o(217060);
+      AppMethodBeat.o(237034);
       return;
     }
     catch (Exception paramString)
     {
-      AppMethodBeat.o(217060);
+      AppMethodBeat.o(237034);
     }
   }
   
   private void schedule()
   {
-    AppMethodBeat.i(217059);
+    AppMethodBeat.i(237033);
     if ((this.auto.booleanValue()) && (this.ioHandler != null)) {
       this.ioHandler.postDelayed(this.uploadRunnable, 30000L);
     }
-    AppMethodBeat.o(217059);
+    AppMethodBeat.o(237033);
   }
   
   public void flush()
   {
-    AppMethodBeat.i(217061);
+    AppMethodBeat.i(237035);
     if (this.ioHandler != null)
     {
       this.ioHandler.removeCallbacks(this.uploadRunnable);
       this.ioHandler.post(this.uploadRunnable);
     }
-    AppMethodBeat.o(217061);
+    AppMethodBeat.o(237035);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.libpag.reporter.Reporter
  * JD-Core Version:    0.7.0.1
  */

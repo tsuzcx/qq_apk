@@ -1,19 +1,19 @@
 package com.tencent.mm.plugin.appbrand.jsapi.pay;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
 import com.tencent.mm.plugin.appbrand.service.c;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 
 public final class r
-  extends a<c>
+  extends d<c>
 {
   public static final int CTRL_INDEX = 218;
   public static final String NAME = "sendBizRedPacket";
   
-  public final boolean biK()
+  public final boolean bEa()
   {
     return true;
   }

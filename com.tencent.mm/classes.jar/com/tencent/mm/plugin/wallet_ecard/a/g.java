@@ -1,66 +1,65 @@
 package com.tencent.mm.plugin.wallet_ecard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cpb;
-import com.tencent.mm.protocal.protobuf.cpc;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dha;
+import com.tencent.mm.protocal.protobuf.dhb;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.r;
 
 public final class g
   extends r
 {
-  public cpc DGM;
-  private f callback;
-  private b rr;
+  public dhb IpY;
+  private i callback;
+  private d rr;
   
   public g()
   {
     AppMethodBeat.i(71701);
-    b.a locala = new b.a();
-    locala.hQF = new cpb();
-    locala.hQG = new cpc();
+    d.a locala = new d.a();
+    locala.iLN = new dha();
+    locala.iLO = new dhb();
     locala.funcId = getType();
     locala.uri = "/cgi-bin/mmpay-bin/qrycancelecarddesc";
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ((cpb)this.rr.hQD.hQJ).HAM = 1L;
+    this.rr = locala.aXF();
+    ((dha)this.rr.iLK.iLR).MLx = 1L;
     AppMethodBeat.o(71701);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
     AppMethodBeat.i(71702);
-    ae.i("MicroMsg.NetSceneQryECardLogout", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.DGM = ((cpc)((b)paramq).hQE.hQJ);
-    ae.i("MicroMsg.NetSceneQryECardLogout", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.DGM.oGt), this.DGM.oGu });
+    Log.i("MicroMsg.NetSceneQryECardLogout", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.IpY = ((dhb)((d)params).iLL.iLR);
+    Log.i("MicroMsg.NetSceneQryECardLogout", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.IpY.pTZ), this.IpY.pUa });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(71702);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(71703);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(71703);
     return i;
   }
   
-  public final void e(q paramq)
+  public final void e(s params)
   {
-    paramq = (cpc)((b)paramq).hQE.hQJ;
-    this.LVj = paramq.oGt;
-    this.LVk = paramq.oGu;
+    params = (dhb)((d)params).iLL.iLR;
+    this.RtZ = params.pTZ;
+    this.Rua = params.pUa;
   }
   
   public final int getType()

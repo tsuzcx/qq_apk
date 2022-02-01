@@ -1,37 +1,45 @@
 package kotlinx.coroutines;
 
-import d.l;
-import java.util.concurrent.locks.LockSupport;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/EventLoopImplPlatform;", "Lkotlinx/coroutines/EventLoop;", "()V", "thread", "Ljava/lang/Thread;", "getThread", "()Ljava/lang/Thread;", "reschedule", "", "now", "", "delayedTask", "Lkotlinx/coroutines/EventLoopImplBase$DelayedTask;", "unpark", "kotlinx-coroutines-core"})
-public abstract class bf
-  extends bd
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/Empty;", "Lkotlinx/coroutines/Incomplete;", "isActive", "", "(Z)V", "()Z", "list", "Lkotlinx/coroutines/NodeList;", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
+final class bf
+  implements bp
 {
-  protected final void c(long paramLong, be.b paramb)
+  final boolean isActive;
+  
+  public bf(boolean paramBoolean)
   {
-    if (am.gzF())
+    this.isActive = paramBoolean;
+  }
+  
+  public final cf hMX()
+  {
+    return null;
+  }
+  
+  public final boolean isActive()
+  {
+    return this.isActive;
+  }
+  
+  public final String toString()
+  {
+    AppMethodBeat.i(117965);
+    StringBuilder localStringBuilder = new StringBuilder("Empty{");
+    if (this.isActive) {}
+    for (String str = "Active";; str = "New")
     {
-      if ((bf)this != ao.Ofl) {}
-      for (int i = 1; i == 0; i = 0) {
-        throw ((Throwable)new AssertionError());
-      }
-    }
-    ao.Ofl.a(paramLong, paramb);
-  }
-  
-  protected final void gAb()
-  {
-    Thread localThread = getThread();
-    if ((Thread.currentThread() != localThread) && (ck.Ogo == null)) {
-      LockSupport.unpark(localThread);
+      str = str + '}';
+      AppMethodBeat.o(117965);
+      return str;
     }
   }
-  
-  protected abstract Thread getThread();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.bf
  * JD-Core Version:    0.7.0.1
  */

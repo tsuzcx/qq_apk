@@ -1,103 +1,81 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bw.b;
+import java.util.LinkedList;
 
 public final class dyv
   extends com.tencent.mm.bw.a
 {
-  public long Gxr;
-  public long HSD;
-  public int Iee;
-  public int Ief;
-  public int Ieg;
-  public int Ieh;
-  public b Iei;
+  public LinkedList<dyw> MYx;
+  
+  public dyv()
+  {
+    AppMethodBeat.i(104836);
+    this.MYx = new LinkedList();
+    AppMethodBeat.o(104836);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(125501);
+    AppMethodBeat.i(104837);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aZ(1, this.HSD);
-      paramVarArgs.aZ(2, this.Gxr);
-      paramVarArgs.aS(3, this.Iee);
-      paramVarArgs.aS(4, this.Ief);
-      paramVarArgs.aS(5, this.Ieg);
-      paramVarArgs.aS(6, this.Ieh);
-      if (this.Iei != null) {
-        paramVarArgs.c(7, this.Iei);
-      }
-      AppMethodBeat.o(125501);
+      ((g.a.a.c.a)paramVarArgs[0]).e(1, 8, this.MYx);
+      AppMethodBeat.o(104837);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.p(1, this.HSD) + 0 + f.a.a.b.b.a.p(2, this.Gxr) + f.a.a.b.b.a.bz(3, this.Iee) + f.a.a.b.b.a.bz(4, this.Ief) + f.a.a.b.b.a.bz(5, this.Ieg) + f.a.a.b.b.a.bz(6, this.Ieh);
-      paramInt = i;
-      if (this.Iei != null) {
-        paramInt = i + f.a.a.b.b.a.b(7, this.Iei);
-      }
-      AppMethodBeat.o(125501);
-      return paramInt;
+      paramInt = g.a.a.a.c(1, 8, this.MYx);
+      AppMethodBeat.o(104837);
+      return paramInt + 0;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = (byte[])paramVarArgs[0];
+      this.MYx.clear();
+      paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
-      AppMethodBeat.o(125501);
+      AppMethodBeat.o(104837);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
       dyv localdyv = (dyv)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(125501);
+        AppMethodBeat.o(104837);
         return -1;
-      case 1: 
-        localdyv.HSD = locala.OmT.zd();
-        AppMethodBeat.o(125501);
-        return 0;
-      case 2: 
-        localdyv.Gxr = locala.OmT.zd();
-        AppMethodBeat.o(125501);
-        return 0;
-      case 3: 
-        localdyv.Iee = locala.OmT.zc();
-        AppMethodBeat.o(125501);
-        return 0;
-      case 4: 
-        localdyv.Ief = locala.OmT.zc();
-        AppMethodBeat.o(125501);
-        return 0;
-      case 5: 
-        localdyv.Ieg = locala.OmT.zc();
-        AppMethodBeat.o(125501);
-        return 0;
-      case 6: 
-        localdyv.Ieh = locala.OmT.zc();
-        AppMethodBeat.o(125501);
-        return 0;
       }
-      localdyv.Iei = locala.OmT.gCk();
-      AppMethodBeat.o(125501);
+      paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+      int i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new dyw();
+        localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((dyw)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+        localdyv.MYx.add(localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(104837);
       return 0;
     }
-    AppMethodBeat.o(125501);
+    AppMethodBeat.o(104837);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.dyv
  * JD-Core Version:    0.7.0.1
  */

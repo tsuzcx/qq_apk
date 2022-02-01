@@ -4,36 +4,34 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.modelcontrol.VideoTransPara;
-import com.tencent.mm.modelcontrol.d;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.storage.ao;
 
 public class SightParams
   implements Parcelable
 {
   public static final Parcelable.Creator<SightParams> CREATOR;
-  public VideoTransPara hxV;
+  public VideoTransPara irT;
   public int mode;
-  public String sSE;
   public int scene;
-  public int vYF;
-  public String vYG;
-  public String vYH;
-  public String vYI;
-  public String vYJ;
-  public String vYK;
-  public boolean vYL;
-  public boolean vYM;
-  public boolean vYN;
-  public boolean vYO;
-  public int vYP;
+  public String vPa;
+  public int zsH;
+  public String zsI;
+  public String zsJ;
+  public String zsK;
+  public String zsL;
+  public String zsM;
+  public boolean zsN;
+  public boolean zsO;
+  public boolean zsP;
+  public boolean zsQ;
+  public int zsR;
   
   static
   {
     AppMethodBeat.i(148787);
-    CREATOR = new SightParams.1();
+    CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(148787);
   }
   
@@ -41,35 +39,35 @@ public class SightParams
   {
     AppMethodBeat.i(148784);
     this.mode = 0;
-    this.vYF = 2;
-    this.vYG = "";
-    this.vYH = "";
-    this.vYI = "";
-    this.vYJ = "";
-    this.vYK = "";
-    this.vYL = true;
+    this.zsH = 2;
+    this.zsI = "";
+    this.zsJ = "";
+    this.zsK = "";
+    this.zsL = "";
+    this.zsM = "";
+    this.zsN = true;
     this.scene = -1;
-    this.vYM = true;
-    this.sSE = "";
-    this.vYN = true;
-    this.vYO = false;
+    this.zsO = true;
+    this.vPa = "";
+    this.zsP = true;
+    this.zsQ = false;
     if (paramInt1 == 1) {
-      this.hxV = d.aHh().aHi();
+      this.irT = com.tencent.mm.modelcontrol.e.baZ().bba();
     }
     for (;;)
     {
       this.scene = paramInt1;
       this.mode = paramInt2;
-      g.ajS();
-      this.vYP = ((Integer)g.ajR().ajA().get(344066, Integer.valueOf(0))).intValue();
+      g.aAi();
+      this.zsR = ((Integer)g.aAh().azQ().get(344066, Integer.valueOf(0))).intValue();
       AppMethodBeat.o(148784);
       return;
       if ((paramInt1 == 2) || (paramInt1 == 3) || (paramInt1 == 4)) {
-        this.hxV = d.aHh().aHj();
+        this.irT = com.tencent.mm.modelcontrol.e.baZ().bbb();
       } else if (paramInt1 == 7) {
-        this.hxV = d.aHh().aHo();
+        this.irT = com.tencent.mm.modelcontrol.e.baZ().bbh();
       } else {
-        this.hxV = d.aHh().aHj();
+        this.irT = com.tencent.mm.modelcontrol.e.baZ().bbb();
       }
     }
   }
@@ -78,44 +76,44 @@ public class SightParams
   {
     AppMethodBeat.i(148785);
     this.mode = 0;
-    this.vYF = 2;
-    this.vYG = "";
-    this.vYH = "";
-    this.vYI = "";
-    this.vYJ = "";
-    this.vYK = "";
-    this.vYL = true;
+    this.zsH = 2;
+    this.zsI = "";
+    this.zsJ = "";
+    this.zsK = "";
+    this.zsL = "";
+    this.zsM = "";
+    this.zsN = true;
     this.scene = -1;
-    this.vYM = true;
-    this.sSE = "";
-    this.vYN = true;
-    this.vYO = false;
+    this.zsO = true;
+    this.vPa = "";
+    this.zsP = true;
+    this.zsQ = false;
     this.mode = paramParcel.readInt();
-    this.hxV = ((VideoTransPara)paramParcel.readParcelable(VideoTransPara.class.getClassLoader()));
-    this.vYG = paramParcel.readString();
-    this.vYH = paramParcel.readString();
-    this.vYI = paramParcel.readString();
-    this.vYJ = paramParcel.readString();
-    this.vYP = paramParcel.readInt();
-    this.vYF = paramParcel.readInt();
+    this.irT = ((VideoTransPara)paramParcel.readParcelable(VideoTransPara.class.getClassLoader()));
+    this.zsI = paramParcel.readString();
+    this.zsJ = paramParcel.readString();
+    this.zsK = paramParcel.readString();
+    this.zsL = paramParcel.readString();
+    this.zsR = paramParcel.readInt();
+    this.zsH = paramParcel.readInt();
     if (paramParcel.readInt() > 0)
     {
       bool1 = true;
-      this.vYL = bool1;
+      this.zsN = bool1;
       this.scene = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
         break label237;
       }
       bool1 = true;
       label185:
-      this.vYM = bool1;
-      this.sSE = paramParcel.readString();
+      this.zsO = bool1;
+      this.vPa = paramParcel.readString();
       if (paramParcel.readByte() == 0) {
         break label242;
       }
       bool1 = true;
       label207:
-      this.vYN = bool1;
+      this.zsP = bool1;
       if (paramParcel.readByte() == 0) {
         break label247;
       }
@@ -125,7 +123,7 @@ public class SightParams
     label247:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.vYO = bool1;
+      this.zsQ = bool1;
       AppMethodBeat.o(148785);
       return;
       bool1 = false;
@@ -142,12 +140,12 @@ public class SightParams
     return 0;
   }
   
-  public final SightParams r(String paramString1, String paramString2, String paramString3, String paramString4)
+  public final SightParams v(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    this.vYI = paramString1;
-    this.vYG = paramString2;
-    this.vYH = paramString3;
-    this.vYJ = paramString4;
+    this.zsK = paramString1;
+    this.zsI = paramString2;
+    this.zsJ = paramString3;
+    this.zsL = paramString4;
     return this;
   }
   
@@ -156,33 +154,33 @@ public class SightParams
     int i = 1;
     AppMethodBeat.i(148786);
     paramParcel.writeInt(this.mode);
-    paramParcel.writeParcelable(this.hxV, paramInt);
-    paramParcel.writeString(this.vYG);
-    paramParcel.writeString(this.vYH);
-    paramParcel.writeString(this.vYI);
-    paramParcel.writeString(this.vYJ);
-    paramParcel.writeInt(this.vYP);
-    paramParcel.writeInt(this.vYF);
+    paramParcel.writeParcelable(this.irT, paramInt);
+    paramParcel.writeString(this.zsI);
+    paramParcel.writeString(this.zsJ);
+    paramParcel.writeString(this.zsK);
+    paramParcel.writeString(this.zsL);
+    paramParcel.writeInt(this.zsR);
+    paramParcel.writeInt(this.zsH);
     byte b;
-    if (this.vYL)
+    if (this.zsN)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
       paramParcel.writeInt(this.scene);
-      if (!this.vYM) {
+      if (!this.zsO) {
         break label159;
       }
       b = 1;
       label104:
       paramParcel.writeByte(b);
-      paramParcel.writeString(this.sSE);
-      if (!this.vYN) {
+      paramParcel.writeString(this.vPa);
+      if (!this.zsP) {
         break label164;
       }
       paramInt = 1;
       label126:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.vYO) {
+      if (!this.zsQ) {
         break label169;
       }
     }
@@ -205,7 +203,7 @@ public class SightParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.mmsight.SightParams
  * JD-Core Version:    0.7.0.1
  */

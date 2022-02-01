@@ -3,30 +3,30 @@ package com.tencent.mm.plugin.game.media;
 import android.graphics.Bitmap;
 import android.media.ThumbnailUtils;
 import android.widget.ImageView;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
 import com.tencent.mm.memory.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import java.lang.ref.SoftReference;
 
 public class r
 {
-  private static final f<String, Bitmap> fIj;
+  private static final f<String, Bitmap> gnw;
   
   static
   {
     AppMethodBeat.i(41178);
-    fIj = new b(100, r.class);
+    gnw = new b(100, r.class);
     AppMethodBeat.o(41178);
   }
   
-  public static Bitmap amL(String paramString)
+  public static Bitmap aAa(String paramString)
   {
     AppMethodBeat.i(41176);
-    Bitmap localBitmap = (Bitmap)fIj.aL(paramString);
+    Bitmap localBitmap = (Bitmap)gnw.aT(paramString);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       AppMethodBeat.o(41176);
@@ -36,10 +36,10 @@ public class r
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
       localBitmap = ThumbnailUtils.extractThumbnail(localBitmap, 537, 402, 2);
-      if ((Bitmap)fIj.put(paramString, localBitmap) == null) {}
+      if ((Bitmap)gnw.put(paramString, localBitmap) == null) {}
       for (boolean bool = true;; bool = false)
       {
-        ae.i("MicroMsg.SimpleVideoAnalyzer", "createVideoThumbail, too big size = %b", new Object[] { Boolean.valueOf(bool) });
+        Log.i("MicroMsg.SimpleVideoAnalyzer", "createVideoThumbail, too big size = %b", new Object[] { Boolean.valueOf(bool) });
         AppMethodBeat.o(41176);
         return localBitmap;
       }
@@ -48,30 +48,30 @@ public class r
     return null;
   }
   
-  public static void f(final ImageView paramImageView, String paramString)
+  public static void i(final ImageView paramImageView, String paramString)
   {
     AppMethodBeat.i(41177);
-    Bitmap localBitmap = (Bitmap)fIj.get(paramString);
+    Bitmap localBitmap = (Bitmap)gnw.get(paramString);
     if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      ae.i("MicroMsg.SimpleVideoAnalyzer", "attachVideoThumbBitmap, from cache");
+      Log.i("MicroMsg.SimpleVideoAnalyzer", "attachVideoThumbBitmap, from cache");
       paramImageView.setImageBitmap(localBitmap);
       AppMethodBeat.o(41177);
       return;
     }
-    ae.i("MicroMsg.SimpleVideoAnalyzer", "attachVideoThumbBitmap, not from cache, size = %d", new Object[] { Integer.valueOf(fIj.size()) });
+    Log.i("MicroMsg.SimpleVideoAnalyzer", "attachVideoThumbBitmap, not from cache, size = %d", new Object[] { Integer.valueOf(gnw.size()) });
     paramImageView = new SoftReference(paramImageView);
-    h.MqF.aO(new Runnable()
+    h.RTc.aX(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(41175);
-        final Bitmap localBitmap = r.amL(this.cvL);
+        final Bitmap localBitmap = r.aAa(this.cJK);
         if ((localBitmap != null) && (!localBitmap.isRecycled()) && (paramImageView != null))
         {
           final ImageView localImageView = (ImageView)paramImageView.get();
           if (localImageView != null) {
-            ar.f(new Runnable()
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
@@ -90,7 +90,7 @@ public class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.game.media.r
  * JD-Core Version:    0.7.0.1
  */

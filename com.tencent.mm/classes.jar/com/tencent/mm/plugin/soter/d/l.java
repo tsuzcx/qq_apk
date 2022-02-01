@@ -1,8 +1,8 @@
 package com.tencent.mm.plugin.soter.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public enum l
 {
@@ -13,8 +13,8 @@ public enum l
   static
   {
     AppMethodBeat.i(130853);
-    AXg = new l("INSTANCE");
-    AXh = new l[] { AXg };
+    FhY = new l("INSTANCE");
+    FhZ = new l[] { FhY };
     AppMethodBeat.o(130853);
   }
   
@@ -23,7 +23,7 @@ public enum l
   public static void r(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(130852);
-    ae.d("MicroMsg.SoterReportManager", "SoterReportManager functionName: %s, appId: %s, errType: %d, errCode: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.d("MicroMsg.SoterReportManager", "SoterReportManager functionName: %s, appId: %s, errType: %d, errCode: %d", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     int i;
     switch (paramString1.hashCode())
     {
@@ -33,16 +33,16 @@ public enum l
       {
       default: 
         label71:
-        ae.e("MicroMsg.SoterReportManager", "unknown soter jsapi function name");
+        Log.e("MicroMsg.SoterReportManager", "unknown soter jsapi function name");
         i = -1;
       }
       break;
     }
     for (;;)
     {
-      ae.i("MicroMsg.SoterReportManager", "functionNameCode: %d", new Object[] { Integer.valueOf(i) });
+      Log.i("MicroMsg.SoterReportManager", "functionNameCode: %d", new Object[] { Integer.valueOf(i) });
       if (i != -1) {
-        g.yxI.f(13711, new Object[] { Integer.valueOf(i), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+        h.CyF.a(13711, new Object[] { Integer.valueOf(i), paramString2, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       }
       AppMethodBeat.o(130852);
       return;

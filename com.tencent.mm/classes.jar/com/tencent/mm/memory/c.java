@@ -5,45 +5,45 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class c
   extends a<Bitmap>
 {
-  private static int hzi;
-  public static final c hzj;
+  private static int itq;
+  public static final c itr;
   
   static
   {
     AppMethodBeat.i(156415);
-    hzi = 20971520;
-    hzj = new c();
+    itq = 20971520;
+    itr = new c();
     AppMethodBeat.o(156415);
   }
   
   private c()
   {
     AppMethodBeat.i(156401);
-    int i = ((ActivityManager)ak.getContext().getSystemService("activity")).getLargeMemoryClass();
-    ae.i("MicroMsg.BitmapPool", "BitmapPool %dMB", new Object[] { Integer.valueOf(i) });
+    int i = ((ActivityManager)MMApplicationContext.getContext().getSystemService("activity")).getLargeMemoryClass();
+    Log.i("MicroMsg.BitmapPool", "BitmapPool %dMB", new Object[] { Integer.valueOf(i) });
     if (i > 256) {
-      hzi = 20971520;
+      itq = 20971520;
     }
     for (;;)
     {
-      OC();
+      YU();
       AppMethodBeat.o(156401);
       return;
       if (i > 128) {
-        hzi = 10485760;
+        itq = 10485760;
       } else {
-        hzi = 5242880;
+        itq = 5242880;
       }
     }
   }
   
-  private static Integer C(Bitmap paramBitmap)
+  private static Integer G(Bitmap paramBitmap)
   {
     AppMethodBeat.i(156404);
     if (paramBitmap == null)
@@ -51,7 +51,7 @@ public final class c
       AppMethodBeat.o(156404);
       return Integer.valueOf(0);
     }
-    if (d.lB(19)) {}
+    if (d.oE(19)) {}
     for (int i = paramBitmap.getByteCount();; i = paramBitmap.getAllocationByteCount())
     {
       AppMethodBeat.o(156404);
@@ -67,20 +67,20 @@ public final class c
     return Integer.valueOf(i * 4);
   }
   
-  protected final long ayJ()
+  protected final long aRP()
   {
-    return hzi;
+    return itq;
   }
   
-  protected final long ayK()
+  protected final long aRQ()
   {
     return 1048576L;
   }
   
-  public final void ayL()
+  public final void aRR()
   {
     AppMethodBeat.i(156406);
-    super.ayL();
+    super.aRR();
     AppMethodBeat.o(156406);
   }
   
@@ -91,8 +91,8 @@ public final class c
       AppMethodBeat.i(156405);
       if ((paramBitmap != null) && (paramBitmap.isMutable()) && (!paramBitmap.isRecycled()))
       {
-        ae.i("MicroMsg.BitmapPool", "release: %s", new Object[] { paramBitmap });
-        super.bL(paramBitmap);
+        Log.i("MicroMsg.BitmapPool", "release: %s", new Object[] { paramBitmap });
+        super.bU(paramBitmap);
       }
       AppMethodBeat.o(156405);
       return;
@@ -152,13 +152,13 @@ public final class c
     //   77: dup
     //   78: iconst_3
     //   79: aload_2
-    //   80: invokestatic 136	com/tencent/mm/memory/c:C	(Landroid/graphics/Bitmap;)Ljava/lang/Integer;
+    //   80: invokestatic 131	com/tencent/mm/memory/c:G	(Landroid/graphics/Bitmap;)Ljava/lang/Integer;
     //   83: aastore
     //   84: dup
     //   85: iconst_4
     //   86: aload_1
     //   87: aastore
-    //   88: invokestatic 182	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   88: invokestatic 182	com/tencent/mm/sdk/platformtools/Log:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   91: ldc 170
     //   93: invokestatic 29	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   96: aload_2
@@ -184,7 +184,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.memory.c
  * JD-Core Version:    0.7.0.1
  */

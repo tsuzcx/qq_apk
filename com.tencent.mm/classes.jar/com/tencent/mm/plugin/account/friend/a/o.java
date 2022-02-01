@@ -4,45 +4,46 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 import com.tencent.mm.storagebase.h;
 import java.util.ArrayList;
 
 public final class o
-  extends j<n>
+  extends MAutoStorage<n>
   implements g.a
 {
   public static final String[] SQL_CREATE;
-  private e db;
-  public com.tencent.mm.sdk.e.n jgK;
+  private ISQLiteDatabase db;
+  public MStorageEx keO;
   
   static
   {
     AppMethodBeat.i(131060);
-    SQL_CREATE = new String[] { j.getCreateSQLs(n.info, "GoogleFriend") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(n.info, "GoogleFriend") };
     AppMethodBeat.o(131060);
   }
   
-  public o(e parame)
+  public o(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, n.info, "GoogleFriend", null);
+    super(paramISQLiteDatabase, n.info, "GoogleFriend", null);
     AppMethodBeat.i(131049);
-    this.jgK = new com.tencent.mm.sdk.e.n()
+    this.keO = new MStorageEx()
     {
-      public final boolean aTg()
+      public final boolean shouldProcessEvent()
       {
         AppMethodBeat.i(131048);
-        if ((o.a(o.this) == null) || (o.a(o.this).fqe()))
+        if ((o.a(o.this) == null) || (o.a(o.this).isClose()))
         {
           if (o.a(o.this) == null) {}
-          for (Object localObject = "null";; localObject = Boolean.valueOf(o.a(o.this).fqe()))
+          for (Object localObject = "null";; localObject = Boolean.valueOf(o.a(o.this).isClose()))
           {
-            ae.w("MicroMsg.GoogleContact.GoogleFriendUI", "shouldProcessEvent db is close :%s", new Object[] { localObject });
+            Log.w("MicroMsg.GoogleContact.GoogleFriendUI", "shouldProcessEvent db is close :%s", new Object[] { localObject });
             AppMethodBeat.o(131048);
             return false;
           }
@@ -51,15 +52,15 @@ public final class o
         return true;
       }
     };
-    this.db = parame;
+    this.db = paramISQLiteDatabase;
     AppMethodBeat.o(131049);
   }
   
-  private boolean Kg(String paramString)
+  private boolean Te(String paramString)
   {
     AppMethodBeat.i(131057);
-    paramString = "SELECT GoogleFriend.googleid,GoogleFriend.googlename,GoogleFriend.googlephotourl,GoogleFriend.googlegmail,GoogleFriend.username,GoogleFriend.nickname,GoogleFriend.nicknameqp,GoogleFriend.usernamepy,GoogleFriend.small_url,GoogleFriend.big_url,GoogleFriend.ret,GoogleFriend.status,GoogleFriend.googleitemid,GoogleFriend.googlecgistatus,GoogleFriend.contecttype,GoogleFriend.googlenamepy FROM GoogleFriend   WHERE GoogleFriend.googleitemid = \"" + bu.aSk(String.valueOf(paramString)) + "\"";
-    paramString = this.db.a(paramString, null, 2);
+    paramString = "SELECT GoogleFriend.googleid,GoogleFriend.googlename,GoogleFriend.googlephotourl,GoogleFriend.googlegmail,GoogleFriend.username,GoogleFriend.nickname,GoogleFriend.nicknameqp,GoogleFriend.usernamepy,GoogleFriend.small_url,GoogleFriend.big_url,GoogleFriend.ret,GoogleFriend.status,GoogleFriend.googleitemid,GoogleFriend.googlecgistatus,GoogleFriend.contecttype,GoogleFriend.googlenamepy FROM GoogleFriend   WHERE GoogleFriend.googleitemid = \"" + Util.escapeSqlValue(String.valueOf(paramString)) + "\"";
+    paramString = this.db.rawQuery(paramString, null, 2);
     boolean bool = paramString.moveToFirst();
     paramString.close();
     AppMethodBeat.o(131057);
@@ -84,7 +85,7 @@ public final class o
     return false;
   }
   
-  public final Cursor Kf(String paramString)
+  public final Cursor Td(String paramString)
   {
     AppMethodBeat.i(131053);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -105,7 +106,7 @@ public final class o
     return 0;
   }
   
-  public final boolean aB(String paramString, int paramInt)
+  public final boolean aF(String paramString, int paramInt)
   {
     AppMethodBeat.i(131055);
     paramString = "UPDATE GoogleFriend SET googlecgistatus='" + paramInt + "' WHERE googleitemid='" + paramString + "'";
@@ -114,7 +115,7 @@ public final class o
     return bool;
   }
   
-  public final boolean aC(String paramString, int paramInt)
+  public final boolean aG(String paramString, int paramInt)
   {
     AppMethodBeat.i(131056);
     if (!TextUtils.isEmpty(paramString))
@@ -131,7 +132,7 @@ public final class o
   public final boolean b(n paramn)
   {
     AppMethodBeat.i(131054);
-    if (!Kg(paramn.field_googleitemid))
+    if (!Te(paramn.field_googleitemid))
     {
       boolean bool = a(paramn);
       AppMethodBeat.o(131054);
@@ -151,7 +152,7 @@ public final class o
     return false;
   }
   
-  public final Cursor bQ(String paramString1, String paramString2)
+  public final Cursor bZ(String paramString1, String paramString2)
   {
     AppMethodBeat.i(131052);
     StringBuilder localStringBuilder = new StringBuilder();
@@ -179,7 +180,7 @@ public final class o
   {
     AppMethodBeat.i(131058);
     this.db.execSQL("GoogleFriend", " delete from GoogleFriend");
-    this.jgK.b(5, this.jgK, "");
+    this.keO.doNotify(5, this.keO, "");
     AppMethodBeat.o(131058);
   }
   
@@ -188,12 +189,12 @@ public final class o
     return "GoogleFriend";
   }
   
-  public final boolean u(ArrayList<n> paramArrayList)
+  public final boolean z(ArrayList<n> paramArrayList)
   {
     AppMethodBeat.i(131051);
     if (paramArrayList.size() <= 0)
     {
-      ae.d("MicroMsg.GoogleContact.GoogleFriendUI", "insertList . list is null.");
+      Log.d("MicroMsg.GoogleContact.GoogleFriendUI", "insertList . list is null.");
       AppMethodBeat.o(131051);
       return false;
     }
@@ -202,8 +203,8 @@ public final class o
     if ((this.db instanceof h))
     {
       localh = (h)this.db;
-      l = localh.yi(Thread.currentThread().getId());
-      ae.i("MicroMsg.GoogleContact.GoogleFriendUI", "surround insertList in a transaction, ticket = %d", new Object[] { Long.valueOf(l) });
+      l = localh.beginTransaction(Thread.currentThread().getId());
+      Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "surround insertList in a transaction, ticket = %d", new Object[] { Long.valueOf(l) });
     }
     for (;;)
     {
@@ -215,10 +216,10 @@ public final class o
       }
       if (localh != null)
       {
-        localh.sW(l);
-        ae.i("MicroMsg.GoogleContact.GoogleFriendUI", "end updateList transaction");
+        localh.endTransaction(l);
+        Log.i("MicroMsg.GoogleContact.GoogleFriendUI", "end updateList transaction");
       }
-      this.jgK.b(2, this.jgK, "");
+      this.keO.doNotify(2, this.keO, "");
       AppMethodBeat.o(131051);
       return true;
       l = -1L;
@@ -227,7 +228,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.friend.a.o
  * JD-Core Version:    0.7.0.1
  */

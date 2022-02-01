@@ -4,40 +4,51 @@ import android.app.Activity;
 import android.arch.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.v;
-import com.tencent.mm.plugin.finder.feed.b.a;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.finder.feed.c.a;
 import com.tencent.mm.plugin.finder.feed.model.BaseFinderFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.FinderLbsStreamFeedLoader;
 import com.tencent.mm.plugin.finder.feed.model.internal.IResponse;
-import com.tencent.mm.plugin.finder.feed.q.a;
-import com.tencent.mm.plugin.finder.feed.q.b;
-import com.tencent.mm.plugin.finder.model.am;
+import com.tencent.mm.plugin.finder.feed.r.a;
+import com.tencent.mm.plugin.finder.feed.r.b;
+import com.tencent.mm.plugin.finder.model.bo;
+import com.tencent.mm.plugin.finder.storage.c;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderReporterUIC;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.component.a;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.z;
 import java.util.HashMap;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLbsStreamFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseGridFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderLbsStreamFeedUIContract$LbsStreamFeedViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLbsStreamFeedUIContract$LbsStreamFeedPresenter;", "()V", "TAG", "", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "presenter", "scene", "", "title", "viewCallback", "getCommentScene", "getLayoutId", "getLoader", "getPresenter", "getReportType", "getViewCallback", "initAfterAttach", "", "initOnCreate", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/ui/FinderLbsStreamFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/ui/FinderBaseGridFeedUI;", "Lcom/tencent/mm/plugin/finder/feed/FinderLbsStreamFeedUIContract$LbsStreamFeedViewCallback;", "Lcom/tencent/mm/plugin/finder/feed/FinderLbsStreamFeedUIContract$LbsStreamFeedPresenter;", "()V", "TAG", "", "feedLoader", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "getFeedLoader", "()Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "setFeedLoader", "(Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;)V", "presenter", "scene", "", "title", "viewCallback", "getCommentScene", "getLayoutId", "getLoader", "getPresenter", "getReportType", "getViewCallback", "initAfterAttach", "", "initOnCreate", "plugin-finder_release"})
 public final class FinderLbsStreamFeedUI
-  extends FinderBaseGridFeedUI<q.b, q.a>
+  extends FinderBaseGridFeedUI<r.b, r.a>
 {
   private final String TAG = "Finder.LbsStreamFeedUI";
   private HashMap _$_findViewCache;
   private final int scene = 2;
-  public BaseFinderFeedLoader scw;
-  private q.a snJ;
-  private q.b snK;
+  public BaseFinderFeedLoader tFM;
   private String title = "";
+  private r.a uaZ;
+  private r.b uba;
+  
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(245297);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(245297);
+  }
   
   public final View _$_findCachedViewById(int paramInt)
   {
-    AppMethodBeat.i(203223);
+    AppMethodBeat.i(245296);
     if (this._$_findViewCache == null) {
       this._$_findViewCache = new HashMap();
     }
@@ -48,47 +59,47 @@ public final class FinderLbsStreamFeedUI
       localView1 = findViewById(paramInt);
       this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    AppMethodBeat.o(203223);
+    AppMethodBeat.o(245296);
     return localView1;
   }
   
-  public final int cCL()
-  {
-    AppMethodBeat.i(203221);
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-    if (((Number)com.tencent.mm.plugin.finder.storage.b.cKg().value()).intValue() != 0)
-    {
-      AppMethodBeat.o(203221);
-      return 43;
-    }
-    AppMethodBeat.o(203221);
-    return 16;
-  }
-  
-  public final int cDL()
+  public final int ddN()
   {
     return 2;
   }
   
-  public final BaseFinderFeedLoader cDT()
+  public final BaseFinderFeedLoader ddZ()
   {
-    AppMethodBeat.i(203217);
-    BaseFinderFeedLoader localBaseFinderFeedLoader = this.scw;
+    AppMethodBeat.i(245290);
+    BaseFinderFeedLoader localBaseFinderFeedLoader = this.tFM;
     if (localBaseFinderFeedLoader == null) {
-      p.bdF("feedLoader");
+      p.btv("feedLoader");
     }
-    AppMethodBeat.o(203217);
+    AppMethodBeat.o(245290);
     return localBaseFinderFeedLoader;
+  }
+  
+  public final int getCommentScene()
+  {
+    AppMethodBeat.i(245294);
+    c localc = c.vCb;
+    if (((Number)c.dtX().value()).intValue() != 0)
+    {
+      AppMethodBeat.o(245294);
+      return 43;
+    }
+    AppMethodBeat.o(245294);
+    return 16;
   }
   
   public final int getLayoutId()
   {
-    return 2131496221;
+    return 2131494355;
   }
   
   public final void initOnCreate()
   {
-    AppMethodBeat.i(203218);
+    AppMethodBeat.i(245291);
     Object localObject2 = getIntent().getStringExtra("KEY_UI_TITLE");
     Object localObject1 = localObject2;
     if (localObject2 == null) {
@@ -96,33 +107,33 @@ public final class FinderLbsStreamFeedUI
     }
     this.title = ((String)localObject1);
     setMMTitle(this.title);
-    localObject1 = v.aAK();
+    localObject1 = z.aUg();
     p.g(localObject1, "ConfigStorageLogic.getMyFinderUsername()");
-    localObject2 = a.KEX;
-    localObject1 = new FinderLbsStreamFeedLoader((String)localObject1, ((FinderReporterUIC)a.s((MMActivity)this).get(FinderReporterUIC.class)).cQZ());
+    localObject2 = a.PRN;
+    localObject1 = new FinderLbsStreamFeedLoader((String)localObject1, ((FinderReporterUIC)a.b((AppCompatActivity)this).get(FinderReporterUIC.class)).dIx());
     localObject2 = getIntent();
     p.g(localObject2, "intent");
     ((FinderLbsStreamFeedLoader)localObject1).initFromCache((Intent)localObject2);
-    ((FinderLbsStreamFeedLoader)localObject1).fetchEndCallback = ((d.g.a.b)new a(this));
-    this.scw = ((BaseFinderFeedLoader)localObject1);
+    ((FinderLbsStreamFeedLoader)localObject1).fetchEndCallback = ((kotlin.g.a.b)new a(this));
+    this.tFM = ((BaseFinderFeedLoader)localObject1);
     localObject1 = (MMActivity)this;
-    cCL();
-    localObject2 = this.scw;
+    getCommentScene();
+    localObject2 = this.tFM;
     if (localObject2 == null) {
-      p.bdF("feedLoader");
+      p.btv("feedLoader");
     }
-    this.snJ = new q.a((MMActivity)localObject1, (BaseFinderFeedLoader)localObject2);
-    this.snK = new q.b((MMActivity)this, this.scene, cCL(), this.title);
-    localObject1 = this.snK;
+    this.uaZ = new r.a((MMActivity)localObject1, (BaseFinderFeedLoader)localObject2);
+    this.uba = new r.b((MMActivity)this, this.scene, getCommentScene(), this.title);
+    localObject1 = this.uba;
     if (localObject1 == null) {
-      p.bdF("viewCallback");
+      p.btv("viewCallback");
     }
-    localObject2 = this.snJ;
+    localObject2 = this.uaZ;
     if (localObject2 == null) {
-      p.bdF("presenter");
+      p.btv("presenter");
     }
-    ((q.b)localObject1).a((b.a)localObject2);
-    AppMethodBeat.o(203218);
+    ((r.b)localObject1).a((c.a)localObject2);
+    AppMethodBeat.o(245291);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -131,10 +142,10 @@ public final class FinderLbsStreamFeedUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderLbsStreamFeedUI$initOnCreate$1$1"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IResponse;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "invoke", "com/tencent/mm/plugin/finder/feed/ui/FinderLbsStreamFeedUI$initOnCreate$1$1"})
   static final class a
     extends q
-    implements d.g.a.b<IResponse<am>, z>
+    implements kotlin.g.a.b<IResponse<bo>, x>
   {
     a(FinderLbsStreamFeedUI paramFinderLbsStreamFeedUI)
     {
@@ -144,7 +155,7 @@ public final class FinderLbsStreamFeedUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.feed.ui.FinderLbsStreamFeedUI
  * JD-Core Version:    0.7.0.1
  */

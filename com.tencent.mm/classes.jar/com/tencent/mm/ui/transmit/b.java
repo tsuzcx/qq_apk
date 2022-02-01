@@ -3,13 +3,13 @@ package com.tencent.mm.ui.transmit;
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.z;
 import com.tencent.mm.plugin.fts.a.a.j;
 import com.tencent.mm.plugin.fts.a.a.k;
 import com.tencent.mm.plugin.fts.a.a.m;
 import com.tencent.mm.plugin.fts.a.l;
 import com.tencent.mm.plugin.fts.a.n;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.contact.a.e;
 import com.tencent.mm.ui.contact.a.i;
 import com.tencent.mm.ui.contact.o;
@@ -22,45 +22,45 @@ import java.util.List;
 public final class b
   extends o
 {
-  private MMCreateChatroomUI LiX;
-  private l LiY;
-  private aq handler;
+  private MMCreateChatroomUI QxW;
+  private l QxX;
+  private MMHandler handler;
   String query;
-  k tFQ;
-  private com.tencent.mm.plugin.fts.a.a.a tGb;
+  k wWP;
+  private com.tencent.mm.plugin.fts.a.a.a wXa;
   
   public b(MMCreateChatroomUI paramMMCreateChatroomUI, int paramInt)
   {
     super(paramMMCreateChatroomUI, false, paramInt);
     AppMethodBeat.i(39232);
-    this.handler = new aq(Looper.getMainLooper());
-    this.LiY = new l()
+    this.handler = new MMHandler(Looper.getMainLooper());
+    this.QxX = new l()
     {
       public final void b(k paramAnonymousk)
       {
         AppMethodBeat.i(39231);
-        if (paramAnonymousk.bZU == 0) {
+        if (paramAnonymousk.resultCode == 0) {
           b.a(b.this, paramAnonymousk);
         }
         for (;;)
         {
-          if (paramAnonymousk.tGc.size() == 0)
+          if (paramAnonymousk.wXb.size() == 0)
           {
             m localm = new m();
-            localm.tEY = "no_result​";
-            paramAnonymousk.tGc = new ArrayList();
-            paramAnonymousk.tGc.add(localm);
+            localm.wVX = "no_result​";
+            paramAnonymousk.wXb = new ArrayList();
+            paramAnonymousk.wXb.add(localm);
           }
           b.this.clearCache();
           b.this.notifyDataSetChanged();
-          b.a(b.this).y(paramAnonymousk.tCm.query, paramAnonymousk.tGc.size(), true);
+          b.a(b.this).B(paramAnonymousk.wTn.query, paramAnonymousk.wXb.size(), true);
           AppMethodBeat.o(39231);
           return;
           b.a(b.this, null);
         }
       }
     };
-    this.LiX = paramMMCreateChatroomUI;
+    this.QxW = paramMMCreateChatroomUI;
     AppMethodBeat.o(39232);
   }
   
@@ -70,22 +70,22 @@ public final class b
     this.query = paramString;
     paramArrayOfInt = new j();
     paramArrayOfInt.handler = this.handler;
-    paramArrayOfInt.tGa = this.LiY;
+    paramArrayOfInt.wWZ = this.QxX;
     paramArrayOfInt.query = paramString;
-    paramArrayOfInt.tFZ = com.tencent.mm.plugin.fts.a.c.b.tGz;
-    paramArrayOfInt.tFV = new int[] { 131072 };
-    paramArrayOfInt.tFY.add("filehelper");
-    paramArrayOfInt.tFY.add(v.aAC());
-    paramArrayOfInt.tFY.addAll(this.LiX.Ljb.fPk());
-    this.tGb = ((n)g.ad(n.class)).search(2, paramArrayOfInt);
+    paramArrayOfInt.wWY = com.tencent.mm.plugin.fts.a.c.b.wXy;
+    paramArrayOfInt.wWU = new int[] { 131072 };
+    paramArrayOfInt.wWX.add("filehelper");
+    paramArrayOfInt.wWX.add(z.aTY());
+    paramArrayOfInt.wWX.addAll(this.QxW.Qya.gYd());
+    this.wXa = ((n)g.ah(n.class)).search(2, paramArrayOfInt);
     AppMethodBeat.o(39233);
   }
   
   public final void clearData()
   {
     AppMethodBeat.i(39234);
-    if (this.tGb != null) {
-      ((n)g.ad(n.class)).cancelSearchTask(this.tGb);
+    if (this.wXa != null) {
+      ((n)g.ah(n.class)).cancelSearchTask(this.wXa);
     }
     this.query = null;
     AppMethodBeat.o(39234);
@@ -94,9 +94,9 @@ public final class b
   public final int getCount()
   {
     AppMethodBeat.i(39236);
-    if ((this.tFQ != null) && (this.tFQ.tGc != null))
+    if ((this.wWP != null) && (this.wWP.wXb != null))
     {
-      int i = this.tFQ.tGc.size();
+      int i = this.wWP.wXb.size();
       AppMethodBeat.o(39236);
       return i;
     }
@@ -104,34 +104,34 @@ public final class b
     return 0;
   }
   
-  public final com.tencent.mm.ui.contact.a.a rk(int paramInt)
+  public final com.tencent.mm.ui.contact.a.a va(int paramInt)
   {
     AppMethodBeat.i(39235);
-    m localm = (m)this.tFQ.tGc.get(paramInt);
+    m localm = (m)this.wWP.wXb.get(paramInt);
     Object localObject;
-    if (localm.tEY.equals("no_result​")) {
+    if (localm.wVX.equals("no_result​")) {
       localObject = new i(paramInt);
     }
     for (;;)
     {
       ((com.tencent.mm.ui.contact.a.a)localObject).query = this.query;
       ((com.tencent.mm.ui.contact.a.a)localObject).scene = this.scene;
-      ((com.tencent.mm.ui.contact.a.a)localObject).KJj = false;
+      ((com.tencent.mm.ui.contact.a.a)localObject).PWh = false;
       AppMethodBeat.o(39235);
       return localObject;
       localObject = new e(paramInt);
-      ((e)localObject).kno = localm;
-      ((com.tencent.mm.ui.contact.a.a)localObject).tFe = this.tFQ.tFe;
-      ((com.tencent.mm.ui.contact.a.a)localObject).KJj = dUh();
-      ((e)localObject).gxU = true;
-      ((e)localObject).tGM = (paramInt + 1);
-      ((e)localObject).gf(((e)localObject).kno.type, ((e)localObject).kno.tEX);
+      ((e)localObject).lqW = localm;
+      ((com.tencent.mm.ui.contact.a.a)localObject).wWd = this.wWP.wWd;
+      ((com.tencent.mm.ui.contact.a.a)localObject).PWh = eWh();
+      ((e)localObject).hkH = true;
+      ((e)localObject).wXL = (paramInt + 1);
+      ((e)localObject).gE(((e)localObject).lqW.type, ((e)localObject).lqW.wVW);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.transmit.b
  * JD-Core Version:    0.7.0.1
  */

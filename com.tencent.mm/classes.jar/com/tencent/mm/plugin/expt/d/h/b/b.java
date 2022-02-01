@@ -8,13 +8,13 @@ public abstract interface b
 {
   public abstract Object b(V8Array paramV8Array);
   
-  public abstract String coO();
+  public abstract String cNb();
   
   public abstract int getType();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.d.h.b.b
  * JD-Core Version:    0.7.0.1
  */

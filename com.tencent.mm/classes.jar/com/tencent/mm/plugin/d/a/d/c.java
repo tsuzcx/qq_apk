@@ -2,6 +2,10 @@ package com.tencent.mm.plugin.d.a.d;
 
 public abstract interface c
 {
+  public abstract void BB(long paramLong);
+  
+  public abstract void CK(int paramInt);
+  
   public abstract void a(String paramString1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte);
   
   public abstract void b(long paramLong, byte[] paramArrayOfByte);
@@ -11,10 +15,6 @@ public abstract interface c
   public abstract void l(long paramLong, boolean paramBoolean);
   
   public abstract void m(long paramLong, boolean paramBoolean);
-  
-  public abstract void tv(long paramLong);
-  
-  public abstract void ze(int paramInt);
 }
 
 

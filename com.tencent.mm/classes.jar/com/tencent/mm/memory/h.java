@@ -1,20 +1,20 @@
 package com.tencent.mm.memory;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.c;
-import com.tencent.mm.sdk.g.b;
+import com.tencent.mm.sdk.SynchronizedPool;
+import com.tencent.mm.sdk.thread.ThreadPool;
 import java.nio.ByteBuffer;
 
 public final class h
-  extends c<ByteBuffer>
+  extends SynchronizedPool<ByteBuffer>
 {
-  public static h hzr;
+  public static h itz;
   
   static
   {
     AppMethodBeat.i(156425);
-    hzr = new h();
-    b.c(new Runnable()
+    itz = new h();
+    ThreadPool.post(new Runnable()
     {
       public final void run()
       {
@@ -22,7 +22,7 @@ public final class h
         int i = 0;
         while (i < 10)
         {
-          h.a(h.hzr, ByteBuffer.allocate(16384));
+          h.a(h.itz, ByteBuffer.allocate(16384));
           i += 1;
         }
         AppMethodBeat.o(156424);
@@ -38,7 +38,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.memory.h
  * JD-Core Version:    0.7.0.1
  */

@@ -5,56 +5,68 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class ejh
   extends com.tencent.mm.bw.a
 {
-  public String IlO;
+  public String title;
+  public String yUB;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(123708);
+    AppMethodBeat.i(72587);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.IlO != null) {
-        paramVarArgs.d(1, this.IlO);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.title != null) {
+        paramVarArgs.e(1, this.title);
       }
-      AppMethodBeat.o(123708);
+      if (this.yUB != null) {
+        paramVarArgs.e(2, this.yUB);
+      }
+      AppMethodBeat.o(72587);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.IlO == null) {
-        break label213;
+      if (this.title == null) {
+        break label274;
       }
     }
-    label213:
-    for (paramInt = f.a.a.b.b.a.e(1, this.IlO) + 0;; paramInt = 0)
+    label274:
+    for (paramInt = g.a.a.b.b.a.f(1, this.title) + 0;; paramInt = 0)
     {
-      AppMethodBeat.o(123708);
-      return paramInt;
+      int i = paramInt;
+      if (this.yUB != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.yUB);
+      }
+      AppMethodBeat.o(72587);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(123708);
+        AppMethodBeat.o(72587);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         ejh localejh = (ejh)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(123708);
+          AppMethodBeat.o(72587);
           return -1;
+        case 1: 
+          localejh.title = locala.UbS.readString();
+          AppMethodBeat.o(72587);
+          return 0;
         }
-        localejh.IlO = locala.OmT.readString();
-        AppMethodBeat.o(123708);
+        localejh.yUB = locala.UbS.readString();
+        AppMethodBeat.o(72587);
         return 0;
       }
-      AppMethodBeat.o(123708);
+      AppMethodBeat.o(72587);
       return -1;
     }
   }

@@ -1,35 +1,16 @@
 package com.tencent.mm.plugin.scanner.box;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.websearch.api.ad;
-import com.tencent.mm.plugin.websearch.api.ao;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import android.content.DialogInterface;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/box/ScanBoxTemplateManager;", "", "()V", "TAG", "", "getBoxTemplateHtmlFile", "plugin-scan_release"})
-public final class g
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/box/BoxDialogOnShowListener;", "", "onCancel", "", "dialog", "Landroid/content/DialogInterface;", "onDismiss", "exitType", "", "onShow", "plugin-scan_release"})
+public abstract interface g
 {
-  public static final g yBd;
+  public abstract void a(DialogInterface paramDialogInterface, int paramInt);
   
-  static
-  {
-    AppMethodBeat.i(52135);
-    yBd = new g();
-    AppMethodBeat.o(52135);
-  }
+  public abstract void onCancel(DialogInterface paramDialogInterface);
   
-  public static String dNX()
-  {
-    AppMethodBeat.i(52134);
-    Object localObject = ad.WJ(4);
-    p.g(localObject, "WebSearchApiLogic.getSea…TEMPLATE_TYPE_SCAN_GOODS)");
-    localObject = ((ao)localObject).eQi();
-    ae.v("MicroMsg.ScanBoxTemplateManager", "alvinluo ScanBox templateHtmlPath: %s", new Object[] { localObject });
-    p.g(localObject, "htmlPath");
-    AppMethodBeat.o(52134);
-    return localObject;
-  }
+  public abstract void onShow(DialogInterface paramDialogInterface);
 }
 
 

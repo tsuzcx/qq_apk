@@ -3,12 +3,12 @@ package com.tencent.mm.pluginsdk.e;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.HashMap;
 
 public final class a
 {
-  public static Bundle aMO(String paramString)
+  public static Bundle bdk(String paramString)
   {
     AppMethodBeat.i(30935);
     Bundle localBundle = new Bundle();
@@ -16,7 +16,7 @@ public final class a
     paramString = paramString.split("&");
     if ((paramString == null) || (paramString.length == 0))
     {
-      ae.e("MicroMsg.MallManager", "getWapPayBundle arrKeys == null || arrKeys.length == 0");
+      Log.e("MicroMsg.MallManager", "getWapPayBundle arrKeys == null || arrKeys.length == 0");
       AppMethodBeat.o(30935);
       return localBundle;
     }
@@ -55,7 +55,7 @@ public final class a
     paramHashMap = (String)paramHashMap.get(paramString);
     if (TextUtils.isEmpty(paramHashMap))
     {
-      ae.e("MicroMsg.MallManager", "getWapPayKey key: " + paramString + " value is empty");
+      Log.e("MicroMsg.MallManager", "getWapPayKey key: " + paramString + " value is empty");
       AppMethodBeat.o(30936);
       return "";
     }

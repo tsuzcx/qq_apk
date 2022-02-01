@@ -9,52 +9,54 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Handler;
 import android.os.Looper;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.g.a.pj;
-import com.tencent.mm.network.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.g.a.qb;
+import com.tencent.mm.kernel.a;
+import com.tencent.mm.network.af;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class KeepAliveService
   extends JobService
 {
-  public static long fGj;
+  public static long gls;
   
   static
   {
     AppMethodBeat.i(131881);
-    if (d.lA(23))
+    if (d.oD(23))
     {
-      fGj = 590000L;
+      gls = 590000L;
       AppMethodBeat.o(131881);
       return;
     }
-    fGj = 50000L;
+    gls = 50000L;
     AppMethodBeat.o(131881);
   }
   
-  public static boolean WN()
+  public static boolean akB()
   {
     AppMethodBeat.i(131880);
-    if (com.tencent.mm.kernel.a.abL().getBoolean("keepaliveserviceswitch", false))
+    if (a.apK().getBoolean("keepaliveserviceswitch", false))
     {
-      ae.i("MicroMsg.KeepAliveService", "scheduleCoreScheduleJob(), time = %d", new Object[] { Long.valueOf(fGj) });
+      Log.i("MicroMsg.KeepAliveService", "scheduleCoreScheduleJob(), time = %d", new Object[] { Long.valueOf(gls) });
       int i;
       do
       {
         JobScheduler localJobScheduler;
         try
         {
-          Object localObject = new JobInfo.Builder(1, new ComponentName(ak.getContext(), KeepAliveService.class));
+          Object localObject = new JobInfo.Builder(1, new ComponentName(MMApplicationContext.getContext(), KeepAliveService.class));
           ((JobInfo.Builder)localObject).setMinimumLatency(0L);
           ((JobInfo.Builder)localObject).setOverrideDeadline(10L);
           ((JobInfo.Builder)localObject).setRequiredNetworkType(1);
           ((JobInfo.Builder)localObject).setRequiresDeviceIdle(false);
           ((JobInfo.Builder)localObject).setRequiresCharging(false);
-          localJobScheduler = (JobScheduler)ak.getContext().getSystemService("jobscheduler");
+          localJobScheduler = (JobScheduler)MMApplicationContext.getContext().getSystemService("jobscheduler");
           if (localJobScheduler == null)
           {
             localObject = new Exception("Can not get JOB_SCHEDULER_SERVICE");
@@ -64,7 +66,7 @@ public class KeepAliveService
         }
         catch (Exception localException1)
         {
-          ae.e("MicroMsg.KeepAliveService", "scheduleKeepAliveJob() Exception:%s" + localException1.getMessage());
+          Log.e("MicroMsg.KeepAliveService", "scheduleKeepAliveJob() Exception:%s" + localException1.getMessage());
           AppMethodBeat.o(131880);
           return true;
         }
@@ -81,19 +83,19 @@ public class KeepAliveService
   public boolean onStartJob(final JobParameters paramJobParameters)
   {
     AppMethodBeat.i(131878);
-    ae.i("MicroMsg.KeepAliveService", "onStartJob()");
-    if (ad.aPK() == null)
+    Log.i("MicroMsg.KeepAliveService", "onStartJob()");
+    if (af.bkl() == null)
     {
-      ae.i("MicroMsg.KeepAliveService", "onStarJob() MMPushCore.getAutoAuth() == null");
-      b.c(ak.getContext(), "jobservice", true);
+      Log.i("MicroMsg.KeepAliveService", "onStarJob() MMPushCore.getAutoAuth() == null");
+      b.c(MMApplicationContext.getContext(), "jobservice", true);
     }
     new Handler().postDelayed(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(131876);
-        ae.i("MicroMsg.KeepAliveService", "onStartJob() delay");
-        KeepAliveService.WN();
+        Log.i("MicroMsg.KeepAliveService", "onStartJob() delay");
+        KeepAliveService.akB();
         try
         {
           KeepAliveService.this.jobFinished(paramJobParameters, false);
@@ -102,20 +104,20 @@ public class KeepAliveService
         }
         catch (Exception localException)
         {
-          ae.e("MicroMsg.KeepAliveService", "onStartJob() jobFinished() Exception=%s", new Object[] { localException.getMessage() });
+          Log.e("MicroMsg.KeepAliveService", "onStartJob() jobFinished() Exception=%s", new Object[] { localException.getMessage() });
           AppMethodBeat.o(131876);
         }
       }
-    }, fGj);
-    ae.i("MicroMsg.KeepAliveService", "onReceive() delay publish PushKeepAliveEvent");
-    h.MqF.q(new Runnable()
+    }, gls);
+    Log.i("MicroMsg.KeepAliveService", "onReceive() delay publish PushKeepAliveEvent");
+    h.RTc.n(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(131877);
-        pj localpj = new pj();
-        com.tencent.mm.sdk.b.a.IvT.a(localpj, Looper.getMainLooper());
-        ae.i("MicroMsg.KeepAliveService", "onReceive() publish PushKeepAliveEvent");
+        qb localqb = new qb();
+        EventCenter.instance.asyncPublish(localqb, Looper.getMainLooper());
+        Log.i("MicroMsg.KeepAliveService", "onReceive() publish PushKeepAliveEvent");
         AppMethodBeat.o(131877);
       }
     }, 60000L);
@@ -126,14 +128,14 @@ public class KeepAliveService
   public boolean onStopJob(JobParameters paramJobParameters)
   {
     AppMethodBeat.i(131879);
-    ae.i("MicroMsg.KeepAliveService", "onStopJob()");
+    Log.i("MicroMsg.KeepAliveService", "onStopJob()");
     AppMethodBeat.o(131879);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.booter.KeepAliveService
  * JD-Core Version:    0.7.0.1
  */

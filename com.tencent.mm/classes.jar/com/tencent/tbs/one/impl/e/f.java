@@ -78,7 +78,7 @@ public final class f
   
   private static String a(byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(192435);
+    AppMethodBeat.i(188023);
     int k = paramArrayOfByte.length;
     char[] arrayOfChar = new char[k * 2];
     int i = 0;
@@ -109,7 +109,7 @@ public final class f
       }
     }
     paramArrayOfByte = new String(arrayOfChar);
-    AppMethodBeat.o(192435);
+    AppMethodBeat.o(188023);
     return paramArrayOfByte;
   }
   
@@ -191,7 +191,7 @@ public final class f
   
   public static void a(File paramFile)
   {
-    AppMethodBeat.i(192426);
+    AppMethodBeat.i(188014);
     paramFile = paramFile.listFiles();
     int j = paramFile.length;
     int i = 0;
@@ -205,7 +205,7 @@ public final class f
       }
       i += 1;
     }
-    AppMethodBeat.o(192426);
+    AppMethodBeat.o(188014);
   }
   
   public static void a(File paramFile, int paramInt)
@@ -380,7 +380,7 @@ public final class f
   
   public static void a(InputStream paramInputStream, String paramString, long paramLong, File paramFile1, File paramFile2, k.a parama)
   {
-    AppMethodBeat.i(192427);
+    AppMethodBeat.i(188015);
     com.tencent.tbs.one.impl.a.f.a("Unzipping from download stream to %s, sdcard backup file is %s", new Object[] { paramFile1.getAbsolutePath(), paramFile2 });
     if (!TextUtils.isEmpty(paramString)) {}
     for (MessageDigest localMessageDigest = a();; localMessageDigest = null)
@@ -400,13 +400,13 @@ public final class f
             break;
           }
           paramInputStream = new TBSOneException(221, "Failed to verify download stream length, expected " + paramLong + " but was " + l);
-          AppMethodBeat.o(192427);
+          AppMethodBeat.o(188015);
           throw paramInputStream;
         }
         catch (IOException paramInputStream)
         {
           paramInputStream = new TBSOneException(315, "Failed to unzip online component from " + paramFile1.getAbsolutePath() + " to " + paramFile1.getAbsolutePath(), paramInputStream);
-          AppMethodBeat.o(192427);
+          AppMethodBeat.o(188015);
           throw paramInputStream;
         }
       }
@@ -416,11 +416,11 @@ public final class f
         if (!paramInputStream.equals(paramString))
         {
           paramInputStream = new TBSOneException(108, "Failed to verify download stream md5, expected " + paramString + " but was " + paramInputStream);
-          AppMethodBeat.o(192427);
+          AppMethodBeat.o(188015);
           throw paramInputStream;
         }
       }
-      AppMethodBeat.o(192427);
+      AppMethodBeat.o(188015);
       return;
     }
   }
@@ -450,7 +450,7 @@ public final class f
   
   public static boolean a(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(192425);
+    AppMethodBeat.i(188013);
     int i = -1;
     for (;;)
     {
@@ -463,7 +463,7 @@ public final class f
           switch (i)
           {
           default: 
-            AppMethodBeat.o(192425);
+            AppMethodBeat.o(188013);
             return false;
           }
         case -973170826: 
@@ -489,7 +489,7 @@ public final class f
       {
         boolean bool;
         com.tencent.tbs.one.impl.a.f.c("verify app exception,e=" + Log.getStackTraceString(paramContext), new Object[0]);
-        AppMethodBeat.o(192425);
+        AppMethodBeat.o(188013);
         return false;
       }
       catch (PackageManager.NameNotFoundException paramContext)
@@ -504,31 +504,31 @@ public final class f
       if (paramContext != null) {
         continue;
       }
-      AppMethodBeat.o(192425);
+      AppMethodBeat.o(188013);
       return false;
       str = "30820253308201bca00302010202044bbb0361300d06092a864886f70d0101050500306d310e300c060355040613054368696e61310f300d06035504080c06e58c97e4baac310f300d06035504070c06e58c97e4baac310f300d060355040a0c06e885bee8aeaf311b3019060355040b0c12e697a0e7babfe4b89ae58aa1e7b3bbe7bb9f310b30090603550403130251513020170d3130303430363039343831375a180f32323834303132303039343831375a306d310e300c060355040613054368696e61310f300d06035504080c06e58c97e4baac310f300d06035504070c06e58c97e4baac310f300d060355040a0c06e885bee8aeaf311b3019060355040b0c12e697a0e7babfe4b89ae58aa1e7b3bbe7bb9f310b300906035504031302515130819f300d06092a864886f70d010101050003818d0030818902818100a15e9756216f694c5915e0b529095254367c4e64faeff07ae13488d946615a58ddc31a415f717d019edc6d30b9603d3e2a7b3de0ab7e0cf52dfee39373bc472fa997027d798d59f81d525a69ecf156e885fd1e2790924386b2230cc90e3b7adc95603ddcf4c40bdc72f22db0f216a99c371d3bf89cba6578c60699e8a0d536950203010001300d06092a864886f70d01010505000381810094a9b80e80691645dd42d6611775a855f71bcd4d77cb60a8e29404035a5e00b21bcc5d4a562482126bd91b6b0e50709377ceb9ef8c2efd12cc8b16afd9a159f350bb270b14204ff065d843832720702e28b41491fbc3a205f5f2f42526d67f17614d8a974de6487b2c866efede3b4e49a0f916baa3c1336fd2ee1b1629652049";
     }
     bool = str.equals(paramContext.signatures[0].toCharsString());
     if (bool)
     {
-      AppMethodBeat.o(192425);
+      AppMethodBeat.o(188013);
       return true;
     }
   }
   
   private static Certificate[] a(JarFile paramJarFile, JarEntry paramJarEntry, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(192436);
+    AppMethodBeat.i(188024);
     paramJarFile = paramJarFile.getInputStream(paramJarEntry);
     while (paramJarFile.read(paramArrayOfByte, 0, 8192) != -1) {}
     paramJarFile.close();
     if (paramJarEntry != null)
     {
       paramJarFile = paramJarEntry.getCertificates();
-      AppMethodBeat.o(192436);
+      AppMethodBeat.o(188024);
       return paramJarFile;
     }
-    AppMethodBeat.o(192436);
+    AppMethodBeat.o(188024);
     return null;
   }
   
@@ -556,7 +556,7 @@ public final class f
   
   public static int c(File paramFile)
   {
-    AppMethodBeat.i(192428);
+    AppMethodBeat.i(188016);
     paramFile = paramFile.listFiles(new FileFilter()
     {
       public final boolean accept(File paramAnonymousFile)
@@ -569,7 +569,7 @@ public final class f
     });
     if (paramFile == null)
     {
-      AppMethodBeat.o(192428);
+      AppMethodBeat.o(188016);
       return -1;
     }
     int m = paramFile.length;
@@ -600,7 +600,7 @@ public final class f
         j = -1;
         continue;
       }
-      AppMethodBeat.o(192428);
+      AppMethodBeat.o(188016);
       return i;
       label123:
       int j = i;
@@ -751,65 +751,65 @@ public final class f
   
   public static void e(File paramFile)
   {
-    AppMethodBeat.i(192429);
+    AppMethodBeat.i(188017);
     paramFile = com.tencent.tbs.one.impl.common.f.e(paramFile, ".incomplete");
     if (!paramFile.exists()) {
       c.b(paramFile);
     }
-    AppMethodBeat.o(192429);
+    AppMethodBeat.o(188017);
   }
   
   public static void f(File paramFile)
   {
-    AppMethodBeat.i(192430);
+    AppMethodBeat.i(188018);
     paramFile = com.tencent.tbs.one.impl.common.f.e(paramFile, ".incomplete");
     if (paramFile.exists()) {
       c.c(paramFile);
     }
-    AppMethodBeat.o(192430);
+    AppMethodBeat.o(188018);
   }
   
   public static boolean g(File paramFile)
   {
-    AppMethodBeat.i(192431);
+    AppMethodBeat.i(188019);
     if (!com.tencent.tbs.one.impl.common.f.e(paramFile, ".incomplete").exists())
     {
-      AppMethodBeat.o(192431);
+      AppMethodBeat.o(188019);
       return true;
     }
-    AppMethodBeat.o(192431);
+    AppMethodBeat.o(188019);
     return false;
   }
   
   public static long h(File paramFile)
   {
-    AppMethodBeat.i(192432);
+    AppMethodBeat.i(188020);
     paramFile = com.tencent.tbs.one.impl.common.f.e(paramFile, ".failed");
     if (paramFile.exists())
     {
       long l = paramFile.lastModified();
-      AppMethodBeat.o(192432);
+      AppMethodBeat.o(188020);
       return l;
     }
-    AppMethodBeat.o(192432);
+    AppMethodBeat.o(188020);
     return 0L;
   }
   
   public static void i(File paramFile)
   {
-    AppMethodBeat.i(192433);
+    AppMethodBeat.i(188021);
     c.c(com.tencent.tbs.one.impl.common.f.e(paramFile, ".failed"));
-    AppMethodBeat.o(192433);
+    AppMethodBeat.o(188021);
   }
   
   public static boolean j(File paramFile)
   {
-    AppMethodBeat.i(192434);
+    AppMethodBeat.i(188022);
     com.tencent.tbs.one.impl.a.f.a("verifyPkgLegality,path=%s", new Object[] { paramFile });
     if (!paramFile.exists())
     {
       com.tencent.tbs.one.impl.a.f.a("verify file signature failed,path=", new Object[] { paramFile });
-      AppMethodBeat.o(192434);
+      AppMethodBeat.o(188022);
       return false;
     }
     try
@@ -837,7 +837,7 @@ public final class f
               break label300;
             }
             com.tencent.tbs.one.impl.a.f.a("verify file signature failed,origin entry=%s,signature=%s,target=%s", new Object[] { localJarEntry.getName(), localObject2, localObject1 });
-            AppMethodBeat.o(192434);
+            AppMethodBeat.o(188022);
             return false;
           }
           localObject1 = localObject2;
@@ -858,23 +858,23 @@ public final class f
       for (;;) {}
     }
     com.tencent.tbs.one.impl.a.f.a("verify file signature failed,origin entry=%s,signature is null", new Object[] { localJarEntry.getName() });
-    AppMethodBeat.o(192434);
+    AppMethodBeat.o(188022);
     return false;
     label217:
     if (localObject1.equals("3082023f308201a8a00302010202044c46914a300d06092a864886f70d01010505003064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f301e170d3130303732313036313835305a170d3430303731333036313835305a3064310b30090603550406130238363110300e060355040813074265696a696e673110300e060355040713074265696a696e673110300e060355040a130754656e63656e74310c300a060355040b13035753443111300f0603550403130873616d75656c6d6f30819f300d06092a864886f70d010101050003818d0030818902818100c209077044bd0d63ea00ede5b839914cabcc912a87f0f8b390877e0f7a2583f0d5933443c40431c35a4433bc4c965800141961adc44c9625b1d321385221fd097e5bdc2f44a1840d643ab59dc070cf6c4b4b4d98bed5cbb8046e0a7078ae134da107cdf2bfc9b440fe5cb2f7549b44b73202cc6f7c2c55b8cfb0d333a021f01f0203010001300d06092a864886f70d010105050003818100b007db9922774ef4ccfee81ba514a8d57c410257e7a2eba64bfa17c9e690da08106d32f637ac41fbc9f205176c71bde238c872c3ee2f8313502bee44c80288ea4ef377a6f2cdfe4d3653c145c4acfedbfbadea23b559d41980cc3cdd35d79a68240693739aabf5c5ed26148756cf88264226de394c8a24ac35b712b120d4d23a"))
     {
       com.tencent.tbs.one.impl.a.f.a("verify file signature success,path=%s", new Object[] { paramFile });
-      AppMethodBeat.o(192434);
+      AppMethodBeat.o(188022);
       return true;
     }
     com.tencent.tbs.one.impl.a.f.a("verify file not success,signature=%s", new Object[] { localObject1 });
-    AppMethodBeat.o(192434);
+    AppMethodBeat.o(188022);
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.f
  * JD-Core Version:    0.7.0.1
  */

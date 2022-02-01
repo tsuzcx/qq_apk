@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.wxcredit;
 import android.app.Activity;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.wallet_core.c.ad;
@@ -12,7 +12,7 @@ import com.tencent.mm.plugin.wallet_core.ui.WalletCheckPwdUI;
 import com.tencent.mm.plugin.wxcredit.a.f;
 import com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditDetailUI;
 import com.tencent.mm.plugin.wxcredit.ui.WalletWXCreditErrDetailUI;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.wallet_core.d.i;
 
@@ -26,7 +26,16 @@ public class d
     {
       paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        public final boolean A(Object... paramAnonymousVarArgs)
+        {
+          AppMethodBeat.i(72258);
+          paramAnonymousVarArgs = (Bankcard)paramAnonymousVarArgs[0];
+          this.Ruz.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
+          AppMethodBeat.o(72258);
+          return true;
+        }
+        
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           return false;
         }
@@ -34,15 +43,6 @@ public class d
         public final boolean r(Object... paramAnonymousVarArgs)
         {
           return false;
-        }
-        
-        public final boolean z(Object... paramAnonymousVarArgs)
-        {
-          AppMethodBeat.i(72258);
-          paramAnonymousVarArgs = (Bankcard)paramAnonymousVarArgs[0];
-          this.LVJ.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
-          AppMethodBeat.o(72258);
-          return true;
         }
       };
       AppMethodBeat.o(72266);
@@ -52,19 +52,28 @@ public class d
     {
       paramMMActivity = new com.tencent.mm.wallet_core.d.g(paramMMActivity, parami)
       {
-        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+        public final boolean A(Object... paramAnonymousVarArgs)
+        {
+          AppMethodBeat.i(72261);
+          paramAnonymousVarArgs = (Bankcard)paramAnonymousVarArgs[0];
+          this.Ruz.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
+          AppMethodBeat.o(72261);
+          return true;
+        }
+        
+        public final boolean onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
         {
           AppMethodBeat.i(72259);
           if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
           {
-            if ((paramAnonymousn instanceof f)) {
-              this.LVJ.b(new ad(), true);
+            if ((paramAnonymousq instanceof f)) {
+              this.Ruz.b(new ad(), true);
             }
             for (;;)
             {
               AppMethodBeat.o(72259);
               return true;
-              if ((paramAnonymousn instanceof ad)) {
+              if ((paramAnonymousq instanceof ad)) {
                 d.this.b(this.activity, d.a(d.this));
               }
             }
@@ -77,17 +86,8 @@ public class d
         {
           AppMethodBeat.i(72260);
           Bankcard localBankcard = (Bankcard)d.b(d.this).getParcelable("key_bankcard");
-          this.LVJ.a(new f(localBankcard.field_bankcardType, localBankcard.field_bindSerial, (String)paramAnonymousVarArgs[0]), true, 1);
+          this.Ruz.a(new f(localBankcard.field_bankcardType, localBankcard.field_bindSerial, (String)paramAnonymousVarArgs[0]), true, 1);
           AppMethodBeat.o(72260);
-          return true;
-        }
-        
-        public final boolean z(Object... paramAnonymousVarArgs)
-        {
-          AppMethodBeat.i(72261);
-          paramAnonymousVarArgs = (Bankcard)paramAnonymousVarArgs[0];
-          this.LVJ.a(new com.tencent.mm.plugin.wxcredit.a.d(paramAnonymousVarArgs.field_bindSerial, paramAnonymousVarArgs.field_bankcardType), true, 1);
-          AppMethodBeat.o(72261);
           return true;
         }
       };
@@ -102,7 +102,7 @@ public class d
   public final com.tencent.mm.wallet_core.d a(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72262);
-    ae.d("MicroMsg.WXCreditManagerProcess", "start Process : WXCreditManagerProcess");
+    Log.d("MicroMsg.WXCreditManagerProcess", "start Process : WXCreditManagerProcess");
     b(paramActivity, WalletWXCreditDetailUI.class, paramBundle);
     AppMethodBeat.o(72262);
     return this;
@@ -139,8 +139,8 @@ public class d
   public final void b(Activity paramActivity, Bundle paramBundle)
   {
     AppMethodBeat.i(72265);
-    boolean bool = ((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qGM, false);
-    ae.i("MicroMsg.WXCreditManagerProcess", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
+    boolean bool = ((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.sad, true);
+    Log.i("MicroMsg.WXCreditManagerProcess", " walletMallV2 switch is ：%s", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
       e(paramActivity, "mall", ".ui.MallIndexUIv2");
@@ -156,7 +156,7 @@ public class d
     return false;
   }
   
-  public final String cSH()
+  public final String dKC()
   {
     return "WXCreditManagerProcess";
   }
@@ -164,13 +164,13 @@ public class d
   public final void g(Activity paramActivity, int paramInt)
   {
     AppMethodBeat.i(72264);
-    R(paramActivity);
+    P(paramActivity);
     AppMethodBeat.o(72264);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wxcredit.d
  * JD-Core Version:    0.7.0.1
  */

@@ -1,110 +1,110 @@
 package com.tencent.mm.plugin.subapp.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.gq;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.hb;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class g
-  extends gq
+  extends hb
 {
-  protected static c.a info;
-  int dEu = -1;
+  protected static IAutoDBItem.MAutoDBInfo info;
+  int cSx = -1;
   
   static
   {
     AppMethodBeat.i(28963);
-    c.a locala = new c.a();
-    locala.IBL = new Field[17];
-    locala.columns = new String[18];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[17];
+    localMAutoDBInfo.columns = new String[18];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "filename";
-    locala.IBN.put("filename", "TEXT");
+    localMAutoDBInfo.columns[0] = "filename";
+    localMAutoDBInfo.colsMap.put("filename", "TEXT");
     localStringBuilder.append(" filename TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "user";
-    locala.IBN.put("user", "TEXT");
+    localMAutoDBInfo.columns[1] = "user";
+    localMAutoDBInfo.colsMap.put("user", "TEXT");
     localStringBuilder.append(" user TEXT");
     localStringBuilder.append(", ");
-    locala.columns[2] = "msgid";
-    locala.IBN.put("msgid", "LONG");
+    localMAutoDBInfo.columns[2] = "msgid";
+    localMAutoDBInfo.colsMap.put("msgid", "LONG");
     localStringBuilder.append(" msgid LONG");
     localStringBuilder.append(", ");
-    locala.columns[3] = "offset";
-    locala.IBN.put("offset", "INTEGER");
+    localMAutoDBInfo.columns[3] = "offset";
+    localMAutoDBInfo.colsMap.put("offset", "INTEGER");
     localStringBuilder.append(" offset INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[4] = "filenowsize";
-    locala.IBN.put("filenowsize", "INTEGER");
+    localMAutoDBInfo.columns[4] = "filenowsize";
+    localMAutoDBInfo.colsMap.put("filenowsize", "INTEGER");
     localStringBuilder.append(" filenowsize INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[5] = "totallen";
-    locala.IBN.put("totallen", "INTEGER");
+    localMAutoDBInfo.columns[5] = "totallen";
+    localMAutoDBInfo.colsMap.put("totallen", "INTEGER");
     localStringBuilder.append(" totallen INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[6] = "status";
-    locala.IBN.put("status", "INTEGER");
+    localMAutoDBInfo.columns[6] = "status";
+    localMAutoDBInfo.colsMap.put("status", "INTEGER");
     localStringBuilder.append(" status INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[7] = "createtime";
-    locala.IBN.put("createtime", "LONG");
+    localMAutoDBInfo.columns[7] = "createtime";
+    localMAutoDBInfo.colsMap.put("createtime", "LONG");
     localStringBuilder.append(" createtime LONG");
     localStringBuilder.append(", ");
-    locala.columns[8] = "lastmodifytime";
-    locala.IBN.put("lastmodifytime", "LONG");
+    localMAutoDBInfo.columns[8] = "lastmodifytime";
+    localMAutoDBInfo.colsMap.put("lastmodifytime", "LONG");
     localStringBuilder.append(" lastmodifytime LONG");
     localStringBuilder.append(", ");
-    locala.columns[9] = "clientid";
-    locala.IBN.put("clientid", "TEXT");
+    localMAutoDBInfo.columns[9] = "clientid";
+    localMAutoDBInfo.colsMap.put("clientid", "TEXT");
     localStringBuilder.append(" clientid TEXT");
     localStringBuilder.append(", ");
-    locala.columns[10] = "voicelenght";
-    locala.IBN.put("voicelenght", "INTEGER");
+    localMAutoDBInfo.columns[10] = "voicelenght";
+    localMAutoDBInfo.colsMap.put("voicelenght", "INTEGER");
     localStringBuilder.append(" voicelenght INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[11] = "msglocalid";
-    locala.IBN.put("msglocalid", "INTEGER");
+    localMAutoDBInfo.columns[11] = "msglocalid";
+    localMAutoDBInfo.colsMap.put("msglocalid", "INTEGER");
     localStringBuilder.append(" msglocalid INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[12] = "human";
-    locala.IBN.put("human", "TEXT");
+    localMAutoDBInfo.columns[12] = "human";
+    localMAutoDBInfo.colsMap.put("human", "TEXT");
     localStringBuilder.append(" human TEXT");
     localStringBuilder.append(", ");
-    locala.columns[13] = "voiceformat";
-    locala.IBN.put("voiceformat", "INTEGER");
+    localMAutoDBInfo.columns[13] = "voiceformat";
+    localMAutoDBInfo.colsMap.put("voiceformat", "INTEGER");
     localStringBuilder.append(" voiceformat INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[14] = "nettimes";
-    locala.IBN.put("nettimes", "INTEGER");
+    localMAutoDBInfo.columns[14] = "nettimes";
+    localMAutoDBInfo.colsMap.put("nettimes", "INTEGER");
     localStringBuilder.append(" nettimes INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[15] = "reserved1";
-    locala.IBN.put("reserved1", "INTEGER");
+    localMAutoDBInfo.columns[15] = "reserved1";
+    localMAutoDBInfo.colsMap.put("reserved1", "INTEGER");
     localStringBuilder.append(" reserved1 INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[16] = "reserved2";
-    locala.IBN.put("reserved2", "TEXT");
+    localMAutoDBInfo.columns[16] = "reserved2";
+    localMAutoDBInfo.colsMap.put("reserved2", "TEXT");
     localStringBuilder.append(" reserved2 TEXT");
-    locala.columns[17] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[17] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(28963);
   }
   
-  public final boolean aOa()
+  public final boolean big()
   {
     return ((this.field_status > 1) && (this.field_status <= 3)) || (this.field_status == 8);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.d.g
  * JD-Core Version:    0.7.0.1
  */

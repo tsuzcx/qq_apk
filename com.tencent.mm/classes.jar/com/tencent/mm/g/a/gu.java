@@ -1,35 +1,35 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class gu
-  extends b
+  extends IEvent
 {
-  public a dtU;
+  public a dKP;
   
   public gu()
   {
     this((byte)0);
   }
   
-  public gu(byte paramByte)
+  private gu(byte paramByte)
   {
-    AppMethodBeat.i(183843);
-    this.dtU = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(19808);
+    this.dKP = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(183843);
+    AppMethodBeat.o(19808);
   }
   
   public static final class a
   {
-    public int dtV = 0;
+    public boolean isActive;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.g.a.gu
  * JD-Core Version:    0.7.0.1
  */

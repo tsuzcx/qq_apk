@@ -1,41 +1,48 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.b;
-import d.l;
-import d.z;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/InvokeOnCancel;", "Lkotlinx/coroutines/CancelHandler;", "handler", "Lkotlin/Function1;", "", "Lkotlin/ParameterName;", "name", "cause", "", "Lkotlinx/coroutines/CompletionHandler;", "(Lkotlin/jvm/functions/Function1;)V", "invoke", "toString", "", "kotlinx-coroutines-core"})
-final class bo
-  extends i
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lkotlinx/coroutines/InactiveNodeList;", "Lkotlinx/coroutines/Incomplete;", "list", "Lkotlinx/coroutines/NodeList;", "(Lkotlinx/coroutines/NodeList;)V", "isActive", "", "()Z", "getList", "()Lkotlinx/coroutines/NodeList;", "toString", "", "kotlinx-coroutines-core"})
+public final class bo
+  implements bp
 {
-  private final b<Throwable, z> kFj;
+  final cf TUL;
   
-  public bo(b<? super Throwable, z> paramb)
+  public bo(cf paramcf)
   {
-    AppMethodBeat.i(118164);
-    this.kFj = paramb;
-    AppMethodBeat.o(118164);
+    AppMethodBeat.i(118136);
+    this.TUL = paramcf;
+    AppMethodBeat.o(118136);
+  }
+  
+  public final cf hMX()
+  {
+    return this.TUL;
+  }
+  
+  public final boolean isActive()
+  {
+    return false;
   }
   
   public final String toString()
   {
-    AppMethodBeat.i(118163);
-    String str = "InvokeOnCancel[" + this.kFj.getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this)) + ']';
-    AppMethodBeat.o(118163);
+    AppMethodBeat.i(118135);
+    if (an.getDEBUG())
+    {
+      str = this.TUL.getString("New");
+      AppMethodBeat.o(118135);
+      return str;
+    }
+    String str = super.toString();
+    AppMethodBeat.o(118135);
     return str;
-  }
-  
-  public final void x(Throwable paramThrowable)
-  {
-    AppMethodBeat.i(118161);
-    this.kFj.invoke(paramThrowable);
-    AppMethodBeat.o(118161);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.bo
  * JD-Core Version:    0.7.0.1
  */

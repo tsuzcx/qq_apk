@@ -1,22 +1,22 @@
 package com.tencent.mm.plugin.appbrand.appusage.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
 import java.util.LinkedList;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Ljava/util/LinkedList;", "", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Ljava/util/LinkedList;", "", "invoke"})
 final class d$h
   extends q
   implements a<LinkedList<Integer>>
 {
-  public static final h jUq;
+  public static final h kXm;
   
   static
   {
     AppMethodBeat.i(50316);
-    jUq = new h();
+    kXm = new h();
     AppMethodBeat.o(50316);
   }
   

@@ -1,61 +1,63 @@
 package com.tencent.mm.plugin.talkroom.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dmy;
-import com.tencent.mm.protocal.protobuf.dmz;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.egp;
+import com.tencent.mm.protocal.protobuf.egq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e
   extends f
 {
-  private com.tencent.mm.ak.f callback;
-  private final b rr;
+  private i callback;
+  private final d rr;
   private int sceneType;
-  private final String vpL;
+  private final String yJB;
   
   public e(String paramString, int paramInt1, long paramLong, int paramInt2)
   {
     AppMethodBeat.i(29564);
     this.sceneType = 0;
     this.sceneType = paramInt2;
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new dmy();
-    ((b.a)localObject).hQG = new dmz();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/talknoop";
-    ((b.a)localObject).funcId = 335;
-    ((b.a)localObject).hQH = 149;
-    ((b.a)localObject).respCmdId = 1000000149;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (dmy)this.rr.hQD.hQJ;
-    ((dmy)localObject).Gxq = paramInt1;
-    ((dmy)localObject).Gxr = paramLong;
-    ((dmy)localObject).FNw = ((int)bu.aRi());
-    this.vpL = paramString;
-    ((dmy)localObject).Scene = paramInt2;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new egp();
+    ((d.a)localObject).iLO = new egq();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/talknoop";
+    ((d.a)localObject).funcId = 335;
+    ((d.a)localObject).iLP = 149;
+    ((d.a)localObject).respCmdId = 1000000149;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (egp)this.rr.iLK.iLR;
+    ((egp)localObject).LsZ = paramInt1;
+    ((egp)localObject).Lta = paramLong;
+    ((egp)localObject).KHb = ((int)Util.nowSecond());
+    this.yJB = paramString;
+    ((egp)localObject).Scene = paramInt2;
     AppMethodBeat.o(29564);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, com.tencent.mm.ak.f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(29565);
-    ae.d("MicroMsg.NetSceneTalkNoop", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    Log.d("MicroMsg.NetSceneTalkNoop", "doScene");
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(29565);
     return i;
   }
   
-  public final String erF()
+  public final String fui()
   {
-    return this.vpL;
+    return this.yJB;
   }
   
-  public final int erG()
+  public final int fuj()
   {
     return this.sceneType;
   }
@@ -65,10 +67,10 @@ public final class e
     return 335;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29566);
-    ae.d("MicroMsg.NetSceneTalkNoop", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
+    Log.d("MicroMsg.NetSceneTalkNoop", "onGYNetEnd errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);

@@ -10,30 +10,30 @@ public abstract class PresenterActivity
   extends HellActivity
   implements b
 {
-  private c gGT = new c();
+  private c htH = new c();
   
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.gGT.B(getIntent(), this);
+    this.htH.A(getIntent(), this);
   }
   
   public void onDestroy()
   {
-    this.gGT.onDestroy();
+    this.htH.onDestroy();
     super.onDestroy();
   }
   
   public void onPause()
   {
-    this.gGT.agy(3);
+    this.htH.apB(3);
     super.onPause();
   }
   
   public void onResume()
   {
     super.onResume();
-    this.gGT.agy(2);
+    this.htH.apB(2);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -44,7 +44,7 @@ public abstract class PresenterActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.vending.app.PresenterActivity
  * JD-Core Version:    0.7.0.1
  */

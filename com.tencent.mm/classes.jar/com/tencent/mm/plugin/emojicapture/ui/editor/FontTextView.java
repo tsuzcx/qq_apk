@@ -17,29 +17,29 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.emojicapture.ui.editor.text.c;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/FontTextView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "alignment", "Landroid/text/Layout$Alignment;", "contentLeft", "", "contentPadding", "defaultText", "", "drawStroke", "", "getDrawStroke", "()Z", "setDrawStroke", "(Z)V", "includePadding", "layout", "Landroid/text/StaticLayout;", "lineHeight", "lineSpacing", "maxWidth", "newLayout", "spacingAddition", "spacingMultiplier", "strokePaint", "Landroid/text/TextPaint;", "text", "", "textDrawer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "getTextDrawer", "()Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "setTextDrawer", "(Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;)V", "textPaint", "drawLine", "", "canvas", "Landroid/graphics/Canvas;", "line", "lineSpace", "makeNewLayout", "width", "onDraw", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setMaxWidth", "setTypeface", "typeface", "Landroid/graphics/Typeface;", "updateText", "color", "strokeColor", "change", "plugin-emojicapture_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/FontTextView;", "Landroid/view/View;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "alignment", "Landroid/text/Layout$Alignment;", "contentLeft", "", "contentPadding", "defaultText", "", "drawStroke", "", "getDrawStroke", "()Z", "setDrawStroke", "(Z)V", "includePadding", "layout", "Landroid/text/StaticLayout;", "lineHeight", "lineSpacing", "maxWidth", "newLayout", "spacingAddition", "spacingMultiplier", "strokePaint", "Landroid/text/TextPaint;", "text", "", "textDrawer", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "getTextDrawer", "()Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "setTextDrawer", "(Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;)V", "textPaint", "drawLine", "", "canvas", "Landroid/graphics/Canvas;", "line", "lineSpace", "makeNewLayout", "width", "onDraw", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "setMaxWidth", "setTypeface", "typeface", "Landroid/graphics/Typeface;", "updateText", "color", "strokeColor", "change", "plugin-emojicapture_release"})
 public final class FontTextView
   extends View
 {
-  private final Layout.Alignment gHI;
-  private final int gql;
-  private TextPaint iU;
+  private final int hbe;
+  private final Layout.Alignment huw;
+  private TextPaint iW;
   private StaticLayout layout;
   private float maxWidth;
-  private String qef;
-  private final float qeg;
-  private final float qeh;
-  private final boolean qei;
-  private TextPaint qej;
-  private float qek;
-  private float qel;
-  private float qem;
-  private boolean qen;
-  private c qeo;
-  private boolean qep;
+  private String rvd;
+  private final float rve;
+  private final float rvf;
+  private final boolean rvg;
+  private TextPaint rvh;
+  private float rvi;
+  private float rvj;
+  private float rvk;
+  private boolean rvl;
+  private c rvm;
+  private boolean rvn;
   private CharSequence text;
   
   public FontTextView(Context paramContext)
@@ -56,34 +56,34 @@ public final class FontTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(783);
-    this.gHI = Layout.Alignment.ALIGN_CENTER;
-    this.qeg = 1.0F;
-    this.iU = new TextPaint();
-    this.qej = new TextPaint();
+    this.huw = Layout.Alignment.ALIGN_CENTER;
+    this.rve = 1.0F;
+    this.iW = new TextPaint();
+    this.rvh = new TextPaint();
     this.text = ((CharSequence)"");
     if (paramContext == null) {
-      p.gkB();
+      p.hyc();
     }
-    float f = paramContext.getResources().getDimension(2131166194);
-    this.qel = paramContext.getResources().getDimension(2131166196);
-    this.qem = paramContext.getResources().getDimension(2131166197);
-    paramAttributeSet = paramContext.getResources().getString(2131756782);
+    float f = paramContext.getResources().getDimension(2131166235);
+    this.rvj = paramContext.getResources().getDimension(2131166237);
+    this.rvk = paramContext.getResources().getDimension(2131166238);
+    paramAttributeSet = paramContext.getResources().getString(2131756947);
     p.g(paramAttributeSet, "context.resources.getStr…pture_emoji_text_default)");
-    this.qef = paramAttributeSet;
-    this.gql = com.tencent.mm.cb.a.fromDPToPix(paramContext, 2);
-    this.iU.setAntiAlias(true);
-    this.iU.setTextSize(f);
-    this.iU.setColor(2147483647);
+    this.rvd = paramAttributeSet;
+    this.hbe = com.tencent.mm.cb.a.fromDPToPix(paramContext, 2);
+    this.iW.setAntiAlias(true);
+    this.iW.setTextSize(f);
+    this.iW.setColor(2147483647);
     f = com.tencent.mm.cb.a.fromDPToPix(paramContext, 1);
-    this.iU.setShadowLayer(f, 0.0F, f, -16777216);
-    this.qej.setStrokeWidth(paramContext.getResources().getDimension(2131166198));
-    this.qej.setAntiAlias(true);
-    this.qej.setTextSize(this.iU.getTextSize());
-    this.qej.setStyle(Paint.Style.STROKE);
-    this.layout = new StaticLayout(this.text, this.iU, getWidth(), this.gHI, this.qeg, this.qeh, this.qei);
-    this.qeo = ((c)new com.tencent.mm.plugin.emojicapture.ui.editor.text.a());
-    this.text = ((CharSequence)this.qef);
-    paramContext = this.qeo;
+    this.iW.setShadowLayer(f, 0.0F, f, -16777216);
+    this.rvh.setStrokeWidth(paramContext.getResources().getDimension(2131166239));
+    this.rvh.setAntiAlias(true);
+    this.rvh.setTextSize(this.iW.getTextSize());
+    this.rvh.setStyle(Paint.Style.STROKE);
+    this.layout = new StaticLayout(this.text, this.iW, getWidth(), this.huw, this.rve, this.rvf, this.rvg);
+    this.rvm = ((c)new com.tencent.mm.plugin.emojicapture.ui.editor.text.a());
+    this.text = ((CharSequence)this.rvd);
+    paramContext = this.rvm;
     if (paramContext != null)
     {
       paramContext.setText(this.text);
@@ -114,18 +114,18 @@ public final class FontTextView
     label202:
     for (int i = this.layout.getLineStart(paramInt) + this.layout.getEllipsisStart(paramInt);; i = this.layout.getLineEnd(paramInt))
     {
-      if (this.qep)
+      if (this.rvn)
       {
-        localc = this.qeo;
+        localc = this.rvm;
         if (localc != null) {
-          localc.a(paramCanvas, this.layout.getLineStart(paramInt), i, f, paramFloat, (Paint)this.qej, bool);
+          localc.a(paramCanvas, this.layout.getLineStart(paramInt), i, f, paramFloat, (Paint)this.rvh, bool);
         }
       }
-      c localc = this.qeo;
+      c localc = this.rvm;
       if (localc == null) {
         break label215;
       }
-      localc.a(paramCanvas, this.layout.getLineStart(paramInt), i, f, paramFloat, (Paint)this.iU, bool);
+      localc.a(paramCanvas, this.layout.getLineStart(paramInt), i, f, paramFloat, (Paint)this.iW, bool);
       AppMethodBeat.o(781);
       return;
       bool = false;
@@ -145,20 +145,20 @@ public final class FontTextView
       if (i == 0) {
         break label132;
       }
-      this.qep = false;
-      this.text = ((CharSequence)this.qef);
-      this.iU.setColor(2147483647);
+      this.rvn = false;
+      this.text = ((CharSequence)this.rvd);
+      this.iW.setColor(2147483647);
       float f = com.tencent.mm.cb.a.fromDPToPix(getContext(), 1);
-      this.iU.setShadowLayer(f, 0.0F, f, -16777216);
+      this.iW.setShadowLayer(f, 0.0F, f, -16777216);
     }
     for (;;)
     {
-      this.qej.setColor(paramInt2);
-      paramCharSequence = this.qeo;
+      this.rvh.setColor(paramInt2);
+      paramCharSequence = this.rvm;
       if (paramCharSequence != null) {
         paramCharSequence.setText(this.text);
       }
-      paramCharSequence = this.qeo;
+      paramCharSequence = this.rvm;
       if (paramCharSequence == null) {
         break label167;
       }
@@ -168,13 +168,13 @@ public final class FontTextView
       i = 0;
       break;
       label132:
-      this.qep = true;
+      this.rvn = true;
       if (paramCharSequence == null) {
-        p.gkB();
+        p.hyc();
       }
       this.text = paramCharSequence;
-      this.iU.setColor(paramInt1);
-      this.iU.clearShadowLayer();
+      this.iW.setColor(paramInt1);
+      this.iW.clearShadowLayer();
     }
     label167:
     AppMethodBeat.o(778);
@@ -182,12 +182,12 @@ public final class FontTextView
   
   public final boolean getDrawStroke()
   {
-    return this.qep;
+    return this.rvn;
   }
   
   public final c getTextDrawer()
   {
-    return this.qeo;
+    return this.rvm;
   }
   
   protected final void onDraw(Canvas paramCanvas)
@@ -195,9 +195,9 @@ public final class FontTextView
     AppMethodBeat.i(780);
     p.h(paramCanvas, "canvas");
     paramCanvas.save();
-    paramCanvas.translate(-this.qek, 0.0F);
+    paramCanvas.translate(-this.rvi, 0.0F);
     a(paramCanvas, 0, 0.0F);
-    a(paramCanvas, 1, this.qem);
+    a(paramCanvas, 1, this.rvk);
     paramCanvas.restore();
     AppMethodBeat.o(780);
   }
@@ -211,11 +211,11 @@ public final class FontTextView
     if (paramInt2 > this.maxWidth) {
       paramInt1 = (int)this.maxWidth;
     }
-    this.qen = true;
-    paramInt1 -= this.gql * 2;
+    this.rvl = true;
+    paramInt1 -= this.hbe * 2;
     StaticLayout localStaticLayout = this.layout;
     Object localObject = localStaticLayout;
-    if (this.qen)
+    if (this.rvl)
     {
       if (paramInt1 < 0) {
         localObject = localStaticLayout;
@@ -225,15 +225,15 @@ public final class FontTextView
     {
       this.layout = ((StaticLayout)localObject);
       paramInt1 = this.layout.getLineBottom(0) - this.layout.getLineTop(0);
-      if (paramInt1 > this.qel) {
-        this.qel = paramInt1;
+      if (paramInt1 > this.rvj) {
+        this.rvj = paramInt1;
       }
       if (this.layout.getLineCount() > 1) {
         break label425;
       }
     }
     label425:
-    for (paramInt1 = (int)this.qel;; paramInt1 = (int)(2.0F * this.qel + this.qem))
+    for (paramInt1 = (int)this.rvj;; paramInt1 = (int)(2.0F * this.rvj + this.rvk))
     {
       paramInt2 = getPaddingBottom();
       int i = getPaddingTop();
@@ -255,31 +255,31 @@ public final class FontTextView
           f3 = f1;
         }
       }
-      this.qek = (f3 - this.gql);
-      setMeasuredDimension((int)(f4 - f3 + this.gql * 2), paramInt1 + (paramInt2 + i));
+      this.rvi = (f3 - this.hbe);
+      setMeasuredDimension((int)(f4 - f3 + this.hbe * 2), paramInt1 + (paramInt2 + i));
       AppMethodBeat.o(782);
       return;
-      localObject = this.qeo;
+      localObject = this.rvm;
       if (localObject != null) {
         ((c)localObject).refresh();
       }
       if (Build.VERSION.SDK_INT >= 23)
       {
-        localObject = StaticLayout.Builder.obtain(this.text, 0, this.text.length(), this.iU, paramInt1).setAlignment(this.gHI).setIncludePad(this.qei).setMaxLines(2).setLineSpacing(this.qeh, this.qeg).setEllipsize(TextUtils.TruncateAt.END).build();
+        localObject = StaticLayout.Builder.obtain(this.text, 0, this.text.length(), this.iW, paramInt1).setAlignment(this.huw).setIncludePad(this.rvg).setMaxLines(2).setLineSpacing(this.rvf, this.rve).setEllipsize(TextUtils.TruncateAt.END).build();
         p.g(localObject, "StaticLayout.Builder.obt…                 .build()");
       }
       for (;;)
       {
-        this.qen = false;
+        this.rvl = false;
         break;
-        localObject = new StaticLayout(this.text, this.iU, paramInt1, this.gHI, this.qeg, this.qeh, this.qei);
+        localObject = new StaticLayout(this.text, this.iW, paramInt1, this.huw, this.rve, this.rvf, this.rvg);
       }
     }
   }
   
   public final void setDrawStroke(boolean paramBoolean)
   {
-    this.qep = paramBoolean;
+    this.rvn = paramBoolean;
   }
   
   public final void setMaxWidth(float paramFloat)
@@ -289,20 +289,20 @@ public final class FontTextView
   
   public final void setTextDrawer(c paramc)
   {
-    this.qeo = paramc;
+    this.rvm = paramc;
   }
   
   public final void setTypeface(Typeface paramTypeface)
   {
     AppMethodBeat.i(779);
-    this.iU.setTypeface(paramTypeface);
-    this.qej.setTypeface(paramTypeface);
+    this.iW.setTypeface(paramTypeface);
+    this.rvh.setTypeface(paramTypeface);
     AppMethodBeat.o(779);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.editor.FontTextView
  * JD-Core Version:    0.7.0.1
  */

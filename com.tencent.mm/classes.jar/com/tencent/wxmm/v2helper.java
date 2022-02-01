@@ -120,6 +120,25 @@ public class v2helper
   public static final int USER_STATUS_NORSP = 8;
   public static final int USER_STATUS_REJECT = 7;
   public static final int USER_STATUS_UNKNOWN = 0;
+  public static final int VFMT_BGRA = 11;
+  public static final int VFMT_D530 = 9;
+  public static final int VFMT_END = 256;
+  public static final int VFMT_MASK1 = 31;
+  public static final int VFMT_MASK2 = 63;
+  public static final int VFMT_MIRROR = 64;
+  public static final int VFMT_NV12 = 10;
+  public static final int VFMT_NV21 = 7;
+  public static final int VFMT_RGB24 = 3;
+  public static final int VFMT_RGB32 = 4;
+  public static final int VFMT_RGB565 = 2;
+  public static final int VFMT_ROTATE = 32;
+  public static final int VFMT_SCREEN = 128;
+  public static final int VFMT_UYVY = 8;
+  public static final int VFMT_YUV420 = 1;
+  public static final int VFMT_YUY2 = 5;
+  public static final int VFMT_YV12 = 6;
+  public static final int VFMT_i264 = 18;
+  public static final int VFMT_i265 = 19;
   public static final int VIDEO_RATIO_1_1 = 2;
   public static final int VIDEO_RATIO_1_2 = 3;
   public static final int VIDEO_RATIO_3_4 = 0;
@@ -133,30 +152,29 @@ public class v2helper
   public static final int VOIP_ENC_WIDTH_LV1 = 480;
   public static final int VOIP_ENC_WIDTH_LV2 = 640;
   public static final int WXCONF_ERR_AUTHKEY_EXPIRED = 4;
-  public static final int WXCONF_ERR_DEVICE_LOGIN = 51;
   public static final int WXCONF_ERR_FREQ_LIMITED = 3;
   public static final int WXCONF_ERR_INVALID_CALL = 1;
-  public static final int WXCONF_ERR_JOIN_GROUP = 52;
   public static final int WXCONF_ERR_JOIN_IMROOM_FAIL = 14;
+  public static final int WXCONF_ERR_KV_CONFLICT = 16;
   public static final int WXCONF_ERR_MEMBER_CNT_LIMIT = 10;
   public static final int WXCONF_ERR_NETWORK_FAIL = 2;
   public static final int WXCONF_ERR_NOT_FRIEND = 5;
   public static final int WXCONF_ERR_NOT_IN_IMROOM = 13;
+  public static final int WXCONF_ERR_REPLY_BY_OTHER = 15;
   public static final int WXCONF_ERR_ROOM_CLOSED = 11;
   public static final int WXCONF_ERR_UNKNOWN = 0;
   public static final int WXCONF_ERR_USER_NOT_EXIST = 12;
-  public static final int WXCONF_ERR_VENDOR_LOGIN = 50;
   public static final int WXCONF_EVENT_ACCEPT_FAIL = 15;
   public static final int WXCONF_EVENT_ACCEPT_SUCC = 14;
   public static final int WXCONF_EVENT_ACCEPT_TIMEOUT = 16;
   public static final int WXCONF_EVENT_ACK_FAIL = 13;
   public static final int WXCONF_EVENT_ACK_SUCC = 12;
-  public static final int WXCONF_EVENT_ADD_FAIL = 18;
-  public static final int WXCONF_EVENT_ADD_SUCC = 17;
-  public static final int WXCONF_EVENT_AUTHKEY_EXPIRED = 25;
-  public static final int WXCONF_EVENT_AVMEMBER_CHANGE = 20;
-  public static final int WXCONF_EVENT_CALL_BROKEN = 23;
-  public static final int WXCONF_EVENT_CALL_END = 24;
+  public static final int WXCONF_EVENT_ADD_FAIL = 19;
+  public static final int WXCONF_EVENT_ADD_SUCC = 18;
+  public static final int WXCONF_EVENT_AUTHKEY_EXPIRED = 26;
+  public static final int WXCONF_EVENT_AVMEMBER_CHANGE = 21;
+  public static final int WXCONF_EVENT_CALL_BROKEN = 24;
+  public static final int WXCONF_EVENT_CALL_END = 25;
   public static final int WXCONF_EVENT_INIT_FAIL = 2;
   public static final int WXCONF_EVENT_INIT_SUCC = 1;
   public static final int WXCONF_EVENT_INVITE_FAIL = 6;
@@ -164,13 +182,15 @@ public class v2helper
   public static final int WXCONF_EVENT_INVITE_TIMEOUT = 7;
   public static final int WXCONF_EVENT_JOIN_FAIL = 4;
   public static final int WXCONF_EVENT_JOIN_SUCC = 3;
-  public static final int WXCONF_EVENT_MEMBER_CHANGE = 19;
+  public static final int WXCONF_EVENT_MEMBER_CHANGE = 20;
   public static final int WXCONF_EVENT_RECV_INVITE = 8;
   public static final int WXCONF_EVENT_RECV_INVITE_BUSY = 9;
   public static final int WXCONF_EVENT_RECV_NOTIFY_FAIL = 11;
   public static final int WXCONF_EVENT_RECV_SIMU_CALL = 10;
-  public static final int WXCONF_EVENT_TALK_FAIL = 22;
-  public static final int WXCONF_EVENT_TALK_SUCC = 21;
+  public static final int WXCONF_EVENT_REPLY_BY_OTHER = 17;
+  public static final int WXCONF_EVENT_SOCKET_BINDTO_NETWORK = 27;
+  public static final int WXCONF_EVENT_TALK_FAIL = 23;
+  public static final int WXCONF_EVENT_TALK_SUCC = 22;
   public static final int WXVOIP_ERR_AUTHKEY_EXPIRED = 4;
   public static final int WXVOIP_ERR_FREQ_LIMITED = 3;
   public static final int WXVOIP_ERR_INVALID_CALL = 1;
@@ -319,7 +339,7 @@ public class v2helper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.wxmm.v2helper
  * JD-Core Version:    0.7.0.1
  */

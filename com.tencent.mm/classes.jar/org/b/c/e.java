@@ -12,13 +12,13 @@ public final class e
   {
     AppMethodBeat.i(40506);
     org.b.g.d.j(paramc, "Cannot extract a header from a null object");
-    if ((paramc.Otn == null) || (paramc.Otn.size() <= 0))
+    if ((paramc.Uik == null) || (paramc.Uik.size() <= 0))
     {
       paramc = new org.b.b.c(paramc);
       AppMethodBeat.o(40506);
       throw paramc;
     }
-    paramc = paramc.Otn;
+    paramc = paramc.Uik;
     StringBuffer localStringBuffer = new StringBuffer(paramc.size() * 20);
     localStringBuffer.append("OAuth ");
     Iterator localIterator = paramc.keySet().iterator();
@@ -40,7 +40,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.b.c.e
  * JD-Core Version:    0.7.0.1
  */

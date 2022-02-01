@@ -6,8 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.r.a;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.ao;
 import com.tencent.mm.ui.base.preference.Preference;
 import java.util.HashMap;
 import java.util.Map;
@@ -15,16 +15,16 @@ import java.util.Map;
 public class WalletBalancePrivacyMMHeaderPreference
   extends Preference
 {
-  String dEM;
-  private int mdM;
+  Map<String, r.a> Cmg;
+  String icon;
+  private int noe;
   String title;
-  Map<String, r.a> ylg;
   
   public WalletBalancePrivacyMMHeaderPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(69588);
-    this.ylg = new HashMap();
+    this.Cmg = new HashMap();
     AppMethodBeat.o(69588);
   }
   
@@ -32,25 +32,25 @@ public class WalletBalancePrivacyMMHeaderPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(69587);
-    this.ylg = new HashMap();
+    this.Cmg = new HashMap();
     AppMethodBeat.o(69587);
   }
   
-  public final void gk()
+  public final void gr()
   {
-    this.mdM = 2131689519;
+    this.noe = 2131689522;
   }
   
   public final void onBindView(View paramView)
   {
     AppMethodBeat.i(69589);
     super.onBindView(paramView);
-    paramView.findViewById(2131297104);
-    paramView = (TextView)paramView.findViewById(2131297105);
-    if (!bu.isNullOrNil(this.title)) {
+    paramView.findViewById(2131297247);
+    paramView = (TextView)paramView.findViewById(2131297248);
+    if (!Util.isNullOrNil(this.title)) {
       paramView.setText(this.title);
     }
-    al.a(paramView.getPaint(), 0.8F);
+    ao.a(paramView.getPaint(), 0.8F);
     AppMethodBeat.o(69589);
   }
 }

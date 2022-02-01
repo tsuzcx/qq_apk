@@ -1,63 +1,63 @@
 package com.tencent.mm.plugin.honey_pay.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cbp;
-import com.tencent.mm.protocal.protobuf.cbq;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cqr;
+import com.tencent.mm.protocal.protobuf.cqs;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.c.r;
 
 public final class h
   extends r
 {
   private final String TAG;
-  public cbq uRa;
-  public long uRb;
+  public cqs yjE;
+  public long yjF;
   
   public h(long paramLong, String paramString1, String paramString2)
   {
     AppMethodBeat.i(64626);
     this.TAG = "MicroMsg.NetSceneModifyHoneyPayerCreditLine";
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cbp();
-    ((b.a)localObject).hQG = new cbq();
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/modifyhppayercreditline";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (cbp)this.rr.hQD.hQJ;
-    ((cbp)localObject).Gub = paramLong;
-    ((cbp)localObject).Gua = paramString1;
-    ((cbp)localObject).GSy = paramString2;
-    this.uRb = paramLong;
-    ae.d("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "cardNo: %s, authToken: %s", new Object[] { paramString2, paramString1 });
-    ae.i("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "credit line: %s", new Object[] { Long.valueOf(paramLong) });
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new cqr();
+    ((d.a)localObject).iLO = new cqs();
+    ((d.a)localObject).funcId = getType();
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/modifyhppayercreditline";
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (cqr)this.rr.iLK.iLR;
+    ((cqr)localObject).LpD = paramLong;
+    ((cqr)localObject).LpC = paramString1;
+    ((cqr)localObject).LWD = paramString2;
+    this.yjF = paramLong;
+    Log.d("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "cardNo: %s, authToken: %s", new Object[] { paramString2, paramString1 });
+    Log.i("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "credit line: %s", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(64626);
   }
   
-  public final void b(int paramInt1, int paramInt2, String paramString, q paramq)
+  public final void b(int paramInt1, int paramInt2, String paramString, s params)
   {
     AppMethodBeat.i(64627);
-    ae.i("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
-    this.uRa = ((cbq)((b)paramq).hQE.hQJ);
-    ae.i("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.uRa.oGt), this.uRa.oGu });
+    Log.i("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+    this.yjE = ((cqs)((d)params).iLL.iLR);
+    Log.i("MicroMsg.NetSceneModifyHoneyPayerCreditLine", "retcode: %s, retmsg: %s", new Object[] { Integer.valueOf(this.yjE.pTZ), this.yjE.pUa });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt1, paramInt2, paramString, this);
     }
     AppMethodBeat.o(64627);
   }
   
-  public final void e(q paramq)
+  public final void e(s params)
   {
-    paramq = (cbq)((b)paramq).hQE.hQJ;
-    this.LVj = paramq.oGt;
-    this.LVk = paramq.oGu;
+    params = (cqs)((d)params).iLL.iLR;
+    this.RtZ = params.pTZ;
+    this.Rua = params.pUa;
   }
   
   public final int getType()

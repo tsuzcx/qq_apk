@@ -13,20 +13,20 @@ import com.tencent.mm.plugin.emojicapture.proxy.EmojiCaptureProxy.a;
 import com.tencent.mm.plugin.emojicapture.ui.preview.StickerPreviewView;
 import com.tencent.mm.plugin.mmsight.model.k;
 import com.tencent.mm.pluginsdk.permission.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.sticker.loader.e;
 import com.tencent.mm.ui.MMActivity;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
 @com.tencent.mm.ui.base.a(3)
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/StickerPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "stickerPreview", "Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView;", "stickerUrl", "finish", "", "getLayoutId", "", "initOnCreateAfterConnected", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "plugin-emojicapture_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/ui/StickerPreviewUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "stickerPreview", "Lcom/tencent/mm/plugin/emojicapture/ui/preview/StickerPreviewView;", "stickerUrl", "finish", "", "getLayoutId", "", "initOnCreateAfterConnected", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "onPause", "onResume", "plugin-emojicapture_release"})
 public final class StickerPreviewUI
   extends MMActivity
 {
   private final String TAG = "MicroMsg.StickerPreviewUI";
-  private String qbC;
-  private StickerPreviewView qbD;
+  private StickerPreviewView rsA;
+  private String rsz;
   
   public final void finish()
   {
@@ -38,7 +38,7 @@ public final class StickerPreviewUI
   
   public final int getLayoutId()
   {
-    return 2131495643;
+    return 2131496548;
   }
   
   public final void onCreate(Bundle paramBundle)
@@ -51,15 +51,15 @@ public final class StickerPreviewUI
       paramBundle.addFlags(134217728);
     }
     setActionbarColor(0);
-    updateBackBtn(getDrawable(2131689499));
-    com.tencent.mm.ui.statusbar.d.b(getWindow());
+    updateBackBtn(getDrawable(2131689501));
+    com.tencent.mm.ui.statusbar.d.e(getWindow());
     setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
-    setMMTitle(2131764149);
-    this.qbC = getIntent().getStringExtra("sticker_url");
-    k.dpT();
-    paramBundle = EmojiCaptureProxy.qaI;
-    EmojiCaptureProxy.a.cly();
-    paramBundle = EmojiCaptureProxy.qaI;
+    setMMTitle(2131766405);
+    this.rsz = getIntent().getStringExtra("sticker_url");
+    k.ejI();
+    paramBundle = EmojiCaptureProxy.rrF;
+    EmojiCaptureProxy.a.cJA();
+    paramBundle = EmojiCaptureProxy.rrF;
     paramBundle = EmojiCaptureProxy.access$getInstance$cp().getServerProxy();
     if (paramBundle != null)
     {
@@ -74,11 +74,11 @@ public final class StickerPreviewUI
   {
     AppMethodBeat.i(515);
     super.onDestroy();
-    StickerPreviewView localStickerPreviewView = this.qbD;
+    StickerPreviewView localStickerPreviewView = this.rsA;
     if (localStickerPreviewView != null)
     {
-      e locale = e.IGU;
-      e.b((f)localStickerPreviewView.qgk);
+      e locale = e.NNN;
+      e.b((f)localStickerPreviewView.rxg);
       AppMethodBeat.o(515);
       return;
     }
@@ -89,10 +89,10 @@ public final class StickerPreviewUI
   {
     AppMethodBeat.i(513);
     super.onPause();
-    StickerPreviewView localStickerPreviewView = this.qbD;
+    StickerPreviewView localStickerPreviewView = this.rsA;
     if (localStickerPreviewView != null)
     {
-      localStickerPreviewView.qcf.stopPreview();
+      localStickerPreviewView.rtc.stopPreview();
       AppMethodBeat.o(513);
       return;
     }
@@ -103,7 +103,7 @@ public final class StickerPreviewUI
   {
     AppMethodBeat.i(514);
     super.onResume();
-    StickerPreviewView localStickerPreviewView = this.qbD;
+    StickerPreviewView localStickerPreviewView = this.rsA;
     if (localStickerPreviewView != null)
     {
       localStickerPreviewView.onResume();
@@ -119,7 +119,7 @@ public final class StickerPreviewUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "", "kotlin.jvm.PlatformType", "results", "", "onRequestPermissionsResult", "(I[Ljava/lang/String;[I)V"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "", "<anonymous parameter 1>", "", "", "kotlin.jvm.PlatformType", "results", "", "onRequestPermissionsResult", "(I[Ljava/lang/String;[I)V"})
   static final class a
     implements c
   {
@@ -128,7 +128,7 @@ public final class StickerPreviewUI
     public final void b(int paramInt, int[] paramArrayOfInt)
     {
       int j = 1;
-      AppMethodBeat.i(221767);
+      AppMethodBeat.i(256436);
       p.g(paramArrayOfInt, "results");
       int k = paramArrayOfInt.length;
       paramInt = 0;
@@ -147,10 +147,10 @@ public final class StickerPreviewUI
       {
         if (paramInt != 0)
         {
-          ae.w(StickerPreviewUI.b(this.qbE), "request permission: not granted");
-          this.qbE.finish();
+          Log.w(StickerPreviewUI.b(this.rsB), "request permission: not granted");
+          this.rsB.finish();
         }
-        AppMethodBeat.o(221767);
+        AppMethodBeat.o(256436);
         return;
         i = 0;
         break label34;
@@ -161,7 +161,7 @@ public final class StickerPreviewUI
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
   static final class b
     implements MenuItem.OnMenuItemClickListener
   {
@@ -170,13 +170,13 @@ public final class StickerPreviewUI
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
       AppMethodBeat.i(510);
-      this.qbE.finish();
+      this.rsB.finish();
       AppMethodBeat.o(510);
       return true;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
   static final class c
     implements Runnable
   {
@@ -185,14 +185,14 @@ public final class StickerPreviewUI
     public final void run()
     {
       AppMethodBeat.i(511);
-      StickerPreviewUI.a(this.qbE);
+      StickerPreviewUI.a(this.rsB);
       AppMethodBeat.o(511);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.StickerPreviewUI
  * JD-Core Version:    0.7.0.1
  */

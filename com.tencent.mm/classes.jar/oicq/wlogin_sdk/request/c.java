@@ -9,19 +9,19 @@ import oicq.wlogin_sdk.tools.util;
 
 public final class c
 {
-  TreeMap<Long, WloginAllSigInfo> Onl;
+  TreeMap<Long, WloginAllSigInfo> Uck;
   Context _context;
   
   public c(Context paramContext)
   {
     AppMethodBeat.i(88054);
-    this.Onl = new TreeMap();
+    this.Uck = new TreeMap();
     this._context = paramContext;
     AppMethodBeat.o(88054);
   }
   
   /* Error */
-  private WloginAllSigInfo Gn(long paramLong)
+  private WloginAllSigInfo Pt(long paramLong)
   {
     // Byte code:
     //   0: aload_0
@@ -33,9 +33,9 @@ public final class c
     //   11: lload_1
     //   12: invokestatic 45	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   15: invokevirtual 49	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
-    //   18: invokestatic 55	oicq/wlogin_sdk/tools/util:nN	(Ljava/lang/String;Ljava/lang/String;)V
+    //   18: invokestatic 55	oicq/wlogin_sdk/tools/util:oF	(Ljava/lang/String;Ljava/lang/String;)V
     //   21: aload_0
-    //   22: getfield 26	oicq/wlogin_sdk/request/c:Onl	Ljava/util/TreeMap;
+    //   22: getfield 26	oicq/wlogin_sdk/request/c:Uck	Ljava/util/TreeMap;
     //   25: new 57	java/lang/Long
     //   28: dup
     //   29: lload_1
@@ -62,7 +62,7 @@ public final class c
     //   70: aload_0
     //   71: getfield 28	oicq/wlogin_sdk/request/c:_context	Landroid/content/Context;
     //   74: ldc 68
-    //   76: invokestatic 72	oicq/wlogin_sdk/request/c:cJ	(Landroid/content/Context;Ljava/lang/String;)Ljava/util/TreeMap;
+    //   76: invokestatic 72	oicq/wlogin_sdk/request/c:dd	(Landroid/content/Context;Ljava/lang/String;)Ljava/util/TreeMap;
     //   79: astore_3
     //   80: aload_3
     //   81: ifnonnull +13 -> 94
@@ -83,14 +83,14 @@ public final class c
     //   111: ifnonnull +20 -> 131
     //   114: ldc 37
     //   116: ldc 74
-    //   118: invokestatic 55	oicq/wlogin_sdk/tools/util:nN	(Ljava/lang/String;Ljava/lang/String;)V
+    //   118: invokestatic 55	oicq/wlogin_sdk/tools/util:oF	(Ljava/lang/String;Ljava/lang/String;)V
     //   121: ldc 35
     //   123: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   126: aconst_null
     //   127: astore_3
     //   128: goto -79 -> 49
     //   131: aload_0
-    //   132: getfield 26	oicq/wlogin_sdk/request/c:Onl	Ljava/util/TreeMap;
+    //   132: getfield 26	oicq/wlogin_sdk/request/c:Uck	Ljava/util/TreeMap;
     //   135: new 57	java/lang/Long
     //   138: dup
     //   139: lload_1
@@ -334,7 +334,7 @@ public final class c
     //   4: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: new 172	javax/crypto/spec/SecretKeySpec
     //   10: dup
-    //   11: getstatic 178	oicq/wlogin_sdk/request/i:OnN	[B
+    //   11: getstatic 178	oicq/wlogin_sdk/request/i:UcM	[B
     //   14: ldc 180
     //   16: invokespecial 183	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   19: astore 5
@@ -397,7 +397,7 @@ public final class c
     //   134: ldc 235
     //   136: aload_2
     //   137: invokevirtual 236	java/io/StringWriter:toString	()Ljava/lang/String;
-    //   140: invokestatic 239	oicq/wlogin_sdk/tools/util:nO	(Ljava/lang/String;Ljava/lang/String;)V
+    //   140: invokestatic 239	oicq/wlogin_sdk/tools/util:oG	(Ljava/lang/String;Ljava/lang/String;)V
     //   143: sipush -1022
     //   146: istore_3
     //   147: goto -57 -> 90
@@ -424,20 +424,20 @@ public final class c
   }
   
   /* Error */
-  private static TreeMap cJ(Context paramContext, String paramString)
+  private static TreeMap dd(Context paramContext, String paramString)
   {
     // Byte code:
     //   0: ldc 240
     //   2: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   5: aload_0
     //   6: aload_1
-    //   7: invokestatic 244	oicq/wlogin_sdk/request/c:cK	(Landroid/content/Context;Ljava/lang/String;)[B
+    //   7: invokestatic 244	oicq/wlogin_sdk/request/c:de	(Landroid/content/Context;Ljava/lang/String;)[B
     //   10: astore 4
     //   12: aload 4
     //   14: ifnull +541 -> 555
     //   17: new 172	javax/crypto/spec/SecretKeySpec
     //   20: dup
-    //   21: getstatic 178	oicq/wlogin_sdk/request/i:OnN	[B
+    //   21: getstatic 178	oicq/wlogin_sdk/request/i:UcM	[B
     //   24: ldc 180
     //   26: invokespecial 183	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   29: astore_1
@@ -495,11 +495,11 @@ public final class c
     //   127: ldc 235
     //   129: aload_3
     //   130: invokevirtual 236	java/io/StringWriter:toString	()Ljava/lang/String;
-    //   133: invokestatic 239	oicq/wlogin_sdk/tools/util:nO	(Ljava/lang/String;Ljava/lang/String;)V
+    //   133: invokestatic 239	oicq/wlogin_sdk/tools/util:oG	(Ljava/lang/String;Ljava/lang/String;)V
     //   136: aload_1
     //   137: astore_2
     //   138: aload_0
-    //   139: invokestatic 268	oicq/wlogin_sdk/tools/util:lU	(Landroid/content/Context;)[B
+    //   139: invokestatic 268	oicq/wlogin_sdk/tools/util:lS	(Landroid/content/Context;)[B
     //   142: astore_3
     //   143: aload_2
     //   144: astore_1
@@ -553,7 +553,7 @@ public final class c
     //   233: aload_2
     //   234: astore_1
     //   235: aload_0
-    //   236: invokestatic 271	oicq/wlogin_sdk/tools/util:lT	(Landroid/content/Context;)[B
+    //   236: invokestatic 271	oicq/wlogin_sdk/tools/util:lR	(Landroid/content/Context;)[B
     //   239: astore_3
     //   240: aload_1
     //   241: astore_2
@@ -567,7 +567,7 @@ public final class c
     //   253: new 172	javax/crypto/spec/SecretKeySpec
     //   256: dup
     //   257: aload_3
-    //   258: invokestatic 277	oicq/wlogin_sdk/tools/c:ds	([B)[B
+    //   258: invokestatic 277	oicq/wlogin_sdk/tools/c:du	([B)[B
     //   261: ldc 180
     //   263: invokespecial 183	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   266: astore_2
@@ -608,7 +608,7 @@ public final class c
     //   330: aload_1
     //   331: astore_2
     //   332: aload_0
-    //   333: invokestatic 280	oicq/wlogin_sdk/tools/util:lS	(Landroid/content/Context;)[B
+    //   333: invokestatic 280	oicq/wlogin_sdk/tools/util:lQ	(Landroid/content/Context;)[B
     //   336: astore_1
     //   337: aload_2
     //   338: astore_0
@@ -622,7 +622,7 @@ public final class c
     //   350: new 172	javax/crypto/spec/SecretKeySpec
     //   353: dup
     //   354: aload_1
-    //   355: invokestatic 277	oicq/wlogin_sdk/tools/c:ds	([B)[B
+    //   355: invokestatic 277	oicq/wlogin_sdk/tools/c:du	([B)[B
     //   358: ldc 180
     //   360: invokespecial 183	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
     //   363: astore_0
@@ -766,7 +766,7 @@ public final class c
   }
   
   /* Error */
-  private static byte[] cK(Context paramContext, String paramString)
+  private static byte[] de(Context paramContext, String paramString)
   {
     // Byte code:
     //   0: ldc_w 287
@@ -924,76 +924,6 @@ public final class c
     //   21	27	272	java/lang/Exception
   }
   
-  /* Error */
-  public final WloginSigInfo Go(long paramLong)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc_w 331
-    //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   8: ldc_w 333
-    //   11: new 100	java/lang/StringBuilder
-    //   14: dup
-    //   15: ldc 39
-    //   17: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   20: lload_1
-    //   21: invokevirtual 336	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   24: ldc_w 338
-    //   27: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   33: invokestatic 55	oicq/wlogin_sdk/tools/util:nN	(Ljava/lang/String;Ljava/lang/String;)V
-    //   36: aload_0
-    //   37: lload_1
-    //   38: invokespecial 340	oicq/wlogin_sdk/request/c:Gn	(J)Loicq/wlogin_sdk/request/WloginAllSigInfo;
-    //   41: astore_3
-    //   42: aload_3
-    //   43: ifnonnull +15 -> 58
-    //   46: ldc_w 331
-    //   49: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   52: aconst_null
-    //   53: astore_3
-    //   54: aload_0
-    //   55: monitorexit
-    //   56: aload_3
-    //   57: areturn
-    //   58: aload_3
-    //   59: getfield 343	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
-    //   62: ldc2_w 344
-    //   65: invokestatic 348	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   68: invokevirtual 64	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   71: checkcast 350	oicq/wlogin_sdk/sharemem/WloginSigInfo
-    //   74: astore_3
-    //   75: aload_3
-    //   76: ifnonnull +14 -> 90
-    //   79: ldc_w 331
-    //   82: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   85: aconst_null
-    //   86: astore_3
-    //   87: goto -33 -> 54
-    //   90: ldc_w 331
-    //   93: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   96: goto -42 -> 54
-    //   99: astore_3
-    //   100: aload_0
-    //   101: monitorexit
-    //   102: aload_3
-    //   103: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	104	0	this	c
-    //   0	104	1	paramLong	long
-    //   41	46	3	localObject1	Object
-    //   99	4	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	42	99	finally
-    //   46	52	99	finally
-    //   58	75	99	finally
-    //   79	85	99	finally
-    //   90	96	99	finally
-  }
-  
   public final int a(long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4, byte[] paramArrayOfByte5, byte[] paramArrayOfByte6, byte[] paramArrayOfByte7, byte[] paramArrayOfByte8, byte[] paramArrayOfByte9, byte[] paramArrayOfByte10, byte[] paramArrayOfByte11, byte[] paramArrayOfByte12, byte[] paramArrayOfByte13, byte[] paramArrayOfByte14, byte[] paramArrayOfByte15, byte[] paramArrayOfByte16, byte[][] paramArrayOfByte)
   {
     label339:
@@ -1002,7 +932,7 @@ public final class c
       try
       {
         AppMethodBeat.i(88055);
-        WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)this.Onl.get(new Long(paramLong1));
+        WloginAllSigInfo localWloginAllSigInfo = (WloginAllSigInfo)this.Uck.get(new Long(paramLong1));
         if (localWloginAllSigInfo != null) {
           break label339;
         }
@@ -1013,18 +943,18 @@ public final class c
           localObject = (byte[])((WloginSigInfo)localObject)._en_A1.clone();
           localWloginAllSigInfo._useInfo = new WloginSimpleInfo(paramLong1, paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3, paramArrayOfByte4);
           int i = localWloginAllSigInfo.put_siginfo(paramLong2, paramLong3, paramLong4, paramLong5, paramLong6, paramArrayOfByte5, paramArrayOfByte6, paramArrayOfByte7, paramArrayOfByte8, paramArrayOfByte9, paramArrayOfByte10, paramArrayOfByte11, paramArrayOfByte12, paramArrayOfByte13, paramArrayOfByte14, paramArrayOfByte15, paramArrayOfByte16, paramArrayOfByte);
-          util.bfi("before put_siginfo, ret=".concat(String.valueOf(i)));
+          util.buY("before put_siginfo, ret=".concat(String.valueOf(i)));
           if (this._context != null)
           {
-            paramArrayOfByte2 = cJ(this._context, "tk_file");
+            paramArrayOfByte2 = dd(this._context, "tk_file");
             paramArrayOfByte1 = paramArrayOfByte2;
             if (paramArrayOfByte2 == null) {
               paramArrayOfByte1 = new TreeMap();
             }
-            util.bfi("after loadTKTreeMap");
+            util.buY("after loadTKTreeMap");
             paramArrayOfByte1.put(new Long(paramLong1), localWloginAllSigInfo.get_clone());
             i = a(paramArrayOfByte1, "tk_file");
-            util.bfi("after refreshTKTreeMap, ret=".concat(String.valueOf(i)));
+            util.buY("after refreshTKTreeMap, ret=".concat(String.valueOf(i)));
           }
           if (i != 0)
           {
@@ -1033,7 +963,7 @@ public final class c
               paramArrayOfByte1._en_A1 = ((byte[])((byte[])localObject).clone());
             }
           }
-          this.Onl.put(new Long(paramLong1), localWloginAllSigInfo);
+          this.Uck.put(new Long(paramLong1), localWloginAllSigInfo);
           AppMethodBeat.o(88055);
           return i;
         }
@@ -1044,7 +974,78 @@ public final class c
   }
   
   /* Error */
-  public final void j(Long paramLong)
+  public final WloginSigInfo aO(long paramLong1, long paramLong2)
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: ldc_w 373
+    //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   8: ldc_w 375
+    //   11: new 100	java/lang/StringBuilder
+    //   14: dup
+    //   15: ldc 39
+    //   17: invokespecial 105	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   20: lload_1
+    //   21: invokevirtual 378	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   24: ldc_w 380
+    //   27: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: invokevirtual 117	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   33: invokestatic 55	oicq/wlogin_sdk/tools/util:oF	(Ljava/lang/String;Ljava/lang/String;)V
+    //   36: aload_0
+    //   37: lload_1
+    //   38: invokespecial 382	oicq/wlogin_sdk/request/c:Pt	(J)Loicq/wlogin_sdk/request/WloginAllSigInfo;
+    //   41: astore 5
+    //   43: aload 5
+    //   45: ifnonnull +17 -> 62
+    //   48: ldc_w 373
+    //   51: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   54: aconst_null
+    //   55: astore 5
+    //   57: aload_0
+    //   58: monitorexit
+    //   59: aload 5
+    //   61: areturn
+    //   62: aload 5
+    //   64: getfield 334	oicq/wlogin_sdk/request/WloginAllSigInfo:_tk_map	Ljava/util/TreeMap;
+    //   67: ldc2_w 383
+    //   70: invokestatic 387	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   73: invokevirtual 64	java/util/TreeMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   76: checkcast 336	oicq/wlogin_sdk/sharemem/WloginSigInfo
+    //   79: astore 5
+    //   81: aload 5
+    //   83: ifnonnull +15 -> 98
+    //   86: ldc_w 373
+    //   89: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   92: aconst_null
+    //   93: astore 5
+    //   95: goto -38 -> 57
+    //   98: ldc_w 373
+    //   101: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   104: goto -47 -> 57
+    //   107: astore 5
+    //   109: aload_0
+    //   110: monitorexit
+    //   111: aload 5
+    //   113: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	114	0	this	c
+    //   0	114	1	paramLong1	long
+    //   0	114	3	paramLong2	long
+    //   41	53	5	localObject1	Object
+    //   107	5	5	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   2	43	107	finally
+    //   48	54	107	finally
+    //   62	81	107	finally
+    //   86	92	107	finally
+    //   98	104	107	finally
+  }
+  
+  /* Error */
+  public final void q(Long paramLong)
   {
     // Byte code:
     //   0: aload_0
@@ -1052,7 +1053,7 @@ public final class c
     //   2: ldc_w 390
     //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_0
-    //   9: getfield 26	oicq/wlogin_sdk/request/c:Onl	Ljava/util/TreeMap;
+    //   9: getfield 26	oicq/wlogin_sdk/request/c:Uck	Ljava/util/TreeMap;
     //   12: aload_1
     //   13: invokevirtual 393	java/util/TreeMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
     //   16: pop
@@ -1062,7 +1063,7 @@ public final class c
     //   24: aload_0
     //   25: getfield 28	oicq/wlogin_sdk/request/c:_context	Landroid/content/Context;
     //   28: ldc 68
-    //   30: invokestatic 72	oicq/wlogin_sdk/request/c:cJ	(Landroid/content/Context;Ljava/lang/String;)Ljava/util/TreeMap;
+    //   30: invokestatic 72	oicq/wlogin_sdk/request/c:dd	(Landroid/content/Context;Ljava/lang/String;)Ljava/util/TreeMap;
     //   33: astore_2
     //   34: aload_2
     //   35: ifnonnull +12 -> 47
@@ -1078,7 +1079,7 @@ public final class c
     //   53: aload_0
     //   54: aload_2
     //   55: ldc 68
-    //   57: invokespecial 385	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
+    //   57: invokespecial 368	oicq/wlogin_sdk/request/c:a	(Ljava/util/TreeMap;Ljava/lang/String;)I
     //   60: pop
     //   61: ldc_w 390
     //   64: invokestatic 31	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V

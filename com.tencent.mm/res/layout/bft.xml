@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ListView android:id="@id/cg5" android:background="@color/ac_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/k4" android:listSelector="@color/ac_" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0dip" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/uj" android:layout_gravity="center" android:id="@id/cg0" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/k4" android:text="@string/cdu" />
+    <RelativeLayout android:gravity="center_vertical" android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/cg4" android:background="@color/bj" android:padding="@dimen/k5" android:layout_width="fill_parent" android:layout_height="@dimen/k4">
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/cg1" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <TextView android:textSize="@dimen/is" android:textColor="@color/ag5" android:id="@id/cg3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cdv" />
+            <ImageView android:background="@null" android:paddingTop="@dimen/k5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g" android:src="@drawable/b00" />
+        </LinearLayout>
+        <TextView android:textSize="@dimen/k6" android:textColor="@color/ag5" android:id="@id/hiw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.mm.pluginsdk.ui.tools.FileSelectorFolderView android:id="@id/cg2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/k4" />
+</FrameLayout>

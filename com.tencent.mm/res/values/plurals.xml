@@ -34,8 +34,8 @@
         <item quantity="one">找到%d个联系人</item>
     </plurals>
     <plurals name="i">
-        <item quantity="other">找到%d个在微信的朋友</item>
-        <item quantity="one">找到%d个在微信的朋友</item>
+        <item quantity="other">找到%d个在${BRAND}的朋友</item>
+        <item quantity="one">找到%d个在${BRAND}的朋友</item>
     </plurals>
     <plurals name="j">
         <item quantity="other">%d小时前</item>
@@ -74,8 +74,8 @@
         <item quantity="one">%s条新消息</item>
     </plurals>
     <plurals name="s">
-        <item quantity="other">邀请你%d个朋友加入微信</item>
-        <item quantity="one">邀请你%d个朋友加入微信</item>
+        <item quantity="other">邀请你%d个朋友加入${BRAND}</item>
+        <item quantity="one">邀请你%d个朋友加入${BRAND}</item>
     </plurals>
     <plurals name="t">
         <item quantity="other">%s位收件人：</item>

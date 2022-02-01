@@ -5,6 +5,7 @@ import android.media.MediaCodec.BufferInfo;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import android.os.Build.VERSION;
+import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -26,7 +27,7 @@ public class AudioDecoder
   int nFirstThreeFrameInfo = 3;
   int nFrameSize = 3840;
   private OnCompleteListener onCompleteListener = null;
-  private AudioDecoder.OnProgressListener onProgressListener = null;
+  private OnProgressListener onProgressListener = null;
   int sampleRate = 0;
   private String srcPath;
   
@@ -82,11 +83,12 @@ public class AudioDecoder
         i += 1;
       }
       if (this.decRingBuffer != null) {
-        break label462;
+        break label470;
       }
     }
     catch (IOException localIOException)
     {
+      TXCLog.e("AudioDecoder", "init media decode failed.", localIOException);
       this.codeOver = true;
       AppMethodBeat.o(13905);
       return -1;
@@ -95,7 +97,7 @@ public class AudioDecoder
     this.codeOver = true;
     AppMethodBeat.o(13905);
     return -1;
-    label462:
+    label470:
     this.mediaDecode.start();
     this.decodeInputBuffers = this.mediaDecode.getInputBuffers();
     this.decodeOutputBuffers = this.mediaDecode.getOutputBuffers();
@@ -139,19 +141,19 @@ public class AudioDecoder
       localByteBuffer.clear();
       k = this.mediaExtractor.readSampleData(localByteBuffer, 0);
       if (k >= 0) {
-        break label441;
+        break label442;
       }
       if (QLog.isColorLevel()) {
         QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM readSampleData over,end");
       }
       this.codeOver = true;
-      label216:
+      label217:
       i = this.mediaDecode.dequeueOutputBuffer(this.decodeBufferInfo, 10000L);
       if (i < 0) {
-        break label530;
+        break label531;
       }
       if (j < 21) {
-        break label464;
+        break label465;
       }
     }
     for (ByteBuffer localByteBuffer = this.mediaDecode.getOutputBuffer(i);; localByteBuffer = this.decodeOutputBuffers[i])
@@ -180,10 +182,10 @@ public class AudioDecoder
         }
         catch (Exception localException)
         {
-          label441:
-          label464:
+          label442:
+          label465:
           if (!QLog.isColorLevel()) {
-            break label518;
+            break label519;
           }
           QLog.w("TRAE", 2, "m_nIndex: " + this.m_nIndex + " srcAudioFormatToPCM wrong outputIndex: " + i);
           this.codeOver = true;
@@ -195,10 +197,10 @@ public class AudioDecoder
       break;
       this.mediaDecode.queueInputBuffer(i, 0, k, 0L, 0);
       this.mediaExtractor.advance();
-      break label216;
+      break label217;
     }
-    label518:
-    label530:
+    label519:
+    label531:
     AppMethodBeat.o(13906);
   }
   
@@ -332,7 +334,7 @@ public class AudioDecoder
     this.onCompleteListener = paramOnCompleteListener;
   }
   
-  public void setOnProgressListener(AudioDecoder.OnProgressListener paramOnProgressListener)
+  public void setOnProgressListener(OnProgressListener paramOnProgressListener)
   {
     this.onProgressListener = paramOnProgressListener;
   }
@@ -341,10 +343,15 @@ public class AudioDecoder
   {
     public abstract void completed();
   }
+  
+  public static abstract interface OnProgressListener
+  {
+    public abstract void progress();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.sharp.jni.AudioDecoder
  * JD-Core Version:    0.7.0.1
  */

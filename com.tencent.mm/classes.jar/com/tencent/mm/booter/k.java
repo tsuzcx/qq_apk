@@ -5,39 +5,40 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.i;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.n.e;
-import com.tencent.mm.n.g;
+import com.tencent.mm.n.f;
+import com.tencent.mm.n.h;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public final class k
 {
   public static void run()
   {
     AppMethodBeat.i(19890);
-    int i = g.acL().getInt("EnableForgroundService", 0);
-    bc.aCg();
-    int j = i.cf(c.getUin(), 101);
-    if ((b.fnF()) || ((i > 0) && (j >= 0) && (j <= i))) {}
+    int i = h.aqJ().getInt("EnableForgroundService", 0);
+    bg.aVF();
+    int j = i.ch(c.getUin(), 101);
+    if ((CrashReportFactory.hasDebuger()) || ((i > 0) && (j >= 0) && (j <= i))) {}
     for (boolean bool2 = true;; bool2 = false)
     {
       boolean bool1 = bool2;
       if (!bool2) {
-        bool1 = d.FFK;
+        bool1 = d.KyR;
       }
       bool2 = bool1;
       if (!bool1) {
-        bool2 = b.fnF();
+        bool2 = CrashReportFactory.hasDebuger();
       }
-      if (com.tencent.mm.sdk.platformtools.k.cSM == 1) {
+      if (ChannelUtil.channelId == 1) {
         bool2 = false;
       }
-      ak.getContext().getSharedPreferences("system_config_prefs", 0).edit().putBoolean("set_service", bool2).commit();
-      ae.i("MicroMsg.PostTaskSetPushForegroundService", "Set service, userHash:%d, prob:%d, enabled: %b  isalpha:%b channel:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(d.FFK), Integer.valueOf(com.tencent.mm.sdk.platformtools.k.cSM) });
+      MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0).edit().putBoolean("set_service", bool2).commit();
+      Log.i("MicroMsg.PostTaskSetPushForegroundService", "Set service, userHash:%d, prob:%d, enabled: %b  isalpha:%b channel:%d", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Boolean.valueOf(bool2), Boolean.valueOf(d.KyR), Integer.valueOf(ChannelUtil.channelId) });
       AppMethodBeat.o(19890);
       return;
     }

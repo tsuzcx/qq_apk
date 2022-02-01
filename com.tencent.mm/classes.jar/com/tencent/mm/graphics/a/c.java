@@ -7,10 +7,10 @@ public enum c
   static
   {
     AppMethodBeat.i(136193);
-    gxe = new c("Normal", 0);
-    gxf = new c("Tile", 1);
-    gxg = new c("Auto", 2);
-    gxh = new c[] { gxe, gxf, gxg };
+    hjS = new c("Normal", 0);
+    hjT = new c("Tile", 1);
+    hjU = new c("Auto", 2);
+    hjV = new c[] { hjS, hjT, hjU };
     AppMethodBeat.o(136193);
   }
   
@@ -18,7 +18,7 @@ public enum c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.graphics.a.c
  * JD-Core Version:    0.7.0.1
  */

@@ -1,70 +1,71 @@
 package com.tencent.mm.plugin.subapp.ui.voicetranstext;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.blf;
-import com.tencent.mm.protocal.protobuf.blg;
-import com.tencent.mm.protocal.protobuf.cqe;
-import com.tencent.mm.protocal.protobuf.dyf;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bxo;
+import com.tencent.mm.protocal.protobuf.bxp;
+import com.tencent.mm.protocal.protobuf.did;
+import com.tencent.mm.protocal.protobuf.esm;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import junit.framework.Assert;
 
 public final class b
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private String BCO;
-  public dyf BCV;
-  public int BCZ;
+  private i AAQ;
+  private String FNA;
+  public esm FNH;
+  public int FNL;
   private final String TAG;
-  private com.tencent.mm.ak.b hQy;
-  private f wFF;
+  private d iLF;
   
   public b(String paramString)
   {
     AppMethodBeat.i(29270);
     this.TAG = "MicroMsg.NetSceneGetVoiceTransRes";
-    this.BCZ = -1;
-    if (!bu.isNullOrNil(paramString)) {}
+    this.FNL = -1;
+    if (!Util.isNullOrNil(paramString)) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      this.BCO = paramString;
-      paramString = new b.a();
-      paramString.hQF = new blf();
-      paramString.hQG = new blg();
+      this.FNA = paramString;
+      paramString = new d.a();
+      paramString.iLN = new bxo();
+      paramString.iLO = new bxp();
       paramString.uri = "/cgi-bin/micromsg-bin/getvoicetransres";
       paramString.funcId = 548;
-      paramString.hQH = 0;
+      paramString.iLP = 0;
       paramString.respCmdId = 0;
-      this.hQy = paramString.aDS();
+      this.iLF = paramString.aXF();
       AppMethodBeat.o(29270);
       return;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(29271);
-    this.wFF = paramf;
-    ((blf)this.hQy.hQD.hQJ).Gdc = this.BCO;
-    int i = dispatch(parame, this.hQy, this);
+    this.AAQ = parami;
+    ((bxo)this.iLF.iLK.iLR).KXr = this.FNA;
+    int i = dispatch(paramg, this.iLF, this);
     AppMethodBeat.o(29271);
     return i;
   }
   
-  public final boolean eqW()
+  public final boolean ftu()
   {
     AppMethodBeat.i(29273);
-    if ((this.BCV != null) && (!bu.isNullOrNil(this.BCV.Idg)))
+    if ((this.FNH != null) && (!Util.isNullOrNil(this.FNH.NpE)))
     {
       AppMethodBeat.o(29273);
       return true;
@@ -80,32 +81,32 @@ public final class b
   
   public final boolean isComplete()
   {
-    return (this.BCV != null) && (this.BCV.ijY == 1);
+    return (this.FNH != null) && (this.FNH.jeU == 1);
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(29272);
     if ((paramInt2 == 0) && (paramInt3 == 0))
     {
-      paramq = (blg)this.hQy.hQE.hQJ;
-      if (paramq.Gqu != null) {
-        this.BCZ = paramq.Gqu.HBX;
+      params = (bxp)this.iLF.iLL.iLR;
+      if (params.Llm != null) {
+        this.FNL = params.Llm.MML;
       }
-      this.BCV = paramq.Gqs;
+      this.FNH = params.Llk;
     }
     for (;;)
     {
-      this.wFF.onSceneEnd(paramInt2, paramInt3, paramString, this);
+      this.AAQ.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(29272);
       return;
-      ae.i("MicroMsg.NetSceneGetVoiceTransRes", "error get: errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      Log.i("MicroMsg.NetSceneGetVoiceTransRes", "error get: errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.ui.voicetranstext.b
  * JD-Core Version:    0.7.0.1
  */

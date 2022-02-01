@@ -1,26 +1,26 @@
 package com.tencent.mm.al;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.as;
-import com.tencent.mm.sdk.platformtools.ay;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MMKVSlotManager;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/modelbiz/MpDataMMkvSlot;", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "()V", "plugin-biz_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/modelbiz/MpDataMMkvSlot;", "Lcom/tencent/mm/sdk/platformtools/MMKVSlotManager;", "()V", "plugin-biz_release"})
 public final class t
-  extends as
+  extends MMKVSlotManager
 {
-  public static final t hTD;
+  public static final t iOP;
   
   static
   {
     AppMethodBeat.i(124710);
-    hTD = new t();
+    iOP = new t();
     AppMethodBeat.o(124710);
   }
   
   private t()
   {
-    super(localay, 604800L);
+    super(localMultiProcessMMKV, 604800L);
     AppMethodBeat.i(124709);
     AppMethodBeat.o(124709);
   }

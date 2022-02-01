@@ -10,117 +10,156 @@ import android.os.Looper;
 import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
 import android.os.SystemClock;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ny;
+import com.tencent.mm.ac.d;
+import com.tencent.mm.g.a.oq;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.loader.m;
+import com.tencent.mm.plugin.finder.loader.s;
+import com.tencent.mm.plugin.finder.storage.c;
+import com.tencent.mm.plugin.finder.utils.y;
 import com.tencent.mm.plugin.finder.video.FinderCropVideoView;
+import com.tencent.mm.plugin.finder.video.FinderLivePlayView;
 import com.tencent.mm.plugin.finder.video.FinderThumbPlayerProxy;
 import com.tencent.mm.plugin.finder.video.FinderVLogCompositionPlayView;
 import com.tencent.mm.plugin.finder.video.FinderVideoLayout;
 import com.tencent.mm.plugin.finder.video.r;
-import com.tencent.mm.protocal.protobuf.bvz;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.plugin.finder.video.u;
+import com.tencent.mm.protocal.protobuf.cjl;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 import com.tencent.mm.ui.component.UIComponentPlugin;
-import d.g.b.q;
-import d.g.b.y.d;
-import d.g.b.y.e;
-import d.g.b.y.f;
-import d.l;
-import d.v;
-import d.z;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.g.b.z.d;
+import kotlin.g.b.z.e;
+import kotlin.g.b.z.f;
+import kotlin.l;
+import kotlin.o;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "()V", "activityCount", "", "aliveActivitySet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "createdVideoViews", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "isFinished", "", "isForceWaitForRelease", "maxVideoCount", "onlineVideoEventListener", "com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1;", "preInflateCount", "preInflateVideoCount", "recycledVideoViews", "releasingVideoViewMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "uiHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "waitForCallback", "waitRecycledCallbacks", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$IRecycledCallback;", "acrossCreatedVideoViews", "", "isRemoveFun", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "view", "createVideoView", "context", "Landroid/content/Context;", "isNormalVideoView", "findOldestVideoView", "clazz", "Ljava/lang/Class;", "isForce", "getOrCreate", "parent", "Landroid/view/ViewGroup;", "finderVideo", "Lcom/tencent/mm/plugin/finder/loader/FinderVideo;", "completedTo", "videoView", "getVideoCount", "make", "activity", "Lcom/tencent/mm/ui/MMActivity;", "isPreInflate", "onCleared", "onFinish", "onInit", "onPreloadComplete", "mediaId", "pauseAllVideo", "filter", "pauseAndRecycle", "isForceRemove", "isTryKeep", "pauseFocusVideo", "preInflateVideoView", "recycledVideoView", "releaseVideoView", "source", "removeByContext", "removeViewFromParent", "Landroid/view/View;", "resumeFocusVideo", "Companion", "IRecycledCallback", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler;", "Lcom/tencent/mm/ui/component/UIComponentPlugin;", "Lcom/tencent/mm/plugin/finder/PluginFinder;", "()V", "activityCount", "", "aliveActivitySet", "Ljava/util/HashSet;", "", "Lkotlin/collections/HashSet;", "createdVideoViews", "Ljava/util/concurrent/ConcurrentLinkedQueue;", "Ljava/lang/ref/WeakReference;", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "isFinished", "", "isForceWaitForRelease", "maxVideoCount", "onlineVideoEventListener", "com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1;", "preInflateCount", "preInflateVideoCount", "recycledVideoViews", "releasingVideoViewMap", "Ljava/util/HashMap;", "", "Lkotlin/collections/HashMap;", "uiHandler", "Lcom/tencent/mm/sdk/platformtools/MMHandler;", "waitForCallback", "waitRecycledCallbacks", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$IRecycledCallback;", "acrossCreatedVideoViews", "", "isRemoveFun", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "view", "clearAllShouldPlayResumeVideoView", "createVideoView", "context", "Landroid/content/Context;", "videoType", "isCropVideo", "findOldestVideoView", "clazz", "Ljava/lang/Class;", "isForce", "getOrCreate", "parent", "Landroid/view/ViewGroup;", "finderVideo", "Lcom/tencent/mm/plugin/finder/loader/FinderVideoLoadData;", "completedTo", "videoView", "getVideoCount", "make", "activity", "Landroid/support/v7/app/AppCompatActivity;", "isPreInflate", "onCleared", "onFinish", "onInit", "onPreloadComplete", "mediaId", "pauseAllVideo", "filter", "pauseAndRecycle", "isForceRemove", "isTryKeep", "pauseFocusVideo", "preInflateVideoView", "recycledVideoView", "releaseVideoView", "source", "removeByContext", "removeViewFromParent", "Landroid/view/View;", "resumeFocusVideo", "Companion", "IRecycledCallback", "plugin-finder_release"})
 public final class FinderVideoRecycler
   extends UIComponentPlugin<PluginFinder>
 {
-  public static final FinderVideoRecycler.a tot;
-  private boolean gJv;
-  private final aq gKO;
-  private boolean tog;
-  private int toh;
-  private int toi;
-  final HashSet<com.tencent.mm.plugin.finder.video.o> toj;
-  private final ConcurrentLinkedQueue<WeakReference<? extends com.tencent.mm.plugin.finder.video.o>> tok;
-  public final HashMap<Integer, String> tol;
-  private final HashMap<Integer, FinderVideoRecycler.b> tom;
-  private final HashSet<String> ton;
-  private int too;
-  private int toq;
-  private final HashMap<Integer, Object> tor;
-  private final i tos;
+  public static final a wBf;
+  private final MMHandler hAk;
+  private boolean isFinished;
+  private boolean wAT;
+  private int wAU;
+  private int wAV;
+  final HashSet<r> wAW;
+  private final ConcurrentLinkedQueue<WeakReference<? extends r>> wAX;
+  public final HashMap<Integer, String> wAY;
+  private final HashMap<Integer, b> wAZ;
+  private final HashSet<String> wBa;
+  private int wBb;
+  private int wBc;
+  private final HashMap<Integer, Object> wBd;
+  private final j wBe;
   
   static
   {
-    AppMethodBeat.i(206404);
-    tot = new FinderVideoRecycler.a((byte)0);
-    AppMethodBeat.o(206404);
+    AppMethodBeat.i(256086);
+    wBf = new a((byte)0);
+    AppMethodBeat.o(256086);
   }
   
   public FinderVideoRecycler()
   {
-    AppMethodBeat.i(206403);
-    this.tog = true;
-    this.toh = 1;
-    this.gKO = new aq(Looper.getMainLooper());
-    this.toj = new HashSet();
-    this.tok = new ConcurrentLinkedQueue();
-    this.tol = new HashMap();
-    this.tom = new HashMap();
-    this.ton = new HashSet();
-    this.tor = new HashMap();
-    this.tos = new i(this);
-    AppMethodBeat.o(206403);
+    AppMethodBeat.i(256085);
+    this.wAT = true;
+    this.wAU = 1;
+    this.hAk = new MMHandler(Looper.getMainLooper());
+    this.wAW = new HashSet();
+    this.wAX = new ConcurrentLinkedQueue();
+    this.wAY = new HashMap();
+    this.wAZ = new HashMap();
+    this.wBa = new HashSet();
+    this.wBd = new HashMap();
+    this.wBe = new j(this);
+    AppMethodBeat.o(256085);
   }
   
-  private final void Dg()
+  private final void MC()
   {
-    AppMethodBeat.i(206388);
-    this.gJv = false;
-    this.tos.alive();
-    Object localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
-    localObject = com.tencent.mm.plugin.finder.storage.b.cHV();
-    this.toh = ((Number)((d.o)localObject).first).intValue();
-    this.tog = ((Boolean)((d.o)localObject).second).booleanValue();
-    this.toi = d.k.j.lx(this.toh - 1, 4);
-    ae.i("Finder.VideoRecycler", "[onInit] maxVideoCount=" + this.toh + " preInflateCount=" + this.toi + " waitForRelease=" + this.tog);
-    AppMethodBeat.o(206388);
+    AppMethodBeat.i(256069);
+    this.isFinished = false;
+    this.wBe.alive();
+    Object localObject = c.vCb;
+    localObject = c.drF();
+    this.wAU = ((Number)((o)localObject).first).intValue();
+    this.wAT = ((Boolean)((o)localObject).second).booleanValue();
+    this.wAV = kotlin.k.j.na(this.wAU - 1, 4);
+    Log.i("Finder.VideoRecycler", "[onInit] maxVideoCount=" + this.wAU + " preInflateCount=" + this.wAV + " waitForRelease=" + this.wAT);
+    AppMethodBeat.o(256069);
   }
   
-  private int aN(Class<? extends com.tencent.mm.plugin.finder.video.o> paramClass)
+  private int aP(Class<? extends r> paramClass)
   {
-    AppMethodBeat.i(206398);
-    y.d locald = new y.d();
-    locald.NiW = 0;
-    D((d.g.a.b)new FinderVideoRecycler.g(paramClass, locald));
-    int i = locald.NiW;
-    AppMethodBeat.o(206398);
+    AppMethodBeat.i(256079);
+    final z.d locald = new z.d();
+    locald.SYE = 0;
+    I((kotlin.g.a.b)new h(paramClass, locald));
+    int i = locald.SYE;
+    AppMethodBeat.o(256079);
     return i;
   }
   
-  private final com.tencent.mm.plugin.finder.video.o d(final Class<? extends com.tencent.mm.plugin.finder.video.o> paramClass, final boolean paramBoolean)
+  private final r c(Context paramContext, int paramInt, boolean paramBoolean)
+  {
+    AppMethodBeat.i(256072);
+    long l = System.currentTimeMillis();
+    Object localObject;
+    if (paramInt == 1) {
+      localObject = (r)new FinderVLogCompositionPlayView(paramContext);
+    }
+    for (;;)
+    {
+      this.wAX.add(new WeakReference(localObject));
+      Log.i("Finder.VideoRecycler", "[createVideoView] activity=" + paramContext.getClass().getSimpleName() + " videoCount=" + a(this) + ' ' + "videoView=" + localObject.getClass().getSimpleName() + " cost=" + (System.currentTimeMillis() - l) + "ms");
+      AppMethodBeat.o(256072);
+      return localObject;
+      if (paramInt == 2)
+      {
+        localObject = (r)new FinderLivePlayView(paramContext);
+      }
+      else
+      {
+        localObject = g.ah(com.tencent.mm.plugin.thumbplayer.a.a.class);
+        p.g(localObject, "MMKernel.plugin(IPluginThumbPlayer::class.java)");
+        if ((((com.tencent.mm.plugin.thumbplayer.a.a)localObject).isOpenTPPlayer()) && (!paramBoolean)) {
+          localObject = (r)new FinderThumbPlayerProxy(paramContext);
+        } else {
+          localObject = (r)new FinderCropVideoView(paramContext);
+        }
+      }
+    }
+  }
+  
+  private final r e(final Class<? extends r> paramClass, final boolean paramBoolean)
   {
     Object localObject1 = null;
-    AppMethodBeat.i(206395);
-    Object localObject2 = new y.e();
-    ((y.e)localObject2).NiX = 9223372036854775807L;
-    final y.f localf = new y.f();
-    localf.NiY = null;
-    D((d.g.a.b)new c(this, paramClass, (y.e)localObject2, new int[2], paramBoolean, localf));
+    AppMethodBeat.i(256076);
+    Object localObject2 = new z.e();
+    ((z.e)localObject2).SYF = 9223372036854775807L;
+    final z.f localf = new z.f();
+    localf.SYG = null;
+    I((kotlin.g.a.b)new d(this, paramClass, (z.e)localObject2, new int[2], paramBoolean, localf));
     localObject2 = new StringBuilder("[findOldestVideoView] activity=");
-    paramClass = (com.tencent.mm.plugin.finder.video.o)localf.NiY;
+    paramClass = (r)localf.SYG;
     if (paramClass != null)
     {
       paramClass = paramClass.getVideoView();
@@ -133,134 +172,120 @@ public final class FinderVideoRecycler
           if (paramClass != null)
           {
             paramClass = paramClass.getSimpleName();
-            localObject2 = ((StringBuilder)localObject2).append(paramClass).append(" videoView=");
-            paramClass = (com.tencent.mm.plugin.finder.video.o)localf.NiY;
+            localObject2 = ((StringBuilder)localObject2).append(paramClass).append(" mediaid:");
+            paramClass = (r)localf.SYG;
             if (paramClass == null) {
-              break label302;
+              break label336;
+            }
+            paramClass = paramClass.getVideoMediaId();
+            label157:
+            localObject2 = ((StringBuilder)localObject2).append(paramClass).append(" videoView=");
+            paramClass = (r)localf.SYG;
+            if (paramClass == null) {
+              break label341;
             }
             paramClass = Integer.valueOf(paramClass.hashCode());
-            label158:
+            label192:
             localObject2 = ((StringBuilder)localObject2).append(paramClass).append(' ').append("isAttachedToWindow=");
-            paramClass = (com.tencent.mm.plugin.finder.video.o)localf.NiY;
+            paramClass = (r)localf.SYG;
             if (paramClass == null) {
-              break label307;
+              break label346;
             }
             paramClass = paramClass.getVideoView();
             if (paramClass == null) {
-              break label307;
+              break label346;
             }
           }
         }
       }
     }
-    label302:
-    label307:
+    label336:
+    label341:
+    label346:
     for (paramClass = Boolean.valueOf(paramClass.isAttachedToWindow());; paramClass = null)
     {
       localObject2 = ((StringBuilder)localObject2).append(paramClass).append(" parent=");
-      Object localObject3 = (com.tencent.mm.plugin.finder.video.o)localf.NiY;
+      Object localObject3 = (r)localf.SYG;
       paramClass = localObject1;
       if (localObject3 != null)
       {
-        localObject3 = ((com.tencent.mm.plugin.finder.video.o)localObject3).getParentView();
+        localObject3 = ((r)localObject3).getParentView();
         paramClass = localObject1;
         if (localObject3 != null) {
           paramClass = Integer.valueOf(localObject3.hashCode());
         }
       }
-      ae.i("Finder.VideoRecycler", paramClass);
-      paramClass = (com.tencent.mm.plugin.finder.video.o)localf.NiY;
-      AppMethodBeat.o(206395);
+      Log.i("Finder.VideoRecycler", paramClass);
+      paramClass = (r)localf.SYG;
+      AppMethodBeat.o(256076);
       return paramClass;
       paramClass = null;
       break;
       paramClass = null;
-      break label158;
+      break label157;
+      paramClass = null;
+      break label192;
     }
   }
   
-  private final boolean em(View paramView)
+  private final boolean ek(View paramView)
   {
-    AppMethodBeat.i(206393);
+    AppMethodBeat.i(256074);
     if (paramView != null)
     {
       ViewParent localViewParent = paramView.getParent();
       if (localViewParent != null)
       {
-        ((Map)this.tol).put(Integer.valueOf(localViewParent.hashCode()), null);
+        ((Map)this.wAY).put(Integer.valueOf(localViewParent.hashCode()), null);
         if (localViewParent == null)
         {
-          paramView = new v("null cannot be cast to non-null type android.view.ViewGroup");
-          AppMethodBeat.o(206393);
+          paramView = new t("null cannot be cast to non-null type android.view.ViewGroup");
+          AppMethodBeat.o(256074);
           throw paramView;
         }
         ((ViewGroup)localViewParent).removeView(paramView);
-        ae.i("Finder.VideoRecycler", "[removeViewFromParent] parent=" + localViewParent.hashCode() + ", videoView=" + paramView.hashCode() + ", parentTag=" + ((ViewGroup)localViewParent).getTag());
-        AppMethodBeat.o(206393);
+        Log.i("Finder.VideoRecycler", "[removeViewFromParent] parent=" + localViewParent.hashCode() + ", videoView=" + paramView.hashCode() + ", parentTag=" + ((ViewGroup)localViewParent).getTag());
+        AppMethodBeat.o(256074);
         return true;
       }
     }
-    AppMethodBeat.o(206393);
+    AppMethodBeat.o(256074);
     return false;
   }
   
-  private final void fd(final Context paramContext)
+  private final void fI(final Context paramContext)
   {
-    AppMethodBeat.i(206390);
+    AppMethodBeat.i(256071);
     if (Build.VERSION.SDK_INT >= 23)
     {
       Looper localLooper = Looper.getMainLooper();
-      d.g.b.p.g(localLooper, "Looper.getMainLooper()");
-      localLooper.getQueue().addIdleHandler((MessageQueue.IdleHandler)new l(this, paramContext));
+      p.g(localLooper, "Looper.getMainLooper()");
+      localLooper.getQueue().addIdleHandler((MessageQueue.IdleHandler)new m(this, paramContext));
     }
-    AppMethodBeat.o(206390);
+    AppMethodBeat.o(256071);
   }
   
   private final void onFinish()
   {
-    AppMethodBeat.i(206389);
-    this.gJv = true;
-    this.tos.dead();
-    this.gKO.postAtFrontOfQueue((Runnable)new h(this));
-    this.ton.clear();
-    this.tom.clear();
-    AppMethodBeat.o(206389);
+    AppMethodBeat.i(256070);
+    this.isFinished = true;
+    this.wBe.dead();
+    this.hAk.postAtFrontOfQueue((Runnable)new i(this));
+    this.wBa.clear();
+    this.wAZ.clear();
+    AppMethodBeat.o(256070);
   }
   
-  private final com.tencent.mm.plugin.finder.video.o y(Context paramContext, boolean paramBoolean)
+  final void I(kotlin.g.a.b<? super r, Boolean> paramb)
   {
-    AppMethodBeat.i(206391);
-    Object localObject;
-    if (paramBoolean)
-    {
-      localObject = g.ad(com.tencent.mm.plugin.thumbplayer.a.a.class);
-      d.g.b.p.g(localObject, "MMKernel.plugin(IPluginThumbPlayer::class.java)");
-      if (((com.tencent.mm.plugin.thumbplayer.a.a)localObject).isOpenTPPlayer()) {
-        localObject = (com.tencent.mm.plugin.finder.video.o)new FinderThumbPlayerProxy(paramContext);
-      }
-    }
-    for (;;)
-    {
-      this.tok.add(new WeakReference(localObject));
-      ae.i("Finder.VideoRecycler", "[createVideoView] activity=" + paramContext.getClass().getSimpleName() + " videoCount=" + a(this));
-      AppMethodBeat.o(206391);
-      return localObject;
-      localObject = (com.tencent.mm.plugin.finder.video.o)new FinderCropVideoView(paramContext);
-      continue;
-      localObject = (com.tencent.mm.plugin.finder.video.o)new FinderVLogCompositionPlayView(paramContext);
-    }
-  }
-  
-  final void D(d.g.a.b<? super com.tencent.mm.plugin.finder.video.o, Boolean> paramb)
-  {
-    AppMethodBeat.i(206397);
-    Iterator localIterator = this.tok.iterator();
+    AppMethodBeat.i(256078);
+    Iterator localIterator = this.wAX.iterator();
     while (localIterator.hasNext())
     {
-      com.tencent.mm.plugin.finder.video.o localo = (com.tencent.mm.plugin.finder.video.o)((WeakReference)localIterator.next()).get();
-      if (localo != null)
+      r localr = (r)((WeakReference)localIterator.next()).get();
+      if (localr != null)
       {
-        if (((Boolean)paramb.invoke(localo)).booleanValue()) {
+        if (((Boolean)paramb.invoke(localr)).booleanValue()) {
           localIterator.remove();
         }
       }
@@ -268,375 +293,478 @@ public final class FinderVideoRecycler
         localIterator.remove();
       }
     }
-    AppMethodBeat.o(206397);
+    AppMethodBeat.o(256078);
   }
   
-  public final void E(final d.g.a.b<? super com.tencent.mm.plugin.finder.video.o, Boolean> paramb)
+  public final void J(final kotlin.g.a.b<? super r, Boolean> paramb)
   {
-    AppMethodBeat.i(206402);
-    d.g.b.p.h(paramb, "filter");
-    com.tencent.mm.ac.c.h((d.g.a.a)new j(this, paramb));
-    AppMethodBeat.o(206402);
+    AppMethodBeat.i(256084);
+    p.h(paramb, "filter");
+    d.h((kotlin.g.a.a)new k(this, paramb));
+    AppMethodBeat.o(256084);
   }
   
-  public final void a(final ViewGroup paramViewGroup, m paramm, final d.g.a.b<? super com.tencent.mm.plugin.finder.video.o, z> paramb)
+  public final void a(final AppCompatActivity paramAppCompatActivity, boolean paramBoolean)
   {
-    AppMethodBeat.i(206394);
-    d.g.b.p.h(paramViewGroup, "parent");
-    d.g.b.p.h(paramm, "finderVideo");
-    d.g.b.p.h(paramb, "completedTo");
-    Context localContext = paramViewGroup.getContext();
-    Object localObject = paramm.srx;
-    String str = paramm.aeM();
-    paramm = com.tencent.mm.plugin.finder.utils.p.sXz;
-    boolean bool = com.tencent.mm.plugin.finder.utils.p.d((bvz)localObject);
-    localObject = paramViewGroup.findViewWithTag(Integer.valueOf(paramViewGroup.hashCode()));
-    paramm = (m)localObject;
-    if (!(localObject instanceof com.tencent.mm.plugin.finder.video.o)) {
-      paramm = null;
+    AppMethodBeat.i(256067);
+    p.h(paramAppCompatActivity, "activity");
+    final String str = String.valueOf(paramAppCompatActivity.hashCode());
+    if (this.wBc == 0) {
+      MC();
     }
-    paramm = (com.tencent.mm.plugin.finder.video.o)paramm;
-    if ((paramm != null) && ((paramm.getVideoMediaId() == null) || (d.g.b.p.i(paramm.getVideoMediaId(), str))))
+    if (this.wBa.add(str))
     {
-      paramm.setTag(2131307441, Long.valueOf(SystemClock.uptimeMillis()));
-      paramb.invoke(paramm);
-      AppMethodBeat.o(206394);
-      return;
-    }
-    if (paramm != null) {}
-    for (paramm = paramm.getVideoView();; paramm = null)
-    {
-      em(paramm);
-      if (!this.tog) {
-        break label280;
+      Log.i("Finder.VideoRecycler", "[register] activity=" + paramAppCompatActivity.getClass().getSimpleName() + " isPreInflate=" + paramBoolean);
+      if (paramBoolean) {
+        fI((Context)paramAppCompatActivity);
       }
-      paramm = (String)this.tol.get(Integer.valueOf(paramViewGroup.hashCode()));
-      if (!d.g.b.p.i(paramm, str)) {
+      this.wBc += 1;
+      paramAppCompatActivity.getLifecycle().addObserver((LifecycleObserver)new LifecycleObserver()
+      {
+        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+        public final void onDestroy()
+        {
+          AppMethodBeat.i(256048);
+          FinderVideoRecycler localFinderVideoRecycler = this.wBg;
+          FinderVideoRecycler.a(localFinderVideoRecycler, FinderVideoRecycler.b(localFinderVideoRecycler) - 1);
+          if (FinderVideoRecycler.b(this.wBg) == 0) {
+            FinderVideoRecycler.c(this.wBg);
+          }
+          for (;;)
+          {
+            FinderVideoRecycler.d(this.wBg).remove(str);
+            paramAppCompatActivity.getLifecycle().removeObserver((LifecycleObserver)this);
+            AppMethodBeat.o(256048);
+            return;
+            localFinderVideoRecycler = this.wBg;
+            Context localContext = (Context)paramAppCompatActivity;
+            p.h(localContext, "context");
+            kotlin.a.j.a((Iterable)localFinderVideoRecycler.wAW, (kotlin.g.a.b)new FinderVideoRecycler.p(localContext));
+            z.d locald = new z.d();
+            locald.SYE = 0;
+            localFinderVideoRecycler.I((kotlin.g.a.b)new FinderVideoRecycler.q(localFinderVideoRecycler, localContext, locald));
+            Log.i("Finder.VideoRecycler", "[removeByContext] simpleName=" + localContext.getClass().getSimpleName() + " removeCount=" + locald.SYE + " videoCount=" + FinderVideoRecycler.a(localFinderVideoRecycler));
+          }
+        }
+      });
+    }
+    AppMethodBeat.o(256067);
+  }
+  
+  public final void a(final ViewGroup paramViewGroup, final s params, final kotlin.g.a.b<? super r, x> paramb)
+  {
+    AppMethodBeat.i(256075);
+    p.h(paramViewGroup, "parent");
+    p.h(params, "finderVideo");
+    p.h(paramb, "completedTo");
+    final Context localContext = paramViewGroup.getContext();
+    Object localObject = params.uIw;
+    final String str = params.auA();
+    params = y.vXH;
+    final int i = y.i((cjl)localObject);
+    params = y.vXH;
+    if (y.h((cjl)localObject))
+    {
+      params = y.vXH;
+      if (!y.j((cjl)localObject)) {}
+    }
+    for (final boolean bool = true;; bool = false)
+    {
+      localObject = paramViewGroup.findViewWithTag(Integer.valueOf(paramViewGroup.hashCode()));
+      params = (s)localObject;
+      if (!(localObject instanceof r)) {
+        params = null;
+      }
+      params = (r)params;
+      if ((params == null) || ((params.getVideoMediaId() != null) && (!p.j(params.getVideoMediaId(), str)))) {
         break;
       }
-      AppMethodBeat.o(206394);
+      params.setTag(2131301505, Long.valueOf(SystemClock.uptimeMillis()));
+      paramb.invoke(params);
+      AppMethodBeat.o(256075);
       return;
     }
-    label280:
-    label330:
-    FinderVideoRecycler localFinderVideoRecycler;
-    com.tencent.mm.plugin.finder.video.o localo;
-    if (paramm != null)
+    if (params != null) {}
+    for (params = params.getVideoView();; params = null)
     {
-      ((Map)this.tol).put(Integer.valueOf(paramViewGroup.hashCode()), str);
-      ae.i("Finder.VideoRecycler", "replace callback. " + paramm + " => " + str + ", parent=" + paramViewGroup.hashCode());
-      localObject = (d.g.a.b)new f(this, paramViewGroup, paramb);
-      if (!bool) {
-        break label690;
+      ek(params);
+      if (!this.wAT) {
+        break label313;
       }
-      paramm = g.ad(com.tencent.mm.plugin.thumbplayer.a.a.class);
-      d.g.b.p.g(paramm, "MMKernel.plugin(IPluginThumbPlayer::class.java)");
-      if (!((com.tencent.mm.plugin.thumbplayer.a.a)paramm).isOpenTPPlayer()) {
-        break label683;
+      params = (String)this.wAY.get(Integer.valueOf(paramViewGroup.hashCode()));
+      if (!p.j(params, str)) {
+        break;
       }
-      paramm = FinderThumbPlayerProxy.class;
-      paramb = (com.tencent.mm.plugin.finder.video.o)com.tencent.mm.ac.c.a(this.toj, (d.g.a.b)new FinderVideoRecycler.e(localContext, paramm));
+      AppMethodBeat.o(256075);
+      return;
+    }
+    label313:
+    label368:
+    final FinderVideoRecycler localFinderVideoRecycler;
+    r localr;
+    if (params != null)
+    {
+      ((Map)this.wAY).put(Integer.valueOf(paramViewGroup.hashCode()), str);
+      Log.i("Finder.VideoRecycler", "replace callback. " + params + " => " + str + ", parent=" + paramViewGroup.hashCode());
+      localObject = (kotlin.g.a.b)new g(this, paramViewGroup, paramb);
+      if (i != 0) {
+        break label730;
+      }
+      params = g.ah(com.tencent.mm.plugin.thumbplayer.a.a.class);
+      p.g(params, "MMKernel.plugin(IPluginThumbPlayer::class.java)");
+      if ((!((com.tencent.mm.plugin.thumbplayer.a.a)params).isOpenTPPlayer()) || (bool)) {
+        break label723;
+      }
+      params = FinderThumbPlayerProxy.class;
+      paramb = (r)d.a(this.wAW, (kotlin.g.a.b)new f(localContext, params));
       if (paramb != null)
       {
-        ae.i("Finder.VideoRecycler", "[getOrCreate] get a recycled videoView(" + paramb.hashCode() + ") parent=" + paramViewGroup.hashCode() + " videoCount=" + a(this));
-        ((d.g.a.b)localObject).invoke(paramb);
+        Log.i("Finder.VideoRecycler", "[getOrCreate] get a recycled videoView(" + paramb.hashCode() + ") parent=" + paramViewGroup.hashCode() + " videoCount=" + a(this));
+        ((kotlin.g.a.b)localObject).invoke(paramb);
         if (paramb != null) {}
       }
       else
       {
         localFinderVideoRecycler = (FinderVideoRecycler)this;
-        int i = localFinderVideoRecycler.aN(paramm);
-        if (i < localFinderVideoRecycler.toh) {
-          break label774;
+        int j = localFinderVideoRecycler.aP(params);
+        if (j < localFinderVideoRecycler.wAU) {
+          break label829;
         }
-        localo = localFinderVideoRecycler.d(paramm, localFinderVideoRecycler.tog);
-        StringBuilder localStringBuilder = new StringBuilder("[getOrCreate] over count(max=").append(localFinderVideoRecycler.toh).append(':').append(i).append(") waitForRelease=").append(localFinderVideoRecycler.tog).append(" oldest=");
-        if (localo == null) {
-          break label697;
+        localr = localFinderVideoRecycler.e(params, localFinderVideoRecycler.wAT);
+        StringBuilder localStringBuilder = new StringBuilder("[getOrCreate] over count(max=").append(localFinderVideoRecycler.wAU).append(':').append(j).append(") waitForRelease=").append(localFinderVideoRecycler.wAT).append(" oldest=");
+        if (localr == null) {
+          break label750;
         }
-        paramb = Integer.valueOf(localo.hashCode());
-        label524:
-        ae.i("Finder.VideoRecycler", paramb);
-        if (!localFinderVideoRecycler.tog) {
-          break label731;
+        paramb = Integer.valueOf(localr.hashCode());
+        label562:
+        Log.i("Finder.VideoRecycler", paramb);
+        if (!localFinderVideoRecycler.wAT) {
+          break label784;
         }
-        if (localo == null) {
-          break label702;
+        if (localr == null) {
+          break label755;
         }
-        i = paramViewGroup.hashCode();
-        ((Map)localFinderVideoRecycler.tol).put(Integer.valueOf(i), str);
-        ((Map)localFinderVideoRecycler.tom).put(Integer.valueOf(localo.hashCode()), new FinderVideoRecycler.d(i, localFinderVideoRecycler, paramm, paramViewGroup, str, (d.g.a.b)localObject, localContext, bool));
-        localFinderVideoRecycler.a(localo, "getOrCreate");
+        j = paramViewGroup.hashCode();
+        ((Map)localFinderVideoRecycler.wAY).put(Integer.valueOf(j), str);
+        ((Map)localFinderVideoRecycler.wAZ).put(Integer.valueOf(localr.hashCode()), new e(j, localFinderVideoRecycler, params, paramViewGroup, str, (kotlin.g.a.b)localObject, localContext, i, bool));
+        localFinderVideoRecycler.a(localr, "getOrCreate");
       }
     }
     for (;;)
     {
-      paramViewGroup = z.Nhr;
-      AppMethodBeat.o(206394);
+      paramViewGroup = x.SXb;
+      AppMethodBeat.o(256075);
       return;
-      ae.i("Finder.VideoRecycler", "wait for callback. mediaId=" + str + " parent=" + paramViewGroup.hashCode());
+      Log.i("Finder.VideoRecycler", "wait for callback. mediaId=" + str + " parent=" + paramViewGroup.hashCode());
       break;
-      label683:
-      paramm = FinderCropVideoView.class;
-      break label330;
-      label690:
-      paramm = FinderVLogCompositionPlayView.class;
-      break label330;
-      label697:
-      paramb = null;
-      break label524;
-      label702:
-      ae.e("Finder.VideoRecycler", "[getOrCreate] oldest is null! parent=" + paramViewGroup.hashCode());
-      continue;
-      label731:
-      if (localo != null) {
-        localFinderVideoRecycler.a(localo, "getOrCreate");
+      label723:
+      params = FinderCropVideoView.class;
+      break label368;
+      label730:
+      if (i == 2)
+      {
+        params = FinderLivePlayView.class;
+        break label368;
       }
-      d.g.b.p.g(localContext, "context");
-      ((d.g.a.b)localObject).invoke(localFinderVideoRecycler.y(localContext, bool));
+      params = FinderVLogCompositionPlayView.class;
+      break label368;
+      label750:
+      paramb = null;
+      break label562;
+      label755:
+      Log.e("Finder.VideoRecycler", "[getOrCreate] oldest is null! parent=" + paramViewGroup.hashCode());
       continue;
-      label774:
-      d.g.b.p.g(localContext, "context");
-      ((d.g.a.b)localObject).invoke(localFinderVideoRecycler.y(localContext, bool));
+      label784:
+      if (localr != null) {
+        localFinderVideoRecycler.a(localr, "getOrCreate");
+      }
+      p.g(localContext, "context");
+      ((kotlin.g.a.b)localObject).invoke(localFinderVideoRecycler.c(localContext, i, bool));
+      continue;
+      label829:
+      p.g(localContext, "context");
+      ((kotlin.g.a.b)localObject).invoke(localFinderVideoRecycler.c(localContext, i, bool));
     }
   }
   
-  public final void a(final com.tencent.mm.plugin.finder.video.o paramo, String paramString)
+  public final void a(final r paramr, String paramString)
   {
-    AppMethodBeat.i(206396);
-    if (this.tor.containsKey(Integer.valueOf(paramo.hashCode())))
+    AppMethodBeat.i(256077);
+    if (this.wBd.containsKey(Integer.valueOf(paramr.hashCode())))
     {
-      ae.w("Finder.VideoRecycler", "[releaseVideoView] videoView=" + paramo.hashCode() + " is releasing, source=" + paramString);
-      AppMethodBeat.o(206396);
+      Log.w("Finder.VideoRecycler", "[releaseVideoView] videoView=" + paramr.hashCode() + " is releasing, source=" + paramString);
+      AppMethodBeat.o(256077);
       return;
     }
     final long l = System.currentTimeMillis();
-    ((Map)this.tor).put(Integer.valueOf(paramo.hashCode()), new Object());
-    em(paramo.getVideoView());
-    paramo.pause();
-    StringBuilder localStringBuilder = new StringBuilder("[releaseVideoView] async release videoView(").append(paramo.hashCode()).append(") parent=");
-    ViewParent localViewParent = paramo.getParentView();
+    ((Map)this.wBd).put(Integer.valueOf(paramr.hashCode()), new Object());
+    ek(paramr.getVideoView());
+    paramr.pause();
+    StringBuilder localStringBuilder = new StringBuilder("[releaseVideoView] async release videoView(").append(paramr.hashCode()).append(") parent=");
+    ViewParent localViewParent = paramr.getParentView();
     if (localViewParent != null) {}
     for (int i = localViewParent.hashCode();; i = 0)
     {
-      ae.i("Finder.VideoRecycler", i + " source=" + paramString);
-      com.tencent.mm.ac.c.b(null, (d.g.a.a)new n(this, paramo, l, paramString));
-      AppMethodBeat.o(206396);
+      Log.i("Finder.VideoRecycler", i + " source=" + paramString);
+      d.i((kotlin.g.a.a)new o(this, paramr, l, paramString));
+      AppMethodBeat.o(256077);
       return;
     }
   }
   
-  public final void af()
+  public final void awV(String paramString)
   {
-    AppMethodBeat.i(206400);
-    ae.i("Finder.VideoRecycler", "[onCleared] videoCount=" + a(this));
-    onFinish();
-    AppMethodBeat.o(206400);
-  }
-  
-  public final void akm(String paramString)
-  {
-    AppMethodBeat.i(206387);
-    d.g.b.p.h(paramString, "mediaId");
-    Iterator localIterator = ((Iterable)this.tok).iterator();
-    while (localIterator.hasNext())
+    AppMethodBeat.i(256068);
+    p.h(paramString, "mediaId");
+    Object localObject = c.vCb;
+    if (((Number)c.dxe().value()).intValue() != 1)
     {
-      com.tencent.mm.plugin.finder.video.o localo = (com.tencent.mm.plugin.finder.video.o)((WeakReference)localIterator.next()).get();
-      if (localo != null)
+      AppMethodBeat.o(256068);
+      return;
+    }
+    localObject = ((Iterable)this.wAX).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      r localr = (r)((WeakReference)((Iterator)localObject).next()).get();
+      if (localr != null)
       {
-        String str = localo.getVideoMediaId();
+        String str = localr.getVideoMediaId();
         if (str != null)
         {
-          ae.d("Finder.VideoRecycler", "onPreloadComplete " + str + ' ' + paramString);
-          if (d.g.b.p.i(str, paramString)) {
-            localo.cOA();
+          Log.i("Finder.VideoRecycler", "onPreloadComplete " + str + ' ' + paramString);
+          if (p.j(str, paramString)) {
+            localr.dEN();
           }
         }
       }
     }
-    AppMethodBeat.o(206387);
+    AppMethodBeat.o(256068);
   }
   
-  public final void b(final MMActivity paramMMActivity, boolean paramBoolean)
+  public final void dIQ()
   {
-    AppMethodBeat.i(206386);
-    d.g.b.p.h(paramMMActivity, "activity");
-    final String str = String.valueOf(paramMMActivity.hashCode());
-    if (this.toq == 0) {
-      Dg();
-    }
-    if (this.ton.add(str))
-    {
-      ae.i("Finder.VideoRecycler", "[register] activity=" + paramMMActivity.getClass().getSimpleName() + " isPreInflate=" + paramBoolean);
-      if (paramBoolean) {
-        fd((Context)paramMMActivity);
-      }
-      this.toq += 1;
-      paramMMActivity.getLifecycle().addObserver((LifecycleObserver)new LifecycleObserver()
-      {
-        @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-        public final void onDestroy()
-        {
-          AppMethodBeat.i(206367);
-          FinderVideoRecycler localFinderVideoRecycler = this.tou;
-          FinderVideoRecycler.a(localFinderVideoRecycler, FinderVideoRecycler.b(localFinderVideoRecycler) - 1);
-          if (FinderVideoRecycler.b(this.tou) == 0) {
-            FinderVideoRecycler.c(this.tou);
-          }
-          for (;;)
-          {
-            FinderVideoRecycler.d(this.tou).remove(str);
-            paramMMActivity.getLifecycle().removeObserver((LifecycleObserver)this);
-            AppMethodBeat.o(206367);
-            return;
-            localFinderVideoRecycler = this.tou;
-            Context localContext = (Context)paramMMActivity;
-            d.g.b.p.h(localContext, "context");
-            d.a.j.a((Iterable)localFinderVideoRecycler.toj, (d.g.a.b)new FinderVideoRecycler.o(localContext));
-            y.d locald = new y.d();
-            locald.NiW = 0;
-            localFinderVideoRecycler.D((d.g.a.b)new FinderVideoRecycler.p(localFinderVideoRecycler, localContext, locald));
-            ae.i("Finder.VideoRecycler", "[removeByContext] simpleName=" + localContext.getClass().getSimpleName() + " removeCount=" + locald.NiW + " videoCount=" + FinderVideoRecycler.a(localFinderVideoRecycler));
-          }
-        }
-      });
-    }
-    AppMethodBeat.o(206386);
+    AppMethodBeat.i(256083);
+    d.h((kotlin.g.a.a)new c(this));
+    AppMethodBeat.o(256083);
   }
   
-  public final void fe(final Context paramContext)
+  public final void fJ(final Context paramContext)
   {
-    AppMethodBeat.i(206401);
-    com.tencent.mm.ac.c.h((d.g.a.a)new k(this, paramContext));
-    AppMethodBeat.o(206401);
+    AppMethodBeat.i(256082);
+    d.h((kotlin.g.a.a)new l(this, paramContext));
+    AppMethodBeat.o(256082);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
+  public final void onCleared()
+  {
+    AppMethodBeat.i(256081);
+    Log.i("Finder.VideoRecycler", "[onCleared] videoCount=" + a(this));
+    onFinish();
+    AppMethodBeat.o(256081);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$Companion;", "", "()V", "TAG", "", "plugin-finder_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$IRecycledCallback;", "", "onRecycledCompleted", "", "videoView", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "plugin-finder_release"})
+  public static abstract interface b
+  {
+    public abstract boolean a(r paramr);
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class c
     extends q
-    implements d.g.a.b<com.tencent.mm.plugin.finder.video.o, Boolean>
+    implements kotlin.g.a.a<x>
   {
-    c(FinderVideoRecycler paramFinderVideoRecycler, Class paramClass, y.e parame, int[] paramArrayOfInt, boolean paramBoolean, y.f paramf)
+    c(FinderVideoRecycler paramFinderVideoRecycler)
     {
       super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "videoView", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
+  static final class d
+    extends q
+    implements kotlin.g.a.b<r, Boolean>
+  {
+    d(FinderVideoRecycler paramFinderVideoRecycler, Class paramClass, z.e parame, int[] paramArrayOfInt, boolean paramBoolean, z.f paramf)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$getOrCreate$3$1$1", "Lcom/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$IRecycledCallback;", "onRecycledCompleted", "", "videoView", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "plugin-finder_release", "com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$$special$$inlined$let$lambda$1"})
+  public static final class e
+    implements FinderVideoRecycler.b
+  {
+    e(int paramInt1, FinderVideoRecycler paramFinderVideoRecycler, Class paramClass, ViewGroup paramViewGroup, String paramString, kotlin.g.a.b paramb, Context paramContext, int paramInt2, boolean paramBoolean) {}
+    
+    public final boolean a(r paramr)
+    {
+      AppMethodBeat.i(256044);
+      p.h(paramr, "videoView");
+      if (p.j((String)FinderVideoRecycler.k(localFinderVideoRecycler).get(Integer.valueOf(this.wBm)), str))
+      {
+        Log.i("Finder.VideoRecycler", "[getOrCreate] wait for callback successfully. mediaId=" + str + " parent=" + this.wBm);
+        this.wBp.invoke(paramr);
+        AppMethodBeat.o(256044);
+        return true;
+      }
+      Log.i("Finder.VideoRecycler", "wait for callback, but it(" + str + ") has been replace(" + (String)FinderVideoRecycler.k(localFinderVideoRecycler).get(Integer.valueOf(this.wBm)) + "). key=" + this.wBm);
+      AppMethodBeat.o(256044);
+      return false;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
   static final class f
     extends q
-    implements d.g.a.b<com.tencent.mm.plugin.finder.video.o, z>
+    implements kotlin.g.a.b<r, Boolean>
   {
-    f(FinderVideoRecycler paramFinderVideoRecycler, ViewGroup paramViewGroup, d.g.a.b paramb)
+    f(Context paramContext, Class paramClass)
     {
       super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "videoView", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
+  static final class g
+    extends q
+    implements kotlin.g.a.b<r, x>
+  {
+    g(FinderVideoRecycler paramFinderVideoRecycler, ViewGroup paramViewGroup, kotlin.g.a.b paramb)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
   static final class h
+    extends q
+    implements kotlin.g.a.b<r, Boolean>
+  {
+    h(Class paramClass, z.d paramd)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run"})
+  static final class i
     implements Runnable
   {
-    h(FinderVideoRecycler paramFinderVideoRecycler) {}
+    i(FinderVideoRecycler paramFinderVideoRecycler) {}
     
     public final void run()
     {
-      AppMethodBeat.i(206368);
-      Iterator localIterator = ((Iterable)FinderVideoRecycler.e(this.tou)).iterator();
+      AppMethodBeat.i(256049);
+      Iterator localIterator = ((Iterable)FinderVideoRecycler.e(this.wBg)).iterator();
       while (localIterator.hasNext())
       {
-        com.tencent.mm.plugin.finder.video.o localo = (com.tencent.mm.plugin.finder.video.o)((WeakReference)localIterator.next()).get();
-        if (localo != null)
+        r localr = (r)((WeakReference)localIterator.next()).get();
+        if (localr != null)
         {
-          localo.onUIDestroy();
-          localo.onRelease();
+          localr.onUIDestroy();
+          localr.onRelease();
         }
       }
-      FinderVideoRecycler.e(this.tou).clear();
-      FinderVideoRecycler.f(this.tou).clear();
-      FinderVideoRecycler.g(this.tou).removeCallbacksAndMessages(null);
-      AppMethodBeat.o(206368);
+      FinderVideoRecycler.e(this.wBg).clear();
+      FinderVideoRecycler.f(this.wBg).clear();
+      FinderVideoRecycler.g(this.wBg).removeCallbacksAndMessages(null);
+      AppMethodBeat.o(256049);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/OnlineVideoEvent;", "callback", "", "event", "plugin-finder_release"})
-  public static final class i
-    extends com.tencent.mm.sdk.b.c<ny>
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1", "Lcom/tencent/mm/sdk/event/IListener;", "Lcom/tencent/mm/autogen/events/OnlineVideoEvent;", "callback", "", "event", "plugin-finder_release"})
+  public static final class j
+    extends IListener<oq>
   {
-    @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke", "com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1$callback$1$1"})
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke", "com/tencent/mm/plugin/finder/viewmodel/component/FinderVideoRecycler$onlineVideoEventListener$1$callback$1$1"})
     static final class a
       extends q
-      implements d.g.a.b<com.tencent.mm.plugin.finder.video.o, Boolean>
+      implements kotlin.g.a.b<r, Boolean>
     {
-      a(String paramString, FinderVideoRecycler.i parami)
+      a(String paramString, FinderVideoRecycler.j paramj)
       {
         super();
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class j
-    extends q
-    implements d.g.a.a<z>
-  {
-    j(FinderVideoRecycler paramFinderVideoRecycler, d.g.a.b paramb)
-    {
-      super();
-    }
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class k
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
-    k(FinderVideoRecycler paramFinderVideoRecycler, Context paramContext)
+    k(FinderVideoRecycler paramFinderVideoRecycler, kotlin.g.a.b paramb)
     {
       super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "queueIdle"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
   static final class l
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    l(FinderVideoRecycler paramFinderVideoRecycler, Context paramContext)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "queueIdle"})
+  static final class m
     implements MessageQueue.IdleHandler
   {
-    l(FinderVideoRecycler paramFinderVideoRecycler, Context paramContext) {}
+    m(FinderVideoRecycler paramFinderVideoRecycler, Context paramContext) {}
     
     public final boolean queueIdle()
     {
-      AppMethodBeat.i(206376);
-      if ((FinderVideoRecycler.h(this.tou) > 0) && (FinderVideoRecycler.i(this.tou) < FinderVideoRecycler.h(this.tou)) && (!FinderVideoRecycler.j(this.tou)))
+      AppMethodBeat.i(256057);
+      if ((FinderVideoRecycler.h(this.wBg) > 0) && (FinderVideoRecycler.i(this.wBg) < FinderVideoRecycler.h(this.wBg)) && (!FinderVideoRecycler.j(this.wBg)))
       {
-        FinderVideoRecycler.f(this.tou).add(FinderVideoRecycler.a(this.tou, paramContext));
-        FinderVideoRecycler localFinderVideoRecycler = this.tou;
+        FinderVideoRecycler.f(this.wBg).add(FinderVideoRecycler.a(this.wBg, paramContext));
+        FinderVideoRecycler localFinderVideoRecycler = this.wBg;
         FinderVideoRecycler.b(localFinderVideoRecycler, FinderVideoRecycler.i(localFinderVideoRecycler) + 1);
-        AppMethodBeat.o(206376);
+        AppMethodBeat.o(256057);
         return true;
       }
-      ae.i("Finder.VideoRecycler", "[preInflateVideoView] completed! preInflateCount=" + FinderVideoRecycler.i(this.tou) + " targetCount=" + FinderVideoRecycler.h(this.tou) + " isFinished=" + FinderVideoRecycler.j(this.tou));
-      AppMethodBeat.o(206376);
+      Log.i("Finder.VideoRecycler", "[preInflateVideoView] completed! preInflateCount=" + FinderVideoRecycler.i(this.wBg) + " targetCount=" + FinderVideoRecycler.h(this.wBg) + " isFinished=" + FinderVideoRecycler.j(this.wBg));
+      AppMethodBeat.o(256057);
       return false;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class n
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class o
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.a<x>
   {
-    n(FinderVideoRecycler paramFinderVideoRecycler, com.tencent.mm.plugin.finder.video.o paramo, long paramLong, String paramString)
+    o(FinderVideoRecycler paramFinderVideoRecycler, r paramr, long paramLong, String paramString)
     {
       super();
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  public static final class q
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/video/IFinderVideoView;", "invoke"})
+  static final class q
     extends q
-    implements d.g.a.a<z>
+    implements kotlin.g.a.b<r, Boolean>
   {
-    public q(FinderVideoRecycler paramFinderVideoRecycler, Context paramContext)
+    q(FinderVideoRecycler paramFinderVideoRecycler, Context paramContext, z.d paramd)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  public static final class r
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    public r(FinderVideoRecycler paramFinderVideoRecycler, Context paramContext)
     {
       super();
     }
@@ -644,7 +772,7 @@ public final class FinderVideoRecycler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.viewmodel.component.FinderVideoRecycler
  * JD-Core Version:    0.7.0.1
  */

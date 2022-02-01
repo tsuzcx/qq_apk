@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.g;
 import android.support.v4.app.k;
 import android.support.v7.app.AppCompatActivity;
@@ -13,23 +14,51 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.i;
 import com.tencent.mm.ui.MMActivity;
 import com.tencent.mm.ui.base.a;
-import d.g.b.p;
-import d.l;
 import java.util.ArrayList;
+import java.util.HashMap;
+import kotlin.g.b.p;
+import kotlin.l;
 
 @i
 @a(3)
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/ui/collection/AppBrandCollectionSortUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "finish", "", "getLayoutId", "", "initActivityCloseAnimation", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onResume", "Companion", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/collection/AppBrandCollectionSortUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "finish", "", "getLayoutId", "", "initActivityCloseAnimation", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onResume", "Companion", "plugin-appbrand-integration_release"})
 public final class AppBrandCollectionSortUI
   extends MMActivity
 {
-  public static final AppBrandCollectionSortUI.a mND;
+  public static final a oaQ;
+  private HashMap _$_findViewCache;
   
   static
   {
     AppMethodBeat.i(51203);
-    mND = new AppBrandCollectionSortUI.a((byte)0);
+    oaQ = new a((byte)0);
     AppMethodBeat.o(51203);
+  }
+  
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(229555);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(229555);
+  }
+  
+  public final View _$_findCachedViewById(int paramInt)
+  {
+    AppMethodBeat.i(229554);
+    if (this._$_findViewCache == null) {
+      this._$_findViewCache = new HashMap();
+    }
+    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = findViewById(paramInt);
+      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+    }
+    AppMethodBeat.o(229554);
+    return localView1;
   }
   
   public final void finish()
@@ -69,10 +98,10 @@ public final class AppBrandCollectionSortUI
       return;
     }
     overridePendingTransition(2130771981, 2130771986);
-    setActionbarColor(getContext().getResources().getColor(2131100705));
+    setActionbarColor(getContext().getResources().getColor(2131100898));
     getContentView().setBackgroundColor(getActionbarColor());
     k localk = getSupportFragmentManager().beginTransaction();
-    Object localObject = AppBrandCollectionVerticalSortList.mNG;
+    Object localObject = AppBrandCollectionVerticalSortList.oaT;
     localObject = getIntent();
     if (localObject != null) {}
     for (int i = ((Intent)localObject).getIntExtra("KEY_OPERATE_REPORT_SCENE", 0);; i = 0)
@@ -98,7 +127,7 @@ public final class AppBrandCollectionSortUI
   {
     AppMethodBeat.i(51201);
     super.onResume();
-    setMMTitle(2131755614);
+    setMMTitle(2131755661);
     hideActionbarLine();
     AppMethodBeat.o(51201);
   }
@@ -108,10 +137,13 @@ public final class AppBrandCollectionSortUI
     super.onWindowFocusChanged(paramBoolean);
     AppMethodBeat.at(this, paramBoolean);
   }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/collection/AppBrandCollectionSortUI$Companion;", "", "()V", "KEY_OPERATE_REPORT_SCENE", "", "KEY_OPERATE_REPORT_SCENE_ID", "KEY_SORT_DATA_LIST", "startSortList", "", "context", "Landroid/content/Context;", "dataList", "Ljava/util/ArrayList;", "Lcom/tencent/mm/plugin/appbrand/appusage/LocalUsageInfo;", "Lkotlin/collections/ArrayList;", "operateReportScene", "", "operateReportSceneId", "plugin-appbrand-integration_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ui.collection.AppBrandCollectionSortUI
  * JD-Core Version:    0.7.0.1
  */

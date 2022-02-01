@@ -1,48 +1,48 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bng;
-import com.tencent.mm.protocal.protobuf.bnh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.kernel.e;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bzx;
+import com.tencent.mm.protocal.protobuf.bzy;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
 
 public final class o
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b rr;
+  private i callback;
+  private final d rr;
   
   public o(String paramString)
   {
     AppMethodBeat.i(12482);
     this.callback = null;
-    b.a locala = new b.a();
-    locala.hQF = new bng();
-    locala.hQG = new bnh();
+    d.a locala = new d.a();
+    locala.iLN = new bzx();
+    locala.iLO = new bzy();
     locala.uri = "/cgi-bin/micromsg-bin/grantbigchatroom";
     locala.funcId = 339;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ((bng)this.rr.hQD.hQJ).uvF = paramString;
-    ae.d("MicroMsg.NetSceneGrantBigChatRoom", "grant to userName :".concat(String.valueOf(paramString)));
+    this.rr = locala.aXF();
+    ((bzx)this.rr.iLK.iLR).xNG = paramString;
+    Log.d("MicroMsg.NetSceneGrantBigChatRoom", "grant to userName :".concat(String.valueOf(paramString)));
     AppMethodBeat.o(12482);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     AppMethodBeat.i(12483);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(12483);
     return i;
   }
@@ -52,19 +52,19 @@ public final class o
     return 339;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12484);
-    ae.d("MicroMsg.NetSceneGrantBigChatRoom", "onGYNetEnd " + paramInt2 + " " + paramInt3 + "  " + paramString);
+    Log.d("MicroMsg.NetSceneGrantBigChatRoom", "onGYNetEnd " + paramInt2 + " " + paramInt3 + "  " + paramString);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       AppMethodBeat.o(12484);
       return;
     }
-    paramInt1 = ((Integer)g.ajR().ajA().get(135176, Integer.valueOf(0))).intValue();
+    paramInt1 = ((Integer)com.tencent.mm.kernel.g.aAh().azQ().get(135176, Integer.valueOf(0))).intValue();
     if (paramInt1 - 1 >= 0) {
-      g.ajR().ajA().set(135176, Integer.valueOf(paramInt1 - 1));
+      com.tencent.mm.kernel.g.aAh().azQ().set(135176, Integer.valueOf(paramInt1 - 1));
     }
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12484);

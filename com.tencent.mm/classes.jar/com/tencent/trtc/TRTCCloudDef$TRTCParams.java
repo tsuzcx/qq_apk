@@ -27,8 +27,8 @@ public class TRTCCloudDef$TRTCParams
   public TRTCCloudDef$TRTCParams(TRTCParams paramTRTCParams)
   {
     this.sdkAppId = paramTRTCParams.sdkAppId;
-    this.userSig = paramTRTCParams.userSig;
     this.userId = paramTRTCParams.userId;
+    this.userSig = paramTRTCParams.userSig;
     this.roomId = paramTRTCParams.roomId;
     this.role = paramTRTCParams.role;
     this.streamId = paramTRTCParams.streamId;

@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.emojicapture.ui.b;
 
 import com.tencent.mm.sticker.f;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureRender;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/IEmojiCaptureRender;", "renderOutputType", "", "(I)V", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "pauseRender", "resumeRender", "setRemoveBg", "remove", "", "plugin-emojicapture_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/ui/gl/EmojiCaptureRender;", "Lcom/tencent/mm/media/render/AbsSurfaceRenderer;", "Lcom/tencent/mm/plugin/emojicapture/ui/gl/IEmojiCaptureRender;", "renderOutputType", "", "(I)V", "changeSticker", "", "stickerPack", "Lcom/tencent/mm/sticker/StickerPack;", "pauseRender", "resumeRender", "setRemoveBg", "remove", "", "plugin-emojicapture_release"})
 public abstract class h
   extends com.tencent.mm.media.j.a
   implements l
@@ -14,7 +14,7 @@ public abstract class h
   
   public final void a(f paramf)
   {
-    com.tencent.mm.media.j.b.a locala = this.hpT;
+    com.tencent.mm.media.j.b.a locala = this.ijo;
     Object localObject = locala;
     if (!(locala instanceof l)) {
       localObject = null;
@@ -25,48 +25,48 @@ public abstract class h
     }
   }
   
-  public final void amu()
+  public final void aEa()
   {
-    com.tencent.mm.media.j.b.a locala = this.hpT;
+    com.tencent.mm.media.j.b.a locala = this.ijo;
     Object localObject = locala;
     if (!(locala instanceof l)) {
       localObject = null;
     }
     localObject = (l)localObject;
     if (localObject != null) {
-      ((l)localObject).amu();
+      ((l)localObject).aEa();
     }
   }
   
-  public final void amv()
+  public final void aEb()
   {
-    com.tencent.mm.media.j.b.a locala = this.hpT;
+    com.tencent.mm.media.j.b.a locala = this.ijo;
     Object localObject = locala;
     if (!(locala instanceof l)) {
       localObject = null;
     }
     localObject = (l)localObject;
     if (localObject != null) {
-      ((l)localObject).amv();
+      ((l)localObject).aEb();
     }
   }
   
-  public final void kD(boolean paramBoolean)
+  public final void lF(boolean paramBoolean)
   {
-    com.tencent.mm.media.j.b.a locala = this.hpT;
+    com.tencent.mm.media.j.b.a locala = this.ijo;
     Object localObject = locala;
     if (!(locala instanceof l)) {
       localObject = null;
     }
     localObject = (l)localObject;
     if (localObject != null) {
-      ((l)localObject).kD(paramBoolean);
+      ((l)localObject).lF(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.b.h
  * JD-Core Version:    0.7.0.1
  */

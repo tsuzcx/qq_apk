@@ -1,15 +1,12 @@
 package com.tencent.mm.ak;
 
-import com.tencent.mm.kernel.c.a;
-
 public abstract interface i
-  extends a
 {
-  public abstract h MN();
+  public abstract void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ak.i
  * JD-Core Version:    0.7.0.1
  */

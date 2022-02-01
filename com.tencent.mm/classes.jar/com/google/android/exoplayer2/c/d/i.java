@@ -7,12 +7,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class i
 {
-  private static final int[] bos;
+  private static final int[] bon;
   
   static
   {
     AppMethodBeat.i(92128);
-    bos = new int[] { x.bJ("isom"), x.bJ("iso2"), x.bJ("iso3"), x.bJ("iso4"), x.bJ("iso5"), x.bJ("iso6"), x.bJ("avc1"), x.bJ("hvc1"), x.bJ("hev1"), x.bJ("mp41"), x.bJ("mp42"), x.bJ("3g2a"), x.bJ("3g2b"), x.bJ("3gr6"), x.bJ("3gs6"), x.bJ("3ge6"), x.bJ("3gg6"), x.bJ("M4V "), x.bJ("M4A "), x.bJ("f4v "), x.bJ("kddi"), x.bJ("M4VP"), x.bJ("qt  "), x.bJ("MSNV") };
+    bon = new int[] { x.bJ("isom"), x.bJ("iso2"), x.bJ("iso3"), x.bJ("iso4"), x.bJ("iso5"), x.bJ("iso6"), x.bJ("avc1"), x.bJ("hvc1"), x.bJ("hev1"), x.bJ("mp41"), x.bJ("mp42"), x.bJ("3g2a"), x.bJ("3g2b"), x.bJ("3gr6"), x.bJ("3gs6"), x.bJ("3ge6"), x.bJ("3gg6"), x.bJ("M4V "), x.bJ("M4A "), x.bJ("f4v "), x.bJ("kddi"), x.bJ("M4VP"), x.bJ("qt  "), x.bJ("MSNV") };
     AppMethodBeat.o(92128);
   }
   
@@ -45,14 +45,14 @@ final class i
         m = 8;
         localm.reset(8);
         paramf.b(localm.data, 0, 8);
-        l2 = localm.dB();
+        l2 = localm.dE();
         i1 = localm.readInt();
         if (l2 == 1L)
         {
           k = 16;
           paramf.b(localm.data, 8, 8);
-          localm.eZ(16);
-          l1 = localm.xe();
+          localm.eY(16);
+          l1 = localm.xm();
         }
         while (l1 < k)
         {
@@ -74,10 +74,10 @@ final class i
         }
         m = i + k;
         i = m;
-        if (i1 == a.blp) {
+        if (i1 == a.blk) {
           continue;
         }
-        if ((i1 != a.bly) && (i1 != a.blA)) {
+        if ((i1 != a.blt) && (i1 != a.blv)) {
           break label283;
         }
         bool1 = true;
@@ -94,7 +94,7 @@ final class i
       } while (m + l1 - k >= n);
       int k = (int)(l1 - k);
       i = m + k;
-      if (i1 == a.bkO)
+      if (i1 == a.bkJ)
       {
         if (k < 8)
         {
@@ -109,9 +109,9 @@ final class i
         if (m < i1)
         {
           if (m == 1) {
-            localm.fa(4);
+            localm.eZ(4);
           }
-          while (!en(localm.readInt()))
+          while (!eh(localm.readInt()))
           {
             m += 1;
             break;
@@ -127,14 +127,14 @@ final class i
       }
       else if (k != 0)
       {
-        paramf.dV(k);
+        paramf.dQ(k);
       }
     }
     AppMethodBeat.o(92126);
     return false;
   }
   
-  private static boolean en(int paramInt)
+  private static boolean eh(int paramInt)
   {
     AppMethodBeat.i(92127);
     if (paramInt >>> 8 == x.bJ("3gp"))
@@ -142,7 +142,7 @@ final class i
       AppMethodBeat.o(92127);
       return true;
     }
-    int[] arrayOfInt = bos;
+    int[] arrayOfInt = bon;
     int j = arrayOfInt.length;
     int i = 0;
     while (i < j)
@@ -176,7 +176,7 @@ final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.c.d.i
  * JD-Core Version:    0.7.0.1
  */

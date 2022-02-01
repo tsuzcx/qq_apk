@@ -1,310 +1,223 @@
 package com.tencent.mm.n;
 
+import android.view.ContextMenu.ContextMenuInfo;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.dc;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.bx;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
-public class e
+public final class e
 {
-  private HashMap<String, String> ggF;
-  protected boolean ggG;
+  public static final int[] gMg = { 1 };
+  HashMap<String, HashMap<String, String>> gMh;
+  public Map<String, String> gMi;
+  private int id;
+  int version;
   
-  public e()
+  public e(int paramInt)
   {
-    AppMethodBeat.i(131992);
-    this.ggF = new HashMap();
-    this.ggG = false;
-    AppMethodBeat.o(131992);
+    AppMethodBeat.i(131988);
+    this.gMh = new HashMap();
+    this.gMi = null;
+    this.id = paramInt;
+    AppMethodBeat.o(131988);
   }
   
-  private void a(Map<String, String> paramMap, boolean paramBoolean)
+  static boolean Ek(String paramString)
   {
-    AppMethodBeat.i(132000);
-    if (paramMap == null)
-    {
-      AppMethodBeat.o(132000);
-      return;
-    }
-    if (!paramBoolean) {
-      this.ggF.clear();
-    }
-    int i = 0;
-    if (i < 10000)
-    {
-      Object localObject2;
-      label58:
-      String str1;
-      HashMap localHashMap;
-      String str2;
-      if (paramBoolean)
-      {
-        localObject2 = new StringBuilder(".sysmsg.dynacfg_split.Item");
-        if (i == 0)
-        {
-          localObject1 = "";
-          localObject1 = localObject1;
-          str1 = (String)localObject1 + ".$key";
-          localObject2 = (String)paramMap.get(localObject1);
-          str1 = (String)paramMap.get(str1);
-          if ((str1 == null) || (bu.isNullOrNil(str1.trim()))) {
-            break label256;
-          }
-          localHashMap = this.ggF;
-          str2 = str1.trim();
-          if (localObject2 == null) {
-            break label249;
-          }
-        }
-      }
-      label249:
-      for (Object localObject1 = localObject2;; localObject1 = "")
-      {
-        localHashMap.put(str2, localObject1);
-        ae.d("MicroMsg.DynamicConfig", "put %s %s", new Object[] { str1.trim(), localObject2 });
-        i += 1;
-        break;
-        localObject1 = Integer.valueOf(i);
-        break label58;
-        localObject2 = new StringBuilder(".sysmsg.dynacfg.Item");
-        if (i == 0) {}
-        for (localObject1 = "";; localObject1 = Integer.valueOf(i))
-        {
-          localObject1 = localObject1;
-          break;
-        }
-      }
-    }
-    label256:
-    ae.d("MicroMsg.DynamicConfig", "All dynamicConfig:%s", new Object[] { this.ggF.toString() });
-    AppMethodBeat.o(132000);
-  }
-  
-  public final void a(String paramString, Map<String, String> paramMap, boolean paramBoolean)
-  {
+    AppMethodBeat.i(131989);
     for (;;)
     {
+      int i;
       try
       {
-        AppMethodBeat.i(131998);
-        if (bu.isNullOrNil(paramString))
+        boolean bool = Util.isNullOrNil(paramString);
+        if (bool)
         {
-          AppMethodBeat.o(131998);
-          return;
+          AppMethodBeat.o(131989);
+          return false;
         }
-        ae.i("MicroMsg.DynamicConfig", "update dynacfg. increment:%b, md5:%s", new Object[] { Boolean.valueOf(paramBoolean), o.aRh(paramString) });
-        if (paramBoolean)
+        Object localObject = new ArrayList();
+        if (!Util.isNullOrNil(paramString))
         {
-          g.ajS();
-          g.ajR().ajA().set(278530, paramString);
-          if (paramMap == null) {
-            break label142;
+          paramString = paramString.split(",");
+          if ((paramString != null) && (paramString.length > 0))
+          {
+            i = 0;
+            if (i < paramString.length)
+            {
+              if (Util.isNullOrNil(paramString[i])) {
+                break label267;
+              }
+              ((List)localObject).add(paramString[i]);
+              break label267;
+            }
           }
-          a(paramMap, paramBoolean);
-          paramString = new dc();
-          a.IvT.l(paramString);
-          AppMethodBeat.o(131998);
-          continue;
         }
-        g.ajS();
-      }
-      finally {}
-      g.ajR().ajA().set(278529, paramString);
-      g.ajS();
-      g.ajR().ajA().set(278530, "");
-      continue;
-      label142:
-      r(paramString, paramBoolean);
-    }
-  }
-  
-  public final int getInt(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(131994);
-    try
-    {
-      int i = Integer.parseInt(getValue(paramString));
-      paramInt = i;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        ae.e("MicroMsg.DynamicConfig", "parseInt failed, val: ".concat(String.valueOf(paramString)));
-      }
-    }
-    AppMethodBeat.o(131994);
-    return paramInt;
-  }
-  
-  public final String getValue(String paramString)
-  {
-    try
-    {
-      AppMethodBeat.i(131993);
-      if (!this.ggG)
-      {
-        ae.e("MicroMsg.DynamicConfig", "DynamicConfig hadnot load");
-        vw();
-      }
-      ae.d("MicroMsg.DynamicConfig", "get configs.get(config) %s %s", new Object[] { paramString.trim(), this.ggF.get(paramString) });
-      paramString = (String)this.ggF.get(paramString);
-      AppMethodBeat.o(131993);
-      return paramString;
-    }
-    finally {}
-  }
-  
-  @Deprecated
-  public final void put(String paramString1, String paramString2)
-  {
-    try
-    {
-      AppMethodBeat.i(131996);
-      if ((paramString1 != null) && (paramString2 != null))
-      {
-        ae.d("MicroMsg.DynamicConfig", "put configs.put(key,value) %s %s", new Object[] { paramString1.trim(), paramString2 });
-        this.ggF.put(paramString1, paramString2);
-      }
-      AppMethodBeat.o(131996);
-      return;
-    }
-    finally {}
-  }
-  
-  protected final void r(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(131999);
-    a(bx.M(paramString, "sysmsg"), paramBoolean);
-    AppMethodBeat.o(131999);
-  }
-  
-  /* Error */
-  public final java.util.List<String> vW(String paramString)
-  {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: ldc 215
-    //   4: invokestatic 20	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   7: aload_0
-    //   8: getfield 27	com/tencent/mm/n/e:ggG	Z
-    //   11: ifne +14 -> 25
-    //   14: ldc 83
-    //   16: ldc 192
-    //   18: invokestatic 189	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   21: aload_0
-    //   22: invokevirtual 195	com/tencent/mm/n/e:vw	()V
-    //   25: new 217	java/util/ArrayList
-    //   28: dup
-    //   29: invokespecial 218	java/util/ArrayList:<init>	()V
-    //   32: astore_2
-    //   33: aload_1
-    //   34: invokestatic 77	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
-    //   37: ifne +69 -> 106
-    //   40: aload_0
-    //   41: getfield 25	com/tencent/mm/n/e:ggF	Ljava/util/HashMap;
-    //   44: invokevirtual 222	java/util/HashMap:keySet	()Ljava/util/Set;
-    //   47: invokeinterface 228 1 0
-    //   52: astore_3
-    //   53: aload_3
-    //   54: invokeinterface 234 1 0
-    //   59: ifeq +47 -> 106
-    //   62: aload_3
-    //   63: invokeinterface 238 1 0
-    //   68: checkcast 68	java/lang/String
-    //   71: astore 4
-    //   73: aload 4
-    //   75: aload_1
-    //   76: invokevirtual 241	java/lang/String:matches	(Ljava/lang/String;)Z
-    //   79: ifeq -26 -> 53
-    //   82: aload_2
-    //   83: aload_0
-    //   84: getfield 25	com/tencent/mm/n/e:ggF	Ljava/util/HashMap;
-    //   87: aload 4
-    //   89: invokevirtual 198	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   92: invokeinterface 247 2 0
-    //   97: pop
-    //   98: goto -45 -> 53
-    //   101: astore_1
-    //   102: aload_0
-    //   103: monitorexit
-    //   104: aload_1
-    //   105: athrow
-    //   106: ldc 83
-    //   108: ldc 249
-    //   110: iconst_2
-    //   111: anewarray 4	java/lang/Object
-    //   114: dup
-    //   115: iconst_0
-    //   116: aload_1
-    //   117: aastore
-    //   118: dup
-    //   119: iconst_1
-    //   120: aload_2
-    //   121: invokeinterface 253 1 0
-    //   126: invokestatic 97	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   129: aastore
-    //   130: invokestatic 91	com/tencent/mm/sdk/platformtools/ae:d	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
-    //   133: ldc 215
-    //   135: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   138: aload_0
-    //   139: monitorexit
-    //   140: aload_2
-    //   141: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	142	0	this	e
-    //   0	142	1	paramString	String
-    //   32	109	2	localArrayList	java.util.ArrayList
-    //   52	11	3	localIterator	java.util.Iterator
-    //   71	17	4	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   2	25	101	finally
-    //   25	53	101	finally
-    //   53	98	101	finally
-    //   106	138	101	finally
-  }
-  
-  public void vw()
-  {
-    try
-    {
-      AppMethodBeat.i(131997);
-      g.ajS();
-      if (g.ajR() != null)
-      {
-        g.ajS();
-        if (g.ajR().ajA() != null)
+        paramString = LocaleUtil.getApplicationLanguage();
+        bool = Util.isNullOrNil(paramString);
+        if (bool)
         {
-          this.ggG = true;
-          g.ajS();
-          r((String)g.ajR().ajA().get(278529, null), false);
+          AppMethodBeat.o(131989);
+          return false;
         }
-      }
-      g.ajS();
-      if (g.ajR() != null)
-      {
-        g.ajS();
-        if (g.ajR().ajA() != null)
+        Log.d("MicroMsg.ConfigListInfo", "locale is ".concat(String.valueOf(paramString)));
+        localObject = ((List)localObject).iterator();
+        if (((Iterator)localObject).hasNext())
         {
-          this.ggG = true;
-          g.ajS();
-          r((String)g.ajR().ajA().get(278530, null), true);
+          String str = (String)((Iterator)localObject).next();
+          if ((str.trim().toLowerCase().equals("other")) && (!paramString.equals("zh_CN")))
+          {
+            Log.d("MicroMsg.ConfigListInfo", "find other");
+            AppMethodBeat.o(131989);
+            return true;
+          }
+          if (!str.trim().toLowerCase().equals(paramString.trim().toLowerCase())) {
+            continue;
+          }
+          Log.d("MicroMsg.ConfigListInfo", "find ");
+          AppMethodBeat.o(131989);
+          return true;
         }
       }
-      AppMethodBeat.o(131997);
-      return;
+      catch (Exception paramString)
+      {
+        Log.e("MicroMsg.ConfigListInfo", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
+        Log.d("MicroMsg.ConfigListInfo", "isContainLocale failed " + paramString.getMessage());
+        AppMethodBeat.o(131989);
+        return false;
+      }
+      label267:
+      i += 1;
     }
-    finally {}
+  }
+  
+  private static LinkedList<a> b(Map<String, String> paramMap, String paramString)
+  {
+    AppMethodBeat.i(131990);
+    LinkedList localLinkedList = null;
+    int i = 0;
+    Object localObject2 = new StringBuilder().append(paramString);
+    Object localObject1;
+    if (i == 0)
+    {
+      localObject1 = "";
+      label30:
+      String str = localObject1;
+      if (paramMap.get(str) == null) {
+        break label207;
+      }
+      localObject1 = str + ".id";
+      localObject2 = str + ".title";
+      str = str + ".url";
+      if (!paramMap.containsKey(localObject1)) {
+        break label207;
+      }
+      localObject1 = new a((String)paramMap.get(localObject1), (String)paramMap.get(localObject2), (String)paramMap.get(str));
+      if (localLinkedList != null) {
+        break label214;
+      }
+      localLinkedList = new LinkedList();
+    }
+    label207:
+    label214:
+    for (;;)
+    {
+      localLinkedList.add(localObject1);
+      i += 1;
+      break;
+      localObject1 = Integer.valueOf(i);
+      break label30;
+      AppMethodBeat.o(131990);
+      return localLinkedList;
+    }
+  }
+  
+  public static LinkedList<a> s(Map<String, String> paramMap)
+  {
+    AppMethodBeat.i(131991);
+    Object localObject1 = null;
+    int i = 0;
+    Object localObject3 = new StringBuilder(".ConfigList.Config");
+    if (i == 0) {}
+    for (Object localObject2 = "";; localObject2 = Integer.valueOf(i))
+    {
+      localObject3 = localObject2;
+      if (paramMap.get((String)localObject3 + ".$name") == null) {
+        break label240;
+      }
+      if (!((String)paramMap.get((String)localObject3 + ".$name")).equalsIgnoreCase("JDWebViewMenu")) {
+        break label247;
+      }
+      localObject2 = b(paramMap, (String)localObject3 + ".menuItems.menuItem");
+      localObject3 = b(paramMap, (String)localObject3 + ".menuItems.newMenuItem");
+      if (localObject2 != null) {
+        break;
+      }
+      AppMethodBeat.o(131991);
+      return localObject3;
+    }
+    localObject1 = localObject2;
+    if (localObject3 != null)
+    {
+      localObject1 = localObject2;
+      if (((LinkedList)localObject3).size() > 0)
+      {
+        Log.d("MicroMsg.ConfigListInfo", "has menuItem2, %s, %s", new Object[] { Integer.valueOf(((LinkedList)localObject2).size()), Integer.valueOf(((LinkedList)localObject3).size()) });
+        ((LinkedList)localObject2).addAll((Collection)localObject3);
+        localObject1 = localObject2;
+      }
+    }
+    label240:
+    label247:
+    for (;;)
+    {
+      i += 1;
+      break;
+      AppMethodBeat.o(131991);
+      return localObject1;
+    }
+  }
+  
+  public static final class a
+  {
+    public String id;
+    public String title;
+    public String url;
+    
+    public a(String paramString1, String paramString2, String paramString3)
+    {
+      this.id = paramString1;
+      this.title = paramString2;
+      this.url = paramString3;
+    }
+  }
+  
+  public static final class b
+    implements ContextMenu.ContextMenuInfo
+  {
+    private static int gMj = 10000;
+    public final int id;
+    public final String key;
+    public final String title;
+    
+    public b(String paramString1, String paramString2)
+    {
+      AppMethodBeat.i(131987);
+      int i = gMj;
+      gMj = i + 1;
+      this.id = i;
+      this.key = paramString1;
+      this.title = paramString2;
+      AppMethodBeat.o(131987);
+    }
   }
 }
 

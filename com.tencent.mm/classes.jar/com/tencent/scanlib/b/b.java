@@ -9,43 +9,43 @@ import java.util.concurrent.Executors;
 
 public final class b
 {
-  private static b Mmh;
-  public Map<Long, String> MhB;
-  public Map<Long, Object> MhC;
-  public Map<String, List<Long>> MhD;
-  private int[] MhF;
-  private a Mmi;
-  public Object yBn;
-  private ExecutorService yBp;
+  private static b ROE;
+  public Object CCt;
+  private ExecutorService CDQ;
+  public Map<Long, String> RKc;
+  public Map<Long, Object> RKd;
+  public Map<String, List<Long>> RKe;
+  private int[] RKg;
+  private a ROF;
   
   static
   {
     AppMethodBeat.i(3557);
-    Mmh = new b();
+    ROE = new b();
     AppMethodBeat.o(3557);
   }
   
   private b()
   {
     AppMethodBeat.i(3556);
-    this.MhF = new int[] { 2, 1 };
-    this.MhB = new HashMap();
-    this.MhC = new HashMap();
-    this.MhD = new HashMap();
-    this.yBn = new Object();
-    this.Mmi = new a("FileDecodeQueue");
-    this.yBp = Executors.newSingleThreadExecutor();
+    this.RKg = new int[] { 2, 1 };
+    this.RKc = new HashMap();
+    this.RKd = new HashMap();
+    this.RKe = new HashMap();
+    this.CCt = new Object();
+    this.ROF = new a("FileDecodeQueue");
+    this.CDQ = Executors.newSingleThreadExecutor();
     AppMethodBeat.o(3556);
   }
   
-  public static b fYR()
+  public static b hlc()
   {
-    return Mmh;
+    return ROE;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.scanlib.b.b
  * JD-Core Version:    0.7.0.1
  */

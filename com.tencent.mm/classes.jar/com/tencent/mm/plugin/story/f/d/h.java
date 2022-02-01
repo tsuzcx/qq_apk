@@ -1,79 +1,77 @@
 package com.tencent.mm.plugin.story.f.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.story.f.j.b;
 import com.tencent.mm.plugin.story.f.q;
 import com.tencent.mm.plugin.story.f.q.a;
-import com.tencent.mm.plugin.story.f.s;
 import com.tencent.mm.plugin.story.i.f;
-import com.tencent.mm.protocal.protobuf.agh;
-import com.tencent.mm.protocal.protobuf.djs;
-import com.tencent.mm.protocal.protobuf.djx;
-import com.tencent.mm.protocal.protobuf.dkg;
-import com.tencent.mm.protocal.protobuf.dkh;
-import com.tencent.mm.protocal.protobuf.dkn;
-import com.tencent.mm.protocal.protobuf.dkx;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.protocal.protobuf.aio;
+import com.tencent.mm.protocal.protobuf.edf;
+import com.tencent.mm.protocal.protobuf.edk;
+import com.tencent.mm.protocal.protobuf.edt;
+import com.tencent.mm.protocal.protobuf.edu;
+import com.tencent.mm.protocal.protobuf.eea;
+import com.tencent.mm.protocal.protobuf.eek;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "", "story", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "storyTImeline", "Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "storyItemScene", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItemScene;", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItemScene;)V", "TAG", "", "comment", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryComment;", "getComment", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryComment;", "getStory", "()Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "storyId", "", "getStoryId", "()J", "getStoryItemScene", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItemScene;", "getStoryTImeline", "()Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "userName", "getUserName", "()Ljava/lang/String;", "setUserName", "(Ljava/lang/String;)V", "videoItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "getVideoItem", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "convertFromFakeDB", "", "videoEditData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "convertFromStoryInfo", "equals", "other", "toString", "Companion", "plugin-story_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "", "story", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "storyTImeline", "Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "storyItemScene", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItemScene;", "(Lcom/tencent/mm/plugin/story/storage/StoryInfo;Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItemScene;)V", "TAG", "", "comment", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryComment;", "getComment", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryComment;", "getStory", "()Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "storyId", "", "getStoryId", "()J", "getStoryItemScene", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItemScene;", "getStoryTImeline", "()Lcom/tencent/mm/protocal/protobuf/StoryTimelineObject;", "userName", "getUserName", "()Ljava/lang/String;", "setUserName", "(Ljava/lang/String;)V", "videoItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "getVideoItem", "()Lcom/tencent/mm/plugin/story/model/gallery/StoryVideoItem;", "convertFromFakeDB", "", "videoEditData", "Lcom/tencent/mm/plugin/recordvideo/background/VideoEditData;", "convertFromStoryInfo", "equals", "other", "toString", "Companion", "plugin-story_release"})
 public final class h
 {
-  public static final a Beh;
-  public final j Bec;
-  public final g Bed;
-  public final com.tencent.mm.plugin.story.i.j Bee;
-  private final dkx Bef;
-  public final i Beg;
+  public static final a FoY;
+  public final j FoT;
+  public final g FoU;
+  public final com.tencent.mm.plugin.story.i.j FoV;
+  private final eek FoW;
+  public final i FoX;
   private final String TAG;
-  public final long dLI;
+  public final long edx;
   public String userName;
   
   static
   {
     AppMethodBeat.i(118932);
-    Beh = new a((byte)0);
+    FoY = new a((byte)0);
     AppMethodBeat.o(118932);
   }
   
-  public h(com.tencent.mm.plugin.story.i.j paramj, dkx paramdkx, i parami)
+  public h(com.tencent.mm.plugin.story.i.j paramj, eek parameek, i parami)
   {
     AppMethodBeat.i(118930);
-    this.Bee = paramj;
-    this.Bef = paramdkx;
-    this.Beg = parami;
+    this.FoV = paramj;
+    this.FoW = parameek;
+    this.FoX = parami;
     this.TAG = "MicroMsg.StoryGalleryItem";
-    this.dLI = this.Bee.field_storyID;
-    int i = (int)this.Bee.systemRowid;
-    long l = this.Bee.field_storyID;
-    int j = this.Bee.field_createTime;
-    paramdkx = this.Bee.field_userName;
-    paramj = paramdkx;
-    if (paramdkx == null) {
+    this.edx = this.FoV.field_storyID;
+    int i = (int)this.FoV.systemRowid;
+    long l = this.FoV.field_storyID;
+    int j = this.FoV.field_createTime;
+    parameek = this.FoV.field_userName;
+    paramj = parameek;
+    if (parameek == null) {
       paramj = "";
     }
     paramj = new j(i, l, j, paramj);
-    paramdkx = this.Bef;
-    if (paramdkx.HSy.Gtx.size() > 0)
+    parameek = this.FoW;
+    if (parameek.NeB.LoV.size() > 0)
     {
-      parami = paramdkx.HSy.Gtx.get(0);
+      parami = parameek.NeB.LoV.get(0);
       p.g(parami, "timeline.ContentObj.MediaObjList[0]");
-      parami = (dkg)parami;
+      parami = (edt)parami;
       p.h(parami, "<set-?>");
-      paramj.Bem = parami;
+      paramj.Fpd = parami;
     }
-    paramj.xKb = paramdkx.HSx;
-    this.Bec = paramj;
-    this.Bed = new g();
-    a(this.Bee);
+    paramj.BKf = parameek.NeA;
+    this.FoT = paramj;
+    this.FoU = new g();
+    a(this.FoV);
     AppMethodBeat.o(118930);
   }
   
@@ -81,146 +79,146 @@ public final class h
   {
     int k = 0;
     AppMethodBeat.i(118926);
-    Object localObject3 = new dkn();
+    Object localObject3 = new eea();
     try
     {
-      ((dkn)localObject3).parseFrom(paramj.field_attrBuf);
-      Object localObject4 = this.Bed;
+      ((eea)localObject3).parseFrom(paramj.field_attrBuf);
+      Object localObject4 = this.FoU;
       Object localObject2 = paramj.field_userName;
       Object localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
-        localObject1 = j.b.dXj();
+        localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
+        localObject1 = j.b.fau();
       }
       p.h(localObject1, "<set-?>");
-      ((g)localObject4).Bdj = ((String)localObject1);
-      this.Bed.dLI = paramj.field_storyID;
-      this.Bed.Asy = 0;
-      this.Bed.BdY = paramj.epf();
-      localObject1 = com.tencent.mm.plugin.story.f.j.BbE;
-      localObject1 = j.b.elE().Br(paramj.field_storyID);
+      ((g)localObject4).Foa = ((String)localObject1);
+      this.FoU.edx = paramj.field_storyID;
+      this.FoU.EBD = 0;
+      this.FoU.FoP = paramj.frF();
+      localObject1 = com.tencent.mm.plugin.story.f.j.Fmy;
+      localObject1 = j.b.fof().Kw(paramj.field_storyID);
       if ((localObject1 == null) || (((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime == 0)) {}
       boolean bool1;
       Object localObject5;
       j.b localb;
       for (int j = 1;; j = 0)
       {
-        localObject2 = ((dkn)localObject3).HSk.iterator();
+        localObject2 = ((eea)localObject3).Nen.iterator();
         bool1 = false;
         while (((Iterator)localObject2).hasNext())
         {
-          localObject4 = (djs)((Iterator)localObject2).next();
+          localObject4 = (edf)((Iterator)localObject2).next();
           p.g(localObject4, "commentDetail");
-          localObject4 = new com.tencent.mm.plugin.story.f.b.a((djs)localObject4);
-          if ((localObject1 == null) || (((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime <= 0) || (((com.tencent.mm.plugin.story.f.b.a)localObject4).icw <= ((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime)) {
+          localObject4 = new com.tencent.mm.plugin.story.f.b.a((edf)localObject4);
+          if ((localObject1 == null) || (((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime <= 0) || (((com.tencent.mm.plugin.story.f.b.a)localObject4).iXu <= ((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime)) {
             break label1217;
           }
-          localObject5 = ((com.tencent.mm.plugin.story.f.b.a)localObject4).dzZ;
-          localb = com.tencent.mm.plugin.story.f.j.BbE;
-          if (bu.lX((String)localObject5, j.b.dXj())) {
+          localObject5 = ((com.tencent.mm.plugin.story.f.b.a)localObject4).dRL;
+          localb = com.tencent.mm.plugin.story.f.j.Fmy;
+          if (Util.isEqual((String)localObject5, j.b.fau())) {
             break label1217;
           }
-          ((com.tencent.mm.plugin.story.f.b.a)localObject4).Bdf = true;
+          ((com.tencent.mm.plugin.story.f.b.a)localObject4).FnW = true;
           bool1 = true;
-          this.Bed.commentList.add(localObject4);
-          this.Bed.BdZ.add(localObject4);
-          ((com.tencent.mm.plugin.story.f.b.a)localObject4).aDi(this.Bed.Bdj);
-          ((com.tencent.mm.plugin.story.f.b.a)localObject4).Bdl = paramj.epl();
+          this.FoU.commentList.add(localObject4);
+          this.FoU.FoQ.add(localObject4);
+          ((com.tencent.mm.plugin.story.f.b.a)localObject4).aSd(this.FoU.Foa);
+          ((com.tencent.mm.plugin.story.f.b.a)localObject4).Foc = paramj.frL();
         }
       }
-      localObject2 = ((dkn)localObject3).HSm.iterator();
+      localObject2 = ((eea)localObject3).Nep.iterator();
       int i = 0;
       while (((Iterator)localObject2).hasNext())
       {
-        localObject4 = (djs)((Iterator)localObject2).next();
+        localObject4 = (edf)((Iterator)localObject2).next();
         p.g(localObject4, "bubleDetail");
-        localObject4 = new com.tencent.mm.plugin.story.f.b.a((djs)localObject4);
-        if ((localObject1 == null) || (((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime <= 0) || (((com.tencent.mm.plugin.story.f.b.a)localObject4).icw <= ((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime)) {
+        localObject4 = new com.tencent.mm.plugin.story.f.b.a((edf)localObject4);
+        if ((localObject1 == null) || (((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime <= 0) || (((com.tencent.mm.plugin.story.f.b.a)localObject4).iXu <= ((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime)) {
           break label1214;
         }
-        localObject5 = ((com.tencent.mm.plugin.story.f.b.a)localObject4).dzZ;
-        localb = com.tencent.mm.plugin.story.f.j.BbE;
-        if (bu.lX((String)localObject5, j.b.dXj())) {
+        localObject5 = ((com.tencent.mm.plugin.story.f.b.a)localObject4).dRL;
+        localb = com.tencent.mm.plugin.story.f.j.Fmy;
+        if (Util.isEqual((String)localObject5, j.b.fau())) {
           break label1214;
         }
-        ((com.tencent.mm.plugin.story.f.b.a)localObject4).Bdf = true;
+        ((com.tencent.mm.plugin.story.f.b.a)localObject4).FnW = true;
         i = 1;
-        this.Bed.commentList.add(localObject4);
-        this.Bed.Bea.add(localObject4);
-        ((com.tencent.mm.plugin.story.f.b.a)localObject4).aDi(this.Bed.Bdj);
-        ((com.tencent.mm.plugin.story.f.b.a)localObject4).Bdl = paramj.epl();
+        this.FoU.commentList.add(localObject4);
+        this.FoU.FoR.add(localObject4);
+        ((com.tencent.mm.plugin.story.f.b.a)localObject4).aSd(this.FoU.Foa);
+        ((com.tencent.mm.plugin.story.f.b.a)localObject4).Foc = paramj.frL();
       }
-      localObject2 = ((dkn)localObject3).HSq.iterator();
+      localObject2 = ((eea)localObject3).Net.iterator();
       boolean bool2 = false;
       while (((Iterator)localObject2).hasNext())
       {
-        localObject3 = (djs)((Iterator)localObject2).next();
+        localObject3 = (edf)((Iterator)localObject2).next();
         p.g(localObject3, "visitorDetail");
-        localObject3 = new com.tencent.mm.plugin.story.f.b.a((djs)localObject3);
-        if ((localObject1 == null) || (((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime <= 0) || (((com.tencent.mm.plugin.story.f.b.a)localObject3).icw <= ((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime)) {
+        localObject3 = new com.tencent.mm.plugin.story.f.b.a((edf)localObject3);
+        if ((localObject1 == null) || (((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime <= 0) || (((com.tencent.mm.plugin.story.f.b.a)localObject3).iXu <= ((com.tencent.mm.plugin.story.i.c)localObject1).field_readCommentTime)) {
           break label1211;
         }
-        localObject4 = ((com.tencent.mm.plugin.story.f.b.a)localObject3).dzZ;
-        localObject5 = com.tencent.mm.plugin.story.f.j.BbE;
-        if (bu.lX((String)localObject4, j.b.dXj())) {
+        localObject4 = ((com.tencent.mm.plugin.story.f.b.a)localObject3).dRL;
+        localObject5 = com.tencent.mm.plugin.story.f.j.Fmy;
+        if (Util.isEqual((String)localObject4, j.b.fau())) {
           break label1211;
         }
-        ((com.tencent.mm.plugin.story.f.b.a)localObject3).Bdf = true;
+        ((com.tencent.mm.plugin.story.f.b.a)localObject3).FnW = true;
         bool2 = true;
-        this.Bed.Beb.add(localObject3);
-        ((com.tencent.mm.plugin.story.f.b.a)localObject3).aDi(this.Bed.Bdj);
-        ((com.tencent.mm.plugin.story.f.b.a)localObject3).Bdl = paramj.epl();
+        this.FoU.FoS.add(localObject3);
+        ((com.tencent.mm.plugin.story.f.b.a)localObject3).aSd(this.FoU.Foa);
+        ((com.tencent.mm.plugin.story.f.b.a)localObject3).Foc = paramj.frL();
       }
-      localObject1 = (List)this.Bed.commentList;
+      localObject1 = (List)this.FoU.commentList;
       if (((List)localObject1).size() > 1) {
-        d.a.j.a((List)localObject1, (Comparator)new b());
+        kotlin.a.j.a((List)localObject1, (Comparator)new b());
       }
-      localObject1 = (List)this.Bed.BdZ;
+      localObject1 = (List)this.FoU.FoQ;
       if (((List)localObject1).size() > 1) {
-        d.a.j.a((List)localObject1, (Comparator)new c());
+        kotlin.a.j.a((List)localObject1, (Comparator)new c());
       }
-      localObject1 = (List)this.Bed.Bea;
+      localObject1 = (List)this.FoU.FoR;
       if (((List)localObject1).size() > 1) {
-        d.a.j.a((List)localObject1, (Comparator)new d());
+        kotlin.a.j.a((List)localObject1, (Comparator)new d());
       }
-      localObject1 = (List)this.Bed.Beb;
+      localObject1 = (List)this.FoU.FoS;
       if (((List)localObject1).size() > 1) {
-        d.a.j.a((List)localObject1, (Comparator)new e());
+        kotlin.a.j.a((List)localObject1, (Comparator)new e());
       }
-      if ((j != 0) && (this.Bed.commentList.size() > 0))
+      if ((j != 0) && (this.FoU.commentList.size() > 0))
       {
-        localObject1 = com.tencent.mm.plugin.story.f.b.b.Bdv;
-        long l = this.dLI;
-        localObject1 = this.Bed.commentList.get(0);
+        localObject1 = com.tencent.mm.plugin.story.f.b.b.Fom;
+        long l = this.edx;
+        localObject1 = this.FoU.commentList.get(0);
         p.g(localObject1, "comment.commentList[0]");
         com.tencent.mm.plugin.story.f.b.b.a(l, (com.tencent.mm.plugin.story.f.b.a)localObject1);
       }
-      localObject1 = this.Bed;
+      localObject1 = this.FoU;
       boolean bool3;
       if ((i != 0) || (bool1))
       {
         bool3 = true;
-        ((g)localObject1).Bdf = bool3;
-        this.Bed.BdW = bool2;
-        this.Bed.BdX = bool1;
+        ((g)localObject1).FnW = bool3;
+        this.FoU.FoN = bool2;
+        this.FoU.FoO = bool1;
         if (paramj == null) {
           break label1195;
         }
         localObject1 = paramj.field_userName;
         label874:
         this.userName = ((String)localObject1);
-        localObject1 = s.BcG;
-        localObject3 = this.Bec.Bem;
+        localObject1 = com.tencent.mm.plugin.story.f.s.Fny;
+        localObject3 = this.FoT.Fpd;
         localObject2 = paramj.field_userName;
         localObject1 = localObject2;
         if (localObject2 == null) {
           localObject1 = "";
         }
-        if (!o.fB(s.a((dkg)localObject3, (String)localObject1)))
+        if (!com.tencent.mm.vfs.s.YS(com.tencent.mm.plugin.story.f.s.a((edt)localObject3, (String)localObject1)))
         {
-          localObject1 = s.BcG;
-          if (!o.fB(s.a(this.Bec.Bem))) {
+          localObject1 = com.tencent.mm.plugin.story.f.s.Fny;
+          if (!com.tencent.mm.vfs.s.YS(com.tencent.mm.plugin.story.f.s.a(this.FoT.Fpd))) {
             break label1201;
           }
         }
@@ -231,7 +229,7 @@ public final class h
       {
         if (i == 0)
         {
-          localObject1 = (CharSequence)this.Bec.Bem.taskId;
+          localObject1 = (CharSequence)this.FoT.Fpd.taskId;
           if (localObject1 != null)
           {
             i = k;
@@ -243,17 +241,17 @@ public final class h
           }
           if (i == 0)
           {
-            localObject1 = com.tencent.mm.plugin.story.f.e.a.Beu;
-            localObject2 = com.tencent.mm.plugin.story.f.e.a.SM((int)paramj.systemRowid);
+            localObject1 = com.tencent.mm.plugin.story.f.e.a.Fpl;
+            localObject2 = com.tencent.mm.plugin.story.f.e.a.aaI((int)paramj.systemRowid);
             if (localObject2 != null)
             {
               localObject3 = this.TAG;
-              localObject4 = new StringBuilder("find fake video ").append(this.Bec).append(" media ");
-              paramj = com.tencent.mm.plugin.story.e.b.BaG;
-              paramj = this.Bec.Bem;
+              localObject4 = new StringBuilder("find fake video ").append(this.FoT).append(" media ");
+              paramj = com.tencent.mm.plugin.story.e.b.FlA;
+              paramj = this.FoT.Fpd;
               if (paramj != null)
               {
-                localObject1 = "Media localId " + paramj.dKr + " url " + paramj.Url + " thumb " + paramj.Hmj + " duration " + paramj.HSb + " taskId " + paramj.taskId;
+                localObject1 = "Media localId " + paramj.ecf + " url " + paramj.Url + " thumb " + paramj.Msz + " duration " + paramj.Ned + " taskId " + paramj.taskId;
                 paramj = (com.tencent.mm.plugin.story.i.j)localObject1;
                 if (localObject1 != null) {}
               }
@@ -261,12 +259,12 @@ public final class h
               {
                 paramj = "";
               }
-              ae.i((String)localObject3, paramj);
+              Log.i((String)localObject3, paramj);
               c((com.tencent.mm.plugin.recordvideo.background.c)localObject2);
             }
           }
         }
-        ae.i(this.TAG, "LogStory: ".concat(String.valueOf(this)));
+        Log.i(this.TAG, "LogStory: ".concat(String.valueOf(this)));
         AppMethodBeat.o(118926);
         return true;
         bool3 = false;
@@ -291,29 +289,29 @@ public final class h
   private final boolean c(com.tencent.mm.plugin.recordvideo.background.c paramc)
   {
     AppMethodBeat.i(118927);
-    Object localObject1 = (com.tencent.mm.bw.a)new agh();
+    Object localObject1 = (com.tencent.mm.bw.a)new aio();
     Object localObject3 = paramc.field_baseItemData;
     try
     {
       ((com.tencent.mm.bw.a)localObject1).parseFrom((byte[])localObject3);
-      localObject1 = (agh)localObject1;
+      localObject1 = (aio)localObject1;
       if (localObject1 != null)
       {
-        localObject3 = this.Bec;
-        Object localObject4 = k.Bep;
+        localObject3 = this.FoT;
+        Object localObject4 = k.Fpg;
         p.h(localObject4, "<set-?>");
-        ((j)localObject3).Bel = ((k)localObject4);
-        localObject3 = this.Bec;
-        localObject4 = paramc.aOZ();
+        ((j)localObject3).Fpc = ((k)localObject4);
+        localObject3 = this.FoT;
+        localObject4 = paramc.bjl();
         p.h(localObject4, "<set-?>");
         ((j)localObject3).taskId = ((String)localObject4);
-        this.Bec.Bem.Hmj = ((agh)localObject1).thumbPath;
-        this.Bec.Bem.Id = ("fake_" + ((agh)localObject1).timeStamp);
-        this.Bec.xKb = ((agh)localObject1).xPR;
-        if ((!o.fB(((agh)localObject1).videoPath)) && (((agh)localObject1).Gww.size() == 0) && (((agh)localObject1).Gwx == null))
+        this.FoT.Fpd.Msz = ((aio)localObject1).thumbPath;
+        this.FoT.Fpd.Id = ("fake_" + ((aio)localObject1).timeStamp);
+        this.FoT.BKf = ((aio)localObject1).BPU;
+        if ((!com.tencent.mm.vfs.s.YS(((aio)localObject1).videoPath)) && (((aio)localObject1).Lsc.size() == 0) && (((aio)localObject1).Lsd == null))
         {
-          localObject1 = com.tencent.mm.plugin.story.f.e.a.Beu;
-          com.tencent.mm.plugin.story.f.e.a.awP(paramc.aOZ());
+          localObject1 = com.tencent.mm.plugin.story.f.e.a.Fpl;
+          com.tencent.mm.plugin.story.f.e.a.aLh(paramc.bjl());
           AppMethodBeat.o(118927);
           return false;
         }
@@ -324,23 +322,23 @@ public final class h
       Object localObject2;
       for (;;)
       {
-        ae.l("safeParser", "", new Object[] { localException });
+        Log.printDebugStack("safeParser", "", new Object[] { localException });
         localObject2 = null;
       }
-      if (((agh)localObject2).Gww.size() > 0)
+      if (((aio)localObject2).Lsc.size() > 0)
       {
-        localObject2 = ((agh)localObject2).Gww.iterator();
+        localObject2 = ((aio)localObject2).Lsc.iterator();
         while (((Iterator)localObject2).hasNext()) {
-          if (!o.fB((String)((Iterator)localObject2).next()))
+          if (!com.tencent.mm.vfs.s.YS((String)((Iterator)localObject2).next()))
           {
-            localObject2 = com.tencent.mm.plugin.story.f.e.a.Beu;
-            com.tencent.mm.plugin.story.f.e.a.awP(paramc.aOZ());
+            localObject2 = com.tencent.mm.plugin.story.f.e.a.Fpl;
+            com.tencent.mm.plugin.story.f.e.a.aLh(paramc.bjl());
             AppMethodBeat.o(118927);
             return false;
           }
         }
       }
-      this.Bec.Ben = paramc;
+      this.FoT.Fpe = paramc;
       AppMethodBeat.o(118927);
       return true;
     }
@@ -361,7 +359,7 @@ public final class h
       AppMethodBeat.o(118929);
       return true;
     }
-    if ((this.dLI == ((h)paramObject).dLI) && (p.i(this.Bec, ((h)paramObject).Bec)) && (p.i(this.Bed, ((h)paramObject).Bed)) && (this.Bee.epi().hiJ == ((h)paramObject).Bee.epi().hiJ))
+    if ((this.edx == ((h)paramObject).edx) && (p.j(this.FoT, ((h)paramObject).FoT)) && (p.j(this.FoU, ((h)paramObject).FoU)) && (this.FoV.frI().ibG == ((h)paramObject).FoV.frI().ibG))
     {
       AppMethodBeat.o(118929);
       return true;
@@ -373,12 +371,12 @@ public final class h
   public final String toString()
   {
     AppMethodBeat.i(118928);
-    String str = "StoryGalleryItem(videoItem=" + this.Bec + ", comment=" + this.Bed + ')';
+    String str = "StoryGalleryItem(videoItem=" + this.FoT + ", comment=" + this.FoU + ')';
     AppMethodBeat.o(118928);
     return str;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem$Companion;", "", "()V", "createStoryGalleryItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "extInfo", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "story", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "storyItemScene", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItemScene;", "createStoryGalleryItemForSns", "plugin-story_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem$Companion;", "", "()V", "createStoryGalleryItem", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItem;", "extInfo", "Lcom/tencent/mm/plugin/story/storage/StoryExtInfo;", "story", "Lcom/tencent/mm/plugin/story/storage/StoryInfo;", "storyItemScene", "Lcom/tencent/mm/plugin/story/model/gallery/StoryGalleryItemScene;", "createStoryGalleryItemForSns", "plugin-story_release"})
   public static final class a
   {
     public static h a(f paramf)
@@ -389,22 +387,22 @@ public final class h
       localj.field_storyID = paramf.field_syncId;
       localj.field_createTime = paramf.field_storyPostTime;
       localj.field_userName = paramf.getUserName();
-      Object localObject1 = q.BbV;
-      localObject1 = q.a.elV();
-      ((dkx)localObject1).nIJ = paramf.getUserName();
-      ((dkx)localObject1).CreateTime = paramf.field_storyPostTime;
-      Object localObject2 = q.BbV;
-      localObject2 = new dkg();
-      ((dkg)localObject2).Id = ("empty_" + ch.aDb());
-      ((dkg)localObject2).Hmj = paramf.all();
-      ((dkg)localObject2).Url = paramf.eoX();
+      Object localObject1 = q.FmO;
+      localObject1 = q.a.fox();
+      ((eek)localObject1).UserName = paramf.getUserName();
+      ((eek)localObject1).CreateTime = paramf.field_storyPostTime;
+      Object localObject2 = q.FmO;
+      localObject2 = new edt();
+      ((edt)localObject2).Id = ("empty_" + cl.aWz());
+      ((edt)localObject2).Msz = paramf.aBE();
+      ((edt)localObject2).Url = paramf.frx();
       if (paramf.field_duration > 0L) {}
       for (float f = (float)(paramf.field_duration / 1000.0D);; f = 0.0F)
       {
-        ((dkg)localObject2).HSb = f;
-        ((dkx)localObject1).HSy.Gtx.add(localObject2);
-        localj.c((dkx)localObject1);
-        paramf = new h(localj, (dkx)localObject1);
+        ((edt)localObject2).Ned = f;
+        ((eek)localObject1).NeB.LoV.add(localObject2);
+        localj.c((eek)localObject1);
+        paramf = new h(localj, (eek)localObject1);
         AppMethodBeat.o(118921);
         return paramf;
       }
@@ -415,59 +413,59 @@ public final class h
       AppMethodBeat.i(118919);
       p.h(paramj, "story");
       p.h(parami, "storyItemScene");
-      paramj = new h(paramj, paramj.epg(), parami);
+      paramj = new h(paramj, paramj.frG(), parami);
       AppMethodBeat.o(118919);
       return paramj;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
   public static final class b<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
       AppMethodBeat.i(118922);
-      int i = d.b.a.a((Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT1).icw), (Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT2).icw));
+      int i = kotlin.b.a.a((Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT1).iXu), (Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT2).iXu));
       AppMethodBeat.o(118922);
       return i;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
   public static final class c<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
       AppMethodBeat.i(118923);
-      int i = d.b.a.a((Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT1).icw), (Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT2).icw));
+      int i = kotlin.b.a.a((Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT1).iXu), (Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT2).iXu));
       AppMethodBeat.o(118923);
       return i;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
   public static final class d<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
       AppMethodBeat.i(118924);
-      int i = d.b.a.a((Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT1).icw), (Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT2).icw));
+      int i = kotlin.b.a.a((Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT1).iXu), (Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT2).iXu));
       AppMethodBeat.o(118924);
       return i;
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "T", "a", "kotlin.jvm.PlatformType", "b", "compare", "(Ljava/lang/Object;Ljava/lang/Object;)I", "kotlin/comparisons/ComparisonsKt__ComparisonsKt$compareBy$2"})
   public static final class e<T>
     implements Comparator<T>
   {
     public final int compare(T paramT1, T paramT2)
     {
       AppMethodBeat.i(118925);
-      int i = d.b.a.a((Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT1).icw), (Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT2).icw));
+      int i = kotlin.b.a.a((Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT1).iXu), (Comparable)Integer.valueOf(((com.tencent.mm.plugin.story.f.b.a)paramT2).iXu));
       AppMethodBeat.o(118925);
       return i;
     }
@@ -475,7 +473,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.story.f.d.h
  * JD-Core Version:    0.7.0.1
  */

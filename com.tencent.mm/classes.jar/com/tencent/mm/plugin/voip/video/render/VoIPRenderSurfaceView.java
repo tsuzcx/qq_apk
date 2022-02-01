@@ -8,69 +8,69 @@ import android.view.SurfaceView;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.al;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.ui.ao;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderSurfaceView;", "Landroid/view/SurfaceView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "callback", "Landroid/view/SurfaceHolder$Callback;", "getCallback", "()Landroid/view/SurfaceHolder$Callback;", "setCallback", "(Landroid/view/SurfaceHolder$Callback;)V", "eventListner", "Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;", "getEventListner", "()Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;", "setEventListner", "(Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;)V", "isFullScreen", "", "()Z", "setFullScreen", "(Z)V", "remoteMode", "", "getRemoteMode", "()I", "setRemoteMode", "(I)V", "addRenderEventListner", "", "listener", "mode", "drawTransparent", "isTransparent", "initView", "w", "h", "release", "removeRenderEventListner", "resetViewSize", "setOpenGlViewSize", "Companion", "plugin-voip_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderSurfaceView;", "Landroid/view/SurfaceView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "callback", "Landroid/view/SurfaceHolder$Callback;", "getCallback", "()Landroid/view/SurfaceHolder$Callback;", "setCallback", "(Landroid/view/SurfaceHolder$Callback;)V", "eventListner", "Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;", "getEventListner", "()Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;", "setEventListner", "(Lcom/tencent/mm/plugin/voip/video/render/VoIPRenderMgr$RendererViewEvent;)V", "isFullScreen", "", "()Z", "setFullScreen", "(Z)V", "remoteMode", "", "getRemoteMode", "()I", "setRemoteMode", "(I)V", "addRenderEventListner", "", "listener", "mode", "drawTransparent", "isTransparent", "initView", "w", "h", "release", "removeRenderEventListner", "resetViewSize", "screenSize", "Landroid/graphics/Point;", "setOpenGlViewSize", "Companion", "plugin-voip_release"})
 public class VoIPRenderSurfaceView
   extends SurfaceView
 {
-  public static final VoIPRenderSurfaceView.a CKv;
-  public SurfaceHolder.Callback CKs;
-  public j.b CKt;
-  public int CKu;
-  private boolean ncj;
+  public static final VoIPRenderSurfaceView.a HoI;
+  public SurfaceHolder.Callback HoF;
+  public j.b HoG;
+  public int HoH;
+  private boolean onr;
   
   static
   {
-    AppMethodBeat.i(210621);
-    CKv = new VoIPRenderSurfaceView.a((byte)0);
-    AppMethodBeat.o(210621);
+    AppMethodBeat.i(236304);
+    HoI = new VoIPRenderSurfaceView.a((byte)0);
+    AppMethodBeat.o(236304);
   }
   
   public VoIPRenderSurfaceView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(210620);
-    this.CKs = ((SurfaceHolder.Callback)new b(this));
-    AppMethodBeat.o(210620);
+    AppMethodBeat.i(236303);
+    this.HoF = ((SurfaceHolder.Callback)new b(this));
+    AppMethodBeat.o(236303);
   }
   
-  public final void eEV()
+  public final void fLZ()
   {
-    AppMethodBeat.i(210618);
-    getHolder().removeCallback(this.CKs);
-    j.b localb = this.CKt;
+    AppMethodBeat.i(236301);
+    getHolder().removeCallback(this.HoF);
+    j.b localb = this.HoG;
     if (localb != null) {
-      localb.VF(this.CKu);
+      localb.aed(this.HoH);
     }
-    this.CKt = null;
-    AppMethodBeat.o(210618);
+    this.HoG = null;
+    AppMethodBeat.o(236301);
   }
   
   public final SurfaceHolder.Callback getCallback()
   {
-    return this.CKs;
+    return this.HoF;
   }
   
   public final j.b getEventListner()
   {
-    return this.CKt;
+    return this.HoG;
   }
   
   public final int getRemoteMode()
   {
-    return this.CKu;
+    return this.HoH;
   }
   
-  public void iC(int paramInt1, int paramInt2) {}
+  public void jH(int paramInt1, int paramInt2) {}
   
-  public void iD(int paramInt1, int paramInt2)
+  public void jI(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(210616);
+    AppMethodBeat.i(236299);
     RelativeLayout.LayoutParams localLayoutParams;
-    if (al.fBP())
+    if (ao.gJI())
     {
       localLayoutParams = new RelativeLayout.LayoutParams(paramInt2 * 9 / 16, paramInt2);
       localLayoutParams.addRule(13);
@@ -79,7 +79,7 @@ public class VoIPRenderSurfaceView
     {
       setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
       requestLayout();
-      AppMethodBeat.o(210616);
+      AppMethodBeat.o(236299);
       return;
       localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
     }
@@ -87,88 +87,88 @@ public class VoIPRenderSurfaceView
   
   public final void release()
   {
-    AppMethodBeat.i(210619);
-    j.b localb = this.CKt;
+    AppMethodBeat.i(236302);
+    j.b localb = this.HoG;
     if (localb != null) {
-      localb.VF(this.CKu);
+      localb.aed(this.HoH);
     }
-    eEV();
-    AppMethodBeat.o(210619);
+    fLZ();
+    AppMethodBeat.o(236302);
   }
   
   public final void setCallback(SurfaceHolder.Callback paramCallback)
   {
-    AppMethodBeat.i(210617);
+    AppMethodBeat.i(236300);
     p.h(paramCallback, "<set-?>");
-    this.CKs = paramCallback;
-    AppMethodBeat.o(210617);
+    this.HoF = paramCallback;
+    AppMethodBeat.o(236300);
   }
   
   public final void setEventListner(j.b paramb)
   {
-    this.CKt = paramb;
+    this.HoG = paramb;
   }
   
   public final void setFullScreen(boolean paramBoolean)
   {
-    this.ncj = paramBoolean;
+    this.onr = paramBoolean;
   }
   
   public final void setRemoteMode(int paramInt)
   {
-    this.CKu = paramInt;
+    this.HoH = paramInt;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/voip/video/render/VoIPRenderSurfaceView$callback$1", "Landroid/view/SurfaceHolder$Callback;", "surfaceChanged", "", "holder", "Landroid/view/SurfaceHolder;", "format", "", "width", "height", "surfaceCreated", "surfaceDestroyed", "plugin-voip_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/voip/video/render/VoIPRenderSurfaceView$callback$1", "Landroid/view/SurfaceHolder$Callback;", "surfaceChanged", "", "holder", "Landroid/view/SurfaceHolder;", "format", "", "width", "height", "surfaceCreated", "surfaceDestroyed", "plugin-voip_release"})
   public static final class b
     implements SurfaceHolder.Callback
   {
     public final void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3)
     {
-      AppMethodBeat.i(210613);
-      paramSurfaceHolder = this.CKw.getEventListner();
+      AppMethodBeat.i(236296);
+      paramSurfaceHolder = this.HoJ.getEventListner();
       if (paramSurfaceHolder != null)
       {
-        paramSurfaceHolder.az(paramInt2, paramInt3, this.CKw.getRemoteMode());
-        AppMethodBeat.o(210613);
+        paramSurfaceHolder.aG(paramInt2, paramInt3, this.HoJ.getRemoteMode());
+        AppMethodBeat.o(236296);
         return;
       }
-      AppMethodBeat.o(210613);
+      AppMethodBeat.o(236296);
     }
     
     public final void surfaceCreated(SurfaceHolder paramSurfaceHolder)
     {
-      AppMethodBeat.i(210615);
+      AppMethodBeat.i(236298);
       if (paramSurfaceHolder != null)
       {
-        j.b localb = this.CKw.getEventListner();
+        j.b localb = this.HoJ.getEventListner();
         if (localb != null)
         {
-          localb.a(this.CKw.getRemoteMode(), paramSurfaceHolder.getSurface(), null);
-          AppMethodBeat.o(210615);
+          localb.a(this.HoJ.getRemoteMode(), paramSurfaceHolder.getSurface(), null);
+          AppMethodBeat.o(236298);
           return;
         }
       }
-      AppMethodBeat.o(210615);
+      AppMethodBeat.o(236298);
     }
     
     public final void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
     {
-      AppMethodBeat.i(210614);
-      paramSurfaceHolder = this.CKw.getEventListner();
+      AppMethodBeat.i(236297);
+      paramSurfaceHolder = this.HoJ.getEventListner();
       if (paramSurfaceHolder != null)
       {
-        paramSurfaceHolder.VF(this.CKw.getRemoteMode());
-        AppMethodBeat.o(210614);
+        paramSurfaceHolder.aed(this.HoJ.getRemoteMode());
+        AppMethodBeat.o(236297);
         return;
       }
-      AppMethodBeat.o(210614);
+      AppMethodBeat.o(236297);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.render.VoIPRenderSurfaceView
  * JD-Core Version:    0.7.0.1
  */

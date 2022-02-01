@@ -1,14 +1,10 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class cf
-  extends b
+  extends IEvent
 {
-  public a doc;
-  public b dod;
-  
   public cf()
   {
     this((byte)0);
@@ -16,24 +12,8 @@ public final class cf
   
   private cf(byte paramByte)
   {
-    AppMethodBeat.i(43440);
-    this.doc = new a();
-    this.dod = new b();
-    this.IvZ = false;
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(43440);
-  }
-  
-  public static final class a
-  {
-    public String username;
-  }
-  
-  public static final class b
-  {
-    public String appId;
-    public String[] cni;
-    public String nickname;
   }
 }
 

@@ -1,60 +1,70 @@
 package com.tencent.mm.plugin.sns.ui;
 
-import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.plugin.expt.b.c;
-import com.tencent.mm.plugin.i.a.t;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.i.a.af;
+import com.tencent.mm.plugin.i.a.aj;
+import com.tencent.mm.plugin.i.a.aj.b;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abo;
-import com.tencent.mm.protocal.protobuf.ary;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.protocal.protobuf.axf;
 
 final class SnsCommentDetailUI$31
-  implements View.OnClickListener
+  implements aj.b
 {
-  SnsCommentDetailUI$31(SnsCommentDetailUI paramSnsCommentDetailUI, TimeLineObject paramTimeLineObject) {}
+  SnsCommentDetailUI$31(SnsCommentDetailUI paramSnsCommentDetailUI, long paramLong, TimeLineObject paramTimeLineObject, axf paramaxf) {}
   
-  public final void onClick(View paramView)
+  public final void a(long paramLong, int paramInt, Object paramObject)
   {
-    AppMethodBeat.i(98571);
-    Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$37", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-    localObject = new Intent();
-    ((Intent)localObject).putExtra("key_from_profile_share_scene", 3);
-    ((Intent)localObject).putExtra("key_enter_profile_type", 8);
-    if (bu.isNullOrNil(this.Atk.HUG.GtB.username))
-    {
-      ((Intent)localObject).putExtra("finder_username", "");
-      ((Intent)localObject).putExtra("key_finder_object_Id", this.Atk.HUG.GtB.objectId);
-      ((Intent)localObject).putExtra("key_finder_object_nonce_id_key", this.Atk.HUG.GtB.objectNonceId);
+    AppMethodBeat.i(203526);
+    paramObject = SnsCommentDetailUI.y(this.ECd).findViewById(2131301031);
+    View localView = SnsCommentDetailUI.y(this.ECd).findViewById(2131300979);
+    ImageView localImageView = (ImageView)SnsCommentDetailUI.y(this.ECd).findViewById(2131308127);
+    if (this.ECs == paramLong) {
+      if (paramInt == 2)
+      {
+        if ((this.ECp.ContentObj != null) && (this.ECp.ContentObj.Lpc != null)) {
+          this.ECp.ContentObj.Lpc.liveStatus = paramInt;
+        }
+        paramObject.setVisibility(8);
+        localView.setVisibility(0);
+        if (!TextUtils.isEmpty(this.ECt.coverUrl)) {
+          paramObject = this.ECt.coverUrl;
+        }
+      }
     }
     for (;;)
     {
-      String str1 = bu.nullAsNil(((c)com.tencent.mm.kernel.g.ab(c.class)).cos());
-      String str2 = bu.nullAsNil(this.Atk.nIJ);
-      String str3 = this.Atk.HUG.GtB.objectId;
-      String str4 = this.Atk.Id;
-      str1 = str1 + "," + str2 + "," + str3 + "," + str4;
-      ae.i("MicroMsg.SnsCommentDetailUI", "report20587, ".concat(String.valueOf(str1)));
-      com.tencent.mm.plugin.report.service.g.yxI.kvStat(20587, str1);
-      ((t)com.tencent.mm.kernel.g.ad(t.class)).fillContextIdToIntent(4, 2, 32, (Intent)localObject);
-      ((t)com.tencent.mm.kernel.g.ad(t.class)).enterFinderProfileUI(paramView.getContext(), (Intent)localObject);
-      a.a(this, "com/tencent/mm/plugin/sns/ui/SnsCommentDetailUI$37", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(98571);
+      ((aj)g.ah(aj.class)).getFinderUtilApi().g(localImageView, paramObject);
+      AppMethodBeat.o(203526);
       return;
-      ((Intent)localObject).putExtra("finder_username", this.Atk.HUG.GtB.username);
+      if (!TextUtils.isEmpty(this.ECt.headUrl))
+      {
+        paramObject = this.ECt.headUrl;
+        continue;
+        if (paramInt == 1)
+        {
+          if ((this.ECp.ContentObj != null) && (this.ECp.ContentObj.Lpc != null)) {
+            this.ECp.ContentObj.Lpc.liveStatus = paramInt;
+          }
+          paramObject.setVisibility(0);
+          localView.setVisibility(8);
+        }
+        AppMethodBeat.o(203526);
+      }
+      else
+      {
+        paramObject = "";
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.SnsCommentDetailUI.31
  * JD-Core Version:    0.7.0.1
  */

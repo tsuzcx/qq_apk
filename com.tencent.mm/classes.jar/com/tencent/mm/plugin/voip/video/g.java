@@ -1,35 +1,37 @@
 package com.tencent.mm.plugin.voip.video;
 
-import android.graphics.Point;
+import android.graphics.SurfaceTexture;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/voip/video/VoipSurfaceTexture;", "Landroid/graphics/SurfaceTexture;", "texName", "", "(I)V", "TAG", "", "plugin-voip_release"})
 public final class g
+  extends SurfaceTexture
 {
-  int CEA = 0;
-  int CEB;
-  Point CEC;
-  Point CED;
-  private String CEw = null;
-  int CEx = 30;
-  boolean CEy = false;
-  boolean CEz = true;
-  int gag = 1;
+  private final String TAG;
   
-  public g(String paramString)
+  public g(int paramInt)
   {
-    this.CEw = paramString;
-    this.CEx = 15;
-    this.gag = 1;
-    this.CEy = false;
-    this.CEz = true;
-    this.CEA = 0;
-    this.CEB = 0;
-    this.CEC = null;
-    this.CED = null;
+    super(paramInt);
+    AppMethodBeat.i(115960);
+    this.TAG = "MicroMsg.VoipSurfaceTexture";
+    try
+    {
+      super.detachFromGLContext();
+      AppMethodBeat.o(115960);
+      return;
+    }
+    catch (Exception localException)
+    {
+      Log.i(this.TAG, "detachFromGLContext  in init error");
+      AppMethodBeat.o(115960);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.video.g
  * JD-Core Version:    0.7.0.1
  */

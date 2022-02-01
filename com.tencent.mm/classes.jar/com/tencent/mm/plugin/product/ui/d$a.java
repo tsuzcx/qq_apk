@@ -13,10 +13,10 @@ import java.util.List;
 final class d$a
   extends BaseAdapter
 {
-  List<String> aKA;
+  int BaH = -1;
+  List<String> aKs;
   private final Context context;
   private final int style;
-  int xdf = -1;
   
   public d$a(Context paramContext)
   {
@@ -27,9 +27,9 @@ final class d$a
   public final int getCount()
   {
     AppMethodBeat.i(66957);
-    if (this.aKA != null)
+    if (this.aKs != null)
     {
-      int i = this.aKA.size();
+      int i = this.aKs.size();
       AppMethodBeat.o(66957);
       return i;
     }
@@ -54,37 +54,37 @@ final class d$a
     paramViewGroup = paramView;
     if (paramView == null)
     {
-      paramViewGroup = View.inflate(this.context, 2131494854, null);
+      paramViewGroup = View.inflate(this.context, 2131495589, null);
       paramView = new d.b();
-      paramView.xdg = ((TextView)paramViewGroup.findViewById(2131305710));
-      paramView.xdh = ((CheckBox)paramViewGroup.findViewById(2131298214));
-      paramView.xdi = ((RadioButton)paramViewGroup.findViewById(2131303704));
+      paramView.BaI = ((TextView)paramViewGroup.findViewById(2131308977));
+      paramView.BaJ = ((CheckBox)paramViewGroup.findViewById(2131298596));
+      paramView.BaK = ((RadioButton)paramViewGroup.findViewById(2131306483));
       paramViewGroup.setTag(paramView);
     }
     paramView = (d.b)paramViewGroup.getTag();
-    paramView.xdg.setText((CharSequence)this.aKA.get(paramInt));
+    paramView.BaI.setText((CharSequence)this.aKs.get(paramInt));
     switch (this.style)
     {
     default: 
-      paramView.xdh.setVisibility(8);
-      paramView.xdi.setVisibility(8);
+      paramView.BaJ.setVisibility(8);
+      paramView.BaK.setVisibility(8);
       AppMethodBeat.o(66958);
       return paramViewGroup;
     case 1: 
-      paramView.xdh.setVisibility(8);
-      paramView.xdi.setVisibility(0);
-      paramView = paramView.xdi;
-      if (paramInt == this.xdf) {}
+      paramView.BaJ.setVisibility(8);
+      paramView.BaK.setVisibility(0);
+      paramView = paramView.BaK;
+      if (paramInt == this.BaH) {}
       for (bool = true;; bool = false)
       {
         paramView.setChecked(bool);
         break;
       }
     }
-    paramView.xdh.setVisibility(0);
-    paramView.xdi.setVisibility(8);
-    paramView = paramView.xdh;
-    if (paramInt == this.xdf) {}
+    paramView.BaJ.setVisibility(0);
+    paramView.BaK.setVisibility(8);
+    paramView = paramView.BaJ;
+    if (paramInt == this.BaH) {}
     for (;;)
     {
       paramView.setChecked(bool);
@@ -95,7 +95,7 @@ final class d$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.d.a
  * JD-Core Version:    0.7.0.1
  */

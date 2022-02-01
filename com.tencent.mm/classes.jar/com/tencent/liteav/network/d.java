@@ -1,8 +1,10 @@
 package com.tencent.liteav.network;
 
 import android.os.Bundle;
+import com.tencent.liteav.basic.b.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
+import com.tencent.liteav.basic.structs.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -109,7 +111,7 @@ public class d
     this.h = paramLong;
   }
   
-  public void onPullAudio(com.tencent.liteav.basic.structs.a parama)
+  public void onPullAudio(a parama)
   {
     AppMethodBeat.i(15405);
     if (this.a != null) {
@@ -137,7 +139,7 @@ public class d
   }
   
   static class b
-    implements com.tencent.liteav.basic.c.a, f
+    implements b, f
   {
     private final int a;
     private long b;
@@ -148,7 +150,7 @@ public class d
     private long g;
     private long h;
     private ArrayList<TXSNALPacket> i;
-    private ArrayList<com.tencent.liteav.basic.structs.a> j;
+    private ArrayList<a> j;
     private TXIStreamDownloader k;
     private WeakReference<d> l;
     private f m;
@@ -217,11 +219,11 @@ public class d
               localObject1 = this.j.iterator();
               while (((Iterator)localObject1).hasNext())
               {
-                localObject2 = (com.tencent.liteav.basic.structs.a)((Iterator)localObject1).next();
-                if (((com.tencent.liteav.basic.structs.a)localObject2).e >= this.c)
+                localObject2 = (a)((Iterator)localObject1).next();
+                if (((a)localObject2).e >= this.c)
                 {
-                  TXCLog.i("TXCMultiStreamDownloader", " stream_switch pre start cache audio pts " + ((com.tencent.liteav.basic.structs.a)localObject2).e + " from " + this.c);
-                  this.m.onPullAudio((com.tencent.liteav.basic.structs.a)localObject2);
+                  TXCLog.i("TXCMultiStreamDownloader", " stream_switch pre start cache audio pts " + ((a)localObject2).e + " from " + this.c);
+                  this.m.onPullAudio((a)localObject2);
                 }
               }
               TXCLog.w("TXCMultiStreamDownloader", " stream_switch pre start end audio cache  " + this.j.size());
@@ -252,7 +254,7 @@ public class d
       AppMethodBeat.o(15497);
     }
     
-    private void a(com.tencent.liteav.basic.structs.a parama)
+    private void a(a parama)
     {
       AppMethodBeat.i(15495);
       if (parama == null)
@@ -318,7 +320,7 @@ public class d
       AppMethodBeat.o(15498);
     }
     
-    private void b(com.tencent.liteav.basic.structs.a parama)
+    private void b(a parama)
     {
       AppMethodBeat.i(15496);
       if (this.h > 0L)
@@ -382,7 +384,7 @@ public class d
       AppMethodBeat.o(15499);
     }
     
-    public void onPullAudio(com.tencent.liteav.basic.structs.a parama)
+    public void onPullAudio(a parama)
     {
       AppMethodBeat.i(15493);
       if (this.b > 0L)
@@ -432,7 +434,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.network.d
  * JD-Core Version:    0.7.0.1
  */

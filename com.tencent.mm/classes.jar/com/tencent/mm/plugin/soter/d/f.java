@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.soter.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.dc;
-import com.tencent.mm.sdk.b.c;
+import com.tencent.mm.g.a.df;
+import com.tencent.mm.sdk.event.IListener;
 
 public final class f
-  extends c<dc>
+  extends IListener<df>
 {
   private static String TAG = "MicroMsg.SoterDynamicConfigUpdatedEventListener";
   
   public f()
   {
     AppMethodBeat.i(161756);
-    this.__eventId = dc.class.getName().hashCode();
+    this.__eventId = df.class.getName().hashCode();
     AppMethodBeat.o(161756);
   }
 }

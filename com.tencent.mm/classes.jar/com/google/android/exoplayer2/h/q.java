@@ -9,8 +9,8 @@ import java.io.RandomAccessFile;
 public final class q
   implements g
 {
-  private final w<? super q> bEG;
-  private long bEH;
+  private final w<? super q> bEI;
+  private long bEJ;
   private RandomAccessFile file;
   private boolean opened;
   private Uri uri;
@@ -22,7 +22,7 @@ public final class q
   
   public q(w<? super q> paramw)
   {
-    this.bEG = paramw;
+    this.bEI = paramw;
   }
   
   public final long a(j paramj)
@@ -38,8 +38,8 @@ public final class q
         if (paramj.length == -1L)
         {
           l = this.file.length() - paramj.position;
-          this.bEH = l;
-          if (this.bEH >= 0L) {
+          this.bEJ = l;
+          if (this.bEJ >= 0L) {
             break;
           }
           paramj = new EOFException();
@@ -56,10 +56,10 @@ public final class q
       l = paramj.length;
     }
     this.opened = true;
-    if (this.bEG != null) {
-      this.bEG.a(this, paramj);
+    if (this.bEI != null) {
+      this.bEI.a(this, paramj);
     }
-    long l = this.bEH;
+    long l = this.bEJ;
     AppMethodBeat.o(93079);
     return l;
   }
@@ -87,8 +87,8 @@ public final class q
       if (this.opened)
       {
         this.opened = false;
-        if (this.bEG != null) {
-          this.bEG.ah(this);
+        if (this.bEI != null) {
+          this.bEI.ai(this);
         }
       }
       AppMethodBeat.o(93081);
@@ -109,19 +109,19 @@ public final class q
       AppMethodBeat.o(93080);
       return 0;
     }
-    if (this.bEH == 0L)
+    if (this.bEJ == 0L)
     {
       AppMethodBeat.o(93080);
       return -1;
     }
     try
     {
-      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bEH, paramInt2));
+      paramInt1 = this.file.read(paramArrayOfByte, paramInt1, (int)Math.min(this.bEJ, paramInt2));
       if (paramInt1 > 0)
       {
-        this.bEH -= paramInt1;
-        if (this.bEG != null) {
-          this.bEG.e(this, paramInt1);
+        this.bEJ -= paramInt1;
+        if (this.bEI != null) {
+          this.bEI.d(this, paramInt1);
         }
       }
       AppMethodBeat.o(93080);
@@ -146,7 +146,7 @@ public final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.h.q
  * JD-Core Version:    0.7.0.1
  */

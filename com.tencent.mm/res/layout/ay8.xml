@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:orientation="vertical" android:background="@color/an" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/s5" android:id="@id/em4" android:background="@drawable/amw" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/ha" android:paddingRight="@dimen/jn" android:paddingBottom="@dimen/js" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/em5" android:background="@drawable/a31" android:layout_width="fill_parent" android:layout_height="@dimen/i9">
-        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/jn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
-            <TextView android:id="@id/em6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/m3" />
-            <TextView android:id="@id/em3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        </LinearLayout>
-        <CheckBox android:id="@id/em7" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/jn" />
-    </LinearLayout>
-</LinearLayout>
+    <ListView android:orientation="vertical" android:id="@id/mc" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:descendantFocusability="afterDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+    <RelativeLayout android:id="@id/iej" android:background="@color/b" android:paddingLeft="16.0dip" android:paddingTop="16.0dip" android:paddingRight="16.0dip" android:paddingBottom="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="54.0dip" android:layout_alignParentBottom="true">
+        <TextView android:textSize="@dimen/l0" android:textColor="@color/aq" android:id="@id/b3f" android:background="@drawable/l" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/ecg" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="@dimen/l0" android:textColor="@color/a2x" android:id="@id/md" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/eci" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <TextView android:textSize="14.0dip" android:textColor="@color/am" android:gravity="center" android:id="@id/lm" android:background="@drawable/t" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="48.0dip" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:text="" android:layout_alignParentTop="true" />
+    <include android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/c21" />
+</RelativeLayout>

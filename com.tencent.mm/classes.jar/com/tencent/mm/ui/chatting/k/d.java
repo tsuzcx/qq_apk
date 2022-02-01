@@ -2,7 +2,7 @@ package com.tencent.mm.ui.chatting.k;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
@@ -13,28 +13,29 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.ag.k.b;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.al;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ap;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.model.x;
 import com.tencent.mm.plugin.fav.ui.e;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.ac;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ah;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.base.n.e;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.base.o.g;
 import com.tencent.mm.ui.chatting.a.c.a;
 import com.tencent.mm.ui.chatting.a.c.b;
 import com.tencent.mm.ui.chatting.a.c.c;
 import com.tencent.mm.ui.chatting.a.c.e;
+import com.tencent.mm.ui.chatting.a.c.g;
 import com.tencent.mm.ui.chatting.f.b.b;
 import com.tencent.mm.ui.gridviewheaders.a;
 import java.util.ArrayList;
@@ -44,18 +45,19 @@ import java.util.LinkedList;
 public final class d
   extends b
 {
-  int Ksh = 0;
-  int fXi = -1;
+  int PEu = 0;
+  int gCo = -1;
+  private int qpr = -1;
   
   public d(Context paramContext)
   {
     super(paramContext);
   }
   
-  public final RecyclerView.w D(ViewGroup paramViewGroup)
+  public final RecyclerView.v N(ViewGroup paramViewGroup)
   {
     AppMethodBeat.i(36490);
-    paramViewGroup = new b(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494003, paramViewGroup, false));
+    paramViewGroup = new b(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131494178, paramViewGroup, false));
     AppMethodBeat.o(36490);
     return paramViewGroup;
   }
@@ -64,89 +66,110 @@ public final class d
   {
     AppMethodBeat.i(36491);
     parama = (b)parama;
-    a locala = (a)adN(paramInt);
-    if (bu.isNullOrNil(locala.desc)) {
-      parama.iFO.setVisibility(8);
+    a locala = (a)amy(paramInt);
+    if (Util.isNullOrNil(locala.desc)) {
+      parama.jBR.setVisibility(8);
     }
     for (;;)
     {
-      parama.mdt.setImageResource(locala.iconRes);
+      parama.nnL.setImageResource(locala.iconRes);
       AppMethodBeat.o(36491);
       return;
-      parama.iFO.setVisibility(0);
-      parama.iFO.setText(bu.bI(locala.desc, ""));
+      parama.jBR.setVisibility(0);
+      parama.jBR.setText(Util.nullAs(locala.desc, ""));
     }
   }
   
-  public final String aRV()
+  public final String bmB()
   {
     AppMethodBeat.i(36487);
-    String str = this.mContext.getString(2131755255);
+    String str = this.mContext.getString(2131755290);
     AppMethodBeat.o(36487);
     return str;
   }
   
-  public final void fJL()
+  public final void gRY()
   {
     AppMethodBeat.i(36486);
-    ae.i("MicroMsg.FileHistoryListPresenter", "[loadData] isFirst:%s", new Object[] { Boolean.TRUE });
-    this.KrZ.fJP();
-    g.ajS();
-    g.ajU().aw(new Runnable()
+    Log.i("MicroMsg.FileHistoryListPresenter", "[loadData] isFirst:%s", new Object[] { Boolean.TRUE });
+    this.PEm.gSc();
+    g.aAi();
+    g.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(36479);
         LinkedList localLinkedList = new LinkedList();
-        bc.aCg();
-        Cursor localCursor = c.azI().el(d.this.fVg, d.this.fXi);
+        bg.aVF();
+        Cursor localCursor = c.aSQ().ez(d.this.gAn, d.this.gCo);
         if (localCursor == null)
         {
-          ae.e("MicroMsg.FileHistoryListPresenter", "[loadData] cursor is null!");
+          Log.e("MicroMsg.FileHistoryListPresenter", "[loadData] cursor is null!");
           AppMethodBeat.o(36479);
           return;
         }
-        if (x.wb(d.this.fVg)) {
-          bc.aCg();
+        if (ab.Eq(d.this.gAn)) {
+          bg.aVF();
         }
         Object localObject2;
-        for (ac localac = c.azP().Bx(d.this.fVg);; localObject2 = null)
+        for (ah localah = c.aSX().Kd(d.this.gAn);; localObject2 = null)
         {
           long l1 = 0L;
           try
           {
             while (localCursor.moveToNext())
             {
-              bv localbv = new bv();
-              localbv.convertFrom(localCursor);
-              Object localObject3 = localbv.field_content;
+              ca localca = new ca();
+              localca.convertFrom(localCursor);
+              Object localObject3 = localca.field_content;
               if (localObject3 != null)
               {
-                k.b localb = k.b.zb((String)localObject3);
+                k.b localb = k.b.HD((String)localObject3);
                 if (localb != null)
                 {
                   if (6 == localb.type) {}
                   for (int i = 1; i != 0; i = 0)
                   {
-                    localObject3 = new Date(localbv.field_createTime);
-                    long l2 = a.fNX().b((Date)localObject3);
+                    localObject3 = new Date(localca.field_createTime);
+                    long l2 = a.gWr().b((Date)localObject3);
                     if (l1 != l2)
                     {
-                      localLinkedList.add(new c.c(localbv.field_createTime));
+                      localLinkedList.add(new c.c(localca.field_createTime));
                       localObject3 = d.this;
-                      ((d)localObject3).Ksh += 1;
+                      ((d)localObject3).PEu += 1;
                     }
-                    String str = d.b(localbv, x.wb(d.this.fVg));
-                    an localan = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().BH(str);
+                    String str = d.b(localca, ab.Eq(d.this.gAn));
+                    as localas = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN().Kn(str);
                     localObject3 = "";
-                    if (localac != null) {
-                      localObject3 = localac.zP(str);
+                    if (localah != null) {
+                      localObject3 = localah.getDisplayName(str);
                     }
-                    i = e.ahD(localb.hCD);
-                    localObject3 = new d.a(d.this, localbv.field_createTime, localb.type, localb.title, localbv.field_msgId, localan.field_username, localan.adF(), localan.field_conRemark, (String)localObject3);
+                    i = e.asl(localb.iwJ);
+                    localObject3 = new d.a(d.this, localca.field_createTime, localb.type, localb.title, localca.field_msgId, localas.field_username, localas.arI(), localas.field_conRemark, (String)localObject3);
                     ((d.a)localObject3).iconRes = i;
-                    ((d.a)localObject3).desc = bu.sL(localb.hCC);
+                    ((d.a)localObject3).desc = Util.getSizeKB(localb.iwI);
                     localLinkedList.add(localObject3);
+                    if (localLinkedList.size() % 20 == 0)
+                    {
+                      if ((d.this.mDataList.size() > 0) && (((c.b)d.this.mDataList.get(d.this.mDataList.size() - 1)).getType() == 2147483646)) {
+                        d.this.mDataList.remove(d.this.mDataList.size() - 1);
+                      }
+                      d.this.mDataList.addAll(localLinkedList);
+                      d.this.mDataList.add(new c.g());
+                      d.this.PEo = d.this.mDataList;
+                      localLinkedList.clear();
+                      MMHandlerThread.postToMainThread(new Runnable()
+                      {
+                        public final void run()
+                        {
+                          AppMethodBeat.i(36478);
+                          if (d.this.PEm != null) {
+                            d.this.PEm.D(d.1.this.qoy, d.this.mDataList.size());
+                          }
+                          AppMethodBeat.o(36478);
+                        }
+                      });
+                    }
                     l1 = l2;
                     break;
                   }
@@ -154,19 +177,22 @@ public final class d
               }
             }
             localCursor.close();
+            if ((d.this.mDataList.size() > 0) && (((c.b)d.this.mDataList.get(d.this.mDataList.size() - 1)).getType() == 2147483646)) {
+              d.this.mDataList.remove(d.this.mDataList.size() - 1);
+            }
             d.this.mDataList.addAll(localLinkedList);
-            d.this.Ksb = d.this.mDataList;
+            d.this.PEo = d.this.mDataList;
             localLinkedList.clear();
-            ae.i("MicroMsg.FileHistoryListPresenter", "[loadData] data:%s", new Object[] { Integer.valueOf(d.this.mDataList.size()) });
-            ar.f(new Runnable()
+            Log.i("MicroMsg.FileHistoryListPresenter", "[loadData] data:%s", new Object[] { Integer.valueOf(d.this.mDataList.size()) });
+            MMHandlerThread.postToMainThread(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(36478);
-                if (d.this.KrZ != null) {
-                  d.this.KrZ.C(d.1.this.oZA, d.this.mDataList.size());
+                AppMethodBeat.i(233480);
+                if (d.this.PEm != null) {
+                  d.this.PEm.D(d.1.this.qoy, d.this.mDataList.size());
                 }
-                AppMethodBeat.o(36478);
+                AppMethodBeat.o(233480);
               }
             });
             AppMethodBeat.o(36479);
@@ -183,7 +209,7 @@ public final class d
     AppMethodBeat.o(36486);
   }
   
-  public final c.e fJM()
+  public final c.e gRZ()
   {
     AppMethodBeat.i(36489);
     c.e local2 = new c.e()
@@ -191,7 +217,7 @@ public final class d
       public final void a(View paramAnonymousView, int paramAnonymousInt, c.b paramAnonymousb)
       {
         AppMethodBeat.i(36482);
-        ae.i("MicroMsg.FileHistoryListPresenter", "[onItemClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        Log.i("MicroMsg.FileHistoryListPresenter", "[onItemClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
         d.a(d.this, paramAnonymousb);
         AppMethodBeat.o(36482);
       }
@@ -199,27 +225,27 @@ public final class d
       public final void b(View paramAnonymousView, int paramAnonymousInt, final c.b paramAnonymousb)
       {
         AppMethodBeat.i(36483);
-        ae.i("MicroMsg.FileHistoryListPresenter", "[onItemLongClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
-        new com.tencent.mm.ui.tools.l(paramAnonymousView.getContext()).b(paramAnonymousView, new View.OnCreateContextMenuListener()new n.e
+        Log.i("MicroMsg.FileHistoryListPresenter", "[onItemLongClick] position:%s", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        new com.tencent.mm.ui.tools.l(paramAnonymousView.getContext()).b(paramAnonymousView, new View.OnCreateContextMenuListener()new o.g
         {
           public final void onCreateContextMenu(ContextMenu paramAnonymous2ContextMenu, View paramAnonymous2View, ContextMenu.ContextMenuInfo paramAnonymous2ContextMenuInfo)
           {
             AppMethodBeat.i(36480);
-            paramAnonymous2ContextMenu.add(0, 0, 0, paramAnonymous2View.getContext().getString(2131762566));
-            if ((!an.aUq(paramAnonymousb.username)) && (!x.zV(paramAnonymousb.username))) {
-              paramAnonymous2ContextMenu.add(0, 1, 0, paramAnonymous2View.getContext().getString(2131757157));
+            paramAnonymous2ContextMenu.add(0, 0, 0, paramAnonymous2View.getContext().getString(2131764635));
+            if ((!as.bjp(paramAnonymousb.username)) && (!ab.Iy(paramAnonymousb.username))) {
+              paramAnonymous2ContextMenu.add(0, 1, 0, paramAnonymous2View.getContext().getString(2131757361));
             }
-            paramAnonymous2ContextMenu.add(0, 2, 0, paramAnonymous2View.getContext().getString(2131757221));
+            paramAnonymous2ContextMenu.add(0, 2, 0, paramAnonymous2View.getContext().getString(2131757433));
             AppMethodBeat.o(36480);
           }
-        }, new n.e()
+        }, new o.g()
         {
           public final void onMMMenuItemSelected(MenuItem paramAnonymous2MenuItem, int paramAnonymous2Int)
           {
             AppMethodBeat.i(36481);
-            bc.aCg();
-            bv localbv = c.azI().ys(paramAnonymousb.msgId);
-            d.this.d(paramAnonymous2MenuItem.getItemId(), localbv);
+            bg.aVF();
+            ca localca = c.aSQ().Hb(paramAnonymousb.msgId);
+            d.this.d(paramAnonymous2MenuItem.getItemId(), localca);
             AppMethodBeat.o(36481);
           }
         });
@@ -230,10 +256,10 @@ public final class d
     return local2;
   }
   
-  public final String fJO()
+  public final String gSb()
   {
     AppMethodBeat.i(36488);
-    String str = this.mContext.getString(2131755255);
+    String str = this.mContext.getString(2131755290);
     AppMethodBeat.o(36488);
     return str;
   }
@@ -254,12 +280,12 @@ public final class d
       super(paramInt, paramString1, paramLong2, paramString2, paramString3, paramString4, paramString5);
     }
     
-    public final boolean aXy(String paramString)
+    public final boolean bmC(String paramString)
     {
       AppMethodBeat.i(36484);
       if (paramString != null)
       {
-        boolean bool = super.aXy(paramString.toLowerCase());
+        boolean bool = super.bmC(paramString.toLowerCase());
         AppMethodBeat.o(36484);
         return bool;
       }
@@ -276,24 +302,24 @@ public final class d
   final class b
     extends c.a
   {
-    TextView iFO;
-    ImageView mdt;
+    TextView jBR;
+    ImageView nnL;
     
     public b(View paramView)
     {
       super();
       AppMethodBeat.i(36485);
-      this.mdt = ((ImageView)paramView.findViewById(2131299794));
-      this.iYj.setSingleLine(false);
-      this.iYj.setMaxLines(2);
-      this.iFO = ((TextView)paramView.findViewById(2131299781));
+      this.nnL = ((ImageView)paramView.findViewById(2131300468));
+      this.jVO.setSingleLine(false);
+      this.jVO.setMaxLines(2);
+      this.jBR = ((TextView)paramView.findViewById(2131300454));
       AppMethodBeat.o(36485);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.k.d
  * JD-Core Version:    0.7.0.1
  */

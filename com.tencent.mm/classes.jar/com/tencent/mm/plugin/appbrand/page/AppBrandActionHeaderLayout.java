@@ -15,23 +15,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class AppBrandActionHeaderLayout
   extends LinearLayout
 {
+  private int crI;
   private Context mContext;
-  private LinearLayout mda;
-  private HorizontalScrollView mdb;
-  private AppBrandActionSingleHeaderView mdc;
-  private AppBrandActionMultipleHeaderView mdd;
-  private AppBrandActionMultipleHeaderView mde;
-  private AppBrandActionMultipleHeaderView mdf;
-  private AppBrandActionMultipleHeaderView mdg;
-  private TextView mdh;
-  private int mdi;
+  private TextView nnA;
+  private LinearLayout nnt;
+  private HorizontalScrollView nnu;
+  private AppBrandActionSingleHeaderView nnv;
+  private AppBrandActionMultipleHeaderView nnw;
+  private AppBrandActionMultipleHeaderView nnx;
+  private AppBrandActionMultipleHeaderView nny;
+  private AppBrandActionMultipleHeaderView nnz;
   
   public AppBrandActionHeaderLayout(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(147431);
-    this.mdi = -1;
-    aN(paramContext);
+    this.crI = -1;
+    bh(paramContext);
     AppMethodBeat.o(147431);
   }
   
@@ -40,43 +40,43 @@ public class AppBrandActionHeaderLayout
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(147432);
-    this.mdi = -1;
-    aN(paramContext);
+    this.crI = -1;
+    bh(paramContext);
     AppMethodBeat.o(147432);
   }
   
-  private void aN(Context paramContext)
+  private void bh(Context paramContext)
   {
     AppMethodBeat.i(147436);
     this.mContext = paramContext;
-    View.inflate(paramContext, 2131493089, this);
-    this.mda = ((LinearLayout)findViewById(2131296881));
-    this.mdb = ((HorizontalScrollView)findViewById(2131296879));
-    this.mdc = ((AppBrandActionSingleHeaderView)findViewById(2131296891));
-    this.mdd = ((AppBrandActionMultipleHeaderView)findViewById(2131296885));
-    this.mde = ((AppBrandActionMultipleHeaderView)findViewById(2131296886));
-    this.mdf = ((AppBrandActionMultipleHeaderView)findViewById(2131296887));
-    this.mdg = ((AppBrandActionMultipleHeaderView)findViewById(2131296888));
-    this.mdh = ((TextView)findViewById(2131296882));
-    this.mdd.setVisibility(8);
-    this.mde.setVisibility(8);
-    this.mdf.setVisibility(8);
-    this.mdg.setVisibility(8);
-    this.mdh.setVisibility(8);
+    View.inflate(paramContext, 2131493131, this);
+    this.nnt = ((LinearLayout)findViewById(2131296975));
+    this.nnu = ((HorizontalScrollView)findViewById(2131296973));
+    this.nnv = ((AppBrandActionSingleHeaderView)findViewById(2131296985));
+    this.nnw = ((AppBrandActionMultipleHeaderView)findViewById(2131296979));
+    this.nnx = ((AppBrandActionMultipleHeaderView)findViewById(2131296980));
+    this.nny = ((AppBrandActionMultipleHeaderView)findViewById(2131296981));
+    this.nnz = ((AppBrandActionMultipleHeaderView)findViewById(2131296982));
+    this.nnA = ((TextView)findViewById(2131296976));
+    this.nnw.setVisibility(8);
+    this.nnx.setVisibility(8);
+    this.nny.setVisibility(8);
+    this.nnz.setVisibility(8);
+    this.nnA.setVisibility(8);
     AppMethodBeat.o(147436);
   }
   
   public TextView getStatusTextView()
   {
-    return this.mdh;
+    return this.nnA;
   }
   
   protected void onAttachedToWindow()
   {
     AppMethodBeat.i(147435);
     super.onAttachedToWindow();
-    if (this.mdi > 0) {
-      setForceHeight(this.mdi);
+    if (this.crI > 0) {
+      setForceHeight(this.crI);
     }
     AppMethodBeat.o(147435);
   }
@@ -84,12 +84,12 @@ public class AppBrandActionHeaderLayout
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(147433);
-    if (this.mdi > 0) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.mdi, 1073741824);
+    if (this.crI > 0) {
+      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.crI, 1073741824);
     }
     super.onMeasure(paramInt1, paramInt2);
-    if ((this.mdi > 0) && (getMeasuredHeight() > this.mdi)) {
-      super.setMeasuredDimension(getMeasuredWidth(), this.mdi);
+    if ((this.crI > 0) && (getMeasuredHeight() > this.crI)) {
+      super.setMeasuredDimension(getMeasuredWidth(), this.crI);
     }
     AppMethodBeat.o(147433);
   }
@@ -99,21 +99,21 @@ public class AppBrandActionHeaderLayout
     AppMethodBeat.i(147437);
     if (paramBoolean)
     {
-      this.mdc.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
-      this.mdd.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
-      this.mde.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
-      this.mdf.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
-      this.mdg.setTextViewTextColor(this.mContext.getResources().getColor(2131101182));
-      this.mdh.setTextColor(this.mContext.getResources().getColor(2131101182));
+      this.nnv.setTextViewTextColor(this.mContext.getResources().getColor(2131101427));
+      this.nnw.setTextViewTextColor(this.mContext.getResources().getColor(2131101427));
+      this.nnx.setTextViewTextColor(this.mContext.getResources().getColor(2131101427));
+      this.nny.setTextViewTextColor(this.mContext.getResources().getColor(2131101427));
+      this.nnz.setTextViewTextColor(this.mContext.getResources().getColor(2131101427));
+      this.nnA.setTextColor(this.mContext.getResources().getColor(2131101427));
       AppMethodBeat.o(147437);
       return;
     }
-    this.mdc.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
-    this.mdd.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
-    this.mde.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
-    this.mdf.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
-    this.mdg.setTextViewTextColor(this.mContext.getResources().getColor(2131100030));
-    this.mdh.setTextColor(this.mContext.getResources().getColor(2131100030));
+    this.nnv.setTextViewTextColor(this.mContext.getResources().getColor(2131100056));
+    this.nnw.setTextViewTextColor(this.mContext.getResources().getColor(2131100056));
+    this.nnx.setTextViewTextColor(this.mContext.getResources().getColor(2131100056));
+    this.nny.setTextViewTextColor(this.mContext.getResources().getColor(2131100056));
+    this.nnz.setTextViewTextColor(this.mContext.getResources().getColor(2131100056));
+    this.nnA.setTextColor(this.mContext.getResources().getColor(2131100056));
     AppMethodBeat.o(147437);
   }
   
@@ -123,12 +123,12 @@ public class AppBrandActionHeaderLayout
   public void setForceHeight(int paramInt)
   {
     AppMethodBeat.i(169505);
-    this.mdi = Math.max(paramInt, -1);
+    this.crI = Math.max(paramInt, -1);
     if ((getParent() instanceof ViewGroup))
     {
       ViewGroup localViewGroup = (ViewGroup)getParent();
-      if (this.mdi > 0) {
-        localViewGroup.setMinimumHeight(this.mdi);
+      if (this.crI > 0) {
+        localViewGroup.setMinimumHeight(this.crI);
       }
       requestLayout();
     }
@@ -138,10 +138,10 @@ public class AppBrandActionHeaderLayout
   public void setStatusDescription(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(147438);
-    this.mdh.setText(paramCharSequence);
-    this.mdh.setVisibility(0);
-    this.mda.setVisibility(8);
-    this.mdb.setVisibility(8);
+    this.nnA.setText(paramCharSequence);
+    this.nnA.setVisibility(0);
+    this.nnt.setVisibility(8);
+    this.nnu.setVisibility(8);
     AppMethodBeat.o(147438);
   }
 }

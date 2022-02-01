@@ -5,63 +5,63 @@ import com.tencent.mm.plugin.wenote.model.nativenote.manager.WXRTEditText;
 
 public abstract interface a
 {
-  public abstract void BH(int paramInt);
+  public abstract void Fr(int paramInt);
   
-  public abstract void BI(int paramInt);
+  public abstract void Fs(int paramInt);
   
-  public abstract void BJ(int paramInt);
+  public abstract void Ft(int paramInt);
   
-  public abstract void BK(int paramInt);
+  public abstract void Fu(int paramInt);
   
-  public abstract void N(int paramInt, long paramLong);
+  public abstract void Q(int paramInt, long paramLong);
   
   public abstract void a(WXRTEditText paramWXRTEditText);
   
   public abstract void a(WXRTEditText paramWXRTEditText, boolean paramBoolean, int paramInt);
   
-  public abstract void ceF();
+  public abstract void cCA();
   
-  public abstract void ceG();
+  public abstract void cCB();
   
-  public abstract void ceH();
+  public abstract void cCD();
   
-  public abstract void ceJ();
+  public abstract int cCE();
   
-  public abstract void ceK();
+  public abstract int cCF();
   
-  public abstract void ceL();
+  public abstract boolean cCG();
   
-  public abstract void ceN();
+  public abstract RecyclerView cCH();
   
-  public abstract int ceO();
+  public abstract void cCv();
   
-  public abstract int ceP();
+  public abstract void cCw();
   
-  public abstract boolean ceQ();
+  public abstract void cCx();
   
-  public abstract RecyclerView ceR();
+  public abstract void cCz();
   
   public abstract void e(boolean paramBoolean, long paramLong);
   
-  public abstract void faC();
+  public abstract void f(Object paramObject, boolean paramBoolean);
   
-  public abstract void faD();
+  public abstract void ft(int paramInt1, int paramInt2);
   
-  public abstract void faE();
+  public abstract void fu(int paramInt1, int paramInt2);
   
-  public abstract void fd(int paramInt1, int paramInt2);
+  public abstract void fv(int paramInt1, int paramInt2);
   
-  public abstract void fe(int paramInt1, int paramInt2);
+  public abstract void gjH();
   
-  public abstract void ff(int paramInt1, int paramInt2);
+  public abstract void gjI();
   
-  public abstract void g(Object paramObject, boolean paramBoolean);
+  public abstract void gjJ();
   
-  public abstract void vH(boolean paramBoolean);
+  public abstract void zD(boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.model.nativenote.b.a
  * JD-Core Version:    0.7.0.1
  */

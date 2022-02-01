@@ -1,18 +1,29 @@
 package com.tencent.mm.ipcinvoker.wx_extension.service;
 
+import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.BaseIPCService;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 
 public class Appbrand2IPCService
   extends BaseIPCService
 {
+  public static final String dkO;
+  
+  static
+  {
+    AppMethodBeat.i(225233);
+    dkO = MMApplicationContext.getPackageName() + ":appbrand2";
+    AppMethodBeat.o(225233);
+  }
+  
   public final String getProcessName()
   {
-    return "com.tencent.mm:appbrand2";
+    return dkO;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.service.Appbrand2IPCService
  * JD-Core Version:    0.7.0.1
  */

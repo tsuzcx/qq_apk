@@ -3,160 +3,160 @@ package com.tencent.mm.pluginsdk.j.a.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.j.a.c.q;
 import com.tencent.mm.pluginsdk.j.a.c.q.a;
-import com.tencent.mm.pluginsdk.j.a.c.s;
 import com.tencent.mm.pluginsdk.j.a.c.t;
 import com.tencent.mm.pluginsdk.j.a.d.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Iterator;
 import java.util.Set;
 
 final class h
   implements com.tencent.mm.pluginsdk.j.a.c.h
 {
-  private static void a(s params, boolean paramBoolean)
+  private static void a(com.tencent.mm.pluginsdk.j.a.c.s params, boolean paramBoolean)
   {
     AppMethodBeat.i(151965);
-    q.a.feQ().PL(params.field_urlKey);
-    a.aNH(params.field_filePath);
-    a.aNH(params.field_filePath + ".decompressed");
-    a.aNH(params.field_filePath + ".decrypted");
+    q.a.goa().Zb(params.field_urlKey);
+    a.bej(params.field_filePath);
+    a.bej(params.field_filePath + ".decompressed");
+    a.bej(params.field_filePath + ".decrypted");
     if ((2 == params.field_status) && (!paramBoolean))
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "delete completed but invalid file, but forceDL = false, skip this downloading");
+      Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "delete completed but invalid file, but forceDL = false, skip this downloading");
       AppMethodBeat.o(151965);
       return;
     }
     if ((params.field_maxRetryTimes > 0) && (params.field_retryTimes <= 0))
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "record_maxRetryTimes = %d, record_retryTimes = %d, retry times out, skip ", new Object[] { Integer.valueOf(params.field_maxRetryTimes), Integer.valueOf(params.field_retryTimes) });
+      Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "record_maxRetryTimes = %d, record_retryTimes = %d, retry times out, skip ", new Object[] { Integer.valueOf(params.field_maxRetryTimes), Integer.valueOf(params.field_retryTimes) });
       AppMethodBeat.o(151965);
       return;
     }
     params.field_retryTimes -= 1;
     params.field_fileUpdated = true;
-    q.a.feQ().h(params);
-    j.A(params.field_reportId, 12L);
-    ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "post network task");
-    params = c.d(params);
-    params.Ecd = false;
-    q.a.feQ().d(params);
+    q.a.goa().h(params);
+    j.F(params.field_reportId, 12L);
+    Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "post network task");
+    c localc = c.d(params);
+    localc.IOp = false;
+    j.m(params.field_resType, params.field_subType, Util.getInt(params.field_fileVersion, 0), (int)params.field_reportId, 76);
+    q.a.goa().d(localc);
     AppMethodBeat.o(151965);
   }
   
-  private static boolean e(s params)
+  private static boolean e(com.tencent.mm.pluginsdk.j.a.c.s params)
   {
     AppMethodBeat.i(151964);
-    boolean bool = bu.nullAsNil(o.aRh(params.field_filePath)).equals(params.field_md5);
+    boolean bool = Util.nullAsNil(com.tencent.mm.vfs.s.bhK(params.field_filePath)).equals(params.field_md5);
     AppMethodBeat.o(151964);
     return bool;
   }
   
-  private static void f(s params)
+  private static void f(com.tencent.mm.pluginsdk.j.a.c.s params)
   {
     AppMethodBeat.i(151966);
     if ((!params.field_fileCompress) && (!params.field_fileEncrypt))
     {
-      b.fes().a(params.field_resType, params.field_subType, params.field_filePath, bu.getInt(params.field_fileVersion, 0), params.field_originalMd5);
+      b.gnC().a(params.field_resType, params.field_subType, params.field_filePath, Util.getInt(params.field_fileVersion, 0), params.field_originalMd5);
       AppMethodBeat.o(151966);
       return;
     }
-    ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "send query and decrypt request");
-    b.fes().b(params);
+    Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "send query and decrypt request");
+    b.gnC().b(params);
     AppMethodBeat.o(151966);
   }
   
-  public final void a(s params, int paramInt)
+  public final void a(com.tencent.mm.pluginsdk.j.a.c.s params, int paramInt)
   {
     AppMethodBeat.i(151963);
     Object localObject1;
     Object localObject2;
-    if ((params.field_expireTime != 0L) && (params.field_expireTime <= bu.aRi()))
+    if ((params.field_expireTime != 0L) && (params.field_expireTime <= Util.nowSecond()))
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "urlKey(%s) exceed expire time(%d), delete", new Object[] { params.field_urlKey, Long.valueOf(params.field_expireTime) });
-      localObject1 = q.a.feQ();
+      Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "urlKey(%s) exceed expire time(%d), delete", new Object[] { params.field_urlKey, Long.valueOf(params.field_expireTime) });
+      localObject1 = q.a.goa();
       localObject2 = params.field_urlKey;
-      if (((q)localObject1).kot) {
-        ((q)localObject1).Fjr.Dc((String)localObject2);
+      if (((q)localObject1).lsb) {
+        ((q)localObject1).Kak.gC((String)localObject2);
       }
-      a.aNH(params.field_filePath);
-      a.aNH(params.field_filePath + ".decompressed");
-      a.aNH(params.field_filePath + ".decrypted");
-      q.a.feQ().PL(params.field_urlKey);
+      a.bej(params.field_filePath);
+      a.bej(params.field_filePath + ".decompressed");
+      a.bej(params.field_filePath + ".decrypted");
+      q.a.goa().Zb(params.field_urlKey);
       AppMethodBeat.o(151963);
       return;
     }
     if (paramInt == 0)
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "network unavailable, skip");
+      Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "network unavailable, skip");
       AppMethodBeat.o(151963);
       return;
     }
     if ((2 == paramInt) && (1 == params.field_networkType))
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "network type = gprs, record network type = wifi, skip this ");
+      Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "network type = gprs, record network type = wifi, skip this ");
       AppMethodBeat.o(151963);
       return;
     }
     if (params.field_deleted)
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "record(%s), should have been deleted", new Object[] { params.field_urlKey });
-      a.aNH(params.field_filePath);
-      a.aNH(params.field_filePath + ".decompressed");
-      a.aNH(params.field_filePath + ".decrypted");
+      Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "record(%s), should have been deleted", new Object[] { params.field_urlKey });
+      a.bej(params.field_filePath);
+      a.bej(params.field_filePath + ".decompressed");
+      a.bej(params.field_filePath + ".decrypted");
       AppMethodBeat.o(151963);
       return;
     }
     if (!params.field_needRetry)
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "no need retry, resType %d, subType %d, version %s", new Object[] { Integer.valueOf(params.field_resType), Integer.valueOf(params.field_subType), params.field_fileVersion });
+      Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "no need retry, resType %d, subType %d, version %s", new Object[] { Integer.valueOf(params.field_resType), Integer.valueOf(params.field_subType), params.field_fileVersion });
       AppMethodBeat.o(151963);
       return;
     }
     if (params.field_status == 2)
     {
-      long l = a.gE(params.field_filePath);
+      long l = a.hv(params.field_filePath);
       if (params.field_contentLength > l)
       {
-        ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "content-length > fileSize, resume download");
+        Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "content-length > fileSize, resume download");
         if (0L == l)
         {
           if (!params.field_needRetry)
           {
-            ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "no need retry, resType %d, subType %d, version %s", new Object[] { Integer.valueOf(params.field_resType), Integer.valueOf(params.field_subType), params.field_fileVersion });
+            Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "no need retry, resType %d, subType %d, version %s", new Object[] { Integer.valueOf(params.field_resType), Integer.valueOf(params.field_subType), params.field_fileVersion });
             AppMethodBeat.o(151963);
             return;
           }
           if (1 != paramInt)
           {
-            ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "fileSize = 0, completed file may be deleted by user, skip this because it's not wifi");
+            Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "fileSize = 0, completed file may be deleted by user, skip this because it's not wifi");
             AppMethodBeat.o(151963);
             return;
           }
-          localObject1 = b.fes().fer().iterator();
+          localObject1 = b.gnC().gnB().iterator();
           while (((Iterator)localObject1).hasNext())
           {
             localObject2 = (b.b)((Iterator)localObject1).next();
-            bu.getInt(params.field_fileVersion, 0);
-            if (((b.b)localObject2).few())
+            Util.getInt(params.field_fileVersion, 0);
+            if (((b.b)localObject2).gnG())
             {
-              ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "filterNotRetry by %s, resType %d, subType %d, version %s", new Object[] { localObject2.getClass().getName(), Integer.valueOf(params.field_resType), Integer.valueOf(params.field_subType), params.field_fileVersion });
+              Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "filterNotRetry by %s, resType %d, subType %d, version %s", new Object[] { localObject2.getClass().getName(), Integer.valueOf(params.field_resType), Integer.valueOf(params.field_subType), params.field_fileVersion });
               AppMethodBeat.o(151963);
               return;
             }
           }
           params.field_fileUpdated = true;
-          b.fes().g(params.field_resType, params.field_subType, 0, bu.nullAsNil(params.field_groupId2).equals("NewXml"));
-          q.a.feQ().h(params);
+          b.gnC().h(params.field_resType, params.field_subType, 0, Util.nullAsNil(params.field_groupId2).equals("NewXml"));
+          q.a.goa().h(params);
         }
-        q.a.feQ().d(c.d(params));
+        j.m(params.field_resType, params.field_subType, Util.getInt(params.field_fileVersion, 0), (int)params.field_reportId, 76);
+        q.a.goa().d(c.d(params));
         AppMethodBeat.o(151963);
         return;
       }
       if (!e(params))
       {
-        ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "file invalid, re-download");
+        Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "file invalid, re-download");
         if (1 == paramInt) {}
         for (boolean bool = true;; bool = false)
         {
@@ -165,45 +165,46 @@ final class h
           return;
         }
       }
-      ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "md5 check ok, file download complete, throw event to do decrypt");
+      Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "md5 check ok, file download complete, throw event to do decrypt");
       f(params);
       AppMethodBeat.o(151963);
       return;
     }
     if ((params.field_status == 1) || (params.field_status == 0))
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "db status: downloading or waiting, db content-length %d", new Object[] { Long.valueOf(params.field_contentLength) });
-      if (!q.a.feQ().aNF(params.field_urlKey))
+      Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "db status: downloading or waiting, db content-length %d", new Object[] { Long.valueOf(params.field_contentLength) });
+      if (!q.a.goa().beh(params.field_urlKey))
       {
-        ae.d("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "check md5");
+        Log.d("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "check md5");
         if (e(params))
         {
-          ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "md5 match, request complete, throw event to do decrypt");
+          Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "md5 match, request complete, throw event to do decrypt");
           params.field_status = 2;
-          params.field_contentLength = a.gE(params.field_filePath);
-          q.a.feQ().h(params);
+          params.field_contentLength = a.hv(params.field_filePath);
+          q.a.goa().h(params);
           f(params);
           AppMethodBeat.o(151963);
           return;
         }
-        if (0L == a.gE(params.field_filePath))
+        if (0L == a.hv(params.field_filePath))
         {
           params.field_fileUpdated = true;
-          q.a.feQ().h(params);
-          b.fes().g(params.field_resType, params.field_subType, 0, bu.nullAsNil(params.field_groupId2).equals("NewXml"));
+          q.a.goa().h(params);
+          b.gnC().h(params.field_resType, params.field_subType, 0, Util.nullAsNil(params.field_groupId2).equals("NewXml"));
         }
-        ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "md5 not match,  download");
-        q.a.feQ().d(c.d(params));
+        Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "md5 not match,  download");
+        j.m(params.field_resType, params.field_subType, Util.getInt(params.field_fileVersion, 0), (int)params.field_reportId, 76);
+        q.a.goa().d(c.d(params));
         AppMethodBeat.o(151963);
         return;
       }
-      ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "request already in downloading queue");
+      Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "request already in downloading queue");
       AppMethodBeat.o(151963);
       return;
     }
     if ((params.field_status == 4) || (params.field_status == 3))
     {
-      ae.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "file invalid, re-download");
+      Log.i("MicroMsg.ResDownloader.CheckResUpdateResumeRecordHandler", "file invalid, re-download");
       params.field_status = 0;
       a(params, true);
     }
@@ -212,7 +213,7 @@ final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.j.a.a.h
  * JD-Core Version:    0.7.0.1
  */

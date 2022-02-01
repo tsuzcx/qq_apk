@@ -14,6 +14,7 @@ public class TXLivePlayConfig
   boolean mEnableMessage = false;
   boolean mEnableMetaData = false;
   boolean mEnableNearestIP = true;
+  String mFlvSessionKey = "";
   protected Map<String, String> mHeaders;
   float mMaxAutoAdjustCacheTime = 5.0F;
   int mMaxCacheItems;
@@ -68,6 +69,11 @@ public class TXLivePlayConfig
     this.mEnableNearestIP = paramBoolean;
   }
   
+  public void setFlvSessionKey(String paramString)
+  {
+    this.mFlvSessionKey = paramString;
+  }
+  
   @Deprecated
   public void setHeaders(Map<String, String> paramMap)
   {
@@ -103,7 +109,7 @@ public class TXLivePlayConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.rtmp.TXLivePlayConfig
  * JD-Core Version:    0.7.0.1
  */

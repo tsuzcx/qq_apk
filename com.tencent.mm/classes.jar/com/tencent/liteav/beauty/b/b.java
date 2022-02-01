@@ -1,6 +1,6 @@
 package com.tencent.liteav.beauty.b;
 
-import com.tencent.liteav.basic.d.h;
+import com.tencent.liteav.basic.c.h;
 
 public class b
   extends h
@@ -20,7 +20,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.b
  * JD-Core Version:    0.7.0.1
  */

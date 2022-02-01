@@ -9,20 +9,20 @@ import com.tencent.mm.platformtools.s;
 import com.tencent.mm.platformtools.s.a;
 import com.tencent.mm.platformtools.s.b;
 import com.tencent.mm.plugin.shake.b.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.h;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.io.IOException;
 
 public final class b
   implements s
 {
+  private c.a DlR = null;
   private String thumburl = "";
-  private c.a zha = null;
   
   public b(c.a parama)
   {
-    this.zha = parama;
+    this.DlR = parama;
   }
   
   public b(String paramString)
@@ -33,10 +33,10 @@ public final class b
   public final Bitmap a(Bitmap paramBitmap, s.a parama, String paramString)
   {
     AppMethodBeat.i(28620);
-    if (s.a.iQl == parama) {}
+    if (s.a.jNh == parama) {}
     try
     {
-      h.a(paramBitmap, 100, Bitmap.CompressFormat.PNG, aQV(), false);
+      BitmapUtil.saveBitmapToImage(paramBitmap, 100, Bitmap.CompressFormat.PNG, blA(), false);
       AppMethodBeat.o(28620);
       return paramBitmap;
     }
@@ -44,31 +44,28 @@ public final class b
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.TVImgGetStrategy", parama, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.TVImgGetStrategy", parama, "", new Object[0]);
       }
     }
   }
   
   public final void a(s.a parama, String paramString) {}
   
-  public final s.b aQU()
-  {
-    return null;
-  }
+  public final void ad(String paramString, boolean paramBoolean) {}
   
-  public final String aQV()
+  public final String blA()
   {
     AppMethodBeat.i(28617);
     String str;
-    if ((this.zha != null) && (this.zha.field_thumburl != null))
+    if ((this.DlR != null) && (this.DlR.field_thumburl != null))
     {
-      str = m.je(this.zha.field_thumburl, "@S");
+      str = m.jP(this.DlR.field_thumburl, "@S");
       AppMethodBeat.o(28617);
       return str;
     }
     if (this.thumburl != null)
     {
-      str = m.je(this.thumburl, "@S");
+      str = m.jP(this.thumburl, "@S");
       AppMethodBeat.o(28617);
       return str;
     }
@@ -76,60 +73,63 @@ public final class b
     return "";
   }
   
-  public final String aQW()
+  public final String blB()
   {
-    if ((this.zha != null) && (this.zha.field_thumburl != null)) {
-      return this.zha.field_thumburl;
+    if ((this.DlR != null) && (this.DlR.field_thumburl != null)) {
+      return this.DlR.field_thumburl;
     }
     return this.thumburl;
   }
   
-  public final String aQX()
+  public final String blC()
   {
     AppMethodBeat.i(28618);
-    String str = aQW() + "_tv";
+    String str = blB() + "_tv";
     AppMethodBeat.o(28618);
     return str;
   }
   
-  public final boolean aQY()
+  public final boolean blD()
   {
     return false;
   }
   
-  public final boolean aQZ()
+  public final boolean blE()
   {
     return false;
   }
   
-  public final Bitmap aRa()
+  public final Bitmap blF()
   {
     AppMethodBeat.i(28621);
-    if (ak.getContext() == null)
+    if (MMApplicationContext.getContext() == null)
     {
       AppMethodBeat.o(28621);
       return null;
     }
-    Bitmap localBitmap = BitmapFactory.decodeResource(ak.getContext().getResources(), 2131233476);
+    Bitmap localBitmap = BitmapFactory.decodeResource(MMApplicationContext.getContext().getResources(), 2131234279);
     AppMethodBeat.o(28621);
     return localBitmap;
   }
   
-  public final void aRb() {}
+  public final void blG() {}
   
-  public final void aa(String paramString, boolean paramBoolean) {}
+  public final s.b blz()
+  {
+    return null;
+  }
   
   public final String getCacheKey()
   {
     AppMethodBeat.i(28619);
-    String str = aQW() + "_tv";
+    String str = blB() + "_tv";
     AppMethodBeat.o(28619);
     return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.e.b
  * JD-Core Version:    0.7.0.1
  */

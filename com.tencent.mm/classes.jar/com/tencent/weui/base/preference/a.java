@@ -5,6 +5,8 @@ import android.preference.Preference;
 public abstract interface a
 {
   public abstract void a(Preference paramPreference);
+  
+  public abstract Preference brv(String paramString);
 }
 
 

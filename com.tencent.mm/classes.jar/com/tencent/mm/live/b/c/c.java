@@ -4,107 +4,177 @@ import android.database.Cursor;
 import android.util.Pair;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.a;
+import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 import com.tencent.mm.storagebase.h;
 import java.util.Iterator;
 import java.util.LinkedList;
 
 public final class c
-  extends j<b>
+  extends MAutoStorage<b>
 {
   public static final String[] SQL_CREATE;
-  public static Pair<String, Long> gTJ;
-  private static c gTK;
-  public com.tencent.mm.sdk.e.e db;
-  public a gTL;
+  public static Pair<String, Long> hLd;
+  private static c hLe;
+  public ISQLiteDatabase db;
+  public a hLf;
   
   static
   {
-    AppMethodBeat.i(220219);
-    SQL_CREATE = new String[] { j.getCreateSQLs(b.info, "LiveTipsBar") };
-    AppMethodBeat.o(220219);
+    AppMethodBeat.i(224112);
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(b.info, "LiveTipsBar") };
+    AppMethodBeat.o(224112);
   }
   
   private c(h paramh)
   {
     super(paramh, b.info, "LiveTipsBar", null);
-    AppMethodBeat.i(220209);
+    AppMethodBeat.i(224102);
     this.db = paramh;
     long l1 = System.currentTimeMillis();
-    long l2 = paramh.yi(Thread.currentThread().getId());
+    long l2 = paramh.beginTransaction(Thread.currentThread().getId());
     long l3 = System.currentTimeMillis();
-    ae.d("MicroMsg.LiveTipsBarStorage", "executeInitSQL:%s", new Object[] { "CREATE INDEX IF NOT EXISTS HostRoom ON LiveTipsBar ( hostRoomId )" });
+    Log.d("MicroMsg.LiveTipsBarStorage", "executeInitSQL:%s", new Object[] { "CREATE INDEX IF NOT EXISTS HostRoom ON LiveTipsBar ( hostRoomId )" });
     paramh.execSQL("LiveTipsBar", "CREATE INDEX IF NOT EXISTS HostRoom ON LiveTipsBar ( hostRoomId )");
-    ae.d("MicroMsg.LiveTipsBarStorage", "build new index last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l3) });
-    paramh.sW(l2);
-    ae.i("MicroMsg.LiveTipsBarStorage", "executeInitSQL last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
-    AppMethodBeat.o(220209);
+    Log.d("MicroMsg.LiveTipsBarStorage", "build new index last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l3) });
+    paramh.endTransaction(l2);
+    Log.i("MicroMsg.LiveTipsBarStorage", "executeInitSQL last time[%d]", new Object[] { Long.valueOf(System.currentTimeMillis() - l1) });
+    AppMethodBeat.o(224102);
   }
   
   public static c getLiveTipsBarStorage()
   {
-    AppMethodBeat.i(220210);
-    g.ajS();
-    g.ajP().aiU();
-    if (gTK == null) {
-      gTK = new c(g.ajR().gDX);
+    AppMethodBeat.i(224103);
+    g.aAi();
+    g.aAf().azk();
+    if (hLe == null) {
+      hLe = new c(g.aAh().hqK);
     }
-    c localc = gTK;
-    AppMethodBeat.o(220210);
+    c localc = hLe;
+    AppMethodBeat.o(224103);
     return localc;
+  }
+  
+  public final LinkedList<b> GX(String paramString)
+  {
+    AppMethodBeat.i(224104);
+    LinkedList localLinkedList = new LinkedList();
+    if ((hLd != null) && (((String)hLd.first).equals(paramString))) {}
+    for (Object localObject = "SELECT * FROM LiveTipsBar WHERE hostRoomId = '" + paramString + "' AND liveId != '" + hLd.second + "' ORDER BY timeStamp";; localObject = "SELECT * FROM LiveTipsBar WHERE hostRoomId = '" + paramString + "' ORDER BY timeStamp")
+    {
+      Log.d("MicroMsg.LiveTipsBarStorage", "getTipsBarDataByHostRoomId:%s", new Object[] { localObject });
+      localObject = this.db.rawQuery((String)localObject, null);
+      if (localObject != null) {
+        break;
+      }
+      Log.e("MicroMsg.LiveTipsBarStorage", "getTipsBarDataByHostRoomId failed, hostRoomId:%s", new Object[] { paramString });
+      AppMethodBeat.o(224104);
+      return localLinkedList;
+    }
+    while (((Cursor)localObject).moveToNext())
+    {
+      paramString = new b();
+      paramString.convertFrom((Cursor)localObject);
+      localLinkedList.add(paramString);
+    }
+    ((Cursor)localObject).close();
+    AppMethodBeat.o(224104);
+    return localLinkedList;
+  }
+  
+  public final void GY(String paramString)
+  {
+    AppMethodBeat.i(224109);
+    Log.i("MicroMsg.LiveTipsBarStorage", "resetVisitingLive");
+    if ((hLd != null) && (((String)hLd.first).equals(paramString))) {
+      hLd = null;
+    }
+    if (this.hLf != null) {
+      this.hLf.Ha(paramString);
+    }
+    AppMethodBeat.o(224109);
+  }
+  
+  public final void GZ(String paramString)
+  {
+    AppMethodBeat.i(224110);
+    if ((hLd != null) && (((String)hLd.first).equals(paramString))) {
+      hLd = null;
+    }
+    int i = this.db.delete("LiveTipsBar", "hostRoomId= ? ", new String[] { paramString });
+    if (i < 0)
+    {
+      Log.e("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId failed, hostRoomId:%s, result%d", new Object[] { paramString, Integer.valueOf(i) });
+      AppMethodBeat.o(224110);
+      return;
+    }
+    Log.i("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId, hostRoomId:%s, result%d", new Object[] { paramString, Integer.valueOf(i) });
+    AppMethodBeat.o(224110);
   }
   
   public final boolean a(b paramb)
   {
-    AppMethodBeat.i(220212);
+    AppMethodBeat.i(224105);
     boolean bool = insert(paramb);
-    if (this.gTL != null) {
-      this.gTL.yB(paramb.field_hostRoomId);
+    if (this.hLf != null) {
+      this.hLf.Ha(paramb.field_hostRoomId);
     }
-    AppMethodBeat.o(220212);
+    AppMethodBeat.o(224105);
     return bool;
   }
   
   public final boolean a(LinkedList<b> paramLinkedList, String paramString)
   {
-    AppMethodBeat.i(220213);
+    AppMethodBeat.i(224106);
     paramLinkedList = paramLinkedList.iterator();
     boolean bool = true;
     if (paramLinkedList.hasNext())
     {
       if (insert((b)paramLinkedList.next())) {
-        break label66;
+        break label68;
       }
       bool = false;
     }
-    label66:
+    label68:
     for (;;)
     {
       break;
-      if (this.gTL != null) {
-        this.gTL.yB(paramString);
+      if (this.hLf != null) {
+        this.hLf.Ha(paramString);
       }
-      AppMethodBeat.o(220213);
+      AppMethodBeat.o(224106);
       return bool;
     }
   }
   
-  public final boolean aoN()
+  public final boolean aHo()
   {
-    AppMethodBeat.i(220218);
+    AppMethodBeat.i(224111);
     boolean bool = this.db.execSQL("LiveTipsBar", "delete from LiveTipsBar");
-    ae.i("MicroMsg.LiveTipsBarStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
-    AppMethodBeat.o(220218);
+    Log.i("MicroMsg.LiveTipsBarStorage", "deleteAllData, result:%b", new Object[] { Boolean.valueOf(bool) });
+    AppMethodBeat.o(224111);
     return bool;
   }
   
-  public final void rA(long paramLong)
+  public final void w(String paramString, long paramLong)
   {
-    AppMethodBeat.i(220214);
+    AppMethodBeat.i(224108);
+    Log.i("MicroMsg.LiveTipsBarStorage", "setVisitingLive, liveId:%d", new Object[] { Long.valueOf(paramLong) });
+    hLd = new Pair(paramString, Long.valueOf(paramLong));
+    if (this.hLf != null) {
+      this.hLf.Ha(paramString);
+    }
+    AppMethodBeat.o(224108);
+  }
+  
+  public final void zF(long paramLong)
+  {
+    AppMethodBeat.i(224107);
     Object localObject1 = "SELECT * FROM LiveTipsBar WHERE liveId = '" + paramLong + "'";
-    ae.d("MicroMsg.LiveTipsBarStorage", "deleteByLiveId, liveId:%d, sql:%s", new Object[] { Long.valueOf(paramLong), localObject1 });
+    Log.d("MicroMsg.LiveTipsBarStorage", "deleteByLiveId, liveId:%d, sql:%s", new Object[] { Long.valueOf(paramLong), localObject1 });
     Object localObject2 = this.db.rawQuery((String)localObject1, null);
     if (localObject2 != null) {
       if (((Cursor)localObject2).moveToFirst())
@@ -118,33 +188,33 @@ public final class c
     for (;;)
     {
       int i = this.db.delete("LiveTipsBar", "liveId= ? ", new String[] { String.valueOf(paramLong) });
-      if ((gTJ != null) && (((Long)gTJ.second).longValue() == paramLong)) {
-        gTJ = null;
+      if ((hLd != null) && (((Long)hLd.second).longValue() == paramLong)) {
+        hLd = null;
       }
       if (i < 0)
       {
-        ae.e("MicroMsg.LiveTipsBarStorage", "deleteByLiveId failed, result:%d", new Object[] { Integer.valueOf(i) });
-        if ((localObject1 != null) && (this.gTL != null)) {
-          this.gTL.yB((String)localObject1);
+        Log.e("MicroMsg.LiveTipsBarStorage", "deleteByLiveId failed, result:%d", new Object[] { Integer.valueOf(i) });
+        if ((localObject1 != null) && (this.hLf != null)) {
+          this.hLf.Ha((String)localObject1);
         }
-        AppMethodBeat.o(220214);
+        AppMethodBeat.o(224107);
         return;
       }
       if (localObject1 == null)
       {
         localObject2 = "";
-        label224:
-        if (this.gTL != null) {
-          break label276;
+        label230:
+        if (this.hLf != null) {
+          break label282;
         }
       }
-      label276:
+      label282:
       for (boolean bool = true;; bool = false)
       {
-        ae.i("MicroMsg.LiveTipsBarStorage", "deleteByLiveId success, liveId:%d, hostRoomId:%s, liveTipsBarNotify null:%b", new Object[] { Long.valueOf(paramLong), localObject2, Boolean.valueOf(bool) });
+        Log.i("MicroMsg.LiveTipsBarStorage", "deleteByLiveId success, liveId:%d, hostRoomId:%s, liveTipsBarNotify null:%b", new Object[] { Long.valueOf(paramLong), localObject2, Boolean.valueOf(bool) });
         break;
         localObject2 = localObject1;
-        break label224;
+        break label230;
       }
       localObject1 = null;
       break;
@@ -152,77 +222,9 @@ public final class c
     }
   }
   
-  public final void v(String paramString, long paramLong)
-  {
-    AppMethodBeat.i(220215);
-    ae.i("MicroMsg.LiveTipsBarStorage", "setVisitingLive, liveId:%d", new Object[] { Long.valueOf(paramLong) });
-    gTJ = new Pair(paramString, Long.valueOf(paramLong));
-    if (this.gTL != null) {
-      this.gTL.yB(paramString);
-    }
-    AppMethodBeat.o(220215);
-  }
-  
-  public final void yA(String paramString)
-  {
-    AppMethodBeat.i(220217);
-    if ((gTJ != null) && (((String)gTJ.first).equals(paramString))) {
-      gTJ = null;
-    }
-    int i = this.db.delete("LiveTipsBar", "hostRoomId= ? ", new String[] { paramString });
-    if (i < 0)
-    {
-      ae.e("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId failed, hostRoomId:%s, result%d", new Object[] { paramString, Integer.valueOf(i) });
-      AppMethodBeat.o(220217);
-      return;
-    }
-    ae.i("MicroMsg.LiveTipsBarStorage", "deleteByHostRoomId, hostRoomId:%s, result%d", new Object[] { paramString, Integer.valueOf(i) });
-    AppMethodBeat.o(220217);
-  }
-  
-  public final LinkedList<b> yy(String paramString)
-  {
-    AppMethodBeat.i(220211);
-    LinkedList localLinkedList = new LinkedList();
-    if ((gTJ != null) && (((String)gTJ.first).equals(paramString))) {}
-    for (Object localObject = "SELECT * FROM LiveTipsBar WHERE hostRoomId = '" + paramString + "' AND liveId != '" + gTJ.second + "' ORDER BY timeStamp";; localObject = "SELECT * FROM LiveTipsBar WHERE hostRoomId = '" + paramString + "' ORDER BY timeStamp")
-    {
-      ae.d("MicroMsg.LiveTipsBarStorage", "getTipsBarDataByHostRoomId:%s", new Object[] { localObject });
-      localObject = this.db.rawQuery((String)localObject, null);
-      if (localObject != null) {
-        break;
-      }
-      ae.e("MicroMsg.LiveTipsBarStorage", "getTipsBarDataByHostRoomId failed, hostRoomId:%s", new Object[] { paramString });
-      AppMethodBeat.o(220211);
-      return localLinkedList;
-    }
-    while (((Cursor)localObject).moveToNext())
-    {
-      paramString = new b();
-      paramString.convertFrom((Cursor)localObject);
-      localLinkedList.add(paramString);
-    }
-    ((Cursor)localObject).close();
-    AppMethodBeat.o(220211);
-    return localLinkedList;
-  }
-  
-  public final void yz(String paramString)
-  {
-    AppMethodBeat.i(220216);
-    ae.i("MicroMsg.LiveTipsBarStorage", "resetVisitingLive");
-    if ((gTJ != null) && (((String)gTJ.first).equals(paramString))) {
-      gTJ = null;
-    }
-    if (this.gTL != null) {
-      this.gTL.yB(paramString);
-    }
-    AppMethodBeat.o(220216);
-  }
-  
   public static abstract interface a
   {
-    public abstract void yB(String paramString);
+    public abstract void Ha(String paramString);
   }
 }
 

@@ -1,14 +1,13 @@
 package com.tencent.mm.g.a;
 
-import android.database.Cursor;
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class fr
-  extends b
+  extends IEvent
 {
-  public a drP;
-  public b drQ;
+  public a dIP;
   
   public fr()
   {
@@ -17,27 +16,26 @@ public final class fr
   
   private fr(byte paramByte)
   {
-    AppMethodBeat.i(116016);
-    this.drP = new a();
-    this.drQ = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(19803);
+    this.dIP = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116016);
+    AppMethodBeat.o(19803);
   }
   
   public static final class a
   {
-    public String drR;
-  }
-  
-  public static final class b
-  {
-    public Cursor drI;
+    public Context context;
+    public String[] dBX;
+    public String dIQ;
+    public int op = 0;
+    public String[] selectionArgs;
+    public int source = -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.fr
  * JD-Core Version:    0.7.0.1
  */

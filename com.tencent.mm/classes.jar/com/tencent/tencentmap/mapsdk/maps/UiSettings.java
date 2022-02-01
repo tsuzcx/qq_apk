@@ -50,6 +50,8 @@ public abstract interface UiSettings
   
   public abstract void setScaleViewEnabled(boolean paramBoolean);
   
+  public abstract void setScaleViewFadeEnable(boolean paramBoolean);
+  
   public abstract void setScaleViewPosition(int paramInt);
   
   public abstract void setScaleViewPositionWithMargin(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5);
@@ -66,7 +68,7 @@ public abstract interface UiSettings
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.UiSettings
  * JD-Core Version:    0.7.0.1
  */

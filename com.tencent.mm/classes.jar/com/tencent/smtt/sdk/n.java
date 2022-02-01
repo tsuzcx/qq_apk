@@ -19,7 +19,7 @@ class n
   
   static n a(Context paramContext)
   {
-    AppMethodBeat.i(192689);
+    AppMethodBeat.i(188325);
     if (a == null) {}
     try
     {
@@ -28,12 +28,12 @@ class n
       }
       b = paramContext.getApplicationContext();
       paramContext = a;
-      AppMethodBeat.o(192689);
+      AppMethodBeat.o(188325);
       return paramContext;
     }
     finally
     {
-      AppMethodBeat.o(192689);
+      AppMethodBeat.o(188325);
     }
   }
   
@@ -122,20 +122,20 @@ class n
     //   start	length	slot	name	signature
     //   0	133	0	this	n
     //   9	39	1	localObject1	Object
-    //   58	1	1	localException1	java.lang.Exception
+    //   58	1	1	localException1	Exception
     //   62	6	1	localObject2	Object
     //   78	17	1	localObject3	Object
     //   96	1	1	localIOException1	IOException
     //   100	10	1	localIOException2	IOException
     //   112	1	1	localObject4	Object
-    //   118	1	1	localException2	java.lang.Exception
+    //   118	1	1	localException2	Exception
     //   120	10	1	localObject5	Object
     //   17	69	2	localProperties	Properties
     //   104	1	2	localIOException3	IOException
     //   108	4	2	localObject6	Object
     //   114	1	2	localObject7	Object
     //   110	4	3	localIOException4	IOException
-    //   124	1	3	localException3	java.lang.Exception
+    //   124	1	3	localException3	Exception
     // Exception table:
     //   from	to	target	type
     //   5	18	58	java/lang/Exception
@@ -151,50 +151,50 @@ class n
   
   File a()
   {
-    AppMethodBeat.i(192692);
+    AppMethodBeat.i(188328);
     q.a();
     File localFile = new File(q.t(b), "tbscoreinstall.txt");
     if (!localFile.exists()) {}
     try
     {
       localFile.createNewFile();
-      AppMethodBeat.o(192692);
+      AppMethodBeat.o(188328);
       return localFile;
     }
     catch (IOException localIOException)
     {
-      AppMethodBeat.o(192692);
+      AppMethodBeat.o(188328);
     }
     return null;
   }
   
   void a(int paramInt)
   {
-    AppMethodBeat.i(192696);
+    AppMethodBeat.i(188332);
     a("dexopt_retry_num", paramInt);
-    AppMethodBeat.o(192696);
+    AppMethodBeat.o(188332);
   }
   
   void a(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192690);
+    AppMethodBeat.i(188326);
     a("copy_core_ver", paramInt1);
     a("copy_status", paramInt2);
-    AppMethodBeat.o(192690);
+    AppMethodBeat.o(188326);
   }
   
   void a(String paramString)
   {
-    AppMethodBeat.i(192698);
+    AppMethodBeat.i(188334);
     a("install_apk_path", paramString);
-    AppMethodBeat.o(192698);
+    AppMethodBeat.o(188334);
   }
   
   void a(String paramString, int paramInt)
   {
-    AppMethodBeat.i(192705);
+    AppMethodBeat.i(188341);
     a(paramString, String.valueOf(paramInt));
-    AppMethodBeat.o(192705);
+    AppMethodBeat.o(188341);
   }
   
   /* Error */
@@ -326,110 +326,116 @@ class n
   
   int b()
   {
-    AppMethodBeat.i(192694);
+    AppMethodBeat.i(188330);
     int i = c("install_core_ver");
-    AppMethodBeat.o(192694);
+    AppMethodBeat.o(188330);
     return i;
   }
   
   int b(String paramString)
   {
-    AppMethodBeat.i(192703);
-    Properties localProperties = e();
-    if ((localProperties != null) && (localProperties.getProperty(paramString) != null))
+    AppMethodBeat.i(188339);
+    try
     {
-      int i = Integer.parseInt(localProperties.getProperty(paramString));
-      AppMethodBeat.o(192703);
-      return i;
+      Properties localProperties = e();
+      if ((localProperties != null) && (localProperties.getProperty(paramString) != null))
+      {
+        int i = Integer.parseInt(localProperties.getProperty(paramString));
+        AppMethodBeat.o(188339);
+        return i;
+      }
     }
-    AppMethodBeat.o(192703);
+    catch (Exception paramString)
+    {
+      AppMethodBeat.o(188339);
+    }
     return -1;
   }
   
   void b(int paramInt)
   {
-    AppMethodBeat.i(192697);
+    AppMethodBeat.i(188333);
     a("unzip_retry_num", paramInt);
-    AppMethodBeat.o(192697);
+    AppMethodBeat.o(188333);
   }
   
   void b(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192691);
+    AppMethodBeat.i(188327);
     a("tpatch_ver", paramInt1);
     a("tpatch_status", paramInt2);
-    AppMethodBeat.o(192691);
+    AppMethodBeat.o(188327);
   }
   
   int c()
   {
-    AppMethodBeat.i(192695);
+    AppMethodBeat.i(188331);
     int i = b("install_status");
-    AppMethodBeat.o(192695);
+    AppMethodBeat.o(188331);
     return i;
   }
   
   int c(String paramString)
   {
-    AppMethodBeat.i(192706);
+    AppMethodBeat.i(188342);
     Properties localProperties = e();
     if ((localProperties != null) && (localProperties.getProperty(paramString) != null))
     {
       int i = Integer.parseInt(localProperties.getProperty(paramString));
-      AppMethodBeat.o(192706);
+      AppMethodBeat.o(188342);
       return i;
     }
-    AppMethodBeat.o(192706);
+    AppMethodBeat.o(188342);
     return 0;
   }
   
   void c(int paramInt)
   {
-    AppMethodBeat.i(192700);
+    AppMethodBeat.i(188336);
     a("incrupdate_status", paramInt);
-    AppMethodBeat.o(192700);
+    AppMethodBeat.o(188336);
   }
   
   void c(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(192699);
+    AppMethodBeat.i(188335);
     a("install_core_ver", paramInt1);
     a("install_status", paramInt2);
-    AppMethodBeat.o(192699);
+    AppMethodBeat.o(188335);
   }
   
   int d()
   {
-    AppMethodBeat.i(192701);
+    AppMethodBeat.i(188337);
     int i = b("incrupdate_status");
-    AppMethodBeat.o(192701);
+    AppMethodBeat.o(188337);
     return i;
   }
   
   String d(String paramString)
   {
-    AppMethodBeat.i(192707);
+    AppMethodBeat.i(188343);
     Properties localProperties = e();
     if ((localProperties != null) && (localProperties.getProperty(paramString) != null))
     {
       paramString = localProperties.getProperty(paramString);
-      AppMethodBeat.o(192707);
+      AppMethodBeat.o(188343);
       return paramString;
     }
-    AppMethodBeat.o(192707);
+    AppMethodBeat.o(188343);
     return null;
   }
   
   void d(int paramInt)
   {
-    AppMethodBeat.i(192702);
+    AppMethodBeat.i(188338);
     a("unlzma_status", paramInt);
-    AppMethodBeat.o(192702);
+    AppMethodBeat.o(188338);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.n
  * JD-Core Version:    0.7.0.1
  */

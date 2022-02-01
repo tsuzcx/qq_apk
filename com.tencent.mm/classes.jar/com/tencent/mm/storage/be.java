@@ -1,195 +1,145 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.qp;
-import com.tencent.mm.kernel.a;
-import com.tencent.mm.plugin.emoji.b.d;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import com.tencent.mm.storage.emotion.EmojiInfo;
-import com.tencent.mm.storage.emotion.b;
-import com.tencent.mm.storage.emotion.f;
-import com.tencent.mm.storage.emotion.k;
-import com.tencent.mm.storage.emotion.o;
-import com.tencent.mm.storage.emotion.q;
-import com.tencent.mm.storage.emotion.s;
-import com.tencent.mm.storage.emotion.t;
-import com.tencent.mm.storage.emotion.u;
-import com.tencent.mm.storage.emotion.w;
-import com.tencent.mm.storagebase.h;
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class be
 {
-  public static boolean Jgj;
-  private static ArrayList<EmojiGroupInfo> Jgk;
-  private static HashMap<String, ArrayList<EmojiInfo>> Jgl;
-  private static be Jgq;
-  public static int dQf;
-  public f JfU;
-  public com.tencent.mm.storage.emotion.c JfV;
-  public com.tencent.mm.storage.emotion.e JfW;
-  public s JfX;
-  public com.tencent.mm.storage.emotion.m JfY;
-  public o JfZ;
-  public k Jga;
-  public q Jgb;
-  public t Jgc;
-  public u Jgd;
-  public com.tencent.mm.storage.emotion.i Jge;
-  public w Jgf;
-  private b Jgg;
-  private com.tencent.mm.storage.emotion.g Jgh;
-  public com.tencent.mm.emoji.a.i Jgi;
-  public final k.a Jgm;
-  public final k.a Jgn;
-  public final k.a Jgo;
-  public final com.tencent.mm.sdk.b.c Jgp;
+  public boolean Opg;
+  public String Oph;
+  private String jsh;
+  public boolean jsi;
+  public String md5;
+  public long time;
   
-  static
+  public be(String paramString)
   {
-    AppMethodBeat.i(104977);
-    Jgj = false;
-    Jgk = new ArrayList();
-    Jgl = new HashMap();
-    dQf = -1;
-    AppMethodBeat.o(104977);
-  }
-  
-  private be()
-  {
-    AppMethodBeat.i(104971);
-    this.Jgm = new k.a()
+    AppMethodBeat.i(104954);
+    this.md5 = "-1";
+    this.Oph = "";
+    if (Util.isNullOrNil(paramString))
     {
-      public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
+      Log.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. content is null.");
+      AppMethodBeat.o(104954);
+      return;
+    }
+    for (;;)
+    {
+      try
       {
-        AppMethodBeat.i(104966);
-        if ((!bu.isNullOrNil(paramAnonymousString)) && (paramAnonymousString.equals("event_update_group")))
+        Object localObject;
+        if (paramString.endsWith("\n"))
         {
-          ae.d("MicroMsg.emoji.EmojiStorageMgr", "onNotifyChange event:%s", new Object[] { (String)paramAnonymousm.obj });
-          if (!com.tencent.mm.kernel.g.ajP().aiZ())
+          localObject = paramString.substring(0, paramString.length() - 1);
+          localObject = ((String)localObject).split(":", 6);
+          if ((localObject.length == 4) && (as.IG(localObject[0])))
           {
-            AppMethodBeat.o(104966);
-            return;
+            i = 1;
+            if (localObject.length > i) {
+              this.jsh = localObject[i];
+            }
+            if (localObject.length > i + 1) {
+              this.time = Util.getLong(localObject[(i + 1)], 0L);
+            }
+            if (localObject.length > i + 2) {
+              this.jsi = localObject[(i + 2)].equals("1");
+            }
+            if (localObject.length > i + 3) {
+              this.md5 = localObject[(i + 3)];
+            }
+            if (localObject.length > i + 4) {
+              this.Oph = localObject[(i + 4)].replace("*#*", ":");
+            }
+            if (localObject.length > i + 5) {
+              this.Opg = localObject[(i + 5)].equals("1");
+            }
+            AppMethodBeat.o(104954);
           }
-          ((d)com.tencent.mm.kernel.g.ad(d.class)).getEmojiDescMgr().fuZ();
         }
-        if ((!bu.isNullOrNil(paramAnonymousString)) && ((paramAnonymousString.equals("event_update_group")) || (paramAnonymousString.equalsIgnoreCase("productID"))))
+        else
         {
-          ae.d("MicroMsg.emoji.EmojiStorageMgr", "modify emoji gorup .");
-          be.Jgj = true;
-          be.a(be.this).dn(true);
+          this.Oph = paramString.replace(":", "*#*");
+          localObject = paramString;
+          continue;
         }
-        AppMethodBeat.o(104966);
+        int i = 0;
       }
-    };
-    this.Jgn = new k.a()
-    {
-      public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
+      catch (Exception localException)
       {
-        AppMethodBeat.i(104967);
-        ((d)com.tencent.mm.kernel.g.ad(d.class)).getEmojiDescMgr().fuZ();
-        AppMethodBeat.o(104967);
+        this.time = 0L;
+        Log.e("MicroMsg.emoji.EmojiContent", "EmojiContent parse failed. Content:%s Excpetion:%s", new Object[] { paramString, Util.stackTraceToString(localException) });
+        AppMethodBeat.o(104954);
+        return;
       }
-    };
-    this.Jgo = new k.a()
-    {
-      public final void a(String paramAnonymousString, com.tencent.mm.sdk.e.m paramAnonymousm)
-      {
-        AppMethodBeat.i(104968);
-        if (paramAnonymousString == null)
-        {
-          AppMethodBeat.o(104968);
-          return;
-        }
-        be.a(be.this).dl(true);
-        be.a(be.this).dm(true);
-        be.a(be.this).jdMethod_do(true);
-        AppMethodBeat.o(104968);
-      }
-    };
-    this.Jgp = new com.tencent.mm.sdk.b.c() {};
-    ae.i("MicroMsg.emoji.EmojiStorageMgr", "EmojiStorageMgr: %s", new Object[] { bu.fpN() });
-    AppMethodBeat.o(104971);
-  }
-  
-  public static be fvc()
-  {
-    try
-    {
-      AppMethodBeat.i(104970);
-      if (Jgq == null)
-      {
-        localbe = new be();
-        Jgq = localbe;
-        ae.i("MicroMsg.emoji.EmojiStorageMgr", "checkInitStorage: ");
-        if (localbe.JfU == null) {
-          localbe.fvd();
-        }
-      }
-      be localbe = Jgq;
-      AppMethodBeat.o(104970);
-      return localbe;
     }
-    finally {}
   }
   
-  public final f bJU()
+  public static String a(String paramString1, long paramLong, boolean paramBoolean1, String paramString2, boolean paramBoolean2, String paramString3)
   {
-    return this.JfU;
-  }
-  
-  public final void fvd()
-  {
-    AppMethodBeat.i(104972);
-    ae.i("MicroMsg.emoji.EmojiStorageMgr", "initStorage: ");
-    if ((com.tencent.mm.kernel.g.ajR().gDX == null) || (!com.tencent.mm.kernel.g.ajR().gDX.isOpen())) {
-      ae.w("MicroMsg.emoji.EmojiStorageMgr", "initStorage: db close %s", new Object[] { com.tencent.mm.kernel.g.ajR().gDX });
+    int j = 1;
+    AppMethodBeat.i(104952);
+    paramString3 = paramString3.replace(":", "*#*");
+    paramString1 = new StringBuilder().append(paramString1).append(":").append(paramLong).append(":");
+    if (paramBoolean1)
+    {
+      i = 1;
+      paramString1 = paramString1.append(i).append(":").append(paramString2).append(":").append(paramString3).append(":");
+      if (!paramBoolean2) {
+        break label121;
+      }
     }
-    this.JfU = new f(com.tencent.mm.kernel.g.ajR().gDX);
-    this.JfV = new com.tencent.mm.storage.emotion.c(com.tencent.mm.kernel.g.ajR().gDX);
-    this.JfW = new com.tencent.mm.storage.emotion.e(com.tencent.mm.kernel.g.ajR().gDX);
-    this.JfY = new com.tencent.mm.storage.emotion.m(com.tencent.mm.kernel.g.ajR().gDX);
-    this.JfZ = new o(com.tencent.mm.kernel.g.ajR().gDX);
-    this.Jga = new k(com.tencent.mm.kernel.g.ajR().gDX);
-    this.JfX = new s(com.tencent.mm.kernel.g.ajR().gDX);
-    this.Jgb = new q(com.tencent.mm.kernel.g.ajR().gDX);
-    this.Jgc = new t(com.tencent.mm.kernel.g.ajR().gDX);
-    this.Jgd = new u(com.tencent.mm.kernel.g.ajR().gDX);
-    this.Jge = new com.tencent.mm.storage.emotion.i(com.tencent.mm.kernel.g.ajR().gDX);
-    this.Jgf = new w();
-    this.Jgg = new b(com.tencent.mm.kernel.g.ajR().gDX);
-    this.Jgh = new com.tencent.mm.storage.emotion.g(com.tencent.mm.kernel.g.ajR().gDX);
-    this.Jgi = com.tencent.mm.emoji.a.i.aeX();
-    AppMethodBeat.o(104972);
+    label121:
+    for (int i = j;; i = 0)
+    {
+      paramString1 = i + "\n";
+      AppMethodBeat.o(104952);
+      return paramString1;
+      i = 0;
+      break;
+    }
   }
   
-  public final com.tencent.mm.storage.emotion.m fve()
+  public static be bkr(String paramString)
   {
-    return this.JfY;
+    AppMethodBeat.i(104955);
+    paramString = new be(paramString);
+    AppMethodBeat.o(104955);
+    return paramString;
   }
   
-  public final s fvf()
+  public final String bhs()
   {
-    return this.JfX;
+    return this.jsh;
   }
   
-  public final b fvg()
+  public final String bie()
   {
-    return this.Jgg;
-  }
-  
-  public final com.tencent.mm.storage.emotion.g fvh()
-  {
-    return this.Jgh;
+    int j = 1;
+    AppMethodBeat.i(104953);
+    Object localObject = new StringBuilder().append(this.jsh).append(":").append(this.time).append(":");
+    if (this.jsi)
+    {
+      i = 1;
+      localObject = ((StringBuilder)localObject).append(i).append(":").append(this.md5).append(":").append(this.Oph).append(":");
+      if (!this.Opg) {
+        break label118;
+      }
+    }
+    label118:
+    for (int i = j;; i = 0)
+    {
+      localObject = i + "\n";
+      AppMethodBeat.o(104953);
+      return localObject;
+      i = 0;
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.be
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:orientation="vertical" android:id="@id/b47" android:paddingLeft="@dimen/ci" android:paddingTop="@dimen/ci" android:paddingRight="@dimen/ci" android:layout_width="360.0dip" android:layout_height="wrap_content">
-        <RelativeLayout android:orientation="horizontal" android:background="@drawable/gw" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <TextView android:textSize="@dimen/hs" android:textColor="@color/y4" android:ellipsize="end" android:id="@id/a1f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/af1" android:singleLine="true" android:layout_centerVertical="true" />
-            <Button android:enabled="false" android:id="@id/e7h" android:text="@string/v1" android:layout_alignParentRight="true" android:layout_centerVertical="true" style="@style/o8" />
-        </RelativeLayout>
-        <com.tencent.mm.ui.widget.happybubble.LabelsView android:id="@id/g4j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:layout_marginBottom="@dimen/ci" android:minHeight="25.0dip" app:labelBackground="@drawable/yx" app:labelTextColor="@drawable/yy" app:labelTextHeight="h6x" app:labelTextPaddingBottom="@dimen/jn" app:labelTextPaddingLeft="@dimen/o" app:labelTextPaddingRight="@dimen/o" app:labelTextPaddingTop="@dimen/jn" app:labelTextSize="@dimen/gx" app:labelTextWidth="h6x" app:lineMargin="@dimen/c0" app:selectType="k" app:wordMargin="@dimen/c0" />
-    </LinearLayout>
-</LinearLayout>
+<FrameLayout android:id="@id/h8v" android:background="@color/fm" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:gravity="center" android:id="@id/j67" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.mmsight.ui.cameraglview.MMSightCameraGLSurfaceView android:layout_gravity="center" android:id="@id/bv0" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.plugin.mmsight.ui.CameraFrontSightView android:id="@id/db7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </FrameLayout>
+    <RelativeLayout android:id="@id/bf8" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <View android:id="@id/gxt" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mm.pluginsdk.ui.tools.VideoPlayerTextureView android:id="@id/gfx" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/ihm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
+        <ImageView android:id="@id/bw0" android:background="@drawable/air" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginBottom="@dimen/ad1" android:src="@raw/photo_edit_navbar_icon_mark" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+        <TextView android:textColor="@color/a5c" android:id="@id/j4b" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" />
+        <ImageButton android:id="@id/b48" android:background="@null" android:focusable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginBottom="50.0dip" android:src="@raw/mmsight_camera_icon_close" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/hri" android:background="@drawable/air" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginLeft="@dimen/ad1" android:layout_marginBottom="@dimen/ad1" android:src="@raw/mmsight_camera_preview_icon_back" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <ImageView android:id="@id/hrj" android:background="@drawable/ais" android:visibility="gone" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginRight="@dimen/ad1" android:layout_marginBottom="@dimen/ad1" android:src="@raw/mmsight_camera_preview_icon_done" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+        <com.tencent.mm.plugin.mmsight.ui.VideoSeekBarEditorView android:id="@id/j6g" android:background="@color/ac_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="20.0dip" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView android:id="@id/f6q" android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="200.0dip">
+        <com.tencent.mm.plugin.mmsight.ui.MMSightTopCountdownCoverView android:id="@id/iss" android:clickable="false" android:layout_width="fill_parent" android:layout_height="@dimen/ad3" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/if9" android:padding="20.0dip" android:focusable="true" android:layout_width="80.0dip" android:layout_height="80.0dip" android:src="@raw/mmsight_camera_navbar_icon_switch" android:layout_alignParentRight="true" />
+    </com.tencent.mm.plugin.mmsight.ui.MMSightCaptureTouchView>
+    <RelativeLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/bfu" android:background="@color/ac_" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton android:layout_gravity="center|top" android:id="@id/gwq" android:background="@null" android:visibility="gone" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:contentDescription="@string/f0x" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:id="@id/aje" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="30.0dip" android:text="@string/f0x" android:layout_above="@id/gwq" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <com.tencent.mm.plugin.video.ObservableTextureView android:id="@id/ggt" android:layout_width="1.0px" android:layout_height="1.0px" android:alpha="0.0" />
+</FrameLayout>

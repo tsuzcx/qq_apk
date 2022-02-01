@@ -3,11 +3,11 @@ package com.tencent.mm.plugin.finder.feed.model;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.finder.feed.model.internal.f;
 import com.tencent.mm.plugin.finder.feed.model.internal.g;
-import com.tencent.mm.plugin.finder.model.am;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.finder.model.bo;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/model/FinderEmptyLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "()V", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/model/FinderEmptyLoader;", "Lcom/tencent/mm/plugin/finder/feed/model/BaseFinderFeedLoader;", "()V", "createDataFetch", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "plugin-finder_release"})
 public final class FinderEmptyLoader
   extends BaseFinderFeedLoader
 {
@@ -16,37 +16,37 @@ public final class FinderEmptyLoader
     super(null);
   }
   
-  public final g<am> createDataFetch()
+  public final g<bo> createDataFetch()
   {
-    AppMethodBeat.i(202795);
+    AppMethodBeat.i(244565);
     g localg = (g)new a();
-    AppMethodBeat.o(202795);
+    AppMethodBeat.o(244565);
     return localg;
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/feed/model/FinderEmptyLoader$createDataFetch$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "fetchInit", "", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "fetchLoadMore", "fetchRefresh", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/feed/model/FinderEmptyLoader$createDataFetch$1", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataFetch;", "Lcom/tencent/mm/plugin/finder/model/RVFeed;", "fetchInit", "", "callback", "Lcom/tencent/mm/plugin/finder/feed/model/internal/IDataCallback;", "fetchLoadMore", "fetchRefresh", "plugin-finder_release"})
   public static final class a
-    extends g<am>
+    extends g<bo>
   {
-    public final void fetchInit(f<am> paramf)
+    public final void fetchInit(f<bo> paramf)
     {
-      AppMethodBeat.i(202792);
+      AppMethodBeat.i(244562);
       p.h(paramf, "callback");
-      AppMethodBeat.o(202792);
+      AppMethodBeat.o(244562);
     }
     
-    public final void fetchLoadMore(f<am> paramf)
+    public final void fetchLoadMore(f<bo> paramf)
     {
-      AppMethodBeat.i(202794);
+      AppMethodBeat.i(244564);
       p.h(paramf, "callback");
-      AppMethodBeat.o(202794);
+      AppMethodBeat.o(244564);
     }
     
-    public final void fetchRefresh(f<am> paramf)
+    public final void fetchRefresh(f<bo> paramf)
     {
-      AppMethodBeat.i(202793);
+      AppMethodBeat.i(244563);
       p.h(paramf, "callback");
-      AppMethodBeat.o(202793);
+      AppMethodBeat.o(244563);
     }
   }
 }

@@ -6,163 +6,102 @@ import com.tencent.mm.plugin.report.a;
 public final class fv
   extends a
 {
-  private String dTr = "";
-  private int enA = 0;
-  private int enB = 0;
-  private int enC = 0;
-  private int enD = 0;
-  private String enE = "";
-  private int enF = 0;
-  private int enG = 0;
-  private String enH = "";
-  private long enI = 0L;
+  private long eIe;
+  private long eIf;
+  private long eIg;
+  private String eoj = "";
+  private long esJ;
+  private String eui = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(118493);
+    AppMethodBeat.i(209250);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTr);
+    ((StringBuffer)localObject).append(this.eoj);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enA);
+    ((StringBuffer)localObject).append(this.eui);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enB);
+    ((StringBuffer)localObject).append(this.eIe);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enC);
+    ((StringBuffer)localObject).append(this.eIf);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enD);
+    ((StringBuffer)localObject).append(this.eIg);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enE);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enF);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enG);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enH);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enI);
+    ((StringBuffer)localObject).append(this.esJ);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(118493);
+    aMq((String)localObject);
+    AppMethodBeat.o(209250);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(118494);
+    AppMethodBeat.i(209251);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("SessionId:").append(this.dTr);
+    ((StringBuffer)localObject).append("Feedid:").append(this.eoj);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeViewId:").append(this.enA);
+    ((StringBuffer)localObject).append("LongVideoId:").append(this.eui);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeOrder:").append(this.enB);
+    ((StringBuffer)localObject).append("LongVideoDuration:").append(this.eIe);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeNewUinCount:").append(this.enC);
+    ((StringBuffer)localObject).append("WordingCnt:").append(this.eIf);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeNewFavorUinCount:").append(this.enD);
+    ((StringBuffer)localObject).append("DurationPosition:").append(this.eIg);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeNewUinList:").append(this.enE);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeBeforeUinCount:").append(this.enF);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeBeforeFavorUinCount:").append(this.enG);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExposeBeforeUinList:").append(this.enH);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("InteractiveUserCount:").append(this.enI);
+    ((StringBuffer)localObject).append("Outcome:").append(this.esJ);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118494);
+    AppMethodBeat.o(209251);
     return localObject;
-  }
-  
-  public final int TC()
-  {
-    return this.enA;
-  }
-  
-  public final int TD()
-  {
-    return this.enD;
-  }
-  
-  public final int TE()
-  {
-    return this.enG;
   }
   
   public final int getId()
   {
-    return 16887;
+    return 21150;
   }
   
-  public final fv iG(int paramInt)
+  public final fv pA(long paramLong)
   {
-    this.enA = paramInt;
+    this.eIf = paramLong;
     return this;
   }
   
-  public final fv iH(int paramInt)
+  public final fv pB(long paramLong)
   {
-    this.enB = paramInt;
+    this.eIg = paramLong;
     return this;
   }
   
-  public final fv iI(int paramInt)
+  public final fv pC(long paramLong)
   {
-    this.enC = paramInt;
+    this.esJ = paramLong;
     return this;
   }
   
-  public final fv iJ(int paramInt)
+  public final fv pz(long paramLong)
   {
-    this.enD = paramInt;
+    this.eIe = paramLong;
     return this;
   }
   
-  public final fv iK(int paramInt)
+  public final fv sO(String paramString)
   {
-    this.enF = paramInt;
+    AppMethodBeat.i(209248);
+    this.eoj = x("Feedid", paramString, true);
+    AppMethodBeat.o(209248);
     return this;
   }
   
-  public final fv iL(int paramInt)
+  public final fv sP(String paramString)
   {
-    this.enG = paramInt;
-    return this;
-  }
-  
-  public final fv lb(long paramLong)
-  {
-    this.enI = paramLong;
-    return this;
-  }
-  
-  public final fv pe(String paramString)
-  {
-    AppMethodBeat.i(118490);
-    this.dTr = t("SessionId", paramString, true);
-    AppMethodBeat.o(118490);
-    return this;
-  }
-  
-  public final fv pf(String paramString)
-  {
-    AppMethodBeat.i(118491);
-    this.enE = t("ExposeNewUinList", paramString, true);
-    AppMethodBeat.o(118491);
-    return this;
-  }
-  
-  public final fv pg(String paramString)
-  {
-    AppMethodBeat.i(118492);
-    this.enH = t("ExposeBeforeUinList", paramString, true);
-    AppMethodBeat.o(118492);
+    AppMethodBeat.i(209249);
+    this.eui = x("LongVideoId", paramString, true);
+    AppMethodBeat.o(209249);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fv
  * JD-Core Version:    0.7.0.1
  */

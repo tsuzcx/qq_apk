@@ -4,10 +4,10 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.g.b;
+import com.tencent.mm.compatible.h.b;
 import com.tencent.mm.hellhoundlib.b.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 
 final class SettingsAboutSystemUI$3
   implements DialogInterface.OnClickListener
@@ -17,20 +17,20 @@ final class SettingsAboutSystemUI$3
   public final void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     AppMethodBeat.i(74043);
-    if (!b.abm()) {}
+    if (!b.apl()) {}
     for (boolean bool = true;; bool = false)
     {
-      b.cK(bool);
-      g.ajS().releaseAll();
-      ar.f(new Runnable()
+      b.du(bool);
+      g.aAi().releaseAll();
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(74042);
           com.tencent.mm.hellhoundlib.b.a locala = c.a(Process.myPid(), new com.tencent.mm.hellhoundlib.b.a());
           Object localObject = new Object();
-          com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.ahE(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI$2$1", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
-          Process.killProcess(((Integer)locala.mt(0)).intValue());
+          com.tencent.mm.hellhoundlib.a.a.a(localObject, locala.axQ(), "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI$2$1", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
+          Process.killProcess(((Integer)locala.pG(0)).intValue());
           com.tencent.mm.hellhoundlib.a.a.a(localObject, "com/tencent/mm/plugin/setting/ui/setting/SettingsAboutSystemUI$2$1", "run", "()V", "android/os/Process_EXEC_", "killProcess", "(I)V");
           AppMethodBeat.o(74042);
         }

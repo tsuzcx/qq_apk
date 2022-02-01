@@ -9,25 +9,25 @@ import java.util.HashMap;
 
 public final class a
 {
-  static HashMap<String, a> MUL;
+  static HashMap<String, a> SHS;
   
   static
   {
-    AppMethodBeat.i(207607);
-    MUL = new HashMap();
-    AppMethodBeat.o(207607);
+    AppMethodBeat.i(207340);
+    SHS = new HashMap();
+    AppMethodBeat.o(207340);
   }
   
-  public static a bdd(String paramString)
+  public static a bsQ(String paramString)
   {
     try
     {
-      AppMethodBeat.i(207606);
-      if (!MUL.containsKey(paramString)) {
-        MUL.put(paramString, new a(paramString));
+      AppMethodBeat.i(207339);
+      if (!SHS.containsKey(paramString)) {
+        SHS.put(paramString, new a(paramString));
       }
-      paramString = (a)MUL.get(paramString);
-      AppMethodBeat.o(207606);
+      paramString = (a)SHS.get(paramString);
+      AppMethodBeat.o(207339);
       return paramString;
     }
     finally {}
@@ -36,90 +36,90 @@ public final class a
   public static final class a
     extends Scheduler
   {
-    String MUM;
+    String SHT;
     
     public a(String paramString)
     {
-      AppMethodBeat.i(207602);
-      this.MUM = paramString;
-      this.TAG = (ghF() + "Scheduler");
-      AppMethodBeat.o(207602);
+      AppMethodBeat.i(207334);
+      this.SHT = paramString;
+      this.TAG = (hvc() + "Scheduler");
+      AppMethodBeat.o(207334);
     }
     
-    public final String Ae(boolean paramBoolean)
+    public final String Eu(boolean paramBoolean)
     {
-      AppMethodBeat.i(207604);
+      AppMethodBeat.i(207336);
       String str2;
       String str1;
       if (!paramBoolean)
       {
-        str2 = b.nb("UPDATE_SPEED_CONFIG", "tools");
+        str2 = b.nS("UPDATE_SPEED_CONFIG", "tools");
         str1 = str2;
         if (TextUtils.isEmpty(str2)) {
-          str1 = com.tencent.xweb.a.nb("UPDATE_SPEED_CONFIG", "tools");
+          str1 = com.tencent.xweb.a.nS("UPDATE_SPEED_CONFIG", "tools");
         }
       }
       for (;;)
       {
-        AppMethodBeat.o(207604);
+        AppMethodBeat.o(207336);
         return str1;
-        str2 = b.nb("UPDATE_FORWARD_SPEED_CONFIG", "tools");
+        str2 = b.nS("UPDATE_FORWARD_SPEED_CONFIG", "tools");
         str1 = str2;
         if (TextUtils.isEmpty(str2)) {
-          str1 = com.tencent.xweb.a.nb("UPDATE_FORWARD_SPEED_CONFIG", "tools");
+          str1 = com.tencent.xweb.a.nS("UPDATE_FORWARD_SPEED_CONFIG", "tools");
         }
       }
     }
     
     public final boolean a(c paramc1, c paramc2)
     {
-      AppMethodBeat.i(207603);
-      if ((paramc1.MWh != paramc2.MWh) || (!nr(paramc1.path, paramc2.path)))
+      AppMethodBeat.i(207335);
+      if ((paramc1.SJl != paramc2.SJl) || (!ok(paramc1.path, paramc2.path)))
       {
-        AppMethodBeat.o(207603);
+        AppMethodBeat.o(207335);
         return false;
       }
       boolean bool = super.a(paramc1, paramc2);
-      AppMethodBeat.o(207603);
+      AppMethodBeat.o(207335);
       return bool;
     }
     
-    public final String gEo()
+    public final String hvc()
     {
-      AppMethodBeat.i(224503);
-      String str = b.nb("UPDATE_SCHEDULE_TIME_RANGE_BIND", "tools");
-      if (TextUtils.isEmpty(str))
-      {
-        str = super.gEo();
-        AppMethodBeat.o(224503);
-        return str;
-      }
-      AppMethodBeat.o(224503);
-      return str;
+      return this.SHT;
     }
     
-    public final String ghF()
-    {
-      return this.MUM;
-    }
-    
-    public final int ghG()
+    public final int hvd()
     {
       return 15;
     }
     
-    public final String ghH()
+    public final String hve()
     {
-      AppMethodBeat.i(207605);
-      String str = b.nb("FREE_FETCH_CONFIG_TIME_ZONE", "tools");
-      AppMethodBeat.o(207605);
+      AppMethodBeat.i(207337);
+      String str = b.nS("UPDATE_SCHEDULE_TIME_RANGE_BIND", "tools");
+      if (TextUtils.isEmpty(str))
+      {
+        str = super.hve();
+        AppMethodBeat.o(207337);
+        return str;
+      }
+      AppMethodBeat.o(207337);
+      return str;
+    }
+    
+    public final String hvf()
+    {
+      AppMethodBeat.i(207338);
+      String str = b.nS("FREE_FETCH_CONFIG_TIME_ZONE", "tools");
+      AppMethodBeat.o(207338);
       return str;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.xweb.xwalk.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,44 @@
 package com.tencent.mm.plugin.performance.diagnostic;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.performance.diagnostic.memory.MemoryHookLogic;
-import com.tencent.mm.plugin.performance.diagnostic.pthread.PthreadHookLogic;
-import java.util.Map;
+import com.tencent.mm.g.a.fp;
+import com.tencent.mm.plugin.performance.a.a;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 
 public final class b
-  extends a
 {
-  protected final void aB(Map<String, String> paramMap)
+  private static final String ASB;
+  private static final IListener<fp> ASC;
+  private static final MultiProcessMMKV cQe;
+  
+  static
   {
-    AppMethodBeat.i(124913);
-    if ((paramMap.containsKey(".cmd.diagnostic.report" + ".memory")) && ((MemoryHookLogic)com.tencent.mm.plugin.performance.a.a.wWa.aR(MemoryHookLogic.class) != null)) {
-      MemoryHookLogic.report();
-    }
-    if (paramMap.containsKey(".cmd.diagnostic.report" + ".pthread"))
-    {
-      com.tencent.mm.plugin.performance.a.a.wWa.aR(PthreadHookLogic.class);
-      PthreadHookLogic.report();
-    }
-    AppMethodBeat.o(124913);
+    AppMethodBeat.i(201030);
+    cQe = MultiProcessMMKV.getMMKV("diagnostic_storage");
+    StringBuilder localStringBuilder = new StringBuilder();
+    a locala = a.ASb;
+    ASB = a.eBC() + ".$token";
+    ASC = new IListener() {};
+    AppMethodBeat.o(201030);
   }
   
-  public final String dBO()
+  public static void alive()
   {
-    return ".cmd.diagnostic.report";
+    AppMethodBeat.i(201029);
+    if (!MMApplicationContext.isMainProcess())
+    {
+      AppMethodBeat.o(201029);
+      return;
+    }
+    ASC.alive();
+    AppMethodBeat.o(201029);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.performance.diagnostic.b
  * JD-Core Version:    0.7.0.1
  */

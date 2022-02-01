@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.plugin.game.ui.GameFeedNoGamePlayTemplate android:orientation="vertical" android:padding="@dimen/fy" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <com.tencent.mm.plugin.game.ui.GameFeedTitleDescView android:id="@id/cbb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/g3" />
-        <FrameLayout android:id="@id/cp5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/g3">
-            <com.tencent.mm.plugin.game.ui.GameRoundImageView android:id="@id/b5k" android:background="@color/pt" android:layout_width="fill_parent" android:layout_height="@dimen/g1" />
-            <ImageView android:layout_gravity="center" android:id="@id/gn3" android:visibility="gone" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/att" />
-        </FrameLayout>
-        <RelativeLayout android:id="@id/c_h" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <ImageView android:id="@id/cbw" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginRight="@dimen/g3" android:scaleType="fitXY" android:layout_alignParentLeft="true" />
-            <com.tencent.mm.plugin.game.ui.GameDownloadView android:id="@id/cb6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/g5" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-            <TextView android:textSize="@dimen/fg" android:textColor="@color/q6" android:id="@id/cdk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_toLeftOf="@id/cb6" android:layout_toRightOf="@id/cbw" android:layout_centerVertical="true" />
-        </RelativeLayout>
-    </com.tencent.mm.plugin.game.ui.GameFeedNoGamePlayTemplate>
-</FrameLayout>
+<android.support.constraint.ConstraintLayout android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="@dimen/cp"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <View android:id="@id/bsp" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="@dimen/ct" app:layout_constraintTop_toTopOf="g8m" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:gravity="center_vertical" android:id="@id/bn6" android:layout_width="wrap_content" android:layout_height="@dimen/cn" android:layout_marginLeft="16.0dip" android:text="@string/d8d" android:layout_weight="1.0" app:layout_constraintLeft_toLeftOf="g8m" app:layout_constraintTop_toBottomOf="@id/bsp" />
+    <View android:background="@drawable/aqu" android:layout_width="fill_parent" android:layout_height="@dimen/ct" android:layout_marginTop="@dimen/cn" app:layout_constraintTop_toTopOf="g8m" />
+</android.support.constraint.ConstraintLayout>

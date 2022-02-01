@@ -5,12 +5,12 @@ import android.graphics.Path;
 import android.graphics.RectF;
 import android.support.annotation.Keep;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class PathExtractor
 {
   private String filePath;
-  private long gtI;
+  private long hgs;
   
   static
   {
@@ -23,14 +23,14 @@ public class PathExtractor
   {
     AppMethodBeat.i(145544);
     this.filePath = paramString;
-    this.gtI = nInit(paramString);
-    if (this.gtI != 0L)
+    this.hgs = nInit(paramString);
+    if (this.hgs != 0L)
     {
-      ae.i("MicroMsg.PathExtractor", "create for %s, %d", new Object[] { paramString, Long.valueOf(this.gtI) });
+      Log.i("MicroMsg.PathExtractor", "create for %s, %d", new Object[] { paramString, Long.valueOf(this.hgs) });
       AppMethodBeat.o(145544);
       return;
     }
-    ae.e("MicroMsg.PathExtractor", "create for %s failed", new Object[] { paramString });
+    Log.e("MicroMsg.PathExtractor", "create for %s failed", new Object[] { paramString });
     AppMethodBeat.o(145544);
   }
   
@@ -49,11 +49,11 @@ public class PathExtractor
     AppMethodBeat.i(145546);
     if (paramMetrics == null)
     {
-      ae.w("MicroMsg.PathExtractor", "metrics is null");
+      Log.w("MicroMsg.PathExtractor", "metrics is null");
       AppMethodBeat.o(145546);
       return;
     }
-    nGetMetrics(this.gtI, paramMetrics);
+    nGetMetrics(this.hgs, paramMetrics);
     paramMetrics.height *= 0.015625F;
     paramMetrics.ascender *= 0.015625F;
     paramMetrics.descender *= 0.015625F;
@@ -66,14 +66,14 @@ public class PathExtractor
     int[] arrayOfInt = new int[4];
     try
     {
-      bool = nExtractPath(this.gtI, paramChar, paramPath, arrayOfInt);
+      bool = nExtractPath(this.hgs, paramChar, paramPath, arrayOfInt);
       if (bool)
       {
         Matrix localMatrix = new Matrix();
         localMatrix.setScale(0.015625F, 0.015625F);
         paramPath.transform(localMatrix);
         paramRectF.set(arrayOfInt[0] * 0.015625F, arrayOfInt[3] * 0.015625F, arrayOfInt[2] * 0.015625F, arrayOfInt[1] * 0.015625F);
-        ae.i("MicroMsg.PathExtractor", "load path for ".concat(String.valueOf(paramChar)));
+        Log.i("MicroMsg.PathExtractor", "load path for ".concat(String.valueOf(paramChar)));
         AppMethodBeat.o(145547);
         return true;
       }
@@ -82,10 +82,10 @@ public class PathExtractor
     {
       for (;;)
       {
-        ae.e("MicroMsg.PathExtractor", "extract path error %c", new Object[] { Character.valueOf(paramChar) });
+        Log.e("MicroMsg.PathExtractor", "extract path error %c", new Object[] { Character.valueOf(paramChar) });
         boolean bool = false;
       }
-      ae.w("MicroMsg.PathExtractor", "not such char ".concat(String.valueOf(paramChar)));
+      Log.w("MicroMsg.PathExtractor", "not such char ".concat(String.valueOf(paramChar)));
       AppMethodBeat.o(145547);
     }
     return false;
@@ -96,7 +96,7 @@ public class PathExtractor
     AppMethodBeat.i(145548);
     try
     {
-      nFinalize(this.gtI);
+      nFinalize(this.hgs);
       return;
     }
     finally
@@ -108,14 +108,14 @@ public class PathExtractor
   
   public final boolean isValid()
   {
-    return this.gtI != 0L;
+    return this.hgs != 0L;
   }
   
   public final void setTextSize(int paramInt)
   {
     AppMethodBeat.i(145545);
-    ae.i("MicroMsg.PathExtractor", "set text size %d, %d", new Object[] { Long.valueOf(this.gtI), Integer.valueOf(paramInt) });
-    nSetTextSize(this.gtI, paramInt);
+    Log.i("MicroMsg.PathExtractor", "set text size %d, %d", new Object[] { Long.valueOf(this.hgs), Integer.valueOf(paramInt) });
+    nSetTextSize(this.hgs, paramInt);
     AppMethodBeat.o(145545);
   }
   
@@ -129,7 +129,7 @@ public class PathExtractor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.fontdecode.PathExtractor
  * JD-Core Version:    0.7.0.1
  */

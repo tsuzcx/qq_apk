@@ -12,68 +12,68 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.appbrand.phonenumber.widget.MMFormVerifyCodeInputView;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.MMFormInputView;
 import com.tencent.mm.ui.widget.MMSwitchBtn;
 import com.tencent.mm.ui.widget.a.d.a;
-import d.g.b.p;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.g.b.p;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddView;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddView;", "mContext", "Landroid/content/Context;", "mPhoneNumberAddLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;)V", "mContentView", "Landroid/view/View;", "mExistPhoneNum", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "mFinishBtn", "Landroid/widget/Button;", "mFormInputView", "Lcom/tencent/mm/plugin/appbrand/phonenumber/widget/MMFormVerifyCodeInputView;", "mFormVerifyCodeInputView", "Lcom/tencent/mm/ui/base/MMFormInputView;", "mSwitchBtn", "Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "containPhoneNum", "", "number", "", "count", "", "getView", "reset", "showReplicaNumDialog", "luggage-wechat-full-sdk_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddView;", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddView;", "mContext", "Landroid/content/Context;", "mPhoneNumberAddLogic", "Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;", "(Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/phonenumber/IPhoneNumberAddLogic;)V", "mContentView", "Landroid/view/View;", "mExistPhoneNum", "", "Lcom/tencent/mm/plugin/appbrand/phonenumber/PhoneItem;", "mFinishBtn", "Landroid/widget/Button;", "mFormInputView", "Lcom/tencent/mm/plugin/appbrand/phonenumber/widget/MMFormVerifyCodeInputView;", "mFormVerifyCodeInputView", "Lcom/tencent/mm/ui/base/MMFormInputView;", "mSwitchBtn", "Lcom/tencent/mm/ui/widget/MMSwitchBtn;", "containPhoneNum", "", "number", "", "count", "", "getView", "reset", "showReplicaNumDialog", "luggage-wechat-full-sdk_release"})
 public final class t
   implements m
 {
-  MMSwitchBtn iFu;
+  MMSwitchBtn jBx;
   private View mContentView;
   final Context mContext;
-  l mpj;
-  MMFormVerifyCodeInputView mpm;
-  MMFormInputView mpn;
-  Button mpo;
-  List<PhoneItem> mpp;
+  Button nAa;
+  List<PhoneItem> nAb;
+  l nzV;
+  MMFormVerifyCodeInputView nzY;
+  MMFormInputView nzZ;
   
   public t(Context paramContext, l paraml)
   {
     AppMethodBeat.i(148120);
     this.mContext = paramContext;
-    this.mpj = paraml;
-    this.mContentView = View.inflate(this.mContext, 2131493017, null);
+    this.nzV = paraml;
+    this.mContentView = View.inflate(this.mContext, 2131493056, null);
     paramContext = this.mContentView;
     if (paramContext != null)
     {
-      paramContext = (MMFormVerifyCodeInputView)paramContext.findViewById(2131296784);
-      this.mpm = paramContext;
-      paramContext = this.mpm;
+      paramContext = (MMFormVerifyCodeInputView)paramContext.findViewById(2131296866);
+      this.nzY = paramContext;
+      paramContext = this.nzY;
       if (paramContext != null)
       {
         paramContext = paramContext.getContentEditText();
         if (paramContext != null) {
-          paramContext.setTextColor(this.mContext.getResources().getColor(2131100710));
+          paramContext.setTextColor(this.mContext.getResources().getColor(2131100903));
         }
       }
       paramContext = this.mContentView;
       if (paramContext == null) {
         break label349;
       }
-      paramContext = (MMFormInputView)paramContext.findViewById(2131296786);
+      paramContext = (MMFormInputView)paramContext.findViewById(2131296868);
       label116:
-      this.mpn = paramContext;
-      paramContext = this.mpn;
+      this.nzZ = paramContext;
+      paramContext = this.nzZ;
       if (paramContext != null)
       {
         paramContext = paramContext.getContentEditText();
         if (paramContext != null) {
-          paramContext.setTextColor(this.mContext.getResources().getColor(2131100710));
+          paramContext.setTextColor(this.mContext.getResources().getColor(2131100903));
         }
       }
       paramContext = this.mContentView;
       if (paramContext == null) {
         break label354;
       }
-      paramContext = (MMSwitchBtn)paramContext.findViewById(2131296785);
+      paramContext = (MMSwitchBtn)paramContext.findViewById(2131296867);
       label174:
-      this.iFu = paramContext;
+      this.jBx = paramContext;
       paramContext = this.mContentView;
       if (paramContext == null) {
         break label359;
@@ -82,16 +82,16 @@ public final class t
     label349:
     label354:
     label359:
-    for (paramContext = (Button)paramContext.findViewById(2131296783);; paramContext = null)
+    for (paramContext = (Button)paramContext.findViewById(2131296865);; paramContext = null)
     {
-      this.mpo = paramContext;
-      paramContext = r.moQ;
-      this.mpp = r.bxo();
-      paramContext = this.mpm;
+      this.nAa = paramContext;
+      paramContext = r.nzC;
+      this.nAb = r.bTy();
+      paramContext = this.nzY;
       if (paramContext != null) {
         paramContext.setInputType(3);
       }
-      paramContext = this.mpm;
+      paramContext = this.nzY;
       if (paramContext != null) {
         paramContext.setSendSmsBtnClickListener((View.OnClickListener)new View.OnClickListener()
         {
@@ -100,37 +100,37 @@ public final class t
             Object localObject1 = null;
             AppMethodBeat.i(148112);
             Object localObject2 = new b();
-            ((b)localObject2).bd(paramAnonymousView);
-            a.b("com/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject2).ahF());
-            localObject2 = this.mpq;
-            paramAnonymousView = this.mpq.mpm;
+            ((b)localObject2).bm(paramAnonymousView);
+            a.b("com/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject2).axR());
+            localObject2 = this.nAc;
+            paramAnonymousView = this.nAc.nzY;
             Object localObject3;
             int i;
             if (paramAnonymousView != null)
             {
               paramAnonymousView = paramAnonymousView.getText();
               paramAnonymousView = String.valueOf(paramAnonymousView);
-              if (((t)localObject2).mpp == null) {
+              if (((t)localObject2).nAb == null) {
                 break label198;
               }
-              localObject2 = ((t)localObject2).mpp;
+              localObject2 = ((t)localObject2).nAb;
               if (localObject2 == null) {
-                p.gkB();
+                p.hyc();
               }
               localObject2 = ((List)localObject2).iterator();
               while (((Iterator)localObject2).hasNext())
               {
                 localObject3 = (PhoneItem)((Iterator)localObject2).next();
-                if (p.i(bu.nullAsNil(paramAnonymousView), ((PhoneItem)localObject3).dAs))
+                if (p.j(Util.nullAsNil(paramAnonymousView), ((PhoneItem)localObject3).dSf))
                 {
                   i = 1;
                   label138:
                   if (i == 0) {
                     break label203;
                   }
-                  paramAnonymousView = new d.a(this.mpq.mContext);
-                  paramAnonymousView.afR(2131756014);
-                  paramAnonymousView.afU(2131761022);
+                  paramAnonymousView = new d.a(this.nAc.mContext);
+                  paramAnonymousView.aoS(2131756129);
+                  paramAnonymousView.aoV(2131762798);
                   paramAnonymousView.show();
                 }
               }
@@ -146,21 +146,21 @@ public final class t
               i = 0;
               break label138;
               label203:
-              localObject2 = this.mpq.mpj;
+              localObject2 = this.nAc.nzV;
               if (localObject2 != null)
               {
-                localObject3 = this.mpq.mpm;
+                localObject3 = this.nAc.nzY;
                 paramAnonymousView = localObject1;
                 if (localObject3 != null) {
                   paramAnonymousView = ((MMFormVerifyCodeInputView)localObject3).getText();
                 }
-                ((l)localObject2).UE(String.valueOf(paramAnonymousView));
+                ((l)localObject2).aes(String.valueOf(paramAnonymousView));
               }
             }
           }
         });
       }
-      paramContext = this.mpm;
+      paramContext = this.nzY;
       if (paramContext != null) {
         paramContext.addTextChangedListener((TextWatcher)new TextWatcher()
         {
@@ -171,10 +171,10 @@ public final class t
           public final void onTextChanged(CharSequence paramAnonymousCharSequence, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
           {
             AppMethodBeat.i(148113);
-            paramAnonymousCharSequence = this.mpq.mpo;
+            paramAnonymousCharSequence = this.nAc.nAa;
             if (paramAnonymousCharSequence != null)
             {
-              Object localObject = this.mpq.mpm;
+              Object localObject = this.nAc.nzY;
               if (localObject != null)
               {
                 localObject = ((MMFormVerifyCodeInputView)localObject).getText();
@@ -182,7 +182,7 @@ public final class t
               }
               else
               {
-                localObject = this.mpq.mpn;
+                localObject = this.nAc.nzZ;
                 if (localObject != null)
                 {
                   localObject = ((MMFormInputView)localObject).getText();
@@ -203,11 +203,11 @@ public final class t
           }
         });
       }
-      paramContext = this.mpn;
+      paramContext = this.nzZ;
       if (paramContext != null) {
         paramContext.setInputType(3);
       }
-      paramContext = this.mpn;
+      paramContext = this.nzZ;
       if (paramContext != null) {
         paramContext.addTextChangedListener((TextWatcher)new TextWatcher()
         {
@@ -229,10 +229,10 @@ public final class t
           {
             AppMethodBeat.i(148114);
             p.h(paramAnonymousCharSequence, "s");
-            paramAnonymousCharSequence = this.mpq.mpo;
+            paramAnonymousCharSequence = this.nAc.nAa;
             if (paramAnonymousCharSequence != null)
             {
-              Object localObject = this.mpq.mpm;
+              Object localObject = this.nAc.nzY;
               if (localObject != null)
               {
                 localObject = ((MMFormVerifyCodeInputView)localObject).getText();
@@ -240,7 +240,7 @@ public final class t
               }
               else
               {
-                localObject = this.mpq.mpn;
+                localObject = this.nAc.nzZ;
                 if (localObject != null)
                 {
                   localObject = ((MMFormInputView)localObject).getText();
@@ -261,7 +261,7 @@ public final class t
           }
         });
       }
-      paramContext = this.mpo;
+      paramContext = this.nAa;
       if (paramContext == null) {
         break label364;
       }
@@ -272,22 +272,22 @@ public final class t
           Object localObject1 = null;
           AppMethodBeat.i(148117);
           Object localObject2 = new b();
-          ((b)localObject2).bd(paramAnonymousView);
-          a.b("com/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject2).ahF());
-          localObject2 = this.mpq.mpj;
+          ((b)localObject2).bm(paramAnonymousView);
+          a.b("com/tencent/mm/plugin/appbrand/phonenumber/PhoneNumberAddView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject2).axR());
+          localObject2 = this.nAc.nzV;
           boolean bool;
           if (localObject2 != null)
           {
-            paramAnonymousView = this.mpq.iFu;
+            paramAnonymousView = this.nAc.jBx;
             if (paramAnonymousView == null) {
               break label162;
             }
-            paramAnonymousView = Boolean.valueOf(paramAnonymousView.fPP());
+            paramAnonymousView = Boolean.valueOf(paramAnonymousView.isCheck());
             if (paramAnonymousView == null) {
-              p.gkB();
+              p.hyc();
             }
             bool = paramAnonymousView.booleanValue();
-            paramAnonymousView = this.mpq.mpm;
+            paramAnonymousView = this.nAc.nzY;
             if (paramAnonymousView == null) {
               break label167;
             }
@@ -297,7 +297,7 @@ public final class t
           for (paramAnonymousView = paramAnonymousView.getText();; paramAnonymousView = null)
           {
             String str = String.valueOf(paramAnonymousView);
-            MMFormInputView localMMFormInputView = this.mpq.mpn;
+            MMFormInputView localMMFormInputView = this.nAc.nzZ;
             paramAnonymousView = localObject1;
             if (localMMFormInputView != null) {
               paramAnonymousView = localMMFormInputView.getText();
@@ -324,13 +324,13 @@ public final class t
     AppMethodBeat.o(148120);
   }
   
-  public final void bxk()
+  public final void bTu()
   {
     AppMethodBeat.i(148118);
-    MMFormVerifyCodeInputView localMMFormVerifyCodeInputView = this.mpm;
+    MMFormVerifyCodeInputView localMMFormVerifyCodeInputView = this.nzY;
     if (localMMFormVerifyCodeInputView != null)
     {
-      localMMFormVerifyCodeInputView.bxk();
+      localMMFormVerifyCodeInputView.bTu();
       AppMethodBeat.o(148118);
       return;
     }
@@ -345,7 +345,7 @@ public final class t
   public final void reset()
   {
     AppMethodBeat.i(148119);
-    MMFormVerifyCodeInputView localMMFormVerifyCodeInputView = this.mpm;
+    MMFormVerifyCodeInputView localMMFormVerifyCodeInputView = this.nzY;
     if (localMMFormVerifyCodeInputView != null)
     {
       localMMFormVerifyCodeInputView.reset();

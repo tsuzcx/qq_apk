@@ -1,43 +1,42 @@
 package com.tencent.mm.plugin.luckymoney.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a;
+import com.tencent.mm.ak.d.a;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.protocal.protobuf.bje;
-import com.tencent.mm.protocal.protobuf.bjf;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.protocal.protobuf.adf;
+import com.tencent.mm.protocal.protobuf.adg;
 
 public final class c
-  extends a<bjf>
+  extends com.tencent.mm.ak.c<adg>
 {
   public c(String paramString)
   {
-    AppMethodBeat.i(65163);
-    bje localbje = new bje();
-    com.tencent.mm.ak.b.a locala = new com.tencent.mm.ak.b.a();
-    locala.hQF = localbje;
-    locala.hQG = new bjf();
-    boolean bool;
-    if (((b)g.ab(b.class)).a(com.tencent.mm.plugin.expt.b.b.a.qNz, 1) == 1)
+    AppMethodBeat.i(65162);
+    adf localadf = new adf();
+    localadf.Lot = paramString;
+    paramString = new d.a();
+    paramString.iLN = localadf;
+    paramString.iLO = new adg();
+    int i;
+    if (((b)g.af(b.class)).a(b.a.skv, 1) == 1)
     {
-      bool = true;
-      ae.d("CgiGetShowSource", "is new: %s", new Object[] { Boolean.valueOf(bool) });
-      if (!bool) {
-        break label129;
+      i = 1;
+      if (i == 0) {
+        break label105;
       }
-      locala.funcId = 3857;
+      paramString.funcId = 732;
     }
-    for (locala.uri = "/cgi-bin/micromsg-bin/getshowsourcenew";; locala.uri = "/cgi-bin/mmpay-bin/ftfhb/getshowsource")
+    for (paramString.uri = "/cgi-bin/micromsg-bin/deleteshowsourcenew";; paramString.uri = "/cgi-bin/mmpay-bin/ftfhb/deleteshowsource")
     {
-      localbje.GWJ = paramString;
-      c(locala.aDS());
-      AppMethodBeat.o(65163);
+      c(paramString.aXF());
+      AppMethodBeat.o(65162);
       return;
-      bool = false;
+      i = 0;
       break;
-      label129:
-      locala.funcId = 2620;
+      label105:
+      paramString.funcId = 2665;
     }
   }
 }

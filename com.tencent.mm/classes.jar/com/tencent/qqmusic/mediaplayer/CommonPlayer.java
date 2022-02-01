@@ -381,6 +381,23 @@ public class CommonPlayer
     return 0;
   }
   
+  public float getSpeed()
+  {
+    AppMethodBeat.i(190286);
+    float f = 1.0F;
+    if (this.mAudioPlayer != null) {
+      f = this.mAudioPlayer.getSpeed();
+    }
+    for (;;)
+    {
+      AppMethodBeat.o(190286);
+      return f;
+      if (this.mSpeedToSet != null) {
+        f = this.mSpeedToSet.floatValue();
+      }
+    }
+  }
+  
   public boolean isPlaying()
   {
     AppMethodBeat.i(76437);
@@ -801,6 +818,7 @@ public class CommonPlayer
     public void onStreamingFinished()
     {
       AppMethodBeat.i(76420);
+      CommonPlayer.access$1102(CommonPlayer.this, 100);
       Logger.i("CommonPlayer", CommonPlayer.access$1000(CommonPlayer.this, "streaming finished"));
       AppMethodBeat.o(76420);
     }
@@ -988,8 +1006,10 @@ public class CommonPlayer
       if ((this.bufferFile != null) && (!this.bufferFile.delete())) {
         Logger.w("CommonPlayer", "[release] failed to delete buffer file: " + this.bufferFile);
       }
-      if (this.dataSource != null) {
+      if (this.dataSource != null)
+      {
         this.dataSource.setListener(null);
+        this.dataSource.releaseLock();
       }
       AppMethodBeat.o(76722);
     }
@@ -997,7 +1017,7 @@ public class CommonPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.qqmusic.mediaplayer.CommonPlayer
  * JD-Core Version:    0.7.0.1
  */

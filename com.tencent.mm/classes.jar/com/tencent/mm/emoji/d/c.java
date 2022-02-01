@@ -1,88 +1,162 @@
 package com.tencent.mm.emoji.d;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.cm.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.emoji.b.m;
+import com.tencent.mm.emoji.b.m.b;
+import com.tencent.mm.emoji.b.n;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.loader.g.j;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.emoji.b.d;
+import com.tencent.mm.plugin.emojicapture.api.EmojiCaptureReporter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.bj;
 import com.tencent.mm.storage.emotion.EmojiInfo;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.storage.emotion.EmojiInfo.a;
+import com.tencent.mm.storage.emotion.EmojiInfo.b;
+import com.tencent.mm.storage.emotion.f;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/util/EmojiSendCheck;", "", "context", "Landroid/content/Context;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "goToDetail", "", "callback", "Lcom/tencent/mm/emoji/util/EmojiSendCheck$CheckCallback;", "(Landroid/content/Context;Lcom/tencent/mm/storage/emotion/EmojiInfo;ZLcom/tencent/mm/emoji/util/EmojiSendCheck$CheckCallback;)V", "TAG", "", "getCallback", "()Lcom/tencent/mm/emoji/util/EmojiSendCheck$CheckCallback;", "getContext", "()Landroid/content/Context;", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "setEmojiInfo", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "getGoToDetail", "()Z", "checkExchange", "", "showErrorDialog", "msg", "showPurchaseDialog", "CheckCallback", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/upload/EmojiCaptureUploadTask;", "Lcom/tencent/mm/loader/loader/IWorkTask;", "emojiInfo", "Lcom/tencent/mm/storage/emotion/EmojiInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiInfo;)V", "TAG", "", "getEmojiInfo", "()Lcom/tencent/mm/storage/emotion/EmojiInfo;", "isWxam", "", "()Z", "timeEnter", "", "getTimeEnter", "()J", "uploadCost", "getUploadCost", "setUploadCost", "(J)V", "call", "", "handleFail", "errorCode", "", "handleSuccess", "gifMd5", "uniqueId", "plugin-emojisdk_release"})
 public final class c
+  extends com.tencent.mm.loader.g.c
 {
   final String TAG;
-  final Context context;
-  EmojiInfo glt;
-  final boolean gsJ;
-  final a gsK;
+  final EmojiInfo gWm;
+  long hdA;
+  final boolean hdB;
+  final long hdz;
   
-  public c(Context paramContext, EmojiInfo paramEmojiInfo, boolean paramBoolean, a parama)
+  public c(EmojiInfo paramEmojiInfo)
   {
-    AppMethodBeat.i(188610);
-    this.context = paramContext;
-    this.glt = paramEmojiInfo;
-    this.gsJ = paramBoolean;
-    this.gsK = parama;
-    this.TAG = "MicroMsg.EmojiSendCheck";
-    if ((this.glt.getGroup() != EmojiInfo.OAa) && (!bu.isNullOrNil(this.glt.field_groupId)))
-    {
-      paramContext = d.gsN;
-      paramContext = this.glt.field_groupId;
-      p.g(paramContext, "emojiInfo.field_groupId");
-      if (!d.wJ(paramContext)) {}
-    }
-    else
-    {
-      ae.i(this.TAG, "no need exchange %s %s", new Object[] { this.glt.field_md5, this.glt.field_groupId });
-      this.gsK.dg(true);
-      AppMethodBeat.o(188610);
-      return;
-    }
-    paramContext = this.glt.field_groupId;
-    p.g(paramContext, "emojiInfo.field_groupId");
-    new com.tencent.mm.emoji.a.a.a(paramContext).aET().g((com.tencent.mm.vending.c.a)new b(this));
-    ae.i(this.TAG, "do exchange %s %s", new Object[] { this.glt.field_md5, this.glt.field_groupId });
-    AppMethodBeat.o(188610);
+    AppMethodBeat.i(105776);
+    this.gWm = paramEmojiInfo;
+    this.TAG = "MicroMsg.EmojiCaptureUploadTask";
+    this.hdz = this.gWm.field_captureEnterTime;
+    this.hdB = this.gWm.hRD();
+    AppMethodBeat.o(105776);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/util/EmojiSendCheck$CheckCallback;", "", "onResult", "", "canSend", "", "plugin-emojisdk_release"})
-  public static abstract interface a
+  public final String auK()
   {
-    public abstract void dg(boolean paramBoolean);
+    AppMethodBeat.i(105775);
+    long l = this.hdz;
+    AppMethodBeat.o(105775);
+    return String.valueOf(l);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Lcom/tencent/mm/modelbase/Cgi$CgiBack;", "Lcom/tencent/mm/protocal/protobuf/ExchangeEmotionPackResponse;", "kotlin.jvm.PlatformType", "call"})
-  static final class b<_Ret, _Var>
-    implements com.tencent.mm.vending.c.a<_Ret, _Var>
+  public final void call()
   {
-    b(c paramc) {}
+    AppMethodBeat.i(105774);
+    final long l = Util.nowMilliSecond();
+    new m(this.gWm, (m.b)new a(this, l));
+    AppMethodBeat.o(105774);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "dialog", "Landroid/content/DialogInterface;", "kotlin.jvm.PlatformType", "which", "", "onClick"})
-  static final class d
-    implements DialogInterface.OnClickListener
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/emoji/upload/EmojiCaptureUploadTask$call$1", "Lcom/tencent/mm/emoji/model/EmojiUploadLogic$EmojiUploadCallback;", "uploadCallback", "", "errorCode", "", "gifMd5", "", "activityId", "plugin-emojisdk_release"})
+  public static final class a
+    implements m.b
   {
-    d(c paramc) {}
+    a(long paramLong) {}
     
-    public final void onClick(DialogInterface paramDialogInterface, int paramInt)
+    public final void z(int paramInt, String paramString)
     {
-      AppMethodBeat.i(188609);
-      paramDialogInterface = new Intent();
-      paramDialogInterface.putExtra("extra_id", this.gsL.glt.field_groupId);
-      paramDialogInterface.putExtra("preceding_scence", 20);
-      com.tencent.mm.br.d.b(this.gsL.context, "emoji", ".ui.EmojiStoreDetailUI", paramDialogInterface);
-      AppMethodBeat.o(188609);
+      AppMethodBeat.i(105772);
+      Log.i(this.hdC.TAG, "uploadCallback: " + paramInt + ", " + paramString);
+      this.hdC.hdA = Util.milliSecondsToNow(l);
+      Object localObject1;
+      if (paramInt == 0)
+      {
+        localObject1 = this.hdC;
+        paramInt = ((c)localObject1).gWm.field_captureScene;
+        EmojiCaptureReporter.f(((c)localObject1).hdz, ((c)localObject1).hdA, paramInt);
+        com.tencent.mm.plugin.report.service.h.CyF.a(10431, new Object[] { Integer.valueOf(7), ((c)localObject1).gWm.getMd5(), ((c)localObject1).gWm.field_designerID, ((c)localObject1).gWm.avy(), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(((c)localObject1).gWm.getSize()), z.aTY(), ((c)localObject1).gWm.field_activityid });
+        if ((((c)localObject1).hdB) && (!n.avd()))
+        {
+          Log.w(((c)localObject1).TAG, "upload wxam but not decode, load gif");
+          localObject2 = com.tencent.mm.emoji.loader.c.h.gWs;
+          com.tencent.mm.emoji.loader.c.h.d(((c)localObject1).gWm, (kotlin.g.a.b)new c.b((c)localObject1, paramString));
+          AppMethodBeat.o(105772);
+          return;
+        }
+        ((c)localObject1).a(j.ibw);
+        Object localObject2 = b.hdv;
+        b.b(((c)localObject1).hdz, true, paramString);
+        AppMethodBeat.o(105772);
+        return;
+      }
+      paramString = this.hdC;
+      paramString.gWm.a(EmojiInfo.a.Osn);
+      int i = paramString.gWm.field_captureScene;
+      switch (paramInt)
+      {
+      default: 
+        EmojiCaptureReporter.f(paramString.hdz, 3, i);
+        paramString.gWm.a(EmojiInfo.b.Osv);
+      }
+      for (;;)
+      {
+        localObject1 = g.ah(d.class);
+        p.g(localObject1, "MMKernel.plugin(IPluginEmoji::class.java)");
+        localObject1 = ((d)localObject1).getEmojiStorageMgr();
+        p.g(localObject1, "MMKernel.plugin(IPluginE…ass.java).emojiStorageMgr");
+        ((bj)localObject1).cgN().L(paramString.gWm);
+        localObject1 = b.hdv;
+        b.b(paramString.hdz, false, null);
+        paramString.a(j.ibx);
+        AppMethodBeat.o(105772);
+        return;
+        EmojiCaptureReporter.f(paramString.hdz, 7, i);
+        paramString.gWm.a(EmojiInfo.b.Osq);
+        continue;
+        EmojiCaptureReporter.f(paramString.hdz, 8, i);
+        paramString.gWm.a(EmojiInfo.b.Osr);
+        continue;
+        EmojiCaptureReporter.f(paramString.hdz, 9, i);
+        paramString.gWm.a(EmojiInfo.b.Oss);
+        continue;
+        EmojiCaptureReporter.f(paramString.hdz, 5, i);
+        paramString.gWm.a(EmojiInfo.b.Ost);
+        continue;
+        EmojiCaptureReporter.f(paramString.hdz, 1, i);
+        paramString.gWm.a(EmojiInfo.b.Osu);
+        continue;
+        EmojiCaptureReporter.f(paramString.hdz, 4, i);
+        paramString.gWm.a(EmojiInfo.b.Osw);
+        continue;
+        EmojiCaptureReporter.f(paramString.hdz, 2, i);
+        paramString.gWm.a(EmojiInfo.b.Osx);
+        continue;
+        EmojiCaptureReporter.f(paramString.hdz, 6, i);
+        paramString.gWm.a(EmojiInfo.b.Osy);
+        continue;
+        EmojiCaptureReporter.f(paramString.hdz, 10, i);
+        paramString.gWm.a(EmojiInfo.b.Osz);
+        continue;
+        EmojiCaptureReporter.f(paramString.hdz, 3, i);
+        paramString.gWm.a(EmojiInfo.b.Osz);
+      }
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "invoke"})
+  static final class b
+    extends q
+    implements kotlin.g.a.b<Boolean, x>
+  {
+    b(c paramc, String paramString)
+    {
+      super();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.emoji.d.c
  * JD-Core Version:    0.7.0.1
  */

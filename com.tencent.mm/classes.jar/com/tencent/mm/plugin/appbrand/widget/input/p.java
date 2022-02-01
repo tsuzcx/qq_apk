@@ -3,7 +3,7 @@ package com.tencent.mm.plugin.appbrand.widget.input;
 import android.text.Spanned;
 import android.widget.EditText;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.tools.b.c;
 import com.tencent.mm.ui.tools.b.c.a;
 import com.tencent.mm.ui.tools.f;
@@ -37,35 +37,35 @@ public final class p
   final class b
     extends f
   {
-    private final int njJ;
-    private final f.a njK;
+    private final int otr;
+    private final f.a ots;
     
     b(int paramInt, f.a parama)
     {
       super(parama);
-      this.njJ = paramInt;
-      this.njK = parama;
+      this.otr = paramInt;
+      this.ots = parama;
     }
     
     public final CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, final Spanned paramSpanned, int paramInt3, int paramInt4)
     {
       int i = 0;
       AppMethodBeat.i(136429);
-      if (a(paramSpanned.subSequence(0, paramInt3).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString(), this.njK) + a(paramCharSequence.subSequence(paramInt1, paramInt2).toString(), this.njK) > this.njJ) {
+      if (a(paramSpanned.subSequence(0, paramInt3).toString() + paramSpanned.subSequence(paramInt4, paramSpanned.length()).toString(), this.ots) + a(paramCharSequence.subSequence(paramInt1, paramInt2).toString(), this.ots) > this.otr) {
         i = 1;
       }
       CharSequence localCharSequence = paramCharSequence;
       if (i != 0) {
-        localCharSequence = paramCharSequence.subSequence(paramInt1, Math.max(paramInt1, Math.min(this.njJ - (paramSpanned.length() - (paramInt4 - paramInt3)), paramInt2)));
+        localCharSequence = paramCharSequence.subSequence(paramInt1, Math.max(paramInt1, Math.min(this.otr - (paramSpanned.length() - (paramInt4 - paramInt3)), paramInt2)));
       }
       final c.a locala;
-      if ((i != 0) && (bu.ah(localCharSequence)))
+      if ((i != 0) && (Util.isNullOrNil(localCharSequence)))
       {
-        if (p.this.LiM != null) {
+        if (p.this.QxL != null) {
           break label225;
         }
         paramCharSequence = null;
-        locala = p.this.LiQ;
+        locala = p.this.QxP;
         if ((paramCharSequence != null) && (locala != null)) {
           if (paramCharSequence.getText() == null) {
             break label242;
@@ -81,13 +81,13 @@ public final class p
           public final void run()
           {
             AppMethodBeat.i(136428);
-            locala.cW(paramSpanned);
+            locala.dv(paramSpanned);
             AppMethodBeat.o(136428);
           }
         });
         AppMethodBeat.o(136429);
         return localCharSequence;
-        paramCharSequence = (EditText)p.this.LiM.get();
+        paramCharSequence = (EditText)p.this.QxL.get();
         break;
       }
     }
@@ -95,7 +95,7 @@ public final class p
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.p
  * JD-Core Version:    0.7.0.1
  */

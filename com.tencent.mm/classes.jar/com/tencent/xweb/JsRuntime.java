@@ -6,26 +6,26 @@ import org.xwalk.core.XWalkEnvironment;
 
 public final class JsRuntime
 {
-  public static JsRuntimeType MMy;
-  private static String MMz = "";
+  public static JsRuntimeType Szt;
+  private static String Szu = "";
   
   public static JsRuntimeType a(JsRuntimeType paramJsRuntimeType, String paramString, Context paramContext)
   {
     AppMethodBeat.i(156762);
-    y.lD(paramContext);
-    if (y.gfo().MNe != JsRuntimeType.MMA)
+    y.lC(paramContext);
+    if (y.hsF().SzZ != JsRuntimeType.Szv)
     {
-      paramJsRuntimeType = y.gfo().MNe;
+      paramJsRuntimeType = y.hsF().SzZ;
       XWalkEnvironment.addXWalkInitializeLog("XWeb", "use hardcode jscore type = ".concat(String.valueOf(paramJsRuntimeType)));
-      if (WebView.getCurWebType() != WebView.c.MNz) {
+      if (WebView.getCurWebType() != WebView.c.SAu) {
         break label128;
       }
       paramString = paramJsRuntimeType;
-      if (JsRuntimeType.MMB != paramJsRuntimeType)
+      if (JsRuntimeType.Szw != paramJsRuntimeType)
       {
         paramString = paramJsRuntimeType;
-        if (JsRuntimeType.MMF != paramJsRuntimeType) {
-          paramString = JsRuntimeType.MMI;
+        if (JsRuntimeType.SzA != paramJsRuntimeType) {
+          paramString = JsRuntimeType.SzD;
         }
       }
     }
@@ -33,24 +33,24 @@ public final class JsRuntime
     {
       AppMethodBeat.o(156762);
       return paramString;
-      if (a.bca(paramString) == JsRuntimeType.MMA) {
+      if (a.brF(paramString) == JsRuntimeType.Szv) {
         break;
       }
-      paramJsRuntimeType = a.bca(paramString);
+      paramJsRuntimeType = a.brF(paramString);
       XWalkEnvironment.addXWalkInitializeLog("XWeb", "module " + paramString + "use cmd jscore type = " + paramJsRuntimeType);
       break;
       label128:
-      if (WebView.getCurWebType() == WebView.c.MNy)
+      if (WebView.getCurWebType() == WebView.c.SAt)
       {
         paramString = paramJsRuntimeType;
-        if (JsRuntimeType.MMH != paramJsRuntimeType)
+        if (JsRuntimeType.SzC != paramJsRuntimeType)
         {
           paramString = paramJsRuntimeType;
-          if (JsRuntimeType.MMG != paramJsRuntimeType)
+          if (JsRuntimeType.SzB != paramJsRuntimeType)
           {
             paramString = paramJsRuntimeType;
-            if (JsRuntimeType.MMB != paramJsRuntimeType) {
-              paramString = JsRuntimeType.MMI;
+            if (JsRuntimeType.Szw != paramJsRuntimeType) {
+              paramString = JsRuntimeType.SzD;
             }
           }
         }
@@ -58,25 +58,25 @@ public final class JsRuntime
       else
       {
         paramString = paramJsRuntimeType;
-        if (WebView.getCurWebType() == WebView.c.MNA)
+        if (WebView.getCurWebType() == WebView.c.SAv)
         {
           paramString = paramJsRuntimeType;
-          if (JsRuntimeType.MMB != paramJsRuntimeType) {
-            paramString = JsRuntimeType.MMI;
+          if (JsRuntimeType.Szw != paramJsRuntimeType) {
+            paramString = JsRuntimeType.SzD;
           }
         }
       }
     }
   }
   
-  public static JsRuntimeType gfd()
+  public static JsRuntimeType hsu()
   {
-    return MMy;
+    return Szt;
   }
   
-  public static String gfe()
+  public static String hsv()
   {
-    return MMz;
+    return Szu;
   }
   
   public static enum JsRuntimeType
@@ -84,16 +84,16 @@ public final class JsRuntime
     static
     {
       AppMethodBeat.i(156761);
-      MMA = new JsRuntimeType("RT_TYPE_AUTO", 0);
-      MMB = new JsRuntimeType("RT_TYPE_SYS", 1);
-      MMC = new JsRuntimeType("RT_TYPE_XWALK", 2);
-      MMD = new JsRuntimeType("RT_TYPE_WEB_X5", 3);
-      MME = new JsRuntimeType("RT_TYPE_DUMMY", 4);
-      MMF = new JsRuntimeType("RT_TYPE_X5", 5);
-      MMG = new JsRuntimeType("RT_TYPE_J2V8", 6);
-      MMH = new JsRuntimeType("RT_TYPE_NATIVE_SCRIPT", 7);
-      MMI = new JsRuntimeType("RT_TYPE_MMV8", 8);
-      MMJ = new JsRuntimeType[] { MMA, MMB, MMC, MMD, MME, MMF, MMG, MMH, MMI };
+      Szv = new JsRuntimeType("RT_TYPE_AUTO", 0);
+      Szw = new JsRuntimeType("RT_TYPE_SYS", 1);
+      Szx = new JsRuntimeType("RT_TYPE_XWALK", 2);
+      Szy = new JsRuntimeType("RT_TYPE_WEB_X5", 3);
+      Szz = new JsRuntimeType("RT_TYPE_DUMMY", 4);
+      SzA = new JsRuntimeType("RT_TYPE_X5", 5);
+      SzB = new JsRuntimeType("RT_TYPE_J2V8", 6);
+      SzC = new JsRuntimeType("RT_TYPE_NATIVE_SCRIPT", 7);
+      SzD = new JsRuntimeType("RT_TYPE_MMV8", 8);
+      SzE = new JsRuntimeType[] { Szv, Szw, Szx, Szy, Szz, SzA, SzB, SzC, SzD };
       AppMethodBeat.o(156761);
     }
     
@@ -102,7 +102,7 @@ public final class JsRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.JsRuntime
  * JD-Core Version:    0.7.0.1
  */

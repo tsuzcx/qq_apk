@@ -11,7 +11,7 @@ final class FTSMainUI$8
   public final void run()
   {
     AppMethodBeat.i(111971);
-    d.aIh().a(this.tLh, true);
+    d.bca().a(this.xci, true);
     AppMethodBeat.o(111971);
   }
 }

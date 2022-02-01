@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
   xmlns:android1="http://schemas.android.com/apk/res/android">
-    <PreferenceTitleCategory android:title="@string/ay1" />
-    <NormalIconPreference android:icon="@raw/invite_friends_by_message" android:key="invite_friends_by_message" android:title="@string/d3i" />
-    <NormalIconPreference android:icon="@raw/invite_friends_by_mail" android:key="invite_friends_by_mail" android:title="@string/d3g" />
-    <NormalIconPreference android:icon="@raw/invite_friends_by_whatsapp" android:key="invite_friends_by_whatsapp" android:title="@string/d3k" />
-    <NormalIconPreference android:icon="@raw/invite_friends_by_facebook" android:key="invite_friends_by_facebook" android:title="@string/d3e" />
-    <NormalIconPreference android:icon="@raw/invite_friends_by_twitter" android:key="invite_friends_by_twitter" android:title="@string/d3j" />
-    <PreferenceCategory />
+    <com.tencent.mm.ui.base.preference.HeadImgAndNamePreference android:key="settings_avatar" android:layout="@layout/b8j" />
+    <IconPreference android:key="settings_qrcode" android:layout="@layout/b8j" android:title="@string/cin" />
+    <Preference android:key="settings_auth" android:layout="@layout/b8j" android:title="@string/ci2" />
+    <com.tencent.mm.plugin.newtips.NewTipPreference android:key="setting_original" android:layout="@layout/b8j" android:title="@string/d4_" />
+    <Preference android:key="settings_data" android:layout="@layout/b8j" android:title="@string/cl7" />
+    <Preference android:key="settings_privacy" android:layout="@layout/b8j" android:title="@string/d5w" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_creater_guide" android:layout="@layout/b8j" android:title="@string/d9a" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="settings_show_my_finder" android:summary="@string/d9y" android:title="@string/d9x" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_shop" android:layout="@layout/b8j" android:title="@string/d9u" />
+    <PreferenceSmallCategory />
+    <Preference android:key="setting_live_lottery_history" android:layout="@layout/b8j" android:title="@string/cx5" />
+    <Preference android:key="account_management" android:layout="@layout/b8j" android:title="@string/cgi" />
 </PreferenceScreen>

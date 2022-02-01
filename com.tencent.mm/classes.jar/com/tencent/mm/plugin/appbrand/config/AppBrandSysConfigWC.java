@@ -11,14 +11,14 @@ public class AppBrandSysConfigWC
   extends AppBrandSysConfigLU
 {
   public static final Parcelable.Creator<AppBrandSysConfigWC> CREATOR;
-  public int kaX;
-  public int kaY;
-  public boolean kbA;
-  public boolean kbB;
-  public int kbC;
-  public byte[] kbD;
-  public ICommLibReader kbE;
-  public boolean kbz;
+  public boolean leH;
+  public boolean leI;
+  public boolean leJ;
+  public int leK;
+  public byte[] leL;
+  public ICommLibReader leM;
+  public int leb;
+  public int lec;
   
   static
   {
@@ -36,14 +36,14 @@ public class AppBrandSysConfigWC
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.kbz = bool1;
+      this.leH = bool1;
       if (paramParcel.readInt() != 1) {
         break label107;
       }
       bool1 = true;
       label36:
-      this.kbA = bool1;
-      this.kbC = paramParcel.readInt();
+      this.leI = bool1;
+      this.leK = paramParcel.readInt();
       if (paramParcel.readInt() != 1) {
         break label112;
       }
@@ -52,11 +52,11 @@ public class AppBrandSysConfigWC
     label112:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.kbB = bool1;
-      this.kbD = paramParcel.createByteArray();
-      this.kbE = ICommLibReader.b.g(paramParcel);
-      this.kaX = paramParcel.readInt();
-      this.kaY = paramParcel.readInt();
+      this.leJ = bool1;
+      this.leL = paramParcel.createByteArray();
+      this.leM = ICommLibReader.b.h(paramParcel);
+      this.leb = paramParcel.readInt();
+      this.lec = paramParcel.readInt();
       AppMethodBeat.o(44846);
       return;
       bool1 = false;
@@ -72,18 +72,18 @@ public class AppBrandSysConfigWC
     AppMethodBeat.i(44847);
     super.writeToParcel(paramParcel, paramInt);
     byte b;
-    if (this.kbz)
+    if (this.leH)
     {
       b = 1;
       paramParcel.writeByte(b);
-      if (!this.kbA) {
+      if (!this.leI) {
         break label113;
       }
       i = 1;
       label38:
       paramParcel.writeInt(i);
-      paramParcel.writeInt(this.kbC);
-      if (!this.kbB) {
+      paramParcel.writeInt(this.leK);
+      if (!this.leJ) {
         break label119;
       }
     }
@@ -92,10 +92,10 @@ public class AppBrandSysConfigWC
     for (int i = j;; i = 0)
     {
       paramParcel.writeInt(i);
-      paramParcel.writeByteArray(this.kbD);
-      ICommLibReader.b.a(this.kbE, paramParcel, paramInt);
-      paramParcel.writeInt(this.kaX);
-      paramParcel.writeInt(this.kaY);
+      paramParcel.writeByteArray(this.leL);
+      ICommLibReader.b.a(this.leM, paramParcel, paramInt);
+      paramParcel.writeInt(this.leb);
+      paramParcel.writeInt(this.lec);
       AppMethodBeat.o(44847);
       return;
       b = 0;
@@ -107,7 +107,7 @@ public class AppBrandSysConfigWC
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.AppBrandSysConfigWC
  * JD-Core Version:    0.7.0.1
  */

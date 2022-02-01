@@ -1,88 +1,94 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import java.util.LinkedList;
 
 public final class eae
   extends com.tencent.mm.bw.a
 {
-  public int Igd;
-  public int Ige;
-  public int Igf;
-  public int Igg;
-  public int Igh;
+  public long Id;
+  public SKBuiltinBuffer_t MDa;
+  public int him;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(115910);
+    AppMethodBeat.i(125795);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.Igd);
-      paramVarArgs.aS(2, this.Ige);
-      paramVarArgs.aS(3, this.Igf);
-      paramVarArgs.aS(4, this.Igg);
-      paramVarArgs.aS(5, this.Igh);
-      AppMethodBeat.o(115910);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.bb(1, this.Id);
+      paramVarArgs.aM(2, this.him);
+      if (this.MDa != null)
+      {
+        paramVarArgs.ni(3, this.MDa.computeSize());
+        this.MDa.writeFields(paramVarArgs);
+      }
+      AppMethodBeat.o(125795);
       return 0;
     }
+    int i;
     if (paramInt == 1)
     {
-      paramInt = f.a.a.b.b.a.bz(1, this.Igd);
-      int i = f.a.a.b.b.a.bz(2, this.Ige);
-      int j = f.a.a.b.b.a.bz(3, this.Igf);
-      int k = f.a.a.b.b.a.bz(4, this.Igg);
-      int m = f.a.a.b.b.a.bz(5, this.Igh);
-      AppMethodBeat.o(115910);
-      return paramInt + 0 + i + j + k + m;
+      i = g.a.a.b.b.a.r(1, this.Id) + 0 + g.a.a.b.b.a.bu(2, this.him);
+      paramInt = i;
+      if (this.MDa != null) {
+        paramInt = i + g.a.a.a.nh(3, this.MDa.computeSize());
+      }
+      AppMethodBeat.o(125795);
+      return paramInt;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
-      AppMethodBeat.o(115910);
+      AppMethodBeat.o(125795);
       return 0;
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
       eae localeae = (eae)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramInt = ((Integer)paramVarArgs[2]).intValue();
+      switch (paramInt)
       {
       default: 
-        AppMethodBeat.o(115910);
+        AppMethodBeat.o(125795);
         return -1;
       case 1: 
-        localeae.Igd = locala.OmT.zc();
-        AppMethodBeat.o(115910);
+        localeae.Id = ((g.a.a.a.a)localObject1).UbS.zl();
+        AppMethodBeat.o(125795);
         return 0;
       case 2: 
-        localeae.Ige = locala.OmT.zc();
-        AppMethodBeat.o(115910);
-        return 0;
-      case 3: 
-        localeae.Igf = locala.OmT.zc();
-        AppMethodBeat.o(115910);
-        return 0;
-      case 4: 
-        localeae.Igg = locala.OmT.zc();
-        AppMethodBeat.o(115910);
+        localeae.him = ((g.a.a.a.a)localObject1).UbS.zi();
+        AppMethodBeat.o(125795);
         return 0;
       }
-      localeae.Igh = locala.OmT.zc();
-      AppMethodBeat.o(115910);
+      paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+      i = paramVarArgs.size();
+      paramInt = 0;
+      while (paramInt < i)
+      {
+        Object localObject2 = (byte[])paramVarArgs.get(paramInt);
+        localObject1 = new SKBuiltinBuffer_t();
+        localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+        for (boolean bool = true; bool; bool = ((SKBuiltinBuffer_t)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+        localeae.MDa = ((SKBuiltinBuffer_t)localObject1);
+        paramInt += 1;
+      }
+      AppMethodBeat.o(125795);
       return 0;
     }
-    AppMethodBeat.o(115910);
+    AppMethodBeat.o(125795);
     return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.eae
  * JD-Core Version:    0.7.0.1
  */

@@ -2,26 +2,26 @@ package com.tencent.mm.plugin.wallet_core.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.wallet_core.model.z;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class f
-  extends j<z>
+  extends MAutoStorage<z>
 {
   public static final String[] SQL_CREATE;
-  public e db;
+  public ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(70614);
-    SQL_CREATE = new String[] { j.getCreateSQLs(z.info, "WalletFunciontList") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(z.info, "WalletFunciontList") };
     AppMethodBeat.o(70614);
   }
   
-  public f(e parame)
+  public f(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, z.info, "WalletFunciontList", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, z.info, "WalletFunciontList", null);
+    this.db = paramISQLiteDatabase;
   }
   
   public final void b(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, int paramInt2)
@@ -40,7 +40,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.d.f
  * JD-Core Version:    0.7.0.1
  */

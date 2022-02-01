@@ -1,15 +1,15 @@
 package com.tencent.magicbrush.utils;
 
-import d.g.a.a;
-import d.l;
+import kotlin.g.a.a;
+import kotlin.l;
 
-@l(gjZ={1, 1, 13})
+@l(hxD={1, 1, 16})
 final class g
   implements Runnable
 {
   g(a parama)
   {
-    this.cix = parama;
+    this.cuq = parama;
   }
 }
 

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="144px" height="144px" viewBox="0 0 144 144" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>LoadingWithe备份 2</title>
+    <defs>
+        <linearGradient x1="94.0869141%" y1="0%" x2="94.0869141%" y2="90.559082%" id="linearGradient-1">
+            <stop stop-color="#EDEDED" stop-opacity="0" offset="0%"></stop>
+            <stop stop-color="#EDEDED" stop-opacity="0.3" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="8.67370605%" x2="100%" y2="90.6286621%" id="linearGradient-2">
+            <stop stop-color="#EDEDED" offset="0%"></stop>
+            <stop stop-color="#EDEDED" stop-opacity="0.3" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.9">
+        <g id="LoadingWithe备份-2">
+            <path d="M72,0 C111.764502,0 144,32.235498 144,72 C144,111.764502 111.764502,144 72,144 L72,131.4 C104.805714,131.4 131.4,104.805714 131.4,72 C131.4,39.1942859 104.805714,12.6 72,12.6 L72,0 Z" id="路径" fill="url(#linearGradient-1)"></path>
+            <path d="M72,0 L72,12.6 C39.1942859,12.6 12.6,39.1942859 12.6,72 C12.6,104.805714 39.1942859,131.4 72,131.4 L72,144 C32.235498,144 0,111.764502 0,72 C0,32.235498 32.235498,0 72,0 Z" id="路径" fill="url(#linearGradient-2)"></path>
+            <circle id="Oval" fill="#EDEDED" cx="72.9" cy="6.3" r="6.3"></circle>
+        </g>
+    </g>
+</svg>

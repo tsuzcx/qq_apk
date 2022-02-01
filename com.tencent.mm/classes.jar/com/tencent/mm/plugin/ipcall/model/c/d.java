@@ -1,87 +1,87 @@
 package com.tencent.mm.plugin.ipcall.model.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import com.tencent.mm.sdk.platformtools.SensorController;
-import com.tencent.mm.sdk.platformtools.SensorController.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
-import com.tencent.mm.sdk.platformtools.bl;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.SensorController.SensorEventCallBack;
+import com.tencent.mm.sdk.platformtools.ShakeManager;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class d
-  implements SensorController.a
+  implements SensorController.SensorEventCallBack
 {
   long lastShakeTime;
-  private boolean pEX;
-  public bl pEY;
-  public SensorController pEZ;
-  public a uYc;
+  private boolean qUo;
+  public ShakeManager qUp;
+  public SensorController qUq;
+  public a yqC;
   
   public d()
   {
     AppMethodBeat.i(25435);
     this.lastShakeTime = -1L;
-    this.pEX = false;
-    this.uYc = null;
-    this.pEZ = new SensorController(ak.getContext());
-    this.pEY = new bl(ak.getContext());
+    this.qUo = false;
+    this.yqC = null;
+    this.qUq = new SensorController(MMApplicationContext.getContext());
+    this.qUp = new ShakeManager(MMApplicationContext.getContext());
     AppMethodBeat.o(25435);
   }
   
-  public final void km(final boolean paramBoolean)
+  public final void onSensorEvent(final boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(25436);
-    ae.i("MicroMsg.IPCallSensorManager", "onSensorEvent, isON:" + paramBoolean + "  hasSkip:" + this.pEX + " tick:" + bu.aO(this.lastShakeTime) + "  lt:" + this.lastShakeTime);
-    if (this.pEX)
+    Log.i("MicroMsg.IPCallSensorManager", "onSensorEvent, isON:" + paramBoolean + "  hasSkip:" + this.qUo + " tick:" + Util.ticksToNow(this.lastShakeTime) + "  lt:" + this.lastShakeTime);
+    if (this.qUo)
     {
       if (!paramBoolean) {}
       for (paramBoolean = bool;; paramBoolean = false)
       {
-        this.pEX = paramBoolean;
+        this.qUo = paramBoolean;
         AppMethodBeat.o(25436);
         return;
       }
     }
-    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (bu.aO(this.lastShakeTime) > 400L))
+    if ((!paramBoolean) && (this.lastShakeTime != -1L) && (Util.ticksToNow(this.lastShakeTime) > 400L))
     {
-      this.pEX = true;
+      this.qUo = true;
       AppMethodBeat.o(25436);
       return;
     }
-    this.pEX = false;
-    ae.i("MicroMsg.IPCallSensorManager", "onSensorEvent, isNeedOffScreen: %b", new Object[] { Boolean.valueOf(paramBoolean) });
-    new aw(new aw.a()
+    this.qUo = false;
+    Log.i("MicroMsg.IPCallSensorManager", "onSensorEvent, isNeedOffScreen: %b", new Object[] { Boolean.valueOf(paramBoolean) });
+    new MTimerHandler(new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(25434);
         if (!paramBoolean)
         {
-          ae.i("MicroMsg.IPCallSensorManager", "off screen");
-          if (d.this.uYc != null) {
-            d.this.uYc.nO(true);
+          Log.i("MicroMsg.IPCallSensorManager", "off screen");
+          if (d.a(d.this) != null) {
+            d.a(d.this).qx(true);
           }
         }
         for (;;)
         {
           AppMethodBeat.o(25434);
           return false;
-          ae.i("MicroMsg.IPCallSensorManager", "light screen");
-          if (d.this.uYc != null) {
-            d.this.uYc.nO(false);
+          Log.i("MicroMsg.IPCallSensorManager", "light screen");
+          if (d.a(d.this) != null) {
+            d.a(d.this).qx(false);
           }
         }
       }
-    }, false).ay(50L, 50L);
+    }, false).startTimer(50L);
     AppMethodBeat.o(25436);
   }
   
   public static abstract interface a
   {
-    public abstract void nO(boolean paramBoolean);
+    public abstract void qx(boolean paramBoolean);
   }
 }
 

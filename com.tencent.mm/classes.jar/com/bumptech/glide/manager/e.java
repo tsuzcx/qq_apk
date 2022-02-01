@@ -8,40 +8,40 @@ import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
-import com.bumptech.glide.h.i;
+import com.bumptech.glide.g.j;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 final class e
   implements c
 {
-  final c.a aMw;
-  boolean aMx;
-  private boolean aMy;
-  private final BroadcastReceiver aMz;
+  final c.a aMo;
+  boolean aMp;
+  private final BroadcastReceiver aMq;
   private final Context context;
+  private boolean isRegistered;
   
   e(Context paramContext, c.a parama)
   {
     AppMethodBeat.i(77548);
-    this.aMz = new BroadcastReceiver()
+    this.aMq = new BroadcastReceiver()
     {
       public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
       {
         AppMethodBeat.i(77547);
-        boolean bool = e.this.aMx;
-        e.this.aMx = e.isConnected(paramAnonymousContext);
-        if (bool != e.this.aMx)
+        boolean bool = e.this.aMp;
+        e.this.aMp = e.isConnected(paramAnonymousContext);
+        if (bool != e.this.aMp)
         {
           if (Log.isLoggable("ConnectivityMonitor", 3)) {
-            new StringBuilder("connectivity changed, isConnected: ").append(e.this.aMx);
+            new StringBuilder("connectivity changed, isConnected: ").append(e.this.aMp);
           }
-          e.this.aMw.aG(e.this.aMx);
+          e.this.aMo.aE(e.this.aMp);
         }
         AppMethodBeat.o(77547);
       }
     };
     this.context = paramContext.getApplicationContext();
-    this.aMw = parama;
+    this.aMo = parama;
     AppMethodBeat.o(77548);
   }
   
@@ -49,7 +49,7 @@ final class e
   static boolean isConnected(Context paramContext)
   {
     AppMethodBeat.i(77549);
-    paramContext = (ConnectivityManager)i.checkNotNull((ConnectivityManager)paramContext.getSystemService("connectivity"), "Argument must not be null");
+    paramContext = (ConnectivityManager)j.checkNotNull((ConnectivityManager)paramContext.getSystemService("connectivity"), "Argument must not be null");
     try
     {
       paramContext = paramContext.getActiveNetworkInfo();
@@ -74,13 +74,13 @@ final class e
   public final void onStart()
   {
     AppMethodBeat.i(77550);
-    if (!this.aMy)
+    if (!this.isRegistered)
     {
-      this.aMx = isConnected(this.context);
+      this.aMp = isConnected(this.context);
       try
       {
-        this.context.registerReceiver(this.aMz, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
-        this.aMy = true;
+        this.context.registerReceiver(this.aMq, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+        this.isRegistered = true;
         AppMethodBeat.o(77550);
         return;
       }
@@ -95,17 +95,17 @@ final class e
   public final void onStop()
   {
     AppMethodBeat.i(77551);
-    if (this.aMy)
+    if (this.isRegistered)
     {
-      this.context.unregisterReceiver(this.aMz);
-      this.aMy = false;
+      this.context.unregisterReceiver(this.aMq);
+      this.isRegistered = false;
     }
     AppMethodBeat.o(77551);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.manager.e
  * JD-Core Version:    0.7.0.1
  */

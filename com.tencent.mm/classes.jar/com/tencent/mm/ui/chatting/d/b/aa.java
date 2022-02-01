@@ -1,27 +1,53 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import android.content.Intent;
-import android.widget.Button;
-import android.widget.LinearLayout;
-import com.tencent.mm.modelmulti.i;
-import com.tencent.mm.ui.chatting.d.ad;
+import android.view.MenuItem.OnMenuItemClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mm.ui.chatting.d.af;
+import com.tencent.mm.ui.w;
 
 public abstract interface aa
-  extends ad
+  extends af
 {
-  public abstract void a(Button paramButton, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2);
+  public abstract void BR(boolean paramBoolean);
   
-  public abstract String aXH(String paramString);
+  public abstract void a(boolean paramBoolean, View.OnClickListener paramOnClickListener);
   
-  public abstract void adS(int paramInt);
+  public abstract void amB(int paramInt);
   
-  public abstract void bt(Intent paramIntent);
+  public abstract void gC(View paramView);
   
-  public abstract boolean fIw();
+  public abstract w gNg();
   
-  public abstract boolean fIx();
+  public abstract void gPx();
   
-  public abstract void g(i parami);
+  public abstract void gQk();
+  
+  public abstract void gQn();
+  
+  public abstract void gQp();
+  
+  public abstract void gQr();
+  
+  public abstract void gQs();
+  
+  public abstract int gQy();
+  
+  public abstract int gQz();
+  
+  public abstract void setBackBtn(MenuItem.OnMenuItemClickListener paramOnMenuItemClickListener);
+  
+  public abstract void setMMSubTitle(String paramString);
+  
+  public abstract void setMMTitle(int paramInt);
+  
+  public abstract void setMMTitle(CharSequence paramCharSequence);
+  
+  public abstract void setTitleForceNotifyIconVisibility(int paramInt);
+  
+  public abstract void setTitleMuteIconVisibility(int paramInt);
+  
+  public abstract void setTitlePhoneIconVisibility(int paramInt);
 }
 
 

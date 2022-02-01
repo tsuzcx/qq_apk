@@ -4,45 +4,45 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class a
 {
-  int dEu;
-  int hKD;
-  String hKF;
-  String hKG;
-  long ibj;
-  int ibk;
-  int ibl;
+  int cSx;
+  int iFr;
+  String iFt;
+  String iFu;
+  long iWh;
+  int iWi;
+  int iWj;
   int type;
   String username;
   
   public a()
   {
     AppMethodBeat.i(20513);
-    this.dEu = -1;
+    this.cSx = -1;
     this.username = "";
-    this.ibj = 0L;
+    this.iWh = 0L;
     this.type = 0;
-    this.ibk = 0;
-    this.hKD = 0;
-    this.ibl = 0;
-    this.hKF = "";
-    this.hKG = "";
+    this.iWi = 0;
+    this.iFr = 0;
+    this.iWj = 0;
+    this.iFt = "";
+    this.iFu = "";
     AppMethodBeat.o(20513);
   }
   
-  public final String aCG()
+  public final String aWe()
   {
-    if (this.hKG == null) {
+    if (this.iFu == null) {
       return "";
     }
-    return this.hKG;
+    return this.iFu;
   }
   
-  public final String aIo()
+  public final String bci()
   {
-    if (this.hKF == null) {
+    if (this.iFt == null) {
       return "";
     }
-    return this.hKF;
+    return this.iFt;
   }
   
   public final String getUsername()
@@ -55,7 +55,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.at.a
  * JD-Core Version:    0.7.0.1
  */

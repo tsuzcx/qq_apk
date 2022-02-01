@@ -1,46 +1,46 @@
 package com.tencent.mm.plugin.brandservice.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bxj;
-import com.tencent.mm.protocal.protobuf.bxk;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.clb;
+import com.tencent.mm.protocal.protobuf.clc;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class h
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  public b rr;
+  private i callback;
+  public d rr;
   
   public h(String paramString)
   {
     AppMethodBeat.i(5574);
-    b.a locala = new b.a();
-    locala.hQF = new bxj();
-    locala.hQG = new bxk();
+    d.a locala = new d.a();
+    locala.iLN = new clb();
+    locala.iLO = new clc();
     locala.uri = "/cgi-bin/mmbiz-bin/usrmsg/getallrecvtmpmsgoption";
     locala.funcId = 1031;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
-    ((bxj)this.rr.hQD.hQJ).Hdp = paramString;
+    this.rr = locala.aXF();
+    ((clb)this.rr.iLK.iLR).Mis = paramString;
     AppMethodBeat.o(5574);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(5576);
-    this.callback = paramf;
-    ae.i("MicroMsg.brandservice.NetSceneGetAllRecvTmpMsgOption", "do scene");
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    Log.i("MicroMsg.brandservice.NetSceneGetAllRecvTmpMsgOption", "do scene");
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(5576);
     return i;
   }
@@ -50,10 +50,10 @@ public final class h
     return 1031;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(5575);
-    ae.d("MicroMsg.brandservice.NetSceneGetAllRecvTmpMsgOption", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.d("MicroMsg.brandservice.NetSceneGetAllRecvTmpMsgOption", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }

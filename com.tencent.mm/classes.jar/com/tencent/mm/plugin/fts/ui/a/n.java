@@ -14,48 +14,48 @@ import com.tencent.mm.plugin.fts.a.d;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class n
   extends a
 {
-  public String iGm;
-  private b tMB;
-  private a tMC;
+  public String jCp;
+  private b xdB;
+  private a xdC;
   
   public n(int paramInt)
   {
     super(8, paramInt);
     AppMethodBeat.i(112105);
-    this.tMB = new b();
-    this.tMC = new a();
+    this.xdB = new b();
+    this.xdC = new a();
     AppMethodBeat.o(112105);
   }
   
   public void a(Context paramContext, a.a parama, Object... paramVarArgs)
   {
     AppMethodBeat.i(112106);
-    parama = com.tencent.mm.plugin.fts.ui.n.Hu(this.pSr);
+    parama = com.tencent.mm.plugin.fts.ui.n.Nu(this.rjr);
     if (parama == null) {}
-    for (this.iGm = "";; this.iGm = paramContext.getResources().getString(2131762914, new Object[] { parama }))
+    for (this.jCp = "";; this.jCp = paramContext.getResources().getString(2131765050, new Object[] { parama }))
     {
-      ae.i("MicroMsg.FTS.FTSMoreDataItem", "fillDataItem: tip=%s", new Object[] { this.iGm });
+      Log.i("MicroMsg.FTS.FTSMoreDataItem", "fillDataItem: tip=%s", new Object[] { this.jCp });
       AppMethodBeat.o(112106);
       return;
     }
   }
   
-  public a.b agQ()
+  public a.b axc()
   {
-    return this.tMB;
+    return this.xdB;
   }
   
   public final class a
     extends a.a
   {
     public View contentView;
-    public ImageView mdt;
-    public TextView tLr;
+    public ImageView nnL;
+    public TextView xcs;
     
     public a()
     {
@@ -74,11 +74,11 @@ public class n
     public final View a(Context paramContext, ViewGroup paramViewGroup)
     {
       AppMethodBeat.i(112102);
-      paramContext = LayoutInflater.from(paramContext).inflate(2131494216, paramViewGroup, false);
+      paramContext = LayoutInflater.from(paramContext).inflate(2131494771, paramViewGroup, false);
       paramViewGroup = new n.a(n.this);
-      paramViewGroup.tLr = ((TextView)paramContext.findViewById(2131305880));
-      paramViewGroup.mdt = ((ImageView)paramContext.findViewById(2131300891));
-      paramViewGroup.contentView = paramContext.findViewById(2131304428);
+      paramViewGroup.xcs = ((TextView)paramContext.findViewById(2131309163));
+      paramViewGroup.nnL = ((ImageView)paramContext.findViewById(2131302497));
+      paramViewGroup.contentView = paramContext.findViewById(2131307399);
       paramContext.setTag(paramViewGroup);
       AppMethodBeat.o(112102);
       return paramContext;
@@ -89,28 +89,28 @@ public class n
       AppMethodBeat.i(112103);
       paramContext = (n.a)parama;
       parama = (n)parama1;
-      com.tencent.mm.plugin.fts.ui.n.q(paramContext.contentView, n.this.tGL);
-      paramContext.tLr.setText(parama.iGm);
-      paramContext.mdt.setImageResource(2131690258);
+      com.tencent.mm.plugin.fts.ui.n.r(paramContext.contentView, n.this.wXK);
+      paramContext.xcs.setText(parama.jCp);
+      paramContext.nnL.setImageResource(2131690354);
       AppMethodBeat.o(112103);
     }
     
-    public boolean a(Context paramContext, a paramVarArgs)
+    public boolean a(Context paramContext, View paramView, a paramVarArgs)
     {
-      AppMethodBeat.i(112104);
-      paramVarArgs = new Intent();
-      paramVarArgs.putExtra("detail_query", n.this.tFe.tFC);
-      paramVarArgs.putExtra("detail_type", n.this.pSr);
-      paramVarArgs.putExtra("Search_Scene", n.this.lox);
-      d.d(paramContext, ".ui.FTSDetailUI", paramVarArgs);
-      AppMethodBeat.o(112104);
+      AppMethodBeat.i(235403);
+      paramView = new Intent();
+      paramView.putExtra("detail_query", n.this.wWd.wWB);
+      paramView.putExtra("detail_type", n.this.rjr);
+      paramView.putExtra("Search_Scene", n.this.mve);
+      d.d(paramContext, ".ui.FTSDetailUI", paramView);
+      AppMethodBeat.o(235403);
       return true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.n
  * JD-Core Version:    0.7.0.1
  */

@@ -3,12 +3,12 @@ package com.tencent.kinda.framework.sns_cross;
 import android.content.Context;
 import com.tencent.kinda.gen.ITransmitKvData;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.aq;
-import com.tencent.mm.g.a.gk;
+import com.tencent.mm.g.a.as;
+import com.tencent.mm.g.a.gn;
 import com.tencent.mm.plugin.remittance.ui.RemittanceF2fDynamicCodeUI;
 import com.tencent.mm.pluginsdk.wallet.PayInfo;
-import com.tencent.mm.sdk.b.a;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
 
 public class TransferNormalUseCaseCallback
@@ -37,47 +37,47 @@ public class TransferNormalUseCaseCallback
     int j = paramITransmitKvData.getInt("retcode");
     long l = paramITransmitKvData.getLong("total_fee");
     int k = paramITransmitKvData.getInt("action");
-    gk localgk = new gk();
-    localgk.dtk.dmw = paramITransmitKvData.getString("req_key");
+    gn localgn = new gn();
+    localgn.dKu.dDL = paramITransmitKvData.getString("req_key");
     if (i == 31)
     {
-      localgk.dtk.type = 0;
+      localgn.dKu.type = 0;
       if (i != 31) {
         break label362;
       }
       if ((j != 1) || (k != 1)) {
         break label339;
       }
-      localgk.dtk.dmy = 1;
+      localgn.dKu.dDN = 1;
     }
     for (;;)
     {
-      localgk.dtk.dmx = str;
-      localgk.dtk.isKinda = true;
-      localgk.dtk.dtl = localObject.hashCode();
-      a.IvT.l(localgk);
-      localObject = new aq();
-      ((aq)localObject).dmv.dmw = paramITransmitKvData.getString("req_key");
-      ((aq)localObject).dmv.dmx = str;
-      ((aq)localObject).dmv.dmy = j;
-      ((aq)localObject).dmv.dmz = (l / 100.0D);
-      ((aq)localObject).dmv.isKinda = true;
-      ((aq)localObject).dmv.dmA = paramITransmitKvData.getInt("pay_fail_reason");
-      a.IvT.l((b)localObject);
+      localgn.dKu.dDM = str;
+      localgn.dKu.isKinda = true;
+      localgn.dKu.dKv = localObject.hashCode();
+      EventCenter.instance.publish(localgn);
+      localObject = new as();
+      ((as)localObject).dDK.dDL = paramITransmitKvData.getString("req_key");
+      ((as)localObject).dDK.dDM = str;
+      ((as)localObject).dDK.dDN = j;
+      ((as)localObject).dDK.dDO = (l / 100.0D);
+      ((as)localObject).dDK.isKinda = true;
+      ((as)localObject).dDK.dDP = paramITransmitKvData.getInt("pay_fail_reason");
+      EventCenter.instance.publish((IEvent)localObject);
       AppMethodBeat.o(18723);
       return;
       if ((i != 32) && (i != 33)) {
         break;
       }
-      localgk.dtk.type = 1;
+      localgn.dKu.type = 1;
       break;
       label339:
       if ((j == 1) && (k == 2))
       {
-        localgk.dtk.dmy = 2;
+        localgn.dKu.dDN = 2;
         continue;
         label362:
-        localgk.dtk.dmy = j;
+        localgn.dKu.dDN = j;
       }
     }
   }
@@ -91,7 +91,7 @@ public class TransferNormalUseCaseCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.TransferNormalUseCaseCallback
  * JD-Core Version:    0.7.0.1
  */

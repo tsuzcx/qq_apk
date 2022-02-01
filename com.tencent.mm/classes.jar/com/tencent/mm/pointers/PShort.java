@@ -2,6 +2,7 @@ package com.tencent.mm.pointers;
 
 public class PShort
 {
+  private byte _hellAccFlag_;
   public short value;
 }
 

@@ -1,89 +1,93 @@
 package com.tencent.mm.plugin.appbrand.config;
 
-import com.tencent.luggage.sdk.config.AppBrandSysConfigLU;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.dwh;
-import com.tencent.mm.protocal.protobuf.ek;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import java.util.LinkedList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Looper;
+import com.tencent.f.j.a;
+import com.tencent.mm.plugin.appbrand.app.n;
+import com.tencent.mm.sdk.storage.IStorage;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageLoaded;
+import kotlin.g.b.p;
+import kotlin.l;
 
-public enum r
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/config/MStorageProxyForWxaAttrStorage;", "Lcom/tencent/mm/sdk/storage/IStorage;", "()V", "add", "", "p0", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "kotlin.jvm.PlatformType", "p1", "Landroid/os/Looper;", "Lcom/tencent/threadpool/serial/Serial;", "", "addLoadedListener", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageLoaded;", "doNotify", "", "p2", "", "lock", "lockCount", "remove", "removeLoadedListener", "unlock", "plugin-appbrand-integration_release"})
+public abstract class r
+  implements IStorage
 {
-  public static void a(AppBrandSysConfigLU paramAppBrandSysConfigLU, String paramString)
+  public r()
   {
-    AppMethodBeat.i(147007);
-    paramAppBrandSysConfigLU.kbq = true;
-    paramAppBrandSysConfigLU.kbr = true;
-    if (bu.isNullOrNil(paramString))
-    {
-      ae.w("MicroMsg.AppBrandSysConfigUtil", "operationInfo nil");
-      AppMethodBeat.o(147007);
-      return;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(paramString).getJSONObject("bgKeepAlive");
-      if (localJSONObject.optInt("music", 1) == 1)
-      {
-        bool = true;
-        paramAppBrandSysConfigLU.kbq = bool;
-        if (localJSONObject.optInt("location", 1) != 1) {
-          break label96;
-        }
-      }
-      label96:
-      for (boolean bool = true;; bool = false)
-      {
-        paramAppBrandSysConfigLU.kbr = bool;
-        AppMethodBeat.o(147007);
-        return;
-        bool = false;
-        break;
-      }
-      return;
-    }
-    catch (JSONException paramAppBrandSysConfigLU)
-    {
-      ae.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo operationInfo:%s", new Object[] { paramString });
-      ae.w("MicroMsg.AppBrandSysConfigUtil", "assembleBgKeepAliveConfigByOperationInfo exp:%s", new Object[] { paramAppBrandSysConfigLU });
-      AppMethodBeat.o(147007);
-    }
+    z localz = n.buC();
+    p.g(localz, "SubCoreAppBrand.getWxaContactStorage()");
+    this.lfG = localz;
   }
   
-  static ek x(JSONObject paramJSONObject)
+  public void add(a parama, MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(147006);
-    Object localObject = paramJSONObject.optJSONObject("AppConfig");
-    paramJSONObject = new ek();
-    if (localObject != null)
-    {
-      localObject = ((JSONObject)localObject).optJSONArray("VersionList");
-      paramJSONObject.FOG = new LinkedList();
-      if (localObject != null)
-      {
-        int i = 0;
-        while (i < ((JSONArray)localObject).length())
-        {
-          JSONObject localJSONObject = ((JSONArray)localObject).optJSONObject(i);
-          dwh localdwh = new dwh();
-          localdwh.type = localJSONObject.optInt("type");
-          localdwh.version = localJSONObject.optInt("version");
-          paramJSONObject.FOG.add(localdwh);
-          i += 1;
-        }
-      }
-    }
-    AppMethodBeat.o(147006);
-    return paramJSONObject;
+    this.lfG.add(parama, paramIOnStorageChange);
+  }
+  
+  public void add(MStorage.IOnStorageChange paramIOnStorageChange)
+  {
+    this.lfG.add(paramIOnStorageChange);
+  }
+  
+  public void add(MStorage.IOnStorageChange paramIOnStorageChange, Looper paramLooper)
+  {
+    this.lfG.add(paramIOnStorageChange, paramLooper);
+  }
+  
+  public void add(String paramString, MStorage.IOnStorageChange paramIOnStorageChange)
+  {
+    this.lfG.add(paramString, paramIOnStorageChange);
+  }
+  
+  public void addLoadedListener(MStorage.IOnStorageLoaded paramIOnStorageLoaded)
+  {
+    this.lfG.addLoadedListener(paramIOnStorageLoaded);
+  }
+  
+  public void doNotify()
+  {
+    this.lfG.doNotify();
+  }
+  
+  public void doNotify(String paramString)
+  {
+    this.lfG.doNotify(paramString);
+  }
+  
+  public void doNotify(String paramString, int paramInt, Object paramObject)
+  {
+    this.lfG.doNotify(paramString, paramInt, paramObject);
+  }
+  
+  public void lock()
+  {
+    this.lfG.lock();
+  }
+  
+  public int lockCount()
+  {
+    return this.lfG.lockCount();
+  }
+  
+  public void remove(MStorage.IOnStorageChange paramIOnStorageChange)
+  {
+    this.lfG.remove(paramIOnStorageChange);
+  }
+  
+  public void removeLoadedListener(MStorage.IOnStorageLoaded paramIOnStorageLoaded)
+  {
+    this.lfG.removeLoadedListener(paramIOnStorageLoaded);
+  }
+  
+  public void unlock()
+  {
+    this.lfG.unlock();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.r
  * JD-Core Version:    0.7.0.1
  */

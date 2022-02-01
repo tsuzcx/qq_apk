@@ -15,7 +15,7 @@ import com.tencent.mm.hellhoundlib.b.b;
 public abstract class KeyStepBaseActivity
   extends HellActivity
 {
-  private TextView lHk;
+  private TextView mPa;
   
   static
   {
@@ -32,24 +32,24 @@ public abstract class KeyStepBaseActivity
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131496132);
-    paramBundle = (FrameLayout)findViewById(2131298739);
+    setContentView(2131492959);
+    paramBundle = (FrameLayout)findViewById(2131299180);
     LayoutInflater localLayoutInflater = LayoutInflater.from(this);
     int i = getLayoutId();
     assert (i != 0);
     localLayoutInflater.inflate(i, paramBundle);
-    this.lHk = ((TextView)findViewById(2131296415));
-    findViewById(2131296417).setOnClickListener(new View.OnClickListener()
+    this.mPa = ((TextView)findViewById(2131296447));
+    findViewById(2131296449).setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
-        AppMethodBeat.i(201227);
+        AppMethodBeat.i(221271);
         b localb = new b();
-        localb.bd(paramAnonymousView);
-        a.b("com/tencent/mm/plugin/appbrand/keylogger/KeyStepBaseActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        a.b("com/tencent/mm/plugin/appbrand/keylogger/KeyStepBaseActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         KeyStepBaseActivity.this.finish();
         a.a(this, "com/tencent/mm/plugin/appbrand/keylogger/KeyStepBaseActivity$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-        AppMethodBeat.o(201227);
+        AppMethodBeat.o(221271);
       }
     });
   }
@@ -62,7 +62,7 @@ public abstract class KeyStepBaseActivity
   
   protected final void setTitle(String paramString)
   {
-    this.lHk.setText(paramString);
+    this.mPa.setText(paramString);
   }
 }
 

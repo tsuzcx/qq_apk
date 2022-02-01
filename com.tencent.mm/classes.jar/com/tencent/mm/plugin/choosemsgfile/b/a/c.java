@@ -2,36 +2,36 @@ package com.tencent.mm.plugin.choosemsgfile.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.choosemsgfile.compat.MsgFile;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
 import com.tencent.mm.vending.e.b;
 
 public abstract class c
   implements com.tencent.mm.vending.e.a, Runnable
 {
-  private static long oYr = 2000L;
-  private int hPI;
-  protected com.tencent.mm.plugin.choosemsgfile.b.b.a oYp;
-  protected a oYq;
-  private boolean oYs = false;
-  private Runnable oYt = new Runnable()
+  private static long qnq = 2000L;
+  private int iKP;
+  private int offset;
+  protected com.tencent.mm.plugin.choosemsgfile.b.b.a qno;
+  protected a qnp;
+  private boolean qnr = false;
+  private Runnable qns = new Runnable()
   {
     public final void run()
     {
       AppMethodBeat.i(123227);
       c.a(c.this);
-      if (c.this.oYq != null) {
-        c.this.oYq.eX(c.b(c.this), c.c(c.this));
+      if (c.this.qnp != null) {
+        c.this.qnp.fk(c.b(c.this), c.c(c.this));
       }
       AppMethodBeat.o(123227);
     }
   };
-  private int offset;
   
   public c(com.tencent.mm.plugin.choosemsgfile.b.b.a parama, a parama1, b paramb)
   {
-    this.oYp = parama;
-    this.oYq = parama1;
+    this.qno = parama;
+    this.qnp = parama1;
     if (paramb != null) {
       paramb.keep(this);
     }
@@ -41,11 +41,11 @@ public abstract class c
   {
     try
     {
-      ae.i("MicroMsg.MsgFileWorker_Base", "onDownloadSuccess msgFile:%s", new Object[] { paramMsgFile });
-      if (this.oYq != null)
+      Log.i("MicroMsg.MsgFileWorker_Base", "onDownloadSuccess msgFile:%s", new Object[] { paramMsgFile });
+      if (this.qnp != null)
       {
-        this.oYq.a(paramMsgFile);
-        this.oYq = null;
+        this.qnp.a(paramMsgFile);
+        this.qnp = null;
       }
       return;
     }
@@ -56,61 +56,61 @@ public abstract class c
     }
   }
   
-  protected abstract void buf();
-  
-  protected abstract boolean caw();
-  
-  protected final void cax()
-  {
-    try
-    {
-      ae.i("MicroMsg.MsgFileWorker_Base", "onDownloadStop");
-      if (this.oYq != null)
-      {
-        this.oYq.cau();
-        this.oYq = null;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
-  protected final void cay()
-  {
-    try
-    {
-      ae.i("MicroMsg.MsgFileWorker_Base", "onDownloadFail");
-      if (this.oYq != null)
-      {
-        this.oYq.cat();
-        this.oYq = null;
-      }
-      return;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
+  protected abstract void bPM();
   
   protected abstract boolean checkValid();
   
-  public void dead() {}
+  protected abstract boolean cyn();
   
-  protected final void eY(int paramInt1, int paramInt2)
+  protected final void cyo()
   {
     try
     {
-      ae.v("MicroMsg.MsgFileWorker_Base", "onDownloadProgress offset:%d totalLen:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      Log.i("MicroMsg.MsgFileWorker_Base", "onDownloadStop");
+      if (this.qnp != null)
+      {
+        this.qnp.cyl();
+        this.qnp = null;
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  protected final void cyp()
+  {
+    try
+    {
+      Log.i("MicroMsg.MsgFileWorker_Base", "onDownloadFail");
+      if (this.qnp != null)
+      {
+        this.qnp.cyk();
+        this.qnp = null;
+      }
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public void dead() {}
+  
+  protected final void fl(int paramInt1, int paramInt2)
+  {
+    try
+    {
+      Log.v("MicroMsg.MsgFileWorker_Base", "onDownloadProgress offset:%d totalLen:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       this.offset = paramInt1;
-      this.hPI = paramInt2;
-      if ((this.oYs) && (this.oYq != null)) {
-        this.oYq.eX(paramInt1, paramInt2);
+      this.iKP = paramInt2;
+      if ((this.qnr) && (this.qnp != null)) {
+        this.qnp.fk(paramInt1, paramInt2);
       }
       return;
     }
@@ -123,18 +123,18 @@ public abstract class c
   
   public void run()
   {
-    ar.o(this.oYt, oYr);
-    buf();
+    MMHandlerThread.postToMainThreadDelayed(this.qns, qnq);
+    bPM();
   }
   
   public String toString()
   {
-    return "MsgFileWorker_Base{mMsgItem=" + this.oYp + '}';
+    return "MsgFileWorker_Base{mMsgItem=" + this.qno + '}';
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.choosemsgfile.b.a.c
  * JD-Core Version:    0.7.0.1
  */

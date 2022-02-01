@@ -15,32 +15,32 @@ public class ExtStorageMigrateConfig
   implements Parcelable
 {
   public static final Parcelable.Creator<ExtStorageMigrateConfig> CREATOR;
-  public static final ExtStorageMigrateConfig Itm;
-  public final String Itj;
-  public boolean Itk;
-  public final Set<ExtraPathAction> Itl;
+  public static final ExtStorageMigrateConfig NGK;
+  public final String NGH;
+  public boolean NGI;
+  public final Set<ExtraPathAction> NGJ;
   public final String sourceDir;
   
   static
   {
-    AppMethodBeat.i(211843);
-    a locala = new a(b.asi(), b.asf() + "/MicroMsg/");
-    locala.Itq.add(new ExtStorageMigrateConfig.ExtraPathAction.Ignore("wxajscahce/", (byte)0));
-    Itm = locala.lN("wallet/images", "wallet_images").lN("WeChat/", b.asu()).lN("WeiXin/", b.asu()).lN("weixin/", b.asu()).lN("wechat/", b.asu()).fmW();
+    AppMethodBeat.i(204605);
+    a locala = new a(b.aKI(), b.aKF() + "/MicroMsg/");
+    locala.NGO.add(new ExtStorageMigrateConfig.ExtraPathAction.Ignore("wxajscahce/", (byte)0));
+    NGK = locala.mL("wallet/images", "wallet_images").mL("WeChat/", b.aKU()).mL("WeiXin/", b.aKU()).mL("weixin/", b.aKU()).mL("wechat/", b.aKU()).gwJ();
     CREATOR = new Parcelable.Creator() {};
-    AppMethodBeat.o(211843);
+    AppMethodBeat.o(204605);
   }
   
   private ExtStorageMigrateConfig(Parcel paramParcel)
   {
-    AppMethodBeat.i(211840);
+    AppMethodBeat.i(204602);
     this.sourceDir = paramParcel.readString();
-    this.Itj = paramParcel.readString();
+    this.NGH = paramParcel.readString();
     if (paramParcel.readInt() != 0) {}
     HashSet localHashSet;
     for (boolean bool = true;; bool = false)
     {
-      this.Itk = bool;
+      this.NGI = bool;
       localHashSet = new HashSet();
       int j = paramParcel.readInt();
       while (i < j)
@@ -49,18 +49,18 @@ public class ExtStorageMigrateConfig
         i += 1;
       }
     }
-    this.Itl = Collections.unmodifiableSet(localHashSet);
-    AppMethodBeat.o(211840);
+    this.NGJ = Collections.unmodifiableSet(localHashSet);
+    AppMethodBeat.o(204602);
   }
   
   private ExtStorageMigrateConfig(String paramString1, String paramString2, boolean paramBoolean, Collection<ExtraPathAction> paramCollection)
   {
-    AppMethodBeat.i(211839);
+    AppMethodBeat.i(204601);
     this.sourceDir = paramString1;
-    this.Itj = paramString2;
-    this.Itk = paramBoolean;
-    this.Itl = Collections.unmodifiableSet(new HashSet(paramCollection));
-    AppMethodBeat.o(211839);
+    this.NGH = paramString2;
+    this.NGI = paramBoolean;
+    this.NGJ = Collections.unmodifiableSet(new HashSet(paramCollection));
+    AppMethodBeat.o(204601);
   }
   
   public int describeContents()
@@ -70,30 +70,30 @@ public class ExtStorageMigrateConfig
   
   public String toString()
   {
-    AppMethodBeat.i(211842);
+    AppMethodBeat.i(204604);
     Object localObject = new StringBuilder();
-    ((StringBuilder)localObject).append("ExtStorageMigrateConfig{source: ").append(this.sourceDir).append(",dest: ").append(this.Itj).append(",forceCopy: ").append(this.Itk).append(",extraActions: ").append(this.Itl).append("}");
+    ((StringBuilder)localObject).append("ExtStorageMigrateConfig{source: ").append(this.sourceDir).append(",dest: ").append(this.NGH).append(",forceCopy: ").append(this.NGI).append(",extraActions: ").append(this.NGJ).append("}");
     localObject = ((StringBuilder)localObject).toString();
-    AppMethodBeat.o(211842);
+    AppMethodBeat.o(204604);
     return localObject;
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    AppMethodBeat.i(211841);
+    AppMethodBeat.i(204603);
     paramParcel.writeString(this.sourceDir);
-    paramParcel.writeString(this.Itj);
-    if (this.Itk) {}
+    paramParcel.writeString(this.NGH);
+    if (this.NGI) {}
     for (int i = 1;; i = 0)
     {
       paramParcel.writeInt(i);
-      paramParcel.writeInt(this.Itl.size());
-      Iterator localIterator = this.Itl.iterator();
+      paramParcel.writeInt(this.NGJ.size());
+      Iterator localIterator = this.NGJ.iterator();
       while (localIterator.hasNext()) {
         paramParcel.writeParcelable((ExtraPathAction)localIterator.next(), paramInt);
       }
     }
-    AppMethodBeat.o(211841);
+    AppMethodBeat.o(204603);
   }
   
   public static abstract class ExtraPathAction
@@ -108,69 +108,69 @@ public class ExtStorageMigrateConfig
       extends ExtStorageMigrateConfig.ExtraPathAction
     {
       public static final Parcelable.Creator<Ignore> CREATOR;
-      public final String Itr;
+      public final String NGP;
       
       static
       {
-        AppMethodBeat.i(211830);
+        AppMethodBeat.i(204592);
         CREATOR = new Parcelable.Creator() {};
-        AppMethodBeat.o(211830);
+        AppMethodBeat.o(204592);
       }
       
       private Ignore(Parcel paramParcel)
       {
-        AppMethodBeat.i(211825);
-        this.Itr = paramParcel.readString();
-        AppMethodBeat.o(211825);
+        AppMethodBeat.i(204587);
+        this.NGP = paramParcel.readString();
+        AppMethodBeat.o(204587);
       }
       
       private Ignore(String paramString)
       {
-        AppMethodBeat.i(211824);
+        AppMethodBeat.i(204586);
         if ((paramString.startsWith("/")) || (paramString.startsWith("\\")))
         {
           paramString = new IllegalArgumentException(paramString + " is not a relative path.");
-          AppMethodBeat.o(211824);
+          AppMethodBeat.o(204586);
           throw paramString;
         }
-        this.Itr = paramString;
-        AppMethodBeat.o(211824);
+        this.NGP = paramString;
+        AppMethodBeat.o(204586);
       }
       
       public boolean equals(Object paramObject)
       {
-        AppMethodBeat.i(211826);
+        AppMethodBeat.i(204588);
         if (!(paramObject instanceof Ignore))
         {
-          AppMethodBeat.o(211826);
+          AppMethodBeat.o(204588);
           return false;
         }
-        boolean bool = this.Itr.equals(((Ignore)paramObject).Itr);
-        AppMethodBeat.o(211826);
+        boolean bool = this.NGP.equals(((Ignore)paramObject).NGP);
+        AppMethodBeat.o(204588);
         return bool;
       }
       
       public int hashCode()
       {
-        AppMethodBeat.i(211827);
-        int i = this.Itr.hashCode();
-        AppMethodBeat.o(211827);
+        AppMethodBeat.i(204589);
+        int i = this.NGP.hashCode();
+        AppMethodBeat.o(204589);
         return i;
       }
       
       public String toString()
       {
-        AppMethodBeat.i(211829);
-        String str = "Ignore{relPath: " + this.Itr + "}";
-        AppMethodBeat.o(211829);
+        AppMethodBeat.i(204591);
+        String str = "Ignore{relPath: " + this.NGP + "}";
+        AppMethodBeat.o(204591);
         return str;
       }
       
       public void writeToParcel(Parcel paramParcel, int paramInt)
       {
-        AppMethodBeat.i(211828);
-        paramParcel.writeString(this.Itr);
-        AppMethodBeat.o(211828);
+        AppMethodBeat.i(204590);
+        paramParcel.writeString(this.NGP);
+        AppMethodBeat.o(204590);
       }
     }
     
@@ -178,123 +178,123 @@ public class ExtStorageMigrateConfig
       extends ExtStorageMigrateConfig.ExtraPathAction
     {
       public static final Parcelable.Creator<Remap> CREATOR;
-      public final String Its;
-      public final String iww;
+      public final String NGQ;
+      public final String jrL;
       
       static
       {
-        AppMethodBeat.i(211838);
+        AppMethodBeat.i(204600);
         CREATOR = new Parcelable.Creator() {};
-        AppMethodBeat.o(211838);
+        AppMethodBeat.o(204600);
       }
       
       private Remap(Parcel paramParcel)
       {
-        AppMethodBeat.i(211833);
-        this.Its = paramParcel.readString();
-        this.iww = paramParcel.readString();
-        AppMethodBeat.o(211833);
+        AppMethodBeat.i(204595);
+        this.NGQ = paramParcel.readString();
+        this.jrL = paramParcel.readString();
+        AppMethodBeat.o(204595);
       }
       
       private Remap(String paramString1, String paramString2)
       {
-        AppMethodBeat.i(211832);
+        AppMethodBeat.i(204594);
         if ((paramString1.startsWith("/")) || (paramString1.startsWith("\\")))
         {
           paramString1 = new IllegalArgumentException(paramString1 + " is not a relative path.");
-          AppMethodBeat.o(211832);
+          AppMethodBeat.o(204594);
           throw paramString1;
         }
-        this.Its = paramString1;
-        this.iww = paramString2;
-        AppMethodBeat.o(211832);
+        this.NGQ = paramString1;
+        this.jrL = paramString2;
+        AppMethodBeat.o(204594);
       }
       
       public boolean equals(Object paramObject)
       {
-        AppMethodBeat.i(211834);
+        AppMethodBeat.i(204596);
         if (!(paramObject instanceof Remap))
         {
-          AppMethodBeat.o(211834);
+          AppMethodBeat.o(204596);
           return false;
         }
-        if (!this.Its.equals(((Remap)paramObject).Its))
+        if (!this.NGQ.equals(((Remap)paramObject).NGQ))
         {
-          AppMethodBeat.o(211834);
+          AppMethodBeat.o(204596);
           return false;
         }
-        boolean bool = this.iww.equals(((Remap)paramObject).iww);
-        AppMethodBeat.o(211834);
+        boolean bool = this.jrL.equals(((Remap)paramObject).jrL);
+        AppMethodBeat.o(204596);
         return bool;
       }
       
       public int hashCode()
       {
-        AppMethodBeat.i(211835);
-        int i = this.Its.hashCode();
-        int j = this.iww.hashCode();
-        AppMethodBeat.o(211835);
+        AppMethodBeat.i(204597);
+        int i = this.NGQ.hashCode();
+        int j = this.jrL.hashCode();
+        AppMethodBeat.o(204597);
         return i + j;
       }
       
       public String toString()
       {
-        AppMethodBeat.i(211837);
-        String str = "Remap{old: " + this.Its + ", new: " + this.iww + "}";
-        AppMethodBeat.o(211837);
+        AppMethodBeat.i(204599);
+        String str = "Remap{old: " + this.NGQ + ", new: " + this.jrL + "}";
+        AppMethodBeat.o(204599);
         return str;
       }
       
       public void writeToParcel(Parcel paramParcel, int paramInt)
       {
-        AppMethodBeat.i(211836);
-        paramParcel.writeString(this.Its);
-        paramParcel.writeString(this.iww);
-        AppMethodBeat.o(211836);
+        AppMethodBeat.i(204598);
+        paramParcel.writeString(this.NGQ);
+        paramParcel.writeString(this.jrL);
+        AppMethodBeat.o(204598);
       }
     }
   }
   
   public static final class a
   {
-    private final String Itn;
-    private final String Ito;
-    boolean Itp;
-    final Set<ExtStorageMigrateConfig.ExtraPathAction> Itq;
+    private final String NGL;
+    private final String NGM;
+    boolean NGN;
+    final Set<ExtStorageMigrateConfig.ExtraPathAction> NGO;
     
     public a(ExtStorageMigrateConfig paramExtStorageMigrateConfig)
     {
-      AppMethodBeat.i(211820);
-      this.Itn = paramExtStorageMigrateConfig.sourceDir;
-      this.Ito = paramExtStorageMigrateConfig.Itj;
-      this.Itp = paramExtStorageMigrateConfig.Itk;
-      this.Itq = Collections.unmodifiableSet(new HashSet(paramExtStorageMigrateConfig.Itl));
-      AppMethodBeat.o(211820);
+      AppMethodBeat.i(204582);
+      this.NGL = paramExtStorageMigrateConfig.sourceDir;
+      this.NGM = paramExtStorageMigrateConfig.NGH;
+      this.NGN = paramExtStorageMigrateConfig.NGI;
+      this.NGO = Collections.unmodifiableSet(new HashSet(paramExtStorageMigrateConfig.NGJ));
+      AppMethodBeat.o(204582);
     }
     
     public a(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(211819);
-      this.Itn = paramString1;
-      this.Ito = paramString2;
-      this.Itp = false;
-      this.Itq = new HashSet();
-      AppMethodBeat.o(211819);
+      AppMethodBeat.i(204581);
+      this.NGL = paramString1;
+      this.NGM = paramString2;
+      this.NGN = false;
+      this.NGO = new HashSet();
+      AppMethodBeat.o(204581);
     }
     
-    public final ExtStorageMigrateConfig fmW()
+    public final ExtStorageMigrateConfig gwJ()
     {
-      AppMethodBeat.i(211822);
-      ExtStorageMigrateConfig localExtStorageMigrateConfig = new ExtStorageMigrateConfig(this.Itn, this.Ito, this.Itp, this.Itq, (byte)0);
-      AppMethodBeat.o(211822);
+      AppMethodBeat.i(204584);
+      ExtStorageMigrateConfig localExtStorageMigrateConfig = new ExtStorageMigrateConfig(this.NGL, this.NGM, this.NGN, this.NGO, (byte)0);
+      AppMethodBeat.o(204584);
       return localExtStorageMigrateConfig;
     }
     
-    public final a lN(String paramString1, String paramString2)
+    public final a mL(String paramString1, String paramString2)
     {
-      AppMethodBeat.i(211821);
-      this.Itq.add(new ExtStorageMigrateConfig.ExtraPathAction.Remap(paramString1, paramString2, (byte)0));
-      AppMethodBeat.o(211821);
+      AppMethodBeat.i(204583);
+      this.NGO.add(new ExtStorageMigrateConfig.ExtraPathAction.Remap(paramString1, paramString2, (byte)0));
+      AppMethodBeat.o(204583);
       return this;
     }
   }

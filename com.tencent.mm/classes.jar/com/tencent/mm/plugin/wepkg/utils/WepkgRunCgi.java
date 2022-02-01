@@ -2,35 +2,37 @@ package com.tencent.mm.plugin.wepkg.utils;
 
 import android.os.Parcel;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
 import com.tencent.mm.bw.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import g.a.a.b;
 
 public final class WepkgRunCgi
 {
-  static com.tencent.mm.ak.b o(Parcel paramParcel)
+  static d q(Parcel paramParcel)
   {
     AppMethodBeat.i(110806);
-    b.a locala = new b.a();
+    d.a locala = new d.a();
     String str = paramParcel.readString();
     byte[] arrayOfByte = new byte[paramParcel.readInt()];
     paramParcel.readByteArray(arrayOfByte);
     try
     {
-      locala.hQF = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
+      locala.iLN = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
       label48:
       str = paramParcel.readString();
       arrayOfByte = new byte[paramParcel.readInt()];
       paramParcel.readByteArray(arrayOfByte);
       try
       {
-        locala.hQG = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
+        locala.iLO = ((a)Class.forName(str).newInstance()).parseFrom(arrayOfByte);
         locala.uri = paramParcel.readString();
         locala.funcId = paramParcel.readInt();
-        locala.hQH = paramParcel.readInt();
+        locala.iLP = paramParcel.readInt();
         locala.respCmdId = paramParcel.readInt();
-        paramParcel = locala.aDS();
+        paramParcel = locala.aXF();
         AppMethodBeat.o(110806);
         return paramParcel;
       }
@@ -38,14 +40,14 @@ public final class WepkgRunCgi
       {
         for (;;)
         {
-          if ((localException3 instanceof f.a.a.b)) {
+          if ((localException3 instanceof b)) {
             try
             {
-              locala.hQG = ((a)Class.forName(str).newInstance());
+              locala.iLO = ((a)Class.forName(str).newInstance());
             }
             catch (Exception localException1)
             {
-              ae.e("MicroMsg.Wepkg.WepkgRunCgi", "readCommReqRespFromParcel, resp fields not ready, re-create one but exp = %s", new Object[] { bu.o(localException1) });
+              Log.e("MicroMsg.Wepkg.WepkgRunCgi", "readCommReqRespFromParcel, resp fields not ready, re-create one but exp = %s", new Object[] { Util.stackTraceToString(localException1) });
             }
           }
         }

@@ -3,21 +3,18 @@ package com.tencent.mm.plugin.account;
 import android.app.Activity;
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.c;
 import com.tencent.mm.kernel.b.f;
-import com.tencent.mm.model.u;
 import com.tencent.mm.platformtools.t;
-import com.tencent.mm.platformtools.y;
 import com.tencent.mm.plugin.account.friend.a.ap;
 import com.tencent.mm.plugin.account.friend.a.ar;
 import com.tencent.mm.plugin.account.friend.a.at;
 import com.tencent.mm.plugin.account.friend.a.k;
 import com.tencent.mm.plugin.account.friend.a.o;
 import com.tencent.mm.plugin.account.friend.a.q;
-import com.tencent.mm.plugin.account.model.l;
-import com.tencent.mm.protocal.protobuf.bvd;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.account.model.m;
+import com.tencent.mm.protocal.protobuf.cik;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.LinkedList;
 
 public class PluginAccount
@@ -34,11 +31,11 @@ public class PluginAccount
   public void execute(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(127754);
-    c.aPn("account");
-    pin(new u(l.class));
-    pin(new u(a.class));
-    pin(new u(com.tencent.mm.plugin.account.security.a.g.class));
-    ae.i("MicroMsg.PluginAccount", "execute PluginAccount");
+    com.tencent.mm.br.b.bfQ("account");
+    pin(new com.tencent.mm.model.y(m.class));
+    pin(new com.tencent.mm.model.y(a.class));
+    pin(new com.tencent.mm.model.y(com.tencent.mm.plugin.account.security.a.g.class));
+    Log.i("MicroMsg.PluginAccount", "execute PluginAccount");
     AppMethodBeat.o(127754);
   }
   
@@ -66,7 +63,7 @@ public class PluginAccount
     return localk;
   }
   
-  public LinkedList<bvd> getFriendData()
+  public LinkedList<cik> getFriendData()
   {
     AppMethodBeat.i(127763);
     LinkedList localLinkedList = a.getFriendData();
@@ -125,7 +122,7 @@ public class PluginAccount
   public void removeSelfAccount(Context paramContext)
   {
     AppMethodBeat.i(127767);
-    t.cX(paramContext);
+    t.ds(paramContext);
     AppMethodBeat.o(127767);
   }
   
@@ -139,7 +136,7 @@ public class PluginAccount
   public void showAddrBookUploadConfirm(Activity paramActivity, Runnable paramRunnable, boolean paramBoolean, int paramInt)
   {
     AppMethodBeat.i(127766);
-    y.showAddrBookUploadConfirm(paramActivity, paramRunnable, paramBoolean, paramInt);
+    com.tencent.mm.platformtools.y.showAddrBookUploadConfirm(paramActivity, paramRunnable, paramBoolean, paramInt);
     AppMethodBeat.o(127766);
   }
   
@@ -154,28 +151,28 @@ public class PluginAccount
   public void syncAddrBookAndUpload()
   {
     AppMethodBeat.i(127765);
-    ak.getContext();
-    com.tencent.mm.platformtools.a.aQI();
+    MMApplicationContext.getContext();
+    com.tencent.mm.platformtools.a.blm();
     AppMethodBeat.o(127765);
   }
   
   public void syncUploadMContactStatus(boolean paramBoolean1, boolean paramBoolean2)
   {
     AppMethodBeat.i(127769);
-    y.syncUploadMContactStatus(paramBoolean1, paramBoolean2);
+    com.tencent.mm.platformtools.y.syncUploadMContactStatus(paramBoolean1, paramBoolean2);
     AppMethodBeat.o(127769);
   }
   
   public void updateAllContact()
   {
     AppMethodBeat.i(127771);
-    t.cY(ak.getContext());
+    t.dt(MMApplicationContext.getContext());
     AppMethodBeat.o(127771);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.account.PluginAccount
  * JD-Core Version:    0.7.0.1
  */

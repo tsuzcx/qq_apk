@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:focusable="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout style="@style/gi"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/a_u" android:gravity="center_vertical" android:id="@id/cj9" android:focusable="false" android:clickable="false" android:layout_width="0.0dip" android:layout_height="@dimen/cd" android:layout_marginLeft="@dimen/c0" android:layout_weight="1.0" />
-    <TextView android:textColor="@color/BW_100_Alpha_0_3" android:gravity="center_vertical" android:id="@id/cj1" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="@dimen/cd" android:layout_marginRight="@dimen/ci" android:text="@string/dsh" />
-    <CheckBox android:layout_gravity="center_vertical" android:id="@id/cj0" android:background="@drawable/a2s" android:focusable="false" android:clickable="false" android:layout_width="@dimen/ap" android:layout_height="@dimen/an" android:layout_marginRight="@dimen/ci" />
-</LinearLayout>
+    <include layout="@layout/qp" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_toRightOf="@id/au5" style="@style/gt">
+        <TextView android:id="@id/ayn" android:visibility="gone" style="@style/gy" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.MMNeat7extView android:id="@id/auk" android:background="@drawable/mv" android:maxWidth="@dimen/xb" android:maxHeight="@dimen/c6" android:minHeight="@dimen/ad" style="@style/h4" />
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>

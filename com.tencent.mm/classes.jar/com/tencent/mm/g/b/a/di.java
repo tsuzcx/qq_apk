@@ -6,328 +6,107 @@ import com.tencent.mm.plugin.report.a;
 public final class di
   extends a
 {
-  private String dXu = "";
-  private long dZW;
-  private String eaZ = "";
-  private String eba = "";
-  private String egO = "";
-  private String egP = "";
-  private String egQ = "";
-  private String egR = "";
-  private String egS = "";
-  private String egT = "";
-  private String egU = "";
-  private String egV = "";
-  private String egW = "";
-  private String egX = "";
-  private long egY;
-  private long egZ;
-  private long eha;
-  private long ehb;
-  private String ehc = "";
-  private String ehd = "";
-  private String ehe = "";
-  private String ehf = "";
-  private String ehg = "";
-  private String ehh = "";
+  private long euQ;
+  private String ezQ = "";
+  private String ezR = "";
+  private long ezS;
+  private long ezT;
+  private long ezU;
+  private long ezV;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(206493);
+    AppMethodBeat.i(209119);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.eaZ);
+    ((StringBuffer)localObject).append(this.ezQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eba);
+    ((StringBuffer)localObject).append(this.ezR);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dXu);
+    ((StringBuffer)localObject).append(this.ezS);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egO);
+    ((StringBuffer)localObject).append(this.euQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egP);
+    ((StringBuffer)localObject).append(this.ezT);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egQ);
+    ((StringBuffer)localObject).append(this.ezU);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egR);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egS);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egT);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egU);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egV);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egX);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egY);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.egZ);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eha);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dZW);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehb);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehc);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehd);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehe);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehf);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehg);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.ehh);
+    ((StringBuffer)localObject).append(this.ezV);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(206493);
+    aMq((String)localObject);
+    AppMethodBeat.o(209119);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(206494);
+    AppMethodBeat.i(209120);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("PostId:").append(this.eaZ);
+    ((StringBuffer)localObject).append("PostId:").append(this.ezQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EditId:").append(this.eba);
+    ((StringBuffer)localObject).append("EditId:").append(this.ezR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ExtraInfo:").append(this.dXu);
+    ((StringBuffer)localObject).append("VideoSource:").append(this.ezS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isBeauty:").append(this.egO);
+    ((StringBuffer)localObject).append("MediaType:").append(this.euQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("targetDuration:").append(this.egP);
+    ((StringBuffer)localObject).append("PicCnt:").append(this.ezT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("originDuration:").append(this.egQ);
+    ((StringBuffer)localObject).append("VideoLen:").append(this.ezU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isSlowMotion:").append(this.egR);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("dragCount:").append(this.egS);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("scaleCount:").append(this.egT);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("clickEditCount:").append(this.egU);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("durationCutCount:").append(this.egV);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("durationScrollCount:").append(this.egW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isDurationCut:").append(this.egX);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("cropRectChangeCount:").append(this.egY);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("seekBarDragCount:").append(this.egZ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("is60sDurationCut:").append(this.eha);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Type:").append(this.dZW);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("NextStep:").append(this.ehb);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("VideoType:").append(this.ehc);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CaptionInfo:").append(this.ehd);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TextInfo:").append(this.ehe);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EmojiInfo:").append(this.ehf);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TransitionInfo:").append(this.ehg);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("TrSpeedInfo:").append(this.ehh);
+    ((StringBuffer)localObject).append("DeleteFlag:").append(this.ezV);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(206494);
+    AppMethodBeat.o(209120);
     return localObject;
   }
   
   public final int getId()
   {
-    return 19904;
+    return 21638;
   }
   
-  public final di jO(long paramLong)
+  public final di jA(long paramLong)
   {
-    this.egY = paramLong;
+    this.ezU = paramLong;
     return this;
   }
   
-  public final di jP(long paramLong)
+  public final di jx(long paramLong)
   {
-    this.egZ = paramLong;
+    this.ezS = paramLong;
     return this;
   }
   
-  public final di jQ(long paramLong)
+  public final di jy(long paramLong)
   {
-    this.eha = paramLong;
+    this.euQ = paramLong;
     return this;
   }
   
-  public final di jR(long paramLong)
+  public final di jz(long paramLong)
   {
-    this.ehb = paramLong;
+    this.ezT = paramLong;
     return this;
   }
   
-  public final di mP(String paramString)
+  public final di oG(String paramString)
   {
-    AppMethodBeat.i(206474);
-    this.eaZ = t("PostId", paramString, true);
-    AppMethodBeat.o(206474);
+    AppMethodBeat.i(209117);
+    this.ezQ = x("PostId", paramString, true);
+    AppMethodBeat.o(209117);
     return this;
   }
   
-  public final di mQ(String paramString)
+  public final di oH(String paramString)
   {
-    AppMethodBeat.i(206475);
-    this.eba = t("EditId", paramString, true);
-    AppMethodBeat.o(206475);
-    return this;
-  }
-  
-  public final di mR(String paramString)
-  {
-    AppMethodBeat.i(206476);
-    this.dXu = t("ExtraInfo", paramString, true);
-    AppMethodBeat.o(206476);
-    return this;
-  }
-  
-  public final di mS(String paramString)
-  {
-    AppMethodBeat.i(206477);
-    this.egO = t("isBeauty", paramString, true);
-    AppMethodBeat.o(206477);
-    return this;
-  }
-  
-  public final di mT(String paramString)
-  {
-    AppMethodBeat.i(206478);
-    this.egP = t("targetDuration", paramString, true);
-    AppMethodBeat.o(206478);
-    return this;
-  }
-  
-  public final di mU(String paramString)
-  {
-    AppMethodBeat.i(206479);
-    this.egQ = t("originDuration", paramString, true);
-    AppMethodBeat.o(206479);
-    return this;
-  }
-  
-  public final di mV(String paramString)
-  {
-    AppMethodBeat.i(206480);
-    this.egR = t("isSlowMotion", paramString, true);
-    AppMethodBeat.o(206480);
-    return this;
-  }
-  
-  public final di mW(String paramString)
-  {
-    AppMethodBeat.i(206481);
-    this.egS = t("dragCount", paramString, true);
-    AppMethodBeat.o(206481);
-    return this;
-  }
-  
-  public final di mX(String paramString)
-  {
-    AppMethodBeat.i(206482);
-    this.egT = t("scaleCount", paramString, true);
-    AppMethodBeat.o(206482);
-    return this;
-  }
-  
-  public final di mY(String paramString)
-  {
-    AppMethodBeat.i(206483);
-    this.egU = t("clickEditCount", paramString, true);
-    AppMethodBeat.o(206483);
-    return this;
-  }
-  
-  public final di mZ(String paramString)
-  {
-    AppMethodBeat.i(206484);
-    this.egV = t("durationCutCount", paramString, true);
-    AppMethodBeat.o(206484);
-    return this;
-  }
-  
-  public final di na(String paramString)
-  {
-    AppMethodBeat.i(206485);
-    this.egW = t("durationScrollCount", paramString, true);
-    AppMethodBeat.o(206485);
-    return this;
-  }
-  
-  public final di nb(String paramString)
-  {
-    AppMethodBeat.i(206486);
-    this.egX = t("isDurationCut", paramString, true);
-    AppMethodBeat.o(206486);
-    return this;
-  }
-  
-  public final di nc(String paramString)
-  {
-    AppMethodBeat.i(206487);
-    this.ehc = t("VideoType", paramString, true);
-    AppMethodBeat.o(206487);
-    return this;
-  }
-  
-  public final di nd(String paramString)
-  {
-    AppMethodBeat.i(206488);
-    this.ehd = t("CaptionInfo", paramString, true);
-    AppMethodBeat.o(206488);
-    return this;
-  }
-  
-  public final di ne(String paramString)
-  {
-    AppMethodBeat.i(206489);
-    this.ehe = t("TextInfo", paramString, true);
-    AppMethodBeat.o(206489);
-    return this;
-  }
-  
-  public final di nf(String paramString)
-  {
-    AppMethodBeat.i(206490);
-    this.ehf = t("EmojiInfo", paramString, true);
-    AppMethodBeat.o(206490);
-    return this;
-  }
-  
-  public final di ng(String paramString)
-  {
-    AppMethodBeat.i(206491);
-    this.ehg = t("TransitionInfo", paramString, true);
-    AppMethodBeat.o(206491);
-    return this;
-  }
-  
-  public final di nh(String paramString)
-  {
-    AppMethodBeat.i(206492);
-    this.ehh = t("TrSpeedInfo", paramString, true);
-    AppMethodBeat.o(206492);
+    AppMethodBeat.i(209118);
+    this.ezR = x("EditId", paramString, true);
+    AppMethodBeat.o(209118);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.g.b.a.di
  * JD-Core Version:    0.7.0.1
  */

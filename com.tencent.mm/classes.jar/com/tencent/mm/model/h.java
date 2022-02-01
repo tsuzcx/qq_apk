@@ -1,17 +1,17 @@
 package com.tencent.mm.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.e.b;
-import com.tencent.mm.g.c.ba;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
+import com.tencent.mm.g.c.bb;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.storage.au;
-import com.tencent.mm.storage.br;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bw;
+import com.tencent.mm.storage.ca;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
@@ -19,14 +19,14 @@ import java.util.Map;
 public final class h
   implements f.b
 {
-  public final e.b a(String paramString, Map<String, String> paramMap, e.a parama)
+  public final h.b a(String paramString, Map<String, String> paramMap, h.a parama)
   {
     AppMethodBeat.i(20316);
     paramString = (String)paramMap.get(".sysmsg.brand_username");
     Object localObject = (String)paramMap.get(".sysmsg.revoke_climsgid");
     paramMap = (String)paramMap.get(".sysmsg.replacemsg");
-    bc.aCg();
-    localObject = c.azI().ia(paramString, (String)localObject);
+    bg.aVF();
+    localObject = c.aSQ().iJ(paramString, (String)localObject);
     if ((localObject == null) || (((LinkedList)localObject).isEmpty()))
     {
       AppMethodBeat.o(20316);
@@ -35,43 +35,43 @@ public final class h
     localObject = ((LinkedList)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      final bv localbv = (bv)((Iterator)localObject).next();
-      if ((localbv.eNc & 0x4) != 4)
+      final ca localca = (ca)((Iterator)localObject).next();
+      if ((localca.fqJ & 0x4) != 4)
       {
-        localbv.setContent(paramMap);
-        localbv.setType(10000);
-        bl.a(localbv, parama);
-        bc.aCg();
-        c.azI().a(localbv.field_msgId, localbv);
+        localca.setContent(paramMap);
+        localca.setType(10000);
+        bp.a(localca, parama);
+        bg.aVF();
+        c.aSQ().a(localca.field_msgId, localca);
       }
-      bc.aCg();
-      au localau = c.azL().aVa(paramString);
-      if ((localau != null) && (localau.field_unReadCount > 0))
+      bg.aVF();
+      az localaz = c.aST().bjY(paramString);
+      if ((localaz != null) && (localaz.field_unReadCount > 0))
       {
-        bc.aCg();
-        int i = c.azI().aq(localbv);
-        if (localau.field_unReadCount >= i)
+        bg.aVF();
+        int i = c.aSQ().aB(localca);
+        if (localaz.field_unReadCount >= i)
         {
-          localau.kr(localau.field_unReadCount - 1);
-          bc.aCg();
-          c.azL().a(localau, localau.field_username);
+          localaz.nt(localaz.field_unReadCount - 1);
+          bg.aVF();
+          c.aST().a(localaz, localaz.field_username);
         }
       }
-      if (localbv != null) {
-        g.ajU().aw(new Runnable()
+      if (localca != null) {
+        g.aAk().postToWorker(new Runnable()
         {
           public final void run()
           {
-            AppMethodBeat.i(186355);
-            ae.i("MicroMsg.BizChatSysCmdMsgConsumerHandleRevokeMsg", "[deleteLocalFile] id:%s type:%s", new Object[] { Long.valueOf(localbv.field_msgId), Integer.valueOf(localbv.getType()) });
-            switch (localbv.getType())
+            AppMethodBeat.i(231537);
+            Log.i("MicroMsg.BizChatSysCmdMsgConsumerHandleRevokeMsg", "[deleteLocalFile] id:%s type:%s", new Object[] { Long.valueOf(localca.field_msgId), Integer.valueOf(localca.getType()) });
+            switch (localca.getType())
             {
             }
             for (;;)
             {
-              AppMethodBeat.o(186355);
+              AppMethodBeat.o(231537);
               return;
-              bl.x(localbv);
+              bp.z(localca);
             }
           }
         });
@@ -88,7 +88,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.model.h
  * JD-Core Version:    0.7.0.1
  */

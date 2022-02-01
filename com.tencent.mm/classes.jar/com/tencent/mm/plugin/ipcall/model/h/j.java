@@ -2,43 +2,44 @@ package com.tencent.mm.plugin.ipcall.model.h;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.MStorageEx;
 import com.tencent.mm.storagebase.g;
 import com.tencent.mm.storagebase.g.a;
 import java.util.ArrayList;
 
 public final class j
-  extends com.tencent.mm.sdk.e.j<i>
+  extends MAutoStorage<i>
   implements g.a
 {
   public static final String[] SQL_CREATE;
-  private e db;
-  public n jgK;
+  private ISQLiteDatabase db;
+  public MStorageEx keO;
   
   static
   {
     AppMethodBeat.i(25556);
-    SQL_CREATE = new String[] { com.tencent.mm.sdk.e.j.getCreateSQLs(i.info, "IPCallPopularCountry") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(i.info, "IPCallPopularCountry") };
     AppMethodBeat.o(25556);
   }
   
-  public j(e parame)
+  public j(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, i.info, "IPCallPopularCountry", null);
+    super(paramISQLiteDatabase, i.info, "IPCallPopularCountry", null);
     AppMethodBeat.i(25553);
-    this.jgK = new n()
+    this.keO = new MStorageEx()
     {
-      public final boolean aTg()
+      public final boolean shouldProcessEvent()
       {
         AppMethodBeat.i(25552);
-        if ((j.a(j.this) == null) || (j.a(j.this).fqe()))
+        if ((j.a(j.this) == null) || (j.a(j.this).isClose()))
         {
           if (j.a(j.this) == null) {}
-          for (Object localObject = "null";; localObject = Boolean.valueOf(j.a(j.this).fqe()))
+          for (Object localObject = "null";; localObject = Boolean.valueOf(j.a(j.this).isClose()))
           {
-            ae.w("MicroMsg.IPCallPopularCountryStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
+            Log.w("MicroMsg.IPCallPopularCountryStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
             AppMethodBeat.o(25552);
             return false;
           }
@@ -47,7 +48,7 @@ public final class j
         return true;
       }
     };
-    this.db = parame;
+    this.db = paramISQLiteDatabase;
     AppMethodBeat.o(25553);
   }
   
@@ -57,15 +58,15 @@ public final class j
     return 0;
   }
   
-  public final void al(int paramInt, long paramLong)
+  public final void ar(int paramInt, long paramLong)
   {
     AppMethodBeat.i(25554);
     i locali = new i();
-    Cursor localCursor = this.db.a("IPCallPopularCountry", null, "countryCode=?", new String[] { Integer.toString(paramInt) }, null, null, null, 2);
+    Cursor localCursor = this.db.query("IPCallPopularCountry", null, "countryCode=?", new String[] { Integer.toString(paramInt) }, null, null, null, 2);
     boolean bool;
     if (!localCursor.moveToFirst())
     {
-      ae.i("MicroMsg.IPCallPopularCountryStorage", "get null with countryCode:".concat(String.valueOf(paramInt)));
+      Log.i("MicroMsg.IPCallPopularCountryStorage", "get null with countryCode:".concat(String.valueOf(paramInt)));
       localCursor.close();
       locali.field_countryCode = paramInt;
       locali.field_lastCallTime = paramLong;
@@ -74,7 +75,7 @@ public final class j
     }
     for (;;)
     {
-      ae.i("MicroMsg.IPCallPopularCountryStorage", "updatePopularCountryCode ret:".concat(String.valueOf(bool)));
+      Log.i("MicroMsg.IPCallPopularCountryStorage", "updatePopularCountryCode ret:".concat(String.valueOf(bool)));
       AppMethodBeat.o(25554);
       return;
       locali.convertFrom(localCursor);
@@ -85,13 +86,13 @@ public final class j
     }
   }
   
-  public final ArrayList<Integer> dhg()
+  public final ArrayList<Integer> eba()
   {
     AppMethodBeat.i(25555);
     ArrayList localArrayList = new ArrayList();
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append(" ORDER BY IPCallPopularCountry.callTimeCount DESC,IPCallPopularCountry.lastCallTime DESC");
-    localObject = this.db.a("SELECT IPCallPopularCountry.countryCode,IPCallPopularCountry.callTimeCount,IPCallPopularCountry.lastCallTime FROM IPCallPopularCountry  " + ((StringBuilder)localObject).toString(), null, 2);
+    localObject = this.db.rawQuery("SELECT IPCallPopularCountry.countryCode,IPCallPopularCountry.callTimeCount,IPCallPopularCountry.lastCallTime FROM IPCallPopularCountry  " + ((StringBuilder)localObject).toString(), null, 2);
     if ((localObject != null) && (((Cursor)localObject).moveToFirst()))
     {
       new ArrayList();

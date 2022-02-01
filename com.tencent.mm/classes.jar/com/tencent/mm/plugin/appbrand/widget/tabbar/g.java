@@ -4,50 +4,50 @@ import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.modelappbrand.a.b;
 import com.tencent.mm.modelappbrand.a.b.k;
-import com.tencent.mm.plugin.appbrand.r;
+import com.tencent.mm.plugin.appbrand.s;
 
 public final class g
   extends d
 {
-  public g(String paramString, c paramc, r paramr)
+  public g(String paramString, c paramc, s params)
   {
-    super(paramString, paramc, paramr);
+    super(paramString, paramc, params);
   }
   
-  public final void bGG()
+  public final void cdf()
   {
     AppMethodBeat.i(135546);
-    if (this.nva != null) {
-      b.aEl().a(new b.k()
+    if (this.oFe != null) {
+      b.aXY().a(new b.k()
       {
-        public final String BN()
-        {
-          return g.this.nva;
-        }
-        
-        public final void F(Bitmap paramAnonymousBitmap)
+        public final void I(Bitmap paramAnonymousBitmap)
         {
           AppMethodBeat.i(135544);
-          g.this.S(paramAnonymousBitmap);
+          g.this.X(paramAnonymousBitmap);
           AppMethodBeat.o(135544);
         }
         
-        public final void aEt() {}
+        public final String Lb()
+        {
+          return g.this.oFe;
+        }
         
-        public final void ox()
+        public final void aYg() {}
+        
+        public final void oD()
         {
           AppMethodBeat.i(135545);
-          g.this.nvb.a("Failed to load icon via network", g.this);
+          g.this.oFf.a("Failed to load icon via network", g.this);
           AppMethodBeat.o(135545);
         }
-      }, this.nva, null);
+      }, this.oFe, null);
     }
     AppMethodBeat.o(135546);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.tabbar.g
  * JD-Core Version:    0.7.0.1
  */

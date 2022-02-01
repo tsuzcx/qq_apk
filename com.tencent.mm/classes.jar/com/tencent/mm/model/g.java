@@ -4,15 +4,15 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.al.a.c;
 import com.tencent.mm.al.a.d;
 import com.tencent.mm.al.ag;
-import com.tencent.mm.api.j;
+import com.tencent.mm.api.k;
 
 public final class g
-  implements j
+  implements k
 {
-  public final c bd(long paramLong)
+  public final c bs(long paramLong)
   {
     AppMethodBeat.i(123953);
-    c localc = ag.aGr().bd(paramLong);
+    c localc = ag.baj().bs(paramLong);
     AppMethodBeat.o(123953);
     return localc;
   }

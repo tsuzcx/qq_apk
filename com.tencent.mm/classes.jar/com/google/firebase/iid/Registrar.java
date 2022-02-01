@@ -19,32 +19,21 @@ public final class Registrar
   public final List<com.google.firebase.components.a<?>> getComponents()
   {
     AppMethodBeat.i(4148);
-    Object localObject = com.google.firebase.components.a.x(FirebaseInstanceId.class).a(f.z(com.google.firebase.a.class)).a(g.bLi);
+    Object localObject = com.google.firebase.components.a.z(FirebaseInstanceId.class).a(f.B(com.google.firebase.a.class)).a(g.bLy);
     if (((a.a)localObject).zzad == 0) {}
     for (boolean bool = true;; bool = false)
     {
       r.b(bool, "Instantiation type has already been set.");
       ((a.a)localObject).zzad = 1;
-      localObject = Arrays.asList(new com.google.firebase.components.a[] { ((a.a)localObject).xR(), com.google.firebase.components.a.x(com.google.firebase.iid.a.a.class).a(f.z(FirebaseInstanceId.class)).a(h.bLi).xR() });
+      localObject = Arrays.asList(new com.google.firebase.components.a[] { ((a.a)localObject).xZ(), com.google.firebase.components.a.z(com.google.firebase.iid.a.a.class).a(f.B(FirebaseInstanceId.class)).a(h.bLy).xZ() });
       AppMethodBeat.o(4148);
       return localObject;
-    }
-  }
-  
-  static final class a
-    implements com.google.firebase.iid.a.a
-  {
-    private final FirebaseInstanceId bLb;
-    
-    public a(FirebaseInstanceId paramFirebaseInstanceId)
-    {
-      this.bLb = paramFirebaseInstanceId;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.firebase.iid.Registrar
  * JD-Core Version:    0.7.0.1
  */

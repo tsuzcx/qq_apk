@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.appbrand.jsapi.autofill;
 
 import android.content.Intent;
-import com.tencent.luggage.h.e.b;
+import com.tencent.luggage.h.f.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.a;
-import com.tencent.mm.plugin.appbrand.jsapi.m;
-import com.tencent.mm.plugin.appbrand.page.z;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.p;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
 
 public final class f
-  extends a<z>
+  extends d<ac>
 {
   public static final int CTRL_INDEX = 402;
   public static final String NAME = "openRealnameAuth";

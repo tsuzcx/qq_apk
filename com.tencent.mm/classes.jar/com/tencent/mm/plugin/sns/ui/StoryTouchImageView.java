@@ -13,7 +13,7 @@ import com.tencent.mm.plugin.story.api.n;
 public class StoryTouchImageView
   extends TouchImageView
 {
-  i AGW;
+  i EQN;
   
   public StoryTouchImageView(Context paramContext)
   {
@@ -24,10 +24,10 @@ public class StoryTouchImageView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(99695);
-    this.AGW = null;
-    this.AGW = ((e)g.ad(e.class)).getStoryUIFactory().gy(paramContext);
-    this.AGW.aZ(this);
-    this.AGW.setOnClickListener(this.AGW.ekD());
+    this.EQN = null;
+    this.EQN = ((e)g.ah(e.class)).getStoryUIFactory().hj(paramContext);
+    this.EQN.ba(this);
+    this.EQN.setOnClickListener(this.EQN.fne());
     setLayerType(1, null);
     AppMethodBeat.o(99695);
   }
@@ -36,30 +36,30 @@ public class StoryTouchImageView
   {
     AppMethodBeat.i(99696);
     super.onDraw(paramCanvas);
-    this.AGW.a(paramCanvas, true, 0);
+    this.EQN.a(paramCanvas, true, 0);
     AppMethodBeat.o(99696);
   }
   
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(99697);
-    super.setOnClickListener(this.AGW.ekD());
-    this.AGW.setOnClickListener(paramOnClickListener);
+    super.setOnClickListener(this.EQN.fne());
+    this.EQN.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(99697);
   }
   
   public void setShowStoryHint(boolean paramBoolean)
   {
     AppMethodBeat.i(99698);
-    this.AGW.setShowStoryHint(paramBoolean);
+    this.EQN.setShowStoryHint(paramBoolean);
     AppMethodBeat.o(99698);
   }
   
   public final void setUserNameAndPageNumber$505cff1c(String paramString)
   {
-    AppMethodBeat.i(224110);
-    this.AGW.fn(paramString, 1);
-    AppMethodBeat.o(224110);
+    AppMethodBeat.i(258602);
+    this.EQN.fL(paramString, 1);
+    AppMethodBeat.o(258602);
   }
 }
 

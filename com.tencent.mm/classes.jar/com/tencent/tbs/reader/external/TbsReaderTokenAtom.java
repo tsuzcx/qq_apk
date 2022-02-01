@@ -19,14 +19,14 @@ public class TbsReaderTokenAtom
   
   public int init(Object paramObject)
   {
-    AppMethodBeat.i(192415);
+    AppMethodBeat.i(187998);
     if (this.a != null)
     {
       int i = this.a.init(paramObject);
-      AppMethodBeat.o(192415);
+      AppMethodBeat.o(187998);
       return i;
     }
-    AppMethodBeat.o(192415);
+    AppMethodBeat.o(187998);
     return -1;
   }
 }

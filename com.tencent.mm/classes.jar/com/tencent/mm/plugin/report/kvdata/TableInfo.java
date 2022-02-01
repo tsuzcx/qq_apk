@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.report.kvdata;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 
 public class TableInfo
   extends com.tencent.mm.bw.a
@@ -14,7 +14,7 @@ public class TableInfo
     AppMethodBeat.i(151540);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.name_ == null)
       {
         paramVarArgs = new b("Not all required fields were included: name_");
@@ -22,9 +22,9 @@ public class TableInfo
         throw paramVarArgs;
       }
       if (this.name_ != null) {
-        paramVarArgs.d(1, this.name_);
+        paramVarArgs.e(1, this.name_);
       }
-      paramVarArgs.aZ(2, this.count_);
+      paramVarArgs.bb(2, this.count_);
       AppMethodBeat.o(151540);
       return 0;
     }
@@ -34,17 +34,17 @@ public class TableInfo
       }
     }
     label306:
-    for (paramInt = f.a.a.b.b.a.e(1, this.name_) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.name_) + 0;; paramInt = 0)
     {
-      int i = f.a.a.b.b.a.p(2, this.count_);
+      int i = g.a.a.b.b.a.r(2, this.count_);
       AppMethodBeat.o(151540);
       return paramInt + i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         if (this.name_ == null)
@@ -58,7 +58,7 @@ public class TableInfo
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         TableInfo localTableInfo = (TableInfo)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -66,11 +66,11 @@ public class TableInfo
           AppMethodBeat.o(151540);
           return -1;
         case 1: 
-          localTableInfo.name_ = locala.OmT.readString();
+          localTableInfo.name_ = locala.UbS.readString();
           AppMethodBeat.o(151540);
           return 0;
         }
-        localTableInfo.count_ = locala.OmT.zd();
+        localTableInfo.count_ = locala.UbS.zl();
         AppMethodBeat.o(151540);
         return 0;
       }

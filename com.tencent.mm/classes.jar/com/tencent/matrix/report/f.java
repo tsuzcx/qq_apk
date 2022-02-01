@@ -2,78 +2,80 @@ package com.tencent.matrix.report;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.b.a.a;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.expt.b.b.a;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.sqlitelint.SQLiteLintPlugin;
-import d.g.b.p;
-import d.n.n;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Iterator;
+import kotlin.g.b.p;
+import kotlin.n.n;
 import org.json.JSONObject;
 
 public final class f
 {
-  private int cFL = 17108;
-  private int cFM = 19999;
-  private int cFN = 20841;
-  private int cFO = 21019;
+  private int cWj = 17108;
+  private int cWk = 19999;
+  private int cWl = 20841;
+  private int cWm = 21019;
   
-  private static int dZ(String paramString)
+  private static int eJ(String paramString)
   {
-    if (paramString.equalsIgnoreCase("com.tencent.mm")) {
+    if (paramString.equalsIgnoreCase(MMApplicationContext.getApplicationId())) {
       return 1033;
     }
-    if (paramString.equalsIgnoreCase("com.tencent.mm:tools")) {
+    if (paramString.equalsIgnoreCase(MMApplicationContext.getApplicationId() + ":tools")) {
       return 1187;
     }
-    if (paramString.equalsIgnoreCase("com.tencent.mm:toolsmp")) {
+    if (paramString.equalsIgnoreCase(MMApplicationContext.getApplicationId() + ":toolsmp")) {
       return 1188;
     }
-    if (paramString.equalsIgnoreCase("com.tencent.mm:push")) {
+    if (paramString.equalsIgnoreCase(MMApplicationContext.getApplicationId() + ":push")) {
       return 1189;
     }
-    if (paramString.startsWith("com.tencent.mm:appbrand")) {
+    if (paramString.startsWith(MMApplicationContext.getApplicationId() + ":appbrand")) {
       return 1190;
     }
     return 1191;
   }
   
-  private static int ea(String paramString)
+  private static int eK(String paramString)
   {
-    if (paramString.equalsIgnoreCase("com.tencent.mm")) {
+    if (paramString.equalsIgnoreCase(MMApplicationContext.getApplicationId())) {
       return 1192;
     }
-    if (paramString.equalsIgnoreCase("com.tencent.mm:tools")) {
+    if (paramString.equalsIgnoreCase(MMApplicationContext.getApplicationId() + ":tools")) {
       return 1193;
     }
     return 1191;
   }
   
-  public final void d(String paramString, JSONObject paramJSONObject)
+  public final void g(String paramString, JSONObject paramJSONObject)
   {
     Object localObject3;
     Object localObject1;
-    Object localObject2;
     for (;;)
     {
       try
       {
         localObject3 = paramJSONObject.getString("process");
-        ae.i("MatrixIdKeyReporter", "[report] tag:%s processName:%s", new Object[] { paramString, localObject3 });
-        if (!com.tencent.matrix.b.HS())
+        Log.i("MatrixIdKeyReporter", "[report] tag:%s processName:%s", new Object[] { paramString, localObject3 });
+        if (!com.tencent.matrix.b.isInstalled())
         {
-          ae.i("MatrixIdKeyReporter", "matrix not installed");
+          Log.i("MatrixIdKeyReporter", "matrix not installed");
           return;
         }
         localObject1 = null;
         if (paramString != null)
         {
           if (paramString.startsWith("Trace")) {
-            localObject1 = com.tencent.matrix.b.HT().V(com.tencent.matrix.trace.a.class);
+            localObject1 = com.tencent.matrix.b.RG().Y(com.tencent.matrix.trace.a.class);
           }
         }
         else
@@ -81,16 +83,16 @@ public final class f
           if (localObject1 != null) {
             break;
           }
-          ae.e("MatrixIdKeyReporter", "plugin is null");
+          Log.e("MatrixIdKeyReporter", "plugin is null");
           return;
         }
       }
       catch (Exception paramString)
       {
-        ae.printErrStackTrace("MatrixIdKeyReporter", paramString, "data:%s", new Object[] { paramJSONObject.toString() });
+        Log.printErrStackTrace("MatrixIdKeyReporter", paramString, "data:%s", new Object[] { paramJSONObject.toString() });
         return;
       }
-      localObject2 = com.tencent.matrix.b.HT().cBJ.iterator();
+      localObject2 = com.tencent.matrix.b.RG().cqP.iterator();
       do
       {
         if (!((Iterator)localObject2).hasNext()) {
@@ -99,169 +101,180 @@ public final class f
         localObject1 = (com.tencent.matrix.e.b)((Iterator)localObject2).next();
       } while (!((com.tencent.matrix.e.b)localObject1).getTag().equals(paramString));
     }
-    boolean bool;
+    Object localObject2 = "";
     Object localObject4;
+    boolean bool;
     Object localObject5;
+    Object localObject6;
     int j;
     int k;
     int i;
     if ((localObject1 instanceof com.tencent.matrix.trace.a))
     {
-      localObject1 = paramJSONObject.getString("tag");
-      ae.i("MatrixIdKeyReporter", "[report] _tag:%s", new Object[] { localObject1 });
-      if (((String)localObject1).equalsIgnoreCase("Trace_EvilMethod"))
+      localObject4 = paramJSONObject.getString("tag");
+      Log.i("MatrixIdKeyReporter", "[report] _tag:%s", new Object[] { localObject4 });
+      if (((String)localObject4).equalsIgnoreCase("Trace_EvilMethod"))
       {
         localObject2 = paramJSONObject.getString("detail");
-        if (((String)localObject2).equalsIgnoreCase(a.a.cKw.toString()))
+        if (((String)localObject2).equalsIgnoreCase(a.a.daU.toString()))
         {
           bool = paramJSONObject.getBoolean("isProcessForeground");
           localObject4 = paramJSONObject.getString("stackKey");
           localObject5 = paramJSONObject.getString("threadStack");
           localObject1 = paramJSONObject.getString("scene");
-          g localg = g.yxI;
-          j = this.cFL;
-          k = d.FFH;
+          localObject6 = h.CyF;
+          j = this.cWj;
+          k = d.KyO;
           if (!bool) {
-            break label3222;
+            break label3320;
           }
           i = 1;
-          label270:
-          localg.f(j, new Object[] { paramString, Integer.valueOf(k), localObject2, localObject4, localObject1, localObject5, localObject3, Integer.valueOf(i) });
-          localg = g.yxI;
-          j = this.cFM;
-          k = d.FFH;
+          label274:
+          ((h)localObject6).a(j, new Object[] { paramString, Integer.valueOf(k), localObject2, localObject4, localObject1, localObject5, localObject3, Integer.valueOf(i) });
+          localObject6 = h.CyF;
+          j = this.cWk;
+          k = d.KyO;
           if (!bool) {
-            break label3228;
+            break label3326;
           }
           i = 1;
-          label353:
-          localg.f(j, new Object[] { Integer.valueOf(k), localObject2, localObject4, localObject1, localObject5, localObject3, Integer.valueOf(i) });
+          label357:
+          ((h)localObject6).a(j, new Object[] { Integer.valueOf(k), localObject2, localObject4, localObject1, localObject5, localObject3, Integer.valueOf(i) });
           if (bool) {
-            com.tencent.mm.plugin.report.e.ywz.idkeyStat(dZ((String)localObject3), 1L, 1L, true);
+            com.tencent.mm.plugin.report.e.Cxv.idkeyStat(eJ((String)localObject3), 1L, 1L, true);
           }
-          com.tencent.mm.plugin.report.e.ywz.idkeyStat(dZ((String)localObject3), 0L, 1L, true);
-          localObject3 = e.cFK;
+          com.tencent.mm.plugin.report.e.Cxv.idkeyStat(eJ((String)localObject3), 0L, 1L, true);
+          localObject3 = e.cWi;
           p.h(localObject1, "scene");
-          if (!e.dU((String)localObject1)) {
-            break label3212;
+          if (!e.eE((String)localObject1)) {
+            break label3310;
           }
-          g.yxI.n(1343L, 100L, 1L);
-          break label3212;
+          h.CyF.n(1343L, 100L, 1L);
+          break label3310;
         }
       }
     }
-    label478:
+    label482:
     long l;
     for (;;)
     {
       if ((i == 0) && (!paramString.equalsIgnoreCase("io")) && (!paramString.equalsIgnoreCase("sqlitelint")) && (!paramString.equalsIgnoreCase("battery")))
       {
-        g.yxI.f(this.cFL, new Object[] { paramString, Integer.valueOf(d.FFH), localObject1 });
+        h.CyF.a(this.cWj, new Object[] { paramString, Integer.valueOf(d.KyO), localObject1 });
         return;
-        if (((String)localObject2).equalsIgnoreCase(a.a.cKv.toString()))
+        if (((String)localObject2).equalsIgnoreCase(a.a.daT.toString()))
         {
           localObject1 = paramJSONObject.getString("stackKey");
           localObject4 = paramJSONObject.getString("scene");
-          com.tencent.mm.plugin.report.e.ywz.idkeyStat(dZ((String)localObject3), 21L, 1L, true);
-          g.yxI.f(this.cFL, new Object[] { paramString, Integer.valueOf(d.FFH), localObject2, localObject1, localObject4, "null", localObject3 });
+          com.tencent.mm.plugin.report.e.Cxv.idkeyStat(eJ((String)localObject3), 21L, 1L, true);
+          h.CyF.a(this.cWj, new Object[] { paramString, Integer.valueOf(d.KyO), localObject2, localObject1, localObject4, "null", localObject3 });
           i = 1;
           localObject1 = localObject2;
         }
         else
         {
           localObject1 = localObject2;
-          if (!((String)localObject2).equalsIgnoreCase(a.a.cKy.toString())) {
-            break label3389;
+          if (!((String)localObject2).equalsIgnoreCase(a.a.daW.toString())) {
+            break label3494;
           }
           localObject1 = paramJSONObject.getString("scene");
-          if (!((String)localObject1).contains("Finder")) {
-            break label3234;
+          if (((String)localObject1).contains("Finder")) {
+            break label3332;
           }
-          localObject3 = paramJSONObject.getString("threadStack");
+          if (!((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.son, false)) {
+            break label3348;
+          }
+          break label3332;
+          label717:
+          if (i == 0) {
+            break label3338;
+          }
+          localObject4 = paramJSONObject.getString("threadStack");
           bool = paramJSONObject.getBoolean("isProcessForeground");
-          g.yxI.f(this.cFN, new Object[] { localObject1, localObject3, Boolean.valueOf(bool) });
-          break label3234;
-          if (((String)localObject1).equalsIgnoreCase("Trace_StartUp"))
+          h.CyF.a(this.cWl, new Object[] { localObject1, localObject4, Boolean.valueOf(bool), Integer.valueOf(0), Integer.valueOf(0), localObject3 });
+          break label3338;
+          if (((String)localObject4).equalsIgnoreCase("Trace_StartUp"))
           {
             l = paramJSONObject.getLong("startup_duration");
             bool = paramJSONObject.getBoolean("is_warm_start_up");
-            ae.i("MatrixIdKeyReporter", "[startup] duration=%s isWarmStartUp=%s", new Object[] { Long.valueOf(l), Boolean.valueOf(bool) });
+            Log.i("MatrixIdKeyReporter", "[startup] duration=%s isWarmStartUp=%s", new Object[] { Long.valueOf(l), Boolean.valueOf(bool) });
             localObject1 = new ArrayList();
-            localObject2 = new IDKey();
-            ((IDKey)localObject2).SetID(ea((String)localObject3));
+            localObject4 = new IDKey();
+            ((IDKey)localObject4).SetID(eK((String)localObject3));
             if (!bool) {
-              break label3244;
+              break label3354;
             }
             i = 3;
-            label830:
-            ((IDKey)localObject2).SetKey(i);
-            ((IDKey)localObject2).SetValue(1L);
-            ((ArrayList)localObject1).add(localObject2);
-            localObject2 = new IDKey();
-            ((IDKey)localObject2).SetID(ea((String)localObject3));
+            label886:
+            ((IDKey)localObject4).SetKey(i);
+            ((IDKey)localObject4).SetValue(1L);
+            ((ArrayList)localObject1).add(localObject4);
+            localObject4 = new IDKey();
+            ((IDKey)localObject4).SetID(eK((String)localObject3));
             if (!bool) {
-              break label3250;
+              break label3360;
             }
             i = 4;
-            label878:
-            ((IDKey)localObject2).SetKey(i);
-            ((IDKey)localObject2).SetValue(l);
-            ((ArrayList)localObject1).add(localObject2);
-            localObject2 = new IDKey();
-            ((IDKey)localObject2).SetID(ea((String)localObject3));
-            ((IDKey)localObject2).SetValue(1L);
-            ((ArrayList)localObject1).add(localObject2);
+            label934:
+            ((IDKey)localObject4).SetKey(i);
+            ((IDKey)localObject4).SetValue(l);
+            ((ArrayList)localObject1).add(localObject4);
+            localObject4 = new IDKey();
+            ((IDKey)localObject4).SetID(eK((String)localObject3));
+            ((IDKey)localObject4).SetValue(1L);
+            ((ArrayList)localObject1).add(localObject4);
             if (l > 3000L) {
-              break label3263;
+              break label3373;
             }
             j = 1;
             if (!bool) {
-              break label3256;
+              break label3366;
             }
             i = 11;
-            label954:
-            ((IDKey)localObject2).SetKey(i);
+            label1010:
+            ((IDKey)localObject4).SetKey(i);
             i = j;
             for (;;)
             {
-              com.tencent.mm.plugin.report.e.ywz.b((ArrayList)localObject1, true);
-              com.tencent.mm.plugin.report.e.ywz.f(this.cFO, new Object[] { Boolean.valueOf(bool), Long.valueOf(l), Integer.valueOf(i), localObject3 });
+              com.tencent.mm.plugin.report.e.Cxv.b((ArrayList)localObject1, true);
+              com.tencent.mm.plugin.report.e.Cxv.a(this.cWm, new Object[] { Boolean.valueOf(bool), Long.valueOf(l), Integer.valueOf(i), localObject3 });
               i = 0;
-              localObject1 = "";
+              localObject1 = localObject2;
               break;
-              label1028:
-              ((IDKey)localObject2).SetKey(i);
+              label1083:
+              ((IDKey)localObject4).SetKey(i);
               i = j;
               continue;
-              label1042:
-              ((IDKey)localObject2).SetKey(i);
+              label1097:
+              ((IDKey)localObject4).SetKey(i);
               i = j;
               continue;
-              label1056:
-              ((IDKey)localObject2).SetKey(i);
+              label1111:
+              ((IDKey)localObject4).SetKey(i);
               i = j;
               continue;
-              label1070:
-              ((IDKey)localObject2).SetKey(i);
+              label1125:
+              ((IDKey)localObject4).SetKey(i);
               i = j;
             }
           }
-          if (!((String)localObject1).equalsIgnoreCase("Trace_FPS")) {
-            break label3384;
+          localObject1 = localObject2;
+          if (!((String)localObject4).equalsIgnoreCase("Trace_FPS")) {
+            break label3494;
           }
           localObject1 = paramJSONObject.getString("scene");
-          localObject2 = e.cFK;
+          localObject4 = e.cWi;
           p.h(localObject1, "scene");
           p.h(paramJSONObject, "content");
           p.h(localObject1, "scene");
-          if ((e.dT((String)localObject1)) || (e.dU((String)localObject1)) || (e.dW((String)localObject1))) {
-            break label3378;
+          if ((e.eD((String)localObject1)) || (e.eE((String)localObject1)) || (e.eG((String)localObject1))) {
+            break label3488;
           }
-          if (!e.dV((String)localObject1)) {
-            break label3395;
+          if (!e.eF((String)localObject1)) {
+            break label3500;
           }
-          break label3378;
-          label1164:
+          break label3488;
+          label1223:
           double d;
           int m;
           int n;
@@ -269,225 +282,226 @@ public final class f
           if (i != 0)
           {
             d = paramJSONObject.getDouble("fps");
-            localObject2 = paramJSONObject.getString("machine");
-            p.g(localObject2, "content.getString(DeviceUtil.DEVICE_MACHINE)");
-            localObject4 = paramJSONObject.getJSONObject("dropLevel");
-            p.g(localObject4, "content.getJSONObject(Sh…ginInfo.ISSUE_DROP_LEVEL)");
-            ((JSONObject)localObject4).getInt("DROPPED_BEST");
-            j = ((JSONObject)localObject4).getInt("DROPPED_NORMAL");
-            k = ((JSONObject)localObject4).getInt("DROPPED_MIDDLE");
-            m = ((JSONObject)localObject4).getInt("DROPPED_HIGH");
-            n = ((JSONObject)localObject4).getInt("DROPPED_FROZEN");
+            localObject4 = paramJSONObject.getString("machine");
+            p.g(localObject4, "content.getString(DeviceUtil.DEVICE_MACHINE)");
+            localObject5 = paramJSONObject.getJSONObject("dropLevel");
+            p.g(localObject5, "content.getJSONObject(Sh…ginInfo.ISSUE_DROP_LEVEL)");
+            ((JSONObject)localObject5).getInt("DROPPED_BEST");
+            j = ((JSONObject)localObject5).getInt("DROPPED_NORMAL");
+            k = ((JSONObject)localObject5).getInt("DROPPED_MIDDLE");
+            m = ((JSONObject)localObject5).getInt("DROPPED_HIGH");
+            n = ((JSONObject)localObject5).getInt("DROPPED_FROZEN");
             i = j + k + m + n;
             f = 1.0F * j / i + 14.0F * k / i + 25.0F * m / i + 60.0F * n / i;
-            localObject4 = new ArrayList();
+            localObject5 = new ArrayList();
             p.h(localObject1, "scene");
-            if (!n.f((CharSequence)localObject1, (CharSequence)"FinderHomeUI")) {
-              break label2312;
+            if (!n.e((CharSequence)localObject1, (CharSequence)"FinderHomeUI")) {
+              break label2375;
             }
-            localObject5 = new IDKey();
-            ((IDKey)localObject5).SetID(1343);
-            ((IDKey)localObject5).SetKey(e.dX((String)localObject2) + 0);
-            ((IDKey)localObject5).SetValue(d);
-            ((ArrayList)localObject4).add(localObject5);
-            localObject5 = new IDKey();
-            ((IDKey)localObject5).SetID(1343);
-            ((IDKey)localObject5).SetKey(e.dX((String)localObject2) + 1);
-            ((IDKey)localObject5).SetValue(f);
-            ((ArrayList)localObject4).add(localObject5);
-            localObject5 = new IDKey();
-            ((IDKey)localObject5).SetID(1343);
-            ((IDKey)localObject5).SetKey(e.dX((String)localObject2) + 4);
-            ((IDKey)localObject5).SetValue(1L);
-            ((ArrayList)localObject4).add(localObject5);
-            label1485:
-            if (((Collection)localObject4).isEmpty()) {
-              break label3401;
+            localObject6 = new IDKey();
+            ((IDKey)localObject6).SetID(1343);
+            ((IDKey)localObject6).SetKey(e.eH((String)localObject4) + 0);
+            ((IDKey)localObject6).SetValue(d);
+            ((ArrayList)localObject5).add(localObject6);
+            localObject6 = new IDKey();
+            ((IDKey)localObject6).SetID(1343);
+            ((IDKey)localObject6).SetKey(e.eH((String)localObject4) + 1);
+            ((IDKey)localObject6).SetValue(f);
+            ((ArrayList)localObject5).add(localObject6);
+            localObject6 = new IDKey();
+            ((IDKey)localObject6).SetID(1343);
+            ((IDKey)localObject6).SetKey(e.eH((String)localObject4) + 4);
+            ((IDKey)localObject6).SetValue(1L);
+            ((ArrayList)localObject5).add(localObject6);
+            label1544:
+            if (((Collection)localObject5).isEmpty()) {
+              break label3506;
             }
             i = 1;
-            label1501:
+            label1560:
             if (i != 0)
             {
-              g.yxI.b((ArrayList)localObject4, false);
-              g.yxI.f(19508, new Object[] { Long.valueOf(d), localObject2, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Float.valueOf(f) });
+              h.CyF.b((ArrayList)localObject5, false);
+              h.CyF.a(19508, new Object[] { Long.valueOf(d), localObject4, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(m), Integer.valueOf(n), Float.valueOf(f) });
             }
           }
           i = -1;
           if (((String)localObject1).endsWith("SnsTimeLineUI")) {
             i = 0;
           }
-          label2312:
+          label2375:
           for (;;)
           {
-            label1600:
+            label1659:
             if (i >= 0)
             {
               d = paramJSONObject.getDouble("fps");
-              localObject2 = paramJSONObject.getJSONObject("dropLevel");
-              j = ((JSONObject)localObject2).getInt("DROPPED_BEST");
-              k = ((JSONObject)localObject2).getInt("DROPPED_NORMAL");
-              m = ((JSONObject)localObject2).getInt("DROPPED_MIDDLE");
-              n = ((JSONObject)localObject2).getInt("DROPPED_HIGH");
-              int i1 = ((JSONObject)localObject2).getInt("DROPPED_FROZEN");
-              ae.i("MatrixIdKeyReporter", "[getKeyOffset] scene:%s fps:%s offset:%s", new Object[] { localObject1, Double.valueOf(d), Integer.valueOf(i) });
+              localObject4 = paramJSONObject.getJSONObject("dropLevel");
+              j = ((JSONObject)localObject4).getInt("DROPPED_BEST");
+              k = ((JSONObject)localObject4).getInt("DROPPED_NORMAL");
+              m = ((JSONObject)localObject4).getInt("DROPPED_MIDDLE");
+              n = ((JSONObject)localObject4).getInt("DROPPED_HIGH");
+              int i1 = ((JSONObject)localObject4).getInt("DROPPED_FROZEN");
+              Log.i("MatrixIdKeyReporter", "[getKeyOffset] scene:%s fps:%s offset:%s", new Object[] { localObject1, Double.valueOf(d), Integer.valueOf(i) });
               localObject1 = new ArrayList();
-              localObject2 = new IDKey();
-              ((IDKey)localObject2).SetID(dZ((String)localObject3));
-              ((IDKey)localObject2).SetKey(i + 47);
-              ((IDKey)localObject2).SetValue(1L);
-              ((ArrayList)localObject1).add(localObject2);
-              localObject2 = new IDKey();
-              ((IDKey)localObject2).SetID(dZ((String)localObject3));
-              ((IDKey)localObject2).SetKey(i + 48);
-              ((IDKey)localObject2).SetValue(d);
-              if (((IDKey)localObject2).GetValue() > 0L) {
-                ((ArrayList)localObject1).add(localObject2);
+              localObject4 = new IDKey();
+              ((IDKey)localObject4).SetID(eJ((String)localObject3));
+              ((IDKey)localObject4).SetKey(i + 47);
+              ((IDKey)localObject4).SetValue(1L);
+              ((ArrayList)localObject1).add(localObject4);
+              localObject4 = new IDKey();
+              ((IDKey)localObject4).SetID(eJ((String)localObject3));
+              ((IDKey)localObject4).SetKey(i + 48);
+              ((IDKey)localObject4).SetValue(d);
+              if (((IDKey)localObject4).GetValue() > 0L) {
+                ((ArrayList)localObject1).add(localObject4);
               }
-              localObject2 = new IDKey();
-              ((IDKey)localObject2).SetID(dZ((String)localObject3));
-              ((IDKey)localObject2).SetKey(i + 49);
-              ((IDKey)localObject2).SetValue(j);
-              if (((IDKey)localObject2).GetValue() > 0L)
+              localObject4 = new IDKey();
+              ((IDKey)localObject4).SetID(eJ((String)localObject3));
+              ((IDKey)localObject4).SetKey(i + 49);
+              ((IDKey)localObject4).SetValue(j);
+              if (((IDKey)localObject4).GetValue() > 0L)
               {
-                ((ArrayList)localObject1).add(localObject2);
-                localObject2 = new IDKey();
-                ((IDKey)localObject2).SetID(dZ((String)localObject3));
-                ((IDKey)localObject2).SetKey(i + 54);
-                ((IDKey)localObject2).SetValue(1L);
-                ((ArrayList)localObject1).add(localObject2);
+                ((ArrayList)localObject1).add(localObject4);
+                localObject4 = new IDKey();
+                ((IDKey)localObject4).SetID(eJ((String)localObject3));
+                ((IDKey)localObject4).SetKey(i + 54);
+                ((IDKey)localObject4).SetValue(1L);
+                ((ArrayList)localObject1).add(localObject4);
               }
-              localObject2 = new IDKey();
-              ((IDKey)localObject2).SetID(dZ((String)localObject3));
-              ((IDKey)localObject2).SetKey(i + 50);
-              ((IDKey)localObject2).SetValue(k);
-              if (((IDKey)localObject2).GetValue() > 0L)
+              localObject4 = new IDKey();
+              ((IDKey)localObject4).SetID(eJ((String)localObject3));
+              ((IDKey)localObject4).SetKey(i + 50);
+              ((IDKey)localObject4).SetValue(k);
+              if (((IDKey)localObject4).GetValue() > 0L)
               {
-                ((ArrayList)localObject1).add(localObject2);
-                localObject2 = new IDKey();
-                ((IDKey)localObject2).SetID(dZ((String)localObject3));
-                ((IDKey)localObject2).SetKey(i + 55);
-                ((IDKey)localObject2).SetValue(1L);
-                ((ArrayList)localObject1).add(localObject2);
+                ((ArrayList)localObject1).add(localObject4);
+                localObject4 = new IDKey();
+                ((IDKey)localObject4).SetID(eJ((String)localObject3));
+                ((IDKey)localObject4).SetKey(i + 55);
+                ((IDKey)localObject4).SetValue(1L);
+                ((ArrayList)localObject1).add(localObject4);
               }
-              localObject2 = new IDKey();
-              ((IDKey)localObject2).SetID(dZ((String)localObject3));
-              ((IDKey)localObject2).SetKey(i + 51);
-              ((IDKey)localObject2).SetValue(m);
-              if (((IDKey)localObject2).GetValue() > 0L)
+              localObject4 = new IDKey();
+              ((IDKey)localObject4).SetID(eJ((String)localObject3));
+              ((IDKey)localObject4).SetKey(i + 51);
+              ((IDKey)localObject4).SetValue(m);
+              if (((IDKey)localObject4).GetValue() > 0L)
               {
-                ((ArrayList)localObject1).add(localObject2);
-                localObject2 = new IDKey();
-                ((IDKey)localObject2).SetID(dZ((String)localObject3));
-                ((IDKey)localObject2).SetKey(i + 56);
-                ((IDKey)localObject2).SetValue(1L);
-                ((ArrayList)localObject1).add(localObject2);
+                ((ArrayList)localObject1).add(localObject4);
+                localObject4 = new IDKey();
+                ((IDKey)localObject4).SetID(eJ((String)localObject3));
+                ((IDKey)localObject4).SetKey(i + 56);
+                ((IDKey)localObject4).SetValue(1L);
+                ((ArrayList)localObject1).add(localObject4);
               }
-              localObject2 = new IDKey();
-              ((IDKey)localObject2).SetID(dZ((String)localObject3));
-              ((IDKey)localObject2).SetKey(i + 52);
-              ((IDKey)localObject2).SetValue(n);
-              if (((IDKey)localObject2).GetValue() > 0L)
+              localObject4 = new IDKey();
+              ((IDKey)localObject4).SetID(eJ((String)localObject3));
+              ((IDKey)localObject4).SetKey(i + 52);
+              ((IDKey)localObject4).SetValue(n);
+              if (((IDKey)localObject4).GetValue() > 0L)
               {
-                ((ArrayList)localObject1).add(localObject2);
-                localObject2 = new IDKey();
-                ((IDKey)localObject2).SetID(dZ((String)localObject3));
-                ((IDKey)localObject2).SetKey(i + 57);
-                ((IDKey)localObject2).SetValue(1L);
-                ((ArrayList)localObject1).add(localObject2);
+                ((ArrayList)localObject1).add(localObject4);
+                localObject4 = new IDKey();
+                ((IDKey)localObject4).SetID(eJ((String)localObject3));
+                ((IDKey)localObject4).SetKey(i + 57);
+                ((IDKey)localObject4).SetValue(1L);
+                ((ArrayList)localObject1).add(localObject4);
               }
-              localObject2 = new IDKey();
-              ((IDKey)localObject2).SetID(dZ((String)localObject3));
-              ((IDKey)localObject2).SetKey(i + 53);
-              ((IDKey)localObject2).SetValue(i1);
-              if (((IDKey)localObject2).GetValue() > 0L)
+              localObject4 = new IDKey();
+              ((IDKey)localObject4).SetID(eJ((String)localObject3));
+              ((IDKey)localObject4).SetKey(i + 53);
+              ((IDKey)localObject4).SetValue(i1);
+              if (((IDKey)localObject4).GetValue() > 0L)
               {
-                ((ArrayList)localObject1).add(localObject2);
-                localObject2 = new IDKey();
-                ((IDKey)localObject2).SetID(dZ((String)localObject3));
-                ((IDKey)localObject2).SetKey(i + 58);
-                ((IDKey)localObject2).SetValue(1L);
-                ((ArrayList)localObject1).add(localObject2);
+                ((ArrayList)localObject1).add(localObject4);
+                localObject4 = new IDKey();
+                ((IDKey)localObject4).SetID(eJ((String)localObject3));
+                ((IDKey)localObject4).SetKey(i + 58);
+                ((IDKey)localObject4).SetValue(1L);
+                ((ArrayList)localObject1).add(localObject4);
               }
-              com.tencent.mm.plugin.report.e.ywz.b((ArrayList)localObject1, false);
-              break label3384;
-              if (e.dU((String)localObject1))
+              com.tencent.mm.plugin.report.e.Cxv.b((ArrayList)localObject1, false);
+              localObject1 = localObject2;
+              break label3494;
+              if (e.eE((String)localObject1))
               {
-                localObject5 = new IDKey();
-                ((IDKey)localObject5).SetID(1343);
-                ((IDKey)localObject5).SetKey(e.dX((String)localObject2) + 2);
-                ((IDKey)localObject5).SetValue(d);
-                ((ArrayList)localObject4).add(localObject5);
-                localObject5 = new IDKey();
-                ((IDKey)localObject5).SetID(1343);
-                ((IDKey)localObject5).SetKey(e.dX((String)localObject2) + 3);
-                ((IDKey)localObject5).SetValue(f);
-                ((ArrayList)localObject4).add(localObject5);
-                localObject5 = new IDKey();
-                ((IDKey)localObject5).SetID(1343);
-                ((IDKey)localObject5).SetKey(e.dX((String)localObject2) + 5);
-                ((IDKey)localObject5).SetValue(1L);
-                ((ArrayList)localObject4).add(localObject5);
-                break label1485;
+                localObject6 = new IDKey();
+                ((IDKey)localObject6).SetID(1343);
+                ((IDKey)localObject6).SetKey(e.eH((String)localObject4) + 2);
+                ((IDKey)localObject6).SetValue(d);
+                ((ArrayList)localObject5).add(localObject6);
+                localObject6 = new IDKey();
+                ((IDKey)localObject6).SetID(1343);
+                ((IDKey)localObject6).SetKey(e.eH((String)localObject4) + 3);
+                ((IDKey)localObject6).SetValue(f);
+                ((ArrayList)localObject5).add(localObject6);
+                localObject6 = new IDKey();
+                ((IDKey)localObject6).SetID(1343);
+                ((IDKey)localObject6).SetKey(e.eH((String)localObject4) + 5);
+                ((IDKey)localObject6).SetValue(1L);
+                ((ArrayList)localObject5).add(localObject6);
+                break label1544;
               }
-              if (e.dT((String)localObject1))
+              if (e.eD((String)localObject1))
               {
-                localObject5 = new IDKey();
-                ((IDKey)localObject5).SetID(1343);
-                ((IDKey)localObject5).SetKey(e.dY((String)localObject2) + 30);
-                ((IDKey)localObject5).SetValue(d);
-                ((ArrayList)localObject4).add(localObject5);
-                localObject5 = new IDKey();
-                ((IDKey)localObject5).SetID(1343);
-                ((IDKey)localObject5).SetKey(e.dY((String)localObject2) + 31);
-                ((IDKey)localObject5).SetValue(f);
-                ((ArrayList)localObject4).add(localObject5);
-                localObject5 = new IDKey();
-                ((IDKey)localObject5).SetID(1343);
-                ((IDKey)localObject5).SetKey(e.dY((String)localObject2) + 32);
-                ((IDKey)localObject5).SetValue(1L);
-                ((ArrayList)localObject4).add(localObject5);
-                break label1485;
+                localObject6 = new IDKey();
+                ((IDKey)localObject6).SetID(1343);
+                ((IDKey)localObject6).SetKey(e.eI((String)localObject4) + 30);
+                ((IDKey)localObject6).SetValue(d);
+                ((ArrayList)localObject5).add(localObject6);
+                localObject6 = new IDKey();
+                ((IDKey)localObject6).SetID(1343);
+                ((IDKey)localObject6).SetKey(e.eI((String)localObject4) + 31);
+                ((IDKey)localObject6).SetValue(f);
+                ((ArrayList)localObject5).add(localObject6);
+                localObject6 = new IDKey();
+                ((IDKey)localObject6).SetID(1343);
+                ((IDKey)localObject6).SetKey(e.eI((String)localObject4) + 32);
+                ((IDKey)localObject6).SetValue(1L);
+                ((ArrayList)localObject5).add(localObject6);
+                break label1544;
               }
-              if (e.dV((String)localObject1))
+              if (e.eF((String)localObject1))
               {
-                localObject5 = new IDKey();
-                ((IDKey)localObject5).SetID(1343);
-                ((IDKey)localObject5).SetKey(e.dY((String)localObject2) + 50);
-                ((IDKey)localObject5).SetValue(d);
-                ((ArrayList)localObject4).add(localObject5);
-                localObject5 = new IDKey();
-                ((IDKey)localObject5).SetID(1343);
-                ((IDKey)localObject5).SetKey(e.dY((String)localObject2) + 51);
-                ((IDKey)localObject5).SetValue(f);
-                ((ArrayList)localObject4).add(localObject5);
-                localObject5 = new IDKey();
-                ((IDKey)localObject5).SetID(1343);
-                ((IDKey)localObject5).SetKey(e.dY((String)localObject2) + 52);
-                ((IDKey)localObject5).SetValue(1L);
-                ((ArrayList)localObject4).add(localObject5);
-                break label1485;
+                localObject6 = new IDKey();
+                ((IDKey)localObject6).SetID(1343);
+                ((IDKey)localObject6).SetKey(e.eI((String)localObject4) + 50);
+                ((IDKey)localObject6).SetValue(d);
+                ((ArrayList)localObject5).add(localObject6);
+                localObject6 = new IDKey();
+                ((IDKey)localObject6).SetID(1343);
+                ((IDKey)localObject6).SetKey(e.eI((String)localObject4) + 51);
+                ((IDKey)localObject6).SetValue(f);
+                ((ArrayList)localObject5).add(localObject6);
+                localObject6 = new IDKey();
+                ((IDKey)localObject6).SetID(1343);
+                ((IDKey)localObject6).SetKey(e.eI((String)localObject4) + 52);
+                ((IDKey)localObject6).SetValue(1L);
+                ((ArrayList)localObject5).add(localObject6);
+                break label1544;
               }
-              if (!e.dW((String)localObject1)) {
-                break label1485;
+              if (!e.eG((String)localObject1)) {
+                break label1544;
               }
-              localObject5 = new IDKey();
-              ((IDKey)localObject5).SetID(1343);
-              ((IDKey)localObject5).SetKey(e.dY((String)localObject2) + 70);
-              ((IDKey)localObject5).SetValue(d);
-              ((ArrayList)localObject4).add(localObject5);
-              localObject5 = new IDKey();
-              ((IDKey)localObject5).SetID(1343);
-              ((IDKey)localObject5).SetKey(e.dY((String)localObject2) + 71);
-              ((IDKey)localObject5).SetValue(f);
-              ((ArrayList)localObject4).add(localObject5);
-              localObject5 = new IDKey();
-              ((IDKey)localObject5).SetID(1343);
-              ((IDKey)localObject5).SetKey(e.dY((String)localObject2) + 72);
-              ((IDKey)localObject5).SetValue(1L);
-              ((ArrayList)localObject4).add(localObject5);
-              break label1485;
+              localObject6 = new IDKey();
+              ((IDKey)localObject6).SetID(1343);
+              ((IDKey)localObject6).SetKey(e.eI((String)localObject4) + 70);
+              ((IDKey)localObject6).SetValue(d);
+              ((ArrayList)localObject5).add(localObject6);
+              localObject6 = new IDKey();
+              ((IDKey)localObject6).SetID(1343);
+              ((IDKey)localObject6).SetKey(e.eI((String)localObject4) + 71);
+              ((IDKey)localObject6).SetValue(f);
+              ((ArrayList)localObject5).add(localObject6);
+              localObject6 = new IDKey();
+              ((IDKey)localObject6).SetID(1343);
+              ((IDKey)localObject6).SetKey(e.eI((String)localObject4) + 72);
+              ((IDKey)localObject6).SetValue(1L);
+              ((ArrayList)localObject5).add(localObject6);
+              break label1544;
               if ((((String)localObject1).endsWith("ChattingUIFragment")) || (((String)localObject1).endsWith("ChattingUI"))) {
-                break label3407;
+                break label3512;
               }
               if (((String)localObject1).endsWith("MainUI"))
               {
@@ -500,26 +514,34 @@ public final class f
               else if (((String)localObject1).endsWith("FinderProfileUI"))
               {
                 i = 120;
+              }
+              else if (((String)localObject1).endsWith("FinderTimelineLbsUI"))
+              {
+                i = 140;
+              }
+              else if (((String)localObject1).endsWith("AddressUI"))
+              {
+                i = 160;
                 continue;
                 if ((localObject1 instanceof com.tencent.matrix.iocanary.a))
                 {
-                  com.tencent.mm.plugin.report.e.ywz.idkeyStat(dZ((String)localObject3), 30L, 1L, false);
+                  com.tencent.mm.plugin.report.e.Cxv.idkeyStat(eJ((String)localObject3), 30L, 1L, false);
                   i = 0;
-                  localObject1 = "";
+                  localObject1 = localObject2;
                   break;
                 }
                 if ((localObject1 instanceof SQLiteLintPlugin))
                 {
-                  com.tencent.mm.plugin.report.e.ywz.idkeyStat(dZ((String)localObject3), 31L, 1L, false);
+                  com.tencent.mm.plugin.report.e.Cxv.idkeyStat(eJ((String)localObject3), 31L, 1L, false);
                   if (!"true".equalsIgnoreCase(paramJSONObject.getString("isInMainThread"))) {
-                    break label3414;
+                    break label3519;
                   }
-                  i = bu.aSB(paramJSONObject.getString("sqlTimeCost"));
+                  i = Util.safeParseInt(paramJSONObject.getString("sqlTimeCost"));
                   if (i < 80) {
-                    break label3414;
+                    break label3519;
                   }
                   if (i >= 500) {
-                    break label3425;
+                    break label3529;
                   }
                   i = 110;
                 }
@@ -531,62 +553,68 @@ public final class f
     }
     for (;;)
     {
-      com.tencent.mm.plugin.report.e.ywz.idkeyStat(dZ((String)localObject3), i, 1L, false);
-      break label3414;
+      com.tencent.mm.plugin.report.e.Cxv.idkeyStat(eJ((String)localObject3), i, 1L, false);
+      break label3519;
       if ((localObject1 instanceof com.tencent.matrix.a.a))
       {
-        com.tencent.mm.plugin.report.e.ywz.idkeyStat(dZ((String)localObject3), 32L, 1L, false);
+        com.tencent.mm.plugin.report.e.Cxv.idkeyStat(eJ((String)localObject3), 32L, 1L, false);
         i = 0;
-        localObject1 = "";
-        break label478;
+        localObject1 = localObject2;
+        break label482;
       }
       if ((localObject1 instanceof com.tencent.matrix.resource.b))
       {
-        com.tencent.mm.plugin.report.e.ywz.idkeyStat(dZ((String)localObject3), 33L, 1L, false);
+        com.tencent.mm.plugin.report.e.Cxv.idkeyStat(eJ((String)localObject3), 33L, 1L, false);
         if (paramJSONObject.getString("activity").endsWith("SnsTimeLineUI")) {
-          com.tencent.mm.plugin.report.e.ywz.idkeyStat(dZ((String)localObject3), 34L, 1L, true);
+          com.tencent.mm.plugin.report.e.Cxv.idkeyStat(eJ((String)localObject3), 34L, 1L, true);
         }
       }
       i = 0;
-      localObject1 = "";
-      break label478;
+      localObject1 = localObject2;
+      break label482;
       return;
       localObject1 = null;
       break;
-      label3212:
+      label3310:
       i = 1;
       localObject1 = localObject2;
-      break label478;
-      label3222:
+      break label482;
+      label3320:
       i = 0;
-      break label270;
-      label3228:
+      break label274;
+      label3326:
       i = 0;
-      break label353;
-      label3234:
+      break label357;
+      label3332:
+      i = 1;
+      break label717;
+      label3338:
       i = 0;
       localObject1 = localObject2;
-      break label478;
-      label3244:
+      break label482;
+      label3348:
       i = 0;
-      break label830;
-      label3250:
+      break label717;
+      label3354:
+      i = 0;
+      break label886;
+      label3360:
       i = 1;
-      break label878;
-      label3256:
+      break label934;
+      label3366:
       i = 6;
-      break label954;
-      label3263:
+      break label1010;
+      label3373:
       if (l <= 6000L)
       {
         j = 2;
         if (bool)
         {
           i = 12;
-          break label1028;
+          break label1083;
         }
         i = 7;
-        break label1028;
+        break label1083;
       }
       if (l <= 9000L)
       {
@@ -594,10 +622,10 @@ public final class f
         if (bool)
         {
           i = 13;
-          break label1042;
+          break label1097;
         }
         i = 8;
-        break label1042;
+        break label1097;
       }
       if (l <= 12000L)
       {
@@ -605,41 +633,39 @@ public final class f
         if (bool)
         {
           i = 14;
-          break label1056;
+          break label1111;
         }
         i = 9;
-        break label1056;
+        break label1111;
       }
       j = 5;
       if (bool)
       {
         i = 15;
-        break label1070;
+        break label1125;
       }
       i = 10;
-      break label1070;
-      label3378:
+      break label1125;
+      label3488:
       i = 1;
-      break label1164;
-      label3384:
-      localObject1 = "";
-      label3389:
+      break label1223;
+      label3494:
       i = 0;
-      break label478;
-      label3395:
+      break label482;
+      label3500:
       i = 0;
-      break label1164;
-      label3401:
+      break label1223;
+      label3506:
       i = 0;
-      break label1501;
-      label3407:
+      break label1560;
+      label3512:
       i = 20;
-      break label1600;
-      label3414:
+      break label1659;
+      label3519:
       i = 0;
-      localObject1 = "";
-      break label478;
-      label3425:
+      localObject1 = localObject2;
+      break label482;
+      label3529:
       if (i < 1000) {
         i = 111;
       } else if (i < 3000) {
@@ -654,7 +680,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.report.f
  * JD-Core Version:    0.7.0.1
  */

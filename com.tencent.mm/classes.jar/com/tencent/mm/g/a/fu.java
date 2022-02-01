@@ -1,14 +1,14 @@
 package com.tencent.mm.g.a;
 
+import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class fu
-  extends b
+  extends IEvent
 {
-  public a dsi;
-  public b dsj;
+  public a dJb;
+  public b dJc;
   
   public fu()
   {
@@ -17,26 +17,22 @@ public final class fu
   
   private fu(byte paramByte)
   {
-    AppMethodBeat.i(116018);
-    this.dsi = new a();
-    this.dsj = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(116016);
+    this.dJb = new a();
+    this.dJc = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116018);
+    AppMethodBeat.o(116016);
   }
   
   public static final class a
   {
-    public String content;
-    public String dsk;
-    public int flags;
-    public int type;
+    public String dJd;
   }
   
   public static final class b
   {
-    public n dsl;
-    public long msgId = 0L;
+    public Cursor dIU;
   }
 }
 

@@ -1,11 +1,11 @@
 package com.tencent.mm.as;
 
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.ca;
 import java.util.List;
 
 public abstract interface b$b
 {
-  public abstract void b(int paramInt, List<bv> paramList);
+  public abstract void b(int paramInt, List<ca> paramList);
 }
 
 

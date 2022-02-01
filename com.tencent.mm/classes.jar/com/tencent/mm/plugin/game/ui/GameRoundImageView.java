@@ -18,16 +18,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class GameRoundImageView
   extends AppCompatImageView
 {
-  private static final PorterDuffXfermode pwB;
+  private static final PorterDuffXfermode qLS;
   private Bitmap bitmap;
-  private RectF hM;
-  private Bitmap pwA;
+  private RectF hO;
+  private Bitmap qLR;
   private Rect rect;
   
   static
   {
     AppMethodBeat.i(42367);
-    pwB = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
+    qLS = new PorterDuffXfermode(PorterDuff.Mode.SRC_IN);
     AppMethodBeat.o(42367);
   }
   
@@ -45,36 +45,36 @@ public class GameRoundImageView
     if (this.rect == null) {
       this.rect = new Rect(0, 0, getWidth(), getHeight());
     }
-    if (this.hM == null) {
-      this.hM = new RectF(this.rect);
+    if (this.hO == null) {
+      this.hO = new RectF(this.rect);
     }
-    if ((this.bitmap != null) && (this.pwA != null))
+    if ((this.bitmap != null) && (this.qLR != null))
     {
       int i = paramCanvas.saveLayer(0.0F, 0.0F, getWidth(), getHeight(), null, 31);
-      paramCanvas.drawBitmap(this.pwA, this.rect, this.rect, localPaint);
-      localPaint.setXfermode(pwB);
+      paramCanvas.drawBitmap(this.qLR, this.rect, this.rect, localPaint);
+      localPaint.setXfermode(qLS);
       paramCanvas.drawBitmap(this.bitmap, null, this.rect, localPaint);
       paramCanvas.restoreToCount(i);
       localPaint.setXfermode(null);
     }
     localPaint.setStyle(Paint.Style.STROKE);
     localPaint.setStrokeWidth(1.0F);
-    localPaint.setColor(getResources().getColor(2131100409));
-    paramCanvas.drawRoundRect(this.hM, 18.0F, 18.0F, localPaint);
+    localPaint.setColor(getResources().getColor(2131100511));
+    paramCanvas.drawRoundRect(this.hO, 18.0F, 18.0F, localPaint);
     AppMethodBeat.o(42364);
   }
   
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(42365);
-    this.hM = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
+    this.hO = new RectF(0.0F, 0.0F, paramInt1, paramInt2);
     this.rect = new Rect(0, 0, paramInt1, paramInt2);
     Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     Canvas localCanvas = new Canvas(localBitmap);
     Paint localPaint = new Paint(1);
     localPaint.setColor(-1);
-    localCanvas.drawRoundRect(this.hM, 18.0F, 18.0F, localPaint);
-    this.pwA = localBitmap;
+    localCanvas.drawRoundRect(this.hO, 18.0F, 18.0F, localPaint);
+    this.qLR = localBitmap;
     AppMethodBeat.o(42365);
   }
   
@@ -88,7 +88,7 @@ public class GameRoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.GameRoundImageView
  * JD-Core Version:    0.7.0.1
  */

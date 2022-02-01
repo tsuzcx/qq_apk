@@ -7,12 +7,15 @@ import android.webkit.ValueCallback;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
 import com.tencent.smtt.export.external.extension.proxy.ProxyWebViewClientExtension;
+import com.tencent.xweb.x5.X5WebFactory;
 import com.tencent.xweb.x5.a.c;
 import com.tencent.xweb.x5.a.e;
 import com.tencent.xweb.x5.export.external.extension.proxy.IProxySuperWrapper;
 import com.tencent.xweb.x5.g;
 import com.tencent.xweb.x5.g.b;
 import com.tencent.xweb.x5.g.g;
+import java.util.List;
+import org.xwalk.core.WebViewExtensionListener;
 
 public class ProxyWebViewSuperWrapper
   extends ProxyWebViewClientExtension
@@ -65,6 +68,20 @@ public class ProxyWebViewSuperWrapper
     AppMethodBeat.i(154067);
     this.mXWebProxyImp.documentAvailableInMainFrame();
     AppMethodBeat.o(154067);
+  }
+  
+  public int getHostByName(String paramString, List<String> paramList)
+  {
+    AppMethodBeat.i(207239);
+    if (X5WebFactory.getInstance().getExtensionCallback() != null)
+    {
+      i = X5WebFactory.getInstance().getExtensionCallback().getHostByName(paramString, paramList);
+      AppMethodBeat.o(207239);
+      return i;
+    }
+    int i = super.getHostByName(paramString, paramList);
+    AppMethodBeat.o(207239);
+    return i;
   }
   
   public void handlePluginTag(String paramString1, String paramString2, boolean paramBoolean, String paramString3)

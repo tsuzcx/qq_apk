@@ -14,9 +14,9 @@ import com.tencent.mm.ui.base.preference.Preference;
 public final class FriendSnsPreference
   extends IconPreference
 {
-  private String JrF = null;
-  private Bitmap JrG = null;
-  private long JrH;
+  private String OBW = null;
+  private Bitmap OBX = null;
+  private long OBY;
   private Context context;
   
   public FriendSnsPreference(Context paramContext, AttributeSet paramAttributeSet)
@@ -30,28 +30,28 @@ public final class FriendSnsPreference
     this.context = paramContext;
   }
   
-  public final void Ek(long paramLong)
+  public final void No(long paramLong)
   {
     AppMethodBeat.i(33139);
-    this.JrF = null;
-    this.JrG = null;
-    this.JnV = -1;
-    this.JrH = paramLong;
-    if ((this.JrH != 0L) && (this.vQs != null)) {
-      ((n)g.ab(n.class)).a(this.JrH, this.vQs, this.mContext.hashCode());
+    this.OBW = null;
+    this.OBX = null;
+    this.OxP = -1;
+    this.OBY = paramLong;
+    if ((this.OBY != 0L) && (this.zkw != null)) {
+      ((n)g.af(n.class)).a(this.OBY, this.zkw, this.mContext.hashCode());
     }
     AppMethodBeat.o(33139);
   }
   
-  public final void aWN(String paramString)
+  public final void blM(String paramString)
   {
     AppMethodBeat.i(33138);
-    this.JrG = null;
-    this.JnV = -1;
-    this.JrF = paramString;
-    this.JrH = 0L;
-    if (this.vQs != null) {
-      a.b.c(this.vQs, paramString);
+    this.OBX = null;
+    this.OxP = -1;
+    this.OBW = paramString;
+    this.OBY = 0L;
+    if (this.zkw != null) {
+      a.b.c(this.zkw, paramString);
     }
     AppMethodBeat.o(33138);
   }
@@ -60,18 +60,18 @@ public final class FriendSnsPreference
   {
     AppMethodBeat.i(33140);
     super.onBindView(paramView);
-    if ((this.JrF != null) && (g.ajM())) {
-      a.b.c(this.vQs, this.JrF);
+    if ((this.OBW != null) && (g.aAc())) {
+      a.b.c(this.zkw, this.OBW);
     }
-    if ((this.JrH != 0L) && (this.vQs != null)) {
-      ((n)g.ab(n.class)).a(this.JrH, this.vQs, this.mContext.hashCode());
+    if ((this.OBY != 0L) && (this.zkw != null)) {
+      ((n)g.af(n.class)).a(this.OBY, this.zkw, this.mContext.hashCode());
     }
     AppMethodBeat.o(33140);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.FriendSnsPreference
  * JD-Core Version:    0.7.0.1
  */

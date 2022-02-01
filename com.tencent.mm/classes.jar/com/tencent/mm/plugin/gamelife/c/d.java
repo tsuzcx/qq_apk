@@ -1,42 +1,43 @@
 package com.tencent.mm.plugin.gamelife.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.bw.a;
 import com.tencent.mm.plugin.gamelife.b.j;
 import com.tencent.mm.plugin.gamelife.b.k;
-import d.l;
 import java.util.LinkedList;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatUserInfo;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatUserInfoResponse;", "userNameList", "Ljava/util/LinkedList;", "", "(Ljava/util/LinkedList;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-gamelife_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatUserInfo;", "Lcom/tencent/mm/modelbase/Cgi;", "Lcom/tencent/mm/plugin/gamelife/autogen/GetChatUserInfoResponse;", "userNameList", "Ljava/util/LinkedList;", "", "(Ljava/util/LinkedList;)V", "onCgiBack", "", "errType", "", "errCode", "errMsg", "resp", "scene", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Companion", "plugin-gamelife_release"})
 public final class d
-  extends com.tencent.mm.ak.a<k>
+  extends c<k>
 {
   private static final String TAG = "MicroMsg.CgiGetChatUserInfo";
-  public static final a uJg;
+  public static final a ybx;
   
   static
   {
-    AppMethodBeat.i(212042);
-    uJg = new a((byte)0);
+    AppMethodBeat.i(241282);
+    ybx = new a((byte)0);
     TAG = "MicroMsg.CgiGetChatUserInfo";
-    AppMethodBeat.o(212042);
+    AppMethodBeat.o(241282);
   }
   
   public d(LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(212041);
-    b.a locala = new b.a();
+    AppMethodBeat.i(241281);
+    com.tencent.mm.ak.d.a locala = new com.tencent.mm.ak.d.a();
     j localj = new j();
-    localj.uIU = paramLinkedList;
-    locala.c((com.tencent.mm.bw.a)localj);
-    locala.d((com.tencent.mm.bw.a)new k());
-    locala.DN("/cgi-bin/mmgame-bin/gamegamelifeappsvr/getchatuserinfo");
-    locala.oS(1111);
-    c(locala.aDS());
-    AppMethodBeat.o(212041);
+    localj.ybk = paramLinkedList;
+    locala.c((a)localj);
+    locala.d((a)new k());
+    locala.MB("/cgi-bin/mmgame-bin/gamegamelifeappsvr/getchatuserinfo");
+    locala.sG(1111);
+    c(locala.aXF());
+    AppMethodBeat.o(241281);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatUserInfo$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-gamelife_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gamelife/cgi/CgiGetChatUserInfo$Companion;", "", "()V", "TAG", "", "getTAG", "()Ljava/lang/String;", "plugin-gamelife_release"})
   public static final class a {}
 }
 

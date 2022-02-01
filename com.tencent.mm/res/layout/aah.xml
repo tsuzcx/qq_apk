@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/clp" android:paddingBottom="@dimen/cb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="@dimen/cb" android:paddingEnd="@dimen/cb"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:visibility="gone" layout="@layout/aac" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="end" android:orientation="horizontal" android:id="@id/geq" android:paddingTop="@dimen/bt" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/gdq" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_outlined_location" android:layout_marginEnd="@dimen/bt" app:iconColor="@color/x0" />
+        <TextView android:textSize="@dimen/a58" android:textColor="@color/x0" android:ellipsize="end" android:id="@id/gdy" android:background="@drawable/zj" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="end" android:orientation="horizontal" android:id="@id/ecd" android:paddingTop="@dimen/bt" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ecc" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:src="@raw/icons_outlined_link" android:layout_marginEnd="@dimen/bt" app:iconColor="@color/x0" />
+        <TextView android:textSize="@dimen/a58" android:textColor="@color/x0" android:ellipsize="end" android:id="@id/ecf" android:background="@drawable/zj" android:focusable="true" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.finder.view.FinderFeedExposeLayout android:id="@id/b92" android:tag="0" android:paddingTop="@dimen/ct" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ViewStub android:id="@id/gkz" android:layout="@layout/aj3" android:inflatedId="@id/gky" android:layout_width="fill_parent" android:layout_height="@dimen/cl" />
+</LinearLayout>

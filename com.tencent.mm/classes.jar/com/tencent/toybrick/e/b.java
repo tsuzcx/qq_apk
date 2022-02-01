@@ -21,23 +21,23 @@ import java.util.List;
 
 public final class b
 {
-  WeakReference<com.tencent.toybrick.b.b> MGn;
-  public Runnable MGo;
+  public Runnable Soo;
   public Handler mMainHandler;
+  WeakReference<com.tencent.toybrick.b.b> vjo;
   
   public b(com.tencent.toybrick.b.b paramb)
   {
     AppMethodBeat.i(159970);
     this.mMainHandler = new Handler(Looper.getMainLooper());
-    this.MGn = new WeakReference(paramb);
+    this.vjo = new WeakReference(paramb);
     AppMethodBeat.o(159970);
   }
   
   final class a
   {
-    public c.b MGq;
-    public ArrayList<g> MGr;
-    public HashMap<g, Integer> MGs;
+    public c.b Soq;
+    public ArrayList<g> Sor;
+    public HashMap<g, Integer> Sos;
     
     private a() {}
   }
@@ -45,17 +45,17 @@ public final class b
   final class b
     implements Runnable
   {
-    boolean MGh;
-    private LinkedList<g> MGt;
-    private ArrayList<g> MGu;
+    boolean Soi;
+    private LinkedList<g> Sot;
+    private ArrayList<g> Sou;
     
     public b(LinkedList<g> paramLinkedList, ArrayList<g> paramArrayList)
     {
       AppMethodBeat.i(159967);
-      this.MGh = paramLinkedList;
-      this.MGt = new LinkedList(paramArrayList);
+      this.Soi = paramLinkedList;
+      this.Sot = new LinkedList(paramArrayList);
       Collection localCollection;
-      this.MGu = new ArrayList(localCollection);
+      this.Sou = new ArrayList(localCollection);
       AppMethodBeat.o(159967);
     }
     
@@ -63,7 +63,7 @@ public final class b
     {
       AppMethodBeat.i(159969);
       paramList.clear();
-      Object localObject1 = this.MGt.iterator();
+      Object localObject1 = this.Sot.iterator();
       Object localObject2;
       while (((Iterator)localObject1).hasNext())
       {
@@ -74,22 +74,22 @@ public final class b
         paramHashMap.put(localObject2, Integer.valueOf(paramHashMap.size()));
       }
       Collections.sort(paramList);
-      if (this.MGh)
+      if (this.Soi)
       {
         localObject2 = paramList.iterator();
         int i = 0;
         for (paramHashMap = null; ((Iterator)localObject2).hasNext(); paramHashMap = (HashMap<g, Integer>)localObject1)
         {
           localObject1 = (g)((Iterator)localObject2).next();
-          if (((g)localObject1).gdg() == g.b.MGe)
+          if (((g)localObject1).hpJ() == g.b.Sof)
           {
-            ((g)localObject1).MFW = false;
+            ((g)localObject1).SnX = false;
             if (paramHashMap != null) {
-              paramHashMap.MFW = false;
+              paramHashMap.SnX = false;
             }
           }
           if (i == paramList.size() - 1) {
-            ((g)localObject1).MFW = false;
+            ((g)localObject1).SnX = false;
           }
           i += 1;
         }
@@ -103,22 +103,22 @@ public final class b
       ArrayList localArrayList = new ArrayList();
       HashMap localHashMap = new HashMap();
       a(localArrayList, localHashMap);
-      c.b localb = c.a(new com.tencent.toybrick.a.a(this.MGu, localArrayList), true);
+      c.b localb = c.a(new com.tencent.toybrick.a.a(this.Sou, localArrayList), true);
       final b.a locala = new b.a(b.this, (byte)0);
-      locala.MGs = localHashMap;
-      locala.MGq = localb;
-      locala.MGr = localArrayList;
+      locala.Sos = localHashMap;
+      locala.Soq = localb;
+      locala.Sor = localArrayList;
       b.this.mMainHandler.post(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(159966);
-          com.tencent.toybrick.b.b localb = (com.tencent.toybrick.b.b)b.this.MGn.get();
+          com.tencent.toybrick.b.b localb = (com.tencent.toybrick.b.b)b.this.vjo.get();
           if (localb != null)
           {
-            localb.MFf = locala.MGr;
-            localb.MFh = locala.MGs;
-            locala.MGq.a(localb);
+            localb.Sng = locala.Sor;
+            localb.Sni = locala.Sos;
+            locala.Soq.a(localb);
           }
           AppMethodBeat.o(159966);
         }

@@ -2,15 +2,6 @@
 <layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape>
-            <solid android:color="@color/FG_3" />
-            <corners android:bottomLeftRadius="@dimen/bq" android:bottomRightRadius="@dimen/bq" />
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <solid android:color="@color/c" />
-            <corners android:bottomLeftRadius="@dimen/bq" android:bottomRightRadius="@dimen/bq" />
-        </shape>
+        <rotate android:drawable="@drawable/brx" android:fromDegrees="0.0" android:toDegrees="1080.0" android:pivotX="50.0%" android:pivotY="50.0%" />
     </item>
 </layer-list>

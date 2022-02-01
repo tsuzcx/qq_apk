@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/f" android:layout_width="fill_parent" android:layout_height="56.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h8d" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginLeft="24.0dip" android:src="@raw/icons_outlined_close" android:layout_centerVertical="true" app:iconColor="@color/FG_0_5" />
-    <TextView android:textSize="15.0dip" android:textStyle="bold" android:textColor="@color/FG_0_5" android:id="@id/h9e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_centerInParent="true" />
-</RelativeLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/hb1" android:background="@color/fm" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:alpha="0.3" />
+    <ImageView android:layout_gravity="top" android:id="@id/hb2" android:background="@drawable/cmc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <ImageView android:layout_gravity="bottom|center" android:id="@id/haz" android:background="@drawable/arf" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ci" />
+</FrameLayout>

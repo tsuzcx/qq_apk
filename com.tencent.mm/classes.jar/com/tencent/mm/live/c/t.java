@@ -14,195 +14,82 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ab.i;
-import com.tencent.mm.br.d;
-import com.tencent.mm.live.b.g;
-import com.tencent.mm.live.b.g.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.br.c;
+import com.tencent.mm.live.b.x;
+import com.tencent.mm.live.b.x.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.b.p;
-import d.l;
-import d.v;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/plugin/LiveFaceVerifyPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/widget/RelativeLayout;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/widget/RelativeLayout;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "MODE_BIND_BANKCARD", "", "MODE_BIND_MOBILE", "MODE_DEFAULT", "MODE_FACE_VERIFY", "backIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "mode", "okBtn", "Landroid/widget/Button;", "rootLayout", "verifyContentTip", "Landroid/widget/TextView;", "verifyIIcon", "Landroid/widget/ImageView;", "verifyTitle", "verifyUrl", "", "getVerifyUrl", "()Ljava/lang/String;", "setVerifyUrl", "(Ljava/lang/String;)V", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/LiveFaceVerifyPlugin;", "Lcom/tencent/mm/live/plugin/BaseLivePlugin;", "root", "Landroid/widget/RelativeLayout;", "statusMonitor", "Lcom/tencent/mm/live/plugin/ILiveStatus;", "(Landroid/widget/RelativeLayout;Lcom/tencent/mm/live/plugin/ILiveStatus;)V", "MODE_BIND_BANKCARD", "", "MODE_BIND_MOBILE", "MODE_DEFAULT", "MODE_FACE_VERIFY", "backIcon", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "mode", "okBtn", "Landroid/widget/Button;", "rootLayout", "verifyContentTip", "Landroid/widget/TextView;", "verifyIIcon", "Landroid/widget/ImageView;", "verifyTitle", "verifyUrl", "", "getVerifyUrl", "()Ljava/lang/String;", "setVerifyUrl", "(Ljava/lang/String;)V", "onActivityResult", "", "requestCode", "resultCode", "data", "Landroid/content/Intent;", "onBackPress", "", "statusChange", "status", "Lcom/tencent/mm/live/plugin/ILiveStatus$LiveStatus;", "param", "Landroid/os/Bundle;", "Companion", "plugin-logic_release"})
 public final class t
   extends a
 {
-  public static final t.a gXk;
+  public static final a hQf;
   private final int MODE_DEFAULT;
-  String gRf;
-  private final b gVv;
-  private final RelativeLayout gWd;
-  private final Button gXc;
-  private final int gXd;
-  private final int gXe;
-  private final int gXf;
-  private final WeImageView gXg;
-  private final ImageView gXh;
-  private final TextView gXi;
-  private final TextView gXj;
+  String hJl;
+  private final RelativeLayout hOX;
+  private final b hOp;
+  private final Button hPX;
+  private final int hPY;
+  private final int hPZ;
+  private final int hQa;
+  private final WeImageView hQb;
+  private final ImageView hQc;
+  private final TextView hQd;
+  private final TextView hQe;
   private int mode;
   
   static
   {
-    AppMethodBeat.i(216048);
-    gXk = new t.a((byte)0);
-    AppMethodBeat.o(216048);
+    AppMethodBeat.i(208006);
+    hQf = new a((byte)0);
+    AppMethodBeat.o(208006);
   }
   
   public t(RelativeLayout paramRelativeLayout, b paramb)
   {
     super((ViewGroup)paramRelativeLayout, paramb);
-    AppMethodBeat.i(216047);
-    this.gVv = paramb;
+    AppMethodBeat.i(208005);
+    this.hOp = paramb;
     this.MODE_DEFAULT = -1;
-    this.gXe = 1;
-    this.gXf = 2;
-    paramb = paramRelativeLayout.findViewById(2131307634);
+    this.hPZ = 1;
+    this.hQa = 2;
+    paramb = paramRelativeLayout.findViewById(2131303396);
     p.g(paramb, "root.findViewById(R.id.live_face_verify_ui_root)");
-    this.gWd = ((RelativeLayout)paramb);
-    paramb = paramRelativeLayout.findViewById(2131307820);
+    this.hOX = ((RelativeLayout)paramb);
+    paramb = paramRelativeLayout.findViewById(2131303608);
     p.g(paramb, "root.findViewById(R.id.live_verify_ok_btn)");
-    this.gXc = ((Button)paramb);
-    paramb = paramRelativeLayout.findViewById(2131307632);
+    this.hPX = ((Button)paramb);
+    paramb = paramRelativeLayout.findViewById(2131303394);
     p.g(paramb, "root.findViewById(R.id.live_face_verify_top_back)");
-    this.gXg = ((WeImageView)paramb);
-    paramb = paramRelativeLayout.findViewById(2131307818);
+    this.hQb = ((WeImageView)paramb);
+    paramb = paramRelativeLayout.findViewById(2131303606);
     p.g(paramb, "root.findViewById(R.id.live_verify_icon)");
-    this.gXh = ((ImageView)paramb);
-    paramb = paramRelativeLayout.findViewById(2131307821);
+    this.hQc = ((ImageView)paramb);
+    paramb = paramRelativeLayout.findViewById(2131303609);
     p.g(paramb, "root.findViewById(R.id.live_verify_title)");
-    this.gXi = ((TextView)paramb);
-    paramRelativeLayout = paramRelativeLayout.findViewById(2131307817);
+    this.hQd = ((TextView)paramb);
+    paramRelativeLayout = paramRelativeLayout.findViewById(2131303605);
     p.g(paramRelativeLayout, "root.findViewById(R.id.live_verify_content_tip)");
-    this.gXj = ((TextView)paramRelativeLayout);
+    this.hQe = ((TextView)paramRelativeLayout);
     this.mode = this.MODE_DEFAULT;
-    this.gRf = "";
-    this.gWd.setOnClickListener((View.OnClickListener)t.1.gXl);
-    AppMethodBeat.o(216047);
-  }
-  
-  public final void a(b.c paramc, Bundle paramBundle)
-  {
-    AppMethodBeat.i(216044);
-    p.h(paramc, "status");
-    switch (u.cqt[paramc.ordinal()])
-    {
-    }
-    for (;;)
-    {
-      super.a(paramc, paramBundle);
-      AppMethodBeat.o(216044);
-      return;
-      this.mode = this.gXf;
-      Object localObject = g.gQZ;
-      g.anV().gRk = true;
-      localObject = this.gJt.getContext();
-      if (localObject == null)
-      {
-        paramc = new v("null cannot be cast to non-null type android.app.Activity");
-        AppMethodBeat.o(216044);
-        throw paramc;
-      }
-      ((Activity)localObject).setRequestedOrientation(7);
-      if (aoA())
-      {
-        localObject = g.gQZ;
-        if (!g.anW().gRe)
-        {
-          paramc = g.gQZ;
-          g.anW().gRe = true;
-          AppMethodBeat.o(216044);
-          return;
-        }
-      }
-      this.gXg.setVisibility(0);
-      this.gXg.setOnClickListener((View.OnClickListener)new b(this));
-      localObject = g.gQZ;
-      this.gRf = g.anW().gRf;
-      this.gXi.setText(2131766600);
-      localObject = g.gQZ;
-      if (g.anW().gRg) {
-        this.gXj.setText(2131766602);
-      }
-      for (;;)
-      {
-        this.gXc.setText(2131766603);
-        localObject = this.gXc;
-        localContext = this.gJt.getContext();
-        p.g(localContext, "root.context");
-        ((Button)localObject).setTextColor(localContext.getResources().getColor(2131101180));
-        this.gXc.setBackgroundResource(2131231372);
-        this.gXc.setOnClickListener((View.OnClickListener)new c(this));
-        nL(0);
-        break;
-        this.gXj.setText(2131766601);
-      }
-      this.mode = this.gXd;
-      localObject = g.gQZ;
-      g.anV().gRk = true;
-      this.gXg.setVisibility(4);
-      this.gXi.setText(2131766644);
-      this.gXj.setText(2131766643);
-      this.gXc.setText(2131766735);
-      localObject = this.gXc;
-      Context localContext = this.gJt.getContext();
-      p.g(localContext, "root.context");
-      ((Button)localObject).setTextColor(localContext.getResources().getColor(2131101180));
-      this.gXc.setBackgroundResource(2131231372);
-      this.gXc.setOnClickListener((View.OnClickListener)new d(this));
-      nL(0);
-      continue;
-      this.mode = this.gXe;
-      localObject = g.gQZ;
-      g.anV().gRk = true;
-      this.gXg.setVisibility(4);
-      this.gXi.setText(2131766598);
-      this.gXj.setText(2131766599);
-      this.gXc.setText(2131766735);
-      localObject = this.gXc;
-      localContext = this.gJt.getContext();
-      p.g(localContext, "root.context");
-      ((Button)localObject).setTextColor(localContext.getResources().getColor(2131100161));
-      this.gXc.setBackgroundResource(2131231365);
-      this.gXc.setOnClickListener((View.OnClickListener)new e(this));
-      nL(0);
-    }
-  }
-  
-  public final boolean aoQ()
-  {
-    AppMethodBeat.i(216046);
-    if (this.gJt.getVisibility() == 0)
-    {
-      g localg = g.gQZ;
-      g.anV().gRk = false;
-      int i = this.mode;
-      if ((i == this.gXf) || (i == this.gXe)) {
-        nL(8);
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(216046);
-        return true;
-        if (i == this.gXd) {
-          b.b.a(this.gVv, b.c.gUe);
-        }
-      }
-    }
-    AppMethodBeat.o(216046);
-    return false;
+    this.hJl = "";
+    this.hOX.setOnClickListener((View.OnClickListener)t.1.hQg);
+    AppMethodBeat.o(208005);
   }
   
   public final void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    AppMethodBeat.i(216045);
+    AppMethodBeat.i(208003);
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
-    ae.i("MicroMsg.LiveVerifyPlugin", "onActivityResult, requestCode" + paramInt1 + ", resultCode" + paramInt2);
+    Log.i("MicroMsg.LiveVerifyPlugin", "onActivityResult, requestCode" + paramInt1 + ", resultCode" + paramInt2);
     if (paramInt1 == 9)
     {
-      Object localObject = g.gQZ;
-      g.anV().gRk = false;
+      Object localObject = x.hJf;
+      x.aGD().hJq = false;
       localObject = null;
       if (paramIntent != null) {
         localObject = paramIntent.getBundleExtra("result_data");
@@ -211,36 +98,151 @@ public final class t
       {
         paramIntent = ((Bundle)localObject).getString("go_next", "");
         localObject = ((Bundle)localObject).getString("result_json");
-        if (!bu.isNullOrNil((String)localObject))
+        if (!Util.isNullOrNil((String)localObject))
         {
           paramInt1 = new i((String)localObject).getInt("code");
-          ae.i("MicroMsg.LiveVerifyPlugin", "onActivityResult, nextStep" + paramIntent + ", code" + paramInt1);
+          Log.i("MicroMsg.LiveVerifyPlugin", "onActivityResult, nextStep" + paramIntent + ", code" + paramInt1);
           if ((paramIntent.equals("roomlive_verify")) && (paramInt1 == 0))
           {
-            nL(8);
-            AppMethodBeat.o(216045);
+            rg(8);
+            AppMethodBeat.o(208003);
             return;
           }
           if (paramInt1 == 1000)
           {
-            a(b.c.gTY, new Bundle());
-            AppMethodBeat.o(216045);
+            statusChange(b.c.hLx, new Bundle());
+            AppMethodBeat.o(208003);
             return;
           }
-          nL(8);
+          rg(8);
           paramIntent = new Bundle();
-          paramIntent.putInt("PARAM_FACE_VERIFY_ERROR", 2131766596);
-          this.gVv.a(b.c.gTZ, paramIntent);
-          AppMethodBeat.o(216045);
+          paramIntent.putInt("PARAM_FACE_VERIFY_ERROR", 2131762286);
+          this.hOp.statusChange(b.c.hLy, paramIntent);
+          AppMethodBeat.o(208003);
           return;
         }
       }
-      nL(8);
+      rg(8);
     }
-    AppMethodBeat.o(216045);
+    AppMethodBeat.o(208003);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  public final boolean onBackPress()
+  {
+    AppMethodBeat.i(208004);
+    if (this.hwr.getVisibility() == 0)
+    {
+      x localx = x.hJf;
+      x.aGD().hJq = false;
+      int i = this.mode;
+      if ((i == this.hQa) || (i == this.hPZ)) {
+        rg(8);
+      }
+      for (;;)
+      {
+        AppMethodBeat.o(208004);
+        return true;
+        if (i == this.hPY) {
+          b.b.a(this.hOp, b.c.hLD);
+        }
+      }
+    }
+    AppMethodBeat.o(208004);
+    return false;
+  }
+  
+  public final void statusChange(b.c paramc, Bundle paramBundle)
+  {
+    AppMethodBeat.i(208002);
+    p.h(paramc, "status");
+    switch (u.$EnumSwitchMapping$0[paramc.ordinal()])
+    {
+    }
+    for (;;)
+    {
+      super.statusChange(paramc, paramBundle);
+      AppMethodBeat.o(208002);
+      return;
+      this.mode = this.hQa;
+      Object localObject = x.hJf;
+      x.aGD().hJq = true;
+      localObject = this.hwr.getContext();
+      if (localObject == null)
+      {
+        paramc = new kotlin.t("null cannot be cast to non-null type android.app.Activity");
+        AppMethodBeat.o(208002);
+        throw paramc;
+      }
+      ((Activity)localObject).setRequestedOrientation(7);
+      if (isLandscape())
+      {
+        localObject = x.hJf;
+        if (!x.aGE().hJk)
+        {
+          paramc = x.hJf;
+          x.aGE().hJk = true;
+          AppMethodBeat.o(208002);
+          return;
+        }
+      }
+      this.hQb.setVisibility(0);
+      this.hQb.setOnClickListener((View.OnClickListener)new b(this));
+      localObject = x.hJf;
+      this.hJl = x.aGE().hJl;
+      this.hQd.setText(2131762290);
+      localObject = x.hJf;
+      if (x.aGE().hJm) {
+        this.hQe.setText(2131762292);
+      }
+      for (;;)
+      {
+        this.hPX.setText(2131762293);
+        localObject = this.hPX;
+        localContext = this.hwr.getContext();
+        p.g(localContext, "root.context");
+        ((Button)localObject).setTextColor(localContext.getResources().getColor(2131101425));
+        this.hPX.setBackgroundResource(2131231436);
+        this.hPX.setOnClickListener((View.OnClickListener)new c(this));
+        rg(0);
+        break;
+        this.hQe.setText(2131762291);
+      }
+      this.mode = this.hPY;
+      localObject = x.hJf;
+      x.aGD().hJq = true;
+      this.hQb.setVisibility(4);
+      this.hQd.setText(2131762339);
+      this.hQe.setText(2131762338);
+      this.hPX.setText(2131762432);
+      localObject = this.hPX;
+      Context localContext = this.hwr.getContext();
+      p.g(localContext, "root.context");
+      ((Button)localObject).setTextColor(localContext.getResources().getColor(2131101425));
+      this.hPX.setBackgroundResource(2131231436);
+      this.hPX.setOnClickListener((View.OnClickListener)new d(this));
+      rg(0);
+      continue;
+      this.mode = this.hPZ;
+      localObject = x.hJf;
+      x.aGD().hJq = true;
+      this.hQb.setVisibility(4);
+      this.hQd.setText(2131762288);
+      this.hQe.setText(2131762289);
+      this.hPX.setText(2131762432);
+      localObject = this.hPX;
+      localContext = this.hwr.getContext();
+      p.g(localContext, "root.context");
+      ((Button)localObject).setTextColor(localContext.getResources().getColor(2131100194));
+      this.hPX.setBackgroundResource(2131231429);
+      this.hPX.setOnClickListener((View.OnClickListener)new e(this));
+      rg(0);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/plugin/LiveFaceVerifyPlugin$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  public static final class a {}
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -248,18 +250,18 @@ public final class t
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(216040);
+      AppMethodBeat.i(207998);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      t.a(this.gXm).setVisibility(4);
-      this.gXm.nL(8);
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      t.a(this.hQh).setVisibility(4);
+      this.hQh.rg(8);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(216040);
+      AppMethodBeat.o(207998);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class c
     implements View.OnClickListener
   {
@@ -267,23 +269,23 @@ public final class t
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(216041);
+      AppMethodBeat.i(207999);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
       paramView = new Intent();
       paramView.putExtra("open_custom_style_url", true);
       paramView.putExtra("forceHideShare", true);
       paramView.putExtra("show_native_web_view", true);
-      paramView.putExtra("rawUrl", this.gXm.gRf);
+      paramView.putExtra("rawUrl", this.hQh.hJl);
       paramView.putExtra("screen_orientation", 1);
-      d.b(this.gXm.gJt.getContext(), "webview", ".ui.tools.WebViewUI", paramView, 9);
+      c.b(this.hQh.hwr.getContext(), "webview", ".ui.tools.WebViewUI", paramView, 9);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(216041);
+      AppMethodBeat.o(207999);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class d
     implements View.OnClickListener
   {
@@ -291,19 +293,19 @@ public final class t
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(216042);
+      AppMethodBeat.i(208000);
       com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      paramView = g.gQZ;
-      g.anV().gRk = false;
-      b.b.a(t.b(this.gXm), b.c.gUe);
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      paramView = x.hJf;
+      x.aGD().hJq = false;
+      b.b.a(t.b(this.hQh), b.c.hLD);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(216042);
+      AppMethodBeat.o(208000);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class e
     implements View.OnClickListener
   {
@@ -311,26 +313,26 @@ public final class t
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(216043);
+      AppMethodBeat.i(208001);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-      paramView = g.gQZ;
-      g.anV().gRk = false;
-      paramView = t.c(this.gXm);
-      localObject = this.gXm.gJt.getContext();
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+      paramView = x.hJf;
+      x.aGD().hJq = false;
+      paramView = t.c(this.hQh);
+      localObject = this.hQh.hwr.getContext();
       p.g(localObject, "root.context");
-      paramView.setTextColor(((Context)localObject).getResources().getColor(2131101180));
-      t.c(this.gXm).setBackgroundResource(2131231372);
-      this.gXm.nL(8);
+      paramView.setTextColor(((Context)localObject).getResources().getColor(2131101425));
+      t.c(this.hQh).setBackgroundResource(2131231436);
+      this.hQh.rg(8);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/live/plugin/LiveFaceVerifyPlugin$statusChange$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(216043);
+      AppMethodBeat.o(208001);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.live.c.t
  * JD-Core Version:    0.7.0.1
  */

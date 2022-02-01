@@ -8,115 +8,119 @@ import com.tencent.mm.plugin.gallery.model.GalleryItem.MediaItem;
 import com.tencent.mm.plugin.gallery.model.i.a;
 import com.tencent.mm.plugin.gallery.model.i.c;
 import com.tencent.mm.plugin.gallery.model.o;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.a.j;
-import d.g.a.m;
-import d.g.a.q;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.a.j;
+import kotlin.g.a.m;
+import kotlin.g.a.q;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/loader/PickerDataLoader;", "", "()V", "TAG", "", "allMediaString", "kotlin.jvm.PlatformType", "allVideoMediaString", "currentFolderMedia", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "queryFolderListener", "Lcom/tencent/mm/plugin/gallery/picker/loader/PickerDataLoader$QueryFolderListener;", "queryListener", "Lcom/tencent/mm/plugin/gallery/picker/loader/PickerDataLoader$QueryMediaListener;", "queryService", "Lcom/tencent/mm/plugin/gallery/model/MediaQueryService;", "isNeed2Reload", "", "media", "onInit", "", "onLoad", "ticket", "", "callback", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "isSuccessfully", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "albumItems", "cost", "onLoadFolder", "Lkotlin/Function2;", "onRelease", "QueryFolderListener", "QueryMediaListener", "plugin-gallery_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/picker/loader/PickerDataLoader;", "", "()V", "TAG", "", "allMediaString", "allVideoMediaString", "currentFolderMedia", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "queryFolderListener", "Lcom/tencent/mm/plugin/gallery/picker/loader/PickerDataLoader$QueryFolderListener;", "queryListener", "Lcom/tencent/mm/plugin/gallery/picker/loader/PickerDataLoader$QueryMediaListener;", "queryService", "Lcom/tencent/mm/plugin/gallery/model/MediaQueryService;", "isNeed2Reload", "", "media", "onInit", "", "onLoad", "ticket", "", "callback", "Lkotlin/Function3;", "Lkotlin/ParameterName;", "name", "isSuccessfully", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "albumItems", "cost", "onLoadFolder", "Lkotlin/Function2;", "onRelease", "QueryFolderListener", "QueryMediaListener", "plugin-gallery_release"})
 public final class e
 {
-  private static e.b tTZ;
-  private static a tUa;
-  private static GalleryItem.AlbumItem tUb;
-  private static String tUc;
-  private static String tUd;
-  public static final e tUe;
-  private static o tfS;
+  private static o wmZ;
+  private static b xll;
+  private static a xlm;
+  private static GalleryItem.AlbumItem xln;
+  private static String xlo;
+  private static String xlp;
+  public static final e xlq;
   
   static
   {
     AppMethodBeat.i(164910);
-    tUe = new e();
-    tTZ = new e.b();
-    tUa = new a();
-    Context localContext = ak.getContext();
-    p.g(localContext, "MMApplicationContext.getContext()");
-    tUc = localContext.getResources().getString(2131759758);
-    tUd = ak.getContext().getString(2131759759);
+    xlq = new e();
+    xll = new b();
+    xlm = new a();
+    Object localObject = MMApplicationContext.getContext();
+    p.g(localObject, "MMApplicationContext.getContext()");
+    localObject = ((Context)localObject).getResources().getString(2131761082);
+    p.g(localObject, "MMApplicationContext.get…allery_all_pic_and_video)");
+    xlo = (String)localObject;
+    localObject = MMApplicationContext.getContext().getString(2131761083);
+    p.g(localObject, "MMApplicationContext.get…string.gallery_all_video)");
+    xlp = (String)localObject;
     AppMethodBeat.o(164910);
   }
   
-  public static void Dg()
+  public static void MC()
   {
     AppMethodBeat.i(164905);
     o localo = new o();
-    tfS = localo;
+    wmZ = localo;
     localo.setQueryType(3);
-    localo = tfS;
+    localo = wmZ;
     if (localo == null) {
-      p.gkB();
+      p.hyc();
     }
-    localo.a((i.c)tTZ);
-    localo = tfS;
+    localo.a((i.c)xll);
+    localo = wmZ;
     if (localo == null) {
-      p.gkB();
+      p.hyc();
     }
-    localo.a((i.a)tUa);
+    localo.a((i.a)xlm);
     AppMethodBeat.o(164905);
   }
   
-  public static void a(long paramLong, GalleryItem.AlbumItem paramAlbumItem, q<? super Boolean, ? super LinkedList<GalleryItem.MediaItem>, ? super Long, z> paramq)
+  public static void a(long paramLong, GalleryItem.AlbumItem paramAlbumItem, q<? super Boolean, ? super LinkedList<GalleryItem.MediaItem>, ? super Long, x> paramq)
   {
     boolean bool2 = true;
     AppMethodBeat.i(164906);
     p.h(paramAlbumItem, "media");
     p.h(paramq, "callback");
-    tTZ.tUf = paramq;
-    tTZ.itF = paramLong;
-    Object localObject = tUb;
+    xll.xlr = paramq;
+    xll.joR = paramLong;
+    Object localObject = xln;
     boolean bool1 = bool2;
     if (localObject != null)
     {
-      if ((p.i(((GalleryItem.AlbumItem)localObject).tRB, paramAlbumItem.tRB) ^ true)) {
+      if ((p.j(((GalleryItem.AlbumItem)localObject).albumName, paramAlbumItem.albumName) ^ true)) {
         bool1 = bool2;
       }
     }
     else
     {
-      ae.i("MicroMsg.PickerDataLoader", "[onLoad] ticket=" + paramLong + " isNeed=" + bool1);
+      Log.i("MicroMsg.PickerDataLoader", "[onLoad] ticket=" + paramLong + " isNeed=" + bool1);
       if (!bool1) {
         break label224;
       }
-      if (!p.i(paramAlbumItem.tRB, tUc)) {
+      if (!p.j(paramAlbumItem.albumName, xlo)) {
         break label150;
       }
-      paramq = tfS;
+      paramq = wmZ;
       if (paramq != null) {
-        paramq.E("", 3, paramLong);
+        paramq.D("", 3, paramLong);
       }
     }
     for (;;)
     {
-      tUb = paramAlbumItem;
+      xln = paramAlbumItem;
       AppMethodBeat.o(164906);
       return;
       bool1 = false;
       break;
       label150:
-      if (p.i(paramAlbumItem.tRB, tUd))
+      if (p.j(paramAlbumItem.albumName, xlp))
       {
-        paramq = tfS;
+        paramq = wmZ;
         if (paramq != null) {
-          paramq.E("", 2, paramLong);
+          paramq.D("", 2, paramLong);
         }
       }
       else
       {
-        paramq = tfS;
+        paramq = wmZ;
         if (paramq != null)
         {
-          localObject = paramAlbumItem.tRB;
-          GalleryItem.MediaItem localMediaItem = paramAlbumItem.dnF();
+          localObject = paramAlbumItem.albumName;
+          GalleryItem.MediaItem localMediaItem = paramAlbumItem.gEB();
           p.g(localMediaItem, "media.mediaItem");
-          paramq.E((String)localObject, localMediaItem.getType(), paramLong);
+          paramq.D((String)localObject, localMediaItem.getType(), paramLong);
           continue;
           label224:
           long l = System.currentTimeMillis();
@@ -129,8 +133,8 @@ public final class e
   public static void onRelease()
   {
     AppMethodBeat.i(164908);
-    tUb = null;
-    o localo = tfS;
+    xln = null;
+    o localo = wmZ;
     if (localo != null)
     {
       localo.release();
@@ -140,52 +144,110 @@ public final class e
     AppMethodBeat.o(164908);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/loader/PickerDataLoader$QueryFolderListener;", "Lcom/tencent/mm/plugin/gallery/model/IMediaQuery$IQueryAlbumFinished;", "()V", "callback", "Lkotlin/Function2;", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "Lkotlin/ParameterName;", "name", "albumItems", "", "cost", "", "getCallback", "()Lkotlin/jvm/functions/Function2;", "setCallback", "(Lkotlin/jvm/functions/Function2;)V", "ticket", "getTicket", "()J", "setTicket", "(J)V", "onQueryAlbumFinished", "plugin-gallery_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/picker/loader/PickerDataLoader$QueryFolderListener;", "Lcom/tencent/mm/plugin/gallery/model/IMediaQuery$IQueryAlbumFinished;", "()V", "callback", "Lkotlin/Function2;", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$AlbumItem;", "Lkotlin/ParameterName;", "name", "albumItems", "", "cost", "", "getCallback", "()Lkotlin/jvm/functions/Function2;", "setCallback", "(Lkotlin/jvm/functions/Function2;)V", "ticket", "getTicket", "()J", "setTicket", "(J)V", "onQueryAlbumFinished", "plugin-gallery_release"})
   public static final class a
     implements i.a
   {
-    m<? super LinkedList<GalleryItem.AlbumItem>, ? super Long, z> glx;
-    long itF;
+    m<? super LinkedList<GalleryItem.AlbumItem>, ? super Long, x> gWp;
+    long joR;
     
     public a()
     {
       AppMethodBeat.i(164902);
-      this.itF = System.currentTimeMillis();
+      this.joR = System.currentTimeMillis();
       AppMethodBeat.o(164902);
     }
     
-    public final void aq(LinkedList<GalleryItem.AlbumItem> paramLinkedList)
+    public final void aL(LinkedList<GalleryItem.AlbumItem> paramLinkedList)
     {
       AppMethodBeat.i(164901);
       p.h(paramLinkedList, "albumItems");
       long l1 = System.currentTimeMillis();
-      long l2 = this.itF;
-      Object localObject1 = e.tUe;
-      localObject1 = e.cYj();
+      long l2 = this.joR;
+      Object localObject1 = e.xlq;
+      localObject1 = e.dRC();
       Object localObject2 = ((Iterable)paramLinkedList).iterator();
-      for (int i = 0; ((Iterator)localObject2).hasNext(); i = ((GalleryItem.AlbumItem)((Iterator)localObject2).next()).drZ + i) {}
+      for (int i = 0; ((Iterator)localObject2).hasNext(); i = ((GalleryItem.AlbumItem)((Iterator)localObject2).next()).dJl + i) {}
       localObject2 = new GalleryItem.AlbumItem((String)localObject1, i);
-      localObject1 = (GalleryItem.AlbumItem)j.jm((List)paramLinkedList);
+      localObject1 = (GalleryItem.AlbumItem)j.kt((List)paramLinkedList);
       if (localObject1 != null) {}
-      for (localObject1 = ((GalleryItem.AlbumItem)localObject1).dnF();; localObject1 = null)
+      for (localObject1 = ((GalleryItem.AlbumItem)localObject1).gEB();; localObject1 = null)
       {
-        ((GalleryItem.AlbumItem)localObject2).b((GalleryItem.MediaItem)localObject1);
+        ((GalleryItem.AlbumItem)localObject2).c((GalleryItem.MediaItem)localObject1);
         paramLinkedList.add(0, localObject2);
-        localObject1 = this.glx;
+        localObject1 = this.gWp;
         if (localObject1 == null) {
           break;
         }
-        ((m)localObject1).p(paramLinkedList, Long.valueOf(l1 - l2));
+        ((m)localObject1).invoke(paramLinkedList, Long.valueOf(l1 - l2));
         AppMethodBeat.o(164901);
         return;
       }
       AppMethodBeat.o(164901);
     }
   }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/picker/loader/PickerDataLoader$QueryMediaListener;", "Lcom/tencent/mm/plugin/gallery/model/IMediaQuery$IQueryMediaInAlbumFinished;", "()V", "callback", "Lkotlin/Function3;", "", "Ljava/util/LinkedList;", "Lcom/tencent/mm/plugin/gallery/model/GalleryItem$MediaItem;", "", "", "getCallback", "()Lkotlin/jvm/functions/Function3;", "setCallback", "(Lkotlin/jvm/functions/Function3;)V", "ticket", "getTicket", "()J", "setTicket", "(J)V", "onQueryMediaFinished", "mediaItems", "t", "isFirstNotify", "plugin-gallery_release"})
+  public static final class b
+    implements i.c
+  {
+    long joR;
+    q<? super Boolean, ? super LinkedList<GalleryItem.MediaItem>, ? super Long, x> xlr;
+    
+    public b()
+    {
+      AppMethodBeat.i(164904);
+      this.joR = System.currentTimeMillis();
+      AppMethodBeat.o(164904);
+    }
+    
+    public final void b(LinkedList<GalleryItem.MediaItem> paramLinkedList, long paramLong, boolean paramBoolean)
+    {
+      x localx = null;
+      AppMethodBeat.i(164903);
+      long l = System.currentTimeMillis() - this.joR;
+      int i;
+      if (this.joR == paramLong)
+      {
+        i = 1;
+        if (i == 0) {
+          break label127;
+        }
+      }
+      for (;;)
+      {
+        if (paramLinkedList != null)
+        {
+          q localq = this.xlr;
+          if (localq != null)
+          {
+            localq.d(Boolean.TRUE, paramLinkedList, Long.valueOf(l));
+            localx = x.SXb;
+          }
+          if (localx != null) {}
+        }
+        else
+        {
+          paramLinkedList = ((b)this).xlr;
+          if (paramLinkedList != null)
+          {
+            paramLinkedList.d(Boolean.FALSE, new LinkedList(), Long.valueOf(l));
+            paramLinkedList = x.SXb;
+          }
+        }
+        AppMethodBeat.o(164903);
+        return;
+        i = 0;
+        break;
+        label127:
+        paramLinkedList = null;
+      }
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.c.e
  * JD-Core Version:    0.7.0.1
  */

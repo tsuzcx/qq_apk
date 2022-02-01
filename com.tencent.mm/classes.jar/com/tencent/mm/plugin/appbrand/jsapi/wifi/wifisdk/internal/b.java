@@ -16,7 +16,7 @@ public final class b
       while (paramList.hasNext())
       {
         WifiConfiguration localWifiConfiguration = (WifiConfiguration)paramList.next();
-        if ((d.Se(localWifiConfiguration.SSID).compareTo(paramString) == 0) && (d.d(localWifiConfiguration) == paramInt))
+        if ((e.abJ(localWifiConfiguration.SSID).compareTo(paramString) == 0) && (e.d(localWifiConfiguration) == paramInt))
         {
           AppMethodBeat.o(144716);
           return localWifiConfiguration;
@@ -27,7 +27,7 @@ public final class b
     return null;
   }
   
-  public static boolean bM(String paramString, int paramInt)
+  public static boolean bR(String paramString, int paramInt)
   {
     boolean bool = false;
     AppMethodBeat.i(144715);
@@ -36,7 +36,7 @@ public final class b
       AppMethodBeat.o(144715);
       return false;
     }
-    Object localObject = c.getConfiguredNetworks();
+    Object localObject = d.getConfiguredNetworks();
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -44,10 +44,10 @@ public final class b
       if (((Iterator)localObject).hasNext())
       {
         WifiConfiguration localWifiConfiguration = (WifiConfiguration)((Iterator)localObject).next();
-        if ((d.Se(localWifiConfiguration.SSID).compareTo(paramString) != 0) || (d.d(localWifiConfiguration) != paramInt)) {
+        if ((e.abJ(localWifiConfiguration.SSID).compareTo(paramString) != 0) || (e.d(localWifiConfiguration) != paramInt)) {
           break label115;
         }
-        bool |= c.removeNetwork(localWifiConfiguration.networkId);
+        bool |= d.removeNetwork(localWifiConfiguration.networkId);
       }
     }
     label115:
@@ -55,7 +55,7 @@ public final class b
     {
       break;
       if (bool) {
-        c.saveConfiguration();
+        d.saveConfiguration();
       }
       AppMethodBeat.o(144715);
       return bool;
@@ -67,7 +67,7 @@ public final class b
     AppMethodBeat.i(144714);
     if ((paramWifiConfiguration != null) && (paramWifiConfiguration.networkId < 0))
     {
-      paramWifiConfiguration.networkId = c.addNetwork(paramWifiConfiguration);
+      paramWifiConfiguration.networkId = d.addNetwork(paramWifiConfiguration);
       int i = paramWifiConfiguration.networkId;
       AppMethodBeat.o(144714);
       return i;
@@ -76,14 +76,14 @@ public final class b
     return -1;
   }
   
-  public static boolean tR(int paramInt)
+  public static boolean xP(int paramInt)
   {
     AppMethodBeat.i(144717);
     boolean bool = false;
-    if ((c.removeNetwork(paramInt)) || (c.disableNetwork(paramInt)))
+    if ((d.removeNetwork(paramInt)) || (d.disableNetwork(paramInt)))
     {
       bool = true;
-      c.saveConfiguration();
+      d.saveConfiguration();
     }
     AppMethodBeat.o(144717);
     return bool;
@@ -91,7 +91,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal.b
  * JD-Core Version:    0.7.0.1
  */

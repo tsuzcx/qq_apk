@@ -1,16 +1,14 @@
 package com.tencent.luggage.game.d.a.a;
 
-public final class c
-  extends IllegalAccessException
+import com.tencent.magicbrush.e;
+
+public abstract interface c
 {
-  public c()
-  {
-    super("Not access game service!");
-  }
+  public abstract e getMagicBrush();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.game.d.a.a.c
  * JD-Core Version:    0.7.0.1
  */

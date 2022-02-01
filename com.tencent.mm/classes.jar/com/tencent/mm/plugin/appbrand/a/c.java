@@ -8,88 +8,93 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class c
 {
-  final AppBrandRuntime jDb;
-  public final d jOf;
-  public final a<c.a, c> jOg;
+  final AppBrandRuntime kEc;
+  public final d kQM;
+  public final a<a, c> kQN;
   
   public c(AppBrandRuntime paramAppBrandRuntime)
   {
     AppMethodBeat.i(134712);
-    this.jOg = new a();
-    this.jDb = paramAppBrandRuntime;
-    this.jOf = new d(paramAppBrandRuntime)
+    this.kQN = new a();
+    this.kEc = paramAppBrandRuntime;
+    this.kQM = new d(paramAppBrandRuntime)
     {
       final void a(b paramAnonymousb)
       {
         AppMethodBeat.i(134711);
         c localc = c.this;
-        synchronized (localc.jOg)
+        synchronized (localc.kQN)
         {
-          c.a[] arrayOfa = new c.a[localc.jOg.size()];
-          arrayOfa = (c.a[])localc.jOg.keySet().toArray(arrayOfa);
+          c.a[] arrayOfa = new c.a[localc.kQN.size()];
+          arrayOfa = (c.a[])localc.kQN.keySet().toArray(arrayOfa);
           int j = arrayOfa.length;
           int i = 0;
           if (i < j)
           {
-            arrayOfa[i].a(localc.jDb.mAppId, paramAnonymousb);
+            arrayOfa[i].a(localc.kEc.mAppId, paramAnonymousb);
             i += 1;
           }
         }
         AppMethodBeat.o(134711);
       }
       
-      final void bbG()
+      final void bwW()
       {
         AppMethodBeat.i(134710);
-        c.this.jDb.finish();
+        c.this.kEc.finish();
         AppMethodBeat.o(134710);
       }
     };
     AppMethodBeat.o(134712);
   }
   
-  public final void a(c.a parama)
+  public final void a(a parama)
   {
     AppMethodBeat.i(134713);
-    if ((parama == null) || (this.jOf.jOp.get()))
+    if ((parama == null) || (this.kQM.kQW.get()))
     {
       AppMethodBeat.o(134713);
       return;
     }
-    synchronized (this.jOg)
+    synchronized (this.kQN)
     {
-      this.jOg.put(parama, this);
+      this.kQN.put(parama, this);
       AppMethodBeat.o(134713);
       return;
     }
   }
   
-  public final void b(c.a parama)
+  public final void b(a parama)
   {
     AppMethodBeat.i(134714);
-    if ((parama == null) || (b.jOd == this.jOf.bbI()))
+    if ((parama == null) || (b.kQK == this.kQM.bwY()))
     {
       AppMethodBeat.o(134714);
       return;
     }
-    synchronized (this.jOg)
+    synchronized (this.kQN)
     {
-      this.jOg.remove(parama);
+      this.kQN.remove(parama);
       AppMethodBeat.o(134714);
       return;
     }
   }
   
-  public final void fO(boolean paramBoolean)
+  public final void gK(boolean paramBoolean)
   {
     AppMethodBeat.i(162077);
-    this.jOf.fO(paramBoolean);
+    this.kQM.gK(paramBoolean);
     AppMethodBeat.o(162077);
+  }
+  
+  public static abstract interface a
+  {
+    public abstract void a(String paramString, b paramb);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.a.c
  * JD-Core Version:    0.7.0.1
  */

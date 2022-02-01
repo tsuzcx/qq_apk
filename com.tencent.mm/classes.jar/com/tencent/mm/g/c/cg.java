@@ -2,71 +2,85 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.protocal.protobuf.arn;
-import com.tencent.mm.sdk.e.c;
-import com.tencent.mm.sdk.e.c.a;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.aud;
+import com.tencent.mm.protocal.protobuf.axw;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public abstract class cg
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGk = "scene".hashCode();
-  private static final int eSk = "showTips".hashCode();
-  private static final int eWU = "localId".hashCode();
-  private static final int faB = "likeAction".hashCode();
-  private static final int faC = "contextObj".hashCode();
-  private static final int faD = "isPrivate".hashCode();
+  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS FinderDraftItem_local_index ON FinderDraftItem(localId)", "CREATE INDEX IF NOT EXISTS FinderDraftItem_create_time ON FinderDraftItem(createTime)", "CREATE INDEX IF NOT EXISTS FinderDraftItem__Local_Flag ON FinderDraftItem(localFlag)", "CREATE INDEX IF NOT EXISTS FinderDraftItem__Object_Type ON FinderDraftItem(objectType)" };
+  private static final int createTime_HASHCODE;
+  private static final int fEd = "finderItem".hashCode();
+  private static final int fEe = "objectType".hashCode();
+  private static final int fEf = "postIntent".hashCode();
+  private static final int fEg = "originMvInfo".hashCode();
+  private static final int localFlag_HASHCODE;
+  private static final int localId_HASHCODE = "localId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGi = true;
-  private boolean eRV = true;
-  private boolean eWS = true;
-  private boolean faA = true;
-  private boolean fay = true;
-  private boolean faz = true;
-  public arn field_contextObj;
-  public boolean field_isPrivate;
-  public int field_likeAction;
+  private boolean __hadSetcreateTime = true;
+  private boolean __hadSetlocalFlag = true;
+  private boolean __hadSetlocalId = true;
+  private boolean fDZ = true;
+  private boolean fEa = true;
+  private boolean fEb = true;
+  private boolean fEc = true;
+  public int field_createTime;
+  public aud field_finderItem;
+  public int field_localFlag;
   public long field_localId;
-  public int field_scene;
-  public boolean field_showTips;
+  public int field_objectType;
+  public axw field_originMvInfo;
+  public String field_postIntent;
   
-  public static c.a VD()
+  static
   {
-    c.a locala = new c.a();
-    locala.IBL = new Field[6];
-    locala.columns = new String[7];
+    createTime_HASHCODE = "createTime".hashCode();
+    localFlag_HASHCODE = "localFlag".hashCode();
+  }
+  
+  public static IAutoDBItem.MAutoDBInfo ajs()
+  {
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[7];
+    localMAutoDBInfo.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "localId";
-    locala.IBN.put("localId", "LONG PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "localId";
+    localMAutoDBInfo.colsMap.put("localId", "LONG PRIMARY KEY ");
     localStringBuilder.append(" localId LONG PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "localId";
-    locala.columns[1] = "likeAction";
-    locala.IBN.put("likeAction", "INTEGER");
-    localStringBuilder.append(" likeAction INTEGER");
+    localMAutoDBInfo.primaryKey = "localId";
+    localMAutoDBInfo.columns[1] = "createTime";
+    localMAutoDBInfo.colsMap.put("createTime", "INTEGER");
+    localStringBuilder.append(" createTime INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "scene";
-    locala.IBN.put("scene", "INTEGER");
-    localStringBuilder.append(" scene INTEGER");
+    localMAutoDBInfo.columns[2] = "localFlag";
+    localMAutoDBInfo.colsMap.put("localFlag", "INTEGER");
+    localStringBuilder.append(" localFlag INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[3] = "showTips";
-    locala.IBN.put("showTips", "INTEGER");
-    localStringBuilder.append(" showTips INTEGER");
+    localMAutoDBInfo.columns[3] = "finderItem";
+    localMAutoDBInfo.colsMap.put("finderItem", "BLOB");
+    localStringBuilder.append(" finderItem BLOB");
     localStringBuilder.append(", ");
-    locala.columns[4] = "contextObj";
-    locala.IBN.put("contextObj", "BLOB");
-    localStringBuilder.append(" contextObj BLOB");
+    localMAutoDBInfo.columns[4] = "objectType";
+    localMAutoDBInfo.colsMap.put("objectType", "INTEGER");
+    localStringBuilder.append(" objectType INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[5] = "isPrivate";
-    locala.IBN.put("isPrivate", "INTEGER");
-    localStringBuilder.append(" isPrivate INTEGER");
-    locala.columns[6] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    return locala;
+    localMAutoDBInfo.columns[5] = "postIntent";
+    localMAutoDBInfo.colsMap.put("postIntent", "TEXT");
+    localStringBuilder.append(" postIntent TEXT");
+    localStringBuilder.append(", ");
+    localMAutoDBInfo.columns[6] = "originMvInfo";
+    localMAutoDBInfo.colsMap.put("originMvInfo", "BLOB");
+    localStringBuilder.append(" originMvInfo BLOB");
+    localMAutoDBInfo.columns[7] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    return localMAutoDBInfo;
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -82,11 +96,11 @@ public abstract class cg
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eWU != k) {
+      if (localId_HASHCODE != k) {
         break label65;
       }
       this.field_localId = paramCursor.getLong(i);
-      this.eWS = true;
+      this.__hadSetlocalId = true;
     }
     for (;;)
     {
@@ -94,56 +108,42 @@ public abstract class cg
       break label20;
       break;
       label65:
-      if (faB == k)
-      {
-        this.field_likeAction = paramCursor.getInt(i);
-      }
-      else if (eGk == k)
-      {
-        this.field_scene = paramCursor.getInt(i);
-      }
-      else
-      {
-        boolean bool;
-        if (eSk == k)
+      if (createTime_HASHCODE == k) {
+        this.field_createTime = paramCursor.getInt(i);
+      } else if (localFlag_HASHCODE == k) {
+        this.field_localFlag = paramCursor.getInt(i);
+      } else if (fEd == k) {
+        try
         {
-          if (paramCursor.getInt(i) != 0) {}
-          for (bool = true;; bool = false)
-          {
-            this.field_showTips = bool;
-            break;
+          byte[] arrayOfByte1 = paramCursor.getBlob(i);
+          if ((arrayOfByte1 == null) || (arrayOfByte1.length <= 0)) {
+            continue;
           }
+          this.field_finderItem = ((aud)new aud().parseFrom(arrayOfByte1));
         }
-        if (faC == k)
+        catch (IOException localIOException1)
         {
-          try
-          {
-            byte[] arrayOfByte = paramCursor.getBlob(i);
-            if ((arrayOfByte == null) || (arrayOfByte.length <= 0)) {
-              continue;
-            }
-            this.field_contextObj = ((arn)new arn().parseFrom(arrayOfByte));
-          }
-          catch (IOException localIOException)
-          {
-            ae.e("MicroMsg.SDK.BaseFinderLocalOperation", localIOException.getMessage());
-          }
+          Log.e("MicroMsg.SDK.BaseFinderDraftItem", localIOException1.getMessage());
         }
-        else
+      } else if (fEe == k) {
+        this.field_objectType = paramCursor.getInt(i);
+      } else if (fEf == k) {
+        this.field_postIntent = paramCursor.getString(i);
+      } else if (fEg == k) {
+        try
         {
-          if (faD == k)
-          {
-            if (paramCursor.getInt(i) != 0) {}
-            for (bool = true;; bool = false)
-            {
-              this.field_isPrivate = bool;
-              break;
-            }
+          byte[] arrayOfByte2 = paramCursor.getBlob(i);
+          if ((arrayOfByte2 == null) || (arrayOfByte2.length <= 0)) {
+            continue;
           }
-          if (rowid_HASHCODE == k) {
-            this.systemRowid = paramCursor.getLong(i);
-          }
+          this.field_originMvInfo = ((axw)new axw().parseFrom(arrayOfByte2));
         }
+        catch (IOException localIOException2)
+        {
+          Log.e("MicroMsg.SDK.BaseFinderDraftItem", localIOException2.getMessage());
+        }
+      } else if (rowid_HASHCODE == k) {
+        this.systemRowid = paramCursor.getLong(i);
       }
     }
   }
@@ -151,42 +151,52 @@ public abstract class cg
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eWS) {
+    if (this.__hadSetlocalId) {
       localContentValues.put("localId", Long.valueOf(this.field_localId));
     }
-    if (this.fay) {
-      localContentValues.put("likeAction", Integer.valueOf(this.field_likeAction));
+    if (this.__hadSetcreateTime) {
+      localContentValues.put("createTime", Integer.valueOf(this.field_createTime));
     }
-    if (this.eGi) {
-      localContentValues.put("scene", Integer.valueOf(this.field_scene));
+    if (this.__hadSetlocalFlag) {
+      localContentValues.put("localFlag", Integer.valueOf(this.field_localFlag));
     }
-    if (this.eRV) {
-      localContentValues.put("showTips", Boolean.valueOf(this.field_showTips));
-    }
-    if ((this.faz) && (this.field_contextObj != null)) {}
+    if ((this.fDZ) && (this.field_finderItem != null)) {}
     try
     {
-      localContentValues.put("contextObj", this.field_contextObj.toByteArray());
-      if (this.faA) {
-        localContentValues.put("isPrivate", Boolean.valueOf(this.field_isPrivate));
+      localContentValues.put("finderItem", this.field_finderItem.toByteArray());
+      if (this.fEa) {
+        localContentValues.put("objectType", Integer.valueOf(this.field_objectType));
       }
-      if (this.systemRowid > 0L) {
-        localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+      if (this.fEb) {
+        localContentValues.put("postIntent", this.field_postIntent);
       }
-      return localContentValues;
+      if ((!this.fEc) || (this.field_originMvInfo == null)) {}
     }
-    catch (IOException localIOException)
+    catch (IOException localIOException1)
     {
-      for (;;)
+      try
       {
-        ae.e("MicroMsg.SDK.BaseFinderLocalOperation", localIOException.getMessage());
+        localContentValues.put("originMvInfo", this.field_originMvInfo.toByteArray());
+        if (this.systemRowid > 0L) {
+          localContentValues.put("rowid", Long.valueOf(this.systemRowid));
+        }
+        return localContentValues;
+        localIOException1 = localIOException1;
+        Log.e("MicroMsg.SDK.BaseFinderDraftItem", localIOException1.getMessage());
+      }
+      catch (IOException localIOException2)
+      {
+        for (;;)
+        {
+          Log.e("MicroMsg.SDK.BaseFinderDraftItem", localIOException2.getMessage());
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.cg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_height="fill_parent" style="@style/qp"
+<LinearLayout android:orientation="horizontal" android:id="@id/g23" android:background="@color/BW_97" android:padding="@dimen/af6" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/grn" android:background="@color/a_r" android:paddingLeft="@dimen/jn" android:paddingRight="@dimen/jn" android:focusable="true" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a7c" android:transcriptMode="disabled" android:cacheColorHint="#00000000" android:divider="@null" android:dividerHeight="0.0px" />
-    <TextView android:textSize="17.0dip" android:textColor="@color/y4" android:gravity="center" android:id="@id/bmd" android:background="@color/a_r" android:paddingBottom="30.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="@string/e6" />
-</FrameLayout>
+    <LinearLayout android:orientation="vertical" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:id="@id/joq" android:background="@null" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b5w" />
+            <TextView android:textColor="@color/a2x" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/j3q" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/jon" android:background="@null" android:paddingTop="20.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageButton android:layout_gravity="center" android:id="@id/cdp" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b5q" />
+            <TextView android:textColor="@color/a2x" android:layout_gravity="center" android:id="@id/cds" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/j3j" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/joo" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b5t" />
+        <TextView android:textColor="@color/a2x" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/j3m" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/jop" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b5u" />
+        <TextView android:textColor="@color/a2x" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/j3o" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/fjx" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <ImageButton android:layout_gravity="center" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b5v" />
+        <TextView android:textColor="@color/a2x" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/j3p" />
+    </LinearLayout>
+</LinearLayout>

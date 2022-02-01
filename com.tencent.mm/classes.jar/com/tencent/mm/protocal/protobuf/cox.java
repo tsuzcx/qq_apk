@@ -1,102 +1,115 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
 
 public final class cox
-  extends cvw
+  extends com.tencent.mm.bw.a
 {
-  public long HAG;
-  public long HAH;
-  public long offset;
+  public String desc;
+  public String iwv;
+  public String path;
+  public String title;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(91638);
+    AppMethodBeat.i(91539);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseRequest != null)
-      {
-        paramVarArgs.lJ(1, this.BaseRequest.computeSize());
-        this.BaseRequest.writeFields(paramVarArgs);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.iwv != null) {
+        paramVarArgs.e(1, this.iwv);
       }
-      paramVarArgs.aZ(2, this.HAG);
-      paramVarArgs.aZ(3, this.offset);
-      paramVarArgs.aZ(4, this.HAH);
-      AppMethodBeat.o(91638);
+      if (this.title != null) {
+        paramVarArgs.e(2, this.title);
+      }
+      if (this.desc != null) {
+        paramVarArgs.e(3, this.desc);
+      }
+      if (this.username != null) {
+        paramVarArgs.e(4, this.username);
+      }
+      if (this.path != null) {
+        paramVarArgs.e(5, this.path);
+      }
+      AppMethodBeat.o(91539);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseRequest == null) {
-        break label446;
+      if (this.iwv == null) {
+        break label454;
       }
     }
-    label446:
-    for (paramInt = f.a.a.a.lI(1, this.BaseRequest.computeSize()) + 0;; paramInt = 0)
+    label454:
+    for (int i = g.a.a.b.b.a.f(1, this.iwv) + 0;; i = 0)
     {
-      int i = f.a.a.b.b.a.p(2, this.HAG);
-      int j = f.a.a.b.b.a.p(3, this.offset);
-      int k = f.a.a.b.b.a.p(4, this.HAH);
-      AppMethodBeat.o(91638);
-      return paramInt + i + j + k;
+      paramInt = i;
+      if (this.title != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.title);
+      }
+      i = paramInt;
+      if (this.desc != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.desc);
+      }
+      paramInt = i;
+      if (this.username != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.username);
+      }
+      i = paramInt;
+      if (this.path != null) {
+        i = paramInt + g.a.a.b.b.a.f(5, this.path);
+      }
+      AppMethodBeat.o(91539);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cvw.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cvw.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(91638);
+        AppMethodBeat.o(91539);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         cox localcox = (cox)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(91638);
+          AppMethodBeat.o(91539);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new jc();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((jc)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cvw.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localcox.BaseRequest = ((jc)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(91638);
+          localcox.iwv = locala.UbS.readString();
+          AppMethodBeat.o(91539);
           return 0;
         case 2: 
-          localcox.HAG = ((f.a.a.a.a)localObject1).OmT.zd();
-          AppMethodBeat.o(91638);
+          localcox.title = locala.UbS.readString();
+          AppMethodBeat.o(91539);
           return 0;
         case 3: 
-          localcox.offset = ((f.a.a.a.a)localObject1).OmT.zd();
-          AppMethodBeat.o(91638);
+          localcox.desc = locala.UbS.readString();
+          AppMethodBeat.o(91539);
+          return 0;
+        case 4: 
+          localcox.username = locala.UbS.readString();
+          AppMethodBeat.o(91539);
           return 0;
         }
-        localcox.HAH = ((f.a.a.a.a)localObject1).OmT.zd();
-        AppMethodBeat.o(91638);
+        localcox.path = locala.UbS.readString();
+        AppMethodBeat.o(91539);
         return 0;
       }
-      AppMethodBeat.o(91638);
+      AppMethodBeat.o(91539);
       return -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.protocal.protobuf.cox
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,23 @@ package com.tencent.mm.model;
 
 public abstract interface ar
 {
-  public abstract void ot(int paramInt);
+  public abstract aq EA(String paramString);
+  
+  public abstract aq EB(String paramString);
+  
+  public abstract void EC(String paramString);
+  
+  public abstract void ED(String paramString);
+  
+  public abstract void EE(String paramString);
+  
+  public abstract void EF(String paramString);
+  
+  public abstract void Ey(String paramString);
+  
+  public abstract void Ez(String paramString);
+  
+  public abstract void am(String paramString1, String paramString2);
 }
 
 

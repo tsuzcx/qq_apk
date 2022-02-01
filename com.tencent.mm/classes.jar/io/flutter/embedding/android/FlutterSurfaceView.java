@@ -13,12 +13,12 @@ public class FlutterSurfaceView
   extends SurfaceView
   implements c
 {
-  private final boolean MYF;
-  private boolean MYG;
-  private boolean MYH;
-  private io.flutter.embedding.engine.b.a MYI;
-  private final SurfaceHolder.Callback MYJ;
-  private final b MYq;
+  private final b SMD;
+  private io.flutter.embedding.engine.b.a SMT;
+  private boolean SMW;
+  private final boolean SNc;
+  private boolean SNd;
+  private final SurfaceHolder.Callback SNe;
   
   public FlutterSurfaceView(Context paramContext)
   {
@@ -34,14 +34,14 @@ public class FlutterSurfaceView
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(10010);
-    this.MYG = false;
-    this.MYH = false;
-    this.MYJ = new SurfaceHolder.Callback()
+    this.SNd = false;
+    this.SMW = false;
+    this.SNe = new SurfaceHolder.Callback()
     {
       public final void surfaceChanged(SurfaceHolder paramAnonymousSurfaceHolder, int paramAnonymousInt1, int paramAnonymousInt2, int paramAnonymousInt3)
       {
         AppMethodBeat.i(9968);
-        io.flutter.a.giD();
+        io.flutter.a.hwd();
         if (FlutterSurfaceView.a(FlutterSurfaceView.this)) {
           FlutterSurfaceView.a(FlutterSurfaceView.this, paramAnonymousInt2, paramAnonymousInt3);
         }
@@ -51,7 +51,7 @@ public class FlutterSurfaceView
       public final void surfaceCreated(SurfaceHolder paramAnonymousSurfaceHolder)
       {
         AppMethodBeat.i(9967);
-        io.flutter.a.giD();
+        io.flutter.a.hwd();
         FlutterSurfaceView.a(FlutterSurfaceView.this, true);
         if (FlutterSurfaceView.a(FlutterSurfaceView.this)) {
           FlutterSurfaceView.b(FlutterSurfaceView.this);
@@ -62,7 +62,7 @@ public class FlutterSurfaceView
       public final void surfaceDestroyed(SurfaceHolder paramAnonymousSurfaceHolder)
       {
         AppMethodBeat.i(9969);
-        io.flutter.a.giD();
+        io.flutter.a.hwd();
         FlutterSurfaceView.a(FlutterSurfaceView.this, false);
         if (FlutterSurfaceView.a(FlutterSurfaceView.this)) {
           FlutterSurfaceView.c(FlutterSurfaceView.this);
@@ -70,28 +70,28 @@ public class FlutterSurfaceView
         AppMethodBeat.o(9969);
       }
     };
-    this.MYq = new b()
+    this.SMD = new b()
     {
-      public final void cSR()
+      public final void dLt()
       {
-        AppMethodBeat.i(197902);
-        io.flutter.a.giD();
+        AppMethodBeat.i(215048);
+        io.flutter.a.hwd();
         FlutterSurfaceView.this.setAlpha(1.0F);
         if (FlutterSurfaceView.d(FlutterSurfaceView.this) != null) {
           FlutterSurfaceView.d(FlutterSurfaceView.this).removeIsDisplayingFlutterUiListener(this);
         }
-        AppMethodBeat.o(197902);
+        AppMethodBeat.o(215048);
       }
       
-      public final void cSS() {}
+      public final void dLu() {}
     };
-    this.MYF = paramBoolean;
-    if (this.MYF)
+    this.SNc = paramBoolean;
+    if (this.SNc)
     {
       getHolder().setFormat(-2);
       setZOrderOnTop(true);
     }
-    getHolder().addCallback(this.MYJ);
+    getHolder().addCallback(this.SNe);
     setAlpha(0.0F);
     AppMethodBeat.o(10010);
   }
@@ -101,82 +101,96 @@ public class FlutterSurfaceView
     this(paramContext, null, paramBoolean);
   }
   
-  private void giX()
+  private void hww()
   {
     AppMethodBeat.i(10013);
-    if ((this.MYI == null) || (getHolder() == null))
+    if ((this.SMT == null) || (getHolder() == null))
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("connectSurfaceToRenderer() should only be called when flutterRenderer and getHolder() are non-null.");
       AppMethodBeat.o(10013);
       throw localIllegalStateException;
     }
-    this.MYI.m(getHolder().getSurface());
+    this.SMT.o(getHolder().getSurface());
     AppMethodBeat.o(10013);
   }
   
-  private void giY()
+  private void hwx()
   {
     AppMethodBeat.i(10014);
-    if (this.MYI == null)
+    if (this.SMT == null)
     {
       IllegalStateException localIllegalStateException = new IllegalStateException("disconnectSurfaceFromRenderer() should only be called when flutterRenderer is non-null.");
       AppMethodBeat.o(10014);
       throw localIllegalStateException;
     }
-    this.MYI.gjx();
+    this.SMT.hwZ();
     AppMethodBeat.o(10014);
   }
   
   public final void a(io.flutter.embedding.engine.b.a parama)
   {
     AppMethodBeat.i(10011);
-    io.flutter.a.giD();
-    if (this.MYI != null)
+    io.flutter.a.hwd();
+    if (this.SMT != null)
     {
-      io.flutter.a.giD();
-      this.MYI.gjx();
-      this.MYI.removeIsDisplayingFlutterUiListener(this.MYq);
+      io.flutter.a.hwd();
+      this.SMT.hwZ();
+      this.SMT.removeIsDisplayingFlutterUiListener(this.SMD);
     }
-    this.MYI = parama;
-    this.MYH = true;
-    this.MYI.addIsDisplayingFlutterUiListener(this.MYq);
-    if (this.MYG)
+    this.SMT = parama;
+    this.SMW = true;
+    this.SMT.addIsDisplayingFlutterUiListener(this.SMD);
+    if (this.SNd)
     {
-      io.flutter.a.giD();
-      giX();
+      io.flutter.a.hwd();
+      hww();
     }
     AppMethodBeat.o(10011);
   }
   
   public io.flutter.embedding.engine.b.a getAttachedRenderer()
   {
-    return this.MYI;
+    return this.SMT;
   }
   
-  public final void giW()
+  public final void hwu()
   {
     AppMethodBeat.i(10012);
-    if (this.MYI != null)
+    if (this.SMT != null)
     {
       if (getWindowToken() != null)
       {
-        io.flutter.a.giD();
-        giY();
+        io.flutter.a.hwd();
+        hwx();
       }
       setAlpha(0.0F);
-      this.MYI.removeIsDisplayingFlutterUiListener(this.MYq);
-      this.MYI = null;
-      this.MYH = false;
+      this.SMT.removeIsDisplayingFlutterUiListener(this.SMD);
+      this.SMT = null;
+      this.SMW = false;
       AppMethodBeat.o(10012);
       return;
     }
-    io.flutter.a.giG();
+    io.flutter.a.hwf();
     AppMethodBeat.o(10012);
+  }
+  
+  public final void pause()
+  {
+    AppMethodBeat.i(215099);
+    if (this.SMT != null)
+    {
+      this.SMT = null;
+      this.SMW = false;
+      AppMethodBeat.o(215099);
+      return;
+    }
+    io.flutter.a.hwf();
+    AppMethodBeat.o(215099);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterSurfaceView
  * JD-Core Version:    0.7.0.1
  */

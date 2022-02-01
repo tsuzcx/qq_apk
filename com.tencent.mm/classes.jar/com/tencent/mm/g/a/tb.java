@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class tb
-  extends b
+  extends IEvent
 {
-  public a dIG;
+  public a dZx;
   
   public tb()
   {
@@ -16,21 +16,23 @@ public final class tb
   
   private tb(byte paramByte)
   {
-    AppMethodBeat.i(42658);
-    this.dIG = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(19831);
+    this.dZx = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(42658);
+    AppMethodBeat.o(19831);
   }
   
   public static final class a
   {
-    public bv dlw;
+    public Context context;
+    public String[] dBX;
+    public String[] selectionArgs;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.tb
  * JD-Core Version:    0.7.0.1
  */

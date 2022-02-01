@@ -6,13 +6,13 @@ import android.os.Build.VERSION;
 import android.view.View;
 import android.view.Window;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.f.a;
-import com.tencent.mm.ui.q;
+import com.tencent.mm.sdk.system.AndroidContextUtil;
+import com.tencent.mm.ui.r;
 
 public final class d
-  extends q
+  extends r
 {
-  public static void b(Window paramWindow)
+  public static void e(Window paramWindow)
   {
     AppMethodBeat.i(133827);
     if (paramWindow == null)
@@ -29,7 +29,7 @@ public final class d
     AppMethodBeat.o(133827);
   }
   
-  public static boolean e(Window paramWindow)
+  public static boolean f(Window paramWindow)
   {
     AppMethodBeat.i(133826);
     if ((paramWindow == null) || (paramWindow.getDecorView() == null))
@@ -46,11 +46,11 @@ public final class d
     return false;
   }
   
-  public static Activity kH(Context paramContext)
+  public static Activity kD(Context paramContext)
   {
-    AppMethodBeat.i(224442);
-    paramContext = a.jw(paramContext);
-    AppMethodBeat.o(224442);
+    AppMethodBeat.i(258478);
+    paramContext = AndroidContextUtil.castActivityOrNull(paramContext);
+    AppMethodBeat.o(258478);
     return paramContext;
   }
 }

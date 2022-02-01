@@ -3,6 +3,7 @@ package com.tencent.liteav.qos;
 import android.os.Bundle;
 import android.os.Handler;
 import com.tencent.liteav.basic.a.c;
+import com.tencent.liteav.basic.b.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.util.TXCTimeUtil;
 import com.tencent.liteav.basic.util.f;
@@ -28,7 +29,7 @@ public class TXCQoS
   private long mInterval;
   private boolean mIsEnableDrop;
   private a mListener;
-  private com.tencent.liteav.basic.c.a mNotifyListener;
+  private b mNotifyListener;
   private Runnable mRunnable;
   private String mUserID;
   private int mWidth;
@@ -111,7 +112,7 @@ public class TXCQoS
             if (TXCQoS.this.mNotifyListener != null)
             {
               localBundle = new Bundle();
-              localBundle.putCharSequence("EVT_MSG", "调整分辨率:new bitrate:" + i + " new resolution:" + j + "*" + k);
+              localBundle.putCharSequence("EVT_MSG", "Adjust resolution:new bitrate:" + i + " new resolution:" + j + "*" + k);
               localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
               TXCQoS.this.mNotifyListener.onNotifyEvent(1005, localBundle);
             }
@@ -132,7 +133,7 @@ public class TXCQoS
             if (TXCQoS.this.mNotifyListener != null)
             {
               localBundle = new Bundle();
-              localBundle.putCharSequence("EVT_MSG", "调整编码码率:new bitrate:".concat(String.valueOf(i)));
+              localBundle.putCharSequence("EVT_MSG", "Adjust encoding bitrate:new bitrate:".concat(String.valueOf(i)));
               localBundle.putLong("EVT_TIME", TXCTimeUtil.getTimeTick());
               localBundle.putString("EVT_USERID", TXCQoS.this.mUserID);
               TXCQoS.this.mNotifyListener.onNotifyEvent(1006, localBundle);
@@ -147,10 +148,10 @@ public class TXCQoS
   
   public static c getProperResolutionByVideoBitrate(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(221346);
+    AppMethodBeat.i(221785);
     paramInt1 = nativeGetProperResolutionByVideoBitrate(paramBoolean, paramInt1, paramInt2);
     c localc = (c)RESOLUTION_MAP.get(Integer.valueOf(paramInt1));
-    AppMethodBeat.o(221346);
+    AppMethodBeat.o(221785);
     return localc;
   }
   
@@ -250,7 +251,7 @@ public class TXCQoS
   
   public void setDefaultVideoResolution(c paramc)
   {
-    AppMethodBeat.i(221345);
+    AppMethodBeat.i(221784);
     TXCLog.i("TXCQos", "DefaultVideoResolution is ".concat(String.valueOf(paramc)));
     this.mWidth = 0;
     this.mHeight = 0;
@@ -269,7 +270,7 @@ public class TXCQoS
     {
       break;
       nativeSetVideoDefaultResolution(this.mInstance, i);
-      AppMethodBeat.o(221345);
+      AppMethodBeat.o(221784);
       return;
     }
   }
@@ -286,9 +287,9 @@ public class TXCQoS
     this.mListener = parama;
   }
   
-  public void setNotifyListener(com.tencent.liteav.basic.c.a parama)
+  public void setNotifyListener(b paramb)
   {
-    this.mNotifyListener = parama;
+    this.mNotifyListener = paramb;
   }
   
   public void setUserID(String paramString)
@@ -329,7 +330,7 @@ public class TXCQoS
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.qos.TXCQoS
  * JD-Core Version:    0.7.0.1
  */

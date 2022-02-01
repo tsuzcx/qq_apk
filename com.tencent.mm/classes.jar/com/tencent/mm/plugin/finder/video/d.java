@@ -1,23 +1,24 @@
 package com.tencent.mm.plugin.finder.video;
 
-import com.tencent.mm.plugin.gallery.picker.b.b.f;
-import com.tencent.mm.protocal.protobuf.bwj;
-import d.l;
+import android.content.Context;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.rtmp.ui.TXCloudVideoView;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/video/FinderMediaTailorResult;", "Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Result;", "ret", "", "(I)V", "localCropInfo", "Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "getLocalCropInfo", "()Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;", "setLocalCropInfo", "(Lcom/tencent/mm/protocal/protobuf/LocalVideoCropInfo;)V", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/video/FinderLiveTextureView;", "Lcom/tencent/rtmp/ui/TXCloudVideoView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "plugin-finder_release"})
 public final class d
-  extends b.f
+  extends TXCloudVideoView
 {
-  public bwj sYy;
-  
-  public d()
+  public d(Context paramContext)
   {
-    super(0);
+    super(paramContext);
+    AppMethodBeat.i(254050);
+    AppMethodBeat.o(254050);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.video.d
  * JD-Core Version:    0.7.0.1
  */

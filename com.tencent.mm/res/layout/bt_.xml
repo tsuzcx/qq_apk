@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@drawable/c6z" android:layout_width="fill_parent" android:layout_height="@dimen/ce"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/hoo" android:paddingLeft="@dimen/c0" android:paddingRight="@dimen/c0" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_alignParentRight="true">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/c5" android:layout_height="@dimen/c5" android:src="@raw/icons_tipsbar_close" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <View android:id="@id/hop" android:background="@color/FG_3" android:layout_width="1.0dip" android:layout_height="@dimen/c5" android:layout_toLeftOf="@id/hoo" android:layout_centerVertical="true" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/hon" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_toLeftOf="@id/hop">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/hom" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_marginLeft="@dimen/c0" />
-        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ci" android:layout_marginRight="@dimen/c8">
-            <TextView android:textSize="@dimen/gu" android:textColor="@color/FG_0" android:ellipsize="end" android:id="@id/hou" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" />
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/hol" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/bq" android:singleLine="true" />
-        </LinearLayout>
-    </LinearLayout>
-</RelativeLayout>
+    <View android:layout_width="fill_parent" android:layout_height="@dimen/cb" />
+</LinearLayout>

@@ -35,36 +35,36 @@ public final class c
     extends g.a
     implements Runnable
   {
-    final b Owk;
-    final AtomicInteger Owl;
-    final ScheduledExecutorService Owm;
+    final b UlY;
+    final AtomicInteger UlZ;
+    final ScheduledExecutorService Uma;
     final Executor executor;
-    final ConcurrentLinkedQueue<i> sVc;
+    final ConcurrentLinkedQueue<i> vTW;
     
     public a(Executor paramExecutor)
     {
       AppMethodBeat.i(90363);
       this.executor = paramExecutor;
-      this.sVc = new ConcurrentLinkedQueue();
-      this.Owl = new AtomicInteger();
-      this.Owk = new b();
-      this.Owm = d.gDD();
+      this.vTW = new ConcurrentLinkedQueue();
+      this.UlZ = new AtomicInteger();
+      this.UlY = new b();
+      this.Uma = d.hQL();
       AppMethodBeat.o(90363);
     }
     
     public final j a(a parama)
     {
       AppMethodBeat.i(90364);
-      if (this.Owk.OxN)
+      if (this.UlY.UnB)
       {
-        parama = rx.f.d.gEf();
+        parama = rx.f.d.hRn();
         AppMethodBeat.o(90364);
         return parama;
       }
-      parama = new i(parama, this.Owk);
-      this.Owk.b(parama);
-      this.sVc.offer(parama);
-      if (this.Owl.getAndIncrement() == 0) {}
+      parama = new i(parama, this.UlY);
+      this.UlY.b(parama);
+      this.vTW.offer(parama);
+      if (this.UlZ.getAndIncrement() == 0) {}
       try
       {
         this.executor.execute(this);
@@ -73,8 +73,8 @@ public final class c
       }
       catch (RejectedExecutionException localRejectedExecutionException)
       {
-        this.Owk.e(parama);
-        this.Owl.decrementAndGet();
+        this.UlY.e(parama);
+        this.UlZ.decrementAndGet();
         rx.d.c.onError(localRejectedExecutionException);
         AppMethodBeat.o(90364);
         throw localRejectedExecutionException;
@@ -90,22 +90,22 @@ public final class c
         AppMethodBeat.o(90366);
         return parama;
       }
-      if (this.Owk.OxN)
+      if (this.UlY.UnB)
       {
-        parama = rx.f.d.gEf();
+        parama = rx.f.d.hRn();
         AppMethodBeat.o(90366);
         return parama;
       }
       rx.f.c localc1 = new rx.f.c();
       final rx.f.c localc2 = new rx.f.c();
       localc2.f(localc1);
-      this.Owk.b(localc2);
+      this.UlY.b(localc2);
       final j localj = rx.f.d.e(new a()
       {
         public final void call()
         {
           AppMethodBeat.i(90361);
-          c.a.this.Owk.e(localc2);
+          c.a.this.UlY.e(localc2);
           AppMethodBeat.o(90361);
         }
       });
@@ -114,7 +114,7 @@ public final class c
         public final void call()
         {
           AppMethodBeat.i(90362);
-          if (localc2.gDt())
+          if (localc2.hQB())
           {
             AppMethodBeat.o(90362);
             return;
@@ -125,7 +125,7 @@ public final class c
           {
             localObject = (i)localObject;
             j localj = localj;
-            ((i)localObject).OwH.b(localj);
+            ((i)localObject).Umv.b(localj);
           }
           AppMethodBeat.o(90362);
         }
@@ -133,7 +133,7 @@ public final class c
       localc1.f(parama);
       try
       {
-        parama.b(this.Owm.schedule(parama, paramLong, paramTimeUnit));
+        parama.b(this.Uma.schedule(parama, paramLong, paramTimeUnit));
         AppMethodBeat.o(90366);
         return localj;
       }
@@ -145,17 +145,17 @@ public final class c
       }
     }
     
-    public final void gDs()
+    public final void hQA()
     {
       AppMethodBeat.i(90367);
-      this.Owk.gDs();
-      this.sVc.clear();
+      this.UlY.hQA();
+      this.vTW.clear();
       AppMethodBeat.o(90367);
     }
     
-    public final boolean gDt()
+    public final boolean hQB()
     {
-      return this.Owk.OxN;
+      return this.UlY.UnB;
     }
     
     public final void run()
@@ -163,29 +163,29 @@ public final class c
       AppMethodBeat.i(90365);
       do
       {
-        if (this.Owk.OxN)
+        if (this.UlY.UnB)
         {
-          this.sVc.clear();
+          this.vTW.clear();
           AppMethodBeat.o(90365);
           return;
         }
-        i locali = (i)this.sVc.poll();
+        i locali = (i)this.vTW.poll();
         if (locali == null)
         {
           AppMethodBeat.o(90365);
           return;
         }
-        if (!locali.OwH.OxN)
+        if (!locali.Umv.UnB)
         {
-          if (this.Owk.OxN) {
+          if (this.UlY.UnB) {
             break;
           }
           locali.run();
         }
-      } while (this.Owl.decrementAndGet() != 0);
+      } while (this.UlZ.decrementAndGet() != 0);
       AppMethodBeat.o(90365);
       return;
-      this.sVc.clear();
+      this.vTW.clear();
       AppMethodBeat.o(90365);
     }
   }

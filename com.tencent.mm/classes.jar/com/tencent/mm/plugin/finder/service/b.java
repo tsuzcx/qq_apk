@@ -1,196 +1,200 @@
 package com.tencent.mm.plugin.finder.service;
 
-import com.tencent.e.j.a;
+import com.tencent.f.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.storage.d;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.an;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.finder.conv.c;
+import com.tencent.mm.plugin.finder.storage.e;
+import com.tencent.mm.plugin.i.a.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.storage.as;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/service/FinderConversationService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderConversationService;", "()V", "notifySerial", "Lcom/tencent/threadpool/serial/Serial;", "kotlin.jvm.PlatformType", "addOnStorageChange", "", "storageChange", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "clearUnreadCount", "sessionId", "", "getEditing", "getUnreadCount", "", "isTopPlace", "", "removeOnStorageChange", "setEditing", "content", "setTopPlace", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/service/FinderConversationService;", "Lcom/tencent/mm/plugin/findersdk/api/IFinderConversationService;", "()V", "notifySerial", "Lcom/tencent/threadpool/serial/Serial;", "kotlin.jvm.PlatformType", "addOnStorageChange", "", "storageChange", "Lcom/tencent/mm/sdk/storage/MStorage$IOnStorageChange;", "clearUnreadCount", "sessionId", "", "getEditing", "getUnreadCount", "", "isTopPlace", "", "removeOnStorageChange", "setEditing", "content", "setTopPlace", "plugin-finder_release"})
 public final class b
-  implements com.tencent.mm.plugin.i.a.g
+  implements n
 {
-  private final a sEq;
+  private final a vvN;
   
   public b()
   {
-    AppMethodBeat.i(204071);
-    this.sEq = a.bbi("FinderConversationNotify");
-    AppMethodBeat.o(204071);
+    AppMethodBeat.i(251450);
+    this.vvN = a.bqt("FinderConversationNotify");
+    AppMethodBeat.o(251450);
   }
   
-  public final void ajb(String paramString)
+  public final void ave(String paramString)
   {
-    AppMethodBeat.i(204063);
+    AppMethodBeat.i(251442);
     CharSequence localCharSequence = (CharSequence)paramString;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(204063);
+      AppMethodBeat.o(251442);
       return;
     }
-    if (!an.aji(paramString))
+    if (!as.avl(paramString))
     {
       paramString = (Throwable)new RuntimeException("sessionId[" + paramString + "] is not session");
-      AppMethodBeat.o(204063);
+      AppMethodBeat.o(251442);
       throw paramString;
     }
-    ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().ajp(paramString);
-    AppMethodBeat.o(204063);
+    ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage().avs(paramString);
+    AppMethodBeat.o(251442);
   }
   
-  public final int ajc(String paramString)
+  public final int avf(String paramString)
   {
-    AppMethodBeat.i(204064);
+    AppMethodBeat.i(251443);
     CharSequence localCharSequence = (CharSequence)paramString;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(204064);
+      AppMethodBeat.o(251443);
       return 0;
     }
-    if (!an.aji(paramString))
+    if (!as.avl(paramString))
     {
       paramString = (Throwable)new RuntimeException("sessionId[" + paramString + "] is not session");
-      AppMethodBeat.o(204064);
+      AppMethodBeat.o(251443);
       throw paramString;
     }
-    i = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().ajc(paramString);
-    AppMethodBeat.o(204064);
+    i = ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage().avf(paramString);
+    AppMethodBeat.o(251443);
     return i;
   }
   
-  public final boolean ajd(String paramString)
+  public final boolean avg(String paramString)
   {
-    AppMethodBeat.i(204065);
+    AppMethodBeat.i(251444);
     CharSequence localCharSequence = (CharSequence)paramString;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(204065);
+      AppMethodBeat.o(251444);
       return false;
     }
-    if (!an.aji(paramString))
+    if (!as.avl(paramString))
     {
       paramString = (Throwable)new RuntimeException("sessionId[" + paramString + "] is not session");
-      AppMethodBeat.o(204065);
+      AppMethodBeat.o(251444);
       throw paramString;
     }
-    boolean bool = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().ajn(paramString).cAw();
-    AppMethodBeat.o(204065);
+    boolean bool = ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage().avq(paramString).cZv();
+    AppMethodBeat.o(251444);
     return bool;
   }
   
-  public final String aje(String paramString)
+  public final String avh(String paramString)
   {
-    AppMethodBeat.i(204066);
+    AppMethodBeat.i(251445);
     Object localObject = (CharSequence)paramString;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(204066);
+      AppMethodBeat.o(251445);
       return "";
     }
-    if (!an.aji(paramString))
+    if (!as.avl(paramString))
     {
       paramString = (Throwable)new RuntimeException("sessionId[" + paramString + "] is not session");
-      AppMethodBeat.o(204066);
+      AppMethodBeat.o(251445);
       throw paramString;
     }
-    localObject = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().ajn(paramString).field_editingMsg;
+    localObject = ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage().avq(paramString).field_editingMsg;
     paramString = (String)localObject;
     if (localObject == null) {
       paramString = "";
     }
-    AppMethodBeat.o(204066);
+    AppMethodBeat.o(251445);
     return paramString;
   }
   
-  public final boolean bh(String paramString, boolean paramBoolean)
+  public final boolean bt(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(204068);
+    AppMethodBeat.i(251447);
     CharSequence localCharSequence = (CharSequence)paramString;
     if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(204068);
+      AppMethodBeat.o(251447);
       return false;
     }
-    if (!an.aji(paramString))
+    if (!as.avl(paramString))
     {
       paramString = (Throwable)new RuntimeException("sessionId[" + paramString + "] is not session");
-      AppMethodBeat.o(204068);
+      AppMethodBeat.o(251447);
       throw paramString;
     }
-    ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().bh(paramString, paramBoolean);
-    AppMethodBeat.o(204068);
+    ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage().bt(paramString, paramBoolean);
+    AppMethodBeat.o(251447);
     return false;
   }
   
-  public final boolean gt(String paramString1, String paramString2)
+  public final boolean gT(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(204067);
+    AppMethodBeat.i(251446);
     Object localObject = (CharSequence)paramString1;
     if ((localObject == null) || (((CharSequence)localObject).length() == 0)) {}
     for (int i = 1; i != 0; i = 0)
     {
-      AppMethodBeat.o(204067);
+      AppMethodBeat.o(251446);
       return false;
     }
     if (paramString2 == null)
     {
-      AppMethodBeat.o(204067);
+      AppMethodBeat.o(251446);
       return false;
     }
-    if (!an.aji(paramString1))
+    if (!as.avl(paramString1))
     {
       paramString1 = (Throwable)new RuntimeException("sessionId[" + paramString1 + "] is not session");
-      AppMethodBeat.o(204067);
+      AppMethodBeat.o(251446);
       throw paramString1;
     }
-    localObject = ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage();
+    localObject = ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage();
     p.h(paramString1, "sessionId");
     p.h(paramString2, "editing");
-    com.tencent.mm.plugin.finder.conv.c localc = ((d)localObject).ajn(paramString1);
+    c localc = ((e)localObject).avq(paramString1);
     localc.field_editingMsg = paramString2;
-    boolean bool = ((d)localObject).update(localc.systemRowid, (com.tencent.mm.sdk.e.c)localc, false);
-    ((d)localObject).doNotify(localc.field_sessionId, 7, localc);
-    ae.i("Finder.ConversationStorage", "[setTopPlace] ret=" + bool + " editing=" + paramString2 + " sessionId=" + paramString1);
-    AppMethodBeat.o(204067);
+    boolean bool = ((e)localObject).update(localc.systemRowid, (IAutoDBItem)localc, false);
+    ((e)localObject).doNotify(localc.field_sessionId, 7, localc);
+    Log.i("Finder.ConversationStorage", "[setTopPlace] ret=" + bool + " editing=" + paramString2 + " sessionId=" + paramString1);
+    AppMethodBeat.o(251446);
     return bool;
   }
   
-  public final void l(k.a parama)
+  public final void l(MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(204070);
-    if (parama != null)
+    AppMethodBeat.i(251449);
+    if (paramIOnStorageChange != null)
     {
-      ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().remove(parama);
-      AppMethodBeat.o(204070);
+      ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage().remove(paramIOnStorageChange);
+      AppMethodBeat.o(251449);
       return;
     }
-    AppMethodBeat.o(204070);
+    AppMethodBeat.o(251449);
   }
   
-  public final void m(k.a parama)
+  public final void m(MStorage.IOnStorageChange paramIOnStorageChange)
   {
-    AppMethodBeat.i(204069);
-    if (parama != null)
+    AppMethodBeat.i(251448);
+    if (paramIOnStorageChange != null)
     {
-      ((PluginFinder)com.tencent.mm.kernel.g.ad(PluginFinder.class)).getConversationStorage().add(this.sEq, parama);
-      AppMethodBeat.o(204069);
+      ((PluginFinder)g.ah(PluginFinder.class)).getConversationStorage().add(this.vvN, paramIOnStorageChange);
+      AppMethodBeat.o(251448);
       return;
     }
-    AppMethodBeat.o(204069);
+    AppMethodBeat.o(251448);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.service.b
  * JD-Core Version:    0.7.0.1
  */

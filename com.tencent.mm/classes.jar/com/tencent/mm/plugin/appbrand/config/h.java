@@ -1,51 +1,97 @@
 package com.tencent.mm.plugin.appbrand.config;
 
+import android.text.TextUtils;
+import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
+import com.tencent.luggage.sdk.config.b;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelappbrand.LaunchParamsOptional;
-import com.tencent.mm.plugin.appbrand.launching.params.LaunchParcel;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.appbrand.i;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.Map;
+import org.apache.commons.b.a;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigUtils;", "", "()V", "versionType", "", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;", "getVersionType", "(Lcom/tencent/mm/plugin/appbrand/config/AppBrandInitConfigWC;)I", "toLaunchParcel", "Lcom/tencent/mm/plugin/appbrand/launching/params/LaunchParcel;", "plugin-appbrand-integration_release"})
 public final class h
+  extends b
 {
-  public static final h kaI;
+  private final String[] ldL;
   
-  static
+  private h()
   {
-    AppMethodBeat.i(50334);
-    kaI = new h();
-    AppMethodBeat.o(50334);
+    AppMethodBeat.i(44827);
+    this.ldL = new String[] { "wx308bd2aeb83d3345" };
+    AppMethodBeat.o(44827);
   }
   
-  public static final LaunchParcel e(AppBrandInitConfigWC paramAppBrandInitConfigWC)
+  public static h bzT()
   {
-    AppMethodBeat.i(50333);
-    p.h(paramAppBrandInitConfigWC, "$this$toLaunchParcel");
-    LaunchParcel localLaunchParcel = new LaunchParcel();
-    localLaunchParcel.username = paramAppBrandInitConfigWC.username;
-    localLaunchParcel.appId = paramAppBrandInitConfigWC.appId;
-    localLaunchParcel.version = paramAppBrandInitConfigWC.aDD;
-    p.h(paramAppBrandInitConfigWC, "$this$versionType");
-    localLaunchParcel.hSZ = paramAppBrandInitConfigWC.dQv;
-    localLaunchParcel.jFL = paramAppBrandInitConfigWC.jFL;
-    localLaunchParcel.lRA = paramAppBrandInitConfigWC.Ed();
-    localLaunchParcel.cmx = paramAppBrandInitConfigWC.cmx;
-    LaunchParamsOptional localLaunchParamsOptional = new LaunchParamsOptional();
-    localLaunchParamsOptional.cmw = paramAppBrandInitConfigWC.cmw;
-    localLaunchParamsOptional.cmv = paramAppBrandInitConfigWC.cmv;
-    localLaunchParamsOptional.cmy = paramAppBrandInitConfigWC.cmy;
-    localLaunchParcel.lRB = localLaunchParamsOptional;
-    localLaunchParcel.kaN = paramAppBrandInitConfigWC.kaN;
-    localLaunchParcel.kaM = paramAppBrandInitConfigWC.kaM;
-    localLaunchParcel.jFX = paramAppBrandInitConfigWC.jFX;
-    AppMethodBeat.o(50333);
-    return localLaunchParcel;
+    try
+    {
+      h localh = (h)cyi;
+      return localh;
+    }
+    finally {}
+  }
+  
+  public static void init()
+  {
+    AppMethodBeat.i(44828);
+    try
+    {
+      cyi = new h();
+      return;
+    }
+    finally
+    {
+      AppMethodBeat.o(44828);
+    }
+  }
+  
+  public final AppBrandInitConfigWC Xa(String paramString)
+  {
+    AppMethodBeat.i(44829);
+    paramString = (AppBrandInitConfigWC)super.dA(paramString);
+    AppMethodBeat.o(44829);
+    return paramString;
+  }
+  
+  public final AppBrandInitConfigWC c(WxaAttributes arg1)
+  {
+    AppMethodBeat.i(44830);
+    Object localObject2 = super.a(???);
+    AppBrandInitConfigWC localAppBrandInitConfigWC = null;
+    boolean bool;
+    if (localObject2 != null)
+    {
+      localAppBrandInitConfigWC = new AppBrandInitConfigWC(((AppBrandInitConfigLU)localObject2).bzR());
+      if ((!???.bAn().bAt()) || ((!i.brb()) && (a.contains(this.ldL, localAppBrandInitConfigWC.appId)))) {
+        break label151;
+      }
+      bool = true;
+    }
+    for (;;)
+    {
+      localAppBrandInitConfigWC.ldN = bool;
+      if (localAppBrandInitConfigWC != null) {
+        localAppBrandInitConfigWC.ldY = ???.bAo().lgD.lgJ;
+      }
+      if ((localAppBrandInitConfigWC != null) && (!TextUtils.isEmpty(localAppBrandInitConfigWC.appId)))
+      {
+        localObject2 = localAppBrandInitConfigWC.appId;
+        Log.i("Luggage.WXA.AppBrandInitConfigHelper", "clearByAppId %s", new Object[] { localObject2 });
+      }
+      synchronized (this.cyj)
+      {
+        this.cyj.remove(localObject2);
+        AppMethodBeat.o(44830);
+        return localAppBrandInitConfigWC;
+        label151:
+        bool = false;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.config.h
  * JD-Core Version:    0.7.0.1
  */

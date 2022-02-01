@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="bz" parent="@style/d_">
+    <style name="c0" parent="@style/da">
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowElevation">0.0dip</item>
     </style>
-    <style name="c6" parent="@style/db">
+    <style name="c7" parent="@style/dc">
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowElevation">0.0dip</item>
     </style>
-    <style name="cv" parent="@style/dc">
+    <style name="cw" parent="@style/dd">
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowElevation">0.0dip</item>
     </style>

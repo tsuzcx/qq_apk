@@ -3,55 +3,52 @@ package com.tencent.mm.emoji.panel.a;
 import android.content.Context;
 import android.content.res.Resources;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelSizeResolver;", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "()V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "minSpaceSize", "getMinSpaceSize", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/panel/adapter/EmojiPanelItemSizeResolver;", "Lcom/tencent/mm/emoji/panel/adapter/PanelSizeResolver;", "()V", "edgeSize", "", "getEdgeSize", "()F", "itemPadding", "getItemPadding", "itemSize", "getItemSize", "minSpaceSize", "getMinSpaceSize", "plugin-emojisdk_release"})
 public final class j
   extends o
 {
-  private static final float gqd;
-  private static final float gqe;
-  private static final float gqf;
-  private static final float gqg;
-  public static final j gqh;
+  private final float haX;
+  private final float haY;
+  private final float haZ;
+  private final float hba;
   
-  static
+  public j()
   {
-    AppMethodBeat.i(105668);
-    j localj = new j();
-    gqh = localj;
-    Object localObject = ak.getContext();
+    AppMethodBeat.i(199968);
+    Object localObject = MMApplicationContext.getContext();
     p.g(localObject, "context");
     localObject = ((Context)localObject).getResources();
-    gqd = ((Resources)localObject).getDimension(2131166241);
-    gqe = ((Resources)localObject).getDimension(2131165289);
-    gqf = ((Resources)localObject).getDimension(2131165284) - 1.0F;
-    gqg = ((Resources)localObject).getDimension(2131165274);
-    localj.atv = 5;
-    localj.updateSize();
-    AppMethodBeat.o(105668);
+    this.haX = ((Resources)localObject).getDimension(2131166284);
+    this.haY = ((Resources)localObject).getDimension(2131165296);
+    this.haZ = (((Resources)localObject).getDimension(2131165289) - 1.0F);
+    this.hba = ((Resources)localObject).getDimension(2131165277);
+    this.att = 5;
+    updateSize();
+    AppMethodBeat.o(199968);
   }
   
-  public final float age()
+  public final float avS()
   {
-    return gqd;
+    return this.haX;
   }
   
-  public final float agf()
+  public final float avT()
   {
-    return gqe;
+    return this.haY;
   }
   
-  public final float agg()
+  public final float avU()
   {
-    return gqf;
+    return this.haZ;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.emoji.panel.a.j
  * JD-Core Version:    0.7.0.1
  */

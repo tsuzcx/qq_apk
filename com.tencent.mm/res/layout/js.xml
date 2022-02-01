@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="horizontal" android:id="@id/a54" android:background="@drawable/i4" android:paddingLeft="@dimen/ir" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/t2"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.brandservice.ui.timeline.BizAvatarLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="@dimen/t2" android:layout_marginTop="@dimen/ib" android:layout_marginBottom="@dimen/ib" android:layout_weight="1.0">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/x1" android:layout_width="@dimen/t2" android:layout_height="@dimen/t2" android:src="@drawable/bca" android:scaleType="centerCrop" />
+        <TextView android:textSize="15.0dip" android:textColor="@drawable/i_" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/fz_" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:singleLine="true" />
+    </com.tencent.mm.plugin.brandservice.ui.timeline.BizAvatarLayout>
+    <LinearLayout android:gravity="center|right" android:id="@id/a98" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minHeight="40.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center|right" android:layout_width="20.0dip" android:layout_height="20.0dip" android:src="@raw/icons_outlined_more" app:iconColor="@color/BW_70" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/bd" android:textColor="@color/FG_2" android:gravity="center|right" android:layout_gravity="center_vertical" android:id="@id/in3" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ib" />
+</LinearLayout>

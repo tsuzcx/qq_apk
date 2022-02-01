@@ -12,36 +12,36 @@ import com.tencent.mm.plugin.recordvideo.ui.editor.item.n;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.o;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.q;
 import com.tencent.mm.plugin.recordvideo.ui.editor.item.r;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditViewParser;", "", "()V", "captionItemView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView;", "recordCaptionItemView", "getTimeEditView", "Landroid/view/View;", "context", "Landroid/content/Context;", "data", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "itemStateResolve", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$ItemStateResolve;", "displayArea", "Landroid/graphics/Rect;", "scale", "Landroid/graphics/PointF;", "refreshView", "", "itemView", "Companion", "plugin-vlog_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/vlog/ui/plugin/timeedit/TimeEditViewParser;", "", "()V", "captionItemView", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/CaptionItemView;", "recordCaptionItemView", "getTimeEditView", "Landroid/view/View;", "context", "Landroid/content/Context;", "data", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "itemStateResolve", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/EditorItemContainer$ItemStateResolve;", "displayArea", "Landroid/graphics/Rect;", "scale", "Landroid/graphics/PointF;", "refreshView", "", "itemView", "Companion", "plugin-vlog_release"})
 public final class c
 {
-  public static final c.a Ckb;
-  private com.tencent.mm.plugin.recordvideo.ui.editor.a Cka;
-  private com.tencent.mm.plugin.recordvideo.ui.editor.a yfo;
+  public static final c.a GNd;
+  private com.tencent.mm.plugin.recordvideo.ui.editor.a Cgo;
+  private com.tencent.mm.plugin.recordvideo.ui.editor.a GNc;
   
   static
   {
-    AppMethodBeat.i(192169);
-    Ckb = new c.a((byte)0);
-    AppMethodBeat.o(192169);
+    AppMethodBeat.i(191905);
+    GNd = new c.a((byte)0);
+    AppMethodBeat.o(191905);
   }
   
   public static void a(View paramView, com.tencent.mm.plugin.recordvideo.ui.editor.item.a parama)
   {
-    AppMethodBeat.i(192168);
+    AppMethodBeat.i(191904);
     p.h(paramView, "itemView");
     p.h(parama, "data");
-    d locald = parama.ydv;
-    switch (d.gpL[locald.ordinal()])
+    d locald = parama.Cex;
+    switch (d.haE[locald.ordinal()])
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(192168);
+      AppMethodBeat.o(191904);
       return;
       ((r)paramView).setText((q)parama);
       ((r)paramView).setEnableNotify(true);
@@ -51,123 +51,125 @@ public final class c
   
   public final View a(Context paramContext, com.tencent.mm.plugin.recordvideo.ui.editor.item.a parama, EditorItemContainer.b paramb, Rect paramRect, PointF paramPointF)
   {
-    Object localObject1 = null;
-    AppMethodBeat.i(192167);
+    Object localObject = null;
+    AppMethodBeat.i(191903);
     p.h(paramContext, "context");
     p.h(parama, "data");
     p.h(paramb, "itemStateResolve");
     p.h(paramRect, "displayArea");
     p.h(paramPointF, "scale");
-    int i = paramRect.bottom + paramRect.top;
-    Object localObject2 = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-    float f = com.tencent.mm.plugin.recordvideo.background.e.dIf().top;
-    localObject2 = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-    f = (f * 0.3F + com.tencent.mm.plugin.recordvideo.background.e.dIf().bottom * 0.7F) / i;
-    localObject2 = parama.ydv;
-    switch (d.cqt[localObject2.ordinal()])
+    int i = paramRect.bottom;
+    i = paramRect.top + i;
+    d locald = parama.Cex;
+    switch (d.$EnumSwitchMapping$0[locald.ordinal()])
     {
     default: 
-      paramContext = localObject1;
+      paramContext = localObject;
     }
     for (;;)
     {
-      if (paramContext != null)
+      float f = 0.5F;
+      for (;;)
       {
-        parama = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-        parama = com.tencent.mm.plugin.recordvideo.background.e.dIe();
-        paramb = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-        paramContext.b(parama, com.tencent.mm.plugin.recordvideo.background.e.dIg());
+        if (paramContext != null)
+        {
+          parama = com.tencent.mm.plugin.recordvideo.background.e.BKp;
+          parama = com.tencent.mm.plugin.recordvideo.background.e.eIR();
+          paramb = com.tencent.mm.plugin.recordvideo.background.e.BKp;
+          paramContext.b(parama, com.tencent.mm.plugin.recordvideo.background.e.eIT());
+        }
+        if (paramContext != null)
+        {
+          parama = com.tencent.mm.plugin.recordvideo.background.e.BKp;
+          paramContext.setValidArea(com.tencent.mm.plugin.recordvideo.background.e.eIS());
+        }
+        if (paramContext != null) {
+          paramContext.a(paramRect, f);
+        }
+        Log.i("MicroMsg.TimeEditViewParser", "setDefaultLocation heightPercent:".concat(String.valueOf(f)));
+        paramContext = (View)paramContext;
+        AppMethodBeat.o(191903);
+        return paramContext;
+        paramContext = (com.tencent.mm.plugin.recordvideo.ui.editor.view.c)new f(paramContext);
+        ((f)paramContext).setStateResolve(paramb);
+        ((f)paramContext).af(paramPointF.x, paramPointF.y);
+        ((f)paramContext).setEmojiItem((com.tencent.mm.plugin.recordvideo.ui.editor.item.e)parama);
+        f = 0.5F;
+        continue;
+        paramContext = (com.tencent.mm.plugin.recordvideo.ui.editor.view.c)new r(paramContext);
+        ((r)paramContext).af(paramPointF.x, paramPointF.y);
+        ((r)paramContext).setStateResolve(paramb);
+        ((r)paramContext).setText((q)parama);
+        f = 0.5F;
       }
-      if (paramContext != null)
+      if (this.Cgo != null)
       {
-        parama = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-        paramContext.setValidArea(com.tencent.mm.plugin.recordvideo.background.e.dIf());
-      }
-      if (paramContext != null) {
-        paramContext.a(paramRect, f);
-      }
-      ae.i("MicroMsg.TimeEditViewParser", "setDefaultLocation heightPercent:".concat(String.valueOf(f)));
-      paramContext = (View)paramContext;
-      AppMethodBeat.o(192167);
-      return paramContext;
-      paramContext = (com.tencent.mm.plugin.recordvideo.ui.editor.view.c)new f(paramContext);
-      ((f)paramContext).setStateResolve(paramb);
-      ((f)paramContext).aa(paramPointF.x, paramPointF.y);
-      ((f)paramContext).setEmojiItem((com.tencent.mm.plugin.recordvideo.ui.editor.item.e)parama);
-      continue;
-      paramContext = (com.tencent.mm.plugin.recordvideo.ui.editor.view.c)new r(paramContext);
-      ((r)paramContext).aa(paramPointF.x, paramPointF.y);
-      ((r)paramContext).setStateResolve(paramb);
-      ((r)paramContext).setText((q)parama);
-      continue;
-      if (this.yfo != null)
-      {
-        paramPointF = this.yfo;
+        paramPointF = this.Cgo;
         if (paramPointF == null) {
-          break label448;
+          break label424;
         }
       }
       int j;
-      label448:
+      label424:
       for (paramPointF = paramPointF.getParent();; paramPointF = null)
       {
         if (paramPointF != null) {
-          break label454;
+          break label430;
         }
         paramPointF = (com.tencent.mm.plugin.recordvideo.ui.editor.view.c)new com.tencent.mm.plugin.recordvideo.ui.editor.a(paramContext);
         ((com.tencent.mm.plugin.recordvideo.ui.editor.a)paramPointF).setStateResolve(paramb);
         ((com.tencent.mm.plugin.recordvideo.ui.editor.a)paramPointF).setCaptionItem((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)parama);
-        this.yfo = ((com.tencent.mm.plugin.recordvideo.ui.editor.a)paramPointF);
+        this.Cgo = ((com.tencent.mm.plugin.recordvideo.ui.editor.a)paramPointF);
         j = i / 2;
-        parama = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-        f = 0.5F - (j - (com.tencent.mm.plugin.recordvideo.background.e.dIf().bottom - com.tencent.mm.cb.a.ax(paramContext, 2131165298))) / i;
+        parama = com.tencent.mm.plugin.recordvideo.background.e.BKp;
+        f = 0.5F - (j - (com.tencent.mm.plugin.recordvideo.background.e.getVisibleRect().bottom - com.tencent.mm.cb.a.aG(paramContext, 2131165308))) / i;
         paramContext = paramPointF;
         break;
       }
-      label454:
-      paramContext = this.yfo;
+      label430:
+      paramContext = this.Cgo;
       if (paramContext != null) {
         paramContext.a((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)parama);
       }
-      paramContext = this.yfo;
+      paramContext = this.Cgo;
       if (paramContext != null) {
         paramContext.setVisibility(0);
       }
-      AppMethodBeat.o(192167);
+      AppMethodBeat.o(191903);
       return null;
-      if (this.Cka != null)
+      if (this.GNc != null)
       {
-        paramPointF = this.Cka;
+        paramPointF = this.GNc;
         if (paramPointF == null) {
-          break label607;
+          break label583;
         }
       }
-      label607:
+      label583:
       for (paramPointF = paramPointF.getParent();; paramPointF = null)
       {
         if (paramPointF != null) {
-          break label613;
+          break label589;
         }
         paramPointF = (com.tencent.mm.plugin.recordvideo.ui.editor.view.c)new com.tencent.mm.plugin.recordvideo.ui.editor.a(paramContext);
         ((com.tencent.mm.plugin.recordvideo.ui.editor.a)paramPointF).setStateResolve(paramb);
         ((com.tencent.mm.plugin.recordvideo.ui.editor.a)paramPointF).setCaptionItem((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)parama);
-        this.Cka = ((com.tencent.mm.plugin.recordvideo.ui.editor.a)paramPointF);
+        this.GNc = ((com.tencent.mm.plugin.recordvideo.ui.editor.a)paramPointF);
         j = i / 2;
-        parama = com.tencent.mm.plugin.recordvideo.background.e.xKl;
-        f = 0.5F - (j - (com.tencent.mm.plugin.recordvideo.background.e.dIf().bottom - com.tencent.mm.cb.a.ax(paramContext, 2131165275))) / i;
+        parama = com.tencent.mm.plugin.recordvideo.background.e.BKp;
+        f = 0.5F - (j - (com.tencent.mm.plugin.recordvideo.background.e.eIS().bottom - com.tencent.mm.cb.a.aG(paramContext, 2131165278))) / i;
         paramContext = paramPointF;
         break;
       }
-      label613:
-      paramContext = this.Cka;
+      label589:
+      paramContext = this.GNc;
       if (paramContext != null) {
         paramContext.a((com.tencent.mm.plugin.recordvideo.ui.editor.item.c)parama);
       }
-      paramContext = this.Cka;
+      paramContext = this.GNc;
       if (paramContext != null) {
         paramContext.setVisibility(0);
       }
-      AppMethodBeat.o(192167);
+      AppMethodBeat.o(191903);
       return null;
       paramContext = (com.tencent.mm.plugin.recordvideo.ui.editor.view.c)new n(paramContext);
       ((n)paramContext).setStateResolve(paramb);
@@ -178,7 +180,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.vlog.ui.plugin.timeedit.c
  * JD-Core Version:    0.7.0.1
  */

@@ -6,135 +6,81 @@ import com.tencent.mm.plugin.report.a;
 public final class m
   extends a
 {
-  public int dRj;
-  private String dTA = "";
-  private String dTB = "";
-  private String dTu = "";
-  public int dTv;
-  public int dTw;
-  private String dTx = "";
-  private String dTy = "";
-  public int dTz;
+  private int ekA = 0;
+  private int ekw = 0;
+  private int ekx = 0;
+  private int eky = 0;
+  private int ekz = 0;
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(188458);
+    AppMethodBeat.i(226035);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.dTu);
+    ((StringBuffer)localObject).append(this.ekw);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dRj);
+    ((StringBuffer)localObject).append(this.ekx);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTv);
+    ((StringBuffer)localObject).append(this.eky);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTw);
+    ((StringBuffer)localObject).append(this.ekz);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTx);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTy);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTz);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTA);
-    ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.dTB);
+    ((StringBuffer)localObject).append(this.ekA);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(188458);
+    aMq((String)localObject);
+    AppMethodBeat.o(226035);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(188459);
+    AppMethodBeat.i(226036);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("RequestId:").append(this.dTu);
+    ((StringBuffer)localObject).append("memory:").append(this.ekw);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Action:").append(this.dRj);
+    ((StringBuffer)localObject).append("isSingleProcessStrategy:").append(this.ekx);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Source:").append(this.dTv);
+    ((StringBuffer)localObject).append("hasAppBrandRunning:").append(this.eky);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.dTw);
+    ((StringBuffer)localObject).append("runningAppBrandCount:").append(this.ekz);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MsgId:").append(this.dTx);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("MsgFromUsername:").append(this.dTy);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ChatType:").append(this.dTz);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("ChatRoomID:").append(this.dTA);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("PicMD5:").append(this.dTB);
+    ((StringBuffer)localObject).append("maxProcessMemory:").append(this.ekA);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(188459);
+    AppMethodBeat.o(226036);
     return localObject;
-  }
-  
-  public final m RI()
-  {
-    this.dTw = 67;
-    return this;
-  }
-  
-  public final m gO(String paramString)
-  {
-    AppMethodBeat.i(188453);
-    this.dTu = t("RequestId", paramString, true);
-    AppMethodBeat.o(188453);
-    return this;
-  }
-  
-  public final m gP(String paramString)
-  {
-    AppMethodBeat.i(188454);
-    this.dTx = t("MsgId", paramString, true);
-    AppMethodBeat.o(188454);
-    return this;
-  }
-  
-  public final m gQ(String paramString)
-  {
-    AppMethodBeat.i(188455);
-    this.dTy = t("MsgFromUsername", paramString, true);
-    AppMethodBeat.o(188455);
-    return this;
-  }
-  
-  public final m gR(String paramString)
-  {
-    AppMethodBeat.i(188456);
-    this.dTA = t("ChatRoomID", paramString, true);
-    AppMethodBeat.o(188456);
-    return this;
-  }
-  
-  public final m gS(String paramString)
-  {
-    AppMethodBeat.i(188457);
-    this.dTB = t("PicMD5", paramString, true);
-    AppMethodBeat.o(188457);
-    return this;
   }
   
   public final int getId()
   {
-    return 20511;
+    return 21711;
   }
   
-  public final m ii(int paramInt)
+  public final m jF(int paramInt)
   {
-    this.dRj = paramInt;
+    this.ekw = paramInt;
     return this;
   }
   
-  public final m ij(int paramInt)
+  public final m jG(int paramInt)
   {
-    this.dTv = paramInt;
+    this.ekx = paramInt;
     return this;
   }
   
-  public final m ik(int paramInt)
+  public final m jH(int paramInt)
   {
-    this.dTz = paramInt;
+    this.eky = paramInt;
+    return this;
+  }
+  
+  public final m jI(int paramInt)
+  {
+    this.ekz = paramInt;
+    return this;
+  }
+  
+  public final m jJ(int paramInt)
+  {
+    this.ekA = paramInt;
     return this;
   }
 }

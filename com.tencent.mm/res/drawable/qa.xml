@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <shape android:shape="ring" android:thickness="2.0dip">
-            <solid android:color="@color/t1" />
-        </shape>
-    </item>
-    <item android:id="@android:id/secondaryProgress">
-        <rotate android:fromDegrees="270.0" android:toDegrees="270.0">
-            <shape android:shape="ring" android:useLevel="true" android:innerRadius="13.0dip" android:thickness="2.0dip">
-                <gradient android:startColor="@color/zn" android:endColor="@color/zn" android:useLevel="false" android:angle="0.0" android:type="sweep" />
-            </shape>
-        </rotate>
-    </item>
-    <item android:id="@android:id/progress">
-        <rotate android:fromDegrees="270.0" android:toDegrees="270.0">
-            <shape android:shape="ring" android:useLevel="true" android:innerRadius="13.0dip" android:thickness="2.0dip">
-                <gradient android:startColor="@color/a_i" android:endColor="@color/a_i" android:useLevel="false" android:angle="0.0" android:type="sweep" />
-            </shape>
-        </rotate>
-    </item>
-</layer-list>
+    <item android:state_pressed="true" android:drawable="@color/x5" />
+    <item android:state_selected="true" android:drawable="@color/x5" />
+    <item android:drawable="@color/ac_" />
+</selector>

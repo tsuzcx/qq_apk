@@ -1,16 +1,16 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class e$d
 {
-  public static boolean YK(int paramInt)
+  public static boolean ahw(int paramInt)
   {
     return (paramInt == 19) || (paramInt == 22);
   }
   
-  public static int aMC(String paramString)
+  public static int bcV(String paramString)
   {
     AppMethodBeat.i(133668);
     if (paramString == null)
@@ -132,10 +132,10 @@ public final class e$d
     return 0;
   }
   
-  public static boolean aMD(String paramString)
+  public static boolean bcW(String paramString)
   {
     AppMethodBeat.i(133669);
-    if (((!bu.isNullOrNil(paramString)) && (paramString.equals("QR_CODE"))) || (paramString.equals("WX_CODE")))
+    if (((!Util.isNullOrNil(paramString)) && (paramString.equals("QR_CODE"))) || (paramString.equals("WX_CODE")))
     {
       AppMethodBeat.o(133669);
       return true;
@@ -146,7 +146,7 @@ public final class e$d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.pluginsdk.e.d
  * JD-Core Version:    0.7.0.1
  */

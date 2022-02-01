@@ -13,34 +13,34 @@ import rx.j;
 public class TestScheduler
   extends g
 {
-  static long Mnq;
-  final Queue<c> dga;
+  static long RPO;
+  final Queue<c> dxk;
   long time;
   
   public TestScheduler()
   {
     AppMethodBeat.i(90112);
-    this.dga = new PriorityQueue(11, new a());
+    this.dxk = new PriorityQueue(11, new a());
     AppMethodBeat.o(90112);
   }
   
-  private void Gs(long paramLong)
+  private void Py(long paramLong)
   {
     AppMethodBeat.i(90117);
-    if (!this.dga.isEmpty())
+    if (!this.dxk.isEmpty())
     {
-      c localc = (c)this.dga.peek();
+      c localc = (c)this.dxk.peek();
       if (localc.time <= paramLong)
       {
         if (localc.time == 0L) {}
         for (long l = this.time;; l = localc.time)
         {
           this.time = l;
-          this.dga.remove();
-          if (localc.OyG.gDt()) {
+          this.dxk.remove();
+          if (localc.Uou.hQB()) {
             break;
           }
-          localc.OwI.call();
+          localc.Umw.call();
           break;
         }
       }
@@ -59,7 +59,7 @@ public class TestScheduler
   public void advanceTimeTo(long paramLong, TimeUnit paramTimeUnit)
   {
     AppMethodBeat.i(90115);
-    Gs(paramTimeUnit.toNanos(paramLong));
+    Py(paramTimeUnit.toNanos(paramLong));
     AppMethodBeat.o(90115);
   }
   
@@ -82,7 +82,7 @@ public class TestScheduler
   public void triggerActions()
   {
     AppMethodBeat.i(90116);
-    Gs(this.time);
+    Py(this.time);
     AppMethodBeat.o(90116);
   }
   
@@ -93,12 +93,12 @@ public class TestScheduler
   final class b
     extends g.a
   {
-    private final rx.f.a OyC;
+    private final rx.f.a Uoq;
     
     b()
     {
       AppMethodBeat.i(90106);
-      this.OyC = new rx.f.a();
+      this.Uoq = new rx.f.a();
       AppMethodBeat.o(90106);
     }
     
@@ -106,13 +106,13 @@ public class TestScheduler
     {
       AppMethodBeat.i(90110);
       parama = new TestScheduler.c(this, 0L, parama);
-      TestScheduler.this.dga.add(parama);
+      TestScheduler.this.dxk.add(parama);
       parama = d.e(new rx.b.a()
       {
         public final void call()
         {
           AppMethodBeat.i(90105);
-          TestScheduler.this.dga.remove(parama);
+          TestScheduler.this.dxk.remove(parama);
           AppMethodBeat.o(90105);
         }
       });
@@ -124,13 +124,13 @@ public class TestScheduler
     {
       AppMethodBeat.i(90109);
       parama = new TestScheduler.c(this, TestScheduler.this.time + paramTimeUnit.toNanos(paramLong), parama);
-      TestScheduler.this.dga.add(parama);
+      TestScheduler.this.dxk.add(parama);
       parama = d.e(new rx.b.a()
       {
         public final void call()
         {
           AppMethodBeat.i(90104);
-          TestScheduler.this.dga.remove(parama);
+          TestScheduler.this.dxk.remove(parama);
           AppMethodBeat.o(90104);
         }
       });
@@ -138,17 +138,17 @@ public class TestScheduler
       return parama;
     }
     
-    public final void gDs()
+    public final void hQA()
     {
       AppMethodBeat.i(90107);
-      this.OyC.gDs();
+      this.Uoq.hQA();
       AppMethodBeat.o(90107);
     }
     
-    public final boolean gDt()
+    public final boolean hQB()
     {
       AppMethodBeat.i(90108);
-      boolean bool = this.OyC.gDt();
+      boolean bool = this.Uoq.hQB();
       AppMethodBeat.o(90108);
       return bool;
     }
@@ -164,27 +164,27 @@ public class TestScheduler
   
   static final class c
   {
-    final rx.b.a OwI;
-    final g.a OyG;
+    final rx.b.a Umw;
+    final g.a Uou;
     final long count;
     final long time;
     
     c(g.a parama, long paramLong, rx.b.a parama1)
     {
       AppMethodBeat.i(90102);
-      long l = TestScheduler.Mnq;
-      TestScheduler.Mnq = 1L + l;
+      long l = TestScheduler.RPO;
+      TestScheduler.RPO = 1L + l;
       this.count = l;
       this.time = paramLong;
-      this.OwI = parama1;
-      this.OyG = parama;
+      this.Umw = parama1;
+      this.Uou = parama;
       AppMethodBeat.o(90102);
     }
     
     public final String toString()
     {
       AppMethodBeat.i(90103);
-      String str = String.format("TimedAction(time = %d, action = %s)", new Object[] { Long.valueOf(this.time), this.OwI.toString() });
+      String str = String.format("TimedAction(time = %d, action = %s)", new Object[] { Long.valueOf(this.time), this.Umw.toString() });
       AppMethodBeat.o(90103);
       return str;
     }

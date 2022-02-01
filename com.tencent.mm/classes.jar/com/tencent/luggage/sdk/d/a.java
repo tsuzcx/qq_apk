@@ -6,218 +6,193 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Point;
 import android.os.Build.VERSION;
-import android.support.v4.content.b;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.View;
 import android.view.View.OnLayoutChangeListener;
 import android.view.WindowManager;
-import com.tencent.luggage.h.i;
 import com.tencent.luggage.sdk.config.AppBrandInitConfigLU;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.AppBrandRuntime;
-import com.tencent.mm.plugin.appbrand.at;
+import com.tencent.mm.plugin.appbrand.be;
 import com.tencent.mm.plugin.appbrand.config.WxaAttributes.WxaVersionInfo;
-import com.tencent.mm.plugin.appbrand.page.t;
-import com.tencent.mm.plugin.appbrand.page.z;
+import com.tencent.mm.plugin.appbrand.config.b.a;
+import com.tencent.mm.plugin.appbrand.config.b.b;
+import com.tencent.mm.plugin.appbrand.page.ac;
+import com.tencent.mm.plugin.appbrand.page.w;
 import com.tencent.mm.plugin.appbrand.platform.window.WxaWindowLayoutParams;
-import com.tencent.mm.plugin.appbrand.platform.window.c;
+import com.tencent.mm.plugin.appbrand.platform.window.d;
 import com.tencent.mm.plugin.appbrand.platform.window.d.b;
 import com.tencent.mm.plugin.appbrand.platform.window.e;
 import com.tencent.mm.plugin.appbrand.platform.window.e.a;
 import com.tencent.mm.plugin.appbrand.platform.window.e.b;
 import com.tencent.mm.plugin.appbrand.platform.window.g;
 import com.tencent.mm.plugin.appbrand.utils.ai;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import d.g.b.p;
-import d.k.j;
-import d.l;
-import d.v;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import junit.framework.AssertionFailedError;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/sdk/runtime/AppBrandCenterInsideWindowLayoutManager;", "C", "Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;", "Lcom/tencent/luggage/sdk/runtime/IAppBrandWindowLayoutManager;", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowViewImplScope;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "ctx", "Landroid/content/Context;", "activityOrientationHandler", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler;)V", "value", "", "_softOrientation", "set_softOrientation", "(Ljava/lang/String;)V", "bgView", "Landroid/view/View;", "getBgView", "()Landroid/view/View;", "setBgView", "(Landroid/view/View;)V", "displayMetrics", "Landroid/util/DisplayMetrics;", "heightPx", "", "initConfig", "getInitConfig", "()Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;", "setInitConfig", "(Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;)V", "Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;", "<set-?>", "", "isFold", "()Z", "isLastInMultiWindowMode", "lastOrientation", "lastScreenHDp", "lastScreenWDp", "lastVHeight", "getLastVHeight", "()I", "setLastVHeight", "(I)V", "lastVWidth", "getLastVWidth", "setLastVWidth", "maxEdge", "minEdge", "orientation", "resizable", "getResizable", "setResizable", "(Z)V", "scale", "", "systemRatio", "", "widthPx", "windowOrientation", "Lcom/tencent/luggage/sdk/runtime/AppBrandCenterInsideWindowLayoutManager$WindowOrientation;", "createFullscreenHandler", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowFullscreenHandler;", "provider", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowFullscreenHandler$FullScreenViewContainerProvider;", "getOrientationHandler", "getScale", "getVDisplayMetrics", "init", "", "onAppConfigGot", "appConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfig;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onInitConfigUpdated", "parseOrientation", "configurationOrientation", "refreshDisplayInfo", "resetWindowOrientation", "setSoftOrientation", "name", "shouldInLargeScreenCompatMode", "tuningRtContentView", "waitViewMeasure", "forceWaitViewMeasure", "reason", "OnLayoutChangeListenerWithCounter", "WindowOrientation", "luggage-wechat-full-sdk_release"})
-public class a<C extends AppBrandInitConfigLU>
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/luggage/sdk/runtime/AppBrandCenterInsideWindowLayoutManager;", "C", "Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;", "Lcom/tencent/luggage/sdk/runtime/IAppBrandWindowLayoutManager;", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowViewImplScope;", "rt", "Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;", "ctx", "Landroid/content/Context;", "activityOrientationHandler", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler;", "(Lcom/tencent/mm/plugin/appbrand/AppBrandRuntime;Landroid/content/Context;Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler;)V", "value", "", "_softOrientation", "set_softOrientation", "(Ljava/lang/String;)V", "bgView", "Landroid/view/View;", "getBgView", "()Landroid/view/View;", "setBgView", "(Landroid/view/View;)V", "displayMetrics", "Landroid/util/DisplayMetrics;", "heightPx", "", "initConfig", "getInitConfig", "()Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;", "setInitConfig", "(Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;)V", "Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;", "<set-?>", "", "isFold", "()Z", "isLastInMultiWindowMode", "lastOrientation", "lastScreenHDp", "lastScreenWDp", "lastVHeight", "getLastVHeight", "()I", "setLastVHeight", "(I)V", "lastVWidth", "getLastVWidth", "setLastVWidth", "maxEdge", "minEdge", "orientation", "resizable", "getResizable", "setResizable", "(Z)V", "scale", "", "systemRatio", "", "widthPx", "windowOrientation", "Lcom/tencent/luggage/sdk/runtime/AppBrandCenterInsideWindowLayoutManager$WindowOrientation;", "createFullscreenHandler", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowFullscreenHandler;", "provider", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowFullscreenHandler$FullScreenViewContainerProvider;", "forceLightMode", "getOrientationHandler", "getScale", "getVDisplayMetrics", "init", "", "onAppConfigGot", "appConfig", "Lcom/tencent/mm/plugin/appbrand/config/AppBrandAppConfig;", "onConfigurationChanged", "newConfig", "Landroid/content/res/Configuration;", "onInitConfigUpdated", "parseOrientation", "configurationOrientation", "refreshDisplayInfo", "resetWindowOrientation", "setSoftOrientation", "name", "shouldInLargeScreenCompatMode", "tuningRtContentView", "waitViewMeasure", "forceWaitViewMeasure", "reason", "OnLayoutChangeListenerWithCounter", "WindowOrientation", "luggage-wechat-full-sdk_release"})
+public abstract class a<C extends AppBrandInitConfigLU>
   implements f<C>, g
 {
-  private final DisplayMetrics aJt;
-  private double cpA;
-  private a.b cpB;
-  private String cpC;
-  private final AppBrandRuntime cpD;
-  private final e cpE;
-  protected boolean cpl;
-  private String cpm;
-  public View cpn;
-  protected C cpo;
-  private int cpp;
-  private int cpq;
-  private int cpr;
-  private int cps;
-  private int cpt;
-  private int cpu;
-  private int cpv;
-  private int cpw;
-  private int cpx;
-  private boolean cpy;
-  private boolean cpz;
+  private final DisplayMetrics aJm;
+  protected boolean cBF;
+  private String cBG;
+  public View cBH;
+  protected C cBI;
+  private int cBJ;
+  private int cBK;
+  private int cBL;
+  private int cBM;
+  private int cBN;
+  private int cBO;
+  private int cBP;
+  private int cBQ;
+  private boolean cBR;
+  private boolean cBS;
+  private double cBT;
+  private b cBU;
+  private String cBV;
+  private final AppBrandRuntime cBW;
+  private final e cBX;
   private final Context ctx;
+  private int lastOrientation;
   private float scale;
   
   public a(AppBrandRuntime paramAppBrandRuntime, Context paramContext, e parame)
   {
-    AppMethodBeat.i(220926);
-    this.cpD = paramAppBrandRuntime;
+    this.cBW = paramAppBrandRuntime;
     this.ctx = paramContext;
-    this.cpE = parame;
-    this.cpm = "portrait";
+    this.cBX = parame;
+    this.cBG = "portrait";
     this.scale = 1.0F;
-    this.aJt = new DisplayMetrics();
-    this.cpA = -1.0D;
+    this.aJm = new DisplayMetrics();
+    this.cBT = -1.0D;
     paramAppBrandRuntime = this.ctx.getResources();
     p.g(paramAppBrandRuntime, "ctx.resources");
-    this.cpB = gC(paramAppBrandRuntime.getConfiguration().orientation);
+    this.cBU = hR(paramAppBrandRuntime.getConfiguration().orientation);
     paramAppBrandRuntime = this.ctx.getResources();
     p.g(paramAppBrandRuntime, "ctx.resources");
-    this.cpv = paramAppBrandRuntime.getConfiguration().orientation;
+    this.lastOrientation = paramAppBrandRuntime.getConfiguration().orientation;
     paramAppBrandRuntime = this.ctx.getResources();
     p.g(paramAppBrandRuntime, "ctx.resources");
-    this.cpu = paramAppBrandRuntime.getConfiguration().screenWidthDp;
+    this.cBO = paramAppBrandRuntime.getConfiguration().screenWidthDp;
     paramAppBrandRuntime = this.ctx.getResources();
     p.g(paramAppBrandRuntime, "ctx.resources");
-    this.cpt = paramAppBrandRuntime.getConfiguration().screenHeightDp;
-    EY();
-    AppMethodBeat.o(220926);
+    this.cBN = paramAppBrandRuntime.getConfiguration().screenHeightDp;
+    OE();
   }
   
-  private final void EY()
+  private final void OE()
   {
-    AppMethodBeat.i(220918);
-    Object localObject1 = new Point();
-    Object localObject2 = this.ctx.getSystemService("window");
-    if (localObject2 == null)
-    {
-      localObject1 = new v("null cannot be cast to non-null type android.view.WindowManager");
-      AppMethodBeat.o(220918);
-      throw ((Throwable)localObject1);
+    Point localPoint = new Point();
+    Object localObject = this.ctx.getSystemService("window");
+    if (localObject == null) {
+      throw new t("null cannot be cast to non-null type android.view.WindowManager");
     }
-    localObject2 = ((WindowManager)localObject2).getDefaultDisplay();
-    if ((ai.dW(this.ctx)) && (i.cre.Fz()))
+    localObject = ((WindowManager)localObject).getDefaultDisplay();
+    if ((ai.et(this.ctx)) && (com.tencent.luggage.h.j.cDv.Pi()))
     {
-      ((Display)localObject2).getRealSize((Point)localObject1);
-      ((Display)localObject2).getRealMetrics(this.aJt);
+      ((Display)localObject).getRealSize(localPoint);
+      ((Display)localObject).getRealMetrics(this.aJm);
     }
     for (;;)
     {
-      this.cpp = ((Point)localObject1).x;
-      this.cpq = ((Point)localObject1).y;
-      this.cpr = Math.max(this.cpp, this.cpq);
-      this.cps = Math.min(this.cpp, this.cpq);
-      ae.i("Luggage.AppBrandWindowLayoutManager", "refreshDisplayInfo: system [w,h] = [%d,%d]", new Object[] { Integer.valueOf(this.cpp), Integer.valueOf(this.cpq) });
-      AppMethodBeat.o(220918);
+      this.cBJ = localPoint.x;
+      this.cBK = localPoint.y;
+      this.cBL = Math.max(this.cBJ, this.cBK);
+      this.cBM = Math.min(this.cBJ, this.cBK);
+      Log.i("Luggage.AppBrandWindowLayoutManager", "refreshDisplayInfo: system [w,h] = [%d,%d]", new Object[] { Integer.valueOf(this.cBJ), Integer.valueOf(this.cBK) });
       return;
-      ((Display)localObject2).getSize((Point)localObject1);
-      ((Display)localObject2).getMetrics(this.aJt);
+      ((Display)localObject).getSize(localPoint);
+      ((Display)localObject).getMetrics(this.aJm);
     }
   }
   
-  private final void EZ()
+  private final void OF()
   {
-    AppMethodBeat.i(220922);
-    if (!TextUtils.isEmpty((CharSequence)this.cpC))
+    if (!TextUtils.isEmpty((CharSequence)this.cBV))
     {
-      ae.i("Luggage.AppBrandWindowLayoutManager", "resetWindowOrientation by softOrientation[%s]", new Object[] { this.cpC });
-      this.cpE.a(e.b.UP(this.cpC), null);
-      AppMethodBeat.o(220922);
+      Log.i("Luggage.AppBrandWindowLayoutManager", "resetWindowOrientation by softOrientation[%s]", new Object[] { this.cBV });
+      this.cBX.a(e.b.aeE(this.cBV), null);
       return;
     }
-    e.b localb = this.cpE.aYg();
+    e.b localb = this.cBX.btm();
     p.g(localb, "activityOrientationHandler.getCurrentOrientation()");
-    ae.i("Luggage.AppBrandWindowLayoutManager", "resetWindowOrientation with orientation[%s]", new Object[] { localb });
-    this.cpE.a(localb, null);
-    AppMethodBeat.o(220922);
+    Log.i("Luggage.AppBrandWindowLayoutManager", "resetWindowOrientation with orientation[%s]", new Object[] { localb });
+    this.cBX.a(localb, null);
   }
   
-  private static a.b gC(int paramInt)
+  private static b hR(int paramInt)
   {
-    AppMethodBeat.i(220921);
     switch (paramInt)
     {
     default: 
-      ae.w("Luggage.AppBrandWindowLayoutManager", "unexpected orientation [%d], fallback to portrait", new Object[] { Integer.valueOf(paramInt) });
-      localb = a.b.cpH;
-      AppMethodBeat.o(220921);
-      return localb;
+      Log.w("Luggage.AppBrandWindowLayoutManager", "unexpected orientation [%d], fallback to portrait", new Object[] { Integer.valueOf(paramInt) });
+      return b.cCa;
     case 2: 
-      localb = a.b.cpG;
-      AppMethodBeat.o(220921);
-      return localb;
+      return b.cBZ;
     }
-    a.b localb = a.b.cpH;
-    AppMethodBeat.o(220921);
-    return localb;
+    return b.cCa;
   }
   
-  public boolean EX()
+  public boolean OD()
   {
-    AppMethodBeat.i(220917);
-    boolean bool = ai.dW(ak.getContext());
-    AppMethodBeat.o(220917);
-    return bool;
+    return ai.et(MMApplicationContext.getContext());
   }
   
-  public final com.tencent.mm.plugin.appbrand.platform.window.d a(d.b paramb)
+  public final boolean OG()
   {
-    AppMethodBeat.i(220924);
+    return false;
+  }
+  
+  public final d a(d.b paramb)
+  {
     if ((this.ctx instanceof Activity)) {}
     for (Activity localActivity = (Activity)this.ctx;; localActivity = null)
     {
-      c localc = this.cpD.getWindowAndroid();
+      com.tencent.mm.plugin.appbrand.platform.window.c localc = this.cBW.getWindowAndroid();
       p.g(localc, "rt.windowAndroid");
-      paramb = (com.tencent.mm.plugin.appbrand.platform.window.d)new at(localc, paramb, localActivity);
-      AppMethodBeat.o(220924);
-      return paramb;
+      return (d)new be(localc, paramb, localActivity);
     }
   }
   
   public final void a(C paramC)
   {
-    AppMethodBeat.i(220913);
     p.h(paramC, "initConfig");
-    Object localObject = this.cpD.aWo();
+    Object localObject = this.cBW.brj();
     p.g(localObject, "rt.contentView");
-    localObject = ((com.tencent.mm.plugin.appbrand.widget.d)localObject).getParent();
-    if (localObject == null)
-    {
-      paramC = new v("null cannot be cast to non-null type android.view.View");
-      AppMethodBeat.o(220913);
-      throw paramC;
+    localObject = ((com.tencent.mm.plugin.appbrand.widget.c)localObject).getParent();
+    if (localObject == null) {
+      throw new t("null cannot be cast to non-null type android.view.View");
     }
-    this.cpn = ((View)localObject);
-    this.cpo = paramC;
-    this.cpl = paramC.cmA.cpl;
+    this.cBH = ((View)localObject);
+    this.cBI = paramC;
+    this.cBF = paramC.cyv.cBF;
     a(true, false, "init");
-    AppMethodBeat.o(220913);
   }
   
-  public final void a(com.tencent.mm.plugin.appbrand.config.a parama)
+  public final void a(com.tencent.mm.plugin.appbrand.config.b paramb)
   {
-    AppMethodBeat.i(220915);
-    p.h(parama, "appConfig");
-    this.cpm = "portrait";
-    String str = parama.beo().jZz;
+    p.h(paramb, "appConfig");
+    this.cBG = "portrait";
+    String str = paramb.bzF().lcB;
     int i;
     if (str == null)
     {
-      str = parama.beq().cpm;
+      str = paramb.bzH().cBG;
       if (str != null)
       {
         if (((CharSequence)str).length() == 0)
         {
           i = 1;
           if (i == 0) {
-            break label147;
+            break label135;
           }
         }
       }
@@ -225,81 +200,74 @@ public class a<C extends AppBrandInitConfigLU>
         str = "portrait";
       }
     }
-    label70:
-    for (this.cpm = str;; this.cpm = str)
+    label64:
+    for (this.cBG = str;; this.cBG = str)
     {
-      boolean bool1 = parama.cpl;
-      boolean bool2 = this.cpl;
+      boolean bool1 = paramb.cBF;
+      boolean bool2 = this.cBF;
       if (bool2 != bool1)
       {
-        this.cpl = bool1;
+        this.cBF = bool1;
         a(true, false, "redundancy field check fail");
-        ae.w("Luggage.AppBrandWindowLayoutManager", "setResizableToWindow: redundancy field check fail, please call complexzeng to fix, fromAttr = [%b], fromAppJson = [%b]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+        Log.w("Luggage.AppBrandWindowLayoutManager", "setResizableToWindow: redundancy field check fail, please call complexzeng to fix, fromAttr = [%b], fromAppJson = [%b]", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
       }
-      AppMethodBeat.o(220915);
       return;
       i = 0;
       break;
-      break label70;
+      break label64;
     }
   }
   
   final void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    AppMethodBeat.i(220919);
-    if (!EX())
-    {
-      AppMethodBeat.o(220919);
+    if (!OD()) {
       return;
     }
     DisplayMetrics localDisplayMetrics = getVDisplayMetrics();
-    ae.i("Luggage.AppBrandWindowLayoutManager", "tuningRtContentView[%s]: orientation = [%s], vdmW = [%d], vdmH = [%d]", new Object[] { paramString, this.cpB, Integer.valueOf(localDisplayMetrics.widthPixels), Integer.valueOf(localDisplayMetrics.heightPixels) });
-    this.cpD.aWQ();
-    View localView = this.cpn;
+    Log.i("Luggage.AppBrandWindowLayoutManager", "tuningRtContentView[%s]: orientation = [%s], vdmW = [%d], vdmH = [%d]", new Object[] { paramString, this.cBU, Integer.valueOf(localDisplayMetrics.widthPixels), Integer.valueOf(localDisplayMetrics.heightPixels) });
+    this.cBW.brO();
+    View localView = this.cBH;
     if (localView == null) {
-      p.bdF("bgView");
+      p.btv("bgView");
     }
     if (((!localView.isLaidOut()) && (paramBoolean1)) || (paramBoolean2))
     {
-      paramString = this.cpn;
+      paramString = this.cBH;
       if (paramString == null) {
-        p.bdF("bgView");
+        p.btv("bgView");
       }
       paramString.post((Runnable)new e(this));
-      AppMethodBeat.o(220919);
       return;
     }
-    localView = this.cpn;
+    localView = this.cBH;
     if (localView == null) {
-      p.bdF("bgView");
+      p.btv("bgView");
     }
     int i = localView.getMeasuredWidth();
-    localView = this.cpn;
+    localView = this.cBH;
     if (localView == null) {
-      p.bdF("bgView");
+      p.btv("bgView");
     }
     int j = localView.getMeasuredHeight();
-    ae.i("Luggage.AppBrandWindowLayoutManager", "tuningRtContentView[%s]: width [%d], height[%d]", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j) });
+    Log.i("Luggage.AppBrandWindowLayoutManager", "tuningRtContentView[%s]: width [%d], height[%d]", new Object[] { paramString, Integer.valueOf(i), Integer.valueOf(j) });
     float f1 = i * 1.0F / localDisplayMetrics.widthPixels;
     float f2 = j * 1.0F / localDisplayMetrics.heightPixels;
     float f3 = Math.min(f1, f2);
-    ae.i("Luggage.AppBrandWindowLayoutManager", "tuningRtContentView[%s]: scaleMin = [%f], scaleMax = [%f]", new Object[] { paramString, Float.valueOf(f3), Float.valueOf(Math.max(f1, f2)) });
+    Log.i("Luggage.AppBrandWindowLayoutManager", "tuningRtContentView[%s]: scaleMin = [%f], scaleMax = [%f]", new Object[] { paramString, Float.valueOf(f3), Float.valueOf(Math.max(f1, f2)) });
     this.scale = f3;
     paramString = new WxaWindowLayoutParams(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
     paramString.gravity = 17;
     paramString.setScale(this.scale);
-    this.cpD.getWindowAndroid().a(paramString, this.cpD);
-    this.cpD.getWindowAndroid().a(b.n(this.ctx, 2131099651), this.cpD);
-    AppMethodBeat.o(220919);
+    this.cBW.getWindowAndroid().a(paramString, this.cBW);
+    this.cBW.getWindowAndroid().a(android.support.v4.content.b.n(this.ctx, 2131099651), this.cBW);
   }
   
   public final void b(C paramC)
   {
-    AppMethodBeat.i(220914);
     p.h(paramC, "initConfig");
-    this.cpo = paramC;
-    this.cpl = paramC.cmA.cpl;
-    if (EX())
+    this.cBI = paramC;
+    this.cBF = paramC.cyv.cBF;
+    if (OD())
     {
       paramC = this.ctx.getResources();
       p.g(paramC, "ctx.resources");
@@ -308,28 +276,22 @@ public class a<C extends AppBrandInitConfigLU>
       onConfigurationChanged(paramC);
     }
     a(true, true, "onInitConfigUpdated");
-    AppMethodBeat.o(220914);
   }
   
   public final View getBgView()
   {
-    AppMethodBeat.i(220912);
-    View localView = this.cpn;
+    View localView = this.cBH;
     if (localView == null) {
-      p.bdF("bgView");
+      p.btv("bgView");
     }
-    AppMethodBeat.o(220912);
     return localView;
   }
   
   public e getOrientationHandler()
   {
-    AppMethodBeat.i(220923);
-    Object localObject = this.cpD.getWindowAndroid();
-    p.g(localObject, "rt.windowAndroid");
-    localObject = (e)new com.tencent.mm.plugin.appbrand.platform.window.b.a.a((c)localObject);
-    AppMethodBeat.o(220923);
-    return localObject;
+    com.tencent.mm.plugin.appbrand.platform.window.c localc = this.cBW.getWindowAndroid();
+    p.g(localc, "rt.windowAndroid");
+    return (e)new com.tencent.mm.plugin.appbrand.platform.window.c.a.a(localc);
   }
   
   public float getScale()
@@ -339,133 +301,129 @@ public class a<C extends AppBrandInitConfigLU>
   
   public DisplayMetrics getVDisplayMetrics()
   {
-    AppMethodBeat.i(220916);
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    localDisplayMetrics.setTo(this.aJt);
-    if ((!this.cpy) || (this.cpA == -1.0D)) {
-      this.cpA = (this.cpr * 1.0D / (this.cps * 1.0D));
+    localDisplayMetrics.setTo(this.aJm);
+    if ((!this.cBR) || (this.cBT == -1.0D)) {
+      this.cBT = (this.cBL * 1.0D / (this.cBM * 1.0D));
     }
-    int j = this.cpr;
-    int i = this.cps;
-    View localView = this.cpn;
+    int j = this.cBL;
+    int i = this.cBM;
+    View localView = this.cBH;
     if (localView == null) {
-      p.bdF("bgView");
+      p.btv("bgView");
     }
     if (localView.isLaidOut())
     {
-      localView = this.cpn;
+      localView = this.cBH;
       if (localView == null) {
-        p.bdF("bgView");
+        p.btv("bgView");
       }
       i = localView.getMeasuredWidth();
-      localView = this.cpn;
+      localView = this.cBH;
       if (localView == null) {
-        p.bdF("bgView");
+        p.btv("bgView");
       }
-      int k = j.lw(i, localView.getMeasuredHeight());
-      localView = this.cpn;
+      int k = kotlin.k.j.mZ(i, localView.getMeasuredHeight());
+      localView = this.cBH;
       if (localView == null) {
-        p.bdF("bgView");
+        p.btv("bgView");
       }
       i = localView.getMeasuredWidth();
-      localView = this.cpn;
+      localView = this.cBH;
       if (localView == null) {
-        p.bdF("bgView");
+        p.btv("bgView");
       }
-      int m = j.lx(i, localView.getMeasuredHeight());
-      if (this.cpy)
+      int m = kotlin.k.j.na(i, localView.getMeasuredHeight());
+      if (this.cBR)
       {
         i = m;
         j = k;
-        if (this.cpA != -1.0D) {}
+        if (this.cBT != -1.0D) {}
       }
       else
       {
-        this.cpA = (k * 1.0D / (m * 1.0D));
+        this.cBT = (k * 1.0D / (m * 1.0D));
         j = k;
         i = m;
       }
     }
-    if ((this.cpA > 1.333333333333333D) && (this.cpA < 2.666666666666667D)) {}
+    if ((this.cBT > 1.333333333333333D) && (this.cBT < 2.666666666666667D)) {}
     double d2;
     float f1;
-    for (double d1 = this.cpA;; d1 = 1.777777777777778D)
+    for (double d1 = this.cBT;; d1 = 1.777777777777778D)
     {
-      localDisplayMetrics.setTo(this.aJt);
+      localDisplayMetrics.setTo(this.aJm);
       d2 = d1;
-      if (this.cpB != a.b.cpH) {
+      if (this.cBU != b.cCa) {
         d2 = 1.0D / d1;
       }
-      ae.i("Luggage.AppBrandWindowLayoutManager", "getVDisplayMetrics: contentRatio = [%f], systemRatio = [%f], isFold = [%b]", new Object[] { Double.valueOf(d2), Double.valueOf(this.cpA), Boolean.valueOf(this.cpy) });
+      Log.i("Luggage.AppBrandWindowLayoutManager", "getVDisplayMetrics: contentRatio = [%f], systemRatio = [%f], isFold = [%b]", new Object[] { Double.valueOf(d2), Double.valueOf(this.cBT), Boolean.valueOf(this.cBR) });
       float f2 = 1.0F;
       f1 = f2;
-      if (this.cpA >= 1.333333333333333D)
+      if (this.cBT >= 1.333333333333333D)
       {
         f1 = f2;
-        if (!this.cpy) {
+        if (!this.cBR) {
           f1 = 0.75F;
         }
       }
-      if ((!this.cpy) || (this.cpx == 0) || (this.cpw == 0)) {
+      if ((!this.cBR) || (this.cBQ == 0) || (this.cBP == 0)) {
         break;
       }
-      localDisplayMetrics.heightPixels = this.cpx;
-      localDisplayMetrics.widthPixels = this.cpw;
-      AppMethodBeat.o(220916);
+      localDisplayMetrics.heightPixels = this.cBQ;
+      localDisplayMetrics.widthPixels = this.cBP;
       return localDisplayMetrics;
     }
-    if (this.cpB == a.b.cpH) {
+    if (this.cBU == b.cCa) {
       localDisplayMetrics.heightPixels = ((int)(j * f1));
     }
     for (localDisplayMetrics.widthPixels = ((int)(localDisplayMetrics.heightPixels / d2));; localDisplayMetrics.widthPixels = ((int)(localDisplayMetrics.heightPixels / d2)))
     {
-      this.cpx = localDisplayMetrics.heightPixels;
-      this.cpw = localDisplayMetrics.widthPixels;
-      break;
+      this.cBQ = localDisplayMetrics.heightPixels;
+      this.cBP = localDisplayMetrics.widthPixels;
+      return localDisplayMetrics;
       localDisplayMetrics.heightPixels = ((int)(i * f1));
     }
   }
   
   public final void onConfigurationChanged(Configuration paramConfiguration)
   {
-    AppMethodBeat.i(220920);
     p.h(paramConfiguration, "newConfig");
-    if ((this.cpv != paramConfiguration.orientation) && (p.i(this.cpC, "auto")) && (EX()) && (!this.cpl)) {
-      this.cpB = gC(paramConfiguration.orientation);
+    if ((this.lastOrientation != paramConfiguration.orientation) && (p.j(this.cBV, "auto")) && (OD()) && (!this.cBF)) {
+      this.cBU = hR(paramConfiguration.orientation);
     }
-    if ((this.cpv != paramConfiguration.orientation) || (paramConfiguration.screenHeightDp != this.cpt) || (paramConfiguration.screenWidthDp != this.cpu)) {
-      if (((paramConfiguration.screenHeightDp == this.cpt) && (paramConfiguration.screenWidthDp == this.cpu)) || (this.cpv != paramConfiguration.orientation)) {
-        break label302;
+    if ((this.lastOrientation != paramConfiguration.orientation) || (paramConfiguration.screenHeightDp != this.cBN) || (paramConfiguration.screenWidthDp != this.cBO)) {
+      if (((paramConfiguration.screenHeightDp == this.cBN) && (paramConfiguration.screenWidthDp == this.cBO)) || (this.lastOrientation != paramConfiguration.orientation)) {
+        break label290;
       }
     }
-    label302:
+    label290:
     for (boolean bool = true;; bool = false)
     {
-      this.cpy = bool;
+      this.cBR = bool;
       if (Build.VERSION.SDK_INT >= 24)
       {
-        localObject = this.cpD.getWindowAndroid();
+        localObject = this.cBW.getWindowAndroid();
         p.g(localObject, "rt.windowAndroid");
-        if ((((c)localObject).isInMultiWindowMode()) || (this.cpz)) {
-          this.cpy = false;
+        if ((((com.tencent.mm.plugin.appbrand.platform.window.c)localObject).isInMultiWindowMode()) || (this.cBS)) {
+          this.cBR = false;
         }
-        localObject = this.cpD.getWindowAndroid();
+        localObject = this.cBW.getWindowAndroid();
         p.g(localObject, "rt.windowAndroid");
-        this.cpz = ((c)localObject).isInMultiWindowMode();
+        this.cBS = ((com.tencent.mm.plugin.appbrand.platform.window.c)localObject).isInMultiWindowMode();
       }
-      EY();
-      if ((this.cpy) && ((paramConfiguration.screenHeightDp != this.cpt) || (paramConfiguration.screenWidthDp != this.cpu))) {
-        EZ();
+      OE();
+      if ((this.cBR) && ((paramConfiguration.screenHeightDp != this.cBN) || (paramConfiguration.screenWidthDp != this.cBO))) {
+        OF();
       }
-      Object localObject = this.cpn;
+      Object localObject = this.cBH;
       if (localObject == null) {
-        p.bdF("bgView");
+        p.btv("bgView");
       }
       ((View)localObject).addOnLayoutChangeListener((View.OnLayoutChangeListener)new d(this));
-      this.cpv = paramConfiguration.orientation;
-      this.cpt = paramConfiguration.screenHeightDp;
-      this.cpu = paramConfiguration.screenWidthDp;
-      AppMethodBeat.o(220920);
+      this.lastOrientation = paramConfiguration.orientation;
+      this.cBN = paramConfiguration.screenHeightDp;
+      this.cBO = paramConfiguration.screenWidthDp;
       return;
     }
   }
@@ -473,24 +431,23 @@ public class a<C extends AppBrandInitConfigLU>
   public void setSoftOrientation(String paramString)
   {
     localObject3 = null;
-    AppMethodBeat.i(220925);
     p.h(paramString, "name");
-    ae.i("Luggage.AppBrandWindowLayoutManager", "_softOrientation = [%s]", new Object[] { paramString });
+    Log.i("Luggage.AppBrandWindowLayoutManager", "_softOrientation = [%s]", new Object[] { paramString });
     if (paramString == null) {
-      ae.w("Luggage.AppBrandWindowLayoutManager", "unhandled orientation = [%s]", new Object[] { paramString });
+      Log.w("Luggage.AppBrandWindowLayoutManager", "unhandled orientation = [%s]", new Object[] { paramString });
     }
     for (;;)
     {
       try
       {
-        Object localObject4 = this.cpD.aWm();
+        Object localObject4 = this.cBW.brh();
         localObject1 = localObject3;
         if (localObject4 != null)
         {
-          localObject4 = ((t)localObject4).getPageView();
+          localObject4 = ((w)localObject4).getPageView();
           localObject1 = localObject3;
           if (localObject4 != null) {
-            localObject1 = ((z)localObject4).getFullscreenImpl();
+            localObject1 = ((ac)localObject4).getFullscreenImpl();
           }
         }
       }
@@ -501,20 +458,19 @@ public class a<C extends AppBrandInitConfigLU>
         Object localObject2 = localObject3;
         continue;
       }
-      if ((localObject1 == null) || (!(localObject1 instanceof at)) || (!((at)localObject1).jEw))
+      if ((localObject1 == null) || (!(localObject1 instanceof be)) || (!((be)localObject1).kGg))
       {
-        this.cpC = paramString;
+        this.cBV = paramString;
         a(true, false, "set softOrientation");
-        if (((EX()) || (this.cpl)) && ((this.ctx instanceof Activity)))
+        if (((OD()) || (this.cBF)) && ((this.ctx instanceof Activity)))
         {
-          ae.i("Luggage.AppBrandWindowLayoutManager", "_softOrientation: unlock orientation");
+          Log.i("Luggage.AppBrandWindowLayoutManager", "_softOrientation: unlock orientation");
           i = ((Activity)this.ctx).getRequestedOrientation();
           if ((i != 14) && (i != -1)) {
-            this.cpE.a(e.b.mtE, (e.a)new c(this));
+            this.cBX.a(e.b.nEm, (e.a)new c(this));
           }
         }
       }
-      AppMethodBeat.o(220925);
       return;
       switch (paramString.hashCode())
       {
@@ -526,24 +482,41 @@ public class a<C extends AppBrandInitConfigLU>
         }
         localObject1 = this.ctx.getResources();
         p.g(localObject1, "ctx.resources");
-        this.cpB = gC(((Resources)localObject1).getConfiguration().orientation);
+        this.cBU = hR(((Resources)localObject1).getConfiguration().orientation);
         break;
       case 729267099: 
         if (!paramString.equals("portrait")) {
           break;
         }
-        this.cpB = a.b.cpH;
+        this.cBU = b.cCa;
         break;
       case 1430647483: 
         if (!paramString.equals("landscape")) {
           break;
         }
-        this.cpB = a.b.cpG;
+        this.cBU = b.cBZ;
       }
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "C", "Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;", "<anonymous parameter 0>", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "success", "", "onOrientationChanged"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/luggage/sdk/runtime/AppBrandCenterInsideWindowLayoutManager$WindowOrientation;", "", "(Ljava/lang/String;I)V", "LANDSCAPE", "PORTRAIT", "luggage-wechat-full-sdk_release"})
+  static enum b
+  {
+    static
+    {
+      AppMethodBeat.i(230031);
+      b localb1 = new b("LANDSCAPE", 0);
+      cBZ = localb1;
+      b localb2 = new b("PORTRAIT", 1);
+      cCa = localb2;
+      cCb = new b[] { localb1, localb2 };
+      AppMethodBeat.o(230031);
+    }
+    
+    private b() {}
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "C", "Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;", "<anonymous parameter 0>", "Lcom/tencent/mm/plugin/appbrand/platform/window/WindowOrientationHandler$Orientation;", "success", "", "onOrientationChanged"})
   static final class c
     implements e.a
   {
@@ -551,44 +524,44 @@ public class a<C extends AppBrandInitConfigLU>
     
     public final void a(e.b paramb, boolean paramBoolean)
     {
-      AppMethodBeat.i(220909);
-      ae.i("Luggage.AppBrandWindowLayoutManager", "request orientation result: [%b]", new Object[] { Boolean.valueOf(paramBoolean) });
-      if (this.cpJ.cpo != null) {
-        this.cpJ.a(true, false, "requestDeviceOrientation done");
+      AppMethodBeat.i(230034);
+      Log.i("Luggage.AppBrandWindowLayoutManager", "request orientation result: [%b]", new Object[] { Boolean.valueOf(paramBoolean) });
+      if (this.cCc.cBI != null) {
+        this.cCc.a(true, false, "requestDeviceOrientation done");
       }
-      AppMethodBeat.o(220909);
+      AppMethodBeat.o(230034);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/luggage/sdk/runtime/AppBrandCenterInsideWindowLayoutManager$onConfigurationChanged$1", "Lcom/tencent/luggage/sdk/runtime/AppBrandCenterInsideWindowLayoutManager$OnLayoutChangeListenerWithCounter;", "onLayoutChange", "", "v", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "counter", "luggage-wechat-full-sdk_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/luggage/sdk/runtime/AppBrandCenterInsideWindowLayoutManager$onConfigurationChanged$1", "Lcom/tencent/luggage/sdk/runtime/AppBrandCenterInsideWindowLayoutManager$OnLayoutChangeListenerWithCounter;", "onLayoutChange", "", "v", "Landroid/view/View;", "left", "", "top", "right", "bottom", "oldLeft", "oldTop", "oldRight", "oldBottom", "counter", "luggage-wechat-full-sdk_release"})
   public static final class d
     extends a.a
   {
     public final void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
     {
-      AppMethodBeat.i(220910);
+      AppMethodBeat.i(230035);
       if (paramInt9 == 10)
       {
-        this.cpJ.getBgView().removeOnLayoutChangeListener((View.OnLayoutChangeListener)this);
-        AppMethodBeat.o(220910);
+        this.cCc.getBgView().removeOnLayoutChangeListener((View.OnLayoutChangeListener)this);
+        AppMethodBeat.o(230035);
         return;
       }
       if ((paramInt1 == paramInt2) && (paramInt1 == paramInt4) && (paramInt1 == paramInt3)) {}
       for (paramInt9 = 1; (paramInt1 == paramInt5) && (paramInt3 == paramInt7) && (paramInt4 == paramInt8) && (paramInt2 == paramInt6) && (paramInt9 == 0); paramInt9 = 0)
       {
-        ae.i("Luggage.AppBrandWindowLayoutManager", "onLayoutChange: no changed, ignore");
-        AppMethodBeat.o(220910);
+        Log.i("Luggage.AppBrandWindowLayoutManager", "onLayoutChange: no changed, ignore");
+        AppMethodBeat.o(230035);
         return;
       }
-      if (this.cpJ.cpo != null) {
-        this.cpJ.a(true, false, "onConfigurationChanged");
+      if (this.cCc.cBI != null) {
+        this.cCc.a(true, false, "onConfigurationChanged");
       }
-      this.cpJ.getBgView().removeOnLayoutChangeListener((View.OnLayoutChangeListener)this);
-      AppMethodBeat.o(220910);
+      this.cCc.getBgView().removeOnLayoutChangeListener((View.OnLayoutChangeListener)this);
+      AppMethodBeat.o(230035);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "C", "Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;", "run"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "C", "Lcom/tencent/luggage/sdk/config/AppBrandInitConfigLU;", "run"})
   static final class e
     implements Runnable
   {
@@ -596,15 +569,15 @@ public class a<C extends AppBrandInitConfigLU>
     
     public final void run()
     {
-      AppMethodBeat.i(220911);
-      this.cpJ.a(false, false, "post");
-      AppMethodBeat.o(220911);
+      AppMethodBeat.i(230036);
+      this.cCc.a(false, false, "post");
+      AppMethodBeat.o(230036);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.d.a
  * JD-Core Version:    0.7.0.1
  */

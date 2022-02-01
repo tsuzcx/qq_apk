@@ -12,7 +12,7 @@ public final class g
     if (paramThrowable == null) {
       localObject = new NullPointerException();
     }
-    paramThrowable = b.M((Throwable)localObject);
+    paramThrowable = b.O((Throwable)localObject);
     if (((paramThrowable instanceof a)) && (((a)paramThrowable).value == paramObject))
     {
       AppMethodBeat.o(90054);

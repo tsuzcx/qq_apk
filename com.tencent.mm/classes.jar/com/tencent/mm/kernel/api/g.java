@@ -2,9 +2,9 @@ package com.tencent.mm.kernel.api;
 
 public abstract interface g
 {
-  public abstract void ML();
+  public abstract void WY();
   
-  public abstract void ch(boolean paramBoolean);
+  public abstract void cQ(boolean paramBoolean);
 }
 
 

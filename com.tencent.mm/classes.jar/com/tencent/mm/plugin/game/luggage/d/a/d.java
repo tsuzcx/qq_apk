@@ -1,108 +1,80 @@
 package com.tencent.mm.plugin.game.luggage.d.a;
 
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import android.widget.Toast;
-import com.tencent.luggage.d.p;
-import com.tencent.luggage.d.s;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.ipc.AppBrandMainProcessService;
-import com.tencent.mm.plugin.game.luggage.ipc.AddShortcutTask;
-import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.u;
-import com.tencent.mm.protocal.protobuf.bzp;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.l;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.downloader_app.api.DownloadWidgetTaskInfo;
+import com.tencent.mm.plugin.downloader_app.api.c;
+import com.tencent.mm.plugin.lite.jsapi.b;
+import com.tencent.mm.plugin.lite.jsapi.b.a;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class d
-  extends a
+public class d
+  extends b
 {
-  public d()
+  public final void a(String paramString, JSONObject paramJSONObject)
   {
-    super(8);
-  }
-  
-  public final void a(final Context paramContext, final g paramg, bzp parambzp)
-  {
-    AppMethodBeat.i(83106);
-    parambzp = paramg.mParams.getString("shortcut_user_name");
-    String str = paramg.EgL.getAppId();
-    if ((bu.isNullOrNil(parambzp)) || (bu.isNullOrNil(str)))
+    AppMethodBeat.i(186904);
+    Object localObject = ((c)g.af(c.class)).cBR();
+    if (Util.isNullOrNil((List)localObject))
     {
-      AppMethodBeat.o(83106);
+      this.yEn.ecz();
+      AppMethodBeat.o(186904);
       return;
     }
-    final AddShortcutTask localAddShortcutTask = new AddShortcutTask();
-    localAddShortcutTask.username = parambzp;
-    localAddShortcutTask.appId = str;
-    localAddShortcutTask.kuv = new Runnable()
+    paramString = new JSONObject();
+    paramJSONObject = new JSONArray();
+    localObject = ((LinkedList)localObject).iterator();
+    for (;;)
     {
-      public final void run()
+      DownloadWidgetTaskInfo localDownloadWidgetTaskInfo;
+      JSONObject localJSONObject;
+      if (((Iterator)localObject).hasNext())
       {
-        AppMethodBeat.i(83104);
-        localAddShortcutTask.bix();
-        paramg.chX.a(new com.tencent.luggage.d.d()
+        localDownloadWidgetTaskInfo = (DownloadWidgetTaskInfo)((Iterator)localObject).next();
+        localJSONObject = new JSONObject();
+      }
+      try
+      {
+        localJSONObject.put("appid", localDownloadWidgetTaskInfo.appId);
+        localJSONObject.put("status", localDownloadWidgetTaskInfo.pJC);
+        localJSONObject.put("download_id", localDownloadWidgetTaskInfo.dCa);
+        localJSONObject.put("progress", localDownloadWidgetTaskInfo.progress);
+        localJSONObject.put("progress_float", localDownloadWidgetTaskInfo.lCT);
+        if (localDownloadWidgetTaskInfo.qJh) {
+          localJSONObject.put("reserve_for_wifi", 1);
+        }
+        label172:
+        paramJSONObject.put(localJSONObject);
+        continue;
+        try
         {
-          public final JSONObject BP()
-          {
-            AppMethodBeat.i(83102);
-            JSONObject localJSONObject = new JSONObject();
-            try
-            {
-              localJSONObject.put("success", d.1.this.uft.success);
-              label30:
-              AppMethodBeat.o(83102);
-              return localJSONObject;
-            }
-            catch (Exception localException)
-            {
-              break label30;
-            }
-          }
-          
-          public final String name()
-          {
-            return "onAddShortcutStatus";
-          }
-        });
-        if (localAddShortcutTask.success)
-        {
-          h.a(paramContext, 2131766244, 2131755906, false, new DialogInterface.OnClickListener()
-          {
-            public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
-            {
-              AppMethodBeat.i(83103);
-              paramAnonymous2DialogInterface.dismiss();
-              AppMethodBeat.o(83103);
-            }
-          });
-          AppMethodBeat.o(83104);
+          paramString.put("result", paramJSONObject.toString());
+          label193:
+          this.yEn.aW(paramString);
+          AppMethodBeat.o(186904);
           return;
         }
-        Toast.makeText(paramContext, paramContext.getString(2131766243), 0).show();
-        AppMethodBeat.o(83104);
+        catch (JSONException paramJSONObject)
+        {
+          break label193;
+        }
       }
-    };
-    localAddShortcutTask.biw();
-    AppBrandMainProcessService.a(localAddShortcutTask);
-    AppMethodBeat.o(83106);
+      catch (JSONException localJSONException)
+      {
+        break label172;
+      }
+    }
   }
   
-  public final void a(g paramg, l paraml, bzp parambzp)
+  public final int dTw()
   {
-    AppMethodBeat.i(83105);
-    String str1 = paramg.EgL.getAppId();
-    String str2 = paramg.mParams.getString("shortcut_user_name");
-    if ((!paramg.mParams.getBoolean("from_shortcut", false)) && (!bu.isNullOrNil(str1)) && (!bu.isNullOrNil(str2)))
-    {
-      paramg = parambzp.Title + "__" + parambzp.ThumbUrl;
-      paraml.d(parambzp.GbY, paramg);
-    }
-    AppMethodBeat.o(83105);
+    return 1;
   }
 }
 

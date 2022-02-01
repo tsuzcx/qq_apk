@@ -10,8 +10,8 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class TextPreference
   extends Preference
 {
-  protected int Kk;
-  protected TextView Wf;
+  protected int Ku;
+  protected TextView Ws;
   private Context context;
   protected CharSequence mText;
   
@@ -20,28 +20,28 @@ public class TextPreference
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(142681);
     this.context = paramContext;
-    setLayoutResource(2131494863);
+    setLayoutResource(2131495599);
     AppMethodBeat.o(142681);
   }
   
   private void updateView()
   {
     AppMethodBeat.i(142684);
-    if (this.Wf == null)
+    if (this.Ws == null)
     {
       AppMethodBeat.o(142684);
       return;
     }
-    this.Wf.setText(this.mText);
-    this.Wf.setGravity(this.Kk);
+    this.Ws.setText(this.mText);
+    this.Ws.setGravity(this.Ku);
     AppMethodBeat.o(142684);
   }
   
-  public final void al(CharSequence paramCharSequence)
+  public final void ar(CharSequence paramCharSequence)
   {
     AppMethodBeat.i(142685);
     this.mText = paramCharSequence;
-    this.Kk = 17;
+    this.Ku = 17;
     updateView();
     AppMethodBeat.o(142685);
   }
@@ -50,7 +50,7 @@ public class TextPreference
   {
     AppMethodBeat.i(142683);
     super.onBindView(paramView);
-    this.Wf = ((TextView)paramView.findViewById(16908310));
+    this.Ws = ((TextView)paramView.findViewById(16908310));
     updateView();
     AppMethodBeat.o(142683);
   }

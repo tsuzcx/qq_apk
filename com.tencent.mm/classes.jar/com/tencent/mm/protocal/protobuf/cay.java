@@ -1,60 +1,85 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.bw.b;
 
 public final class cay
   extends com.tencent.mm.bw.a
 {
-  public String Hoy;
+  public b KOi;
+  public b KOk;
+  public b Mgr;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(220390);
+    AppMethodBeat.i(32321);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.Hoy != null) {
-        paramVarArgs.d(1, this.Hoy);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.KOk != null) {
+        paramVarArgs.c(1, this.KOk);
       }
-      AppMethodBeat.o(220390);
+      if (this.KOi != null) {
+        paramVarArgs.c(2, this.KOi);
+      }
+      if (this.Mgr != null) {
+        paramVarArgs.c(3, this.Mgr);
+      }
+      AppMethodBeat.o(32321);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.Hoy == null) {
-        break label213;
+      if (this.KOk == null) {
+        break label343;
       }
     }
-    label213:
-    for (paramInt = f.a.a.b.b.a.e(1, this.Hoy) + 0;; paramInt = 0)
+    label343:
+    for (int i = g.a.a.b.b.a.b(1, this.KOk) + 0;; i = 0)
     {
-      AppMethodBeat.o(220390);
-      return paramInt;
+      paramInt = i;
+      if (this.KOi != null) {
+        paramInt = i + g.a.a.b.b.a.b(2, this.KOi);
+      }
+      i = paramInt;
+      if (this.Mgr != null) {
+        i = paramInt + g.a.a.b.b.a.b(3, this.Mgr);
+      }
+      AppMethodBeat.o(32321);
+      return i;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(220390);
+        AppMethodBeat.o(32321);
         return 0;
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         cay localcay = (cay)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
         default: 
-          AppMethodBeat.o(220390);
+          AppMethodBeat.o(32321);
           return -1;
+        case 1: 
+          localcay.KOk = locala.UbS.hPo();
+          AppMethodBeat.o(32321);
+          return 0;
+        case 2: 
+          localcay.KOi = locala.UbS.hPo();
+          AppMethodBeat.o(32321);
+          return 0;
         }
-        localcay.Hoy = locala.OmT.readString();
-        AppMethodBeat.o(220390);
+        localcay.Mgr = locala.UbS.hPo();
+        AppMethodBeat.o(32321);
         return 0;
       }
-      AppMethodBeat.o(220390);
+      AppMethodBeat.o(32321);
       return -1;
     }
   }

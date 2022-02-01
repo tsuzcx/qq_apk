@@ -1,24 +1,24 @@
 package com.tencent.mm.plugin.appbrand.jsapi.nfc;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.at;
+import com.tencent.mm.plugin.appbrand.jsapi.bc;
 
 public final class a
-  extends at
+  extends bc
 {
   private static final int CTRL_INDEX = 355;
   private static final String NAME = "onHCEMessage";
-  private static final a lbA;
+  private static final a mgR;
   
   static
   {
     AppMethodBeat.i(136078);
-    lbA = new a();
+    mgR = new a();
     AppMethodBeat.o(136078);
   }
   
   /* Error */
-  static void a(com.tencent.mm.plugin.appbrand.jsapi.c paramc, int paramInt, android.os.Bundle paramBundle)
+  static void a(com.tencent.mm.plugin.appbrand.jsapi.f paramf, int paramInt, android.os.Bundle paramBundle)
   {
     // Byte code:
     //   0: ldc 2
@@ -39,7 +39,7 @@ public final class a
     //   27: iload_1
     //   28: invokestatic 53	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   31: aastore
-    //   32: invokestatic 58	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   32: invokestatic 58	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   35: iload_1
     //   36: bipush 31
     //   38: if_icmpne +68 -> 106
@@ -64,12 +64,12 @@ public final class a
     //   76: aload_2
     //   77: invokeinterface 77 3 0
     //   82: pop
-    //   83: getstatic 27	com/tencent/mm/plugin/appbrand/jsapi/nfc/a:lbA	Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/a;
+    //   83: getstatic 27	com/tencent/mm/plugin/appbrand/jsapi/nfc/a:mgR	Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/a;
     //   86: aload_0
-    //   87: invokevirtual 83	com/tencent/mm/plugin/appbrand/jsapi/nfc/a:h	(Lcom/tencent/mm/plugin/appbrand/jsapi/c;)Lcom/tencent/mm/plugin/appbrand/jsapi/at;
+    //   87: invokevirtual 83	com/tencent/mm/plugin/appbrand/jsapi/nfc/a:h	(Lcom/tencent/mm/plugin/appbrand/jsapi/f;)Lcom/tencent/mm/plugin/appbrand/jsapi/bc;
     //   90: aload_3
-    //   91: invokevirtual 86	com/tencent/mm/plugin/appbrand/jsapi/at:I	(Ljava/util/Map;)Lcom/tencent/mm/plugin/appbrand/jsapi/at;
-    //   94: invokevirtual 89	com/tencent/mm/plugin/appbrand/jsapi/at:bja	()V
+    //   91: invokevirtual 87	com/tencent/mm/plugin/appbrand/jsapi/bc:L	(Ljava/util/Map;)Lcom/tencent/mm/plugin/appbrand/jsapi/bc;
+    //   94: invokevirtual 90	com/tencent/mm/plugin/appbrand/jsapi/bc:bEo	()V
     //   97: ldc 35
     //   99: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   102: ldc 2
@@ -91,19 +91,19 @@ public final class a
     //   131: invokeinterface 77 3 0
     //   136: pop
     //   137: aload_3
-    //   138: ldc 91
+    //   138: ldc 92
     //   140: aload_2
-    //   141: ldc 93
-    //   143: invokevirtual 97	android/os/Bundle:getInt	(Ljava/lang/String;)I
+    //   141: ldc 94
+    //   143: invokevirtual 98	android/os/Bundle:getInt	(Ljava/lang/String;)I
     //   146: invokestatic 53	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
     //   149: invokeinterface 77 3 0
     //   154: pop
-    //   155: getstatic 27	com/tencent/mm/plugin/appbrand/jsapi/nfc/a:lbA	Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/a;
+    //   155: getstatic 27	com/tencent/mm/plugin/appbrand/jsapi/nfc/a:mgR	Lcom/tencent/mm/plugin/appbrand/jsapi/nfc/a;
     //   158: aload_0
-    //   159: invokevirtual 83	com/tencent/mm/plugin/appbrand/jsapi/nfc/a:h	(Lcom/tencent/mm/plugin/appbrand/jsapi/c;)Lcom/tencent/mm/plugin/appbrand/jsapi/at;
+    //   159: invokevirtual 83	com/tencent/mm/plugin/appbrand/jsapi/nfc/a:h	(Lcom/tencent/mm/plugin/appbrand/jsapi/f;)Lcom/tencent/mm/plugin/appbrand/jsapi/bc;
     //   162: aload_3
-    //   163: invokevirtual 86	com/tencent/mm/plugin/appbrand/jsapi/at:I	(Ljava/util/Map;)Lcom/tencent/mm/plugin/appbrand/jsapi/at;
-    //   166: invokevirtual 89	com/tencent/mm/plugin/appbrand/jsapi/at:bja	()V
+    //   163: invokevirtual 87	com/tencent/mm/plugin/appbrand/jsapi/bc:L	(Ljava/util/Map;)Lcom/tencent/mm/plugin/appbrand/jsapi/bc;
+    //   166: invokevirtual 90	com/tencent/mm/plugin/appbrand/jsapi/bc:bEo	()V
     //   169: ldc 35
     //   171: invokestatic 30	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   174: goto -72 -> 102
@@ -114,7 +114,7 @@ public final class a
     //   182: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	183	0	paramc	com.tencent.mm.plugin.appbrand.jsapi.c
+    //   0	183	0	paramf	com.tencent.mm.plugin.appbrand.jsapi.f
     //   0	183	1	paramInt	int
     //   0	183	2	paramBundle	android.os.Bundle
     //   59	104	3	localHashMap	java.util.HashMap

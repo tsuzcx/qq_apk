@@ -2,23 +2,23 @@ package com.tencent.mm.plugin.appbrand.backgroundrunning;
 
 import android.app.Notification;
 import android.support.annotation.Keep;
-import com.tencent.mm.plugin.appbrand.jsapi.k;
+import com.tencent.mm.plugin.appbrand.jsapi.n;
 
 public abstract class CustomBackgroundRunningNotificationLogic
-  implements k
+  implements n
 {
   @Keep
   public CustomBackgroundRunningNotificationLogic(String paramString) {}
   
-  public abstract Notification bdx();
+  public abstract Notification byP();
   
-  public abstract int bdy();
+  public abstract void byQ();
   
-  public abstract void bdz();
+  public abstract int getNotificationId();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.backgroundrunning.CustomBackgroundRunningNotificationLogic
  * JD-Core Version:    0.7.0.1
  */

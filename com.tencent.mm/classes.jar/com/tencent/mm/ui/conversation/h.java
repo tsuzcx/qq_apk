@@ -1,21 +1,24 @@
 package com.tencent.mm.ui.conversation;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cy;
-import com.tencent.mm.g.a.hx;
-import com.tencent.mm.g.c.aw;
-import com.tencent.mm.g.c.ba;
-import com.tencent.mm.model.x;
-import com.tencent.mm.model.y;
+import com.tencent.mm.contact.c;
+import com.tencent.mm.g.a.db;
+import com.tencent.mm.g.a.im;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.g.c.bb;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.ac;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.au;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bw;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -23,160 +26,160 @@ import java.util.Map;
 import java.util.Set;
 
 public final class h
-  implements n.b
+  implements MStorageEx.IOnStorageChange
 {
-  public static h KQd;
-  private static HashMap<String, Integer> KQe;
-  private volatile boolean Fhn;
-  private com.tencent.mm.sdk.b.c<cy> Fho;
-  private com.tencent.mm.sdk.b.c<hx> KQf;
+  public static h Qdi;
+  private static HashMap<String, Integer> Qdj;
+  private volatile boolean JYf;
+  private IListener<db> JYh;
+  private IListener<im> Qdk;
   
   static
   {
-    AppMethodBeat.i(188062);
-    KQd = new h();
-    KQe = new HashMap();
-    AppMethodBeat.o(188062);
+    AppMethodBeat.i(234150);
+    Qdi = new h();
+    Qdj = new HashMap();
+    AppMethodBeat.o(234150);
   }
   
   private h()
   {
-    AppMethodBeat.i(188058);
-    this.Fho = new com.tencent.mm.sdk.b.c() {};
-    this.KQf = new com.tencent.mm.sdk.b.c() {};
-    this.Fho.alive();
-    this.KQf.alive();
-    AppMethodBeat.o(188058);
+    AppMethodBeat.i(234146);
+    this.JYh = new IListener() {};
+    this.Qdk = new IListener() {};
+    this.JYh.alive();
+    this.Qdk.alive();
+    AppMethodBeat.o(234146);
   }
   
-  public static int fNg()
+  public static int gVB()
   {
-    AppMethodBeat.i(188060);
-    ae.i("MicroMsg.ConversationUnreadHelper", "getTotalUnread %s", new Object[] { bu.fpN() });
-    com.tencent.mm.plugin.report.service.g.yxI.dD(931, 25);
+    AppMethodBeat.i(234148);
+    Log.i("MicroMsg.ConversationUnreadHelper", "getTotalUnread %s", new Object[] { Util.getStack() });
+    com.tencent.mm.plugin.report.service.h.CyF.dN(931, 25);
     Object localObject2;
     int i;
-    synchronized (KQe)
+    synchronized (Qdj)
     {
-      if (!KQe.isEmpty()) {
+      if (!Qdj.isEmpty()) {
         break label191;
       }
-      HashMap localHashMap2 = y.Bl(x.hHV);
+      HashMap localHashMap2 = ac.JQ(ab.iCF);
       localObject2 = localHashMap2.keySet().iterator();
       if (((Iterator)localObject2).hasNext())
       {
         String str = (String)((Iterator)localObject2).next();
-        i = ((au)localHashMap2.get(str)).field_unReadCount;
-        KQe.put(str, Integer.valueOf(i));
+        i = ((az)localHashMap2.get(str)).field_unReadCount;
+        Qdj.put(str, Integer.valueOf(i));
       }
     }
-    com.tencent.mm.plugin.report.service.g.yxI.dD(931, 26);
+    com.tencent.mm.plugin.report.service.h.CyF.dN(931, 26);
     for (;;)
     {
-      Iterator localIterator = KQe.keySet().iterator();
-      for (i = 0; localIterator.hasNext(); i = ((Integer)KQe.get(localObject2)).intValue() + i) {
+      Iterator localIterator = Qdj.keySet().iterator();
+      for (i = 0; localIterator.hasNext(); i = ((Integer)Qdj.get(localObject2)).intValue() + i) {
         localObject2 = (String)localIterator.next();
       }
       label191:
-      com.tencent.mm.plugin.report.service.g.yxI.dD(931, 27);
+      com.tencent.mm.plugin.report.service.h.CyF.dN(931, 27);
     }
-    AppMethodBeat.o(188060);
+    AppMethodBeat.o(234148);
     return i;
   }
   
-  public final void a(int paramInt, n arg2, Object paramObject)
+  public final void onNotifyChange(int paramInt, MStorageEx arg2, Object paramObject)
   {
-    AppMethodBeat.i(188059);
+    AppMethodBeat.i(234147);
     if (!(paramObject instanceof String))
     {
-      ae.d("MicroMsg.ConversationUnreadHelper", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), ???, paramObject });
-      AppMethodBeat.o(188059);
+      Log.d("MicroMsg.ConversationUnreadHelper", "onNotifyChange obj not String event:%d stg:%s obj:%s", new Object[] { Integer.valueOf(paramInt), ???, paramObject });
+      AppMethodBeat.o(234147);
       return;
     }
     paramObject = (String)paramObject;
-    ae.i("MicroMsg.ConversationUnreadHelper", "onNotifyChange %s", new Object[] { paramObject });
+    Log.i("MicroMsg.ConversationUnreadHelper", "onNotifyChange %s", new Object[] { paramObject });
     long l;
-    if ((??? instanceof br))
+    if ((??? instanceof bw))
     {
-      if (y.aBF().contains(paramObject)) {
-        break label434;
+      if (ac.aVd().contains(paramObject)) {
+        break label435;
       }
       if (paramInt == 5) {
-        synchronized (KQe)
+        synchronized (Qdj)
         {
-          KQe.clear();
-          AppMethodBeat.o(188059);
+          Qdj.clear();
+          AppMethodBeat.o(234147);
           return;
         }
       }
-      l = bu.HQ();
+      l = Util.currentTicks();
     }
     for (;;)
     {
-      synchronized (KQe)
+      synchronized (Qdj)
       {
-        ae.i("MicroMsg.ConversationUnreadHelper", "refreshPartial start");
-        if (KQe.isEmpty())
+        Log.i("MicroMsg.ConversationUnreadHelper", "refreshPartial start");
+        if (Qdj.isEmpty())
         {
-          AppMethodBeat.o(188059);
+          AppMethodBeat.o(234147);
           return;
         }
-        if (!KQe.containsKey(paramObject)) {
-          break label446;
+        if (!Qdj.containsKey(paramObject)) {
+          break label447;
         }
-        paramInt = ((Integer)KQe.get(paramObject)).intValue();
-        ae.i("MicroMsg.ConversationUnreadHelper", "refreshPartial getUnread %s", new Object[] { paramObject });
-        if (y.Bn(paramObject)) {
-          break label440;
+        paramInt = ((Integer)Qdj.get(paramObject)).intValue();
+        Log.i("MicroMsg.ConversationUnreadHelper", "refreshPartial getUnread %s", new Object[] { paramObject });
+        if (ac.JS(paramObject)) {
+          break label441;
         }
-        i = y.aG(paramObject, x.hHV);
-        KQe.put(paramObject, Integer.valueOf(i));
-        ae.i("MicroMsg.ConversationUnreadHelper", "refreshPartial username %s, preUnread %d, unread %d", new Object[] { paramObject, Integer.valueOf(paramInt), Integer.valueOf(i) });
-        ae.i("MicroMsg.ConversationUnreadHelper", "refreshPartial cost %d ms", new Object[] { Long.valueOf(bu.aO(l)) });
-        AppMethodBeat.o(188059);
+        i = ac.aI(paramObject, ab.iCF);
+        Qdj.put(paramObject, Integer.valueOf(i));
+        Log.i("MicroMsg.ConversationUnreadHelper", "refreshPartial username %s, preUnread %d, unread %d", new Object[] { paramObject, Integer.valueOf(paramInt), Integer.valueOf(i) });
+        Log.i("MicroMsg.ConversationUnreadHelper", "refreshPartial cost %d ms", new Object[] { Long.valueOf(Util.ticksToNow(l)) });
+        AppMethodBeat.o(234147);
         return;
       }
-      if ((??? instanceof bq))
+      if ((??? instanceof bv))
       {
-        if (!bu.isNullOrNil(paramObject))
+        if (!Util.isNullOrNil(paramObject))
         {
-          ??? = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(paramObject);
-          if ((??? != null) && ((int)???.ght > 0) && (!x.Am(paramObject))) {
-            ae.i("MicroMsg.ConversationUnreadHelper", "onContactStorageNotifyChange contact isMute %s, ChatRoomNotify %d", new Object[] { Boolean.valueOf(???.Pd()), Integer.valueOf(???.eRd) });
+          ??? = ((l)g.af(l.class)).aSN().Kn(paramObject);
+          if ((??? != null) && ((int)???.gMZ > 0) && (!ab.IR(paramObject))) {
+            Log.i("MicroMsg.ConversationUnreadHelper", "onContactStorageNotifyChange contact isMute %s, ChatRoomNotify %d", new Object[] { Boolean.valueOf(???.Zx()), Integer.valueOf(???.fuH) });
           }
         }
         else
         {
-          if ((paramInt != 5) && (paramInt != 2) && (!this.Fhn)) {
-            break label404;
+          if ((paramInt != 5) && (paramInt != 2) && (!this.JYf)) {
+            break label405;
           }
-          AppMethodBeat.o(188059);
+          AppMethodBeat.o(234147);
           return;
         }
-        AppMethodBeat.o(188059);
+        AppMethodBeat.o(234147);
         return;
-        synchronized (KQe)
+        synchronized (Qdj)
         {
-          label404:
-          KQe.clear();
-          AppMethodBeat.o(188059);
+          label405:
+          Qdj.clear();
+          AppMethodBeat.o(234147);
           return;
         }
       }
-      label434:
-      AppMethodBeat.o(188059);
+      label435:
+      AppMethodBeat.o(234147);
       return;
-      label440:
+      label441:
       int i = 0;
       continue;
-      label446:
+      label447:
       paramInt = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.h
  * JD-Core Version:    0.7.0.1
  */

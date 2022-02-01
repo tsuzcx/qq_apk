@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONArray;
@@ -14,170 +14,170 @@ public class ElementQuery
   implements Parcelable
 {
   public static final Parcelable.Creator<ElementQuery> CREATOR;
-  public static String DnJ;
-  public int DgN;
-  public String DlB;
-  public String DnK;
-  public boolean DnL;
-  public boolean DnM;
-  public boolean DnN;
-  public boolean DnO;
-  public String DnP;
-  public String DnQ;
-  public boolean DnR;
-  public int DnS;
-  public int DnT;
-  public String DnU;
-  public String DnV;
-  public String DnW;
-  public String DnX;
-  public String DnY;
-  public String DnZ;
-  public boolean Doa;
-  public boolean Dob;
-  public boolean Doc;
-  public boolean Dod;
-  public boolean Doe;
-  public boolean Dof;
-  public boolean Dog;
-  public boolean Doh;
-  public boolean Doi;
-  public String Doj;
-  private List<Integer> Dok;
-  public boolean Dol;
-  public String Dom;
-  public int Don;
-  public ArrayList<CreTypeRuleInfo> Doo;
-  public boolean Dop;
-  public JSONObject cRf;
-  public String dlT;
-  public String uVs;
-  public String wRt;
+  public static String HXb;
+  public String ANo;
+  public int HQg;
+  public String HUU;
+  public boolean HXA;
+  public String HXB;
+  private List<Integer> HXC;
+  public boolean HXD;
+  public String HXE;
+  public int HXF;
+  public ArrayList<CreTypeRuleInfo> HXG;
+  public boolean HXH;
+  public String HXc;
+  public boolean HXd;
+  public boolean HXe;
+  public boolean HXf;
+  public boolean HXg;
+  public String HXh;
+  public String HXi;
+  public boolean HXj;
+  public int HXk;
+  public int HXl;
+  public String HXm;
+  public String HXn;
+  public String HXo;
+  public String HXp;
+  public String HXq;
+  public String HXr;
+  public boolean HXs;
+  public boolean HXt;
+  public boolean HXu;
+  public boolean HXv;
+  public boolean HXw;
+  public boolean HXx;
+  public boolean HXy;
+  public boolean HXz;
+  public String dDj;
+  public JSONObject dhz;
+  public String ynT;
   
   static
   {
     AppMethodBeat.i(70274);
-    DnJ = "bind_serial";
+    HXb = "bind_serial";
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(70274);
   }
   
   public ElementQuery()
   {
-    this.Dok = null;
-    this.Dop = false;
+    this.HXC = null;
+    this.HXH = false;
   }
   
   public ElementQuery(Parcel paramParcel)
   {
     AppMethodBeat.i(70272);
-    this.Dok = null;
-    this.Dop = false;
-    this.wRt = paramParcel.readString();
-    this.uVs = paramParcel.readString();
-    this.DnK = paramParcel.readString();
+    this.HXC = null;
+    this.HXH = false;
+    this.ANo = paramParcel.readString();
+    this.ynT = paramParcel.readString();
+    this.HXc = paramParcel.readString();
     if (1 == paramParcel.readInt())
     {
       bool1 = true;
-      this.DnL = bool1;
+      this.HXd = bool1;
       if (1 != paramParcel.readInt()) {
         break label437;
       }
       bool1 = true;
       label70:
-      this.DnM = bool1;
+      this.HXe = bool1;
       if (1 != paramParcel.readInt()) {
         break label442;
       }
       bool1 = true;
       label85:
-      this.DnN = bool1;
+      this.HXf = bool1;
       if (1 != paramParcel.readInt()) {
         break label447;
       }
       bool1 = true;
       label100:
-      this.DnO = bool1;
-      this.DnQ = paramParcel.readString();
-      this.wRt = paramParcel.readString();
+      this.HXg = bool1;
+      this.HXi = paramParcel.readString();
+      this.ANo = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label452;
       }
       bool1 = true;
       label131:
-      this.DnR = bool1;
-      this.DnS = paramParcel.readInt();
-      this.DnT = paramParcel.readInt();
-      this.dlT = paramParcel.readString();
-      this.DnU = paramParcel.readString();
-      this.DnV = paramParcel.readString();
-      this.DnW = paramParcel.readString();
-      this.DnZ = paramParcel.readString();
-      this.DnY = paramParcel.readString();
-      this.DnX = paramParcel.readString();
+      this.HXj = bool1;
+      this.HXk = paramParcel.readInt();
+      this.HXl = paramParcel.readInt();
+      this.dDj = paramParcel.readString();
+      this.HXm = paramParcel.readString();
+      this.HXn = paramParcel.readString();
+      this.HXo = paramParcel.readString();
+      this.HXr = paramParcel.readString();
+      this.HXq = paramParcel.readString();
+      this.HXp = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label457;
       }
       bool1 = true;
       label218:
-      this.Doa = bool1;
+      this.HXs = bool1;
       if (1 != paramParcel.readInt()) {
         break label462;
       }
       bool1 = true;
       label233:
-      this.Dob = bool1;
+      this.HXt = bool1;
       if (1 != paramParcel.readInt()) {
         break label467;
       }
       bool1 = true;
       label248:
-      this.Doc = bool1;
+      this.HXu = bool1;
       if (1 != paramParcel.readInt()) {
         break label472;
       }
       bool1 = true;
       label263:
-      this.Dod = bool1;
+      this.HXv = bool1;
       if (1 != paramParcel.readInt()) {
         break label477;
       }
       bool1 = true;
       label278:
-      this.Doe = bool1;
+      this.HXw = bool1;
       if (1 != paramParcel.readInt()) {
         break label482;
       }
       bool1 = true;
       label293:
-      this.Dof = bool1;
+      this.HXx = bool1;
       if (1 != paramParcel.readInt()) {
         break label487;
       }
       bool1 = true;
       label308:
-      this.Doh = bool1;
+      this.HXz = bool1;
       if (1 != paramParcel.readInt()) {
         break label492;
       }
       bool1 = true;
       label323:
-      this.Dog = bool1;
+      this.HXy = bool1;
       if (1 != paramParcel.readInt()) {
         break label497;
       }
       bool1 = true;
       label338:
-      this.Doi = bool1;
-      this.DgN = paramParcel.readInt();
-      this.Doj = paramParcel.readString();
+      this.HXA = bool1;
+      this.HQg = paramParcel.readInt();
+      this.HXB = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label502;
       }
       bool1 = true;
       label369:
-      this.Dop = bool1;
-      this.DlB = paramParcel.readString();
+      this.HXH = bool1;
+      this.HUU = paramParcel.readString();
       if (1 != paramParcel.readInt()) {
         break label507;
       }
@@ -199,10 +199,10 @@ public class ElementQuery
     label507:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.Dol = bool1;
-      this.Dom = paramParcel.readString();
-      this.Don = paramParcel.readInt();
-      this.Doo = paramParcel.readArrayList(CreTypeRuleInfo.class.getClassLoader());
+      this.HXD = bool1;
+      this.HXE = paramParcel.readString();
+      this.HXF = paramParcel.readInt();
+      this.HXG = paramParcel.readArrayList(CreTypeRuleInfo.class.getClassLoader());
       AppMethodBeat.o(70272);
       return;
       bool1 = false;
@@ -238,7 +238,7 @@ public class ElementQuery
     }
   }
   
-  public static ArrayList<CreTypeRuleInfo> bg(JSONObject paramJSONObject)
+  public static ArrayList<CreTypeRuleInfo> bG(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70271);
     ArrayList localArrayList = new ArrayList();
@@ -251,7 +251,7 @@ public class ElementQuery
         int i = 0;
         while (i < j)
         {
-          CreTypeRuleInfo localCreTypeRuleInfo = CreTypeRuleInfo.be(paramJSONObject.optJSONObject(i));
+          CreTypeRuleInfo localCreTypeRuleInfo = CreTypeRuleInfo.bE(paramJSONObject.optJSONObject(i));
           if (localCreTypeRuleInfo != null) {
             localArrayList.add(localCreTypeRuleInfo);
           }
@@ -268,41 +268,41 @@ public class ElementQuery
     return 0;
   }
   
-  public final boolean eIA()
+  public final boolean fQd()
   {
-    return 2 == this.DnT;
+    return 2 == this.HXl;
   }
   
-  public final boolean eIO()
+  public final boolean fQr()
   {
-    return 1 == this.DnT;
+    return 1 == this.HXl;
   }
   
-  public final List<Integer> eIP()
+  public final List<Integer> fQs()
   {
     AppMethodBeat.i(70270);
     Object localObject;
-    if (this.Dok != null)
+    if (this.HXC != null)
     {
-      localObject = this.Dok;
+      localObject = this.HXC;
       AppMethodBeat.o(70270);
       return localObject;
     }
-    if (!bu.isNullOrNil(this.Doj))
+    if (!Util.isNullOrNil(this.HXB))
     {
-      this.Dok = new ArrayList();
-      localObject = this.Doj.split("\\|");
+      this.HXC = new ArrayList();
+      localObject = this.HXB.split("\\|");
       int j = localObject.length;
       int i = 0;
       while (i < j)
       {
-        int k = bu.getInt(localObject[i], 0);
+        int k = Util.getInt(localObject[i], 0);
         if (k > 0) {
-          this.Dok.add(Integer.valueOf(k));
+          this.HXC.add(Integer.valueOf(k));
         }
         i += 1;
       }
-      localObject = this.Dok;
+      localObject = this.HXC;
       AppMethodBeat.o(70270);
       return localObject;
     }
@@ -313,7 +313,7 @@ public class ElementQuery
   public final boolean isError()
   {
     AppMethodBeat.i(70269);
-    boolean bool = "0".equals(bu.bI(this.DnV, "").trim());
+    boolean bool = "0".equals(Util.nullAs(this.HXn, "").trim());
     AppMethodBeat.o(70269);
     return bool;
   }
@@ -322,112 +322,112 @@ public class ElementQuery
   {
     int i = 1;
     AppMethodBeat.i(70273);
-    paramParcel.writeString(bu.bI(this.wRt, ""));
-    paramParcel.writeString(bu.bI(this.uVs, ""));
-    paramParcel.writeString(bu.bI(this.DnK, ""));
-    if (this.DnL)
+    paramParcel.writeString(Util.nullAs(this.ANo, ""));
+    paramParcel.writeString(Util.nullAs(this.ynT, ""));
+    paramParcel.writeString(Util.nullAs(this.HXc, ""));
+    if (this.HXd)
     {
       paramInt = 1;
       paramParcel.writeInt(paramInt);
-      if (!this.DnM) {
+      if (!this.HXe) {
         break label464;
       }
       paramInt = 1;
       label70:
       paramParcel.writeInt(paramInt);
-      if (!this.DnN) {
+      if (!this.HXf) {
         break label469;
       }
       paramInt = 1;
       label84:
       paramParcel.writeInt(paramInt);
-      if (!this.DnO) {
+      if (!this.HXg) {
         break label474;
       }
       paramInt = 1;
       label98:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(bu.bI(this.DnQ, ""));
-      paramParcel.writeString(bu.bI(this.wRt, ""));
-      if (!this.DnR) {
+      paramParcel.writeString(Util.nullAs(this.HXi, ""));
+      paramParcel.writeString(Util.nullAs(this.ANo, ""));
+      if (!this.HXj) {
         break label479;
       }
       paramInt = 1;
       label138:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.DnS);
-      paramParcel.writeInt(this.DnT);
-      paramParcel.writeString(bu.bI(this.dlT, ""));
-      paramParcel.writeString(bu.bI(this.DnU, ""));
-      paramParcel.writeString(bu.bI(this.DnV, ""));
-      paramParcel.writeString(bu.bI(this.DnW, ""));
-      paramParcel.writeString(bu.bI(this.DnZ, ""));
-      paramParcel.writeString(bu.bI(this.DnY, ""));
-      paramParcel.writeString(bu.bI(this.DnX, ""));
-      if (!this.Doa) {
+      paramParcel.writeInt(this.HXk);
+      paramParcel.writeInt(this.HXl);
+      paramParcel.writeString(Util.nullAs(this.dDj, ""));
+      paramParcel.writeString(Util.nullAs(this.HXm, ""));
+      paramParcel.writeString(Util.nullAs(this.HXn, ""));
+      paramParcel.writeString(Util.nullAs(this.HXo, ""));
+      paramParcel.writeString(Util.nullAs(this.HXr, ""));
+      paramParcel.writeString(Util.nullAs(this.HXq, ""));
+      paramParcel.writeString(Util.nullAs(this.HXp, ""));
+      if (!this.HXs) {
         break label484;
       }
       paramInt = 1;
       label259:
       paramParcel.writeInt(paramInt);
-      if (!this.Dob) {
+      if (!this.HXt) {
         break label489;
       }
       paramInt = 1;
       label273:
       paramParcel.writeInt(paramInt);
-      if (!this.Doc) {
+      if (!this.HXu) {
         break label494;
       }
       paramInt = 1;
       label287:
       paramParcel.writeInt(paramInt);
-      if (!this.Dod) {
+      if (!this.HXv) {
         break label499;
       }
       paramInt = 1;
       label301:
       paramParcel.writeInt(paramInt);
-      if (!this.Doe) {
+      if (!this.HXw) {
         break label504;
       }
       paramInt = 1;
       label315:
       paramParcel.writeInt(paramInt);
-      if (!this.Dof) {
+      if (!this.HXx) {
         break label509;
       }
       paramInt = 1;
       label329:
       paramParcel.writeInt(paramInt);
-      if (!this.Doh) {
+      if (!this.HXz) {
         break label514;
       }
       paramInt = 1;
       label343:
       paramParcel.writeInt(paramInt);
-      if (!this.Dog) {
+      if (!this.HXy) {
         break label519;
       }
       paramInt = 1;
       label357:
       paramParcel.writeInt(paramInt);
-      if (!this.Doi) {
+      if (!this.HXA) {
         break label524;
       }
       paramInt = 1;
       label371:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeInt(this.DgN);
-      paramParcel.writeString(this.Doj);
-      if (!this.Dop) {
+      paramParcel.writeInt(this.HQg);
+      paramParcel.writeString(this.HXB);
+      if (!this.HXH) {
         break label529;
       }
       paramInt = 1;
       label401:
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.DlB);
-      if (!this.Dol) {
+      paramParcel.writeString(this.HUU);
+      if (!this.HXD) {
         break label534;
       }
     }
@@ -439,9 +439,9 @@ public class ElementQuery
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
-      paramParcel.writeString(this.Dom);
-      paramParcel.writeInt(this.Don);
-      paramParcel.writeList(this.Doo);
+      paramParcel.writeString(this.HXE);
+      paramParcel.writeInt(this.HXF);
+      paramParcel.writeList(this.HXG);
       AppMethodBeat.o(70273);
       return;
       paramInt = 0;
@@ -489,7 +489,7 @@ public class ElementQuery
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ElementQuery
  * JD-Core Version:    0.7.0.1
  */

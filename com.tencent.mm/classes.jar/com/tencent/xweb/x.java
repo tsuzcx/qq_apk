@@ -12,18 +12,13 @@ import com.tencent.xweb.internal.e;
 
 public class x
 {
-  e MMT;
+  e SzO;
   
   public void a(WebView paramWebView, int paramInt) {}
   
-  public boolean a(long paramLong, String paramString1, String paramString2, String paramString3)
-  {
-    return true;
-  }
-  
   public boolean a(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    if (this.MMT != null) {}
+    if (this.SzO != null) {}
     return false;
   }
   
@@ -35,9 +30,9 @@ public class x
   public boolean a(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(156776);
-    if (this.MMT != null)
+    if (this.SzO != null)
     {
-      boolean bool = this.MMT.a(paramString1, paramString2, paramJsResult);
+      boolean bool = this.SzO.a(paramString1, paramString2, paramJsResult);
       AppMethodBeat.o(156776);
       return bool;
     }
@@ -48,9 +43,9 @@ public class x
   public boolean a(WebView paramWebView, String paramString1, String paramString2, String paramString3, o paramo)
   {
     AppMethodBeat.i(156778);
-    if (this.MMT != null)
+    if (this.SzO != null)
     {
-      boolean bool = this.MMT.a(paramString1, paramString2, paramString3, paramo);
+      boolean bool = this.SzO.a(paramString1, paramString2, paramString3, paramo);
       AppMethodBeat.o(156778);
       return bool;
     }
@@ -60,12 +55,17 @@ public class x
   
   public void b(WebView paramWebView, int paramInt) {}
   
+  public boolean b(long paramLong, String paramString1, String paramString2, String paramString3)
+  {
+    return true;
+  }
+  
   public boolean b(WebView paramWebView, String paramString1, String paramString2, JsResult paramJsResult)
   {
     AppMethodBeat.i(156777);
-    if (this.MMT != null)
+    if (this.SzO != null)
     {
-      boolean bool = this.MMT.b(paramString1, paramString2, paramJsResult);
+      boolean bool = this.SzO.b(paramString1, paramString2, paramJsResult);
       AppMethodBeat.o(156777);
       return bool;
     }
@@ -73,9 +73,9 @@ public class x
     return false;
   }
   
-  public boolean bpU()
+  public boolean bLA()
   {
-    if (this.MMT != null) {}
+    if (this.SzO != null) {}
     return false;
   }
   
@@ -110,8 +110,8 @@ public class x
   public void onHideCustomView()
   {
     AppMethodBeat.i(156775);
-    if (this.MMT != null) {
-      this.MMT.onHideCustomView();
+    if (this.SzO != null) {
+      this.SzO.onHideCustomView();
     }
     AppMethodBeat.o(156775);
   }
@@ -119,8 +119,8 @@ public class x
   public void onShowCustomView(View paramView, WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
     AppMethodBeat.i(156780);
-    if (this.MMT != null) {
-      this.MMT.onShowCustomView(paramView, paramCustomViewCallback);
+    if (this.SzO != null) {
+      this.SzO.onShowCustomView(paramView, paramCustomViewCallback);
     }
     AppMethodBeat.o(156780);
   }

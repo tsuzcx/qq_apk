@@ -7,7 +7,7 @@ import com.tencent.luggage.xweb_ext.extendplugin.a;
 
 public abstract interface c
 {
-  public abstract com.tencent.luggage.xweb_ext.extendplugin.c GR();
+  public abstract com.tencent.luggage.xweb_ext.extendplugin.c QK();
   
   public abstract String a(String paramString, int paramInt, a parama);
   
@@ -27,7 +27,7 @@ public abstract interface c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.b.c
  * JD-Core Version:    0.7.0.1
  */

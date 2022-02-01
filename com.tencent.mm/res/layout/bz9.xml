@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_gravity="center_horizontal" android:background="@color/afz" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/l9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_centerHorizontal="true">
+        <RelativeLayout android:gravity="center|left" android:background="@drawable/awn" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingRight="12.0dip" android:paddingBottom="10.0dip" android:layout_width="@dimen/akw" android:layout_height="wrap_content" android:layout_marginTop="25.0dip">
+            <ImageView android:id="@id/l8" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/awi" android:scaleType="fitCenter" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/l7" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@raw/icons_outlined_arrow" android:scaleType="fitCenter" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/FG_2" />
+            <TextView android:textSize="@dimen/k6" android:textColor="@color/a2x" android:id="@id/l_" android:paddingLeft="8.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hit" android:layout_toLeftOf="@id/l7" android:layout_toRightOf="@id/l8" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/j1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/l9" android:layout_alignLeft="@id/l9" android:layout_alignRight="@id/l9" android:layout_centerHorizontal="true">
+        <RelativeLayout android:gravity="center|left" android:background="@drawable/awn" android:paddingLeft="12.0dip" android:paddingTop="10.0dip" android:paddingRight="12.0dip" android:paddingBottom="10.0dip" android:layout_width="@dimen/akw" android:layout_height="wrap_content" android:layout_marginTop="16.0dip">
+            <ImageView android:id="@id/j0" android:layout_width="17.0dip" android:layout_height="17.0dip" android:src="@drawable/awi" android:scaleType="fitCenter" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/iz" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@raw/icons_outlined_arrow" android:scaleType="fitCenter" android:layout_centerVertical="true" android:layout_alignParentEnd="true" app:iconColor="@color/FG_2" />
+            <TextView android:textSize="@dimen/k6" android:textColor="@color/a2x" android:id="@id/j2" android:paddingLeft="8.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hgo" android:layout_toLeftOf="@id/iz" android:layout_toRightOf="@id/j0" android:layout_centerVertical="true" />
+        </RelativeLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/l4" android:paddingBottom="12.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <RelativeLayout android:layout_width="fill_parent" android:layout_height="58.0dip">
+            <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:text="@string/bh3" android:layout_centerVertical="true" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="7.0dip" android:layout_height="13.0dip" android:layout_marginRight="19.0dip" android:src="@raw/icons_outlined_arrow" android:layout_alignParentRight="true" android:layout_centerVertical="true" app:iconColor="@color/FG_2" />
+        </RelativeLayout>
+        <include android:layout_width="fill_parent" android:layout_height="12.0dip" layout="@layout/b_1" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/l" android:textColor="@color/u_" android:id="@id/l5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/hir" android:layout_centerInParent="true" />
+    <android.support.v7.widget.RecyclerView android:id="@id/l6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+</RelativeLayout>

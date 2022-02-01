@@ -1,9 +1,12 @@
 package com.tencent.mm.plugin.expt.hellhound.a.a;
 
-final class f
+import android.view.ViewGroup;
+
+public abstract interface f
 {
-  long endTime = 0L;
-  long startTime = 0L;
+  public abstract void a(ViewGroup paramViewGroup, int paramInt1, int paramInt2, int paramInt3);
+  
+  public abstract void k(ViewGroup paramViewGroup, int paramInt);
 }
 
 

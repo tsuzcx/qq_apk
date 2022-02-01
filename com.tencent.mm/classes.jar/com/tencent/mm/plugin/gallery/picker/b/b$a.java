@@ -5,14 +5,14 @@ import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory.Options;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.compatible.util.Exif;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.sdk.platformtools.h;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.io.InputStream;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Companion;", "", "()V", "TAG", "", "decodeBitmap", "Landroid/graphics/Bitmap;", "inputStream", "Ljava/io/InputStream;", "limitW", "", "limitH", "isRotate", "", "isClose", "inputPath", "plugin-gallery_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/gallery/picker/generator/MediaTailor$Companion;", "", "()V", "TAG", "", "decodeBitmap", "Landroid/graphics/Bitmap;", "inputStream", "Ljava/io/InputStream;", "limitW", "", "limitH", "isRotate", "", "isClose", "inputPath", "plugin-gallery_release"})
 public final class b$a
 {
   public static Bitmap a(InputStream paramInputStream, int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2)
@@ -22,7 +22,7 @@ public final class b$a
     if (paramInt1 > paramInt2) {}
     for (;;)
     {
-      BitmapFactory.Options localOptions = h.c(paramInputStream, false);
+      BitmapFactory.Options localOptions = BitmapUtil.getImageOptions(paramInputStream, false);
       float f1;
       float f2;
       Object localObject1;
@@ -37,7 +37,7 @@ public final class b$a
           i = (int)(localOptions.outWidth * f1);
           int j = (int)(localOptions.outHeight * f1);
           paramInputStream.reset();
-          Object localObject2 = h.a(paramInputStream, 0.0F, i, j);
+          Object localObject2 = BitmapUtil.decodeStream(paramInputStream, 0.0F, i, j);
           localObject1 = localObject2;
           if (paramBoolean1)
           {
@@ -45,8 +45,8 @@ public final class b$a
             localObject1 = Exif.fromStream(paramInputStream);
             p.g(localObject1, "Exif.fromStream(inputStream)");
             i = ((Exif)localObject1).getOrientationInDegree();
-            ae.i("MediaTailor", "read exif rotate degree %d", new Object[] { Integer.valueOf(i) });
-            localObject1 = h.a((Bitmap)localObject2, i * 1.0F);
+            Log.i("MediaTailor", "read exif rotate degree %d", new Object[] { Integer.valueOf(i) });
+            localObject1 = BitmapUtil.rotate((Bitmap)localObject2, i * 1.0F);
           }
           if (paramBoolean2) {
             paramInputStream.close();
@@ -63,12 +63,12 @@ public final class b$a
           }
           paramInputStream = Integer.valueOf(((Bitmap)localObject1).getHeight());
           label271:
-          ae.i("MediaTailor", paramInputStream + "] scale=" + f1 + " limit[" + paramInt2 + ':' + paramInt1 + "] decode bitmap done!");
+          Log.i("MediaTailor", paramInputStream + "] scale=" + f1 + " limit[" + paramInt2 + ':' + paramInt1 + "] decode bitmap done!");
           if (localObject1 != null) {
             break label433;
           }
-          paramInputStream = h.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
-          ae.e("MediaTailor", "bitmap is null. " + bu.fpN());
+          paramInputStream = BitmapUtil.createBitmap(1, 1, Bitmap.Config.ARGB_8888);
+          Log.e("MediaTailor", "bitmap is null. " + Util.getStack());
         }
       }
       for (;;)
@@ -104,7 +104,7 @@ public final class b$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.gallery.picker.b.b.a
  * JD-Core Version:    0.7.0.1
  */

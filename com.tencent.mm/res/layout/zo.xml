@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:gravity="center" android:layout_gravity="center" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.sortview.CatalogView android:id="@id/aha" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/b" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/n4" />
-    <FrameLayout android:id="@id/b3i" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mc">
-        <LinearLayout android:orientation="horizontal" android:id="@id/fb_" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/hu" android:paddingBottom="@dimen/hu" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <ImageView android:id="@id/ku" android:layout_width="@dimen/as" android:layout_height="@dimen/as" android:layout_marginLeft="@dimen/i0" />
-                </FrameLayout>
-                <TextView android:textSize="@dimen/ia" android:textColor="@color/w5" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/a71" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/h" android:text="@string/uo" android:maxLines="2" />
-            </LinearLayout>
-        </LinearLayout>
-        <ImageView android:layout_gravity="center|right" android:id="@id/e1r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="20.0dip" android:src="@raw/app_new" />
-    </FrameLayout>
-</LinearLayout>
+    <TextView android:textSize="@dimen/a9r" android:gravity="center_horizontal" android:id="@id/bq4" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="9" android:includeFontPadding="false" android:layout_centerHorizontal="true" />
+    <TextView android:textSize="@dimen/a9x" android:gravity="center_horizontal" android:id="@id/bq5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ABCD" android:includeFontPadding="false" android:layout_below="@id/bq4" android:layout_centerHorizontal="true" />
+</RelativeLayout>

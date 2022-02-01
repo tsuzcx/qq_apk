@@ -4,11 +4,11 @@ import io.flutter.embedding.engine.a;
 
 public abstract interface f
 {
-  public abstract a diO();
+  public abstract a KP();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     io.flutter.embedding.android.f
  * JD-Core Version:    0.7.0.1
  */

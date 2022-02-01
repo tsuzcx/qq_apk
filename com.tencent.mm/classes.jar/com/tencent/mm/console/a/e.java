@@ -2,13 +2,14 @@ package com.tencent.mm.console.a;
 
 import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.kf;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.g.a.ku;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
 import com.tencent.mm.pluginsdk.cmd.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.tinker.loader.shareutil.SharePatchFileUtil;
 
 public final class e
@@ -26,7 +27,7 @@ public final class e
   public final boolean a(Context paramContext, String[] paramArrayOfString, String paramString)
   {
     AppMethodBeat.i(20177);
-    if (ae.getLogLevel() > 1)
+    if (Log.getLogLevel() > 1)
     {
       AppMethodBeat.o(20177);
       return false;
@@ -72,25 +73,25 @@ public final class e
     if (paramArrayOfString.length < 3) {}
     for (paramArrayOfString = "/data/local/tmp/test.apk";; paramArrayOfString = paramArrayOfString[2])
     {
-      ae.d("MicroMsg.CommandTestHotPatches", "hotpatch test from %s", new Object[] { paramArrayOfString });
-      if (!com.tencent.tinker.lib.e.a.lq(paramContext).MDY) {
-        com.tencent.tinker.lib.e.a.lq(paramContext).dft();
+      Log.d("MicroMsg.CommandTestHotPatches", "hotpatch test from %s", new Object[] { paramArrayOfString });
+      if (!com.tencent.tinker.lib.e.a.lk(paramContext).Ska) {
+        com.tencent.tinker.lib.e.a.lk(paramContext).dZn();
       }
-      bc.aCg();
-      c.ajA().set(am.a.IUV, Long.valueOf(System.currentTimeMillis() - 300000L));
-      paramContext = new kf();
-      paramContext.dyi.dyn = paramArrayOfString;
-      com.tencent.mm.sdk.b.a.IvT.l(paramContext);
+      bg.aVF();
+      c.azQ().set(ar.a.Odn, Long.valueOf(System.currentTimeMillis() - 300000L));
+      paramContext = new ku();
+      paramContext.dPP.dPU = paramArrayOfString;
+      EventCenter.instance.publish(paramContext);
       AppMethodBeat.o(20177);
       return true;
     }
-    ae.d("MicroMsg.CommandTestHotPatches", "hotpatch current class loader=%s", new Object[] { getClass().getClassLoader() });
+    Log.d("MicroMsg.CommandTestHotPatches", "hotpatch current class loader=%s", new Object[] { getClass().getClassLoader() });
     AppMethodBeat.o(20177);
     return true;
-    ae.d("MicroMsg.CommandTestHotPatches", "clear hotpatch");
-    paramContext = new kf();
-    paramContext.dyi.dlO = 1;
-    com.tencent.mm.sdk.b.a.IvT.l(paramContext);
+    Log.d("MicroMsg.CommandTestHotPatches", "clear hotpatch");
+    paramContext = new ku();
+    paramContext.dPP.dDe = 1;
+    EventCenter.instance.publish(paramContext);
     AppMethodBeat.o(20177);
     return true;
     if (paramArrayOfString.length < 3)
@@ -98,23 +99,23 @@ public final class e
       AppMethodBeat.o(20177);
       return true;
     }
-    paramArrayOfString = paramArrayOfString[2];
-    paramContext = paramArrayOfString;
-    if (!paramArrayOfString.startsWith("/")) {
-      paramContext = "/data/data/com.tencent.mm/app_dex/".concat(String.valueOf(paramArrayOfString));
+    paramString = paramArrayOfString[2];
+    paramArrayOfString = paramString;
+    if (!paramString.startsWith("/")) {
+      paramArrayOfString = "/data/data/" + paramContext.getPackageName() + "/app_dex/" + paramString;
     }
-    ae.i("MicroMsg.CommandTestHotPatches", "hotpatch check patch file %s", new Object[] { paramContext });
-    ae.i("MicroMsg.CommandTestHotPatches", "-------------------------------------------------------------------------------------");
-    ae.i("MicroMsg.CommandTestHotPatches", "-------------------------------------------------------------------------------------");
-    ae.i("MicroMsg.CommandTestHotPatches", "hotpatch check md5, passed=%b", new Object[] { Boolean.valueOf(SharePatchFileUtil.checkIfMd5Valid(paramContext)) });
-    ae.i("MicroMsg.CommandTestHotPatches", "-------------------------------------------------------------------------------------");
+    Log.i("MicroMsg.CommandTestHotPatches", "hotpatch check patch file %s", new Object[] { paramArrayOfString });
+    Log.i("MicroMsg.CommandTestHotPatches", "-------------------------------------------------------------------------------------");
+    Log.i("MicroMsg.CommandTestHotPatches", "-------------------------------------------------------------------------------------");
+    Log.i("MicroMsg.CommandTestHotPatches", "hotpatch check md5, passed=%b", new Object[] { Boolean.valueOf(SharePatchFileUtil.checkIfMd5Valid(paramArrayOfString)) });
+    Log.i("MicroMsg.CommandTestHotPatches", "-------------------------------------------------------------------------------------");
     AppMethodBeat.o(20177);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.console.a.e
  * JD-Core Version:    0.7.0.1
  */

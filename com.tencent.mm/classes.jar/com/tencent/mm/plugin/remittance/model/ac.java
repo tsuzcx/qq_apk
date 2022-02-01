@@ -2,22 +2,22 @@ package com.tencent.mm.plugin.remittance.model;
 
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k;
-import com.tencent.mm.ah.k.b;
+import com.tencent.mm.ag.k;
+import com.tencent.mm.ag.k.b;
 import com.tencent.mm.compatible.util.f;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bl;
+import com.tencent.mm.model.bp;
 import com.tencent.mm.modelstat.b;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.r.a;
 import com.tencent.mm.plugin.remittance.b.d;
-import com.tencent.mm.plugin.s.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.ca;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -27,18 +27,18 @@ import java.util.List;
 public final class ac
 {
   private static String TAG = "MicroMsg.RemittanceLocalMsgMgr";
+  public HashMap<String, String> Cqp;
   public Object lock;
-  public HashMap<String, String> ypy;
   
   public ac()
   {
     AppMethodBeat.i(67903);
-    this.ypy = new HashMap();
+    this.Cqp = new HashMap();
     this.lock = new Object();
     AppMethodBeat.o(67903);
   }
   
-  private boolean axE(String paramString)
+  private boolean aMe(String paramString)
   {
     boolean bool = false;
     for (;;)
@@ -48,9 +48,9 @@ public final class ac
       {
         AppMethodBeat.i(67906);
         Object localObject;
-        if (!axF(paramString))
+        if (!aMf(paramString))
         {
-          localObject = dMz();
+          localObject = eNz();
           ((List)localObject).add(paramString);
           if (((List)localObject).size() > 50)
           {
@@ -67,7 +67,7 @@ public final class ac
               ((StringBuilder)localObject).append(",");
               break label190;
             }
-            g.ajR().ajA().set(am.a.ISb, ((StringBuilder)localObject).toString());
+            g.aAh().azQ().set(ar.a.Oad, ((StringBuilder)localObject).toString());
             bool = true;
             AppMethodBeat.o(67906);
             return bool;
@@ -75,7 +75,7 @@ public final class ac
         }
         else
         {
-          ae.i(TAG, "it is a duplicate msg");
+          Log.i(TAG, "it is a duplicate msg");
           AppMethodBeat.o(67906);
           continue;
         }
@@ -88,23 +88,23 @@ public final class ac
     }
   }
   
-  private static boolean axF(String paramString)
+  private static boolean aMf(String paramString)
   {
     AppMethodBeat.i(67910);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(67910);
       return false;
     }
-    boolean bool = dMz().contains(paramString);
+    boolean bool = eNz().contains(paramString);
     AppMethodBeat.o(67910);
     return bool;
   }
   
-  private static void axG(String paramString)
+  private static void aMg(String paramString)
   {
     AppMethodBeat.i(67911);
-    List localList = dMz();
+    List localList = eNz();
     localList.remove(paramString);
     paramString = new StringBuilder();
     Iterator localIterator = localList.iterator();
@@ -117,16 +117,16 @@ public final class ac
       }
       i += 1;
     }
-    g.ajR().ajA().set(am.a.ISb, paramString.toString());
+    g.aAh().azQ().set(ar.a.Oad, paramString.toString());
     AppMethodBeat.o(67911);
   }
   
-  private static List<String> dMz()
+  private static List<String> eNz()
   {
     AppMethodBeat.i(67909);
-    Object localObject = (String)g.ajR().ajA().get(am.a.ISb, "");
+    Object localObject = (String)g.aAh().azQ().get(ar.a.Oad, "");
     ArrayList localArrayList = new ArrayList();
-    if (!bu.isNullOrNil((String)localObject))
+    if (!Util.isNullOrNil((String)localObject))
     {
       localObject = ((String)localObject).split(",");
       if (localObject.length > 0) {
@@ -137,47 +137,47 @@ public final class ac
     return localArrayList;
   }
   
-  public final boolean au(String paramString1, String paramString2, String paramString3)
+  public final boolean aF(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(67908);
     if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString1)))
     {
-      ae.e(TAG, "msgxml or toUserName or antiRepeatid is null");
+      Log.e(TAG, "msgxml or toUserName or antiRepeatid is null");
       AppMethodBeat.o(67908);
       return false;
     }
-    if (!axE(paramString1))
+    if (!aMe(paramString1))
     {
       AppMethodBeat.o(67908);
       return false;
     }
-    bv localbv = new bv();
-    localbv.setContent(paramString2);
-    localbv.setStatus(2);
-    localbv.ui(paramString3);
-    localbv.qN(bl.BQ(paramString3));
-    localbv.kt(1);
-    localbv.setType(419430449);
-    long l = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).doJ().ar(localbv);
+    ca localca = new ca();
+    localca.setContent(paramString2);
+    localca.setStatus(2);
+    localca.Cy(paramString3);
+    localca.setCreateTime(bp.Kw(paramString3));
+    localca.nv(1);
+    localca.setType(419430449);
+    long l = ((com.tencent.mm.plugin.messenger.foundation.a.l)g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).eiy().aC(localca);
     if (l < 0L)
     {
-      ae.e(TAG, f.abr() + "insert msg failed :" + l);
-      axG(paramString1);
+      Log.e(TAG, f.apq() + "insert msg failed :" + l);
+      aMg(paramString1);
       AppMethodBeat.o(67908);
       return false;
     }
-    localbv.setMsgId(l);
+    localca.setMsgId(l);
     boolean bool1;
-    if (localbv.cVH())
+    if (localca.dOQ())
     {
-      b.iqT.b(localbv, com.tencent.mm.ah.l.r(localbv));
+      b.jmd.b(localca, com.tencent.mm.ag.l.t(localca));
       paramString3 = new k();
-      paramString3.field_xml = localbv.field_content;
-      paramString2 = bu.aSA(paramString2);
+      paramString3.field_xml = localca.field_content;
+      paramString2 = Util.processXml(paramString2);
       paramString1 = null;
       if (paramString2 != null)
       {
-        paramString2 = k.b.aB(paramString2, localbv.field_reserved);
+        paramString2 = k.b.aD(paramString2, localca.field_reserved);
         paramString1 = paramString2;
         if (paramString2 != null)
         {
@@ -188,81 +188,81 @@ public final class ac
       }
       paramString3.field_type = 2000;
       paramString3.field_msgId = l;
-      paramString2 = a.dBh().yb(l);
+      paramString2 = a.eAT().GL(l);
       if ((paramString2 == null) || (paramString2.field_msgId != l)) {
         break label386;
       }
-      bool1 = a.dBh().update(paramString3, new String[0]);
+      bool1 = a.eAT().update(paramString3, new String[0]);
     }
     for (;;)
     {
       if (paramString1 != null)
       {
         paramString2 = new com.tencent.mm.plugin.remittance.b.c();
-        paramString2.field_locaMsgId = localbv.field_msgId;
-        paramString2.field_transferId = paramString1.hDL;
+        paramString2.field_locaMsgId = localca.field_msgId;
+        paramString2.field_transferId = paramString1.ixQ;
         paramString2.field_receiveStatus = -1;
         paramString2.field_isSend = true;
-        com.tencent.mm.plugin.remittance.a.c.dLS();
-        com.tencent.mm.plugin.remittance.a.c.dLU().a(paramString2);
+        com.tencent.mm.plugin.remittance.a.c.eMU();
+        com.tencent.mm.plugin.remittance.a.c.eMW().a(paramString2);
       }
       AppMethodBeat.o(67908);
       return bool1;
-      b.iqT.q(localbv);
+      b.jmd.s(localca);
       break;
       label386:
-      boolean bool2 = a.dBh().insert(paramString3);
+      boolean bool2 = a.eAT().insert(paramString3);
       bool1 = bool2;
       if (!bool2)
       {
-        ae.e(TAG, "PinOpenApi.getAppMessageStorage().insert msg failed id:".concat(String.valueOf(l)));
+        Log.e(TAG, "PinOpenApi.getAppMessageStorage().insert msg failed id:".concat(String.valueOf(l)));
         bool1 = bool2;
       }
     }
   }
   
-  public final boolean axD(String paramString)
+  public final boolean aMd(String paramString)
   {
     AppMethodBeat.i(67905);
     synchronized (this.lock)
     {
-      boolean bool = axF(paramString);
+      boolean bool = aMf(paramString);
       AppMethodBeat.o(67905);
       return bool;
     }
   }
   
-  public final void ja(String paramString1, String paramString2)
+  public final void jL(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67904);
-    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)))
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)))
     {
-      ae.e(TAG, "saveMsgContent param error");
+      Log.e(TAG, "saveMsgContent param error");
       AppMethodBeat.o(67904);
       return;
     }
-    this.ypy.put(paramString1, paramString2);
+    this.Cqp.put(paramString1, paramString2);
     AppMethodBeat.o(67904);
   }
   
-  public final boolean jb(String paramString1, String paramString2)
+  public final boolean jM(String paramString1, String paramString2)
   {
     AppMethodBeat.i(67907);
-    String str = (String)this.ypy.get(paramString1);
-    if (bu.isNullOrNil(str))
+    String str = (String)this.Cqp.get(paramString1);
+    if (Util.isNullOrNil(str))
     {
-      ae.w(TAG, "empty transid: %s", new Object[] { paramString1 });
+      Log.w(TAG, "empty transid: %s", new Object[] { paramString1 });
       AppMethodBeat.o(67907);
       return false;
     }
-    boolean bool = au(paramString1, str, paramString2);
+    boolean bool = aF(paramString1, str, paramString2);
     AppMethodBeat.o(67907);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.model.ac
  * JD-Core Version:    0.7.0.1
  */

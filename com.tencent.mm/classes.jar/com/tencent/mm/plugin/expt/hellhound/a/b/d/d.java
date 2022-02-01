@@ -3,97 +3,97 @@ package com.tencent.mm.plugin.expt.hellhound.a.b.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.c.a;
 import com.tencent.mm.plugin.expt.hellhound.a.b.b.c.b;
-import com.tencent.mm.plugin.expt.hellhound.a.b.b.c.c;
+import com.tencent.mm.plugin.expt.hellhound.a.b.b.c.d;
 import com.tencent.mm.plugin.expt.hellhound.a.f.b.b.a;
-import com.tencent.mm.protocal.protobuf.cif;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.k.j;
-import d.l;
+import com.tencent.mm.protocal.protobuf.cym;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
 import java.util.LinkedList;
+import kotlin.g.b.p;
+import kotlin.k.j;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderShareStatistics;", "", "()V", "mCurPageNameStaticsing", "", "mCurPageNameStaticsingOnCreate", "mStayTime", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/StayTimeStatistics;", "getBackgroundTime", "", "timePairLsit", "Ljava/util/LinkedList;", "on7Event", "", "pageName", "hashCode", "", "timestamp", "on7EventV1", "on7EventV2", "on8Event", "on8EventV1", "on8EventV2", "onActivityCreate", "activity", "Landroid/app/Activity;", "onActivityCreateV1", "sPageName", "extraInfo", "onActivityCreateV2", "onFinishActivity", "onFinishActivityV1", "enterSourceInfo", "onFinishActivityV2", "onPagePaused", "onPageResumed", "toStayTimeStatistics", "statistics", "Lcom/tencent/mm/protocal/protobuf/PageStatistics;", "reportType", "Companion", "plugin-expt_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/statistics/FinderShareStatistics;", "", "()V", "mCurPageNameStaticsing", "", "mCurPageNameStaticsingOnCreate", "mStayTime", "Lcom/tencent/mm/plugin/expt/hellhound/ext/finder/report/StayTimeStatistics;", "getBackgroundTime", "", "timePairLsit", "Ljava/util/LinkedList;", "on7Event", "", "pageName", "hashCode", "", "timestamp", "on7EventV1", "on7EventV2", "on8Event", "on8EventV1", "on8EventV2", "onActivityCreate", "activity", "Landroid/app/Activity;", "onActivityCreateV1", "sPageName", "extraInfo", "onActivityCreateV2", "onFinishActivity", "onFinishActivityV1", "enterSourceInfo", "onFinishActivityV2", "onPagePaused", "onPageResumed", "toStayTimeStatistics", "statistics", "Lcom/tencent/mm/protocal/protobuf/PageStatistics;", "reportType", "Companion", "plugin-expt_release"})
 public final class d
 {
-  public static final d.a rfM;
-  public com.tencent.mm.plugin.expt.hellhound.a.b.c.b rfJ;
-  public String rfK;
-  public String rfL;
+  public static final d.a sHc;
+  public com.tencent.mm.plugin.expt.hellhound.a.b.c.b sGZ;
+  public String sHa;
+  public String sHb;
   
   static
   {
-    AppMethodBeat.i(196565);
-    rfM = new d.a((byte)0);
-    AppMethodBeat.o(196565);
+    AppMethodBeat.i(221057);
+    sHc = new d.a((byte)0);
+    AppMethodBeat.o(221057);
   }
   
-  public static com.tencent.mm.plugin.expt.hellhound.a.b.c.b a(cif paramcif, int paramInt)
+  public static com.tencent.mm.plugin.expt.hellhound.a.b.c.b a(cym paramcym, int paramInt)
   {
     boolean bool = false;
-    AppMethodBeat.i(196563);
+    AppMethodBeat.i(221055);
     com.tencent.mm.plugin.expt.hellhound.a.b.c.b localb = new com.tencent.mm.plugin.expt.hellhound.a.b.c.b();
-    localb.sessionId = paramcif.sessionId;
-    localb.duQ = paramcif.duQ;
-    if (p.i(localb.duQ, "FinderTopicFeedUI"))
+    localb.sessionId = paramcym.sessionId;
+    localb.dMl = paramcym.dMl;
+    if (p.j(localb.dMl, "FinderTopicFeedUI"))
     {
-      c.a locala = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.rdX;
-      if (com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cqD() == c.c.red.value) {
+      c.a locala = com.tencent.mm.plugin.expt.hellhound.a.b.b.c.sFa;
+      if (com.tencent.mm.plugin.expt.hellhound.a.b.b.c.cPf() == c.d.sFl.value) {
         bool = true;
       }
     }
-    for (localb.rfq = bool;; localb.rfq = false)
+    for (localb.sGG = bool;; localb.sGG = false)
     {
-      localb.rfl = paramcif.rfl;
-      localb.rfm = paramcif.rfm;
-      localb.rfn = paramcif.rfn;
-      localb.rfo = paramcif.rfo;
-      localb.rfp = paramcif.rfp;
-      localb.dGC = paramInt;
-      localb.extraInfo = paramcif.extraInfo;
-      localb.rfr = paramcif.rfr;
-      AppMethodBeat.o(196563);
+      localb.sGB = paramcym.sGB;
+      localb.sGC = paramcym.sGC;
+      localb.sGD = paramcym.sGD;
+      localb.sGE = paramcym.sGE;
+      localb.sGF = paramcym.sGF;
+      localb.dYn = paramInt;
+      localb.extraInfo = paramcym.extraInfo;
+      localb.sGH = paramcym.sGH;
+      AppMethodBeat.o(221055);
       return localb;
     }
   }
   
   public static void a(String paramString1, int paramInt, long paramLong, String paramString2)
   {
-    AppMethodBeat.i(196559);
-    ae.i("HABBYGE-MALI.FinderShareStatistics", "onActivityCreateV1, sPage=" + paramString1 + ", hashCode=" + paramInt);
-    if (f.rfS.de(paramString1, paramInt) == null)
+    AppMethodBeat.i(221051);
+    Log.i("HABBYGE-MALI.FinderShareStatistics", "onActivityCreateV1, sPage=" + paramString1 + ", hashCode=" + paramInt);
+    if (f.sHi.dk(paramString1, paramInt) == null)
     {
-      cif localcif = new cif();
-      localcif.sessionId = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.crm().cos();
-      localcif.duQ = paramString1;
-      localcif.aHQ = paramInt;
-      localcif.rfm = paramLong;
-      b.a locala = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.rhc;
-      localcif.rfp = b.a.cri();
-      localcif.dGC = c.b.rea.value;
-      localcif.extraInfo = paramString2;
-      f.rfS.a(localcif);
-      ae.i("HABBYGE-MALI.FinderShareStatistics", "onActivityCreateV1, YES, sPage=" + paramString1 + ", hashCode=" + paramInt);
+      cym localcym = new cym();
+      localcym.sessionId = com.tencent.mm.plugin.expt.hellhound.a.f.a.c.cPU().cMD();
+      localcym.dMl = paramString1;
+      localcym.aHK = paramInt;
+      localcym.sGC = paramLong;
+      b.a locala = com.tencent.mm.plugin.expt.hellhound.a.f.b.b.sIy;
+      localcym.sGF = b.a.cPQ();
+      localcym.dYn = c.b.sFd.value;
+      localcym.extraInfo = paramString2;
+      f.sHi.a(localcym);
+      Log.i("HABBYGE-MALI.FinderShareStatistics", "onActivityCreateV1, YES, sPage=" + paramString1 + ", hashCode=" + paramInt);
     }
-    AppMethodBeat.o(196559);
+    AppMethodBeat.o(221051);
   }
   
-  public static long aa(LinkedList<Long> paramLinkedList)
+  public static long ab(LinkedList<Long> paramLinkedList)
   {
     long l2 = 0L;
-    AppMethodBeat.i(196564);
+    AppMethodBeat.i(221056);
     if (paramLinkedList.isEmpty())
     {
-      AppMethodBeat.o(196564);
+      AppMethodBeat.o(221056);
       return 0L;
     }
     if (paramLinkedList.size() % 2 != 0) {
       paramLinkedList.removeLast();
     }
-    Object localObject = j.a((d.k.d)j.lv(0, paramLinkedList.size()), 2);
-    int i = ((d.k.d)localObject).Njm;
-    int j = ((d.k.d)localObject).Njn;
-    int k = ((d.k.d)localObject).kyd;
+    Object localObject = j.a((kotlin.k.d)j.mY(0, paramLinkedList.size()), 2);
+    int i = ((kotlin.k.d)localObject).SYU;
+    int j = ((kotlin.k.d)localObject).SYV;
+    int k = ((kotlin.k.d)localObject).lCq;
     long l1;
     if (k >= 0)
     {
@@ -119,102 +119,102 @@ public final class d
         l1 = l2;
       } while (i >= j);
     }
-    AppMethodBeat.o(196564);
+    AppMethodBeat.o(221056);
     return l1;
   }
   
-  public static void p(String paramString, int paramInt, long paramLong)
+  public static void o(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(196560);
-    ae.i("HABBYGE-MALI.FinderShareStatistics", "on7EventV1: pageName=" + paramString + ", hashCode=" + paramInt);
-    paramString = f.rfS.cqH();
+    AppMethodBeat.i(221052);
+    Log.i("HABBYGE-MALI.FinderShareStatistics", "on7EventV1: pageName=" + paramString + ", hashCode=" + paramInt);
+    paramString = f.sHi.cPo();
     if (paramString == null)
     {
-      AppMethodBeat.o(196560);
+      AppMethodBeat.o(221052);
       return;
     }
-    LinkedList localLinkedList = paramString.Hux;
+    LinkedList localLinkedList = paramString.MDv;
     p.g(localLinkedList, "statistics.stayTimeOnBackground");
     if (!((Collection)localLinkedList).isEmpty())
     {
       paramInt = 1;
       if (paramInt != 0)
       {
-        if (paramString.Hux.size() % 2 == 0) {
+        if (paramString.MDv.size() % 2 == 0) {
           break label131;
         }
-        paramString.Hux.add(Long.valueOf(paramLong));
+        paramString.MDv.add(Long.valueOf(paramLong));
       }
     }
     for (;;)
     {
-      f.rfS.b(paramString);
-      AppMethodBeat.o(196560);
+      f.sHi.b(paramString);
+      AppMethodBeat.o(221052);
       return;
       paramInt = 0;
       break;
       label131:
-      paramString.Hux.removeLast();
-      paramString.Hux.add(Long.valueOf(paramLong));
+      paramString.MDv.removeLast();
+      paramString.MDv.add(Long.valueOf(paramLong));
+    }
+  }
+  
+  public static void p(String paramString, int paramInt, long paramLong)
+  {
+    AppMethodBeat.i(221053);
+    Log.i("HABBYGE-MALI.FinderShareStatistics", "on8EventV1: pageName=" + paramString + ", hashCode=" + paramInt);
+    paramString = f.sHi.cPo();
+    if (paramString == null)
+    {
+      AppMethodBeat.o(221053);
+      return;
+    }
+    if (paramString.MDv.isEmpty()) {
+      paramString.MDv.add(Long.valueOf(paramLong));
+    }
+    for (;;)
+    {
+      f.sHi.b(paramString);
+      AppMethodBeat.o(221053);
+      return;
+      if (paramString.MDv.size() % 2 == 0)
+      {
+        paramString.MDv.add(Long.valueOf(paramLong));
+      }
+      else
+      {
+        paramString.MDv.removeLast();
+        paramString.MDv.add(Long.valueOf(paramLong));
+      }
     }
   }
   
   public static void q(String paramString, int paramInt, long paramLong)
   {
-    AppMethodBeat.i(196561);
-    ae.i("HABBYGE-MALI.FinderShareStatistics", "on8EventV1: pageName=" + paramString + ", hashCode=" + paramInt);
-    paramString = f.rfS.cqH();
-    if (paramString == null)
+    AppMethodBeat.i(221054);
+    Log.i("HABBYGE-MALI.FinderShareStatistics", "on7EventV2: pageName=" + paramString + ", hashCode=" + paramInt);
+    cym localcym = f.sHi.cPq();
+    if (localcym == null)
     {
-      AppMethodBeat.o(196561);
+      AppMethodBeat.o(221054);
       return;
     }
-    if (paramString.Hux.isEmpty()) {
-      paramString.Hux.add(Long.valueOf(paramLong));
-    }
-    for (;;)
+    if (com.tencent.mm.plugin.expt.hellhound.core.b.aoz(paramString))
     {
-      f.rfS.b(paramString);
-      AppMethodBeat.o(196561);
-      return;
-      if (paramString.Hux.size() % 2 == 0)
-      {
-        paramString.Hux.add(Long.valueOf(paramLong));
-      }
-      else
-      {
-        paramString.Hux.removeLast();
-        paramString.Hux.add(Long.valueOf(paramLong));
-      }
-    }
-  }
-  
-  public static void r(String paramString, int paramInt, long paramLong)
-  {
-    AppMethodBeat.i(196562);
-    ae.i("HABBYGE-MALI.FinderShareStatistics", "on7EventV2: pageName=" + paramString + ", hashCode=" + paramInt);
-    cif localcif = f.rfS.cqJ();
-    if (localcif == null)
-    {
-      AppMethodBeat.o(196562);
+      f.sHi.cPr();
+      AppMethodBeat.o(221054);
       return;
     }
-    if (com.tencent.mm.plugin.expt.hellhound.core.b.aem(paramString))
+    if (localcym.dYn == 8)
     {
-      f.rfS.cqK();
-      AppMethodBeat.o(196562);
-      return;
+      localcym.sGC = paramLong;
+      localcym.sGD = 0L;
+      localcym.sGB = 0L;
+      localcym.dYn = c.b.sFc.value;
+      f.sHi.d(localcym);
+      Log.i("HABBYGE-MALI.FinderShareStatistics", "on7EventV2: " + localcym.dMl + ", " + localcym.aHK);
     }
-    if (localcif.dGC == 8)
-    {
-      localcif.rfm = paramLong;
-      localcif.rfn = 0L;
-      localcif.rfl = 0L;
-      localcif.dGC = c.b.rdZ.value;
-      f.rfS.d(localcif);
-      ae.i("HABBYGE-MALI.FinderShareStatistics", "on7EventV2: " + localcif.duQ + ", " + localcif.aHQ);
-    }
-    AppMethodBeat.o(196562);
+    AppMethodBeat.o(221054);
   }
 }
 

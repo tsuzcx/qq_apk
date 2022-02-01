@@ -1,16 +1,21 @@
 package com.tencent.mm.plugin.webcanvas;
 
-public abstract interface e
+import android.webkit.ValueCallback;
+import kotlin.g.a.b;
+import kotlin.l;
+
+@l(hxD={1, 1, 16})
+final class e
+  implements ValueCallback
 {
-  public abstract void a(d paramd);
-  
-  public abstract void a(f paramf);
-  
-  public abstract void b(f paramf);
+  e(b paramb)
+  {
+    this.hXF = paramb;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.webcanvas.e
  * JD-Core Version:    0.7.0.1
  */

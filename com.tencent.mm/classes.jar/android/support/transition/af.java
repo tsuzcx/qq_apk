@@ -1,12 +1,28 @@
 package android.support.transition;
 
 import android.graphics.drawable.Drawable;
+import android.view.View;
+import android.view.ViewOverlay;
 
-abstract interface af
+final class af
+  implements ag
 {
-  public abstract void add(Drawable paramDrawable);
+  private final ViewOverlay DH;
   
-  public abstract void remove(Drawable paramDrawable);
+  af(View paramView)
+  {
+    this.DH = paramView.getOverlay();
+  }
+  
+  public final void add(Drawable paramDrawable)
+  {
+    this.DH.add(paramDrawable);
+  }
+  
+  public final void remove(Drawable paramDrawable)
+  {
+    this.DH.remove(paramDrawable);
+  }
 }
 
 

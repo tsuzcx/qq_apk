@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/yl" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/n3" />
-</RelativeLayout>
+<FrameLayout android:id="@id/gy2" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" app:layout_behavior="@string/a0e"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.MMNeat7extView android:textSize="@dimen/k0" android:textColor="@color/u7" android:ellipsize="end" android:layout_gravity="center_horizontal" android:id="@id/a5t" android:paddingTop="@dimen/r" android:paddingBottom="@dimen/r" android:focusableInTouchMode="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="5" android:paddingStart="@dimen/iy" android:paddingEnd="@dimen/iy" />
+</FrameLayout>

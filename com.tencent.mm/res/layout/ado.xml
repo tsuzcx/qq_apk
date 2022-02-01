@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/cqa" android:layout_width="wrap_content" android:layout_height="@dimen/cn"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:background="@drawable/a05" android:layout_width="@dimen/cd" android:layout_height="@dimen/ci" android:layout_centerVertical="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/cq7" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_centerVertical="true" android:paddingStart="@dimen/c5" android:paddingEnd="@dimen/bt">
+        <TextView android:textSize="17.0dip" android:textColor="@color/ag2" android:ellipsize="end" android:id="@id/cq8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" />
+        <TextView android:textColor="@color/ag2" android:id="@id/cq9" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <org.libpag.PAGView android:id="@id/cq_" android:layout_width="@dimen/cn" android:layout_height="@dimen/cn" android:layout_marginStart="@dimen/bt" android:layout_toEndOf="@id/cq7" />
+    <com.tencent.mm.plugin.finder.live.view.FinderLiveGiftTextView android:textColor="@color/ag2" android:id="@id/cq6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_centerVertical="true" android:paddingEnd="@dimen/cb" android:layout_marginStart="@dimen/bt" android:layout_toEndOf="@id/cq_" />
+</RelativeLayout>

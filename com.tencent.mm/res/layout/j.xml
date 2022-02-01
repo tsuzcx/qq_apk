@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="152.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/ed" android:textColor="@color/FG_2" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bxb" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cc" android:text="@string/hus" />
-    <include android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/br" layout="@layout/a72" />
+<FrameLayout android:id="@id/d1j" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:layout_gravity="bottom|center" android:orientation="horizontal" android:id="@id/fmk" android:background="@drawable/wg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb" android:minHeight="@dimen/cl" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct">
+        <ImageView android:layout_gravity="start|center" android:id="@id/fm7" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@drawable/bca" android:layout_marginEnd="6.0dip" />
+        <TextView android:textSize="@dimen/bd" android:textStyle="bold" android:textColor="@color/BW_100_Alpha_0_8" android:layout_gravity="start|center" android:id="@id/fdw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/d6b" android:maxLines="1" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:layout_width="8.0dip" android:layout_height="16.0dip" android:src="@raw/icons_filled_arrow" android:layout_marginStart="@dimen/c5" app:iconColor="@color/ur" />
+    </LinearLayout>
 </FrameLayout>

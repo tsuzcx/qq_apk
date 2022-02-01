@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.appbrand.media.record.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public final class g
   extends f
 {
-  private int lWL;
   private int mSampleRate;
+  private int nen;
   
   public final void close()
   {
@@ -20,11 +20,11 @@ public final class g
     super.close();
     try
     {
-      RandomAccessFile localRandomAccessFile = o.dg(w.B(this.ggb.fTh()), true);
+      RandomAccessFile localRandomAccessFile = s.dB(aa.z(this.mFile.her()), true);
       localRandomAccessFile.seek(0L);
       int i = this.mSampleRate;
-      int j = this.lWL;
-      long l1 = this.ggb.length();
+      int j = this.nen;
+      long l1 = this.mFile.length();
       long l2 = 36L + l1;
       long l3 = i;
       long l4 = i * 16 * j / 8;
@@ -35,7 +35,7 @@ public final class g
     }
     catch (IOException localIOException)
     {
-      ae.m("Luggage.PCMAudioEncoder", "", new Object[] { localIOException });
+      Log.printInfoStack("Luggage.PCMAudioEncoder", "", new Object[] { localIOException });
       AppMethodBeat.o(146355);
     }
   }
@@ -44,7 +44,7 @@ public final class g
   {
     AppMethodBeat.i(146354);
     this.mSampleRate = paramInt1;
-    this.lWL = paramInt2;
+    this.nen = paramInt2;
     boolean bool = super.i(paramString, paramInt1, paramInt2, paramInt3);
     AppMethodBeat.o(146354);
     return bool;
@@ -52,7 +52,7 @@ public final class g
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.media.record.a.g
  * JD-Core Version:    0.7.0.1
  */

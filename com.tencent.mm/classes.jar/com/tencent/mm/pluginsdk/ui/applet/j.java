@@ -1,38 +1,38 @@
 package com.tencent.mm.pluginsdk.ui.applet;
 
 import com.tencent.mm.av.a.d.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "", "onAfterCloseStream", "", "onAfterGetResponseCode", "onAfterOpenConnection", "connection", "Ljava/net/HttpURLConnection;", "onAfterReadStreamData", "onBeforeCloseStream", "onBeforeGetResponseCode", "onBeforeOpenConnection", "onBeforeReadStreamData", "onDisconnect", "onRequest", "imageType", "", "forceNormal", "", "onResultError", "responseCode", "onResultSuccess", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onRetry", "onStart", "key", "", "requestUrl", "plugin-biz_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/pluginsdk/ui/applet/BizImageHttpUrlConnectionListener;", "", "onAfterCloseStream", "", "onAfterGetResponseCode", "onAfterOpenConnection", "connection", "Ljava/net/HttpURLConnection;", "onAfterReadStreamData", "onBeforeCloseStream", "onBeforeGetResponseCode", "onBeforeOpenConnection", "onBeforeReadStreamData", "onDisconnect", "onRequest", "imageType", "", "forceNormal", "", "onResultError", "responseCode", "onResultSuccess", "response", "Lcom/tencent/mm/modelimage/loader/model/Response;", "onRetry", "onStart", "key", "", "requestUrl", "plugin-biz_release"})
 public abstract interface j
 {
-  public abstract void Zw(int paramInt);
+  public abstract void aih(int paramInt);
   
   public abstract void b(b paramb);
   
-  public abstract void bf(int paramInt, boolean paramBoolean);
+  public abstract void bz(int paramInt, boolean paramBoolean);
   
-  public abstract void eh(String paramString1, String paramString2);
+  public abstract void ey(String paramString1, String paramString2);
   
-  public abstract void fgb();
+  public abstract void gpk();
   
-  public abstract void fgc();
+  public abstract void gpl();
   
-  public abstract void fgd();
+  public abstract void gpm();
   
-  public abstract void fge();
+  public abstract void gpn();
   
-  public abstract void fgf();
+  public abstract void gpo();
   
-  public abstract void fgg();
+  public abstract void gpp();
   
-  public abstract void fgh();
+  public abstract void gpq();
   
-  public abstract void fgi();
+  public abstract void gpr();
   
-  public abstract void fgj();
+  public abstract void gps();
   
-  public abstract void fgk();
+  public abstract void gpt();
 }
 
 

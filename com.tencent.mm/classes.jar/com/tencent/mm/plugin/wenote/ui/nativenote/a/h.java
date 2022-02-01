@@ -6,29 +6,29 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public final class h
 {
-  public static final int EVa = 2131495031;
-  public static final int EVb = 2131495030;
-  public static final int pyW = 2131495034;
-  public static final int pyX = 2131495033;
-  public SparseArray<Integer> EVc;
+  public static final int JKT = 2131495863;
+  public static final int JKU = 2131495862;
+  public static final int qOn = 2131495866;
+  public static final int qOo = 2131495865;
+  public SparseArray<Integer> JKV;
   
   public h()
   {
     AppMethodBeat.i(30862);
-    this.EVc = new SparseArray();
-    this.EVc.put(1, Integer.valueOf(pyW));
-    this.EVc.put(2, Integer.valueOf(pyX));
-    this.EVc.put(4, Integer.valueOf(pyX));
-    this.EVc.put(3, Integer.valueOf(pyX));
-    this.EVc.put(5, Integer.valueOf(pyX));
-    this.EVc.put(6, Integer.valueOf(pyX));
-    this.EVc.put(0, Integer.valueOf(pyX));
-    this.EVc.put(-1, Integer.valueOf(pyX));
-    this.EVc.put(-3, Integer.valueOf(EVa));
-    this.EVc.put(-2, Integer.valueOf(pyX));
-    this.EVc.put(-4, Integer.valueOf(pyX));
-    this.EVc.put(20, Integer.valueOf(pyX));
-    this.EVc.put(30, Integer.valueOf(EVb));
+    this.JKV = new SparseArray();
+    this.JKV.put(1, Integer.valueOf(qOn));
+    this.JKV.put(2, Integer.valueOf(qOo));
+    this.JKV.put(4, Integer.valueOf(qOo));
+    this.JKV.put(3, Integer.valueOf(qOo));
+    this.JKV.put(5, Integer.valueOf(qOo));
+    this.JKV.put(6, Integer.valueOf(qOo));
+    this.JKV.put(0, Integer.valueOf(qOo));
+    this.JKV.put(-1, Integer.valueOf(qOo));
+    this.JKV.put(-3, Integer.valueOf(JKT));
+    this.JKV.put(-2, Integer.valueOf(qOo));
+    this.JKV.put(-4, Integer.valueOf(qOo));
+    this.JKV.put(20, Integer.valueOf(qOo));
+    this.JKV.put(30, Integer.valueOf(JKU));
     AppMethodBeat.o(30862);
   }
   
@@ -96,7 +96,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.wenote.ui.nativenote.a.h
  * JD-Core Version:    0.7.0.1
  */

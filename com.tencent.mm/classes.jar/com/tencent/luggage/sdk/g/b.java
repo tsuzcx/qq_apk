@@ -1,22 +1,22 @@
 package com.tencent.luggage.sdk.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.a.aa;
-import d.a.y;
-import d.g.b.p;
-import d.l;
 import java.util.Iterator;
+import kotlin.a.aa;
+import kotlin.a.y;
+import kotlin.g.b.p;
+import kotlin.l;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/sdk/wxa_ktx/JSONUtils;", "", "()V", "copy", "Lorg/json/JSONObject;", "luggage-wxa-app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/luggage/sdk/wxa_ktx/JSONUtils;", "", "()V", "copy", "Lorg/json/JSONObject;", "luggage-wxa-app_release"})
 public final class b
 {
-  public static final b cqo;
+  public static final b cCH;
   
   static
   {
     AppMethodBeat.i(135552);
-    cqo = new b();
+    cCH = new b();
     AppMethodBeat.o(135552);
   }
   
@@ -41,7 +41,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.g.b
  * JD-Core Version:    0.7.0.1
  */

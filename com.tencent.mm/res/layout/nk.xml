@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.chatting.ChattingImageBGView android:id="@id/al3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:adjustViewBounds="true" />
-    <ImageView android:id="@id/z1" android:background="#99000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+<LinearLayout android:orientation="vertical" android:background="@color/a" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/b1n" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/fp" android:id="@id/b1p" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:layout_marginTop="@dimen/ct" android:text="" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/b1o" android:paddingTop="108.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/card_empty" app:iconColor="@color/FG_2" />
+        <TextView android:textSize="@dimen/k6" android:textColor="@color/FG_2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:text="@string/aq2" />
+    </LinearLayout>
+</LinearLayout>

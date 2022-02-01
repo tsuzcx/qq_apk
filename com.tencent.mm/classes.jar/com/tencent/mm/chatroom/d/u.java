@@ -1,46 +1,46 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.dcw;
-import com.tencent.mm.protocal.protobuf.dcx;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dwa;
+import com.tencent.mm.protocal.protobuf.dwb;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class u
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private final b rr;
+  private i callback;
+  private final d rr;
   
   public u(String paramString1, String paramString2)
   {
     AppMethodBeat.i(12492);
-    b.a locala = new b.a();
-    dcw localdcw = new dcw();
-    localdcw.FNj = paramString1;
-    localdcw.GPI = paramString2;
-    locala.hQF = localdcw;
-    locala.hQG = new dcx();
+    d.a locala = new d.a();
+    dwa localdwa = new dwa();
+    localdwa.KGO = paramString1;
+    localdwa.LTP = paramString2;
+    locala.iLN = localdwa;
+    locala.iLO = new dwb();
     locala.uri = "/cgi-bin/micromsg-bin/setchatroomannouncement";
     locala.funcId = 993;
-    locala.hQH = 0;
+    locala.iLP = 0;
     locala.respCmdId = 0;
-    this.rr = locala.aDS();
+    this.rr = locala.aXF();
     AppMethodBeat.o(12492);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(12494);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(12494);
     return i;
   }
@@ -50,10 +50,10 @@ public final class u
     return 993;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(12493);
-    ae.w("MicroMsg.NetSceneSetChatRoomAnnouncement", "errType = " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
+    Log.w("MicroMsg.NetSceneSetChatRoomAnnouncement", "errType = " + paramInt2 + " errCode " + paramInt3 + " errMsg " + paramString);
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(12493);
   }

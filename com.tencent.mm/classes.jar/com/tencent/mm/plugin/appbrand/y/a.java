@@ -1,25 +1,26 @@
 package com.tencent.mm.plugin.appbrand.y;
 
-import android.app.Activity;
-import android.app.Application.ActivityLifecycleCallbacks;
-import android.os.Bundle;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.plugin.teenmode.a.b;
+import com.tencent.mm.storage.c;
+import java.util.Map;
 
-public abstract class a
-  implements Application.ActivityLifecycleCallbacks
+public final class a
 {
-  public void onActivityCreated(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityDestroyed(Activity paramActivity) {}
-  
-  public void onActivityPaused(Activity paramActivity) {}
-  
-  public void onActivityResumed(Activity paramActivity) {}
-  
-  public void onActivitySaveInstanceState(Activity paramActivity, Bundle paramBundle) {}
-  
-  public void onActivityStarted(Activity paramActivity) {}
-  
-  public void onActivityStopped(Activity paramActivity) {}
+  public static boolean bVo()
+  {
+    AppMethodBeat.i(48237);
+    c localc = com.tencent.mm.model.c.d.aXu().Fu("100159");
+    if ((localc.isValid()) && ("1".equals(localc.gzz().get("isCloseWeappSearch")))) {}
+    for (int i = 1; (i == 0) && ((!((b)g.af(b.class)).Vt()) || (((b)g.af(b.class)).fvp() == 1)); i = 0)
+    {
+      AppMethodBeat.o(48237);
+      return true;
+    }
+    AppMethodBeat.o(48237);
+    return false;
+  }
 }
 
 

@@ -1,24 +1,16 @@
 package com.tencent.mm.plugin.appbrand.appusage;
 
-import com.tencent.mm.kernel.b.e;
-import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.plugin.appbrand.api.c;
-import com.tencent.mm.sdk.e.g;
-import java.util.List;
+import com.tencent.mm.ipcinvoker.k;
+import com.tencent.mm.ipcinvoker.type.IPCBoolean;
+import kotlin.l;
 
-@e(c.class)
-public abstract interface ai
-  extends a, g
-{
-  public abstract boolean bd(String paramString, int paramInt);
-  
-  public abstract List<LocalUsageInfo> dE(int paramInt1, int paramInt2);
-  
-  public abstract List<LocalUsageInfo> sb(int paramInt);
-}
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/appusage/IsCall;", "Lcom/tencent/mm/ipcinvoker/IPCSyncInvokeTask;", "Lcom/tencent/mm/plugin/appbrand/appusage/AppIdentity;", "Lcom/tencent/mm/ipcinvoker/type/IPCBoolean;", "()V", "invoke", "data", "plugin-appbrand-integration_release"})
+final class ai
+  implements k<AppIdentity, IPCBoolean>
+{}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.appusage.ai
  * JD-Core Version:    0.7.0.1
  */

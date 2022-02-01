@@ -1,45 +1,45 @@
 package com.tencent.mm.plugin.game.commlib.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.ew;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.fe;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends ew
+  extends fe
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(89949);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "key";
-    locala.IBN.put("key", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "key";
+    localMAutoDBInfo.colsMap.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "key";
-    locala.columns[1] = "value";
-    locala.IBN.put("value", "BLOB");
+    localMAutoDBInfo.primaryKey = "key";
+    localMAutoDBInfo.columns[1] = "value";
+    localMAutoDBInfo.colsMap.put("value", "BLOB");
     localStringBuilder.append(" value BLOB");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(89949);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.game.commlib.b.a
  * JD-Core Version:    0.7.0.1
  */

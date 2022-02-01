@@ -13,32 +13,32 @@ import java.util.ArrayList;
 public class RadarChart
   extends Chart
 {
+  public ArrayList<com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a> EaV;
+  private c EaW;
+  public TextView EaX;
+  private RadarGrid EaY;
+  private RadarDataLayer[] EaZ;
+  private a Eba;
+  private boolean Ebb;
+  private boolean Ebc;
+  public int Ebd;
+  public int Ebe;
+  private int Ebf;
+  public Spannable[] Ebg;
   private Context context;
-  public ArrayList<com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a> zSL;
-  private c zSM;
-  public TextView zSN;
-  private RadarGrid zSO;
-  private RadarDataLayer[] zSP;
-  private a zSQ;
-  private boolean zSR;
-  private boolean zSS;
-  public int zST;
-  public int zSU;
-  private int zSV;
-  public Spannable[] zSW;
-  private float zSX;
+  private float maxValue;
   
   public RadarChart(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(96338);
-    this.zSM = new c();
-    this.zSR = true;
-    this.zSS = true;
-    this.zST = 3;
-    this.zSU = 0;
-    this.zSV = 4;
-    this.zSX = 1.0F;
+    this.EaW = new c();
+    this.Ebb = true;
+    this.Ebc = true;
+    this.Ebd = 3;
+    this.Ebe = 0;
+    this.Ebf = 4;
+    this.maxValue = 1.0F;
     this.context = paramContext;
     AppMethodBeat.o(96338);
   }
@@ -47,13 +47,13 @@ public class RadarChart
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(96339);
-    this.zSM = new c();
-    this.zSR = true;
-    this.zSS = true;
-    this.zST = 3;
-    this.zSU = 0;
-    this.zSV = 4;
-    this.zSX = 1.0F;
+    this.EaW = new c();
+    this.Ebb = true;
+    this.Ebc = true;
+    this.Ebd = 3;
+    this.Ebe = 0;
+    this.Ebf = 4;
+    this.maxValue = 1.0F;
     this.context = paramContext;
     AppMethodBeat.o(96339);
   }
@@ -61,14 +61,14 @@ public class RadarChart
   public c getGridStyle()
   {
     AppMethodBeat.i(96343);
-    if (this.zSO == null)
+    if (this.EaY == null)
     {
-      localc = this.zSM;
+      localc = this.EaW;
       AppMethodBeat.o(96343);
       return localc;
     }
-    this.zSM = this.zSO.getGridStyle();
-    c localc = this.zSO.getGridStyle();
+    this.EaW = this.EaY.getGridStyle();
+    c localc = this.EaY.getGridStyle();
     AppMethodBeat.o(96343);
     return localc;
   }
@@ -119,54 +119,54 @@ public class RadarChart
       }
       i += 1;
     }
-    this.zSW = paramVarArgs[0].dZW();
-    this.zSU = paramVarArgs[0].size();
-    if (this.zSL == null) {
-      this.zSL = new ArrayList();
+    this.Ebg = paramVarArgs[0].fcQ();
+    this.Ebe = paramVarArgs[0].size();
+    if (this.EaV == null) {
+      this.EaV = new ArrayList();
     }
     j = paramVarArgs.length;
     i = 0;
     while (i < j)
     {
       com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a locala = paramVarArgs[i];
-      this.zSL.add(locala);
+      this.EaV.add(locala);
       i += 1;
     }
-    this.zSO = new RadarGrid(this.context, this.zSU, this.zSV, this.zSX, this.zSW, this.zSM);
-    addView(this.zSO);
-    this.zSP = new RadarDataLayer[this.zST];
+    this.EaY = new RadarGrid(this.context, this.Ebe, this.Ebf, this.maxValue, this.Ebg, this.EaW);
+    addView(this.EaY);
+    this.EaZ = new RadarDataLayer[this.Ebd];
     i = k;
-    while ((i < this.zSP.length) && (this.zSL.size() > i))
+    while ((i < this.EaZ.length) && (this.EaV.size() > i))
     {
-      this.zSP[i] = new RadarDataLayer(this.context, this.zSX, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a)this.zSL.get(i));
-      addView(this.zSP[i]);
+      this.EaZ[i] = new RadarDataLayer(this.context, this.maxValue, (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.a.a)this.EaV.get(i));
+      addView(this.EaZ[i]);
       i += 1;
     }
-    if (this.zSQ == null) {
-      this.zSQ = new a(this.context, this.zSM);
+    if (this.Eba == null) {
+      this.Eba = new a(this.context, this.EaW);
     }
-    addView(this.zSQ);
+    addView(this.Eba);
     AppMethodBeat.o(96340);
   }
   
   public void setGridStyle(c paramc)
   {
     AppMethodBeat.i(96342);
-    this.zSM = paramc;
-    if (this.zSO != null) {
-      this.zSO.setGridStyle(paramc);
+    this.EaW = paramc;
+    if (this.EaY != null) {
+      this.EaY.setGridStyle(paramc);
     }
     AppMethodBeat.o(96342);
   }
   
   public void setLatitudeNum(int paramInt)
   {
-    this.zSV = paramInt;
+    this.Ebf = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.chart.view.RadarChart
  * JD-Core Version:    0.7.0.1
  */

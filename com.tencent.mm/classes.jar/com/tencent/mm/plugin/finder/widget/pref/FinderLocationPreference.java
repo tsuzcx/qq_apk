@@ -7,15 +7,15 @@ import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.a.b;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.RegionCodeDecoder;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.widget.imageview.WeImageView;
-import d.g.b.p;
-import d.l;
-import d.v;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/widget/pref/FinderLocationPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "cityCode", "", "getCityCode", "()Ljava/lang/String;", "setCityCode", "(Ljava/lang/String;)V", "countryCode", "getCountryCode", "setCountryCode", "locationIV", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "mView", "Landroid/view/View;", "provinceCode", "getProvinceCode", "setProvinceCode", "selectIV", "selected", "", "getSelected", "()Z", "setSelected", "(Z)V", "showLocationIcon", "getShowLocationIcon", "setShowLocationIcon", "onBindView", "", "view", "onCreateView", "parent", "Landroid/view/ViewGroup;", "updateTitle", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/widget/pref/FinderLocationPreference;", "Lcom/tencent/mm/ui/base/preference/Preference;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "(Landroid/content/Context;)V", "cityCode", "", "getCityCode", "()Ljava/lang/String;", "setCityCode", "(Ljava/lang/String;)V", "countryCode", "getCountryCode", "setCountryCode", "locationIV", "Lcom/tencent/mm/ui/widget/imageview/WeImageView;", "mView", "Landroid/view/View;", "provinceCode", "getProvinceCode", "setProvinceCode", "selectIV", "selected", "", "getSelected", "()Z", "setSelected", "(Z)V", "showLocationIcon", "getShowLocationIcon", "setShowLocationIcon", "onBindView", "", "view", "onCreateView", "parent", "Landroid/view/ViewGroup;", "updateTitle", "plugin-finder_release"})
 public final class FinderLocationPreference
   extends Preference
 {
@@ -23,10 +23,10 @@ public final class FinderLocationPreference
   public String countryCode;
   private View mView;
   public String provinceCode;
-  public boolean tqA;
-  public boolean tqB;
-  private WeImageView tqy;
-  private WeImageView tqz;
+  public boolean uOQ;
+  private WeImageView wDF;
+  private WeImageView wDG;
+  public boolean wDH;
   
   public FinderLocationPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -43,11 +43,11 @@ public final class FinderLocationPreference
     this.countryCode = "";
     this.provinceCode = "";
     this.cityCode = "";
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(178503);
   }
   
-  public final void ako(String paramString)
+  public final void awY(String paramString)
   {
     AppMethodBeat.i(178498);
     p.h(paramString, "<set-?>");
@@ -55,7 +55,7 @@ public final class FinderLocationPreference
     AppMethodBeat.o(178498);
   }
   
-  public final void akp(String paramString)
+  public final void awZ(String paramString)
   {
     AppMethodBeat.i(178499);
     p.h(paramString, "<set-?>");
@@ -69,18 +69,18 @@ public final class FinderLocationPreference
     AppMethodBeat.i(178501);
     p.h(paramView, "view");
     super.onBindView(paramView);
-    ade(8);
-    Object localObject = paramView.findViewById(2131305186);
+    alO(8);
+    Object localObject = paramView.findViewById(2131308377);
     if (localObject == null)
     {
-      paramView = new v("null cannot be cast to non-null type com.tencent.mm.ui.widget.imageview.WeImageView");
+      paramView = new t("null cannot be cast to non-null type com.tencent.mm.ui.widget.imageview.WeImageView");
       AppMethodBeat.o(178501);
       throw paramView;
     }
-    this.tqz = ((WeImageView)localObject);
-    localObject = this.tqz;
+    this.wDG = ((WeImageView)localObject);
+    localObject = this.wDG;
     if (localObject != null) {
-      if (!this.tqA) {
+      if (!this.uOQ) {
         break label117;
       }
     }
@@ -88,19 +88,19 @@ public final class FinderLocationPreference
     for (int i = 0;; i = 8)
     {
       ((WeImageView)localObject).setVisibility(i);
-      paramView = paramView.findViewById(2131301524);
+      paramView = paramView.findViewById(2131303730);
       if (paramView != null) {
         break;
       }
-      paramView = new v("null cannot be cast to non-null type com.tencent.mm.ui.widget.imageview.WeImageView");
+      paramView = new t("null cannot be cast to non-null type com.tencent.mm.ui.widget.imageview.WeImageView");
       AppMethodBeat.o(178501);
       throw paramView;
     }
-    this.tqy = ((WeImageView)paramView);
-    paramView = this.tqy;
+    this.wDF = ((WeImageView)paramView);
+    paramView = this.wDF;
     if (paramView != null)
     {
-      if (this.tqB) {}
+      if (this.wDH) {}
       for (i = j;; i = 8)
       {
         paramView.setVisibility(i);
@@ -116,16 +116,16 @@ public final class FinderLocationPreference
     AppMethodBeat.i(178500);
     p.h(paramViewGroup, "parent");
     paramViewGroup = super.onCreateView(paramViewGroup);
-    Object localObject = paramViewGroup.findViewById(2131298739);
+    Object localObject = paramViewGroup.findViewById(2131299180);
     if (localObject == null)
     {
-      paramViewGroup = new v("null cannot be cast to non-null type android.view.ViewGroup");
+      paramViewGroup = new t("null cannot be cast to non-null type android.view.ViewGroup");
       AppMethodBeat.o(178500);
       throw paramViewGroup;
     }
     localObject = (ViewGroup)localObject;
     ((ViewGroup)localObject).removeAllViews();
-    View.inflate(getContext(), 2131494061, (ViewGroup)localObject);
+    View.inflate(getContext(), 2131494492, (ViewGroup)localObject);
     this.mView = paramViewGroup;
     paramViewGroup = this.mView;
     AppMethodBeat.o(178500);
@@ -143,7 +143,7 @@ public final class FinderLocationPreference
   public final void updateTitle()
   {
     AppMethodBeat.i(178502);
-    if (!p.i(this.countryCode, "unshow")) {
+    if (!p.j(this.countryCode, "unshow")) {
       if (((CharSequence)this.countryCode).length() != 0) {
         break label60;
       }
@@ -151,29 +151,29 @@ public final class FinderLocationPreference
     label60:
     for (int i = 1; i != 0; i = 0)
     {
-      setTitle((CharSequence)getContext().getString(2131759353));
+      setTitle((CharSequence)getContext().getString(2131760563));
       AppMethodBeat.o(178502);
       return;
     }
-    RegionCodeDecoder.fwA();
+    RegionCodeDecoder.gEm();
     String str1 = RegionCodeDecoder.getCountry(this.countryCode);
-    RegionCodeDecoder.fwA();
-    String str2 = RegionCodeDecoder.mh(this.countryCode, this.provinceCode);
-    RegionCodeDecoder.fwA();
-    String str3 = RegionCodeDecoder.bh(this.countryCode, this.provinceCode, this.cityCode);
-    if (!bu.isNullOrNil(str3))
+    RegionCodeDecoder.gEm();
+    String str2 = RegionCodeDecoder.mV(this.countryCode, this.provinceCode);
+    RegionCodeDecoder.gEm();
+    String str3 = RegionCodeDecoder.br(this.countryCode, this.provinceCode, this.cityCode);
+    if (!Util.isNullOrNil(str3))
     {
-      setTitle((CharSequence)(((b)g.ab(b.class)).zR(str2) + " " + str3));
+      setTitle((CharSequence)(((b)g.af(b.class)).It(str2) + " " + str3));
       AppMethodBeat.o(178502);
       return;
     }
-    if (!bu.isNullOrNil(str2))
+    if (!Util.isNullOrNil(str2))
     {
       setTitle((CharSequence)(str1 + ' ' + str2));
       AppMethodBeat.o(178502);
       return;
     }
-    if (!bu.isNullOrNil(str1)) {
+    if (!Util.isNullOrNil(str1)) {
       setTitle((CharSequence)str1);
     }
     AppMethodBeat.o(178502);
@@ -181,7 +181,7 @@ public final class FinderLocationPreference
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.widget.pref.FinderLocationPreference
  * JD-Core Version:    0.7.0.1
  */

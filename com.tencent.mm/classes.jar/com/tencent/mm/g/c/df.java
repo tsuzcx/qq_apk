@@ -2,74 +2,88 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class df
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eGY;
-  private static final int eHf;
-  private static final int eJC;
-  private static final int eUE = "state".hashCode();
-  private static final int fgD = "todoid".hashCode();
-  private static final int fgE = "roomname".hashCode();
-  private static final int fgF;
-  private static final int fgG;
-  private static final int fgH;
-  private static final int fgI;
-  private static final int fgJ;
-  private static final int fgK;
-  private static final int fgL = "netSceneState".hashCode();
-  private static final int fgM = "shareKey".hashCode();
-  private static final int fgN = "shareName".hashCode();
-  private static final int fgn;
+  private static final int fCO = "sectionMd5Byte".hashCode();
+  private static final int fJH;
+  private static final int fJI;
+  private static final int fJJ;
+  private static final int fJK;
+  private static final int fJL;
+  private static final int fJM;
+  private static final int fJN;
+  private static final int fJO;
+  private static final int fJP;
+  private static final int fJQ;
+  private static final int fJR;
+  private static final int fJS = "forceUpdateFlag".hashCode();
+  private static final int fJb;
+  private static final int fkX;
+  private static final int fkj = "appId".hashCode();
+  private static final int fml;
+  private static final int fss = "downloadUrl".hashCode();
+  private static final int fyf;
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eGV = true;
-  private boolean eHb = true;
-  private boolean eJz = true;
-  private boolean eTS = true;
-  private boolean fgA = true;
-  private boolean fgB = true;
-  private boolean fgC = true;
-  private boolean fgi = true;
-  private boolean fgs = true;
-  private boolean fgt = true;
-  private boolean fgu = true;
-  private boolean fgv = true;
-  private boolean fgw = true;
-  private boolean fgx = true;
-  private boolean fgy = true;
-  private boolean fgz = true;
-  public long field_createtime;
-  public String field_creator;
-  public String field_custominfo;
-  public String field_manager;
-  public int field_netSceneState;
-  public int field_nreply;
-  public String field_path;
-  public String field_related_msgids;
-  public String field_roomname;
-  public String field_shareKey;
-  public String field_shareName;
-  public int field_state;
-  public String field_title;
-  public String field_todoid;
-  public long field_updatetime;
-  public String field_username;
+  private boolean fCk = true;
+  private boolean fIP = true;
+  private boolean fJA = true;
+  private boolean fJB = true;
+  private boolean fJC = true;
+  private boolean fJD = true;
+  private boolean fJE = true;
+  private boolean fJF = true;
+  private boolean fJG = true;
+  private boolean fJv = true;
+  private boolean fJw = true;
+  private boolean fJx = true;
+  private boolean fJy = true;
+  private boolean fJz = true;
+  public String field_SecondaryUrl;
+  public String field_appId;
+  public boolean field_continueDelay;
+  public boolean field_downloadInWidget;
+  public String field_downloadUrl;
+  public long field_expireTime;
+  public int field_forceUpdateFlag;
+  public boolean field_isFirst;
+  public boolean field_isRunning;
+  public boolean field_lowBattery;
+  public String field_md5;
+  public long field_nextCheckTime;
+  public boolean field_noEnoughSpace;
+  public boolean field_noSdcard;
+  public boolean field_noWifi;
+  public String field_packageName;
+  public long field_randomTime;
+  public byte[] field_sectionMd5Byte;
+  public long field_size;
+  private boolean fjS = true;
+  private boolean fkV = true;
+  private boolean flP = true;
+  private boolean fsk = true;
+  private boolean fxt = true;
   
   static
   {
-    eGY = "username".hashCode();
-    eHf = "path".hashCode();
-    fgF = "createtime".hashCode();
-    fgG = "updatetime".hashCode();
-    fgH = "custominfo".hashCode();
-    eJC = "title".hashCode();
-    fgn = "creator".hashCode();
-    fgI = "related_msgids".hashCode();
-    fgJ = "manager".hashCode();
-    fgK = "nreply".hashCode();
+    fkX = "size".hashCode();
+    fyf = "md5".hashCode();
+    fml = "packageName".hashCode();
+    fJb = "expireTime".hashCode();
+    fJH = "randomTime".hashCode();
+    fJI = "isFirst".hashCode();
+    fJJ = "nextCheckTime".hashCode();
+    fJK = "isRunning".hashCode();
+    fJL = "noWifi".hashCode();
+    fJM = "noSdcard".hashCode();
+    fJN = "noEnoughSpace".hashCode();
+    fJO = "lowBattery".hashCode();
+    fJP = "continueDelay".hashCode();
+    fJQ = "SecondaryUrl".hashCode();
+    fJR = "downloadInWidget".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -78,56 +92,145 @@ public abstract class df
     if (arrayOfString == null) {
       return;
     }
-    int i = 0;
     int j = arrayOfString.length;
+    int i = 0;
     label20:
     int k;
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fgD != k) {
-        break label60;
+      if (fkj != k) {
+        break label65;
       }
-      this.field_todoid = paramCursor.getString(i);
+      this.field_appId = paramCursor.getString(i);
+      this.fjS = true;
     }
     for (;;)
     {
       i += 1;
       break label20;
       break;
-      label60:
-      if (fgE == k) {
-        this.field_roomname = paramCursor.getString(i);
-      } else if (eGY == k) {
-        this.field_username = paramCursor.getString(i);
-      } else if (eHf == k) {
-        this.field_path = paramCursor.getString(i);
-      } else if (fgF == k) {
-        this.field_createtime = paramCursor.getLong(i);
-      } else if (fgG == k) {
-        this.field_updatetime = paramCursor.getLong(i);
-      } else if (fgH == k) {
-        this.field_custominfo = paramCursor.getString(i);
-      } else if (eJC == k) {
-        this.field_title = paramCursor.getString(i);
-      } else if (fgn == k) {
-        this.field_creator = paramCursor.getString(i);
-      } else if (fgI == k) {
-        this.field_related_msgids = paramCursor.getString(i);
-      } else if (fgJ == k) {
-        this.field_manager = paramCursor.getString(i);
-      } else if (fgK == k) {
-        this.field_nreply = paramCursor.getInt(i);
-      } else if (eUE == k) {
-        this.field_state = paramCursor.getInt(i);
-      } else if (fgL == k) {
-        this.field_netSceneState = paramCursor.getInt(i);
-      } else if (fgM == k) {
-        this.field_shareKey = paramCursor.getString(i);
-      } else if (fgN == k) {
-        this.field_shareName = paramCursor.getString(i);
-      } else if (rowid_HASHCODE == k) {
-        this.systemRowid = paramCursor.getLong(i);
+      label65:
+      if (fss == k)
+      {
+        this.field_downloadUrl = paramCursor.getString(i);
+      }
+      else if (fkX == k)
+      {
+        this.field_size = paramCursor.getLong(i);
+      }
+      else if (fyf == k)
+      {
+        this.field_md5 = paramCursor.getString(i);
+      }
+      else if (fml == k)
+      {
+        this.field_packageName = paramCursor.getString(i);
+      }
+      else if (fJb == k)
+      {
+        this.field_expireTime = paramCursor.getLong(i);
+      }
+      else if (fJH == k)
+      {
+        this.field_randomTime = paramCursor.getLong(i);
+      }
+      else
+      {
+        boolean bool;
+        if (fJI == k)
+        {
+          if (paramCursor.getInt(i) != 0) {}
+          for (bool = true;; bool = false)
+          {
+            this.field_isFirst = bool;
+            break;
+          }
+        }
+        if (fJJ == k)
+        {
+          this.field_nextCheckTime = paramCursor.getLong(i);
+        }
+        else
+        {
+          if (fJK == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_isRunning = bool;
+              break;
+            }
+          }
+          if (fJL == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_noWifi = bool;
+              break;
+            }
+          }
+          if (fJM == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_noSdcard = bool;
+              break;
+            }
+          }
+          if (fJN == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_noEnoughSpace = bool;
+              break;
+            }
+          }
+          if (fJO == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_lowBattery = bool;
+              break;
+            }
+          }
+          if (fJP == k)
+          {
+            if (paramCursor.getInt(i) != 0) {}
+            for (bool = true;; bool = false)
+            {
+              this.field_continueDelay = bool;
+              break;
+            }
+          }
+          if (fJQ == k)
+          {
+            this.field_SecondaryUrl = paramCursor.getString(i);
+          }
+          else
+          {
+            if (fJR == k)
+            {
+              if (paramCursor.getInt(i) != 0) {}
+              for (bool = true;; bool = false)
+              {
+                this.field_downloadInWidget = bool;
+                break;
+              }
+            }
+            if (fCO == k) {
+              this.field_sectionMd5Byte = paramCursor.getBlob(i);
+            } else if (fJS == k) {
+              this.field_forceUpdateFlag = paramCursor.getInt(i);
+            } else if (rowid_HASHCODE == k) {
+              this.systemRowid = paramCursor.getLong(i);
+            }
+          }
+        }
       }
     }
   }
@@ -135,59 +238,62 @@ public abstract class df
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fgs) {
-      localContentValues.put("todoid", this.field_todoid);
+    if (this.fjS) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.fgt) {
-      localContentValues.put("roomname", this.field_roomname);
+    if (this.fsk) {
+      localContentValues.put("downloadUrl", this.field_downloadUrl);
     }
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
+    if (this.fkV) {
+      localContentValues.put("size", Long.valueOf(this.field_size));
     }
-    if (this.eHb) {
-      localContentValues.put("path", this.field_path);
+    if (this.fxt) {
+      localContentValues.put("md5", this.field_md5);
     }
-    if (this.fgu) {
-      localContentValues.put("createtime", Long.valueOf(this.field_createtime));
+    if (this.flP) {
+      localContentValues.put("packageName", this.field_packageName);
     }
-    if (this.fgv) {
-      localContentValues.put("updatetime", Long.valueOf(this.field_updatetime));
+    if (this.fIP) {
+      localContentValues.put("expireTime", Long.valueOf(this.field_expireTime));
     }
-    if (this.field_custominfo == null) {
-      this.field_custominfo = "";
+    if (this.fJv) {
+      localContentValues.put("randomTime", Long.valueOf(this.field_randomTime));
     }
-    if (this.fgw) {
-      localContentValues.put("custominfo", this.field_custominfo);
+    if (this.fJw) {
+      localContentValues.put("isFirst", Boolean.valueOf(this.field_isFirst));
     }
-    if (this.field_title == null) {
-      this.field_title = "";
+    if (this.fJx) {
+      localContentValues.put("nextCheckTime", Long.valueOf(this.field_nextCheckTime));
     }
-    if (this.eJz) {
-      localContentValues.put("title", this.field_title);
+    if (this.fJy) {
+      localContentValues.put("isRunning", Boolean.valueOf(this.field_isRunning));
     }
-    if (this.fgi) {
-      localContentValues.put("creator", this.field_creator);
+    if (this.fJz) {
+      localContentValues.put("noWifi", Boolean.valueOf(this.field_noWifi));
     }
-    if (this.fgx) {
-      localContentValues.put("related_msgids", this.field_related_msgids);
+    if (this.fJA) {
+      localContentValues.put("noSdcard", Boolean.valueOf(this.field_noSdcard));
     }
-    if (this.fgy) {
-      localContentValues.put("manager", this.field_manager);
+    if (this.fJB) {
+      localContentValues.put("noEnoughSpace", Boolean.valueOf(this.field_noEnoughSpace));
     }
-    if (this.fgz) {
-      localContentValues.put("nreply", Integer.valueOf(this.field_nreply));
+    if (this.fJC) {
+      localContentValues.put("lowBattery", Boolean.valueOf(this.field_lowBattery));
     }
-    if (this.eTS) {
-      localContentValues.put("state", Integer.valueOf(this.field_state));
+    if (this.fJD) {
+      localContentValues.put("continueDelay", Boolean.valueOf(this.field_continueDelay));
     }
-    if (this.fgA) {
-      localContentValues.put("netSceneState", Integer.valueOf(this.field_netSceneState));
+    if (this.fJE) {
+      localContentValues.put("SecondaryUrl", this.field_SecondaryUrl);
     }
-    if (this.fgB) {
-      localContentValues.put("shareKey", this.field_shareKey);
+    if (this.fJF) {
+      localContentValues.put("downloadInWidget", Boolean.valueOf(this.field_downloadInWidget));
     }
-    if (this.fgC) {
-      localContentValues.put("shareName", this.field_shareName);
+    if (this.fCk) {
+      localContentValues.put("sectionMd5Byte", this.field_sectionMd5Byte);
+    }
+    if (this.fJG) {
+      localContentValues.put("forceUpdateFlag", Integer.valueOf(this.field_forceUpdateFlag));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -197,7 +303,7 @@ public abstract class df
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.c.df
  * JD-Core Version:    0.7.0.1
  */

@@ -20,7 +20,7 @@ public final class ContentsSchemeResolver
   extends SingletonSchemeResolver
 {
   public static final a CREATOR;
-  private final ContentProviderFileSystem LFS;
+  private final ContentProviderFileSystem Rbj;
   
   static
   {
@@ -32,34 +32,34 @@ public final class ContentsSchemeResolver
   private ContentsSchemeResolver()
   {
     AppMethodBeat.i(13059);
-    this.LFS = new ContentProviderFileSystem(e.fSU().mContext);
+    this.Rbj = new ContentProviderFileSystem(g.hRR().mContext);
     AppMethodBeat.o(13059);
   }
   
-  public static SchemeResolver fSN()
+  public static SchemeResolver hdT()
   {
-    return a.LFU.LHE;
+    return a.Rbl.Rds;
   }
   
-  public final Pair<FileSystem.b, String> a(g paramg, Uri paramUri)
+  public final Pair<FileSystem.b, String> a(k paramk, Uri paramUri)
   {
-    AppMethodBeat.i(193360);
-    paramg = new StringBuilder();
+    AppMethodBeat.i(187633);
+    paramk = new StringBuilder();
     String str = paramUri.getScheme();
     if (str != null) {
-      paramg.append(str).append(':');
+      paramk.append(str).append(':');
     }
     str = paramUri.getAuthority();
     if (str != null) {
-      paramg.append("//").append(str);
+      paramk.append("//").append(str);
     }
     paramUri = paramUri.getPath();
     if (paramUri != null) {
-      paramg.append(paramUri);
+      paramk.append(paramUri);
     }
-    paramg = Pair.create(this.LFS, paramg.toString());
-    AppMethodBeat.o(193360);
-    return paramg;
+    paramk = Pair.create(this.Rbj, paramk.toString());
+    AppMethodBeat.o(187633);
+    return paramk;
   }
   
   static final class ContentProviderFileSystem
@@ -67,28 +67,16 @@ public final class ContentsSchemeResolver
     implements FileSystem
   {
     public static final Parcelable.Creator<ContentProviderFileSystem> CREATOR = null;
-    private final ContentResolver LFT;
+    private final ContentResolver Rbk;
     
     ContentProviderFileSystem(Context paramContext)
     {
       AppMethodBeat.i(13048);
-      this.LFT = paramContext.getContentResolver();
+      this.Rbk = paramContext.getContentResolver();
       AppMethodBeat.o(13048);
     }
     
-    public final boolean Dc(String paramString)
-    {
-      AppMethodBeat.i(13056);
-      if (this.LFT.delete(Uri.parse(paramString), null, null) > 0)
-      {
-        AppMethodBeat.o(13056);
-        return true;
-      }
-      AppMethodBeat.o(13056);
-      return false;
-    }
-    
-    public final ByteChannel aZE(String paramString)
+    public final ByteChannel boJ(String paramString)
     {
       AppMethodBeat.i(13052);
       paramString = new FileNotFoundException("Not supported.");
@@ -96,7 +84,7 @@ public final class ContentsSchemeResolver
       throw paramString;
     }
     
-    public final FileSystem.a aZF(String paramString)
+    public final FileSystem.a boK(String paramString)
     {
       AppMethodBeat.i(13049);
       paramString = new FileSystem.a();
@@ -104,10 +92,10 @@ public final class ContentsSchemeResolver
       return paramString;
     }
     
-    public final boolean aZG(String paramString)
+    public final boolean boL(String paramString)
     {
       AppMethodBeat.i(13054);
-      if (aZH(paramString) != null)
+      if (boM(paramString) != null)
       {
         AppMethodBeat.o(13054);
         return true;
@@ -116,23 +104,23 @@ public final class ContentsSchemeResolver
       return false;
     }
     
-    public final c aZH(String paramString)
+    public final e boM(String paramString)
     {
       Object localObject2 = null;
-      AppMethodBeat.i(193359);
+      AppMethodBeat.i(187632);
       try
       {
-        Object localObject1 = this.LFT.query(Uri.parse(paramString), null, null, null, null);
+        Object localObject1 = this.Rbk.query(Uri.parse(paramString), null, null, null, null);
         if (localObject1 == null)
         {
-          w.closeQuietly((Closeable)localObject1);
-          AppMethodBeat.o(193359);
+          aa.closeQuietly((Closeable)localObject1);
+          AppMethodBeat.o(187632);
           return null;
         }
         int i;
         int j;
         boolean bool;
-        w.closeQuietly((Closeable)localObject1);
+        aa.closeQuietly((Closeable)localObject1);
       }
       finally
       {
@@ -143,13 +131,13 @@ public final class ContentsSchemeResolver
           bool = ((Cursor)localObject1).moveToFirst();
           if (!bool)
           {
-            w.closeQuietly((Closeable)localObject1);
-            AppMethodBeat.o(193359);
+            aa.closeQuietly((Closeable)localObject1);
+            AppMethodBeat.o(187632);
             return null;
           }
-          paramString = new c(this, paramString, ((Cursor)localObject1).getString(i), ((Cursor)localObject1).getLong(j), 0L, 0L, false);
-          w.closeQuietly((Closeable)localObject1);
-          AppMethodBeat.o(193359);
+          paramString = new e(this, paramString, ((Cursor)localObject1).getString(i), ((Cursor)localObject1).getLong(j), 0L, 0L, false);
+          aa.closeQuietly((Closeable)localObject1);
+          AppMethodBeat.o(187632);
           return paramString;
         }
         finally
@@ -160,52 +148,23 @@ public final class ContentsSchemeResolver
         localObject1 = localObject2;
       }
       label134:
-      AppMethodBeat.o(193359);
+      AppMethodBeat.o(187632);
       throw paramString;
     }
     
-    public final boolean aZI(String paramString)
+    public final boolean boN(String paramString)
     {
       return false;
     }
     
-    public final FileSystem.b cd(Map<String, String> paramMap)
+    public final FileSystem.b cj(Map<String, String> paramMap)
     {
       return this;
     }
     
-    public final boolean cp(String paramString, long paramLong)
+    public final boolean ck(String paramString, long paramLong)
     {
       return false;
-    }
-    
-    public final OutputStream db(String paramString, boolean paramBoolean)
-    {
-      AppMethodBeat.i(13051);
-      ContentResolver localContentResolver = this.LFT;
-      Uri localUri = Uri.parse(paramString);
-      if (paramBoolean) {}
-      for (paramString = "wa";; paramString = "w")
-      {
-        paramString = localContentResolver.openOutputStream(localUri, paramString);
-        AppMethodBeat.o(13051);
-        return paramString;
-      }
-    }
-    
-    public final Iterable<c> dc(String paramString, boolean paramBoolean)
-    {
-      return null;
-    }
-    
-    public final boolean dd(String paramString, boolean paramBoolean)
-    {
-      return false;
-    }
-    
-    public final String de(String paramString, boolean paramBoolean)
-    {
-      return null;
     }
     
     public final int describeContents()
@@ -213,20 +172,73 @@ public final class ContentsSchemeResolver
       return 0;
     }
     
-    public final FileSystem fSK()
+    public final OutputStream dw(String paramString, boolean paramBoolean)
+    {
+      AppMethodBeat.i(13051);
+      ContentResolver localContentResolver = this.Rbk;
+      Uri localUri = Uri.parse(paramString);
+      if (paramBoolean) {}
+      for (paramString = "wa";; paramString = "w")
+      {
+        paramString = localContentResolver.openOutputStream(localUri, paramString);
+        if (paramString != null) {
+          break;
+        }
+        paramString = new FileNotFoundException("ContentResolver returns null");
+        AppMethodBeat.o(13051);
+        throw paramString;
+      }
+      AppMethodBeat.o(13051);
+      return paramString;
+    }
+    
+    public final Iterable<e> dx(String paramString, boolean paramBoolean)
+    {
+      return null;
+    }
+    
+    public final boolean dy(String paramString, boolean paramBoolean)
+    {
+      return false;
+    }
+    
+    public final String dz(String paramString, boolean paramBoolean)
+    {
+      return null;
+    }
+    
+    public final boolean gC(String paramString)
+    {
+      AppMethodBeat.i(13056);
+      if (this.Rbk.delete(Uri.parse(paramString), null, null) > 0)
+      {
+        AppMethodBeat.o(13056);
+        return true;
+      }
+      AppMethodBeat.o(13056);
+      return false;
+    }
+    
+    public final FileSystem hdQ()
     {
       return this;
     }
     
-    public final int fSL()
+    public final int hdR()
     {
       return 1;
     }
     
-    public final ParcelFileDescriptor mA(String paramString1, String paramString2)
+    public final ParcelFileDescriptor nr(String paramString1, String paramString2)
     {
       AppMethodBeat.i(13053);
-      paramString1 = this.LFT.openFileDescriptor(Uri.parse(paramString1), paramString2);
+      paramString1 = this.Rbk.openFileDescriptor(Uri.parse(paramString1), paramString2);
+      if (paramString1 == null)
+      {
+        paramString1 = new FileNotFoundException("ContentResolver returns null");
+        AppMethodBeat.o(13053);
+        throw paramString1;
+      }
       AppMethodBeat.o(13053);
       return paramString1;
     }
@@ -234,7 +246,13 @@ public final class ContentsSchemeResolver
     public final InputStream openRead(String paramString)
     {
       AppMethodBeat.i(13050);
-      paramString = this.LFT.openInputStream(Uri.parse(paramString));
+      paramString = this.Rbk.openInputStream(Uri.parse(paramString));
+      if (paramString == null)
+      {
+        paramString = new FileNotFoundException("ContentResolver returns null");
+        AppMethodBeat.o(13050);
+        throw paramString;
+      }
       AppMethodBeat.o(13050);
       return paramString;
     }
@@ -251,12 +269,12 @@ public final class ContentsSchemeResolver
   static final class a
     implements Parcelable.Creator<ContentsSchemeResolver>
   {
-    static final i LFU;
+    static final m Rbl;
     
     static
     {
       AppMethodBeat.i(13058);
-      LFU = new i(new ContentsSchemeResolver((byte)0));
+      Rbl = new m(new ContentsSchemeResolver((byte)0));
       AppMethodBeat.o(13058);
     }
   }

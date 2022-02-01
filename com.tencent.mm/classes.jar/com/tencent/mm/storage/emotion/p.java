@@ -1,65 +1,65 @@
 package com.tencent.mm.storage.emotion;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.bp;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.bq;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class p
-  extends bp
+  extends bq
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(105121);
-    c.a locala = new c.a();
-    locala.IBL = new Field[7];
-    locala.columns = new String[8];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[7];
+    localMAutoDBInfo.columns = new String[8];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "prodcutID";
-    locala.IBN.put("prodcutID", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "prodcutID";
+    localMAutoDBInfo.colsMap.put("prodcutID", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" prodcutID TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "prodcutID";
-    locala.columns[1] = "totalCount";
-    locala.IBN.put("totalCount", "INTEGER");
+    localMAutoDBInfo.primaryKey = "prodcutID";
+    localMAutoDBInfo.columns[1] = "totalCount";
+    localMAutoDBInfo.colsMap.put("totalCount", "INTEGER");
     localStringBuilder.append(" totalCount INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[2] = "continuCount";
-    locala.IBN.put("continuCount", "INTEGER");
+    localMAutoDBInfo.columns[2] = "continuCount";
+    localMAutoDBInfo.colsMap.put("continuCount", "INTEGER");
     localStringBuilder.append(" continuCount INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[3] = "flag";
-    locala.IBN.put("flag", "INTEGER");
+    localMAutoDBInfo.columns[3] = "flag";
+    localMAutoDBInfo.colsMap.put("flag", "INTEGER");
     localStringBuilder.append(" flag INTEGER");
     localStringBuilder.append(", ");
-    locala.columns[4] = "modifyTime";
-    locala.IBN.put("modifyTime", "LONG");
+    localMAutoDBInfo.columns[4] = "modifyTime";
+    localMAutoDBInfo.colsMap.put("modifyTime", "LONG");
     localStringBuilder.append(" modifyTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[5] = "showTipsTime";
-    locala.IBN.put("showTipsTime", "LONG");
+    localMAutoDBInfo.columns[5] = "showTipsTime";
+    localMAutoDBInfo.colsMap.put("showTipsTime", "LONG");
     localStringBuilder.append(" showTipsTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[6] = "setFlagTime";
-    locala.IBN.put("setFlagTime", "LONG");
+    localMAutoDBInfo.columns[6] = "setFlagTime";
+    localMAutoDBInfo.colsMap.put("setFlagTime", "LONG");
     localStringBuilder.append(" setFlagTime LONG");
-    locala.columns[7] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[7] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(105121);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.p
  * JD-Core Version:    0.7.0.1
  */

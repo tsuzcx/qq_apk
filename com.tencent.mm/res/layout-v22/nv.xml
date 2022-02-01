@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/le" android:paddingTop="@dimen/ce" android:paddingBottom="@dimen/ce" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingVertical="@dimen/ce"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.card.ui.v2.CardCdnImageView android:id="@id/b3x" android:background="@color/ac_" android:layout_width="48.0dip" android:layout_height="48.0dip" android:layout_marginLeft="@dimen/cb" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:id="@id/b3y" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/c5" android:text="{invo}" android:layout_weight="1.0" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:id="@id/b3w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{invo}" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_width="12.0dip" android:layout_height="24.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="16.0dip" android:src="@raw/icons_outlined_arrow" app:iconColor="@color/FG_2" />
+</LinearLayout>

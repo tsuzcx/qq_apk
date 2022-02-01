@@ -1,56 +1,55 @@
 package com.tencent.mm.plugin.subapp.d;
 
-import android.os.HandlerThread;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.compatible.util.f.a;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.modelvoice.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.aw;
-import com.tencent.mm.sdk.platformtools.aw.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import com.tencent.mm.sdk.platformtools.MTimerHandler.CallBack;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Queue;
 
 public final class j
-  implements f
+  implements i
 {
-  private static int djw = 0;
-  Queue<String> djp;
-  Queue<String> djq;
-  Map<String, f.a> djr;
-  private boolean djs;
-  private boolean djt;
-  int dju;
-  private long djv;
-  f.a djy;
-  private aw djz;
+  private static int jrr = 0;
+  Queue<String> dAA;
+  Queue<String> dAB;
+  Map<String, f.a> dAC;
+  private boolean dAD;
+  private boolean dAE;
+  int dAF;
+  private long dAG;
+  f.a dAI;
+  private MTimerHandler dAJ;
   private boolean running;
   
   public j()
   {
     AppMethodBeat.i(28989);
-    this.djp = new LinkedList();
-    this.djq = new LinkedList();
-    this.djr = new HashMap();
-    this.djs = false;
-    this.djt = false;
+    this.dAA = new LinkedList();
+    this.dAB = new LinkedList();
+    this.dAC = new HashMap();
+    this.dAD = false;
+    this.dAE = false;
     this.running = false;
-    this.dju = 0;
-    this.djv = 0L;
-    this.djy = new f.a();
-    this.djz = new aw(bc.ajU().IxZ.getLooper(), new aw.a()
+    this.dAF = 0;
+    this.dAG = 0L;
+    this.dAI = new f.a();
+    this.dAJ = new MTimerHandler(bg.aAk().getLooper(), new MTimerHandler.CallBack()
     {
       public final boolean onTimerExpired()
       {
         AppMethodBeat.i(28988);
-        ae.d("MicroMsg.VoiceRemindService", "onTimerExpired");
+        Log.d("MicroMsg.VoiceRemindService", "onTimerExpired");
         try
         {
           j.h(j.this);
@@ -61,32 +60,32 @@ public final class j
         {
           for (;;)
           {
-            ae.printErrStackTrace("MicroMsg.VoiceRemindService", localException, "", new Object[0]);
+            Log.printErrStackTrace("MicroMsg.VoiceRemindService", localException, "", new Object[0]);
           }
         }
       }
     }, false);
-    bc.ajj().a(329, this);
+    bg.azz().a(329, this);
     AppMethodBeat.o(28989);
   }
   
-  private void Qd()
+  private void aax()
   {
     AppMethodBeat.i(28991);
-    this.djr.clear();
-    this.djp.clear();
-    this.djq.clear();
-    this.djt = false;
-    this.djs = false;
+    this.dAC.clear();
+    this.dAA.clear();
+    this.dAB.clear();
+    this.dAE = false;
+    this.dAD = false;
     this.running = false;
-    ae.d("MicroMsg.VoiceRemindService", "Finish service use time(ms):" + this.djy.abs());
+    Log.d("MicroMsg.VoiceRemindService", "Finish service use time(ms):" + this.dAI.apr());
     AppMethodBeat.o(28991);
   }
   
-  public final void onSceneEnd(final int paramInt1, final int paramInt2, String paramString, final n paramn)
+  public final void onSceneEnd(final int paramInt1, final int paramInt2, String paramString, final q paramq)
   {
     AppMethodBeat.i(28990);
-    bc.ajU().aw(new Runnable()
+    bg.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
@@ -94,29 +93,29 @@ public final class j
         j.access$008();
         String str;
         int i;
-        if (paramn.getType() == 128)
+        if (paramq.getType() == 128)
         {
           j.a(j.this);
-          str = ((e)paramn).fileName;
-          i = ((e)paramn).retCode;
+          str = ((e)paramq).fileName;
+          i = ((e)paramq).retCode;
           long l2 = 0L;
           long l1 = l2;
           if (str != null)
           {
             l1 = l2;
-            if (j.this.djr.get(str) != null)
+            if (j.this.dAC.get(str) != null)
             {
-              l1 = ((f.a)j.this.djr.get(str)).abs();
-              j.this.djr.remove(str);
+              l1 = ((f.a)j.this.dAC.get(str)).apr();
+              j.this.dAC.remove(str);
             }
           }
-          ae.d("MicroMsg.VoiceRemindService", "onSceneEnd SceneType:" + paramn.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " file:" + str + " time:" + l1);
+          Log.d("MicroMsg.VoiceRemindService", "onSceneEnd SceneType:" + paramq.getType() + " errtype:" + paramInt1 + " errCode:" + paramInt2 + " retCode:" + i + " file:" + str + " time:" + l1);
           if ((paramInt1 != 3) || (i == 0)) {
             break label416;
           }
           j.c(j.this);
           label220:
-          ae.d("MicroMsg.VoiceRemindService", "onSceneEnd  inCnt:" + j.djw + " stop:" + j.d(j.this) + " running:" + j.e(j.this) + " recving:" + j.f(j.this) + " sending:" + j.g(j.this));
+          Log.d("MicroMsg.VoiceRemindService", "onSceneEnd  inCnt:" + j.jrr + " stop:" + j.d(j.this) + " running:" + j.e(j.this) + " recving:" + j.f(j.this) + " sending:" + j.g(j.this));
           if (j.d(j.this) <= 0) {
             break label435;
           }
@@ -124,18 +123,18 @@ public final class j
         }
         for (;;)
         {
-          j.bKJ();
+          j.chC();
           AppMethodBeat.o(28986);
           return;
-          if (paramn.getType() == 329)
+          if (paramq.getType() == 329)
           {
             j.b(j.this);
-            str = ((b)paramn).fileName;
-            i = ((b)paramn).retCode;
+            str = ((b)paramq).fileName;
+            i = ((b)paramq).retCode;
             break;
           }
-          ae.e("MicroMsg.VoiceRemindService", "onSceneEnd Error SceneType:" + paramn.getType());
-          j.bKJ();
+          Log.e("MicroMsg.VoiceRemindService", "onSceneEnd Error SceneType:" + paramq.getType());
+          j.chC();
           AppMethodBeat.o(28986);
           return;
           label416:
@@ -157,13 +156,13 @@ public final class j
   public final void run()
   {
     AppMethodBeat.i(28992);
-    bc.ajU().aw(new Runnable()
+    bg.aAk().postToWorker(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(28987);
         long l = System.currentTimeMillis() - j.j(j.this);
-        ae.d("MicroMsg.VoiceRemindService", "Try Run service runningFlag:" + j.e(j.this) + " timeWait:" + l + " sending:" + j.g(j.this) + " recving:" + j.f(j.this));
+        Log.d("MicroMsg.VoiceRemindService", "Try Run service runningFlag:" + j.e(j.this) + " timeWait:" + l + " sending:" + j.g(j.this) + " recving:" + j.f(j.this));
         if (j.e(j.this))
         {
           if (l < 60000L)
@@ -171,14 +170,14 @@ public final class j
             AppMethodBeat.o(28987);
             return;
           }
-          ae.e("MicroMsg.VoiceRemindService", "ERR: Try Run service runningFlag:" + j.e(j.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + j.g(j.this) + " recving:" + j.f(j.this));
+          Log.e("MicroMsg.VoiceRemindService", "ERR: Try Run service runningFlag:" + j.e(j.this) + " timeWait:" + l + ">=MAX_TIME_WAIT sending:" + j.g(j.this) + " recving:" + j.f(j.this));
         }
         j.k(j.this);
         j.b(j.this);
         j.a(j.this, 3);
         j.a(j.this);
-        j.this.djy.gfF = SystemClock.elapsedRealtime();
-        j.l(j.this).ay(10L, 10L);
+        j.this.dAI.gLm = SystemClock.elapsedRealtime();
+        j.l(j.this).startTimer(10L);
         AppMethodBeat.o(28987);
       }
     });
@@ -187,7 +186,7 @@ public final class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.d.j
  * JD-Core Version:    0.7.0.1
  */

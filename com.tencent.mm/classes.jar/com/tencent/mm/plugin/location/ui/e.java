@@ -7,76 +7,76 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.k.d;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class e
   implements c
 {
-  public boolean dsB;
+  public boolean dJM;
   private boolean isVisible;
-  public String jGd;
-  private double vlC;
-  private double vlD;
-  private String vly;
-  private String vnF;
-  private boolean vnY;
-  private View vnZ;
-  private d voa;
-  private TextView vob;
-  private TextView voc;
-  public ImageButton vod;
+  public String kHV;
+  private String yFq;
+  private double yFu;
+  private double yFv;
+  private boolean yHP;
+  private View yHQ;
+  private d yHR;
+  private TextView yHS;
+  private TextView yHT;
+  public ImageButton yHU;
+  private String yHw;
   
   public e(d paramd, Context paramContext)
   {
     AppMethodBeat.i(55842);
-    this.dsB = false;
-    this.vnY = true;
-    this.vlC = 1000000.0D;
-    this.vlD = 1000000.0D;
+    this.dJM = false;
+    this.yHP = true;
+    this.yFu = 1000000.0D;
+    this.yFv = 1000000.0D;
     this.isVisible = true;
-    this.vnF = "";
-    paramContext = ((Activity)paramContext).findViewById(2131301527);
-    this.vob = ((TextView)paramContext.findViewById(2131301525));
-    this.voc = ((TextView)paramContext.findViewById(2131301526));
-    this.vod = ((ImageButton)paramContext.findViewById(2131301534));
-    this.voa = paramd;
-    this.vnZ = paramContext;
+    this.yHw = "";
+    paramContext = ((Activity)paramContext).findViewById(2131303733);
+    this.yHS = ((TextView)paramContext.findViewById(2131303731));
+    this.yHT = ((TextView)paramContext.findViewById(2131303732));
+    this.yHU = ((ImageButton)paramContext.findViewById(2131303741));
+    this.yHR = paramd;
+    this.yHQ = paramContext;
     AppMethodBeat.o(55842);
   }
   
   public final String getPreText()
   {
-    return this.vnF;
+    return this.yHw;
   }
   
   public final void setText(String paramString)
   {
     AppMethodBeat.i(55843);
-    this.vly = paramString;
-    paramString = this.vly;
-    ae.d("NewItemOverlay", "popView " + this.vnZ.getWidth() + " " + this.vnZ.getHeight());
+    this.yFq = paramString;
+    paramString = this.yFq;
+    Log.d("NewItemOverlay", "popView " + this.yHQ.getWidth() + " " + this.yHQ.getHeight());
     if ((paramString != null) && (!paramString.equals(""))) {
-      this.voc.setText(paramString);
+      this.yHT.setText(paramString);
     }
-    if ((this.jGd != null) && (!this.jGd.equals(""))) {
-      this.vob.setText(this.jGd);
+    if ((this.kHV != null) && (!this.kHV.equals(""))) {
+      this.yHS.setText(this.kHV);
     }
     for (;;)
     {
-      if (this.vnY)
+      if (this.yHP)
       {
-        this.vnZ.setVisibility(0);
-        this.vnZ.invalidate();
+        this.yHQ.setVisibility(0);
+        this.yHQ.invalidate();
       }
       AppMethodBeat.o(55843);
       return;
-      this.vob.setText(2131760712);
+      this.yHS.setText(2131762450);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.e
  * JD-Core Version:    0.7.0.1
  */

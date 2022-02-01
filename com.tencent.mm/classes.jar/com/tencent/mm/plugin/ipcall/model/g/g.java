@@ -1,31 +1,31 @@
 package com.tencent.mm.plugin.ipcall.model.g;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.plugin.ipcall.model.b.a;
 import com.tencent.mm.plugin.ipcall.model.b.c;
 import com.tencent.mm.plugin.ipcall.model.e.l;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class g
   extends a
 {
-  public final void Dg() {}
+  public final void MC() {}
   
   public final void b(c paramc)
   {
     AppMethodBeat.i(25524);
     if (paramc != null)
     {
-      l locall = new l(paramc.roomId, paramc.uXh, paramc.uXK);
-      bc.ajj().a(locall, 0);
-      ae.i("MicroMsg.IPCallReportService", "start report, roomid: %d, callseq: %d, isAccept: %b", new Object[] { Integer.valueOf(paramc.roomId), Long.valueOf(paramc.uXh), Boolean.valueOf(paramc.uXK) });
+      l locall = new l(paramc.roomId, paramc.ypI, paramc.yqk);
+      bg.azz().a(locall, 0);
+      Log.i("MicroMsg.IPCallReportService", "start report, roomid: %d, callseq: %d, isAccept: %b", new Object[] { Integer.valueOf(paramc.roomId), Long.valueOf(paramc.ypI), Boolean.valueOf(paramc.yqk) });
     }
     AppMethodBeat.o(25524);
   }
   
-  public final int[] dgL()
+  public final int[] eaF()
   {
     return new int[] { 227 };
   }

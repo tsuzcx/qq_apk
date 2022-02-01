@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.matrix.d;
-import com.tencent.mm.sdk.platformtools.z;
+import com.tencent.mm.sdk.platformtools.IntentUtil;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,20 +19,20 @@ public class MatrixReportBroadcast
     for (;;)
     {
       return;
-      Object localObject = z.getStringExtra(paramIntent, "tag");
-      String str1 = z.getStringExtra(paramIntent, "key");
-      int i = z.getIntExtra(paramIntent, "type", 0);
-      String str2 = z.getStringExtra(paramIntent, "value");
-      paramContext = z.getStringExtra(paramIntent, "filePath");
+      Object localObject = IntentUtil.getStringExtra(paramIntent, "tag");
+      String str1 = IntentUtil.getStringExtra(paramIntent, "key");
+      int i = IntentUtil.getIntExtra(paramIntent, "type", 0);
+      String str2 = IntentUtil.getStringExtra(paramIntent, "value");
+      paramContext = IntentUtil.getStringExtra(paramIntent, "filePath");
       paramIntent = new c();
       paramIntent.tag = ((String)localObject);
       paramIntent.key = str1;
       paramIntent.type = i;
       try
       {
-        paramIntent.cFG = new JSONObject(str2);
+        paramIntent.cWe = new JSONObject(str2);
         label93:
-        localObject = d.cBK.cBL;
+        localObject = d.cPI.cPJ;
         if (localObject == null) {
           continue;
         }
@@ -48,7 +48,7 @@ public class MatrixReportBroadcast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.report.MatrixReportBroadcast
  * JD-Core Version:    0.7.0.1
  */

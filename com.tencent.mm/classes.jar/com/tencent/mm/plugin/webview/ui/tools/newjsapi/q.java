@@ -1,67 +1,65 @@
 package com.tencent.mm.plugin.webview.ui.tools.newjsapi;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.webview.c.c.a;
-import com.tencent.mm.plugin.webview.c.d;
-import com.tencent.mm.plugin.webview.c.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import java.util.HashMap;
+import com.tencent.mm.plugin.webview.d.c.a;
+import com.tencent.mm.plugin.webview.d.h;
+import com.tencent.mm.plugin.webview.d.n;
+import com.tencent.mm.plugin.webview.h.f.a;
 import java.util.Map;
-import org.json.JSONObject;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiSaveWaid;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/webview/ui/tools/newjsapi/JsApiRequest;", "Lcom/tencent/mm/plugin/webview/jsapi/newjsapi/BaseJsApi;", "()V", "TAG", "", "controlByte", "", "getControlByte", "()I", "funcName", "getFuncName", "()Ljava/lang/String;", "handleMsg", "", "env", "Lcom/tencent/mm/plugin/webview/jsapi/JsApiEnv;", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "plugin-webview_release"})
 public final class q
   extends a
 {
-  private static final int ECX = 363;
-  public static final q EHV;
-  private static final String TAG = "MicroMsg.JsApiSaveWaid";
-  private static final String dLB = "saveWaid";
+  private static final int CDJ = 331;
+  public static final q JxD;
+  private static final String TAG = "MicroMsg.JsApiRequest";
+  private static final String edq = "request";
   
   static
   {
-    AppMethodBeat.i(175689);
-    EHV = new q();
-    TAG = "MicroMsg.JsApiSaveWaid";
-    ECX = 363;
-    dLB = "saveWaid";
-    AppMethodBeat.o(175689);
+    AppMethodBeat.i(175687);
+    JxD = new q();
+    TAG = "MicroMsg.JsApiRequest";
+    CDJ = 331;
+    edq = "request";
+    AppMethodBeat.o(175687);
   }
   
-  public final boolean a(d paramd, com.tencent.mm.plugin.webview.c.l paraml)
+  public final boolean a(com.tencent.mm.plugin.webview.d.f paramf, n paramn)
   {
-    AppMethodBeat.i(199443);
-    p.h(paramd, "env");
-    p.h(paraml, "msg");
-    HashMap localHashMap = new HashMap();
-    try
+    AppMethodBeat.i(210652);
+    p.h(paramf, "env");
+    p.h(paramn, "msg");
+    boolean bool = com.tencent.mm.plugin.webview.h.f.a(paramn, (f.a)new a(paramf));
+    AppMethodBeat.o(210652);
+    return bool;
+  }
+  
+  public final int ePA()
+  {
+    return CDJ;
+  }
+  
+  public final String ePz()
+  {
+    return edq;
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "msg", "Lcom/tencent/mm/plugin/webview/jsapi/MsgWrapper;", "kotlin.jvm.PlatformType", "ret", "", "retValue", "", "", "", "callback"})
+  static final class a
+    implements f.a
+  {
+    a(com.tencent.mm.plugin.webview.d.f paramf) {}
+    
+    public final void a(n paramn, String paramString, Map<String, Object> paramMap)
     {
-      ae.i(TAG, "h5 JsApiSaveWaid");
-      p.g(paraml.Efz.toString(), "msg.rawParams.toString()");
-      localHashMap.put("result", "0");
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":ok", (Map)localHashMap);
-      AppMethodBeat.o(199443);
-      return true;
+      AppMethodBeat.i(210651);
+      this.CDE.IQZ.h(paramn.ISe, paramString, paramMap);
+      AppMethodBeat.o(210651);
     }
-    catch (Exception localException)
-    {
-      ae.e(TAG, "h5 JsApiSaveWaid exp=".concat(String.valueOf(localException)));
-      localHashMap.put("result", "0");
-      paramd.DQe.i(paraml.Efy, paraml.lcx + ":fail", (Map)localHashMap);
-      AppMethodBeat.o(199443);
-    }
-    return false;
-  }
-  
-  public final int eSw()
-  {
-    return ECX;
-  }
-  
-  public final String eSx()
-  {
-    return dLB;
   }
 }
 

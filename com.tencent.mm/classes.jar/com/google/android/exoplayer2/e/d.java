@@ -22,73 +22,73 @@ import java.util.regex.Pattern;
 @TargetApi(16)
 public final class d
 {
-  private static final a btT;
-  private static final Pattern btU;
-  private static final HashMap<d.a, List<a>> btV;
-  private static final SparseIntArray btW;
-  private static final SparseIntArray btX;
-  private static final Map<String, Integer> btY;
-  private static int btZ;
+  private static final a btO;
+  private static final Pattern btP;
+  private static final HashMap<d.a, List<a>> btQ;
+  private static final SparseIntArray btR;
+  private static final SparseIntArray btS;
+  private static final Map<String, Integer> btT;
+  private static int btU;
   
   static
   {
     AppMethodBeat.i(92378);
-    btT = new a("OMX.google.raw.decoder", null, null, false, false);
-    btU = Pattern.compile("^\\D?(\\d+)$");
-    btV = new HashMap();
-    btZ = -1;
+    btO = new a("OMX.google.raw.decoder", null, null, false, false);
+    btP = Pattern.compile("^\\D?(\\d+)$");
+    btQ = new HashMap();
+    btU = -1;
     Object localObject = new SparseIntArray();
-    btW = (SparseIntArray)localObject;
+    btR = (SparseIntArray)localObject;
     ((SparseIntArray)localObject).put(66, 1);
-    btW.put(77, 2);
-    btW.put(88, 4);
-    btW.put(100, 8);
+    btR.put(77, 2);
+    btR.put(88, 4);
+    btR.put(100, 8);
     localObject = new SparseIntArray();
-    btX = (SparseIntArray)localObject;
+    btS = (SparseIntArray)localObject;
     ((SparseIntArray)localObject).put(10, 1);
-    btX.put(11, 4);
-    btX.put(12, 8);
-    btX.put(13, 16);
-    btX.put(20, 32);
-    btX.put(21, 64);
-    btX.put(22, 128);
-    btX.put(30, 256);
-    btX.put(31, 512);
-    btX.put(32, 1024);
-    btX.put(40, 2048);
-    btX.put(41, 4096);
-    btX.put(42, 8192);
-    btX.put(50, 16384);
-    btX.put(51, 32768);
-    btX.put(52, 65536);
+    btS.put(11, 4);
+    btS.put(12, 8);
+    btS.put(13, 16);
+    btS.put(20, 32);
+    btS.put(21, 64);
+    btS.put(22, 128);
+    btS.put(30, 256);
+    btS.put(31, 512);
+    btS.put(32, 1024);
+    btS.put(40, 2048);
+    btS.put(41, 4096);
+    btS.put(42, 8192);
+    btS.put(50, 16384);
+    btS.put(51, 32768);
+    btS.put(52, 65536);
     localObject = new HashMap();
-    btY = (Map)localObject;
+    btT = (Map)localObject;
     ((Map)localObject).put("L30", Integer.valueOf(1));
-    btY.put("L60", Integer.valueOf(4));
-    btY.put("L63", Integer.valueOf(16));
-    btY.put("L90", Integer.valueOf(64));
-    btY.put("L93", Integer.valueOf(256));
-    btY.put("L120", Integer.valueOf(1024));
-    btY.put("L123", Integer.valueOf(4096));
-    btY.put("L150", Integer.valueOf(16384));
-    btY.put("L153", Integer.valueOf(65536));
-    btY.put("L156", Integer.valueOf(262144));
-    btY.put("L180", Integer.valueOf(1048576));
-    btY.put("L183", Integer.valueOf(4194304));
-    btY.put("L186", Integer.valueOf(16777216));
-    btY.put("H30", Integer.valueOf(2));
-    btY.put("H60", Integer.valueOf(8));
-    btY.put("H63", Integer.valueOf(32));
-    btY.put("H90", Integer.valueOf(128));
-    btY.put("H93", Integer.valueOf(512));
-    btY.put("H120", Integer.valueOf(2048));
-    btY.put("H123", Integer.valueOf(8192));
-    btY.put("H150", Integer.valueOf(32768));
-    btY.put("H153", Integer.valueOf(131072));
-    btY.put("H156", Integer.valueOf(524288));
-    btY.put("H180", Integer.valueOf(2097152));
-    btY.put("H183", Integer.valueOf(8388608));
-    btY.put("H186", Integer.valueOf(33554432));
+    btT.put("L60", Integer.valueOf(4));
+    btT.put("L63", Integer.valueOf(16));
+    btT.put("L90", Integer.valueOf(64));
+    btT.put("L93", Integer.valueOf(256));
+    btT.put("L120", Integer.valueOf(1024));
+    btT.put("L123", Integer.valueOf(4096));
+    btT.put("L150", Integer.valueOf(16384));
+    btT.put("L153", Integer.valueOf(65536));
+    btT.put("L156", Integer.valueOf(262144));
+    btT.put("L180", Integer.valueOf(1048576));
+    btT.put("L183", Integer.valueOf(4194304));
+    btT.put("L186", Integer.valueOf(16777216));
+    btT.put("H30", Integer.valueOf(2));
+    btT.put("H60", Integer.valueOf(8));
+    btT.put("H63", Integer.valueOf(32));
+    btT.put("H90", Integer.valueOf(128));
+    btT.put("H93", Integer.valueOf(512));
+    btT.put("H120", Integer.valueOf(2048));
+    btT.put("H123", Integer.valueOf(8192));
+    btT.put("H150", Integer.valueOf(32768));
+    btT.put("H153", Integer.valueOf(131072));
+    btT.put("H156", Integer.valueOf(524288));
+    btT.put("H180", Integer.valueOf(2097152));
+    btT.put("H183", Integer.valueOf(8388608));
+    btT.put("H186", Integer.valueOf(33554432));
     AppMethodBeat.o(92378);
   }
   
@@ -104,7 +104,7 @@ public final class d
         localArrayList = new ArrayList();
         String str1 = parama.mimeType;
         int k = paramc.getCodecCount();
-        boolean bool2 = paramc.vc();
+        boolean bool2 = paramc.vh();
         j = 0;
         if (j >= k) {
           break label1104;
@@ -143,7 +143,7 @@ public final class d
             if ("OMX.Exynos.AVC.Decoder.secure".equals(str2))
             {
               break label1117;
-              if (((!bool2) || (parama.btd != bool3)) && ((bool2) || (parama.btd))) {
+              if (((!bool2) || (parama.bsY != bool3)) && ((bool2) || (parama.bsY))) {
                 continue;
               }
               localArrayList.add(a.a(str2, str1, localCodecCapabilities, bool1, false));
@@ -209,7 +209,7 @@ public final class d
       }
       catch (Exception parama)
       {
-        parama = new d.b(parama, (byte)0);
+        parama = new b(parama, (byte)0);
         AppMethodBeat.o(92375);
         throw parama;
       }
@@ -297,7 +297,7 @@ public final class d
       AppMethodBeat.o(92374);
       return null;
     }
-    localMatcher = btU.matcher(paramString[1]);
+    localMatcher = btP.matcher(paramString[1]);
     if (!localMatcher.matches())
     {
       AppMethodBeat.o(92374);
@@ -307,7 +307,7 @@ public final class d
     if ("1".equals(str)) {}
     for (i = 1;; i = 2)
     {
-      paramString = (Integer)btY.get(paramString[3]);
+      paramString = (Integer)btT.get(paramString[3]);
       if (paramString != null) {
         break label304;
       }
@@ -326,6 +326,20 @@ public final class d
     return paramString;
     paramString = e(paramString);
     AppMethodBeat.o(92374);
+    return paramString;
+  }
+  
+  public static a d(String paramString, boolean paramBoolean)
+  {
+    AppMethodBeat.i(92371);
+    paramString = e(paramString, paramBoolean);
+    if (paramString.isEmpty())
+    {
+      AppMethodBeat.o(92371);
+      return null;
+    }
+    paramString = (a)paramString.get(0);
+    AppMethodBeat.o(92371);
     return paramString;
   }
   
@@ -348,7 +362,7 @@ public final class d
       }
       for (paramArrayOfString = Integer.valueOf(i);; paramArrayOfString = Integer.valueOf(i))
       {
-        localInteger2 = Integer.valueOf(btW.get(localInteger1.intValue()));
+        localInteger2 = Integer.valueOf(btR.get(localInteger1.intValue()));
         if (localInteger2 != null) {
           break label155;
         }
@@ -370,7 +384,7 @@ public final class d
       return null;
     }
     label155:
-    Integer localInteger1 = Integer.valueOf(btX.get(paramArrayOfString.intValue()));
+    Integer localInteger1 = Integer.valueOf(btS.get(paramArrayOfString.intValue()));
     if (localInteger1 == null)
     {
       new StringBuilder("Unknown AVC level: ").append(paramArrayOfString);
@@ -382,21 +396,7 @@ public final class d
     return paramArrayOfString;
   }
   
-  public static a f(String paramString, boolean paramBoolean)
-  {
-    AppMethodBeat.i(92371);
-    paramString = g(paramString, paramBoolean);
-    if (paramString.isEmpty())
-    {
-      AppMethodBeat.o(92371);
-      return null;
-    }
-    paramString = (a)paramString.get(0);
-    AppMethodBeat.o(92371);
-    return paramString;
-  }
-  
-  private static List<a> g(String paramString, boolean paramBoolean)
+  private static List<a> e(String paramString, boolean paramBoolean)
   {
     label219:
     for (;;)
@@ -405,7 +405,7 @@ public final class d
       {
         AppMethodBeat.i(92372);
         d.a locala = new d.a(paramString, paramBoolean);
-        Object localObject = (List)btV.get(locala);
+        Object localObject = (List)btQ.get(locala);
         if (localObject != null)
         {
           AppMethodBeat.o(92372);
@@ -440,7 +440,7 @@ public final class d
           }
           u((List)localObject);
           paramString = Collections.unmodifiableList((List)localObject);
-          btV.put(locala, paramString);
+          btQ.put(locala, paramString);
           AppMethodBeat.o(92372);
           continue;
         }
@@ -471,22 +471,22 @@ public final class d
     AppMethodBeat.o(92376);
   }
   
-  public static a va()
+  public static a vf()
   {
-    return btT;
+    return btO;
   }
   
-  public static int vb()
+  public static int vg()
   {
     int i = 0;
     AppMethodBeat.i(92373);
     int j;
-    if (btZ == -1)
+    if (btU == -1)
     {
-      Object localObject = f("video/avc", false);
+      Object localObject = d("video/avc", false);
       if (localObject != null)
       {
-        localObject = ((a)localObject).uU();
+        localObject = ((a)localObject).uZ();
         int m = localObject.length;
         int k = 0;
         j = 0;
@@ -544,10 +544,19 @@ public final class d
     for (i = 345600;; i = 172800)
     {
       i = Math.max(j, i);
-      btZ = i;
-      i = btZ;
+      btU = i;
+      i = btU;
       AppMethodBeat.o(92373);
       return i;
+    }
+  }
+  
+  public static final class b
+    extends Exception
+  {
+    private b(Throwable paramThrowable)
+    {
+      super(paramThrowable);
     }
   }
   
@@ -559,7 +568,7 @@ public final class d
     
     public abstract MediaCodecInfo getCodecInfoAt(int paramInt);
     
-    public abstract boolean vc();
+    public abstract boolean vh();
   }
   
   static final class d
@@ -589,7 +598,7 @@ public final class d
       return localMediaCodecInfo;
     }
     
-    public final boolean vc()
+    public final boolean vh()
     {
       return false;
     }
@@ -599,8 +608,8 @@ public final class d
   static final class e
     implements d.c
   {
-    private final int bua;
-    private MediaCodecInfo[] bub;
+    private final int btV;
+    private MediaCodecInfo[] btW;
     
     public e(boolean paramBoolean)
     {
@@ -608,17 +617,17 @@ public final class d
       if (paramBoolean) {}
       for (int i = 1;; i = 0)
       {
-        this.bua = i;
+        this.btV = i;
         AppMethodBeat.o(92366);
         return;
       }
     }
     
-    private void vd()
+    private void vi()
     {
       AppMethodBeat.i(92370);
-      if (this.bub == null) {
-        this.bub = new MediaCodecList(this.bua).getCodecInfos();
+      if (this.btW == null) {
+        this.btW = new MediaCodecList(this.btV).getCodecInfos();
       }
       AppMethodBeat.o(92370);
     }
@@ -634,8 +643,8 @@ public final class d
     public final int getCodecCount()
     {
       AppMethodBeat.i(92367);
-      vd();
-      int i = this.bub.length;
+      vi();
+      int i = this.btW.length;
       AppMethodBeat.o(92367);
       return i;
     }
@@ -643,13 +652,13 @@ public final class d
     public final MediaCodecInfo getCodecInfoAt(int paramInt)
     {
       AppMethodBeat.i(92368);
-      vd();
-      MediaCodecInfo localMediaCodecInfo = this.bub[paramInt];
+      vi();
+      MediaCodecInfo localMediaCodecInfo = this.btW[paramInt];
       AppMethodBeat.o(92368);
       return localMediaCodecInfo;
     }
     
-    public final boolean vc()
+    public final boolean vh()
     {
       return true;
     }
@@ -657,7 +666,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.e.d
  * JD-Core Version:    0.7.0.1
  */

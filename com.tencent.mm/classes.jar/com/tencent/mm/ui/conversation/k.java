@@ -15,106 +15,112 @@ import android.content.res.Resources;
 import android.os.PowerManager.WakeLock;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.j;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.d.i.a;
-import com.tencent.mm.g.a.cy;
-import com.tencent.mm.g.a.hy;
-import com.tencent.mm.g.a.kl;
-import com.tencent.mm.g.a.pl;
-import com.tencent.mm.g.a.xe;
-import com.tencent.mm.model.au.a;
-import com.tencent.mm.model.au.b;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.v;
+import com.tencent.mm.g.a.db;
+import com.tencent.mm.g.a.in;
+import com.tencent.mm.g.a.la;
+import com.tencent.mm.g.a.qd;
+import com.tencent.mm.g.a.yf;
+import com.tencent.mm.g.c.ax;
+import com.tencent.mm.model.ay.a;
+import com.tencent.mm.model.ay.b;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.modelmulti.l;
 import com.tencent.mm.modelmulti.p;
 import com.tencent.mm.platformtools.ac;
-import com.tencent.mm.pluginsdk.i.j;
+import com.tencent.mm.plugin.sns.b.o;
 import com.tencent.mm.pluginsdk.model.app.r;
-import com.tencent.mm.protocal.protobuf.dnx;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.protocal.protobuf.eht;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.ChannelUtil;
 import com.tencent.mm.sdk.platformtools.FLock;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.storage.au;
-import com.tencent.mm.storage.br;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.az;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.bw;
 import com.tencent.mm.ui.LauncherUI;
 import com.tencent.mm.ui.widget.a.d.a;
 import com.tencent.mm.ui.widget.a.f.c;
-import com.tencent.mm.ui.y;
-import com.tencent.mm.ui.y.a;
+import com.tencent.mm.ui.z.a;
+import com.tencent.mm.vfs.s;
 import java.lang.ref.WeakReference;
 
 public final class k
-  implements com.tencent.mm.ak.f, com.tencent.mm.ak.g
+  implements com.tencent.mm.ak.i, j
 {
-  private static boolean KSn = false;
-  private com.tencent.mm.ui.widget.a.d KSh;
-  private com.tencent.mm.ui.widget.a.d KSi;
-  private boolean KSj;
-  private com.tencent.mm.compatible.util.f.a KSk;
-  boolean KSl;
-  private com.tencent.mm.modelmulti.f KSm;
-  a KSo;
-  a KSp;
-  com.tencent.mm.sdk.b.c KSq;
-  com.tencent.mm.sdk.b.c KSr;
-  FLock KSs;
-  Activity dtg;
-  ProgressDialog fOC;
-  WeakReference<Activity> jOO;
+  private static boolean Qft = false;
+  private com.tencent.mm.ui.widget.a.d Qfn;
+  private com.tencent.mm.ui.widget.a.d Qfo;
+  private boolean Qfp;
+  private com.tencent.mm.compatible.util.f.a Qfq;
+  boolean Qfr;
+  private com.tencent.mm.modelmulti.f Qfs;
+  a Qfu;
+  a Qfv;
+  IListener Qfw;
+  IListener Qfx;
+  FLock Qfy;
+  Activity dKq;
+  ProgressDialog gtM;
+  WeakReference<Activity> kRw;
   PowerManager.WakeLock wakeLock;
   
   public k()
   {
     AppMethodBeat.i(38610);
-    this.KSh = null;
-    this.KSi = null;
-    this.KSj = false;
-    this.KSk = new com.tencent.mm.compatible.util.f.a();
+    this.Qfn = null;
+    this.Qfo = null;
+    this.Qfp = false;
+    this.Qfq = new com.tencent.mm.compatible.util.f.a();
     this.wakeLock = null;
-    this.KSl = false;
-    this.KSm = null;
-    this.fOC = null;
-    this.KSq = new com.tencent.mm.sdk.b.c() {};
-    this.KSr = new com.tencent.mm.sdk.b.c() {};
+    this.Qfr = false;
+    this.Qfs = null;
+    this.gtM = null;
+    this.Qfw = new IListener() {};
+    this.Qfx = new IListener() {};
     AppMethodBeat.o(38610);
   }
   
-  private boolean aN(int paramInt1, int paramInt2, int paramInt3)
+  private boolean aT(int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(38615);
-    if (!com.tencent.mm.kernel.g.ajM())
+    if (!com.tencent.mm.kernel.g.aAc())
     {
-      ae.w("MicroMsg.InitHelper", "account not ready");
+      Log.w("MicroMsg.InitHelper", "account not ready");
       AppMethodBeat.o(38615);
       return false;
     }
-    bc.aCg();
-    long l1 = bu.a((Long)com.tencent.mm.model.c.ajA().get(am.a.IKm, null), 0L);
-    bc.aCg();
-    long l2 = bu.a((Long)com.tencent.mm.model.c.ajA().get(am.a.IKo, null), 0L);
-    bc.aCg();
-    long l3 = bu.a((Long)com.tencent.mm.model.c.ajA().get(am.a.IKn, null), 0L);
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKm, Long.valueOf(0L));
-    bc.aCg();
-    com.tencent.mm.model.c.ajA().set(am.a.IKn, Long.valueOf(0L));
-    if ((l3 == com.tencent.mm.protocal.d.FFH) && (bu.rZ(l2) < 3600L)) {
+    bg.aVF();
+    long l1 = Util.nullAs((Long)com.tencent.mm.model.c.azQ().get(ar.a.NSk, null), 0L);
+    bg.aVF();
+    long l2 = Util.nullAs((Long)com.tencent.mm.model.c.azQ().get(ar.a.NSm, null), 0L);
+    bg.aVF();
+    long l3 = Util.nullAs((Long)com.tencent.mm.model.c.azQ().get(ar.a.NSl, null), 0L);
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSk, Long.valueOf(0L));
+    bg.aVF();
+    com.tencent.mm.model.c.azQ().set(ar.a.NSl, Long.valueOf(0L));
+    if ((l3 == com.tencent.mm.protocal.d.KyO) && (Util.secondsToNow(l2) < 3600L)) {
       if (l1 == 1L)
       {
-        if (y.c(this.dtg, 4, -17))
+        if (com.tencent.mm.ui.z.c(this.dKq, 4, -17))
         {
           AppMethodBeat.o(38615);
           return true;
         }
       }
-      else if ((l1 == 2L) && (y.c(this.dtg, 4, -16)))
+      else if ((l1 == 2L) && (com.tencent.mm.ui.z.c(this.dKq, 4, -16)))
       {
         AppMethodBeat.o(38615);
         return true;
@@ -122,11 +128,11 @@ public final class k
     }
     if ((paramInt1 == 4) && ((paramInt2 == -16) || (paramInt2 == -17)))
     {
-      ae.i("MicroMsg.InitHelper", "trigger check update: errCode:%d, sceneType:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-      if (ac.iRu) {
-        ak.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", bu.aRi() - 86400L - 1L).commit();
+      Log.i("MicroMsg.InitHelper", "trigger check update: errCode:%d, sceneType:%d", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      if (ac.jOo) {
+        MMApplicationContext.getContext().getSharedPreferences("system_config_prefs", 0).edit().putLong("recomended_update_ignore", Util.nowSecond() - 86400L - 1L).commit();
       }
-      if (y.c(this.dtg, paramInt1, paramInt2))
+      if (com.tencent.mm.ui.z.c(this.dKq, paramInt1, paramInt2))
       {
         AppMethodBeat.o(38615);
         return true;
@@ -136,63 +142,63 @@ public final class k
     return false;
   }
   
-  private void fNy()
+  private void gVS()
   {
     AppMethodBeat.i(38612);
-    if (this.KSj)
+    if (this.Qfp)
     {
-      ae.i("MicroMsg.InitHelper", "summerinit doPreCreate but hasTryDoInitButFailed true ret");
+      Log.i("MicroMsg.InitHelper", "summerinit doPreCreate but hasTryDoInitButFailed true ret");
       AppMethodBeat.o(38612);
       return;
     }
     if (!this.wakeLock.isHeld())
     {
-      ae.w("MicroMsg.InitHelper", "tryDoInit wakelock.acquire!");
+      Log.w("MicroMsg.InitHelper", "tryDoInit wakelock.acquire!");
       this.wakeLock.acquire();
     }
-    this.KSp.fNB();
-    cy localcy = new cy();
-    localcy.doW.action = 1;
-    com.tencent.mm.sdk.b.a.IvT.l(localcy);
-    if (this.KSm == null)
+    this.Qfv.gVV();
+    db localdb = new db();
+    localdb.dGl.action = 1;
+    EventCenter.instance.publish(localdb);
+    if (this.Qfs == null)
     {
-      if (com.tencent.mm.plugin.sns.b.o.zsw != null) {
-        com.tencent.mm.plugin.sns.b.o.zsw.dVX();
+      if (o.DCN != null) {
+        o.DCN.eZi();
       }
-      this.KSm = new com.tencent.mm.modelmulti.f(this);
-      ae.d("MicroMsg.InitHelper", "dkinit doPreCreate t:%d initScene:%d", new Object[] { Long.valueOf(this.KSk.abs()), Integer.valueOf(this.KSm.hashCode()) });
-      this.KSk.gfF = SystemClock.elapsedRealtime();
-      bc.ajj().a(this.KSm, 0);
+      this.Qfs = new com.tencent.mm.modelmulti.f(this);
+      Log.d("MicroMsg.InitHelper", "dkinit doPreCreate t:%d initScene:%d", new Object[] { Long.valueOf(this.Qfq.apr()), Integer.valueOf(this.Qfs.hashCode()) });
+      this.Qfq.gLm = SystemClock.elapsedRealtime();
+      bg.azz().a(this.Qfs, 0);
     }
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(38606);
-        long l = k.f(k.this).abs();
+        long l = k.f(k.this).apr();
         if (k.g(k.this) == null) {}
         for (int i = -2;; i = k.g(k.this).hashCode())
         {
-          ae.d("MicroMsg.InitHelper", "dkinit showProgressDlg t:%d initScene:%d", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
+          Log.d("MicroMsg.InitHelper", "dkinit showProgressDlg t:%d initScene:%d", new Object[] { Long.valueOf(l), Integer.valueOf(i) });
           if ((k.h(k.this) != null) && (k.h(k.this).isShowing())) {
             k.h(k.this).dismiss();
           }
           k localk = k.this;
           Activity localActivity = k.a(k.this);
-          k.a(k.this).getString(2131755906);
-          k.a(localk, com.tencent.mm.ui.base.h.b(localActivity, k.a(k.this).getString(2131755805), false, new DialogInterface.OnCancelListener()
+          k.a(k.this).getString(2131755998);
+          k.a(localk, com.tencent.mm.ui.base.h.a(localActivity, k.a(k.this).getString(2131755887), false, new DialogInterface.OnCancelListener()
           {
             public final void onCancel(DialogInterface paramAnonymous2DialogInterface)
             {
               AppMethodBeat.i(38605);
-              bc.ajj().a(k.g(k.this));
-              if (com.tencent.mm.plugin.sns.b.o.zsw != null) {
-                com.tencent.mm.plugin.sns.b.o.zsw.dVY();
+              bg.azz().a(k.g(k.this));
+              if (o.DCN != null) {
+                o.DCN.eZj();
               }
               AppMethodBeat.o(38605);
             }
           }));
-          bc.ajU().Mh();
+          bg.aAk().setHighPriority();
           AppMethodBeat.o(38606);
           return;
         }
@@ -201,10 +207,10 @@ public final class k
     AppMethodBeat.o(38612);
   }
   
-  public final void a(int paramInt1, int paramInt2, n paramn)
+  public final void a(int paramInt1, int paramInt2, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(38613);
-    if ((paramn == null) || (paramn.getType() != 139))
+    if ((paramq == null) || (paramq.getType() != 139))
     {
       AppMethodBeat.o(38613);
       return;
@@ -212,13 +218,13 @@ public final class k
     if (paramInt2 != 0) {}
     for (long l = paramInt1 * 100L / paramInt2;; l = 0L)
     {
-      ar.f(new Runnable()
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(38607);
           if (k.h(k.this) != null) {
-            k.h(k.this).setMessage(k.a(k.this).getString(2131755805) + this.cvQ + "%");
+            k.h(k.this).setMessage(k.a(k.this).getString(2131755887) + this.cJP + "%");
           }
           AppMethodBeat.o(38607);
         }
@@ -228,45 +234,51 @@ public final class k
     }
   }
   
-  public final boolean fNA()
+  public final void gGx()
   {
-    return this.KSm != null;
+    AppMethodBeat.i(234175);
+    if ((this.wakeLock != null) && (this.wakeLock.isHeld()))
+    {
+      Log.w("MicroMsg.InitHelper", "onTabPause wakelock.release!");
+      this.wakeLock.release();
+    }
+    AppMethodBeat.o(234175);
   }
   
-  final boolean fNx()
+  final boolean gVR()
   {
     AppMethodBeat.i(38611);
-    if (!l.aJL())
+    if (!l.bdN())
     {
       AppMethodBeat.o(38611);
       return false;
     }
-    if ((this.KSi != null) && (this.KSi.isShowing()))
+    if ((this.Qfo != null) && (this.Qfo.isShowing()))
     {
       AppMethodBeat.o(38611);
       return false;
     }
-    com.tencent.mm.kernel.g.ajS();
-    if (com.tencent.mm.kernel.g.ajR().aju())
+    com.tencent.mm.kernel.g.aAi();
+    if (com.tencent.mm.kernel.g.aAh().azK())
     {
-      this.KSi = new d.a(this.dtg).afN(2131758015).aZi(this.dtg.getString(2131758014)).zf(false).afU(2131758016).c(new k.9(this)).afV(2131758013).d(new DialogInterface.OnClickListener()
+      this.Qfo = new d.a(this.dKq).aoO(2131758264).boo(this.dKq.getString(2131758263)).Dk(false).aoV(2131758265).c(new k.9(this)).aoW(2131758262).d(new DialogInterface.OnClickListener()
       {
         public final void onClick(DialogInterface paramAnonymousDialogInterface, int paramAnonymousInt)
         {
           AppMethodBeat.i(38603);
-          com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+          com.tencent.mm.kernel.g.aAk().postToWorker(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(38601);
-              aj localaj = com.tencent.mm.kernel.g.ajR().ajA();
-              localaj.set(89, Integer.valueOf(2));
-              localaj.fuc();
+              ao localao = com.tencent.mm.kernel.g.aAh().azQ();
+              localao.set(89, Integer.valueOf(2));
+              localao.gBI();
               AppMethodBeat.o(38601);
             }
           });
           k.e(k.this).dismiss();
-          com.tencent.mm.ui.base.h.a(k.a(k.this), 2131757994, 2131755906, false, new DialogInterface.OnClickListener()
+          com.tencent.mm.ui.base.h.a(k.a(k.this), 2131758243, 2131755998, false, new DialogInterface.OnClickListener()
           {
             public final void onClick(DialogInterface paramAnonymous2DialogInterface, int paramAnonymous2Int)
             {
@@ -277,101 +289,106 @@ public final class k
           });
           AppMethodBeat.o(38603);
         }
-      }).fQv();
-      this.KSi.show();
+      }).hbn();
+      this.Qfo.show();
     }
     for (;;)
     {
       AppMethodBeat.o(38611);
       return true;
-      fNy();
+      gVS();
     }
   }
   
-  final int fNz()
+  final int gVT()
   {
     AppMethodBeat.i(38616);
-    if (this.KSm == null)
+    if (this.Qfs == null)
     {
       AppMethodBeat.o(38616);
       return -2;
     }
-    int i = this.KSm.hashCode();
+    int i = this.Qfs.hashCode();
     AppMethodBeat.o(38616);
     return i;
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final boolean gVU()
+  {
+    return this.Qfs != null;
+  }
+  
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.q paramq)
   {
     AppMethodBeat.i(38614);
-    if ((paramn.getType() != 138) && (paramn.getType() != 139))
+    if ((paramq.getType() != 138) && (paramq.getType() != 139))
     {
-      if ((paramn.getType() != 113) && (paramn.getType() != 0))
+      if ((paramq.getType() != 113) && (paramq.getType() != 0))
       {
-        aN(paramInt1, paramInt2, paramn.getType());
+        aT(paramInt1, paramInt2, paramq.getType());
         AppMethodBeat.o(38614);
         return;
       }
-      ae.i("MicroMsg.InitHelper", "onSceneEnd from GetUpdateInfo, ignore it.");
+      Log.i("MicroMsg.InitHelper", "onSceneEnd from GetUpdateInfo, ignore it.");
       AppMethodBeat.o(38614);
       return;
     }
-    int j = paramn.getType();
+    int j = paramq.getType();
     int k = hashCode();
     int i;
     Object localObject;
-    if (this.KSm == null)
+    if (this.Qfs == null)
     {
       i = -2;
-      ae.i("MicroMsg.InitHelper", "dkinit onSceneEnd:[%d,%d,%s] type:%d hash:%d init:%d ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
-      if ((this.KSm != null) && (paramn.getType() == 139))
+      Log.i("MicroMsg.InitHelper", "dkinit onSceneEnd:[%d,%d,%s] type:%d hash:%d init:%d ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString, Integer.valueOf(j), Integer.valueOf(k), Integer.valueOf(i) });
+      if ((this.Qfs != null) && (paramq.getType() == 139))
       {
-        this.KSm = null;
-        ae.w("MicroMsg.InitHelper", "summerinit dkinit Kevin init FINISH : %d ", new Object[] { Long.valueOf(this.KSk.abs()) });
-        au.a.hIG.aBI();
-        if (com.tencent.mm.plugin.sns.b.o.zsw != null) {
-          com.tencent.mm.plugin.sns.b.o.zsw.dVY();
+        this.Qfs = null;
+        Log.w("MicroMsg.InitHelper", "summerinit dkinit Kevin init FINISH : %d ", new Object[] { Long.valueOf(this.Qfq.apr()) });
+        ay.a.iDq.aVg();
+        if (o.DCN != null) {
+          o.DCN.eZj();
         }
-        this.KSp.aea();
-        localObject = new cy();
-        ((cy)localObject).doW.action = 2;
-        com.tencent.mm.sdk.b.a.IvT.l((b)localObject);
+        this.Qfv.atH();
+        localObject = new db();
+        ((db)localObject).dGl.action = 2;
+        EventCenter.instance.publish((IEvent)localObject);
         if (this.wakeLock.isHeld())
         {
-          ae.w("MicroMsg.InitHelper", "onSceneEnd wakelock.release!");
+          Log.w("MicroMsg.InitHelper", "onSceneEnd wakelock.release!");
           this.wakeLock.release();
         }
-        bc.ajU().foO();
-        if (this.fOC != null)
+        bg.aAk().setLowPriority();
+        if (this.gtM != null)
         {
-          this.fOC.dismiss();
-          this.fOC = null;
+          this.gtM.dismiss();
+          this.gtM = null;
         }
         j = 0;
-        localObject = (Activity)this.jOO.get();
+        localObject = (Activity)this.kRw.get();
         i = j;
-        if (com.tencent.mm.kernel.g.ajM())
+        if (com.tencent.mm.kernel.g.aAc())
         {
           i = j;
-          if (com.tencent.mm.kernel.g.ajP().gDk)
+          if (com.tencent.mm.kernel.g.aAf().hpY)
           {
             i = j;
             if (localObject != null)
             {
               i = j;
-              if (!this.dtg.getSharedPreferences(ak.fow() + "_fontScaleTip", 0).getBoolean("font_scale_tip_login", false))
+              if (!this.dKq.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_fontScaleTip", 0).getBoolean("font_scale_tip_login", false))
               {
-                if (1.0F != com.tencent.mm.cb.a.ef(this.dtg)) {
-                  break label729;
+                if (1.0F != com.tencent.mm.cb.a.ez(this.dKq)) {
+                  break label850;
                 }
-                if (1.0F == this.dtg.getResources().getConfiguration().fontScale) {
-                  break label1307;
+                if (1.0F == this.dKq.getResources().getConfiguration().fontScale) {
+                  break label1428;
                 }
-                com.tencent.mm.plugin.report.service.g.yxI.f(15181, new Object[] { Integer.valueOf(1) });
+                com.tencent.mm.plugin.report.service.h.CyF.a(15181, new Object[] { Integer.valueOf(1) });
                 com.tencent.mm.ui.widget.a.f.a locala = new com.tencent.mm.ui.widget.a.f.a((Context)localObject);
-                locala.au(((Activity)localObject).getResources().getString(2131759585)).aZq(((Activity)localObject).getResources().getString(2131759582)).aZu(((Activity)localObject).getResources().getString(2131759584)).aZv(((Activity)localObject).getResources().getString(2131759583));
+                locala.aC(((Activity)localObject).getResources().getString(2131760902)).bow(((Activity)localObject).getResources().getString(2131760899)).boA(((Activity)localObject).getResources().getString(2131760901)).boB(((Activity)localObject).getResources().getString(2131760900));
                 locala.c(new k.12(this, (Activity)localObject)).show();
-                this.dtg.getSharedPreferences(ak.fow() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip_login", true).apply();
+                this.dKq.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip_login", true).apply();
                 i = 1;
               }
             }
@@ -382,127 +399,149 @@ public final class k
     for (;;)
     {
       if (i == 0) {
-        this.dtg.getSharedPreferences(ak.fow() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip", false).apply();
+        this.dKq.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip", false).apply();
       }
-      if (y.a(this.dtg, paramInt1, paramInt2, new Intent().setClass(this.dtg, LauncherUI.class).putExtra("Intro_Switch", true).putExtra("animation_pop_in", true).addFlags(67108864), paramString))
+      if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        ae.i("MicroMsg.InitHelper", "summerinit onSceneEnd accountExpired ret");
+        bg.aVF();
+        localObject = com.tencent.mm.model.c.aSN().Kn(com.tencent.mm.model.z.aTY());
+        if ((localObject != null) && ((!com.tencent.mm.contact.c.oR(((ax)localObject).field_type)) || (!Util.isNullOrNil(((ax)localObject).field_conRemark)) || (!Util.isNullOrNil(((ax)localObject).field_conRemarkPYFull)) || (!Util.isNullOrNil(((ax)localObject).field_conRemarkPYShort))))
+        {
+          ((as)localObject).aqQ();
+          ((as)localObject).BD("");
+          ((as)localObject).BI("");
+          ((as)localObject).BJ("");
+          bg.aVF();
+          com.tencent.mm.model.c.aSN().c(com.tencent.mm.model.z.aTY(), (as)localObject);
+        }
+      }
+      if (com.tencent.mm.plugin.account.ui.a.a(this.dKq, paramInt1, paramInt2, new Intent().setClass(this.dKq, LauncherUI.class).putExtra("Intro_Switch", true).putExtra("animation_pop_in", true).addFlags(67108864), paramString))
+      {
+        Log.i("MicroMsg.InitHelper", "summerinit onSceneEnd accountExpired ret");
         AppMethodBeat.o(38614);
         return;
-        i = this.KSm.hashCode();
+        i = this.Qfs.hashCode();
         break;
-        label729:
-        this.dtg.getSharedPreferences(ak.fow() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip_login", true).apply();
+        label850:
+        this.dKq.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath() + "_fontScaleTip", 0).edit().putBoolean("font_scale_tip_login", true).apply();
         i = 1;
         continue;
       }
-      if (!bc.ajM())
+      if (!bg.aAc())
       {
-        ae.w("MicroMsg.InitHelper", "summerinit onSceneEnd not set uin");
+        Log.w("MicroMsg.InitHelper", "summerinit onSceneEnd not set uin");
         AppMethodBeat.o(38614);
         return;
       }
-      if (!this.KSl)
+      if (!this.Qfr)
       {
-        this.KSl = true;
-        bc.aCg();
-        localObject = (String)com.tencent.mm.model.c.ajA().get(5, null);
-        bc.aCg();
-        if (((Integer)com.tencent.mm.model.c.ajA().get(57, Integer.valueOf(0))).intValue() == 0) {
-          break label1004;
+        this.Qfr = true;
+        bg.aVF();
+        localObject = (String)com.tencent.mm.model.c.azQ().get(5, null);
+        bg.aVF();
+        if (((Integer)com.tencent.mm.model.c.azQ().get(57, Integer.valueOf(0))).intValue() == 0) {
+          break label1125;
         }
       }
-      label1004:
+      label1125:
       for (i = 1;; i = 0)
       {
         if ((i != 0) && (localObject != null)) {
-          com.tencent.mm.ui.base.h.e(this.dtg, this.dtg.getString(2131762314, new Object[] { localObject }), this.dtg.getString(2131755906), this.dtg.getString(2131762316), this.dtg.getString(2131762315), new k.3(this), new k.4(this));
+          com.tencent.mm.ui.base.h.c(this.dKq, this.dKq.getString(2131764380, new Object[] { localObject }), this.dKq.getString(2131755998), this.dKq.getString(2131764382), this.dKq.getString(2131764381), new k.3(this), new k.4(this));
         }
-        if ((paramInt1 == 4) && (paramInt2 == -17) && (!KSn))
+        if ((paramInt1 == 4) && (paramInt2 == -17) && (!Qft))
         {
-          p.aJQ().pP(7);
-          KSn = true;
+          p.bdS().tE(7);
+          Qft = true;
         }
-        if (!aN(paramInt1, paramInt2, paramn.getType())) {
+        if (!aT(paramInt1, paramInt2, paramq.getType())) {
           break;
         }
-        ae.w("MicroMsg.InitHelper", "summerinit onSceneEnd checkUpdate ret");
+        Log.w("MicroMsg.InitHelper", "summerinit onSceneEnd checkUpdate ret");
         AppMethodBeat.o(38614);
         return;
       }
-      if (paramn.getType() == 139)
+      if (paramq.getType() == 139)
       {
-        localObject = new kl();
+        localObject = new la();
         if ((paramInt1 != 3) || (paramInt2 != -1)) {
-          break label1091;
+          break label1212;
         }
-        this.KSj = true;
-        ((kl)localObject).dyy.dwS = false;
-        com.tencent.mm.sdk.b.a.IvT.l((b)localObject);
-        this.KSo.fMS();
+        this.Qfp = true;
+        ((la)localObject).dQf.dOz = false;
+        EventCenter.instance.publish((IEvent)localObject);
+        this.Qfu.gVm();
       }
-      while (y.a.a(this.dtg, paramInt1, paramInt2, paramString, 4))
+      while (z.a.a(this.dKq, paramInt1, paramInt2, paramString, 4))
       {
         AppMethodBeat.o(38614);
         return;
-        label1091:
-        ((kl)localObject).dyy.dwS = true;
-        com.tencent.mm.sdk.b.a.IvT.l((b)localObject);
+        label1212:
+        ((la)localObject).dQf.dOz = true;
+        EventCenter.instance.publish((IEvent)localObject);
       }
-      if (paramn.getType() == 139)
+      if (paramq.getType() == 139)
       {
-        new aq().post(new k.13(this));
-        if ((v.aAI() & 0x80) != 0)
+        new MMHandler().post(new Runnable()
         {
-          bc.aCg();
-          if (com.tencent.mm.model.c.azL().aVa("masssendapp") == null)
+          public final void run()
           {
-            paramString = new au();
+            AppMethodBeat.i(38609);
+            p.bdS().tE(5);
+            AppMethodBeat.o(38609);
+          }
+        });
+        if ((com.tencent.mm.model.z.aUe() & 0x80) != 0)
+        {
+          bg.aVF();
+          if (com.tencent.mm.model.c.aST().bjY("masssendapp") == null)
+          {
+            paramString = new az();
             paramString.setUsername("masssendapp");
-            paramString.setContent(ak.getContext().getResources().getString(2131757722));
-            paramString.qH(bu.fpO() + 2000L);
-            paramString.kt(0);
-            paramString.kr(0);
-            bc.aCg();
-            com.tencent.mm.model.c.azL().e(paramString);
-            paramInt1 = v.aAI();
-            bc.aCg();
-            com.tencent.mm.model.c.ajA().set(40, Integer.valueOf(paramInt1 & 0xFFFFFF7F));
+            paramString.setContent(MMApplicationContext.getContext().getResources().getString(2131757953));
+            paramString.yA(Util.nowMilliSecond() + 2000L);
+            paramString.nv(0);
+            paramString.nt(0);
+            bg.aVF();
+            com.tencent.mm.model.c.aST().e(paramString);
+            paramInt1 = com.tencent.mm.model.z.aUe();
+            bg.aVF();
+            com.tencent.mm.model.c.azQ().set(40, Integer.valueOf(paramInt1 & 0xFFFFFF7F));
           }
         }
       }
-      if ((paramn.getType() == 138) || (paramn.getType() == 139))
+      if ((paramq.getType() == 138) || (paramq.getType() == 139))
       {
-        ar.f(new Runnable()
+        MMHandlerThread.postToMainThread(new Runnable()
         {
           public final void run()
           {
             AppMethodBeat.i(38591);
-            hy localhy = new hy();
-            localhy.dvz.data = "MAIN_UI_EVENT_INIT_FINALLY";
-            com.tencent.mm.sdk.b.a.IvT.l(localhy);
+            in localin = new in();
+            localin.dNg.data = "MAIN_UI_EVENT_INIT_FINALLY";
+            EventCenter.instance.publish(localin);
             AppMethodBeat.o(38591);
           }
         });
-        this.KSo.fMS();
+        this.Qfu.gVm();
       }
       AppMethodBeat.o(38614);
       return;
-      label1307:
+      label1428:
       i = 0;
     }
   }
   
   public static abstract interface a
   {
-    public abstract void aea();
+    public abstract void atH();
     
-    public abstract void fNB();
+    public abstract void gVV();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.k
  * JD-Core Version:    0.7.0.1
  */

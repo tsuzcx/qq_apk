@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/jnu" android:background="@drawable/at3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hs"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/aps" android:background="@drawable/at4" android:layout_width="fill_parent" android:layout_height="77.0dip" android:layout_alignParentTop="true">
+            <ImageView android:id="@id/any" android:layout_width="@dimen/aiu" android:layout_height="@dimen/aiu" android:layout_marginLeft="@dimen/ib" android:src="@raw/shake_card_package_defaultlogo" android:scaleType="fitCenter" />
+            <TextView android:textSize="@dimen/bm" android:textColor="@color/ag2" android:ellipsize="end" android:id="@id/api" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i2" android:layout_marginRight="@dimen/ib" android:singleLine="true" />
+        </LinearLayout>
+        <ImageView android:id="@id/aks" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/cn8" android:layout_alignBottom="@id/aps" />
+    </RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/apr" android:layout_width="fill_parent" android:layout_height="31.0dip">
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/uj" android:ellipsize="end" android:gravity="left" android:id="@id/aku" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ib" android:singleLine="true" android:layout_weight="1.0" />
+        <TextView android:textSize="@dimen/kc" android:textColor="@color/uj" android:gravity="right" android:id="@id/ape" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k5" android:layout_marginRight="@dimen/ib" android:minWidth="80.0dip" android:singleLine="true" />
+    </LinearLayout>
+</LinearLayout>

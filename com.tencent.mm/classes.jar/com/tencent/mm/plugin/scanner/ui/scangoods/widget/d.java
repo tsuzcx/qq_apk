@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.scanner.ui.scangoods.widget;
 
-import com.tencent.mm.plugin.scanner.model.ac;
-import d.l;
+import com.tencent.mm.plugin.scanner.model.ae;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "", "addAnimationDots", "", "pointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "refreshView", "release", "setDuration", "duration", "", "show", "visible", "", "startAnimation", "stopAnimation", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/scangoods/widget/IScanAnimationDotsView;", "", "addAnimationDots", "", "pointsResult", "Lcom/tencent/mm/plugin/scanner/model/ScanPointsInfo;", "refreshView", "release", "setDuration", "duration", "", "show", "visible", "", "startAnimation", "stopAnimation", "plugin-scan_release"})
 public abstract interface d
 {
-  public abstract void b(ac paramac);
+  public abstract void b(ae paramae);
   
   public abstract void refreshView();
   

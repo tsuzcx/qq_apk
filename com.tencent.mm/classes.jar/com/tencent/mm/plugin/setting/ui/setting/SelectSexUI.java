@@ -7,40 +7,40 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
 import com.tencent.mm.ui.base.preference.MMPreference;
 import com.tencent.mm.ui.base.preference.Preference;
 import com.tencent.mm.ui.base.preference.SelectPreference;
 import com.tencent.mm.ui.base.preference.f;
-import com.tencent.mm.ui.s.b;
+import com.tencent.mm.ui.t.b;
 
 public class SelectSexUI
   extends MMPreference
 {
-  private int eQV = -1;
-  private SelectPreference sQX;
-  private SelectPreference sQY;
+  private int fuA = -1;
   private f screen;
+  private SelectPreference vNQ;
+  private SelectPreference vNR;
   
   public int getResourceId()
   {
-    return 2131951712;
+    return 2132017257;
   }
   
   public void initView()
   {
     AppMethodBeat.i(73949);
     this.screen = getPreferenceScreen();
-    this.sQX = ((SelectPreference)this.screen.aXe("select_male"));
-    this.sQY = ((SelectPreference)this.screen.aXe("select_female"));
-    int i = bu.a((Integer)g.ajR().ajA().get(12290, null), 0);
+    this.vNQ = ((SelectPreference)this.screen.bmg("select_male"));
+    this.vNR = ((SelectPreference)this.screen.bmg("select_female"));
+    int i = Util.nullAs((Integer)g.aAh().azQ().get(12290, null), 0);
     if (i == 1) {
-      this.sQX.isSelected = true;
+      this.vNQ.isSelected = true;
     }
     for (;;)
     {
-      setMMTitle(2131763018);
+      setMMTitle(2131765167);
       setBackBtn(new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -52,7 +52,7 @@ public class SelectSexUI
           return true;
         }
       });
-      addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
+      addTextOptionMenu(0, getString(2131755858), new MenuItem.OnMenuItemClickListener()
       {
         public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
         {
@@ -62,11 +62,11 @@ public class SelectSexUI
           AppMethodBeat.o(73947);
           return true;
         }
-      }, null, s.b.JwA);
+      }, null, t.b.OGU);
       AppMethodBeat.o(73949);
       return;
       if (i == 2) {
-        this.sQY.isSelected = true;
+        this.vNR.isSelected = true;
       }
     }
   }
@@ -85,9 +85,9 @@ public class SelectSexUI
     paramPreference = paramPreference.mKey;
     if (paramPreference.equals("select_male"))
     {
-      this.eQV = 1;
-      this.sQX.isSelected = true;
-      this.sQY.isSelected = false;
+      this.fuA = 1;
+      this.vNQ.isSelected = true;
+      this.vNR.isSelected = false;
       paramf.notifyDataSetChanged();
     }
     for (;;)
@@ -96,9 +96,9 @@ public class SelectSexUI
       return false;
       if (paramPreference.equals("select_female"))
       {
-        this.eQV = 2;
-        this.sQX.isSelected = false;
-        this.sQY.isSelected = true;
+        this.fuA = 2;
+        this.vNQ.isSelected = false;
+        this.vNR.isSelected = true;
         paramf.notifyDataSetChanged();
       }
     }
@@ -112,7 +112,7 @@ public class SelectSexUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.setting.ui.setting.SelectSexUI
  * JD-Core Version:    0.7.0.1
  */

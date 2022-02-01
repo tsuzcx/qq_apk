@@ -4,7 +4,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.plugin.topstory.ui.webview.TopStoryWebView;
+import com.tencent.mm.plugin.websearch.webview.WebSearchWebView;
 
 final class b$11
   implements View.OnClickListener
@@ -15,17 +15,17 @@ final class b$11
   {
     AppMethodBeat.i(125941);
     com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/topstory/ui/home/TopStoryHomeUIComponentImpl$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/topstory/ui/home/TopStoryHomeUIComponentImpl$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
     long l = System.currentTimeMillis();
-    if (l - this.BKf.BJS < 300L) {}
+    if (l - this.GkK.Gkx < 300L) {}
     try
     {
-      if ((this.BKf.BJL != null) && (this.BKf.BJL.getView() != null)) {
-        this.BKf.BJL.getView().scrollTo(this.BKf.BJL.getView().getScrollX(), 0);
+      if ((this.GkK.Gkq != null) && (this.GkK.Gkq.getView() != null)) {
+        this.GkK.Gkq.getView().scrollTo(this.GkK.Gkq.getView().getScrollX(), 0);
       }
       label107:
-      this.BKf.BJS = l;
+      this.GkK.Gkx = l;
       a.a(this, "com/tencent/mm/plugin/topstory/ui/home/TopStoryHomeUIComponentImpl$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(125941);
       return;

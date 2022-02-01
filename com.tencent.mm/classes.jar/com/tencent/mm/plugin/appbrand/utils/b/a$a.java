@@ -6,21 +6,21 @@ public final class a$a
 {
   public double altitude;
   public String buildingId;
-  public double dgG;
+  public double dxQ;
   public String floorName;
-  public Object hQS;
+  public Object iMa;
   public double latitude;
   public double longitude;
-  public double mUZ;
-  public int mVa;
-  public float mVb;
-  public double mVc = 0.0D;
+  public double ohZ;
+  public int oia;
+  public float oib;
+  public double oic = 0.0D;
   public String provider;
   
   public final String toString()
   {
     AppMethodBeat.i(143729);
-    String str = "Location{latitude=" + this.latitude + ", longitude=" + this.longitude + ", provider='" + this.provider + '\'' + ", speed=" + this.dgG + ", accuracy=" + this.mUZ + ", altitude=" + this.altitude + ", buildingId='" + this.buildingId + '\'' + ", floorName='" + this.floorName + '\'' + ", extra=" + this.hQS + ", indoorLocationType=" + this.mVa + ", direction=" + this.mVb + '}';
+    String str = "Location{latitude=" + this.latitude + ", longitude=" + this.longitude + ", provider='" + this.provider + '\'' + ", speed=" + this.dxQ + ", accuracy=" + this.ohZ + ", altitude=" + this.altitude + ", buildingId='" + this.buildingId + '\'' + ", floorName='" + this.floorName + '\'' + ", extra=" + this.iMa + ", indoorLocationType=" + this.oia + ", direction=" + this.oib + '}';
     AppMethodBeat.o(143729);
     return str;
   }

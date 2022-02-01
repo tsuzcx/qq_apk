@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class mu
-  extends b
+  extends IEvent
 {
-  public a dBN;
+  public a dSs;
+  public b dSt;
   
   public mu()
   {
@@ -15,21 +16,27 @@ public final class mu
   
   private mu(byte paramByte)
   {
-    AppMethodBeat.i(116033);
-    this.dBN = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(149873);
+    this.dSs = new a();
+    this.dSt = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(116033);
+    AppMethodBeat.o(149873);
   }
   
   public static final class a
   {
-    public int dBO;
+    public int action;
+  }
+  
+  public static final class b
+  {
+    public boolean isStart;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.mu
  * JD-Core Version:    0.7.0.1
  */

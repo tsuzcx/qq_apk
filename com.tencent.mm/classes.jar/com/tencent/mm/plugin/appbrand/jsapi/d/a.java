@@ -1,104 +1,83 @@
 package com.tencent.mm.plugin.appbrand.jsapi.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.xlabeffect.e;
-import com.tencent.mm.xeffect.FaceTracker;
-import java.util.HashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.plugin.sns.waid.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.a.ae;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.o;
+import kotlin.s;
+import org.json.JSONObject;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/device/JsApiGetDeviceInfo;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class a
+  extends d<f>
 {
-  static a kON;
-  float aTL;
-  float aTM;
-  e kOO;
-  FaceTracker kOP;
-  ExecutorService kOQ;
-  HashMap<String, Float> kOR;
+  public static final int CTRL_INDEX = 867;
+  public static final String NAME = "getDeviceInfo";
+  public static final a lTK;
   
-  public a()
+  static
   {
-    AppMethodBeat.i(222456);
-    this.kOQ = Executors.newSingleThreadExecutor();
-    this.aTL = -1.0F;
-    this.aTM = -1.0F;
-    this.kOR = new HashMap(1);
-    AppMethodBeat.o(222456);
+    AppMethodBeat.i(228394);
+    lTK = new a((byte)0);
+    AppMethodBeat.o(228394);
   }
   
-  public static int a(a parama)
+  public final void a(f paramf, JSONObject paramJSONObject, int paramInt)
   {
-    AppMethodBeat.i(222458);
-    switch (1.kOS[parama.ordinal()])
+    AppMethodBeat.i(228393);
+    String str2 = com.tencent.mm.plugin.sns.ad.b.a.aoK();
+    String str3 = com.tencent.mm.plugin.sns.ad.b.a.eWE();
+    String str1 = "";
+    if (paramJSONObject != null)
     {
-    default: 
-      AppMethodBeat.o(222458);
-      return -1;
-    case 1: 
-      AppMethodBeat.o(222458);
-      return 0;
-    case 2: 
-      AppMethodBeat.o(222458);
-      return 1;
-    case 3: 
-      AppMethodBeat.o(222458);
-      return 2;
-    case 4: 
-      AppMethodBeat.o(222458);
-      return 3;
-    case 5: 
-      AppMethodBeat.o(222458);
-      return 4;
-    case 6: 
-      AppMethodBeat.o(222458);
-      return 5;
-    case 7: 
-      AppMethodBeat.o(222458);
-      return 6;
+      paramJSONObject = paramJSONObject.optString("waidPkg");
+      str1 = b.aRy(paramJSONObject);
+      p.g(str1, "WaidHelper.getAppWaid(waidPkg)");
+      Log.i("MicroMsg.AppBrand.JsApiGetDeviceInfo", "waidPkg=".concat(String.valueOf(paramJSONObject)));
     }
-    AppMethodBeat.o(222458);
-    return 7;
-  }
-  
-  public static a bkO()
-  {
-    try
+    String str4 = com.tencent.mm.plugin.sns.ad.b.a.eWC();
+    if (paramf != null)
     {
-      AppMethodBeat.i(222457);
-      if (kON == null) {
-        kON = new a();
+      paramJSONObject = (com.tencent.mm.plugin.appbrand.s.a)paramf.av(com.tencent.mm.plugin.appbrand.s.a.class);
+      if (paramJSONObject == null) {}
+    }
+    for (paramJSONObject = paramJSONObject.nhM;; paramJSONObject = null)
+    {
+      Log.i("MicroMsg.AppBrand.JsApiGetDeviceInfo", "getDeviceInfo, oaid:" + str2 + ", imei:" + str3 + ", waid:" + str1, new Object[] { "ua:".concat(String.valueOf(paramJSONObject)) });
+      if ((str2 != null) || (str3 != null) || (str1 != null) || (str4 != null) || (paramJSONObject != null)) {
+        break label203;
       }
-      a locala = kON;
-      AppMethodBeat.o(222457);
-      return locala;
+      if (paramf == null) {
+        break;
+      }
+      paramf.i(paramInt, Zf("fail"));
+      AppMethodBeat.o(228393);
+      return;
     }
-    finally {}
+    AppMethodBeat.o(228393);
+    return;
+    label203:
+    paramJSONObject = ae.e(new o[] { s.U("oaid", str2), s.U("imei", str3), s.U("waid", str1), s.U("devIdInfo", str4), s.U("ua", paramJSONObject) });
+    if (paramf != null)
+    {
+      paramf.i(paramInt, n("ok", paramJSONObject));
+      AppMethodBeat.o(228393);
+      return;
+    }
+    AppMethodBeat.o(228393);
   }
   
-  public static enum a
-  {
-    static
-    {
-      AppMethodBeat.i(222455);
-      kOT = new a("ResultOK", 0);
-      kOU = new a("ResultNotInit", 1);
-      kOV = new a("ResultInited", 2);
-      kOW = new a("ResultInitFail", 3);
-      kOX = new a("ResultNoLicense", 4);
-      kOY = new a("ResultFaceDetectedFail", 5);
-      kOZ = new a("ResultStopFail", 6);
-      kPa = new a("ResultUndefinedError", 7);
-      kPb = new a[] { kOT, kOU, kOV, kOW, kOX, kOY, kOZ, kPa };
-      AppMethodBeat.o(222455);
-    }
-    
-    private a() {}
-  }
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/device/JsApiGetDeviceInfo$Companion;", "", "()V", "CTRL_INDEX", "", "NAME", "", "TAG", "plugin-appbrand-integration_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.d.a
  * JD-Core Version:    0.7.0.1
  */

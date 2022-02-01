@@ -21,6 +21,8 @@ public abstract interface a
   
   public abstract void forceSysWebView();
   
+  public abstract String getMiniQBVersion(Context paramContext);
+  
   public abstract boolean getTBSInstalling();
   
   public abstract int getTbsVersion(Context paramContext);
@@ -28,6 +30,8 @@ public abstract interface a
   public abstract void initTbsSettings(Map<String, Object> paramMap);
   
   public abstract void reset(Context paramContext);
+  
+  public abstract void setNewDnsHostList(String paramString);
   
   public abstract void setUploadCode(Context paramContext, int paramInt);
   
@@ -37,7 +41,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.xweb.x5.sdk.a
  * JD-Core Version:    0.7.0.1
  */

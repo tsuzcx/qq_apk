@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/hp6" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.RoundCornerImageView android:id="@id/hp1" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" android:layout_centerVertical="true" />
-    <LinearLayout android:orientation="vertical" android:id="@id/hp2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ci" android:layout_toEndOf="@id/hp1">
-        <TextView android:textSize="15.0dip" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hp3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        <TextView android:textSize="14.0dip" android:textColor="@color/a_u" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/hp4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="xxx的直播" android:singleLine="true" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent" style="@style/zn">
+        <ImageView android:id="@id/ea_" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/ig" android:layout_height="@dimen/ig" android:layout_marginRight="@dimen/k" />
+        <TextView android:id="@android:id/title" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/k5" android:singleLine="true" style="@style/zp" />
+        <TextView android:id="@id/ikj" android:visibility="gone" android:text="@string/hrt" style="@style/zr" />
+        <ImageView android:id="@id/dwi" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/b1a" />
+        <ImageView android:id="@id/h76" android:background="@null" android:padding="4.0dip" android:visibility="gone" android:layout_width="@dimen/ig" android:layout_height="@dimen/ig" android:layout_marginRight="@dimen/k" />
     </LinearLayout>
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="0.0dip" style="@style/zn">
+        <TextView android:id="@id/ied" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="0.0dip" android:text="summary" style="@style/zo" />
+    </LinearLayout>
+</LinearLayout>

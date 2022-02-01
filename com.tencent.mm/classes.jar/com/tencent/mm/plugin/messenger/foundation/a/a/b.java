@@ -2,15 +2,17 @@ package com.tencent.mm.plugin.messenger.foundation.a.a;
 
 import com.tencent.mm.k.a.a.c;
 import com.tencent.mm.k.a.a.d;
-import com.tencent.mm.sdk.e.h;
-import com.tencent.mm.storage.ae;
+import com.tencent.mm.sdk.storage.IStorageEx;
+import com.tencent.mm.storage.aj;
 
 public abstract interface b
-  extends h
+  extends IStorageEx
 {
-  public abstract long a(ae paramae);
+  public abstract int A(String paramString, long paramLong1, long paramLong2);
   
-  public abstract long a(ae paramae, boolean paramBoolean);
+  public abstract long a(aj paramaj);
+  
+  public abstract long a(aj paramaj, boolean paramBoolean);
   
   public abstract boolean a(String paramString, d paramd);
   
@@ -20,37 +22,35 @@ public abstract interface b
   
   public abstract boolean aD(String paramString, long paramLong);
   
+  public abstract long aDZ(String paramString);
+  
   public abstract boolean aE(String paramString, long paramLong);
+  
+  public abstract long aEa(String paramString);
+  
+  public abstract long aEb(String paramString);
+  
+  public abstract long aEc(String paramString);
+  
+  public abstract long aEd(String paramString);
+  
+  public abstract d aEe(String paramString);
+  
+  public abstract boolean aEf(String paramString);
+  
+  public abstract c aEg(String paramString);
+  
+  public abstract aj aEh(String paramString);
+  
+  public abstract StringBuilder aEi(String paramString);
   
   public abstract c aF(String paramString, long paramLong);
   
-  public abstract long aqE(String paramString);
-  
-  public abstract long aqF(String paramString);
-  
-  public abstract long aqG(String paramString);
-  
-  public abstract long aqH(String paramString);
-  
-  public abstract long aqI(String paramString);
-  
-  public abstract d aqJ(String paramString);
-  
-  public abstract boolean aqK(String paramString);
-  
-  public abstract c aqL(String paramString);
-  
-  public abstract ae aqM(String paramString);
-  
-  public abstract StringBuilder aqN(String paramString);
-  
-  public abstract long b(ae paramae);
-  
-  public abstract boolean doL();
+  public abstract long b(aj paramaj);
   
   public abstract c e(String paramString, long paramLong, boolean paramBoolean);
   
-  public abstract int z(String paramString, long paramLong1, long paramLong2);
+  public abstract boolean eiA();
 }
 
 

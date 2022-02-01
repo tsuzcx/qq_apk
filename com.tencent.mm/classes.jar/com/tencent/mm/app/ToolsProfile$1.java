@@ -2,24 +2,24 @@ package com.tencent.mm.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.report.service.KVCommCrossProcessReceiver;
-import com.tencent.mm.sdk.platformtools.av;
-import com.tencent.mm.sdk.platformtools.av.c;
+import com.tencent.mm.sdk.platformtools.MMUncaughtExceptionHandler;
+import com.tencent.mm.sdk.platformtools.MMUncaughtExceptionHandler.IOnUncaughtExceptionListener;
 
 final class ToolsProfile$1
-  implements av.c
+  implements MMUncaughtExceptionHandler.IOnUncaughtExceptionListener
 {
   ToolsProfile$1(ToolsProfile paramToolsProfile) {}
   
-  public final void a(av paramav, String paramString, Throwable paramThrowable)
+  public final void uncaughtException(MMUncaughtExceptionHandler paramMMUncaughtExceptionHandler, String paramString, Throwable paramThrowable)
   {
-    AppMethodBeat.i(186308);
-    KVCommCrossProcessReceiver.dND();
-    AppMethodBeat.o(186308);
+    AppMethodBeat.i(231393);
+    KVCommCrossProcessReceiver.eOD();
+    AppMethodBeat.o(231393);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.app.ToolsProfile.1
  * JD-Core Version:    0.7.0.1
  */

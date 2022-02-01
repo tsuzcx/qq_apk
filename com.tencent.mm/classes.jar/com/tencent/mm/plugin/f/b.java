@@ -4,34 +4,47 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.os.Bundle;
 import android.os.PowerManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.by;
-import com.tencent.mm.g.a.cs;
-import com.tencent.mm.g.a.cs.a;
-import com.tencent.mm.g.a.lt;
-import com.tencent.mm.g.c.ei;
+import com.tencent.mm.g.a.cv;
+import com.tencent.mm.g.a.cv.a;
+import com.tencent.mm.g.a.mj;
+import com.tencent.mm.g.c.eo;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.platformtools.r;
 import com.tencent.mm.platformtools.r.a;
+import com.tencent.mm.plugin.f.a.a;
 import com.tencent.mm.plugin.f.a.f;
 import com.tencent.mm.plugin.f.c.d.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.a;
 import com.tencent.mm.plugin.messenger.foundation.a.a.i.c;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import com.tencent.mm.storage.bv;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.storagebase.h.b;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.m;
+import com.tencent.mm.vfs.aa;
+import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.q;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -40,34 +53,34 @@ import java.util.Iterator;
 public final class b
   implements com.tencent.mm.kernel.api.bucket.c, com.tencent.mm.kernel.b.c
 {
-  private static HashMap<Integer, h.b> oBW;
-  private static b oBZ;
-  private i.a fNK;
-  private com.tencent.mm.plugin.f.b.b oBX;
-  private r.a oBY;
-  private aq oCa;
-  private com.tencent.mm.plugin.f.c.d oCb;
-  public HashSet<Long> oCc;
-  public boolean oCd;
-  private boolean oCe;
-  public com.tencent.mm.plugin.f.c.d oCf;
-  com.tencent.mm.plugin.f.c.c oCg;
-  private HashMap<Integer, com.tencent.mm.plugin.f.a.a> oCh;
-  private d.a oCi;
-  private d.a oCj;
-  private com.tencent.mm.sdk.b.c<cs> oCk;
-  private boolean oCl;
-  private boolean oCm;
-  private BroadcastReceiver oCn;
-  private Runnable oCo;
-  private boolean oCp;
-  private com.tencent.mm.sdk.b.c<by> oCq;
+  private static HashMap<Integer, h.b> kvw;
+  private static b pPK;
+  private boolean cSX;
+  private i.a gsV;
+  private HashMap<Integer, a> iLv;
+  private r.a kvx;
+  private com.tencent.mm.plugin.f.b.b pPJ;
+  private MMHandler pPL;
+  private com.tencent.mm.plugin.f.c.d pPM;
+  public HashSet<Long> pPN;
+  public boolean pPO;
+  private boolean pPP;
+  public com.tencent.mm.plugin.f.c.d pPQ;
+  com.tencent.mm.plugin.f.c.c pPR;
+  private d.a pPS;
+  private d.a pPT;
+  private IListener<cv> pPU;
+  private boolean pPV;
+  private BroadcastReceiver pPW;
+  private Runnable pPX;
+  private boolean pPY;
+  private IListener<com.tencent.mm.g.a.ca> pPZ;
   
   static
   {
     AppMethodBeat.i(22725);
     HashMap localHashMap = new HashMap();
-    oBW = localHashMap;
+    kvw = localHashMap;
     localHashMap.put(Integer.valueOf("WXFILEINDEX_TABLE".hashCode()), new h.b()
     {
       public final String[] getSQLs()
@@ -81,14 +94,14 @@ public final class b
   public b()
   {
     AppMethodBeat.i(22704);
-    this.oCb = null;
-    this.oCc = new HashSet();
-    this.oCd = false;
-    this.oCe = false;
-    this.oCf = null;
-    this.oCg = null;
-    this.oCh = new HashMap();
-    this.oCi = new d.a()
+    this.pPM = null;
+    this.pPN = new HashSet();
+    this.pPO = false;
+    this.pPP = false;
+    this.pPQ = null;
+    this.pPR = null;
+    this.iLv = new HashMap();
+    this.pPS = new d.a()
     {
       public final void finish()
       {
@@ -99,14 +112,14 @@ public final class b
           {
             AppMethodBeat.i(22696);
             b.a(b.this, null);
-            b.this.jr(false);
+            b.this.kt(false);
             AppMethodBeat.o(22696);
           }
         });
         AppMethodBeat.o(22697);
       }
     };
-    this.oCj = new d.a()
+    this.pPT = new d.a()
     {
       public final void finish()
       {
@@ -124,12 +137,12 @@ public final class b
         AppMethodBeat.o(22703);
       }
     };
-    this.fNK = new i.a()
+    this.gsV = new i.a()
     {
       public final void a(i paramAnonymousi, final i.c paramAnonymousc)
       {
         AppMethodBeat.i(22686);
-        if (com.tencent.mm.sdk.a.b.fnH())
+        if (CrashReportFactory.isBackupMerge())
         {
           AppMethodBeat.o(22686);
           return;
@@ -139,7 +152,7 @@ public final class b
           AppMethodBeat.o(22686);
           return;
         }
-        if ((paramAnonymousc == null) || (paramAnonymousc.gQn == null))
+        if ((paramAnonymousc == null) || (paramAnonymousc.hIs == null))
         {
           AppMethodBeat.o(22686);
           return;
@@ -149,18 +162,18 @@ public final class b
           public final void run()
           {
             AppMethodBeat.i(22685);
-            ae.d("MicroMsg.CalcWxService", "on notify change [%s] [%d]", new Object[] { paramAnonymousc.vWi, Integer.valueOf(paramAnonymousc.gQn.size()) });
-            if ("delete".equals(paramAnonymousc.vWi))
+            Log.d("MicroMsg.CalcWxService", "on notify change [%s] [%d]", new Object[] { paramAnonymousc.zqn, Integer.valueOf(paramAnonymousc.hIs.size()) });
+            if ("delete".equals(paramAnonymousc.zqn))
             {
               AppMethodBeat.o(22685);
               return;
             }
             int i;
             Iterator localIterator;
-            if ("delete".equals(paramAnonymousc.vWi))
+            if ("delete".equals(paramAnonymousc.zqn))
             {
               i = 2;
-              localIterator = paramAnonymousc.gQn.iterator();
+              localIterator = paramAnonymousc.hIs.iterator();
             }
             for (;;)
             {
@@ -168,24 +181,24 @@ public final class b
               if (!localIterator.hasNext()) {
                 break label230;
               }
-              Object localObject = (bv)localIterator.next();
+              Object localObject = (com.tencent.mm.storage.ca)localIterator.next();
               if (localObject != null)
               {
                 b localb = b.this;
-                long l = ((ei)localObject).field_msgId;
-                if (localb.oCd) {}
-                for (boolean bool = localb.oCc.contains(Long.valueOf(l));; bool = false)
+                long l = ((eo)localObject).field_msgId;
+                if (localb.pPO) {}
+                for (boolean bool = localb.pPN.contains(Long.valueOf(l));; bool = false)
                 {
                   if (!bool) {
                     break label199;
                   }
-                  ae.d("MicroMsg.CalcWxService", "it locked now [%d]", new Object[] { Long.valueOf(((ei)localObject).field_msgId) });
+                  Log.d("MicroMsg.CalcWxService", "it locked now [%d]", new Object[] { Long.valueOf(((eo)localObject).field_msgId) });
                   break label94;
                   i = 1;
                   break;
                 }
                 label199:
-                localObject = new com.tencent.mm.plugin.f.c.b((bv)localObject, i);
+                localObject = new com.tencent.mm.plugin.f.c.b((com.tencent.mm.storage.ca)localObject, i);
                 b.d(b.this).postToWorker((Runnable)localObject);
               }
             }
@@ -196,28 +209,28 @@ public final class b
         AppMethodBeat.o(22686);
       }
     };
-    this.oCk = new com.tencent.mm.sdk.b.c() {};
-    this.oCl = false;
-    this.oCm = true;
-    this.oCp = false;
-    this.oCq = new com.tencent.mm.sdk.b.c()
+    this.pPU = new IListener() {};
+    this.cSX = false;
+    this.pPV = true;
+    this.pPY = false;
+    this.pPZ = new IListener()
     {
-      private boolean bUr()
+      private boolean csf()
       {
         AppMethodBeat.i(22692);
-        ae.i("MicroMsg.CalcWxService", "%s clean wx file index event ", new Object[] { b.this.bpA() });
+        Log.i("MicroMsg.CalcWxService", "%s clean wx file index event ", new Object[] { b.this.bgQ() });
         b.d(b.this, true);
         try
         {
-          com.tencent.mm.kernel.g.ajU().aw(new Runnable()
+          g.aAk().postToWorker(new Runnable()
           {
             public final void run()
             {
               AppMethodBeat.i(22691);
-              com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVi, Long.valueOf(-1L));
-              com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVh, Long.valueOf(0L));
-              com.tencent.mm.kernel.g.ajR().ajA().fuc();
-              b.bUj().bUk().delete();
+              g.aAh().azQ().set(ar.a.OdA, Long.valueOf(-1L));
+              g.aAh().azQ().set(ar.a.Odz, Long.valueOf(0L));
+              g.aAh().azQ().gBI();
+              b.crW().crX().delete();
               b.d(b.this, false);
               AppMethodBeat.o(22691);
             }
@@ -229,7 +242,7 @@ public final class b
         {
           for (;;)
           {
-            ae.printErrStackTrace("MicroMsg.CalcWxService", localException, "%s clean wx file error", new Object[] { b.this.bpA() });
+            Log.printErrStackTrace("MicroMsg.CalcWxService", localException, "%s clean wx file error", new Object[] { b.this.bgQ() });
           }
         }
       }
@@ -237,7 +250,7 @@ public final class b
     AppMethodBeat.o(22704);
   }
   
-  public static void J(int paramInt, long paramLong)
+  public static void M(int paramInt, long paramLong)
   {
     int i = 30;
     AppMethodBeat.i(22717);
@@ -256,9 +269,9 @@ public final class b
       if (paramInt < 5) {
         i = 5;
       }
-      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVg, Integer.valueOf(i));
-      paramInt = ((Integer)com.tencent.mm.plugin.report.service.g.a(i, new int[] { 5, 10, 20, 25, 30 }, 10, 15)).intValue();
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(664L, paramInt, 1L, false);
+      g.aAh().azQ().set(ar.a.Ody, Integer.valueOf(i));
+      paramInt = ((Integer)h.a(i, new int[] { 5, 10, 20, 25, 30 }, 10, 15)).intValue();
+      h.CyF.idkeyStat(664L, paramInt, 1L, false);
       AppMethodBeat.o(22717);
       return;
       paramInt -= 5;
@@ -266,47 +279,85 @@ public final class b
     }
   }
   
-  public static b bUj()
+  public static b crW()
   {
     try
     {
       AppMethodBeat.i(22705);
-      if (oBZ == null) {
-        oBZ = new b();
+      if (pPK == null) {
+        pPK = new b();
       }
-      b localb = oBZ;
+      b localb = pPK;
       AppMethodBeat.o(22705);
       return localb;
     }
     finally {}
   }
   
-  public static long bUm()
+  public static void crZ()
+  {
+    AppMethodBeat.i(231649);
+    int i;
+    if (Util.getInt(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_delete_oversize_sns_db", "0", false, true), 0) > 0) {
+      i = 1;
+    }
+    while (i != 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      g.aAi();
+      long l1 = new o(g.aAh().cachePath + "SnsMicroMsg.db").length();
+      long l3 = Util.getLong(com.tencent.mm.plugin.expt.h.d.cRY().b("clicfg_clean_db_count", Long.toString(50000L), false, true), 50000L);
+      long l2 = aj.faO().feV();
+      if (l2 > l3)
+      {
+        h.CyF.dN(150, 101);
+        aj.fbi();
+        localStringBuilder = new StringBuilder();
+        g.aAi();
+        l3 = new o(g.aAh().cachePath + "SnsMicroMsg.db").length();
+        long l4 = aj.faO().feV();
+        h.CyF.n(150L, 102L, l2 - l4);
+        h.CyF.a(22134, new Object[] { Integer.valueOf(1), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4) });
+        Log.i("MicroMsg.CalcWxService", "cleanSnsDb:%b, snsCount:%s, newSnsCount:%s, snsDbSize:%s, newSnsDbSize:%s", new Object[] { Boolean.TRUE, Long.valueOf(l2), Long.valueOf(l4), Util.getSizeKB(l1), Util.getSizeKB(l3) });
+        AppMethodBeat.o(231649);
+        return;
+        i = 0;
+      }
+      else
+      {
+        Log.i("MicroMsg.CalcWxService", "cleanSnsDb:%b, snsCount:%s, snsDbSize:%s", new Object[] { Boolean.FALSE, Long.valueOf(l2), Util.getSizeKB(l1) });
+        h.CyF.a(22134, new Object[] { Integer.valueOf(0), Long.valueOf(l1), Long.valueOf(l2), Integer.valueOf(0), Integer.valueOf(0) });
+      }
+    }
+    AppMethodBeat.o(231649);
+  }
+  
+  public static long csa()
   {
     AppMethodBeat.i(22713);
-    long l2 = ((Long)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IVi, Long.valueOf(-1L))).longValue();
+    long l2 = ((Long)g.aAh().azQ().get(ar.a.OdA, Long.valueOf(-1L))).longValue();
     long l1 = l2;
     if (l2 <= -1L)
     {
-      l1 = ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().arA("message");
-      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVi, Long.valueOf(l1));
+      l1 = ((l)g.af(l.class)).eiy().aEV("message");
+      g.aAh().azQ().set(ar.a.OdA, Long.valueOf(l1));
     }
     AppMethodBeat.o(22713);
     return l1;
   }
   
-  public static long bUp()
+  public static long csd()
   {
     AppMethodBeat.i(22719);
-    long l = ((Long)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IVh, Long.valueOf(0L))).longValue();
+    long l = ((Long)g.aAh().azQ().get(ar.a.Odz, Long.valueOf(0L))).longValue();
     AppMethodBeat.o(22719);
     return l;
   }
   
-  public static int bUq()
+  public static int cse()
   {
     AppMethodBeat.i(22720);
-    int i = ((Integer)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IVg, Integer.valueOf(5))).intValue();
+    int i = ((Integer)g.aAh().azQ().get(ar.a.Ody, Integer.valueOf(5))).intValue();
     AppMethodBeat.o(22720);
     return i;
   }
@@ -324,7 +375,7 @@ public final class b
           b.f(b.this).cancel();
           b.f(b.this).isStop = true;
           b.b(b.this, null);
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(664L, 2L, 1L, false);
+          h.CyF.idkeyStat(664L, 2L, 1L, false);
         }
         if (b.h(b.this) != null) {
           b.h(b.this).isStop = true;
@@ -335,57 +386,73 @@ public final class b
     AppMethodBeat.o(22710);
   }
   
-  public final void ac(bv parambv)
+  public final void BU(long paramLong)
+  {
+    AppMethodBeat.i(22718);
+    Log.d("MicroMsg.CalcWxService", "%d update scan msgid[%d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(paramLong) });
+    g.aAh().azQ().set(ar.a.Odz, Long.valueOf(paramLong));
+    AppMethodBeat.o(22718);
+  }
+  
+  public final void an(com.tencent.mm.storage.ca paramca)
   {
     AppMethodBeat.i(22716);
-    if (parambv == null)
+    if (paramca == null)
     {
       AppMethodBeat.o(22716);
       return;
     }
     try
     {
-      com.tencent.mm.plugin.f.a.a locala = (com.tencent.mm.plugin.f.a.a)this.oCh.get(Integer.valueOf(parambv.getType()));
+      a locala = (a)this.iLv.get(Integer.valueOf(paramca.getType()));
       if (locala != null) {
-        locala.ad(parambv);
+        locala.ao(paramca);
       }
       AppMethodBeat.o(22716);
       return;
     }
-    catch (Exception parambv)
+    catch (Exception paramca)
     {
-      ae.printErrStackTrace("MicroMsg.CalcWxService", parambv, "", new Object[0]);
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(664L, 5L, 1L, false);
+      Log.printErrStackTrace("MicroMsg.CalcWxService", paramca, "", new Object[0]);
+      h.CyF.idkeyStat(664L, 5L, 1L, false);
       AppMethodBeat.o(22716);
     }
   }
   
-  public final com.tencent.mm.plugin.f.b.b bUk()
+  public final String bgQ()
+  {
+    AppMethodBeat.i(22721);
+    String str = hashCode();
+    AppMethodBeat.o(22721);
+    return str;
+  }
+  
+  public final com.tencent.mm.plugin.f.b.b crX()
   {
     AppMethodBeat.i(22706);
-    if (this.oBX == null) {
-      this.oBX = new com.tencent.mm.plugin.f.b.b(this.oBY);
+    if (this.pPJ == null) {
+      this.pPJ = new com.tencent.mm.plugin.f.b.b(this.kvx);
     }
-    com.tencent.mm.plugin.f.b.b localb = this.oBX;
+    com.tencent.mm.plugin.f.b.b localb = this.pPJ;
     AppMethodBeat.o(22706);
     return localb;
   }
   
-  public final void bUl()
+  public final void crY()
   {
     boolean bool = false;
     AppMethodBeat.i(22709);
-    k[] arrayOfk = new k(com.tencent.mm.loader.j.b.asj()).a(new m()
+    final o[] arrayOfo = new o(com.tencent.mm.loader.j.b.aKJ()).a(new q()
     {
-      public final boolean accept(k paramAnonymousk)
+      public final boolean accept(o paramAnonymouso)
       {
         AppMethodBeat.i(22698);
-        if (paramAnonymousk.isDirectory())
+        if (paramAnonymouso.isDirectory())
         {
           AppMethodBeat.o(22698);
           return false;
         }
-        if ((paramAnonymousk.getName().endsWith(".apk")) || (paramAnonymousk.getName().endsWith(".temp")))
+        if ((paramAnonymouso.getName().endsWith(".apk")) || (paramAnonymouso.getName().endsWith(".temp")))
         {
           AppMethodBeat.o(22698);
           return true;
@@ -394,61 +461,194 @@ public final class b
         return false;
       }
     });
-    if ((arrayOfk != null) && (arrayOfk.length > 0))
+    if ((arrayOfo != null) && (arrayOfo.length > 0))
     {
-      String str = bpA();
-      if (this.oCf != null) {
+      String str = bgQ();
+      if (this.pPQ != null) {
         bool = true;
       }
-      ae.i("MicroMsg.CalcWxService", "%s stop manual scan now manualScanTask[%b]", new Object[] { str, Boolean.valueOf(bool) });
-      post(new b.10(this, arrayOfk));
+      Log.i("MicroMsg.CalcWxService", "%s stop manual scan now manualScanTask[%b]", new Object[] { str, Boolean.valueOf(bool) });
+      post(new Runnable()
+      {
+        public final void run()
+        {
+          AppMethodBeat.i(22699);
+          if ((arrayOfo == null) || (arrayOfo.length == 0))
+          {
+            Log.e("MicroMsg.CalcWxService", "apkList is null or 0");
+            AppMethodBeat.o(22699);
+            return;
+          }
+          o[] arrayOfo = arrayOfo;
+          int m = arrayOfo.length;
+          int j = 0;
+          int k = 0;
+          Object localObject3 = null;
+          Object localObject4 = null;
+          if (j < m)
+          {
+            o localo = arrayOfo[j];
+            Object localObject1;
+            Object localObject2;
+            int i;
+            if (localo.getName().endsWith(".temp")) {
+              if (Util.milliSecondsToNow(localo.lastModified()) > 86400000L)
+              {
+                localo.delete();
+                localObject1 = localObject4;
+                localObject2 = localObject3;
+                i = k;
+              }
+            }
+            for (;;)
+            {
+              j += 1;
+              k = i;
+              localObject3 = localObject2;
+              localObject4 = localObject1;
+              break;
+              if (localObject3 == null)
+              {
+                i = k;
+                localObject2 = localo;
+                localObject1 = localObject4;
+              }
+              else if (localo.lastModified() > localObject3.lastModified())
+              {
+                localObject3.delete();
+                i = k;
+                localObject2 = localo;
+                localObject1 = localObject4;
+              }
+              else
+              {
+                localo.delete();
+                i = k;
+                localObject2 = localObject3;
+                localObject1 = localObject4;
+                continue;
+                i = k;
+                localObject2 = localObject3;
+                localObject1 = localObject4;
+                if (localo.getName().endsWith(".apk"))
+                {
+                  localObject1 = MMApplicationContext.getContext().getPackageManager().getPackageArchiveInfo(aa.z(localo.her()), 128);
+                  if (localObject1 != null)
+                  {
+                    if ((((PackageInfo)localObject1).packageName != null) && (!((PackageInfo)localObject1).packageName.equals(MMApplicationContext.getApplicationId())))
+                    {
+                      localo.delete();
+                      i = k;
+                      localObject2 = localObject3;
+                      localObject1 = localObject4;
+                      continue;
+                    }
+                    localObject1 = ((PackageInfo)localObject1).applicationInfo;
+                    if ((localObject1 != null) && (((ApplicationInfo)localObject1).metaData != null))
+                    {
+                      i = ((ApplicationInfo)localObject1).metaData.getInt("com.tencent.mm.BuildInfo.CLIENT_VERSION");
+                      Log.d("MicroMsg.CalcWxService", "startCleanAPKFiles:%d, currentVersion;%d", new Object[] { Integer.valueOf(i), Integer.valueOf(com.tencent.mm.protocal.d.KyO) });
+                      if (i <= com.tencent.mm.protocal.d.KyO)
+                      {
+                        localo.delete();
+                        i = k;
+                        localObject2 = localObject3;
+                        localObject1 = localObject4;
+                        continue;
+                      }
+                      if (localObject4 == null)
+                      {
+                        localObject2 = localObject3;
+                        localObject1 = localo;
+                        continue;
+                      }
+                      if (i > k)
+                      {
+                        localObject4.delete();
+                        localObject2 = localObject3;
+                        localObject1 = localo;
+                        continue;
+                      }
+                      localo.delete();
+                      i = k;
+                      localObject2 = localObject3;
+                      localObject1 = localObject4;
+                      continue;
+                    }
+                  }
+                  if (k != 0)
+                  {
+                    localo.delete();
+                    i = k;
+                    localObject2 = localObject3;
+                    localObject1 = localObject4;
+                  }
+                  else if (localObject4 == null)
+                  {
+                    i = k;
+                    localObject2 = localObject3;
+                    localObject1 = localo;
+                  }
+                  else if (localo.lastModified() > localObject4.lastModified())
+                  {
+                    localObject4.delete();
+                    i = k;
+                    localObject2 = localObject3;
+                    localObject1 = localo;
+                  }
+                  else
+                  {
+                    localo.delete();
+                    i = k;
+                    localObject2 = localObject3;
+                    localObject1 = localObject4;
+                  }
+                }
+              }
+            }
+          }
+          AppMethodBeat.o(22699);
+        }
+      });
     }
     AppMethodBeat.o(22709);
   }
   
-  public final boolean bUn()
+  public final boolean csb()
   {
     AppMethodBeat.i(22714);
-    long l1 = bUm();
-    long l2 = bUp();
+    long l1 = csa();
+    long l2 = csd();
     if (l2 >= l1) {}
     for (boolean bool = true;; bool = false)
     {
-      ae.i("MicroMsg.CalcWxService", "%d scan finish [%d %d %b]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bool) });
-      if ((bool) && (((Long)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IVl, Long.valueOf(0L))).longValue() <= 0L)) {
-        com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVl, Long.valueOf(bu.aRi()));
+      Log.i("MicroMsg.CalcWxService", "%d scan finish [%d %d %b]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(l1), Long.valueOf(l2), Boolean.valueOf(bool) });
+      if ((bool) && (((Long)g.aAh().azQ().get(ar.a.OdD, Long.valueOf(0L))).longValue() <= 0L)) {
+        g.aAh().azQ().set(ar.a.OdD, Long.valueOf(Util.nowSecond()));
       }
       AppMethodBeat.o(22714);
       return bool;
     }
   }
   
-  public final void bUo()
+  public final void csc()
   {
     AppMethodBeat.i(22715);
-    this.oCd = false;
-    this.oCc.clear();
-    ae.d("MicroMsg.CalcWxService", "%d unlock msg change [%s]", new Object[] { Integer.valueOf(hashCode()), bu.fpN() });
+    this.pPO = false;
+    this.pPN.clear();
+    Log.d("MicroMsg.CalcWxService", "%d unlock msg change [%s]", new Object[] { Integer.valueOf(hashCode()), Util.getStack() });
     AppMethodBeat.o(22715);
   }
   
-  public final String bpA()
-  {
-    AppMethodBeat.i(22721);
-    String str = hashCode();
-    AppMethodBeat.o(22721);
-    return str;
-  }
-  
-  public final void jr(final boolean paramBoolean)
+  public final void kt(final boolean paramBoolean)
   {
     boolean bool = false;
     AppMethodBeat.i(22708);
-    String str = bpA();
-    if (this.oCf != null) {
+    String str = bgQ();
+    if (this.pPQ != null) {
       bool = true;
     }
-    ae.d("MicroMsg.CalcWxService", "%s manual scan now manualScanTask[%b] uiClick[%b]", new Object[] { str, Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
+    Log.d("MicroMsg.CalcWxService", "%s manual scan now manualScanTask[%b] uiClick[%b]", new Object[] { str, Boolean.valueOf(bool), Boolean.valueOf(paramBoolean) });
     post(new Runnable()
     {
       public final void run()
@@ -464,27 +664,27 @@ public final class b
         }
         if (b.b(b.this) == null)
         {
-          lt locallt = new lt();
-          if (b.this.bUn())
+          mj localmj = new mj();
+          if (b.this.csb())
           {
             b.a(b.this, false);
-            locallt.dzW.cQF = true;
-            com.tencent.mm.sdk.b.a.IvT.l(locallt);
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(664L, 9L, 1L, false);
+            localmj.dRJ.dgZ = true;
+            EventCenter.instance.publish(localmj);
+            h.CyF.idkeyStat(664L, 9L, 1L, false);
             AppMethodBeat.o(22694);
             return;
           }
           if (paramBoolean) {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(664L, 7L, 1L, false);
+            h.CyF.idkeyStat(664L, 7L, 1L, false);
           }
-          locallt.dzW.progress = b.bUp();
-          locallt.dzW.dzX = b.bUm();
-          locallt.dzW.cQF = false;
-          com.tencent.mm.sdk.b.a.IvT.l(locallt);
-          b.a(b.this, new com.tencent.mm.plugin.f.c.d("message", b.bUp(), b.bUq(), b.c(b.this)));
+          localmj.dRJ.progress = b.csd();
+          localmj.dRJ.total = b.csa();
+          localmj.dRJ.dgZ = false;
+          EventCenter.instance.publish(localmj);
+          b.a(b.this, new com.tencent.mm.plugin.f.c.d("message", b.csd(), b.cse(), b.c(b.this)));
           b.d(b.this).postToWorker(b.b(b.this));
-          if (((Long)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IVk, Long.valueOf(0L))).longValue() <= 0L) {
-            com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVk, Long.valueOf(bu.aRi()));
+          if (((Long)g.aAh().azQ().get(ar.a.OdC, Long.valueOf(0L))).longValue() <= 0L) {
+            g.aAh().azQ().set(ar.a.OdC, Long.valueOf(Util.nowSecond()));
           }
         }
         AppMethodBeat.o(22694);
@@ -496,27 +696,27 @@ public final class b
   public final void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(22711);
-    ae.i("MicroMsg.CalcWxService", "%s CalcWxService Initialized", new Object[] { bpA() });
-    if (this.oCa == null)
+    Log.i("MicroMsg.CalcWxService", "%s CalcWxService Initialized", new Object[] { bgQ() });
+    if (this.pPL == null)
     {
-      ae.i("MicroMsg.CalcWxService", "%s init calc wx thread", new Object[] { bpA() });
-      this.oCa = new aq("calc-wx");
-      this.oCa.setLogging(false);
+      Log.i("MicroMsg.CalcWxService", "%s init calc wx thread", new Object[] { bgQ() });
+      this.pPL = new MMHandler("calc-wx");
+      this.pPL.setLogging(false);
     }
-    paramc = com.tencent.mm.kernel.g.ajR().cachePath + "WxFileIndex.db";
-    this.oBY = r.a(hashCode(), paramc, oBW, true);
-    this.oCh.put(Integer.valueOf(43), new com.tencent.mm.plugin.f.a.e());
-    this.oCh.put(Integer.valueOf(62), new com.tencent.mm.plugin.f.a.e());
-    this.oCh.put(Integer.valueOf(44), new com.tencent.mm.plugin.f.a.e());
-    this.oCh.put(Integer.valueOf(486539313), new com.tencent.mm.plugin.f.a.e());
-    this.oCh.put(Integer.valueOf(34), new f());
-    this.oCh.put(Integer.valueOf(3), new com.tencent.mm.plugin.f.a.d());
-    this.oCh.put(Integer.valueOf(49), new com.tencent.mm.plugin.f.a.c());
-    this.oCh.put(Integer.valueOf(268435505), new com.tencent.mm.plugin.f.a.b());
-    bUm();
-    ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().a(this.fNK, null);
-    com.tencent.mm.sdk.b.a.IvT.b(this.oCk);
-    paramc = ak.getContext();
+    paramc = g.aAh().cachePath + "WxFileIndex.db";
+    this.kvx = r.a(hashCode(), paramc, kvw, true);
+    this.iLv.put(Integer.valueOf(43), new com.tencent.mm.plugin.f.a.e());
+    this.iLv.put(Integer.valueOf(62), new com.tencent.mm.plugin.f.a.e());
+    this.iLv.put(Integer.valueOf(44), new com.tencent.mm.plugin.f.a.e());
+    this.iLv.put(Integer.valueOf(486539313), new com.tencent.mm.plugin.f.a.e());
+    this.iLv.put(Integer.valueOf(34), new f());
+    this.iLv.put(Integer.valueOf(3), new com.tencent.mm.plugin.f.a.d());
+    this.iLv.put(Integer.valueOf(49), new com.tencent.mm.plugin.f.a.c());
+    this.iLv.put(Integer.valueOf(268435505), new com.tencent.mm.plugin.f.a.b());
+    csa();
+    ((l)g.af(l.class)).eiy().a(this.gsV, null);
+    EventCenter.instance.add(this.pPU);
+    paramc = MMApplicationContext.getContext();
     Object localObject = paramc.registerReceiver(null, new IntentFilter("android.intent.action.BATTERY_CHANGED"));
     boolean bool;
     if (localObject != null)
@@ -526,10 +726,10 @@ public final class b
         bool = true;
       }
     }
-    for (this.oCl = bool;; this.oCl = false)
+    for (this.cSX = bool;; this.cSX = false)
     {
-      this.oCm = ((PowerManager)paramc.getSystemService("power")).isScreenOn();
-      this.oCn = new BroadcastReceiver()
+      this.pPV = ((PowerManager)paramc.getSystemService("power")).isScreenOn();
+      this.pPW = new BroadcastReceiver()
       {
         public final void onReceive(Context paramAnonymousContext, Intent paramAnonymousIntent)
         {
@@ -549,7 +749,7 @@ public final class b
             if ((!b.j(b.this)) || (b.k(b.this))) {
               break label273;
             }
-            ae.i("MicroMsg.CalcWxService", "it is charging and screen off, 5 min to calc");
+            Log.i("MicroMsg.CalcWxService", "it is charging and screen off, 5 min to calc");
             if (b.l(b.this) != null) {
               break label313;
             }
@@ -558,29 +758,33 @@ public final class b
               public final void run()
               {
                 AppMethodBeat.i(22689);
-                b.this.bUl();
-                ae.i("MicroMsg.CalcWxService", "start to calc");
-                if (b.this.bUn())
+                b.this.crY();
+                b.crZ();
+                Log.i("MicroMsg.CalcWxService", "start to calc");
+                if (b.this.csb())
                 {
                   b localb = b.this;
-                  if (bu.DD(((Long)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IVj, Long.valueOf(0L))).longValue()) >= 259200000L)
+                  long l = ((Long)g.aAh().azQ().get(ar.a.OdB, Long.valueOf(0L))).longValue();
+                  MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("CleanCalcMMKV");
+                  Log.i("MicroMsg.CalcWxService", "checkAndReport, midImgSize:%s, hevcSize:%s", new Object[] { Long.valueOf(localMultiProcessMMKV.getLong("CleanCalcMidImg", 0L)), Long.valueOf(localMultiProcessMMKV.getLong("CleanCalcHevcImg", 0L)) });
+                  if (Util.milliSecondsToNow(l) >= 259200000L)
                   {
-                    if (localb.oCg != null) {
-                      localb.oCg.isStop = true;
+                    if (localb.pPR != null) {
+                      localb.pPR.isStop = true;
                     }
-                    localb.oCg = new com.tencent.mm.plugin.f.c.c();
-                    localb.post(localb.oCg);
-                    com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVj, Long.valueOf(bu.fpO()));
+                    localb.pPR = new com.tencent.mm.plugin.f.c.c();
+                    localb.post(localb.pPR);
+                    g.aAh().azQ().set(ar.a.OdB, Long.valueOf(Util.nowMilliSecond()));
                   }
                   AppMethodBeat.o(22689);
                   return;
                 }
-                com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(664L, 1L, 1L, false);
+                h.CyF.idkeyStat(664L, 1L, 1L, false);
                 b.i(b.this);
                 AppMethodBeat.o(22689);
               }
             });
-            bc.ajU().n(b.l(b.this), 300000L);
+            bg.aAk().postToWorkerDelayed(b.l(b.this), 300000L);
             AppMethodBeat.o(22690);
             return;
             if (!paramAnonymousContext.equals("android.intent.action.SCREEN_ON")) {
@@ -614,8 +818,8 @@ public final class b
           label273:
           if (b.l(b.this) != null)
           {
-            bc.ajU();
-            ar.ay(b.l(b.this));
+            bg.aAk();
+            MMHandlerThread.removeRunnable(b.l(b.this));
             b.b(b.this, null);
           }
           b.m(b.this);
@@ -628,10 +832,10 @@ public final class b
       ((IntentFilter)localObject).addAction("android.intent.action.SCREEN_OFF");
       ((IntentFilter)localObject).addAction("android.intent.action.ACTION_POWER_CONNECTED");
       ((IntentFilter)localObject).addAction("android.intent.action.ACTION_POWER_DISCONNECTED");
-      paramc.registerReceiver(this.oCn, (IntentFilter)localObject);
-      com.tencent.mm.sdk.b.a.IvT.b(this.oCq);
-      if (this.oCp) {
-        com.tencent.mm.sdk.b.a.IvT.l(new by());
+      paramc.registerReceiver(this.pPW, (IntentFilter)localObject);
+      EventCenter.instance.add(this.pPZ);
+      if (this.pPY) {
+        EventCenter.instance.publish(new com.tencent.mm.g.a.ca());
       }
       AppMethodBeat.o(22711);
       return;
@@ -643,36 +847,36 @@ public final class b
   public final void onAccountRelease()
   {
     AppMethodBeat.i(22712);
-    ae.i("MicroMsg.CalcWxService", "CalcWxService Release");
-    this.oCc.clear();
-    this.oCd = false;
-    if (this.oBY != null)
+    Log.i("MicroMsg.CalcWxService", "CalcWxService Release");
+    this.pPN.clear();
+    this.pPO = false;
+    if (this.kvx != null)
     {
-      this.oBY.ra(hashCode());
-      this.oBY = null;
+      this.kvx.uS(hashCode());
+      this.kvx = null;
     }
-    ((l)com.tencent.mm.kernel.g.ab(l.class)).doJ().a(this.fNK);
-    com.tencent.mm.sdk.b.a.IvT.d(this.oCk);
-    this.oCh.clear();
-    if (this.oCn != null)
+    ((l)g.af(l.class)).eiy().a(this.gsV);
+    EventCenter.instance.removeListener(this.pPU);
+    this.iLv.clear();
+    if (this.pPW != null)
     {
-      ak.getContext().unregisterReceiver(this.oCn);
-      this.oCn = null;
+      MMApplicationContext.getContext().unregisterReceiver(this.pPW);
+      this.pPW = null;
     }
-    if (this.oCo != null)
+    if (this.pPX != null)
     {
-      bc.ajU();
-      ar.ay(this.oCo);
-      this.oCo = null;
+      bg.aAk();
+      MMHandlerThread.removeRunnable(this.pPX);
+      this.pPX = null;
     }
     stopScan();
-    if (this.oCa != null)
+    if (this.pPL != null)
     {
-      ae.i("MicroMsg.CalcWxService", "%s quit calc wx thread", new Object[] { bpA() });
-      this.oCa.quit();
+      Log.i("MicroMsg.CalcWxService", "%s quit calc wx thread", new Object[] { bgQ() });
+      this.pPL.quit();
     }
-    this.oCa = null;
-    com.tencent.mm.sdk.b.a.IvT.d(this.oCq);
+    this.pPL = null;
+    EventCenter.instance.removeListener(this.pPZ);
     AppMethodBeat.o(22712);
   }
   
@@ -681,34 +885,26 @@ public final class b
     AppMethodBeat.i(22707);
     try
     {
-      if (this.oCa != null)
+      if (this.pPL != null)
       {
-        this.oCa.postToWorker(paramRunnable);
+        this.pPL.postToWorker(paramRunnable);
         AppMethodBeat.o(22707);
         return;
       }
-      ae.w("MicroMsg.CalcWxService", "%s post runnable but thread is null ", new Object[] { bpA() });
+      Log.w("MicroMsg.CalcWxService", "%s post runnable but thread is null ", new Object[] { bgQ() });
       AppMethodBeat.o(22707);
       return;
     }
     catch (Exception paramRunnable)
     {
-      ae.printErrStackTrace("MicroMsg.CalcWxService", paramRunnable, "post error: [%s]", new Object[] { paramRunnable.toString() });
+      Log.printErrStackTrace("MicroMsg.CalcWxService", paramRunnable, "post error: [%s]", new Object[] { paramRunnable.toString() });
       AppMethodBeat.o(22707);
     }
-  }
-  
-  public final void tP(long paramLong)
-  {
-    AppMethodBeat.i(22718);
-    ae.d("MicroMsg.CalcWxService", "%d update scan msgid[%d]", new Object[] { Integer.valueOf(hashCode()), Long.valueOf(paramLong) });
-    com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IVh, Long.valueOf(paramLong));
-    AppMethodBeat.o(22718);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.f.b
  * JD-Core Version:    0.7.0.1
  */

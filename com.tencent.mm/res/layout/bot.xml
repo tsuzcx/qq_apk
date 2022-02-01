@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="9.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/hdz" android:background="@drawable/c51" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/hdw" android:padding="@dimen/c0" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_no_effect" app:iconColor="@color/aj" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-</android.support.constraint.ConstraintLayout>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginTop="21.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="7.0dip" />
+    <TextView android:textSize="@dimen/ac" android:textColor="#ff888888" android:id="@id/id1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="24.0dip" android:layout_marginRight="24.0dip" android:layout_marginBottom="21.0dip" android:text="信息由小程序服务方提供，可能由于信息提供方与时间存在数值差异" />
+</LinearLayout>

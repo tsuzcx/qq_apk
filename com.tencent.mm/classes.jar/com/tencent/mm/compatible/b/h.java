@@ -2,13 +2,13 @@ package com.tencent.mm.compatible.b;
 
 public final class h
 {
-  public a fYd = null;
-  public a fYe = null;
-  public a fYf = null;
+  public a gDj = null;
+  public a gDk = null;
+  public a gDl = null;
   
   public static abstract interface a
   {
-    public abstract boolean ZR();
+    public abstract boolean anE();
     
     public abstract boolean isAvailable();
   }

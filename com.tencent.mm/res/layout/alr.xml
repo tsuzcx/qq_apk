@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<ScrollView android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/jv" android:textColor="@color/yn" android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:id="@id/gzo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/w" android:layout_marginBottom="@dimen/jd" android:text="" />
-</LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:gravity="center" android:id="@id/d5j" android:layout_width="fill_parent" android:layout_height="110.0dip" android:layout_marginTop="40.0dip" />
+        <LinearLayout android:orientation="vertical" android:id="@id/i4p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="32.0dip">
+            <TextView android:textSize="18.0dip" android:textColor="@color/a2x" android:gravity="center" android:id="@id/d5m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip" />
+            <ProgressBar android:id="@id/d5k" android:paddingLeft="40.0dip" android:paddingRight="40.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" style="@style/oe" />
+            <Button android:id="@id/d5i" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/br" android:layout_marginTop="32.0dip" android:layout_marginRight="@dimen/br" android:text="@string/dcd" style="@style/ou" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

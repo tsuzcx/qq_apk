@@ -6,24 +6,24 @@ import java.io.PrintStream;
 public final class a
 {
   public static boolean DEBUG = false;
-  public static boolean bVP = false;
-  public EVadNative bVN;
-  public MMVoipVadNative bVO;
+  public static boolean cgx = false;
+  public EVadNative cgv;
+  public MMVoipVadNative cgw;
   public long handle;
   
   public a()
   {
     AppMethodBeat.i(74968);
     this.handle = 0L;
-    this.bVN = new EVadNative();
-    this.bVO = new MMVoipVadNative();
+    this.cgv = new EVadNative();
+    this.cgw = new MMVoipVadNative();
     AppMethodBeat.o(74968);
   }
   
-  public static void bi(boolean paramBoolean)
+  public static void bI(boolean paramBoolean)
   {
     AppMethodBeat.i(74969);
-    bVP = paramBoolean;
+    cgx = paramBoolean;
     if (paramBoolean)
     {
       System.loadLibrary("MMVoipVadEmbed");
@@ -43,6 +43,28 @@ public final class a
     AppMethodBeat.o(74969);
   }
   
+  public final int IL()
+  {
+    AppMethodBeat.i(74971);
+    if (this.handle == 0L)
+    {
+      AppMethodBeat.o(74971);
+      return 1;
+    }
+    if (DEBUG) {
+      System.out.println("EVad Release handle = " + this.handle);
+    }
+    if (cgx)
+    {
+      i = this.cgw.Release(this.handle);
+      AppMethodBeat.o(74971);
+      return i;
+    }
+    int i = this.cgv.Release(this.handle);
+    AppMethodBeat.o(74971);
+    return i;
+  }
+  
   public final int a(short[] paramArrayOfShort, int paramInt)
   {
     AppMethodBeat.i(74970);
@@ -54,37 +76,15 @@ public final class a
     if (DEBUG) {
       System.out.println("EVad AddData handle = " + this.handle);
     }
-    if (bVP)
+    if (cgx)
     {
-      paramInt = this.bVO.AddData(this.handle, paramArrayOfShort, paramInt);
+      paramInt = this.cgw.AddData(this.handle, paramArrayOfShort, paramInt);
       AppMethodBeat.o(74970);
       return paramInt;
     }
-    paramInt = this.bVN.AddData(this.handle, paramArrayOfShort, paramInt);
+    paramInt = this.cgv.AddData(this.handle, paramArrayOfShort, paramInt);
     AppMethodBeat.o(74970);
     return paramInt;
-  }
-  
-  public final int zS()
-  {
-    AppMethodBeat.i(74971);
-    if (this.handle == 0L)
-    {
-      AppMethodBeat.o(74971);
-      return 1;
-    }
-    if (DEBUG) {
-      System.out.println("EVad Release handle = " + this.handle);
-    }
-    if (bVP)
-    {
-      i = this.bVO.Release(this.handle);
-      AppMethodBeat.o(74971);
-      return i;
-    }
-    int i = this.bVN.Release(this.handle);
-    AppMethodBeat.o(74971);
-    return i;
   }
 }
 

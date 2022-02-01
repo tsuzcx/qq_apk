@@ -1,118 +1,135 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.LinkedList;
+import com.tencent.mm.bw.b;
 
 public final class bbj
-  extends cwj
+  extends com.tencent.mm.bw.a
 {
-  public com.tencent.mm.bw.b GRi;
-  public int GRj;
-  public com.tencent.mm.bw.b GRk;
+  public int KWR;
+  public String LKO;
+  public int LKP;
+  public int LKQ;
+  public long LKR;
+  public long object_id;
+  public String object_nonce_id;
+  public b tabTipsByPassInfo;
+  public int tab_type;
+  public String username;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(152569);
+    AppMethodBeat.i(209649);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      if (this.BaseResponse == null)
-      {
-        paramVarArgs = new f.a.a.b("Not all required fields were included: BaseResponse");
-        AppMethodBeat.o(152569);
-        throw paramVarArgs;
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.LKO != null) {
+        paramVarArgs.e(1, this.LKO);
       }
-      if (this.BaseResponse != null)
-      {
-        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
-        this.BaseResponse.writeFields(paramVarArgs);
+      if (this.username != null) {
+        paramVarArgs.e(2, this.username);
       }
-      paramVarArgs.aS(3, this.GRj);
-      if (this.GRk != null) {
-        paramVarArgs.c(4, this.GRk);
+      paramVarArgs.aM(3, this.LKP);
+      paramVarArgs.bb(4, this.object_id);
+      paramVarArgs.aM(5, this.LKQ);
+      paramVarArgs.aM(6, this.KWR);
+      paramVarArgs.bb(7, this.LKR);
+      if (this.tabTipsByPassInfo != null) {
+        paramVarArgs.c(8, this.tabTipsByPassInfo);
       }
-      if (this.GRi != null) {
-        paramVarArgs.c(5, this.GRi);
+      if (this.object_nonce_id != null) {
+        paramVarArgs.e(9, this.object_nonce_id);
       }
-      AppMethodBeat.o(152569);
+      paramVarArgs.aM(10, this.tab_type);
+      AppMethodBeat.o(209649);
       return 0;
     }
     if (paramInt == 1) {
-      if (this.BaseResponse == null) {
-        break label526;
+      if (this.LKO == null) {
+        break label662;
       }
     }
-    label526:
-    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    label662:
+    for (paramInt = g.a.a.b.b.a.f(1, this.LKO) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(3, this.GRj);
+      int i = paramInt;
+      if (this.username != null) {
+        i = paramInt + g.a.a.b.b.a.f(2, this.username);
+      }
+      i = i + g.a.a.b.b.a.bu(3, this.LKP) + g.a.a.b.b.a.r(4, this.object_id) + g.a.a.b.b.a.bu(5, this.LKQ) + g.a.a.b.b.a.bu(6, this.KWR) + g.a.a.b.b.a.r(7, this.LKR);
       paramInt = i;
-      if (this.GRk != null) {
-        paramInt = i + f.a.a.b.b.a.b(4, this.GRk);
+      if (this.tabTipsByPassInfo != null) {
+        paramInt = i + g.a.a.b.b.a.b(8, this.tabTipsByPassInfo);
       }
       i = paramInt;
-      if (this.GRi != null) {
-        i = paramInt + f.a.a.b.b.a.b(5, this.GRi);
+      if (this.object_nonce_id != null) {
+        i = paramInt + g.a.a.b.b.a.f(9, this.object_nonce_id);
       }
-      AppMethodBeat.o(152569);
-      return i;
+      paramInt = g.a.a.b.b.a.bu(10, this.tab_type);
+      AppMethodBeat.o(209649);
+      return i + paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        if (this.BaseResponse == null)
-        {
-          paramVarArgs = new f.a.a.b("Not all required fields were included: BaseResponse");
-          AppMethodBeat.o(152569);
-          throw paramVarArgs;
-        }
-        AppMethodBeat.o(152569);
+        AppMethodBeat.o(209649);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         bbj localbbj = (bbj)paramVarArgs[1];
-        paramInt = ((Integer)paramVarArgs[2]).intValue();
-        switch (paramInt)
+        switch (((Integer)paramVarArgs[2]).intValue())
         {
-        case 2: 
         default: 
-          AppMethodBeat.o(152569);
+          AppMethodBeat.o(209649);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
-          i = paramVarArgs.size();
-          paramInt = 0;
-          while (paramInt < i)
-          {
-            Object localObject2 = (byte[])paramVarArgs.get(paramInt);
-            localObject1 = new BaseResponse();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
-            localbbj.BaseResponse = ((BaseResponse)localObject1);
-            paramInt += 1;
-          }
-          AppMethodBeat.o(152569);
+          localbbj.LKO = locala.UbS.readString();
+          AppMethodBeat.o(209649);
+          return 0;
+        case 2: 
+          localbbj.username = locala.UbS.readString();
+          AppMethodBeat.o(209649);
           return 0;
         case 3: 
-          localbbj.GRj = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(152569);
+          localbbj.LKP = locala.UbS.zi();
+          AppMethodBeat.o(209649);
           return 0;
         case 4: 
-          localbbj.GRk = ((f.a.a.a.a)localObject1).OmT.gCk();
-          AppMethodBeat.o(152569);
+          localbbj.object_id = locala.UbS.zl();
+          AppMethodBeat.o(209649);
+          return 0;
+        case 5: 
+          localbbj.LKQ = locala.UbS.zi();
+          AppMethodBeat.o(209649);
+          return 0;
+        case 6: 
+          localbbj.KWR = locala.UbS.zi();
+          AppMethodBeat.o(209649);
+          return 0;
+        case 7: 
+          localbbj.LKR = locala.UbS.zl();
+          AppMethodBeat.o(209649);
+          return 0;
+        case 8: 
+          localbbj.tabTipsByPassInfo = locala.UbS.hPo();
+          AppMethodBeat.o(209649);
+          return 0;
+        case 9: 
+          localbbj.object_nonce_id = locala.UbS.readString();
+          AppMethodBeat.o(209649);
           return 0;
         }
-        localbbj.GRi = ((f.a.a.a.a)localObject1).OmT.gCk();
-        AppMethodBeat.o(152569);
+        localbbj.tab_type = locala.UbS.zi();
+        AppMethodBeat.o(209649);
         return 0;
       }
-      AppMethodBeat.o(152569);
+      AppMethodBeat.o(209649);
       return -1;
     }
   }

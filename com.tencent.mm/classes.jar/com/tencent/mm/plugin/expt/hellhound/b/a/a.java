@@ -1,117 +1,120 @@
 package com.tencent.mm.plugin.expt.hellhound.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.ti;
+import com.tencent.mm.g.a.ug;
 import com.tencent.mm.plugin.expt.hellhound.a.f.f.l.a;
-import com.tencent.mm.protocal.protobuf.bta;
-import com.tencent.mm.protocal.protobuf.cng;
-import com.tencent.mm.protocal.protobuf.dcc;
-import com.tencent.mm.protocal.protobuf.dwy;
-import com.tencent.mm.protocal.protobuf.ue;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
+import com.tencent.mm.plugin.expt.hellhound.core.a.b;
+import com.tencent.mm.protocal.protobuf.cft;
+import com.tencent.mm.protocal.protobuf.dfa;
+import com.tencent.mm.protocal.protobuf.dvg;
+import com.tencent.mm.protocal.protobuf.ere;
+import com.tencent.mm.protocal.protobuf.vl;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import kotlin.g.b.p;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/model/dao/HellCloudData;", "", "()V", "Companion", "plugin-expt_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/model/dao/HellCloudData;", "", "()V", "Companion", "plugin-expt_release"})
 public final class a
 {
-  public static final a rih;
+  public static final a sJL;
   
   static
   {
-    AppMethodBeat.i(196672);
-    rih = new a((byte)0);
-    AppMethodBeat.o(196672);
+    AppMethodBeat.i(221171);
+    sJL = new a((byte)0);
+    AppMethodBeat.o(221171);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/expt/hellhound/model/dao/HellCloudData$Companion;", "", "()V", "CONFIG_TYPE_SESSION", "", "CONFIG_TYPE_SESSION_PAGE", "CONFIG_TYPE_UBA", "CONFIG_TYPE_VIEW_BLACK_LIST", "MMKV_KEY", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/CgiConfigProguard;", "_write", "", "parguard", "addJson", "id", "type", "isReport", "", "json", "kvMap", "", "Lcom/tencent/mm/protocal/protobuf/KV;", "addKv", "delKv", "geViewResName", "viewId", "pageList", "Lcom/tencent/mm/protocal/protobuf/SessionPage;", "default", "notifySessionPageConfigChange", "isDel", "removeJson", "reset", "resetJson", "updateJson", "plugin-expt_release"})
+  @kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/expt/hellhound/model/dao/HellCloudData$Companion;", "", "()V", "CONFIG_TYPE_SESSION", "", "CONFIG_TYPE_SESSION_PAGE", "CONFIG_TYPE_UBA", "CONFIG_TYPE_VIEW_BLACK_LIST", "MMKV_KEY", "", "TAG", "_read", "Lcom/tencent/mm/protocal/protobuf/CgiConfigProguard;", "_write", "", "parguard", "addJson", "id", "type", "isReport", "", "json", "kvMap", "", "Lcom/tencent/mm/protocal/protobuf/KV;", "addKv", "delKv", "geViewResName", "viewId", "pageList", "Lcom/tencent/mm/protocal/protobuf/SessionPage;", "default", "notifySessionPageConfigChange", "isDel", "removeJson", "reset", "resetJson", "updateJson", "plugin-expt_release"})
   public static final class a
   {
-    private static void a(ue paramue)
+    private static void a(vl paramvl)
     {
-      AppMethodBeat.i(196670);
+      AppMethodBeat.i(221169);
       try
       {
-        paramue = paramue.toByteArray();
-        p.g(paramue, "parguard.toByteArray()");
-        com.tencent.mm.plugin.expt.hellhound.core.a.b.p("hell_cgi_cc_dat", paramue);
-        AppMethodBeat.o(196670);
+        paramvl = paramvl.toByteArray();
+        p.g(paramvl, "parguard.toByteArray()");
+        b.o("hell_cgi_cc_dat", paramvl);
+        AppMethodBeat.o(221169);
         return;
       }
-      catch (Exception paramue)
+      catch (Exception paramvl)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.HellCloudData", (Throwable)paramue, "HellCloudData, write: " + paramue.getMessage(), new Object[0]);
-        AppMethodBeat.o(196670);
+        Log.printErrStackTrace("HABBYGE-MALI.HellCloudData", (Throwable)paramvl, "HellCloudData, write: " + paramvl.getMessage(), new Object[0]);
+        AppMethodBeat.o(221169);
       }
     }
     
-    public static void a(String paramString1, int paramInt, boolean paramBoolean, String paramString2, List<? extends bta> paramList)
+    public static void a(String paramString1, int paramInt, boolean paramBoolean, String paramString2, List<? extends cft> paramList)
     {
-      AppMethodBeat.i(196665);
+      AppMethodBeat.i(221164);
       if ((paramString1 == null) || (paramString2 == null) || (paramList == null) || (paramList.isEmpty()))
       {
-        AppMethodBeat.o(196665);
+        AppMethodBeat.o(221164);
         return;
       }
-      q(paramString1, paramList);
+      r(paramString1, paramList);
       switch (paramInt)
       {
       }
       for (;;)
       {
-        AppMethodBeat.o(196665);
+        AppMethodBeat.o(221164);
         return;
-        AppMethodBeat.o(196665);
+        AppMethodBeat.o(221164);
         return;
         a(paramString1, paramString2, paramList, false, paramBoolean);
       }
     }
     
-    public static void a(String paramString1, String paramString2, List<? extends bta> paramList, boolean paramBoolean1, boolean paramBoolean2)
+    public static void a(String paramString1, String paramString2, List<? extends cft> paramList, boolean paramBoolean1, boolean paramBoolean2)
     {
-      AppMethodBeat.i(196669);
-      ae.i("HABBYGE-MALI.HellCloudData", "notifySessionPageConfigChange: " + paramString1 + ", " + paramBoolean2 + ", " + paramBoolean1);
-      ti localti = new ti();
-      localti.dIQ.dIO = Long.parseLong(paramString1);
-      localti.dIQ.dvT = paramString2;
-      localti.dIQ.dIM = Boolean.valueOf(paramBoolean1);
-      localti.dIQ.dIS = Boolean.valueOf(paramBoolean2);
-      localti.dIQ.dIR = paramList;
-      localti.dIQ.version = 2;
-      com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localti);
-      AppMethodBeat.o(196669);
+      AppMethodBeat.i(221168);
+      Log.i("HABBYGE-MALI.HellCloudData", "notifySessionPageConfigChange: " + paramString1 + ", " + paramBoolean2 + ", " + paramBoolean1);
+      ug localug = new ug();
+      localug.eaD.eaB = Long.parseLong(paramString1);
+      localug.eaD.dNA = paramString2;
+      localug.eaD.eaz = Boolean.valueOf(paramBoolean1);
+      localug.eaD.eaF = Boolean.valueOf(paramBoolean2);
+      localug.eaD.eaE = paramList;
+      localug.eaD.version = 2;
+      EventCenter.instance.publish((IEvent)localug);
+      AppMethodBeat.o(221168);
     }
     
-    public static void agt(String paramString)
+    public static void are(String paramString)
     {
-      AppMethodBeat.i(196667);
-      ue localue = csu();
-      if (localue == null)
+      AppMethodBeat.i(221166);
+      vl localvl = cRd();
+      if (localvl == null)
       {
-        AppMethodBeat.o(196667);
+        AppMethodBeat.o(221166);
         return;
       }
-      Iterator localIterator = localue.GlW.iterator();
+      Iterator localIterator = localvl.LgA.iterator();
       while (localIterator.hasNext())
       {
-        cng localcng = (cng)localIterator.next();
-        if (p.i(paramString, localcng.id))
+        dfa localdfa = (dfa)localIterator.next();
+        if (p.j(paramString, localdfa.id))
         {
-          localue.GlW.remove(localcng);
-          a(localue);
-          AppMethodBeat.o(196667);
+          localvl.LgA.remove(localdfa);
+          a(localvl);
+          AppMethodBeat.o(221166);
           return;
         }
       }
-      AppMethodBeat.o(196667);
+      AppMethodBeat.o(221166);
     }
     
-    public static String b(String paramString1, List<? extends dcc> paramList, String paramString2)
+    public static String b(String paramString1, List<? extends dvg> paramList, String paramString2)
     {
-      AppMethodBeat.i(196668);
+      AppMethodBeat.i(221167);
       p.h(paramString1, "viewId");
       p.h(paramList, "pageList");
       do
@@ -123,31 +126,31 @@ public final class a
           if (!localIterator1.hasNext()) {
             break;
           }
-          localIterator2 = ((dcc)localIterator1.next()).HKD.iterator();
+          localIterator2 = ((dvg)localIterator1.next()).MWm.iterator();
         }
-        paramList = (dwy)localIterator2.next();
-      } while (!p.i(paramString1, paramList.aQj));
-      if (paramList.Icn != null)
+        paramList = (ere)localIterator2.next();
+      } while (!p.j(paramString1, paramList.viewId));
+      if (paramList.NoL != null)
       {
-        paramString1 = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.rhv;
-        l.a.tn(130L);
-        paramString1 = paramList.Icn;
+        paramString1 = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.sIR;
+        l.a.Bt(130L);
+        paramString1 = paramList.NoL;
         p.g(paramString1, "viewOp.resName");
-        AppMethodBeat.o(196668);
+        AppMethodBeat.o(221167);
         return paramString1;
       }
-      ae.i("HABBYGE-MALI.HellCloudData", "geViewResName, viewId=" + paramString1 + ", viewOp.viewId=" + paramList.aQj + ", viewOp.resName=" + paramList.Icn);
-      paramList = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.rhv;
-      l.a.tn(159L);
+      Log.i("HABBYGE-MALI.HellCloudData", "geViewResName, viewId=" + paramString1 + ", viewOp.viewId=" + paramList.viewId + ", viewOp.resName=" + paramList.NoL);
+      paramList = com.tencent.mm.plugin.expt.hellhound.a.f.f.l.sIR;
+      l.a.Bt(159L);
       if (paramString2 == null) {}
       for (;;)
       {
-        AppMethodBeat.o(196668);
+        AppMethodBeat.o(221167);
         return paramString1;
         if (paramString2 == null) {}
         for (;;)
         {
-          AppMethodBeat.o(196668);
+          AppMethodBeat.o(221167);
           return paramString1;
           paramString1 = paramString2;
         }
@@ -155,10 +158,10 @@ public final class a
       }
     }
     
-    private static ue csu()
+    private static vl cRd()
     {
-      AppMethodBeat.i(196671);
-      byte[] arrayOfByte = com.tencent.mm.plugin.expt.hellhound.core.a.b.getBytes("hell_cgi_cc_dat");
+      AppMethodBeat.i(221170);
+      byte[] arrayOfByte = b.getBytes("hell_cgi_cc_dat");
       if (arrayOfByte != null) {
         if (arrayOfByte.length != 0) {
           break label35;
@@ -167,64 +170,64 @@ public final class a
       label35:
       for (int i = 1; i != 0; i = 0)
       {
-        AppMethodBeat.o(196671);
+        AppMethodBeat.o(221170);
         return null;
       }
-      ue localue = new ue();
+      vl localvl = new vl();
       try
       {
-        localue.parseFrom(arrayOfByte);
-        AppMethodBeat.o(196671);
-        return localue;
+        localvl.parseFrom(arrayOfByte);
+        AppMethodBeat.o(221170);
+        return localvl;
       }
       catch (Exception localException)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.HellCloudData", (Throwable)localException, "HellCloudData, read: " + localException.getMessage(), new Object[0]);
-        AppMethodBeat.o(196671);
+        Log.printErrStackTrace("HABBYGE-MALI.HellCloudData", (Throwable)localException, "HellCloudData, read: " + localException.getMessage(), new Object[0]);
+        AppMethodBeat.o(221170);
       }
       return null;
     }
     
-    private static void q(String paramString, List<? extends bta> paramList)
+    private static void r(String paramString, List<? extends cft> paramList)
     {
-      AppMethodBeat.i(196666);
-      ue localue = csu();
-      if (localue == null)
+      AppMethodBeat.i(221165);
+      vl localvl = cRd();
+      if (localvl == null)
       {
-        localue = new ue();
-        localObject = new cng();
-        ((cng)localObject).id = paramString;
-        ((cng)localObject).Hzp.addAll((Collection)paramList);
-        localue.GlW.add(localObject);
-        a(localue);
-        AppMethodBeat.o(196666);
+        localvl = new vl();
+        localObject = new dfa();
+        ((dfa)localObject).id = paramString;
+        ((dfa)localObject).MKb.addAll((Collection)paramList);
+        localvl.LgA.add(localObject);
+        a(localvl);
+        AppMethodBeat.o(221165);
         return;
       }
-      Object localObject = localue.GlW.iterator();
+      Object localObject = localvl.LgA.iterator();
       while (((Iterator)localObject).hasNext())
       {
-        cng localcng = (cng)((Iterator)localObject).next();
-        if (p.i(paramString, localcng.id))
+        dfa localdfa = (dfa)((Iterator)localObject).next();
+        if (p.j(paramString, localdfa.id))
         {
-          localcng.Hzp.clear();
-          localcng.Hzp.addAll((Collection)paramList);
-          a(localue);
-          AppMethodBeat.o(196666);
+          localdfa.MKb.clear();
+          localdfa.MKb.addAll((Collection)paramList);
+          a(localvl);
+          AppMethodBeat.o(221165);
           return;
         }
       }
-      localObject = new cng();
-      ((cng)localObject).id = paramString;
-      ((cng)localObject).Hzp.addAll((Collection)paramList);
-      localue.GlW.add(localObject);
-      a(localue);
-      AppMethodBeat.o(196666);
+      localObject = new dfa();
+      ((dfa)localObject).id = paramString;
+      ((dfa)localObject).MKb.addAll((Collection)paramList);
+      localvl.LgA.add(localObject);
+      a(localvl);
+      AppMethodBeat.o(221165);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.expt.hellhound.b.a.a
  * JD-Core Version:    0.7.0.1
  */

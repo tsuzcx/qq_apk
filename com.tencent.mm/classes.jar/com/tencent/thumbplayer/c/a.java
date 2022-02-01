@@ -1,141 +1,129 @@
 package com.tencent.thumbplayer.c;
 
-import android.media.MediaMetadataRetriever;
-import android.os.Build;
-import android.os.Handler;
-import android.os.HandlerThread;
-import android.os.Looper;
-import android.os.Message;
-import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.thumbplayer.utils.d;
-import java.io.FileDescriptor;
+import com.tencent.thumbplayer.api.composition.ITPMediaTrackClip;
+import java.io.Serializable;
 
 public final class a
+  implements ITPMediaTrackClip, Serializable
 {
-  private static a MwN = null;
-  private c MwO;
-  private MediaMetadataRetriever MwP;
-  private int MwQ;
-  private HandlerThread mHandlerThread;
+  private int RYH;
+  private int RYI;
+  private long mEndTime;
+  private long mStartPosition;
+  private long mStartTime;
   
-  private a()
+  public a(int paramInt)
   {
-    AppMethodBeat.i(194541);
-    this.mHandlerThread = null;
-    this.MwO = null;
-    this.MwP = null;
-    this.MwQ = 0;
-    try
-    {
-      this.mHandlerThread = new HandlerThread("TP-SysImgCap");
-      this.mHandlerThread.start();
-      this.MwO = new c(this.mHandlerThread.getLooper());
-      AppMethodBeat.o(194541);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      d.e("TPSysPlayerImageCapture", localThrowable);
-      this.MwO = new c(Looper.getMainLooper());
-      AppMethodBeat.o(194541);
-    }
+    AppMethodBeat.i(189103);
+    this.mStartTime = 0L;
+    this.mEndTime = 0L;
+    this.RYH = paramInt;
+    this.RYI = c.arm(this.RYH);
+    AppMethodBeat.o(189103);
   }
   
-  public static a gbj()
+  public final ITPMediaTrackClip clone(int paramInt)
   {
-    try
+    AppMethodBeat.i(189106);
+    if ((paramInt != 3) && (paramInt != 2) && (paramInt != 1))
     {
-      AppMethodBeat.i(194540);
-      if (MwN == null) {
-        MwN = new a();
-      }
-      a locala = MwN;
-      AppMethodBeat.o(194540);
-      return locala;
+      AppMethodBeat.o(189106);
+      return null;
     }
-    finally {}
+    a locala = new a(paramInt);
+    locala.RYI = c.arm(paramInt);
+    locala.mStartTime = this.mStartTime;
+    locala.mEndTime = this.mEndTime;
+    AppMethodBeat.o(189106);
+    return locala;
   }
   
-  public final int a(String paramString, FileDescriptor paramFileDescriptor, long paramLong, int paramInt1, int paramInt2, a parama)
+  public final boolean equals(Object paramObject)
   {
-    AppMethodBeat.i(194542);
-    d.i("TPSysPlayerImageCapture", "captureImageWithPosition, position: " + paramLong + ", width: " + paramInt1 + ", height: " + paramInt2);
-    this.MwQ += 1;
-    if ((!TextUtils.isEmpty(Build.MODEL)) && (Build.MODEL.equals("Lenovo+K900")))
+    AppMethodBeat.i(189105);
+    if (paramObject == null)
     {
-      d.i("TPSysPlayerImageCapture", "captureImageWithPosition, Lenovo+K900 no incompatible");
-      AppMethodBeat.o(194542);
-      return -1;
+      AppMethodBeat.o(189105);
+      return false;
     }
-    b localb = new b((byte)0);
-    localb.id = this.MwQ;
-    localb.MwR = paramFileDescriptor;
-    localb.url = paramString;
-    localb.bdJ = paramLong;
-    localb.width = paramInt1;
-    localb.height = paramInt2;
-    localb.MwS = parama;
-    paramString = new Message();
-    paramString.what = 1;
-    paramString.obj = localb;
-    if (!this.MwO.sendMessage(paramString)) {
-      d.i("TPSysPlayerImageCapture", "captureImageWithPosition, send msg failed ");
+    if (!(paramObject instanceof a))
+    {
+      AppMethodBeat.o(189105);
+      return false;
     }
-    paramInt1 = this.MwQ;
-    AppMethodBeat.o(194542);
-    return paramInt1;
+    if ((this.RYI == ((a)paramObject).getClipId()) && (this.RYH == ((a)paramObject).getMediaType()))
+    {
+      AppMethodBeat.o(189105);
+      return true;
+    }
+    AppMethodBeat.o(189105);
+    return false;
   }
   
-  public static abstract interface a
+  public final int getClipId()
   {
-    public abstract void ahS(int paramInt);
-    
-    public abstract void ahT(int paramInt);
+    return this.RYI;
   }
   
-  static final class b
+  public final long getEndTimeMs()
   {
-    FileDescriptor MwR;
-    protected a.a MwS;
-    long bdJ;
-    int height;
-    int id;
-    String url;
-    int width;
+    return this.mEndTime;
   }
   
-  final class c
-    extends Handler
+  public final String getFilePath()
   {
-    public c(Looper paramLooper)
-    {
-      super();
+    return null;
+  }
+  
+  public final int getMediaType()
+  {
+    return this.RYH;
+  }
+  
+  public final long getOriginalDurationMs()
+  {
+    return this.mEndTime - this.mStartTime;
+  }
+  
+  public final long getStartPositionMs()
+  {
+    return this.mStartPosition;
+  }
+  
+  public final long getStartTimeMs()
+  {
+    return this.mStartTime;
+  }
+  
+  public final String getUrl()
+  {
+    return null;
+  }
+  
+  public final void setCutTimeRange(long paramLong1, long paramLong2)
+  {
+    AppMethodBeat.i(189104);
+    long l = paramLong1;
+    if (paramLong1 < 0L) {
+      l = 0L;
     }
-    
-    public final void handleMessage(Message paramMessage)
+    if (l >= paramLong2)
     {
-      AppMethodBeat.i(194539);
-      switch (paramMessage.what)
-      {
-      default: 
-        d.i("TPSysPlayerImageCapture", "eventHandler unknow msg");
-      }
-      do
-      {
-        AppMethodBeat.o(194539);
-        return;
-        d.i("TPSysPlayerImageCapture", "eventHandler EV_CAP_IMAGE");
-        paramMessage = (a.b)paramMessage.obj;
-        a.a(a.this, paramMessage);
-        AppMethodBeat.o(194539);
-        return;
-        d.i("TPSysPlayerImageCapture", "eventHandler EV_STOP_CAP_IMAGE");
-      } while (a.a(a.this) == null);
-      a.a(a.this).release();
-      a.b(a.this);
-      AppMethodBeat.o(194539);
+      IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("setCutTimeRange: Start time is greater than end time");
+      AppMethodBeat.o(189104);
+      throw localIllegalArgumentException;
     }
+    this.mStartTime = l;
+    this.mEndTime = paramLong2;
+    AppMethodBeat.o(189104);
+  }
+  
+  public final void setOriginalDurationMs(long paramLong) {}
+  
+  public final void setStartPositionMs(long paramLong)
+  {
+    this.mStartPosition = paramLong;
   }
 }
 

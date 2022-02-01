@@ -2,7 +2,7 @@ package android.support.v7.app;
 
 public abstract interface a$a
 {
-  public abstract void bg(int paramInt);
+  public abstract void bh(int paramInt);
 }
 
 

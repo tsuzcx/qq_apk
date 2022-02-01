@@ -8,11 +8,6 @@ public abstract class d
 {
   protected Application app;
   
-  public final void g(Application paramApplication)
-  {
-    this.app = paramApplication;
-  }
-  
   public abstract void onConfigurationChanged(Configuration paramConfiguration);
   
   public abstract void onCreate();
@@ -20,6 +15,11 @@ public abstract class d
   public void onTerminate() {}
   
   public void onTrimMemory(int paramInt) {}
+  
+  public final void setApplication(Application paramApplication)
+  {
+    this.app = paramApplication;
+  }
 }
 
 

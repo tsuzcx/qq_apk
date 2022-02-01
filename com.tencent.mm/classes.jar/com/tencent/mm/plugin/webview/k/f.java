@@ -1,96 +1,175 @@
 package com.tencent.mm.plugin.webview.k;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.brandservice.a.b;
-import com.tencent.mm.protocal.protobuf.brr;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONArray;
+import com.tencent.mm.plugin.webview.stub.e;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/webview/webcompt/WebComptCache;", "", "()V", "TAG", "", "jsapiWebComptMap", "", "Ljava/util/LinkedList;", "Lcom/tencent/mm/protocal/protobuf/JSAPIWebCompt;", "addJSAPIWebCompt", "", "url", "webCompts", "getJSAPIWebComptList", "list", "Lorg/json/JSONArray;", "getUrlKey", "webview-sdk_release"})
 public final class f
 {
-  private static Map<String, LinkedList<brr>> EOP;
-  public static final f EOQ;
-  
-  static
+  public static int a(Context paramContext, e parame, String paramString)
   {
-    AppMethodBeat.i(214256);
-    EOQ = new f();
-    EOP = (Map)new ConcurrentHashMap();
-    AppMethodBeat.o(214256);
-  }
-  
-  private static String XC(String paramString)
-  {
-    AppMethodBeat.i(214255);
-    if (!((b)g.ab(b.class)).isMpUrl(paramString))
+    AppMethodBeat.i(82379);
+    try
     {
-      AppMethodBeat.o(214255);
-      return paramString;
-    }
-    paramString = ((b)g.ab(b.class)).XC(paramString);
-    AppMethodBeat.o(214255);
-    return paramString;
-  }
-  
-  public static LinkedList<brr> c(String paramString, JSONArray paramJSONArray)
-  {
-    AppMethodBeat.i(214254);
-    p.h(paramString, "url");
-    p.h(paramJSONArray, "list");
-    Object localObject = XC(paramString);
-    paramString = new LinkedList();
-    localObject = (LinkedList)EOP.get(localObject);
-    if (localObject != null)
-    {
-      localObject = ((Iterable)localObject).iterator();
-      label131:
-      while (((Iterator)localObject).hasNext())
+      localMultiProcessMMKV = MultiProcessMMKV.getMMKV("WebViewFontUtil", 2);
+      bool = localMultiProcessMMKV.getBoolean("webview_key_font_use_system", false);
+      Log.i("MicroMsg.WebViewFontUtil", "useSystemFont = %b", new Object[] { Boolean.valueOf(bool) });
+      if (bool)
       {
-        brr localbrr = (brr)((Iterator)localObject).next();
-        int j = paramJSONArray.length();
-        int i = 0;
-        for (;;)
-        {
-          if (i >= j) {
-            break label131;
-          }
-          if (bu.lX((String)paramJSONArray.get(i), localbrr.name))
-          {
-            paramString.add(localbrr);
-            break;
-          }
-          i += 1;
+        i = id(paramContext);
+        AppMethodBeat.o(82379);
+        return i;
+      }
+      bool = localMultiProcessMMKV.getBoolean("webview_key_font_has_set", false);
+      if ((!Util.isNullOrNil(paramString)) && (com.tencent.mm.plugin.webview.a.IJn.matcher(paramString).matches()))
+      {
+        j = parame.kl(16388, 2);
+        if ((j == 2) && (!bool)) {
+          i = j;
         }
       }
     }
-    AppMethodBeat.o(214254);
-    return paramString;
+    catch (Exception paramContext)
+    {
+      MultiProcessMMKV localMultiProcessMMKV;
+      boolean bool;
+      int j;
+      int k;
+      i = 2;
+    }
+    try
+    {
+      j = id(paramContext);
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    catch (Exception paramContext)
+    {
+      break label312;
+    }
+    int i = j;
+    bool = localMultiProcessMMKV.getBoolean("webview_key_has_transfer_mp", false);
+    if (bool)
+    {
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    i = j;
+    k = ahm(j);
+    i = j;
+    localMultiProcessMMKV.putBoolean("webview_key_has_transfer_mp", true);
+    i = j;
+    parame.km(16388, k);
+    AppMethodBeat.o(82379);
+    return k;
+    j = parame.kl(16384, 2);
+    if ((j == 2) && (!bool))
+    {
+      i = j;
+      j = id(paramContext);
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    i = j;
+    bool = localMultiProcessMMKV.getBoolean("webview_key_has_transfer_reader", false);
+    if (bool)
+    {
+      AppMethodBeat.o(82379);
+      return j;
+    }
+    i = j;
+    k = ahm(j);
+    i = j;
+    localMultiProcessMMKV.putBoolean("webview_key_has_transfer_reader", true);
+    i = j;
+    parame.km(16384, k);
+    AppMethodBeat.o(82379);
+    return k;
+    label312:
+    Log.e("MicroMsg.WebViewFontUtil", "onLoadJsApiFinished, ex = " + paramContext.getMessage());
+    AppMethodBeat.o(82379);
+    return i;
   }
   
-  public static final void g(String paramString, LinkedList<brr> paramLinkedList)
+  private static int ahm(int paramInt)
   {
-    AppMethodBeat.i(214253);
-    p.h(paramString, "url");
-    if (paramLinkedList != null)
-    {
-      paramString = XC(paramString);
-      ae.i("MicroMsg.WebComptCache", "addJSAPIWebCompt " + paramLinkedList.size());
-      if (paramString != null) {
-        EOP.put(paramString, paramLinkedList);
-      }
-      AppMethodBeat.o(214253);
-      return;
+    if (paramInt == 1) {
+      return 1;
     }
-    AppMethodBeat.o(214253);
+    if (paramInt == 2) {
+      return 2;
+    }
+    if (paramInt == 3) {
+      return 4;
+    }
+    if (paramInt == 4) {
+      return 6;
+    }
+    return 2;
+  }
+  
+  public static int id(Context paramContext)
+  {
+    AppMethodBeat.i(82380);
+    float f = paramContext.getSharedPreferences(MMApplicationContext.getDefaultPreferencePath(), 0).getFloat("current_text_size_scale_key", 1.0F);
+    if (f == com.tencent.mm.cb.a.iW(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 1;
+    }
+    if (f == com.tencent.mm.cb.a.iX(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 2;
+    }
+    if (f == com.tencent.mm.cb.a.iY(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 3;
+    }
+    if (f == com.tencent.mm.cb.a.iZ(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 4;
+    }
+    if (f == com.tencent.mm.cb.a.ja(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 5;
+    }
+    if (f == com.tencent.mm.cb.a.jb(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 6;
+    }
+    if (f == com.tencent.mm.cb.a.jc(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 7;
+    }
+    if (f == com.tencent.mm.cb.a.jd(paramContext))
+    {
+      AppMethodBeat.o(82380);
+      return 8;
+    }
+    AppMethodBeat.o(82380);
+    return 2;
+  }
+  
+  public static void zz(boolean paramBoolean)
+  {
+    AppMethodBeat.i(160473);
+    MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("WebViewFontUtil", 2);
+    localMultiProcessMMKV.putBoolean("webview_key_font_use_system", paramBoolean);
+    localMultiProcessMMKV.apply();
+    AppMethodBeat.o(160473);
   }
 }
 

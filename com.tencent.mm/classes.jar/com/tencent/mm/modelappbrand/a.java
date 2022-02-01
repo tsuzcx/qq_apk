@@ -3,21 +3,22 @@ package com.tencent.mm.modelappbrand;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.k.b;
-import com.tencent.mm.g.a.vq;
-import com.tencent.mm.g.a.vq.a;
-import com.tencent.mm.plugin.appbrand.api.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ag.k.b;
+import com.tencent.mm.g.a.wq;
+import com.tencent.mm.g.a.wq.a;
+import com.tencent.mm.plugin.appbrand.api.j;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class a
 {
-  public static boolean CA(String paramString)
+  public static boolean Ll(String paramString)
   {
     AppMethodBeat.i(2618);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(2618);
       return false;
@@ -43,19 +44,19 @@ public final class a
     return false;
   }
   
-  private static void a(vq paramvq, k.b paramb)
+  private static void a(wq paramwq, k.b paramb)
   {
-    paramvq.dKT.appId = paramb.hFd;
-    paramvq.dKT.userName = paramb.hFc;
-    paramvq.dKT.dKV = paramb.hFb;
-    paramvq.dKT.dKW = paramb.hFr;
-    paramvq.dKT.dKZ = paramb.hFf;
-    paramvq.dKT.aDD = paramb.hFs;
-    paramvq = paramvq.dKT;
-    if (paramb.hFr != 0) {}
+    paramwq.ecI.appId = paramb.izj;
+    paramwq.ecI.userName = paramb.izi;
+    paramwq.ecI.ecK = paramb.izh;
+    paramwq.ecI.ecL = paramb.izz;
+    paramwq.ecI.ecO = paramb.izl;
+    paramwq.ecI.appVersion = paramb.izA;
+    paramwq = paramwq.ecI;
+    if (paramb.izz != 0) {}
     for (boolean bool = true;; bool = false)
     {
-      paramvq.dLa = bool;
+      paramwq.ecP = bool;
       return;
     }
   }
@@ -63,32 +64,32 @@ public final class a
   public static void a(String paramString, int paramInt, k.b paramb, Bundle paramBundle)
   {
     AppMethodBeat.i(2620);
-    vq localvq = new vq();
-    a(localvq, paramb);
-    b(localvq, paramb);
-    localvq.dKT.scene = paramInt;
+    wq localwq = new wq();
+    a(localwq, paramb);
+    b(localwq, paramb);
+    localwq.ecI.scene = paramInt;
     if ((paramInt == 1074) || (paramInt == 1157)) {
-      localvq.dKT.dlj = paramString;
+      localwq.ecI.dCw = paramString;
     }
-    localvq.dKT.doz = paramBundle;
-    com.tencent.mm.sdk.b.a.IvT.l(localvq);
+    localwq.ecI.dFP = paramBundle;
+    EventCenter.instance.publish(localwq);
     AppMethodBeat.o(2620);
   }
   
   public static void a(String paramString1, String paramString2, boolean paramBoolean, k.b paramb, Bundle paramBundle)
   {
     AppMethodBeat.i(2619);
-    vq localvq = new vq();
-    a(localvq, paramb);
-    b(localvq, paramb);
-    vq.a locala = localvq.dKT;
+    wq localwq = new wq();
+    a(localwq, paramb);
+    b(localwq, paramb);
+    wq.a locala = localwq.ecI;
     int i;
     StringBuilder localStringBuilder;
     if (paramBoolean)
     {
       i = 1008;
       locala.scene = i;
-      locala = localvq.dKT;
+      locala = localwq.ecI;
       localStringBuilder = new StringBuilder().append(paramString1);
       if (!paramBoolean) {
         break label144;
@@ -97,9 +98,9 @@ public final class a
     label144:
     for (paramString1 = ":".concat(String.valueOf(paramString2));; paramString1 = "")
     {
-      locala.dlj = (paramString1 + ":" + paramb.hFh);
-      localvq.dKT.doz = paramBundle;
-      com.tencent.mm.sdk.b.a.IvT.l(localvq);
+      locala.dCw = (paramString1 + ":" + paramb.izn);
+      localwq.ecI.dFP = paramBundle;
+      EventCenter.instance.publish(localwq);
       AppMethodBeat.o(2619);
       return;
       i = 1007;
@@ -107,20 +108,20 @@ public final class a
     }
   }
   
-  private static void b(vq paramvq, k.b paramb)
+  private static void b(wq paramwq, k.b paramb)
   {
     AppMethodBeat.i(2622);
     if (paramb != null)
     {
-      paramb = (com.tencent.mm.ah.a)paramb.ao(com.tencent.mm.ah.a.class);
-      if ((paramb != null) && (!bu.isNullOrNil(paramb.hAX))) {
-        paramvq.dKT.dLl = paramb.hAX;
+      paramb = (com.tencent.mm.ag.a)paramb.as(com.tencent.mm.ag.a.class);
+      if ((paramb != null) && (!Util.isNullOrNil(paramb.ive))) {
+        paramwq.ecI.eda = paramb.ive;
       }
       if (paramb != null)
       {
-        h localh = new h();
-        localh.hAZ = paramb.hAZ;
-        paramvq.dKT.dLm = localh.aYO();
+        j localj = new j();
+        localj.ivg = paramb.ivg;
+        paramwq.ecI.edb = localj.bua();
       }
     }
     AppMethodBeat.o(2622);
@@ -130,32 +131,32 @@ public final class a
   {
     int i = 2;
     AppMethodBeat.i(2621);
-    if (TextUtils.isEmpty(paramb.hFi))
+    if (TextUtils.isEmpty(paramb.izo))
     {
-      ae.e("MicroMsg.AppBrand.api-message.AppBrandCommonApi", "visitFromPageWithShareTicketAppMessage shareKey isEmpty, transform to normal visit, talkerUsername[%s] msgUsername[%s] groupChat[%b]", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
+      Log.e("MicroMsg.AppBrand.api-message.AppBrandCommonApi", "visitFromPageWithShareTicketAppMessage shareKey isEmpty, transform to normal visit, talkerUsername[%s] msgUsername[%s] groupChat[%b]", new Object[] { paramString1, paramString2, Boolean.valueOf(paramBoolean) });
       a(paramString1, paramString2, paramBoolean, paramb, paramBundle);
       AppMethodBeat.o(2621);
       return;
     }
-    vq localvq = new vq();
-    a(localvq, paramb);
-    b(localvq, paramb);
-    localvq.dKT.scene = 1044;
-    localvq.dKT.dlj = paramb.hFh;
-    vq.a locala = localvq.dKT;
+    wq localwq = new wq();
+    a(localwq, paramb);
+    b(localwq, paramb);
+    localwq.ecI.scene = 1044;
+    localwq.ecI.dCw = paramb.izn;
+    wq.a locala = localwq.ecI;
     if (paramBoolean) {}
     for (;;)
     {
-      locala.dLf = i;
-      locala = localvq.dKT;
+      locala.ecU = i;
+      locala = localwq.ecI;
       if (paramBoolean) {
         paramString2 = paramString1;
       }
-      locala.dLg = paramString2;
-      localvq.dKT.dLc.cmw = paramb.hFi;
-      localvq.dKT.dLc.cmv = paramString1;
-      localvq.dKT.doz = paramBundle;
-      com.tencent.mm.sdk.b.a.IvT.l(localvq);
+      locala.ecV = paramString2;
+      localwq.ecI.ecR.cyr = paramb.izo;
+      localwq.ecI.ecR.cyq = paramString1;
+      localwq.ecI.dFP = paramBundle;
+      EventCenter.instance.publish(localwq);
       AppMethodBeat.o(2621);
       return;
       i = 1;
@@ -164,7 +165,7 @@ public final class a
   
   public static boolean b(k.b paramb)
   {
-    return ((paramb.type == 33) && ((paramb.hFe == 2) || (paramb.hFe == 3))) || (paramb.type == 36);
+    return ((paramb.type == 33) && ((paramb.izk == 2) || (paramb.izk == 3))) || (paramb.type == 36);
   }
   
   public static boolean c(k.b paramb)
@@ -174,7 +175,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.modelappbrand.a
  * JD-Core Version:    0.7.0.1
  */

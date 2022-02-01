@@ -1,12 +1,12 @@
 package com.tencent.mm.plugin.subapp.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.az;
+import com.tencent.mm.model.bd;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class c
-  implements az
+  implements bd
 {
   public void clearPluginData(int paramInt) {}
   
@@ -18,7 +18,7 @@ public class c
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(28914);
-    com.tencent.mm.model.au.a.hII = new b();
+    com.tencent.mm.model.ay.a.iDs = new b();
     AppMethodBeat.o(28914);
   }
   

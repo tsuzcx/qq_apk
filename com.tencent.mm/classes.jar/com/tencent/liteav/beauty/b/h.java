@@ -4,7 +4,7 @@ import android.opengl.GLES20;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class h
-  extends com.tencent.liteav.basic.d.h
+  extends com.tencent.liteav.basic.c.h
 {
   private int r;
   private float s;
@@ -47,7 +47,7 @@ public class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.beauty.b.h
  * JD-Core Version:    0.7.0.1
  */

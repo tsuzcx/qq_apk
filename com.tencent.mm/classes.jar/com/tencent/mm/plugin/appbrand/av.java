@@ -1,61 +1,70 @@
 package com.tencent.mm.plugin.appbrand;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.concurrent.ConcurrentSkipListSet;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.g.a.b;
 
-public final class av
-  extends ax
+final class av
+  implements aw
 {
-  protected final void a(Context paramContext, Intent paramIntent, boolean paramBoolean) {}
+  final ConcurrentSkipListSet<aw> kFA;
+  final AtomicBoolean kFB;
   
-  protected final boolean b(Intent paramIntent, boolean paramBoolean)
+  av()
   {
-    AppMethodBeat.i(44002);
-    paramBoolean = super.b(paramIntent, paramBoolean);
-    if (z(paramIntent) == -1) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        ae.i("MiroMsg.WxaManufacturerShortcutEntry", "invalid scene ");
-      }
-      if ((i != 0) || (!paramBoolean)) {
-        break;
-      }
-      AppMethodBeat.o(44002);
-      return true;
-    }
-    AppMethodBeat.o(44002);
-    return false;
+    AppMethodBeat.i(219284);
+    this.kFA = new ConcurrentSkipListSet(new Comparator() {});
+    this.kFB = new AtomicBoolean(false);
+    AppMethodBeat.o(219284);
   }
   
-  public final int getType()
+  private void s(b<aw, Void> paramb)
   {
-    return 3;
+    AppMethodBeat.i(219285);
+    Iterator localIterator = new LinkedList(this.kFA).iterator();
+    while (localIterator.hasNext()) {
+      paramb.invoke((aw)localIterator.next());
+    }
+    AppMethodBeat.o(219285);
   }
   
-  protected final int z(Intent paramIntent)
+  public final void Uu(final String paramString)
   {
-    AppMethodBeat.i(44001);
-    int i = paramIntent.getIntExtra("SCENE", -1);
-    if (i == 2)
-    {
-      AppMethodBeat.o(44001);
-      return 1114;
-    }
-    if (i == 1)
-    {
-      AppMethodBeat.o(44001);
-      return 1113;
-    }
-    AppMethodBeat.o(44001);
-    return -1;
+    AppMethodBeat.i(219288);
+    s(new b() {});
+    AppMethodBeat.o(219288);
+  }
+  
+  public final void bru()
+  {
+    AppMethodBeat.i(219289);
+    s(new b() {});
+    AppMethodBeat.o(219289);
+  }
+  
+  public final void btt()
+  {
+    AppMethodBeat.i(219286);
+    s(new b() {});
+    AppMethodBeat.o(219286);
+  }
+  
+  public final void btu()
+  {
+    AppMethodBeat.i(219287);
+    s(new b() {});
+    this.kFB.set(true);
+    this.kFA.clear();
+    AppMethodBeat.o(219287);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.av
  * JD-Core Version:    0.7.0.1
  */

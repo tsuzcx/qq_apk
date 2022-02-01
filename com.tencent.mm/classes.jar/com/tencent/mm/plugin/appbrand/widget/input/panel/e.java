@@ -10,11 +10,13 @@ import com.tencent.mm.plugin.appbrand.widget.input.ac;
 public abstract interface e
   extends ac
 {
-  public abstract void bFU();
+  public abstract boolean Af(int paramInt);
   
-  public abstract void bFV();
+  public abstract boolean cbH();
   
-  public abstract boolean bFs();
+  public abstract void cck();
+  
+  public abstract void ccl();
   
   public abstract View getPanelView();
   
@@ -22,14 +24,12 @@ public abstract interface e
   
   public abstract void setOnTextOperationListener(f paramf);
   
-  public abstract boolean wx(int paramInt);
-  
   public static final class a
     implements e
   {
+    int crI;
     boolean mInLayout;
     private View mView;
-    int mdi;
     
     public a(Context paramContext)
     {
@@ -48,8 +48,8 @@ public abstract interface e
         protected final void onMeasure(int paramAnonymousInt1, int paramAnonymousInt2)
         {
           AppMethodBeat.i(136689);
-          if (e.a.this.mdi > 0) {
-            paramAnonymousInt2 = View.MeasureSpec.makeMeasureSpec(e.a.this.mdi, 1073741824);
+          if (e.a.this.crI > 0) {
+            paramAnonymousInt2 = View.MeasureSpec.makeMeasureSpec(e.a.this.crI, 1073741824);
           }
           super.onMeasure(paramAnonymousInt1, paramAnonymousInt2);
           AppMethodBeat.o(136689);
@@ -58,26 +58,22 @@ public abstract interface e
       AppMethodBeat.o(136691);
     }
     
-    public final void bFU()
+    public final boolean Af(int paramInt)
     {
-      AppMethodBeat.i(136692);
-      this.mView.setVisibility(0);
-      AppMethodBeat.o(136692);
+      if ((paramInt > 0) && (this.crI != paramInt))
+      {
+        this.crI = paramInt;
+        return true;
+      }
+      return false;
     }
     
-    public final void bFV()
-    {
-      AppMethodBeat.i(136693);
-      this.mView.setVisibility(4);
-      AppMethodBeat.o(136693);
-    }
-    
-    public final boolean bFo()
+    public final boolean cbD()
     {
       return true;
     }
     
-    public final boolean bFs()
+    public final boolean cbH()
     {
       AppMethodBeat.i(136694);
       if (Build.VERSION.SDK_INT >= 18)
@@ -91,6 +87,20 @@ public abstract interface e
       return bool;
     }
     
+    public final void cck()
+    {
+      AppMethodBeat.i(136692);
+      this.mView.setVisibility(0);
+      AppMethodBeat.o(136692);
+    }
+    
+    public final void ccl()
+    {
+      AppMethodBeat.i(136693);
+      this.mView.setVisibility(4);
+      AppMethodBeat.o(136693);
+    }
+    
     public final View getPanelView()
     {
       return this.mView;
@@ -99,21 +109,11 @@ public abstract interface e
     public final void onDestroy() {}
     
     public final void setOnTextOperationListener(f paramf) {}
-    
-    public final boolean wx(int paramInt)
-    {
-      if ((paramInt > 0) && (this.mdi != paramInt))
-      {
-        this.mdi = paramInt;
-        return true;
-      }
-      return false;
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.input.panel.e
  * JD-Core Version:    0.7.0.1
  */

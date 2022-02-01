@@ -4,196 +4,221 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.ClipboardManager;
+import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.appbrand.appcache.bd;
-import com.tencent.mm.plugin.appbrand.appcache.bh;
-import com.tencent.mm.plugin.brandservice.a.a;
-import com.tencent.mm.protocal.protobuf.sp;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
+import com.tencent.mm.plugin.appbrand.service.v;
+import com.tencent.mm.protocal.protobuf.tu;
+import com.tencent.mm.sdk.platformtools.ClipboardHelper;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
 import com.tencent.mm.ui.MMActivity;
-import com.tencent.mm.ui.base.n.d;
-import com.tencent.mm.ui.base.n.e;
-import d.g.b.p;
-import d.v;
+import com.tencent.mm.ui.base.o.f;
+import com.tencent.mm.ui.base.o.g;
+import com.tencent.mm.ui.widget.a.d;
+import com.tencent.mm.ui.widget.a.e;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import kotlin.a.j;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTestUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "copyText", "", "text", "getLayoutId", "", "onClick", "view", "Landroid/view/View;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "onDestroy", "testFastLoad", "plugin-brandservice_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTestUI;", "Lcom/tencent/mm/ui/MMActivity;", "()V", "TAG", "", "copyText", "", "text", "getLayoutId", "", "onClick", "view", "Landroid/view/View;", "onCreate", "savedInstanceState", "Landroid/os/Bundle;", "reboot", "testAd", "testFastLoad", "testPrefetch", "testRec", "videoChannel", "showBottomSheet", "", "Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTestUI$TestItem;", "context", "Landroid/content/Context;", "block", "Lkotlin/Function0;", "TestItem", "plugin-brandservice_release"})
 public final class BizTestUI
   extends MMActivity
 {
   private final String TAG = "MicroMsg.BizTestUI";
+  private HashMap _$_findViewCache;
+  
+  private static void a(List<a> paramList, Context paramContext, final kotlin.g.a.a<x> parama)
+  {
+    AppMethodBeat.i(195209);
+    paramContext = new e(paramContext, 1, false);
+    paramContext.a((o.f)new d(paramList));
+    paramContext.a((o.g)new e(paramList, parama));
+    paramContext.o((CharSequence)" ", 1);
+    paramContext.Do(true);
+    paramContext.dGm();
+    AppMethodBeat.o(195209);
+  }
+  
+  public final void _$_clearFindViewByIdCache()
+  {
+    AppMethodBeat.i(195213);
+    if (this._$_findViewCache != null) {
+      this._$_findViewCache.clear();
+    }
+    AppMethodBeat.o(195213);
+  }
+  
+  public final View _$_findCachedViewById(int paramInt)
+  {
+    AppMethodBeat.i(195212);
+    if (this._$_findViewCache == null) {
+      this._$_findViewCache = new HashMap();
+    }
+    View localView2 = (View)this._$_findViewCache.get(Integer.valueOf(paramInt));
+    View localView1 = localView2;
+    if (localView2 == null)
+    {
+      localView1 = findViewById(paramInt);
+      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
+    }
+    AppMethodBeat.o(195212);
+    return localView1;
+  }
   
   public final int getLayoutId()
   {
-    return 2131496428;
+    return 2131493248;
   }
   
   public final void onClick(final View paramView)
   {
-    AppMethodBeat.i(208650);
+    AppMethodBeat.i(195208);
     p.h(paramView, "view");
-    Object localObject = ay.aRX("brandService");
     int i = paramView.getId();
-    if (i == 2131308373) {
-      ay.aRX("WebCanvasStorage").encode("BizTimeLineAdPreviewMode", 1);
-    }
-    label539:
-    label747:
-    do
+    Object localObject1;
+    if (i == 2131305943)
     {
-      for (;;)
+      d locald = new d((Context)this);
+      locald.setTitle((CharSequence)"Pkg Info");
+      localObject1 = "";
+      Object localObject3;
+      if (MultiProcessMMKV.getMMKV("WebCanvasStorage").decodeInt("BizTimeLineAdPreviewMode", 0) != 1)
       {
-        ((ay)localObject).apply();
-        paramView = com.tencent.mm.plugin.brandservice.a.obd;
-        a.a.onSuccess();
-        paramView = new Intent();
-        paramView.addFlags(67108864);
-        paramView.putExtra("preferred_tab", 0);
-        com.tencent.mm.br.d.f((Context)this, ".ui.LauncherUI", paramView);
-        AppMethodBeat.o(208650);
-        return;
-        if (i == 2131308403)
+        paramView = com.tencent.mm.plugin.webcanvas.m.IAG;
+        paramView = com.tencent.mm.plugin.webcanvas.m.aWJ("wxfedb0854e2b1820d");
+        if (paramView != null)
         {
-          ay.aRX("WebCanvasStorage").encode("BizTimeLineAdPreviewMode", 0);
-        }
-        else if (i == 2131296730)
-        {
-          ((ay)localObject).encode("BizTimeLineAdOpen", 1);
-        }
-        else if (i == 2131296429)
-        {
-          ((ay)localObject).encode("BizTimeLineAdOpen", 0);
-        }
-        else if (i == 2131298534)
-        {
-          ((ay)localObject).encode("BizTimeLineAdTestMode", 0);
-        }
-        else if (i == 2131297695)
-        {
-          ((ay)localObject).encode("BizLastExposeAdTime", 0L);
-        }
-        else if (i == 2131300070)
-        {
-          ((ay)localObject).encode("BizTimeLineAdTestMode", 1);
-        }
-        else
-        {
-          if (i != 2131300071) {
-            break;
+          localObject1 = "" + "BasePkg:md5=" + paramView.md5 + "\tversion=" + paramView.version + '\n';
+          paramView = com.tencent.mm.plugin.webcanvas.m.IAG;
+          localObject2 = com.tencent.mm.plugin.webcanvas.m.aWJ("wxf337cbaa27790d8e");
+          paramView = (View)localObject1;
+          if (localObject2 != null) {
+            paramView = (String)localObject1 + "BizPkg:md5=" + ((tu)localObject2).md5 + " \tversion=" + ((tu)localObject2).version + '\n';
           }
-          ((ay)localObject).encode("BizTimeLineAdTestMode", 2);
-        }
-      }
-      if (i == 2131308471)
-      {
-        paramView = new Intent((Context)getContext(), BizTestCanvasUI.class);
-        paramView = new com.tencent.mm.hellhoundlib.b.a().bc(paramView);
-        com.tencent.mm.hellhoundlib.a.a.a(this, paramView.ahE(), "com/tencent/mm/plugin/brandservice/ui/timeline/BizTestUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        startActivity((Intent)paramView.mt(0));
-        com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/BizTestUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        AppMethodBeat.o(208650);
-        return;
-      }
-      if (i == 2131308371)
-      {
-        com.tencent.mm.ui.widget.a.d locald = new com.tencent.mm.ui.widget.a.d((Context)this);
-        locald.setTitle((CharSequence)"Pkg Info");
-        localObject = "";
-        if (ay.aRX("WebCanvasStorage").decodeInt("BizTimeLineAdPreviewMode", 0) == 0)
-        {
-          paramView = com.tencent.mm.plugin.webcanvas.h.DQL;
-          paramView = com.tencent.mm.plugin.webcanvas.h.aGW("wxfedb0854e2b1820d");
-          if (paramView != null)
-          {
-            paramView = "" + "BasePkg:md5=" + paramView.md5 + "\tversion=" + paramView.version + '\n';
-            localObject = com.tencent.mm.plugin.webcanvas.h.DQL;
-            localObject = com.tencent.mm.plugin.webcanvas.h.aGW("wxf337cbaa27790d8e");
-            if (localObject == null) {
-              break label539;
-            }
-            paramView = paramView + "BizPkg:md5=" + ((sp)localObject).md5 + " \tversion=" + ((sp)localObject).version;
+          localObject1 = com.tencent.mm.plugin.webcanvas.m.IAG;
+          localObject1 = com.tencent.mm.plugin.webcanvas.m.aWJ("wx97b7aebac2183fd2");
+          if (localObject1 == null) {
+            break label383;
           }
+          paramView = paramView + "PrefetchBasePkg:md5=" + ((tu)localObject1).md5 + " \tversion=" + ((tu)localObject1).version + '\n';
         }
+        label383:
         for (;;)
         {
-          locald.setMessage((CharSequence)paramView);
-          locald.afM(3);
-          locald.afL(3);
-          locald.a((CharSequence)getString(2131760315), true, null);
-          locald.show();
-          localObject = getSystemService("clipboard");
-          if (localObject != null) {
-            break label747;
+          localObject1 = com.tencent.mm.plugin.webcanvas.m.IAG;
+          localObject2 = ((Iterable)com.tencent.mm.plugin.webcanvas.m.fWI()).iterator();
+          for (;;)
+          {
+            localObject1 = paramView;
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+            localObject1 = (String)((Iterator)localObject2).next();
+            localObject3 = com.tencent.mm.plugin.webcanvas.m.IAG;
+            localObject3 = com.tencent.mm.plugin.webcanvas.m.aWJ((String)localObject1);
+            if (localObject3 != null) {
+              paramView = paramView + "PrefetchBizPkg:appId = " + (String)localObject1 + ", md5=" + ((tu)localObject3).md5 + " \tversion=" + ((tu)localObject3).version + '\n';
+            }
           }
-          paramView = new v("null cannot be cast to non-null type android.text.ClipboardManager");
-          AppMethodBeat.o(208650);
-          throw paramView;
-          paramView = "";
+          localObject1 = "";
           break;
-          continue;
-          paramView = g.ab(com.tencent.mm.plugin.appbrand.api.e.class);
-          p.g(paramView, "MMKernel.service(IWxaPkg…orageService::class.java)");
-          paramView = ((com.tencent.mm.plugin.appbrand.api.e)paramView).aYP().a("wxfedb0854e2b1820d", 2, new String[] { "version", "pkgPath", "versionMd5" });
-          if (paramView != null) {
-            localObject = "" + "BasePkg:md5=" + paramView.field_versionMd5 + "\tversion=" + paramView.field_version + '\n';
-          }
-          paramView = g.ab(com.tencent.mm.plugin.appbrand.api.e.class);
-          p.g(paramView, "MMKernel.service(IWxaPkg…orageService::class.java)");
-          bd localbd = ((com.tencent.mm.plugin.appbrand.api.e)paramView).aYP().a("wxf337cbaa27790d8e", 2, new String[] { "version", "pkgPath", "versionMd5" });
-          paramView = (View)localObject;
-          if (localbd != null) {
-            paramView = (String)localObject + "BizPkg:md5=" + localbd.field_versionMd5 + " \tversion=" + localbd.field_version;
-          }
         }
-        localObject = (ClipboardManager)localObject;
-        if (localObject != null) {
-          try
-          {
-            ((ClipboardManager)localObject).setText((CharSequence)paramView);
-            AppMethodBeat.o(208650);
-            return;
-          }
-          catch (Exception paramView)
-          {
-            ae.printErrStackTrace(this.TAG, (Throwable)paramView, "clip.setText error", new Object[0]);
-            AppMethodBeat.o(208650);
-            return;
-          }
-        }
-        ae.e(this.TAG, "clipboard manager is null");
-        AppMethodBeat.o(208650);
-        return;
       }
-    } while (i != 2131308486);
-    paramView = ay.aRW("_webview_tmpl_command");
-    localObject = new com.tencent.mm.ui.widget.a.e((Context)this, 1, false);
-    ((com.tencent.mm.ui.widget.a.e)localObject).a((n.d)b.ofQ);
-    ((com.tencent.mm.ui.widget.a.e)localObject).a((n.e)new c(this, paramView));
-    ((com.tencent.mm.ui.widget.a.e)localObject).p((CharSequence)" ", 1);
-    ((com.tencent.mm.ui.widget.a.e)localObject).fQz();
-    ((com.tencent.mm.ui.widget.a.e)localObject).cPF();
-    AppMethodBeat.o(208650);
+      paramView = ((v)g.af(v.class)).H("wxfedb0854e2b1820d", 2, 0);
+      if (paramView != null) {
+        localObject1 = "" + "BasePkg:md5=" + paramView.field_versionMd5 + "\tversion=" + paramView.field_version + '\n';
+      }
+      Object localObject2 = ((v)g.af(v.class)).H("wxf337cbaa27790d8e", 2, 0);
+      paramView = (View)localObject1;
+      if (localObject2 != null) {
+        paramView = (String)localObject1 + "BizPkg:md5=" + ((bd)localObject2).field_versionMd5 + " \tversion=" + ((bd)localObject2).field_version + '\n';
+      }
+      localObject2 = ((v)g.af(v.class)).H("wx97b7aebac2183fd2", 2, 0);
+      localObject1 = paramView;
+      if (localObject2 != null) {
+        localObject1 = paramView + "PrefetchBasePkg:md5=" + ((bd)localObject2).field_versionMd5 + " \tversion=" + ((bd)localObject2).field_version + '\n';
+      }
+      paramView = com.tencent.mm.plugin.webcanvas.m.IAG;
+      localObject2 = ((Iterable)com.tencent.mm.plugin.webcanvas.m.fWI()).iterator();
+      paramView = (View)localObject1;
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject1 = (String)((Iterator)localObject2).next();
+        localObject3 = ((v)g.af(v.class)).H((String)localObject1, 2, 0);
+        if (localObject3 != null) {
+          paramView = paramView + "PrefetchBizPkg:appId = " + (String)localObject1 + ", md5=" + ((bd)localObject3).field_versionMd5 + " \tversion=" + ((bd)localObject3).field_version + '\n';
+        }
+      }
+      localObject1 = paramView;
+      locald.setMessage((CharSequence)localObject1);
+      locald.aoN(3);
+      locald.aoM(3);
+      locald.a((CharSequence)getString(2131761757), true, null);
+      locald.show();
+      ClipboardHelper.setText((Context)getContext(), null, (CharSequence)localObject1);
+      AppMethodBeat.o(195208);
+      return;
+    }
+    if (i == 2131309732)
+    {
+      paramView = MultiProcessMMKV.getSingleMMKV("brandService");
+      a(j.listOf(new a[] { new a("开启频道入口动态化", (kotlin.g.a.a)new ac(paramView)), new a("关闭频道入口动态化", (kotlin.g.a.a)new ad(paramView)), new a("使用后台开关", (kotlin.g.a.a)new ae(paramView)) }), (Context)this, (kotlin.g.a.a)new af(this, paramView));
+      AppMethodBeat.o(195208);
+      return;
+    }
+    if (i == 2131296506)
+    {
+      paramView = new Intent((Context)getContext(), BizTestCanvasUI.class);
+      paramView = new com.tencent.mm.hellhoundlib.b.a().bl(paramView);
+      com.tencent.mm.hellhoundlib.a.a.a(this, paramView.axQ(), "com/tencent/mm/plugin/brandservice/ui/timeline/BizTestUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      startActivity((Intent)paramView.pG(0));
+      com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/BizTestUI", "onClick", "(Landroid/view/View;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      AppMethodBeat.o(195208);
+      return;
+    }
+    if (i == 2131300430)
+    {
+      paramView = MultiProcessMMKV.getMMKV("_webview_tmpl_command");
+      a(j.listOf(new a[] { new a("清理模板", (kotlin.g.a.a)new q(this)), new a("清理数据", (kotlin.g.a.a)new r(this)), new a("检查模板更新", (kotlin.g.a.a)new s(this, paramView)), new a("关闭超时跳转", (kotlin.g.a.a)new t(this, paramView)), new a("恢复超时跳转", (kotlin.g.a.a)new u(this, paramView)) }), (Context)this);
+      AppMethodBeat.o(195208);
+      return;
+    }
+    if (i == 2131296483)
+    {
+      paramView = MultiProcessMMKV.getSingleMMKV("brandService");
+      localObject1 = MultiProcessMMKV.getSingleMMKV("biz_timeline_ad");
+      a(j.listOf(new a[] { new a("预览状态", (kotlin.g.a.a)f.pqQ), new a("发布状态-忽略频控", (kotlin.g.a.a)i.pqS), new a("发布状态", (kotlin.g.a.a)j.pqT), new a("打开广告", (kotlin.g.a.a)new k(paramView)), new a("关闭广告", (kotlin.g.a.a)new l(paramView)), new a("正常模式", (kotlin.g.a.a)new m(paramView)), new a("测试模式", (kotlin.g.a.a)new n(paramView)), new a("Mock视频模式", (kotlin.g.a.a)new o(paramView)), new a("Mock图片模式", (kotlin.g.a.a)new p(paramView)), new a("清理广告曝光", (kotlin.g.a.a)new g((MultiProcessMMKV)localObject1)) }), (Context)this, (kotlin.g.a.a)new h(this));
+      AppMethodBeat.o(195208);
+      return;
+    }
+    if (i == 2131306601)
+    {
+      a(j.listOf(new a[] { new a("插入推荐卡片", (kotlin.g.a.a)z.pqV), new a("打开推荐流", (kotlin.g.a.a)new aa(this)), new a("关闭推荐流", (kotlin.g.a.a)new ab(this)) }), (Context)this);
+      AppMethodBeat.o(195208);
+      return;
+    }
+    if (i == 2131298926) {
+      a(j.listOf(new a[] { new a("打开大秒开使用pkg", (kotlin.g.a.a)new v(this)), new a("关闭大秒开使用pkg", (kotlin.g.a.a)new w(this)), new a("打开大秒开测试", (kotlin.g.a.a)new x(this)), new a("关闭大秒开测试", (kotlin.g.a.a)new y(this)) }), (Context)this);
+    }
+    AppMethodBeat.o(195208);
   }
   
   public final void onCreate(Bundle paramBundle)
   {
-    AppMethodBeat.i(208648);
+    AppMethodBeat.i(195207);
     super.onCreate(paramBundle);
-    setMMTitle(2131761225);
-    setBackBtn((MenuItem.OnMenuItemClickListener)new a(this));
-    AppMethodBeat.o(208648);
-  }
-  
-  public final void onDestroy()
-  {
-    AppMethodBeat.i(208649);
-    super.onDestroy();
-    AppMethodBeat.o(208649);
+    setMMTitle(2131763040);
+    setBackBtn((MenuItem.OnMenuItemClickListener)new b(this));
+    AppMethodBeat.o(195207);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
@@ -202,83 +227,471 @@ public final class BizTestUI
     AppMethodBeat.at(this, paramBoolean);
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/brandservice/ui/timeline/BizTestUI$TestItem;", "", "name", "", "execute", "Lkotlin/Function0;", "", "(Ljava/lang/String;Lkotlin/jvm/functions/Function0;)V", "getExecute", "()Lkotlin/jvm/functions/Function0;", "getName", "()Ljava/lang/String;", "component1", "component2", "copy", "equals", "", "other", "hashCode", "", "toString", "plugin-brandservice_release"})
   static final class a
+  {
+    final String name;
+    final kotlin.g.a.a<x> pqM;
+    
+    public a(String paramString, kotlin.g.a.a<x> parama)
+    {
+      AppMethodBeat.i(195168);
+      this.name = paramString;
+      this.pqM = parama;
+      AppMethodBeat.o(195168);
+    }
+    
+    public final boolean equals(Object paramObject)
+    {
+      AppMethodBeat.i(195171);
+      if (this != paramObject)
+      {
+        if ((paramObject instanceof a))
+        {
+          paramObject = (a)paramObject;
+          if ((!p.j(this.name, paramObject.name)) || (!p.j(this.pqM, paramObject.pqM))) {}
+        }
+      }
+      else
+      {
+        AppMethodBeat.o(195171);
+        return true;
+      }
+      AppMethodBeat.o(195171);
+      return false;
+    }
+    
+    public final int hashCode()
+    {
+      int j = 0;
+      AppMethodBeat.i(195170);
+      Object localObject = this.name;
+      if (localObject != null) {}
+      for (int i = localObject.hashCode();; i = 0)
+      {
+        localObject = this.pqM;
+        if (localObject != null) {
+          j = localObject.hashCode();
+        }
+        AppMethodBeat.o(195170);
+        return i * 31 + j;
+      }
+    }
+    
+    public final String toString()
+    {
+      AppMethodBeat.i(195169);
+      String str = "TestItem(name=" + this.name + ", execute=" + this.pqM + ")";
+      AppMethodBeat.o(195169);
+      return str;
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class aa
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    aa(BizTestUI paramBizTestUI)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class ab
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    ab(BizTestUI paramBizTestUI)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class ac
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    ac(MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class ad
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    ad(MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class ae
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    ae(MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class af
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    af(BizTestUI paramBizTestUI, MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "onMenuItemClick"})
+  static final class b
     implements MenuItem.OnMenuItemClickListener
   {
-    a(BizTestUI paramBizTestUI) {}
+    b(BizTestUI paramBizTestUI) {}
     
     public final boolean onMenuItemClick(MenuItem paramMenuItem)
     {
-      AppMethodBeat.i(208644);
-      this.ofP.finish();
-      AppMethodBeat.o(208644);
+      AppMethodBeat.i(195172);
+      this.pqN.finish();
+      AppMethodBeat.o(195172);
       return true;
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
-  static final class b
-    implements n.d
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class c
+    extends q
+    implements kotlin.g.a.a<x>
   {
-    public static final b ofQ;
+    public static final c pqO;
     
     static
     {
-      AppMethodBeat.i(208646);
-      ofQ = new b();
-      AppMethodBeat.o(208646);
+      AppMethodBeat.i(195173);
+      pqO = new c();
+      AppMethodBeat.o(195173);
     }
     
-    public final void onCreateMMMenu(com.tencent.mm.ui.base.l paraml)
+    c()
     {
-      AppMethodBeat.i(208645);
-      paraml.c(0, (CharSequence)"清理模板");
-      paraml.c(1, (CharSequence)"清理数据");
-      paraml.c(2, (CharSequence)"检查模板更新");
-      paraml.c(3, (CharSequence)"noredir");
-      paraml.c(4, (CharSequence)"redir");
-      AppMethodBeat.o(208645);
+      super();
     }
   }
   
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "menuItem", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
-  static final class c
-    implements n.e
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "menu", "Lcom/tencent/mm/ui/base/MMMenu;", "kotlin.jvm.PlatformType", "onCreateMMMenu"})
+  static final class d
+    implements o.f
   {
-    c(BizTestUI paramBizTestUI, ay paramay) {}
+    d(List paramList) {}
+    
+    public final void onCreateMMMenu(com.tencent.mm.ui.base.m paramm)
+    {
+      AppMethodBeat.i(195174);
+      Object localObject1 = (Iterable)this.pqP;
+      int i = 0;
+      localObject1 = ((Iterable)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        Object localObject2 = ((Iterator)localObject1).next();
+        if (i < 0) {
+          j.hxH();
+        }
+        paramm.c(i, (CharSequence)((BizTestUI.a)localObject2).name);
+        i += 1;
+      }
+      AppMethodBeat.o(195174);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "<anonymous parameter 0>", "Landroid/view/MenuItem;", "kotlin.jvm.PlatformType", "index", "", "onMMMenuItemSelected"})
+  static final class e
+    implements o.g
+  {
+    e(List paramList, kotlin.g.a.a parama) {}
     
     public final void onMMMenuItemSelected(MenuItem paramMenuItem, int paramInt)
     {
-      AppMethodBeat.i(208647);
-      p.g(paramMenuItem, "menuItem");
-      switch (paramMenuItem.getItemId())
-      {
-      }
-      for (;;)
-      {
-        AppMethodBeat.o(208647);
-        return;
-        com.tencent.mm.plugin.brandservice.ui.timeline.preload.b.b.clear();
-        com.tencent.mm.ui.base.h.cj((Context)this.ofP, "clear all tmpl info");
-        AppMethodBeat.o(208647);
-        return;
-        com.tencent.mm.plugin.brandservice.ui.timeline.preload.a.bPR();
-        com.tencent.mm.ui.base.h.cj((Context)this.ofP, "clear all cached data");
-        AppMethodBeat.o(208647);
-        return;
-        paramView.putBoolean("preload_tmpl_always_check_tmpl_ver", true);
-        com.tencent.mm.ui.base.h.cj((Context)this.ofP, "enable tmpl always check");
-        ((com.tencent.mm.plugin.brandservice.a.b)g.ab(com.tencent.mm.plugin.brandservice.a.b.class)).zm(90);
-        AppMethodBeat.o(208647);
-        return;
-        paramView.putBoolean("preload_tmpl_test_noredir", true);
-        com.tencent.mm.ui.base.h.cj((Context)this.ofP, "disable re-direct");
-        AppMethodBeat.o(208647);
-        return;
-        paramView.remove("preload_tmpl_test_noredir");
-        com.tencent.mm.ui.base.h.cj((Context)this.ofP, "enable re-direct");
-      }
+      AppMethodBeat.i(195175);
+      ((BizTestUI.a)this.pqP.get(paramInt)).pqM.invoke();
+      parama.invoke();
+      AppMethodBeat.o(195175);
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class f
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    public static final f pqQ;
+    
+    static
+    {
+      AppMethodBeat.i(195177);
+      pqQ = new f();
+      AppMethodBeat.o(195177);
+    }
+    
+    f()
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class g
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    g(MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class h
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    h(BizTestUI paramBizTestUI)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class i
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    public static final i pqS;
+    
+    static
+    {
+      AppMethodBeat.i(195181);
+      pqS = new i();
+      AppMethodBeat.o(195181);
+    }
+    
+    i()
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class j
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    public static final j pqT;
+    
+    static
+    {
+      AppMethodBeat.i(195183);
+      pqT = new j();
+      AppMethodBeat.o(195183);
+    }
+    
+    j()
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class k
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    k(MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class l
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    l(MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class m
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    m(MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class n
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    n(MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class o
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    o(MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class p
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    p(MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class q
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    q(BizTestUI paramBizTestUI)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class r
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    r(BizTestUI paramBizTestUI)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class s
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    s(BizTestUI paramBizTestUI, MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class t
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    t(BizTestUI paramBizTestUI, MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class u
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    u(BizTestUI paramBizTestUI, MultiProcessMMKV paramMultiProcessMMKV)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class v
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    v(BizTestUI paramBizTestUI)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class w
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    w(BizTestUI paramBizTestUI)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class x
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    x(BizTestUI paramBizTestUI)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class y
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    y(BizTestUI paramBizTestUI)
+    {
+      super();
+    }
+  }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "invoke"})
+  static final class z
+    extends q
+    implements kotlin.g.a.a<x>
+  {
+    public static final z pqV;
+    
+    static
+    {
+      AppMethodBeat.i(195200);
+      pqV = new z();
+      AppMethodBeat.o(195200);
+    }
+    
+    z()
+    {
+      super();
     }
   }
 }

@@ -8,12 +8,12 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public final class o
 {
-  private static final Map<String, e> gAA;
+  private static final Map<String, e> hno;
   
   static
   {
     AppMethodBeat.i(158758);
-    gAA = new ConcurrentHashMap();
+    hno = new ConcurrentHashMap();
     AppMethodBeat.o(158758);
   }
   
@@ -31,12 +31,12 @@ public final class o
       }
       if (localClass.isAnnotationPresent(a.class))
       {
-        e locale = (e)gAA.get(paramString);
+        e locale = (e)hno.get(paramString);
         paramClass = locale;
         if (locale == null)
         {
           paramClass = new e(localClass);
-          gAA.put(paramString, paramClass);
+          hno.put(paramString, paramClass);
         }
         paramString = paramClass.get();
         AppMethodBeat.o(158755);
@@ -75,12 +75,12 @@ public final class o
       if (paramClass1.isAnnotationPresent(a.class))
       {
         String str = paramClass1.getName();
-        e locale = (e)gAA.get(str);
+        e locale = (e)hno.get(str);
         paramClass2 = locale;
         if (locale == null)
         {
           paramClass2 = new e(paramClass1);
-          gAA.put(str, paramClass2);
+          hno.put(str, paramClass2);
         }
         paramClass1 = paramClass2.get();
         AppMethodBeat.o(158756);
@@ -99,7 +99,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.o
  * JD-Core Version:    0.7.0.1
  */

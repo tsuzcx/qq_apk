@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/fnp" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/be3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/bb"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <include layout="@layout/b6a" />
-        <ImageView android:id="@id/g8u" android:background="@color/fc" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        <FrameLayout android:id="@id/fqe" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    </FrameLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/iqp" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <TextView android:gravity="center|left" android:layout_gravity="center_vertical" android:id="@android:id/title" android:layout_height="wrap_content" android:layout_marginRight="@dimen/i2" android:minWidth="@dimen/el" android:singleLine="true" style="@style/mi" />
+        <LinearLayout android:orientation="vertical" android:id="@id/ieh" android:paddingTop="@dimen/cb" android:paddingBottom="@dimen/cb" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <ImageView android:id="@id/dvz" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginRight="@dimen/bt" android:scaleType="centerCrop" />
+                <TextView android:ellipsize="end" android:gravity="center|left" android:id="@android:id/summary" android:layout_width="@dimen/c6" android:singleLine="false" android:layout_weight="1.0" style="@style/ml" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="qu" parent="@style/a6e" />
-    <style name="qv" parent="@style/a6f" />
-    <style name="a6e" parent="@android:style/Theme.Material.NoActionBar" />
-    <style name="a6f" parent="@android:style/Theme.Material.Light.NoActionBar" />
+    <style name="ru" parent="@style/a7v" />
+    <style name="rv" parent="@style/a7w" />
+    <style name="a7v" parent="@android:style/Theme.Material.NoActionBar" />
+    <style name="a7w" parent="@android:style/Theme.Material.Light.NoActionBar" />
 </resources>

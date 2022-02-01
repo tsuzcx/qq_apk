@@ -4,27 +4,26 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.view.OrientationEventListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
 
 @TargetApi(3)
 public final class a
   extends OrientationEventListener
 {
-  private a iLk = a.iLn;
-  private int iLl = 45;
-  private b iLm;
+  private a jHY = a.jIb;
+  private int jHZ = 45;
+  private b jIa;
   
   public a(Context paramContext, b paramb)
   {
     super(paramContext);
-    this.iLm = paramb;
+    this.jIa = paramb;
   }
   
   public final void disable()
   {
     AppMethodBeat.i(151343);
     super.disable();
-    this.iLk = a.iLn;
+    this.jHY = a.jIb;
     AppMethodBeat.o(151343);
   }
   
@@ -43,39 +42,38 @@ public final class a
       AppMethodBeat.o(151344);
       return;
     }
-    a locala2 = this.iLk;
+    a locala2 = this.jHY;
     a locala1;
-    if (((paramInt >= 360 - this.iLl) && (paramInt < 360)) || ((paramInt >= 0) && (paramInt <= this.iLl + 0))) {
-      locala1 = a.iLo;
+    if (((paramInt >= 360 - this.jHZ) && (paramInt < 360)) || ((paramInt >= 0) && (paramInt <= this.jHZ + 0))) {
+      locala1 = a.jIc;
     }
     for (;;)
     {
-      if (locala1 != this.iLk)
+      if (locala1 != this.jHY)
       {
-        if ((this.iLm != null) && (this.iLk != a.iLn)) {
-          this.iLm.a(this.iLk, locala1);
+        if ((this.jIa != null) && (this.jHY != a.jIb)) {
+          this.jIa.a(this.jHY, locala1);
         }
-        this.iLk = locala1;
+        this.jHY = locala1;
       }
-      ae.i("MicroMsg.OrientationListenerHelper", "OrientationListener onOrientationChanged: %d", new Object[] { Integer.valueOf(paramInt) });
       AppMethodBeat.o(151344);
       return;
-      if ((paramInt >= 270 - this.iLl) && (paramInt <= this.iLl + 270))
+      if ((paramInt >= 270 - this.jHZ) && (paramInt <= this.jHZ + 270))
       {
-        locala1 = a.iLp;
+        locala1 = a.jId;
       }
-      else if ((paramInt >= 180 - this.iLl) && (paramInt <= this.iLl + 180))
+      else if ((paramInt >= 180 - this.jHZ) && (paramInt <= this.jHZ + 180))
       {
-        locala1 = a.iLq;
+        locala1 = a.jIe;
       }
       else
       {
         locala1 = locala2;
-        if (paramInt >= 90 - this.iLl)
+        if (paramInt >= 90 - this.jHZ)
         {
           locala1 = locala2;
-          if (paramInt <= this.iLl + 90) {
-            locala1 = a.iLr;
+          if (paramInt <= this.jHZ + 90) {
+            locala1 = a.jIf;
           }
         }
       }
@@ -87,12 +85,12 @@ public final class a
     static
     {
       AppMethodBeat.i(151341);
-      iLn = new a("NONE", 0);
-      iLo = new a("PORTRAIT", 1);
-      iLp = new a("LANDSCAPE", 2);
-      iLq = new a("REVERSE_PORTRAIT", 3);
-      iLr = new a("REVERSE_LANDSCAPE", 4);
-      iLs = new a[] { iLn, iLo, iLp, iLq, iLr };
+      jIb = new a("NONE", 0);
+      jIc = new a("PORTRAIT", 1);
+      jId = new a("LANDSCAPE", 2);
+      jIe = new a("REVERSE_PORTRAIT", 3);
+      jIf = new a("REVERSE_LANDSCAPE", 4);
+      jIg = new a[] { jIb, jIc, jId, jIe, jIf };
       AppMethodBeat.o(151341);
     }
     

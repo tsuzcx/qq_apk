@@ -4,6 +4,7 @@ public class DataPack
 {
   public long beginTime;
   public long changePointTime;
+  public long[] changePointTimeList;
   public int config_begin;
   public int frameNum;
   public int height;
@@ -13,10 +14,11 @@ public class DataPack
   public byte[] seqID;
   public RawImgData[] videoData;
   public int width;
+  public RawYuvData[] yuvDatas;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.jni.cppDefine.DataPack
  * JD-Core Version:    0.7.0.1
  */

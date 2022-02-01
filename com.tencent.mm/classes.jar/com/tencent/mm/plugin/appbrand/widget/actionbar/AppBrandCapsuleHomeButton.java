@@ -21,23 +21,23 @@ public final class AppBrandCapsuleHomeButton
   
   protected final String getDefaultAccessibilityLabel()
   {
-    AppMethodBeat.i(208019);
-    String str = getContext().getString(2131755286);
-    AppMethodBeat.o(208019);
+    AppMethodBeat.i(219626);
+    String str = getContext().getString(2131755322);
+    AppMethodBeat.o(219626);
     return str;
   }
   
   protected final Drawable getDefaultImageDrawable()
   {
     AppMethodBeat.i(135459);
-    Drawable localDrawable = b.l(getContext(), 2131230946);
+    Drawable localDrawable = b.l(getContext(), 2131230969);
     AppMethodBeat.o(135459);
     return localDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.actionbar.AppBrandCapsuleHomeButton
  * JD-Core Version:    0.7.0.1
  */

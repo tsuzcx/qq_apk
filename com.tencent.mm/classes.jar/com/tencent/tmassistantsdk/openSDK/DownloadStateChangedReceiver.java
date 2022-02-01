@@ -5,9 +5,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.tmassistantsdk.util.TMLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -17,7 +17,7 @@ public class DownloadStateChangedReceiver
 {
   private static final String TAG = "DownloadStateChangedReceiver";
   protected static DownloadStateChangedReceiver mInstance = null;
-  protected aq handler;
+  protected MMHandler handler;
   protected boolean isRegisted;
   ArrayList<IDownloadStateChangedListener> mListeners;
   
@@ -27,7 +27,7 @@ public class DownloadStateChangedReceiver
     this.handler = null;
     this.isRegisted = false;
     this.mListeners = new ArrayList();
-    this.handler = new aq("downloadStateChangedThread");
+    this.handler = new MMHandler("downloadStateChangedThread");
     AppMethodBeat.o(102086);
   }
   
@@ -68,15 +68,15 @@ public class DownloadStateChangedReceiver
           localTMQQDownloaderStateChangeParam.hostPackageName = paramIntent.getStringExtra("hostPackageName");
           localTMQQDownloaderStateChangeParam.hostVersion = paramIntent.getStringExtra("hostVersion");
           localTMQQDownloaderStateChangeParam.taskId = paramIntent.getStringExtra("taskId");
-          localTMQQDownloaderStateChangeParam.errorCode = bu.getInt(paramIntent.getStringExtra("errorCode"), 0);
+          localTMQQDownloaderStateChangeParam.errorCode = Util.getInt(paramIntent.getStringExtra("errorCode"), 0);
           localTMQQDownloaderStateChangeParam.errorMsg = paramIntent.getStringExtra("errorMsg");
-          localTMQQDownloaderStateChangeParam.state = bu.getInt(paramIntent.getStringExtra("state"), 0);
+          localTMQQDownloaderStateChangeParam.state = Util.getInt(paramIntent.getStringExtra("state"), 0);
           Object localObject = new TMQQDownloaderOpenSDKParam();
           ((TMQQDownloaderOpenSDKParam)localObject).SNGAppId = paramIntent.getStringExtra("sngAppId");
           ((TMQQDownloaderOpenSDKParam)localObject).taskAppId = paramIntent.getStringExtra("taskAppId");
           ((TMQQDownloaderOpenSDKParam)localObject).taskApkId = paramIntent.getStringExtra("taskApkId");
           ((TMQQDownloaderOpenSDKParam)localObject).taskPackageName = paramIntent.getStringExtra("taskPackageName");
-          ((TMQQDownloaderOpenSDKParam)localObject).taskVersion = bu.getInt(paramIntent.getStringExtra("taskVersion"), 0);
+          ((TMQQDownloaderOpenSDKParam)localObject).taskVersion = Util.getInt(paramIntent.getStringExtra("taskVersion"), 0);
           ((TMQQDownloaderOpenSDKParam)localObject).via = paramIntent.getStringExtra("via");
           ((TMQQDownloaderOpenSDKParam)localObject).uin = paramIntent.getStringExtra("uin");
           ((TMQQDownloaderOpenSDKParam)localObject).uinType = paramIntent.getStringExtra("uinType");
@@ -110,7 +110,7 @@ public class DownloadStateChangedReceiver
       {
         TMLog.i("DownloadStateChangedReceiver", "registeReceiver exception!!!");
         this.isRegisted = false;
-        ae.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
+        Log.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102089);
@@ -147,7 +147,7 @@ public class DownloadStateChangedReceiver
       {
         TMLog.i("DownloadStateChangedReceiver", "unRegisteReceiver exception!!!");
         this.isRegisted = false;
-        ae.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
+        Log.printErrStackTrace("DownloadStateChangedReceiver", paramContext, "", new Object[0]);
       }
     }
     AppMethodBeat.o(102090);
@@ -155,7 +155,7 @@ public class DownloadStateChangedReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.openSDK.DownloadStateChangedReceiver
  * JD-Core Version:    0.7.0.1
  */

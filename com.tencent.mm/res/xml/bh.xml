@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_wechat_account" android:layout="@layout/aop" android:title="@string/bbf" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_verifyuser" android:layout="@layout/aop" android:title="@string/bb_" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_trademark" android:layout="@layout/aop" android:title="@string/bb4" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_privilege" android:title="@string/b8e" />
-    <com.tencent.mm.plugin.profile.ui.IconWidgetPreference android:key="contact_info_kf_worker" android:layout="@layout/aop" android:title="@string/f6v" />
-    <Preference android:key="contact_info_service_phone" android:layout="@layout/aop" android:title="@string/b_3" />
-    <com.tencent.mm.plugin.profile.ui.BizInfoPayInfoIconPreference android:key="contact_info_reputation" android:layout="@layout/ua" android:title="@string/b9n" />
-    <com.tencent.mm.plugin.profile.ui.BizInfoPayInfoIconPreference android:key="contact_info_guarantee_info" android:layout="@layout/ua" android:title="@string/b6q" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_scope_of_business" android:layout="@layout/aop" android:title="@string/b9u" />
-    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="contact_info_verifyuser_weibo" android:layout="@layout/aop" android:title="@string/bbg" />
-    <Preference android:key="near_field_service" android:layout="@layout/aop" android:title="@string/dwp" />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="mail_receiver_info_name" android:layout="@layout/b8j" android:title="@string/eu_" />
+    <com.tencent.mm.ui.base.preference.KeyValuePreference android:key="mail_receiver_info_addr" android:layout="@layout/b8j" android:title="@string/eu9" />
     <PreferenceSmallCategory />
-    <Preference android:key="contact_info_see_locate" android:layout="@layout/aop" android:title="@string/b4w" />
-    <PreferenceSmallCategory android:key="contact_info_category2" />
+    <Preference android:key="mail_compose_btn" android:layout="@layout/aw2" android:title="@string/fnc" />
 </PreferenceScreen>

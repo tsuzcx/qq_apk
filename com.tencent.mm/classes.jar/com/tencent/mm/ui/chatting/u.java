@@ -5,9 +5,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.view.View;
@@ -20,58 +18,55 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.b.b;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.plugin.downloader.model.g.a;
-import com.tencent.mm.pluginsdk.i.j;
 import com.tencent.mm.pluginsdk.model.app.q;
-import com.tencent.mm.pluginsdk.ui.tools.m;
-import com.tencent.mm.pluginsdk.ui.tools.m.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.base.h;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.pluginsdk.ui.tools.o;
+import com.tencent.mm.pluginsdk.ui.tools.o.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 
 public final class u
 {
-  public ChatFooterCustom JWJ;
-  public FrameLayout JWK;
-  public FrameLayout JWL;
-  public TextView JWM;
-  public ImageView JWN;
-  a JWO;
-  public boolean JWP;
-  String JWQ;
-  public String JWR;
-  public View.OnClickListener JWS;
-  public View.OnClickListener JWT;
-  private m.a JWU;
+  public String Bxl;
+  String Bxm;
+  String Bxn;
+  public ChatFooterCustom PhX;
+  public FrameLayout PhY;
+  public FrameLayout PhZ;
+  public TextView Pia;
+  public ImageView Pib;
+  a Pic;
+  public boolean Pid;
+  String Pie;
+  public String Pif;
+  public View.OnClickListener Pig;
+  public View.OnClickListener Pih;
+  private o.a Pii;
   Context mContext;
-  public LinearLayout pVM;
-  long qmk;
-  SharedPreferences sp;
-  public int uFA;
-  public String xxj;
-  String xxk;
-  String xxl;
+  long rDg;
+  public LinearLayout rmL;
+  private SharedPreferences sp;
+  public int xXB;
   
   public u(ChatFooterCustom paramChatFooterCustom)
   {
     AppMethodBeat.i(34622);
-    this.pVM = null;
-    this.JWO = a.JWY;
-    this.uFA = -1;
-    this.JWQ = null;
-    this.qmk = -1L;
-    this.JWS = new u.1(this);
-    this.JWT = new View.OnClickListener()
+    this.rmL = null;
+    this.Pic = a.Pim;
+    this.xXB = -1;
+    this.Pie = null;
+    this.rDg = -1L;
+    this.Pig = new u.1(this);
+    this.Pih = new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(34610);
         Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/ChattingQQMailFooterHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-        switch (u.8.JWX[u.this.JWO.ordinal()])
+        ((b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/chatting/ChattingQQMailFooterHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+        switch (u.8.Pil[u.this.Pic.ordinal()])
         {
         }
         for (;;)
@@ -79,180 +74,180 @@ public final class u
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/chatting/ChattingQQMailFooterHandler$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(34610);
           return;
-          com.tencent.mm.plugin.report.service.g.yxI.f(11288, new Object[] { Integer.valueOf(6) });
+          com.tencent.mm.plugin.report.service.h.CyF.a(11288, new Object[] { Integer.valueOf(6) });
           paramAnonymousView = u.this;
-          if (!az.isConnected(paramAnonymousView.mContext))
+          if (!NetStatusUtil.isConnected(paramAnonymousView.mContext))
           {
-            h.a(paramAnonymousView.mContext, com.tencent.mm.cb.a.az(paramAnonymousView.mContext, 2131757089), "", com.tencent.mm.cb.a.az(paramAnonymousView.mContext, 2131757084), null);
+            com.tencent.mm.ui.base.h.a(paramAnonymousView.mContext, com.tencent.mm.cb.a.aI(paramAnonymousView.mContext, 2131757290), "", com.tencent.mm.cb.a.aI(paramAnonymousView.mContext, 2131757285), null);
           }
-          else if (!az.isWifi(paramAnonymousView.mContext))
+          else if (!NetStatusUtil.isWifi(paramAnonymousView.mContext))
           {
-            h.a(paramAnonymousView.mContext, 2131757086, 0, 2131757082, 2131757081, new u.3(paramAnonymousView), null);
+            com.tencent.mm.ui.base.h.a(paramAnonymousView.mContext, 2131757287, 0, 2131757283, 2131757282, new u.3(paramAnonymousView), null);
           }
           else
           {
-            h.a(paramAnonymousView.mContext, 2131757087, 0, 2131757082, 2131757081, new u.4(paramAnonymousView), null);
+            com.tencent.mm.ui.base.h.a(paramAnonymousView.mContext, 2131757288, 0, 2131757283, 2131757282, new u.4(paramAnonymousView), null);
             continue;
             paramAnonymousView = u.this;
-            ae.i("MicroMsg.ChattingQQMailFooterHandler", "dz[cancelDownload]");
-            f.cdA().ui(paramAnonymousView.qmk);
-            paramAnonymousView.fFN();
+            Log.i("MicroMsg.ChattingQQMailFooterHandler", "dz[cancelDownload]");
+            f.cBv().Cn(paramAnonymousView.rDg);
+            paramAnonymousView.gNS();
             continue;
-            com.tencent.mm.plugin.report.service.g.yxI.f(11288, new Object[] { Integer.valueOf(7) });
+            com.tencent.mm.plugin.report.service.h.CyF.a(11288, new Object[] { Integer.valueOf(7) });
             paramAnonymousView = u.this;
-            ae.i("MicroMsg.ChattingQQMailFooterHandler", "dz[installQQMail]");
-            j.aM(paramAnonymousView.mContext, paramAnonymousView.JWQ);
+            Log.i("MicroMsg.ChattingQQMailFooterHandler", "dz[installQQMail]");
+            com.tencent.mm.pluginsdk.i.g.aZ(paramAnonymousView.mContext, paramAnonymousView.Pie);
             continue;
-            com.tencent.mm.plugin.report.service.g.yxI.f(11288, new Object[] { Integer.valueOf(5) });
+            com.tencent.mm.plugin.report.service.h.CyF.a(11288, new Object[] { Integer.valueOf(5) });
             u localu = u.this;
-            ae.i("MicroMsg.ChattingQQMailFooterHandler", "dz[openQQMail]");
-            ae.i("MicroMsg.ChattingQQMailFooterHandler", "mQQMailScheme = %s", new Object[] { localu.JWR });
-            if (bu.isNullOrNil(localu.JWR)) {
+            Log.i("MicroMsg.ChattingQQMailFooterHandler", "dz[openQQMail]");
+            Log.i("MicroMsg.ChattingQQMailFooterHandler", "mQQMailScheme = %s", new Object[] { localu.Pif });
+            if (Util.isNullOrNil(localu.Pif)) {
               paramAnonymousView = localu.mContext.getPackageManager().getLaunchIntentForPackage("com.tencent.androidqqmail");
             }
             for (;;)
             {
-              ae.i("MicroMsg.ChattingQQMailFooterHandler", "intent = %s", new Object[] { paramAnonymousView });
+              Log.i("MicroMsg.ChattingQQMailFooterHandler", "intent = %s", new Object[] { paramAnonymousView });
               com.tencent.mm.ch.a.post(new u.5(localu, paramAnonymousView));
               break;
               localObject = new Intent();
-              ((Intent)localObject).setData(Uri.parse(localu.JWR));
+              ((Intent)localObject).setData(Uri.parse(localu.Pif));
               ((Intent)localObject).addFlags(268435456);
               if (Build.VERSION.SDK_INT >= 11) {
                 ((Intent)localObject).addFlags(32768);
               }
               paramAnonymousView = (View)localObject;
-              if (!bu.aj(localu.mContext, (Intent)localObject)) {
+              if (!Util.isIntentAvailable(localu.mContext, (Intent)localObject)) {
                 paramAnonymousView = localu.mContext.getPackageManager().getLaunchIntentForPackage("com.tencent.androidqqmail");
               }
             }
-            if (u.this.JWP) {
+            if (u.this.Pid) {
               u.a(u.this);
             }
           }
         }
       }
     };
-    this.JWU = new m.a()
+    this.Pii = new o.a()
     {
-      public final void dFG()
+      public final void eGv()
       {
         AppMethodBeat.i(34617);
-        u.this.JWM.setText(2131757092);
+        u.this.Pia.setText(2131757293);
         AppMethodBeat.o(34617);
       }
       
       public final void onSuccess(int paramAnonymousInt)
       {
         AppMethodBeat.i(34616);
-        u.this.uFA = paramAnonymousInt;
-        u.this.fFO();
+        u.this.xXB = paramAnonymousInt;
+        u.this.gNT();
         AppMethodBeat.o(34616);
       }
     };
     this.mContext = paramChatFooterCustom.getContext();
-    this.JWJ = paramChatFooterCustom;
+    this.PhX = paramChatFooterCustom;
     AppMethodBeat.o(34622);
   }
   
-  public final void fFM()
+  public final void gNR()
   {
     AppMethodBeat.i(34623);
-    if (this.JWO == a.JXc)
+    if (this.Pic == a.Piq)
     {
-      this.JWN.setImageResource(2131691054);
+      this.Pib.setImageResource(2131691356);
       AppMethodBeat.o(34623);
       return;
     }
-    this.JWN.setImageResource(2131691055);
+    this.Pib.setImageResource(2131691357);
     AppMethodBeat.o(34623);
   }
   
-  public final void fFN()
+  public final void gNS()
   {
     AppMethodBeat.i(34624);
     Object localObject;
     if (q.s(this.mContext, "com.tencent.androidqqmail")) {
-      localObject = a.JXc;
+      localObject = a.Piq;
     }
     for (;;)
     {
-      this.JWO = ((a)localObject);
-      fFM();
-      ae.i("MicroMsg.ChattingQQMailFooterHandler", "dz[initRightBtnTv: status:%s]", new Object[] { this.JWO.toString() });
-      switch (8.JWX[this.JWO.ordinal()])
+      this.Pic = ((a)localObject);
+      gNR();
+      Log.i("MicroMsg.ChattingQQMailFooterHandler", "dz[initRightBtnTv: status:%s]", new Object[] { this.Pic.toString() });
+      switch (8.Pil[this.Pic.ordinal()])
       {
       default: 
-        m.a(this.JWU);
+        o.a(this.Pii);
         AppMethodBeat.o(34624);
         return;
-        this.sp = this.mContext.getSharedPreferences("QQMAIL", com.tencent.mm.compatible.util.g.abv());
-        this.qmk = this.sp.getLong("qqmail_downloadid", -1L);
-        if (this.qmk < 0L)
+        this.sp = this.mContext.getSharedPreferences("QQMAIL", com.tencent.mm.compatible.util.g.aps());
+        this.rDg = this.sp.getLong("qqmail_downloadid", -1L);
+        if (this.rDg < 0L)
         {
-          if (bu.isNullOrNil(this.xxj)) {
-            localObject = a.JXd;
+          if (Util.isNullOrNil(this.Bxl)) {
+            localObject = a.Pir;
           } else {
-            localObject = a.JWZ;
+            localObject = a.Pin;
           }
         }
         else
         {
-          localObject = f.cdA().uj(this.qmk);
+          localObject = f.cBv().Co(this.rDg);
           int i = ((FileDownloadTaskInfo)localObject).status;
-          this.JWQ = ((FileDownloadTaskInfo)localObject).path;
+          this.Pie = ((FileDownloadTaskInfo)localObject).path;
           switch (i)
           {
           case 2: 
           default: 
-            if (bu.isNullOrNil(this.xxj)) {
-              localObject = a.JXd;
+            if (Util.isNullOrNil(this.Bxl)) {
+              localObject = a.Pir;
             }
             break;
           case 3: 
-            if (o.fB(this.JWQ)) {
-              localObject = a.JXb;
-            } else if (bu.isNullOrNil(this.xxj)) {
-              localObject = a.JXd;
+            if (s.YS(this.Pie)) {
+              localObject = a.Pip;
+            } else if (Util.isNullOrNil(this.Bxl)) {
+              localObject = a.Pir;
             } else {
-              localObject = a.JWZ;
+              localObject = a.Pin;
             }
             break;
           case 1: 
-            localObject = a.JXa;
+            localObject = a.Pio;
             continue;
-            localObject = a.JWZ;
+            localObject = a.Pin;
           }
         }
         break;
       }
     }
-    this.JWM.setText(2131757085);
+    this.Pia.setText(2131757286);
     AppMethodBeat.o(34624);
     return;
-    this.JWM.setText(2131757083);
+    this.Pia.setText(2131757284);
     AppMethodBeat.o(34624);
     return;
-    m.a(this.JWU);
+    o.a(this.Pii);
     AppMethodBeat.o(34624);
   }
   
-  public final void fFO()
+  public final void gNT()
   {
     AppMethodBeat.i(34625);
-    if (this.uFA == 0)
+    if (this.xXB == 0)
     {
-      this.JWM.setText(2131757092);
+      this.Pia.setText(2131757293);
       AppMethodBeat.o(34625);
       return;
     }
-    if (this.uFA > 99)
+    if (this.xXB > 99)
     {
-      this.JWM.setText(2131757091);
+      this.Pia.setText(2131757292);
       AppMethodBeat.o(34625);
       return;
     }
-    this.JWM.setText(String.format(com.tencent.mm.cb.a.az(this.mContext, 2131757090), new Object[] { Integer.valueOf(this.uFA) }));
+    this.Pia.setText(String.format(com.tencent.mm.cb.a.aI(this.mContext, 2131757291), new Object[] { Integer.valueOf(this.xXB) }));
     AppMethodBeat.o(34625);
   }
   
@@ -261,13 +256,13 @@ public final class u
     static
     {
       AppMethodBeat.i(34621);
-      JWY = new a("DEFAULT", 0);
-      JWZ = new a("NEED_DOWNLOAD", 1);
-      JXa = new a("DOWNLOADING", 2);
-      JXb = new a("NEED_INSTALL", 3);
-      JXc = new a("INSTALLED", 4);
-      JXd = new a("NO_URL", 5);
-      JXe = new a[] { JWY, JWZ, JXa, JXb, JXc, JXd };
+      Pim = new a("DEFAULT", 0);
+      Pin = new a("NEED_DOWNLOAD", 1);
+      Pio = new a("DOWNLOADING", 2);
+      Pip = new a("NEED_INSTALL", 3);
+      Piq = new a("INSTALLED", 4);
+      Pir = new a("NO_URL", 5);
+      Pis = new a[] { Pim, Pin, Pio, Pip, Piq, Pir };
       AppMethodBeat.o(34621);
     }
     
@@ -276,7 +271,7 @@ public final class u
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.u
  * JD-Core Version:    0.7.0.1
  */

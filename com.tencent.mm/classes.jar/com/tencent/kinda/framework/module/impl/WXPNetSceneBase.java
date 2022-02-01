@@ -5,23 +5,24 @@ import android.os.Looper;
 import com.tencent.kinda.gen.KCgi;
 import com.tencent.kinda.gen.KNetworkMockManager;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.u.a.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.t.a.a;
+import com.tencent.mm.plugin.t.a.c;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class WXPNetSceneBase
-  extends n
-  implements k
+  extends q
+  implements m
 {
   private static final String TAG = "MicroMsg.KindaLibWXPNetSceneBase";
   private KCgi cgi;
   private int cgiId;
   private String cgiUri;
-  private f onSceneEndCallback;
+  private i onSceneEndCallback;
   private int respCmdId;
   private WXPCommReqResp wxpCommReqResp;
   
@@ -34,7 +35,7 @@ public class WXPNetSceneBase
     this.cgi = paramKCgi;
     this.wxpCommReqResp = new WXPCommReqResp(paramArrayOfByte, paramString, paramInt2, paramInt1, this.respCmdId, true, paramInt5, paramInt4, paramKCgi.getRouteInfo(), paramKNetworkMockManager);
     setIsKinda(true);
-    ae.i("MicroMsg.KindaLibWXPNetSceneBase", "init scene: cgiId:%d, cgiUri:%s ", new Object[] { Integer.valueOf(paramInt2), paramString });
+    Log.i("MicroMsg.KindaLibWXPNetSceneBase", "init scene: cgiId:%d, cgiUri:%s ", new Object[] { Integer.valueOf(paramInt2), paramString });
     AppMethodBeat.o(18701);
   }
   
@@ -49,7 +50,7 @@ public class WXPNetSceneBase
   public void cancel()
   {
     AppMethodBeat.i(18705);
-    ae.e("MicroMsg.KindaLibWXPNetSceneBase", "cancel: thread when doScene: %s, thread id: %d, cgiUri: %s", new Object[] { Thread.currentThread(), Long.valueOf(Thread.currentThread().getId()), this.cgiUri });
+    Log.e("MicroMsg.KindaLibWXPNetSceneBase", "cancel: thread when doScene: %s, thread id: %d, cgiUri: %s", new Object[] { Thread.currentThread(), Long.valueOf(Thread.currentThread().getId()), this.cgiUri });
     super.cancel();
     if (this.cgi == null)
     {
@@ -61,29 +62,29 @@ public class WXPNetSceneBase
     AppMethodBeat.o(18705);
   }
   
-  public int dispatch(e parame, q paramq, k paramk)
+  public int dispatch(g paramg, s params, m paramm)
   {
     AppMethodBeat.i(18703);
-    int i = super.dispatch(parame, paramq, paramk);
+    int i = super.dispatch(paramg, params, paramm);
     AppMethodBeat.o(18703);
     return i;
   }
   
-  public int doScene(e parame, f paramf)
+  public int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(18702);
-    this.onSceneEndCallback = paramf;
-    c.dBH();
-    int i = dispatch(parame, this.wxpCommReqResp, this);
+    this.onSceneEndCallback = parami;
+    c.eBv().sC(true);
+    int i = dispatch(paramg, this.wxpCommReqResp, this);
     AppMethodBeat.o(18702);
     return i;
   }
   
   protected void finalize()
   {
-    AppMethodBeat.i(193162);
+    AppMethodBeat.i(214454);
     super.finalize();
-    AppMethodBeat.o(193162);
+    AppMethodBeat.o(214454);
   }
   
   public int getType()
@@ -91,11 +92,11 @@ public class WXPNetSceneBase
     return this.cgiId;
   }
   
-  public void onGYNetEnd(int paramInt1, final int paramInt2, final int paramInt3, String paramString, final q paramq, byte[] paramArrayOfByte)
+  public void onGYNetEnd(int paramInt1, final int paramInt2, final int paramInt3, String paramString, final s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(18704);
-    ae.i("MicroMsg.KindaLibWXPNetSceneBase", "onGYNetEnd: %s, , uri: %s errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(this.cgiId), this.cgiUri, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    paramq = (WXPCommReqResp.Resp)paramq.getRespObj();
+    Log.i("MicroMsg.KindaLibWXPNetSceneBase", "onGYNetEnd: %s, , uri: %s errType %d errCode %d errMsg %s", new Object[] { Integer.valueOf(this.cgiId), this.cgiUri, Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    params = (WXPCommReqResp.Resp)params.getRespObj();
     if (this.cgi == null)
     {
       AppMethodBeat.o(18704);
@@ -112,7 +113,7 @@ public class WXPNetSceneBase
           return;
         }
         if (paramInt2 == 0) {
-          WXPNetSceneBase.this.cgi.onResp(0, paramq.getResponseWrapper().getData());
+          WXPNetSceneBase.this.cgi.onResp(0, params.getResponseWrapper().getData());
         }
         for (;;)
         {

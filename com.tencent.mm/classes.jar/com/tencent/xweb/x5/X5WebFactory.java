@@ -18,24 +18,25 @@ import com.tencent.xweb.internal.IJsRuntime;
 import com.tencent.xweb.internal.IWebStorage;
 import com.tencent.xweb.internal.IWebView;
 import com.tencent.xweb.internal.IWebViewDatabase;
-import com.tencent.xweb.internal.j.a;
+import com.tencent.xweb.internal.l.a;
 import com.tencent.xweb.x5.sdk.g;
 import com.tencent.xweb.x5.sdk.i;
 import org.xwalk.core.Log;
 import org.xwalk.core.WebViewExtensionListener;
 
 public class X5WebFactory
-  implements j.a
+  implements l.a
 {
   private static final String TAG = "MicroMsg.X5WebFactory";
   static X5WebFactory sInstance;
+  WebViewExtensionListener mWebViewExtensionListener;
   
   public static X5WebFactory getInstance()
   {
     AppMethodBeat.i(153884);
     if (sInstance == null)
     {
-      ah.gfN();
+      ah.htf();
       sInstance = new X5WebFactory();
     }
     X5WebFactory localX5WebFactory = sInstance;
@@ -106,11 +107,16 @@ public class X5WebFactory
     return locale;
   }
   
+  public WebViewExtensionListener getExtensionCallback()
+  {
+    return this.mWebViewExtensionListener;
+  }
+  
   public IJsRuntime getJsCore(JsRuntime.JsRuntimeType paramJsRuntimeType, Context paramContext)
   {
     AppMethodBeat.i(153889);
     Object localObject = null;
-    switch (1.MSm[paramJsRuntimeType.ordinal()])
+    switch (1.SFs[paramJsRuntimeType.ordinal()])
     {
     default: 
       paramJsRuntimeType = localObject;
@@ -134,9 +140,9 @@ public class X5WebFactory
   
   public IWebViewDatabase getWebViewDatabase()
   {
-    AppMethodBeat.i(207538);
+    AppMethodBeat.i(207196);
     n localn = new n();
-    AppMethodBeat.o(207538);
+    AppMethodBeat.o(207196);
     return localn;
   }
   
@@ -153,7 +159,10 @@ public class X5WebFactory
     return true;
   }
   
-  public void initCallback(WebViewExtensionListener paramWebViewExtensionListener) {}
+  public void initCallback(WebViewExtensionListener paramWebViewExtensionListener)
+  {
+    this.mWebViewExtensionListener = paramWebViewExtensionListener;
+  }
   
   public void initEnviroment(Context paramContext)
   {
@@ -174,7 +183,7 @@ public class X5WebFactory
   public boolean initWebviewCore(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
   {
     AppMethodBeat.i(153890);
-    ah.gfN();
+    ah.htf();
     com.tencent.xweb.x5.sdk.d.disableAutoCreateX5Webview();
     b.a(paramContext, paramPreInitCallback);
     AppMethodBeat.o(153890);
@@ -268,32 +277,32 @@ public class X5WebFactory
   
   static final class b
   {
-    private static boolean MSo = false;
-    private static boolean qrX = false;
+    private static boolean SEh = false;
+    private static boolean SFu = false;
     
     public static void a(Context paramContext, WebView.PreInitCallback paramPreInitCallback)
     {
       AppMethodBeat.i(153883);
-      if (qrX)
+      if (SEh)
       {
         AppMethodBeat.o(153883);
         return;
       }
       Log.i("X5WebFactory.preIniter", "preInit");
-      qrX = true;
+      SEh = true;
       QbSdk.preInit(paramContext, new QbSdk.PreInitCallback()
       {
-        private boolean MSp = false;
-        private boolean MSq = false;
+        private boolean SFv = false;
+        private boolean SFw = false;
         
         public final void onCoreInitFinished()
         {
           AppMethodBeat.i(153881);
-          this.MSp = true;
-          if ((this.MSp) && (this.MSq) && (this.DXA != null))
+          this.SFv = true;
+          if ((this.SFv) && (this.SFw) && (this.IJr != null))
           {
-            this.DXA.onCoreInitFinished();
-            X5WebFactory.b.JG();
+            this.IJr.onCoreInitFinished();
+            X5WebFactory.b.TT();
           }
           AppMethodBeat.o(153881);
         }
@@ -301,11 +310,11 @@ public class X5WebFactory
         public final void onViewInitFinished(boolean paramAnonymousBoolean)
         {
           AppMethodBeat.i(153882);
-          this.MSq = true;
-          if ((this.MSp) && (this.MSq) && (this.DXA != null))
+          this.SFw = true;
+          if ((this.SFv) && (this.SFw) && (this.IJr != null))
           {
-            this.DXA.onCoreInitFinished();
-            X5WebFactory.b.JG();
+            this.IJr.onCoreInitFinished();
+            X5WebFactory.b.TT();
           }
           AppMethodBeat.o(153882);
         }
@@ -315,18 +324,18 @@ public class X5WebFactory
     
     public static boolean hasInited()
     {
-      return qrX;
+      return SEh;
     }
     
     public static boolean isCoreReady()
     {
-      return MSo;
+      return SFu;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.xweb.x5.X5WebFactory
  * JD-Core Version:    0.7.0.1
  */

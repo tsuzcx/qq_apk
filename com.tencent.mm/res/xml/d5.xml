@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <PreferenceTitleCategory android:title="@string/gpl" />
-    <IconPreference android:key="wallet_lock_fingerprint" android:layout="@layout/aop" android:title="@string/gp9" />
-    <IconPreference android:key="wallet_lock_faceid" android:layout="@layout/aop" android:title="@string/gp2" />
-    <IconPreference android:key="wallet_lock_gesture" android:layout="@layout/aop" android:title="@string/gpg" />
-    <IconPreference android:key="wallet_lock_close" android:layout="@layout/aop" android:title="@string/gp0" />
+    <PreferenceSmallCategory android:key="settings_tag_name_category" />
+    <Preference android:key="settings_tag_name" android:layout="@layout/b8j" android:title="@string/hag" />
+    <PreferenceTitleCategory android:key="outside" android:title="@string/hai" />
+    <PreferenceTitleCategory android:key="black" android:title="@string/hah" />
+    <PreferenceTitleCategory android:key="group" android:title="@string/had" />
+    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="roominfo_contact_anchor" />
+    <PreferenceSmallCategory android:key="delete_tag_name_category" />
+    <Preference android:key="delete_tag_name" android:layout="@layout/b2o" android:title="@string/gl5" />
     <PreferenceSmallCategory />
-    <Preference android:key="wallet_lock_modify_gesture" android:layout="@layout/aop" android:title="@string/cw4" />
 </PreferenceScreen>

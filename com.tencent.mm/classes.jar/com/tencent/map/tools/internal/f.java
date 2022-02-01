@@ -102,7 +102,7 @@ public final class f
   
   public final Object callSheetStaMth(Class paramClass, String paramString, Class[] paramArrayOfClass, Object[] paramArrayOfObject)
   {
-    AppMethodBeat.i(209788);
+    AppMethodBeat.i(193527);
     Object localObject = null;
     try
     {
@@ -110,7 +110,7 @@ public final class f
       try
       {
         paramClass = b.a(paramClass, paramString, paramArrayOfObject);
-        AppMethodBeat.o(209788);
+        AppMethodBeat.o(193527);
         return paramClass;
       }
       catch (Exception paramClass)
@@ -118,11 +118,11 @@ public final class f
         if ((paramClass instanceof InvocationTargetException))
         {
           paramClass = new RuntimeException(((InvocationTargetException)paramClass).getTargetException());
-          AppMethodBeat.o(209788);
+          AppMethodBeat.o(193527);
           throw paramClass;
         }
         paramClass = new RuntimeException(paramClass);
-        AppMethodBeat.o(209788);
+        AppMethodBeat.o(193527);
         throw paramClass;
       }
     }
@@ -138,17 +138,25 @@ public final class f
   public final Class findSheet(String paramString)
   {
     AppMethodBeat.i(180782);
+    DexClassLoader localDexClassLoader;
     try
     {
-      paramString = this.a.a(paramString);
-      AppMethodBeat.o(180782);
-      return paramString;
+      localDexClassLoader = this.a.a.a();
+      if (localDexClassLoader == null)
+      {
+        paramString = new NullPointerException("load class failed");
+        AppMethodBeat.o(180782);
+        throw paramString;
+      }
     }
     catch (Exception paramString)
     {
       AppMethodBeat.o(180782);
+      return null;
     }
-    return null;
+    paramString = localDexClassLoader.loadClass(paramString);
+    AppMethodBeat.o(180782);
+    return paramString;
   }
   
   public final <T> Class<? extends T> findSheet(String paramString, Class<T> paramClass)
@@ -167,7 +175,7 @@ public final class f
   public final ClassLoader getSheetLoader()
   {
     AppMethodBeat.i(180786);
-    DexClassLoader localDexClassLoader = this.a.b();
+    DexClassLoader localDexClassLoader = this.a.a.a();
     AppMethodBeat.o(180786);
     return localDexClassLoader;
   }
@@ -175,7 +183,7 @@ public final class f
   public final int loadSheetGroups()
   {
     AppMethodBeat.i(180789);
-    int i = this.a.c();
+    int i = this.a.a.a(a.g);
     AppMethodBeat.o(180789);
     return i;
   }
@@ -246,7 +254,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.map.tools.internal.f
  * JD-Core Version:    0.7.0.1
  */

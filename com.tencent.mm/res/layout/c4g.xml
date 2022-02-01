@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/dnk" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:id="@id/agf" android:background="@drawable/bp9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentLeft="true" android:layout_centerInParent="true" />
+        <ProgressBar android:id="@id/fsr" android:layout_width="30.0dip" android:layout_height="30.0dip" android:indeterminate="false" android:layout_centerInParent="true" android:layout_centerVertical="true" style="?android:progressBarStyleSmall" />
+    </RelativeLayout>
+    <TextView android:textSize="20.0sp" android:textStyle="bold" android:textColor="@android:color/white" android:id="@id/imo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="1" android:layout_toRightOf="@id/dnk" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/bmn" android:background="@drawable/ap8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:layout_toRightOf="@id/imo" android:layout_centerVertical="true" />
+</RelativeLayout>

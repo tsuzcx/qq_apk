@@ -1,31 +1,31 @@
 package com.tencent.mm.chatroom.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.a;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.protocal.protobuf.adp;
-import com.tencent.mm.protocal.protobuf.adq;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.c;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.protocal.protobuf.afs;
+import com.tencent.mm.protocal.protobuf.aft;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.LinkedList;
 
 public final class f
-  extends a<adq>
+  extends c<aft>
 {
   public f(String paramString, LinkedList<String> paramLinkedList)
   {
-    AppMethodBeat.i(217108);
-    ae.d("MicroMsg.CgiOpenImDelChatRoomAdmin", "roomName:%s,username:%s", new Object[] { paramString, bu.m(paramLinkedList, ";") });
-    adp localadp = new adp();
-    localadp.dwx = paramString;
-    localadp.uIU = paramLinkedList;
-    paramString = new b.a();
-    paramString.hQF = localadp;
-    paramString.hQG = new adq();
+    AppMethodBeat.i(194022);
+    Log.d("MicroMsg.CgiOpenImDelChatRoomAdmin", "roomName:%s,username:%s", new Object[] { paramString, Util.listToString(paramLinkedList, ";") });
+    afs localafs = new afs();
+    localafs.dOe = paramString;
+    localafs.ybk = paramLinkedList;
+    paramString = new d.a();
+    paramString.iLN = localafs;
+    paramString.iLO = new aft();
     paramString.uri = "/cgi-bin/micromsg-bin/delopenimchatroomadmin";
     paramString.funcId = 3677;
-    c(paramString.aDS());
-    AppMethodBeat.o(217108);
+    c(paramString.aXF());
+    AppMethodBeat.o(194022);
   }
 }
 

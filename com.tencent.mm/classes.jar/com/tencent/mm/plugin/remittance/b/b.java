@@ -2,42 +2,42 @@ package com.tencent.mm.plugin.remittance.b;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class b
-  extends j<a>
+  extends MAutoStorage<a>
 {
   public static final String[] SQL_CREATE;
-  private static final String[] iWL;
-  private e db;
+  private static final String[] jTH;
+  private ISQLiteDatabase db;
   
   static
   {
     AppMethodBeat.i(67618);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "DelayTransferRecord") };
-    iWL = new String[] { "*", "rowid" };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "DelayTransferRecord") };
+    jTH = new String[] { "*", "rowid" };
     AppMethodBeat.o(67618);
   }
   
-  public b(e parame)
+  public b(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "DelayTransferRecord", null);
-    this.db = parame;
+    super(paramISQLiteDatabase, a.info, "DelayTransferRecord", null);
+    this.db = paramISQLiteDatabase;
   }
   
-  public final a axv(String paramString)
+  public final a aLV(String paramString)
   {
     AppMethodBeat.i(67617);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.i("MicroMsg.AARecordStorage", "empty transferId");
+      Log.i("MicroMsg.AARecordStorage", "empty transferId");
       AppMethodBeat.o(67617);
       return null;
     }
-    paramString = this.db.a("DelayTransferRecord", iWL, "transferId=?", new String[] { paramString }, null, null, null, 2);
+    paramString = this.db.query("DelayTransferRecord", jTH, "transferId=?", new String[] { paramString }, null, null, null, 2);
     try
     {
       if (paramString.moveToFirst())
@@ -54,7 +54,7 @@ public final class b
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.AARecordStorage", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.AARecordStorage", localException, "", new Object[0]);
         if (paramString != null) {
           paramString.close();
         }
@@ -74,7 +74,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.b.b
  * JD-Core Version:    0.7.0.1
  */

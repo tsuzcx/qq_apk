@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<inset android:insetLeft="@dimen/k5" android:insetRight="@dimen/k5"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/tn" />
-    <item android:drawable="@drawable/tm" />
-</selector>
+    <shape>
+        <solid android:color="@color/x5" />
+    </shape>
+</inset>

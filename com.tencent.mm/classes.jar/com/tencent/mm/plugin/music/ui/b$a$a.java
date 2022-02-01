@@ -8,23 +8,23 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class b$a$a
   extends Animation
 {
+  final int AnA;
   final int targetHeight;
   View view;
-  final int wDb;
   
   public b$a$a(b.a parama, View paramView, int paramInt)
   {
     AppMethodBeat.i(63214);
     this.view = paramView;
     this.targetHeight = paramInt;
-    this.wDb = paramView.getHeight();
+    this.AnA = paramView.getHeight();
     AppMethodBeat.o(63214);
   }
   
   protected final void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     AppMethodBeat.i(63215);
-    int i = (int)(this.wDb + (this.targetHeight - this.wDb) * paramFloat);
+    int i = (int)(this.AnA + (this.targetHeight - this.AnA) * paramFloat);
     this.view.getLayoutParams().height = i;
     this.view.requestLayout();
     AppMethodBeat.o(63215);
@@ -44,7 +44,7 @@ public final class b$a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.music.ui.b.a.a
  * JD-Core Version:    0.7.0.1
  */

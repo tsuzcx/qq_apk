@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout android:id="@id/edp" android:background="@color/f" android:layout_width="fill_parent" android:layout_height="112.0dip"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <Button android:textSize="@dimen/acp" android:id="@id/a8s" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/djq" android:layout_marginStart="8.0dip" app:layout_constraintBottom_toBottomOf="@id/gop" app:layout_constraintStart_toEndOf="@id/gop" app:layout_constraintTop_toTopOf="@id/gop" style="@style/o7" />
-    <View android:id="@id/gop" android:background="@color/a7c" android:layout_width="1.0dip" android:layout_height="1.0dip" android:layout_marginTop="40.0dip" android:layout_marginBottom="32.0dip" app:layout_constraintBottom_toBottomOf="ea8" app:layout_constraintEnd_toEndOf="ea8" app:layout_constraintStart_toStartOf="ea8" app:layout_constraintTop_toTopOf="ea8" />
-    <Button android:textSize="@dimen/acp" android:id="@id/a8r" android:layout_width="120.0dip" android:layout_height="40.0dip" android:text="@string/djp" android:layout_marginEnd="8.0dip" app:layout_constraintBottom_toBottomOf="@id/gop" app:layout_constraintEnd_toStartOf="@id/gop" app:layout_constraintTop_toTopOf="@id/gop" style="@style/od" />
-</android.support.constraint.ConstraintLayout>
+    <FrameLayout android:id="@id/nm" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/nq" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <RelativeLayout android:layout_width="fill_parent" android:layout_height="@dimen/b9">
+                <TextView android:textSize="@dimen/t" android:textColor="#e6ffffff" android:gravity="center" android:id="@id/ns" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/kb" android:layout_centerInParent="true" />
+                <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ei" android:background="@null" android:paddingLeft="@dimen/r" android:layout_width="wrap_content" android:layout_height="fill_parent" android:src="@raw/icons_outlined_close" android:contentDescription="@string/he" app:iconColor="@color/BW_100_Alpha_0_5" />
+            </RelativeLayout>
+            <View android:background="#1a000000" android:layout_width="fill_parent" android:layout_height="1.0px" />
+            <LinearLayout android:orientation="vertical" android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+                <com.tencent.mm.plugin.appbrand.widget.desktop.AppBrandDesktopView android:id="@id/nt" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>

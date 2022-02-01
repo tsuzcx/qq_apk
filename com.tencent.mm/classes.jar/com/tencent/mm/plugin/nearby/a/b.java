@@ -1,74 +1,82 @@
 package com.tencent.mm.plugin.nearby.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.q;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.bl;
-import com.tencent.mm.model.bl.a;
+import com.tencent.mm.model.bp;
+import com.tencent.mm.model.bp.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
 
 public enum b
 {
   static
   {
     AppMethodBeat.i(89764);
-    wDO = new b("INSTANCE");
-    wDP = new b[] { wDO };
+    Azv = new b("INSTANCE");
+    Azw = new b[] { Azv };
     AppMethodBeat.o(89764);
   }
   
   private b() {}
   
-  public static void Mj(int paramInt)
+  public static void Ts(int paramInt)
   {
     AppMethodBeat.i(89759);
-    String str = bu.nullAsNil((String)g.ajR().ajA().get(143873, ""));
+    String str = Util.nullAsNil((String)g.aAh().azQ().get(143873, ""));
     if (!str.equals(""))
     {
-      if (bu.rZ(bu.i((Long)g.ajR().ajA().get(143874, Long.valueOf(0L)))) < 7200L)
+      if (Util.secondsToNow(Util.nullAsNil((Long)g.aAh().azQ().get(143874, Long.valueOf(0L)))) < 7200L)
       {
-        eG(str, paramInt);
+        eV(str, paramInt);
         AppMethodBeat.o(89759);
         return;
       }
-      auk(str);
+      aIt(str);
     }
     AppMethodBeat.o(89759);
   }
   
-  public static void auk(String paramString)
+  public static void aIt(String paramString)
   {
     AppMethodBeat.i(89763);
-    bq localbq = ((l)g.ab(l.class)).azF();
-    if (localbq.aUO(paramString)) {
-      localbq.aUS(paramString);
+    bv localbv = ((l)g.af(l.class)).aSN();
+    if (localbv.bjN(paramString)) {
+      localbv.aNa(paramString);
     }
-    bl.a(paramString, new bl.a()
+    bp.a(paramString, new bp.a()
     {
-      public final boolean YT()
+      public final boolean amG()
       {
         return false;
       }
       
-      public final void YU() {}
+      public final void amH() {}
     });
-    g.ajR().ajA().set(143873, "");
-    g.ajR().ajA().set(143874, Long.valueOf(0L));
-    dxh();
+    g.aAh().azQ().set(143873, "");
+    g.aAh().azQ().set(143874, Long.valueOf(0L));
+    ewQ();
     AppMethodBeat.o(89763);
   }
   
-  public static boolean dxf()
+  public static void eV(String paramString, int paramInt)
+  {
+    AppMethodBeat.i(89758);
+    paramString = new d(paramString, (int)Util.secondsToNow(Util.nullAsNil((Long)g.aAh().azQ().get(143874, Long.valueOf(0L)))), paramInt);
+    g.azz().a(paramString, 0);
+    AppMethodBeat.o(89758);
+  }
+  
+  public static boolean ewO()
   {
     AppMethodBeat.i(89760);
-    if (bu.o((Integer)g.ajR().ajA().get(143875, Integer.valueOf(0))) == 1)
+    if (Util.nullAsNil((Integer)g.aAh().azQ().get(143875, Integer.valueOf(0))) == 1)
     {
       AppMethodBeat.o(89760);
       return true;
@@ -77,48 +85,40 @@ public enum b
     return false;
   }
   
-  public static void dxg()
+  public static void ewP()
   {
     AppMethodBeat.i(89761);
-    g.ajR().ajA().set(143875, Integer.valueOf(1));
+    g.aAh().azQ().set(143875, Integer.valueOf(1));
     AppMethodBeat.o(89761);
   }
   
-  public static void dxh()
+  public static void ewQ()
   {
     AppMethodBeat.i(89762);
-    g.ajR().ajA().set(143875, Integer.valueOf(0));
+    g.aAh().azQ().set(143875, Integer.valueOf(0));
     AppMethodBeat.o(89762);
   }
   
-  public static void eG(String paramString, int paramInt)
-  {
-    AppMethodBeat.i(89758);
-    paramString = new d(paramString, (int)bu.rZ(bu.i((Long)g.ajR().ajA().get(143874, Long.valueOf(0L)))), paramInt);
-    g.ajj().a(paramString, 0);
-    AppMethodBeat.o(89758);
-  }
-  
-  public static boolean ir(String paramString1, String paramString2)
+  public static boolean jc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(89757);
-    an localan = new an();
-    localan.to(paramString2);
-    localan.setUsername(paramString1);
-    paramString2 = ((l)g.ab(l.class)).azF();
-    ae.d("MicroMsg.LbsroomLogic", "Save lbsroom contact name:" + localan.field_username);
-    if (!paramString2.aUO(localan.field_username)) {
-      paramString2.an(localan);
+    as localas = new as();
+    localas.setNickname(paramString2);
+    localas.setUsername(paramString1);
+    paramString2 = ((l)g.af(l.class)).aSN();
+    Log.d("MicroMsg.LbsroomLogic", "Save lbsroom contact name:" + localas.field_username);
+    if (!paramString2.bjN(localas.field_username)) {
+      paramString2.ap(localas);
     }
-    g.ajR().ajA().set(143873, paramString1);
-    g.ajR().ajA().set(143874, Long.valueOf(bu.aRi()));
+    g.aAh().azQ().set(143873, paramString1);
+    g.aAh().azQ().set(143874, Long.valueOf(Util.nowSecond()));
     AppMethodBeat.o(89757);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.nearby.a.b
  * JD-Core Version:    0.7.0.1
  */

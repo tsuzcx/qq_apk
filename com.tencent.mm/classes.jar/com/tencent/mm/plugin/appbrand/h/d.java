@@ -1,12 +1,13 @@
 package com.tencent.mm.plugin.appbrand.h;
 
-import com.tencent.luggage.xweb_ext.extendplugin.component.video.c.35;
+import com.tencent.luggage.xweb_ext.extendplugin.component.live.livepusher.o;
+import com.tencent.luggage.xweb_ext.extendplugin.component.video.c.44;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 
 public class d
   implements com.tencent.luggage.xweb_ext.extendplugin.a.c
 {
-  public com.tencent.luggage.xweb_ext.extendplugin.a.b dD(String paramString)
+  public com.tencent.luggage.xweb_ext.extendplugin.a.b dW(String paramString)
   {
     AppMethodBeat.i(139393);
     int i = -1;
@@ -52,47 +53,47 @@ public class d
       }
     }
     paramString = new com.tencent.luggage.xweb_ext.extendplugin.component.video.c();
-    paramString.cvd = new com.tencent.mm.plugin.appbrand.jsapi.ad.e.c();
-    if (paramString.cvd != null)
+    paramString.cJb = new com.tencent.mm.plugin.appbrand.jsapi.ag.e.c();
+    if (paramString.cJb != null)
     {
-      paramString.cvd.b(paramString);
-      paramString.cvc = paramString.cvd.GJ();
-      paramString.cvb = paramString.cvd.GK();
-      paramString.cuZ = paramString.cvd.GN();
-      paramString.cuY = paramString.cvd.GM();
-      paramString.cuY.b(paramString);
-      paramString.cuY.a(paramString.cvE);
-      paramString.cuY.a(paramString.csH);
-      paramString.cva = paramString.cvd.GL();
-      paramString.cva.a(new c.35(paramString));
+      paramString.cJb.b(paramString);
+      paramString.cJa = paramString.cJb.QC();
+      paramString.cIZ = paramString.cJb.QD();
+      paramString.cIX = paramString.cJb.QG();
+      paramString.cIW = paramString.cJb.QF();
+      paramString.cIW.b(paramString);
+      paramString.cIW.a(paramString.cJC);
+      paramString.cIW.a(paramString.cEX);
+      paramString.cIY = paramString.cJb.QE();
+      paramString.cIY.a(new c.44(paramString));
     }
     AppMethodBeat.o(139393);
     return paramString;
-    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ad.d.a();
+    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ag.d.a();
     AppMethodBeat.o(139393);
     return paramString;
-    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ad.b.a();
+    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ag.b.a();
     AppMethodBeat.o(139393);
     return paramString;
-    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ad.a.a();
+    paramString = new com.tencent.mm.plugin.appbrand.jsapi.ag.a.a();
     AppMethodBeat.o(139393);
     return paramString;
-    paramString = new com.tencent.luggage.xweb_ext.extendplugin.component.a.a.a();
-    paramString.csn = new com.tencent.mm.plugin.appbrand.jsapi.ad.c.a.a();
-    if (paramString.csn != null)
+    paramString = new com.tencent.luggage.xweb_ext.extendplugin.component.live.a.a();
+    paramString.cEC = new com.tencent.mm.plugin.appbrand.jsapi.ag.c.a.a();
+    if (paramString.cEC != null)
     {
-      paramString.csm = paramString.csn.Gr();
-      paramString.csl = paramString.csn.Gs();
-      paramString.csn.b(paramString);
+      paramString.cEB = paramString.cEC.Qa();
+      paramString.cEA = paramString.cEC.Qb();
+      paramString.cEC.b(paramString);
     }
     AppMethodBeat.o(139393);
     return paramString;
-    paramString = new com.tencent.luggage.xweb_ext.extendplugin.component.a.b.a();
-    paramString.ctI = new com.tencent.mm.plugin.appbrand.jsapi.ad.c.b.a();
-    if (paramString.ctI != null)
+    paramString = new o();
+    paramString.cHo = new com.tencent.mm.plugin.appbrand.jsapi.ag.c.b.a();
+    if (paramString.cHo != null)
     {
-      paramString.ctH = paramString.ctI.Gu();
-      paramString.ctG = paramString.ctI.Gv();
+      paramString.cHn = paramString.cHo.Qm();
+      paramString.cHm = paramString.cHo.Qn();
     }
     AppMethodBeat.o(139393);
     return paramString;
@@ -100,7 +101,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.h.d
  * JD-Core Version:    0.7.0.1
  */

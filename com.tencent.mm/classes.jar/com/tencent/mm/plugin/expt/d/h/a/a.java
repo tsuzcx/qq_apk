@@ -2,83 +2,105 @@ package com.tencent.mm.plugin.expt.d.h.a;
 
 import com.eclipsesource.v8.V8;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.apache.commons.b.g;
 
 public final class a
   implements b
 {
-  private V8 qYn;
+  private V8 syy;
   
   public a()
   {
-    AppMethodBeat.i(195935);
+    AppMethodBeat.i(220358);
     try
     {
-      this.qYn = V8.createV8Runtime();
-      com.tencent.mm.plugin.expt.d.f.a.kT(true);
-      AppMethodBeat.o(195935);
+      this.syy = V8.createV8Runtime();
+      com.tencent.mm.plugin.expt.d.f.a.lV(true);
+      AppMethodBeat.o(220358);
       return;
     }
     catch (Throwable localThrowable)
     {
-      com.tencent.mm.plugin.expt.d.f.a.kT(false);
-      ae.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] init V8 fail for : %s", new Object[] { localThrowable.getMessage() });
-      AppMethodBeat.o(195935);
+      com.tencent.mm.plugin.expt.d.f.a.lV(false);
+      Log.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] init V8 fail for : %s", new Object[] { localThrowable.getMessage() });
+      AppMethodBeat.o(220358);
     }
   }
   
+  public final boolean a(com.tencent.mm.plugin.expt.d.h.b.a parama)
+  {
+    AppMethodBeat.i(220359);
+    if ((this.syy == null) || (this.syy.isReleased()) || (parama == null))
+    {
+      AppMethodBeat.o(220359);
+      return false;
+    }
+    try
+    {
+      this.syy.registerJavaMethod(parama, parama.cNb());
+      AppMethodBeat.o(220359);
+      return true;
+    }
+    catch (Throwable localThrowable)
+    {
+      Log.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] registerJsApi fail, jsApi : %s, msg : %s", new Object[] { parama.cNb(), localThrowable.getMessage() });
+      AppMethodBeat.o(220359);
+    }
+    return false;
+  }
+  
   /* Error */
-  public final java.util.List<String> W(String paramString1, String paramString2, String paramString3)
+  public final java.util.List<String> ab(String paramString1, String paramString2, String paramString3)
   {
     // Byte code:
     //   0: iconst_0
     //   1: istore 4
-    //   3: ldc 56
+    //   3: ldc 74
     //   5: invokestatic 21	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   8: aload_1
-    //   9: invokestatic 62	org/apache/commons/b/g:ef	(Ljava/lang/String;)Z
+    //   9: invokestatic 80	org/apache/commons/b/g:eP	(Ljava/lang/String;)Z
     //   12: ifne +34 -> 46
     //   15: aload_2
-    //   16: invokestatic 62	org/apache/commons/b/g:ef	(Ljava/lang/String;)Z
+    //   16: invokestatic 80	org/apache/commons/b/g:eP	(Ljava/lang/String;)Z
     //   19: ifne +27 -> 46
     //   22: aload_0
-    //   23: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qYn	Lcom/eclipsesource/v8/V8;
+    //   23: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:syy	Lcom/eclipsesource/v8/V8;
     //   26: ifnull +20 -> 46
     //   29: aload_0
-    //   30: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qYn	Lcom/eclipsesource/v8/V8;
-    //   33: invokevirtual 66	com/eclipsesource/v8/V8:isReleased	()Z
+    //   30: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:syy	Lcom/eclipsesource/v8/V8;
+    //   33: invokevirtual 60	com/eclipsesource/v8/V8:isReleased	()Z
     //   36: ifne +10 -> 46
     //   39: aload_3
-    //   40: invokestatic 62	org/apache/commons/b/g:ef	(Ljava/lang/String;)Z
+    //   40: invokestatic 80	org/apache/commons/b/g:eP	(Ljava/lang/String;)Z
     //   43: ifeq +10 -> 53
-    //   46: ldc 56
+    //   46: ldc 74
     //   48: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   51: aconst_null
     //   52: areturn
-    //   53: new 68	com/eclipsesource/v8/V8Array
+    //   53: new 82	com/eclipsesource/v8/V8Array
     //   56: dup
     //   57: aload_0
-    //   58: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qYn	Lcom/eclipsesource/v8/V8;
-    //   61: invokespecial 71	com/eclipsesource/v8/V8Array:<init>	(Lcom/eclipsesource/v8/V8;)V
+    //   58: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:syy	Lcom/eclipsesource/v8/V8;
+    //   61: invokespecial 85	com/eclipsesource/v8/V8Array:<init>	(Lcom/eclipsesource/v8/V8;)V
     //   64: aload_2
-    //   65: invokevirtual 75	com/eclipsesource/v8/V8Array:push	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Array;
+    //   65: invokevirtual 89	com/eclipsesource/v8/V8Array:push	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Array;
     //   68: aload_3
-    //   69: invokevirtual 75	com/eclipsesource/v8/V8Array:push	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Array;
+    //   69: invokevirtual 89	com/eclipsesource/v8/V8Array:push	(Ljava/lang/String;)Lcom/eclipsesource/v8/V8Array;
     //   72: astore_2
     //   73: aload_0
-    //   74: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:qYn	Lcom/eclipsesource/v8/V8;
+    //   74: getfield 29	com/tencent/mm/plugin/expt/d/h/a/a:syy	Lcom/eclipsesource/v8/V8;
     //   77: aload_1
     //   78: aload_2
-    //   79: invokevirtual 79	com/eclipsesource/v8/V8:executeArrayFunction	(Ljava/lang/String;Lcom/eclipsesource/v8/V8Array;)Lcom/eclipsesource/v8/V8Array;
+    //   79: invokevirtual 93	com/eclipsesource/v8/V8:executeArrayFunction	(Ljava/lang/String;Lcom/eclipsesource/v8/V8Array;)Lcom/eclipsesource/v8/V8Array;
     //   82: astore_3
     //   83: aload_3
     //   84: astore 6
     //   86: aload_2
     //   87: astore 5
-    //   89: new 81	java/util/ArrayList
+    //   89: new 95	java/util/ArrayList
     //   92: dup
-    //   93: invokespecial 82	java/util/ArrayList:<init>	()V
+    //   93: invokespecial 96	java/util/ArrayList:<init>	()V
     //   96: astore 7
     //   98: aload_3
     //   99: ifnull +78 -> 177
@@ -87,7 +109,7 @@ public final class a
     //   105: aload_2
     //   106: astore 5
     //   108: aload_3
-    //   109: invokevirtual 86	com/eclipsesource/v8/V8Array:length	()I
+    //   109: invokevirtual 100	com/eclipsesource/v8/V8Array:length	()I
     //   112: ifle +65 -> 177
     //   115: aload_3
     //   116: astore 6
@@ -95,7 +117,7 @@ public final class a
     //   119: astore 5
     //   121: iload 4
     //   123: aload_3
-    //   124: invokevirtual 86	com/eclipsesource/v8/V8Array:length	()I
+    //   124: invokevirtual 100	com/eclipsesource/v8/V8Array:length	()I
     //   127: if_icmpge +50 -> 177
     //   130: aload_3
     //   131: astore 6
@@ -103,14 +125,14 @@ public final class a
     //   134: astore 5
     //   136: aload_3
     //   137: iload 4
-    //   139: invokevirtual 90	com/eclipsesource/v8/V8Array:getString	(I)Ljava/lang/String;
+    //   139: invokevirtual 104	com/eclipsesource/v8/V8Array:getString	(I)Ljava/lang/String;
     //   142: astore 8
     //   144: aload_3
     //   145: astore 6
     //   147: aload_2
     //   148: astore 5
     //   150: aload 8
-    //   152: invokestatic 62	org/apache/commons/b/g:ef	(Ljava/lang/String;)Z
+    //   152: invokestatic 80	org/apache/commons/b/g:eP	(Ljava/lang/String;)Z
     //   155: ifne +224 -> 379
     //   158: aload_3
     //   159: astore 6
@@ -118,7 +140,7 @@ public final class a
     //   162: astore 5
     //   164: aload 7
     //   166: aload 8
-    //   168: invokeinterface 96 2 0
+    //   168: invokeinterface 110 2 0
     //   173: pop
     //   174: goto +205 -> 379
     //   177: aload_3
@@ -126,28 +148,28 @@ public final class a
     //   180: aload_2
     //   181: astore 5
     //   183: aload_2
-    //   184: invokevirtual 99	com/eclipsesource/v8/V8Array:release	()V
+    //   184: invokevirtual 113	com/eclipsesource/v8/V8Array:release	()V
     //   187: aload_3
     //   188: astore 6
     //   190: aload_2
     //   191: astore 5
     //   193: aload_3
-    //   194: invokevirtual 99	com/eclipsesource/v8/V8Array:release	()V
+    //   194: invokevirtual 113	com/eclipsesource/v8/V8Array:release	()V
     //   197: aload_2
     //   198: ifnull +14 -> 212
     //   201: aload_2
-    //   202: invokevirtual 100	com/eclipsesource/v8/V8Array:isReleased	()Z
+    //   202: invokevirtual 114	com/eclipsesource/v8/V8Array:isReleased	()Z
     //   205: ifne +7 -> 212
     //   208: aload_2
-    //   209: invokevirtual 99	com/eclipsesource/v8/V8Array:release	()V
+    //   209: invokevirtual 113	com/eclipsesource/v8/V8Array:release	()V
     //   212: aload_3
     //   213: ifnull +14 -> 227
     //   216: aload_3
-    //   217: invokevirtual 100	com/eclipsesource/v8/V8Array:isReleased	()Z
+    //   217: invokevirtual 114	com/eclipsesource/v8/V8Array:isReleased	()Z
     //   220: ifne +7 -> 227
     //   223: aload_3
-    //   224: invokevirtual 99	com/eclipsesource/v8/V8Array:release	()V
-    //   227: ldc 56
+    //   224: invokevirtual 113	com/eclipsesource/v8/V8Array:release	()V
+    //   227: ldc 74
     //   229: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   232: aload 7
     //   234: areturn
@@ -161,7 +183,7 @@ public final class a
     //   244: aload_2
     //   245: astore 5
     //   247: ldc 40
-    //   249: ldc 102
+    //   249: ldc 116
     //   251: iconst_2
     //   252: anewarray 4	java/lang/Object
     //   255: dup
@@ -173,22 +195,22 @@ public final class a
     //   261: aload 7
     //   263: invokevirtual 46	java/lang/Throwable:getMessage	()Ljava/lang/String;
     //   266: aastore
-    //   267: invokestatic 52	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+    //   267: invokestatic 52	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
     //   270: aload_2
     //   271: ifnull +14 -> 285
     //   274: aload_2
-    //   275: invokevirtual 100	com/eclipsesource/v8/V8Array:isReleased	()Z
+    //   275: invokevirtual 114	com/eclipsesource/v8/V8Array:isReleased	()Z
     //   278: ifne +7 -> 285
     //   281: aload_2
-    //   282: invokevirtual 99	com/eclipsesource/v8/V8Array:release	()V
+    //   282: invokevirtual 113	com/eclipsesource/v8/V8Array:release	()V
     //   285: aload_3
     //   286: ifnull +14 -> 300
     //   289: aload_3
-    //   290: invokevirtual 100	com/eclipsesource/v8/V8Array:isReleased	()Z
+    //   290: invokevirtual 114	com/eclipsesource/v8/V8Array:isReleased	()Z
     //   293: ifne +7 -> 300
     //   296: aload_3
-    //   297: invokevirtual 99	com/eclipsesource/v8/V8Array:release	()V
-    //   300: ldc 56
+    //   297: invokevirtual 113	com/eclipsesource/v8/V8Array:release	()V
+    //   300: ldc 74
     //   302: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   305: aconst_null
     //   306: areturn
@@ -200,18 +222,18 @@ public final class a
     //   313: aload_2
     //   314: ifnull +14 -> 328
     //   317: aload_2
-    //   318: invokevirtual 100	com/eclipsesource/v8/V8Array:isReleased	()Z
+    //   318: invokevirtual 114	com/eclipsesource/v8/V8Array:isReleased	()Z
     //   321: ifne +7 -> 328
     //   324: aload_2
-    //   325: invokevirtual 99	com/eclipsesource/v8/V8Array:release	()V
+    //   325: invokevirtual 113	com/eclipsesource/v8/V8Array:release	()V
     //   328: aload 6
     //   330: ifnull +16 -> 346
     //   333: aload 6
-    //   335: invokevirtual 100	com/eclipsesource/v8/V8Array:isReleased	()Z
+    //   335: invokevirtual 114	com/eclipsesource/v8/V8Array:isReleased	()Z
     //   338: ifne +8 -> 346
     //   341: aload 6
-    //   343: invokevirtual 99	com/eclipsesource/v8/V8Array:release	()V
-    //   346: ldc 56
+    //   343: invokevirtual 113	com/eclipsesource/v8/V8Array:release	()V
+    //   346: ldc 74
     //   348: invokestatic 38	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   351: aload_1
     //   352: athrow
@@ -273,66 +295,44 @@ public final class a
     //   193	197	374	java/lang/Throwable
   }
   
-  public final boolean a(com.tencent.mm.plugin.expt.d.h.b.a parama)
+  public final boolean aor(String paramString)
   {
-    AppMethodBeat.i(195936);
-    if ((this.qYn == null) || (this.qYn.isReleased()) || (parama == null))
+    AppMethodBeat.i(220360);
+    if ((g.eP(paramString)) || (this.syy == null) || (this.syy.isReleased()))
     {
-      AppMethodBeat.o(195936);
+      AppMethodBeat.o(220360);
       return false;
     }
     try
     {
-      this.qYn.registerJavaMethod(parama, parama.coO());
-      AppMethodBeat.o(195936);
-      return true;
-    }
-    catch (Throwable localThrowable)
-    {
-      ae.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] registerJsApi fail, jsApi : %s, msg : %s", new Object[] { parama.coO(), localThrowable.getMessage() });
-      AppMethodBeat.o(195936);
-    }
-    return false;
-  }
-  
-  public final boolean aeh(String paramString)
-  {
-    AppMethodBeat.i(195937);
-    if ((g.ef(paramString)) || (this.qYn == null) || (this.qYn.isReleased()))
-    {
-      AppMethodBeat.o(195937);
-      return false;
-    }
-    try
-    {
-      this.qYn.executeVoidScript(paramString);
-      AppMethodBeat.o(195937);
+      this.syy.executeVoidScript(paramString);
+      AppMethodBeat.o(220360);
       return true;
     }
     catch (Throwable paramString)
     {
-      ae.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] loadScript throw Throwable e : %s", new Object[] { paramString.getMessage() });
-      AppMethodBeat.o(195937);
+      Log.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] loadScript throw Throwable e : %s", new Object[] { paramString.getMessage() });
+      AppMethodBeat.o(220360);
     }
     return false;
   }
   
   public final void release()
   {
-    AppMethodBeat.i(195939);
-    if ((this.qYn != null) && (!this.qYn.isReleased())) {}
+    AppMethodBeat.i(220362);
+    if ((this.syy != null) && (!this.syy.isReleased())) {}
     try
     {
-      this.qYn.release(true);
-      this.qYn = null;
-      AppMethodBeat.o(195939);
+      this.syy.release(true);
+      this.syy = null;
+      AppMethodBeat.o(220362);
       return;
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
-        ae.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] release throw Throwable : " + localThrowable.getMessage());
+        Log.e("EdgeComputingJSScriptEngine", "[EdgeComputingJSScriptEngine] release throw Throwable : " + localThrowable.getMessage());
       }
     }
   }

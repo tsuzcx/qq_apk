@@ -1,37 +1,37 @@
 package com.tencent.mm.plugin.ipcall.model.f;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
+import com.tencent.mm.plugin.report.service.h;
 
 public final class f
   extends a
 {
-  public int uZA = 0;
-  public int uZB = 0;
-  public int uZC = 0;
-  public int uZD = -9999;
-  public String uZE = "";
-  public int uZF = 0;
-  public int uZG = 0;
-  public int uZz = 0;
+  public int yrZ = 0;
+  public int ysa = 0;
+  public int ysb = 0;
+  public int ysc = 0;
+  public int ysd = -9999;
+  public String yse = "";
+  public int ysf = 0;
+  public int ysg = 0;
   
-  protected final void byD()
+  protected final void bUV()
   {
     AppMethodBeat.i(25504);
-    g.yxI.f(14182, new Object[] { Integer.valueOf(this.uZz), Integer.valueOf(this.uZA), Integer.valueOf(this.uZB), Integer.valueOf(this.uZC), Integer.valueOf(this.uZD), this.uZE, Integer.valueOf(this.uZF), Integer.valueOf(this.uZG) });
+    h.CyF.a(14182, new Object[] { Integer.valueOf(this.yrZ), Integer.valueOf(this.ysa), Integer.valueOf(this.ysb), Integer.valueOf(this.ysc), Integer.valueOf(this.ysd), this.yse, Integer.valueOf(this.ysf), Integer.valueOf(this.ysg) });
     AppMethodBeat.o(25504);
   }
   
   public final void reset()
   {
-    this.uZz = 0;
-    this.uZA = 0;
-    this.uZB = 0;
-    this.uZC = 0;
-    this.uZD = -9999;
-    this.uZE = "";
-    this.uZF = 0;
-    this.uZG = 0;
+    this.yrZ = 0;
+    this.ysa = 0;
+    this.ysb = 0;
+    this.ysc = 0;
+    this.ysd = -9999;
+    this.yse = "";
+    this.ysf = 0;
+    this.ysg = 0;
   }
   
   public final void start()
@@ -43,7 +43,7 @@ public final class f
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.ipcall.model.f.f
  * JD-Core Version:    0.7.0.1
  */

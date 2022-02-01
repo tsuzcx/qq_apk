@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.graphics.Bitmap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class tf
-  extends b
+  extends IEvent
 {
-  public a dIK;
+  public a dZF;
   
   public tf()
   {
@@ -15,23 +16,23 @@ public final class tf
   
   private tf(byte paramByte)
   {
-    AppMethodBeat.i(121035);
-    this.dIK = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(146075);
+    this.dZF = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(121035);
+    AppMethodBeat.o(146075);
   }
   
   public static final class a
   {
-    public Boolean dIL;
-    public Boolean dIM;
-    public String dvT;
+    public int action = 0;
+    public String cardNum;
+    public Bitmap dZG;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.g.a.tf
  * JD-Core Version:    0.7.0.1
  */

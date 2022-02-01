@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
+import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class aw
-  extends b
+  extends IEvent
 {
-  public a dmL;
+  public a dDW;
   
   public aw()
   {
@@ -15,22 +16,22 @@ public final class aw
   
   private aw(byte paramByte)
   {
-    AppMethodBeat.i(120830);
-    this.dmL = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(115969);
+    this.dDW = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(120830);
+    AppMethodBeat.o(115969);
   }
   
   public static final class a
   {
-    public int dmM;
-    public int scene = 0;
+    public Activity activity;
+    public String dDX;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.aw
  * JD-Core Version:    0.7.0.1
  */

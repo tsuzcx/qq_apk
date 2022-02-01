@@ -2,64 +2,64 @@ package com.tencent.mm.ui.chatting.d.b;
 
 import com.tencent.mm.al.a.k;
 import com.tencent.mm.pluginsdk.ui.chat.ChatFooter.g;
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.storage.ca;
+import com.tencent.mm.ui.chatting.d.af;
 import com.tencent.mm.ui.chatting.d.c.a;
 import com.tencent.mm.ui.chatting.e.a;
-import com.tencent.mm.ui.chatting.viewitems.bk;
+import com.tencent.mm.ui.chatting.viewitems.bq;
 import java.util.LinkedList;
 import java.util.List;
 
 public abstract interface d
-  extends ad
+  extends af
 {
-  public abstract String EU(String paramString);
+  public abstract String NI(String paramString);
   
-  public abstract long TJ();
+  public abstract boolean a(a parama, bq parambq);
   
-  public abstract boolean a(a parama, bk parambk);
+  public abstract long ahy();
   
-  public abstract String aXA(String paramString);
+  public abstract void bL(LinkedList<String> paramLinkedList);
   
-  public abstract void bq(LinkedList<String> paramLinkedList);
+  public abstract String bmE(String paramString);
   
-  public abstract com.tencent.mm.api.c fGG();
+  public abstract com.tencent.mm.api.c gOM();
   
-  public abstract com.tencent.mm.al.a.c fGH();
+  public abstract com.tencent.mm.al.a.c gON();
   
-  public abstract k fGI();
+  public abstract k gOO();
   
-  public abstract boolean fGJ();
+  public abstract boolean gOP();
   
-  public abstract boolean fGK();
+  public abstract boolean gOQ();
   
-  public abstract boolean fGL();
+  public abstract boolean gOR();
   
-  public abstract c.a fGM();
+  public abstract c.a gOS();
   
-  public abstract ChatFooter.g fGN();
+  public abstract ChatFooter.g gOT();
   
-  public abstract List<bv> fGO();
+  public abstract List<ca> gOU();
   
-  public abstract boolean fGP();
+  public abstract boolean gOV();
   
-  public abstract void fGQ();
+  public abstract void gOW();
   
-  public abstract void fGR();
+  public abstract void gOX();
   
-  public abstract int fGS();
+  public abstract int gOY();
   
-  public abstract String fGT();
+  public abstract String gOZ();
   
-  public abstract boolean fGU();
+  public abstract boolean gPa();
   
-  public abstract boolean fGV();
+  public abstract boolean gPb();
   
-  public abstract long fGW();
+  public abstract long gPc();
   
-  public abstract void fGX();
+  public abstract void gPd();
   
-  public abstract void gH(String paramString, int paramInt);
+  public abstract void ha(String paramString, int paramInt);
 }
 
 

@@ -5,7 +5,7 @@ import android.content.Intent;
 
 public abstract interface e
 {
-  public abstract boolean MK();
+  public abstract boolean WX();
   
   public abstract boolean a(Activity paramActivity, int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt);
   

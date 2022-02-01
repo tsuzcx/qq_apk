@@ -1,89 +1,72 @@
 package com.tencent.mm.plugin.appbrand.s;
 
-import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public enum c
+public final class c
 {
-  public Map<a, Long> muT;
-  public Map<a, Long> muU;
+  private static AtomicInteger nhX;
+  public HashMap<String, b> nhY;
   
   static
   {
-    AppMethodBeat.i(140786);
-    muS = new c("INSTANCE");
-    muV = new c[] { muS };
-    AppMethodBeat.o(140786);
+    AppMethodBeat.i(144315);
+    nhX = new AtomicInteger(1);
+    AppMethodBeat.o(144315);
   }
   
   private c()
   {
-    AppMethodBeat.i(140783);
-    this.muT = new HashMap();
-    this.muU = new HashMap();
-    AppMethodBeat.o(140783);
+    AppMethodBeat.i(144311);
+    this.nhY = new HashMap();
+    AppMethodBeat.o(144311);
   }
   
-  public static long bxP()
+  public static int bPw()
   {
-    AppMethodBeat.i(224449);
-    long l = SystemClock.elapsedRealtime();
-    AppMethodBeat.o(224449);
-    return l;
+    AppMethodBeat.i(144312);
+    int i = nhX.incrementAndGet();
+    AppMethodBeat.o(144312);
+    return i;
   }
   
-  public final void a(a parama)
+  public static c bPx()
   {
-    AppMethodBeat.i(140784);
-    this.muT.put(parama, Long.valueOf(SystemClock.elapsedRealtime()));
-    AppMethodBeat.o(140784);
+    AppMethodBeat.i(144313);
+    c localc = a.bPy();
+    AppMethodBeat.o(144313);
+    return localc;
   }
   
-  public final String toString()
+  public final b acV(String paramString)
   {
-    return "";
+    AppMethodBeat.i(144314);
+    if (this.nhY.containsKey(paramString))
+    {
+      paramString = (b)this.nhY.get(paramString);
+      AppMethodBeat.o(144314);
+      return paramString;
+    }
+    AppMethodBeat.o(144314);
+    return null;
   }
   
-  public static enum a
+  static final class a
   {
-    private String name;
+    private static c nhZ;
     
     static
     {
-      AppMethodBeat.i(140780);
-      muW = new a("AppStart", 0, "AppStart");
-      muX = new a("LoadPageFrame", 1, "LoadPageFrame");
-      muY = new a("PrepareJsRuntime", 2, "PrepareJsRuntime");
-      muZ = new a("GetDom", 3, "GetDom");
-      mva = new a("ParseDom", 4, "ParseDom");
-      mvb = new a("DiffDom", 5, "DiffDom");
-      mvc = new a("GetGlobalCss", 6, "GetGlobalCss");
-      mvd = new a("GetCss", 7, "GetCss");
-      mve = new a("ParseCss", 8, "ParseCss");
-      mvf = new a("GetData", 9, "GetData");
-      mvg = new a("Layout", 10, "Layout");
-      mvh = new a("JSEvent", 11, "JSEvent");
-      mvi = new a("StartUp", 12, "StartUp");
-      mvj = new a[] { muW, muX, muY, muZ, mva, mvb, mvc, mvd, mve, mvf, mvg, mvh, mvi };
-      AppMethodBeat.o(140780);
-    }
-    
-    private a(String paramString)
-    {
-      this.name = paramString;
-    }
-    
-    public final String toString()
-    {
-      return this.name;
+      AppMethodBeat.i(144310);
+      nhZ = new c((byte)0);
+      AppMethodBeat.o(144310);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.s.c
  * JD-Core Version:    0.7.0.1
  */

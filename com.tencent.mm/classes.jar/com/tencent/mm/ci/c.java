@@ -4,19 +4,19 @@ import android.content.Context;
 import android.os.Environment;
 import android.os.Process;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
 import java.io.File;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public final class c
 {
-  private static boolean Jmd = false;
-  public static a Jme = null;
+  private static boolean OvW = false;
+  public static a OvX = null;
   
-  public static void abW(int paramInt)
+  public static void akE(int paramInt)
   {
     AppMethodBeat.i(145593);
     final boolean bool1;
@@ -33,26 +33,26 @@ public final class c
     }
     for (;;)
     {
-      ae.d("MicroMsg.MemoryDumpOperation", "hprof operate: dump:%b, checkWifi:%b, uploadSingal:%b,uploadAll:%b,", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+      Log.d("MicroMsg.MemoryDumpOperation", "hprof operate: dump:%b, checkWifi:%b, uploadSingal:%b,uploadAll:%b,", new Object[] { Boolean.valueOf(bool4), Boolean.valueOf(bool3), Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
       Executors.newSingleThreadExecutor().execute(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(145592);
-          if (c.Jmd)
+          if (c.OvW)
           {
-            ae.w("MicroMsg.MemoryDumpOperation", "Hprof is mUploading");
+            Log.w("MicroMsg.MemoryDumpOperation", "Hprof is mUploading");
             AppMethodBeat.o(145592);
             return;
           }
-          if (this.Jmf) {}
-          for (String str = b.aR(true, false);; str = null)
+          if (this.OvY) {}
+          for (String str = b.bb(true, false);; str = null)
           {
             Process.setThreadPriority(10);
-            boolean bool = az.isWifi(ak.getContext());
+            boolean bool = NetStatusUtil.isWifi(MMApplicationContext.getContext());
             if ((bool3) && (!bool))
             {
-              ae.w("MicroMsg.MemoryDumpOperation", "Hprof no wifi");
+              Log.w("MicroMsg.MemoryDumpOperation", "Hprof no wifi");
               AppMethodBeat.o(145592);
               return;
             }
@@ -60,12 +60,12 @@ public final class c
             for (;;)
             {
               c.access$002(true);
-              c.GB(str);
+              c.Pn(str);
               c.access$002(false);
               AppMethodBeat.o(145592);
               return;
               if (bool1) {
-                str = b.Jmc;
+                str = b.OvV;
               } else {
                 str = null;
               }
@@ -75,7 +75,7 @@ public final class c
       });
       AppMethodBeat.o(145593);
       return;
-      ae.i("MicroMsg.MemoryDumpOperation", "GC NOW.");
+      Log.i("MicroMsg.MemoryDumpOperation", "GC NOW.");
       System.gc();
       bool1 = false;
       bool2 = false;
@@ -109,12 +109,12 @@ public final class c
     }
   }
   
-  static boolean abo()
+  static boolean apn()
   {
     AppMethodBeat.i(145594);
     try
     {
-      if ((Environment.getExternalStorageState().equals("mounted")) && (ak.getContext().getExternalCacheDir() != null) && (ak.getContext().getExternalCacheDir().canWrite()))
+      if ((Environment.getExternalStorageState().equals("mounted")) && (MMApplicationContext.getContext().getExternalCacheDir() != null) && (MMApplicationContext.getContext().getExternalCacheDir().canWrite()))
       {
         AppMethodBeat.o(145594);
         return true;
@@ -131,7 +131,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ci.c
  * JD-Core Version:    0.7.0.1
  */

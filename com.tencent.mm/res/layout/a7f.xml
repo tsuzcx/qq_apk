@@ -1,5 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/g3y" android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/a61" />
-</LinearLayout>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/jd"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:padding="@dimen/ee" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/j6">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:id="@id/gx0" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <FrameLayout android:id="@id/cct" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/e_">
+                        <ImageView android:id="@id/ccr" android:layout_width="@dimen/e9" android:layout_height="@dimen/e9" style="@style/j5" />
+                        <ImageView android:layout_gravity="start|center|top" android:id="@id/cmh" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="@dimen/ct" android:src="@null" android:layout_marginStart="@dimen/ct" />
+                    </FrameLayout>
+                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <TextView android:id="@id/ccx" android:text="{title}" style="@style/ja" />
+                        <TextView android:id="@id/ccs" android:layout_marginTop="@dimen/ej" android:text="{desc}" android:maxLines="3" style="@style/j8" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/j9w" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:src="@raw/app_attach_file_icon_sound" style="@style/j4" />
+                    <TextView android:layout_gravity="center_vertical" android:id="@id/cdw" android:layout_marginLeft="@dimen/e_" android:text="{title}" style="@style/ja" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/azf" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:src="@raw/app_attach_file_icon_voice" style="@style/j4" />
+                    <TextView android:layout_gravity="center_vertical" android:id="@id/cbb" android:layout_marginLeft="@dimen/e_" android:text="{title}" style="@style/ja" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/b9q" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <ImageView android:id="@id/cbh" style="@style/j4" />
+                    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/e_">
+                        <TextView android:id="@id/cb_" android:text="{title}" style="@style/ja" />
+                        <TextView android:id="@id/cb9" android:layout_marginTop="@dimen/ej" android:text="{desc}" style="@style/j8" />
+                    </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
+            <include layout="@layout/a7h" />
+            <include layout="@layout/a7g" />
+        </LinearLayout>
+        <include layout="@layout/a7e" />
+    </LinearLayout>
+</FrameLayout>

@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.modelsns.SnsAdClick;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class qx
-  extends b
+  extends IEvent
 {
-  public a dGz;
+  public qx.a dXu;
   
   public qx()
   {
@@ -16,16 +15,11 @@ public final class qx
   
   private qx(byte paramByte)
   {
-    AppMethodBeat.i(125626);
-    this.dGz = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(116040);
+    this.dXu = new qx.a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125626);
-  }
-  
-  public static final class a
-  {
-    public SnsAdClick dGA;
+    AppMethodBeat.o(116040);
   }
 }
 

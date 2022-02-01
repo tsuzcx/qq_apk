@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@drawable/ay" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:background="@color/s0" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="?z"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/abv" android:visibility="gone" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginLeft="6.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="6.0dip" android:scaleType="fitCenter" />
-    <TextView android:textSize="12.0dip" android:textColor="@color/km" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/abx" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="6.0dip" android:maxLines="1" android:includeFontPadding="false" android:lineSpacingExtra="0.0dip" />
-</LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/ht5" android:background="@drawable/asg" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerVertical="true" android:layout_marginStart="@dimen/ct" android:layout_alignParentStart="true">
+        <ImageView android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/bwc" android:paddingStart="@dimen/ct" android:paddingEnd="@dimen/ct" />
+    </LinearLayout>
+    <Button android:enabled="false" android:id="@id/ht8" android:background="@drawable/k4" android:text="@string/yq" android:layout_centerVertical="true" android:layout_marginEnd="@dimen/cb" android:layout_alignParentEnd="true" style="@style/ow" />
+    <EditText android:textSize="@dimen/i_" android:textColor="@color/am" android:textColorHint="#4dffffff" android:ellipsize="end" android:id="@id/ht7" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="@string/h2q" android:singleLine="true" android:layout_centerVertical="true" android:inputType="text" android:imeOptions="actionSearch" android:textCursorDrawable="@drawable/a70" android:layout_marginEnd="@dimen/ct" android:layout_toStartOf="@id/ht8" android:layout_toEndOf="@id/ht5" />
+</RelativeLayout>

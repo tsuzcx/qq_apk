@@ -9,11 +9,13 @@ import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
 import com.tencent.liteav.audio.e;
+import com.tencent.liteav.audio.impl.Record.b;
 import com.tencent.liteav.basic.log.TXCLog;
 import com.tencent.liteav.basic.structs.TXSNALPacket;
 import com.tencent.liteav.basic.util.f;
 import com.tencent.liteav.muxer.c;
 import com.tencent.liteav.videoencoder.TXSVideoEncoderParam;
+import com.tencent.liteav.videoencoder.d;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -21,9 +23,9 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class a
-  implements e, com.tencent.liteav.videoencoder.d
+  implements e, d
 {
-  private com.tencent.liteav.audio.impl.a.d a;
+  private b a;
   private com.tencent.liteav.videoencoder.a b;
   private c c;
   private a d;
@@ -67,20 +69,46 @@ public class a
             if (localFile.exists()) {
               localFile.delete();
             }
-            label302:
             a.a(a.this).a(paramAnonymousMessage.arg1, (String)paramAnonymousMessage.obj, a.b(a.this).f, a.b(a.this).g);
           }
           catch (Exception localException)
           {
-            break label302;
+            for (;;)
+            {
+              TXCLog.e("TXCStreamRecord", "delete file failed.", localException);
+            }
           }
         }
       }
     };
-    this.a = new com.tencent.liteav.audio.impl.a.d();
+    this.a = new b();
     this.b = new com.tencent.liteav.videoencoder.a();
     this.c = new c(paramContext, 1);
     AppMethodBeat.o(16672);
+  }
+  
+  private String a(int paramInt)
+  {
+    AppMethodBeat.i(221378);
+    String str;
+    switch (paramInt)
+    {
+    default: 
+      str = "";
+    }
+    for (;;)
+    {
+      this.i.sendMessage(Message.obtain(this.i, 2, 1, 0, str));
+      AppMethodBeat.o(221378);
+      return str;
+      str = "Video encoding failed";
+      continue;
+      str = "Video encoding failed to initialize";
+      continue;
+      str = "Illegal video input parameters";
+      continue;
+      str = "Video encoder is not activated";
+    }
   }
   
   private static String a(Context paramContext)
@@ -131,33 +159,10 @@ public class a
     }
     catch (Exception paramContext)
     {
+      TXCLog.e("TXCStreamRecord", "create file path failed.", paramContext);
       AppMethodBeat.o(16677);
     }
     return null;
-  }
-  
-  private String b(int paramInt)
-  {
-    AppMethodBeat.i(16679);
-    String str;
-    switch (paramInt)
-    {
-    default: 
-      str = "";
-    }
-    for (;;)
-    {
-      this.i.sendMessage(Message.obtain(this.i, 2, 1, 0, str));
-      AppMethodBeat.o(16679);
-      return str;
-      str = "视频编码失败";
-      continue;
-      str = "视频编码初始化失败";
-      continue;
-      str = "非法视频输入参数";
-      continue;
-      str = "未启动视频编码器";
-    }
   }
   
   public void a()
@@ -176,8 +181,6 @@ public class a
     AppMethodBeat.o(16674);
   }
   
-  public void a(int paramInt) {}
-  
   public void a(int paramInt, long paramLong)
   {
     AppMethodBeat.i(16675);
@@ -185,16 +188,14 @@ public class a
     AppMethodBeat.o(16675);
   }
   
-  public void a(long paramLong) {}
-  
-  public void a(long paramLong1, long paramLong2, long paramLong3) {}
+  public void a(int paramInt, long paramLong1, long paramLong2) {}
   
   public void a(MediaFormat paramMediaFormat)
   {
     AppMethodBeat.i(16682);
     this.c.a(paramMediaFormat);
     if ((this.c.c()) && (this.c.a() < 0)) {
-      this.i.sendMessage(Message.obtain(this.i, 2, 1, 0, "mp4封装器启动失败"));
+      this.i.sendMessage(Message.obtain(this.i, 2, 1, 0, "mp4 wrapper failed to start"));
     }
     AppMethodBeat.o(16682);
   }
@@ -249,7 +250,7 @@ public class a
     }
     else
     {
-      TXCLog.e("TXCStreamRecord", "video encode error! errmsg: ".concat(String.valueOf(b(paramInt))));
+      TXCLog.e("TXCStreamRecord", "video encode error! errmsg: ".concat(String.valueOf(a(paramInt))));
     }
     AppMethodBeat.o(16681);
   }
@@ -266,6 +267,10 @@ public class a
     TXCLog.e("TXCStreamRecord", "drainAudio fail because of not init yet!");
     AppMethodBeat.o(16676);
   }
+  
+  public void l(int paramInt) {}
+  
+  public void m(int paramInt) {}
   
   public void onRecordEncData(byte[] paramArrayOfByte, long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
@@ -322,7 +327,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.a.a
  * JD-Core Version:    0.7.0.1
  */

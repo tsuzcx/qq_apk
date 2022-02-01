@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/f40" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@null" android:layout_width="fill_parent" android:layout_height="50.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:layout_height="wrap_content" style="@style/m4">
-        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/hg" android:background="@null" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginLeft="@dimen/ci" android:src="@drawable/mo" android:scaleType="fitXY" android:minWidth="0.0dip" android:contentDescription="@string/apz" />
-        <com.tencent.mm.ui.widget.imageview.WeImageButton android:id="@id/jd" android:background="@null" android:layout_width="@dimen/c_" android:layout_height="@dimen/c_" android:layout_marginLeft="@dimen/ci" android:src="@drawable/agp" android:scaleType="fitXY" android:minWidth="0.0dip" />
-    </LinearLayout>
+    <TextView android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:id="@id/g0w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="{Content}" style="@style/p_" />
 </LinearLayout>

@@ -45,7 +45,7 @@ public class FirebaseInitProvider
   public boolean onCreate()
   {
     AppMethodBeat.i(4105);
-    a.ak(getContext());
+    a.al(getContext());
     AppMethodBeat.o(4105);
     return false;
   }
@@ -62,7 +62,7 @@ public class FirebaseInitProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.provider.FirebaseInitProvider
  * JD-Core Version:    0.7.0.1
  */

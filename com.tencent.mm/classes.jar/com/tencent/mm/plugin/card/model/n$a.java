@@ -7,14 +7,14 @@ public enum n$a
   static
   {
     AppMethodBeat.i(112798);
-    oGk = new a("NORMAL_TYPE", 0);
-    oGl = new a("INVALID_TYPE", 1);
-    oGm = new a("CAN_GIFT_TYPE", 2);
-    oGn = new a("GENERAL_TYPE", 3);
-    oGo = new a("MEMBER_CARD_TYPE", 4);
-    oGp = new a("HOME_MEMBER_CARD_TYPE", 5);
-    oGq = new a("GENERAL_WITHOUT_INVOICE_TYPE", 6);
-    oGr = new a[] { oGk, oGl, oGm, oGn, oGo, oGp, oGq };
+    pTQ = new a("NORMAL_TYPE", 0);
+    pTR = new a("INVALID_TYPE", 1);
+    pTS = new a("CAN_GIFT_TYPE", 2);
+    pTT = new a("GENERAL_TYPE", 3);
+    pTU = new a("MEMBER_CARD_TYPE", 4);
+    pTV = new a("HOME_MEMBER_CARD_TYPE", 5);
+    pTW = new a("GENERAL_WITHOUT_INVOICE_TYPE", 6);
+    pTX = new a[] { pTQ, pTR, pTS, pTT, pTU, pTV, pTW };
     AppMethodBeat.o(112798);
   }
   
@@ -22,7 +22,7 @@ public enum n$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.card.model.n.a
  * JD-Core Version:    0.7.0.1
  */

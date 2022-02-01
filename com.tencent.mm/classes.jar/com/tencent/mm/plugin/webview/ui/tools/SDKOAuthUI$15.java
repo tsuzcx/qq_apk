@@ -16,19 +16,19 @@ final class SDKOAuthUI$15
   {
     AppMethodBeat.i(79747);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    paramView = new Intent(this.Esd, CreateAvatarUI.class);
-    paramView.putExtra("0", SDKOAuthUI.a(this.Esd));
-    paramView.putExtra("default_fileid", SDKOAuthUI.m(this.Esd));
-    this.Esd.startActivityForResult(paramView, 6);
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    paramView = new Intent(this.Jfk, CreateAvatarUI.class);
+    paramView.putExtra("0", SDKOAuthUI.a(this.Jfk));
+    paramView.putExtra("default_fileid", SDKOAuthUI.m(this.Jfk));
+    this.Jfk.startActivityForResult(paramView, 6);
     a.a(this, "com/tencent/mm/plugin/webview/ui/tools/SDKOAuthUI$9", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(79747);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.webview.ui.tools.SDKOAuthUI.15
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mm.pluginsdk;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.aw;
-import d.g.a.a;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.sdk.platformtools.MTimerHandler;
+import kotlin.g.a.a;
+import kotlin.g.b.q;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "invoke"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/sdk/platformtools/MTimerHandler;", "invoke"})
 final class c$f
   extends q
-  implements a<aw>
+  implements a<MTimerHandler>
 {
-  public static final f FbH;
+  public static final f JSB;
   
   static
   {
     AppMethodBeat.i(124774);
-    FbH = new f();
+    JSB = new f();
     AppMethodBeat.o(124774);
   }
   

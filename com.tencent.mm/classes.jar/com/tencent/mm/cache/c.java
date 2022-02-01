@@ -1,73 +1,73 @@
 package com.tencent.mm.cache;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.api.g;
+import com.tencent.mm.api.h;
 import java.util.HashMap;
 import java.util.Stack;
 
 public final class c
 {
-  private static c fKn;
-  HashMap<String, Stack<g>> cEm;
-  private Stack<g> fKm;
+  private static c gpB;
+  private Stack<h> bNI;
+  HashMap<String, Stack<h>> map;
   
   static
   {
     AppMethodBeat.i(9210);
-    fKn = new c();
+    gpB = new c();
     AppMethodBeat.o(9210);
   }
   
   private c()
   {
     AppMethodBeat.i(9207);
-    this.cEm = new HashMap();
-    this.fKm = new Stack();
+    this.map = new HashMap();
+    this.bNI = new Stack();
     AppMethodBeat.o(9207);
   }
   
-  public static c XS()
+  public static c alF()
   {
-    return fKn;
+    return gpB;
   }
   
-  public final g XT()
+  public final void Dp(String paramString)
   {
-    AppMethodBeat.i(9209);
-    if (this.fKm.empty())
+    AppMethodBeat.i(204749);
+    if (this.map.containsKey(paramString))
     {
-      localg = g.cSm;
-      AppMethodBeat.o(9209);
-      return localg;
-    }
-    g localg = (g)this.fKm.pop();
-    AppMethodBeat.o(9209);
-    return localg;
-  }
-  
-  public final void b(g paramg)
-  {
-    AppMethodBeat.i(9208);
-    this.fKm.push(paramg);
-    AppMethodBeat.o(9208);
-  }
-  
-  public final void uZ(String paramString)
-  {
-    AppMethodBeat.i(195425);
-    if (this.cEm.containsKey(paramString))
-    {
-      this.fKm = ((Stack)this.cEm.get(paramString));
-      AppMethodBeat.o(195425);
+      this.bNI = ((Stack)this.map.get(paramString));
+      AppMethodBeat.o(204749);
       return;
     }
-    this.cEm.put(paramString, new Stack());
-    AppMethodBeat.o(195425);
+    this.map.put(paramString, new Stack());
+    AppMethodBeat.o(204749);
+  }
+  
+  public final h alG()
+  {
+    AppMethodBeat.i(9209);
+    if (this.bNI.empty())
+    {
+      localh = h.diG;
+      AppMethodBeat.o(9209);
+      return localh;
+    }
+    h localh = (h)this.bNI.pop();
+    AppMethodBeat.o(9209);
+    return localh;
+  }
+  
+  public final void b(h paramh)
+  {
+    AppMethodBeat.i(9208);
+    this.bNI.push(paramh);
+    AppMethodBeat.o(9208);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.cache.c
  * JD-Core Version:    0.7.0.1
  */

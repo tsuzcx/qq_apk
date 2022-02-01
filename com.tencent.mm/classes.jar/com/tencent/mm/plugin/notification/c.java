@@ -9,11 +9,14 @@ import android.content.SharedPreferences.Editor;
 import android.net.Uri;
 import android.provider.Settings.System;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.cl;
-import com.tencent.mm.n.f;
+import com.tencent.mm.bq.a;
+import com.tencent.mm.model.cp;
+import com.tencent.mm.n.g;
 import com.tencent.mm.protocal.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.vendor.Huawei;
+import com.tencent.mm.sdk.vendor.MIUI;
 import java.util.Iterator;
 import java.util.List;
 
@@ -42,7 +45,7 @@ public final class c
         NotificationChannel localNotificationChannel = (NotificationChannel)paramNotificationManager.next();
         if ((localNotificationChannel != null) && (localNotificationChannel.getId() != null))
         {
-          boolean bool = bu.lX(localNotificationChannel.getId(), paramString);
+          boolean bool = Util.isEqual(localNotificationChannel.getId(), paramString);
           if (bool)
           {
             AppMethodBeat.o(149371);
@@ -53,7 +56,7 @@ public final class c
     }
     catch (Exception paramNotificationManager)
     {
-      ae.e("MicroMsg.NotificationManufacturerCompatibility", "deleteNoNumberNotification exception:%s", new Object[] { paramNotificationManager.getMessage() });
+      Log.e("MicroMsg.NotificationManufacturerCompatibility", "deleteNoNumberNotification exception:%s", new Object[] { paramNotificationManager.getMessage() });
       AppMethodBeat.o(149371);
     }
     return null;
@@ -62,8 +65,8 @@ public final class c
   private static void a(NotificationChannel paramNotificationChannel, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(149369);
-    paramSharedPreferences = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.n.a.ggs);
-    if (auM(paramSharedPreferences)) {
+    paramSharedPreferences = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.n.b.gLX);
+    if (aIY(paramSharedPreferences)) {
       paramNotificationChannel.setSound(Uri.parse(paramSharedPreferences), Notification.AUDIO_ATTRIBUTES_DEFAULT);
     }
     AppMethodBeat.o(149369);
@@ -72,18 +75,18 @@ public final class c
   private static void a(Context paramContext, NotificationManager paramNotificationManager, String paramString, boolean paramBoolean1, boolean paramBoolean2, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(149367);
-    NotificationChannel localNotificationChannel = new NotificationChannel(paramString, paramContext.getString(2131761698), 4);
-    localNotificationChannel.setDescription(paramContext.getString(2131761697));
+    NotificationChannel localNotificationChannel = new NotificationChannel(paramString, paramContext.getString(2131763666), 4);
+    localNotificationChannel.setDescription(paramContext.getString(2131763665));
     localNotificationChannel.enableLights(true);
     localNotificationChannel.setLightColor(-16711936);
-    localNotificationChannel.setVibrationPattern(bu.iSV);
+    localNotificationChannel.setVibrationPattern(Util.VIRBRATOR_PATTERN);
     localNotificationChannel.enableVibration(paramBoolean1);
     if (paramBoolean2)
     {
-      paramContext = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.n.a.ggs);
-      if (auM(paramContext))
+      paramContext = paramSharedPreferences.getString("settings.ringtone", com.tencent.mm.n.b.gLX);
+      if (aIY(paramContext))
       {
-        ae.e("MicroMsg.NotificationManufacturerCompatibility", "sound = %s", new Object[] { Uri.parse(paramContext) });
+        Log.e("MicroMsg.NotificationManufacturerCompatibility", "sound = %s", new Object[] { Uri.parse(paramContext) });
         localNotificationChannel.setSound(Uri.parse(paramContext), Notification.AUDIO_ATTRIBUTES_DEFAULT);
       }
     }
@@ -95,11 +98,11 @@ public final class c
   private static void a(Context paramContext, NotificationManager paramNotificationManager, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(149368);
-    NotificationChannel localNotificationChannel = new NotificationChannel(paramString, paramContext.getString(2131761698), 4);
-    localNotificationChannel.setDescription(paramContext.getString(2131761697));
+    NotificationChannel localNotificationChannel = new NotificationChannel(paramString, paramContext.getString(2131763666), 4);
+    localNotificationChannel.setDescription(paramContext.getString(2131763665));
     localNotificationChannel.enableLights(true);
     localNotificationChannel.setLightColor(-16711936);
-    localNotificationChannel.setVibrationPattern(bu.iSV);
+    localNotificationChannel.setVibrationPattern(Util.VIRBRATOR_PATTERN);
     if (paramBoolean1)
     {
       localNotificationChannel.enableVibration(true);
@@ -132,12 +135,12 @@ public final class c
   public static boolean a(Context paramContext, NotificationManager paramNotificationManager, boolean paramBoolean1, boolean paramBoolean2, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(149365);
-    if (!com.tencent.mm.sdk.h.b.fqp())
+    if (!MIUI.ifMIUI())
     {
       AppMethodBeat.o(149365);
       return false;
     }
-    String str1 = com.tencent.mm.bq.a.abK();
+    String str1 = a.apJ();
     NotificationChannel localNotificationChannel = a(paramNotificationManager, str1);
     if (localNotificationChannel == null) {
       a(paramContext, paramNotificationManager, str1, paramBoolean1, paramBoolean2, paramSharedPreferences);
@@ -146,25 +149,25 @@ public final class c
     {
       AppMethodBeat.o(149365);
       return true;
-      cl.Cf(com.tencent.mm.loader.j.b.asb());
-      String str2 = cl.oI(2);
+      cp.KL(com.tencent.mm.loader.j.b.aKB());
+      String str2 = cp.sj(2);
       String[] arrayOfString = str2.split(";");
-      ae.i("MicroMsg.NotificationManufacturerCompatibility", "xiaomiNotificationCompatibility() lastVersion:%s curVersion:%s", new Object[] { str2, Integer.valueOf(d.FFH) });
+      Log.i("MicroMsg.NotificationManufacturerCompatibility", "xiaomiNotificationCompatibility() lastVersion:%s curVersion:%s", new Object[] { str2, Integer.valueOf(d.KyO) });
       if ((arrayOfString != null) && (arrayOfString.length == 2))
       {
         int i = Integer.parseInt(arrayOfString[0], 16);
-        ae.i("MicroMsg.NotificationManufacturerCompatibility", "xiaomiNotificationCompatibility() lastVersion:%s", new Object[] { Integer.valueOf(i) });
-        if ((654311424 <= i) && (i <= 654312247) && (!bu.lX(localNotificationChannel.getId(), "message_channel_compatibility_id"))) {
+        Log.i("MicroMsg.NotificationManufacturerCompatibility", "xiaomiNotificationCompatibility() lastVersion:%s", new Object[] { Integer.valueOf(i) });
+        if ((654311424 <= i) && (i <= 654312247) && (!Util.isEqual(localNotificationChannel.getId(), "message_channel_compatibility_id"))) {
           if (localNotificationChannel.getSound() == null) {
             try
             {
               paramNotificationManager.deleteNotificationChannel(localNotificationChannel.getId());
               a(paramContext, paramNotificationManager, "message_channel_compatibility_id", paramBoolean1, paramBoolean2, paramSharedPreferences);
-              com.tencent.mm.bq.a.aMz("message_channel_compatibility_id");
+              a.bcS("message_channel_compatibility_id");
             }
             catch (Exception paramContext)
             {
-              ae.e("MicroMsg.NotificationManufacturerCompatibility", "huaweiNotificationCompatibility exception:%s", new Object[] { paramContext.getMessage() });
+              Log.e("MicroMsg.NotificationManufacturerCompatibility", "huaweiNotificationCompatibility exception:%s", new Object[] { paramContext.getMessage() });
             }
           } else {
             a(paramContext, paramNotificationManager, str1, paramBoolean1, paramBoolean2, paramSharedPreferences);
@@ -174,13 +177,13 @@ public final class c
     }
   }
   
-  public static boolean auM(String paramString)
+  public static boolean aIY(String paramString)
   {
     AppMethodBeat.i(149372);
-    if (!bu.isNullOrNil(paramString)) {}
-    for (boolean bool = s(Uri.parse(paramString));; bool = false)
+    if (!Util.isNullOrNil(paramString)) {}
+    for (boolean bool = t(Uri.parse(paramString));; bool = false)
     {
-      ae.e("MicroMsg.NotificationManufacturerCompatibility", "sound = %s result = %s", new Object[] { bu.bI(paramString, "null"), Boolean.valueOf(bool) });
+      Log.e("MicroMsg.NotificationManufacturerCompatibility", "sound = %s result = %s", new Object[] { Util.nullAs(paramString, "null"), Boolean.valueOf(bool) });
       AppMethodBeat.o(149372);
       return bool;
     }
@@ -189,14 +192,14 @@ public final class c
   public static boolean b(Context paramContext, NotificationManager paramNotificationManager, boolean paramBoolean1, boolean paramBoolean2, SharedPreferences paramSharedPreferences)
   {
     AppMethodBeat.i(149366);
-    boolean bool1 = com.tencent.mm.sdk.h.a.fqk();
-    boolean bool2 = com.tencent.mm.sdk.h.a.fql();
+    boolean bool1 = Huawei.isEMUI8();
+    boolean bool2 = Huawei.isEMUI9();
     if ((!bool1) && (!bool2))
     {
       AppMethodBeat.o(149366);
       return false;
     }
-    String str = com.tencent.mm.bq.a.abK();
+    String str = a.apJ();
     NotificationChannel localNotificationChannel = a(paramNotificationManager, str);
     if (localNotificationChannel == null)
     {
@@ -215,15 +218,15 @@ public final class c
         try
         {
           if (localNotificationChannel.getSound() != null) {
-            f.vU(localNotificationChannel.getSound().toString());
+            g.Ej(localNotificationChannel.getSound().toString());
           }
           paramNotificationManager.deleteNotificationChannel(localNotificationChannel.getId());
           a(paramContext, paramNotificationManager, "message_channel_compatibility_id", bool1, bool2, paramBoolean1, paramBoolean2, paramSharedPreferences);
-          com.tencent.mm.bq.a.aMz("message_channel_compatibility_id");
+          a.bcS("message_channel_compatibility_id");
         }
         catch (Exception paramContext)
         {
-          ae.e("MicroMsg.NotificationManufacturerCompatibility", "huaweiNotificationCompatibility exception:%s", new Object[] { paramContext.getMessage() });
+          Log.e("MicroMsg.NotificationManufacturerCompatibility", "huaweiNotificationCompatibility exception:%s", new Object[] { paramContext.getMessage() });
         }
       }
       break;
@@ -234,12 +237,12 @@ public final class c
   }
   
   /* Error */
-  private static boolean s(Uri paramUri)
+  private static boolean t(Uri paramUri)
   {
     // Byte code:
     //   0: ldc_w 300
     //   3: invokestatic 15	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
-    //   6: invokestatic 306	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
+    //   6: invokestatic 306	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
     //   9: invokevirtual 310	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
     //   12: aload_0
     //   13: ldc_w 312
@@ -289,7 +292,7 @@ public final class c
     //   102: aload_1
     //   103: invokevirtual 344	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   106: invokevirtual 350	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   109: invokestatic 354	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   109: invokestatic 354	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
     //   112: ldc_w 300
     //   115: invokestatic 24	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   118: iconst_0
@@ -360,7 +363,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.notification.c
  * JD-Core Version:    0.7.0.1
  */

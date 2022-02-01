@@ -6,7 +6,7 @@ import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import com.qq.taf.jce.JceUtil;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class ReportLogRequest
   extends JceStruct
@@ -151,7 +151,7 @@ public final class ReportLogRequest
     }
     catch (Exception localException2)
     {
-      ae.printErrStackTrace("ReportLogRequest", localException2, "", new Object[0]);
+      Log.printErrStackTrace("ReportLogRequest", localException2, "", new Object[0]);
       AppMethodBeat.o(102321);
     }
     return 0;
@@ -218,7 +218,7 @@ public final class ReportLogRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.protocol.jce.ReportLogRequest
  * JD-Core Version:    0.7.0.1
  */

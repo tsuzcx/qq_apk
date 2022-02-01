@@ -11,7 +11,7 @@ import org.xwalk.core.Log;
 public class VideoDotPercentIndicator
   extends LinearLayout
 {
-  private int lwJ;
+  private int mDG;
   private LayoutInflater mInflater;
   
   public VideoDotPercentIndicator(Context paramContext, AttributeSet paramAttributeSet)
@@ -44,12 +44,12 @@ public class VideoDotPercentIndicator
     if (paramInt > 1) {}
     for (;;)
     {
-      this.lwJ = paramInt;
+      this.mDG = paramInt;
       removeAllViews();
       paramInt = 0;
-      while (paramInt < this.lwJ)
+      while (paramInt < this.mDG)
       {
-        addView((ImageView)this.mInflater.inflate(2131496126, this, false));
+        addView((ImageView)this.mInflater.inflate(2131497122, this, false));
         paramInt += 1;
       }
       paramInt = 8;
@@ -75,7 +75,7 @@ public class VideoDotPercentIndicator
     label128:
     for (;;)
     {
-      int k = (int)Math.rint(this.lwJ * paramFloat);
+      int k = (int)Math.rint(this.mDG * paramFloat);
       Log.v("MicroMsg.AppBrandDotPercentIndicator", "setPercent percent:" + paramFloat + " dotsOnNum:" + k);
       int i = 0;
       for (;;)
@@ -88,14 +88,14 @@ public class VideoDotPercentIndicator
         if (i >= getChildCount()) {
           break;
         }
-        ((ImageView)getChildAt(i)).setImageResource(2131234817);
+        ((ImageView)getChildAt(i)).setImageResource(2131235809);
         i += 1;
       }
       break;
     }
     while (j < getChildCount())
     {
-      ((ImageView)getChildAt(j)).setImageResource(2131234816);
+      ((ImageView)getChildAt(j)).setImageResource(2131235808);
       j += 1;
     }
     AppMethodBeat.o(153558);
@@ -103,7 +103,7 @@ public class VideoDotPercentIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.xweb.extension.video.VideoDotPercentIndicator
  * JD-Core Version:    0.7.0.1
  */

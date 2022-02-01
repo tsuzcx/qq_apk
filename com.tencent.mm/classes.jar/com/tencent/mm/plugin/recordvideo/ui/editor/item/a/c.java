@@ -5,10 +5,10 @@ import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "bitmap", "Landroid/graphics/Bitmap;", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;)V", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BaseEditorItem;", "bitmap", "Landroid/graphics/Bitmap;", "matrix", "Landroid/graphics/Matrix;", "(Landroid/graphics/Bitmap;Landroid/graphics/Matrix;)V", "destroy", "", "draw", "canvas", "Landroid/graphics/Canvas;", "paint", "Landroid/graphics/Paint;", "init", "prepareNext", "", "plugin-recordvideo_release"})
 public final class c
   extends a
 {
@@ -17,38 +17,42 @@ public final class c
   public c(Bitmap paramBitmap, Matrix paramMatrix)
   {
     super(paramMatrix);
-    AppMethodBeat.i(207012);
+    AppMethodBeat.i(237853);
     this.bitmap = paramBitmap;
-    AppMethodBeat.o(207012);
-  }
-  
-  public final long dLx()
-  {
-    return 9223372036854775807L;
+    AppMethodBeat.o(237853);
   }
   
   public final void destroy() {}
   
   public final void draw(Canvas paramCanvas, Paint paramPaint)
   {
-    AppMethodBeat.i(207011);
+    AppMethodBeat.i(237852);
     p.h(paramCanvas, "canvas");
     p.h(paramPaint, "paint");
-    if (dLw())
+    if (eMu())
     {
       paramCanvas.save();
-      paramCanvas.concat(this.gR);
-      paramCanvas.drawBitmap(this.bitmap, 0.0F, 0.0F, paramPaint);
+      paramCanvas.concat(this.gT);
+      Bitmap localBitmap = this.bitmap;
+      if (localBitmap == null) {
+        p.hyc();
+      }
+      paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, paramPaint);
       paramCanvas.restore();
     }
-    AppMethodBeat.o(207011);
+    AppMethodBeat.o(237852);
+  }
+  
+  public final long eMv()
+  {
+    return 9223372036854775807L;
   }
   
   public final void init() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.a.c
  * JD-Core Version:    0.7.0.1
  */

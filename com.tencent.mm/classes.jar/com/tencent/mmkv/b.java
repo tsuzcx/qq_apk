@@ -7,12 +7,12 @@ public enum b
   static
   {
     AppMethodBeat.i(13539);
-    LZf = new b("LevelDebug", 0);
-    LZg = new b("LevelInfo", 1);
-    LZh = new b("LevelWarning", 2);
-    LZi = new b("LevelError", 3);
-    LZj = new b("LevelNone", 4);
-    LZk = new b[] { LZf, LZg, LZh, LZi, LZj };
+    Rzx = new b("LevelDebug", 0);
+    Rzy = new b("LevelInfo", 1);
+    Rzz = new b("LevelWarning", 2);
+    RzA = new b("LevelError", 3);
+    RzB = new b("LevelNone", 4);
+    RzC = new b[] { Rzx, Rzy, Rzz, RzA, RzB };
     AppMethodBeat.o(13539);
   }
   

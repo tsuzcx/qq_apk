@@ -12,14 +12,14 @@ public class SuccUnbindQQ
 {
   public int getLayoutId()
   {
-    return 2131495732;
+    return 2131496637;
   }
   
   public void initView()
   {
     AppMethodBeat.i(110200);
-    setMMTitle(2131764550);
-    addTextOptionMenu(0, getString(2131755779), new MenuItem.OnMenuItemClickListener()
+    setMMTitle(2131766895);
+    addTextOptionMenu(0, getString(2131755858), new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
@@ -62,7 +62,7 @@ public class SuccUnbindQQ
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.account.bind.ui.SuccUnbindQQ
  * JD-Core Version:    0.7.0.1
  */

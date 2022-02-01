@@ -49,7 +49,7 @@ public class b
   
   public boolean canUseX5()
   {
-    AppMethodBeat.i(192804);
+    AppMethodBeat.i(188516);
     new Throwable();
     try
     {
@@ -73,7 +73,7 @@ public class b
       {
         TbsLog.d("DexLoaderX5CoreEntry", "canUseX5 objRet=".concat(String.valueOf(localObject1)));
         bool = ((Boolean)localObject1).booleanValue();
-        AppMethodBeat.o(192804);
+        AppMethodBeat.o(188516);
         return bool;
       }
     }
@@ -82,13 +82,13 @@ public class b
       break label86;
     }
     bool = ((Boolean)localObject1).booleanValue();
-    AppMethodBeat.o(192804);
+    AppMethodBeat.o(188516);
     return bool;
   }
   
   public IX5WebViewBase createX5WebView(Context paramContext, boolean paramBoolean)
   {
-    AppMethodBeat.i(192805);
+    AppMethodBeat.i(188517);
     localObject3 = this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "createSDKWebview", new Class[] { Context.class }, new Object[] { paramContext });
     if (localObject3 == null) {}
     for (;;)
@@ -115,7 +115,7 @@ public class b
       }
       if (localObject2 == null)
       {
-        AppMethodBeat.o(192805);
+        AppMethodBeat.o(188517);
         return null;
         localIX5WebViewBase = (IX5WebViewBase)localObject3;
         localObject1 = localIX5WebViewBase;
@@ -141,7 +141,7 @@ public class b
         localObject2 = localObject3;
       }
     }
-    AppMethodBeat.o(192805);
+    AppMethodBeat.o(188517);
     return localObject1;
   }
   
@@ -152,49 +152,49 @@ public class b
   
   public IX5CoreCacheManager getX5CoreCacheManager()
   {
-    AppMethodBeat.i(192807);
+    AppMethodBeat.i(188519);
     a locala = new a(this.a);
-    AppMethodBeat.o(192807);
+    AppMethodBeat.o(188519);
     return locala;
   }
   
   public IX5CoreCookieManager getX5CoreCookieManager()
   {
-    AppMethodBeat.i(192806);
+    AppMethodBeat.i(188518);
     j localj = new j(this.a);
-    AppMethodBeat.o(192806);
+    AppMethodBeat.o(188518);
     return localj;
   }
   
   public IX5CoreGeolocationPermissions getX5CoreGeolocationPermissions()
   {
-    AppMethodBeat.i(192815);
+    AppMethodBeat.i(188527);
     k localk = new k(this.a);
-    AppMethodBeat.o(192815);
+    AppMethodBeat.o(188527);
     return localk;
   }
   
   public IX5CoreJsCore getX5CoreJsCore()
   {
-    AppMethodBeat.i(192814);
+    AppMethodBeat.i(188526);
     n localn = new n(this.a);
-    AppMethodBeat.o(192814);
+    AppMethodBeat.o(188526);
     return localn;
   }
   
   public IX5CoreMessy getX5CoreMessy()
   {
-    AppMethodBeat.i(192808);
+    AppMethodBeat.i(188520);
     l locall = new l(this.a, this.b);
-    AppMethodBeat.o(192808);
+    AppMethodBeat.o(188520);
     return locall;
   }
   
   public IX5CoreNetwork getX5CoreNetwork()
   {
-    AppMethodBeat.i(192809);
+    AppMethodBeat.i(188521);
     m localm = new m(this.a);
-    AppMethodBeat.o(192809);
+    AppMethodBeat.o(188521);
     return localm;
   }
   
@@ -205,39 +205,39 @@ public class b
   
   public IX5CoreUrlUtil getX5CoreUrlUtil()
   {
-    AppMethodBeat.i(192810);
+    AppMethodBeat.i(188522);
     f localf = new f(this.a);
-    AppMethodBeat.o(192810);
+    AppMethodBeat.o(188522);
     return localf;
   }
   
   public IX5CoreWebIconDB getX5CoreWebIconDB()
   {
-    AppMethodBeat.i(192811);
+    AppMethodBeat.i(188523);
     g localg = new g(this.a);
-    AppMethodBeat.o(192811);
+    AppMethodBeat.o(188523);
     return localg;
   }
   
   public IX5CoreWebStorage getX5CoreWebStorage()
   {
-    AppMethodBeat.i(192812);
+    AppMethodBeat.i(188524);
     h localh = new h(this.a);
-    AppMethodBeat.o(192812);
+    AppMethodBeat.o(188524);
     return localh;
   }
   
   public IX5CoreWebViewDB getX5CoreWebViewDB()
   {
-    AppMethodBeat.i(192813);
+    AppMethodBeat.i(188525);
     i locali = new i(this.a);
-    AppMethodBeat.o(192813);
+    AppMethodBeat.o(188525);
     return locali;
   }
   
   public void initRuntimeEnvironment()
   {
-    AppMethodBeat.i(192800);
+    AppMethodBeat.i(188512);
     Object localObject1;
     Object localObject2;
     Context localContext;
@@ -258,7 +258,7 @@ public class b
       str2 = this.e;
       str3 = QbSdk.getTbsCoreVersionString();
       String str4 = TbsShareManager.getHostCorePathAppDefined();
-      localObject1 = ((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject2, String.class, String.class }, new Object[] { localContext, localObject3, localObject4, str1, str2, "4.4.0.0006", Integer.valueOf(43805), str3, str4 });
+      localObject1 = ((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject2, String.class, String.class }, new Object[] { localContext, localObject3, localObject4, str1, str2, "4.4.0.0006", Integer.valueOf(43809), str3, str4 });
       localObject2 = localObject1;
       if (localObject1 == null)
       {
@@ -287,7 +287,7 @@ public class b
           new StringBuilder("#").append(((Throwable)localObject1).getMessage()).append("; cause: ").append(((Throwable)localObject1).getCause()).append("; th: ").append(localObject1);
         }
       }
-      AppMethodBeat.o(192800);
+      AppMethodBeat.o(188512);
       return;
       TbsLog.i("DexLoaderX5CoreEntry", "initTesRuntimeEnvironment callerContext is " + this.b + " mHostContext is " + this.c + " mDexLoader is " + this.a + " mtbsInstallLocation is " + this.d + " mDexOptPath is " + this.e);
       localObject1 = this.a;
@@ -298,7 +298,7 @@ public class b
       str1 = this.d;
       str2 = this.e;
       str3 = QbSdk.getTbsCoreVersionString();
-      localObject1 = ((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject2, String.class }, new Object[] { localContext, localObject3, localObject4, str1, str2, "4.4.0.0006", Integer.valueOf(43805), str3 });
+      localObject1 = ((DexLoader)localObject1).invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTesRuntimeEnvironment", new Class[] { Context.class, Context.class, DexLoader.class, String.class, String.class, String.class, localObject2, String.class }, new Object[] { localContext, localObject3, localObject4, str1, str2, "4.4.0.0006", Integer.valueOf(43809), str3 });
       break;
       label621:
       if ((localObject2 instanceof Integer))
@@ -319,11 +319,11 @@ public class b
   
   public void initSettings(Map paramMap)
   {
-    AppMethodBeat.i(192801);
+    AppMethodBeat.i(188513);
     paramMap = this.a;
     Map localMap = QbSdk.mSettings;
     paramMap.invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "initTbsSettings", new Class[] { Map.class }, new Object[] { localMap });
-    AppMethodBeat.o(192801);
+    AppMethodBeat.o(188513);
   }
   
   public void setQua1(String paramString) {}
@@ -332,21 +332,21 @@ public class b
   
   public void setSdkVersionCode(int paramInt)
   {
-    AppMethodBeat.i(192803);
-    this.a.setStaticField("com.tencent.tbs.tbsshell.TBSShell", "VERSION", Integer.valueOf(43805));
-    AppMethodBeat.o(192803);
+    AppMethodBeat.i(188515);
+    this.a.setStaticField("com.tencent.tbs.tbsshell.TBSShell", "VERSION", Integer.valueOf(43809));
+    AppMethodBeat.o(188515);
   }
   
   public void setSdkVersionName(String paramString)
   {
-    AppMethodBeat.i(192802);
+    AppMethodBeat.i(188514);
     this.a.invokeStaticMethod("com.tencent.tbs.tbsshell.TBSShell", "setTesSdkVersionName", new Class[] { String.class }, new Object[] { "4.4.0.0006" });
-    AppMethodBeat.o(192802);
+    AppMethodBeat.o(188514);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.smtt.sdk.b.b
  * JD-Core Version:    0.7.0.1
  */

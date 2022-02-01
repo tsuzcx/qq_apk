@@ -1,10 +1,10 @@
 package com.tencent.mm.modelappbrand.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.io.BufferedOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,21 +13,21 @@ import java.io.OutputStream;
 final class b$b
   implements b.i
 {
-  public final OutputStream Db(String paramString)
+  public final OutputStream LM(String paramString)
   {
     AppMethodBeat.i(131342);
     try
     {
-      if ((!o.aZI(b.aEn())) && (!new k(b.aEn()).isDirectory()))
+      if ((!s.boN(b.aYa())) && (!new o(b.aYa()).isDirectory()))
       {
-        o.deleteFile(b.aEn());
-        o.aZI(b.aEn());
+        s.deleteFile(b.aYa());
+        s.boN(b.aYa());
       }
-      localObject = b.aEn() + paramString;
+      localObject = b.aYa() + paramString;
       str = (String)localObject + ".wlock";
-      o.deleteFile(str);
-      o.dd(str, true);
-      o.f(str, new byte[1], 1);
+      s.deleteFile(str);
+      s.dy(str, true);
+      s.f(str, new byte[1], 1);
     }
     catch (Throwable localThrowable)
     {
@@ -36,9 +36,9 @@ final class b$b
         try
         {
           final String str;
-          o.deleteFile((String)localObject);
-          o.dd((String)localObject, true);
-          Object localObject = new BufferedOutputStream(o.db((String)localObject, false))
+          s.deleteFile((String)localObject);
+          s.dy((String)localObject, true);
+          Object localObject = new BufferedOutputStream(s.dw((String)localObject, false))
           {
             public final void flush()
             {
@@ -46,7 +46,7 @@ final class b$b
               {
                 AppMethodBeat.i(131341);
                 super.flush();
-                o.deleteFile(str);
+                s.deleteFile(str);
                 AppMethodBeat.o(131341);
                 return;
               }
@@ -62,20 +62,20 @@ final class b$b
         }
         catch (IOException localIOException)
         {
-          ae.printErrStackTrace("MicroMsg.AppBrandSimpleImageLoader.DefaultDiskCache", localIOException, "openWrite fileName %s, parent exists[%b]", new Object[] { paramString, Boolean.valueOf(o.fB(b.aEn())) });
+          Log.printErrStackTrace("MicroMsg.AppBrandSimpleImageLoader.DefaultDiskCache", localIOException, "openWrite fileName %s, parent exists[%b]", new Object[] { paramString, Boolean.valueOf(s.YS(b.aYa())) });
           AppMethodBeat.o(131342);
         }
         localThrowable = localThrowable;
-        ae.e("MicroMsg.AppBrandSimpleImageLoader.DefaultDiskCache", "openWrite mkdirs e=%s", new Object[] { localThrowable });
+        Log.e("MicroMsg.AppBrandSimpleImageLoader.DefaultDiskCache", "openWrite mkdirs e=%s", new Object[] { localThrowable });
       }
     }
     return null;
   }
   
-  public final boolean Dc(String paramString)
+  public final boolean gC(String paramString)
   {
     AppMethodBeat.i(131344);
-    if ((!bu.isNullOrNil(paramString)) && (o.deleteFile(b.aEn() + paramString)))
+    if ((!Util.isNullOrNil(paramString)) && (s.deleteFile(b.aYa() + paramString)))
     {
       AppMethodBeat.o(131344);
       return true;
@@ -87,21 +87,21 @@ final class b$b
   public final InputStream openRead(String paramString)
   {
     AppMethodBeat.i(131343);
-    Object localObject = b.aEn() + paramString;
-    if (o.fB((String)localObject + ".wlock"))
+    Object localObject = b.aYa() + paramString;
+    if (s.YS((String)localObject + ".wlock"))
     {
       AppMethodBeat.o(131343);
       return null;
     }
     try
     {
-      localObject = o.openRead((String)localObject);
+      localObject = s.openRead((String)localObject);
       AppMethodBeat.o(131343);
       return localObject;
     }
     catch (IOException localIOException)
     {
-      ae.d("MicroMsg.AppBrandSimpleImageLoader.DefaultDiskCache", "openRead fileName %s, e %s", new Object[] { paramString, localIOException });
+      Log.d("MicroMsg.AppBrandSimpleImageLoader.DefaultDiskCache", "openRead fileName %s, e %s", new Object[] { paramString, localIOException });
       AppMethodBeat.o(131343);
     }
     return null;

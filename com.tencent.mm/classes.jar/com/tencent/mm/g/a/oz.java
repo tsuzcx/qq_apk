@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
-import java.util.List;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class oz
-  extends b
+  extends IEvent
 {
-  public a dDT;
+  public a dUZ;
   
   public oz()
   {
@@ -16,25 +15,21 @@ public final class oz
   
   private oz(byte paramByte)
   {
-    AppMethodBeat.i(125623);
-    this.dDT = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(149876);
+    this.dUZ = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125623);
+    AppMethodBeat.o(149876);
   }
   
   public static final class a
   {
-    public long dDU = 0L;
-    public boolean dDV = false;
-    public int dsO = 0;
-    public List list;
-    public int scene = 0;
+    public String dVa;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.a.oz
  * JD-Core Version:    0.7.0.1
  */

@@ -4,15 +4,15 @@ import java.util.Map;
 
 public abstract interface b
 {
-  public abstract void an(Map<String, String> paramMap);
+  public abstract void ao(Map<String, String> paramMap);
   
-  public abstract boolean dfu();
+  public abstract boolean dZo();
   
-  public abstract void dfv();
+  public abstract void dZp();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tinkerboots.sdk.a.a.b
  * JD-Core Version:    0.7.0.1
  */

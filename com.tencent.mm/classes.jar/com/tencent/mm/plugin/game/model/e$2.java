@@ -15,13 +15,13 @@ final class e$2
   public final void run()
   {
     AppMethodBeat.i(41359);
-    h.a(this.val$context, this.pur.field_packageName, this.pus, this.pur.field_appId, this.pur.field_openId, 0, this.puq, null);
+    h.a(this.val$context, this.qJW.field_packageName, this.qJX, this.qJW.field_appId, this.qJW.field_openId, 0, this.qJV, null);
     AppMethodBeat.o(41359);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.game.model.e.2
  * JD-Core Version:    0.7.0.1
  */

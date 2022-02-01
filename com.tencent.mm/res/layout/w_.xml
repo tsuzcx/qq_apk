@@ -1,3 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RadioButton android:textSize="@dimen/ia" android:gravity="center_vertical" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/jm" style="@style/nu"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:background="#fff0eff4" android:paddingTop="@dimen/hs" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingTop="@dimen/ir" android:paddingBottom="@dimen/ir" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/mz">
+        <EditText android:gravity="center|left" android:id="@id/b_u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="@string/j5u" android:singleLine="true" android:layout_weight="1.0" />
+        <Button android:textColor="@color/fu" android:id="@id/bsr" android:background="@drawable/kd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/k_" android:minWidth="@dimen/k1" android:minHeight="@dimen/i9" android:text="@string/j5t" style="@style/p3" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/k5">
+        <Button android:id="@id/b3i" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j5s" android:layout_weight="1.0" style="@style/p3" />
+        <Button android:id="@id/h_c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j61" android:layout_weight="1.0" style="@style/p3" />
+    </LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:weightSum="5.0">
+        <Button android:id="@id/er5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j5v" android:layout_weight="1.0" style="@style/a50" />
+        <Button android:id="@id/er8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j5z" android:layout_weight="1.0" style="@style/a50" />
+        <Button android:id="@id/er7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j5y" android:layout_weight="1.0" style="@style/a50" />
+        <Button android:id="@id/era" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j60" android:layout_weight="1.0" style="@style/a50" />
+        <Button android:id="@id/er6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j5x" android:layout_weight="1.0" style="@style/a50" />
+    </LinearLayout>
+    <com.tencent.mm.plugin.appbrand.widget.recyclerview.MRecyclerView android:id="@id/er_" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

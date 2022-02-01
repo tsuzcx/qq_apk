@@ -13,54 +13,54 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.recordvideo.background.e;
 import com.tencent.mm.plugin.recordvideo.ui.editor.PhotoEditText;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItemView;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BitmapItemView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "font", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "textItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItem;", "createBitmap", "Landroid/graphics/Bitmap;", "item", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "getBitmapEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "getEditorData", "getType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/EditItemType;", "initScale", "", "sx", "", "sy", "reshowText", "setText", "plugin-recordvideo_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItemView;", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BitmapItemView;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "TAG", "", "font", "getFont", "()Ljava/lang/String;", "setFont", "(Ljava/lang/String;)V", "textItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/TextItem;", "createBitmap", "Landroid/graphics/Bitmap;", "item", "createEditorData", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/BaseEditorData;", "getBitmapEditorItem", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/item/draw/BitmapEditorItem;", "getEditorData", "getType", "Lcom/tencent/mm/plugin/recordvideo/ui/editor/view/EditItemType;", "initScale", "", "sx", "", "sy", "reshowText", "setText", "plugin-recordvideo_release"})
 public final class r
   extends b
 {
+  private String CeI;
+  private q Cgi;
   private final String TAG;
-  private String ydG;
-  private q yfi;
   
   public r(Context paramContext)
   {
     super(paramContext);
     AppMethodBeat.i(76171);
     this.TAG = "MicroMsg.TextItemView";
-    setTextSize(getResources().getDimension(2131166195));
-    this.ydG = "";
+    setTextSize(getResources().getDimension(2131166236));
+    this.CeI = "";
     AppMethodBeat.o(76171);
   }
   
-  public final void aa(float paramFloat1, float paramFloat2)
+  public final void af(float paramFloat1, float paramFloat2)
   {
     AppMethodBeat.i(76167);
     if ((paramFloat1 != 0.0F) && (paramFloat2 != 0.0F)) {
-      getTouchTracker().gR.setScale(paramFloat1, paramFloat2);
+      getTouchTracker().gT.setScale(paramFloat1, paramFloat2);
     }
     AppMethodBeat.o(76167);
   }
   
   public final void b(q paramq)
   {
-    AppMethodBeat.i(207000);
+    AppMethodBeat.i(237841);
     p.h(paramq, "item");
     setText(paramq);
-    setViewMatrix(paramq.gR);
-    getTouchTracker().gR.set(paramq.gR);
-    setSourceDataType(d.ydI);
-    AppMethodBeat.o(207000);
+    setViewMatrix(paramq.gT);
+    getTouchTracker().gT.set(paramq.gT);
+    setSourceDataType(d.CeK);
+    AppMethodBeat.o(237841);
   }
   
   public final Bitmap c(q paramq)
   {
-    AppMethodBeat.i(207001);
+    AppMethodBeat.i(237842);
     p.h(paramq, "item");
-    setSourceDataType(d.ydI);
+    setSourceDataType(d.CeK);
     Object localObject = getContext();
     p.g(localObject, "context");
     localObject = new PhotoEditText((Context)localObject);
@@ -68,7 +68,7 @@ public final class r
     int m = com.tencent.mm.cb.a.fromDPToPix(getContext(), 8);
     ((PhotoEditText)localObject).setPadding(k, m, k, m);
     ((PhotoEditText)localObject).setTextColor(paramq.textColor);
-    ((PhotoEditText)localObject).setTextBackground(paramq.yfg);
+    ((PhotoEditText)localObject).setTextBackground(paramq.Cgg);
     ((PhotoEditText)localObject).setTextSize(0, getTextSize());
     ((PhotoEditText)localObject).setText(paramq.text);
     ((PhotoEditText)localObject).setSingleLine(false);
@@ -76,21 +76,21 @@ public final class r
     label163:
     label254:
     int j;
-    if (((CharSequence)paramq.ydG).length() > 0)
+    if (((CharSequence)paramq.CeI).length() > 0)
     {
       i = 1;
       if (i == 0) {
         break label422;
       }
-      if (!o.fB(paramq.ydG)) {
+      if (!s.YS(paramq.CeI)) {
         break label411;
       }
-      ((PhotoEditText)localObject).setTypeface(Typeface.createFromFile(paramq.ydG));
-      if ((paramq.yfg == 0) && (paramq.textColor != -16777216)) {
-        com.tencent.mm.ac.c.e((TextView)localObject);
+      ((PhotoEditText)localObject).setTypeface(Typeface.createFromFile(paramq.CeI));
+      if ((paramq.Cgg == 0) && (paramq.textColor != -16777216)) {
+        com.tencent.mm.ac.d.f((TextView)localObject);
       }
-      paramq = e.xKl;
-      i = e.dIe().width();
+      paramq = e.BKp;
+      i = e.eIR().width();
       if (i > 0) {
         ((PhotoEditText)localObject).setMaxWidth(i);
       }
@@ -98,28 +98,28 @@ public final class r
       if (((PhotoEditText)localObject).getMeasuredWidth() > 0)
       {
         i = ((PhotoEditText)localObject).getMeasuredWidth();
-        paramq = e.xKl;
-        if (i <= e.dIe().width()) {
+        paramq = e.BKp;
+        if (i <= e.eIR().width()) {
           break label436;
         }
       }
-      paramq = e.xKl;
-      i = e.dIe().width();
+      paramq = e.BKp;
+      i = e.eIR().width();
       if (((PhotoEditText)localObject).getMeasuredHeight() > 0)
       {
         j = ((PhotoEditText)localObject).getMeasuredHeight();
-        paramq = e.xKl;
-        if (j <= e.dIe().height()) {
+        paramq = e.BKp;
+        if (j <= e.eIR().height()) {
           break label445;
         }
       }
-      paramq = e.xKl;
-      j = e.dIe().height();
+      paramq = e.BKp;
+      j = e.eIR().height();
       label293:
       if ((i > 0) && (j > 0)) {
         break label454;
       }
-      ae.w(this.TAG, "create bitmap size error: " + i + ", " + j);
+      Log.w(this.TAG, "create bitmap size error: " + i + ", " + j);
     }
     label411:
     label422:
@@ -135,7 +135,7 @@ public final class r
       ((PhotoEditText)localObject).getLayout().draw(localCanvas);
       localCanvas.restore();
       p.g(paramq, "bitmap");
-      AppMethodBeat.o(207001);
+      AppMethodBeat.o(237842);
       return paramq;
       i = 0;
       break;
@@ -150,19 +150,19 @@ public final class r
     }
   }
   
-  public final a clM()
+  public final a cJO()
   {
-    AppMethodBeat.i(207002);
-    a locala = super.clM();
-    q localq = this.yfi;
+    AppMethodBeat.i(237843);
+    a locala = super.cJO();
+    q localq = this.Cgi;
     if (localq != null)
     {
       Object localObject;
       if (locala != null)
       {
-        localObject = localq.ydt;
+        localObject = localq.Cev;
         p.h(localObject, "range");
-        locala.ydt.ae(((com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d)localObject).yfy.getTime(), ((com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d)localObject).yfz.getTime());
+        locala.Cev.ai(((com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d)localObject).Cgx.getTime(), ((com.tencent.mm.plugin.recordvideo.ui.editor.item.b.d)localObject).Cgy.getTime());
       }
       if (locala != null) {
         locala.objectId = localq.objectId;
@@ -170,64 +170,64 @@ public final class r
       if ((locala instanceof q))
       {
         localq = (q)locala;
-        localObject = this.ydG;
+        localObject = this.CeI;
         p.h(localObject, "<set-?>");
-        localq.ydG = ((String)localObject);
+        localq.CeI = ((String)localObject);
       }
     }
-    AppMethodBeat.o(207002);
+    AppMethodBeat.o(237843);
     return locala;
   }
   
   public final a getEditorData()
   {
-    return (a)this.yfi;
+    return (a)this.Cgi;
   }
   
   public final String getFont()
   {
-    return this.ydG;
+    return this.CeI;
   }
   
   public final com.tencent.mm.plugin.recordvideo.ui.editor.view.b getType()
   {
-    return com.tencent.mm.plugin.recordvideo.ui.editor.view.b.ygB;
+    return com.tencent.mm.plugin.recordvideo.ui.editor.view.b.Chy;
   }
   
   public final void setFont(String paramString)
   {
-    AppMethodBeat.i(206998);
+    AppMethodBeat.i(237839);
     p.h(paramString, "<set-?>");
-    this.ydG = paramString;
-    AppMethodBeat.o(206998);
+    this.CeI = paramString;
+    AppMethodBeat.o(237839);
   }
   
   public final void setText(q paramq)
   {
-    AppMethodBeat.i(206999);
+    AppMethodBeat.i(237840);
     p.h(paramq, "item");
-    this.yfi = paramq;
+    this.Cgi = paramq;
     Bitmap localBitmap = c(paramq);
     setText(paramq.text);
-    setSourceDataType(d.ydI);
+    setSourceDataType(d.CeK);
     setColor(paramq.textColor);
-    setTextBg(paramq.yfg);
-    this.ydG = paramq.ydG;
+    setTextBg(paramq.Cgg);
+    this.CeI = paramq.CeI;
     if (getBitmap() == null) {
-      getTouchTracker().gR.postTranslate(-getWidth() / 2.0F, -((getDisplayRect().top + getDisplayRect().bottom) / 2 - (getValidRect().top + getValidRect().bottom) / 2.0F + getHeight() / 2.0F));
+      getTouchTracker().gT.postTranslate(-getWidth() / 2.0F, -((getDisplayRect().top + getDisplayRect().bottom) / 2 - (getValidRect().top + getValidRect().bottom) / 2.0F + getHeight() / 2.0F));
     }
     paramq = getBitmap();
     if (paramq != null) {
-      getTouchTracker().gR.preTranslate(paramq.getWidth() / 2.0F, paramq.getHeight() / 2.0F);
+      getTouchTracker().gT.preTranslate(paramq.getWidth() / 2.0F, paramq.getHeight() / 2.0F);
     }
     setBitmap(localBitmap);
     postInvalidate();
-    AppMethodBeat.o(206999);
+    AppMethodBeat.o(237840);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.recordvideo.ui.editor.item.r
  * JD-Core Version:    0.7.0.1
  */

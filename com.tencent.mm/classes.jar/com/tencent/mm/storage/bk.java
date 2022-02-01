@@ -1,140 +1,53 @@
 package com.tencent.mm.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i;
+import com.tencent.mm.plugin.messenger.foundation.a.a.i.b;
+import junit.framework.Assert;
 
 public final class bk
+  extends e
 {
-  public static final bk JgA;
-  public static final bk JgB;
-  public static final bk JgC;
-  public static final bk JgD;
-  public static final bk JgE;
-  public static final bk JgF;
-  public static final bk JgG;
-  public static final bk Jgu;
-  public static final bk Jgv;
-  public static final bk Jgw;
-  public static final bk Jgx;
-  public static final bk Jgy;
-  public static final bk Jgz;
-  public int heF = 0;
-  public String tag = "";
+  public static final String[] SQL_CREATE = { "CREATE TABLE IF NOT EXISTS bottlemessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  bmessageSvrIdIndex ON bottlemessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  bmessageTalkerIndex ON bottlemessage ( talker )", "CREATE INDEX IF NOT EXISTS  bmessageTalerStatusIndex ON bottlemessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  bmessageCreateTimeIndex ON bottlemessage ( createTime )", "CREATE INDEX IF NOT EXISTS  bmessageCreateTaklerTimeIndex ON bottlemessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  bmessageSendCreateTimeIndex ON bottlemessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  bottlemessageTalkerTypeIndex ON bottlemessage ( talker,type )", "CREATE TABLE IF NOT EXISTS qmessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  qmessageSvrIdIndex ON qmessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerIndex ON qmessage ( talker )", "CREATE INDEX IF NOT EXISTS  qmessageTalerStatusIndex ON qmessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  qmessageCreateTimeIndex ON qmessage ( createTime )", "CREATE INDEX IF NOT EXISTS  qmessageCreateTaklerTimeIndex ON qmessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  qmessageSendCreateTimeIndex ON qmessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerSvrIdIndex ON qmessage ( talker,msgSvrId )", "CREATE INDEX IF NOT EXISTS  qmessageTalkerTypeIndex ON qmessage ( talker,type )", "CREATE TABLE IF NOT EXISTS tmessage ( msgId INTEGER PRIMARY KEY, msgSvrId INTEGER , type INT, status INT, isSend INT, isShowTimer INTEGER, createTime INTEGER, talker TEXT, content TEXT, imgPath TEXT, reserved TEXT, lvbuffer BLOB, transContent TEXT, transBrandWording TEXT ) ", "CREATE INDEX IF NOT EXISTS  tmessageSvrIdIndex ON tmessage ( msgSvrId )", "CREATE INDEX IF NOT EXISTS  tmessageTalkerIndex ON tmessage ( talker )", "CREATE INDEX IF NOT EXISTS  tmessageTalerStatusIndex ON tmessage ( talker,status )", "CREATE INDEX IF NOT EXISTS  tmessageCreateTimeIndex ON tmessage ( createTime )", "CREATE INDEX IF NOT EXISTS  tmessageCreateTaklerTimeIndex ON tmessage ( talker,createTime )", "CREATE INDEX IF NOT EXISTS  tmessageSendCreateTimeIndex ON tmessage ( status,isSend,createTime )", "CREATE INDEX IF NOT EXISTS  tmessageTalkerTypeIndex ON tmessage ( talker,type )" };
   
-  static
+  public bk(i parami)
   {
-    AppMethodBeat.i(133298);
-    Jgu = new bk("timeline");
-    Jgv = new bk("album_friend");
-    Jgw = new bk("album_self");
-    Jgx = new bk("album_stranger");
-    Jgy = new bk("profile_friend");
-    Jgz = new bk("profile_stranger");
-    JgA = new bk("comment");
-    JgB = new bk("comment_detail");
-    JgC = new bk("other");
-    JgD = new bk("snssight");
-    JgE = new bk("fts");
-    JgF = new bk("storysight");
-    JgG = new bk("storyalbum");
-    AppMethodBeat.o(133298);
+    super(parami);
+    AppMethodBeat.i(32878);
+    e(getDB(), "bottlemessage");
+    e(getDB(), "qmessage");
+    e(getDB(), "tmessage");
+    a(new i.b(8, "bottlemessage", i.b.a(2000001L, 2500000L, 96000001L, 99000000L)));
+    a(new i.b(2, "qmessage", i.b.a(1000001L, 1500000L, 90000001L, 93000000L)));
+    a(new i.b(4, "tmessage", i.b.a(1500001L, 2000000L, 93000001L, 96000000L)));
+    AppMethodBeat.o(32878);
   }
   
-  public bk(String paramString)
+  public final String avu(String paramString)
   {
-    this.tag = paramString;
-  }
-  
-  public static bk a(bk parambk, int paramInt)
-  {
-    AppMethodBeat.i(133295);
-    parambk = new bk(parambk.tag);
-    parambk.heF = paramInt;
-    AppMethodBeat.o(133295);
-    return parambk;
-  }
-  
-  public static bk fvn()
-  {
-    AppMethodBeat.i(133288);
-    bk localbk = new bk("timeline");
-    AppMethodBeat.o(133288);
-    return localbk;
-  }
-  
-  public static bk fvo()
-  {
-    AppMethodBeat.i(133289);
-    bk localbk = new bk("album_friend");
-    AppMethodBeat.o(133289);
-    return localbk;
-  }
-  
-  public static bk fvp()
-  {
-    AppMethodBeat.i(133290);
-    bk localbk = new bk("album_self");
-    AppMethodBeat.o(133290);
-    return localbk;
-  }
-  
-  public static bk fvq()
-  {
-    AppMethodBeat.i(133291);
-    bk localbk = new bk("album_stranger");
-    AppMethodBeat.o(133291);
-    return localbk;
-  }
-  
-  public static bk fvr()
-  {
-    AppMethodBeat.i(133292);
-    bk localbk = new bk("comment_detail");
-    AppMethodBeat.o(133292);
-    return localbk;
-  }
-  
-  public static bk fvs()
-  {
-    AppMethodBeat.i(133293);
-    bk localbk = new bk("snssight");
-    AppMethodBeat.o(133293);
-    return localbk;
-  }
-  
-  public static bk fvt()
-  {
-    AppMethodBeat.i(133294);
-    bk localbk = new bk("storysight");
-    AppMethodBeat.o(133294);
-    return localbk;
-  }
-  
-  public final bk abC(int paramInt)
-  {
-    this.heF = paramInt;
-    return this;
-  }
-  
-  public final boolean equals(Object paramObject)
-  {
-    AppMethodBeat.i(133296);
-    if ((paramObject instanceof bk))
+    AppMethodBeat.i(32879);
+    if ((paramString != null) && (paramString.length() > 0)) {}
+    for (boolean bool = true;; bool = false)
     {
-      bool = ((bk)paramObject).tag.equals(this.tag);
-      AppMethodBeat.o(133296);
-      return bool;
+      Assert.assertTrue(bool);
+      if (!paramString.endsWith("@t.qq.com")) {
+        break;
+      }
+      AppMethodBeat.o(32879);
+      return "tmessage";
     }
-    boolean bool = super.equals(paramObject);
-    AppMethodBeat.o(133296);
-    return bool;
-  }
-  
-  public final String toString()
-  {
-    AppMethodBeat.i(133297);
-    String str = this.tag + "@" + this.heF;
-    AppMethodBeat.o(133297);
-    return str;
+    if (paramString.endsWith("@qqim"))
+    {
+      AppMethodBeat.o(32879);
+      return "qmessage";
+    }
+    if (as.IG(paramString))
+    {
+      AppMethodBeat.o(32879);
+      return "bottlemessage";
+    }
+    AppMethodBeat.o(32879);
+    return null;
   }
 }
 

@@ -11,25 +11,25 @@ public abstract class b
   implements e
 {
   protected Context context;
-  protected int lox;
-  public e.b tGD;
+  protected int mve;
+  public e.b wXC;
   
   public b(Context paramContext, e.b paramb, int paramInt)
   {
     this.context = paramContext;
-    this.tGD = paramb;
-    this.lox = paramInt;
+    this.wXC = paramb;
+    this.mve = paramInt;
   }
   
-  protected static boolean dX(List<? extends Object> paramList)
+  protected static boolean eP(List<? extends Object> paramList)
   {
     return (paramList != null) && (paramList.size() > 0);
   }
   
-  protected static <T> List<T> dY(List<T> paramList)
+  protected static <T> List<T> eQ(List<T> paramList)
   {
     Object localObject = paramList;
-    if (dX(paramList))
+    if (eP(paramList))
     {
       localObject = paramList;
       if (paramList.size() > 3) {
@@ -39,24 +39,24 @@ public abstract class b
     return localObject;
   }
   
+  public List<c> GE(long paramLong)
+  {
+    return new ArrayList();
+  }
+  
   public boolean a(View paramView, a parama, boolean paramBoolean)
   {
     return false;
   }
   
-  public int cVw()
+  public int dOF()
   {
     return 0;
-  }
-  
-  public List<c> xU(long paramLong)
-  {
-    return new ArrayList();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.a.d.b
  * JD-Core Version:    0.7.0.1
  */

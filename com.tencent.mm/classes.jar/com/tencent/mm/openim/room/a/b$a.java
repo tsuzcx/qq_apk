@@ -1,14 +1,14 @@
 package com.tencent.mm.openim.room.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.cfm;
+import com.tencent.mm.protocal.protobuf.cvt;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class b$a
 {
-  public static LinkedList<cfm> aE(List<String> paramList)
+  public static LinkedList<cvt> aM(List<String> paramList)
   {
     AppMethodBeat.i(151319);
     LinkedList localLinkedList = new LinkedList();
@@ -16,9 +16,9 @@ public final class b$a
     while (paramList.hasNext())
     {
       String str = (String)paramList.next();
-      cfm localcfm = new cfm();
-      localcfm.userName = str;
-      localLinkedList.add(localcfm);
+      cvt localcvt = new cvt();
+      localcvt.userName = str;
+      localLinkedList.add(localcvt);
     }
     AppMethodBeat.o(151319);
     return localLinkedList;

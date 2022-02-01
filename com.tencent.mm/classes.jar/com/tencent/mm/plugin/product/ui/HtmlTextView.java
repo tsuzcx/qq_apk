@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.product.ui;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.Html.ImageGetter;
 import android.text.Html.TagHandler;
@@ -13,43 +12,22 @@ import android.widget.TextView;
 import android.widget.TextView.BufferType;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.ar.a;
-import java.net.URL;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread.IWaitWorkThread;
 import org.xml.sax.XMLReader;
 
 public class HtmlTextView
   extends TextView
 {
-  Html.ImageGetter xcG;
-  Html.TagHandler xcH;
+  Html.ImageGetter Bai;
+  Html.TagHandler Baj;
   
   public HtmlTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(66922);
-    this.xcG = new Html.ImageGetter()
-    {
-      public final Drawable getDrawable(String paramAnonymousString)
-      {
-        AppMethodBeat.i(66918);
-        try
-        {
-          paramAnonymousString = Drawable.createFromStream(new URL(paramAnonymousString).openStream(), "");
-          if (paramAnonymousString != null) {
-            paramAnonymousString.setBounds(0, 0, paramAnonymousString.getIntrinsicWidth(), paramAnonymousString.getIntrinsicHeight());
-          }
-          AppMethodBeat.o(66918);
-          return paramAnonymousString;
-        }
-        catch (Exception paramAnonymousString)
-        {
-          AppMethodBeat.o(66918);
-        }
-        return null;
-      }
-    };
-    this.xcH = new Html.TagHandler()
+    this.Bai = new HtmlTextView.2(this);
+    this.Baj = new Html.TagHandler()
     {
       private static Object a(Editable paramAnonymousEditable, Class paramAnonymousClass)
       {
@@ -104,28 +82,8 @@ public class HtmlTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(66921);
-    this.xcG = new Html.ImageGetter()
-    {
-      public final Drawable getDrawable(String paramAnonymousString)
-      {
-        AppMethodBeat.i(66918);
-        try
-        {
-          paramAnonymousString = Drawable.createFromStream(new URL(paramAnonymousString).openStream(), "");
-          if (paramAnonymousString != null) {
-            paramAnonymousString.setBounds(0, 0, paramAnonymousString.getIntrinsicWidth(), paramAnonymousString.getIntrinsicHeight());
-          }
-          AppMethodBeat.o(66918);
-          return paramAnonymousString;
-        }
-        catch (Exception paramAnonymousString)
-        {
-          AppMethodBeat.o(66918);
-        }
-        return null;
-      }
-    };
-    this.xcH = new Html.TagHandler()
+    this.Bai = new HtmlTextView.2(this);
+    this.Baj = new Html.TagHandler()
     {
       private static Object a(Editable paramAnonymousEditable, Class paramAnonymousClass)
       {
@@ -179,22 +137,22 @@ public class HtmlTextView
   public void setText(final String paramString)
   {
     AppMethodBeat.i(66923);
-    g.ajU().a(new ar.a()
+    g.aAk().postAtFrontOfWorker(new MMHandlerThread.IWaitWorkThread()
     {
-      private volatile Spanned xcI;
+      private volatile Spanned Bak;
       
-      public final boolean aEC()
+      public final boolean doInBackground()
       {
         AppMethodBeat.i(66915);
-        this.xcI = HtmlTextView.a(HtmlTextView.this, paramString);
+        this.Bak = HtmlTextView.a(HtmlTextView.this, paramString);
         AppMethodBeat.o(66915);
         return true;
       }
       
-      public final boolean aED()
+      public final boolean onPostExecute()
       {
         AppMethodBeat.i(66916);
-        HtmlTextView.a(HtmlTextView.this, this.xcI, TextView.BufferType.SPANNABLE);
+        HtmlTextView.a(HtmlTextView.this, this.Bak, TextView.BufferType.SPANNABLE);
         HtmlTextView.this.setMovementMethod(LinkMovementMethod.getInstance());
         AppMethodBeat.o(66916);
         return true;
@@ -213,7 +171,7 @@ public class HtmlTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.product.ui.HtmlTextView
  * JD-Core Version:    0.7.0.1
  */

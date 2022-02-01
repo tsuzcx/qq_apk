@@ -1,23 +1,32 @@
 package com.tencent.mm.plugin.appbrand.ui;
 
-import com.tencent.mm.plugin.appbrand.ad.f;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.ui.ao;
+import kotlin.l;
 
-public abstract interface x
-  extends w
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/ui/AppBrandUITheme;", "", "()V", "THEME", "", "plugin-appbrand-integration_release"})
+public final class x
 {
-  public abstract boolean aWP();
+  public static final x nXS;
   
-  public abstract void aYF();
+  static
+  {
+    AppMethodBeat.i(177768);
+    nXS = new x();
+    AppMethodBeat.o(177768);
+  }
   
-  public abstract void aYI();
-  
-  public abstract void bzO();
-  
-  public abstract w getInternalLoadingSplash();
-  
-  public abstract f getRuntimeAdViewContainer();
-  
-  public abstract void l(boolean paramBoolean, String paramString);
+  public static final int bXG()
+  {
+    AppMethodBeat.i(177767);
+    if (ao.isDarkMode())
+    {
+      AppMethodBeat.o(177767);
+      return 2131820567;
+    }
+    AppMethodBeat.o(177767);
+    return 2131820566;
+  }
 }
 
 

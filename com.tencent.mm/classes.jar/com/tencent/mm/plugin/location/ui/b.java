@@ -5,8 +5,8 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.base.MMGridPaper;
 import com.tencent.mm.ui.base.i;
 import java.util.ArrayList;
@@ -15,111 +15,111 @@ import java.util.Iterator;
 public final class b
 {
   private Context mContext;
-  private int vnA;
-  private i vnu;
-  private MMGridPaper vnv;
-  private a vnw;
-  private ViewGroup vnx;
-  private RelativeLayout vny;
-  private ArrayList<String> vnz;
+  private i yHl;
+  private MMGridPaper yHm;
+  private a yHn;
+  private ViewGroup yHo;
+  private RelativeLayout yHp;
+  private ArrayList<String> yHq;
+  private int yHr;
   
   private b(Context paramContext)
   {
     AppMethodBeat.i(55799);
-    this.vnu = null;
-    this.vnv = null;
-    this.vnw = null;
-    this.vnx = null;
-    this.vny = null;
+    this.yHl = null;
+    this.yHm = null;
+    this.yHn = null;
+    this.yHo = null;
+    this.yHp = null;
     this.mContext = null;
-    this.vnz = null;
-    this.vnA = 0;
+    this.yHq = null;
+    this.yHr = 0;
     this.mContext = paramContext;
-    this.vnu = new i(this.mContext, 2131821760);
-    this.vnx = ((ViewGroup)((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131493127, null));
-    this.vnv = ((MMGridPaper)this.vnx.findViewById(2131299121));
-    this.vnv.fCI();
-    this.vnv.setDialogMode(true);
-    this.vnv.fCH();
-    this.vnv.setMaxRow(3);
-    this.vnv.setMaxCol(3);
-    this.vnv.setHeaderView(null);
-    this.vnv.fCI();
-    this.vnv.setItemWidthInDp(70);
-    this.vnv.setItemHeightInDp(70);
-    this.vnu.setCanceledOnTouchOutside(true);
-    this.vnu.setContentView(this.vnx);
-    this.vnw = new a();
-    this.vnv.setGridPaperAdapter(this.vnw);
+    this.yHl = new i(this.mContext, 2131821814);
+    this.yHo = ((ViewGroup)((LayoutInflater)this.mContext.getSystemService("layout_inflater")).inflate(2131493170, null));
+    this.yHm = ((MMGridPaper)this.yHo.findViewById(2131299645));
+    this.yHm.gKH();
+    this.yHm.setDialogMode(true);
+    this.yHm.gKG();
+    this.yHm.setMaxRow(3);
+    this.yHm.setMaxCol(3);
+    this.yHm.setHeaderView(null);
+    this.yHm.gKH();
+    this.yHm.setItemWidthInDp(70);
+    this.yHm.setItemHeightInDp(70);
+    this.yHl.setCanceledOnTouchOutside(true);
+    this.yHl.setContentView(this.yHo);
+    this.yHn = new a();
+    this.yHm.setGridPaperAdapter(this.yHn);
     AppMethodBeat.o(55799);
   }
   
   public static void d(Context paramContext, ArrayList<String> paramArrayList)
   {
     AppMethodBeat.i(55800);
-    ae.d("MicroMsg.AvatarsDialog", "showDialog, username.size = %d", new Object[] { Integer.valueOf(paramArrayList.size()) });
+    Log.d("MicroMsg.AvatarsDialog", "showDialog, username.size = %d", new Object[] { Integer.valueOf(paramArrayList.size()) });
     paramContext = new b(paramContext);
-    paramContext.vnz = new ArrayList();
+    paramContext.yHq = new ArrayList();
     paramArrayList = paramArrayList.iterator();
     String str;
     while (paramArrayList.hasNext())
     {
       str = (String)paramArrayList.next();
-      paramContext.vnz.add(str);
+      paramContext.yHq.add(str);
     }
     int i;
-    if (paramContext.vnz.size() < 3)
+    if (paramContext.yHq.size() < 3)
     {
-      paramContext.vnv.setMaxCol(paramContext.vnz.size());
-      paramArrayList = paramContext.vnv.getLayoutParams();
-      paramContext.vnA = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 70);
+      paramContext.yHm.setMaxCol(paramContext.yHq.size());
+      paramArrayList = paramContext.yHm.getLayoutParams();
+      paramContext.yHr = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 70);
       i = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 8);
-      if (paramContext.vnz.size() <= 0) {
+      if (paramContext.yHq.size() <= 0) {
         break label443;
       }
-      if (paramContext.vnz.size() >= 3) {
+      if (paramContext.yHq.size() >= 3) {
         break label376;
       }
-      int j = paramContext.vnA;
-      int k = paramContext.vnz.size();
-      i = i * (paramContext.vnz.size() - 1) + j * k;
+      int j = paramContext.yHr;
+      int k = paramContext.yHq.size();
+      i = i * (paramContext.yHq.size() - 1) + j * k;
     }
     for (;;)
     {
       label192:
-      str = BackwardSupportUtil.b.iC(paramContext.mContext);
-      ae.d("MicroMsg.AvatarsDialog", "calculateGridWidth, result = %d, mUsername.size = %d, avatarSize = %d, densityType = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramContext.vnz.size()), Integer.valueOf(paramContext.vnA), str });
+      str = BackwardSupportUtil.BitmapFactory.getDisplayDensityType(paramContext.mContext);
+      Log.d("MicroMsg.AvatarsDialog", "calculateGridWidth, result = %d, mUsername.size = %d, avatarSize = %d, densityType = %s", new Object[] { Integer.valueOf(i), Integer.valueOf(paramContext.yHq.size()), Integer.valueOf(paramContext.yHr), str });
       paramArrayList.width = i;
-      paramContext.vnA = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 70);
+      paramContext.yHr = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 70);
       i = com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 15);
-      if (paramContext.vnz.size() > 0) {
-        if (paramContext.vnz.size() <= 3)
+      if (paramContext.yHq.size() > 0) {
+        if (paramContext.yHq.size() <= 3)
         {
-          i += paramContext.vnA;
+          i += paramContext.yHr;
           label303:
-          ae.d("MicroMsg.AvatarsDialog", "calculateGridHeight, result = %d", new Object[] { Integer.valueOf(i) });
+          Log.d("MicroMsg.AvatarsDialog", "calculateGridHeight, result = %d", new Object[] { Integer.valueOf(i) });
         }
       }
       for (;;)
       {
         paramArrayList.height = i;
-        paramContext.vnv.setLayoutParams(paramArrayList);
-        paramContext.vnv.requestLayout();
-        paramContext.vnw.setData(paramContext.vnz);
-        paramContext.vnu.show();
+        paramContext.yHm.setLayoutParams(paramArrayList);
+        paramContext.yHm.requestLayout();
+        paramContext.yHn.setData(paramContext.yHq);
+        paramContext.yHl.show();
         AppMethodBeat.o(55800);
         return;
-        paramContext.vnv.setMaxCol(3);
+        paramContext.yHm.setMaxCol(3);
         break;
         label376:
-        i = i * 2 + paramContext.vnA * 3;
+        i = i * 2 + paramContext.yHr * 3;
         break label192;
-        if (paramContext.vnz.size() <= 6)
+        if (paramContext.yHq.size() <= 6)
         {
-          i += paramContext.vnA * 2;
+          i += paramContext.yHr * 2;
           break label303;
         }
-        i = i * 2 + paramContext.vnA * 3 + com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 10);
+        i = i * 2 + paramContext.yHr * 3 + com.tencent.mm.cb.a.fromDPToPix(paramContext.mContext, 10);
         break label303;
         i = 0;
       }
@@ -130,7 +130,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.b
  * JD-Core Version:    0.7.0.1
  */

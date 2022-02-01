@@ -16,10 +16,10 @@ public final class g$2
   {
     AppMethodBeat.i(71652);
     b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/plugin/wallet_core/utils/WcPayViewEngineRender$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    if (this.uGP.isShowing()) {
-      this.uGP.dismiss();
+    localb.bm(paramView);
+    a.b("com/tencent/mm/plugin/wallet_core/utils/WcPayViewEngineRender$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+    if (this.xZb.isShowing()) {
+      this.xZb.dismiss();
     }
     a.a(this, "com/tencent/mm/plugin/wallet_core/utils/WcPayViewEngineRender$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
     AppMethodBeat.o(71652);

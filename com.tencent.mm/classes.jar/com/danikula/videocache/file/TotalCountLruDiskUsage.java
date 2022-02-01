@@ -10,15 +10,15 @@ public class TotalCountLruDiskUsage
   
   public TotalCountLruDiskUsage(int paramInt)
   {
-    AppMethodBeat.i(195187);
+    AppMethodBeat.i(223214);
     if (paramInt <= 0)
     {
       IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Max count must be positive number!");
-      AppMethodBeat.o(195187);
+      AppMethodBeat.o(223214);
       throw localIllegalArgumentException;
     }
     this.maxCount = paramInt;
-    AppMethodBeat.o(195187);
+    AppMethodBeat.o(223214);
   }
   
   protected boolean accept(File paramFile, long paramLong, int paramInt)
@@ -28,7 +28,7 @@ public class TotalCountLruDiskUsage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.danikula.videocache.file.TotalCountLruDiskUsage
  * JD-Core Version:    0.7.0.1
  */

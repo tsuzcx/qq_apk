@@ -520,7 +520,7 @@ public class b
     //   13: aload_0
     //   14: getfield 64	com/tencent/liteav/muxer/b:g	Ljava/lang/String;
     //   17: invokestatic 292	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   20: ifne +59 -> 79
+    //   20: ifne +68 -> 88
     //   23: new 294	java/io/File
     //   26: dup
     //   27: aload_0
@@ -551,27 +551,32 @@ public class b
     //   76: monitorexit
     //   77: return
     //   78: astore_1
-    //   79: ldc_w 287
-    //   82: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
-    //   85: goto -10 -> 75
-    //   88: astore_1
-    //   89: aload_0
-    //   90: monitorexit
-    //   91: aload_1
-    //   92: athrow
+    //   79: ldc 149
+    //   81: ldc_w 313
+    //   84: aload_1
+    //   85: invokestatic 316	com/tencent/liteav/basic/log/TXCLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   88: ldc_w 287
+    //   91: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   94: goto -19 -> 75
+    //   97: astore_1
+    //   98: aload_0
+    //   99: monitorexit
+    //   100: aload_1
+    //   101: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	93	0	this	b
-    //   0	93	1	paramString	String
+    //   0	102	0	this	b
+    //   0	102	1	paramString	String
     //   39	9	2	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
     //   64	69	78	java/io/IOException
-    //   2	52	88	finally
-    //   52	64	88	finally
-    //   64	69	88	finally
-    //   69	75	88	finally
-    //   79	85	88	finally
+    //   2	52	97	finally
+    //   52	64	97	finally
+    //   64	69	97	finally
+    //   69	75	97	finally
+    //   79	88	97	finally
+    //   88	94	97	finally
   }
   
   public void a(ByteBuffer paramByteBuffer, MediaCodec.BufferInfo paramBufferInfo)
@@ -643,16 +648,16 @@ public class b
     //   17: ldc 149
     //   19: new 164	java/lang/StringBuilder
     //   22: dup
-    //   23: ldc_w 331
+    //   23: ldc_w 336
     //   26: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   29: aload_0
     //   30: getfield 74	com/tencent/liteav/muxer/b:l	Z
-    //   33: invokevirtual 334	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   36: ldc_w 336
+    //   33: invokevirtual 339	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   36: ldc_w 341
     //   39: invokevirtual 178	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   42: aload_0
     //   43: getfield 76	com/tencent/liteav/muxer/b:m	Z
-    //   46: invokevirtual 334	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   46: invokevirtual 339	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
     //   49: invokevirtual 182	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   52: invokestatic 261	com/tencent/liteav/basic/log/TXCLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   55: aload_0
@@ -663,10 +668,10 @@ public class b
     //   66: ifeq +10 -> 76
     //   69: aload_0
     //   70: getfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
-    //   73: invokevirtual 339	android/media/MediaMuxer:stop	()V
+    //   73: invokevirtual 344	android/media/MediaMuxer:stop	()V
     //   76: aload_0
     //   77: getfield 193	com/tencent/liteav/muxer/b:f	Landroid/media/MediaMuxer;
-    //   80: invokevirtual 342	android/media/MediaMuxer:release	()V
+    //   80: invokevirtual 347	android/media/MediaMuxer:release	()V
     //   83: aload_0
     //   84: iconst_0
     //   85: putfield 74	com/tencent/liteav/muxer/b:l	Z
@@ -702,7 +707,7 @@ public class b
     //   145: ireturn
     //   146: astore_2
     //   147: ldc 149
-    //   149: ldc_w 344
+    //   149: ldc_w 349
     //   152: aload_2
     //   153: invokestatic 207	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
     //   156: invokevirtual 211	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
@@ -835,7 +840,7 @@ public class b
     //   24: ldc 149
     //   26: new 164	java/lang/StringBuilder
     //   29: dup
-    //   30: ldc_w 348
+    //   30: ldc_w 353
     //   33: invokespecial 169	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
     //   36: aload_2
     //   37: getfield 131	android/media/MediaCodec$BufferInfo:presentationTimeUs	J
@@ -846,7 +851,7 @@ public class b
     //   50: iconst_0
     //   51: aload_1
     //   52: aload_2
-    //   53: invokespecial 313	com/tencent/liteav/muxer/b:a	(ZLjava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
+    //   53: invokespecial 318	com/tencent/liteav/muxer/b:a	(ZLjava/nio/ByteBuffer;Landroid/media/MediaCodec$BufferInfo;)V
     //   56: sipush 14939
     //   59: invokestatic 93	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   62: aload_0
@@ -959,7 +964,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.muxer.b
  * JD-Core Version:    0.7.0.1
  */

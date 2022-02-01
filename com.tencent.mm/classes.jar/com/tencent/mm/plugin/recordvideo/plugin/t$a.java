@@ -1,18 +1,18 @@
 package com.tencent.mm.plugin.recordvideo.plugin;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16})
+@l(hxD={1, 1, 16})
 public final class t$a
 {
   public static void a(String[] paramArrayOfString, int[] paramArrayOfInt)
   {
-    AppMethodBeat.i(206585);
+    AppMethodBeat.i(237301);
     p.h(paramArrayOfString, "permissions");
     p.h(paramArrayOfInt, "grantResults");
-    AppMethodBeat.o(206585);
+    AppMethodBeat.o(237301);
   }
 }
 

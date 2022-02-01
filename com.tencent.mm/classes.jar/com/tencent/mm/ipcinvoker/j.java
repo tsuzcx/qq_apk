@@ -6,26 +6,26 @@ import java.util.Map;
 
 public class j
 {
-  private static volatile j gAq;
-  Map<String, BaseIPCService> gAr;
+  private static volatile j hnf;
+  Map<String, BaseIPCService> hng;
   
   private j()
   {
     AppMethodBeat.i(158752);
-    this.gAr = new HashMap();
+    this.hng = new HashMap();
     AppMethodBeat.o(158752);
   }
   
-  public static j ahN()
+  public static j aya()
   {
     AppMethodBeat.i(158753);
-    if (gAq == null) {}
+    if (hnf == null) {}
     try
     {
-      if (gAq == null) {
-        gAq = new j();
+      if (hnf == null) {
+        hnf = new j();
       }
-      j localj = gAq;
+      j localj = hnf;
       AppMethodBeat.o(158753);
       return localj;
     }
@@ -35,17 +35,17 @@ public class j
     }
   }
   
-  public final BaseIPCService xg(String paramString)
+  public final BaseIPCService Fs(String paramString)
   {
     AppMethodBeat.i(158754);
-    paramString = (BaseIPCService)this.gAr.get(paramString);
+    paramString = (BaseIPCService)this.hng.get(paramString);
     AppMethodBeat.o(158754);
     return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.j
  * JD-Core Version:    0.7.0.1
  */

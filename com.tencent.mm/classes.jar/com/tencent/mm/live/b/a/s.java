@@ -1,95 +1,98 @@
 package com.tencent.mm.live.b.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.bw.a;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cmb;
-import com.tencent.mm.protocal.protobuf.cmc;
-import com.tencent.mm.sdk.platformtools.ae;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.protocal.protobuf.ddo;
+import com.tencent.mm.protocal.protobuf.ddp;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/cgi/NetSceneLivePostLiveMessage;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "content", "", "msgType", "", "liveId", "", "liveCookies", "", "wechatRoomId", "(Ljava/lang/String;IJ[BLjava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getContent", "()Ljava/lang/String;", "setContent", "(Ljava/lang/String;)V", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/PostLiveMessageRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/PostLiveMessageResponse;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "Companion", "plugin-logic_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/cgi/NetSceneLivePostLiveMessage;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "content", "", "msgType", "", "liveId", "", "liveCookies", "", "wechatRoomId", "(Ljava/lang/String;IJ[BLjava/lang/String;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "getContent", "()Ljava/lang/String;", "setContent", "(Ljava/lang/String;)V", "reqResp", "Lcom/tencent/mm/modelbase/CommReqResp;", "request", "Lcom/tencent/mm/protocal/protobuf/PostLiveMessageRequest;", "response", "Lcom/tencent/mm/protocal/protobuf/PostLiveMessageResponse;", "doScene", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "Companion", "plugin-logic_release"})
 public final class s
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public static final a gTe;
-  private f callback;
+  public static final a hKB;
+  private i callback;
   public String content;
-  private com.tencent.mm.ak.b gRX;
-  private cmb gTc;
-  private cmc gTd;
+  private d hJu;
+  private ddp hKA;
+  private ddo hKz;
   
   static
   {
-    AppMethodBeat.i(215860);
-    gTe = new a((byte)0);
-    AppMethodBeat.o(215860);
+    AppMethodBeat.i(207813);
+    hKB = new a((byte)0);
+    AppMethodBeat.o(207813);
   }
   
   public s(String paramString1, int paramInt, long paramLong, byte[] paramArrayOfByte, String paramString2)
   {
-    AppMethodBeat.i(215859);
+    AppMethodBeat.i(207812);
     this.content = paramString1;
-    paramString1 = new b.a();
-    paramString1.c((a)new cmb());
-    paramString1.d((a)new cmc());
-    paramString1.oS(904);
-    paramString1.DN("/cgi-bin/micromsg-bin/postlivemessage");
-    paramString1.oU(0);
-    paramString1.oV(0);
-    paramString1 = paramString1.aDS();
+    paramString1 = new d.a();
+    paramString1.c((a)new ddo());
+    paramString1.d((a)new ddp());
+    paramString1.sG(904);
+    paramString1.MB("/cgi-bin/micromsg-bin/postlivemessage");
+    paramString1.sI(0);
+    paramString1.sJ(0);
+    paramString1 = paramString1.aXF();
     p.g(paramString1, "builder.buildInstance()");
-    this.gRX = paramString1;
-    paramString1 = this.gRX.aEU();
+    this.hJu = paramString1;
+    paramString1 = this.hJu.aYJ();
     if (paramString1 == null)
     {
-      paramString1 = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.PostLiveMessageRequest");
-      AppMethodBeat.o(215859);
+      paramString1 = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.PostLiveMessageRequest");
+      AppMethodBeat.o(207812);
       throw paramString1;
     }
-    this.gTc = ((cmb)paramString1);
-    paramString1 = this.gTc;
+    this.hKz = ((ddo)paramString1);
+    paramString1 = this.hKz;
     if (paramString1 != null) {
       paramString1.content = this.content;
     }
-    paramString1 = this.gTc;
+    paramString1 = this.hKz;
     if (paramString1 != null) {
-      paramString1.GaV = paramInt;
+      paramString1.ybm = paramInt;
     }
-    paramString1 = this.gTc;
+    paramString1 = this.hKz;
     if (paramString1 != null) {
-      paramString1.GTs = com.tencent.mm.bw.b.cm(paramArrayOfByte);
+      paramString1.LFp = b.cD(paramArrayOfByte);
     }
-    paramString1 = this.gTc;
+    paramString1 = this.hKz;
     if (paramString1 != null) {
-      paramString1.FKy = paramLong;
+      paramString1.hyH = paramLong;
     }
-    paramString1 = this.gTc;
+    paramString1 = this.hKz;
     if (paramString1 != null) {
-      paramString1.FKz = paramString2;
+      paramString1.KDQ = paramString2;
     }
-    paramString1 = this.gTc;
+    paramString1 = this.hKz;
     if (paramString1 != null) {
-      paramString1.FKA = (com.tencent.mm.model.v.aAC() + System.currentTimeMillis());
+      paramString1.KDR = (z.aTY() + System.currentTimeMillis());
     }
-    ae.i("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "post msg content:" + this.content + ", msgType:" + paramInt + ", liveId:" + paramLong + ", roomId:" + paramString2);
-    AppMethodBeat.o(215859);
+    Log.i("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "post msg content:" + this.content + ", msgType:" + paramInt + ", liveId:" + paramLong + ", roomId:" + paramString2);
+    AppMethodBeat.o(207812);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
-    AppMethodBeat.i(215857);
-    ae.i("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "doScene");
-    this.callback = paramf;
-    int i = dispatch(parame, (q)this.gRX, (k)this);
-    AppMethodBeat.o(215857);
+    AppMethodBeat.i(207810);
+    Log.i("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "doScene");
+    this.callback = parami;
+    int i = dispatch(paramg, (com.tencent.mm.network.s)this.hJu, (m)this);
+    AppMethodBeat.o(207810);
     return i;
   }
   
@@ -98,38 +101,38 @@ public final class s
     return 904;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
-    AppMethodBeat.i(215858);
-    ae.i("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
-    if (paramq == null)
+    AppMethodBeat.i(207811);
+    Log.i("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "onGYNetEnd, errType: %s, errCode: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    if (params == null)
     {
-      paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
-      AppMethodBeat.o(215858);
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.modelbase.CommReqResp");
+      AppMethodBeat.o(207811);
       throw paramString;
     }
-    paramq = ((com.tencent.mm.ak.b)paramq).aEV();
-    if (paramq == null)
+    params = ((d)params).aYK();
+    if (params == null)
     {
-      paramString = new d.v("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.PostLiveMessageResponse");
-      AppMethodBeat.o(215858);
+      paramString = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.PostLiveMessageResponse");
+      AppMethodBeat.o(207811);
       throw paramString;
     }
-    this.gTd = ((cmc)paramq);
+    this.hKA = ((ddp)params);
     if ((paramInt2 != 0) || (paramInt3 != 0)) {
-      ae.e("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "onGYNetEnd error");
+      Log.e("MicroMsg.LiveNetScene.NetSceneLivePostLiveMessage", "onGYNetEnd error");
     }
-    paramq = this.callback;
-    if (paramq != null)
+    params = this.callback;
+    if (params != null)
     {
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
-      AppMethodBeat.o(215858);
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+      AppMethodBeat.o(207811);
       return;
     }
-    AppMethodBeat.o(215858);
+    AppMethodBeat.o(207811);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/live/model/cgi/NetSceneLivePostLiveMessage$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/live/model/cgi/NetSceneLivePostLiveMessage$Companion;", "", "()V", "TAG", "", "plugin-logic_release"})
   public static final class a {}
 }
 

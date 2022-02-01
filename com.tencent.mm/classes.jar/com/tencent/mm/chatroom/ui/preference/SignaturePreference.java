@@ -19,7 +19,7 @@ public class SignaturePreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(13016);
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(13016);
   }
   
@@ -27,10 +27,10 @@ public class SignaturePreference
   {
     AppMethodBeat.i(13017);
     paramViewGroup = super.onCreateView(paramViewGroup);
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
     localViewGroup.setPadding(0, 0, 0, 0);
-    View.inflate(this.mContext, 2131494847, localViewGroup);
+    View.inflate(this.mContext, 2131495582, localViewGroup);
     AppMethodBeat.o(13017);
     return paramViewGroup;
   }

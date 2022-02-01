@@ -1,85 +1,85 @@
 package com.tencent.mm.plugin.box;
 
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.d;
-import com.tencent.mm.ak.d.b;
-import com.tencent.mm.ak.e.a;
-import com.tencent.mm.ak.e.b;
-import com.tencent.mm.ak.e.c;
+import com.tencent.mm.ak.g;
+import com.tencent.mm.ak.g.b;
+import com.tencent.mm.ak.h.a;
+import com.tencent.mm.ak.h.b;
+import com.tencent.mm.ak.h.c;
 import com.tencent.mm.bw.b;
 import com.tencent.mm.plugin.messenger.foundation.a.q;
-import com.tencent.mm.protocal.protobuf.qw;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.protocal.protobuf.rx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 import java.util.Map;
 
 public final class a
-  implements d
+  implements g
 {
-  public final q oas;
+  public final q plo;
   
   public a()
   {
-    AppMethodBeat.i(208276);
-    this.oas = new q()
+    AppMethodBeat.i(196183);
+    this.plo = new q()
     {
-      public final void onNewXmlReceived(final String paramAnonymousString, Map<String, String> paramAnonymousMap, e.a paramAnonymousa)
+      public final void onNewXmlReceived(final String paramAnonymousString, Map<String, String> paramAnonymousMap, h.a paramAnonymousa)
       {
-        AppMethodBeat.i(208275);
+        AppMethodBeat.i(196182);
         if (paramAnonymousString.equals("functionmsg"))
         {
           paramAnonymousString = (String)paramAnonymousMap.get(".sysmsg.functionmsg.businessid");
-          if ((paramAnonymousString != null) && (paramAnonymousString.equals("20002")) && (paramAnonymousa.hQS != null))
+          if ((paramAnonymousString != null) && (paramAnonymousString.equals("20002")) && (paramAnonymousa.iMa != null))
           {
-            paramAnonymousString = ((d.b)paramAnonymousa.hQS).hQL.GeX.toByteArray();
-            paramAnonymousMap = c.bNW();
-            if (o.fB(paramAnonymousMap)) {
-              o.deleteFile(paramAnonymousMap);
+            paramAnonymousString = ((g.b)paramAnonymousa.iMa).iLT.KZo.toByteArray();
+            paramAnonymousMap = c.ckW();
+            if (s.YS(paramAnonymousMap)) {
+              s.deleteFile(paramAnonymousMap);
             }
-            o.aZV(paramAnonymousMap);
-            o.f(paramAnonymousMap, paramAnonymousString, paramAnonymousString.length);
-            ae.i("MicroMsg.WebSearch.BlackWhiteWordsMsgExtension", "[onNewXmlReceived] bytesLen: %s", new Object[] { Integer.valueOf(paramAnonymousString.length) });
-            h.MqF.f(new Runnable()
+            s.bpa(paramAnonymousMap);
+            s.f(paramAnonymousMap, paramAnonymousString, paramAnonymousString.length);
+            Log.i("MicroMsg.WebSearch.BlackWhiteWordsMsgExtension", "[onNewXmlReceived] bytesLen: %s", new Object[] { Integer.valueOf(paramAnonymousString.length) });
+            h.RTc.b(new Runnable()
             {
               public final void run()
               {
-                AppMethodBeat.i(208274);
-                c.aJ(paramAnonymousString);
-                c.ji(false);
-                c.Xs(c.jj(false));
-                AppMethodBeat.o(208274);
+                AppMethodBeat.i(196181);
+                c.ba(paramAnonymousString);
+                c.kh(false);
+                c.aho(c.ki(false));
+                AppMethodBeat.o(196181);
               }
             }, "box.HotWordSearchModel");
           }
         }
-        AppMethodBeat.o(208275);
+        AppMethodBeat.o(196182);
       }
     };
-    AppMethodBeat.o(208276);
+    AppMethodBeat.o(196183);
   }
   
-  public final int adS()
-  {
-    return -1;
-  }
-  
-  public final int adT()
+  public final int atA()
   {
     return 20002;
   }
   
-  public final e.b b(e.a parama)
+  public final int atz()
+  {
+    return -1;
+  }
+  
+  public final h.b b(h.a parama)
   {
     return null;
   }
   
-  public final void b(e.c paramc) {}
+  public final void b(h.c paramc) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.box.a
  * JD-Core Version:    0.7.0.1
  */

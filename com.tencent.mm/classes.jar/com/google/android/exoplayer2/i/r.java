@@ -6,32 +6,32 @@ import java.util.Comparator;
 
 public final class r
 {
-  public static final Comparator<a> bHd;
-  public static final Comparator<a> bHe;
-  public final int bHf;
-  public final ArrayList<a> bHg;
-  public final a[] bHh;
-  public int bHi;
-  public int bHj;
-  public int bHk;
-  public int bHl;
+  public static final Comparator<a> bHu;
+  public static final Comparator<a> bHv;
+  public int bHA;
+  public int bHB;
+  public int bHC;
+  public final int bHw;
+  public final ArrayList<a> bHx;
+  public final a[] bHy;
+  public int bHz;
   
   static
   {
     AppMethodBeat.i(93197);
-    bHd = new Comparator() {};
-    bHe = new Comparator() {};
+    bHu = new Comparator() {};
+    bHv = new Comparator() {};
     AppMethodBeat.o(93197);
   }
   
-  public r()
+  public r(int paramInt)
   {
-    AppMethodBeat.i(93196);
-    this.bHf = 2000;
-    this.bHh = new a[5];
-    this.bHg = new ArrayList();
-    this.bHi = -1;
-    AppMethodBeat.o(93196);
+    AppMethodBeat.i(196069);
+    this.bHw = 2000;
+    this.bHy = new a[5];
+    this.bHx = new ArrayList();
+    this.bHz = -1;
+    AppMethodBeat.o(196069);
   }
   
   public static final class a
@@ -43,7 +43,7 @@ public final class r
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.i.r
  * JD-Core Version:    0.7.0.1
  */

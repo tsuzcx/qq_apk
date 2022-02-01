@@ -1,16 +1,15 @@
 package com.tencent.mars.xlog;
 
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ae.a;
-import com.tencent.mm.sdk.platformtools.af;
-import com.tencent.mm.sdk.platformtools.br;
-import com.tencent.mm.vfs.k;
-import com.tencent.mm.vfs.m;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Log.LogImp;
+import com.tencent.mm.sdk.platformtools.LogDecryptor;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.q;
+import com.tencent.mm.vfs.s;
 
 public class Xlog
-  implements ae.a
+  implements Log.LogImp
 {
   public static final int AppednerModeAsync = 0;
   public static final int AppednerModeSync = 1;
@@ -33,7 +32,7 @@ public class Xlog
   public static final int ZSTD_COMPRESS_LEVEL8 = 8;
   public static final int ZSTD_COMPRESS_LEVEL9 = 9;
   public static final int ZSTD_MODE = 1;
-  public static af logDecryptor;
+  public static LogDecryptor logDecryptor;
   private static String mCacheDir = null;
   private static String mLogDir = null;
   private static String xlog_pubkey = "1dac3876bd566b60c7dcbffd219ca6af2d2c07f045711bf2a6d111a2b1fc27c4df31c1f568879708c5159e370ab141e6627ea028b47f8a5cf4d39ca30d501f81";
@@ -42,24 +41,11 @@ public class Xlog
   
   private static String decryptTag(String paramString)
   {
-    af localaf;
-    if (logDecryptor != null)
-    {
-      localaf = logDecryptor;
-      if ((paramString != null) && (paramString.length() != 0)) {}
+    String str = paramString;
+    if (logDecryptor != null) {
+      str = logDecryptor.decryptTag(paramString);
     }
-    else
-    {
-      return paramString;
-    }
-    switch (paramString.charAt(0) ^ 0xDCBA)
-    {
-    default: 
-      return paramString;
-    case '⍆': 
-      return localaf.gp(paramString, paramString.length());
-    }
-    return localaf.IxD.decryptTag(paramString);
+    return str;
   }
   
   public static native void logWrite(XLoggerInfo paramXLoggerInfo, String paramString);
@@ -76,7 +62,7 @@ public class Xlog
     if (paramBoolean) {
       System.loadLibrary("tencentxlog");
     }
-    ae.appenderOpen(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3);
+    Log.appenderOpen(paramInt1, paramInt2, paramString1, paramString2, paramString3, paramInt3);
   }
   
   public native void appenderClose();
@@ -92,7 +78,7 @@ public class Xlog
     localXLogConfig.mode = paramInt2;
     localXLogConfig.logdir = paramString2;
     localXLogConfig.nameprefix = paramString3;
-    localXLogConfig.compressmode = 1;
+    localXLogConfig.compressmode = 0;
     localXLogConfig.pubkey = xlog_pubkey;
     localXLogConfig.cachedir = paramString1;
     localXLogConfig.cachedays = paramInt3;
@@ -139,17 +125,17 @@ public class Xlog
     for (;;)
     {
       return;
-      Object localObject1 = new k(mCacheDir);
-      if (((k)localObject1).exists())
+      Object localObject1 = new o(mCacheDir);
+      if (((o)localObject1).exists())
       {
-        localObject1 = ((k)localObject1).a(new m()
+        localObject1 = ((o)localObject1).a(new q()
         {
-          public boolean accept(k paramAnonymousk)
+          public boolean accept(o paramAnonymouso)
           {
-            if (paramAnonymousk.isDirectory()) {
+            if (paramAnonymouso.isDirectory()) {
               return false;
             }
-            return paramAnonymousk.getName().toLowerCase().endsWith(".xlog");
+            return paramAnonymouso.getName().toLowerCase().endsWith(".xlog");
           }
         });
         if (localObject1.length != 0)
@@ -159,7 +145,7 @@ public class Xlog
           while (i < j)
           {
             Object localObject2 = localObject1[i];
-            o.mG(w.B(localObject2.mUri), mLogDir + "/" + localObject2.getName());
+            s.nx(aa.z(localObject2.mUri), mLogDir + "/" + localObject2.getName());
             i += 1;
           }
         }
@@ -176,7 +162,7 @@ public class Xlog
     localXLogConfig.mode = paramInt2;
     localXLogConfig.logdir = paramString2;
     localXLogConfig.nameprefix = paramString3;
-    localXLogConfig.compressmode = 1;
+    localXLogConfig.compressmode = 0;
     localXLogConfig.pubkey = xlog_pubkey;
     localXLogConfig.cachedir = paramString1;
     localXLogConfig.cachedays = paramInt3;
@@ -198,7 +184,7 @@ public class Xlog
     public int cachedays = 0;
     public String cachedir;
     public int compresslevel = 6;
-    public int compressmode = 1;
+    public int compressmode = 0;
     public int level = 2;
     public String logdir;
     public int mode = 0;

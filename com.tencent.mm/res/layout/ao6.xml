@@ -1,10 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <Button android:textSize="@dimen/gx" android:id="@id/h82" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="年" />
-        <Button android:textSize="@dimen/gx" android:id="@id/dso" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="月" />
-        <Button android:textSize="@dimen/gx" android:id="@id/b8n" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="日" />
-    </LinearLayout>
-    <com.tencent.mm.ui.widget.MMSpinnerDatePicker android:id="@id/dp6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:spinnersShown="true" android:calendarViewShown="false" android:datePickerMode="spinner" />
-</LinearLayout>
+<RelativeLayout android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout android:id="@id/jkw" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="48.0dip">
+        <FrameLayout android:id="@id/h8y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <FrameLayout android:id="@id/be3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="containerFrameLayout">
+                <include layout="@layout/cbt" />
+                <com.tencent.mm.plugin.webview.ui.tools.LogoWebViewWrapper android:id="@id/esn" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <FrameLayout android:id="@id/eso" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="containerFrameLayout" />
+                </com.tencent.mm.plugin.webview.ui.tools.LogoWebViewWrapper>
+            </FrameLayout>
+            <FrameLayout android:id="@id/gym" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="refreshFrameLayout">
+                <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i" android:layout_marginBottom="@dimen/i" android:src="@raw/webview_refresh_icon" />
+                    <TextView android:textSize="18.0sp" android:textColor="@color/uj" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j09" style="@style/qo" />
+                </LinearLayout>
+            </FrameLayout>
+            <com.tencent.mm.ui.base.MMFalseProgressBar android:layout_gravity="center|left|top" android:id="@id/jk9" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:progressDrawable="@drawable/aik" android:contentDescription="progressBar" />
+            <RelativeLayout android:id="@id/c0s" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </FrameLayout>
+    </com.tencent.mm.plugin.webview.ui.tools.WebViewKeyboardLinearLayout>
+    <RelativeLayout android:gravity="center_vertical" android:id="@id/iq5" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/xt" android:background="@drawable/b7" android:paddingLeft="@dimen/k5" android:paddingRight="@dimen/k5" android:layout_width="wrap_content" android:layout_height="48.0dip" android:src="@raw/actionbar_icon_dark_back" android:contentDescription="@string/he" app:iconColor="@color/FG_0" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/xz" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/xt" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <com.tencent.mm.ui.search.WebSearchView android:id="@id/jkj" android:layout_width="fill_parent" android:layout_height="48.0dip" />
+    <View android:id="@id/hnb" android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginTop="48.0dip" />
+</RelativeLayout>

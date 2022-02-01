@@ -2,21 +2,21 @@ package com.tencent.mm.dynamicbackground.model;
 
 import android.content.Context;
 import android.graphics.Point;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 11}, gka={""}, gkb={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "", "loadDynamicBgLibrary", "", "setEnableNativeDynamicBackground", "enable", "dynamicbg_release"})
+@l(hxD={1, 1, 11}, hxE={""}, hxF={"Lcom/tencent/mm/dynamicbackground/model/DynamicBgService;", "Lcom/tencent/mm/dynamicbackground/model/DynamicBgCrashListener;", "getDisplayRealSize", "Landroid/graphics/Point;", "context", "Landroid/content/Context;", "getSleepTimeInMsPerFrame", "", "isEnableNativeDynamicBackground", "", "loadDynamicBgLibrary", "", "setEnableNativeDynamicBackground", "enable", "dynamicbg_release"})
 public abstract interface c
   extends b
 {
-  public abstract boolean adU();
+  public abstract boolean atB();
   
-  public abstract void adV();
+  public abstract void atC();
   
-  public abstract void adW();
+  public abstract void atD();
   
-  public abstract float aef();
+  public abstract float atM();
   
-  public abstract Point ck(Context paramContext);
+  public abstract Point az(Context paramContext);
 }
 
 

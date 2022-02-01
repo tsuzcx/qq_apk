@@ -4,10 +4,10 @@ import android.content.Context;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a;
 import com.tencent.mm.ipcinvoker.wx_extension.a.a.a;
-import com.tencent.mm.plugin.appbrand.jsapi.i.a.f;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.ui.al;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.c;
+import com.tencent.mm.ui.ao;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,33 +15,33 @@ import org.json.JSONObject;
 public final class o
   extends com.tencent.luggage.f.a.b
 {
-  public static Integer lSM;
+  public static Integer nan;
   
   private static int getMapType()
   {
     AppMethodBeat.i(47493);
-    if (lSM != null)
+    if (nan != null)
     {
-      i = lSM.intValue();
+      i = nan.intValue();
       AppMethodBeat.o(47493);
       return i;
     }
-    Object localObject = a.a.gAX;
-    localObject = a.xi("100487");
-    if ((localObject == null) || (!((com.tencent.mm.storage.c)localObject).isValid()))
+    Object localObject = a.a.hnM;
+    localObject = a.Fu("100487");
+    if ((localObject == null) || (!((c)localObject).isValid()))
     {
-      ae.i("MicroMsg.WxaMapViewFactory", "[sMapType] item is null");
+      Log.i("MicroMsg.WxaMapViewFactory", "[sMapType] item is null");
       AppMethodBeat.o(47493);
       return 1;
     }
-    lSM = Integer.valueOf(bu.getInt((String)((com.tencent.mm.storage.c)localObject).fsy().get("MapType"), 1));
-    ae.i("MicroMsg.WxaMapViewFactory", "sMapType:%d", new Object[] { lSM });
-    int i = lSM.intValue();
+    nan = Integer.valueOf(Util.getInt((String)((c)localObject).gzz().get("MapType"), 1));
+    Log.i("MicroMsg.WxaMapViewFactory", "sMapType:%d", new Object[] { nan });
+    int i = nan.intValue();
     AppMethodBeat.o(47493);
     return i;
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.i.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
+  public final com.tencent.mm.plugin.appbrand.jsapi.k.a.b a(Context paramContext, String paramString, Map<String, Object> paramMap)
   {
     int i = 0;
     AppMethodBeat.i(47495);
@@ -50,15 +50,15 @@ public final class o
       AppMethodBeat.o(47495);
       return null;
     }
-    int k = f.a(paramMap, "mapType", getMapType());
-    int j = f.a(paramMap, "enableDarkMode", 0);
-    if (!al.isDarkMode()) {}
+    int k = com.tencent.mm.plugin.appbrand.jsapi.k.a.f.a(paramMap, "mapType", getMapType());
+    int j = com.tencent.mm.plugin.appbrand.jsapi.k.a.f.a(paramMap, "enableDarkMode", 0);
+    if (!ao.isDarkMode()) {}
     for (;;)
     {
       paramMap.put("enableDarkMode", Integer.valueOf(i));
       if (k == 2)
       {
-        paramContext = new com.tencent.mm.plugin.appbrand.jsapi.ad.d.b(paramContext, paramString, paramMap);
+        paramContext = new com.tencent.mm.plugin.appbrand.jsapi.ag.d.b(paramContext, paramString, paramMap);
         AppMethodBeat.o(47495);
         return paramContext;
       }
@@ -69,7 +69,7 @@ public final class o
     }
   }
   
-  public final com.tencent.mm.plugin.appbrand.jsapi.i.a.b b(com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject)
+  public final com.tencent.mm.plugin.appbrand.jsapi.k.a.b b(com.tencent.mm.plugin.appbrand.jsapi.f paramf, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(47494);
     if (paramJSONObject != null) {}
@@ -79,7 +79,7 @@ public final class o
       {
         paramJSONObject.put("mapType", getMapType());
         bool = paramJSONObject.optBoolean("enableDarkMode", false);
-        if (al.isDarkMode()) {
+        if (ao.isDarkMode()) {
           continue;
         }
         bool = false;
@@ -87,7 +87,7 @@ public final class o
       catch (JSONException localJSONException)
       {
         boolean bool;
-        ae.m("MicroMsg.WxaMapViewFactory", "", new Object[] { localJSONException });
+        Log.printInfoStack("MicroMsg.WxaMapViewFactory", "", new Object[] { localJSONException });
         continue;
         if (!bool) {
           continue;
@@ -96,16 +96,16 @@ public final class o
         continue;
       }
       paramJSONObject.put("enableDarkMode", i);
-      paramc = super.b(paramc, paramJSONObject);
+      paramf = super.b(paramf, paramJSONObject);
       AppMethodBeat.o(47494);
-      return paramc;
+      return paramf;
       i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.luggage.b.o
  * JD-Core Version:    0.7.0.1
  */

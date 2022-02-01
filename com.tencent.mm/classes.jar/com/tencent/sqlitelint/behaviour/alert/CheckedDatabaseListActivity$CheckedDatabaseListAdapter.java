@@ -53,9 +53,9 @@ class CheckedDatabaseListActivity$CheckedDatabaseListAdapter
     AppMethodBeat.i(52895);
     if (paramView == null)
     {
-      paramView = this.mInflater.inflate(2131495844, paramViewGroup, false);
+      paramView = this.mInflater.inflate(2131496813, paramViewGroup, false);
       paramViewGroup = new CheckedDatabaseListActivity.ViewHolder();
-      paramViewGroup.dbPathTv = ((TextView)paramView.findViewById(2131298937));
+      paramViewGroup.dbPathTv = ((TextView)paramView.findViewById(2131299423));
       paramView.setTag(paramViewGroup);
     }
     for (;;)

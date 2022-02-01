@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a25" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<com.tencent.mm.wallet_core.ui.CustomerScrollView android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/jt" android:textColor="@color/tq" android:ellipsize="end" android:gravity="center_horizontal" android:id="@id/fhv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hj" android:layout_marginBottom="@dimen/hj" android:text="@string/aoa" android:singleLine="true" />
-    <LinearLayout android:gravity="center" android:id="@id/d43" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="20.0dip">
-        <ImageView android:id="@id/if" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/a7h" />
-        <TextView android:textSize="14.0dip" android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="@string/u7" />
+    <LinearLayout android:orientation="vertical" android:id="@id/ab6" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/ab7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <android.support.v7.widget.RecyclerView android:gravity="center" android:id="@id/ab8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" />
+        <Space android:layout_width="fill_parent" android:layout_height="26.0dip" />
+        <LinearLayout android:gravity="center" android:layout_gravity="bottom|center" android:id="@id/guf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="26.0dip">
+            <LinearLayout android:gravity="center" android:layout_gravity="center" android:id="@id/gud" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce">
+                <CheckBox android:id="@id/gue" android:background="@drawable/ai1" android:layout_width="@dimen/cb" android:layout_height="@dimen/cb" />
+            </LinearLayout>
+            <TextView android:textSize="14.0dip" android:textColor="@color/FG_2" android:gravity="center" android:layout_gravity="center" android:id="@id/gug" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j2n" />
+        </LinearLayout>
     </LinearLayout>
-    <LinearLayout android:layout_gravity="center" android:id="@id/d3y" android:layout_width="fill_parent" android:layout_height="20.0dip" android:layout_marginTop="@dimen/i_" android:layout_marginBottom="5.0dip">
-        <ImageView android:gravity="center" android:layout_gravity="center" android:background="@drawable/ay7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    </LinearLayout>
-</LinearLayout>
+</com.tencent.mm.wallet_core.ui.CustomerScrollView>

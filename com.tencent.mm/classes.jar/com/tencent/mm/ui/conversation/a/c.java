@@ -14,19 +14,19 @@ import android.view.View;
 import android.widget.Button;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.k.a.a.a;
-import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.BackwardSupportUtil.BitmapFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.Map;
 import junit.framework.Assert;
 
 public final class c
 {
-  com.tencent.mm.pluginsdk.k.a.a KUm;
+  com.tencent.mm.pluginsdk.k.a.a QhC;
   
   c(com.tencent.mm.pluginsdk.k.a.a parama)
   {
-    this.KUm = parama;
+    this.QhC = parama;
   }
   
   private static Drawable a(Map<String, String> paramMap, Context paramContext)
@@ -37,24 +37,24 @@ public final class c
       AppMethodBeat.o(38771);
       return null;
     }
-    Object localObject2 = (String)paramMap.get(BackwardSupportUtil.b.iD(paramContext));
+    Object localObject2 = (String)paramMap.get(BackwardSupportUtil.BitmapFactory.getDisplaySizeType(paramContext));
     Object localObject1 = localObject2;
     if (localObject2 == null) {
-      localObject1 = (String)paramMap.get(BackwardSupportUtil.b.iC(paramContext));
+      localObject1 = (String)paramMap.get(BackwardSupportUtil.BitmapFactory.getDisplayDensityType(paramContext));
     }
-    if (bu.nullAsNil((String)localObject1).length() <= 0)
+    if (Util.nullAsNil((String)localObject1).length() <= 0)
     {
       AppMethodBeat.o(38771);
       return null;
     }
-    localObject2 = com.tencent.mm.pluginsdk.k.a.a.aNJ((String)localObject1);
-    if (localObject2 == a.a.FjL)
+    localObject2 = com.tencent.mm.pluginsdk.k.a.a.bel((String)localObject1);
+    if (localObject2 == a.a.KaD)
     {
       AppMethodBeat.o(38771);
       return null;
     }
-    localObject1 = com.tencent.mm.pluginsdk.k.a.a.aNI((String)localObject1);
-    if (bu.nullAsNil((String)localObject1).length() <= 0)
+    localObject1 = com.tencent.mm.pluginsdk.k.a.a.bek((String)localObject1);
+    if (Util.nullAsNil((String)localObject1).length() <= 0)
     {
       AppMethodBeat.o(38771);
       return null;
@@ -63,19 +63,19 @@ public final class c
     {
       try
       {
-        if (localObject2 == a.a.FjJ)
+        if (localObject2 == a.a.KaB)
         {
-          paramMap = BackwardSupportUtil.b.b(paramContext.getAssets().open((String)localObject1), com.tencent.mm.cb.a.getDensity(paramContext));
+          paramMap = BackwardSupportUtil.BitmapFactory.decodeStream(paramContext.getAssets().open((String)localObject1), com.tencent.mm.cb.a.getDensity(paramContext));
           if (paramMap == null)
           {
-            ae.e("MicroMsg.ADListView.Message", "get Bitmap failed type:" + localObject2 + " path:" + (String)localObject1);
+            Log.e("MicroMsg.ADListView.Message", "get Bitmap failed type:" + localObject2 + " path:" + (String)localObject1);
             AppMethodBeat.o(38771);
             return null;
           }
         }
         else
         {
-          paramMap = BackwardSupportUtil.b.p((String)localObject1, com.tencent.mm.cb.a.getDensity(paramContext));
+          paramMap = BackwardSupportUtil.BitmapFactory.decodeFile((String)localObject1, com.tencent.mm.cb.a.getDensity(paramContext));
           continue;
         }
         localObject1 = paramMap.getNinePatchChunk();
@@ -92,7 +92,7 @@ public final class c
         {
           if (paramMap != localObject1)
           {
-            ae.i("MicroMsg.ADListView.Message", "recycle bitmap:%s", new Object[] { paramMap });
+            Log.i("MicroMsg.ADListView.Message", "recycle bitmap:%s", new Object[] { paramMap });
             paramMap.recycle();
           }
         }
@@ -106,7 +106,7 @@ public final class c
       }
       catch (Exception paramMap)
       {
-        ae.printErrStackTrace("MicroMsg.ADListView.Message", paramMap, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ADListView.Message", paramMap, "", new Object[0]);
         AppMethodBeat.o(38771);
         return null;
       }
@@ -122,7 +122,7 @@ public final class c
     {
       bool1 = true;
       Assert.assertTrue(bool1);
-      if (paramd.KUo == null) {
+      if (paramd.QhE == null) {
         break label68;
       }
     }
@@ -131,7 +131,7 @@ public final class c
     for (boolean bool1 = bool2;; bool1 = false)
     {
       Assert.assertTrue(bool1);
-      localDrawable = a(this.KUm.FjH, paramd.KUn.getContext());
+      localDrawable = a(this.QhC.Kaz, paramd.QhD.getContext());
       if (localDrawable != null) {
         break label73;
       }
@@ -141,9 +141,9 @@ public final class c
       break;
     }
     label73:
-    paramd.KUn.setBackgroundDrawable(localDrawable);
-    paramd = paramd.KUo;
-    if (this.KUm.FjC) {}
+    paramd.QhD.setBackgroundDrawable(localDrawable);
+    paramd = paramd.QhE;
+    if (this.QhC.Kau) {}
     for (int i = 0;; i = 8)
     {
       paramd.setVisibility(i);
@@ -154,7 +154,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ui.conversation.a.c
  * JD-Core Version:    0.7.0.1
  */

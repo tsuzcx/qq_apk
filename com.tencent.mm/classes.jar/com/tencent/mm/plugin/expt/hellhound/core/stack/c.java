@@ -2,15 +2,15 @@ package com.tencent.mm.plugin.expt.hellhound.core.stack;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.expt.hellhound.core.a.b;
-import com.tencent.mm.protocal.protobuf.bk;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.bo;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class c
 {
-  public static void a(bk parambk)
+  public static void a(bo parambo)
   {
     AppMethodBeat.i(121880);
-    if (parambk == null)
+    if (parambo == null)
     {
       AppMethodBeat.o(121880);
       return;
@@ -18,36 +18,36 @@ public final class c
     Object localObject = null;
     try
     {
-      parambk = parambk.toByteArray();
-      b.p("hell_astackd_mmkv_key", parambk);
+      parambo = parambo.toByteArray();
+      b.o("hell_astackd_mmkv_key", parambo);
       AppMethodBeat.o(121880);
       return;
     }
-    catch (Exception parambk)
+    catch (Exception parambo)
     {
       for (;;)
       {
-        ae.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", parambk, "ActivityStackDao write", new Object[0]);
-        parambk = localObject;
+        Log.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", parambo, "ActivityStackDao write", new Object[0]);
+        parambo = localObject;
       }
     }
   }
   
-  public static bk cpr()
+  public static bo cNK()
   {
     AppMethodBeat.i(121879);
-    bk localbk2 = cps();
-    bk localbk1 = localbk2;
-    if (localbk2 == null)
+    bo localbo2 = cNL();
+    bo localbo1 = localbo2;
+    if (localbo2 == null)
     {
-      localbk1 = new bk();
-      a(localbk1);
+      localbo1 = new bo();
+      a(localbo1);
     }
     AppMethodBeat.o(121879);
-    return localbk1;
+    return localbo1;
   }
   
-  private static bk cps()
+  private static bo cNL()
   {
     AppMethodBeat.i(121881);
     byte[] arrayOfByte = b.getBytes("hell_astackd_mmkv_key");
@@ -56,16 +56,16 @@ public final class c
       AppMethodBeat.o(121881);
       return null;
     }
-    bk localbk = new bk();
+    bo localbo = new bo();
     try
     {
-      localbk.parseFrom(arrayOfByte);
+      localbo.parseFrom(arrayOfByte);
       AppMethodBeat.o(121881);
-      return localbk;
+      return localbo;
     }
     catch (Exception localException)
     {
-      ae.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
+      Log.printErrStackTrace("HABBYGE-MALI.ActivityStackDao", localException, "ActivityStackDao read", new Object[0]);
       AppMethodBeat.o(121881);
     }
     return null;

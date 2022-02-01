@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:id="@id/hci" android:scrollbars="none" style="@style/om">
+        <LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/hs" android:paddingTop="@dimen/hs" android:paddingRight="@dimen/hs" android:paddingBottom="@dimen/hs" android:fadingEdge="@null" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/is" android:gravity="center" android:id="@id/a4f" style="@style/no" />
+            <TextView android:textSize="@dimen/hx" android:textStyle="bold" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/a4c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir" android:maxLines="2" />
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ir">
+                <com.tencent.mm.ui.base.MMFormInputView android:id="@id/a4e" android:layout_height="wrap_content" android:minHeight="58.0dip" form:form_hint="@string/ae8" form:form_layout="@layout/b85" form:form_title="@string/zt" style="@style/mv" />
+                <TextView android:textSize="@dimen/hc" android:textColor="@color/x3" android:layout_gravity="center_horizontal" android:id="@id/fij" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/hs" android:text="@string/f2m" style="@style/no" />
+                <TextView android:textColor="@color/l4" android:layout_gravity="center_horizontal" android:id="@id/fii" android:visibility="gone" android:layout_width="wrap_content" android:layout_marginTop="@dimen/k5" android:text="@string/f2m" style="@style/no" />
+                <Button android:id="@id/fz0" android:layout_marginTop="@dimen/hw" android:text="@string/x5" style="@style/ou" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

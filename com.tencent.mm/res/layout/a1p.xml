@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout style="@style/rj"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mm.ui.base.HeaderGridView android:id="@id/hmf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@android:color/transparent" android:numColumns="5" android:layout_above="@id/hme" />
+    <RelativeLayout android:orientation="horizontal" android:id="@id/hme" android:background="?sh" android:padding="@dimen/k5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+        <Button android:textColor="@color/fu" android:gravity="center" android:id="@id/hmh" android:background="@drawable/aij" android:minWidth="@dimen/in" android:text="@string/bwl" android:layout_alignParentLeft="true" style="@style/os" />
+        <Button android:textColor="@color/a5f" android:gravity="center" android:id="@id/hmg" android:background="@drawable/aij" android:minWidth="@dimen/in" android:text="@string/tf" android:layout_alignParentRight="true" style="@style/os" />
+    </RelativeLayout>
+</RelativeLayout>

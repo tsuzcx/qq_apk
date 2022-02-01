@@ -1,0 +1,85 @@
+package com.tencent.mm.plugin.game.protobuf;
+
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+
+public final class dt
+  extends com.tencent.mm.bw.a
+{
+  public String Name;
+  public int xLX;
+  
+  public final int op(int paramInt, Object... paramVarArgs)
+  {
+    AppMethodBeat.i(41835);
+    if (paramInt == 0)
+    {
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.Name == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Name");
+        AppMethodBeat.o(41835);
+        throw paramVarArgs;
+      }
+      paramVarArgs.aM(1, this.xLX);
+      if (this.Name != null) {
+        paramVarArgs.e(2, this.Name);
+      }
+      AppMethodBeat.o(41835);
+      return 0;
+    }
+    if (paramInt == 1)
+    {
+      int i = g.a.a.b.b.a.bu(1, this.xLX) + 0;
+      paramInt = i;
+      if (this.Name != null) {
+        paramInt = i + g.a.a.b.b.a.f(2, this.Name);
+      }
+      AppMethodBeat.o(41835);
+      return paramInt;
+    }
+    if (paramInt == 2)
+    {
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
+        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+          paramVarArgs.hPl();
+        }
+      }
+      if (this.Name == null)
+      {
+        paramVarArgs = new b("Not all required fields were included: Name");
+        AppMethodBeat.o(41835);
+        throw paramVarArgs;
+      }
+      AppMethodBeat.o(41835);
+      return 0;
+    }
+    if (paramInt == 3)
+    {
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
+      dt localdt = (dt)paramVarArgs[1];
+      switch (((Integer)paramVarArgs[2]).intValue())
+      {
+      default: 
+        AppMethodBeat.o(41835);
+        return -1;
+      case 1: 
+        localdt.xLX = locala.UbS.zi();
+        AppMethodBeat.o(41835);
+        return 0;
+      }
+      localdt.Name = locala.UbS.readString();
+      AppMethodBeat.o(41835);
+      return 0;
+    }
+    AppMethodBeat.o(41835);
+    return -1;
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+ * Qualified Name:     com.tencent.mm.plugin.game.protobuf.dt
+ * JD-Core Version:    0.7.0.1
+ */

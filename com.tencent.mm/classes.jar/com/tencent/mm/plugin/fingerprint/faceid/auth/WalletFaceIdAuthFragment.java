@@ -7,19 +7,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class WalletFaceIdAuthFragment
   extends AppCompatDialogFragment
 {
   private Dialog mDialog;
-  private a tqQ;
-  private Bundle tqR;
+  private a wEx;
+  private Bundle wEy;
   
   public Dialog onCreateDialog(Bundle paramBundle)
   {
     AppMethodBeat.i(64227);
-    this.mDialog = new WalletFaceIdDialog(getActivity(), this.tqQ, this.tqR);
+    this.mDialog = new WalletFaceIdDialog(getActivity(), this.wEx, this.wEy);
     this.mDialog.setCancelable(false);
     paramBundle = this.mDialog;
     AppMethodBeat.o(64227);
@@ -39,7 +39,7 @@ public class WalletFaceIdAuthFragment
   {
     AppMethodBeat.i(64228);
     super.onPause();
-    ae.d("MicroMsg.WalletFaceIdAuthFragment", "on pause");
+    Log.d("MicroMsg.WalletFaceIdAuthFragment", "on pause");
     AppMethodBeat.o(64228);
   }
   
@@ -47,7 +47,7 @@ public class WalletFaceIdAuthFragment
   {
     AppMethodBeat.i(64229);
     super.onStop();
-    ae.d("MicroMsg.WalletFaceIdAuthFragment", "on stop");
+    Log.d("MicroMsg.WalletFaceIdAuthFragment", "on stop");
     if (this.mDialog != null) {
       this.mDialog.dismiss();
     }
@@ -56,7 +56,7 @@ public class WalletFaceIdAuthFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.fingerprint.faceid.auth.WalletFaceIdAuthFragment
  * JD-Core Version:    0.7.0.1
  */

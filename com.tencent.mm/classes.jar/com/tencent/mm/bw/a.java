@@ -1,7 +1,7 @@
 package com.tencent.mm.bw;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.a.a.b;
+import g.a.a.a.a.b;
 
 public class a
 {
@@ -10,20 +10,20 @@ public class a
   protected static final int OPCODE_POPULATEBUILDERWITHFIELD = 3;
   protected static final int OPCODE_WRITEFIELDS = 0;
   protected static b unknownTagHandler;
-  private byte[] data;
   private boolean includeUnKnownField = false;
+  private byte[] pbData;
   
   static
   {
     AppMethodBeat.i(2349);
-    unknownTagHandler = new f.a.a.a.a.a();
+    unknownTagHandler = new g.a.a.a.a.a();
     AppMethodBeat.o(2349);
   }
   
-  public static int getNextFieldNumber(f.a.a.a.a parama)
+  public static int getNextFieldNumber(g.a.a.a.a parama)
   {
     AppMethodBeat.i(2351);
-    int i = parama.gCf();
+    int i = parama.hPk();
     AppMethodBeat.o(2351);
     return i;
   }
@@ -46,7 +46,7 @@ public class a
   
   public byte[] getData()
   {
-    return this.data;
+    return this.pbData;
   }
   
   public boolean isIncludeUnKnownField()
@@ -65,13 +65,13 @@ public class a
   public a parseFrom(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(2355);
-    this.data = paramArrayOfByte;
+    this.pbData = paramArrayOfByte;
     op(2, new Object[] { paramArrayOfByte });
     AppMethodBeat.o(2355);
     return this;
   }
   
-  public boolean populateBuilderWithField(f.a.a.a.a parama, a parama1, int paramInt)
+  public boolean populateBuilderWithField(g.a.a.a.a parama, a parama1, int paramInt)
   {
     boolean bool2 = false;
     AppMethodBeat.i(2356);
@@ -92,9 +92,9 @@ public class a
     AppMethodBeat.i(2350);
     validate();
     byte[] arrayOfByte = new byte[computeSize()];
-    f.a.a.c.a locala = new f.a.a.c.a(arrayOfByte);
+    g.a.a.c.a locala = new g.a.a.c.a(arrayOfByte);
     writeFields(locala);
-    locala.gCq();
+    locala.hPu();
     AppMethodBeat.o(2350);
     return arrayOfByte;
   }
@@ -104,7 +104,7 @@ public class a
     return this;
   }
   
-  public void writeFields(f.a.a.c.a parama)
+  public void writeFields(g.a.a.c.a parama)
   {
     AppMethodBeat.i(2353);
     op(0, new Object[] { parama });

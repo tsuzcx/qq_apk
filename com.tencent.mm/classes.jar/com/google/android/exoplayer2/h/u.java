@@ -8,47 +8,47 @@ import java.io.InputStream;
 public final class u<T>
   implements t.c
 {
-  public volatile long bFA;
-  private final a<? extends T> bFz;
-  private final g bhN;
-  public final j bxi;
+  private final a<? extends T> bFQ;
+  public volatile long bFR;
+  private final g bhK;
+  public final j bxj;
   private volatile boolean isCanceled;
   public volatile T result;
   public final int type;
   
   public u(g paramg, Uri paramUri, a<? extends T> parama)
   {
-    AppMethodBeat.i(211654);
-    this.bhN = paramg;
-    this.bxi = new j(paramUri);
+    AppMethodBeat.i(196068);
+    this.bhK = paramg;
+    this.bxj = new j(paramUri, 1);
     this.type = 4;
-    this.bFz = parama;
-    AppMethodBeat.o(211654);
+    this.bFQ = parama;
+    AppMethodBeat.o(196068);
   }
   
-  public final void vu()
+  public final void vA()
   {
     this.isCanceled = true;
   }
   
-  public final boolean vv()
+  public final boolean vB()
   {
     return this.isCanceled;
   }
   
-  public final void vw()
+  public final void vC()
   {
     AppMethodBeat.i(93101);
-    i locali = new i(this.bhN, this.bxi);
+    i locali = new i(this.bhK, this.bxj);
     try
     {
-      locali.checkOpened();
-      this.result = this.bFz.b(this.bhN.getUri(), locali);
+      locali.wH();
+      this.result = this.bFQ.b(this.bhK.getUri(), locali);
       return;
     }
     finally
     {
-      this.bFA = locali.totalBytesRead;
+      this.bFR = locali.bEN;
       x.closeQuietly(locali);
       AppMethodBeat.o(93101);
     }
@@ -61,7 +61,7 @@ public final class u<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.exoplayer2.h.u
  * JD-Core Version:    0.7.0.1
  */

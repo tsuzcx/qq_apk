@@ -1,13 +1,11 @@
 package com.tencent.mm.ui.chatting.d.b;
 
-import com.tencent.mm.storage.bv;
-import com.tencent.mm.ui.chatting.d.ad;
+import com.tencent.mm.az.a.b;
+import com.tencent.mm.ui.chatting.d.af;
 
 public abstract interface ah
-  extends ad
-{
-  public abstract void bO(bv parambv);
-}
+  extends a.b, af
+{}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar

@@ -6,50 +6,50 @@ import java.util.List;
 
 public final class b
 {
-  private List<Object> gyZ;
+  private List<Object> hlM;
   
   public b()
   {
     AppMethodBeat.i(168726);
-    this.gyZ = new ArrayList();
+    this.hlM = new ArrayList();
     AppMethodBeat.o(168726);
   }
   
-  public final Object[] ahF()
+  public final Object[] axR()
   {
     AppMethodBeat.i(168730);
-    Object[] arrayOfObject = this.gyZ.toArray();
-    this.gyZ.clear();
+    Object[] arrayOfObject = this.hlM.toArray();
+    this.hlM.clear();
     AppMethodBeat.o(168730);
     return arrayOfObject;
   }
   
-  public final void bd(Object paramObject)
+  public final void bm(Object paramObject)
   {
     AppMethodBeat.i(168729);
-    this.gyZ.add(paramObject);
+    this.hlM.add(paramObject);
     AppMethodBeat.o(168729);
   }
   
-  public final void dx(boolean paramBoolean)
+  public final void en(boolean paramBoolean)
   {
     AppMethodBeat.i(168728);
-    bd(Boolean.valueOf(paramBoolean));
+    bm(Boolean.valueOf(paramBoolean));
     AppMethodBeat.o(168728);
   }
   
-  public final void mu(int paramInt)
+  public final void pH(int paramInt)
   {
     AppMethodBeat.i(168727);
-    bd(Integer.valueOf(paramInt));
+    bm(Integer.valueOf(paramInt));
     AppMethodBeat.o(168727);
   }
   
-  public final void rl(long paramLong)
+  public final void zo(long paramLong)
   {
-    AppMethodBeat.i(195474);
-    bd(Long.valueOf(paramLong));
-    AppMethodBeat.o(195474);
+    AppMethodBeat.i(186285);
+    bm(Long.valueOf(paramLong));
+    AppMethodBeat.o(186285);
   }
 }
 

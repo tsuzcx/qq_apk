@@ -2,8 +2,8 @@ package com.tencent.mm.plugin.appbrand.jsapi.live;
 
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.h;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.rtmp.ITXLivePlayListener;
 import java.util.Iterator;
 import java.util.Set;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 final class a$8
   implements ITXLivePlayListener
 {
-  a$8(a parama, int paramInt, e parame) {}
+  a$8(a parama, int paramInt, h paramh) {}
   
   public final void onNetStatus(Bundle paramBundle)
   {
@@ -23,7 +23,7 @@ final class a$8
     JSONObject localJSONObject2;
     try
     {
-      localJSONObject1.put("livePlayerId", this.kFw);
+      localJSONObject1.put("livePlayerId", this.lJX);
       localJSONObject2 = new JSONObject();
       if (paramBundle != null)
       {
@@ -33,7 +33,7 @@ final class a$8
           String str = (String)localIterator.next();
           localJSONObject2.put(str, paramBundle.get(str));
           continue;
-          this.kFs.b(localc.PQ(localJSONObject1.toString()));
+          this.lJT.a(localc.Zh(localJSONObject1.toString()), null);
         }
       }
     }
@@ -49,16 +49,16 @@ final class a$8
   public final void onPlayEvent(int paramInt, Bundle paramBundle)
   {
     AppMethodBeat.i(145853);
-    ae.i("MicroMsg.JsApiInsertLivePlayer", "onPlayEvent errCode:%d", new Object[] { Integer.valueOf(paramInt) });
+    Log.i("MicroMsg.JsApiInsertLivePlayer", "onPlayEvent errCode:%d", new Object[] { Integer.valueOf(paramInt) });
     a.d locald = new a.d((byte)0);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("errCode", paramInt);
       localJSONObject.put("errMsg", paramBundle.getString("EVT_MSG"));
-      localJSONObject.put("livePlayerId", this.kFw);
+      localJSONObject.put("livePlayerId", this.lJX);
       label76:
-      this.kFs.b(locald.PQ(localJSONObject.toString()));
+      this.lJT.a(locald.Zh(localJSONObject.toString()), null);
       AppMethodBeat.o(145853);
       return;
     }
@@ -70,7 +70,7 @@ final class a$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.live.a.8
  * JD-Core Version:    0.7.0.1
  */

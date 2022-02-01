@@ -1,9 +1,9 @@
 package com.tencent.mm.plugin.subapp.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.vfs.o;
+import com.tencent.mm.vfs.s;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import junit.framework.Assert;
@@ -18,14 +18,14 @@ public final class c
     this.fileName = paramString;
   }
   
-  public static int HL(String paramString)
+  public static int Qy(String paramString)
   {
     AppMethodBeat.i(28935);
     if (paramString.length() >= 0) {}
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      paramString = new k(paramString);
+      paramString = new o(paramString);
       if (paramString.exists()) {
         break;
       }
@@ -42,7 +42,7 @@ public final class c
     return i;
   }
   
-  private boolean eqG()
+  private boolean ftf()
   {
     AppMethodBeat.i(169765);
     if (this.fileName.length() >= 0)
@@ -57,16 +57,16 @@ public final class c
     for (boolean bool = true;; bool = false)
     {
       Assert.assertTrue(bool);
-      ae.d("MicroMsg.SpxFileOperator", "Open file:" + this.file + " forWrite:false");
+      Log.d("MicroMsg.SpxFileOperator", "Open file:" + this.file + " forWrite:false");
       try
       {
-        this.file = o.dg(this.fileName, false);
+        this.file = s.dB(this.fileName, false);
         AppMethodBeat.o(169765);
         return true;
       }
       catch (Exception localException)
       {
-        ae.e("MicroMsg.SpxFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
+        Log.e("MicroMsg.SpxFileOperator", "ERR: OpenFile[" + this.fileName + "] failed:[" + localException.getMessage() + "]");
         this.file = null;
         AppMethodBeat.o(169765);
       }
@@ -76,7 +76,7 @@ public final class c
     return false;
   }
   
-  public final a To(int paramInt)
+  public final a abk(int paramInt)
   {
     AppMethodBeat.i(28938);
     a locala = new a();
@@ -86,7 +86,7 @@ public final class c
       AppMethodBeat.o(28938);
       return locala;
     }
-    if ((this.file == null) && (!eqG()))
+    if ((this.file == null) && (!ftf()))
     {
       locala.ret = -2;
       AppMethodBeat.o(28938);
@@ -98,28 +98,28 @@ public final class c
       long l = this.file.length();
       this.file.seek(paramInt);
       int j = this.file.read(locala.buf, 0, 6000);
-      ae.d("MicroMsg.SpxFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt + " readRet:" + j + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
+      Log.d("MicroMsg.SpxFileOperator", "DBG: ReadFile[" + this.fileName + "] readOffset:" + paramInt + " readRet:" + j + " fileNow:" + this.file.getFilePointer() + " fileSize:" + l);
       int i = j;
       if (j < 0) {
         i = 0;
       }
-      locala.diR = i;
-      locala.ixC = (i + paramInt);
+      locala.dAc = i;
+      locala.jsR = (i + paramInt);
       locala.ret = 0;
       AppMethodBeat.o(28938);
       return locala;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.SpxFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt + "  failed:[" + localException.getMessage() + "] ");
-      aNK();
+      Log.e("MicroMsg.SpxFileOperator", "ERR: ReadFile[" + this.fileName + "] Offset:" + paramInt + "  failed:[" + localException.getMessage() + "] ");
+      bhP();
       locala.ret = -1;
       AppMethodBeat.o(28938);
     }
     return locala;
   }
   
-  public final void aNK()
+  public final void bhP()
   {
     AppMethodBeat.i(28936);
     if (this.file != null) {
@@ -127,7 +127,7 @@ public final class c
       {
         this.file.close();
         this.file = null;
-        ae.d("MicroMsg.SpxFileOperator", "Close :" + this.fileName);
+        Log.d("MicroMsg.SpxFileOperator", "Close :" + this.fileName);
         AppMethodBeat.o(28936);
         return;
       }
@@ -139,14 +139,14 @@ public final class c
   public static final class a
   {
     public byte[] buf = null;
-    public int diR = 0;
-    public int ixC = 0;
+    public int dAc = 0;
+    public int jsR = 0;
     public int ret = 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.subapp.d.c
  * JD-Core Version:    0.7.0.1
  */

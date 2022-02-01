@@ -22,7 +22,7 @@ public final class a
   }
   
   /* Error */
-  public static boolean aaR(String paramString)
+  public static boolean akY(String paramString)
   {
     // Byte code:
     //   0: ldc 46
@@ -31,7 +31,7 @@ public final class a
     //   6: astore 12
     //   8: aload_0
     //   9: iconst_0
-    //   10: invokestatic 52	com/tencent/mm/vfs/o:dg	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
+    //   10: invokestatic 52	com/tencent/mm/vfs/s:dB	(Ljava/lang/String;Z)Ljava/io/RandomAccessFile;
     //   13: astore_0
     //   14: aload_0
     //   15: invokestatic 56	com/tencent/mm/plugin/downloader/d/a:g	(Ljava/io/RandomAccessFile;)Landroid/util/Pair;
@@ -440,19 +440,19 @@ public final class a
   
   static final class a
   {
-    private final ByteBuffer prP;
-    private final long prQ;
-    private final long prR;
-    private final long prS;
-    private final ByteBuffer prT;
+    private final ByteBuffer qHu;
+    private final long qHv;
+    private final long qHw;
+    private final long qHx;
+    private final ByteBuffer qHy;
     
     private a(ByteBuffer paramByteBuffer1, long paramLong1, long paramLong2, long paramLong3, ByteBuffer paramByteBuffer2)
     {
-      this.prP = paramByteBuffer1;
-      this.prQ = paramLong1;
-      this.prR = paramLong2;
-      this.prS = paramLong3;
-      this.prT = paramByteBuffer2;
+      this.qHu = paramByteBuffer1;
+      this.qHv = paramLong1;
+      this.qHw = paramLong2;
+      this.qHx = paramLong3;
+      this.qHy = paramByteBuffer2;
     }
   }
   
@@ -467,7 +467,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader.d.a
  * JD-Core Version:    0.7.0.1
  */

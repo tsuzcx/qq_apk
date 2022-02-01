@@ -21,7 +21,7 @@ import org.apache.commons.a.c;
 
 public final class a
 {
-  public static ArrayList<DetectCode> K(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
+  public static ArrayList<DetectCode> G(List<QbarNative.QBarCodeDetectInfo> paramList, List<QbarNative.QBarPoint> paramList1)
   {
     AppMethodBeat.i(3508);
     ArrayList localArrayList1 = new ArrayList();
@@ -53,24 +53,7 @@ public final class a
     return localArrayList1;
   }
   
-  private static void d(InputStream paramInputStream, String paramString)
-  {
-    AppMethodBeat.i(3506);
-    paramString = new File(paramString);
-    if ((!paramString.exists()) || (paramString.exists())) {
-      try
-      {
-        paramString.delete();
-        c.c(paramInputStream, paramString);
-        AppMethodBeat.o(3506);
-        return;
-      }
-      catch (IOException paramInputStream) {}
-    }
-    AppMethodBeat.o(3506);
-  }
-  
-  public static int fe(String paramString)
+  public static int cL(String paramString)
   {
     AppMethodBeat.i(3507);
     if (paramString != null) {}
@@ -92,6 +75,23 @@ public final class a
     return 0;
   }
   
+  private static void d(InputStream paramInputStream, String paramString)
+  {
+    AppMethodBeat.i(3506);
+    paramString = new File(paramString);
+    if ((!paramString.exists()) || (paramString.exists())) {
+      try
+      {
+        paramString.delete();
+        c.c(paramInputStream, paramString);
+        AppMethodBeat.o(3506);
+        return;
+      }
+      catch (IOException paramInputStream) {}
+    }
+    AppMethodBeat.o(3506);
+  }
+  
   public static boolean isNullOrNil(String paramString)
   {
     AppMethodBeat.i(3505);
@@ -104,7 +104,7 @@ public final class a
     return false;
   }
   
-  public static QbarNative.QbarAiModelParam lg(Context paramContext)
+  public static QbarNative.QbarAiModelParam lb(Context paramContext)
   {
     AppMethodBeat.i(3509);
     try
@@ -145,7 +145,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.scanlib.a
  * JD-Core Version:    0.7.0.1
  */

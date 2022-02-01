@@ -2,30 +2,30 @@ package com.tencent.mm.plugin.newtips.a;
 
 public final class d
 {
-  public static int wHP = 0;
-  public static int wHQ = 1;
-  public static int wHR = 1;
-  public static int wHS = 2;
-  public static int wHT = 3;
-  public static String wHU = "me";
-  public static String wHV = "me_setting";
-  public static String wHW = "me_setting_general";
-  public static String wHX = "me_setting_privacy";
-  public static String wHY = "me_setting_general_plugin";
-  public static int wHZ = 0;
-  public static int wIa = 1;
-  public static int wIb = 2;
-  public static int wIc = 3;
-  public static int wId = 4;
-  public static int wIe = 0;
-  public static int wIf = 1;
-  public static int wIg = 2;
-  public static String wIh = "3_1";
-  public static String wIi = "30001001_1";
+  public static int ACZ = 0;
+  public static int ADa = 1;
+  public static int ADb = 1;
+  public static int ADc = 2;
+  public static int ADd = 3;
+  public static String ADe = "me";
+  public static String ADf = "me_setting";
+  public static String ADg = "me_setting_general";
+  public static String ADh = "me_setting_privacy";
+  public static String ADi = "me_setting_general_plugin";
+  public static int ADj = 0;
+  public static int ADk = 1;
+  public static int ADl = 2;
+  public static int ADm = 3;
+  public static int ADn = 4;
+  public static int ADo = 0;
+  public static int ADp = 1;
+  public static int ADq = 2;
+  public static String ADr = "3_1";
+  public static String ADs = "30001001_1";
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.newtips.a.d
  * JD-Core Version:    0.7.0.1
  */

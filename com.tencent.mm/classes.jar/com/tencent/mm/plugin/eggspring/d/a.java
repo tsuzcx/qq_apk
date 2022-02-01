@@ -1,82 +1,136 @@
 package com.tencent.mm.plugin.eggspring.d;
 
-import android.content.Context;
-import android.content.Intent;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.br.d;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.plugin.appbrand.api.f;
-import com.tencent.mm.plugin.appbrand.service.p;
-import com.tencent.mm.protocal.protobuf.bsr;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.dtj;
+import com.tencent.mm.protocal.protobuf.dtk;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/net/NetSceneAcceptCoupon;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "discountCouponParams", "Lcom/tencent/mm/protobuf/ByteString;", "(Lcom/tencent/mm/protobuf/ByteString;)V", "callback", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "retCode", "", "getRetCode", "()Ljava/lang/Long;", "setRetCode", "(Ljava/lang/Long;)V", "Ljava/lang/Long;", "retMsg", "getRetMsg", "()Lcom/tencent/mm/protobuf/ByteString;", "setRetMsg", "rr", "Lcom/tencent/mm/modelbase/CommReqResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "", "irr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "Companion", "plugin-eggspring_release"})
 public final class a
+  extends q
+  implements m
 {
-  public static void a(Context paramContext, bsr parambsr)
+  public static final a qVi;
+  private i callback;
+  public Long qVg;
+  public b qVh;
+  private d rr;
+  
+  static
   {
-    AppMethodBeat.i(108142);
-    for (;;)
+    AppMethodBeat.i(108156);
+    qVi = new a((byte)0);
+    AppMethodBeat.o(108156);
+  }
+  
+  public a(b paramb)
+  {
+    AppMethodBeat.i(108155);
+    Object localObject = new d.a();
+    ((d.a)localObject).c((com.tencent.mm.bw.a)new dtj());
+    ((d.a)localObject).d((com.tencent.mm.bw.a)new dtk());
+    ((d.a)localObject).MB("/cgi-bin/mmpay-bin/mktsendaward");
+    ((d.a)localObject).sG(2812);
+    ((d.a)localObject).sI(0);
+    ((d.a)localObject).sJ(0);
+    localObject = ((d.a)localObject).aXF();
+    p.g(localObject, "builder.buildInstance()");
+    this.rr = ((d)localObject);
+    localObject = this.rr.aYJ();
+    if (localObject == null)
     {
-      try
-      {
-        ae.i("MicroMsg.AdJumpHelper", "handleLinkClick, type=" + parambsr.uIW);
-        int i = parambsr.uIW;
-        switch (i)
-        {
-        default: 
-          AppMethodBeat.o(108142);
-          return;
-        }
+      paramb = new t("null cannot be cast to non-null type com.tencent.mm.protocal.protobuf.SendAwardRequest");
+      AppMethodBeat.o(108155);
+      throw paramb;
+    }
+    ((dtj)localObject).MVz = paramb;
+    AppMethodBeat.o(108155);
+  }
+  
+  public final int doScene(g paramg, i parami)
+  {
+    AppMethodBeat.i(108153);
+    p.h(paramg, "dispatcher");
+    p.h(parami, "callback");
+    this.callback = parami;
+    int i = dispatch(paramg, (s)this.rr, (m)this);
+    AppMethodBeat.o(108153);
+    return i;
+  }
+  
+  public final int getType()
+  {
+    return 2812;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(108154);
+    Log.i("MicroMsg.NetSceneAcceptCoupon", "onGYNetEnd errType: %s, errCode: %s, errMsg: %s.", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    paramArrayOfByte = this.rr.aYK();
+    params = paramArrayOfByte;
+    if (!(paramArrayOfByte instanceof dtk)) {
+      params = null;
+    }
+    dtk localdtk = (dtk)params;
+    if (localdtk != null)
+    {
+      params = Long.valueOf(localdtk.LUH);
+      if (localdtk == null) {
+        break label196;
       }
-      catch (Exception paramContext)
-      {
-        ae.e("MicroMsg.AdJumpHelper", "handleLinkClick, exp=" + paramContext.toString());
-        AppMethodBeat.o(108142);
-        return;
+      paramArrayOfByte = localdtk.MVA;
+      label93:
+      Log.d("MicroMsg.NetSceneAcceptCoupon", "ret[%s] msg[%s].", new Object[] { params, paramArrayOfByte });
+      if (localdtk == null) {
+        break label202;
       }
-      paramContext = parambsr.Hgn;
-      parambsr = parambsr.Hgo;
-      ae.i("MicroMsg.AdJumpHelper", "jumpWeApp, name=" + paramContext + ", path=" + parambsr);
-      Object localObject = new f();
-      ((f)localObject).dlj = "";
-      ((f)localObject).username = paramContext;
-      ((f)localObject).jFL = parambsr;
-      ((f)localObject).scene = 1084;
-      ((p)g.ab(p.class)).a(ak.getContext(), (f)localObject);
-      AppMethodBeat.o(108142);
+      params = Long.valueOf(localdtk.LUH);
+      label129:
+      this.qVg = params;
+      if (localdtk == null) {
+        break label208;
+      }
+    }
+    label196:
+    label202:
+    label208:
+    for (params = localdtk.MVA;; params = null)
+    {
+      this.qVh = params;
+      params = this.callback;
+      if (params == null) {
+        p.btv("callback");
+      }
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
+      AppMethodBeat.o(108154);
       return;
-      parambsr = parambsr.mdj;
-      ae.i("MicroMsg.AdJumpHelper", "jumpH5, url=".concat(String.valueOf(parambsr)));
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("rawUrl", parambsr);
-      ((Intent)localObject).putExtra("useJs", true);
-      ((Intent)localObject).putExtra("geta8key_scene", 2);
-      d.b(paramContext, "webview", ".ui.tools.WebViewUI", (Intent)localObject);
-      AppMethodBeat.o(108142);
-      return;
-      parambsr = parambsr.Hgp;
-      ae.i("MicroMsg.AdJumpHelper", "jumpAdCanvas, canvasXml=".concat(String.valueOf(parambsr)));
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("sns_landing_pages_xml", parambsr);
-      ((Intent)localObject).putExtra("sns_landig_pages_from_source", 14);
-      ((Intent)localObject).putExtra("sns_landing_pages_need_enter_and_exit_animation", false);
-      d.b(paramContext, "sns", ".ui.SnsAdNativeLandingPagesPreviewUI", (Intent)localObject);
-      AppMethodBeat.o(108142);
-      return;
-      parambsr = parambsr.Hgq;
-      ae.i("MicroMsg.AdJumpHelper", "jumpEmojiDetail, productID=".concat(String.valueOf(parambsr)));
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("preceding_scence", 8);
-      ((Intent)localObject).putExtra("download_entrance_scene", 16);
-      ((Intent)localObject).putExtra("extra_id", parambsr);
-      d.b(paramContext, "emoji", ".ui.EmojiStoreDetailUI", (Intent)localObject);
+      params = null;
+      break;
+      paramArrayOfByte = null;
+      break label93;
+      params = null;
+      break label129;
     }
   }
+  
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/eggspring/net/NetSceneAcceptCoupon$Companion;", "", "()V", "TAG", "", "plugin-eggspring_release"})
+  public static final class a {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.eggspring.d.a
  * JD-Core Version:    0.7.0.1
  */

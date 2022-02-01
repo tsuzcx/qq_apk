@@ -15,21 +15,21 @@ import com.tencent.mm.ck.a.a;
 public class WeImageButton
   extends AppCompatImageButton
 {
-  private int FEh;
-  private int Lvw;
-  private float Lvx;
-  private int Lvy;
-  private boolean Lvz;
+  private int Kxl;
+  private int QRf;
+  private float QRg;
+  private int QRh;
+  private boolean QRi;
   private int mAlpha;
   
   public WeImageButton(Context paramContext)
   {
     super(paramContext, null);
     AppMethodBeat.i(159405);
-    this.Lvx = 1.0F;
+    this.QRg = 1.0F;
     this.mAlpha = 255;
-    this.Lvy = 255;
-    this.Lvz = true;
+    this.QRh = 255;
+    this.QRi = true;
     init(paramContext, null);
     AppMethodBeat.o(159405);
   }
@@ -38,10 +38,10 @@ public class WeImageButton
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(159406);
-    this.Lvx = 1.0F;
+    this.QRg = 1.0F;
     this.mAlpha = 255;
-    this.Lvy = 255;
-    this.Lvz = true;
+    this.QRh = 255;
+    this.QRi = true;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(159406);
   }
@@ -50,10 +50,10 @@ public class WeImageButton
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(159407);
-    this.Lvx = 1.0F;
+    this.QRg = 1.0F;
     this.mAlpha = 255;
-    this.Lvy = 255;
-    this.Lvz = true;
+    this.QRh = 255;
+    this.QRi = true;
     init(paramContext, paramAttributeSet);
     AppMethodBeat.o(159407);
   }
@@ -61,16 +61,16 @@ public class WeImageButton
   private void init(Context paramContext, AttributeSet paramAttributeSet)
   {
     AppMethodBeat.i(159409);
-    this.Lvw = paramContext.getResources().getColor(2131099732);
+    this.QRf = paramContext.getResources().getColor(2131099746);
     if (paramAttributeSet != null)
     {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, a.a.WeImageBtn);
-      this.FEh = paramContext.getColor(0, this.Lvw);
+      this.Kxl = paramContext.getColor(1, this.QRf);
       paramContext.recycle();
       AppMethodBeat.o(159409);
       return;
     }
-    this.FEh = this.Lvw;
+    this.Kxl = this.QRf;
     AppMethodBeat.o(159409);
   }
   
@@ -78,11 +78,11 @@ public class WeImageButton
   {
     AppMethodBeat.i(159410);
     super.onDraw(paramCanvas);
-    if ((getDrawable() != null) && (this.Lvz))
+    if ((getDrawable() != null) && (this.QRi))
     {
-      paramCanvas = new PorterDuffColorFilter(this.FEh, PorterDuff.Mode.SRC_ATOP);
+      paramCanvas = new PorterDuffColorFilter(this.Kxl, PorterDuff.Mode.SRC_ATOP);
       getDrawable().setColorFilter(paramCanvas);
-      this.Lvz = false;
+      this.QRi = false;
     }
     AppMethodBeat.o(159410);
   }
@@ -90,15 +90,15 @@ public class WeImageButton
   public void setIconColor(int paramInt)
   {
     AppMethodBeat.i(159408);
-    this.FEh = paramInt;
-    this.Lvz = true;
+    this.Kxl = paramInt;
+    this.QRi = true;
     invalidate();
     AppMethodBeat.o(159408);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.widget.imageview.WeImageButton
  * JD-Core Version:    0.7.0.1
  */

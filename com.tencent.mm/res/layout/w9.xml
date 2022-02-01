@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="horizontal" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/k_" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/k_" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:gravity="center" android:id="@id/ear" android:layout_width="20.0dip" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" />
+        <TextView android:id="@id/bfe" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textIsSelectable="true" />
+    </LinearLayout>
+    <View android:background="@color/a7t" android:layout_width="fill_parent" android:layout_height="1.0px" />
+</LinearLayout>

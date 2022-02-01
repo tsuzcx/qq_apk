@@ -10,12 +10,12 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public class a
   implements b
 {
-  protected c crt;
-  protected volatile boolean cvZ;
+  protected c cDJ;
+  protected volatile boolean cJY;
   protected int id;
   public String type;
   
-  public final String BN()
+  public final String Lb()
   {
     AppMethodBeat.i(139353);
     String str = d.o(this.type, this.id);
@@ -23,24 +23,24 @@ public class a
     return str;
   }
   
-  public final c GQ()
+  public void PQ()
   {
-    return this.crt;
+    this.cJY = false;
   }
   
-  public void Gh()
+  public final c QJ()
   {
-    this.cvZ = false;
+    return this.cDJ;
   }
   
   public final void a(c paramc)
   {
-    this.crt = paramc;
+    this.cDJ = paramc;
   }
   
   public void e(SurfaceTexture paramSurfaceTexture)
   {
-    this.cvZ = true;
+    this.cJY = true;
   }
   
   public boolean g(com.tencent.luggage.xweb_ext.extendplugin.a parama)
@@ -63,7 +63,7 @@ public class a
     return null;
   }
   
-  public void l(MotionEvent paramMotionEvent) {}
+  public void o(MotionEvent paramMotionEvent) {}
   
   public void s(Bitmap paramBitmap) {}
   
@@ -79,7 +79,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.luggage.xweb_ext.extendplugin.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -2,29 +2,27 @@ package com.tencent.mm.plugin.wear.model.e;
 
 import android.os.Looper;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.audio.b.g.a;
-import com.tencent.mm.g.a.zg;
-import com.tencent.mm.g.a.zi;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.model.x;
-import com.tencent.mm.modelvoice.o;
-import com.tencent.mm.modelvoice.s;
-import com.tencent.mm.n.e;
+import com.tencent.mm.g.a.aan;
+import com.tencent.mm.g.a.aap;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.n.h;
+import com.tencent.mm.plugin.boots.a.b;
 import com.tencent.mm.plugin.wear.model.j;
-import com.tencent.mm.protocal.protobuf.djk;
-import com.tencent.mm.protocal.protobuf.eek;
-import com.tencent.mm.protocal.protobuf.efe;
-import com.tencent.mm.protocal.protobuf.eff;
-import com.tencent.mm.protocal.protobuf.efg;
-import com.tencent.mm.protocal.protobuf.efh;
-import com.tencent.mm.protocal.protobuf.efl;
-import com.tencent.mm.protocal.protobuf.ehg;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.br;
-import java.io.ByteArrayInputStream;
+import com.tencent.mm.protocal.protobuf.ecw;
+import com.tencent.mm.protocal.protobuf.eys;
+import com.tencent.mm.protocal.protobuf.ezm;
+import com.tencent.mm.protocal.protobuf.ezn;
+import com.tencent.mm.protocal.protobuf.ezo;
+import com.tencent.mm.protocal.protobuf.ezp;
+import com.tencent.mm.protocal.protobuf.ezt;
+import com.tencent.mm.protocal.protobuf.fbx;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.storage.bw;
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.LinkedList;
@@ -33,7 +31,7 @@ import java.util.List;
 public final class m
   extends a
 {
-  protected final boolean WB(int paramInt)
+  protected final boolean afh(int paramInt)
   {
     switch (paramInt)
     {
@@ -44,7 +42,7 @@ public final class m
     return true;
   }
   
-  public final List<Integer> eOv()
+  public final List<Integer> fWe()
   {
     AppMethodBeat.i(30094);
     ArrayList localArrayList = new ArrayList();
@@ -61,7 +59,7 @@ public final class m
   protected final byte[] s(int paramInt, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(30095);
-    ((com.tencent.mm.plugin.boots.a.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.boots.a.c.class)).eO(com.tencent.mm.plugin.boots.a.b.nZF, 1171);
+    ((com.tencent.mm.plugin.boots.a.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.boots.a.c.class)).fb(b.pkD, 1171);
     switch (paramInt)
     {
     }
@@ -69,87 +67,87 @@ public final class m
     {
       AppMethodBeat.o(30095);
       return null;
-      Object localObject = new efh();
+      Object localObject = new ezp();
       try
       {
-        ((efh)localObject).parseFrom(paramArrayOfByte);
-        com.tencent.mm.plugin.wear.model.a.eOe().a(new a((efh)localObject));
-        com.tencent.mm.plugin.wear.model.a.eOb().aGJ(((efh)localObject).HGP);
-        com.tencent.mm.plugin.wear.model.c.a.iT(2, ((efh)localObject).Scene);
-        com.tencent.mm.plugin.wear.model.c.a.Wz(2);
+        ((ezp)localObject).parseFrom(paramArrayOfByte);
+        com.tencent.mm.plugin.wear.model.a.fVN().a(new m.a((ezp)localObject));
+        com.tencent.mm.plugin.wear.model.a.fVK().aWl(((ezp)localObject).MRZ);
+        com.tencent.mm.plugin.wear.model.c.a.jZ(2, ((ezp)localObject).Scene);
+        com.tencent.mm.plugin.wear.model.c.a.aff(2);
         continue;
-        localObject = new efg();
+        localObject = new ezo();
       }
       catch (IOException paramArrayOfByte)
       {
         try
         {
-          ((efg)localObject).parseFrom(paramArrayOfByte);
-          com.tencent.mm.plugin.messenger.a.g.doC().aa(((efg)localObject).HGP, ((efg)localObject).FZl, x.Bb(((efg)localObject).HGP));
-          bc.aCg();
-          com.tencent.mm.model.c.azL().aVc(((efg)localObject).HGP);
-          com.tencent.mm.plugin.wear.model.c.a.iT(3, ((efg)localObject).Scene);
-          com.tencent.mm.plugin.wear.model.c.a.Wz(5);
+          ((ezo)localObject).parseFrom(paramArrayOfByte);
+          com.tencent.mm.plugin.messenger.a.g.eir().ad(((ezo)localObject).MRZ, ((ezo)localObject).KTg, ab.JG(((ezo)localObject).MRZ));
+          bg.aVF();
+          com.tencent.mm.model.c.aST().bka(((ezo)localObject).MRZ);
+          com.tencent.mm.plugin.wear.model.c.a.jZ(3, ((ezo)localObject).Scene);
+          com.tencent.mm.plugin.wear.model.c.a.aff(5);
           continue;
-          localObject = new eff();
+          localObject = new ezn();
         }
         catch (IOException paramArrayOfByte)
         {
           try
           {
-            ((eff)localObject).parseFrom(paramArrayOfByte);
-            com.tencent.mm.plugin.messenger.a.g.doC().aa(((eff)localObject).HGP, ((eff)localObject).FZl, x.Bb(((eff)localObject).HGP));
-            ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().v(ak.getContext(), ((eff)localObject).HGP, ((eff)localObject).MD5);
-            bc.aCg();
-            com.tencent.mm.model.c.azL().aVc(((eff)localObject).HGP);
-            com.tencent.mm.plugin.wear.model.c.a.iT(8, ((eff)localObject).Scene);
-            com.tencent.mm.plugin.wear.model.c.a.Wz(4);
+            ((ezn)localObject).parseFrom(paramArrayOfByte);
+            com.tencent.mm.plugin.messenger.a.g.eir().ad(((ezn)localObject).MRZ, ((ezn)localObject).KTg, ab.JG(((ezn)localObject).MRZ));
+            ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().u(MMApplicationContext.getContext(), ((ezn)localObject).MRZ, ((ezn)localObject).MD5);
+            bg.aVF();
+            com.tencent.mm.model.c.aST().bka(((ezn)localObject).MRZ);
+            com.tencent.mm.plugin.wear.model.c.a.jZ(8, ((ezn)localObject).Scene);
+            com.tencent.mm.plugin.wear.model.c.a.aff(4);
             continue;
-            localObject = new efe();
+            localObject = new ezm();
           }
           catch (IOException paramArrayOfByte)
           {
             try
             {
-              ((efe)localObject).parseFrom(paramArrayOfByte);
-              ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().v(ak.getContext(), ((efe)localObject).HGP, ((efe)localObject).MD5);
-              bc.aCg();
-              com.tencent.mm.model.c.azL().aVc(((efe)localObject).HGP);
-              com.tencent.mm.plugin.wear.model.c.a.iT(7, ((efe)localObject).Scene);
-              com.tencent.mm.plugin.wear.model.c.a.Wz(3);
+              ((ezm)localObject).parseFrom(paramArrayOfByte);
+              ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getEmojiMgr().u(MMApplicationContext.getContext(), ((ezm)localObject).MRZ, ((ezm)localObject).MD5);
+              bg.aVF();
+              com.tencent.mm.model.c.aST().bka(((ezm)localObject).MRZ);
+              com.tencent.mm.plugin.wear.model.c.a.jZ(7, ((ezm)localObject).Scene);
+              com.tencent.mm.plugin.wear.model.c.a.aff(3);
               continue;
-              localObject = new efl();
+              localObject = new ezt();
             }
             catch (IOException paramArrayOfByte)
             {
               try
               {
-                ((efl)localObject).parseFrom(paramArrayOfByte);
-                com.tencent.mm.plugin.wear.model.a.eOc();
-                paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.eOd().DOs.DPe;
+                ((ezt)localObject).parseFrom(paramArrayOfByte);
+                com.tencent.mm.plugin.wear.model.a.fVL();
+                paramArrayOfByte = com.tencent.mm.plugin.wear.model.a.fVM().IxH.Iyu;
                 if (paramArrayOfByte == null)
                 {
-                  ae.e("MicroMsg.Wear.WearBizLogic", "logicRequest is null");
+                  Log.e("MicroMsg.Wear.WearBizLogic", "logicRequest is null");
                   continue;
                 }
-                ae.i("MicroMsg.Wear.WearBizLogic", "receive step count %d | time %s", new Object[] { Integer.valueOf(((efl)localObject).Ijo), com.tencent.mm.pluginsdk.i.i.formatTime("yyyy-MM-dd HH:mm:ss", ((efl)localObject).HuS / 1000L) });
-                localehg = new ehg();
-                djk localdjk = new djk();
-                if (((efl)localObject).Ijo > 0)
+                Log.i("MicroMsg.Wear.WearBizLogic", "receive step count %d | time %s", new Object[] { Integer.valueOf(((ezt)localObject).NvS), com.tencent.mm.pluginsdk.i.f.formatTime("yyyy-MM-dd HH:mm:ss", ((ezt)localObject).MDQ / 1000L) });
+                localfbx = new fbx();
+                ecw localecw = new ecw();
+                if (((ezt)localObject).NvS > 0)
                 {
-                  paramInt = ((efl)localObject).Ijo;
-                  localdjk.nJz = paramInt;
-                  localdjk.Timestamp = ((int)(((efl)localObject).HuS / 1000L));
+                  paramInt = ((ezt)localObject).NvS;
+                  localecw.oUu = paramInt;
+                  localecw.Timestamp = ((int)(((ezt)localObject).MDQ / 1000L));
                   Calendar localCalendar = Calendar.getInstance();
-                  localCalendar.setTimeInMillis(((efl)localObject).HuS);
-                  localdjk.HRg = localCalendar.get(1);
-                  localdjk.HRh = (localCalendar.get(2) + 1);
-                  localdjk.HRi = localCalendar.get(5);
-                  localdjk.HRj = localCalendar.get(11);
-                  localdjk.HRk = localCalendar.get(12);
-                  localdjk.HRl = localCalendar.get(13);
-                  localehg.IkW.add(localdjk);
-                  localObject = new zi();
+                  localCalendar.setTimeInMillis(((ezt)localObject).MDQ);
+                  localecw.Ndh = localCalendar.get(1);
+                  localecw.Ndi = (localCalendar.get(2) + 1);
+                  localecw.Ndj = localCalendar.get(5);
+                  localecw.Ndk = localCalendar.get(11);
+                  localecw.Ndl = localCalendar.get(12);
+                  localecw.Ndm = localCalendar.get(13);
+                  localfbx.NxX.add(localecw);
+                  localObject = new aap();
                 }
               }
               catch (IOException paramArrayOfByte)
@@ -158,17 +156,17 @@ public final class m
                 {
                   for (;;)
                   {
-                    ehg localehg;
-                    ((zi)localObject).dPz.data = localehg.toByteArray();
+                    fbx localfbx;
+                    ((aap)localObject).ehC.data = localfbx.toByteArray();
                     label661:
-                    ((zi)localObject).dPz.dlO = 4;
-                    ((zi)localObject).dPz.cVh = paramArrayOfByte.IiL;
-                    ((zi)localObject).dPz.dpB = "gh_43f2581f6fd6";
-                    com.tencent.mm.sdk.b.a.IvT.l((com.tencent.mm.sdk.b.b)localObject);
+                    ((aap)localObject).ehC.dDe = 4;
+                    ((aap)localObject).ehC.dGL = paramArrayOfByte.Nvp;
+                    ((aap)localObject).ehC.dGP = "gh_43f2581f6fd6";
+                    EventCenter.instance.publish((IEvent)localObject);
                     break;
                     paramInt = 0;
                     continue;
-                    if ((!com.tencent.mm.plugin.wear.model.a.eOd().eOn()) || (com.tencent.mm.n.g.acL().getInt("WearLuckyBlock", 0) != 0))
+                    if ((!com.tencent.mm.plugin.wear.model.a.fVM().fVW()) || (h.aqJ().getInt("WearLuckyBlock", 0) != 0))
                     {
                       AppMethodBeat.o(30095);
                       return null;
@@ -184,12 +182,12 @@ public final class m
                       label761:
                       break label761;
                     }
-                    paramArrayOfByte = new zg();
-                    paramArrayOfByte.dPn.action = 1;
-                    paramArrayOfByte.dPn.dnX = l1;
-                    com.tencent.mm.sdk.b.a.IvT.a(paramArrayOfByte, Looper.getMainLooper());
-                    com.tencent.mm.plugin.wear.model.c.a.iT(11, 0);
-                    com.tencent.mm.plugin.wear.model.c.a.Wz(11);
+                    paramArrayOfByte = new aan();
+                    paramArrayOfByte.ehq.action = 1;
+                    paramArrayOfByte.ehq.dFm = l1;
+                    EventCenter.instance.asyncPublish(paramArrayOfByte, Looper.getMainLooper());
+                    com.tencent.mm.plugin.wear.model.c.a.jZ(11, 0);
+                    com.tencent.mm.plugin.wear.model.c.a.aff(11);
                     break;
                     paramArrayOfByte = paramArrayOfByte;
                     continue;
@@ -210,60 +208,6 @@ public final class m
           }
         }
       }
-    }
-  }
-  
-  static final class a
-    extends com.tencent.mm.plugin.wear.model.f.d
-  {
-    private efh DPg;
-    
-    public a(efh paramefh)
-    {
-      this.DPg = paramefh;
-    }
-    
-    public final void execute()
-    {
-      AppMethodBeat.i(30093);
-      String str = s.Iv(this.DPg.HGP);
-      ae.i("MicroMsg.Wear.HttpReplyServer", "get fileName=%s", new Object[] { str });
-      Object localObject = s.Y(str, false);
-      ae.i("MicroMsg.Wear.HttpReplyServer", "get fullPath=%s", new Object[] { localObject });
-      ByteArrayInputStream localByteArrayInputStream = new ByteArrayInputStream(this.DPg.FQS.toByteArray());
-      com.tencent.mm.audio.e.c localc = new com.tencent.mm.audio.e.c(8000, 16000);
-      localc.gI((String)localObject);
-      localObject = new byte[320];
-      int i = 0;
-      for (;;)
-      {
-        try
-        {
-          int j = localByteArrayInputStream.read((byte[])localObject, 0, 320);
-          i = j;
-        }
-        catch (IOException localIOException)
-        {
-          continue;
-        }
-        if (i <= 0) {
-          continue;
-        }
-        localc.a(new g.a((byte[])localObject, i), 0, false);
-      }
-      localc.Rx();
-      ae.i("MicroMsg.Wear.HttpReplyServer", "amr compress finish");
-      s.ax(str, (int)this.DPg.Ijj);
-      o.aNY().run();
-      ae.i("MicroMsg.Wear.HttpReplyServer", "run service to send the voice");
-      bc.aCg();
-      com.tencent.mm.model.c.azL().aVc(this.DPg.HGP);
-      AppMethodBeat.o(30093);
-    }
-    
-    public final String getName()
-    {
-      return "SendVioceMsgTask";
     }
   }
 }

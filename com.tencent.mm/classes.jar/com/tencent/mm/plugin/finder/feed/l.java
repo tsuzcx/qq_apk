@@ -1,6 +1,6 @@
 package com.tencent.mm.plugin.finder.feed;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelatedTimelineContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
+@kotlin.l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/feed/FinderFeedRelTimelineContract;", "", "()V", "Presenter", "ViewCallback", "plugin-finder_release"})
 public final class l {}
 
 

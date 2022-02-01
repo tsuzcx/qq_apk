@@ -6,9 +6,9 @@ public class UnwindBenckmarkTest
 {
   static
   {
-    AppMethodBeat.i(195231);
+    AppMethodBeat.i(199070);
     System.loadLibrary("wxperf-jni");
-    AppMethodBeat.o(195231);
+    AppMethodBeat.o(199070);
   }
   
   public static native void benchmarkInitNative();

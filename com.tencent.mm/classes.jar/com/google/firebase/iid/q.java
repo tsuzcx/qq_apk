@@ -8,22 +8,22 @@ import org.json.JSONObject;
 
 final class q
 {
-  private static final long bLD;
-  final String bLE;
-  private final String bLF;
+  private static final long bLT;
+  final String bLU;
+  private final String bLV;
   private final long timestamp;
   
   static
   {
     AppMethodBeat.i(4200);
-    bLD = TimeUnit.DAYS.toMillis(7L);
+    bLT = TimeUnit.DAYS.toMillis(7L);
     AppMethodBeat.o(4200);
   }
   
   private q(String paramString1, String paramString2, long paramLong)
   {
-    this.bLE = paramString1;
-    this.bLF = paramString2;
+    this.bLU = paramString1;
+    this.bLV = paramString2;
     this.timestamp = paramLong;
   }
   
@@ -81,7 +81,7 @@ final class q
   final boolean bS(String paramString)
   {
     AppMethodBeat.i(4199);
-    if ((System.currentTimeMillis() > this.timestamp + bLD) || (!paramString.equals(this.bLF)))
+    if ((System.currentTimeMillis() > this.timestamp + bLT) || (!paramString.equals(this.bLV)))
     {
       AppMethodBeat.o(4199);
       return true;
@@ -92,7 +92,7 @@ final class q
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.firebase.iid.q
  * JD-Core Version:    0.7.0.1
  */

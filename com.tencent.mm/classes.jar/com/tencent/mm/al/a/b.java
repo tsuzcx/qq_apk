@@ -2,56 +2,59 @@ package com.tencent.mm.al.a;
 
 import android.database.Cursor;
 import android.os.Looper;
-import com.tencent.e.h;
-import com.tencent.e.i;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.al.ag;
 import com.tencent.mm.al.q;
-import com.tencent.mm.model.x;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.r;
+import com.tencent.mm.model.ab;
+import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
+import com.tencent.mm.sdk.storage.MStorageEvent;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.t;
 import java.util.ArrayList;
 import java.util.List;
 
 public final class b
-  extends j<a>
-  implements n.b
+  extends MAutoStorage<a>
+  implements MStorageEx.IOnStorageChange
 {
   public static final String[] SQL_CREATE;
-  public com.tencent.mm.sdk.e.e db;
-  final com.tencent.mm.sdk.e.l<a, b.a.b> hSD;
+  public ISQLiteDatabase db;
+  private final MStorageEvent<a, b.a.b> iNS;
   
   static
   {
     AppMethodBeat.i(124198);
-    SQL_CREATE = new String[] { j.getCreateSQLs(a.info, "BizChatConversation") };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(a.info, "BizChatConversation") };
     AppMethodBeat.o(124198);
   }
   
-  public b(final com.tencent.mm.sdk.e.e parame)
+  public b(final ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, a.info, "BizChatConversation", null);
+    super(paramISQLiteDatabase, a.info, "BizChatConversation", null);
     AppMethodBeat.i(124179);
-    this.hSD = new com.tencent.mm.sdk.e.l() {};
-    this.db = parame;
-    h.MqF.r(new Runnable()
+    this.iNS = new MStorageEvent() {};
+    this.db = paramISQLiteDatabase;
+    h.RTc.o(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(188898);
-        parame.execSQL("BizChatConversation", "CREATE INDEX IF NOT EXISTS BizChatConv_bizChatIdIndex ON BizChatConversation ( bizChatId )");
-        parame.execSQL("BizChatConversation", "CREATE INDEX IF NOT EXISTS BizChatConv_brandUserNameIndex ON BizChatConversation ( brandUserName )");
-        parame.execSQL("BizChatConversation", "CREATE INDEX IF NOT EXISTS unreadCountIndex ON BizChatConversation ( unReadCount )");
-        AppMethodBeat.o(188898);
+        AppMethodBeat.i(212195);
+        paramISQLiteDatabase.execSQL("BizChatConversation", "CREATE INDEX IF NOT EXISTS BizChatConv_bizChatIdIndex ON BizChatConversation ( bizChatId )");
+        paramISQLiteDatabase.execSQL("BizChatConversation", "CREATE INDEX IF NOT EXISTS BizChatConv_brandUserNameIndex ON BizChatConversation ( brandUserName )");
+        paramISQLiteDatabase.execSQL("BizChatConversation", "CREATE INDEX IF NOT EXISTS unreadCountIndex ON BizChatConversation ( unReadCount )");
+        AppMethodBeat.o(212195);
       }
     }, 30000L);
     int j = 0;
-    Cursor localCursor = parame.a("PRAGMA table_info( BizChatConversation)", null, 2);
+    Cursor localCursor = paramISQLiteDatabase.rawQuery("PRAGMA table_info( BizChatConversation)", null, 2);
     do
     {
       i = j;
@@ -63,9 +66,9 @@ public final class b
     int i = 1;
     localCursor.close();
     if (i == 0) {
-      parame.execSQL("BizChatConversation", "update BizChatConversation set flag = lastMsgTime");
+      paramISQLiteDatabase.execSQL("BizChatConversation", "update BizChatConversation set flag = lastMsgTime");
     }
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().a(this);
+    ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().add(this);
     AppMethodBeat.o(124179);
   }
   
@@ -86,7 +89,7 @@ public final class b
         paramLong = a(parama, paramLong);
         AppMethodBeat.o(124192);
         return paramLong;
-        paramLong = bu.fpO();
+        paramLong = Util.nowMilliSecond();
       }
     }
     paramLong = a(parama, paramLong);
@@ -112,12 +115,12 @@ public final class b
     {
       String str = parama.field_brandUserName;
       long l = parama.field_bizChatId;
-      parama.field_msgCount = ((q)com.tencent.mm.kernel.g.ab(q.class)).azJ().cg(str, l);
-      ae.i("MicroMsg.BizConversationStorage", "getMsgCount from message table");
+      parama.field_msgCount = ((q)com.tencent.mm.kernel.g.af(q.class)).aSR().cc(str, l);
+      Log.i("MicroMsg.BizConversationStorage", "getMsgCount from message table");
     }
     for (;;)
     {
-      ae.i("MicroMsg.BizConversationStorage", "countMsg %d talker :%s deleteCount:%d insertCount:%d", new Object[] { Integer.valueOf(parama.field_msgCount), Long.valueOf(parama.field_bizChatId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+      Log.i("MicroMsg.BizConversationStorage", "countMsg %d talker :%s deleteCount:%d insertCount:%d", new Object[] { Integer.valueOf(parama.field_msgCount), Long.valueOf(parama.field_bizChatId), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
       AppMethodBeat.o(124190);
       return;
       if (paramInt1 > 0)
@@ -125,7 +128,7 @@ public final class b
         parama.field_msgCount -= paramInt1;
         if (parama.field_msgCount < 0)
         {
-          ae.e("MicroMsg.BizConversationStorage", "msg < 0 ,some path must be ignore!");
+          Log.e("MicroMsg.BizConversationStorage", "msg < 0 ,some path must be ignore!");
           parama.field_msgCount = 0;
         }
       }
@@ -141,7 +144,7 @@ public final class b
     AppMethodBeat.i(124194);
     if (parama == null)
     {
-      ae.e("MicroMsg.BizConversationStorage", "isPlacedTop failed, conversation null");
+      Log.e("MicroMsg.BizConversationStorage", "isPlacedTop failed, conversation null");
       AppMethodBeat.o(124194);
       return false;
     }
@@ -154,16 +157,148 @@ public final class b
     return false;
   }
   
-  public final int EM(String paramString)
+  public final a Al(long paramLong)
+  {
+    AppMethodBeat.i(124184);
+    a locala = new a();
+    locala.field_bizChatId = paramLong;
+    super.get(locala, new String[0]);
+    AppMethodBeat.o(124184);
+    return locala;
+  }
+  
+  public final boolean Am(long paramLong)
+  {
+    AppMethodBeat.i(124185);
+    a locala = Al(paramLong);
+    boolean bool = super.delete(locala, new String[] { "bizChatId" });
+    if (bool)
+    {
+      b.a.b localb = new b.a.b();
+      localb.iPE = locala.field_bizChatId;
+      localb.brandName = locala.field_brandUserName;
+      localb.iPD = b.a.a.iPA;
+      localb.iPF = locala;
+      this.iNS.event(localb);
+      this.iNS.doNotify();
+    }
+    AppMethodBeat.o(124185);
+    return bool;
+  }
+  
+  public final boolean An(long paramLong)
+  {
+    AppMethodBeat.i(124191);
+    a locala = Al(paramLong);
+    if ((locala.field_unReadCount == 0) && (locala.field_bizChatId == paramLong))
+    {
+      AppMethodBeat.o(124191);
+      return true;
+    }
+    locala.field_unReadCount = 0;
+    locala.field_atCount = 0;
+    locala.field_atAll = 0;
+    b(locala);
+    AppMethodBeat.o(124191);
+    return true;
+  }
+  
+  public final boolean Ao(long paramLong)
+  {
+    AppMethodBeat.i(124193);
+    boolean bool = c(Al(paramLong));
+    AppMethodBeat.o(124193);
+    return bool;
+  }
+  
+  public final boolean Ap(long paramLong)
+  {
+    AppMethodBeat.i(124195);
+    Al(paramLong);
+    a locala = Al(paramLong);
+    boolean bool = this.db.execSQL("BizChatConversation", "update BizChatConversation set flag = " + a(locala, 2, locala.field_lastMsgTime) + " where bizChatId = " + locala.field_bizChatId);
+    if (bool)
+    {
+      locala = Al(locala.field_bizChatId);
+      b.a.b localb = new b.a.b();
+      localb.iPE = locala.field_bizChatId;
+      localb.brandName = locala.field_brandUserName;
+      localb.iPD = b.a.a.iPB;
+      localb.iPF = locala;
+      this.iNS.event(localb);
+      this.iNS.doNotify();
+    }
+    AppMethodBeat.o(124195);
+    return bool;
+  }
+  
+  public final boolean Aq(long paramLong)
+  {
+    AppMethodBeat.i(124196);
+    a locala = Al(paramLong);
+    boolean bool = this.db.execSQL("BizChatConversation", "update BizChatConversation set flag = " + a(locala, 3, locala.field_lastMsgTime) + " where bizChatId = " + locala.field_bizChatId);
+    if (bool)
+    {
+      locala = Al(locala.field_bizChatId);
+      b.a.b localb = new b.a.b();
+      localb.iPE = locala.field_bizChatId;
+      localb.brandName = locala.field_brandUserName;
+      localb.iPD = b.a.a.iPB;
+      localb.iPF = locala;
+      this.iNS.event(localb);
+      this.iNS.doNotify();
+    }
+    AppMethodBeat.o(124196);
+    return bool;
+  }
+  
+  public final boolean NA(String paramString)
+  {
+    AppMethodBeat.i(212198);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("delete from BizChatConversation");
+    ((StringBuilder)localObject).append(" where brandUserName = '").append(paramString).append("' ");
+    localObject = ((StringBuilder)localObject).toString();
+    boolean bool = this.db.execSQL("BizChatConversation", (String)localObject);
+    Log.i("MicroMsg.BizConversationStorage", "deleteByBrandUserName sql %s,%s", new Object[] { localObject, Boolean.valueOf(bool) });
+    if (bool)
+    {
+      localObject = new a();
+      b.a.b localb = new b.a.b();
+      localb.iPE = -1L;
+      localb.brandName = paramString;
+      localb.iPD = b.a.a.iPA;
+      localb.iPF = ((a)localObject);
+      this.iNS.event(localb);
+      this.iNS.doNotify();
+    }
+    AppMethodBeat.o(212198);
+    return bool;
+  }
+  
+  public final Cursor NB(String paramString)
+  {
+    AppMethodBeat.i(124188);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("select * from BizChatConversation");
+    localStringBuilder.append(" where brandUserName = '").append(paramString).append("'");
+    localStringBuilder.append(" order by flag desc , lastMsgTime desc");
+    Log.d("MicroMsg.BizConversationStorage", "getBizChatConversationCursor: sql:%s", new Object[] { localStringBuilder.toString() });
+    paramString = this.db.rawQuery(localStringBuilder.toString(), null);
+    AppMethodBeat.o(124188);
+    return paramString;
+  }
+  
+  public final int Nz(String paramString)
   {
     int i = 0;
     int j = 0;
-    AppMethodBeat.i(188900);
+    AppMethodBeat.i(212197);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("select count(*) from BizChatConversation");
     localStringBuilder.append(" where brandUserName = '").append(paramString).append("' ");
     paramString = localStringBuilder.toString();
-    paramString = this.db.a(paramString, null, 2);
+    paramString = this.db.rawQuery(paramString, null, 2);
     if (paramString != null)
     {
       i = j;
@@ -172,44 +307,15 @@ public final class b
       }
       paramString.close();
     }
-    AppMethodBeat.o(188900);
+    AppMethodBeat.o(212197);
     return i;
-  }
-  
-  public final Cursor EN(String paramString)
-  {
-    AppMethodBeat.i(124188);
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("select * from BizChatConversation");
-    localStringBuilder.append(" where brandUserName = '").append(paramString).append("'");
-    localStringBuilder.append(" order by flag desc , lastMsgTime desc");
-    ae.d("MicroMsg.BizConversationStorage", "getBizChatConversationCursor: sql:%s", new Object[] { localStringBuilder.toString() });
-    paramString = this.db.rawQuery(localStringBuilder.toString(), null);
-    AppMethodBeat.o(124188);
-    return paramString;
-  }
-  
-  public final void a(int paramInt, n paramn, Object paramObject)
-  {
-    AppMethodBeat.i(124183);
-    ae.i("MicroMsg.BizConversationStorage", "onNotifyChange");
-    if ((paramObject == null) || (!(paramObject instanceof String)))
-    {
-      AppMethodBeat.o(124183);
-      return;
-    }
-    paramn = (String)paramObject;
-    if ((com.tencent.mm.al.g.vz(paramn)) && (!x.An(paramn))) {
-      e.N(paramn, true);
-    }
-    AppMethodBeat.o(124183);
   }
   
   public final void a(a parama)
   {
     AppMethodBeat.i(124182);
-    if (this.hSD != null) {
-      this.hSD.remove(parama);
+    if (this.iNS != null) {
+      this.iNS.remove(parama);
     }
     AppMethodBeat.o(124182);
   }
@@ -217,31 +323,31 @@ public final class b
   public final void a(a parama, Looper paramLooper)
   {
     AppMethodBeat.i(124181);
-    this.hSD.a(parama, paramLooper);
+    this.iNS.add(parama, paramLooper);
     AppMethodBeat.o(124181);
   }
   
   public final boolean a(a parama)
   {
     AppMethodBeat.i(124186);
-    ae.d("MicroMsg.BizConversationStorage", "BizChatConversationStorage insert");
+    Log.d("MicroMsg.BizConversationStorage", "BizChatConversationStorage insert");
     if (parama == null)
     {
-      ae.w("MicroMsg.BizConversationStorage", "insert wrong argument");
+      Log.w("MicroMsg.BizConversationStorage", "insert wrong argument");
       AppMethodBeat.o(124186);
       return false;
     }
     boolean bool = super.insert(parama);
-    ae.i("MicroMsg.BizConversationStorage", "BizChatConversationStorage insert res:%s", new Object[] { Boolean.valueOf(bool) });
+    Log.i("MicroMsg.BizConversationStorage", "BizChatConversationStorage insert res:%s", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
       b.a.b localb = new b.a.b();
-      localb.hUr = parama.field_bizChatId;
-      localb.dpI = parama.field_brandUserName;
-      localb.hUq = b.a.a.hUm;
-      localb.hUs = parama;
-      this.hSD.dW(localb);
-      this.hSD.doNotify();
+      localb.iPE = parama.field_bizChatId;
+      localb.brandName = parama.field_brandUserName;
+      localb.iPD = b.a.a.iPz;
+      localb.iPF = parama;
+      this.iNS.event(localb);
+      this.iNS.doNotify();
     }
     AppMethodBeat.o(124186);
     return bool;
@@ -252,32 +358,32 @@ public final class b
     AppMethodBeat.i(124187);
     if (parama == null)
     {
-      ae.w("MicroMsg.BizConversationStorage", "update wrong argument");
+      Log.w("MicroMsg.BizConversationStorage", "update wrong argument");
       AppMethodBeat.o(124187);
       return false;
     }
     boolean bool = super.replace(parama);
-    ae.i("MicroMsg.BizConversationStorage", "BizChatConversationStorage update res:%s", new Object[] { Boolean.valueOf(bool) });
+    Log.i("MicroMsg.BizConversationStorage", "BizChatConversationStorage update res:%s", new Object[] { Boolean.valueOf(bool) });
     if (bool)
     {
-      e.g(ag.aGr().bd(parama.field_bizChatId));
+      e.g(ag.baj().bs(parama.field_bizChatId));
       b.a.b localb = new b.a.b();
-      localb.hUr = parama.field_bizChatId;
-      localb.dpI = parama.field_brandUserName;
-      localb.hUq = b.a.a.hUo;
-      localb.hUs = parama;
-      this.hSD.dW(localb);
-      this.hSD.doNotify();
+      localb.iPE = parama.field_bizChatId;
+      localb.brandName = parama.field_brandUserName;
+      localb.iPD = b.a.a.iPB;
+      localb.iPF = parama;
+      this.iNS.event(localb);
+      this.iNS.doNotify();
     }
     AppMethodBeat.o(124187);
     return bool;
   }
   
-  public final List<c> be(String paramString1, String paramString2)
+  public final List<c> bi(String paramString1, String paramString2)
   {
     AppMethodBeat.i(124189);
     ArrayList localArrayList = new ArrayList();
-    if (bu.isNullOrNil(paramString2))
+    if (Util.isNullOrNil(paramString2))
     {
       AppMethodBeat.o(124189);
       return localArrayList;
@@ -292,7 +398,7 @@ public final class b
     localStringBuilder.append(" and BizChatInfo.chatName like '%").append(paramString2).append("%'");
     localStringBuilder.append(" order by BizChatConversation.flag desc");
     localStringBuilder.append(" , BizChatConversation.lastMsgTime desc");
-    ae.d("MicroMsg.BizConversationStorage", "getBizChatConversationSearchCursor: sql:%s", new Object[] { localStringBuilder.toString() });
+    Log.d("MicroMsg.BizConversationStorage", "getBizChatConversationSearchCursor: sql:%s", new Object[] { localStringBuilder.toString() });
     paramString1 = rawQuery(localStringBuilder.toString(), new String[0]);
     if (paramString1 != null)
     {
@@ -313,103 +419,24 @@ public final class b
   protected final void finalize()
   {
     AppMethodBeat.i(124180);
-    ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.messenger.foundation.a.l.class)).azF().b(this);
+    ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().remove(this);
     AppMethodBeat.o(124180);
   }
   
-  public final a sf(long paramLong)
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
-    AppMethodBeat.i(124184);
-    a locala = new a();
-    locala.field_bizChatId = paramLong;
-    super.get(locala, new String[0]);
-    AppMethodBeat.o(124184);
-    return locala;
-  }
-  
-  public final boolean sg(long paramLong)
-  {
-    AppMethodBeat.i(124185);
-    a locala = sf(paramLong);
-    boolean bool = super.delete(locala, new String[] { "bizChatId" });
-    if (bool)
+    AppMethodBeat.i(124183);
+    Log.i("MicroMsg.BizConversationStorage", "onNotifyChange");
+    if ((paramObject == null) || (!(paramObject instanceof String)))
     {
-      b.a.b localb = new b.a.b();
-      localb.hUr = locala.field_bizChatId;
-      localb.dpI = locala.field_brandUserName;
-      localb.hUq = b.a.a.hUn;
-      localb.hUs = locala;
-      this.hSD.dW(localb);
-      this.hSD.doNotify();
+      AppMethodBeat.o(124183);
+      return;
     }
-    AppMethodBeat.o(124185);
-    return bool;
-  }
-  
-  public final boolean sh(long paramLong)
-  {
-    AppMethodBeat.i(124191);
-    a locala = sf(paramLong);
-    if ((locala.field_unReadCount == 0) && (locala.field_bizChatId == paramLong))
-    {
-      AppMethodBeat.o(124191);
-      return true;
+    paramMStorageEx = (String)paramObject;
+    if ((com.tencent.mm.al.g.DQ(paramMStorageEx)) && (!ab.IS(paramMStorageEx))) {
+      e.P(paramMStorageEx, true);
     }
-    locala.field_unReadCount = 0;
-    locala.field_atCount = 0;
-    locala.field_atAll = 0;
-    b(locala);
-    AppMethodBeat.o(124191);
-    return true;
-  }
-  
-  public final boolean si(long paramLong)
-  {
-    AppMethodBeat.i(124193);
-    boolean bool = c(sf(paramLong));
-    AppMethodBeat.o(124193);
-    return bool;
-  }
-  
-  public final boolean sj(long paramLong)
-  {
-    AppMethodBeat.i(124195);
-    sf(paramLong);
-    a locala = sf(paramLong);
-    boolean bool = this.db.execSQL("BizChatConversation", "update BizChatConversation set flag = " + a(locala, 2, locala.field_lastMsgTime) + " where bizChatId = " + locala.field_bizChatId);
-    if (bool)
-    {
-      locala = sf(locala.field_bizChatId);
-      b.a.b localb = new b.a.b();
-      localb.hUr = locala.field_bizChatId;
-      localb.dpI = locala.field_brandUserName;
-      localb.hUq = b.a.a.hUo;
-      localb.hUs = locala;
-      this.hSD.dW(localb);
-      this.hSD.doNotify();
-    }
-    AppMethodBeat.o(124195);
-    return bool;
-  }
-  
-  public final boolean sk(long paramLong)
-  {
-    AppMethodBeat.i(124196);
-    a locala = sf(paramLong);
-    boolean bool = this.db.execSQL("BizChatConversation", "update BizChatConversation set flag = " + a(locala, 3, locala.field_lastMsgTime) + " where bizChatId = " + locala.field_bizChatId);
-    if (bool)
-    {
-      locala = sf(locala.field_bizChatId);
-      b.a.b localb = new b.a.b();
-      localb.hUr = locala.field_bizChatId;
-      localb.dpI = locala.field_brandUserName;
-      localb.hUq = b.a.a.hUo;
-      localb.hUs = locala;
-      this.hSD.dW(localb);
-      this.hSD.doNotify();
-    }
-    AppMethodBeat.o(124196);
-    return bool;
+    AppMethodBeat.o(124183);
   }
   
   public static abstract interface a
@@ -421,10 +448,10 @@ public final class b
       static
       {
         AppMethodBeat.i(124178);
-        hUm = new a("INSTERT", 0);
-        hUn = new a("DELETE", 1);
-        hUo = new a("UPDATE", 2);
-        hUp = new a[] { hUm, hUn, hUo };
+        iPz = new a("INSTERT", 0);
+        iPA = new a("DELETE", 1);
+        iPB = new a("UPDATE", 2);
+        iPC = new a[] { iPz, iPA, iPB };
         AppMethodBeat.o(124178);
       }
       
@@ -433,16 +460,16 @@ public final class b
     
     public static final class b
     {
-      public String dpI;
-      public b.a.a hUq;
-      public long hUr;
-      public a hUs;
+      public String brandName;
+      public b.a.a iPD;
+      public long iPE;
+      public a iPF;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.al.a.b
  * JD-Core Version:    0.7.0.1
  */

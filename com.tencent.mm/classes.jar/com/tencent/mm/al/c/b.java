@@ -3,55 +3,55 @@ package com.tencent.mm.al.c;
 import android.app.Activity;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.al.n;
-import com.tencent.mm.protocal.protobuf.eco;
+import com.tencent.mm.protocal.protobuf.eww;
 
 public final class b
 {
-  private boolean hVQ = false;
-  private eco hVR;
+  private boolean iQO = false;
+  private eww iQP;
   
-  public final void eW(String paramString)
+  public final void fI(String paramString)
   {
-    AppMethodBeat.i(188910);
-    if (this.hVR != null)
+    AppMethodBeat.i(212208);
+    if (this.iQP != null)
     {
-      AppMethodBeat.o(188910);
+      AppMethodBeat.o(212208);
       return;
     }
-    if (!this.hVQ)
+    if (!this.iQO)
     {
-      n.EG(paramString);
-      this.hVQ = true;
+      n.Nu(paramString);
+      this.iQO = true;
     }
-    this.hVR = n.EF(paramString);
-    AppMethodBeat.o(188910);
+    this.iQP = n.Nt(paramString);
+    AppMethodBeat.o(212208);
   }
   
   public final void z(Activity paramActivity)
   {
-    AppMethodBeat.i(188911);
-    if (this.hVR == null)
+    AppMethodBeat.i(212209);
+    if (this.iQP == null)
     {
-      AppMethodBeat.o(188911);
+      AppMethodBeat.o(212209);
       return;
     }
-    switch (this.hVR.AiS)
+    switch (this.iQP.vjQ)
     {
     }
     for (;;)
     {
-      AppMethodBeat.o(188911);
+      AppMethodBeat.o(212209);
       return;
-      a.a(paramActivity, this.hVR.IhL);
-      AppMethodBeat.o(188911);
+      a.a(paramActivity, this.iQP.Nup);
+      AppMethodBeat.o(212209);
       return;
-      a.a(paramActivity, this.hVR.IhM);
+      a.a(paramActivity, this.iQP.Nuq);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.al.c.b
  * JD-Core Version:    0.7.0.1
  */

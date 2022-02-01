@@ -1,152 +1,52 @@
 package com.tencent.mm.ui;
 
-import android.support.v7.app.ActionBar;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
+import android.content.Context;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.b.b;
-import com.tencent.mm.ui.b.b.a;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/MMContextThemeWrapper;", "Landroid/view/ContextThemeWrapper;", "base", "Landroid/content/Context;", "themeResId", "", "(Landroid/content/Context;I)V", "inflater", "Landroid/view/LayoutInflater;", "getSystemService", "", "name", "", "libmmui_release"})
 public final class u
-  extends s
-  implements b.a
+  extends ContextThemeWrapper
 {
-  public MMFragment JwY = null;
-  public b JwZ;
-  private ActionBar mActionBar;
+  private LayoutInflater kgB;
   
-  public final boolean d(Menu paramMenu)
+  public u(Context paramContext, int paramInt)
   {
-    AppMethodBeat.i(141376);
-    if (this.JwY != null) {
-      this.JwY.onPrepareOptionsMenu(paramMenu);
-    }
-    AppMethodBeat.o(141376);
-    return true;
+    super(paramContext, paramInt);
+    AppMethodBeat.i(204790);
+    AppMethodBeat.o(204790);
   }
   
-  protected final void dealContentView(View paramView)
+  public final Object getSystemService(String paramString)
   {
-    AppMethodBeat.i(141368);
-    if (this.JwY != null) {
-      this.JwY.dealContentView(paramView);
-    }
-    AppMethodBeat.o(141368);
-  }
-  
-  public final boolean e(Menu paramMenu)
-  {
-    AppMethodBeat.i(141377);
-    this.JwY.onCreateOptionsMenu(paramMenu, this.JwZ.getMenuInflater());
-    AppMethodBeat.o(141377);
-    return true;
-  }
-  
-  public final boolean f(MenuItem paramMenuItem)
-  {
-    AppMethodBeat.i(141378);
-    boolean bool = super.onOptionsItemSelected(paramMenuItem);
-    AppMethodBeat.o(141378);
-    return bool;
-  }
-  
-  protected final boolean fromFullScreenActivity()
-  {
-    return false;
-  }
-  
-  protected final String getClassName()
-  {
-    AppMethodBeat.i(141373);
-    String str = this.JwY.getClass().getName();
-    AppMethodBeat.o(141373);
-    return str;
-  }
-  
-  protected final String getIdentString()
-  {
-    AppMethodBeat.i(141369);
-    if (this.JwY != null)
+    AppMethodBeat.i(204789);
+    p.h(paramString, "name");
+    if (p.j("layout_inflater", paramString))
     {
-      String str = this.JwY.getIdentityString();
-      AppMethodBeat.o(141369);
-      return str;
+      if (this.kgB == null)
+      {
+        Object localObject = super.getSystemService(paramString);
+        paramString = localObject;
+        if (!(localObject instanceof LayoutInflater)) {
+          paramString = null;
+        }
+        this.kgB = aa.b((LayoutInflater)paramString);
+      }
+      paramString = this.kgB;
+      AppMethodBeat.o(204789);
+      return paramString;
     }
-    AppMethodBeat.o(141369);
-    return null;
-  }
-  
-  protected final int getLayoutId()
-  {
-    AppMethodBeat.i(141367);
-    if (this.JwY != null)
-    {
-      int i = this.JwY.getLayoutId();
-      AppMethodBeat.o(141367);
-      return i;
-    }
-    AppMethodBeat.o(141367);
-    return -1;
-  }
-  
-  protected final View getLayoutView()
-  {
-    AppMethodBeat.i(141370);
-    if (this.JwY != null)
-    {
-      View localView = this.JwY.getLayoutView();
-      AppMethodBeat.o(141370);
-      return localView;
-    }
-    AppMethodBeat.o(141370);
-    return null;
-  }
-  
-  public final ActionBar getSupportActionBar()
-  {
-    AppMethodBeat.i(141374);
-    if (this.mActionBar == null) {
-      this.mActionBar = this.JwZ.fCi();
-    }
-    ActionBar localActionBar = this.mActionBar;
-    AppMethodBeat.o(141374);
-    return localActionBar;
-  }
-  
-  public final boolean interceptSupportInvalidateOptionsMenu()
-  {
-    return true;
-  }
-  
-  protected final void onCreateBeforeSetContentView()
-  {
-    AppMethodBeat.i(141372);
-    if (this.JwY != null) {
-      this.JwY.onCreateBeforeSetContentView();
-    }
-    AppMethodBeat.o(141372);
-  }
-  
-  public final void onKeyboardStateChanged()
-  {
-    AppMethodBeat.i(141371);
-    if (this.JwY != null) {
-      this.JwY.onKeyboardStateChanged();
-    }
-    AppMethodBeat.o(141371);
-  }
-  
-  public final void supportInvalidateOptionsMenu()
-  {
-    AppMethodBeat.i(141375);
-    this.JwZ.supportInvalidateOptionsMenu();
-    AppMethodBeat.o(141375);
+    paramString = super.getSystemService(paramString);
+    AppMethodBeat.o(204789);
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.ui.u
  * JD-Core Version:    0.7.0.1
  */

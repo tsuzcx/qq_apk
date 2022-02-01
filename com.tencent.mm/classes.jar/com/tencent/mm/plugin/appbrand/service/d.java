@@ -1,23 +1,23 @@
 package com.tencent.mm.plugin.appbrand.service;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class d
-  extends b
+  extends IEvent
 {
-  public a mBm;
+  public a nMq;
   
   public d()
   {
     AppMethodBeat.i(153228);
-    this.mBm = new a();
+    this.nMq = new a();
     AppMethodBeat.o(153228);
   }
   
   public static final class a
   {
-    public String mBn;
+    public String nMr;
   }
 }
 

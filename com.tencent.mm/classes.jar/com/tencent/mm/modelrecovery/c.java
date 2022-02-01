@@ -2,9 +2,9 @@ package com.tencent.mm.modelrecovery;
 
 import com.tencent.mars.smc.IDKey;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import com.tencent.recovery.model.RecoveryStatusItem;
 import com.tencent.recovery.report.RecoveryReporter;
 import java.util.ArrayList;
@@ -16,26 +16,96 @@ import java.util.Set;
 
 public final class c
 {
-  public static HashMap<String, Integer> imD;
+  public static HashMap<String, Integer> jhL;
   
   static
   {
     AppMethodBeat.i(20597);
     HashMap localHashMap = new HashMap();
-    imD = localHashMap;
-    localHashMap.put(ak.getPackageName(), Integer.valueOf(0));
-    imD.put(ak.getPackageName() + ":push", Integer.valueOf(20));
-    imD.put(ak.getPackageName() + ":tools", Integer.valueOf(40));
-    imD.put(ak.getPackageName() + ":exdevice", Integer.valueOf(60));
-    imD.put(ak.getPackageName() + ":sandbox", Integer.valueOf(80));
+    jhL = localHashMap;
+    localHashMap.put(MMApplicationContext.getPackageName(), Integer.valueOf(0));
+    jhL.put(MMApplicationContext.getPackageName() + ":push", Integer.valueOf(20));
+    jhL.put(MMApplicationContext.getPackageName() + ":tools", Integer.valueOf(40));
+    jhL.put(MMApplicationContext.getPackageName() + ":exdevice", Integer.valueOf(60));
+    jhL.put(MMApplicationContext.getPackageName() + ":sandbox", Integer.valueOf(80));
     AppMethodBeat.o(20597);
   }
   
-  public static void aKv()
+  private static void b(HashMap<String, a> paramHashMap)
+  {
+    AppMethodBeat.i(20595);
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramHashMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (Map.Entry)localIterator.next();
+      if (jhL.containsKey(((Map.Entry)localObject).getKey()))
+      {
+        int i = ((Integer)jhL.get(((Map.Entry)localObject).getKey())).intValue();
+        localObject = (a)((Map.Entry)localObject).getValue();
+        IDKey localIDKey;
+        if (((a)localObject).gAZ > 0)
+        {
+          localIDKey = new IDKey();
+          localIDKey.SetID(424);
+          localIDKey.SetKey(i + 0);
+          localIDKey.SetValue(((a)localObject).gAZ);
+          localArrayList.add(localIDKey);
+        }
+        if (((a)localObject).jhM > 0)
+        {
+          localIDKey = new IDKey();
+          localIDKey.SetID(424);
+          localIDKey.SetKey(i + 1);
+          localIDKey.SetValue(((a)localObject).jhM);
+          localArrayList.add(localIDKey);
+        }
+        if (((a)localObject).jhN > 0)
+        {
+          localIDKey = new IDKey();
+          localIDKey.SetID(424);
+          localIDKey.SetKey(i + 2);
+          localIDKey.SetValue(((a)localObject).jhN);
+          localArrayList.add(localIDKey);
+        }
+        if (((a)localObject).jhO > 0)
+        {
+          localIDKey = new IDKey();
+          localIDKey.SetID(424);
+          localIDKey.SetKey(i + 3);
+          localIDKey.SetValue(((a)localObject).jhO);
+          localArrayList.add(localIDKey);
+        }
+        if (((a)localObject).jhP > 0)
+        {
+          localIDKey = new IDKey();
+          localIDKey.SetID(424);
+          localIDKey.SetKey(i + 4);
+          localIDKey.SetValue(((a)localObject).jhP);
+          localArrayList.add(localIDKey);
+        }
+        if (((a)localObject).jhQ > 0)
+        {
+          localIDKey = new IDKey();
+          localIDKey.SetID(424);
+          localIDKey.SetKey(i + 5);
+          localIDKey.SetValue(((a)localObject).jhQ);
+          localArrayList.add(localIDKey);
+        }
+      }
+    }
+    if (localArrayList.size() > 0) {
+      h.CyF.b(localArrayList, true);
+    }
+    Log.i("MicroMsg.Recovery.WXRecoveryReporter", "report recovery generalObj %s %s", new Object[] { MMApplicationContext.getProcessName(), paramHashMap.toString() });
+    AppMethodBeat.o(20595);
+  }
+  
+  public static void bey()
   {
     AppMethodBeat.i(20594);
-    Object localObject = RecoveryReporter.getItemList(ak.getContext(), "ProcessStatus", RecoveryStatusItem.class);
-    ae.i("MicroMsg.Recovery.WXRecoveryReporter", "reportStatus " + ((List)localObject).size());
+    Object localObject = RecoveryReporter.getItemList(MMApplicationContext.getContext(), "ProcessStatus", RecoveryStatusItem.class);
+    Log.i("MicroMsg.Recovery.WXRecoveryReporter", "reportStatus " + ((List)localObject).size());
     HashMap localHashMap1 = new HashMap();
     HashMap localHashMap2 = new HashMap();
     Iterator localIterator = ((List)localObject).iterator();
@@ -54,11 +124,11 @@ public final class c
           break label252;
         }
         localb = (b)localHashMap2.get(localRecoveryStatusItem.processName);
-        ((a)localObject).fVS += 1;
+        ((a)localObject).gAZ += 1;
         if (localRecoveryStatusItem.processStartFlag != 1) {
           break label263;
         }
-        ((a)localObject).imG += 1;
+        ((a)localObject).jhO += 1;
         i = 0;
         switch (localRecoveryStatusItem.processStage)
         {
@@ -67,7 +137,7 @@ public final class c
       for (;;)
       {
         if (i == 0) {
-          ae.i("MicroMsg.Recovery.WXRecoveryReporter", "recovery statics not set exception");
+          Log.i("MicroMsg.Recovery.WXRecoveryReporter", "recovery statics not set exception");
         }
         localHashMap1.put(localRecoveryStatusItem.processName, localObject);
         localHashMap2.put(localRecoveryStatusItem.processName, localb);
@@ -78,74 +148,74 @@ public final class c
         localb = new b();
         break label142;
         label263:
-        ((a)localObject).imH += 1;
+        ((a)localObject).jhP += 1;
         break label171;
         if (localRecoveryStatusItem.processStartFlag == 1)
         {
-          localb.imJ += 1;
+          localb.jhR += 1;
           switch (localRecoveryStatusItem.processStatus)
           {
           default: 
             break;
           case 4096: 
-            localb.imR += 1;
+            localb.jhZ += 1;
             i = 1;
             break;
           case 65536: 
           case 1048576: 
-            localb.imN += 1;
+            localb.jhV += 1;
             i = 1;
             break;
           }
         }
         else
         {
-          localb.imK += 1;
+          localb.jhS += 1;
           switch (localRecoveryStatusItem.processStatus)
           {
           default: 
             break;
           case 4096: 
-            localb.imS += 1;
+            localb.jia += 1;
             i = 1;
             break;
           case 65536: 
           case 1048576: 
-            localb.imO += 1;
+            localb.jhW += 1;
             i = 1;
             continue;
             if (localRecoveryStatusItem.processStartFlag == 1)
             {
-              localb.imL += 1;
+              localb.jhT += 1;
               switch (localRecoveryStatusItem.processStatus)
               {
               default: 
                 break;
               case 4096: 
-                localb.imT += 1;
+                localb.jib += 1;
                 i = 1;
                 break;
               case 65536: 
               case 1048576: 
-                localb.imP += 1;
+                localb.jhX += 1;
                 i = 1;
                 break;
               }
             }
             else
             {
-              localb.imM += 1;
+              localb.jhU += 1;
               switch (localRecoveryStatusItem.processStatus)
               {
               default: 
                 break;
               case 4096: 
-                localb.imU += 1;
+                localb.jic += 1;
                 i = 1;
                 break;
               case 65536: 
               case 1048576: 
-                localb.imQ += 1;
+                localb.jhY += 1;
                 i = 1;
               }
             }
@@ -156,78 +226,8 @@ public final class c
     }
     b(localHashMap1);
     c(localHashMap2);
-    RecoveryReporter.clearReportFile(ak.getContext(), "ProcessStatus");
+    RecoveryReporter.clearReportFile(MMApplicationContext.getContext(), "ProcessStatus");
     AppMethodBeat.o(20594);
-  }
-  
-  private static void b(HashMap<String, a> paramHashMap)
-  {
-    AppMethodBeat.i(20595);
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramHashMap.entrySet().iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Map.Entry)localIterator.next();
-      if (imD.containsKey(((Map.Entry)localObject).getKey()))
-      {
-        int i = ((Integer)imD.get(((Map.Entry)localObject).getKey())).intValue();
-        localObject = (a)((Map.Entry)localObject).getValue();
-        IDKey localIDKey;
-        if (((a)localObject).fVS > 0)
-        {
-          localIDKey = new IDKey();
-          localIDKey.SetID(424);
-          localIDKey.SetKey(i + 0);
-          localIDKey.SetValue(((a)localObject).fVS);
-          localArrayList.add(localIDKey);
-        }
-        if (((a)localObject).imE > 0)
-        {
-          localIDKey = new IDKey();
-          localIDKey.SetID(424);
-          localIDKey.SetKey(i + 1);
-          localIDKey.SetValue(((a)localObject).imE);
-          localArrayList.add(localIDKey);
-        }
-        if (((a)localObject).imF > 0)
-        {
-          localIDKey = new IDKey();
-          localIDKey.SetID(424);
-          localIDKey.SetKey(i + 2);
-          localIDKey.SetValue(((a)localObject).imF);
-          localArrayList.add(localIDKey);
-        }
-        if (((a)localObject).imG > 0)
-        {
-          localIDKey = new IDKey();
-          localIDKey.SetID(424);
-          localIDKey.SetKey(i + 3);
-          localIDKey.SetValue(((a)localObject).imG);
-          localArrayList.add(localIDKey);
-        }
-        if (((a)localObject).imH > 0)
-        {
-          localIDKey = new IDKey();
-          localIDKey.SetID(424);
-          localIDKey.SetKey(i + 4);
-          localIDKey.SetValue(((a)localObject).imH);
-          localArrayList.add(localIDKey);
-        }
-        if (((a)localObject).imI > 0)
-        {
-          localIDKey = new IDKey();
-          localIDKey.SetID(424);
-          localIDKey.SetKey(i + 5);
-          localIDKey.SetValue(((a)localObject).imI);
-          localArrayList.add(localIDKey);
-        }
-      }
-    }
-    if (localArrayList.size() > 0) {
-      g.yxI.b(localArrayList, true);
-    }
-    ae.i("MicroMsg.Recovery.WXRecoveryReporter", "report recovery generalObj %s %s", new Object[] { ak.getProcessName(), paramHashMap.toString() });
-    AppMethodBeat.o(20595);
   }
   
   private static void c(HashMap<String, b> paramHashMap)
@@ -238,146 +238,146 @@ public final class c
     while (localIterator.hasNext())
     {
       Object localObject = (Map.Entry)localIterator.next();
-      if (imD.containsKey(((Map.Entry)localObject).getKey()))
+      if (jhL.containsKey(((Map.Entry)localObject).getKey()))
       {
-        int i = ((Integer)imD.get(((Map.Entry)localObject).getKey())).intValue();
+        int i = ((Integer)jhL.get(((Map.Entry)localObject).getKey())).intValue();
         localObject = (b)((Map.Entry)localObject).getValue();
         IDKey localIDKey;
-        if (((b)localObject).imJ > 0)
+        if (((b)localObject).jhR > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 0);
-          localIDKey.SetValue(((b)localObject).imJ);
+          localIDKey.SetValue(((b)localObject).jhR);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).imK > 0)
+        if (((b)localObject).jhS > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 1);
-          localIDKey.SetValue(((b)localObject).imK);
+          localIDKey.SetValue(((b)localObject).jhS);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).imL > 0)
+        if (((b)localObject).jhT > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 2);
-          localIDKey.SetValue(((b)localObject).imL);
+          localIDKey.SetValue(((b)localObject).jhT);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).imM > 0)
+        if (((b)localObject).jhU > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 3);
-          localIDKey.SetValue(((b)localObject).imM);
+          localIDKey.SetValue(((b)localObject).jhU);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).imN > 0)
+        if (((b)localObject).jhV > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 4);
-          localIDKey.SetValue(((b)localObject).imN);
+          localIDKey.SetValue(((b)localObject).jhV);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).imO > 0)
+        if (((b)localObject).jhW > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 5);
-          localIDKey.SetValue(((b)localObject).imO);
+          localIDKey.SetValue(((b)localObject).jhW);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).imP > 0)
+        if (((b)localObject).jhX > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 6);
-          localIDKey.SetValue(((b)localObject).imP);
+          localIDKey.SetValue(((b)localObject).jhX);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).imQ > 0)
+        if (((b)localObject).jhY > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 7);
-          localIDKey.SetValue(((b)localObject).imQ);
+          localIDKey.SetValue(((b)localObject).jhY);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).imR > 0)
+        if (((b)localObject).jhZ > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 8);
-          localIDKey.SetValue(((b)localObject).imR);
+          localIDKey.SetValue(((b)localObject).jhZ);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).imS > 0)
+        if (((b)localObject).jia > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 9);
-          localIDKey.SetValue(((b)localObject).imS);
+          localIDKey.SetValue(((b)localObject).jia);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).imT > 0)
+        if (((b)localObject).jib > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 10);
-          localIDKey.SetValue(((b)localObject).imT);
+          localIDKey.SetValue(((b)localObject).jib);
           localArrayList.add(localIDKey);
         }
-        if (((b)localObject).imU > 0)
+        if (((b)localObject).jic > 0)
         {
           localIDKey = new IDKey();
           localIDKey.SetID(442);
           localIDKey.SetKey(i + 11);
-          localIDKey.SetValue(((b)localObject).imU);
+          localIDKey.SetValue(((b)localObject).jic);
           localArrayList.add(localIDKey);
         }
       }
     }
     if (localArrayList.size() > 0) {
-      g.yxI.b(localArrayList, true);
+      h.CyF.b(localArrayList, true);
     }
-    ae.i("MicroMsg.Recovery.WXRecoveryReporter", "report recovery statusObj %s %s", new Object[] { ak.getProcessName(), paramHashMap.toString() });
+    Log.i("MicroMsg.Recovery.WXRecoveryReporter", "report recovery statusObj %s %s", new Object[] { MMApplicationContext.getProcessName(), paramHashMap.toString() });
     AppMethodBeat.o(20596);
   }
   
   public static final class a
   {
-    public int fVS;
-    public int imE;
-    public int imF;
-    public int imG;
-    public int imH;
-    public int imI;
+    public int gAZ;
+    public int jhM;
+    public int jhN;
+    public int jhO;
+    public int jhP;
+    public int jhQ;
     
     public final String toString()
     {
       AppMethodBeat.i(20592);
       Object localObject = new StringBuffer();
-      if (this.fVS > 0) {
-        ((StringBuffer)localObject).append("totalCount:" + this.fVS + " ");
+      if (this.gAZ > 0) {
+        ((StringBuffer)localObject).append("totalCount:" + this.gAZ + " ");
       }
-      if (this.imE > 0) {
-        ((StringBuffer)localObject).append("enterRecoveryCount:" + this.imE + " ");
+      if (this.jhM > 0) {
+        ((StringBuffer)localObject).append("enterRecoveryCount:" + this.jhM + " ");
       }
-      if (this.imF > 0) {
-        ((StringBuffer)localObject).append("existRecoveryProcessCount:" + this.imF + " ");
+      if (this.jhN > 0) {
+        ((StringBuffer)localObject).append("existRecoveryProcessCount:" + this.jhN + " ");
       }
-      if (this.imG > 0) {
-        ((StringBuffer)localObject).append("foregroundExpCount:" + this.imG + " ");
+      if (this.jhO > 0) {
+        ((StringBuffer)localObject).append("foregroundExpCount:" + this.jhO + " ");
       }
-      if (this.imH > 0) {
-        ((StringBuffer)localObject).append("backgroundExpCount:" + this.imH + " ");
+      if (this.jhP > 0) {
+        ((StringBuffer)localObject).append("backgroundExpCount:" + this.jhP + " ");
       }
-      if (this.imI > 0) {
-        ((StringBuffer)localObject).append("normalCount:" + this.imI + " ");
+      if (this.jhQ > 0) {
+        ((StringBuffer)localObject).append("normalCount:" + this.jhQ + " ");
       }
       localObject = ((StringBuffer)localObject).toString();
       AppMethodBeat.o(20592);
@@ -387,58 +387,58 @@ public final class c
   
   public static final class b
   {
-    public int imJ;
-    public int imK;
-    public int imL;
-    public int imM;
-    public int imN;
-    public int imO;
-    public int imP;
-    public int imQ;
-    public int imR;
-    public int imS;
-    public int imT;
-    public int imU;
+    public int jhR;
+    public int jhS;
+    public int jhT;
+    public int jhU;
+    public int jhV;
+    public int jhW;
+    public int jhX;
+    public int jhY;
+    public int jhZ;
+    public int jia;
+    public int jib;
+    public int jic;
     
     public final String toString()
     {
       AppMethodBeat.i(20593);
       Object localObject = new StringBuffer();
-      if (this.imJ > 0) {
-        ((StringBuffer)localObject).append("appForegroundExpCount:" + this.imJ + " ");
+      if (this.jhR > 0) {
+        ((StringBuffer)localObject).append("appForegroundExpCount:" + this.jhR + " ");
       }
-      if (this.imK > 0) {
-        ((StringBuffer)localObject).append("appBackgroundExpCount:" + this.imK + " ");
+      if (this.jhS > 0) {
+        ((StringBuffer)localObject).append("appBackgroundExpCount:" + this.jhS + " ");
       }
-      if (this.imL > 0) {
-        ((StringBuffer)localObject).append("componentForegroundExpCount:" + this.imL + " ");
+      if (this.jhT > 0) {
+        ((StringBuffer)localObject).append("componentForegroundExpCount:" + this.jhT + " ");
       }
-      if (this.imM > 0) {
-        ((StringBuffer)localObject).append("componentBackgroundExpCount:" + this.imM + " ");
+      if (this.jhU > 0) {
+        ((StringBuffer)localObject).append("componentBackgroundExpCount:" + this.jhU + " ");
       }
-      if (this.imN > 0) {
-        ((StringBuffer)localObject).append("appForegroundCrashOrAnrExpCount:" + this.imN + " ");
+      if (this.jhV > 0) {
+        ((StringBuffer)localObject).append("appForegroundCrashOrAnrExpCount:" + this.jhV + " ");
       }
-      if (this.imO > 0) {
-        ((StringBuffer)localObject).append("appBackgroundCrashOrAnrExpCount:" + this.imO + " ");
+      if (this.jhW > 0) {
+        ((StringBuffer)localObject).append("appBackgroundCrashOrAnrExpCount:" + this.jhW + " ");
       }
-      if (this.imP > 0) {
-        ((StringBuffer)localObject).append("componentForegroundCrashOrAnrExpCount:" + this.imP + " ");
+      if (this.jhX > 0) {
+        ((StringBuffer)localObject).append("componentForegroundCrashOrAnrExpCount:" + this.jhX + " ");
       }
-      if (this.imQ > 0) {
-        ((StringBuffer)localObject).append("componentBackgroundCrashOrAnrExpCount:" + this.imQ + " ");
+      if (this.jhY > 0) {
+        ((StringBuffer)localObject).append("componentBackgroundCrashOrAnrExpCount:" + this.jhY + " ");
       }
-      if (this.imR > 0) {
-        ((StringBuffer)localObject).append("appForegroundTimeoutExpCount:" + this.imR + " ");
+      if (this.jhZ > 0) {
+        ((StringBuffer)localObject).append("appForegroundTimeoutExpCount:" + this.jhZ + " ");
       }
-      if (this.imS > 0) {
-        ((StringBuffer)localObject).append("appBackgroundTimeoutExpCount:" + this.imS + " ");
+      if (this.jia > 0) {
+        ((StringBuffer)localObject).append("appBackgroundTimeoutExpCount:" + this.jia + " ");
       }
-      if (this.imT > 0) {
-        ((StringBuffer)localObject).append("componentForegroundTimeoutExpCount:" + this.imT + " ");
+      if (this.jib > 0) {
+        ((StringBuffer)localObject).append("componentForegroundTimeoutExpCount:" + this.jib + " ");
       }
-      if (this.imU > 0) {
-        ((StringBuffer)localObject).append("componentBackgroundTimeoutExpCount:" + this.imU + " ");
+      if (this.jic > 0) {
+        ((StringBuffer)localObject).append("componentBackgroundTimeoutExpCount:" + this.jic + " ");
       }
       localObject = ((StringBuffer)localObject).toString();
       AppMethodBeat.o(20593);
@@ -448,7 +448,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelrecovery.c
  * JD-Core Version:    0.7.0.1
  */

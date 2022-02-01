@@ -1,104 +1,184 @@
 package com.tencent.mm.plugin.voip;
 
+import android.content.Context;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.e.d;
+import com.tencent.mm.ak.h.d;
 import com.tencent.mm.app.o.a;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.az;
-import com.tencent.mm.model.ba;
-import com.tencent.mm.plugin.voip.b.b.c;
+import com.tencent.mm.kernel.g;
+import com.tencent.mm.media.k.d.c;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.bd;
+import com.tencent.mm.model.be;
+import com.tencent.mm.model.y;
+import com.tencent.mm.model.z;
+import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.voip.model.l;
 import com.tencent.mm.plugin.voip.model.n;
 import com.tencent.mm.plugin.voip.model.p;
-import com.tencent.mm.plugin.voip.ui.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.plugin.voip.model.s;
+import com.tencent.mm.plugin.voip.model.u;
+import com.tencent.mm.plugin.voip.model.u.b;
+import com.tencent.mm.plugin.voip.model.v;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.BuildInfo;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import com.tencent.mm.storage.ca;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
 public class c
-  implements az
+  implements bd
 {
-  private com.tencent.mm.plugin.voip.model.u CoM;
-  private p CoN;
-  private d CoO;
-  com.tencent.mm.plugin.voip.b.b CoP;
-  private e CoQ;
-  private c.a CoR;
+  private u GSJ;
+  private p GSK;
+  private com.tencent.mm.plugin.voip.ui.d GSL;
+  com.tencent.mm.media.k.d GSM;
+  private e GSN;
+  private c.a GSO;
   private o.a appForegroundListener;
   
   static
   {
     AppMethodBeat.i(114810);
-    com.tencent.mm.plugin.voip.video.a.c.eEx();
+    com.tencent.mm.plugin.voip.video.a.c.fLC();
     AppMethodBeat.o(114810);
   }
   
   public c()
   {
     AppMethodBeat.i(114804);
-    this.CoM = null;
-    this.CoN = new p();
-    this.CoQ = new e();
-    this.CoR = new c.a(this);
-    this.appForegroundListener = new c.1(this);
+    this.GSJ = null;
+    this.GSK = new p();
+    this.GSN = new e();
+    this.GSO = new c.a(this);
+    this.appForegroundListener = new o.a()
+    {
+      public final void onAppBackground(String paramAnonymousString)
+      {
+        AppMethodBeat.i(114801);
+        if ((g.aAc()) && (g.aAf().hpY))
+        {
+          g.aAf();
+          com.tencent.mm.kernel.a.azj();
+        }
+        AppMethodBeat.o(114801);
+      }
+      
+      public final void onAppForeground(String paramAnonymousString)
+      {
+        AppMethodBeat.i(114800);
+        if ((g.aAc()) && (g.aAf().hpY))
+        {
+          g.aAf();
+          if (!com.tencent.mm.kernel.a.azj()) {
+            com.tencent.mm.blink.b.ake().arrange(new Runnable()
+            {
+              public final void run()
+              {
+                AppMethodBeat.i(114799);
+                u localu = c.fFg();
+                u.b localb = localu.GZc;
+                if (localb != null)
+                {
+                  Log.i("MicroMsg.Voip.VoipService", "on voip resume");
+                  String str = localb.toUser;
+                  boolean bool1 = localb.GZs;
+                  boolean bool2 = localb.GZt;
+                  long l = localb.ypH;
+                  localu.enB();
+                  localu.a(MMApplicationContext.getContext(), str, l, bool1, bool2, true);
+                  AppMethodBeat.o(114799);
+                  return;
+                }
+                Log.i("MicroMsg.Voip.VoipService", "do not need voip resume");
+                AppMethodBeat.o(114799);
+              }
+            });
+          }
+        }
+        AppMethodBeat.o(114800);
+      }
+    };
     AppMethodBeat.o(114804);
   }
   
-  private static c eyr()
+  public static void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong, String paramString)
+  {
+    AppMethodBeat.i(235470);
+    g.aAh().azQ().set(ar.a.Oba, Boolean.FALSE);
+    g.aAh().azQ().set(ar.a.Obc, Boolean.valueOf(paramBoolean1));
+    g.aAh().azQ().set(ar.a.Obb, Boolean.valueOf(paramBoolean2));
+    g.aAh().azQ().set(ar.a.Obd, Long.valueOf(paramLong));
+    g.aAh().azQ().set(ar.a.Obf, paramString);
+    g.aAh().azQ().gBI();
+    AppMethodBeat.o(235470);
+  }
+  
+  private static c fFf()
   {
     AppMethodBeat.i(114805);
-    c localc = (c)com.tencent.mm.model.u.ap(c.class);
+    c localc = (c)y.at(c.class);
     AppMethodBeat.o(114805);
     return localc;
   }
   
-  public static com.tencent.mm.plugin.voip.model.u eys()
+  public static u fFg()
   {
     AppMethodBeat.i(114806);
-    if (!com.tencent.mm.kernel.g.ajM())
+    if (!g.aAc())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(114806);
       throw ((Throwable)localObject);
     }
-    if (eyr().CoM == null) {
-      eyr().CoM = new com.tencent.mm.plugin.voip.model.u();
+    if (fFf().GSJ == null) {
+      fFf().GSJ = new u();
     }
-    Object localObject = eyr().CoM;
+    Object localObject = fFf().GSJ;
     AppMethodBeat.o(114806);
     return localObject;
   }
   
-  public static d eyt()
+  public static com.tencent.mm.plugin.voip.ui.d fFh()
   {
     AppMethodBeat.i(184039);
-    if (!com.tencent.mm.kernel.g.ajM())
+    if (!g.aAc())
     {
       localObject = new com.tencent.mm.model.b();
       AppMethodBeat.o(184039);
       throw ((Throwable)localObject);
     }
-    if (eyr().CoO == null) {
-      eyr().CoO = new d();
+    if (fFf().GSL == null) {
+      fFf().GSL = new com.tencent.mm.plugin.voip.ui.d();
     }
-    Object localObject = eyr().CoO;
+    Object localObject = fFf().GSL;
     AppMethodBeat.o(184039);
     return localObject;
   }
   
-  public static boolean eyu()
+  public static void fFi()
   {
-    AppMethodBeat.i(209910);
-    if ((com.tencent.mm.model.v.aAH() & 0x0) == 0L)
+    AppMethodBeat.i(235471);
+    g.aAh().azQ().set(ar.a.Oba, Boolean.TRUE);
+    g.aAh().azQ().gBI();
+    AppMethodBeat.o(235471);
+  }
+  
+  public static boolean fFj()
+  {
+    AppMethodBeat.i(235472);
+    if ((z.aUd() & 0x0) == 0L)
     {
-      AppMethodBeat.o(209910);
+      AppMethodBeat.o(235472);
       return true;
     }
-    AppMethodBeat.o(209910);
+    AppMethodBeat.o(235472);
     return false;
   }
   
@@ -112,45 +192,108 @@ public class c
   public void onAccountPostReset(boolean paramBoolean)
   {
     AppMethodBeat.i(114809);
-    e.d.a(Integer.valueOf(50), this.CoN);
-    eys();
-    this.CoP = new com.tencent.mm.plugin.voip.b.b();
-    this.CoP.eCV();
-    this.appForegroundListener.alive();
-    com.tencent.mm.sdk.b.a.IvT.c(this.CoQ);
-    com.tencent.mm.sdk.b.a.IvT.c(this.CoR);
-    ((com.tencent.mm.plugin.notification.b.a)com.tencent.mm.kernel.g.ad(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(40);
-    paramBoolean = ((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(73217, Boolean.TRUE)).booleanValue();
-    boolean bool2 = ((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(73218, Boolean.TRUE)).booleanValue();
-    boolean bool1 = com.tencent.mm.n.a.abS();
-    boolean bool3 = ((Boolean)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IXV, Boolean.FALSE)).booleanValue();
-    ae.i("MicroMsg.SubCoreVoip", "voipSound: %s, voipAudioSound: %s, msgSound: %s, hasReport: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(bool3) });
-    if (!bool3)
+    Object localObject = g.aAh().azQ().get(ar.a.Oba, null);
+    boolean bool1;
+    int i;
+    if ((localObject != null) && (!((Boolean)localObject).booleanValue()))
     {
-      if ((!paramBoolean) && (!bool2)) {
-        break label265;
+      paramBoolean = ((Boolean)g.aAh().azQ().get(ar.a.Obc, Boolean.FALSE)).booleanValue();
+      bool1 = ((Boolean)g.aAh().azQ().get(ar.a.Obb, Boolean.FALSE)).booleanValue();
+      long l = ((Long)g.aAh().azQ().get(ar.a.Obd, Integer.valueOf(0))).longValue();
+      String str = (String)g.aAh().azQ().get(ar.a.Obf, null);
+      Log.i("MicroMsg.SubCoreVoip", "voip message need push is %s,%s,%s,%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool1), Long.valueOf(l), str });
+      if (paramBoolean)
+      {
+        localObject = ca.OqC;
+        if (!bool1) {
+          break label571;
+        }
+        i = 1;
+        label175:
+        s.c(str, (String)localObject, i, 6, MMApplicationContext.getContext().getString(2131767341));
+        fFi();
+      }
+    }
+    else
+    {
+      h.d.a(Integer.valueOf(50), this.GSK);
+      if ((((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.soG, 0) != 1) && (!com.tencent.mm.protocal.d.KyR) && (!BuildInfo.IS_FLAVOR_PURPLE) && (!BuildInfo.IS_FLAVOR_RED) && (!BuildInfo.DEBUG)) {
+        break label576;
       }
       paramBoolean = true;
-      if (paramBoolean != bool1)
+      label256:
+      Log.i("MicroMsg.SubCoreVoip", "onAccountPostReset before initCameraNumbers, useMMKVCache : %b", new Object[] { Boolean.valueOf(paramBoolean) });
+      localObject = com.tencent.mm.compatible.c.a.gDs;
+      com.tencent.mm.compatible.c.a.dp(paramBoolean);
+      localObject = com.tencent.mm.media.widget.d.c.itl;
+      com.tencent.mm.media.widget.d.c.aRN();
+      com.tencent.f.h.RTc.aX(new Runnable()
       {
-        if ((!paramBoolean) || (bool1)) {
-          break label270;
+        public final void run()
+        {
+          AppMethodBeat.i(235469);
+          if ((((com.tencent.mm.plugin.expt.b.b)g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.soI, 1) == 1) || (com.tencent.mm.protocal.d.KyR) || (BuildInfo.IS_FLAVOR_PURPLE) || (BuildInfo.IS_FLAVOR_RED) || (BuildInfo.DEBUG)) {}
+          for (boolean bool = true;; bool = false)
+          {
+            Log.i("MicroMsg.SubCoreVoip", "makeCameraCache getCodecCountCache : ", new Object[] { Boolean.valueOf(bool) });
+            if (bool)
+            {
+              com.tencent.mm.compatible.c.a locala = com.tencent.mm.compatible.c.a.gDs;
+              com.tencent.mm.compatible.c.a.anO();
+            }
+            AppMethodBeat.o(235469);
+            return;
+          }
         }
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(500L, 13L, 1L, false);
+      });
+      fFg();
+      this.GSM = new com.tencent.mm.media.k.d();
+      this.GSM.aNb();
+      this.appForegroundListener.alive();
+      EventCenter.instance.addListener(this.GSN);
+      EventCenter.instance.addListener(this.GSO);
+      ((com.tencent.mm.plugin.notification.b.a)g.ah(com.tencent.mm.plugin.notification.b.a.class)).getNotification().cancel(40);
+      paramBoolean = ((Boolean)g.aAh().azQ().get(73217, Boolean.TRUE)).booleanValue();
+      boolean bool2 = ((Boolean)g.aAh().azQ().get(73218, Boolean.TRUE)).booleanValue();
+      bool1 = com.tencent.mm.n.b.apR();
+      boolean bool3 = ((Boolean)g.aAh().azQ().get(ar.a.Ogs, Boolean.FALSE)).booleanValue();
+      Log.i("MicroMsg.SubCoreVoip", "voipSound: %s, voipAudioSound: %s, msgSound: %s, hasReport: %s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(bool3) });
+      if (!bool3)
+      {
+        if ((!paramBoolean) && (!bool2)) {
+          break label581;
+        }
+        paramBoolean = true;
+        label511:
+        if (paramBoolean != bool1)
+        {
+          if ((!paramBoolean) || (bool1)) {
+            break label586;
+          }
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(500L, 13L, 1L, false);
+        }
       }
     }
     for (;;)
     {
-      com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IXV, Boolean.TRUE);
-      ba.ox(1);
+      g.aAh().azQ().set(ar.a.Ogs, Boolean.TRUE);
+      be.rY(1);
       AppMethodBeat.o(114809);
       return;
-      label265:
-      paramBoolean = false;
+      localObject = ca.OqB;
       break;
-      label270:
+      label571:
+      i = 0;
+      break label175;
+      label576:
+      paramBoolean = false;
+      break label256;
+      label581:
+      paramBoolean = false;
+      break label511;
+      label586:
       if ((!paramBoolean) && (bool1)) {
-        com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(500L, 14L, 1L, false);
+        com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(500L, 14L, 1L, false);
       }
     }
   }
@@ -158,49 +301,49 @@ public class c
   public void onAccountRelease()
   {
     AppMethodBeat.i(114808);
-    if (this.CoO != null) {
-      ar.f(new Runnable()
+    if (this.GSL != null) {
+      MMHandlerThread.postToMainThread(new Runnable()
       {
         public final void run()
         {
           AppMethodBeat.i(114802);
-          c.a(c.this).rm(true);
+          c.a(c.this).rX(true);
           c.b(c.this);
           AppMethodBeat.o(114802);
         }
       });
     }
-    if (this.CoP != null)
+    if (this.GSM != null)
     {
-      localObject = this.CoP;
-      aq localaq = ((com.tencent.mm.plugin.voip.b.b)localObject).handler;
-      if (localaq != null) {
-        localaq.removeCallbacksAndMessages(null);
+      localObject = this.GSM;
+      MMHandler localMMHandler = ((com.tencent.mm.media.k.d)localObject).handler;
+      if (localMMHandler != null) {
+        localMMHandler.removeCallbacksAndMessages(null);
       }
-      localaq = ((com.tencent.mm.plugin.voip.b.b)localObject).handler;
-      if ((localaq != null) && (!localaq.isQuit()))
+      localMMHandler = ((com.tencent.mm.media.k.d)localObject).handler;
+      if ((localMMHandler != null) && (!localMMHandler.isQuit()))
       {
-        localaq = ((com.tencent.mm.plugin.voip.b.b)localObject).handler;
-        if (localaq != null) {
-          localaq.post((Runnable)new b.c((com.tencent.mm.plugin.voip.b.b)localObject));
+        localMMHandler = ((com.tencent.mm.media.k.d)localObject).handler;
+        if (localMMHandler != null) {
+          localMMHandler.post((Runnable)new d.c((com.tencent.mm.media.k.d)localObject));
         }
       }
     }
-    Object localObject = eys().Cvg.Cpd;
-    if (((l)localObject).Csl != null)
+    Object localObject = fFg().GYS.GSZ;
+    if (((l)localObject).GVX != null)
     {
-      localObject = ((l)localObject).Csl;
-      if (((n)localObject).Ctg != null)
+      localObject = ((l)localObject).GVX;
+      if (((n)localObject).GWP != null)
       {
-        ((n)localObject).Ctg.quitSafely();
-        ((n)localObject).Ctg = null;
+        ((n)localObject).GWP.quitSafely();
+        ((n)localObject).GWP = null;
       }
     }
     this.appForegroundListener.dead();
-    e.d.b(Integer.valueOf(50), this.CoN);
-    eys().aKI();
-    com.tencent.mm.sdk.b.a.IvT.d(this.CoQ);
-    com.tencent.mm.sdk.b.a.IvT.d(this.CoR);
+    h.d.b(Integer.valueOf(50), this.GSK);
+    fFg().unRegister();
+    EventCenter.instance.removeListener(this.GSN);
+    EventCenter.instance.removeListener(this.GSO);
     AppMethodBeat.o(114808);
   }
   
@@ -208,7 +351,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.c
  * JD-Core Version:    0.7.0.1
  */

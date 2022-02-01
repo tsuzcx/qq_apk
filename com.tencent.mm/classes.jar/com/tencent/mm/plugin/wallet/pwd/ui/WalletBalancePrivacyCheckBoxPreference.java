@@ -14,12 +14,12 @@ import com.tencent.mm.ui.widget.MMSwitchBtn.a;
 public class WalletBalancePrivacyCheckBoxPreference
   extends CheckBoxPreference
 {
-  private int DcV;
-  private String DcW;
-  private int DcX;
+  private int HIJ;
+  private String HIK;
+  private int HIL;
   private View mView;
-  boolean oB;
-  private MMSwitchBtn rkq;
+  boolean oD;
+  private MMSwitchBtn sLW;
   
   public WalletBalancePrivacyCheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -29,84 +29,84 @@ public class WalletBalancePrivacyCheckBoxPreference
   public WalletBalancePrivacyCheckBoxPreference(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(190148);
-    this.oB = false;
-    this.DcV = -1;
-    this.DcW = "";
-    this.DcX = 8;
-    setLayoutResource(2131496510);
-    AppMethodBeat.o(190148);
+    AppMethodBeat.i(214071);
+    this.oD = false;
+    this.HIJ = -1;
+    this.HIK = "";
+    this.HIL = 8;
+    setLayoutResource(2131493189);
+    AppMethodBeat.o(214071);
   }
   
-  public final void VX(int paramInt) {}
+  public final void aez(int paramInt) {}
   
-  public final void fw(String paramString, int paramInt) {}
+  public final void fZ(String paramString, int paramInt) {}
   
   public final boolean isChecked()
   {
-    if (this.rkq != null) {
-      return this.rkq.Lon;
+    if (this.sLW != null) {
+      return this.sLW.QDw;
     }
-    return this.oB;
+    return this.oD;
   }
   
   public final void onBindView(View paramView)
   {
-    AppMethodBeat.i(190150);
+    AppMethodBeat.i(214073);
     super.onBindView(paramView);
-    ade(8);
-    this.rkq = ((MMSwitchBtn)paramView.findViewById(2131298255));
-    this.rkq.setSwitchListener(new MMSwitchBtn.a()
+    alO(8);
+    this.sLW = ((MMSwitchBtn)paramView.findViewById(2131298639));
+    this.sLW.setSwitchListener(new MMSwitchBtn.a()
     {
       public final void onStatusChange(boolean paramAnonymousBoolean)
       {
-        AppMethodBeat.i(190147);
+        AppMethodBeat.i(214070);
         WalletBalancePrivacyCheckBoxPreference.a(WalletBalancePrivacyCheckBoxPreference.this, Boolean.valueOf(paramAnonymousBoolean));
-        AppMethodBeat.o(190147);
+        AppMethodBeat.o(214070);
       }
     });
-    this.rkq.setCheck(this.oB);
+    this.sLW.setCheck(this.oD);
     if (!isEnabled())
     {
-      this.rkq.setEnabled(false);
-      ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(2131100249));
-      ((TextView)paramView.findViewById(16908304)).setTextColor(paramView.getResources().getColor(2131100249));
+      this.sLW.setEnabled(false);
+      ((TextView)paramView.findViewById(16908310)).setTextColor(paramView.getResources().getColor(2131100283));
+      ((TextView)paramView.findViewById(16908304)).setTextColor(paramView.getResources().getColor(2131100283));
     }
-    paramView = paramView.findViewById(2131306012);
+    paramView = paramView.findViewById(2131309322);
     if (paramView != null) {
       paramView.setVisibility(0);
     }
-    AppMethodBeat.o(190150);
+    AppMethodBeat.o(214073);
   }
   
   public final View onCreateView(ViewGroup paramViewGroup)
   {
-    AppMethodBeat.i(190149);
+    AppMethodBeat.i(214072);
     this.mView = super.onCreateView(paramViewGroup);
     paramViewGroup = this.mView;
-    AppMethodBeat.o(190149);
+    AppMethodBeat.o(214072);
     return paramViewGroup;
   }
   
   public final void setChecked(boolean paramBoolean)
   {
-    this.oB = paramBoolean;
+    this.oD = paramBoolean;
   }
   
-  public final void uo(boolean paramBoolean)
+  public final void xZ(boolean paramBoolean)
   {
-    AppMethodBeat.i(190151);
-    if (this.rkq != null)
+    AppMethodBeat.i(214074);
+    if (this.sLW != null)
     {
-      this.oB = paramBoolean;
-      this.rkq.setCheck(paramBoolean);
+      this.oD = paramBoolean;
+      this.sLW.setCheck(paramBoolean);
     }
-    AppMethodBeat.o(190151);
+    AppMethodBeat.o(214074);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.pwd.ui.WalletBalancePrivacyCheckBoxPreference
  * JD-Core Version:    0.7.0.1
  */

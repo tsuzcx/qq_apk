@@ -1,27 +1,28 @@
 package com.tencent.mm.plugin.fts.ui.a;
 
 import android.content.Context;
+import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.fts.a.d.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.a;
 import com.tencent.mm.plugin.fts.a.d.a.a.b;
-import com.tencent.mm.protocal.protobuf.ejg;
-import com.tencent.mm.protocal.protobuf.ejp;
+import com.tencent.mm.protocal.protobuf.fdz;
+import com.tencent.mm.protocal.protobuf.fei;
 import org.json.JSONObject;
 
 public final class t
   extends n
 {
-  public ejp tMP;
-  public ejg tNe;
-  private a tNf;
+  public fei xdP;
+  public fdz xee;
+  private a xef;
   
   public t(int paramInt)
   {
     super(paramInt);
     AppMethodBeat.i(112131);
-    this.tNf = new a();
+    this.xef = new a();
     AppMethodBeat.o(112131);
   }
   
@@ -31,13 +32,13 @@ public final class t
     super.a(paramContext, parama, paramVarArgs);
     try
     {
-      if ("HOME".equals(new JSONObject(this.tMP.ImA).optString("content_type", "")))
+      if ("HOME".equals(new JSONObject(this.xdP.NzC).optString("content_type", "")))
       {
-        gf(2, 0);
+        gE(2, 0);
         AppMethodBeat.o(112132);
         return;
       }
-      gf(1, 0);
+      gE(1, 0);
       AppMethodBeat.o(112132);
       return;
     }
@@ -47,9 +48,9 @@ public final class t
     }
   }
   
-  public final a.b agQ()
+  public final a.b axc()
   {
-    return this.tNf;
+    return this.xef;
   }
   
   public final class a
@@ -60,18 +61,18 @@ public final class t
       super();
     }
     
-    public final boolean a(Context paramContext, a paramVarArgs)
+    public final boolean a(Context paramContext, View paramView, a paramVarArgs)
     {
-      AppMethodBeat.i(112130);
-      ((com.tencent.mm.plugin.websearch.api.h)g.ab(com.tencent.mm.plugin.websearch.api.h.class)).a(paramContext, 60, "", t.this.tFe.tFC);
-      AppMethodBeat.o(112130);
+      AppMethodBeat.i(235408);
+      ((com.tencent.mm.plugin.websearch.api.h)g.af(com.tencent.mm.plugin.websearch.api.h.class)).b(paramContext, 60, "", t.this.wWd.wWB);
+      AppMethodBeat.o(235408);
       return false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.fts.ui.a.t
  * JD-Core Version:    0.7.0.1
  */

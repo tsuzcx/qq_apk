@@ -6,10 +6,10 @@ import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.pluginsdk.p;
 import com.tencent.mm.pluginsdk.ui.applet.u;
-import com.tencent.mm.pluginsdk.ui.span.a;
-import com.tencent.mm.pluginsdk.ui.span.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.span.b;
+import com.tencent.mm.pluginsdk.ui.span.n;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -21,7 +21,7 @@ public final class d
   private static String a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
     AppMethodBeat.i(19665);
-    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)) || (paramInt1 >= paramInt2))
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)) || (paramInt1 >= paramInt2))
     {
       AppMethodBeat.o(19665);
       return paramString1;
@@ -39,7 +39,7 @@ public final class d
     }
     catch (Exception paramString1)
     {
-      ae.e("MicroMsg.QrCodeURLHelper", paramString1.getMessage());
+      Log.e("MicroMsg.QrCodeURLHelper", paramString1.getMessage());
       AppMethodBeat.o(19665);
     }
     return "";
@@ -48,14 +48,14 @@ public final class d
   public final boolean a(Context paramContext, String paramString, DialogInterface.OnDismissListener paramOnDismissListener)
   {
     AppMethodBeat.i(19666);
-    ae.d("MicroMsg.QrCodeURLHelper", "tryHandleEvents, url:%s", new Object[] { paramString });
-    if (bu.isNullOrNil(paramString))
+    Log.d("MicroMsg.QrCodeURLHelper", "tryHandleEvents, url:%s", new Object[] { paramString });
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(19666);
       return false;
     }
     if (paramString.endsWith("@mailto@")) {
-      m.b(paramContext, paramString.substring(0, paramString.length() - 8), paramOnDismissListener);
+      n.b(paramContext, paramString.substring(0, paramString.length() - 8), paramOnDismissListener);
     }
     for (;;)
     {
@@ -67,13 +67,13 @@ public final class d
       paramString = paramString.substring(0, paramString.length() - 5);
       Bundle localBundle = new Bundle();
       localBundle.putInt("fromScene", 3);
-      m.a(paramContext, paramString, paramOnDismissListener, localBundle);
+      n.a(paramContext, paramString, paramOnDismissListener, localBundle);
     }
     AppMethodBeat.o(19666);
     return false;
   }
   
-  public final boolean fK(String paramString)
+  public final boolean gw(String paramString)
   {
     AppMethodBeat.i(19667);
     if ((paramString == null) || (paramString.length() == 0))
@@ -93,7 +93,7 @@ public final class d
   public final String v(Context paramContext, String paramString)
   {
     AppMethodBeat.i(19664);
-    paramContext = a.bT(paramContext, paramString);
+    paramContext = b.cn(paramContext, paramString);
     if (paramContext.size() == 0)
     {
       AppMethodBeat.o(19664);
@@ -133,7 +133,7 @@ public final class d
     }
     for (;;)
     {
-      ae.d("MicroMsg.QrCodeURLHelper", "formatQRString, result:%s", new Object[] { paramString });
+      Log.d("MicroMsg.QrCodeURLHelper", "formatQRString, result:%s", new Object[] { paramString });
       AppMethodBeat.o(19664);
       return paramString;
       str1 = "<a href=\"%s@tel@\">%s</a>";
@@ -152,7 +152,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.app.plugin.d
  * JD-Core Version:    0.7.0.1
  */

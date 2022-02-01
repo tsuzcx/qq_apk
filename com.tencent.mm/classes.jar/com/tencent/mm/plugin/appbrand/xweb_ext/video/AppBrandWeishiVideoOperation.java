@@ -9,7 +9,7 @@ public class AppBrandWeishiVideoOperation
   implements Parcelable
 {
   public static final Parcelable.Creator<AppBrandWeishiVideoOperation> CREATOR;
-  public long boX;
+  public long boS;
   public long length;
   public String url;
   
@@ -24,7 +24,7 @@ public class AppBrandWeishiVideoOperation
   {
     AppMethodBeat.i(50035);
     this.url = paramParcel.readString();
-    this.boX = paramParcel.readLong();
+    this.boS = paramParcel.readLong();
     this.length = paramParcel.readLong();
     AppMethodBeat.o(50035);
   }
@@ -32,7 +32,7 @@ public class AppBrandWeishiVideoOperation
   public AppBrandWeishiVideoOperation(String paramString, long paramLong)
   {
     this.url = paramString;
-    this.boX = 0L;
+    this.boS = 0L;
     this.length = paramLong;
   }
   
@@ -45,7 +45,7 @@ public class AppBrandWeishiVideoOperation
   {
     AppMethodBeat.i(50036);
     paramParcel.writeString(this.url);
-    paramParcel.writeLong(this.boX);
+    paramParcel.writeLong(this.boS);
     paramParcel.writeLong(this.length);
     AppMethodBeat.o(50036);
   }

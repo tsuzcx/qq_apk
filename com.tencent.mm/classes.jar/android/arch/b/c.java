@@ -6,42 +6,42 @@ import java.util.concurrent.atomic.AtomicBoolean;
 final class c<K, V>
   extends h<V>
 {
-  private final b<K, V> dQ;
+  private final b<K, V> dP;
+  private boolean dQ = false;
   private boolean dR = false;
-  private boolean dS = false;
+  private int dS = 0;
   private int dT = 0;
-  private int dU = 0;
-  private g.a<V> dV = new g.a() {};
+  private g.a<V> dU = new g.a() {};
   
-  c(b<K, V> paramb, Executor paramExecutor1, Executor paramExecutor2, h.a<V> parama, h.d paramd)
+  c(b<K, V> paramb, Executor paramExecutor1, Executor paramExecutor2, h.a<V> parama, h.d paramd, K paramK, int paramInt)
   {
     super(new j(), paramExecutor1, paramExecutor2, parama, paramd);
-    this.dQ = paramb;
-    this.eH = -1;
-    if (this.dQ.cj.get())
+    this.dP = paramb;
+    this.eG = -1;
+    if (this.dP.cj.get())
     {
-      this.eN.set(true);
+      this.eM.set(true);
       return;
     }
-    this.dQ.a(this.ee.eT, this.ee.eS, this.dC, this.dV);
+    this.dP.a(this.ed.eS, this.ed.eR, this.dB, this.dU);
   }
   
   final void a(h<V> paramh, h.c paramc)
   {
-    paramh = paramh.eG;
-    int m = this.eG.fi - paramh.fi;
-    int j = this.eG.fh - paramh.fh;
-    int k = paramh.fe;
-    int i = paramh.fb;
-    if ((paramh.isEmpty()) || (m < 0) || (j < 0) || (this.eG.fe != Math.max(k - m, 0)) || (this.eG.fb != Math.max(i - j, 0)) || (this.eG.fg != paramh.fg + m + j)) {
+    paramh = paramh.eF;
+    int m = this.eF.fk - paramh.fk;
+    int j = this.eF.fj - paramh.fj;
+    int k = paramh.fg;
+    int i = paramh.fe;
+    if ((paramh.isEmpty()) || (m < 0) || (j < 0) || (this.eF.fg != Math.max(k - m, 0)) || (this.eF.fe != Math.max(i - j, 0)) || (this.eF.fi != paramh.fi + m + j)) {
       throw new IllegalArgumentException("Invalid snapshot provided - doesn't appear to be a snapshot of this PagedList");
     }
     if (m != 0)
     {
       k = Math.min(k, m);
       m -= k;
-      int n = paramh.fb;
-      n = paramh.fg + n;
+      int n = paramh.fe;
+      n = paramh.fi + n;
       if (k != 0) {
         paramc.g(n, k);
       }
@@ -62,24 +62,24 @@ final class c<K, V>
     }
   }
   
-  final boolean am()
+  final boolean ao()
   {
     return true;
   }
   
-  public final d<?, V> an()
+  public final d<?, V> ap()
   {
-    return this.dQ;
+    return this.dP;
   }
   
-  public final Object ao()
+  public final Object aq()
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.arch.b.c
  * JD-Core Version:    0.7.0.1
  */

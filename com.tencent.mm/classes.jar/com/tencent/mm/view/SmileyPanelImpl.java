@@ -15,34 +15,38 @@ import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.api.SmileyPanel;
 import com.tencent.mm.ca.a.b;
-import com.tencent.mm.emoji.a.b.ad;
-import com.tencent.mm.emoji.a.b.af;
-import com.tencent.mm.emoji.a.b.n;
-import com.tencent.mm.emoji.b.b;
+import com.tencent.mm.emoji.b.b.ad;
+import com.tencent.mm.emoji.b.b.af;
+import com.tencent.mm.emoji.b.b.ak;
+import com.tencent.mm.emoji.b.b.i;
+import com.tencent.mm.emoji.b.b.n;
+import com.tencent.mm.emoji.panel.a.ad.b;
 import com.tencent.mm.emoji.panel.a.o;
-import com.tencent.mm.emoji.panel.a.v;
-import com.tencent.mm.emoji.panel.a.x.b;
-import com.tencent.mm.model.x;
-import com.tencent.mm.plugin.emoji.b.d;
+import com.tencent.mm.emojisearch.ui.EmojiSearchEditTextView;
+import com.tencent.mm.plugin.emoji.ui.b;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel;
 import com.tencent.mm.pluginsdk.ui.ChatFooterPanel.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.an;
+import com.tencent.mm.pluginsdk.ui.chat.f;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.as;
 import com.tencent.mm.view.d.a.6;
-import d.g.b.p;
 import java.util.Iterator;
 import java.util.LinkedList;
+import kotlin.g.b.p;
 
 public class SmileyPanelImpl
   extends SmileyPanel
   implements LifecycleObserver
 {
-  private final com.tencent.mm.view.d.a LOu;
-  private boolean LOv;
+  private final com.tencent.mm.view.d.a RmS;
+  private boolean RmT;
   private final String TAG;
-  private boolean aMv;
+  private boolean aMn;
   
   public SmileyPanelImpl(Context paramContext, AttributeSet paramAttributeSet, boolean paramBoolean) {}
   
@@ -53,56 +57,56 @@ public class SmileyPanelImpl
   
   public final void a(n paramn)
   {
-    AppMethodBeat.i(188527);
-    com.tencent.mm.view.d.a locala = this.LOu;
-    com.tencent.mm.emoji.a.b.j localj = locala.LRc;
+    AppMethodBeat.i(199829);
+    com.tencent.mm.view.d.a locala = this.RmS;
+    com.tencent.mm.emoji.b.b.j localj = locala.RpL;
     p.h(paramn, "externalPanelProvider");
-    localj.gnA.add(paramn);
-    locala.LRc.afG();
-    AppMethodBeat.o(188527);
+    localj.gYv.add(paramn);
+    locala.RpL.avu();
+    AppMethodBeat.o(199829);
   }
   
   public final void destroy()
   {
     AppMethodBeat.i(105191);
-    if (this.aMv)
+    if (this.aMn)
     {
-      ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "destroy: has destroyed");
+      Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "destroy: has destroyed");
       AppMethodBeat.o(105191);
       return;
     }
-    this.aMv = true;
-    ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "destroy: ");
-    this.FkH = null;
-    this.LOu.LRm.dead();
-    this.LOu.onDestroy();
-    ((d)com.tencent.mm.kernel.g.ad(d.class)).getProvider().chT();
-    ((d)com.tencent.mm.kernel.g.ad(d.class)).getProvider().onDestroy();
+    this.aMn = true;
+    Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "destroy: ");
+    this.Kbz = null;
+    this.RmS.RpW.dead();
+    this.RmS.onDestroy();
+    ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().cFR();
+    ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().onDestroy();
     AppMethodBeat.o(105191);
   }
   
-  public final void ffs()
+  public final void goC()
   {
-    this.FkH = null;
+    this.Kbz = null;
   }
   
-  public final void fft()
+  public final void goD()
   {
     int j = 1;
     AppMethodBeat.i(105200);
-    com.tencent.mm.view.d.a locala = this.LOu;
-    if ((locala.LRb.gnn) || (locala.LRb.gnp))
+    com.tencent.mm.view.d.a locala = this.RmS;
+    if ((locala.RpK.gYh) || (locala.RpK.gYj))
     {
       i = 1;
-      locala.LRb.gnn = false;
-      locala.LRb.gnp = false;
+      locala.RpK.gYh = false;
+      locala.RpK.gYj = false;
       if (i != 0) {
-        locala.LRc.afG();
+        locala.RpL.avu();
       }
-      locala = this.LOu;
+      locala = this.RmS;
       i = j;
-      if (!locala.LRb.gnq) {
-        if (!locala.LRb.gnr) {
+      if (!locala.RpK.gYk) {
+        if (!locala.RpK.gYl) {
           break label138;
         }
       }
@@ -110,12 +114,12 @@ public class SmileyPanelImpl
     label138:
     for (int i = j;; i = 0)
     {
-      locala.LRb.gnq = false;
-      locala.LRb.gnr = false;
+      locala.RpK.gYk = false;
+      locala.RpK.gYl = false;
       if (i != 0) {
-        locala.LRc.afG();
+        locala.RpL.avu();
       }
-      this.LOu.setShowStore(false);
+      this.RmS.setShowStore(false);
       AppMethodBeat.o(105200);
       return;
       i = 0;
@@ -123,24 +127,17 @@ public class SmileyPanelImpl
     }
   }
   
-  public final void ffu()
-  {
-    AppMethodBeat.i(105201);
-    ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "hideSmiley: %B, hideEmojiSmiley: %B", new Object[] { Boolean.FALSE, Boolean.FALSE });
-    AppMethodBeat.o(105201);
-  }
-  
-  public final void ffv()
+  public final void goE()
   {
     AppMethodBeat.i(169244);
-    this.LOu.setShowSend(false);
+    this.RmS.setShowSend(false);
     AppMethodBeat.o(169244);
   }
   
-  public final void ffw()
+  public final void goF()
   {
     AppMethodBeat.i(105189);
-    this.LOu.agN(0);
+    this.RmS.apY(0);
     AppMethodBeat.o(105189);
   }
   
@@ -148,7 +145,7 @@ public class SmileyPanelImpl
   public void onActivityDestroy()
   {
     AppMethodBeat.i(105187);
-    ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onActivityDestroy:%s", new Object[] { getContext() });
+    Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onActivityDestroy:%s", new Object[] { getContext() });
     destroy();
     AppMethodBeat.o(105187);
   }
@@ -157,20 +154,20 @@ public class SmileyPanelImpl
   {
     AppMethodBeat.i(105192);
     super.onAttachedToWindow();
-    ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onAttachedToWindow");
-    com.tencent.mm.view.d.a locala = this.LOu;
-    if (locala.LQS)
+    Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onAttachedToWindow");
+    com.tencent.mm.view.d.a locala = this.RmS;
+    if (locala.RpB)
     {
-      ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "listener added %s", new Object[] { locala });
+      Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "listener added %s", new Object[] { locala });
       AppMethodBeat.o(105192);
       return;
     }
-    locala.LQS = true;
-    ((d)com.tencent.mm.kernel.g.ad(d.class)).getProvider().k(locala.LRi);
-    ((d)com.tencent.mm.kernel.g.ad(d.class)).getProvider().i(locala.Jgo);
-    com.tencent.mm.sdk.b.a.IvT.c(locala.Jgp);
-    com.tencent.mm.sdk.b.a.IvT.c(locala.LRj);
-    ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "SmileyPanelManager add listener. %s", new Object[] { locala });
+    locala.RpB = true;
+    ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().k(locala.wKe);
+    ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().i(locala.wKf);
+    EventCenter.instance.addListener(locala.wKg);
+    EventCenter.instance.addListener(locala.RpT);
+    Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "SmileyPanelManager add listener. %s", new Object[] { locala });
     AppMethodBeat.o(105192);
   }
   
@@ -178,42 +175,42 @@ public class SmileyPanelImpl
   {
     AppMethodBeat.i(105193);
     super.onDetachedFromWindow();
-    ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onDetachedFromWindow");
-    this.LOu.removeListener();
+    Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onDetachedFromWindow");
+    this.RmS.removeListener();
     AppMethodBeat.o(105193);
   }
   
   public final void onPause()
   {
     AppMethodBeat.i(105190);
-    ae.d("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onPause");
-    ((d)com.tencent.mm.kernel.g.ad(d.class)).getProvider().chT();
-    Object localObject = this.LOu;
-    ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "saveSelectedTab: %s", new Object[] { ((com.tencent.mm.view.d.a)localObject).LQR });
-    com.tencent.mm.emoji.a.i locali = com.tencent.mm.emoji.a.i.aeX();
-    locali.gmx = ((com.tencent.mm.view.d.a)localObject).LQR;
-    if (com.tencent.mm.sdk.platformtools.ak.coh())
+    Log.d("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onPause");
+    ((com.tencent.mm.plugin.emoji.b.d)com.tencent.mm.kernel.g.ah(com.tencent.mm.plugin.emoji.b.d.class)).getProvider().cFR();
+    Object localObject = this.RmS;
+    Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "saveSelectedTab: %s", new Object[] { ((com.tencent.mm.view.d.a)localObject).RpA });
+    com.tencent.mm.emoji.b.j localj = com.tencent.mm.emoji.b.j.auL();
+    localj.gXo = ((com.tencent.mm.view.d.a)localObject).RpA;
+    if (MMApplicationContext.isMainProcess())
     {
-      com.tencent.mm.kernel.g.ajR().ajA().set(-29414086, locali.gmx);
+      com.tencent.mm.kernel.g.aAh().azQ().set(-29414086, localj.gXo);
       AppMethodBeat.o(105190);
       return;
     }
-    com.tencent.mm.ca.a.flq();
-    localObject = com.tencent.mm.ca.a.Ipp;
-    a.b.aRa(locali.gmx);
+    com.tencent.mm.ca.a.gvc();
+    localObject = com.tencent.mm.ca.a.NCN;
+    a.b.bhD(localj.gXo);
     AppMethodBeat.o(105190);
   }
   
   public final void onResume()
   {
     AppMethodBeat.i(105188);
-    ae.d("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onResume");
-    if (!this.LOv)
+    Log.d("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onResume");
+    if (!this.RmT)
     {
-      this.LOv = true;
-      com.tencent.mm.view.d.a locala = this.LOu;
-      locala.LRc.afG();
-      locala.LRb.afF();
+      this.RmT = true;
+      com.tencent.mm.view.d.a locala = this.RmS;
+      locala.RpL.avu();
+      locala.RpK.avt();
     }
     AppMethodBeat.o(105188);
   }
@@ -221,33 +218,34 @@ public class SmileyPanelImpl
   protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(105203);
-    ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onSizeChanged: %s, %s; %s, %s", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "onSizeChanged: %s, %s; %s, %s", new Object[] { Integer.valueOf(paramInt3), Integer.valueOf(paramInt4), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     com.tencent.mm.view.d.a locala;
     ViewGroup.LayoutParams localLayoutParams;
-    if (this.LOu != null)
+    if (this.RmS != null)
     {
-      locala = this.LOu;
-      v.gqB.mf(paramInt1);
-      com.tencent.mm.emoji.panel.a.j.gqh.mf(paramInt1);
-      paramInt3 = locala.context.getResources().getDimensionPixelSize(2131166251);
-      localLayoutParams = locala.LQY.getLayoutParams();
-      ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "updateViewSize: %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      locala = this.RmS;
+      locala.RpQ.pn(paramInt1);
+      locala.RpP.pn(paramInt1);
+      locala.RpK.gYp = locala.RpQ.att;
+      paramInt3 = locala.context.getResources().getDimensionPixelSize(2131166294);
+      localLayoutParams = locala.RpH.getLayoutParams();
+      Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "updateViewSize: %s, %s, %s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
       if (paramInt2 >= paramInt3 * 4) {
-        break label225;
+        break label249;
       }
     }
-    label225:
-    for (paramInt1 = paramInt3;; paramInt1 = locala.context.getResources().getDimensionPixelSize(2131166250))
+    label249:
+    for (paramInt1 = paramInt3;; paramInt1 = locala.context.getResources().getDimensionPixelSize(2131166293))
     {
       if (localLayoutParams.height != paramInt1)
       {
         localLayoutParams.height = paramInt1;
-        locala.LQY.setLayoutParams(localLayoutParams);
-        locala.LQY.post(new a.6(locala));
+        locala.RpH.setLayoutParams(localLayoutParams);
+        locala.RpH.post(new a.6(locala));
       }
-      b.agm().gqX = v.gqB.atv;
-      com.tencent.mm.emoji.b.f.agp().gqX = com.tencent.mm.emoji.panel.a.j.gqh.atv;
+      com.tencent.mm.emoji.c.c.awc().hch = locala.RpQ.att;
+      com.tencent.mm.emoji.c.h.awf().hch = locala.RpP.att;
       AppMethodBeat.o(105203);
       return;
     }
@@ -256,50 +254,50 @@ public class SmileyPanelImpl
   public void set16029ExtraInfo(String paramString)
   {
     AppMethodBeat.i(105208);
-    com.tencent.mm.emoji.b.f.agp().extraInfo = paramString;
+    com.tencent.mm.emoji.c.h.awf().extraInfo = paramString;
     AppMethodBeat.o(105208);
   }
   
-  public void setCallback(com.tencent.mm.pluginsdk.ui.chat.f paramf)
+  public void setCallback(f paramf)
   {
     AppMethodBeat.i(105194);
     super.setCallback(paramf);
-    com.tencent.mm.view.d.a locala = this.LOu;
+    com.tencent.mm.view.d.a locala = this.RmS;
     paramf = (com.tencent.mm.pluginsdk.ui.chat.j)paramf;
-    locala.LRg = paramf;
-    locala.LQV.gpJ = paramf;
+    locala.rgI = paramf;
+    locala.RpE.haC = paramf;
     AppMethodBeat.o(105194);
   }
   
   public void setDefaultEmojiByDetail(String paramString)
   {
     AppMethodBeat.i(105206);
-    this.LOu.aWU(paramString);
-    this.LOu.LRm.alive();
+    this.RmS.blU(paramString);
+    this.RmS.RpW.alive();
     AppMethodBeat.o(105206);
   }
   
   public void setEntranceScene(int paramInt)
   {
     AppMethodBeat.i(105207);
-    com.tencent.mm.view.d.a locala = this.LOu;
-    com.tencent.mm.emoji.b.f.agp().scene = paramInt;
-    b.agm().scene = paramInt;
-    Object localObject = com.tencent.mm.emoji.b.e.grc;
-    com.tencent.mm.emoji.b.e.setScene(paramInt);
-    int i = locala.LRb.scene;
-    locala.LRb.scene = paramInt;
-    locala.LRb.gnr = com.tencent.mm.emoji.a.b.i.lX(paramInt);
-    locala.LRb.gnp = com.tencent.mm.emoji.a.b.i.lY(paramInt);
-    localObject = locala.LRb;
-    if (paramInt == ChatFooterPanel.FkK) {}
+    com.tencent.mm.view.d.a locala = this.RmS;
+    com.tencent.mm.emoji.c.h.awf().scene = paramInt;
+    com.tencent.mm.emoji.c.c.awc().scene = paramInt;
+    Object localObject = com.tencent.mm.emoji.c.g.hcn;
+    com.tencent.mm.emoji.c.g.setScene(paramInt);
+    int i = locala.RpK.scene;
+    locala.RpK.scene = paramInt;
+    locala.RpK.gYl = i.pf(paramInt);
+    locala.RpK.gYj = i.pg(paramInt);
+    localObject = locala.RpK;
+    if (paramInt == ChatFooterPanel.KbC) {}
     for (boolean bool = true;; bool = false)
     {
-      ((com.tencent.mm.emoji.a.b.i)localObject).gnl = bool;
+      ((i)localObject).gYf = bool;
       if (i != paramInt) {
-        locala.LRc.afG();
+        locala.RpL.avu();
       }
-      locala.LQV.scene = paramInt;
+      locala.RpE.scene = paramInt;
       AppMethodBeat.o(105207);
       return;
     }
@@ -309,28 +307,28 @@ public class SmileyPanelImpl
   {
     AppMethodBeat.i(105195);
     super.setOnTextOperationListener(parama);
-    com.tencent.mm.view.d.a locala = this.LOu;
-    locala.gpy = parama;
-    locala.LQV.gpy = parama;
-    locala.LQU.gpy = parama;
+    com.tencent.mm.view.d.a locala = this.RmS;
+    locala.har = parama;
+    locala.RpE.har = parama;
+    locala.RpD.har = parama;
     AppMethodBeat.o(105195);
   }
   
   public void setPortHeightPx(int paramInt)
   {
     AppMethodBeat.i(105202);
-    ae.d("MicroMsg.emoji.SmileyPanel.SmileyPanel", "setPortHeightPx: %d", new Object[] { Integer.valueOf(paramInt) });
+    Log.d("MicroMsg.emoji.SmileyPanel.SmileyPanel", "setPortHeightPx: %d", new Object[] { Integer.valueOf(paramInt) });
     AppMethodBeat.o(105202);
   }
   
   public void setSendButtonEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(105196);
-    Object localObject = this.LOu.LRb;
-    ((com.tencent.mm.emoji.a.b.i)localObject).gnu = paramBoolean;
-    localObject = ((Iterable)((com.tencent.mm.emoji.a.b.i)localObject).gnv).iterator();
+    Object localObject = this.RmS.RpK;
+    ((i)localObject).gYo = paramBoolean;
+    localObject = ((Iterable)((i)localObject).gYq).iterator();
     while (((Iterator)localObject).hasNext()) {
-      ((d.g.a.a)((Iterator)localObject).next()).invoke();
+      ((kotlin.g.a.a)((Iterator)localObject).next()).invoke();
     }
     AppMethodBeat.o(105196);
   }
@@ -338,8 +336,8 @@ public class SmileyPanelImpl
   public void setShowClose(boolean paramBoolean)
   {
     AppMethodBeat.i(105199);
-    Object localObject2 = this.LOu;
-    Object localObject1 = ((com.tencent.mm.view.d.a)localObject2).LQX;
+    Object localObject2 = this.RmS;
+    Object localObject1 = ((com.tencent.mm.view.d.a)localObject2).RpG;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {
@@ -347,17 +345,17 @@ public class SmileyPanelImpl
       if (!paramBoolean) {
         break;
       }
-      ((com.tencent.mm.view.d.a)localObject2).LQW.setBackgroundResource(2131232049);
+      ((com.tencent.mm.view.d.a)localObject2).RpF.setBackgroundResource(2131232140);
       AppMethodBeat.o(105199);
       return;
     }
-    localObject1 = ((com.tencent.mm.view.d.a)localObject2).LQW;
-    Object localObject3 = ((com.tencent.mm.view.d.a)localObject2).LQW;
+    localObject1 = ((com.tencent.mm.view.d.a)localObject2).RpF;
+    Object localObject3 = ((com.tencent.mm.view.d.a)localObject2).RpF;
     p.h(localObject3, "$this$getAttrResId");
     localObject2 = new TypedValue();
     localObject3 = ((View)localObject3).getContext();
     p.g(localObject3, "context");
-    ((Context)localObject3).getTheme().resolveAttribute(2130968959, (TypedValue)localObject2, true);
+    ((Context)localObject3).getTheme().resolveAttribute(2130968988, (TypedValue)localObject2, true);
     ((View)localObject1).setBackgroundResource(((TypedValue)localObject2).resourceId);
     AppMethodBeat.o(105199);
   }
@@ -365,39 +363,49 @@ public class SmileyPanelImpl
   public void setShowSend(boolean paramBoolean)
   {
     AppMethodBeat.i(105198);
-    this.LOu.setShowSend(paramBoolean);
+    this.RmS.setShowSend(paramBoolean);
     AppMethodBeat.o(105198);
   }
   
   public void setShowSmiley(boolean paramBoolean)
   {
-    this.LOu.LRb.gnm = paramBoolean;
+    this.RmS.RpK.gYg = paramBoolean;
   }
   
   public void setShowStore(boolean paramBoolean)
   {
     AppMethodBeat.i(105197);
-    this.LOu.setShowStore(paramBoolean);
+    this.RmS.setShowStore(paramBoolean);
     AppMethodBeat.o(105197);
   }
   
   public void setTalkerName(String paramString)
   {
     AppMethodBeat.i(105205);
-    com.tencent.mm.view.d.a locala = this.LOu;
-    locala.vmW = paramString;
-    locala.LQV.gpK = paramString;
-    if ((bu.isNullOrNil(paramString)) || ((!an.aUq(paramString)) && (!x.zV(paramString)))) {}
+    com.tencent.mm.view.d.a locala = this.RmS;
+    locala.rgD = paramString;
+    locala.RpE.haD = paramString;
+    if ((Util.isNullOrNil(paramString)) || ((!as.bjp(paramString)) && (!com.tencent.mm.model.ab.Iy(paramString)))) {}
     for (boolean bool = true;; bool = false)
     {
-      if (locala.LRb.gno != bool)
+      if (locala.RpK.gYi != bool)
       {
-        locala.LRb.gno = bool;
-        locala.LRc.afG();
+        locala.RpK.gYi = bool;
+        locala.RpL.avu();
+      }
+      if ((as.bju(locala.rgD)) && (locala.RpK.gYk))
+      {
+        locala.RpK.gYk = false;
+        locala.RpL.avu();
       }
       AppMethodBeat.o(105205);
       return;
     }
+  }
+  
+  public void setToSendText(String paramString)
+  {
+    this.RmS.rgH = paramString;
   }
   
   public void setVisibility(int paramInt)
@@ -406,37 +414,51 @@ public class SmileyPanelImpl
     super.setVisibility(paramInt);
     if (paramInt == 0)
     {
-      localObject = this.LOu;
-      ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "onResume: ");
+      localObject = this.RmS;
+      Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "onResume: ");
       ((com.tencent.mm.view.d.a)localObject).isResume = true;
-      ((com.tencent.mm.view.d.a)localObject).LRb.afF();
-      if (((com.tencent.mm.view.d.a)localObject).LRf != null) {
-        ((com.tencent.mm.view.d.a)localObject).LRf.afG();
+      ((com.tencent.mm.view.d.a)localObject).RpK.avt();
+      if (((com.tencent.mm.view.d.a)localObject).RpO != null) {
+        ((com.tencent.mm.view.d.a)localObject).RpO.avu();
       }
-      if (((com.tencent.mm.view.d.a)localObject).gpy != null) {
-        ((com.tencent.mm.view.d.a)localObject).gpy.dW(((com.tencent.mm.view.d.a)localObject).LRe);
+      if (((com.tencent.mm.view.d.a)localObject).har != null) {
+        ((com.tencent.mm.view.d.a)localObject).har.eP(((com.tencent.mm.view.d.a)localObject).RpN);
       }
       if (((com.tencent.mm.view.d.a)localObject).isResume)
       {
-        if ((bu.lX(((com.tencent.mm.view.d.a)localObject).LQR, ad.afP())) && (((com.tencent.mm.view.d.a)localObject).LRb.gnr)) {
-          com.tencent.mm.plugin.report.service.g.yxI.f(15982, new Object[] { Integer.valueOf(0) });
+        if ((Util.isEqual(((com.tencent.mm.view.d.a)localObject).RpA, ad.avD())) && (((com.tencent.mm.view.d.a)localObject).RpK.gYl)) {
+          com.tencent.mm.plugin.report.service.h.CyF.a(15982, new Object[] { Integer.valueOf(0) });
         }
-        localObject = com.tencent.mm.emoji.b.c.gqZ;
-        com.tencent.mm.emoji.b.c.md(1);
+        com.tencent.mm.emoji.c.d locald = com.tencent.mm.emoji.c.d.hcj;
+        com.tencent.mm.emoji.c.d.pl(1);
+        if (((com.tencent.mm.view.d.a)localObject).RpS != null)
+        {
+          localObject = ((com.tencent.mm.view.d.a)localObject).RpS.rgF;
+          if (((com.tencent.mm.plugin.emoji.ui.c)localObject).rgP.hasFocus()) {
+            ((com.tencent.mm.plugin.emoji.ui.c)localObject).rgP.awC();
+          }
+        }
       }
       AppMethodBeat.o(105204);
       return;
     }
-    Object localObject = this.LOu;
-    ae.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "onPause: ");
+    Object localObject = this.RmS;
+    Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanelManager", "onPause: ");
     ((com.tencent.mm.view.d.a)localObject).isResume = false;
-    ((com.tencent.mm.view.d.a)localObject).LRh.clear();
+    ((com.tencent.mm.view.d.a)localObject).RpR.clear();
     AppMethodBeat.o(105204);
+  }
+  
+  public final void zN(boolean paramBoolean)
+  {
+    AppMethodBeat.i(199828);
+    Log.i("MicroMsg.emoji.SmileyPanel.SmileyPanel", "hideSmiley: %B, hideEmojiSmiley: %B", new Object[] { Boolean.valueOf(paramBoolean), Boolean.FALSE });
+    AppMethodBeat.o(199828);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.view.SmileyPanelImpl
  * JD-Core Version:    0.7.0.1
  */

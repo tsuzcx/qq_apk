@@ -2,21 +2,21 @@ package com.tencent.mm.media.widget.b.a.a;
 
 import android.hardware.camera2.CaptureRequest.Key;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
-import d.v;
 import java.util.Iterator;
 import java.util.List;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCRequestKeyFinder;", "", "()V", "mCaptureRequest", "Landroid/hardware/camera2/CaptureRequest;", "requestKeyFinder", "Landroid/hardware/camera2/CaptureRequest$Key;", "resultKeyFinder", "Landroid/hardware/camera2/CaptureResult$Key;", "requestKey", "T", "effectRequestTag", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "list", "", "klass", "Ljava/lang/Class;", "resultKey", "name", "", "setRequestKey", "", "mRequest", "Landroid/hardware/camera2/CaptureRequest$Builder;", "kClass", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCRequestKeyFinder;", "", "()V", "mCaptureRequest", "Landroid/hardware/camera2/CaptureRequest;", "requestKeyFinder", "Landroid/hardware/camera2/CaptureRequest$Key;", "resultKeyFinder", "Landroid/hardware/camera2/CaptureResult$Key;", "requestKey", "T", "effectRequestTag", "Lcom/tencent/mm/media/widget/camera2/effect/request/WCCameraEffectRequestTag;", "list", "", "klass", "Ljava/lang/Class;", "resultKey", "name", "", "setRequestKey", "", "mRequest", "Landroid/hardware/camera2/CaptureRequest$Builder;", "kClass", "plugin-mediaeditor_release"})
 public final class d
 {
-  public static final d hvC;
+  public static final d ipd;
   
   static
   {
     AppMethodBeat.i(94204);
-    hvC = new d();
+    ipd = new d();
     AppMethodBeat.o(94204);
   }
   
@@ -33,10 +33,10 @@ public final class d
         break;
       }
       paramList = paramClass.next();
-    } while (!p.i(((CaptureRequest.Key)paramList).getName(), parama.hvm));
+    } while (!p.j(((CaptureRequest.Key)paramList).getName(), parama.ioN));
     for (parama = paramList; parama == null; parama = null)
     {
-      parama = new v("null cannot be cast to non-null type android.hardware.camera2.CaptureRequest.Key<T>");
+      parama = new t("null cannot be cast to non-null type android.hardware.camera2.CaptureRequest.Key<T>");
       AppMethodBeat.o(94203);
       throw parama;
     }

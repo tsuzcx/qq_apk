@@ -6,11 +6,11 @@ public enum h$ae$a
 {
   static
   {
-    AppMethodBeat.i(213010);
-    aSe = new a("NonZero", 0);
-    aSf = new a("EvenOdd", 1);
-    aSg = new a[] { aSe, aSf };
-    AppMethodBeat.o(213010);
+    AppMethodBeat.i(206506);
+    aRW = new a("NonZero", 0);
+    aRX = new a("EvenOdd", 1);
+    aRY = new a[] { aRW, aRX };
+    AppMethodBeat.o(206506);
   }
   
   private h$ae$a() {}

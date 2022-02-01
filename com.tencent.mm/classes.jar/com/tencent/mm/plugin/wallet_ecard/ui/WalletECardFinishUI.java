@@ -10,39 +10,40 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.g.a.od;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.g.a.ov;
 import com.tencent.mm.hellhoundlib.b.b;
-import com.tencent.mm.protocal.protobuf.cgv;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.protocal.protobuf.cxc;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.wallet_core.d;
 
 @com.tencent.mm.ui.base.a(19)
 public class WalletECardFinishUI
   extends WalletECardBaseUI
 {
-  private TextView lHT;
-  private Button mpo;
+  private TextView jVn;
+  private Button nAa;
   
   public int getLayoutId()
   {
-    return 2131493733;
+    return 2131493868;
   }
   
   public void initView()
   {
     AppMethodBeat.i(71781);
-    this.lHT = ((TextView)findViewById(2131299008));
-    Object localObject = getInput().getByteArray(com.tencent.mm.plugin.wallet_ecard.a.a.DGx);
+    this.jVn = ((TextView)findViewById(2131299510));
+    Object localObject = getInput().getByteArray(com.tencent.mm.plugin.wallet_ecard.a.a.IpJ);
     if (localObject != null) {}
     try
     {
       if (localObject.length != 0)
       {
-        localObject = (cgv)new cgv().parseFrom((byte[])localObject);
-        if ((localObject != null) && (!bu.isNullOrNil(((cgv)localObject).desc))) {
-          this.lHT.setText(((cgv)localObject).desc);
+        localObject = (cxc)new cxc().parseFrom((byte[])localObject);
+        if ((localObject != null) && (!Util.isNullOrNil(((cxc)localObject).desc))) {
+          this.jVn.setText(((cxc)localObject).desc);
         }
       }
     }
@@ -50,21 +51,21 @@ public class WalletECardFinishUI
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.WalletECardFinishUI", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.WalletECardFinishUI", localException, "", new Object[0]);
       }
     }
-    this.mpo = ((Button)findViewById(2131300100));
-    this.mpo.setOnClickListener(new View.OnClickListener()
+    this.nAa = ((Button)findViewById(2131301536));
+    this.nAa.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(71779);
         Object localObject = new b();
-        ((b)localObject).bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardFinishUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
-        ae.i("MicroMsg.WalletECardFinishUI", "click finish");
-        paramAnonymousView = new od();
-        com.tencent.mm.sdk.b.a.IvT.l(paramAnonymousView);
+        ((b)localObject).bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/wallet_ecard/ui/WalletECardFinishUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
+        Log.i("MicroMsg.WalletECardFinishUI", "click finish");
+        paramAnonymousView = new ov();
+        EventCenter.instance.publish(paramAnonymousView);
         paramAnonymousView = WalletECardFinishUI.this.getProcess();
         if (paramAnonymousView != null)
         {
@@ -77,7 +78,7 @@ public class WalletECardFinishUI
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/wallet_ecard/ui/WalletECardFinishUI$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(71779);
           return;
-          ae.w("MicroMsg.WalletECardFinishUI", "process is null");
+          Log.w("MicroMsg.WalletECardFinishUI", "process is null");
           WalletECardFinishUI.this.finish();
         }
       }
@@ -89,7 +90,7 @@ public class WalletECardFinishUI
   {
     AppMethodBeat.i(71780);
     super.onCreate(paramBundle);
-    setActionbarColor(getResources().getColor(2131101179));
+    setActionbarColor(getResources().getColor(2131101424));
     hideActionbarLine();
     setMMTitle("");
     enableBackMenu(false);
@@ -98,7 +99,7 @@ public class WalletECardFinishUI
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(71778);
-        ae.i("MicroMsg.WalletECardFinishUI", "press back btn");
+        Log.i("MicroMsg.WalletECardFinishUI", "press back btn");
         WalletECardFinishUI.a(WalletECardFinishUI.this).performClick();
         AppMethodBeat.o(71778);
         return false;
@@ -109,7 +110,7 @@ public class WalletECardFinishUI
     AppMethodBeat.o(71780);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     return false;
   }
@@ -122,7 +123,7 @@ public class WalletECardFinishUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_ecard.ui.WalletECardFinishUI
  * JD-Core Version:    0.7.0.1
  */

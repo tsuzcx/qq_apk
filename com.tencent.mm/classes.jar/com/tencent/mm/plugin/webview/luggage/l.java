@@ -7,58 +7,58 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class l
   extends k
 {
-  public View Ehs;
-  public View Eht;
-  private TextView Ehu;
+  public View IUe;
+  public View IUf;
+  private TextView IUg;
   
   public l(Context paramContext, View paramView)
   {
     super(paramContext);
     AppMethodBeat.i(78371);
-    this.Ehs = paramView;
-    this.Eht = LayoutInflater.from(paramContext).inflate(2131496086, this, false);
-    this.Eht.setVisibility(0);
-    this.Eht.setBackgroundResource(2131101165);
-    k(this.Eht, paramView);
-    this.Ehu = ((TextView)this.Eht.findViewById(2131307119));
+    this.IUe = paramView;
+    this.IUf = LayoutInflater.from(paramContext).inflate(2131497073, this, false);
+    this.IUf.setVisibility(0);
+    this.IUf.setBackgroundResource(2131101408);
+    l(this.IUf, paramView);
+    this.IUg = ((TextView)this.IUf.findViewById(2131310659));
     AppMethodBeat.o(78371);
   }
   
   public final void setBgColor(int paramInt)
   {
     AppMethodBeat.i(78374);
-    ((ViewGroup)this.Eht.getParent()).setBackgroundColor(paramInt);
+    ((ViewGroup)this.IUf.getParent()).setBackgroundColor(paramInt);
     AppMethodBeat.o(78374);
   }
   
   public final void setCurrentUrl(String paramString)
   {
     AppMethodBeat.i(78372);
-    if (!bu.isNullOrNil(paramString))
+    if (!Util.isNullOrNil(paramString))
     {
       paramString = Uri.parse(paramString).getHost();
-      if (!bu.isNullOrNil(paramString))
+      if (!Util.isNullOrNil(paramString))
       {
-        paramString = getContext().getString(2131766116, new Object[] { paramString });
-        this.Ehu.setVisibility(0);
-        this.Ehu.setText(paramString);
+        paramString = getContext().getString(2131768587, new Object[] { paramString });
+        this.IUg.setVisibility(0);
+        this.IUg.setText(paramString);
         AppMethodBeat.o(78372);
         return;
       }
     }
-    this.Ehu.setVisibility(8);
+    this.IUg.setVisibility(8);
     AppMethodBeat.o(78372);
   }
   
   public final void setX5LogoViewVisibility(int paramInt)
   {
     AppMethodBeat.i(78373);
-    this.Eht.setVisibility(paramInt);
+    this.IUf.setVisibility(paramInt);
     AppMethodBeat.o(78373);
   }
 }

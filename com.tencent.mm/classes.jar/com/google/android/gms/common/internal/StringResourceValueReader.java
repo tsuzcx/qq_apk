@@ -15,7 +15,7 @@ public class StringResourceValueReader
     AppMethodBeat.i(4743);
     Preconditions.checkNotNull(paramContext);
     this.zzvb = paramContext.getResources();
-    this.zzvc = this.zzvb.getResourcePackageName(2131757542);
+    this.zzvc = this.zzvb.getResourcePackageName(2131757764);
     AppMethodBeat.o(4743);
   }
   
@@ -36,7 +36,7 @@ public class StringResourceValueReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.google.android.gms.common.internal.StringResourceValueReader
  * JD-Core Version:    0.7.0.1
  */

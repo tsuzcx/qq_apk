@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/qp"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="@dimen/cs"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ScrollView style="@style/ny">
-        <RelativeLayout android:id="@id/b2r" style="@style/ld">
-            <ImageView android:id="@id/crx" android:layout_width="@dimen/e" android:layout_height="@dimen/e" android:layout_marginRight="@dimen/ha" android:src="@drawable/aq8" android:layout_alignParentLeft="true" android:layout_alignParentTop="true" android:contentDescription="@string/a1d" />
-            <TextView android:id="@id/cs2" android:layout_toRightOf="@id/crx" style="@style/lw" />
-            <TextView android:id="@id/cs4" android:layout_toRightOf="@id/crx" android:layout_below="@id/cs2" style="@style/ly" />
-            <TextView android:textSize="@dimen/ia" android:textColor="@color/km" android:gravity="center" android:id="@id/cs3" android:background="@drawable/bm0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/jn" android:layout_below="@id/crx" />
-            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="27.0dip" android:minHeight="@dimen/i5" android:layout_below="@id/cs3">
-                <Button android:id="@id/cs0" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/d3_" android:layout_weight="1.0" style="@style/o6" />
-                <View android:id="@id/cs1" android:layout_width="@dimen/jn" android:layout_height="fill_parent" />
-                <Button android:id="@id/cs5" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="@string/d3c" android:layout_weight="1.0" style="@style/ob" />
-            </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
-</LinearLayout>
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="@dimen/cs">
+        <TextView android:textSize="14.0dip" android:textColor="@color/BW_100_Alpha_0_3" android:layout_gravity="center" android:id="@id/jnk" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ce" android:text="@string/d01" />
+    </LinearLayout>
+</FrameLayout>

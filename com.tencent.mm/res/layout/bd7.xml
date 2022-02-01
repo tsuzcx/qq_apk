@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<FrameLayout android:gravity="bottom" android:layout_gravity="bottom" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/jo" android:textColor="@color/y4" android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_marginBottom="18.0dip" android:text="@string/g0c" />
-    <ImageView android:id="@id/bdj" style="@style/hp" />
-</LinearLayout>
+    <FrameLayout android:id="@id/fp2" android:background="@drawable/akc" android:layout_width="fill_parent" android:layout_height="@dimen/c2" />
+    <FrameLayout android:layout_gravity="center|top" android:id="@id/hcc" android:background="@drawable/a8l" android:layout_width="wrap_content" android:layout_height="@dimen/ci" android:layout_marginTop="22.0dip" />
+    <FrameLayout android:layout_gravity="bottom|center" android:focusable="true" android:focusableInTouchMode="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb">
+        <android.support.v7.widget.RecyclerView android:id="@id/hch" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="@dimen/cl" android:layout_marginBottom="18.0dip" />
+    </FrameLayout>
+</FrameLayout>

@@ -4,13 +4,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.appbrand.jsapi.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Log;
 
 class JsApiLuggageStartSoterAuthentication$1
   extends ResultReceiver
 {
-  JsApiLuggageStartSoterAuthentication$1(b paramb, Handler paramHandler, c paramc, int paramInt)
+  JsApiLuggageStartSoterAuthentication$1(b paramb, Handler paramHandler, f paramf, int paramInt)
   {
     super(paramHandler);
   }
@@ -20,14 +20,14 @@ class JsApiLuggageStartSoterAuthentication$1
     AppMethodBeat.i(159050);
     if (paramInt == -1)
     {
-      ae.i("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth ok");
-      localb = this.kFZ;
-      localc = this.cnL;
-      paramInt = this.cjS;
+      Log.i("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth ok");
+      localb = this.lKA;
+      localf = this.czN;
+      paramInt = this.cvP;
       if (paramBundle != null) {}
       for (;;)
       {
-        b.a(localb, localc, paramInt, paramBundle, "ok");
+        b.a(localb, localf, paramInt, paramBundle, "ok");
         AppMethodBeat.o(159050);
         return;
         paramBundle = null;
@@ -35,27 +35,27 @@ class JsApiLuggageStartSoterAuthentication$1
     }
     if (paramInt == 1)
     {
-      ae.w("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth failed");
-      localb = this.kFZ;
-      localc = this.cnL;
-      paramInt = this.cjS;
+      Log.w("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter auth failed");
+      localb = this.lKA;
+      localf = this.czN;
+      paramInt = this.cvP;
       if (paramBundle != null) {}
       for (;;)
       {
-        b.a(localb, localc, paramInt, paramBundle, "fail");
+        b.a(localb, localf, paramInt, paramBundle, "fail");
         AppMethodBeat.o(159050);
         return;
         paramBundle = null;
       }
     }
-    ae.e("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter user cancelled");
-    b localb = this.kFZ;
-    c localc = this.cnL;
-    paramInt = this.cjS;
+    Log.e("MicroMsg.JsApiLuggageStartSoterAuthentication", "hy: soter user cancelled");
+    b localb = this.lKA;
+    f localf = this.czN;
+    paramInt = this.cvP;
     if (paramBundle != null) {}
     for (;;)
     {
-      b.a(localb, localc, paramInt, paramBundle, "cancel");
+      b.a(localb, localf, paramInt, paramBundle, "cancel");
       AppMethodBeat.o(159050);
       return;
       paramBundle = null;

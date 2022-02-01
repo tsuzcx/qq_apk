@@ -2,42 +2,35 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class fc
-  extends c
+  extends IAutoDBItem
 {
-  public static final String[] INDEX_CREATE = { "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestAppIDIndex ON PredownloadBlockCgiRequest(appId)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestStartTimeIndex ON PredownloadBlockCgiRequest(startTime)", "CREATE INDEX IF NOT EXISTS PredownloadBlockCgiRequestEndTimeIndex ON PredownloadBlockCgiRequest(endTime)" };
-  private static final int eEX;
-  private static final int eEY;
-  private static final int eGD;
-  private static final int eGY = "username".hashCode();
-  private static final int eIh = "reportId".hashCode();
-  private static final int fqm;
-  private static final int fqn;
+  public static final String[] INDEX_CREATE = new String[0];
+  private static final int fUu = "sceneFlag".hashCode();
+  private static final int fUv = "msgTypeFlag".hashCode();
+  private static final int fUw = "msgState".hashCode();
+  private static final int fjl;
+  private static final int fkj = "appId".hashCode();
+  private static final int fml = "packageName".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eEQ = true;
-  private boolean eER = true;
-  private boolean eGV = true;
-  private boolean eGm = true;
-  private boolean eIc = true;
+  private boolean fUr = true;
+  private boolean fUs = true;
+  private boolean fUt = true;
   public String field_appId;
-  public String field_cgiList;
-  public long field_endTime;
-  public int field_reportId;
-  public String field_sceneList;
-  public long field_startTime;
-  public String field_username;
-  private boolean fqk = true;
-  private boolean fql = true;
+  public int field_msgState;
+  public int field_msgTypeFlag;
+  public String field_packageName;
+  public int field_sceneFlag;
+  public int field_status;
+  private boolean fjS = true;
+  private boolean fji = true;
+  private boolean flP = true;
   
   static
   {
-    eGD = "appId".hashCode();
-    eEX = "startTime".hashCode();
-    eEY = "endTime".hashCode();
-    fqm = "sceneList".hashCode();
-    fqn = "cgiList".hashCode();
+    fjl = "status".hashCode();
   }
   
   public void convertFrom(Cursor paramCursor)
@@ -53,11 +46,11 @@ public abstract class fc
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (eGY != k) {
+      if (fkj != k) {
         break label65;
       }
-      this.field_username = paramCursor.getString(i);
-      this.eGV = true;
+      this.field_appId = paramCursor.getString(i);
+      this.fjS = true;
     }
     for (;;)
     {
@@ -65,18 +58,16 @@ public abstract class fc
       break label20;
       break;
       label65:
-      if (eGD == k) {
-        this.field_appId = paramCursor.getString(i);
-      } else if (eEX == k) {
-        this.field_startTime = paramCursor.getLong(i);
-      } else if (eEY == k) {
-        this.field_endTime = paramCursor.getLong(i);
-      } else if (fqm == k) {
-        this.field_sceneList = paramCursor.getString(i);
-      } else if (fqn == k) {
-        this.field_cgiList = paramCursor.getString(i);
-      } else if (eIh == k) {
-        this.field_reportId = paramCursor.getInt(i);
+      if (fml == k) {
+        this.field_packageName = paramCursor.getString(i);
+      } else if (fjl == k) {
+        this.field_status = paramCursor.getInt(i);
+      } else if (fUu == k) {
+        this.field_sceneFlag = paramCursor.getInt(i);
+      } else if (fUv == k) {
+        this.field_msgTypeFlag = paramCursor.getInt(i);
+      } else if (fUw == k) {
+        this.field_msgState = paramCursor.getInt(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -86,26 +77,23 @@ public abstract class fc
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.eGV) {
-      localContentValues.put("username", this.field_username);
-    }
-    if (this.eGm) {
+    if (this.fjS) {
       localContentValues.put("appId", this.field_appId);
     }
-    if (this.eEQ) {
-      localContentValues.put("startTime", Long.valueOf(this.field_startTime));
+    if (this.flP) {
+      localContentValues.put("packageName", this.field_packageName);
     }
-    if (this.eER) {
-      localContentValues.put("endTime", Long.valueOf(this.field_endTime));
+    if (this.fji) {
+      localContentValues.put("status", Integer.valueOf(this.field_status));
     }
-    if (this.fqk) {
-      localContentValues.put("sceneList", this.field_sceneList);
+    if (this.fUr) {
+      localContentValues.put("sceneFlag", Integer.valueOf(this.field_sceneFlag));
     }
-    if (this.fql) {
-      localContentValues.put("cgiList", this.field_cgiList);
+    if (this.fUs) {
+      localContentValues.put("msgTypeFlag", Integer.valueOf(this.field_msgTypeFlag));
     }
-    if (this.eIc) {
-      localContentValues.put("reportId", Integer.valueOf(this.field_reportId));
+    if (this.fUt) {
+      localContentValues.put("msgState", Integer.valueOf(this.field_msgState));
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -115,7 +103,7 @@ public abstract class fc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.fc
  * JD-Core Version:    0.7.0.1
  */

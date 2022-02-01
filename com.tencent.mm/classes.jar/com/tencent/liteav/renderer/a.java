@@ -78,16 +78,16 @@ public class a
   
   private void o()
   {
-    AppMethodBeat.i(221522);
+    AppMethodBeat.i(222347);
     this.x = new c(true);
     this.C = new TXCYuvTextureRender();
     this.A = new c(false);
-    AppMethodBeat.o(221522);
+    AppMethodBeat.o(222347);
   }
   
   private boolean p()
   {
-    AppMethodBeat.i(221524);
+    AppMethodBeat.i(222349);
     for (;;)
     {
       Object localObject;
@@ -140,7 +140,7 @@ public class a
             if ((this.l == 1) && (this.x != null)) {
               a(localObject, this.x.a(), this.z, true);
             }
-            AppMethodBeat.o(221524);
+            AppMethodBeat.o(222349);
             return true;
           }
         }
@@ -158,7 +158,7 @@ public class a
       }
       finally
       {
-        AppMethodBeat.o(221524);
+        AppMethodBeat.o(222349);
       }
       label600:
       if (this.x != null)
@@ -382,13 +382,13 @@ public class a
   
   public Object b()
   {
-    AppMethodBeat.i(221521);
+    AppMethodBeat.i(222346);
     synchronized (this.u)
     {
       if (this.v != null)
       {
         localObject1 = this.v.a();
-        AppMethodBeat.o(221521);
+        AppMethodBeat.o(222346);
         return localObject1;
       }
       Object localObject1 = null;
@@ -427,54 +427,53 @@ public class a
       }
       this.D = null;
       TXCLog.w("TXCVideoRender", "play:vrender: TXCGLRender destroyTextureRender ".concat(String.valueOf(this)));
-    }
-    try
-    {
-      if (this.o != null) {
-        this.o.onSurfaceTextureDestroy(this.w);
-      }
-      label87:
-      if (this.x != null)
+      try
       {
-        this.x.c();
-        this.x = null;
+        if (this.o != null) {
+          this.o.onSurfaceTextureDestroy(this.w);
+        }
+        if (this.x != null)
+        {
+          this.x.c();
+          this.x = null;
+        }
+        if (this.C != null)
+        {
+          this.C.onSurfaceDestroy();
+          this.C = null;
+        }
+        if (this.A != null)
+        {
+          this.A.c();
+          this.A = null;
+        }
+        this.w = null;
+        if (this.F != null)
+        {
+          this.F.c();
+          this.F = null;
+        }
+        if (this.G != null)
+        {
+          this.G.onSurfaceDestroy();
+          this.G = null;
+        }
+        AppMethodBeat.o(16858);
+        return;
       }
-      if (this.C != null)
+      catch (Exception paramObject)
       {
-        this.C.onSurfaceDestroy();
-        this.C = null;
+        for (;;)
+        {
+          TXCLog.e("TXCVideoRender", "callback failed.", paramObject);
+        }
       }
-      if (this.A != null)
-      {
-        this.A.c();
-        this.A = null;
-      }
-      this.w = null;
-      if (this.F != null)
-      {
-        this.F.c();
-        this.F = null;
-      }
-      if (this.G != null)
-      {
-        this.G.onSurfaceDestroy();
-        this.G = null;
-      }
-      AppMethodBeat.o(16858);
-      return;
-      paramObject = finally;
-      AppMethodBeat.o(16858);
-      throw paramObject;
-    }
-    catch (Exception paramObject)
-    {
-      break label87;
     }
   }
   
   public void c(Object paramObject)
   {
-    AppMethodBeat.i(221523);
+    AppMethodBeat.i(222348);
     synchronized (this.u)
     {
       if (this.v == null)
@@ -484,7 +483,7 @@ public class a
         this.v.start();
         this.v.c();
         TXCLog.w("TXCVideoRender", "play:vrender: start render thread id " + getID() + ", glContext " + paramObject + ", " + this);
-        AppMethodBeat.o(221523);
+        AppMethodBeat.o(222348);
         return;
       }
       TXCLog.w("TXCVideoRender", "play:vrender: start render thread when running " + getID() + ", " + this);
@@ -543,6 +542,7 @@ public class a
     }
     catch (Exception localException)
     {
+      TXCLog.e("TXCVideoRender", "quit render thread failed.", localException);
       AppMethodBeat.o(16865);
     }
   }
@@ -551,7 +551,7 @@ public class a
   public void onFrameAvailable(SurfaceTexture arg1)
   {
     // Byte code:
-    //   0: ldc_w 408
+    //   0: ldc_w 415
     //   3: invokestatic 53	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_0
     //   7: monitorenter
@@ -573,20 +573,20 @@ public class a
     //   33: invokevirtual 258	com/tencent/liteav/renderer/b:c	()V
     //   36: aload_1
     //   37: monitorexit
-    //   38: ldc_w 408
+    //   38: ldc_w 415
     //   41: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   44: return
     //   45: astore_1
     //   46: aload_0
     //   47: monitorexit
-    //   48: ldc_w 408
+    //   48: ldc_w 415
     //   51: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: aload_1
     //   55: athrow
     //   56: astore_2
     //   57: aload_1
     //   58: monitorexit
-    //   59: ldc_w 408
+    //   59: ldc_w 415
     //   62: invokestatic 80	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   65: aload_2
     //   66: athrow
@@ -612,7 +612,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.liteav.renderer.a
  * JD-Core Version:    0.7.0.1
  */

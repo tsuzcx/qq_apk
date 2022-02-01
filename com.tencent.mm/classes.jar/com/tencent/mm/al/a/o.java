@@ -1,68 +1,68 @@
 package com.tencent.mm.al.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.abz;
-import com.tencent.mm.protocal.protobuf.aca;
-import com.tencent.mm.protocal.protobuf.auj;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.aeb;
+import com.tencent.mm.protocal.protobuf.aec;
+import com.tencent.mm.protocal.protobuf.bfs;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class o
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
+  private i callback;
   Object data;
-  public b rr;
+  public d rr;
   
-  public o(String paramString, auj paramauj, Object paramObject)
+  public o(String paramString, bfs parambfs, Object paramObject)
   {
     AppMethodBeat.i(124298);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new abz();
-    ((b.a)localObject).hQG = new aca();
-    ((b.a)localObject).uri = "/cgi-bin/mmocbiz-bin/createbizchatinfo";
-    ((b.a)localObject).funcId = 1355;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (abz)this.rr.hQD.hQJ;
-    ((abz)localObject).FZx = paramString;
-    ((abz)localObject).GtU = paramauj;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new aeb();
+    ((d.a)localObject).iLO = new aec();
+    ((d.a)localObject).uri = "/cgi-bin/mmocbiz-bin/createbizchatinfo";
+    ((d.a)localObject).funcId = 1355;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (aeb)this.rr.iLK.iLR;
+    ((aeb)localObject).KTt = paramString;
+    ((aeb)localObject).Lpw = parambfs;
     this.data = paramObject;
     AppMethodBeat.o(124298);
   }
   
-  public final aca aGK()
+  public final aec baD()
   {
-    if ((this.rr != null) && (this.rr.hQE.hQJ != null)) {
-      return (aca)this.rr.hQE.hQJ;
+    if ((this.rr != null) && (this.rr.iLL.iLR != null)) {
+      return (aec)this.rr.iLL.iLR;
     }
     return null;
   }
   
-  public final abz aGL()
+  public final aeb baE()
   {
-    if ((this.rr != null) && (this.rr.hQD.hQJ != null)) {
-      return (abz)this.rr.hQD.hQJ;
+    if ((this.rr != null) && (this.rr.iLK.iLR != null)) {
+      return (aeb)this.rr.iLK.iLR;
     }
     return null;
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(124300);
-    this.callback = paramf;
-    ae.i("MicroMsg.brandservice.NetSceneCreateBizChatInfo", "do scene");
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    Log.i("MicroMsg.brandservice.NetSceneCreateBizChatInfo", "do scene");
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(124300);
     return i;
   }
@@ -72,10 +72,10 @@ public final class o
     return 1355;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(124299);
-    ae.d("MicroMsg.brandservice.NetSceneCreateBizChatInfo", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+    Log.d("MicroMsg.brandservice.NetSceneCreateBizChatInfo", "onGYNetEnd code(%d, %d)", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     if (this.callback != null) {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     }
@@ -84,7 +84,7 @@ public final class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.al.a.o
  * JD-Core Version:    0.7.0.1
  */

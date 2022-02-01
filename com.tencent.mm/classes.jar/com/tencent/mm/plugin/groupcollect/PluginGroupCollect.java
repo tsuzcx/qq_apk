@@ -5,7 +5,7 @@ import com.tencent.mm.kernel.api.bucket.c;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.b.g;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.storagebase.h.b;
 import java.util.HashMap;
 
@@ -21,21 +21,21 @@ public class PluginGroupCollect
   public void execute(g paramg)
   {
     AppMethodBeat.i(175282);
-    ae.i("MicroMsg.groupcollect.PluginGroupCollect", "execute");
+    Log.i("MicroMsg.groupcollect.PluginGroupCollect", "execute");
     AppMethodBeat.o(175282);
   }
   
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(175280);
-    ae.i("MicroMsg.groupcollect.PluginGroupCollect", "onAccountInitialized");
+    Log.i("MicroMsg.groupcollect.PluginGroupCollect", "onAccountInitialized");
     AppMethodBeat.o(175280);
   }
   
   public void onAccountRelease()
   {
     AppMethodBeat.i(175281);
-    ae.i("MicroMsg.groupcollect.PluginGroupCollect", "onAccountRelease");
+    Log.i("MicroMsg.groupcollect.PluginGroupCollect", "onAccountRelease");
     AppMethodBeat.o(175281);
   }
 }

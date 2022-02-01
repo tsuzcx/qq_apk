@@ -22,6 +22,11 @@ public abstract interface b
       attachInterface(this, "com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
     }
     
+    public static b ftG()
+    {
+      return a.FOU;
+    }
+    
     public IBinder asBinder()
     {
       return this;
@@ -51,6 +56,7 @@ public abstract interface b
     static final class a
       implements b
     {
+      public static b FOU;
       private IBinder mRemote;
       
       a(IBinder paramIBinder)
@@ -72,7 +78,11 @@ public abstract interface b
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
           localParcel1.writeInt(paramInt);
-          this.mRemote.transact(2, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(2, localParcel1, localParcel2, 0)) && (b.a.ftG() != null))
+          {
+            b.a.ftG().keep_OnError(paramInt);
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -92,7 +102,11 @@ public abstract interface b
         try
         {
           localParcel1.writeInterfaceToken("com.tencent.mm.plugin.talkroom.component.ILiveConEngineCallback_AIDL");
-          this.mRemote.transact(1, localParcel1, localParcel2, 0);
+          if ((!this.mRemote.transact(1, localParcel1, localParcel2, 0)) && (b.a.ftG() != null))
+          {
+            b.a.ftG().keep_OnOpenSuccess();
+            return;
+          }
           localParcel2.readException();
           return;
         }
@@ -108,7 +122,7 @@ public abstract interface b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.component.b
  * JD-Core Version:    0.7.0.1
  */

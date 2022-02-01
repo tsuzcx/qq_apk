@@ -3,26 +3,26 @@ package com.tencent.mm.emoji.loader;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.loader.h.a.c;
 import com.tencent.mm.storage.emotion.EmojiGroupInfo;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "isLegal", "", "uniqueValue", "", "plugin-emojisdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/emoji/loader/EmojiGroupData;", "Lcom/tencent/mm/loader/model/data/ILoaderData;", "groupInfo", "Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "(Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;)V", "getGroupInfo", "()Lcom/tencent/mm/storage/emotion/EmojiGroupInfo;", "isLegal", "", "uniqueValue", "", "plugin-emojisdk_release"})
 public final class a
   implements c
 {
-  final EmojiGroupInfo gkF;
+  final EmojiGroupInfo gVA;
   
   public a(EmojiGroupInfo paramEmojiGroupInfo)
   {
     AppMethodBeat.i(105380);
-    this.gkF = paramEmojiGroupInfo;
+    this.gVA = paramEmojiGroupInfo;
     AppMethodBeat.o(105380);
   }
   
-  public final String aeM()
+  public final String auA()
   {
     AppMethodBeat.i(105379);
-    String str = this.gkF.fxk();
+    String str = this.gVA.hRu();
     p.g(str, "groupInfo.productID");
     AppMethodBeat.o(105379);
     return str;
@@ -30,7 +30,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.emoji.loader.a
  * JD-Core Version:    0.7.0.1
  */

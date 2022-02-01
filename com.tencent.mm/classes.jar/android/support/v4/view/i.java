@@ -4,7 +4,49 @@ import android.view.MotionEvent;
 
 public final class i
 {
-  public static boolean e(MotionEvent paramMotionEvent)
+  @Deprecated
+  public static int b(MotionEvent paramMotionEvent, int paramInt)
+  {
+    return paramMotionEvent.findPointerIndex(paramInt);
+  }
+  
+  @Deprecated
+  public static int c(MotionEvent paramMotionEvent, int paramInt)
+  {
+    return paramMotionEvent.getPointerId(paramInt);
+  }
+  
+  @Deprecated
+  public static float d(MotionEvent paramMotionEvent, int paramInt)
+  {
+    return paramMotionEvent.getX(paramInt);
+  }
+  
+  @Deprecated
+  public static float e(MotionEvent paramMotionEvent, int paramInt)
+  {
+    return paramMotionEvent.getY(paramInt);
+  }
+  
+  @Deprecated
+  public static int e(MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getActionMasked();
+  }
+  
+  @Deprecated
+  public static int f(MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getActionIndex();
+  }
+  
+  @Deprecated
+  public static int g(MotionEvent paramMotionEvent)
+  {
+    return paramMotionEvent.getPointerCount();
+  }
+  
+  public static boolean h(MotionEvent paramMotionEvent)
   {
     return (paramMotionEvent.getSource() & 0x2002) == 8194;
   }

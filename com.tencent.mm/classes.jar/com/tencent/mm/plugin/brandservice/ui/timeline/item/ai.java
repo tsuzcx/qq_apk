@@ -1,155 +1,227 @@
 package com.tencent.mm.plugin.brandservice.ui.timeline.item;
 
+import android.content.Context;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
-import android.view.ViewStub;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.u;
-import com.tencent.mm.ah.v;
-import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.e;
-import com.tencent.mm.pluginsdk.ui.span.g;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.pluginsdk.ui.span.n;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.w;
+import com.tencent.mm.ag.u;
+import com.tencent.mm.ag.v;
+import com.tencent.mm.plugin.brandservice.ui.b.c;
+import com.tencent.mm.plugin.brandservice.ui.b.d;
+import com.tencent.mm.plugin.brandservice.ui.timeline.b;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.z;
 import com.tencent.mm.ui.widget.MMNeat7extView;
-import java.util.Set;
+import kotlin.f;
 
-public final class ai
-  extends y
+public class ai
+  extends aj
 {
-  TextView olJ;
-  MMNeat7extView oma;
-  private LinearLayout omb;
+  public int mCount = 0;
+  public ImageView ptG;
+  public MMNeat7extView ptR;
+  public ImageView ptS;
+  public LinearLayout ptT;
+  public LinearLayout ptU;
+  public MMNeat7extView ptV;
+  public MMNeat7extView ptW;
+  public View ptX;
+  public TextView ptY;
+  public TextView pxA;
+  public boolean pxB = false;
+  public int pxC = 0;
+  public int pxD = 0;
+  public View pxz;
   
-  public final void a(int paramInt1, final v paramv, w paramw, int paramInt2, u paramu, int paramInt3)
+  private void a(MMNeat7extView paramMMNeat7extView, v paramv, boolean paramBoolean1, boolean paramBoolean2)
   {
-    boolean bool1 = true;
-    AppMethodBeat.i(6061);
-    super.a(paramInt1, paramv, paramw, paramInt2, paramu, paramInt3);
-    paramw.IIE = e.XT(paramw.field_talker);
-    Object localObject1;
-    if (bu.isNullOrNil(paramv.title))
+    AppMethodBeat.i(162406);
+    paramMMNeat7extView.setMaxLines(2);
+    int i;
+    if (paramBoolean2)
     {
-      this.oma.setVisibility(8);
-      paramInt3 = com.tencent.mm.cb.a.iu(this.mContext);
-      int i = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 72);
-      localObject1 = this.oma.kR(paramInt3 - i, 2147483647);
-      if (localObject1 == null) {
-        break label409;
+      i = 0;
+      if (Util.isNullOrNil(paramv.title)) {
+        break label67;
       }
+      com.tencent.mm.plugin.brandservice.b.a.pmT.a(paramv.title, paramMMNeat7extView, paramv, i);
     }
-    label403:
-    label409:
-    for (paramInt3 = ((com.tencent.neattextview.textview.layout.a)localObject1).fXb();; paramInt3 = 0)
+    for (;;)
     {
-      localObject1 = (LinearLayout.LayoutParams)this.oma.getLayoutParams();
-      Object localObject2 = (LinearLayout.LayoutParams)this.omb.getLayoutParams();
-      if (paramInt3 <= 3)
+      if (paramBoolean1)
       {
-        this.olJ.setVisibility(8);
-        ((LinearLayout.LayoutParams)localObject2).gravity = 16;
-        this.omb.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        ((LinearLayout.LayoutParams)localObject1).topMargin = 0;
-        ((LinearLayout.LayoutParams)localObject1).gravity = 17;
-        this.oma.setMaxLines(3);
-        this.oma.setLayoutParams((ViewGroup.LayoutParams)localObject1);
-        this.oio.setBackgroundResource(2131231256);
-        a(this, paramw, paramv);
-        localObject1 = this.oll;
-        localObject2 = this.oio;
-        if (paramInt1 <= 1) {
-          break label403;
-        }
+        paramv = d.pMy;
+        d.c(paramMMNeat7extView);
       }
-      for (;;)
-      {
-        ((com.tencent.mm.plugin.brandservice.ui.timeline.b)localObject1).a(paramv, paramw, paramInt2, paramu, (View)localObject2, bool1, 0);
-        AppMethodBeat.o(6061);
-        return;
-        this.oma.setVisibility(0);
-        this.oma.aq(k.g(this.mContext, paramv.title, (int)this.oma.getTextSize()));
-        break;
-        boolean bool2 = this.oll.ogt.contains(paramv);
-        this.olJ.setVisibility(0);
-        ((LinearLayout.LayoutParams)localObject2).gravity = 48;
-        this.omb.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-        ((LinearLayout.LayoutParams)localObject1).topMargin = com.tencent.mm.cb.a.fromDPToPix(this.mContext, 12);
-        ((LinearLayout.LayoutParams)localObject1).gravity = 8388627;
-        if (bool2)
-        {
-          this.oma.setMaxLines(2147483647);
-          this.olJ.setText(2131756619);
-        }
-        for (;;)
-        {
-          this.olJ.setOnClickListener(new View.OnClickListener()
-          {
-            public final void onClick(View paramAnonymousView)
-            {
-              AppMethodBeat.i(6059);
-              com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-              localb.bd(paramAnonymousView);
-              com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineTopTextSlot$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-              if (ai.this.oll.ogt.contains(paramv))
-              {
-                ai.this.oma.setMaxLines(3);
-                ai.this.olJ.setText(2131756620);
-                ai.this.oll.ogt.remove(paramv);
-              }
-              for (;;)
-              {
-                com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/brandservice/ui/timeline/item/BizTimeLineTopTextSlot$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-                AppMethodBeat.o(6059);
-                return;
-                ai.this.oma.setMaxLines(2147483647);
-                ai.this.olJ.setText(2131756619);
-                ai.this.oll.ogt.add(paramv);
-              }
-            }
-          });
-          break;
-          this.oma.setMaxLines(3);
-          this.olJ.setText(2131756620);
-        }
-        bool1 = false;
-      }
+      AppMethodBeat.o(162406);
+      return;
+      i = 11;
+      break;
+      label67:
+      com.tencent.mm.plugin.brandservice.b.a.pmT.a(this.mContext.getString(2131756755), paramMMNeat7extView, paramv, i);
     }
   }
   
-  public final void a(View paramView, com.tencent.mm.plugin.brandservice.ui.timeline.b paramb)
+  public static boolean a(int paramInt, v paramv)
   {
-    AppMethodBeat.i(6060);
+    AppMethodBeat.i(6013);
+    if ((paramv.type == 0) || (paramv.type == 1))
+    {
+      if ((paramInt == 1) && (com.tencent.mm.plugin.brandservice.ui.b.a.crf()))
+      {
+        AppMethodBeat.o(6013);
+        return true;
+      }
+      AppMethodBeat.o(6013);
+      return false;
+    }
+    if (paramInt == 1)
+    {
+      AppMethodBeat.o(6013);
+      return true;
+    }
+    AppMethodBeat.o(6013);
+    return false;
+  }
+  
+  public void a(int paramInt, v paramv, z paramz)
+  {
+    AppMethodBeat.i(194971);
+    if (a(paramInt, paramv))
+    {
+      this.ptR.setVisibility(8);
+      this.ptU.setVisibility(0);
+      a(this.ptV, paramv, false, true);
+      MMNeat7extView localMMNeat7extView = this.ptW;
+      localMMNeat7extView.setMaxLines(2);
+      int i;
+      if (!Util.isNullOrNil(paramv.iAq))
+      {
+        Object localObject = d.pMy;
+        if (!((Boolean)d.pMw.getValue()).booleanValue())
+        {
+          localObject = c.aiW(paramv.iAq);
+          localMMNeat7extView.setVisibility(0);
+          localMMNeat7extView.aw((CharSequence)localObject);
+          this.ptX.setVisibility(8);
+          a(this.pxz, this.pxA, paramz, paramv);
+          i = com.tencent.mm.cb.a.jn(this.mContext) - com.tencent.mm.cb.a.fromDPToPix(this.mContext, 48);
+          this.ptV.setMaxLines(2);
+          paramv = this.ptV.mq(i, 2147483647);
+          if (paramv == null) {
+            break label245;
+          }
+        }
+      }
+      label245:
+      for (paramInt = paramv.hiG();; paramInt = -1)
+      {
+        Log.v("MicroMsg.BizTimeLineItem", "alvinluo fillTitleLayout title line: %d, width: %d", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(i) });
+        if ((paramv == null) || (paramv.hiG() < 2)) {
+          break label250;
+        }
+        this.ptW.setMaxLines(1);
+        AppMethodBeat.o(194971);
+        return;
+        localMMNeat7extView.setVisibility(8);
+        break;
+      }
+      label250:
+      this.ptW.setMaxLines(2);
+      AppMethodBeat.o(194971);
+      return;
+    }
+    this.ptR.setVisibility(0);
+    this.ptU.setVisibility(8);
+    a(this.ptR, paramv, true, false);
+    AppMethodBeat.o(194971);
+  }
+  
+  public void a(int paramInt1, v paramv, z paramz, int paramInt2, u paramu, int paramInt3)
+  {
+    this.mCount = paramInt1;
+    this.pxB = false;
+    this.pxC = 0;
+    this.pxD = paramInt3;
+  }
+  
+  public void a(View paramView, b paramb)
+  {
+    AppMethodBeat.i(6008);
     super.a(paramView, paramb);
-    if (this.oiV != null)
+    AppMethodBeat.o(6008);
+  }
+  
+  public void a(z paramz, v paramv, View paramView, TextView paramTextView, int paramInt)
+  {
+    AppMethodBeat.i(6010);
+    super.a(paramz, paramv, paramView, paramTextView, paramInt);
+    this.pxC = paramInt;
+    if (this.ptT == null)
     {
-      AppMethodBeat.o(6060);
+      AppMethodBeat.o(6010);
       return;
     }
-    paramb = (ViewStub)paramView.findViewById(2131306454);
-    if (paramb == null)
+    if ((this.pxB) && ((this.pxC > 0) || (!a(this.mCount, paramv))))
     {
-      AppMethodBeat.o(6060);
+      paramz = this.ptT;
+      if (b(paramv)) {}
+      for (paramInt = 2131231341;; paramInt = 2131231342)
+      {
+        paramz.setBackgroundResource(paramInt);
+        AppMethodBeat.o(6010);
+        return;
+      }
+    }
+    this.ptT.setBackgroundResource(2131233974);
+    AppMethodBeat.o(6010);
+  }
+  
+  public final boolean b(v paramv)
+  {
+    AppMethodBeat.i(6011);
+    if (this.mCount > 1)
+    {
+      AppMethodBeat.o(6011);
+      return false;
+    }
+    if ((this.mCount == 1) && (!a(this.mCount, paramv)))
+    {
+      AppMethodBeat.o(6011);
+      return true;
+    }
+    AppMethodBeat.o(6011);
+    return false;
+  }
+  
+  public final void cmH()
+  {
+    AppMethodBeat.i(6009);
+    if (this.puO == null)
+    {
+      AppMethodBeat.o(6009);
       return;
     }
-    paramb.inflate();
-    this.oiV = paramView.findViewById(2131298109);
-    this.oio = paramView.findViewById(2131298110);
-    bPv();
-    this.oma = ((MMNeat7extView)paramView.findViewById(2131297361));
-    this.oma.setOnTouchListener(new g(this.oma, new n(this.oma.getContext())));
-    this.olJ = ((TextView)paramView.findViewById(2131297362));
-    this.omb = ((LinearLayout)paramView.findViewById(2131305733));
-    AppMethodBeat.o(6060);
+    this.ptX = this.puO.findViewById(2131308374);
+    this.ptY = ((TextView)this.puO.findViewById(2131301796));
+    AppMethodBeat.o(6009);
+  }
+  
+  public final int cnf()
+  {
+    AppMethodBeat.i(194970);
+    int i = com.tencent.mm.cb.a.jn(this.mContext);
+    int j = b.prw;
+    AppMethodBeat.o(194970);
+    return i - j;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.timeline.item.ai
  * JD-Core Version:    0.7.0.1
  */

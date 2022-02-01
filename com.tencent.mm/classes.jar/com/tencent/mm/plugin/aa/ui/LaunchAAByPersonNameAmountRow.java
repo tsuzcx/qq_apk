@@ -9,15 +9,15 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.a.b;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.ui.z;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.ui.aa;
 
 public class LaunchAAByPersonNameAmountRow
   extends LinearLayout
 {
-  private TextView heI;
-  private TextView iXQ;
-  private View iYM;
+  private TextView hXv;
+  private TextView jUP;
+  private View jWr;
   
   public LaunchAAByPersonNameAmountRow(Context paramContext)
   {
@@ -46,25 +46,25 @@ public class LaunchAAByPersonNameAmountRow
   private void init(Context paramContext)
   {
     AppMethodBeat.i(63618);
-    z.jV(paramContext).inflate(2131494548, this, true);
-    this.heI = ((TextView)findViewById(2131306252));
-    this.iXQ = ((TextView)findViewById(2131296655));
-    this.iYM = findViewById(2131299154);
+    aa.jQ(paramContext).inflate(2131495157, this, true);
+    this.hXv = ((TextView)findViewById(2131309651));
+    this.jUP = ((TextView)findViewById(2131296732));
+    this.jWr = findViewById(2131299682);
     AppMethodBeat.o(63618);
   }
   
   public final void a(String paramString1, String paramString2, double paramDouble)
   {
     AppMethodBeat.i(63619);
-    this.heI.setText(k.b(getContext(), ((b)g.ab(b.class)).getDisplayName(paramString1, paramString2), this.heI.getTextSize()));
-    this.iXQ.setText(getContext().getString(2131755021, new Object[] { Double.valueOf(paramDouble) }));
+    this.hXv.setText(l.b(getContext(), ((b)g.af(b.class)).getDisplayName(paramString1, paramString2), this.hXv.getTextSize()));
+    this.jUP.setText(getContext().getString(2131755023, new Object[] { Double.valueOf(paramDouble) }));
     AppMethodBeat.o(63619);
   }
   
   public void setDividerVisible(boolean paramBoolean)
   {
     AppMethodBeat.i(63620);
-    View localView = this.iYM;
+    View localView = this.jWr;
     if (paramBoolean) {}
     for (int i = 0;; i = 8)
     {

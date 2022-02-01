@@ -59,7 +59,7 @@ public abstract interface IPlayer
   {
     static
     {
-      AppMethodBeat.i(215197);
+      AppMethodBeat.i(218548);
       IDLE = new PlayerStatus("IDLE", 0);
       READY = new PlayerStatus("READY", 1);
       PLAYING = new PlayerStatus("PLAYING", 2);
@@ -69,7 +69,7 @@ public abstract interface IPlayer
       ERROR = new PlayerStatus("ERROR", 6);
       REPLAY = new PlayerStatus("REPLAY", 7);
       $VALUES = new PlayerStatus[] { IDLE, READY, PLAYING, STOPPED, PAUSED, FINISHED, ERROR, REPLAY };
-      AppMethodBeat.o(215197);
+      AppMethodBeat.o(218548);
     }
     
     private PlayerStatus() {}
@@ -77,7 +77,7 @@ public abstract interface IPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.player.IPlayer
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout style="@style/qp"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/f4" android:focusable="true" android:scrollbars="none" android:transcriptMode="disabled" style="@style/n3" />
-    <TextView android:textColor="@color/y4" android:gravity="center_horizontal" android:layout_gravity="center_vertical" android:id="@id/bmd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/lv" />
-    <RelativeLayout android:id="@id/gs5" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <View android:id="@id/gdn" android:background="@color/lh" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>

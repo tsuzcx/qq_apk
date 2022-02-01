@@ -54,8 +54,8 @@ public final class SignInButtonImpl
     float f = paramResources.getDisplayMetrics().density;
     setMinHeight((int)(f * 48.0F + 0.5F));
     setMinWidth((int)(f * 48.0F + 0.5F));
-    int j = zza(paramInt2, 2131231823, 2131231828, 2131231828);
-    int i = zza(paramInt2, 2131231832, 2131231837, 2131231837);
+    int j = zza(paramInt2, 2131231904, 2131231909, 2131231909);
+    int i = zza(paramInt2, 2131231913, 2131231918, 2131231918);
     switch (paramInt1)
     {
     default: 
@@ -66,10 +66,10 @@ public final class SignInButtonImpl
       i = j;
     }
     Drawable localDrawable = a.i(paramResources.getDrawable(i));
-    a.a(localDrawable, paramResources.getColorStateList(2131100190));
+    a.a(localDrawable, paramResources.getColorStateList(2131100223));
     a.a(localDrawable, PorterDuff.Mode.SRC_ATOP);
     setBackgroundDrawable(localDrawable);
-    setTextColor((ColorStateList)Preconditions.checkNotNull(paramResources.getColorStateList(zza(paramInt2, 2131100180, 2131100185, 2131100185))));
+    setTextColor((ColorStateList)Preconditions.checkNotNull(paramResources.getColorStateList(zza(paramInt2, 2131100213, 2131100218, 2131100218))));
     switch (paramInt1)
     {
     default: 
@@ -77,7 +77,7 @@ public final class SignInButtonImpl
       AppMethodBeat.o(11876);
       throw paramResources;
     case 0: 
-      setText(paramResources.getString(2131757550));
+      setText(paramResources.getString(2131757772));
     }
     for (;;)
     {
@@ -87,7 +87,7 @@ public final class SignInButtonImpl
       }
       AppMethodBeat.o(11876);
       return;
-      setText(paramResources.getString(2131757551));
+      setText(paramResources.getString(2131757773));
       continue;
       setText(null);
     }
@@ -102,7 +102,7 @@ public final class SignInButtonImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.gms.common.internal.SignInButtonImpl
  * JD-Core Version:    0.7.0.1
  */

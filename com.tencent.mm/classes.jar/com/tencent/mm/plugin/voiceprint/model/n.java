@@ -1,101 +1,102 @@
 package com.tencent.mm.plugin.voiceprint.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.model.bc;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.model.bg;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class n
-  implements f
+  implements i
 {
-  private String Cng;
-  public int Cnh;
-  public a Cnj;
-  public String jnq;
-  public String keg;
-  public String lJm;
+  private String GRf;
+  public int GRg;
+  public a GRi;
+  public String kly;
+  public String lhR;
+  public String mRa;
   
   public n()
   {
     AppMethodBeat.i(29795);
-    this.keg = null;
-    this.Cnj = null;
-    this.Cnh = -1;
-    this.Cng = null;
-    this.jnq = null;
-    this.lJm = null;
-    bc.ajj().a(618, this);
-    bc.ajj().a(616, this);
-    bc.ajj().a(617, this);
+    this.lhR = null;
+    this.GRi = null;
+    this.GRg = -1;
+    this.GRf = null;
+    this.kly = null;
+    this.mRa = null;
+    bg.azz().a(618, this);
+    bg.azz().a(616, this);
+    bg.azz().a(617, this);
     AppMethodBeat.o(29795);
   }
   
-  public final void exQ()
+  public final void fEE()
   {
     AppMethodBeat.i(29796);
-    bc.ajj().a(new g(this.keg), 0);
+    bg.azz().a(new g(this.lhR), 0);
     AppMethodBeat.o(29796);
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, com.tencent.mm.ak.n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(29797);
-    ae.d("MicroMsg.VoicePrintLoginService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
+    Log.d("MicroMsg.VoicePrintLoginService", "onSceneEnd, errType:%d, errCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     if ((paramInt1 != 0) && (paramInt2 != 0))
     {
-      if ((paramInt2 == -34) && (paramn.getType() == 617))
+      if ((paramInt2 == -34) && (paramq.getType() == 617))
       {
-        ae.d("MicroMsg.VoicePrintLoginService", "blocked by limit");
-        if (this.Cnj != null) {
-          this.Cnj.exR();
+        Log.d("MicroMsg.VoicePrintLoginService", "blocked by limit");
+        if (this.GRi != null) {
+          this.GRi.fEF();
         }
         AppMethodBeat.o(29797);
         return;
       }
-      if (this.Cnj != null) {
-        this.Cnj.exP();
+      if (this.GRi != null) {
+        this.GRi.fED();
       }
       AppMethodBeat.o(29797);
       return;
     }
-    if (paramn.getType() == 618)
+    if (paramq.getType() == 618)
     {
-      this.keg = ((e)paramn).fRw;
-      ae.d("MicroMsg.VoicePrintLoginService", "onGetTicket, loginTicket==null:%b", new Object[] { Boolean.valueOf(bu.isNullOrNil(this.keg)) });
-      if (!bu.isNullOrNil(this.keg)) {
-        exQ();
+      this.lhR = ((e)paramq).gwF;
+      Log.d("MicroMsg.VoicePrintLoginService", "onGetTicket, loginTicket==null:%b", new Object[] { Boolean.valueOf(Util.isNullOrNil(this.lhR)) });
+      if (!Util.isNullOrNil(this.lhR)) {
+        fEE();
       }
     }
-    if (paramn.getType() == 616)
+    if (paramq.getType() == 616)
     {
-      paramString = (g)paramn;
-      this.Cnh = paramString.CmM;
-      this.Cng = paramString.CmL;
-      ae.d("MicroMsg.VoicePrintLoginService", "onFinishGetText, resId:%d, voiceText==null:%b", new Object[] { Integer.valueOf(this.Cnh), Boolean.valueOf(bu.isNullOrNil(this.Cng)) });
-      if (this.Cnj != null) {
-        this.Cnj.aEV(this.Cng);
+      paramString = (g)paramq;
+      this.GRg = paramString.GQN;
+      this.GRf = paramString.GQM;
+      Log.d("MicroMsg.VoicePrintLoginService", "onFinishGetText, resId:%d, voiceText==null:%b", new Object[] { Integer.valueOf(this.GRg), Boolean.valueOf(Util.isNullOrNil(this.GRf)) });
+      if (this.GRi != null) {
+        this.GRi.aUv(this.GRf);
       }
     }
-    if (paramn.getType() == 617)
+    if (paramq.getType() == 617)
     {
-      paramString = (h)paramn;
-      if (paramString.Nv == 0)
+      paramString = (h)paramq;
+      if (paramString.NH == 0)
       {
-        ae.d("MicroMsg.VoicePrintLoginService", "onFinishVerify, success");
-        this.jnq = paramString.jnq;
-        if (this.Cnj != null)
+        Log.d("MicroMsg.VoicePrintLoginService", "onFinishVerify, success");
+        this.kly = paramString.kly;
+        if (this.GRi != null)
         {
-          this.Cnj.tf(true);
+          this.GRi.wO(true);
           AppMethodBeat.o(29797);
         }
       }
       else
       {
-        ae.d("MicroMsg.VoicePrintLoginService", "onFinishVerify, failed");
-        if (this.Cnj != null) {
-          this.Cnj.tf(false);
+        Log.d("MicroMsg.VoicePrintLoginService", "onFinishVerify, failed");
+        if (this.GRi != null) {
+          this.GRi.wO(false);
         }
       }
     }
@@ -104,18 +105,18 @@ public final class n
   
   public static abstract interface a
   {
-    public abstract void aEV(String paramString);
+    public abstract void aUv(String paramString);
     
-    public abstract void exP();
+    public abstract void fED();
     
-    public abstract void exR();
+    public abstract void fEF();
     
-    public abstract void tf(boolean paramBoolean);
+    public abstract void wO(boolean paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.voiceprint.model.n
  * JD-Core Version:    0.7.0.1
  */

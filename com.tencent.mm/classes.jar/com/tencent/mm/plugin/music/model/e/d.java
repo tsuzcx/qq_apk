@@ -3,41 +3,41 @@ package com.tencent.mm.plugin.music.model.e;
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.f;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class d
-  extends j<c>
+  extends MAutoStorage<c>
 {
-  public e db;
-  public f<String, c> wBy;
+  public f<String, c> AlG;
+  public ISQLiteDatabase db;
   
-  public d(e parame)
+  public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, c.info, "PieceMusicInfo", null);
+    super(paramISQLiteDatabase, c.info, "PieceMusicInfo", null);
     AppMethodBeat.i(63179);
-    this.db = parame;
-    this.wBy = new com.tencent.mm.memory.a.c(20);
+    this.db = paramISQLiteDatabase;
+    this.AlG = new com.tencent.mm.memory.a.c(20);
     AppMethodBeat.o(63179);
   }
   
-  public final c atX(String paramString)
+  public final c aHX(String paramString)
   {
     AppMethodBeat.i(63180);
-    if (this.wBy.get(paramString) != null)
+    if (this.AlG.get(paramString) != null)
     {
-      paramString = (c)this.wBy.get(paramString);
+      paramString = (c)this.AlG.get(paramString);
       AppMethodBeat.o(63180);
       return paramString;
     }
     Object localObject = String.format("Select * From PieceMusicInfo Where musicId=?", new Object[0]);
-    localObject = this.db.a((String)localObject, new String[] { paramString }, 2);
+    localObject = this.db.rawQuery((String)localObject, new String[] { paramString }, 2);
     if ((localObject != null) && (((Cursor)localObject).moveToFirst()))
     {
       c localc = new c();
       localc.convertFrom((Cursor)localObject);
       ((Cursor)localObject).close();
-      this.wBy.put(paramString, localc);
+      this.AlG.put(paramString, localc);
       AppMethodBeat.o(63180);
       return localc;
     }
@@ -50,7 +50,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.music.model.e.d
  * JD-Core Version:    0.7.0.1
  */

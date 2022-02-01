@@ -8,39 +8,38 @@ import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MenuItem.OnMenuItemClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.bb.p;
-import com.tencent.mm.bb.t;
-import com.tencent.mm.modelsns.e;
-import com.tencent.mm.plugin.sns.data.r;
-import com.tencent.mm.plugin.sns.model.ah;
-import com.tencent.mm.plugin.sns.model.al;
-import com.tencent.mm.plugin.sns.model.ap;
-import com.tencent.mm.plugin.sns.model.bc;
-import com.tencent.mm.plugin.sns.model.bd;
+import com.tencent.mm.modelsns.k;
+import com.tencent.mm.plugin.sns.model.aj;
+import com.tencent.mm.plugin.sns.model.an;
+import com.tencent.mm.plugin.sns.model.ar;
+import com.tencent.mm.plugin.sns.model.be;
+import com.tencent.mm.plugin.sns.model.bf;
 import com.tencent.mm.plugin.sns.model.g;
-import com.tencent.mm.plugin.sns.storage.n;
+import com.tencent.mm.plugin.sns.storage.l;
+import com.tencent.mm.plugin.sns.storage.m;
 import com.tencent.mm.protocal.protobuf.TimeLineObject;
-import com.tencent.mm.protocal.protobuf.abo;
-import com.tencent.mm.protocal.protobuf.bzh;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.protocal.protobuf.adp;
+import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 import java.util.LinkedList;
 import java.util.List;
 
 public class ArtistBrowseUI
   extends SnsBaseGalleryUI
-  implements v.a
+  implements w.a
 {
-  private String Afw = "";
-  private String vlG = "";
+  private String EnT = "";
+  private String yFy = "";
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
     AppMethodBeat.i(97721);
     if ((paramKeyEvent.getKeyCode() == 4) && (paramKeyEvent.getAction() == 0))
     {
-      ae.d("MicroMsg.ArtistBrowseUI", "dispatchKeyEvent");
+      Log.d("MicroMsg.ArtistBrowseUI", "dispatchKeyEvent");
       paramKeyEvent = new Intent();
-      paramKeyEvent.putExtra("sns_cmd_list", this.Arg.Ait);
+      paramKeyEvent.putExtra("sns_cmd_list", this.EAf.EqW);
       setResult(-1, paramKeyEvent);
       finish();
       AppMethodBeat.o(97721);
@@ -51,116 +50,116 @@ public class ArtistBrowseUI
     return bool;
   }
   
-  public final void fj(String paramString, int paramInt)
+  public final void fH(String paramString, int paramInt)
   {
     AppMethodBeat.i(97724);
-    if (this.Arj != null) {
-      this.Arj.rY(true);
+    if (this.EAi != null) {
+      this.EAi.vu(true);
     }
     AppMethodBeat.o(97724);
   }
   
-  public final void fk(String paramString, int paramInt) {}
+  public final void fI(String paramString, int paramInt) {}
   
   public int getLayoutId()
   {
-    return 2131495548;
+    return 2131496440;
   }
   
   public void initView()
   {
     AppMethodBeat.i(97722);
-    setActionbarColor(getResources().getColor(2131100017));
-    setNavigationbarColor(getResources().getColor(2131100017));
-    this.vlG = getIntent().getStringExtra("sns_gallery_artist_lan");
+    setActionbarColor(getResources().getColor(2131100042));
+    setNavigationbarColor(getResources().getColor(2131100042));
+    this.yFy = getIntent().getStringExtra("sns_gallery_artist_lan");
     int i = getIntent().getIntExtra("sns_gallery_position", 0);
-    t.aKs();
-    this.Afw = p.aKp();
-    U(false, 2);
-    this.Arj = new SnsInfoFlip(this);
-    List localList = al.jt(this.vlG, this.Afw);
-    this.Arj.setShowTitle(true);
-    this.Arj.a(localList, "", i, this.Are, this);
-    this.Arj.setOnPageSelectListener(this);
-    addView(this.Arj);
+    com.tencent.mm.bb.v.bev();
+    this.EnT = com.tencent.mm.bb.r.bes();
+    X(false, 2);
+    this.EAi = new SnsInfoFlip(this);
+    List localList = an.kg(this.yFy, this.EnT);
+    this.EAi.setShowTitle(true);
+    this.EAi.a(localList, "", i, this.EAd, this);
+    this.EAi.setOnPageSelectListener(this);
+    addView(this.EAi);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
       {
         AppMethodBeat.i(97716);
-        ArtistBrowseUI.this.Arg.edr();
+        ArtistBrowseUI.this.EAf.ffJ();
         AppMethodBeat.o(97716);
         return true;
       }
     });
-    setMMTitle(2131764047);
+    setMMTitle(2131766286);
     showOptionMenu(false);
-    this.Are.setCallBack(new u.a()
+    this.EAd.setCallBack(new v.a()
     {
-      public final void ecX()
+      public final void ffk()
       {
         AppMethodBeat.i(97717);
-        Object localObject1 = ArtistBrowseUI.this.Arj.getCntMedia();
+        Object localObject1 = ArtistBrowseUI.this.EAi.getCntMedia();
         if (localObject1 == null)
         {
           AppMethodBeat.o(97717);
           return;
         }
-        ae.d("MicroMsg.ArtistBrowseUI", "set bg the meida id " + ((bzh)localObject1).Id);
-        Object localObject2 = e.pY(723);
-        ((e)localObject2).GU(((bzh)localObject1).Url);
-        ((e)localObject2).aLH();
-        if (!com.tencent.mm.vfs.o.fB(ap.jv(ah.getAccSnsPath(), ((bzh)localObject1).Id) + r.k((bzh)localObject1)))
+        Log.d("MicroMsg.ArtistBrowseUI", "set bg the meida id " + ((cnb)localObject1).Id);
+        Object localObject2 = k.tO(723);
+        ((k)localObject2).PH(((cnb)localObject1).Url);
+        ((k)localObject2).bfK();
+        if (!s.YS(ar.ki(aj.getAccSnsPath(), ((cnb)localObject1).Id) + com.tencent.mm.plugin.sns.data.r.l((cnb)localObject1)))
         {
           AppMethodBeat.o(97717);
           return;
         }
-        localObject2 = ah.dXA();
+        localObject2 = aj.faK();
         Object localObject3;
         String str;
-        if ((((bc)localObject2).dXj() != null) && (!((bc)localObject2).dXj().equals("")))
+        if ((((be)localObject2).fau() != null) && (!((be)localObject2).fau().equals("")))
         {
-          localObject3 = ap.jv(ah.getAccSnsPath(), ((bzh)localObject1).Id) + r.k((bzh)localObject1);
-          str = ap.jv(ah.getAccSnsPath(), ((bc)localObject2).dXj());
-          if (!com.tencent.mm.vfs.o.fB((String)localObject3)) {
+          localObject3 = ar.ki(aj.getAccSnsPath(), ((cnb)localObject1).Id) + com.tencent.mm.plugin.sns.data.r.l((cnb)localObject1);
+          str = ar.ki(aj.getAccSnsPath(), ((be)localObject2).fau());
+          if (!s.YS((String)localObject3)) {
             break label486;
           }
-          ae.d("MicroMsg.UploadManager", "bg file is exist!'");
-          com.tencent.mm.vfs.o.aZI(str);
-          com.tencent.mm.vfs.o.deleteFile(str + ((bc)localObject2).dXj() + "bg_");
-          com.tencent.mm.vfs.o.deleteFile(str + ((bc)localObject2).dXj() + "tbg_");
-          com.tencent.mm.vfs.o.mF((String)localObject3, str + ((bc)localObject2).dXj() + "bg_");
+          Log.d("MicroMsg.UploadManager", "bg file is exist!'");
+          s.boN(str);
+          s.deleteFile(str + ((be)localObject2).fau() + "bg_");
+          s.deleteFile(str + ((be)localObject2).fau() + "tbg_");
+          s.nw((String)localObject3, str + ((be)localObject2).fau() + "bg_");
         }
         for (;;)
         {
-          localObject3 = ah.dXI();
-          Object localObject4 = ((bc)localObject2).dXj();
-          str = ((bzh)localObject1).Id;
-          localObject4 = ((com.tencent.mm.plugin.sns.storage.o)localObject3).aBw((String)localObject4);
-          ((n)localObject4).field_bgId = str;
-          ((com.tencent.mm.plugin.sns.storage.o)localObject3).c((n)localObject4);
-          ((bc)localObject2).dYF();
-          localObject2 = new bd(7);
-          ((bzh)localObject1).Hmp = 1;
-          ((bd)localObject2).zFb.HUG.Gtx.add(localObject1);
-          ((bd)localObject2).QK(2);
-          ((bd)localObject2).commit();
+          localObject3 = aj.faS();
+          Object localObject4 = ((be)localObject2).fau();
+          str = ((cnb)localObject1).Id;
+          localObject4 = ((m)localObject3).aQr((String)localObject4);
+          ((l)localObject4).field_bgId = str;
+          ((m)localObject3).c((l)localObject4);
+          ((be)localObject2).fbT();
+          localObject2 = new bf(7);
+          ((cnb)localObject1).MsE = 1;
+          ((bf)localObject2).DPd.ContentObj.LoV.add(localObject1);
+          ((bf)localObject2).YH(2);
+          ((bf)localObject2).commit();
           localObject2 = new Intent();
           ((Intent)localObject2).setClass(ArtistBrowseUI.this, SettingSnsBackgroundUI.class);
           ((Intent)localObject2).setFlags(536870912);
           ((Intent)localObject2).addFlags(67108864);
           localObject1 = ArtistBrowseUI.this;
-          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bc(localObject2);
-          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).ahE(), "com/tencent/mm/plugin/sns/ui/ArtistBrowseUI$2", "onSetBgFinish", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-          ((ArtistBrowseUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).mt(0));
+          localObject2 = new com.tencent.mm.hellhoundlib.b.a().bl(localObject2);
+          com.tencent.mm.hellhoundlib.a.a.a(localObject1, ((com.tencent.mm.hellhoundlib.b.a)localObject2).axQ(), "com/tencent/mm/plugin/sns/ui/ArtistBrowseUI$2", "onSetBgFinish", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+          ((ArtistBrowseUI)localObject1).startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject2).pG(0));
           com.tencent.mm.hellhoundlib.a.a.a(localObject1, "com/tencent/mm/plugin/sns/ui/ArtistBrowseUI$2", "onSetBgFinish", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
           ArtistBrowseUI.this.finish();
           AppMethodBeat.o(97717);
           return;
           label486:
-          com.tencent.mm.vfs.o.deleteFile(str + ((bc)localObject2).dXj() + "bg_");
-          com.tencent.mm.vfs.o.deleteFile(str + ((bc)localObject2).dXj() + "tbg_");
-          ae.e("MicroMsg.UploadManager", "bg file is not exist! wait to down it");
+          s.deleteFile(str + ((be)localObject2).fau() + "bg_");
+          s.deleteFile(str + ((be)localObject2).fau() + "tbg_");
+          Log.e("MicroMsg.UploadManager", "bg file is not exist! wait to down it");
         }
       }
     });
@@ -170,14 +169,14 @@ public class ArtistBrowseUI
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     AppMethodBeat.i(97725);
-    ae.i("MicroMsg.ArtistBrowseUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
+    Log.i("MicroMsg.ArtistBrowseUI", "onAcvityResult requestCode:".concat(String.valueOf(paramInt1)));
     if (paramInt2 != -1)
     {
       AppMethodBeat.o(97725);
       return;
     }
     paramInt1 = paramIntent.getIntExtra("sns_gallery_op_id", 0);
-    this.Arg.Rz(paramInt1);
+    this.EAf.Zu(paramInt1);
     AppMethodBeat.o(97725);
   }
   
@@ -192,7 +191,7 @@ public class ArtistBrowseUI
   public void onDestroy()
   {
     AppMethodBeat.i(97719);
-    ah.dXB().aE(this);
+    aj.faL().aI(this);
     super.onDestroy();
     AppMethodBeat.o(97719);
   }
@@ -200,8 +199,8 @@ public class ArtistBrowseUI
   public void onPause()
   {
     AppMethodBeat.i(97723);
-    if (this.Arj != null) {
-      this.Arj.onPause();
+    if (this.EAi != null) {
+      this.EAi.onPause();
     }
     super.onPause();
     AppMethodBeat.o(97723);
@@ -211,8 +210,8 @@ public class ArtistBrowseUI
   {
     AppMethodBeat.i(97720);
     super.onResume();
-    if (this.Arj != null) {
-      this.Arj.rY(false);
+    if (this.EAi != null) {
+      this.EAi.vu(false);
     }
     AppMethodBeat.o(97720);
   }
@@ -225,7 +224,7 @@ public class ArtistBrowseUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.ArtistBrowseUI
  * JD-Core Version:    0.7.0.1
  */

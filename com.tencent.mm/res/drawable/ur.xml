@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<animation-list android:oneshot="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/ro" />
-</shape>
+    <item android:duration="120" android:drawable="@drawable/c8l" />
+    <item android:duration="120" android:drawable="@drawable/c8n" />
+    <item android:duration="120" android:drawable="@drawable/c8o" />
+    <item android:duration="120" android:drawable="@drawable/c8p" />
+    <item android:duration="120" android:drawable="@drawable/c8r" />
+</animation-list>

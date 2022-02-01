@@ -5,44 +5,54 @@ import android.view.View;
 public abstract class as
   extends RecyclerView.f
 {
-  public boolean awK = true;
+  public boolean awI = true;
   
-  public void A(RecyclerView.w paramw) {}
+  public final void A(RecyclerView.v paramv)
+  {
+    C(paramv);
+  }
   
-  public void B(RecyclerView.w paramw) {}
+  public final void B(RecyclerView.v paramv)
+  {
+    E(paramv);
+  }
   
-  public void C(RecyclerView.w paramw) {}
+  public void C(RecyclerView.v paramv) {}
   
-  public void D(RecyclerView.w paramw) {}
+  public void D(RecyclerView.v paramv) {}
   
-  public abstract boolean a(RecyclerView.w paramw, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public void E(RecyclerView.v paramv) {}
   
-  public abstract boolean a(RecyclerView.w paramw1, RecyclerView.w paramw2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  public void F(RecyclerView.v paramv) {}
   
-  public boolean a(RecyclerView.w paramw1, RecyclerView.w paramw2, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
+  public abstract boolean a(RecyclerView.v paramv, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public abstract boolean a(RecyclerView.v paramv1, RecyclerView.v paramv2, int paramInt1, int paramInt2, int paramInt3, int paramInt4);
+  
+  public boolean a(RecyclerView.v paramv1, RecyclerView.v paramv2, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
     int k = paramc1.left;
     int m = paramc1.top;
     int i;
-    if (paramw2.lL()) {
+    if (paramv2.lP()) {
       i = paramc1.left;
     }
     for (int j = paramc1.top;; j = paramc2.top)
     {
-      return a(paramw1, paramw2, k, m, i, j);
+      return a(paramv1, paramv2, k, m, i, j);
       i = paramc2.left;
     }
   }
   
-  public abstract boolean b(RecyclerView.w paramw);
+  public abstract boolean b(RecyclerView.v paramv);
   
-  public abstract boolean c(RecyclerView.w paramw);
+  public abstract boolean c(RecyclerView.v paramv);
   
-  public boolean d(RecyclerView.w paramw, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
+  public boolean d(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
     int k = paramc1.left;
     int m = paramc1.top;
-    paramc1 = paramw.auu;
+    paramc1 = paramv.aus;
     int i;
     if (paramc2 == null)
     {
@@ -54,65 +64,65 @@ public abstract class as
     label103:
     for (int j = paramc1.getTop();; j = paramc2.top)
     {
-      if ((paramw.isRemoved()) || ((k == i) && (m == j))) {
+      if ((paramv.isRemoved()) || ((k == i) && (m == j))) {
         break label112;
       }
       paramc1.layout(i, j, paramc1.getWidth() + i, paramc1.getHeight() + j);
-      return a(paramw, k, m, i, j);
+      return a(paramv, k, m, i, j);
       i = paramc2.left;
       break;
     }
     label112:
-    return b(paramw);
+    return b(paramv);
   }
   
-  public boolean e(RecyclerView.w paramw, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
+  public boolean e(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
     if ((paramc1 != null) && ((paramc1.left != paramc2.left) || (paramc1.top != paramc2.top))) {
-      return a(paramw, paramc1.left, paramc1.top, paramc2.left, paramc2.top);
+      return a(paramv, paramc1.left, paramc1.top, paramc2.left, paramc2.top);
     }
-    return c(paramw);
+    return c(paramv);
   }
   
-  public boolean f(RecyclerView.w paramw, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
+  public boolean f(RecyclerView.v paramv, RecyclerView.f.c paramc1, RecyclerView.f.c paramc2)
   {
     if ((paramc1.left != paramc2.left) || (paramc1.top != paramc2.top)) {
-      return a(paramw, paramc1.left, paramc1.top, paramc2.left, paramc2.top);
+      return a(paramv, paramc1.left, paramc1.top, paramc2.left, paramc2.top);
     }
-    x(paramw);
+    x(paramv);
     return false;
   }
   
-  public final void mu()
+  public final void my()
   {
-    this.awK = false;
+    this.awI = false;
   }
   
-  public boolean p(RecyclerView.w paramw)
+  public boolean p(RecyclerView.v paramv)
   {
-    return (!this.awK) || (paramw.isInvalid());
+    return (!this.awI) || (paramv.isInvalid());
   }
   
-  public final void w(RecyclerView.w paramw)
+  public final void w(RecyclerView.v paramv)
   {
-    B(paramw);
-    n(paramw);
+    D(paramv);
+    n(paramv);
   }
   
-  public final void x(RecyclerView.w paramw)
+  public final void x(RecyclerView.v paramv)
   {
-    D(paramw);
-    n(paramw);
+    F(paramv);
+    n(paramv);
   }
   
-  public final void y(RecyclerView.w paramw)
+  public final void y(RecyclerView.v paramv)
   {
-    n(paramw);
+    n(paramv);
   }
   
-  public final void z(RecyclerView.w paramw)
+  public final void z(RecyclerView.v paramv)
   {
-    A(paramw);
+    n(paramv);
   }
 }
 

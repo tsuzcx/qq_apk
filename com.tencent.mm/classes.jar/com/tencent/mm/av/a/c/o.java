@@ -4,11 +4,13 @@ import android.graphics.Bitmap;
 
 public abstract interface o
 {
+  public abstract Bitmap EP(String paramString);
+  
   public abstract void clear();
   
   public abstract void put(String paramString, Bitmap paramBitmap);
   
-  public abstract Bitmap wA(String paramString);
+  public abstract void remove(String paramString);
 }
 
 

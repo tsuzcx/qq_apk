@@ -69,7 +69,7 @@ public final class b
     AppMethodBeat.i(174044);
     try
     {
-      JSONObject localJSONObject1 = com.tencent.tbs.one.impl.a.e.a(com.tencent.tbs.b.a.MpS);
+      JSONObject localJSONObject1 = com.tencent.tbs.one.impl.a.e.a(com.tencent.tbs.b.a.RSp);
       AppMethodBeat.o(174044);
       return localJSONObject1;
     }
@@ -416,7 +416,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.a.b
  * JD-Core Version:    0.7.0.1
  */

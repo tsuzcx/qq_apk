@@ -1,23 +1,23 @@
 package com.tencent.qbar.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/qbar/util/ScanBitmapUtil;", "", "()V", "TAG", "", "calculateInSampleSize", "", "imageWidth", "imageHeight", "reqWidth", "reqHeight", "scan-sdk_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/qbar/util/ScanBitmapUtil;", "", "()V", "TAG", "", "calculateInSampleSize", "", "imageWidth", "imageHeight", "reqWidth", "reqHeight", "scan-sdk_release"})
 public final class a
 {
-  public static final a Mic;
+  public static final a RKD;
   
   static
   {
-    AppMethodBeat.i(196708);
-    Mic = new a();
-    AppMethodBeat.o(196708);
+    AppMethodBeat.i(194811);
+    RKD = new a();
+    AppMethodBeat.o(194811);
   }
   
-  public static final int O(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public static final int calculateInSampleSize(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(196707);
+    AppMethodBeat.i(194810);
     int j = 1;
     if ((paramInt2 > paramInt4) || (paramInt1 > paramInt3))
     {
@@ -37,7 +37,7 @@ public final class a
         }
       }
     }
-    AppMethodBeat.o(196707);
+    AppMethodBeat.o(194810);
     return j;
   }
 }

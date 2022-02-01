@@ -13,17 +13,17 @@ import com.tencent.mm.plugin.game.model.aw.a;
 import com.tencent.mm.plugin.game.model.c;
 import com.tencent.mm.plugin.game.model.e;
 import com.tencent.mm.pluginsdk.model.app.h;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class u
   implements View.OnClickListener
 {
   private Context mContext;
-  private int uES;
-  private c uoF;
-  int uoy = 0;
-  String uwk = null;
+  int xGR = 0;
+  private c xGY;
+  String xOl = null;
+  private int xWP;
   
   public u(Context paramContext)
   {
@@ -34,50 +34,50 @@ public final class u
   {
     AppMethodBeat.i(42414);
     Object localObject = new b();
-    ((b)localObject).bd(paramView);
-    a.b("com/tencent/mm/plugin/game/ui/GameTMAssistClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).ahF());
+    ((b)localObject).bm(paramView);
+    a.b("com/tencent/mm/plugin/game/ui/GameTMAssistClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((b)localObject).axR());
     if (!(paramView.getTag() instanceof c))
     {
-      ae.e("MicroMsg.GameTMAssistClickListener", "No GameAppInfo");
+      Log.e("MicroMsg.GameTMAssistClickListener", "No GameAppInfo");
       a.a(this, "com/tencent/mm/plugin/game/ui/GameTMAssistClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42414);
       return;
     }
-    this.uoF = ((c)paramView.getTag());
-    ae.i("MicroMsg.GameTMAssistClickListener", "Clicked appid = " + this.uoF.field_appId);
-    if (h.s(this.mContext, this.uoF.field_appId))
+    this.xGY = ((c)paramView.getTag());
+    Log.i("MicroMsg.GameTMAssistClickListener", "Clicked appid = " + this.xGY.field_appId);
+    if (h.s(this.mContext, this.xGY.field_appId))
     {
-      ae.d("MicroMsg.GameTMAssistClickListener", "launchFromWX, appId = " + this.uoF.field_appId + ", pkg = " + this.uoF.field_packageName + ", openId = " + this.uoF.field_openId);
-      f.a(this.mContext, this.uoF.scene, this.uoF.dGL, this.uoF.position, 3, this.uoF.field_appId, this.uoy, this.uwk);
-      e.ak(this.mContext, this.uoF.field_appId);
+      Log.d("MicroMsg.GameTMAssistClickListener", "launchFromWX, appId = " + this.xGY.field_appId + ", pkg = " + this.xGY.field_packageName + ", openId = " + this.xGY.field_openId);
+      f.a(this.mContext, this.xGY.scene, this.xGY.dYu, this.xGY.position, 3, this.xGY.field_appId, this.xGR, this.xOl);
+      e.at(this.mContext, this.xGY.field_appId);
       a.a(this, "com/tencent/mm/plugin/game/ui/GameTMAssistClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42414);
       return;
     }
-    aw.dcr();
-    paramView = this.uoF.eJn;
+    aw.dVY();
+    paramView = this.xGY.fmP;
     int i;
-    if (bu.isNullOrNil(paramView))
+    if (Util.isNullOrNil(paramView))
     {
-      ae.e("MicroMsg.QQDownloaderSDKWrapper", "queryQQDownloadTaskStatus, params is null or nil");
+      Log.e("MicroMsg.QQDownloaderSDKWrapper", "queryQQDownloadTaskStatus, params is null or nil");
       i = -1;
-      this.uES = i;
-      localObject = this.uoF.eJn;
+      this.xWP = i;
+      localObject = this.xGY.fmP;
       paramView = (View)localObject;
-      if (!bu.isNullOrNil((String)localObject)) {
+      if (!Util.isNullOrNil((String)localObject)) {
         paramView = ((String)localObject).replace("ANDROIDWX.GAMECENTER", "ANDROIDWX.YYB.GAMECENTER");
       }
-      if (this.uoF.status != 3) {
+      if (this.xGY.status != 3) {
         break label454;
       }
-      aw.dcr();
+      aw.dVY();
       aw.startToAuthorized(this.mContext, paramView);
       label339:
       i = 5;
-      if (this.uoF.status == 3) {
+      if (this.xGY.status == 3) {
         i = 10;
       }
-      if (this.uES != 4) {
+      if (this.xWP != 4) {
         break label469;
       }
       i = 8;
@@ -86,21 +86,21 @@ public final class u
     label469:
     for (;;)
     {
-      f.a(this.mContext, this.uoF.scene, this.uoF.dGL, this.uoF.position, i, this.uoF.field_appId, this.uoy, this.uoF.dmu, this.uwk);
+      f.a(this.mContext, this.xGY.scene, this.xGY.dYu, this.xGY.position, i, this.xGY.field_appId, this.xGR, this.xGY.dDJ, this.xOl);
       a.a(this, "com/tencent/mm/plugin/game/ui/GameTMAssistClickListener", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(42414);
       return;
-      i = aw.a(new aw.a((byte)0).amY(paramView));
+      i = aw.a(new aw.a((byte)0).aAp(paramView));
       break;
-      aw.dcr();
-      aw.aC(this.mContext, paramView);
+      aw.dVY();
+      aw.aP(this.mContext, paramView);
       break label339;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.game.ui.u
  * JD-Core Version:    0.7.0.1
  */

@@ -7,48 +7,48 @@ import com.tencent.mm.plugin.shake.c.a.e;
 import com.tencent.mm.plugin.shake.c.a.g;
 import com.tencent.mm.plugin.shake.d.a.h;
 import com.tencent.mm.plugin.shake.d.a.j;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.aq.a;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.MMHandler.Callback;
 import java.util.List;
 
 public final class l
 {
-  protected static long zcb = 16000L;
-  protected static int zcc = 54158;
-  public int zcd;
-  public b zce;
+  protected static long DgT = 16000L;
+  protected static int DgU = 54158;
+  public int DgV;
+  public b DgW;
   
   public final b a(Context paramContext, int paramInt, a parama)
   {
     AppMethodBeat.i(28148);
-    if (paramInt == this.zcd)
+    if (paramInt == this.DgV)
     {
-      paramContext = this.zce;
+      paramContext = this.DgW;
       AppMethodBeat.o(28148);
       return paramContext;
     }
-    if (this.zce != null) {
-      this.zce.dRP();
+    if (this.DgW != null) {
+      this.DgW.eTQ();
     }
     switch (paramInt)
     {
     }
     for (;;)
     {
-      this.zcd = paramInt;
-      this.zce.init();
-      paramContext = this.zce;
+      this.DgV = paramInt;
+      this.DgW.init();
+      paramContext = this.DgW;
       AppMethodBeat.o(28148);
       return paramContext;
-      this.zce = new c(paramContext, parama);
+      this.DgW = new c(paramContext, parama);
       continue;
-      this.zce = j.a(parama);
+      this.DgW = j.a(parama);
       continue;
-      this.zce = new com.tencent.mm.plugin.shake.d.a.l(paramContext, parama);
+      this.DgW = new com.tencent.mm.plugin.shake.d.a.l(paramContext, parama);
       continue;
-      this.zce = new h(parama);
+      this.DgW = new h(parama);
       continue;
-      this.zce = new g(parama);
+      this.DgW = new g(parama);
     }
   }
   
@@ -56,21 +56,21 @@ public final class l
   {
     public abstract void a(int paramInt, e parame, long paramLong);
     
-    public abstract void d(List<d> paramList, long paramLong);
+    public abstract void f(List<d> paramList, long paramLong);
   }
   
   public static abstract class b
   {
-    public l.a zcf;
-    protected boolean zcg = false;
-    protected long zch = l.zcb;
-    private aq zci = new aq(new aq.a()
+    public l.a DgX;
+    protected boolean DgY = false;
+    protected long DgZ = l.DgT;
+    private MMHandler Dha = new MMHandler(new MMHandler.Callback()
     {
       public final boolean handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(28147);
-        if ((paramAnonymousMessage.what == l.zcc) && (!l.b.this.zcg) && (l.b.this.zcf != null)) {
-          l.b.this.zcf.d(null, 5L);
+        if ((paramAnonymousMessage.what == l.DgU) && (!l.b.this.DgY) && (l.b.this.DgX != null)) {
+          l.b.this.DgX.f(null, 5L);
         }
         AppMethodBeat.o(28147);
         return false;
@@ -79,13 +79,13 @@ public final class l
     
     public b(l.a parama)
     {
-      this.zcf = parama;
+      this.DgX = parama;
     }
     
-    public void dRP()
+    public void eTQ()
     {
       reset();
-      this.zcf = null;
+      this.DgX = null;
     }
     
     public abstract void init();
@@ -101,7 +101,7 @@ public final class l
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.shake.b.l
  * JD-Core Version:    0.7.0.1
  */

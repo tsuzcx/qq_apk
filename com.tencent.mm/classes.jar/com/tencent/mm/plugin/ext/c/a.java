@@ -1,58 +1,58 @@
 package com.tencent.mm.plugin.ext.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bkm;
-import com.tencent.mm.protocal.protobuf.bkn;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bwv;
+import com.tencent.mm.protocal.protobuf.bww;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/ext/net/NetSceneGetUserAuth;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "appid", "", "packageName", "signature", "mIOnNetSceneEnd", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/modelbase/IOnSceneEnd;)V", "mCallback", "<set-?>", "Lcom/tencent/mm/protocal/protobuf/GetUserAuthResp;", "resp", "getResp", "()Lcom/tencent/mm/protocal/protobuf/GetUserAuthResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/ext/net/NetSceneGetUserAuth;", "Lcom/tencent/mm/modelbase/NetSceneBase;", "Lcom/tencent/mm/network/IOnGYNetEnd;", "appid", "", "packageName", "signature", "mIOnNetSceneEnd", "Lcom/tencent/mm/modelbase/IOnSceneEnd;", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Lcom/tencent/mm/modelbase/IOnSceneEnd;)V", "mCallback", "<set-?>", "Lcom/tencent/mm/protocal/protobuf/GetUserAuthResp;", "resp", "getResp", "()Lcom/tencent/mm/protocal/protobuf/GetUserAuthResp;", "doScene", "", "dispatcher", "Lcom/tencent/mm/network/IDispatcher;", "callback", "getType", "onGYNetEnd", "", "netId", "errType", "errCode", "errMsg", "rr", "Lcom/tencent/mm/network/IReqResp;", "cookie", "", "app_release"})
 public final class a
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private final String dwb;
-  private f gCo;
+  private final String dNI;
+  private i heq;
   private final String packageName;
-  public bkn rkZ;
-  private final f rla;
+  public bww sME;
+  private final i sMF;
   private final String signature;
   
-  public a(String paramString1, String paramString2, String paramString3, f paramf)
+  public a(String paramString1, String paramString2, String paramString3, i parami)
   {
     AppMethodBeat.i(39602);
-    this.dwb = paramString1;
+    this.dNI = paramString1;
     this.packageName = paramString2;
     this.signature = paramString3;
-    this.rla = paramf;
+    this.sMF = parami;
     AppMethodBeat.o(39602);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(39601);
-    this.gCo = paramf;
-    paramf = new b.a();
-    bkm localbkm = new bkm();
-    localbkm.dwb = this.dwb;
-    localbkm.pqK = this.packageName;
-    localbkm.signature = this.signature;
-    paramf.c((com.tencent.mm.bw.a)localbkm);
-    this.rkZ = new bkn();
-    paramf.d((com.tencent.mm.bw.a)this.rkZ);
-    paramf.DN("/cgi-bin/mmbiz-bin/getuserauth");
-    paramf.oS(getType());
-    paramf.oU(0);
-    paramf.oV(0);
-    paramf = paramf.aDS();
-    p.g(paramf, "builder.buildInstance()");
-    int i = dispatch(parame, (q)paramf, (k)this);
+    this.heq = parami;
+    parami = new d.a();
+    bwv localbwv = new bwv();
+    localbwv.dNI = this.dNI;
+    localbwv.qGp = this.packageName;
+    localbwv.signature = this.signature;
+    parami.c((com.tencent.mm.bw.a)localbwv);
+    this.sME = new bww();
+    parami.d((com.tencent.mm.bw.a)this.sME);
+    parami.MB("/cgi-bin/mmbiz-bin/getuserauth");
+    parami.sG(getType());
+    parami.sI(0);
+    parami.sJ(0);
+    parami = parami.aXF();
+    p.g(parami, "builder.buildInstance()");
+    int i = dispatch(paramg, (s)parami, (m)this);
     AppMethodBeat.o(39601);
     return i;
   }
@@ -62,17 +62,17 @@ public final class a
     return 2711;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(39600);
-    paramq = this.rla;
-    if (paramq != null) {
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
+    params = this.sMF;
+    if (params != null) {
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
     }
-    paramq = this.gCo;
-    if (paramq != null)
+    params = this.heq;
+    if (params != null)
     {
-      paramq.onSceneEnd(paramInt2, paramInt3, paramString, (n)this);
+      params.onSceneEnd(paramInt2, paramInt3, paramString, (q)this);
       AppMethodBeat.o(39600);
       return;
     }

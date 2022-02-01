@@ -9,9 +9,9 @@ import com.tencent.mm.view.SmileySubGrid;
 public class EmojiDetailGridView
   extends SmileySubGrid
 {
-  private String pMk;
-  private EmojiDetailScrollView pPT;
-  private volatile boolean pPU = true;
+  private String rcD;
+  private EmojiDetailScrollView rgr;
+  private volatile boolean rgs = true;
   
   public EmojiDetailGridView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -25,7 +25,7 @@ public class EmojiDetailGridView
   
   public String getProductId()
   {
-    return this.pMk;
+    return this.rcD;
   }
   
   public void onMeasure(int paramInt1, int paramInt2)
@@ -37,26 +37,26 @@ public class EmojiDetailGridView
   
   public void setEmojiDetailScrollView(EmojiDetailScrollView paramEmojiDetailScrollView)
   {
-    this.pPT = paramEmojiDetailScrollView;
+    this.rgr = paramEmojiDetailScrollView;
   }
   
   public void setProductId(String paramString)
   {
-    this.pMk = paramString;
+    this.rcD = paramString;
   }
   
   public void setScrollEnable(boolean paramBoolean)
   {
     AppMethodBeat.i(108928);
-    if (this.pPT != null) {
-      this.pPT.setScrollEnable(paramBoolean);
+    if (this.rgr != null) {
+      this.rgr.setScrollEnable(paramBoolean);
     }
     AppMethodBeat.o(108928);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.emoji.ui.EmojiDetailGridView
  * JD-Core Version:    0.7.0.1
  */

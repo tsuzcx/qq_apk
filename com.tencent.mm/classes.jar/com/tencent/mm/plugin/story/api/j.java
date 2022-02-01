@@ -2,7 +2,7 @@ package com.tencent.mm.plugin.story.api;
 
 public abstract interface j
 {
-  public abstract boolean ekF();
+  public abstract boolean fng();
 }
 
 

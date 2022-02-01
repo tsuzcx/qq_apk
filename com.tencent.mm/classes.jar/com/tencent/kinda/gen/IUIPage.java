@@ -380,15 +380,15 @@ public abstract class IUIPage
     
     public final boolean useSafeAreaToLayout()
     {
-      AppMethodBeat.i(221798);
+      AppMethodBeat.i(207066);
       if ((!$assertionsDisabled) && (this.destroyed.get()))
       {
         AssertionError localAssertionError = new AssertionError("trying to use a destroyed object");
-        AppMethodBeat.o(221798);
+        AppMethodBeat.o(207066);
         throw localAssertionError;
       }
       boolean bool = native_useSafeAreaToLayout(this.nativeRef);
-      AppMethodBeat.o(221798);
+      AppMethodBeat.o(207066);
       return bool;
     }
     
@@ -408,7 +408,7 @@ public abstract class IUIPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.gen.IUIPage
  * JD-Core Version:    0.7.0.1
  */

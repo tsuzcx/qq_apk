@@ -1,15 +1,14 @@
 package com.tencent.mm.model;
 
-import com.tencent.mm.kernel.c.a;
+import android.content.Context;
 
 public abstract interface aq
-  extends a
 {
-  public abstract void aBP();
+  public abstract aq a(t paramt);
   
-  public abstract void rU(long paramLong);
+  public abstract aq b(t paramt);
   
-  public abstract void z(String paramString, long paramLong);
+  public abstract void i(Context paramContext, String paramString1, String paramString2);
 }
 
 

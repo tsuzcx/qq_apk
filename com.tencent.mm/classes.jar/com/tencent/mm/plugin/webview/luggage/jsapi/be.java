@@ -6,32 +6,43 @@ import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.plugin.webview.luggage.y;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONObject;
 
 public class be
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(198099);
-    int i = paramb.chh.cgn.optInt("fontSize");
-    ((g)paramb.chg).Xp(i);
-    ae.i("MicroMsg.JsApiSetFrontSizeCallback", "doSetFontSizeCb, fontSize = ".concat(String.valueOf(i)));
-    paramb.a("", null);
-    AppMethodBeat.o(198099);
+    AppMethodBeat.i(78624);
+    String str1 = paramb.ctb.csi.optString("title");
+    String str2 = paramb.ctb.csi.optString("icon_url");
+    String str3 = paramb.ctb.csi.optString("jump_url");
+    y localy = new y();
+    if (!Util.isNullOrNil(str1)) {
+      localy.title = str1;
+    }
+    if (!Util.isNullOrNil(str2)) {
+      localy.iconUrl = str2;
+    }
+    if (!Util.isNullOrNil(str3)) {
+      localy.jumpUrl = str3;
+    }
+    paramb.c("", null);
+    AppMethodBeat.o(78624);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setFontSizeCallback";
+    return "setDesktopInfo";
   }
 }
 

@@ -14,7 +14,7 @@ import com.tencent.kinda.gen.KView;
 import com.tencent.kinda.gen.KViewLayout;
 import com.tencent.kinda.gen.Wrap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.ArrayList;
 
 public class MMKViewLayout<Layout extends ViewGroup>
@@ -46,7 +46,7 @@ public class MMKViewLayout<Layout extends ViewGroup>
       paramKView = KindaAnimatorViewProxy.unWrapRealObj(paramKView);
       if ((paramKView instanceof MMKView))
       {
-        ae.l("MMKViewLayout", "%s addview this %s | child %s | childparent %s | childCount: %s", new Object[] { this, getView(), ((MMKView)paramKView).getView(), ((MMKView)paramKView).getView().getParent(), Integer.valueOf(this.childList.size()) });
+        Log.printDebugStack("MMKViewLayout", "%s addview this %s | child %s | childparent %s | childCount: %s", new Object[] { this, getView(), ((MMKView)paramKView).getView(), ((MMKView)paramKView).getView().getParent(), Integer.valueOf(this.childList.size()) });
         if ((getView() instanceof YogaLayout)) {
           ((YogaLayout)getView()).addView(((MMKView)paramKView).getView(), ((MMKView)paramKView).node());
         }
@@ -58,7 +58,7 @@ public class MMKViewLayout<Layout extends ViewGroup>
           ((ViewGroup)getView()).addView(((MMKView)paramKView).getView());
         }
       }
-      ae.e("MMKViewLayout", "error error %s child %s %s", new Object[] { getView(), paramKView, Boolean.valueOf(paramKView instanceof MMKView) });
+      Log.e("MMKViewLayout", "error error %s child %s %s", new Object[] { getView(), paramKView, Boolean.valueOf(paramKView instanceof MMKView) });
     }
     AppMethodBeat.o(19268);
   }
@@ -160,10 +160,10 @@ public class MMKViewLayout<Layout extends ViewGroup>
   
   public void setFocusableInTouchMode(boolean paramBoolean)
   {
-    AppMethodBeat.i(193251);
+    AppMethodBeat.i(214568);
     ((ViewGroup)getView()).setFocusable(true);
     ((ViewGroup)getView()).setFocusableInTouchMode(true);
-    AppMethodBeat.o(193251);
+    AppMethodBeat.o(214568);
   }
   
   public void setJustifyContent(Justify paramJustify)
@@ -175,7 +175,7 @@ public class MMKViewLayout<Layout extends ViewGroup>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.kinda.framework.widget.base.MMKViewLayout
  * JD-Core Version:    0.7.0.1
  */

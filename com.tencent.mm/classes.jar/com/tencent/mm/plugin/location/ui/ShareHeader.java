@@ -16,9 +16,9 @@ public class ShareHeader
 {
   private Context mContext;
   private TextView titleTv;
-  private ViewGroup voP;
-  private MMImageButton voQ;
-  private MMImageButton voR;
+  private ViewGroup yIF;
+  private MMImageButton yIG;
+  private MMImageButton yIH;
   
   public ShareHeader(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -42,30 +42,30 @@ public class ShareHeader
   private void init()
   {
     AppMethodBeat.i(55887);
-    View localView = View.inflate(this.mContext, 2131495426, this);
-    this.voP = ((ViewGroup)localView.findViewById(2131300707));
-    this.voQ = ((MMImageButton)localView.findViewById(2131305935));
-    this.voR = ((MMImageButton)localView.findViewById(2131305942));
-    this.titleTv = ((TextView)localView.findViewById(2131305902));
+    View localView = View.inflate(this.mContext, 2131496296, this);
+    this.yIF = ((ViewGroup)localView.findViewById(2131302279));
+    this.yIG = ((MMImageButton)localView.findViewById(2131309233));
+    this.yIH = ((MMImageButton)localView.findViewById(2131309241));
+    this.titleTv = ((TextView)localView.findViewById(2131309195));
     AppMethodBeat.o(55887);
   }
   
   public ViewGroup getHeaderBar()
   {
-    return this.voP;
+    return this.yIF;
   }
   
   public void setOnLeftClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(55888);
-    this.voQ.setOnClickListener(paramOnClickListener);
+    this.yIG.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(55888);
   }
   
   public void setOnRightClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(55889);
-    this.voR.setOnClickListener(paramOnClickListener);
+    this.yIH.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(55889);
   }
   
@@ -85,7 +85,7 @@ public class ShareHeader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.location.ui.ShareHeader
  * JD-Core Version:    0.7.0.1
  */

@@ -2,12 +2,12 @@ package com.tencent.mm.plugin.appbrand.ui.collection;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ui.base.h.b;
-import d.g.a.b;
-import d.g.b.q;
-import d.l;
-import d.z;
+import kotlin.g.a.b;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onFinish"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "", "kotlin.jvm.PlatformType", "onFinish"})
 final class AppBrandCollectionDisplayVerticalList$j
   implements h.b
 {
@@ -20,7 +20,7 @@ final class AppBrandCollectionDisplayVerticalList$j
     {
       paramCharSequence = paramCharSequence.toString();
       if (paramCharSequence != null) {
-        AppBrandCollectionDisplayVerticalList.e(paramCharSequence, (b)1.mNC);
+        AppBrandCollectionDisplayVerticalList.f(paramCharSequence, (b)1.oaP);
       }
     }
     AppMethodBeat.o(175223);

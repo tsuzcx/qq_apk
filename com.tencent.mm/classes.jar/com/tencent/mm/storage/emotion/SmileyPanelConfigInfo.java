@@ -4,36 +4,36 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.fx;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.gg;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public class SmileyPanelConfigInfo
-  extends fx
+  extends gg
   implements Parcelable
 {
   public static final Parcelable.Creator<SmileyPanelConfigInfo> CREATOR;
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(105150);
-    c.a locala = new c.a();
-    locala.IBL = new Field[2];
-    locala.columns = new String[3];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[2];
+    localMAutoDBInfo.columns = new String[3];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "key";
-    locala.IBN.put("key", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[0] = "key";
+    localMAutoDBInfo.colsMap.put("key", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" key TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "key";
-    locala.columns[1] = "position";
-    locala.IBN.put("position", "INTEGER");
+    localMAutoDBInfo.primaryKey = "key";
+    localMAutoDBInfo.columns[1] = "position";
+    localMAutoDBInfo.colsMap.put("position", "INTEGER");
     localStringBuilder.append(" position INTEGER");
-    locala.columns[2] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[2] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     CREATOR = new Parcelable.Creator() {};
     AppMethodBeat.o(105150);
   }
@@ -59,7 +59,7 @@ public class SmileyPanelConfigInfo
     return 0;
   }
   
-  public c.a getDBInfo()
+  public IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return null;
   }
@@ -85,7 +85,7 @@ public class SmileyPanelConfigInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.storage.emotion.SmileyPanelConfigInfo
  * JD-Core Version:    0.7.0.1
  */

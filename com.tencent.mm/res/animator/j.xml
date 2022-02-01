@@ -3,32 +3,32 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:state_enabled="true" android:state_pressed="true">
         <set>
-            <objectAnimator android:duration="@integer/m" android:valueTo="@dimen/ab4" android:valueType="floatType" android:propertyName="translationZ" />
-            <objectAnimator android:duration="0" android:valueTo="@dimen/aat" android:valueType="floatType" android:propertyName="elevation" />
+            <objectAnimator android:duration="@integer/p" android:valueTo="@dimen/ae9" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/ady" android:valueType="floatType" android:propertyName="elevation" />
         </set>
     </item>
     <item android:state_enabled="true" android:state_hovered="true">
         <set>
-            <objectAnimator android:duration="@integer/m" android:valueTo="@dimen/aav" android:valueType="floatType" android:propertyName="translationZ" />
-            <objectAnimator android:duration="0" android:valueTo="@dimen/aat" android:valueType="floatType" android:propertyName="elevation" />
+            <objectAnimator android:duration="@integer/p" android:valueTo="@dimen/ae0" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/ady" android:valueType="floatType" android:propertyName="elevation" />
         </set>
     </item>
     <item android:state_focused="true" android:state_enabled="true">
         <set>
-            <objectAnimator android:duration="@integer/m" android:valueTo="@dimen/aau" android:valueType="floatType" android:propertyName="translationZ" />
-            <objectAnimator android:duration="0" android:valueTo="@dimen/aat" android:valueType="floatType" android:propertyName="elevation" />
+            <objectAnimator android:duration="@integer/p" android:valueTo="@dimen/adz" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/ady" android:valueType="floatType" android:propertyName="elevation" />
         </set>
     </item>
     <item android:state_enabled="true">
         <set>
-            <objectAnimator android:duration="@integer/m" android:valueTo="@dimen/ab_" android:valueType="floatType" android:propertyName="translationZ" android:startDelay="@integer/l" />
-            <objectAnimator android:duration="0" android:valueTo="@dimen/aat" android:valueType="floatType" android:propertyName="elevation" />
+            <objectAnimator android:duration="@integer/p" android:valueTo="@dimen/aee" android:valueType="floatType" android:propertyName="translationZ" android:startDelay="@integer/o" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/ady" android:valueType="floatType" android:propertyName="elevation" />
         </set>
     </item>
     <item>
         <set>
-            <objectAnimator android:duration="0" android:valueTo="@dimen/aas" android:valueType="floatType" android:propertyName="translationZ" />
-            <objectAnimator android:duration="0" android:valueTo="@dimen/aar" android:valueType="floatType" android:propertyName="elevation" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/adx" android:valueType="floatType" android:propertyName="translationZ" />
+            <objectAnimator android:duration="0" android:valueTo="@dimen/adw" android:valueType="floatType" android:propertyName="elevation" />
         </set>
     </item>
 </selector>

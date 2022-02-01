@@ -1,62 +1,62 @@
 package com.tencent.mm.plugin.webview.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.c.hc;
-import com.tencent.mm.sdk.e.c.a;
+import com.tencent.mm.g.c.hn;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
 import java.lang.reflect.Field;
 import java.util.Map;
 
 public final class a
-  extends hc
+  extends hn
 {
-  protected static c.a info;
+  protected static IAutoDBItem.MAutoDBInfo info;
   
   static
   {
     AppMethodBeat.i(77827);
-    c.a locala = new c.a();
-    locala.IBL = new Field[8];
-    locala.columns = new String[9];
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = new IAutoDBItem.MAutoDBInfo();
+    localMAutoDBInfo.fields = new Field[8];
+    localMAutoDBInfo.columns = new String[9];
     StringBuilder localStringBuilder = new StringBuilder();
-    locala.columns[0] = "appId";
-    locala.IBN.put("appId", "TEXT");
+    localMAutoDBInfo.columns[0] = "appId";
+    localMAutoDBInfo.colsMap.put("appId", "TEXT");
     localStringBuilder.append(" appId TEXT");
     localStringBuilder.append(", ");
-    locala.columns[1] = "appIdKey";
-    locala.IBN.put("appIdKey", "TEXT PRIMARY KEY ");
+    localMAutoDBInfo.columns[1] = "appIdKey";
+    localMAutoDBInfo.colsMap.put("appIdKey", "TEXT PRIMARY KEY ");
     localStringBuilder.append(" appIdKey TEXT PRIMARY KEY ");
     localStringBuilder.append(", ");
-    locala.IBM = "appIdKey";
-    locala.columns[2] = "value";
-    locala.IBN.put("value", "TEXT");
+    localMAutoDBInfo.primaryKey = "appIdKey";
+    localMAutoDBInfo.columns[2] = "value";
+    localMAutoDBInfo.colsMap.put("value", "TEXT");
     localStringBuilder.append(" value TEXT");
     localStringBuilder.append(", ");
-    locala.columns[3] = "weight";
-    locala.IBN.put("weight", "TEXT");
+    localMAutoDBInfo.columns[3] = "weight";
+    localMAutoDBInfo.colsMap.put("weight", "TEXT");
     localStringBuilder.append(" weight TEXT");
     localStringBuilder.append(", ");
-    locala.columns[4] = "expireTime";
-    locala.IBN.put("expireTime", "LONG");
+    localMAutoDBInfo.columns[4] = "expireTime";
+    localMAutoDBInfo.colsMap.put("expireTime", "LONG");
     localStringBuilder.append(" expireTime LONG");
     localStringBuilder.append(", ");
-    locala.columns[5] = "timeStamp";
-    locala.IBN.put("timeStamp", "LONG");
+    localMAutoDBInfo.columns[5] = "timeStamp";
+    localMAutoDBInfo.colsMap.put("timeStamp", "LONG");
     localStringBuilder.append(" timeStamp LONG");
     localStringBuilder.append(", ");
-    locala.columns[6] = "size";
-    locala.IBN.put("size", "LONG");
+    localMAutoDBInfo.columns[6] = "size";
+    localMAutoDBInfo.colsMap.put("size", "LONG");
     localStringBuilder.append(" size LONG");
     localStringBuilder.append(", ");
-    locala.columns[7] = "localFile";
-    locala.IBN.put("localFile", "TEXT");
+    localMAutoDBInfo.columns[7] = "localFile";
+    localMAutoDBInfo.colsMap.put("localFile", "TEXT");
     localStringBuilder.append(" localFile TEXT");
-    locala.columns[8] = "rowid";
-    locala.sql = localStringBuilder.toString();
-    info = locala;
+    localMAutoDBInfo.columns[8] = "rowid";
+    localMAutoDBInfo.sql = localStringBuilder.toString();
+    info = localMAutoDBInfo;
     AppMethodBeat.o(77827);
   }
   
-  public final c.a getDBInfo()
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
     return info;
   }

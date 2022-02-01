@@ -3,17 +3,18 @@ package com.tencent.mm.plugin.websearch.widget;
 import android.os.Bundle;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ipcinvoker.h;
+import com.tencent.mm.ipcinvoker.wx_extension.service.MainProcessIPCService;
 import com.tencent.mm.plugin.websearch.api.WidgetData;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class d
 {
-  private static final d DWo;
+  private static final d IIf;
   
   static
   {
     AppMethodBeat.i(116638);
-    DWo = new d();
+    IIf = new d();
     AppMethodBeat.o(116638);
   }
   
@@ -23,7 +24,7 @@ public final class d
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 1);
     localBundle.putParcelable("data", paramWidgetData);
-    paramWidgetData = (Bundle)h.a("com.tencent.mm", localBundle, d.a.class);
+    paramWidgetData = (Bundle)h.a(MainProcessIPCService.dkO, localBundle, d.a.class);
     if (paramWidgetData != null)
     {
       boolean bool = paramWidgetData.getBoolean("result");
@@ -40,7 +41,7 @@ public final class d
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 4);
     localBundle.putParcelable("data", paramWidgetData);
-    h.a("com.tencent.mm", localBundle, d.a.class, null);
+    h.a(MainProcessIPCService.dkO, localBundle, d.a.class, null);
     AppMethodBeat.o(116635);
   }
   
@@ -51,7 +52,7 @@ public final class d
     localBundle.putInt("action", 3);
     localBundle.putParcelable("data", paramWidgetData);
     localBundle.putString("err", paramString);
-    h.a("com.tencent.mm", localBundle, d.a.class, null);
+    h.a(MainProcessIPCService.dkO, localBundle, d.a.class, null);
     AppMethodBeat.o(116633);
   }
   
@@ -66,7 +67,7 @@ public final class d
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 5);
     localBundle.putParcelable("data", paramWidgetData);
-    h.a("com.tencent.mm", localBundle, d.a.class, null);
+    h.a(MainProcessIPCService.dkO, localBundle, d.a.class, null);
     AppMethodBeat.o(116636);
   }
   
@@ -77,24 +78,24 @@ public final class d
     localBundle.putInt("action", 7);
     localBundle.putParcelable("data", paramWidgetData);
     localBundle.putString("err", paramString);
-    h.a("com.tencent.mm", localBundle, d.a.class, null);
+    h.a(MainProcessIPCService.dkO, localBundle, d.a.class, null);
     AppMethodBeat.o(116634);
   }
   
   public static void d(WidgetData paramWidgetData)
   {
     AppMethodBeat.i(116637);
-    ae.i("WidgetSafeModeIpcImpl", "onDisplaySucc");
+    Log.i("WidgetSafeModeIpcImpl", "onDisplaySucc");
     Bundle localBundle = new Bundle();
     localBundle.putInt("action", 6);
     localBundle.putParcelable("data", paramWidgetData);
-    h.a("com.tencent.mm", localBundle, d.a.class, null);
+    h.a(MainProcessIPCService.dkO, localBundle, d.a.class, null);
     AppMethodBeat.o(116637);
   }
   
-  public static d eQv()
+  public static d fYU()
   {
-    return DWo;
+    return IIf;
   }
 }
 

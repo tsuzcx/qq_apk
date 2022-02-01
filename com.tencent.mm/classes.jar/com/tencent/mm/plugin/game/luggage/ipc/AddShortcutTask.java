@@ -6,16 +6,16 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
 import com.tencent.mm.plugin.webview.model.e;
 import com.tencent.mm.plugin.webview.model.e.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class AddShortcutTask
   extends MainProcessTask
 {
   public static final Parcelable.Creator<AddShortcutTask> CREATOR;
   public String appId;
-  public Runnable kuv;
+  public Runnable lyv;
   public boolean success;
   public String username;
   
@@ -31,23 +31,23 @@ public class AddShortcutTask
   private AddShortcutTask(Parcel paramParcel)
   {
     AppMethodBeat.i(83037);
-    e(paramParcel);
+    f(paramParcel);
     AppMethodBeat.o(83037);
   }
   
-  public final void aOX()
+  public final void bjj()
   {
     AppMethodBeat.i(83033);
-    if ((bu.isNullOrNil(this.appId)) || (bu.isNullOrNil(this.username)))
+    if ((Util.isNullOrNil(this.appId)) || (Util.isNullOrNil(this.username)))
     {
-      ae.e("MicroMsg.AddShortcutTask", "appid or username is null");
+      Log.e("MicroMsg.AddShortcutTask", "appid or username is null");
       this.success = false;
       AppMethodBeat.o(83033);
       return;
     }
-    e.a(ak.getContext(), this.username, this.appId, new e.a()
+    e.a(MMApplicationContext.getContext(), this.username, this.appId, new e.a()
     {
-      public final void nc(boolean paramAnonymousBoolean)
+      public final void pI(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(83031);
         AddShortcutTask.this.success = paramAnonymousBoolean;
@@ -58,11 +58,11 @@ public class AddShortcutTask
     AppMethodBeat.o(83033);
   }
   
-  public final void aOY()
+  public final void bjk()
   {
     AppMethodBeat.i(83034);
-    if (this.kuv != null) {
-      this.kuv.run();
+    if (this.lyv != null) {
+      this.lyv.run();
     }
     AppMethodBeat.o(83034);
   }
@@ -72,7 +72,7 @@ public class AddShortcutTask
     return 0;
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     boolean bool = true;
     AppMethodBeat.i(83035);

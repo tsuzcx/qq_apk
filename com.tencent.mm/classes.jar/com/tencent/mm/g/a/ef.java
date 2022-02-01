@@ -1,12 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ef
-  extends b
+  extends IEvent
 {
-  public a dqt;
+  public a dHy;
+  public b dHz;
   
   public ef()
   {
@@ -15,22 +16,23 @@ public final class ef
   
   private ef(byte paramByte)
   {
-    AppMethodBeat.i(115992);
-    this.dqt = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(115989);
+    this.dHy = new a();
+    this.dHz = new b();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(115992);
+    AppMethodBeat.o(115989);
   }
   
   public static final class a
   {
-    public String dqr;
-    public int dqu = 0;
-    public int dqv = 0;
-    public double dqw = 0.0D;
-    public double dqx = 0.0D;
-    public String dqy;
-    public int dqz = 0;
+    public String dHp;
+    public long msgId;
+  }
+  
+  public static final class b
+  {
+    public boolean dGX;
   }
 }
 

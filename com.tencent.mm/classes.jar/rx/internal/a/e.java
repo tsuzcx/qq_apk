@@ -11,55 +11,55 @@ import rx.f;
 public final class e<T, R>
   implements d.a<R>
 {
-  final d<T> OuQ;
-  final rx.b.e<? super T, ? extends R> OuR;
+  final d<T> UkE;
+  final rx.b.e<? super T, ? extends R> UkF;
   
   public e(d<T> paramd, rx.b.e<? super T, ? extends R> parame)
   {
-    this.OuQ = paramd;
-    this.OuR = parame;
+    this.UkE = paramd;
+    this.UkF = parame;
   }
   
   static final class a<T, R>
     extends rx.i<T>
   {
-    final rx.i<? super R> OuS;
-    final rx.b.e<? super T, ? extends R> OuT;
+    final rx.i<? super R> UkG;
+    final rx.b.e<? super T, ? extends R> UkH;
     boolean done;
     
     public a(rx.i<? super R> parami, rx.b.e<? super T, ? extends R> parame)
     {
-      this.OuS = parami;
-      this.OuT = parame;
+      this.UkG = parami;
+      this.UkH = parame;
     }
     
     public final void a(f paramf)
     {
       AppMethodBeat.i(90253);
-      this.OuS.a(paramf);
+      this.UkG.a(paramf);
       AppMethodBeat.o(90253);
     }
     
-    public final void gC(T paramT)
+    public final void gL(T paramT)
     {
       AppMethodBeat.i(90250);
       try
       {
-        Object localObject = this.OuT.call(paramT);
-        this.OuS.gC(localObject);
+        Object localObject = this.UkH.call(paramT);
+        this.UkG.gL(localObject);
         AppMethodBeat.o(90250);
         return;
       }
       catch (Throwable localThrowable)
       {
-        b.L(localThrowable);
-        this.Ous.gDs();
+        b.N(localThrowable);
+        this.Ukg.hQA();
         onError(g.a(localThrowable, paramT));
         AppMethodBeat.o(90250);
       }
     }
     
-    public final void gDo()
+    public final void hQw()
     {
       AppMethodBeat.i(90252);
       if (this.done)
@@ -67,7 +67,7 @@ public final class e<T, R>
         AppMethodBeat.o(90252);
         return;
       }
-      this.OuS.gDo();
+      this.UkG.hQw();
       AppMethodBeat.o(90252);
     }
     
@@ -81,7 +81,7 @@ public final class e<T, R>
         return;
       }
       this.done = true;
-      this.OuS.onError(paramThrowable);
+      this.UkG.onError(paramThrowable);
       AppMethodBeat.o(90251);
     }
   }

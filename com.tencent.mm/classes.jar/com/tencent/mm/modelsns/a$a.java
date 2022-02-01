@@ -3,28 +3,28 @@ package com.tencent.mm.modelsns;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.h.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.compatible.i.c;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.vfs.s;
 
 public final class a$a
 {
-  public String ipI;
-  public String ipJ;
-  public String ipK;
-  public int ipL = -1;
+  public String jkP;
+  public String jkQ;
+  public String jkR;
+  public int jkS = -1;
   public int videoBitRate = -1;
   public int videoFrameRate = -1;
   public int videoHeight = -1;
   public int videoIFrameInterval = -1;
   public int videoWidth = -1;
   
-  public static a GT(String paramString)
+  public static a PG(String paramString)
   {
     AppMethodBeat.i(20650);
     c localc = new c();
     a locala = new a();
-    locala.ipI = paramString;
+    locala.jkP = paramString;
     for (;;)
     {
       int i;
@@ -33,8 +33,8 @@ public final class a$a
       Object localObject6;
       try
       {
-        localc.vT(o.k(paramString, false));
-        int j = localc.gga.getTrackCount();
+        localc.setDataSource(s.k(paramString, false));
+        int j = localc.gLF.getTrackCount();
         i = 0;
         localObject2 = null;
         str1 = null;
@@ -45,13 +45,13 @@ public final class a$a
           localMediaFormat = localc.getTrackFormat(i);
           if (!localMediaFormat.containsKey("mime"))
           {
-            ae.i("MicroMsg.ShareSnsImpl", "find video mime : not found.");
+            Log.i("MicroMsg.ShareSnsImpl", "find video mime : not found.");
             localObject5 = localObject2;
             localObject6 = str1;
             break label528;
           }
           str2 = localMediaFormat.getString("mime");
-          ae.i("MicroMsg.ShareSnsImpl", "find video mime : %s", new Object[] { str2 });
+          Log.i("MicroMsg.ShareSnsImpl", "find video mime : %s", new Object[] { str2 });
           localObject5 = localObject2;
           localObject6 = str1;
           if (str2 == null) {
@@ -75,7 +75,7 @@ public final class a$a
             continue;
           }
           i = 0;
-          locala.ipL = i;
+          locala.jkS = i;
           if (((MediaFormat)localObject4).containsKey("height")) {
             continue;
           }
@@ -90,7 +90,7 @@ public final class a$a
             continue;
           }
           str1 = "";
-          locala.ipJ = str1;
+          locala.jkQ = str1;
           if (((MediaFormat)localObject4).containsKey("bitrate")) {
             continue;
           }
@@ -113,22 +113,22 @@ public final class a$a
             continue;
           }
           str1 = "";
-          locala.ipK = str1;
+          locala.jkR = str1;
         }
-        localc.gga.release();
+        localc.gLF.release();
       }
       catch (Exception localException)
       {
         String str1;
         MediaFormat localMediaFormat;
         String str2;
-        ae.i("MicroMsg.ShareSnsImpl", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { paramString, localException.getMessage() });
-        localc.gga.release();
+        Log.i("MicroMsg.ShareSnsImpl", "Video extractor init failed. video path = [%s] e = [%s]", new Object[] { paramString, localException.getMessage() });
+        localc.gLF.release();
         continue;
       }
       finally
       {
-        localc.gga.release();
+        localc.gLF.release();
         AppMethodBeat.o(20650);
       }
       AppMethodBeat.o(20650);
@@ -183,7 +183,7 @@ public final class a$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.modelsns.a.a
  * JD-Core Version:    0.7.0.1
  */

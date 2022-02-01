@@ -1,15 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@drawable/jy" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/kz" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/o" android:layout_marginRight="@dimen/o">
-        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i_" android:layout_marginBottom="@dimen/i_" android:layout_weight="1.0">
-            <TextView android:textSize="@dimen/ia" android:textColor="@color/ab" android:ellipsize="end" android:id="@id/acq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-            <TextView android:textSize="@dimen/gx" android:textColor="@color/aa" android:ellipsize="end" android:id="@id/acp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/fha" android:layout_width="wrap_content" android:layout_height="fill_parent">
-            <TextView android:background="@color/a2u" android:layout_width="1.0px" android:layout_height="40.0dip" android:layout_marginLeft="@dimen/i_" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-            <ImageView android:id="@id/aco" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/i_" android:layout_marginRight="@dimen/i_" android:src="@drawable/be7" />
-        </LinearLayout>
+    <com.tencent.mm.plugin.brandservice.ui.timeline.offenread.BizTimeLineHotView android:id="@id/a7v" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/fxc" android:background="@drawable/ig" android:padding="@dimen/i2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/i1" android:layout_marginBottom="@dimen/hs">
+        <ImageView android:id="@id/fxb" android:layout_width="32.0dip" android:layout_height="32.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/ag2" android:id="@id/fxd" android:paddingLeft="18.0dip" android:paddingRight="12.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </LinearLayout>
-    <View android:id="@id/aci" android:background="@color/a2u" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/o" android:layout_marginRight="@dimen/o" />
 </LinearLayout>

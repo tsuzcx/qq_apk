@@ -1,7 +1,6 @@
 package com.tencent.mm.plugin.sns.model;
 
 import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,42 +11,61 @@ import android.text.TextUtils;
 import com.tencent.mars.cdn.CdnLogic;
 import com.tencent.mars.cdn.CdnLogic.C2CDownloadRequest;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.cw;
-import com.tencent.mm.g.a.cw.a;
-import com.tencent.mm.g.a.gx;
-import com.tencent.mm.g.a.wu;
-import com.tencent.mm.g.a.wv;
-import com.tencent.mm.g.c.aw;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.t;
+import com.tencent.mm.g.a.cz;
+import com.tencent.mm.g.a.cz.a;
+import com.tencent.mm.g.a.hb;
+import com.tencent.mm.g.a.xv;
+import com.tencent.mm.g.a.xw;
+import com.tencent.mm.g.c.ax;
 import com.tencent.mm.i.h.a;
-import com.tencent.mm.model.v;
+import com.tencent.mm.model.ab;
 import com.tencent.mm.model.z;
+import com.tencent.mm.modelvideo.o;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.g.a;
 import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.plugin.fav.a.ad;
-import com.tencent.mm.plugin.messenger.foundation.a.l;
+import com.tencent.mm.plugin.sns.storage.ADInfo;
+import com.tencent.mm.plugin.sns.storage.ADXml;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.k;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.3;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.b;
+import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.c;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.d;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.e;
 import com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.m;
-import com.tencent.mm.plugin.sns.storage.p;
+import com.tencent.mm.plugin.sns.storage.AdSnsInfo;
+import com.tencent.mm.plugin.sns.storage.SnsInfo;
+import com.tencent.mm.plugin.sns.storage.y;
 import com.tencent.mm.plugin.sns.ui.SnsTransparentUI;
 import com.tencent.mm.pluginsdk.model.app.r;
-import com.tencent.mm.protocal.protobuf.ajx;
-import com.tencent.mm.protocal.protobuf.akn;
-import com.tencent.mm.protocal.protobuf.bkj;
-import com.tencent.mm.protocal.protobuf.btf;
-import com.tencent.mm.protocal.protobuf.bzh;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bk;
-import com.tencent.mm.storage.bq;
+import com.tencent.mm.pluginsdk.model.p;
+import com.tencent.mm.protocal.protobuf.aml;
+import com.tencent.mm.protocal.protobuf.anb;
+import com.tencent.mm.protocal.protobuf.box;
+import com.tencent.mm.protocal.protobuf.bq;
+import com.tencent.mm.protocal.protobuf.btl;
+import com.tencent.mm.protocal.protobuf.bws;
+import com.tencent.mm.protocal.protobuf.byb;
+import com.tencent.mm.protocal.protobuf.cfy;
+import com.tencent.mm.protocal.protobuf.cnb;
+import com.tencent.mm.protocal.protobuf.dic;
+import com.tencent.mm.protocal.protobuf.drt;
+import com.tencent.mm.protocal.protobuf.emn;
+import com.tencent.mm.protocal.protobuf.xc;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bp;
+import com.tencent.mm.storage.bv;
 import com.tencent.mm.vending.g.d.b;
+import com.tencent.mm.vfs.s;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -57,25 +75,26 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
+import org.json.JSONObject;
 
 public class AdLandingPagesProxy
   extends com.tencent.mm.remoteservice.a
 {
-  private static AdLandingPagesProxy zvY;
-  public static f zwb;
+  private static AdLandingPagesProxy DGl;
+  public static f DGn;
+  private Map<q, Long> DGm;
+  private ConcurrentHashMap<Long, ArrayList<a>> DGo;
+  private a.b DGp;
+  private Map<String, g> DGq;
+  private Map<String, h.a> DGr;
+  private com.tencent.mm.remoteservice.d Dxo;
   private Map<Long, e> callbacks;
-  private com.tencent.mm.ak.f ghB;
-  private Map<com.tencent.mm.ak.n, Long> zvZ;
-  private com.tencent.mm.remoteservice.d zwa;
-  private ConcurrentHashMap<Long, ArrayList<a>> zwc;
-  private a.b zwd;
-  private Map<String, g> zwe;
-  private Map<String, h.a> zwf;
+  private com.tencent.mm.ak.i gNh;
   
   static
   {
     AppMethodBeat.i(95375);
-    zwb = new f();
+    DGn = new f();
     AppMethodBeat.o(95375);
   }
   
@@ -84,20 +103,441 @@ public class AdLandingPagesProxy
     super(paramd);
     AppMethodBeat.i(95227);
     this.callbacks = new HashMap();
-    this.zvZ = new HashMap();
-    this.ghB = new AdLandingPagesProxy.1(this);
-    this.zwc = new ConcurrentHashMap();
-    this.zwd = new AdLandingPagesProxy.2(this);
-    this.zwe = new HashMap();
-    this.zwf = new HashMap();
-    this.zwa = paramd;
+    this.DGm = new HashMap();
+    this.gNh = new com.tencent.mm.ak.i()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+      {
+        AppMethodBeat.i(95209);
+        Object localObject1 = new StringBuilder("onSceneEnd, funcId=");
+        int i;
+        if (paramAnonymousq == null)
+        {
+          i = 0;
+          Log.i("AdLandingPagesProxy", i + ", errType=" + paramAnonymousInt1 + ", errCode=" + paramAnonymousInt2 + ", errMsg=" + paramAnonymousString);
+          if (!(paramAnonymousq instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.j)) {
+            break label273;
+          }
+          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
+            break label224;
+          }
+          paramAnonymousString = ((com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.j)paramAnonymousq).jsonString;
+          Log.i("AdLandingPagesProxy", "the dynamic string is " + paramAnonymousString + ", sceneType is " + paramAnonymousq.getType());
+        }
+        long l;
+        for (;;)
+        {
+          if (AdLandingPagesProxy.a(AdLandingPagesProxy.this).containsKey(paramAnonymousq))
+          {
+            l = ((Long)AdLandingPagesProxy.a(AdLandingPagesProxy.this).remove(paramAnonymousq)).longValue();
+            AdLandingPagesProxy.this.CLIENT_CALL("onDynamicUpdateEnd", new Object[] { Long.valueOf(l), paramAnonymousString });
+            com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+          }
+          AppMethodBeat.o(95209);
+          return;
+          i = paramAnonymousq.getType();
+          break;
+          label224:
+          Log.e("AdLandingPagesProxy", "the netscene is error ,error type is " + paramAnonymousInt1 + " error msg is " + paramAnonymousString + " sceneType is " + paramAnonymousq.getType());
+          paramAnonymousString = "";
+        }
+        label273:
+        if ((paramAnonymousq instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.b)) {
+          if (!AdLandingPagesProxy.a(AdLandingPagesProxy.this).containsKey(paramAnonymousq)) {
+            break label2389;
+          }
+        }
+        for (;;)
+        {
+          try
+          {
+            l = ((Long)AdLandingPagesProxy.a(AdLandingPagesProxy.this).remove(paramAnonymousq)).longValue();
+            Log.i("AdLandingPagesProxy", "NetSceneAdChannelPkgInfo onSceneEnd, id %d", new Object[] { Long.valueOf(l) });
+            paramAnonymousString = (xc)((com.tencent.mm.ak.d)paramAnonymousq.getReqResp()).iLL.iLR;
+            if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousString == null)) {
+              break label2456;
+            }
+            paramAnonymousString = paramAnonymousString.toByteArray();
+            AdLandingPagesProxy.this.CLIENT_CALL("onAdChannelEnd", new Object[] { Long.valueOf(l), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+            com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+            AppMethodBeat.o(95209);
+            return;
+          }
+          catch (Exception paramAnonymousString)
+          {
+            Log.e("AdLandingPagesProxy", Util.stackTraceToString(paramAnonymousString));
+            AppMethodBeat.o(95209);
+            return;
+          }
+          if ((paramAnonymousq instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.i))
+          {
+            if (AdLandingPagesProxy.a(AdLandingPagesProxy.this).containsKey(paramAnonymousq))
+            {
+              l = ((Long)AdLandingPagesProxy.a(AdLandingPagesProxy.this).remove(paramAnonymousq)).longValue();
+              localObject1 = AdLandingPagesProxy.this;
+              paramAnonymousString = (com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.i)paramAnonymousq;
+              if (paramAnonymousString.EiS != null) {}
+              for (paramAnonymousString = paramAnonymousString.EiS;; paramAnonymousString = "")
+              {
+                ((AdLandingPagesProxy)localObject1).CLIENT_CALL("onFavOfficialItemEnd", new Object[] { Long.valueOf(l), paramAnonymousString, Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2) });
+                com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+                AppMethodBeat.o(95209);
+                return;
+              }
+            }
+          }
+          else
+          {
+            if ((paramAnonymousq instanceof com.tencent.mm.plugin.sns.ad.g.h))
+            {
+              Log.i("AdLandingPagesProxy", "real time report done.");
+              com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+              AppMethodBeat.o(95209);
+              return;
+            }
+            if ((paramAnonymousq instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.e)) {
+              if (!AdLandingPagesProxy.a(AdLandingPagesProxy.this).containsKey(paramAnonymousq)) {
+                break label2389;
+              }
+            }
+          }
+          for (;;)
+          {
+            try
+            {
+              l = ((Long)AdLandingPagesProxy.a(AdLandingPagesProxy.this).remove(paramAnonymousq)).longValue();
+              Log.i("AdLandingPagesProxy", "NetSceneAdGetSmartPhoneNumber onSceneEnd, id %d", new Object[] { Long.valueOf(l) });
+              paramAnonymousString = (box)((com.tencent.mm.ak.d)paramAnonymousq.getReqResp()).iLL.iLR;
+              if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousString == null)) {
+                break label2451;
+              }
+              paramAnonymousString = paramAnonymousString.toByteArray();
+              AdLandingPagesProxy.this.CLIENT_CALL("onGetSmartPhoneScene", new Object[] { Long.valueOf(l), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+              com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+              AppMethodBeat.o(95209);
+              return;
+            }
+            catch (Exception paramAnonymousString)
+            {
+              Log.e("AdLandingPagesProxy", "NetSceneAdGetSmartPhoneNumber onSceneEnd exp=" + paramAnonymousString.toString());
+              AppMethodBeat.o(95209);
+              return;
+            }
+            if ((paramAnonymousq instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g)) {
+              try
+              {
+                Log.i("AdLandingPagesProxy", "NetSceneAdLadingPageClick onSceneEnd, errType=" + paramAnonymousInt1 + ", errCode=" + paramAnonymousInt2);
+                com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+                AppMethodBeat.o(95209);
+                return;
+              }
+              catch (Exception paramAnonymousString)
+              {
+                Log.e("AdLandingPagesProxy", "NetSceneAdLadingPageClick onSceneEnd exp=" + paramAnonymousString.toString());
+                AppMethodBeat.o(95209);
+                return;
+              }
+            }
+            if ((paramAnonymousq instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.l)) {
+              if (!AdLandingPagesProxy.a(AdLandingPagesProxy.this).containsKey(paramAnonymousq)) {
+                break label2389;
+              }
+            }
+            for (;;)
+            {
+              try
+              {
+                l = ((Long)AdLandingPagesProxy.a(AdLandingPagesProxy.this).remove(paramAnonymousq)).longValue();
+                Log.i("AdLandingPagesProxy", "NetSceneUpdateUxInfo onSceneEnd, id %d", new Object[] { Long.valueOf(l) });
+                paramAnonymousString = (emn)((com.tencent.mm.ak.d)paramAnonymousq.getReqResp()).iLL.iLR;
+                if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousString == null)) {
+                  break label2445;
+                }
+                paramAnonymousString = paramAnonymousString.gTk;
+                AdLandingPagesProxy.this.CLIENT_CALL("onUpdateUxInfo", new Object[] { Long.valueOf(l), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+                com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+                AppMethodBeat.o(95209);
+                return;
+              }
+              catch (Exception paramAnonymousString)
+              {
+                Log.e("AdLandingPagesProxy", "NetSceneUpdateUxInfo onSceneEnd exp=" + paramAnonymousString.toString());
+                AppMethodBeat.o(95209);
+                return;
+              }
+              if ((paramAnonymousq instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d))
+              {
+                if (!AdLandingPagesProxy.a(AdLandingPagesProxy.this).containsKey(paramAnonymousq)) {
+                  break label2389;
+                }
+                l = ((Long)AdLandingPagesProxy.a(AdLandingPagesProxy.this).remove(paramAnonymousq)).longValue();
+                Log.i("AdLandingPagesProxy", "NetSceneAdGetHbCoverState onSceneEnd, id %d", new Object[] { Long.valueOf(l) });
+              }
+              for (;;)
+              {
+                try
+                {
+                  paramAnonymousString = (dic)((com.tencent.mm.ak.d)paramAnonymousq.getReqResp()).iLL.iLR;
+                  if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousString == null)) {
+                    break label2439;
+                  }
+                  i = paramAnonymousString.state;
+                  AdLandingPagesProxy.this.CLIENT_CALL("onGetHbCoverStateScene", new Object[] { Long.valueOf(l), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), Integer.valueOf(i) });
+                  com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+                  AppMethodBeat.o(95209);
+                  return;
+                }
+                catch (Exception paramAnonymousString)
+                {
+                  Log.e("AdLandingPagesProxy", "NetSceneAdGetHbCoverState onSceneEnd exp=" + paramAnonymousString.toString());
+                  AppMethodBeat.o(95209);
+                  return;
+                }
+                if ((paramAnonymousq instanceof k)) {}
+                for (;;)
+                {
+                  try
+                  {
+                    if (AdLandingPagesProxy.a(AdLandingPagesProxy.this).containsKey(paramAnonymousq))
+                    {
+                      l = ((Long)AdLandingPagesProxy.a(AdLandingPagesProxy.this).remove(paramAnonymousq)).longValue();
+                      Log.i("AdLandingPagesProxy", "NetSceneUpdateQrUrl onSceneEnd, id %d", new Object[] { Long.valueOf(l) });
+                      paramAnonymousString = (btl)((com.tencent.mm.ak.d)paramAnonymousq.getReqResp()).iLL.iLR;
+                      if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousString == null)) {
+                        break label2434;
+                      }
+                      paramAnonymousString = paramAnonymousString.toByteArray();
+                      AdLandingPagesProxy.this.CLIENT_CALL("onAdUpdateQrUrlEnd", new Object[] { Long.valueOf(l), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+                      com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+                    }
+                    AppMethodBeat.o(95209);
+                    return;
+                  }
+                  catch (Throwable paramAnonymousString)
+                  {
+                    Log.e("AdLandingPagesProxy", "NetSceneUpdateQrUrl onSceneEnd exp=" + paramAnonymousString.toString());
+                    AppMethodBeat.o(95209);
+                    return;
+                  }
+                  Object localObject2;
+                  if (((paramAnonymousq instanceof com.tencent.mm.openim.b.b)) || ((paramAnonymousq instanceof p))) {
+                    try
+                    {
+                      JSONObject localJSONObject;
+                      if (AdLandingPagesProxy.a(AdLandingPagesProxy.this).containsKey(paramAnonymousq))
+                      {
+                        Log.d("AdLandingPagesProxy", "onSceneEnd, errType = " + paramAnonymousInt1 + ", errCode = " + paramAnonymousInt2 + "," + paramAnonymousString);
+                        l = ((Long)AdLandingPagesProxy.a(AdLandingPagesProxy.this).remove(paramAnonymousq)).longValue();
+                        if ((paramAnonymousq.getType() != 30) && (paramAnonymousq.getType() != 667))
+                        {
+                          Log.w("AdLandingPagesProxy", "not expected scene,  type = " + paramAnonymousq.getType());
+                          AppMethodBeat.o(95209);
+                          return;
+                        }
+                        if (((paramAnonymousq instanceof p)) && (((p)paramAnonymousq).dKy != 1))
+                        {
+                          Log.e("AdLandingPagesProxy", "not opcode addcontact!");
+                          AppMethodBeat.o(95209);
+                          return;
+                        }
+                        localObject2 = "";
+                        localJSONObject = new JSONObject();
+                        localObject1 = localObject2;
+                        if (paramAnonymousInt1 == 0)
+                        {
+                          localObject1 = localObject2;
+                          if (paramAnonymousInt2 == 0)
+                          {
+                            if (paramAnonymousq.getType() != 30) {
+                              break label1827;
+                            }
+                            localObject1 = ((p)paramAnonymousq).gmD();
+                          }
+                        }
+                      }
+                      for (;;)
+                      {
+                        localJSONObject.put("errMsg", paramAnonymousString);
+                        localJSONObject.put("respUsername", localObject1);
+                        AdLandingPagesProxy.this.CLIENT_CALL("onAddBrandSceneEnd", new Object[] { Long.valueOf(l), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), localJSONObject.toString() });
+                        b.e(AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+                        AppMethodBeat.o(95209);
+                        return;
+                        label1827:
+                        localObject1 = localObject2;
+                        if (paramAnonymousq.getType() == 667) {
+                          localObject1 = ((com.tencent.mm.openim.b.b)paramAnonymousq).jGZ;
+                        }
+                      }
+                      if (!(paramAnonymousq instanceof com.tencent.mm.plugin.messenger.a.f)) {}
+                    }
+                    catch (Throwable paramAnonymousString)
+                    {
+                      Log.e("AdLandingPagesProxy", "NetSceneAddOpenIMContact or NetSceneVerifyUser onSceneEnd exp=" + paramAnonymousString.toString());
+                      AppMethodBeat.o(95209);
+                      return;
+                    }
+                  }
+                  for (;;)
+                  {
+                    try
+                    {
+                      if (AdLandingPagesProxy.a(AdLandingPagesProxy.this).containsKey(paramAnonymousq))
+                      {
+                        l = ((Long)AdLandingPagesProxy.a(AdLandingPagesProxy.this).remove(paramAnonymousq)).longValue();
+                        paramAnonymousString = (drt)((com.tencent.mm.ak.d)paramAnonymousq.getReqResp()).iLL.iLR;
+                        if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousString == null)) {
+                          break label2429;
+                        }
+                        paramAnonymousString = paramAnonymousString.toByteArray();
+                        AdLandingPagesProxy.this.CLIENT_CALL("onSearchContact", new Object[] { Long.valueOf(l), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+                      }
+                    }
+                    catch (Throwable paramAnonymousString)
+                    {
+                      Log.e("AdLandingPagesProxy", "NetSceneSearchContact, onSceneEnd exp=" + paramAnonymousString.toString());
+                      continue;
+                    }
+                    com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+                    AppMethodBeat.o(95209);
+                    return;
+                    if ((paramAnonymousq instanceof com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.a)) {}
+                    for (;;)
+                    {
+                      try
+                      {
+                        if (AdLandingPagesProxy.a(AdLandingPagesProxy.this).containsKey(paramAnonymousq))
+                        {
+                          l = ((Long)AdLandingPagesProxy.a(AdLandingPagesProxy.this).remove(paramAnonymousq)).longValue();
+                          paramAnonymousString = (bq)((com.tencent.mm.ak.d)paramAnonymousq.getReqResp()).iLL.iLR;
+                          if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0) || (paramAnonymousString == null)) {
+                            break label2424;
+                          }
+                          paramAnonymousString = paramAnonymousString.toByteArray();
+                          AdLandingPagesProxy.this.CLIENT_CALL("onAdNativeAntiAbuse", new Object[] { Long.valueOf(l), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+                        }
+                      }
+                      catch (Throwable paramAnonymousString)
+                      {
+                        Log.e("AdLandingPagesProxy", "NetSceneAdAntiAbuse, onSceneEnd exp = " + paramAnonymousString.toString());
+                        continue;
+                      }
+                      com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+                      AppMethodBeat.o(95209);
+                      return;
+                      if (paramAnonymousq != null) {}
+                      try
+                      {
+                        if (AdLandingPagesProxy.a(AdLandingPagesProxy.this).containsKey(paramAnonymousq))
+                        {
+                          l = ((Long)AdLandingPagesProxy.a(AdLandingPagesProxy.this).remove(paramAnonymousq)).longValue();
+                          localObject2 = ((com.tencent.mm.ak.d)paramAnonymousq.getReqResp()).iLL.iLR;
+                          localObject1 = null;
+                          paramAnonymousString = (String)localObject1;
+                          if (paramAnonymousInt1 == 0)
+                          {
+                            paramAnonymousString = (String)localObject1;
+                            if (paramAnonymousInt2 == 0)
+                            {
+                              paramAnonymousString = (String)localObject1;
+                              if (localObject2 != null) {
+                                paramAnonymousString = ((com.tencent.mm.bw.a)localObject2).toByteArray();
+                              }
+                            }
+                          }
+                          AdLandingPagesProxy.this.CLIENT_CALL("onRspCallbackCommon", new Object[] { Long.valueOf(l), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), paramAnonymousString });
+                        }
+                      }
+                      catch (Throwable paramAnonymousString)
+                      {
+                        for (;;)
+                        {
+                          Log.e("AdLandingPagesProxy", "default, onSceneEnd exp=" + paramAnonymousString.toString());
+                        }
+                      }
+                      com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), AdLandingPagesProxy.b(AdLandingPagesProxy.this));
+                      label2389:
+                      AppMethodBeat.o(95209);
+                      return;
+                      label2424:
+                      paramAnonymousString = null;
+                    }
+                    label2429:
+                    paramAnonymousString = null;
+                  }
+                  label2434:
+                  paramAnonymousString = null;
+                }
+                label2439:
+                i = -1;
+              }
+              label2445:
+              paramAnonymousString = "";
+            }
+            label2451:
+            paramAnonymousString = null;
+          }
+          label2456:
+          paramAnonymousString = null;
+        }
+      }
+    };
+    this.DGo = new ConcurrentHashMap();
+    this.DGp = new a.b()
+    {
+      public final void failed(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(202669);
+        AdLandingPagesProxy.this.CLIENT_CALL("failed", new Object[] { Long.valueOf(paramAnonymousLong) });
+        AppMethodBeat.o(202669);
+      }
+      
+      public final void paused(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(202666);
+        AdLandingPagesProxy.this.CLIENT_CALL("paused", new Object[] { Long.valueOf(paramAnonymousLong) });
+        AppMethodBeat.o(202666);
+      }
+      
+      public final void progress(long paramAnonymousLong, int paramAnonymousInt)
+      {
+        AppMethodBeat.i(202665);
+        Log.v("AdLandingPagesProxy", "progress %d", new Object[] { Integer.valueOf(paramAnonymousInt) });
+        AdLandingPagesProxy.this.CLIENT_CALL("progress", new Object[] { Long.valueOf(paramAnonymousLong), Integer.valueOf(paramAnonymousInt) });
+        AppMethodBeat.o(202665);
+      }
+      
+      public final void resumed(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(202670);
+        AdLandingPagesProxy.this.CLIENT_CALL("resumed", new Object[] { Long.valueOf(paramAnonymousLong) });
+        AppMethodBeat.o(202670);
+      }
+      
+      public final void stopped(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(202667);
+        AdLandingPagesProxy.this.CLIENT_CALL("stopped", new Object[] { Long.valueOf(paramAnonymousLong) });
+        AppMethodBeat.o(202667);
+      }
+      
+      public final void succeed(long paramAnonymousLong)
+      {
+        AppMethodBeat.i(202668);
+        AdLandingPagesProxy.this.CLIENT_CALL("succeed", new Object[] { Long.valueOf(paramAnonymousLong) });
+        AppMethodBeat.o(202668);
+      }
+    };
+    this.DGq = new HashMap();
+    this.DGr = new HashMap();
+    this.Dxo = paramd;
     AppMethodBeat.o(95227);
   }
   
-  private static SharedPreferences WL()
+  private static SharedPreferences akz()
   {
     AppMethodBeat.i(95329);
-    SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences(ak.getPackageName() + "_comm_preferences", 0);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences(MMApplicationContext.getPackageName() + "_comm_preferences", 0);
     AppMethodBeat.o(95329);
     return localSharedPreferences;
   }
@@ -105,10 +545,10 @@ public class AdLandingPagesProxy
   public static AdLandingPagesProxy getInstance()
   {
     AppMethodBeat.i(95228);
-    if (zvY == null) {
-      zvY = new AdLandingPagesProxy(new com.tencent.mm.remoteservice.d(ak.getContext()));
+    if (DGl == null) {
+      DGl = new AdLandingPagesProxy(new com.tencent.mm.remoteservice.d(MMApplicationContext.getContext()));
     }
-    AdLandingPagesProxy localAdLandingPagesProxy = zvY;
+    AdLandingPagesProxy localAdLandingPagesProxy = DGl;
     AppMethodBeat.o(95228);
     return localAdLandingPagesProxy;
   }
@@ -125,7 +565,7 @@ public class AdLandingPagesProxy
   public void addCanvasCacheMM(long paramLong, String paramString)
   {
     AppMethodBeat.i(95331);
-    m.ebK().D(paramLong, paramString);
+    m.feB().J(paramLong, paramString);
     AppMethodBeat.o(95331);
   }
   
@@ -140,14 +580,14 @@ public class AdLandingPagesProxy
   public void addReportInfoMM(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(176248);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.zPr;
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.DXp;
     if ((paramString1 == null) || (paramString1.length() == 0))
     {
       AppMethodBeat.o(176248);
       return;
     }
     paramString2 = new a.d(paramString2, paramString3, paramString4);
-    locala.zPn.put(paramString1, paramString2);
+    locala.DXl.put(paramString1, paramString2);
     AppMethodBeat.o(176248);
   }
   
@@ -163,28 +603,28 @@ public class AdLandingPagesProxy
   public void asyncCacheXmlMM(final String paramString)
   {
     AppMethodBeat.i(95333);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajU().n(new Runnable()
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAk().postToWorkerDelayed(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(95216);
-        if (!com.tencent.mm.kernel.g.ajP().aiZ())
+        AppMethodBeat.i(95218);
+        if (!com.tencent.mm.kernel.g.aAf().azp())
         {
-          AppMethodBeat.o(95216);
+          AppMethodBeat.o(95218);
           return;
         }
-        Object localObject = ah.dXE().aBq(paramString);
+        Object localObject = aj.faO().aQl(paramString);
         if (localObject != null)
         {
-          localObject = ((p)localObject).dVj();
+          localObject = ((SnsInfo)localObject).getAdXml();
           if (localObject != null)
           {
-            AdLandingPagesProxy.azL(((com.tencent.mm.plugin.sns.storage.b)localObject).dZH());
-            AdLandingPagesProxy.azL(((com.tencent.mm.plugin.sns.storage.b)localObject).dZI());
+            AdLandingPagesProxy.aOI(((ADXml)localObject).getLeftCanvasInfo());
+            AdLandingPagesProxy.aOI(((ADXml)localObject).getRightCanvasInfo());
           }
         }
-        AppMethodBeat.o(95216);
+        AppMethodBeat.o(95218);
       }
     }, 5000L);
     AppMethodBeat.o(95333);
@@ -195,9 +635,9 @@ public class AdLandingPagesProxy
   {
     AppMethodBeat.i(95350);
     REMOTE_CALL("clearCallbackMM", new Object[0]);
-    this.zwe.clear();
+    this.DGq.clear();
     this.callbacks.clear();
-    this.zwc.clear();
+    this.DGo.clear();
     AppMethodBeat.o(95350);
   }
   
@@ -205,22 +645,24 @@ public class AdLandingPagesProxy
   public void clearCallbackMM()
   {
     AppMethodBeat.i(95349);
-    this.zvZ.clear();
-    this.zwd = null;
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(1337, this.ghB);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(1210, this.ghB);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(2874, this.ghB);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(2721, this.ghB);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(1802, this.ghB);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(2605, this.ghB);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.b(2883, this.ghB);
+    this.DGm.clear();
+    this.DGp = null;
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(1337, this.gNh);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(1210, this.gNh);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(2874, this.gNh);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(2721, this.gNh);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(1802, this.gNh);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(2605, this.gNh);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(2883, this.gNh);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.b(4353, this.gNh);
     AppMethodBeat.o(95349);
   }
   
@@ -232,12 +674,12 @@ public class AdLandingPagesProxy
       AppMethodBeat.o(95242);
       return;
     }
-    Intent localIntent = new Intent(ak.getContext(), SnsTransparentUI.class);
+    Intent localIntent = new Intent(MMApplicationContext.getContext(), SnsTransparentUI.class);
     localIntent.putExtra("phoneNum", paramString);
     localIntent.putExtra("op", 4);
-    paramString = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramString.ahE(), "com/tencent/mm/plugin/sns/model/AdLandingPagesProxy", "confirmDialPhoneNum", "(Landroid/app/Activity;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramString.mt(0));
+    paramString = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramString.axQ(), "com/tencent/mm/plugin/sns/model/AdLandingPagesProxy", "confirmDialPhoneNum", "(Landroid/app/Activity;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramString.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/sns/model/AdLandingPagesProxy", "confirmDialPhoneNum", "(Landroid/app/Activity;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
     AppMethodBeat.o(95242);
   }
@@ -245,7 +687,7 @@ public class AdLandingPagesProxy
   public void connect(Runnable paramRunnable)
   {
     AppMethodBeat.i(95226);
-    this.zwa.connect(paramRunnable);
+    this.Dxo.connect(paramRunnable);
     AppMethodBeat.o(95226);
   }
   
@@ -267,7 +709,7 @@ public class AdLandingPagesProxy
   public int contactGetTypeTextFromUserNameMM(String paramString)
   {
     AppMethodBeat.i(95233);
-    int i = com.tencent.mm.model.x.Bb(paramString);
+    int i = ab.JG(paramString);
     AppMethodBeat.o(95233);
     return i;
   }
@@ -283,7 +725,7 @@ public class AdLandingPagesProxy
   public void deleteDeferredDeepLinkMM(String paramString)
   {
     AppMethodBeat.i(95328);
-    WL().edit().remove(paramString).commit();
+    akz().edit().remove(paramString).commit();
     AppMethodBeat.o(95328);
   }
   
@@ -300,64 +742,84 @@ public class AdLandingPagesProxy
   public void doAdChannelSceneMM(long paramLong, String paramString1, String paramString2, boolean paramBoolean)
   {
     AppMethodBeat.i(95275);
-    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.a(paramString1, paramString2, paramBoolean);
-    this.zvZ.put(paramString1, Long.valueOf(paramLong));
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(paramString1, 0);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(1210, this.ghB);
+    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.b(paramString1, paramString2, paramBoolean);
+    this.DGm.put(paramString1, Long.valueOf(paramLong));
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramString1, 0);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(1210, this.gNh);
     AppMethodBeat.o(95275);
   }
   
-  public void doAdUpdateQrUrlScene(String paramString1, String paramString2, String paramString3, e parame)
+  public void doAdNativeAntiAbuseScene(String paramString1, String paramString2, int paramInt, String paramString3, e parame)
   {
-    AppMethodBeat.i(219309);
+    AppMethodBeat.i(202687);
     long l = System.currentTimeMillis();
     this.callbacks.put(Long.valueOf(l), parame);
-    REMOTE_CALL("doAdUpdateQrUrlSceneMM", new Object[] { Long.valueOf(l), paramString1, paramString2, paramString3 });
-    AppMethodBeat.o(219309);
+    REMOTE_CALL("doAdNativeAntiAbuseSceneMM", new Object[] { Long.valueOf(l), paramString1, paramString2, Integer.valueOf(paramInt), paramString3 });
+    AppMethodBeat.o(202687);
   }
   
   @com.tencent.mm.remoteservice.f
-  public void doAdUpdateQrUrlSceneMM(long paramLong, String paramString1, String paramString2, String paramString3)
+  public void doAdNativeAntiAbuseSceneMM(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3)
   {
-    AppMethodBeat.i(219310);
-    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.h(paramString1, paramString2, paramString3);
-    this.zvZ.put(paramString1, Long.valueOf(paramLong));
-    com.tencent.mm.kernel.g.ajj().a(1022, this.ghB);
-    com.tencent.mm.kernel.g.ajj().a(paramString1, 0);
-    AppMethodBeat.o(219310);
+    AppMethodBeat.i(202688);
+    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.a(paramString1, paramString2, paramInt, paramString3);
+    this.DGm.put(paramString1, Long.valueOf(paramLong));
+    com.tencent.mm.kernel.g.azz().a(4679, this.gNh);
+    com.tencent.mm.kernel.g.azz().a(paramString1, 0);
+    AppMethodBeat.o(202688);
+  }
+  
+  public void doAdUpdateQrUrlScene(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, e parame)
+  {
+    AppMethodBeat.i(202679);
+    long l = System.currentTimeMillis();
+    this.callbacks.put(Long.valueOf(l), parame);
+    REMOTE_CALL("doAdUpdateQrUrlSceneMM", new Object[] { Long.valueOf(l), paramString1, paramString2, paramString3, paramString4, paramString5, paramString6 });
+    AppMethodBeat.o(202679);
+  }
+  
+  @com.tencent.mm.remoteservice.f
+  public void doAdUpdateQrUrlSceneMM(long paramLong, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
+  {
+    AppMethodBeat.i(202680);
+    paramString1 = new k(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6);
+    this.DGm.put(paramString1, Long.valueOf(paramLong));
+    com.tencent.mm.kernel.g.azz().a(1022, this.gNh);
+    com.tencent.mm.kernel.g.azz().a(paramString1, 0);
+    AppMethodBeat.o(202680);
   }
   
   public void doAddBrandScene(String paramString, int paramInt, e parame)
   {
-    AppMethodBeat.i(219320);
+    AppMethodBeat.i(202698);
     long l = System.currentTimeMillis();
     this.callbacks.put(Long.valueOf(l), parame);
     REMOTE_CALL("doAddBrandSceneSceneMM", new Object[] { Long.valueOf(l), paramString, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(219320);
+    AppMethodBeat.o(202698);
   }
   
   @com.tencent.mm.remoteservice.f
   public void doAddBrandSceneSceneMM(long paramLong, String paramString, int paramInt)
   {
-    AppMethodBeat.i(219321);
-    paramString = b.a(paramString, this.ghB, paramInt);
+    AppMethodBeat.i(202699);
+    paramString = b.a(paramString, this.gNh, paramInt);
     if ((paramString instanceof com.tencent.mm.openim.b.b))
     {
       paramString = (com.tencent.mm.openim.b.b)paramString;
-      this.zvZ.put(paramString, Long.valueOf(paramLong));
-      com.tencent.mm.kernel.g.ajj().a(paramString, 0);
-      AppMethodBeat.o(219321);
+      this.DGm.put(paramString, Long.valueOf(paramLong));
+      com.tencent.mm.kernel.g.azz().a(paramString, 0);
+      AppMethodBeat.o(202699);
       return;
     }
-    if ((paramString instanceof com.tencent.mm.pluginsdk.model.o))
+    if ((paramString instanceof p))
     {
-      paramString = (com.tencent.mm.pluginsdk.model.o)paramString;
-      this.zvZ.put(paramString, Long.valueOf(paramLong));
-      com.tencent.mm.kernel.g.ajj().a(paramString, 0);
+      paramString = (p)paramString;
+      this.DGm.put(paramString, Long.valueOf(paramLong));
+      com.tencent.mm.kernel.g.azz().a(paramString, 0);
     }
-    AppMethodBeat.o(219321);
+    AppMethodBeat.o(202699);
   }
   
   public void doCgiReportCanvasBrowseInfo(int paramInt, String paramString)
@@ -371,18 +833,18 @@ public class AdLandingPagesProxy
   public void doCgiReportCanvasBrowseInfoMM(int paramInt, String paramString)
   {
     AppMethodBeat.i(95346);
-    btf localbtf = new btf();
-    localbtf.HgA = paramInt;
-    localbtf.HgH = ((int)(System.currentTimeMillis() / 1000L));
-    localbtf.nID = 1;
-    localbtf.HgB = new com.tencent.mm.bw.b(paramString.getBytes());
+    cfy localcfy = new cfy();
+    localcfy.MlF = paramInt;
+    localcfy.MlM = ((int)(System.currentTimeMillis() / 1000L));
+    localcfy.oTz = 1;
+    localcfy.MlG = new com.tencent.mm.bw.b(paramString.getBytes());
     paramString = new ArrayList();
-    paramString.add(localbtf);
-    paramString = new com.tencent.mm.plugin.sns.ad.e.g(paramString);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(paramString, 0);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(1802, this.ghB);
+    paramString.add(localcfy);
+    paramString = new com.tencent.mm.plugin.sns.ad.g.h(paramString);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramString, 0);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(1802, this.gNh);
     AppMethodBeat.o(95346);
   }
   
@@ -399,14 +861,14 @@ public class AdLandingPagesProxy
   public void doDynamicUpdateSceneMM(long paramLong, String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(95269);
-    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g(paramString1, paramString2, paramString3);
-    this.zvZ.put(paramString1, Long.valueOf(paramLong));
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(paramString1, 0);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(1337, this.ghB);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(2721, this.ghB);
+    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.j(paramString1, paramString2, paramString3);
+    this.DGm.put(paramString1, Long.valueOf(paramLong));
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramString1, 0);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(1337, this.gNh);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(2721, this.gNh);
     AppMethodBeat.o(95269);
   }
   
@@ -442,31 +904,31 @@ public class AdLandingPagesProxy
   public int doFavAdlandingMM(long paramLong, String paramString1, int paramInt1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, int paramInt2, String paramString7, String paramString8)
   {
     AppMethodBeat.i(95264);
-    cw localcw = new cw();
+    cz localcz = new cz();
     if ((paramInt1 == 1) || (paramInt1 == 2) || (paramInt1 == 3) || (paramInt1 == 4) || (paramInt1 == 9) || (paramInt1 == 10) || (paramInt1 == 11)) {
-      bu.isNullOrNil(paramString1);
+      Util.isNullOrNil(paramString1);
     }
-    ((ad)com.tencent.mm.kernel.g.ab(ad.class)).a(localcw, paramString6.hashCode(), v.aAC(), paramString4, paramString5, paramString6, paramString7, paramString2);
-    paramString1 = z.Br(paramString3);
-    localcw.doL.sessionId = paramString1;
-    localcw.doL.title = paramString4;
-    localcw.doL.desc = paramString5;
-    paramString1 = localcw.doL.doN;
-    if ((paramString1 != null) && (paramString1.oeJ != null) && (paramString1.oeJ.size() > 0) && (paramString1.oeJ.get(0) != null))
+    ((com.tencent.mm.plugin.fav.a.ad)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.fav.a.ad.class)).a(localcz, paramString6.hashCode(), z.aTY(), paramString4, paramString5, paramString6, paramString7, paramString2);
+    paramString1 = com.tencent.mm.model.ad.JX(paramString3);
+    localcz.dFZ.sessionId = paramString1;
+    localcz.dFZ.title = paramString4;
+    localcz.dFZ.desc = paramString5;
+    paramString1 = localcz.dFZ.dGb;
+    if ((paramString1 != null) && (paramString1.ppH != null) && (paramString1.ppH.size() > 0) && (paramString1.ppH.get(0) != null))
     {
-      ((ajx)paramString1.oeJ.get(0)).aQb(paramString6);
-      ((ajx)paramString1.oeJ.get(0)).aPC(paramString4);
-      ((ajx)paramString1.oeJ.get(0)).aPD(paramString5);
-      ((ajx)paramString1.oeJ.get(0)).aQa(paramString8);
+      ((aml)paramString1.ppH.get(0)).bgE(paramString6);
+      ((aml)paramString1.ppH.get(0)).bgf(paramString4);
+      ((aml)paramString1.ppH.get(0)).bgg(paramString5);
+      ((aml)paramString1.ppH.get(0)).bgD(paramString8);
     }
     if (paramString1 != null)
     {
-      paramString1.aQA(paramString4);
-      paramString1.aQB(paramString5);
+      paramString1.bhd(paramString4);
+      paramString1.bhe(paramString5);
     }
-    localcw.doL.doR = paramInt2;
-    com.tencent.mm.sdk.b.a.IvT.l(localcw);
-    paramInt1 = localcw.doL.doQ;
+    localcz.dFZ.dGf = paramInt2;
+    EventCenter.instance.publish(localcz);
+    paramInt1 = localcz.dFZ.dGe;
     AppMethodBeat.o(95264);
     return paramInt1;
   }
@@ -475,11 +937,11 @@ public class AdLandingPagesProxy
   public int doFavMM(Intent paramIntent, int paramInt)
   {
     AppMethodBeat.i(95266);
-    cw localcw = new cw();
-    ((ad)com.tencent.mm.kernel.g.ab(ad.class)).a(localcw, paramIntent);
-    localcw.doL.doR = paramInt;
-    com.tencent.mm.sdk.b.a.IvT.l(localcw);
-    paramInt = localcw.doL.doQ;
+    cz localcz = new cz();
+    ((com.tencent.mm.plugin.fav.a.ad)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.fav.a.ad.class)).a(localcz, paramIntent);
+    localcz.dFZ.dGf = paramInt;
+    EventCenter.instance.publish(localcz);
+    paramInt = localcz.dFZ.dGe;
     AppMethodBeat.o(95266);
     return paramInt;
   }
@@ -487,9 +949,9 @@ public class AdLandingPagesProxy
   public void doFavOfficialItemScene(String paramString, e parame)
   {
     AppMethodBeat.i(95340);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("AdLandingPagesProxy", "doFavOfficialItemScene with empty itemBuff, interrupted!");
+      Log.e("AdLandingPagesProxy", "doFavOfficialItemScene with empty itemBuff, interrupted!");
       AppMethodBeat.o(95340);
       return;
     }
@@ -503,12 +965,12 @@ public class AdLandingPagesProxy
   public void doFavOfficialItemSceneMM(long paramLong, String paramString)
   {
     AppMethodBeat.i(95341);
-    paramString = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.f(paramString);
-    this.zvZ.put(paramString, Long.valueOf(paramLong));
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(paramString, 0);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(2874, this.ghB);
+    paramString = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.i(paramString);
+    this.DGm.put(paramString, Long.valueOf(paramLong));
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramString, 0);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(2874, this.gNh);
     AppMethodBeat.o(95341);
   }
   
@@ -518,7 +980,7 @@ public class AdLandingPagesProxy
     long l = System.currentTimeMillis();
     this.callbacks.put(Long.valueOf(l), parame);
     REMOTE_CALL("doGetHbCoverStateMM", new Object[] { Long.valueOf(l), paramString });
-    ae.i("AdLandingPagesProxy", "doGetHbCoverState, hbCoverId=".concat(String.valueOf(paramString)));
+    Log.i("AdLandingPagesProxy", "doGetHbCoverState, hbCoverId=".concat(String.valueOf(paramString)));
     AppMethodBeat.o(95282);
   }
   
@@ -526,12 +988,12 @@ public class AdLandingPagesProxy
   public void doGetHbCoverStateMM(long paramLong, String paramString)
   {
     AppMethodBeat.i(95283);
-    paramString = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.b(paramString);
-    this.zvZ.put(paramString, Long.valueOf(paramLong));
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(paramString, 0);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(2944, this.ghB);
+    paramString = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d(paramString);
+    this.DGm.put(paramString, Long.valueOf(paramLong));
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramString, 0);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(2944, this.gNh);
     AppMethodBeat.o(95283);
   }
   
@@ -548,13 +1010,25 @@ public class AdLandingPagesProxy
   public void doGetSmartPhoneSceneMM(long paramLong1, long paramLong2, int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
     AppMethodBeat.i(95277);
-    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.c(paramLong2, paramInt1, paramString1, paramString2, paramInt2);
-    this.zvZ.put(paramString1, Long.valueOf(paramLong1));
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(paramString1, 0);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(2605, this.ghB);
+    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.e(paramLong2, paramInt1, paramString1, paramString2, paramInt2);
+    this.DGm.put(paramString1, Long.valueOf(paramLong1));
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramString1, 0);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(2605, this.gNh);
     AppMethodBeat.o(95277);
+  }
+  
+  @com.tencent.mm.remoteservice.f
+  public void doSearchContactMM(long paramLong, String paramString)
+  {
+    AppMethodBeat.i(202684);
+    Log.i("AdLandingPagesProxy", "doSearchContactMM, userName=".concat(String.valueOf(paramString)));
+    paramString = new com.tencent.mm.plugin.messenger.a.f(paramString, 1);
+    this.DGm.put(paramString, Long.valueOf(paramLong));
+    com.tencent.mm.kernel.g.azz().a(106, this.gNh);
+    com.tencent.mm.kernel.g.azz().a(paramString, 0);
+    AppMethodBeat.o(202684);
   }
   
   public void doSearchDynamicUpdateScene(String paramString, e parame)
@@ -570,21 +1044,21 @@ public class AdLandingPagesProxy
   public void doSearchDynamicUpdateSceneMM(long paramLong, String paramString)
   {
     AppMethodBeat.i(95272);
-    paramString = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g(paramString);
-    this.zvZ.put(paramString, Long.valueOf(paramLong));
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(paramString, 0);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(1337, this.ghB);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(2721, this.ghB);
+    paramString = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.j(paramString);
+    this.DGm.put(paramString, Long.valueOf(paramLong));
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramString, 0);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(1337, this.gNh);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(2721, this.gNh);
     AppMethodBeat.o(95272);
   }
   
   public void doTransimt(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    AppMethodBeat.i(219308);
-    Intent localIntent = new Intent(ak.getContext(), SnsTransparentUI.class);
+    AppMethodBeat.i(202678);
+    Intent localIntent = new Intent(MMApplicationContext.getContext(), SnsTransparentUI.class);
     localIntent.putExtra("adlandingXml", paramString1);
     localIntent.putExtra("shareTitle", paramString2);
     localIntent.putExtra("shareThumbUrl", paramString3);
@@ -594,11 +1068,11 @@ public class AdLandingPagesProxy
     localIntent.putExtra("uxInfo", paramString7);
     localIntent.putExtra("canvasId", paramString8);
     localIntent.putExtra("op", 2);
-    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bc(localIntent);
-    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramString1.ahE(), "com/tencent/mm/plugin/sns/model/AdLandingPagesProxy", "doTransimt", "(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    paramActivity.startActivity((Intent)paramString1.mt(0));
+    paramString1 = new com.tencent.mm.hellhoundlib.b.a().bl(localIntent);
+    com.tencent.mm.hellhoundlib.a.a.a(paramActivity, paramString1.axQ(), "com/tencent/mm/plugin/sns/model/AdLandingPagesProxy", "doTransimt", "(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+    paramActivity.startActivity((Intent)paramString1.pG(0));
     com.tencent.mm.hellhoundlib.a.a.a(paramActivity, "com/tencent/mm/plugin/sns/model/AdLandingPagesProxy", "doTransimt", "(Landroid/app/Activity;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-    AppMethodBeat.o(219308);
+    AppMethodBeat.o(202678);
   }
   
   @com.tencent.mm.remoteservice.f
@@ -617,19 +1091,19 @@ public class AdLandingPagesProxy
   public void doUpdateUxInfoSceneMM(long paramLong, String paramString)
   {
     AppMethodBeat.i(95280);
-    paramString = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.i(paramString);
-    this.zvZ.put(paramString, Long.valueOf(paramLong));
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(paramString, 0);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(2883, this.ghB);
+    paramString = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.l(paramString);
+    this.DGm.put(paramString, Long.valueOf(paramLong));
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramString, 0);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(2883, this.gNh);
     AppMethodBeat.o(95280);
   }
   
   public void downloadLandingPageVideo(String paramString1, String paramString2, String paramString3, h.a parama)
   {
     AppMethodBeat.i(95355);
-    if (bu.V(new String[] { paramString1, paramString2, paramString3 }))
+    if (Util.isNullOrNil(new String[] { paramString1, paramString2, paramString3 }))
     {
       if (parama != null) {
         parama.a(paramString1, -1, null);
@@ -637,39 +1111,39 @@ public class AdLandingPagesProxy
       AppMethodBeat.o(95355);
       return;
     }
-    com.tencent.mm.plugin.report.service.g.yxI.dD(955, 20);
-    SharedPreferences localSharedPreferences = ak.getContext().getSharedPreferences("sns_ad_download_resource_preferences", 0);
+    com.tencent.mm.plugin.report.service.h.CyF.dN(955, 20);
+    SharedPreferences localSharedPreferences = MMApplicationContext.getContext().getSharedPreferences("sns_ad_download_resource_preferences", 0);
     boolean bool = localSharedPreferences.getBoolean(paramString1, false);
-    if (com.tencent.mm.vfs.o.fB(paramString3))
+    if (s.YS(paramString3))
     {
-      ae.i("AdLandingPagesProxy", "is already download %s", new Object[] { Boolean.valueOf(bool) });
+      Log.i("AdLandingPagesProxy", "is already download %s", new Object[] { Boolean.valueOf(bool) });
       if (bool)
       {
-        com.tencent.mm.plugin.report.service.g.yxI.dD(955, 21);
+        com.tencent.mm.plugin.report.service.h.CyF.dN(955, 21);
         parama.a(paramString1, 0, null);
         AppMethodBeat.o(95355);
         return;
       }
-      com.tencent.mm.plugin.report.service.g.yxI.dD(955, 22);
+      com.tencent.mm.plugin.report.service.h.CyF.dN(955, 22);
     }
-    while (this.zwf.containsKey(paramString1))
+    while (this.DGr.containsKey(paramString1))
     {
-      ae.i("%s is already in downloading", paramString2);
+      Log.i("%s is already in downloading", paramString2);
       AppMethodBeat.o(95355);
       return;
       if (bool)
       {
-        ae.i("AdLandingPagesProxy", "last download file was deleted");
-        com.tencent.mm.plugin.report.service.g.yxI.dD(955, 23);
+        Log.i("AdLandingPagesProxy", "last download file was deleted");
+        com.tencent.mm.plugin.report.service.h.CyF.dN(955, 23);
         localSharedPreferences.edit().putBoolean(paramString1, false).commit();
       }
       else
       {
-        com.tencent.mm.plugin.report.service.g.yxI.dD(955, 24);
+        com.tencent.mm.plugin.report.service.h.CyF.dN(955, 24);
       }
     }
     if (parama != null) {
-      this.zwf.put(paramString1, parama);
+      this.DGr.put(paramString1, parama);
     }
     REMOTE_CALL("downloadLandingPageVideoMM", new Object[] { paramString1, paramString2, paramString3 });
     AppMethodBeat.o(95355);
@@ -679,67 +1153,67 @@ public class AdLandingPagesProxy
   public void downloadLandingPageVideoMM(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(95360);
-    ae.i("AdLandingPagesProxy", "add online video task [%s] url[%s] path[%s]", new Object[] { paramString1, paramString2, paramString3 });
-    com.tencent.mm.plugin.report.service.g.yxI.dD(955, 25);
-    ah.dXz().a(paramString1, paramString2, paramString3, new d(paramString1));
+    Log.i("AdLandingPagesProxy", "add online video task [%s] url[%s] path[%s]", new Object[] { paramString1, paramString2, paramString3 });
+    com.tencent.mm.plugin.report.service.h.CyF.dN(955, 25);
+    aj.faJ().a(paramString1, paramString2, paramString3, new d(paramString1));
     AppMethodBeat.o(95360);
   }
   
   public void downloadLandingPagesCDNFile(String paramString1, String paramString2, String paramString3, int paramInt, g paramg)
   {
-    AppMethodBeat.i(219312);
-    if ((bu.isNullOrNil(paramString1)) || (bu.isNullOrNil(paramString2)) || (bu.isNullOrNil(paramString3)))
+    AppMethodBeat.i(202690);
+    if ((Util.isNullOrNil(paramString1)) || (Util.isNullOrNil(paramString2)) || (Util.isNullOrNil(paramString3)))
     {
       if (paramg != null) {
-        paramg.dVv();
+        paramg.eWO();
       }
-      AppMethodBeat.o(219312);
+      AppMethodBeat.o(202690);
       return;
     }
     if (paramg != null) {
-      this.zwe.put(paramString2, paramg);
+      this.DGq.put(paramString2, paramg);
     }
     REMOTE_CALL("downloadLandingPagesCDNFileMM", new Object[] { paramString1, paramString2, paramString3, Integer.valueOf(paramInt) });
-    AppMethodBeat.o(219312);
+    AppMethodBeat.o(202690);
   }
   
   @com.tencent.mm.remoteservice.f
   public void downloadLandingPagesCDNFileMM(String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    AppMethodBeat.i(219313);
+    AppMethodBeat.i(202691);
     if (paramInt == 0)
     {
       downloadLandingPagesImageMMImpl(paramString1, paramString2, paramString3);
-      AppMethodBeat.o(219313);
+      AppMethodBeat.o(202691);
       return;
     }
     if (paramInt == 1) {
       downloadLandingPagesSightMMImpl(paramString1, paramString2, paramString3);
     }
-    AppMethodBeat.o(219313);
+    AppMethodBeat.o(202691);
   }
   
   public void downloadLandingPagesImageMMImpl(final String paramString1, final String paramString2, final String paramString3)
   {
     AppMethodBeat.i(95353);
-    ae.i("AdLandingPagesProxy", "downloadLandingPagesImageMMImpl, mediaId=".concat(String.valueOf(paramString2)));
-    paramString3 = com.tencent.mm.modelsns.h.a(paramString2, 2, paramString3, paramString3, 1, 1, "");
+    Log.i("AdLandingPagesProxy", "downloadLandingPagesImageMMImpl, mediaId=".concat(String.valueOf(paramString2)));
+    paramString3 = com.tencent.mm.modelsns.n.a(paramString2, 2, paramString3, paramString3, 1, 1, "");
     final com.tencent.mm.plugin.sns.data.n localn = new com.tencent.mm.plugin.sns.data.n(paramString3);
-    localn.zui = 3;
-    localn.dyb = paramString3.Id;
-    ar.f(new Runnable()
+    localn.DEs = 3;
+    localn.dPI = paramString3.Id;
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(95218);
-        ah.dXz().a(new AdLandingPagesProxy.c(AdLandingPagesProxy.this, paramString3.Id));
-        c localc = ah.dXz();
-        bzh localbzh = paramString3;
+        AppMethodBeat.i(202671);
+        aj.faJ().a(new AdLandingPagesProxy.c(AdLandingPagesProxy.this, paramString3.Id));
+        c localc = aj.faJ();
+        cnb localcnb = paramString3;
         com.tencent.mm.plugin.sns.data.n localn = localn;
-        bk localbk = bk.fvn();
-        localbk.heF = ((int)(System.currentTimeMillis() / 1000L));
-        localc.a(localbzh, 8, localn, localbk, paramString1, paramString2);
-        AppMethodBeat.o(95218);
+        bp localbp = bp.gCU();
+        localbp.hXs = ((int)(System.currentTimeMillis() / 1000L));
+        localc.a(localcnb, 8, localn, localbp, paramString1, paramString2);
+        AppMethodBeat.o(202671);
       }
     });
     AppMethodBeat.o(95353);
@@ -747,38 +1221,38 @@ public class AdLandingPagesProxy
   
   public void downloadLandingPagesSightMMImpl(final String paramString1, final String paramString2, String paramString3)
   {
-    AppMethodBeat.i(219314);
-    ae.i("AdLandingPagesProxy", "downloadLandingPagesSightMMImpl, mediaId=".concat(String.valueOf(paramString2)));
-    ar.f(new Runnable()
+    AppMethodBeat.i(202692);
+    Log.i("AdLandingPagesProxy", "downloadLandingPagesSightMMImpl, mediaId=".concat(String.valueOf(paramString2)));
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(219302);
-        ah.dXz().a(new AdLandingPagesProxy.c(AdLandingPagesProxy.this, this.zrQ.Id));
-        c localc = ah.dXz();
-        bzh localbzh = this.zrQ;
-        bk localbk = bk.fvn();
-        localbk.heF = ((int)(System.currentTimeMillis() / 1000L));
-        localc.a(localbzh, 4, null, localbk, paramString1, paramString2);
-        AppMethodBeat.o(219302);
+        AppMethodBeat.i(202672);
+        aj.faJ().a(new AdLandingPagesProxy.c(AdLandingPagesProxy.this, this.DyS.Id));
+        c localc = aj.faJ();
+        cnb localcnb = this.DyS;
+        bp localbp = bp.gCU();
+        localbp.hXs = ((int)(System.currentTimeMillis() / 1000L));
+        localc.a(localcnb, 4, null, localbp, paramString1, paramString2);
+        AppMethodBeat.o(202672);
       }
     });
-    AppMethodBeat.o(219314);
+    AppMethodBeat.o(202692);
   }
   
   @com.tencent.mm.remoteservice.e
   public void failed(long paramLong)
   {
     AppMethodBeat.i(95305);
-    Iterator localIterator = ((ArrayList)this.zwc.get(Long.valueOf(paramLong))).iterator();
+    Iterator localIterator = ((ArrayList)this.DGo.get(Long.valueOf(paramLong))).iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
       if (locala != null) {
-        locala.dWK();
+        locala.eZS();
       }
     }
-    this.zwc.remove(Long.valueOf(paramLong));
+    this.DGo.remove(Long.valueOf(paramLong));
     AppMethodBeat.o(95305);
   }
   
@@ -793,9 +1267,9 @@ public class AdLandingPagesProxy
   public void favEditTagMM()
   {
     AppMethodBeat.i(95261);
-    gx localgx = new gx();
-    localgx.dub.type = 35;
-    com.tencent.mm.sdk.b.a.IvT.l(localgx);
+    hb localhb = new hb();
+    localhb.dLm.type = 35;
+    EventCenter.instance.publish(localhb);
     AppMethodBeat.o(95261);
   }
   
@@ -812,13 +1286,13 @@ public class AdLandingPagesProxy
   public void fetchQRCodeInfoMM(final long paramLong, final int paramInt, final String paramString)
   {
     AppMethodBeat.i(95372);
-    com.tencent.e.h.MqF.aO(new Runnable()
+    com.tencent.f.h.RTc.aX(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(219304);
-        new com.tencent.mm.plugin.scanner.d().bL(paramInt, paramString).a(new d.b() {});
-        AppMethodBeat.o(219304);
+        AppMethodBeat.i(202674);
+        new com.tencent.mm.plugin.scanner.d().bZ(paramInt, paramString).a(new d.b() {});
+        AppMethodBeat.o(202674);
       }
     });
     AppMethodBeat.o(95372);
@@ -826,41 +1300,41 @@ public class AdLandingPagesProxy
   
   public void geoLocation(String paramString, e parame)
   {
-    AppMethodBeat.i(219317);
+    AppMethodBeat.i(202695);
     try
     {
-      ae.d("AdLandingPagesProxy", "geoLocation is called!!");
+      Log.d("AdLandingPagesProxy", "geoLocation is called!!");
       long l = System.currentTimeMillis();
       this.callbacks.put(Long.valueOf(l), parame);
       REMOTE_CALL("geoLocationMM", new Object[] { Long.valueOf(l), paramString });
-      AppMethodBeat.o(219317);
+      AppMethodBeat.o(202695);
       return;
     }
     catch (Throwable paramString)
     {
-      ae.e("AdLandingPagesProxy", "geoLocation catch one exception");
-      AppMethodBeat.o(219317);
+      Log.e("AdLandingPagesProxy", "geoLocation catch one exception");
+      AppMethodBeat.o(202695);
     }
   }
   
   @com.tencent.mm.remoteservice.f
   public void geoLocationMM(long paramLong, String paramString)
   {
-    AppMethodBeat.i(219318);
+    AppMethodBeat.i(202696);
     try
     {
-      ae.d("AdLandingPagesProxy", "geoLocationMM is called!!");
+      Log.d("AdLandingPagesProxy", "geoLocationMM is called!!");
       com.tencent.mm.plugin.sns.ad.landingpage.helper.a.b localb = com.tencent.mm.plugin.sns.ad.landingpage.helper.a.c.a(this, "onGeoLocation", paramLong);
       if (localb != null) {
         localb.request(paramString);
       }
-      AppMethodBeat.o(219318);
+      AppMethodBeat.o(202696);
       return;
     }
     catch (Throwable paramString)
     {
-      ae.e("AdLandingPagesProxy", "geoLocationMM catch one exception");
-      AppMethodBeat.o(219318);
+      Log.e("AdLandingPagesProxy", "geoLocationMM catch one exception");
+      AppMethodBeat.o(202696);
     }
   }
   
@@ -876,7 +1350,7 @@ public class AdLandingPagesProxy
   public String getAccSnsPathMM()
   {
     AppMethodBeat.i(95237);
-    String str = ah.getAccSnsPath();
+    String str = aj.getAccSnsPath();
     AppMethodBeat.o(95237);
     return str;
   }
@@ -893,7 +1367,7 @@ public class AdLandingPagesProxy
   public int getAdVoteIndexMM(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(95335);
-    int i = com.tencent.mm.plugin.sns.storage.x.aH(paramString1, paramString2, paramString3);
+    int i = y.aS(paramString1, paramString2, paramString3);
     AppMethodBeat.o(95335);
     return i;
   }
@@ -910,9 +1384,57 @@ public class AdLandingPagesProxy
   public String getAdVoteInfoMM(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(95337);
-    paramString1 = com.tencent.mm.plugin.sns.storage.x.aI(paramString1, paramString2, paramString3);
+    paramString1 = y.aT(paramString1, paramString2, paramString3);
     AppMethodBeat.o(95337);
     return paramString1;
+  }
+  
+  public void getBtnPersonalWxUserName(String paramString1, String paramString2, e parame)
+  {
+    AppMethodBeat.i(202682);
+    long l = System.currentTimeMillis();
+    this.callbacks.put(Long.valueOf(l), parame);
+    REMOTE_CALL("getBtnPersonalWxUserNameMM", new Object[] { Long.valueOf(l), paramString1, paramString2 });
+    AppMethodBeat.o(202682);
+  }
+  
+  @com.tencent.mm.remoteservice.f
+  public void getBtnPersonalWxUserNameMM(final long paramLong, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(202683);
+    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.c(paramString1, paramString2);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramString1, 0);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(4353, new com.tencent.mm.ak.i()
+    {
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, q paramAnonymousq)
+      {
+        AppMethodBeat.i(202664);
+        Log.i("AdLandingPagesProxy", "getBtnPersonalWxUserNameMM, errType=" + paramAnonymousInt1 + ", errCode=" + paramAnonymousInt2 + ", errMsg=" + paramAnonymousString);
+        if ((paramAnonymousInt1 == 0) && (paramAnonymousInt2 == 0))
+        {
+          paramAnonymousString = (byb)((com.tencent.mm.ak.d)paramAnonymousq.getReqResp()).iLL.iLR;
+          if ((paramAnonymousString != null) && (!TextUtils.isEmpty(paramAnonymousString.MdC)))
+          {
+            AdLandingPagesProxy.this.CLIENT_CALL("onGetBtnPersonalWxUserName", new Object[] { Long.valueOf(paramLong), paramAnonymousString.username, paramAnonymousString.MdC });
+            AdLandingPagesProxy.this.doSearchContactMM(paramLong, paramAnonymousString.MdC);
+          }
+        }
+        for (;;)
+        {
+          com.tencent.mm.kernel.g.azz().b(paramAnonymousq.getType(), this);
+          AppMethodBeat.o(202664);
+          return;
+          Log.e("AdLandingPagesProxy", "getBtnPersonalWxUserNameMM, rsp==null");
+          AdLandingPagesProxy.this.CLIENT_CALL("onSearchContact", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), null });
+          continue;
+          Log.e("AdLandingPagesProxy", "getBtnPersonalWxUserNameMM, failed");
+          AdLandingPagesProxy.this.CLIENT_CALL("onSearchContact", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramAnonymousInt1), Integer.valueOf(paramAnonymousInt2), null });
+        }
+      }
+    });
+    AppMethodBeat.o(202683);
   }
   
   public Object getCfg(int paramInt, Object paramObject)
@@ -932,8 +1454,8 @@ public class AdLandingPagesProxy
   public Object getCfgMM(int paramInt, Object paramObject)
   {
     AppMethodBeat.i(95231);
-    com.tencent.mm.kernel.g.ajS();
-    paramObject = com.tencent.mm.kernel.g.ajR().ajA().get(paramInt, paramObject);
+    com.tencent.mm.kernel.g.aAi();
+    paramObject = com.tencent.mm.kernel.g.aAh().azQ().get(paramInt, paramObject);
     AppMethodBeat.o(95231);
     return paramObject;
   }
@@ -950,7 +1472,7 @@ public class AdLandingPagesProxy
   public String getExpIdByKeyMM(String paramString)
   {
     AppMethodBeat.i(95257);
-    paramString = com.tencent.mm.model.c.d.aDJ().getExpIdByKey(paramString);
+    paramString = com.tencent.mm.model.c.d.aXv().getExpIdByKey(paramString);
     AppMethodBeat.o(95257);
     return paramString;
   }
@@ -973,9 +1495,14 @@ public class AdLandingPagesProxy
   public int getExpValueByKeyMM(String paramString, int paramInt)
   {
     AppMethodBeat.i(95255);
-    paramInt = com.tencent.mm.model.c.d.aDJ().gv(paramString, paramInt);
+    paramInt = com.tencent.mm.model.c.d.aXv().gO(paramString, paramInt);
     AppMethodBeat.o(95255);
     return paramInt;
+  }
+  
+  public com.tencent.mm.remoteservice.d getRemoteServiceProxy()
+  {
+    return this.Dxo;
   }
   
   public String getSnsAdCanvasExtXml(String paramString)
@@ -990,10 +1517,10 @@ public class AdLandingPagesProxy
   public String getSnsAdCanvasExtXmlMM(String paramString)
   {
     AppMethodBeat.i(95344);
-    paramString = ah.dXE().aBq(paramString);
+    paramString = aj.faO().aQl(paramString);
     if (paramString != null)
     {
-      paramString = paramString.dVi().zMl;
+      paramString = paramString.getAdInfo().adCanvasExtXml;
       AppMethodBeat.o(95344);
       return paramString;
     }
@@ -1019,10 +1546,10 @@ public class AdLandingPagesProxy
   public int getSnsAdTypeMM(String paramString)
   {
     AppMethodBeat.i(95241);
-    paramString = ah.dXE().aBq(paramString);
+    paramString = aj.faO().aQl(paramString);
     if (paramString != null)
     {
-      int i = paramString.ecA();
+      int i = paramString.getAdType();
       AppMethodBeat.o(95241);
       return i;
     }
@@ -1042,10 +1569,10 @@ public class AdLandingPagesProxy
   public String getSnsAidMM(String paramString)
   {
     AppMethodBeat.i(95239);
-    paramString = ah.dXE().aBq(paramString);
+    paramString = aj.faO().aQl(paramString);
     if (paramString != null)
     {
-      paramString = paramString.ect();
+      paramString = paramString.getAid();
       AppMethodBeat.o(95239);
       return paramString;
     }
@@ -1053,14 +1580,15 @@ public class AdLandingPagesProxy
     return "";
   }
   
-  public p getSnsInfo(String paramString)
+  public SnsInfo getSnsInfo(String paramString)
   {
-    localp = null;
     AppMethodBeat.i(95249);
+    Object localObject;
     try
     {
-      paramString = (Bundle)REMOTE_CALL("getSnsInfoMM", new Object[] { paramString });
-      if (paramString == null)
+      localObject = (Bundle)REMOTE_CALL("getSnsInfoMM", new Object[] { paramString });
+      paramString = (String)localObject;
+      if (localObject == null)
       {
         AppMethodBeat.o(95249);
         return null;
@@ -1068,59 +1596,26 @@ public class AdLandingPagesProxy
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        Object localObject;
-        ae.printErrStackTrace("AdLandingPagesProxy", paramString, "", new Object[0]);
-        paramString = localp;
-      }
+      Log.printErrStackTrace("AdLandingPagesProxy", paramString, "", new Object[0]);
+      paramString = null;
+      localObject = new SnsInfo();
+      ((SnsInfo)localObject).readFromBundle(paramString);
+      AppMethodBeat.o(95249);
     }
-    localp = new p();
-    if (paramString != null)
-    {
-      localObject = (ContentValues)paramString.getParcelable("values");
-      localp.field_snsId = ((ContentValues)localObject).getAsLong("snsId").longValue();
-      localp.field_userName = ((ContentValues)localObject).getAsString("userName");
-      localp.field_localFlag = ((ContentValues)localObject).getAsInteger("localFlag").intValue();
-      localp.field_createTime = ((ContentValues)localObject).getAsInteger("createTime").intValue();
-      localp.field_head = ((ContentValues)localObject).getAsInteger("head").intValue();
-      localp.field_localPrivate = ((ContentValues)localObject).getAsInteger("localPrivate").intValue();
-      localp.field_type = ((ContentValues)localObject).getAsInteger("type").intValue();
-      localp.field_sourceType = ((ContentValues)localObject).getAsInteger("sourceType").intValue();
-      localp.field_likeFlag = ((ContentValues)localObject).getAsInteger("likeFlag").intValue();
-      localp.field_pravited = ((ContentValues)localObject).getAsInteger("pravited").intValue();
-      localp.field_stringSeq = ((ContentValues)localObject).getAsString("stringSeq");
-      localp.field_content = ((ContentValues)localObject).getAsByteArray("content");
-      localp.field_attrBuf = ((ContentValues)localObject).getAsByteArray("attrBuf");
-      localp.field_postBuf = ((ContentValues)localObject).getAsByteArray("postBuf");
-      localp.field_subType = ((ContentValues)localObject).getAsInteger("subType").intValue();
-      if (((ContentValues)localObject).containsKey("rowid")) {
-        localp.systemRowid = ((ContentValues)localObject).getAsLong("rowid").longValue();
-      }
-      localp.AdJ = paramString.getInt("localid");
-      paramString = paramString.getBundle("adValues");
-      if (paramString != null)
-      {
-        localObject = new com.tencent.mm.plugin.sns.storage.e();
-        ((com.tencent.mm.plugin.sns.storage.e)localObject).ap(paramString);
-        localp.AdW = ((com.tencent.mm.plugin.sns.storage.e)localObject);
-      }
-    }
-    AppMethodBeat.o(95249);
-    return localp;
+    return localObject;
   }
   
   @com.tencent.mm.remoteservice.f
   public Bundle getSnsInfoMM(String paramString)
   {
     AppMethodBeat.i(95250);
-    paramString = ah.dXE().aBq(paramString);
+    paramString = aj.faO().aQl(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(95250);
       return null;
     }
-    paramString = paramString.ebW();
+    paramString = paramString.writeToBundle();
     AppMethodBeat.o(95250);
     return paramString;
   }
@@ -1137,14 +1632,14 @@ public class AdLandingPagesProxy
   public String getSnsStatExtBySnsIdMM(long paramLong)
   {
     AppMethodBeat.i(95235);
-    Object localObject = ah.dXH().Ax(paramLong);
+    Object localObject = aj.faR().JE(paramLong);
     if (localObject != null)
     {
-      localObject = com.tencent.mm.plugin.sns.ad.e.i.b(((com.tencent.mm.plugin.sns.storage.e)localObject).ebP());
+      localObject = com.tencent.mm.plugin.sns.ad.g.j.b(((AdSnsInfo)localObject).getTimeLine());
       AppMethodBeat.o(95235);
       return localObject;
     }
-    ae.v("SnsAdExtUtil", "getSnsStatExtBySnsId snsInfo null, snsId %s", new Object[] { Long.valueOf(paramLong) });
+    Log.v("SnsAdExtUtil", "getSnsStatExtBySnsId snsInfo null, snsId %s", new Object[] { Long.valueOf(paramLong) });
     AppMethodBeat.o(95235);
     return "";
   }
@@ -1161,10 +1656,10 @@ public class AdLandingPagesProxy
   public String getSnsTraceidMM(String paramString)
   {
     AppMethodBeat.i(95244);
-    paramString = ah.dXE().aBq(paramString);
+    paramString = aj.faO().aQl(paramString);
     if (paramString != null)
     {
-      paramString = paramString.ecu();
+      paramString = paramString.getTraceid();
       AppMethodBeat.o(95244);
       return paramString;
     }
@@ -1184,10 +1679,10 @@ public class AdLandingPagesProxy
   public String getSnsUxInfoMM(String paramString)
   {
     AppMethodBeat.i(95246);
-    paramString = ah.dXE().aBq(paramString);
+    paramString = aj.faO().aQl(paramString);
     if (paramString != null)
     {
-      paramString = paramString.ecx();
+      paramString = paramString.getUxinfo();
       AppMethodBeat.o(95246);
       return paramString;
     }
@@ -1206,7 +1701,7 @@ public class AdLandingPagesProxy
     }
     catch (Exception localException)
     {
-      ae.e("AdLandingPagesProxy", "getStreamVideoPlayerConfig, exp=" + localException.toString());
+      Log.e("AdLandingPagesProxy", "getStreamVideoPlayerConfig, exp=" + localException.toString());
       AppMethodBeat.o(95347);
     }
     return 1;
@@ -1216,7 +1711,7 @@ public class AdLandingPagesProxy
   public int getStreamVideoPlayerConfigMM()
   {
     AppMethodBeat.i(95348);
-    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.qxf, 0);
+    int i = ((com.tencent.mm.plugin.expt.b.b)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.expt.b.b.class)).a(b.a.rOS, 0);
     AppMethodBeat.o(95348);
     return i;
   }
@@ -1239,16 +1734,38 @@ public class AdLandingPagesProxy
   public int getTaskProgressMM(String paramString)
   {
     AppMethodBeat.i(95315);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.zPr;
-    paramString = com.tencent.mm.plugin.downloader.model.f.cdA().aaZ(paramString);
-    if (paramString.nyl != 0L)
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.DXp;
+    paramString = com.tencent.mm.plugin.downloader.model.f.cBv().alg(paramString);
+    if (paramString.oJj != 0L)
     {
-      int i = (int)(paramString.ptA * 100L / paramString.nyl);
+      int i = (int)(paramString.qJe * 100L / paramString.oJj);
       AppMethodBeat.o(95315);
       return i;
     }
     AppMethodBeat.o(95315);
     return 0;
+  }
+  
+  public void getTwistAdCard(String paramString1, String paramString2, int paramInt, String paramString3, String paramString4, e parame)
+  {
+    AppMethodBeat.i(202707);
+    long l = System.currentTimeMillis();
+    this.callbacks.put(Long.valueOf(l), parame);
+    REMOTE_CALL("getTwistAdCardMM", new Object[] { Long.valueOf(l), paramString1, paramString2, Integer.valueOf(paramInt), paramString3, paramString4 });
+    AppMethodBeat.o(202707);
+  }
+  
+  @com.tencent.mm.remoteservice.f
+  public void getTwistAdCardMM(long paramLong, String paramString1, String paramString2, int paramInt, String paramString3, String paramString4)
+  {
+    AppMethodBeat.i(202708);
+    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.f(paramString1, paramString2, paramInt, paramString3, paramString4);
+    this.DGm.put(paramString1, Long.valueOf(paramLong));
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramString1, 0);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(4729, this.gNh);
+    AppMethodBeat.o(202708);
   }
   
   public String getUin()
@@ -1269,8 +1786,8 @@ public class AdLandingPagesProxy
   public String getUinMM()
   {
     AppMethodBeat.i(95252);
-    com.tencent.mm.kernel.g.ajP();
-    String str = com.tencent.mm.kernel.a.aiF();
+    com.tencent.mm.kernel.g.aAf();
+    String str = com.tencent.mm.kernel.a.ayV();
     AppMethodBeat.o(95252);
     return str;
   }
@@ -1293,18 +1810,18 @@ public class AdLandingPagesProxy
   public boolean installAppMM(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(95319);
-    paramString3 = a.e.zPr;
-    paramString4 = ak.getContext();
-    AdLandingPagesProxy.b localb = new AdLandingPagesProxy.b(this, paramString1, paramString2, false);
+    paramString3 = a.e.DXp;
+    paramString4 = MMApplicationContext.getContext();
+    b localb = new b(paramString1, paramString2, false);
     if ((paramString4 == null) || (TextUtils.isEmpty(paramString1)))
     {
       AppMethodBeat.o(95319);
       return false;
     }
-    paramString1 = com.tencent.mm.plugin.downloader.model.f.cdA().aaZ(paramString1);
+    paramString1 = com.tencent.mm.plugin.downloader.model.f.cBv().alg(paramString1);
     if ((paramString1 != null) && (paramString1.status == 3) && (!TextUtils.isEmpty(paramString1.path)))
     {
-      paramString3.aA(4, paramString1.id);
+      paramString3.aH(4, paramString1.id);
       r.b(paramString4, paramString1.path, null, false);
       paramString3.a(paramString2, localb);
       AppMethodBeat.o(95319);
@@ -1333,7 +1850,7 @@ public class AdLandingPagesProxy
   public boolean isApkExistMM(String paramString)
   {
     AppMethodBeat.i(95293);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.zPr;
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.DXp;
     boolean bool = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.isApkExist(paramString);
     AppMethodBeat.o(95293);
     return bool;
@@ -1357,28 +1874,34 @@ public class AdLandingPagesProxy
   public int isAutoAdDownloadMM()
   {
     AppMethodBeat.i(95262);
-    int i = ah.dXB().b(null, null);
+    int i = aj.faL().b(null, null);
     AppMethodBeat.o(95262);
     return i;
   }
   
   public boolean isBrandAdded(String paramString)
   {
-    AppMethodBeat.i(219323);
-    boolean bool = ((Boolean)REMOTE_CALL("selectBrandAdd", new Object[] { paramString })).booleanValue();
-    AppMethodBeat.o(219323);
-    return bool;
+    AppMethodBeat.i(202701);
+    paramString = REMOTE_CALL("selectBrandAdd", new Object[] { paramString });
+    if ((paramString instanceof Boolean))
+    {
+      boolean bool = ((Boolean)paramString).booleanValue();
+      AppMethodBeat.o(202701);
+      return bool;
+    }
+    AppMethodBeat.o(202701);
+    return false;
   }
   
   public boolean isConnected()
   {
     AppMethodBeat.i(95229);
-    if (this.zwa == null)
+    if (this.Dxo == null)
     {
       AppMethodBeat.o(95229);
       return false;
     }
-    boolean bool = this.zwa.isConnected();
+    boolean bool = this.Dxo.isConnected();
     AppMethodBeat.o(95229);
     return bool;
   }
@@ -1401,8 +1924,8 @@ public class AdLandingPagesProxy
   public boolean isDownloadingMM(String paramString)
   {
     AppMethodBeat.i(95294);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.zPr;
-    paramString = com.tencent.mm.plugin.downloader.model.f.cdA().aaZ(paramString);
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.DXp;
+    paramString = com.tencent.mm.plugin.downloader.model.f.cBv().alg(paramString);
     if ((paramString != null) && (paramString.status == 1))
     {
       AppMethodBeat.o(95294);
@@ -1410,6 +1933,36 @@ public class AdLandingPagesProxy
     }
     AppMethodBeat.o(95294);
     return false;
+  }
+  
+  public boolean isFreeSimCard()
+  {
+    AppMethodBeat.i(202710);
+    Object localObject = REMOTE_CALL("isFreeSimCardMM", new Object[0]);
+    if ((localObject instanceof Boolean))
+    {
+      boolean bool = ((Boolean)localObject).booleanValue();
+      AppMethodBeat.o(202710);
+      return bool;
+    }
+    AppMethodBeat.o(202710);
+    return false;
+  }
+  
+  @com.tencent.mm.remoteservice.f
+  public boolean isFreeSimCardMM()
+  {
+    AppMethodBeat.i(202711);
+    int i = ((com.tencent.mm.plugin.misc.a.a)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.misc.a.a.class)).eiV();
+    switch (i)
+    {
+    }
+    for (boolean bool = false;; bool = true)
+    {
+      Log.i("AdLandingPagesProxy", "isFreeSimCard, simType=" + i + ", isFree=" + bool);
+      AppMethodBeat.o(202711);
+      return bool;
+    }
   }
   
   public boolean isPaused(String paramString)
@@ -1430,8 +1983,8 @@ public class AdLandingPagesProxy
   public boolean isPausedMM(String paramString)
   {
     AppMethodBeat.i(95298);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.zPr;
-    paramString = com.tencent.mm.plugin.downloader.model.f.cdA().aaZ(paramString);
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.DXp;
+    paramString = com.tencent.mm.plugin.downloader.model.f.cBv().alg(paramString);
     if ((paramString != null) && (paramString.status == 2))
     {
       AppMethodBeat.o(95298);
@@ -1459,8 +2012,8 @@ public class AdLandingPagesProxy
   public boolean isPkgInstalledMM(String paramString)
   {
     AppMethodBeat.i(95296);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.zPr;
-    boolean bool = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.bi(ak.getContext(), paramString);
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.DXp;
+    boolean bool = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.bz(MMApplicationContext.getContext(), paramString);
     AppMethodBeat.o(95296);
     return bool;
   }
@@ -1483,13 +2036,13 @@ public class AdLandingPagesProxy
   public boolean isRecExpAdMM(String paramString)
   {
     AppMethodBeat.i(95248);
-    paramString = ah.dXE().aBq(paramString);
+    paramString = aj.faO().aQl(paramString);
     if (paramString == null)
     {
       AppMethodBeat.o(95248);
       return false;
     }
-    boolean bool = paramString.dZL();
+    boolean bool = paramString.isRecExpAd();
     AppMethodBeat.o(95248);
     return bool;
   }
@@ -1512,40 +2065,40 @@ public class AdLandingPagesProxy
   public boolean isUseSnsDownloadImageMM()
   {
     AppMethodBeat.i(95370);
-    f localf = zwb;
+    f localf = DGn;
     int i;
-    if (bu.HQ() - localf.lastUpdateTime > 3600L)
+    if (Util.currentTicks() - localf.lastUpdateTime > 3600L)
     {
       i = 1;
       if (i != 0) {
-        localf.zwl = false;
+        localf.DGx = false;
       }
     }
     for (;;)
     {
       try
       {
-        if (com.tencent.mm.kernel.g.ajM())
+        if (com.tencent.mm.kernel.g.aAc())
         {
-          com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aDI().xi("100348");
+          com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aXu().Fu("100348");
           if (localc.isValid())
           {
-            if (bu.getInt((String)localc.fsy().get("downloadMode"), 0) != 1) {
+            if (Util.getInt((String)localc.gzz().get("downloadMode"), 0) != 1) {
               continue;
             }
             bool = true;
-            localf.zwl = bool;
+            localf.DGx = bool;
           }
         }
       }
       catch (Exception localException)
       {
         boolean bool;
-        ae.printErrStackTrace("AdLandingPagesProxy", localException, "get abtest failed!", new Object[0]);
+        Log.printErrStackTrace("AdLandingPagesProxy", localException, "get abtest failed!", new Object[0]);
         continue;
       }
-      localf.lastUpdateTime = bu.HQ();
-      bool = zwb.zwl;
+      localf.lastUpdateTime = Util.currentTicks();
+      bool = DGn.DGx;
       AppMethodBeat.o(95370);
       return bool;
       i = 0;
@@ -1572,8 +2125,8 @@ public class AdLandingPagesProxy
   public boolean isVideoDataAvailableMM(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(95364);
-    boolean bool = com.tencent.mm.modelvideo.o.aNi().isVideoDataAvailable(paramString, paramInt1, paramInt2);
-    ae.i("AdLandingPagesProxy", "is video data avaiable %s %d %d %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
+    boolean bool = o.bhk().isVideoDataAvailable(paramString, paramInt1, paramInt2);
+    Log.i("AdLandingPagesProxy", "is video data avaiable %s %d %d %s", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Boolean.valueOf(bool) });
     AppMethodBeat.o(95364);
     return bool;
   }
@@ -1601,40 +2154,51 @@ public class AdLandingPagesProxy
   public void onAdLandingPageClickMM(String paramString1, String paramString2)
   {
     AppMethodBeat.i(95286);
-    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.d(paramString1, paramString2);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(paramString1, 0);
-    com.tencent.mm.kernel.g.ajS();
-    com.tencent.mm.kernel.g.ajQ().gDv.a(2538, this.ghB);
+    paramString1 = new com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.AdLandingPageComponent.a.g(paramString1, paramString2);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(paramString1, 0);
+    com.tencent.mm.kernel.g.aAi();
+    com.tencent.mm.kernel.g.aAg().hqi.a(2538, this.gNh);
     AppMethodBeat.o(95286);
+  }
+  
+  @com.tencent.mm.remoteservice.e
+  public void onAdNativeAntiAbuse(long paramLong, int paramInt1, int paramInt2, Object paramObject)
+  {
+    AppMethodBeat.i(202689);
+    e locale = (e)this.callbacks.remove(Long.valueOf(paramLong));
+    if (locale != null) {
+      locale.h(paramInt1, paramInt2, paramObject);
+    }
+    AppMethodBeat.o(202689);
   }
   
   @com.tencent.mm.remoteservice.e
   public void onAdUpdateQrUrlEnd(long paramLong, int paramInt1, int paramInt2, Object paramObject)
   {
-    AppMethodBeat.i(219311);
+    AppMethodBeat.i(202681);
     e locale = (e)this.callbacks.remove(Long.valueOf(paramLong));
     if (locale != null) {
       locale.h(paramInt1, paramInt2, paramObject);
     }
-    AppMethodBeat.o(219311);
+    AppMethodBeat.o(202681);
   }
   
   @com.tencent.mm.remoteservice.e
   public void onAddBrandSceneEnd(long paramLong, int paramInt1, int paramInt2, Object paramObject)
   {
-    AppMethodBeat.i(219322);
+    AppMethodBeat.i(202700);
     e locale = (e)this.callbacks.remove(Long.valueOf(paramLong));
     if (locale != null) {
       locale.h(paramInt1, paramInt2, paramObject);
     }
-    AppMethodBeat.o(219322);
+    AppMethodBeat.o(202700);
   }
   
   public void onCallback(String paramString, Bundle paramBundle, boolean paramBoolean)
   {
     AppMethodBeat.i(95291);
-    ae.d("AdLandingPagesProxy", "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
+    Log.d("AdLandingPagesProxy", "class:%s, method:%s, clientCall:%B", new Object[] { getClass().getName(), paramString, Boolean.valueOf(paramBoolean) });
     Object localObject2 = null;
     for (;;)
     {
@@ -1656,7 +2220,7 @@ public class AdLandingPagesProxy
       }
       catch (Exception paramString)
       {
-        ae.e("AdLandingPagesProxy", "exception:%s", new Object[] { bu.o(paramString) });
+        Log.e("AdLandingPagesProxy", "exception:%s", new Object[] { Util.stackTraceToString(paramString) });
         AppMethodBeat.o(95291);
         return;
       }
@@ -1697,9 +2261,9 @@ public class AdLandingPagesProxy
   public void onCdnVideoDataAvailable(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(95366);
-    ae.i("AdLandingPagesProxy", "cdn video data available %s %d %d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if (this.zwf.containsKey(paramString)) {
-      ((h.a)this.zwf.get(paramString)).onDataAvailable(paramString, paramLong1, paramLong2);
+    Log.i("AdLandingPagesProxy", "cdn video data available %s %d %d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    if (this.DGr.containsKey(paramString)) {
+      ((h.a)this.DGr.get(paramString)).onDataAvailable(paramString, paramLong1, paramLong2);
     }
     AppMethodBeat.o(95366);
   }
@@ -1708,12 +2272,12 @@ public class AdLandingPagesProxy
   public void onCdnVideoFinish(String paramString, int paramInt)
   {
     AppMethodBeat.i(95368);
-    ae.i("AdLandingPagesProxy", "cdn video finish %s, %d", new Object[] { paramString, Integer.valueOf(paramInt) });
+    Log.i("AdLandingPagesProxy", "cdn video finish %s, %d", new Object[] { paramString, Integer.valueOf(paramInt) });
     if (paramInt == 0) {
-      ak.getContext().getSharedPreferences("sns_ad_download_resource_preferences", 0).edit().putBoolean(paramString, true).commit();
+      MMApplicationContext.getContext().getSharedPreferences("sns_ad_download_resource_preferences", 0).edit().putBoolean(paramString, true).commit();
     }
-    if (this.zwf.containsKey(paramString)) {
-      ((h.a)this.zwf.remove(paramString)).a(paramString, paramInt, null);
+    if (this.DGr.containsKey(paramString)) {
+      ((h.a)this.DGr.remove(paramString)).a(paramString, paramInt, null);
     }
     AppMethodBeat.o(95368);
   }
@@ -1721,21 +2285,21 @@ public class AdLandingPagesProxy
   @com.tencent.mm.remoteservice.e
   public void onCdnVideoMoovReady(String paramString1, long paramLong1, long paramLong2, String paramString2)
   {
-    AppMethodBeat.i(219316);
-    ae.i("AdLandingPagesProxy", "cdn video moov ready %s %d %d", new Object[] { paramString1, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if (this.zwf.containsKey(paramString1)) {
-      ((h.a)this.zwf.get(paramString1)).a(paramString1, paramLong1, paramLong2, paramString2);
+    AppMethodBeat.i(202694);
+    Log.i("AdLandingPagesProxy", "cdn video moov ready %s %d %d", new Object[] { paramString1, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    if (this.DGr.containsKey(paramString1)) {
+      ((h.a)this.DGr.get(paramString1)).a(paramString1, paramLong1, paramLong2, paramString2);
     }
-    AppMethodBeat.o(219316);
+    AppMethodBeat.o(202694);
   }
   
   @com.tencent.mm.remoteservice.e
   public void onCdnVideoProgress(String paramString, long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(95367);
-    ae.i("AdLandingPagesProxy", "cdn video progress %s %d %d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-    if (this.zwf.containsKey(paramString)) {
-      ((h.a)this.zwf.get(paramString)).i(paramString, paramLong1, paramLong2);
+    Log.i("AdLandingPagesProxy", "cdn video progress %s %d %d", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+    if (this.DGr.containsKey(paramString)) {
+      ((h.a)this.DGr.get(paramString)).i(paramString, paramLong1, paramLong2);
     }
     AppMethodBeat.o(95367);
   }
@@ -1745,8 +2309,8 @@ public class AdLandingPagesProxy
   {
     AppMethodBeat.i(95270);
     e locale = (e)this.callbacks.remove(Long.valueOf(paramLong));
-    if ((locale != null) && (!bu.isNullOrNil(paramString))) {
-      locale.be(paramString);
+    if ((locale != null) && (!Util.isNullOrNil(paramString))) {
+      locale.bn(paramString);
     }
     AppMethodBeat.o(95270);
   }
@@ -1757,7 +2321,7 @@ public class AdLandingPagesProxy
     AppMethodBeat.i(95342);
     e locale = (e)this.callbacks.remove(Long.valueOf(paramLong));
     if ((paramInt1 != 0) || (paramInt2 != 0)) {
-      ae.e("AdLandingPagesProxy", "FavOfficialItem fail, errrType[%d], errCode[%d], item_buff[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
+      Log.e("AdLandingPagesProxy", "FavOfficialItem fail, errrType[%d], errCode[%d], item_buff[%s]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramString });
     }
     for (;;)
     {
@@ -1766,7 +2330,7 @@ public class AdLandingPagesProxy
       }
       AppMethodBeat.o(95342);
       return;
-      ae.i("AdLandingPagesProxy", "FavOfficialItem succeed, item_buff[%s]", new Object[] { paramString });
+      Log.i("AdLandingPagesProxy", "FavOfficialItem succeed, item_buff[%s]", new Object[] { paramString });
     }
   }
   
@@ -1784,22 +2348,45 @@ public class AdLandingPagesProxy
   @com.tencent.mm.remoteservice.e
   public void onGeoLocation(long paramLong, Object paramObject)
   {
-    AppMethodBeat.i(219319);
+    AppMethodBeat.i(202697);
     try
     {
-      ae.d("AdLandingPagesProxy", "onGeoLocation is called!!");
+      Log.d("AdLandingPagesProxy", "onGeoLocation is called!!");
       e locale = (e)this.callbacks.remove(Long.valueOf(paramLong));
       if (locale != null) {
-        locale.be(paramObject);
+        locale.bn(paramObject);
       }
-      AppMethodBeat.o(219319);
+      AppMethodBeat.o(202697);
       return;
     }
     catch (Throwable paramObject)
     {
-      ae.e("AdLandingPagesProxy", "onGeoLocation catch one exception");
-      AppMethodBeat.o(219319);
+      Log.e("AdLandingPagesProxy", "onGeoLocation catch one exception");
+      AppMethodBeat.o(202697);
     }
+  }
+  
+  @com.tencent.mm.remoteservice.e
+  public void onGetBtnPersonalWxUserName(long paramLong, String paramString1, String paramString2)
+  {
+    AppMethodBeat.i(202685);
+    e locale = (e)this.callbacks.get(Long.valueOf(paramLong));
+    if (locale != null) {
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        localJSONObject.put("username", paramString1);
+        localJSONObject.put("aliasname", paramString2);
+        locale.bn(localJSONObject.toString());
+        AppMethodBeat.o(202685);
+        return;
+      }
+      catch (Exception paramString1)
+      {
+        Log.e("AdLandingPagesProxy", "onGetBtnPersonalWxUserName, exp=" + paramString1.toString());
+      }
+    }
+    AppMethodBeat.o(202685);
   }
   
   @com.tencent.mm.remoteservice.e
@@ -1828,48 +2415,70 @@ public class AdLandingPagesProxy
   public void onImgDownloadCallback(String paramString, boolean paramBoolean)
   {
     AppMethodBeat.i(95354);
-    ae.i("AdLandingPagesProxy", "onImgDownloadCallback, id=" + paramString + ", isOk=" + paramBoolean);
-    if (bu.isNullOrNil(paramString))
+    Log.i("AdLandingPagesProxy", "onImgDownloadCallback, id=" + paramString + ", isOk=" + paramBoolean);
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(95354);
       return;
     }
-    paramString = (g)this.zwe.remove(paramString);
+    paramString = (g)this.DGq.remove(paramString);
     if (paramString != null)
     {
       if (paramBoolean)
       {
-        paramString.dWM();
+        paramString.eZU();
         AppMethodBeat.o(95354);
         return;
       }
-      paramString.dVv();
+      paramString.eWO();
     }
     AppMethodBeat.o(95354);
   }
   
   @com.tencent.mm.remoteservice.e
+  public void onRspCallbackCommon(long paramLong, int paramInt1, int paramInt2, Object paramObject)
+  {
+    AppMethodBeat.i(202709);
+    e locale = (e)this.callbacks.remove(Long.valueOf(paramLong));
+    if (locale != null) {
+      locale.h(paramInt1, paramInt2, paramObject);
+    }
+    AppMethodBeat.o(202709);
+  }
+  
+  @com.tencent.mm.remoteservice.e
+  public void onSearchContact(long paramLong, int paramInt1, int paramInt2, Object paramObject)
+  {
+    AppMethodBeat.i(202686);
+    e locale = (e)this.callbacks.remove(Long.valueOf(paramLong));
+    if (locale != null) {
+      locale.h(paramInt1, paramInt2, paramObject);
+    }
+    AppMethodBeat.o(202686);
+  }
+  
+  @com.tencent.mm.remoteservice.e
   public void onSightDownloadCallback(String paramString, boolean paramBoolean)
   {
-    AppMethodBeat.i(219315);
-    ae.i("AdLandingPagesProxy", "onSightDownloadCallback, id=" + paramString + ", isOk=" + paramBoolean);
-    if (bu.isNullOrNil(paramString))
+    AppMethodBeat.i(202693);
+    Log.i("AdLandingPagesProxy", "onSightDownloadCallback, id=" + paramString + ", isOk=" + paramBoolean);
+    if (Util.isNullOrNil(paramString))
     {
-      AppMethodBeat.o(219315);
+      AppMethodBeat.o(202693);
       return;
     }
-    paramString = (g)this.zwe.remove(paramString);
+    paramString = (g)this.DGq.remove(paramString);
     if (paramString != null)
     {
       if (paramBoolean)
       {
-        paramString.dWM();
-        AppMethodBeat.o(219315);
+        paramString.eZU();
+        AppMethodBeat.o(202693);
         return;
       }
-      paramString.dVv();
+      paramString.eWO();
     }
-    AppMethodBeat.o(219315);
+    AppMethodBeat.o(202693);
   }
   
   @com.tencent.mm.remoteservice.e
@@ -1901,9 +2510,9 @@ public class AdLandingPagesProxy
   public boolean pauseTaskMM(String paramString)
   {
     AppMethodBeat.i(95313);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.zPr;
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.DXp;
     long l = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.queryIdByAppid(paramString);
-    boolean bool = com.tencent.mm.plugin.downloader.model.f.cdA().uk(l);
+    boolean bool = com.tencent.mm.plugin.downloader.model.f.cBv().Cp(l);
     AppMethodBeat.o(95313);
     return bool;
   }
@@ -1912,12 +2521,12 @@ public class AdLandingPagesProxy
   public void paused(long paramLong)
   {
     AppMethodBeat.i(95302);
-    Iterator localIterator = ((ArrayList)this.zwc.get(Long.valueOf(paramLong))).iterator();
+    Iterator localIterator = ((ArrayList)this.DGo.get(Long.valueOf(paramLong))).iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
       if (locala != null) {
-        locala.dWH();
+        locala.eZP();
       }
     }
     AppMethodBeat.o(95302);
@@ -1936,9 +2545,9 @@ public class AdLandingPagesProxy
   public void playTimelineBackAnimationMM(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(95290);
-    wu localwu = new wu();
-    localwu.dMo.gW = paramLong2;
-    com.tencent.mm.sdk.b.a.IvT.l(localwu);
+    xv localxv = new xv();
+    localxv.eeg.gY = paramLong2;
+    EventCenter.instance.publish(localxv);
     AppMethodBeat.o(95290);
   }
   
@@ -1955,25 +2564,25 @@ public class AdLandingPagesProxy
   public void playTimelineClickAnimationMM(long paramLong1, long paramLong2)
   {
     AppMethodBeat.i(95288);
-    wv localwv = new wv();
-    localwv.dMp.gW = paramLong2;
-    com.tencent.mm.sdk.b.a.IvT.l(localwv);
+    xw localxw = new xw();
+    localxw.eeh.gY = paramLong2;
+    EventCenter.instance.publish(localxw);
     AppMethodBeat.o(95288);
   }
   
   public void prefetchH5Url(String paramString, String[] paramArrayOfString)
   {
-    AppMethodBeat.i(219327);
+    AppMethodBeat.i(202705);
     try
     {
       REMOTE_CALL("prefetchH5UrlMM", new Object[] { paramString, paramArrayOfString });
-      AppMethodBeat.o(219327);
+      AppMethodBeat.o(202705);
       return;
     }
     catch (Throwable paramString)
     {
-      ae.e("AdLandingPagesProxy", "prefetchH5Url remote call has an exception!");
-      AppMethodBeat.o(219327);
+      Log.e("AdLandingPagesProxy", "prefetchH5Url remote call has an exception!");
+      AppMethodBeat.o(202705);
     }
   }
   
@@ -1982,50 +2591,50 @@ public class AdLandingPagesProxy
   public void prefetchH5UrlMM(String paramString, String[] paramArrayOfString)
   {
     // Byte code:
-    //   0: ldc_w 1684
-    //   3: invokestatic 67	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
+    //   0: ldc_w 1646
+    //   3: invokestatic 74	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   6: aload_1
-    //   7: invokestatic 1319	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   7: invokestatic 1247	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   10: ifne +79 -> 89
     //   13: aload_2
-    //   14: invokestatic 1690	com/tencent/mm/plugin/sns/ad/f/c:w	([Ljava/lang/Object;)Z
+    //   14: invokestatic 1652	com/tencent/mm/plugin/sns/ad/i/c:w	([Ljava/lang/Object;)Z
     //   17: ifne +72 -> 89
-    //   20: invokestatic 1696	com/tencent/mm/plugin/sns/ad/b/a:dUG	()Lcom/tencent/mm/plugin/sns/ad/b/a;
+    //   20: invokestatic 1658	com/tencent/mm/plugin/sns/ad/d/a:eWI	()Lcom/tencent/mm/plugin/sns/ad/d/a;
     //   23: astore_3
     //   24: aload_3
-    //   25: getfield 1700	com/tencent/mm/plugin/sns/ad/b/a:zng	Lcom/tencent/mm/plugin/sns/ad/b/a/c;
+    //   25: getfield 1662	com/tencent/mm/plugin/sns/ad/d/a:Dsw	Lcom/tencent/mm/plugin/sns/ad/d/a/c;
     //   28: astore_3
     //   29: aload_1
     //   30: ifnull +66 -> 96
     //   33: aload_2
-    //   34: invokestatic 1690	com/tencent/mm/plugin/sns/ad/f/c:w	([Ljava/lang/Object;)Z
+    //   34: invokestatic 1652	com/tencent/mm/plugin/sns/ad/i/c:w	([Ljava/lang/Object;)Z
     //   37: ifeq +18 -> 55
     //   40: goto +56 -> 96
     //   43: aload_3
     //   44: aload_1
-    //   45: invokevirtual 1705	com/tencent/mm/plugin/sns/ad/b/a/c:b	(Lcom/tencent/mm/plugin/sns/ad/b/a/c$b;)V
-    //   48: ldc_w 1684
-    //   51: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   45: invokevirtual 1667	com/tencent/mm/plugin/sns/ad/d/a/c:c	(Lcom/tencent/mm/plugin/sns/ad/d/a/c$b;)V
+    //   48: ldc_w 1646
+    //   51: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   54: return
     //   55: aload_3
-    //   56: new 1707	com/tencent/mm/plugin/sns/ad/b/a/c$b
+    //   56: new 1669	com/tencent/mm/plugin/sns/ad/d/a/c$b
     //   59: dup
     //   60: aload_1
     //   61: aload_2
-    //   62: invokespecial 1709	com/tencent/mm/plugin/sns/ad/b/a/c$b:<init>	(Ljava/lang/String;[Ljava/lang/String;)V
-    //   65: invokevirtual 1712	com/tencent/mm/plugin/sns/ad/b/a/c:a	(Lcom/tencent/mm/plugin/sns/ad/b/a/c$b;)Lcom/tencent/mm/plugin/sns/ad/b/a/c$b;
+    //   62: invokespecial 1671	com/tencent/mm/plugin/sns/ad/d/a/c$b:<init>	(Ljava/lang/String;[Ljava/lang/String;)V
+    //   65: invokevirtual 1674	com/tencent/mm/plugin/sns/ad/d/a/c:b	(Lcom/tencent/mm/plugin/sns/ad/d/a/c$b;)Lcom/tencent/mm/plugin/sns/ad/d/a/c$b;
     //   68: astore_1
     //   69: goto -26 -> 43
     //   72: astore_1
-    //   73: ldc_w 1684
-    //   76: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   73: ldc_w 1646
+    //   76: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   79: return
     //   80: astore_1
-    //   81: ldc 166
-    //   83: ldc_w 1714
-    //   86: invokestatic 644	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   89: ldc_w 1684
-    //   92: invokestatic 75	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
+    //   81: ldc 138
+    //   83: ldc_w 1676
+    //   86: invokestatic 662	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   89: ldc_w 1646
+    //   92: invokestatic 82	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   95: return
     //   96: aconst_null
     //   97: astore_1
@@ -2050,13 +2659,13 @@ public class AdLandingPagesProxy
   public void progress(long paramLong, int paramInt)
   {
     AppMethodBeat.i(95301);
-    ae.v("AdLandingPagesProxy", "progress client id %d , progress %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-    Iterator localIterator = ((ArrayList)this.zwc.get(Long.valueOf(paramLong))).iterator();
+    Log.v("AdLandingPagesProxy", "progress client id %d , progress %d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+    Iterator localIterator = ((ArrayList)this.DGo.get(Long.valueOf(paramLong))).iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
       if (locala != null) {
-        locala.Qu(paramInt);
+        locala.Yr(paramInt);
       }
     }
     AppMethodBeat.o(95301);
@@ -2080,7 +2689,7 @@ public class AdLandingPagesProxy
   public long queryIdByAppidMM(String paramString)
   {
     AppMethodBeat.i(95311);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.zPr;
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.DXp;
     long l = com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a.queryIdByAppid(paramString);
     AppMethodBeat.o(95311);
     return l;
@@ -2089,8 +2698,8 @@ public class AdLandingPagesProxy
   public long[] queryVideoMoov(String paramString1, String paramString2, String paramString3)
   {
     AppMethodBeat.i(95358);
-    ae.i("AdLandingPagesProxy", "mediaId %s, path %s, url %s", new Object[] { paramString1, paramString2, paramString3 });
-    if (bu.V(new String[] { paramString1, paramString2, paramString3 }))
+    Log.i("AdLandingPagesProxy", "mediaId %s, path %s, url %s", new Object[] { paramString1, paramString2, paramString3 });
+    if (Util.isNullOrNil(new String[] { paramString1, paramString2, paramString3 }))
     {
       AppMethodBeat.o(95358);
       return null;
@@ -2130,14 +2739,14 @@ public class AdLandingPagesProxy
   public void reportDownloadInfoMM(int paramInt, String paramString)
   {
     AppMethodBeat.i(95321);
-    a.e.zPr.reportDownloadInfo(paramInt, paramString);
+    a.e.DXp.reportDownloadInfo(paramInt, paramString);
     AppMethodBeat.o(95321);
   }
   
   public void requestVideoData(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(95361);
-    com.tencent.mm.plugin.report.service.g.yxI.dD(955, 32);
+    com.tencent.mm.plugin.report.service.h.CyF.dN(955, 32);
     REMOTE_CALL("requestVideoDataMM", new Object[] { paramString, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
     AppMethodBeat.o(95361);
   }
@@ -2146,8 +2755,8 @@ public class AdLandingPagesProxy
   public void requestVideoDataMM(String paramString, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(95362);
-    com.tencent.mm.plugin.report.service.g.yxI.dD(955, 33);
-    com.tencent.mm.modelvideo.o.aNi();
+    com.tencent.mm.plugin.report.service.h.CyF.dN(955, 33);
+    o.bhk();
     com.tencent.mm.an.e.r(paramString, paramInt1, paramInt2);
     AppMethodBeat.o(95362);
   }
@@ -2162,7 +2771,7 @@ public class AdLandingPagesProxy
       if (bool)
       {
         l = queryIdByAppid(paramString1);
-        paramString2 = (ArrayList)this.zwc.get(Long.valueOf(l));
+        paramString2 = (ArrayList)this.DGo.get(Long.valueOf(l));
         if (paramString2 == null) {
           break label128;
         }
@@ -2176,7 +2785,7 @@ public class AdLandingPagesProxy
     }
     for (;;)
     {
-      this.zwc.put(Long.valueOf(l), paramString1);
+      this.DGo.put(Long.valueOf(l), paramString1);
       AppMethodBeat.o(176247);
       return bool;
       bool = ((Boolean)paramString2).booleanValue();
@@ -2191,18 +2800,18 @@ public class AdLandingPagesProxy
   public boolean resumeTaskMM(String paramString1, String paramString2, String paramString3, String paramString4)
   {
     AppMethodBeat.i(176246);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.zPr;
-    a.b localb = this.zwd;
-    com.tencent.mm.plugin.downloader.model.f.cdA();
-    com.tencent.mm.plugin.downloader.model.c.a(locala.zPo);
-    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.f.cdA().aaZ(paramString1);
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.DXp;
+    a.b localb = this.DGp;
+    com.tencent.mm.plugin.downloader.model.f.cBv();
+    com.tencent.mm.plugin.downloader.model.c.a(locala.DXm);
+    FileDownloadTaskInfo localFileDownloadTaskInfo = com.tencent.mm.plugin.downloader.model.f.cBv().alg(paramString1);
     if (localFileDownloadTaskInfo != null)
     {
       if (localb != null) {
-        locala.zwd = localb;
+        locala.DGp = localb;
       }
-      locala.zPn.put(paramString1, new a.d(paramString2, paramString3, paramString4));
-      boolean bool = com.tencent.mm.plugin.downloader.model.f.cdA().ul(localFileDownloadTaskInfo.id);
+      locala.DXl.put(paramString1, new a.d(paramString2, paramString3, paramString4));
+      boolean bool = com.tencent.mm.plugin.downloader.model.f.cBv().Cq(localFileDownloadTaskInfo.id);
       AppMethodBeat.o(176246);
       return bool;
     }
@@ -2214,12 +2823,12 @@ public class AdLandingPagesProxy
   public void resumed(long paramLong)
   {
     AppMethodBeat.i(95306);
-    Iterator localIterator = ((ArrayList)this.zwc.get(Long.valueOf(paramLong))).iterator();
+    Iterator localIterator = ((ArrayList)this.DGo.get(Long.valueOf(paramLong))).iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
       if (locala != null) {
-        locala.dWL();
+        locala.eZT();
       }
     }
     AppMethodBeat.o(95306);
@@ -2236,27 +2845,27 @@ public class AdLandingPagesProxy
   public void saveAdVoteInfoMM(String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4)
   {
     AppMethodBeat.i(95339);
-    com.tencent.mm.plugin.sns.storage.x.b(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramString4);
+    y.b(paramString1, paramString2, paramString3, paramInt1, paramInt2, paramString4);
     AppMethodBeat.o(95339);
   }
   
   @com.tencent.mm.remoteservice.f
   public boolean selectBrandAdd(String paramString)
   {
-    AppMethodBeat.i(219324);
-    bq localbq = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF();
-    if ((localbq == null) || (bu.isNullOrNil(paramString)))
+    AppMethodBeat.i(202702);
+    bv localbv = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN();
+    if ((localbv == null) || (Util.isNullOrNil(paramString)))
     {
-      AppMethodBeat.o(219324);
+      AppMethodBeat.o(202702);
       return false;
     }
-    paramString = localbq.BH(paramString);
-    if ((paramString != null) && (com.tencent.mm.contact.c.lO(paramString.field_type)))
+    paramString = localbv.Kn(paramString);
+    if ((paramString != null) && (com.tencent.mm.contact.c.oR(paramString.field_type)))
     {
-      AppMethodBeat.o(219324);
+      AppMethodBeat.o(202702);
       return true;
     }
-    AppMethodBeat.o(219324);
+    AppMethodBeat.o(202702);
     return false;
   }
   
@@ -2264,7 +2873,7 @@ public class AdLandingPagesProxy
   public void start(long paramLong)
   {
     AppMethodBeat.i(95300);
-    Iterator localIterator = ((ArrayList)this.zwc.get(Long.valueOf(paramLong))).iterator();
+    Iterator localIterator = ((ArrayList)this.DGo.get(Long.valueOf(paramLong))).iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
@@ -2278,13 +2887,13 @@ public class AdLandingPagesProxy
   public long startDownload(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean1, a parama, String paramString7, String paramString8, String paramString9, boolean paramBoolean2)
   {
     AppMethodBeat.i(176245);
-    ae.i("AdLandingPagesProxy", "startDownload, appId=" + paramString1 + ", pkg=" + paramString3 + ", aid=" + paramString7 + ", fileName=" + paramString6 + ", isGameApp=" + paramBoolean2 + ", url=" + paramString5 + ", uxinfo=" + paramString9);
+    Log.i("AdLandingPagesProxy", "startDownload, appId=" + paramString1 + ", pkg=" + paramString3 + ", aid=" + paramString7 + ", fileName=" + paramString6 + ", isGameApp=" + paramBoolean2 + ", url=" + paramString5 + ", uxinfo=" + paramString9);
     paramString1 = REMOTE_CALL("startDownloadMM", new Object[] { paramString1, paramString2, paramString3, paramString4, paramString5, paramString6, Boolean.valueOf(paramBoolean1), paramString7, paramString8, paramString9, Boolean.valueOf(paramBoolean2) });
     long l;
     if (paramString1 == null)
     {
       l = -1L;
-      paramString2 = (ArrayList)this.zwc.get(Long.valueOf(l));
+      paramString2 = (ArrayList)this.DGo.get(Long.valueOf(l));
       if (paramString2 == null) {
         break label253;
       }
@@ -2297,7 +2906,7 @@ public class AdLandingPagesProxy
     }
     for (;;)
     {
-      this.zwc.put(Long.valueOf(l), paramString1);
+      this.DGo.put(Long.valueOf(l), paramString1);
       AppMethodBeat.o(176245);
       return l;
       l = ((Long)paramString1).longValue();
@@ -2312,45 +2921,45 @@ public class AdLandingPagesProxy
   public long startDownloadMM(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, boolean paramBoolean1, String paramString7, String paramString8, String paramString9, boolean paramBoolean2)
   {
     AppMethodBeat.i(176244);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.zPr;
-    AdLandingPagesProxy.b localb = new AdLandingPagesProxy.b(this, paramString1, paramString3, paramBoolean1);
-    a.b localb1 = this.zwd;
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.DXp;
+    b localb = new b(paramString1, paramString3, paramBoolean1);
+    a.b localb1 = this.DGp;
     if (!paramBoolean2)
     {
       paramString2 = new g.a();
       paramString2.setAppId(paramString1);
-      paramString2.abg(paramString1);
-      paramString2.fz(paramString3);
-      paramString2.abe(paramString4);
-      paramString2.abb(paramString5);
-      paramString2.abd(paramString6);
-      paramString2.jP(paramBoolean1);
-      paramString2 = paramString2.ptu;
+      paramString2.alm(paramString1);
+      paramString2.gm(paramString3);
+      paramString2.setFileMD5(paramString4);
+      paramString2.alj(paramString5);
+      paramString2.all(paramString6);
+      paramString2.kS(paramBoolean1);
+      paramString2 = paramString2.qIY;
     }
     com.tencent.mm.plugin.downloader_app.a.a locala1;
-    for (long l = com.tencent.mm.plugin.downloader.model.f.cdA().a(paramString2);; l = ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).a(locala1, new a.3(locala)))
+    for (long l = com.tencent.mm.plugin.downloader.model.f.cBv().a(paramString2);; l = ((com.tencent.mm.plugin.downloader_app.api.c)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.downloader_app.api.c.class)).a(locala1, new a.3(locala)))
     {
       if (localb1 != null) {
-        locala.zwd = localb1;
+        locala.DGp = localb1;
       }
       if (paramBoolean1) {
         locala.a(paramString3, localb);
       }
-      locala.zPn.put(paramString1, new a.d(paramString7, paramString8, paramString9));
-      com.tencent.mm.plugin.downloader.model.f.cdA();
-      com.tencent.mm.plugin.downloader.model.c.a(locala.zPo);
-      ae.i("AdLandingPagesProxy", "startDownloadMM, id %d", new Object[] { Long.valueOf(l) });
+      locala.DXl.put(paramString1, new a.d(paramString7, paramString8, paramString9));
+      com.tencent.mm.plugin.downloader.model.f.cBv();
+      com.tencent.mm.plugin.downloader.model.c.a(locala.DXm);
+      Log.i("AdLandingPagesProxy", "startDownloadMM, id %d", new Object[] { Long.valueOf(l) });
       AppMethodBeat.o(176244);
       return l;
       locala1 = new com.tencent.mm.plugin.downloader_app.a.a();
       locala1.downloadUrl = paramString5;
       locala1.appId = paramString2;
-      locala1.pvf = paramString1;
+      locala1.qKu = paramString1;
       locala1.packageName = paramString3;
-      locala1.lQS = paramString4;
+      locala1.mYc = paramString4;
       locala1.appName = paramString6;
-      locala1.dvO = 1;
-      locala1.pvh = paramBoolean1;
+      locala1.dNv = 1;
+      locala1.qKw = paramBoolean1;
       locala1.scene = 5101;
     }
   }
@@ -2358,12 +2967,12 @@ public class AdLandingPagesProxy
   public void stopDownloadLandingPageVideo(String paramString)
   {
     AppMethodBeat.i(95356);
-    if (this.zwf.containsKey(paramString))
+    if (this.DGr.containsKey(paramString))
     {
-      this.zwf.remove(paramString);
-      ae.i("AdLandingPagesProxy", "stop download video %s", new Object[] { paramString });
-      com.tencent.mm.plugin.report.service.g.yxI.dD(955, 34);
-      ak.getContext().getSharedPreferences("sns_ad_download_resource_preferences", 0).edit().putBoolean(paramString, false).commit();
+      this.DGr.remove(paramString);
+      Log.i("AdLandingPagesProxy", "stop download video %s", new Object[] { paramString });
+      com.tencent.mm.plugin.report.service.h.CyF.dN(955, 34);
+      MMApplicationContext.getContext().getSharedPreferences("sns_ad_download_resource_preferences", 0).edit().putBoolean(paramString, false).commit();
     }
     REMOTE_CALL("stopDownloadLandingPageVideoMM", new Object[] { paramString });
     AppMethodBeat.o(95356);
@@ -2373,7 +2982,7 @@ public class AdLandingPagesProxy
   public void stopDownloadLandingPageVideoMM(String paramString)
   {
     AppMethodBeat.i(95357);
-    ah.dXz().azQ(paramString);
+    aj.faJ().aOM(paramString);
     AppMethodBeat.o(95357);
   }
   
@@ -2388,12 +2997,12 @@ public class AdLandingPagesProxy
   public void stopTaskMM(String paramString)
   {
     AppMethodBeat.i(95309);
-    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.zPr;
-    paramString = com.tencent.mm.plugin.downloader.model.f.cdA().aaZ(paramString);
+    com.tencent.mm.plugin.sns.storage.AdLandingPagesStorage.a locala = a.e.DXp;
+    paramString = com.tencent.mm.plugin.downloader.model.f.cBv().alg(paramString);
     if (paramString != null)
     {
       long l = paramString.id;
-      com.tencent.mm.plugin.downloader.model.f.cdA().ui(l);
+      com.tencent.mm.plugin.downloader.model.f.cBv().Cn(l);
     }
     AppMethodBeat.o(95309);
   }
@@ -2402,15 +3011,15 @@ public class AdLandingPagesProxy
   public void stopped(long paramLong)
   {
     AppMethodBeat.i(95303);
-    Iterator localIterator = ((ArrayList)this.zwc.get(Long.valueOf(paramLong))).iterator();
+    Iterator localIterator = ((ArrayList)this.DGo.get(Long.valueOf(paramLong))).iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
       if (locala != null) {
-        locala.dWI();
+        locala.eZQ();
       }
     }
-    this.zwc.remove(Long.valueOf(paramLong));
+    this.DGo.remove(Long.valueOf(paramLong));
     AppMethodBeat.o(95303);
   }
   
@@ -2418,66 +3027,66 @@ public class AdLandingPagesProxy
   public void succeed(long paramLong)
   {
     AppMethodBeat.i(95304);
-    Iterator localIterator = ((ArrayList)this.zwc.get(Long.valueOf(paramLong))).iterator();
+    Iterator localIterator = ((ArrayList)this.DGo.get(Long.valueOf(paramLong))).iterator();
     while (localIterator.hasNext())
     {
       a locala = (a)localIterator.next();
       if (locala != null) {
-        locala.dWJ();
+        locala.eZR();
       }
     }
-    this.zwc.remove(Long.valueOf(paramLong));
+    this.DGo.remove(Long.valueOf(paramLong));
     AppMethodBeat.o(95304);
   }
   
   public void updateContact(String paramString)
   {
-    AppMethodBeat.i(219325);
+    AppMethodBeat.i(202703);
     REMOTE_CALL("updateContactMM", new Object[] { paramString });
-    AppMethodBeat.o(219325);
+    AppMethodBeat.o(202703);
   }
   
   @com.tencent.mm.remoteservice.f
   public void updateContactMM(String paramString)
   {
-    AppMethodBeat.i(219326);
-    final bq localbq = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF();
-    if ((localbq == null) || (bu.isNullOrNil(paramString)))
+    AppMethodBeat.i(202704);
+    final bv localbv = ((com.tencent.mm.plugin.messenger.foundation.a.l)com.tencent.mm.kernel.g.af(com.tencent.mm.plugin.messenger.foundation.a.l.class)).aSN();
+    if ((localbv == null) || (Util.isNullOrNil(paramString)))
     {
-      AppMethodBeat.o(219326);
+      AppMethodBeat.o(202704);
       return;
     }
-    final an localan = localbq.BH(paramString);
-    localan.acS();
-    localan.setUsername(paramString);
-    com.tencent.e.h.MqF.aO(new Runnable()
+    final as localas = localbv.Kn(paramString);
+    localas.aqQ();
+    localas.setUsername(paramString);
+    com.tencent.f.h.RTc.aX(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(219305);
+        AppMethodBeat.i(202675);
         try
         {
-          if ((int)localan.ght == 0) {
-            localbq.ao(localan);
+          if ((int)localas.gMZ == 0) {
+            localbv.aq(localas);
           }
-          if ((int)localan.ght <= 0)
+          if ((int)localas.gMZ <= 0)
           {
-            ae.e("AdLandingPagesProxy", "addContact : insert contact failed");
-            AppMethodBeat.o(219305);
+            Log.e("AdLandingPagesProxy", "addContact : insert contact failed");
+            AppMethodBeat.o(202675);
             return;
           }
-          com.tencent.mm.model.x.B(localan);
-          AppMethodBeat.o(219305);
+          ab.B(localas);
+          AppMethodBeat.o(202675);
           return;
         }
         catch (Throwable localThrowable)
         {
-          ae.e("AdLandingPagesProxy", localThrowable.toString());
-          AppMethodBeat.o(219305);
+          Log.e("AdLandingPagesProxy", localThrowable.toString());
+          AppMethodBeat.o(202675);
         }
       }
     });
-    AppMethodBeat.o(219326);
+    AppMethodBeat.o(202704);
   }
   
   public boolean useOnlineStreamPlayer()
@@ -2498,11 +3107,11 @@ public class AdLandingPagesProxy
   public boolean useOnlineStreamPlayerMM()
   {
     AppMethodBeat.i(95254);
-    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aDI().xi("100208");
+    com.tencent.mm.storage.c localc = com.tencent.mm.model.c.d.aXu().Fu("100208");
     if (localc.isValid())
     {
-      int i = bu.getInt((String)localc.fsy().get("useOnlineVideoPlayer"), 0);
-      ae.i("AdLandingPagesProxy", "useOnlineVideoPlayer abtest=".concat(String.valueOf(i)));
+      int i = Util.getInt((String)localc.gzz().get("useOnlineVideoPlayer"), 0);
+      Log.i("AdLandingPagesProxy", "useOnlineVideoPlayer abtest=".concat(String.valueOf(i)));
       if (i == 1)
       {
         AppMethodBeat.o(95254);
@@ -2526,25 +3135,61 @@ public class AdLandingPagesProxy
   public void writeDeferredDeepLinkMM(String paramString1, String paramString2)
   {
     AppMethodBeat.i(95326);
-    WL().edit().putString(paramString1, paramString2).commit();
+    akz().edit().putString(paramString1, paramString2).commit();
     AppMethodBeat.o(95326);
   }
   
   public static abstract interface a
   {
-    public abstract void Qu(int paramInt);
+    public abstract void Yr(int paramInt);
     
-    public abstract void dWH();
+    public abstract void eZP();
     
-    public abstract void dWI();
+    public abstract void eZQ();
     
-    public abstract void dWJ();
+    public abstract void eZR();
     
-    public abstract void dWK();
+    public abstract void eZS();
     
-    public abstract void dWL();
+    public abstract void eZT();
     
     public abstract void start();
+  }
+  
+  final class b
+    implements a.c
+  {
+    private String LG;
+    private String appId;
+    private boolean qKw;
+    
+    public b(String paramString1, String paramString2, boolean paramBoolean)
+    {
+      this.LG = paramString2;
+      this.appId = paramString1;
+      this.qKw = paramBoolean;
+    }
+    
+    public final void aOJ(String paramString)
+    {
+      AppMethodBeat.i(95219);
+      Log.i("AdLandingPagesProxy", "pkg %s installed", new Object[] { paramString });
+      if (this.qKw) {
+        a.e.DXp.reportDownloadInfo(4, this.appId);
+      }
+      a.e.DXp.reportDownloadInfo(5, this.appId);
+      AppMethodBeat.o(95219);
+    }
+    
+    public final void aOK(String paramString)
+    {
+      AppMethodBeat.i(95220);
+      Log.i("AdLandingPagesProxy", "pkg %s removed", new Object[] { paramString });
+      if ((!Util.isNullOrNil(paramString)) && (paramString.equals(this.LG))) {
+        AdLandingPagesProxy.this.deleteDeferredDeepLinkMM(paramString);
+      }
+      AppMethodBeat.o(95220);
+    }
   }
   
   final class c
@@ -2557,33 +3202,33 @@ public class AdLandingPagesProxy
       this.mediaId = paramString;
     }
     
-    public final void azJ(String paramString) {}
+    public final void aOG(String paramString) {}
     
-    public final void bQ(String paramString, boolean paramBoolean)
+    public final void ci(String paramString, boolean paramBoolean)
     {
       AppMethodBeat.i(95221);
-      ae.i("AdLandingPagesProxy", "onImageFinish, mediaId=" + paramString + ", isOk=" + paramBoolean);
-      if ((!bu.V(new String[] { paramString, this.mediaId })) && (paramString.equals(this.mediaId)))
+      Log.i("AdLandingPagesProxy", "onImageFinish, mediaId=" + paramString + ", isOk=" + paramBoolean);
+      if ((!Util.isNullOrNil(new String[] { paramString, this.mediaId })) && (paramString.equals(this.mediaId)))
       {
         AdLandingPagesProxy.this.CLIENT_CALL("onImgDownloadCallback", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-        ah.dXz().b(this);
+        aj.faJ().b(this);
       }
       AppMethodBeat.o(95221);
     }
     
-    public final void bR(String paramString, boolean paramBoolean)
+    public final void cj(String paramString, boolean paramBoolean)
     {
-      AppMethodBeat.i(219306);
-      ae.i("AdLandingPagesProxy", "onSightFinish, mediaId=" + paramString + ", isOk=" + paramBoolean);
-      if ((!bu.V(new String[] { paramString, this.mediaId })) && (paramString.equals(this.mediaId)))
+      AppMethodBeat.i(202676);
+      Log.i("AdLandingPagesProxy", "onSightFinish, mediaId=" + paramString + ", isOk=" + paramBoolean);
+      if ((!Util.isNullOrNil(new String[] { paramString, this.mediaId })) && (paramString.equals(this.mediaId)))
       {
         AdLandingPagesProxy.this.CLIENT_CALL("onSightDownloadCallback", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
-        ah.dXz().b(this);
+        aj.faJ().b(this);
       }
-      AppMethodBeat.o(219306);
+      AppMethodBeat.o(202676);
     }
     
-    public final void dWB() {}
+    public final void eZJ() {}
   }
   
   final class d
@@ -2596,12 +3241,14 @@ public class AdLandingPagesProxy
       this.mediaId = paramString;
     }
     
+    public final void Ds(String paramString) {}
+    
     public final void a(String paramString, int paramInt, com.tencent.mm.i.d paramd)
     {
       AppMethodBeat.i(95225);
       if (paramString.equals(this.mediaId))
       {
-        com.tencent.mm.plugin.report.service.g.yxI.dD(955, 30);
+        com.tencent.mm.plugin.report.service.h.CyF.dN(955, 30);
         AdLandingPagesProxy.this.CLIENT_CALL("onCdnVideoFinish", new Object[] { paramString, Integer.valueOf(paramInt) });
       }
       AppMethodBeat.o(95225);
@@ -2609,13 +3256,13 @@ public class AdLandingPagesProxy
     
     public final void a(String paramString1, long paramLong1, long paramLong2, String paramString2)
     {
-      AppMethodBeat.i(219307);
+      AppMethodBeat.i(202677);
       if (paramString1.equals(this.mediaId))
       {
-        com.tencent.mm.plugin.report.service.g.yxI.dD(955, 26);
+        com.tencent.mm.plugin.report.service.h.CyF.dN(955, 26);
         AdLandingPagesProxy.this.CLIENT_CALL("onCdnVideoMoovReady", new Object[] { paramString1, Long.valueOf(paramLong1), Long.valueOf(paramLong2), paramString2 });
       }
-      AppMethodBeat.o(219307);
+      AppMethodBeat.o(202677);
     }
     
     public final void i(String paramString, long paramLong1, long paramLong2)
@@ -2632,7 +3279,7 @@ public class AdLandingPagesProxy
       AppMethodBeat.i(95223);
       if (paramString.equals(this.mediaId))
       {
-        com.tencent.mm.plugin.report.service.g.yxI.dD(955, 28);
+        com.tencent.mm.plugin.report.service.h.CyF.dN(955, 28);
         AdLandingPagesProxy.this.CLIENT_CALL("onCdnVideoDataAvailable", new Object[] { paramString, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
       }
       AppMethodBeat.o(95223);
@@ -2641,27 +3288,27 @@ public class AdLandingPagesProxy
   
   public static abstract interface e
   {
-    public abstract void be(Object paramObject);
+    public abstract void bn(Object paramObject);
     
     public abstract void h(int paramInt1, int paramInt2, Object paramObject);
   }
   
   public static final class f
   {
+    boolean DGx = false;
     long lastUpdateTime = 0L;
-    boolean zwl = false;
   }
   
   public static abstract interface g
   {
-    public abstract void dVv();
+    public abstract void eWO();
     
-    public abstract void dWM();
+    public abstract void eZU();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.model.AdLandingPagesProxy
  * JD-Core Version:    0.7.0.1
  */

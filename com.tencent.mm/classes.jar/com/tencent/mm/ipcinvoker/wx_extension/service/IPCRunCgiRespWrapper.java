@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
+import com.tencent.mm.ak.d;
 import com.tencent.mm.ipcinvoker.extension.c;
 import com.tencent.mm.ipcinvoker.wx_extension.a;
 
@@ -15,7 +15,7 @@ public class IPCRunCgiRespWrapper
   public int errCode;
   public String errMsg;
   public int errType;
-  public b rr;
+  public d rr;
   
   static
   {
@@ -32,19 +32,19 @@ public class IPCRunCgiRespWrapper
     this.errType = paramParcel.readInt();
     this.errCode = paramParcel.readInt();
     this.errMsg = paramParcel.readString();
-    this.rr = ((b)c.a(a.class.getName(), paramParcel));
+    this.rr = ((d)c.a(a.class.getName(), paramParcel));
     AppMethodBeat.o(146436);
   }
   
-  public static IPCRunCgiRespWrapper b(b paramb)
+  public static IPCRunCgiRespWrapper b(d paramd)
   {
-    AppMethodBeat.i(195252);
+    AppMethodBeat.i(225236);
     IPCRunCgiRespWrapper localIPCRunCgiRespWrapper = new IPCRunCgiRespWrapper();
-    localIPCRunCgiRespWrapper.rr = paramb;
+    localIPCRunCgiRespWrapper.rr = paramd;
     localIPCRunCgiRespWrapper.errMsg = null;
     localIPCRunCgiRespWrapper.errType = 3;
     localIPCRunCgiRespWrapper.errCode = -2;
-    AppMethodBeat.o(195252);
+    AppMethodBeat.o(225236);
     return localIPCRunCgiRespWrapper;
   }
   
@@ -65,7 +65,7 @@ public class IPCRunCgiRespWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ipcinvoker.wx_extension.service.IPCRunCgiRespWrapper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,57 +1,56 @@
 package com.tencent.mm.plugin.wallet_ecard.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.cfh;
-import com.tencent.mm.protocal.protobuf.cfi;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.m;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.cvo;
+import com.tencent.mm.protocal.protobuf.cvp;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public final class d
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  public cfi DGG;
-  public String DGH;
-  public String DGI;
-  public String DGJ;
-  private f callback;
-  public int dmy;
-  public String phe;
-  private b rr;
+  public cvp IpS;
+  public String IpT;
+  public String IpU;
+  public String IpV;
+  private i callback;
+  public int dDN;
+  public String qwn;
+  private com.tencent.mm.ak.d rr;
   
   public d(String paramString1, String paramString2, int paramInt)
   {
     AppMethodBeat.i(71692);
-    this.dmy = 0;
-    this.phe = "";
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cfh();
-    ((b.a)localObject).hQG = new cfi();
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/openecard";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (cfh)this.rr.hQD.hQJ;
-    ((cfh)localObject).FVJ = paramString1;
-    ((cfh)localObject).FVK = paramString2;
+    this.dDN = 0;
+    this.qwn = "";
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new cvo();
+    ((d.a)localObject).iLO = new cvp();
+    ((d.a)localObject).funcId = getType();
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/openecard";
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (cvo)this.rr.iLK.iLR;
+    ((cvo)localObject).KPu = paramString1;
+    ((cvo)localObject).KPv = paramString2;
     this.rr.setIsUserCmd(true);
-    ((cfh)localObject).HrX = 0;
-    ((cfh)localObject).dDd = paramInt;
-    ((cfh)localObject).dJd = 1;
-    ((cfh)localObject).HrU = true;
-    ae.i("MicroMsg.NetSceneOpenECard", "create NetSceneOpenECard with reuse exist card, cardType: %s, reqSerial: %s, openScene: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+    ((cvo)localObject).MAU = 0;
+    ((cvo)localObject).dUS = paramInt;
+    ((cvo)localObject).eaQ = 1;
+    ((cvo)localObject).MAR = true;
+    Log.i("MicroMsg.NetSceneOpenECard", "create NetSceneOpenECard with reuse exist card, cardType: %s, reqSerial: %s, openScene: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
     AppMethodBeat.o(71692);
   }
   
@@ -63,53 +62,53 @@ public final class d
   public d(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2, String paramString6)
   {
     AppMethodBeat.i(71691);
-    this.dmy = 0;
-    this.phe = "";
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new cfh();
-    ((b.a)localObject).hQG = new cfi();
-    ((b.a)localObject).funcId = getType();
-    ((b.a)localObject).uri = "/cgi-bin/mmpay-bin/openecard";
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (cfh)this.rr.hQD.hQJ;
-    ((cfh)localObject).FVJ = paramString1;
-    ((cfh)localObject).FVK = paramString2;
+    this.dDN = 0;
+    this.qwn = "";
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new cvo();
+    ((d.a)localObject).iLO = new cvp();
+    ((d.a)localObject).funcId = getType();
+    ((d.a)localObject).uri = "/cgi-bin/mmpay-bin/openecard";
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (cvo)this.rr.iLK.iLR;
+    ((cvo)localObject).KPu = paramString1;
+    ((cvo)localObject).KPv = paramString2;
     this.rr.setIsUserCmd(true);
     if (paramBoolean1)
     {
-      ((cfh)localObject).HrV = paramString3;
+      ((cvo)localObject).MAS = paramString3;
       if (!paramBoolean2) {
         break label287;
       }
     }
     label287:
-    for (((cfh)localObject).HrX = 1;; ((cfh)localObject).HrX = 0)
+    for (((cvo)localObject).MAU = 1;; ((cvo)localObject).MAU = 0)
     {
-      ((cfh)localObject).DgJ = paramString4;
-      ((cfh)localObject).dlT = paramString5;
-      ((cfh)localObject).dDd = paramInt1;
-      ((cfh)localObject).HrU = false;
-      ((cfh)localObject).dJd = paramInt2;
-      ((cfh)localObject).HrY = paramString6;
-      this.DGH = paramString3;
-      this.DGI = paramString4;
-      this.DGJ = paramString5;
-      ae.d("MicroMsg.NetSceneOpenECard", "cardNo: %s", new Object[] { paramString3 });
-      ae.i("MicroMsg.NetSceneOpenECard", "cardType: %s, reqSerial: %s, openScene: %s, mobileNo: %s, bankType: %s, bankCardInfo: %s, fromScene: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), paramString4, paramString5, paramString6, Integer.valueOf(paramInt2) });
+      ((cvo)localObject).HQc = paramString4;
+      ((cvo)localObject).dDj = paramString5;
+      ((cvo)localObject).dUS = paramInt1;
+      ((cvo)localObject).MAR = false;
+      ((cvo)localObject).eaQ = paramInt2;
+      ((cvo)localObject).MAV = paramString6;
+      this.IpT = paramString3;
+      this.IpU = paramString4;
+      this.IpV = paramString5;
+      Log.d("MicroMsg.NetSceneOpenECard", "cardNo: %s", new Object[] { paramString3 });
+      Log.i("MicroMsg.NetSceneOpenECard", "cardType: %s, reqSerial: %s, openScene: %s, mobileNo: %s, bankType: %s, bankCardInfo: %s, fromScene: %s", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt1), paramString4, paramString5, paramString6, Integer.valueOf(paramInt2) });
       AppMethodBeat.o(71691);
       return;
-      ((cfh)localObject).HrW = paramString3;
+      ((cvo)localObject).MAT = paramString3;
       break;
     }
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(71694);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(71694);
     return i;
   }
@@ -119,38 +118,38 @@ public final class d
     return 1985;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(71693);
-    ae.i("MicroMsg.NetSceneOpenECard", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
-    this.DGG = ((cfi)((b)paramq).hQE.hQJ);
-    ae.i("MicroMsg.NetSceneOpenECard", "ret_code: %d, ret_msg: %s", new Object[] { Integer.valueOf(this.DGG.oGt), this.DGG.oGu });
-    if (!bu.isNullOrNil(this.DGG.HrS)) {
-      ae.d("MicroMsg.NetSceneOpenECard", "rettext: %s", new Object[] { this.DGG.HrS });
+    Log.i("MicroMsg.NetSceneOpenECard", "errType: %s, errCode: %s, errMsg: %s", new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), paramString });
+    this.IpS = ((cvp)((com.tencent.mm.ak.d)params).iLL.iLR);
+    Log.i("MicroMsg.NetSceneOpenECard", "ret_code: %d, ret_msg: %s", new Object[] { Integer.valueOf(this.IpS.pTZ), this.IpS.pUa });
+    if (!Util.isNullOrNil(this.IpS.MAO)) {
+      Log.d("MicroMsg.NetSceneOpenECard", "rettext: %s", new Object[] { this.IpS.MAO });
     }
     try
     {
-      paramq = new JSONObject(this.DGG.HrS);
-      this.dmy = paramq.optInt("retcode", 0);
-      this.phe = paramq.optString("retmsg", "");
+      params = new JSONObject(this.IpS.MAO);
+      this.dDN = params.optInt("retcode", 0);
+      this.qwn = params.optString("retmsg", "");
       if (this.callback != null) {
         this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
       }
       AppMethodBeat.o(71693);
       return;
     }
-    catch (JSONException paramq)
+    catch (JSONException params)
     {
       for (;;)
       {
-        ae.printErrStackTrace("MicroMsg.NetSceneOpenECard", paramq, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.NetSceneOpenECard", params, "", new Object[0]);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_ecard.a.d
  * JD-Core Version:    0.7.0.1
  */

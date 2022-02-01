@@ -100,7 +100,7 @@ public final class c
       if (j >= m) {
         break label59;
       }
-      int k = lg(paramArrayOfInt1[j], paramArrayOfInt2[j]);
+      int k = mE(paramArrayOfInt1[j], paramArrayOfInt2[j]);
       i = k;
       if (k != 0) {
         break;
@@ -111,7 +111,7 @@ public final class c
     return 0;
   }
   
-  public static int lf(int paramInt1, int paramInt2)
+  public static int mD(int paramInt1, int paramInt2)
   {
     if (paramInt1 == paramInt2) {
       return 0;
@@ -122,7 +122,7 @@ public final class c
     return 1;
   }
   
-  public static int lg(int paramInt1, int paramInt2)
+  public static int mE(int paramInt1, int paramInt2)
   {
     if (paramInt1 == paramInt2) {
       return 0;
@@ -133,7 +133,7 @@ public final class c
     return 1;
   }
   
-  public static int q(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static int p(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
     int m = paramArrayOfByte1.length;
     int i = paramArrayOfByte2.length;
@@ -164,7 +164,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.tinker.a.a.b.c
  * JD-Core Version:    0.7.0.1
  */

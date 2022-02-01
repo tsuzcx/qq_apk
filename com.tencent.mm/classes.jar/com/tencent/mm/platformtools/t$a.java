@@ -4,7 +4,7 @@ import android.os.Bundle;
 
 public abstract interface t$a
 {
-  public abstract void x(Bundle paramBundle);
+  public abstract void D(Bundle paramBundle);
 }
 
 

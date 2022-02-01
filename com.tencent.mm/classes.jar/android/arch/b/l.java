@@ -3,33 +3,33 @@ package android.arch.b;
 final class l<T>
   extends h<T>
 {
-  private final d<?, T> dZ;
-  private final boolean fs;
-  private final Object ft;
+  private final d<?, T> dY;
+  private final boolean fu;
+  private final Object fv;
   
   l(h<T> paramh)
   {
-    super(new j(paramh.eG), paramh.dC, paramh.eF, null, paramh.ee);
-    this.dZ = paramh.an();
-    this.fs = paramh.am();
-    this.ft = paramh.ao();
+    super(new j(paramh.eF), paramh.dB, paramh.eE, null, paramh.ed);
+    this.dY = paramh.ap();
+    this.fu = paramh.ao();
+    this.fv = paramh.aq();
   }
   
   final void a(h<T> paramh, h.c paramc) {}
   
-  final boolean am()
+  final boolean ao()
   {
-    return this.fs;
+    return this.fu;
   }
   
-  public final d<?, T> an()
+  public final d<?, T> ap()
   {
-    return this.dZ;
+    return this.dY;
   }
   
-  public final Object ao()
+  public final Object aq()
   {
-    return this.ft;
+    return this.fv;
   }
   
   public final boolean isDetached()
@@ -44,7 +44,7 @@ final class l<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.arch.b.l
  * JD-Core Version:    0.7.0.1
  */

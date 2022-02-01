@@ -5,11 +5,11 @@ import com.tencent.mm.kernel.a.b.a.a;
 import com.tencent.mm.kernel.a.b.b;
 import com.tencent.mm.kernel.api.c;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.u;
+import com.tencent.mm.model.y;
 import com.tencent.mm.plugin.fts.a.n;
 
 public final class e
-  extends u
+  extends y
   implements b
 {
   public e()
@@ -20,7 +20,7 @@ public final class e
   public final void parallelsDependency()
   {
     AppMethodBeat.i(22354);
-    com.tencent.mm.kernel.a.b.a.a(this, c.class).bA(g.ad(n.class));
+    com.tencent.mm.kernel.a.b.a.a(this, c.class).bI(g.ah(n.class));
     AppMethodBeat.o(22354);
   }
 }

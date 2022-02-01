@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/ph" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:gravity="center_vertical" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/cp"
   xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center_vertical" android:id="@id/f94" android:layout_height="44.0dip" style="@style/il">
-        <ImageView android:layout_gravity="center_vertical" android:id="@id/cnh" android:layout_width="24.0dip" android:layout_height="24.0dip" />
-        <TextView android:textColor="@color/Link" android:layout_gravity="center_vertical" android:id="@id/ga1" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/dn" android:text="{tip}" android:layout_weight="1.0" style="@style/m2" />
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/ru" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ds" android:layout_marginRight="12.0dip" android:src="@raw/arrow_right" app:iconColor="@color/ee" />
-    </LinearLayout>
-    <View android:background="@color/BW_90" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="@dimen/dm" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/c7d" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:src="@raw/finder_icons_outlined_subscriptions" app:iconColor="@color/FG_0" />
+    <TextView android:textSize="17.0dip" android:textColor="@color/a2x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/cb" android:text="@string/cj5" android:layout_toRightOf="@id/c7d" />
+    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/h6s" android:layout_width="@dimen/c5" android:layout_height="@dimen/ce" android:src="@raw/icons_outlined_arrow" android:layout_alignParentEnd="true" app:iconColor="@color/BW_70" />
+    <TextView android:textSize="@dimen/is" android:textColor="@color/BW_70" android:id="@id/g6x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/ct" android:text="@string/d4n" android:layout_toLeftOf="@id/h6s" />
 </RelativeLayout>

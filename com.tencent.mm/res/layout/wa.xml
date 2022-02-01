@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:id="@id/ba6" android:background="@color/c" android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RadioGroup android:orientation="vertical" android:id="@id/epm" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <TextView android:textColor="@color/l4" android:gravity="center" android:id="@id/ba5" android:layout_width="fill_parent" android:layout_height="56.0dip" style="@style/zz" />
+</FrameLayout>

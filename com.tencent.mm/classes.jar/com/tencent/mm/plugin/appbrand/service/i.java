@@ -1,29 +1,38 @@
 package com.tencent.mm.plugin.appbrand.service;
 
+import android.content.Context;
 import com.tencent.mm.kernel.c.a;
-import com.tencent.mm.vending.g.e;
-import java.util.List;
+import com.tencent.mm.plugin.appbrand.openmaterial.g;
+import com.tencent.mm.plugin.appbrand.openmaterial.g.a;
+import com.tencent.mm.plugin.appbrand.openmaterial.h;
+import com.tencent.mm.plugin.appbrand.openmaterial.j;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.AppBrandOpenMaterialCollection;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.MaterialModel;
+import com.tencent.mm.plugin.appbrand.openmaterial.model.b;
+import com.tencent.mm.ui.widget.a.e;
 
 public abstract interface i
   extends a
 {
-  public abstract e<Integer> LB(String paramString);
+  public abstract h a(b paramb, Context paramContext, e parame, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection, g paramg, j paramj);
   
-  public abstract void LC(String paramString);
+  public abstract AppBrandOpenMaterialCollection a(MaterialModel paramMaterialModel);
   
-  public abstract void a(int paramInt, String paramString, Object paramObject);
+  public abstract void a(MaterialModel paramMaterialModel, com.tencent.mm.plugin.appbrand.openmaterial.i parami);
   
-  public abstract void aS(List<String> paramList);
+  public abstract boolean a(MaterialModel paramMaterialModel, AppBrandOpenMaterialCollection paramAppBrandOpenMaterialCollection);
   
-  public abstract int aZd();
+  public abstract boolean adl(String paramString);
   
-  public abstract void cd(String paramString1, String paramString2);
+  public abstract AppBrandOpenMaterialCollection b(MaterialModel paramMaterialModel);
   
-  public abstract void q(String paramString1, String paramString2, int paramInt);
+  public abstract g.a bQa();
+  
+  public abstract boolean c(b paramb);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.service.i
  * JD-Core Version:    0.7.0.1
  */

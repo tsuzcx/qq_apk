@@ -6,87 +6,130 @@ import com.tencent.mm.plugin.report.a;
 public final class fy
   extends a
 {
-  private long enY = 0L;
-  private long enZ = 0L;
-  private long eoa = 0L;
-  private long eob = 0L;
-  private int eoc = 0;
+  private long eIk;
+  private String eIl = "";
+  private long eIm;
+  private long elF;
+  private String els = "";
+  private String elt = "";
+  private String erH = "";
+  private String eui = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(118500);
+    AppMethodBeat.i(209271);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.enY);
+    ((StringBuffer)localObject).append(this.elF);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.enZ);
+    ((StringBuffer)localObject).append(this.eIk);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eoa);
+    ((StringBuffer)localObject).append(this.eIl);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eob);
+    ((StringBuffer)localObject).append(this.eIm);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.eoc);
+    ((StringBuffer)localObject).append(this.eui);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.els);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.elt);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.erH);
     localObject = ((StringBuffer)localObject).toString();
-    axO((String)localObject);
-    AppMethodBeat.o(118500);
+    aMq((String)localObject);
+    AppMethodBeat.o(209271);
     return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(118501);
+    AppMethodBeat.i(209272);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("StartZipTime:").append(this.enY);
+    ((StringBuffer)localObject).append("OpType:").append(this.elF);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Enable:").append(this.enZ);
+    ((StringBuffer)localObject).append("OpScene:").append(this.eIk);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Exceed:").append(this.eoa);
+    ((StringBuffer)localObject).append("MiniSessionId:").append(this.eIl);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Cost:").append(this.eob);
+    ((StringBuffer)localObject).append("TaskOrder:").append(this.eIm);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Result:").append(this.eoc);
+    ((StringBuffer)localObject).append("LongVideoId:").append(this.eui);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("sessionid:").append(this.els);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("contextid:").append(this.elt);
+    ((StringBuffer)localObject).append("\r\n");
+    ((StringBuffer)localObject).append("ClickTabContextId:").append(this.erH);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(118501);
+    AppMethodBeat.o(209272);
     return localObject;
   }
   
-  public final fy TF()
+  public final fy agI()
   {
-    this.eoa = 1L;
+    this.elF = 5L;
+    return this;
+  }
+  
+  public final fy agJ()
+  {
+    this.eIk = 1L;
     return this;
   }
   
   public final int getId()
   {
-    return 17654;
+    return 21155;
   }
   
-  public final fy iM(int paramInt)
+  public final fy pI(long paramLong)
   {
-    this.eoc = paramInt;
+    this.eIm = paramLong;
     return this;
   }
   
-  public final fy le(long paramLong)
+  public final fy ta(String paramString)
   {
-    this.enY = paramLong;
+    AppMethodBeat.i(209266);
+    this.eIl = x("MiniSessionId", paramString, true);
+    AppMethodBeat.o(209266);
     return this;
   }
   
-  public final fy lf(long paramLong)
+  public final fy tb(String paramString)
   {
-    this.enZ = paramLong;
+    AppMethodBeat.i(209267);
+    this.eui = x("LongVideoId", paramString, true);
+    AppMethodBeat.o(209267);
     return this;
   }
   
-  public final fy lg(long paramLong)
+  public final fy tc(String paramString)
   {
-    this.eob = paramLong;
+    AppMethodBeat.i(209268);
+    this.els = x("sessionid", paramString, true);
+    AppMethodBeat.o(209268);
+    return this;
+  }
+  
+  public final fy td(String paramString)
+  {
+    AppMethodBeat.i(209269);
+    this.elt = x("contextid", paramString, true);
+    AppMethodBeat.o(209269);
+    return this;
+  }
+  
+  public final fy te(String paramString)
+  {
+    AppMethodBeat.i(209270);
+    this.erH = x("ClickTabContextId", paramString, true);
+    AppMethodBeat.o(209270);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.g.b.a.fy
  * JD-Core Version:    0.7.0.1
  */

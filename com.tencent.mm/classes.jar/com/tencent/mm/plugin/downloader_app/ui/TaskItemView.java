@@ -23,31 +23,31 @@ import com.tencent.mm.plugin.downloader.model.e;
 import com.tencent.mm.plugin.downloader_app.a.i;
 import com.tencent.mm.plugin.downloader_app.api.a.a;
 import com.tencent.mm.plugin.downloader_app.api.a.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.az;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.NetStatusUtil;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.s;
 import java.util.Iterator;
 
 public class TaskItemView
   extends LinearLayout
 {
-  ImageView pwI;
-  private LinearLayout pxA;
-  private ImageView pxB;
-  private TextView pxC;
-  boolean pxD = false;
-  i pxg;
-  private AppIconView pxq;
-  private TextView pxr;
-  private TextView pxs;
-  private TextView pxt;
-  private FrameLayout pxu;
-  private ProgressImageView pxv;
-  private FrameLayout pxw;
-  private Button pxx;
-  private Button pxy;
-  private DownloadUpdateDescView pxz;
+  ImageView qLZ;
+  private AppIconView qMH;
+  private TextView qMI;
+  private TextView qMJ;
+  private TextView qMK;
+  private FrameLayout qML;
+  private ProgressImageView qMM;
+  private FrameLayout qMN;
+  private Button qMO;
+  private Button qMP;
+  private DownloadUpdateDescView qMQ;
+  private LinearLayout qMR;
+  private ImageView qMS;
+  private TextView qMT;
+  boolean qMU = false;
+  i qMx;
   
   public TaskItemView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -57,14 +57,14 @@ public class TaskItemView
   private long getFileSize()
   {
     AppMethodBeat.i(9048);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.aaU(this.pxg.appId);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.alb(this.qMx.appId);
     if ((locala != null) && (locala.field_fileSize > 0L))
     {
       l = locala.field_fileSize;
       AppMethodBeat.o(9048);
       return l;
     }
-    long l = this.pxg.pvR.pqL;
+    long l = this.qMx.qLi.qGq;
     AppMethodBeat.o(9048);
     return l;
   }
@@ -79,20 +79,20 @@ public class TaskItemView
     {
       if (f2 >= 1.0F)
       {
-        this.pxt.setText(String.format("%.1fGB", new Object[] { Float.valueOf(f2) }));
+        this.qMK.setText(String.format("%.1fGB", new Object[] { Float.valueOf(f2) }));
         AppMethodBeat.o(184795);
         return;
       }
-      this.pxt.setText(String.format("%.1fMB", new Object[] { Float.valueOf(f1) }));
+      this.qMK.setText(String.format("%.1fMB", new Object[] { Float.valueOf(f1) }));
       AppMethodBeat.o(184795);
       return;
     }
     f2 = (float)paramLong / 1048576.0F;
-    this.pxt.setText(String.format("%.1fMB / %.1fMB", new Object[] { Float.valueOf(f2), Float.valueOf(f1) }));
+    this.qMK.setText(String.format("%.1fMB / %.1fMB", new Object[] { Float.valueOf(f2), Float.valueOf(f1) }));
     if (paramBoolean)
     {
       int i = (int)(100L * paramLong / l);
-      this.pxv.setProgress(i);
+      this.qMM.setProgress(i);
     }
     AppMethodBeat.o(184795);
   }
@@ -100,19 +100,19 @@ public class TaskItemView
   private void setButtonText(int paramInt)
   {
     AppMethodBeat.i(183831);
-    if (paramInt == 2131760341)
+    if (paramInt == 2131761786)
     {
-      this.pxx.setVisibility(8);
-      this.pxy.setVisibility(0);
+      this.qMO.setVisibility(8);
+      this.qMP.setVisibility(0);
     }
     for (;;)
     {
-      this.pxw.setVisibility(0);
+      this.qMN.setVisibility(0);
       AppMethodBeat.o(183831);
       return;
-      this.pxy.setVisibility(8);
-      this.pxx.setVisibility(0);
-      this.pxx.setText(paramInt);
+      this.qMP.setVisibility(8);
+      this.qMO.setVisibility(0);
+      this.qMO.setText(paramInt);
     }
   }
   
@@ -123,25 +123,25 @@ public class TaskItemView
     AppMethodBeat.o(9046);
   }
   
-  final void ceA()
+  final void cCq()
   {
     boolean bool = false;
     AppMethodBeat.i(9045);
-    ae.d("MicroMsg.TaskItemView", "updateDownloadStatus: %s", new Object[] { this.pxg.appId });
-    this.pxw.setVisibility(8);
-    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.aaU(this.pxg.appId);
+    Log.d("MicroMsg.TaskItemView", "updateDownloadStatus: %s", new Object[] { this.qMx.appId });
+    this.qMN.setVisibility(8);
+    com.tencent.mm.plugin.downloader.g.a locala = com.tencent.mm.plugin.downloader.model.d.alb(this.qMx.appId);
     if ((locala == null) || (locala.field_status == 5))
     {
       setTaskSize(getFileSize());
-      this.pxu.setVisibility(8);
-      setButtonText(2131758091);
+      this.qML.setVisibility(8);
+      setButtonText(2131758351);
       AppMethodBeat.o(9045);
       return;
     }
     if (locala.field_status == 3)
     {
-      this.pxu.setVisibility(8);
-      setButtonText(2131760341);
+      this.qML.setVisibility(8);
+      setButtonText(2131761786);
     }
     for (;;)
     {
@@ -150,41 +150,42 @@ public class TaskItemView
       return;
       if (locala.field_status == 6)
       {
-        this.pxu.setVisibility(8);
-        if (e.uv(locala.field_downloadId)) {
-          setButtonText(2131761210);
+        this.qML.setVisibility(8);
+        if (e.CA(locala.field_downloadId)) {
+          setButtonText(2131762997);
         } else {
-          setButtonText(2131760341);
+          setButtonText(2131761786);
         }
       }
       else
       {
-        this.pxu.setVisibility(0);
-        if (this.pxD)
+        this.qML.setVisibility(0);
+        if (this.qMU)
         {
-          this.pxv.cey();
+          this.qMM.cCo();
         }
         else if (locala.field_status == 1)
         {
-          this.pxD = false;
-          this.pxv.setProgressColor(2131099699);
-          this.pxv.setImageResource(2131690078);
+          this.qMU = false;
+          this.qMM.setProgressColor(2131099710);
+          this.qMM.setImageResource(2131690110);
           bool = true;
         }
-        else if ((locala.field_reserveInWifi) && (!az.isWifi(getContext())))
+        else if ((locala.field_reserveInWifi) && (!NetStatusUtil.isWifi(getContext())))
         {
-          this.pxu.setVisibility(0);
-          this.pxv.cez();
+          this.qML.setVisibility(0);
+          this.qMM.setProgressColor(2131099748);
+          this.qMM.cCp();
         }
         else if (locala.field_status == 4)
         {
-          this.pxu.setVisibility(8);
-          setButtonText(2131758118);
+          this.qML.setVisibility(8);
+          setButtonText(2131758390);
         }
         else
         {
-          this.pxv.setProgressColor(2131099734);
-          this.pxv.setImageResource("download_app_pause");
+          this.qMM.setProgressColor(2131099748);
+          this.qMM.setImageResource("download_app_pause");
           bool = true;
         }
       }
@@ -194,13 +195,13 @@ public class TaskItemView
   public int getNamePaddingLeft()
   {
     AppMethodBeat.i(9047);
-    if (this.pwI.getVisibility() == 0)
+    if (this.qLZ.getVisibility() == 0)
     {
-      i = getResources().getDimensionPixelSize(2131166044);
+      i = getResources().getDimensionPixelSize(2131166084);
       AppMethodBeat.o(9047);
       return i;
     }
-    int i = getResources().getDimensionPixelSize(2131166043);
+    int i = getResources().getDimensionPixelSize(2131166083);
     AppMethodBeat.o(9047);
     return i;
   }
@@ -223,37 +224,37 @@ public class TaskItemView
   {
     AppMethodBeat.i(9040);
     super.onFinishInflate();
-    this.pwI = ((ImageView)findViewById(2131298219));
-    this.pxq = ((AppIconView)findViewById(2131300874));
-    this.pxr = ((TextView)findViewById(2131301169));
-    this.pxs = ((TextView)findViewById(2131301170));
-    this.pxt = ((TextView)findViewById(2131301191));
-    this.pxu = ((FrameLayout)findViewById(2131303520));
-    this.pxv = ((ProgressImageView)findViewById(2131305673));
-    this.pxv.setOnClickListener(new View.OnClickListener()
+    this.qLZ = ((ImageView)findViewById(2131298602));
+    this.qMH = ((AppIconView)findViewById(2131302468));
+    this.qMI = ((TextView)findViewById(2131302841));
+    this.qMJ = ((TextView)findViewById(2131302842));
+    this.qMK = ((TextView)findViewById(2131302863));
+    this.qML = ((FrameLayout)findViewById(2131306286));
+    this.qMM = ((ProgressImageView)findViewById(2131308918));
+    this.qMM.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(9028);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/TaskItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        paramAnonymousView = com.tencent.mm.plugin.downloader.model.d.aaU(TaskItemView.a(TaskItemView.this).appId);
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/TaskItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        paramAnonymousView = com.tencent.mm.plugin.downloader.model.d.alb(TaskItemView.a(TaskItemView.this).appId);
         if (paramAnonymousView.field_status == 1) {
-          com.tencent.mm.plugin.downloader_app.a.c.a(TaskItemView.a(TaskItemView.this));
+          com.tencent.mm.plugin.downloader_app.a.c.b(TaskItemView.this.getContext(), TaskItemView.a(TaskItemView.this));
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/ui/TaskItemView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(9028);
           return;
-          if (TaskItemView.b(TaskItemView.this).pxk) {
+          if (TaskItemView.b(TaskItemView.this).qMB) {
             com.tencent.mm.plugin.downloader_app.a.c.a(TaskItemView.this.getContext(), paramAnonymousView.field_downloadId, new a.b()
             {
               public final void a(a.a paramAnonymous2a, long paramAnonymous2Long)
               {
                 AppMethodBeat.i(183827);
-                if (paramAnonymous2a != a.a.puE) {
+                if (paramAnonymous2a != a.a.qKq) {
                   TaskItemView.c(TaskItemView.this);
                 }
                 AppMethodBeat.o(183827);
@@ -265,7 +266,7 @@ public class TaskItemView
               public final void a(a.a paramAnonymous2a, long paramAnonymous2Long)
               {
                 AppMethodBeat.i(184794);
-                if (paramAnonymous2a == a.a.puE) {
+                if (paramAnonymous2a == a.a.qKq) {
                   TaskItemView.c(TaskItemView.this);
                 }
                 AppMethodBeat.o(184794);
@@ -275,29 +276,29 @@ public class TaskItemView
         }
       }
     });
-    this.pxw = ((FrameLayout)findViewById(2131297655));
-    this.pxx = ((Button)findViewById(2131303016));
-    this.pxx.setOnClickListener(new View.OnClickListener()
+    this.qMN = ((FrameLayout)findViewById(2131297920));
+    this.qMO = ((Button)findViewById(2131305612));
+    this.qMO.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(9031);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/TaskItemView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/TaskItemView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
         if (TaskItemView.a(TaskItemView.this).type == 6) {
-          com.tencent.mm.plugin.downloader_app.a.c.c(TaskItemView.this.getContext(), TaskItemView.a(TaskItemView.this));
+          com.tencent.mm.plugin.downloader_app.a.c.d(TaskItemView.this.getContext(), TaskItemView.a(TaskItemView.this));
         }
         for (;;)
         {
           com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/ui/TaskItemView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
           AppMethodBeat.o(9031);
           return;
-          paramAnonymousView = com.tencent.mm.plugin.downloader.model.d.aaU(TaskItemView.a(TaskItemView.this).appId);
+          paramAnonymousView = com.tencent.mm.plugin.downloader.model.d.alb(TaskItemView.a(TaskItemView.this).appId);
           if (paramAnonymousView != null)
           {
-            if (TaskItemView.d(TaskItemView.this).getText().equals(TaskItemView.this.getResources().getString(2131761210))) {
-              if (o.fB(paramAnonymousView.field_filePath)) {
+            if (TaskItemView.d(TaskItemView.this).getText().equals(TaskItemView.this.getResources().getString(2131762997))) {
+              if (s.YS(paramAnonymousView.field_filePath)) {
                 continue;
               }
             }
@@ -311,37 +312,37 @@ public class TaskItemView
         }
       }
     });
-    this.pxy = ((Button)findViewById(2131301037));
-    this.pxy.setOnClickListener(new View.OnClickListener()
+    this.qMP = ((Button)findViewById(2131302688));
+    this.qMP.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(9033);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/TaskItemView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        com.tencent.mm.plugin.downloader_app.a.c.b(TaskItemView.this.getContext(), TaskItemView.a(TaskItemView.this));
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/TaskItemView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        com.tencent.mm.plugin.downloader_app.a.c.c(TaskItemView.this.getContext(), TaskItemView.a(TaskItemView.this));
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/ui/TaskItemView$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
         AppMethodBeat.o(9033);
       }
     });
-    this.pxz = ((DownloadUpdateDescView)findViewById(2131306203));
-    this.pxA = ((LinearLayout)findViewById(2131299191));
-    this.pxB = ((ImageView)findViewById(2131299193));
-    this.pxC = ((TextView)findViewById(2131299192));
-    this.pxA.setOnClickListener(new View.OnClickListener()
+    this.qMQ = ((DownloadUpdateDescView)findViewById(2131309601));
+    this.qMR = ((LinearLayout)findViewById(2131299742));
+    this.qMS = ((ImageView)findViewById(2131299744));
+    this.qMT = ((TextView)findViewById(2131299743));
+    this.qMR.setOnClickListener(new View.OnClickListener()
     {
       public final void onClick(View paramAnonymousView)
       {
         AppMethodBeat.i(183828);
         com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-        localb.bd(paramAnonymousView);
-        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/TaskItemView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-        if ((TaskItemView.a(TaskItemView.this) != null) && (TaskItemView.a(TaskItemView.this).pvT != null) && (!bu.isNullOrNil(TaskItemView.a(TaskItemView.this).pvT.pqJ)))
+        localb.bm(paramAnonymousView);
+        com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/downloader_app/ui/TaskItemView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+        if ((TaskItemView.a(TaskItemView.this) != null) && (TaskItemView.a(TaskItemView.this).qLk != null) && (!Util.isNullOrNil(TaskItemView.a(TaskItemView.this).qLk.qGo)))
         {
           paramAnonymousView = new Bundle();
-          paramAnonymousView.putString("rawUrl", TaskItemView.a(TaskItemView.this).pvT.pqJ);
-          ((com.tencent.mm.plugin.downloader_app.api.c)g.ab(com.tencent.mm.plugin.downloader_app.api.c.class)).e(TaskItemView.this.getContext(), paramAnonymousView);
+          paramAnonymousView.putString("rawUrl", TaskItemView.a(TaskItemView.this).qLk.qGo);
+          ((com.tencent.mm.plugin.downloader_app.api.c)g.af(com.tencent.mm.plugin.downloader_app.api.c.class)).e(TaskItemView.this.getContext(), paramAnonymousView);
           com.tencent.mm.plugin.downloader_app.b.a.a(10, 1006, TaskItemView.a(TaskItemView.this).position, 40, TaskItemView.a(TaskItemView.this).appId, "", "");
         }
         com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/downloader_app/ui/TaskItemView$4", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
@@ -354,7 +355,7 @@ public class TaskItemView
   public void setData(i parami)
   {
     AppMethodBeat.i(9044);
-    this.pxg = parami;
+    this.qMx = parami;
     if (parami == null)
     {
       setVisibility(8);
@@ -362,94 +363,94 @@ public class TaskItemView
       return;
     }
     setVisibility(0);
-    this.pxu.setVisibility(8);
-    this.pxw.setVisibility(8);
-    this.pxz.setVisibility(8);
-    this.pxA.setVisibility(8);
-    new c.a().igk = true;
-    q.aJb().loadImage(this.pxg.iconUrl, this.pxq);
-    this.pxr.setText(this.pxg.appName);
-    parami = com.tencent.mm.plugin.downloader.model.d.aaU(this.pxg.appId);
+    this.qML.setVisibility(8);
+    this.qMN.setVisibility(8);
+    this.qMQ.setVisibility(8);
+    this.qMR.setVisibility(8);
+    new c.a().jbf = true;
+    q.bcV().loadImage(this.qMx.iconUrl, this.qMH);
+    this.qMI.setText(this.qMx.appName);
+    parami = com.tencent.mm.plugin.downloader.model.d.alb(this.qMx.appId);
     if ((parami != null) && (parami.field_autoDownload)) {
-      this.pxs.setVisibility(0);
+      this.qMJ.setVisibility(0);
     }
-    while (this.pxg.oEB)
+    while (this.qMx.pSk)
     {
-      if (this.pwI.getVisibility() != 0)
+      if (this.qLZ.getVisibility() != 0)
       {
-        this.pwI.setVisibility(0);
-        this.pwI.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772123));
+        this.qLZ.setVisibility(0);
+        this.qLZ.startAnimation(AnimationUtils.loadAnimation(getContext(), 2130772147));
       }
-      setSelected(this.pxg.isSelected);
+      setSelected(this.qMx.isSelected);
       setTaskSize(getFileSize());
       AppMethodBeat.o(9044);
       return;
-      this.pxs.setVisibility(8);
+      this.qMJ.setVisibility(8);
     }
-    this.pwI.setVisibility(8);
-    if (this.pxg.pvT != null)
+    this.qLZ.setVisibility(8);
+    if (this.qMx.qLk != null)
     {
-      parami = (LinearLayout.LayoutParams)this.pxA.getLayoutParams();
-      if (this.pxg.oEB)
+      parami = (LinearLayout.LayoutParams)this.qMR.getLayoutParams();
+      if (this.qMx.pSk)
       {
-        parami.leftMargin = getResources().getDimensionPixelSize(2131166044);
-        this.pxA.setLayoutParams(parami);
-        this.pxA.setVisibility(0);
-        new c.a().igk = true;
-        q.aJb().loadImage(this.pxg.pvT.dEM, this.pxB);
-        if (this.pxg.pvT.pqH != null) {
-          this.pxC.setText(this.pxg.pvT.pqH.value);
+        parami.leftMargin = getResources().getDimensionPixelSize(2131166084);
+        this.qMR.setLayoutParams(parami);
+        this.qMR.setVisibility(0);
+        new c.a().jbf = true;
+        q.bcV().loadImage(this.qMx.qLk.icon, this.qMS);
+        if (this.qMx.qLk.qGm != null) {
+          this.qMT.setText(this.qMx.qLk.qGm.value);
         }
-        if (!this.pxg.pvO)
+        if (!this.qMx.qLf)
         {
-          this.pxg.pvO = true;
-          com.tencent.mm.plugin.downloader_app.b.a.a(10, 1006, this.pxg.position, 1, this.pxg.appId, "", "");
+          this.qMx.qLf = true;
+          com.tencent.mm.plugin.downloader_app.b.a.a(10, 1006, this.qMx.position, 1, this.qMx.appId, "", "");
         }
       }
     }
     for (;;)
     {
       setTaskSize(getFileSize());
-      this.pxz.setVisibility(8);
-      if (this.pxg.type != 4) {
+      this.qMQ.setVisibility(8);
+      if (this.qMx.type != 4) {
         break label537;
       }
-      parami = com.tencent.mm.plugin.downloader.model.d.aaU(this.pxg.appId);
+      parami = com.tencent.mm.plugin.downloader.model.d.alb(this.qMx.appId);
       if ((parami != null) && (parami.field_status != 0) && (parami.field_status != 5)) {
         break label526;
       }
-      this.pxu.setVisibility(8);
-      setButtonText(2131764584);
-      this.pxz.setData(this.pxg);
+      this.qML.setVisibility(8);
+      setButtonText(2131766930);
+      this.qMQ.setData(this.qMx);
       AppMethodBeat.o(9044);
       return;
-      parami.leftMargin = getResources().getDimensionPixelSize(2131166043);
+      parami.leftMargin = getResources().getDimensionPixelSize(2131166083);
       break;
-      this.pxA.setVisibility(8);
+      this.qMR.setVisibility(8);
     }
     label526:
-    ceA();
+    cCq();
     AppMethodBeat.o(9044);
     return;
     label537:
-    if (this.pxg.type == 6)
+    if (this.qMx.type == 6)
     {
-      this.pxu.setVisibility(8);
-      setButtonText(2131760670);
+      this.qML.setVisibility(8);
+      setButtonText(2131762201);
       AppMethodBeat.o(9044);
       return;
     }
-    ceA();
+    cCq();
     AppMethodBeat.o(9044);
   }
   
   public void setSelected(boolean paramBoolean)
   {
     AppMethodBeat.i(9043);
-    ae.d("MicroMsg.TaskItemView", "setSelected selected: %b, appid: %s", new Object[] { Boolean.valueOf(paramBoolean), this.pxg.appId });
-    this.pxg.isSelected = paramBoolean;
+    Log.d("MicroMsg.TaskItemView", "setSelected selected: %b, appid: %s", new Object[] { Boolean.valueOf(paramBoolean), this.qMx.appId });
+    this.qMx.isSelected = paramBoolean;
     if (paramBoolean) {
-      com.tencent.mm.plugin.downloader_app.b.e(this.pwI, "checkbox_cell_on");
+      com.tencent.mm.plugin.downloader_app.b.e(this.qLZ, "checkbox_cell_on");
     }
     Object localObject;
     for (;;)
@@ -462,7 +463,7 @@ public class TaskItemView
         break label209;
       }
       localObject = (TaskListView)localObject;
-      Iterator localIterator = ((TaskListView)localObject).pxO.pxG.iterator();
+      Iterator localIterator = ((TaskListView)localObject).qNf.qMX.iterator();
       paramBoolean = false;
       i = 1;
       for (;;)
@@ -472,7 +473,7 @@ public class TaskItemView
           break label155;
         }
         i locali = (i)localIterator.next();
-        if (!locali.cen()) {
+        if (!locali.cCd()) {
           break label226;
         }
         if (!locali.isSelected) {
@@ -480,7 +481,7 @@ public class TaskItemView
         }
         paramBoolean = true;
       }
-      com.tencent.mm.plugin.downloader_app.b.e(this.pwI, "checkbox_cell_off");
+      com.tencent.mm.plugin.downloader_app.b.e(this.qLZ, "checkbox_cell_off");
     }
     int i = 0;
     label155:
@@ -490,17 +491,17 @@ public class TaskItemView
     for (;;)
     {
       break label94;
-      com.tencent.mm.plugin.downloader_app.a.d.jV(paramBoolean);
+      com.tencent.mm.plugin.downloader_app.a.d.kY(paramBoolean);
       if (i != 0)
       {
         if ((((TaskListView)localObject).getContext() instanceof DownloadMainUI))
         {
-          ((DownloadMainUI)((TaskListView)localObject).getContext()).ka(true);
+          ((DownloadMainUI)((TaskListView)localObject).getContext()).ld(true);
           AppMethodBeat.o(9043);
         }
       }
       else {
-        ((DownloadMainUI)((TaskListView)localObject).getContext()).ka(false);
+        ((DownloadMainUI)((TaskListView)localObject).getContext()).ld(false);
       }
       AppMethodBeat.o(9043);
       return;
@@ -513,7 +514,7 @@ public class TaskItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.downloader_app.ui.TaskItemView
  * JD-Core Version:    0.7.0.1
  */

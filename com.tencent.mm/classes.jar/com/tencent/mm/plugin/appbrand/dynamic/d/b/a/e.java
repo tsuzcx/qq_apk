@@ -5,25 +5,25 @@ import org.json.JSONObject;
 
 public abstract interface e<T>
 {
-  public abstract boolean Pp(String paramString);
+  public abstract void W(Runnable paramRunnable);
   
-  public abstract void R(Runnable paramRunnable);
+  public abstract boolean YA(String paramString);
   
   public abstract void a(b paramb);
   
-  public abstract void bgK();
+  public abstract void bCd();
   
-  public abstract int bgL();
+  public abstract int bCe();
   
-  public abstract T c(JSONObject paramJSONObject, String paramString);
+  public abstract void cB(T paramT);
   
-  public abstract void cs(T paramT);
+  public abstract T d(JSONObject paramJSONObject, String paramString);
   
   public abstract void reset();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.d.b.a.e
  * JD-Core Version:    0.7.0.1
  */

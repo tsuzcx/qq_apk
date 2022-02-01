@@ -1,27 +1,27 @@
 package com.tencent.mm.plugin.profile.ui.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.e.n.b;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.sdk.storage.MStorageEx.IOnStorageChange;
 import java.lang.ref.WeakReference;
 
 public final class b
-  implements n.b
+  implements MStorageEx.IOnStorageChange
 {
-  private WeakReference<n.b> cyH;
+  private WeakReference<MStorageEx.IOnStorageChange> cMO;
   
-  public b(n.b paramb)
+  public b(MStorageEx.IOnStorageChange paramIOnStorageChange)
   {
     AppMethodBeat.i(27601);
-    this.cyH = new WeakReference(paramb);
+    this.cMO = new WeakReference(paramIOnStorageChange);
     AppMethodBeat.o(27601);
   }
   
-  public final void a(int paramInt, n paramn, Object paramObject)
+  public final void onNotifyChange(int paramInt, MStorageEx paramMStorageEx, Object paramObject)
   {
     AppMethodBeat.i(27602);
-    if (this.cyH.get() != null) {
-      ((n.b)this.cyH.get()).a(paramInt, paramn, paramObject);
+    if (this.cMO.get() != null) {
+      ((MStorageEx.IOnStorageChange)this.cMO.get()).onNotifyChange(paramInt, paramMStorageEx, paramObject);
     }
     AppMethodBeat.o(27602);
   }

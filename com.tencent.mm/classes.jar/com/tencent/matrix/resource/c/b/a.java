@@ -18,7 +18,7 @@ public final class a
   
   public static Object a(InputStream paramInputStream, c paramc, int paramInt)
   {
-    switch (a.1.cJd[paramc.ordinal()])
+    switch (a.1.cZA[paramc.ordinal()])
     {
     default: 
       return null;
@@ -71,7 +71,7 @@ public final class a
   
   public static void a(OutputStream paramOutputStream, b paramb)
   {
-    paramOutputStream.write(paramb.cIS);
+    paramOutputStream.write(paramb.cZp);
   }
   
   public static int b(InputStream paramInputStream, c paramc, int paramInt)
@@ -167,7 +167,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.resource.c.b.a
  * JD-Core Version:    0.7.0.1
  */

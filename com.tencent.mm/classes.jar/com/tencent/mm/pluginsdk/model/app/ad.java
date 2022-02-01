@@ -1,17 +1,17 @@
 package com.tencent.mm.pluginsdk.model.app;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.network.q;
-import com.tencent.mm.plugin.s.a;
-import com.tencent.mm.protocal.protobuf.awv;
-import com.tencent.mm.protocal.protobuf.aww;
-import com.tencent.mm.protocal.protobuf.fw;
-import com.tencent.mm.protocal.protobuf.fx;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.network.s;
+import com.tencent.mm.plugin.r.a;
+import com.tencent.mm.protocal.protobuf.bif;
+import com.tencent.mm.protocal.protobuf.big;
+import com.tencent.mm.protocal.protobuf.gj;
+import com.tencent.mm.protocal.protobuf.gk;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,21 +19,21 @@ import java.util.List;
 public final class ad
   extends aa
 {
-  List<String> FfI;
+  List<String> JWz;
   
   public ad(List<String> paramList)
   {
     AppMethodBeat.i(151814);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new awv();
-    ((b.a)localObject).hQG = new aww();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getappsetting";
-    ((b.a)localObject).funcId = 395;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.gux = ((b.a)localObject).aDS();
-    this.FfI = paramList;
-    ae.d("MicroMsg.NetSceneGetAppSetting", "<init>, appIdList size = " + paramList.size());
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bif();
+    ((d.a)localObject).iLO = new big();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getappsetting";
+    ((d.a)localObject).funcId = 395;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.hhm = ((d.a)localObject).aXF();
+    this.JWz = paramList;
+    Log.d("MicroMsg.NetSceneGetAppSetting", "<init>, appIdList size = " + paramList.size());
     localObject = new LinkedList();
     paramList = paramList.iterator();
     while (paramList.hasNext())
@@ -41,59 +41,41 @@ public final class ad
       String str = (String)paramList.next();
       if ((str != null) && (str.length() > 0))
       {
-        fx localfx = new fx();
-        localfx.gvv = str;
-        ((LinkedList)localObject).add(localfx);
+        gk localgk = new gk();
+        localgk.hik = str;
+        ((LinkedList)localObject).add(localgk);
       }
     }
     if (((LinkedList)localObject).size() == 0) {
-      ae.e("MicroMsg.NetSceneGetAppSetting", "doScene fail, reqList is empty");
+      Log.e("MicroMsg.NetSceneGetAppSetting", "doScene fail, reqList is empty");
     }
-    paramList = (awv)this.gux.hQD.hQJ;
-    paramList.GOu = ((LinkedList)localObject);
-    paramList.GOt = ((LinkedList)localObject).size();
+    paramList = (bif)this.hhm.iLK.iLR;
+    paramList.LSy = ((LinkedList)localObject);
+    paramList.LSx = ((LinkedList)localObject).size();
     AppMethodBeat.o(151814);
   }
   
-  public final void ck(byte[] paramArrayOfByte)
+  public final void cB(byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151817);
     if (paramArrayOfByte == null)
     {
-      ae.e("MicroMsg.NetSceneGetAppSetting", "buf is null");
+      Log.e("MicroMsg.NetSceneGetAppSetting", "buf is null");
       AppMethodBeat.o(151817);
       return;
     }
     try
     {
-      this.gux.hQE.fromProtoBuf(paramArrayOfByte);
+      this.hhm.iLL.fromProtoBuf(paramArrayOfByte);
       AppMethodBeat.o(151817);
       return;
     }
     catch (Exception paramArrayOfByte)
     {
-      ae.e("MicroMsg.NetSceneGetAppSetting", "bufToResp error: " + paramArrayOfByte.getMessage());
-      ae.printErrStackTrace("MicroMsg.NetSceneGetAppSetting", paramArrayOfByte, "", new Object[0]);
+      Log.e("MicroMsg.NetSceneGetAppSetting", "bufToResp error: " + paramArrayOfByte.getMessage());
+      Log.printErrStackTrace("MicroMsg.NetSceneGetAppSetting", paramArrayOfByte, "", new Object[0]);
       AppMethodBeat.o(151817);
     }
-  }
-  
-  public final byte[] fdr()
-  {
-    AppMethodBeat.i(151816);
-    try
-    {
-      byte[] arrayOfByte = ((b.b)this.gux.getReqObj()).toProtoBuf();
-      AppMethodBeat.o(151816);
-      return arrayOfByte;
-    }
-    catch (Exception localException)
-    {
-      ae.e("MicroMsg.NetSceneGetAppSetting", "toProtBuf error: " + localException.getMessage());
-      ae.printErrStackTrace("MicroMsg.NetSceneGetAppSetting", localException, "", new Object[0]);
-      AppMethodBeat.o(151816);
-    }
-    return null;
   }
   
   public final int getType()
@@ -101,37 +83,55 @@ public final class ad
     return 1;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final byte[] gmB()
+  {
+    AppMethodBeat.i(151816);
+    try
+    {
+      byte[] arrayOfByte = ((d.b)this.hhm.getReqObj()).toProtoBuf();
+      AppMethodBeat.o(151816);
+      return arrayOfByte;
+    }
+    catch (Exception localException)
+    {
+      Log.e("MicroMsg.NetSceneGetAppSetting", "toProtBuf error: " + localException.getMessage());
+      Log.printErrStackTrace("MicroMsg.NetSceneGetAppSetting", localException, "", new Object[0]);
+      AppMethodBeat.o(151816);
+    }
+    return null;
+  }
+  
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(151815);
-    ae.d("MicroMsg.NetSceneGetAppSetting", "errType = " + paramInt2 + ", errCode = " + paramInt3);
+    Log.d("MicroMsg.NetSceneGetAppSetting", "errType = " + paramInt2 + ", errCode = " + paramInt3);
     if ((paramInt2 != 0) || (paramInt3 != 0))
     {
-      ae.e("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, errType = " + paramInt2 + ", errCode = " + paramInt3);
+      Log.e("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, errType = " + paramInt2 + ", errCode = " + paramInt3);
       AppMethodBeat.o(151815);
       return;
     }
-    paramString = (aww)this.gux.hQE.hQJ;
-    ae.d("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, resp appCount = " + paramString.GOt);
-    paramq = paramString.GOv;
-    if ((paramq == null) || (paramq.size() == 0))
+    paramString = (big)this.hhm.iLL.iLR;
+    Log.d("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, resp appCount = " + paramString.LSx);
+    params = paramString.LSz;
+    if ((params == null) || (params.size() == 0))
     {
-      ae.e("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, settingList is empty");
+      Log.e("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, settingList is empty");
       AppMethodBeat.o(151815);
       return;
     }
-    paramString = a.dBg();
-    paramq = paramq.iterator();
-    while (paramq.hasNext())
+    paramString = a.eAS();
+    params = params.iterator();
+    while (params.hasNext())
     {
-      paramArrayOfByte = (fw)paramq.next();
-      g localg = h.m(paramArrayOfByte.gvv, false, false);
+      paramArrayOfByte = (gj)params.next();
+      g localg = h.o(paramArrayOfByte.hik, false, false);
       if (localg != null)
       {
-        localg.field_authFlag = paramArrayOfByte.FQE;
-        localg.field_openId = paramArrayOfByte.gvz;
+        localg.field_authFlag = paramArrayOfByte.KKl;
+        localg.field_openId = paramArrayOfByte.hio;
         boolean bool = paramString.a(localg, new String[0]);
-        ae.d("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, update ret = " + bool + ", appId = " + paramArrayOfByte.gvv);
+        Log.d("MicroMsg.NetSceneGetAppSetting", "onGYNetEnd, update ret = " + bool + ", appId = " + paramArrayOfByte.hik);
       }
     }
     AppMethodBeat.o(151815);

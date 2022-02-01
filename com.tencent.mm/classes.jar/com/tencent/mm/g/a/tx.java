@@ -1,10 +1,14 @@
 package com.tencent.mm.g.a;
 
-import com.tencent.mm.sdk.b.b;
+import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.sdk.event.IEvent;
+import com.tencent.mm.storage.ca;
 
 public final class tx
-  extends b
+  extends IEvent
 {
+  public a ear;
+  
   public tx()
   {
     this((byte)0);
@@ -12,8 +16,16 @@ public final class tx
   
   private tx(byte paramByte)
   {
-    this.IvZ = false;
+    AppMethodBeat.i(42657);
+    this.ear = new a();
+    this.order = false;
     this.callback = null;
+    AppMethodBeat.o(42657);
+  }
+  
+  public static final class a
+  {
+    public ca dCM;
   }
 }
 

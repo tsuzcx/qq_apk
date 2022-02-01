@@ -8,19 +8,20 @@ import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 import android.widget.ImageView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.av.a.d.b;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.BitmapUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public final class m
   implements com.tencent.mm.av.a.c.h
 {
-  int FnK;
-  int Foe;
-  private float[] Fof;
-  a Fog;
-  Runnable Foh;
-  int ogD;
+  int KeA;
+  int KeU;
+  int KeV;
+  private float[] KeW;
+  a KeX;
+  Runnable KeY;
   long requestEnd;
   long requestStart;
   int scene;
@@ -33,49 +34,49 @@ public final class m
   public m(byte paramByte)
   {
     this.scene = 0;
-    this.FnK = 0;
+    this.KeA = 0;
     this.requestStart = 0L;
     this.requestEnd = 0L;
     this.scene = 0;
-    this.Foe = 0;
-    this.ogD = 0;
-    this.Fog = null;
-    this.Fof = null;
+    this.KeU = 0;
+    this.KeV = 0;
+    this.KeX = null;
+    this.KeW = null;
   }
   
   public m(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2, float paramFloat, a parama)
   {
     AppMethodBeat.i(124378);
     this.scene = 0;
-    this.FnK = 0;
+    this.KeA = 0;
     this.requestStart = 0L;
     this.requestEnd = 0L;
     this.scene = paramInt1;
-    this.Foe = paramInt2;
-    this.ogD = paramInt3;
-    this.Fog = parama;
+    this.KeU = paramInt2;
+    this.KeV = paramInt3;
+    this.KeX = parama;
     if ((paramBoolean1) || (paramBoolean2))
     {
-      if (this.Fof == null) {
-        this.Fof = new float[] { 0.0F, 0.0F, 0.0F, 0.0F };
+      if (this.KeW == null) {
+        this.KeW = new float[] { 0.0F, 0.0F, 0.0F, 0.0F };
       }
       if (paramBoolean1)
       {
-        parama = this.Fof;
-        this.Fof[1] = paramFloat;
+        parama = this.KeW;
+        this.KeW[1] = paramFloat;
         parama[0] = paramFloat;
       }
       if (paramBoolean2)
       {
-        parama = this.Fof;
-        this.Fof[3] = paramFloat;
+        parama = this.KeW;
+        this.KeW[3] = paramFloat;
         parama[2] = paramFloat;
         AppMethodBeat.o(124378);
       }
     }
     else
     {
-      this.Fof = null;
+      this.KeW = null;
     }
     AppMethodBeat.o(124378);
   }
@@ -83,44 +84,44 @@ public final class m
   public m(int paramInt1, int paramInt2, int paramInt3, float[] paramArrayOfFloat, a parama)
   {
     this.scene = 0;
-    this.FnK = 0;
+    this.KeA = 0;
     this.requestStart = 0L;
     this.requestEnd = 0L;
     this.scene = paramInt1;
-    this.Foe = paramInt2;
-    this.ogD = paramInt3;
-    this.Fog = parama;
-    this.Fof = paramArrayOfFloat;
+    this.KeU = paramInt2;
+    this.KeV = paramInt3;
+    this.KeX = parama;
+    this.KeW = paramArrayOfFloat;
   }
   
   public final Bitmap a(final String paramString, View paramView, b paramb)
   {
     AppMethodBeat.i(124380);
-    if (this.Fof == null)
+    if (this.KeW == null)
     {
       AppMethodBeat.o(124380);
       return null;
     }
     if ((paramb == null) || (paramb.bitmap == null) || (paramb.bitmap.isRecycled()))
     {
-      ae.w("MicroMsg.ChattingBizImageDownloadListener", "onProcessBitmap bitmap is null");
+      Log.w("MicroMsg.ChattingBizImageDownloadListener", "onProcessBitmap bitmap is null");
       AppMethodBeat.o(124380);
       return null;
     }
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.w("MicroMsg.ChattingBizImageDownloadListener", "onProcessBitmap url is null");
+      Log.w("MicroMsg.ChattingBizImageDownloadListener", "onProcessBitmap url is null");
       AppMethodBeat.o(124380);
       return null;
     }
     try
     {
-      if (((paramView instanceof ImageView)) && (this.Foh != null) && (this.Foe == -1) && (this.ogD == -1))
+      if (((paramView instanceof ImageView)) && (this.KeY != null) && (this.KeU == -1) && (this.KeV == -1))
       {
         paramString = (ImageView)paramView;
-        this.Foe = paramString.getMeasuredWidth();
-        this.ogD = paramString.getMeasuredHeight();
-        if ((this.Foe <= 0) || (this.ogD <= 0))
+        this.KeU = paramString.getMeasuredWidth();
+        this.KeV = paramString.getMeasuredHeight();
+        if ((this.KeU <= 0) || (this.KeV <= 0))
         {
           paramString.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
           {
@@ -128,30 +129,30 @@ public final class m
             {
               AppMethodBeat.i(124376);
               paramString.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-              m.this.Foe = paramString.getMeasuredWidth();
-              m.this.ogD = paramString.getMeasuredHeight();
-              ae.d("MicroMsg.ChattingBizImageDownloadListener", "onProcessBitmap image delay layout:%d,%d", new Object[] { Integer.valueOf(m.this.Foe), Integer.valueOf(m.this.ogD) });
-              m.this.Foh.run();
+              m.this.KeU = paramString.getMeasuredWidth();
+              m.this.KeV = paramString.getMeasuredHeight();
+              Log.d("MicroMsg.ChattingBizImageDownloadListener", "onProcessBitmap image delay layout:%d,%d", new Object[] { Integer.valueOf(m.this.KeU), Integer.valueOf(m.this.KeV) });
+              m.this.KeY.run();
               AppMethodBeat.o(124376);
             }
           });
-          paramb.igN = true;
-          paramb.igO = true;
+          paramb.jbI = true;
+          paramb.jbJ = true;
           AppMethodBeat.o(124380);
           return null;
         }
       }
-      paramView = com.tencent.mm.sdk.platformtools.h.b(paramb.bitmap, this.Foe, this.ogD, true);
-      paramString = Bitmap.createScaledBitmap(paramView, this.Foe, this.ogD, true);
+      paramView = BitmapUtil.getCenterCropBitmap(paramb.bitmap, this.KeU, this.KeV, true);
+      paramString = Bitmap.createScaledBitmap(paramView, this.KeU, this.KeV, true);
       if ((paramString != paramView) && (paramView != null) && (!paramView.isRecycled()))
       {
-        ae.i("MicroMsg.ChattingBizImageDownloadListener", "bitmap recycle %s", new Object[] { paramView.toString() });
+        Log.i("MicroMsg.ChattingBizImageDownloadListener", "bitmap recycle %s", new Object[] { paramView.toString() });
         paramView.recycle();
       }
-      paramView = com.tencent.mm.sdk.platformtools.h.a(paramString, this.Fof);
+      paramView = BitmapUtil.getRoundedCornerBitmap(paramString, true, this.KeW, true);
       if ((paramString != null) && (!paramString.isRecycled()))
       {
-        ae.i("MicroMsg.ChattingBizImageDownloadListener", "bitmap recycle %s", new Object[] { paramString.toString() });
+        Log.i("MicroMsg.ChattingBizImageDownloadListener", "bitmap recycle %s", new Object[] { paramString.toString() });
         paramString.recycle();
       }
       AppMethodBeat.o(124380);
@@ -159,39 +160,39 @@ public final class m
     }
     catch (OutOfMemoryError paramString)
     {
-      ae.w("MicroMsg.ChattingBizImageDownloadListener", "onProcessBitmap OutOfMemoryError %s", new Object[] { paramString.getMessage() });
+      Log.w("MicroMsg.ChattingBizImageDownloadListener", "onProcessBitmap OutOfMemoryError %s", new Object[] { paramString.getMessage() });
       AppMethodBeat.o(124380);
     }
     return null;
   }
   
-  public final void av(Runnable paramRunnable)
+  public final void aG(Runnable paramRunnable)
   {
-    this.Foh = paramRunnable;
+    this.KeY = paramRunnable;
   }
   
   public final void b(String paramString, View paramView)
   {
     AppMethodBeat.i(124379);
-    if (this.Fog != null) {
-      this.Fog.onStart();
+    if (this.KeX != null) {
+      this.KeX.onStart();
     }
-    paramView = g.FnF;
-    if (g.aOg(paramString)) {
-      this.FnK = 1;
+    paramView = g.Kev;
+    if (g.beI(paramString)) {
+      this.KeA = 1;
     }
     for (;;)
     {
       this.requestStart = System.currentTimeMillis();
-      ae.d("MicroMsg.ChattingBizImageDownloadListener", "alvinluo onImageLoadStart requestImageType: %d, url: %s", new Object[] { Integer.valueOf(this.FnK), paramString });
-      com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 0L, 1L, false);
+      Log.d("MicroMsg.ChattingBizImageDownloadListener", "alvinluo onImageLoadStart requestImageType: %d, url: %s", new Object[] { Integer.valueOf(this.KeA), paramString });
+      com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(86L, 0L, 1L, false);
       AppMethodBeat.o(124379);
       return;
-      paramView = g.FnF;
-      if (g.aOh(paramString)) {
-        this.FnK = 2;
+      paramView = g.Kev;
+      if (g.beJ(paramString)) {
+        this.KeA = 2;
       } else {
-        this.FnK = 0;
+        this.KeA = 0;
       }
     }
   }
@@ -204,8 +205,8 @@ public final class m
     if (paramb.bitmap == null)
     {
       bool = true;
-      ae.d("MicroMsg.ChattingBizImageDownloadListener", "onImageLoadFinish, url:%s, contentType: %s, scene: %d, bitmap == null: %b", new Object[] { paramString, paramView, Integer.valueOf(i), Boolean.valueOf(bool) });
-      if ((this.Fog == null) || (paramb.bitmap == null) || (paramb.bitmap.isRecycled())) {
+      Log.d("MicroMsg.ChattingBizImageDownloadListener", "onImageLoadFinish, url:%s, contentType: %s, scene: %d, bitmap == null: %b", new Object[] { paramString, paramView, Integer.valueOf(i), Boolean.valueOf(bool) });
+      if ((this.KeX == null) || (paramb.bitmap == null) || (paramb.bitmap.isRecycled())) {
         break label140;
       }
       paramView = new Runnable()
@@ -214,16 +215,16 @@ public final class m
         {
           AppMethodBeat.i(124377);
           m.this.requestEnd = System.currentTimeMillis();
-          if (m.this.Fog != null) {
-            m.this.Fog.onFinish();
+          if (m.this.KeX != null) {
+            m.this.KeX.onFinish();
           }
-          Object localObject = g.FnF;
-          if ((g.Zu(m.this.scene)) && (paramb.from == 2))
+          Object localObject = g.Kev;
+          if ((g.aif(m.this.scene)) && (paramb.from == 2))
           {
-            localObject = f.FnD;
-            f.b(m.this.FnK, true, m.this.requestEnd - m.this.requestStart);
-            localObject = f.FnD;
-            f.be(m.this.FnK, true);
+            localObject = f.Ket;
+            f.b(m.this.KeA, true, m.this.requestEnd - m.this.requestStart);
+            localObject = f.Ket;
+            f.by(m.this.KeA, true);
           }
           AppMethodBeat.o(124377);
         }
@@ -243,29 +244,29 @@ public final class m
       bool = false;
       break;
       label133:
-      ar.f(paramView);
+      MMHandlerThread.postToMainThread(paramView);
       continue;
       label140:
       if ((paramb.bitmap == null) || (paramb.bitmap.isRecycled()))
       {
         this.requestEnd = System.currentTimeMillis();
-        paramView = g.FnF;
-        if ((g.Zu(this.scene)) && (paramb.from == 2))
+        paramView = g.Kev;
+        if ((g.aif(this.scene)) && (paramb.from == 2))
         {
-          paramView = f.FnD;
-          f.b(this.FnK, false, this.requestEnd - this.requestStart);
-          paramView = f.FnD;
-          f.be(this.FnK, false);
+          paramView = f.Ket;
+          f.b(this.KeA, false, this.requestEnd - this.requestStart);
+          paramView = f.Ket;
+          f.by(this.KeA, false);
         }
       }
     }
     label222:
-    paramView = g.FnF;
-    if (g.lC(paramString, paramb.contentType)) {}
+    paramView = g.Kev;
+    if (g.mA(paramString, paramb.contentType)) {}
     for (boolean bool = true;; bool = false)
     {
       i = paramb.status;
-      ae.d("MicroMsg.ChattingBizImageDownloadListener", "onImageLoadFinish, isDownloadWebp: %b, status: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
+      Log.d("MicroMsg.ChattingBizImageDownloadListener", "onImageLoadFinish, isDownloadWebp: %b, status: %d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(i) });
       switch (i)
       {
       }
@@ -275,17 +276,17 @@ public final class m
         return;
         if (bool)
         {
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 13L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(86L, 13L, 1L, false);
           AppMethodBeat.o(124381);
           return;
-          com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 2L, 1L, false);
+          com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(86L, 2L, 1L, false);
           if (bool)
           {
-            com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 15L, 1L, false);
+            com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(86L, 15L, 1L, false);
             AppMethodBeat.o(124381);
             return;
             if (bool) {
-              com.tencent.mm.plugin.report.service.g.yxI.idkeyStat(86L, 14L, 1L, false);
+              com.tencent.mm.plugin.report.service.h.CyF.idkeyStat(86L, 14L, 1L, false);
             }
           }
         }

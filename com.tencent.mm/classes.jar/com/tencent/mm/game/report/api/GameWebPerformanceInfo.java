@@ -4,7 +4,7 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,40 +12,40 @@ public class GameWebPerformanceInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<GameWebPerformanceInfo> CREATOR;
-  private static Map<String, GameWebPerformanceInfo> gvm;
-  public String guF;
-  public int guG;
-  public int guH;
-  public int guI;
-  public int guJ;
-  public int guK;
-  public int guL;
-  public int guM;
-  public int guN;
-  public String guO;
-  public long guP;
-  public long guQ;
-  public long guR;
-  public long guS;
-  public long guT;
-  public long guU;
-  public long guV;
-  public long guW;
-  public long guX;
-  public long guY;
-  public long guZ;
-  public long gva;
-  public long gvb;
-  public long gvc;
-  public long gvd;
-  public long gve;
-  public long gvf;
-  public long gvg;
-  public long gvh;
-  public long gvi;
-  public String gvj;
-  public String gvk;
-  public String gvl;
+  private static Map<String, GameWebPerformanceInfo> hib;
+  public int hhA;
+  public int hhB;
+  public int hhC;
+  public String hhD;
+  public long hhE;
+  public long hhF;
+  public long hhG;
+  public long hhH;
+  public long hhI;
+  public long hhJ;
+  public long hhK;
+  public long hhL;
+  public long hhM;
+  public long hhN;
+  public long hhO;
+  public long hhP;
+  public long hhQ;
+  public long hhR;
+  public long hhS;
+  public long hhT;
+  public long hhU;
+  public long hhV;
+  public long hhW;
+  public long hhX;
+  public String hhY;
+  public String hhZ;
+  public String hhu;
+  public int hhv;
+  public int hhw;
+  public int hhx;
+  public int hhy;
+  public int hhz;
+  public String hia;
   public long startTime;
   public String url;
   
@@ -53,7 +53,7 @@ public class GameWebPerformanceInfo
   {
     AppMethodBeat.i(117612);
     CREATOR = new Parcelable.Creator() {};
-    gvm = new HashMap();
+    hib = new HashMap();
     AppMethodBeat.o(117612);
   }
   
@@ -63,59 +63,59 @@ public class GameWebPerformanceInfo
   {
     AppMethodBeat.i(117607);
     this.url = paramParcel.readString();
-    this.guF = paramParcel.readString();
-    this.guG = paramParcel.readInt();
-    this.guH = paramParcel.readInt();
-    this.guI = paramParcel.readInt();
-    this.guJ = paramParcel.readInt();
-    this.guK = paramParcel.readInt();
-    this.guL = paramParcel.readInt();
-    this.guM = paramParcel.readInt();
-    this.guN = paramParcel.readInt();
-    this.guO = paramParcel.readString();
+    this.hhu = paramParcel.readString();
+    this.hhv = paramParcel.readInt();
+    this.hhw = paramParcel.readInt();
+    this.hhx = paramParcel.readInt();
+    this.hhy = paramParcel.readInt();
+    this.hhz = paramParcel.readInt();
+    this.hhA = paramParcel.readInt();
+    this.hhB = paramParcel.readInt();
+    this.hhC = paramParcel.readInt();
+    this.hhD = paramParcel.readString();
     this.startTime = paramParcel.readLong();
-    this.guP = paramParcel.readLong();
-    this.guQ = paramParcel.readLong();
-    this.guR = paramParcel.readLong();
-    this.guS = paramParcel.readLong();
-    this.guT = paramParcel.readLong();
-    this.guU = paramParcel.readLong();
-    this.guV = paramParcel.readLong();
-    this.guW = paramParcel.readLong();
-    this.guX = paramParcel.readLong();
-    this.guY = paramParcel.readLong();
-    this.guZ = paramParcel.readLong();
-    this.gva = paramParcel.readLong();
-    this.gvb = paramParcel.readLong();
-    this.gvc = paramParcel.readLong();
-    this.gvd = paramParcel.readLong();
-    this.gve = paramParcel.readLong();
-    this.gvf = paramParcel.readLong();
-    this.gvg = paramParcel.readLong();
-    this.gvh = paramParcel.readLong();
-    this.gvi = paramParcel.readLong();
-    this.gvj = paramParcel.readString();
-    this.gvk = paramParcel.readString();
-    this.gvl = paramParcel.readString();
+    this.hhE = paramParcel.readLong();
+    this.hhF = paramParcel.readLong();
+    this.hhG = paramParcel.readLong();
+    this.hhH = paramParcel.readLong();
+    this.hhI = paramParcel.readLong();
+    this.hhJ = paramParcel.readLong();
+    this.hhK = paramParcel.readLong();
+    this.hhL = paramParcel.readLong();
+    this.hhM = paramParcel.readLong();
+    this.hhN = paramParcel.readLong();
+    this.hhO = paramParcel.readLong();
+    this.hhP = paramParcel.readLong();
+    this.hhQ = paramParcel.readLong();
+    this.hhR = paramParcel.readLong();
+    this.hhS = paramParcel.readLong();
+    this.hhT = paramParcel.readLong();
+    this.hhU = paramParcel.readLong();
+    this.hhV = paramParcel.readLong();
+    this.hhW = paramParcel.readLong();
+    this.hhX = paramParcel.readLong();
+    this.hhY = paramParcel.readString();
+    this.hhZ = paramParcel.readString();
+    this.hia = paramParcel.readString();
     AppMethodBeat.o(117607);
   }
   
-  public static GameWebPerformanceInfo wP(String paramString)
+  public static GameWebPerformanceInfo Fd(String paramString)
   {
     for (;;)
     {
       try
       {
         AppMethodBeat.i(117609);
-        if (bu.isNullOrNil(paramString))
+        if (Util.isNullOrNil(paramString))
         {
           paramString = new GameWebPerformanceInfo();
           AppMethodBeat.o(117609);
           return paramString;
         }
-        if (gvm.containsKey(paramString))
+        if (hib.containsKey(paramString))
         {
-          paramString = (GameWebPerformanceInfo)gvm.get(paramString);
+          paramString = (GameWebPerformanceInfo)hib.get(paramString);
           AppMethodBeat.o(117609);
           continue;
         }
@@ -123,32 +123,32 @@ public class GameWebPerformanceInfo
       }
       finally {}
       GameWebPerformanceInfo localGameWebPerformanceInfo;
-      gvm.put(paramString, localGameWebPerformanceInfo);
+      hib.put(paramString, localGameWebPerformanceInfo);
       AppMethodBeat.o(117609);
       paramString = localGameWebPerformanceInfo;
     }
   }
   
-  public static GameWebPerformanceInfo wQ(String paramString)
+  public static GameWebPerformanceInfo Fe(String paramString)
   {
     try
     {
       AppMethodBeat.i(117610);
-      if (gvm.containsKey(paramString)) {
-        gvm.remove(paramString);
+      if (hib.containsKey(paramString)) {
+        hib.remove(paramString);
       }
       GameWebPerformanceInfo localGameWebPerformanceInfo = new GameWebPerformanceInfo();
-      gvm.put(paramString, localGameWebPerformanceInfo);
+      hib.put(paramString, localGameWebPerformanceInfo);
       AppMethodBeat.o(117610);
       return localGameWebPerformanceInfo;
     }
     finally {}
   }
   
-  public static GameWebPerformanceInfo wR(String paramString)
+  public static GameWebPerformanceInfo Ff(String paramString)
   {
     AppMethodBeat.i(117611);
-    paramString = (GameWebPerformanceInfo)gvm.remove(paramString);
+    paramString = (GameWebPerformanceInfo)hib.remove(paramString);
     AppMethodBeat.o(117611);
     return paramString;
   }
@@ -161,7 +161,7 @@ public class GameWebPerformanceInfo
   public String toString()
   {
     AppMethodBeat.i(117608);
-    String str = String.format("url: %s, isLuggage: %d, isWePkg: %d, isPreloadWebCore: %d, isFirstPage: %d, usedCacheUinKey: %d, jsapiCanUsed: %d, hasFloatLayer: %d, pkgId: %s,startTime: %d, gameCenterUICreate: %d, startWebUI: %d, preloadWePkgBgn: %d,preloadWePkgEnd: %d, preloadWebCoreBgn: %d, preloadWebCoreEnd: %d, webUICreate: %d, webUIOnShowBgn: %d, createViewBgn: %d,createViewEnd: %d, jsbridgeInject: %d, loadUrlBgn: %d, onPageStarted: %d,onPageFinished: %d, getA8keyBgn: %d, getA8keyEnd: %d, webUIInFront: %d, webUIDestroy: %d, commJsVersion: %s, pkgVersion: %s, jsBridgeErrMsg: %s", new Object[] { this.url, Integer.valueOf(this.guG), Integer.valueOf(this.guH), Integer.valueOf(this.guI), Integer.valueOf(this.guJ), Integer.valueOf(this.guK), Integer.valueOf(this.guM), Integer.valueOf(this.guN), this.guO, Long.valueOf(this.startTime), Long.valueOf(this.guP), Long.valueOf(this.guQ), Long.valueOf(this.guT), Long.valueOf(this.guS), Long.valueOf(this.guT), Long.valueOf(this.guU), Long.valueOf(this.guV), Long.valueOf(this.guW), Long.valueOf(this.guX), Long.valueOf(this.guY), Long.valueOf(this.guZ), Long.valueOf(this.gva), Long.valueOf(this.gvb), Long.valueOf(this.gvc), Long.valueOf(this.gvd), Long.valueOf(this.gve), Long.valueOf(this.gvf), Long.valueOf(this.gvg), this.gvj, this.gvk, this.gvl });
+    String str = String.format("url: %s, isLuggage: %d, isWePkg: %d, isPreloadWebCore: %d, isFirstPage: %d, usedCacheUinKey: %d, jsapiCanUsed: %d, hasFloatLayer: %d, pkgId: %s,startTime: %d, gameCenterUICreate: %d, startWebUI: %d, preloadWePkgBgn: %d,preloadWePkgEnd: %d, preloadWebCoreBgn: %d, preloadWebCoreEnd: %d, webUICreate: %d, webUIOnShowBgn: %d, createViewBgn: %d,createViewEnd: %d, jsbridgeInject: %d, loadUrlBgn: %d, onPageStarted: %d,onPageFinished: %d, getA8keyBgn: %d, getA8keyEnd: %d, webUIInFront: %d, webUIDestroy: %d, commJsVersion: %s, pkgVersion: %s, jsBridgeErrMsg: %s", new Object[] { this.url, Integer.valueOf(this.hhv), Integer.valueOf(this.hhw), Integer.valueOf(this.hhx), Integer.valueOf(this.hhy), Integer.valueOf(this.hhz), Integer.valueOf(this.hhB), Integer.valueOf(this.hhC), this.hhD, Long.valueOf(this.startTime), Long.valueOf(this.hhE), Long.valueOf(this.hhF), Long.valueOf(this.hhI), Long.valueOf(this.hhH), Long.valueOf(this.hhI), Long.valueOf(this.hhJ), Long.valueOf(this.hhK), Long.valueOf(this.hhL), Long.valueOf(this.hhM), Long.valueOf(this.hhN), Long.valueOf(this.hhO), Long.valueOf(this.hhP), Long.valueOf(this.hhQ), Long.valueOf(this.hhR), Long.valueOf(this.hhS), Long.valueOf(this.hhT), Long.valueOf(this.hhU), Long.valueOf(this.hhV), this.hhY, this.hhZ, this.hia });
     AppMethodBeat.o(117608);
     return str;
   }
@@ -170,40 +170,40 @@ public class GameWebPerformanceInfo
   {
     AppMethodBeat.i(117606);
     paramParcel.writeString(this.url);
-    paramParcel.writeString(this.guF);
-    paramParcel.writeInt(this.guG);
-    paramParcel.writeInt(this.guH);
-    paramParcel.writeInt(this.guI);
-    paramParcel.writeInt(this.guJ);
-    paramParcel.writeInt(this.guK);
-    paramParcel.writeInt(this.guL);
-    paramParcel.writeInt(this.guM);
-    paramParcel.writeInt(this.guN);
-    paramParcel.writeString(this.guO);
+    paramParcel.writeString(this.hhu);
+    paramParcel.writeInt(this.hhv);
+    paramParcel.writeInt(this.hhw);
+    paramParcel.writeInt(this.hhx);
+    paramParcel.writeInt(this.hhy);
+    paramParcel.writeInt(this.hhz);
+    paramParcel.writeInt(this.hhA);
+    paramParcel.writeInt(this.hhB);
+    paramParcel.writeInt(this.hhC);
+    paramParcel.writeString(this.hhD);
     paramParcel.writeLong(this.startTime);
-    paramParcel.writeLong(this.guP);
-    paramParcel.writeLong(this.guQ);
-    paramParcel.writeLong(this.guR);
-    paramParcel.writeLong(this.guS);
-    paramParcel.writeLong(this.guT);
-    paramParcel.writeLong(this.guU);
-    paramParcel.writeLong(this.guV);
-    paramParcel.writeLong(this.guW);
-    paramParcel.writeLong(this.guX);
-    paramParcel.writeLong(this.guY);
-    paramParcel.writeLong(this.guZ);
-    paramParcel.writeLong(this.gva);
-    paramParcel.writeLong(this.gvb);
-    paramParcel.writeLong(this.gvc);
-    paramParcel.writeLong(this.gvd);
-    paramParcel.writeLong(this.gve);
-    paramParcel.writeLong(this.gvf);
-    paramParcel.writeLong(this.gvg);
-    paramParcel.writeLong(this.gvh);
-    paramParcel.writeLong(this.gvi);
-    paramParcel.writeString(this.gvj);
-    paramParcel.writeString(this.gvk);
-    paramParcel.writeString(this.gvl);
+    paramParcel.writeLong(this.hhE);
+    paramParcel.writeLong(this.hhF);
+    paramParcel.writeLong(this.hhG);
+    paramParcel.writeLong(this.hhH);
+    paramParcel.writeLong(this.hhI);
+    paramParcel.writeLong(this.hhJ);
+    paramParcel.writeLong(this.hhK);
+    paramParcel.writeLong(this.hhL);
+    paramParcel.writeLong(this.hhM);
+    paramParcel.writeLong(this.hhN);
+    paramParcel.writeLong(this.hhO);
+    paramParcel.writeLong(this.hhP);
+    paramParcel.writeLong(this.hhQ);
+    paramParcel.writeLong(this.hhR);
+    paramParcel.writeLong(this.hhS);
+    paramParcel.writeLong(this.hhT);
+    paramParcel.writeLong(this.hhU);
+    paramParcel.writeLong(this.hhV);
+    paramParcel.writeLong(this.hhW);
+    paramParcel.writeLong(this.hhX);
+    paramParcel.writeString(this.hhY);
+    paramParcel.writeString(this.hhZ);
+    paramParcel.writeString(this.hia);
     AppMethodBeat.o(117606);
   }
 }

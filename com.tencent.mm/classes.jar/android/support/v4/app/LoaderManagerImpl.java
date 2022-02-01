@@ -21,20 +21,20 @@ final class LoaderManagerImpl
   extends p
 {
   static boolean DEBUG = false;
-  private final LifecycleOwner GM;
-  private final LoaderViewModel GN;
+  private final LifecycleOwner GW;
+  private final LoaderViewModel GX;
   
   LoaderManagerImpl(LifecycleOwner paramLifecycleOwner, ViewModelStore paramViewModelStore)
   {
-    this.GM = paramLifecycleOwner;
-    this.GN = LoaderViewModel.a(paramViewModelStore);
+    this.GW = paramLifecycleOwner;
+    this.GX = LoaderViewModel.a(paramViewModelStore);
   }
   
   private <D> c<D> b(p.a<D> parama)
   {
     try
     {
-      this.GN.GW = true;
+      this.GX.Hg = true;
       localObject = parama.onCreateLoader(0, null);
       if (localObject == null) {
         throw new IllegalArgumentException("Object returned from onCreateLoader must not be null");
@@ -42,29 +42,29 @@ final class LoaderManagerImpl
     }
     finally
     {
-      this.GN.GW = false;
+      this.GX.Hg = false;
     }
     if ((localObject.getClass().isMemberClass()) && (!Modifier.isStatic(localObject.getClass().getModifiers()))) {
       throw new IllegalArgumentException("Object returned from onCreateLoader must not be a non-static inner member class: ".concat(String.valueOf(localObject)));
     }
-    Object localObject = new a((c)localObject);
+    Object localObject = new a(0, null, (c)localObject);
     if (DEBUG) {
       new StringBuilder("  Created new loader ").append(localObject);
     }
-    this.GN.GV.put(0, localObject);
-    this.GN.GW = false;
-    return ((a)localObject).a(this.GM, parama);
+    this.GX.Hf.put(0, localObject);
+    this.GX.Hg = false;
+    return ((a)localObject).a(this.GW, parama);
   }
   
   public final <D> c<D> a(p.a<D> parama)
   {
-    if (this.GN.GW) {
+    if (this.GX.Hg) {
       throw new IllegalStateException("Called while creating a loader");
     }
     if (Looper.getMainLooper() != Looper.myLooper()) {
       throw new IllegalStateException("initLoader must be called on the main thread");
     }
-    a locala = (a)this.GN.GV.get(0, null);
+    a locala = (a)this.GX.Hf.get(0, null);
     if (DEBUG) {
       new StringBuilder("initLoader in ").append(this).append(": args=").append(null);
     }
@@ -74,49 +74,49 @@ final class LoaderManagerImpl
     if (DEBUG) {
       new StringBuilder("  Re-using existing loader ").append(locala);
     }
-    return locala.a(this.GM, parama);
+    return locala.a(this.GW, parama);
   }
   
   @Deprecated
   public final void dump(String paramString, FileDescriptor paramFileDescriptor, PrintWriter paramPrintWriter, String[] paramArrayOfString)
   {
-    LoaderViewModel localLoaderViewModel = this.GN;
-    if (localLoaderViewModel.GV.size() > 0)
+    LoaderViewModel localLoaderViewModel = this.GX;
+    if (localLoaderViewModel.Hf.size() > 0)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.println("Loaders:");
       String str = paramString + "    ";
       int i = 0;
-      while (i < localLoaderViewModel.GV.size())
+      while (i < localLoaderViewModel.Hf.size())
       {
-        a locala = (a)localLoaderViewModel.GV.valueAt(i);
+        a locala = (a)localLoaderViewModel.Hf.valueAt(i);
         paramPrintWriter.print(paramString);
         paramPrintWriter.print("  #");
-        paramPrintWriter.print(localLoaderViewModel.GV.keyAt(i));
+        paramPrintWriter.print(localLoaderViewModel.Hf.keyAt(i));
         paramPrintWriter.print(": ");
         paramPrintWriter.println(locala.toString());
         paramPrintWriter.print(str);
         paramPrintWriter.print("mId=");
         paramPrintWriter.print(locala.mId);
         paramPrintWriter.print(" mArgs=");
-        paramPrintWriter.println(locala.GO);
+        paramPrintWriter.println(locala.GY);
         paramPrintWriter.print(str);
         paramPrintWriter.print("mLoader=");
-        paramPrintWriter.println(locala.GP);
-        locala.GP.dump(str + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
-        if (locala.GQ != null)
+        paramPrintWriter.println(locala.GZ);
+        locala.GZ.dump(str + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+        if (locala.Ha != null)
         {
           paramPrintWriter.print(str);
           paramPrintWriter.print("mCallbacks=");
-          paramPrintWriter.println(locala.GQ);
-          b localb = locala.GQ;
+          paramPrintWriter.println(locala.Ha);
+          b localb = locala.Ha;
           paramPrintWriter.print(str + "  ");
           paramPrintWriter.print("mDeliveredData=");
-          paramPrintWriter.println(localb.GT);
+          paramPrintWriter.println(localb.Hd);
         }
         paramPrintWriter.print(str);
         paramPrintWriter.print("mData=");
-        paramPrintWriter.println(locala.GP.dataToString(locala.getValue()));
+        paramPrintWriter.println(locala.GZ.dataToString(locala.getValue()));
         paramPrintWriter.print(str);
         paramPrintWriter.print("mStarted=");
         paramPrintWriter.println(locala.hasActiveObservers());
@@ -125,14 +125,14 @@ final class LoaderManagerImpl
     }
   }
   
-  public final void em()
+  public final void eq()
   {
-    LoaderViewModel localLoaderViewModel = this.GN;
-    int j = localLoaderViewModel.GV.size();
+    LoaderViewModel localLoaderViewModel = this.GX;
+    int j = localLoaderViewModel.Hf.size();
     int i = 0;
     while (i < j)
     {
-      ((a)localLoaderViewModel.GV.valueAt(i)).em();
+      ((a)localLoaderViewModel.Hf.valueAt(i)).eq();
       i += 1;
     }
   }
@@ -143,7 +143,7 @@ final class LoaderManagerImpl
     localStringBuilder.append("LoaderManager{");
     localStringBuilder.append(Integer.toHexString(System.identityHashCode(this)));
     localStringBuilder.append(" in ");
-    e.a(this.GM, localStringBuilder);
+    e.a(this.GW, localStringBuilder);
     localStringBuilder.append("}}");
     return localStringBuilder.toString();
   }
@@ -151,51 +151,51 @@ final class LoaderManagerImpl
   static class LoaderViewModel
     extends ViewModel
   {
-    private static final ViewModelProvider.Factory GU = new ViewModelProvider.Factory()
+    private static final ViewModelProvider.Factory He = new ViewModelProvider.Factory()
     {
       public final <T extends ViewModel> T create(Class<T> paramAnonymousClass)
       {
         return new LoaderManagerImpl.LoaderViewModel();
       }
     };
-    o<LoaderManagerImpl.a> GV = new o();
-    boolean GW = false;
+    o<LoaderManagerImpl.a> Hf = new o();
+    boolean Hg = false;
     
     static LoaderViewModel a(ViewModelStore paramViewModelStore)
     {
-      return (LoaderViewModel)new ViewModelProvider(paramViewModelStore, GU).get(LoaderViewModel.class);
+      return (LoaderViewModel)new ViewModelProvider(paramViewModelStore, He).get(LoaderViewModel.class);
     }
     
-    public final void af()
+    public void onCleared()
     {
-      super.af();
-      int j = this.GV.size();
+      super.onCleared();
+      int j = this.Hf.size();
       int i = 0;
       while (i < j)
       {
-        LoaderManagerImpl.a locala = (LoaderManagerImpl.a)this.GV.valueAt(i);
+        LoaderManagerImpl.a locala = (LoaderManagerImpl.a)this.Hf.valueAt(i);
         if (LoaderManagerImpl.DEBUG) {
           new StringBuilder("  Destroying: ").append(locala);
         }
-        locala.GP.cancelLoad();
-        locala.GP.abandon();
-        LoaderManagerImpl.b localb = locala.GQ;
+        locala.GZ.cancelLoad();
+        locala.GZ.abandon();
+        LoaderManagerImpl.b localb = locala.Ha;
         if (localb != null)
         {
           locala.removeObserver(localb);
-          if (localb.GT)
+          if (localb.Hd)
           {
             if (LoaderManagerImpl.DEBUG) {
-              new StringBuilder("  Resetting: ").append(localb.GP);
+              new StringBuilder("  Resetting: ").append(localb.GZ);
             }
-            localb.GS.onLoaderReset(localb.GP);
+            localb.Hc.onLoaderReset(localb.GZ);
           }
         }
-        locala.GP.unregisterListener(locala);
-        locala.GP.reset();
+        locala.GZ.unregisterListener(locala);
+        locala.GZ.reset();
         i += 1;
       }
-      this.GV.clear();
+      this.Hf.clear();
     }
   }
   
@@ -203,44 +203,44 @@ final class LoaderManagerImpl
     extends MutableLiveData<D>
     implements c.b<D>
   {
-    private LifecycleOwner GM;
-    final Bundle GO = null;
-    final c<D> GP;
-    LoaderManagerImpl.b<D> GQ;
-    c<D> GR;
+    private LifecycleOwner GW;
+    final Bundle GY = null;
+    final c<D> GZ;
+    LoaderManagerImpl.b<D> Ha;
+    c<D> Hb;
     final int mId = 0;
     
-    a(c<D> paramc)
+    a(int paramInt, Bundle paramBundle, c<D> paramc)
     {
-      this.GP = paramc;
-      this.GR = null;
-      this.GP.registerListener(0, this);
+      this.GZ = paramc;
+      this.Hb = null;
+      this.GZ.registerListener(0, this);
     }
     
-    public final void W()
+    public final void Z()
     {
       if (LoaderManagerImpl.DEBUG) {
         new StringBuilder("  Stopping: ").append(this);
       }
-      this.GP.stopLoading();
+      this.GZ.stopLoading();
     }
     
     final c<D> a(LifecycleOwner paramLifecycleOwner, p.a<D> parama)
     {
-      parama = new LoaderManagerImpl.b(this.GP, parama);
+      parama = new LoaderManagerImpl.b(this.GZ, parama);
       observe(paramLifecycleOwner, parama);
-      if (this.GQ != null) {
-        removeObserver(this.GQ);
+      if (this.Ha != null) {
+        removeObserver(this.Ha);
       }
-      this.GM = paramLifecycleOwner;
-      this.GQ = parama;
-      return this.GP;
+      this.GW = paramLifecycleOwner;
+      this.Ha = parama;
+      return this.GZ;
     }
     
-    final void em()
+    final void eq()
     {
-      LifecycleOwner localLifecycleOwner = this.GM;
-      LoaderManagerImpl.b localb = this.GQ;
+      LifecycleOwner localLifecycleOwner = this.GW;
+      LoaderManagerImpl.b localb = this.Ha;
       if ((localLifecycleOwner != null) && (localb != null))
       {
         super.removeObserver(localb);
@@ -267,23 +267,23 @@ final class LoaderManagerImpl
       if (LoaderManagerImpl.DEBUG) {
         new StringBuilder("  Starting: ").append(this);
       }
-      this.GP.startLoading();
+      this.GZ.startLoading();
     }
     
     public final void removeObserver(Observer<? super D> paramObserver)
     {
       super.removeObserver(paramObserver);
-      this.GM = null;
-      this.GQ = null;
+      this.GW = null;
+      this.Ha = null;
     }
     
     public final void setValue(D paramD)
     {
       super.setValue(paramD);
-      if (this.GR != null)
+      if (this.Hb != null)
       {
-        this.GR.reset();
-        this.GR = null;
+        this.Hb.reset();
+        this.Hb = null;
       }
     }
     
@@ -295,7 +295,7 @@ final class LoaderManagerImpl
       localStringBuilder.append(" #");
       localStringBuilder.append(this.mId);
       localStringBuilder.append(" : ");
-      e.a(this.GP, localStringBuilder);
+      e.a(this.GZ, localStringBuilder);
       localStringBuilder.append("}}");
       return localStringBuilder.toString();
     }
@@ -304,28 +304,28 @@ final class LoaderManagerImpl
   static final class b<D>
     implements Observer<D>
   {
-    final c<D> GP;
-    final p.a<D> GS;
-    boolean GT = false;
+    final c<D> GZ;
+    final p.a<D> Hc;
+    boolean Hd = false;
     
     b(c<D> paramc, p.a<D> parama)
     {
-      this.GP = paramc;
-      this.GS = parama;
+      this.GZ = paramc;
+      this.Hc = parama;
     }
     
     public final void onChanged(D paramD)
     {
       if (LoaderManagerImpl.DEBUG) {
-        new StringBuilder("  onLoadFinished in ").append(this.GP).append(": ").append(this.GP.dataToString(paramD));
+        new StringBuilder("  onLoadFinished in ").append(this.GZ).append(": ").append(this.GZ.dataToString(paramD));
       }
-      this.GS.onLoadFinished(this.GP, paramD);
-      this.GT = true;
+      this.Hc.onLoadFinished(this.GZ, paramD);
+      this.Hd = true;
     }
     
     public final String toString()
     {
-      return this.GS.toString();
+      return this.Hc.toString();
     }
   }
 }

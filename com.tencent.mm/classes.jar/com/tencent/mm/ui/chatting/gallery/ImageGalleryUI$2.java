@@ -1,29 +1,28 @@
 package com.tencent.mm.ui.chatting.gallery;
 
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.hellhoundlib.a.a;
-import com.tencent.mm.hellhoundlib.b.b;
+import com.tencent.mm.plugin.scanner.ScanCodeSheetItemLogic.b;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.ui.chatting.gallery.a.n;
+import com.tencent.mm.ui.widget.a.e;
 
 final class ImageGalleryUI$2
-  implements View.OnClickListener
+  implements ScanCodeSheetItemLogic.b
 {
   ImageGalleryUI$2(ImageGalleryUI paramImageGalleryUI) {}
   
-  public final void onClick(View paramView)
+  public final void asu(String paramString)
   {
-    AppMethodBeat.i(187490);
-    b localb = new b();
-    localb.bd(paramView);
-    a.b("com/tencent/mm/ui/chatting/gallery/ImageGalleryUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-    a.a(this, "com/tencent/mm/ui/chatting/gallery/ImageGalleryUI$10", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-    AppMethodBeat.o(187490);
+    AppMethodBeat.i(233302);
+    if ((ImageGalleryUI.d(this.PzQ) != null) && (ImageGalleryUI.d(this.PzQ).isShowing()) && (Util.isEqual(paramString, ImageGalleryUI.b(this.PzQ).CFJ))) {
+      this.PzQ.dTH();
+    }
+    AppMethodBeat.o(233302);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.ui.chatting.gallery.ImageGalleryUI.2
  * JD-Core Version:    0.7.0.1
  */

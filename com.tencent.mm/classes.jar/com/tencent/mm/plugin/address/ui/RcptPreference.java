@@ -13,7 +13,7 @@ import com.tencent.mm.ui.base.preference.Preference;
 public class RcptPreference
   extends Preference
 {
-  RcptItem jwE;
+  RcptItem kuR;
   
   public RcptPreference(Context paramContext)
   {
@@ -29,7 +29,7 @@ public class RcptPreference
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(20973);
-    setLayoutResource(2131494804);
+    setLayoutResource(2131495538);
     AppMethodBeat.o(20973);
   }
   
@@ -37,19 +37,19 @@ public class RcptPreference
   {
     AppMethodBeat.i(20975);
     super.onBindView(paramView);
-    if (this.jwE == null)
+    if (this.kuR == null)
     {
       AppMethodBeat.o(20975);
       return;
     }
-    ((TextView)paramView.findViewById(2131307140)).setText(this.jwE.name);
+    ((TextView)paramView.findViewById(2131310681)).setText(this.kuR.name);
     paramView = paramView.findViewById(16908312);
     if (paramView == null)
     {
       AppMethodBeat.o(20975);
       return;
     }
-    if (this.jwE.juH)
+    if (this.kuR.ksW)
     {
       paramView.setVisibility(0);
       AppMethodBeat.o(20975);
@@ -64,9 +64,9 @@ public class RcptPreference
     AppMethodBeat.i(20974);
     paramViewGroup = super.onCreateView(paramViewGroup);
     LayoutInflater localLayoutInflater = (LayoutInflater)this.mContext.getSystemService("layout_inflater");
-    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131298739);
+    ViewGroup localViewGroup = (ViewGroup)paramViewGroup.findViewById(2131299180);
     localViewGroup.removeAllViews();
-    localLayoutInflater.inflate(2131494842, localViewGroup);
+    localLayoutInflater.inflate(2131495577, localViewGroup);
     AppMethodBeat.o(20974);
     return paramViewGroup;
   }

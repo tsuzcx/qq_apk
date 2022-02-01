@@ -28,20 +28,20 @@ public final class f
   {
     Resources localResources = paramContext.getResources();
     localResources.getValue(paramInt1, paramTypedValue, true);
-    paramContext = a(paramContext, localResources, paramTypedValue, paramInt1, paramInt2, parama, paramBoolean);
+    paramContext = a(paramContext, localResources, paramTypedValue, paramInt1, paramInt2, parama, null, paramBoolean);
     if ((paramContext == null) && (parama == null)) {
       throw new Resources.NotFoundException("Font resource ID #0x" + Integer.toHexString(paramInt1) + " could not be retrieved.");
     }
     return paramContext;
   }
   
-  private static Typeface a(Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, a parama, boolean paramBoolean)
+  private static Typeface a(Context paramContext, Resources paramResources, TypedValue paramTypedValue, int paramInt1, int paramInt2, a parama, Handler paramHandler, boolean paramBoolean)
   {
     if (paramTypedValue.string == null) {
       throw new Resources.NotFoundException("Resource \"" + paramResources.getResourceName(paramInt1) + "\" (" + Integer.toHexString(paramInt1) + ") is not a Font: " + paramTypedValue);
     }
-    String str = paramTypedValue.string.toString();
-    if (!str.startsWith("res/"))
+    paramHandler = paramTypedValue.string.toString();
+    if (!paramHandler.startsWith("res/"))
     {
       if (parama != null) {
         parama.a(-3, null);
@@ -65,7 +65,7 @@ public final class f
       {
         try
         {
-          if (str.toLowerCase().endsWith(".xml"))
+          if (paramHandler.toLowerCase().endsWith(".xml"))
           {
             paramTypedValue = c.a(paramResources.getXml(paramInt1), paramResources);
             if (paramTypedValue == null)
@@ -75,12 +75,12 @@ public final class f
               }
             }
             else {
-              return d.a(paramContext, paramTypedValue, paramResources, paramInt1, paramInt2, parama, paramBoolean);
+              return d.a(paramContext, paramTypedValue, paramResources, paramInt1, paramInt2, parama, null, paramBoolean);
             }
           }
           else
           {
-            paramResources = d.a(paramContext, paramResources, paramInt1, str, paramInt2);
+            paramResources = d.a(paramContext, paramResources, paramInt1, paramHandler, paramInt2);
             paramContext = paramResources;
             if (parama == null) {
               continue;
@@ -103,8 +103,8 @@ public final class f
         }
         catch (IOException paramContext)
         {
-          label211:
-          break label211;
+          label212:
+          break label212;
         }
       }
     }

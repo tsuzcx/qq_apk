@@ -3,10 +3,10 @@ package com.tencent.mm.plugin.emojicapture.ui.editor.text;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/DefaultTextDrawer;", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "()V", "text", "", "drawLine", "", "canvas", "Landroid/graphics/Canvas;", "lineStart", "", "lineEnd", "x", "", "y", "paint", "Landroid/graphics/Paint;", "withEllipsis", "", "refresh", "setText", "switchFont", "fontName", "", "plugin-emojicapture_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/DefaultTextDrawer;", "Lcom/tencent/mm/plugin/emojicapture/ui/editor/text/TextDrawer;", "()V", "text", "", "drawLine", "", "canvas", "Landroid/graphics/Canvas;", "lineStart", "", "lineEnd", "x", "", "y", "paint", "Landroid/graphics/Paint;", "withEllipsis", "", "refresh", "setText", "switchFont", "fontName", "", "plugin-emojicapture_release"})
 public final class a
   implements c
 {
@@ -22,16 +22,20 @@ public final class a
       AppMethodBeat.o(809);
       return;
     }
-    paramCanvas.drawText(this.text, paramInt1, paramInt2, paramFloat1, paramFloat2, paramPaint);
+    CharSequence localCharSequence = this.text;
+    if (localCharSequence == null) {
+      p.hyc();
+    }
+    paramCanvas.drawText(localCharSequence, paramInt1, paramInt2, paramFloat1, paramFloat2, paramPaint);
     if (paramBoolean)
     {
       float f = paramPaint.measureText(this.text, paramInt1, paramInt2);
-      paramCanvas.drawText(c.a.clQ(), f + paramFloat1, paramFloat2, paramPaint);
+      paramCanvas.drawText(c.a.cJS(), f + paramFloat1, paramFloat2, paramPaint);
     }
     AppMethodBeat.o(809);
   }
   
-  public final void adi(String paramString)
+  public final void anr(String paramString)
   {
     AppMethodBeat.i(808);
     p.h(paramString, "fontName");
@@ -50,7 +54,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.ui.editor.text.a
  * JD-Core Version:    0.7.0.1
  */

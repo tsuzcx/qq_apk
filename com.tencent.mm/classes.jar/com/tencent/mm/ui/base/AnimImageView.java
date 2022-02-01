@@ -9,17 +9,17 @@ import android.util.AttributeSet;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ui.aq;
+import com.tencent.mm.ui.at;
 
 public class AnimImageView
   extends TextView
 {
-  private boolean JDe;
-  private AnimationDrawable JDf;
+  private boolean ONW;
+  private AnimationDrawable ONX;
   private Context context;
   private boolean isRunning;
-  private AlphaAnimation pEQ;
-  private AnimationDrawable pER;
+  private AlphaAnimation qUh;
+  private AnimationDrawable qUi;
   private int type;
   
   public AnimImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -27,10 +27,10 @@ public class AnimImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(33857);
     this.isRunning = false;
-    this.JDe = false;
+    this.ONW = false;
     this.type = 1;
     this.context = paramContext;
-    aQx();
+    blc();
     AppMethodBeat.o(33857);
   }
   
@@ -39,48 +39,48 @@ public class AnimImageView
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(33858);
     this.isRunning = false;
-    this.JDe = false;
+    this.ONW = false;
     this.type = 1;
     this.context = paramContext;
-    aQx();
+    blc();
     AppMethodBeat.o(33858);
   }
   
-  private void aQx()
+  private void blc()
   {
     AppMethodBeat.i(33859);
-    this.pEQ = new AlphaAnimation(0.1F, 1.0F);
-    this.pEQ.setDuration(1000L);
-    this.pEQ.setRepeatCount(-1);
-    this.pEQ.setRepeatMode(2);
-    this.pER = new com.tencent.mm.ui.e.a();
-    Drawable localDrawable = aq.aM(getContext(), 2130968738);
+    this.qUh = new AlphaAnimation(0.1F, 1.0F);
+    this.qUh.setDuration(1000L);
+    this.qUh.setRepeatCount(-1);
+    this.qUh.setRepeatMode(2);
+    this.qUi = new com.tencent.mm.ui.f.a();
+    Drawable localDrawable = at.aN(getContext(), 2130968753);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pER.addFrame(localDrawable, 300);
-    localDrawable = aq.aM(getContext(), 2130968739);
+    this.qUi.addFrame(localDrawable, 300);
+    localDrawable = at.aN(getContext(), 2130968754);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pER.addFrame(localDrawable, 300);
-    localDrawable = aq.aM(getContext(), 2130968740);
+    this.qUi.addFrame(localDrawable, 300);
+    localDrawable = at.aN(getContext(), 2130968755);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.pER.addFrame(localDrawable, 300);
-    this.pER.setOneShot(false);
-    this.pER.setVisible(true, true);
-    this.JDf = new com.tencent.mm.ui.e.a();
-    localDrawable = getResources().getDrawable(2131689928);
+    this.qUi.addFrame(localDrawable, 300);
+    this.qUi.setOneShot(false);
+    this.qUi.setVisible(true, true);
+    this.ONX = new com.tencent.mm.ui.f.a();
+    localDrawable = getResources().getDrawable(2131689943);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.JDf.addFrame(localDrawable, 300);
-    localDrawable = getResources().getDrawable(2131689929);
+    this.ONX.addFrame(localDrawable, 300);
+    localDrawable = getResources().getDrawable(2131689944);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.JDf.addFrame(localDrawable, 300);
-    localDrawable = getResources().getDrawable(2131689930);
+    this.ONX.addFrame(localDrawable, 300);
+    localDrawable = getResources().getDrawable(2131689945);
     localDrawable.setBounds(0, 0, localDrawable.getIntrinsicWidth(), localDrawable.getIntrinsicHeight());
-    this.JDf.addFrame(localDrawable, 300);
-    this.JDf.setOneShot(false);
-    this.JDf.setVisible(true, true);
+    this.ONX.addFrame(localDrawable, 300);
+    this.ONX.setOneShot(false);
+    this.ONX.setVisible(true, true);
     AppMethodBeat.o(33859);
   }
   
-  public final void bzX()
+  public final void bWT()
   {
     AppMethodBeat.i(33855);
     switch (this.type)
@@ -89,54 +89,54 @@ public class AnimImageView
       AppMethodBeat.o(33855);
       return;
     case 2: 
-      if (this.JDe) {
-        setBackgroundResource(2131100073);
+      if (this.ONW) {
+        setBackgroundResource(2131100101);
       }
     case 1: 
       while (!this.isRunning)
       {
         this.isRunning = true;
-        if (!this.JDe) {
+        if (!this.ONW) {
           break label114;
         }
-        setCompoundDrawablesWithIntrinsicBounds(this.pER, null, null, null);
-        this.pER.stop();
-        this.pER.start();
+        setCompoundDrawablesWithIntrinsicBounds(this.qUi, null, null, null);
+        this.qUi.stop();
+        this.qUi.start();
         AppMethodBeat.o(33855);
         return;
-        setBackgroundResource(2131100074);
+        setBackgroundResource(2131100102);
       }
       label114:
-      setCompoundDrawablesWithIntrinsicBounds(null, null, this.JDf, null);
-      this.JDf.stop();
-      this.JDf.start();
+      setCompoundDrawablesWithIntrinsicBounds(null, null, this.ONX, null);
+      this.ONX.stop();
+      this.ONX.start();
       AppMethodBeat.o(33855);
       return;
     }
-    if (this.JDe) {
-      setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231606));
+    if (this.ONW) {
+      setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231670));
     }
     for (;;)
     {
-      setAnimation(this.pEQ);
-      this.pEQ.startNow();
+      setAnimation(this.qUh);
+      this.qUh.startNow();
       break;
-      setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231725));
+      setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231796));
     }
   }
   
-  public final void cgN()
+  public final void cEA()
   {
     AppMethodBeat.i(33856);
-    if ((this.pEQ != null) && (this.pEQ.isInitialized())) {
+    if ((this.qUh != null) && (this.qUh.isInitialized())) {
       setAnimation(null);
     }
     if ((this.type == 1) || (this.type == 2))
     {
       this.isRunning = false;
       setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-      this.pER.stop();
-      this.JDf.stop();
+      this.qUi.stop();
+      this.ONX.stop();
     }
     AppMethodBeat.o(33856);
   }
@@ -207,38 +207,38 @@ public class AnimImageView
   
   public void setFromVoice(boolean paramBoolean)
   {
-    this.JDe = paramBoolean;
+    this.ONW = paramBoolean;
   }
   
   public void setType(int paramInt)
   {
     AppMethodBeat.i(33854);
     this.type = paramInt;
-    if (this.JDe)
+    if (this.ONW)
     {
       if (paramInt == 2)
       {
-        setBackgroundResource(2131100073);
+        setBackgroundResource(2131100101);
         AppMethodBeat.o(33854);
         return;
       }
-      setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231606));
+      setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231670));
       AppMethodBeat.o(33854);
       return;
     }
     if (paramInt == 2)
     {
-      setBackgroundResource(2131100074);
+      setBackgroundResource(2131100102);
       AppMethodBeat.o(33854);
       return;
     }
-    setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231725));
+    setBackgroundDrawable(com.tencent.mm.cb.a.l(this.context, 2131231796));
     AppMethodBeat.o(33854);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.ui.base.AnimImageView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_height="100.0dip" style="@style/i4"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@style/rj"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/bot" android:layout_width="fill_parent" android:layout_height="@dimen/hd" />
-    <ImageView android:textColor="@color/mw" android:id="@id/bou" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_marginBottom="@dimen/jn" android:src="@raw/device_profile_the_end" android:layout_below="@id/bot" android:layout_centerInParent="true" />
-    <Button android:id="@id/bos" android:background="@drawable/ik" android:visibility="invisible" android:layout_marginTop="@dimen/hd" android:layout_marginBottom="@dimen/jn" android:text="@string/bt_" style="@style/my" />
-</RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/ca2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/hs" android:layout_marginTop="@dimen/hv" android:layout_marginRight="@dimen/hs">
+        <com.tencent.mm.ui.widget.MMEditText android:textColor="@color/a2x" android:textColorHint="@color/ui" android:gravity="top" android:id="@id/be9" android:background="@null" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="false" android:layout_weight="1.0" style="@style/mb" />
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:layout_gravity="bottom|center|right" android:id="@id/joi" android:padding="@dimen/kb" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <LinearLayout android:gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/hw">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/acu" android:layout_gravity="bottom|center|right" android:id="@id/j7m" android:padding="@dimen/kb" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/h1v" />
+    </LinearLayout>
+</LinearLayout>

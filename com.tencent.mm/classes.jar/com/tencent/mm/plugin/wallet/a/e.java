@@ -5,28 +5,28 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 public final class e
   extends com.tencent.mm.bw.a
 {
-  public String CYy;
-  public String hGk;
+  public String HEm;
   public String name;
   public String url;
+  public String weappPath;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(91289);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.url != null) {
-        paramVarArgs.d(1, this.url);
+        paramVarArgs.e(1, this.url);
       }
       if (this.name != null) {
-        paramVarArgs.d(2, this.name);
+        paramVarArgs.e(2, this.name);
       }
-      if (this.CYy != null) {
-        paramVarArgs.d(3, this.CYy);
+      if (this.HEm != null) {
+        paramVarArgs.e(3, this.HEm);
       }
-      if (this.hGk != null) {
-        paramVarArgs.d(4, this.hGk);
+      if (this.weappPath != null) {
+        paramVarArgs.e(4, this.weappPath);
       }
       AppMethodBeat.o(91289);
       return 0;
@@ -37,28 +37,28 @@ public final class e
       }
     }
     label394:
-    for (int i = f.a.a.b.b.a.e(1, this.url) + 0;; i = 0)
+    for (int i = g.a.a.b.b.a.f(1, this.url) + 0;; i = 0)
     {
       paramInt = i;
       if (this.name != null) {
-        paramInt = i + f.a.a.b.b.a.e(2, this.name);
+        paramInt = i + g.a.a.b.b.a.f(2, this.name);
       }
       i = paramInt;
-      if (this.CYy != null) {
-        i = paramInt + f.a.a.b.b.a.e(3, this.CYy);
+      if (this.HEm != null) {
+        i = paramInt + g.a.a.b.b.a.f(3, this.HEm);
       }
       paramInt = i;
-      if (this.hGk != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.hGk);
+      if (this.weappPath != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.weappPath);
       }
       AppMethodBeat.o(91289);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(91289);
@@ -66,7 +66,7 @@ public final class e
       }
       if (paramInt == 3)
       {
-        f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+        g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
         e locale = (e)paramVarArgs[1];
         switch (((Integer)paramVarArgs[2]).intValue())
         {
@@ -74,19 +74,19 @@ public final class e
           AppMethodBeat.o(91289);
           return -1;
         case 1: 
-          locale.url = locala.OmT.readString();
+          locale.url = locala.UbS.readString();
           AppMethodBeat.o(91289);
           return 0;
         case 2: 
-          locale.name = locala.OmT.readString();
+          locale.name = locala.UbS.readString();
           AppMethodBeat.o(91289);
           return 0;
         case 3: 
-          locale.CYy = locala.OmT.readString();
+          locale.HEm = locala.UbS.readString();
           AppMethodBeat.o(91289);
           return 0;
         }
-        locale.hGk = locala.OmT.readString();
+        locale.weappPath = locala.UbS.readString();
         AppMethodBeat.o(91289);
         return 0;
       }
@@ -97,7 +97,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet.a.e
  * JD-Core Version:    0.7.0.1
  */

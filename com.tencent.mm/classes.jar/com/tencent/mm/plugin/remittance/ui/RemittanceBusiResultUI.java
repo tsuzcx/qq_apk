@@ -21,27 +21,30 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.q;
 import com.tencent.mm.compatible.util.d;
-import com.tencent.mm.g.a.yv;
+import com.tencent.mm.g.a.aaa;
 import com.tencent.mm.plugin.remittance.model.BusiRemittanceResp;
 import com.tencent.mm.plugin.remittance.model.i;
 import com.tencent.mm.plugin.remittance.model.j;
+import com.tencent.mm.plugin.report.service.h;
 import com.tencent.mm.plugin.wallet_core.ui.view.WalletSuccPageAwardWidget;
 import com.tencent.mm.plugin.wallet_core.utils.g;
 import com.tencent.mm.pluginsdk.ui.a.b;
 import com.tencent.mm.pluginsdk.ui.applet.CdnImageView;
-import com.tencent.mm.pluginsdk.ui.span.k;
-import com.tencent.mm.protocal.protobuf.dk;
-import com.tencent.mm.protocal.protobuf.pz;
-import com.tencent.mm.protocal.protobuf.qa;
-import com.tencent.mm.protocal.protobuf.qj;
-import com.tencent.mm.protocal.protobuf.rf;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.pluginsdk.ui.span.l;
+import com.tencent.mm.protocal.protobuf.du;
+import com.tencent.mm.protocal.protobuf.ra;
+import com.tencent.mm.protocal.protobuf.rb;
+import com.tencent.mm.protocal.protobuf.rk;
+import com.tencent.mm.protocal.protobuf.sh;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.tools.p;
 import com.tencent.mm.wallet_core.ui.WalletBaseUI;
+import e.a.a.c;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -49,105 +52,113 @@ import java.util.List;
 public class RemittanceBusiResultUI
   extends WalletBaseUI
 {
+  private String AJn;
+  private int Cof;
+  private String Cog;
+  private String CqN;
+  private TextView CrY;
+  private TextView CrZ;
+  private String Crs;
+  private rb CsA;
+  private boolean CsB;
+  private Runnable CsC;
+  private du CsD;
+  private int CsE;
+  private c CsF;
+  private WalletSuccPageAwardWidget CsG;
+  private ViewGroup CsH;
+  private ViewGroup CsI;
+  private ViewGroup CsJ;
+  private TextView CsK;
+  private boolean CsL;
+  private IListener<aaa> CsM;
+  private boolean CsN;
+  private Runnable CsO;
+  private TextView Csa;
+  private TextView Csb;
+  private CdnImageView Csc;
+  private TextView Csd;
+  private TextView Cse;
+  private Button Csf;
+  private ViewGroup Csg;
+  private ViewGroup Csh;
+  private ViewGroup Csi;
+  private ViewGroup Csj;
+  private View Csk;
+  private LinearLayout Csl;
+  private String Csm;
+  private String Csn;
+  private String Cso;
+  private double Csp;
+  private String Csq;
+  private String Csr;
+  private String Css;
+  private int Cst;
+  private String Csu;
+  private String Csv;
+  private com.tencent.mm.bw.b Csw;
+  private boolean Csx;
+  private String Csy;
+  private BusiRemittanceResp Csz;
   private String app_id;
-  private TextView lHk;
   private int mChannel;
-  private Button mpo;
-  private int qgQ;
-  private String wNH;
-  private int ynp;
-  private String ynq;
-  private String ypW;
-  private String yqB;
-  private String yrA;
-  private String yrB;
-  private int yrC;
-  private String yrD;
-  private String yrE;
-  private com.tencent.mm.bw.b yrF;
-  private boolean yrG;
-  private String yrH;
-  private BusiRemittanceResp yrI;
-  private qa yrJ;
-  private boolean yrK;
-  private Runnable yrL;
-  private dk yrM;
-  private int yrN;
-  private e.a.a.c yrO;
-  private WalletSuccPageAwardWidget yrP;
-  private ViewGroup yrQ;
-  private ViewGroup yrR;
-  private ViewGroup yrS;
-  private TextView yrT;
-  private boolean yrU;
-  private com.tencent.mm.sdk.b.c<yv> yrV;
-  private boolean yrW;
-  private Runnable yrX;
-  private TextView yrh;
-  private TextView yri;
-  private TextView yrj;
-  private TextView yrk;
-  private CdnImageView yrl;
-  private TextView yrm;
-  private TextView yrn;
-  private Button yro;
-  private ViewGroup yrp;
-  private ViewGroup yrq;
-  private ViewGroup yrr;
-  private ViewGroup yrs;
-  private View yrt;
-  private LinearLayout yru;
-  private String yrv;
-  private String yrw;
-  private String yrx;
-  private double yry;
-  private String yrz;
+  private TextView mPa;
+  private Button nAa;
+  private int rxM;
   
   public RemittanceBusiResultUI()
   {
     AppMethodBeat.i(67998);
-    this.yrG = false;
-    this.yrK = false;
-    this.yrL = new Runnable()
+    this.Csx = false;
+    this.CsB = false;
+    this.CsC = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(67990);
         RemittanceBusiResultUI.a(RemittanceBusiResultUI.this);
-        j localj = new j(RemittanceBusiResultUI.b(RemittanceBusiResultUI.this), RemittanceBusiResultUI.c(RemittanceBusiResultUI.this), RemittanceBusiResultUI.d(RemittanceBusiResultUI.this).dEu, RemittanceBusiResultUI.e(RemittanceBusiResultUI.this) - 1, System.currentTimeMillis());
+        j localj = new j(RemittanceBusiResultUI.b(RemittanceBusiResultUI.this), RemittanceBusiResultUI.c(RemittanceBusiResultUI.this), RemittanceBusiResultUI.d(RemittanceBusiResultUI.this).cSx, RemittanceBusiResultUI.e(RemittanceBusiResultUI.this) - 1, System.currentTimeMillis());
         RemittanceBusiResultUI.this.doSceneProgress(localj);
         RemittanceBusiResultUI.f(RemittanceBusiResultUI.this);
         AppMethodBeat.o(67990);
       }
     };
-    this.yrM = new dk();
-    this.yrU = false;
-    this.yrV = new com.tencent.mm.sdk.b.c() {};
-    this.yrW = true;
-    this.yrX = new RemittanceBusiResultUI.8(this);
+    this.CsD = new du();
+    this.CsL = false;
+    this.CsM = new IListener() {};
+    this.CsN = true;
+    this.CsO = new Runnable()
+    {
+      public final void run()
+      {
+        AppMethodBeat.i(67997);
+        RemittanceBusiResultUI.n(RemittanceBusiResultUI.this);
+        AppMethodBeat.o(67997);
+      }
+    };
     AppMethodBeat.o(67998);
   }
   
   private void a(j paramj)
   {
     AppMethodBeat.i(68008);
-    this.yrR.setVisibility(8);
-    this.yrQ.setVisibility(8);
-    this.yrS.setVisibility(8);
-    TextView localTextView = (TextView)findViewById(2131306040);
-    final View localView = findViewById(2131306041);
+    this.CsI.setVisibility(8);
+    this.CsH.setVisibility(8);
+    this.CsJ.setVisibility(8);
+    TextView localTextView = (TextView)findViewById(2131309362);
+    final View localView = findViewById(2131309363);
     LinkedList localLinkedList;
     int i;
     Object localObject2;
     int j;
     Object localObject1;
-    if ((paramj != null) && (paramj.ynO != null) && (paramj.ynO.GeA.size() > 0))
+    if ((paramj != null) && (paramj.CoE != null) && (paramj.CoE.KYR.size() > 0))
     {
-      localLinkedList = paramj.ynO.GeA;
+      localLinkedList = paramj.CoE.KYR;
       if (localLinkedList != null)
       {
         i = localLinkedList.size();
-        ae.i("MicroMsg.RemittanceBusiResultUI", "discountInfoList: %s, size: %s received_amount: %s", new Object[] { localLinkedList, Integer.valueOf(i), Long.valueOf(paramj.ynO.Gez) });
+        Log.i("MicroMsg.RemittanceBusiResultUI", "discountInfoList: %s, size: %s received_amount: %s", new Object[] { localLinkedList, Integer.valueOf(i), Long.valueOf(paramj.CoE.KYQ) });
         localObject2 = "";
         j = localLinkedList.size();
         localObject1 = localObject2;
@@ -158,21 +169,21 @@ public class RemittanceBusiResultUI
         if (localLinkedList.size() <= 0) {
           break label401;
         }
-        this.yrR.removeAllViews();
-        this.yrQ.setOnClickListener(null);
+        this.CsI.removeAllViews();
+        this.CsH.setOnClickListener(null);
         if (j <= 1) {
           break label505;
         }
-        paramj = paramj.ynO.GeD;
-        this.yrW = true;
+        paramj = paramj.CoE.KYU;
+        this.CsN = true;
         localView.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(67995);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$6", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
             if (RemittanceBusiResultUI.j(RemittanceBusiResultUI.this))
             {
               localView.setVisibility(8);
@@ -199,14 +210,14 @@ public class RemittanceBusiResultUI
             }
           }
         });
-        this.yrQ.setOnClickListener(new View.OnClickListener()
+        this.CsH.setOnClickListener(new View.OnClickListener()
         {
           public final void onClick(View paramAnonymousView)
           {
             AppMethodBeat.i(67996);
             com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
-            localb.bd(paramAnonymousView);
-            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
+            localb.bm(paramAnonymousView);
+            com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$7", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
             if (RemittanceBusiResultUI.j(RemittanceBusiResultUI.this))
             {
               localView.setVisibility(8);
@@ -253,37 +264,37 @@ public class RemittanceBusiResultUI
             localLayoutParams.bottomMargin = com.tencent.mm.cb.a.fromDPToPix(this, 6);
             ((TextView)localObject2).setLayoutParams(localLayoutParams);
             ((TextView)localObject2).setTextSize(1, 12.0F);
-            ((TextView)localObject2).setTextColor(getResources().getColor(2131099777));
+            ((TextView)localObject2).setTextColor(getResources().getColor(2131099792));
             ((TextView)localObject2).setText((CharSequence)localObject1);
-            this.yrR.addView((View)localObject2);
+            this.CsI.addView((View)localObject2);
             i += 1;
             continue;
             i = 0;
             break;
           }
         }
-        this.yrR.setVisibility(0);
-        this.yrQ.setVisibility(0);
+        this.CsI.setVisibility(0);
+        this.CsH.setVisibility(0);
         localObject1 = paramj;
         label401:
-        if (this.yrW)
+        if (this.CsN)
         {
           localView.setVisibility(0);
-          paramj = bu.bI((String)localObject1, "");
+          paramj = Util.nullAs((String)localObject1, "");
           paramj = new SpannableString(paramj + " ");
           if (j <= 1) {
             break label487;
           }
-          findViewById(2131306042).setVisibility(0);
+          findViewById(2131309364).setVisibility(0);
         }
         for (;;)
         {
           localTextView.setText(paramj);
-          this.yrQ.setVisibility(8);
+          this.CsH.setVisibility(8);
           AppMethodBeat.o(68008);
           return;
           label487:
-          findViewById(2131306042).setVisibility(8);
+          findViewById(2131309364).setVisibility(8);
         }
       }
       label505:
@@ -294,75 +305,75 @@ public class RemittanceBusiResultUI
   private void b(j paramj)
   {
     AppMethodBeat.i(68010);
-    this.yru.removeAllViews();
+    this.Csl.removeAllViews();
     Object localObject1;
-    if ((this.yrI != null) && (!bu.isNullOrNil(this.yrI.ynA))) {
-      localObject1 = this.yrI.ynA;
+    if ((this.Csz != null) && (!Util.isNullOrNil(this.Csz.Coq))) {
+      localObject1 = this.Csz.Coq;
     }
     label569:
     label586:
     for (;;)
     {
       Object localObject2;
-      if ((eE(this.yrp)) && (eE(this.yrq)) && (eE(this.yrS)) && (eE(this.yrr)) && (eE(this.yrs)) && (!WalletSuccPageAwardWidget.a(this.yrO)) && (eE(findViewById(2131306041))) && (eE(this.yrQ)))
+      if ((eM(this.Csg)) && (eM(this.Csh)) && (eM(this.CsJ)) && (eM(this.Csi)) && (eM(this.Csj)) && (!WalletSuccPageAwardWidget.a(this.CsF)) && (eM(findViewById(2131309363))) && (eM(this.CsH)))
       {
-        localObject2 = (ViewGroup)getLayoutInflater().inflate(2131493902, this.yru, false);
-        this.yru.addView((View)localObject2);
-        paramj = (CdnImageView)((ViewGroup)localObject2).findViewById(2131304006);
-        localObject2 = (TextView)((ViewGroup)localObject2).findViewById(2131303742);
-        if (!bu.isNullOrNil(this.ynq))
+        localObject2 = (ViewGroup)getLayoutInflater().inflate(2131494059, this.Csl, false);
+        this.Csl.addView((View)localObject2);
+        paramj = (CdnImageView)((ViewGroup)localObject2).findViewById(2131306862);
+        localObject2 = (TextView)((ViewGroup)localObject2).findViewById(2131306531);
+        if (!Util.isNullOrNil(this.Cog))
         {
-          if (this.yrN == 1) {
+          if (this.CsE == 1) {
             paramj.setRoundCorner(true);
           }
-          paramj.setUrl(this.ynq);
+          paramj.setUrl(this.Cog);
           label203:
           ((TextView)localObject2).setText((CharSequence)localObject1);
         }
       }
       for (;;)
       {
-        dMY();
+        eNY();
         AppMethodBeat.o(68010);
         return;
-        if (!bu.isNullOrNil(this.ypW))
+        if (!Util.isNullOrNil(this.CqN))
         {
-          localObject2 = com.tencent.mm.wallet_core.ui.f.gX(this.ypW, 6);
+          localObject2 = com.tencent.mm.wallet_core.ui.f.hs(this.CqN, 6);
           localObject1 = localObject2;
-          if (bu.isNullOrNil(this.yrH)) {
+          if (Util.isNullOrNil(this.Csy)) {
             break label586;
           }
-          localObject1 = getString(2131762438, new Object[] { localObject2, this.yrH });
+          localObject1 = getString(2131764504, new Object[] { localObject2, this.Csy });
           break;
         }
-        localObject2 = com.tencent.mm.wallet_core.ui.f.gX(com.tencent.mm.wallet_core.ui.f.zP(this.yrx), 6);
+        localObject2 = com.tencent.mm.wallet_core.ui.f.hs(com.tencent.mm.wallet_core.ui.f.getDisplayName(this.Cso), 6);
         localObject1 = localObject2;
-        if (bu.isNullOrNil(this.yrH)) {
+        if (Util.isNullOrNil(this.Csy)) {
           break label586;
         }
-        localObject1 = getString(2131762438, new Object[] { localObject2, this.yrH });
+        localObject1 = getString(2131764504, new Object[] { localObject2, this.Csy });
         break;
-        if (this.yrN == 1)
+        if (this.CsE == 1)
         {
-          a.b.d(paramj, this.yrx);
+          a.b.d(paramj, this.Cso);
           break label203;
         }
-        a.b.c(paramj, this.yrx);
+        a.b.c(paramj, this.Cso);
         break label203;
-        localObject2 = (ViewGroup)getLayoutInflater().inflate(2131495250, this.yru, false);
-        this.yru.addView((View)localObject2);
-        localObject2 = (CdnImageView)findViewById(2131304006);
-        TextView localTextView1 = (TextView)findViewById(2131303742);
-        View localView = findViewById(2131301357);
-        TextView localTextView2 = (TextView)findViewById(2131303741);
-        localTextView1.setText(k.c(this, (CharSequence)localObject1));
+        localObject2 = (ViewGroup)getLayoutInflater().inflate(2131496096, this.Csl, false);
+        this.Csl.addView((View)localObject2);
+        localObject2 = (CdnImageView)findViewById(2131306862);
+        TextView localTextView1 = (TextView)findViewById(2131306531);
+        View localView = findViewById(2131303091);
+        TextView localTextView2 = (TextView)findViewById(2131306530);
+        localTextView1.setText(l.c(this, (CharSequence)localObject1));
         ((CdnImageView)localObject2).setVisibility(0);
-        if (!bu.isNullOrNil(this.ynq))
+        if (!Util.isNullOrNil(this.Cog))
         {
-          if (this.yrN == 1) {
+          if (this.CsE == 1) {
             ((CdnImageView)localObject2).setRoundCorner(true);
           }
-          ((CdnImageView)localObject2).setUrl(this.ynq);
+          ((CdnImageView)localObject2).setUrl(this.Cog);
         }
         for (;;)
         {
@@ -371,17 +382,17 @@ public class RemittanceBusiResultUI
           if (paramj == null) {
             break;
           }
-          if (paramj.ynO.GeC != 1) {
+          if (paramj.CoE.KYT != 1) {
             break label569;
           }
           localView.setVisibility(0);
           localTextView2.setVisibility(0);
-          localTextView2.setText(com.tencent.mm.wallet_core.ui.f.D(paramj.ynO.Gez / 100.0D));
+          localTextView2.setText(com.tencent.mm.wallet_core.ui.f.D(paramj.CoE.KYQ / 100.0D));
           break;
-          if (this.yrN == 1) {
-            a.b.d((ImageView)localObject2, this.yrx);
+          if (this.CsE == 1) {
+            a.b.d((ImageView)localObject2, this.Cso);
           } else {
-            a.b.c((ImageView)localObject2, this.yrx);
+            a.b.c((ImageView)localObject2, this.Cso);
           }
         }
         localView.setVisibility(8);
@@ -390,14 +401,7 @@ public class RemittanceBusiResultUI
     }
   }
   
-  private void dMY()
-  {
-    AppMethodBeat.i(68009);
-    p.a(this, (ScrollView)findViewById(2131304380), findViewById(2131297629), findViewById(2131296668), findViewById(2131297452), 32, 0.0F, true);
-    AppMethodBeat.o(68009);
-  }
-  
-  private static boolean eE(View paramView)
+  private static boolean eM(View paramView)
   {
     AppMethodBeat.i(68004);
     if ((paramView == null) || (paramView.getVisibility() == 8))
@@ -407,6 +411,13 @@ public class RemittanceBusiResultUI
     }
     AppMethodBeat.o(68004);
     return false;
+  }
+  
+  private void eNY()
+  {
+    AppMethodBeat.i(68009);
+    p.a(this, (ScrollView)findViewById(2131307343), findViewById(2131297891), findViewById(2131296752), findViewById(2131297682), 32, 0.0F, true);
+    AppMethodBeat.o(68009);
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -420,67 +431,82 @@ public class RemittanceBusiResultUI
   public void finish()
   {
     AppMethodBeat.i(67999);
-    ae.i("MicroMsg.RemittanceBusiResultUI", "finish this %s %s", new Object[] { this, bu.fpN() });
-    if (this.yrU)
+    Log.i("MicroMsg.RemittanceBusiResultUI", "finish this %s %s", new Object[] { this, Util.getStack() });
+    if (this.CsL)
     {
       AppMethodBeat.o(67999);
       return;
     }
     super.finish();
-    this.yrU = true;
+    this.CsL = true;
     AppMethodBeat.o(67999);
   }
   
   public int getLayoutId()
   {
-    return 2131495251;
+    return 2131496097;
   }
   
   public void initView()
   {
     AppMethodBeat.i(68002);
-    this.lHk = ((TextView)findViewById(2131303743));
-    this.yrh = ((TextView)findViewById(2131303734));
-    this.yri = ((TextView)findViewById(2131303740));
-    this.yrj = ((TextView)findViewById(2131303736));
-    this.yrk = ((TextView)findViewById(2131303738));
-    this.yrp = ((LinearLayout)findViewById(2131303739));
-    this.yrq = ((LinearLayout)findViewById(2131303735));
-    this.yrr = ((LinearLayout)findViewById(2131303737));
-    this.yrl = ((CdnImageView)findViewById(2131303730));
-    this.yrm = ((TextView)findViewById(2131303732));
-    this.yrn = ((TextView)findViewById(2131303731));
-    this.yro = ((Button)findViewById(2131303728));
-    this.yrs = ((ViewGroup)findViewById(2131303729));
-    this.mpo = ((Button)findViewById(2131303733));
-    this.yrt = findViewById(2131304828);
-    this.yru = ((LinearLayout)findViewById(2131303995));
-    this.yrh.setText(com.tencent.mm.wallet_core.ui.f.C(this.yry));
-    ar.o(this.yrX, 500L);
-    if (!bu.isNullOrNil(this.yrv))
+    this.mPa = ((TextView)findViewById(2131306532));
+    this.CrY = ((TextView)findViewById(2131306523));
+    this.CrZ = ((TextView)findViewById(2131306529));
+    this.Csa = ((TextView)findViewById(2131306525));
+    this.Csb = ((TextView)findViewById(2131306527));
+    this.Csg = ((LinearLayout)findViewById(2131306528));
+    this.Csh = ((LinearLayout)findViewById(2131306524));
+    this.Csi = ((LinearLayout)findViewById(2131306526));
+    this.Csc = ((CdnImageView)findViewById(2131306519));
+    this.Csd = ((TextView)findViewById(2131306521));
+    this.Cse = ((TextView)findViewById(2131306520));
+    this.Csf = ((Button)findViewById(2131306517));
+    this.Csj = ((ViewGroup)findViewById(2131306518));
+    this.nAa = ((Button)findViewById(2131306522));
+    this.Csk = findViewById(2131307914);
+    this.Csl = ((LinearLayout)findViewById(2131306851));
+    this.CrY.setText(com.tencent.mm.wallet_core.ui.f.formatMoney2f(this.Csp));
+    MMHandlerThread.postToMainThreadDelayed(this.CsO, 500L);
+    if (!Util.isNullOrNil(this.Csm))
     {
-      this.yri.setText(this.yrv);
-      this.yrp.setVisibility(0);
-      if (bu.isNullOrNil(this.yrw)) {
+      this.CrZ.setText(this.Csm);
+      this.Csg.setVisibility(0);
+      if (Util.isNullOrNil(this.Csn)) {
         break label413;
       }
-      this.yrj.setText(this.yrw);
-      this.yrq.setVisibility(0);
+      this.Csa.setText(this.Csn);
+      this.Csh.setVisibility(0);
     }
     for (;;)
     {
-      this.mpo.setOnClickListener(new RemittanceBusiResultUI.3(this));
-      this.yrP = ((WalletSuccPageAwardWidget)findViewById(2131297022));
-      this.yrQ = ((ViewGroup)findViewById(2131299143));
-      this.yrR = ((ViewGroup)findViewById(2131299141));
-      this.yrS = ((ViewGroup)findViewById(2131303089));
-      this.yrT = ((TextView)findViewById(2131303088));
+      this.nAa.setOnClickListener(new View.OnClickListener()
+      {
+        public final void onClick(View paramAnonymousView)
+        {
+          AppMethodBeat.i(67992);
+          com.tencent.mm.hellhoundlib.b.b localb = new com.tencent.mm.hellhoundlib.b.b();
+          localb.bm(paramAnonymousView);
+          com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+          if (RemittanceBusiResultUI.g(RemittanceBusiResultUI.this) == 56) {
+            h.CyF.a(19821, new Object[] { Integer.valueOf(10), RemittanceBusiResultUI.h(RemittanceBusiResultUI.this), Integer.valueOf(0) });
+          }
+          RemittanceBusiResultUI.this.finish();
+          com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/plugin/remittance/ui/RemittanceBusiResultUI$3", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
+          AppMethodBeat.o(67992);
+        }
+      });
+      this.CsG = ((WalletSuccPageAwardWidget)findViewById(2131297151));
+      this.CsH = ((ViewGroup)findViewById(2131299670));
+      this.CsI = ((ViewGroup)findViewById(2131299668));
+      this.CsJ = ((ViewGroup)findViewById(2131305705));
+      this.CsK = ((TextView)findViewById(2131305696));
       AppMethodBeat.o(68002);
       return;
-      this.yrp.setVisibility(8);
+      this.Csg.setVisibility(8);
       break;
       label413:
-      this.yrq.setVisibility(8);
+      this.Csh.setVisibility(8);
     }
   }
   
@@ -491,13 +517,13 @@ public class RemittanceBusiResultUI
     addSceneEndListener(1537);
     addSceneEndListener(1680);
     addSceneEndListener(2504);
-    this.yrV.alive();
-    if (d.lA(21))
+    this.CsM.alive();
+    if (d.oD(21))
     {
-      if (!d.lA(23)) {
+      if (!d.oD(23)) {
         break label521;
       }
-      getWindow().setStatusBarColor(getContext().getResources().getColor(2131101179));
+      getWindow().setStatusBarColor(getContext().getResources().getColor(2131101424));
     }
     for (;;)
     {
@@ -507,51 +533,51 @@ public class RemittanceBusiResultUI
       setBackBtn(null);
       showHomeBtn(false);
       enableBackMenu(false);
-      this.ypW = getIntent().getStringExtra("key_mch_name");
-      this.yrI = ((BusiRemittanceResp)getIntent().getParcelableExtra("BusiRemittanceResp"));
-      this.yry = getIntent().getDoubleExtra("key_money", 0.0D);
-      this.yrx = getIntent().getStringExtra("key_rcver_name");
-      this.yrH = getIntent().getStringExtra("key_rcver_true_name");
-      this.yrv = getIntent().getStringExtra("key_rcv_desc");
-      this.yrw = getIntent().getStringExtra("key_pay_desc");
-      this.yrz = getIntent().getStringExtra("key_f2f_id");
-      this.wNH = getIntent().getStringExtra("key_trans_id");
-      this.yqB = getIntent().getStringExtra("key_rcvr_open_id");
-      this.yrE = getIntent().getStringExtra("key_check_sign");
-      this.yrA = getIntent().getStringExtra("key_pay_desc");
-      this.yrB = getIntent().getStringExtra("key_rcv_desc");
-      this.yrC = getIntent().getIntExtra("key_scan_sceen", 0);
+      this.CqN = getIntent().getStringExtra("key_mch_name");
+      this.Csz = ((BusiRemittanceResp)getIntent().getParcelableExtra("BusiRemittanceResp"));
+      this.Csp = getIntent().getDoubleExtra("key_money", 0.0D);
+      this.Cso = getIntent().getStringExtra("key_rcver_name");
+      this.Csy = getIntent().getStringExtra("key_rcver_true_name");
+      this.Csm = getIntent().getStringExtra("key_rcv_desc");
+      this.Csn = getIntent().getStringExtra("key_pay_desc");
+      this.Csq = getIntent().getStringExtra("key_f2f_id");
+      this.AJn = getIntent().getStringExtra("key_trans_id");
+      this.Crs = getIntent().getStringExtra("key_rcvr_open_id");
+      this.Csv = getIntent().getStringExtra("key_check_sign");
+      this.Csr = getIntent().getStringExtra("key_pay_desc");
+      this.Css = getIntent().getStringExtra("key_rcv_desc");
+      this.Cst = getIntent().getIntExtra("key_scan_sceen", 0);
       this.mChannel = getIntent().getIntExtra("key_channel", 0);
-      this.yrD = getIntent().getStringExtra("key_succ_page_extend");
+      this.Csu = getIntent().getStringExtra("key_succ_page_extend");
       paramBundle = getIntent().getByteArrayExtra("AfterPlaceOrderCommReq");
-      this.yrJ = i.axC(getIntent().getStringExtra("key_succ_fault_config"));
+      this.CsA = i.aMc(getIntent().getStringExtra("key_succ_fault_config"));
       try
       {
-        this.yrM.parseFrom(paramBundle);
-        this.yrN = getIntent().getIntExtra("key_succ_show_avatar_type", 0);
-        this.ynp = getIntent().getIntExtra("key_succ_show_avatar_show", 0);
-        this.ynq = getIntent().getStringExtra("key_succ_show_avatar_url");
+        this.CsD.parseFrom(paramBundle);
+        this.CsE = getIntent().getIntExtra("key_succ_show_avatar_type", 0);
+        this.Cof = getIntent().getIntExtra("key_succ_show_avatar_show", 0);
+        this.Cog = getIntent().getStringExtra("key_succ_show_avatar_url");
         this.app_id = getIntent().getStringExtra("app_id");
-        this.yrG = false;
-        ae.i("MicroMsg.RemittanceBusiResultUI", "fetch data");
-        ae.i("MicroMsg.RemittanceBusiResultUI", "fetchData() mBusiF2FFaultConfig.flag:%s mBusiF2FFaultConfig.succpage_first_delay_ms:%s", new Object[] { Integer.valueOf(this.yrJ.dEu), Integer.valueOf(this.yrJ.GdD) });
-        if (bu.jB(this.yrJ.dEu, 1))
+        this.Csx = false;
+        Log.i("MicroMsg.RemittanceBusiResultUI", "fetch data");
+        Log.i("MicroMsg.RemittanceBusiResultUI", "fetchData() mBusiF2FFaultConfig.flag:%s mBusiF2FFaultConfig.succpage_first_delay_ms:%s", new Object[] { Integer.valueOf(this.CsA.cSx), Integer.valueOf(this.CsA.KXU) });
+        if (Util.isEqual(this.CsA.cSx, 1))
         {
-          ar.o(this.yrL, this.yrJ.GdD);
+          MMHandlerThread.postToMainThreadDelayed(this.CsC, this.CsA.KXU);
           initView();
           AppMethodBeat.o(68001);
           return;
           label521:
-          getWindow().setStatusBarColor(getContext().getResources().getColor(2131099679));
+          getWindow().setStatusBarColor(getContext().getResources().getColor(2131099689));
         }
       }
       catch (Exception paramBundle)
       {
         for (;;)
         {
-          ae.printErrStackTrace("MicroMsg.RemittanceBusiResultUI", paramBundle, "", new Object[0]);
+          Log.printErrStackTrace("MicroMsg.RemittanceBusiResultUI", paramBundle, "", new Object[0]);
           continue;
-          doSceneProgress(new j(this.yrM, this.yrD));
+          doSceneProgress(new j(this.CsD, this.Csu));
         }
       }
     }
@@ -564,11 +590,11 @@ public class RemittanceBusiResultUI
     removeSceneEndListener(1537);
     removeSceneEndListener(1680);
     removeSceneEndListener(2504);
-    this.yrV.dead();
-    if (this.yrO != null) {
-      this.yrP.onDestroy();
+    this.CsM.dead();
+    if (this.CsF != null) {
+      this.CsG.onDestroy();
     }
-    ar.ay(this.yrX);
+    MMHandlerThread.removeRunnable(this.CsO);
     AppMethodBeat.o(68006);
   }
   
@@ -576,125 +602,125 @@ public class RemittanceBusiResultUI
   {
     AppMethodBeat.i(68005);
     super.onResume();
-    if (this.yrG)
+    if (this.Csx)
     {
-      ae.i("MicroMsg.RemittanceBusiResultUI", "do act qry");
-      int i = (int)Math.round(this.yry * 100.0D);
-      doSceneProgress(new com.tencent.mm.plugin.remittance.model.f(this.yrz, this.wNH, this.yqB, i, this.yrF, this.yrE), false);
-      this.yrG = false;
+      Log.i("MicroMsg.RemittanceBusiResultUI", "do act qry");
+      int i = (int)Math.round(this.Csp * 100.0D);
+      doSceneProgress(new com.tencent.mm.plugin.remittance.model.f(this.Csq, this.AJn, this.Crs, i, this.Csw, this.Csv), false);
+      this.Csx = false;
     }
-    if (this.yrO != null) {
-      this.yrP.onResume();
+    if (this.CsF != null) {
+      this.CsG.onResume();
     }
     AppMethodBeat.o(68005);
   }
   
-  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public boolean onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(68003);
-    ae.i("MicroMsg.RemittanceBusiResultUI", "errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scenetype:" + paramn.getType());
+    Log.i("MicroMsg.RemittanceBusiResultUI", "errType:" + paramInt1 + " errCode:" + paramInt2 + " errMsg:" + paramString + " scenetype:" + paramq.getType());
     Object localObject;
-    if ((paramn instanceof j))
+    if ((paramq instanceof j))
     {
-      localObject = (j)paramn;
+      localObject = (j)paramq;
       if ((paramInt1 == 0) && (paramInt2 == 0)) {
-        if (this.yrK)
+        if (this.CsB)
         {
-          ae.i("MicroMsg.RemittanceBusiResultUI", "NetSceneBusiF2fSucpage success(mIfSuccNetSceneBusiF2fSucpage:%s)", new Object[] { Boolean.valueOf(this.yrK) });
-          if (this.yrO == null) {
+          Log.i("MicroMsg.RemittanceBusiResultUI", "NetSceneBusiF2fSucpage success(mIfSuccNetSceneBusiF2fSucpage:%s)", new Object[] { Boolean.valueOf(this.CsB) });
+          if (this.CsF == null) {
             break label809;
           }
         }
       }
     }
     label809:
-    for (boolean bool = this.yrP.onSceneEnd(paramInt1, paramInt2, paramString, paramn);; bool = false)
+    for (boolean bool = this.CsG.onSceneEnd(paramInt1, paramInt2, paramString, paramq);; bool = false)
     {
-      this.yrt.setVisibility(8);
+      this.Csk.setVisibility(8);
       AppMethodBeat.o(68003);
       return bool;
-      if (((j)localObject).ynO.oGt == 0)
+      if (((j)localObject).CoE.pTZ == 0)
       {
-        this.yrK = true;
-        ar.ay(this.yrL);
-        ae.i("MicroMsg.RemittanceBusiResultUI", "exposure info: %s", new Object[] { ((j)localObject).ynO.DqV });
-        this.yrO = ((j)localObject).ynO.DqV;
-        if (WalletSuccPageAwardWidget.a(this.yrO))
+        this.CsB = true;
+        MMHandlerThread.removeRunnable(this.CsC);
+        Log.i("MicroMsg.RemittanceBusiResultUI", "exposure info: %s", new Object[] { ((j)localObject).CoE.Iah });
+        this.CsF = ((j)localObject).CoE.Iah;
+        if (WalletSuccPageAwardWidget.a(this.CsF))
         {
-          ae.i("MicroMsg.RemittanceBusiResultUI", "setAwardWidget, mTransId: %s", new Object[] { this.wNH });
-          this.yrP.a(this, this.yrO, this.wNH, true, (ImageView)findViewById(2131297029));
-          this.yrP.init();
-          this.yrP.setVisibility(0);
-          ImageView localImageView = (ImageView)findViewById(2131297029);
-          localImageView.post(new RemittanceBusiResultUI.4(this, localImageView, (ViewGroup)findViewById(2131304380)));
-          dMY();
+          Log.i("MicroMsg.RemittanceBusiResultUI", "setAwardWidget, mTransId: %s", new Object[] { this.AJn });
+          this.CsG.a(this, this.CsF, this.AJn, true, (ImageView)findViewById(2131297171));
+          this.CsG.init();
+          this.CsG.setVisibility(0);
+          ImageView localImageView = (ImageView)findViewById(2131297171);
+          localImageView.post(new RemittanceBusiResultUI.4(this, localImageView, (ViewGroup)findViewById(2131307343)));
+          eNY();
           label324:
           a((j)localObject);
-          ar.ay(this.yrX);
-          if (bu.isNullOrNil(((j)localObject).ynO.GeE)) {
+          MMHandlerThread.removeRunnable(this.CsO);
+          if (Util.isNullOrNil(((j)localObject).CoE.KYV)) {
             break label448;
           }
-          if (!bu.isNullOrNil(((j)localObject).ynO.GeF)) {
+          if (!Util.isNullOrNil(((j)localObject).CoE.KYW)) {
             break label426;
           }
-          this.yrk.setTextColor(getResources().getColor(2131100707));
+          this.Csb.setTextColor(getResources().getColor(2131100900));
           label382:
-          this.yrk.setText(((j)localObject).ynO.GeE);
-          this.yrr.setVisibility(0);
+          this.Csb.setText(((j)localObject).CoE.KYV);
+          this.Csi.setVisibility(0);
         }
         for (;;)
         {
           b((j)localObject);
           break;
-          this.yrP.setVisibility(8);
+          this.CsG.setVisibility(8);
           break label324;
           label426:
-          this.yrk.setTextColor(g.cp(((j)localObject).ynO.GeF, true));
+          this.Csb.setTextColor(g.cI(((j)localObject).CoE.KYW, true));
           break label382;
           label448:
-          this.yrr.setVisibility(8);
+          this.Csi.setVisibility(8);
         }
       }
-      ae.e("MicroMsg.RemittanceBusiResultUI", "result response: %s, %s, %s", new Object[] { Integer.valueOf(((j)localObject).ynO.oGt), ((j)localObject).ynO.oGu, Boolean.valueOf(((j)localObject).ynO.GeG) });
-      if (((j)localObject).ynO.GeG) {
+      Log.e("MicroMsg.RemittanceBusiResultUI", "result response: %s, %s, %s", new Object[] { Integer.valueOf(((j)localObject).CoE.pTZ), ((j)localObject).CoE.pUa, Boolean.valueOf(((j)localObject).CoE.KYX) });
+      if (((j)localObject).CoE.KYX) {
         break;
       }
-      this.yrK = true;
-      ar.ay(this.yrL);
+      this.CsB = true;
+      MMHandlerThread.removeRunnable(this.CsC);
       break;
-      ae.e("MicroMsg.RemittanceBusiResultUI", "net error: %s", new Object[] { localObject });
+      Log.e("MicroMsg.RemittanceBusiResultUI", "net error: %s", new Object[] { localObject });
       break;
-      if (!(paramn instanceof com.tencent.mm.plugin.remittance.model.f)) {
+      if (!(paramq instanceof com.tencent.mm.plugin.remittance.model.f)) {
         break;
       }
-      localObject = (com.tencent.mm.plugin.remittance.model.f)paramn;
+      localObject = (com.tencent.mm.plugin.remittance.model.f)paramq;
       if ((paramInt1 == 0) && (paramInt2 == 0))
       {
-        if (((com.tencent.mm.plugin.remittance.model.f)localObject).ynD.oGt == 0)
+        if (((com.tencent.mm.plugin.remittance.model.f)localObject).Cot.pTZ == 0)
         {
-          localObject = ((com.tencent.mm.plugin.remittance.model.f)localObject).ynD.GdC;
+          localObject = ((com.tencent.mm.plugin.remittance.model.f)localObject).Cot.KXT;
           if (localObject != null)
           {
-            this.yrl.setUrl(((rf)localObject).dEM);
-            this.yrm.setText(((rf)localObject).title);
-            this.yrn.setText(((rf)localObject).Dps);
-            this.yro.setText(((rf)localObject).DyN);
-            this.yro.setOnClickListener(new RemittanceBusiResultUI.5(this, (rf)localObject));
-            this.yro.setBackgroundResource(2131233827);
-            this.yro.setTextColor(getResources().getColor(2131101183));
-            this.yrs.setVisibility(0);
-            dMY();
+            this.Csc.setUrl(((sh)localObject).icon);
+            this.Csd.setText(((sh)localObject).title);
+            this.Cse.setText(((sh)localObject).HYG);
+            this.Csf.setText(((sh)localObject).IhY);
+            this.Csf.setOnClickListener(new RemittanceBusiResultUI.5(this, (sh)localObject));
+            this.Csf.setBackgroundResource(2131234651);
+            this.Csf.setTextColor(getResources().getColor(2131101428));
+            this.Csj.setVisibility(0);
+            eNY();
             break;
           }
-          ae.i("MicroMsg.RemittanceBusiResultUI", "app info is null");
-          this.yrs.setVisibility(8);
+          Log.i("MicroMsg.RemittanceBusiResultUI", "app info is null");
+          this.Csj.setVisibility(8);
           break;
         }
-        ae.e("MicroMsg.RemittanceBusiResultUI", "qry response: %s, %s", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.remittance.model.f)localObject).ynD.oGt), ((com.tencent.mm.plugin.remittance.model.f)localObject).ynD.oGu });
-        Toast.makeText(this, ((com.tencent.mm.plugin.remittance.model.f)localObject).ynD.oGu, 1).show();
+        Log.e("MicroMsg.RemittanceBusiResultUI", "qry response: %s, %s", new Object[] { Integer.valueOf(((com.tencent.mm.plugin.remittance.model.f)localObject).Cot.pTZ), ((com.tencent.mm.plugin.remittance.model.f)localObject).Cot.pUa });
+        Toast.makeText(this, ((com.tencent.mm.plugin.remittance.model.f)localObject).Cot.pUa, 1).show();
         break;
       }
-      ae.e("MicroMsg.RemittanceBusiResultUI", "net error: %s", new Object[] { localObject });
+      Log.e("MicroMsg.RemittanceBusiResultUI", "net error: %s", new Object[] { localObject });
       break;
     }
   }
@@ -714,7 +740,7 @@ public class RemittanceBusiResultUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.remittance.ui.RemittanceBusiResultUI
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:background="@null" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
-        <LinearLayout android:gravity="bottom|center" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <RelativeLayout android:layout_width="64.0dip" android:layout_height="64.0dip">
-                <ImageView android:id="@id/qu" android:layout_width="53.299988dip" android:layout_height="53.299988dip" android:layout_centerInParent="true" />
-            </RelativeLayout>
-        </LinearLayout>
-        <LinearLayout android:gravity="center|left|top" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textSize="10.0dip" android:gravity="center|left|top" android:id="@id/qt" android:background="@drawable/dr" android:paddingLeft="6.0dip" android:paddingRight="6.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center|right|top" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <TextView android:textSize="10.0dip" android:textColor="@color/a_u" android:gravity="center" android:id="@id/qw" android:background="@drawable/a53" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="40.0dip" android:text="@string/uv" />
-        </LinearLayout>
-    </FrameLayout>
-    <TextView android:textSize="@dimen/jt" android:textColor="@color/y4" android:gravity="center" android:layout_gravity="center" android:id="@id/qv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+<LinearLayout android:orientation="vertical" android:background="@drawable/dj" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/rn" android:layout_marginTop="@dimen/rm" android:layout_marginRight="@dimen/rn"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/f8" />
+    <View android:background="@color/e0" android:layout_width="fill_parent" android:layout_height="@dimen/rv" android:layout_marginTop="2.0dip" android:layout_marginBottom="18.0dip" android:layout_marginStart="@dimen/rl" android:layout_marginEnd="@dimen/rl" />
+    <LinearLayout android:id="@id/qf" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="@dimen/rl" android:layout_marginEnd="@dimen/rl">
+        <android.support.constraint.ConstraintLayout android:clickable="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="@dimen/l" android:textColor="#ff000000" android:ellipsize="end" android:id="@id/qg" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginBottom="@dimen/rk" android:maxLines="2" android:layout_marginStart="0.0dip" android:layout_marginEnd="8.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toStartOf="@id/dmp" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" app:layout_constraintVertical_bias="0.555" />
+            <android.support.constraint.Guideline android:orientation="vertical" android:id="@id/dmp" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintGuide_percent="0.75" />
+            <ImageView android:id="@id/qh" android:layout_width="72.0dip" android:layout_height="72.0dip" android:scaleType="fitCenter" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+        </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+    <include layout="@layout/f6" />
 </LinearLayout>

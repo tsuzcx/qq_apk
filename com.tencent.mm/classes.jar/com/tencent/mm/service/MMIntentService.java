@@ -2,15 +2,15 @@ package com.tencent.mm.service;
 
 import android.content.Intent;
 import android.os.Message;
-import com.tencent.e.j.a;
+import com.tencent.f.j.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
 
 public abstract class MMIntentService
   extends MMService
 {
-  private volatile a IDg;
+  private volatile a NJX;
   private String mName;
   
   public MMIntentService(String paramString)
@@ -21,22 +21,22 @@ public abstract class MMIntentService
   public final void onCreate()
   {
     super.onCreate();
-    this.IDg = new a(a.bbi("close-db-while-crash"));
+    this.NJX = new a(a.bqt("close-db-while-crash"));
   }
   
   public final void onDestroy()
   {
-    this.IDg.getSerial().quit();
+    this.NJX.getSerial().quit();
   }
   
   protected abstract void onHandleIntent(Intent paramIntent);
   
   public final void onStart(Intent paramIntent, int paramInt)
   {
-    Message localMessage = this.IDg.obtainMessage();
+    Message localMessage = this.NJX.obtainMessage();
     localMessage.arg1 = paramInt;
     localMessage.obj = paramIntent;
-    this.IDg.sendMessage(localMessage);
+    this.NJX.sendMessage(localMessage);
   }
   
   public final int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
@@ -46,7 +46,7 @@ public abstract class MMIntentService
   }
   
   final class a
-    extends aq
+    extends MMHandler
   {
     public a(a parama)
     {
@@ -59,9 +59,9 @@ public abstract class MMIntentService
       MMIntentService.this.onHandleIntent((Intent)paramMessage.obj);
       MMIntentService localMMIntentService = MMIntentService.this;
       int i = paramMessage.arg1;
-      ae.i(localMMIntentService.getTag(), "%s stopSelf() startId = %d mStartId = %d", new Object[] { "MicroMsg.MMService", Integer.valueOf(i), Integer.valueOf(localMMIntentService.cGi) });
-      if (i == localMMIntentService.cGi) {
-        localMMIntentService.s(new Intent(), "stop");
+      Log.i(localMMIntentService.getTag(), "%s stopSelf() startId = %d mStartId = %d", new Object[] { "MicroMsg.MMService", Integer.valueOf(i), Integer.valueOf(localMMIntentService.cWG) });
+      if (i == localMMIntentService.cWG) {
+        localMMIntentService.q(new Intent(), "stop");
       }
       AppMethodBeat.o(125309);
     }
@@ -69,7 +69,7 @@ public abstract class MMIntentService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.service.MMIntentService
  * JD-Core Version:    0.7.0.1
  */

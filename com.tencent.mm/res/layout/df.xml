@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:paddingLeft="@dimen/i_" android:paddingRight="@dimen/i_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:minHeight="@dimen/hv"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:form="http://schemas.android.com/apk/res-auto">
-    <ImageView style="@style/hp" />
-    <com.tencent.mm.plugin.appbrand.phonenumber.widget.MMFormVerifyCodeInputView android:id="@id/nk" android:focusableInTouchMode="false" android:layout_height="60.0dip" form:form_btn_title="@string/zv" form:form_hint="@string/zu" form:form_layout="@layout/awa" form:form_title="@string/zw" style="@style/m9" />
-    <com.tencent.mm.ui.base.MMFormInputView android:id="@id/nm" android:focusableInTouchMode="false" form:form_hint="@string/a02" form:form_layout="@layout/aoa" form:form_title="@string/a04" style="@style/m9" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="60.0dip">
-        <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:gravity="center" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@string/zi" />
-        <com.tencent.mm.ui.widget.MMSwitchBtn android:id="@id/nl" android:layout_width="@dimen/k2" android:layout_height="@dimen/jz" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    </RelativeLayout>
-    <ImageView style="@style/hp" />
-    <Button android:enabled="false" android:layout_gravity="center" android:id="@id/nj" android:layout_marginTop="40.0dip" android:text="@string/zr" style="@style/o7" />
-</LinearLayout>
+<android.support.constraint.ConstraintLayout android:id="@id/pf" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="@dimen/c" android:textColor="@color/a2x" android:gravity="center" android:id="@id/pe" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" app:layout_constraintEnd_toEndOf="@id/b33" app:layout_constraintStart_toStartOf="@id/b33" app:layout_constraintTop_toBottomOf="@id/b33" />
+    <com.tencent.mm.plugin.appbrand.ui.AppBrandCircleProgressView android:id="@id/b33" android:layout_width="64.0dip" android:layout_height="64.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" app:layout_constraintVertical_bias="0.3333333" />
+    <ImageView android:id="@id/p_" android:layout_width="48.0dip" android:layout_height="48.0dip" android:scaleType="fitCenter" app:layout_constraintBottom_toTopOf="@id/b33" app:layout_constraintEnd_toEndOf="@id/b33" app:layout_constraintStart_toStartOf="@id/b33" app:layout_constraintTop_toBottomOf="@id/b33" />
+    <ViewStub android:id="@id/e7g" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toBottomOf="@id/pe" />
+    <ViewStub android:id="@id/te" android:layout="@layout/h2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="32.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" />
+    <ViewStub android:id="@id/aam" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="48.0dip" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toStartOf="g8m" />
+</android.support.constraint.ConstraintLayout>

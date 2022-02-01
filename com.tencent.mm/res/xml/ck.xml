@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto"
-  xmlns:android1="http://schemas.android.com/apk/res/android">
-    <IconPreference android:key="settings_dark" android:layout="@layout/aop" android:title="@string/f5n" />
-    <PreferenceSmallCategory android:key="small_divider" />
-    <CheckBoxPreference android:defaultValue="false" android:key="settings_landscape_mode" android:title="@string/f6w" />
-    <CheckBoxPreference android:defaultValue="false" android:key="settings_nfc_switch" android:title="@string/f91" />
-    <Preference android:key="settings_silence_update_mode" android:layout="@layout/aop" android:title="@string/fa5" />
-    <Preference android:key="settings_language" android:layout="@layout/aop" android:title="@string/f6x" />
-    <Preference android:key="settings_text_size" android:layout="@layout/aop" android:title="@string/fbc" />
-    <Preference android:key="settings_take_photo" android:layout="@layout/aop" android:title="@string/f9g" />
-    <Preference android:key="settings_manage_findmoreui" android:layout="@layout/aop" android:title="@string/f7a" />
-    <IconPreference android:key="settings_plugins" android:title="@string/f9n" />
-    <Preference android:key="settings_traffic_statistic" android:layout="@layout/aop" android:title="@string/fbi" />
-    <Preference android:key="settngs_clean" android:layout="@layout/aop" android:title="@string/f8u" />
-    <Preference android:key="settngs_matrix_trace" android:layout="@layout/aop" android:title="@string/f7g" />
-    <PreferenceCategory />
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
+    <Preference android:key="settings_bind_qq" android:layout="@layout/b8j" android:title="@string/gvu" />
+    <Preference android:key="settings_email_addr" android:layout="@layout/b8j" android:title="@string/gob" />
+    <Preference android:key="settings_about_domainmail" android:layout="@layout/b8j" android:title="@string/gmx" />
+    <Preference android:key="settings_facebook" android:layout="@layout/b8j" android:title="@string/dxo" />
+    <PreferenceSmallCategory />
+    <Preference android:key="settings_dump_personal_data" android:layout="@layout/b8j" android:title="@string/goa" />
+    <com.tencent.mm.ui.base.preference.IconSwitchKeyValuePreference android:key="settings_phone_security" android:layout="@layout/b8j" android:title="@string/flt" />
+    <Preference android:key="settings_delete_account" android:layout="@layout/b8j" android:title="@string/glh" />
 </PreferenceScreen>

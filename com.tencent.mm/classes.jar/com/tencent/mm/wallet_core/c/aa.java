@@ -1,45 +1,45 @@
 package com.tencent.mm.wallet_core.c;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.a.b;
-import com.tencent.mm.sdk.e.n;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ah;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.crash.CrashReportFactory;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.LruCache;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorageEx;
+import com.tencent.mm.storage.ar.a;
 import com.tencent.mm.storagebase.h;
 import java.util.HashMap;
 import junit.framework.Assert;
 
 public final class aa
-  extends n
+  extends MStorageEx
 {
-  private static final Object IJW;
+  private static final Object NRT;
   public static final String[] SQL_CREATE;
-  private HashMap<Integer, b> IJZ;
-  private HashMap<String, b> IKa;
-  private volatile boolean IKb;
-  private final Runnable IKc;
-  private a<String> LVr;
-  private h hKK;
-  private aq mHandler;
+  private HashMap<Integer, b> NRW;
+  private HashMap<String, b> NRX;
+  private volatile boolean NRY;
+  private final Runnable NRZ;
+  private a<String> Ruh;
+  private h iFy;
+  private MMHandler mHandler;
   
   static
   {
     AppMethodBeat.i(130945);
     SQL_CREATE = new String[] { "CREATE TABLE IF NOT EXISTS walletcache ( sid TEXT PRIMARY KEY, type INT, value TEXT )" };
-    IJW = new Object();
+    NRT = new Object();
     AppMethodBeat.o(130945);
   }
   
   public aa(h paramh)
   {
     AppMethodBeat.i(130938);
-    this.LVr = new a("walletcache", "sid");
-    this.IJZ = new HashMap();
-    this.IKa = new HashMap();
-    this.IKc = new Runnable()
+    this.Ruh = new a("walletcache", "sid");
+    this.NRW = new HashMap();
+    this.NRX = new HashMap();
+    this.NRZ = new Runnable()
     {
       /* Error */
       public final void run()
@@ -56,9 +56,9 @@ public final class aa
         //   11: ldc 22
         //   13: invokestatic 28	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   16: aload_0
-        //   17: getfield 14	com/tencent/mm/wallet_core/c/aa$1:LVs	Lcom/tencent/mm/wallet_core/c/aa;
+        //   17: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
         //   20: invokestatic 32	com/tencent/mm/wallet_core/c/aa:a	(Lcom/tencent/mm/wallet_core/c/aa;)Lcom/tencent/mm/storagebase/h;
-        //   23: invokevirtual 38	com/tencent/mm/storagebase/h:fxU	()Lcom/tencent/wcdb/database/SQLiteDatabase;
+        //   23: invokevirtual 38	com/tencent/mm/storagebase/h:gFH	()Lcom/tencent/wcdb/database/SQLiteDatabase;
         //   26: astore 8
         //   28: aload 8
         //   30: ifnull +11 -> 41
@@ -67,7 +67,7 @@ public final class aa
         //   38: ifne +16 -> 54
         //   41: ldc 46
         //   43: ldc 48
-        //   45: invokestatic 54	com/tencent/mm/sdk/platformtools/ae:w	(Ljava/lang/String;Ljava/lang/String;)V
+        //   45: invokestatic 54	com/tencent/mm/sdk/platformtools/Log:w	(Ljava/lang/String;Ljava/lang/String;)V
         //   48: ldc 22
         //   50: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   53: return
@@ -94,7 +94,7 @@ public final class aa
         //   91: iload 6
         //   93: istore_3
         //   94: aload_0
-        //   95: getfield 14	com/tencent/mm/wallet_core/c/aa$1:LVs	Lcom/tencent/mm/wallet_core/c/aa;
+        //   95: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
         //   98: astore 11
         //   100: iload 5
         //   102: istore_2
@@ -103,29 +103,29 @@ public final class aa
         //   106: aload 11
         //   108: monitorenter
         //   109: aload_0
-        //   110: getfield 14	com/tencent/mm/wallet_core/c/aa$1:LVs	Lcom/tencent/mm/wallet_core/c/aa;
+        //   110: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
         //   113: invokestatic 67	com/tencent/mm/wallet_core/c/aa:b	(Lcom/tencent/mm/wallet_core/c/aa;)Ljava/util/HashMap;
         //   116: astore 12
         //   118: aload_0
-        //   119: getfield 14	com/tencent/mm/wallet_core/c/aa$1:LVs	Lcom/tencent/mm/wallet_core/c/aa;
+        //   119: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
         //   122: invokestatic 70	com/tencent/mm/wallet_core/c/aa:c	(Lcom/tencent/mm/wallet_core/c/aa;)Ljava/util/HashMap;
         //   125: astore 10
         //   127: aload_0
-        //   128: getfield 14	com/tencent/mm/wallet_core/c/aa$1:LVs	Lcom/tencent/mm/wallet_core/c/aa;
+        //   128: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
         //   131: new 72	java/util/HashMap
         //   134: dup
         //   135: invokespecial 73	java/util/HashMap:<init>	()V
         //   138: invokestatic 76	com/tencent/mm/wallet_core/c/aa:a	(Lcom/tencent/mm/wallet_core/c/aa;Ljava/util/HashMap;)Ljava/util/HashMap;
         //   141: pop
         //   142: aload_0
-        //   143: getfield 14	com/tencent/mm/wallet_core/c/aa$1:LVs	Lcom/tencent/mm/wallet_core/c/aa;
+        //   143: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
         //   146: new 72	java/util/HashMap
         //   149: dup
         //   150: invokespecial 73	java/util/HashMap:<init>	()V
         //   153: invokestatic 78	com/tencent/mm/wallet_core/c/aa:b	(Lcom/tencent/mm/wallet_core/c/aa;Ljava/util/HashMap;)Ljava/util/HashMap;
         //   156: pop
         //   157: aload_0
-        //   158: getfield 14	com/tencent/mm/wallet_core/c/aa$1:LVs	Lcom/tencent/mm/wallet_core/c/aa;
+        //   158: getfield 14	com/tencent/mm/wallet_core/c/aa$1:Rui	Lcom/tencent/mm/wallet_core/c/aa;
         //   161: invokestatic 82	com/tencent/mm/wallet_core/c/aa:d	(Lcom/tencent/mm/wallet_core/c/aa;)Z
         //   164: pop
         //   165: aload 11
@@ -212,7 +212,7 @@ public final class aa
         //   309: ldc 119
         //   311: iconst_0
         //   312: anewarray 4	java/lang/Object
-        //   315: invokestatic 123	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   315: invokestatic 123	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   318: iload_2
         //   319: ifeq +8 -> 327
         //   322: aload 8
@@ -229,7 +229,7 @@ public final class aa
         //   347: ldc 142
         //   349: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
         //   352: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   355: invokestatic 151	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   355: invokestatic 151	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   358: ldc 22
         //   360: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   363: return
@@ -259,7 +259,7 @@ public final class aa
         //   399: aload 7
         //   401: iconst_2
         //   402: aload 13
-        //   404: getfield 165	com/tencent/mm/wallet_core/c/aa$b:hKR	Ljava/lang/String;
+        //   404: getfield 165	com/tencent/mm/wallet_core/c/aa$b:iFF	Ljava/lang/String;
         //   407: aastore
         //   408: iload_1
         //   409: istore_2
@@ -291,7 +291,7 @@ public final class aa
         //   460: ldc 142
         //   462: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
         //   465: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   468: invokestatic 151	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   468: invokestatic 151	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   471: ldc 22
         //   473: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   476: aload 7
@@ -373,7 +373,7 @@ public final class aa
         //   612: aload 7
         //   614: iconst_2
         //   615: aload 12
-        //   617: getfield 165	com/tencent/mm/wallet_core/c/aa$b:hKR	Ljava/lang/String;
+        //   617: getfield 165	com/tencent/mm/wallet_core/c/aa$b:iFF	Ljava/lang/String;
         //   620: aastore
         //   621: iload_1
         //   622: istore_2
@@ -404,7 +404,7 @@ public final class aa
         //   671: ldc 142
         //   673: invokevirtual 145	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
         //   676: invokevirtual 149	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   679: invokestatic 151	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   679: invokestatic 151	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   682: ldc 22
         //   684: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   687: return
@@ -512,8 +512,8 @@ public final class aa
         //   54	64	702	java/lang/RuntimeException
       }
     };
-    this.hKK = paramh;
-    this.mHandler = new aq("WalletCacheStorage");
+    this.iFy = paramh;
+    this.mHandler = new MMHandler("WalletCacheStorage");
     AppMethodBeat.o(130938);
   }
   
@@ -555,11 +555,11 @@ public final class aa
       AppMethodBeat.o(130942);
       return true;
     }
-    if ((paramObject != null) && (b.fnF())) {
+    if ((paramObject != null) && (CrashReportFactory.hasDebuger())) {
       Assert.assertTrue("checkType failed, input type and value[" + paramString + ", " + paramObject + "] are not match", false);
     }
     if (paramBoolean) {
-      ae.e("MicroMsg.WalletCacheStorage", "checkType failed, input type and value[%s, %s] are not match", new Object[] { paramString, paramObject });
+      Log.e("MicroMsg.WalletCacheStorage", "checkType failed, input type and value[%s, %s] are not match", new Object[] { paramString, paramObject });
     }
     AppMethodBeat.o(130942);
     return false;
@@ -568,9 +568,9 @@ public final class aa
   private Object get(String paramString, Object paramObject)
   {
     AppMethodBeat.i(130940);
-    Assert.assertNotNull("db is null", this.hKK);
-    paramString = this.LVr.get(paramString);
-    if ((paramString == null) || (paramString == IJW))
+    Assert.assertNotNull("db is null", this.iFy);
+    paramString = this.Ruh.get(paramString);
+    if ((paramString == null) || (paramString == NRT))
     {
       AppMethodBeat.o(130940);
       return paramObject;
@@ -579,32 +579,15 @@ public final class aa
     return paramString;
   }
   
-  public final boolean aTg()
-  {
-    AppMethodBeat.i(130943);
-    if ((this.hKK == null) || (this.hKK.fqe()))
-    {
-      if (this.hKK == null) {}
-      for (Object localObject = "null";; localObject = Boolean.valueOf(this.hKK.fqe()))
-      {
-        ae.w("MicroMsg.WalletCacheStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
-        AppMethodBeat.o(130943);
-        return false;
-      }
-    }
-    AppMethodBeat.o(130943);
-    return true;
-  }
-  
-  public final void fuc()
+  public final void gBI()
   {
     AppMethodBeat.i(130944);
     try
     {
-      this.mHandler.removeCallbacks(this.IKc);
-      this.mHandler.post(this.IKc);
-      this.IKb = true;
-      ae.i("MicroMsg.WalletCacheStorage", "Posted appendAllToDisk");
+      this.mHandler.removeCallbacks(this.NRZ);
+      this.mHandler.post(this.NRZ);
+      this.NRY = true;
+      Log.i("MicroMsg.WalletCacheStorage", "Posted appendAllToDisk");
       AppMethodBeat.o(130944);
       return;
     }
@@ -614,7 +597,7 @@ public final class aa
     }
   }
   
-  public final Object get(am.a parama, Object paramObject)
+  public final Object get(ar.a parama, Object paramObject)
   {
     AppMethodBeat.i(130939);
     if (parama == null)
@@ -623,14 +606,14 @@ public final class aa
       return paramObject;
     }
     String str = parama.name();
-    if (bu.isNullOrNil(str))
+    if (Util.isNullOrNil(str))
     {
       AppMethodBeat.o(130939);
       return paramObject;
     }
     String[] arrayOfString = str.split("_");
     Object localObject = arrayOfString[(arrayOfString.length - 1)];
-    parama = (am.a)localObject;
+    parama = (ar.a)localObject;
     if (((String)localObject).equals("SYNC")) {
       parama = arrayOfString[(arrayOfString.length - 2)];
     }
@@ -644,7 +627,7 @@ public final class aa
     return localObject;
   }
   
-  public final void set(am.a parama, Object paramObject)
+  public final void set(ar.a parama, Object paramObject)
   {
     AppMethodBeat.i(130941);
     if (parama == null)
@@ -653,7 +636,7 @@ public final class aa
       return;
     }
     Object localObject1 = parama.name();
-    if (bu.isNullOrNil((String)localObject1))
+    if (Util.isNullOrNil((String)localObject1))
     {
       AppMethodBeat.o(130941);
       return;
@@ -674,12 +657,12 @@ public final class aa
       localObject2 = ((String)localObject1).substring(0, parama.length() + j);
       parama = paramObject;
       if (paramObject == null) {
-        parama = IJW;
+        parama = NRT;
       }
-      if (!parama.equals(this.LVr.put(localObject2, parama)))
+      if (!parama.equals(this.Ruh.put(localObject2, parama)))
       {
-        if (parama != IJW) {
-          break label244;
+        if (parama != NRT) {
+          break label238;
         }
         paramObject = null;
       }
@@ -687,25 +670,25 @@ public final class aa
       {
         try
         {
-          this.IKa.put(localObject2, paramObject);
+          this.NRX.put(localObject2, paramObject);
           if (i != 0)
           {
-            fuc();
-            if (parama != IJW) {
-              break label306;
+            gBI();
+            if (parama != NRT) {
+              break label298;
             }
             i = 5;
-            b(i, this, localObject2);
+            doNotify(i, this, localObject2);
             paramObject = new StringBuilder("SET: ").append((String)localObject2).append(" => ");
-            if (parama != IJW) {
-              break label311;
+            if (parama != NRT) {
+              break label303;
             }
             parama = "(DELETED)";
-            ae.i("MicroMsg.WalletCacheStorage", parama);
+            Log.i("MicroMsg.WalletCacheStorage", parama);
             AppMethodBeat.o(130941);
             return;
-            label244:
-            localObject1 = b.er(parama);
+            label238:
+            localObject1 = b.ev(parama);
             paramObject = localObject1;
             if (localObject1 != null) {
               break;
@@ -713,11 +696,11 @@ public final class aa
             AppMethodBeat.o(130941);
             return;
           }
-          if (this.IKb) {
+          if (this.NRY) {
             continue;
           }
-          this.IKb = true;
-          this.mHandler.postDelayed(this.IKc, 30000L);
+          this.NRY = true;
+          this.mHandler.postDelayed(this.NRZ, 30000L);
           continue;
           i = 4;
         }
@@ -725,24 +708,41 @@ public final class aa
         {
           AppMethodBeat.o(130941);
         }
-        label306:
+        label298:
         continue;
-        label311:
+        label303:
         parama = parama.toString();
       }
     }
   }
   
-  final class a<K>
-    extends ah<K, Object>
+  public final boolean shouldProcessEvent()
   {
-    private final String IKe;
+    AppMethodBeat.i(130943);
+    if ((this.iFy == null) || (this.iFy.isClose()))
+    {
+      if (this.iFy == null) {}
+      for (Object localObject = "null";; localObject = Boolean.valueOf(this.iFy.isClose()))
+      {
+        Log.w("MicroMsg.WalletCacheStorage", "shouldProcessEvent db is close :%s", new Object[] { localObject });
+        AppMethodBeat.o(130943);
+        return false;
+      }
+    }
+    AppMethodBeat.o(130943);
+    return true;
+  }
+  
+  final class a<K>
+    extends LruCache<K, Object>
+  {
+    private final String NSb;
     
     a(String paramString1, String paramString2)
     {
       super();
       AppMethodBeat.i(130933);
-      this.IKe = ("SELECT * FROM " + paramString1 + " WHERE " + paramString2 + "=?;");
+      this.NSb = ("SELECT * FROM " + paramString1 + " WHERE " + paramString2 + "=?;");
       AppMethodBeat.o(130933);
     }
     
@@ -753,10 +753,10 @@ public final class aa
       //   0: ldc 57
       //   2: invokestatic 25	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
       //   5: aload_0
-      //   6: getfield 16	com/tencent/mm/wallet_core/c/aa$a:LVs	Lcom/tencent/mm/wallet_core/c/aa;
+      //   6: getfield 16	com/tencent/mm/wallet_core/c/aa$a:Rui	Lcom/tencent/mm/wallet_core/c/aa;
       //   9: invokestatic 60	com/tencent/mm/wallet_core/c/aa:a	(Lcom/tencent/mm/wallet_core/c/aa;)Lcom/tencent/mm/storagebase/h;
       //   12: aload_0
-      //   13: getfield 46	com/tencent/mm/wallet_core/c/aa$a:IKe	Ljava/lang/String;
+      //   13: getfield 46	com/tencent/mm/wallet_core/c/aa$a:NSb	Ljava/lang/String;
       //   16: iconst_1
       //   17: anewarray 62	java/lang/String
       //   20: dup
@@ -765,65 +765,65 @@ public final class aa
       //   23: invokevirtual 65	java/lang/Object:toString	()Ljava/lang/String;
       //   26: aastore
       //   27: iconst_2
-      //   28: invokevirtual 70	com/tencent/mm/storagebase/h:a	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
+      //   28: invokevirtual 71	com/tencent/mm/storagebase/h:rawQuery	(Ljava/lang/String;[Ljava/lang/String;I)Landroid/database/Cursor;
       //   31: astore 4
       //   33: aload 4
-      //   35: invokeinterface 76 1 0
+      //   35: invokeinterface 77 1 0
       //   40: ifeq +87 -> 127
-      //   43: new 78	com/tencent/mm/wallet_core/c/aa$b
+      //   43: new 79	com/tencent/mm/wallet_core/c/aa$b
       //   46: dup
       //   47: aload 4
       //   49: iconst_1
-      //   50: invokeinterface 82 2 0
+      //   50: invokeinterface 83 2 0
       //   55: aload 4
       //   57: iconst_2
-      //   58: invokeinterface 86 2 0
-      //   63: invokespecial 89	com/tencent/mm/wallet_core/c/aa$b:<init>	(ILjava/lang/String;)V
+      //   58: invokeinterface 87 2 0
+      //   63: invokespecial 90	com/tencent/mm/wallet_core/c/aa$b:<init>	(ILjava/lang/String;)V
       //   66: astore_2
-      //   67: ldc 91
+      //   67: ldc 92
       //   69: new 27	java/lang/StringBuilder
       //   72: dup
-      //   73: ldc 93
+      //   73: ldc 94
       //   75: invokespecial 32	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   78: aload_1
       //   79: invokevirtual 65	java/lang/Object:toString	()Ljava/lang/String;
       //   82: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   85: ldc 95
+      //   85: ldc 96
       //   87: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   90: aload_2
-      //   91: getfield 98	com/tencent/mm/wallet_core/c/aa$b:hKR	Ljava/lang/String;
+      //   91: getfield 99	com/tencent/mm/wallet_core/c/aa$b:iFF	Ljava/lang/String;
       //   94: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   97: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   100: invokestatic 103	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   100: invokestatic 104	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
       //   103: aload_2
-      //   104: invokevirtual 107	com/tencent/mm/wallet_core/c/aa$b:aRK	()Ljava/lang/Object;
+      //   104: invokevirtual 108	com/tencent/mm/wallet_core/c/aa$b:bmp	()Ljava/lang/Object;
       //   107: astore_2
       //   108: aload 4
       //   110: ifnull +10 -> 120
       //   113: aload 4
-      //   115: invokeinterface 111 1 0
+      //   115: invokeinterface 112 1 0
       //   120: ldc 57
       //   122: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   125: aload_2
       //   126: areturn
-      //   127: ldc 91
+      //   127: ldc 92
       //   129: new 27	java/lang/StringBuilder
       //   132: dup
-      //   133: ldc 93
+      //   133: ldc 94
       //   135: invokespecial 32	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
       //   138: aload_1
       //   139: invokevirtual 65	java/lang/Object:toString	()Ljava/lang/String;
       //   142: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-      //   145: ldc 113
+      //   145: ldc 114
       //   147: invokevirtual 36	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
       //   150: invokevirtual 44	java/lang/StringBuilder:toString	()Ljava/lang/String;
-      //   153: invokestatic 103	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
-      //   156: invokestatic 116	com/tencent/mm/wallet_core/c/aa:eEi	()Ljava/lang/Object;
+      //   153: invokestatic 104	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
+      //   156: invokestatic 117	com/tencent/mm/wallet_core/c/aa:fKQ	()Ljava/lang/Object;
       //   159: astore_2
       //   160: aload 4
       //   162: ifnull +10 -> 172
       //   165: aload 4
-      //   167: invokeinterface 111 1 0
+      //   167: invokeinterface 112 1 0
       //   172: ldc 57
       //   174: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   177: aload_2
@@ -839,21 +839,21 @@ public final class aa
       //   193: aload_3
       //   194: ifnull +55 -> 249
       //   197: aload 4
-      //   199: invokeinterface 111 1 0
+      //   199: invokeinterface 112 1 0
       //   204: ldc 57
       //   206: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   209: aload_2
       //   210: athrow
       //   211: astore_2
-      //   212: ldc 91
+      //   212: ldc 92
       //   214: aload_2
-      //   215: ldc 118
+      //   215: ldc 119
       //   217: aload_1
-      //   218: invokestatic 122	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-      //   221: invokevirtual 126	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
+      //   218: invokestatic 123	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
+      //   221: invokevirtual 127	java/lang/String:concat	(Ljava/lang/String;)Ljava/lang/String;
       //   224: iconst_0
       //   225: anewarray 64	java/lang/Object
-      //   228: invokestatic 130	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   228: invokestatic 131	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   231: ldc 57
       //   233: invokestatic 49	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
       //   236: aconst_null
@@ -861,10 +861,10 @@ public final class aa
       //   238: astore 4
       //   240: aload_3
       //   241: aload 4
-      //   243: invokevirtual 134	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
+      //   243: invokevirtual 135	java/lang/Throwable:addSuppressed	(Ljava/lang/Throwable;)V
       //   246: goto -42 -> 204
       //   249: aload 4
-      //   251: invokeinterface 111 1 0
+      //   251: invokeinterface 112 1 0
       //   256: goto -52 -> 204
       //   259: astore_2
       //   260: aconst_null
@@ -902,16 +902,16 @@ public final class aa
   
   static final class b
   {
-    final String hKR;
+    final String iFF;
     final int type;
     
     b(int paramInt, String paramString)
     {
       this.type = paramInt;
-      this.hKR = paramString;
+      this.iFF = paramString;
     }
     
-    static b er(Object paramObject)
+    static b ev(Object paramObject)
     {
       AppMethodBeat.i(130935);
       int i;
@@ -947,15 +947,15 @@ public final class aa
           i = 6;
         }
       }
-      ae.e("MicroMsg.WalletCacheStorage", "unresolve failed, unknown type=" + paramObject.getClass().toString());
+      Log.e("MicroMsg.WalletCacheStorage", "unresolve failed, unknown type=" + paramObject.getClass().toString());
       AppMethodBeat.o(130935);
       return null;
     }
     
-    final Object aRK()
+    final Object bmp()
     {
       AppMethodBeat.i(130937);
-      if (this.hKR == aa.eEi())
+      if (this.iFF == aa.fKQ())
       {
         AppMethodBeat.o(130937);
         return null;
@@ -972,27 +972,27 @@ public final class aa
         for (;;)
         {
           Object localObject;
-          ae.e("MicroMsg.WalletCacheStorage", "exception:%s", new Object[] { bu.o(localException) });
+          Log.e("MicroMsg.WalletCacheStorage", "exception:%s", new Object[] { Util.stackTraceToString(localException) });
         }
       }
       AppMethodBeat.o(130937);
       return null;
-      localObject = Integer.valueOf(this.hKR);
+      localObject = Integer.valueOf(this.iFF);
       AppMethodBeat.o(130937);
       return localObject;
-      localObject = Long.valueOf(this.hKR);
+      localObject = Long.valueOf(this.iFF);
       AppMethodBeat.o(130937);
       return localObject;
-      localObject = this.hKR;
+      localObject = this.iFF;
       AppMethodBeat.o(130937);
       return localObject;
-      localObject = Boolean.valueOf(this.hKR);
+      localObject = Boolean.valueOf(this.iFF);
       AppMethodBeat.o(130937);
       return localObject;
-      localObject = Float.valueOf(this.hKR);
+      localObject = Float.valueOf(this.iFF);
       AppMethodBeat.o(130937);
       return localObject;
-      localObject = Double.valueOf(this.hKR);
+      localObject = Double.valueOf(this.iFF);
       AppMethodBeat.o(130937);
       return localObject;
     }
@@ -1016,9 +1016,9 @@ public final class aa
         AppMethodBeat.o(130936);
         return false;
       }
-      if (this.hKR == null)
+      if (this.iFF == null)
       {
-        if (paramObject.hKR == null)
+        if (paramObject.iFF == null)
         {
           AppMethodBeat.o(130936);
           return true;
@@ -1026,7 +1026,7 @@ public final class aa
         AppMethodBeat.o(130936);
         return false;
       }
-      boolean bool = this.hKR.equals(paramObject.hKR);
+      boolean bool = this.iFF.equals(paramObject.iFF);
       AppMethodBeat.o(130936);
       return bool;
     }
@@ -1034,7 +1034,7 @@ public final class aa
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.wallet_core.c.aa
  * JD-Core Version:    0.7.0.1
  */

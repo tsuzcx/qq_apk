@@ -1,6 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<animation-list android:oneshot="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/byp" />
-    <item android:drawable="@drawable/byo" />
-</selector>
+    <item android:duration="61" android:drawable="@drawable/abu" />
+    <item android:duration="62" android:drawable="@drawable/abv" />
+    <item android:duration="61" android:drawable="@drawable/abw" />
+    <item android:duration="62" android:drawable="@drawable/abx" />
+    <item android:duration="61" android:drawable="@drawable/aby" />
+    <item android:duration="62" android:drawable="@drawable/abz" />
+    <item android:duration="61" android:drawable="@drawable/ac0" />
+    <item android:duration="62" android:drawable="@drawable/ac1" />
+    <item android:duration="61" android:drawable="@drawable/ac2" />
+    <item android:duration="62" android:drawable="@drawable/ac3" />
+    <item android:duration="61" android:drawable="@drawable/ac4" />
+    <item android:duration="62" android:drawable="@drawable/ac5" />
+    <item android:duration="61" android:drawable="@drawable/ac6" />
+    <item android:duration="62" android:drawable="@drawable/ac7" />
+    <item android:duration="61" android:drawable="@drawable/ac8" />
+    <item android:duration="62" android:drawable="@drawable/ac9" />
+    <item android:duration="61" android:drawable="@drawable/ac_" />
+    <item android:duration="62" android:drawable="@drawable/aca" />
+    <item android:duration="61" android:drawable="@drawable/acb" />
+    <item android:duration="62" android:drawable="@drawable/acc" />
+    <item android:duration="61" android:drawable="@drawable/acd" />
+    <item android:duration="62" android:drawable="@drawable/ace" />
+    <item android:duration="61" android:drawable="@drawable/acf" />
+    <item android:duration="62" android:drawable="@drawable/acg" />
+    <item android:duration="61" android:drawable="@drawable/ach" />
+    <item android:duration="62" android:drawable="@drawable/aci" />
+    <item android:duration="61" android:drawable="@drawable/acj" />
+    <item android:duration="62" android:drawable="@drawable/ack" />
+    <item android:duration="61" android:drawable="@drawable/acl" />
+    <item android:duration="62" android:drawable="@drawable/acm" />
+    <item android:duration="61" android:drawable="@drawable/acn" />
+    <item android:duration="62" android:drawable="@drawable/aco" />
+    <item android:duration="61" android:drawable="@drawable/acp" />
+    <item android:duration="62" android:drawable="@drawable/acq" />
+    <item android:duration="61" android:drawable="@drawable/acr" />
+    <item android:duration="62" android:drawable="@drawable/acs" />
+    <item android:duration="61" android:drawable="@drawable/act" />
+    <item android:duration="62" android:drawable="@drawable/acu" />
+</animation-list>

@@ -2,8 +2,8 @@ package com.tencent.mm.loader.h.b;
 
 import android.content.Context;
 import android.content.res.AssetManager;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.vfs.s;
 import java.io.ByteArrayInputStream;
 import java.io.Closeable;
 import java.io.FileNotFoundException;
@@ -12,22 +12,27 @@ import java.io.InputStream;
 public final class a
   implements Closeable
 {
-  byte[] hjo = null;
-  d hjp;
-  c hjq;
-  Object hjr;
+  byte[] icl = null;
+  d icm;
+  c icn;
+  Object ico;
   InputStream inputStream = null;
   
   private a(d paramd, c paramc, Object paramObject)
   {
-    this.hjp = paramd;
-    this.hjq = paramc;
-    this.hjr = paramObject;
+    this.icm = paramd;
+    this.icn = paramc;
+    this.ico = paramObject;
   }
   
-  public static a Q(byte[] paramArrayOfByte)
+  public static a Hk(String paramString)
   {
-    return new a(new d(paramArrayOfByte), new b(paramArrayOfByte), null);
+    return j(paramString, null);
+  }
+  
+  public static a Hl(String paramString)
+  {
+    return a(MMApplicationContext.getContext().getAssets().open(paramString), MMApplicationContext.getContext().getAssets().open(paramString));
   }
   
   private static <T extends d,  extends c> a a(T paramT, Object paramObject)
@@ -40,29 +45,24 @@ public final class a
     return new a(new e(paramInputStream1), new c(paramInputStream2), null);
   }
   
+  public static a ae(byte[] paramArrayOfByte)
+  {
+    return new a(new d(paramArrayOfByte), new b(paramArrayOfByte), null);
+  }
+  
   public static a j(String paramString, Object paramObject)
   {
     return a(new a(paramString), paramObject);
   }
   
-  public static a yL(String paramString)
-  {
-    return j(paramString, null);
-  }
-  
-  public static a yM(String paramString)
-  {
-    return a(ak.getContext().getAssets().open(paramString), ak.getContext().getAssets().open(paramString));
-  }
-  
-  public final InputStream arU()
+  public final InputStream aKu()
   {
     if (this.inputStream != null) {
       return this.inputStream;
     }
-    if (this.hjp != null)
+    if (this.icm != null)
     {
-      this.inputStream = this.hjp.arU();
+      this.inputStream = this.icm.aKu();
       return this.inputStream;
     }
     return null;
@@ -70,25 +70,25 @@ public final class a
   
   public final void close()
   {
-    if (this.hjp != null)
+    if (this.icm != null)
     {
-      this.hjp.close();
-      this.hjp = null;
+      this.icm.close();
+      this.icm = null;
     }
-    if (this.hjq != null) {
-      this.hjq.close();
+    if (this.icn != null) {
+      this.icn.close();
     }
   }
   
   public final Object getTag()
   {
-    return this.hjr;
+    return this.ico;
   }
   
   static final class a
     implements c, d
   {
-    InputStream aFw = null;
+    InputStream aFm = null;
     String mFilePath;
     
     public a(String paramString)
@@ -96,12 +96,12 @@ public final class a
       this.mFilePath = paramString;
     }
     
-    public final InputStream arU()
+    public final InputStream aKu()
     {
       try
       {
-        this.aFw = o.openRead(this.mFilePath);
-        InputStream localInputStream = this.aFw;
+        this.aFm = s.openRead(this.mFilePath);
+        InputStream localInputStream = this.aFm;
         return localInputStream;
       }
       catch (FileNotFoundException localFileNotFoundException) {}
@@ -110,18 +110,18 @@ public final class a
     
     public final void close()
     {
-      a.u(this.aFw);
+      a.t(this.aFm);
     }
   }
   
   static final class b
     implements c
   {
-    byte[] hjs;
+    byte[] icp;
     
     public b(byte[] paramArrayOfByte)
     {
-      this.hjs = paramArrayOfByte;
+      this.icp = paramArrayOfByte;
     }
     
     public final void close() {}
@@ -130,68 +130,68 @@ public final class a
   static final class c
     implements c
   {
-    InputStream hjt;
+    InputStream icq;
     
     public c(InputStream paramInputStream)
     {
-      this.hjt = paramInputStream;
+      this.icq = paramInputStream;
     }
     
     public final void close()
     {
-      a.u(this.hjt);
+      a.t(this.icq);
     }
   }
   
   static final class d
     implements d
   {
-    InputStream aFw = null;
-    byte[] hjs;
+    InputStream aFm = null;
+    byte[] icp;
     
     public d(byte[] paramArrayOfByte)
     {
-      this.hjs = paramArrayOfByte;
+      this.icp = paramArrayOfByte;
     }
     
-    public final InputStream arU()
+    public final InputStream aKu()
     {
-      if (this.aFw == null) {
-        this.aFw = new ByteArrayInputStream(this.hjs);
+      if (this.aFm == null) {
+        this.aFm = new ByteArrayInputStream(this.icp);
       }
-      return this.aFw;
+      return this.aFm;
     }
     
     public final void close()
     {
-      a.u(this.aFw);
+      a.t(this.aFm);
     }
   }
   
   static final class e
     implements d
   {
-    InputStream hjt;
+    InputStream icq;
     
     public e(InputStream paramInputStream)
     {
-      this.hjt = paramInputStream;
+      this.icq = paramInputStream;
     }
     
-    public final InputStream arU()
+    public final InputStream aKu()
     {
-      return this.hjt;
+      return this.icq;
     }
     
     public final void close()
     {
-      a.u(this.hjt);
+      a.t(this.icq);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.h.b.a
  * JD-Core Version:    0.7.0.1
  */

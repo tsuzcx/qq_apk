@@ -1,187 +1,212 @@
 package com.tencent.mm.plugin.appbrand.jsapi.wifi.wifisdk.internal;
 
-import android.net.wifi.ScanResult;
-import android.net.wifi.WifiConfiguration;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.ConnectivityManager.NetworkCallback;
+import android.net.MacAddress;
+import android.net.Network;
+import android.net.NetworkRequest.Builder;
+import android.net.NetworkSpecifier;
+import android.net.wifi.WifiNetworkSpecifier.Builder;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.util.List;
+import com.tencent.mm.sdk.platformtools.Log;
+import java.util.concurrent.atomic.AtomicBoolean;
+import kotlin.g.b.p;
+import kotlin.l;
 
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/wifi/wifisdk/internal/WifiConnector29Impl;", "", "()V", "TAG", "", "connectWifi", "", "context", "Landroid/content/Context;", "ssid", "bssid", "password", "timeoutMs", "", "listener", "Lcom/tencent/mm/plugin/appbrand/jsapi/wifi/wifisdk/internal/WifiConnector29Impl$IListener;", "tryKeepConnectedWifi", "IListener", "luggage-commons-jsapi-connectivity-ext_release"})
 public final class c
 {
-  public static WifiManager bWU;
+  public static final c mIv;
   
-  public static int addNetwork(WifiConfiguration paramWifiConfiguration)
+  static
   {
-    AppMethodBeat.i(144719);
-    int i;
-    try
-    {
-      i = bWU.addNetwork(paramWifiConfiguration);
-      AppMethodBeat.o(144719);
-      return i;
-    }
-    catch (Throwable paramWifiConfiguration)
-    {
-      i = d.lBg;
-      AppMethodBeat.o(144719);
-    }
-    return i;
+    AppMethodBeat.i(215140);
+    mIv = new c();
+    AppMethodBeat.o(215140);
   }
   
-  public static boolean disableNetwork(int paramInt)
+  public static void a(final Context paramContext, final String paramString1, final String paramString2, final String paramString3, final a parama)
   {
-    AppMethodBeat.i(144722);
-    try
+    Object localObject = null;
+    AppMethodBeat.i(215139);
+    p.h(parama, "listener");
+    Log.i("MicroMsg.AppBrand.WifiConnector29Impl", "connectWifi, ssid: " + paramString1 + ", bssid: " + paramString2 + ", timeoutMs: 13000");
+    c localc = new c(parama);
+    if (paramContext != null)
     {
-      boolean bool = bWU.disableNetwork(paramInt);
-      AppMethodBeat.o(144722);
-      return bool;
+      parama = paramContext.getApplicationContext();
+      if (parama != null)
+      {
+        parama = parama.getSystemService("connectivity");
+        if ((parama instanceof ConnectivityManager)) {
+          break label370;
+        }
+        parama = (a)localObject;
+      }
     }
-    catch (Throwable localThrowable)
+    label209:
+    label370:
+    for (;;)
     {
-      AppMethodBeat.o(144722);
+      parama = (ConnectivityManager)parama;
+      if (parama == null)
+      {
+        Log.w("MicroMsg.AppBrand.WifiConnector29Impl", "connectWifi, connectivityManager is null");
+        localc.bLO();
+        AppMethodBeat.o(215139);
+        return;
+        parama = null;
+        break;
+      }
+      if ((paramString1 == null) || (paramString2 == null) || (paramString3 == null))
+      {
+        Log.w("MicroMsg.AppBrand.WifiConnector29Impl", "connectWifi, connect params illegal");
+        localc.bLO();
+        AppMethodBeat.o(215139);
+        return;
+      }
+      try
+      {
+        localObject = new WifiNetworkSpecifier.Builder();
+        ((WifiNetworkSpecifier.Builder)localObject).setSsid(paramString1);
+      }
+      catch (Exception paramContext)
+      {
+        int i;
+        Log.w("MicroMsg.AppBrand.WifiConnector29Impl", "connectWifi, build network specifier fail since ".concat(String.valueOf(paramContext)));
+        localc.bLO();
+        AppMethodBeat.o(215139);
+        return;
+      }
+      try
+      {
+        if (((CharSequence)paramString2).length() <= 0) {
+          break label301;
+        }
+        i = 1;
+        if (i != 0) {
+          ((WifiNetworkSpecifier.Builder)localObject).setBssid(MacAddress.fromString(paramString2));
+        }
+      }
+      catch (Exception localException)
+      {
+        break label209;
+      }
+      if (((CharSequence)paramString3).length() > 0) {}
+      for (i = 1;; i = 0)
+      {
+        if (i != 0) {
+          ((WifiNetworkSpecifier.Builder)localObject).setWpa2Passphrase(paramString3);
+        }
+        localObject = ((WifiNetworkSpecifier.Builder)localObject).build();
+        p.g(localObject, "try {\n                Wi…     return\n            }");
+        try
+        {
+          parama.requestNetwork(new NetworkRequest.Builder().addTransportType(1).setNetworkSpecifier((NetworkSpecifier)localObject).build(), (ConnectivityManager.NetworkCallback)new b(localc, parama, paramContext, paramString1, paramString2, paramString3));
+          AppMethodBeat.o(215139);
+          return;
+        }
+        catch (Exception paramContext)
+        {
+          Log.w("MicroMsg.AppBrand.WifiConnector29Impl", "connectWifi, fail since ".concat(String.valueOf(paramContext)));
+          localc.bLO();
+          AppMethodBeat.o(215139);
+          return;
+        }
+        i = 0;
+        break;
+      }
     }
-    return false;
   }
   
-  public static List<WifiConfiguration> getConfiguredNetworks()
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/wifi/wifisdk/internal/WifiConnector29Impl$IListener;", "", "onConnectFailure", "", "onConnectSuccess", "luggage-commons-jsapi-connectivity-ext_release"})
+  public static abstract interface a
   {
-    AppMethodBeat.i(144718);
-    try
-    {
-      List localList = bWU.getConfiguredNetworks();
-      AppMethodBeat.o(144718);
-      return localList;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(144718);
-    }
-    return null;
+    public abstract void bLN();
+    
+    public abstract void bLO();
   }
   
-  public static WifiInfo getConnectionInfo()
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/jsapi/wifi/wifisdk/internal/WifiConnector29Impl$connectWifi$1", "Landroid/net/ConnectivityManager$NetworkCallback;", "onAvailable", "", "network", "Landroid/net/Network;", "onLost", "onUnavailable", "luggage-commons-jsapi-connectivity-ext_release"})
+  public static final class b
+    extends ConnectivityManager.NetworkCallback
   {
-    AppMethodBeat.i(144724);
-    try
+    b(c.c paramc, ConnectivityManager paramConnectivityManager, Context paramContext, String paramString1, String paramString2, String paramString3) {}
+    
+    public final void onAvailable(Network paramNetwork)
     {
-      WifiInfo localWifiInfo = bWU.getConnectionInfo();
-      AppMethodBeat.o(144724);
-      return localWifiInfo;
+      AppMethodBeat.i(215133);
+      p.h(paramNetwork, "network");
+      super.onAvailable(paramNetwork);
+      Log.i("MicroMsg.AppBrand.WifiConnector29Impl", "onAvailable, network: ".concat(String.valueOf(paramNetwork)));
+      this.mIw.bLN();
+      Log.i("MicroMsg.AppBrand.WifiConnector29Impl", "onAvailable, success: ".concat(String.valueOf(parama.bindProcessToNetwork(paramNetwork))));
+      paramNetwork = c.mIv;
+      c.d(paramContext, paramString1, paramString2, paramString3);
+      AppMethodBeat.o(215133);
     }
-    catch (Throwable localThrowable)
+    
+    public final void onLost(Network paramNetwork)
     {
-      AppMethodBeat.o(144724);
+      AppMethodBeat.i(215135);
+      p.h(paramNetwork, "network");
+      super.onLost(paramNetwork);
+      Log.i("MicroMsg.AppBrand.WifiConnector29Impl", "onLost, network: ".concat(String.valueOf(paramNetwork)));
+      this.mIw.bLO();
+      parama.bindProcessToNetwork(null);
+      parama.unregisterNetworkCallback((ConnectivityManager.NetworkCallback)this);
+      AppMethodBeat.o(215135);
     }
-    return null;
+    
+    public final void onUnavailable()
+    {
+      AppMethodBeat.i(215134);
+      super.onUnavailable();
+      Log.i("MicroMsg.AppBrand.WifiConnector29Impl", "onUnavailable");
+      this.mIw.bLO();
+      AppMethodBeat.o(215134);
+    }
   }
   
-  public static List<ScanResult> getScanResults()
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/appbrand/jsapi/wifi/wifisdk/internal/WifiConnector29Impl$connectWifi$listenerWrapper$1", "Lcom/tencent/mm/plugin/appbrand/jsapi/wifi/wifisdk/internal/WifiConnector29Impl$IListener;", "called", "Ljava/util/concurrent/atomic/AtomicBoolean;", "onConnectFailure", "", "onConnectSuccess", "luggage-commons-jsapi-connectivity-ext_release"})
+  public static final class c
+    implements c.a
   {
-    AppMethodBeat.i(144725);
-    try
+    private final AtomicBoolean mIB;
+    
+    c(c.a parama)
     {
-      List localList = bWU.getScanResults();
-      AppMethodBeat.o(144725);
-      return localList;
+      AppMethodBeat.i(215138);
+      this.mIB = new AtomicBoolean(false);
+      AppMethodBeat.o(215138);
     }
-    catch (Throwable localThrowable)
+    
+    public final void bLN()
     {
-      AppMethodBeat.o(144725);
+      AppMethodBeat.i(215136);
+      if (this.mIB.compareAndSet(false, true))
+      {
+        this.mIC.bLN();
+        AppMethodBeat.o(215136);
+        return;
+      }
+      Log.i("MicroMsg.AppBrand.WifiConnector29Impl", "onConnectSuccess, already call");
+      AppMethodBeat.o(215136);
     }
-    return null;
-  }
-  
-  public static boolean isWifiEnabled()
-  {
-    AppMethodBeat.i(144727);
-    try
+    
+    public final void bLO()
     {
-      boolean bool = bWU.isWifiEnabled();
-      AppMethodBeat.o(144727);
-      return bool;
+      AppMethodBeat.i(215137);
+      if (this.mIB.compareAndSet(false, true))
+      {
+        this.mIC.bLO();
+        AppMethodBeat.o(215137);
+        return;
+      }
+      Log.i("MicroMsg.AppBrand.WifiConnector29Impl", "onConnectFailure, already call");
+      AppMethodBeat.o(215137);
     }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(144727);
-    }
-    return false;
-  }
-  
-  public static boolean removeNetwork(int paramInt)
-  {
-    AppMethodBeat.i(144720);
-    try
-    {
-      boolean bool = bWU.removeNetwork(paramInt);
-      AppMethodBeat.o(144720);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(144720);
-    }
-    return false;
-  }
-  
-  public static boolean saveConfiguration()
-  {
-    AppMethodBeat.i(144726);
-    try
-    {
-      boolean bool = bWU.saveConfiguration();
-      AppMethodBeat.o(144726);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(144726);
-    }
-    return false;
-  }
-  
-  public static boolean startScan()
-  {
-    AppMethodBeat.i(144723);
-    try
-    {
-      boolean bool = bWU.startScan();
-      AppMethodBeat.o(144723);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(144723);
-    }
-    return false;
-  }
-  
-  public static boolean tS(int paramInt)
-  {
-    AppMethodBeat.i(144721);
-    try
-    {
-      boolean bool = bWU.enableNetwork(paramInt, true);
-      AppMethodBeat.o(144721);
-      return bool;
-    }
-    catch (Throwable localThrowable)
-    {
-      AppMethodBeat.o(144721);
-    }
-    return false;
-  }
-  
-  public static int tT(int paramInt)
-  {
-    if (paramInt <= -100) {
-      return 0;
-    }
-    if (paramInt >= -55) {
-      return 99;
-    }
-    return (int)((paramInt + 100) * 99.0F / 45.0F);
   }
 }
 

@@ -2,36 +2,36 @@ package com.tencent.mm.aj;
 
 import android.content.ContentValues;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.n.b;
-import com.tencent.mm.model.v;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.q.b;
+import com.tencent.mm.bw.b;
+import com.tencent.mm.model.z;
+import com.tencent.mm.network.m;
 import com.tencent.mm.protocal.l.e;
 import com.tencent.mm.protocal.protobuf.SKBuiltinBuffer_t;
-import com.tencent.mm.protocal.protobuf.bcm;
-import com.tencent.mm.protocal.protobuf.bcn;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.vfs.o;
+import com.tencent.mm.protocal.protobuf.bny;
+import com.tencent.mm.protocal.protobuf.bnz;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.as;
 import java.io.IOException;
 import java.io.OutputStream;
 
 final class l
-  extends n
-  implements k
+  extends q
+  implements m
 {
-  private f callback;
-  private String hPB;
-  private int hPF;
-  private String hPH;
-  private int hPW;
-  private String hPX;
+  private i callback;
+  private String iKI;
+  private int iKM;
+  private String iKO;
+  private int iLd;
+  private String iLe;
   private OutputStream output;
   private String username;
   
@@ -40,38 +40,17 @@ final class l
     AppMethodBeat.i(150296);
     this.output = null;
     this.username = paramString;
-    if (an.Ac(paramString)) {
-      this.username = an.aUA(paramString);
+    if (as.IG(paramString)) {
+      this.username = as.bjz(paramString);
     }
-    ae.i("MicroMsg.NetSceneGetHDHeadImg", "init Headimage in_username:" + paramString + " out_username" + this.username);
-    this.hPF = 480;
-    this.hPW = 480;
-    this.hPH = "jpg";
+    Log.i("MicroMsg.NetSceneGetHDHeadImg", "init Headimage in_username:" + paramString + " out_username" + this.username);
+    this.iKM = 480;
+    this.iLd = 480;
+    this.iKO = "jpg";
     AppMethodBeat.o(150296);
   }
   
-  private int W(byte[] paramArrayOfByte)
-  {
-    AppMethodBeat.i(150302);
-    try
-    {
-      if (this.output == null) {
-        this.output = o.db(this.hPX, false);
-      }
-      this.output.write(paramArrayOfByte);
-      int i = paramArrayOfByte.length;
-      AppMethodBeat.o(150302);
-      return i;
-    }
-    catch (IOException paramArrayOfByte)
-    {
-      ae.e("MicroMsg.NetSceneGetHDHeadImg", "exception:%s", new Object[] { bu.o(paramArrayOfByte) });
-      AppMethodBeat.o(150302);
-    }
-    return -1;
-  }
-  
-  private void aEJ()
+  private void aYw()
   {
     AppMethodBeat.i(150303);
     try
@@ -87,15 +66,36 @@ final class l
     }
     catch (IOException localIOException)
     {
-      ae.e("MicroMsg.NetSceneGetHDHeadImg", "exception:%s", new Object[] { bu.o(localIOException) });
+      Log.e("MicroMsg.NetSceneGetHDHeadImg", "exception:%s", new Object[] { Util.stackTraceToString(localIOException) });
       AppMethodBeat.o(150303);
     }
   }
   
-  public static void aY(String paramString1, String paramString2)
+  private int ak(byte[] paramArrayOfByte)
+  {
+    AppMethodBeat.i(150302);
+    try
+    {
+      if (this.output == null) {
+        this.output = com.tencent.mm.vfs.s.dw(this.iLe, false);
+      }
+      this.output.write(paramArrayOfByte);
+      int i = paramArrayOfByte.length;
+      AppMethodBeat.o(150302);
+      return i;
+    }
+    catch (IOException paramArrayOfByte)
+    {
+      Log.e("MicroMsg.NetSceneGetHDHeadImg", "exception:%s", new Object[] { Util.stackTraceToString(paramArrayOfByte) });
+      AppMethodBeat.o(150302);
+    }
+    return -1;
+  }
+  
+  public static void bc(String paramString1, String paramString2)
   {
     AppMethodBeat.i(150300);
-    p.aEA().aX(paramString1, paramString2);
+    p.aYn().bb(paramString1, paramString2);
     AppMethodBeat.o(150300);
   }
   
@@ -103,79 +103,79 @@ final class l
   {
     AppMethodBeat.i(150301);
     super.cancel();
-    aEJ();
+    aYw();
     AppMethodBeat.o(150301);
   }
   
-  public final int doScene(com.tencent.mm.network.e parame, f paramf)
+  public final int doScene(com.tencent.mm.network.g paramg, i parami)
   {
     int j = 0;
     AppMethodBeat.i(150297);
-    this.callback = paramf;
+    this.callback = parami;
     if ((this.username == null) || (this.username.length() == 0))
     {
-      ae.e("MicroMsg.NetSceneGetHDHeadImg", "username is null");
+      Log.e("MicroMsg.NetSceneGetHDHeadImg", "username is null");
       AppMethodBeat.o(150297);
       return -1;
     }
     if (this.username.endsWith("@qqim"))
     {
-      ae.e("MicroMsg.NetSceneGetHDHeadImg", "never try get qq user hd.");
+      Log.e("MicroMsg.NetSceneGetHDHeadImg", "never try get qq user hd.");
       AppMethodBeat.o(150297);
       return -1;
     }
-    Object localObject1 = p.aEO();
-    p.aEA();
-    this.hPB = e.J(this.username, true);
-    if (o.fB(this.hPB))
+    Object localObject1 = p.aYC();
+    p.aYn();
+    this.iKI = e.L(this.username, true);
+    if (com.tencent.mm.vfs.s.YS(this.iKI))
     {
-      ae.i("MicroMsg.NetSceneGetHDHeadImg", "The HDAvatar of " + this.username + " is already exists");
+      Log.i("MicroMsg.NetSceneGetHDHeadImg", "The HDAvatar of " + this.username + " is already exists");
       AppMethodBeat.o(150297);
       return 0;
     }
-    this.hPX = (this.hPB + ".tmp");
-    paramf = ((h)localObject1).DJ(this.username);
+    this.iLe = (this.iKI + ".tmp");
+    parami = ((h)localObject1).Mu(this.username);
     Object localObject2;
-    if (paramf == null)
+    if (parami == null)
     {
-      o.deleteFile(this.hPX);
-      paramf = new g();
-      paramf.username = this.username;
-      paramf.hPH = this.hPH;
-      paramf.hPF = this.hPF;
-      paramf.hPG = this.hPW;
-      paramf.dEu = -1;
-      localObject2 = paramf.convertTo();
-      ((h)localObject1).hKK.a("hdheadimginfo", "username", (ContentValues)localObject2);
-      localObject1 = new b.a();
-      ((b.a)localObject1).hQF = new bcm();
-      ((b.a)localObject1).hQG = new bcn();
-      ((b.a)localObject1).uri = "/cgi-bin/micromsg-bin/gethdheadimg";
-      ((b.a)localObject1).funcId = 158;
-      ((b.a)localObject1).hQH = 47;
-      ((b.a)localObject1).respCmdId = 1000000047;
-      localObject1 = ((b.a)localObject1).aDS();
-      localObject2 = (bcm)((com.tencent.mm.ak.b)localObject1).hQD.hQJ;
-      if (an.Ac(this.username)) {
+      com.tencent.mm.vfs.s.deleteFile(this.iLe);
+      parami = new g();
+      parami.username = this.username;
+      parami.iKO = this.iKO;
+      parami.iKM = this.iKM;
+      parami.iKN = this.iLd;
+      parami.cSx = -1;
+      localObject2 = parami.convertTo();
+      ((h)localObject1).iFy.insert("hdheadimginfo", "username", (ContentValues)localObject2);
+      localObject1 = new d.a();
+      ((d.a)localObject1).iLN = new bny();
+      ((d.a)localObject1).iLO = new bnz();
+      ((d.a)localObject1).uri = "/cgi-bin/micromsg-bin/gethdheadimg";
+      ((d.a)localObject1).funcId = 158;
+      ((d.a)localObject1).iLP = 47;
+      ((d.a)localObject1).respCmdId = 1000000047;
+      localObject1 = ((d.a)localObject1).aXF();
+      localObject2 = (bny)((d)localObject1).iLK.iLR;
+      if (as.IG(this.username)) {
         break label636;
       }
-      ((bcm)localObject2).nIJ = this.username;
-      ((bcm)localObject2).GSk = 1;
+      ((bny)localObject2).UserName = this.username;
+      ((bny)localObject2).LWp = 1;
     }
     for (;;)
     {
-      ae.d("MicroMsg.NetSceneGetHDHeadImg", "inUser:" + this.username + " outUser:" + ((bcm)localObject2).nIJ + " outType:" + ((bcm)localObject2).GSk);
-      ((bcm)localObject2).GSh = this.hPF;
-      ((bcm)localObject2).GSi = this.hPW;
-      ((bcm)localObject2).GSj = this.hPH;
-      ((bcm)localObject2).xsB = paramf.hPI;
-      ((bcm)localObject2).xsC = paramf.dgI;
-      int i = dispatch(parame, (q)localObject1, this);
+      Log.d("MicroMsg.NetSceneGetHDHeadImg", "inUser:" + this.username + " outUser:" + ((bny)localObject2).UserName + " outType:" + ((bny)localObject2).LWp);
+      ((bny)localObject2).LWm = this.iKM;
+      ((bny)localObject2).LWn = this.iLd;
+      ((bny)localObject2).LWo = this.iKO;
+      ((bny)localObject2).BsF = parami.iKP;
+      ((bny)localObject2).BsG = parami.bNu;
+      int i = dispatch(paramg, (com.tencent.mm.network.s)localObject1, this);
       AppMethodBeat.o(150297);
       return i;
-      localObject2 = this.hPX;
+      localObject2 = this.iLe;
       i = j;
-      if (paramf != null)
+      if (parami != null)
       {
         i = j;
         if (localObject2 != null)
@@ -190,27 +190,27 @@ final class l
       {
         if (i == 0)
         {
-          o.deleteFile(this.hPX);
-          paramf.reset();
-          paramf.username = this.username;
-          paramf.hPH = this.hPH;
-          paramf.hPF = this.hPF;
-          paramf.hPG = this.hPW;
-          ((h)localObject1).a(this.username, paramf);
+          com.tencent.mm.vfs.s.deleteFile(this.iLe);
+          parami.reset();
+          parami.username = this.username;
+          parami.iKO = this.iKO;
+          parami.iKM = this.iKM;
+          parami.iKN = this.iLd;
+          ((h)localObject1).a(this.username, parami);
         }
         break;
         label569:
         i = j;
-        if (paramf.aEE().equals(this.hPH))
+        if (parami.aYp().equals(this.iKO))
         {
           i = j;
-          if (paramf.hPF == this.hPF)
+          if (parami.iKM == this.iKM)
           {
             i = j;
-            if (paramf.hPG == this.hPW)
+            if (parami.iKN == this.iLd)
             {
               i = j;
-              if (o.aZR((String)localObject2) == paramf.dgI) {
+              if (com.tencent.mm.vfs.s.boW((String)localObject2) == parami.bNu) {
                 i = 1;
               }
             }
@@ -218,15 +218,15 @@ final class l
         }
       }
       label636:
-      if (this.username.equals(v.aAC() + "@bottle"))
+      if (this.username.equals(z.aTY() + "@bottle"))
       {
-        ((bcm)localObject2).nIJ = v.aAC();
-        ((bcm)localObject2).GSk = 2;
+        ((bny)localObject2).UserName = z.aTY();
+        ((bny)localObject2).LWp = 2;
       }
       else
       {
-        ((bcm)localObject2).nIJ = this.username;
-        ((bcm)localObject2).GSk = 2;
+        ((bny)localObject2).UserName = this.username;
+        ((bny)localObject2).LWp = 2;
       }
     }
   }
@@ -236,82 +236,82 @@ final class l
     return 158;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, com.tencent.mm.network.s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(150299);
-    paramArrayOfByte = (bcn)((com.tencent.mm.ak.b)paramq).hQE.hQJ;
-    ae.d("MicroMsg.NetSceneGetHDHeadImg", "errType:" + paramInt2 + " errCode:" + paramInt3);
+    paramArrayOfByte = (bnz)((d)params).iLL.iLR;
+    Log.d("MicroMsg.NetSceneGetHDHeadImg", "errType:" + paramInt2 + " errCode:" + paramInt3);
     if ((paramInt2 != 4) && (paramInt3 != 0))
     {
-      ae.e("MicroMsg.NetSceneGetHDHeadImg", "errType:" + paramInt2 + " errCode:" + paramInt3);
+      Log.e("MicroMsg.NetSceneGetHDHeadImg", "errType:" + paramInt2 + " errCode:" + paramInt3);
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      aEJ();
+      aYw();
       AppMethodBeat.o(150299);
       return;
     }
     if ((paramInt2 == 4) || (paramInt2 == 5))
     {
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      ae.e("MicroMsg.NetSceneGetHDHeadImg", "ErrType:".concat(String.valueOf(paramInt2)));
-      aEJ();
+      Log.e("MicroMsg.NetSceneGetHDHeadImg", "ErrType:".concat(String.valueOf(paramInt2)));
+      aYw();
       AppMethodBeat.o(150299);
       return;
     }
-    paramInt1 = paramq.getRespObj().getRetCode();
+    paramInt1 = params.getRespObj().getRetCode();
     if ((paramInt1 == -4) || (paramInt1 == -54) || (paramInt1 == -55)) {
-      ae.e("MicroMsg.NetSceneGetHDHeadImg", "retcode == ".concat(String.valueOf(paramInt1)));
+      Log.e("MicroMsg.NetSceneGetHDHeadImg", "retcode == ".concat(String.valueOf(paramInt1)));
     }
     for (paramInt1 = 1; paramInt1 != 0; paramInt1 = 0)
     {
-      ae.e("MicroMsg.NetSceneGetHDHeadImg", "handleCertainError");
+      Log.e("MicroMsg.NetSceneGetHDHeadImg", "handleCertainError");
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      aEJ();
+      aYw();
       AppMethodBeat.o(150299);
       return;
     }
     int i = -1;
     paramInt1 = i;
-    if (paramArrayOfByte.xsE != null)
+    if (paramArrayOfByte.BsI != null)
     {
       paramInt1 = i;
-      if (paramArrayOfByte.xsE.getBuffer() != null) {
-        paramInt1 = W(paramArrayOfByte.xsE.getBuffer().zr);
+      if (paramArrayOfByte.BsI.getBuffer() != null) {
+        paramInt1 = ak(paramArrayOfByte.BsI.getBuffer().zy);
       }
     }
     if (paramInt1 < 0)
     {
-      ae.e("MicroMsg.NetSceneGetHDHeadImg", "appendBuf fail");
+      Log.e("MicroMsg.NetSceneGetHDHeadImg", "appendBuf fail");
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      aEJ();
+      aYw();
       AppMethodBeat.o(150299);
       return;
     }
-    paramq = p.aEO();
-    g localg = paramq.DJ(this.username);
+    params = p.aYC();
+    g localg = params.Mu(this.username);
     if (localg == null)
     {
-      ae.e("MicroMsg.NetSceneGetHDHeadImg", "info == null");
+      Log.e("MicroMsg.NetSceneGetHDHeadImg", "info == null");
       this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
-      aEJ();
+      aYw();
       AppMethodBeat.o(150299);
       return;
     }
-    localg.dgI = (paramInt1 + paramArrayOfByte.xsC);
-    localg.hPI = paramArrayOfByte.xsB;
-    paramq.a(this.username, localg);
-    if (localg.dgI >= localg.hPI) {}
+    localg.bNu = (paramInt1 + paramArrayOfByte.BsG);
+    localg.iKP = paramArrayOfByte.BsF;
+    params.a(this.username, localg);
+    if (localg.bNu >= localg.iKP) {}
     for (paramInt1 = 1; paramInt1 == 0; paramInt1 = 0)
     {
-      ae.i("MicroMsg.NetSceneGetHDHeadImg", "%d doScene again info[%s %d %d]", new Object[] { Integer.valueOf(hashCode()), this.username, Integer.valueOf(localg.dgI), Integer.valueOf(localg.hPI) });
+      Log.i("MicroMsg.NetSceneGetHDHeadImg", "%d doScene again info[%s %d %d]", new Object[] { Integer.valueOf(hashCode()), this.username, Integer.valueOf(localg.bNu), Integer.valueOf(localg.iKP) });
       if (doScene(dispatcher(), this.callback) < 0) {
         this.callback.onSceneEnd(3, -1, "", this);
       }
       AppMethodBeat.o(150299);
       return;
     }
-    o.mG(this.hPX, this.hPB);
-    aY(this.hPB, this.username);
-    aEJ();
+    com.tencent.mm.vfs.s.nx(this.iLe, this.iKI);
+    bc(this.iKI, this.username);
+    aYw();
     this.callback.onSceneEnd(paramInt2, paramInt3, paramString, this);
     AppMethodBeat.o(150299);
   }
@@ -321,23 +321,23 @@ final class l
     return 10;
   }
   
-  public final n.b securityVerificationChecked(q paramq)
+  public final q.b securityVerificationChecked(com.tencent.mm.network.s params)
   {
     AppMethodBeat.i(150298);
     if ((this.username == null) || (this.username.length() == 0))
     {
-      paramq = n.b.hRj;
+      params = q.b.iMr;
       AppMethodBeat.o(150298);
-      return paramq;
+      return params;
     }
-    paramq = n.b.hRi;
+    params = q.b.iMq;
     AppMethodBeat.o(150298);
-    return paramq;
+    return params;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.aj.l
  * JD-Core Version:    0.7.0.1
  */

@@ -4,13 +4,13 @@ import java.util.List;
 
 public abstract interface l
 {
-  public abstract boolean awb(String paramString);
+  public abstract List<String> IZ(long paramLong);
   
-  public abstract boolean dWb();
+  public abstract String Ja(long paramLong);
   
-  public abstract List<String> zT(long paramLong);
+  public abstract boolean aKt(String paramString);
   
-  public abstract String zU(long paramLong);
+  public abstract boolean eZm();
 }
 
 

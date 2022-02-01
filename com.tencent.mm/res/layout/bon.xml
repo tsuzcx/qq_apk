@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mm.ui.widget.TouchMediaPreviewLayout android:orientation="vertical" android:id="@id/gei" android:background="@color/c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center|left" android:orientation="horizontal" android:background="@color/afz" android:paddingTop="@dimen/k5" android:paddingBottom="@dimen/k5" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.design.widget.CoordinatorLayout android:orientation="vertical" android:background="@color/BW_93" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mm.view.RefreshLoadMoreLayout android:orientation="vertical" android:id="@id/f31" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <android.support.v7.widget.RecyclerView android:id="@id/ejr" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </com.tencent.mm.view.RefreshLoadMoreLayout>
-    </android.support.design.widget.CoordinatorLayout>
-</com.tencent.mm.ui.widget.TouchMediaPreviewLayout>
+    <ImageView android:id="@id/n8" android:layout_width="16.0dip" android:layout_height="16.0dip" android:src="@raw/login_auth_state_default_select" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/dh" android:id="@id/n7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ib" android:layout_centerVertical="true" />
+</LinearLayout>

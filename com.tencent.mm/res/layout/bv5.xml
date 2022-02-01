@@ -1,18 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/hwl" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/g"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/d12" android:background="@null" android:visibility="gone" android:maxWidth="130.0dip" android:singleLine="true" android:layout_marginEnd="@dimen/ci" style="@style/ym" />
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="fill_parent">
-        <FrameLayout android:id="@id/hfk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="4.0dip">
-            <com.tencent.mm.plugin.finder.feed.RoundLinearLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                <ImageView android:id="@id/hfj" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" />
-            </com.tencent.mm.plugin.finder.feed.RoundLinearLayout>
-        </FrameLayout>
-        <ImageView android:gravity="center" android:id="@id/f2o" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-4.0dip" android:src="@drawable/afx" android:layout_alignTop="@id/hfk" android:layout_marginEnd="-4.0dip" android:layout_alignEnd="@id/hfk" />
-        <FrameLayout android:id="@id/hxh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerVertical="true" android:layout_marginEnd="4.0dip">
-            <ImageView android:layout_gravity="center" android:id="@id/hxi" android:layout_width="@dimen/c6" android:layout_height="@dimen/c6" />
-        </FrameLayout>
-        <ImageView android:gravity="center" android:id="@id/hzf" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-4.0dip" android:src="@drawable/afx" android:layout_alignTop="@id/hxh" android:layout_marginEnd="-4.0dip" android:layout_alignEnd="@id/hxh" />
-    </RelativeLayout>
-    <TextView android:textColor="@color/FG_1" android:ellipsize="end" android:id="@id/f2y" android:background="@null" android:visibility="gone" android:maxWidth="130.0dip" android:singleLine="true" android:layout_marginStart="@dimen/bq" style="@style/ym" />
-</LinearLayout>
+    <com.tencent.mm.ui.widget.QDisFadeImageView android:id="@id/hwj" android:layout_width="80.0dip" android:layout_height="80.0dip" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/hwk" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_centerInParent="true" />
+</RelativeLayout>

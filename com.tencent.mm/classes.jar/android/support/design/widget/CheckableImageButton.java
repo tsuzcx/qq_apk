@@ -3,7 +3,7 @@ package android.support.design.widget;
 import android.content.Context;
 import android.support.v4.view.a;
 import android.support.v4.view.a.c;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.support.v7.widget.AppCompatImageButton;
 import android.util.AttributeSet;
 import android.view.View;
@@ -15,18 +15,18 @@ public class CheckableImageButton
   extends AppCompatImageButton
   implements Checkable
 {
-  private static final int[] oA = { 16842912 };
-  private boolean oB;
+  private static final int[] oC = { 16842912 };
+  private boolean oD;
   
   public CheckableImageButton(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130969084);
+    this(paramContext, paramAttributeSet, 2130969117);
   }
   
   public CheckableImageButton(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    t.a(this, new a()
+    u.a(this, new a()
     {
       public final void onInitializeAccessibilityEvent(View paramAnonymousView, AccessibilityEvent paramAnonymousAccessibilityEvent)
       {
@@ -39,29 +39,29 @@ public class CheckableImageButton
         super.onInitializeAccessibilityNodeInfo(paramAnonymousView, paramAnonymousc);
         paramAnonymousc.setCheckable(true);
         boolean bool = CheckableImageButton.this.isChecked();
-        paramAnonymousc.Rb.setChecked(bool);
+        paramAnonymousc.Ro.setChecked(bool);
       }
     });
   }
   
   public boolean isChecked()
   {
-    return this.oB;
+    return this.oD;
   }
   
   public int[] onCreateDrawableState(int paramInt)
   {
-    if (this.oB) {
-      return mergeDrawableStates(super.onCreateDrawableState(oA.length + paramInt), oA);
+    if (this.oD) {
+      return mergeDrawableStates(super.onCreateDrawableState(oC.length + paramInt), oC);
     }
     return super.onCreateDrawableState(paramInt);
   }
   
   public void setChecked(boolean paramBoolean)
   {
-    if (this.oB != paramBoolean)
+    if (this.oD != paramBoolean)
     {
-      this.oB = paramBoolean;
+      this.oD = paramBoolean;
       refreshDrawableState();
       sendAccessibilityEvent(2048);
     }
@@ -69,7 +69,7 @@ public class CheckableImageButton
   
   public void toggle()
   {
-    if (!this.oB) {}
+    if (!this.oD) {}
     for (boolean bool = true;; bool = false)
     {
       setChecked(bool);
@@ -79,7 +79,7 @@ public class CheckableImageButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.design.widget.CheckableImageButton
  * JD-Core Version:    0.7.0.1
  */

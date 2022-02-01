@@ -6,10 +6,10 @@ import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.support.v7.widget.RecyclerView.h;
-import android.support.v7.widget.RecyclerView.i;
-import android.support.v7.widget.RecyclerView.t;
-import android.support.v7.widget.RecyclerView.w;
+import android.support.v7.widget.RecyclerView.s;
+import android.support.v7.widget.RecyclerView.v;
 import android.view.View;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.toybrick.c.g;
@@ -19,8 +19,8 @@ import java.util.LinkedList;
 public final class c
   extends RecyclerView.h
 {
-  private static final int[] Qo = { 16843284 };
-  public a.a MFk;
+  private static final int[] QA = { 16843284 };
+  public a.a Snl;
   private final Rect mBounds;
   private int mOrientation;
   
@@ -28,15 +28,15 @@ public final class c
   {
     AppMethodBeat.i(159929);
     this.mBounds = new Rect();
-    paramContext.obtainStyledAttributes(Qo).recycle();
+    paramContext.obtainStyledAttributes(QA).recycle();
     this.mOrientation = 1;
     AppMethodBeat.o(159929);
   }
   
-  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.t paramt)
+  public final void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
     AppMethodBeat.i(159931);
-    if (this.MFk.MGi == null)
+    if (this.Snl.Soj == null)
     {
       paramRect.set(0, 0, 0, 0);
       AppMethodBeat.o(159931);
@@ -44,19 +44,19 @@ public final class c
     }
     if (this.mOrientation == 1)
     {
-      paramRect.set(0, 0, 0, this.MFk.MGi.getIntrinsicHeight());
+      paramRect.set(0, 0, 0, this.Snl.Soj.getIntrinsicHeight());
       AppMethodBeat.o(159931);
       return;
     }
-    paramRect.set(0, 0, this.MFk.MGi.getIntrinsicWidth(), 0);
+    paramRect.set(0, 0, this.Snl.Soj.getIntrinsicWidth(), 0);
     AppMethodBeat.o(159931);
   }
   
-  public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.t paramt)
+  public final void b(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.s params)
   {
     int k = 0;
     AppMethodBeat.i(168816);
-    if ((paramRecyclerView.getLayoutManager() == null) || (this.MFk.MGi == null))
+    if ((paramRecyclerView.getLayoutManager() == null) || (this.Snl.Soj == null))
     {
       AppMethodBeat.o(168816);
       return;
@@ -68,29 +68,29 @@ public final class c
     int i1;
     if (this.mOrientation == 1)
     {
-      if (this.MFk.MGh)
+      if (this.Snl.Soi)
       {
         paramCanvas.save();
         j = paramRecyclerView.getChildCount();
         i = 0;
         while (i < j)
         {
-          paramt = paramRecyclerView.getChildAt(i);
-          k = paramRecyclerView.bu(paramt).lN();
+          params = paramRecyclerView.getChildAt(i);
+          k = paramRecyclerView.bu(params).lR();
           if (k >= 0)
           {
-            g localg = ((b)paramRecyclerView.getAdapter()).aiW(k);
-            if (localg.MFW)
+            g localg = ((b)paramRecyclerView.getAdapter()).asz(k);
+            if (localg.SnX)
             {
-              k = localg.hv(paramt)[0];
+              k = localg.hN(params)[0];
               m = paramRecyclerView.getWidth();
-              n = localg.hv(paramt)[1];
-              RecyclerView.c(paramt, this.mBounds);
+              n = localg.hN(params)[1];
+              RecyclerView.getDecoratedBoundsWithMargins(params, this.mBounds);
               i1 = this.mBounds.bottom;
-              i1 = Math.round(paramt.getTranslationY()) + i1;
-              int i2 = this.MFk.MGi.getIntrinsicHeight();
-              this.MFk.MGi.setBounds(k, i1 - i2, m - n, i1);
-              this.MFk.MGi.draw(paramCanvas);
+              i1 = Math.round(params.getTranslationY()) + i1;
+              int i2 = this.Snl.Soj.getIntrinsicHeight();
+              this.Snl.Soj.setBounds(k, i1 - i2, m - n, i1);
+              this.Snl.Soj.draw(paramCanvas);
             }
           }
           i += 1;
@@ -100,7 +100,7 @@ public final class c
       AppMethodBeat.o(168816);
       return;
     }
-    if (this.MFk.MGh)
+    if (this.Snl.Soi)
     {
       paramCanvas.save();
       if (paramRecyclerView.getClipToPadding())
@@ -114,15 +114,14 @@ public final class c
         m = paramRecyclerView.getChildCount();
         while (k < m)
         {
-          paramt = paramRecyclerView.getChildAt(k);
-          if (((g)this.MFk.MGg.get(paramRecyclerView.bu(paramt).lN())).MFW)
+          params = paramRecyclerView.getChildAt(k);
+          if (((g)this.Snl.Soh.get(paramRecyclerView.bu(params).lR())).SnX)
           {
-            paramRecyclerView.getLayoutManager();
-            RecyclerView.i.c(paramt, this.mBounds);
-            n = this.mBounds.right + Math.round(paramt.getTranslationX());
-            i1 = this.MFk.MGi.getIntrinsicWidth();
-            this.MFk.MGi.setBounds(n - i1, j, n, i);
-            this.MFk.MGi.draw(paramCanvas);
+            paramRecyclerView.getLayoutManager().getDecoratedBoundsWithMargins(params, this.mBounds);
+            n = this.mBounds.right + Math.round(params.getTranslationX());
+            i1 = this.Snl.Soj.getIntrinsicWidth();
+            this.Snl.Soj.setBounds(n - i1, j, n, i);
+            this.Snl.Soj.draw(paramCanvas);
           }
           k += 1;
         }
@@ -136,7 +135,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.toybrick.b.c
  * JD-Core Version:    0.7.0.1
  */

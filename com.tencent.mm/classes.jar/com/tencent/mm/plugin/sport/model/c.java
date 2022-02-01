@@ -1,129 +1,132 @@
 package com.tencent.mm.plugin.sport.model;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import com.tencent.e.i;
+import android.net.Uri;
+import com.tencent.f.h;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.WeChatAuthorities;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import org.json.JSONObject;
 
 public final class c
   implements SensorEventListener
 {
-  private long AYo;
-  private long AYp;
-  private boolean AYq;
+  private long Fjk;
+  private long Fjl;
+  private boolean Fjm;
   private Sensor sensor;
   private SensorManager sensorManager;
   
   public c()
   {
     AppMethodBeat.i(149294);
-    this.AYo = 0L;
-    this.AYp = 0L;
-    if ((l.gv(ak.getContext())) && (l.ejG())) {}
+    this.Fjk = 0L;
+    this.Fjl = 0L;
+    if ((k.hg(MMApplicationContext.getContext())) && (k.fmg())) {}
     for (boolean bool = true;; bool = false)
     {
-      this.AYq = bool;
-      ae.i("MicroMsg.Sport.MMSportStepDetector", "isSupportDeviceStep %b", new Object[] { Boolean.valueOf(this.AYq) });
-      if (this.AYq) {
-        ejR();
+      this.Fjm = bool;
+      Log.i("MicroMsg.Sport.MMSportStepDetector", "isSupportDeviceStep %b", new Object[] { Boolean.valueOf(this.Fjm) });
+      if (this.Fjm) {
+        fmr();
       }
       AppMethodBeat.o(149294);
       return;
     }
   }
   
-  private boolean ejR()
+  private boolean fmr()
   {
     AppMethodBeat.i(149297);
     try
     {
       if (this.sensorManager == null) {
-        this.sensorManager = ((SensorManager)ak.getContext().getSystemService("sensor"));
+        this.sensorManager = ((SensorManager)MMApplicationContext.getContext().getSystemService("sensor"));
       }
-      if ((this.sensorManager != null) && (ak.getContext().getPackageManager().hasSystemFeature("android.hardware.sensor.stepcounter")))
+      if ((this.sensorManager != null) && (MMApplicationContext.getContext().getPackageManager().hasSystemFeature("android.hardware.sensor.stepcounter")))
       {
         this.sensor = this.sensorManager.getDefaultSensor(19);
         if (this.sensor == null)
         {
-          ae.i("MicroMsg.Sport.MMSportStepDetector", " TYPE_STEP_COUNTER sensor null");
+          Log.i("MicroMsg.Sport.MMSportStepDetector", " TYPE_STEP_COUNTER sensor null");
           AppMethodBeat.o(149297);
           return false;
         }
-        JSONObject localJSONObject = h.ejY();
+        JSONObject localJSONObject = g.fmy();
         boolean bool = this.sensorManager.registerListener(this, this.sensor, localJSONObject.optInt("stepCounterRateUs", 60000));
         if (!bool)
         {
-          g.ajR().ajA().set(am.a.Jej, Integer.valueOf(1));
-          ejQ();
+          com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OnQ, Integer.valueOf(1));
+          fmq();
         }
         for (;;)
         {
-          ae.i("MicroMsg.Sport.MMSportStepDetector", "registerDetector() ok.(result : %s)", new Object[] { Boolean.valueOf(bool) });
+          Log.i("MicroMsg.Sport.MMSportStepDetector", "registerDetector() ok.(result : %s)", new Object[] { Boolean.valueOf(bool) });
           AppMethodBeat.o(149297);
           return bool;
-          g.ajR().ajA().set(am.a.Jej, Integer.valueOf(0));
+          com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.OnQ, Integer.valueOf(0));
         }
         AppMethodBeat.o(149297);
       }
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.Sport.MMSportStepDetector", "Exception in registerDetector %s", new Object[] { localException.getMessage() });
+      Log.e("MicroMsg.Sport.MMSportStepDetector", "Exception in registerDetector %s", new Object[] { localException.getMessage() });
     }
     for (;;)
     {
       return false;
-      ae.i("MicroMsg.Sport.MMSportStepDetector", "no step sensor");
+      Log.i("MicroMsg.Sport.MMSportStepDetector", "no step sensor");
     }
   }
   
-  public final boolean ejP()
+  public final boolean fmp()
   {
     AppMethodBeat.i(149295);
-    if ((l.gv(ak.getContext())) && (l.ejG())) {}
+    if ((k.hg(MMApplicationContext.getContext())) && (k.fmg())) {}
     for (boolean bool = true;; bool = false)
     {
-      this.AYq = bool;
-      if (!this.AYq) {
+      this.Fjm = bool;
+      if (!this.Fjm) {
         break;
       }
-      ejQ();
-      bool = ejR();
+      fmq();
+      bool = fmr();
       AppMethodBeat.o(149295);
       return bool;
     }
-    ejQ();
+    fmq();
     AppMethodBeat.o(149295);
     return false;
   }
   
-  public final void ejQ()
+  public final void fmq()
   {
     AppMethodBeat.i(149296);
     try
     {
       if (this.sensorManager == null) {
-        this.sensorManager = ((SensorManager)ak.getContext().getSystemService("sensor"));
+        this.sensorManager = ((SensorManager)MMApplicationContext.getContext().getSystemService("sensor"));
       }
       this.sensorManager.unregisterListener(this);
-      ae.i("MicroMsg.Sport.MMSportStepDetector", "unregisterDetector() success!");
+      Log.i("MicroMsg.Sport.MMSportStepDetector", "unregisterDetector() success!");
       AppMethodBeat.o(149296);
       return;
     }
     catch (Exception localException)
     {
-      ae.e("MicroMsg.Sport.MMSportStepDetector", "Exception in unregisterDetector %s", new Object[] { localException.getMessage() });
+      Log.e("MicroMsg.Sport.MMSportStepDetector", "Exception in unregisterDetector %s", new Object[] { localException.getMessage() });
       AppMethodBeat.o(149296);
     }
   }
@@ -136,15 +139,32 @@ public final class c
     AppMethodBeat.i(149293);
     if ((paramSensorEvent != null) && (paramSensorEvent.values != null) && (paramSensorEvent.values.length > 0))
     {
-      long l1 = paramSensorEvent.values[0];
+      final long l1 = paramSensorEvent.values[0];
       long l2 = paramSensorEvent.timestamp;
-      ae.v("MicroMsg.Sport.MMSportStepDetector", "onSensorChange %d %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
-      if ((Math.abs(l1 - this.AYo) >= 20L) || (System.currentTimeMillis() - this.AYp >= 60000L))
+      Log.v("MicroMsg.Sport.MMSportStepDetector", "onSensorChange %d %d", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
+      if ((Math.abs(l1 - this.Fjk) >= 20L) || (System.currentTimeMillis() - this.Fjl >= 60000L))
       {
-        ae.i("MicroMsg.Sport.MMSportStepDetector", "Step change %d, accuracy %s", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
-        this.AYo = l1;
-        this.AYp = System.currentTimeMillis();
-        com.tencent.e.h.MqF.f(new c.1(this, l1, l2), "Sport.onSensorChange");
+        Log.i("MicroMsg.Sport.MMSportStepDetector", "Step change %d, accuracy %s", new Object[] { Long.valueOf(l1), Long.valueOf(l2) });
+        this.Fjk = l1;
+        this.Fjl = System.currentTimeMillis();
+        h.RTc.b(new Runnable()
+        {
+          public final void run()
+          {
+            AppMethodBeat.i(149292);
+            try
+            {
+              Uri localUri = Uri.parse("content://" + WeChatAuthorities.AUTHORITIES_PLUGIN_SPORT());
+              MMApplicationContext.getContext().getContentResolver().query(localUri, null, "Key_mmSensorChange", new String[] { String.valueOf(l1), String.valueOf(this.Fjo) }, null);
+              AppMethodBeat.o(149292);
+              return;
+            }
+            catch (Exception localException)
+            {
+              AppMethodBeat.o(149292);
+            }
+          }
+        }, "Sport.onSensorChange");
       }
       AppMethodBeat.o(149293);
       return;
@@ -157,19 +177,19 @@ public final class c
         if (paramSensorEvent != null) {
           bool2 = true;
         }
-        ae.e("MicroMsg.Sport.MMSportStepDetector", "[Willen][Step] SensorEvent Exception. event==null:%s , event.values==null:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
+        Log.e("MicroMsg.Sport.MMSportStepDetector", "[Willen][Step] SensorEvent Exception. event==null:%s , event.values==null:%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
         AppMethodBeat.o(149293);
         return;
       }
     }
-    ae.e("MicroMsg.Sport.MMSportStepDetector", "[Willen][Step] SensorEvent Exception accuracy: %d, timestamp: %s", new Object[] { Integer.valueOf(paramSensorEvent.accuracy), Long.valueOf(paramSensorEvent.timestamp) });
+    Log.e("MicroMsg.Sport.MMSportStepDetector", "[Willen][Step] SensorEvent Exception accuracy: %d, timestamp: %s", new Object[] { Integer.valueOf(paramSensorEvent.accuracy), Long.valueOf(paramSensorEvent.timestamp) });
     paramSensorEvent = paramSensorEvent.values;
     int k = paramSensorEvent.length;
     int i = 0;
     int j = 0;
     while (j < k)
     {
-      ae.e("MicroMsg.Sport.MMSportStepDetector", "[Willen][Step] SensorEvent Exception event[%d]: %f", new Object[] { Integer.valueOf(i), Float.valueOf(paramSensorEvent[j]) });
+      Log.e("MicroMsg.Sport.MMSportStepDetector", "[Willen][Step] SensorEvent Exception event[%d]: %f", new Object[] { Integer.valueOf(i), Float.valueOf(paramSensorEvent[j]) });
       j += 1;
       i += 1;
     }
@@ -178,7 +198,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.sport.model.c
  * JD-Core Version:    0.7.0.1
  */

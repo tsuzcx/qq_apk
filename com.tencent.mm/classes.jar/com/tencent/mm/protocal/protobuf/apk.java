@@ -1,86 +1,162 @@
 package com.tencent.mm.protocal.protobuf;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import g.a.a.b;
+import java.util.LinkedList;
 
 public final class apk
-  extends com.tencent.mm.bw.a
+  extends dpc
 {
-  public String AqK;
-  public int GGz;
-  public int dez;
-  public long gJh;
-  public int liveStatus;
+  public long LBs;
+  public LinkedList<FinderCommentInfo> LBt;
+  public String jlz;
+  public FinderObject tuO;
+  
+  public apk()
+  {
+    AppMethodBeat.i(168943);
+    this.LBt = new LinkedList();
+    AppMethodBeat.o(168943);
+  }
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(189368);
+    AppMethodBeat.i(168944);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aZ(1, this.gJh);
-      paramVarArgs.aS(2, this.GGz);
-      paramVarArgs.aS(3, this.liveStatus);
-      if (this.AqK != null) {
-        paramVarArgs.d(4, this.AqK);
-      }
-      paramVarArgs.aS(5, this.dez);
-      AppMethodBeat.o(189368);
-      return 0;
-    }
-    if (paramInt == 1)
-    {
-      int i = f.a.a.b.b.a.p(1, this.gJh) + 0 + f.a.a.b.b.a.bz(2, this.GGz) + f.a.a.b.b.a.bz(3, this.liveStatus);
-      paramInt = i;
-      if (this.AqK != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.AqK);
-      }
-      i = f.a.a.b.b.a.bz(5, this.dez);
-      AppMethodBeat.o(189368);
-      return paramInt + i;
-    }
-    if (paramInt == 2)
-    {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-      for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
-        if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
-        }
-      }
-      AppMethodBeat.o(189368);
-      return 0;
-    }
-    if (paramInt == 3)
-    {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
-      apk localapk = (apk)paramVarArgs[1];
-      switch (((Integer)paramVarArgs[2]).intValue())
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      if (this.BaseResponse == null)
       {
-      default: 
-        AppMethodBeat.o(189368);
-        return -1;
-      case 1: 
-        localapk.gJh = locala.OmT.zd();
-        AppMethodBeat.o(189368);
-        return 0;
-      case 2: 
-        localapk.GGz = locala.OmT.zc();
-        AppMethodBeat.o(189368);
-        return 0;
-      case 3: 
-        localapk.liveStatus = locala.OmT.zc();
-        AppMethodBeat.o(189368);
-        return 0;
-      case 4: 
-        localapk.AqK = locala.OmT.readString();
-        AppMethodBeat.o(189368);
-        return 0;
+        paramVarArgs = new b("Not all required fields were included: BaseResponse");
+        AppMethodBeat.o(168944);
+        throw paramVarArgs;
       }
-      localapk.dez = locala.OmT.zc();
-      AppMethodBeat.o(189368);
+      if (this.BaseResponse != null)
+      {
+        paramVarArgs.ni(1, this.BaseResponse.computeSize());
+        this.BaseResponse.writeFields(paramVarArgs);
+      }
+      paramVarArgs.bb(2, this.LBs);
+      if (this.jlz != null) {
+        paramVarArgs.e(3, this.jlz);
+      }
+      if (this.tuO != null)
+      {
+        paramVarArgs.ni(4, this.tuO.computeSize());
+        this.tuO.writeFields(paramVarArgs);
+      }
+      paramVarArgs.e(5, 8, this.LBt);
+      AppMethodBeat.o(168944);
       return 0;
     }
-    AppMethodBeat.o(189368);
-    return -1;
+    if (paramInt == 1) {
+      if (this.BaseResponse == null) {
+        break label758;
+      }
+    }
+    label758:
+    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    {
+      int i = paramInt + g.a.a.b.b.a.r(2, this.LBs);
+      paramInt = i;
+      if (this.jlz != null) {
+        paramInt = i + g.a.a.b.b.a.f(3, this.jlz);
+      }
+      i = paramInt;
+      if (this.tuO != null) {
+        i = paramInt + g.a.a.a.nh(4, this.tuO.computeSize());
+      }
+      paramInt = g.a.a.a.c(5, 8, this.LBt);
+      AppMethodBeat.o(168944);
+      return i + paramInt;
+      if (paramInt == 2)
+      {
+        paramVarArgs = (byte[])paramVarArgs[0];
+        this.LBt.clear();
+        paramVarArgs = new g.a.a.a.a(paramVarArgs, unknownTagHandler);
+        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
+          if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
+            paramVarArgs.hPl();
+          }
+        }
+        if (this.BaseResponse == null)
+        {
+          paramVarArgs = new b("Not all required fields were included: BaseResponse");
+          AppMethodBeat.o(168944);
+          throw paramVarArgs;
+        }
+        AppMethodBeat.o(168944);
+        return 0;
+      }
+      if (paramInt == 3)
+      {
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
+        apk localapk = (apk)paramVarArgs[1];
+        paramInt = ((Integer)paramVarArgs[2]).intValue();
+        Object localObject2;
+        boolean bool;
+        switch (paramInt)
+        {
+        default: 
+          AppMethodBeat.o(168944);
+          return -1;
+        case 1: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new BaseResponse();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localapk.BaseResponse = ((BaseResponse)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(168944);
+          return 0;
+        case 2: 
+          localapk.LBs = ((g.a.a.a.a)localObject1).UbS.zl();
+          AppMethodBeat.o(168944);
+          return 0;
+        case 3: 
+          localapk.jlz = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(168944);
+          return 0;
+        case 4: 
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+          i = paramVarArgs.size();
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            localObject2 = (byte[])paramVarArgs.get(paramInt);
+            localObject1 = new FinderObject();
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (bool = true; bool; bool = ((FinderObject)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+            localapk.tuO = ((FinderObject)localObject1);
+            paramInt += 1;
+          }
+          AppMethodBeat.o(168944);
+          return 0;
+        }
+        paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
+        i = paramVarArgs.size();
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          localObject2 = (byte[])paramVarArgs.get(paramInt);
+          localObject1 = new FinderCommentInfo();
+          localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+          for (bool = true; bool; bool = ((FinderCommentInfo)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
+          localapk.LBt.add(localObject1);
+          paramInt += 1;
+        }
+        AppMethodBeat.o(168944);
+        return 0;
+      }
+      AppMethodBeat.o(168944);
+      return -1;
+    }
   }
 }
 

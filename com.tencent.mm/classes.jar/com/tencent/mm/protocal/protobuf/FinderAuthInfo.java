@@ -19,27 +19,27 @@ public class FinderAuthInfo
     AppMethodBeat.i(168936);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.realName != null) {
-        paramVarArgs.d(1, this.realName);
+        paramVarArgs.e(1, this.realName);
       }
-      paramVarArgs.aS(2, this.authIconType);
+      paramVarArgs.aM(2, this.authIconType);
       if (this.authProfession != null) {
-        paramVarArgs.d(3, this.authProfession);
+        paramVarArgs.e(3, this.authProfession);
       }
       if (this.authGenerator != null)
       {
-        paramVarArgs.lJ(4, this.authGenerator.computeSize());
+        paramVarArgs.ni(4, this.authGenerator.computeSize());
         this.authGenerator.writeFields(paramVarArgs);
       }
       if (this.detailLink != null) {
-        paramVarArgs.d(5, this.detailLink);
+        paramVarArgs.e(5, this.detailLink);
       }
       if (this.appName != null) {
-        paramVarArgs.d(6, this.appName);
+        paramVarArgs.e(6, this.appName);
       }
       if (this.authIconUrl != null) {
-        paramVarArgs.d(7, this.authIconUrl);
+        paramVarArgs.e(7, this.authIconUrl);
       }
       AppMethodBeat.o(168936);
       return 0;
@@ -50,37 +50,37 @@ public class FinderAuthInfo
       }
     }
     label658:
-    for (paramInt = f.a.a.b.b.a.e(1, this.realName) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.b.b.a.f(1, this.realName) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.authIconType);
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.authIconType);
       paramInt = i;
       if (this.authProfession != null) {
-        paramInt = i + f.a.a.b.b.a.e(3, this.authProfession);
+        paramInt = i + g.a.a.b.b.a.f(3, this.authProfession);
       }
       i = paramInt;
       if (this.authGenerator != null) {
-        i = paramInt + f.a.a.a.lI(4, this.authGenerator.computeSize());
+        i = paramInt + g.a.a.a.nh(4, this.authGenerator.computeSize());
       }
       paramInt = i;
       if (this.detailLink != null) {
-        paramInt = i + f.a.a.b.b.a.e(5, this.detailLink);
+        paramInt = i + g.a.a.b.b.a.f(5, this.detailLink);
       }
       i = paramInt;
       if (this.appName != null) {
-        i = paramInt + f.a.a.b.b.a.e(6, this.appName);
+        i = paramInt + g.a.a.b.b.a.f(6, this.appName);
       }
       paramInt = i;
       if (this.authIconUrl != null) {
-        paramInt = i + f.a.a.b.b.a.e(7, this.authIconUrl);
+        paramInt = i + g.a.a.b.b.a.f(7, this.authIconUrl);
       }
       AppMethodBeat.o(168936);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         AppMethodBeat.o(168936);
@@ -88,7 +88,7 @@ public class FinderAuthInfo
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         FinderAuthInfo localFinderAuthInfo = (FinderAuthInfo)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -97,42 +97,42 @@ public class FinderAuthInfo
           AppMethodBeat.o(168936);
           return -1;
         case 1: 
-          localFinderAuthInfo.realName = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderAuthInfo.realName = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168936);
           return 0;
         case 2: 
-          localFinderAuthInfo.authIconType = ((f.a.a.a.a)localObject1).OmT.zc();
+          localFinderAuthInfo.authIconType = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(168936);
           return 0;
         case 3: 
-          localFinderAuthInfo.authProfession = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderAuthInfo.authProfession = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168936);
           return 0;
         case 4: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new FinderContact();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((FinderContact)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localFinderAuthInfo.authGenerator = ((FinderContact)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(168936);
           return 0;
         case 5: 
-          localFinderAuthInfo.detailLink = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderAuthInfo.detailLink = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168936);
           return 0;
         case 6: 
-          localFinderAuthInfo.appName = ((f.a.a.a.a)localObject1).OmT.readString();
+          localFinderAuthInfo.appName = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(168936);
           return 0;
         }
-        localFinderAuthInfo.authIconUrl = ((f.a.a.a.a)localObject1).OmT.readString();
+        localFinderAuthInfo.authIconUrl = ((g.a.a.a.a)localObject1).UbS.readString();
         AppMethodBeat.o(168936);
         return 0;
       }

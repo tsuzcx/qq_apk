@@ -23,13 +23,13 @@ import java.util.ArrayList;
 public final class f
   implements o, AdapterView.OnItemClickListener
 {
-  h aaD;
-  public o.a aeT;
-  int aeV = 2131492907;
-  ExpandedMenuView afT;
-  int afU;
-  int afV = 0;
-  a afW;
+  h aaQ;
+  public o.a afg;
+  int afi = 2131492924;
+  ExpandedMenuView agg;
+  int agh;
+  int agi = 0;
+  a agj;
   Context mContext;
   private int mId;
   LayoutInflater mInflater;
@@ -45,16 +45,16 @@ public final class f
   
   public final void a(Context paramContext, h paramh)
   {
-    if (this.afV != 0)
+    if (this.agi != 0)
     {
-      this.mContext = new ContextThemeWrapper(paramContext, this.afV);
+      this.mContext = new ContextThemeWrapper(paramContext, this.agi);
       this.mInflater = LayoutInflater.from(this.mContext);
     }
     for (;;)
     {
-      this.aaD = paramh;
-      if (this.afW != null) {
-        this.afW.notifyDataSetChanged();
+      this.aaQ = paramh;
+      if (this.agj != null) {
+        this.agj.notifyDataSetChanged();
       }
       return;
       if (this.mContext != null)
@@ -69,14 +69,14 @@ public final class f
   
   public final void a(h paramh, boolean paramBoolean)
   {
-    if (this.aeT != null) {
-      this.aeT.a(paramh, paramBoolean);
+    if (this.afg != null) {
+      this.afg.a(paramh, paramBoolean);
     }
   }
   
   public final void a(o.a parama)
   {
-    this.aeT = parama;
+    this.afg = parama;
   }
   
   public final boolean a(u paramu)
@@ -85,35 +85,35 @@ public final class f
       return false;
     }
     i locali = new i(paramu);
-    Object localObject2 = locali.aaD;
+    Object localObject2 = locali.aaQ;
     Object localObject1 = new b.a(((h)localObject2).mContext);
-    locali.agz = new f(((b.a)localObject1).Yh.mContext);
-    locali.agz.aeT = locali;
-    locali.aaD.a(locali.agz);
-    Object localObject3 = locali.agz.getAdapter();
-    ((b.a)localObject1).Yh.GE = ((ListAdapter)localObject3);
-    ((b.a)localObject1).Yh.XP = locali;
-    localObject3 = ((h)localObject2).agn;
+    locali.agM = new f(((b.a)localObject1).Yu.mContext);
+    locali.agM.afg = locali;
+    locali.aaQ.a(locali.agM);
+    Object localObject3 = locali.agM.getAdapter();
+    ((b.a)localObject1).Yu.GO = ((ListAdapter)localObject3);
+    ((b.a)localObject1).Yu.Yc = locali;
+    localObject3 = ((h)localObject2).agA;
     if (localObject3 != null) {
-      ((b.a)localObject1).Yh.Xn = ((View)localObject3);
+      ((b.a)localObject1).Yu.XA = ((View)localObject3);
     }
     for (;;)
     {
-      ((b.a)localObject1).Yh.XN = locali;
-      locali.agy = ((b.a)localObject1).gs();
-      locali.agy.setOnDismissListener(locali);
-      localObject1 = locali.agy.getWindow().getAttributes();
+      ((b.a)localObject1).Yu.Ya = locali;
+      locali.agL = ((b.a)localObject1).gz();
+      locali.agL.setOnDismissListener(locali);
+      localObject1 = locali.agL.getWindow().getAttributes();
       ((WindowManager.LayoutParams)localObject1).type = 1003;
       ((WindowManager.LayoutParams)localObject1).flags |= 0x20000;
-      locali.agy.show();
-      if (this.aeT != null) {
-        this.aeT.d(paramu);
+      locali.agL.show();
+      if (this.afg != null) {
+        this.afg.d(paramu);
       }
       return true;
-      localObject3 = ((h)localObject2).agm;
-      ((b.a)localObject1).Yh.Xj = ((Drawable)localObject3);
-      localObject2 = ((h)localObject2).agl;
-      ((b.a)localObject1).Yh.Hd = ((CharSequence)localObject2);
+      localObject3 = ((h)localObject2).agz;
+      ((b.a)localObject1).Yu.Xw = ((Drawable)localObject3);
+      localObject2 = ((h)localObject2).agy;
+      ((b.a)localObject1).Yu.Hn = ((CharSequence)localObject2);
     }
   }
   
@@ -122,23 +122,23 @@ public final class f
     return false;
   }
   
-  public final boolean bD()
+  public final boolean bF()
   {
     return false;
   }
   
   public final p c(ViewGroup paramViewGroup)
   {
-    if (this.afT == null)
+    if (this.agg == null)
     {
-      this.afT = ((ExpandedMenuView)this.mInflater.inflate(2131492904, paramViewGroup, false));
-      if (this.afW == null) {
-        this.afW = new a();
+      this.agg = ((ExpandedMenuView)this.mInflater.inflate(2131492921, paramViewGroup, false));
+      if (this.agj == null) {
+        this.agj = new a();
       }
-      this.afT.setAdapter(this.afW);
-      this.afT.setOnItemClickListener(this);
+      this.agg.setAdapter(this.agj);
+      this.agg.setOnItemClickListener(this);
     }
-    return this.afT;
+    return this.agg;
   }
   
   public final boolean c(j paramj)
@@ -148,10 +148,10 @@ public final class f
   
   public final ListAdapter getAdapter()
   {
-    if (this.afW == null) {
-      this.afW = new a();
+    if (this.agj == null) {
+      this.agj = new a();
     }
-    return this.afW;
+    return this.agj;
   }
   
   public final int getId()
@@ -161,26 +161,26 @@ public final class f
   
   public final void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.aaD.a(this.afW.bu(paramInt), this, 0);
+    this.aaQ.a(this.agj.bv(paramInt), this, 0);
   }
   
   public final void onRestoreInstanceState(Parcelable paramParcelable)
   {
     paramParcelable = ((Bundle)paramParcelable).getSparseParcelableArray("android:menu:list");
     if (paramParcelable != null) {
-      this.afT.restoreHierarchyState(paramParcelable);
+      this.agg.restoreHierarchyState(paramParcelable);
     }
   }
   
   public final Parcelable onSaveInstanceState()
   {
-    if (this.afT == null) {
+    if (this.agg == null) {
       return null;
     }
     Bundle localBundle = new Bundle();
     SparseArray localSparseArray = new SparseArray();
-    if (this.afT != null) {
-      this.afT.saveHierarchyState(localSparseArray);
+    if (this.agg != null) {
+      this.agg.saveHierarchyState(localSparseArray);
     }
     localBundle.putSparseParcelableArray("android:menu:list", localSparseArray);
     return localBundle;
@@ -188,51 +188,51 @@ public final class f
   
   public final void p(boolean paramBoolean)
   {
-    if (this.afW != null) {
-      this.afW.notifyDataSetChanged();
+    if (this.agj != null) {
+      this.agj.notifyDataSetChanged();
     }
   }
   
   final class a
     extends BaseAdapter
   {
-    private int afX = -1;
+    private int agk = -1;
     
     public a()
     {
-      hM();
+      hV();
     }
     
-    private void hM()
+    private void hV()
     {
-      j localj = f.this.aaD.agv;
+      j localj = f.this.aaQ.agI;
       if (localj != null)
       {
-        ArrayList localArrayList = f.this.aaD.hX();
+        ArrayList localArrayList = f.this.aaQ.ih();
         int j = localArrayList.size();
         int i = 0;
         while (i < j)
         {
           if ((j)localArrayList.get(i) == localj)
           {
-            this.afX = i;
+            this.agk = i;
             return;
           }
           i += 1;
         }
       }
-      this.afX = -1;
+      this.agk = -1;
     }
     
-    public final j bu(int paramInt)
+    public final j bv(int paramInt)
     {
-      ArrayList localArrayList = f.this.aaD.hX();
-      int i = f.this.afU + paramInt;
+      ArrayList localArrayList = f.this.aaQ.ih();
+      int i = f.this.agh + paramInt;
       paramInt = i;
-      if (this.afX >= 0)
+      if (this.agk >= 0)
       {
         paramInt = i;
-        if (i >= this.afX) {
+        if (i >= this.agk) {
           paramInt = i + 1;
         }
       }
@@ -241,8 +241,8 @@ public final class f
     
     public final int getCount()
     {
-      int i = f.this.aaD.hX().size() - f.this.afU;
-      if (this.afX < 0) {
+      int i = f.this.aaQ.ih().size() - f.this.agh;
+      if (this.agk < 0) {
         return i;
       }
       return i - 1;
@@ -256,18 +256,18 @@ public final class f
     public final View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
     {
       if (paramView == null) {
-        paramView = f.this.mInflater.inflate(f.this.aeV, paramViewGroup, false);
+        paramView = f.this.mInflater.inflate(f.this.afi, paramViewGroup, false);
       }
       for (;;)
       {
-        ((p.a)paramView).a(bu(paramInt));
+        ((p.a)paramView).a(bv(paramInt));
         return paramView;
       }
     }
     
     public final void notifyDataSetChanged()
     {
-      hM();
+      hV();
       super.notifyDataSetChanged();
     }
   }

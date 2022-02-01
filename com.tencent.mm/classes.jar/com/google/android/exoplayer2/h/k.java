@@ -7,14 +7,14 @@ import java.util.Arrays;
 public final class k
   implements b
 {
-  private final boolean bEL;
-  private final int bEM;
-  private final byte[] bEN;
-  private final a[] bEO;
-  private int bEP;
-  private int bEQ;
-  private a[] bER;
-  private int bbW;
+  private final boolean bEQ;
+  private final int bER;
+  private final byte[] bES;
+  private final a[] bET;
+  private int bEU;
+  private int bEV;
+  private a[] bEW;
+  private int bbT;
   
   public k()
   {
@@ -26,12 +26,12 @@ public final class k
     AppMethodBeat.i(93049);
     com.google.android.exoplayer2.i.a.checkArgument(true);
     com.google.android.exoplayer2.i.a.checkArgument(true);
-    this.bEL = true;
-    this.bEM = 65536;
-    this.bEQ = 0;
-    this.bER = new a[100];
-    this.bEN = null;
-    this.bEO = new a[1];
+    this.bEQ = true;
+    this.bER = 65536;
+    this.bEV = 0;
+    this.bEW = new a[100];
+    this.bES = null;
+    this.bET = new a[1];
     AppMethodBeat.o(93049);
   }
   
@@ -40,8 +40,8 @@ public final class k
     try
     {
       AppMethodBeat.i(93053);
-      this.bEO[0] = parama;
-      a(this.bEO);
+      this.bET[0] = parama;
+      a(this.bET);
       AppMethodBeat.o(93053);
       return;
     }
@@ -59,31 +59,31 @@ public final class k
       try
       {
         AppMethodBeat.i(93054);
-        if (this.bEQ + paramArrayOfa.length >= this.bER.length) {
-          this.bER = ((a[])Arrays.copyOf(this.bER, Math.max(this.bER.length * 2, this.bEQ + paramArrayOfa.length)));
+        if (this.bEV + paramArrayOfa.length >= this.bEW.length) {
+          this.bEW = ((a[])Arrays.copyOf(this.bEW, Math.max(this.bEW.length * 2, this.bEV + paramArrayOfa.length)));
         }
         int j = paramArrayOfa.length;
         int i = 0;
         if (i < j)
         {
           a locala = paramArrayOfa[i];
-          if (locala.data != this.bEN)
+          if (locala.data != this.bES)
           {
-            if (locala.data.length != this.bEM) {
+            if (locala.data.length != this.bER) {
               break label169;
             }
             break label163;
             com.google.android.exoplayer2.i.a.checkArgument(bool);
-            a[] arrayOfa = this.bER;
-            int k = this.bEQ;
-            this.bEQ = (k + 1);
+            a[] arrayOfa = this.bEW;
+            int k = this.bEV;
+            this.bEV = (k + 1);
             arrayOfa[k] = locala;
             i += 1;
           }
         }
         else
         {
-          this.bEP -= paramArrayOfa.length;
+          this.bEU -= paramArrayOfa.length;
           notifyAll();
           AppMethodBeat.o(93054);
           return;
@@ -99,7 +99,7 @@ public final class k
   }
   
   /* Error */
-  public final void eY(int paramInt)
+  public final void eX(int paramInt)
   {
     // Byte code:
     //   0: aload_0
@@ -108,13 +108,13 @@ public final class k
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: iload_1
     //   8: aload_0
-    //   9: getfield 89	com/google/android/exoplayer2/h/k:bbW	I
+    //   9: getfield 89	com/google/android/exoplayer2/h/k:bbT	I
     //   12: if_icmpge +26 -> 38
     //   15: iconst_1
     //   16: istore_2
     //   17: aload_0
     //   18: iload_1
-    //   19: putfield 89	com/google/android/exoplayer2/h/k:bbW	I
+    //   19: putfield 89	com/google/android/exoplayer2/h/k:bbT	I
     //   22: iload_2
     //   23: ifeq +7 -> 30
     //   26: aload_0
@@ -151,8 +151,8 @@ public final class k
     try
     {
       AppMethodBeat.i(93050);
-      if (this.bEL) {
-        eY(0);
+      if (this.bEQ) {
+        eX(0);
       }
       AppMethodBeat.o(93050);
       return;
@@ -168,107 +168,92 @@ public final class k
       try
       {
         AppMethodBeat.i(93055);
-        int k = Math.max(0, x.bo(this.bbW, this.bEM) - this.bEP);
-        if (k >= this.bEQ)
+        int k = Math.max(0, x.bi(this.bbT, this.bER) - this.bEU);
+        if (k >= this.bEV)
         {
           AppMethodBeat.o(93055);
           return;
         }
         i = k;
-        if (this.bEN != null)
+        if (this.bES != null)
         {
-          int j = this.bEQ - 1;
+          int j = this.bEV - 1;
           i = 0;
           if (i <= j)
           {
-            a locala1 = this.bER[i];
-            if (locala1.data == this.bEN)
+            a locala1 = this.bEW[i];
+            if (locala1.data == this.bES)
             {
               i += 1;
               continue;
             }
-            a locala2 = this.bER[j];
-            if (locala2.data != this.bEN)
+            a locala2 = this.bEW[j];
+            if (locala2.data != this.bES)
             {
               j -= 1;
               continue;
             }
-            this.bER[i] = locala2;
-            this.bER[j] = locala1;
+            this.bEW[i] = locala2;
+            this.bEW[j] = locala1;
             j -= 1;
             i += 1;
             continue;
           }
           j = Math.max(k, i);
           i = j;
-          if (j >= this.bEQ)
+          if (j >= this.bEV)
           {
             AppMethodBeat.o(93055);
             continue;
           }
         }
-        Arrays.fill(this.bER, i, this.bEQ, null);
+        Arrays.fill(this.bEW, i, this.bEV, null);
       }
       finally {}
-      this.bEQ = i;
+      this.bEV = i;
       AppMethodBeat.o(93055);
     }
   }
   
-  public final int wC()
-  {
-    try
-    {
-      int i = this.bEP;
-      int j = this.bEM;
-      return i * j;
-    }
-    finally
-    {
-      localObject = finally;
-      throw localObject;
-    }
-  }
-  
   /* Error */
-  public final a wx()
+  public final a wC()
   {
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: ldc 111
+    //   2: ldc 109
     //   4: invokestatic 33	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
     //   7: aload_0
     //   8: aload_0
-    //   9: getfield 82	com/google/android/exoplayer2/h/k:bEP	I
+    //   9: getfield 82	com/google/android/exoplayer2/h/k:bEU	I
     //   12: iconst_1
     //   13: iadd
-    //   14: putfield 82	com/google/android/exoplayer2/h/k:bEP	I
+    //   14: putfield 82	com/google/android/exoplayer2/h/k:bEU	I
     //   17: aload_0
-    //   18: getfield 46	com/google/android/exoplayer2/h/k:bEQ	I
+    //   18: getfield 46	com/google/android/exoplayer2/h/k:bEV	I
     //   21: ifle +43 -> 64
     //   24: aload_0
-    //   25: getfield 50	com/google/android/exoplayer2/h/k:bER	[Lcom/google/android/exoplayer2/h/a;
+    //   25: getfield 50	com/google/android/exoplayer2/h/k:bEW	[Lcom/google/android/exoplayer2/h/a;
     //   28: astore_2
     //   29: aload_0
-    //   30: getfield 46	com/google/android/exoplayer2/h/k:bEQ	I
+    //   30: getfield 46	com/google/android/exoplayer2/h/k:bEV	I
     //   33: iconst_1
     //   34: isub
     //   35: istore_1
     //   36: aload_0
     //   37: iload_1
-    //   38: putfield 46	com/google/android/exoplayer2/h/k:bEQ	I
+    //   38: putfield 46	com/google/android/exoplayer2/h/k:bEV	I
     //   41: aload_2
     //   42: iload_1
     //   43: aaload
     //   44: astore_2
     //   45: aload_0
-    //   46: getfield 50	com/google/android/exoplayer2/h/k:bER	[Lcom/google/android/exoplayer2/h/a;
+    //   46: getfield 50	com/google/android/exoplayer2/h/k:bEW	[Lcom/google/android/exoplayer2/h/a;
     //   49: aload_0
-    //   50: getfield 46	com/google/android/exoplayer2/h/k:bEQ	I
+    //   50: getfield 46	com/google/android/exoplayer2/h/k:bEV	I
     //   53: aconst_null
     //   54: aastore
-    //   55: ldc 111
+    //   55: ldc 109
     //   57: invokestatic 57	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
     //   60: aload_0
     //   61: monitorexit
@@ -277,9 +262,9 @@ public final class k
     //   64: new 48	com/google/android/exoplayer2/h/a
     //   67: dup
     //   68: aload_0
-    //   69: getfield 44	com/google/android/exoplayer2/h/k:bEM	I
+    //   69: getfield 44	com/google/android/exoplayer2/h/k:bER	I
     //   72: newarray byte
-    //   74: invokespecial 114	com/google/android/exoplayer2/h/a:<init>	([B)V
+    //   74: invokespecial 112	com/google/android/exoplayer2/h/a:<init>	([B)V
     //   77: astore_2
     //   78: goto -23 -> 55
     //   81: astore_2
@@ -301,14 +286,29 @@ public final class k
     //   64	78	81	finally
   }
   
-  public final int wy()
+  public final int wD()
   {
-    return this.bEM;
+    return this.bER;
+  }
+  
+  public final int wI()
+  {
+    try
+    {
+      int i = this.bEU;
+      int j = this.bER;
+      return i * j;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.h.k
  * JD-Core Version:    0.7.0.1
  */

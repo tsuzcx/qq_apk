@@ -1,55 +1,55 @@
 package com.tencent.mm.plugin.product.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.b;
-import com.tencent.mm.ak.b.a;
-import com.tencent.mm.ak.b.b;
-import com.tencent.mm.ak.b.c;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.network.e;
-import com.tencent.mm.network.k;
-import com.tencent.mm.network.q;
-import com.tencent.mm.protocal.protobuf.bgy;
-import com.tencent.mm.protocal.protobuf.bgz;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.ak.d;
+import com.tencent.mm.ak.d.a;
+import com.tencent.mm.ak.d.b;
+import com.tencent.mm.ak.d.c;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.q;
+import com.tencent.mm.network.g;
+import com.tencent.mm.network.s;
+import com.tencent.mm.protocal.protobuf.bsw;
+import com.tencent.mm.protocal.protobuf.bsx;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 
 public final class h
-  extends com.tencent.mm.ak.n
-  implements k
+  extends q
+  implements com.tencent.mm.network.m
 {
-  private f callback;
-  private b rr;
-  public String xbQ;
-  public m xbR;
-  public List<n> xbS;
+  public String AZs;
+  public m AZt;
+  public List<n> AZu;
+  private i callback;
+  private d rr;
   
   public h(m paramm, String paramString)
   {
     AppMethodBeat.i(66894);
-    Object localObject = new b.a();
-    ((b.a)localObject).hQF = new bgy();
-    ((b.a)localObject).hQG = new bgz();
-    ((b.a)localObject).uri = "/cgi-bin/micromsg-bin/getproductdetail";
-    ((b.a)localObject).funcId = 553;
-    ((b.a)localObject).hQH = 0;
-    ((b.a)localObject).respCmdId = 0;
-    this.rr = ((b.a)localObject).aDS();
-    localObject = (bgy)this.rr.hQD.hQJ;
-    this.xbQ = paramString;
-    ((bgy)localObject).GVf = paramString;
-    ae.d("MicroMsg.NetSceneMallGetProductDetail", "pid ".concat(String.valueOf(paramString)));
-    ((bgy)localObject).Version = 0;
-    this.xbR = paramm;
+    Object localObject = new d.a();
+    ((d.a)localObject).iLN = new bsw();
+    ((d.a)localObject).iLO = new bsx();
+    ((d.a)localObject).uri = "/cgi-bin/micromsg-bin/getproductdetail";
+    ((d.a)localObject).funcId = 553;
+    ((d.a)localObject).iLP = 0;
+    ((d.a)localObject).respCmdId = 0;
+    this.rr = ((d.a)localObject).aXF();
+    localObject = (bsw)this.rr.iLK.iLR;
+    this.AZs = paramString;
+    ((bsw)localObject).LZy = paramString;
+    Log.d("MicroMsg.NetSceneMallGetProductDetail", "pid ".concat(String.valueOf(paramString)));
+    ((bsw)localObject).Version = 0;
+    this.AZt = paramm;
     AppMethodBeat.o(66894);
   }
   
-  public final int doScene(e parame, f paramf)
+  public final int doScene(g paramg, i parami)
   {
     AppMethodBeat.i(66896);
-    this.callback = paramf;
-    int i = dispatch(parame, this.rr, this);
+    this.callback = parami;
+    int i = dispatch(paramg, this.rr, this);
     AppMethodBeat.o(66896);
     return i;
   }
@@ -59,34 +59,34 @@ public final class h
     return 553;
   }
   
-  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, q paramq, byte[] paramArrayOfByte)
+  public final void onGYNetEnd(int paramInt1, int paramInt2, int paramInt3, String paramString, s params, byte[] paramArrayOfByte)
   {
     AppMethodBeat.i(66895);
-    paramArrayOfByte = (bgz)((b)paramq).hQE.hQJ;
-    if (!bu.isNullOrNil(paramArrayOfByte.GVh))
+    paramArrayOfByte = (bsx)((d)params).iLL.iLR;
+    if (!Util.isNullOrNil(paramArrayOfByte.LZA))
     {
-      ae.d("MicroMsg.NetSceneMallGetProductDetail", "resp.ProductInfo " + paramArrayOfByte.GVh);
-      this.xbR = m.a(this.xbR, paramArrayOfByte.GVh);
+      Log.d("MicroMsg.NetSceneMallGetProductDetail", "resp.ProductInfo " + paramArrayOfByte.LZA);
+      this.AZt = m.a(this.AZt, paramArrayOfByte.LZA);
     }
     paramInt1 = paramInt3;
-    paramq = paramString;
+    params = paramString;
     if (paramInt3 == 0)
     {
       paramInt1 = paramInt3;
-      paramq = paramString;
-      if (paramArrayOfByte.FUL != 0)
+      params = paramString;
+      if (paramArrayOfByte.KOt != 0)
       {
-        paramInt1 = paramArrayOfByte.FUL;
-        paramq = paramArrayOfByte.FUM;
+        paramInt1 = paramArrayOfByte.KOt;
+        params = paramArrayOfByte.KOu;
       }
     }
-    if (!bu.isNullOrNil(paramArrayOfByte.GVi))
+    if (!Util.isNullOrNil(paramArrayOfByte.LZB))
     {
-      ae.d("MicroMsg.NetSceneMallGetProductDetail", "resp.RecommendInfo " + paramArrayOfByte.GVi);
-      this.xbS = n.parse(paramArrayOfByte.GVi);
+      Log.d("MicroMsg.NetSceneMallGetProductDetail", "resp.RecommendInfo " + paramArrayOfByte.LZB);
+      this.AZu = n.parse(paramArrayOfByte.LZB);
     }
-    ae.d("MicroMsg.NetSceneMallGetProductDetail", "errCode " + paramInt1 + ", errMsg " + paramq);
-    this.callback.onSceneEnd(paramInt2, paramInt1, paramq, this);
+    Log.d("MicroMsg.NetSceneMallGetProductDetail", "errCode " + paramInt1 + ", errMsg " + params);
+    this.callback.onSceneEnd(paramInt2, paramInt1, params, this);
     AppMethodBeat.o(66895);
   }
 }

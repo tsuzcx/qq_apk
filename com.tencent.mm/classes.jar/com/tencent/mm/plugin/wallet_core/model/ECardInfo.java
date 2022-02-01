@@ -6,11 +6,11 @@ import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.protocal.protobuf.cru;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.protocal.protobuf.dju;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,21 +20,21 @@ public class ECardInfo
   implements Parcelable
 {
   public static final Parcelable.Creator<ECardInfo> CREATOR;
-  public String DnA;
-  public String DnB;
-  public String DnC;
-  public int DnD;
-  public ArrayList<String> DnE;
-  public String DnF;
-  public String DnG;
-  public String DnH;
-  public String DnI;
-  public int Dny;
-  public int Dnz;
-  public String dOi;
-  public String dOm;
-  public String dpa;
-  public int obQ;
+  public int HWQ;
+  public int HWR;
+  public String HWS;
+  public String HWT;
+  public String HWU;
+  public int HWV;
+  public ArrayList<String> HWW;
+  public String HWX;
+  public String HWY;
+  public String HWZ;
+  public String HXa;
+  public String dGp;
+  public String egd;
+  public String egh;
+  public int pmM;
   public String subtitle;
   public String title;
   
@@ -48,77 +48,77 @@ public class ECardInfo
   public ECardInfo()
   {
     AppMethodBeat.i(70261);
-    this.DnE = new ArrayList();
+    this.HWW = new ArrayList();
     AppMethodBeat.o(70261);
   }
   
   public ECardInfo(Parcel paramParcel)
   {
     AppMethodBeat.i(70262);
-    this.DnE = new ArrayList();
-    this.obQ = paramParcel.readInt();
-    this.dpa = paramParcel.readString();
-    this.Dny = paramParcel.readInt();
-    this.Dnz = paramParcel.readInt();
-    this.DnA = paramParcel.readString();
-    this.DnB = paramParcel.readString();
-    this.DnC = paramParcel.readString();
-    this.DnD = paramParcel.readInt();
+    this.HWW = new ArrayList();
+    this.pmM = paramParcel.readInt();
+    this.dGp = paramParcel.readString();
+    this.HWQ = paramParcel.readInt();
+    this.HWR = paramParcel.readInt();
+    this.HWS = paramParcel.readString();
+    this.HWT = paramParcel.readString();
+    this.HWU = paramParcel.readString();
+    this.HWV = paramParcel.readInt();
     this.title = paramParcel.readString();
-    paramParcel.readStringList(this.DnE);
-    this.DnF = paramParcel.readString();
-    this.DnG = paramParcel.readString();
-    this.DnH = paramParcel.readString();
-    this.DnI = paramParcel.readString();
-    this.dOi = paramParcel.readString();
+    paramParcel.readStringList(this.HWW);
+    this.HWX = paramParcel.readString();
+    this.HWY = paramParcel.readString();
+    this.HWZ = paramParcel.readString();
+    this.HXa = paramParcel.readString();
+    this.egd = paramParcel.readString();
     this.subtitle = paramParcel.readString();
     AppMethodBeat.o(70262);
   }
   
-  public static void bf(JSONObject paramJSONObject)
+  public static void bF(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70264);
     if (paramJSONObject != null)
     {
-      g.ajR().ajA().set(am.a.IZF, paramJSONObject.toString());
+      g.aAh().azQ().set(ar.a.Oik, paramJSONObject.toString());
       AppMethodBeat.o(70264);
       return;
     }
-    g.ajR().ajA().set(am.a.IZF, "");
+    g.aAh().azQ().set(ar.a.Oik, "");
     AppMethodBeat.o(70264);
   }
   
-  public static cru eIM()
+  public static dju fQp()
   {
     AppMethodBeat.i(70265);
-    Object localObject = (String)g.ajR().ajA().get(am.a.IZF, null);
-    if (!bu.isNullOrNil((String)localObject)) {
+    Object localObject = (String)g.aAh().azQ().get(ar.a.Oik, null);
+    if (!Util.isNullOrNil((String)localObject)) {
       try
       {
-        cru localcru = new cru();
+        dju localdju = new dju();
         localObject = new JSONObject((String)localObject);
-        localcru.FIU = ((JSONObject)localObject).optInt("guide_flag");
-        localcru.vCG = ((JSONObject)localObject).optString("guide_wording");
-        localcru.kCZ = ((JSONObject)localObject).optString("left_button_wording");
-        localcru.kDa = ((JSONObject)localObject).optString("right_button_wording");
-        localcru.vCH = ((JSONObject)localObject).optString("upload_credit_url");
+        localdju.KCl = ((JSONObject)localObject).optInt("guide_flag");
+        localdju.yXJ = ((JSONObject)localObject).optString("guide_wording");
+        localdju.lHA = ((JSONObject)localObject).optString("left_button_wording");
+        localdju.lHB = ((JSONObject)localObject).optString("right_button_wording");
+        localdju.yXK = ((JSONObject)localObject).optString("upload_credit_url");
         AppMethodBeat.o(70265);
-        return localcru;
+        return localdju;
       }
       catch (Exception localException)
       {
-        ae.printErrStackTrace("MicroMsg.ECardInfo", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ECardInfo", localException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(70265);
     return null;
   }
   
-  public static ECardInfo eIN()
+  public static ECardInfo fQq()
   {
     AppMethodBeat.i(70266);
-    Object localObject1 = (String)g.ajR().ajA().get(am.a.IZF, null);
-    if (!bu.isNullOrNil((String)localObject1)) {
+    Object localObject1 = (String)g.aAh().azQ().get(ar.a.Oik, null);
+    if (!Util.isNullOrNil((String)localObject1)) {
       try
       {
         localObject1 = new JSONObject((String)localObject1);
@@ -137,23 +137,23 @@ public class ECardInfo
         {
           localObject2 = ((JSONObject)localObject1).optJSONObject("ecard_info");
           ECardInfo localECardInfo = new ECardInfo();
-          localECardInfo.dOi = ((JSONObject)localObject1).optString("guide_flag");
+          localECardInfo.egd = ((JSONObject)localObject1).optString("guide_flag");
           localECardInfo.title = ((JSONObject)localObject1).optString("title");
           localECardInfo.subtitle = ((JSONObject)localObject1).optString("subtitle");
-          localECardInfo.DnE = new ArrayList(localArrayList);
-          localECardInfo.DnG = ((JSONObject)localObject1).optString("protocol_url");
-          localECardInfo.DnH = ((JSONObject)localObject1).optString("left_protocol_wording");
-          localECardInfo.DnI = ((JSONObject)localObject1).optString("right_protocol_wording");
-          localECardInfo.DnF = ((JSONObject)localObject1).optString("done_button_wording");
-          localECardInfo.obQ = ((JSONObject)localObject2).optInt("ecard_open_scene", 0);
-          localECardInfo.dpa = ((JSONObject)localObject2).optString("ecard_type", "");
-          localECardInfo.Dny = ((JSONObject)localObject2).optInt("show_check_box", 0);
-          localECardInfo.Dnz = ((JSONObject)localObject2).optInt("check_box_selected", 0);
-          localECardInfo.DnA = ((JSONObject)localObject2).optString("check_box_left_wording", "");
-          localECardInfo.DnB = ((JSONObject)localObject2).optString("check_box_right_wording", "");
-          localECardInfo.DnC = ((JSONObject)localObject2).optString("check_box_url", "");
-          localECardInfo.DnD = ((JSONObject)localObject2).optInt("is_upload_credid", 0);
-          localECardInfo.dOm = ((JSONObject)localObject2).optString("upload_credit_url", "");
+          localECardInfo.HWW = new ArrayList(localArrayList);
+          localECardInfo.HWY = ((JSONObject)localObject1).optString("protocol_url");
+          localECardInfo.HWZ = ((JSONObject)localObject1).optString("left_protocol_wording");
+          localECardInfo.HXa = ((JSONObject)localObject1).optString("right_protocol_wording");
+          localECardInfo.HWX = ((JSONObject)localObject1).optString("done_button_wording");
+          localECardInfo.pmM = ((JSONObject)localObject2).optInt("ecard_open_scene", 0);
+          localECardInfo.dGp = ((JSONObject)localObject2).optString("ecard_type", "");
+          localECardInfo.HWQ = ((JSONObject)localObject2).optInt("show_check_box", 0);
+          localECardInfo.HWR = ((JSONObject)localObject2).optInt("check_box_selected", 0);
+          localECardInfo.HWS = ((JSONObject)localObject2).optString("check_box_left_wording", "");
+          localECardInfo.HWT = ((JSONObject)localObject2).optString("check_box_right_wording", "");
+          localECardInfo.HWU = ((JSONObject)localObject2).optString("check_box_url", "");
+          localECardInfo.HWV = ((JSONObject)localObject2).optInt("is_upload_credid", 0);
+          localECardInfo.egh = ((JSONObject)localObject2).optString("upload_credit_url", "");
           AppMethodBeat.o(70266);
           return localECardInfo;
         }
@@ -162,7 +162,7 @@ public class ECardInfo
       }
       catch (JSONException localJSONException)
       {
-        ae.printErrStackTrace("MicroMsg.ECardInfo", localJSONException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.ECardInfo", localJSONException, "", new Object[0]);
       }
     }
     AppMethodBeat.o(70266);
@@ -177,28 +177,28 @@ public class ECardInfo
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(70263);
-    paramParcel.writeInt(this.obQ);
-    paramParcel.writeString(this.dpa);
-    paramParcel.writeInt(this.Dny);
-    paramParcel.writeInt(this.Dnz);
-    paramParcel.writeString(this.DnA);
-    paramParcel.writeString(this.DnB);
-    paramParcel.writeString(this.DnC);
-    paramParcel.writeInt(this.DnD);
+    paramParcel.writeInt(this.pmM);
+    paramParcel.writeString(this.dGp);
+    paramParcel.writeInt(this.HWQ);
+    paramParcel.writeInt(this.HWR);
+    paramParcel.writeString(this.HWS);
+    paramParcel.writeString(this.HWT);
+    paramParcel.writeString(this.HWU);
+    paramParcel.writeInt(this.HWV);
     paramParcel.writeString(this.title);
-    paramParcel.writeStringList(this.DnE);
-    paramParcel.writeString(this.DnF);
-    paramParcel.writeString(this.DnG);
-    paramParcel.writeString(this.DnH);
-    paramParcel.writeString(this.DnI);
-    paramParcel.writeString(this.dOi);
+    paramParcel.writeStringList(this.HWW);
+    paramParcel.writeString(this.HWX);
+    paramParcel.writeString(this.HWY);
+    paramParcel.writeString(this.HWZ);
+    paramParcel.writeString(this.HXa);
+    paramParcel.writeString(this.egd);
     paramParcel.writeString(this.subtitle);
     AppMethodBeat.o(70263);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.ECardInfo
  * JD-Core Version:    0.7.0.1
  */

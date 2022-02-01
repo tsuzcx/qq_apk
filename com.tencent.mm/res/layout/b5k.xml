@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/dg1" android:background="@color/th" style="@style/qp"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:baselineAligned="false"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_weight="1.0">
-        <ImageView android:layout_gravity="center" android:id="@id/co4" android:padding="@dimen/he" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerInside" android:maxWidth="240.0dip" android:maxHeight="240.0dip" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/g29" android:background="@drawable/ah0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
+        <TextView android:textSize="@dimen/hc" android:textColor="@color/ag2" android:ellipsize="end" android:gravity="center|left" android:id="@id/a2b" android:paddingLeft="@dimen/ir" android:paddingTop="@dimen/ib" android:paddingRight="@dimen/ir" android:paddingBottom="@dimen/ib" android:visibility="gone" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:maxLines="2" android:includeFontPadding="false" android:layout_weight="1.0" android:lineSpacingExtra="2.0dip" />
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/uk" android:visibility="gone" android:layout_width="8.0dip" android:layout_height="16.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="12.0dip" android:src="@raw/icons_outlined_arrow" />
     </LinearLayout>
-    <ListView android:id="@id/d2f" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ha" style="@style/n3" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/do6" android:background="@drawable/agw" android:layout_width="fill_parent" android:layout_height="140.0dip" android:layout_marginTop="8.0dip" android:baselineAligned="false">
+        <RelativeLayout android:id="@id/g3_" style="@style/r7">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/g3b" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@raw/icons_outlined_pay" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/r8" />
+            <TextView android:id="@id/g3h" android:text="@string/idy" android:layout_below="@id/g3b" style="@style/r9" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/za" android:ellipsize="end" android:id="@id/c7q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/g3h" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/zq" style="@style/r7">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/a02" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@raw/icons_outlined_coin" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/r8" />
+            <TextView android:id="@id/a08" android:text="@string/idm" android:layout_below="@id/a02" style="@style/r9" />
+            <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="@dimen/hc" android:textColor="@color/za" android:ellipsize="end" android:id="@id/a01" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_below="@id/a08" android:layout_centerHorizontal="true" />
+            <ImageView android:id="@id/a05" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginLeft="-7.0dip" android:src="@drawable/b1a" android:layout_toRightOf="@id/a02" android:layout_alignParentTop="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/ev0" android:visibility="gone" style="@style/r7">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/ex_" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@raw/mall_index_lqt_icon_normal" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/r8" />
+            <TextView android:id="@id/exr" android:text="@string/idx" android:layout_below="@id/ex_" style="@style/r9" />
+            <ImageView android:id="@id/exa" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginLeft="-7.0dip" android:src="@drawable/b1a" android:layout_toRightOf="@id/ex_" android:layout_alignParentTop="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/a10" style="@style/r7">
+            <com.tencent.mm.pluginsdk.ui.applet.CdnImageView android:id="@id/a1x" android:layout_width="35.0dip" android:layout_height="35.0dip" android:src="@raw/icons_outlined_card" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" style="@style/r8" />
+            <TextView android:id="@id/a22" android:text="@string/ido" android:layout_below="@id/a1x" style="@style/r9" />
+            <ImageView android:id="@id/gm" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="-6.0dip" android:layout_marginTop="1.0dip" android:layout_marginRight="1.0dip" android:src="@drawable/b1a" android:layout_toRightOf="@id/a1x" android:layout_alignParentTop="true" />
+            <TextView android:textSize="@dimen/hc" android:textColor="@color/za" android:ellipsize="end" android:id="@id/c7r" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_below="@id/a22" android:layout_centerHorizontal="true" />
+        </RelativeLayout>
+    </LinearLayout>
 </LinearLayout>

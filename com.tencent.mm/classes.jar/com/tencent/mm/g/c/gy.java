@@ -2,40 +2,28 @@ package com.tencent.mm.g.c;
 
 import android.content.ContentValues;
 import android.database.Cursor;
-import com.tencent.mm.sdk.e.c;
+import com.tencent.mm.sdk.storage.IAutoDBItem;
 
 public abstract class gy
-  extends c
+  extends IAutoDBItem
 {
   public static final String[] INDEX_CREATE = new String[0];
-  private static final int eNU = "logo_url".hashCode();
-  private static final int eOa = "jump_type".hashCode();
-  private static final int fAN = "pref_key".hashCode();
-  private static final int fAO = "pref_title".hashCode();
-  private static final int fAP = "pref_url".hashCode();
-  private static final int fAQ = "is_show".hashCode();
-  private static final int fAR = "pref_desc".hashCode();
-  private static final int fAS = "tinyapp_username".hashCode();
-  private static final int fAT = "tinyapp_path".hashCode();
+  private static final int fkj;
+  private static final int fmt = "openId".hashCode();
   private static final int rowid_HASHCODE = "rowid".hashCode();
-  private boolean eNB = true;
-  private boolean eNH = true;
-  private boolean fAG = true;
-  private boolean fAH = true;
-  private boolean fAI = true;
-  private boolean fAJ = true;
-  private boolean fAK = true;
-  private boolean fAL = true;
-  private boolean fAM = true;
-  public int field_is_show;
-  public int field_jump_type;
-  public String field_logo_url;
-  public String field_pref_desc;
-  public String field_pref_key;
-  public String field_pref_title;
-  public String field_pref_url;
-  public String field_tinyapp_path;
-  public String field_tinyapp_username;
+  private static final int username_HASHCODE;
+  private boolean __hadSetusername = true;
+  public String field_appId;
+  public String field_openId;
+  public String field_username;
+  private boolean fjS = true;
+  private boolean flX = true;
+  
+  static
+  {
+    fkj = "appId".hashCode();
+    username_HASHCODE = "username".hashCode();
+  }
   
   public void convertFrom(Cursor paramCursor)
   {
@@ -50,11 +38,11 @@ public abstract class gy
     if (i < j)
     {
       k = arrayOfString[i].hashCode();
-      if (fAN != k) {
+      if (fmt != k) {
         break label65;
       }
-      this.field_pref_key = paramCursor.getString(i);
-      this.fAG = true;
+      this.field_openId = paramCursor.getString(i);
+      this.flX = true;
     }
     for (;;)
     {
@@ -62,22 +50,10 @@ public abstract class gy
       break label20;
       break;
       label65:
-      if (fAO == k) {
-        this.field_pref_title = paramCursor.getString(i);
-      } else if (fAP == k) {
-        this.field_pref_url = paramCursor.getString(i);
-      } else if (fAQ == k) {
-        this.field_is_show = paramCursor.getInt(i);
-      } else if (fAR == k) {
-        this.field_pref_desc = paramCursor.getString(i);
-      } else if (eNU == k) {
-        this.field_logo_url = paramCursor.getString(i);
-      } else if (eOa == k) {
-        this.field_jump_type = paramCursor.getInt(i);
-      } else if (fAS == k) {
-        this.field_tinyapp_username = paramCursor.getString(i);
-      } else if (fAT == k) {
-        this.field_tinyapp_path = paramCursor.getString(i);
+      if (fkj == k) {
+        this.field_appId = paramCursor.getString(i);
+      } else if (username_HASHCODE == k) {
+        this.field_username = paramCursor.getString(i);
       } else if (rowid_HASHCODE == k) {
         this.systemRowid = paramCursor.getLong(i);
       }
@@ -87,32 +63,14 @@ public abstract class gy
   public ContentValues convertTo()
   {
     ContentValues localContentValues = new ContentValues();
-    if (this.fAG) {
-      localContentValues.put("pref_key", this.field_pref_key);
+    if (this.flX) {
+      localContentValues.put("openId", this.field_openId);
     }
-    if (this.fAH) {
-      localContentValues.put("pref_title", this.field_pref_title);
+    if (this.fjS) {
+      localContentValues.put("appId", this.field_appId);
     }
-    if (this.fAI) {
-      localContentValues.put("pref_url", this.field_pref_url);
-    }
-    if (this.fAJ) {
-      localContentValues.put("is_show", Integer.valueOf(this.field_is_show));
-    }
-    if (this.fAK) {
-      localContentValues.put("pref_desc", this.field_pref_desc);
-    }
-    if (this.eNB) {
-      localContentValues.put("logo_url", this.field_logo_url);
-    }
-    if (this.eNH) {
-      localContentValues.put("jump_type", Integer.valueOf(this.field_jump_type));
-    }
-    if (this.fAL) {
-      localContentValues.put("tinyapp_username", this.field_tinyapp_username);
-    }
-    if (this.fAM) {
-      localContentValues.put("tinyapp_path", this.field_tinyapp_path);
+    if (this.__hadSetusername) {
+      localContentValues.put("username", this.field_username);
     }
     if (this.systemRowid > 0L) {
       localContentValues.put("rowid", Long.valueOf(this.systemRowid));
@@ -122,7 +80,7 @@ public abstract class gy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.g.c.gy
  * JD-Core Version:    0.7.0.1
  */

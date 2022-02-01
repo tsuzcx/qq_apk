@@ -23,7 +23,7 @@ public class FaceFrame
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
  * Qualified Name:     com.tencent.youtu.ytagreflectlivecheck.jni.model.FaceFrame
  * JD-Core Version:    0.7.0.1
  */

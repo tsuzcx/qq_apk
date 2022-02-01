@@ -12,15 +12,15 @@ import android.widget.PopupWindow;
 class AppCompatPopupWindow
   extends PopupWindow
 {
-  private static final boolean akw;
-  private boolean akx;
+  private static final boolean akJ;
+  private boolean akK;
   
   static
   {
     if (Build.VERSION.SDK_INT < 21) {}
     for (boolean bool = true;; bool = false)
     {
-      akw = bool;
+      akJ = bool;
       return;
     }
   }
@@ -37,11 +37,11 @@ class AppCompatPopupWindow
     b(paramContext, paramAttributeSet, paramInt1, paramInt2);
   }
   
-  private void ah(boolean paramBoolean)
+  private void ag(boolean paramBoolean)
   {
-    if (akw)
+    if (akJ)
     {
-      this.akx = paramBoolean;
+      this.akK = paramBoolean;
       return;
     }
     n.a(this, paramBoolean);
@@ -51,19 +51,19 @@ class AppCompatPopupWindow
   {
     paramContext = az.a(paramContext, paramAttributeSet, a.a.PopupWindow, paramInt1, paramInt2);
     if (paramContext.hasValue(2)) {
-      ah(paramContext.getBoolean(2, false));
+      ag(paramContext.getBoolean(2, false));
     }
     setBackgroundDrawable(paramContext.getDrawable(0));
-    paramContext.ayA.recycle();
+    paramContext.ayy.recycle();
   }
   
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2)
   {
     int i = paramInt2;
-    if (akw)
+    if (akJ)
     {
       i = paramInt2;
-      if (this.akx) {
+      if (this.akK) {
         i = paramInt2 - paramView.getHeight();
       }
     }
@@ -73,10 +73,10 @@ class AppCompatPopupWindow
   public void showAsDropDown(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     int i = paramInt2;
-    if (akw)
+    if (akJ)
     {
       i = paramInt2;
-      if (this.akx) {
+      if (this.akK) {
         i = paramInt2 - paramView.getHeight();
       }
     }
@@ -85,7 +85,7 @@ class AppCompatPopupWindow
   
   public void update(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((akw) && (this.akx)) {
+    if ((akJ) && (this.akK)) {
       paramInt2 -= paramView.getHeight();
     }
     for (;;)

@@ -1,17 +1,17 @@
 package com.tencent.mm.plugin.scanner.ui.widget;
 
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnSelectedListener;", "", "onTabSelected", "", "tabId", "", "tabSelectedAction", "onTabUnSelected", "plugin-scan_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/scanner/ui/widget/ScrollTabOnSelectedListener;", "", "onTabSelected", "", "tabId", "", "tabSelectedAction", "onTabUnSelected", "plugin-scan_release"})
 public abstract interface e
 {
-  public abstract void Pr(int paramInt);
+  public abstract void WQ(int paramInt);
   
-  public abstract void hr(int paramInt1, int paramInt2);
+  public abstract void jdMethod_if(int paramInt1, int paramInt2);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.scanner.ui.widget.e
  * JD-Core Version:    0.7.0.1
  */

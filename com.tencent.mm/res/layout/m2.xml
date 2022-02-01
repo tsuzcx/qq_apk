@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView android:layout_gravity="center_vertical" android:background="@color/FG_3" android:visibility="visible" android:layout_width="1.0px" android:layout_height="65.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:orientation="vertical" android:paddingTop="@dimen/hs" android:paddingBottom="@dimen/hs" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/bb" android:paddingLeft="@dimen/hs" android:paddingRight="@dimen/hs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:id="@id/ba" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginRight="@dimen/k5" android:src="@raw/actionbar_particular_icon" />
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/bc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+    <TextView android:textSize="@dimen/p" android:textColor="@color/a2x" android:ellipsize="end" android:gravity="center" android:id="@id/bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/k5" android:maxLines="2" />
+</LinearLayout>

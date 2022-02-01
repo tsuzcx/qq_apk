@@ -5,7 +5,7 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.f;
+import com.tencent.mm.plugin.report.service.g;
 
 public class TestTimeForSns
   extends FrameLayout
@@ -34,11 +34,11 @@ public class TestTimeForSns
     {
       this.hasDrawed = true;
       if (this.listener != null) {
-        this.listener.cYF();
+        this.listener.dSa();
       }
     }
-    f.OQ(10);
-    f.OQ(22);
+    g.Wm(10);
+    g.Wm(22);
     AppMethodBeat.o(99702);
   }
   
@@ -54,12 +54,12 @@ public class TestTimeForSns
   
   public static abstract interface a
   {
-    public abstract void cYF();
+    public abstract void dSa();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.sns.ui.TestTimeForSns
  * JD-Core Version:    0.7.0.1
  */

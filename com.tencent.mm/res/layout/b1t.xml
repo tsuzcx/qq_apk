@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/ena" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <RelativeLayout android:orientation="vertical" android:id="@id/bf8" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/en7" android:background="@color/xg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
+            <View android:id="@id/en4" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <RelativeLayout android:layout_gravity="bottom" android:id="@id/en6" android:background="@drawable/a_h" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="15.0dip" android:textColor="@color/xk" android:id="@id/en_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ce" android:layout_marginBottom="@dimen/ci" android:text="@string/ejm" android:layout_marginStart="@dimen/ce" />
+                <RelativeLayout android:id="@id/eq1" android:layout_width="108.0dip" android:layout_height="192.0dip" android:layout_marginBottom="@dimen/ce" android:layout_below="@id/en_" android:layout_centerHorizontal="true">
+                    <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/en9" android:layout_width="@dimen/cc" android:layout_height="@dimen/cc" android:layout_marginTop="@dimen/bt" android:src="@raw/icons_filled_camera_switch" android:layout_marginEnd="@dimen/bt" android:layout_alignParentEnd="true" app:iconColor="@color/ag2" />
+                </RelativeLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/j5f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/ce" android:weightSum="2.0" android:layout_below="@id/eq1" android:layout_centerHorizontal="true">
+                    <Button android:textColor="@color/xk" android:id="@id/en5" android:background="@drawable/a_l" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/sz" android:singleLine="true" android:layout_weight="1.0" android:layout_marginStart="@dimen/cr" android:layout_marginEnd="@dimen/bt" style="@style/p3" />
+                    <Button android:textColor="@color/ag2" android:id="@id/en8" android:background="@drawable/adg" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="@string/ek3" android:singleLine="true" android:layout_weight="1.0" android:layout_marginStart="@dimen/bt" android:layout_marginEnd="@dimen/cr" style="@style/p3" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

@@ -4,81 +4,81 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class EmojiCaptureReporter
   implements Parcelable
 {
   public static final Parcelable.Creator<EmojiCaptureReporter> CREATOR;
   public int dataSize;
-  public long ddi;
-  public long gfw;
-  public String gmF;
-  public long gsp;
-  public boolean gsr;
-  public boolean hrQ;
-  public long pWH;
-  public long pWI;
-  public long pWJ;
-  public long pWK;
-  public long pWL;
-  public long pWM;
-  public long pWN;
-  public boolean pWO;
-  public boolean pWP;
-  public int pWQ;
-  public String pWR;
-  public String pWS;
-  public String pWT;
-  public int pWU;
-  public int pWV;
-  public String pWW;
-  public int pWX;
-  public int pWY;
+  public long dtZ;
+  public long gLd;
+  public String gXx;
+  public boolean hdB;
+  public long hdz;
+  public boolean ilM;
+  public long rnG;
+  public long rnH;
+  public long rnI;
+  public long rnJ;
+  public long rnK;
+  public long rnL;
+  public long rnM;
+  public boolean rnN;
+  public boolean rnO;
+  public int rnP;
+  public String rnQ;
+  public String rnR;
+  public String rnS;
+  public int rnT;
+  public int rnU;
+  public String rnV;
+  public int rnW;
+  public int rnX;
   public int scene;
   public int textColor;
   
   static
   {
     AppMethodBeat.i(104400);
-    CREATOR = new Parcelable.Creator() {};
+    CREATOR = new EmojiCaptureReporter.1();
     AppMethodBeat.o(104400);
   }
   
   public EmojiCaptureReporter()
   {
-    this.pWX = 2;
-    this.pWY = 9;
+    this.rnW = 2;
+    this.rnX = 9;
   }
   
   public EmojiCaptureReporter(Parcel paramParcel)
   {
     AppMethodBeat.i(104399);
-    this.pWX = 2;
-    this.pWY = 9;
-    this.gsp = paramParcel.readLong();
-    this.pWH = paramParcel.readLong();
-    this.pWI = paramParcel.readLong();
-    this.pWJ = paramParcel.readLong();
-    this.pWK = paramParcel.readLong();
-    this.pWL = paramParcel.readLong();
-    this.pWM = paramParcel.readLong();
-    this.gfw = paramParcel.readLong();
-    this.pWN = paramParcel.readLong();
-    this.ddi = paramParcel.readLong();
+    this.rnW = 2;
+    this.rnX = 9;
+    this.hdz = paramParcel.readLong();
+    this.rnG = paramParcel.readLong();
+    this.rnH = paramParcel.readLong();
+    this.rnI = paramParcel.readLong();
+    this.rnJ = paramParcel.readLong();
+    this.rnK = paramParcel.readLong();
+    this.rnL = paramParcel.readLong();
+    this.gLd = paramParcel.readLong();
+    this.rnM = paramParcel.readLong();
+    this.dtZ = paramParcel.readLong();
     this.textColor = paramParcel.readInt();
     if (paramParcel.readByte() != 0)
     {
       bool1 = true;
-      this.pWO = bool1;
+      this.rnN = bool1;
       if (paramParcel.readByte() == 0) {
         break label195;
       }
       bool1 = true;
       label133:
-      this.pWP = bool1;
-      this.pWQ = paramParcel.readInt();
+      this.rnO = bool1;
+      this.rnP = paramParcel.readInt();
       if (paramParcel.readByte() == 0) {
         break label200;
       }
@@ -87,10 +87,10 @@ public class EmojiCaptureReporter
     label200:
     for (boolean bool1 = bool2;; bool1 = false)
     {
-      this.gsr = bool1;
+      this.hdB = bool1;
       this.dataSize = paramParcel.readInt();
-      this.gmF = paramParcel.readString();
-      this.pWR = paramParcel.readString();
+      this.gXx = paramParcel.readString();
+      this.rnQ = paramParcel.readString();
       AppMethodBeat.o(104399);
       return;
       bool1 = false;
@@ -100,31 +100,31 @@ public class EmojiCaptureReporter
     }
   }
   
-  private void Cw(int paramInt)
+  private void Gh(int paramInt)
   {
     AppMethodBeat.i(104391);
-    g.yxI.f(15982, new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.gsp), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.scene), this.pWT, Integer.valueOf(this.pWU), Integer.valueOf(0), Integer.valueOf(this.pWV), this.pWW, Integer.valueOf(this.pWX), Integer.valueOf(this.pWY) });
+    h.CyF.a(15982, new Object[] { Integer.valueOf(paramInt), Long.valueOf(this.hdz), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.scene), this.rnS, Integer.valueOf(this.rnT), Integer.valueOf(0), Integer.valueOf(this.rnU), this.rnV, Integer.valueOf(this.rnW), Integer.valueOf(this.rnX) });
     AppMethodBeat.o(104391);
   }
   
-  public static void Cx(int paramInt)
+  public static void Gi(int paramInt)
   {
-    AppMethodBeat.i(224508);
-    fo(paramInt, 1);
-    AppMethodBeat.o(224508);
+    AppMethodBeat.i(258691);
+    fE(paramInt, 1);
+    AppMethodBeat.o(258691);
   }
   
   public static void a(int paramInt1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, int paramInt2, int paramInt3, int paramInt4)
   {
     AppMethodBeat.i(104388);
-    g.yxI.f(15982, new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(0L), Long.valueOf(paramLong4), Long.valueOf(paramLong5), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    h.CyF.a(15982, new Object[] { Integer.valueOf(paramInt1), Long.valueOf(paramLong1), Long.valueOf(paramLong2), Long.valueOf(paramLong3), Long.valueOf(0L), Long.valueOf(paramLong4), Long.valueOf(paramLong5), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
     AppMethodBeat.o(104388);
   }
   
-  public static void cku()
+  public static void cIw()
   {
     AppMethodBeat.i(104390);
-    g.yxI.f(15982, new Object[] { Integer.valueOf(24), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) });
+    h.CyF.a(15982, new Object[] { Integer.valueOf(24), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0) });
     AppMethodBeat.o(104390);
   }
   
@@ -139,33 +139,33 @@ public class EmojiCaptureReporter
     {
       AppMethodBeat.o(104393);
       return;
-      fo(7, 1);
+      fE(7, 1);
       AppMethodBeat.o(104393);
       return;
-      fo(6, 1);
+      fE(6, 1);
       AppMethodBeat.o(104393);
       return;
-      fo(28, 1);
+      fE(28, 1);
       AppMethodBeat.o(104393);
       return;
-      fo(22, 1);
+      fE(22, 1);
       AppMethodBeat.o(104393);
       return;
-      fo(24, 1);
+      fE(24, 1);
       AppMethodBeat.o(104393);
       return;
-      fo(25, 1);
+      fE(25, 1);
       AppMethodBeat.o(104393);
       return;
-      fo(26, 1);
+      fE(26, 1);
       AppMethodBeat.o(104393);
       return;
-      fo(27, 1);
+      fE(27, 1);
       AppMethodBeat.o(104393);
       return;
       AppMethodBeat.o(104393);
       return;
-      fo(8, 1);
+      fE(8, 1);
     }
   }
   
@@ -176,10 +176,10 @@ public class EmojiCaptureReporter
     AppMethodBeat.o(104392);
   }
   
-  public static void fo(int paramInt1, int paramInt2)
+  public static void fE(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(104396);
-    g.yxI.n(852L, paramInt1, paramInt2);
+    h.CyF.n(852L, paramInt1, paramInt2);
     AppMethodBeat.o(104396);
   }
   
@@ -194,16 +194,16 @@ public class EmojiCaptureReporter
     {
       AppMethodBeat.o(104395);
       return;
-      fo(21, 1);
+      fE(21, 1);
       AppMethodBeat.o(104395);
       return;
-      fo(29, 1);
+      fE(29, 1);
       AppMethodBeat.o(104395);
       return;
-      fo(30, 1);
+      fE(30, 1);
       AppMethodBeat.o(104395);
       return;
-      fo(5, 1);
+      fE(5, 1);
     }
   }
   
@@ -211,67 +211,67 @@ public class EmojiCaptureReporter
   {
     AppMethodBeat.i(104394);
     a(19, paramLong1, 0L, 0L, paramLong2, 0L, 0, 0, paramInt);
-    fo(1, 1);
+    fE(1, 1);
     AppMethodBeat.o(104394);
   }
   
-  public final void bkx()
+  public final void bFT()
   {
     AppMethodBeat.i(104386);
-    g.yxI.f(15982, new Object[] { Integer.valueOf(3), Long.valueOf(this.gsp), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.scene), this.pWT, Integer.valueOf(this.pWU), Integer.valueOf(0), Integer.valueOf(this.pWV), this.pWW, Integer.valueOf(this.pWX), Integer.valueOf(this.pWY) });
+    h.CyF.a(15982, new Object[] { Integer.valueOf(3), Long.valueOf(this.hdz), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.scene), this.rnS, Integer.valueOf(this.rnT), Integer.valueOf(0), Integer.valueOf(this.rnU), this.rnV, Integer.valueOf(this.rnW), Integer.valueOf(this.rnX) });
     AppMethodBeat.o(104386);
   }
   
-  public final void ckq()
+  public final void cIs()
   {
     AppMethodBeat.i(104384);
-    Cw(25);
+    Gh(25);
     AppMethodBeat.o(104384);
   }
   
-  public final void ckr()
+  public final void cIt()
   {
     AppMethodBeat.i(104385);
-    Cw(26);
+    Gh(26);
     AppMethodBeat.o(104385);
   }
   
-  public final void cks()
+  public final void cIu()
   {
     int m = 1;
     int k = 0;
     AppMethodBeat.i(104387);
-    if (!bu.isNullOrNil(this.gmF)) {
-      this.gmF = this.gmF.replace(",", " ");
+    if (!Util.isNullOrNil(this.gXx)) {
+      this.gXx = this.gXx.replace(",", " ");
     }
-    g localg = g.yxI;
-    long l1 = this.gsp;
-    long l2 = this.ddi;
-    long l3 = this.gfw;
-    long l4 = this.pWN;
-    String str1 = this.gmF;
+    h localh = h.CyF;
+    long l1 = this.hdz;
+    long l2 = this.dtZ;
+    long l3 = this.gLd;
+    long l4 = this.rnM;
+    String str1 = this.gXx;
     String str2 = Integer.toHexString(this.textColor & 0xFFFFFF);
     int i;
-    if (this.pWO)
+    if (this.rnN)
     {
       i = 1;
-      if (!this.pWP) {
+      if (!this.rnO) {
         break label312;
       }
     }
     label312:
     for (int j = 1;; j = 0)
     {
-      int n = this.pWQ;
-      if (this.gsr) {
+      int n = this.rnP;
+      if (this.hdB) {
         k = 1;
       }
       int i1 = this.dataSize;
-      String str3 = this.pWR;
-      if (this.hrQ) {
+      String str3 = this.rnQ;
+      if (this.ilM) {
         m = 2;
       }
-      localg.f(15989, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4), Integer.valueOf(0), Integer.valueOf(0), str1, str2, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(n), Integer.valueOf(k), Integer.valueOf(i1), str3, "", "", Integer.valueOf(m), this.pWS, this.pWT, this.pWW });
+      localh.a(15989, new Object[] { Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l3), Long.valueOf(l4), Integer.valueOf(0), Integer.valueOf(0), str1, str2, Integer.valueOf(i), Integer.valueOf(j), Integer.valueOf(n), Integer.valueOf(k), Integer.valueOf(i1), str3, "", "", Integer.valueOf(m), this.rnR, this.rnS, this.rnV });
       AppMethodBeat.o(104387);
       return;
       i = 0;
@@ -279,10 +279,10 @@ public class EmojiCaptureReporter
     }
   }
   
-  public final void ckt()
+  public final void cIv()
   {
     AppMethodBeat.i(104389);
-    g.yxI.f(15982, new Object[] { Integer.valueOf(17), Long.valueOf(this.gsp), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(this.pWN), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.scene), this.pWT, Integer.valueOf(this.pWU), Integer.valueOf(0), Integer.valueOf(this.pWV), this.pWW, Integer.valueOf(this.pWX), Integer.valueOf(this.pWY) });
+    h.CyF.a(15982, new Object[] { Integer.valueOf(17), Long.valueOf(this.hdz), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(this.rnM), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.scene), this.rnS, Integer.valueOf(this.rnT), Integer.valueOf(0), Integer.valueOf(this.rnU), this.rnV, Integer.valueOf(this.rnW), Integer.valueOf(this.rnX) });
     AppMethodBeat.o(104389);
   }
   
@@ -291,21 +291,21 @@ public class EmojiCaptureReporter
     return 0;
   }
   
-  public final void fF(String paramString1, String paramString2)
+  public final void fY(String paramString1, String paramString2)
   {
     AppMethodBeat.i(104383);
-    g.yxI.f(15982, new Object[] { Integer.valueOf(27), Long.valueOf(this.gsp), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.scene), paramString1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), paramString2, Integer.valueOf(this.pWX) });
+    h.CyF.a(15982, new Object[] { Integer.valueOf(27), Long.valueOf(this.hdz), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(this.scene), paramString1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), paramString2, Integer.valueOf(this.rnW) });
     AppMethodBeat.o(104383);
   }
   
   public final void h(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(104382);
-    this.pWT = paramString1;
-    this.pWW = paramString2;
-    this.pWU = paramInt1;
-    this.pWV = paramInt2;
-    Cw(23);
+    this.rnS = paramString1;
+    this.rnV = paramString2;
+    this.rnT = paramInt1;
+    this.rnU = paramInt2;
+    Gh(23);
     AppMethodBeat.o(104382);
   }
   
@@ -313,29 +313,29 @@ public class EmojiCaptureReporter
   {
     byte b2 = 1;
     AppMethodBeat.i(104398);
-    paramParcel.writeLong(this.gsp);
-    paramParcel.writeLong(this.pWH);
-    paramParcel.writeLong(this.pWI);
-    paramParcel.writeLong(this.pWJ);
-    paramParcel.writeLong(this.pWK);
-    paramParcel.writeLong(this.pWL);
-    paramParcel.writeLong(this.pWM);
-    paramParcel.writeLong(this.gfw);
-    paramParcel.writeLong(this.pWN);
-    paramParcel.writeLong(this.ddi);
+    paramParcel.writeLong(this.hdz);
+    paramParcel.writeLong(this.rnG);
+    paramParcel.writeLong(this.rnH);
+    paramParcel.writeLong(this.rnI);
+    paramParcel.writeLong(this.rnJ);
+    paramParcel.writeLong(this.rnK);
+    paramParcel.writeLong(this.rnL);
+    paramParcel.writeLong(this.gLd);
+    paramParcel.writeLong(this.rnM);
+    paramParcel.writeLong(this.dtZ);
     paramParcel.writeInt(this.textColor);
-    if (this.pWO)
+    if (this.rnN)
     {
       b1 = 1;
       paramParcel.writeByte(b1);
-      if (!this.pWP) {
+      if (!this.rnO) {
         break label182;
       }
       b1 = 1;
       label119:
       paramParcel.writeByte(b1);
-      paramParcel.writeInt(this.pWQ);
-      if (!this.gsr) {
+      paramParcel.writeInt(this.rnP);
+      if (!this.hdB) {
         break label187;
       }
     }
@@ -345,8 +345,8 @@ public class EmojiCaptureReporter
     {
       paramParcel.writeByte(b1);
       paramParcel.writeInt(this.dataSize);
-      paramParcel.writeString(this.gmF);
-      paramParcel.writeString(this.pWR);
+      paramParcel.writeString(this.gXx);
+      paramParcel.writeString(this.rnQ);
       AppMethodBeat.o(104398);
       return;
       b1 = 0;
@@ -358,7 +358,7 @@ public class EmojiCaptureReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.emojicapture.api.EmojiCaptureReporter
  * JD-Core Version:    0.7.0.1
  */

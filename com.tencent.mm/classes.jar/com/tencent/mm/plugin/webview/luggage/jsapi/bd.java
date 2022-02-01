@@ -1,48 +1,59 @@
 package com.tencent.mm.plugin.webview.luggage.jsapi;
 
 import android.content.Context;
+import android.os.Bundle;
 import com.tencent.luggage.bridge.k;
 import com.tencent.luggage.d.b;
 import com.tencent.luggage.d.b.a;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.webview.luggage.g;
-import com.tencent.mm.plugin.webview.luggage.w;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.webview.luggage.m;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONObject;
 
 public class bd
-  extends br<g>
+  extends bs<g>
 {
-  public final void a(Context paramContext, String paramString, bq.a parama) {}
+  public final void a(Context paramContext, String paramString, br.a parama) {}
   
   public final void b(b<g>.a paramb)
   {
-    AppMethodBeat.i(78624);
-    String str1 = paramb.chh.cgn.optString("title");
-    String str2 = paramb.chh.cgn.optString("icon_url");
-    String str3 = paramb.chh.cgn.optString("jump_url");
-    w localw = new w();
-    if (!bu.isNullOrNil(str1)) {
-      localw.title = str1;
+    AppMethodBeat.i(78623);
+    Log.i("MicroMsg.JsApiSetCloseWindowConfirmDialogInfo", "invoke");
+    boolean bool = paramb.ctb.csi.optBoolean("switch");
+    String str1 = paramb.ctb.csi.optString("title_cn");
+    String str2 = paramb.ctb.csi.optString("title_eng");
+    String str3 = paramb.ctb.csi.optString("ok_cn");
+    String str4 = paramb.ctb.csi.optString("ok_eng");
+    String str5 = paramb.ctb.csi.optString("cancel_cn");
+    String str6 = paramb.ctb.csi.optString("cancel_eng");
+    m localm = ((g)paramb.cta).gbC();
+    if (localm == null)
+    {
+      AppMethodBeat.o(78623);
+      return;
     }
-    if (!bu.isNullOrNil(str2)) {
-      localw.iconUrl = str2;
-    }
-    if (!bu.isNullOrNil(str3)) {
-      localw.jumpUrl = str3;
-    }
-    paramb.a("", null);
-    AppMethodBeat.o(78624);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("close_window_confirm_dialog_switch", Boolean.valueOf(bool).booleanValue());
+    localBundle.putString("close_window_confirm_dialog_title_cn", str1);
+    localBundle.putString("close_window_confirm_dialog_title_eng", str2);
+    localBundle.putString("close_window_confirm_dialog_ok_cn", str3);
+    localBundle.putString("close_window_confirm_dialog_ok_eng", str4);
+    localBundle.putString("close_window_confirm_dialog_cancel_cn", str5);
+    localBundle.putString("close_window_confirm_dialog_cancel_eng", str6);
+    localm.setCloseWindowConfirmInfo(localBundle);
+    paramb.c("", null);
+    AppMethodBeat.o(78623);
   }
   
-  public final int ced()
+  public final int dTs()
   {
     return 0;
   }
   
   public final String name()
   {
-    return "setDesktopInfo";
+    return "setCloseWindowConfirmDialogInfo";
   }
 }
 

@@ -7,7 +7,7 @@ import org.xmlpull.v1.XmlPullParserFactory;
 
 final class a
 {
-  public static BindWordingContent GM(String paramString)
+  public static BindWordingContent Py(String paramString)
   {
     AppMethodBeat.i(134148);
     BindWordingContent localBindWordingContent = new BindWordingContent("", "");
@@ -56,12 +56,12 @@ final class a
               if (paramString.equalsIgnoreCase("type")) {
                 try
                 {
-                  localBindWordingContent.inO = Integer.valueOf(str2);
+                  localBindWordingContent.jiW = Integer.valueOf(str2);
                   localObject = paramString;
                 }
                 catch (Exception localException)
                 {
-                  localBindWordingContent.inO = Integer.valueOf(0);
+                  localBindWordingContent.jiW = Integer.valueOf(0);
                   String str1 = paramString;
                 }
               }
@@ -76,7 +76,7 @@ final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.modelsimple.a
  * JD-Core Version:    0.7.0.1
  */

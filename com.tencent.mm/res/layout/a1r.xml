@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/bs7" android:background="@color/fc" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:id="@id/ifp" android:background="@color/a74" android:padding="@dimen/k5" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <include layout="@layout/a1u" />
-    <include layout="@layout/a1z" />
-    <include layout="@layout/a1w" />
-</RelativeLayout>
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:gravity="center_vertical" android:layout_gravity="center_vertical" android:id="@id/ifo" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="{正在同步}" android:layout_weight="1.0" />
+    <Button android:textColor="@color/afp" android:layout_gravity="center" android:id="@id/ifn" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/p5" />
+</LinearLayout>

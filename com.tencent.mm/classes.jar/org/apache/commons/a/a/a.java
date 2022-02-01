@@ -11,11 +11,11 @@ public final class a
   extends OutputStream
 {
   private static final byte[] EMPTY_BYTE_ARRAY = new byte[0];
-  private final List<byte[]> OpH;
-  private int OpI;
-  private int OpJ;
-  private byte[] OpK;
-  private boolean OpL;
+  private final List<byte[]> UeF;
+  private int UeG;
+  private int UeH;
+  private byte[] UeI;
+  private boolean UeJ;
   private int count;
   
   public a()
@@ -26,11 +26,11 @@ public final class a
   private a(byte paramByte)
   {
     AppMethodBeat.i(10290);
-    this.OpH = new ArrayList();
-    this.OpL = true;
+    this.UeF = new ArrayList();
+    this.UeJ = true;
     try
     {
-      amI(1024);
+      awk(1024);
       return;
     }
     finally
@@ -39,26 +39,26 @@ public final class a
     }
   }
   
-  private void amI(int paramInt)
+  private void awk(int paramInt)
   {
     AppMethodBeat.i(10291);
-    if (this.OpI < this.OpH.size() - 1)
+    if (this.UeG < this.UeF.size() - 1)
     {
-      this.OpJ += this.OpK.length;
-      this.OpI += 1;
-      this.OpK = ((byte[])this.OpH.get(this.OpI));
+      this.UeH += this.UeI.length;
+      this.UeG += 1;
+      this.UeI = ((byte[])this.UeF.get(this.UeG));
       AppMethodBeat.o(10291);
       return;
     }
-    if (this.OpK == null) {}
-    for (this.OpJ = 0;; this.OpJ += this.OpK.length)
+    if (this.UeI == null) {}
+    for (this.UeH = 0;; this.UeH += this.UeI.length)
     {
-      this.OpI += 1;
-      this.OpK = new byte[paramInt];
-      this.OpH.add(this.OpK);
+      this.UeG += 1;
+      this.UeI = new byte[paramInt];
+      this.UeF.add(this.UeI);
       AppMethodBeat.o(10291);
       return;
-      paramInt = Math.max(this.OpK.length << 1, paramInt - this.OpJ);
+      paramInt = Math.max(this.UeI.length << 1, paramInt - this.UeH);
     }
   }
   
@@ -79,7 +79,7 @@ public final class a
           return arrayOfByte1;
         }
         byte[] arrayOfByte1 = new byte[j];
-        Iterator localIterator = this.OpH.iterator();
+        Iterator localIterator = this.UeF.iterator();
         int i = 0;
         int k;
         if (localIterator.hasNext())
@@ -115,14 +115,14 @@ public final class a
     try
     {
       AppMethodBeat.i(10293);
-      int j = this.count - this.OpJ;
+      int j = this.count - this.UeH;
       int i = j;
-      if (j == this.OpK.length)
+      if (j == this.UeI.length)
       {
-        amI(this.count + 1);
+        awk(this.count + 1);
         i = 0;
       }
-      this.OpK[i] = ((byte)paramInt);
+      this.UeI[i] = ((byte)paramInt);
       this.count += 1;
       AppMethodBeat.o(10293);
       return;
@@ -147,17 +147,17 @@ public final class a
     try
     {
       int m = this.count + paramInt2;
-      int j = this.count - this.OpJ;
+      int j = this.count - this.UeH;
       int i = paramInt2;
       while (i > 0)
       {
-        int k = Math.min(i, this.OpK.length - j);
-        System.arraycopy(paramArrayOfByte, paramInt1 + paramInt2 - i, this.OpK, j, k);
+        int k = Math.min(i, this.UeI.length - j);
+        System.arraycopy(paramArrayOfByte, paramInt1 + paramInt2 - i, this.UeI, j, k);
         k = i - k;
         i = k;
         if (k > 0)
         {
-          amI(m);
+          awk(m);
           j = 0;
           i = k;
         }
@@ -173,7 +173,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.apache.commons.a.a.a
  * JD-Core Version:    0.7.0.1
  */

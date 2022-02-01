@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/gc1" android:background="@drawable/aek" android:layout_width="fill_parent" android:layout_height="@dimen/jm">
-        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/gc0" android:layout_width="@dimen/jr" android:layout_height="@dimen/jr" android:layout_marginLeft="28.0dip" android:layout_marginRight="24.0dip" android:src="@raw/tipsbar_icon_warning" app:iconColor="@color/Red" />
-        <TextView android:textSize="@dimen/gx" android:textColor="@color/a6w" android:id="@id/gbz" android:layout_weight="1.0" style="@style/lw" />
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/h8z" android:background="@drawable/ai_" android:layout_width="fill_parent" android:layout_height="@dimen/i6"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/eq9" android:background="@drawable/bpa" android:visibility="gone" android:layout_width="@dimen/ip" android:layout_height="@dimen/ip" android:layout_marginLeft="@dimen/k5" android:layout_marginTop="@dimen/k5" android:layout_marginRight="@dimen/k5" android:layout_marginBottom="@dimen/k5" />
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="@dimen/i6" android:layout_marginTop="@dimen/k5" android:layout_marginBottom="@dimen/k5">
+        <TextView android:textSize="@dimen/is" android:textColor="@color/a2x" android:id="@id/eb0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="[item title]" android:singleLine="true" />
     </LinearLayout>
 </LinearLayout>

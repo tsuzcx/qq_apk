@@ -7,7 +7,7 @@ public abstract interface b
 {
   public abstract void a(RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, boolean paramBoolean);
   
-  public abstract void ci(View paramView);
+  public abstract void bU(View paramView);
 }
 
 

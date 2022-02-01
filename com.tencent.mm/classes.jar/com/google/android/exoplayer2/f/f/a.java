@@ -16,21 +16,21 @@ import java.util.List;
 public final class a
   extends com.google.android.exoplayer2.f.b
 {
-  private static final int bDh;
-  private static final int bDi;
-  private final m bDj;
-  private boolean bDk;
-  private int bDl;
-  private int bDm;
-  private String bDn;
-  private float bDo;
-  private int bDp;
+  private static final int bDj;
+  private static final int bDk;
+  private final m bDl;
+  private boolean bDm;
+  private int bDn;
+  private int bDo;
+  private String bDp;
+  private float bDq;
+  private int bDr;
   
   static
   {
     AppMethodBeat.i(92870);
-    bDh = x.bJ("styl");
-    bDi = x.bJ("tbox");
+    bDj = x.bJ("styl");
+    bDk = x.bJ("tbox");
     AppMethodBeat.o(92870);
   }
   
@@ -38,17 +38,17 @@ public final class a
   {
     super("Tx3gDecoder");
     AppMethodBeat.i(92865);
-    this.bDj = new m();
+    this.bDl = new m();
     if ((paramList != null) && (paramList.size() == 1) && ((((byte[])paramList.get(0)).length == 48) || (((byte[])paramList.get(0)).length == 53)))
     {
       byte[] arrayOfByte = (byte[])paramList.get(0);
-      this.bDl = arrayOfByte[24];
-      this.bDm = ((arrayOfByte[26] & 0xFF) << 24 | (arrayOfByte[27] & 0xFF) << 16 | (arrayOfByte[28] & 0xFF) << 8 | arrayOfByte[29] & 0xFF);
+      this.bDn = arrayOfByte[24];
+      this.bDo = ((arrayOfByte[26] & 0xFF) << 24 | (arrayOfByte[27] & 0xFF) << 16 | (arrayOfByte[28] & 0xFF) << 8 | arrayOfByte[29] & 0xFF);
       if ("Serif".equals(new String(arrayOfByte, 43, arrayOfByte.length - 43)))
       {
         paramList = "serif";
-        this.bDn = paramList;
-        this.bDp = (arrayOfByte[25] * 20);
+        this.bDp = paramList;
+        this.bDr = (arrayOfByte[25] * 20);
         if ((arrayOfByte[0] & 0x20) == 0) {
           break label271;
         }
@@ -56,28 +56,28 @@ public final class a
       label271:
       for (boolean bool = true;; bool = false)
       {
-        this.bDk = bool;
-        if (!this.bDk) {
+        this.bDm = bool;
+        if (!this.bDm) {
           break label276;
         }
         int i = arrayOfByte[10];
-        this.bDo = ((arrayOfByte[11] & 0xFF | (i & 0xFF) << 8) / this.bDp);
-        this.bDo = x.k(this.bDo, 0.0F, 0.95F);
+        this.bDq = ((arrayOfByte[11] & 0xFF | (i & 0xFF) << 8) / this.bDr);
+        this.bDq = x.k(this.bDq, 0.0F, 0.95F);
         AppMethodBeat.o(92865);
         return;
         paramList = "sans-serif";
         break;
       }
       label276:
-      this.bDo = 0.85F;
+      this.bDq = 0.85F;
       AppMethodBeat.o(92865);
       return;
     }
-    this.bDl = 0;
-    this.bDm = -1;
-    this.bDn = "sans-serif";
-    this.bDk = false;
-    this.bDo = 0.85F;
+    this.bDn = 0;
+    this.bDo = -1;
+    this.bDp = "sans-serif";
+    this.bDm = false;
+    this.bDq = 0.85F;
     AppMethodBeat.o(92865);
   }
   
@@ -163,9 +163,9 @@ public final class a
   public final d b(byte[] paramArrayOfByte, int paramInt, boolean paramBoolean)
   {
     AppMethodBeat.i(92866);
-    this.bDj.n(paramArrayOfByte, paramInt);
-    paramArrayOfByte = this.bDj;
-    if (paramArrayOfByte.wV() >= 2)
+    this.bDl.n(paramArrayOfByte, paramInt);
+    paramArrayOfByte = this.bDl;
+    if (paramArrayOfByte.xd() >= 2)
     {
       paramBoolean = true;
       assertTrue(paramBoolean);
@@ -182,12 +182,12 @@ public final class a
       if (!paramArrayOfByte.isEmpty()) {
         break label153;
       }
-      paramArrayOfByte = b.bDq;
+      paramArrayOfByte = b.bDs;
       AppMethodBeat.o(92866);
       return paramArrayOfByte;
       paramBoolean = false;
       break;
-      if (paramArrayOfByte.wV() >= 2)
+      if (paramArrayOfByte.xd() >= 2)
       {
         i = (char)((paramArrayOfByte.data[paramArrayOfByte.position] & 0xFF) << 8 | paramArrayOfByte.data[(paramArrayOfByte.position + 1)] & 0xFF);
         if ((i == 65279) || (i == 65534))
@@ -200,34 +200,34 @@ public final class a
     }
     label153:
     paramArrayOfByte = new SpannableStringBuilder(paramArrayOfByte);
-    a(paramArrayOfByte, this.bDl, 0, 0, paramArrayOfByte.length(), 16711680);
-    b(paramArrayOfByte, this.bDm, -1, 0, paramArrayOfByte.length(), 16711680);
-    Object localObject = this.bDn;
+    a(paramArrayOfByte, this.bDn, 0, 0, paramArrayOfByte.length(), 16711680);
+    b(paramArrayOfByte, this.bDo, -1, 0, paramArrayOfByte.length(), 16711680);
+    Object localObject = this.bDp;
     paramInt = paramArrayOfByte.length();
     if (localObject != "sans-serif") {
       paramArrayOfByte.setSpan(new TypefaceSpan((String)localObject), 0, paramInt, 16711713);
     }
-    float f = this.bDo;
+    float f = this.bDq;
     int j;
-    if (this.bDj.wV() >= 8)
+    if (this.bDl.xd() >= 8)
     {
-      i = this.bDj.position;
-      j = this.bDj.readInt();
-      paramInt = this.bDj.readInt();
-      if (paramInt == bDh)
+      i = this.bDl.position;
+      j = this.bDl.readInt();
+      paramInt = this.bDl.readInt();
+      if (paramInt == bDj)
       {
-        if (this.bDj.wV() >= 2)
+        if (this.bDl.xd() >= 2)
         {
           paramBoolean = true;
           assertTrue(paramBoolean);
-          int k = this.bDj.readUnsignedShort();
+          int k = this.bDl.readUnsignedShort();
           paramInt = 0;
           label308:
           if (paramInt >= k) {
             break label423;
           }
-          localObject = this.bDj;
-          if (((m)localObject).wV() < 12) {
+          localObject = this.bDl;
+          if (((m)localObject).xd() < 12) {
             break label418;
           }
         }
@@ -237,12 +237,12 @@ public final class a
           assertTrue(paramBoolean);
           int m = ((m)localObject).readUnsignedShort();
           int n = ((m)localObject).readUnsignedShort();
-          ((m)localObject).fa(2);
+          ((m)localObject).eZ(2);
           int i1 = ((m)localObject).readUnsignedByte();
-          ((m)localObject).fa(1);
+          ((m)localObject).eZ(1);
           int i2 = ((m)localObject).readInt();
-          a(paramArrayOfByte, i1, this.bDl, m, n, 0);
-          b(paramArrayOfByte, i2, this.bDm, m, n, 0);
+          a(paramArrayOfByte, i1, this.bDn, m, n, 0);
+          b(paramArrayOfByte, i2, this.bDo, m, n, 0);
           paramInt += 1;
           break label308;
           paramBoolean = false;
@@ -253,15 +253,15 @@ public final class a
     for (;;)
     {
       label423:
-      this.bDj.setPosition(i + j);
+      this.bDl.setPosition(i + j);
       break;
-      if ((paramInt == bDi) && (this.bDk))
+      if ((paramInt == bDk) && (this.bDm))
       {
-        if (this.bDj.wV() >= 2) {}
+        if (this.bDl.xd() >= 2) {}
         for (paramBoolean = true;; paramBoolean = false)
         {
           assertTrue(paramBoolean);
-          f = x.k(this.bDj.readUnsignedShort() / this.bDp, 0.0F, 0.95F);
+          f = x.k(this.bDl.readUnsignedShort() / this.bDr, 0.0F, 0.95F);
           break;
         }
         paramArrayOfByte = new b(new com.google.android.exoplayer2.f.a(paramArrayOfByte, null, f, 0, 0, 1.4E-45F, -2147483648, 1.4E-45F));
@@ -273,7 +273,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.google.android.exoplayer2.f.f.a
  * JD-Core Version:    0.7.0.1
  */

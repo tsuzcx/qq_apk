@@ -1,3 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<LinearLayout android:gravity="right" style="@style/gs"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/tz" android:layout_width="131.0dip" android:layout_height="188.0dip" style="@style/gu">
+        <ImageView android:id="@id/tx" android:background="@drawable/cee" android:layout_width="131.0dip" android:layout_height="188.0dip" />
+        <ImageView android:id="@id/ty" android:background="@drawable/kv" android:layout_width="126.0dip" android:layout_height="188.0dip" android:layout_alignParentLeft="true" />
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/auf" android:layout_width="130.0dip" android:layout_height="188.0dip" android:layout_alignParentLeft="true">
+            <RelativeLayout android:gravity="bottom|center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginTop="10.0dip" android:layout_weight="1.0">
+                <com.tencent.mm.ui.widget.MMTextView android:textSize="14.0dip" android:textColor="@color/Yellow" android:ellipsize="end" android:id="@id/tw" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="16.0dip" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentBottom="true" />
+            </RelativeLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/u0" android:background="@drawable/kw" android:layout_width="131.0dip" android:layout_height="188.0dip" />
+    </RelativeLayout>
+    <include layout="@layout/qr" />
+</LinearLayout>

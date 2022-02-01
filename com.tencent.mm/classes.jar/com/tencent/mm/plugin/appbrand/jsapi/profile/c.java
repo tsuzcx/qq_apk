@@ -4,63 +4,67 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessRequest;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.ProcessResult;
 import com.tencent.mm.plugin.appbrand.ipc.AppBrandProxyUIProcessTask.b;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
+import com.tencent.mm.plugin.appbrand.ipc.a;
+import com.tencent.mm.plugin.appbrand.jsapi.d;
+import com.tencent.mm.plugin.appbrand.jsapi.f;
+import com.tencent.mm.sdk.platformtools.Util;
+import kotlin.g.b.p;
+import kotlin.l;
 import org.json.JSONObject;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/JsApiProfile;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/JsApiProfile;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandAsyncJsApi;", "Lcom/tencent/mm/plugin/appbrand/jsapi/AppBrandComponent;", "()V", "invoke", "", "env", "data", "Lorg/json/JSONObject;", "callbackId", "", "Companion", "plugin-appbrand-integration_release"})
 public final class c
-  extends com.tencent.mm.plugin.appbrand.jsapi.a<com.tencent.mm.plugin.appbrand.jsapi.c>
+  extends d<f>
 {
   private static final int CTRL_INDEX = 508;
   private static final String NAME = "profile";
-  public static final a lig;
+  public static final a mnE;
   
   static
   {
     AppMethodBeat.i(50643);
-    lig = new a((byte)0);
+    mnE = new a((byte)0);
     NAME = "profile";
     CTRL_INDEX = 508;
     AppMethodBeat.o(50643);
   }
   
-  public final void a(final com.tencent.mm.plugin.appbrand.jsapi.c paramc, JSONObject paramJSONObject, final int paramInt)
+  public final void a(final f paramf, JSONObject paramJSONObject, final int paramInt)
   {
     AppMethodBeat.i(50642);
-    p.h(paramc, "env");
+    p.h(paramf, "env");
     p.h(paramJSONObject, "data");
     Object localObject = paramJSONObject.optString("username");
     final int i = paramJSONObject.optInt("scene", 122);
-    final String str = paramJSONObject.optString("profileReportInfo");
-    if (bu.isNullOrNil((String)localObject))
+    final String str1 = paramJSONObject.optString("profileReportInfo");
+    final String str2 = paramJSONObject.optString("tabType");
+    if (Util.isNullOrNil((String)localObject))
     {
-      paramc.h(paramInt, PO("fail:invalid data"));
+      paramf.i(paramInt, Zf("fail:invalid data"));
       AppMethodBeat.o(50642);
       return;
     }
     paramJSONObject = new ProfileRequest();
     paramJSONObject.username = ((String)localObject);
     paramJSONObject.scene = i;
-    localObject = (AppBrandProxyUIProcessTask.b)new b(this, paramc, paramInt, str, i, (String)localObject);
-    com.tencent.mm.plugin.appbrand.ipc.a.a(paramc.getContext(), (AppBrandProxyUIProcessTask.ProcessRequest)paramJSONObject, (AppBrandProxyUIProcessTask.b)localObject);
+    localObject = (AppBrandProxyUIProcessTask.b)new b(this, paramf, paramInt, str1, i, str2, (String)localObject);
+    a.a(paramf.getContext(), (AppBrandProxyUIProcessTask.ProcessRequest)paramJSONObject, (AppBrandProxyUIProcessTask.b)localObject);
     AppMethodBeat.o(50642);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/JsApiProfile$Companion;", "", "()V", "CTRL_INDEX", "", "CTRL_INDEX$annotations", "getCTRL_INDEX", "()I", "NAME", "", "NAME$annotations", "getNAME", "()Ljava/lang/String;", "TAG", "plugin-appbrand-integration_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/appbrand/jsapi/profile/JsApiProfile$Companion;", "", "()V", "CTRL_INDEX", "", "CTRL_INDEX$annotations", "getCTRL_INDEX", "()I", "JSAPI_Profile_Tab_Video", "NAME", "", "NAME$annotations", "getNAME", "()Ljava/lang/String;", "TAG", "plugin-appbrand-integration_release"})
   public static final class a {}
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "result", "Lcom/tencent/mm/plugin/appbrand/jsapi/profile/ProfileResult;", "kotlin.jvm.PlatformType", "onReceiveResult"})
   static final class b<R extends AppBrandProxyUIProcessTask.ProcessResult>
     implements AppBrandProxyUIProcessTask.b<ProfileResult>
   {
-    b(c paramc, com.tencent.mm.plugin.appbrand.jsapi.c paramc1, int paramInt1, String paramString1, int paramInt2, String paramString2) {}
+    b(c paramc, f paramf, int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.jsapi.profile.c
  * JD-Core Version:    0.7.0.1
  */

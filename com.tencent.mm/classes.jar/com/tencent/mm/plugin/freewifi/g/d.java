@@ -2,44 +2,44 @@ package com.tencent.mm.plugin.freewifi.g;
 
 import android.database.Cursor;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.e.e;
-import com.tencent.mm.sdk.e.j;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aj;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MD5Util;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.ISQLiteDatabase;
+import com.tencent.mm.sdk.storage.MAutoStorage;
 
 public final class d
-  extends j<c>
+  extends MAutoStorage<c>
 {
   public static final String[] SQL_CREATE;
   
   static
   {
     AppMethodBeat.i(24954);
-    SQL_CREATE = new String[] { j.getCreateSQLs(c.info, "FreeWifiInfo"), "CREATE INDEX IF NOT EXISTS freewifi_md5_ssid  on FreeWifiInfo  (  ssidmd5 )" };
+    SQL_CREATE = new String[] { MAutoStorage.getCreateSQLs(c.info, "FreeWifiInfo"), "CREATE INDEX IF NOT EXISTS freewifi_md5_ssid  on FreeWifiInfo  (  ssidmd5 )" };
     AppMethodBeat.o(24954);
   }
   
-  public d(e parame)
+  public d(ISQLiteDatabase paramISQLiteDatabase)
   {
-    super(parame, c.info, "FreeWifiInfo", null);
+    super(paramISQLiteDatabase, c.info, "FreeWifiInfo", null);
   }
   
-  public final c akV(String paramString)
+  public final c axZ(String paramString)
   {
     AppMethodBeat.i(24950);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.FreeWifi.FreeWifiInfoStorage", "ssid is null");
+      Log.e("MicroMsg.FreeWifi.FreeWifiInfoStorage", "ssid is null");
       AppMethodBeat.o(24950);
       return null;
     }
-    paramString = "select * from FreeWifiInfo where ssidmd5 = '" + aj.ej(paramString) + "' and wifiType = 1";
-    ae.d("MicroMsg.FreeWifi.FreeWifiInfoStorage", "getFreeWifiInfoBySSID, sql : %s", new Object[] { paramString });
+    paramString = "select * from FreeWifiInfo where ssidmd5 = '" + MD5Util.getMD5String(paramString) + "' and wifiType = 1";
+    Log.d("MicroMsg.FreeWifi.FreeWifiInfoStorage", "getFreeWifiInfoBySSID, sql : %s", new Object[] { paramString });
     paramString = rawQuery(paramString, new String[0]);
     if (paramString == null)
     {
-      ae.e("MicroMsg.FreeWifi.FreeWifiInfoStorage", "cursor is null");
+      Log.e("MicroMsg.FreeWifi.FreeWifiInfoStorage", "cursor is null");
       AppMethodBeat.o(24950);
       return null;
     }
@@ -56,21 +56,21 @@ public final class d
     return null;
   }
   
-  public final c akW(String paramString)
+  public final c aya(String paramString)
   {
     AppMethodBeat.i(24951);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
-      ae.e("MicroMsg.FreeWifi.FreeWifiInfoStorage", "ssid is null");
+      Log.e("MicroMsg.FreeWifi.FreeWifiInfoStorage", "ssid is null");
       AppMethodBeat.o(24951);
       return null;
     }
-    paramString = "select * from FreeWifiInfo where ssidmd5 = '" + aj.ej(paramString) + "'";
-    ae.d("MicroMsg.FreeWifi.FreeWifiInfoStorage", "getFreeWifiInfoBySSID, sql : %s", new Object[] { paramString });
+    paramString = "select * from FreeWifiInfo where ssidmd5 = '" + MD5Util.getMD5String(paramString) + "'";
+    Log.d("MicroMsg.FreeWifi.FreeWifiInfoStorage", "getFreeWifiInfoBySSID, sql : %s", new Object[] { paramString });
     paramString = rawQuery(paramString, new String[0]);
     if (paramString == null)
     {
-      ae.e("MicroMsg.FreeWifi.FreeWifiInfoStorage", "cursor is null");
+      Log.e("MicroMsg.FreeWifi.FreeWifiInfoStorage", "cursor is null");
       AppMethodBeat.o(24951);
       return null;
     }
@@ -87,23 +87,23 @@ public final class d
     return null;
   }
   
-  public final void akX(String paramString)
+  public final void ayb(String paramString)
   {
     AppMethodBeat.i(24953);
-    paramString = "update FreeWifiInfo set connectState = -1 where ssidmd5 !='" + aj.ej(paramString) + "'";
-    ae.d("MicroMsg.FreeWifi.FreeWifiInfoStorage", "updateOtherAp : %s", new Object[] { paramString });
-    ae.d("MicroMsg.FreeWifi.FreeWifiInfoStorage", "update other ap  ret = %b", new Object[] { Boolean.valueOf(execSQL("FreeWifiInfo", paramString)) });
+    paramString = "update FreeWifiInfo set connectState = -1 where ssidmd5 !='" + MD5Util.getMD5String(paramString) + "'";
+    Log.d("MicroMsg.FreeWifi.FreeWifiInfoStorage", "updateOtherAp : %s", new Object[] { paramString });
+    Log.d("MicroMsg.FreeWifi.FreeWifiInfoStorage", "update other ap  ret = %b", new Object[] { Boolean.valueOf(execSQL("FreeWifiInfo", paramString)) });
     AppMethodBeat.o(24953);
   }
   
-  public final c cUE()
+  public final c dNN()
   {
     AppMethodBeat.i(24952);
-    ae.d("MicroMsg.FreeWifi.FreeWifiInfoStorage", "getLastConnectSuccessWifiInfo, sql : %s", new Object[] { "select * from FreeWifiInfo where connectState = 2" });
+    Log.d("MicroMsg.FreeWifi.FreeWifiInfoStorage", "getLastConnectSuccessWifiInfo, sql : %s", new Object[] { "select * from FreeWifiInfo where connectState = 2" });
     Cursor localCursor = rawQuery("select * from FreeWifiInfo where connectState = 2", new String[0]);
     if (localCursor == null)
     {
-      ae.e("MicroMsg.FreeWifi.FreeWifiInfoStorage", "no connected sucess wifi info");
+      Log.e("MicroMsg.FreeWifi.FreeWifiInfoStorage", "no connected sucess wifi info");
       AppMethodBeat.o(24952);
       return null;
     }
@@ -122,7 +122,7 @@ public final class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.freewifi.g.d
  * JD-Core Version:    0.7.0.1
  */

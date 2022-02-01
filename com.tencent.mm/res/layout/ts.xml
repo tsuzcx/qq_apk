@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="64.0dip" android:layout_height="64.0dip" android:layout_marginLeft="@dimen/jn">
-        <ImageView android:id="@id/gly" android:layout_width="64.0dip" android:layout_height="64.0dip" android:scaleType="centerCrop" />
-        <ImageView android:layout_width="fill_parent" android:layout_height="38.0dip" android:src="@drawable/bb6" android:layout_alignParentBottom="true" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/d" android:layout_marginBottom="@dimen/js" android:layout_alignParentRight="true" android:layout_alignParentBottom="true">
-            <ImageView android:id="@id/ee7" android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@raw/biz_video_play_icon" />
-            <TextView android:textSize="10.0dip" android:textColor="@color/aj" android:id="@id/gm9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:includeFontPadding="false" />
-        </LinearLayout>
-    </RelativeLayout>
+    <TextView android:id="@id/ayf" style="@style/h1" />
 </LinearLayout>

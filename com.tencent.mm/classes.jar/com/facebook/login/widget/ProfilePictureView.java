@@ -105,7 +105,7 @@ public class ProfilePictureView
   
   private int getPresetSizeInPixels(boolean paramBoolean)
   {
-    int j = 2131166063;
+    int j = 2131166103;
     AppMethodBeat.i(40475);
     int i = j;
     switch (this.presetSizeType)
@@ -114,7 +114,7 @@ public class ProfilePictureView
       AppMethodBeat.o(40475);
       return 0;
     case -2: 
-      i = 2131166064;
+      i = 2131166104;
     }
     do
     {
@@ -123,7 +123,7 @@ public class ProfilePictureView
         i = getResources().getDimensionPixelSize(i);
         AppMethodBeat.o(40475);
         return i;
-        i = 2131166062;
+        i = 2131166102;
       }
       i = j;
     } while (paramBoolean);
@@ -230,7 +230,7 @@ public class ProfilePictureView
     if (this.customizedDefaultProfilePicture == null)
     {
       if (isCropped()) {}
-      for (int i = 2131231808;; i = 2131231807)
+      for (int i = 2131231888;; i = 2131231887)
       {
         setImageBitmap(BitmapFactory.decodeResource(getResources(), i));
         AppMethodBeat.o(40470);
@@ -466,7 +466,7 @@ public class ProfilePictureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.login.widget.ProfilePictureView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="72px" height="72px" viewBox="0 0 72 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.2 (67145) - http://www.bohemiancoding.com/sketch -->
+    <title>icons_filled_text</title>
+    <desc>Created with Sketch.</desc>
+    <g id="icons_filled_text" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" fill="#000000">
+            <path d="M12,9 L60,9 C61.6568542,9 63,10.3431458 63,12 L63,60 C63,61.6568542 61.6568542,63 60,63 L12,63 C10.3431458,63 9,61.6568542 9,60 L9,12 C9,10.3431458 10.3431458,9 12,9 Z M39,27 L49.5,27 L49.5,21 L22.5,21 L22.5,27 L33,27 L33,51 L39,51 L39,27 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>

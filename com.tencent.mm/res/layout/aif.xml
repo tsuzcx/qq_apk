@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/hs" android:textColor="@color/a1e" android:id="@id/f7n" android:paddingTop="@dimen/ha" android:paddingBottom="@dimen/hk" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" />
-</RelativeLayout>
+<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.plugin.finder.view.FinderPostFooter android:layout_gravity="bottom" android:orientation="vertical" android:id="@id/ckw" android:background="@color/b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cp">
+        <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/cp">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/itj" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/finder_outlined_tag" android:layout_marginStart="@dimen/ce" app:iconColor="@color/FG_0" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/v0" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/finder_outline_at" android:layout_toRightOf="@id/itj" android:layout_marginStart="@dimen/cb" app:iconColor="@color/FG_0" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/ht_" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/icons_outlined_emoji" android:layout_alignParentRight="true" android:layout_marginEnd="@dimen/ce" app:iconColor="@color/FG_0" />
+        </RelativeLayout>
+    </com.tencent.mm.plugin.finder.view.FinderPostFooter>
+</merge>

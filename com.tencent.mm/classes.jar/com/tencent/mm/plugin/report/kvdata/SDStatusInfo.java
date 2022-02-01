@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.report.kvdata;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import f.a.a.b;
+import g.a.a.b;
 import java.util.LinkedList;
 
 public class SDStatusInfo
@@ -34,7 +34,7 @@ public class SDStatusInfo
     AppMethodBeat.i(151538);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.weChatSDInfo_ == null)
       {
         paramVarArgs = new b("Not all required fields were included: weChatSDInfo_");
@@ -43,34 +43,34 @@ public class SDStatusInfo
       }
       if (this.weChatSDInfo_ != null)
       {
-        paramVarArgs.lJ(1, this.weChatSDInfo_.computeSize());
+        paramVarArgs.ni(1, this.weChatSDInfo_.computeSize());
         this.weChatSDInfo_.writeFields(paramVarArgs);
       }
-      paramVarArgs.aS(2, this.weChatPer_);
-      paramVarArgs.aS(3, this.sizeHeavy_);
-      paramVarArgs.aS(4, this.ratioHeavy_);
-      paramVarArgs.aS(5, this.useExternal_);
-      paramVarArgs.aS(6, this.hasUnRemovable_);
-      paramVarArgs.aZ(7, this.sBlockSize_);
-      paramVarArgs.aZ(8, this.sBlockCount_);
-      paramVarArgs.aZ(9, this.sTotalSize_);
-      paramVarArgs.aZ(10, this.sAvailableBlockCount_);
-      paramVarArgs.aZ(11, this.sAvailableSize_);
-      paramVarArgs.aS(12, this.sAvailablePer_);
-      paramVarArgs.aZ(13, this.eBlockSize_);
-      paramVarArgs.aZ(14, this.eBlockCount_);
-      paramVarArgs.aZ(15, this.eTotalSize_);
-      paramVarArgs.aZ(16, this.eAvailableBlockCount_);
-      paramVarArgs.aZ(17, this.eAvailableSize_);
-      paramVarArgs.aS(18, this.eAvailablePer_);
+      paramVarArgs.aM(2, this.weChatPer_);
+      paramVarArgs.aM(3, this.sizeHeavy_);
+      paramVarArgs.aM(4, this.ratioHeavy_);
+      paramVarArgs.aM(5, this.useExternal_);
+      paramVarArgs.aM(6, this.hasUnRemovable_);
+      paramVarArgs.bb(7, this.sBlockSize_);
+      paramVarArgs.bb(8, this.sBlockCount_);
+      paramVarArgs.bb(9, this.sTotalSize_);
+      paramVarArgs.bb(10, this.sAvailableBlockCount_);
+      paramVarArgs.bb(11, this.sAvailableSize_);
+      paramVarArgs.aM(12, this.sAvailablePer_);
+      paramVarArgs.bb(13, this.eBlockSize_);
+      paramVarArgs.bb(14, this.eBlockCount_);
+      paramVarArgs.bb(15, this.eTotalSize_);
+      paramVarArgs.bb(16, this.eAvailableBlockCount_);
+      paramVarArgs.bb(17, this.eAvailableSize_);
+      paramVarArgs.aM(18, this.eAvailablePer_);
       if (this.ePath_ != null) {
-        paramVarArgs.d(19, this.ePath_);
+        paramVarArgs.e(19, this.ePath_);
       }
       if (this.root_ != null) {
-        paramVarArgs.d(20, this.root_);
+        paramVarArgs.e(20, this.root_);
       }
       if (this.fSystem_ != null) {
-        paramVarArgs.d(21, this.fSystem_);
+        paramVarArgs.e(21, this.fSystem_);
       }
       AppMethodBeat.o(151538);
       return 0;
@@ -81,29 +81,29 @@ public class SDStatusInfo
       }
     }
     label1286:
-    for (paramInt = f.a.a.a.lI(1, this.weChatSDInfo_.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.a.nh(1, this.weChatSDInfo_.computeSize()) + 0;; paramInt = 0)
     {
-      int i = paramInt + f.a.a.b.b.a.bz(2, this.weChatPer_) + f.a.a.b.b.a.bz(3, this.sizeHeavy_) + f.a.a.b.b.a.bz(4, this.ratioHeavy_) + f.a.a.b.b.a.bz(5, this.useExternal_) + f.a.a.b.b.a.bz(6, this.hasUnRemovable_) + f.a.a.b.b.a.p(7, this.sBlockSize_) + f.a.a.b.b.a.p(8, this.sBlockCount_) + f.a.a.b.b.a.p(9, this.sTotalSize_) + f.a.a.b.b.a.p(10, this.sAvailableBlockCount_) + f.a.a.b.b.a.p(11, this.sAvailableSize_) + f.a.a.b.b.a.bz(12, this.sAvailablePer_) + f.a.a.b.b.a.p(13, this.eBlockSize_) + f.a.a.b.b.a.p(14, this.eBlockCount_) + f.a.a.b.b.a.p(15, this.eTotalSize_) + f.a.a.b.b.a.p(16, this.eAvailableBlockCount_) + f.a.a.b.b.a.p(17, this.eAvailableSize_) + f.a.a.b.b.a.bz(18, this.eAvailablePer_);
+      int i = paramInt + g.a.a.b.b.a.bu(2, this.weChatPer_) + g.a.a.b.b.a.bu(3, this.sizeHeavy_) + g.a.a.b.b.a.bu(4, this.ratioHeavy_) + g.a.a.b.b.a.bu(5, this.useExternal_) + g.a.a.b.b.a.bu(6, this.hasUnRemovable_) + g.a.a.b.b.a.r(7, this.sBlockSize_) + g.a.a.b.b.a.r(8, this.sBlockCount_) + g.a.a.b.b.a.r(9, this.sTotalSize_) + g.a.a.b.b.a.r(10, this.sAvailableBlockCount_) + g.a.a.b.b.a.r(11, this.sAvailableSize_) + g.a.a.b.b.a.bu(12, this.sAvailablePer_) + g.a.a.b.b.a.r(13, this.eBlockSize_) + g.a.a.b.b.a.r(14, this.eBlockCount_) + g.a.a.b.b.a.r(15, this.eTotalSize_) + g.a.a.b.b.a.r(16, this.eAvailableBlockCount_) + g.a.a.b.b.a.r(17, this.eAvailableSize_) + g.a.a.b.b.a.bu(18, this.eAvailablePer_);
       paramInt = i;
       if (this.ePath_ != null) {
-        paramInt = i + f.a.a.b.b.a.e(19, this.ePath_);
+        paramInt = i + g.a.a.b.b.a.f(19, this.ePath_);
       }
       i = paramInt;
       if (this.root_ != null) {
-        i = paramInt + f.a.a.b.b.a.e(20, this.root_);
+        i = paramInt + g.a.a.b.b.a.f(20, this.root_);
       }
       paramInt = i;
       if (this.fSystem_ != null) {
-        paramInt = i + f.a.a.b.b.a.e(21, this.fSystem_);
+        paramInt = i + g.a.a.b.b.a.f(21, this.fSystem_);
       }
       AppMethodBeat.o(151538);
       return paramInt;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
         for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
         if (this.weChatSDInfo_ == null)
@@ -117,7 +117,7 @@ public class SDStatusInfo
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         SDStatusInfo localSDStatusInfo = (SDStatusInfo)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
@@ -126,98 +126,98 @@ public class SDStatusInfo
           AppMethodBeat.o(151538);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new WeChatSDInfo();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((WeChatSDInfo)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((WeChatSDInfo)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, com.tencent.mm.bw.a.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localSDStatusInfo.weChatSDInfo_ = ((WeChatSDInfo)localObject1);
             paramInt += 1;
           }
           AppMethodBeat.o(151538);
           return 0;
         case 2: 
-          localSDStatusInfo.weChatPer_ = ((f.a.a.a.a)localObject1).OmT.zc();
+          localSDStatusInfo.weChatPer_ = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(151538);
           return 0;
         case 3: 
-          localSDStatusInfo.sizeHeavy_ = ((f.a.a.a.a)localObject1).OmT.zc();
+          localSDStatusInfo.sizeHeavy_ = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(151538);
           return 0;
         case 4: 
-          localSDStatusInfo.ratioHeavy_ = ((f.a.a.a.a)localObject1).OmT.zc();
+          localSDStatusInfo.ratioHeavy_ = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(151538);
           return 0;
         case 5: 
-          localSDStatusInfo.useExternal_ = ((f.a.a.a.a)localObject1).OmT.zc();
+          localSDStatusInfo.useExternal_ = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(151538);
           return 0;
         case 6: 
-          localSDStatusInfo.hasUnRemovable_ = ((f.a.a.a.a)localObject1).OmT.zc();
+          localSDStatusInfo.hasUnRemovable_ = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(151538);
           return 0;
         case 7: 
-          localSDStatusInfo.sBlockSize_ = ((f.a.a.a.a)localObject1).OmT.zd();
+          localSDStatusInfo.sBlockSize_ = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(151538);
           return 0;
         case 8: 
-          localSDStatusInfo.sBlockCount_ = ((f.a.a.a.a)localObject1).OmT.zd();
+          localSDStatusInfo.sBlockCount_ = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(151538);
           return 0;
         case 9: 
-          localSDStatusInfo.sTotalSize_ = ((f.a.a.a.a)localObject1).OmT.zd();
+          localSDStatusInfo.sTotalSize_ = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(151538);
           return 0;
         case 10: 
-          localSDStatusInfo.sAvailableBlockCount_ = ((f.a.a.a.a)localObject1).OmT.zd();
+          localSDStatusInfo.sAvailableBlockCount_ = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(151538);
           return 0;
         case 11: 
-          localSDStatusInfo.sAvailableSize_ = ((f.a.a.a.a)localObject1).OmT.zd();
+          localSDStatusInfo.sAvailableSize_ = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(151538);
           return 0;
         case 12: 
-          localSDStatusInfo.sAvailablePer_ = ((f.a.a.a.a)localObject1).OmT.zc();
+          localSDStatusInfo.sAvailablePer_ = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(151538);
           return 0;
         case 13: 
-          localSDStatusInfo.eBlockSize_ = ((f.a.a.a.a)localObject1).OmT.zd();
+          localSDStatusInfo.eBlockSize_ = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(151538);
           return 0;
         case 14: 
-          localSDStatusInfo.eBlockCount_ = ((f.a.a.a.a)localObject1).OmT.zd();
+          localSDStatusInfo.eBlockCount_ = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(151538);
           return 0;
         case 15: 
-          localSDStatusInfo.eTotalSize_ = ((f.a.a.a.a)localObject1).OmT.zd();
+          localSDStatusInfo.eTotalSize_ = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(151538);
           return 0;
         case 16: 
-          localSDStatusInfo.eAvailableBlockCount_ = ((f.a.a.a.a)localObject1).OmT.zd();
+          localSDStatusInfo.eAvailableBlockCount_ = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(151538);
           return 0;
         case 17: 
-          localSDStatusInfo.eAvailableSize_ = ((f.a.a.a.a)localObject1).OmT.zd();
+          localSDStatusInfo.eAvailableSize_ = ((g.a.a.a.a)localObject1).UbS.zl();
           AppMethodBeat.o(151538);
           return 0;
         case 18: 
-          localSDStatusInfo.eAvailablePer_ = ((f.a.a.a.a)localObject1).OmT.zc();
+          localSDStatusInfo.eAvailablePer_ = ((g.a.a.a.a)localObject1).UbS.zi();
           AppMethodBeat.o(151538);
           return 0;
         case 19: 
-          localSDStatusInfo.ePath_ = ((f.a.a.a.a)localObject1).OmT.readString();
+          localSDStatusInfo.ePath_ = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(151538);
           return 0;
         case 20: 
-          localSDStatusInfo.root_ = ((f.a.a.a.a)localObject1).OmT.readString();
+          localSDStatusInfo.root_ = ((g.a.a.a.a)localObject1).UbS.readString();
           AppMethodBeat.o(151538);
           return 0;
         }
-        localSDStatusInfo.fSystem_ = ((f.a.a.a.a)localObject1).OmT.readString();
+        localSDStatusInfo.fSystem_ = ((g.a.a.a.a)localObject1).UbS.readString();
         AppMethodBeat.o(151538);
         return 0;
       }
@@ -228,7 +228,7 @@ public class SDStatusInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.report.kvdata.SDStatusInfo
  * JD-Core Version:    0.7.0.1
  */

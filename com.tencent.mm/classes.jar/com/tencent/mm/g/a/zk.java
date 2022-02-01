@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.protocal.protobuf.ckj;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class zk
-  extends b
+  extends IEvent
 {
-  public a dPB;
-  public b dPC;
+  public a efA;
   
   public zk()
   {
@@ -16,28 +16,21 @@ public final class zk
   
   private zk(byte paramByte)
   {
-    AppMethodBeat.i(19850);
-    this.dPB = new a();
-    this.dPC = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(256164);
+    this.efA = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(19850);
+    AppMethodBeat.o(256164);
   }
   
   public static final class a
   {
-    public int dlO;
-    public String username;
-  }
-  
-  public static final class b
-  {
-    public int dPD;
+    public ckj efB;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.zk
  * JD-Core Version:    0.7.0.1
  */

@@ -10,30 +10,30 @@ import com.tencent.mm.ui.base.MMTagPanelScrollView;
 public class LabelContainerView
   extends MMTagPanelScrollView
 {
-  boolean KIZ;
-  boolean KJa;
-  boolean KJb;
-  float KJc;
-  float KJd;
-  float KJe;
-  float KJf;
-  private a KJg;
-  private int Pf;
-  boolean Pr;
-  float Pw;
-  float Px;
-  float Py;
-  float Pz;
+  boolean PD;
+  float PI;
+  float PJ;
+  float PK;
+  float PL;
+  boolean PVX;
+  boolean PVY;
+  boolean PVZ;
+  float PWa;
+  float PWb;
+  float PWc;
+  float PWd;
+  private a PWe;
+  private int Pr;
   
   public LabelContainerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(102845);
-    this.Pr = true;
-    this.KIZ = false;
-    this.KJa = true;
-    this.KJb = false;
-    coH();
+    this.PD = true;
+    this.PVX = false;
+    this.PVY = true;
+    this.PVZ = false;
+    cMT();
     AppMethodBeat.o(102845);
   }
   
@@ -41,26 +41,26 @@ public class LabelContainerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(102844);
-    this.Pr = true;
-    this.KIZ = false;
-    this.KJa = true;
-    this.KJb = false;
-    coH();
+    this.PD = true;
+    this.PVX = false;
+    this.PVY = true;
+    this.PVZ = false;
+    cMT();
     AppMethodBeat.o(102844);
   }
   
-  private void coH()
+  private void cMT()
   {
     AppMethodBeat.i(102847);
     int i = ViewConfiguration.get(getContext()).getScaledTouchSlop();
-    this.Pf = (i * i);
+    this.Pr = (i * i);
     AppMethodBeat.o(102847);
   }
   
-  public final void ckg()
+  public final void cIi()
   {
     AppMethodBeat.i(102850);
-    this.KJg.ckg();
+    this.PWe.cIi();
     AppMethodBeat.o(102850);
   }
   
@@ -125,22 +125,22 @@ public class LabelContainerView
       return bool;
       i = m;
       break;
-      this.KJa = true;
-      this.KJd = f2;
-      this.KJc = f2;
-      this.KJf = f1;
-      this.KJe = f1;
-      this.KJb = true;
+      this.PVY = true;
+      this.PWb = f2;
+      this.PWa = f2;
+      this.PWd = f1;
+      this.PWc = f1;
+      this.PVZ = true;
       continue;
-      i = (int)(f2 - this.KJc);
-      j = (int)(f1 - this.KJe);
-      if (j * j + i * i > this.Pf)
+      i = (int)(f2 - this.PWa);
+      j = (int)(f1 - this.PWc);
+      if (j * j + i * i > this.Pr)
       {
-        this.KJa = false;
+        this.PVY = false;
         AppMethodBeat.o(102846);
         return true;
-        this.KJa = true;
-        this.KJb = false;
+        this.PVY = true;
+        this.PVZ = false;
       }
     }
   }
@@ -198,50 +198,50 @@ public class LabelContainerView
       return bool;
       i = m;
       break;
-      this.Pr = true;
-      this.Pw = f2;
-      this.Py = f2;
-      this.Px = f1;
-      this.Pz = f1;
-      this.KIZ = true;
+      this.PD = true;
+      this.PI = f2;
+      this.PK = f2;
+      this.PJ = f1;
+      this.PL = f1;
+      this.PVX = true;
       continue;
-      if (!this.KIZ)
+      if (!this.PVX)
       {
-        this.Pr = true;
-        this.Pw = f2;
-        this.Py = f2;
-        this.Px = f1;
-        this.Pz = f1;
-        this.KIZ = true;
+        this.PD = true;
+        this.PI = f2;
+        this.PK = f2;
+        this.PJ = f1;
+        this.PL = f1;
+        this.PVX = true;
       }
-      if (this.KJg != null) {
-        this.KJg.ckh();
+      if (this.PWe != null) {
+        this.PWe.cIj();
       }
-      i = (int)(f2 - this.Py);
-      j = (int)(f1 - this.Pz);
-      if (j * j + i * i > this.Pf)
+      i = (int)(f2 - this.PK);
+      j = (int)(f1 - this.PL);
+      if (j * j + i * i > this.Pr)
       {
-        this.Pr = false;
+        this.PD = false;
         continue;
-        if (((this.Pr) || (!this.KIZ)) && (this.KJg != null)) {
-          this.KJg.ckg();
+        if (((this.PD) || (!this.PVX)) && (this.PWe != null)) {
+          this.PWe.cIi();
         }
-        this.Pr = true;
-        this.KIZ = false;
+        this.PD = true;
+        this.PVX = false;
       }
     }
   }
   
   public void setOnLabelContainerListener(a parama)
   {
-    this.KJg = parama;
+    this.PWe = parama;
   }
   
   public static abstract interface a
   {
-    public abstract void ckg();
+    public abstract void cIi();
     
-    public abstract void ckh();
+    public abstract void cIj();
   }
 }
 

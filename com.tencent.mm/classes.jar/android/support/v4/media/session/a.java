@@ -13,9 +13,9 @@ import java.util.List;
 public abstract interface a
   extends IInterface
 {
-  public abstract void G(boolean paramBoolean);
+  public abstract void F(boolean paramBoolean);
   
-  public abstract void H(boolean paramBoolean);
+  public abstract void G(boolean paramBoolean);
   
   public abstract void a(MediaMetadataCompat paramMediaMetadataCompat);
   
@@ -29,7 +29,7 @@ public abstract interface a
   
   public abstract void d(String paramString, Bundle paramBundle);
   
-  public abstract void eO();
+  public abstract void eR();
   
   public abstract void onExtrasChanged(Bundle paramBundle);
   
@@ -147,7 +147,7 @@ public abstract interface a
         if (paramParcel1.readInt() != 0) {}
         for (bool = true;; bool = false)
         {
-          G(bool);
+          F(bool);
           return true;
         }
       case 11: 
@@ -155,7 +155,7 @@ public abstract interface a
         if (paramParcel1.readInt() != 0) {
           bool = true;
         }
-        H(bool);
+        G(bool);
         return true;
       case 12: 
         paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
@@ -163,7 +163,7 @@ public abstract interface a
         return true;
       }
       paramParcel1.enforceInterface("android.support.v4.media.session.IMediaControllerCallback");
-      eO();
+      eR();
       return true;
     }
     
@@ -178,7 +178,7 @@ public abstract interface a
       }
       
       /* Error */
-      public final void G(boolean paramBoolean)
+      public final void F(boolean paramBoolean)
       {
         // Byte code:
         //   0: iconst_1
@@ -226,7 +226,7 @@ public abstract interface a
       }
       
       /* Error */
-      public final void H(boolean paramBoolean)
+      public final void G(boolean paramBoolean)
       {
         // Byte code:
         //   0: iconst_1
@@ -518,7 +518,7 @@ public abstract interface a
         //   49	54	57	finally
       }
       
-      public final void eO()
+      public final void eR()
       {
         Parcel localParcel = Parcel.obtain();
         try
@@ -670,7 +670,7 @@ public abstract interface a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     android.support.v4.media.session.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="@color/c" android:layout_width="fill_parent" android:layout_height="@dimen/cd"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="@color/lo" android:layout_width="fill_parent" android:layout_height="@dimen/a7i" />
-    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ap_" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="@dimen/c5" android:layout_alignParentLeft="true">
-        <ImageView android:id="@id/ap9" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginRight="@dimen/ci" />
-        <TextView android:textSize="@dimen/a7l" android:textColor="@color/FG_0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/fq" />
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="64.0dip" android:layout_marginStart="@dimen/c5" android:layout_marginEnd="@dimen/c5">
+        <TextView android:textSize="15.0dip" android:textColor="@color/FG_0" android:gravity="center" android:layout_gravity="center" android:id="@id/bv3" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <FrameLayout android:layout_gravity="start|center" android:id="@id/b4c" android:background="@drawable/a49" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/b4b" android:layout_width="10.0dip" android:layout_height="20.0dip" android:src="@raw/icons_filled_arrow" android:rotation="90.0" app:iconColor="@color/FG_0" />
+        </FrameLayout>
+    </FrameLayout>
+    <TextView android:textSize="@dimen/k6" android:textColor="@color/uj" android:layout_gravity="center_horizontal" android:id="@id/ckq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/c5" android:text="@string/cjb" />
+    <LinearLayout android:gravity="center_vertical" android:id="@id/ckv" android:background="@drawable/azp" android:visibility="gone" android:clickable="true" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/amh">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cks" android:layout_width="@dimen/ce" android:layout_height="@dimen/ce" android:layout_marginLeft="@dimen/cb" android:layout_marginRight="@dimen/ct" android:src="@raw/icons_filled_error" app:iconColor="@color/a5c" />
+        <TextView android:textSize="@dimen/bd" android:ellipsize="end" android:gravity="center" android:id="@id/ckt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/cjg" android:singleLine="true" android:layout_weight="1.0" />
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/cku" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginRight="@dimen/cb" android:src="@raw/arrow_right" android:tint="@color/BW_50" />
     </LinearLayout>
-    <LinearLayout android:gravity="center_vertical" android:id="@id/b_0" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginRight="@dimen/c5" android:layout_alignParentRight="true">
-        <ImageView android:id="@id/b_1" android:layout_width="@dimen/c8" android:layout_height="@dimen/c8" android:layout_marginRight="@dimen/ci" />
-        <TextView android:textSize="@dimen/a7l" android:id="@id/b9w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/g0a" />
-    </LinearLayout>
-</RelativeLayout>
+</LinearLayout>

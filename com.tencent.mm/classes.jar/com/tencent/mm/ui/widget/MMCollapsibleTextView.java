@@ -24,66 +24,68 @@ import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.ae.a.a;
 import com.tencent.mm.hellhoundlib.b.b;
-import d.f;
-import d.g;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
-import d.v;
+import com.tencent.mm.ui.aa;
+import kotlin.f;
+import kotlin.g;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.t;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/widget/MMCollapsibleTextView;", "Landroid/support/constraint/ConstraintLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "_collapseButton", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "get_collapseButton", "()Landroid/widget/TextView;", "_collapseButton$delegate", "Lkotlin/Lazy;", "_collapseImage", "Landroid/widget/ImageView;", "get_collapseImage", "()Landroid/widget/ImageView;", "_collapseImage$delegate", "_collapseLastRight", "", "_contentBackupText", "get_contentBackupText", "_contentBackupText$delegate", "_contentText", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "get_contentText", "()Lcom/tencent/mm/ui/widget/MMNeat7extView;", "_contentText$delegate", "_expandLastRight", "centerContentPlaceHolder", "Landroid/support/constraint/Placeholder;", "getCenterContentPlaceHolder", "()Landroid/support/constraint/Placeholder;", "centerContentPlaceHolder$delegate", "collapseButton", "Landroid/view/View;", "getCollapseButton", "()Landroid/view/View;", "collapseButtonExpendText", "getCollapseButtonExpendText", "()I", "setCollapseButtonExpendText", "(I)V", "collapsed", "", "getCollapsed", "()Z", "setCollapsed", "(Z)V", "contentText", "getContentText", "fullContentPlaceHolder", "getFullContentPlaceHolder", "fullContentPlaceHolder$delegate", "imageCollapse", "isSpecialText", "setSpecialText", "lastLineHeight", "getLastLineHeight", "lastLineRight", "getLastLineRight", "()F", "layoutId", "leftBottomCollapsePlaceHolder", "getLeftBottomCollapsePlaceHolder", "leftBottomCollapsePlaceHolder$delegate", "mContext", "maxLines", "needCollapse", "noCollapseCenter", "onCollapse", "Lkotlin/Function0;", "", "getOnCollapse", "()Lkotlin/jvm/functions/Function0;", "setOnCollapse", "(Lkotlin/jvm/functions/Function0;)V", "onExpand", "getOnExpand", "setOnExpand", "preMeasureWidth", "resource", "Landroid/content/res/Resources;", "getResource", "()Landroid/content/res/Resources;", "resource$delegate", "rightBottomCollapsePlaceHolder", "getRightBottomCollapsePlaceHolder", "rightBottomCollapsePlaceHolder$delegate", "rightCollapse", "rightCollapsePlaceHolder", "getRightCollapsePlaceHolder", "rightCollapsePlaceHolder$delegate", "text", "", "textSize", "getTextSize", "textUpdated", "dpToPixel", "getDpToPixel", "(F)F", "_setText", "calcRightOffset", "layout", "Lcom/tencent/neattextview/textview/layout/ILayout;", "init", "measureTruncate", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "resetRightOffset", "setCollapseButtonText", "setCollapseStatus", "setMaxLines", "setOnTextTouchListener", "l", "Landroid/view/View$OnTouchListener;", "setText", "isRequestLayout", "setTextSize", "unit", "size", "setupCollapseButton", "setupRightCollapsePosition", "switch", "libmmui_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/widget/MMCollapsibleTextView;", "Landroid/support/constraint/ConstraintLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attributeSet", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyle", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "_collapseButton", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "get_collapseButton", "()Landroid/widget/TextView;", "_collapseButton$delegate", "Lkotlin/Lazy;", "_collapseImage", "Landroid/widget/ImageView;", "get_collapseImage", "()Landroid/widget/ImageView;", "_collapseImage$delegate", "_collapseLastRight", "", "_contentBackupText", "get_contentBackupText", "_contentBackupText$delegate", "_contentText", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "get_contentText", "()Lcom/tencent/mm/ui/widget/MMNeat7extView;", "_contentText$delegate", "_expandLastRight", "centerContentPlaceHolder", "Landroid/support/constraint/Placeholder;", "getCenterContentPlaceHolder", "()Landroid/support/constraint/Placeholder;", "centerContentPlaceHolder$delegate", "collapseButton", "Landroid/view/View;", "getCollapseButton", "()Landroid/view/View;", "collapseButtonExpendText", "getCollapseButtonExpendText", "()I", "setCollapseButtonExpendText", "(I)V", "collapsed", "", "getCollapsed", "()Z", "setCollapsed", "(Z)V", "contentText", "getContentText", "fullContentPlaceHolder", "getFullContentPlaceHolder", "fullContentPlaceHolder$delegate", "imageCollapse", "isSpecialText", "setSpecialText", "lastLineHeight", "getLastLineHeight", "lastLineRight", "getLastLineRight", "()F", "layoutId", "leftBottomCollapsePlaceHolder", "getLeftBottomCollapsePlaceHolder", "leftBottomCollapsePlaceHolder$delegate", "mContext", "maxLines", "needCollapse", "noCollapseCenter", "onCollapse", "Lkotlin/Function0;", "", "getOnCollapse", "()Lkotlin/jvm/functions/Function0;", "setOnCollapse", "(Lkotlin/jvm/functions/Function0;)V", "onExpand", "getOnExpand", "setOnExpand", "preMeasureWidth", "resource", "Landroid/content/res/Resources;", "getResource", "()Landroid/content/res/Resources;", "resource$delegate", "rightBottomCollapsePlaceHolder", "getRightBottomCollapsePlaceHolder", "rightBottomCollapsePlaceHolder$delegate", "rightCollapse", "rightCollapsePlaceHolder", "getRightCollapsePlaceHolder", "rightCollapsePlaceHolder$delegate", "text", "", "textSize", "getTextSize", "textUpdated", "dpToPixel", "getDpToPixel", "(F)F", "_setText", "calcRightOffset", "layout", "Lcom/tencent/neattextview/textview/layout/ILayout;", "init", "measureTruncate", "onMeasure", "widthMeasureSpec", "heightMeasureSpec", "resetRightOffset", "setCollapseButtonText", "setCollapseStatus", "setMaxLines", "setOnTextTouchListener", "l", "Landroid/view/View$OnTouchListener;", "setText", "isRequestLayout", "setTextSize", "unit", "size", "setupCollapseButton", "setupRightCollapsePosition", "switch", "libmmui_release"})
 public final class MMCollapsibleTextView
   extends ConstraintLayout
 {
-  private final int DDQ;
-  private final f LmY;
-  private boolean LmZ;
-  private boolean Lna;
-  private boolean Lnb;
-  private boolean Lnc;
-  private final f Lnd;
-  private final f Lne;
-  private final f Lnf;
-  private final f Lng;
-  private final f Lnh;
-  private final f Lni;
-  private final f Lnj;
-  private final f Lnk;
-  private final f Lnl;
-  private boolean Lnm;
-  private d.g.a.a<d.z> Lnn;
-  private d.g.a.a<d.z> Lno;
-  private int Lnp;
-  private float Lnq;
-  private float Lnr;
-  private int Lns;
+  private final int Inc;
+  private final f QCe;
+  private boolean QCf;
+  private boolean QCg;
+  private boolean QCh;
+  private boolean QCi;
+  private final f QCj;
+  private final f QCk;
+  private final f QCl;
+  private final f QCm;
+  private final f QCn;
+  private final f QCo;
+  private final f QCp;
+  private final f QCq;
+  private final f QCr;
+  private boolean QCs;
+  private kotlin.g.a.a<x> QCt;
+  private kotlin.g.a.a<x> QCu;
+  private int QCv;
+  private float QCw;
+  private float QCx;
+  private int QCy;
   private Context mContext;
   private int maxLines;
-  private boolean ozd;
-  private boolean tGH;
+  private boolean pMM;
   private CharSequence text;
+  private boolean wXG;
   
   public MMCollapsibleTextView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(140979);
-    this.LmY = g.O((d.g.a.a)new i(this));
+    this.QCe = g.ah((kotlin.g.a.a)new i(this));
     this.maxLines = 2147483647;
-    this.DDQ = 2131494782;
-    this.Lnd = g.O((d.g.a.a)new d(this));
-    this.Lne = g.O((d.g.a.a)new c(this));
-    this.Lnf = g.O((d.g.a.a)new a(this));
-    this.Lng = g.O((d.g.a.a)new b(this));
-    this.Lnh = g.O((d.g.a.a)new f(this));
-    this.Lni = g.O((d.g.a.a)new e(this));
-    this.Lnj = g.O((d.g.a.a)new g(this));
-    this.Lnk = g.O((d.g.a.a)new j(this));
-    this.Lnl = g.O((d.g.a.a)new k(this));
-    this.Lnm = true;
-    this.Lnp = -1;
-    this.Lnq = -1.0F;
-    this.Lnr = -1.0F;
-    this.Lns = 2131758627;
+    this.Inc = 2131495516;
+    this.QCj = g.ah((kotlin.g.a.a)new d(this));
+    this.QCk = g.ah((kotlin.g.a.a)new c(this));
+    this.QCl = g.ah((kotlin.g.a.a)new a(this));
+    this.QCm = g.ah((kotlin.g.a.a)new b(this));
+    this.QCn = g.ah((kotlin.g.a.a)new f(this));
+    this.QCo = g.ah((kotlin.g.a.a)new e(this));
+    this.QCp = g.ah((kotlin.g.a.a)new g(this));
+    this.QCq = g.ah((kotlin.g.a.a)new j(this));
+    this.QCr = g.ah((kotlin.g.a.a)new k(this));
+    this.QCs = true;
+    this.QCv = -1;
+    this.QCw = -1.0F;
+    this.QCx = -1.0F;
+    this.QCy = 2131758934;
     this.mContext = paramContext;
     init(paramAttributeSet, 0);
     AppMethodBeat.o(140979);
@@ -93,34 +95,34 @@ public final class MMCollapsibleTextView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(140980);
-    this.LmY = g.O((d.g.a.a)new i(this));
+    this.QCe = g.ah((kotlin.g.a.a)new i(this));
     this.maxLines = 2147483647;
-    this.DDQ = 2131494782;
-    this.Lnd = g.O((d.g.a.a)new d(this));
-    this.Lne = g.O((d.g.a.a)new c(this));
-    this.Lnf = g.O((d.g.a.a)new a(this));
-    this.Lng = g.O((d.g.a.a)new b(this));
-    this.Lnh = g.O((d.g.a.a)new f(this));
-    this.Lni = g.O((d.g.a.a)new e(this));
-    this.Lnj = g.O((d.g.a.a)new g(this));
-    this.Lnk = g.O((d.g.a.a)new j(this));
-    this.Lnl = g.O((d.g.a.a)new k(this));
-    this.Lnm = true;
-    this.Lnp = -1;
-    this.Lnq = -1.0F;
-    this.Lnr = -1.0F;
-    this.Lns = 2131758627;
+    this.Inc = 2131495516;
+    this.QCj = g.ah((kotlin.g.a.a)new d(this));
+    this.QCk = g.ah((kotlin.g.a.a)new c(this));
+    this.QCl = g.ah((kotlin.g.a.a)new a(this));
+    this.QCm = g.ah((kotlin.g.a.a)new b(this));
+    this.QCn = g.ah((kotlin.g.a.a)new f(this));
+    this.QCo = g.ah((kotlin.g.a.a)new e(this));
+    this.QCp = g.ah((kotlin.g.a.a)new g(this));
+    this.QCq = g.ah((kotlin.g.a.a)new j(this));
+    this.QCr = g.ah((kotlin.g.a.a)new k(this));
+    this.QCs = true;
+    this.QCv = -1;
+    this.QCw = -1.0F;
+    this.QCx = -1.0F;
+    this.QCy = 2131758934;
     this.mContext = paramContext;
     init(paramAttributeSet, paramInt);
     AppMethodBeat.o(140980);
   }
   
-  private final void fPI()
+  private final void gYC()
   {
     AppMethodBeat.i(140977);
     float f;
-    if (this.ozd) {
-      f = this.Lnp * 3.0F / 4.0F;
+    if (this.pMM) {
+      f = this.QCv * 3.0F / 4.0F;
     }
     while (getLastLineRight() < f)
     {
@@ -130,10 +132,10 @@ public final class MMCollapsibleTextView
       int i;
       if (localObject1 == null)
       {
-        localObject1 = new v("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
+        localObject1 = new t("null cannot be cast to non-null type android.view.ViewGroup.MarginLayoutParams");
         AppMethodBeat.o(140977);
         throw ((Throwable)localObject1);
-        i = this.Lnp;
+        i = this.QCv;
         localObject1 = getCollapseButton();
         p.g(localObject1, "collapseButton");
         f = i - ((View)localObject1).getMeasuredWidth();
@@ -170,7 +172,7 @@ public final class MMCollapsibleTextView
   private final Placeholder getCenterContentPlaceHolder()
   {
     AppMethodBeat.i(140964);
-    Placeholder localPlaceholder = (Placeholder)this.Lni.getValue();
+    Placeholder localPlaceholder = (Placeholder)this.QCo.getValue();
     AppMethodBeat.o(140964);
     return localPlaceholder;
   }
@@ -178,7 +180,7 @@ public final class MMCollapsibleTextView
   private final View getCollapseButton()
   {
     AppMethodBeat.i(140972);
-    if (this.Lnc)
+    if (this.QCi)
     {
       localView = (View)get_collapseImage();
       AppMethodBeat.o(140972);
@@ -192,7 +194,7 @@ public final class MMCollapsibleTextView
   private final Placeholder getFullContentPlaceHolder()
   {
     AppMethodBeat.i(140963);
-    Placeholder localPlaceholder = (Placeholder)this.Lnh.getValue();
+    Placeholder localPlaceholder = (Placeholder)this.QCn.getValue();
     AppMethodBeat.o(140963);
     return localPlaceholder;
   }
@@ -200,7 +202,7 @@ public final class MMCollapsibleTextView
   private final int getLastLineHeight()
   {
     AppMethodBeat.i(140974);
-    if (this.ozd)
+    if (this.pMM)
     {
       localObject = get_contentBackupText();
       p.g(localObject, "_contentBackupText");
@@ -217,16 +219,16 @@ public final class MMCollapsibleTextView
   
   private final float getLastLineRight()
   {
-    if (this.Lnm) {
-      return this.Lnq;
+    if (this.QCs) {
+      return this.QCw;
     }
-    return this.Lnr;
+    return this.QCx;
   }
   
   private final Placeholder getLeftBottomCollapsePlaceHolder()
   {
     AppMethodBeat.i(140965);
-    Placeholder localPlaceholder = (Placeholder)this.Lnj.getValue();
+    Placeholder localPlaceholder = (Placeholder)this.QCp.getValue();
     AppMethodBeat.o(140965);
     return localPlaceholder;
   }
@@ -234,7 +236,7 @@ public final class MMCollapsibleTextView
   private final Resources getResource()
   {
     AppMethodBeat.i(140958);
-    Resources localResources = (Resources)this.LmY.getValue();
+    Resources localResources = (Resources)this.QCe.getValue();
     AppMethodBeat.o(140958);
     return localResources;
   }
@@ -242,7 +244,7 @@ public final class MMCollapsibleTextView
   private final Placeholder getRightBottomCollapsePlaceHolder()
   {
     AppMethodBeat.i(140966);
-    Placeholder localPlaceholder = (Placeholder)this.Lnk.getValue();
+    Placeholder localPlaceholder = (Placeholder)this.QCq.getValue();
     AppMethodBeat.o(140966);
     return localPlaceholder;
   }
@@ -250,7 +252,7 @@ public final class MMCollapsibleTextView
   private final Placeholder getRightCollapsePlaceHolder()
   {
     AppMethodBeat.i(140967);
-    Placeholder localPlaceholder = (Placeholder)this.Lnl.getValue();
+    Placeholder localPlaceholder = (Placeholder)this.QCr.getValue();
     AppMethodBeat.o(140967);
     return localPlaceholder;
   }
@@ -258,7 +260,7 @@ public final class MMCollapsibleTextView
   private final ImageView get_collapseImage()
   {
     AppMethodBeat.i(140962);
-    ImageView localImageView = (ImageView)this.Lng.getValue();
+    ImageView localImageView = (ImageView)this.QCm.getValue();
     AppMethodBeat.o(140962);
     return localImageView;
   }
@@ -319,14 +321,14 @@ public final class MMCollapsibleTextView
               if (paramAttributeSet.getInt(n, 0) != 0) {}
               for (bool = true;; bool = false)
               {
-                this.Lnb = bool;
+                this.QCh = bool;
                 break;
               }
             }
             if (n != 8) {
               break label255;
             }
-            this.Lna = paramAttributeSet.getBoolean(n, this.Lna);
+            this.QCg = paramAttributeSet.getBoolean(n, this.QCg);
           }
         }
         label255:
@@ -338,12 +340,12 @@ public final class MMCollapsibleTextView
         label284:
         for (boolean bool = true;; bool = false)
         {
-          this.Lnc = bool;
+          this.QCi = bool;
           break;
         }
       }
     }
-    com.tencent.mm.ui.z.jV(this.mContext).inflate(this.DDQ, (ViewGroup)this);
+    aa.jQ(this.mContext).inflate(this.Inc, (ViewGroup)this);
     if (i2 != -1) {
       get_collapseButton().setTextColor(i2);
     }
@@ -385,12 +387,12 @@ public final class MMCollapsibleTextView
   {
     AppMethodBeat.i(140976);
     Object localObject;
-    if (this.Lnc)
+    if (this.QCi)
     {
       localObject = get_collapseImage();
       if (paramBoolean)
       {
-        i = 2131690127;
+        i = 2131690160;
         ((ImageView)localObject).setImageResource(i);
         if (!paramBoolean) {
           break label88;
@@ -403,11 +405,11 @@ public final class MMCollapsibleTextView
       setMaxLines(i);
       AppMethodBeat.o(140976);
       return;
-      i = 2131689953;
+      i = 2131689977;
       break;
       localObject = get_collapseButton();
       if (paramBoolean) {}
-      for (i = this.Lns;; i = 2131757431)
+      for (i = this.QCy;; i = 2131757650)
       {
         ((TextView)localObject).setText(i);
         break;
@@ -418,7 +420,7 @@ public final class MMCollapsibleTextView
   private final void setMaxLines(int paramInt)
   {
     AppMethodBeat.i(140970);
-    if (this.ozd)
+    if (this.pMM)
     {
       TextView localTextView = get_contentBackupText();
       p.g(localTextView, "_contentBackupText");
@@ -432,18 +434,18 @@ public final class MMCollapsibleTextView
   
   public final int getCollapseButtonExpendText()
   {
-    return this.Lns;
+    return this.QCy;
   }
   
   public final boolean getCollapsed()
   {
-    return this.Lnm;
+    return this.QCs;
   }
   
   public final View getContentText()
   {
     AppMethodBeat.i(140971);
-    if (this.ozd)
+    if (this.pMM)
     {
       localObject = get_contentBackupText();
       p.g(localObject, "_contentBackupText");
@@ -458,14 +460,14 @@ public final class MMCollapsibleTextView
     return localObject;
   }
   
-  public final d.g.a.a<d.z> getOnCollapse()
+  public final kotlin.g.a.a<x> getOnCollapse()
   {
-    return this.Lnn;
+    return this.QCt;
   }
   
-  public final d.g.a.a<d.z> getOnExpand()
+  public final kotlin.g.a.a<x> getOnExpand()
   {
-    return this.Lno;
+    return this.QCu;
   }
   
   public final float getTextSize()
@@ -481,7 +483,7 @@ public final class MMCollapsibleTextView
   public final TextView get_collapseButton()
   {
     AppMethodBeat.i(140961);
-    TextView localTextView = (TextView)this.Lnf.getValue();
+    TextView localTextView = (TextView)this.QCl.getValue();
     AppMethodBeat.o(140961);
     return localTextView;
   }
@@ -489,7 +491,7 @@ public final class MMCollapsibleTextView
   public final TextView get_contentBackupText()
   {
     AppMethodBeat.i(140960);
-    TextView localTextView = (TextView)this.Lne.getValue();
+    TextView localTextView = (TextView)this.QCk.getValue();
     AppMethodBeat.o(140960);
     return localTextView;
   }
@@ -497,7 +499,7 @@ public final class MMCollapsibleTextView
   public final MMNeat7extView get_contentText()
   {
     AppMethodBeat.i(140959);
-    MMNeat7extView localMMNeat7extView = (MMNeat7extView)this.Lnd.getValue();
+    MMNeat7extView localMMNeat7extView = (MMNeat7extView)this.QCj.getValue();
     AppMethodBeat.o(140959);
     return localMMNeat7extView;
   }
@@ -512,53 +514,53 @@ public final class MMCollapsibleTextView
     label164:
     label198:
     float f1;
-    if ((this.LmZ) || (i != this.Lnp))
+    if ((this.QCf) || (i != this.QCv))
     {
-      this.Lnq = -1.0F;
-      this.Lnr = -1.0F;
-      this.LmZ = false;
-      this.Lnp = i;
+      this.QCw = -1.0F;
+      this.QCx = -1.0F;
+      this.QCf = false;
+      this.QCv = i;
       get_contentText().setMaxLines(2147483647);
       localObject1 = get_contentText();
       localObject2 = this.text;
       if (localObject2 == null) {
-        p.bdF("text");
+        p.btv("text");
       }
-      ((MMNeat7extView)localObject1).aq((CharSequence)localObject2);
+      ((MMNeat7extView)localObject1).aw((CharSequence)localObject2);
       localObject1 = get_contentText();
       p.g(localObject1, "_contentText");
-      this.ozd = ((MMNeat7extView)localObject1).fXn();
-      com.tencent.neattextview.textview.layout.a locala = get_contentText().kR(i, 2147483647);
+      this.pMM = ((MMNeat7extView)localObject1).hiS();
+      com.tencent.neattextview.textview.layout.a locala = get_contentText().mq(i, 2147483647);
       if (locala == null) {
         break label731;
       }
-      i = locala.fXb();
+      i = locala.hiG();
       if (i <= this.maxLines) {
         break label737;
       }
       bool = true;
-      this.tGH = bool;
-      if ((this.Lna) && (!this.tGH)) {
+      this.wXG = bool;
+      if ((this.QCg) && (!this.wXG)) {
         break label743;
       }
       getFullContentPlaceHolder().setContentId(getContentText().getId());
-      if (this.tGH)
+      if (this.wXG)
       {
         getCollapseButton().setOnClickListener((View.OnClickListener)new l(this));
         localObject1 = getCollapseButton();
         p.g(localObject1, "collapseButton");
         ((View)localObject1).setVisibility(0);
-        if (!this.Lnb)
+        if (!this.QCh)
         {
           localObject1 = getLeftBottomCollapsePlaceHolder();
           localObject2 = getCollapseButton();
           p.g(localObject2, "collapseButton");
           ((Placeholder)localObject1).setContentId(((View)localObject2).getId());
         }
-        setCollapseStatus(this.Lnm);
-        if (this.Lnb)
+        setCollapseStatus(this.QCs);
+        if (this.QCh)
         {
-          if (!this.Lnc) {
+          if (!this.QCi) {
             break label760;
           }
           i = (int)(getLastLineHeight() * 0.8F);
@@ -592,23 +594,23 @@ public final class MMCollapsibleTextView
           if (locala != null)
           {
             i = this.maxLines;
-            int j = locala.fXb();
-            if (!this.ozd) {
+            int j = locala.hiG();
+            if (!this.pMM) {
               break label780;
             }
             f1 = locala.getLineRight(i - 1);
             label556:
-            this.Lnq = f1;
-            this.Lnr = locala.getLineRight(j - 1);
+            this.QCw = f1;
+            this.QCx = locala.getLineRight(j - 1);
           }
-          fPI();
+          gYC();
         }
       }
       localObject1 = this.text;
       if (localObject1 == null) {
-        p.bdF("text");
+        p.btv("text");
       }
-      if (!this.ozd) {
+      if (!this.pMM) {
         break label785;
       }
       localObject2 = get_contentBackupText();
@@ -624,7 +626,7 @@ public final class MMCollapsibleTextView
     for (;;)
     {
       super.onMeasure(paramInt1, paramInt2);
-      if (!this.tGH)
+      if (!this.wXG)
       {
         localObject1 = getCollapseButton();
         p.g(localObject1, "collapseButton");
@@ -659,33 +661,33 @@ public final class MMCollapsibleTextView
       localObject2 = get_contentBackupText();
       p.g(localObject2, "_contentBackupText");
       ((TextView)localObject2).setVisibility(8);
-      get_contentText().aq((CharSequence)localObject1);
+      get_contentText().aw((CharSequence)localObject1);
     }
   }
   
   public final void setCollapseButtonExpendText(int paramInt)
   {
-    this.Lns = paramInt;
+    this.QCy = paramInt;
   }
   
   public final void setCollapseButtonText(int paramInt)
   {
-    this.Lns = paramInt;
+    this.QCy = paramInt;
   }
   
   public final void setCollapsed(boolean paramBoolean)
   {
-    this.Lnm = paramBoolean;
+    this.QCs = paramBoolean;
   }
   
-  public final void setOnCollapse(d.g.a.a<d.z> parama)
+  public final void setOnCollapse(kotlin.g.a.a<x> parama)
   {
-    this.Lnn = parama;
+    this.QCt = parama;
   }
   
-  public final void setOnExpand(d.g.a.a<d.z> parama)
+  public final void setOnExpand(kotlin.g.a.a<x> parama)
   {
-    this.Lno = parama;
+    this.QCu = parama;
   }
   
   public final void setOnTextTouchListener(View.OnTouchListener paramOnTouchListener)
@@ -698,7 +700,7 @@ public final class MMCollapsibleTextView
   
   public final void setSpecialText(boolean paramBoolean)
   {
-    this.ozd = paramBoolean;
+    this.pMM = paramBoolean;
   }
   
   public final void setText(CharSequence paramCharSequence)
@@ -707,14 +709,14 @@ public final class MMCollapsibleTextView
     p.h(paramCharSequence, "text");
     p.h(paramCharSequence, "text");
     this.text = paramCharSequence;
-    this.LmZ = true;
+    this.QCf = true;
     AppMethodBeat.o(140978);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class a
     extends q
-    implements d.g.a.a<TextView>
+    implements kotlin.g.a.a<TextView>
   {
     a(MMCollapsibleTextView paramMMCollapsibleTextView)
     {
@@ -722,10 +724,10 @@ public final class MMCollapsibleTextView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/ImageView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class b
     extends q
-    implements d.g.a.a<ImageView>
+    implements kotlin.g.a.a<ImageView>
   {
     b(MMCollapsibleTextView paramMMCollapsibleTextView)
     {
@@ -733,10 +735,10 @@ public final class MMCollapsibleTextView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/widget/TextView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class c
     extends q
-    implements d.g.a.a<TextView>
+    implements kotlin.g.a.a<TextView>
   {
     c(MMCollapsibleTextView paramMMCollapsibleTextView)
     {
@@ -744,10 +746,10 @@ public final class MMCollapsibleTextView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Lcom/tencent/mm/ui/widget/MMNeat7extView;", "kotlin.jvm.PlatformType", "invoke"})
   static final class d
     extends q
-    implements d.g.a.a<MMNeat7extView>
+    implements kotlin.g.a.a<MMNeat7extView>
   {
     d(MMCollapsibleTextView paramMMCollapsibleTextView)
     {
@@ -755,10 +757,10 @@ public final class MMCollapsibleTextView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/support/constraint/Placeholder;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/support/constraint/Placeholder;", "kotlin.jvm.PlatformType", "invoke"})
   static final class e
     extends q
-    implements d.g.a.a<Placeholder>
+    implements kotlin.g.a.a<Placeholder>
   {
     e(MMCollapsibleTextView paramMMCollapsibleTextView)
     {
@@ -766,10 +768,10 @@ public final class MMCollapsibleTextView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/support/constraint/Placeholder;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/support/constraint/Placeholder;", "kotlin.jvm.PlatformType", "invoke"})
   static final class f
     extends q
-    implements d.g.a.a<Placeholder>
+    implements kotlin.g.a.a<Placeholder>
   {
     f(MMCollapsibleTextView paramMMCollapsibleTextView)
     {
@@ -777,10 +779,10 @@ public final class MMCollapsibleTextView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/support/constraint/Placeholder;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/support/constraint/Placeholder;", "kotlin.jvm.PlatformType", "invoke"})
   static final class g
     extends q
-    implements d.g.a.a<Placeholder>
+    implements kotlin.g.a.a<Placeholder>
   {
     g(MMCollapsibleTextView paramMMCollapsibleTextView)
     {
@@ -788,7 +790,7 @@ public final class MMCollapsibleTextView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "run", "com/tencent/mm/ui/widget/MMCollapsibleTextView$measureTruncate$2$1"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "run", "com/tencent/mm/ui/widget/MMCollapsibleTextView$measureTruncate$2$1"})
   static final class h
     implements Runnable
   {
@@ -804,15 +806,15 @@ public final class MMCollapsibleTextView
       localRect.left -= i;
       localRect.bottom += i;
       localRect.right = (i + localRect.right);
-      this.scH.setTouchDelegate(new TouchDelegate(localRect, (View)MMCollapsibleTextView.a(jdField_this)));
+      this.tCl.setTouchDelegate(new TouchDelegate(localRect, (View)MMCollapsibleTextView.a(jdField_this)));
       AppMethodBeat.o(140952);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/content/res/Resources;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/content/res/Resources;", "kotlin.jvm.PlatformType", "invoke"})
   static final class i
     extends q
-    implements d.g.a.a<Resources>
+    implements kotlin.g.a.a<Resources>
   {
     i(MMCollapsibleTextView paramMMCollapsibleTextView)
     {
@@ -820,10 +822,10 @@ public final class MMCollapsibleTextView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/support/constraint/Placeholder;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/support/constraint/Placeholder;", "kotlin.jvm.PlatformType", "invoke"})
   static final class j
     extends q
-    implements d.g.a.a<Placeholder>
+    implements kotlin.g.a.a<Placeholder>
   {
     j(MMCollapsibleTextView paramMMCollapsibleTextView)
     {
@@ -831,10 +833,10 @@ public final class MMCollapsibleTextView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "Landroid/support/constraint/Placeholder;", "kotlin.jvm.PlatformType", "invoke"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "Landroid/support/constraint/Placeholder;", "kotlin.jvm.PlatformType", "invoke"})
   static final class k
     extends q
-    implements d.g.a.a<Placeholder>
+    implements kotlin.g.a.a<Placeholder>
   {
     k(MMCollapsibleTextView paramMMCollapsibleTextView)
     {
@@ -842,7 +844,7 @@ public final class MMCollapsibleTextView
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class l
     implements View.OnClickListener
   {
@@ -852,9 +854,9 @@ public final class MMCollapsibleTextView
     {
       AppMethodBeat.i(140956);
       b localb = new b();
-      localb.bd(paramView);
-      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/MMCollapsibleTextView$setupCollapseButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.ahF());
-      MMCollapsibleTextView.b(this.Lnt);
+      localb.bm(paramView);
+      com.tencent.mm.hellhoundlib.a.a.b("com/tencent/mm/ui/widget/MMCollapsibleTextView$setupCollapseButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, localb.axR());
+      MMCollapsibleTextView.b(this.QCz);
       com.tencent.mm.hellhoundlib.a.a.a(this, "com/tencent/mm/ui/widget/MMCollapsibleTextView$setupCollapseButton$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
       AppMethodBeat.o(140956);
     }

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/d2y" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ct" android:layout_marginBottom="@dimen/cj" android:layout_alignParentBottom="true"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/b4k" android:padding="@dimen/ct" android:focusable="true" android:layout_width="@dimen/cm" android:layout_height="@dimen/cm" android:src="@raw/icons_filled_back2" android:contentDescription="@string/fvs" android:rotation="270.0" />
+    </FrameLayout>
+    <com.tencent.mm.plugin.mmsight.ui.MMSightRecordButton android:layout_gravity="center|top" android:id="@id/gwh" android:background="@null" android:clipChildren="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minWidth="@dimen/ad0" android:minHeight="@dimen/ad0" android:contentDescription="@string/f0x" />
+    <android.support.constraint.ConstraintLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/bmj" android:padding="@dimen/bt" android:visibility="gone" android:layout_width="@dimen/ci" android:layout_height="@dimen/ci" android:src="@raw/finder_filled_delete_sub_video" app:iconColor="@color/act" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toStartOf="@id/h77" app:layout_constraintStart_toStartOf="g8m" app:layout_constraintTop_toTopOf="g8m" />
+        <FrameLayout android:id="@id/h77" android:layout_width="@dimen/cj" android:layout_height="@dimen/cj" app:layout_constraintBottom_toBottomOf="g8m" app:layout_constraintEnd_toEndOf="g8m" app:layout_constraintStart_toEndOf="@id/bmj" app:layout_constraintTop_toTopOf="g8m" />
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -13,15 +13,15 @@ import com.tencent.mm.plugin.story.api.e;
 import com.tencent.mm.plugin.story.api.i;
 import com.tencent.mm.plugin.story.api.m;
 import com.tencent.mm.plugin.story.api.n;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.ui.tools.MaskImageButton;
 
 public class SnsAvatarImageView
   extends MaskImageButton
   implements m
 {
-  private i AGW;
-  private String AUt;
+  private i EQN;
+  private String FeZ;
   private int pageType;
   
   public SnsAvatarImageView(Context paramContext, AttributeSet paramAttributeSet)
@@ -29,26 +29,26 @@ public class SnsAvatarImageView
     super(paramContext, paramAttributeSet);
     AppMethodBeat.i(100480);
     this.pageType = -1;
-    this.AGW = null;
-    this.AUt = "";
+    this.EQN = null;
+    this.FeZ = "";
     paramContext = getContext();
-    this.AGW = ((e)g.ad(e.class)).getStoryUIFactory().gy(paramContext);
-    this.AGW.aZ(this);
+    this.EQN = ((e)g.ah(e.class)).getStoryUIFactory().hj(paramContext);
+    this.EQN.ba(this);
     setLayerType(1, null);
     AppMethodBeat.o(100480);
   }
   
-  public final void bZ(String paramString, boolean paramBoolean)
+  public final void cr(String paramString, boolean paramBoolean)
   {
     boolean bool = true;
     AppMethodBeat.i(100488);
-    ae.m("MicroMsg.SnsAvatarImageView", "onNotifyStoryStatusChanged username: %s , isRead:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
+    Log.printInfoStack("MicroMsg.SnsAvatarImageView", "onNotifyStoryStatusChanged username: %s , isRead:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) });
     if ((TextUtils.isEmpty(paramString)) || (getContext() == null))
     {
       AppMethodBeat.o(100488);
       return;
     }
-    if (paramString.equals(this.AUt)) {
+    if (paramString.equals(this.FeZ)) {
       if (paramBoolean) {
         break label77;
       }
@@ -62,13 +62,13 @@ public class SnsAvatarImageView
     }
   }
   
-  public final void fn(String paramString, int paramInt)
+  public final void fL(String paramString, int paramInt)
   {
     AppMethodBeat.i(100487);
-    this.AGW.fn(paramString, paramInt);
-    if (!this.AUt.equals(paramString))
+    this.EQN.fL(paramString, paramInt);
+    if (!this.FeZ.equals(paramString))
     {
-      this.AUt = paramString;
+      this.FeZ = paramString;
       this.pageType = paramInt;
     }
     AppMethodBeat.o(100487);
@@ -79,7 +79,7 @@ public class SnsAvatarImageView
     AppMethodBeat.i(100489);
     super.onDetachedFromWindow();
     if (this.pageType != -1) {
-      a.b(this.pageType, this.AUt, this);
+      a.b(this.pageType, this.FeZ, this);
     }
     AppMethodBeat.o(100489);
   }
@@ -88,7 +88,7 @@ public class SnsAvatarImageView
   {
     AppMethodBeat.i(100482);
     super.onDraw(paramCanvas);
-    this.AGW.a(paramCanvas, true, 0);
+    this.EQN.a(paramCanvas, true, 0);
     AppMethodBeat.o(100482);
   }
   
@@ -102,22 +102,22 @@ public class SnsAvatarImageView
   public void setOnClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(100484);
-    super.setOnClickListener(this.AGW.ekD());
-    this.AGW.setOnClickListener(paramOnClickListener);
+    super.setOnClickListener(this.EQN.fne());
+    this.EQN.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(100484);
   }
   
   public void setShowStoryHint(boolean paramBoolean)
   {
     AppMethodBeat.i(100485);
-    this.AGW.setShowStoryHint(paramBoolean);
+    this.EQN.setShowStoryHint(paramBoolean);
     AppMethodBeat.o(100485);
   }
   
   public void setUserName(String paramString)
   {
     AppMethodBeat.i(100486);
-    fn(paramString, -1);
+    fL(paramString, -1);
     AppMethodBeat.o(100486);
   }
   
@@ -125,9 +125,9 @@ public class SnsAvatarImageView
   {
     AppMethodBeat.i(100481);
     if (!(paramContext instanceof Activity)) {
-      ae.w("MicroMsg.SnsAvatarImageView", "weakContext is not activity");
+      Log.w("MicroMsg.SnsAvatarImageView", "weakContext is not activity");
     }
-    this.AGW.setWeakContext(paramContext);
+    this.EQN.setWeakContext(paramContext);
     AppMethodBeat.o(100481);
   }
 }

@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/h8v" android:background="@drawable/asf" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textColor="@color/a_u" android:id="@id/fkr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="3.0dip" android:text="dhsajsadnjasdnsasad" />
-    <RelativeLayout android:id="@id/fkp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toRightOf="@id/fkr">
-        <ImageView android:id="@id/fkq" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-</RelativeLayout>
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/tz">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center_vertical" android:id="@id/dt5" android:layout_width="@dimen/u1" android:layout_height="@dimen/u1" android:layout_marginLeft="@dimen/u0" android:scaleType="fitCenter" />
+        <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:layout_marginBottom="@dimen/cb" android:layout_weight="1.0">
+            <TextView android:textSize="@dimen/u4" android:textColor="@color/a2x" android:id="@id/ipm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/u0" />
+            <TextView android:textSize="@dimen/u3" android:textColor="@color/g2" android:id="@id/bmr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/u0" android:layout_marginTop="2.0dip" android:maxLines="2" />
+        </LinearLayout>
+        <LinearLayout android:gravity="right" android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <RadioButton android:textSize="0.0dip" android:id="@id/gqn" android:background="@drawable/arh" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ct" android:layout_marginRight="@dimen/u0" android:button="@null" android:text="" android:drawablePadding="0.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+    <ImageView android:layout_gravity="bottom" android:id="@id/brt" android:layout_marginLeft="@dimen/u0" style="@style/hx" />
+</LinearLayout>

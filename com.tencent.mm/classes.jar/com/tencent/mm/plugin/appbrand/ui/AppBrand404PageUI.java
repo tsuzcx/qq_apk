@@ -9,9 +9,9 @@ import android.view.MenuItem.OnMenuItemClickListener;
 import android.widget.TextView;
 import com.tencent.luggage.sdk.launching.ActivityStarterIpcDelegate;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.MMActivity;
 
 @com.tencent.mm.ui.base.a(19)
@@ -21,34 +21,34 @@ public final class AppBrand404PageUI
   public static void a(ActivityStarterIpcDelegate paramActivityStarterIpcDelegate)
   {
     AppMethodBeat.i(48515);
-    a(ak.getContext().getString(2131755509), paramActivityStarterIpcDelegate);
+    a(MMApplicationContext.getContext().getString(2131755547), paramActivityStarterIpcDelegate);
     AppMethodBeat.o(48515);
   }
   
   private static void a(String paramString, ActivityStarterIpcDelegate paramActivityStarterIpcDelegate)
   {
     AppMethodBeat.i(48513);
-    paramString = new Intent(ak.getContext(), AppBrand404PageUI.class).putExtra("key_wording", paramString).putExtra("key_icon_url", null);
+    paramString = new Intent(MMApplicationContext.getContext(), AppBrand404PageUI.class).putExtra("key_wording", paramString).putExtra("key_icon_url", null);
     if (paramActivityStarterIpcDelegate != null)
     {
-      paramString = new com.tencent.mm.hellhoundlib.b.a().bc(paramString);
-      com.tencent.mm.hellhoundlib.a.a.a(paramActivityStarterIpcDelegate, paramString.ahE(), "com/tencent/mm/plugin/appbrand/ui/AppBrand404PageUI", "show", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-      paramActivityStarterIpcDelegate.startActivity((Intent)paramString.mt(0));
+      paramString = new com.tencent.mm.hellhoundlib.b.a().bl(paramString);
+      com.tencent.mm.hellhoundlib.a.a.a(paramActivityStarterIpcDelegate, paramString.axQ(), "com/tencent/mm/plugin/appbrand/ui/AppBrand404PageUI", "show", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+      paramActivityStarterIpcDelegate.startActivity((Intent)paramString.pG(0));
       com.tencent.mm.hellhoundlib.a.a.a(paramActivityStarterIpcDelegate, "com/tencent/mm/plugin/appbrand/ui/AppBrand404PageUI", "show", "(Ljava/lang/String;Ljava/lang/String;Lcom/tencent/luggage/sdk/launching/ActivityStarterIpcDelegate;)V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
       AppMethodBeat.o(48513);
       return;
     }
-    ar.f(new Runnable()
+    MMHandlerThread.postToMainThread(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(48511);
         this.val$intent.addFlags(268435456);
-        Context localContext = ak.getContext();
+        Context localContext = MMApplicationContext.getContext();
         Object localObject = this.val$intent;
-        localObject = new com.tencent.mm.hellhoundlib.b.a().bc(localObject);
-        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).ahE(), "com/tencent/mm/plugin/appbrand/ui/AppBrand404PageUI$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
-        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).mt(0));
+        localObject = new com.tencent.mm.hellhoundlib.b.a().bl(localObject);
+        com.tencent.mm.hellhoundlib.a.a.a(localContext, ((com.tencent.mm.hellhoundlib.b.a)localObject).axQ(), "com/tencent/mm/plugin/appbrand/ui/AppBrand404PageUI$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
+        localContext.startActivity((Intent)((com.tencent.mm.hellhoundlib.b.a)localObject).pG(0));
         com.tencent.mm.hellhoundlib.a.a.a(localContext, "com/tencent/mm/plugin/appbrand/ui/AppBrand404PageUI$1", "run", "()V", "Undefined", "startActivity", "(Landroid/content/Intent;)V");
         AppMethodBeat.o(48511);
       }
@@ -59,7 +59,7 @@ public final class AppBrand404PageUI
   public static void show(int paramInt)
   {
     AppMethodBeat.i(48514);
-    a(ak.getContext().getString(paramInt), null);
+    a(MMApplicationContext.getContext().getString(paramInt), null);
     AppMethodBeat.o(48514);
   }
   
@@ -72,14 +72,14 @@ public final class AppBrand404PageUI
   
   public final int getLayoutId()
   {
-    return 2131492963;
+    return 2131492997;
   }
   
   public final void onCreate(Bundle paramBundle)
   {
     AppMethodBeat.i(48516);
     super.onCreate(paramBundle);
-    setMMTitle(2131755402);
+    setMMTitle(2131755441);
     setBackBtn(new MenuItem.OnMenuItemClickListener()
     {
       public final boolean onMenuItemClick(MenuItem paramAnonymousMenuItem)
@@ -90,9 +90,9 @@ public final class AppBrand404PageUI
         return true;
       }
     });
-    paramBundle = (TextView)findViewById(2131296715);
+    paramBundle = (TextView)findViewById(2131296797);
     String str = getIntent().getStringExtra("key_wording");
-    bu.isNullOrNil(str);
+    Util.isNullOrNil(str);
     if (paramBundle != null) {
       paramBundle.setText(str);
     }

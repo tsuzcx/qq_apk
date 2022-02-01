@@ -11,7 +11,7 @@ import android.os.Process;
 import android.os.SystemClock;
 import com.tencent.mm.a.a;
 import com.tencent.mm.plugin.report.e;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.TreeMap;
@@ -33,12 +33,12 @@ public class Alarm
   {
     if ((AlarmManager)paramContext.getSystemService("alarm") == null)
     {
-      ae.e("MicroMsg.Alarm", "am == null");
+      Log.e("MicroMsg.Alarm", "am == null");
       return false;
     }
     if (paramPendingIntent == null)
     {
-      ae.e("MicroMsg.Alarm", "pendingIntent == null");
+      Log.e("MicroMsg.Alarm", "pendingIntent == null");
       return false;
     }
     a.cancel(paramContext, (int)paramLong, paramPendingIntent);
@@ -71,7 +71,7 @@ public class Alarm
   {
     if ((AlarmManager)paramContext.getSystemService("alarm") == null)
     {
-      ae.e("MicroMsg.Alarm", "am == null");
+      Log.e("MicroMsg.Alarm", "am == null");
       return null;
     }
     Intent localIntent = new Intent();
@@ -89,12 +89,12 @@ public class Alarm
     long l2 = SystemClock.elapsedRealtime();
     if (paramInt2 < 0)
     {
-      ae.e("MicroMsg.Alarm", "id:%d, after:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
+      Log.e("MicroMsg.Alarm", "id:%d, after:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
       return false;
     }
     if (paramContext == null)
     {
-      ae.e("MicroMsg.Alarm", "null==context, id:%d, after:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
+      Log.e("MicroMsg.Alarm", "null==context, id:%d, after:%d", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2) });
       return false;
     }
     synchronized (gPendingAlarms)
@@ -102,7 +102,7 @@ public class Alarm
       if (wakerlock == null)
       {
         wakerlock = new WakerLock(paramContext, "MicroMsg.Alarm");
-        ae.i("MicroMsg.Alarm", "start new wakerlock");
+        Log.i("MicroMsg.Alarm", "start new wakerlock");
       }
       if (bc_alarm == null)
       {
@@ -111,7 +111,7 @@ public class Alarm
       }
       if (gPendingAlarms.containsKey(Long.valueOf(paramLong)))
       {
-        ae.e("MicroMsg.Alarm", "id exist=%d", new Object[] { Long.valueOf(paramLong) });
+        Log.e("MicroMsg.Alarm", "id exist=%d", new Object[] { Long.valueOf(paramLong) });
         return false;
       }
     }
@@ -124,16 +124,16 @@ public class Alarm
       return false;
     }
     gPendingAlarms.put(Long.valueOf(paramLong), new AlarmRecord(paramLong, l1, paramContext));
-    ae.i("MicroMsg.Alarm", "Alarm.start [id: %d, after: %d, size: %d]", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(gPendingAlarms.size()) });
+    Log.i("MicroMsg.Alarm", "Alarm.start [id: %d, after: %d, size: %d]", new Object[] { Long.valueOf(paramLong), Integer.valueOf(paramInt2), Integer.valueOf(gPendingAlarms.size()) });
     return true;
   }
   
   public static boolean stop(long paramLong, Context paramContext)
   {
-    ae.i("MicroMsg.Alarm", "Alarm.stop [id: %d]", new Object[] { Long.valueOf(paramLong) });
+    Log.i("MicroMsg.Alarm", "Alarm.stop [id: %d]", new Object[] { Long.valueOf(paramLong) });
     if (paramContext == null)
     {
-      ae.e("MicroMsg.Alarm", "context==null");
+      Log.e("MicroMsg.Alarm", "context==null");
       return false;
     }
     synchronized (gPendingAlarms)
@@ -141,14 +141,14 @@ public class Alarm
       if (wakerlock == null)
       {
         wakerlock = new WakerLock(paramContext, "MicroMsg.Alarm");
-        ae.i("MicroMsg.Alarm", "stop new wakerlock");
+        Log.i("MicroMsg.Alarm", "stop new wakerlock");
       }
       if (bc_alarm == null)
       {
         bc_alarm = new Alarm();
         localObject = new IntentFilter();
         paramContext.registerReceiver(bc_alarm, (IntentFilter)localObject);
-        ae.i("MicroMsg.Alarm", "stop new Alarm");
+        Log.i("MicroMsg.Alarm", "stop new Alarm");
       }
       Object localObject = (AlarmRecord)gPendingAlarms.remove(Long.valueOf(paramLong));
       if (localObject != null)
@@ -173,7 +173,7 @@ public class Alarm
     } while ((0L == l2) || (i == 0));
     if (i != Process.myPid())
     {
-      ae.w("MicroMsg.Alarm", "onReceive id:%d, pid:%d, mypid:%d", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(Process.myPid()) });
+      Log.w("MicroMsg.Alarm", "onReceive id:%d, pid:%d, mypid:%d", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(Process.myPid()) });
       return;
     }
     for (;;)
@@ -184,15 +184,15 @@ public class Alarm
       {
         paramIntent = (AlarmRecord)gPendingAlarms.remove(Long.valueOf(l2));
         if (paramIntent == null) {
-          break label290;
+          break label291;
         }
         l3 = SystemClock.elapsedRealtime() - paramIntent.waitTime;
-        ae.i("MicroMsg.Alarm", "Alarm.onReceive [id: %d, delta miss time: %d, size: %d]", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(gPendingAlarms.size()) });
+        Log.i("MicroMsg.Alarm", "Alarm.onReceive [id: %d, delta miss time: %d, size: %d]", new Object[] { Long.valueOf(l2), Long.valueOf(l3), Integer.valueOf(gPendingAlarms.size()) });
         if (l3 <= 30000L)
         {
           l1 = 0L;
-          e.ywz.idkeyStat(1256L, l1, 1L, false);
-          e.ywz.f(18860, new Object[] { Long.valueOf(l3) });
+          e.Cxv.idkeyStat(1256L, l1, 1L, false);
+          e.Cxv.a(18860, new Object[] { Long.valueOf(l3) });
           if (wakerlock != null) {
             wakerlock.lock(200L, "Alarm.onReceive");
           }
@@ -216,8 +216,8 @@ public class Alarm
       {
         l1 = 4L;
         continue;
-        label290:
-        ae.e("MicroMsg.Alarm", "onReceive not found id:%d, pid:%d, gPendingAlarms.size:%d", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(gPendingAlarms.size()) });
+        label291:
+        Log.e("MicroMsg.Alarm", "onReceive not found id:%d, pid:%d, gPendingAlarms.size:%d", new Object[] { Long.valueOf(l2), Integer.valueOf(i), Integer.valueOf(gPendingAlarms.size()) });
       }
     }
   }
@@ -244,7 +244,7 @@ public class Alarm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mars.comm.Alarm
  * JD-Core Version:    0.7.0.1
  */

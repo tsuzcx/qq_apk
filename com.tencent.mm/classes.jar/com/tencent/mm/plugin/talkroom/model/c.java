@@ -8,43 +8,43 @@ import android.os.Looper;
 import android.support.v4.app.s.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.bh.d;
-import com.tencent.mm.model.at;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.ax;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.pluginsdk.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
 import java.util.List;
 
 public final class c
   implements d
 {
-  public boolean BEQ;
-  private String BER;
-  private Notification jVC;
-  private aq mHandler;
-  public boolean vpK;
-  public String vpi;
+  public boolean FPH;
+  private String FPI;
+  private Notification kYy;
+  private MMHandler mHandler;
+  public String yIY;
+  public boolean yJA;
   
   public c()
   {
     AppMethodBeat.i(29452);
-    this.vpi = "";
-    this.vpK = false;
-    this.BEQ = false;
-    this.mHandler = new aq(Looper.getMainLooper());
+    this.yIY = "";
+    this.yJA = false;
+    this.FPH = false;
+    this.mHandler = new MMHandler(Looper.getMainLooper());
     AppMethodBeat.o(29452);
   }
   
-  private static boolean ero()
+  private static boolean ftR()
   {
     AppMethodBeat.i(29448);
-    if (bu.isNullOrNil(b.erk().BFE))
+    if (Util.isNullOrNil(b.ftN().FQv))
     {
-      ae.w("MicroMsg.TalkRoomDisplayMgr", "yy checkServer null");
-      ae.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
-      err();
+      Log.w("MicroMsg.TalkRoomDisplayMgr", "yy checkServer null");
+      Log.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
+      ftU();
       AppMethodBeat.o(29448);
       return false;
     }
@@ -52,102 +52,102 @@ public final class c
     return true;
   }
   
-  private void erq()
+  private void ftT()
   {
     AppMethodBeat.i(29454);
-    if (!ero())
+    if (!ftR())
     {
       AppMethodBeat.o(29454);
       return;
     }
-    if (this.jVC == null)
+    if (this.kYy == null)
     {
-      ae.e("MicroMsg.TalkRoomDisplayMgr", "yy updateNotify error no notification");
+      Log.e("MicroMsg.TalkRoomDisplayMgr", "yy updateNotify error no notification");
       AppMethodBeat.o(29454);
       return;
     }
-    String str = h.bl(ak.getContext(), b.erk().BFE);
-    if (b.erk().BFS) {}
-    for (Object localObject1 = ak.getContext().getString(2131764360);; localObject1 = ak.getContext().getString(2131764357, new Object[] { Integer.valueOf(b.erk().djn().size()) }))
+    String str = h.bC(MMApplicationContext.getContext(), b.ftN().FQv);
+    if (b.ftN().FQJ) {}
+    for (Object localObject1 = MMApplicationContext.getContext().getString(2131766621);; localObject1 = MMApplicationContext.getContext().getString(2131766618, new Object[] { Integer.valueOf(b.ftN().ecY().size()) }))
     {
-      Object localObject2 = com.tencent.mm.plugin.talkroom.a.iUA.MQ();
-      ((Intent)localObject2).putExtra("enter_chat_usrname", b.erk().BFE);
-      localObject2 = PendingIntent.getActivity(ak.getContext(), 100, (Intent)localObject2, 268435456);
-      localObject1 = com.tencent.mm.bq.a.bJ(ak.getContext(), "reminder_channel_id").i(this.BER).i(0L).f(str).g((CharSequence)localObject1);
-      ((s.c)localObject1).Hl = ((PendingIntent)localObject2);
-      this.jVC = ((s.c)localObject1).build();
-      this.jVC.icon = 2131234321;
-      this.jVC.flags = 32;
-      bc.getNotification().a(100, this.jVC, false);
+      Object localObject2 = com.tencent.mm.plugin.talkroom.a.jRu.Xd();
+      ((Intent)localObject2).putExtra("enter_chat_usrname", b.ftN().FQv);
+      localObject2 = PendingIntent.getActivity(MMApplicationContext.getContext(), 100, (Intent)localObject2, 268435456);
+      localObject1 = com.tencent.mm.bq.a.cd(MMApplicationContext.getContext(), "reminder_channel_id").i(this.FPI).i(0L).f(str).g((CharSequence)localObject1);
+      ((s.c)localObject1).Hv = ((PendingIntent)localObject2);
+      this.kYy = ((s.c)localObject1).build();
+      this.kYy.icon = 2131235204;
+      this.kYy.flags = 32;
+      bg.getNotification().a(100, this.kYy, false);
       AppMethodBeat.o(29454);
       return;
     }
   }
   
-  public static void err()
+  public static void ftU()
   {
     AppMethodBeat.i(29455);
-    ae.v("MicroMsg.TalkRoomDisplayMgr", "yy cancelNotify");
-    bc.getNotification().cancel(100);
+    Log.v("MicroMsg.TalkRoomDisplayMgr", "yy cancelNotify");
+    bg.getNotification().cancel(100);
     AppMethodBeat.o(29455);
   }
   
-  public final void Hk(String paramString)
+  public final void PX(String paramString)
   {
-    this.vpi = paramString;
+    this.yIY = paramString;
   }
   
-  public final void aDY(String paramString)
+  public final void aST(String paramString)
   {
     AppMethodBeat.i(29453);
-    if (!ero())
+    if (!ftR())
     {
       AppMethodBeat.o(29453);
       return;
     }
-    ae.v("MicroMsg.TalkRoomDisplayMgr", "yy showNotify: ".concat(String.valueOf(paramString)));
-    this.BER = paramString;
-    this.jVC = com.tencent.mm.bq.a.bJ(ak.getContext(), "reminder_channel_id").i(paramString).i(0L).build();
-    this.jVC.icon = 2131234321;
-    this.jVC.flags = 32;
-    erq();
+    Log.v("MicroMsg.TalkRoomDisplayMgr", "yy showNotify: ".concat(String.valueOf(paramString)));
+    this.FPI = paramString;
+    this.kYy = com.tencent.mm.bq.a.cd(MMApplicationContext.getContext(), "reminder_channel_id").i(paramString).i(0L).build();
+    this.kYy.icon = 2131235204;
+    this.kYy.flags = 32;
+    ftT();
     AppMethodBeat.o(29453);
   }
   
-  public final void aMA()
-  {
-    AppMethodBeat.i(29450);
-    ae.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
-    err();
-    AppMethodBeat.o(29450);
-  }
-  
-  public final void aMB() {}
-  
-  public final void aMC() {}
-  
-  public final void aMD() {}
-  
-  public final void aMy()
-  {
-    this.vpK = false;
-  }
-  
-  public final void aMz() {}
-  
-  public final void bw(String paramString1, String paramString2)
+  public final void bA(String paramString1, String paramString2)
   {
     AppMethodBeat.i(29449);
-    if (this.BEQ)
+    if (this.FPH)
     {
       AppMethodBeat.o(29449);
       return;
     }
-    erq();
+    ftT();
     AppMethodBeat.o(29449);
   }
   
-  public final void erp()
+  public final void bgA() {}
+  
+  public final void bgB()
+  {
+    AppMethodBeat.i(29450);
+    Log.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
+    ftU();
+    AppMethodBeat.o(29450);
+  }
+  
+  public final void bgC() {}
+  
+  public final void bgD() {}
+  
+  public final void bgE() {}
+  
+  public final void bgz()
+  {
+    this.yJA = false;
+  }
+  
+  public final void ftS()
   {
     AppMethodBeat.i(29451);
     this.mHandler.post(new Runnable()
@@ -155,10 +155,10 @@ public final class c
       public final void run()
       {
         AppMethodBeat.i(29447);
-        b.erj();
-        ae.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
-        b.erj();
-        c.err();
+        b.ftM();
+        Log.v("MicroMsg.TalkRoomDisplayMgr", "yy dismissStatusBar");
+        b.ftM();
+        c.ftU();
         AppMethodBeat.o(29447);
       }
     });
@@ -167,16 +167,16 @@ public final class c
   
   public final void j(int paramInt1, int paramInt2, String paramString) {}
   
-  public final void qk(int paramInt) {}
-  
   public final void s(String paramString, int paramInt1, int paramInt2)
   {
-    this.vpK = false;
+    this.yJA = false;
   }
+  
+  public final void ua(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.talkroom.model.c
  * JD-Core Version:    0.7.0.1
  */

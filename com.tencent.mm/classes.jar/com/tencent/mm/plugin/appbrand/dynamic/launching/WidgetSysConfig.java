@@ -9,9 +9,9 @@ public class WidgetSysConfig
   implements Parcelable
 {
   public static final Parcelable.Creator<WidgetSysConfig> CREATOR;
-  public int jZV;
-  public int jZW;
-  public int jZX;
+  public int lcY;
+  public int lcZ;
+  public int lda;
   
   static
   {
@@ -28,15 +28,15 @@ public class WidgetSysConfig
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     AppMethodBeat.i(121414);
-    paramParcel.writeInt(this.jZV);
-    paramParcel.writeInt(this.jZW);
-    paramParcel.writeInt(this.jZX);
+    paramParcel.writeInt(this.lcY);
+    paramParcel.writeInt(this.lcZ);
+    paramParcel.writeInt(this.lda);
     AppMethodBeat.o(121414);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.dynamic.launching.WidgetSysConfig
  * JD-Core Version:    0.7.0.1
  */

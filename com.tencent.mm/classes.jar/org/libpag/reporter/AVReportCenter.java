@@ -37,10 +37,10 @@ public class AVReportCenter
   
   static
   {
-    AppMethodBeat.i(217055);
+    AppMethodBeat.i(237029);
     TAG = "AVReportCenter-" + Integer.toHexString(AVReportCenter.class.hashCode());
     ourInstance = new AVReportCenter();
-    AppMethodBeat.o(217055);
+    AppMethodBeat.o(237029);
   }
   
   public static AVReportCenter getInstance()
@@ -50,17 +50,17 @@ public class AVReportCenter
   
   private void hibernate(String paramString)
   {
-    AppMethodBeat.i(217049);
+    AppMethodBeat.i(237023);
     hibernate(paramString, "bean");
-    AppMethodBeat.o(217049);
+    AppMethodBeat.o(237023);
   }
   
   private void hibernate(String paramString1, String paramString2)
   {
-    AppMethodBeat.i(217050);
+    AppMethodBeat.i(237024);
     if ((this.dir == null) || (this.dir.length() == 0))
     {
-      AppMethodBeat.o(217050);
+      AppMethodBeat.o(237024);
       return;
     }
     try
@@ -77,53 +77,53 @@ public class AVReportCenter
       localFileOutputStream.write(paramString1);
       localFileOutputStream.close();
       localFile.renameTo(new File(this.dir + File.separator + paramString2 + "." + System.nanoTime()));
-      AppMethodBeat.o(217050);
+      AppMethodBeat.o(237024);
       return;
     }
     catch (Exception paramString1)
     {
-      AppMethodBeat.o(217050);
+      AppMethodBeat.o(237024);
     }
   }
   
   private void hibernateMap(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(217046);
+    AppMethodBeat.i(237020);
     hibernate(toUrlParams(paramMap));
-    AppMethodBeat.o(217046);
+    AppMethodBeat.o(237020);
   }
   
   private String md5(String paramString)
   {
-    AppMethodBeat.i(217052);
+    AppMethodBeat.i(237026);
     try
     {
       for (String str = new BigInteger(1, MessageDigest.getInstance("MD5").digest(paramString.getBytes(Charset.forName("UTF-8")))).toString(16); str.length() < 32; str = "0".concat(String.valueOf(str))) {}
-      AppMethodBeat.o(217052);
+      AppMethodBeat.o(237026);
       return str;
     }
     catch (Exception localException)
     {
-      AppMethodBeat.o(217052);
+      AppMethodBeat.o(237026);
     }
     return paramString;
   }
   
   private void putCommonData(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(217045);
+    AppMethodBeat.i(237019);
     paramMap.put("device", DeviceInfo.getBrand() + DeviceInfo.getDeviceName());
     paramMap.put("device_id", this.imei);
     paramMap.put("platform", "and");
     paramMap.put("os", this.os);
     paramMap.put("appid", this.app);
     paramMap.put("_dc", Integer.valueOf(Math.abs(new Random().nextInt())));
-    AppMethodBeat.o(217045);
+    AppMethodBeat.o(237019);
   }
   
   private static String toUrlParams(Map<String, Object> paramMap)
   {
-    AppMethodBeat.i(217051);
+    AppMethodBeat.i(237025);
     Iterator localIterator = paramMap.entrySet().iterator();
     paramMap = "attaid=06400000136&token=3598698434";
     for (;;)
@@ -147,7 +147,7 @@ public class AVReportCenter
           paramMap = (Map<String, Object>)localObject1;
         }
         catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
-        AppMethodBeat.o(217051);
+        AppMethodBeat.o(237025);
         return paramMap;
       }
     }
@@ -155,17 +155,17 @@ public class AVReportCenter
   
   public void commit(final Map<String, String> paramMap)
   {
-    AppMethodBeat.i(217047);
+    AppMethodBeat.i(237021);
     if ((!this.enable) || (paramMap == null) || (this.ioHandler == null))
     {
-      AppMethodBeat.o(217047);
+      AppMethodBeat.o(237021);
       return;
     }
     this.ioHandler.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(217042);
+        AppMethodBeat.i(237016);
         AVReportCenter localAVReportCenter;
         File localFile;
         Boolean localBoolean;
@@ -186,34 +186,34 @@ public class AVReportCenter
           AVReportCenter.access$600(AVReportCenter.this, (Map)localObject);
           ((Map)localObject).putAll(paramMap);
           AVReportCenter.access$700(AVReportCenter.this, (Map)localObject);
-          AppMethodBeat.o(217042);
+          AppMethodBeat.o(237016);
           return;
         }
       }
     });
-    AppMethodBeat.o(217047);
+    AppMethodBeat.o(237021);
   }
   
   public void flush()
   {
-    AppMethodBeat.i(217048);
+    AppMethodBeat.i(237022);
     if (this.ioHandler == null)
     {
-      AppMethodBeat.o(217048);
+      AppMethodBeat.o(237022);
       return;
     }
     this.ioHandler.post(new Runnable()
     {
       public void run()
       {
-        AppMethodBeat.i(217043);
+        AppMethodBeat.i(237017);
         if (AVReportCenter.this.reporter != null) {
           AVReportCenter.this.reporter.flush();
         }
-        AppMethodBeat.o(217043);
+        AppMethodBeat.o(237017);
       }
     });
-    AppMethodBeat.o(217048);
+    AppMethodBeat.o(237022);
   }
   
   /* Error */
@@ -447,7 +447,7 @@ public class AVReportCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.libpag.reporter.AVReportCenter
  * JD-Core Version:    0.7.0.1
  */

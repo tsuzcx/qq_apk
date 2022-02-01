@@ -1,88 +1,84 @@
 package com.tencent.mm.plugin.webview.luggage;
 
-import android.os.Bundle;
+import android.app.Activity;
+import android.content.Intent;
+import com.tencent.luggage.d.e;
+import com.tencent.luggage.d.i;
+import com.tencent.luggage.d.j;
+import com.tencent.luggage.h.f;
+import com.tencent.luggage.h.f.c;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.plugin.webview.luggage.jsapi.bt;
+import com.tencent.mm.ui.MMActivity;
+import com.tencent.mm.ui.widget.SwipeBackLayout;
+import java.util.LinkedList;
 
-public final class v
+public class v
+  extends i
 {
-  private boolean Eir;
-  private String Eis;
-  private String Eit;
-  private String Eiu;
-  private String Eiv;
-  private String Eiw;
-  private String Eix;
-  private String lang;
+  com.tencent.mm.plugin.webview.modeltools.a IVh;
   
-  public v(Bundle paramBundle)
+  public v(final Activity paramActivity)
   {
-    AppMethodBeat.i(78478);
-    this.Eir = paramBundle.getBoolean("close_window_confirm_dialog_switch");
-    this.Eis = paramBundle.getString("close_window_confirm_dialog_title_cn");
-    this.Eit = paramBundle.getString("close_window_confirm_dialog_title_eng");
-    this.Eiu = paramBundle.getString("close_window_confirm_dialog_ok_cn");
-    this.Eiv = paramBundle.getString("close_window_confirm_dialog_ok_eng");
-    this.Eiw = paramBundle.getString("close_window_confirm_dialog_cancel_cn");
-    this.Eix = paramBundle.getString("close_window_confirm_dialog_cancel_eng");
-    this.lang = ad.iR(ak.getContext());
-    AppMethodBeat.o(78478);
+    super(paramActivity);
+    AppMethodBeat.i(78469);
+    this.ctk = com.tencent.mm.plugin.webview.luggage.webview_impl.a.class;
+    this.ctn.E(bt.dTr());
+    this.IVh = new com.tencent.mm.plugin.webview.modeltools.a();
+    this.cts.LA().a(new f.c()
+    {
+      public final boolean c(int paramAnonymousInt1, int paramAnonymousInt2, Intent paramAnonymousIntent)
+      {
+        AppMethodBeat.i(78468);
+        boolean bool = v.this.IVh.d(paramActivity, paramAnonymousInt1, paramAnonymousInt2, paramAnonymousIntent);
+        AppMethodBeat.o(78468);
+        return bool;
+      }
+    });
+    AppMethodBeat.o(78469);
   }
   
-  public final boolean eTw()
+  private void gch()
   {
-    AppMethodBeat.i(78479);
-    if ((this.Eir) && (!bu.isNullOrNil(eTx())) && (!bu.isNullOrNil(eTy())) && (!bu.isNullOrNil(eTz())))
+    AppMethodBeat.i(78471);
+    if ((this.mContext instanceof MMActivity))
     {
-      AppMethodBeat.o(78479);
-      return true;
+      SwipeBackLayout localSwipeBackLayout = ((MMActivity)this.mContext).getSwipeBackLayout();
+      if (localSwipeBackLayout != null)
+      {
+        if (this.cts.Lx().size() <= 1)
+        {
+          localSwipeBackLayout.setEnableGesture(true);
+          AppMethodBeat.o(78471);
+          return;
+        }
+        localSwipeBackLayout.setEnableGesture(false);
+      }
     }
-    AppMethodBeat.o(78479);
-    return false;
+    AppMethodBeat.o(78471);
   }
   
-  public final String eTx()
+  public final void Ls()
   {
-    AppMethodBeat.i(78480);
-    if ("zh_CN".equals(this.lang))
-    {
-      str = this.Eis;
-      AppMethodBeat.o(78480);
-      return str;
-    }
-    String str = this.Eit;
-    AppMethodBeat.o(78480);
-    return str;
+    AppMethodBeat.i(78472);
+    ((g)Ln()).gby();
+    gch();
+    AppMethodBeat.o(78472);
   }
   
-  public final String eTy()
+  public final void Lt()
   {
-    AppMethodBeat.i(78481);
-    if ("zh_CN".equals(this.lang))
-    {
-      str = this.Eiu;
-      AppMethodBeat.o(78481);
-      return str;
-    }
-    String str = this.Eiv;
-    AppMethodBeat.o(78481);
-    return str;
+    AppMethodBeat.i(78473);
+    gch();
+    AppMethodBeat.o(78473);
   }
   
-  public final String eTz()
+  public final void onResume()
   {
-    AppMethodBeat.i(78482);
-    if ("zh_CN".equals(this.lang))
-    {
-      str = this.Eiw;
-      AppMethodBeat.o(78482);
-      return str;
-    }
-    String str = this.Eix;
-    AppMethodBeat.o(78482);
-    return str;
+    AppMethodBeat.i(78470);
+    super.onResume();
+    gch();
+    AppMethodBeat.o(78470);
   }
 }
 

@@ -2,7 +2,7 @@ package com.tencent.mm.ui.widget.picker.f;
 
 public final class a
 {
-  public static int E(int paramInt, boolean paramBoolean)
+  public static int I(int paramInt, boolean paramBoolean)
   {
     switch (paramInt)
     {
@@ -10,14 +10,14 @@ public final class a
       return -1;
     }
     if (paramBoolean) {
-      return 2130772093;
+      return 2130772115;
     }
-    return 2130772094;
+    return 2130772116;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.ui.widget.picker.f.a
  * JD-Core Version:    0.7.0.1
  */

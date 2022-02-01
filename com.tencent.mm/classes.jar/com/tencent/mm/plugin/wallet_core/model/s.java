@@ -5,76 +5,76 @@ import org.json.JSONObject;
 
 public final class s
 {
-  public long Dpm;
-  public long Dpn;
-  public int Dpo;
-  public int Dpp;
-  public long Dpq;
-  public long vlr;
+  public long HYA;
+  public long HYB;
+  public int HYC;
+  public int HYD;
+  public long HYE;
+  public long crw;
   
-  public final void bk(JSONObject paramJSONObject)
+  public final void bK(JSONObject paramJSONObject)
   {
     AppMethodBeat.i(70311);
-    this.vlr = paramJSONObject.optLong("activity_id");
-    this.Dpm = paramJSONObject.optLong("activity_type", 0L);
-    this.Dpn = paramJSONObject.optLong("award_id");
-    this.Dpo = paramJSONObject.optInt("send_record_id");
-    this.Dpp = paramJSONObject.optInt("user_record_id");
-    this.Dpq = paramJSONObject.optLong("activity_mch_id", 0L);
+    this.crw = paramJSONObject.optLong("activity_id");
+    this.HYA = paramJSONObject.optLong("activity_type", 0L);
+    this.HYB = paramJSONObject.optLong("award_id");
+    this.HYC = paramJSONObject.optInt("send_record_id");
+    this.HYD = paramJSONObject.optInt("user_record_id");
+    this.HYE = paramJSONObject.optLong("activity_mch_id", 0L);
     AppMethodBeat.o(70311);
   }
   
   public static final class a
   {
-    public String Dpr;
-    public String Dps;
+    public String Bah;
+    public String HYF;
+    public String HYG;
     public String name;
     public String title;
     public int type;
     public String url;
-    public String xcF;
     
-    public final void bk(JSONObject paramJSONObject)
+    public final void bK(JSONObject paramJSONObject)
     {
       AppMethodBeat.i(70309);
       this.url = paramJSONObject.optString("url");
       this.name = paramJSONObject.optString("wording");
-      this.xcF = paramJSONObject.optString("icon");
-      this.Dpr = paramJSONObject.optString("btn_text");
+      this.Bah = paramJSONObject.optString("icon");
+      this.HYF = paramJSONObject.optString("btn_text");
       this.type = paramJSONObject.optInt("type");
       this.title = paramJSONObject.optString("title");
-      this.Dps = paramJSONObject.optString("small_title");
+      this.HYG = paramJSONObject.optString("small_title");
       AppMethodBeat.o(70309);
     }
   }
   
   public static final class b
   {
-    public String CRv;
-    public String CRw;
-    public String DfD;
-    public String Dpt;
-    public String Dpu;
-    public String Dpv;
-    public int Dpw;
+    public String HLz;
+    public String HYH;
+    public String HYI;
+    public String HYJ;
+    public int HYK;
+    public String Hwr;
+    public String Hws;
     
-    public final void bk(JSONObject paramJSONObject)
+    public final void bK(JSONObject paramJSONObject)
     {
       AppMethodBeat.i(70310);
-      this.DfD = paramJSONObject.optString("tinyapp_name");
-      this.Dpt = paramJSONObject.optString("tinyapp_logo");
-      this.Dpu = paramJSONObject.optString("tinyapp_desc");
-      this.CRv = paramJSONObject.optString("tinyapp_username");
-      this.CRw = paramJSONObject.optString("tinyapp_path");
-      this.Dpv = paramJSONObject.optString("activity_tinyapp_btn_text");
-      this.Dpw = paramJSONObject.optInt("tinyapp_version", 0);
+      this.HLz = paramJSONObject.optString("tinyapp_name");
+      this.HYH = paramJSONObject.optString("tinyapp_logo");
+      this.HYI = paramJSONObject.optString("tinyapp_desc");
+      this.Hwr = paramJSONObject.optString("tinyapp_username");
+      this.Hws = paramJSONObject.optString("tinyapp_path");
+      this.HYJ = paramJSONObject.optString("activity_tinyapp_btn_text");
+      this.HYK = paramJSONObject.optInt("tinyapp_version", 0);
       AppMethodBeat.o(70310);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_core.model.s
  * JD-Core Version:    0.7.0.1
  */

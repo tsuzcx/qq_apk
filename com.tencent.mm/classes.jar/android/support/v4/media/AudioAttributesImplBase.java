@@ -5,10 +5,10 @@ import java.util.Arrays;
 public final class AudioAttributesImplBase
   implements AudioAttributesImpl
 {
-  int FL = 0;
-  int KD = 0;
-  int KE = 0;
-  int KF = -1;
+  int FV = 0;
+  int KN = 0;
+  int KO = 0;
+  int KP = -1;
   
   public final boolean equals(Object paramObject)
   {
@@ -19,15 +19,15 @@ public final class AudioAttributesImplBase
     {
       return false;
       paramObject = (AudioAttributesImplBase)paramObject;
-      if (this.KE == paramObject.KE)
+      if (this.KO == paramObject.KO)
       {
-        int m = this.FL;
-        int k = paramObject.FL;
+        int m = this.FV;
+        int k = paramObject.FV;
         int j;
         int i;
-        if (paramObject.KF != -1)
+        if (paramObject.KP != -1)
         {
-          j = paramObject.KF;
+          j = paramObject.KP;
           if (j != 6) {
             break label110;
           }
@@ -35,11 +35,11 @@ public final class AudioAttributesImplBase
         }
         for (;;)
         {
-          if ((m != (i & 0x111)) || (this.KD != paramObject.KD) || (this.KF != paramObject.KF)) {
+          if ((m != (i & 0x111)) || (this.KN != paramObject.KN) || (this.KP != paramObject.KP)) {
             break label125;
           }
           return true;
-          j = AudioAttributesCompat.y(paramObject.FL, paramObject.KD);
+          j = AudioAttributesCompat.y(paramObject.FV, paramObject.KN);
           break;
           i = k;
           if (j == 7) {
@@ -52,24 +52,24 @@ public final class AudioAttributesImplBase
   
   public final int hashCode()
   {
-    return Arrays.hashCode(new Object[] { Integer.valueOf(this.KE), Integer.valueOf(this.FL), Integer.valueOf(this.KD), Integer.valueOf(this.KF) });
+    return Arrays.hashCode(new Object[] { Integer.valueOf(this.KO), Integer.valueOf(this.FV), Integer.valueOf(this.KN), Integer.valueOf(this.KP) });
   }
   
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("AudioAttributesCompat:");
-    if (this.KF != -1)
+    if (this.KP != -1)
     {
-      localStringBuilder.append(" stream=").append(this.KF);
+      localStringBuilder.append(" stream=").append(this.KP);
       localStringBuilder.append(" derived");
     }
-    localStringBuilder.append(" usage=").append(AudioAttributesCompat.ay(this.KD)).append(" content=").append(this.KE).append(" flags=0x").append(Integer.toHexString(this.FL).toUpperCase());
+    localStringBuilder.append(" usage=").append(AudioAttributesCompat.ay(this.KN)).append(" content=").append(this.KO).append(" flags=0x").append(Integer.toHexString(this.FV).toUpperCase());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.media.AudioAttributesImplBase
  * JD-Core Version:    0.7.0.1
  */

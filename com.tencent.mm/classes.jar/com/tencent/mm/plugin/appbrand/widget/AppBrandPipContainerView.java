@@ -29,10 +29,10 @@ import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.cb.a;
-import com.tencent.mm.plugin.appbrand.ui.ac;
-import com.tencent.mm.plugin.appbrand.ui.ac.a;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
+import com.tencent.mm.plugin.appbrand.ui.ai;
+import com.tencent.mm.plugin.appbrand.ui.ai.a;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
 import java.lang.reflect.Method;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -41,83 +41,83 @@ import java.util.Set;
 public final class AppBrandPipContainerView
   extends FrameLayout
 {
-  public static final int mWX;
-  public static final int mWY;
-  public static final int mWZ;
-  public static final int mXa;
-  public static final int mXb;
-  public static final int mXc;
-  public static final int mXd;
-  public static final int mXe;
-  private static final int mXf;
-  private static final int mXg;
-  private static final int mXh;
-  private static final int mXi;
-  private static final int mXj;
-  private static final int mXk;
-  public static final int mXl;
-  public static final int mXm;
-  public static final int mXn;
-  public static final int mXo;
-  public static final int mXp;
-  public static final int mXq;
-  private static final int mXr;
-  private static final Point mXs;
-  private PointF gNg;
-  public Point htH;
+  public static final int oka;
+  public static final int okb;
+  public static final int okc;
+  public static final int okd;
+  public static final int oke;
+  public static final int okf;
+  public static final int okg;
+  public static final int okh;
+  private static final int oki;
+  private static final int okj;
+  private static final int okk;
+  private static final int okl;
+  private static final int okm;
+  private static final int okn;
+  public static final int oko;
+  public static final int okp;
+  public static final int okq;
+  public static final int okr;
+  public static final int oks;
+  public static final int okt;
+  private static final int oku;
+  private static final Point okv;
+  public Point inq;
   public int mCurOrientation;
-  public boolean mXA;
-  public int mXB;
-  public int mXC;
-  public Set<a> mXD;
-  private Float mXE;
-  public ViewOutlineProvider mXF;
-  private ValueAnimator mXG;
-  public ViewGroup mXH;
-  private View mXI;
-  public View mXJ;
-  private ViewGroup mXK;
-  private View mXL;
-  private View mXM;
-  private View mXN;
-  private boolean mXO;
-  public boolean mXP;
-  private boolean mXQ;
-  private ac mXR;
-  public Integer mXt;
-  private int mXu;
-  public Point mXv;
-  private boolean mXw;
-  private PointF mXx;
-  public float mXy;
-  private boolean mXz;
-  private int mrV;
+  private int nCG;
+  private PointF okA;
+  private PointF okB;
+  public float okC;
+  private boolean okD;
+  public boolean okE;
+  public int okF;
+  public int okG;
+  public Set<a> okH;
+  private Float okI;
+  public ViewOutlineProvider okJ;
+  private ValueAnimator okK;
+  public ViewGroup okL;
+  private View okM;
+  public View okN;
+  private ViewGroup okO;
+  private View okP;
+  private View okQ;
+  private View okR;
+  private boolean okS;
+  public boolean okT;
+  private boolean okU;
+  private ai okV;
+  public Integer okw;
+  private int okx;
+  public Point oky;
+  private boolean okz;
   
   static
   {
     AppMethodBeat.i(176823);
-    mWX = a.fromDPToPix(ak.getContext(), 196);
-    mWY = a.fromDPToPix(ak.getContext(), 119);
-    mWZ = a.fromDPToPix(ak.getContext(), 176);
-    mXa = a.fromDPToPix(ak.getContext(), 99);
-    mXb = a.fromDPToPix(ak.getContext(), 119);
-    mXc = a.fromDPToPix(ak.getContext(), 196);
-    mXd = a.fromDPToPix(ak.getContext(), 99);
-    mXe = a.fromDPToPix(ak.getContext(), 176);
-    mXf = a.fromDPToPix(ak.getContext(), 32);
-    mXg = a.fromDPToPix(ak.getContext(), 56);
-    mXh = a.fromDPToPix(ak.getContext(), 52);
-    mXi = a.fromDPToPix(ak.getContext(), 6);
-    mXj = a.fromDPToPix(ak.getContext(), 80);
-    mXk = a.fromDPToPix(ak.getContext(), 52);
-    mXl = a.fromDPToPix(ak.getContext(), 8);
-    mXm = a.fromDPToPix(ak.getContext(), 10);
-    mXn = a.fromDPToPix(ak.getContext(), 12);
-    mXo = a.fromDPToPix(ak.getContext(), 1);
-    mXp = a.fromDPToPix(ak.getContext(), 10);
-    mXq = a.fromDPToPix(ak.getContext(), 2);
-    mXr = a.fromDPToPix(ak.getContext(), 1);
-    mXs = new Point();
+    oka = a.fromDPToPix(MMApplicationContext.getContext(), 196);
+    okb = a.fromDPToPix(MMApplicationContext.getContext(), 119);
+    okc = a.fromDPToPix(MMApplicationContext.getContext(), 176);
+    okd = a.fromDPToPix(MMApplicationContext.getContext(), 99);
+    oke = a.fromDPToPix(MMApplicationContext.getContext(), 119);
+    okf = a.fromDPToPix(MMApplicationContext.getContext(), 196);
+    okg = a.fromDPToPix(MMApplicationContext.getContext(), 99);
+    okh = a.fromDPToPix(MMApplicationContext.getContext(), 176);
+    oki = a.fromDPToPix(MMApplicationContext.getContext(), 32);
+    okj = a.fromDPToPix(MMApplicationContext.getContext(), 56);
+    okk = a.fromDPToPix(MMApplicationContext.getContext(), 52);
+    okl = a.fromDPToPix(MMApplicationContext.getContext(), 6);
+    okm = a.fromDPToPix(MMApplicationContext.getContext(), 80);
+    okn = a.fromDPToPix(MMApplicationContext.getContext(), 52);
+    oko = a.fromDPToPix(MMApplicationContext.getContext(), 8);
+    okp = a.fromDPToPix(MMApplicationContext.getContext(), 10);
+    okq = a.fromDPToPix(MMApplicationContext.getContext(), 12);
+    okr = a.fromDPToPix(MMApplicationContext.getContext(), 1);
+    oks = a.fromDPToPix(MMApplicationContext.getContext(), 10);
+    okt = a.fromDPToPix(MMApplicationContext.getContext(), 2);
+    oku = a.fromDPToPix(MMApplicationContext.getContext(), 1);
+    okv = new Point();
     AppMethodBeat.o(176823);
   }
   
@@ -135,49 +135,49 @@ public final class AppBrandPipContainerView
   {
     super(paramContext, paramAttributeSet, paramInt);
     AppMethodBeat.i(176792);
-    this.mXt = null;
-    this.mXv = mXs;
-    this.htH = mXs;
-    this.mXw = false;
-    this.gNg = new PointF();
-    this.mXx = new PointF();
-    this.mXy = -1.0F;
-    this.mXz = false;
-    this.mXA = false;
-    this.mXD = null;
-    this.mrV = mWZ;
-    this.mXE = null;
-    this.mXF = new AppBrandPipContainerView.1(this);
-    this.mXO = true;
-    this.mXP = true;
-    this.mXQ = false;
-    this.mXR = null;
-    paramAttributeSet = LayoutInflater.from(paramContext).inflate(2131493023, this);
+    this.okw = null;
+    this.oky = okv;
+    this.inq = okv;
+    this.okz = false;
+    this.okA = new PointF();
+    this.okB = new PointF();
+    this.okC = -1.0F;
+    this.okD = false;
+    this.okE = false;
+    this.okH = null;
+    this.nCG = okc;
+    this.okI = null;
+    this.okJ = new AppBrandPipContainerView.1(this);
+    this.okS = true;
+    this.okT = true;
+    this.okU = false;
+    this.okV = null;
+    paramAttributeSet = LayoutInflater.from(paramContext).inflate(2131493062, this);
     setBackgroundColor(0);
-    this.mXM = paramAttributeSet.findViewById(2131296795);
-    this.mXN = paramAttributeSet.findViewById(2131296794);
-    this.mXN.setOutlineProvider(this.mXF);
-    this.mXN.setClipToOutline(true);
-    this.mXH = ((ViewGroup)paramAttributeSet.findViewById(2131296796));
-    this.mXI = paramAttributeSet.findViewById(2131296793);
-    this.mXJ = paramAttributeSet.findViewById(2131296797);
-    this.mXJ.setVisibility(4);
-    this.mXK = ((ViewGroup)paramAttributeSet.findViewById(2131296798));
-    this.mXK.setVisibility(4);
-    this.mXL = paramAttributeSet.findViewById(2131296799);
-    this.mXL.setVisibility(4);
-    b(this.mrV, mXm, mXl, mXn, mXo, mXp, mXq);
-    this.mXu = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+    this.okQ = paramAttributeSet.findViewById(2131296877);
+    this.okR = paramAttributeSet.findViewById(2131296876);
+    this.okR.setOutlineProvider(this.okJ);
+    this.okR.setClipToOutline(true);
+    this.okL = ((ViewGroup)paramAttributeSet.findViewById(2131296878));
+    this.okM = paramAttributeSet.findViewById(2131296875);
+    this.okN = paramAttributeSet.findViewById(2131296881);
+    this.okN.setVisibility(4);
+    this.okO = ((ViewGroup)paramAttributeSet.findViewById(2131296882));
+    this.okO.setVisibility(4);
+    this.okP = paramAttributeSet.findViewById(2131296883);
+    this.okP.setVisibility(4);
+    b(this.nCG, okp, oko, okq, okr, oks, okt);
+    this.okx = ViewConfiguration.get(paramContext).getScaledTouchSlop();
     this.mCurOrientation = paramContext.getResources().getConfiguration().orientation;
-    this.htH = ck(paramContext);
-    ae.i("MicroMsg.AppBrand.AppBrandPipContainerView", "init, mScreenSize: " + this.htH);
+    this.inq = az(paramContext);
+    Log.i("MicroMsg.AppBrand.AppBrandPipContainerView", "init, mScreenSize: " + this.inq);
     AppMethodBeat.o(176792);
   }
   
-  private boolean C(MotionEvent paramMotionEvent)
+  private boolean G(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(176806);
-    if ((Math.abs(paramMotionEvent.getRawX() - this.gNg.x) > this.mXu) || (Math.abs(paramMotionEvent.getRawY() - this.gNg.y) > this.mXu))
+    if ((Math.abs(paramMotionEvent.getRawX() - this.okA.x) > this.okx) || (Math.abs(paramMotionEvent.getRawY() - this.okA.y) > this.okx))
     {
       AppMethodBeat.o(176806);
       return true;
@@ -186,39 +186,39 @@ public final class AppBrandPipContainerView
     return false;
   }
   
-  private int D(MotionEvent paramMotionEvent)
+  private int H(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(176807);
-    int j = this.mXv.x;
+    int j = this.oky.x;
     int i = j;
     if (j <= 0)
     {
-      i = this.htH.x;
-      ae.w("MicroMsg.AppBrand.AppBrandPipContainerView", "getMotionEventNewPositionX, mParentViewSize: " + this.mXv + ", mScreenSize: " + this.htH);
+      i = this.inq.x;
+      Log.w("MicroMsg.AppBrand.AppBrandPipContainerView", "getMotionEventNewPositionX, mParentViewSize: " + this.oky + ", mScreenSize: " + this.inq);
     }
-    i = (int)Math.max(Math.min(this.mXx.x + paramMotionEvent.getRawX() - this.gNg.x, i - getWidth()), 0.0F);
+    i = (int)Math.max(Math.min(this.okB.x + paramMotionEvent.getRawX() - this.okA.x, i - getWidth()), 0.0F);
     AppMethodBeat.o(176807);
     return i;
   }
   
-  private int E(MotionEvent paramMotionEvent)
+  private int I(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(176808);
-    int j = this.mXv.y;
+    int j = this.oky.y;
     int i = j;
     if (j <= 0)
     {
-      i = this.htH.y;
-      ae.w("MicroMsg.AppBrand.AppBrandPipContainerView", "getMotionEventNewPositionY, mParentViewSize: " + this.mXv + ", mScreenSize: " + this.htH);
+      i = this.inq.y;
+      Log.w("MicroMsg.AppBrand.AppBrandPipContainerView", "getMotionEventNewPositionY, mParentViewSize: " + this.oky + ", mScreenSize: " + this.inq);
     }
-    i = (int)Math.max(Math.min(this.mXx.y + paramMotionEvent.getRawY() - this.gNg.y, i - getHeight()), 0.0F);
+    i = (int)Math.max(Math.min(this.okB.y + paramMotionEvent.getRawY() - this.okA.y, i - getHeight()), 0.0F);
     AppMethodBeat.o(176808);
     return i;
   }
   
-  private void K(float paramFloat1, float paramFloat2)
+  private void O(float paramFloat1, float paramFloat2)
   {
-    AppMethodBeat.i(208004);
+    AppMethodBeat.i(219609);
     float f1 = getX();
     float f2 = getX();
     if ((f1 != paramFloat1) || (f2 != paramFloat2))
@@ -227,10 +227,10 @@ public final class AppBrandPipContainerView
       setY(paramFloat2);
       a(paramFloat2, false);
     }
-    AppMethodBeat.o(208004);
+    AppMethodBeat.o(219609);
   }
   
-  public static Point ck(Context paramContext)
+  public static Point az(Context paramContext)
   {
     AppMethodBeat.i(176820);
     Point localPoint = new Point();
@@ -261,33 +261,33 @@ public final class AppBrandPipContainerView
     }
   }
   
-  private int ep(int paramInt1, int paramInt2)
+  private int eD(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(176810);
     int i = getMinX();
-    if (!er(paramInt1, paramInt2)) {
-      i = vW(paramInt2);
+    if (!eF(paramInt1, paramInt2)) {
+      i = zL(paramInt2);
     }
     AppMethodBeat.o(176810);
     return i;
   }
   
-  private boolean er(int paramInt1, int paramInt2)
+  private boolean eF(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(208005);
-    int j = this.mXv.x;
+    AppMethodBeat.i(219610);
+    int j = this.oky.x;
     int i = j;
     if (j <= 0)
     {
-      i = this.htH.x;
-      ae.w("MicroMsg.AppBrand.AppBrandPipContainerView", "isPositionLeft, mParentViewSize: " + this.mXv + ", mScreenSize: " + this.htH);
+      i = this.inq.x;
+      Log.w("MicroMsg.AppBrand.AppBrandPipContainerView", "isPositionLeft, mParentViewSize: " + this.oky + ", mScreenSize: " + this.inq);
     }
     if (paramInt2 / 2 + paramInt1 <= i / 2) {}
     for (boolean bool = true;; bool = false)
     {
-      this.mXz = bool;
-      bool = this.mXz;
-      AppMethodBeat.o(208005);
+      this.okD = bool;
+      bool = this.okD;
+      AppMethodBeat.o(219610);
       return bool;
     }
   }
@@ -295,25 +295,25 @@ public final class AppBrandPipContainerView
   private int getMarginBottom()
   {
     if (1 == this.mCurOrientation) {
-      return mXk;
+      return okn;
     }
-    return mXh;
+    return okk;
   }
   
   private int getMarginHorizontal()
   {
     if (1 == this.mCurOrientation) {
-      return mXi;
+      return okl;
     }
-    return mXf;
+    return oki;
   }
   
   private int getMarginTopDefault()
   {
     if (1 == this.mCurOrientation) {
-      return mXj;
+      return okm;
     }
-    return mXg;
+    return okj;
   }
   
   public final void a(float paramFloat, boolean paramBoolean)
@@ -322,126 +322,126 @@ public final class AppBrandPipContainerView
     if (paramBoolean)
     {
       int i = getMinY();
-      int j = vX(getHeight());
-      this.mXy = ((Math.min(Math.max(paramFloat, i), j) - i) / (j - i));
+      int j = zM(getHeight());
+      this.okC = ((Math.min(Math.max(paramFloat, i), j) - i) / (j - i));
     }
     AppMethodBeat.o(176818);
   }
   
   public final void a(a parama)
   {
-    AppMethodBeat.i(208001);
-    if (this.mXD == null) {
-      this.mXD = new HashSet();
+    AppMethodBeat.i(219606);
+    if (this.okH == null) {
+      this.okH = new HashSet();
     }
-    this.mXD.add(parama);
-    AppMethodBeat.o(208001);
+    this.okH.add(parama);
+    AppMethodBeat.o(219606);
   }
   
-  public final void aL(float paramFloat)
+  public final void aV(float paramFloat)
   {
     AppMethodBeat.i(176800);
-    if (!this.mXP)
+    if (!this.okT)
     {
       AppMethodBeat.o(176800);
       return;
     }
-    this.mXK.setVisibility(0);
-    this.mXL.setVisibility(0);
-    ViewGroup.LayoutParams localLayoutParams = this.mXL.getLayoutParams();
-    localLayoutParams.width = ((int)(this.mrV * paramFloat / 100.0F));
-    this.mXL.setLayoutParams(localLayoutParams);
-    this.mXE = Float.valueOf(paramFloat);
+    this.okO.setVisibility(0);
+    this.okP.setVisibility(0);
+    ViewGroup.LayoutParams localLayoutParams = this.okP.getLayoutParams();
+    localLayoutParams.width = ((int)(this.nCG * paramFloat / 100.0F));
+    this.okP.setLayoutParams(localLayoutParams);
+    this.okI = Float.valueOf(paramFloat);
     AppMethodBeat.o(176800);
   }
   
   public final void b(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
     AppMethodBeat.i(176801);
-    this.mrV = paramInt1;
-    if (this.mXE != null) {
-      aL(this.mXE.floatValue());
+    this.nCG = paramInt1;
+    if (this.okI != null) {
+      aV(this.okI.floatValue());
     }
-    this.mXM.setPadding(paramInt2, paramInt3, paramInt2, paramInt4);
-    Object localObject = (FrameLayout.LayoutParams)this.mXN.getLayoutParams();
+    this.okQ.setPadding(paramInt2, paramInt3, paramInt2, paramInt4);
+    Object localObject = (FrameLayout.LayoutParams)this.okR.getLayoutParams();
     ((FrameLayout.LayoutParams)localObject).leftMargin = paramInt2;
     ((FrameLayout.LayoutParams)localObject).rightMargin = paramInt2;
     ((FrameLayout.LayoutParams)localObject).topMargin = paramInt3;
     ((FrameLayout.LayoutParams)localObject).bottomMargin = paramInt4;
-    this.mXN.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = new ac.a();
-    ((ac.a)localObject).mLL = paramInt5;
-    ((ac.a)localObject).mLO = Color.parseColor("#4C000000");
-    ((ac.a)localObject).Sr = paramInt6;
-    ((ac.a)localObject).mOffsetX = 0;
-    ((ac.a)localObject).mOffsetY = paramInt7;
-    localObject = ((ac.a)localObject).bAJ();
-    if (this.mXQ)
+    this.okR.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    localObject = new ai.a();
+    ((ai.a)localObject).nYT = paramInt5;
+    ((ai.a)localObject).nYW = Color.parseColor("#4C000000");
+    ((ai.a)localObject).SE = paramInt6;
+    ((ai.a)localObject).mOffsetX = 0;
+    ((ai.a)localObject).mOffsetY = paramInt7;
+    localObject = ((ai.a)localObject).bXO();
+    if (this.okU)
     {
-      ac.b(this.mXM, (Drawable)localObject);
+      ai.b(this.okQ, (Drawable)localObject);
       AppMethodBeat.o(176801);
       return;
     }
-    this.mXR = ((ac)localObject);
+    this.okV = ((ai)localObject);
     AppMethodBeat.o(176801);
   }
   
-  public final void bCS()
+  public final void bZX()
   {
     AppMethodBeat.i(176798);
-    ae.i("MicroMsg.AppBrand.AppBrandPipContainerView", "disableTouch");
-    this.mXI.setVisibility(4);
-    this.mXO = false;
+    Log.i("MicroMsg.AppBrand.AppBrandPipContainerView", "disableTouch");
+    this.okM.setVisibility(4);
+    this.okS = false;
     AppMethodBeat.o(176798);
   }
   
-  public final void bCT()
+  public final void bZY()
   {
-    AppMethodBeat.i(207999);
-    ae.i("MicroMsg.AppBrand.AppBrandPipContainerView", "showOnLoadEnd");
-    this.mXJ.setVisibility(4);
-    AppMethodBeat.o(207999);
+    AppMethodBeat.i(219604);
+    Log.i("MicroMsg.AppBrand.AppBrandPipContainerView", "showOnLoadEnd");
+    this.okN.setVisibility(4);
+    AppMethodBeat.o(219604);
   }
   
-  public final void bCU()
+  public final void bZZ()
   {
-    AppMethodBeat.i(208000);
-    this.mXK.setVisibility(4);
-    this.mXL.setVisibility(4);
-    this.mXE = null;
-    AppMethodBeat.o(208000);
+    AppMethodBeat.i(219605);
+    this.okO.setVisibility(4);
+    this.okP.setVisibility(4);
+    this.okI = null;
+    AppMethodBeat.o(219605);
   }
   
-  public final void em(int paramInt1, int paramInt2)
+  public final void eA(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(176802);
-    this.mXB = ep(paramInt1, paramInt2);
+    this.okF = eD(paramInt1, paramInt2);
     AppMethodBeat.o(176802);
   }
   
-  public final void en(int paramInt1, int paramInt2)
+  public final void eB(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(176803);
-    this.mXC = eq(paramInt1, paramInt2);
+    this.okG = eE(paramInt1, paramInt2);
     AppMethodBeat.o(176803);
   }
   
-  public final void eo(int paramInt1, int paramInt2)
+  public final void eC(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(208003);
-    if (this.mXD == null)
+    AppMethodBeat.i(219608);
+    if (this.okH == null)
     {
-      AppMethodBeat.o(208003);
+      AppMethodBeat.o(219608);
       return;
     }
-    Iterator localIterator = this.mXD.iterator();
+    Iterator localIterator = this.okH.iterator();
     while (localIterator.hasNext()) {
-      ((a)localIterator.next()).eh(paramInt1, paramInt2);
+      ((a)localIterator.next()).ev(paramInt1, paramInt2);
     }
-    AppMethodBeat.o(208003);
+    AppMethodBeat.o(219608);
   }
   
-  public final int eq(int paramInt1, int paramInt2)
+  public final int eE(int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(176811);
     int i = getMinY();
@@ -452,7 +452,7 @@ public final class AppBrandPipContainerView
     {
       AppMethodBeat.o(176811);
       return paramInt2;
-      i = vX(paramInt2);
+      i = zM(paramInt2);
       paramInt2 = paramInt1;
       if (paramInt1 > i) {
         paramInt2 = i;
@@ -471,9 +471,9 @@ public final class AppBrandPipContainerView
   public final int getMinY()
   {
     AppMethodBeat.i(176816);
-    if (this.mXt != null)
+    if (this.okw != null)
     {
-      i = this.mXt.intValue();
+      i = this.okw.intValue();
       AppMethodBeat.o(176816);
       return i;
     }
@@ -485,8 +485,8 @@ public final class AppBrandPipContainerView
   public final int getStablePosX()
   {
     AppMethodBeat.i(176804);
-    ae.d("MicroMsg.AppBrand.AppBrandPipContainerView", "getStablePosX, mStablePosX: " + this.mXB);
-    int i = this.mXB;
+    Log.d("MicroMsg.AppBrand.AppBrandPipContainerView", "getStablePosX, mStablePosX: " + this.okF);
+    int i = this.okF;
     AppMethodBeat.o(176804);
     return i;
   }
@@ -494,8 +494,8 @@ public final class AppBrandPipContainerView
   public final int getStablePosY()
   {
     AppMethodBeat.i(176805);
-    ae.d("MicroMsg.AppBrand.AppBrandPipContainerView", "getStablePosY, mStablePosY: " + this.mXC);
-    int i = this.mXC;
+    Log.d("MicroMsg.AppBrand.AppBrandPipContainerView", "getStablePosY, mStablePosY: " + this.okG);
+    int i = this.okG;
     AppMethodBeat.o(176805);
     return i;
   }
@@ -504,43 +504,43 @@ public final class AppBrandPipContainerView
   {
     AppMethodBeat.i(176819);
     int i = getMinX();
-    if (!this.mXz) {
-      i = vW(getWidth());
+    if (!this.okD) {
+      i = zL(getWidth());
     }
     AppMethodBeat.o(176819);
     return i;
   }
   
-  public final void hU(boolean paramBoolean)
+  public final void iZ(boolean paramBoolean)
   {
-    AppMethodBeat.i(207998);
-    ae.i("MicroMsg.AppBrand.AppBrandPipContainerView", "enableShadow, isEnabled: ".concat(String.valueOf(paramBoolean)));
-    this.mXQ = paramBoolean;
+    AppMethodBeat.i(219603);
+    Log.i("MicroMsg.AppBrand.AppBrandPipContainerView", "enableShadow, isEnabled: ".concat(String.valueOf(paramBoolean)));
+    this.okU = paramBoolean;
     if (paramBoolean)
     {
-      if (this.mXR != null)
+      if (this.okV != null)
       {
-        ae.i("MicroMsg.AppBrand.AppBrandPipContainerView", "enableShadow, setShadowDrawable");
-        ac.b(this.mXM, this.mXR);
-        AppMethodBeat.o(207998);
+        Log.i("MicroMsg.AppBrand.AppBrandPipContainerView", "enableShadow, setShadowDrawable");
+        ai.b(this.okQ, this.okV);
+        AppMethodBeat.o(219603);
       }
     }
     else {
-      ac.b(this.mXM, null);
+      ai.b(this.okQ, null);
     }
-    AppMethodBeat.o(207998);
+    AppMethodBeat.o(219603);
   }
   
-  public final void hV(boolean paramBoolean)
+  public final void ja(boolean paramBoolean)
   {
     AppMethodBeat.i(176797);
-    ae.i("MicroMsg.AppBrand.AppBrandPipContainerView", "enableTouch");
-    View localView = this.mXI;
+    Log.i("MicroMsg.AppBrand.AppBrandPipContainerView", "enableTouch");
+    View localView = this.okM;
     if (paramBoolean) {}
     for (int i = 0;; i = 4)
     {
       localView.setVisibility(i);
-      this.mXO = true;
+      this.okS = true;
       AppMethodBeat.o(176797);
       return;
     }
@@ -554,14 +554,14 @@ public final class AppBrandPipContainerView
     View localView = (View)getParent();
     if (localView == null)
     {
-      ae.w("MicroMsg.AppBrand.AppBrandPipContainerView", "onLayout, null == parentView");
+      Log.w("MicroMsg.AppBrand.AppBrandPipContainerView", "onLayout, null == parentView");
       AppMethodBeat.o(176794);
       return;
     }
-    if (mXs == this.mXv)
+    if (okv == this.oky)
     {
-      this.mXv = new Point(localView.getWidth(), localView.getHeight());
-      ae.i("MicroMsg.AppBrand.AppBrandPipContainerView", "onLayout, mParentViewSize: " + this.mXv);
+      this.oky = new Point(localView.getWidth(), localView.getHeight());
+      Log.i("MicroMsg.AppBrand.AppBrandPipContainerView", "onLayout, mParentViewSize: " + this.oky);
       a(getY(), true);
     }
     AppMethodBeat.o(176794);
@@ -570,7 +570,7 @@ public final class AppBrandPipContainerView
   public final boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
     AppMethodBeat.i(176793);
-    if (!this.mXO)
+    if (!this.okS)
     {
       AppMethodBeat.o(176793);
       return true;
@@ -585,30 +585,30 @@ public final class AppBrandPipContainerView
         boolean bool = super.onTouchEvent(paramMotionEvent);
         AppMethodBeat.o(176793);
         return bool;
-        this.mXw = false;
-        this.gNg.x = paramMotionEvent.getRawX();
-        this.gNg.y = paramMotionEvent.getRawY();
-        this.mXx.x = ((int)getX());
-        this.mXx.y = ((int)getY());
-        ae.i("MicroMsg.AppBrand.AppBrandPipContainerView", "recordPositionWhenActionDown, fingerPosOnDown: " + this.gNg + ", viewPosOnDown: " + this.mXx);
+        this.okz = false;
+        this.okA.x = paramMotionEvent.getRawX();
+        this.okA.y = paramMotionEvent.getRawY();
+        this.okB.x = ((int)getX());
+        this.okB.y = ((int)getY());
+        Log.i("MicroMsg.AppBrand.AppBrandPipContainerView", "recordPositionWhenActionDown, fingerPosOnDown: " + this.okA + ", viewPosOnDown: " + this.okB);
         continue;
-        if ((!this.mXw) && (C(paramMotionEvent))) {
-          this.mXw = true;
+        if ((!this.okz) && (G(paramMotionEvent))) {
+          this.okz = true;
         }
-        if (this.mXw) {
-          K(D(paramMotionEvent), E(paramMotionEvent));
+        if (this.okz) {
+          O(H(paramMotionEvent), I(paramMotionEvent));
         }
       }
-    } while ((!this.mXw) && (!C(paramMotionEvent)));
-    if (this.mXw) {
-      this.mXw = false;
+    } while ((!this.okz) && (!G(paramMotionEvent)));
+    if (this.okz) {
+      this.okz = false;
     }
-    int i = D(paramMotionEvent);
+    int i = H(paramMotionEvent);
     int j = getWidth();
-    int k = E(paramMotionEvent);
+    int k = I(paramMotionEvent);
     int m = getHeight();
-    ae.i("MicroMsg.AppBrand.AppBrandPipContainerView", "onTouchEvent, startPositionX: " + i + ", width: " + j + ", startPositionY: " + k + ", height: " + m);
-    z(i, k, ep(i, j), eq(k, m));
+    Log.i("MicroMsg.AppBrand.AppBrandPipContainerView", "onTouchEvent, startPositionX: " + i + ", width: " + j + ", startPositionY: " + k + ", height: " + m);
+    z(i, k, eD(i, j), eE(k, m));
     AppMethodBeat.o(176793);
     return true;
   }
@@ -616,58 +616,30 @@ public final class AppBrandPipContainerView
   public final void setOnCloseButtonClickListener(View.OnClickListener paramOnClickListener)
   {
     AppMethodBeat.i(176799);
-    this.mXI.setOnClickListener(paramOnClickListener);
+    this.okM.setOnClickListener(paramOnClickListener);
     AppMethodBeat.o(176799);
   }
   
   public final void setStablePos(Point paramPoint)
   {
-    AppMethodBeat.i(208002);
-    ae.d("MicroMsg.AppBrand.AppBrandPipContainerView", "setStablePos, stablePos: ".concat(String.valueOf(paramPoint)));
-    this.mXB = paramPoint.x;
-    this.mXC = paramPoint.y;
-    this.mXA = true;
-    AppMethodBeat.o(208002);
-  }
-  
-  public final int vW(int paramInt)
-  {
-    AppMethodBeat.i(176815);
-    int i = this.mXv.x;
-    int k = getMarginHorizontal();
-    int j = i - paramInt - k;
-    i = j;
-    if (j < 0) {
-      i = this.htH.x - paramInt - k;
-    }
-    AppMethodBeat.o(176815);
-    return i;
-  }
-  
-  public final int vX(int paramInt)
-  {
-    AppMethodBeat.i(176817);
-    int i = this.mXv.y;
-    int k = getMarginBottom();
-    int j = i - paramInt - k;
-    i = j;
-    if (j < 0) {
-      i = this.htH.y - paramInt - k;
-    }
-    AppMethodBeat.o(176817);
-    return i;
+    AppMethodBeat.i(219607);
+    Log.d("MicroMsg.AppBrand.AppBrandPipContainerView", "setStablePos, stablePos: ".concat(String.valueOf(paramPoint)));
+    this.okF = paramPoint.x;
+    this.okG = paramPoint.y;
+    this.okE = true;
+    AppMethodBeat.o(219607);
   }
   
   public final void z(final int paramInt1, final int paramInt2, final int paramInt3, final int paramInt4)
   {
     AppMethodBeat.i(176813);
-    if ((this.mXG != null) && (this.mXG.isRunning())) {
-      this.mXG.cancel();
+    if ((this.okK != null) && (this.okK.isRunning())) {
+      this.okK.cancel();
     }
-    this.mXG = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
-    this.mXG.setInterpolator(new AccelerateDecelerateInterpolator());
-    this.mXG.setDuration(100L);
-    this.mXG.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
+    this.okK = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    this.okK.setInterpolator(new AccelerateDecelerateInterpolator());
+    this.okK.setDuration(100L);
+    this.okK.addUpdateListener(new ValueAnimator.AnimatorUpdateListener()
     {
       public final void onAnimationUpdate(ValueAnimator paramAnonymousValueAnimator)
       {
@@ -681,7 +653,7 @@ public final class AppBrandPipContainerView
         AppMethodBeat.o(176790);
       }
     });
-    this.mXG.addListener(new AnimatorListenerAdapter()
+    this.okK.addListener(new AnimatorListenerAdapter()
     {
       public final void onAnimationEnd(Animator paramAnonymousAnimator)
       {
@@ -690,23 +662,51 @@ public final class AppBrandPipContainerView
         AppBrandPipContainerView.a(AppBrandPipContainerView.this, AppBrandPipContainerView.this.getY());
         AppBrandPipContainerView.a(AppBrandPipContainerView.this, paramInt3);
         AppBrandPipContainerView.b(AppBrandPipContainerView.this, paramInt4);
-        ae.i("MicroMsg.AppBrand.AppBrandPipContainerView", "startStickyAnimation, mStablePosX: " + AppBrandPipContainerView.a(AppBrandPipContainerView.this) + ", mStablePosY: " + AppBrandPipContainerView.b(AppBrandPipContainerView.this));
+        Log.i("MicroMsg.AppBrand.AppBrandPipContainerView", "startStickyAnimation, mStablePosX: " + AppBrandPipContainerView.a(AppBrandPipContainerView.this) + ", mStablePosY: " + AppBrandPipContainerView.b(AppBrandPipContainerView.this));
         AppBrandPipContainerView.a(AppBrandPipContainerView.this, AppBrandPipContainerView.a(AppBrandPipContainerView.this), AppBrandPipContainerView.b(AppBrandPipContainerView.this));
         AppMethodBeat.o(176791);
       }
     });
-    this.mXG.start();
+    this.okK.start();
     AppMethodBeat.o(176813);
+  }
+  
+  public final int zL(int paramInt)
+  {
+    AppMethodBeat.i(176815);
+    int i = this.oky.x;
+    int k = getMarginHorizontal();
+    int j = i - paramInt - k;
+    i = j;
+    if (j < 0) {
+      i = this.inq.x - paramInt - k;
+    }
+    AppMethodBeat.o(176815);
+    return i;
+  }
+  
+  public final int zM(int paramInt)
+  {
+    AppMethodBeat.i(176817);
+    int i = this.oky.y;
+    int k = getMarginBottom();
+    int j = i - paramInt - k;
+    i = j;
+    if (j < 0) {
+      i = this.inq.y - paramInt - k;
+    }
+    AppMethodBeat.o(176817);
+    return i;
   }
   
   public static abstract interface a
   {
-    public abstract void eh(int paramInt1, int paramInt2);
+    public abstract void ev(int paramInt1, int paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.widget.AppBrandPipContainerView
  * JD-Core Version:    0.7.0.1
  */

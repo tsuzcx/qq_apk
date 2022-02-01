@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:padding="@dimen/ha" android:layout_width="255.0dip" android:layout_height="wrap_content" android:minHeight="200.0dip"
+<RelativeLayout android:orientation="vertical" android:background="#ffcccac6" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:background="@drawable/b4y" android:layout_width="200.0dip" android:layout_height="118.0dip" />
-    <TextView android:textSize="@dimen/ia" android:textColor="@color/y4" android:layout_gravity="center" android:id="@id/gwb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ha" android:text="@string/giv" />
-</LinearLayout>
+    <TextView android:textSize="15.0dip" android:textColor="@color/l4" android:id="@id/dou" android:layout_width="wrap_content" android:layout_height="24.0dip" android:layout_marginLeft="8.0dip" android:layout_centerVertical="true" />
+    <com.tencent.mm.plugin.location.ui.SimpleImageView android:id="@id/doh" android:layout_width="wrap_content" android:layout_height="13.0dip" android:layout_marginRight="5.0dip" android:scaleType="centerInside" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

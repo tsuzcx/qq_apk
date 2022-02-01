@@ -1,13 +1,13 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.bzh;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.plugin.wallet_core.model.a;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class ut
-  extends b
+  extends IEvent
 {
-  public a dKd;
+  public a eba;
   
   public ut()
   {
@@ -16,24 +16,21 @@ public final class ut
   
   private ut(byte paramByte)
   {
-    AppMethodBeat.i(125640);
-    this.dKd = new a();
-    this.IvZ = false;
+    AppMethodBeat.i(63292);
+    this.eba = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(125640);
+    AppMethodBeat.o(63292);
   }
   
   public static final class a
   {
-    public bzh dKe;
-    public int dlO;
-    public String mediaId;
-    public String path;
+    public a ebb;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.g.a.ut
  * JD-Core Version:    0.7.0.1
  */

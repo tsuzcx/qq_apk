@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:background="@color/a7c" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/jo" android:textColor="@color/km" android:id="@id/cx6" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="3.0" />
-    <View android:layout_width="24.0dip" android:layout_height="fill_parent" />
-    <TextView android:textSize="@dimen/jo" android:textColor="@color/y3" android:id="@id/gkd" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="7.0" />
-</LinearLayout>
+    <RelativeLayout android:id="@id/dto" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <com.tencent.mm.ui.widget.imageview.WeImageView android:layout_gravity="center" android:id="@id/fp5" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/dtn" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fp4" android:layout_width="16.0dip" android:layout_height="16.0dip" />
+            <com.tencent.mm.ui.widget.imageview.WeImageView android:id="@id/fp3" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginTop="8.0dip" />
+        </LinearLayout>
+    </RelativeLayout>
+</RelativeLayout>

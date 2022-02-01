@@ -2,9 +2,9 @@ package com.tencent.mm.plugin.editor.model.nativenote.manager;
 
 public abstract class h
 {
-  public static final c pCm = new c();
-  public static final b pCn = new b();
-  public static final a pCo = new a();
+  public static final c qRE = new c();
+  public static final b qRF = new b();
+  public static final a qRG = new a();
   
   public static final class a
     extends h
@@ -20,7 +20,7 @@ public abstract class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.plugin.editor.model.nativenote.manager.h
  * JD-Core Version:    0.7.0.1
  */

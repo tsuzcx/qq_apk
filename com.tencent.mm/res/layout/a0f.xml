@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/a_r" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:background="@color/afz" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ListView android:id="@id/boc" android:background="@null" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/a7c" android:cacheColorHint="#00000000" android:divider="@color/ts" android:dividerHeight="@dimen/ic" />
-    <include android:id="@id/blq" android:visibility="gone" layout="@layout/a0c" />
+    <ImageView android:layout_width="54.0dip" android:layout_height="54.0dip" android:layout_marginTop="53.0dip" android:src="@raw/remittance_received" />
+    <TextView android:textSize="@dimen/hd" android:textStyle="bold" android:textColor="@color/a2x" android:id="@id/bn6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="37.0dip" android:text="@string/bpp" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <Button android:id="@id/d4y" android:layout_width="184.0dip" android:layout_height="40.0dip" android:layout_marginBottom="96.0dip" android:text="@string/bpo" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" style="@style/ou" />
+    </RelativeLayout>
 </LinearLayout>

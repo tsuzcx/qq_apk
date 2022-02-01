@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:weightSum="1.0"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0dip" android:textColor="#ff949494" android:gravity="center|left" android:id="@id/d13" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <com.tencent.mm.wallet_core.ui.WalletTextView android:textSize="12.0dip" android:textColor="#ff949494" android:gravity="center|right" android:id="@id/f2z" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <TextView android:textSize="@dimen/hc" android:textColor="@color/uj" android:id="@id/gn6" android:background="@drawable/b9x" android:paddingLeft="@dimen/k5" android:paddingTop="@dimen/hs" android:paddingRight="@dimen/k5" android:paddingBottom="@dimen/k_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="A" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/gn7" android:background="@drawable/ai_" android:layout_width="fill_parent" android:layout_height="@dimen/iq">
+        <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:paddingLeft="@dimen/k5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:id="@id/gn8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/mp" />
+            <TextView android:id="@id/gn5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <CheckBox android:id="@id/gn9" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/k5" />
+    </LinearLayout>
 </LinearLayout>

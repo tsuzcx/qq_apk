@@ -79,7 +79,7 @@ public class FacebookActivity
       {
         localObject = new LoginFragment();
         ((Fragment)localObject).setRetainInstance(true);
-        localg.beginTransaction().a(2131298499, (Fragment)localObject, FRAGMENT_TAG).commit();
+        localg.beginTransaction().a(2131298918, (Fragment)localObject, FRAGMENT_TAG).commit();
       }
     }
   }
@@ -104,7 +104,7 @@ public class FacebookActivity
       Utility.logd(TAG, "Facebook SDK not initialized. Make sure you call sdkInitialize inside your Application's onCreate method.");
       FacebookSdk.sdkInitialize(getApplicationContext());
     }
-    setContentView(2131493567);
+    setContentView(2131493683);
     if (PASS_THROUGH_CANCEL_ACTION.equals(paramBundle.getAction()))
     {
       handlePassThroughError();
@@ -123,7 +123,7 @@ public class FacebookActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes8.jar
  * Qualified Name:     com.facebook.FacebookActivity
  * JD-Core Version:    0.7.0.1
  */

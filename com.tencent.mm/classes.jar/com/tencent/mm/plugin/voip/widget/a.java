@@ -13,148 +13,148 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.g.a.lk;
+import com.tencent.mm.plugin.voip.ui.c;
 import com.tencent.mm.plugin.voip.ui.e;
 import com.tencent.mm.plugin.voip.video.render.VoIPRenderTextureView;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.ui.ao;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.ui.ar;
 import java.lang.ref.WeakReference;
 
 public final class a
   extends BaseSmallView
 {
-  private boolean Atj;
-  VoIPRenderTextureView CKV;
-  VoIPRenderTextureView CKW;
-  boolean CKX;
-  RelativeLayout CKY;
-  TextView CKZ;
-  private float CLa;
-  boolean CLb;
-  private Runnable CLc;
-  ImageView fWT;
-  private com.tencent.mm.sdk.b.c gIM;
-  private aq jzz;
+  private TextView BgP;
+  private boolean ECo;
+  VoIPRenderTextureView HpM;
+  VoIPRenderTextureView HpN;
+  boolean HpO;
+  RelativeLayout HpP;
+  boolean HpQ;
+  private Runnable HpR;
+  ImageView gBZ;
+  private IListener hvF;
+  private MMHandler kAn;
   private int mStatus;
   private float radius;
-  private TextView xiT;
+  TextView zTe;
   
-  public a(Context paramContext, float paramFloat)
+  public a(Context paramContext)
   {
     super(paramContext, null);
-    AppMethodBeat.i(210274);
+    AppMethodBeat.i(235919);
     this.mStatus = -1;
-    this.jzz = new aq(Looper.getMainLooper());
-    this.radius = com.tencent.mm.cb.a.fromDPToPix(ak.getContext(), 12);
-    this.CLb = false;
-    this.CLc = new Runnable()
+    this.kAn = new MMHandler(Looper.getMainLooper());
+    this.radius = com.tencent.mm.cb.a.fromDPToPix(MMApplicationContext.getContext(), 12);
+    this.HpQ = false;
+    this.HpR = new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(210268);
+        AppMethodBeat.i(235913);
         a locala = a.this;
-        if ((!locala.CKX) && (locala.CLb))
+        if ((!locala.HpO) && (locala.HpQ))
         {
-          locala.CKX = true;
-          locala.CLb = false;
-          locala.CKV.setVisibility(0);
-          locala.CKV.tN(true);
-          locala.CKW.tN(false);
-          locala.CKW.animate().alpha(0.0F).setDuration(500L).setListener(new a.3(locala)).start();
+          locala.HpO = true;
+          locala.HpQ = false;
+          locala.HpM.setVisibility(0);
+          locala.HpM.xv(true);
+          locala.HpN.xv(false);
+          locala.HpN.animate().alpha(0.0F).setDuration(500L).setListener(new a.3(locala)).start();
         }
-        AppMethodBeat.o(210268);
+        AppMethodBeat.o(235913);
       }
     };
-    this.gIM = new com.tencent.mm.sdk.b.c() {};
-    this.Atj = false;
-    LayoutInflater.from(paramContext).inflate(2131495888, this);
+    this.hvF = new a.2(this);
+    this.ECo = false;
+    LayoutInflater.from(paramContext).inflate(2131496868, this);
     setClipToOutline(true);
     setOutlineProvider(new e(this.radius));
-    this.xiT = ((TextView)findViewById(2131305880));
-    this.CKY = ((RelativeLayout)findViewById(2131306580));
-    this.CKY.setVisibility(4);
-    this.fWT = ((ImageView)findViewById(2131306578));
-    this.CKZ = ((TextView)findViewById(2131306579));
-    this.CLa = paramFloat;
-    this.CKV = ((VoIPRenderTextureView)findViewById(2131302998));
-    this.xiT = ((TextView)findViewById(2131305880));
-    this.CKW = ((VoIPRenderTextureView)findViewById(2131302997));
-    this.CKW.tN(true);
-    this.CKV.setClipToOutline(true);
-    this.CKV.setOutlineProvider(new e(this.radius));
-    this.CKW.setClipToOutline(true);
-    this.CKW.setOutlineProvider(new e(this.radius));
-    this.CKX = false;
-    com.tencent.mm.sdk.b.a.IvT.c(this.gIM);
-    setContentDescription(paramContext.getString(2131757334));
-    AppMethodBeat.o(210274);
+    this.BgP = ((TextView)findViewById(2131309163));
+    this.HpP = ((RelativeLayout)findViewById(2131310040));
+    this.HpP.setVisibility(4);
+    this.gBZ = ((ImageView)findViewById(2131310038));
+    this.zTe = ((TextView)findViewById(2131310039));
+    this.HpM = ((VoIPRenderTextureView)findViewById(2131305591));
+    this.BgP = ((TextView)findViewById(2131309163));
+    this.HpN = ((VoIPRenderTextureView)findViewById(2131305590));
+    this.HpN.xv(true);
+    this.HpM.setClipToOutline(true);
+    this.HpM.setOutlineProvider(new e(this.radius));
+    this.HpN.setClipToOutline(true);
+    this.HpN.setOutlineProvider(new e(this.radius));
+    this.HpO = false;
+    EventCenter.instance.addListener(this.hvF);
+    setContentDescription(paramContext.getString(2131757548));
+    AppMethodBeat.o(235919);
   }
   
-  private void eEY()
+  private void fMg()
   {
-    AppMethodBeat.i(210285);
-    this.xiT.setVisibility(8);
-    AppMethodBeat.o(210285);
+    AppMethodBeat.i(235930);
+    this.BgP.setVisibility(8);
+    AppMethodBeat.o(235930);
   }
   
-  public final void aFc(String paramString) {}
-  
-  public final void aFd(String paramString)
+  public final void aGx(String paramString)
   {
-    AppMethodBeat.i(210281);
-    this.xiT.setTextSize(1, 12.0F);
-    this.xiT.setText(paramString);
-    AppMethodBeat.o(210281);
+    AppMethodBeat.i(235926);
+    this.BgP.setTextSize(1, 12.0F);
+    this.BgP.setText(paramString);
+    AppMethodBeat.o(235926);
   }
   
-  public final void dtu()
+  public final void aGy(String paramString) {}
+  
+  public final void enR()
   {
-    AppMethodBeat.i(210286);
-    eEY();
-    this.CKY.setVisibility(0);
-    this.fWT.setImageDrawable(ao.k(getContext(), 2131690327, Color.parseColor("#FFFFFF")));
-    this.CKZ.setText(2131764923);
-    this.CKZ.requestLayout();
-    super.dtu();
-    AppMethodBeat.o(210286);
+    AppMethodBeat.i(235931);
+    fMg();
+    this.HpP.setVisibility(0);
+    this.gBZ.setImageDrawable(ar.m(getContext(), 2131690443, Color.parseColor("#FFFFFF")));
+    this.zTe.setText(2131767364);
+    this.zTe.requestLayout();
+    super.enR();
+    AppMethodBeat.o(235931);
   }
   
-  public final boolean eCQ()
+  public final boolean eoK()
   {
-    AppMethodBeat.i(210282);
-    super.eCQ();
-    eEY();
-    this.CKY.setVisibility(0);
-    this.fWT.setImageDrawable(ao.k(getContext(), 2131690360, Color.parseColor("#FFFFFF")));
-    this.CKZ.setVisibility(0);
-    this.CKZ.setText(2131764882);
-    this.CKZ.requestLayout();
-    AppMethodBeat.o(210282);
+    AppMethodBeat.i(235927);
+    super.eoK();
+    fMg();
+    this.HpP.setVisibility(0);
+    this.gBZ.setImageDrawable(ar.m(getContext(), 2131690499, Color.parseColor("#FFFFFF")));
+    this.zTe.setVisibility(0);
+    this.zTe.setText(2131767321);
+    this.zTe.requestLayout();
+    AppMethodBeat.o(235927);
     return true;
   }
   
-  public final void eCR()
+  public final void eoL()
   {
-    AppMethodBeat.i(210287);
-    this.xiT.setVisibility(8);
-    this.CKY.setVisibility(8);
-    AppMethodBeat.o(210287);
+    AppMethodBeat.i(235932);
+    this.BgP.setVisibility(8);
+    this.HpP.setVisibility(8);
+    AppMethodBeat.o(235932);
   }
   
-  public final void eCr()
+  public final void fJm()
   {
-    AppMethodBeat.i(210278);
-    this.jzz.post(this.CLc);
-    AppMethodBeat.o(210278);
+    AppMethodBeat.i(235923);
+    this.kAn.post(this.HpR);
+    AppMethodBeat.o(235923);
   }
   
-  public final void eEX()
+  public final void fMf()
   {
-    AppMethodBeat.i(210277);
-    if ((this.mStatus == 2) || (this.mStatus == 256) || (this.CLb)) {
-      this.CKW.tN(false);
+    AppMethodBeat.i(235922);
+    if ((this.mStatus == 2) || (this.mStatus == 256) || (this.HpQ)) {
+      this.HpN.xv(false);
     }
     for (;;)
     {
@@ -166,114 +166,114 @@ public final class a
       localLayoutParams1.width = -1;
       localLayoutParams1.height = -1;
       setLayoutParams(localLayoutParams1);
-      AppMethodBeat.o(210277);
+      AppMethodBeat.o(235922);
       return;
-      this.CKW.tN(true);
-      this.CKV.tN(false);
+      this.HpN.xv(true);
+      this.HpM.xv(false);
     }
   }
   
   public final void onViewAdded(View paramView)
   {
-    AppMethodBeat.i(210275);
+    AppMethodBeat.i(235920);
     super.onViewAdded(paramView);
-    if (this.CAv != null)
+    if (this.Hen != null)
     {
-      ae.i("MicroMsg.Voip.TalkingSmallView", "view added");
-      if (this.CLb) {
-        ((com.tencent.mm.plugin.voip.ui.c)this.CAv.get()).a(this.CKW, 0);
+      Log.i("MicroMsg.Voip.TalkingSmallView", "view added");
+      if (this.HpQ) {
+        ((c)this.Hen.get()).a(this.HpN, 0);
       }
-      paramView = (com.tencent.mm.plugin.voip.ui.c)this.CAv.get();
+      paramView = (c)this.Hen.get();
       if ((260 != this.mStatus) && (6 != this.mStatus)) {}
       for (boolean bool = true;; bool = false)
       {
-        paramView.at(false, bool);
-        ((com.tencent.mm.plugin.voip.ui.c)this.CAv.get()).a(this.CKV, 1);
-        this.CKV.eEW();
-        this.CKW.eEW();
-        AppMethodBeat.o(210275);
+        paramView.aE(false, bool);
+        ((c)this.Hen.get()).a(this.HpM, 1);
+        this.HpM.fMa();
+        this.HpN.fMa();
+        AppMethodBeat.o(235920);
         return;
       }
     }
-    this.Atj = true;
-    AppMethodBeat.o(210275);
+    this.ECo = true;
+    AppMethodBeat.o(235920);
   }
   
   public final void setStatus(int paramInt)
   {
-    AppMethodBeat.i(210280);
+    AppMethodBeat.i(235925);
     this.mStatus = paramInt;
     if ((this.mStatus == 2) || (this.mStatus == 256) || (this.mStatus == 0))
     {
-      this.CLb = true;
-      this.CKV.tN(true);
-      this.CKW.setVisibility(0);
-      this.CKW.tN(false);
-      this.xiT.setVisibility(0);
+      this.HpQ = true;
+      this.HpM.xv(true);
+      this.HpN.setVisibility(0);
+      this.HpN.xv(false);
+      this.BgP.setVisibility(0);
     }
-    this.gNm.postDelayed(new Runnable()
+    this.czp.postDelayed(new Runnable()
     {
       public final void run()
       {
-        AppMethodBeat.i(210273);
-        a.this.findViewById(2131306577).setVisibility(8);
-        AppMethodBeat.o(210273);
+        AppMethodBeat.i(235918);
+        a.this.findViewById(2131310037).setVisibility(8);
+        AppMethodBeat.o(235918);
       }
     }, 3000L);
     if ((this.mStatus != 2) && (this.mStatus != 256) && (this.mStatus == 0))
     {
-      this.CKV.setVisibility(0);
-      this.CKV.tN(false);
-      this.CKW.tN(true);
-      this.xiT.setText("");
-      this.xiT.setVisibility(8);
+      this.HpM.setVisibility(0);
+      this.HpM.xv(false);
+      this.HpN.xv(true);
+      this.BgP.setText("");
+      this.BgP.setVisibility(8);
     }
-    AppMethodBeat.o(210280);
+    AppMethodBeat.o(235925);
   }
   
   public final void setVoicePlayDevice(int paramInt)
   {
-    AppMethodBeat.i(210283);
-    if (this.Cqn != paramInt)
+    AppMethodBeat.i(235928);
+    if (this.GUk != paramInt)
     {
-      eEY();
-      this.Cqn = paramInt;
-      this.CKY.setVisibility(0);
+      fMg();
+      this.GUk = paramInt;
+      this.HpP.setVisibility(0);
       switch (paramInt)
       {
       }
     }
     for (;;)
     {
-      this.xiT.setVisibility(8);
-      this.CKZ.requestLayout();
+      this.BgP.setVisibility(8);
+      this.zTe.requestLayout();
       super.setVoicePlayDevice(paramInt);
-      AppMethodBeat.o(210283);
+      AppMethodBeat.o(235928);
       return;
-      this.fWT.setImageDrawable(ao.k(getContext(), 2131690357, Color.parseColor("#FFFFFF")));
-      this.CKZ.setText(2131764878);
+      this.gBZ.setImageDrawable(ar.m(getContext(), 2131690495, Color.parseColor("#FFFFFF")));
+      this.zTe.setText(2131767317);
       continue;
-      this.fWT.setImageDrawable(ao.k(getContext(), 2131690499, Color.parseColor("#FFFFFF")));
-      this.CKZ.setText(2131764881);
+      this.gBZ.setImageDrawable(ar.m(getContext(), 2131690708, Color.parseColor("#FFFFFF")));
+      this.zTe.setText(2131767320);
       continue;
-      this.fWT.setImageDrawable(ao.k(getContext(), 2131690395, Color.parseColor("#FFFFFF")));
-      this.CKZ.setText(2131764879);
+      this.gBZ.setImageDrawable(ar.m(getContext(), 2131690544, Color.parseColor("#FFFFFF")));
+      this.zTe.setText(2131767318);
       continue;
-      this.fWT.setImageDrawable(ao.k(getContext(), 2131690411, Color.parseColor("#FFFFFF")));
-      this.CKZ.setText(2131764880);
+      this.gBZ.setImageDrawable(ar.m(getContext(), 2131690568, Color.parseColor("#FFFFFF")));
+      this.zTe.setText(2131767319);
     }
   }
   
-  public final void setVoipUIListener(com.tencent.mm.plugin.voip.ui.c paramc)
+  public final void setVoipUIListener(c paramc)
   {
-    AppMethodBeat.i(210276);
+    AppMethodBeat.i(235921);
     super.setVoipUIListener(paramc);
-    if (this.Atj)
+    if (this.ECo)
     {
-      if (this.CLb) {
-        ((com.tencent.mm.plugin.voip.ui.c)this.CAv.get()).a(this.CKW, 0);
+      if (this.HpQ) {
+        ((c)this.Hen.get()).a(this.HpN, 0);
       }
-      paramc = (com.tencent.mm.plugin.voip.ui.c)this.CAv.get();
+      paramc = (c)this.Hen.get();
       if ((260 == this.mStatus) || (6 == this.mStatus)) {
         break label131;
       }
@@ -281,44 +281,44 @@ public final class a
     label131:
     for (boolean bool = true;; bool = false)
     {
-      paramc.at(false, bool);
-      ((com.tencent.mm.plugin.voip.ui.c)this.CAv.get()).a(this.CKV, 1);
-      this.Atj = false;
-      this.CKV.eEW();
-      this.CKW.eEW();
-      AppMethodBeat.o(210276);
+      paramc.aE(false, bool);
+      ((c)this.Hen.get()).a(this.HpM, 1);
+      this.ECo = false;
+      this.HpM.fMa();
+      this.HpN.fMa();
+      AppMethodBeat.o(235921);
       return;
     }
-  }
-  
-  public final void tC(boolean paramBoolean)
-  {
-    AppMethodBeat.i(210284);
-    if (paramBoolean)
-    {
-      this.xiT.setVisibility(0);
-      this.xiT.setText(2131764894);
-      AppMethodBeat.o(210284);
-      return;
-    }
-    super.tC(false);
-    AppMethodBeat.o(210284);
   }
   
   public final void uninit()
   {
-    AppMethodBeat.i(210279);
-    ((com.tencent.mm.plugin.voip.ui.c)this.CAv.get()).a(this.CKW);
-    ((com.tencent.mm.plugin.voip.ui.c)this.CAv.get()).a(this.CKV);
+    AppMethodBeat.i(235924);
+    ((c)this.Hen.get()).a(this.HpN);
+    ((c)this.Hen.get()).a(this.HpM);
     super.uninit();
-    com.tencent.mm.sdk.b.a.IvT.d(this.gIM);
+    EventCenter.instance.removeListener(this.hvF);
     setVisibility(4);
-    AppMethodBeat.o(210279);
+    AppMethodBeat.o(235924);
+  }
+  
+  public final void xm(boolean paramBoolean)
+  {
+    AppMethodBeat.i(235929);
+    if (paramBoolean)
+    {
+      this.BgP.setVisibility(0);
+      this.BgP.setText(2131767333);
+      AppMethodBeat.o(235929);
+      return;
+    }
+    super.xm(false);
+    AppMethodBeat.o(235929);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.plugin.voip.widget.a
  * JD-Core Version:    0.7.0.1
  */

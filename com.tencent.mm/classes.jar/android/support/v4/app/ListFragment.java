@@ -19,71 +19,71 @@ import android.widget.TextView;
 public class ListFragment
   extends Fragment
 {
-  private final Runnable GC = new Runnable()
+  private final Runnable GM = new Runnable()
   {
     public final void run()
     {
-      ListFragment.this.GF.focusableViewAvailable(ListFragment.this.GF);
+      ListFragment.this.GP.focusableViewAvailable(ListFragment.this.GP);
     }
   };
-  private final AdapterView.OnItemClickListener GD = new AdapterView.OnItemClickListener()
+  private final AdapterView.OnItemClickListener GN = new AdapterView.OnItemClickListener()
   {
     public final void onItemClick(AdapterView<?> paramAnonymousAdapterView, View paramAnonymousView, int paramAnonymousInt, long paramAnonymousLong) {}
   };
-  ListAdapter GE;
-  ListView GF;
-  View GG;
-  TextView GH;
-  View GI;
-  View GJ;
-  boolean GK;
+  ListAdapter GO;
+  ListView GP;
+  View GQ;
+  TextView GR;
+  View GS;
+  View GT;
+  boolean GU;
   CharSequence mEmptyText;
   private final Handler mHandler = new Handler();
   
   private void e(boolean paramBoolean1, boolean paramBoolean2)
   {
-    el();
-    if (this.GI == null) {
+    ep();
+    if (this.GS == null) {
       throw new IllegalStateException("Can't be used with a custom content view");
     }
-    if (this.GK == paramBoolean1) {
+    if (this.GU == paramBoolean1) {
       return;
     }
-    this.GK = paramBoolean1;
+    this.GU = paramBoolean1;
     if (paramBoolean1)
     {
       if (paramBoolean2)
       {
-        this.GI.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
-        this.GJ.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
+        this.GS.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
+        this.GT.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
       }
       for (;;)
       {
-        this.GI.setVisibility(8);
-        this.GJ.setVisibility(0);
+        this.GS.setVisibility(8);
+        this.GT.setVisibility(0);
         return;
-        this.GI.clearAnimation();
-        this.GJ.clearAnimation();
+        this.GS.clearAnimation();
+        this.GT.clearAnimation();
       }
     }
     if (paramBoolean2)
     {
-      this.GI.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
-      this.GJ.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
+      this.GS.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432576));
+      this.GT.startAnimation(AnimationUtils.loadAnimation(getContext(), 17432577));
     }
     for (;;)
     {
-      this.GI.setVisibility(0);
-      this.GJ.setVisibility(8);
+      this.GS.setVisibility(0);
+      this.GT.setVisibility(8);
       return;
-      this.GI.clearAnimation();
-      this.GJ.clearAnimation();
+      this.GS.clearAnimation();
+      this.GT.clearAnimation();
     }
   }
   
-  private void el()
+  private void ep()
   {
-    if (this.GF != null) {
+    if (this.GP != null) {
       return;
     }
     Object localObject = getView();
@@ -92,28 +92,28 @@ public class ListFragment
     }
     if ((localObject instanceof ListView))
     {
-      this.GF = ((ListView)localObject);
-      this.GK = true;
-      this.GF.setOnItemClickListener(this.GD);
-      if (this.GE == null) {
+      this.GP = ((ListView)localObject);
+      this.GU = true;
+      this.GP.setOnItemClickListener(this.GN);
+      if (this.GO == null) {
         break label254;
       }
-      localObject = this.GE;
-      this.GE = null;
+      localObject = this.GO;
+      this.GO = null;
       setListAdapter((ListAdapter)localObject);
     }
     for (;;)
     {
-      this.mHandler.post(this.GC);
+      this.mHandler.post(this.GM);
       return;
-      this.GH = ((TextView)((View)localObject).findViewById(16711681));
-      if (this.GH == null) {
-        this.GG = ((View)localObject).findViewById(16908292);
+      this.GR = ((TextView)((View)localObject).findViewById(16711681));
+      if (this.GR == null) {
+        this.GQ = ((View)localObject).findViewById(16908292);
       }
       for (;;)
       {
-        this.GI = ((View)localObject).findViewById(16711682);
-        this.GJ = ((View)localObject).findViewById(16711683);
+        this.GS = ((View)localObject).findViewById(16711682);
+        this.GT = ((View)localObject).findViewById(16711683);
         localObject = ((View)localObject).findViewById(16908298);
         if ((localObject instanceof ListView)) {
           break label193;
@@ -122,24 +122,24 @@ public class ListFragment
           break;
         }
         throw new RuntimeException("Your content must have a ListView whose id attribute is 'android.R.id.list'");
-        this.GH.setVisibility(8);
+        this.GR.setVisibility(8);
       }
       throw new RuntimeException("Content has view with id attribute 'android.R.id.list' that is not a ListView class");
       label193:
-      this.GF = ((ListView)localObject);
-      if (this.GG != null)
+      this.GP = ((ListView)localObject);
+      if (this.GQ != null)
       {
-        this.GF.setEmptyView(this.GG);
+        this.GP.setEmptyView(this.GQ);
         break;
       }
       if (this.mEmptyText == null) {
         break;
       }
-      this.GH.setText(this.mEmptyText);
-      this.GF.setEmptyView(this.GH);
+      this.GR.setText(this.mEmptyText);
+      this.GP.setEmptyView(this.GR);
       break;
       label254:
-      if (this.GI != null) {
+      if (this.GS != null) {
         e(false, false);
       }
     }
@@ -148,14 +148,14 @@ public class ListFragment
   private void setListAdapter(ListAdapter paramListAdapter)
   {
     boolean bool = false;
-    if (this.GE != null) {}
+    if (this.GO != null) {}
     for (int i = 1;; i = 0)
     {
-      this.GE = paramListAdapter;
-      if (this.GF != null)
+      this.GO = paramListAdapter;
+      if (this.GP != null)
       {
-        this.GF.setAdapter(paramListAdapter);
-        if ((!this.GK) && (i == 0))
+        this.GP.setAdapter(paramListAdapter);
+        if ((!this.GU) && (i == 0))
         {
           if (getView().getWindowToken() != null) {
             bool = true;
@@ -195,25 +195,25 @@ public class ListFragment
   
   public void onDestroyView()
   {
-    this.mHandler.removeCallbacks(this.GC);
-    this.GF = null;
-    this.GK = false;
-    this.GJ = null;
-    this.GI = null;
-    this.GG = null;
-    this.GH = null;
+    this.mHandler.removeCallbacks(this.GM);
+    this.GP = null;
+    this.GU = false;
+    this.GT = null;
+    this.GS = null;
+    this.GQ = null;
+    this.GR = null;
     super.onDestroyView();
   }
   
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    el();
+    ep();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     android.support.v4.app.ListFragment
  * JD-Core Version:    0.7.0.1
  */

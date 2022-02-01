@@ -3,27 +3,27 @@ package com.tencent.mm.plugin.gamelife;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.gamelife.j.c;
 import com.tencent.mm.storagebase.h.b;
-import d.l;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "", "kotlin.jvm.PlatformType", "getSQLs", "()[Ljava/lang/String;"})
 final class PluginGameLife$g
   implements h.b
 {
-  public static final g uIj;
+  public static final g yav;
   
   static
   {
-    AppMethodBeat.i(211961);
-    uIj = new g();
-    AppMethodBeat.o(211961);
+    AppMethodBeat.i(241200);
+    yav = new g();
+    AppMethodBeat.o(241200);
   }
   
   public final String[] getSQLs()
   {
-    AppMethodBeat.i(211960);
-    Object localObject = c.uKc;
-    localObject = c.cBk();
-    AppMethodBeat.o(211960);
+    AppMethodBeat.i(241199);
+    Object localObject = c.ycx;
+    localObject = c.dax();
+    AppMethodBeat.o(241199);
     return localObject;
   }
 }

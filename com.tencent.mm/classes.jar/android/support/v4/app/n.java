@@ -2,7 +2,7 @@ package android.support.v4.app;
 
 import android.graphics.Rect;
 import android.os.Build.VERSION;
-import android.support.v4.view.t;
+import android.support.v4.view.u;
 import android.view.View;
 import android.view.ViewGroup;
 import java.util.ArrayList;
@@ -80,8 +80,8 @@ public abstract class n
     while (i < j)
     {
       View localView = (View)paramArrayList.get(i);
-      localArrayList.add(t.an(localView));
-      t.a(localView, null);
+      localArrayList.add(u.an(localView));
+      u.a(localView, null);
       i += 1;
     }
     return localArrayList;
@@ -102,12 +102,12 @@ public abstract class n
     if (i < k)
     {
       Object localObject = (View)paramArrayList1.get(i);
-      String str = t.an((View)localObject);
+      String str = u.an((View)localObject);
       localArrayList.add(str);
       int j;
       if (str != null)
       {
-        t.a((View)localObject, null);
+        u.a((View)localObject, null);
         localObject = (String)paramMap.get(str);
         j = 0;
       }
@@ -116,7 +116,7 @@ public abstract class n
         if (j < k)
         {
           if (((String)localObject).equals(paramArrayList.get(j))) {
-            t.a((View)paramArrayList2.get(j), str);
+            u.a((View)paramArrayList2.get(j), str);
           }
         }
         else
@@ -134,8 +134,8 @@ public abstract class n
         int i = 0;
         while (i < k)
         {
-          t.a((View)paramArrayList2.get(i), (String)paramArrayList.get(i));
-          t.a((View)paramArrayList1.get(i), (String)localArrayList.get(i));
+          u.a((View)paramArrayList2.get(i), (String)paramArrayList.get(i));
+          u.a((View)paramArrayList1.get(i), (String)localArrayList.get(i));
           i += 1;
         }
       }
@@ -178,8 +178,8 @@ public abstract class n
     {
       return;
       label45:
-      Boolean localBoolean = (Boolean)paramView.getTag(2131305634);
-      if (((localBoolean != null) && (localBoolean.booleanValue())) || (paramView.getBackground() != null) || (t.an(paramView) != null))
+      Boolean localBoolean = (Boolean)paramView.getTag(2131308878);
+      if (((localBoolean != null) && (localBoolean.booleanValue())) || (paramView.getBackground() != null) || (u.an(paramView) != null))
       {
         bool = true;
         break;
@@ -203,7 +203,7 @@ public abstract class n
   {
     if (paramView.getVisibility() == 0)
     {
-      String str = t.an(paramView);
+      String str = u.an(paramView);
       if (str != null) {
         paramMap.put(str, paramView);
       }

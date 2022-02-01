@@ -1,70 +1,35 @@
 package com.tencent.mm.plugin.finder.storage;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.protocal.protobuf.apx;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.f;
-import d.g;
-import d.g.a.a;
-import d.g.b.p;
-import d.g.b.q;
-import d.l;
+import com.tencent.mm.g.c.ck;
+import com.tencent.mm.sdk.storage.IAutoDBItem.MAutoDBInfo;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/storage/FinderMixLocalItem;", "", "localPb", "Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "(Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;)V", "id", "", "getId", "()J", "id$delegate", "Lkotlin/Lazy;", "getLocalPb", "()Lcom/tencent/mm/protocal/protobuf/FinderMixLocalItemPb;", "localType", "", "getLocalType", "()I", "wording", "", "getWording", "()Ljava/lang/String;", "isSame", "", "other", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperation;", "Lcom/tencent/mm/autogen/table/BaseFinderLocalOperation;", "()V", "getDBInfo", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "Companion", "plugin-finder_release"})
 public final class u
+  extends ck
 {
-  public final apx sJS;
-  private final f sfg;
+  private static final IAutoDBItem.MAutoDBInfo info;
+  public static final a vEk;
   
-  public u(apx paramapx)
+  static
   {
-    AppMethodBeat.i(204290);
-    this.sJS = paramapx;
-    this.sfg = g.O((a)new a(this));
-    AppMethodBeat.o(204290);
+    AppMethodBeat.i(251804);
+    vEk = new a((byte)0);
+    IAutoDBItem.MAutoDBInfo localMAutoDBInfo = ck.ajs();
+    p.g(localMAutoDBInfo, "initAutoDBInfo(FinderLocalOperation::class.java)");
+    info = localMAutoDBInfo;
+    AppMethodBeat.o(251804);
   }
   
-  public final boolean a(u paramu)
+  public final IAutoDBItem.MAutoDBInfo getDBInfo()
   {
-    AppMethodBeat.i(204289);
-    p.h(paramu, "other");
-    if ((this.sJS.GGY == paramu.sJS.GGY) && (!bu.isNullOrNil(getWording())) && (p.i(getWording(), paramu.getWording())))
-    {
-      AppMethodBeat.o(204289);
-      return true;
-    }
-    AppMethodBeat.o(204289);
-    return false;
+    return info;
   }
   
-  public final long getId()
-  {
-    AppMethodBeat.i(204288);
-    long l = ((Number)this.sfg.getValue()).longValue();
-    AppMethodBeat.o(204288);
-    return l;
-  }
-  
-  public final String getWording()
-  {
-    String str2 = this.sJS.dyI;
-    String str1 = str2;
-    if (str2 == null) {
-      str1 = "";
-    }
-    return str1;
-  }
-  
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "invoke"})
-  static final class a
-    extends q
-    implements a<Long>
-  {
-    a(u paramu)
-    {
-      super();
-    }
-  }
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/storage/FinderLocalOperation$Companion;", "", "()V", "info", "Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "getInfo", "()Lcom/tencent/mm/sdk/storage/IAutoDBItem$MAutoDBInfo;", "plugin-finder_release"})
+  public static final class a {}
 }
 
 

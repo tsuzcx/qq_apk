@@ -1,42 +1,45 @@
 package com.tencent.mm.plugin.finder.preload.tabPreload;
 
 import android.arch.lifecycle.ViewModelProvider;
+import android.content.Intent;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.model.ch;
+import com.tencent.mm.model.cl;
 import com.tencent.mm.plugin.finder.PluginFinder;
-import com.tencent.mm.plugin.finder.cgi.m.f;
+import com.tencent.mm.plugin.finder.cgi.aa.f;
+import com.tencent.mm.plugin.finder.storage.c;
 import com.tencent.mm.plugin.finder.viewmodel.FinderHomeTabStateVM;
-import com.tencent.mm.protocal.protobuf.asg;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
-import d.g.b.p;
-import d.l;
-import d.z;
+import com.tencent.mm.protocal.protobuf.bcy;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
+import kotlin.g.b.p;
+import kotlin.g.b.q;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/HotTabPreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;", "core", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "(Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;)V", "getOutTimeOutPreloadSource", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "getOuterTime", "", "isAcceptCgiBack", "", "source", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "isValid", "log", "", "performChangeEnterTargetTab", "", "lastTab", "", "targetTab", "performServerConfigChanged", "fromTabType", "serverConfig", "Lcom/tencent/mm/protocal/protobuf/FinderStreamPrefechTimeIntervalConf;", "preload", "call", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;", "Lkotlin/ParameterName;", "name", "ret", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/preload/tabPreload/HotTabPreloadWorker;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker;", "core", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;", "(Lcom/tencent/mm/plugin/finder/preload/tabPreload/FinderStreamTabPreloadCore;)V", "getOutTimeOutPreloadSource", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$PreloadSource;", "getOuterTime", "", "isAcceptCgiBack", "", "source", "resp", "Lcom/tencent/mm/plugin/finder/cgi/CgiFinderStream$FinderStreamResponseEx;", "isValid", "log", "", "performChangeEnterTargetTab", "", "lastTab", "", "targetTab", "performServerConfigChanged", "fromTabType", "serverConfig", "Lcom/tencent/mm/protocal/protobuf/FinderStreamPrefechTimeIntervalConf;", "preload", "intent", "Landroid/content/Intent;", "call", "Lkotlin/Function1;", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;", "Lkotlin/ParameterName;", "name", "ret", "plugin-finder_release"})
 public final class d
   extends f
 {
   public d(FinderStreamTabPreloadCore paramFinderStreamTabPreloadCore)
   {
     super(4, paramFinderStreamTabPreloadCore);
-    AppMethodBeat.i(203575);
-    AppMethodBeat.o(203575);
+    AppMethodBeat.i(249587);
+    AppMethodBeat.o(249587);
   }
   
-  public final void a(int paramInt, asg paramasg)
+  public final void a(int paramInt, bcy parambcy)
   {
     boolean bool2 = true;
-    AppMethodBeat.i(203571);
-    p.h(paramasg, "serverConfig");
-    super.a(paramInt, paramasg);
-    com.tencent.mm.plugin.finder.storage.b localb = com.tencent.mm.plugin.finder.storage.b.sHP;
-    int i = ((Number)com.tencent.mm.plugin.finder.storage.b.cKA().value()).intValue();
-    boolean bool1 = paramasg.GJf;
+    AppMethodBeat.i(249583);
+    p.h(parambcy, "serverConfig");
+    super.a(paramInt, parambcy);
+    c localc = c.vCb;
+    int i = ((Number)c.duu().value()).intValue();
+    boolean bool1 = parambcy.LMv;
     boolean bool3;
     label102:
     long l;
@@ -48,28 +51,28 @@ public final class d
     }
     else
     {
-      if ((paramInt == this.dvm) || (!bool1) || (!this.suN)) {
+      if ((paramInt == this.dLS) || (!bool1) || (!this.uVa)) {
         break label302;
       }
-      bool3 = this.suV.EX(this.dvm);
-      if (this.suU.suW == null) {
+      bool3 = this.uVh.JN(this.dLS);
+      if (this.uVg.uVi == null) {
         break label268;
       }
       bool1 = true;
-      l = FinderStreamTabPreloadCore.EY(this.dvm);
-      if (ch.aDc() - this.suU.hiI < FinderStreamTabPreloadCore.EY(this.dvm)) {
+      l = FinderStreamTabPreloadCore.JO(this.dLS);
+      if (cl.aWA() - this.uVg.hwQ < FinderStreamTabPreloadCore.JO(this.dLS)) {
         break label274;
       }
     }
     for (;;)
     {
-      ae.i(this.TAG, "[performConfigChange] isAutoRefresh=" + bool3 + " isLoading=" + this.isLoading + " isOverTime=" + bool2 + " expired=" + l + " debugValue=" + i + " hasCache=" + bool1);
+      Log.i(this.TAG, "[performConfigChange] isAutoRefresh=" + bool3 + " isLoading=" + this.isLoading + " isOverTime=" + bool2 + " expired=" + l + " debugValue=" + i + " hasCache=" + bool1);
       if ((!bool3) || (this.isLoading) || (!bool2)) {
         break label280;
       }
-      this.suO.aiE("performServerConfigChanged");
-      this.suO.a((a.a)new a(this), 0L, "performConfigChange");
-      AppMethodBeat.o(203571);
+      this.uVb.aut("performServerConfigChanged");
+      this.uVb.a((a.a)new a(this), 0L, "performConfigChange");
+      AppMethodBeat.o(249583);
       return;
       bool1 = false;
       break;
@@ -80,156 +83,185 @@ public final class d
       bool2 = false;
     }
     label280:
-    ae.i(this.TAG, "[performConfigChange] not need to preload. debugValue=".concat(String.valueOf(i)));
-    AppMethodBeat.o(203571);
+    Log.i(this.TAG, "[performConfigChange] not need to preload. debugValue=".concat(String.valueOf(i)));
+    AppMethodBeat.o(249583);
     return;
     label302:
-    ae.i(this.TAG, "[performConfigChange] not need to check hot preload. debugValue=" + i + " fromTabType=" + paramInt);
-    AppMethodBeat.o(203571);
+    Log.i(this.TAG, "[performConfigChange] not need to check hot preload. debugValue=" + i + " fromTabType=" + paramInt);
+    AppMethodBeat.o(249583);
   }
   
-  public final void a(f.c paramc, d.g.a.b<? super f.d, z> paramb)
+  public final void a(f.c paramc, Intent paramIntent, kotlin.g.a.b<? super f.d, x> paramb)
   {
-    AppMethodBeat.i(203573);
+    AppMethodBeat.i(249585);
     p.h(paramc, "source");
     p.h(paramb, "call");
-    if ((FinderStreamTabPreloadCore.isEnable()) && (f.a(this, paramc)))
+    if ((FinderStreamTabPreloadCore.a(paramc)) && (f.a(this, paramc)) && (paramc != f.c.uVt))
     {
-      Object localObject = g.ajR();
+      Object localObject = g.aAh();
       p.g(localObject, "MMKernel.storage()");
-      boolean bool = p.i(((e)localObject).ajA().get(am.a.Jbo, Integer.valueOf(0)), Integer.valueOf(0));
-      localObject = com.tencent.mm.plugin.finder.storage.b.sHP;
-      int i = ((Number)com.tencent.mm.plugin.finder.storage.b.cKM().value()).intValue();
+      boolean bool = p.j(((e)localObject).azQ().get(ar.a.Okf, Integer.valueOf(0)), Integer.valueOf(0));
+      localObject = c.vCb;
+      int i = ((Number)c.duH().value()).intValue();
       if ((i > 0) && (bool) && (SystemClock.uptimeMillis() % i != 0L))
       {
-        ae.i(this.TAG, "[isValid] isFirst but not hit, random=".concat(String.valueOf(i)));
-        paramb.invoke(f.d.svk);
-        AppMethodBeat.o(203573);
+        Log.i(this.TAG, "[isValid] isFirst but not hit, random=".concat(String.valueOf(i)));
+        paramb.invoke(f.d.uVx);
+        AppMethodBeat.o(249585);
         return;
       }
-      localObject = g.ajR();
+      localObject = g.aAh();
       p.g(localObject, "MMKernel.storage()");
-      ((e)localObject).ajA().set(am.a.Jbo, Integer.valueOf(1));
+      ((e)localObject).azQ().set(ar.a.Okf, Integer.valueOf(1));
     }
-    super.a(paramc, paramb);
-    AppMethodBeat.o(203573);
+    super.a(paramc, paramIntent, paramb);
+    AppMethodBeat.o(249585);
   }
   
-  public final boolean a(f.c paramc, m.f paramf)
+  public final boolean a(f.c paramc, aa.f paramf)
   {
-    AppMethodBeat.i(203572);
+    int i = 1;
+    AppMethodBeat.i(249584);
     p.h(paramc, "source");
     p.h(paramf, "resp");
-    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.KEX;
-    if (((FinderHomeTabStateVM)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderHomeTabStateVM.class)).tku == 4)
+    if (paramc == f.c.uVt)
     {
-      ae.i(this.TAG, "[isAcceptCgiBack] is In hot tab.");
-      AppMethodBeat.o(203572);
+      Log.i(this.TAG, "[isAcceptCgiBack] is finder enter load.");
+      AppMethodBeat.o(249584);
+      return true;
+    }
+    com.tencent.mm.ui.component.a locala = com.tencent.mm.ui.component.a.PRN;
+    if (((FinderHomeTabStateVM)com.tencent.mm.ui.component.a.bi(PluginFinder.class).get(FinderHomeTabStateVM.class)).wtW == 4)
+    {
+      Log.i(this.TAG, "[isAcceptCgiBack] is In hot tab.");
+      AppMethodBeat.o(249584);
       return false;
     }
-    int i;
-    if (paramc == f.c.svg) {
-      if (ch.aDc() - this.suU.hiI >= FinderStreamTabPreloadCore.ag(this.dvm, false)) {
-        i = 1;
-      }
+    if (paramc == f.c.uVs) {
+      if (cl.aWA() - this.uVg.hwQ < FinderStreamTabPreloadCore.al(this.dLS, false)) {}
     }
     while (i == 0)
     {
-      ae.i(this.TAG, "[isAcceptCgiBack] is not over time. lastTime=" + this.suU.hiI);
-      AppMethodBeat.o(203572);
+      Log.i(this.TAG, "[isAcceptCgiBack] is not over time. lastTime=" + this.uVg.hwQ);
+      AppMethodBeat.o(249584);
       return false;
       i = 0;
       continue;
-      if (ch.aDc() - this.suU.hiI >= FinderStreamTabPreloadCore.EY(this.dvm)) {
-        i = 1;
-      } else {
+      if (cl.aWA() - this.uVg.hwQ < FinderStreamTabPreloadCore.JO(this.dLS)) {
         i = 0;
       }
     }
-    if ((paramc == f.c.svg) && (this.suN))
+    if ((paramc == f.c.uVs) && (this.uVa))
     {
-      ae.i(this.TAG, "[isAcceptCgiBack] is form outside but now is in finder.");
-      AppMethodBeat.o(203572);
+      Log.i(this.TAG, "[isAcceptCgiBack] is form outside but now is in finder.");
+      AppMethodBeat.o(249584);
       return false;
     }
     boolean bool = super.a(paramc, paramf);
-    AppMethodBeat.o(203572);
+    AppMethodBeat.o(249584);
     return bool;
   }
   
   public final boolean a(f.c paramc, String paramString)
   {
-    AppMethodBeat.i(203574);
+    AppMethodBeat.i(249586);
     p.h(paramc, "source");
     p.h(paramString, "log");
     boolean bool1;
     boolean bool3;
-    if (this.suV.cEQ().cQO() == 4)
+    if (this.uVh.dlH().dHR() == 4)
     {
       bool1 = true;
-      bool3 = this.suV.EX(this.dvm);
-      if (((paramc == f.c.sve) || (paramc == f.c.svg)) && (((!bool1) || (!bool3)) && ((paramc != f.c.svf) || (!this.suN)))) {
-        break label153;
+      bool3 = this.uVh.JN(this.dLS);
+      if (((paramc == f.c.uVq) || (paramc == f.c.uVs) || (paramc == f.c.uVt)) && (((!bool1) || (!bool3)) && ((paramc != f.c.uVr) || (!this.uVa)))) {
+        break label160;
       }
     }
-    label153:
+    label160:
     for (boolean bool2 = true;; bool2 = false)
     {
       if ((!super.a(paramc, ", ret=" + bool2 + " targetEnterHot=" + bool1 + " isAutoRefresh=" + bool3)) || (!bool2)) {
-        break label159;
+        break label166;
       }
-      AppMethodBeat.o(203574);
+      AppMethodBeat.o(249586);
       return true;
       bool1 = false;
       break;
     }
-    label159:
-    AppMethodBeat.o(203574);
+    label166:
+    AppMethodBeat.o(249586);
     return false;
   }
   
-  public final f.c cES()
+  public final f.c dlJ()
   {
-    return f.c.svg;
+    return f.c.uVs;
   }
   
-  public final long cET()
+  public final long dlK()
   {
-    AppMethodBeat.i(203569);
-    long l = FinderStreamTabPreloadCore.ag(this.dvm, false);
-    AppMethodBeat.o(203569);
+    AppMethodBeat.i(249581);
+    long l = FinderStreamTabPreloadCore.al(this.dLS, false);
+    AppMethodBeat.o(249581);
     return l;
   }
   
-  public final void fI(int paramInt1, int paramInt2)
+  public final void gc(int paramInt1, int paramInt2)
   {
-    AppMethodBeat.i(203570);
-    super.fI(paramInt1, paramInt2);
-    if (paramInt2 != this.dvm)
+    AppMethodBeat.i(249582);
+    super.gc(paramInt1, paramInt2);
+    boolean bool = ((PluginFinder)g.ah(PluginFinder.class)).isInFinder();
+    Log.i(this.TAG, "[performChangeEnterTargetTab] isInFinder=".concat(String.valueOf(bool)));
+    if (paramInt2 != this.dLS)
     {
-      this.suO.aiE("performChangeEnterTargetTab");
-      AppMethodBeat.o(203570);
+      this.uVb.aut("performChangeEnterTargetTab");
+      AppMethodBeat.o(249582);
       return;
     }
-    this.suO.a(this.suS, cET(), "performChangeEnterTargetTab");
-    AppMethodBeat.o(203570);
+    if (!bool)
+    {
+      Log.i(this.TAG, "[performChangeEnterTargetTab] clearCache lastTab=" + paramInt1 + " targetTab=" + paramInt2);
+      nM(true);
+      this.uVb.a(this.uVf, dlK(), "performChangeEnterTargetTab");
+    }
+    AppMethodBeat.o(249582);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"com/tencent/mm/plugin/finder/preload/tabPreload/HotTabPreloadWorker$performServerConfigChanged$1", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "run", "", "plugin-finder_release"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"com/tencent/mm/plugin/finder/preload/tabPreload/HotTabPreloadWorker$performServerConfigChanged$1", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/ExpiredTimer$TimeRunnable;", "run", "", "plugin-finder_release"})
   public static final class a
     extends a.a
   {
     public final void run()
     {
-      AppMethodBeat.i(203568);
-      this.suK.a(f.c.svf, (d.g.a.b)d.a.a.suL);
-      AppMethodBeat.o(203568);
+      AppMethodBeat.i(249580);
+      this.uUX.a(f.c.uVr, null, (kotlin.g.a.b)a.uUY);
+      AppMethodBeat.o(249580);
+    }
+    
+    @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "it", "Lcom/tencent/mm/plugin/finder/preload/tabPreload/TabPreloadWorker$Ret;", "invoke"})
+    static final class a
+      extends q
+      implements kotlin.g.a.b<f.d, x>
+    {
+      public static final a uUY;
+      
+      static
+      {
+        AppMethodBeat.i(249579);
+        uUY = new a();
+        AppMethodBeat.o(249579);
+      }
+      
+      a()
+      {
+        super();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.preload.tabPreload.d
  * JD-Core Version:    0.7.0.1
  */

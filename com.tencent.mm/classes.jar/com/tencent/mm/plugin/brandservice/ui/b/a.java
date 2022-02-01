@@ -1,69 +1,79 @@
 package com.tencent.mm.plugin.brandservice.ui.b;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ah.v;
-import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.e;
+import com.tencent.mm.ag.v;
+import com.tencent.mm.plugin.brandservice.ui.timeline.offenread.f;
 import com.tencent.mm.plugin.expt.b.b;
 import com.tencent.mm.plugin.expt.b.b.a;
 import com.tencent.mm.plugin.messenger.foundation.a.l;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.storage.an;
-import com.tencent.mm.storage.bq;
-import com.tencent.mm.storage.w;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.storage.as;
+import com.tencent.mm.storage.bv;
+import com.tencent.mm.storage.z;
 
 public final class a
 {
-  public static int oyH;
-  private static long oyI;
-  private static long oyJ;
-  private static boolean oyK;
+  public static int pMl;
+  private static long pMm;
+  private static long pMn;
+  private static boolean pMo;
   
   static
   {
     AppMethodBeat.i(6235);
-    com.tencent.mm.plugin.brandservice.b.g localg = com.tencent.mm.plugin.brandservice.b.g.ocx;
-    oyH = com.tencent.mm.plugin.brandservice.b.g.bOE();
-    oyI = 43200000L;
-    oyJ = 0L;
-    oyK = false;
+    com.tencent.mm.plugin.brandservice.b.g localg = com.tencent.mm.plugin.brandservice.b.g.pnw;
+    pMl = com.tencent.mm.plugin.brandservice.b.g.clK();
+    pMm = 43200000L;
+    pMn = 0L;
+    pMo = false;
     AppMethodBeat.o(6235);
   }
   
-  public static boolean Aq(int paramInt)
+  public static void BR(long paramLong)
   {
-    return (oyJ & paramInt) != 0L;
+    pMm = paramLong;
   }
   
-  public static boolean a(w paramw, v paramv)
+  public static void BS(long paramLong)
+  {
+    pMn = paramLong;
+  }
+  
+  public static boolean DV(int paramInt)
+  {
+    return (pMn & paramInt) != 0L;
+  }
+  
+  public static boolean a(z paramz, v paramv)
   {
     AppMethodBeat.i(6233);
-    if (paramw == null)
+    if (paramz == null)
     {
       AppMethodBeat.o(6233);
       return false;
     }
-    paramw.IIE = e.XT(paramw.field_talker);
+    paramz.NQk = f.ahR(paramz.field_talker);
     if ((paramv != null) && ((paramv.type == 5) || (paramv.type == 7) || (paramv.type == 10) || (paramv.type == 8)))
     {
       AppMethodBeat.o(6233);
       return true;
     }
-    if (paramw.hk(1))
+    if (paramz.iE(1))
     {
-      ae.d("MicroMsg.BizTimeLineConfigUtil", "biz flag %d return true, bizClientMsgId:%s", new Object[] { Integer.valueOf(paramw.field_bitFlag), paramw.field_bizClientMsgId });
+      Log.d("MicroMsg.BizTimeLineConfigUtil", "biz flag %d return true, bizClientMsgId:%s", new Object[] { Integer.valueOf(paramz.field_bitFlag), paramz.field_bizClientMsgId });
       AppMethodBeat.o(6233);
       return true;
     }
-    if ((Aq(2)) && (paramw.IIE))
+    if ((DV(2)) && (paramz.NQk))
     {
       AppMethodBeat.o(6233);
       return true;
     }
-    if (Aq(1))
+    if (DV(1))
     {
-      paramw = ((l)com.tencent.mm.kernel.g.ab(l.class)).azF().BH(paramw.field_talker);
-      if ((paramw != null) && (paramw.adB()))
+      paramz = ((l)com.tencent.mm.kernel.g.af(l.class)).aSN().Kn(paramz.field_talker);
+      if ((paramz != null) && (paramz.arE()))
       {
         AppMethodBeat.o(6233);
         return true;
@@ -73,63 +83,45 @@ public final class a
     return false;
   }
   
-  public static long bTs()
+  public static long crd()
   {
-    if (oyI <= 0L) {
-      oyI = 43200000L;
+    if (pMm <= 0L) {
+      pMm = 43200000L;
     }
-    return oyI;
+    return pMm;
   }
   
-  public static void bTt()
+  public static void cre()
   {
     AppMethodBeat.i(6234);
-    if (((b)com.tencent.mm.kernel.g.ab(b.class)).a(b.a.qGx, 0) == 1) {}
+    if (((b)com.tencent.mm.kernel.g.af(b.class)).a(b.a.rZM, 0) == 1) {}
     for (boolean bool = true;; bool = false)
     {
-      oyK = bool;
-      if (ay.aRX("brandService").decodeInt("BizTimeLineShowDigest", 0) == 1)
+      pMo = bool;
+      if (MultiProcessMMKV.getSingleMMKV("brandService").decodeInt("BizTimeLineShowDigest", 0) == 1)
       {
-        ae.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest force show");
-        oyK = true;
+        Log.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest force show");
+        pMo = true;
       }
-      ae.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest: %b", new Object[] { Boolean.valueOf(oyK) });
+      Log.i("MicroMsg.BizTimeLineConfigUtil", "alvinluo initBizTimeLineShowDigest: %b", new Object[] { Boolean.valueOf(pMo) });
       AppMethodBeat.o(6234);
       return;
     }
   }
   
-  public static boolean bTu()
+  public static boolean crf()
   {
-    return oyK;
+    return pMo;
   }
   
-  public static boolean bTv()
+  public static boolean crg()
   {
     return true;
-  }
-  
-  public static boolean k(w paramw)
-  {
-    AppMethodBeat.i(6232);
-    boolean bool = a(paramw, null);
-    AppMethodBeat.o(6232);
-    return bool;
-  }
-  
-  public static void tM(long paramLong)
-  {
-    oyI = paramLong;
-  }
-  
-  public static void tN(long paramLong)
-  {
-    oyJ = paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.plugin.brandservice.ui.b.a
  * JD-Core Version:    0.7.0.1
  */

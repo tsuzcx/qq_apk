@@ -7,8 +7,8 @@ import android.os.Build;
 import android.os.SystemClock;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.b.i;
-import com.tencent.mm.g.a.jz;
-import com.tencent.mm.g.a.pa;
+import com.tencent.mm.g.a.ko;
+import com.tencent.mm.g.a.ps;
 import com.tencent.mm.hardcoder.WXHardCoderJNI;
 import com.tencent.mm.hardcoder.WXHardCoderJNI.GetParametersCallback;
 import com.tencent.mm.hardcoder.WXHardCoderJNI.SystemEventCallback;
@@ -16,15 +16,18 @@ import com.tencent.mm.hardcoder.c.a;
 import com.tencent.mm.kernel.b.f;
 import com.tencent.mm.kernel.e;
 import com.tencent.mm.kernel.e.c;
-import com.tencent.mm.sdk.e.k.a;
-import com.tencent.mm.sdk.e.m;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.ar;
-import com.tencent.mm.sdk.platformtools.ay;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.event.EventCenter;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.MMHandlerThread;
+import com.tencent.mm.sdk.platformtools.MultiProcessMMKV;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.sdk.storage.MStorage.IOnStorageChange;
+import com.tencent.mm.sdk.storage.MStorageEventData;
+import com.tencent.mm.sdk.thread.ThreadPool;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -37,21 +40,21 @@ public class PluginHardcoder
   extends f
   implements com.tencent.mm.kernel.api.bucket.c, b
 {
-  private k.a hMo;
-  private com.tencent.mm.sdk.b.c uQE;
-  private Runnable uQF;
+  private MStorage.IOnStorageChange iHr;
+  private IListener yjg;
+  private Runnable yjh;
   
   public PluginHardcoder()
   {
     AppMethodBeat.i(130770);
-    this.hMo = new k.a()
+    this.iHr = new MStorage.IOnStorageChange()
     {
-      public final void a(String paramAnonymousString, m paramAnonymousm)
+      public final void onNotifyChange(String paramAnonymousString, MStorageEventData paramAnonymousMStorageEventData)
       {
         AppMethodBeat.i(130766);
-        ae.i("MicroMsg.PluginHardcoder", "abTestListener onNotifyChange stack[%s]", new Object[] { bu.fpN() });
+        Log.i("MicroMsg.PluginHardcoder", "abTestListener onNotifyChange stack[%s]", new Object[] { Util.getStack() });
         if ((paramAnonymousString != null) && (paramAnonymousString.length() > 0) && ("event_updated".equals(paramAnonymousString))) {
-          com.tencent.mm.kernel.g.ajU().n(new Runnable()
+          com.tencent.mm.kernel.g.aAk().postToWorkerDelayed(new Runnable()
           {
             public final void run()
             {
@@ -64,21 +67,21 @@ public class PluginHardcoder
         AppMethodBeat.o(130766);
       }
     };
-    this.uQE = new com.tencent.mm.sdk.b.c() {};
-    this.uQF = new Runnable()
+    this.yjg = new IListener() {};
+    this.yjh = new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(130769);
-        ae.i("MicroMsg.PluginHardcoder", "reportHardcoderRunnable start to run");
-        com.tencent.mm.kernel.g.ajS();
-        long l1 = ((Long)com.tencent.mm.kernel.g.ajR().ajA().get(am.a.IQy, Long.valueOf(0L))).longValue();
+        Log.i("MicroMsg.PluginHardcoder", "reportHardcoderRunnable start to run");
+        com.tencent.mm.kernel.g.aAi();
+        long l1 = ((Long)com.tencent.mm.kernel.g.aAh().azQ().get(ar.a.NYz, Long.valueOf(0L))).longValue();
         long l2 = System.currentTimeMillis();
         if ((l2 - l1 > 86400000L) || (l1 > l2))
         {
-          com.tencent.mm.kernel.g.ajS();
-          com.tencent.mm.kernel.g.ajR().ajA().set(am.a.IQy, Long.valueOf(l2));
-          com.tencent.mm.sdk.g.b.c(new Runnable()
+          com.tencent.mm.kernel.g.aAi();
+          com.tencent.mm.kernel.g.aAh().azQ().set(ar.a.NYz, Long.valueOf(l2));
+          ThreadPool.post(new Runnable()
           {
             public final void run()
             {
@@ -89,7 +92,7 @@ public class PluginHardcoder
               if ((WXHardCoderJNI.isCheckEnv()) && (WXHardCoderJNI.isRunning() > 0))
               {
                 bool = true;
-                ae.i("MicroMsg.PluginHardcoder", "reportHardCoder tid[%d, %s], running[%b]", new Object[] { Long.valueOf(l), str, Boolean.valueOf(bool) });
+                Log.i("MicroMsg.PluginHardcoder", "reportHardCoder tid[%d, %s], running[%b]", new Object[] { Long.valueOf(l), str, Boolean.valueOf(bool) });
                 WXHardCoderJNI.reportIDKey(true, 0, 1, false);
                 WXHardCoderJNI.readServerAddr(true);
                 if ((!WXHardCoderJNI.isCheckEnv()) || (WXHardCoderJNI.isRunning() <= 0)) {
@@ -126,8 +129,8 @@ public class PluginHardcoder
   private void reloadHardcoderConfig()
   {
     AppMethodBeat.i(130776);
-    Object localObject1 = com.tencent.mm.model.c.d.aDI().xi("100282");
-    ae.i("MicroMsg.PluginHardcoder", "reloadHardcoderConfig abTest[%s][%b][%s]", new Object[] { localObject1, Boolean.valueOf(((com.tencent.mm.storage.c)localObject1).isValid()), ((com.tencent.mm.storage.c)localObject1).fsy() });
+    Object localObject1 = com.tencent.mm.model.c.d.aXu().Fu("100282");
+    Log.i("MicroMsg.PluginHardcoder", "reloadHardcoderConfig abTest[%s][%b][%s]", new Object[] { localObject1, Boolean.valueOf(((com.tencent.mm.storage.c)localObject1).isValid()), ((com.tencent.mm.storage.c)localObject1).gzz() });
     SharedPreferences.Editor localEditor;
     Object localObject2;
     int i;
@@ -156,14 +159,14 @@ public class PluginHardcoder
     int m;
     if (((com.tencent.mm.storage.c)localObject1).isValid())
     {
-      ae.i("MicroMsg.PluginHardcoder", "reloadHardcoderConfig abTest valid!");
-      localEditor = ak.getContext().getSharedPreferences("hardcoder_setting", 0).edit();
-      localObject1 = ((com.tencent.mm.storage.c)localObject1).fsy();
+      Log.i("MicroMsg.PluginHardcoder", "reloadHardcoderConfig abTest valid!");
+      localEditor = MMApplicationContext.getContext().getSharedPreferences("hardcoder_setting", 0).edit();
+      localObject1 = ((com.tencent.mm.storage.c)localObject1).gzz();
       localObject2 = (String)((Map)localObject1).get("enable");
       if (WXHardCoderJNI.getEnable())
       {
         i = 1;
-        if (bu.getInt((String)localObject2, i) <= 0) {
+        if (Util.getInt((String)localObject2, i) <= 0) {
           break label435;
         }
         bool2 = true;
@@ -177,7 +180,7 @@ public class PluginHardcoder
           break label447;
         }
         i = 1;
-        if (bu.getInt((String)localObject2, i) <= 0) {
+        if (Util.getInt((String)localObject2, i) <= 0) {
           break label452;
         }
         bool2 = true;
@@ -187,18 +190,18 @@ public class PluginHardcoder
           break label458;
         }
         i = 1;
-        if (bu.getInt((String)localObject2, i) <= 0) {
+        if (Util.getInt((String)localObject2, i) <= 0) {
           break label463;
         }
         bool2 = true;
         localEditor.putBoolean("KEY_HC_DEBUG", bool2);
-        localEditor.putInt("KEY_HC_KV_PER", bu.getInt((String)((Map)localObject1).get("kvper"), WXHardCoderJNI.hcUinHash));
-        localEditor.putInt("KEY_HC_KV_FT", bu.getInt((String)((Map)localObject1).get("kvft"), WXHardCoderJNI.hcUinHash));
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajP();
-        j = i.cf(com.tencent.mm.kernel.a.getUin(), 100);
+        localEditor.putInt("KEY_HC_KV_PER", Util.getInt((String)((Map)localObject1).get("kvper"), WXHardCoderJNI.hcUinHash));
+        localEditor.putInt("KEY_HC_KV_FT", Util.getInt((String)((Map)localObject1).get("kvft"), WXHardCoderJNI.hcUinHash));
+        com.tencent.mm.kernel.g.aAi();
+        com.tencent.mm.kernel.g.aAf();
+        j = i.ch(com.tencent.mm.kernel.a.getUin(), 100);
         localEditor.putInt("KEY_HC_UIN_HASH", j);
-        l = bu.getLong((String)((Map)localObject1).get("scene"), -1L);
+        l = Util.getLong((String)((Map)localObject1).get("scene"), -1L);
         localObject2 = WXHardCoderJNI.flagKeyMap.entrySet().iterator();
         if (!((Iterator)localObject2).hasNext()) {
           break label475;
@@ -228,13 +231,13 @@ public class PluginHardcoder
         bool2 = false;
         break label228;
       }
-      k = bu.getInt((String)((Map)localObject1).get("margin"), WXHardCoderJNI.hcTimeoutMargin);
+      k = Util.getInt((String)((Map)localObject1).get("margin"), WXHardCoderJNI.hcTimeoutMargin);
       localEditor.putInt("KEY_HC_TIMEOUT_MARGIN", k);
-      m = bu.getInt((String)((Map)localObject1).get("retryitv"), WXHardCoderJNI.hcRetryInterval);
+      m = Util.getInt((String)((Map)localObject1).get("retryitv"), WXHardCoderJNI.hcRetryInterval);
       localEditor.putInt("KEY_HC_RETRY_INTERVAL", m);
-      localObject2 = bu.bI((String)((Map)localObject1).get("model"), "");
+      localObject2 = Util.nullAs((String)((Map)localObject1).get("model"), "");
       localObject3 = Build.MODEL;
-      localObject1 = bu.bI((String)((Map)localObject1).get("manufacturer"), "");
+      localObject1 = Util.nullAs((String)((Map)localObject1).get("manufacturer"), "");
       str = Build.MANUFACTURER;
       if ((((String)localObject1).length() <= 0) && (((String)localObject2).length() <= 0)) {
         break label875;
@@ -260,15 +263,15 @@ public class PluginHardcoder
           break label869;
         }
         bool1 = true;
-        ae.i("MicroMsg.PluginHardcoder", "reloadHardcoderConfig check manufacturer[%s] manufacturerlist[%s] model[%s] modellist[%s] enable[%b] init[%b]", new Object[] { str, localObject1, localObject3, localObject2, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
+        Log.i("MicroMsg.PluginHardcoder", "reloadHardcoderConfig check manufacturer[%s] manufacturerlist[%s] model[%s] modellist[%s] enable[%b] init[%b]", new Object[] { str, localObject1, localObject3, localObject2, Boolean.valueOf(bool2), Boolean.valueOf(bool1) });
       }
       for (;;)
       {
         localEditor.apply();
         WXHardCoderJNI.reloadSPConfig(WXHardCoderJNI.RELOAD_SCENE_ABTEST);
-        ae.i("MicroMsg.PluginHardcoder", "reloadHardcoderConfig enable[%b] init[%b] bgEnable[%b] debug[%b] uinHash[%d] kv[%b, %b] sceneFlag[%d] margin[%d] retryInterval[%d] model[%s]", new Object[] { Boolean.valueOf(WXHardCoderJNI.getEnable()), Boolean.valueOf(bool1), Boolean.valueOf(WXHardCoderJNI.hcBgEnable), Boolean.valueOf(WXHardCoderJNI.getDebug()), Integer.valueOf(j), Boolean.valueOf(WXHardCoderJNI.hcKVPerReport), Boolean.valueOf(WXHardCoderJNI.hcKVFtReport), Long.valueOf(l), Integer.valueOf(k), Integer.valueOf(m), localObject2 });
+        Log.i("MicroMsg.PluginHardcoder", "reloadHardcoderConfig enable[%b] init[%b] bgEnable[%b] debug[%b] uinHash[%d] kv[%b, %b] sceneFlag[%d] margin[%d] retryInterval[%d] model[%s]", new Object[] { Boolean.valueOf(WXHardCoderJNI.getEnable()), Boolean.valueOf(bool1), Boolean.valueOf(WXHardCoderJNI.hcBgEnable), Boolean.valueOf(WXHardCoderJNI.getDebug()), Integer.valueOf(j), Boolean.valueOf(WXHardCoderJNI.hcKVPerReport), Boolean.valueOf(WXHardCoderJNI.hcKVFtReport), Long.valueOf(l), Integer.valueOf(k), Integer.valueOf(m), localObject2 });
         if (bool1) {
-          WXHardCoderJNI.initHardCoder(a.deO(), a.deO(), null);
+          WXHardCoderJNI.initHardCoder(a.dYI(), a.dYI(), null);
         }
         AppMethodBeat.o(130776);
         return;
@@ -284,50 +287,50 @@ public class PluginHardcoder
   public void configure(com.tencent.mm.kernel.b.g paramg)
   {
     AppMethodBeat.i(130773);
-    com.tencent.mm.sdk.g.b.c(new Runnable()
+    ThreadPool.post(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(130764);
         Thread localThread = Thread.currentThread();
         long l1 = SystemClock.elapsedRealtime();
-        WXHardCoderJNI.initHardCoder(a.deO(), a.deO(), new c.a()
+        WXHardCoderJNI.initHardCoder(a.dYI(), a.dYI(), new c.a()
         {
-          public final void dw(boolean paramAnonymous2Boolean)
+          public final void em(boolean paramAnonymous2Boolean)
           {
             AppMethodBeat.i(130763);
-            ae.i("MicroMsg.PluginHardcoder", "configure initHardCoder callback, connect:%b", new Object[] { Boolean.valueOf(paramAnonymous2Boolean) });
-            if ((paramAnonymous2Boolean) && (ak.cpe()))
+            Log.i("MicroMsg.PluginHardcoder", "configure initHardCoder callback, connect:%b", new Object[] { Boolean.valueOf(paramAnonymous2Boolean) });
+            if ((paramAnonymous2Boolean) && (MMApplicationContext.isMMProcess()))
             {
               WXHardCoderJNI.registerSystemEventCallback(new WXHardCoderJNI.SystemEventCallback()
               {
                 public final void onEvent(int paramAnonymous3Int)
                 {
                   AppMethodBeat.i(130761);
-                  ae.i("MicroMsg.PluginHardcoder", "configure SystemEventCallback onEvent eventCode[%d]", new Object[] { Integer.valueOf(paramAnonymous3Int) });
-                  jz localjz = new jz();
-                  localjz.dxZ.keycode = paramAnonymous3Int;
-                  com.tencent.mm.sdk.b.a.IvT.l(localjz);
+                  Log.i("MicroMsg.PluginHardcoder", "configure SystemEventCallback onEvent eventCode[%d]", new Object[] { Integer.valueOf(paramAnonymous3Int) });
+                  ko localko = new ko();
+                  localko.dPG.keycode = paramAnonymous3Int;
+                  EventCenter.instance.publish(localko);
                   AppMethodBeat.o(130761);
                 }
               });
-              ae.i("MicroMsg.PluginHardcoder", "configure registerGetParametersCallback ret:%d", new Object[] { Integer.valueOf(WXHardCoderJNI.registerGetParametersCallback(1, new WXHardCoderJNI.GetParametersCallback()
+              Log.i("MicroMsg.PluginHardcoder", "configure registerGetParametersCallback ret:%d", new Object[] { Integer.valueOf(WXHardCoderJNI.registerGetParametersCallback(1, new WXHardCoderJNI.GetParametersCallback()
               {
                 public final void onGetParameters(int paramAnonymous3Int, JSONObject paramAnonymous3JSONObject)
                 {
                   AppMethodBeat.i(130762);
-                  ae.i("MicroMsg.PluginHardcoder", "configure GetParametersCallback onGetParameters type[%d]", new Object[] { Integer.valueOf(paramAnonymous3Int) });
+                  Log.i("MicroMsg.PluginHardcoder", "configure GetParametersCallback onGetParameters type[%d]", new Object[] { Integer.valueOf(paramAnonymous3Int) });
                   if (paramAnonymous3Int == 1) {
                     try
                     {
                       String str1 = paramAnonymous3JSONObject.getString("HCMinQPKey");
                       String str2 = paramAnonymous3JSONObject.getString("HCMaxQPKey");
                       paramAnonymous3JSONObject = paramAnonymous3JSONObject.getString("HCQPSceneKey");
-                      ae.i("MicroMsg.PluginHardcoder", "onGetParameters, minkey:%s, maxKey:%s, sceneKey:%s", new Object[] { str1, str2, paramAnonymous3JSONObject });
-                      ay localay = ay.aRW("HardcoderQP");
-                      localay.encode("HCMinQPKey", str1);
-                      localay.encode("HCMaxQPKey", str2);
-                      localay.encode("HCQPSceneKey", paramAnonymous3JSONObject);
+                      Log.i("MicroMsg.PluginHardcoder", "onGetParameters, minkey:%s, maxKey:%s, sceneKey:%s", new Object[] { str1, str2, paramAnonymous3JSONObject });
+                      MultiProcessMMKV localMultiProcessMMKV = MultiProcessMMKV.getMMKV("HardcoderQP");
+                      localMultiProcessMMKV.encode("HCMinQPKey", str1);
+                      localMultiProcessMMKV.encode("HCMaxQPKey", str2);
+                      localMultiProcessMMKV.encode("HCQPSceneKey", paramAnonymous3JSONObject);
                       AppMethodBeat.o(130762);
                       return;
                     }
@@ -341,7 +344,7 @@ public class PluginHardcoder
           }
         });
         long l2 = SystemClock.elapsedRealtime();
-        ae.i("MicroMsg.PluginHardcoder", "configure initHardCoder[%d %d %d %d] take[%d]ms tid[%s, %s]", new Object[] { Long.valueOf(com.tencent.mm.kernel.a.a.gFa), Long.valueOf(com.tencent.mm.kernel.a.a.gFb), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l2 - com.tencent.mm.kernel.a.a.gFa), localThread.getName(), Long.valueOf(localThread.getId()) });
+        Log.i("MicroMsg.PluginHardcoder", "configure initHardCoder[%d %d %d %d] take[%d]ms tid[%s, %s]", new Object[] { Long.valueOf(com.tencent.mm.kernel.a.a.hrO), Long.valueOf(com.tencent.mm.kernel.a.a.hrP), Long.valueOf(l1), Long.valueOf(l2), Long.valueOf(l2 - com.tencent.mm.kernel.a.a.hrO), localThread.getName(), Long.valueOf(localThread.getId()) });
         AppMethodBeat.o(130764);
       }
     }, "initHardCoder");
@@ -368,22 +371,22 @@ public class PluginHardcoder
   public void onAccountInitialized(e.c paramc)
   {
     AppMethodBeat.i(130774);
-    if (ak.cpe())
+    if (MMApplicationContext.isMMProcess())
     {
-      com.tencent.mm.sdk.b.a.IvT.b(this.uQE);
-      com.tencent.mm.model.c.d.aDI().add(this.hMo);
-      ae.i("MicroMsg.PluginHardcoder", "onAccountInitialized abTestListener[%s]", new Object[] { this.hMo });
-      paramc = ak.getContext().getSharedPreferences("hardcoder_setting", 0);
-      com.tencent.mm.kernel.g.ajS();
-      com.tencent.mm.kernel.g.ajP();
+      EventCenter.instance.add(this.yjg);
+      com.tencent.mm.model.c.d.aXu().add(this.iHr);
+      Log.i("MicroMsg.PluginHardcoder", "onAccountInitialized abTestListener[%s]", new Object[] { this.iHr });
+      paramc = MMApplicationContext.getContext().getSharedPreferences("hardcoder_setting", 0);
+      com.tencent.mm.kernel.g.aAi();
+      com.tencent.mm.kernel.g.aAf();
       if (com.tencent.mm.kernel.a.getUin() != 0)
       {
-        com.tencent.mm.kernel.g.ajS();
-        com.tencent.mm.kernel.g.ajP();
-        int i = i.cf(com.tencent.mm.kernel.a.getUin(), 100);
+        com.tencent.mm.kernel.g.aAi();
+        com.tencent.mm.kernel.g.aAf();
+        int i = i.ch(com.tencent.mm.kernel.a.getUin(), 100);
         if (i != paramc.getInt("KEY_HC_UIN_HASH", 0))
         {
-          ae.i("MicroMsg.PluginHardcoder", "onAccountInitialized hardcoder uinHash[%d] reloadSPConfig", new Object[] { Integer.valueOf(i) });
+          Log.i("MicroMsg.PluginHardcoder", "onAccountInitialized hardcoder uinHash[%d] reloadSPConfig", new Object[] { Integer.valueOf(i) });
           paramc.edit().putInt("KEY_HC_UIN_HASH", i).apply();
           WXHardCoderJNI.reloadSPConfig(WXHardCoderJNI.RELOAD_SCENE_POST_RESET);
         }
@@ -395,17 +398,17 @@ public class PluginHardcoder
   public void onAccountRelease()
   {
     AppMethodBeat.i(130775);
-    if (ak.cpe())
+    if (MMApplicationContext.isMMProcess())
     {
-      com.tencent.mm.model.c.d.aDI().remove(this.hMo);
-      com.tencent.mm.sdk.b.a.IvT.d(this.uQE);
+      com.tencent.mm.model.c.d.aXu().remove(this.iHr);
+      EventCenter.instance.removeListener(this.yjg);
     }
     AppMethodBeat.o(130775);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.plugin.hardcoder.PluginHardcoder
  * JD-Core Version:    0.7.0.1
  */

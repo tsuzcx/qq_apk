@@ -1,116 +1,108 @@
 package kotlinx.coroutines;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.d.a;
-import d.d.d;
-import d.d.e;
-import d.d.f;
-import d.d.f.b;
-import d.d.f.c;
-import d.d.g;
-import d.g.b.p;
-import d.g.b.q;
-import d.v;
+import java.util.concurrent.atomic.AtomicLong;
+import kotlin.d.e;
+import kotlin.d.f;
+import kotlin.d.f.c;
+import kotlin.l;
+import kotlinx.coroutines.b.c;
+import kotlinx.coroutines.internal.w;
 
-@d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/CoroutineDispatcher;", "Lkotlin/coroutines/AbstractCoroutineContextElement;", "Lkotlin/coroutines/ContinuationInterceptor;", "()V", "dispatch", "", "context", "Lkotlin/coroutines/CoroutineContext;", "block", "Ljava/lang/Runnable;", "Lkotlinx/coroutines/Runnable;", "dispatchYield", "interceptContinuation", "Lkotlin/coroutines/Continuation;", "T", "continuation", "isDispatchNeeded", "", "plus", "other", "releaseInterceptedContinuation", "toString", "", "Key", "kotlinx-coroutines-core"})
-public abstract class ac
-  extends a
-  implements e
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"COROUTINES_SCHEDULER_PROPERTY_NAME", "", "DEBUG_THREAD_NAME_SEPARATOR", "useCoroutinesScheduler", "", "getUseCoroutinesScheduler", "()Z", "coroutineName", "Lkotlin/coroutines/CoroutineContext;", "getCoroutineName", "(Lkotlin/coroutines/CoroutineContext;)Ljava/lang/String;", "createDefaultDispatcher", "Lkotlinx/coroutines/CoroutineDispatcher;", "withCoroutineContext", "T", "context", "countOrElement", "", "block", "Lkotlin/Function0;", "(Lkotlin/coroutines/CoroutineContext;Ljava/lang/Object;Lkotlin/jvm/functions/Function0;)Ljava/lang/Object;", "newCoroutineContext", "Lkotlinx/coroutines/CoroutineScope;", "kotlinx-coroutines-core"})
+public final class ac
 {
-  public static final a OeW = new a((byte)0);
+  private static final boolean TTP;
   
-  public ac()
+  static
   {
-    super((f.c)e.NhY);
-  }
-  
-  public abstract void a(f paramf, Runnable paramRunnable);
-  
-  public final <T> d<T> b(d<? super T> paramd)
-  {
-    return (d)new au(this, paramd);
-  }
-  
-  public final void c(d<?> paramd)
-  {
-    if (paramd == null) {
-      throw new v("null cannot be cast to non-null type kotlinx.coroutines.DispatchedContinuation<*>");
-    }
-    Object localObject = ((au)paramd)._reusableCancellableContinuation;
-    paramd = localObject;
-    if (!(localObject instanceof l)) {
-      paramd = null;
-    }
-    paramd = (l)paramd;
-    if (paramd != null) {
-      paramd.gzt();
-    }
-  }
-  
-  public <E extends f.b> E get(f.c<E> paramc)
-  {
-    p.h(paramc, "key");
-    if ((paramc instanceof d.d.b))
+    AppMethodBeat.i(118187);
+    Object localObject = w.buC("kotlinx.coroutines.scheduler");
+    if (localObject == null) {}
+    for (;;)
     {
-      if (((d.d.b)paramc).a(getKey()))
+      boolean bool = true;
+      label17:
+      TTP = bool;
+      AppMethodBeat.o(118187);
+      return;
+      switch (((String)localObject).hashCode())
       {
-        f.b localb = ((d.d.b)paramc).a((f.b)this);
-        paramc = localb;
-        if ((localb instanceof f.b)) {}
       }
-      else
+      do
       {
-        paramc = null;
-      }
-      return paramc;
+        do
+        {
+          do
+          {
+            localObject = (Throwable)new IllegalStateException(("System property 'kotlinx.coroutines.scheduler' has unrecognized value '" + (String)localObject + '\'').toString());
+            AppMethodBeat.o(118187);
+            throw ((Throwable)localObject);
+          } while (!((String)localObject).equals(""));
+          break;
+        } while (!((String)localObject).equals("off"));
+        bool = false;
+        break label17;
+      } while (!((String)localObject).equals("on"));
     }
-    if (e.NhY == paramc) {
-      return (f.b)this;
-    }
-    return null;
   }
   
-  public boolean gzD()
+  public static final String a(f paramf)
   {
-    return true;
-  }
-  
-  public f minusKey(f.c<?> paramc)
-  {
-    p.h(paramc, "key");
-    if ((paramc instanceof d.d.b))
+    AppMethodBeat.i(118186);
+    if (!an.getDEBUG())
     {
-      if ((((d.d.b)paramc).a(getKey())) && (((d.d.b)paramc).a((f.b)this) != null)) {
-        return (f)g.Nib;
-      }
-      return (f)this;
+      AppMethodBeat.o(118186);
+      return null;
     }
-    if (e.NhY == paramc) {
-      return (f)g.Nib;
-    }
-    return (f)this;
-  }
-  
-  public String toString()
-  {
-    return getClass().getSimpleName() + '@' + Integer.toHexString(System.identityHashCode(this));
-  }
-  
-  @d.l(gjZ={1, 1, 16}, gka={""}, gkb={"Lkotlinx/coroutines/CoroutineDispatcher$Key;", "Lkotlin/coroutines/AbstractCoroutineContextKey;", "Lkotlin/coroutines/ContinuationInterceptor;", "Lkotlinx/coroutines/CoroutineDispatcher;", "()V", "kotlinx-coroutines-core"})
-  public static final class a
-    extends d.d.b<e, ac>
-  {
-    private a()
+    ag localag = (ag)paramf.get((f.c)ag.TTV);
+    if (localag == null)
     {
-      super((d.g.a.b)1.OeX);
-      AppMethodBeat.i(209195);
-      AppMethodBeat.o(209195);
+      AppMethodBeat.o(118186);
+      return null;
     }
+    paramf = (ah)paramf.get((f.c)ah.TTW);
+    if (paramf != null)
+    {
+      String str = paramf.name;
+      paramf = str;
+      if (str != null) {}
+    }
+    else
+    {
+      paramf = "coroutine";
+    }
+    paramf = paramf + '#' + localag.id;
+    AppMethodBeat.o(118186);
+    return paramf;
+  }
+  
+  public static final f a(ai paramai, f paramf)
+  {
+    AppMethodBeat.i(118185);
+    paramf = paramai.hMk().plus(paramf);
+    if (an.getDEBUG()) {}
+    for (paramai = paramf.plus((f)new ag(an.hMM().incrementAndGet())); (paramf != ba.hMU()) && (paramf.get((f.c)e.SXH) == null); paramai = paramf)
+    {
+      paramai = paramai.plus((f)ba.hMU());
+      AppMethodBeat.o(118185);
+      return paramai;
+    }
+    AppMethodBeat.o(118185);
+    return paramai;
+  }
+  
+  public static final ad hMG()
+  {
+    if (TTP) {
+      return (ad)c.TWS;
+    }
+    return (ad)t.TTK;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     kotlinx.coroutines.ac
  * JD-Core Version:    0.7.0.1
  */

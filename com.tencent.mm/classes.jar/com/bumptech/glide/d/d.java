@@ -1,133 +1,45 @@
 package com.bumptech.glide.d;
 
-import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.e.a;
+import com.bumptech.glide.g.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Set;
+import java.util.concurrent.atomic.AtomicReference;
 
-@Deprecated
 public final class d
 {
-  private final Context context;
+  private final AtomicReference<i> aMQ;
+  public final a<i, List<Class<?>>> aMR;
   
-  public d(Context paramContext)
+  public d()
   {
-    this.context = paramContext;
+    AppMethodBeat.i(77607);
+    this.aMQ = new AtomicReference();
+    this.aMR = new a();
+    AppMethodBeat.o(77607);
   }
   
-  private static b S(String paramString)
+  public final List<Class<?>> d(Class<?> paramClass1, Class<?> arg2, Class<?> paramClass3)
   {
-    AppMethodBeat.i(77596);
-    Class localClass;
-    try
-    {
-      localClass = Class.forName(paramString);
-      paramString = null;
+    AppMethodBeat.i(204487);
+    i locali = (i)this.aMQ.getAndSet(null);
+    if (locali == null) {
+      paramClass1 = new i(paramClass1, ???, paramClass3);
     }
-    catch (ClassNotFoundException paramString)
+    synchronized (this.aMR)
     {
-      Object localObject;
-      label30:
-      paramString = new IllegalArgumentException("Unable to find GlideModule implementation", paramString);
-      AppMethodBeat.o(77596);
-      throw paramString;
+      paramClass3 = (List)this.aMR.get(paramClass1);
+      this.aMQ.set(paramClass1);
+      AppMethodBeat.o(204487);
+      return paramClass3;
+      locali.e(paramClass1, ???, paramClass3);
+      paramClass1 = locali;
     }
-    try
-    {
-      localObject = localClass.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      paramString = localObject;
-    }
-    catch (InstantiationException localInstantiationException)
-    {
-      a(localClass, localInstantiationException);
-      break label30;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      a(localClass, localIllegalAccessException);
-      break label30;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      a(localClass, localNoSuchMethodException);
-      break label30;
-    }
-    catch (InvocationTargetException localInvocationTargetException)
-    {
-      a(localClass, localInvocationTargetException);
-      break label30;
-      paramString = (b)paramString;
-      AppMethodBeat.o(77596);
-    }
-    if (!(paramString instanceof b))
-    {
-      paramString = new RuntimeException("Expected instanceof GlideModule, but found: ".concat(String.valueOf(paramString)));
-      AppMethodBeat.o(77596);
-      throw paramString;
-    }
-    return paramString;
-  }
-  
-  private static void a(Class<?> paramClass, Exception paramException)
-  {
-    AppMethodBeat.i(77597);
-    paramClass = new RuntimeException("Unable to instantiate GlideModule implementation for ".concat(String.valueOf(paramClass)), paramException);
-    AppMethodBeat.o(77597);
-    throw paramClass;
-  }
-  
-  public final List<b> pP()
-  {
-    AppMethodBeat.i(77595);
-    Log.isLoggable("ManifestParser", 3);
-    ArrayList localArrayList = new ArrayList();
-    RuntimeException localRuntimeException;
-    try
-    {
-      ApplicationInfo localApplicationInfo = this.context.getPackageManager().getApplicationInfo(this.context.getPackageName(), 128);
-      if (localApplicationInfo.metaData == null)
-      {
-        Log.isLoggable("ManifestParser", 3);
-        AppMethodBeat.o(77595);
-        return localArrayList;
-      }
-      if (Log.isLoggable("ManifestParser", 2)) {
-        new StringBuilder("Got app info metadata: ").append(localApplicationInfo.metaData);
-      }
-      Iterator localIterator = localApplicationInfo.metaData.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        if ("GlideModule".equals(localApplicationInfo.metaData.get(str)))
-        {
-          localArrayList.add(S(str));
-          Log.isLoggable("ManifestParser", 3);
-        }
-      }
-      Log.isLoggable("ManifestParser", 3);
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      localRuntimeException = new RuntimeException("Unable to find metadata to parse GlideModules", localNameNotFoundException);
-      AppMethodBeat.o(77595);
-      throw localRuntimeException;
-    }
-    AppMethodBeat.o(77595);
-    return localRuntimeException;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.bumptech.glide.d.d
  * JD-Core Version:    0.7.0.1
  */

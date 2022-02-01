@@ -1,7 +1,7 @@
 package com.tencent.mm.plugin.wallet_payu.remittance.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import com.tencent.mm.wallet_core.e.a.a;
 import java.util.HashMap;
 import java.util.Map;
@@ -10,15 +10,15 @@ import org.json.JSONObject;
 public final class e
   extends a
 {
-  public int DLg;
-  public int DLh;
-  public int dEu;
-  public int dsO;
-  public double phz;
+  public String AOl;
+  private String CpP;
+  public int CpR;
+  public int Iuv;
+  public int Iuw;
+  public int cSx;
+  public int dJY;
+  public double qwJ;
   public int status;
-  public String wSq;
-  private String yoZ;
-  public int ypb;
   
   public e(String paramString1, String paramString2, int paramInt)
   {
@@ -28,10 +28,10 @@ public final class e
   public e(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     AppMethodBeat.i(72174);
-    this.yoZ = null;
-    this.yoZ = paramString1;
-    this.dsO = 1;
-    this.dEu = paramInt2;
+    this.CpP = null;
+    this.CpP = paramString1;
+    this.dJY = 1;
+    this.cSx = paramInt2;
     HashMap localHashMap = new HashMap();
     localHashMap.put("trans_id", paramString1);
     localHashMap.put("receiver_name", paramString2);
@@ -40,7 +40,7 @@ public final class e
     AppMethodBeat.o(72174);
   }
   
-  public final int eIr()
+  public final int fPU()
   {
     return 25;
   }
@@ -48,24 +48,24 @@ public final class e
   public final void onGYNetEnd(int paramInt, String paramString, JSONObject paramJSONObject)
   {
     AppMethodBeat.i(72175);
-    ae.d("MicroMsg.NetScenePayURemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
+    Log.d("MicroMsg.NetScenePayURemittanceQuery", "errCode " + paramInt + " errMsg: " + paramString);
     if (paramInt != 0)
     {
       AppMethodBeat.o(72175);
       return;
     }
-    this.ypb = paramJSONObject.optInt("pay_time");
-    this.phz = (paramJSONObject.optDouble("total_fee") / 100.0D);
-    this.wSq = paramJSONObject.optString("fee_type");
+    this.CpR = paramJSONObject.optInt("pay_time");
+    this.qwJ = (paramJSONObject.optDouble("total_fee") / 100.0D);
+    this.AOl = paramJSONObject.optString("fee_type");
     this.status = paramJSONObject.optInt("pay_status");
-    this.DLg = paramJSONObject.optInt("refund_time");
-    this.DLh = paramJSONObject.optInt("receive_time");
+    this.Iuv = paramJSONObject.optInt("refund_time");
+    this.Iuw = paramJSONObject.optInt("receive_time");
     AppMethodBeat.o(72175);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.mm.plugin.wallet_payu.remittance.a.e
  * JD-Core Version:    0.7.0.1
  */

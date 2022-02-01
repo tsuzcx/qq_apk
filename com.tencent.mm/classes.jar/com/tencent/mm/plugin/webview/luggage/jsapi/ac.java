@@ -7,17 +7,17 @@ import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.downloader.model.FileDownloadTaskInfo;
 import com.tencent.mm.plugin.downloader.model.d;
 import com.tencent.mm.plugin.downloader.model.f;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ac
-  extends bq<s>
+  extends br<s>
 {
-  public final void a(Context paramContext, String paramString, final bq.a parama)
+  public final void a(Context paramContext, String paramString, final br.a parama)
   {
     AppMethodBeat.i(78567);
-    ae.i("MicroMsg.JsApiInstallDownloadTask", "invokeInOwn");
+    Log.i("MicroMsg.JsApiInstallDownloadTask", "invokeInOwn");
     long l;
     try
     {
@@ -25,35 +25,35 @@ public class ac
       l = paramContext.optLong("download_id");
       if (l <= 0L)
       {
-        ae.i("MicroMsg.JsApiInstallDownloadTask", "data is null");
-        parama.f("fail_invalid_data", null);
+        Log.i("MicroMsg.JsApiInstallDownloadTask", "data is null");
+        parama.i("fail_invalid_data", null);
         AppMethodBeat.o(78567);
         return;
       }
     }
     catch (JSONException paramContext)
     {
-      ae.e("MicroMsg.JsApiInstallDownloadTask", "paras data error: " + paramContext.getMessage());
-      parama.f("fail", null);
+      Log.e("MicroMsg.JsApiInstallDownloadTask", "paras data error: " + paramContext.getMessage());
+      parama.i("fail", null);
       AppMethodBeat.o(78567);
       return;
     }
-    paramString = f.cdA().uj(l);
+    paramString = f.cBv().Co(l);
     if (paramString.status == -1)
     {
-      ae.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, apilevel not supported");
-      parama.f("fail", null);
+      Log.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, apilevel not supported");
+      parama.i("fail", null);
       AppMethodBeat.o(78567);
       return;
     }
     if (paramString.status != 3)
     {
-      ae.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, invalid status = " + paramString.status);
-      parama.f("fail", null);
+      Log.e("MicroMsg.JsApiInstallDownloadTask", "installDownloadTask fail, invalid status = " + paramString.status);
+      parama.i("fail", null);
       AppMethodBeat.o(78567);
       return;
     }
-    com.tencent.mm.plugin.downloader.g.a locala = d.ur(l);
+    com.tencent.mm.plugin.downloader.g.a locala = d.Cw(l);
     if (locala != null)
     {
       int i = paramContext.optInt("scene");
@@ -68,16 +68,16 @@ public class ac
     }
     com.tencent.mm.plugin.downloader.i.a.a(paramString.id, false, new com.tencent.mm.pluginsdk.permission.a()
     {
-      public final void gn(boolean paramAnonymousBoolean)
+      public final void hk(boolean paramAnonymousBoolean)
       {
         AppMethodBeat.i(78566);
         if (paramAnonymousBoolean)
         {
-          parama.f(null, null);
+          parama.i(null, null);
           AppMethodBeat.o(78566);
           return;
         }
-        parama.f("fail", null);
+        parama.i("fail", null);
         AppMethodBeat.o(78566);
       }
     });
@@ -86,7 +86,7 @@ public class ac
   
   public final void b(b<s>.a paramb) {}
   
-  public final int ced()
+  public final int dTs()
   {
     return 1;
   }

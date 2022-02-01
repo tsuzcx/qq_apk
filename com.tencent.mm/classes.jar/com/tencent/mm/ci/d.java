@@ -4,12 +4,12 @@ import android.os.Debug;
 import android.os.Environment;
 import android.os.Message;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.aq;
-import com.tencent.mm.sdk.platformtools.bu;
-import com.tencent.mm.vfs.k;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMHandler;
+import com.tencent.mm.sdk.platformtools.Util;
+import com.tencent.mm.vfs.aa;
 import com.tencent.mm.vfs.o;
-import com.tencent.mm.vfs.w;
+import com.tencent.mm.vfs.s;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.EventListener;
@@ -21,31 +21,31 @@ import java.util.concurrent.LinkedBlockingQueue;
 public final class d
   implements EventListener
 {
-  public static a Jme;
-  public static d Jmj;
-  private static int Jmk;
-  public static final String Jmm;
-  static aq gKO;
-  private volatile boolean Jml;
-  private LinkedBlockingQueue<a> Jmn;
-  ExecutorService Jmo;
-  public WeakReference<b> Jmp;
-  private volatile boolean ipD;
+  public static a OvX;
+  public static d Owc;
+  private static int Owd;
+  public static final String Owf;
+  static MMHandler hAk;
+  private volatile boolean Owe;
+  private LinkedBlockingQueue<a> Owg;
+  ExecutorService Owh;
+  public WeakReference<b> Owi;
+  private volatile boolean jkK;
   
   static
   {
     AppMethodBeat.i(145613);
-    Jmk = 5242880;
-    Jmm = Environment.getExternalStorageDirectory() + "/tencent/MicroMsg/tracedog/";
-    Jme = null;
-    gKO = new aq()
+    Owd = 5242880;
+    Owf = Environment.getExternalStorageDirectory() + "/tencent/MicroMsg/tracedog/";
+    OvX = null;
+    hAk = new MMHandler()
     {
       public final void handleMessage(Message paramAnonymousMessage)
       {
         AppMethodBeat.i(145597);
-        ae.i("MicroMsg.TraceDebugManager", "TRACE handle msg :%d ", new Object[] { Integer.valueOf(paramAnonymousMessage.what) });
+        Log.i("MicroMsg.TraceDebugManager", "TRACE handle msg :%d ", new Object[] { Integer.valueOf(paramAnonymousMessage.what) });
         if (paramAnonymousMessage.what == 0) {
-          d.Jmj.b((d.a)paramAnonymousMessage.obj);
+          d.Owc.b((d.a)paramAnonymousMessage.obj);
         }
         for (;;)
         {
@@ -54,16 +54,16 @@ public final class d
           return;
           if (paramAnonymousMessage.what == 1)
           {
-            if (d.c(d.Jmj) != null)
+            if (d.c(d.Owc) != null)
             {
-              d.b localb = (d.b)d.c(d.Jmj).get();
+              d.b localb = (d.b)d.c(d.Owc).get();
               if (localb != null) {
-                localb.fyA();
+                localb.gGo();
               }
             }
           }
           else {
-            d.a(d.Jmj, (d.a)paramAnonymousMessage.obj);
+            d.a(d.Owc, (d.a)paramAnonymousMessage.obj);
           }
         }
       }
@@ -74,51 +74,51 @@ public final class d
   private void a(a parama)
   {
     AppMethodBeat.i(145601);
-    if (this.Jml)
+    if (this.Owe)
     {
       AppMethodBeat.o(145601);
       return;
     }
-    if (!c.abo())
+    if (!c.apn())
     {
-      ae.i("MicroMsg.TraceDebugManager", "TRACE sdcard is invalid");
+      Log.i("MicroMsg.TraceDebugManager", "TRACE sdcard is invalid");
       AppMethodBeat.o(145601);
       return;
     }
-    fyz();
+    gGn();
     for (;;)
     {
       try
       {
-        Object localObject = new k(Jmm);
-        if ((parama.dMv != 6) && (((k)localObject).exists()))
+        Object localObject = new o(Owf);
+        if ((parama.een != 6) && (((o)localObject).exists()))
         {
-          ae.i("MicroMsg.TraceDebugManager", "TRACE delete all file ");
-          o.dd(w.B(((k)localObject).mUri), true);
+          Log.i("MicroMsg.TraceDebugManager", "TRACE delete all file ");
+          s.dy(aa.z(((o)localObject).mUri), true);
         }
-        ((k)localObject).mkdirs();
+        ((o)localObject).mkdirs();
         localObject = parama.savePath;
-        if (parama.Jms > 0) {
+        if (parama.Owl > 0) {
           continue;
         }
-        i = Jmk;
+        i = Owd;
         Debug.startMethodTracing((String)localObject, i);
-        this.Jml = true;
+        this.Owe = true;
       }
       catch (IncompatibleClassChangeError parama)
       {
         int i;
-        ae.printErrStackTrace("MicroMsg.Crash", parama, "May cause dvmFindCatchBlock crash!", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.Crash", parama, "May cause dvmFindCatchBlock crash!", new Object[0]);
         parama = (IncompatibleClassChangeError)new IncompatibleClassChangeError("May cause dvmFindCatchBlock crash!").initCause(parama);
         AppMethodBeat.o(145601);
         throw parama;
       }
       catch (Throwable localThrowable)
       {
-        this.Jml = false;
-        ae.printErrStackTrace("MicroMsg.TraceDebugManager", localThrowable, "TRACE startMethodTracing ERROR", new Object[0]);
+        this.Owe = false;
+        Log.printErrStackTrace("MicroMsg.TraceDebugManager", localThrowable, "TRACE startMethodTracing ERROR", new Object[0]);
         continue;
-        if (this.Jml) {
+        if (this.Owe) {
           continue;
         }
         AppMethodBeat.o(145601);
@@ -126,37 +126,90 @@ public final class d
         Message localMessage = Message.obtain();
         localMessage.what = 0;
         localMessage.obj = parama;
-        if ((!bu.isNullOrNil(parama.className)) && (parama.dMv != 5)) {
+        if ((!Util.isNullOrNil(parama.className)) && (parama.een != 5)) {
           continue;
         }
-        gKO.sendMessageDelayed(localMessage, 15000L);
+        hAk.sendMessageDelayed(localMessage, 15000L);
         AppMethodBeat.o(145601);
         return;
-        gKO.sendMessageDelayed(localMessage, 10000L);
+        hAk.sendMessageDelayed(localMessage, 10000L);
         AppMethodBeat.o(145601);
       }
-      if (parama.dMv != 6) {
+      if (parama.een != 6) {
         continue;
       }
-      ae.i("MicroMsg.TraceDebugManager", "TRACE startTrace uploadType is CLIENT ");
+      Log.i("MicroMsg.TraceDebugManager", "TRACE startTrace uploadType is CLIENT ");
       AppMethodBeat.o(145601);
       return;
-      i = parama.Jms;
+      i = parama.Owl;
       i = i * 1024 * 1024;
     }
   }
   
-  private void abX(final int paramInt)
+  private static String aj(o paramo)
+  {
+    AppMethodBeat.i(170139);
+    ArrayList localArrayList = new ArrayList();
+    int i;
+    if (paramo.isDirectory())
+    {
+      Log.i("MicroMsg.TraceDebugManager", "TRACE currentPath is dir");
+      paramo = paramo.het();
+      if (paramo == null)
+      {
+        Log.e("MicroMsg.TraceDebugManager", " get file list failed");
+        AppMethodBeat.o(170139);
+        return null;
+      }
+      i = 0;
+      while (i < paramo.length)
+      {
+        localArrayList.add(aa.z(paramo[i].her()));
+        i += 1;
+      }
+    }
+    localArrayList.add(aa.z(paramo.her()));
+    paramo = new o(Owf + Util.nowMilliSecond() + ".zip");
+    try
+    {
+      s.t(localArrayList, aa.z(paramo.her()));
+      i = 0;
+      while (i < localArrayList.size())
+      {
+        new o((String)localArrayList.get(i)).delete();
+        i += 1;
+      }
+      if (paramo.length() <= 3145728L) {
+        break label261;
+      }
+    }
+    catch (Exception paramo)
+    {
+      Log.e("MicroMsg.TraceDebugManager", "exception:%s", new Object[] { Util.stackTraceToString(paramo) });
+      Log.e("MicroMsg.TraceDebugManager", "zip file failed msg:%s ", new Object[] { paramo.getMessage() });
+      AppMethodBeat.o(170139);
+      return null;
+    }
+    Log.e("MicroMsg.TraceDebugManager", "trace file is too large:%d ", new Object[] { Long.valueOf(paramo.length()) });
+    AppMethodBeat.o(170139);
+    return null;
+    label261:
+    paramo = aa.z(paramo.her());
+    AppMethodBeat.o(170139);
+    return paramo;
+  }
+  
+  private void akF(final int paramInt)
   {
     AppMethodBeat.i(145609);
-    this.Jmo.execute(new Runnable()
+    this.Owh.execute(new Runnable()
     {
       public final void run()
       {
         AppMethodBeat.i(145598);
         d locald = d.this;
         if (paramInt == 4) {}
-        for (String str = "/data/anr/";; str = d.Jmm)
+        for (String str = "/data/anr/";; str = d.Owf)
         {
           d.a(locald, str);
           AppMethodBeat.o(145598);
@@ -167,148 +220,43 @@ public final class d
     AppMethodBeat.o(145609);
   }
   
-  private static String ad(k paramk)
-  {
-    AppMethodBeat.i(170139);
-    ArrayList localArrayList = new ArrayList();
-    int i;
-    if (paramk.isDirectory())
-    {
-      ae.i("MicroMsg.TraceDebugManager", "TRACE currentPath is dir");
-      paramk = paramk.fTj();
-      if (paramk == null)
-      {
-        ae.e("MicroMsg.TraceDebugManager", " get file list failed");
-        AppMethodBeat.o(170139);
-        return null;
-      }
-      i = 0;
-      while (i < paramk.length)
-      {
-        localArrayList.add(w.B(paramk[i].fTh()));
-        i += 1;
-      }
-    }
-    localArrayList.add(w.B(paramk.fTh()));
-    paramk = new k(Jmm + bu.fpO() + ".zip");
-    try
-    {
-      o.t(localArrayList, w.B(paramk.fTh()));
-      i = 0;
-      while (i < localArrayList.size())
-      {
-        new k((String)localArrayList.get(i)).delete();
-        i += 1;
-      }
-      if (paramk.length() <= 3145728L) {
-        break label261;
-      }
-    }
-    catch (Exception paramk)
-    {
-      ae.e("MicroMsg.TraceDebugManager", "exception:%s", new Object[] { bu.o(paramk) });
-      ae.e("MicroMsg.TraceDebugManager", "zip file failed msg:%s ", new Object[] { paramk.getMessage() });
-      AppMethodBeat.o(170139);
-      return null;
-    }
-    ae.e("MicroMsg.TraceDebugManager", "trace file is too large:%d ", new Object[] { Long.valueOf(paramk.length()) });
-    AppMethodBeat.o(170139);
-    return null;
-    label261:
-    paramk = w.B(paramk.fTh());
-    AppMethodBeat.o(170139);
-    return paramk;
-  }
-  
-  public static d fyy()
+  public static d gGm()
   {
     AppMethodBeat.i(145600);
-    if (Jmj == null) {
-      Jmj = new d();
+    if (Owc == null) {
+      Owc = new d();
     }
-    d locald = Jmj;
+    d locald = Owc;
     AppMethodBeat.o(145600);
     return locald;
   }
   
-  private static void fyz()
+  private static void gGn()
   {
     AppMethodBeat.i(145602);
-    gKO.removeMessages(0);
-    gKO.removeMessages(2);
-    gKO.removeMessages(1);
+    hAk.removeMessages(0);
+    hAk.removeMessages(2);
+    hAk.removeMessages(1);
     AppMethodBeat.o(145602);
-  }
-  
-  final void aWG(String paramString)
-  {
-    AppMethodBeat.i(145607);
-    if (paramString == null)
-    {
-      AppMethodBeat.o(145607);
-      return;
-    }
-    this.ipD = true;
-    if (bu.isNullOrNil(paramString)) {
-      ae.e("MicroMsg.TraceDebugManager", "TRACE error uploadPath %s ", new Object[] { paramString });
-    }
-    for (;;)
-    {
-      this.ipD = false;
-      AppMethodBeat.o(145607);
-      return;
-      if (!c.abo())
-      {
-        ae.e("MicroMsg.TraceDebugManager", "TRACE sdcard invalid.");
-      }
-      else
-      {
-        k localk = new k(paramString);
-        if (!localk.exists())
-        {
-          ae.e("MicroMsg.TraceDebugManager", "TRACE upload file is not exist");
-        }
-        else
-        {
-          if (localk.isDirectory()) {
-            paramString = ad(localk);
-          }
-          if ((paramString != null) && (new k(paramString).length() >= 131072L)) {
-            if (Jme == null)
-            {
-              ae.e("MicroMsg.TraceDebugManager", "TRACE upload : no file upload impl set!");
-            }
-            else
-            {
-              boolean bool = Jme.avC(paramString);
-              ae.i("MicroMsg.TraceDebugManager", "TRACE upload : %b", new Object[] { Boolean.valueOf(bool) });
-              if (bool) {
-                o.dd(Jmm, true);
-              }
-            }
-          }
-        }
-      }
-    }
   }
   
   public final boolean b(final a parama)
   {
     AppMethodBeat.i(145604);
-    fyz();
-    if ((!this.Jml) || (this.ipD))
+    gGn();
+    if ((!this.Owe) || (this.jkK))
     {
-      ae.i("MicroMsg.TraceDebugManager", "TRACE stopTrace hasStartTrace : %b ,isUploading :%b  ", new Object[] { Boolean.valueOf(this.Jml), Boolean.valueOf(this.ipD) });
+      Log.i("MicroMsg.TraceDebugManager", "TRACE stopTrace hasStartTrace : %b ,isUploading :%b  ", new Object[] { Boolean.valueOf(this.Owe), Boolean.valueOf(this.jkK) });
       AppMethodBeat.o(145604);
       return false;
     }
-    if (!c.abo())
+    if (!c.apn())
     {
-      ae.i("MicroMsg.TraceDebugManager", "TRACE stopTrace sdcard invalid");
+      Log.i("MicroMsg.TraceDebugManager", "TRACE stopTrace sdcard invalid");
       AppMethodBeat.o(145604);
       return false;
     }
-    this.Jmo.execute(new Runnable()
+    this.Owh.execute(new Runnable()
     {
       /* Error */
       public final void run()
@@ -318,32 +266,32 @@ public final class d
         //   2: invokestatic 39	com/tencent/matrix/trace/core/AppMethodBeat:i	(I)V
         //   5: invokestatic 44	android/os/Debug:stopMethodTracing	()V
         //   8: aload_0
-        //   9: getfield 21	com/tencent/mm/ci/d$1:Jmq	Lcom/tencent/mm/ci/d$a;
+        //   9: getfield 21	com/tencent/mm/ci/d$1:Owj	Lcom/tencent/mm/ci/d$a;
         //   12: getfield 50	com/tencent/mm/ci/d$a:savePath	Ljava/lang/String;
         //   15: astore 4
         //   17: aload_0
-        //   18: getfield 21	com/tencent/mm/ci/d$1:Jmq	Lcom/tencent/mm/ci/d$a;
-        //   21: getfield 54	com/tencent/mm/ci/d$a:Jmt	I
+        //   18: getfield 21	com/tencent/mm/ci/d$1:Owj	Lcom/tencent/mm/ci/d$a;
+        //   21: getfield 54	com/tencent/mm/ci/d$a:Owm	I
         //   24: istore_1
         //   25: aload_0
-        //   26: getfield 21	com/tencent/mm/ci/d$1:Jmq	Lcom/tencent/mm/ci/d$a;
+        //   26: getfield 21	com/tencent/mm/ci/d$1:Owj	Lcom/tencent/mm/ci/d$a;
         //   29: getfield 50	com/tencent/mm/ci/d$a:savePath	Ljava/lang/String;
         //   32: astore 5
         //   34: aload 5
         //   36: ifnonnull +17 -> 53
         //   39: aload_0
-        //   40: getfield 19	com/tencent/mm/ci/d$1:Jmr	Lcom/tencent/mm/ci/d;
+        //   40: getfield 19	com/tencent/mm/ci/d$1:Owk	Lcom/tencent/mm/ci/d;
         //   43: invokestatic 57	com/tencent/mm/ci/d:b	(Lcom/tencent/mm/ci/d;)Z
         //   46: pop
         //   47: ldc 33
         //   49: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   52: return
-        //   53: new 62	com/tencent/mm/vfs/k
+        //   53: new 62	com/tencent/mm/vfs/o
         //   56: dup
         //   57: aload 4
-        //   59: invokespecial 65	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+        //   59: invokespecial 65	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
         //   62: astore 5
-        //   64: new 62	com/tencent/mm/vfs/k
+        //   64: new 62	com/tencent/mm/vfs/o
         //   67: dup
         //   68: new 67	java/lang/StringBuilder
         //   71: dup
@@ -358,16 +306,16 @@ public final class d
         //   91: ldc 84
         //   93: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
         //   96: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   99: invokespecial 65	com/tencent/mm/vfs/k:<init>	(Ljava/lang/String;)V
+        //   99: invokespecial 65	com/tencent/mm/vfs/o:<init>	(Ljava/lang/String;)V
         //   102: astore 4
         //   104: invokestatic 94	java/lang/System:currentTimeMillis	()J
         //   107: lstore_2
         //   108: aload 5
         //   110: aload 4
-        //   112: invokevirtual 98	com/tencent/mm/vfs/k:ag	(Lcom/tencent/mm/vfs/k;)Z
+        //   112: invokevirtual 98	com/tencent/mm/vfs/o:am	(Lcom/tencent/mm/vfs/o;)Z
         //   115: pop
         //   116: aload 5
-        //   118: invokevirtual 102	com/tencent/mm/vfs/k:delete	()Z
+        //   118: invokevirtual 102	com/tencent/mm/vfs/o:delete	()Z
         //   121: pop
         //   122: ldc 104
         //   124: new 67	java/lang/StringBuilder
@@ -379,12 +327,12 @@ public final class d
         //   137: lsub
         //   138: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
         //   141: invokevirtual 88	java/lang/StringBuilder:toString	()Ljava/lang/String;
-        //   144: invokestatic 115	com/tencent/mm/sdk/platformtools/ae:i	(Ljava/lang/String;Ljava/lang/String;)V
+        //   144: invokestatic 115	com/tencent/mm/sdk/platformtools/Log:i	(Ljava/lang/String;Ljava/lang/String;)V
         //   147: bipush 10
         //   149: invokestatic 120	android/os/Process:setThreadPriority	(I)V
         //   152: aload_0
-        //   153: getfield 21	com/tencent/mm/ci/d$1:Jmq	Lcom/tencent/mm/ci/d$a;
-        //   156: getfield 123	com/tencent/mm/ci/d$a:dMv	I
+        //   153: getfield 21	com/tencent/mm/ci/d$1:Owj	Lcom/tencent/mm/ci/d$a;
+        //   156: getfield 123	com/tencent/mm/ci/d$a:een	I
         //   159: bipush 6
         //   161: if_icmpne +138 -> 299
         //   164: new 125	java/util/ArrayList
@@ -393,16 +341,16 @@ public final class d
         //   171: astore 5
         //   173: aload 5
         //   175: aload 4
-        //   177: invokevirtual 130	com/tencent/mm/vfs/k:fTh	()Landroid/net/Uri;
-        //   180: invokestatic 136	com/tencent/mm/vfs/w:B	(Landroid/net/Uri;)Ljava/lang/String;
+        //   177: invokevirtual 130	com/tencent/mm/vfs/o:her	()Landroid/net/Uri;
+        //   180: invokestatic 136	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
         //   183: invokevirtual 140	java/util/ArrayList:add	(Ljava/lang/Object;)Z
         //   186: pop
         //   187: new 67	java/lang/StringBuilder
         //   190: dup
         //   191: invokespecial 68	java/lang/StringBuilder:<init>	()V
         //   194: aload 4
-        //   196: invokevirtual 130	com/tencent/mm/vfs/k:fTh	()Landroid/net/Uri;
-        //   199: invokestatic 136	com/tencent/mm/vfs/w:B	(Landroid/net/Uri;)Ljava/lang/String;
+        //   196: invokevirtual 130	com/tencent/mm/vfs/o:her	()Landroid/net/Uri;
+        //   199: invokestatic 136	com/tencent/mm/vfs/aa:z	(Landroid/net/Uri;)Ljava/lang/String;
         //   202: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
         //   205: ldc 142
         //   207: invokevirtual 82	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
@@ -410,14 +358,14 @@ public final class d
         //   213: astore 4
         //   215: aload 5
         //   217: aload 4
-        //   219: invokestatic 148	com/tencent/mm/vfs/o:t	(Ljava/util/List;Ljava/lang/String;)Z
+        //   219: invokestatic 148	com/tencent/mm/vfs/s:t	(Ljava/util/List;Ljava/lang/String;)Z
         //   222: pop
-        //   223: getstatic 152	com/tencent/mm/ci/d:gKO	Lcom/tencent/mm/sdk/platformtools/aq;
+        //   223: getstatic 152	com/tencent/mm/ci/d:hAk	Lcom/tencent/mm/sdk/platformtools/MMHandler;
         //   226: iconst_1
-        //   227: invokevirtual 158	com/tencent/mm/sdk/platformtools/aq:sendEmptyMessage	(I)Z
+        //   227: invokevirtual 158	com/tencent/mm/sdk/platformtools/MMHandler:sendEmptyMessage	(I)Z
         //   230: pop
         //   231: aload_0
-        //   232: getfield 19	com/tencent/mm/ci/d$1:Jmr	Lcom/tencent/mm/ci/d;
+        //   232: getfield 19	com/tencent/mm/ci/d$1:Owk	Lcom/tencent/mm/ci/d;
         //   235: invokestatic 57	com/tencent/mm/ci/d:b	(Lcom/tencent/mm/ci/d;)Z
         //   238: pop
         //   239: ldc 33
@@ -431,43 +379,43 @@ public final class d
         //   255: dup
         //   256: iconst_0
         //   257: aload 4
-        //   259: invokestatic 165	com/tencent/mm/sdk/platformtools/bu:o	(Ljava/lang/Throwable;)Ljava/lang/String;
+        //   259: invokestatic 166	com/tencent/mm/sdk/platformtools/Util:stackTraceToString	(Ljava/lang/Throwable;)Ljava/lang/String;
         //   262: aastore
-        //   263: invokestatic 169	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   263: invokestatic 170	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   266: ldc 104
-        //   268: ldc 171
+        //   268: ldc 172
         //   270: iconst_1
         //   271: anewarray 4	java/lang/Object
         //   274: dup
         //   275: iconst_0
         //   276: aload 4
-        //   278: invokevirtual 174	java/lang/Exception:getMessage	()Ljava/lang/String;
+        //   278: invokevirtual 175	java/lang/Exception:getMessage	()Ljava/lang/String;
         //   281: aastore
-        //   282: invokestatic 169	com/tencent/mm/sdk/platformtools/ae:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   282: invokestatic 170	com/tencent/mm/sdk/platformtools/Log:e	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/Object;)V
         //   285: aload_0
-        //   286: getfield 19	com/tencent/mm/ci/d$1:Jmr	Lcom/tencent/mm/ci/d;
+        //   286: getfield 19	com/tencent/mm/ci/d$1:Owk	Lcom/tencent/mm/ci/d;
         //   289: invokestatic 57	com/tencent/mm/ci/d:b	(Lcom/tencent/mm/ci/d;)Z
         //   292: pop
         //   293: ldc 33
         //   295: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   298: return
         //   299: aload_0
-        //   300: getfield 19	com/tencent/mm/ci/d$1:Jmr	Lcom/tencent/mm/ci/d;
-        //   303: invokestatic 178	com/tencent/mm/ci/d:a	(Lcom/tencent/mm/ci/d;)Ljava/util/concurrent/LinkedBlockingQueue;
+        //   300: getfield 19	com/tencent/mm/ci/d$1:Owk	Lcom/tencent/mm/ci/d;
+        //   303: invokestatic 179	com/tencent/mm/ci/d:a	(Lcom/tencent/mm/ci/d;)Ljava/util/concurrent/LinkedBlockingQueue;
         //   306: ifnull +16 -> 322
         //   309: aload_0
-        //   310: getfield 19	com/tencent/mm/ci/d$1:Jmr	Lcom/tencent/mm/ci/d;
-        //   313: invokestatic 178	com/tencent/mm/ci/d:a	(Lcom/tencent/mm/ci/d;)Ljava/util/concurrent/LinkedBlockingQueue;
-        //   316: invokevirtual 184	java/util/concurrent/LinkedBlockingQueue:size	()I
+        //   310: getfield 19	com/tencent/mm/ci/d$1:Owk	Lcom/tencent/mm/ci/d;
+        //   313: invokestatic 179	com/tencent/mm/ci/d:a	(Lcom/tencent/mm/ci/d;)Ljava/util/concurrent/LinkedBlockingQueue;
+        //   316: invokevirtual 185	java/util/concurrent/LinkedBlockingQueue:size	()I
         //   319: ifne +50 -> 369
         //   322: aload 4
-        //   324: invokestatic 188	com/tencent/mm/ci/d:ae	(Lcom/tencent/mm/vfs/k;)Ljava/lang/String;
+        //   324: invokestatic 189	com/tencent/mm/ci/d:ak	(Lcom/tencent/mm/vfs/o;)Ljava/lang/String;
         //   327: astore 4
         //   329: aload 4
-        //   331: invokestatic 192	com/tencent/mm/sdk/platformtools/bu:isNullOrNil	(Ljava/lang/String;)Z
+        //   331: invokestatic 193	com/tencent/mm/sdk/platformtools/Util:isNullOrNil	(Ljava/lang/String;)Z
         //   334: ifne +35 -> 369
         //   337: aload_0
-        //   338: getfield 19	com/tencent/mm/ci/d$1:Jmr	Lcom/tencent/mm/ci/d;
+        //   338: getfield 19	com/tencent/mm/ci/d$1:Owk	Lcom/tencent/mm/ci/d;
         //   341: astore 5
         //   343: iload_1
         //   344: iconst_1
@@ -475,32 +423,32 @@ public final class d
         //   348: iload_1
         //   349: iconst_3
         //   350: if_icmpne +19 -> 369
-        //   353: invokestatic 198	com/tencent/mm/sdk/platformtools/ak:getContext	()Landroid/content/Context;
-        //   356: invokestatic 204	com/tencent/mm/sdk/platformtools/az:isWifi	(Landroid/content/Context;)Z
+        //   353: invokestatic 199	com/tencent/mm/sdk/platformtools/MMApplicationContext:getContext	()Landroid/content/Context;
+        //   356: invokestatic 205	com/tencent/mm/sdk/platformtools/NetStatusUtil:isWifi	(Landroid/content/Context;)Z
         //   359: ifeq +10 -> 369
         //   362: aload 5
         //   364: aload 4
-        //   366: invokevirtual 207	com/tencent/mm/ci/d:aWG	(Ljava/lang/String;)V
+        //   366: invokevirtual 208	com/tencent/mm/ci/d:blF	(Ljava/lang/String;)V
         //   369: aload_0
-        //   370: getfield 19	com/tencent/mm/ci/d$1:Jmr	Lcom/tencent/mm/ci/d;
+        //   370: getfield 19	com/tencent/mm/ci/d$1:Owk	Lcom/tencent/mm/ci/d;
         //   373: invokestatic 57	com/tencent/mm/ci/d:b	(Lcom/tencent/mm/ci/d;)Z
         //   376: pop
         //   377: ldc 33
         //   379: invokestatic 60	com/tencent/matrix/trace/core/AppMethodBeat:o	(I)V
         //   382: return
         //   383: astore 4
-        //   385: ldc 209
+        //   385: ldc 210
         //   387: aload 4
-        //   389: ldc 211
+        //   389: ldc 212
         //   391: iconst_0
         //   392: anewarray 4	java/lang/Object
-        //   395: invokestatic 215	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   395: invokestatic 216	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   398: new 28	java/lang/IncompatibleClassChangeError
         //   401: dup
-        //   402: ldc 211
-        //   404: invokespecial 216	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
+        //   402: ldc 212
+        //   404: invokespecial 217	java/lang/IncompatibleClassChangeError:<init>	(Ljava/lang/String;)V
         //   407: aload 4
-        //   409: invokevirtual 220	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+        //   409: invokevirtual 221	java/lang/IncompatibleClassChangeError:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
         //   412: checkcast 28	java/lang/IncompatibleClassChangeError
         //   415: checkcast 28	java/lang/IncompatibleClassChangeError
         //   418: astore 4
@@ -510,7 +458,7 @@ public final class d
         //   427: athrow
         //   428: astore 4
         //   430: aload_0
-        //   431: getfield 19	com/tencent/mm/ci/d$1:Jmr	Lcom/tencent/mm/ci/d;
+        //   431: getfield 19	com/tencent/mm/ci/d$1:Owk	Lcom/tencent/mm/ci/d;
         //   434: invokestatic 57	com/tencent/mm/ci/d:b	(Lcom/tencent/mm/ci/d;)Z
         //   437: pop
         //   438: ldc 33
@@ -520,12 +468,12 @@ public final class d
         //   446: astore 4
         //   448: ldc 104
         //   450: aload 4
-        //   452: ldc 222
+        //   452: ldc 223
         //   454: iconst_0
         //   455: anewarray 4	java/lang/Object
-        //   458: invokestatic 215	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+        //   458: invokestatic 216	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
         //   461: aload_0
-        //   462: getfield 19	com/tencent/mm/ci/d$1:Jmr	Lcom/tencent/mm/ci/d;
+        //   462: getfield 19	com/tencent/mm/ci/d$1:Owk	Lcom/tencent/mm/ci/d;
         //   465: invokestatic 57	com/tencent/mm/ci/d:b	(Lcom/tencent/mm/ci/d;)Z
         //   468: pop
         //   469: ldc 33
@@ -582,79 +530,131 @@ public final class d
     return true;
   }
   
-  public final void c(a parama)
+  final void blF(String paramString)
   {
-    AppMethodBeat.i(145608);
-    if (parama.dMv <= 0)
+    AppMethodBeat.i(145607);
+    if (paramString == null)
     {
-      AppMethodBeat.o(145608);
+      AppMethodBeat.o(145607);
       return;
     }
-    if (this.Jmo == null) {
-      this.Jmo = Executors.newSingleThreadExecutor();
-    }
-    if ((this.ipD) || (this.Jml))
-    {
-      ae.i("MicroMsg.TraceDebugManager", "TRACE isUloading or hasStartTrace %b %b", new Object[] { Boolean.valueOf(this.ipD), Boolean.valueOf(this.Jml) });
-      AppMethodBeat.o(145608);
-      return;
-    }
-    gKO.removeMessages(0);
-    if ((parama.Jmt == 4) || (parama.Jmt == 5)) {
-      abX(parama.Jmt);
+    this.jkK = true;
+    if (Util.isNullOrNil(paramString)) {
+      Log.e("MicroMsg.TraceDebugManager", "TRACE error uploadPath %s ", new Object[] { paramString });
     }
     for (;;)
     {
-      ae.i("MicroMsg.TraceDebugManager", "TRACE PUSH : class : %s  code :%s type :%s", new Object[] { parama.className, Integer.valueOf(parama.dMv), Integer.valueOf(parama.Jmt) });
-      AppMethodBeat.o(145608);
+      this.jkK = false;
+      AppMethodBeat.o(145607);
       return;
-      if ((parama.dMv == 6) || (parama.dMv == 5))
+      if (!c.apn())
       {
-        Message localMessage = Message.obtain();
-        localMessage.what = 2;
-        localMessage.obj = parama;
-        if (parama.dMv == 5) {
-          gKO.sendMessage(localMessage);
-        } else {
-          gKO.sendMessageDelayed(localMessage, 500L);
-        }
+        Log.e("MicroMsg.TraceDebugManager", "TRACE sdcard invalid.");
       }
       else
       {
-        if (this.Jmn == null) {
-          this.Jmn = new LinkedBlockingQueue();
+        o localo = new o(paramString);
+        if (!localo.exists())
+        {
+          Log.e("MicroMsg.TraceDebugManager", "TRACE upload file is not exist");
         }
-        this.Jmn.clear();
-        this.Jmn.add(parama);
+        else
+        {
+          if (localo.isDirectory()) {
+            paramString = aj(localo);
+          }
+          if ((paramString != null) && (new o(paramString).length() >= 131072L)) {
+            if (OvX == null)
+            {
+              Log.e("MicroMsg.TraceDebugManager", "TRACE upload : no file upload impl set!");
+            }
+            else
+            {
+              boolean bool = OvX.aJP(paramString);
+              Log.i("MicroMsg.TraceDebugManager", "TRACE upload : %b", new Object[] { Boolean.valueOf(bool) });
+              if (bool) {
+                s.dy(Owf, true);
+              }
+            }
+          }
+        }
       }
     }
   }
   
-  public final void gC(String paramString, int paramInt)
+  public final void c(a parama)
+  {
+    AppMethodBeat.i(145608);
+    if (parama.een <= 0)
+    {
+      AppMethodBeat.o(145608);
+      return;
+    }
+    if (this.Owh == null) {
+      this.Owh = Executors.newSingleThreadExecutor();
+    }
+    if ((this.jkK) || (this.Owe))
+    {
+      Log.i("MicroMsg.TraceDebugManager", "TRACE isUloading or hasStartTrace %b %b", new Object[] { Boolean.valueOf(this.jkK), Boolean.valueOf(this.Owe) });
+      AppMethodBeat.o(145608);
+      return;
+    }
+    hAk.removeMessages(0);
+    if ((parama.Owm == 4) || (parama.Owm == 5)) {
+      akF(parama.Owm);
+    }
+    for (;;)
+    {
+      Log.i("MicroMsg.TraceDebugManager", "TRACE PUSH : class : %s  code :%s type :%s", new Object[] { parama.className, Integer.valueOf(parama.een), Integer.valueOf(parama.Owm) });
+      AppMethodBeat.o(145608);
+      return;
+      if ((parama.een == 6) || (parama.een == 5))
+      {
+        Message localMessage = Message.obtain();
+        localMessage.what = 2;
+        localMessage.obj = parama;
+        if (parama.een == 5) {
+          hAk.sendMessage(localMessage);
+        } else {
+          hAk.sendMessageDelayed(localMessage, 500L);
+        }
+      }
+      else
+      {
+        if (this.Owg == null) {
+          this.Owg = new LinkedBlockingQueue();
+        }
+        this.Owg.clear();
+        this.Owg.add(parama);
+      }
+    }
+  }
+  
+  public final void gV(String paramString, int paramInt)
   {
     AppMethodBeat.i(145606);
-    if ((this.Jmn != null) && (this.Jmn.size() > 0))
+    if ((this.Owg != null) && (this.Owg.size() > 0))
     {
-      ae.i("MicroMsg.TraceDebugManager", "TRACE gatherData : isUploading : %b  hasStart :%b currentClass : %s currentCode %d ", new Object[] { Boolean.valueOf(this.ipD), Boolean.valueOf(this.Jml), paramString, Integer.valueOf(paramInt) });
-      if ((!this.ipD) && (!this.Jml))
+      Log.i("MicroMsg.TraceDebugManager", "TRACE gatherData : isUploading : %b  hasStart :%b currentClass : %s currentCode %d ", new Object[] { Boolean.valueOf(this.jkK), Boolean.valueOf(this.Owe), paramString, Integer.valueOf(paramInt) });
+      if ((!this.jkK) && (!this.Owe))
       {
-        Iterator localIterator = this.Jmn.iterator();
+        Iterator localIterator = this.Owg.iterator();
         while (localIterator.hasNext())
         {
           a locala = (a)localIterator.next();
           if (locala.className != null)
           {
-            if ((locala.className.equals(paramString)) && (locala.dMv == paramInt))
+            if ((locala.className.equals(paramString)) && (locala.een == paramInt))
             {
               a(locala);
-              this.Jmn.remove(locala);
+              this.Owg.remove(locala);
               AppMethodBeat.o(145606);
             }
           }
           else
           {
             a(null);
-            this.Jmn.remove(locala);
+            this.Owg.remove(locala);
             AppMethodBeat.o(145606);
             return;
           }
@@ -666,29 +666,29 @@ public final class d
   
   public static final class a
   {
-    int Jms;
-    int Jmt;
+    int Owl;
+    int Owm;
     String className;
-    int dMv;
+    int een;
     String savePath;
     
     public a(String paramString, int paramInt1, int paramInt2, int paramInt3)
     {
       AppMethodBeat.i(145599);
       this.className = paramString;
-      this.dMv = paramInt1;
-      this.Jms = paramInt2;
-      this.Jmt = paramInt3;
+      this.een = paramInt1;
+      this.Owl = paramInt2;
+      this.Owm = paramInt3;
       StringBuilder localStringBuilder1 = new StringBuilder();
-      if (bu.isNullOrNil(paramString))
+      if (Util.isNullOrNil(paramString))
       {
-        localStringBuilder1.append(d.Jmm).append("WEIXIN_").append(System.currentTimeMillis()).append(".trace");
-        ae.i("MicroMsg.TraceDebugManager", "TRACE startMethod path %s traceSize : %d", new Object[] { localStringBuilder1.toString(), Integer.valueOf(paramInt2) });
+        localStringBuilder1.append(d.Owf).append("WEIXIN_").append(System.currentTimeMillis()).append(".trace");
+        Log.i("MicroMsg.TraceDebugManager", "TRACE startMethod path %s traceSize : %d", new Object[] { localStringBuilder1.toString(), Integer.valueOf(paramInt2) });
         this.savePath = localStringBuilder1.toString();
         AppMethodBeat.o(145599);
         return;
       }
-      StringBuilder localStringBuilder2 = localStringBuilder1.append(d.Jmm).append(paramString).append("_");
+      StringBuilder localStringBuilder2 = localStringBuilder1.append(d.Owf).append(paramString).append("_");
       paramString = "";
       switch (paramInt1)
       {
@@ -712,12 +712,12 @@ public final class d
   
   public static abstract interface b
   {
-    public abstract void fyA();
+    public abstract void gGo();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.ci.d
  * JD-Core Version:    0.7.0.1
  */

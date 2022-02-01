@@ -3,49 +3,47 @@ package com.tencent.mm.roomsdk.a.c;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
-import com.tencent.mm.ak.q;
+import com.tencent.mm.ak.i;
+import com.tencent.mm.ak.t;
 import com.tencent.mm.ba.b.a;
 import com.tencent.mm.ba.b.c;
 import com.tencent.mm.ba.c;
 import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.messenger.foundation.a.a.k.b;
-import com.tencent.mm.protocal.protobuf.che;
-import com.tencent.mm.protocal.protobuf.chg;
-import com.tencent.mm.protocal.protobuf.chh;
+import com.tencent.mm.protocal.protobuf.cxl;
+import com.tencent.mm.protocal.protobuf.cxn;
+import com.tencent.mm.protocal.protobuf.cxo;
 import com.tencent.mm.roomsdk.a.b.e;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.ui.base.h;
-import com.tencent.mm.ui.base.p;
 import java.util.LinkedList;
 import java.util.List;
 
 public final class d
   extends a
 {
-  c Iqz;
-  f ghB;
+  c NDW;
+  i gNh;
   
   public d()
   {
-    AppMethodBeat.i(218935);
-    this.ghB = new f()
+    AppMethodBeat.i(223899);
+    this.gNh = new i()
     {
-      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, n paramAnonymousn)
+      public final void onSceneEnd(int paramAnonymousInt1, int paramAnonymousInt2, String paramAnonymousString, com.tencent.mm.ak.q paramAnonymousq)
       {
-        AppMethodBeat.i(218934);
-        if (d.this.Iqz.equals(paramAnonymousn))
+        AppMethodBeat.i(223898);
+        if (d.this.NDW.equals(paramAnonymousq))
         {
-          g.ajS();
-          g.ajQ().gDv.b(paramAnonymousn.getType(), d.this.ghB);
+          g.aAi();
+          g.aAg().hqi.b(paramAnonymousq.getType(), d.this.gNh);
           if (d.this.tipDialog != null) {
             d.this.tipDialog.dismiss();
           }
-          if (d.this.Iqr != null)
+          if (d.this.NDO != null)
           {
-            paramAnonymousString = ((b.c)((com.tencent.mm.ba.b)paramAnonymousn).ilc.getRespObj()).ilh;
+            paramAnonymousString = ((b.c)((com.tencent.mm.ba.b)paramAnonymousq).jgb.getRespObj()).jgg;
             if ((paramAnonymousInt1 != 0) || (paramAnonymousInt2 != 0)) {
               break label309;
             }
@@ -55,125 +53,125 @@ public final class d
         {
           try
           {
-            paramAnonymousInt1 = ((Integer)paramAnonymousString.Htc.GNm.getLast()).intValue();
+            paramAnonymousInt1 = ((Integer)paramAnonymousString.MBY.LRr.getLast()).intValue();
             paramAnonymousInt2 = paramAnonymousInt1;
-            paramAnonymousn = (che)paramAnonymousString.Htc.Htd.getLast();
-            if (paramAnonymousn != null)
+            paramAnonymousq = (cxl)paramAnonymousString.MBY.MBZ.getLast();
+            if (paramAnonymousq != null)
             {
               paramAnonymousInt2 = paramAnonymousInt1;
-              if (!bu.isNullOrNil(paramAnonymousn.hFS))
+              if (!Util.isNullOrNil(paramAnonymousq.iAc))
               {
                 paramAnonymousInt2 = paramAnonymousInt1;
-                paramAnonymousString = paramAnonymousn.hFS;
+                paramAnonymousString = paramAnonymousq.iAc;
               }
             }
             Object localObject;
             paramAnonymousString = null;
           }
-          catch (Exception paramAnonymousn)
+          catch (Exception paramAnonymousq)
           {
             try
             {
-              localObject = bu.bI(paramAnonymousn.Title, "");
-              paramAnonymousn = paramAnonymousString;
+              localObject = Util.nullAs(paramAnonymousq.Title, "");
+              paramAnonymousq = paramAnonymousString;
               paramAnonymousString = (String)localObject;
-              localObject = paramAnonymousn;
-              paramAnonymousn = paramAnonymousString;
+              localObject = paramAnonymousq;
+              paramAnonymousq = paramAnonymousString;
               paramAnonymousString = (String)localObject;
-              if ((d.this.Iqr instanceof e))
+              if ((d.this.NDO instanceof e))
               {
-                localObject = (e)d.this.Iqr;
+                localObject = (e)d.this.NDO;
                 ((e)localObject).ret = paramAnonymousInt1;
-                ((e)localObject).title = paramAnonymousn;
+                ((e)localObject).title = paramAnonymousq;
                 ((e)localObject).content = paramAnonymousString;
               }
-              d.this.Iqr.a(0, paramAnonymousInt1, "", d.this.Iqr);
-              AppMethodBeat.o(218934);
+              d.this.NDO.a(0, paramAnonymousInt1, "", d.this.NDO);
+              AppMethodBeat.o(223898);
               return;
             }
-            catch (Exception paramAnonymousn)
+            catch (Exception paramAnonymousq)
             {
               continue;
             }
-            paramAnonymousn = paramAnonymousn;
+            paramAnonymousq = paramAnonymousq;
             paramAnonymousString = null;
             paramAnonymousInt1 = paramAnonymousInt2;
-            ae.e("MicroMsg.RoomCallbackFactory", "NetSceneSyncOplog %s", new Object[] { paramAnonymousn.getMessage() });
-            paramAnonymousn = null;
+            Log.e("MicroMsg.RoomCallbackFactory", "NetSceneSyncOplog %s", new Object[] { paramAnonymousq.getMessage() });
+            paramAnonymousq = null;
             continue;
-            paramAnonymousn = null;
+            paramAnonymousq = null;
             paramAnonymousString = null;
             continue;
           }
           label309:
-          paramAnonymousn = null;
+          paramAnonymousq = null;
           paramAnonymousInt1 = paramAnonymousInt2;
         }
       }
     };
-    this.Iqo = true;
-    AppMethodBeat.o(218935);
+    this.NDL = true;
+    AppMethodBeat.o(223899);
   }
   
-  public final void a(Context paramContext, String paramString, boolean paramBoolean, DialogInterface.OnCancelListener paramOnCancelListener)
+  public final void a(Context paramContext, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2, DialogInterface.OnCancelListener paramOnCancelListener)
   {
-    AppMethodBeat.i(218939);
-    if (this.Iqz == null)
+    AppMethodBeat.i(223903);
+    if (this.NDW == null)
     {
-      AppMethodBeat.o(218939);
+      AppMethodBeat.o(223903);
       return;
     }
-    this.tipDialog = h.b(paramContext, paramString, paramBoolean, paramOnCancelListener);
-    cAs();
-    AppMethodBeat.o(218939);
+    this.tipDialog = h.a(paramContext, paramString2, paramBoolean2, paramOnCancelListener);
+    aJu();
+    AppMethodBeat.o(223903);
   }
   
   public final void a(k.b paramb)
   {
-    AppMethodBeat.i(218937);
+    AppMethodBeat.i(223901);
     LinkedList localLinkedList = new LinkedList();
     localLinkedList.add(paramb);
-    this.Iqz = new c(localLinkedList);
-    AppMethodBeat.o(218937);
+    this.NDW = new c(localLinkedList);
+    AppMethodBeat.o(223901);
   }
   
-  public final void cAs()
+  public final void aJu()
   {
-    AppMethodBeat.i(218938);
-    if (this.Iqz == null)
+    AppMethodBeat.i(223902);
+    if (this.NDW == null)
     {
-      AppMethodBeat.o(218938);
+      AppMethodBeat.o(223902);
       return;
     }
-    ae.i("MicroMsg.RoomCallbackFactory", "request scene %s", new Object[] { this.Iqz });
-    if ((this.tipDialog != null) || (this.Iqp != null) || (this.Iqq != null) || (this.Iqr != null))
+    Log.i("MicroMsg.RoomCallbackFactory", "request scene %s", new Object[] { this.NDW });
+    if ((this.tipDialog != null) || (this.NDM != null) || (this.NDN != null) || (this.NDO != null))
     {
-      g.ajS();
-      g.ajQ().gDv.a(this.Iqz.getType(), this.ghB);
+      g.aAi();
+      g.aAg().hqi.a(this.NDW.getType(), this.gNh);
     }
-    g.ajS();
-    g.ajQ().gDv.a(this.Iqz, 0);
-    AppMethodBeat.o(218938);
+    g.aAi();
+    g.aAg().hqi.a(this.NDW, 0);
+    AppMethodBeat.o(223902);
   }
   
   public final void cancel()
   {
-    AppMethodBeat.i(218936);
-    if (this.Iqz == null)
+    AppMethodBeat.i(223900);
+    if (this.NDW == null)
     {
-      AppMethodBeat.o(218936);
+      AppMethodBeat.o(223900);
       return;
     }
-    g.ajS();
-    g.ajQ().gDv.a(this.Iqz);
-    g.ajS();
-    g.ajQ().gDv.b(this.Iqz.getType(), this.ghB);
-    AppMethodBeat.o(218936);
+    g.aAi();
+    g.aAg().hqi.a(this.NDW);
+    g.aAi();
+    g.aAg().hqi.b(this.NDW.getType(), this.gNh);
+    AppMethodBeat.o(223900);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.mm.roomsdk.a.c.d
  * JD-Core Version:    0.7.0.1
  */

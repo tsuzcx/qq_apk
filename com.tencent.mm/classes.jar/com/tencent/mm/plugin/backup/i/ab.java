@@ -6,50 +6,50 @@ import com.tencent.mm.bw.b;
 public final class ab
   extends com.tencent.mm.bw.a
 {
-  public int nIp;
-  public b nIq;
-  public int nJP;
-  public int nJQ;
-  public long nJR;
-  public long nJa;
+  public long oTV;
+  public int oTl;
+  public b oTm;
+  public int oUK;
+  public int oUL;
+  public long oUM;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
     AppMethodBeat.i(22134);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
-      paramVarArgs.aS(1, this.nIp);
-      if (this.nIq != null) {
-        paramVarArgs.c(2, this.nIq);
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
+      paramVarArgs.aM(1, this.oTl);
+      if (this.oTm != null) {
+        paramVarArgs.c(2, this.oTm);
       }
-      paramVarArgs.aS(3, this.nJP);
-      paramVarArgs.aS(4, this.nJQ);
-      paramVarArgs.aZ(5, this.nJR);
-      paramVarArgs.aZ(6, this.nJa);
+      paramVarArgs.aM(3, this.oUK);
+      paramVarArgs.aM(4, this.oUL);
+      paramVarArgs.bb(5, this.oUM);
+      paramVarArgs.bb(6, this.oTV);
       AppMethodBeat.o(22134);
       return 0;
     }
     if (paramInt == 1)
     {
-      int i = f.a.a.b.b.a.bz(1, this.nIp) + 0;
+      int i = g.a.a.b.b.a.bu(1, this.oTl) + 0;
       paramInt = i;
-      if (this.nIq != null) {
-        paramInt = i + f.a.a.b.b.a.b(2, this.nIq);
+      if (this.oTm != null) {
+        paramInt = i + g.a.a.b.b.a.b(2, this.oTm);
       }
-      i = f.a.a.b.b.a.bz(3, this.nJP);
-      int j = f.a.a.b.b.a.bz(4, this.nJQ);
-      int k = f.a.a.b.b.a.p(5, this.nJR);
-      int m = f.a.a.b.b.a.p(6, this.nJa);
+      i = g.a.a.b.b.a.bu(3, this.oUK);
+      int j = g.a.a.b.b.a.bu(4, this.oUL);
+      int k = g.a.a.b.b.a.r(5, this.oUM);
+      int m = g.a.a.b.b.a.r(6, this.oTV);
       AppMethodBeat.o(22134);
       return paramInt + i + j + k + m;
     }
     if (paramInt == 2)
     {
-      paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+      paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
       for (paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = com.tencent.mm.bw.a.getNextFieldNumber(paramVarArgs)) {
         if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-          paramVarArgs.gCg();
+          paramVarArgs.hPl();
         }
       }
       AppMethodBeat.o(22134);
@@ -57,7 +57,7 @@ public final class ab
     }
     if (paramInt == 3)
     {
-      f.a.a.a.a locala = (f.a.a.a.a)paramVarArgs[0];
+      g.a.a.a.a locala = (g.a.a.a.a)paramVarArgs[0];
       ab localab = (ab)paramVarArgs[1];
       switch (((Integer)paramVarArgs[2]).intValue())
       {
@@ -65,27 +65,27 @@ public final class ab
         AppMethodBeat.o(22134);
         return -1;
       case 1: 
-        localab.nIp = locala.OmT.zc();
+        localab.oTl = locala.UbS.zi();
         AppMethodBeat.o(22134);
         return 0;
       case 2: 
-        localab.nIq = locala.OmT.gCk();
+        localab.oTm = locala.UbS.hPo();
         AppMethodBeat.o(22134);
         return 0;
       case 3: 
-        localab.nJP = locala.OmT.zc();
+        localab.oUK = locala.UbS.zi();
         AppMethodBeat.o(22134);
         return 0;
       case 4: 
-        localab.nJQ = locala.OmT.zc();
+        localab.oUL = locala.UbS.zi();
         AppMethodBeat.o(22134);
         return 0;
       case 5: 
-        localab.nJR = locala.OmT.zd();
+        localab.oUM = locala.UbS.zl();
         AppMethodBeat.o(22134);
         return 0;
       }
-      localab.nJa = locala.OmT.zd();
+      localab.oTV = locala.UbS.zl();
       AppMethodBeat.o(22134);
       return 0;
     }
@@ -95,7 +95,7 @@ public final class ab
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.backup.i.ab
  * JD-Core Version:    0.7.0.1
  */

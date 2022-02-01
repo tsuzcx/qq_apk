@@ -1,40 +1,49 @@
 package com.tencent.mm.compatible.g;
 
-import android.view.MenuItem;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public final class a
 {
-  public static void a(MenuItem paramMenuItem, String paramString)
+  public int dGe;
+  public String gLc;
+  public long gLd;
+  public int gLe;
+  
+  public a()
   {
-    AppMethodBeat.i(155859);
-    if (paramMenuItem == null)
-    {
-      ae.w("MicroMsg.MenuItemUtil", "fixTitleCondensed fail, item is null");
-      AppMethodBeat.o(155859);
-      return;
-    }
-    if (paramMenuItem.getTitleCondensed() == null)
-    {
-      ae.w("MicroMsg.MenuItemUtil", "%s title condensed is null, fix it", new Object[] { paramString });
-      paramMenuItem.setTitleCondensed("");
-      AppMethodBeat.o(155859);
-      return;
-    }
-    if ((paramMenuItem.getTitleCondensed() instanceof String))
-    {
-      AppMethodBeat.o(155859);
-      return;
-    }
-    ae.w("MicroMsg.MenuItemUtil", "%s title condensed is not String type, cur type[%s], cur value[%s], fix it", new Object[] { paramString, paramMenuItem.getTitleCondensed().getClass().getName(), paramMenuItem.getTitleCondensed() });
-    paramMenuItem.setTitleCondensed(paramMenuItem.getTitleCondensed().toString());
-    AppMethodBeat.o(155859);
+    AppMethodBeat.i(155857);
+    this.gLc = null;
+    this.gLd = -1L;
+    this.gLe = -1;
+    this.dGe = -1;
+    this.gLc = null;
+    this.gLd = -1L;
+    this.gLe = -1;
+    this.dGe = -1;
+    AppMethodBeat.o(155857);
+  }
+  
+  public final String apk()
+  {
+    AppMethodBeat.i(155858);
+    Object localObject = new StringBuffer();
+    ((StringBuffer)localObject).append(this.gLc);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.gLd);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.gLe);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.dGe);
+    Log.d("MicroMsg.AudioRecorderInfo", " getStatInfo " + ((StringBuffer)localObject).toString());
+    localObject = ((StringBuffer)localObject).toString();
+    AppMethodBeat.o(155858);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.compatible.g.a
  * JD-Core Version:    0.7.0.1
  */

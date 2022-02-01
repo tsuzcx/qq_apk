@@ -13,23 +13,23 @@ public class T2BSceneServiceImpl
   {
     AppMethodBeat.i(18719);
     ITransmitKvData localITransmitKvData = super.generateSnsUseCaseData();
-    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().hwN == null))
+    if ((this.mBean.getPayInfo() == null) || (this.mBean.getPayInfo().iqp == null))
     {
       AppMethodBeat.o(18719);
       return localITransmitKvData;
     }
-    Object localObject = this.mBean.getPayInfo().hwN;
+    Object localObject = this.mBean.getPayInfo().iqp;
     String str = ((Bundle)localObject).getString("extinfo_key_3");
     localObject = ((Bundle)localObject).getString("extinfo_key_4");
-    str = this.mBean.getContext().getString(2131756399, new Object[] { str, localObject }) + this.mBean.getTrueName();
-    localITransmitKvData.putString("cashier_desc", this.mBean.getContext().getString(2131762439, new Object[] { str }));
+    str = this.mBean.getContext().getString(2131756534, new Object[] { str, localObject }) + this.mBean.getTrueName();
+    localITransmitKvData.putString("cashier_desc", this.mBean.getContext().getString(2131764505, new Object[] { str }));
     AppMethodBeat.o(18719);
     return localITransmitKvData;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.tencent.kinda.framework.sns_cross.T2BSceneServiceImpl
  * JD-Core Version:    0.7.0.1
  */

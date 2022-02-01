@@ -2,21 +2,21 @@ package com.tencent.mm.media.widget.b.a.a;
 
 import android.hardware.camera2.CaptureRequest.Key;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import d.g.b.p;
-import d.l;
 import java.lang.reflect.Constructor;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCRequestKeyCreator;", "", "()V", "TAG", "", "requestConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureRequest$Key;", "resultConstructor", "Landroid/hardware/camera2/CaptureResult$Key;", "requestKey", "T", "name", "klass", "Ljava/lang/Class;", "resultKey", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/camera2/effect/request/WCRequestKeyCreator;", "", "()V", "TAG", "", "requestConstructor", "Ljava/lang/reflect/Constructor;", "Landroid/hardware/camera2/CaptureRequest$Key;", "resultConstructor", "Landroid/hardware/camera2/CaptureResult$Key;", "requestKey", "T", "name", "klass", "Ljava/lang/Class;", "resultKey", "plugin-mediaeditor_release"})
 public final class c
 {
   private static final String TAG = "MicroMsg.WCRequestKeyCreator";
-  private static Constructor<CaptureRequest.Key<?>> hvA;
-  public static final c hvB;
+  private static Constructor<CaptureRequest.Key<?>> ipb;
+  public static final c ipc;
   
   static
   {
     AppMethodBeat.i(94202);
-    hvB = new c();
+    ipc = new c();
     TAG = "MicroMsg.WCRequestKeyCreator";
     AppMethodBeat.o(94202);
   }
@@ -29,20 +29,20 @@ public final class c
     try
     {
       Constructor localConstructor;
-      if (hvA == null)
+      if (ipb == null)
       {
         localConstructor = CaptureRequest.Key.class.getConstructor(new Class[] { String.class, paramClass.getClass() });
-        hvA = localConstructor;
+        ipb = localConstructor;
         if (localConstructor == null) {
-          p.gkB();
+          p.hyc();
         }
         localConstructor.setAccessible(true);
       }
       try
       {
-        localConstructor = hvA;
+        localConstructor = ipb;
         if (localConstructor == null) {
-          p.gkB();
+          p.hyc();
         }
         paramString = (CaptureRequest.Key)localConstructor.newInstance(new Object[] { paramString, paramClass });
         AppMethodBeat.o(94201);

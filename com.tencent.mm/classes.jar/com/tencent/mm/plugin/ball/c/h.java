@@ -1,22 +1,25 @@
 package com.tencent.mm.plugin.ball.c;
 
 import android.view.MotionEvent;
+import kotlin.l;
 
-public abstract interface h
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/ball/api/OnFloatBallViewListenerAdapter;", "Lcom/tencent/mm/plugin/ball/api/OnFloatBallViewListener;", "()V", "onBallClicked", "", "onBallDragEnd", "onBallDragStart", "x", "", "y", "onBallLongPressTouchEvent", "event", "Landroid/view/MotionEvent;", "onBallLongPressed", "onBallPositionChanged", "height", "isSettled", "", "isDockLeft", "onOrientationChange", "orientation", "api-ball_release"})
+public class h
+  implements g
 {
-  public abstract void J(MotionEvent paramMotionEvent);
+  public final void M(MotionEvent paramMotionEvent) {}
   
-  public abstract void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2);
+  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public abstract void bLe();
+  public final void chY() {}
   
-  public abstract void bLf();
+  public final void chZ() {}
   
-  public abstract void bLg();
+  public final void cia() {}
   
-  public abstract void bLh();
+  public final void cib() {}
   
-  public abstract void nO(int paramInt);
+  public final void onOrientationChange(int paramInt) {}
 }
 
 

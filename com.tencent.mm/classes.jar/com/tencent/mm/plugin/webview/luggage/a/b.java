@@ -1,20 +1,23 @@
 package com.tencent.mm.plugin.webview.luggage.a;
 
-import android.os.Bundle;
-import android.os.Parcelable;
-import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ipcinvoker.wx_extension.service.ToolsProcessIPCService;
-import com.tencent.mm.plugin.downloader.b.a.b;
-import com.tencent.mm.plugin.downloader.model.d;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.az;
-import org.json.JSONException;
+import com.tencent.luggage.d.d;
 import org.json.JSONObject;
 
 public final class b
+  extends d
 {
-  public static a.b EjW;
+  JSONObject csi;
+  String mName;
+  
+  public final JSONObject Ld()
+  {
+    return this.csi;
+  }
+  
+  public final String name()
+  {
+    return this.mName;
+  }
 }
 
 

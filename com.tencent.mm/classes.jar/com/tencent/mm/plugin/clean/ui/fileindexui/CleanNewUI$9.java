@@ -1,41 +1,41 @@
 package com.tencent.mm.plugin.clean.ui.fileindexui;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.model.bc;
+import com.tencent.mm.model.bg;
 import com.tencent.mm.model.c;
-import com.tencent.mm.plugin.report.service.g;
-import com.tencent.mm.sdk.c.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.http.HttpWrapperBase.Response;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 final class CleanNewUI$9
-  extends b.c
+  extends HttpWrapperBase.Response
 {
   CleanNewUI$9(CleanNewUI paramCleanNewUI, String paramString)
   {
-    super(paramString);
+    super(0, null, paramString);
   }
   
   public final void onComplete()
   {
-    AppMethodBeat.i(186447);
-    ae.d("MicroMsg.CleanNewUI", "request onComplete:%s", new Object[] { this.content });
+    AppMethodBeat.i(231669);
+    Log.d("MicroMsg.CleanNewUI", "request onComplete:%s", new Object[] { this.content });
     try
     {
       new JSONObject(this.content);
-      bc.aCg();
-      c.ajA().set(am.a.IOw, this.content);
-      AppMethodBeat.o(186447);
+      bg.aVF();
+      c.azQ().set(ar.a.NWy, this.content);
+      AppMethodBeat.o(231669);
       return;
     }
     catch (JSONException localJSONException)
     {
-      ae.printErrStackTrace("MicroMsg.CleanNewUI", localJSONException, "", new Object[0]);
-      g.yxI.idkeyStat(714L, 6L, 1L, false);
-      AppMethodBeat.o(186447);
+      Log.printErrStackTrace("MicroMsg.CleanNewUI", localJSONException, "", new Object[0]);
+      h.CyF.idkeyStat(714L, 6L, 1L, false);
+      AppMethodBeat.o(231669);
     }
   }
 }

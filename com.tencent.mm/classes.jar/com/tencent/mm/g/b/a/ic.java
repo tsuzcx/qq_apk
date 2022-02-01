@@ -6,113 +6,88 @@ import com.tencent.mm.plugin.report.a;
 public final class ic
   extends a
 {
-  public long dWt = 0L;
-  public String esa = "";
-  public long etb = 0L;
-  public long euA = 0L;
-  public String euy = "";
-  private long evH = 0L;
-  public long evI = 0L;
-  public long evJ = 0L;
-  public ic.a ewa;
-  public long ewb = 0L;
+  private String eMN = "";
+  public long eMP = 0L;
+  public long eMQ;
+  public long eMR = 0L;
+  public long eMS = 0L;
+  public long eMT;
+  public long eMU;
+  private String eMV = "";
   
-  public final String RC()
+  public final String abV()
   {
-    AppMethodBeat.i(43525);
+    AppMethodBeat.i(187897);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append(this.esa);
+    ((StringBuffer)localObject).append(this.eMN);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.euy);
+    ((StringBuffer)localObject).append(this.eMQ);
     ((StringBuffer)localObject).append(",");
-    ((StringBuffer)localObject).append(this.etb);
+    ((StringBuffer)localObject).append(this.eMR);
     ((StringBuffer)localObject).append(",");
-    if (this.ewa != null) {}
-    for (int i = this.ewa.value;; i = -1)
-    {
-      ((StringBuffer)localObject).append(i);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.euA);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.evH);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.dWt);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.evI);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.evJ);
-      ((StringBuffer)localObject).append(",");
-      ((StringBuffer)localObject).append(this.ewb);
-      localObject = ((StringBuffer)localObject).toString();
-      axO((String)localObject);
-      AppMethodBeat.o(43525);
-      return localObject;
-    }
+    ((StringBuffer)localObject).append(this.eMS);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eMT);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eMU);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eMP);
+    ((StringBuffer)localObject).append(",");
+    ((StringBuffer)localObject).append(this.eMV);
+    localObject = ((StringBuffer)localObject).toString();
+    aMq((String)localObject);
+    AppMethodBeat.o(187897);
+    return localObject;
   }
   
-  public final String RD()
+  public final String abW()
   {
-    AppMethodBeat.i(43526);
+    AppMethodBeat.i(187898);
     Object localObject = new StringBuffer();
-    ((StringBuffer)localObject).append("InstanceId:").append(this.esa);
+    ((StringBuffer)localObject).append("RoomId:").append(this.eMN);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppId:").append(this.euy);
+    ((StringBuffer)localObject).append("OrigInvitedUV:").append(this.eMQ);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppVersion:").append(this.etb);
+    ((StringBuffer)localObject).append("AvailUV:").append(this.eMR);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppState:").append(this.ewa);
+    ((StringBuffer)localObject).append("Opt:").append(this.eMS);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("AppType:").append(this.euA);
+    ((StringBuffer)localObject).append("ToUV:").append(this.eMT);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("CostTimeMs:").append(this.evH);
+    ((StringBuffer)localObject).append("FinalResult:").append(this.eMU);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("Scene:").append(this.dWt);
+    ((StringBuffer)localObject).append("HistoryID:").append(this.eMP);
     ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("StartTimeStampMs:").append(this.evI);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("EndTimeStampMs:").append(this.evJ);
-    ((StringBuffer)localObject).append("\r\n");
-    ((StringBuffer)localObject).append("isFromAndroidRecents:").append(this.ewb);
+    ((StringBuffer)localObject).append("ToUsers:").append(this.eMV);
     localObject = ((StringBuffer)localObject).toString();
-    AppMethodBeat.o(43526);
+    AppMethodBeat.o(187898);
     return localObject;
   }
   
   public final int getId()
   {
-    return 16898;
+    return 20542;
   }
   
-  public final ic nJ(long paramLong)
+  public final ic vL(String paramString)
   {
-    AppMethodBeat.i(43522);
-    this.evH = paramLong;
-    super.bg("CostTimeMs", this.evH);
-    AppMethodBeat.o(43522);
+    AppMethodBeat.i(187895);
+    this.eMN = x("RoomId", paramString, true);
+    AppMethodBeat.o(187895);
     return this;
   }
   
-  public final ic nK(long paramLong)
+  public final ic vM(String paramString)
   {
-    AppMethodBeat.i(43523);
-    this.evI = paramLong;
-    super.bh("StartTimeStampMs", this.evI);
-    AppMethodBeat.o(43523);
-    return this;
-  }
-  
-  public final ic nL(long paramLong)
-  {
-    AppMethodBeat.i(43524);
-    this.evJ = paramLong;
-    super.bh("EndTimeStampMs", this.evJ);
-    AppMethodBeat.o(43524);
+    AppMethodBeat.i(187896);
+    this.eMV = x("ToUsers", paramString, true);
+    AppMethodBeat.o(187896);
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.g.b.a.ic
  * JD-Core Version:    0.7.0.1
  */

@@ -1,373 +1,254 @@
 package com.tencent.mm.media.widget.d;
 
-import android.content.Context;
-import android.hardware.Camera;
-import android.hardware.Camera.CameraInfo;
-import android.hardware.camera2.CameraCharacteristics;
-import android.hardware.camera2.CameraManager;
-import com.tencent.e.h;
-import com.tencent.e.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.compatible.deviceinfo.x;
-import com.tencent.mm.compatible.util.k;
-import com.tencent.mm.kernel.g;
-import com.tencent.mm.media.widget.b.c;
-import com.tencent.mm.plugin.expt.b.b;
-import com.tencent.mm.plugin.expt.b.b.a;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
-import d.g.b.p;
-import d.l;
-import d.n.n;
-import d.v;
+import com.tencent.mm.plugin.report.service.h;
+import com.tencent.mm.sdk.platformtools.Log;
+import kotlin.g.b.p;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/media/widget/util/CameraHelper;", "", "()V", "CAMERA_API_LEVEL1", "", "CAMERA_API_LEVEL2", "SCENE_APPBRAND", "SCENE_CHATTING", "SCENE_EMOJI", "SCENE_FAV", "SCENE_GAME", "SCENE_SNS", "SCENE_SNS_VLOG", "SCENE_STICK_PREVIEW", "SCENE_STORY", "SCENE_STORY_VLOG", "TAG", "", "cameraNum", "getCameraNum", "()I", "setCameraNum", "(I)V", "hasBackCamera", "", "getHasBackCamera", "()Z", "setHasBackCamera", "(Z)V", "hasFrontCamera", "getHasFrontCamera", "setHasFrontCamera", "checkSceneSupportRecordStream", "scene", "enableSwitchCamera", "hasBackCameraInThread", "hasFrontCameraInThread", "isCameraApi2CanUse", "isCaptureUseImageCallback", "isProcessCaptureUseImageCallback", "process", "Lcom/tencent/mm/media/widget/camerarecordview/process/ICameraContainerProcess;", "cameraApiLevel", "isProcessUseCamera2", "isProcessUseCamera2RecordStream", "isProcessUseVideoStabilization", "isRenderscriptSupported", "isUseRecordStream", "isVendorCameraEffectSupported", "isVendorDebugModeSupported", "plugin-mediaeditor_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/media/widget/util/Camera2ProcessIDKeyStat;", "", "()V", "ID", "", "KV_ID", "", "TAG", "", "markCamera2Open", "", "markCamera2OpenFailed", "markCamera2OpenSuccess", "markCamera2Release", "markCamera2SupportEXTERNAL", "markCamera2SupportFULL", "markCamera2SupportLEGACY", "markCamera2SupportLEVEL3", "markCamera2SupportLIMITED", "markCamera2TakePhotoBack", "markCamera2TakePhotoBackError", "markCamera2TakePhotoFront", "markCamera2TakePhotoFrontError", "markCamera2TakePhotoUseHDRSystem", "markCamera2UseEISSystem", "markCamera2UseOISSystem", "markCamera2UseRecordStream", "markCameraNumberAllBeenRemove", "markCameraNumberHasOne", "markCameraNumberHasTwo", "markCameraNumberMoreThanTwo", "markCameraQueryFail", "markCaptureSuccessUseImageBack", "markCaptureSuccessUseImageFront", "markCaptureUseImageCostTimes", "times", "markCaptureUseImageCostTimesBack", "markCaptureUseImageCostTimesFront", "markCaptureUseImageSuccess", "markErrorFindImage", "markErrorFindPreview", "markImageAvailable", "markReportCamera2Info", "numbers", "supportLevels", "levelDiffCameras", "frontLevel", "backLevel", "frontCameraNumber", "backCameraNumber", "markSupportLevelDiffCameras", "plugin-mediaeditor_release"})
 public final class a
 {
-  private static boolean gao;
-  private static boolean gar;
-  private static int hzf;
-  public static final a hzg;
+  public static final a itg;
   
   static
   {
-    AppMethodBeat.i(94381);
-    hzg = new a();
-    hzf = 2;
-    gao = true;
-    gar = true;
-    h.MqF.aO((Runnable)1.hzh);
-    AppMethodBeat.o(94381);
+    AppMethodBeat.i(218938);
+    itg = new a();
+    AppMethodBeat.o(218938);
   }
   
-  public static final boolean a(com.tencent.mm.media.widget.camerarecordview.d.a parama)
+  public static void a(int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3, int paramInt3, int paramInt4)
   {
-    AppMethodBeat.i(94375);
-    p.h(parama, "process");
-    switch (parama.getRecordScene())
-    {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 9: 
-    default: 
-      AppMethodBeat.o(94375);
-      return false;
-    }
-    boolean bool = ayz();
-    AppMethodBeat.o(94375);
-    return bool;
+    AppMethodBeat.i(218937);
+    p.h(paramString1, "supportLevels");
+    p.h(paramString2, "frontLevel");
+    p.h(paramString3, "backLevel");
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markReportCamera2Info " + paramInt1 + ',' + paramString1 + ',' + paramInt2 + ',' + paramString2 + ',' + paramString3 + ',' + paramInt3 + ',' + paramInt4);
+    h.CyF.a(22109, new Object[] { Integer.valueOf(paramInt1), paramString1, Integer.valueOf(paramInt2), paramString2, paramString3, Integer.valueOf(paramInt3), Integer.valueOf(paramInt4) });
+    AppMethodBeat.o(218937);
   }
   
-  public static final boolean axI()
+  public static void aRb()
   {
-    AppMethodBeat.i(94380);
-    if (hzf > 1) {}
-    for (;;)
-    {
-      int i;
-      try
-      {
-        int m = hzf;
-        i = 0;
-        int j = 0;
-        int k = 0;
-        if (i < m)
-        {
-          Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
-          Camera.getCameraInfo(i, localCameraInfo);
-          if (localCameraInfo.facing == 1) {
-            k = 1;
-          }
-          if (localCameraInfo.facing != 0) {
-            break label120;
-          }
-          j = 1;
-          break label120;
-        }
-        if ((k != 0) && (j != 0))
-        {
-          AppMethodBeat.o(94380);
-          return true;
-        }
-        AppMethodBeat.o(94380);
-        return false;
-      }
-      catch (Exception localException)
-      {
-        com.tencent.mm.sdk.platformtools.ae.printErrStackTrace("MicroMsg.CameraHelper", (Throwable)localException, " error", new Object[0]);
-        AppMethodBeat.o(94380);
-        return true;
-      }
-      AppMethodBeat.o(94380);
-      return false;
-      label120:
-      i += 1;
-    }
+    AppMethodBeat.i(218910);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2Open");
+    h.CyF.n(1099L, 0L, 1L);
+    AppMethodBeat.o(218910);
   }
   
-  public static final boolean ayA()
+  public static void aRc()
   {
-    AppMethodBeat.i(177321);
-    if (((b)g.ab(b.class)).a(b.a.qEn, true))
-    {
-      AppMethodBeat.o(177321);
-      return true;
-    }
-    AppMethodBeat.o(177321);
-    return false;
+    AppMethodBeat.i(218911);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2OpenSuccess");
+    h.CyF.n(1099L, 1L, 1L);
+    AppMethodBeat.o(218911);
   }
   
-  public static final boolean ayB()
+  public static void aRd()
   {
-    AppMethodBeat.i(94378);
-    if ((com.tencent.mm.compatible.deviceinfo.ae.geT != null) && (com.tencent.mm.compatible.deviceinfo.ae.geT.gdL != -1))
-    {
-      if (com.tencent.mm.compatible.deviceinfo.ae.geT.gdL == 1)
-      {
-        AppMethodBeat.o(94378);
-        return true;
-      }
-      AppMethodBeat.o(94378);
-      return false;
-    }
-    boolean bool = ((b)g.ab(b.class)).a(b.a.qEo, false);
-    AppMethodBeat.o(94378);
-    return bool;
+    AppMethodBeat.i(218912);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2OpenFailed");
+    h.CyF.n(1099L, 2L, 1L);
+    AppMethodBeat.o(218912);
   }
   
-  public static final boolean ayC()
+  public static void aRe()
   {
-    if ((com.tencent.mm.compatible.deviceinfo.ae.geT != null) && (com.tencent.mm.compatible.deviceinfo.ae.geT.gdK != -1)) {
-      return com.tencent.mm.compatible.deviceinfo.ae.geT.gdK == 1;
-    }
-    return false;
+    AppMethodBeat.i(218913);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2Release");
+    h.CyF.n(1099L, 3L, 1L);
+    AppMethodBeat.o(218913);
   }
   
-  public static final boolean ayD()
+  public static void aRf()
   {
-    AppMethodBeat.i(94379);
-    if ((com.tencent.mm.compatible.deviceinfo.ae.geT != null) && (com.tencent.mm.compatible.deviceinfo.ae.geT.gdM != -1))
-    {
-      if (com.tencent.mm.compatible.deviceinfo.ae.geT.gdM == 1)
-      {
-        AppMethodBeat.o(94379);
-        return true;
-      }
-      AppMethodBeat.o(94379);
-      return false;
-    }
-    boolean bool = ((b)g.ab(b.class)).a(b.a.qEp, false);
-    AppMethodBeat.o(94379);
-    return bool;
+    AppMethodBeat.i(218914);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2TakePhotoFront");
+    h.CyF.n(1099L, 4L, 1L);
+    AppMethodBeat.o(218914);
   }
   
-  public static final boolean ayE()
+  public static void aRg()
   {
-    if ((com.tencent.mm.compatible.deviceinfo.ae.geT != null) && (com.tencent.mm.compatible.deviceinfo.ae.geT.gdN != -1)) {
-      return com.tencent.mm.compatible.deviceinfo.ae.geT.gdN == 1;
-    }
-    return false;
+    AppMethodBeat.i(218915);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2TakePhotoBack");
+    h.CyF.n(1099L, 5L, 1L);
+    AppMethodBeat.o(218915);
   }
   
-  public static final boolean ayF()
+  public static void aRh()
   {
-    return gao;
+    AppMethodBeat.i(218916);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2TakePhotoBackError");
+    h.CyF.n(1099L, 6L, 1L);
+    AppMethodBeat.o(218916);
   }
   
-  public static final boolean ayG()
+  public static void aRi()
   {
-    return gar;
+    AppMethodBeat.i(218917);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2TakePhotoBackError");
+    com.tencent.mm.compatible.d.a locala = com.tencent.mm.compatible.d.a.gDv;
+    com.tencent.mm.compatible.d.a.v(1099L, 7L);
+    AppMethodBeat.o(218917);
   }
   
-  public static int ayw()
+  public static void aRj()
   {
-    return hzf;
+    AppMethodBeat.i(218918);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2UseOISSystem");
+    h.CyF.n(1099L, 9L, 1L);
+    AppMethodBeat.o(218918);
   }
   
-  public static boolean ayx()
+  public static void aRk()
   {
-    return gao;
+    AppMethodBeat.i(218919);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markErrorFindImage");
+    h.CyF.n(1099L, 12L, 1L);
+    AppMethodBeat.o(218919);
   }
   
-  public static boolean ayy()
+  public static void aRl()
   {
-    return gar;
+    AppMethodBeat.i(218920);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markImageAvailable");
+    h.CyF.n(1099L, 13L, 1L);
+    AppMethodBeat.o(218920);
   }
   
-  private static boolean ayz()
+  public static void aRm()
   {
-    AppMethodBeat.i(94374);
-    if ((com.tencent.mm.compatible.deviceinfo.ae.geT != null) && (com.tencent.mm.compatible.deviceinfo.ae.geT.gdI != -1)) {
-      if (com.tencent.mm.compatible.deviceinfo.ae.geT.gdI != 3) {}
-    }
-    for (int i = 1;; i = 0)
-    {
-      if ((((b)g.ab(b.class)).a(b.a.qEk, 2) != 2) || (i == 0))
-      {
-        AppMethodBeat.o(94374);
-        return false;
-        if (com.tencent.mm.compatible.deviceinfo.ae.geT.gdI == 1)
-        {
-          AppMethodBeat.o(94374);
-          return true;
-        }
-        AppMethodBeat.o(94374);
-        return false;
-      }
-      if (com.tencent.mm.compatible.util.d.lB(21))
-      {
-        AppMethodBeat.o(94374);
-        return false;
-      }
-      if (k.abz())
-      {
-        AppMethodBeat.o(94374);
-        return false;
-      }
-      if (k.abA())
-      {
-        AppMethodBeat.o(94374);
-        return false;
-      }
-      Object localObject = ak.getContext().getSystemService("camera");
-      if (localObject == null)
-      {
-        localObject = new v("null cannot be cast to non-null type android.hardware.camera2.CameraManager");
-        AppMethodBeat.o(94374);
-        throw ((Throwable)localObject);
-      }
-      localObject = (CameraManager)localObject;
-      for (;;)
-      {
-        try
-        {
-          ((CameraManager)localObject).getCameraCharacteristics(localObject.getCameraIdList()[0]);
-          localObject = ((CameraManager)localObject).getCameraCharacteristics("0").get(CameraCharacteristics.INFO_SUPPORTED_HARDWARE_LEVEL);
-          if (localObject == null) {
-            p.gkB();
-          }
-          i = ((Number)localObject).intValue();
-          switch (i)
-          {
-          }
-        }
-        catch (Exception localException)
-        {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.CameraHelper", "a camera access exception happend");
-          AppMethodBeat.o(94374);
-          return false;
-          c localc1 = c.hts;
-          c.awY();
-          continue;
-        }
-        catch (AssertionError localAssertionError)
-        {
-          com.tencent.mm.sdk.platformtools.ae.e("MicroMsg.CameraHelper", "some device has some problem in LegecyCamera ");
-          AppMethodBeat.o(94374);
-          return false;
-        }
-        if ((i == 0) || (i == 2)) {
-          break;
-        }
-        AppMethodBeat.o(94374);
-        return true;
-        localObject = c.hts;
-        c.awX();
-        continue;
-        c localc2 = c.hts;
-        c.awZ();
-        continue;
-        localc2 = c.hts;
-        c.axa();
-        continue;
-        localc2 = c.hts;
-        c.axb();
-      }
-      AppMethodBeat.o(94374);
-      return false;
-    }
+    AppMethodBeat.i(218921);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureSuccessUseImageBack");
+    h.CyF.n(1099L, 14L, 1L);
+    AppMethodBeat.o(218921);
   }
   
-  public static final boolean b(com.tencent.mm.media.widget.camerarecordview.d.a parama)
+  public static void aRn()
   {
-    AppMethodBeat.i(94376);
-    p.h(parama, "process");
-    if ((com.tencent.mm.compatible.deviceinfo.ae.geT != null) && (com.tencent.mm.compatible.deviceinfo.ae.geT.gdJ != -1)) {
-      if (com.tencent.mm.compatible.deviceinfo.ae.geT.gdI != 3) {}
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (((b)g.ab(b.class)).a(b.a.qEm, false)) {
-        i = 0;
-      }
-      while (i != 0)
-      {
-        i = parama.getRecordScene();
-        parama = ((b)g.ab(b.class)).a(b.a.qEl, "");
-        if (!bu.isNullOrNil(parama))
-        {
-          p.g(parama, "supportScene");
-          if (n.a((CharSequence)parama, (CharSequence)String.valueOf(i), false))
-          {
-            com.tencent.mm.sdk.platformtools.ae.i("MicroMsg.CameraHelper", "the scene = " + i + " is support record stream ");
-            AppMethodBeat.o(94376);
-            return true;
-            if (com.tencent.mm.compatible.deviceinfo.ae.geT.gdI == 1)
-            {
-              i = 1;
-              continue;
-            }
-            i = 0;
-            continue;
-          }
-        }
-        AppMethodBeat.o(94376);
-        return false;
-      }
-      AppMethodBeat.o(94376);
-      return false;
-    }
+    AppMethodBeat.i(218922);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureSuccessUseImageFront");
+    h.CyF.n(1099L, 15L, 1L);
+    AppMethodBeat.o(218922);
   }
   
-  public static final boolean c(com.tencent.mm.media.widget.camerarecordview.d.a parama)
+  public static void aRo()
   {
-    AppMethodBeat.i(94377);
-    p.h(parama, "process");
-    switch (parama.getRecordScene())
-    {
-    default: 
-      AppMethodBeat.o(94377);
-      return false;
-    }
-    if ((ayB()) && (a(parama)) && (ayz()))
-    {
-      AppMethodBeat.o(94377);
-      return true;
-    }
-    AppMethodBeat.o(94377);
-    return false;
+    AppMethodBeat.i(218923);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureUseImageSuccess");
+    h.CyF.n(1099L, 16L, 1L);
+    AppMethodBeat.o(218923);
   }
   
-  public static void ev(boolean paramBoolean)
+  public static void aRp()
   {
-    gao = paramBoolean;
+    AppMethodBeat.i(218924);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2UseRecordStream");
+    h.CyF.n(1099L, 18L, 1L);
+    AppMethodBeat.o(218924);
   }
   
-  public static void ew(boolean paramBoolean)
+  public static void aRq()
   {
-    gar = paramBoolean;
+    AppMethodBeat.i(218925);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2SupportLIMITED");
+    h.CyF.n(1099L, 19L, 1L);
+    AppMethodBeat.o(218925);
   }
   
-  public static void oj(int paramInt)
+  public static void aRr()
   {
-    hzf = paramInt;
+    AppMethodBeat.i(218926);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2SupportFULL");
+    h.CyF.n(1099L, 20L, 1L);
+    AppMethodBeat.o(218926);
+  }
+  
+  public static void aRs()
+  {
+    AppMethodBeat.i(218927);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2SupportLEGACY");
+    h.CyF.n(1099L, 21L, 1L);
+    AppMethodBeat.o(218927);
+  }
+  
+  public static void aRt()
+  {
+    AppMethodBeat.i(218928);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2SupportLEVEL3");
+    h.CyF.n(1099L, 22L, 1L);
+    AppMethodBeat.o(218928);
+  }
+  
+  public static void aRu()
+  {
+    AppMethodBeat.i(218929);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCamera2SupportEXTERNAL");
+    h.CyF.n(1099L, 23L, 1L);
+    AppMethodBeat.o(218929);
+  }
+  
+  public static void aRv()
+  {
+    AppMethodBeat.i(218932);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCameraNumberAllBeenRemove ");
+    h.CyF.n(1099L, 26L, 1L);
+    AppMethodBeat.o(218932);
+  }
+  
+  public static void aRw()
+  {
+    AppMethodBeat.i(218933);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCameraNumberHasOne ");
+    h.CyF.n(1099L, 27L, 1L);
+    AppMethodBeat.o(218933);
+  }
+  
+  public static void aRx()
+  {
+    AppMethodBeat.i(218934);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCameraNumberHasTwo");
+    h.CyF.n(1099L, 28L, 1L);
+    AppMethodBeat.o(218934);
+  }
+  
+  public static void aRy()
+  {
+    AppMethodBeat.i(218935);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCameraNumberMoreThanTwo");
+    h.CyF.n(1099L, 29L, 1L);
+    AppMethodBeat.o(218935);
+  }
+  
+  public static void aRz()
+  {
+    AppMethodBeat.i(218936);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markSupportLevelDiffCameras");
+    h.CyF.n(1099L, 30L, 1L);
+    AppMethodBeat.o(218936);
+  }
+  
+  public static void zW(long paramLong)
+  {
+    AppMethodBeat.i(218930);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureUseImageCostTimesFront ".concat(String.valueOf(paramLong)));
+    h.CyF.n(1099L, 24L, paramLong);
+    AppMethodBeat.o(218930);
+  }
+  
+  public static void zX(long paramLong)
+  {
+    AppMethodBeat.i(218931);
+    Log.i("MicroMsg.Camera2ProcessIDKeyStat", "markCaptureUseImageCostTimesBack ".concat(String.valueOf(paramLong)));
+    h.CyF.n(1099L, 25L, paramLong);
+    AppMethodBeat.o(218931);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.mm.media.widget.d.a
  * JD-Core Version:    0.7.0.1
  */

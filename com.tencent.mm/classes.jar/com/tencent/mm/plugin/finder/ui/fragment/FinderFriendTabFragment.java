@@ -1,16 +1,20 @@
 package com.tencent.mm.plugin.finder.ui.fragment;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.plugin.finder.viewmodel.component.FinderDoubleClickTipUIC;
+import com.tencent.mm.plugin.finder.utils.y;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderActionBarOverlayUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderFullFeedGuideUIC;
+import com.tencent.mm.plugin.finder.viewmodel.component.FinderHorizontalVideoPreviewUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderStreamPartialExposeUIC;
 import com.tencent.mm.plugin.finder.viewmodel.component.FinderTimelineUIC;
 import com.tencent.mm.ui.component.UIComponent;
-import d.a.ak;
-import d.l;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Set;
+import kotlin.a.ak;
+import kotlin.l;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderFriendTabFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "plugin-finder_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/plugin/finder/ui/fragment/FinderFriendTabFragment;", "Lcom/tencent/mm/plugin/finder/ui/fragment/FinderHomeTabFragment;", "()V", "importUIComponents", "", "Ljava/lang/Class;", "Lcom/tencent/mm/ui/component/UIComponent;", "onActionbarClick", "", "onActionbarDoubleClick", "plugin-finder_release"})
 public final class FinderFriendTabFragment
   extends FinderHomeTabFragment
 {
@@ -18,38 +22,42 @@ public final class FinderFriendTabFragment
   
   public FinderFriendTabFragment()
   {
-    super(2131766501, 1);
+    super(2131760614, 1);
   }
   
   public final void _$_clearFindViewByIdCache()
   {
-    AppMethodBeat.i(204927);
+    AppMethodBeat.i(252890);
     if (this._$_findViewCache != null) {
       this._$_findViewCache.clear();
     }
-    AppMethodBeat.o(204927);
+    AppMethodBeat.o(252890);
   }
   
-  public final Set<Class<? extends UIComponent>> cEg()
+  public final void dlm()
   {
-    AppMethodBeat.i(204925);
-    Set localSet = ak.setOf(new Class[] { FinderTimelineUIC.class, FinderDoubleClickTipUIC.class, FinderStreamPartialExposeUIC.class });
-    AppMethodBeat.o(204925);
-    return localSet;
+    AppMethodBeat.i(252889);
+    super.dlm();
+    ((FinderActionBarOverlayUIC)component(FinderActionBarOverlayUIC.class)).dHX();
+    ((FinderTimelineUIC)component(FinderTimelineUIC.class)).dHX();
+    AppMethodBeat.o(252889);
   }
   
-  public final void cNd()
+  public final Set<Class<? extends UIComponent>> importUIComponents()
   {
-    AppMethodBeat.i(204926);
-    super.cNd();
-    ((FinderDoubleClickTipUIC)bj(FinderDoubleClickTipUIC.class)).cQQ();
-    ((FinderTimelineUIC)bj(FinderTimelineUIC.class)).cQQ();
-    AppMethodBeat.o(204926);
+    AppMethodBeat.i(252888);
+    Object localObject = ak.ae(new Class[] { FinderTimelineUIC.class, FinderActionBarOverlayUIC.class, FinderStreamPartialExposeUIC.class, FinderHorizontalVideoPreviewUIC.class });
+    if (y.a(y.vXH, 1, 0, 2)) {
+      ((HashSet)localObject).add(FinderFullFeedGuideUIC.class);
+    }
+    localObject = (Set)localObject;
+    AppMethodBeat.o(252888);
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
  * Qualified Name:     com.tencent.mm.plugin.finder.ui.fragment.FinderFriendTabFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -3,19 +3,21 @@ package com.tencent.mm.ce;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
+import android.util.Base64;
 import android.util.SparseArray;
 import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.emoji.e.a;
+import com.tencent.mm.kernel.g;
 import com.tencent.mm.plugin.emoji.PluginEmoji;
 import com.tencent.mm.plugin.emoji.b.d;
-import com.tencent.mm.sdk.platformtools.ad;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.sdk.platformtools.ak;
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.LocaleUtil;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.sdk.platformtools.MMApplicationContext;
+import com.tencent.mm.sdk.platformtools.Util;
 import com.tencent.mm.storage.emotion.SmileyInfo;
 import com.tencent.mm.storage.emotion.SmileyPanelConfigInfo;
-import com.tencent.mm.vfs.k;
 import com.tencent.mm.vfs.o;
-import com.tencent.tmassistantsdk.util.Base64;
+import com.tencent.mm.vfs.s;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -23,78 +25,86 @@ import java.util.List;
 
 public class e
 {
-  private static e IEa = null;
-  private String[] IEb;
-  private String[] IEc;
-  private String[] IEd;
-  private final List<SmileyPanelConfigInfo> IEe;
-  private SparseArray<SmileyPanelConfigInfo> IEf;
+  private static e NKR = null;
+  private final String IFy;
+  private String[] NKS;
+  private String[] NKT;
+  private final List<SmileyPanelConfigInfo> NKU;
+  private SparseArray<SmileyPanelConfigInfo> NKV;
   private String country;
+  private String dFG;
+  private final String gVw;
+  private final String versionName;
   
   public e(Context paramContext)
   {
     AppMethodBeat.i(104920);
-    this.IEe = Collections.synchronizedList(new ArrayList());
-    this.IEf = new SparseArray();
-    this.IEb = paramContext.getResources().getStringArray(2130903068);
-    this.IEc = paramContext.getResources().getStringArray(2130903069);
-    this.IEd = paramContext.getResources().getStringArray(2130903070);
-    this.IEe.clear();
-    this.IEf.clear();
-    fqR();
-    this.country = ad.fom();
-    if (!ak.coh()) {
-      fqS();
+    StringBuilder localStringBuilder = new StringBuilder();
+    a locala = a.hdT;
+    this.gVw = (a.awv() + "panel/");
+    this.IFy = "assets:///panel/";
+    this.versionName = "config.conf";
+    this.dFG = "";
+    this.NKU = Collections.synchronizedList(new ArrayList());
+    this.NKV = new SparseArray();
+    this.NKS = paramContext.getResources().getStringArray(2130903069);
+    this.NKT = paramContext.getResources().getStringArray(2130903071);
+    this.NKU.clear();
+    this.NKV.clear();
+    gxP();
+    this.country = LocaleUtil.getApplicationLanguage();
+    if (!MMApplicationContext.isMainProcess()) {
+      gxQ();
     }
     AppMethodBeat.o(104920);
   }
   
-  public static Drawable aTj(String paramString)
+  public static Drawable bid(String paramString)
   {
     AppMethodBeat.i(177037);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(177037);
       return null;
     }
-    SmileyInfo localSmileyInfo = f.fqV().aTo(paramString);
+    SmileyInfo localSmileyInfo = f.gxT().bii(paramString);
     if (localSmileyInfo != null)
     {
-      paramString = f.fqV().a(localSmileyInfo);
+      paramString = f.gxT().a(localSmileyInfo);
       AppMethodBeat.o(177037);
       return paramString;
     }
-    paramString = b.fqL().aTi(paramString);
-    paramString = b.fqL().a(paramString, true);
+    paramString = b.gxI().bic(paramString);
+    paramString = b.gxI().a(paramString, true);
     AppMethodBeat.o(177037);
     return paramString;
   }
   
-  private void fqR()
+  private void gxP()
   {
     int k = 0;
     AppMethodBeat.i(104921);
-    if ((this.IEb != null) && (this.IEd != null))
+    if ((this.NKS != null) && (this.NKT != null))
     {
-      int m = this.IEb.length;
+      int m = this.NKS.length;
       int j = 0;
       int i = 0;
       SmileyPanelConfigInfo localSmileyPanelConfigInfo;
       while (j < m)
       {
-        localSmileyPanelConfigInfo = new SmileyPanelConfigInfo(i, this.IEb[j]);
-        this.IEe.add(localSmileyPanelConfigInfo);
-        this.IEf.put(i, localSmileyPanelConfigInfo);
+        localSmileyPanelConfigInfo = new SmileyPanelConfigInfo(i, this.NKS[j]);
+        this.NKU.add(localSmileyPanelConfigInfo);
+        this.NKV.put(i, localSmileyPanelConfigInfo);
         j += 1;
         i += 1;
       }
-      m = this.IEd.length;
+      m = this.NKT.length;
       j = k;
       while (j < m)
       {
-        localSmileyPanelConfigInfo = new SmileyPanelConfigInfo(i, this.IEd[j]);
-        this.IEe.add(localSmileyPanelConfigInfo);
-        this.IEf.put(i, localSmileyPanelConfigInfo);
+        localSmileyPanelConfigInfo = new SmileyPanelConfigInfo(i, this.NKT[j]);
+        this.NKU.add(localSmileyPanelConfigInfo);
+        this.NKV.put(i, localSmileyPanelConfigInfo);
         j += 1;
         i += 1;
       }
@@ -102,14 +112,14 @@ public class e
     AppMethodBeat.o(104921);
   }
   
-  public static e fqT()
+  public static e gxR()
   {
     AppMethodBeat.i(104925);
-    if (IEa == null) {}
+    if (NKR == null) {}
     try
     {
-      IEa = new e(ak.getContext());
-      e locale = IEa;
+      NKR = new e(MMApplicationContext.getContext());
+      e locale = NKR;
       AppMethodBeat.o(104925);
       return locale;
     }
@@ -119,24 +129,91 @@ public class e
     }
   }
   
-  public final String aTk(String paramString)
+  public Drawable Al(int paramInt)
+  {
+    AppMethodBeat.i(104926);
+    if (this.NKV == null)
+    {
+      Log.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley panel map is null.");
+      AppMethodBeat.o(104926);
+      return null;
+    }
+    Object localObject = (SmileyPanelConfigInfo)this.NKV.get(paramInt);
+    if (localObject == null)
+    {
+      Log.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley info is null.");
+      AppMethodBeat.o(104926);
+      return null;
+    }
+    localObject = bid(((SmileyPanelConfigInfo)localObject).field_key);
+    AppMethodBeat.o(104926);
+    return localObject;
+  }
+  
+  public String Am(int paramInt)
+  {
+    AppMethodBeat.i(104929);
+    if (paramInt < 0)
+    {
+      Log.w("MicroMsg.MergerSmileyManager", "get emoji text, error index down");
+      AppMethodBeat.o(104929);
+      return "";
+    }
+    Object localObject2 = gxR().NKT[paramInt].split(" ");
+    Object localObject1 = Character.toChars(Integer.decode(localObject2[0]).intValue());
+    localObject2 = Character.toChars(Integer.decode(localObject2[1]).intValue());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((char[])localObject1);
+    localStringBuilder.append((char[])localObject2);
+    localObject1 = localStringBuilder.toString();
+    AppMethodBeat.o(104929);
+    return localObject1;
+  }
+  
+  public String An(int paramInt)
+  {
+    AppMethodBeat.i(104928);
+    List localList = this.NKU;
+    if (paramInt >= 0) {}
+    try
+    {
+      if (paramInt >= this.NKU.size())
+      {
+        Log.w("MicroMsg.MergerSmileyManager", "get text key, error index");
+        return "";
+      }
+      Object localObject1 = (SmileyPanelConfigInfo)this.NKU.get(paramInt);
+      if (localObject1 != null)
+      {
+        localObject1 = ((SmileyPanelConfigInfo)localObject1).field_key;
+        return localObject1;
+      }
+      return "";
+    }
+    finally
+    {
+      AppMethodBeat.o(104928);
+    }
+  }
+  
+  public final String bie(String paramString)
   {
     AppMethodBeat.i(177038);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(177038);
       return "";
     }
-    SmileyInfo localSmileyInfo = f.fqV().aTo(paramString);
+    SmileyInfo localSmileyInfo = f.gxT().bii(paramString);
     if (localSmileyInfo != null)
     {
-      if ((this.country.equals("zh_CN")) && (!bu.isNullOrNil(localSmileyInfo.field_cnValue)))
+      if ((this.country.equals("zh_CN")) && (!Util.isNullOrNil(localSmileyInfo.field_cnValue)))
       {
         paramString = localSmileyInfo.field_cnValue;
         AppMethodBeat.o(177038);
         return paramString;
       }
-      if (((this.country.equals("zh_TW")) || (this.country.equals("zh_HK"))) && (!bu.isNullOrNil(localSmileyInfo.field_twValue)))
+      if (((this.country.equals("zh_TW")) || (this.country.equals("zh_HK"))) && (!Util.isNullOrNil(localSmileyInfo.field_twValue)))
       {
         paramString = localSmileyInfo.field_twValue;
         AppMethodBeat.o(177038);
@@ -150,103 +227,98 @@ public class e
     return paramString;
   }
   
-  public int bFJ()
+  public int cbZ()
   {
     AppMethodBeat.i(104923);
-    ae.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo");
-    this.IEe.clear();
-    ArrayList localArrayList1 = ((PluginEmoji)com.tencent.mm.kernel.g.ad(PluginEmoji.class)).getProvider().chM();
-    Object localObject;
-    if ((localArrayList1 == null) || (localArrayList1.isEmpty()))
+    Log.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo");
+    this.NKU.clear();
+    this.dFG = ((d)g.ah(d.class)).getProvider().cFN();
+    new ArrayList();
+    Object localObject2 = new ArrayList();
+    int i = com.tencent.mm.emoji.e.b.EY(this.gVw + "config.conf");
+    int j = com.tencent.mm.emoji.e.b.EY("assets:///panel/config.conf");
+    Object localObject4 = this.gVw + this.dFG;
+    Object localObject3 = "assets:///panel/" + this.dFG;
+    Log.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo: local:%s, asset:%s", new Object[] { Integer.valueOf(i), Integer.valueOf(j) });
+    Object localObject1 = localObject2;
+    if (i > 0)
     {
-      localObject = ((d)com.tencent.mm.kernel.g.ad(d.class)).getProvider().chP();
-      localArrayList1 = com.tencent.mm.emoji.d.b.f(new k("assets:///panel/".concat(String.valueOf(localObject))));
-      if (localArrayList1.size() < 50) {
-        ae.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo: from asset xml %s", new Object[] { Integer.valueOf(localArrayList1.size()) });
+      localObject1 = localObject2;
+      if (i >= j)
+      {
+        localObject1 = localObject2;
+        if (s.YS((String)localObject4))
+        {
+          localObject1 = com.tencent.mm.emoji.e.b.e(new o((String)localObject4));
+          Log.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo: localSize %s", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
+        }
       }
     }
-    ArrayList localArrayList2;
+    if (((ArrayList)localObject1).size() <= 0)
+    {
+      localObject1 = com.tencent.mm.emoji.e.b.e(new o((String)localObject3));
+      if (((ArrayList)localObject1).size() < 50) {
+        Log.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo: from asset xml %s", new Object[] { Integer.valueOf(((ArrayList)localObject1).size()) });
+      }
+    }
+    label528:
     for (;;)
     {
       try
       {
-        ae.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo: %s", new Object[] { o.aZT("assets:///panel/".concat(String.valueOf(localObject))) });
-        com.tencent.mm.plugin.report.service.g.yxI.dD(1062, 80);
-        if ((localArrayList1 == null) || (localArrayList1.isEmpty())) {
-          break label456;
+        Log.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo: %s", new Object[] { s.boY("assets:///panel/" + this.dFG) });
+        if (!((ArrayList)localObject1).isEmpty())
+        {
+          localObject3 = f.gxT().gxY();
+          int k = ((ArrayList)localObject1).size();
+          j = 0;
+          i = 0;
+          if (j < k)
+          {
+            localObject4 = (SmileyPanelConfigInfo)((ArrayList)localObject1).get(j);
+            localObject2 = ((SmileyPanelConfigInfo)localObject4).field_key;
+            if (!((String)localObject2).matches("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$")) {
+              break label528;
+            }
+            localObject2 = new String(Base64.decode((String)localObject2, 0));
+            ((SmileyPanelConfigInfo)localObject4).field_key = ((String)localObject2);
+            if ((((String)localObject2).startsWith("[")) && (!((ArrayList)localObject3).contains(localObject2)))
+            {
+              Log.i("MicroMsg.MergerSmileyManager", "no smiley info. key:%s", new Object[] { localObject2 });
+              j += 1;
+              continue;
+            }
+          }
         }
-        localObject = f.fqV();
-        localArrayList2 = new ArrayList();
-        if (((f)localObject).IEn == null) {
-          break;
-        }
-        localObject = ((f)localObject).IEn.iterator();
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
-        localArrayList2.add(((SmileyInfo)((Iterator)localObject).next()).field_key);
-        continue;
       }
       catch (Exception localException)
       {
-        ae.printErrStackTrace("MicroMsg.MergerSmileyManager", localException, "", new Object[0]);
+        Log.printErrStackTrace("MicroMsg.MergerSmileyManager", localException, "", new Object[0]);
         continue;
-      }
-      if (localArrayList1.size() < 50)
-      {
-        ae.i("MicroMsg.MergerSmileyManager", "updateSmileyPanelInfo: from db %s", new Object[] { Integer.valueOf(localArrayList1.size()) });
-        com.tencent.mm.plugin.report.service.g.yxI.dD(1062, 81);
-      }
-    }
-    int k = localArrayList1.size();
-    int j = 0;
-    int i = 0;
-    SmileyPanelConfigInfo localSmileyPanelConfigInfo;
-    String str;
-    if (j < k)
-    {
-      localSmileyPanelConfigInfo = (SmileyPanelConfigInfo)localArrayList1.get(j);
-      str = localSmileyPanelConfigInfo.field_key;
-      if (!str.matches("^(?:[A-Za-z0-9+/]{4})*(?:[A-Za-z0-9+/]{2}==|[A-Za-z0-9+/]{3}=)?$")) {
-        break label473;
-      }
-      str = new String(Base64.decode(str, 0));
-      localSmileyPanelConfigInfo.field_key = str;
-    }
-    label456:
-    label473:
-    for (;;)
-    {
-      if ((str.startsWith("[")) && (!localArrayList2.contains(str))) {
-        ae.i("MicroMsg.MergerSmileyManager", "no smiley info. key:%s", new Object[] { str });
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
-        this.IEe.add(localSmileyPanelConfigInfo);
-        this.IEf.put(i, localSmileyPanelConfigInfo);
+        this.NKU.add(localObject4);
+        this.NKV.put(i, localObject4);
         i += 1;
-      }
-      for (i = 0;; i = -1)
-      {
+        continue;
+        i = 0;
         AppMethodBeat.o(104923);
         return i;
-        fqR();
-        ae.i("MicroMsg.MergerSmileyManager", "smiley panel list is null.");
       }
+      gxP();
+      Log.i("MicroMsg.MergerSmileyManager", "smiley panel list is null.");
+      i = -1;
+      continue;
     }
   }
   
-  public int bFK()
+  public int cca()
   {
     AppMethodBeat.i(104924);
-    if (this.IEe == null)
+    if (this.NKU == null)
     {
       AppMethodBeat.o(104924);
       return 0;
     }
-    int i = this.IEe.size();
+    int i = this.NKU.size();
     AppMethodBeat.o(104924);
     return i;
   }
@@ -254,16 +326,16 @@ public class e
   public final boolean containsKey(String paramString)
   {
     AppMethodBeat.i(177036);
-    if (bu.isNullOrNil(paramString))
+    if (Util.isNullOrNil(paramString))
     {
       AppMethodBeat.o(177036);
       return false;
     }
-    synchronized (this.IEe)
+    synchronized (this.NKU)
     {
-      Iterator localIterator = this.IEe.iterator();
+      Iterator localIterator = this.NKU.iterator();
       while (localIterator.hasNext()) {
-        if (bu.lX(((SmileyPanelConfigInfo)localIterator.next()).field_key, paramString))
+        if (Util.isEqual(((SmileyPanelConfigInfo)localIterator.next()).field_key, paramString))
         {
           AppMethodBeat.o(177036);
           return true;
@@ -274,97 +346,30 @@ public class e
     }
   }
   
-  public final boolean fqS()
+  public final boolean gxQ()
   {
     AppMethodBeat.i(104922);
-    ae.i("MicroMsg.MergerSmileyManager", "checkNewSmiley ");
-    ArrayList localArrayList = ((PluginEmoji)com.tencent.mm.kernel.g.ad(PluginEmoji.class)).getProvider().chM();
+    Log.i("MicroMsg.MergerSmileyManager", "checkNewSmiley ");
+    ArrayList localArrayList = ((PluginEmoji)g.ah(PluginEmoji.class)).getProvider().cFK();
     if ((localArrayList == null) || (localArrayList.isEmpty()))
     {
-      bFJ();
+      cbZ();
       AppMethodBeat.o(104922);
       return true;
     }
-    bFJ();
+    cbZ();
     AppMethodBeat.o(104922);
     return false;
   }
   
-  public final List<SmileyPanelConfigInfo> fqU()
+  public final List<SmileyPanelConfigInfo> gxS()
   {
     AppMethodBeat.i(177035);
-    synchronized (this.IEe)
+    synchronized (this.NKU)
     {
-      ArrayList localArrayList = new ArrayList(this.IEe);
+      ArrayList localArrayList = new ArrayList(this.NKU);
       AppMethodBeat.o(177035);
       return localArrayList;
-    }
-  }
-  
-  public Drawable wD(int paramInt)
-  {
-    AppMethodBeat.i(104926);
-    if (this.IEf == null)
-    {
-      ae.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley panel map is null.");
-      AppMethodBeat.o(104926);
-      return null;
-    }
-    Object localObject = (SmileyPanelConfigInfo)this.IEf.get(paramInt);
-    if (localObject == null)
-    {
-      ae.i("MicroMsg.MergerSmileyManager", "getSmileyDrawable smiley info is null.");
-      AppMethodBeat.o(104926);
-      return null;
-    }
-    localObject = aTj(((SmileyPanelConfigInfo)localObject).field_key);
-    AppMethodBeat.o(104926);
-    return localObject;
-  }
-  
-  public String wE(int paramInt)
-  {
-    AppMethodBeat.i(104929);
-    if (paramInt < 0)
-    {
-      ae.w("MicroMsg.MergerSmileyManager", "get emoji text, error index down");
-      AppMethodBeat.o(104929);
-      return "";
-    }
-    Object localObject2 = fqT().IEd[paramInt].split(" ");
-    Object localObject1 = Character.toChars(Integer.decode(localObject2[0]).intValue());
-    localObject2 = Character.toChars(Integer.decode(localObject2[1]).intValue());
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append((char[])localObject1);
-    localStringBuilder.append((char[])localObject2);
-    localObject1 = localStringBuilder.toString();
-    AppMethodBeat.o(104929);
-    return localObject1;
-  }
-  
-  public String wF(int paramInt)
-  {
-    AppMethodBeat.i(104928);
-    List localList = this.IEe;
-    if (paramInt >= 0) {}
-    try
-    {
-      if (paramInt >= this.IEe.size())
-      {
-        ae.w("MicroMsg.MergerSmileyManager", "get text key, error index");
-        return "";
-      }
-      Object localObject1 = (SmileyPanelConfigInfo)this.IEe.get(paramInt);
-      if (localObject1 != null)
-      {
-        localObject1 = ((SmileyPanelConfigInfo)localObject1).field_key;
-        return localObject1;
-      }
-      return "";
-    }
-    finally
-    {
-      AppMethodBeat.o(104928);
     }
   }
 }

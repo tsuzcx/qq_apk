@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res-auto">
-    <com.tencent.mm.pluginsdk.ui.applet.ContactListExpandPreference android:key="contact_list_cache" />
+    <com.tencent.mm.pluginsdk.ui.preference.HelperHeaderPreference android:key="contact_info_header_helper" android:layout="@layout/bi_" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_wxpay_collection_go_to" android:layout="@layout/b8j" android:title="@string/bhr" />
+    <PreferenceSmallCategory />
+    <CheckBoxPreference android:key="contact_info_wxpay_collection_top" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bhv" />
+    <CheckBoxPreference android:key="contact_info_wxpay_collection_not_disturb" android:layout="@layout/b8j" android:persistent="false" android:title="@string/bht" />
+    <PreferenceSmallCategory />
+    <Preference android:key="contact_info_wxpay_collection_help" android:layout="@layout/b8j" android:title="@string/bhs" />
+    <Preference android:key="contact_info_wxpay_collection_clear_data" android:layout="@layout/b8j" android:title="@string/ba3" />
+    <PreferenceSmallCategory />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsq" android:key="contact_info_wxpay_collection_install" android:title_color="@color/ts" />
+    <com.tencent.mm.ui.base.preference.ButtonPreference android:btn_title="@string/gsv" android:key="contact_info_wxpay_collection_uninstall" android:layout="@layout/b2o" android:title_color="@color/a5e" />
+    <PreferenceCategory />
 </PreferenceScreen>

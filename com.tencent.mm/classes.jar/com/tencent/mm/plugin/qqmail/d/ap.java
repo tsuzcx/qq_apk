@@ -2,43 +2,43 @@ package com.tencent.mm.plugin.qqmail.d;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.protocal.protobuf.BaseResponse;
-import com.tencent.mm.protocal.protobuf.cwj;
+import com.tencent.mm.protocal.protobuf.dpc;
 import java.util.LinkedList;
 
 public final class ap
-  extends cwj
+  extends dpc
 {
+  public boolean Btc;
+  public String Btd;
+  public String Bte;
+  public int Btf;
   public int channel;
   public String fileid;
-  public boolean xsZ;
-  public String xta;
-  public String xtb;
-  public int xtc;
   
   public final int op(int paramInt, Object... paramVarArgs)
   {
-    AppMethodBeat.i(217978);
+    AppMethodBeat.i(198634);
     if (paramInt == 0)
     {
-      paramVarArgs = (f.a.a.c.a)paramVarArgs[0];
+      paramVarArgs = (g.a.a.c.a)paramVarArgs[0];
       if (this.BaseResponse != null)
       {
-        paramVarArgs.lJ(1, this.BaseResponse.computeSize());
+        paramVarArgs.ni(1, this.BaseResponse.computeSize());
         this.BaseResponse.writeFields(paramVarArgs);
       }
       if (this.fileid != null) {
-        paramVarArgs.d(2, this.fileid);
+        paramVarArgs.e(2, this.fileid);
       }
-      paramVarArgs.bC(3, this.xsZ);
-      if (this.xta != null) {
-        paramVarArgs.d(4, this.xta);
+      paramVarArgs.cc(3, this.Btc);
+      if (this.Btd != null) {
+        paramVarArgs.e(4, this.Btd);
       }
-      if (this.xtb != null) {
-        paramVarArgs.d(5, this.xtb);
+      if (this.Bte != null) {
+        paramVarArgs.e(5, this.Bte);
       }
-      paramVarArgs.aS(6, this.xtc);
-      paramVarArgs.aS(7, this.channel);
-      AppMethodBeat.o(217978);
+      paramVarArgs.aM(6, this.Btf);
+      paramVarArgs.aM(7, this.channel);
+      AppMethodBeat.o(198634);
       return 0;
     }
     if (paramInt == 1) {
@@ -47,87 +47,87 @@ public final class ap
       }
     }
     label626:
-    for (paramInt = f.a.a.a.lI(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
+    for (paramInt = g.a.a.a.nh(1, this.BaseResponse.computeSize()) + 0;; paramInt = 0)
     {
       int i = paramInt;
       if (this.fileid != null) {
-        i = paramInt + f.a.a.b.b.a.e(2, this.fileid);
+        i = paramInt + g.a.a.b.b.a.f(2, this.fileid);
       }
-      i += f.a.a.b.b.a.amF(3);
+      i += g.a.a.b.b.a.fS(3) + 1;
       paramInt = i;
-      if (this.xta != null) {
-        paramInt = i + f.a.a.b.b.a.e(4, this.xta);
+      if (this.Btd != null) {
+        paramInt = i + g.a.a.b.b.a.f(4, this.Btd);
       }
       i = paramInt;
-      if (this.xtb != null) {
-        i = paramInt + f.a.a.b.b.a.e(5, this.xtb);
+      if (this.Bte != null) {
+        i = paramInt + g.a.a.b.b.a.f(5, this.Bte);
       }
-      paramInt = f.a.a.b.b.a.bz(6, this.xtc);
-      int j = f.a.a.b.b.a.bz(7, this.channel);
-      AppMethodBeat.o(217978);
+      paramInt = g.a.a.b.b.a.bu(6, this.Btf);
+      int j = g.a.a.b.b.a.bu(7, this.channel);
+      AppMethodBeat.o(198634);
       return i + paramInt + j;
       if (paramInt == 2)
       {
-        paramVarArgs = new f.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
-        for (paramInt = cwj.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = cwj.getNextFieldNumber(paramVarArgs)) {
+        paramVarArgs = new g.a.a.a.a((byte[])paramVarArgs[0], unknownTagHandler);
+        for (paramInt = dpc.getNextFieldNumber(paramVarArgs); paramInt > 0; paramInt = dpc.getNextFieldNumber(paramVarArgs)) {
           if (!super.populateBuilderWithField(paramVarArgs, this, paramInt)) {
-            paramVarArgs.gCg();
+            paramVarArgs.hPl();
           }
         }
-        AppMethodBeat.o(217978);
+        AppMethodBeat.o(198634);
         return 0;
       }
       if (paramInt == 3)
       {
-        Object localObject1 = (f.a.a.a.a)paramVarArgs[0];
+        Object localObject1 = (g.a.a.a.a)paramVarArgs[0];
         ap localap = (ap)paramVarArgs[1];
         paramInt = ((Integer)paramVarArgs[2]).intValue();
         switch (paramInt)
         {
         default: 
-          AppMethodBeat.o(217978);
+          AppMethodBeat.o(198634);
           return -1;
         case 1: 
-          paramVarArgs = ((f.a.a.a.a)localObject1).amA(paramInt);
+          paramVarArgs = ((g.a.a.a.a)localObject1).awh(paramInt);
           i = paramVarArgs.size();
           paramInt = 0;
           while (paramInt < i)
           {
             Object localObject2 = (byte[])paramVarArgs.get(paramInt);
             localObject1 = new BaseResponse();
-            localObject2 = new f.a.a.a.a((byte[])localObject2, unknownTagHandler);
-            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((f.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, cwj.getNextFieldNumber((f.a.a.a.a)localObject2))) {}
+            localObject2 = new g.a.a.a.a((byte[])localObject2, unknownTagHandler);
+            for (boolean bool = true; bool; bool = ((BaseResponse)localObject1).populateBuilderWithField((g.a.a.a.a)localObject2, (com.tencent.mm.bw.a)localObject1, dpc.getNextFieldNumber((g.a.a.a.a)localObject2))) {}
             localap.BaseResponse = ((BaseResponse)localObject1);
             paramInt += 1;
           }
-          AppMethodBeat.o(217978);
+          AppMethodBeat.o(198634);
           return 0;
         case 2: 
-          localap.fileid = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(217978);
+          localap.fileid = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(198634);
           return 0;
         case 3: 
-          localap.xsZ = ((f.a.a.a.a)localObject1).OmT.gvY();
-          AppMethodBeat.o(217978);
+          localap.Btc = ((g.a.a.a.a)localObject1).UbS.yZ();
+          AppMethodBeat.o(198634);
           return 0;
         case 4: 
-          localap.xta = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(217978);
+          localap.Btd = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(198634);
           return 0;
         case 5: 
-          localap.xtb = ((f.a.a.a.a)localObject1).OmT.readString();
-          AppMethodBeat.o(217978);
+          localap.Bte = ((g.a.a.a.a)localObject1).UbS.readString();
+          AppMethodBeat.o(198634);
           return 0;
         case 6: 
-          localap.xtc = ((f.a.a.a.a)localObject1).OmT.zc();
-          AppMethodBeat.o(217978);
+          localap.Btf = ((g.a.a.a.a)localObject1).UbS.zi();
+          AppMethodBeat.o(198634);
           return 0;
         }
-        localap.channel = ((f.a.a.a.a)localObject1).OmT.zc();
-        AppMethodBeat.o(217978);
+        localap.channel = ((g.a.a.a.a)localObject1).UbS.zi();
+        AppMethodBeat.o(198634);
         return 0;
       }
-      AppMethodBeat.o(217978);
+      AppMethodBeat.o(198634);
       return -1;
     }
   }

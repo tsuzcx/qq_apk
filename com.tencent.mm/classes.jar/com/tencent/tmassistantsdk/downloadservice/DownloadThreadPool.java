@@ -264,7 +264,7 @@ public class DownloadThreadPool
       //   162: ldc 93
       //   164: iconst_0
       //   165: anewarray 78	java/lang/Object
-      //   168: invokestatic 99	com/tencent/mm/sdk/platformtools/ae:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+      //   168: invokestatic 99	com/tencent/mm/sdk/platformtools/Log:printErrStackTrace	(Ljava/lang/String;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
       //   171: aload_1
       //   172: monitorexit
       //   173: ldc 56
@@ -409,7 +409,7 @@ public class DownloadThreadPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.tmassistantsdk.downloadservice.DownloadThreadPool
  * JD-Core Version:    0.7.0.1
  */

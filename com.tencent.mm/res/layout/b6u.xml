@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@color/po" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <android.support.v7.widget.RecyclerView android:id="@id/fjr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginStart="@dimen/c5" />
+<LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/j39" android:layout_width="fill_parent" android:layout_height="@dimen/ca"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.mm.ui.widget.RoundedCornerFrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content" app:cornerRadius="4.0dip">
+        <ImageView android:id="@id/fb2" android:layout_width="@dimen/cs" android:layout_height="@dimen/cs" android:src="@drawable/ahb" />
+    </com.tencent.mm.ui.widget.RoundedCornerFrameLayout>
+    <TextView android:textSize="@dimen/hd" android:textColor="@color/fr" android:id="@id/b0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/cb" android:text="@string/ez4" style="@style/l4" />
+    <TextView android:textColor="@color/l4" android:gravity="center" android:id="@id/fb3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="@dimen/c5" android:text="0.6.0" style="@style/zi" />
 </LinearLayout>

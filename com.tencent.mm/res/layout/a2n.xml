@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/b3b" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:layout_gravity="center" android:padding="@dimen/k" android:layout_width="@dimen/a22" android:layout_height="@dimen/a22"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center" android:id="@id/d3o" android:paddingTop="15.0dip" android:paddingBottom="6.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" style="@style/a5o" />
-    <TextView android:textSize="@dimen/gx" android:textColor="@color/bi" android:gravity="center|left" android:id="@id/b8h" android:background="@color/a7c" android:paddingLeft="@dimen/jn" android:paddingTop="@dimen/hk" android:paddingRight="@dimen/jn" android:paddingBottom="@dimen/ju" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.tencent.mm.plugin.emoji.ui.SquareImageView android:layout_gravity="center" android:id="@id/bob" android:background="@null" android:focusable="false" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerInside" />
 </LinearLayout>

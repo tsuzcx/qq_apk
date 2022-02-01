@@ -16,33 +16,34 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
 @SuppressLint({"LongLogTag"})
 final class g
 {
-  h cyU;
-  private HashMap<String, k> cyV;
-  g.a cyW;
-  private FloatBuffer cyX;
-  private List<k> cyY;
-  private j cyZ;
-  private StringBuilder cza;
+  h cNb;
+  private HashMap<String, k> cNc;
+  a cNd;
+  private FloatBuffer cNe;
+  private List<k> cNf;
+  private j cNg;
+  private StringBuilder cNh;
   
   g(e parame, c paramc)
   {
-    AppMethodBeat.i(213316);
-    this.cza = new StringBuilder();
-    this.cyU = new h(parame, this);
-    this.cyU.czh = paramc;
-    this.cyV = new HashMap();
-    this.cyW = new g.a();
-    this.cyY = new ArrayList();
-    AppMethodBeat.o(213316);
+    AppMethodBeat.i(206812);
+    this.cNh = new StringBuilder();
+    this.cNb = new h(parame, this);
+    this.cNb.cNo = paramc;
+    this.cNc = new HashMap();
+    this.cNd = new a();
+    this.cNf = new ArrayList();
+    AppMethodBeat.o(206812);
   }
   
-  private List<k> dH(String paramString)
+  private List<k> ec(String paramString)
   {
     AppMethodBeat.i(140023);
     if ((paramString == null) || (paramString.length() == 0))
@@ -50,7 +51,7 @@ final class g
       AppMethodBeat.o(140023);
       return null;
     }
-    this.cyY.clear();
+    this.cNf.clear();
     int i = 0;
     while (i < paramString.length())
     {
@@ -63,15 +64,15 @@ final class g
       }
       while (localk == null)
       {
-        this.cyY.clear();
+        this.cNf.clear();
         AppMethodBeat.o(140023);
         return null;
         localk = s(paramString.charAt(i));
         i += 1;
       }
-      this.cyY.add(localk);
+      this.cNf.add(localk);
     }
-    paramString = this.cyY;
+    paramString = this.cNf;
     AppMethodBeat.o(140023);
     return paramString;
   }
@@ -80,40 +81,40 @@ final class g
   {
     AppMethodBeat.i(140025);
     String str = j(paramString, paramInt1, paramInt2);
-    k localk = (k)this.cyV.get(str);
+    k localk = (k)this.cNc.get(str);
     if (localk != null)
     {
       AppMethodBeat.o(140025);
       return localk;
     }
-    if (a.HE() == null)
+    if (a.Rt() == null)
     {
       paramString = new IllegalStateException("FontDrawableProvider must support");
       AppMethodBeat.o(140025);
       throw paramString;
     }
-    paramString = a.HE().r(paramString, paramInt1);
+    paramString = a.Rt().r(paramString, paramInt1);
     if (paramString == null)
     {
       AppMethodBeat.o(140025);
       return null;
     }
-    paramInt1 = (int)this.cyZ.fontSize;
-    int i = (int)this.cyZ.fontSize;
+    paramInt1 = (int)this.cNg.fontSize;
+    int i = (int)this.cNg.fontSize;
     if ((paramInt1 <= 0) || (i <= 0))
     {
       AppMethodBeat.o(140025);
       return null;
     }
-    paramString = this.cyU.a(paramString, paramInt1, i);
+    paramString = this.cNb.a(paramString, paramInt1, i);
     if (paramString == null)
     {
       c.c.d("MagicBrush.MBFontGlyphManager", "Load font drawable glyph failed.", new Object[0]);
       AppMethodBeat.o(140025);
       return null;
     }
-    paramString.czG = paramInt2;
-    this.cyV.put(str, paramString);
+    paramString.cNN = paramInt2;
+    this.cNc.put(str, paramString);
     AppMethodBeat.o(140025);
     return paramString;
   }
@@ -127,15 +128,15 @@ final class g
       AppMethodBeat.o(140027);
       throw paramString;
     }
-    this.cza.setLength(0);
+    this.cNh.setLength(0);
     while (paramInt2 > 0)
     {
-      this.cza.append(paramString.charAt(paramInt1));
+      this.cNh.append(paramString.charAt(paramInt1));
       paramInt1 += 1;
       paramInt2 -= 1;
     }
-    this.cza.append("|").append(this.cyZ.fontSize);
-    paramString = this.cza.toString();
+    this.cNh.append("|").append(this.cNg.fontSize);
+    paramString = this.cNh.toString();
     AppMethodBeat.o(140027);
     return paramString;
   }
@@ -143,12 +144,12 @@ final class g
   private static int s(String paramString, int paramInt)
   {
     AppMethodBeat.i(140026);
-    if (a.HE() == null)
+    if (a.Rt() == null)
     {
       AppMethodBeat.o(140026);
       return 0;
     }
-    paramInt = a.HE().q(paramString, paramInt);
+    paramInt = a.Rt().q(paramString, paramInt);
     AppMethodBeat.o(140026);
     return paramInt;
   }
@@ -156,26 +157,26 @@ final class g
   private k s(char paramChar)
   {
     AppMethodBeat.i(140024);
-    if (this.cyZ == null)
+    if (this.cNg == null)
     {
       AppMethodBeat.o(140024);
       return null;
     }
     String str = t(paramChar);
-    k localk = (k)this.cyV.get(str);
+    k localk = (k)this.cNc.get(str);
     if (localk != null)
     {
       AppMethodBeat.o(140024);
       return localk;
     }
-    localk = this.cyU.u(paramChar);
+    localk = this.cNb.u(paramChar);
     if (localk == null)
     {
       c.c.d("MagicBrush.MBFontGlyphManager", "Load glyph failed. glyph == null [" + paramChar + "]", new Object[0]);
       AppMethodBeat.o(140024);
       return null;
     }
-    this.cyV.put(str, localk);
+    this.cNc.put(str, localk);
     AppMethodBeat.o(140024);
     return localk;
   }
@@ -183,22 +184,22 @@ final class g
   private String t(char paramChar)
   {
     AppMethodBeat.i(140028);
-    if (this.cyZ == null)
+    if (this.cNg == null)
     {
       AppMethodBeat.o(140028);
       return null;
     }
-    this.cza.setLength(0);
-    StringBuilder localStringBuilder = this.cza.append(paramChar).append("|").append(this.cyZ.fontSize).append("|");
-    if (this.cyZ.sx == null) {}
-    for (Object localObject = "null";; localObject = Integer.valueOf(this.cyZ.sx.hashCode()))
+    this.cNh.setLength(0);
+    StringBuilder localStringBuilder = this.cNh.append(paramChar).append("|").append(this.cNg.fontSize).append("|");
+    if (this.cNg.sB == null) {}
+    for (Object localObject = "null";; localObject = Integer.valueOf(this.cNg.sB.hashCode()))
     {
       localObject = localStringBuilder.append(localObject);
-      if (this.cyZ.czq) {
-        ((StringBuilder)localObject).append("|").append(this.cyZ.strokeWidth);
+      if (this.cNg.cNx) {
+        ((StringBuilder)localObject).append("|").append(this.cNg.strokeWidth);
       }
-      if (this.cyZ.czr != null) {
-        ((StringBuilder)localObject).append("|").append(this.cyZ.czr.czw);
+      if (this.cNg.cNy != null) {
+        ((StringBuilder)localObject).append("|").append(this.cNg.cNy.cND);
       }
       localObject = ((StringBuilder)localObject).toString();
       AppMethodBeat.o(140028);
@@ -209,67 +210,67 @@ final class g
   final void a(j paramj)
   {
     AppMethodBeat.i(140029);
-    this.cyZ = paramj;
-    h localh = this.cyU;
-    localh.czf = paramj;
-    localh.czg.setTypeface(paramj.sx);
-    localh.czg.setTextSize(paramj.fontSize);
-    if (paramj.czq)
+    this.cNg = paramj;
+    h localh = this.cNb;
+    localh.cNm = paramj;
+    localh.cNn.setTypeface(paramj.sB);
+    localh.cNn.setTextSize(paramj.fontSize);
+    if (paramj.cNx)
     {
-      localh.czg.setStyle(Paint.Style.STROKE);
-      localh.czg.setStrokeWidth(paramj.strokeWidth);
+      localh.cNn.setStyle(Paint.Style.STROKE);
+      localh.cNn.setStrokeWidth(paramj.strokeWidth);
     }
     for (;;)
     {
-      localh.czg.setTextSkewX(0.0F);
-      localh.czg.setFakeBoldText(false);
-      if (paramj.czr != null)
+      localh.cNn.setTextSkewX(0.0F);
+      localh.cNn.setFakeBoldText(false);
+      if (paramj.cNy != null)
       {
-        if ((paramj.sx == null) || (paramj.sx.getStyle() != paramj.czr.czw))
+        if ((paramj.sB == null) || (paramj.sB.getStyle() != paramj.cNy.cND))
         {
-          if ((paramj.czr == j.a.czu) || (paramj.czr == j.a.czv)) {
-            localh.czg.setTextSkewX(-0.25F);
+          if ((paramj.cNy == j.a.cNB) || (paramj.cNy == j.a.cNC)) {
+            localh.cNn.setTextSkewX(-0.25F);
           }
-          if ((paramj.czr == j.a.czt) || (paramj.czr == j.a.czv)) {
-            localh.czg.setFakeBoldText(true);
+          if ((paramj.cNy == j.a.cNA) || (paramj.cNy == j.a.cNC)) {
+            localh.cNn.setFakeBoldText(true);
           }
         }
-        if (paramj.czr.isBold()) {
-          localh.czg.setFakeBoldText(true);
+        if (paramj.cNy.isBold()) {
+          localh.cNn.setFakeBoldText(true);
         }
       }
-      if (localh.czh != null) {
-        localh.czh.a(localh.czg, paramj.czp, paramj.fontSize);
+      if (localh.cNo != null) {
+        localh.cNo.a(localh.cNn, paramj.cNw, paramj.fontSize);
       }
-      localh.czg.getFontMetrics(localh.czk);
+      localh.cNn.getFontMetrics(localh.cNr);
       AppMethodBeat.o(140029);
       return;
-      localh.czg.setStyle(Paint.Style.FILL);
+      localh.cNn.setStyle(Paint.Style.FILL);
     }
   }
   
   final void clear()
   {
     AppMethodBeat.i(140031);
-    if (this.cyV != null)
+    if (this.cNc != null)
     {
-      Iterator localIterator = this.cyV.values().iterator();
+      Iterator localIterator = this.cNc.values().iterator();
       while (localIterator.hasNext())
       {
         k localk = (k)localIterator.next();
-        g.a locala = this.cyW;
+        a locala = this.cNd;
         if (localk != null)
         {
           localk.setEmpty();
-          locala.czb.offer(localk);
+          locala.cNi.offer(localk);
         }
       }
-      this.cyV.clear();
+      this.cNc.clear();
     }
     AppMethodBeat.o(140031);
   }
   
-  final FloatBuffer dG(String paramString)
+  final FloatBuffer eb(String paramString)
   {
     AppMethodBeat.i(140022);
     if ((paramString == null) || (paramString.length() == 0))
@@ -277,29 +278,29 @@ final class g
       AppMethodBeat.o(140022);
       return null;
     }
-    List localList = dH(paramString);
+    List localList = ec(paramString);
     if ((localList == null) || (localList.size() == 0))
     {
       AppMethodBeat.o(140022);
       return null;
     }
     int i = Math.max(paramString.length(), 10) * 40 + 16;
-    if ((this.cyX == null) || (this.cyX.capacity() * 4 < i)) {
-      this.cyX = ByteBuffer.allocateDirect(i).order(ByteOrder.nativeOrder()).asFloatBuffer();
+    if ((this.cNe == null) || (this.cNe.capacity() * 4 < i)) {
+      this.cNe = ByteBuffer.allocateDirect(i).order(ByteOrder.nativeOrder()).asFloatBuffer();
     }
-    this.cyX.clear();
-    paramString = this.cyX;
-    float f = h.E(localList);
-    Paint.FontMetrics localFontMetrics = this.cyU.czk;
+    this.cNe.clear();
+    paramString = this.cNe;
+    float f = h.I(localList);
+    Paint.FontMetrics localFontMetrics = this.cNb.cNr;
     paramString.put(f).put(localFontMetrics.ascent).put(localFontMetrics.bottom).put(localFontMetrics.bottom - localFontMetrics.ascent);
     k.a(paramString, localList);
     paramString.flip();
-    this.cyY.clear();
+    this.cNf.clear();
     AppMethodBeat.o(140022);
     return paramString;
   }
   
-  final float dI(String paramString)
+  final float ed(String paramString)
   {
     AppMethodBeat.i(140030);
     if ((paramString == null) || (paramString.length() == 0))
@@ -307,15 +308,41 @@ final class g
       AppMethodBeat.o(140030);
       return 0.0F;
     }
-    paramString = dH(paramString);
+    paramString = ec(paramString);
     if ((paramString == null) || (paramString.size() == 0))
     {
       AppMethodBeat.o(140030);
       return -1.0F;
     }
-    float f = h.E(paramString);
+    float f = h.I(paramString);
     AppMethodBeat.o(140030);
     return f;
+  }
+  
+  static final class a
+  {
+    Queue<k> cNi;
+    
+    a()
+    {
+      AppMethodBeat.i(140019);
+      this.cNi = new LinkedList();
+      AppMethodBeat.o(140019);
+    }
+    
+    final k Rz()
+    {
+      AppMethodBeat.i(140020);
+      k localk = (k)this.cNi.poll();
+      if (localk == null)
+      {
+        localk = new k();
+        AppMethodBeat.o(140020);
+        return localk;
+      }
+      AppMethodBeat.o(140020);
+      return localk;
+    }
   }
 }
 

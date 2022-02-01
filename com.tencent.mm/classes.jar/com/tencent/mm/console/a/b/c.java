@@ -2,18 +2,18 @@ package com.tencent.mm.console.a.b;
 
 public final class c<M, S>
 {
-  public final M ghr;
-  public final S ghs;
+  public final M gMX;
+  public final S gMY;
   
   public c(M paramM, S paramS)
   {
-    this.ghr = paramM;
-    this.ghs = paramS;
+    this.gMX = paramM;
+    this.gMY = paramS;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
  * Qualified Name:     com.tencent.mm.console.a.b.c
  * JD-Core Version:    0.7.0.1
  */

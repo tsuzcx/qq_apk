@@ -13,19 +13,19 @@ public final class SpliceInsertCommand
   extends SpliceCommand
 {
   public static final Parcelable.Creator<SpliceInsertCommand> CREATOR;
+  public final long buG;
+  public final boolean buH;
+  public final boolean buI;
+  public final boolean buJ;
+  public final boolean buK;
+  public final long buL;
   public final long buM;
-  public final boolean buN;
+  public final List<a> buN;
   public final boolean buO;
-  public final boolean buP;
-  public final boolean buQ;
-  public final long buR;
-  public final long buS;
-  public final List<a> buT;
-  public final boolean buU;
-  public final long buV;
-  public final int buW;
-  public final int buX;
-  public final int buY;
+  public final long buP;
+  public final int buQ;
+  public final int buR;
+  public final int buS;
   
   static
   {
@@ -37,42 +37,42 @@ public final class SpliceInsertCommand
   private SpliceInsertCommand(long paramLong1, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, long paramLong2, long paramLong3, List<a> paramList, boolean paramBoolean5, long paramLong4, int paramInt1, int paramInt2, int paramInt3)
   {
     AppMethodBeat.i(92488);
-    this.buM = paramLong1;
-    this.buN = paramBoolean1;
-    this.buO = paramBoolean2;
-    this.buP = paramBoolean3;
-    this.buQ = paramBoolean4;
-    this.buR = paramLong2;
-    this.buS = paramLong3;
-    this.buT = Collections.unmodifiableList(paramList);
-    this.buU = paramBoolean5;
-    this.buV = paramLong4;
-    this.buW = paramInt1;
-    this.buX = paramInt2;
-    this.buY = paramInt3;
+    this.buG = paramLong1;
+    this.buH = paramBoolean1;
+    this.buI = paramBoolean2;
+    this.buJ = paramBoolean3;
+    this.buK = paramBoolean4;
+    this.buL = paramLong2;
+    this.buM = paramLong3;
+    this.buN = Collections.unmodifiableList(paramList);
+    this.buO = paramBoolean5;
+    this.buP = paramLong4;
+    this.buQ = paramInt1;
+    this.buR = paramInt2;
+    this.buS = paramInt3;
     AppMethodBeat.o(92488);
   }
   
   private SpliceInsertCommand(Parcel paramParcel)
   {
     AppMethodBeat.i(92489);
-    this.buM = paramParcel.readLong();
+    this.buG = paramParcel.readLong();
     if (paramParcel.readByte() == 1)
     {
       bool1 = true;
-      this.buN = bool1;
+      this.buH = bool1;
       if (paramParcel.readByte() != 1) {
         break label166;
       }
       bool1 = true;
       label48:
-      this.buO = bool1;
+      this.buI = bool1;
       if (paramParcel.readByte() != 1) {
         break label172;
       }
       bool1 = true;
       label65:
-      this.buP = bool1;
+      this.buJ = bool1;
       if (paramParcel.readByte() != 1) {
         break label178;
       }
@@ -83,9 +83,9 @@ public final class SpliceInsertCommand
     label178:
     for (boolean bool1 = true;; bool1 = false)
     {
-      this.buQ = bool1;
-      this.buR = paramParcel.readLong();
-      this.buS = paramParcel.readLong();
+      this.buK = bool1;
+      this.buL = paramParcel.readLong();
+      this.buM = paramParcel.readLong();
       int j = paramParcel.readInt();
       localArrayList = new ArrayList(j);
       int i = 0;
@@ -101,15 +101,15 @@ public final class SpliceInsertCommand
       bool1 = false;
       break label65;
     }
-    this.buT = Collections.unmodifiableList(localArrayList);
+    this.buN = Collections.unmodifiableList(localArrayList);
     if (paramParcel.readByte() == 1) {}
     for (bool1 = bool2;; bool1 = false)
     {
-      this.buU = bool1;
-      this.buV = paramParcel.readLong();
-      this.buW = paramParcel.readInt();
-      this.buX = paramParcel.readInt();
-      this.buY = paramParcel.readInt();
+      this.buO = bool1;
+      this.buP = paramParcel.readLong();
+      this.buQ = paramParcel.readInt();
+      this.buR = paramParcel.readInt();
+      this.buS = paramParcel.readInt();
       AppMethodBeat.o(92489);
       return;
     }
@@ -118,7 +118,7 @@ public final class SpliceInsertCommand
   static SpliceInsertCommand a(m paramm, long paramLong, u paramu)
   {
     AppMethodBeat.i(92490);
-    long l3 = paramm.dB();
+    long l3 = paramm.dE();
     boolean bool5;
     boolean bool1;
     boolean bool3;
@@ -214,7 +214,7 @@ public final class SpliceInsertCommand
       if ((0x80 & paramLong) != 0L)
       {
         bool4 = true;
-        paramLong = (paramLong & 1L) << 32 | paramm.dB();
+        paramLong = (paramLong & 1L) << 32 | paramm.dE();
         label297:
         i = paramm.readUnsignedShort();
         j = paramm.readUnsignedByte();
@@ -241,24 +241,24 @@ public final class SpliceInsertCommand
   {
     int i = 1;
     AppMethodBeat.i(92491);
-    paramParcel.writeLong(this.buM);
-    if (this.buN)
+    paramParcel.writeLong(this.buG);
+    if (this.buH)
     {
       paramInt = 1;
       paramParcel.writeByte((byte)paramInt);
-      if (!this.buO) {
+      if (!this.buI) {
         break label170;
       }
       paramInt = 1;
       label39:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.buP) {
+      if (!this.buJ) {
         break label175;
       }
       paramInt = 1;
       label54:
       paramParcel.writeByte((byte)paramInt);
-      if (!this.buQ) {
+      if (!this.buK) {
         break label180;
       }
     }
@@ -268,17 +268,17 @@ public final class SpliceInsertCommand
     for (paramInt = 1;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.buR);
-      paramParcel.writeLong(this.buS);
-      int j = this.buT.size();
+      paramParcel.writeLong(this.buL);
+      paramParcel.writeLong(this.buM);
+      int j = this.buN.size();
       paramParcel.writeInt(j);
       paramInt = 0;
       while (paramInt < j)
       {
-        a locala = (a)this.buT.get(paramInt);
-        paramParcel.writeInt(locala.buZ);
-        paramParcel.writeLong(locala.bva);
-        paramParcel.writeLong(locala.bvb);
+        a locala = (a)this.buN.get(paramInt);
+        paramParcel.writeInt(locala.buT);
+        paramParcel.writeLong(locala.buU);
+        paramParcel.writeLong(locala.buV);
         paramInt += 1;
       }
       paramInt = 0;
@@ -288,14 +288,14 @@ public final class SpliceInsertCommand
       paramInt = 0;
       break label54;
     }
-    if (this.buU) {}
+    if (this.buO) {}
     for (paramInt = i;; paramInt = 0)
     {
       paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeLong(this.buV);
-      paramParcel.writeInt(this.buW);
-      paramParcel.writeInt(this.buX);
-      paramParcel.writeInt(this.buY);
+      paramParcel.writeLong(this.buP);
+      paramParcel.writeInt(this.buQ);
+      paramParcel.writeInt(this.buR);
+      paramParcel.writeInt(this.buS);
       AppMethodBeat.o(92491);
       return;
     }
@@ -303,21 +303,21 @@ public final class SpliceInsertCommand
   
   public static final class a
   {
-    public final int buZ;
-    public final long bva;
-    public final long bvb;
+    public final int buT;
+    public final long buU;
+    public final long buV;
     
     a(int paramInt, long paramLong1, long paramLong2)
     {
-      this.buZ = paramInt;
-      this.bva = paramLong1;
-      this.bvb = paramLong2;
+      this.buT = paramInt;
+      this.buU = paramLong1;
+      this.buV = paramLong2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
  * Qualified Name:     com.google.android.exoplayer2.metadata.scte35.SpliceInsertCommand
  * JD-Core Version:    0.7.0.1
  */

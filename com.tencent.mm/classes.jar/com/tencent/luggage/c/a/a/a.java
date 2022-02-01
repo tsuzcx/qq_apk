@@ -8,14 +8,14 @@ public final class a
 {
   public final void a(k paramk) {}
   
-  public final k av(Context paramContext)
+  public final k aE(Context paramContext)
   {
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.c.a.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,12 @@
 package com.tencent.mm.g.a;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.sdk.b.b;
+import com.tencent.mm.sdk.event.IEvent;
 
 public final class yo
-  extends b
+  extends IEvent
 {
-  public a dNR;
-  public b dNS;
+  public a eeN;
   
   public yo()
   {
@@ -16,24 +15,17 @@ public final class yo
   
   private yo(byte paramByte)
   {
-    AppMethodBeat.i(91223);
-    this.dNR = new a();
-    this.dNS = new b();
-    this.IvZ = false;
+    AppMethodBeat.i(155376);
+    this.eeN = new a();
+    this.order = false;
     this.callback = null;
-    AppMethodBeat.o(91223);
+    AppMethodBeat.o(155376);
   }
   
   public static final class a
   {
-    public String scene;
-  }
-  
-  public static final class b
-  {
-    public String content;
-    public String dNT;
-    public String url;
+    public boolean eeO = false;
+    public boolean eeP = false;
   }
 }
 

@@ -23,34 +23,34 @@ public final class PreviewReportSession
   
   public final void flush()
   {
-    AppMethodBeat.i(215367);
+    AppMethodBeat.i(218721);
     if (this.beginTimeMs == 0L)
     {
-      AppMethodBeat.o(215367);
+      AppMethodBeat.o(218721);
       return;
     }
     if (this.frameCount >= 10) {
       commit();
     }
     reset();
-    AppMethodBeat.o(215367);
+    AppMethodBeat.o(218721);
   }
   
   public final void tickPreview(long paramLong1, long paramLong2)
   {
-    AppMethodBeat.i(215368);
+    AppMethodBeat.i(218722);
     if (this.beginTimeMs == 0L) {
       this.beginTimeMs = (System.currentTimeMillis() - paramLong1 / 1000L / 1000L);
     }
     this.frameCount += 1;
     this.totalReadCostUs += paramLong1 / 1000L;
     this.totalRenderCount += paramLong2 / 1000L;
-    AppMethodBeat.o(215368);
+    AppMethodBeat.o(218722);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes7.jar
  * Qualified Name:     com.tencent.tav.report.PreviewReportSession
  * JD-Core Version:    0.7.0.1
  */

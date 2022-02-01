@@ -4,38 +4,30 @@ import android.util.ArrayMap;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.a.b;
 import com.tencent.mm.plugin.appbrand.a.c.a;
-import d.g.a.a;
-import d.g.b.p;
-import d.l;
-import d.z;
 import java.util.Map;
+import kotlin.g.a.a;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.x;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningStateController$OnRunningStateChangedListener;", "()V", "mEventInvokeMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningState;", "Lkotlin/Function0;", "", "Lcom/tencent/luggage/sdk/wxa_ktx/LifecycleEventInvoke;", "onBackground", "callback", "onDestroy", "onForeground", "onRunningStateChanged", "appId", "", "state", "onSuspend", "registerCallback", "luggage-wxa-app_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/luggage/sdk/wxa_ktx/RuntimeLifecycleListenerBuilder;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningStateController$OnRunningStateChangedListener;", "()V", "mEventInvokeMap", "Landroid/util/ArrayMap;", "Lcom/tencent/mm/plugin/appbrand/appstate/AppRunningState;", "Lkotlin/Function0;", "", "Lcom/tencent/luggage/sdk/wxa_ktx/LifecycleEventInvoke;", "onBackground", "callback", "onDestroy", "onForeground", "onRunningStateChanged", "appId", "", "state", "onSuspend", "registerCallback", "luggage-wxa-app_release"})
 public final class d
   implements c.a
 {
-  private final ArrayMap<b, a<z>> cqr;
+  private final ArrayMap<b, a<x>> cCK;
   
   public d()
   {
     AppMethodBeat.i(147859);
-    this.cqr = new ArrayMap();
+    this.cCK = new ArrayMap();
     AppMethodBeat.o(147859);
   }
   
-  public final void a(b paramb, a<z> parama)
+  public final void a(b paramb, a<x> parama)
   {
     AppMethodBeat.i(147857);
-    ((Map)this.cqr).put(paramb, parama);
+    ((Map)this.cCK).put(paramb, parama);
     AppMethodBeat.o(147857);
-  }
-  
-  public final void a(a<z> parama)
-  {
-    AppMethodBeat.i(208035);
-    p.h(parama, "callback");
-    a(b.jOa, parama);
-    AppMethodBeat.o(208035);
   }
   
   public final void a(String paramString, b paramb)
@@ -53,7 +45,7 @@ public final class d
       AppMethodBeat.o(147856);
       return;
     }
-    paramString = (a)this.cqr.get(paramb);
+    paramString = (a)this.cCK.get(paramb);
     if (paramString != null)
     {
       paramString.invoke();
@@ -63,25 +55,33 @@ public final class d
     AppMethodBeat.o(147856);
   }
   
-  public final void b(a<z> parama)
+  public final void a(a<x> parama)
   {
-    AppMethodBeat.i(208036);
+    AppMethodBeat.i(219642);
     p.h(parama, "callback");
-    a(b.jOb, parama);
-    AppMethodBeat.o(208036);
+    a(b.kQH, parama);
+    AppMethodBeat.o(219642);
   }
   
-  public final void c(a<z> parama)
+  public final void b(a<x> parama)
+  {
+    AppMethodBeat.i(219643);
+    p.h(parama, "callback");
+    a(b.kQI, parama);
+    AppMethodBeat.o(219643);
+  }
+  
+  public final void c(a<x> parama)
   {
     AppMethodBeat.i(147858);
     p.h(parama, "callback");
-    a(b.jOd, parama);
+    a(b.kQK, parama);
     AppMethodBeat.o(147858);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.luggage.sdk.g.d
  * JD-Core Version:    0.7.0.1
  */

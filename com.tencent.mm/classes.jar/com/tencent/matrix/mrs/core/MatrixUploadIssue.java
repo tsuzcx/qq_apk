@@ -1,6 +1,6 @@
 package com.tencent.matrix.mrs.core;
 
-import com.tencent.mm.sdk.platformtools.bu;
+import com.tencent.mm.sdk.platformtools.Util;
 
 public class MatrixUploadIssue
 {
@@ -11,7 +11,7 @@ public class MatrixUploadIssue
   private int dataType = 0;
   private String desKey = "";
   private String filePath = "";
-  private long id = bu.fpO();
+  private long id = Util.nowMilliSecond();
   private boolean needDeleteFileAfterSucc = false;
   private String tag = "";
   private int type = 0;
@@ -103,7 +103,7 @@ public class MatrixUploadIssue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     com.tencent.matrix.mrs.core.MatrixUploadIssue
  * JD-Core Version:    0.7.0.1
  */

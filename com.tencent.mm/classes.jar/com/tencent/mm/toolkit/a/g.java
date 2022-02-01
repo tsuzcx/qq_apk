@@ -7,26 +7,26 @@ import com.tencent.mm.toolkit.a.a.d;
 public final class g
   implements d
 {
-  private final com.tencent.mm.toolkit.a.a.c JlR;
-  private final a JlS;
+  private final com.tencent.mm.toolkit.a.a.c OvK;
+  private final a OvL;
   
   public g()
   {
-    AppMethodBeat.i(189013);
-    this.JlS = new a();
-    this.JlR = new b(this.JlS);
-    AppMethodBeat.o(189013);
+    AppMethodBeat.i(196825);
+    this.OvL = new a();
+    this.OvK = new b(this.OvL);
+    AppMethodBeat.o(196825);
   }
   
   public final int e(c paramc)
   {
-    AppMethodBeat.i(189015);
-    this.JlR.b(paramc);
+    AppMethodBeat.i(196827);
+    this.OvK.b(paramc);
     while (paramc.mState == 2030) {
       try
       {
-        Thread.sleep(paramc.fyo().getTimeout());
-        this.JlR.b(paramc);
+        Thread.sleep(paramc.gGc().getTimeout());
+        this.OvK.b(paramc);
       }
       catch (InterruptedException localInterruptedException)
       {
@@ -35,26 +35,26 @@ public final class g
         a.a(paramc, 1301, localInterruptedException.getLocalizedMessage());
       }
     }
-    AppMethodBeat.o(189015);
+    AppMethodBeat.o(196827);
     return 0;
   }
   
   public final void f(c paramc)
   {
-    AppMethodBeat.i(189016);
+    AppMethodBeat.i(196828);
     if (e.DEBUG)
     {
       new StringBuilder("Request finish, id = ").append(paramc.mId).append(", state = ").append(paramc.mState);
-      e.fyp();
+      e.gGd();
     }
-    AppMethodBeat.o(189016);
+    AppMethodBeat.o(196828);
   }
   
-  public final d jK(Context paramContext)
+  public final d jG(Context paramContext)
   {
-    AppMethodBeat.i(189014);
-    this.JlR.gi(paramContext);
-    AppMethodBeat.o(189014);
+    AppMethodBeat.i(196826);
+    this.OvK.gS(paramContext);
+    AppMethodBeat.o(196826);
     return this;
   }
 }

@@ -1,63 +1,62 @@
 package com.tencent.mm.plugin.wallet_core.model;
 
 import com.tencent.matrix.trace.core.AppMethodBeat;
-import com.tencent.mm.ak.f;
-import com.tencent.mm.ak.n;
+import com.tencent.mm.ak.i;
 import com.tencent.mm.ak.q;
-import com.tencent.mm.g.a.yo;
+import com.tencent.mm.g.a.zt;
 import com.tencent.mm.kernel.b;
 import com.tencent.mm.kernel.g;
-import com.tencent.mm.sdk.b.c;
-import com.tencent.mm.sdk.platformtools.ae;
-import com.tencent.mm.storage.aj;
-import com.tencent.mm.storage.am.a;
+import com.tencent.mm.sdk.event.IListener;
+import com.tencent.mm.sdk.platformtools.Log;
+import com.tencent.mm.storage.ao;
+import com.tencent.mm.storage.ar.a;
 import java.util.Date;
 
 public final class aa
-  extends c<yo>
-  implements f
+  extends IListener<zt>
+  implements i
 {
-  private yo DrV;
-  private String DrW;
+  private zt Ibh;
+  private String mScene;
   
   public aa()
   {
     AppMethodBeat.i(160876);
-    this.DrW = null;
-    this.__eventId = yo.class.getName().hashCode();
+    this.mScene = null;
+    this.__eventId = zt.class.getName().hashCode();
     AppMethodBeat.o(160876);
   }
   
-  private void eJp()
+  private void fQS()
   {
     AppMethodBeat.i(70419);
-    com.tencent.mm.plugin.wallet_core.d.e locale = t.eJj();
+    com.tencent.mm.plugin.wallet_core.d.e locale = t.fQM();
     y localy = new y();
-    localy.field_bulletin_scene = this.DrW;
+    localy.field_bulletin_scene = this.mScene;
     if (!locale.get(localy, new String[0])) {
-      ae.i("MicroMsg.WalletGetBulletinEventListener", "not bulletin data ");
+      Log.i("MicroMsg.WalletGetBulletinEventListener", "not bulletin data ");
     }
     for (;;)
     {
-      this.DrV.callback.run();
-      this.DrV = null;
+      this.Ibh.callback.run();
+      this.Ibh = null;
       AppMethodBeat.o(70419);
       return;
-      this.DrV.dNS.dNT = localy.field_bulletin_scene;
-      this.DrV.dNS.content = localy.field_bulletin_content;
-      this.DrV.dNS.url = localy.field_bulletin_url;
+      this.Ibh.efN.efO = localy.field_bulletin_scene;
+      this.Ibh.efN.content = localy.field_bulletin_content;
+      this.Ibh.efN.url = localy.field_bulletin_url;
     }
   }
   
-  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, n paramn)
+  public final void onSceneEnd(int paramInt1, int paramInt2, String paramString, q paramq)
   {
     AppMethodBeat.i(70420);
-    ae.i("MicroMsg.WalletGetBulletinEventListener", "NetSceneGetBannerInfo resp,errType = " + paramInt1 + ";errCode=" + paramInt2);
-    g.ajS();
-    g.ajQ().gDv.b(385, this);
-    g.ajS();
-    g.ajR().ajA().set(am.a.IOB, Long.valueOf(new Date().getTime()));
-    eJp();
+    Log.i("MicroMsg.WalletGetBulletinEventListener", "NetSceneGetBannerInfo resp,errType = " + paramInt1 + ";errCode=" + paramInt2);
+    g.aAi();
+    g.aAg().hqi.b(385, this);
+    g.aAi();
+    g.aAh().azQ().set(ar.a.NWD, Long.valueOf(new Date().getTime()));
+    fQS();
     AppMethodBeat.o(70420);
   }
 }

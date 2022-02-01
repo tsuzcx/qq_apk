@@ -10,9 +10,9 @@ public final class j
     super(paramView, paramb);
   }
   
-  public final void etN() {}
+  public final void fzj() {}
   
-  public final f etO()
+  public final f fzk()
   {
     return null;
   }
@@ -22,7 +22,7 @@ public final class j
     return null;
   }
   
-  public final void sQ(boolean paramBoolean) {}
+  public final void wu(boolean paramBoolean) {}
 }
 
 

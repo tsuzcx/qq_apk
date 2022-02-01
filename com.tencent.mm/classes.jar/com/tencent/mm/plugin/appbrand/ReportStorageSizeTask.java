@@ -2,10 +2,10 @@ package com.tencent.mm.plugin.appbrand;
 
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.e.i;
+import com.tencent.f.i;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.plugin.appbrand.ipc.MainProcessTask;
-import com.tencent.mm.sdk.platformtools.ae;
+import com.tencent.mm.sdk.platformtools.Log;
 
 public class ReportStorageSizeTask
   extends MainProcessTask
@@ -20,39 +20,39 @@ public class ReportStorageSizeTask
     AppMethodBeat.o(43984);
   }
   
-  public final void aOX()
+  public final void bjj()
   {
     AppMethodBeat.i(43981);
-    com.tencent.e.h.MqF.aO(new com.tencent.e.i.h()
+    com.tencent.f.h.RTc.aX(new com.tencent.f.i.h()
     {
       public final String getKey()
       {
-        AppMethodBeat.i(222047);
+        AppMethodBeat.i(226248);
         String str = "MicroMsg.AppBrand.ReportStorageSizeTask#" + ReportStorageSizeTask.b(ReportStorageSizeTask.this);
-        AppMethodBeat.o(222047);
+        AppMethodBeat.o(226248);
         return str;
       }
       
       public final void run()
       {
-        AppMethodBeat.i(222046);
+        AppMethodBeat.i(226247);
         try
         {
           ReportStorageSizeTask.a(ReportStorageSizeTask.this);
-          AppMethodBeat.o(222046);
+          AppMethodBeat.o(226247);
           return;
         }
         catch (Throwable localThrowable)
         {
-          ae.e("MicroMsg.AppBrand.ReportStorageSizeTask", "doReport appId:%s, e:%s", new Object[] { ReportStorageSizeTask.b(ReportStorageSizeTask.this), localThrowable });
-          AppMethodBeat.o(222046);
+          Log.e("MicroMsg.AppBrand.ReportStorageSizeTask", "doReport appId:%s, e:%s", new Object[] { ReportStorageSizeTask.b(ReportStorageSizeTask.this), localThrowable });
+          AppMethodBeat.o(226247);
         }
       }
     });
     AppMethodBeat.o(43981);
   }
   
-  public final void e(Parcel paramParcel)
+  public final void f(Parcel paramParcel)
   {
     AppMethodBeat.i(43983);
     this.appId = paramParcel.readString();
@@ -68,7 +68,7 @@ public class ReportStorageSizeTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.plugin.appbrand.ReportStorageSizeTask
  * JD-Core Version:    0.7.0.1
  */

@@ -16,17 +16,17 @@ public class b
   
   static
   {
-    AppMethodBeat.i(216860);
+    AppMethodBeat.i(236825);
     TAG = b.class.getSimpleName();
-    AppMethodBeat.o(216860);
+    AppMethodBeat.o(236825);
   }
   
-  private static boolean cQ(Context paramContext, String paramString)
+  private static boolean di(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(216858);
+    AppMethodBeat.i(236823);
     if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(216858);
+      AppMethodBeat.o(236823);
       return false;
     }
     boolean bool = true;
@@ -34,7 +34,7 @@ public class b
     {
       paramContext = paramContext.getApplicationInfo().dataDir + "/lib";
       System.load(paramContext + File.separator + "lib" + paramString + ".so");
-      AppMethodBeat.o(216858);
+      AppMethodBeat.o(236823);
       return bool;
     }
     catch (Throwable paramContext)
@@ -47,23 +47,23 @@ public class b
     }
   }
   
-  private static boolean cR(Context paramContext, String paramString)
+  private static boolean dj(Context paramContext, String paramString)
   {
-    AppMethodBeat.i(216859);
+    AppMethodBeat.i(236824);
     if ((paramContext == null) || (TextUtils.isEmpty(paramString)))
     {
-      AppMethodBeat.o(216859);
+      AppMethodBeat.o(236824);
       return false;
     }
     try
     {
       c.loadLibrary(paramContext, paramString);
-      AppMethodBeat.o(216859);
+      AppMethodBeat.o(236824);
       return true;
     }
     catch (Throwable paramContext)
     {
-      AppMethodBeat.o(216859);
+      AppMethodBeat.o(236824);
     }
     return false;
   }
@@ -75,17 +75,17 @@ public class b
   
   private static boolean load(String paramString)
   {
-    AppMethodBeat.i(216857);
+    AppMethodBeat.i(236822);
     if (TextUtils.isEmpty(paramString))
     {
-      AppMethodBeat.o(216857);
+      AppMethodBeat.o(236822);
       return false;
     }
     boolean bool = true;
     try
     {
       System.loadLibrary(paramString);
-      AppMethodBeat.o(216857);
+      AppMethodBeat.o(236822);
       return bool;
     }
     catch (Throwable localThrowable)
@@ -100,16 +100,16 @@ public class b
   
   public static void loadLibrary(String paramString)
   {
-    AppMethodBeat.i(216856);
+    AppMethodBeat.i(236821);
     try
     {
       appContext = ((Application)Class.forName("android.app.ActivityThread").getMethod("currentApplication", new Class[0]).invoke(null, null)).getApplicationContext();
       label33:
       Context localContext = appContext;
-      if ((!load(paramString)) && (!cQ(localContext, paramString))) {
-        cR(localContext, paramString);
+      if ((!load(paramString)) && (!di(localContext, paramString))) {
+        dj(localContext, paramString);
       }
-      AppMethodBeat.o(216856);
+      AppMethodBeat.o(236821);
       return;
     }
     catch (Exception localException)
@@ -120,7 +120,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes4.jar
  * Qualified Name:     org.extra.tools.b
  * JD-Core Version:    0.7.0.1
  */

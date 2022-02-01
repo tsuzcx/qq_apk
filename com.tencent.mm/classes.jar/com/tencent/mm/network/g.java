@@ -1,51 +1,86 @@
 package com.tencent.mm.network;
 
-import android.os.IBinder;
-import android.os.IInterface;
-import android.os.Parcel;
-import com.tencent.matrix.trace.core.AppMethodBeat;
+import com.tencent.mm.network.a.b;
+import com.tencent.mm.protocal.ab;
+import java.util.List;
 
 public abstract interface g
-  extends IInterface
 {
-  public abstract void hs(int paramInt);
+  public abstract void MH(String paramString);
   
-  static final class a$a
-    implements g
-  {
-    private IBinder mRemote;
-    
-    a$a(IBinder paramIBinder)
-    {
-      this.mRemote = paramIBinder;
-    }
-    
-    public final IBinder asBinder()
-    {
-      return this.mRemote;
-    }
-    
-    public final void hs(int paramInt)
-    {
-      AppMethodBeat.i(132738);
-      Parcel localParcel1 = Parcel.obtain();
-      Parcel localParcel2 = Parcel.obtain();
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mm.network.IIpxxCallback_AIDL");
-        localParcel1.writeInt(paramInt);
-        this.mRemote.transact(1, localParcel1, localParcel2, 0);
-        localParcel2.readException();
-        return;
-      }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
-        AppMethodBeat.o(132738);
-      }
-    }
-  }
+  public abstract void MI(String paramString);
+  
+  public abstract void MJ(String paramString);
+  
+  public abstract int a(t paramt, n paramn);
+  
+  public abstract int a(String paramString, boolean paramBoolean, List<String> paramList);
+  
+  public abstract void a(int paramInt1, String paramString, int paramInt2, boolean paramBoolean);
+  
+  public abstract void a(b paramb);
+  
+  public abstract void a(j paramj);
+  
+  public abstract void a(q paramq);
+  
+  public abstract void a(ab paramab);
+  
+  public abstract void a(boolean paramBoolean, String paramString1, String paramString2, int[] paramArrayOfInt1, int[] paramArrayOfInt2, int paramInt1, int paramInt2, String paramString3, String paramString4);
+  
+  public abstract boolean aYT();
+  
+  public abstract e aZh();
+  
+  public abstract k aZi();
+  
+  public abstract void aZj();
+  
+  public abstract void aZk();
+  
+  public abstract String[] aZl();
+  
+  public abstract void addHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
+  
+  public abstract void cancel(int paramInt);
+  
+  public abstract void d(String paramString1, long paramLong, String paramString2);
+  
+  public abstract void fA(boolean paramBoolean);
+  
+  public abstract void fB(boolean paramBoolean);
+  
+  public abstract void forceUseV6(boolean paramBoolean);
+  
+  public abstract void fy(boolean paramBoolean);
+  
+  public abstract void fz(boolean paramBoolean);
+  
+  public abstract int getHostByName(String paramString, List<String> paramList);
+  
+  public abstract String[] getIPsString(boolean paramBoolean);
+  
+  public abstract String getIspId();
+  
+  public abstract String getNetworkServerIp();
+  
+  public abstract void keepSignalling();
+  
+  public abstract void reportFailIp(String paramString);
+  
+  public abstract void reportV6Status(boolean paramBoolean);
+  
+  public abstract void reset();
+  
+  public abstract void setDebugHost(String paramString);
+  
+  public abstract void setHostInfo(String[] paramArrayOfString1, String[] paramArrayOfString2, int[] paramArrayOfInt);
+  
+  public abstract void setSignallingStrategy(long paramLong1, long paramLong2);
+  
+  public abstract void stopSignalling();
+  
+  public abstract void switchProcessActiveState(boolean paramBoolean);
 }
 
 

@@ -7,34 +7,34 @@ public final class a
   extends f<String>
 {
   public String contentType;
-  private f.a hiW;
+  private f.a ibT;
   
   private a(String paramString1, String paramString2, f.a<String> parama)
   {
     super(paramString1);
     this.contentType = paramString2;
-    this.hiW = parama;
+    this.ibT = parama;
   }
   
-  public static a ax(String paramString1, String paramString2)
+  public static a az(String paramString1, String paramString2)
   {
     new a(paramString1, paramString2, new f.a() {});
   }
   
-  public final com.tencent.mm.loader.h.b.a arJ()
+  public final com.tencent.mm.loader.h.b.a aKi()
   {
-    return this.hiW.arK();
+    return this.ibT.aKj();
   }
   
   public final void b(OutputStream paramOutputStream)
   {
-    c localc = c.hfO;
+    c localc = c.hYJ;
     c.a((String)this.data, paramOutputStream);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes3.jar
  * Qualified Name:     com.tencent.mm.loader.h.a
  * JD-Core Version:    0.7.0.1
  */

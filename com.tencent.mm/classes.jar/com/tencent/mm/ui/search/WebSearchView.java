@@ -10,162 +10,162 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import com.tencent.matrix.trace.core.AppMethodBeat;
 import com.tencent.mm.hellhoundlib.a.a;
-import d.g.b.p;
-import d.l;
-import d.v;
+import kotlin.g.b.p;
+import kotlin.l;
+import kotlin.t;
 
-@l(gjZ={1, 1, 16}, gka={""}, gkb={"Lcom/tencent/mm/ui/search/WebSearchView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "backBtn", "Landroid/view/View;", "getBackBtn", "()Landroid/view/View;", "setBackBtn", "(Landroid/view/View;)V", "cancelBtn", "getCancelBtn", "setCancelBtn", "ftsEditText", "Lcom/tencent/mm/ui/search/FTSEditTextView;", "getFtsEditText", "()Lcom/tencent/mm/ui/search/FTSEditTextView;", "setFtsEditText", "(Lcom/tencent/mm/ui/search/FTSEditTextView;)V", "searchIcon", "Landroid/widget/ImageView;", "getSearchIcon", "()Landroid/widget/ImageView;", "setSearchIcon", "(Landroid/widget/ImageView;)V", "searchViewListener", "Lcom/tencent/mm/ui/search/ISearchViewListener;", "initView", "", "setSearchViewListener", "libmmui_release"})
+@l(hxD={1, 1, 16}, hxE={""}, hxF={"Lcom/tencent/mm/ui/search/WebSearchView;", "Landroid/widget/LinearLayout;", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "defStyleAttr", "", "(Landroid/content/Context;Landroid/util/AttributeSet;I)V", "backBtn", "Landroid/view/View;", "getBackBtn", "()Landroid/view/View;", "setBackBtn", "(Landroid/view/View;)V", "cancelBtn", "getCancelBtn", "setCancelBtn", "ftsEditText", "Lcom/tencent/mm/ui/search/FTSEditTextView;", "getFtsEditText", "()Lcom/tencent/mm/ui/search/FTSEditTextView;", "setFtsEditText", "(Lcom/tencent/mm/ui/search/FTSEditTextView;)V", "searchIcon", "Landroid/widget/ImageView;", "getSearchIcon", "()Landroid/widget/ImageView;", "setSearchIcon", "(Landroid/widget/ImageView;)V", "searchViewListener", "Lcom/tencent/mm/ui/search/ISearchViewListener;", "initView", "", "setSearchViewListener", "libmmui_release"})
 public final class WebSearchView
   extends LinearLayout
 {
-  public ImageView FlK;
-  public FTSEditTextView KZa;
-  private b KZg;
-  public View vrJ;
-  public View yUf;
+  public FTSEditTextView Awv;
+  public ImageView Aww;
+  public View CYY;
+  private b Qod;
+  public View uvi;
   
   public WebSearchView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    AppMethodBeat.i(193873);
+    AppMethodBeat.i(204858);
     initView();
-    AppMethodBeat.o(193873);
+    AppMethodBeat.o(204858);
   }
   
   public WebSearchView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    AppMethodBeat.i(193874);
+    AppMethodBeat.i(204859);
     initView();
-    AppMethodBeat.o(193874);
+    AppMethodBeat.o(204859);
   }
   
   private void initView()
   {
-    AppMethodBeat.i(193871);
+    AppMethodBeat.i(204856);
     Object localObject = getContext().getSystemService("layout_inflater");
     if (localObject == null)
     {
-      localObject = new v("null cannot be cast to non-null type android.view.LayoutInflater");
-      AppMethodBeat.o(193871);
+      localObject = new t("null cannot be cast to non-null type android.view.LayoutInflater");
+      AppMethodBeat.o(204856);
       throw ((Throwable)localObject);
     }
-    ((LayoutInflater)localObject).inflate(2131496373, (ViewGroup)this, true);
-    localObject = findViewById(2131296303);
+    ((LayoutInflater)localObject).inflate(2131497052, (ViewGroup)this, true);
+    localObject = findViewById(2131296316);
     p.g(localObject, "findViewById(R.id.ab_back_btn)");
-    this.vrJ = ((View)localObject);
-    localObject = this.vrJ;
+    this.uvi = ((View)localObject);
+    localObject = this.uvi;
     if (localObject == null) {
-      p.bdF("backBtn");
+      p.btv("backBtn");
     }
     ((View)localObject).setOnClickListener((View.OnClickListener)new a(this));
-    localObject = findViewById(2131297690);
+    localObject = findViewById(2131297963);
     p.g(localObject, "findViewById(R.id.cancel_btn)");
-    this.yUf = ((View)localObject);
-    localObject = this.yUf;
+    this.CYY = ((View)localObject);
+    localObject = this.CYY;
     if (localObject == null) {
-      p.bdF("cancelBtn");
+      p.btv("cancelBtn");
     }
     ((View)localObject).setOnClickListener((View.OnClickListener)new b(this));
-    localObject = findViewById(2131304422);
+    localObject = findViewById(2131307390);
     p.g(localObject, "findViewById(R.id.search_icon)");
-    this.FlK = ((ImageView)localObject);
-    localObject = findViewById(2131300315);
+    this.Aww = ((ImageView)localObject);
+    localObject = findViewById(2131301807);
     p.g(localObject, "findViewById(R.id.fts_edittext)");
-    this.KZa = ((FTSEditTextView)localObject);
-    localObject = this.KZa;
+    this.Awv = ((FTSEditTextView)localObject);
+    localObject = this.Awv;
     if (localObject == null) {
-      p.bdF("ftsEditText");
+      p.btv("ftsEditText");
     }
-    ((FTSEditTextView)localObject).fOg();
-    AppMethodBeat.o(193871);
+    ((FTSEditTextView)localObject).gWY();
+    AppMethodBeat.o(204856);
   }
   
   public final View getBackBtn()
   {
-    AppMethodBeat.i(193867);
-    View localView = this.vrJ;
+    AppMethodBeat.i(204852);
+    View localView = this.uvi;
     if (localView == null) {
-      p.bdF("backBtn");
+      p.btv("backBtn");
     }
-    AppMethodBeat.o(193867);
+    AppMethodBeat.o(204852);
     return localView;
   }
   
   public final View getCancelBtn()
   {
-    AppMethodBeat.i(193869);
-    View localView = this.yUf;
+    AppMethodBeat.i(204854);
+    View localView = this.CYY;
     if (localView == null) {
-      p.bdF("cancelBtn");
+      p.btv("cancelBtn");
     }
-    AppMethodBeat.o(193869);
+    AppMethodBeat.o(204854);
     return localView;
   }
   
   public final FTSEditTextView getFtsEditText()
   {
-    AppMethodBeat.i(193863);
-    FTSEditTextView localFTSEditTextView = this.KZa;
+    AppMethodBeat.i(204848);
+    FTSEditTextView localFTSEditTextView = this.Awv;
     if (localFTSEditTextView == null) {
-      p.bdF("ftsEditText");
+      p.btv("ftsEditText");
     }
-    AppMethodBeat.o(193863);
+    AppMethodBeat.o(204848);
     return localFTSEditTextView;
   }
   
   public final ImageView getSearchIcon()
   {
-    AppMethodBeat.i(193865);
-    ImageView localImageView = this.FlK;
+    AppMethodBeat.i(204850);
+    ImageView localImageView = this.Aww;
     if (localImageView == null) {
-      p.bdF("searchIcon");
+      p.btv("searchIcon");
     }
-    AppMethodBeat.o(193865);
+    AppMethodBeat.o(204850);
     return localImageView;
   }
   
   public final void setBackBtn(View paramView)
   {
-    AppMethodBeat.i(193868);
+    AppMethodBeat.i(204853);
     p.h(paramView, "<set-?>");
-    this.vrJ = paramView;
-    AppMethodBeat.o(193868);
+    this.uvi = paramView;
+    AppMethodBeat.o(204853);
   }
   
   public final void setCancelBtn(View paramView)
   {
-    AppMethodBeat.i(193870);
+    AppMethodBeat.i(204855);
     p.h(paramView, "<set-?>");
-    this.yUf = paramView;
-    AppMethodBeat.o(193870);
+    this.CYY = paramView;
+    AppMethodBeat.o(204855);
   }
   
   public final void setFtsEditText(FTSEditTextView paramFTSEditTextView)
   {
-    AppMethodBeat.i(193864);
+    AppMethodBeat.i(204849);
     p.h(paramFTSEditTextView, "<set-?>");
-    this.KZa = paramFTSEditTextView;
-    AppMethodBeat.o(193864);
+    this.Awv = paramFTSEditTextView;
+    AppMethodBeat.o(204849);
   }
   
   public final void setSearchIcon(ImageView paramImageView)
   {
-    AppMethodBeat.i(193866);
+    AppMethodBeat.i(204851);
     p.h(paramImageView, "<set-?>");
-    this.FlK = paramImageView;
-    AppMethodBeat.o(193866);
+    this.Aww = paramImageView;
+    AppMethodBeat.o(204851);
   }
   
   public final void setSearchViewListener(b paramb)
   {
-    AppMethodBeat.i(193872);
+    AppMethodBeat.i(204857);
     p.h(paramb, "searchViewListener");
-    this.KZg = paramb;
-    AppMethodBeat.o(193872);
+    this.Qod = paramb;
+    AppMethodBeat.o(204857);
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class a
     implements View.OnClickListener
   {
@@ -173,22 +173,22 @@ public final class WebSearchView
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(193861);
+      AppMethodBeat.i(204846);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      a.b("com/tencent/mm/ui/search/WebSearchView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-      localObject = WebSearchView.a(this.KZh);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+      a.b("com/tencent/mm/ui/search/WebSearchView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+      localObject = WebSearchView.a(this.Qoe);
       if (localObject != null)
       {
         p.g(paramView, "v");
         ((b)localObject).onClickBackBtn(paramView);
       }
       a.a(this, "com/tencent/mm/ui/search/WebSearchView$initView$1", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(193861);
+      AppMethodBeat.o(204846);
     }
   }
   
-  @l(gjZ={1, 1, 16}, gka={""}, gkb={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
+  @l(hxD={1, 1, 16}, hxE={""}, hxF={"<anonymous>", "", "v", "Landroid/view/View;", "kotlin.jvm.PlatformType", "onClick"})
   static final class b
     implements View.OnClickListener
   {
@@ -196,24 +196,24 @@ public final class WebSearchView
     
     public final void onClick(View paramView)
     {
-      AppMethodBeat.i(193862);
+      AppMethodBeat.i(204847);
       Object localObject = new com.tencent.mm.hellhoundlib.b.b();
-      ((com.tencent.mm.hellhoundlib.b.b)localObject).bd(paramView);
-      a.b("com/tencent/mm/ui/search/WebSearchView$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).ahF());
-      localObject = WebSearchView.a(this.KZh);
+      ((com.tencent.mm.hellhoundlib.b.b)localObject).bm(paramView);
+      a.b("com/tencent/mm/ui/search/WebSearchView$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V", this, ((com.tencent.mm.hellhoundlib.b.b)localObject).axR());
+      localObject = WebSearchView.a(this.Qoe);
       if (localObject != null)
       {
         p.g(paramView, "v");
         ((b)localObject).onClickCancelBtn(paramView);
       }
       a.a(this, "com/tencent/mm/ui/search/WebSearchView$initView$2", "android/view/View$OnClickListener", "onClick", "(Landroid/view/View;)V");
-      AppMethodBeat.o(193862);
+      AppMethodBeat.o(204847);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mm\classes9.jar
  * Qualified Name:     com.tencent.mm.ui.search.WebSearchView
  * JD-Core Version:    0.7.0.1
  */
